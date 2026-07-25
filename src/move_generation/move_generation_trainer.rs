@@ -136,6 +136,7 @@ pub fn trainer_move_generation_implementation(
         | CardId::A4b375Lusamine => can_play_lusamine(state, trainer_card),
         CardId::A2153Volkner | CardId::A2193Volkner => can_play_volkner(state, trainer_card),
         CardId::A3149Ilima | CardId::A3191Ilima => can_play_ilima(state, trainer_card),
+        CardId::A3153Sophocles | CardId::A3195Sophocles => can_play_trainer(state, trainer_card),
         CardId::A3150Kiawe | CardId::A3192Kiawe => can_play_kiawe(state, trainer_card),
         CardId::A4157Lyra | CardId::A4197Lyra | CardId::A4b332Lyra | CardId::A4b333Lyra => {
             can_play_lyra(state, trainer_card)

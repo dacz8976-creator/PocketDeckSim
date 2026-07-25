@@ -22,6 +22,8 @@ mod professor_sada_test;
 mod professor_turo_test;
 #[path = "trainers/puppy_loving_girl_test.rs"]
 mod puppy_loving_girl_test;
+#[path = "trainers/sophocles_test.rs"]
+mod sophocles_test;
 #[path = "trainers/volkner_test.rs"]
 mod volkner_test;
 #[path = "trainers/wallace_test.rs"]

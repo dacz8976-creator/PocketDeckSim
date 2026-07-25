@@ -128,6 +128,7 @@ pub fn forecast_trainer_action(
         | CardId::A4b351Lusamine
         | CardId::A4b375Lusamine => Outcomes::single_fn(lusamine_effect),
         CardId::A3149Ilima | CardId::A3191Ilima => Outcomes::single_fn(ilima_effect),
+        CardId::A3153Sophocles | CardId::A3195Sophocles => Outcomes::single_fn(sophocles_effect),
         CardId::A3150Kiawe | CardId::A3192Kiawe => Outcomes::single_fn(kiawe_effect),
         CardId::A4157Lyra | CardId::A4197Lyra | CardId::A4b332Lyra | CardId::A4b333Lyra => {
             Outcomes::single_fn(lyra_effect)
@@ -778,6 +779,22 @@ fn hau_effect(_: &mut StdRng, state: &mut State, _: &Action) {
                 "Decidueye ex".to_string(),
                 "Incineroar ex".to_string(),
                 "Primarina ex".to_string(),
+            ],
+        },
+        0,
+    );
+}
+
+fn sophocles_effect(_: &mut StdRng, state: &mut State, _: &Action) {
+    // During this turn, attacks used by your Alolan Golem, Vikavolt, or Togedemaru do +30 damage
+    // to your opponent's Active Pokémon.
+    state.add_turn_effect(
+        TurnEffect::IncreasedDamageForSpecificPokemon {
+            amount: 30,
+            pokemon_names: vec![
+                "Alolan Golem".to_string(),
+                "Vikavolt".to_string(),
+                "Togedemaru".to_string(),
             ],
         },
         0,
