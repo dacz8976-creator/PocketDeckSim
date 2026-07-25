@@ -69,6 +69,7 @@ pub fn forecast_action(state: &State, action: &Action) -> Outcomes {
         | SimpleAction::ShuffleInPlayPokemonIntoDeck { .. }
         | SimpleAction::DiscardToolFromPokemon { .. }
         | SimpleAction::DiscardActiveStadium
+        | SimpleAction::PutCardFromDiscardToHand { .. }
         | SimpleAction::DiscardRandomOpponentActiveEnergy
         | SimpleAction::ApplyStatusToOpponentActive { .. }
         | SimpleAction::Noop => forecast_deterministic_action(),
@@ -334,6 +335,9 @@ fn apply_deterministic_action(state: &mut State, action: &Action) {
             if let Some((stadium, owner)) = state.take_active_stadium() {
                 state.discard_piles[owner.unwrap_or(action.actor)].push(stadium);
             }
+        }
+        SimpleAction::PutCardFromDiscardToHand { card } => {
+            state.transfer_card_from_discard_to_hand(action.actor, card)
         }
         SimpleAction::DiscardRandomOpponentActiveEnergy => {
             let opponent = (action.actor + 1) % 2;

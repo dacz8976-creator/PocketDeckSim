@@ -52,6 +52,8 @@ mod corviknight_line_test;
 mod crawdaunt_unruly_claw_test;
 #[path = "pokemon/darkrai_ex_test.rs"]
 mod darkrai_ex_test;
+#[path = "pokemon/delcatty_search_for_friends_test.rs"]
+mod delcatty_search_for_friends_test;
 #[path = "pokemon/durant_test.rs"]
 mod durant_test;
 #[path = "pokemon/dusknoir_shadow_void_test.rs"]

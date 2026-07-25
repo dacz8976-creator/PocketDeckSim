@@ -7,6 +7,13 @@ pub enum DeckSearchKind {
     Tool,
 }
 
+/// Which kind of card a "put a <kind> card from your discard pile into your hand" Ability looks
+/// for. The discard-pile mirror of [`DeckSearchKind`].
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum DiscardSearchKind {
+    Supporter,
+}
+
 /// The card names that satisfy "if you have Arceus or Arceus ex in play". Pokémon ex have their
 /// own name in this game, so both spellings have to be listed explicitly.
 pub const ARCEUS_NAMES: &[&str] = &["Arceus", "Arceus ex"];
@@ -402,6 +409,17 @@ pub enum AbilityMechanic {
         amount: u32,
     },
     DiscardRandomEnergyFromOpponentActiveOnEvolve,
+    /// Delcatty's Search for Friends (B1 194 / B1 248): "Once during your turn, when you play this
+    /// Pokémon from your hand to evolve 1 of your Pokémon, you may put a `card_kind` card from
+    /// your discard pile into your hand."
+    ///
+    /// The discard-pile mirror of `SearchRandomCardFromDeck`, riding the same on-evolve trigger as
+    /// `DrawCardsOnEvolve` & co. The wording is "a Supporter card", not "a *random* Supporter
+    /// card", so the player picks which one: it resolves into a choice on the move-generation
+    /// stack (plus a `Noop`, because it is a "may").
+    PutCardsFromDiscardToHandOnEvolve {
+        card_kind: DiscardSearchKind,
+    },
     CanEvolveIntoEeveeEvolution,
     CanEvolveOnFirstTurnIfActive,
     CounterattackDamage {

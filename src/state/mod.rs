@@ -286,6 +286,17 @@ impl State {
         self.hands[player].push(card.clone());
     }
 
+    /// Move one copy of `card` from `player`'s discard pile into their hand (Delcatty's Search for
+    /// Friends). Silently does nothing if the card is no longer there, so a choice that was
+    /// generated before some other effect emptied the pile degrades to a no-op instead of panicking.
+    pub(crate) fn transfer_card_from_discard_to_hand(&mut self, player: usize, card: &Card) {
+        let Some(pos) = self.discard_piles[player].iter().position(|c| c == card) else {
+            return;
+        };
+        self.discard_piles[player].remove(pos);
+        self.hands[player].push(card.clone());
+    }
+
     pub(crate) fn transfer_card_from_hand_to_deck(&mut self, player: usize, card: &Card) {
         // Remove from hand and add to deck
         let pos = self.hands[player]

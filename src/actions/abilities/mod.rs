@@ -3,6 +3,7 @@ mod mechanic;
 pub use mechanic::AbilityMechanic;
 pub use mechanic::AttackCostReductionScope;
 pub use mechanic::DeckSearchKind;
+pub use mechanic::DiscardSearchKind;
 pub use mechanic::KnockoutDamageTarget;
 pub use mechanic::NoRetreatCostCondition;
 pub use mechanic::NoRetreatCostTarget;

@@ -5,8 +5,8 @@ use std::collections::HashMap;
 use std::sync::LazyLock;
 
 use crate::actions::abilities::{
-    AbilityMechanic, AttackCostReductionScope, DeckSearchKind, KnockoutDamageTarget,
-    NoRetreatCostCondition, NoRetreatCostTarget, ARCEUS_NAMES,
+    AbilityMechanic, AttackCostReductionScope, DeckSearchKind, DiscardSearchKind,
+    KnockoutDamageTarget, NoRetreatCostCondition, NoRetreatCostTarget, ARCEUS_NAMES,
 };
 use crate::effects::CardEffect;
 use crate::models::{Card, EnergyType, StatusCondition};
@@ -312,7 +312,12 @@ pub static EFFECT_ABILITY_MECHANIC_MAP: LazyLock<HashMap<&'static str, AbilityMe
             },
         );
         // map.insert("Once during your turn, when you play this Pokémon from your hand to evolve 1 of your Pokémon, you may put 2 random Pokémon Tool cards from your discard pile into your hand.", todo_implementation);
-        // map.insert("Once during your turn, when you play this Pokémon from your hand to evolve 1 of your Pokémon, you may put a Supporter card from your discard pile into your hand.", todo_implementation);
+        map.insert(
+            "Once during your turn, when you play this Pokémon from your hand to evolve 1 of your Pokémon, you may put a Supporter card from your discard pile into your hand.",
+            AbilityMechanic::PutCardsFromDiscardToHandOnEvolve {
+                card_kind: DiscardSearchKind::Supporter,
+            },
+        );
         map.insert(
             "Once during your turn, when you play this Pokémon from your hand to evolve 1 of your Pokémon, you may take a [R] Energy from your Energy Zone and attach it to your Active [R] Pokémon.",
             AbilityMechanic::AttachEnergyFromZoneToActiveTypedOnEvolve {

@@ -154,6 +154,11 @@ pub enum SimpleAction {
     },
     /// Field Blower: discard the active stadium.
     DiscardActiveStadium,
+    /// Delcatty's Search for Friends: put a specific, player-chosen card from your own discard
+    /// pile into your hand.
+    PutCardFromDiscardToHand {
+        card: Card,
+    },
     /// Crawdaunt's Unruly Claw: discard a random Energy from the opponent's Active Pokémon
     DiscardRandomOpponentActiveEnergy,
     /// Apply a chosen Special Condition to the opponent's Active Pokémon (e.g. Dustox's Select Powder).
@@ -320,6 +325,9 @@ impl fmt::Display for SimpleAction {
                 write!(f, "DiscardToolFromPokemon({player}, {in_play_idx})")
             }
             SimpleAction::DiscardActiveStadium => write!(f, "DiscardActiveStadium"),
+            SimpleAction::PutCardFromDiscardToHand { card } => {
+                write!(f, "PutCardFromDiscardToHand({card})")
+            }
             SimpleAction::DiscardRandomOpponentActiveEnergy => {
                 write!(f, "DiscardRandomOpponentActiveEnergy")
             }
