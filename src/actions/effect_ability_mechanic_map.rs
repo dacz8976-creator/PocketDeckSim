@@ -113,6 +113,10 @@ pub static EFFECT_ABILITY_MECHANIC_MAP: LazyLock<HashMap<&'static str, AbilityMe
             AbilityMechanic::CheckupDamageToOpponentActive { amount: 10 },
         );
         map.insert(
+            "During Pokémon Checkup, heal 10 damage from each of your Pokémon.",
+            AbilityMechanic::CheckupHealAllYourPokemon { amount: 10 },
+        );
+        map.insert(
             "During your first turn, this Pokémon has no Retreat Cost.",
             AbilityMechanic::NoRetreatCost {
                 target: NoRetreatCostTarget::ThisPokemon,

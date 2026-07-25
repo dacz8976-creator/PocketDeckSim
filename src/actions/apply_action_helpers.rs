@@ -289,6 +289,7 @@ fn apply_pokemon_checkup(
     }
 
     apply_snowy_terrain_checkup_damage(mutated_state);
+    apply_blessed_salt_checkup_healing(mutated_state);
 
     // Shift the per-turn KO flag. Turn advancement (including energy rotation) is performed
     // separately by `finish_turn_after_checkup` so it can consume the shared rng.
@@ -299,6 +300,31 @@ fn apply_pokemon_checkup(
 
 fn finish_turn_after_checkup(state: &mut State, rng: &mut StdRng) {
     state.advance_turn(rng);
+}
+
+/// Garganacl's Blessed Salt: "During Pokémon Checkup, heal 10 damage from each of your Pokémon."
+///
+/// Unlike the checkup *damage* abilities above, this one carries no Active Spot requirement, so
+/// the whole board is scanned rather than just each player's Active. It runs after the checkup
+/// damage so that a Pokémon left on 0 HP by Poison or Snowy Terrain is already Knocked Out and
+/// gone — healing cannot rescue it — matching the official checkup order.
+fn apply_blessed_salt_checkup_healing(state: &mut State) {
+    for player in 0..2 {
+        let total_heal: u32 = state
+            .enumerate_in_play_pokemon(player)
+            .filter_map(|(_, pokemon)| match get_ability_mechanic(&pokemon.card) {
+                Some(AbilityMechanic::CheckupHealAllYourPokemon { amount }) => Some(*amount),
+                _ => None,
+            })
+            .sum();
+        if total_heal == 0 {
+            continue;
+        }
+        debug!("Blessed Salt: healing {total_heal} from each of player {player}'s Pokémon");
+        for pokemon in state.in_play_pokemon[player].iter_mut().flatten() {
+            pokemon.heal(total_heal);
+        }
+    }
 }
 
 fn apply_snowy_terrain_checkup_damage(state: &mut State) {

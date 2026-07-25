@@ -297,6 +297,15 @@ pub enum AbilityMechanic {
     CheckupDamageToAllOpponentPokemon {
         amount: u32,
     },
+    /// Garganacl's Blessed Salt (B3a 033): "During Pokémon Checkup, heal `amount` damage from each
+    /// of your Pokémon."
+    ///
+    /// The healing counterpart of the `Checkup*Damage*` mechanics above, with one difference worth
+    /// noting: those print "if this Pokémon is in the Active Spot", Blessed Salt does not, so the
+    /// holder heals the board from the Bench too. Passive; resolved in the Pokémon Checkup step.
+    CheckupHealAllYourPokemon {
+        amount: u32,
+    },
     DiscardEnergyToIncreaseTypeDamage {
         discard_energy: EnergyType,
         attack_type: EnergyType,

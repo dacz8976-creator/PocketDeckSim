@@ -76,6 +76,8 @@ mod free_tier_effect_mapping_test;
 mod gallade_test;
 #[path = "pokemon/gardevoir_psy_turbo_test.rs"]
 mod gardevoir_psy_turbo_test;
+#[path = "pokemon/garganacl_blessed_salt_test.rs"]
+mod garganacl_blessed_salt_test;
 #[path = "pokemon/glimmora_point_denial_test.rs"]
 mod glimmora_point_denial_test;
 #[path = "pokemon/grafaiai_poison_coating_test.rs"]
