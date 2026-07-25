@@ -62,6 +62,8 @@ mod emolga_dedenne_ex_tool_damage_test;
 mod flutter_mane_ex_test;
 #[path = "pokemon/flygon_ex_test.rs"]
 mod flygon_ex_test;
+#[path = "pokemon/free_tier_effect_mapping_test.rs"]
+mod free_tier_effect_mapping_test;
 #[path = "pokemon/gallade_test.rs"]
 mod gallade_test;
 #[path = "pokemon/gardevoir_psy_turbo_test.rs"]
