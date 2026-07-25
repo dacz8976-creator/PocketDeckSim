@@ -3,8 +3,14 @@ use crate::models::{EnergyType, StatusCondition};
 #[derive(Debug, Clone, PartialEq)]
 pub enum AbilityMechanic {
     VictreebelFragranceTrap,
+    /// "Once during your turn, you may heal `amount` damage from each of your [type] Pokémon."
+    ///
+    /// `energy_type: None` heals every Pokémon you have in play (Shaymin's Fragrant Flower
+    /// Garden, Butterfree's Powder Heal); `Some(t)` restricts it to that type (Primarina's
+    /// Melodious Healing, `[W]`). Mirrors how `SoothingWind` parameterises its type filter.
     HealAllYourPokemon {
         amount: u32,
+        energy_type: Option<EnergyType>,
     },
     HealOneYourPokemon {
         amount: u32,
