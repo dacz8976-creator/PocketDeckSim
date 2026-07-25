@@ -5,7 +5,9 @@ use log::debug;
 
 use crate::{
     actions::{
-        abilities::{AbilityMechanic, KnockoutDamageTarget, ARCEUS_NAMES},
+        abilities::{
+            AbilityMechanic, AttackCostReductionScope, KnockoutDamageTarget, ARCEUS_NAMES,
+        },
         ability_mechanic_from_effect, get_ability_mechanic, handle_damage_only, SimpleAction,
     },
     card_ids::CardId,
@@ -677,6 +679,43 @@ fn get_conditional_self_damage_reduction(
     }
 }
 
+/// True if `player` has at least two Pokémon named `pokemon_name` in play — i.e. any one of them
+/// has "another <name> in play" (Falinks' Coordinated Unit).
+fn has_another_pokemon_named_in_play(state: &State, player: usize, pokemon_name: &str) -> bool {
+    state
+        .enumerate_in_play_pokemon(player)
+        .filter(|(_, pokemon)| pokemon.get_name() == pokemon_name)
+        .count()
+        >= 2
+}
+
+/// Falinks' Coordinated Unit, defensive half: "this Pokémon takes -20 damage from attacks from
+/// your opponent's Pokémon". Self-scoped but board-conditional, so unlike the reductions in
+/// `get_ability_damage_reduction` it cannot be expressed as a context-free `CardEffect`. It
+/// protects Falinks in the Active Spot and on the Bench alike, and only against the opponent.
+fn get_coordinated_unit_reduction(
+    state: &State,
+    attacking_player: usize,
+    target_player: usize,
+    receiving_pokemon: &PlayedCard,
+    is_from_active_attack: bool,
+) -> u32 {
+    if !is_from_active_attack || attacking_player == target_player {
+        return 0;
+    }
+    match get_ability_mechanic(&receiving_pokemon.card) {
+        Some(AbilityMechanic::CoordinatedUnit {
+            pokemon_name,
+            damage_reduction,
+            ..
+        }) if has_another_pokemon_named_in_play(state, target_player, pokemon_name) => {
+            debug!("Coordinated Unit: Reducing damage by {damage_reduction}");
+            *damage_reduction
+        }
+        _ => 0,
+    }
+}
+
 /// All conditional ability-driven damage reduction protecting the target: the reductions printed on
 /// the target itself plus board-wide ones (Unown's GUARD). Returned as a flat amount that the caller
 /// folds into the other pre-Weakness reductions, matching how every existing damage-reduction
@@ -751,6 +790,20 @@ fn get_ability_damage_increase(
                 amount
             );
             return *amount;
+        }
+    }
+
+    // Coordinated Unit (Falinks), offensive half: "this Pokémon's attacks do +20 damage to your
+    // opponent's Active Pokémon" while you have another Falinks in play.
+    if let Some(AbilityMechanic::CoordinatedUnit {
+        pokemon_name,
+        damage_bonus,
+        ..
+    }) = ability_mechanic_from_effect(&ability.effect)
+    {
+        if has_another_pokemon_named_in_play(state, attacking_player, pokemon_name) {
+            debug!("Coordinated Unit: Increasing damage by {damage_bonus}");
+            return *damage_bonus;
         }
     }
 
@@ -1168,6 +1221,17 @@ pub(crate) fn modify_damage(
             is_from_active_attack,
         )
     };
+    let coordinated_unit_reduction = if skip_target_effects {
+        0
+    } else {
+        get_coordinated_unit_reduction(
+            state,
+            attacking_player,
+            target_player,
+            receiving_pokemon,
+            is_from_active_attack,
+        )
+    };
     let ability_damage_increase = get_ability_damage_increase(
         state,
         attacking_player,
@@ -1217,11 +1281,12 @@ pub(crate) fn modify_damage(
         context,
     );
 
-    // Type-specific damage boost abilities (e.g., Lucario's Fighting Coach, Aegislash's Royal Command)
-    // These check if certain ability-holders are in play and boost damage for specific energy types
+    // Board-wide damage boost abilities (e.g., Lucario's Fighting Coach, Aegislash's Royal Command,
+    // Unown's POWER, Politoed's Lordly Cheering). These check the attacker's board for
+    // ability-holders and boost damage done to the opponent's Active Pokémon.
     // Only applies to active-to-active attacks (not damage moves like Dusknoir's Shadow Void)
-    let type_boost_bonus = if is_active_to_active {
-        calculate_type_boost_bonus(state, attacking_player, attacking_pokemon)
+    let board_ability_bonus = if is_active_to_active {
+        get_board_ability_damage_bonus(state, attacking_player, attacking_pokemon)
     } else {
         0
     };
@@ -1255,7 +1320,7 @@ pub(crate) fn modify_damage(
     };
 
     debug!(
-        "Attack: {:?}, IncreasedDamage: {}, IncreasedAttackSpecific: {}, IncreasedVulnerability: {}, ReducedDamage: {}, TurnEffectReduction: {}, HeavyHelmet: {}, MetalCoreBarrier: {}, SteelApron: {}, IntimidatingFang: {}, AbilityReduction: {}, ConditionalAbilityReduction: {}, AbilityIncrease: {}, TypeBoost: {}, StadiumBonus: {}, FutureBooster: {}",
+        "Attack: {:?}, IncreasedDamage: {}, IncreasedAttackSpecific: {}, IncreasedVulnerability: {}, ReducedDamage: {}, TurnEffectReduction: {}, HeavyHelmet: {}, MetalCoreBarrier: {}, SteelApron: {}, IntimidatingFang: {}, AbilityReduction: {}, ConditionalAbilityReduction: {}, CoordinatedUnit: {}, AbilityIncrease: {}, BoardAbilityBonus: {}, StadiumBonus: {}, FutureBooster: {}",
         base_damage,
         increased_turn_effect_modifiers,
         increased_attack_specific_modifiers,
@@ -1268,8 +1333,9 @@ pub(crate) fn modify_damage(
         intimidating_fang_reduction,
         ability_damage_reduction,
         conditional_ability_damage_reduction,
+        coordinated_unit_reduction,
         ability_damage_increase,
-        type_boost_bonus,
+        board_ability_bonus,
         stadium_damage_bonus,
         future_booster_damage_bonus
     );
@@ -1278,7 +1344,7 @@ pub(crate) fn modify_damage(
         + increased_turn_effect_modifiers
         + increased_attack_specific_modifiers
         + increased_vulnerability_modifiers
-        + type_boost_bonus
+        + board_ability_bonus
         + stadium_damage_bonus
         + future_booster_damage_bonus
         + beastite_damage_bonus)
@@ -1290,7 +1356,8 @@ pub(crate) fn modify_damage(
                 + steel_apron_reduction
                 + intimidating_fang_reduction
                 + ability_damage_reduction
-                + conditional_ability_damage_reduction,
+                + conditional_ability_damage_reduction
+                + coordinated_unit_reduction,
         );
     let final_damage = match weakness_application {
         WeaknessApplication::None => pre_weakness,
@@ -1312,7 +1379,25 @@ pub(crate) fn modify_damage(
 
 /// Calculate type-specific damage boost from abilities like Lucario's Fighting Coach or Aegislash's Royal Command
 /// Returns the bonus damage amount based on attacking Pokemon's energy type and abilities in play
-fn calculate_type_boost_bonus(
+/// POWER (Unown A4 085) works only while its controller has an Unown in play whose printed Ability
+/// is something other than POWER (CHECK on A2a 034 / A2a 078, GUARD on A4 084). Two POWER Unown
+/// never enable each other.
+fn has_non_power_unown_in_play(state: &State, player: usize) -> bool {
+    state.enumerate_in_play_pokemon(player).any(|(_, pokemon)| {
+        pokemon.get_name() == "Unown"
+            && pokemon
+                .card
+                .get_ability()
+                .is_some_and(|ability| ability.title != "POWER")
+    })
+}
+
+/// Every damage bonus the *attacker's board* grants to an active-to-active attack, summed over the
+/// attacking player's in-play Pokémon: the type-boost abilities (Lucario's Fighting Coach,
+/// Aegislash's Royal Command), Unown's POWER, and Politoed's Lordly Cheering. Each of these is
+/// printed on a Pokémon other than (or as well as) the attacker, so none can be read off the
+/// attacker's own ability the way `get_ability_damage_increase` does.
+fn get_board_ability_damage_bonus(
     state: &State,
     attacking_player: usize,
     attacking_pokemon: &PlayedCard,
@@ -1321,11 +1406,12 @@ fn calculate_type_boost_bonus(
         Some(energy_type) => energy_type,
         None => return 0,
     };
+    let power_unown_enabled = has_non_power_unown_in_play(state, attacking_player);
 
     let mut bonus = 0;
 
-    // Check each Pokemon in play for type-boosting abilities
-    for (_, pokemon) in state.enumerate_in_play_pokemon(attacking_player) {
+    // Check each Pokemon in play for board-wide damage-boosting abilities
+    for (idx, pokemon) in state.enumerate_in_play_pokemon(attacking_player) {
         if let Some(mechanic) = get_ability_mechanic(&pokemon.card) {
             match mechanic {
                 AbilityMechanic::IncreaseDamageForTypeInPlay {
@@ -1343,6 +1429,18 @@ fn calculate_type_boost_bonus(
                     || attacker_energy_type == *energy_type_b =>
                 {
                     debug!("Type damage bonus: Increasing damage by {}", amount);
+                    bonus += amount;
+                }
+                AbilityMechanic::UnownPower { amount } if power_unown_enabled => {
+                    debug!("Unown POWER: Increasing damage by {amount}");
+                    bonus += amount;
+                }
+                // "As long as this Pokémon is on your Bench" — idx 0 is the Active Spot.
+                AbilityMechanic::IncreaseDamageForEvolutionsFromBench {
+                    evolves_from,
+                    amount,
+                } if idx != 0 && attacking_pokemon.evolved_from(evolves_from) => {
+                    debug!("Lordly Cheering: Increasing damage by {amount}");
                     bonus += amount;
                 }
                 _ => {}
@@ -1417,29 +1515,64 @@ pub(crate) fn get_attack_cost(
         }
     }
 
-    modified_cost = future_system_cost(modified_cost, state, attacking_player);
+    modified_cost = reduce_attack_cost_by_abilities(modified_cost, state, attacking_player);
 
     modified_cost
 }
 
-fn future_system_cost(mut cost: Vec<EnergyType>, state: &State, player: usize) -> Vec<EnergyType> {
-    let attacker_is_future = state.in_play_pokemon[player][0]
-        .as_ref()
-        .is_some_and(|active| is_future_pokemon(&active.get_name()));
-    let has_future_system = attacker_is_future
-        && state.in_play_pokemon[player].iter().flatten().any(|p| {
-            matches!(
-                get_ability_mechanic(&p.card),
-                Some(AbilityMechanic::FutureSystem)
-            )
-        });
-    if has_future_system {
-        if let Some(pos) = cost.iter().position(|e| *e == EnergyType::Colorless) {
-            debug!("Future System: Reducing attack cost by 1 Colorless");
-            cost.remove(pos);
+/// The "attacks used by <someone> cost N less [X] Energy" abilities: Future System, Vigor Link
+/// (Abomasnow A2a 021) and En-fruits-iastic (Cherubi A4 023 / A4b 025 / A4b 026). All of them
+/// discount the attack the *Active* Pokémon is about to use; `AttackCostReductionScope` says where
+/// the granting Pokémon sits and what has to hold. Multiple holders stack, one discount each.
+fn reduce_attack_cost_by_abilities(
+    mut cost: Vec<EnergyType>,
+    state: &State,
+    player: usize,
+) -> Vec<EnergyType> {
+    let Some(active) = state.in_play_pokemon[player][0].as_ref() else {
+        return cost;
+    };
+    for (idx, source) in state.enumerate_in_play_pokemon(player) {
+        let Some(AbilityMechanic::ReduceAttackCost {
+            energy_type,
+            amount,
+            scope,
+        }) = get_ability_mechanic(&source.card)
+        else {
+            continue;
+        };
+        if !attack_cost_reduction_applies(state, player, scope, idx, active) {
+            continue;
+        }
+        for _ in 0..*amount {
+            if let Some(pos) = cost.iter().position(|e| e == energy_type) {
+                debug!("{scope:?}: Reducing attack cost by 1 {energy_type:?}");
+                cost.remove(pos);
+            }
         }
     }
     cost
+}
+
+/// Whether a `ReduceAttackCost` ability held at board slot `source_idx` currently discounts the
+/// attack `active` is about to use. Slot 0 is the Active Spot, so `source_idx == 0` is also the
+/// test for the self-scoped ("attacks used by this Pokémon") variants.
+fn attack_cost_reduction_applies(
+    state: &State,
+    player: usize,
+    scope: &AttackCostReductionScope,
+    source_idx: usize,
+    active: &PlayedCard,
+) -> bool {
+    match scope {
+        AttackCostReductionScope::YourFuturePokemon => is_future_pokemon(&active.get_name()),
+        AttackCostReductionScope::SelfIfArceusInPlay => {
+            source_idx == 0 && has_arceus_in_play(state, player)
+        }
+        AttackCostReductionScope::SelfIfToolAttached => {
+            source_idx == 0 && active.attached_tool.is_some()
+        }
+    }
 }
 
 // Check if attached satisfies cost (considering Colorless and Serperior's ability)

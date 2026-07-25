@@ -5,8 +5,8 @@ use std::collections::HashMap;
 use std::sync::LazyLock;
 
 use crate::actions::abilities::{
-    AbilityMechanic, KnockoutDamageTarget, NoRetreatCostCondition, NoRetreatCostTarget,
-    ARCEUS_NAMES,
+    AbilityMechanic, AttackCostReductionScope, KnockoutDamageTarget, NoRetreatCostCondition,
+    NoRetreatCostTarget, ARCEUS_NAMES,
 };
 use crate::effects::CardEffect;
 use crate::models::{Card, EnergyType};
@@ -47,7 +47,13 @@ pub static EFFECT_ABILITY_MECHANIC_MAP: LazyLock<HashMap<&'static str, AbilityMe
             "As long as this Pokémon is in the Active Spot, your opponent can't play any Stadium cards from their hand.",
             AbilityMechanic::NoOpponentStadiumInActive,
         );
-        // map.insert("As long as this Pokémon is on your Bench, attacks used by your Pokémon that evolve from Poliwhirl do +40 damage to your opponent's Active Pokémon.", todo_implementation);
+        map.insert(
+            "As long as this Pokémon is on your Bench, attacks used by your Pokémon that evolve from Poliwhirl do +40 damage to your opponent's Active Pokémon.",
+            AbilityMechanic::IncreaseDamageForEvolutionsFromBench {
+                evolves_from: "Poliwhirl",
+                amount: 40,
+            },
+        );
         map.insert(
             "As long as this Pokémon is on your Bench, prevent all damage done to this Pokémon by attacks.",
             AbilityMechanic::PreventDamageWhileBenched,
@@ -127,7 +133,13 @@ pub static EFFECT_ABILITY_MECHANIC_MAP: LazyLock<HashMap<&'static str, AbilityMe
                 energy_type: Some(EnergyType::Psychic),
             },
         );
-        // map.insert("Each of your [G] Pokémon gets +20 HP.", todo_implementation);
+        map.insert(
+            "Each of your [G] Pokémon gets +20 HP.",
+            AbilityMechanic::IncreaseHpForTypeInPlay {
+                energy_type: EnergyType::Grass,
+                amount: 20,
+            },
+        );
         map.insert(
             "If a Stadium is in play, this Pokémon has no Retreat Cost.",
             AbilityMechanic::NoRetreatCost {
@@ -147,7 +159,14 @@ pub static EFFECT_ABILITY_MECHANIC_MAP: LazyLock<HashMap<&'static str, AbilityMe
             "If any damage is done to this Pokémon by attacks, flip a coin. If heads, this Pokémon takes -80 damage from that attack.",
             AbilityMechanic::CoinFlipToReduceDamage { amount: 80 },
         );
-        // map.insert("If this Pokémon has a Pokémon Tool attached, attacks used by this Pokémon cost 1 less [G] Energy.", todo_implementation);
+        map.insert(
+            "If this Pokémon has a Pokémon Tool attached, attacks used by this Pokémon cost 1 less [G] Energy.",
+            AbilityMechanic::ReduceAttackCost {
+                energy_type: EnergyType::Grass,
+                amount: 1,
+                scope: AttackCostReductionScope::SelfIfToolAttached,
+            },
+        );
         map.insert(
             "If this Pokémon has any Energy attached, it has no Retreat Cost.",
             AbilityMechanic::NoRetreatIfHasEnergy,
@@ -194,10 +213,25 @@ pub static EFFECT_ABILITY_MECHANIC_MAP: LazyLock<HashMap<&'static str, AbilityMe
             "If this Pokémon would be Knocked Out by damage from an attack, flip a coin. If heads, this Pokémon is not Knocked Out, and its remaining HP becomes 10.",
             AbilityMechanic::CoinFlipToSurviveKnockOut,
         );
-        // map.insert("If you have Arceus or Arceus ex in play, attacks used by this Pokémon cost 1 less [C] Energy.", todo_implementation);
+        map.insert(
+            "If you have Arceus or Arceus ex in play, attacks used by this Pokémon cost 1 less [C] Energy.",
+            AbilityMechanic::ReduceAttackCost {
+                energy_type: EnergyType::Colorless,
+                amount: 1,
+                scope: AttackCostReductionScope::SelfIfArceusInPlay,
+            },
+        );
         map.insert(
             "If you have Arceus or Arceus ex in play, attacks used by this Pokémon do +30 damage to your opponent's Active Pokémon.",
             AbilityMechanic::IncreaseDamageIfArceusInPlay { amount: 30 },
+        );
+        map.insert(
+            "If you have another Falinks in play, this Pokémon's attacks do +20 damage to your opponent's Active Pokémon, and this Pokémon takes -20 damage from attacks from your opponent's Pokémon.",
+            AbilityMechanic::CoordinatedUnit {
+                pokemon_name: "Falinks",
+                damage_bonus: 20,
+                damage_reduction: 20,
+            },
         );
         map.insert(
             "If you have Arceus or Arceus ex in play, this Pokémon takes -30 damage from attacks.",
@@ -217,7 +251,6 @@ pub static EFFECT_ABILITY_MECHANIC_MAP: LazyLock<HashMap<&'static str, AbilityMe
                 condition: NoRetreatCostCondition::NamedPokemonInPlay(&["Latias"]),
             },
         );
-        // map.insert("If you have another Falinks in play, this Pokémon's attacks do +20 damage to your opponent's Active Pokémon, and this Pokémon takes -20 damage from attacks from your opponent's Pokémon.", todo_implementation);
         map.insert(
             "If your opponent's Pokémon is Knocked Out by damage from this Pokémon's attacks, during your opponent's next turn, prevent all damage from—and effects of—attacks done to this Pokémon.",
             AbilityMechanic::ProtectSelfNextTurnAfterAttackKnockout,
@@ -386,10 +419,13 @@ pub static EFFECT_ABILITY_MECHANIC_MAP: LazyLock<HashMap<&'static str, AbilityMe
         );
         // map.insert("Prevent all effects of attacks used by your opponent's Pokémon done to this Pokémon.", todo_implementation);
         map.insert(
+            "This Ability works if you have any Unown in play with an Ability other than POWER. Attacks used by your Pokémon do +10 damage to your opponent's Active Pokémon.",
+            AbilityMechanic::UnownPower { amount: 10 },
+        );
+        map.insert(
             "This Ability works if you have any Unown in play with an Ability other than GUARD. All of your Pokémon take -10 damage from attacks from your opponent's Pokémon.",
             AbilityMechanic::UnownGuard { amount: 10 },
         );
-        // map.insert("This Ability works if you have any Unown in play with an Ability other than POWER. Attacks used by your Pokémon do +10 damage to your opponent's Active Pokémon.", todo_implementation);
         map.insert(
             "This Pokémon can evolve into any Pokémon that evolves from Eevee if you play it from your hand onto this Pokémon. (This Pokémon can't evolve during your first turn or the turn you play it.)",
             AbilityMechanic::CanEvolveIntoEeveeEvolution,
@@ -545,7 +581,11 @@ pub static EFFECT_ABILITY_MECHANIC_MAP: LazyLock<HashMap<&'static str, AbilityMe
         );
         map.insert(
             "Attacks used by your Future Pokémon cost 1 less [C] Energy.",
-            AbilityMechanic::FutureSystem,
+            AbilityMechanic::ReduceAttackCost {
+                energy_type: EnergyType::Colorless,
+                amount: 1,
+                scope: AttackCostReductionScope::YourFuturePokemon,
+            },
         );
 
         // b3 mechanics

@@ -10,6 +10,8 @@ mod altaria_dragon_arcana_test;
 mod applin_share_test;
 #[path = "pokemon/arceus_ex_test.rs"]
 mod arceus_ex_test;
+#[path = "pokemon/attack_cost_reduction_abilities_test.rs"]
+mod attack_cost_reduction_abilities_test;
 #[path = "pokemon/audino_test.rs"]
 mod audino_test;
 #[path = "pokemon/blastoise_double_splash_test.rs"]
@@ -60,6 +62,8 @@ mod eiscue_ice_face_test;
 mod emboar_flare_storm_test;
 #[path = "pokemon/emolga_dedenne_ex_tool_damage_test.rs"]
 mod emolga_dedenne_ex_tool_damage_test;
+#[path = "pokemon/falinks_coordinated_unit_test.rs"]
+mod falinks_coordinated_unit_test;
 #[path = "pokemon/flutter_mane_ex_test.rs"]
 mod flutter_mane_ex_test;
 #[path = "pokemon/flygon_ex_test.rs"]
@@ -120,6 +124,8 @@ mod kommo_o_clanging_scales_test;
 mod kubfu_training_test;
 #[path = "pokemon/legacy_ability_logic_test.rs"]
 mod legacy_ability_logic_test;
+#[path = "pokemon/lilligant_toughness_aroma_test.rs"]
+mod lilligant_toughness_aroma_test;
 #[path = "pokemon/lucario_b3_test.rs"]
 mod lucario_b3_test;
 #[path = "pokemon/lucario_fighting_coach_test.rs"]
@@ -162,6 +168,8 @@ mod ninetales_ember_dance_test;
 mod no_retreat_cost_abilities_test;
 #[path = "pokemon/passimian_ex_offload_pass_test.rs"]
 mod passimian_ex_offload_pass_test;
+#[path = "pokemon/politoed_lordly_cheering_test.rs"]
+mod politoed_lordly_cheering_test;
 #[path = "pokemon/porygonz_cyberjack_test.rs"]
 mod porygonz_cyberjack_test;
 #[path = "pokemon/psyduck_test.rs"]
@@ -212,6 +220,8 @@ mod tinkaton_gigaton_hammer_test;
 mod typhlosion_fire_breath_test;
 #[path = "pokemon/unown_guard_test.rs"]
 mod unown_guard_test;
+#[path = "pokemon/unown_power_test.rs"]
+mod unown_power_test;
 #[path = "pokemon/ursaluna_guts_test.rs"]
 mod ursaluna_guts_test;
 #[path = "pokemon/vanilluxe_test.rs"]

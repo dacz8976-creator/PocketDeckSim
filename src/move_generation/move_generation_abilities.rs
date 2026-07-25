@@ -102,6 +102,9 @@ fn can_use_ability_by_mechanic(
         AbilityMechanic::IncreaseDamageWhenRemainingHpAtMost { .. } => false,
         AbilityMechanic::IncreaseDamageForTypeInPlay { .. } => false,
         AbilityMechanic::IncreaseDamageForTwoTypesInPlay { .. } => false,
+        AbilityMechanic::UnownPower { .. } => false, // Passive ability
+        AbilityMechanic::IncreaseDamageForEvolutionsFromBench { .. } => false, // Passive ability
+        AbilityMechanic::CoordinatedUnit { .. } => false, // Passive ability
         AbilityMechanic::StartTurnRandomPokemonToHand { .. } => false,
         AbilityMechanic::SearchRandomPokemonFromDeck => {
             !card.ability_used
@@ -177,6 +180,7 @@ fn can_use_ability_by_mechanic(
         AbilityMechanic::IncreaseRetreatCostForOpponentActive { .. } => false,
         AbilityMechanic::PreventDamageWhileBenched => false,
         AbilityMechanic::IncreaseHpPerAttachedEnergy { .. } => false,
+        AbilityMechanic::IncreaseHpForTypeInPlay { .. } => false, // Passive ability
         AbilityMechanic::HealSelfOnZoneAttach { .. } => false,
         AbilityMechanic::EndFirstTurnAttachEnergyToSelf { .. } => false,
         AbilityMechanic::EndTurnDrawCardIfActive { .. } => false,
@@ -187,7 +191,7 @@ fn can_use_ability_by_mechanic(
         }
         AbilityMechanic::LegendaryDrive => false, // triggered on bench placement, not via UseAbility
         AbilityMechanic::AncientRoar => false, // triggered on bench placement, not via UseAbility
-        AbilityMechanic::FutureSystem => false, // passive ability
+        AbilityMechanic::ReduceAttackCost { .. } => false, // passive ability
         AbilityMechanic::TimeRecall => false,  // passive ability (consumed in attack generation)
         AbilityMechanic::QuickGrowth => false, // triggered at end of opponent's turn
     }

@@ -23,6 +23,10 @@ pub struct PlayedCard {
     damage_counters: u32,
     base_hp: u32,
     stadium_hp_bonus: u32,
+    /// Board-conditional HP granted by an ability in play (Lilligant's Toughness Aroma). Stored
+    /// rather than computed because `get_effective_total_hp` has no access to `State`; kept in
+    /// sync by `State::refresh_hp_bonuses_all`, exactly like `stadium_hp_bonus`.
+    ability_hp_bonus: u32,
     pub attached_energy: Vec<EnergyType>,
     pub attached_tool: Option<Card>,
     pub played_this_turn: bool,
@@ -55,6 +59,7 @@ impl PlayedCard {
             damage_counters,
             base_hp,
             stadium_hp_bonus: 0,
+            ability_hp_bonus: 0,
             attached_energy,
             played_this_turn,
             moved_to_active_this_turn: false,
@@ -203,6 +208,13 @@ impl PlayedCard {
         };
     }
 
+    /// Toughness Aroma (Lilligant): "Each of your [G] Pokémon gets +20 HP." Set by
+    /// `State::refresh_hp_bonuses_all` whenever the board changes; `bonus` is already the total
+    /// across every matching ability in play.
+    pub(crate) fn set_ability_hp_bonus(&mut self, bonus: u32) {
+        self.ability_hp_bonus = bonus;
+    }
+
     pub fn get_remaining_hp(&self) -> u32 {
         self.get_effective_total_hp()
             .saturating_sub(self.damage_counters)
@@ -241,6 +253,7 @@ impl PlayedCard {
         }
 
         effective_hp += self.stadium_hp_bonus;
+        effective_hp += self.ability_hp_bonus;
 
         // Reuniclus Infinite Increase: +30 HP for each Psychic Energy attached
         if has_ability_mechanic(

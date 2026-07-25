@@ -142,6 +142,11 @@ fn forecast_ability_by_mechanic(
         | AbilityMechanic::IncreaseDamageForTwoTypesInPlay { .. } => {
             panic!("Type damage bonus mechanics are passive abilities")
         }
+        AbilityMechanic::UnownPower { .. } => panic!("UnownPower is a passive ability"),
+        AbilityMechanic::IncreaseDamageForEvolutionsFromBench { .. } => {
+            panic!("IncreaseDamageForEvolutionsFromBench is a passive ability")
+        }
+        AbilityMechanic::CoordinatedUnit { .. } => panic!("CoordinatedUnit is a passive ability"),
         AbilityMechanic::StartTurnRandomPokemonToHand { .. } => {
             panic!("StartTurnRandomPokemonToHand is a passive ability")
         }
@@ -286,6 +291,9 @@ fn forecast_ability_by_mechanic(
         AbilityMechanic::IncreaseHpPerAttachedEnergy { .. } => {
             panic!("IncreaseHpPerAttachedEnergy is a passive ability")
         }
+        AbilityMechanic::IncreaseHpForTypeInPlay { .. } => {
+            panic!("IncreaseHpForTypeInPlay is a passive ability")
+        }
         AbilityMechanic::HealSelfOnZoneAttach { .. } => {
             panic!("HealSelfOnZoneAttach is a passive ability")
         }
@@ -300,7 +308,7 @@ fn forecast_ability_by_mechanic(
         }
         AbilityMechanic::LegendaryDrive => legendary_drive(in_play_idx),
         AbilityMechanic::AncientRoar => switch_out_opponent_active_to_bench(),
-        AbilityMechanic::FutureSystem => panic!("FutureSystem is a passive ability"),
+        AbilityMechanic::ReduceAttackCost { .. } => panic!("ReduceAttackCost is a passive ability"),
         AbilityMechanic::TimeRecall => panic!("TimeRecall is a passive ability"),
         AbilityMechanic::QuickGrowth => {
             panic!("QuickGrowth is triggered at the end of the opponent's turn")

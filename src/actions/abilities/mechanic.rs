@@ -39,6 +39,22 @@ pub enum KnockoutDamageTarget {
     EachOpponentPokemon,
 }
 
+/// Who benefits from an [`AbilityMechanic::ReduceAttackCost`] ability, and what has to be true for
+/// it to work. Every one of these discounts the *Active* attacker's attack; they differ in where
+/// the granting Pokémon sits and in the enabling condition.
+#[derive(Debug, Clone, PartialEq)]
+pub enum AttackCostReductionScope {
+    /// Future System: the ability holder may be anywhere in play, and the discount applies while
+    /// your Active Pokémon is a Future Pokémon.
+    YourFuturePokemon,
+    /// Vigor Link (Abomasnow A2a 021): the ability holder itself, while you have Arceus or
+    /// Arceus ex in play.
+    SelfIfArceusInPlay,
+    /// En-fruits-iastic (Cherubi A4 023 / A4b 025 / A4b 026): the ability holder itself, while it
+    /// has a Pokémon Tool attached.
+    SelfIfToolAttached,
+}
+
 #[derive(Debug, Clone, PartialEq)]
 pub enum AbilityMechanic {
     VictreebelFragranceTrap,
@@ -155,6 +171,34 @@ pub enum AbilityMechanic {
         energy_type_a: EnergyType,
         energy_type_b: EnergyType,
         amount: u32,
+    },
+    /// POWER (Unown A4 085): "This Ability works if you have any Unown in play with an Ability
+    /// other than POWER. Attacks used by your Pokémon do +`amount` damage to your opponent's
+    /// Active Pokémon."
+    ///
+    /// Board-wide rather than self-scoped, and self-referential: the enabling condition is an
+    /// in-play Unown whose printed Ability *title* is something other than POWER (CHECK on
+    /// A2a 034 / A2a 078, GUARD on A4 084). Two POWER Unown therefore do not enable each other.
+    UnownPower {
+        amount: u32,
+    },
+    /// Politoed's Lordly Cheering (A4 040): "As long as this Pokémon is on your Bench, attacks
+    /// used by your Pokémon that evolve from `evolves_from` do +`amount` damage to your
+    /// opponent's Active Pokémon." Only counts while the ability holder is Benched.
+    IncreaseDamageForEvolutionsFromBench {
+        evolves_from: &'static str,
+        amount: u32,
+    },
+    /// Falinks' Coordinated Unit (B2 092 / B2 172): "If you have another Falinks in play, this
+    /// Pokémon's attacks do +`damage_bonus` damage to your opponent's Active Pokémon, and this
+    /// Pokémon takes -`damage_reduction` damage from attacks from your opponent's Pokémon."
+    ///
+    /// One ability with two self-scoped effects, both gated on the holder's controller having a
+    /// *second* Pokémon with the same name in play.
+    CoordinatedUnit {
+        pokemon_name: &'static str,
+        damage_bonus: u32,
+        damage_reduction: u32,
     },
     StartTurnRandomPokemonToHand {
         energy_type: EnergyType,
@@ -304,6 +348,14 @@ pub enum AbilityMechanic {
         energy_type: EnergyType,
         amount: u32,
     },
+    /// Lilligant's Toughness Aroma (B1 018 / B1 329): "Each of your [`energy_type`] Pokémon gets
+    /// +`amount` HP." Board-conditional, so — like Starting Plains' +20 HP for Basic Pokémon — it
+    /// is materialised onto each Pokémon as a stored bonus by `State::refresh_hp_bonuses_all` and
+    /// read back by `PlayedCard::get_effective_total_hp`.
+    IncreaseHpForTypeInPlay {
+        energy_type: EnergyType,
+        amount: u32,
+    },
     HealSelfOnZoneAttach {
         energy_type: EnergyType,
         amount: u32,
@@ -323,8 +375,15 @@ pub enum AbilityMechanic {
     /// you may switch out your opponent's Active Pokémon to the Bench.
     /// (Your opponent chooses the new Active Pokémon.)"
     AncientRoar,
-    /// "Attacks used by your Future Pokémon cost 1 less [C] Energy."
-    FutureSystem,
+    /// "Attacks used by <someone> cost `amount` less [`energy_type`] Energy": Future System,
+    /// Vigor Link (Abomasnow A2a 021) and En-fruits-iastic (Cherubi A4 023 / A4b 025 / A4b 026).
+    /// `scope` says who is discounted and under what condition. Passive; resolved in
+    /// `hooks::core::get_attack_cost`.
+    ReduceAttackCost {
+        energy_type: EnergyType,
+        amount: u32,
+        scope: AttackCostReductionScope,
+    },
     /// Celebi's Time Recall: "Each of your evolved Pokémon can use any attack from its previous
     /// Evolutions. (You still need the necessary Energy to use each attack.)"
     /// Passive: while a Pokémon with this ability is in play, attack generation also offers the

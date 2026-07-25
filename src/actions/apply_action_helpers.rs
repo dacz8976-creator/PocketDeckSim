@@ -582,80 +582,92 @@ pub(crate) fn handle_knockouts(
     attacking_ref: (usize, usize), // (attacking_player, attacking_pokemon_idx)
     is_from_active_attack: bool,
 ) {
-    let knockouts = get_knocked_out(state);
     let iris_bonus_active = is_iris_bonus_active(state, attacking_ref, is_from_active_attack);
 
-    // Handle knockouts: Discard cards and award points (to potentially short-circuit promotions)
-    for (ko_receiver, ko_pokemon_idx) in knockouts.clone() {
-        // Call knockout hook (e.g., for Electrical Cord)
-        on_knockout(
-            state,
-            ko_receiver,
-            ko_pokemon_idx,
-            attacking_ref,
-            is_from_active_attack,
-        );
-        on_attack_knockout(state, attacking_ref, ko_receiver, is_from_active_attack);
-
-        // Award points
-        {
-            let ko_pokemon = state.in_play_pokemon[ko_receiver][ko_pokemon_idx]
-                .as_ref()
-                .expect("Pokemon should be there if knocked out");
-            let ko_initiator = (ko_receiver + 1) % 2;
-            // Dusknoir "Fade into Darkness" / Glimmora "Shattering Crystal": the coin was already
-            // flipped at forecast time, and a heads branch tagged this Pokémon with
-            // DenyKnockoutPoints. The knockout itself still stands — only the score is denied.
-            let points_denied = ko_pokemon
-                .get_effective_card_effects()
-                .iter()
-                .any(|effect| matches!(effect, CardEffect::DenyKnockoutPoints));
-            let points_won = if points_denied {
-                0
-            } else {
-                ko_pokemon.card.get_knockout_points()
-            };
-            state.points[ko_initiator] += points_won;
-            debug!(
-                "Pokemon {:?} fainted. Player {} won {} points for a total of {}{}",
-                ko_pokemon,
-                ko_initiator,
-                points_won,
-                state.points[ko_initiator],
-                if points_denied {
-                    " (point-denial coin flip came up heads)"
-                } else {
-                    ""
-                }
+    // Handle knockouts: Discard cards and award points (to potentially short-circuit promotions).
+    //
+    // Resolved in waves rather than in a single pass because losing a Pokémon can shrink the
+    // effective HP of the ones left behind — Lilligant's Toughness Aroma ("Each of your [G]
+    // Pokémon gets +20 HP") is removed as soon as Lilligant leaves play — which can knock those
+    // Pokémon out in turn. Each wave discards at least one Pokémon, so this always terminates.
+    let mut knockouts: Vec<(usize, usize)> = vec![];
+    loop {
+        let wave = get_knocked_out(state);
+        if wave.is_empty() {
+            break;
+        }
+        for (ko_receiver, ko_pokemon_idx) in wave.iter().copied() {
+            // Call knockout hook (e.g., for Electrical Cord)
+            on_knockout(
+                state,
+                ko_receiver,
+                ko_pokemon_idx,
+                attacking_ref,
+                is_from_active_attack,
             );
-            // Iris bonus: 1 extra point if Haxorus KOs opponent's Active Pokemon
-            if iris_bonus_active && ko_pokemon_idx == 0 && ko_receiver != attacking_ref.0 {
-                state.points[ko_initiator] += 1;
+            on_attack_knockout(state, attacking_ref, ko_receiver, is_from_active_attack);
+
+            // Award points
+            {
+                let ko_pokemon = state.in_play_pokemon[ko_receiver][ko_pokemon_idx]
+                    .as_ref()
+                    .expect("Pokemon should be there if knocked out");
+                let ko_initiator = (ko_receiver + 1) % 2;
+                // Dusknoir "Fade into Darkness" / Glimmora "Shattering Crystal": the coin was already
+                // flipped at forecast time, and a heads branch tagged this Pokémon with
+                // DenyKnockoutPoints. The knockout itself still stands — only the score is denied.
+                let points_denied = ko_pokemon
+                    .get_effective_card_effects()
+                    .iter()
+                    .any(|effect| matches!(effect, CardEffect::DenyKnockoutPoints));
+                let points_won = if points_denied {
+                    0
+                } else {
+                    ko_pokemon.card.get_knockout_points()
+                };
+                state.points[ko_initiator] += points_won;
                 debug!(
-                    "Iris: Player {} gets 1 bonus point for Haxorus KO",
-                    ko_initiator
+                    "Pokemon {:?} fainted. Player {} won {} points for a total of {}{}",
+                    ko_pokemon,
+                    ko_initiator,
+                    points_won,
+                    state.points[ko_initiator],
+                    if points_denied {
+                        " (point-denial coin flip came up heads)"
+                    } else {
+                        ""
+                    }
                 );
+                // Iris bonus: 1 extra point if Haxorus KOs opponent's Active Pokemon
+                if iris_bonus_active && ko_pokemon_idx == 0 && ko_receiver != attacking_ref.0 {
+                    state.points[ko_initiator] += 1;
+                    debug!(
+                        "Iris: Player {} gets 1 bonus point for Haxorus KO",
+                        ko_initiator
+                    );
+                }
+            }
+
+            // Game-long tally of each player's own losses (Kingambit's Overlord's Blade). Counted for
+            // every knockout regardless of cause — self-damage and recoil KOs are still your Pokémon
+            // being Knocked Out.
+            state.own_knockouts_this_game[ko_receiver] += 1;
+
+            // Rescue Scarf (A4 155): if an opponent's attack knocked this Pokémon out, its card goes
+            // back to its owner's hand instead of the discard pile. The knockout still stands and the
+            // points are still awarded above — only the destination of the card changes.
+            let rescued = is_from_active_attack
+                && attacking_ref.0 != ko_receiver
+                && state.in_play_pokemon[ko_receiver][ko_pokemon_idx]
+                    .as_ref()
+                    .is_some_and(|pokemon| has_tool(pokemon, CardId::A4155RescueScarf));
+            if rescued {
+                state.rescue_from_play(ko_receiver, ko_pokemon_idx);
+            } else {
+                state.discard_from_play(ko_receiver, ko_pokemon_idx);
             }
         }
-
-        // Game-long tally of each player's own losses (Kingambit's Overlord's Blade). Counted for
-        // every knockout regardless of cause — self-damage and recoil KOs are still your Pokémon
-        // being Knocked Out.
-        state.own_knockouts_this_game[ko_receiver] += 1;
-
-        // Rescue Scarf (A4 155): if an opponent's attack knocked this Pokémon out, its card goes
-        // back to its owner's hand instead of the discard pile. The knockout still stands and the
-        // points are still awarded above — only the destination of the card changes.
-        let rescued = is_from_active_attack
-            && attacking_ref.0 != ko_receiver
-            && state.in_play_pokemon[ko_receiver][ko_pokemon_idx]
-                .as_ref()
-                .is_some_and(|pokemon| has_tool(pokemon, CardId::A4155RescueScarf));
-        if rescued {
-            state.rescue_from_play(ko_receiver, ko_pokemon_idx);
-        } else {
-            state.discard_from_play(ko_receiver, ko_pokemon_idx);
-        }
+        knockouts.extend(wave);
     }
 
     // Set knocked_out_by_opponent_attack_this_turn flag
@@ -769,7 +781,7 @@ pub(crate) fn wrap_with_common_logic(mutation: Mutation) -> Mutation {
                     state.discard_piles[old_owner.unwrap_or(action.actor)].push(old_stadium);
                 }
                 state.remove_card_from_hand(action.actor, &card);
-                state.refresh_starting_plains_bonus_all();
+                state.refresh_hp_bonuses_all();
                 handle_knockouts(state, (action.actor, 0), false);
             } else if trainer_card.trainer_card_type == TrainerType::Tool {
                 state.remove_card_from_hand(action.actor, &card);
