@@ -145,6 +145,8 @@ pub fn trainer_move_generation_implementation(
         CardId::A4a069Whitney | CardId::A4a083Whitney => can_play_whitney(state, trainer_card),
         CardId::A3154Mallow | CardId::A3196Mallow => can_play_mallow(state, trainer_card),
         CardId::A3148Acerola | CardId::A3190Acerola => can_play_acerola(state, trainer_card),
+        CardId::A1226LtSurge | CardId::A1273LtSurge => can_play_lt_surge(state, trainer_card),
+        CardId::B2151Juggler | CardId::B2192Juggler => can_play_juggler(state, trainer_card),
         CardId::A3150Kiawe | CardId::A3192Kiawe => can_play_kiawe(state, trainer_card),
         CardId::A4157Lyra | CardId::A4197Lyra | CardId::A4b332Lyra | CardId::A4b333Lyra => {
             can_play_lyra(state, trainer_card)
@@ -934,6 +936,48 @@ fn can_play_whitney(state: &State, trainer_card: &TrainerCard) -> Option<Vec<Sim
         cannot_play_trainer()
     } else {
         can_play_trainer(state, trainer_card)
+    }
+}
+
+/// Names Lt. Surge can gather Lightning Energy onto.
+const LT_SURGE_ACTIVE_NAMES: [&str; 3] = ["Raichu", "Electrode", "Electabuzz"];
+
+/// Check if Lt. Surge can be played (Raichu/Electrode/Electabuzz active, and at least one
+/// Lightning Energy on the Bench to move)
+fn can_play_lt_surge(state: &State, trainer_card: &TrainerCard) -> Option<Vec<SimpleAction>> {
+    let player = state.current_player;
+    let active_is_named = state
+        .maybe_get_active(player)
+        .is_some_and(|active| LT_SURGE_ACTIVE_NAMES.contains(&active.get_name().as_str()));
+    let bench_has_lightning = state
+        .enumerate_bench_pokemon(player)
+        .any(|(_, pokemon)| pokemon.attached_energy.contains(&EnergyType::Lightning));
+    if active_is_named && bench_has_lightning {
+        can_play_trainer(state, trainer_card)
+    } else {
+        cannot_play_trainer()
+    }
+}
+
+/// Check if Juggler can be played ("only if your Pokémon in play have 3 or more different types of
+/// Energy attached", plus an Active Pokémon and some Bench Energy to actually move)
+fn can_play_juggler(state: &State, trainer_card: &TrainerCard) -> Option<Vec<SimpleAction>> {
+    let player = state.current_player;
+    if state.maybe_get_active(player).is_none() {
+        return cannot_play_trainer();
+    }
+    let distinct_types = state
+        .enumerate_in_play_pokemon(player)
+        .flat_map(|(_, pokemon)| pokemon.attached_energy.iter().copied())
+        .collect::<std::collections::BTreeSet<_>>()
+        .len();
+    let bench_has_energy = state
+        .enumerate_bench_pokemon(player)
+        .any(|(_, pokemon)| !pokemon.attached_energy.is_empty());
+    if distinct_types >= 3 && bench_has_energy {
+        can_play_trainer(state, trainer_card)
+    } else {
+        cannot_play_trainer()
     }
 }
 

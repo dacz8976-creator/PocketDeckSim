@@ -137,6 +137,8 @@ pub fn forecast_trainer_action(
         CardId::A4a069Whitney | CardId::A4a083Whitney => Outcomes::single_fn(whitney_effect),
         CardId::A3154Mallow | CardId::A3196Mallow => Outcomes::single_fn(mallow_effect),
         CardId::A3148Acerola | CardId::A3190Acerola => Outcomes::single_fn(acerola_effect),
+        CardId::A1226LtSurge | CardId::A1273LtSurge => Outcomes::single_fn(lt_surge_effect),
+        CardId::B2151Juggler | CardId::B2192Juggler => Outcomes::single_fn(juggler_effect),
         CardId::A3150Kiawe | CardId::A3192Kiawe => Outcomes::single_fn(kiawe_effect),
         CardId::A4157Lyra | CardId::A4197Lyra | CardId::A4b332Lyra | CardId::A4b333Lyra => {
             Outcomes::single_fn(lyra_effect)
@@ -863,6 +865,57 @@ const WHITNEY_CURED_CONDITIONS: [StatusCondition; 3] = [
     StatusCondition::Paralyzed,
     StatusCondition::Confused,
 ];
+
+/// Move every Energy matching `only_type` (all Energy when `None`) from `player`'s Benched Pokémon
+/// onto their Active Pokémon. Shared by Lt. Surge ([L] only) and Juggler (everything).
+fn gather_bench_energy_onto_active(
+    state: &mut State,
+    player: usize,
+    only_type: Option<EnergyType>,
+) {
+    if state.maybe_get_active(player).is_none() {
+        return;
+    }
+    let mut gathered: Vec<EnergyType> = Vec::new();
+    for bench_idx in 1..state.in_play_pokemon[player].len() {
+        let Some(pokemon) = state.in_play_pokemon[player][bench_idx].as_mut() else {
+            continue;
+        };
+        match only_type {
+            None => gathered.append(&mut pokemon.attached_energy),
+            Some(energy_type) => {
+                let (moved, kept) = pokemon
+                    .attached_energy
+                    .iter()
+                    .partition(|energy| **energy == energy_type);
+                pokemon.attached_energy = kept;
+                gathered.extend::<Vec<EnergyType>>(moved);
+            }
+        }
+    }
+    if gathered.is_empty() {
+        return;
+    }
+    debug!(
+        "Gathering {} Energy from the Bench onto the Active",
+        gathered.len()
+    );
+    state
+        .get_active_mut(player)
+        .attached_energy
+        .extend(gathered);
+}
+
+fn lt_surge_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    // Move all [L] Energy from your Benched Pokémon to your Raichu, Electrode, or Electabuzz in
+    // the Active Spot.
+    gather_bench_energy_onto_active(state, action.actor, Some(EnergyType::Lightning));
+}
+
+fn juggler_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    // Move all Energy from each of your Benched Pokémon to your Active Pokémon.
+    gather_bench_energy_onto_active(state, action.actor, None);
+}
 
 fn acerola_effect(_: &mut StdRng, state: &mut State, action: &Action) {
     // Choose 1 of your Palossand or Mimikyu that has damage on it, and move 40 of its damage to
