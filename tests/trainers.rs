@@ -16,6 +16,8 @@ mod elesa_test;
 mod field_blower_test;
 #[path = "trainers/hala_test.rs"]
 mod hala_test;
+#[path = "trainers/information_trainers_test.rs"]
+mod information_trainers_test;
 #[path = "trainers/iono_test.rs"]
 mod iono_test;
 #[path = "trainers/iris_trainer_test.rs"]

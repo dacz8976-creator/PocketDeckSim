@@ -160,6 +160,17 @@ pub fn trainer_move_generation_implementation(
         CardId::B1215HittingHammer => can_play_hitting_hammer(state, trainer_card),
         CardId::B1213PrankSpinner => can_play_prank_spinner(state, trainer_card),
         CardId::A1a064PokemonFlute => can_play_pokemon_flute(state, trainer_card),
+        // Pure-information cards (see `information_only_effect`): always legal, never conditional.
+        CardId::A4a071Morty
+        | CardId::A4a085Morty
+        | CardId::A4161Hiker
+        | CardId::A4201Hiker
+        | CardId::A3a068Looker
+        | CardId::A3a082Looker
+        | CardId::PA004PokedEx
+        | CardId::PA008PokedEx
+        | CardId::A3145RotomDEx
+        | CardId::PA003HandScope => can_play_trainer(state, trainer_card),
         CardId::A1a066BuddingExpeditioner | CardId::A1a080BuddingExpeditioner => {
             can_play_budding_expeditioner(state, trainer_card)
         }

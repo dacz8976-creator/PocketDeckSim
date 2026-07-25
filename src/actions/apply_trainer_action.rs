@@ -157,6 +157,17 @@ pub fn forecast_trainer_action(
         CardId::B1215HittingHammer => hitting_hammer_outcomes(),
         CardId::B1213PrankSpinner => Outcomes::single_fn(prank_spinner_effect),
         CardId::A1a064PokemonFlute => Outcomes::single_fn(pokemon_flute_effect),
+        // Pure-information cards: see `information_only_effect`.
+        CardId::A4a071Morty
+        | CardId::A4a085Morty
+        | CardId::A4161Hiker
+        | CardId::A4201Hiker
+        | CardId::A3a068Looker
+        | CardId::A3a082Looker
+        | CardId::PA004PokedEx
+        | CardId::PA008PokedEx
+        | CardId::A3145RotomDEx
+        | CardId::PA003HandScope => Outcomes::single_fn(information_only_effect),
         CardId::A1a066BuddingExpeditioner | CardId::A1a080BuddingExpeditioner => {
             Outcomes::single_fn(budding_expeditioner_effect)
         }
@@ -936,6 +947,26 @@ fn is_basic_water_pokemon(card: &Card) -> bool {
 fn is_water_pokemon(card: &Card) -> bool {
     matches!(card, Card::Pokemon(_)) && card.get_type() == Some(EnergyType::Water)
 }
+
+/// Cards whose entire printed effect is revealing or reordering hidden cards:
+///
+/// - Morty  — "For each of your [P] Pokémon in play, look at that many cards from the top of your
+///   opponent's deck and put them back in any order."
+/// - Hiker  — the same for the top of *your* deck.
+/// - Looker — "Your opponent reveals all of the Supporter cards in their deck."
+/// - Pokédex — "Look at the top 3 cards of your deck."
+/// - Rotom Dex — "Look at the top card of your deck. Then, you may shuffle your deck."
+/// - Hand Scope — "Your opponent reveals their hand."
+///
+/// deckgym's bots have no hidden-information model: they cannot condition on a revealed card, and
+/// reordering a deck they cannot see has no effect on any decision they make. So these resolve as
+/// legal-but-inert plays rather than being faked into some mechanical benefit. They are still
+/// fully playable, and the Supporters among them still consume the once-per-turn Supporter slot,
+/// which is the part of their cost that *is* mechanically real.
+///
+/// Rotom Dex's optional shuffle is likewise omitted: with the deck unobservable, shuffling or not
+/// is value-neutral, so offering it would only widen the game tree.
+fn information_only_effect(_: &mut StdRng, _: &mut State, _: &Action) {}
 
 fn squirt_bottle_effect(_: &mut StdRng, state: &mut State, action: &Action) {
     // Discard a [R] Energy from your opponent's Active Pokémon.
