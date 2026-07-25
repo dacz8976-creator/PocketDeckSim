@@ -150,6 +150,14 @@ pub enum TurnEffect {
     },
     ForceFirstHeads,
     BonusPointForHaxorusActiveKO,
+    /// "During your opponent's next turn, if your <names> would be Knocked Out by damage from an
+    /// attack, it is not Knocked Out and its remaining HP becomes `remaining_hp`" (Hala).
+    /// `player` is the side being protected.
+    SurviveKnockoutForSpecificPokemon {
+        remaining_hp: u32,
+        pokemon_names: Vec<String>,
+        player: usize,
+    },
     ReducedAttackCostForSpecificPokemon {
         amount: u8,
         pokemon_names: Vec<String>,

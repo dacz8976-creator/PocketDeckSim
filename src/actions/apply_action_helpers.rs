@@ -582,6 +582,12 @@ pub(crate) fn handle_knockouts(
     attacking_ref: (usize, usize), // (attacking_player, attacking_pokemon_idx)
     is_from_active_attack: bool,
 ) {
+    // Hala: rescue the named Pokémon at 10 HP *before* anything counts as a knockout, so no points
+    // are awarded, nothing is discarded, and no promotion is queued for them.
+    if is_from_active_attack {
+        apply_survive_knockout_turn_effects(state);
+    }
+
     let iris_bonus_active = is_iris_bonus_active(state, attacking_ref, is_from_active_attack);
 
     // Handle knockouts: Discard cards and award points (to potentially short-circuit promotions).
@@ -733,6 +739,39 @@ pub(crate) fn handle_knockouts(
         }
         // If K.O. was Active, trigger promotion or declare winner
         state.trigger_promotion_or_declare_winner(ko_receiver);
+    }
+}
+
+/// Hala (B1 222): "During your opponent's next turn, if your Hariyama or Crabominable would be
+/// Knocked Out by damage from an attack, it is not Knocked Out and its remaining HP becomes 10."
+///
+/// Runs before knockouts are collected, so a rescued Pokémon never appears in a knockout wave: it
+/// stays in play, awards no points, and does not trigger a promotion. Only invoked for damage from
+/// an attack, matching the card's wording.
+fn apply_survive_knockout_turn_effects(state: &mut State) {
+    let rescues: Vec<(usize, Vec<String>, u32)> = state
+        .get_current_turn_effects()
+        .into_iter()
+        .filter_map(|effect| match effect {
+            TurnEffect::SurviveKnockoutForSpecificPokemon {
+                remaining_hp,
+                pokemon_names,
+                player,
+            } => Some((player, pokemon_names, remaining_hp)),
+            _ => None,
+        })
+        .collect();
+
+    for (player, pokemon_names, remaining_hp) in rescues {
+        for pokemon in state.in_play_pokemon[player].iter_mut().flatten() {
+            if pokemon.is_knocked_out() && pokemon_names.contains(&pokemon.get_name()) {
+                debug!(
+                    "Hala: {} survives with {remaining_hp} HP instead of being Knocked Out",
+                    pokemon.get_name()
+                );
+                pokemon.set_remaining_hp(remaining_hp);
+            }
+        }
     }
 }
 

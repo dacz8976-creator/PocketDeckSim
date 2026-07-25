@@ -141,6 +141,7 @@ pub fn trainer_move_generation_implementation(
         CardId::A4160Jasmine | CardId::A4200Jasmine => can_play_trainer(state, trainer_card),
         CardId::B3151Cheren | CardId::B3192Cheren => can_play_trainer(state, trainer_card),
         CardId::A3a063BeastWall => can_play_beast_wall(state, trainer_card),
+        CardId::B1222Hala | CardId::B1267Hala => can_play_trainer(state, trainer_card),
         CardId::A3150Kiawe | CardId::A3192Kiawe => can_play_kiawe(state, trainer_card),
         CardId::A4157Lyra | CardId::A4197Lyra | CardId::A4b332Lyra | CardId::A4b333Lyra => {
             can_play_lyra(state, trainer_card)

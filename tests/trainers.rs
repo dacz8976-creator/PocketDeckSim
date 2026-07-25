@@ -8,6 +8,8 @@ mod damage_reduction_trainers_test;
 mod elesa_test;
 #[path = "trainers/field_blower_test.rs"]
 mod field_blower_test;
+#[path = "trainers/hala_test.rs"]
+mod hala_test;
 #[path = "trainers/iono_test.rs"]
 mod iono_test;
 #[path = "trainers/iris_trainer_test.rs"]

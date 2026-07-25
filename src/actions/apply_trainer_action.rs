@@ -133,6 +133,7 @@ pub fn forecast_trainer_action(
         CardId::A4160Jasmine | CardId::A4200Jasmine => Outcomes::single_fn(jasmine_effect),
         CardId::B3151Cheren | CardId::B3192Cheren => Outcomes::single_fn(cheren_effect),
         CardId::A3a063BeastWall => Outcomes::single_fn(beast_wall_effect),
+        CardId::B1222Hala | CardId::B1267Hala => Outcomes::single_fn(hala_effect),
         CardId::A3150Kiawe | CardId::A3192Kiawe => Outcomes::single_fn(kiawe_effect),
         CardId::A4157Lyra | CardId::A4197Lyra | CardId::A4b332Lyra | CardId::A4b333Lyra => {
             Outcomes::single_fn(lyra_effect)
@@ -849,6 +850,19 @@ fn beast_wall_effect(_: &mut StdRng, state: &mut State, action: &Action) {
         20,
         DamageReductionScope::UltraBeasts,
         false,
+    );
+}
+
+fn hala_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    // During your opponent's next turn, if your Hariyama or Crabominable would be Knocked Out by
+    // damage from an attack, it is not Knocked Out and its remaining HP becomes 10.
+    state.add_turn_effect(
+        TurnEffect::SurviveKnockoutForSpecificPokemon {
+            remaining_hp: 10,
+            pokemon_names: vec!["Hariyama".to_string(), "Crabominable".to_string()],
+            player: action.actor,
+        },
+        1,
     );
 }
 
