@@ -8,6 +8,7 @@ use crate::{
     combinatorics::generate_combinations,
     hooks::can_evolve_into,
     models::{Card, EnergyType, TrainerType},
+    tools::is_tool_card,
     State,
 };
 
@@ -63,11 +64,7 @@ pub(crate) fn item_search_outcomes(acting_player: usize, state: &State) -> Outco
 }
 
 pub(crate) fn tool_search_outcomes(acting_player: usize, state: &State) -> Outcomes {
-    card_search_outcomes_with_filter(
-        acting_player,
-        state,
-        |card: &&Card| matches!(card, Card::Trainer(t) if t.trainer_card_type == TrainerType::Tool),
-    )
+    card_search_outcomes_with_filter(acting_player, state, |card: &&Card| is_tool_card(card))
 }
 
 pub(crate) fn gladion_search_outcomes(acting_player: usize, state: &State) -> Outcomes {

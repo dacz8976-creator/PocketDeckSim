@@ -1,8 +1,9 @@
 use crate::{
-    actions::abilities::AbilityMechanic,
+    actions::abilities::{AbilityMechanic, DeckSearchKind},
     actions::{ability_mechanic_from_effect, SimpleAction},
     hooks::is_ultra_beast,
     models::{EnergyType, PlayedCard},
+    tools::is_tool_card,
     State,
 };
 
@@ -53,9 +54,17 @@ fn can_use_ability_by_mechanic(
             is_active && can_use_victreebel_fragrance_trap(state, card)
         }
         AbilityMechanic::HealAllYourPokemon { .. } => !card.ability_used,
-        AbilityMechanic::HealOneYourPokemon { .. } => {
-            is_active && can_use_espeon_ex_psychic_healing(state, card)
-        }
+        AbilityMechanic::HealOneYourPokemon {
+            require_active,
+            require_tool_attached,
+            ..
+        } => can_use_heal_one_your_pokemon(
+            state,
+            card,
+            is_active,
+            *require_active,
+            *require_tool_attached,
+        ),
         AbilityMechanic::HealOneYourPokemonExAndDiscardRandomEnergy { .. } => {
             can_use_heal_one_your_pokemon_ex_and_discard_random_energy(state, card)
         }
@@ -66,6 +75,9 @@ fn can_use_ability_by_mechanic(
         }
         AbilityMechanic::SwitchDamagedOpponentBenchToActive => {
             is_active && can_use_umbreon_dark_chase(state, card)
+        }
+        AbilityMechanic::CoinFlipSwitchInOpponentBenchToActive => {
+            !card.ability_used && opponent_has_benched_pokemon(state)
         }
         AbilityMechanic::SwitchThisBenchWithActive => !is_active && !card.ability_used,
         AbilityMechanic::SwitchActiveTypedWithBench { energy_type } => {
@@ -79,6 +91,9 @@ fn can_use_ability_by_mechanic(
         }
         AbilityMechanic::MoveAllTypedEnergyFromBenchToActive { energy_type } => {
             !card.ability_used && has_benched_typed_pokemon_with_typed_energy(state, *energy_type)
+        }
+        AbilityMechanic::MoveAllTypedEnergyFromYourPokemonToSelf { energy_type } => {
+            can_use_move_all_typed_energy_to_self(state, _in_play_index, card, *energy_type)
         }
         AbilityMechanic::AttachEnergyFromZoneToActiveTypedPokemon { energy_type } => {
             can_use_attach_energy_from_zone_to_active_typed(state, card, *energy_type)
@@ -106,12 +121,8 @@ fn can_use_ability_by_mechanic(
         AbilityMechanic::IncreaseDamageForEvolutionsFromBench { .. } => false, // Passive ability
         AbilityMechanic::CoordinatedUnit { .. } => false, // Passive ability
         AbilityMechanic::StartTurnRandomPokemonToHand { .. } => false,
-        AbilityMechanic::SearchRandomPokemonFromDeck => {
-            !card.ability_used
-                && state
-                    .iter_deck_pokemon(state.current_player)
-                    .next()
-                    .is_some()
+        AbilityMechanic::SearchRandomCardFromDeck { card_kind } => {
+            !card.ability_used && deck_has_searchable_card(state, *card_kind)
         }
         AbilityMechanic::MoveDamageFromOneYourPokemonToThisPokemon => {
             can_use_dusknoir_shadow_void(state, _in_play_index)
@@ -134,7 +145,7 @@ fn can_use_ability_by_mechanic(
         AbilityMechanic::CheckupDamageToOpponentActive { .. } => false, // Passive ability
         AbilityMechanic::CheckupDamageToAllOpponentPokemon { .. } => false, // Passive ability
         AbilityMechanic::BadDreamsEndOfTurn { .. } => false,       // Passive ability
-        AbilityMechanic::CoinFlipSleepOpponentActive => !card.ability_used,
+        AbilityMechanic::CoinFlipStatusOpponentActive { .. } => !card.ability_used,
         AbilityMechanic::DiscardEnergyToIncreaseTypeDamage { discard_energy, .. } => {
             !card.ability_used && card.attached_energy.contains(discard_energy)
         }
@@ -145,11 +156,14 @@ fn can_use_ability_by_mechanic(
             can_use_remove_random_special_condition_from_active(state, card)
         }
         AbilityMechanic::HealActiveYourPokemon { .. } => !card.ability_used,
-        AbilityMechanic::SwitchOutOpponentActiveToBench { require_active } => {
-            let opponent = (state.current_player + 1) % 2;
+        AbilityMechanic::SwitchOutOpponentActiveToBench {
+            require_active,
+            require_opponent_active_basic,
+        } => {
             !card.ability_used
                 && (!require_active || is_active)
-                && state.enumerate_bench_pokemon(opponent).next().is_some()
+                && opponent_has_benched_pokemon(state)
+                && (!require_opponent_active_basic || opponent_active_is_basic(state))
         }
         AbilityMechanic::DiscardFromHandToDrawCard => {
             !card.ability_used && !state.hands[state.current_player].is_empty()
@@ -309,6 +323,48 @@ fn can_use_crobat_cunning_link(state: &State, card: &PlayedCard) -> bool {
         })
 }
 
+/// True when the current player's deck still holds a card the search could actually find. Without
+/// this, "put a random <kind> card from your deck into your hand" would be offered against a deck
+/// with no eligible card and resolve into a bare shuffle, wasting its once-per-turn use.
+fn deck_has_searchable_card(state: &State, card_kind: DeckSearchKind) -> bool {
+    let player = state.current_player;
+    match card_kind {
+        DeckSearchKind::Pokemon => state.iter_deck_pokemon(player).next().is_some(),
+        DeckSearchKind::Tool => state.decks[player].cards.iter().any(is_tool_card),
+    }
+}
+
+/// Energy Plunder is only worth its once-per-turn use if some *other* Pokémon of yours is holding
+/// the Energy — pulling Energy from the holder to itself does nothing.
+fn can_use_move_all_typed_energy_to_self(
+    state: &State,
+    self_idx: usize,
+    card: &PlayedCard,
+    energy_type: EnergyType,
+) -> bool {
+    !card.ability_used
+        && state
+            .enumerate_in_play_pokemon(state.current_player)
+            .any(|(idx, pokemon)| idx != self_idx && pokemon.attached_energy.contains(&energy_type))
+}
+
+/// True when the opponent has at least one Benched Pokémon to switch in. Without one, an ability
+/// that promotes from the opponent's Bench can only waste its once-per-turn use, so it is not
+/// offered at all.
+fn opponent_has_benched_pokemon(state: &State) -> bool {
+    let opponent = (state.current_player + 1) % 2;
+    state.enumerate_bench_pokemon(opponent).next().is_some()
+}
+
+/// True when the opponent's Active Pokémon is a Basic — the restriction Swellow's Repelling Wind
+/// adds on top of the shared "switch out your opponent's Active Pokémon" template.
+fn opponent_active_is_basic(state: &State) -> bool {
+    let opponent = (state.current_player + 1) % 2;
+    state
+        .maybe_get_active(opponent)
+        .is_some_and(|active| active.card.is_basic())
+}
+
 fn can_use_umbreon_dark_chase(state: &State, card: &PlayedCard) -> bool {
     if card.ability_used {
         return false;
@@ -357,11 +413,20 @@ fn can_use_victreebel_fragrance_trap(state: &State, card: &PlayedCard) -> bool {
         .any(|(_, pokemon)| pokemon.card.is_basic())
 }
 
-fn can_use_espeon_ex_psychic_healing(state: &State, card: &PlayedCard) -> bool {
-    if card.ability_used {
-        return false;
-    }
-    state
-        .enumerate_in_play_pokemon(state.current_player)
-        .any(|(_, pokemon)| pokemon.is_damaged())
+/// Gating for the "heal 30 damage from 1 of your Pokémon" family. Beyond the once-per-turn flag
+/// and the per-printing conditions, there has to be something damaged to heal — otherwise the
+/// ability resolves into an empty choice list.
+fn can_use_heal_one_your_pokemon(
+    state: &State,
+    card: &PlayedCard,
+    is_active: bool,
+    require_active: bool,
+    require_tool_attached: bool,
+) -> bool {
+    !card.ability_used
+        && (!require_active || is_active)
+        && (!require_tool_attached || card.has_tool_attached())
+        && state
+            .enumerate_in_play_pokemon(state.current_player)
+            .any(|(_, pokemon)| pokemon.is_damaged())
 }

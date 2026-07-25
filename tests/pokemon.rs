@@ -6,6 +6,8 @@ mod alcremie_test;
 mod alolan_sandslash_spike_armor_test;
 #[path = "pokemon/altaria_dragon_arcana_test.rs"]
 mod altaria_dragon_arcana_test;
+#[path = "pokemon/ambipom_catching_tail_test.rs"]
+mod ambipom_catching_tail_test;
 #[path = "pokemon/applin_share_test.rs"]
 mod applin_share_test;
 #[path = "pokemon/arceus_ex_test.rs"]
@@ -76,6 +78,8 @@ mod gallade_test;
 mod gardevoir_psy_turbo_test;
 #[path = "pokemon/glimmora_point_denial_test.rs"]
 mod glimmora_point_denial_test;
+#[path = "pokemon/grafaiai_poison_coating_test.rs"]
+mod grafaiai_poison_coating_test;
 #[path = "pokemon/grovyle_slicing_snipe_test.rs"]
 mod grovyle_slicing_snipe_test;
 #[path = "pokemon/growlithe_puppy_pile_test.rs"]
@@ -172,6 +176,8 @@ mod passimian_ex_offload_pass_test;
 mod politoed_lordly_cheering_test;
 #[path = "pokemon/porygonz_cyberjack_test.rs"]
 mod porygonz_cyberjack_test;
+#[path = "pokemon/primarina_melodious_healing_test.rs"]
+mod primarina_melodious_healing_test;
 #[path = "pokemon/psyduck_test.rs"]
 mod psyduck_test;
 #[path = "pokemon/pyukumuku_innards_out_test.rs"]
@@ -180,6 +186,8 @@ mod pyukumuku_innards_out_test;
 mod rampardos_head_smash_test;
 #[path = "pokemon/resilience_link_test.rs"]
 mod resilience_link_test;
+#[path = "pokemon/rillaboom_captivating_rhythm_test.rs"]
+mod rillaboom_captivating_rhythm_test;
 #[path = "pokemon/roaring_moon_test.rs"]
 mod roaring_moon_test;
 #[path = "pokemon/salamence_test.rs"]
@@ -204,8 +212,12 @@ mod spiritomb_final_scream_test;
 mod staraptor_defensive_whirlwind_test;
 #[path = "pokemon/sunflora_quick_grow_beam_test.rs"]
 mod sunflora_quick_grow_beam_test;
+#[path = "pokemon/swellow_repelling_wind_test.rs"]
+mod swellow_repelling_wind_test;
 #[path = "pokemon/swift_shot_test.rs"]
 mod swift_shot_test;
+#[path = "pokemon/sylveon_soothing_ribbon_test.rs"]
+mod sylveon_soothing_ribbon_test;
 #[path = "pokemon/tapu_lele_energy_arrow_test.rs"]
 mod tapu_lele_energy_arrow_test;
 #[path = "pokemon/tepig_stoke_test.rs"]
@@ -218,6 +230,8 @@ mod thick_fat_test;
 mod tinkaton_gigaton_hammer_test;
 #[path = "pokemon/typhlosion_fire_breath_test.rs"]
 mod typhlosion_fire_breath_test;
+#[path = "pokemon/tyranitar_energy_plunder_test.rs"]
+mod tyranitar_energy_plunder_test;
 #[path = "pokemon/unown_guard_test.rs"]
 mod unown_guard_test;
 #[path = "pokemon/unown_power_test.rs"]

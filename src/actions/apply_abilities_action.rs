@@ -5,11 +5,11 @@ use rand::{rngs::StdRng, Rng};
 
 use crate::{
     actions::{
-        abilities::AbilityMechanic,
+        abilities::{AbilityMechanic, DeckSearchKind},
         apply_action_helpers::{apply_activate, handle_damage, handle_knockouts, Mutation},
         effect_ability_mechanic_map::ability_mechanic_from_effect,
         outcomes::Outcomes,
-        shared_mutations::pokemon_search_outcomes,
+        shared_mutations::{pokemon_search_outcomes, tool_search_outcomes},
         Action, SimpleAction,
     },
     effects::TurnEffect,
@@ -41,8 +41,11 @@ fn forecast_ability_by_mechanic(
 ) -> Outcomes {
     match mechanic {
         AbilityMechanic::VictreebelFragranceTrap => Outcomes::single_fn(victreebel_ability),
-        AbilityMechanic::HealAllYourPokemon { amount } => heal_all_your_pokemon(*amount),
-        AbilityMechanic::HealOneYourPokemon { amount } => heal_one_your_pokemon(*amount),
+        AbilityMechanic::HealAllYourPokemon {
+            amount,
+            energy_type,
+        } => heal_all_your_pokemon(*amount, *energy_type),
+        AbilityMechanic::HealOneYourPokemon { amount, .. } => heal_one_your_pokemon(*amount),
         AbilityMechanic::HealOneYourPokemonExAndDiscardRandomEnergy { amount } => {
             heal_one_your_pokemon_ex_and_discard_random_energy(*amount)
         }
@@ -55,6 +58,9 @@ fn forecast_ability_by_mechanic(
         }
         AbilityMechanic::SwitchDamagedOpponentBenchToActive => {
             Outcomes::single_fn(umbreon_dark_chase)
+        }
+        AbilityMechanic::CoinFlipSwitchInOpponentBenchToActive => {
+            coin_flip_switch_in_opponent_bench_to_active()
         }
         AbilityMechanic::SwitchThisBenchWithActive => Outcomes::single(rising_road(in_play_idx)),
         AbilityMechanic::SwitchActiveTypedWithBench { .. } => {
@@ -71,6 +77,9 @@ fn forecast_ability_by_mechanic(
             Outcomes::single_fn(move |_rng, state, action| {
                 move_all_typed_energy_from_bench_to_active(state, action, energy_type);
             })
+        }
+        AbilityMechanic::MoveAllTypedEnergyFromYourPokemonToSelf { energy_type } => {
+            move_all_typed_energy_from_your_pokemon_to_self(in_play_idx, *energy_type)
         }
         AbilityMechanic::AttachEnergyFromZoneToActiveTypedPokemon { energy_type } => {
             attach_energy_from_zone_to_active_typed_outcome(*energy_type)
@@ -150,8 +159,8 @@ fn forecast_ability_by_mechanic(
         AbilityMechanic::StartTurnRandomPokemonToHand { .. } => {
             panic!("StartTurnRandomPokemonToHand is a passive ability")
         }
-        AbilityMechanic::SearchRandomPokemonFromDeck => {
-            pokemon_search_outcomes(action.actor, state, false)
+        AbilityMechanic::SearchRandomCardFromDeck { card_kind } => {
+            search_random_card_from_deck(action.actor, state, *card_kind)
         }
         AbilityMechanic::MoveDamageFromOneYourPokemonToThisPokemon => {
             Outcomes::single(dusknoir_shadow_void(in_play_idx))
@@ -215,7 +224,9 @@ fn forecast_ability_by_mechanic(
         AbilityMechanic::SwitchOutOpponentActiveToBench { .. } => {
             switch_out_opponent_active_to_bench()
         }
-        AbilityMechanic::CoinFlipSleepOpponentActive => coin_flip_sleep_opponent_active(),
+        AbilityMechanic::CoinFlipStatusOpponentActive { status } => {
+            coin_flip_status_opponent_active(*status)
+        }
         AbilityMechanic::DiscardFromHandToDrawCard => discard_from_hand_to_draw_card(),
         AbilityMechanic::ImmuneToStatusConditions => {
             panic!("ImmuneToStatusConditions is a passive ability")
@@ -336,10 +347,29 @@ fn discard_energy_to_increase_type_damage(
     })
 }
 
-fn heal_all_your_pokemon(amount: u32) -> Outcomes {
+/// "Heal `amount` damage from each of your [type] Pokémon." With `energy_type: None` every Pokémon
+/// you have in play is healed; with `Some(t)` only Pokémon of that type are, and the rest keep
+/// their damage.
+/// "Put a random <kind> card from your deck into your hand." Both search helpers already handle
+/// the empty-pool case by degrading to a plain shuffle, so nothing extra is needed here when the
+/// deck happens to run dry between move generation and resolution.
+fn search_random_card_from_deck(
+    acting_player: usize,
+    state: &State,
+    card_kind: DeckSearchKind,
+) -> Outcomes {
+    match card_kind {
+        DeckSearchKind::Pokemon => pokemon_search_outcomes(acting_player, state, false),
+        DeckSearchKind::Tool => tool_search_outcomes(acting_player, state),
+    }
+}
+
+fn heal_all_your_pokemon(amount: u32, energy_type: Option<EnergyType>) -> Outcomes {
     Outcomes::single_fn(move |_rng, state, action| {
         for pokemon in state.in_play_pokemon[action.actor].iter_mut().flatten() {
-            pokemon.heal(amount);
+            if energy_type.is_none_or(|required| pokemon.get_energy_type() == Some(required)) {
+                pokemon.heal(amount);
+            }
         }
     })
 }
@@ -585,11 +615,16 @@ fn active_special_conditions(active: &PlayedCard) -> Vec<StatusCondition> {
     .collect()
 }
 
-fn coin_flip_sleep_opponent_active() -> Outcomes {
+/// "Flip a coin. If heads, your opponent's Active Pokémon is now <condition>."
+///
+/// Built with `Outcomes::binary_coin` rather than a single averaged mutation so the coin stays a
+/// real 50/50 branch with coin metadata attached, which is what lets the search bots price the
+/// gamble instead of seeing an expected value.
+fn coin_flip_status_opponent_active(status: StatusCondition) -> Outcomes {
     Outcomes::binary_coin(
-        Box::new(|_, state, action| {
+        Box::new(move |_, state, action| {
             let opponent = (action.actor + 1) % 2;
-            state.apply_status_condition(opponent, 0, StatusCondition::Asleep);
+            state.apply_status_condition(opponent, 0, status);
         }),
         Box::new(|_, _, _| {}),
     )
@@ -661,22 +696,7 @@ fn rising_road(index: usize) -> Mutation {
 fn victreebel_ability(_: &mut StdRng, state: &mut State, action: &Action) {
     // Switch in 1 of your opponent's Benched Basic Pokémon to the Active Spot.
     debug!("Victreebel's ability: Switching opponent's benched basic Pokemon to active");
-    let acting_player = action.actor;
-    let opponent_player = (acting_player + 1) % 2;
-    let possible_moves = state
-        .enumerate_bench_pokemon(opponent_player)
-        .filter(|(_, pokemon)| pokemon.card.is_basic())
-        .map(|(in_play_idx, _)| SimpleAction::Activate {
-            player: opponent_player,
-            in_play_idx,
-        })
-        .collect::<Vec<_>>();
-    if possible_moves.is_empty() {
-        return;
-    }
-    state
-        .move_generation_stack
-        .push((acting_player, possible_moves));
+    push_opponent_bench_activate_choices(state, action.actor, |pokemon| pokemon.card.is_basic());
 }
 
 fn celesteela_ultra_thrusters(_: &mut StdRng, state: &mut State, action: &Action) {
@@ -736,19 +756,49 @@ fn dismantling_keys(klefki_idx: usize) -> Outcomes {
 fn umbreon_dark_chase(_: &mut StdRng, state: &mut State, action: &Action) {
     // Once during your turn, if this Pokémon is in the Active Spot, you may switch in 1 of your opponent's Benched Pokémon that has damage on it to the Active Spot.
     debug!("Umbreon ex's Dark Chase: Switching in opponent's damaged benched Pokemon");
-    let acting_player = action.actor;
-    let opponent_player = (acting_player + 1) % 2;
+    push_opponent_bench_activate_choices(state, action.actor, |pokemon| pokemon.is_damaged());
+}
+
+/// Rillaboom's Captivating Rhythm: "flip a coin. If heads, switch in 1 of your opponent's Benched
+/// Pokémon to the Active Spot."
+///
+/// `Outcomes::binary_coin` keeps the flip as two explicit branches carrying coin metadata, so the
+/// search bots price the 50% chance rather than averaging it away.
+fn coin_flip_switch_in_opponent_bench_to_active() -> Outcomes {
+    Outcomes::binary_coin(
+        Box::new(|_, state, action| {
+            debug!("Captivating Rhythm: heads, switching in an opponent's benched Pokemon");
+            push_opponent_bench_activate_choices(state, action.actor, |_| true);
+        }),
+        Box::new(|_, _, _| {}),
+    )
+}
+
+/// Offers "switch in 1 of your opponent's Benched Pokémon to the Active Spot" as a choice.
+///
+/// The *acting* player chooses, so the choices are pushed for `actor` even though the `Activate`
+/// actions target the opponent's board — this is what separates these abilities from
+/// `SwitchOutOpponentActiveToBench`, where the opponent picks. Pushes nothing when no Benched
+/// Pokémon passes `is_eligible`, so an ability that slips past move generation degrades to a no-op
+/// instead of stalling on an empty choice list.
+fn push_opponent_bench_activate_choices(
+    state: &mut State,
+    actor: usize,
+    is_eligible: impl Fn(&PlayedCard) -> bool,
+) {
+    let opponent = (actor + 1) % 2;
     let possible_moves = state
-        .enumerate_bench_pokemon(opponent_player)
-        .filter(|(_, pokemon)| pokemon.is_damaged())
+        .enumerate_bench_pokemon(opponent)
+        .filter(|(_, pokemon)| is_eligible(pokemon))
         .map(|(in_play_idx, _)| SimpleAction::Activate {
-            player: opponent_player,
+            player: opponent,
             in_play_idx,
         })
         .collect::<Vec<_>>();
-    state
-        .move_generation_stack
-        .push((acting_player, possible_moves));
+    if possible_moves.is_empty() {
+        return;
+    }
+    state.move_generation_stack.push((actor, possible_moves));
 }
 
 fn discard_from_hand_to_draw_card() -> Outcomes {
@@ -792,6 +842,51 @@ fn vaporeon_wash_out(_: &mut StdRng, state: &mut State, action: &Action) {
     state
         .move_generation_stack
         .push((acting_player, possible_moves));
+}
+
+/// Tyranitar's Energy Plunder: move all `energy_type` Energy from *every* one of the actor's
+/// Pokémon onto the ability holder at `self_idx`.
+///
+/// There is nothing to choose, so this resolves in a single deterministic mutation rather than
+/// pushing options onto the move-generation stack. The holder is skipped as a source — the card
+/// says "each of your Pokémon", and moving Energy from the holder to itself is a no-op. The
+/// holder's slot is checked up front so Energy is never drained into a Pokémon that has left play.
+fn move_all_typed_energy_from_your_pokemon_to_self(
+    self_idx: usize,
+    energy_type: EnergyType,
+) -> Outcomes {
+    Outcomes::single_fn(move |_rng, state, action| {
+        let player = action.actor;
+        if state.in_play_pokemon[player][self_idx].is_none() {
+            return;
+        }
+
+        let mut gathered = 0usize;
+        for idx in 0..state.in_play_pokemon[player].len() {
+            if idx == self_idx {
+                continue;
+            }
+            let Some(pokemon) = state.in_play_pokemon[player][idx].as_mut() else {
+                continue;
+            };
+            gathered += pokemon
+                .attached_energy
+                .iter()
+                .filter(|energy| **energy == energy_type)
+                .count();
+            pokemon
+                .attached_energy
+                .retain(|energy| *energy != energy_type);
+        }
+
+        if gathered == 0 {
+            return;
+        }
+        debug!("Energy Plunder: moving {gathered} {energy_type:?} Energy to slot {self_idx}");
+        if let Some(target) = state.in_play_pokemon[player][self_idx].as_mut() {
+            target.attached_energy.extend(vec![energy_type; gathered]);
+        }
+    })
 }
 
 /// Lunala ex's Psychic Connect: move all `energy_type` Energy from 1 chosen Benched `energy_type`

@@ -1,4 +1,11 @@
-use crate::models::EnergyType;
+use crate::models::{EnergyType, StatusCondition};
+
+/// Which kind of card a "put a random <kind> card from your deck into your hand" Ability looks for.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum DeckSearchKind {
+    Pokemon,
+    Tool,
+}
 
 /// The card names that satisfy "if you have Arceus or Arceus ex in play". Pokémon ex have their
 /// own name in this game, so both spellings have to be listed explicitly.
@@ -58,11 +65,26 @@ pub enum AttackCostReductionScope {
 #[derive(Debug, Clone, PartialEq)]
 pub enum AbilityMechanic {
     VictreebelFragranceTrap,
+    /// "Once during your turn, you may heal `amount` damage from each of your [type] Pokémon."
+    ///
+    /// `energy_type: None` heals every Pokémon you have in play (Shaymin's Fragrant Flower
+    /// Garden, Butterfree's Powder Heal); `Some(t)` restricts it to that type (Primarina's
+    /// Melodious Healing, `[W]`). Mirrors how `SoothingWind` parameterises its type filter.
     HealAllYourPokemon {
         amount: u32,
+        energy_type: Option<EnergyType>,
     },
+    /// "Once during your turn, [condition,] you may heal `amount` damage from 1 of your Pokémon."
+    ///
+    /// The heal itself is identical across printings; only the usage condition differs, so it is
+    /// parameterised rather than duplicated:
+    /// - `require_active`: Espeon ex's Psychic Healing ("if this Pokémon is in the Active Spot").
+    /// - `require_tool_attached`: Sylveon's Soothing Ribbon ("if this Pokémon has a Pokémon Tool
+    ///   attached"). Any Pokémon Tool qualifies — the card does not name a specific one.
     HealOneYourPokemon {
         amount: u32,
+        require_active: bool,
+        require_tool_attached: bool,
     },
     HealOneYourPokemonExAndDiscardRandomEnergy {
         amount: u32,
@@ -77,6 +99,13 @@ pub enum AbilityMechanic {
         amount: u32,
     },
     SwitchDamagedOpponentBenchToActive,
+    /// Rillaboom's Captivating Rhythm: "Once during your turn, you may flip a coin. If heads,
+    /// switch in 1 of your opponent's Benched Pokémon to the Active Spot."
+    ///
+    /// Distinct from `SwitchOutOpponentActiveToBench`: there the *opponent* picks the replacement,
+    /// here the ability's controller does, so on heads the follow-up choice is offered to the
+    /// acting player even though it targets the opponent's board.
+    CoinFlipSwitchInOpponentBenchToActive,
     SwitchThisBenchWithActive,
     SwitchActiveTypedWithBench {
         energy_type: EnergyType,
@@ -90,6 +119,16 @@ pub enum AbilityMechanic {
     /// `MoveTypedEnergyFromBenchToActive`, all of the chosen Pokémon's matching Energy moves at
     /// once, it is once per turn, and the Active Pokémon may be any type.
     MoveAllTypedEnergyFromBenchToActive {
+        energy_type: EnergyType,
+    },
+    /// Tyranitar's Energy Plunder: "Once during your turn, you may move all [energy_type] Energy
+    /// from each of your Pokémon to this Pokémon."
+    ///
+    /// Differs from `MoveAllTypedEnergyFromBenchToActive` on both ends: the source is *every* one
+    /// of your Pokémon rather than a single chosen Benched one (so there is no player choice and
+    /// no `move_generation_stack` push), and the destination is the ability holder itself, which
+    /// may be Benched, rather than the Active Spot. Moving from the holder to itself is a no-op.
+    MoveAllTypedEnergyFromYourPokemonToSelf {
         energy_type: EnergyType,
     },
     AttachEnergyFromZoneToActiveTypedPokemon {
@@ -203,7 +242,12 @@ pub enum AbilityMechanic {
     StartTurnRandomPokemonToHand {
         energy_type: EnergyType,
     },
-    SearchRandomPokemonFromDeck,
+    /// "Once during your turn, you may put a random <kind> card from your deck into your hand."
+    /// Pokémon (Pidgeot's Quick Search) and Pokémon Tool (Ambipom's Catching Tail) printings differ
+    /// only by which cards are eligible, so the search kind is a parameter.
+    SearchRandomCardFromDeck {
+        card_kind: DeckSearchKind,
+    },
     MoveDamageFromOneYourPokemonToThisPokemon,
     DiscardOpponentActiveToolsAndDiscardSelf,
     PreventFirstAttack,
@@ -265,8 +309,15 @@ pub enum AbilityMechanic {
     HealActiveYourPokemon {
         amount: u32,
     },
+    /// "Once during your turn, you may switch out your opponent's Active [Basic] Pokémon to the
+    /// Bench. (Your opponent chooses the new Active Pokémon.)"
+    ///
+    /// - `require_active`: the ability holder must itself be in the Active Spot.
+    /// - `require_opponent_active_basic`: only Swellow's Repelling Wind (B2 133) prints the
+    ///   "Active *Basic* Pokémon" restriction; the other printings can repel anything.
     SwitchOutOpponentActiveToBench {
         require_active: bool,
+        require_opponent_active_basic: bool,
     },
     BadDreamsEndOfTurn {
         amount: u32,
@@ -277,7 +328,12 @@ pub enum AbilityMechanic {
     EndTurnHealSelfIfActive {
         amount: u32,
     },
-    CoinFlipSleepOpponentActive,
+    /// Hypno's Sleep Pendulum and Grafaiai's Poison Coating: "Once during your turn, you may flip
+    /// a coin. If heads, your opponent's Active Pokémon is now <condition>." One parameterised
+    /// mechanic covers every Special Condition printed on this template.
+    CoinFlipStatusOpponentActive {
+        status: StatusCondition,
+    },
     DiscardFromHandToDrawCard,
     ImmuneToStatusConditions,
     /// Passive ability shared by Teal Mask Ogerpon ex (Soothing Wind) and Comfey (Flower Shield):
