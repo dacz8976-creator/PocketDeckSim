@@ -5,8 +5,8 @@ use log::debug;
 
 use crate::{
     actions::{
-        abilities::{AbilityMechanic, ARCEUS_NAMES},
-        ability_mechanic_from_effect, get_ability_mechanic, SimpleAction,
+        abilities::{AbilityMechanic, KnockoutDamageTarget, ARCEUS_NAMES},
+        ability_mechanic_from_effect, get_ability_mechanic, handle_damage_only, SimpleAction,
     },
     card_ids::CardId,
     effects::{CardEffect, TurnEffect},
@@ -1383,6 +1383,67 @@ pub(crate) fn on_knockout(
         knocked_out_player,
         knocked_out_idx,
         is_opponent_attack,
+    );
+    apply_knockout_retaliation(
+        state,
+        knocked_out_player,
+        knocked_out_idx,
+        attacking_ref,
+        is_opponent_attack,
+    );
+}
+
+/// Pyukumuku's Innards Out ("do 50 damage to the Attacking Pokémon") and Spiritomb's Final Scream
+/// ("do 10 damage to each of your opponent's Pokémon"): both fire only when the holder is Knocked
+/// Out in the Active Spot by damage from an opponent's attack.
+///
+/// This runs while the Knocked Out Pokémon is still in play — `on_knockout` fires before the
+/// discard — which is what lets `modify_damage` resolve the damage source. The damage is dealt
+/// with `is_from_active_attack: false` because it comes from an Ability rather than an attack: no
+/// Weakness, no counterattack in return, and no Rescue Scarf on whatever it Knocks Out. Any
+/// Pokémon it does Knock Out is resolved by the follow-up pass at the end of `handle_knockouts`.
+fn apply_knockout_retaliation(
+    state: &mut State,
+    knocked_out_player: usize,
+    knocked_out_idx: usize,
+    attacking_ref: (usize, usize),
+    is_opponent_attack: bool,
+) {
+    if !is_opponent_attack || knocked_out_idx != 0 {
+        return;
+    }
+
+    let retaliation = state.in_play_pokemon[knocked_out_player][knocked_out_idx]
+        .as_ref()
+        .and_then(|pokemon| match get_ability_mechanic(&pokemon.card) {
+            Some(AbilityMechanic::DamageOnKnockoutInActive { amount, target }) => {
+                Some((*amount, *target))
+            }
+            _ => None,
+        });
+    let Some((amount, target)) = retaliation else {
+        return;
+    };
+
+    let opponent = attacking_ref.0;
+    let targets: Vec<(u32, usize, usize)> = match target {
+        KnockoutDamageTarget::Attacker => vec![(amount, attacking_ref.0, attacking_ref.1)],
+        KnockoutDamageTarget::EachOpponentPokemon => state
+            .enumerate_in_play_pokemon(opponent)
+            .map(|(idx, _)| (amount, opponent, idx))
+            .collect(),
+    };
+    if targets.is_empty() {
+        return;
+    }
+
+    debug!("On-knockout retaliation: dealing {amount} damage to {targets:?}");
+    handle_damage_only(
+        state,
+        (knocked_out_player, knocked_out_idx),
+        &targets,
+        false,
+        DamageModifierContext::default(),
     );
 }
 

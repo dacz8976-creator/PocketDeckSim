@@ -672,6 +672,19 @@ pub(crate) fn handle_knockouts(
         }
     }
 
+    // On-knockout retaliation abilities (Pyukumuku's Innards Out, Spiritomb's Final Scream) deal
+    // their damage from the `on_knockout` hook above, which can leave Pokémon at 0 HP that were
+    // not in the `knockouts` snapshot taken at the top of this function. Resolve them in a nested
+    // pass *before* the win checks below, so a mutual knockout banks both players' points and can
+    // end in a tie. The nested pass runs with `is_from_active_attack: false`, which no on-knockout
+    // retaliation ability triggers on — so the recursion is at most one level deep.
+    if !get_knocked_out(state).is_empty() {
+        handle_knockouts(state, attacking_ref, false);
+        if state.winner.is_some() {
+            return;
+        }
+    }
+
     // If game ends because of knockouts, set winner and return so as to short-circuit promotion logic
     // Note even attacking player can lose by counterattack K.O.
     if state.points[0] >= 3 && state.points[1] >= 3 {

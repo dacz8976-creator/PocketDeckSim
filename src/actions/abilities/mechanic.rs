@@ -30,6 +30,15 @@ pub enum NoRetreatCostCondition {
     YourFirstTurn,
 }
 
+/// Who the retaliation damage of [`AbilityMechanic::DamageOnKnockoutInActive`] hits.
+#[derive(Debug, Clone, Copy, PartialEq)]
+pub enum KnockoutDamageTarget {
+    /// Only the Pokémon whose attack caused the knockout (Pyukumuku's Innards Out).
+    Attacker,
+    /// Every one of the opponent's in-play Pokémon, Active and Benched (Spiritomb's Final Scream).
+    EachOpponentPokemon,
+}
+
 #[derive(Debug, Clone, PartialEq)]
 pub enum AbilityMechanic {
     VictreebelFragranceTrap,
@@ -149,6 +158,16 @@ pub enum AbilityMechanic {
     /// Pokémon (your choice). Passive; handled in the `on_knockout` hook.
     MoveAllTypedEnergyToBenchOnKnockout {
         energy_type: EnergyType,
+    },
+    /// Pyukumuku's Innards Out (`Attacker`, 50) and Spiritomb's Final Scream
+    /// (`EachOpponentPokemon`, 10): "If this Pokémon is in the Active Spot and is Knocked Out by
+    /// damage from an attack from your opponent's Pokémon, do `amount` damage to <target>."
+    ///
+    /// Passive; handled in the `on_knockout` hook. The retaliation is ability damage rather than
+    /// attack damage, so it ignores Weakness and does not itself provoke counterattacks.
+    DamageOnKnockoutInActive {
+        amount: u32,
+        target: KnockoutDamageTarget,
     },
     CheckupDamageToOpponentActive {
         amount: u32,

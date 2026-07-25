@@ -164,6 +164,8 @@ mod passimian_ex_offload_pass_test;
 mod porygonz_cyberjack_test;
 #[path = "pokemon/psyduck_test.rs"]
 mod psyduck_test;
+#[path = "pokemon/pyukumuku_innards_out_test.rs"]
+mod pyukumuku_innards_out_test;
 #[path = "pokemon/rampardos_head_smash_test.rs"]
 mod rampardos_head_smash_test;
 #[path = "pokemon/roaring_moon_test.rs"]
@@ -184,6 +186,8 @@ mod snorlax_massive_body_test;
 mod snover_ice_shard_test;
 #[path = "pokemon/spewpa_signs_of_evolution_test.rs"]
 mod spewpa_signs_of_evolution_test;
+#[path = "pokemon/spiritomb_final_scream_test.rs"]
+mod spiritomb_final_scream_test;
 #[path = "pokemon/sunflora_quick_grow_beam_test.rs"]
 mod sunflora_quick_grow_beam_test;
 #[path = "pokemon/swift_shot_test.rs"]

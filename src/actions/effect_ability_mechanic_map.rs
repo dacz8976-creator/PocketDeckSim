@@ -5,7 +5,8 @@ use std::collections::HashMap;
 use std::sync::LazyLock;
 
 use crate::actions::abilities::{
-    AbilityMechanic, NoRetreatCostCondition, NoRetreatCostTarget, ARCEUS_NAMES,
+    AbilityMechanic, KnockoutDamageTarget, NoRetreatCostCondition, NoRetreatCostTarget,
+    ARCEUS_NAMES,
 };
 use crate::effects::CardEffect;
 use crate::models::{Card, EnergyType};
@@ -152,8 +153,20 @@ pub static EFFECT_ABILITY_MECHANIC_MAP: LazyLock<HashMap<&'static str, AbilityMe
             AbilityMechanic::NoRetreatIfHasEnergy,
         );
         // map.insert("If this Pokémon has full HP, it takes -40 damage from attacks from your opponent's Pokémon.", todo_implementation);
-        // map.insert("If this Pokémon is in the Active Spot and is Knocked Out by damage from an attack from your opponent's Pokémon, do 10 damage to each of your opponent's Pokémon.", todo_implementation);
-        // map.insert("If this Pokémon is in the Active Spot and is Knocked Out by damage from an attack from your opponent's Pokémon, do 50 damage to the Attacking Pokémon.", todo_implementation);
+        map.insert(
+            "If this Pokémon is in the Active Spot and is Knocked Out by damage from an attack from your opponent's Pokémon, do 10 damage to each of your opponent's Pokémon.",
+            AbilityMechanic::DamageOnKnockoutInActive {
+                amount: 10,
+                target: KnockoutDamageTarget::EachOpponentPokemon,
+            },
+        );
+        map.insert(
+            "If this Pokémon is in the Active Spot and is Knocked Out by damage from an attack from your opponent's Pokémon, do 50 damage to the Attacking Pokémon.",
+            AbilityMechanic::DamageOnKnockoutInActive {
+                amount: 50,
+                target: KnockoutDamageTarget::Attacker,
+            },
+        );
         // map.insert("If this Pokémon is in the Active Spot and is Knocked Out by damage from an attack from your opponent's Pokémon, flip a coin. If heads, the Attacking Pokémon is Knocked Out.", todo_implementation);
         map.insert(
             "If this Pokémon is in the Active Spot and is Knocked Out by damage from an attack from your opponent's Pokémon, move all [F] Energy from this Pokémon to 1 of your Benched Pokémon.",
