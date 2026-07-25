@@ -81,6 +81,19 @@ pub enum CardEffect {
     },
 }
 
+/// Which of a player's Pokémon a `TurnEffect::ReducedDamageForTarget` protects. The defensive
+/// Supporters/Items all read "During your opponent's next turn, <scope> take -N damage from
+/// attacks from your opponent's Pokémon", differing only in the scope, so they share one effect.
+#[derive(Debug, Clone, Hash, PartialEq, Eq, Serialize, Deserialize)]
+pub enum DamageReductionScope {
+    /// "all of your Pokémon" (Blue).
+    AllPokemon,
+    /// "all of your <names>" (Jasmine: Steelix and Skarmory ex; Cheren: Watchog and Stoutland).
+    NamedPokemon(Vec<String>),
+    /// "all of your Ultra Beasts" (Beast Wall).
+    UltraBeasts,
+}
+
 #[derive(Debug, Clone, Hash, PartialEq, Eq, Serialize, Deserialize)]
 pub enum TurnEffect {
     NoSupportCards,
@@ -94,6 +107,15 @@ pub enum TurnEffect {
         amount: u32,
         energy_type: EnergyType,
         player: usize,
+    },
+    /// "During your opponent's next turn, <scope> take -`amount` damage from attacks from your
+    /// opponent's Pokémon" (Blue, Jasmine, Beast Wall), or "... from your opponent's Pokémon ex"
+    /// when `only_from_ex` is set (Cheren). `player` is the side being protected.
+    ReducedDamageForTarget {
+        amount: u32,
+        player: usize,
+        scope: DamageReductionScope,
+        only_from_ex: bool,
     },
     IncreasedDamage {
         amount: u32,
@@ -128,6 +150,14 @@ pub enum TurnEffect {
     },
     ForceFirstHeads,
     BonusPointForHaxorusActiveKO,
+    /// "During your opponent's next turn, if your <names> would be Knocked Out by damage from an
+    /// attack, it is not Knocked Out and its remaining HP becomes `remaining_hp`" (Hala).
+    /// `player` is the side being protected.
+    SurviveKnockoutForSpecificPokemon {
+        remaining_hp: u32,
+        pokemon_names: Vec<String>,
+        player: usize,
+    },
     ReducedAttackCostForSpecificPokemon {
         amount: u8,
         pokemon_names: Vec<String>,

@@ -14,7 +14,7 @@ use crate::{
     hooks::{
         get_retreat_cost, on_bench_from_hand, on_evolve, to_playable_card, DamageModifierContext,
     },
-    models::{Card, EnergyType},
+    models::{Card, EnergyType, StatusCondition},
     state::State,
     tools,
 };
@@ -61,7 +61,9 @@ pub fn forecast_action(state: &State, action: &Action) -> Outcomes {
         | SimpleAction::ScheduleDelayedSpotDamage { .. }
         | SimpleAction::Heal { .. }
         | SimpleAction::HealAndDiscardEnergy { .. }
+        | SimpleAction::HealAndCureConditions { .. }
         | SimpleAction::MoveAllDamage { .. }
+        | SimpleAction::MoveDamageToOpponentActive { .. }
         | SimpleAction::ApplyEeveeBagDamageBoost
         | SimpleAction::HealAllEeveeEvolutions
         | SimpleAction::DiscardFossil { .. }
@@ -69,6 +71,7 @@ pub fn forecast_action(state: &State, action: &Action) -> Outcomes {
         | SimpleAction::ShuffleInPlayPokemonIntoDeck { .. }
         | SimpleAction::DiscardToolFromPokemon { .. }
         | SimpleAction::DiscardActiveStadium
+        | SimpleAction::BenchOpponentFromDiscard { .. }
         | SimpleAction::DiscardRandomOpponentActiveEnergy
         | SimpleAction::ApplyStatusToOpponentActive { .. }
         | SimpleAction::Noop => forecast_deterministic_action(),
@@ -308,6 +311,18 @@ fn apply_deterministic_action(state: &mut State, action: &Action) {
             *heal_amount,
             discard_energies,
         ),
+        SimpleAction::HealAndCureConditions {
+            in_play_idx,
+            amount,
+            conditions,
+        } => apply_heal_and_cure_conditions(action.actor, state, *in_play_idx, *amount, conditions),
+        SimpleAction::BenchOpponentFromDiscard { card, bench_idx } => {
+            apply_bench_opponent_from_discard(action.actor, state, card, *bench_idx)
+        }
+        SimpleAction::MoveDamageToOpponentActive {
+            from_in_play_idx,
+            amount,
+        } => apply_move_damage_to_opponent_active(action.actor, state, *from_in_play_idx, *amount),
         SimpleAction::MoveAllDamage { from, to } => {
             apply_move_all_damage(action.actor, state, *from, *to)
         }
@@ -544,6 +559,83 @@ fn apply_heal_and_discard_energy(
         return;
     }
     state.discard_energy_from_in_play(acting_player, position, discard_energies);
+}
+
+/// Heal `amount` and clear only the listed Special Conditions (Whitney). Unlike
+/// `apply_healing`'s `cure_status`, conditions not listed are left in place.
+fn apply_heal_and_cure_conditions(
+    acting_player: usize,
+    state: &mut State,
+    position: usize,
+    amount: u32,
+    conditions: &[StatusCondition],
+) {
+    let pokemon = state.in_play_pokemon[acting_player][position]
+        .as_mut()
+        .expect("Pokemon should be there if healing it");
+    pokemon.heal(amount);
+    for condition in conditions {
+        pokemon.clear_status_condition(*condition);
+    }
+}
+
+/// Pokémon Flute: take a specific Basic Pokémon out of the opponent's discard pile and place it
+/// on their Bench. The card belongs to the opponent throughout, so it is removed from *their*
+/// discard pile and placed on *their* board.
+fn apply_bench_opponent_from_discard(
+    actor: usize,
+    state: &mut State,
+    card: &Card,
+    bench_idx: usize,
+) {
+    let opponent = (actor + 1) % 2;
+    let Some(idx) = state.discard_piles[opponent].iter().position(|c| c == card) else {
+        return;
+    };
+    if state.in_play_pokemon[opponent][bench_idx].is_some() {
+        return;
+    }
+    state.discard_piles[opponent].remove(idx);
+    let played_card = to_playable_card(card, true);
+    state.in_play_pokemon[opponent][bench_idx] = Some(played_card);
+    state.refresh_hp_bonuses_all();
+}
+
+/// Acerola: move up to `amount` damage from one of `actor`'s Pokémon onto the opponent's Active
+/// Pokémon. Like `apply_move_all_damage`, the transferred damage goes through `handle_damage` so
+/// knockouts and on-damage effects resolve, but with `is_from_active_attack: false` — moved damage
+/// is not an attack.
+fn apply_move_damage_to_opponent_active(
+    actor: usize,
+    state: &mut State,
+    from_in_play_idx: usize,
+    amount: u32,
+) {
+    let opponent = (actor + 1) % 2;
+    if state.maybe_get_active(opponent).is_none() {
+        return;
+    }
+    let damage_to_move = {
+        let from_pokemon = state.in_play_pokemon[actor][from_in_play_idx]
+            .as_ref()
+            .expect("Pokemon to move damage from should be there");
+        amount.min(from_pokemon.get_damage_counters())
+    };
+    if damage_to_move == 0 {
+        return;
+    }
+
+    state.in_play_pokemon[actor][from_in_play_idx]
+        .as_mut()
+        .expect("Pokemon to move damage from should be there")
+        .heal(damage_to_move);
+    handle_damage(
+        state,
+        (actor, from_in_play_idx),
+        &[(damage_to_move, opponent, 0)],
+        false,
+        None,
+    );
 }
 
 fn apply_move_all_damage(actor: usize, state: &mut State, from: usize, to: usize) {

@@ -1,11 +1,17 @@
+mod acerola;
 mod diantha;
 mod ilima;
+mod mallow;
 mod quick_grow_extract;
 mod rare_candy;
 mod wallace;
+mod whitney;
 
+pub use acerola::acerola_targets;
 pub use diantha::diantha_targets;
 pub use ilima::ilima_targets;
+pub use mallow::mallow_targets;
 pub use quick_grow_extract::quick_grow_extract_candidates;
 pub use rare_candy::{can_rare_candy_evolve, get_highest_evolutions};
 pub use wallace::wallace_candidates;
+pub use whitney::whitney_targets;

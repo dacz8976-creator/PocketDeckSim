@@ -141,6 +141,47 @@ where
     Outcomes::from_parts(probabilities, outcomes)
 }
 
+/// Put one random card matching `card_filter` from `player`'s discard pile into their hand.
+///
+/// Like the deck searches above this returns one equally-likely branch per distinct candidate
+/// rather than rolling the rng, so search bots price the retrieval instead of seeing a single
+/// sampled result. Returns a no-op when the discard pile holds no candidate.
+pub(crate) fn discard_search_outcomes_with_filter<F>(
+    acting_player: usize,
+    state: &State,
+    card_filter: F,
+) -> Outcomes
+where
+    F: Fn(&Card) -> bool + 'static,
+{
+    let candidates: Vec<Card> = state.discard_piles[acting_player]
+        .iter()
+        .filter(|card| card_filter(card))
+        .cloned()
+        .collect();
+
+    if candidates.is_empty() {
+        return Outcomes::single_fn(|_, _, _| {});
+    }
+
+    let num_outcomes = candidates.len();
+    let probabilities = vec![1.0 / (num_outcomes as f64); num_outcomes];
+    let mut outcomes: Mutations = vec![];
+    for card in candidates {
+        outcomes.push(Box::new(move |_, state, action| {
+            if let Some(idx) = state.discard_piles[action.actor]
+                .iter()
+                .position(|c| c == &card)
+            {
+                state.discard_piles[action.actor].remove(idx);
+                state.hands[action.actor].push(card.clone());
+            }
+        }));
+    }
+
+    Outcomes::from_parts(probabilities, outcomes)
+}
+
 /// Generates outcomes for Caterpie's Quick Growth ability: pick a random card from
 /// `player`'s deck that evolves from their current active Pokémon and evolve it.
 /// Returns a no-op (just shuffle) when no eligible evolution exists in the deck.

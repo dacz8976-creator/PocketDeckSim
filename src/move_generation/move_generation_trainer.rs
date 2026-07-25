@@ -1,14 +1,15 @@
 use crate::{
+    actions::penny_candidates,
     actions::{abilities::AbilityMechanic, get_ability_mechanic, SimpleAction},
     card_ids::CardId,
     card_logic::{
-        can_rare_candy_evolve, diantha_targets, ilima_targets, quick_grow_extract_candidates,
-        wallace_candidates,
+        acerola_targets, can_rare_candy_evolve, diantha_targets, ilima_targets, mallow_targets,
+        quick_grow_extract_candidates, wallace_candidates, whitney_targets,
     },
     effects::TurnEffect,
     hooks::{
-        can_play_item, can_play_support, get_stage, is_ancient_pokemon, is_future_pokemon,
-        is_ultra_beast,
+        can_play_item, can_play_support, get_stage, has_named_pokemon_in_play, is_ancient_pokemon,
+        is_future_pokemon, is_ultra_beast,
     },
     models::{Card, EnergyType, TrainerCard, TrainerType},
     stadiums::is_stadium_effect_implemented,
@@ -136,6 +137,47 @@ pub fn trainer_move_generation_implementation(
         | CardId::A4b375Lusamine => can_play_lusamine(state, trainer_card),
         CardId::A2153Volkner | CardId::A2193Volkner => can_play_volkner(state, trainer_card),
         CardId::A3149Ilima | CardId::A3191Ilima => can_play_ilima(state, trainer_card),
+        CardId::A3153Sophocles | CardId::A3195Sophocles => can_play_trainer(state, trainer_card),
+        CardId::A1a067Blue | CardId::A1a081Blue => can_play_trainer(state, trainer_card),
+        CardId::A4160Jasmine | CardId::A4200Jasmine => can_play_trainer(state, trainer_card),
+        CardId::B3151Cheren | CardId::B3192Cheren => can_play_trainer(state, trainer_card),
+        CardId::A3a063BeastWall => can_play_beast_wall(state, trainer_card),
+        CardId::B1222Hala | CardId::B1267Hala => can_play_trainer(state, trainer_card),
+        CardId::A4a069Whitney | CardId::A4a083Whitney => can_play_whitney(state, trainer_card),
+        CardId::A3154Mallow | CardId::A3196Mallow => can_play_mallow(state, trainer_card),
+        CardId::A3148Acerola | CardId::A3190Acerola => can_play_acerola(state, trainer_card),
+        CardId::A1226LtSurge | CardId::A1273LtSurge => can_play_lt_surge(state, trainer_card),
+        CardId::B2151Juggler | CardId::B2192Juggler => can_play_juggler(state, trainer_card),
+        CardId::A3152Lana | CardId::A3194Lana => can_play_lana(state, trainer_card),
+        CardId::A2151TeamGalacticGrunt | CardId::A2191TeamGalacticGrunt => {
+            can_play_team_galactic_grunt(state, trainer_card)
+        }
+        CardId::A4a070TravelingMerchant | CardId::A4a084TravelingMerchant => {
+            can_play_trainer(state, trainer_card)
+        }
+        CardId::A4159Fisher | CardId::A4199Fisher => can_play_fisher(state, trainer_card),
+        CardId::A3143FishingNet => can_play_fishing_net(state, trainer_card),
+        CardId::A4152SquirtBottle => can_play_squirt_bottle(state, trainer_card),
+        CardId::B1215HittingHammer => can_play_hitting_hammer(state, trainer_card),
+        CardId::B1213PrankSpinner => can_play_prank_spinner(state, trainer_card),
+        CardId::A1a064PokemonFlute => can_play_pokemon_flute(state, trainer_card),
+        CardId::A3b069Penny | CardId::A3b086Penny | CardId::B2a092Penny | CardId::B2a109Penny => {
+            can_play_penny(state, trainer_card)
+        }
+        // Pure-information cards (see `information_only_effect`): always legal, never conditional.
+        CardId::A4a071Morty
+        | CardId::A4a085Morty
+        | CardId::A4161Hiker
+        | CardId::A4201Hiker
+        | CardId::A3a068Looker
+        | CardId::A3a082Looker
+        | CardId::PA004PokedEx
+        | CardId::PA008PokedEx
+        | CardId::A3145RotomDEx
+        | CardId::PA003HandScope => can_play_trainer(state, trainer_card),
+        CardId::A1a066BuddingExpeditioner | CardId::A1a080BuddingExpeditioner => {
+            can_play_budding_expeditioner(state, trainer_card)
+        }
         CardId::A3150Kiawe | CardId::A3192Kiawe => can_play_kiawe(state, trainer_card),
         CardId::A4157Lyra | CardId::A4197Lyra | CardId::A4b332Lyra | CardId::A4b333Lyra => {
             can_play_lyra(state, trainer_card)
@@ -177,9 +219,12 @@ pub fn trainer_move_generation_implementation(
             can_play_flame_patch(state, trainer_card)
         }
         CardId::B1225Copycat | CardId::B1270Copycat => can_play_trainer(state, trainer_card),
-        CardId::A2b069Iono | CardId::A2b088Iono | CardId::A4b340Iono | CardId::A4b341Iono => {
-            can_play_trainer(state, trainer_card)
-        }
+        CardId::A2b069Iono
+        | CardId::A2b088Iono
+        | CardId::A4b340Iono
+        | CardId::A4b341Iono
+        | CardId::B2a089Iono
+        | CardId::B2a106Iono => can_play_trainer(state, trainer_card),
         CardId::B1221Marlon | CardId::B1266Marlon => can_play_marlon(state, trainer_card),
         CardId::B1223May | CardId::B1268May => can_play_trainer(state, trainer_card),
         CardId::B1224Fantina | CardId::B1269Fantina => can_play_trainer(state, trainer_card),
@@ -910,6 +955,224 @@ fn can_play_parasol_lady(state: &State, trainer_card: &TrainerCard) -> Option<Ve
             pokemon.get_energy_type() == Some(EnergyType::Water) && !pokemon.card.is_ex()
         });
     if has_target {
+        can_play_trainer(state, trainer_card)
+    } else {
+        cannot_play_trainer()
+    }
+}
+
+/// Check if Whitney can be played (requires a Miltank that is damaged or Asleep/Paralyzed/Confused)
+fn can_play_whitney(state: &State, trainer_card: &TrainerCard) -> Option<Vec<SimpleAction>> {
+    if whitney_targets(state, state.current_player).is_empty() {
+        cannot_play_trainer()
+    } else {
+        can_play_trainer(state, trainer_card)
+    }
+}
+
+/// Check if Penny can be played (requires at least one copyable Supporter in the opponent's deck)
+fn can_play_penny(state: &State, trainer_card: &TrainerCard) -> Option<Vec<SimpleAction>> {
+    let opponent = (state.current_player + 1) % 2;
+    if penny_candidates(state, opponent).is_empty() {
+        cannot_play_trainer()
+    } else {
+        can_play_trainer(state, trainer_card)
+    }
+}
+
+/// Check if Squirt Bottle can be played (requires a [R] Energy on the opponent's Active Pokémon)
+fn can_play_squirt_bottle(state: &State, trainer_card: &TrainerCard) -> Option<Vec<SimpleAction>> {
+    let opponent = (state.current_player + 1) % 2;
+    let has_fire = state
+        .maybe_get_active(opponent)
+        .is_some_and(|active| active.attached_energy.contains(&EnergyType::Fire));
+    if has_fire {
+        can_play_trainer(state, trainer_card)
+    } else {
+        cannot_play_trainer()
+    }
+}
+
+/// Check if Hitting Hammer can be played (requires any Energy on the opponent's Active Pokémon)
+fn can_play_hitting_hammer(state: &State, trainer_card: &TrainerCard) -> Option<Vec<SimpleAction>> {
+    let opponent = (state.current_player + 1) % 2;
+    let has_energy = state
+        .maybe_get_active(opponent)
+        .is_some_and(|active| !active.attached_energy.is_empty());
+    if has_energy {
+        can_play_trainer(state, trainer_card)
+    } else {
+        cannot_play_trainer()
+    }
+}
+
+/// Check if Prank Spinner can be played (requires at least one other card across both hands, since
+/// Prank Spinner itself is discarded before the effect resolves)
+fn can_play_prank_spinner(state: &State, trainer_card: &TrainerCard) -> Option<Vec<SimpleAction>> {
+    let other_cards = state.hands[0].len() + state.hands[1].len();
+    if other_cards > 1 {
+        can_play_trainer(state, trainer_card)
+    } else {
+        cannot_play_trainer()
+    }
+}
+
+/// Check if Pokémon Flute can be played (requires a Basic Pokémon in the opponent's discard pile
+/// and an open slot on their Bench)
+fn can_play_pokemon_flute(state: &State, trainer_card: &TrainerCard) -> Option<Vec<SimpleAction>> {
+    let opponent = (state.current_player + 1) % 2;
+    let has_basic = state.discard_piles[opponent]
+        .iter()
+        .any(|card| card.is_basic());
+    let has_bench_space = state.in_play_pokemon[opponent]
+        .iter()
+        .skip(1)
+        .any(|slot| slot.is_none());
+    if has_basic && has_bench_space {
+        can_play_trainer(state, trainer_card)
+    } else {
+        cannot_play_trainer()
+    }
+}
+
+/// Check if Team Galactic Grunt can be played (requires a Glameow, Stunky or Croagunk in the deck)
+fn can_play_team_galactic_grunt(
+    state: &State,
+    trainer_card: &TrainerCard,
+) -> Option<Vec<SimpleAction>> {
+    let has_target = state.decks[state.current_player]
+        .cards
+        .iter()
+        .any(|card| matches!(card.get_name().as_str(), "Glameow" | "Stunky" | "Croagunk"));
+    if has_target {
+        can_play_trainer(state, trainer_card)
+    } else {
+        cannot_play_trainer()
+    }
+}
+
+/// Check if Fisher can be played (requires at least one [W] Pokémon in the discard pile)
+fn can_play_fisher(state: &State, trainer_card: &TrainerCard) -> Option<Vec<SimpleAction>> {
+    let has_target = state.discard_piles[state.current_player]
+        .iter()
+        .any(|card| matches!(card, Card::Pokemon(_)) && card.get_type() == Some(EnergyType::Water));
+    if has_target {
+        can_play_trainer(state, trainer_card)
+    } else {
+        cannot_play_trainer()
+    }
+}
+
+/// Check if Fishing Net can be played (requires a Basic [W] Pokémon in the discard pile)
+fn can_play_fishing_net(state: &State, trainer_card: &TrainerCard) -> Option<Vec<SimpleAction>> {
+    let has_target = state.discard_piles[state.current_player]
+        .iter()
+        .any(|card| card.is_basic() && card.get_type() == Some(EnergyType::Water));
+    if has_target {
+        can_play_trainer(state, trainer_card)
+    } else {
+        cannot_play_trainer()
+    }
+}
+
+/// Check if Lana can be played (requires Araquanid in play and an opponent Benched Pokémon)
+fn can_play_lana(state: &State, trainer_card: &TrainerCard) -> Option<Vec<SimpleAction>> {
+    let player = state.current_player;
+    let opponent = (player + 1) % 2;
+    let has_araquanid = has_named_pokemon_in_play(state, player, &["Araquanid"]);
+    let opponent_has_bench = state.enumerate_bench_pokemon(opponent).next().is_some();
+    if has_araquanid && opponent_has_bench {
+        can_play_trainer(state, trainer_card)
+    } else {
+        cannot_play_trainer()
+    }
+}
+
+/// Check if Budding Expeditioner can be played (requires Mew ex in the Active Spot)
+fn can_play_budding_expeditioner(
+    state: &State,
+    trainer_card: &TrainerCard,
+) -> Option<Vec<SimpleAction>> {
+    let active_is_mew_ex = state
+        .maybe_get_active(state.current_player)
+        .is_some_and(|active| active.get_name() == "Mew ex");
+    if active_is_mew_ex {
+        can_play_trainer(state, trainer_card)
+    } else {
+        cannot_play_trainer()
+    }
+}
+
+/// Names Lt. Surge can gather Lightning Energy onto.
+const LT_SURGE_ACTIVE_NAMES: [&str; 3] = ["Raichu", "Electrode", "Electabuzz"];
+
+/// Check if Lt. Surge can be played (Raichu/Electrode/Electabuzz active, and at least one
+/// Lightning Energy on the Bench to move)
+fn can_play_lt_surge(state: &State, trainer_card: &TrainerCard) -> Option<Vec<SimpleAction>> {
+    let player = state.current_player;
+    let active_is_named = state
+        .maybe_get_active(player)
+        .is_some_and(|active| LT_SURGE_ACTIVE_NAMES.contains(&active.get_name().as_str()));
+    let bench_has_lightning = state
+        .enumerate_bench_pokemon(player)
+        .any(|(_, pokemon)| pokemon.attached_energy.contains(&EnergyType::Lightning));
+    if active_is_named && bench_has_lightning {
+        can_play_trainer(state, trainer_card)
+    } else {
+        cannot_play_trainer()
+    }
+}
+
+/// Check if Juggler can be played ("only if your Pokémon in play have 3 or more different types of
+/// Energy attached", plus an Active Pokémon and some Bench Energy to actually move)
+fn can_play_juggler(state: &State, trainer_card: &TrainerCard) -> Option<Vec<SimpleAction>> {
+    let player = state.current_player;
+    if state.maybe_get_active(player).is_none() {
+        return cannot_play_trainer();
+    }
+    let distinct_types = state
+        .enumerate_in_play_pokemon(player)
+        .flat_map(|(_, pokemon)| pokemon.attached_energy.iter().copied())
+        .collect::<std::collections::BTreeSet<_>>()
+        .len();
+    let bench_has_energy = state
+        .enumerate_bench_pokemon(player)
+        .any(|(_, pokemon)| !pokemon.attached_energy.is_empty());
+    if distinct_types >= 3 && bench_has_energy {
+        can_play_trainer(state, trainer_card)
+    } else {
+        cannot_play_trainer()
+    }
+}
+
+/// Check if Acerola can be played (requires a damaged Palossand or Mimikyu, and an opponent
+/// Active Pokémon to move the damage onto)
+fn can_play_acerola(state: &State, trainer_card: &TrainerCard) -> Option<Vec<SimpleAction>> {
+    let opponent = (state.current_player + 1) % 2;
+    if state.maybe_get_active(opponent).is_none()
+        || acerola_targets(state, state.current_player).is_empty()
+    {
+        cannot_play_trainer()
+    } else {
+        can_play_trainer(state, trainer_card)
+    }
+}
+
+/// Check if Mallow can be played (requires a damaged Shiinotic or Tsareena)
+fn can_play_mallow(state: &State, trainer_card: &TrainerCard) -> Option<Vec<SimpleAction>> {
+    if mallow_targets(state, state.current_player).is_empty() {
+        cannot_play_trainer()
+    } else {
+        can_play_trainer(state, trainer_card)
+    }
+}
+
+/// Check if Beast Wall can be played ("You can use this card only if your opponent hasn't gotten
+/// any points."). The -20 itself only ever helps Ultra Beasts, but the card is legal regardless of
+/// what is in play, matching the printed condition.
+fn can_play_beast_wall(state: &State, trainer_card: &TrainerCard) -> Option<Vec<SimpleAction>> {
+    let opponent = (state.current_player + 1) % 2;
+    if state.points[opponent] == 0 {
         can_play_trainer(state, trainer_card)
     } else {
         cannot_play_trainer()

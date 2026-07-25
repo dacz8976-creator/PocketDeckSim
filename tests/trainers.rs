@@ -1,26 +1,50 @@
+#[path = "trainers/acerola_test.rs"]
+mod acerola_test;
 #[path = "trainers/barry_test.rs"]
 mod barry_test;
+#[path = "trainers/card_fetch_trainers_test.rs"]
+mod card_fetch_trainers_test;
 #[path = "trainers/cynthia_test.rs"]
 mod cynthia_test;
+#[path = "trainers/damage_reduction_trainers_test.rs"]
+mod damage_reduction_trainers_test;
+#[path = "trainers/disruption_items_test.rs"]
+mod disruption_items_test;
 #[path = "trainers/elesa_test.rs"]
 mod elesa_test;
 #[path = "trainers/field_blower_test.rs"]
 mod field_blower_test;
+#[path = "trainers/hala_test.rs"]
+mod hala_test;
+#[path = "trainers/information_trainers_test.rs"]
+mod information_trainers_test;
+#[path = "trainers/iono_test.rs"]
+mod iono_test;
 #[path = "trainers/iris_trainer_test.rs"]
 mod iris_trainer_test;
 #[path = "trainers/juliana_test.rs"]
 mod juliana_test;
 #[path = "trainers/korrina_cabbie_parasol_lady_test.rs"]
 mod korrina_cabbie_parasol_lady_test;
+#[path = "trainers/lana_budding_expeditioner_test.rs"]
+mod lana_budding_expeditioner_test;
+#[path = "trainers/lt_surge_juggler_test.rs"]
+mod lt_surge_juggler_test;
 #[path = "trainers/marlon_test.rs"]
 mod marlon_test;
+#[path = "trainers/penny_test.rs"]
+mod penny_test;
 #[path = "trainers/professor_sada_test.rs"]
 mod professor_sada_test;
 #[path = "trainers/professor_turo_test.rs"]
 mod professor_turo_test;
 #[path = "trainers/puppy_loving_girl_test.rs"]
 mod puppy_loving_girl_test;
+#[path = "trainers/sophocles_test.rs"]
+mod sophocles_test;
 #[path = "trainers/volkner_test.rs"]
 mod volkner_test;
 #[path = "trainers/wallace_test.rs"]
 mod wallace_test;
+#[path = "trainers/whitney_mallow_test.rs"]
+mod whitney_mallow_test;

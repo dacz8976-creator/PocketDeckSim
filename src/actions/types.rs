@@ -66,9 +66,23 @@ pub enum SimpleAction {
         heal_amount: u32,
         discard_energies: Vec<EnergyType>,
     },
+    /// Heal and cure a *specific subset* of Special Conditions (e.g. Whitney, which recovers from
+    /// being Asleep, Paralyzed and Confused but leaves Poisoned and Burned alone). `Heal`'s
+    /// `cure_status` flag is all-or-nothing, so it cannot express this.
+    HealAndCureConditions {
+        in_play_idx: usize,
+        amount: u32,
+        conditions: Vec<StatusCondition>,
+    },
     MoveAllDamage {
         from: usize,
         to: usize,
+    },
+    /// Acerola: move up to `amount` damage off one of your Pokémon and onto the opponent's Active
+    /// Pokémon. Only as much damage as the source actually carries is moved.
+    MoveDamageToOpponentActive {
+        from_in_play_idx: usize,
+        amount: u32,
     },
     ApplyDamage {
         attacking_ref: (usize, usize), // (attacking_player, attacking_pokemon_idx)
@@ -154,6 +168,11 @@ pub enum SimpleAction {
     },
     /// Field Blower: discard the active stadium.
     DiscardActiveStadium,
+    /// Pokémon Flute: put a Basic Pokémon from the opponent's discard pile onto their Bench.
+    BenchOpponentFromDiscard {
+        card: Card,
+        bench_idx: usize,
+    },
     /// Crawdaunt's Unruly Claw: discard a random Energy from the opponent's Active Pokémon
     DiscardRandomOpponentActiveEnergy,
     /// Apply a chosen Special Condition to the opponent's Active Pokémon (e.g. Dustox's Select Powder).
@@ -226,9 +245,21 @@ impl fmt::Display for SimpleAction {
                 f,
                 "HealAndDiscardEnergy({in_play_idx}, {heal_amount}, {discard_energies:?})"
             ),
+            SimpleAction::HealAndCureConditions {
+                in_play_idx,
+                amount,
+                conditions,
+            } => write!(
+                f,
+                "HealAndCureConditions({in_play_idx}, {amount}, {conditions:?})"
+            ),
             SimpleAction::MoveAllDamage { from, to } => {
                 write!(f, "MoveAllDamage(from:{from}, to:{to})")
             }
+            SimpleAction::MoveDamageToOpponentActive {
+                from_in_play_idx,
+                amount,
+            } => write!(f, "MoveDamageToOpponentActive({from_in_play_idx}, {amount})"),
             SimpleAction::ApplyDamage {
                 attacking_ref,
                 targets,
@@ -320,6 +351,9 @@ impl fmt::Display for SimpleAction {
                 write!(f, "DiscardToolFromPokemon({player}, {in_play_idx})")
             }
             SimpleAction::DiscardActiveStadium => write!(f, "DiscardActiveStadium"),
+            SimpleAction::BenchOpponentFromDiscard { card, bench_idx } => {
+                write!(f, "BenchOpponentFromDiscard({card}, {bench_idx})")
+            }
             SimpleAction::DiscardRandomOpponentActiveEnergy => {
                 write!(f, "DiscardRandomOpponentActiveEnergy")
             }

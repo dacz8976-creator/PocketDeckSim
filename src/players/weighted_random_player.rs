@@ -54,7 +54,9 @@ fn get_weight(action: &SimpleAction) -> u32 {
         SimpleAction::EndTurn => 1,
         SimpleAction::Heal { .. } => 5,
         SimpleAction::HealAndDiscardEnergy { .. } => 5,
+        SimpleAction::HealAndCureConditions { .. } => 5,
         SimpleAction::MoveAllDamage { .. } => 10,
+        SimpleAction::MoveDamageToOpponentActive { .. } => 10,
         SimpleAction::Activate { .. } => 1,
         SimpleAction::CommunicatePokemon { .. } => 5,
         SimpleAction::ShufflePokemonIntoDeck { .. } => 5,
@@ -73,6 +75,7 @@ fn get_weight(action: &SimpleAction) -> u32 {
         SimpleAction::ShuffleInPlayPokemonIntoDeck { .. } => 5,
         SimpleAction::DiscardToolFromPokemon { .. } => 5,
         SimpleAction::DiscardActiveStadium => 5,
+        SimpleAction::BenchOpponentFromDiscard { .. } => 5,
         SimpleAction::DiscardRandomOpponentActiveEnergy => 10,
         SimpleAction::ApplyStatusToOpponentActive { .. } => 10,
         SimpleAction::UseStadium => 5, // Stadium abilities like Mesagoza
