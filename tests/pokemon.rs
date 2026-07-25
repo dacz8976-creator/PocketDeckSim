@@ -10,6 +10,8 @@ mod altaria_dragon_arcana_test;
 mod applin_share_test;
 #[path = "pokemon/arceus_ex_test.rs"]
 mod arceus_ex_test;
+#[path = "pokemon/attack_cost_reduction_abilities_test.rs"]
+mod attack_cost_reduction_abilities_test;
 #[path = "pokemon/audino_test.rs"]
 mod audino_test;
 #[path = "pokemon/blastoise_double_splash_test.rs"]

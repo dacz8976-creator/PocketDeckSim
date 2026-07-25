@@ -5,8 +5,8 @@ use log::debug;
 
 use crate::{
     actions::{
-        abilities::AbilityMechanic, ability_mechanic_from_effect, get_ability_mechanic,
-        SimpleAction,
+        abilities::{AbilityMechanic, AttackCostReductionScope},
+        ability_mechanic_from_effect, get_ability_mechanic, SimpleAction,
     },
     card_ids::CardId,
     effects::{CardEffect, TurnEffect},
@@ -1387,29 +1387,64 @@ pub(crate) fn get_attack_cost(
         }
     }
 
-    modified_cost = future_system_cost(modified_cost, state, attacking_player);
+    modified_cost = reduce_attack_cost_by_abilities(modified_cost, state, attacking_player);
 
     modified_cost
 }
 
-fn future_system_cost(mut cost: Vec<EnergyType>, state: &State, player: usize) -> Vec<EnergyType> {
-    let attacker_is_future = state.in_play_pokemon[player][0]
-        .as_ref()
-        .is_some_and(|active| is_future_pokemon(&active.get_name()));
-    let has_future_system = attacker_is_future
-        && state.in_play_pokemon[player].iter().flatten().any(|p| {
-            matches!(
-                get_ability_mechanic(&p.card),
-                Some(AbilityMechanic::FutureSystem)
-            )
-        });
-    if has_future_system {
-        if let Some(pos) = cost.iter().position(|e| *e == EnergyType::Colorless) {
-            debug!("Future System: Reducing attack cost by 1 Colorless");
-            cost.remove(pos);
+/// The "attacks used by <someone> cost N less [X] Energy" abilities: Future System, Vigor Link
+/// (Abomasnow A2a 021) and En-fruits-iastic (Cherubi A4 023 / A4b 025 / A4b 026). All of them
+/// discount the attack the *Active* Pokémon is about to use; `AttackCostReductionScope` says where
+/// the granting Pokémon sits and what has to hold. Multiple holders stack, one discount each.
+fn reduce_attack_cost_by_abilities(
+    mut cost: Vec<EnergyType>,
+    state: &State,
+    player: usize,
+) -> Vec<EnergyType> {
+    let Some(active) = state.in_play_pokemon[player][0].as_ref() else {
+        return cost;
+    };
+    for (idx, source) in state.enumerate_in_play_pokemon(player) {
+        let Some(AbilityMechanic::ReduceAttackCost {
+            energy_type,
+            amount,
+            scope,
+        }) = get_ability_mechanic(&source.card)
+        else {
+            continue;
+        };
+        if !attack_cost_reduction_applies(state, player, scope, idx, active) {
+            continue;
+        }
+        for _ in 0..*amount {
+            if let Some(pos) = cost.iter().position(|e| e == energy_type) {
+                debug!("{scope:?}: Reducing attack cost by 1 {energy_type:?}");
+                cost.remove(pos);
+            }
         }
     }
     cost
+}
+
+/// Whether a `ReduceAttackCost` ability held at board slot `source_idx` currently discounts the
+/// attack `active` is about to use. Slot 0 is the Active Spot, so `source_idx == 0` is also the
+/// test for the self-scoped ("attacks used by this Pokémon") variants.
+fn attack_cost_reduction_applies(
+    state: &State,
+    player: usize,
+    scope: &AttackCostReductionScope,
+    source_idx: usize,
+    active: &PlayedCard,
+) -> bool {
+    match scope {
+        AttackCostReductionScope::YourFuturePokemon => is_future_pokemon(&active.get_name()),
+        AttackCostReductionScope::SelfIfArceusInPlay => {
+            source_idx == 0 && has_arceus_in_play(state, player)
+        }
+        AttackCostReductionScope::SelfIfToolAttached => {
+            source_idx == 0 && active.attached_tool.is_some()
+        }
+    }
 }
 
 // Check if attached satisfies cost (considering Colorless and Serperior's ability)

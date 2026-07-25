@@ -4,7 +4,7 @@
 use std::collections::HashMap;
 use std::sync::LazyLock;
 
-use crate::actions::abilities::AbilityMechanic;
+use crate::actions::abilities::{AbilityMechanic, AttackCostReductionScope};
 use crate::effects::CardEffect;
 use crate::models::{Card, EnergyType};
 
@@ -138,7 +138,14 @@ pub static EFFECT_ABILITY_MECHANIC_MAP: LazyLock<HashMap<&'static str, AbilityMe
             "If any damage is done to this Pokémon by attacks, flip a coin. If heads, this Pokémon takes -80 damage from that attack.",
             AbilityMechanic::CoinFlipToReduceDamage { amount: 80 },
         );
-        // map.insert("If this Pokémon has a Pokémon Tool attached, attacks used by this Pokémon cost 1 less [G] Energy.", todo_implementation);
+        map.insert(
+            "If this Pokémon has a Pokémon Tool attached, attacks used by this Pokémon cost 1 less [G] Energy.",
+            AbilityMechanic::ReduceAttackCost {
+                energy_type: EnergyType::Grass,
+                amount: 1,
+                scope: AttackCostReductionScope::SelfIfToolAttached,
+            },
+        );
         map.insert(
             "If this Pokémon has any Energy attached, it has no Retreat Cost.",
             AbilityMechanic::NoRetreatIfHasEnergy,
@@ -170,7 +177,14 @@ pub static EFFECT_ABILITY_MECHANIC_MAP: LazyLock<HashMap<&'static str, AbilityMe
             "If this Pokémon would be Knocked Out by damage from an attack, flip a coin. If heads, this Pokémon is not Knocked Out, and its remaining HP becomes 10.",
             AbilityMechanic::CoinFlipToSurviveKnockOut,
         );
-        // map.insert("If you have Arceus or Arceus ex in play, attacks used by this Pokémon cost 1 less [C] Energy.", todo_implementation);
+        map.insert(
+            "If you have Arceus or Arceus ex in play, attacks used by this Pokémon cost 1 less [C] Energy.",
+            AbilityMechanic::ReduceAttackCost {
+                energy_type: EnergyType::Colorless,
+                amount: 1,
+                scope: AttackCostReductionScope::SelfIfArceusInPlay,
+            },
+        );
         map.insert(
             "If you have Arceus or Arceus ex in play, attacks used by this Pokémon do +30 damage to your opponent's Active Pokémon.",
             AbilityMechanic::IncreaseDamageIfArceusInPlay { amount: 30 },
@@ -483,7 +497,11 @@ pub static EFFECT_ABILITY_MECHANIC_MAP: LazyLock<HashMap<&'static str, AbilityMe
         );
         map.insert(
             "Attacks used by your Future Pokémon cost 1 less [C] Energy.",
-            AbilityMechanic::FutureSystem,
+            AbilityMechanic::ReduceAttackCost {
+                energy_type: EnergyType::Colorless,
+                amount: 1,
+                scope: AttackCostReductionScope::YourFuturePokemon,
+            },
         );
 
         // b3 mechanics

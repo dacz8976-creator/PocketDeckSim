@@ -1,5 +1,21 @@
 use crate::models::EnergyType;
 
+/// Who benefits from an [`AbilityMechanic::ReduceAttackCost`] ability, and what has to be true for
+/// it to work. Every one of these discounts the *Active* attacker's attack; they differ in where
+/// the granting Pokémon sits and in the enabling condition.
+#[derive(Debug, Clone, PartialEq)]
+pub enum AttackCostReductionScope {
+    /// Future System: the ability holder may be anywhere in play, and the discount applies while
+    /// your Active Pokémon is a Future Pokémon.
+    YourFuturePokemon,
+    /// Vigor Link (Abomasnow A2a 021): the ability holder itself, while you have Arceus or
+    /// Arceus ex in play.
+    SelfIfArceusInPlay,
+    /// En-fruits-iastic (Cherubi A4 023 / A4b 025 / A4b 026): the ability holder itself, while it
+    /// has a Pokémon Tool attached.
+    SelfIfToolAttached,
+}
+
 #[derive(Debug, Clone, PartialEq)]
 pub enum AbilityMechanic {
     VictreebelFragranceTrap,
@@ -258,8 +274,15 @@ pub enum AbilityMechanic {
     /// you may switch out your opponent's Active Pokémon to the Bench.
     /// (Your opponent chooses the new Active Pokémon.)"
     AncientRoar,
-    /// "Attacks used by your Future Pokémon cost 1 less [C] Energy."
-    FutureSystem,
+    /// "Attacks used by <someone> cost `amount` less [`energy_type`] Energy": Future System,
+    /// Vigor Link (Abomasnow A2a 021) and En-fruits-iastic (Cherubi A4 023 / A4b 025 / A4b 026).
+    /// `scope` says who is discounted and under what condition. Passive; resolved in
+    /// `hooks::core::get_attack_cost`.
+    ReduceAttackCost {
+        energy_type: EnergyType,
+        amount: u32,
+        scope: AttackCostReductionScope,
+    },
     /// Celebi's Time Recall: "Each of your evolved Pokémon can use any attack from its previous
     /// Evolutions. (You still need the necessary Energy to use each attack.)"
     /// Passive: while a Pokémon with this ability is in play, attack generation also offers the

@@ -184,7 +184,7 @@ fn can_use_ability_by_mechanic(
         }
         AbilityMechanic::LegendaryDrive => false, // triggered on bench placement, not via UseAbility
         AbilityMechanic::AncientRoar => false, // triggered on bench placement, not via UseAbility
-        AbilityMechanic::FutureSystem => false, // passive ability
+        AbilityMechanic::ReduceAttackCost { .. } => false, // passive ability
         AbilityMechanic::TimeRecall => false,  // passive ability (consumed in attack generation)
         AbilityMechanic::QuickGrowth => false, // triggered at end of opponent's turn
     }
