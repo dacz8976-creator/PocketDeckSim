@@ -188,6 +188,8 @@ mod psyduck_test;
 mod pyukumuku_innards_out_test;
 #[path = "pokemon/rampardos_head_smash_test.rs"]
 mod rampardos_head_smash_test;
+#[path = "pokemon/regigigas_seal_of_antiquity_test.rs"]
+mod regigigas_seal_of_antiquity_test;
 #[path = "pokemon/resilience_link_test.rs"]
 mod resilience_link_test;
 #[path = "pokemon/rillaboom_captivating_rhythm_test.rs"]

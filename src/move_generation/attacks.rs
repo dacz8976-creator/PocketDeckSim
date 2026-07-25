@@ -1,5 +1,7 @@
 use crate::{
-    actions::{abilities::AbilityMechanic, has_ability_mechanic, SimpleAction},
+    actions::{
+        abilities::AbilityMechanic, get_ability_mechanic, has_ability_mechanic, SimpleAction,
+    },
     card_ids::CardId,
     effects::CardEffect,
     hooks::{contains_energy, get_attack_cost},
@@ -23,6 +25,12 @@ pub(crate) fn generate_attack_actions(state: &State) -> Vec<SimpleAction> {
             .iter()
             .any(|effect| matches!(effect, CardEffect::CannotAttack));
         if cannot_attack {
+            return actions;
+        }
+
+        // Regigigas' Seal of Antiquity: the Ability seals its own holder's attacks unless the
+        // named Pokémon are all on the Bench.
+        if is_sealed_by_bench_requirement(state, current_player, active_pokemon) {
             return actions;
         }
 
@@ -58,6 +66,33 @@ pub(crate) fn generate_attack_actions(state: &State) -> Vec<SimpleAction> {
         }
     }
     actions
+}
+
+/// Regigigas' Seal of Antiquity: "If you don't have Regirock, Regice, and Registeel on your Bench,
+/// this Pokémon can't attack." True when the Active Pokémon carries such an Ability and its
+/// controller's Bench is missing at least one of the required names.
+///
+/// Only the Bench counts, so a Regi in the Active Spot does not satisfy the requirement — and the
+/// restriction is self-scoped, so a Benched holder never seals anyone else's attacks.
+fn is_sealed_by_bench_requirement(
+    state: &State,
+    player: usize,
+    active_pokemon: &PlayedCard,
+) -> bool {
+    let Some(AbilityMechanic::CannotAttackWithoutBenchedNames {
+        required_bench_names,
+    }) = get_ability_mechanic(&active_pokemon.card)
+    else {
+        return false;
+    };
+
+    let bench_names: Vec<String> = state
+        .enumerate_bench_pokemon(player)
+        .map(|(_, pokemon)| pokemon.get_name())
+        .collect();
+    !required_bench_names
+        .iter()
+        .all(|required| bench_names.iter().any(|name| name == required))
 }
 
 /// Celebi's Time Recall: while a Pokémon with the ability is in play, each of your evolved

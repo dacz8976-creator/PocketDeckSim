@@ -6,7 +6,7 @@ use std::sync::LazyLock;
 
 use crate::actions::abilities::{
     AbilityMechanic, AttackCostReductionScope, DeckSearchKind, KnockoutDamageTarget,
-    NoRetreatCostCondition, NoRetreatCostTarget, ARCEUS_NAMES,
+    NoRetreatCostCondition, NoRetreatCostTarget, ARCEUS_NAMES, REGI_TRIO_NAMES,
 };
 use crate::effects::CardEffect;
 use crate::models::{Card, EnergyType, StatusCondition};
@@ -670,7 +670,12 @@ pub static EFFECT_ABILITY_MECHANIC_MAP: LazyLock<HashMap<&'static str, AbilityMe
             "During Pokémon Checkup, if this Pokémon is in the Active Spot, do 10 damage to each of your opponent's Pokémon.",
             AbilityMechanic::CheckupDamageToAllOpponentPokemon { amount: 10 },
         );
-        // map.insert("If you don't have Regirock, Regice, and Registeel on your Bench, this Pokémon can't attack.", todo_implementation);
+        map.insert(
+            "If you don't have Regirock, Regice, and Registeel on your Bench, this Pokémon can't attack.",
+            AbilityMechanic::CannotAttackWithoutBenchedNames {
+                required_bench_names: REGI_TRIO_NAMES,
+            },
+        );
         // map.insert("Once during your turn, after you flip any coins for an attack of 1 of your [R] Pokémon, you may ignore all results of those coin flips and begin flipping those coins again. You can't use more than 1 Victory Star Ability each turn.", todo_implementation);
         map.insert(
             "Once during your turn, if this Pokémon is in the Active Spot, you may make your opponent's Active Pokémon Confused.",

@@ -7,3 +7,4 @@ pub use mechanic::KnockoutDamageTarget;
 pub use mechanic::NoRetreatCostCondition;
 pub use mechanic::NoRetreatCostTarget;
 pub use mechanic::ARCEUS_NAMES;
+pub use mechanic::REGI_TRIO_NAMES;

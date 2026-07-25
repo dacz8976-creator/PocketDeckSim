@@ -11,6 +11,10 @@ pub enum DeckSearchKind {
 /// own name in this game, so both spellings have to be listed explicitly.
 pub const ARCEUS_NAMES: &[&str] = &["Arceus", "Arceus ex"];
 
+/// The Bench Regigigas' Seal of Antiquity demands. Every printing of these three counts — the
+/// Ability names Pokémon, not specific cards.
+pub const REGI_TRIO_NAMES: &[&str] = &["Regirock", "Regice", "Registeel"];
+
 /// Which Pokémon a [`AbilityMechanic::NoRetreatCost`] ability frees from its Retreat Cost.
 #[derive(Debug, Clone, PartialEq)]
 pub enum NoRetreatCostTarget {
@@ -456,6 +460,16 @@ pub enum AbilityMechanic {
         energy_type: EnergyType,
         amount: u32,
         scope: AttackCostReductionScope,
+    },
+    /// Regigigas' Seal of Antiquity (B3 134): "If you don't have Regirock, Regice, and Registeel on
+    /// your Bench, this Pokémon can't attack."
+    ///
+    /// A restriction on the holder's *own* attacks, so — unlike the `CardEffect::CannotAttack` that
+    /// attacks inflict on the defender — it is expressed at move generation time in
+    /// `generate_attack_actions`: while the Active Pokémon has this Ability and its Bench is
+    /// missing any of `required_bench_names`, it is offered no attacks at all. Passive.
+    CannotAttackWithoutBenchedNames {
+        required_bench_names: &'static [&'static str],
     },
     /// Celebi's Time Recall: "Each of your evolved Pokémon can use any attack from its previous
     /// Evolutions. (You still need the necessary Energy to use each attack.)"
