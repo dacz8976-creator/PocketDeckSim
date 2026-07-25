@@ -11,8 +11,9 @@ use crate::{
     card_ids::CardId,
     effects::{CardEffect, TurnEffect},
     hooks::{
-        get_counterattack_damage, modify_damage, on_attack_knockout, on_end_turn, on_knockout,
-        should_poison_attacker, DamageModifierContext,
+        get_counterattack_damage, maybe_attach_energy_on_damaged, modify_damage,
+        on_attack_knockout, on_end_turn, on_knockout, should_poison_attacker,
+        DamageModifierContext,
     },
     models::{Card, StatusCondition, TrainerType},
     state::GameOutcome,
@@ -570,6 +571,13 @@ pub(crate) fn handle_damage_only(
         if should_poison {
             state.apply_status_condition(attacking_player, 0, StatusCondition::Poisoned);
             debug!("Poison Barb: Poisoned the attacking Pokemon");
+        }
+
+        // Jellicent's Bouncy Body. Unlike the counterattacks above it is scoped to damage from
+        // *your opponent's* Pokémon, so a self-inflicted hit (recoil, Raging Hammer on your own
+        // board) does not feed the defender's Energy Zone.
+        if target_player != attacking_player {
+            maybe_attach_energy_on_damaged(state, target_player);
         }
     }
 }

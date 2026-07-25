@@ -1,4 +1,13 @@
-use crate::{card_ids::CardId, effects::CardEffect, models::PlayedCard, tools::has_tool};
+use log::debug;
+
+use crate::{
+    actions::{abilities::AbilityMechanic, get_ability_mechanic, SimpleAction},
+    card_ids::CardId,
+    effects::CardEffect,
+    models::{EnergyType, PlayedCard},
+    tools::has_tool,
+    State,
+};
 
 /// Some cards counterattack either because of RockyHelmet or because of their own ability.
 pub(crate) fn get_counterattack_damage(card: &PlayedCard) -> u32 {
@@ -33,6 +42,51 @@ pub(crate) fn get_counterattack_damage(card: &PlayedCard) -> u32 {
     }
 
     total_damage
+}
+
+/// Jellicent's Bouncy Body: "If this Pokémon is in the Active Spot and is damaged by an attack from
+/// your opponent's Pokémon, take a [W] Energy from your Energy Zone and attach it to 1 of your
+/// Benched Pokémon."
+///
+/// Fires from the same on-damaged spot as the counterattack abilities and Poison Barb, so the
+/// caller has already checked that this was an opponent's attack landing on `player`'s Active
+/// Pokémon. Which Benched Pokémon receives the Energy is the defender's choice, so this pushes a
+/// list of `Attach` actions onto the `move_generation_stack` (mirroring Passimian ex's Offload
+/// Pass) rather than resolving it here. An empty Bench leaves no legal target, so nothing is
+/// pushed and the Energy is simply not taken.
+pub(crate) fn maybe_attach_energy_on_damaged(state: &mut State, player: usize) {
+    let energy_type = state.in_play_pokemon[player][0]
+        .as_ref()
+        .and_then(|pokemon| match get_ability_mechanic(&pokemon.card) {
+            Some(AbilityMechanic::AttachEnergyFromZoneToBenchOnDamaged { energy_type }) => {
+                Some(*energy_type)
+            }
+            _ => None,
+        });
+    let Some(energy_type) = energy_type else {
+        return;
+    };
+
+    let choices = bench_attach_choices(state, player, energy_type);
+    if choices.is_empty() {
+        return;
+    }
+    debug!("Bouncy Body: player {player} attaches a {energy_type:?} Energy to their Bench");
+    state.move_generation_stack.push((player, choices));
+}
+
+fn bench_attach_choices(
+    state: &State,
+    player: usize,
+    energy_type: EnergyType,
+) -> Vec<SimpleAction> {
+    state
+        .enumerate_bench_pokemon(player)
+        .map(|(in_play_idx, _)| SimpleAction::Attach {
+            attachments: vec![(1, energy_type, in_play_idx)],
+            is_turn_energy: false,
+        })
+        .collect()
 }
 
 /// Check if the defending Pokemon should poison the attacker when damaged.

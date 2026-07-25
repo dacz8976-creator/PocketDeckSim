@@ -414,6 +414,18 @@ pub enum AbilityMechanic {
         amount: u32,
     },
     PoisonAttackerOnDamaged,
+    /// Jellicent's Bouncy Body (B1 069 / B1 234 / B3 210): "If this Pokémon is in the Active Spot
+    /// and is damaged by an attack from your opponent's Pokémon, take a [`energy_type`] Energy from
+    /// your Energy Zone and attach it to 1 of your Benched Pokémon."
+    ///
+    /// Passive, and an on-*damaged* trigger rather than an on-knockout one: it fires from the same
+    /// place as Poison Barb and the counterattack abilities, so it also fires on the hit that
+    /// Knocks Jellicent Out (the Bench is still intact at that point). The destination is the
+    /// holder's controller's choice, so it pushes onto the `move_generation_stack` — and with an
+    /// empty Bench there is no legal target and nothing happens.
+    AttachEnergyFromZoneToBenchOnDamaged {
+        energy_type: EnergyType,
+    },
     IncreaseAttackCostForOpponentActive {
         amount: u32,
     },

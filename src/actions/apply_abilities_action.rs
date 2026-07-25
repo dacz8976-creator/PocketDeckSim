@@ -293,6 +293,9 @@ fn forecast_ability_by_mechanic(
         AbilityMechanic::PoisonAttackerOnDamaged => {
             panic!("PoisonAttackerOnDamaged is a passive ability")
         }
+        AbilityMechanic::AttachEnergyFromZoneToBenchOnDamaged { .. } => {
+            panic!("AttachEnergyFromZoneToBenchOnDamaged is a passive ability")
+        }
         AbilityMechanic::IncreaseAttackCostForOpponentActive { .. } => {
             panic!("IncreaseAttackCostForOpponentActive is a passive ability")
         }

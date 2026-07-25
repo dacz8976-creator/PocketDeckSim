@@ -120,6 +120,8 @@ mod iron_moth_test;
 mod iron_thorns_test;
 #[path = "pokemon/iron_valiant_future_system_test.rs"]
 mod iron_valiant_future_system_test;
+#[path = "pokemon/jellicent_bouncy_body_test.rs"]
+mod jellicent_bouncy_body_test;
 #[path = "pokemon/jolteon_ex_test.rs"]
 mod jolteon_ex_test;
 #[path = "pokemon/kingambit_overlords_blade_test.rs"]
