@@ -234,6 +234,8 @@ mod tinkaton_gigaton_hammer_test;
 mod typhlosion_fire_breath_test;
 #[path = "pokemon/tyranitar_energy_plunder_test.rs"]
 mod tyranitar_energy_plunder_test;
+#[path = "pokemon/unown_check_test.rs"]
+mod unown_check_test;
 #[path = "pokemon/unown_guard_test.rs"]
 mod unown_guard_test;
 #[path = "pokemon/unown_power_test.rs"]
