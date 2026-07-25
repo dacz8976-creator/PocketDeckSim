@@ -174,6 +174,8 @@ mod no_retreat_cost_abilities_test;
 mod passimian_ex_offload_pass_test;
 #[path = "pokemon/politoed_lordly_cheering_test.rs"]
 mod politoed_lordly_cheering_test;
+#[path = "pokemon/porygon_data_scan_test.rs"]
+mod porygon_data_scan_test;
 #[path = "pokemon/porygonz_cyberjack_test.rs"]
 mod porygonz_cyberjack_test;
 #[path = "pokemon/primarina_melodious_healing_test.rs"]

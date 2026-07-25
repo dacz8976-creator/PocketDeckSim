@@ -248,6 +248,21 @@ pub enum AbilityMechanic {
     SearchRandomCardFromDeck {
         card_kind: DeckSearchKind,
     },
+    /// Data Scan (Porygon A1 209 / A1 249): "Once during your turn, you may look at the top card
+    /// of your deck." and CHECK (Unown A2a 034 / A2a 078): "Once during your turn, you may choose
+    /// either player. Look at the top card of that player's deck."
+    ///
+    /// Information-only. deckgym's players have no hidden-information model — they already
+    /// forecast over the whole deck — so peeking at a top card cannot change any decision they
+    /// make. It is therefore implemented honestly as an Ability that is legally usable once per
+    /// turn and mutates nothing but its own once-per-turn flag; it is deliberately *not* faked as
+    /// a draw or a deck manipulation, which would give the card power it does not have.
+    ///
+    /// `either_player` is the one part of the wording with a mechanical consequence: CHECK may look
+    /// at the opponent's deck, so it stays usable while only the opponent still has a top card.
+    LookAtTopCardOfDeck {
+        either_player: bool,
+    },
     MoveDamageFromOneYourPokemonToThisPokemon,
     DiscardOpponentActiveToolsAndDiscardSelf,
     PreventFirstAttack,

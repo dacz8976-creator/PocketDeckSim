@@ -124,6 +124,9 @@ fn can_use_ability_by_mechanic(
         AbilityMechanic::SearchRandomCardFromDeck { card_kind } => {
             !card.ability_used && deck_has_searchable_card(state, *card_kind)
         }
+        AbilityMechanic::LookAtTopCardOfDeck { either_player } => {
+            can_look_at_top_card(state, card, *either_player)
+        }
         AbilityMechanic::MoveDamageFromOneYourPokemonToThisPokemon => {
             can_use_dusknoir_shadow_void(state, _in_play_index)
         }
@@ -332,6 +335,19 @@ fn deck_has_searchable_card(state: &State, card_kind: DeckSearchKind) -> bool {
         DeckSearchKind::Pokemon => state.iter_deck_pokemon(player).next().is_some(),
         DeckSearchKind::Tool => state.decks[player].cards.iter().any(is_tool_card),
     }
+}
+
+/// "Look at the top card of <someone's> deck" needs a top card to exist. Data Scan can only look
+/// at its controller's deck; CHECK ("choose either player") is satisfied by either deck, so it
+/// stays usable when only the opponent has cards left. Beyond that the ability changes nothing, so
+/// the only other gate is the printed "Once during your turn".
+fn can_look_at_top_card(state: &State, card: &PlayedCard, either_player: bool) -> bool {
+    if card.ability_used {
+        return false;
+    }
+    let opponent = (state.current_player + 1) % 2;
+    !state.decks[state.current_player].cards.is_empty()
+        || (either_player && !state.decks[opponent].cards.is_empty())
 }
 
 /// Energy Plunder is only worth its once-per-turn use if some *other* Pokémon of yours is holding

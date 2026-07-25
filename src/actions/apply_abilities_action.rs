@@ -162,6 +162,7 @@ fn forecast_ability_by_mechanic(
         AbilityMechanic::SearchRandomCardFromDeck { card_kind } => {
             search_random_card_from_deck(action.actor, state, *card_kind)
         }
+        AbilityMechanic::LookAtTopCardOfDeck { .. } => look_at_top_card_of_deck(),
         AbilityMechanic::MoveDamageFromOneYourPokemonToThisPokemon => {
             Outcomes::single(dusknoir_shadow_void(in_play_idx))
         }
@@ -362,6 +363,17 @@ fn search_random_card_from_deck(
         DeckSearchKind::Pokemon => pokemon_search_outcomes(acting_player, state, false),
         DeckSearchKind::Tool => tool_search_outcomes(acting_player, state),
     }
+}
+
+/// Data Scan / CHECK: "look at the top card of <a> deck".
+///
+/// Deliberately empty. Looking at a card reveals information to a human player, and deckgym's
+/// players already forecast over the full deck contents, so there is nothing to model: the ability
+/// must not draw, reorder or shuffle anything. The only observable consequence is the
+/// `ability_used` flag that `wrap_with_common_logic` sets for every `UseAbility`, which is what
+/// enforces the printed "Once during your turn".
+fn look_at_top_card_of_deck() -> Outcomes {
+    Outcomes::single_fn(|_rng, _state, _action| {})
 }
 
 fn heal_all_your_pokemon(amount: u32, energy_type: Option<EnergyType>) -> Outcomes {
