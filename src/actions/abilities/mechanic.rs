@@ -94,6 +94,16 @@ pub enum AbilityMechanic {
     ReduceDamageAtFullHp {
         amount: u32,
     },
+    /// GUARD (Unown A4 084): "This Ability works if you have any Unown in play with an Ability
+    /// other than GUARD. All of your Pokémon take -`amount` damage from attacks from your
+    /// opponent's Pokémon."
+    ///
+    /// Board-wide rather than self-scoped, and self-referential: the enabling condition is another
+    /// in-play Unown whose printed Ability *title* is something other than GUARD (CHECK on A2a 034
+    /// / A2a 078, POWER on A4 085). Two GUARD Unown therefore do not enable each other.
+    UnownGuard {
+        amount: u32,
+    },
     IncreaseDamageWhenRemainingHpAtMost {
         amount: u32,
         hp_threshold: u32,

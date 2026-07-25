@@ -602,25 +602,47 @@ fn has_arceus_in_play(state: &State, player: usize) -> bool {
         .any(|(_, pokemon)| matches!(pokemon.get_name().as_str(), "Arceus" | "Arceus ex"))
 }
 
-/// Damage reduction protecting the target that is conditioned on the attacker or on the board, so
-/// it cannot be modelled as a context-free `CardEffect` the way `ReduceDamageFromAttacks` is (see
-/// `card_effect_from_ability_mechanic`).
-///
-/// Returned as a flat amount that the caller folds into the other pre-Weakness reductions, matching
-/// how every existing damage-reduction ability is ordered relative to the Weakness bonus.
-fn get_conditional_ability_damage_reduction(
+/// Unown's GUARD works only while its controller has *another* Unown in play whose printed Ability
+/// is something other than GUARD (CHECK on A2a 034 / A2a 078, POWER on A4 085). Two GUARD Unown
+/// never enable each other.
+fn has_non_guard_unown_in_play(state: &State, player: usize) -> bool {
+    state.enumerate_in_play_pokemon(player).any(|(_, pokemon)| {
+        pokemon.get_name() == "Unown"
+            && pokemon
+                .card
+                .get_ability()
+                .is_some_and(|ability| ability.title != "GUARD")
+    })
+}
+
+/// GUARD (Unown A4 084): "All of your Pokémon take -10 damage from attacks from your opponent's
+/// Pokémon", gated on `has_non_guard_unown_in_play`. Board-wide rather than self-scoped, so it is
+/// summed over every GUARD Unown the defending player controls instead of being read off the
+/// target's own ability.
+fn get_unown_guard_reduction(state: &State, target_player: usize) -> u32 {
+    if !has_non_guard_unown_in_play(state, target_player) {
+        return 0;
+    }
+    state
+        .enumerate_in_play_pokemon(target_player)
+        .filter_map(|(_, pokemon)| match get_ability_mechanic(&pokemon.card) {
+            Some(AbilityMechanic::UnownGuard { amount }) => Some(*amount),
+            _ => None,
+        })
+        .sum()
+}
+
+/// Damage reduction printed on the receiving Pokémon itself but conditioned on the attacker or on
+/// the board, so it cannot be modelled as a context-free `CardEffect` the way
+/// `ReduceDamageFromAttacks` is (see `card_effect_from_ability_mechanic`).
+fn get_conditional_self_damage_reduction(
     state: &State,
-    attacking_player: usize,
     attacking_pokemon: &PlayedCard,
     target_player: usize,
     receiving_pokemon: &PlayedCard,
-    is_from_active_attack: bool,
+    from_opponent: bool,
 ) -> u32 {
-    if !is_from_active_attack {
-        return 0;
-    }
-    let from_opponent = attacking_player != target_player;
-    let total = match get_ability_mechanic(&receiving_pokemon.card) {
+    match get_ability_mechanic(&receiving_pokemon.card) {
         // Thick Fat / Defensive Whirlwind: gated on the attacker's Energy type.
         Some(AbilityMechanic::ReduceDamageFromTypedAttackers {
             energy_types,
@@ -646,7 +668,40 @@ fn get_conditional_ability_damage_reduction(
             *amount
         }
         _ => 0,
+    }
+}
+
+/// All conditional ability-driven damage reduction protecting the target: the reductions printed on
+/// the target itself plus board-wide ones (Unown's GUARD). Returned as a flat amount that the caller
+/// folds into the other pre-Weakness reductions, matching how every existing damage-reduction
+/// ability is ordered relative to the Weakness bonus.
+fn get_conditional_ability_damage_reduction(
+    state: &State,
+    attacking_player: usize,
+    attacking_pokemon: &PlayedCard,
+    target_player: usize,
+    receiving_pokemon: &PlayedCard,
+    is_from_active_attack: bool,
+) -> u32 {
+    if !is_from_active_attack {
+        return 0;
+    }
+    let from_opponent = attacking_player != target_player;
+    let self_reduction = get_conditional_self_damage_reduction(
+        state,
+        attacking_pokemon,
+        target_player,
+        receiving_pokemon,
+        from_opponent,
+    );
+    // GUARD is board-wide ("All of your Pokémon"), and only against the opponent's Pokémon.
+    let guard_reduction = if from_opponent {
+        get_unown_guard_reduction(state, target_player)
+    } else {
+        0
     };
+
+    let total = self_reduction + guard_reduction;
     if total > 0 {
         debug!("Conditional ability damage reduction: -{total}");
     }

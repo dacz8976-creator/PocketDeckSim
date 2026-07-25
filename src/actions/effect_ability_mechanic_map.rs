@@ -346,7 +346,10 @@ pub static EFFECT_ABILITY_MECHANIC_MAP: LazyLock<HashMap<&'static str, AbilityMe
             AbilityMechanic::PreventAllDamageFromEx,
         );
         // map.insert("Prevent all effects of attacks used by your opponent's Pokémon done to this Pokémon.", todo_implementation);
-        // map.insert("This Ability works if you have any Unown in play with an Ability other than GUARD. All of your Pokémon take -10 damage from attacks from your opponent's Pokémon.", todo_implementation);
+        map.insert(
+            "This Ability works if you have any Unown in play with an Ability other than GUARD. All of your Pokémon take -10 damage from attacks from your opponent's Pokémon.",
+            AbilityMechanic::UnownGuard { amount: 10 },
+        );
         // map.insert("This Ability works if you have any Unown in play with an Ability other than POWER. Attacks used by your Pokémon do +10 damage to your opponent's Active Pokémon.", todo_implementation);
         map.insert(
             "This Pokémon can evolve into any Pokémon that evolves from Eevee if you play it from your hand onto this Pokémon. (This Pokémon can't evolve during your first turn or the turn you play it.)",

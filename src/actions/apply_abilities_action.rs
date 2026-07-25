@@ -132,6 +132,9 @@ fn forecast_ability_by_mechanic(
         AbilityMechanic::ReduceDamageAtFullHp { .. } => {
             panic!("ReduceDamageAtFullHp is a passive ability")
         }
+        AbilityMechanic::UnownGuard { .. } => {
+            panic!("UnownGuard is a passive ability")
+        }
         AbilityMechanic::IncreaseDamageWhenRemainingHpAtMost { .. } => {
             panic!("IncreaseDamageWhenRemainingHpAtMost is a passive ability")
         }

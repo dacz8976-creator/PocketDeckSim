@@ -204,6 +204,8 @@ mod thick_fat_test;
 mod tinkaton_gigaton_hammer_test;
 #[path = "pokemon/typhlosion_fire_breath_test.rs"]
 mod typhlosion_fire_breath_test;
+#[path = "pokemon/unown_guard_test.rs"]
+mod unown_guard_test;
 #[path = "pokemon/ursaluna_guts_test.rs"]
 mod ursaluna_guts_test;
 #[path = "pokemon/vanilluxe_test.rs"]
