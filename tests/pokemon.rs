@@ -188,6 +188,8 @@ mod snover_ice_shard_test;
 mod spewpa_signs_of_evolution_test;
 #[path = "pokemon/sunflora_quick_grow_beam_test.rs"]
 mod sunflora_quick_grow_beam_test;
+#[path = "pokemon/swellow_repelling_wind_test.rs"]
+mod swellow_repelling_wind_test;
 #[path = "pokemon/swift_shot_test.rs"]
 mod swift_shot_test;
 #[path = "pokemon/tapu_lele_energy_arrow_test.rs"]

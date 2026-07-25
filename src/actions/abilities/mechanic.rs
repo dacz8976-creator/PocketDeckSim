@@ -145,8 +145,15 @@ pub enum AbilityMechanic {
     HealActiveYourPokemon {
         amount: u32,
     },
+    /// "Once during your turn, you may switch out your opponent's Active [Basic] Pokémon to the
+    /// Bench. (Your opponent chooses the new Active Pokémon.)"
+    ///
+    /// - `require_active`: the ability holder must itself be in the Active Spot.
+    /// - `require_opponent_active_basic`: only Swellow's Repelling Wind (B2 133) prints the
+    ///   "Active *Basic* Pokémon" restriction; the other printings can repel anything.
     SwitchOutOpponentActiveToBench {
         require_active: bool,
+        require_opponent_active_basic: bool,
     },
     BadDreamsEndOfTurn {
         amount: u32,

@@ -140,11 +140,14 @@ fn can_use_ability_by_mechanic(
             can_use_remove_random_special_condition_from_active(state, card)
         }
         AbilityMechanic::HealActiveYourPokemon { .. } => !card.ability_used,
-        AbilityMechanic::SwitchOutOpponentActiveToBench { require_active } => {
-            let opponent = (state.current_player + 1) % 2;
+        AbilityMechanic::SwitchOutOpponentActiveToBench {
+            require_active,
+            require_opponent_active_basic,
+        } => {
             !card.ability_used
                 && (!require_active || is_active)
-                && state.enumerate_bench_pokemon(opponent).next().is_some()
+                && opponent_has_benched_pokemon(state)
+                && (!require_opponent_active_basic || opponent_active_is_basic(state))
         }
         AbilityMechanic::DiscardFromHandToDrawCard => {
             !card.ability_used && !state.hands[state.current_player].is_empty()
@@ -308,6 +311,15 @@ fn can_use_crobat_cunning_link(state: &State, card: &PlayedCard) -> bool {
 fn opponent_has_benched_pokemon(state: &State) -> bool {
     let opponent = (state.current_player + 1) % 2;
     state.enumerate_bench_pokemon(opponent).next().is_some()
+}
+
+/// True when the opponent's Active Pokémon is a Basic — the restriction Swellow's Repelling Wind
+/// adds on top of the shared "switch out your opponent's Active Pokémon" template.
+fn opponent_active_is_basic(state: &State) -> bool {
+    let opponent = (state.current_player + 1) % 2;
+    state
+        .maybe_get_active(opponent)
+        .is_some_and(|active| active.card.is_basic())
 }
 
 fn can_use_umbreon_dark_chase(state: &State, card: &PlayedCard) -> bool {

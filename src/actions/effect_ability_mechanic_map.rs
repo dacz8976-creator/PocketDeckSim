@@ -295,17 +295,27 @@ pub static EFFECT_ABILITY_MECHANIC_MAP: LazyLock<HashMap<&'static str, AbilityMe
             "Once during your turn, you may put a random Pokémon from your deck into your hand.",
             AbilityMechanic::SearchRandomPokemonFromDeck,
         );
-        // map.insert("Once during your turn, you may switch out your opponent's Active Basic Pokémon to the Bench. (Your opponent chooses the new Active Pokémon.)", todo_implementation);
+        // Note the non-breaking space before "(Your opponent ...": the database text uses U+00A0
+        // there, exactly like the non-Basic printing below, so the key must too.
+        map.insert(
+            "Once during your turn, you may switch out your opponent's Active Basic Pok\u{e9}mon to the Bench.\u{a0}(Your opponent chooses the new Active Pok\u{e9}mon.)",
+            AbilityMechanic::SwitchOutOpponentActiveToBench {
+                require_active: false,
+                require_opponent_active_basic: true,
+            },
+        );
         map.insert(
             "Once during your turn, if this Pokémon is in the Active Spot, you may switch out your opponent's Active Pokémon to the Bench. (Your opponent chooses the new Active Pokémon.)",
             AbilityMechanic::SwitchOutOpponentActiveToBench {
                 require_active: true,
+                require_opponent_active_basic: false,
             },
         );
         map.insert(
             "Once during your turn, you may switch out your opponent's Active Pok\u{e9}mon to the Bench.\u{a0}(Your opponent chooses the new Active Pok\u{e9}mon.)",
             AbilityMechanic::SwitchOutOpponentActiveToBench {
                 require_active: false,
+                require_opponent_active_basic: false,
             },
         );
         map.insert(
@@ -449,8 +459,8 @@ pub static EFFECT_ABILITY_MECHANIC_MAP: LazyLock<HashMap<&'static str, AbilityMe
             "Once during your turn, you may heal 60 damage from 1 of your Pokémon ex that has any Energy attached. If you do, discard a random Energy from that Pokémon.",
             AbilityMechanic::HealOneYourPokemonExAndDiscardRandomEnergy { amount: 60 },
         );
-        // map.insert("Once during your turn, you may switch out your opponent's Active Basic Pokémon to the Bench. (Your opponent chooses the new Active Pokémon.)", todo_implementation);
-        // map.insert("Once during your turn, you may switch out your opponent's Active Pokémon to the Bench. (Your opponent chooses the new Active Pokémon.)", todo_implementation);
+        // Both "switch out your opponent's Active [Basic] Pokémon to the Bench" texts are
+        // mapped further up; the generator emitted duplicates of them here.
         map.insert(
             "Once during your turn, you may take a [W] Energy from your Energy Zone and attach it to the [W] Pokémon in the Active Spot.",
             AbilityMechanic::AttachEnergyFromZoneToActiveTypedPokemon {
