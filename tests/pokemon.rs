@@ -190,6 +190,8 @@ mod tapu_lele_energy_arrow_test;
 mod tepig_stoke_test;
 #[path = "pokemon/terapagos_ex_test.rs"]
 mod terapagos_ex_test;
+#[path = "pokemon/tinkaton_gigaton_hammer_test.rs"]
+mod tinkaton_gigaton_hammer_test;
 #[path = "pokemon/typhlosion_fire_breath_test.rs"]
 mod typhlosion_fire_breath_test;
 #[path = "pokemon/ursaluna_guts_test.rs"]
