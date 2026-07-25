@@ -124,6 +124,14 @@ impl PlayedCard {
         self
     }
 
+    /// Start this Pokémon already affected by `status`. Companion to the other `with_*` builders,
+    /// for reaching a mid-game board without replaying the attack that inflicted the condition.
+    /// Applies the condition directly, bypassing immunity checks, exactly like `set_status_raw`.
+    pub fn with_status_condition(mut self, status: StatusCondition) -> Self {
+        self.set_status_raw(status);
+        self
+    }
+
     pub fn get_id(&self) -> String {
         match &self.card {
             Card::Pokemon(pokemon_card) => pokemon_card.id.clone(),

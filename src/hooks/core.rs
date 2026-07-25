@@ -268,6 +268,8 @@ pub(crate) fn on_end_turn(player_ending_turn: usize, state: &mut State) {
         state.get_active_mut(player_ending_turn).heal(10);
     }
 
+    apply_end_of_turn_berries(state);
+
     // Process delayed damage effects on active Pokemon
     // Delayed damage triggers at the end of the opponent's turn (when their turn ends, the effect expires)
     let total_delayed_damage: u32 = state
@@ -1356,6 +1358,55 @@ pub(crate) fn on_knockout(
 
 /// Lucky Egg: when the holder is Knocked Out by an opponent's attack, draw until hand has 5.
 /// Position-agnostic — triggers whether the holder was KO'd in the Active Spot or on the Bench.
+/// Lum Berry (A2 149) and Sitrus Berry (B1 218). Both trigger "at the end of each turn" — not
+/// just their owner's — and both discard themselves only in the turn they actually do something,
+/// so a berry attached with nothing to fix stays on for later.
+///
+/// Both players' boards are scanned, hence the pass over every in-play slot rather than just the
+/// Active. Indices are collected before mutating, matching the Metal Core Barrier handling above.
+fn apply_end_of_turn_berries(state: &mut State) {
+    for player in 0..2 {
+        let lum_indices: Vec<usize> = state.in_play_pokemon[player]
+            .iter()
+            .enumerate()
+            .filter(|(_, slot)| {
+                slot.as_ref().is_some_and(|pokemon| {
+                    has_tool(pokemon, CardId::A2149LumBerry) && pokemon.has_status_condition()
+                })
+            })
+            .map(|(idx, _)| idx)
+            .collect();
+        for idx in lum_indices {
+            debug!("Lum Berry: curing Special Conditions and discarding");
+            if let Some(pokemon) = state.in_play_pokemon[player][idx].as_mut() {
+                pokemon.cure_status_conditions();
+            }
+            state.discard_tool(player, idx);
+        }
+
+        let sitrus_indices: Vec<usize> = state.in_play_pokemon[player]
+            .iter()
+            .enumerate()
+            .filter(|(_, slot)| {
+                slot.as_ref().is_some_and(|pokemon| {
+                    has_tool(pokemon, CardId::B1218SitrusBerry)
+                        // "half of its maximum HP or less remaining" — compared against effective
+                        // total HP so tool and stadium HP bonuses are respected.
+                        && pokemon.get_remaining_hp() * 2 <= pokemon.get_effective_total_hp()
+                })
+            })
+            .map(|(idx, _)| idx)
+            .collect();
+        for idx in sitrus_indices {
+            debug!("Sitrus Berry: healing 30 and discarding");
+            if let Some(pokemon) = state.in_play_pokemon[player][idx].as_mut() {
+                pokemon.heal(30);
+            }
+            state.discard_tool(player, idx);
+        }
+    }
+}
+
 fn apply_lucky_egg(
     state: &mut State,
     knocked_out_player: usize,

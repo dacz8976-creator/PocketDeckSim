@@ -68,6 +68,10 @@ static MEMORY_LIGHT_EFFECT: LazyLock<String> =
     LazyLock::new(|| tool_effect_text_from_card_id(CardId::A4a068MemoryLight));
 static LUCKY_MITTENS_EFFECT: LazyLock<String> =
     LazyLock::new(|| tool_effect_text_from_card_id(CardId::B1220LuckyMittens));
+static LUM_BERRY_EFFECT: LazyLock<String> =
+    LazyLock::new(|| tool_effect_text_from_card_id(CardId::A2149LumBerry));
+static SITRUS_BERRY_EFFECT: LazyLock<String> =
+    LazyLock::new(|| tool_effect_text_from_card_id(CardId::B1218SitrusBerry));
 
 pub fn tool_effects_equal(trainer_card: &TrainerCard, reference_tool_id: CardId) -> bool {
     ensure_tool_trainer(trainer_card);
@@ -123,5 +127,7 @@ pub fn is_tool_effect_implemented(trainer_card: &TrainerCard) -> bool {
             || e == LEFTOVERS_EFFECT.as_str()
             || e == MEMORY_LIGHT_EFFECT.as_str()
             || e == LUCKY_MITTENS_EFFECT.as_str()
+            || e == LUM_BERRY_EFFECT.as_str()
+            || e == SITRUS_BERRY_EFFECT.as_str()
     )
 }

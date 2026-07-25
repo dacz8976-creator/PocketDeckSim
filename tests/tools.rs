@@ -1,3 +1,5 @@
+#[path = "tools/berries_test.rs"]
+mod berries_test;
 #[path = "tools/booster_capsule_test.rs"]
 mod booster_capsule_test;
 #[path = "tools/lucky_egg_test.rs"]
