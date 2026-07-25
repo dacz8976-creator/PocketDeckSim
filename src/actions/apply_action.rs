@@ -63,6 +63,7 @@ pub fn forecast_action(state: &State, action: &Action) -> Outcomes {
         | SimpleAction::HealAndDiscardEnergy { .. }
         | SimpleAction::HealAndCureConditions { .. }
         | SimpleAction::MoveAllDamage { .. }
+        | SimpleAction::MoveDamageToOpponentActive { .. }
         | SimpleAction::ApplyEeveeBagDamageBoost
         | SimpleAction::HealAllEeveeEvolutions
         | SimpleAction::DiscardFossil { .. }
@@ -314,6 +315,10 @@ fn apply_deterministic_action(state: &mut State, action: &Action) {
             amount,
             conditions,
         } => apply_heal_and_cure_conditions(action.actor, state, *in_play_idx, *amount, conditions),
+        SimpleAction::MoveDamageToOpponentActive {
+            from_in_play_idx,
+            amount,
+        } => apply_move_damage_to_opponent_active(action.actor, state, *from_in_play_idx, *amount),
         SimpleAction::MoveAllDamage { from, to } => {
             apply_move_all_damage(action.actor, state, *from, *to)
         }
@@ -568,6 +573,43 @@ fn apply_heal_and_cure_conditions(
     for condition in conditions {
         pokemon.clear_status_condition(*condition);
     }
+}
+
+/// Acerola: move up to `amount` damage from one of `actor`'s Pokémon onto the opponent's Active
+/// Pokémon. Like `apply_move_all_damage`, the transferred damage goes through `handle_damage` so
+/// knockouts and on-damage effects resolve, but with `is_from_active_attack: false` — moved damage
+/// is not an attack.
+fn apply_move_damage_to_opponent_active(
+    actor: usize,
+    state: &mut State,
+    from_in_play_idx: usize,
+    amount: u32,
+) {
+    let opponent = (actor + 1) % 2;
+    if state.maybe_get_active(opponent).is_none() {
+        return;
+    }
+    let damage_to_move = {
+        let from_pokemon = state.in_play_pokemon[actor][from_in_play_idx]
+            .as_ref()
+            .expect("Pokemon to move damage from should be there");
+        amount.min(from_pokemon.get_damage_counters())
+    };
+    if damage_to_move == 0 {
+        return;
+    }
+
+    state.in_play_pokemon[actor][from_in_play_idx]
+        .as_mut()
+        .expect("Pokemon to move damage from should be there")
+        .heal(damage_to_move);
+    handle_damage(
+        state,
+        (actor, from_in_play_idx),
+        &[(damage_to_move, opponent, 0)],
+        false,
+        None,
+    );
 }
 
 fn apply_move_all_damage(actor: usize, state: &mut State, from: usize, to: usize) {

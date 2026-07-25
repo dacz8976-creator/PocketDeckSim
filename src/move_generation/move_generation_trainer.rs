@@ -2,7 +2,7 @@ use crate::{
     actions::{abilities::AbilityMechanic, get_ability_mechanic, SimpleAction},
     card_ids::CardId,
     card_logic::{
-        can_rare_candy_evolve, diantha_targets, ilima_targets, mallow_targets,
+        acerola_targets, can_rare_candy_evolve, diantha_targets, ilima_targets, mallow_targets,
         quick_grow_extract_candidates, wallace_candidates, whitney_targets,
     },
     effects::TurnEffect,
@@ -144,6 +144,7 @@ pub fn trainer_move_generation_implementation(
         CardId::B1222Hala | CardId::B1267Hala => can_play_trainer(state, trainer_card),
         CardId::A4a069Whitney | CardId::A4a083Whitney => can_play_whitney(state, trainer_card),
         CardId::A3154Mallow | CardId::A3196Mallow => can_play_mallow(state, trainer_card),
+        CardId::A3148Acerola | CardId::A3190Acerola => can_play_acerola(state, trainer_card),
         CardId::A3150Kiawe | CardId::A3192Kiawe => can_play_kiawe(state, trainer_card),
         CardId::A4157Lyra | CardId::A4197Lyra | CardId::A4b332Lyra | CardId::A4b333Lyra => {
             can_play_lyra(state, trainer_card)
@@ -930,6 +931,19 @@ fn can_play_parasol_lady(state: &State, trainer_card: &TrainerCard) -> Option<Ve
 /// Check if Whitney can be played (requires a Miltank that is damaged or Asleep/Paralyzed/Confused)
 fn can_play_whitney(state: &State, trainer_card: &TrainerCard) -> Option<Vec<SimpleAction>> {
     if whitney_targets(state, state.current_player).is_empty() {
+        cannot_play_trainer()
+    } else {
+        can_play_trainer(state, trainer_card)
+    }
+}
+
+/// Check if Acerola can be played (requires a damaged Palossand or Mimikyu, and an opponent
+/// Active Pokémon to move the damage onto)
+fn can_play_acerola(state: &State, trainer_card: &TrainerCard) -> Option<Vec<SimpleAction>> {
+    let opponent = (state.current_player + 1) % 2;
+    if state.maybe_get_active(opponent).is_none()
+        || acerola_targets(state, state.current_player).is_empty()
+    {
         cannot_play_trainer()
     } else {
         can_play_trainer(state, trainer_card)

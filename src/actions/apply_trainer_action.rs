@@ -14,7 +14,7 @@ use crate::{
     },
     card_ids::CardId,
     card_logic::{
-        can_rare_candy_evolve, diantha_targets, ilima_targets, mallow_targets,
+        acerola_targets, can_rare_candy_evolve, diantha_targets, ilima_targets, mallow_targets,
         quick_grow_extract_candidates, wallace_candidates, whitney_targets,
     },
     combinatorics::generate_combinations,
@@ -136,6 +136,7 @@ pub fn forecast_trainer_action(
         CardId::B1222Hala | CardId::B1267Hala => Outcomes::single_fn(hala_effect),
         CardId::A4a069Whitney | CardId::A4a083Whitney => Outcomes::single_fn(whitney_effect),
         CardId::A3154Mallow | CardId::A3196Mallow => Outcomes::single_fn(mallow_effect),
+        CardId::A3148Acerola | CardId::A3190Acerola => Outcomes::single_fn(acerola_effect),
         CardId::A3150Kiawe | CardId::A3192Kiawe => Outcomes::single_fn(kiawe_effect),
         CardId::A4157Lyra | CardId::A4197Lyra | CardId::A4b332Lyra | CardId::A4b333Lyra => {
             Outcomes::single_fn(lyra_effect)
@@ -862,6 +863,23 @@ const WHITNEY_CURED_CONDITIONS: [StatusCondition; 3] = [
     StatusCondition::Paralyzed,
     StatusCondition::Confused,
 ];
+
+fn acerola_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    // Choose 1 of your Palossand or Mimikyu that has damage on it, and move 40 of its damage to
+    // your opponent's Active Pokémon.
+    let choices = acerola_targets(state, action.actor)
+        .into_iter()
+        .map(
+            |from_in_play_idx| SimpleAction::MoveDamageToOpponentActive {
+                from_in_play_idx,
+                amount: 40,
+            },
+        )
+        .collect::<Vec<_>>();
+    if !choices.is_empty() {
+        state.move_generation_stack.push((action.actor, choices));
+    }
+}
 
 fn whitney_effect(_: &mut StdRng, state: &mut State, action: &Action) {
     // Heal 60 damage from 1 of your Miltank, and it recovers from being Asleep, Paralyzed, and Confused.

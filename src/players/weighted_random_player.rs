@@ -56,6 +56,7 @@ fn get_weight(action: &SimpleAction) -> u32 {
         SimpleAction::HealAndDiscardEnergy { .. } => 5,
         SimpleAction::HealAndCureConditions { .. } => 5,
         SimpleAction::MoveAllDamage { .. } => 10,
+        SimpleAction::MoveDamageToOpponentActive { .. } => 10,
         SimpleAction::Activate { .. } => 1,
         SimpleAction::CommunicatePokemon { .. } => 5,
         SimpleAction::ShufflePokemonIntoDeck { .. } => 5,

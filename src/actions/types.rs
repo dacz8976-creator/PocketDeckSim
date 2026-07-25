@@ -78,6 +78,12 @@ pub enum SimpleAction {
         from: usize,
         to: usize,
     },
+    /// Acerola: move up to `amount` damage off one of your Pokémon and onto the opponent's Active
+    /// Pokémon. Only as much damage as the source actually carries is moved.
+    MoveDamageToOpponentActive {
+        from_in_play_idx: usize,
+        amount: u32,
+    },
     ApplyDamage {
         attacking_ref: (usize, usize), // (attacking_player, attacking_pokemon_idx)
         targets: Vec<(u32, usize, usize)>, // Vec of (damage, target_player, in_play_idx)
@@ -245,6 +251,10 @@ impl fmt::Display for SimpleAction {
             SimpleAction::MoveAllDamage { from, to } => {
                 write!(f, "MoveAllDamage(from:{from}, to:{to})")
             }
+            SimpleAction::MoveDamageToOpponentActive {
+                from_in_play_idx,
+                amount,
+            } => write!(f, "MoveDamageToOpponentActive({from_in_play_idx}, {amount})"),
             SimpleAction::ApplyDamage {
                 attacking_ref,
                 targets,
