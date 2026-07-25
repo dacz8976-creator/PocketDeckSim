@@ -8,6 +8,8 @@ mod card_fetch_trainers_test;
 mod cynthia_test;
 #[path = "trainers/damage_reduction_trainers_test.rs"]
 mod damage_reduction_trainers_test;
+#[path = "trainers/disruption_items_test.rs"]
+mod disruption_items_test;
 #[path = "trainers/elesa_test.rs"]
 mod elesa_test;
 #[path = "trainers/field_blower_test.rs"]

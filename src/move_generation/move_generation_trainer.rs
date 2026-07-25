@@ -156,6 +156,10 @@ pub fn trainer_move_generation_implementation(
         }
         CardId::A4159Fisher | CardId::A4199Fisher => can_play_fisher(state, trainer_card),
         CardId::A3143FishingNet => can_play_fishing_net(state, trainer_card),
+        CardId::A4152SquirtBottle => can_play_squirt_bottle(state, trainer_card),
+        CardId::B1215HittingHammer => can_play_hitting_hammer(state, trainer_card),
+        CardId::B1213PrankSpinner => can_play_prank_spinner(state, trainer_card),
+        CardId::A1a064PokemonFlute => can_play_pokemon_flute(state, trainer_card),
         CardId::A1a066BuddingExpeditioner | CardId::A1a080BuddingExpeditioner => {
             can_play_budding_expeditioner(state, trainer_card)
         }
@@ -948,6 +952,61 @@ fn can_play_whitney(state: &State, trainer_card: &TrainerCard) -> Option<Vec<Sim
         cannot_play_trainer()
     } else {
         can_play_trainer(state, trainer_card)
+    }
+}
+
+/// Check if Squirt Bottle can be played (requires a [R] Energy on the opponent's Active Pokémon)
+fn can_play_squirt_bottle(state: &State, trainer_card: &TrainerCard) -> Option<Vec<SimpleAction>> {
+    let opponent = (state.current_player + 1) % 2;
+    let has_fire = state
+        .maybe_get_active(opponent)
+        .is_some_and(|active| active.attached_energy.contains(&EnergyType::Fire));
+    if has_fire {
+        can_play_trainer(state, trainer_card)
+    } else {
+        cannot_play_trainer()
+    }
+}
+
+/// Check if Hitting Hammer can be played (requires any Energy on the opponent's Active Pokémon)
+fn can_play_hitting_hammer(state: &State, trainer_card: &TrainerCard) -> Option<Vec<SimpleAction>> {
+    let opponent = (state.current_player + 1) % 2;
+    let has_energy = state
+        .maybe_get_active(opponent)
+        .is_some_and(|active| !active.attached_energy.is_empty());
+    if has_energy {
+        can_play_trainer(state, trainer_card)
+    } else {
+        cannot_play_trainer()
+    }
+}
+
+/// Check if Prank Spinner can be played (requires at least one other card across both hands, since
+/// Prank Spinner itself is discarded before the effect resolves)
+fn can_play_prank_spinner(state: &State, trainer_card: &TrainerCard) -> Option<Vec<SimpleAction>> {
+    let other_cards = state.hands[0].len() + state.hands[1].len();
+    if other_cards > 1 {
+        can_play_trainer(state, trainer_card)
+    } else {
+        cannot_play_trainer()
+    }
+}
+
+/// Check if Pokémon Flute can be played (requires a Basic Pokémon in the opponent's discard pile
+/// and an open slot on their Bench)
+fn can_play_pokemon_flute(state: &State, trainer_card: &TrainerCard) -> Option<Vec<SimpleAction>> {
+    let opponent = (state.current_player + 1) % 2;
+    let has_basic = state.discard_piles[opponent]
+        .iter()
+        .any(|card| card.is_basic());
+    let has_bench_space = state.in_play_pokemon[opponent]
+        .iter()
+        .skip(1)
+        .any(|slot| slot.is_none());
+    if has_basic && has_bench_space {
+        can_play_trainer(state, trainer_card)
+    } else {
+        cannot_play_trainer()
     }
 }
 

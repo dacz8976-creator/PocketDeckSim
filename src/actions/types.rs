@@ -168,6 +168,11 @@ pub enum SimpleAction {
     },
     /// Field Blower: discard the active stadium.
     DiscardActiveStadium,
+    /// Pokémon Flute: put a Basic Pokémon from the opponent's discard pile onto their Bench.
+    BenchOpponentFromDiscard {
+        card: Card,
+        bench_idx: usize,
+    },
     /// Crawdaunt's Unruly Claw: discard a random Energy from the opponent's Active Pokémon
     DiscardRandomOpponentActiveEnergy,
     /// Apply a chosen Special Condition to the opponent's Active Pokémon (e.g. Dustox's Select Powder).
@@ -346,6 +351,9 @@ impl fmt::Display for SimpleAction {
                 write!(f, "DiscardToolFromPokemon({player}, {in_play_idx})")
             }
             SimpleAction::DiscardActiveStadium => write!(f, "DiscardActiveStadium"),
+            SimpleAction::BenchOpponentFromDiscard { card, bench_idx } => {
+                write!(f, "BenchOpponentFromDiscard({card}, {bench_idx})")
+            }
             SimpleAction::DiscardRandomOpponentActiveEnergy => {
                 write!(f, "DiscardRandomOpponentActiveEnergy")
             }

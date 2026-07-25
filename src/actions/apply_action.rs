@@ -71,6 +71,7 @@ pub fn forecast_action(state: &State, action: &Action) -> Outcomes {
         | SimpleAction::ShuffleInPlayPokemonIntoDeck { .. }
         | SimpleAction::DiscardToolFromPokemon { .. }
         | SimpleAction::DiscardActiveStadium
+        | SimpleAction::BenchOpponentFromDiscard { .. }
         | SimpleAction::DiscardRandomOpponentActiveEnergy
         | SimpleAction::ApplyStatusToOpponentActive { .. }
         | SimpleAction::Noop => forecast_deterministic_action(),
@@ -315,6 +316,9 @@ fn apply_deterministic_action(state: &mut State, action: &Action) {
             amount,
             conditions,
         } => apply_heal_and_cure_conditions(action.actor, state, *in_play_idx, *amount, conditions),
+        SimpleAction::BenchOpponentFromDiscard { card, bench_idx } => {
+            apply_bench_opponent_from_discard(action.actor, state, card, *bench_idx)
+        }
         SimpleAction::MoveDamageToOpponentActive {
             from_in_play_idx,
             amount,
@@ -573,6 +577,28 @@ fn apply_heal_and_cure_conditions(
     for condition in conditions {
         pokemon.clear_status_condition(*condition);
     }
+}
+
+/// Pokémon Flute: take a specific Basic Pokémon out of the opponent's discard pile and place it
+/// on their Bench. The card belongs to the opponent throughout, so it is removed from *their*
+/// discard pile and placed on *their* board.
+fn apply_bench_opponent_from_discard(
+    actor: usize,
+    state: &mut State,
+    card: &Card,
+    bench_idx: usize,
+) {
+    let opponent = (actor + 1) % 2;
+    let Some(idx) = state.discard_piles[opponent].iter().position(|c| c == card) else {
+        return;
+    };
+    if state.in_play_pokemon[opponent][bench_idx].is_some() {
+        return;
+    }
+    state.discard_piles[opponent].remove(idx);
+    let played_card = to_playable_card(card, true);
+    state.in_play_pokemon[opponent][bench_idx] = Some(played_card);
+    state.refresh_hp_bonuses_all();
 }
 
 /// Acerola: move up to `amount` damage from one of `actor`'s Pokémon onto the opponent's Active

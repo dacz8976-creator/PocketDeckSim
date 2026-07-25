@@ -153,6 +153,10 @@ pub fn forecast_trainer_action(
         CardId::A3143FishingNet => {
             discard_search_outcomes_with_filter(acting_player, state, is_basic_water_pokemon)
         }
+        CardId::A4152SquirtBottle => Outcomes::single_fn(squirt_bottle_effect),
+        CardId::B1215HittingHammer => hitting_hammer_outcomes(),
+        CardId::B1213PrankSpinner => Outcomes::single_fn(prank_spinner_effect),
+        CardId::A1a064PokemonFlute => Outcomes::single_fn(pokemon_flute_effect),
         CardId::A1a066BuddingExpeditioner | CardId::A1a080BuddingExpeditioner => {
             Outcomes::single_fn(budding_expeditioner_effect)
         }
@@ -931,6 +935,97 @@ fn is_basic_water_pokemon(card: &Card) -> bool {
 /// Fisher's target predicate: "a [W] Pokémon ... from your discard pile" (any stage).
 fn is_water_pokemon(card: &Card) -> bool {
     matches!(card, Card::Pokemon(_)) && card.get_type() == Some(EnergyType::Water)
+}
+
+fn squirt_bottle_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    // Discard a [R] Energy from your opponent's Active Pokémon.
+    let opponent = (action.actor + 1) % 2;
+    let has_fire = state
+        .maybe_get_active(opponent)
+        .is_some_and(|active| active.attached_energy.contains(&EnergyType::Fire));
+    if has_fire {
+        state.discard_from_active(opponent, &[EnergyType::Fire]);
+    }
+}
+
+fn hitting_hammer_outcomes() -> Outcomes {
+    // Flip 2 coins. If both of them are heads, discard a random Energy from your opponent's
+    // Active Pokémon.
+    Outcomes::binomial_by_heads(2, move |heads| {
+        Box::new(
+            move |rng: &mut StdRng, state: &mut State, action: &Action| {
+                if heads < 2 {
+                    return;
+                }
+                let opponent = (action.actor + 1) % 2;
+                let Some(active) = state.maybe_get_active(opponent) else {
+                    return;
+                };
+                if active.attached_energy.is_empty() {
+                    return;
+                }
+                let picked = rng.gen_range(0..active.attached_energy.len());
+                let energy = active.attached_energy[picked];
+                state.discard_from_active(opponent, &[energy]);
+            },
+        )
+    })
+}
+
+fn prank_spinner_effect(rng: &mut StdRng, state: &mut State, _: &Action) {
+    // A card from among both player's hands is chosen at random, revealed to the other player, and
+    // shuffled into its owner's deck. The reveal is informational only — deckgym's bots have no
+    // hidden-information model — so only the shuffle is modelled. The pick uses the rng rather than
+    // an Outcomes branch per card so the game tree does not blow up with (and leak) hand contents.
+    let total = state.hands[0].len() + state.hands[1].len();
+    if total == 0 {
+        return;
+    }
+    let picked = rng.gen_range(0..total);
+    let (owner, index) = if picked < state.hands[0].len() {
+        (0, picked)
+    } else {
+        (1, picked - state.hands[0].len())
+    };
+    let card = state.hands[owner].remove(index);
+    debug!("Prank Spinner: shuffling {card:?} from player {owner}'s hand into their deck");
+    state.decks[owner].cards.push(card);
+    state.decks[owner].shuffle(false, rng);
+}
+
+fn pokemon_flute_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    // Put a Basic Pokémon from your opponent's discard pile onto their Bench. The player who used
+    // Pokémon Flute picks which one (and which open Bench slot it lands in).
+    let opponent = (action.actor + 1) % 2;
+    let Some(bench_idx) = first_open_bench_slot(state, opponent) else {
+        return;
+    };
+    let mut seen: Vec<Card> = Vec::new();
+    let choices: Vec<SimpleAction> = state.discard_piles[opponent]
+        .iter()
+        .filter(|card| card.is_basic())
+        .filter(|card| {
+            let is_new = !seen.contains(card);
+            if is_new {
+                seen.push((*card).clone());
+            }
+            is_new
+        })
+        .map(|card| SimpleAction::BenchOpponentFromDiscard {
+            card: card.clone(),
+            bench_idx,
+        })
+        .collect();
+    if !choices.is_empty() {
+        state.move_generation_stack.push((action.actor, choices));
+    }
+}
+
+/// The lowest-numbered empty Bench slot for `player`, if any. Bench slots are interchangeable, so
+/// Pokémon Flute only needs to offer one of them.
+fn first_open_bench_slot(state: &State, player: usize) -> Option<usize> {
+    (1..state.in_play_pokemon[player].len())
+        .find(|idx| state.in_play_pokemon[player][*idx].is_none())
 }
 
 fn traveling_merchant_effect(acting_player: usize, state: &State) -> Outcomes {
