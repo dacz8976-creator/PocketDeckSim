@@ -83,6 +83,9 @@ fn can_use_ability_by_mechanic(
         AbilityMechanic::MoveAllTypedEnergyFromBenchToActive { energy_type } => {
             !card.ability_used && has_benched_typed_pokemon_with_typed_energy(state, *energy_type)
         }
+        AbilityMechanic::MoveAllTypedEnergyFromYourPokemonToSelf { energy_type } => {
+            can_use_move_all_typed_energy_to_self(state, _in_play_index, card, *energy_type)
+        }
         AbilityMechanic::AttachEnergyFromZoneToActiveTypedPokemon { energy_type } => {
             can_use_attach_energy_from_zone_to_active_typed(state, card, *energy_type)
         }
@@ -303,6 +306,20 @@ fn can_use_crobat_cunning_link(state: &State, card: &PlayedCard) -> bool {
             let name = pokemon.get_name();
             name == "Arceus" || name == "Arceus ex"
         })
+}
+
+/// Energy Plunder is only worth its once-per-turn use if some *other* Pokémon of yours is holding
+/// the Energy — pulling Energy from the holder to itself does nothing.
+fn can_use_move_all_typed_energy_to_self(
+    state: &State,
+    self_idx: usize,
+    card: &PlayedCard,
+    energy_type: EnergyType,
+) -> bool {
+    !card.ability_used
+        && state
+            .enumerate_in_play_pokemon(state.current_player)
+            .any(|(idx, pokemon)| idx != self_idx && pokemon.attached_energy.contains(&energy_type))
 }
 
 /// True when the opponent has at least one Benched Pokémon to switch in. Without one, an ability

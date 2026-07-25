@@ -202,6 +202,8 @@ mod terapagos_ex_test;
 mod tinkaton_gigaton_hammer_test;
 #[path = "pokemon/typhlosion_fire_breath_test.rs"]
 mod typhlosion_fire_breath_test;
+#[path = "pokemon/tyranitar_energy_plunder_test.rs"]
+mod tyranitar_energy_plunder_test;
 #[path = "pokemon/ursaluna_guts_test.rs"]
 mod ursaluna_guts_test;
 #[path = "pokemon/vanilluxe_test.rs"]

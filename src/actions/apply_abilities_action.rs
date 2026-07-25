@@ -75,6 +75,9 @@ fn forecast_ability_by_mechanic(
                 move_all_typed_energy_from_bench_to_active(state, action, energy_type);
             })
         }
+        AbilityMechanic::MoveAllTypedEnergyFromYourPokemonToSelf { energy_type } => {
+            move_all_typed_energy_from_your_pokemon_to_self(in_play_idx, *energy_type)
+        }
         AbilityMechanic::AttachEnergyFromZoneToActiveTypedPokemon { energy_type } => {
             attach_energy_from_zone_to_active_typed_outcome(*energy_type)
         }
@@ -793,6 +796,51 @@ fn vaporeon_wash_out(_: &mut StdRng, state: &mut State, action: &Action) {
     state
         .move_generation_stack
         .push((acting_player, possible_moves));
+}
+
+/// Tyranitar's Energy Plunder: move all `energy_type` Energy from *every* one of the actor's
+/// Pokémon onto the ability holder at `self_idx`.
+///
+/// There is nothing to choose, so this resolves in a single deterministic mutation rather than
+/// pushing options onto the move-generation stack. The holder is skipped as a source — the card
+/// says "each of your Pokémon", and moving Energy from the holder to itself is a no-op. The
+/// holder's slot is checked up front so Energy is never drained into a Pokémon that has left play.
+fn move_all_typed_energy_from_your_pokemon_to_self(
+    self_idx: usize,
+    energy_type: EnergyType,
+) -> Outcomes {
+    Outcomes::single_fn(move |_rng, state, action| {
+        let player = action.actor;
+        if state.in_play_pokemon[player][self_idx].is_none() {
+            return;
+        }
+
+        let mut gathered = 0usize;
+        for idx in 0..state.in_play_pokemon[player].len() {
+            if idx == self_idx {
+                continue;
+            }
+            let Some(pokemon) = state.in_play_pokemon[player][idx].as_mut() else {
+                continue;
+            };
+            gathered += pokemon
+                .attached_energy
+                .iter()
+                .filter(|energy| **energy == energy_type)
+                .count();
+            pokemon
+                .attached_energy
+                .retain(|energy| *energy != energy_type);
+        }
+
+        if gathered == 0 {
+            return;
+        }
+        debug!("Energy Plunder: moving {gathered} {energy_type:?} Energy to slot {self_idx}");
+        if let Some(target) = state.in_play_pokemon[player][self_idx].as_mut() {
+            target.attached_energy.extend(vec![energy_type; gathered]);
+        }
+    })
 }
 
 /// Lunala ex's Psychic Connect: move all `energy_type` Energy from 1 chosen Benched `energy_type`

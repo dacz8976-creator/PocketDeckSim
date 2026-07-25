@@ -44,6 +44,16 @@ pub enum AbilityMechanic {
     MoveAllTypedEnergyFromBenchToActive {
         energy_type: EnergyType,
     },
+    /// Tyranitar's Energy Plunder: "Once during your turn, you may move all [energy_type] Energy
+    /// from each of your Pokémon to this Pokémon."
+    ///
+    /// Differs from `MoveAllTypedEnergyFromBenchToActive` on both ends: the source is *every* one
+    /// of your Pokémon rather than a single chosen Benched one (so there is no player choice and
+    /// no `move_generation_stack` push), and the destination is the ability holder itself, which
+    /// may be Benched, rather than the Active Spot. Moving from the holder to itself is a no-op.
+    MoveAllTypedEnergyFromYourPokemonToSelf {
+        energy_type: EnergyType,
+    },
     AttachEnergyFromZoneToActiveTypedPokemon {
         energy_type: EnergyType,
     },

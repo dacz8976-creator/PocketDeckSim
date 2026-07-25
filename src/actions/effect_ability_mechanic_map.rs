@@ -283,7 +283,12 @@ pub static EFFECT_ABILITY_MECHANIC_MAP: LazyLock<HashMap<&'static str, AbilityMe
             "Once during your turn, you may make your opponent's Active Pokémon Burned.",
             AbilityMechanic::BurnOpponentActive,
         );
-        // map.insert("Once during your turn, you may move all [D] Energy from each of your Pokémon to this Pokémon.", todo_implementation);
+        map.insert(
+            "Once during your turn, you may move all [D] Energy from each of your Pokémon to this Pokémon.",
+            AbilityMechanic::MoveAllTypedEnergyFromYourPokemonToSelf {
+                energy_type: EnergyType::Darkness,
+            },
+        );
         map.insert(
             "Once during your turn, you may move all [P] Energy from 1 of your Benched [P] Pokémon to your Active Pokémon.",
             AbilityMechanic::MoveAllTypedEnergyFromBenchToActive {
