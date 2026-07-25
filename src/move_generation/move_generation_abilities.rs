@@ -1,8 +1,9 @@
 use crate::{
-    actions::abilities::AbilityMechanic,
+    actions::abilities::{AbilityMechanic, DeckSearchKind},
     actions::{ability_mechanic_from_effect, SimpleAction},
     hooks::is_ultra_beast,
     models::{EnergyType, PlayedCard},
+    tools::is_tool_card,
     State,
 };
 
@@ -113,12 +114,8 @@ fn can_use_ability_by_mechanic(
         AbilityMechanic::IncreaseDamageForTypeInPlay { .. } => false,
         AbilityMechanic::IncreaseDamageForTwoTypesInPlay { .. } => false,
         AbilityMechanic::StartTurnRandomPokemonToHand { .. } => false,
-        AbilityMechanic::SearchRandomPokemonFromDeck => {
-            !card.ability_used
-                && state
-                    .iter_deck_pokemon(state.current_player)
-                    .next()
-                    .is_some()
+        AbilityMechanic::SearchRandomCardFromDeck { card_kind } => {
+            !card.ability_used && deck_has_searchable_card(state, *card_kind)
         }
         AbilityMechanic::MoveDamageFromOneYourPokemonToThisPokemon => {
             can_use_dusknoir_shadow_void(state, _in_play_index)
@@ -314,6 +311,17 @@ fn can_use_crobat_cunning_link(state: &State, card: &PlayedCard) -> bool {
             let name = pokemon.get_name();
             name == "Arceus" || name == "Arceus ex"
         })
+}
+
+/// True when the current player's deck still holds a card the search could actually find. Without
+/// this, "put a random <kind> card from your deck into your hand" would be offered against a deck
+/// with no eligible card and resolve into a bare shuffle, wasting its once-per-turn use.
+fn deck_has_searchable_card(state: &State, card_kind: DeckSearchKind) -> bool {
+    let player = state.current_player;
+    match card_kind {
+        DeckSearchKind::Pokemon => state.iter_deck_pokemon(player).next().is_some(),
+        DeckSearchKind::Tool => state.decks[player].cards.iter().any(is_tool_card),
+    }
 }
 
 /// Energy Plunder is only worth its once-per-turn use if some *other* Pokémon of yours is holding

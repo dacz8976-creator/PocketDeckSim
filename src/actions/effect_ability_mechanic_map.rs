@@ -4,7 +4,7 @@
 use std::collections::HashMap;
 use std::sync::LazyLock;
 
-use crate::actions::abilities::AbilityMechanic;
+use crate::actions::abilities::{AbilityMechanic, DeckSearchKind};
 use crate::effects::CardEffect;
 use crate::models::{Card, EnergyType, StatusCondition};
 
@@ -319,10 +319,17 @@ pub static EFFECT_ABILITY_MECHANIC_MAP: LazyLock<HashMap<&'static str, AbilityMe
                 energy_type: EnergyType::Psychic,
             },
         );
-        // map.insert("Once during your turn, you may put a random Pokémon Tool card from your deck into your hand.", todo_implementation);
+        map.insert(
+            "Once during your turn, you may put a random Pokémon Tool card from your deck into your hand.",
+            AbilityMechanic::SearchRandomCardFromDeck {
+                card_kind: DeckSearchKind::Tool,
+            },
+        );
         map.insert(
             "Once during your turn, you may put a random Pokémon from your deck into your hand.",
-            AbilityMechanic::SearchRandomPokemonFromDeck,
+            AbilityMechanic::SearchRandomCardFromDeck {
+                card_kind: DeckSearchKind::Pokemon,
+            },
         );
         // Note the non-breaking space before "(Your opponent ...": the database text uses U+00A0
         // there, exactly like the non-Basic printing below, so the key must too.

@@ -7,6 +7,12 @@ use crate::{
     State,
 };
 
+/// True when `card` is a Pokémon Tool. Single definition of "is a Tool", shared by deck searches
+/// (Ambipom's Catching Tail) and by the move generation that gates them.
+pub(crate) fn is_tool_card(card: &Card) -> bool {
+    matches!(card, Card::Trainer(trainer_card) if trainer_card.trainer_card_type == TrainerType::Tool)
+}
+
 pub(crate) fn ensure_tool_card(card: &Card) -> &TrainerCard {
     match card {
         Card::Trainer(trainer_card) => ensure_tool_trainer(trainer_card),

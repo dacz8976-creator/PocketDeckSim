@@ -5,11 +5,11 @@ use rand::{rngs::StdRng, Rng};
 
 use crate::{
     actions::{
-        abilities::AbilityMechanic,
+        abilities::{AbilityMechanic, DeckSearchKind},
         apply_action_helpers::{apply_activate, handle_damage, handle_knockouts, Mutation},
         effect_ability_mechanic_map::ability_mechanic_from_effect,
         outcomes::Outcomes,
-        shared_mutations::pokemon_search_outcomes,
+        shared_mutations::{pokemon_search_outcomes, tool_search_outcomes},
         Action, SimpleAction,
     },
     effects::TurnEffect,
@@ -142,8 +142,8 @@ fn forecast_ability_by_mechanic(
         AbilityMechanic::StartTurnRandomPokemonToHand { .. } => {
             panic!("StartTurnRandomPokemonToHand is a passive ability")
         }
-        AbilityMechanic::SearchRandomPokemonFromDeck => {
-            pokemon_search_outcomes(action.actor, state, false)
+        AbilityMechanic::SearchRandomCardFromDeck { card_kind } => {
+            search_random_card_from_deck(action.actor, state, *card_kind)
         }
         AbilityMechanic::MoveDamageFromOneYourPokemonToThisPokemon => {
             Outcomes::single(dusknoir_shadow_void(in_play_idx))
@@ -326,6 +326,20 @@ fn discard_energy_to_increase_type_damage(
 /// "Heal `amount` damage from each of your [type] Pokémon." With `energy_type: None` every Pokémon
 /// you have in play is healed; with `Some(t)` only Pokémon of that type are, and the rest keep
 /// their damage.
+/// "Put a random <kind> card from your deck into your hand." Both search helpers already handle
+/// the empty-pool case by degrading to a plain shuffle, so nothing extra is needed here when the
+/// deck happens to run dry between move generation and resolution.
+fn search_random_card_from_deck(
+    acting_player: usize,
+    state: &State,
+    card_kind: DeckSearchKind,
+) -> Outcomes {
+    match card_kind {
+        DeckSearchKind::Pokemon => pokemon_search_outcomes(acting_player, state, false),
+        DeckSearchKind::Tool => tool_search_outcomes(acting_player, state),
+    }
+}
+
 fn heal_all_your_pokemon(amount: u32, energy_type: Option<EnergyType>) -> Outcomes {
     Outcomes::single_fn(move |_rng, state, action| {
         for pokemon in state.in_play_pokemon[action.actor].iter_mut().flatten() {

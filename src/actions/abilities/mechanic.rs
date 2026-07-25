@@ -1,5 +1,12 @@
 use crate::models::{EnergyType, StatusCondition};
 
+/// Which kind of card a "put a random <kind> card from your deck into your hand" Ability looks for.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum DeckSearchKind {
+    Pokemon,
+    Tool,
+}
+
 #[derive(Debug, Clone, PartialEq)]
 pub enum AbilityMechanic {
     VictreebelFragranceTrap,
@@ -118,7 +125,12 @@ pub enum AbilityMechanic {
     StartTurnRandomPokemonToHand {
         energy_type: EnergyType,
     },
-    SearchRandomPokemonFromDeck,
+    /// "Once during your turn, you may put a random <kind> card from your deck into your hand."
+    /// Pokémon (Pidgeot's Quick Search) and Pokémon Tool (Ambipom's Catching Tail) printings differ
+    /// only by which cards are eligible, so the search kind is a parameter.
+    SearchRandomCardFromDeck {
+        card_kind: DeckSearchKind,
+    },
     MoveDamageFromOneYourPokemonToThisPokemon,
     DiscardOpponentActiveToolsAndDiscardSelf,
     PreventFirstAttack,
