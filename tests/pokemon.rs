@@ -184,6 +184,8 @@ mod snorlax_massive_body_test;
 mod snover_ice_shard_test;
 #[path = "pokemon/spewpa_signs_of_evolution_test.rs"]
 mod spewpa_signs_of_evolution_test;
+#[path = "pokemon/spiritomb_final_scream_test.rs"]
+mod spiritomb_final_scream_test;
 #[path = "pokemon/sunflora_quick_grow_beam_test.rs"]
 mod sunflora_quick_grow_beam_test;
 #[path = "pokemon/swift_shot_test.rs"]
