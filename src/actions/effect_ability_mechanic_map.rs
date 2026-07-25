@@ -362,13 +362,31 @@ pub static EFFECT_ABILITY_MECHANIC_MAP: LazyLock<HashMap<&'static str, AbilityMe
             "This Pokémon takes -10 damage from attacks.",
             AbilityMechanic::ReduceDamageFromAttacks { amount: 10 },
         );
-        // map.insert("This Pokémon takes -20 damage from attacks from [R] or [W] Pokémon.", todo_implementation);
+        map.insert(
+            "This Pokémon takes -20 damage from attacks from [R] or [W] Pokémon.",
+            AbilityMechanic::ReduceDamageFromTypedAttackers {
+                energy_types: vec![EnergyType::Fire, EnergyType::Water],
+                amount: 20,
+            },
+        );
         map.insert(
             "This Pokémon takes -20 damage from attacks.",
             AbilityMechanic::ReduceDamageFromAttacks { amount: 20 },
         );
-        // map.insert("This Pokémon takes -30 damage from attacks from [F] Pokémon.", todo_implementation);
-        // map.insert("This Pokémon takes -30 damage from attacks from [R] or [W] Pokémon.", todo_implementation);
+        map.insert(
+            "This Pokémon takes -30 damage from attacks from [F] Pokémon.",
+            AbilityMechanic::ReduceDamageFromTypedAttackers {
+                energy_types: vec![EnergyType::Fighting],
+                amount: 30,
+            },
+        );
+        map.insert(
+            "This Pokémon takes -30 damage from attacks from [R] or [W] Pokémon.",
+            AbilityMechanic::ReduceDamageFromTypedAttackers {
+                energy_types: vec![EnergyType::Fire, EnergyType::Water],
+                amount: 30,
+            },
+        );
         // Dusknoir (B1 105) "Fade into Darkness" and Glimmora (B3a 045 / B3a 078)
         // "Shattering Crystal". Point DENIAL, not damage prevention — the Pokémon is still
         // Knocked Out and still leaves play, the opponent simply scores nothing for it on heads.

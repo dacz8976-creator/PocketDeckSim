@@ -182,6 +182,8 @@ mod snorlax_massive_body_test;
 mod snover_ice_shard_test;
 #[path = "pokemon/spewpa_signs_of_evolution_test.rs"]
 mod spewpa_signs_of_evolution_test;
+#[path = "pokemon/staraptor_defensive_whirlwind_test.rs"]
+mod staraptor_defensive_whirlwind_test;
 #[path = "pokemon/sunflora_quick_grow_beam_test.rs"]
 mod sunflora_quick_grow_beam_test;
 #[path = "pokemon/swift_shot_test.rs"]
@@ -192,6 +194,8 @@ mod tapu_lele_energy_arrow_test;
 mod tepig_stoke_test;
 #[path = "pokemon/terapagos_ex_test.rs"]
 mod terapagos_ex_test;
+#[path = "pokemon/thick_fat_test.rs"]
+mod thick_fat_test;
 #[path = "pokemon/tinkaton_gigaton_hammer_test.rs"]
 mod tinkaton_gigaton_hammer_test;
 #[path = "pokemon/typhlosion_fire_breath_test.rs"]

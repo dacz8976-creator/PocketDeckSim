@@ -123,6 +123,9 @@ fn forecast_ability_by_mechanic(
         AbilityMechanic::ReduceOpponentActiveDamage { .. } => {
             panic!("ReduceOpponentActiveDamage is a passive ability")
         }
+        AbilityMechanic::ReduceDamageFromTypedAttackers { .. } => {
+            panic!("ReduceDamageFromTypedAttackers is a passive ability")
+        }
         AbilityMechanic::IncreaseDamageWhenRemainingHpAtMost { .. } => {
             panic!("IncreaseDamageWhenRemainingHpAtMost is a passive ability")
         }

@@ -95,6 +95,7 @@ fn can_use_ability_by_mechanic(
         }
         AbilityMechanic::ReduceDamageFromAttacks { .. } => false,
         AbilityMechanic::ReduceOpponentActiveDamage { .. } => false,
+        AbilityMechanic::ReduceDamageFromTypedAttackers { .. } => false, // Passive ability
         AbilityMechanic::IncreaseDamageWhenRemainingHpAtMost { .. } => false,
         AbilityMechanic::IncreaseDamageForTypeInPlay { .. } => false,
         AbilityMechanic::IncreaseDamageForTwoTypesInPlay { .. } => false,

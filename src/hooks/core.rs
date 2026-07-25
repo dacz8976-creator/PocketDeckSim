@@ -593,6 +593,39 @@ fn get_ability_damage_reduction(
         .sum()
 }
 
+/// Damage reduction protecting the target that is conditioned on the attacker or on the board, so
+/// it cannot be modelled as a context-free `CardEffect` the way `ReduceDamageFromAttacks` is (see
+/// `card_effect_from_ability_mechanic`).
+///
+/// Returned as a flat amount that the caller folds into the other pre-Weakness reductions, matching
+/// how every existing damage-reduction ability is ordered relative to the Weakness bonus.
+fn get_conditional_ability_damage_reduction(
+    attacking_pokemon: &PlayedCard,
+    receiving_pokemon: &PlayedCard,
+    is_from_active_attack: bool,
+) -> u32 {
+    if !is_from_active_attack {
+        return 0;
+    }
+    let total = match get_ability_mechanic(&receiving_pokemon.card) {
+        // Thick Fat / Defensive Whirlwind: gated on the attacker's Energy type.
+        Some(AbilityMechanic::ReduceDamageFromTypedAttackers {
+            energy_types,
+            amount,
+        }) if attacking_pokemon
+            .get_energy_type()
+            .is_some_and(|attacker_type| energy_types.contains(&attacker_type)) =>
+        {
+            *amount
+        }
+        _ => 0,
+    };
+    if total > 0 {
+        debug!("Conditional ability damage reduction: -{total}");
+    }
+    total
+}
+
 fn get_ability_damage_increase(
     state: &State,
     attacking_player: usize,
@@ -1041,6 +1074,15 @@ pub(crate) fn modify_damage(
     } else {
         get_ability_damage_reduction(receiving_pokemon, is_from_active_attack)
     };
+    let conditional_ability_damage_reduction = if skip_target_effects {
+        0
+    } else {
+        get_conditional_ability_damage_reduction(
+            attacking_pokemon,
+            receiving_pokemon,
+            is_from_active_attack,
+        )
+    };
     let ability_damage_increase = get_ability_damage_increase(
         state,
         attacking_player,
@@ -1128,7 +1170,7 @@ pub(crate) fn modify_damage(
     };
 
     debug!(
-        "Attack: {:?}, IncreasedDamage: {}, IncreasedAttackSpecific: {}, IncreasedVulnerability: {}, ReducedDamage: {}, TurnEffectReduction: {}, HeavyHelmet: {}, MetalCoreBarrier: {}, SteelApron: {}, IntimidatingFang: {}, AbilityReduction: {}, AbilityIncrease: {}, TypeBoost: {}, StadiumBonus: {}, FutureBooster: {}",
+        "Attack: {:?}, IncreasedDamage: {}, IncreasedAttackSpecific: {}, IncreasedVulnerability: {}, ReducedDamage: {}, TurnEffectReduction: {}, HeavyHelmet: {}, MetalCoreBarrier: {}, SteelApron: {}, IntimidatingFang: {}, AbilityReduction: {}, ConditionalAbilityReduction: {}, AbilityIncrease: {}, TypeBoost: {}, StadiumBonus: {}, FutureBooster: {}",
         base_damage,
         increased_turn_effect_modifiers,
         increased_attack_specific_modifiers,
@@ -1140,6 +1182,7 @@ pub(crate) fn modify_damage(
         steel_apron_reduction,
         intimidating_fang_reduction,
         ability_damage_reduction,
+        conditional_ability_damage_reduction,
         ability_damage_increase,
         type_boost_bonus,
         stadium_damage_bonus,
@@ -1161,7 +1204,8 @@ pub(crate) fn modify_damage(
                 + metal_core_barrier_reduction
                 + steel_apron_reduction
                 + intimidating_fang_reduction
-                + ability_damage_reduction,
+                + ability_damage_reduction
+                + conditional_ability_damage_reduction,
         );
     let final_damage = match weakness_application {
         WeaknessApplication::None => pre_weakness,

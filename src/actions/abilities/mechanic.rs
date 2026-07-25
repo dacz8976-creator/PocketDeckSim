@@ -70,6 +70,18 @@ pub enum AbilityMechanic {
     ReduceOpponentActiveDamage {
         amount: u32,
     },
+    /// Thick Fat (Mamoswine, Piloswine, Azumarill) and Defensive Whirlwind (Staraptor):
+    /// "This Pokémon takes -`amount` damage from attacks from [X] (or [Y]) Pokémon."
+    ///
+    /// Parameterised on both the amount (Thick Fat prints at -30 and -20) and the list of
+    /// attacker Energy types (Thick Fat is `[R]`/`[W]`, Defensive Whirlwind is `[F]`), so a single
+    /// variant covers the whole family. Passive: unlike `ReduceDamageFromAttacks` this cannot be
+    /// expressed as a context-free `CardEffect`, because whether it applies depends on the
+    /// *attacker*, so it is resolved in `modify_damage`.
+    ReduceDamageFromTypedAttackers {
+        energy_types: Vec<EnergyType>,
+        amount: u32,
+    },
     IncreaseDamageWhenRemainingHpAtMost {
         amount: u32,
         hp_threshold: u32,
