@@ -1,7 +1,7 @@
 use crate::{
     actions::{
         abilities::{AbilityMechanic, NoRetreatCostCondition, NoRetreatCostTarget},
-        get_ability_mechanic,
+        get_in_play_ability_mechanic,
     },
     card_ids::CardId,
     effects::{CardEffect, TurnEffect},
@@ -39,7 +39,7 @@ fn has_no_retreat_cost_ability(state: &State, card: &PlayedCard) -> bool {
     if let Some(AbilityMechanic::NoRetreatCost {
         target: NoRetreatCostTarget::ThisPokemon,
         condition,
-    }) = get_ability_mechanic(&card.card)
+    }) = get_in_play_ability_mechanic(state, card)
     {
         if no_retreat_cost_condition_holds(state, player, condition) {
             return true;
@@ -59,7 +59,7 @@ fn grants_active_no_retreat_cost(
     active: &PlayedCard,
 ) -> bool {
     let Some(AbilityMechanic::NoRetreatCost { target, condition }) =
-        get_ability_mechanic(&source.card)
+        get_in_play_ability_mechanic(state, source)
     else {
         return false;
     };
@@ -90,7 +90,7 @@ fn no_retreat_cost_condition_holds(
 pub(crate) fn get_retreat_cost(state: &State, card: &PlayedCard) -> Vec<EnergyType> {
     if let Card::Pokemon(pokemon_card) = &card.card {
         if matches!(
-            get_ability_mechanic(&card.card),
+            get_in_play_ability_mechanic(state, card),
             Some(AbilityMechanic::NoRetreatIfHasEnergy)
         ) && !card.attached_energy.is_empty()
         {
@@ -128,7 +128,7 @@ pub(crate) fn get_retreat_cost(state: &State, card: &PlayedCard) -> Vec<EnergyTy
             let current_player = state.current_player;
             for (_idx, benched_pokemon) in state.enumerate_bench_pokemon(current_player) {
                 if matches!(
-                    get_ability_mechanic(&benched_pokemon.card),
+                    get_in_play_ability_mechanic(state, benched_pokemon),
                     Some(
                         AbilityMechanic::ReduceRetreatCostOfYourActiveBasicFromBench { amount: 1 }
                     )
@@ -143,7 +143,7 @@ pub(crate) fn get_retreat_cost(state: &State, card: &PlayedCard) -> Vec<EnergyTy
                 if let Some(AbilityMechanic::ReduceRetreatCostOfYourActiveTypedFromBench {
                     energy_type,
                     amount,
-                }) = get_ability_mechanic(&benched_pokemon.card)
+                }) = get_in_play_ability_mechanic(state, benched_pokemon)
                 {
                     if energy_type == &active_energy_type {
                         to_subtract += *amount as u8;
@@ -167,7 +167,7 @@ pub(crate) fn get_retreat_cost(state: &State, card: &PlayedCard) -> Vec<EnergyTy
         let opponent = (state.current_player + 1) % 2;
         for (_idx, pokemon) in state.enumerate_in_play_pokemon(opponent) {
             if matches!(
-                get_ability_mechanic(&pokemon.card),
+                get_in_play_ability_mechanic(state, pokemon),
                 Some(AbilityMechanic::IncreaseRetreatCostForOpponentActive { amount: 1 })
             ) {
                 normal_cost.push(EnergyType::Colorless);

@@ -1,5 +1,8 @@
 use crate::{
-    actions::{abilities::AbilityMechanic, get_ability_mechanic, SimpleAction},
+    actions::{
+        abilities::AbilityMechanic, get_in_play_ability_mechanic, has_any_in_play_ability,
+        SimpleAction,
+    },
     card_ids::CardId,
     card_logic::{
         can_rare_candy_evolve, diantha_targets, ilima_targets, quick_grow_extract_candidates,
@@ -300,7 +303,7 @@ fn can_play_stadium(state: &State, trainer_card: &TrainerCard) -> Option<Vec<Sim
             .as_ref()
             .is_some_and(|opponent_active| {
                 matches!(
-                    get_ability_mechanic(&opponent_active.card),
+                    get_in_play_ability_mechanic(state, opponent_active),
                     Some(AbilityMechanic::NoOpponentStadiumInActive)
                 )
             });
@@ -782,7 +785,7 @@ fn can_play_team(state: &State, trainer_card: &TrainerCard) -> Option<Vec<Simple
     let has_target = state
         .enumerate_in_play_pokemon(opponent)
         .any(|(_, pokemon)| {
-            pokemon.card.get_ability().is_some() && !pokemon.attached_energy.is_empty()
+            has_any_in_play_ability(state, pokemon) && !pokemon.attached_energy.is_empty()
         });
 
     if has_target {

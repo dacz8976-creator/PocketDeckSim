@@ -2,6 +2,8 @@
 mod additional_ability_logic_test;
 #[path = "pokemon/alcremie_test.rs"]
 mod alcremie_test;
+#[path = "pokemon/alolan_muk_power_of_alchemy_test.rs"]
+mod alolan_muk_power_of_alchemy_test;
 #[path = "pokemon/alolan_sandslash_spike_armor_test.rs"]
 mod alolan_sandslash_spike_armor_test;
 #[path = "pokemon/altaria_dragon_arcana_test.rs"]

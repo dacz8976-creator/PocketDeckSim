@@ -4,7 +4,7 @@ use log::debug;
 use rand::{distributions::WeightedIndex, prelude::Distribution, rngs::StdRng};
 
 use crate::{
-    actions::effect_ability_mechanic_map::{get_ability_mechanic, has_ability_mechanic},
+    actions::effect_ability_mechanic_map::get_entering_play_ability_mechanic,
     actions::{
         abilities::AbilityMechanic,
         apply_abilities_action::forecast_ability,
@@ -438,7 +438,9 @@ pub(crate) fn apply_place_card(
     state.in_play_pokemon[actor][index] = Some(played_card);
     state.refresh_hp_bonuses_all();
     // SoothingWind (Ogerpon ex) / Flower Shield (Comfey): cure status conditions on entry.
-    if let Some(AbilityMechanic::SoothingWind { energy_type }) = get_ability_mechanic(card) {
+    if let Some(AbilityMechanic::SoothingWind { energy_type }) =
+        get_entering_play_ability_mechanic(state, card)
+    {
         debug!("SoothingWind: Pokémon entered play – curing status conditions for player {actor}");
         state.apply_soothing_wind_for_player(actor, energy_type.as_ref());
     }
@@ -447,7 +449,10 @@ pub(crate) fn apply_place_card(
     } else {
         state.remove_card_from_hand(actor, card);
         let placed_in_bench = index != 0;
-        if placed_in_bench && has_ability_mechanic(card, &AbilityMechanic::InfiltratingInspection) {
+        if placed_in_bench
+            && get_entering_play_ability_mechanic(state, card)
+                == Some(&AbilityMechanic::InfiltratingInspection)
+        {
             debug!("Misdreavus's Infiltrating Inspection: Opponent's hand is revealed (no-op in AI context)");
         }
         if placed_in_bench {

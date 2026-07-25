@@ -9,7 +9,8 @@ use crate::actions::abilities::{
     KnockoutDamageTarget, NoRetreatCostCondition, NoRetreatCostTarget, ARCEUS_NAMES,
 };
 use crate::effects::CardEffect;
-use crate::models::{Card, EnergyType, StatusCondition};
+use crate::models::{Card, EnergyType, PlayedCard, StatusCondition};
+use crate::State;
 
 /// Map from ability effect text to its AbilityMechanic.
 pub static EFFECT_ABILITY_MECHANIC_MAP: LazyLock<HashMap<&'static str, AbilityMechanic>> =
@@ -614,7 +615,11 @@ pub static EFFECT_ABILITY_MECHANIC_MAP: LazyLock<HashMap<&'static str, AbilityMe
         );
 
         // B2 and B2a mechanics
-        // map.insert("Basic Pokémon in play (both yours and your opponent's) have no Abilities.", todo_implementation);
+        // NOTE: this effect text carries non-breaking spaces, exactly as printed on B2 097 / B2 173.
+        map.insert(
+            "Basic Pokémon in play (both yours and your opponent's) have no Abilities.",
+            AbilityMechanic::SuppressBasicAbilities,
+        );
         map.insert(
             "If this Pokémon's remaining HP is 50 or less, attacks used by this Pokémon do +60 damage to your opponent's Active Pokémon.",
             AbilityMechanic::IncreaseDamageWhenRemainingHpAtMost {
@@ -740,6 +745,79 @@ pub fn get_ability_mechanic(card: &Card) -> Option<&'static AbilityMechanic> {
 
 pub fn has_ability_mechanic(card: &Card, mechanic: &AbilityMechanic) -> bool {
     get_ability_mechanic(card) == Some(mechanic)
+}
+
+/// The Ability a Pokémon **in play** actually has right now, i.e. after board-wide Ability
+/// suppression (Power of Alchemy, Alolan Muk B2 097 / B2 173: "Basic Pokémon in play — both yours
+/// and your opponent's — have no Abilities").
+///
+/// This is the single chokepoint for that question. Every read of an in-play Pokémon's Ability —
+/// move generation, the passive hooks, retreat costs, the abilities-as-effects derivation in
+/// `PlayedCard::get_effective_card_effects` — goes through here rather than through
+/// [`get_ability_mechanic`], so suppression can never be half-applied. `get_ability_mechanic`
+/// remains the *raw* printed lookup and is correct only for cards that are not in play yet (a card
+/// still in hand being placed or evolved into) or that can never be Basic.
+pub(crate) fn get_in_play_ability_mechanic(
+    state: &State,
+    pokemon: &PlayedCard,
+) -> Option<&'static AbilityMechanic> {
+    if pokemon.card.is_basic() && basic_abilities_suppressed(state) {
+        return None;
+    }
+    get_ability_mechanic(&pokemon.card)
+}
+
+/// The suppression-aware lookup for a card that is *entering* play — being placed onto the Bench
+/// or evolved into — where there is no `PlayedCard` yet. Same gate as
+/// [`get_in_play_ability_mechanic`]; it exists only because the trigger hooks run against the
+/// `Card` that was just played.
+pub(crate) fn get_entering_play_ability_mechanic(
+    state: &State,
+    card: &Card,
+) -> Option<&'static AbilityMechanic> {
+    if card.is_basic() && basic_abilities_suppressed(state) {
+        return None;
+    }
+    get_ability_mechanic(card)
+}
+
+/// Whether an in-play Pokémon has *any* Ability at all right now — the question asked by the cards
+/// that care about the presence of an Ability rather than which one it is (Team, and the attacks
+/// that do more damage "if your opponent's Active Pokémon has an Ability").
+///
+/// Keyed on the *printed* Ability rather than on whether deckgym implements it, so an
+/// unimplemented Ability still counts as an Ability; the only thing that takes it away is
+/// board-wide suppression.
+pub(crate) fn has_any_in_play_ability(state: &State, pokemon: &PlayedCard) -> bool {
+    pokemon.card.get_ability().is_some()
+        && !(pokemon.card.is_basic() && basic_abilities_suppressed(state))
+}
+
+/// [`get_in_play_ability_mechanic`] + equality, the suppression-aware counterpart of
+/// [`has_ability_mechanic`].
+pub(crate) fn has_in_play_ability_mechanic(
+    state: &State,
+    pokemon: &PlayedCard,
+    mechanic: &AbilityMechanic,
+) -> bool {
+    get_in_play_ability_mechanic(state, pokemon) == Some(mechanic)
+}
+
+/// Whether any Pokémon in play (either side — the Ability is symmetric) is switching off the
+/// Abilities of Basic Pokémon.
+///
+/// Uses the *raw* lookup deliberately: asking the suppression-aware accessor here would be
+/// self-referential, and a Basic printing of this Ability would have to decide whether it turns
+/// itself off. The question does not arise in practice — every printing of Power of Alchemy is on
+/// a Stage 1 Alolan Muk, which is not a "Basic Pokémon in play" and therefore never suppresses
+/// itself (see `test_power_of_alchemy_suppresses_a_basics_passive_ability`, where Muk is the only
+/// Ability holder on the board).
+pub(crate) fn basic_abilities_suppressed(state: &State) -> bool {
+    (0..2).any(|player| {
+        state.enumerate_in_play_pokemon(player).any(|(_, pokemon)| {
+            has_ability_mechanic(&pokemon.card, &AbilityMechanic::SuppressBasicAbilities)
+        })
+    })
 }
 
 /// Translate a *self-scoped defensive* passive ability mechanic into the `CardEffect` it presents

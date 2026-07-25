@@ -189,7 +189,7 @@ pub(crate) fn quick_growth_evolution_outcomes_for_player(player: usize, state: &
     let evolution_cards: Vec<Card> = state.decks[player]
         .cards
         .iter()
-        .filter(|card| can_evolve_into(card, active))
+        .filter(|card| can_evolve_into(state, card, active))
         .cloned()
         .collect();
 

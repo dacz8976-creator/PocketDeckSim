@@ -1,5 +1,5 @@
 use crate::{
-    actions::{abilities::AbilityMechanic, has_ability_mechanic, SimpleAction},
+    actions::{abilities::AbilityMechanic, has_in_play_ability_mechanic, SimpleAction},
     card_ids::CardId,
     effects::CardEffect,
     hooks::{contains_energy, get_attack_cost},
@@ -65,9 +65,9 @@ pub(crate) fn generate_attack_actions(state: &State) -> Vec<SimpleAction> {
 /// previous-evolution attacks here, since only the active Pokémon can attack. The previous
 /// evolutions are the under-cards recorded on the active when it evolved (`cards_behind`).
 fn time_recall_attacks(state: &State, player: usize, active_pokemon: &PlayedCard) -> Vec<Attack> {
-    let time_recall_active = state
-        .enumerate_in_play_pokemon(player)
-        .any(|(_, pokemon)| has_ability_mechanic(&pokemon.card, &AbilityMechanic::TimeRecall));
+    let time_recall_active = state.enumerate_in_play_pokemon(player).any(|(_, pokemon)| {
+        has_in_play_ability_mechanic(state, pokemon, &AbilityMechanic::TimeRecall)
+    });
     // Memory Light (A4a 068) grants the same effect, but scoped to its holder rather than to
     // every evolved Pokémon you control.
     let has_memory_light = has_tool(active_pokemon, CardId::A4a068MemoryLight);

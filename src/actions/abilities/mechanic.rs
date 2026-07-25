@@ -129,6 +129,14 @@ pub enum AbilityMechanic {
         require_active: bool,
         require_tool_attached: bool,
     },
+    /// Alolan Muk's Power of Alchemy (B2 097 / B2 173): "Basic Pokémon in play (both yours and
+    /// your opponent's) have no Abilities."
+    ///
+    /// Passive and symmetric. Resolved at the single accessor
+    /// `get_in_play_ability_mechanic`, which every read of an *in-play* Pokémon's Ability goes
+    /// through, so the suppression cannot be applied to move generation but missed by some passive
+    /// hook. Alolan Muk is a Stage 1, so it does not switch itself off.
+    SuppressBasicAbilities,
     /// Claydol's Heal Block (A3a 031): "Pokémon (both yours and your opponent's) can't be healed."
     ///
     /// Passive and symmetric: while any Pokémon with this Ability is in play, *no* Pokémon on

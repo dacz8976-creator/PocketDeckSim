@@ -4,8 +4,8 @@ use serde::{Deserialize, Serialize};
 use super::State;
 use crate::{
     actions::{
-        abilities::AbilityMechanic, card_effect_from_ability_mechanic, get_ability_mechanic,
-        has_ability_mechanic,
+        abilities::AbilityMechanic, card_effect_from_ability_mechanic,
+        get_in_play_ability_mechanic, has_ability_mechanic, has_in_play_ability_mechanic,
     },
     card_ids::CardId,
     database::get_card_by_enum,
@@ -262,7 +262,10 @@ impl PlayedCard {
         effective_hp += self.stadium_hp_bonus;
         effective_hp += self.ability_hp_bonus;
 
-        // Reuniclus Infinite Increase: +30 HP for each Psychic Energy attached
+        // Reuniclus Infinite Increase: +30 HP for each Psychic Energy attached.
+        // Reads the *printed* Ability rather than the suppression-aware accessor because this
+        // method has no `State`. That is sound here: Infinite Increase is only printed on
+        // Reuniclus, a Stage 2, so Power of Alchemy (Basics only) can never switch it off.
         if has_ability_mechanic(
             &self.card,
             &AbilityMechanic::IncreaseHpPerAttachedEnergy {
@@ -330,9 +333,12 @@ impl PlayedCard {
     /// separately scanning for defensive abilities, so a passive like Cloyster's Shell Armor and a
     /// stored effect like Carracosta's Blocking Shell are handled through one list. Derived effects
     /// are present exactly while the ability-holder is in play (no turn duration).
-    pub(crate) fn get_effective_card_effects(&self) -> Vec<CardEffect> {
+    /// Takes `state` because the derived half depends on the board: Power of Alchemy (Alolan Muk)
+    /// switches off the Abilities of Basic Pokémon in play, so the lookup goes through the
+    /// suppression-aware `get_in_play_ability_mechanic` rather than the raw printed one.
+    pub(crate) fn get_effective_card_effects(&self, state: &State) -> Vec<CardEffect> {
         let mut effects = self.get_active_effects();
-        if let Some(mechanic) = get_ability_mechanic(&self.card) {
+        if let Some(mechanic) = get_in_play_ability_mechanic(state, self) {
             if let Some(derived) = card_effect_from_ability_mechanic(mechanic) {
                 effects.push(derived);
             }
@@ -452,7 +458,7 @@ impl fmt::Debug for PlayedCard {
 
 pub fn has_serperior_jungle_totem(state: &State, player: usize) -> bool {
     state.enumerate_in_play_pokemon(player).any(|(_, pokemon)| {
-        has_ability_mechanic(&pokemon.card, &AbilityMechanic::DoubleGrassEnergy)
+        has_in_play_ability_mechanic(state, pokemon, &AbilityMechanic::DoubleGrassEnergy)
     })
 }
 

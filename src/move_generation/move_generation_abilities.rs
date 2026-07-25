@@ -1,6 +1,6 @@
 use crate::{
     actions::abilities::{AbilityMechanic, DeckSearchKind},
-    actions::{ability_mechanic_from_effect, SimpleAction},
+    actions::{ability_mechanic_from_effect, basic_abilities_suppressed, SimpleAction},
     hooks::is_ultra_beast,
     models::{EnergyType, PlayedCard},
     tools::is_tool_card,
@@ -25,6 +25,14 @@ pub(crate) fn generate_ability_actions(state: &State) -> Vec<SimpleAction> {
 
 fn can_use_ability(state: &State, (in_play_index, card): (usize, &PlayedCard)) -> bool {
     if card.card.get_ability().is_none() {
+        return false;
+    }
+
+    // Power of Alchemy (Alolan Muk): a Basic Pokémon in play "has no Abilities", so its activated
+    // Ability disappears from move generation entirely. Checked against the shared suppression
+    // predicate rather than `get_in_play_ability_mechanic`, so that a suppressed Ability is still
+    // distinguishable from an *unimplemented* one — which must keep panicking below.
+    if basic_abilities_suppressed(state) && card.card.is_basic() {
         return false;
     }
 
@@ -65,7 +73,8 @@ fn can_use_ability_by_mechanic(
             *require_active,
             *require_tool_attached,
         ),
-        AbilityMechanic::PreventAllHealing => false, // Passive ability
+        AbilityMechanic::SuppressBasicAbilities => false, // Passive ability
+        AbilityMechanic::PreventAllHealing => false,      // Passive ability
         AbilityMechanic::HealOneYourPokemonExAndDiscardRandomEnergy { .. } => {
             can_use_heal_one_your_pokemon_ex_and_discard_random_energy(state, card)
         }

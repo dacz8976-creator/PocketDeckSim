@@ -12,7 +12,7 @@ use crate::{
             collect_in_play_indices_by_type, energy_any_way_choices, generate_distributions,
         },
         attacks::{BenchSide, CopyAttackSource, Mechanic},
-        effect_ability_mechanic_map::ability_mechanic_from_effect,
+        effect_ability_mechanic_map::{get_in_play_ability_mechanic, has_any_in_play_ability},
         effect_mechanic_map::EFFECT_MECHANIC_MAP,
         Action,
     },
@@ -132,7 +132,7 @@ fn apply_defender_damage_prevention_if_needed(
         .filter(|(idx, _)| !(ignores_active_effects && *idx == 0))
         .filter_map(|(idx, pokemon)| {
             pokemon
-                .get_effective_card_effects()
+                .get_effective_card_effects(state)
                 .iter()
                 .find_map(|e| match e {
                     CardEffect::CoinFlipToPreventIncomingDamage => Some(u32::MAX),
@@ -162,12 +162,10 @@ fn apply_defender_guts_if_needed(
     let guts_indices: Vec<usize> = state
         .enumerate_in_play_pokemon(opponent)
         .filter(|(_, pokemon)| {
-            pokemon
-                .card
-                .get_ability()
-                .and_then(|a| ability_mechanic_from_effect(&a.effect))
-                .map(|m| matches!(m, AbilityMechanic::CoinFlipToSurviveKnockOut))
-                .unwrap_or(false)
+            matches!(
+                get_in_play_ability_mechanic(state, pokemon),
+                Some(AbilityMechanic::CoinFlipToSurviveKnockOut)
+            )
         })
         .map(|(idx, _)| idx)
         .collect();
@@ -196,12 +194,10 @@ fn apply_defender_point_denial_if_needed(
     let denial_indices: Vec<usize> = state
         .enumerate_in_play_pokemon(opponent)
         .filter(|(_, pokemon)| {
-            pokemon
-                .card
-                .get_ability()
-                .and_then(|a| ability_mechanic_from_effect(&a.effect))
-                .map(|m| matches!(m, AbilityMechanic::CoinFlipToDenyKnockoutPoints))
-                .unwrap_or(false)
+            matches!(
+                get_in_play_ability_mechanic(state, pokemon),
+                Some(AbilityMechanic::CoinFlipToDenyKnockoutPoints)
+            )
         })
         .map(|(idx, _)| idx)
         .collect();
@@ -1122,7 +1118,7 @@ fn waterfall_evolution(state: &State) -> AttackOutcomes {
     let evolution_cards: Vec<Card> = state.decks[state.current_player]
         .cards
         .iter()
-        .filter(|card| can_evolve_into(card, active_pokemon))
+        .filter(|card| can_evolve_into(state, card, active_pokemon))
         .cloned()
         .collect();
     if evolution_cards.is_empty() {
@@ -2412,7 +2408,7 @@ fn extra_damage_if_opponent_active_has_ability(
 ) -> AttackOutcomes {
     let opponent = (state.current_player + 1) % 2;
     let opponent_active = state.get_active(opponent);
-    let has_ability = opponent_active.card.get_ability().is_some();
+    let has_ability = has_any_in_play_ability(state, opponent_active);
     active_damage_doutcome(if has_ability { base + extra } else { base })
 }
 
@@ -2424,7 +2420,7 @@ fn extra_damage_per_opponent_pokemon_with_ability(
     let opponent = (state.current_player + 1) % 2;
     let ability_count = state
         .enumerate_in_play_pokemon(opponent)
-        .filter(|(_, pokemon)| pokemon.card.get_ability().is_some())
+        .filter(|(_, pokemon)| has_any_in_play_ability(state, pokemon))
         .count() as u32;
     active_damage_doutcome(base + damage_per * ability_count)
 }

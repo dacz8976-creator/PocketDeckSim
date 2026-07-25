@@ -10,7 +10,7 @@ use std::hash::Hash;
 
 use crate::{
     actions::abilities::AbilityMechanic,
-    actions::{get_ability_mechanic, has_ability_mechanic, SimpleAction},
+    actions::{get_in_play_ability_mechanic, has_in_play_ability_mechanic, SimpleAction},
     deck::Deck,
     effects::TurnEffect,
     models::{Card, EnergyType, StatusCondition},
@@ -172,13 +172,15 @@ impl State {
     /// pairs. Multiple copies stack, hence a list rather than a single value.
     fn ability_hp_bonuses(&self, player: usize) -> Vec<(EnergyType, u32)> {
         self.enumerate_in_play_pokemon(player)
-            .filter_map(|(_, pokemon)| match get_ability_mechanic(&pokemon.card) {
-                Some(AbilityMechanic::IncreaseHpForTypeInPlay {
-                    energy_type,
-                    amount,
-                }) => Some((*energy_type, *amount)),
-                _ => None,
-            })
+            .filter_map(
+                |(_, pokemon)| match get_in_play_ability_mechanic(self, pokemon) {
+                    Some(AbilityMechanic::IncreaseHpForTypeInPlay {
+                        energy_type,
+                        amount,
+                    }) => Some((*energy_type, *amount)),
+                    _ => None,
+                },
+            )
             .collect()
     }
 
@@ -296,7 +298,7 @@ impl State {
     pub(crate) fn is_healing_blocked(&self) -> bool {
         (0..2).any(|player| {
             self.enumerate_in_play_pokemon(player).any(|(_, pokemon)| {
-                has_ability_mechanic(&pokemon.card, &AbilityMechanic::PreventAllHealing)
+                has_in_play_ability_mechanic(self, pokemon, &AbilityMechanic::PreventAllHealing)
             })
         })
     }
@@ -522,7 +524,7 @@ impl State {
             return;
         };
 
-        if has_ability_mechanic(&pokemon.card, &AbilityMechanic::ImmuneToStatusConditions) {
+        if has_in_play_ability_mechanic(self, pokemon, &AbilityMechanic::ImmuneToStatusConditions) {
             debug!("Fabled Luster: Pokémon is immune to status conditions");
             return;
         }
@@ -540,7 +542,7 @@ impl State {
         // has the ability, Pokémon meeting the energy requirement are immune to Special Conditions.
         for p in self.in_play_pokemon[player].iter().flatten() {
             if let Some(AbilityMechanic::SoothingWind { energy_type }) =
-                crate::actions::get_ability_mechanic(&p.card)
+                get_in_play_ability_mechanic(self, p)
             {
                 let is_protected = match energy_type {
                     None => !pokemon.attached_energy.is_empty(),

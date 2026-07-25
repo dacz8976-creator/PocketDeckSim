@@ -9,7 +9,8 @@ use crate::{
             AbilityMechanic, AttackCostReductionScope, DiscardSearchKind, DiscardSelection,
             KnockoutDamageTarget, ARCEUS_NAMES,
         },
-        ability_mechanic_from_effect, get_ability_mechanic, handle_damage_only, SimpleAction,
+        get_ability_mechanic, get_entering_play_ability_mechanic, get_in_play_ability_mechanic,
+        handle_damage_only, has_any_in_play_ability, has_in_play_ability_mechanic, SimpleAction,
     },
     card_ids::CardId,
     effects::{CardEffect, TurnEffect},
@@ -112,9 +113,24 @@ pub(crate) fn get_stage(played_card: &PlayedCard) -> u8 {
     }
 }
 
-// TODO: Deprecated. Use PokemonCard::can_evolve_into instead.
-pub(crate) fn can_evolve_into(evolution_card: &Card, base_pokemon: &PlayedCard) -> bool {
-    base_pokemon.card.can_evolve_into(evolution_card)
+/// Whether `base_pokemon`, already in play, may be evolved into `evolution_card`.
+///
+/// On top of the printed rule (`Card::can_evolve_into`) this applies Eevee's Veevee 'volve
+/// ("this Pokémon can evolve into any Pokémon that evolves from Eevee"), which is an *Ability* and
+/// therefore needs the board: Power of Alchemy (Alolan Muk) switches off Basic Pokémon's
+/// Abilities, and every printing of Veevee 'volve is on a Basic.
+pub(crate) fn can_evolve_into(
+    state: &State,
+    evolution_card: &Card,
+    base_pokemon: &PlayedCard,
+) -> bool {
+    if base_pokemon.card.can_evolve_into(evolution_card) {
+        return true;
+    }
+    matches!(
+        get_in_play_ability_mechanic(state, base_pokemon),
+        Some(AbilityMechanic::CanEvolveIntoEeveeEvolution)
+    ) && matches!(evolution_card, Card::Pokemon(p) if p.evolves_from.as_deref() == Some("Eevee"))
 }
 
 /// Called when a Pokémon evolves
@@ -123,6 +139,8 @@ pub(crate) fn on_evolve(actor: usize, state: &mut State, to_card: &Card, from_ha
         return;
     }
 
+    // Raw lookup: `to_card` is an evolution card being played from hand, so it is never a Basic
+    // and Power of Alchemy can never apply to it.
     match get_ability_mechanic(to_card) {
         Some(AbilityMechanic::DrawCardsOnEvolve { amount }) => {
             state.move_generation_stack.push((
@@ -248,7 +266,7 @@ fn offer_put_cards_from_discard_to_hand(
 
 /// Called when a basic Pokémon is placed from hand onto the bench (index > 0).
 pub(crate) fn on_bench_from_hand(actor: usize, state: &mut State, card: &Card, bench_idx: usize) {
-    match get_ability_mechanic(card) {
+    match get_entering_play_ability_mechanic(state, card) {
         Some(AbilityMechanic::LegendaryDrive) => {
             if state.maybe_get_active(actor).is_none() {
                 return;
@@ -288,7 +306,7 @@ pub(crate) fn on_bench_from_hand(actor: usize, state: &mut State, card: &Card, b
 pub(crate) fn on_end_turn(player_ending_turn: usize, state: &mut State) {
     // Check if active Pokémon has an end-of-turn ability
     let active = state.get_active(player_ending_turn);
-    if let Some(mechanic) = get_ability_mechanic(&active.card) {
+    if let Some(mechanic) = get_in_play_ability_mechanic(state, active) {
         if matches!(
             mechanic,
             AbilityMechanic::EndTurnDrawCardIfActive { amount: 1 }
@@ -410,7 +428,7 @@ pub(crate) fn on_end_turn(player_ending_turn: usize, state: &mut State) {
             .enumerate_in_play_pokemon(player_ending_turn)
             .filter_map(|(in_play_idx, pokemon)| {
                 if matches!(
-                    get_ability_mechanic(&pokemon.card),
+                    get_in_play_ability_mechanic(state, pokemon),
                     Some(AbilityMechanic::EndFirstTurnAttachEnergyToSelf {
                         energy_type: EnergyType::Lightning
                     })
@@ -456,23 +474,19 @@ pub(crate) fn on_end_turn(player_ending_turn: usize, state: &mut State) {
 /// Apply Bad Dreams ability damage: for each player's Darkrai in play, if that player's
 /// opponent has an Asleep Active Pokémon, deal 20 damage to it.
 fn apply_bad_dreams_damage(state: &mut State) {
-    let sources: Vec<(usize, usize, u32)> = (0..2)
-        .flat_map(|player| {
-            state
-                .enumerate_in_play_pokemon(player)
-                .filter_map(move |(idx, pokemon)| {
-                    if pokemon.is_knocked_out() {
-                        return None;
-                    }
-                    get_ability_mechanic(&pokemon.card).and_then(|m| match m {
-                        AbilityMechanic::BadDreamsEndOfTurn { amount } => {
-                            Some((player, idx, *amount))
-                        }
-                        _ => None,
-                    })
-                })
-        })
-        .collect();
+    let mut sources: Vec<(usize, usize, u32)> = vec![];
+    for player in 0..2 {
+        for (idx, pokemon) in state.enumerate_in_play_pokemon(player) {
+            if pokemon.is_knocked_out() {
+                continue;
+            }
+            if let Some(AbilityMechanic::BadDreamsEndOfTurn { amount }) =
+                get_in_play_ability_mechanic(state, pokemon)
+            {
+                sources.push((player, idx, *amount));
+            }
+        }
+    }
 
     for (darkrai_owner, darkrai_idx, amount) in sources {
         if state.in_play_pokemon[darkrai_owner][darkrai_idx].is_none() {
@@ -512,7 +526,7 @@ pub(crate) fn can_play_support(state: &State) -> bool {
             .as_ref()
             .is_some_and(|opponent_active| {
                 matches!(
-                    get_ability_mechanic(&opponent_active.card),
+                    get_in_play_ability_mechanic(state, opponent_active),
                     Some(AbilityMechanic::NoOpponentSupportInActive)
                 )
             });
@@ -613,7 +627,7 @@ fn get_intimidating_fang_reduction(
     // Reads the unified effect list: Intimidating Fang (a passive ability) presents as a
     // `ReduceOpponentActiveDamage` effect on the Active defender.
     defenders_active
-        .get_effective_card_effects()
+        .get_effective_card_effects(state)
         .iter()
         .filter_map(|effect| match effect {
             CardEffect::ReduceOpponentActiveDamage { amount } => Some(*amount),
@@ -623,6 +637,7 @@ fn get_intimidating_fang_reduction(
 }
 
 fn get_ability_damage_reduction(
+    state: &State,
     receiving_pokemon: &crate::models::PlayedCard,
     is_from_active_attack: bool,
 ) -> u32 {
@@ -632,7 +647,7 @@ fn get_ability_damage_reduction(
     // Reads the unified effect list, so Cloyster's Shell Armor (a passive ability) is handled the
     // same way as any stored effect.
     receiving_pokemon
-        .get_effective_card_effects()
+        .get_effective_card_effects(state)
         .iter()
         .filter_map(|effect| match effect {
             CardEffect::ReduceDamageFromAttacks { amount } => Some(*amount),
@@ -662,6 +677,7 @@ fn has_arceus_in_play(state: &State, player: usize) -> bool {
 fn has_non_guard_unown_in_play(state: &State, player: usize) -> bool {
     state.enumerate_in_play_pokemon(player).any(|(_, pokemon)| {
         pokemon.get_name() == "Unown"
+            && has_any_in_play_ability(state, pokemon)
             && pokemon
                 .card
                 .get_ability()
@@ -679,10 +695,12 @@ fn get_unown_guard_reduction(state: &State, target_player: usize) -> u32 {
     }
     state
         .enumerate_in_play_pokemon(target_player)
-        .filter_map(|(_, pokemon)| match get_ability_mechanic(&pokemon.card) {
-            Some(AbilityMechanic::UnownGuard { amount }) => Some(*amount),
-            _ => None,
-        })
+        .filter_map(
+            |(_, pokemon)| match get_in_play_ability_mechanic(state, pokemon) {
+                Some(AbilityMechanic::UnownGuard { amount }) => Some(*amount),
+                _ => None,
+            },
+        )
         .sum()
 }
 
@@ -696,7 +714,7 @@ fn get_conditional_self_damage_reduction(
     receiving_pokemon: &PlayedCard,
     from_opponent: bool,
 ) -> u32 {
-    match get_ability_mechanic(&receiving_pokemon.card) {
+    match get_in_play_ability_mechanic(state, receiving_pokemon) {
         // Thick Fat / Defensive Whirlwind: gated on the attacker's Energy type.
         Some(AbilityMechanic::ReduceDamageFromTypedAttackers {
             energy_types,
@@ -749,7 +767,7 @@ fn get_coordinated_unit_reduction(
     if !is_from_active_attack || attacking_player == target_player {
         return 0;
     }
-    match get_ability_mechanic(&receiving_pokemon.card) {
+    match get_in_play_ability_mechanic(state, receiving_pokemon) {
         Some(AbilityMechanic::CoordinatedUnit {
             pokemon_name,
             damage_reduction,
@@ -809,14 +827,10 @@ fn get_ability_damage_increase(
         return 0;
     }
 
-    let Some(ability) = attacking_pokemon.card.get_ability() else {
-        return 0;
-    };
-
     if let Some(AbilityMechanic::IncreaseDamageWhenRemainingHpAtMost {
         amount,
         hp_threshold,
-    }) = ability_mechanic_from_effect(&ability.effect)
+    }) = get_in_play_ability_mechanic(state, attacking_pokemon)
     {
         if attacking_pokemon.get_remaining_hp() <= *hp_threshold {
             debug!(
@@ -828,7 +842,7 @@ fn get_ability_damage_increase(
     }
 
     if let Some(AbilityMechanic::IncreaseDamageIfArceusInPlay { amount }) =
-        ability_mechanic_from_effect(&ability.effect)
+        get_in_play_ability_mechanic(state, attacking_pokemon)
     {
         if has_arceus_in_play(state, attacking_player) {
             debug!(
@@ -845,7 +859,7 @@ fn get_ability_damage_increase(
         pokemon_name,
         damage_bonus,
         ..
-    }) = ability_mechanic_from_effect(&ability.effect)
+    }) = get_in_play_ability_mechanic(state, attacking_pokemon)
     {
         if has_another_pokemon_named_in_play(state, attacking_player, pokemon_name) {
             debug!("Coordinated Unit: Increasing damage by {damage_bonus}");
@@ -1166,7 +1180,7 @@ pub(crate) fn modify_damage(
     let target_effects: Vec<CardEffect> = if skip_target_effects {
         Vec::new()
     } else {
-        receiving_pokemon.get_effective_card_effects()
+        receiving_pokemon.get_effective_card_effects(state)
     };
 
     // Safeguard (Oricorio): prevent all damage from the opponent's Pokémon ex.
@@ -1253,7 +1267,7 @@ pub(crate) fn modify_damage(
     let ability_damage_reduction = if skip_target_effects {
         0
     } else {
-        get_ability_damage_reduction(receiving_pokemon, is_from_active_attack)
+        get_ability_damage_reduction(state, receiving_pokemon, is_from_active_attack)
     };
     let conditional_ability_damage_reduction = if skip_target_effects {
         0
@@ -1431,6 +1445,7 @@ pub(crate) fn modify_damage(
 fn has_non_power_unown_in_play(state: &State, player: usize) -> bool {
     state.enumerate_in_play_pokemon(player).any(|(_, pokemon)| {
         pokemon.get_name() == "Unown"
+            && has_any_in_play_ability(state, pokemon)
             && pokemon
                 .card
                 .get_ability()
@@ -1458,7 +1473,7 @@ fn get_board_ability_damage_bonus(
 
     // Check each Pokemon in play for board-wide damage-boosting abilities
     for (idx, pokemon) in state.enumerate_in_play_pokemon(attacking_player) {
-        if let Some(mechanic) = get_ability_mechanic(&pokemon.card) {
+        if let Some(mechanic) = get_in_play_ability_mechanic(state, pokemon) {
             match mechanic {
                 AbilityMechanic::IncreaseDamageForTypeInPlay {
                     energy_type,
@@ -1509,7 +1524,7 @@ pub(crate) fn get_attack_cost(
     let opponent = (attacking_player + 1) % 2;
     if let Some(opponent_active) = &state.in_play_pokemon[opponent][0] {
         if matches!(
-            get_ability_mechanic(&opponent_active.card),
+            get_in_play_ability_mechanic(state, opponent_active),
             Some(AbilityMechanic::IncreaseAttackCostForOpponentActive { amount: 1 })
         ) {
             modified_cost.push(EnergyType::Colorless);
@@ -1583,7 +1598,7 @@ fn reduce_attack_cost_by_abilities(
             energy_type,
             amount,
             scope,
-        }) = get_ability_mechanic(&source.card)
+        }) = get_in_play_ability_mechanic(state, source)
         else {
             continue;
         };
@@ -1721,12 +1736,14 @@ fn apply_knockout_retaliation(
 
     let retaliation = state.in_play_pokemon[knocked_out_player][knocked_out_idx]
         .as_ref()
-        .and_then(|pokemon| match get_ability_mechanic(&pokemon.card) {
-            Some(AbilityMechanic::DamageOnKnockoutInActive { amount, target }) => {
-                Some((*amount, *target))
-            }
-            _ => None,
-        });
+        .and_then(
+            |pokemon| match get_in_play_ability_mechanic(state, pokemon) {
+                Some(AbilityMechanic::DamageOnKnockoutInActive { amount, target }) => {
+                    Some((*amount, *target))
+                }
+                _ => None,
+            },
+        );
     let Some((amount, target)) = retaliation else {
         return;
     };
@@ -1916,12 +1933,14 @@ fn apply_offload_pass(
 
     let offload_energy = state.in_play_pokemon[knocked_out_player][knocked_out_idx]
         .as_ref()
-        .and_then(|pokemon| match get_ability_mechanic(&pokemon.card) {
-            Some(AbilityMechanic::MoveAllTypedEnergyToBenchOnKnockout { energy_type }) => {
-                Some(*energy_type)
-            }
-            _ => None,
-        });
+        .and_then(
+            |pokemon| match get_in_play_ability_mechanic(state, pokemon) {
+                Some(AbilityMechanic::MoveAllTypedEnergyToBenchOnKnockout { energy_type }) => {
+                    Some(*energy_type)
+                }
+                _ => None,
+            },
+        );
     let Some(energy_type) = offload_energy else {
         return;
     };
@@ -1975,14 +1994,21 @@ pub(crate) fn on_attack_knockout(
         return;
     }
 
+    // Resolved before taking the mutable borrow below, since the suppression check reads the board.
+    let protects_self = state.in_play_pokemon[attacking_ref.0][attacking_ref.1]
+        .as_ref()
+        .is_some_and(|attacker| {
+            has_in_play_ability_mechanic(
+                state,
+                attacker,
+                &AbilityMechanic::ProtectSelfNextTurnAfterAttackKnockout,
+            )
+        });
     let Some(attacking_pokemon) = state.in_play_pokemon[attacking_ref.0][attacking_ref.1].as_mut()
     else {
         return;
     };
-    if matches!(
-        get_ability_mechanic(&attacking_pokemon.card),
-        Some(AbilityMechanic::ProtectSelfNextTurnAfterAttackKnockout)
-    ) {
+    if protects_self {
         attacking_pokemon.add_effect(CardEffect::PreventAllDamageAndEffects, 1);
     }
 
@@ -2233,7 +2259,7 @@ mod tests {
         let bulbasaur = to_playable_card(&get_card_by_enum(CardId::A1001Bulbasaur), false);
 
         assert!(
-            can_evolve_into(&ivysaur, &bulbasaur),
+            can_evolve_into(&State::default(), &ivysaur, &bulbasaur),
             "Ivysaur should be able to evolve from Bulbasaur"
         );
     }
@@ -2245,7 +2271,7 @@ mod tests {
         let bulbasaur = to_playable_card(&get_card_by_enum(CardId::A1001Bulbasaur), false);
 
         assert!(
-            !can_evolve_into(&charizard, &bulbasaur),
+            !can_evolve_into(&State::default(), &charizard, &bulbasaur),
             "Charizard should not be able to evolve from Bulbasaur"
         );
     }
@@ -2258,7 +2284,7 @@ mod tests {
 
         // Normal Eevee CAN evolve into Vaporeon (normal evolution)
         assert!(
-            can_evolve_into(&vaporeon, &normal_eevee),
+            can_evolve_into(&State::default(), &vaporeon, &normal_eevee),
             "Normal Eevee should be able to evolve into Vaporeon normally"
         );
     }
@@ -2270,7 +2296,7 @@ mod tests {
         let eevee_ex = to_playable_card(&get_card_by_enum(CardId::A3b056EeveeEx), false);
 
         assert!(
-            can_evolve_into(&vaporeon, &eevee_ex),
+            can_evolve_into(&State::default(), &vaporeon, &eevee_ex),
             "Eevee ex should be able to evolve into Vaporeon via Veevee 'volve ability"
         );
     }
@@ -2282,7 +2308,7 @@ mod tests {
         let eevee_ex = to_playable_card(&get_card_by_enum(CardId::A3b056EeveeEx), false);
 
         assert!(
-            !can_evolve_into(&charizard, &eevee_ex),
+            !can_evolve_into(&State::default(), &charizard, &eevee_ex),
             "Eevee ex should not be able to evolve into Charizard"
         );
     }
@@ -2294,7 +2320,7 @@ mod tests {
         let old_amber = to_playable_card(&get_card_by_enum(CardId::A1218OldAmber), false);
 
         assert!(
-            can_evolve_into(&aerodactyl, &old_amber),
+            can_evolve_into(&State::default(), &aerodactyl, &old_amber),
             "Aerodactyl should be able to evolve from Old Amber fossil"
         );
     }
@@ -2306,7 +2332,7 @@ mod tests {
         let old_amber = to_playable_card(&get_card_by_enum(CardId::A1218OldAmber), false);
 
         assert!(
-            can_evolve_into(&aerodactyl_ex, &old_amber),
+            can_evolve_into(&State::default(), &aerodactyl_ex, &old_amber),
             "Aerodactyl ex should be able to evolve from Old Amber fossil"
         );
     }
@@ -2318,7 +2344,7 @@ mod tests {
         let helix_fossil = to_playable_card(&get_card_by_enum(CardId::A1216HelixFossil), false);
 
         assert!(
-            can_evolve_into(&omanyte, &helix_fossil),
+            can_evolve_into(&State::default(), &omanyte, &helix_fossil),
             "Omanyte should be able to evolve from Helix Fossil"
         );
     }
@@ -2330,7 +2356,7 @@ mod tests {
         let dome_fossil = to_playable_card(&get_card_by_enum(CardId::A1217DomeFossil), false);
 
         assert!(
-            can_evolve_into(&kabuto, &dome_fossil),
+            can_evolve_into(&State::default(), &kabuto, &dome_fossil),
             "Kabuto should be able to evolve from Dome Fossil"
         );
     }
@@ -2342,7 +2368,7 @@ mod tests {
         let helix_fossil = to_playable_card(&get_card_by_enum(CardId::A1216HelixFossil), false);
 
         assert!(
-            !can_evolve_into(&aerodactyl, &helix_fossil),
+            !can_evolve_into(&State::default(), &aerodactyl, &helix_fossil),
             "Aerodactyl should not be able to evolve from Helix Fossil"
         );
     }

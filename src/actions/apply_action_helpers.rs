@@ -5,8 +5,8 @@ use rand::rngs::StdRng;
 
 use crate::{
     actions::{
-        abilities::AbilityMechanic, ability_mechanic_from_effect,
-        effect_ability_mechanic_map::get_ability_mechanic, shared_mutations, SimpleAction,
+        abilities::AbilityMechanic, effect_ability_mechanic_map::get_in_play_ability_mechanic,
+        shared_mutations, SimpleAction,
     },
     card_ids::CardId,
     effects::{CardEffect, TurnEffect},
@@ -121,10 +121,7 @@ fn start_turn_ability_outcomes(state: &State, player: usize) -> (Probabilities, 
     let Some(active) = state.maybe_get_active(player) else {
         return (vec![1.0], vec![noop_mutation()]);
     };
-    let Some(ability) = active.card.get_ability() else {
-        return (vec![1.0], vec![noop_mutation()]);
-    };
-    let Some(mechanic) = ability_mechanic_from_effect(&ability.effect) else {
+    let Some(mechanic) = get_in_play_ability_mechanic(state, active) else {
         return (vec![1.0], vec![noop_mutation()]);
     };
 
@@ -149,7 +146,7 @@ fn start_turn_ability_outcomes(state: &State, player: usize) -> (Probabilities, 
 /// Calculate poison damage based on base damage (10) plus +10 for each opponent's Nihilego with More Poison ability
 /// Only applies the bonus if the poisoned Pokemon is in the active spot (index 0)
 fn get_poison_damage(state: &State, player: usize, in_play_idx: usize) -> u32 {
-    use crate::actions::{abilities::AbilityMechanic, get_ability_mechanic};
+    use crate::actions::{abilities::AbilityMechanic, get_in_play_ability_mechanic};
 
     let base_damage = 10;
 
@@ -163,7 +160,7 @@ fn get_poison_damage(state: &State, player: usize, in_play_idx: usize) -> u32 {
         .enumerate_in_play_pokemon(opponent)
         .filter(|(_, pokemon)| {
             matches!(
-                get_ability_mechanic(&pokemon.card),
+                get_in_play_ability_mechanic(state, pokemon),
                 Some(AbilityMechanic::IncreasePoisonDamage { amount: 10 })
             )
         })
@@ -312,7 +309,7 @@ fn apply_snowy_terrain_checkup_damage(state: &mut State) {
         if active.is_knocked_out() {
             continue;
         }
-        match get_ability_mechanic(&active.card) {
+        match get_in_play_ability_mechanic(state, active) {
             Some(AbilityMechanic::CheckupDamageToOpponentActive { amount }) => {
                 active_only_damage.push((player, *amount));
             }
@@ -379,17 +376,22 @@ fn checkapply_prevent_first_attack(
         return false;
     }
 
+    // Resolved before the mutable borrow, since the suppression check reads the board.
+    let prevents = state.in_play_pokemon[target_player][target_pokemon_idx]
+        .as_ref()
+        .is_some_and(|target_pokemon| {
+            !target_pokemon.prevent_first_attack_damage_used
+                && get_in_play_ability_mechanic(state, target_pokemon)
+                    == Some(&AbilityMechanic::PreventFirstAttack)
+        });
+    if !prevents {
+        return false;
+    }
     if let Some(target_pokemon) = state.in_play_pokemon[target_player][target_pokemon_idx].as_mut()
     {
-        if !target_pokemon.prevent_first_attack_damage_used {
-            if let Some(AbilityMechanic::PreventFirstAttack) =
-                get_ability_mechanic(&target_pokemon.card)
-            {
-                debug!("PreventFirstAttackDamageAfterEnteringPlay: Preventing first attack damage");
-                target_pokemon.prevent_first_attack_damage_used = true;
-                return true;
-            }
-        }
+        debug!("PreventFirstAttackDamageAfterEnteringPlay: Preventing first attack damage");
+        target_pokemon.prevent_first_attack_damage_used = true;
+        return true;
     }
     false
 }
@@ -411,7 +413,7 @@ pub(crate) fn guts_would_flip(
         return false;
     };
     if !matches!(
-        get_ability_mechanic(&pokemon.card),
+        get_in_play_ability_mechanic(state, pokemon),
         Some(AbilityMechanic::CoinFlipToSurviveKnockOut)
     ) {
         return false;
@@ -617,7 +619,7 @@ pub(crate) fn handle_knockouts(
                 // flipped at forecast time, and a heads branch tagged this Pokémon with
                 // DenyKnockoutPoints. The knockout itself still stands — only the score is denied.
                 let points_denied = ko_pokemon
-                    .get_effective_card_effects()
+                    .get_effective_card_effects(state)
                     .iter()
                     .any(|effect| matches!(effect, CardEffect::DenyKnockoutPoints));
                 let points_won = if points_denied {

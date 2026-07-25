@@ -1,7 +1,7 @@
 use crate::{
     actions::{
-        abilities::AbilityMechanic, ability_mechanic_from_effect, get_ability_mechanic,
-        handle_damage_only, handle_knockouts,
+        abilities::AbilityMechanic, get_in_play_ability_mechanic, handle_damage_only,
+        handle_knockouts,
     },
     effects::TurnEffect,
     hooks::DamageModifierContext,
@@ -100,17 +100,14 @@ impl State {
             let pokemon = self.in_play_pokemon[actor][in_play_idx]
                 .as_ref()
                 .expect("Pokemon should be there if attaching energy to it");
-            get_ability_mechanic(&pokemon.card).cloned()
+            get_in_play_ability_mechanic(self, pokemon).cloned()
         };
 
         if from_zone {
             let opponent = (actor + 1) % 2;
             if let Some(opponent_active) = self.in_play_pokemon[opponent][0].as_ref() {
-                let has_electromagnetic_wall = opponent_active
-                    .card
-                    .get_ability()
-                    .and_then(|ability| ability_mechanic_from_effect(&ability.effect))
-                    .is_some_and(|mechanic| *mechanic == AbilityMechanic::ElectromagneticWall);
+                let has_electromagnetic_wall = get_in_play_ability_mechanic(self, opponent_active)
+                    == Some(&AbilityMechanic::ElectromagneticWall);
                 if has_electromagnetic_wall {
                     handle_damage_only(
                         self,

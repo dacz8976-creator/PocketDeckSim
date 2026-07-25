@@ -6,7 +6,7 @@ use rand::Rng;
 
 use crate::{
     actions::{
-        apply_evolve, handle_knockouts,
+        apply_evolve, handle_knockouts, has_any_in_play_ability,
         shared_mutations::{
             card_search_outcomes_with_filter_multiple, gladion_search_outcomes,
             item_search_outcomes, pokemon_search_outcomes, tool_search_outcomes,
@@ -475,7 +475,7 @@ fn team_effect(rng: &mut StdRng, state: &mut State, action: &Action) {
     let mut eligible_energy: Vec<(usize, EnergyType)> = Vec::new();
 
     for (in_play_idx, pokemon) in state.enumerate_in_play_pokemon(opponent) {
-        if pokemon.card.get_ability().is_some() {
+        if has_any_in_play_ability(state, pokemon) {
             for energy in pokemon.attached_energy.iter().copied() {
                 eligible_energy.push((in_play_idx, energy));
             }
