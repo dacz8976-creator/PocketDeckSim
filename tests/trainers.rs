@@ -32,6 +32,8 @@ mod lana_budding_expeditioner_test;
 mod lt_surge_juggler_test;
 #[path = "trainers/marlon_test.rs"]
 mod marlon_test;
+#[path = "trainers/penny_test.rs"]
+mod penny_test;
 #[path = "trainers/professor_sada_test.rs"]
 mod professor_sada_test;
 #[path = "trainers/professor_turo_test.rs"]

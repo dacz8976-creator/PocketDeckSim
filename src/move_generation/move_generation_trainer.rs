@@ -1,4 +1,5 @@
 use crate::{
+    actions::penny_candidates,
     actions::{abilities::AbilityMechanic, get_ability_mechanic, SimpleAction},
     card_ids::CardId,
     card_logic::{
@@ -160,6 +161,9 @@ pub fn trainer_move_generation_implementation(
         CardId::B1215HittingHammer => can_play_hitting_hammer(state, trainer_card),
         CardId::B1213PrankSpinner => can_play_prank_spinner(state, trainer_card),
         CardId::A1a064PokemonFlute => can_play_pokemon_flute(state, trainer_card),
+        CardId::A3b069Penny | CardId::A3b086Penny | CardId::B2a092Penny | CardId::B2a109Penny => {
+            can_play_penny(state, trainer_card)
+        }
         // Pure-information cards (see `information_only_effect`): always legal, never conditional.
         CardId::A4a071Morty
         | CardId::A4a085Morty
@@ -960,6 +964,16 @@ fn can_play_parasol_lady(state: &State, trainer_card: &TrainerCard) -> Option<Ve
 /// Check if Whitney can be played (requires a Miltank that is damaged or Asleep/Paralyzed/Confused)
 fn can_play_whitney(state: &State, trainer_card: &TrainerCard) -> Option<Vec<SimpleAction>> {
     if whitney_targets(state, state.current_player).is_empty() {
+        cannot_play_trainer()
+    } else {
+        can_play_trainer(state, trainer_card)
+    }
+}
+
+/// Check if Penny can be played (requires at least one copyable Supporter in the opponent's deck)
+fn can_play_penny(state: &State, trainer_card: &TrainerCard) -> Option<Vec<SimpleAction>> {
+    let opponent = (state.current_player + 1) % 2;
+    if penny_candidates(state, opponent).is_empty() {
         cannot_play_trainer()
     } else {
         can_play_trainer(state, trainer_card)
