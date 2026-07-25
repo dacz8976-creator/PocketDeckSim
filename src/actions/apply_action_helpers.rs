@@ -16,6 +16,7 @@ use crate::{
     },
     models::{Card, StatusCondition, TrainerType},
     state::GameOutcome,
+    tools::has_tool,
     State,
 };
 
@@ -642,7 +643,19 @@ pub(crate) fn handle_knockouts(
         // being Knocked Out.
         state.own_knockouts_this_game[ko_receiver] += 1;
 
-        state.discard_from_play(ko_receiver, ko_pokemon_idx);
+        // Rescue Scarf (A4 155): if an opponent's attack knocked this Pokémon out, its card goes
+        // back to its owner's hand instead of the discard pile. The knockout still stands and the
+        // points are still awarded above — only the destination of the card changes.
+        let rescued = is_from_active_attack
+            && attacking_ref.0 != ko_receiver
+            && state.in_play_pokemon[ko_receiver][ko_pokemon_idx]
+                .as_ref()
+                .is_some_and(|pokemon| has_tool(pokemon, CardId::A4155RescueScarf));
+        if rescued {
+            state.rescue_from_play(ko_receiver, ko_pokemon_idx);
+        } else {
+            state.discard_from_play(ko_receiver, ko_pokemon_idx);
+        }
     }
 
     // Set knocked_out_by_opponent_attack_this_turn flag

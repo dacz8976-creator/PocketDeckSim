@@ -514,6 +514,26 @@ impl State {
 
     /// Discards a Pokemon from play, moving it, its evolution chain, and its energies
     ///  to the discard pile.
+    /// Rescue Scarf (A4 155): the Knocked Out Pokémon itself goes to its owner's hand instead of
+    /// the discard pile. Everything else it was carrying — the tool, the cards it evolved from,
+    /// and its attached Energy — is still discarded, and the board slot is still emptied, so the
+    /// knockout and its points resolve exactly as normal.
+    pub(crate) fn rescue_from_play(&mut self, ko_receiver: usize, ko_pokemon_idx: usize) {
+        let ko_pokemon = self.in_play_pokemon[ko_receiver][ko_pokemon_idx]
+            .as_ref()
+            .expect("There should be a Pokemon to rescue");
+        let mut cards_to_discard = ko_pokemon.cards_behind.clone();
+        if let Some(tool_card) = &ko_pokemon.attached_tool {
+            cards_to_discard.push(tool_card.clone());
+        }
+        let rescued = ko_pokemon.card.clone();
+        debug!("Rescue Scarf: returning {rescued:?} to hand, discarding {cards_to_discard:?}");
+        self.discard_piles[ko_receiver].extend(cards_to_discard);
+        self.discard_energies[ko_receiver].extend(ko_pokemon.attached_energy.iter().cloned());
+        self.hands[ko_receiver].push(rescued);
+        self.in_play_pokemon[ko_receiver][ko_pokemon_idx] = None;
+    }
+
     pub(crate) fn discard_from_play(&mut self, ko_receiver: usize, ko_pokemon_idx: usize) {
         let ko_pokemon = self.in_play_pokemon[ko_receiver][ko_pokemon_idx]
             .as_ref()

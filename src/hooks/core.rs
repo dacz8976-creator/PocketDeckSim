@@ -894,6 +894,27 @@ fn get_future_booster_damage_bonus(attacking_pokemon: &PlayedCard) -> u32 {
     0
 }
 
+/// Beastite (A3a 066): "Attacks used by the Ultra Beast this card is attached to do +10 damage to
+/// your opponent's Active Pokémon for each point you have gotten."
+///
+/// Scales with points already banked, so it is worth nothing on an empty scoreboard and rises as
+/// the holder closes out the game. The caller gates it to active-to-active damage, matching the
+/// card's "to your opponent's Active Pokémon" wording.
+fn get_beastite_damage_bonus(
+    state: &State,
+    attacking_player: usize,
+    attacking_pokemon: &PlayedCard,
+) -> u32 {
+    if has_tool(attacking_pokemon, CardId::A3a066Beastite)
+        && is_ultra_beast(&attacking_pokemon.get_name())
+    {
+        let bonus = 10 * state.points[attacking_player] as u32;
+        debug!("Beastite: Increasing damage by {bonus}");
+        return bonus;
+    }
+    0
+}
+
 // TODO: Confirm is_from_attack and goes to enemy active
 pub(crate) fn modify_damage(
     state: &State,
@@ -1084,6 +1105,12 @@ pub(crate) fn modify_damage(
         0
     };
 
+    let beastite_damage_bonus = if is_active_to_active {
+        get_beastite_damage_bonus(state, attacking_player, attacking_pokemon)
+    } else {
+        0
+    };
+
     // Stadium damage bonus (e.g., Training Area for Stage 1 Pokemon)
     // Only applies to attacks against the opponent's Active Pokemon
     let stadium_damage_bonus = if is_active_to_active {
@@ -1125,7 +1152,8 @@ pub(crate) fn modify_damage(
         + increased_vulnerability_modifiers
         + type_boost_bonus
         + stadium_damage_bonus
-        + future_booster_damage_bonus)
+        + future_booster_damage_bonus
+        + beastite_damage_bonus)
         .saturating_sub(
             reduced_card_effect_modifiers
                 + reduced_turn_effect_modifiers
