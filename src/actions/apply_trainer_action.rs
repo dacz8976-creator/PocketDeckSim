@@ -139,6 +139,10 @@ pub fn forecast_trainer_action(
         CardId::A3148Acerola | CardId::A3190Acerola => Outcomes::single_fn(acerola_effect),
         CardId::A1226LtSurge | CardId::A1273LtSurge => Outcomes::single_fn(lt_surge_effect),
         CardId::B2151Juggler | CardId::B2192Juggler => Outcomes::single_fn(juggler_effect),
+        CardId::A3152Lana | CardId::A3194Lana => Outcomes::single_fn(lana_effect),
+        CardId::A1a066BuddingExpeditioner | CardId::A1a080BuddingExpeditioner => {
+            Outcomes::single_fn(budding_expeditioner_effect)
+        }
         CardId::A3150Kiawe | CardId::A3192Kiawe => Outcomes::single_fn(kiawe_effect),
         CardId::A4157Lyra | CardId::A4197Lyra | CardId::A4b332Lyra | CardId::A4b333Lyra => {
             Outcomes::single_fn(lyra_effect)
@@ -906,6 +910,47 @@ fn gather_bench_energy_onto_active(
         .extend(gathered);
 }
 
+fn lana_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    // Switch in 1 of your opponent's Benched Pokémon to the Active Spot. The player who used Lana
+    // picks, exactly like Cyrus.
+    let opponent = (action.actor + 1) % 2;
+    let possible_moves = state
+        .enumerate_bench_pokemon(opponent)
+        .map(|(in_play_idx, _)| SimpleAction::Activate {
+            player: opponent,
+            in_play_idx,
+        })
+        .collect::<Vec<_>>();
+    if !possible_moves.is_empty() {
+        state
+            .move_generation_stack
+            .push((action.actor, possible_moves));
+    }
+}
+
+fn budding_expeditioner_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    // Put your Mew ex in the Active Spot into your hand. Same shape as Koga: the Pokémon and
+    // everything it evolved from go back to hand, its Energy is lost, and the empty Active Spot
+    // forces a promotion (or loses the game if the Bench is empty).
+    return_active_to_hand(state, action.actor);
+}
+
+/// Moves the Active Pokémon (plus its evolution chain) from play back into its owner's hand,
+/// discarding its Energy, then triggers promotion. Shared by Koga and Budding Expeditioner.
+fn return_active_to_hand(state: &mut State, player: usize) {
+    let active = state.in_play_pokemon[player][0]
+        .as_ref()
+        .expect("Active Pokemon should be there when returning it to hand");
+    let mut cards_to_collect = active.cards_behind.clone();
+    cards_to_collect.push(active.card.clone());
+    state.hands[player].extend(cards_to_collect);
+    // Energy disappears
+    state.in_play_pokemon[player][0] = None;
+
+    // if no bench pokemon, finish game as a loss
+    state.trigger_promotion_or_declare_winner(player);
+}
+
 fn lt_surge_effect(_: &mut StdRng, state: &mut State, action: &Action) {
     // Move all [L] Energy from your Benched Pokémon to your Raichu, Electrode, or Electabuzz in
     // the Active Spot.
@@ -1102,17 +1147,7 @@ fn red_effect(_: &mut StdRng, state: &mut State, _: &Action) {
 
 fn koga_effect(_: &mut StdRng, state: &mut State, action: &Action) {
     // Put your Muk or Weezing in the Active Spot into your hand.
-    let active_pokemon = state.in_play_pokemon[action.actor][0]
-        .as_ref()
-        .expect("Active Pokemon should be there if Koga is played");
-    let mut cards_to_collect = active_pokemon.cards_behind.clone();
-    cards_to_collect.push(active_pokemon.card.clone());
-    state.hands[action.actor].extend(cards_to_collect);
-    // Energy dissapears
-    state.in_play_pokemon[action.actor][0] = None;
-
-    // if no bench pokemon, finish game as a loss
-    state.trigger_promotion_or_declare_winner(action.actor);
+    return_active_to_hand(state, action.actor);
 }
 
 fn ilima_effect(_: &mut StdRng, state: &mut State, action: &Action) {

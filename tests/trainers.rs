@@ -20,6 +20,8 @@ mod iris_trainer_test;
 mod juliana_test;
 #[path = "trainers/korrina_cabbie_parasol_lady_test.rs"]
 mod korrina_cabbie_parasol_lady_test;
+#[path = "trainers/lana_budding_expeditioner_test.rs"]
+mod lana_budding_expeditioner_test;
 #[path = "trainers/lt_surge_juggler_test.rs"]
 mod lt_surge_juggler_test;
 #[path = "trainers/marlon_test.rs"]

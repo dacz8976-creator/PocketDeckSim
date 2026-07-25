@@ -7,8 +7,8 @@ use crate::{
     },
     effects::TurnEffect,
     hooks::{
-        can_play_item, can_play_support, get_stage, is_ancient_pokemon, is_future_pokemon,
-        is_ultra_beast,
+        can_play_item, can_play_support, get_stage, has_named_pokemon_in_play, is_ancient_pokemon,
+        is_future_pokemon, is_ultra_beast,
     },
     models::{Card, EnergyType, TrainerCard, TrainerType},
     stadiums::is_stadium_effect_implemented,
@@ -147,6 +147,10 @@ pub fn trainer_move_generation_implementation(
         CardId::A3148Acerola | CardId::A3190Acerola => can_play_acerola(state, trainer_card),
         CardId::A1226LtSurge | CardId::A1273LtSurge => can_play_lt_surge(state, trainer_card),
         CardId::B2151Juggler | CardId::B2192Juggler => can_play_juggler(state, trainer_card),
+        CardId::A3152Lana | CardId::A3194Lana => can_play_lana(state, trainer_card),
+        CardId::A1a066BuddingExpeditioner | CardId::A1a080BuddingExpeditioner => {
+            can_play_budding_expeditioner(state, trainer_card)
+        }
         CardId::A3150Kiawe | CardId::A3192Kiawe => can_play_kiawe(state, trainer_card),
         CardId::A4157Lyra | CardId::A4197Lyra | CardId::A4b332Lyra | CardId::A4b333Lyra => {
             can_play_lyra(state, trainer_card)
@@ -936,6 +940,34 @@ fn can_play_whitney(state: &State, trainer_card: &TrainerCard) -> Option<Vec<Sim
         cannot_play_trainer()
     } else {
         can_play_trainer(state, trainer_card)
+    }
+}
+
+/// Check if Lana can be played (requires Araquanid in play and an opponent Benched Pokémon)
+fn can_play_lana(state: &State, trainer_card: &TrainerCard) -> Option<Vec<SimpleAction>> {
+    let player = state.current_player;
+    let opponent = (player + 1) % 2;
+    let has_araquanid = has_named_pokemon_in_play(state, player, &["Araquanid"]);
+    let opponent_has_bench = state.enumerate_bench_pokemon(opponent).next().is_some();
+    if has_araquanid && opponent_has_bench {
+        can_play_trainer(state, trainer_card)
+    } else {
+        cannot_play_trainer()
+    }
+}
+
+/// Check if Budding Expeditioner can be played (requires Mew ex in the Active Spot)
+fn can_play_budding_expeditioner(
+    state: &State,
+    trainer_card: &TrainerCard,
+) -> Option<Vec<SimpleAction>> {
+    let active_is_mew_ex = state
+        .maybe_get_active(state.current_player)
+        .is_some_and(|active| active.get_name() == "Mew ex");
+    if active_is_mew_ex {
+        can_play_trainer(state, trainer_card)
+    } else {
+        cannot_play_trainer()
     }
 }
 
