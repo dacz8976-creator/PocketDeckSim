@@ -257,6 +257,17 @@ pub(crate) fn on_end_turn(player_ending_turn: usize, state: &mut State) {
         }
     }
 
+    // Leftovers (A3b 067): at the end of your turn, heal 10 from the holder if it is Active.
+    // Checked outside the ability block above, since a Pokémon can have both an end-of-turn
+    // ability and this tool.
+    if has_tool(
+        state.get_active(player_ending_turn),
+        CardId::A3b067Leftovers,
+    ) {
+        debug!("Leftovers: healing 10 damage from active");
+        state.get_active_mut(player_ending_turn).heal(10);
+    }
+
     // Process delayed damage effects on active Pokemon
     // Delayed damage triggers at the end of the opponent's turn (when their turn ends, the effect expires)
     let total_delayed_damage: u32 = state
@@ -1527,6 +1538,14 @@ pub(crate) fn on_attack_knockout(
         Some(AbilityMechanic::ProtectSelfNextTurnAfterAttackKnockout)
     ) {
         attacking_pokemon.add_effect(CardEffect::PreventAllDamageAndEffects, 1);
+    }
+
+    // Lucky Mittens (B1 220): draw a card whenever the holder's attack knocks out one of the
+    // opponent's Pokémon. The early return above already restricts this to genuine opponent
+    // knockouts from an active attack.
+    if has_tool(attacking_pokemon, CardId::B1220LuckyMittens) {
+        debug!("Lucky Mittens: drawing a card for the attack knockout");
+        state.maybe_draw_card(attacking_ref.0);
     }
 }
 

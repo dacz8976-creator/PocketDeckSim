@@ -4,6 +4,8 @@ mod booster_capsule_test;
 mod lucky_egg_test;
 #[path = "tools/lucky_ice_pop_test.rs"]
 mod lucky_ice_pop_test;
+#[path = "tools/memory_light_leftovers_lucky_mittens_test.rs"]
+mod memory_light_leftovers_lucky_mittens_test;
 #[path = "tools/protective_poncho_test.rs"]
 mod protective_poncho_test;
 #[path = "tools/raikou_rocky_helmet_order_test.rs"]
