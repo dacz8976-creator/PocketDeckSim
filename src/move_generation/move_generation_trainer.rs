@@ -137,6 +137,10 @@ pub fn trainer_move_generation_implementation(
         CardId::A2153Volkner | CardId::A2193Volkner => can_play_volkner(state, trainer_card),
         CardId::A3149Ilima | CardId::A3191Ilima => can_play_ilima(state, trainer_card),
         CardId::A3153Sophocles | CardId::A3195Sophocles => can_play_trainer(state, trainer_card),
+        CardId::A1a067Blue | CardId::A1a081Blue => can_play_trainer(state, trainer_card),
+        CardId::A4160Jasmine | CardId::A4200Jasmine => can_play_trainer(state, trainer_card),
+        CardId::B3151Cheren | CardId::B3192Cheren => can_play_trainer(state, trainer_card),
+        CardId::A3a063BeastWall => can_play_beast_wall(state, trainer_card),
         CardId::A3150Kiawe | CardId::A3192Kiawe => can_play_kiawe(state, trainer_card),
         CardId::A4157Lyra | CardId::A4197Lyra | CardId::A4b332Lyra | CardId::A4b333Lyra => {
             can_play_lyra(state, trainer_card)
@@ -914,6 +918,18 @@ fn can_play_parasol_lady(state: &State, trainer_card: &TrainerCard) -> Option<Ve
             pokemon.get_energy_type() == Some(EnergyType::Water) && !pokemon.card.is_ex()
         });
     if has_target {
+        can_play_trainer(state, trainer_card)
+    } else {
+        cannot_play_trainer()
+    }
+}
+
+/// Check if Beast Wall can be played ("You can use this card only if your opponent hasn't gotten
+/// any points."). The -20 itself only ever helps Ultra Beasts, but the card is legal regardless of
+/// what is in play, matching the printed condition.
+fn can_play_beast_wall(state: &State, trainer_card: &TrainerCard) -> Option<Vec<SimpleAction>> {
+    let opponent = (state.current_player + 1) % 2;
+    if state.points[opponent] == 0 {
         can_play_trainer(state, trainer_card)
     } else {
         cannot_play_trainer()

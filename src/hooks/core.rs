@@ -11,7 +11,7 @@ use crate::{
         ability_mechanic_from_effect, get_ability_mechanic, handle_damage_only, SimpleAction,
     },
     card_ids::CardId,
-    effects::{CardEffect, TurnEffect},
+    effects::{CardEffect, DamageReductionScope, TurnEffect},
     models::{Card, EnergyType, PlayedCard, TrainerCard, TrainerType, BASIC_STAGE},
     stadiums::{
         get_arena_of_antiquity_damage_bonus, get_training_area_damage_bonus,
@@ -950,12 +950,14 @@ fn get_turn_effect_damage_reduction(
     target_player: usize,
     target_pokemon: &crate::models::PlayedCard,
     attacking_player: usize,
+    attacking_pokemon: &PlayedCard,
     is_from_active_attack: bool,
 ) -> u32 {
     if !is_from_active_attack || attacking_player == target_player {
         return 0;
     }
     let target_energy_type = target_pokemon.get_energy_type();
+    let attacker_is_ex = attacking_pokemon.card.is_ex();
     state
         .get_current_turn_effects()
         .iter()
@@ -967,9 +969,29 @@ fn get_turn_effect_damage_reduction(
             } if *player == target_player && target_energy_type == Some(*energy_type) => {
                 Some(*amount)
             }
+            TurnEffect::ReducedDamageForTarget {
+                amount,
+                player,
+                scope,
+                only_from_ex,
+            } if *player == target_player
+                && (!*only_from_ex || attacker_is_ex)
+                && damage_reduction_scope_covers(scope, target_pokemon) =>
+            {
+                Some(*amount)
+            }
             _ => None,
         })
         .sum::<u32>()
+}
+
+/// Whether a `ReducedDamageForTarget` scope covers `pokemon` (see `DamageReductionScope`).
+fn damage_reduction_scope_covers(scope: &DamageReductionScope, pokemon: &PlayedCard) -> bool {
+    match scope {
+        DamageReductionScope::AllPokemon => true,
+        DamageReductionScope::NamedPokemon(names) => names.contains(&pokemon.get_name()),
+        DamageReductionScope::UltraBeasts => is_ultra_beast(&pokemon.get_name()),
+    }
 }
 
 enum WeaknessApplication {
@@ -1270,6 +1292,7 @@ pub(crate) fn modify_damage(
             target_player,
             receiving_pokemon,
             attacking_player,
+            attacking_pokemon,
             is_from_active_attack,
         )
     };

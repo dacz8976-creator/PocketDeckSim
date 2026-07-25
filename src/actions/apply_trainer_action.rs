@@ -18,7 +18,7 @@ use crate::{
         wallace_candidates,
     },
     combinatorics::generate_combinations,
-    effects::TurnEffect,
+    effects::{DamageReductionScope, TurnEffect},
     hooks::{get_stage, is_ancient_pokemon, is_future_pokemon, is_ultra_beast},
     models::{Card, EnergyType, StatusCondition, TrainerCard, TrainerType},
     tools::{enumerate_tool_choices, is_tool_effect_implemented},
@@ -129,6 +129,10 @@ pub fn forecast_trainer_action(
         | CardId::A4b375Lusamine => Outcomes::single_fn(lusamine_effect),
         CardId::A3149Ilima | CardId::A3191Ilima => Outcomes::single_fn(ilima_effect),
         CardId::A3153Sophocles | CardId::A3195Sophocles => Outcomes::single_fn(sophocles_effect),
+        CardId::A1a067Blue | CardId::A1a081Blue => Outcomes::single_fn(blue_effect),
+        CardId::A4160Jasmine | CardId::A4200Jasmine => Outcomes::single_fn(jasmine_effect),
+        CardId::B3151Cheren | CardId::B3192Cheren => Outcomes::single_fn(cheren_effect),
+        CardId::A3a063BeastWall => Outcomes::single_fn(beast_wall_effect),
         CardId::A3150Kiawe | CardId::A3192Kiawe => Outcomes::single_fn(kiawe_effect),
         CardId::A4157Lyra | CardId::A4197Lyra | CardId::A4b332Lyra | CardId::A4b333Lyra => {
             Outcomes::single_fn(lyra_effect)
@@ -782,6 +786,69 @@ fn hau_effect(_: &mut StdRng, state: &mut State, _: &Action) {
             ],
         },
         0,
+    );
+}
+
+/// Shared body of the "During your opponent's next turn, <scope> take -N damage from attacks from
+/// your opponent's Pokémon" cards (Blue, Jasmine, Cheren, Beast Wall). Duration 1 = this turn plus
+/// the opponent's next turn.
+fn add_damage_reduction_for_next_turn(
+    state: &mut State,
+    player: usize,
+    amount: u32,
+    scope: DamageReductionScope,
+    only_from_ex: bool,
+) {
+    state.add_turn_effect(
+        TurnEffect::ReducedDamageForTarget {
+            amount,
+            player,
+            scope,
+            only_from_ex,
+        },
+        1,
+    );
+}
+
+fn named_scope(names: &[&str]) -> DamageReductionScope {
+    DamageReductionScope::NamedPokemon(names.iter().map(|name| name.to_string()).collect())
+}
+
+fn blue_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    // During your opponent's next turn, all of your Pokémon take -10 damage from attacks from
+    // your opponent's Pokémon.
+    add_damage_reduction_for_next_turn(
+        state,
+        action.actor,
+        10,
+        DamageReductionScope::AllPokemon,
+        false,
+    );
+}
+
+fn jasmine_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    // During your opponent's next turn, all of your Steelix and Skarmory ex take -50 damage from
+    // attacks from your opponent's Pokémon.
+    let scope = named_scope(&["Steelix", "Skarmory ex"]);
+    add_damage_reduction_for_next_turn(state, action.actor, 50, scope, false);
+}
+
+fn cheren_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    // During your opponent's next turn, all of your Watchog and Stoutland take -100 damage from
+    // attacks from your opponent's Pokémon ex.
+    let scope = named_scope(&["Watchog", "Stoutland"]);
+    add_damage_reduction_for_next_turn(state, action.actor, 100, scope, true);
+}
+
+fn beast_wall_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    // During your opponent's next turn, all of your Ultra Beasts take -20 damage from attacks
+    // from your opponent's Pokémon.
+    add_damage_reduction_for_next_turn(
+        state,
+        action.actor,
+        20,
+        DamageReductionScope::UltraBeasts,
+        false,
     );
 }
 
