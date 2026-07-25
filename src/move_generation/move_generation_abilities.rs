@@ -140,6 +140,7 @@ fn can_use_ability_by_mechanic(
         AbilityMechanic::CoinFlipToReduceDamage { .. } => false, // Passive ability
         AbilityMechanic::CoinFlipToSurviveKnockOut => false, // Passive ability
         AbilityMechanic::CoinFlipToDenyKnockoutPoints => false, // Passive (handle_knockouts)
+        AbilityMechanic::CoinFlipToKnockOutAttackerOnKnockout => false, // Passive (forecast split)
         AbilityMechanic::MoveAllTypedEnergyToBenchOnKnockout { .. } => false, // Passive (on_knockout)
         AbilityMechanic::DamageOnKnockoutInActive { .. } => false, // Passive (on_knockout)
         AbilityMechanic::CheckupDamageToOpponentActive { .. } => false, // Passive ability

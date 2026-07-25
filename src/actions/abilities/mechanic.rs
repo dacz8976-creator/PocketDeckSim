@@ -279,6 +279,17 @@ pub enum AbilityMechanic {
     /// rather than seeing an expected value; on heads the branch tags the doomed Pokémon with
     /// `CardEffect::DenyKnockoutPoints`, which `handle_knockouts` consumes.
     CoinFlipToDenyKnockoutPoints,
+    /// Galarian Cursola's Perish Body (A4a 035): "If this Pokémon is in the Active Spot and is
+    /// Knocked Out by damage from an attack from your opponent's Pokémon, flip a coin. If heads,
+    /// the Attacking Pokémon is Knocked Out."
+    ///
+    /// The coin-flip sibling of `DamageOnKnockoutInActive { target: Attacker }`, but it cannot ride
+    /// the same `on_knockout` hook: there is no RNG there, and folding the flip in would hide it
+    /// from the search. So, exactly like `CoinFlipToDenyKnockoutPoints`, it is a probability split
+    /// at forecast time (see `AttackOutcomes::split_with_attacker_knockout`) — on heads the branch
+    /// zeroes the attacker's HP right after damage lands, and the single `handle_knockouts` pass
+    /// that follows resolves the double knockout, awarding each player their point.
+    CoinFlipToKnockOutAttackerOnKnockout,
     /// Passimian ex's Offload Pass: if this Pokémon is in the Active Spot and is Knocked Out by
     /// damage from an opponent's attack, move all of its `energy_type` Energy to 1 of your Benched
     /// Pokémon (your choice). Passive; handled in the `on_knockout` hook.

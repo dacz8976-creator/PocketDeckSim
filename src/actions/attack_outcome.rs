@@ -507,10 +507,6 @@ impl AttackOutcomes {
                 .iter()
                 .copied()
                 .filter(|target_idx| {
-                    let Some(pokemon) = state.in_play_pokemon[opponent][*target_idx].as_ref()
-                    else {
-                        return false;
-                    };
                     let raw_total: u32 = branch
                         .outcome
                         .damage
@@ -518,21 +514,14 @@ impl AttackOutcomes {
                         .filter(|(_, is_opponent, idx)| *is_opponent && idx == target_idx)
                         .map(|(amount, _, _)| *amount)
                         .sum();
-                    if raw_total == 0 {
-                        return false;
-                    }
-                    let modified = modify_damage(
+                    would_knock_out(
                         state,
-                        (acting_player, 0),
-                        (raw_total, opponent, *target_idx),
-                        true,
-                        DamageModifierContext {
-                            attack_name,
-                            attack_effect,
-                        },
-                    );
-                    let remaining = pokemon.get_remaining_hp();
-                    remaining > 0 && modified >= remaining
+                        acting_player,
+                        (opponent, *target_idx),
+                        raw_total,
+                        attack_name,
+                        attack_effect,
+                    )
                 })
                 .collect();
 
@@ -561,6 +550,76 @@ impl AttackOutcomes {
                                 pokemon.add_effect(CardEffect::DenyKnockoutPoints, 1);
                             }
                         }
+                        if let Some(post) = &previous_post {
+                            post(rng, state, action);
+                        }
+                    }));
+                }
+                branches.push(AttackBranch {
+                    probability: sub_probability,
+                    outcome,
+                    coin_paths: CoinPaths::None,
+                });
+            }
+        }
+        Self { branches }
+    }
+
+    /// Apply the defender's "if this Pokémon is in the Active Spot and is Knocked Out by damage
+    /// from an attack from your opponent's Pokémon, flip a coin; if heads, the Attacking Pokémon is
+    /// Knocked Out" ability (Galarian Cursola's Perish Body).
+    ///
+    /// The third member of the `split_with_guts_survival` / `split_with_point_denial` family, and
+    /// like them it splits at forecast time so the search bots price the coin instead of averaging
+    /// it away — trading a lethal hit for a 50/50 on your own attacker is exactly the kind of
+    /// decision e2/e3 need to see both sides of. Two differences from its siblings:
+    ///
+    /// - It only ever applies to the defender's Active Spot (the Ability says so), so it takes no
+    ///   list of indices.
+    /// - On heads the branch zeroes the *attacker's* HP in a post-damage effect, after checking the
+    ///   defender really was Knocked Out (an intervening effect could have changed that). Nothing
+    ///   else is needed: the `handle_knockouts` pass that `into_mutation` already runs resolves
+    ///   both knockouts in a single wave, so each player banks their own point before the win
+    ///   checks and a mutual knockout can even end the game in a tie.
+    ///
+    /// Knockouts are forecast against the pre-attack board, matching both siblings. Coin metadata
+    /// is dropped: this is the defender's coin, not the acting player's.
+    pub fn split_with_attacker_knockout(
+        self,
+        state: &State,
+        acting_player: usize,
+        attack_name: Option<&str>,
+        attack_effect: Option<&str>,
+    ) -> Self {
+        let opponent = (acting_player + 1) % 2;
+        let mut branches = vec![];
+        for branch in self.branches {
+            let raw_total: u32 = branch
+                .outcome
+                .damage
+                .iter()
+                .filter(|(_, is_opponent, idx)| *is_opponent && *idx == 0)
+                .map(|(amount, _, _)| *amount)
+                .sum();
+            if !would_knock_out(
+                state,
+                acting_player,
+                (opponent, 0),
+                raw_total,
+                attack_name,
+                attack_effect,
+            ) {
+                branches.push(branch);
+                continue;
+            }
+
+            let sub_probability = branch.probability / 2.0;
+            for heads in [true, false] {
+                let mut outcome = branch.outcome.clone();
+                if heads {
+                    let previous_post = outcome.post_damage_effect.take();
+                    outcome.post_damage_effect = Some(Rc::new(move |rng, state, action| {
+                        knock_out_attacker_if_defender_fainted(state, action.actor);
                         if let Some(post) = &previous_post {
                             post(rng, state, action);
                         }
@@ -669,6 +728,56 @@ impl AttackOutcomes {
             .collect::<Vec<_>>();
         Outcomes::from_branches_with_coin_paths(branches)
             .expect("attack outcome branches should form a valid distribution")
+    }
+}
+
+/// Whether `raw_total` (after damage modifiers) would knock out the Pokémon at `target`, forecast
+/// against the pre-attack board. Shared by the on-knockout coin-flip splits.
+fn would_knock_out(
+    state: &State,
+    acting_player: usize,
+    target: (usize, usize),
+    raw_total: u32,
+    attack_name: Option<&str>,
+    attack_effect: Option<&str>,
+) -> bool {
+    if raw_total == 0 {
+        return false;
+    }
+    let Some(pokemon) = state.in_play_pokemon[target.0][target.1].as_ref() else {
+        return false;
+    };
+    let modified = modify_damage(
+        state,
+        (acting_player, 0),
+        (raw_total, target.0, target.1),
+        true,
+        DamageModifierContext {
+            attack_name,
+            attack_effect,
+        },
+    );
+    let remaining = pokemon.get_remaining_hp();
+    remaining > 0 && modified >= remaining
+}
+
+/// Perish Body heads: the Attacking Pokémon is Knocked Out along with the defender.
+///
+/// Runs as a post-damage effect, i.e. after damage has landed but before `into_mutation`'s
+/// `handle_knockouts` pass, so setting the attacker's HP to 0 is enough — that pass discards both
+/// Pokémon in the same wave and awards each player the point for the other's knockout. The
+/// forecast decided the coin against the pre-attack board, so the defender's knockout is
+/// re-checked here: an intervening effect (or a Pokémon that was switched out) means no trigger.
+fn knock_out_attacker_if_defender_fainted(state: &mut State, acting_player: usize) {
+    let opponent = (acting_player + 1) % 2;
+    let defender_fainted = state.in_play_pokemon[opponent][0]
+        .as_ref()
+        .is_some_and(|pokemon| pokemon.is_knocked_out());
+    if !defender_fainted {
+        return;
+    }
+    if let Some(attacker) = state.in_play_pokemon[acting_player][0].as_mut() {
+        attacker.set_remaining_hp(0);
     }
 }
 
