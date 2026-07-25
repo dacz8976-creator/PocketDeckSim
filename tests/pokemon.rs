@@ -156,6 +156,8 @@ mod miraidon_ex_test;
 mod morpeko_test;
 #[path = "pokemon/ninetales_ember_dance_test.rs"]
 mod ninetales_ember_dance_test;
+#[path = "pokemon/no_retreat_cost_abilities_test.rs"]
+mod no_retreat_cost_abilities_test;
 #[path = "pokemon/passimian_ex_offload_pass_test.rs"]
 mod passimian_ex_offload_pass_test;
 #[path = "pokemon/porygonz_cyberjack_test.rs"]

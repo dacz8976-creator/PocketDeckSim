@@ -1,5 +1,35 @@
 use crate::models::EnergyType;
 
+/// The card names that satisfy "if you have Arceus or Arceus ex in play". Pokémon ex have their
+/// own name in this game, so both spellings have to be listed explicitly.
+pub const ARCEUS_NAMES: &[&str] = &["Arceus", "Arceus ex"];
+
+/// Which Pokémon a [`AbilityMechanic::NoRetreatCost`] ability frees from its Retreat Cost.
+#[derive(Debug, Clone, PartialEq)]
+pub enum NoRetreatCostTarget {
+    /// "this Pokémon has no Retreat Cost" — only the Pokémon that has the Ability.
+    ThisPokemon,
+    /// "your Active Pokémon has no Retreat Cost" — whichever Pokémon is Active, while the Pokémon
+    /// with the Ability is anywhere in play (Active or Benched).
+    YourActive,
+    /// "your Active <name> has no Retreat Cost" — as [`Self::YourActive`], but only when the Active
+    /// Pokémon has this exact name.
+    YourActiveNamed(&'static str),
+}
+
+/// Extra condition that must hold for a [`AbilityMechanic::NoRetreatCost`] ability to apply.
+#[derive(Debug, Clone, PartialEq)]
+pub enum NoRetreatCostCondition {
+    /// Unconditional.
+    Always,
+    /// You have a Pokémon with one of these exact names in play.
+    NamedPokemonInPlay(&'static [&'static str]),
+    /// Any Stadium card is in play (Stadiums are shared, so either player's counts).
+    StadiumInPlay,
+    /// It is your first turn.
+    YourFirstTurn,
+}
+
 #[derive(Debug, Clone, PartialEq)]
 pub enum AbilityMechanic {
     VictreebelFragranceTrap,
@@ -175,6 +205,16 @@ pub enum AbilityMechanic {
         amount: u32,
     },
     NoRetreatIfHasEnergy,
+    /// The passive "no Retreat Cost" family: Speed Link (Arceus in play), Fantastical Floating
+    /// (Latias in play), Surge Surfer (a Stadium in play), Wimp Out (your first turn), Fluffy
+    /// Flight (your Active Pokémon, unconditionally) and Retreat Directive (your Active Dondozo).
+    ///
+    /// Passive, so it is resolved in `hooks::retreat::get_retreat_cost`;
+    /// `forecast_ability_by_mechanic` panics and `can_use_ability_by_mechanic` returns false.
+    NoRetreatCost {
+        target: NoRetreatCostTarget,
+        condition: NoRetreatCostCondition,
+    },
     PreventAllDamageFromEx,
     SleepOnZoneAttachToSelfWhileActive,
     IncreasePoisonDamage {

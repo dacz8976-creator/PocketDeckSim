@@ -1,7 +1,11 @@
 use crate::{
-    actions::{abilities::AbilityMechanic, get_ability_mechanic},
+    actions::{
+        abilities::{AbilityMechanic, NoRetreatCostCondition, NoRetreatCostTarget},
+        get_ability_mechanic,
+    },
     card_ids::CardId,
     effects::{CardEffect, TurnEffect},
+    hooks::core::has_named_pokemon_in_play,
     models::{Card, EnergyType, PlayedCard},
     stadiums::get_peculiar_plaza_retreat_reduction,
     tools::has_tool,
@@ -20,6 +24,69 @@ pub(crate) fn can_retreat(state: &State) -> bool {
     !state.has_retreated && !has_no_retreat_effect && !is_fossil
 }
 
+/// Resolves the passive `AbilityMechanic::NoRetreatCost` family (Speed Link, Fluffy Flight,
+/// Fantastical Floating, Retreat Directive, Surge Surfer, Wimp Out) for the Pokémon that is about
+/// to retreat.
+///
+/// Two shapes are folded together here: abilities that only free their own holder
+/// ([`NoRetreatCostTarget::ThisPokemon`], read straight off `card`), and abilities that free your
+/// Active Pokémon from anywhere in play ([`NoRetreatCostTarget::YourActive`] and
+/// [`NoRetreatCostTarget::YourActiveNamed`], which need a scan of your board for the granting
+/// Pokémon). Like the other owner-scoped retreat modifiers in this file, "your" means
+/// `state.current_player`.
+fn has_no_retreat_cost_ability(state: &State, card: &PlayedCard) -> bool {
+    let player = state.current_player;
+    if let Some(AbilityMechanic::NoRetreatCost {
+        target: NoRetreatCostTarget::ThisPokemon,
+        condition,
+    }) = get_ability_mechanic(&card.card)
+    {
+        if no_retreat_cost_condition_holds(state, player, condition) {
+            return true;
+        }
+    }
+    state
+        .enumerate_in_play_pokemon(player)
+        .any(|(_, source)| grants_active_no_retreat_cost(state, player, source, card))
+}
+
+/// True if `source` (one of `player`'s in-play Pokémon) has an ability that removes the Retreat
+/// Cost of `active`, their Active Pokémon.
+fn grants_active_no_retreat_cost(
+    state: &State,
+    player: usize,
+    source: &PlayedCard,
+    active: &PlayedCard,
+) -> bool {
+    let Some(AbilityMechanic::NoRetreatCost { target, condition }) =
+        get_ability_mechanic(&source.card)
+    else {
+        return false;
+    };
+    let targets_active = match target {
+        // Handled by reading the retreating Pokémon's own ability, not by this board scan.
+        NoRetreatCostTarget::ThisPokemon => false,
+        NoRetreatCostTarget::YourActive => true,
+        NoRetreatCostTarget::YourActiveNamed(name) => active.get_name() == *name,
+    };
+    targets_active && no_retreat_cost_condition_holds(state, player, condition)
+}
+
+fn no_retreat_cost_condition_holds(
+    state: &State,
+    player: usize,
+    condition: &NoRetreatCostCondition,
+) -> bool {
+    match condition {
+        NoRetreatCostCondition::Always => true,
+        NoRetreatCostCondition::NamedPokemonInPlay(names) => {
+            has_named_pokemon_in_play(state, player, names)
+        }
+        NoRetreatCostCondition::StadiumInPlay => state.active_stadium.is_some(),
+        NoRetreatCostCondition::YourFirstTurn => state.is_users_first_turn(),
+    }
+}
+
 pub(crate) fn get_retreat_cost(state: &State, card: &PlayedCard) -> Vec<EnergyType> {
     if let Card::Pokemon(pokemon_card) = &card.card {
         if matches!(
@@ -27,6 +94,9 @@ pub(crate) fn get_retreat_cost(state: &State, card: &PlayedCard) -> Vec<EnergyTy
             Some(AbilityMechanic::NoRetreatIfHasEnergy)
         ) && !card.attached_energy.is_empty()
         {
+            return vec![];
+        }
+        if has_no_retreat_cost_ability(state, card) {
             return vec![];
         }
         let mut normal_cost = pokemon_card.retreat_cost.clone();

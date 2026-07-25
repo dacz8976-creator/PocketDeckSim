@@ -5,8 +5,8 @@ use log::debug;
 
 use crate::{
     actions::{
-        abilities::AbilityMechanic, ability_mechanic_from_effect, get_ability_mechanic,
-        SimpleAction,
+        abilities::{AbilityMechanic, ARCEUS_NAMES},
+        ability_mechanic_from_effect, get_ability_mechanic, SimpleAction,
     },
     card_ids::CardId,
     effects::{CardEffect, TurnEffect},
@@ -593,6 +593,14 @@ fn get_ability_damage_reduction(
         .sum()
 }
 
+/// True if `player` has a Pokémon in play whose name is one of `names`. Used by the abilities
+/// worded "if you have <Pokémon> in play" (Power Link, Speed Link, Fantastical Floating).
+pub(crate) fn has_named_pokemon_in_play(state: &State, player: usize, names: &[&str]) -> bool {
+    state
+        .enumerate_in_play_pokemon(player)
+        .any(|(_, pokemon)| names.contains(&pokemon.get_name().as_str()))
+}
+
 fn get_ability_damage_increase(
     state: &State,
     attacking_player: usize,
@@ -624,13 +632,7 @@ fn get_ability_damage_increase(
     if let Some(AbilityMechanic::IncreaseDamageIfArceusInPlay { amount }) =
         ability_mechanic_from_effect(&ability.effect)
     {
-        let has_arceus = state
-            .enumerate_in_play_pokemon(attacking_player)
-            .any(|(_, pokemon)| {
-                let name = pokemon.get_name();
-                name == "Arceus" || name == "Arceus ex"
-            });
-        if has_arceus {
+        if has_named_pokemon_in_play(state, attacking_player, ARCEUS_NAMES) {
             debug!(
                 "IncreaseDamageIfArceusInPlay: Increasing damage by {}",
                 amount

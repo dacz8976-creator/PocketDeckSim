@@ -155,6 +155,7 @@ fn can_use_ability_by_mechanic(
         AbilityMechanic::ReduceRetreatCostOfYourActiveBasicFromBench { .. } => false,
         AbilityMechanic::ReduceRetreatCostOfYourActiveTypedFromBench { .. } => false,
         AbilityMechanic::NoRetreatIfHasEnergy => false,
+        AbilityMechanic::NoRetreatCost { .. } => false, // Passive ability
         AbilityMechanic::PreventAllDamageFromEx => false,
         AbilityMechanic::SleepOnZoneAttachToSelfWhileActive => false,
         AbilityMechanic::IncreasePoisonDamage { .. } => false,
