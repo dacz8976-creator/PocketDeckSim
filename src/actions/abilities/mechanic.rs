@@ -12,8 +12,17 @@ pub enum AbilityMechanic {
         amount: u32,
         energy_type: Option<EnergyType>,
     },
+    /// "Once during your turn, [condition,] you may heal `amount` damage from 1 of your Pokémon."
+    ///
+    /// The heal itself is identical across printings; only the usage condition differs, so it is
+    /// parameterised rather than duplicated:
+    /// - `require_active`: Espeon ex's Psychic Healing ("if this Pokémon is in the Active Spot").
+    /// - `require_tool_attached`: Sylveon's Soothing Ribbon ("if this Pokémon has a Pokémon Tool
+    ///   attached"). Any Pokémon Tool qualifies — the card does not name a specific one.
     HealOneYourPokemon {
         amount: u32,
+        require_active: bool,
+        require_tool_attached: bool,
     },
     HealOneYourPokemonExAndDiscardRandomEnergy {
         amount: u32,

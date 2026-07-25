@@ -53,9 +53,17 @@ fn can_use_ability_by_mechanic(
             is_active && can_use_victreebel_fragrance_trap(state, card)
         }
         AbilityMechanic::HealAllYourPokemon { .. } => !card.ability_used,
-        AbilityMechanic::HealOneYourPokemon { .. } => {
-            is_active && can_use_espeon_ex_psychic_healing(state, card)
-        }
+        AbilityMechanic::HealOneYourPokemon {
+            require_active,
+            require_tool_attached,
+            ..
+        } => can_use_heal_one_your_pokemon(
+            state,
+            card,
+            is_active,
+            *require_active,
+            *require_tool_attached,
+        ),
         AbilityMechanic::HealOneYourPokemonExAndDiscardRandomEnergy { .. } => {
             can_use_heal_one_your_pokemon_ex_and_discard_random_energy(state, card)
         }
@@ -387,11 +395,20 @@ fn can_use_victreebel_fragrance_trap(state: &State, card: &PlayedCard) -> bool {
         .any(|(_, pokemon)| pokemon.card.is_basic())
 }
 
-fn can_use_espeon_ex_psychic_healing(state: &State, card: &PlayedCard) -> bool {
-    if card.ability_used {
-        return false;
-    }
-    state
-        .enumerate_in_play_pokemon(state.current_player)
-        .any(|(_, pokemon)| pokemon.is_damaged())
+/// Gating for the "heal 30 damage from 1 of your Pokémon" family. Beyond the once-per-turn flag
+/// and the per-printing conditions, there has to be something damaged to heal — otherwise the
+/// ability resolves into an empty choice list.
+fn can_use_heal_one_your_pokemon(
+    state: &State,
+    card: &PlayedCard,
+    is_active: bool,
+    require_active: bool,
+    require_tool_attached: bool,
+) -> bool {
+    !card.ability_used
+        && (!require_active || is_active)
+        && (!require_tool_attached || card.has_tool_attached())
+        && state
+            .enumerate_in_play_pokemon(state.current_player)
+            .any(|(_, pokemon)| pokemon.is_damaged())
 }

@@ -194,6 +194,8 @@ mod sunflora_quick_grow_beam_test;
 mod swellow_repelling_wind_test;
 #[path = "pokemon/swift_shot_test.rs"]
 mod swift_shot_test;
+#[path = "pokemon/sylveon_soothing_ribbon_test.rs"]
+mod sylveon_soothing_ribbon_test;
 #[path = "pokemon/tapu_lele_energy_arrow_test.rs"]
 mod tapu_lele_energy_arrow_test;
 #[path = "pokemon/tepig_stoke_test.rs"]
