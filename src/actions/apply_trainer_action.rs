@@ -14,8 +14,8 @@ use crate::{
     },
     card_ids::CardId,
     card_logic::{
-        can_rare_candy_evolve, diantha_targets, ilima_targets, quick_grow_extract_candidates,
-        wallace_candidates,
+        can_rare_candy_evolve, diantha_targets, ilima_targets, mallow_targets,
+        quick_grow_extract_candidates, wallace_candidates, whitney_targets,
     },
     combinatorics::generate_combinations,
     effects::{DamageReductionScope, TurnEffect},
@@ -134,6 +134,8 @@ pub fn forecast_trainer_action(
         CardId::B3151Cheren | CardId::B3192Cheren => Outcomes::single_fn(cheren_effect),
         CardId::A3a063BeastWall => Outcomes::single_fn(beast_wall_effect),
         CardId::B1222Hala | CardId::B1267Hala => Outcomes::single_fn(hala_effect),
+        CardId::A4a069Whitney | CardId::A4a083Whitney => Outcomes::single_fn(whitney_effect),
+        CardId::A3154Mallow | CardId::A3196Mallow => Outcomes::single_fn(mallow_effect),
         CardId::A3150Kiawe | CardId::A3192Kiawe => Outcomes::single_fn(kiawe_effect),
         CardId::A4157Lyra | CardId::A4197Lyra | CardId::A4b332Lyra | CardId::A4b333Lyra => {
             Outcomes::single_fn(lyra_effect)
@@ -851,6 +853,48 @@ fn beast_wall_effect(_: &mut StdRng, state: &mut State, action: &Action) {
         DamageReductionScope::UltraBeasts,
         false,
     );
+}
+
+/// The three Special Conditions Whitney's Miltank recovers from. Poisoned and Burned are
+/// deliberately absent — the card names only these.
+const WHITNEY_CURED_CONDITIONS: [StatusCondition; 3] = [
+    StatusCondition::Asleep,
+    StatusCondition::Paralyzed,
+    StatusCondition::Confused,
+];
+
+fn whitney_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    // Heal 60 damage from 1 of your Miltank, and it recovers from being Asleep, Paralyzed, and Confused.
+    let choices = whitney_targets(state, action.actor)
+        .into_iter()
+        .map(|in_play_idx| SimpleAction::HealAndCureConditions {
+            in_play_idx,
+            amount: 60,
+            conditions: WHITNEY_CURED_CONDITIONS.to_vec(),
+        })
+        .collect::<Vec<_>>();
+    if !choices.is_empty() {
+        state.move_generation_stack.push((action.actor, choices));
+    }
+}
+
+fn mallow_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    // Heal all damage from 1 of your Shiinotic or Tsareena. If you do, discard all Energy from
+    // that Pokémon. "All damage" and "all Energy" are both read off the chosen Pokémon here, so
+    // the queued action stays a plain deterministic `HealAndDiscardEnergy`.
+    let choices = mallow_targets(state, action.actor)
+        .into_iter()
+        .map(
+            |(in_play_idx, heal_amount, discard_energies)| SimpleAction::HealAndDiscardEnergy {
+                in_play_idx,
+                heal_amount,
+                discard_energies,
+            },
+        )
+        .collect::<Vec<_>>();
+    if !choices.is_empty() {
+        state.move_generation_stack.push((action.actor, choices));
+    }
 }
 
 fn hala_effect(_: &mut StdRng, state: &mut State, action: &Action) {

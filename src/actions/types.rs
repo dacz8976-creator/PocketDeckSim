@@ -66,6 +66,14 @@ pub enum SimpleAction {
         heal_amount: u32,
         discard_energies: Vec<EnergyType>,
     },
+    /// Heal and cure a *specific subset* of Special Conditions (e.g. Whitney, which recovers from
+    /// being Asleep, Paralyzed and Confused but leaves Poisoned and Burned alone). `Heal`'s
+    /// `cure_status` flag is all-or-nothing, so it cannot express this.
+    HealAndCureConditions {
+        in_play_idx: usize,
+        amount: u32,
+        conditions: Vec<StatusCondition>,
+    },
     MoveAllDamage {
         from: usize,
         to: usize,
@@ -225,6 +233,14 @@ impl fmt::Display for SimpleAction {
             } => write!(
                 f,
                 "HealAndDiscardEnergy({in_play_idx}, {heal_amount}, {discard_energies:?})"
+            ),
+            SimpleAction::HealAndCureConditions {
+                in_play_idx,
+                amount,
+                conditions,
+            } => write!(
+                f,
+                "HealAndCureConditions({in_play_idx}, {amount}, {conditions:?})"
             ),
             SimpleAction::MoveAllDamage { from, to } => {
                 write!(f, "MoveAllDamage(from:{from}, to:{to})")

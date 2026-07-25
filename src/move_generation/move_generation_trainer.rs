@@ -2,8 +2,8 @@ use crate::{
     actions::{abilities::AbilityMechanic, get_ability_mechanic, SimpleAction},
     card_ids::CardId,
     card_logic::{
-        can_rare_candy_evolve, diantha_targets, ilima_targets, quick_grow_extract_candidates,
-        wallace_candidates,
+        can_rare_candy_evolve, diantha_targets, ilima_targets, mallow_targets,
+        quick_grow_extract_candidates, wallace_candidates, whitney_targets,
     },
     effects::TurnEffect,
     hooks::{
@@ -142,6 +142,8 @@ pub fn trainer_move_generation_implementation(
         CardId::B3151Cheren | CardId::B3192Cheren => can_play_trainer(state, trainer_card),
         CardId::A3a063BeastWall => can_play_beast_wall(state, trainer_card),
         CardId::B1222Hala | CardId::B1267Hala => can_play_trainer(state, trainer_card),
+        CardId::A4a069Whitney | CardId::A4a083Whitney => can_play_whitney(state, trainer_card),
+        CardId::A3154Mallow | CardId::A3196Mallow => can_play_mallow(state, trainer_card),
         CardId::A3150Kiawe | CardId::A3192Kiawe => can_play_kiawe(state, trainer_card),
         CardId::A4157Lyra | CardId::A4197Lyra | CardId::A4b332Lyra | CardId::A4b333Lyra => {
             can_play_lyra(state, trainer_card)
@@ -922,6 +924,24 @@ fn can_play_parasol_lady(state: &State, trainer_card: &TrainerCard) -> Option<Ve
         can_play_trainer(state, trainer_card)
     } else {
         cannot_play_trainer()
+    }
+}
+
+/// Check if Whitney can be played (requires a Miltank that is damaged or Asleep/Paralyzed/Confused)
+fn can_play_whitney(state: &State, trainer_card: &TrainerCard) -> Option<Vec<SimpleAction>> {
+    if whitney_targets(state, state.current_player).is_empty() {
+        cannot_play_trainer()
+    } else {
+        can_play_trainer(state, trainer_card)
+    }
+}
+
+/// Check if Mallow can be played (requires a damaged Shiinotic or Tsareena)
+fn can_play_mallow(state: &State, trainer_card: &TrainerCard) -> Option<Vec<SimpleAction>> {
+    if mallow_targets(state, state.current_player).is_empty() {
+        cannot_play_trainer()
+    } else {
+        can_play_trainer(state, trainer_card)
     }
 }
 

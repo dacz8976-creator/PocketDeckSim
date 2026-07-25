@@ -32,3 +32,5 @@ mod sophocles_test;
 mod volkner_test;
 #[path = "trainers/wallace_test.rs"]
 mod wallace_test;
+#[path = "trainers/whitney_mallow_test.rs"]
+mod whitney_mallow_test;

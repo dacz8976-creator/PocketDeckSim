@@ -14,7 +14,7 @@ use crate::{
     hooks::{
         get_retreat_cost, on_bench_from_hand, on_evolve, to_playable_card, DamageModifierContext,
     },
-    models::{Card, EnergyType},
+    models::{Card, EnergyType, StatusCondition},
     state::State,
     tools,
 };
@@ -61,6 +61,7 @@ pub fn forecast_action(state: &State, action: &Action) -> Outcomes {
         | SimpleAction::ScheduleDelayedSpotDamage { .. }
         | SimpleAction::Heal { .. }
         | SimpleAction::HealAndDiscardEnergy { .. }
+        | SimpleAction::HealAndCureConditions { .. }
         | SimpleAction::MoveAllDamage { .. }
         | SimpleAction::ApplyEeveeBagDamageBoost
         | SimpleAction::HealAllEeveeEvolutions
@@ -308,6 +309,11 @@ fn apply_deterministic_action(state: &mut State, action: &Action) {
             *heal_amount,
             discard_energies,
         ),
+        SimpleAction::HealAndCureConditions {
+            in_play_idx,
+            amount,
+            conditions,
+        } => apply_heal_and_cure_conditions(action.actor, state, *in_play_idx, *amount, conditions),
         SimpleAction::MoveAllDamage { from, to } => {
             apply_move_all_damage(action.actor, state, *from, *to)
         }
@@ -544,6 +550,24 @@ fn apply_heal_and_discard_energy(
         return;
     }
     state.discard_energy_from_in_play(acting_player, position, discard_energies);
+}
+
+/// Heal `amount` and clear only the listed Special Conditions (Whitney). Unlike
+/// `apply_healing`'s `cure_status`, conditions not listed are left in place.
+fn apply_heal_and_cure_conditions(
+    acting_player: usize,
+    state: &mut State,
+    position: usize,
+    amount: u32,
+    conditions: &[StatusCondition],
+) {
+    let pokemon = state.in_play_pokemon[acting_player][position]
+        .as_mut()
+        .expect("Pokemon should be there if healing it");
+    pokemon.heal(amount);
+    for condition in conditions {
+        pokemon.clear_status_condition(*condition);
+    }
 }
 
 fn apply_move_all_damage(actor: usize, state: &mut State, from: usize, to: usize) {
