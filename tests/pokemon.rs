@@ -100,6 +100,8 @@ mod hitmonchan_ex_test;
 mod ho_oh_ex_phoenix_turbo_test;
 #[path = "pokemon/honchkrow_evil_admonition_test.rs"]
 mod honchkrow_evil_admonition_test;
+#[path = "pokemon/hoothoot_insomnia_test.rs"]
+mod hoothoot_insomnia_test;
 #[path = "pokemon/houndstone_last_respects_test.rs"]
 mod houndstone_last_respects_test;
 #[path = "pokemon/iron_bundle_ex_test.rs"]

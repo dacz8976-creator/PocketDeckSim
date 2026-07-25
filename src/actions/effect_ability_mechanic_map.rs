@@ -489,10 +489,15 @@ pub static EFFECT_ABILITY_MECHANIC_MAP: LazyLock<HashMap<&'static str, AbilityMe
             "This Pokémon can evolve into any Pokémon that evolves from Eevee if you play it from your hand onto this Pokémon. (This Pokémon can't evolve during your first turn or the turn you play it.)",
             AbilityMechanic::CanEvolveIntoEeveeEvolution,
         );
-        // map.insert("This Pokémon can't be Asleep.", todo_implementation);
+        map.insert(
+            "This Pokémon can't be Asleep.",
+            AbilityMechanic::ImmuneToStatusConditions {
+                status: Some(StatusCondition::Asleep),
+            },
+        );
         map.insert(
             "This Pokémon can't be affected by any Special Conditions.",
-            AbilityMechanic::ImmuneToStatusConditions,
+            AbilityMechanic::ImmuneToStatusConditions { status: None },
         );
         map.insert(
             "This Pokémon gets +30 HP for each [P] Energy attached to it.",

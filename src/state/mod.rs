@@ -10,7 +10,7 @@ use std::hash::Hash;
 
 use crate::{
     actions::abilities::AbilityMechanic,
-    actions::{get_ability_mechanic, has_ability_mechanic, SimpleAction},
+    actions::{get_ability_mechanic, SimpleAction},
     deck::Deck,
     effects::TurnEffect,
     models::{Card, EnergyType, StatusCondition},
@@ -462,9 +462,14 @@ impl State {
             return;
         };
 
-        if has_ability_mechanic(&pokemon.card, &AbilityMechanic::ImmuneToStatusConditions) {
-            debug!("Fabled Luster: Pokémon is immune to status conditions");
-            return;
+        // Fabled Luster (Arceus ex, blanket) and Insomnia (Hoothoot, Asleep only).
+        if let Some(AbilityMechanic::ImmuneToStatusConditions { status: immune_to }) =
+            get_ability_mechanic(&pokemon.card)
+        {
+            if immune_to.is_none() || *immune_to == Some(status) {
+                debug!("Pokémon's Ability makes it immune to {status:?}");
+                return;
+            }
         }
 
         // Steel Apron: "The [M] Pokémon this card is attached to ... can't be affected by any

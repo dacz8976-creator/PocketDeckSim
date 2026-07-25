@@ -228,7 +228,7 @@ fn forecast_ability_by_mechanic(
             coin_flip_status_opponent_active(*status)
         }
         AbilityMechanic::DiscardFromHandToDrawCard => discard_from_hand_to_draw_card(),
-        AbilityMechanic::ImmuneToStatusConditions => {
+        AbilityMechanic::ImmuneToStatusConditions { .. } => {
             panic!("ImmuneToStatusConditions is a passive ability")
         }
         AbilityMechanic::SoothingWind { .. } => {

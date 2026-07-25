@@ -335,7 +335,15 @@ pub enum AbilityMechanic {
         status: StatusCondition,
     },
     DiscardFromHandToDrawCard,
-    ImmuneToStatusConditions,
+    /// Fabled Luster (Arceus ex) "can't be affected by any Special Conditions" and Insomnia
+    /// (Hoothoot A4 140 / A4 182) "can't be Asleep".
+    ///
+    /// `status: None` is the blanket immunity; `Some(s)` immunises against that one condition only,
+    /// mirroring how `SoothingWind` parameterises its Energy filter. Passive; enforced in
+    /// `State::apply_status_condition`, the single authoritative path for setting conditions.
+    ImmuneToStatusConditions {
+        status: Option<StatusCondition>,
+    },
     /// Passive ability shared by Teal Mask Ogerpon ex (Soothing Wind) and Comfey (Flower Shield):
     /// Each of your Pokémon that has the required Energy attached recovers from all Special
     /// Conditions and can't be affected by any Special Conditions.
