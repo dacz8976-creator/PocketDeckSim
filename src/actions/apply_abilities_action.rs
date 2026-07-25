@@ -56,6 +56,9 @@ fn forecast_ability_by_mechanic(
         AbilityMechanic::SwitchDamagedOpponentBenchToActive => {
             Outcomes::single_fn(umbreon_dark_chase)
         }
+        AbilityMechanic::CoinFlipSwitchInOpponentBenchToActive => {
+            coin_flip_switch_in_opponent_bench_to_active()
+        }
         AbilityMechanic::SwitchThisBenchWithActive => Outcomes::single(rising_road(in_play_idx)),
         AbilityMechanic::SwitchActiveTypedWithBench { .. } => {
             switch_active_typed_with_bench_outcome()
@@ -644,22 +647,7 @@ fn rising_road(index: usize) -> Mutation {
 fn victreebel_ability(_: &mut StdRng, state: &mut State, action: &Action) {
     // Switch in 1 of your opponent's Benched Basic Pokémon to the Active Spot.
     debug!("Victreebel's ability: Switching opponent's benched basic Pokemon to active");
-    let acting_player = action.actor;
-    let opponent_player = (acting_player + 1) % 2;
-    let possible_moves = state
-        .enumerate_bench_pokemon(opponent_player)
-        .filter(|(_, pokemon)| pokemon.card.is_basic())
-        .map(|(in_play_idx, _)| SimpleAction::Activate {
-            player: opponent_player,
-            in_play_idx,
-        })
-        .collect::<Vec<_>>();
-    if possible_moves.is_empty() {
-        return;
-    }
-    state
-        .move_generation_stack
-        .push((acting_player, possible_moves));
+    push_opponent_bench_activate_choices(state, action.actor, |pokemon| pokemon.card.is_basic());
 }
 
 fn celesteela_ultra_thrusters(_: &mut StdRng, state: &mut State, action: &Action) {
@@ -719,19 +707,49 @@ fn dismantling_keys(klefki_idx: usize) -> Outcomes {
 fn umbreon_dark_chase(_: &mut StdRng, state: &mut State, action: &Action) {
     // Once during your turn, if this Pokémon is in the Active Spot, you may switch in 1 of your opponent's Benched Pokémon that has damage on it to the Active Spot.
     debug!("Umbreon ex's Dark Chase: Switching in opponent's damaged benched Pokemon");
-    let acting_player = action.actor;
-    let opponent_player = (acting_player + 1) % 2;
+    push_opponent_bench_activate_choices(state, action.actor, |pokemon| pokemon.is_damaged());
+}
+
+/// Rillaboom's Captivating Rhythm: "flip a coin. If heads, switch in 1 of your opponent's Benched
+/// Pokémon to the Active Spot."
+///
+/// `Outcomes::binary_coin` keeps the flip as two explicit branches carrying coin metadata, so the
+/// search bots price the 50% chance rather than averaging it away.
+fn coin_flip_switch_in_opponent_bench_to_active() -> Outcomes {
+    Outcomes::binary_coin(
+        Box::new(|_, state, action| {
+            debug!("Captivating Rhythm: heads, switching in an opponent's benched Pokemon");
+            push_opponent_bench_activate_choices(state, action.actor, |_| true);
+        }),
+        Box::new(|_, _, _| {}),
+    )
+}
+
+/// Offers "switch in 1 of your opponent's Benched Pokémon to the Active Spot" as a choice.
+///
+/// The *acting* player chooses, so the choices are pushed for `actor` even though the `Activate`
+/// actions target the opponent's board — this is what separates these abilities from
+/// `SwitchOutOpponentActiveToBench`, where the opponent picks. Pushes nothing when no Benched
+/// Pokémon passes `is_eligible`, so an ability that slips past move generation degrades to a no-op
+/// instead of stalling on an empty choice list.
+fn push_opponent_bench_activate_choices(
+    state: &mut State,
+    actor: usize,
+    is_eligible: impl Fn(&PlayedCard) -> bool,
+) {
+    let opponent = (actor + 1) % 2;
     let possible_moves = state
-        .enumerate_bench_pokemon(opponent_player)
-        .filter(|(_, pokemon)| pokemon.is_damaged())
+        .enumerate_bench_pokemon(opponent)
+        .filter(|(_, pokemon)| is_eligible(pokemon))
         .map(|(in_play_idx, _)| SimpleAction::Activate {
-            player: opponent_player,
+            player: opponent,
             in_play_idx,
         })
         .collect::<Vec<_>>();
-    state
-        .move_generation_stack
-        .push((acting_player, possible_moves));
+    if possible_moves.is_empty() {
+        return;
+    }
+    state.move_generation_stack.push((actor, possible_moves));
 }
 
 fn discard_from_hand_to_draw_card() -> Outcomes {

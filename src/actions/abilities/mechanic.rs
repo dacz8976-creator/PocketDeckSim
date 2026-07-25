@@ -22,6 +22,13 @@ pub enum AbilityMechanic {
         amount: u32,
     },
     SwitchDamagedOpponentBenchToActive,
+    /// Rillaboom's Captivating Rhythm: "Once during your turn, you may flip a coin. If heads,
+    /// switch in 1 of your opponent's Benched Pokémon to the Active Spot."
+    ///
+    /// Distinct from `SwitchOutOpponentActiveToBench`: there the *opponent* picks the replacement,
+    /// here the ability's controller does, so on heads the follow-up choice is offered to the
+    /// acting player even though it targets the opponent's board.
+    CoinFlipSwitchInOpponentBenchToActive,
     SwitchThisBenchWithActive,
     SwitchActiveTypedWithBench {
         energy_type: EnergyType,

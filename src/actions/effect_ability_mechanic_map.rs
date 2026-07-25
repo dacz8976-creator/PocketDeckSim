@@ -249,7 +249,10 @@ pub static EFFECT_ABILITY_MECHANIC_MAP: LazyLock<HashMap<&'static str, AbilityMe
             "Once during your turn, you may do 20 damage to 1 of your opponent's Pokémon.",
             AbilityMechanic::DamageOneOpponentPokemon { amount: 20 },
         );
-        // map.insert("Once during your turn, you may flip a coin. If heads, switch in 1 of your opponent's Benched Pokémon to the Active Spot.", todo_implementation);
+        map.insert(
+            "Once during your turn, you may flip a coin. If heads, switch in 1 of your opponent's Benched Pokémon to the Active Spot.",
+            AbilityMechanic::CoinFlipSwitchInOpponentBenchToActive,
+        );
         map.insert(
             "Once during your turn, you may flip a coin. If heads, your opponent's Active Pokémon is now Asleep.",
             AbilityMechanic::CoinFlipStatusOpponentActive {

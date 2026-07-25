@@ -67,6 +67,9 @@ fn can_use_ability_by_mechanic(
         AbilityMechanic::SwitchDamagedOpponentBenchToActive => {
             is_active && can_use_umbreon_dark_chase(state, card)
         }
+        AbilityMechanic::CoinFlipSwitchInOpponentBenchToActive => {
+            !card.ability_used && opponent_has_benched_pokemon(state)
+        }
         AbilityMechanic::SwitchThisBenchWithActive => !is_active && !card.ability_used,
         AbilityMechanic::SwitchActiveTypedWithBench { energy_type } => {
             can_use_switch_active_typed_with_bench(state, card, *energy_type)
@@ -297,6 +300,14 @@ fn can_use_crobat_cunning_link(state: &State, card: &PlayedCard) -> bool {
             let name = pokemon.get_name();
             name == "Arceus" || name == "Arceus ex"
         })
+}
+
+/// True when the opponent has at least one Benched Pokémon to switch in. Without one, an ability
+/// that promotes from the opponent's Bench can only waste its once-per-turn use, so it is not
+/// offered at all.
+fn opponent_has_benched_pokemon(state: &State) -> bool {
+    let opponent = (state.current_player + 1) % 2;
+    state.enumerate_bench_pokemon(opponent).next().is_some()
 }
 
 fn can_use_umbreon_dark_chase(state: &State, card: &PlayedCard) -> bool {

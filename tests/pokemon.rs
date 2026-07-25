@@ -166,6 +166,8 @@ mod porygonz_cyberjack_test;
 mod psyduck_test;
 #[path = "pokemon/rampardos_head_smash_test.rs"]
 mod rampardos_head_smash_test;
+#[path = "pokemon/rillaboom_captivating_rhythm_test.rs"]
+mod rillaboom_captivating_rhythm_test;
 #[path = "pokemon/roaring_moon_test.rs"]
 mod roaring_moon_test;
 #[path = "pokemon/salamence_test.rs"]
