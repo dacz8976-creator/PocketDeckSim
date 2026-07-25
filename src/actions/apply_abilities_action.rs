@@ -123,6 +123,18 @@ fn forecast_ability_by_mechanic(
         AbilityMechanic::ReduceOpponentActiveDamage { .. } => {
             panic!("ReduceOpponentActiveDamage is a passive ability")
         }
+        AbilityMechanic::ReduceDamageFromTypedAttackers { .. } => {
+            panic!("ReduceDamageFromTypedAttackers is a passive ability")
+        }
+        AbilityMechanic::ReduceDamageIfArceusInPlay { .. } => {
+            panic!("ReduceDamageIfArceusInPlay is a passive ability")
+        }
+        AbilityMechanic::ReduceDamageAtFullHp { .. } => {
+            panic!("ReduceDamageAtFullHp is a passive ability")
+        }
+        AbilityMechanic::UnownGuard { .. } => {
+            panic!("UnownGuard is a passive ability")
+        }
         AbilityMechanic::IncreaseDamageWhenRemainingHpAtMost { .. } => {
             panic!("IncreaseDamageWhenRemainingHpAtMost is a passive ability")
         }

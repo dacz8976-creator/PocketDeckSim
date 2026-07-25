@@ -54,6 +54,8 @@ mod durant_test;
 mod dusknoir_shadow_void_test;
 #[path = "pokemon/dustox_select_powder_test.rs"]
 mod dustox_select_powder_test;
+#[path = "pokemon/eiscue_ice_face_test.rs"]
+mod eiscue_ice_face_test;
 #[path = "pokemon/emboar_flare_storm_test.rs"]
 mod emboar_flare_storm_test;
 #[path = "pokemon/emolga_dedenne_ex_tool_damage_test.rs"]
@@ -168,6 +170,8 @@ mod psyduck_test;
 mod pyukumuku_innards_out_test;
 #[path = "pokemon/rampardos_head_smash_test.rs"]
 mod rampardos_head_smash_test;
+#[path = "pokemon/resilience_link_test.rs"]
+mod resilience_link_test;
 #[path = "pokemon/roaring_moon_test.rs"]
 mod roaring_moon_test;
 #[path = "pokemon/salamence_test.rs"]
@@ -188,6 +192,8 @@ mod snover_ice_shard_test;
 mod spewpa_signs_of_evolution_test;
 #[path = "pokemon/spiritomb_final_scream_test.rs"]
 mod spiritomb_final_scream_test;
+#[path = "pokemon/staraptor_defensive_whirlwind_test.rs"]
+mod staraptor_defensive_whirlwind_test;
 #[path = "pokemon/sunflora_quick_grow_beam_test.rs"]
 mod sunflora_quick_grow_beam_test;
 #[path = "pokemon/swift_shot_test.rs"]
@@ -198,10 +204,14 @@ mod tapu_lele_energy_arrow_test;
 mod tepig_stoke_test;
 #[path = "pokemon/terapagos_ex_test.rs"]
 mod terapagos_ex_test;
+#[path = "pokemon/thick_fat_test.rs"]
+mod thick_fat_test;
 #[path = "pokemon/tinkaton_gigaton_hammer_test.rs"]
 mod tinkaton_gigaton_hammer_test;
 #[path = "pokemon/typhlosion_fire_breath_test.rs"]
 mod typhlosion_fire_breath_test;
+#[path = "pokemon/unown_guard_test.rs"]
+mod unown_guard_test;
 #[path = "pokemon/ursaluna_guts_test.rs"]
 mod ursaluna_guts_test;
 #[path = "pokemon/vanilluxe_test.rs"]

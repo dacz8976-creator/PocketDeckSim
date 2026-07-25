@@ -152,7 +152,10 @@ pub static EFFECT_ABILITY_MECHANIC_MAP: LazyLock<HashMap<&'static str, AbilityMe
             "If this Pokémon has any Energy attached, it has no Retreat Cost.",
             AbilityMechanic::NoRetreatIfHasEnergy,
         );
-        // map.insert("If this Pokémon has full HP, it takes -40 damage from attacks from your opponent's Pokémon.", todo_implementation);
+        map.insert(
+            "If this Pokémon has full HP, it takes -40 damage from attacks from your opponent's Pokémon.",
+            AbilityMechanic::ReduceDamageAtFullHp { amount: 40 },
+        );
         map.insert(
             "If this Pokémon is in the Active Spot and is Knocked Out by damage from an attack from your opponent's Pokémon, do 10 damage to each of your opponent's Pokémon.",
             AbilityMechanic::DamageOnKnockoutInActive {
@@ -197,13 +200,16 @@ pub static EFFECT_ABILITY_MECHANIC_MAP: LazyLock<HashMap<&'static str, AbilityMe
             AbilityMechanic::IncreaseDamageIfArceusInPlay { amount: 30 },
         );
         map.insert(
+            "If you have Arceus or Arceus ex in play, this Pokémon takes -30 damage from attacks.",
+            AbilityMechanic::ReduceDamageIfArceusInPlay { amount: 30 },
+        );
+        map.insert(
             "If you have Arceus or Arceus ex in play, this Pokémon has no Retreat Cost.",
             AbilityMechanic::NoRetreatCost {
                 target: NoRetreatCostTarget::ThisPokemon,
                 condition: NoRetreatCostCondition::NamedPokemonInPlay(ARCEUS_NAMES),
             },
         );
-        // map.insert("If you have Arceus or Arceus ex in play, this Pokémon takes -30 damage from attacks.", todo_implementation);
         map.insert(
             "If you have Latias in play, this Pokémon has no Retreat Cost.",
             AbilityMechanic::NoRetreatCost {
@@ -379,7 +385,10 @@ pub static EFFECT_ABILITY_MECHANIC_MAP: LazyLock<HashMap<&'static str, AbilityMe
             AbilityMechanic::PreventAllDamageFromEx,
         );
         // map.insert("Prevent all effects of attacks used by your opponent's Pokémon done to this Pokémon.", todo_implementation);
-        // map.insert("This Ability works if you have any Unown in play with an Ability other than GUARD. All of your Pokémon take -10 damage from attacks from your opponent's Pokémon.", todo_implementation);
+        map.insert(
+            "This Ability works if you have any Unown in play with an Ability other than GUARD. All of your Pokémon take -10 damage from attacks from your opponent's Pokémon.",
+            AbilityMechanic::UnownGuard { amount: 10 },
+        );
         // map.insert("This Ability works if you have any Unown in play with an Ability other than POWER. Attacks used by your Pokémon do +10 damage to your opponent's Active Pokémon.", todo_implementation);
         map.insert(
             "This Pokémon can evolve into any Pokémon that evolves from Eevee if you play it from your hand onto this Pokémon. (This Pokémon can't evolve during your first turn or the turn you play it.)",
@@ -401,13 +410,31 @@ pub static EFFECT_ABILITY_MECHANIC_MAP: LazyLock<HashMap<&'static str, AbilityMe
             "This Pokémon takes -10 damage from attacks.",
             AbilityMechanic::ReduceDamageFromAttacks { amount: 10 },
         );
-        // map.insert("This Pokémon takes -20 damage from attacks from [R] or [W] Pokémon.", todo_implementation);
+        map.insert(
+            "This Pokémon takes -20 damage from attacks from [R] or [W] Pokémon.",
+            AbilityMechanic::ReduceDamageFromTypedAttackers {
+                energy_types: vec![EnergyType::Fire, EnergyType::Water],
+                amount: 20,
+            },
+        );
         map.insert(
             "This Pokémon takes -20 damage from attacks.",
             AbilityMechanic::ReduceDamageFromAttacks { amount: 20 },
         );
-        // map.insert("This Pokémon takes -30 damage from attacks from [F] Pokémon.", todo_implementation);
-        // map.insert("This Pokémon takes -30 damage from attacks from [R] or [W] Pokémon.", todo_implementation);
+        map.insert(
+            "This Pokémon takes -30 damage from attacks from [F] Pokémon.",
+            AbilityMechanic::ReduceDamageFromTypedAttackers {
+                energy_types: vec![EnergyType::Fighting],
+                amount: 30,
+            },
+        );
+        map.insert(
+            "This Pokémon takes -30 damage from attacks from [R] or [W] Pokémon.",
+            AbilityMechanic::ReduceDamageFromTypedAttackers {
+                energy_types: vec![EnergyType::Fire, EnergyType::Water],
+                amount: 30,
+            },
+        );
         // Dusknoir (B1 105) "Fade into Darkness" and Glimmora (B3a 045 / B3a 078)
         // "Shattering Crystal". Point DENIAL, not damage prevention — the Pokémon is still
         // Knocked Out and still leaves play, the opponent simply scores nothing for it on heads.

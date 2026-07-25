@@ -601,6 +601,119 @@ pub(crate) fn has_named_pokemon_in_play(state: &State, player: usize, names: &[&
         .any(|(_, pokemon)| names.contains(&pokemon.get_name().as_str()))
 }
 
+/// Whether `player` has Arceus or Arceus ex anywhere in play. Shared by the Arceus-conditional
+/// ability mechanics: `IncreaseDamageIfArceusInPlay` (offense), `ReduceDamageIfArceusInPlay`
+/// (Resilience Link, defense) and `NoRetreatCost` with `NamedPokemonInPlay(ARCEUS_NAMES)`.
+fn has_arceus_in_play(state: &State, player: usize) -> bool {
+    has_named_pokemon_in_play(state, player, ARCEUS_NAMES)
+}
+
+/// Unown's GUARD works only while its controller has *another* Unown in play whose printed Ability
+/// is something other than GUARD (CHECK on A2a 034 / A2a 078, POWER on A4 085). Two GUARD Unown
+/// never enable each other.
+fn has_non_guard_unown_in_play(state: &State, player: usize) -> bool {
+    state.enumerate_in_play_pokemon(player).any(|(_, pokemon)| {
+        pokemon.get_name() == "Unown"
+            && pokemon
+                .card
+                .get_ability()
+                .is_some_and(|ability| ability.title != "GUARD")
+    })
+}
+
+/// GUARD (Unown A4 084): "All of your Pokémon take -10 damage from attacks from your opponent's
+/// Pokémon", gated on `has_non_guard_unown_in_play`. Board-wide rather than self-scoped, so it is
+/// summed over every GUARD Unown the defending player controls instead of being read off the
+/// target's own ability.
+fn get_unown_guard_reduction(state: &State, target_player: usize) -> u32 {
+    if !has_non_guard_unown_in_play(state, target_player) {
+        return 0;
+    }
+    state
+        .enumerate_in_play_pokemon(target_player)
+        .filter_map(|(_, pokemon)| match get_ability_mechanic(&pokemon.card) {
+            Some(AbilityMechanic::UnownGuard { amount }) => Some(*amount),
+            _ => None,
+        })
+        .sum()
+}
+
+/// Damage reduction printed on the receiving Pokémon itself but conditioned on the attacker or on
+/// the board, so it cannot be modelled as a context-free `CardEffect` the way
+/// `ReduceDamageFromAttacks` is (see `card_effect_from_ability_mechanic`).
+fn get_conditional_self_damage_reduction(
+    state: &State,
+    attacking_pokemon: &PlayedCard,
+    target_player: usize,
+    receiving_pokemon: &PlayedCard,
+    from_opponent: bool,
+) -> u32 {
+    match get_ability_mechanic(&receiving_pokemon.card) {
+        // Thick Fat / Defensive Whirlwind: gated on the attacker's Energy type.
+        Some(AbilityMechanic::ReduceDamageFromTypedAttackers {
+            energy_types,
+            amount,
+        }) if attacking_pokemon
+            .get_energy_type()
+            .is_some_and(|attacker_type| energy_types.contains(&attacker_type)) =>
+        {
+            *amount
+        }
+        // Resilience Link: gated on the receiver's own controller having an Arceus in play.
+        Some(AbilityMechanic::ReduceDamageIfArceusInPlay { amount })
+            if has_arceus_in_play(state, target_player) =>
+        {
+            *amount
+        }
+        // Ice Face: only while undamaged, and only against the opponent's Pokémon.
+        Some(AbilityMechanic::ReduceDamageAtFullHp { amount })
+            if from_opponent
+                && receiving_pokemon.get_remaining_hp()
+                    == receiving_pokemon.get_effective_total_hp() =>
+        {
+            *amount
+        }
+        _ => 0,
+    }
+}
+
+/// All conditional ability-driven damage reduction protecting the target: the reductions printed on
+/// the target itself plus board-wide ones (Unown's GUARD). Returned as a flat amount that the caller
+/// folds into the other pre-Weakness reductions, matching how every existing damage-reduction
+/// ability is ordered relative to the Weakness bonus.
+fn get_conditional_ability_damage_reduction(
+    state: &State,
+    attacking_player: usize,
+    attacking_pokemon: &PlayedCard,
+    target_player: usize,
+    receiving_pokemon: &PlayedCard,
+    is_from_active_attack: bool,
+) -> u32 {
+    if !is_from_active_attack {
+        return 0;
+    }
+    let from_opponent = attacking_player != target_player;
+    let self_reduction = get_conditional_self_damage_reduction(
+        state,
+        attacking_pokemon,
+        target_player,
+        receiving_pokemon,
+        from_opponent,
+    );
+    // GUARD is board-wide ("All of your Pokémon"), and only against the opponent's Pokémon.
+    let guard_reduction = if from_opponent {
+        get_unown_guard_reduction(state, target_player)
+    } else {
+        0
+    };
+
+    let total = self_reduction + guard_reduction;
+    if total > 0 {
+        debug!("Conditional ability damage reduction: -{total}");
+    }
+    total
+}
+
 fn get_ability_damage_increase(
     state: &State,
     attacking_player: usize,
@@ -632,7 +745,7 @@ fn get_ability_damage_increase(
     if let Some(AbilityMechanic::IncreaseDamageIfArceusInPlay { amount }) =
         ability_mechanic_from_effect(&ability.effect)
     {
-        if has_named_pokemon_in_play(state, attacking_player, ARCEUS_NAMES) {
+        if has_arceus_in_play(state, attacking_player) {
             debug!(
                 "IncreaseDamageIfArceusInPlay: Increasing damage by {}",
                 amount
@@ -1043,6 +1156,18 @@ pub(crate) fn modify_damage(
     } else {
         get_ability_damage_reduction(receiving_pokemon, is_from_active_attack)
     };
+    let conditional_ability_damage_reduction = if skip_target_effects {
+        0
+    } else {
+        get_conditional_ability_damage_reduction(
+            state,
+            attacking_player,
+            attacking_pokemon,
+            target_player,
+            receiving_pokemon,
+            is_from_active_attack,
+        )
+    };
     let ability_damage_increase = get_ability_damage_increase(
         state,
         attacking_player,
@@ -1130,7 +1255,7 @@ pub(crate) fn modify_damage(
     };
 
     debug!(
-        "Attack: {:?}, IncreasedDamage: {}, IncreasedAttackSpecific: {}, IncreasedVulnerability: {}, ReducedDamage: {}, TurnEffectReduction: {}, HeavyHelmet: {}, MetalCoreBarrier: {}, SteelApron: {}, IntimidatingFang: {}, AbilityReduction: {}, AbilityIncrease: {}, TypeBoost: {}, StadiumBonus: {}, FutureBooster: {}",
+        "Attack: {:?}, IncreasedDamage: {}, IncreasedAttackSpecific: {}, IncreasedVulnerability: {}, ReducedDamage: {}, TurnEffectReduction: {}, HeavyHelmet: {}, MetalCoreBarrier: {}, SteelApron: {}, IntimidatingFang: {}, AbilityReduction: {}, ConditionalAbilityReduction: {}, AbilityIncrease: {}, TypeBoost: {}, StadiumBonus: {}, FutureBooster: {}",
         base_damage,
         increased_turn_effect_modifiers,
         increased_attack_specific_modifiers,
@@ -1142,6 +1267,7 @@ pub(crate) fn modify_damage(
         steel_apron_reduction,
         intimidating_fang_reduction,
         ability_damage_reduction,
+        conditional_ability_damage_reduction,
         ability_damage_increase,
         type_boost_bonus,
         stadium_damage_bonus,
@@ -1163,7 +1289,8 @@ pub(crate) fn modify_damage(
                 + metal_core_barrier_reduction
                 + steel_apron_reduction
                 + intimidating_fang_reduction
-                + ability_damage_reduction,
+                + ability_damage_reduction
+                + conditional_ability_damage_reduction,
         );
     let final_damage = match weakness_application {
         WeaknessApplication::None => pre_weakness,

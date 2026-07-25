@@ -109,6 +109,40 @@ pub enum AbilityMechanic {
     ReduceOpponentActiveDamage {
         amount: u32,
     },
+    /// Thick Fat (Mamoswine, Piloswine, Azumarill) and Defensive Whirlwind (Staraptor):
+    /// "This Pokémon takes -`amount` damage from attacks from [X] (or [Y]) Pokémon."
+    ///
+    /// Parameterised on both the amount (Thick Fat prints at -30 and -20) and the list of
+    /// attacker Energy types (Thick Fat is `[R]`/`[W]`, Defensive Whirlwind is `[F]`), so a single
+    /// variant covers the whole family. Passive: unlike `ReduceDamageFromAttacks` this cannot be
+    /// expressed as a context-free `CardEffect`, because whether it applies depends on the
+    /// *attacker*, so it is resolved in `modify_damage`.
+    ReduceDamageFromTypedAttackers {
+        energy_types: Vec<EnergyType>,
+        amount: u32,
+    },
+    /// Resilience Link (Raichu, Magnezone): "If you have Arceus or Arceus ex in play, this Pokémon
+    /// takes -`amount` damage from attacks." The defensive mirror of
+    /// `IncreaseDamageIfArceusInPlay`; both share the `has_arceus_in_play` board check. Passive.
+    ReduceDamageIfArceusInPlay {
+        amount: u32,
+    },
+    /// Ice Face (Eiscue): "If this Pokémon has full HP, it takes -`amount` damage from attacks from
+    /// your opponent's Pokémon." Passive; the condition is re-evaluated per hit, so the shield is
+    /// gone as soon as any damage sticks.
+    ReduceDamageAtFullHp {
+        amount: u32,
+    },
+    /// GUARD (Unown A4 084): "This Ability works if you have any Unown in play with an Ability
+    /// other than GUARD. All of your Pokémon take -`amount` damage from attacks from your
+    /// opponent's Pokémon."
+    ///
+    /// Board-wide rather than self-scoped, and self-referential: the enabling condition is another
+    /// in-play Unown whose printed Ability *title* is something other than GUARD (CHECK on A2a 034
+    /// / A2a 078, POWER on A4 085). Two GUARD Unown therefore do not enable each other.
+    UnownGuard {
+        amount: u32,
+    },
     IncreaseDamageWhenRemainingHpAtMost {
         amount: u32,
         hp_threshold: u32,
