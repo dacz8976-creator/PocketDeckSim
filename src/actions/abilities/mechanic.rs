@@ -82,6 +82,12 @@ pub enum AbilityMechanic {
         energy_types: Vec<EnergyType>,
         amount: u32,
     },
+    /// Resilience Link (Raichu, Magnezone): "If you have Arceus or Arceus ex in play, this Pokémon
+    /// takes -`amount` damage from attacks." The defensive mirror of
+    /// `IncreaseDamageIfArceusInPlay`; both share the `has_arceus_in_play` board check. Passive.
+    ReduceDamageIfArceusInPlay {
+        amount: u32,
+    },
     IncreaseDamageWhenRemainingHpAtMost {
         amount: u32,
         hp_threshold: u32,

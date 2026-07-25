@@ -593,6 +593,15 @@ fn get_ability_damage_reduction(
         .sum()
 }
 
+/// Whether `player` has Arceus or Arceus ex anywhere in play. Shared by the two Arceus-conditional
+/// ability mechanics: `IncreaseDamageIfArceusInPlay` (offense) and `ReduceDamageIfArceusInPlay`
+/// (Resilience Link, defense).
+fn has_arceus_in_play(state: &State, player: usize) -> bool {
+    state
+        .enumerate_in_play_pokemon(player)
+        .any(|(_, pokemon)| matches!(pokemon.get_name().as_str(), "Arceus" | "Arceus ex"))
+}
+
 /// Damage reduction protecting the target that is conditioned on the attacker or on the board, so
 /// it cannot be modelled as a context-free `CardEffect` the way `ReduceDamageFromAttacks` is (see
 /// `card_effect_from_ability_mechanic`).
@@ -600,7 +609,9 @@ fn get_ability_damage_reduction(
 /// Returned as a flat amount that the caller folds into the other pre-Weakness reductions, matching
 /// how every existing damage-reduction ability is ordered relative to the Weakness bonus.
 fn get_conditional_ability_damage_reduction(
+    state: &State,
     attacking_pokemon: &PlayedCard,
+    target_player: usize,
     receiving_pokemon: &PlayedCard,
     is_from_active_attack: bool,
 ) -> u32 {
@@ -615,6 +626,12 @@ fn get_conditional_ability_damage_reduction(
         }) if attacking_pokemon
             .get_energy_type()
             .is_some_and(|attacker_type| energy_types.contains(&attacker_type)) =>
+        {
+            *amount
+        }
+        // Resilience Link: gated on the receiver's own controller having an Arceus in play.
+        Some(AbilityMechanic::ReduceDamageIfArceusInPlay { amount })
+            if has_arceus_in_play(state, target_player) =>
         {
             *amount
         }
@@ -657,13 +674,7 @@ fn get_ability_damage_increase(
     if let Some(AbilityMechanic::IncreaseDamageIfArceusInPlay { amount }) =
         ability_mechanic_from_effect(&ability.effect)
     {
-        let has_arceus = state
-            .enumerate_in_play_pokemon(attacking_player)
-            .any(|(_, pokemon)| {
-                let name = pokemon.get_name();
-                name == "Arceus" || name == "Arceus ex"
-            });
-        if has_arceus {
+        if has_arceus_in_play(state, attacking_player) {
             debug!(
                 "IncreaseDamageIfArceusInPlay: Increasing damage by {}",
                 amount
@@ -1078,7 +1089,9 @@ pub(crate) fn modify_damage(
         0
     } else {
         get_conditional_ability_damage_reduction(
+            state,
             attacking_pokemon,
+            target_player,
             receiving_pokemon,
             is_from_active_attack,
         )

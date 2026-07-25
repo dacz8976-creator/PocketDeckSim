@@ -164,6 +164,8 @@ mod porygonz_cyberjack_test;
 mod psyduck_test;
 #[path = "pokemon/rampardos_head_smash_test.rs"]
 mod rampardos_head_smash_test;
+#[path = "pokemon/resilience_link_test.rs"]
+mod resilience_link_test;
 #[path = "pokemon/roaring_moon_test.rs"]
 mod roaring_moon_test;
 #[path = "pokemon/salamence_test.rs"]
