@@ -383,6 +383,12 @@ pub enum Mechanic {
     DirectDamageIfDamaged {
         damage: u32,
     },
+    /// Kingambit's Overlord's Blade: the attack's `fixed_damage` plus `damage_per_ko` for each
+    /// time the attacking player's own Pokémon have been Knocked Out this game. A comeback
+    /// mechanic — it scales with how badly you are losing on board, not with points scored.
+    ExtraDamagePerOwnKnockoutThisGame {
+        damage_per_ko: u32,
+    },
     AttachEnergyToBenchedBasic {
         energy_type: EnergyType,
     },

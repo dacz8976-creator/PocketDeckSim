@@ -66,6 +66,8 @@ mod flygon_ex_test;
 mod gallade_test;
 #[path = "pokemon/gardevoir_psy_turbo_test.rs"]
 mod gardevoir_psy_turbo_test;
+#[path = "pokemon/glimmora_point_denial_test.rs"]
+mod glimmora_point_denial_test;
 #[path = "pokemon/grovyle_slicing_snipe_test.rs"]
 mod grovyle_slicing_snipe_test;
 #[path = "pokemon/growlithe_puppy_pile_test.rs"]
@@ -104,6 +106,8 @@ mod iron_thorns_test;
 mod iron_valiant_future_system_test;
 #[path = "pokemon/jolteon_ex_test.rs"]
 mod jolteon_ex_test;
+#[path = "pokemon/kingambit_overlords_blade_test.rs"]
+mod kingambit_overlords_blade_test;
 #[path = "pokemon/klefki_dismantling_keys_test.rs"]
 mod klefki_dismantling_keys_test;
 #[path = "pokemon/kommo_o_clanging_scales_test.rs"]
@@ -122,6 +126,8 @@ mod lunala_ex_test;
 mod magneton_test;
 #[path = "pokemon/magnezone_mirror_shot_test.rs"]
 mod magnezone_mirror_shot_test;
+#[path = "pokemon/mandibuzz_blindside_test.rs"]
+mod mandibuzz_blindside_test;
 #[path = "pokemon/marshadow_revenge_test.rs"]
 mod marshadow_revenge_test;
 #[path = "pokemon/mega_camerupt_ex_test.rs"]

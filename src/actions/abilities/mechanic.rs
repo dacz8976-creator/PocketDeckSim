@@ -104,6 +104,16 @@ pub enum AbilityMechanic {
     /// Ursaluna's Guts: if this Pokémon would be Knocked Out by damage from an attack, flip a
     /// coin. If heads, it is not Knocked Out and its remaining HP becomes 10.
     CoinFlipToSurviveKnockOut,
+    /// Dusknoir's Fade into Darkness / Glimmora's Shattering Crystal: when this Pokémon is Knocked
+    /// Out, flip a coin. If heads, the opponent gets no points for it.
+    ///
+    /// Distinct from `CoinFlipToSurviveKnockOut`: the Pokémon still dies and still leaves play,
+    /// so on-knockout triggers, promotions and discards all resolve normally — only the point
+    /// award is suppressed. Modelled as a probability split at forecast time (see
+    /// `AttackOutcomes::split_with_point_denial`) so the search bots price the coin correctly
+    /// rather than seeing an expected value; on heads the branch tags the doomed Pokémon with
+    /// `CardEffect::DenyKnockoutPoints`, which `handle_knockouts` consumes.
+    CoinFlipToDenyKnockoutPoints,
     /// Passimian ex's Offload Pass: if this Pokémon is in the Active Spot and is Knocked Out by
     /// damage from an opponent's attack, move all of its `energy_type` Energy to 1 of your Benched
     /// Pokémon (your choice). Passive; handled in the `on_knockout` hook.

@@ -89,7 +89,10 @@ fn apply_attack_common_modifiers(
     }
 
     outcomes = apply_defender_damage_prevention_if_needed(acting_player, state, attack, outcomes);
-    apply_defender_guts_if_needed(acting_player, state, attack, outcomes)
+    let outcomes = apply_defender_guts_if_needed(acting_player, state, attack, outcomes);
+    // Point denial resolves after Guts: a Pokémon that survives on a Guts heads is not knocked
+    // out at all, so it never reaches the point-denial coin.
+    apply_defender_point_denial_if_needed(acting_player, state, attack, outcomes)
 }
 
 fn apply_copied_attack_modifiers(
@@ -100,7 +103,10 @@ fn apply_copied_attack_modifiers(
 ) -> AttackOutcomes {
     let outcomes =
         apply_defender_damage_prevention_if_needed(acting_player, state, attack, base_outcomes);
-    apply_defender_guts_if_needed(acting_player, state, attack, outcomes)
+    let outcomes = apply_defender_guts_if_needed(acting_player, state, attack, outcomes);
+    // Point denial resolves after Guts: a Pokémon that survives on a Guts heads is not knocked
+    // out at all, so it never reaches the point-denial coin.
+    apply_defender_point_denial_if_needed(acting_player, state, attack, outcomes)
 }
 
 fn apply_defender_damage_prevention_if_needed(
@@ -175,6 +181,40 @@ fn apply_defender_guts_if_needed(
         Some(&attack.title),
         attack.effect.as_deref(),
         &guts_indices,
+    )
+}
+
+/// Dusknoir's Fade into Darkness / Glimmora's Shattering Crystal: any opponent Pokémon this
+/// attack would knock out flips a coin to deny the point.
+fn apply_defender_point_denial_if_needed(
+    acting_player: usize,
+    state: &State,
+    attack: &Attack,
+    outcomes: AttackOutcomes,
+) -> AttackOutcomes {
+    let opponent = (acting_player + 1) % 2;
+    let denial_indices: Vec<usize> = state
+        .enumerate_in_play_pokemon(opponent)
+        .filter(|(_, pokemon)| {
+            pokemon
+                .card
+                .get_ability()
+                .and_then(|a| ability_mechanic_from_effect(&a.effect))
+                .map(|m| matches!(m, AbilityMechanic::CoinFlipToDenyKnockoutPoints))
+                .unwrap_or(false)
+        })
+        .map(|(idx, _)| idx)
+        .collect();
+
+    if denial_indices.is_empty() {
+        return outcomes;
+    }
+    outcomes.split_with_point_denial(
+        state,
+        acting_player,
+        Some(&attack.title),
+        attack.effect.as_deref(),
+        &denial_indices,
     )
 }
 
@@ -591,6 +631,9 @@ fn forecast_effect_attack_by_mechanic(
             attack_name,
             damage_per_use,
         } => damage_per_attack_used_this_game(state, attack_name, *damage_per_use),
+        Mechanic::ExtraDamagePerOwnKnockoutThisGame { damage_per_ko } => {
+            extra_damage_per_own_knockout_this_game(state, attack.fixed_damage, *damage_per_ko)
+        }
         Mechanic::ExtraDamageIfMovedFromBench { extra_damage } => {
             extra_damage_if_moved_from_bench_attack(state, attack.fixed_damage, *extra_damage)
         }
@@ -2713,6 +2756,17 @@ fn damage_per_attack_used_this_game(
 ) -> AttackOutcomes {
     let uses = state.count_attack_used_this_game(state.current_player, attack_name);
     active_damage_doutcome(damage_per_use * uses)
+}
+
+/// Kingambit's Overlord's Blade: base damage plus `damage_per_ko` for every own Pokémon lost so
+/// far this game.
+fn extra_damage_per_own_knockout_this_game(
+    state: &State,
+    base_damage: u32,
+    damage_per_ko: u32,
+) -> AttackOutcomes {
+    let own_kos = state.count_own_knockouts_this_game(state.current_player);
+    active_damage_doutcome(base_damage + damage_per_ko * own_kos)
 }
 
 fn extra_damage_if_moved_from_bench_attack(

@@ -2289,7 +2289,16 @@ pub static EFFECT_MECHANIC_MAP: LazyLock<HashMap<&'static str, Mechanic>> = Lazy
             bench_side: BenchSide::YourBench,
         },
     );
-    // map.insert("This attack does 60 damage to 1 of your opponent's Pokémon that have damage on them.", todo_implementation);
+    // Kingambit (B3a 043) "Overlord's Blade" — 60 base, +40 per own Pokémon lost this game.
+    map.insert(
+        "This attack does 40 more damage for each time your Pokémon have been Knocked Out during this game.",
+        Mechanic::ExtraDamagePerOwnKnockoutThisGame { damage_per_ko: 40 },
+    );
+    // Mandibuzz (B3 110) "Blindside" — same shape as the 100-damage print above.
+    map.insert(
+        "This attack does 60 damage to 1 of your opponent's Pokémon that have damage on them.",
+        Mechanic::DirectDamageIfDamaged { damage: 60 },
+    );
 
     // B3a Mechanics
     map.insert(

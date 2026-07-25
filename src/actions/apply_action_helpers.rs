@@ -9,7 +9,7 @@ use crate::{
         effect_ability_mechanic_map::get_ability_mechanic, shared_mutations, SimpleAction,
     },
     card_ids::CardId,
-    effects::TurnEffect,
+    effects::{CardEffect, TurnEffect},
     hooks::{
         get_counterattack_damage, modify_damage, on_attack_knockout, on_end_turn, on_knockout,
         should_poison_attacker, DamageModifierContext,
@@ -602,11 +602,30 @@ pub(crate) fn handle_knockouts(
                 .as_ref()
                 .expect("Pokemon should be there if knocked out");
             let ko_initiator = (ko_receiver + 1) % 2;
-            let points_won = ko_pokemon.card.get_knockout_points();
+            // Dusknoir "Fade into Darkness" / Glimmora "Shattering Crystal": the coin was already
+            // flipped at forecast time, and a heads branch tagged this Pokémon with
+            // DenyKnockoutPoints. The knockout itself still stands — only the score is denied.
+            let points_denied = ko_pokemon
+                .get_effective_card_effects()
+                .iter()
+                .any(|effect| matches!(effect, CardEffect::DenyKnockoutPoints));
+            let points_won = if points_denied {
+                0
+            } else {
+                ko_pokemon.card.get_knockout_points()
+            };
             state.points[ko_initiator] += points_won;
             debug!(
-                "Pokemon {:?} fainted. Player {} won {} points for a total of {}",
-                ko_pokemon, ko_initiator, points_won, state.points[ko_initiator]
+                "Pokemon {:?} fainted. Player {} won {} points for a total of {}{}",
+                ko_pokemon,
+                ko_initiator,
+                points_won,
+                state.points[ko_initiator],
+                if points_denied {
+                    " (point-denial coin flip came up heads)"
+                } else {
+                    ""
+                }
             );
             // Iris bonus: 1 extra point if Haxorus KOs opponent's Active Pokemon
             if iris_bonus_active && ko_pokemon_idx == 0 && ko_receiver != attacking_ref.0 {
@@ -617,6 +636,11 @@ pub(crate) fn handle_knockouts(
                 );
             }
         }
+
+        // Game-long tally of each player's own losses (Kingambit's Overlord's Blade). Counted for
+        // every knockout regardless of cause — self-damage and recoil KOs are still your Pokémon
+        // being Knocked Out.
+        state.own_knockouts_this_game[ko_receiver] += 1;
 
         state.discard_from_play(ko_receiver, ko_pokemon_idx);
     }

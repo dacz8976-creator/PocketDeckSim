@@ -78,6 +78,12 @@ pub struct State {
     // Alcremie's "Sweets Overload": "This attack does 40 damage for each time your Pokémon used
     // Sweets Relay during this game."). Using BTreeMap to keep State hashable.
     pub(crate) attack_name_used_count: [BTreeMap<String, u32>; 2],
+    // Number of times each player's own Pokémon have been Knocked Out over the whole game (e.g.
+    // for Kingambit's "Overlord's Blade": "This attack does 40 more damage for each time your
+    // Pokémon have been Knocked Out during this game."). Indexed by the player who LOST the
+    // Pokémon, not the one who scored the knockout.
+    #[serde(default)]
+    pub(crate) own_knockouts_this_game: [u32; 2],
     // Maps turn to a vector of effects (cards) for that turn. Using BTreeMap to keep State hashable.
     turn_effects: BTreeMap<u8, Vec<TurnEffect>>,
 }
@@ -108,6 +114,7 @@ impl State {
             attack_name_used_this_turn: [None, None],
             attack_name_used_last_turn: [None, None],
             attack_name_used_count: [BTreeMap::new(), BTreeMap::new()],
+            own_knockouts_this_game: [0, 0],
             turn_effects: BTreeMap::new(),
         }
     }
@@ -646,6 +653,18 @@ impl State {
             .get(attack_name)
             .copied()
             .unwrap_or(0)
+    }
+
+    /// How many of `player`'s own Pokémon have been Knocked Out so far this game.
+    pub(crate) fn count_own_knockouts_this_game(&self, player: usize) -> u32 {
+        self.own_knockouts_this_game[player]
+    }
+
+    /// Set `player`'s game-long own-knockout tally directly. Mirrors `set_board` and
+    /// `set_knocked_out_by_opponent_attack_last_turn`: it exists so tests can reach a mid-game
+    /// board without replaying the knockouts that produced it.
+    pub fn set_own_knockouts_this_game(&mut self, player: usize, count: u32) {
+        self.own_knockouts_this_game[player] = count;
     }
 
     pub fn set_attack_name_used_last_turn(&mut self, player: usize, attack_name: Option<String>) {

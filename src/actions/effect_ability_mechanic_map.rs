@@ -369,7 +369,13 @@ pub static EFFECT_ABILITY_MECHANIC_MAP: LazyLock<HashMap<&'static str, AbilityMe
         );
         // map.insert("This Pokémon takes -30 damage from attacks from [F] Pokémon.", todo_implementation);
         // map.insert("This Pokémon takes -30 damage from attacks from [R] or [W] Pokémon.", todo_implementation);
-        // map.insert("When this Pokémon is Knocked Out, flip a coin. If heads, your opponent can't get any points for it.", todo_implementation);
+        // Dusknoir (B1 105) "Fade into Darkness" and Glimmora (B3a 045 / B3a 078)
+        // "Shattering Crystal". Point DENIAL, not damage prevention — the Pokémon is still
+        // Knocked Out and still leaves play, the opponent simply scores nothing for it on heads.
+        map.insert(
+            "When this Pokémon is Knocked Out, flip a coin. If heads, your opponent can't get any points for it.",
+            AbilityMechanic::CoinFlipToDenyKnockoutPoints,
+        );
         map.insert(
             "When this Pokémon is first damaged by an attack after coming into play, prevent that damage.",
             AbilityMechanic::PreventFirstAttack,

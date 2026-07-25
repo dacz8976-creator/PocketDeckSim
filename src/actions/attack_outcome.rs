@@ -2,6 +2,7 @@ use std::rc::Rc;
 
 use rand::rngs::StdRng;
 
+use crate::effects::CardEffect;
 use crate::hooks::{modify_damage, DamageModifierContext};
 use crate::State;
 
@@ -458,6 +459,106 @@ impl AttackOutcomes {
                         for idx in &survivors {
                             if let Some(pokemon) = state.in_play_pokemon[opponent][*idx].as_mut() {
                                 pokemon.set_remaining_hp(10);
+                            }
+                        }
+                        if let Some(post) = &previous_post {
+                            post(rng, state, action);
+                        }
+                    }));
+                }
+                branches.push(AttackBranch {
+                    probability: sub_probability,
+                    outcome,
+                    coin_paths: CoinPaths::None,
+                });
+            }
+        }
+        Self { branches }
+    }
+
+    /// Apply the defender's "when this Pokémon is Knocked Out, flip a coin; if heads, your
+    /// opponent can't get any points for it" ability (Dusknoir's Fade into Darkness, Glimmora's
+    /// Shattering Crystal) to each opponent in-play slot in `denial_indices`.
+    ///
+    /// Structurally a sibling of [`Self::split_with_guts_survival`], with one important
+    /// difference: this coin does not change whether the Pokémon dies, only whether the knockout
+    /// scores. So the branch never touches HP — on heads it tags the doomed Pokémon with
+    /// `CardEffect::DenyKnockoutPoints`, which `handle_knockouts` reads when awarding points and
+    /// which is discarded along with the Pokémon in the same resolution.
+    ///
+    /// Splitting at forecast time rather than flipping inline during knockout resolution is what
+    /// lets the search bots price the ability: a Glimmora in front of a lethal attack is a real
+    /// 50/50 on whether the attacker banks a point, and e2/e3 need to see both branches to value
+    /// it. Knockouts are forecast against the pre-attack board, matching
+    /// `split_with_guts_survival`.
+    pub fn split_with_point_denial(
+        self,
+        state: &State,
+        acting_player: usize,
+        attack_name: Option<&str>,
+        attack_effect: Option<&str>,
+        denial_indices: &[usize],
+    ) -> Self {
+        let opponent = (acting_player + 1) % 2;
+        let mut branches = vec![];
+        for branch in self.branches {
+            // Only Pokémon this branch's damage would actually knock out flip a coin.
+            let flipping: Vec<usize> = denial_indices
+                .iter()
+                .copied()
+                .filter(|target_idx| {
+                    let Some(pokemon) = state.in_play_pokemon[opponent][*target_idx].as_ref()
+                    else {
+                        return false;
+                    };
+                    let raw_total: u32 = branch
+                        .outcome
+                        .damage
+                        .iter()
+                        .filter(|(_, is_opponent, idx)| *is_opponent && idx == target_idx)
+                        .map(|(amount, _, _)| *amount)
+                        .sum();
+                    if raw_total == 0 {
+                        return false;
+                    }
+                    let modified = modify_damage(
+                        state,
+                        (acting_player, 0),
+                        (raw_total, opponent, *target_idx),
+                        true,
+                        DamageModifierContext {
+                            attack_name,
+                            attack_effect,
+                        },
+                    );
+                    let remaining = pokemon.get_remaining_hp();
+                    remaining > 0 && modified >= remaining
+                })
+                .collect();
+
+            if flipping.is_empty() {
+                branches.push(branch);
+                continue;
+            }
+
+            let combos = 1usize << flipping.len();
+            let sub_probability = branch.probability / combos as f64;
+            for mask in 0..combos {
+                // The subset whose coin came up heads — these deny their points.
+                let denying: Vec<usize> = flipping
+                    .iter()
+                    .enumerate()
+                    .filter(|(bit, _)| (mask >> bit) & 1 == 1)
+                    .map(|(_, idx)| *idx)
+                    .collect();
+                let mut outcome = branch.outcome.clone();
+                if !denying.is_empty() {
+                    let previous_post = outcome.post_damage_effect.take();
+                    outcome.post_damage_effect = Some(Rc::new(move |rng, state, action| {
+                        let opponent = (action.actor + 1) % 2;
+                        for idx in &denying {
+                            if let Some(pokemon) = state.in_play_pokemon[opponent][*idx].as_mut() {
+                                pokemon.add_effect(CardEffect::DenyKnockoutPoints, 1);
                             }
                         }
                         if let Some(post) = &previous_post {

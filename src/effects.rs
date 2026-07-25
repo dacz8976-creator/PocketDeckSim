@@ -39,6 +39,11 @@ pub enum CardEffect {
     Counterattack {
         amount: u32,
     },
+    /// This Pokémon is about to be Knocked Out, but its holder won the Dusknoir / Glimmora
+    /// point-denial coin flip, so the opponent scores nothing for the knockout. Applied by a
+    /// forecast branch's post-damage effect and consumed by `handle_knockouts` in the same
+    /// resolution — it is never expected to survive to a later turn.
+    DenyKnockoutPoints,
     // ---------------------------------------------------------------------------------------------
     // Ability-derived effects. These are not added via `add_effect`; they are *derived* on the fly
     // from a Pokémon's passive ability by `PlayedCard::get_effective_card_effects` (see
