@@ -5,7 +5,7 @@ use std::collections::HashMap;
 use std::sync::LazyLock;
 
 use crate::actions::abilities::{
-    AbilityMechanic, AttackCostReductionScope, DeckSearchKind, DiscardSearchKind,
+    AbilityMechanic, AttackCostReductionScope, DeckSearchKind, DiscardSearchKind, DiscardSelection,
     KnockoutDamageTarget, NoRetreatCostCondition, NoRetreatCostTarget, ARCEUS_NAMES,
 };
 use crate::effects::CardEffect;
@@ -311,11 +311,18 @@ pub static EFFECT_ABILITY_MECHANIC_MAP: LazyLock<HashMap<&'static str, AbilityMe
                 amount: 60,
             },
         );
-        // map.insert("Once during your turn, when you play this Pokémon from your hand to evolve 1 of your Pokémon, you may put 2 random Pokémon Tool cards from your discard pile into your hand.", todo_implementation);
+        map.insert(
+            "Once during your turn, when you play this Pokémon from your hand to evolve 1 of your Pokémon, you may put 2 random Pokémon Tool cards from your discard pile into your hand.",
+            AbilityMechanic::PutCardsFromDiscardToHandOnEvolve {
+                card_kind: DiscardSearchKind::Tool,
+                selection: DiscardSelection::RandomCards(2),
+            },
+        );
         map.insert(
             "Once during your turn, when you play this Pokémon from your hand to evolve 1 of your Pokémon, you may put a Supporter card from your discard pile into your hand.",
             AbilityMechanic::PutCardsFromDiscardToHandOnEvolve {
                 card_kind: DiscardSearchKind::Supporter,
+                selection: DiscardSelection::PlayerChoosesOne,
             },
         );
         map.insert(

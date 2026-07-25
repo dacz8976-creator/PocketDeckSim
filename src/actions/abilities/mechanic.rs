@@ -1,4 +1,9 @@
-use crate::models::{EnergyType, StatusCondition};
+use serde::{Deserialize, Serialize};
+
+use crate::{
+    models::{Card, EnergyType, StatusCondition, TrainerType},
+    tools::is_tool_card,
+};
 
 /// Which kind of card a "put a random <kind> card from your deck into your hand" Ability looks for.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -9,9 +14,40 @@ pub enum DeckSearchKind {
 
 /// Which kind of card a "put a <kind> card from your discard pile into your hand" Ability looks
 /// for. The discard-pile mirror of [`DeckSearchKind`].
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+///
+/// Derives `Hash`/`Serialize`/`Deserialize` because it is carried by
+/// [`crate::actions::SimpleAction::PutRandomCardsFromDiscardToHand`].
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
 pub enum DiscardSearchKind {
     Supporter,
+    Tool,
+}
+
+impl DiscardSearchKind {
+    /// Whether `card` is eligible for this search. `Tool` defers to [`is_tool_card`], the single
+    /// definition of "is a Pokémon Tool" shared with the deck searches.
+    pub(crate) fn matches(self, card: &Card) -> bool {
+        match self {
+            DiscardSearchKind::Supporter => {
+                matches!(card, Card::Trainer(trainer) if trainer.trainer_card_type == TrainerType::Supporter)
+            }
+            DiscardSearchKind::Tool => is_tool_card(card),
+        }
+    }
+}
+
+/// How a "put ... from your discard pile into your hand" on-evolve Ability picks its cards. The
+/// wording differs between printings and the difference is mechanical, so it is explicit rather
+/// than inferred from the card kind.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum DiscardSelection {
+    /// "a Supporter card" (Delcatty's Search for Friends) — the *player* picks one, so every
+    /// eligible card in the pile becomes an option on the move-generation stack.
+    PlayerChoosesOne,
+    /// "2 random Pokémon Tool cards" (Galarian Perrserker's Dig Up) — the *engine* picks this many,
+    /// so it resolves as a probability branch over the eligible cards and takes whatever is
+    /// available when the pile holds fewer.
+    RandomCards(u8),
 }
 
 /// The card names that satisfy "if you have Arceus or Arceus ex in play". Pokémon ex have their
@@ -409,16 +445,20 @@ pub enum AbilityMechanic {
         amount: u32,
     },
     DiscardRandomEnergyFromOpponentActiveOnEvolve,
-    /// Delcatty's Search for Friends (B1 194 / B1 248): "Once during your turn, when you play this
-    /// Pokémon from your hand to evolve 1 of your Pokémon, you may put a `card_kind` card from
-    /// your discard pile into your hand."
+    /// "Once during your turn, when you play this Pokémon from your hand to evolve 1 of your
+    /// Pokémon, you may put <selection> `card_kind` card(s) from your discard pile into your hand."
     ///
     /// The discard-pile mirror of `SearchRandomCardFromDeck`, riding the same on-evolve trigger as
-    /// `DrawCardsOnEvolve` & co. The wording is "a Supporter card", not "a *random* Supporter
-    /// card", so the player picks which one: it resolves into a choice on the move-generation
-    /// stack (plus a `Noop`, because it is a "may").
+    /// `DrawCardsOnEvolve` & co. Two printings, differing on both axes:
+    /// - Delcatty's Search for Friends (B1 194 / B1 248):
+    ///   `{ Supporter, PlayerChoosesOne }` — "a Supporter card", the player picks.
+    /// - Galarian Perrserker's Dig Up (B2 111 / B2 177):
+    ///   `{ Tool, RandomCards(2) }` — "2 *random* Pokémon Tool cards", the engine picks.
+    ///
+    /// Either way it is a "may", so the offer always carries a `Noop`.
     PutCardsFromDiscardToHandOnEvolve {
         card_kind: DiscardSearchKind,
+        selection: DiscardSelection,
     },
     CanEvolveIntoEeveeEvolution,
     CanEvolveOnFirstTurnIfActive,

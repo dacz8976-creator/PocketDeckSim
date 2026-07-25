@@ -1,3 +1,4 @@
+use crate::actions::abilities::DiscardSearchKind;
 use crate::models::{Attack, Card, EnergyType, StatusCondition, TrainerCard};
 use serde::{Deserialize, Serialize};
 use std::fmt;
@@ -158,6 +159,13 @@ pub enum SimpleAction {
     /// pile into your hand.
     PutCardFromDiscardToHand {
         card: Card,
+    },
+    /// Galarian Perrserker's Dig Up: put `amount` *random* cards of `card_kind` from your own
+    /// discard pile into your hand. Which cards is decided at forecast time, so the search bots
+    /// see the real distribution instead of a pre-picked answer.
+    PutRandomCardsFromDiscardToHand {
+        card_kind: DiscardSearchKind,
+        amount: u8,
     },
     /// Crawdaunt's Unruly Claw: discard a random Energy from the opponent's Active Pokémon
     DiscardRandomOpponentActiveEnergy,
@@ -327,6 +335,9 @@ impl fmt::Display for SimpleAction {
             SimpleAction::DiscardActiveStadium => write!(f, "DiscardActiveStadium"),
             SimpleAction::PutCardFromDiscardToHand { card } => {
                 write!(f, "PutCardFromDiscardToHand({card})")
+            }
+            SimpleAction::PutRandomCardsFromDiscardToHand { card_kind, amount } => {
+                write!(f, "PutRandomCardsFromDiscardToHand({card_kind:?}, {amount})")
             }
             SimpleAction::DiscardRandomOpponentActiveEnergy => {
                 write!(f, "DiscardRandomOpponentActiveEnergy")

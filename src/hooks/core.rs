@@ -6,8 +6,8 @@ use log::debug;
 use crate::{
     actions::{
         abilities::{
-            AbilityMechanic, AttackCostReductionScope, DiscardSearchKind, KnockoutDamageTarget,
-            ARCEUS_NAMES,
+            AbilityMechanic, AttackCostReductionScope, DiscardSearchKind, DiscardSelection,
+            KnockoutDamageTarget, ARCEUS_NAMES,
         },
         ability_mechanic_from_effect, get_ability_mechanic, handle_damage_only, SimpleAction,
     },
@@ -181,9 +181,10 @@ pub(crate) fn on_evolve(actor: usize, state: &mut State, to_card: &Card, from_ha
                 ],
             ));
         }
-        Some(AbilityMechanic::PutCardsFromDiscardToHandOnEvolve { card_kind }) => {
-            offer_put_cards_from_discard_to_hand(actor, state, *card_kind)
-        }
+        Some(AbilityMechanic::PutCardsFromDiscardToHandOnEvolve {
+            card_kind,
+            selection,
+        }) => offer_put_cards_from_discard_to_hand(actor, state, *card_kind, *selection),
         Some(AbilityMechanic::DiscardRandomEnergyFromOpponentActiveOnEvolve) => {
             let opponent = (actor + 1) % 2;
             let has_energy = state
@@ -203,38 +204,46 @@ pub(crate) fn on_evolve(actor: usize, state: &mut State, to_card: &Card, from_ha
     }
 }
 
-/// Delcatty's Search for Friends: "you may put a `card_kind` card from your discard pile into your
-/// hand". The card is chosen by the player, so every eligible card in the pile becomes an option,
-/// alongside the `Noop` that the "you may" wording requires. Duplicates are collapsed — two copies
-/// of the same Supporter are the same decision — and nothing is pushed when the pile holds no
+/// "You may put <selection> `card_kind` card(s) from your discard pile into your hand" — Delcatty's
+/// Search for Friends and Galarian Perrserker's Dig Up.
+///
+/// Both are a "may", so the offer always carries a `Noop`; the difference is who picks:
+/// `PlayerChoosesOne` turns every distinct eligible card into its own option (duplicate copies of
+/// the same card are the same decision, so they collapse), while `RandomCards` offers a single
+/// action whose forecast branches over the possible draws. Nothing is pushed when the pile holds no
 /// eligible card, so the evolve resolves without stopping to ask an empty question.
 fn offer_put_cards_from_discard_to_hand(
     actor: usize,
     state: &mut State,
     card_kind: DiscardSearchKind,
+    selection: DiscardSelection,
 ) {
     let mut seen = std::collections::HashSet::new();
-    let mut choices: Vec<SimpleAction> = state.discard_piles[actor]
-        .iter()
-        .filter(|card| matches_discard_search_kind(card, card_kind))
-        .filter(|card| seen.insert((*card).clone()))
-        .map(|card| SimpleAction::PutCardFromDiscardToHand { card: card.clone() })
-        .collect();
+    let eligible = || {
+        state.discard_piles[actor]
+            .iter()
+            .filter(|card| card_kind.matches(card))
+    };
+    let mut choices: Vec<SimpleAction> = match selection {
+        DiscardSelection::PlayerChoosesOne => eligible()
+            .filter(|card| seen.insert((*card).clone()))
+            .map(|card| SimpleAction::PutCardFromDiscardToHand { card: card.clone() })
+            .collect(),
+        DiscardSelection::RandomCards(amount) => eligible()
+            .next()
+            .map(|_| SimpleAction::PutRandomCardsFromDiscardToHand { card_kind, amount })
+            .into_iter()
+            .collect(),
+    };
     if choices.is_empty() {
         return;
     }
-    debug!("Search for Friends: offering {} card(s)", choices.len());
+    debug!(
+        "On-evolve discard search: offering {} option(s)",
+        choices.len()
+    );
     choices.push(SimpleAction::Noop);
     state.move_generation_stack.push((actor, choices));
-}
-
-/// Whether `card` is eligible for a [`DiscardSearchKind`] search.
-fn matches_discard_search_kind(card: &Card, card_kind: DiscardSearchKind) -> bool {
-    match card_kind {
-        DiscardSearchKind::Supporter => {
-            matches!(card, Card::Trainer(trainer) if trainer.trainer_card_type == TrainerType::Supporter)
-        }
-    }
 }
 
 /// Called when a basic Pokémon is placed from hand onto the bench (index > 0).

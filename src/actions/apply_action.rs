@@ -28,7 +28,7 @@ use super::{
     apply_stadium_action::{self, forecast_use_stadium},
     apply_trainer_action::forecast_trainer_action,
     outcomes::Outcomes,
-    Action, SimpleAction,
+    shared_mutations, Action, SimpleAction,
 };
 
 /// Main function to mutate the state based on the action. It forecasts the possible outcomes
@@ -122,6 +122,9 @@ pub fn forecast_action(state: &State, action: &Action) -> Outcomes {
             energy_type,
             count,
         } => forecast_attach_typed_from_discard(*in_play_idx, *energy_type, *count),
+        SimpleAction::PutRandomCardsFromDiscardToHand { card_kind, amount } => {
+            shared_mutations::discard_search_outcomes(action.actor, state, *card_kind, *amount)
+        }
         SimpleAction::SadaAttach { assignments } => forecast_sada_attach(assignments),
         SimpleAction::UseStadium => forecast_use_stadium(state, action.actor),
         // acting_player is not passed here, because there is only 1 turn to end. The current turn.
