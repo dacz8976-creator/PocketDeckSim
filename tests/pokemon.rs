@@ -162,6 +162,8 @@ mod passimian_ex_offload_pass_test;
 mod porygonz_cyberjack_test;
 #[path = "pokemon/psyduck_test.rs"]
 mod psyduck_test;
+#[path = "pokemon/pyukumuku_innards_out_test.rs"]
+mod pyukumuku_innards_out_test;
 #[path = "pokemon/rampardos_head_smash_test.rs"]
 mod rampardos_head_smash_test;
 #[path = "pokemon/roaring_moon_test.rs"]
