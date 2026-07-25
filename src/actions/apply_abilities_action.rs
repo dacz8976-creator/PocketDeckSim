@@ -130,6 +130,11 @@ fn forecast_ability_by_mechanic(
         | AbilityMechanic::IncreaseDamageForTwoTypesInPlay { .. } => {
             panic!("Type damage bonus mechanics are passive abilities")
         }
+        AbilityMechanic::UnownPower { .. } => panic!("UnownPower is a passive ability"),
+        AbilityMechanic::IncreaseDamageForEvolutionsFromBench { .. } => {
+            panic!("IncreaseDamageForEvolutionsFromBench is a passive ability")
+        }
+        AbilityMechanic::CoordinatedUnit { .. } => panic!("CoordinatedUnit is a passive ability"),
         AbilityMechanic::StartTurnRandomPokemonToHand { .. } => {
             panic!("StartTurnRandomPokemonToHand is a passive ability")
         }

@@ -58,6 +58,8 @@ mod dustox_select_powder_test;
 mod emboar_flare_storm_test;
 #[path = "pokemon/emolga_dedenne_ex_tool_damage_test.rs"]
 mod emolga_dedenne_ex_tool_damage_test;
+#[path = "pokemon/falinks_coordinated_unit_test.rs"]
+mod falinks_coordinated_unit_test;
 #[path = "pokemon/flutter_mane_ex_test.rs"]
 mod flutter_mane_ex_test;
 #[path = "pokemon/flygon_ex_test.rs"]
@@ -158,6 +160,8 @@ mod morpeko_test;
 mod ninetales_ember_dance_test;
 #[path = "pokemon/passimian_ex_offload_pass_test.rs"]
 mod passimian_ex_offload_pass_test;
+#[path = "pokemon/politoed_lordly_cheering_test.rs"]
+mod politoed_lordly_cheering_test;
 #[path = "pokemon/porygonz_cyberjack_test.rs"]
 mod porygonz_cyberjack_test;
 #[path = "pokemon/psyduck_test.rs"]
@@ -196,6 +200,8 @@ mod terapagos_ex_test;
 mod tinkaton_gigaton_hammer_test;
 #[path = "pokemon/typhlosion_fire_breath_test.rs"]
 mod typhlosion_fire_breath_test;
+#[path = "pokemon/unown_power_test.rs"]
+mod unown_power_test;
 #[path = "pokemon/ursaluna_guts_test.rs"]
 mod ursaluna_guts_test;
 #[path = "pokemon/vanilluxe_test.rs"]

@@ -83,6 +83,34 @@ pub enum AbilityMechanic {
         energy_type_b: EnergyType,
         amount: u32,
     },
+    /// POWER (Unown A4 085): "This Ability works if you have any Unown in play with an Ability
+    /// other than POWER. Attacks used by your Pokémon do +`amount` damage to your opponent's
+    /// Active Pokémon."
+    ///
+    /// Board-wide rather than self-scoped, and self-referential: the enabling condition is an
+    /// in-play Unown whose printed Ability *title* is something other than POWER (CHECK on
+    /// A2a 034 / A2a 078, GUARD on A4 084). Two POWER Unown therefore do not enable each other.
+    UnownPower {
+        amount: u32,
+    },
+    /// Politoed's Lordly Cheering (A4 040): "As long as this Pokémon is on your Bench, attacks
+    /// used by your Pokémon that evolve from `evolves_from` do +`amount` damage to your
+    /// opponent's Active Pokémon." Only counts while the ability holder is Benched.
+    IncreaseDamageForEvolutionsFromBench {
+        evolves_from: &'static str,
+        amount: u32,
+    },
+    /// Falinks' Coordinated Unit (B2 092 / B2 172): "If you have another Falinks in play, this
+    /// Pokémon's attacks do +`damage_bonus` damage to your opponent's Active Pokémon, and this
+    /// Pokémon takes -`damage_reduction` damage from attacks from your opponent's Pokémon."
+    ///
+    /// One ability with two self-scoped effects, both gated on the holder's controller having a
+    /// *second* Pokémon with the same name in play.
+    CoordinatedUnit {
+        pokemon_name: &'static str,
+        damage_bonus: u32,
+        damage_reduction: u32,
+    },
     StartTurnRandomPokemonToHand {
         energy_type: EnergyType,
     },

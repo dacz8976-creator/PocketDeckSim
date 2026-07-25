@@ -98,6 +98,9 @@ fn can_use_ability_by_mechanic(
         AbilityMechanic::IncreaseDamageWhenRemainingHpAtMost { .. } => false,
         AbilityMechanic::IncreaseDamageForTypeInPlay { .. } => false,
         AbilityMechanic::IncreaseDamageForTwoTypesInPlay { .. } => false,
+        AbilityMechanic::UnownPower { .. } => false, // Passive ability
+        AbilityMechanic::IncreaseDamageForEvolutionsFromBench { .. } => false, // Passive ability
+        AbilityMechanic::CoordinatedUnit { .. } => false, // Passive ability
         AbilityMechanic::StartTurnRandomPokemonToHand { .. } => false,
         AbilityMechanic::SearchRandomPokemonFromDeck => {
             !card.ability_used
