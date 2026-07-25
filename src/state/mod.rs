@@ -286,6 +286,55 @@ impl State {
         self.hands[player].push(card.clone());
     }
 
+    /// Heal Block (Claydol A3a 031): "Pokémon (both yours and your opponent's) can't be healed."
+    ///
+    /// Symmetric, so a single board-wide check over both players covers it. Every healing effect in
+    /// the engine — Abilities, attacks, Trainer cards, Tools/berries and Pokémon Checkup — funnels
+    /// through `heal_pokemon`/`heal_each_pokemon` and is gated here, rather than each site
+    /// re-checking. `PlayedCard::heal_raw` is the deliberate escape hatch for *moving* damage
+    /// counters, which is not healing and is not blocked.
+    pub(crate) fn is_healing_blocked(&self) -> bool {
+        (0..2).any(|player| {
+            self.enumerate_in_play_pokemon(player).any(|(_, pokemon)| {
+                has_ability_mechanic(&pokemon.card, &AbilityMechanic::PreventAllHealing)
+            })
+        })
+    }
+
+    /// Heal `amount` damage from one Pokémon in play, honouring Heal Block. Returns how many
+    /// damage counters were actually removed, which callers such as Espeon ex's
+    /// "heal, and if you do, discard an Energy" need in order to decide whether their *if you do*
+    /// clause fires at all.
+    pub(crate) fn heal_pokemon(&mut self, player: usize, in_play_idx: usize, amount: u32) -> u32 {
+        if self.is_healing_blocked() {
+            return 0;
+        }
+        let Some(pokemon) = self.in_play_pokemon[player][in_play_idx].as_mut() else {
+            return 0;
+        };
+        let healed = amount.min(pokemon.get_damage_counters());
+        pokemon.heal_raw(amount);
+        healed
+    }
+
+    /// Heal `amount` damage from every Pokémon `player` has in play that satisfies `is_eligible`,
+    /// honouring Heal Block. The board-wide counterpart of [`Self::heal_pokemon`].
+    pub(crate) fn heal_each_pokemon(
+        &mut self,
+        player: usize,
+        amount: u32,
+        is_eligible: impl Fn(&PlayedCard) -> bool,
+    ) {
+        if self.is_healing_blocked() {
+            return;
+        }
+        for pokemon in self.in_play_pokemon[player].iter_mut().flatten() {
+            if is_eligible(pokemon) {
+                pokemon.heal_raw(amount);
+            }
+        }
+    }
+
     /// Move one copy of `card` from `player`'s discard pile into their hand (Delcatty's Search for
     /// Friends). Silently does nothing if the card is no longer there, so a choice that was
     /// generated before some other effect emptied the pile degrades to a no-op instead of panicking.

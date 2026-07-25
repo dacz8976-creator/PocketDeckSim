@@ -301,8 +301,7 @@ pub(crate) fn on_end_turn(player_ending_turn: usize, state: &mut State) {
         }
         if let AbilityMechanic::EndTurnHealSelfIfActive { amount } = mechanic {
             debug!("Full-Mouth Manner: Healing 20 damage from active");
-            let active = state.get_active_mut(player_ending_turn);
-            active.heal(*amount);
+            state.heal_pokemon(player_ending_turn, 0, *amount);
         }
     }
 
@@ -314,7 +313,7 @@ pub(crate) fn on_end_turn(player_ending_turn: usize, state: &mut State) {
         CardId::A3b067Leftovers,
     ) {
         debug!("Leftovers: healing 10 damage from active");
-        state.get_active_mut(player_ending_turn).heal(10);
+        state.heal_pokemon(player_ending_turn, 0, 10);
     }
 
     apply_end_of_turn_berries(state);
@@ -1797,9 +1796,7 @@ fn apply_end_of_turn_berries(state: &mut State) {
             .collect();
         for idx in sitrus_indices {
             debug!("Sitrus Berry: healing 30 and discarding");
-            if let Some(pokemon) = state.in_play_pokemon[player][idx].as_mut() {
-                pokemon.heal(30);
-            }
+            state.heal_pokemon(player, idx, 30);
             state.discard_tool(player, idx);
         }
     }

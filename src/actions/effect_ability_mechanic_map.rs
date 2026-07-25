@@ -493,7 +493,10 @@ pub static EFFECT_ABILITY_MECHANIC_MAP: LazyLock<HashMap<&'static str, AbilityMe
                 energy_type: EnergyType::Psychic,
             },
         );
-        // map.insert("Pokémon (both yours and your opponent's) can't be healed.", todo_implementation);
+        map.insert(
+            "Pokémon (both yours and your opponent's) can't be healed.",
+            AbilityMechanic::PreventAllHealing,
+        );
         map.insert(
             "Prevent all damage done to this Pokémon by attacks from your opponent's Pokémon ex.",
             AbilityMechanic::PreventAllDamageFromEx,

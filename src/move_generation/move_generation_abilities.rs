@@ -65,6 +65,7 @@ fn can_use_ability_by_mechanic(
             *require_active,
             *require_tool_attached,
         ),
+        AbilityMechanic::PreventAllHealing => false, // Passive ability
         AbilityMechanic::HealOneYourPokemonExAndDiscardRandomEnergy { .. } => {
             can_use_heal_one_your_pokemon_ex_and_discard_random_energy(state, card)
         }

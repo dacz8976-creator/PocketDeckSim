@@ -46,6 +46,7 @@ fn forecast_ability_by_mechanic(
             energy_type,
         } => heal_all_your_pokemon(*amount, *energy_type),
         AbilityMechanic::HealOneYourPokemon { amount, .. } => heal_one_your_pokemon(*amount),
+        AbilityMechanic::PreventAllHealing => panic!("PreventAllHealing is a passive ability"),
         AbilityMechanic::HealOneYourPokemonExAndDiscardRandomEnergy { amount } => {
             heal_one_your_pokemon_ex_and_discard_random_energy(*amount)
         }
@@ -381,11 +382,9 @@ fn look_at_top_card_of_deck() -> Outcomes {
 
 fn heal_all_your_pokemon(amount: u32, energy_type: Option<EnergyType>) -> Outcomes {
     Outcomes::single_fn(move |_rng, state, action| {
-        for pokemon in state.in_play_pokemon[action.actor].iter_mut().flatten() {
-            if energy_type.is_none_or(|required| pokemon.get_energy_type() == Some(required)) {
-                pokemon.heal(amount);
-            }
-        }
+        state.heal_each_pokemon(action.actor, amount, |pokemon| {
+            energy_type.is_none_or(|required| pokemon.get_energy_type() == Some(required))
+        });
     })
 }
 
@@ -647,14 +646,14 @@ fn coin_flip_status_opponent_active(status: StatusCondition) -> Outcomes {
 
 fn heal_active_your_pokemon(amount: u32) -> Outcomes {
     Outcomes::single_fn(move |_rng, state, action| {
-        let active = state.get_active_mut(action.actor);
-        active.heal(amount);
+        state.heal_pokemon(action.actor, 0, amount);
     })
 }
 
 fn move_fixed_damage_from_active_to_this_benched(self_idx: usize, amount: u32) -> Outcomes {
     Outcomes::single_fn(move |_rng, state, action| {
-        state.get_active_mut(action.actor).heal(amount);
+        // Accept Pain *moves* damage counters rather than healing, so it bypasses Heal Block.
+        state.get_active_mut(action.actor).heal_raw(amount);
         let targets = vec![(amount, action.actor, self_idx)];
         handle_damage(state, (action.actor, 0), &targets, false, None);
     })

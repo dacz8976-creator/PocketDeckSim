@@ -129,6 +129,15 @@ pub enum AbilityMechanic {
         require_active: bool,
         require_tool_attached: bool,
     },
+    /// Claydol's Heal Block (A3a 031): "Pokémon (both yours and your opponent's) can't be healed."
+    ///
+    /// Passive and symmetric: while any Pokémon with this Ability is in play, *no* Pokémon on
+    /// either side can be healed, whatever the source (Ability, attack, Trainer, Tool/berry,
+    /// Pokémon Checkup). Resolved at the single healing gate `State::heal_pokemon` /
+    /// `State::heal_each_pokemon` rather than at each healing site, so a healing effect added later
+    /// is blocked by construction. Moving damage counters between Pokémon is not healing and is
+    /// deliberately not blocked.
+    PreventAllHealing,
     HealOneYourPokemonExAndDiscardRandomEnergy {
         amount: u32,
     },

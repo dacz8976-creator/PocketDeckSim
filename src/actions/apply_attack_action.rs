@@ -2038,15 +2038,13 @@ fn heal_all_your_pokemon_attack(damage: u32, heal: u32) -> AttackOutcomes {
 }
 
 fn heal_all_pokemon(state: &mut State, player: usize, amount: u32) {
-    for pokemon in state.in_play_pokemon[player].iter_mut().flatten() {
-        pokemon.heal(amount);
-    }
+    state.heal_each_pokemon(player, amount, |_| true);
 }
 
 fn coin_flip_self_heal_attack(damage: u32, heal: u32) -> AttackOutcomes {
     AttackOutcomes::binary_coin(
         active_damage_effect_outcome(damage, move |_, state, action| {
-            state.get_active_mut(action.actor).heal(heal);
+            state.heal_pokemon(action.actor, 0, heal);
         }),
         active_damage_outcome(damage),
     )
@@ -2128,15 +2126,14 @@ fn flip_until_tails_bonus_attack(base_damage: u32, damage_per_heads: u32) -> Att
 
 fn self_heal_attack(heal: u32, attack: &Attack) -> AttackOutcomes {
     active_damage_effect_doutcome(attack.fixed_damage, move |_, state, action| {
-        let active = state.get_active_mut(action.actor);
-        active.heal(heal);
+        state.heal_pokemon(action.actor, 0, heal);
     })
 }
 
 fn self_heal_if_stadium_in_play(state: &State, damage: u32, heal: u32) -> AttackOutcomes {
     if state.active_stadium.is_some() {
         active_damage_effect_doutcome(damage, move |_, state, action| {
-            state.get_active_mut(action.actor).heal(heal);
+            state.heal_pokemon(action.actor, 0, heal);
         })
     } else {
         active_damage_doutcome(damage)
@@ -2162,7 +2159,7 @@ fn inflict_status_if_stadium_in_play(
 fn self_asleep_and_heal_attack(heal: u32, damage: u32) -> AttackOutcomes {
     active_damage_effect_doutcome(damage, move |_, state, action| {
         state.apply_status_condition(action.actor, 0, StatusCondition::Asleep);
-        state.get_active_mut(action.actor).heal(heal);
+        state.heal_pokemon(action.actor, 0, heal);
     })
 }
 

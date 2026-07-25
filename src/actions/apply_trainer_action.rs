@@ -220,8 +220,8 @@ pub fn forecast_trainer_action(
 
 fn big_malasada_effect(rng: &mut StdRng, state: &mut State, action: &Action) {
     // Heal 10 damage and remove a random Special Condition from your Active Pokémon.
+    state.heal_pokemon(action.actor, 0, 10);
     if let Some(active) = state.in_play_pokemon[action.actor][0].as_mut() {
-        active.heal(10);
         let conditions: Vec<StatusCondition> = [
             active.is_poisoned().then_some(StatusCondition::Poisoned),
             active.is_paralyzed().then_some(StatusCondition::Paralyzed),
@@ -320,11 +320,9 @@ fn marlon_effect(_: &mut StdRng, state: &mut State, action: &Action) {
 fn irida_effect(_: &mut StdRng, state: &mut State, action: &Action) {
     // Heal 40 damage from each of your Pokémon that has any Water Energy attached.
     debug!("Irida: Healing 40 damage from each Pokemon with Water Energy attached");
-    for pokemon in state.in_play_pokemon[action.actor].iter_mut().flatten() {
-        if pokemon.attached_energy.contains(&EnergyType::Water) {
-            pokemon.heal(40);
-        }
-    }
+    state.heal_each_pokemon(action.actor, 40, |pokemon| {
+        pokemon.attached_energy.contains(&EnergyType::Water)
+    });
 }
 
 fn pokemon_center_lady_effect(_: &mut StdRng, state: &mut State, action: &Action) {
@@ -493,9 +491,7 @@ fn team_effect(rng: &mut StdRng, state: &mut State, action: &Action) {
 
 fn lucky_ice_pop_outcomes(_state: &State, _acting_player: usize) -> Outcomes {
     let heads_mutation = Box::new(|_: &mut StdRng, state: &mut State, action: &Action| {
-        if let Some(active) = state.in_play_pokemon[action.actor][0].as_mut() {
-            active.heal(20);
-        }
+        state.heal_pokemon(action.actor, 0, 20);
         // Card was already discarded by wrap_with_common_logic, move it back to hand
         if let SimpleAction::Play { trainer_card } = &action.action {
             let card = Card::Trainer(trainer_card.clone());
@@ -510,9 +506,7 @@ fn lucky_ice_pop_outcomes(_state: &State, _acting_player: usize) -> Outcomes {
     });
 
     let tails_mutation = Box::new(|_: &mut StdRng, state: &mut State, action: &Action| {
-        if let Some(active) = state.in_play_pokemon[action.actor][0].as_mut() {
-            active.heal(20);
-        }
+        state.heal_pokemon(action.actor, 0, 20);
     });
 
     Outcomes::binary_coin(heads_mutation, tails_mutation)

@@ -166,7 +166,14 @@ impl PlayedCard {
         }
     }
 
-    pub(crate) fn heal(&mut self, amount: u32) {
+    /// Removes `amount` damage counters unconditionally.
+    ///
+    /// This is the *raw* primitive and it bypasses Heal Block (Claydol A3a 031). Healing effects
+    /// must go through `State::heal_pokemon` / `State::heal_each_pokemon`, which are the single
+    /// gate that Heal Block closes. Call this directly only for things that are not healing in the
+    /// rules sense — chiefly *moving* damage counters between Pokémon (Dusknoir's Shadow Void,
+    /// Brambleghast's Accept Pain), which Heal Block does not stop.
+    pub(crate) fn heal_raw(&mut self, amount: u32) {
         self.damage_counters = self.damage_counters.saturating_sub(amount);
     }
 

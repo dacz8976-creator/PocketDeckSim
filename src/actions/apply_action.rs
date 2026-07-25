@@ -504,12 +504,14 @@ fn apply_healing(
     amount: u32,
     cure_status: bool,
 ) {
-    let pokemon = state.in_play_pokemon[acting_player][position]
-        .as_mut()
-        .expect("Pokemon should be there if healing it");
-    pokemon.heal(amount);
+    // Heal Block stops the healing, but not the "and remove all Special Conditions" clause that
+    // some printings carry: curing a Special Condition is not healing.
+    state.heal_pokemon(acting_player, position, amount);
     if cure_status {
-        pokemon.cure_status_conditions();
+        state.in_play_pokemon[acting_player][position]
+            .as_mut()
+            .expect("Pokemon should be there if healing it")
+            .cure_status_conditions();
     }
 }
 
@@ -538,15 +540,9 @@ fn apply_heal_and_discard_energy(
     heal_amount: u32,
     discard_energies: &[EnergyType],
 ) {
-    let pokemon = state.in_play_pokemon[acting_player][position]
-        .as_mut()
-        .expect("Pokemon should be there if healing it");
-    let missing_hp = pokemon
-        .get_effective_total_hp()
-        .saturating_sub(pokemon.get_remaining_hp());
-    let healed = heal_amount.min(missing_hp);
-    pokemon.heal(heal_amount);
-
+    // "Heal X damage from 1 of your Pokémon ex. If you do, discard an Energy from it": under Heal
+    // Block nothing is healed, so the "if you do" clause must not fire either.
+    let healed = state.heal_pokemon(acting_player, position, heal_amount);
     if healed == 0 {
         return;
     }
@@ -565,7 +561,8 @@ fn apply_move_all_damage(actor: usize, state: &mut State, from: usize, to: usize
         let from_pokemon = state.in_play_pokemon[actor][from]
             .as_mut()
             .expect("Pokemon to move damage from should be there");
-        from_pokemon.heal(damage_to_move);
+        // Moving damage counters is not healing, so it deliberately bypasses Heal Block.
+        from_pokemon.heal_raw(damage_to_move);
 
         // Use handle_damage to ensure KO checks and other effects are triggered
         let targets = vec![(damage_to_move, actor, to)];
@@ -875,11 +872,7 @@ fn apply_eevee_bag_damage_boost(state: &mut State) {
 }
 
 fn apply_heal_all_eevee_evolutions(acting_player: usize, state: &mut State) {
-    for pokemon in state.in_play_pokemon[acting_player].iter_mut().flatten() {
-        if pokemon.evolved_from("Eevee") {
-            pokemon.heal(20);
-        }
-    }
+    state.heal_each_pokemon(acting_player, 20, |pokemon| pokemon.evolved_from("Eevee"));
 }
 
 // Test that when evolving a damanged pokemon, damage stays.
@@ -906,7 +899,7 @@ mod tests {
         base_played_card.attached_energy = vec![energy];
         state.in_play_pokemon[0][0] = Some(base_played_card.clone());
         let mut healthy_bench = base_played_card.clone();
-        healthy_bench.heal(30);
+        healthy_bench.heal_raw(30);
         healthy_bench.attached_energy = vec![energy, energy, energy];
         state.in_play_pokemon[0][2] = Some(healthy_bench);
         state.hands[0] = vec![primeape.clone(), primeape.clone()];

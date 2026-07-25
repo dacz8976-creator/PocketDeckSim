@@ -168,10 +168,7 @@ impl State {
                 && from_zone
             {
                 // Whenever you attach a Psychic Energy from your Energy Zone to this Pokémon, heal 20 damage from this Pokémon.
-                let pokemon = self.in_play_pokemon[actor][in_play_idx]
-                    .as_mut()
-                    .expect("Pokemon should be there if attaching energy to it");
-                pokemon.heal(20);
+                self.heal_pokemon(actor, in_play_idx, 20);
             }
         }
     }
