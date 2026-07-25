@@ -2,7 +2,9 @@ mod attacks;
 mod move_generation_abilities;
 mod move_generation_trainer;
 
-use crate::actions::{abilities::AbilityMechanic, get_ability_mechanic, Action, SimpleAction};
+use crate::actions::{
+    abilities::AbilityMechanic, get_in_play_ability_mechanic, Action, SimpleAction,
+};
 use crate::hooks::{can_evolve_into, can_retreat, contains_energy, get_retreat_cost};
 use crate::models::Card;
 use crate::stadiums::{
@@ -190,7 +192,7 @@ fn generate_hand_actions(state: &State) -> Vec<SimpleAction> {
                         .as_ref()
                         .is_some_and(|active| {
                             matches!(
-                                get_ability_mechanic(&active.card),
+                                get_in_play_ability_mechanic(state, active),
                                 Some(AbilityMechanic::CanEvolveOnFirstTurnIfActive)
                             )
                         });
@@ -207,12 +209,12 @@ fn generate_hand_actions(state: &State) -> Vec<SimpleAction> {
                             // Check if this pokemon has Boosted Evolution and is in active spot
                             let can_bypass_timing = i == 0
                                 && matches!(
-                                    get_ability_mechanic(&pokemon.card),
+                                    get_in_play_ability_mechanic(state, pokemon),
                                     Some(AbilityMechanic::CanEvolveOnFirstTurnIfActive)
                                 );
 
                             if (!pokemon.played_this_turn || can_bypass_timing)
-                                && can_evolve_into(hand_card, pokemon)
+                                && can_evolve_into(state, hand_card, pokemon)
                                 && can_evolve_at_position(state, current_player, i)
                             {
                                 actions.push(SimpleAction::Evolve {
@@ -267,7 +269,7 @@ fn has_opponent_aerodactyl_ex_primeval_law(state: &State, player: usize) -> bool
         .enumerate_in_play_pokemon(opponent)
         .any(|(_, pokemon)| {
             matches!(
-                get_ability_mechanic(&pokemon.card),
+                get_in_play_ability_mechanic(state, pokemon),
                 Some(AbilityMechanic::PreventOpponentActiveEvolution)
             )
         })
@@ -304,7 +306,7 @@ mod tests {
         }
         println!(
             "can_evolve_into result: {}",
-            can_evolve_into(&aerodactyl, &played_old_amber)
+            can_evolve_into(&state, &aerodactyl, &played_old_amber)
         );
 
         // Generate actions

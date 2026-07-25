@@ -2,6 +2,8 @@
 mod additional_ability_logic_test;
 #[path = "pokemon/alcremie_test.rs"]
 mod alcremie_test;
+#[path = "pokemon/alolan_muk_power_of_alchemy_test.rs"]
+mod alolan_muk_power_of_alchemy_test;
 #[path = "pokemon/alolan_sandslash_spike_armor_test.rs"]
 mod alolan_sandslash_spike_armor_test;
 #[path = "pokemon/altaria_dragon_arcana_test.rs"]
@@ -44,6 +46,8 @@ mod celebi_time_recall_test;
 mod chansey_blissey_test;
 #[path = "pokemon/charmeleon_ignition_test.rs"]
 mod charmeleon_ignition_test;
+#[path = "pokemon/claydol_heal_block_test.rs"]
+mod claydol_heal_block_test;
 #[path = "pokemon/comfey_flower_shield_test.rs"]
 mod comfey_flower_shield_test;
 #[path = "pokemon/corviknight_line_test.rs"]
@@ -52,6 +56,8 @@ mod corviknight_line_test;
 mod crawdaunt_unruly_claw_test;
 #[path = "pokemon/darkrai_ex_test.rs"]
 mod darkrai_ex_test;
+#[path = "pokemon/delcatty_search_for_friends_test.rs"]
+mod delcatty_search_for_friends_test;
 #[path = "pokemon/durant_test.rs"]
 mod durant_test;
 #[path = "pokemon/dusknoir_shadow_void_test.rs"]
@@ -74,6 +80,8 @@ mod flygon_ex_test;
 mod free_tier_effect_mapping_test;
 #[path = "pokemon/galarian_cursola_perish_body_test.rs"]
 mod galarian_cursola_perish_body_test;
+#[path = "pokemon/galarian_perrserker_dig_up_test.rs"]
+mod galarian_perrserker_dig_up_test;
 #[path = "pokemon/gallade_test.rs"]
 mod gallade_test;
 #[path = "pokemon/gardevoir_psy_turbo_test.rs"]
@@ -182,6 +190,8 @@ mod no_retreat_cost_abilities_test;
 mod passimian_ex_offload_pass_test;
 #[path = "pokemon/politoed_lordly_cheering_test.rs"]
 mod politoed_lordly_cheering_test;
+#[path = "pokemon/porygon_data_scan_test.rs"]
+mod porygon_data_scan_test;
 #[path = "pokemon/porygonz_cyberjack_test.rs"]
 mod porygonz_cyberjack_test;
 #[path = "pokemon/primarina_melodious_healing_test.rs"]
@@ -242,6 +252,8 @@ mod tinkaton_gigaton_hammer_test;
 mod typhlosion_fire_breath_test;
 #[path = "pokemon/tyranitar_energy_plunder_test.rs"]
 mod tyranitar_energy_plunder_test;
+#[path = "pokemon/unown_check_test.rs"]
+mod unown_check_test;
 #[path = "pokemon/unown_guard_test.rs"]
 mod unown_guard_test;
 #[path = "pokemon/unown_power_test.rs"]

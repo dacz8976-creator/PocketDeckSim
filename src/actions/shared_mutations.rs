@@ -3,7 +3,8 @@ use std::cmp::min;
 
 use crate::{
     actions::{
-        apply_action_helpers::Mutations, apply_evolve, apply_place_card, outcomes::Outcomes,
+        abilities::DiscardSearchKind, apply_action_helpers::Mutations, apply_evolve,
+        apply_place_card, outcomes::Outcomes,
     },
     combinatorics::generate_combinations,
     hooks::can_evolve_into,
@@ -65,6 +66,45 @@ pub(crate) fn item_search_outcomes(acting_player: usize, state: &State) -> Outco
 
 pub(crate) fn tool_search_outcomes(acting_player: usize, state: &State) -> Outcomes {
     card_search_outcomes_with_filter(acting_player, state, |card: &&Card| is_tool_card(card))
+}
+
+/// "Put `amount` random `card_kind` cards from your discard pile into your hand" (Galarian
+/// Perrserker's Dig Up). The discard-pile mirror of `card_search_outcomes_with_filter_multiple`:
+/// one equally likely branch per unordered combination the Ability could pull, so the search bots
+/// price the real distribution. Takes fewer cards than asked for when the pile holds fewer, and
+/// degrades to a no-op when it holds none — unlike the deck searches there is nothing to shuffle.
+pub(crate) fn discard_search_outcomes(
+    acting_player: usize,
+    state: &State,
+    card_kind: DiscardSearchKind,
+    amount: u8,
+) -> Outcomes {
+    let eligible: Vec<Card> = state.discard_piles[acting_player]
+        .iter()
+        .filter(|card| card_kind.matches(card))
+        .cloned()
+        .collect();
+
+    let draw_count = min(amount as usize, eligible.len());
+    if draw_count == 0 {
+        return Outcomes::single_fn(|_, _, _| {});
+    }
+
+    let combinations = generate_combinations(&eligible, draw_count);
+    let num_outcomes = combinations.len();
+    let probabilities = vec![1.0 / (num_outcomes as f64); num_outcomes];
+    let mutations: Mutations = combinations
+        .into_iter()
+        .map(|combo| -> crate::actions::apply_action_helpers::Mutation {
+            Box::new(move |_, state, action| {
+                for card in &combo {
+                    state.transfer_card_from_discard_to_hand(action.actor, card);
+                }
+            })
+        })
+        .collect();
+
+    Outcomes::from_parts(probabilities, mutations)
 }
 
 pub(crate) fn gladion_search_outcomes(acting_player: usize, state: &State) -> Outcomes {
@@ -190,7 +230,7 @@ pub(crate) fn quick_growth_evolution_outcomes_for_player(player: usize, state: &
     let evolution_cards: Vec<Card> = state.decks[player]
         .cards
         .iter()
-        .filter(|card| can_evolve_into(card, active))
+        .filter(|card| can_evolve_into(state, card, active))
         .cloned()
         .collect();
 

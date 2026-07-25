@@ -1,6 +1,6 @@
 use crate::{
     actions::abilities::{AbilityMechanic, DeckSearchKind},
-    actions::{ability_mechanic_from_effect, SimpleAction},
+    actions::{ability_mechanic_from_effect, basic_abilities_suppressed, SimpleAction},
     hooks::is_ultra_beast,
     models::{EnergyType, PlayedCard},
     tools::is_tool_card,
@@ -25,6 +25,14 @@ pub(crate) fn generate_ability_actions(state: &State) -> Vec<SimpleAction> {
 
 fn can_use_ability(state: &State, (in_play_index, card): (usize, &PlayedCard)) -> bool {
     if card.card.get_ability().is_none() {
+        return false;
+    }
+
+    // Power of Alchemy (Alolan Muk): a Basic Pokémon in play "has no Abilities", so its activated
+    // Ability disappears from move generation entirely. Checked against the shared suppression
+    // predicate rather than `get_in_play_ability_mechanic`, so that a suppressed Ability is still
+    // distinguishable from an *unimplemented* one — which must keep panicking below.
+    if basic_abilities_suppressed(state) && card.card.is_basic() {
         return false;
     }
 
@@ -65,6 +73,8 @@ fn can_use_ability_by_mechanic(
             *require_active,
             *require_tool_attached,
         ),
+        AbilityMechanic::SuppressBasicAbilities => false, // Passive ability
+        AbilityMechanic::PreventAllHealing => false,      // Passive ability
         AbilityMechanic::HealOneYourPokemonExAndDiscardRandomEnergy { .. } => {
             can_use_heal_one_your_pokemon_ex_and_discard_random_energy(state, card)
         }
@@ -123,6 +133,9 @@ fn can_use_ability_by_mechanic(
         AbilityMechanic::StartTurnRandomPokemonToHand { .. } => false,
         AbilityMechanic::SearchRandomCardFromDeck { card_kind } => {
             !card.ability_used && deck_has_searchable_card(state, *card_kind)
+        }
+        AbilityMechanic::LookAtTopCardOfDeck { either_player } => {
+            can_look_at_top_card(state, card, *either_player)
         }
         AbilityMechanic::MoveDamageFromOneYourPokemonToThisPokemon => {
             can_use_dusknoir_shadow_void(state, _in_play_index)
@@ -188,6 +201,7 @@ fn can_use_ability_by_mechanic(
         AbilityMechanic::AttachEnergyFromZoneToActiveTypedOnEvolve { .. } => false,
         AbilityMechanic::DamageOpponentActiveOnEvolve { .. } => false,
         AbilityMechanic::DiscardRandomEnergyFromOpponentActiveOnEvolve => false,
+        AbilityMechanic::PutCardsFromDiscardToHandOnEvolve { .. } => false,
         AbilityMechanic::CanEvolveIntoEeveeEvolution => false,
         AbilityMechanic::CanEvolveOnFirstTurnIfActive => false,
         AbilityMechanic::CounterattackDamage { .. } => false,
@@ -336,6 +350,19 @@ fn deck_has_searchable_card(state: &State, card_kind: DeckSearchKind) -> bool {
         DeckSearchKind::Pokemon => state.iter_deck_pokemon(player).next().is_some(),
         DeckSearchKind::Tool => state.decks[player].cards.iter().any(is_tool_card),
     }
+}
+
+/// "Look at the top card of <someone's> deck" needs a top card to exist. Data Scan can only look
+/// at its controller's deck; CHECK ("choose either player") is satisfied by either deck, so it
+/// stays usable when only the opponent has cards left. Beyond that the ability changes nothing, so
+/// the only other gate is the printed "Once during your turn".
+fn can_look_at_top_card(state: &State, card: &PlayedCard, either_player: bool) -> bool {
+    if card.ability_used {
+        return false;
+    }
+    let opponent = (state.current_player + 1) % 2;
+    !state.decks[state.current_player].cards.is_empty()
+        || (either_player && !state.decks[opponent].cards.is_empty())
 }
 
 /// Energy Plunder is only worth its once-per-turn use if some *other* Pokémon of yours is holding

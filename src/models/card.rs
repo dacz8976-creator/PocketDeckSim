@@ -3,10 +3,7 @@ use std::hash::{Hash, Hasher};
 
 use serde::{Deserialize, Serialize};
 
-use crate::{
-    actions::{abilities::AbilityMechanic, has_ability_mechanic},
-    card_ids::CardId,
-};
+use crate::card_ids::CardId;
 
 /// Represents the type of energy.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize, PartialOrd, Ord)]
@@ -249,26 +246,14 @@ impl Card {
         }
     }
 
-    /// Check if this card can evolve into the given evolution card
-    /// This handles special evolution rules like Eevee ex's Veevee 'volve ability
+    /// Whether `evolution_card` evolves from this card by the *printed* rule (name match).
+    ///
+    /// Ability-granted evolution (Eevee's Veevee 'volve) is deliberately not handled here: it
+    /// depends on the board, because Power of Alchemy switches off Basic Pokémon's Abilities.
+    /// Use `hooks::can_evolve_into` for a Pokémon that is in play.
     pub fn can_evolve_into(&self, evolution_card: &Card) -> bool {
-        if let Card::Pokemon(evolution_pokemon) = evolution_card {
-            if let Some(evolves_from) = &evolution_pokemon.evolves_from {
-                // Normal evolution: the evolution card evolves from this card's name
-                if self.get_name() == *evolves_from {
-                    return true;
-                }
-
-                // Special case: Eevee ex's Veevee 'volve ability
-                // Allows Eevee ex to evolve into any Pokemon that evolves from "Eevee"
-                if has_ability_mechanic(self, &AbilityMechanic::CanEvolveIntoEeveeEvolution)
-                    && evolves_from == "Eevee"
-                {
-                    return true;
-                }
-            }
-        }
-        false
+        matches!(evolution_card, Card::Pokemon(evolution_pokemon)
+            if evolution_pokemon.evolves_from.as_deref() == Some(self.get_name().as_str()))
     }
 }
 

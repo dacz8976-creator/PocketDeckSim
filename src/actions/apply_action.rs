@@ -4,7 +4,7 @@ use log::debug;
 use rand::{distributions::WeightedIndex, prelude::Distribution, rngs::StdRng};
 
 use crate::{
-    actions::effect_ability_mechanic_map::{get_ability_mechanic, has_ability_mechanic},
+    actions::effect_ability_mechanic_map::get_entering_play_ability_mechanic,
     actions::{
         abilities::AbilityMechanic,
         apply_abilities_action::forecast_ability,
@@ -28,7 +28,7 @@ use super::{
     apply_stadium_action::{self, forecast_use_stadium},
     apply_trainer_action::forecast_trainer_action,
     outcomes::Outcomes,
-    Action, SimpleAction,
+    shared_mutations, Action, SimpleAction,
 };
 
 /// Main function to mutate the state based on the action. It forecasts the possible outcomes
@@ -72,6 +72,7 @@ pub fn forecast_action(state: &State, action: &Action) -> Outcomes {
         | SimpleAction::DiscardToolFromPokemon { .. }
         | SimpleAction::DiscardActiveStadium
         | SimpleAction::BenchOpponentFromDiscard { .. }
+        | SimpleAction::PutCardFromDiscardToHand { .. }
         | SimpleAction::DiscardRandomOpponentActiveEnergy
         | SimpleAction::ApplyStatusToOpponentActive { .. }
         | SimpleAction::Noop => forecast_deterministic_action(),
@@ -124,6 +125,9 @@ pub fn forecast_action(state: &State, action: &Action) -> Outcomes {
             energy_type,
             count,
         } => forecast_attach_typed_from_discard(*in_play_idx, *energy_type, *count),
+        SimpleAction::PutRandomCardsFromDiscardToHand { card_kind, amount } => {
+            shared_mutations::discard_search_outcomes(action.actor, state, *card_kind, *amount)
+        }
         SimpleAction::SadaAttach { assignments } => forecast_sada_attach(assignments),
         SimpleAction::UseStadium => forecast_use_stadium(state, action.actor),
         // acting_player is not passed here, because there is only 1 turn to end. The current turn.
@@ -350,6 +354,9 @@ fn apply_deterministic_action(state: &mut State, action: &Action) {
                 state.discard_piles[owner.unwrap_or(action.actor)].push(stadium);
             }
         }
+        SimpleAction::PutCardFromDiscardToHand { card } => {
+            state.transfer_card_from_discard_to_hand(action.actor, card)
+        }
         SimpleAction::DiscardRandomOpponentActiveEnergy => {
             let opponent = (action.actor + 1) % 2;
             if let Some(energy) = state.get_active(opponent).attached_energy.last().copied() {
@@ -446,7 +453,9 @@ pub(crate) fn apply_place_card(
     state.in_play_pokemon[actor][index] = Some(played_card);
     state.refresh_hp_bonuses_all();
     // SoothingWind (Ogerpon ex) / Flower Shield (Comfey): cure status conditions on entry.
-    if let Some(AbilityMechanic::SoothingWind { energy_type }) = get_ability_mechanic(card) {
+    if let Some(AbilityMechanic::SoothingWind { energy_type }) =
+        get_entering_play_ability_mechanic(state, card)
+    {
         debug!("SoothingWind: Pokémon entered play – curing status conditions for player {actor}");
         state.apply_soothing_wind_for_player(actor, energy_type.as_ref());
     }
@@ -455,7 +464,10 @@ pub(crate) fn apply_place_card(
     } else {
         state.remove_card_from_hand(actor, card);
         let placed_in_bench = index != 0;
-        if placed_in_bench && has_ability_mechanic(card, &AbilityMechanic::InfiltratingInspection) {
+        if placed_in_bench
+            && get_entering_play_ability_mechanic(state, card)
+                == Some(&AbilityMechanic::InfiltratingInspection)
+        {
             debug!("Misdreavus's Infiltrating Inspection: Opponent's hand is revealed (no-op in AI context)");
         }
         if placed_in_bench {
@@ -512,12 +524,14 @@ fn apply_healing(
     amount: u32,
     cure_status: bool,
 ) {
-    let pokemon = state.in_play_pokemon[acting_player][position]
-        .as_mut()
-        .expect("Pokemon should be there if healing it");
-    pokemon.heal(amount);
+    // Heal Block stops the healing, but not the "and remove all Special Conditions" clause that
+    // some printings carry: curing a Special Condition is not healing.
+    state.heal_pokemon(acting_player, position, amount);
     if cure_status {
-        pokemon.cure_status_conditions();
+        state.in_play_pokemon[acting_player][position]
+            .as_mut()
+            .expect("Pokemon should be there if healing it")
+            .cure_status_conditions();
     }
 }
 
@@ -546,15 +560,9 @@ fn apply_heal_and_discard_energy(
     heal_amount: u32,
     discard_energies: &[EnergyType],
 ) {
-    let pokemon = state.in_play_pokemon[acting_player][position]
-        .as_mut()
-        .expect("Pokemon should be there if healing it");
-    let missing_hp = pokemon
-        .get_effective_total_hp()
-        .saturating_sub(pokemon.get_remaining_hp());
-    let healed = heal_amount.min(missing_hp);
-    pokemon.heal(heal_amount);
-
+    // "Heal X damage from 1 of your Pokémon ex. If you do, discard an Energy from it": under Heal
+    // Block nothing is healed, so the "if you do" clause must not fire either.
+    let healed = state.heal_pokemon(acting_player, position, heal_amount);
     if healed == 0 {
         return;
     }
@@ -570,10 +578,12 @@ fn apply_heal_and_cure_conditions(
     amount: u32,
     conditions: &[StatusCondition],
 ) {
+    // Healing goes through `State::heal_pokemon` so Claydol's Heal Block suppresses it; the
+    // status cure is not healing and still applies.
+    state.heal_pokemon(acting_player, position, amount);
     let pokemon = state.in_play_pokemon[acting_player][position]
         .as_mut()
         .expect("Pokemon should be there if healing it");
-    pokemon.heal(amount);
     for condition in conditions {
         pokemon.clear_status_condition(*condition);
     }
@@ -628,7 +638,8 @@ fn apply_move_damage_to_opponent_active(
     state.in_play_pokemon[actor][from_in_play_idx]
         .as_mut()
         .expect("Pokemon to move damage from should be there")
-        .heal(damage_to_move);
+        // Moving damage counters is not healing, so it deliberately bypasses Heal Block.
+        .heal_raw(damage_to_move);
     handle_damage(
         state,
         (actor, from_in_play_idx),
@@ -650,7 +661,8 @@ fn apply_move_all_damage(actor: usize, state: &mut State, from: usize, to: usize
         let from_pokemon = state.in_play_pokemon[actor][from]
             .as_mut()
             .expect("Pokemon to move damage from should be there");
-        from_pokemon.heal(damage_to_move);
+        // Moving damage counters is not healing, so it deliberately bypasses Heal Block.
+        from_pokemon.heal_raw(damage_to_move);
 
         // Use handle_damage to ensure KO checks and other effects are triggered
         let targets = vec![(damage_to_move, actor, to)];
@@ -960,11 +972,7 @@ fn apply_eevee_bag_damage_boost(state: &mut State) {
 }
 
 fn apply_heal_all_eevee_evolutions(acting_player: usize, state: &mut State) {
-    for pokemon in state.in_play_pokemon[acting_player].iter_mut().flatten() {
-        if pokemon.evolved_from("Eevee") {
-            pokemon.heal(20);
-        }
-    }
+    state.heal_each_pokemon(acting_player, 20, |pokemon| pokemon.evolved_from("Eevee"));
 }
 
 // Test that when evolving a damanged pokemon, damage stays.
@@ -991,7 +999,7 @@ mod tests {
         base_played_card.attached_energy = vec![energy];
         state.in_play_pokemon[0][0] = Some(base_played_card.clone());
         let mut healthy_bench = base_played_card.clone();
-        healthy_bench.heal(30);
+        healthy_bench.heal_raw(30);
         healthy_bench.attached_energy = vec![energy, energy, energy];
         state.in_play_pokemon[0][2] = Some(healthy_bench);
         state.hands[0] = vec![primeape.clone(), primeape.clone()];

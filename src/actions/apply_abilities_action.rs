@@ -46,6 +46,10 @@ fn forecast_ability_by_mechanic(
             energy_type,
         } => heal_all_your_pokemon(*amount, *energy_type),
         AbilityMechanic::HealOneYourPokemon { amount, .. } => heal_one_your_pokemon(*amount),
+        AbilityMechanic::SuppressBasicAbilities => {
+            panic!("SuppressBasicAbilities is a passive ability")
+        }
+        AbilityMechanic::PreventAllHealing => panic!("PreventAllHealing is a passive ability"),
         AbilityMechanic::HealOneYourPokemonExAndDiscardRandomEnergy { amount } => {
             heal_one_your_pokemon_ex_and_discard_random_energy(*amount)
         }
@@ -162,6 +166,7 @@ fn forecast_ability_by_mechanic(
         AbilityMechanic::SearchRandomCardFromDeck { card_kind } => {
             search_random_card_from_deck(action.actor, state, *card_kind)
         }
+        AbilityMechanic::LookAtTopCardOfDeck { .. } => look_at_top_card_of_deck(),
         AbilityMechanic::MoveDamageFromOneYourPokemonToThisPokemon => {
             Outcomes::single(dusknoir_shadow_void(in_play_idx))
         }
@@ -284,6 +289,9 @@ fn forecast_ability_by_mechanic(
         AbilityMechanic::DiscardRandomEnergyFromOpponentActiveOnEvolve => {
             panic!("DiscardRandomEnergyFromOpponentActiveOnEvolve is triggered on evolve")
         }
+        AbilityMechanic::PutCardsFromDiscardToHandOnEvolve { .. } => {
+            panic!("PutCardsFromDiscardToHandOnEvolve is triggered on evolve")
+        }
         AbilityMechanic::CanEvolveIntoEeveeEvolution => {
             panic!("CanEvolveIntoEeveeEvolution is a passive ability")
         }
@@ -376,13 +384,22 @@ fn search_random_card_from_deck(
     }
 }
 
+/// Data Scan / CHECK: "look at the top card of <a> deck".
+///
+/// Deliberately empty. Looking at a card reveals information to a human player, and deckgym's
+/// players already forecast over the full deck contents, so there is nothing to model: the ability
+/// must not draw, reorder or shuffle anything. The only observable consequence is the
+/// `ability_used` flag that `wrap_with_common_logic` sets for every `UseAbility`, which is what
+/// enforces the printed "Once during your turn".
+fn look_at_top_card_of_deck() -> Outcomes {
+    Outcomes::single_fn(|_rng, _state, _action| {})
+}
+
 fn heal_all_your_pokemon(amount: u32, energy_type: Option<EnergyType>) -> Outcomes {
     Outcomes::single_fn(move |_rng, state, action| {
-        for pokemon in state.in_play_pokemon[action.actor].iter_mut().flatten() {
-            if energy_type.is_none_or(|required| pokemon.get_energy_type() == Some(required)) {
-                pokemon.heal(amount);
-            }
-        }
+        state.heal_each_pokemon(action.actor, amount, |pokemon| {
+            energy_type.is_none_or(|required| pokemon.get_energy_type() == Some(required))
+        });
     })
 }
 
@@ -644,14 +661,14 @@ fn coin_flip_status_opponent_active(status: StatusCondition) -> Outcomes {
 
 fn heal_active_your_pokemon(amount: u32) -> Outcomes {
     Outcomes::single_fn(move |_rng, state, action| {
-        let active = state.get_active_mut(action.actor);
-        active.heal(amount);
+        state.heal_pokemon(action.actor, 0, amount);
     })
 }
 
 fn move_fixed_damage_from_active_to_this_benched(self_idx: usize, amount: u32) -> Outcomes {
     Outcomes::single_fn(move |_rng, state, action| {
-        state.get_active_mut(action.actor).heal(amount);
+        // Accept Pain *moves* damage counters rather than healing, so it bypasses Heal Block.
+        state.get_active_mut(action.actor).heal_raw(amount);
         let targets = vec![(amount, action.actor, self_idx)];
         handle_damage(state, (action.actor, 0), &targets, false, None);
     })
