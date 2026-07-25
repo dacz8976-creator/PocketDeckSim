@@ -177,9 +177,12 @@ pub fn trainer_move_generation_implementation(
             can_play_flame_patch(state, trainer_card)
         }
         CardId::B1225Copycat | CardId::B1270Copycat => can_play_trainer(state, trainer_card),
-        CardId::A2b069Iono | CardId::A2b088Iono | CardId::A4b340Iono | CardId::A4b341Iono => {
-            can_play_trainer(state, trainer_card)
-        }
+        CardId::A2b069Iono
+        | CardId::A2b088Iono
+        | CardId::A4b340Iono
+        | CardId::A4b341Iono
+        | CardId::B2a089Iono
+        | CardId::B2a106Iono => can_play_trainer(state, trainer_card),
         CardId::B1221Marlon | CardId::B1266Marlon => can_play_marlon(state, trainer_card),
         CardId::B1223May | CardId::B1268May => can_play_trainer(state, trainer_card),
         CardId::B1224Fantina | CardId::B1269Fantina => can_play_trainer(state, trainer_card),

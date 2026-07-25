@@ -145,9 +145,12 @@ pub fn forecast_trainer_action(
         }
         CardId::A2153Volkner | CardId::A2193Volkner => Outcomes::single_fn(volkner_effect),
         CardId::B1225Copycat | CardId::B1270Copycat => Outcomes::single_fn(copycat_effect),
-        CardId::A2b069Iono | CardId::A2b088Iono | CardId::A4b340Iono | CardId::A4b341Iono => {
-            Outcomes::single_fn(iono_effect)
-        }
+        CardId::A2b069Iono
+        | CardId::A2b088Iono
+        | CardId::A4b340Iono
+        | CardId::A4b341Iono
+        | CardId::B2a089Iono
+        | CardId::B2a106Iono => Outcomes::single_fn(iono_effect),
         CardId::B1221Marlon | CardId::B1266Marlon => Outcomes::single_fn(marlon_effect),
         CardId::B1223May | CardId::B1268May => may_effect(acting_player, state),
         CardId::B1224Fantina | CardId::B1269Fantina => Outcomes::single_fn(fantina_effect),

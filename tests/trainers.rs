@@ -6,6 +6,8 @@ mod cynthia_test;
 mod elesa_test;
 #[path = "trainers/field_blower_test.rs"]
 mod field_blower_test;
+#[path = "trainers/iono_test.rs"]
+mod iono_test;
 #[path = "trainers/iris_trainer_test.rs"]
 mod iris_trainer_test;
 #[path = "trainers/juliana_test.rs"]
