@@ -195,7 +195,9 @@ fn forecast_ability_by_mechanic(
         AbilityMechanic::SwitchOutOpponentActiveToBench { .. } => {
             switch_out_opponent_active_to_bench()
         }
-        AbilityMechanic::CoinFlipSleepOpponentActive => coin_flip_sleep_opponent_active(),
+        AbilityMechanic::CoinFlipStatusOpponentActive { status } => {
+            coin_flip_status_opponent_active(*status)
+        }
         AbilityMechanic::DiscardFromHandToDrawCard => discard_from_hand_to_draw_card(),
         AbilityMechanic::ImmuneToStatusConditions => {
             panic!("ImmuneToStatusConditions is a passive ability")
@@ -561,11 +563,16 @@ fn active_special_conditions(active: &PlayedCard) -> Vec<StatusCondition> {
     .collect()
 }
 
-fn coin_flip_sleep_opponent_active() -> Outcomes {
+/// "Flip a coin. If heads, your opponent's Active Pokémon is now <condition>."
+///
+/// Built with `Outcomes::binary_coin` rather than a single averaged mutation so the coin stays a
+/// real 50/50 branch with coin metadata attached, which is what lets the search bots price the
+/// gamble instead of seeing an expected value.
+fn coin_flip_status_opponent_active(status: StatusCondition) -> Outcomes {
     Outcomes::binary_coin(
-        Box::new(|_, state, action| {
+        Box::new(move |_, state, action| {
             let opponent = (action.actor + 1) % 2;
-            state.apply_status_condition(opponent, 0, StatusCondition::Asleep);
+            state.apply_status_condition(opponent, 0, status);
         }),
         Box::new(|_, _, _| {}),
     )

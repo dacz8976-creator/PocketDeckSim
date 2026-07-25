@@ -1,4 +1,4 @@
-use crate::models::EnergyType;
+use crate::models::{EnergyType, StatusCondition};
 
 #[derive(Debug, Clone, PartialEq)]
 pub enum AbilityMechanic {
@@ -150,7 +150,12 @@ pub enum AbilityMechanic {
     EndTurnHealSelfIfActive {
         amount: u32,
     },
-    CoinFlipSleepOpponentActive,
+    /// Hypno's Sleep Pendulum and Grafaiai's Poison Coating: "Once during your turn, you may flip
+    /// a coin. If heads, your opponent's Active Pokémon is now <condition>." One parameterised
+    /// mechanic covers every Special Condition printed on this template.
+    CoinFlipStatusOpponentActive {
+        status: StatusCondition,
+    },
     DiscardFromHandToDrawCard,
     ImmuneToStatusConditions,
     /// Passive ability shared by Teal Mask Ogerpon ex (Soothing Wind) and Comfey (Flower Shield):

@@ -70,6 +70,8 @@ mod gallade_test;
 mod gardevoir_psy_turbo_test;
 #[path = "pokemon/glimmora_point_denial_test.rs"]
 mod glimmora_point_denial_test;
+#[path = "pokemon/grafaiai_poison_coating_test.rs"]
+mod grafaiai_poison_coating_test;
 #[path = "pokemon/grovyle_slicing_snipe_test.rs"]
 mod grovyle_slicing_snipe_test;
 #[path = "pokemon/growlithe_puppy_pile_test.rs"]

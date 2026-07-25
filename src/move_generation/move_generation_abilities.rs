@@ -126,7 +126,7 @@ fn can_use_ability_by_mechanic(
         AbilityMechanic::CheckupDamageToOpponentActive { .. } => false,       // Passive ability
         AbilityMechanic::CheckupDamageToAllOpponentPokemon { .. } => false,   // Passive ability
         AbilityMechanic::BadDreamsEndOfTurn { .. } => false,                  // Passive ability
-        AbilityMechanic::CoinFlipSleepOpponentActive => !card.ability_used,
+        AbilityMechanic::CoinFlipStatusOpponentActive { .. } => !card.ability_used,
         AbilityMechanic::DiscardEnergyToIncreaseTypeDamage { discard_energy, .. } => {
             !card.ability_used && card.attached_energy.contains(discard_energy)
         }
