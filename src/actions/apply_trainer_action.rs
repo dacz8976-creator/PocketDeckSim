@@ -8,8 +8,9 @@ use crate::{
     actions::{
         apply_evolve, handle_knockouts,
         shared_mutations::{
-            card_search_outcomes_with_filter_multiple, gladion_search_outcomes,
-            item_search_outcomes, pokemon_search_outcomes, tool_search_outcomes,
+            card_search_outcomes_with_filter_multiple, discard_search_outcomes_with_filter,
+            gladion_search_outcomes, item_search_outcomes, pokemon_search_outcomes,
+            tool_search_outcomes,
         },
     },
     card_ids::CardId,
@@ -21,7 +22,7 @@ use crate::{
     effects::{DamageReductionScope, TurnEffect},
     hooks::{get_stage, is_ancient_pokemon, is_future_pokemon, is_ultra_beast},
     models::{Card, EnergyType, StatusCondition, TrainerCard, TrainerType},
-    tools::{enumerate_tool_choices, is_tool_effect_implemented},
+    tools::{enumerate_tool_choices, is_tool_card, is_tool_effect_implemented},
     State,
 };
 
@@ -140,6 +141,18 @@ pub fn forecast_trainer_action(
         CardId::A1226LtSurge | CardId::A1273LtSurge => Outcomes::single_fn(lt_surge_effect),
         CardId::B2151Juggler | CardId::B2192Juggler => Outcomes::single_fn(juggler_effect),
         CardId::A3152Lana | CardId::A3194Lana => Outcomes::single_fn(lana_effect),
+        CardId::A2151TeamGalacticGrunt | CardId::A2191TeamGalacticGrunt => {
+            card_search_outcomes_with_filter_multiple(acting_player, state, 1, |card| {
+                matches!(card.get_name().as_str(), "Glameow" | "Stunky" | "Croagunk")
+            })
+        }
+        CardId::A4a070TravelingMerchant | CardId::A4a084TravelingMerchant => {
+            traveling_merchant_effect(acting_player, state)
+        }
+        CardId::A4159Fisher | CardId::A4199Fisher => fisher_outcomes(),
+        CardId::A3143FishingNet => {
+            discard_search_outcomes_with_filter(acting_player, state, is_basic_water_pokemon)
+        }
         CardId::A1a066BuddingExpeditioner | CardId::A1a080BuddingExpeditioner => {
             Outcomes::single_fn(budding_expeditioner_effect)
         }
@@ -908,6 +921,72 @@ fn gather_bench_energy_onto_active(
         .get_active_mut(player)
         .attached_energy
         .extend(gathered);
+}
+
+/// Fishing Net's target predicate: "a random Basic [W] Pokémon from your discard pile".
+fn is_basic_water_pokemon(card: &Card) -> bool {
+    card.is_basic() && card.get_type() == Some(EnergyType::Water)
+}
+
+/// Fisher's target predicate: "a [W] Pokémon ... from your discard pile" (any stage).
+fn is_water_pokemon(card: &Card) -> bool {
+    matches!(card, Card::Pokemon(_)) && card.get_type() == Some(EnergyType::Water)
+}
+
+fn traveling_merchant_effect(acting_player: usize, state: &State) -> Outcomes {
+    // Look at the top 4 cards of your deck. Put all Pokémon Tool cards you find there into your
+    // hand. Shuffle the other cards back into your deck. Modelled exactly like Sightseer: the deck
+    // order is hidden, so every 4-card subset is an equally likely "top 4".
+    let deck_cards: Vec<Card> = state.decks[acting_player].cards.to_vec();
+    let look_count = min(4, deck_cards.len());
+
+    if look_count == 0 {
+        return Outcomes::single_fn(|_, _, _| {});
+    }
+
+    let top_combinations = generate_combinations(&deck_cards, look_count);
+    let num_outcomes = top_combinations.len();
+    let probabilities = vec![1.0 / num_outcomes as f64; num_outcomes];
+    let mut outcomes: Mutations = vec![];
+
+    for top_cards in top_combinations {
+        outcomes.push(Box::new(move |rng, state, _action| {
+            for card in &top_cards {
+                if is_tool_card(card) {
+                    state.transfer_card_from_deck_to_hand(acting_player, card);
+                }
+            }
+            state.decks[acting_player].shuffle(false, rng);
+        }));
+    }
+
+    Outcomes::from_parts(probabilities, outcomes)
+}
+
+fn fisher_outcomes() -> Outcomes {
+    // Flip 3 coins. For each heads, a [W] Pokémon is chosen at random from your discard pile and
+    // put into your hand. `binomial_by_heads` keeps the coins visible to the search bots so they
+    // price the flips instead of seeing an expected value.
+    Outcomes::binomial_by_heads(3, move |heads| {
+        Box::new(
+            move |rng: &mut StdRng, state: &mut State, action: &Action| {
+                for _ in 0..heads {
+                    let candidates: Vec<usize> = state.discard_piles[action.actor]
+                        .iter()
+                        .enumerate()
+                        .filter(|(_, card)| is_water_pokemon(card))
+                        .map(|(idx, _)| idx)
+                        .collect();
+                    if candidates.is_empty() {
+                        break;
+                    }
+                    let picked = candidates[rng.gen_range(0..candidates.len())];
+                    let card = state.discard_piles[action.actor].remove(picked);
+                    state.hands[action.actor].push(card);
+                }
+            },
+        )
+    })
 }
 
 fn lana_effect(_: &mut StdRng, state: &mut State, action: &Action) {

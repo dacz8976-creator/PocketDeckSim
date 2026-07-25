@@ -148,6 +148,14 @@ pub fn trainer_move_generation_implementation(
         CardId::A1226LtSurge | CardId::A1273LtSurge => can_play_lt_surge(state, trainer_card),
         CardId::B2151Juggler | CardId::B2192Juggler => can_play_juggler(state, trainer_card),
         CardId::A3152Lana | CardId::A3194Lana => can_play_lana(state, trainer_card),
+        CardId::A2151TeamGalacticGrunt | CardId::A2191TeamGalacticGrunt => {
+            can_play_team_galactic_grunt(state, trainer_card)
+        }
+        CardId::A4a070TravelingMerchant | CardId::A4a084TravelingMerchant => {
+            can_play_trainer(state, trainer_card)
+        }
+        CardId::A4159Fisher | CardId::A4199Fisher => can_play_fisher(state, trainer_card),
+        CardId::A3143FishingNet => can_play_fishing_net(state, trainer_card),
         CardId::A1a066BuddingExpeditioner | CardId::A1a080BuddingExpeditioner => {
             can_play_budding_expeditioner(state, trainer_card)
         }
@@ -940,6 +948,46 @@ fn can_play_whitney(state: &State, trainer_card: &TrainerCard) -> Option<Vec<Sim
         cannot_play_trainer()
     } else {
         can_play_trainer(state, trainer_card)
+    }
+}
+
+/// Check if Team Galactic Grunt can be played (requires a Glameow, Stunky or Croagunk in the deck)
+fn can_play_team_galactic_grunt(
+    state: &State,
+    trainer_card: &TrainerCard,
+) -> Option<Vec<SimpleAction>> {
+    let has_target = state.decks[state.current_player]
+        .cards
+        .iter()
+        .any(|card| matches!(card.get_name().as_str(), "Glameow" | "Stunky" | "Croagunk"));
+    if has_target {
+        can_play_trainer(state, trainer_card)
+    } else {
+        cannot_play_trainer()
+    }
+}
+
+/// Check if Fisher can be played (requires at least one [W] Pokémon in the discard pile)
+fn can_play_fisher(state: &State, trainer_card: &TrainerCard) -> Option<Vec<SimpleAction>> {
+    let has_target = state.discard_piles[state.current_player]
+        .iter()
+        .any(|card| matches!(card, Card::Pokemon(_)) && card.get_type() == Some(EnergyType::Water));
+    if has_target {
+        can_play_trainer(state, trainer_card)
+    } else {
+        cannot_play_trainer()
+    }
+}
+
+/// Check if Fishing Net can be played (requires a Basic [W] Pokémon in the discard pile)
+fn can_play_fishing_net(state: &State, trainer_card: &TrainerCard) -> Option<Vec<SimpleAction>> {
+    let has_target = state.discard_piles[state.current_player]
+        .iter()
+        .any(|card| card.is_basic() && card.get_type() == Some(EnergyType::Water));
+    if has_target {
+        can_play_trainer(state, trainer_card)
+    } else {
+        cannot_play_trainer()
     }
 }
 

@@ -2,6 +2,8 @@
 mod acerola_test;
 #[path = "trainers/barry_test.rs"]
 mod barry_test;
+#[path = "trainers/card_fetch_trainers_test.rs"]
+mod card_fetch_trainers_test;
 #[path = "trainers/cynthia_test.rs"]
 mod cynthia_test;
 #[path = "trainers/damage_reduction_trainers_test.rs"]
