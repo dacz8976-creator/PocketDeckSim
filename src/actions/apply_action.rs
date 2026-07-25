@@ -429,7 +429,7 @@ pub(crate) fn apply_place_card(
 ) {
     let played_card = to_playable_card(card, true);
     state.in_play_pokemon[actor][index] = Some(played_card);
-    state.refresh_starting_plains_bonus_for_idx(actor, index);
+    state.refresh_hp_bonuses_all();
     // SoothingWind (Ogerpon ex) / Flower Shield (Comfey): cure status conditions on entry.
     if let Some(AbilityMechanic::SoothingWind { energy_type }) = get_ability_mechanic(card) {
         debug!("SoothingWind: Pokémon entered play – curing status conditions for player {actor}");
@@ -651,7 +651,7 @@ pub(crate) fn apply_evolve(
         played_card.cards_behind = from_pokemon.cards_behind.clone();
         played_card.cards_behind.push(from_pokemon.card.clone());
         state.in_play_pokemon[acting_player][position] = Some(played_card);
-        state.refresh_starting_plains_bonus_for_idx(acting_player, position);
+        state.refresh_hp_bonuses_all();
     } else {
         panic!("Only Pokemon cards can be evolved");
     }

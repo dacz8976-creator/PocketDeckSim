@@ -275,6 +275,9 @@ fn forecast_ability_by_mechanic(
         AbilityMechanic::IncreaseHpPerAttachedEnergy { .. } => {
             panic!("IncreaseHpPerAttachedEnergy is a passive ability")
         }
+        AbilityMechanic::IncreaseHpForTypeInPlay { .. } => {
+            panic!("IncreaseHpForTypeInPlay is a passive ability")
+        }
         AbilityMechanic::HealSelfOnZoneAttach { .. } => {
             panic!("HealSelfOnZoneAttach is a passive ability")
         }

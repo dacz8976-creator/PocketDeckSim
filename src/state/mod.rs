@@ -10,7 +10,7 @@ use std::hash::Hash;
 
 use crate::{
     actions::abilities::AbilityMechanic,
-    actions::{has_ability_mechanic, SimpleAction},
+    actions::{get_ability_mechanic, has_ability_mechanic, SimpleAction},
     deck::Deck,
     effects::TurnEffect,
     models::{Card, EnergyType, StatusCondition},
@@ -144,18 +144,42 @@ impl State {
         stadium.map(|stadium| (stadium, owner))
     }
 
-    pub(crate) fn refresh_starting_plains_bonus_all(&mut self) {
+    /// Recomputes every board-conditional HP bonus on every Pokémon in play: Starting Plains'
+    /// +20 HP for Basic Pokémon, and the `IncreaseHpForTypeInPlay` abilities (Lilligant's
+    /// Toughness Aroma: "Each of your [G] Pokémon gets +20 HP").
+    ///
+    /// Both depend on what else is on the board, so this has to run after any change to the active
+    /// Stadium *or* to the set of Pokémon in play — including a Pokémon leaving play, which can
+    /// shrink the effective HP of the ones left behind and knock them out.
+    pub(crate) fn refresh_hp_bonuses_all(&mut self) {
         let starting_plains_active = is_starting_plains_active(self);
-        for pokemon in self.in_play_pokemon.iter_mut().flatten().flatten() {
-            pokemon.refresh_starting_plains_bonus(starting_plains_active);
+        for player in 0..2 {
+            let ability_bonuses = self.ability_hp_bonuses(player);
+            for pokemon in self.in_play_pokemon[player].iter_mut().flatten() {
+                pokemon.refresh_starting_plains_bonus(starting_plains_active);
+                let energy_type = pokemon.get_energy_type();
+                let bonus = ability_bonuses
+                    .iter()
+                    .filter(|(bonus_type, _)| Some(*bonus_type) == energy_type)
+                    .map(|(_, amount)| *amount)
+                    .sum();
+                pokemon.set_ability_hp_bonus(bonus);
+            }
         }
     }
 
-    pub(crate) fn refresh_starting_plains_bonus_for_idx(&mut self, player: usize, index: usize) {
-        let starting_plains_active = is_starting_plains_active(self);
-        if let Some(pokemon) = self.in_play_pokemon[player][index].as_mut() {
-            pokemon.refresh_starting_plains_bonus(starting_plains_active);
-        }
+    /// The `IncreaseHpForTypeInPlay` bonuses `player` currently has in play, as (type, amount)
+    /// pairs. Multiple copies stack, hence a list rather than a single value.
+    fn ability_hp_bonuses(&self, player: usize) -> Vec<(EnergyType, u32)> {
+        self.enumerate_in_play_pokemon(player)
+            .filter_map(|(_, pokemon)| match get_ability_mechanic(&pokemon.card) {
+                Some(AbilityMechanic::IncreaseHpForTypeInPlay {
+                    energy_type,
+                    amount,
+                }) => Some((*energy_type, *amount)),
+                _ => None,
+            })
+            .collect()
     }
 
     pub fn debug_string(&self) -> String {
@@ -532,6 +556,7 @@ impl State {
         self.discard_energies[ko_receiver].extend(ko_pokemon.attached_energy.iter().cloned());
         self.hands[ko_receiver].push(rescued);
         self.in_play_pokemon[ko_receiver][ko_pokemon_idx] = None;
+        self.refresh_hp_bonuses_all();
     }
 
     pub(crate) fn discard_from_play(&mut self, ko_receiver: usize, ko_pokemon_idx: usize) {
@@ -547,6 +572,7 @@ impl State {
         self.discard_piles[ko_receiver].extend(cards_to_discard);
         self.discard_energies[ko_receiver].extend(ko_pokemon.attached_energy.iter().cloned());
         self.in_play_pokemon[ko_receiver][ko_pokemon_idx] = None;
+        self.refresh_hp_bonuses_all();
     }
 
     /// Removes the attached tool from a Pokémon and puts the tool card into the discard pile.
@@ -640,6 +666,7 @@ impl State {
         for (i, card) in player_1.into_iter().enumerate() {
             self.in_play_pokemon[1][i] = Some(card);
         }
+        self.refresh_hp_bonuses_all();
     }
 
     /// Set the flag indicating a Pokemon was KO'd by opponent's attack last turn.

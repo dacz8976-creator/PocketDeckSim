@@ -255,6 +255,14 @@ pub enum AbilityMechanic {
         energy_type: EnergyType,
         amount: u32,
     },
+    /// Lilligant's Toughness Aroma (B1 018 / B1 329): "Each of your [`energy_type`] Pokémon gets
+    /// +`amount` HP." Board-conditional, so — like Starting Plains' +20 HP for Basic Pokémon — it
+    /// is materialised onto each Pokémon as a stored bonus by `State::refresh_hp_bonuses_all` and
+    /// read back by `PlayedCard::get_effective_total_hp`.
+    IncreaseHpForTypeInPlay {
+        energy_type: EnergyType,
+        amount: u32,
+    },
     HealSelfOnZoneAttach {
         energy_type: EnergyType,
         amount: u32,

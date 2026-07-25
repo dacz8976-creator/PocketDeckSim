@@ -174,6 +174,7 @@ fn can_use_ability_by_mechanic(
         AbilityMechanic::IncreaseRetreatCostForOpponentActive { .. } => false,
         AbilityMechanic::PreventDamageWhileBenched => false,
         AbilityMechanic::IncreaseHpPerAttachedEnergy { .. } => false,
+        AbilityMechanic::IncreaseHpForTypeInPlay { .. } => false, // Passive ability
         AbilityMechanic::HealSelfOnZoneAttach { .. } => false,
         AbilityMechanic::EndFirstTurnAttachEnergyToSelf { .. } => false,
         AbilityMechanic::EndTurnDrawCardIfActive { .. } => false,
