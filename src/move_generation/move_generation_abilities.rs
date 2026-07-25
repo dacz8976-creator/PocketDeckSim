@@ -97,6 +97,7 @@ fn can_use_ability_by_mechanic(
         AbilityMechanic::ReduceOpponentActiveDamage { .. } => false,
         AbilityMechanic::ReduceDamageFromTypedAttackers { .. } => false, // Passive ability
         AbilityMechanic::ReduceDamageIfArceusInPlay { .. } => false,     // Passive ability
+        AbilityMechanic::ReduceDamageAtFullHp { .. } => false,           // Passive ability
         AbilityMechanic::IncreaseDamageWhenRemainingHpAtMost { .. } => false,
         AbilityMechanic::IncreaseDamageForTypeInPlay { .. } => false,
         AbilityMechanic::IncreaseDamageForTwoTypesInPlay { .. } => false,

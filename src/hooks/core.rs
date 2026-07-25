@@ -610,6 +610,7 @@ fn has_arceus_in_play(state: &State, player: usize) -> bool {
 /// how every existing damage-reduction ability is ordered relative to the Weakness bonus.
 fn get_conditional_ability_damage_reduction(
     state: &State,
+    attacking_player: usize,
     attacking_pokemon: &PlayedCard,
     target_player: usize,
     receiving_pokemon: &PlayedCard,
@@ -618,6 +619,7 @@ fn get_conditional_ability_damage_reduction(
     if !is_from_active_attack {
         return 0;
     }
+    let from_opponent = attacking_player != target_player;
     let total = match get_ability_mechanic(&receiving_pokemon.card) {
         // Thick Fat / Defensive Whirlwind: gated on the attacker's Energy type.
         Some(AbilityMechanic::ReduceDamageFromTypedAttackers {
@@ -632,6 +634,14 @@ fn get_conditional_ability_damage_reduction(
         // Resilience Link: gated on the receiver's own controller having an Arceus in play.
         Some(AbilityMechanic::ReduceDamageIfArceusInPlay { amount })
             if has_arceus_in_play(state, target_player) =>
+        {
+            *amount
+        }
+        // Ice Face: only while undamaged, and only against the opponent's Pokémon.
+        Some(AbilityMechanic::ReduceDamageAtFullHp { amount })
+            if from_opponent
+                && receiving_pokemon.get_remaining_hp()
+                    == receiving_pokemon.get_effective_total_hp() =>
         {
             *amount
         }
@@ -1090,6 +1100,7 @@ pub(crate) fn modify_damage(
     } else {
         get_conditional_ability_damage_reduction(
             state,
+            attacking_player,
             attacking_pokemon,
             target_player,
             receiving_pokemon,

@@ -88,6 +88,12 @@ pub enum AbilityMechanic {
     ReduceDamageIfArceusInPlay {
         amount: u32,
     },
+    /// Ice Face (Eiscue): "If this Pokémon has full HP, it takes -`amount` damage from attacks from
+    /// your opponent's Pokémon." Passive; the condition is re-evaluated per hit, so the shield is
+    /// gone as soon as any damage sticks.
+    ReduceDamageAtFullHp {
+        amount: u32,
+    },
     IncreaseDamageWhenRemainingHpAtMost {
         amount: u32,
         hp_threshold: u32,
