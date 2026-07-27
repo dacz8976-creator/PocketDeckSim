@@ -75,6 +75,7 @@ pub fn forecast_action(state: &State, action: &Action) -> Outcomes {
         | SimpleAction::PutCardFromDiscardToHand { .. }
         | SimpleAction::DiscardRandomOpponentActiveEnergy
         | SimpleAction::ApplyStatusToOpponentActive { .. }
+        | SimpleAction::DiscardOwnBenchedThenDamage { .. }
         | SimpleAction::Noop => forecast_deterministic_action(),
         SimpleAction::UseAbility { in_play_idx } => forecast_ability(state, action, *in_play_idx),
         SimpleAction::ApplyDamage {
@@ -367,6 +368,10 @@ fn apply_deterministic_action(state: &mut State, action: &Action) {
             let opponent = (action.actor + 1) % 2;
             state.apply_status_condition(opponent, 0, *condition);
         }
+        SimpleAction::DiscardOwnBenchedThenDamage {
+            in_play_idxs,
+            damage,
+        } => apply_discard_own_benched_then_damage(action.actor, state, in_play_idxs, *damage),
         SimpleAction::Noop => {}
         _ => panic!("Deterministic Action expected"),
     }
@@ -515,6 +520,42 @@ fn apply_shuffle_in_play_pokemon_into_deck(
     if in_play_idx == 0 {
         state.trigger_promotion_or_declare_winner(acting_player);
     }
+}
+
+/// Gyarados' Wild Swing: discard the chosen Benched Pokémon, then queue the resulting damage.
+///
+/// The damage is queued as a one-choice `ApplyDamage` rather than applied inline so that it goes
+/// through the same pipeline as any other attack damage — weakness and the other modifiers, Rocky
+/// Helmet style counterattacks, and the defender's Guts coin flip all still resolve.
+fn apply_discard_own_benched_then_damage(
+    acting_player: usize,
+    state: &mut State,
+    in_play_idxs: &[usize],
+    damage: u32,
+) {
+    // Descending, so removing one slot never shifts the meaning of a later one (it does not today,
+    // since slots are fixed positions, but it keeps the loop independent of that).
+    let mut idxs = in_play_idxs.to_vec();
+    idxs.sort_unstable();
+    idxs.reverse();
+    for in_play_idx in idxs {
+        if state.in_play_pokemon[acting_player][in_play_idx].is_some() {
+            state.discard_from_play(acting_player, in_play_idx);
+        }
+    }
+
+    let opponent = (acting_player + 1) % 2;
+    if state.in_play_pokemon[opponent][0].is_none() {
+        return;
+    }
+    state.move_generation_stack.push((
+        acting_player,
+        vec![SimpleAction::ApplyDamage {
+            attacking_ref: (acting_player, 0),
+            targets: vec![(damage, opponent, 0)],
+            is_from_active_attack: true,
+        }],
+    ));
 }
 
 fn apply_healing(

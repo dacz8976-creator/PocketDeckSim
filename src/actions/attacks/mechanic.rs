@@ -496,4 +496,126 @@ pub enum Mechanic {
     DamagePerOwnToolAttached {
         damage_per: u32,
     },
+    // ---------------------------------------------------------------------------------------------
+    // Bench / spread, switching and board-manipulation family.
+    // ---------------------------------------------------------------------------------------------
+    /// Bidoof's Super Fang: "Halve your opponent's Active Pokémon's remaining HP, rounded down."
+    /// This is not damage — no weakness, no damage modifiers, no counterattacks. Since every HP and
+    /// damage value in the game sits on a 10s grid, "rounded down" can only mean rounded down to
+    /// the nearest 10 (90 HP left becomes 40, matching the physical card's "half its remaining HP,
+    /// rounded up to the nearest 10" damage wording).
+    HalveOpponentActiveRemainingHp,
+    /// Xatu's Life Drain: "Flip a coin. If heads, your opponent's Active Pokémon's remaining HP is
+    /// now N." Only ever *lowers* the remaining HP — a Pokémon already below `remaining_hp` (e.g.
+    /// one left at 10 by Ursaluna's Guts) is not healed back up to it.
+    CoinFlipSetOpponentActiveRemainingHp {
+        remaining_hp: u32,
+    },
+    /// Bewear's Superpowered Hug (`knocked_out: true`, points are scored) and Guzzlord's Breakcore /
+    /// Scream Tail's Shooing Shout (`knocked_out: false`, the Pokémon is *discarded*, so no points).
+    /// The effect only fires when every one of `num_coins` coins comes up heads.
+    FlipCoinsRemoveOpponentActive {
+        num_coins: usize,
+        knocked_out: bool,
+    },
+    /// Kabutops' Leech Life: "Heal from this Pokémon the same amount of damage you did to your
+    /// opponent's Active Pokémon." The heal is the *modified* damage (weakness, Giovanni, …), and
+    /// it goes through `State::heal_pokemon` so Claydol's Heal Block still stops it.
+    HealSelfEqualToDamageDealt,
+    /// Toxtricity ex's Damaging Spark: "This attack also does N damage to each of your opponent's
+    /// Benched Pokémon that has damage on it."
+    AlsoBenchDamageIfDamaged {
+        damage: u32,
+    },
+    /// Minun's Buddy Spark / Magmortar's Thundering Volcano: "If <name> is on your Bench, this
+    /// attack also does N damage to each of your opponent's Benched Pokémon."
+    AlsoBenchDamageIfPokemonOnBench {
+        pokemon_name: String,
+        damage: u32,
+    },
+    /// Ampharos' Zapping Bullet: "1 of your opponent's Benched Pokémon is chosen at random. This
+    /// attack also does N damage to it." One equally likely branch per benched Pokémon, so the
+    /// search bots price the spread instead of averaging it.
+    AlsoRandomBenchDamage {
+        damage: u32,
+    },
+    /// Mimikyu's Shadow Hit: "This attack also does N damage to 1 of your Pokémon." The attacking
+    /// player chooses the target, which may be the Attacking Pokémon itself.
+    AlsoChoiceOwnPokemonDamage {
+        damage: u32,
+    },
+    /// Forretress' Enormous Explosion: "This Pokémon also does N damage to itself and M damage to
+    /// all Benched Pokémon (both yours and your opponent's)."
+    SelfDamageAndAllBenchDamage {
+        self_damage: u32,
+        bench_damage: u32,
+    },
+    /// Gigalith ex's Megaton Cannon: "This attack does N damage to 1 of your opponent's Pokémon.
+    /// During your next turn, this Pokémon can't attack." The chosen-target damage is the whole
+    /// attack (the printed `fixed_damage` is 0); the self effect applies either way.
+    DirectDamageAndSelfCardEffect {
+        damage: u32,
+        effect: CardEffect,
+        duration: u8,
+    },
+    /// Archeops' Wild Spin: "This attack does N damage to each of your opponent's Pokémon. During
+    /// your next turn, this Pokémon's <attack_name> attack does +M damage to each of your
+    /// opponent's Pokémon."
+    ///
+    /// The bonus is carried by an ordinary `CardEffect::IncreasedDamageForAttack`, which
+    /// `hooks::modify_damage` already applies to the *Active*-to-Active portion. Because that hook
+    /// deliberately ignores bench targets, this mechanic adds the same bonus to the benched targets
+    /// itself — hence `bonus` appearing both here and in the effect.
+    DamageAllOpponentPokemonWithNextTurnBonus {
+        damage: u32,
+        bonus: u32,
+        attack_name: String,
+    },
+    /// Gyarados' Wild Swing: "You may discard any number of your Benched [energy_type] Pokémon.
+    /// This attack does `damage_per` more damage for each Benched Pokémon you discarded in this
+    /// way." Offers the attacking player one choice per subset of eligible Benched Pokémon.
+    DiscardOwnBenchedTypeForDamage {
+        energy_type: EnergyType,
+        damage_per: u32,
+    },
+    /// Eldegoss' Float Up / Dunsparce's Bop 'n' Burrow: "You may shuffle this Pokémon and all
+    /// attached cards into your deck." Declined with `SimpleAction::Noop`.
+    MayShuffleSelfIntoDeck,
+    /// Tapu Koko's Volt Switch: "Switch this Pokémon with 1 of your Benched [energy_type] Pokémon."
+    /// The typed sibling of `SwitchSelfWithBench`.
+    SwitchSelfWithBenchOfType {
+        energy_type: EnergyType,
+    },
+    /// Fan Rotom's Spin Storm: "Flip a coin. If heads, put your opponent's Active Pokémon into
+    /// their hand." The Pokémon and everything it evolved from go back to hand; its Energy is lost.
+    CoinFlipReturnOpponentActiveToHand,
+    /// Chinchou's Luring Glow (`coin_flip: true`, `damage: 0`) and Sandy Shocks' Pull In and Pound
+    /// (`coin_flip: false`, `damage: 50`): "Switch in 1 of your opponent's Benched Pokémon to the
+    /// Active Spot." The *attacking* player picks, exactly like Lana/Cyrus. When `damage > 0` the
+    /// damage lands on the newly promoted Active Pokémon, and only if the switch happened.
+    SwitchInOpponentBenchedThenDamage {
+        damage: u32,
+        coin_flip: bool,
+    },
+    /// Ho-Oh's Blessed Burn (`benched_only`, `basic_only`) and Diancie's Diamond Storm
+    /// (`energy_type`): "Heal N damage from each of your <subset> Pokémon." The filtered
+    /// counterpart of `HealAllYourPokemon`, routed through `State::heal_each_pokemon` so Heal Block
+    /// still applies.
+    HealEachYourPokemon {
+        amount: u32,
+        benched_only: bool,
+        basic_only: bool,
+        energy_type: Option<EnergyType>,
+    },
+    /// Wishiwashi's Call for Family (`count: 1`) and Tandemaus' Flock (`count: 3`): "Put N random
+    /// cards from among <names> from your deck onto your Bench." The multi-name, multi-card
+    /// generalization of `SearchToBenchByName`.
+    SearchToBenchByNames {
+        names: Vec<String>,
+        count: usize,
+    },
+    /// Celebi's Temporal Leaves: "If your opponent's Active Pokémon is an evolved Pokémon, devolve
+    /// it by putting the highest Stage Evolution card on it into your opponent's hand." Damage
+    /// counters, Energy and any attached Tool stay on the Pokémon that is left behind.
+    DevolveOpponentActive,
 }
