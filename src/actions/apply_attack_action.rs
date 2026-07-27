@@ -23,7 +23,7 @@ use crate::{
         attack_effect_ignores_opponent_active_effects, can_evolve_into, contains_energy,
         get_attack_cost, get_retreat_cost, get_stage, modify_damage, DamageModifierContext,
     },
-    models::{Attack, Card, EnergyType, PlayedCard, StatusCondition, TrainerType},
+    models::{Attack, Card, EnergyType, PlayedCard, StatusCondition, TrainerType, BASIC_STAGE},
     tools::is_tool_card,
     State,
 };
@@ -429,9 +429,16 @@ fn forecast_effect_attack_by_mechanic(
             extra_damage_if_opponent_is_ex(state, attack.fixed_damage, *extra_damage)
         }
         Mechanic::ExtraDamageIfDefenderType {
-            energy_type,
+            energy_types,
             extra_damage,
-        } => extra_damage_if_defender_type(state, attack.fixed_damage, *energy_type, *extra_damage),
+        } => extra_damage_if_defender_type(state, attack.fixed_damage, energy_types, *extra_damage),
+        Mechanic::ExtraDamageIfDefenderStage {
+            evolution,
+            extra_damage,
+        } => extra_damage_if_defender_stage(state, attack.fixed_damage, *evolution, *extra_damage),
+        Mechanic::ExtraDamageIfDefenderNamed { name, extra_damage } => {
+            extra_damage_if_defender_named(state, attack.fixed_damage, name, *extra_damage)
+        }
         Mechanic::ExtraDamageIfOpponentHasSpecialCondition { extra_damage } => unseen_claw_attack(
             state.current_player,
             state,
@@ -545,11 +552,13 @@ fn forecast_effect_attack_by_mechanic(
         Mechanic::ExtraDamageIfDifferentEnergyTypesAttached {
             minimum_types,
             extra_damage,
+            all_in_play,
         } => extra_damage_if_different_energy_types_attack(
             state,
             attack.fixed_damage,
             *minimum_types,
             *extra_damage,
+            *all_in_play,
         ),
         Mechanic::ExtraDamageIfTypeEnergyInPlay {
             energy_type,
@@ -641,7 +650,14 @@ fn forecast_effect_attack_by_mechanic(
         Mechanic::ExtraDamageIfHurt {
             extra_damage,
             opponent,
-        } => extra_damage_if_hurt(state, attack.fixed_damage, *extra_damage, *opponent),
+            benched,
+        } => extra_damage_if_hurt(
+            state,
+            attack.fixed_damage,
+            *extra_damage,
+            *opponent,
+            *benched,
+        ),
         Mechanic::ExtraDamageIfUndamaged { extra_damage } => {
             extra_damage_if_undamaged(state, attack.fixed_damage, *extra_damage)
         }
@@ -665,6 +681,7 @@ fn forecast_effect_attack_by_mechanic(
             include_fixed_damage,
             damage_per,
             energy_type,
+            names,
             bench_side,
         } => bench_count_damage_attack(
             state,
@@ -672,6 +689,7 @@ fn forecast_effect_attack_by_mechanic(
             *include_fixed_damage,
             *damage_per,
             *energy_type,
+            names,
             bench_side,
         ),
         Mechanic::EvolutionBenchCountDamage {
@@ -731,9 +749,10 @@ fn forecast_effect_attack_by_mechanic(
             *energy_type,
             *damage_per_energy,
         ),
-        Mechanic::ExtraDamageIfToolAttached { extra_damage } => {
-            extra_damage_if_tool_attached(state, attack.fixed_damage, *extra_damage)
-        }
+        Mechanic::ExtraDamageIfToolAttached {
+            extra_damage,
+            opponent,
+        } => extra_damage_if_tool_attached(state, attack.fixed_damage, *extra_damage, *opponent),
         Mechanic::DamagePerOwnToolAttached { damage_per } => {
             damage_per_own_tool_attached(state, *damage_per)
         }
@@ -810,9 +829,17 @@ fn forecast_effect_attack_by_mechanic(
             damage_per_hit,
             include_own_bench,
         } => random_spread_damage(state, *times, *damage_per_hit, *include_own_bench),
-        Mechanic::ExtraDamageIfKnockedOutLastTurn { extra_damage } => {
-            extra_damage_if_knocked_out_last_turn_attack(state, attack.fixed_damage, *extra_damage)
-        }
+        Mechanic::ExtraDamageIfKnockedOutLastTurn {
+            extra_damage,
+            energy_type,
+            conditions,
+        } => extra_damage_if_knocked_out_last_turn_attack(
+            state,
+            attack.fixed_damage,
+            *extra_damage,
+            *energy_type,
+            conditions.clone(),
+        ),
         Mechanic::ExtraDamageIfAttackUsedDuringOwnLastTurn {
             attack_name,
             extra_damage,
@@ -1074,15 +1101,10 @@ fn forecast_effect_attack_by_mechanic(
         Mechanic::CoinFlipAlsoChoiceBenchDamage { opponent, damage } => {
             coin_flip_also_choice_bench_damage(state, *opponent, attack.fixed_damage, *damage)
         }
-        Mechanic::ExtraDamageIfDefenderPoisoned { extra_damage } => {
-            extra_damage_if_defender_poisoned(state, attack.fixed_damage, *extra_damage)
-        }
-        Mechanic::ExtraDamageIfDefenderConfused { extra_damage } => {
-            extra_damage_if_defender_confused(state, attack.fixed_damage, *extra_damage)
-        }
-        Mechanic::ExtraDamageIfDefenderAsleep { extra_damage } => {
-            extra_damage_if_defender_asleep(state, attack.fixed_damage, *extra_damage)
-        }
+        Mechanic::ExtraDamageIfDefenderStatus {
+            status,
+            extra_damage,
+        } => extra_damage_if_defender_status(state, attack.fixed_damage, *status, *extra_damage),
         Mechanic::DiscardTopSelfDeck => discard_top_self_deck(attack.fixed_damage),
         Mechanic::TieredCoinFlipDamage {
             num_coins,
@@ -1184,6 +1206,59 @@ fn forecast_effect_attack_by_mechanic(
             search_and_bench_by_names(state, names.clone(), *count),
         ),
         Mechanic::DevolveOpponentActive => devolve_opponent_active(attack.fixed_damage),
+        Mechanic::ExtraDamageIfHandSizeIn {
+            counts,
+            opponent,
+            extra_damage,
+        } => extra_damage_if_hand_size_in(
+            state,
+            attack.fixed_damage,
+            counts,
+            *opponent,
+            *extra_damage,
+        ),
+        Mechanic::ExtraDamageIfFewerPokemonInPlay { extra_damage } => {
+            extra_damage_if_fewer_pokemon_in_play(state, attack.fixed_damage, *extra_damage)
+        }
+        Mechanic::ExtraDamageIfOpponentPointsExactly {
+            points,
+            extra_damage,
+        } => extra_damage_if_opponent_points_exactly(
+            state,
+            attack.fixed_damage,
+            *points,
+            *extra_damage,
+        ),
+        Mechanic::ExtraDamageIfMoreEnergyThanDefender { extra_damage } => {
+            extra_damage_if_more_energy_than_defender(state, attack.fixed_damage, *extra_damage)
+        }
+        Mechanic::ExtraDamageIfSharedEnergyType {
+            minimum_each,
+            extra_damage,
+        } => extra_damage_if_shared_energy_type(
+            state,
+            attack.fixed_damage,
+            *minimum_each,
+            *extra_damage,
+        ),
+        Mechanic::NoDamageIfSelfHpAtMost { threshold } => {
+            no_damage_if_self_hp_at_most(state, attack.fixed_damage, *threshold)
+        }
+        Mechanic::NoDamageUnlessMovedFromBench => {
+            no_damage_unless_moved_from_bench(state, attack.fixed_damage)
+        }
+        Mechanic::ExtraDamageIfOpponentHasTypeInPlay {
+            energy_type,
+            extra_damage,
+        } => extra_damage_if_opponent_has_type_in_play(
+            state,
+            attack.fixed_damage,
+            *energy_type,
+            *extra_damage,
+        ),
+        Mechanic::ExtraDamageIfDamagedByAttackLastTurn { extra_damage } => {
+            extra_damage_if_damaged_by_attack_last_turn(state, attack.fixed_damage, *extra_damage)
+        }
     }
 }
 
@@ -2119,6 +2194,7 @@ fn bench_count_damage_attack(
     include_base_damage: bool,
     damage_per: u32,
     energy_type: Option<EnergyType>,
+    names: &Option<Vec<String>>,
     bench_side: &BenchSide,
 ) -> AttackOutcomes {
     let current_player = state.current_player;
@@ -2135,6 +2211,11 @@ fn bench_count_damage_attack(
         .flat_map(|&player| state.enumerate_bench_pokemon(player))
         .filter(|(_, pokemon)| {
             energy_type.is_none_or(|energy| pokemon.get_energy_type() == Some(energy))
+        })
+        .filter(|(_, pokemon)| {
+            names
+                .as_ref()
+                .is_none_or(|names| names.iter().any(|name| pokemon.get_name() == *name))
         })
         .count() as u32;
 
@@ -2672,15 +2753,23 @@ fn extra_damage_if_different_energy_types_attack(
     base_damage: u32,
     minimum_types: usize,
     extra_damage: u32,
+    all_in_play: bool,
 ) -> AttackOutcomes {
-    let pokemon = state.in_play_pokemon[state.current_player][0]
-        .as_ref()
-        .expect("Active Pokemon should be there if attacking");
+    let current_player = state.current_player;
+    let pokemon_in_scope: Vec<&PlayedCard> = if all_in_play {
+        state
+            .enumerate_in_play_pokemon(current_player)
+            .map(|(_, pokemon)| pokemon)
+            .collect()
+    } else {
+        vec![state.in_play_pokemon[current_player][0]
+            .as_ref()
+            .expect("Active Pokemon should be there if attacking")]
+    };
 
-    let distinct_energy_types = pokemon
-        .get_effective_attached_energy(state, state.current_player)
+    let distinct_energy_types = pokemon_in_scope
         .iter()
-        .copied()
+        .flat_map(|pokemon| pokemon.get_effective_attached_energy(state, current_player))
         .collect::<HashSet<_>>()
         .len();
 
@@ -3381,14 +3470,26 @@ fn extra_damage_per_opponent_pokemon_with_ability(
     active_damage_doutcome(base + damage_per * ability_count)
 }
 
-fn extra_damage_if_hurt(state: &State, base: u32, extra: u32, opponent: bool) -> AttackOutcomes {
+fn extra_damage_if_hurt(
+    state: &State,
+    base: u32,
+    extra: u32,
+    opponent: bool,
+    benched: bool,
+) -> AttackOutcomes {
     let target = if opponent {
         (state.current_player + 1) % 2
     } else {
         state.current_player
     };
-    let target_active = state.get_active(target);
-    if target_active.is_damaged() {
+    let any_hurt = if benched {
+        state
+            .enumerate_bench_pokemon(target)
+            .any(|(_, pokemon)| pokemon.is_damaged())
+    } else {
+        state.get_active(target).is_damaged()
+    };
+    if any_hurt {
         active_damage_doutcome(base + extra)
     } else {
         active_damage_doutcome(base)
@@ -3635,12 +3736,55 @@ fn extra_damage_if_opponent_is_ex(
 fn extra_damage_if_defender_type(
     state: &State,
     base_damage: u32,
-    energy_type: EnergyType,
+    energy_types: &[EnergyType],
     extra_damage: u32,
 ) -> AttackOutcomes {
     let opponent = (state.current_player + 1) % 2;
     let opponent_active = state.get_active(opponent);
-    let damage = if opponent_active.card.get_type() == Some(energy_type) {
+    let matches = opponent_active
+        .card
+        .get_type()
+        .is_some_and(|energy_type| energy_types.contains(&energy_type));
+    let damage = if matches {
+        base_damage + extra_damage
+    } else {
+        base_damage
+    };
+    active_damage_doutcome(damage)
+}
+
+/// Extra damage depending on the opponent's Active Pokémon's stage. `evolution: false` → Basic
+/// (fossils count as Basic); `evolution: true` → Evolution Pokémon.
+fn extra_damage_if_defender_stage(
+    state: &State,
+    base_damage: u32,
+    evolution: bool,
+    extra_damage: u32,
+) -> AttackOutcomes {
+    let opponent = (state.current_player + 1) % 2;
+    let stage = get_stage(state.get_active(opponent));
+    let matches = if evolution {
+        stage > BASIC_STAGE
+    } else {
+        stage == BASIC_STAGE
+    };
+    let damage = if matches {
+        base_damage + extra_damage
+    } else {
+        base_damage
+    };
+    active_damage_doutcome(damage)
+}
+
+/// Seviper's Fateful Fang: extra damage if the opponent's Active Pokémon has this exact name.
+fn extra_damage_if_defender_named(
+    state: &State,
+    base_damage: u32,
+    name: &str,
+    extra_damage: u32,
+) -> AttackOutcomes {
+    let opponent = (state.current_player + 1) % 2;
+    let damage = if state.get_active(opponent).get_name() == name {
         base_damage + extra_damage
     } else {
         base_damage
@@ -3652,9 +3796,14 @@ fn extra_damage_if_tool_attached(
     state: &State,
     base_damage: u32,
     extra_damage: u32,
+    opponent: bool,
 ) -> AttackOutcomes {
-    let active = state.get_active(state.current_player);
-    let damage = if active.has_tool_attached() {
+    let target = if opponent {
+        (state.current_player + 1) % 2
+    } else {
+        state.current_player
+    };
+    let damage = if state.get_active(target).has_tool_attached() {
         base_damage + extra_damage
     } else {
         base_damage
@@ -3671,17 +3820,34 @@ fn damage_per_own_tool_attached(state: &State, damage_per: u32) -> AttackOutcome
     active_damage_doutcome(damage_per * tool_count)
 }
 
+/// The vengeance family: "If any of your (\[type\]) Pokémon were Knocked Out by damage from an
+/// attack during your opponent's last turn, ...". When the condition holds the attack deals
+/// `extra_damage` more and inflicts `conditions` on the opponent's Active Pokémon.
 fn extra_damage_if_knocked_out_last_turn_attack(
     state: &State,
     base_damage: u32,
     extra_damage: u32,
+    energy_type: Option<EnergyType>,
+    conditions: Vec<StatusCondition>,
 ) -> AttackOutcomes {
-    let damage = if state.knocked_out_by_opponent_attack_last_turn {
-        base_damage + extra_damage
-    } else {
-        base_damage
+    let triggered = match energy_type {
+        None => state.knocked_out_by_opponent_attack_last_turn,
+        Some(energy_type) => state
+            .knocked_out_types_by_opponent_attack_last_turn
+            .contains(&energy_type),
     };
-    active_damage_doutcome(damage)
+    if !triggered {
+        return active_damage_doutcome(base_damage);
+    }
+    if conditions.is_empty() {
+        return active_damage_doutcome(base_damage + extra_damage);
+    }
+    active_damage_effect_doutcome(base_damage + extra_damage, move |_, state, action| {
+        let opponent = (action.actor + 1) % 2;
+        for condition in &conditions {
+            state.apply_status_condition(opponent, 0, *condition);
+        }
+    })
 }
 
 fn extra_damage_if_attack_used_during_own_last_turn(
@@ -3716,6 +3882,187 @@ fn extra_damage_per_own_knockout_this_game(
 ) -> AttackOutcomes {
     let own_kos = state.count_own_knockouts_this_game(state.current_player);
     active_damage_doutcome(base_damage + damage_per_ko * own_kos)
+}
+
+/// Ludicolo / Luvdisc / Grumpig: extra damage if the chosen player's hand size is exactly one of
+/// `counts`.
+fn extra_damage_if_hand_size_in(
+    state: &State,
+    base_damage: u32,
+    counts: &[u32],
+    opponent: bool,
+    extra_damage: u32,
+) -> AttackOutcomes {
+    let target = if opponent {
+        (state.current_player + 1) % 2
+    } else {
+        state.current_player
+    };
+    let hand_size = state.hands[target].len() as u32;
+    let damage = if counts.contains(&hand_size) {
+        base_damage + extra_damage
+    } else {
+        base_damage
+    };
+    active_damage_doutcome(damage)
+}
+
+/// Tyrantrum's Tyrannical Fang: extra damage if you have fewer Pokémon in play than your opponent.
+fn extra_damage_if_fewer_pokemon_in_play(
+    state: &State,
+    base_damage: u32,
+    extra_damage: u32,
+) -> AttackOutcomes {
+    let current_player = state.current_player;
+    let opponent = (current_player + 1) % 2;
+    let own_count = state.enumerate_in_play_pokemon(current_player).count();
+    let opponent_count = state.enumerate_in_play_pokemon(opponent).count();
+    let damage = if own_count < opponent_count {
+        base_damage + extra_damage
+    } else {
+        base_damage
+    };
+    active_damage_doutcome(damage)
+}
+
+/// Buzzwole's Ground Beat: extra damage if the opponent has gotten exactly `points` points.
+fn extra_damage_if_opponent_points_exactly(
+    state: &State,
+    base_damage: u32,
+    points: u8,
+    extra_damage: u32,
+) -> AttackOutcomes {
+    let opponent = (state.current_player + 1) % 2;
+    let damage = if state.points[opponent] == points {
+        base_damage + extra_damage
+    } else {
+        base_damage
+    };
+    active_damage_doutcome(damage)
+}
+
+/// Scrafty's Crush the Weak: extra damage if this Pokémon has more Energy attached than the
+/// opponent's Active Pokémon.
+fn extra_damage_if_more_energy_than_defender(
+    state: &State,
+    base_damage: u32,
+    extra_damage: u32,
+) -> AttackOutcomes {
+    let current_player = state.current_player;
+    let opponent = (current_player + 1) % 2;
+    let own_energy = state
+        .get_active(current_player)
+        .get_effective_attached_energy(state, current_player)
+        .len();
+    let opponent_energy = state
+        .get_active(opponent)
+        .get_effective_attached_energy(state, opponent)
+        .len();
+    let damage = if own_energy > opponent_energy {
+        base_damage + extra_damage
+    } else {
+        base_damage
+    };
+    active_damage_doutcome(damage)
+}
+
+/// Enamorus's Smitten Strike: extra damage if this Pokémon and the opponent's Active Pokémon each
+/// have at least `minimum_each` Energy of one common type attached.
+fn extra_damage_if_shared_energy_type(
+    state: &State,
+    base_damage: u32,
+    minimum_each: usize,
+    extra_damage: u32,
+) -> AttackOutcomes {
+    let current_player = state.current_player;
+    let opponent = (current_player + 1) % 2;
+    let own_energy = state
+        .get_active(current_player)
+        .get_effective_attached_energy(state, current_player);
+    let opponent_energy = state
+        .get_active(opponent)
+        .get_effective_attached_energy(state, opponent);
+    let count_of = |energies: &[EnergyType], energy_type: EnergyType| {
+        energies.iter().filter(|e| **e == energy_type).count()
+    };
+    let shared = own_energy
+        .iter()
+        .copied()
+        .collect::<HashSet<_>>()
+        .into_iter()
+        .any(|energy_type| {
+            count_of(&own_energy, energy_type) >= minimum_each
+                && count_of(&opponent_energy, energy_type) >= minimum_each
+        });
+    let damage = if shared {
+        base_damage + extra_damage
+    } else {
+        base_damage
+    };
+    active_damage_doutcome(damage)
+}
+
+/// Ting-Lu's Arrogant Impact: "If this Pokémon's remaining HP is N or less, this attack does
+/// nothing."
+fn no_damage_if_self_hp_at_most(state: &State, base_damage: u32, threshold: u32) -> AttackOutcomes {
+    let attacker = state.get_active(state.current_player);
+    if attacker.get_remaining_hp() <= threshold {
+        active_damage_doutcome(0)
+    } else {
+        active_damage_doutcome(base_damage)
+    }
+}
+
+/// Flutter Mane's Hexing Flight: "If this Pokémon didn't move from the Bench to the Active Spot
+/// this turn, this attack does nothing."
+fn no_damage_unless_moved_from_bench(state: &State, base_damage: u32) -> AttackOutcomes {
+    let moved = state.in_play_pokemon[state.current_player][0]
+        .as_ref()
+        .map(|p| p.moved_to_active_this_turn)
+        .unwrap_or(false);
+    if moved {
+        active_damage_doutcome(base_damage)
+    } else {
+        active_damage_doutcome(0)
+    }
+}
+
+/// Bronzong's Psychic Resonance: extra damage if the opponent has any Pokémon of this type in
+/// play (Active or Bench).
+fn extra_damage_if_opponent_has_type_in_play(
+    state: &State,
+    base_damage: u32,
+    energy_type: EnergyType,
+    extra_damage: u32,
+) -> AttackOutcomes {
+    let opponent = (state.current_player + 1) % 2;
+    let has_type = state
+        .enumerate_in_play_pokemon(opponent)
+        .any(|(_, pokemon)| pokemon.card.get_type() == Some(energy_type));
+    let damage = if has_type {
+        base_damage + extra_damage
+    } else {
+        base_damage
+    };
+    active_damage_doutcome(damage)
+}
+
+/// Wobbuffet's Reply Strongly: extra damage if this Pokémon was damaged by an attack during the
+/// opponent's last turn while it was in the Active Spot.
+fn extra_damage_if_damaged_by_attack_last_turn(
+    state: &State,
+    base_damage: u32,
+    extra_damage: u32,
+) -> AttackOutcomes {
+    let damaged = state
+        .get_active(state.current_player)
+        .damaged_by_attack_while_active_last_turn;
+    let damage = if damaged {
+        base_damage + extra_damage
+    } else {
+        base_damage
+    };
+    active_damage_doutcome(damage)
 }
 
 fn extra_damage_if_moved_from_bench_attack(
@@ -4330,41 +4677,24 @@ fn coin_flip_also_choice_bench_damage(
     )
 }
 
-fn extra_damage_if_defender_poisoned(
+/// Extra damage if the opponent's Active Pokémon is affected by the given Special Condition
+/// (Venoshock's Poisoned, Hatterene's Confused, Breloom's Asleep, Heatmor's Burned).
+fn extra_damage_if_defender_status(
     state: &State,
     base_damage: u32,
+    status: StatusCondition,
     extra_damage: u32,
 ) -> AttackOutcomes {
     let opponent = (state.current_player + 1) % 2;
-    let damage = if state.get_active(opponent).is_poisoned() {
-        base_damage + extra_damage
-    } else {
-        base_damage
+    let defender = state.get_active(opponent);
+    let has_status = match status {
+        StatusCondition::Poisoned => defender.is_poisoned(),
+        StatusCondition::Paralyzed => defender.is_paralyzed(),
+        StatusCondition::Asleep => defender.is_asleep(),
+        StatusCondition::Burned => defender.is_burned(),
+        StatusCondition::Confused => defender.is_confused(),
     };
-    active_damage_doutcome(damage)
-}
-
-fn extra_damage_if_defender_confused(
-    state: &State,
-    base_damage: u32,
-    extra_damage: u32,
-) -> AttackOutcomes {
-    let opponent = (state.current_player + 1) % 2;
-    let damage = if state.get_active(opponent).is_confused() {
-        base_damage + extra_damage
-    } else {
-        base_damage
-    };
-    active_damage_doutcome(damage)
-}
-
-fn extra_damage_if_defender_asleep(
-    state: &State,
-    base_damage: u32,
-    extra_damage: u32,
-) -> AttackOutcomes {
-    let opponent = (state.current_player + 1) % 2;
-    let damage = if state.get_active(opponent).is_asleep() {
+    let damage = if has_status {
         base_damage + extra_damage
     } else {
         base_damage
@@ -5559,7 +5889,7 @@ mod test {
         state.in_play_pokemon[0][1] = Some(to_playable_card(&some_base_pokemon, false));
 
         let (_, mut lazy_mutations) =
-            bench_count_damage_attack(&state, 70, true, 20, None, &BenchSide::YourBench)
+            bench_count_damage_attack(&state, 70, true, 20, None, &None, &BenchSide::YourBench)
                 .into_branches();
         lazy_mutations.remove(0)(&mut rng, &mut state, &action);
 

@@ -148,8 +148,22 @@ pub enum Mechanic {
     ExtraDamageIfEx {
         extra_damage: u32,
     },
+    /// Extra damage if the opponent's Active Pokémon is one of the listed types
+    /// (e.g. Hawlucha's "is a [D] Pokémon", Scovillain's "is a [G] or [M] Pokémon").
     ExtraDamageIfDefenderType {
-        energy_type: EnergyType,
+        energy_types: Vec<EnergyType>,
+        extra_damage: u32,
+    },
+    /// Extra damage depending on the opponent's Active Pokémon's stage:
+    /// `evolution: false` → "is a Basic Pokémon" (fossils count as Basic),
+    /// `evolution: true` → "is an Evolution Pokémon".
+    ExtraDamageIfDefenderStage {
+        evolution: bool,
+        extra_damage: u32,
+    },
+    /// Seviper's Fateful Fang: extra damage if the opponent's Active Pokémon has this exact name.
+    ExtraDamageIfDefenderNamed {
+        name: String,
         extra_damage: u32,
     },
     ExtraDamageIfOpponentHasSpecialCondition {
@@ -236,9 +250,13 @@ pub enum Mechanic {
         required_extra_energy: Vec<EnergyType>,
         extra_damage: u32,
     },
+    /// Extra damage if enough different Energy types are attached. `all_in_play: false` checks
+    /// only this Pokémon's attached Energy; `true` checks all of your Pokémon in play
+    /// (Grafaiai's Colorful Attack).
     ExtraDamageIfDifferentEnergyTypesAttached {
         minimum_types: usize,
         extra_damage: u32,
+        all_in_play: bool,
     },
     ExtraDamageIfTypeEnergyInPlay {
         energy_type: EnergyType,
@@ -458,9 +476,13 @@ pub enum Mechanic {
         opponent: bool,
         damage: u32,
     },
+    /// Extra damage if a Pokémon has damage on it. `benched: false` checks the chosen side's
+    /// Active Pokémon; `benched: true` checks whether ANY of that side's Benched Pokémon are
+    /// damaged (Drampa's Berserk).
     ExtraDamageIfHurt {
         extra_damage: u32,
         opponent: bool,
+        benched: bool,
     },
     ExtraDamageIfUndamaged {
         extra_damage: u32,
@@ -474,8 +496,15 @@ pub enum Mechanic {
     },
     DamageEqualToSelfDamage,
     ExtraDamageEqualToSelfDamage,
+    /// "If any of your (\[type\]) Pokémon were Knocked Out by damage from an attack during your
+    /// opponent's last turn, ..." — the vengeance family. `energy_type` filters which knockouts
+    /// qualify (Zarude's Dark Vengeance counts only [D] Pokémon); `conditions` are Special
+    /// Conditions inflicted on the opponent's Active Pokémon when the condition holds (Lapras's
+    /// Raging Freeze / Toxtricity's Vengeful Shock Paralyze; may be combined with extra damage).
     ExtraDamageIfKnockedOutLastTurn {
         extra_damage: u32,
+        energy_type: Option<EnergyType>,
+        conditions: Vec<StatusCondition>,
     },
     ExtraDamageIfAttackUsedDuringOwnLastTurn {
         attack_name: String,
@@ -491,10 +520,14 @@ pub enum Mechanic {
     ExtraDamageIfEvolvedThisTurn {
         extra_damage: u32,
     },
+    /// Damage scaling with the number of Benched Pokémon on `bench_side`, optionally filtered by
+    /// `energy_type` and/or by exact Pokémon `names` (Wishiwashi ex's School Storm counts benched
+    /// "Wishiwashi" and "Wishiwashi ex"; Nidoqueen's Lovestrike counts benched "Nidoking").
     BenchCountDamage {
         include_fixed_damage: bool,
         damage_per: u32,
         energy_type: Option<EnergyType>,
+        names: Option<Vec<String>>,
         bench_side: BenchSide,
     },
     EvolutionBenchCountDamage {
@@ -531,8 +564,11 @@ pub enum Mechanic {
         energy_type: EnergyType,
         damage_per_energy: u32,
     },
+    /// Extra damage if a Pokémon Tool is attached: to this Pokémon (`opponent: false`) or to the
+    /// opponent's Active Pokémon (`opponent: true`, Rotom's Assault Laser).
     ExtraDamageIfToolAttached {
         extra_damage: u32,
+        opponent: bool,
     },
     RecoilIfKo {
         self_damage: u32,
@@ -652,16 +688,10 @@ pub enum Mechanic {
         opponent: bool,
         damage: u32,
     },
-    /// Venoshock – extra damage if opponent's active is Poisoned.
-    ExtraDamageIfDefenderPoisoned {
-        extra_damage: u32,
-    },
-    /// Hatterene – Mental Crush: extra damage if opponent's active is Confused.
-    ExtraDamageIfDefenderConfused {
-        extra_damage: u32,
-    },
-    /// Breloom – Pre-Dawn Strike: extra damage if opponent's active is Asleep.
-    ExtraDamageIfDefenderAsleep {
+    /// Extra damage if the opponent's Active Pokémon is affected by the given Special Condition
+    /// (Venoshock's Poisoned, Hatterene's Confused, Breloom's Asleep, Heatmor's Burned).
+    ExtraDamageIfDefenderStatus {
+        status: StatusCondition,
         extra_damage: u32,
     },
     /// Discard the top card of the attacker's own deck after dealing damage.
@@ -892,5 +922,52 @@ pub enum Mechanic {
     /// it out for `duration` turns via `CardEffect::CannotUseAttack`.
     DisableRandomOpponentActiveAttack {
         duration: u8,
+    },
+    /// Ludicolo / Luvdisc / Grumpig: extra damage if the hand size of the chosen player
+    /// (`opponent: true` → your opponent's hand) is exactly one of `counts`.
+    ExtraDamageIfHandSizeIn {
+        counts: Vec<u32>,
+        opponent: bool,
+        extra_damage: u32,
+    },
+    /// Tyrantrum's Tyrannical Fang: extra damage if you have fewer Pokémon in play than your
+    /// opponent.
+    ExtraDamageIfFewerPokemonInPlay {
+        extra_damage: u32,
+    },
+    /// Buzzwole's Ground Beat: extra damage if your opponent has gotten exactly `points` points.
+    ExtraDamageIfOpponentPointsExactly {
+        points: u8,
+        extra_damage: u32,
+    },
+    /// Scrafty's Crush the Weak: extra damage if this Pokémon has more Energy attached than the
+    /// opponent's Active Pokémon.
+    ExtraDamageIfMoreEnergyThanDefender {
+        extra_damage: u32,
+    },
+    /// Enamorus's Smitten Strike: extra damage if this Pokémon and the opponent's Active Pokémon
+    /// each have at least `minimum_each` Energy of one common type attached.
+    ExtraDamageIfSharedEnergyType {
+        minimum_each: usize,
+        extra_damage: u32,
+    },
+    /// Ting-Lu's Arrogant Impact: "If this Pokémon's remaining HP is N or less, this attack does
+    /// nothing."
+    NoDamageIfSelfHpAtMost {
+        threshold: u32,
+    },
+    /// Flutter Mane's Hexing Flight: "If this Pokémon didn't move from the Bench to the Active
+    /// Spot this turn, this attack does nothing."
+    NoDamageUnlessMovedFromBench,
+    /// Bronzong's Psychic Resonance: extra damage if the opponent has any Pokémon of this type in
+    /// play (Active or Bench).
+    ExtraDamageIfOpponentHasTypeInPlay {
+        energy_type: EnergyType,
+        extra_damage: u32,
+    },
+    /// Wobbuffet's Reply Strongly: extra damage if this Pokémon was damaged by an attack during
+    /// the opponent's last turn while it was in the Active Spot.
+    ExtraDamageIfDamagedByAttackLastTurn {
+        extra_damage: u32,
     },
 }

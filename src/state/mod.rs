@@ -69,6 +69,14 @@ pub struct State {
     pub has_used_stadium: [bool; 2], // Tracks if each player has used the stadium this turn
     pub(crate) knocked_out_by_opponent_attack_this_turn: bool,
     pub(crate) knocked_out_by_opponent_attack_last_turn: bool,
+    // Energy types of the Pokémon that were Knocked Out by damage from an opponent's attack
+    // during the current/previous turn (companions to the two flags above, for type-filtered
+    // vengeance attacks like Zarude's Dark Vengeance: "If any of your [D] Pokémon were Knocked
+    // Out ..."). Fossils have no energy type and are only covered by the untyped flags.
+    #[serde(default)]
+    pub(crate) knocked_out_types_by_opponent_attack_this_turn: Vec<EnergyType>,
+    #[serde(default)]
+    pub(crate) knocked_out_types_by_opponent_attack_last_turn: Vec<EnergyType>,
     // Name of the attack (if any) each player used during their current/previous own turn
     // (e.g. for Vanilluxe's "Sweets Relay": "If 1 of your Pokémon used Sweets Relay during
     // your last turn, this attack does more damage.").
@@ -111,6 +119,8 @@ impl State {
 
             knocked_out_by_opponent_attack_this_turn: false,
             knocked_out_by_opponent_attack_last_turn: false,
+            knocked_out_types_by_opponent_attack_this_turn: Vec::new(),
+            knocked_out_types_by_opponent_attack_last_turn: Vec::new(),
             attack_name_used_this_turn: [None, None],
             attack_name_used_last_turn: [None, None],
             attack_name_used_count: [BTreeMap::new(), BTreeMap::new()],
@@ -740,6 +750,13 @@ impl State {
     /// Used for testing Marshadow's Revenge attack and similar mechanics.
     pub fn set_knocked_out_by_opponent_attack_last_turn(&mut self, value: bool) {
         self.knocked_out_by_opponent_attack_last_turn = value;
+    }
+
+    /// Set the energy types of the Pokémon KO'd by the opponent's attack last turn (companion to
+    /// `set_knocked_out_by_opponent_attack_last_turn`, for type-filtered vengeance attacks).
+    /// Used for testing Zarude's Dark Vengeance and similar mechanics.
+    pub fn set_knocked_out_types_by_opponent_attack_last_turn(&mut self, types: Vec<EnergyType>) {
+        self.knocked_out_types_by_opponent_attack_last_turn = types;
     }
 
     /// Get the flag indicating a Pokemon was KO'd by opponent's attack last turn.

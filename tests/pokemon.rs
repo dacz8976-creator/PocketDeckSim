@@ -78,6 +78,16 @@ mod coin_per_heads_damage_test;
 mod coin_status_flip_attacks_test;
 #[path = "pokemon/comfey_flower_shield_test.rs"]
 mod comfey_flower_shield_test;
+#[path = "pokemon/conditional_bench_count_test.rs"]
+mod conditional_bench_count_test;
+#[path = "pokemon/conditional_board_state_test.rs"]
+mod conditional_board_state_test;
+#[path = "pokemon/conditional_defender_test.rs"]
+mod conditional_defender_test;
+#[path = "pokemon/conditional_energy_damage_test.rs"]
+mod conditional_energy_damage_test;
+#[path = "pokemon/conditional_hand_size_test.rs"]
+mod conditional_hand_size_test;
 #[path = "pokemon/corviknight_line_test.rs"]
 mod corviknight_line_test;
 #[path = "pokemon/crawdaunt_unruly_claw_test.rs"]
@@ -206,6 +216,8 @@ mod klefki_dismantling_keys_test;
 mod kommo_o_clanging_scales_test;
 #[path = "pokemon/kubfu_training_test.rs"]
 mod kubfu_training_test;
+#[path = "pokemon/ledian_swift_test.rs"]
+mod ledian_swift_test;
 #[path = "pokemon/legacy_ability_logic_test.rs"]
 mod legacy_ability_logic_test;
 #[path = "pokemon/lilligant_toughness_aroma_test.rs"]
@@ -260,6 +272,8 @@ mod modified_poison_damage_test;
 mod morpeko_test;
 #[path = "pokemon/ninetales_ember_dance_test.rs"]
 mod ninetales_ember_dance_test;
+#[path = "pokemon/no_damage_conditional_test.rs"]
+mod no_damage_conditional_test;
 #[path = "pokemon/no_retreat_cost_abilities_test.rs"]
 mod no_retreat_cost_abilities_test;
 #[path = "pokemon/octillery_octazooka_test.rs"]
@@ -290,6 +304,8 @@ mod purugly_interrupt_test;
 mod pyukumuku_innards_out_test;
 #[path = "pokemon/quagsire_amnesia_test.rs"]
 mod quagsire_amnesia_test;
+#[path = "pokemon/raid_evolved_this_turn_test.rs"]
+mod raid_evolved_this_turn_test;
 #[path = "pokemon/rampardos_head_smash_test.rs"]
 mod rampardos_head_smash_test;
 #[path = "pokemon/regigigas_seal_of_antiquity_test.rs"]
@@ -362,6 +378,8 @@ mod ursaluna_guts_test;
 mod vanilluxe_test;
 #[path = "pokemon/vaporeon_ex_test.rs"]
 mod vaporeon_ex_test;
+#[path = "pokemon/vengeance_attacks_test.rs"]
+mod vengeance_attacks_test;
 #[path = "pokemon/vulpix_tail_whip_test.rs"]
 mod vulpix_tail_whip_test;
 #[path = "pokemon/wailord_test.rs"]
@@ -372,6 +390,8 @@ mod watchog_psych_up_test;
 mod whiscash_thrash_test;
 #[path = "pokemon/wishiwashi_tandemaus_bench_search_test.rs"]
 mod wishiwashi_tandemaus_bench_search_test;
+#[path = "pokemon/wobbuffet_reply_strongly_test.rs"]
+mod wobbuffet_reply_strongly_test;
 #[path = "pokemon/xatu_life_drain_test.rs"]
 mod xatu_life_drain_test;
 #[path = "pokemon/xerneas_geoburst_test.rs"]

@@ -57,7 +57,7 @@ const EXPECTED: &[(&str, &str)] = &[
     ),
     (
         "If your opponent's Active Pokémon has damage on it, this attack does 50 more damage.",
-        "ExtraDamageIfHurt { extra_damage: 50, opponent: true }",
+        "ExtraDamageIfHurt { extra_damage: 50, opponent: true, benched: false }",
     ),
     (
         "This attack does 70 damage to 1 of your opponent's Benched Pokémon.",
@@ -73,7 +73,7 @@ const EXPECTED: &[(&str, &str)] = &[
     ),
     (
         "If your opponent's Active Pokémon is Confused, this attack does 40 more damage.",
-        "ExtraDamageIfDefenderConfused { extra_damage: 40 }",
+        "ExtraDamageIfDefenderStatus { status: Confused, extra_damage: 40 }",
     ),
 ];
 
