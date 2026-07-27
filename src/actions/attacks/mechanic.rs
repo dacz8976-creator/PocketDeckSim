@@ -64,14 +64,39 @@ pub enum Mechanic {
     DamageAllOpponentPokemon {
         damage: u32,
     },
+    /// Discard `count` random Energy from among the Energy attached to in-play Pokémon.
+    /// `own_side_only` restricts the pool to the attacker's own Pokémon (Groudon's Gaia
+    /// Blast); otherwise both sides' Pokémon are in the pool (Lunala ex-style).
     DiscardRandomGlobalEnergy {
         count: usize,
+        own_side_only: bool,
     },
     RandomDamageToOpponentPokemonPerSelfEnergy {
         energy_type: EnergyType,
         damage_per_hit: u32,
     },
     DiscardEnergyFromOpponentActive,
+    /// Discard one Energy of a specific type from the opponent's Active Pokémon (e.g. Dedenne's
+    /// Electric Nibbling discards a [L], Surskit's Firefighting discards a [R]).
+    DiscardTypeEnergyFromOpponentActive {
+        energy_type: EnergyType,
+    },
+    /// Oricorio's Kindle / Yveltal's Evil Crash: discard a random Energy from each Active
+    /// Pokémon (the attacker's own Active and the opponent's Active).
+    DiscardRandomEnergyFromBothActive,
+    /// Dudunsparce's Sudden Drilling: if this Pokémon evolved (was played) this turn, discard
+    /// `count` random Energy from the opponent's Active Pokémon.
+    DiscardOpponentActiveEnergyIfEvolvedThisTurn {
+        count: usize,
+    },
+    /// Maushold's Triple Gnawing / Pidgeot's Twister: flip `num_coins` coins and discard one
+    /// random Energy from the opponent's Active Pokémon per heads. When `nothing_if_no_heads`
+    /// is set ("If all of them are tails, this attack does nothing."), the zero-heads branch
+    /// deals no damage at all.
+    FlipCoinsDiscardOpponentEnergyPerHeads {
+        num_coins: usize,
+        nothing_if_no_heads: bool,
+    },
     CoinFlipDiscardEnergyFromOpponentActive,
     DiscardOpponentActiveToolsBeforeDamage,
     ExtraDamageIfEx {
@@ -122,6 +147,32 @@ pub enum Mechanic {
         energies: Vec<EnergyType>,
         effect: CardEffect,
         duration: u8,
+    },
+    /// Gouging Fire's Scorching Interruption: discard `count` (untyped, so randomly chosen)
+    /// Energy from the attacker, then give the attacker a card effect.
+    SelfDiscardRandomEnergyAndCardEffect {
+        count: usize,
+        effect: CardEffect,
+        duration: u8,
+    },
+    /// Rapid Strike Urshifu's Tornado Shot: discard the listed Energy from the attacker, and
+    /// the attack also does `bench_damage` to 1 of the opponent's Benched Pokémon (chosen).
+    SelfDiscardEnergyAndChoiceBenchDamage {
+        energies: Vec<EnergyType>,
+        bench_damage: u32,
+    },
+    /// Walking Wake's Sweeping Billow: discard `count` (untyped, so randomly chosen) Energy
+    /// from the attacker, and the attack also does `bench_damage` to each of the opponent's
+    /// Benched Pokémon.
+    SelfDiscardRandomEnergyAndBenchDamage {
+        count: usize,
+        bench_damage: u32,
+    },
+    /// Volcarona's Volcanic Ash: discard the listed Energy from the attacker, then deal
+    /// `damage` to 1 of the opponent's Pokémon (chosen, Active or Benched).
+    SelfDiscardEnergyThenDamageAnyOpponentPokemon {
+        energies: Vec<EnergyType>,
+        damage: u32,
     },
     ExtraDamageIfExtraEnergy {
         required_extra_energy: Vec<EnergyType>,
@@ -191,6 +242,14 @@ pub enum Mechanic {
     MoveFixedEnergyTypeToBench {
         energy_type: EnergyType,
         amount: u32,
+    },
+    /// Swanna's Feathery Cyclone: move all Energy (of any types) from the attacker to 1 of
+    /// your Benched Pokémon (chosen).
+    MoveAllEnergyToBench,
+    /// Regice's Reflect Energy: move `count` random Energy from the attacker to 1 of your
+    /// Benched Pokémon (chosen).
+    MoveRandomEnergyToBench {
+        count: usize,
     },
     ChargeBench {
         energies: Vec<EnergyType>,
@@ -267,6 +326,29 @@ pub enum Mechanic {
         amount: u8,
     },
     SelfDiscardAllEnergy,
+    /// Galvantula's Electric Shock: discard all Energy from the attacker and inflict the
+    /// listed Special Conditions on the opponent's Active Pokémon.
+    SelfDiscardAllEnergyAndInflictStatus {
+        conditions: Vec<StatusCondition>,
+    },
+    /// Raging Bolt's Baneful Boom: discard all Energy from the attacker, then Knock Out the
+    /// opponent's Active Pokémon outright (not damage, so damage modifiers don't apply).
+    SelfDiscardAllEnergyKnockOutOpponentActive,
+    /// Mesprit's Supreme Blast: usable only with the named Pokémon on the attacker's Bench
+    /// (gated at move generation); on use, discard all Energy from the attacker.
+    RequiresBenchedNamesSelfDiscardAllEnergy {
+        required_bench_names: Vec<String>,
+    },
+    /// Boltund's Defiant Spark: if the attacker has damage on it, the attack can instead be
+    /// paid with `cost`. Wired into move generation; the attack itself is plain damage.
+    AlternativeCostIfDamaged {
+        cost: Vec<EnergyType>,
+    },
+    /// Veluza's Shedding Spiral: if the attacker's deck is empty, the attack can instead be
+    /// paid with `cost`. Wired into move generation; the attack itself is plain damage.
+    AlternativeCostIfDeckEmpty {
+        cost: Vec<EnergyType>,
+    },
     SelfDiscardAllTypeEnergy {
         energy_type: EnergyType,
     },
@@ -274,7 +356,14 @@ pub enum Mechanic {
         energy_type: EnergyType,
         damage: u32,
     },
-    SelfDiscardRandomEnergy,
+    SelfDiscardRandomEnergy {
+        count: usize,
+    },
+    /// Entei's Strong Flare: flip a coin; if tails, discard `count` random Energy from the
+    /// attacker.
+    CoinFlipTailsSelfDiscardRandomEnergy {
+        count: usize,
+    },
     AlsoBenchDamage {
         opponent: bool,
         damage: u32,
@@ -392,6 +481,21 @@ pub enum Mechanic {
     AttachEnergyToBenchedBasic {
         energy_type: EnergyType,
     },
+    /// Sableye's Jeweled Gift: take a random Energy from among the 8 basic types from your
+    /// Energy Zone and attach it to 1 of your Benched Pokémon (chosen).
+    AttachRandomBasicEnergyFromZoneToBench,
+    /// Uxie's Mind Boost: take an Energy of `energy_type` from your Energy Zone and attach it
+    /// to 1 of your in-play Pokémon with one of the listed names (chosen).
+    AttachEnergyFromZoneToPokemonNamed {
+        energy_type: EnergyType,
+        names: Vec<String>,
+    },
+    /// Smeargle's Splatter Coating: change the type of a random Energy attached to the
+    /// opponent's Active Pokémon to a random one of the 8 basic types.
+    ChangeRandomOpponentActiveEnergyType,
+    /// Porygon-Z's Buggy Beam: change the type of the next Energy that will be generated for
+    /// the opponent to a random one of the 8 basic types.
+    ChangeOpponentNextGeneratedEnergyType,
     DamageAndDiscardOpponentDeck {
         discard_count: usize,
     },

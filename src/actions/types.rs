@@ -53,6 +53,13 @@ pub enum SimpleAction {
         energy_type: EnergyType,
         amount: u32,
     },
+    /// Move a specific (possibly mixed-type) set of Energy between two of the actor's
+    /// in-play Pokémon (e.g. Swanna's Feathery Cyclone, Regice's Reflect Energy).
+    MoveEnergies {
+        from_in_play_idx: usize,
+        to_in_play_idx: usize,
+        energies: Vec<EnergyType>,
+    },
     AttachTool {
         in_play_idx: usize,
         tool_card: Card,
@@ -237,6 +244,16 @@ impl fmt::Display for SimpleAction {
                 write!(
                     f,
                     "MoveEnergy(from:{from_in_play_idx}, to:{to_in_play_idx}, {amount}x {energy_type:?})"
+                )
+            }
+            SimpleAction::MoveEnergies {
+                from_in_play_idx,
+                to_in_play_idx,
+                energies,
+            } => {
+                write!(
+                    f,
+                    "MoveEnergies(from:{from_in_play_idx}, to:{to_in_play_idx}, {energies:?})"
                 )
             }
             SimpleAction::AttachTool {

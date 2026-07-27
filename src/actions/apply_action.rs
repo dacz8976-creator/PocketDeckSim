@@ -54,6 +54,7 @@ pub fn forecast_action(state: &State, action: &Action) -> Outcomes {
         | SimpleAction::Place(_, _)
         | SimpleAction::Attach { .. }
         | SimpleAction::MoveEnergy { .. }
+        | SimpleAction::MoveEnergies { .. }
         | SimpleAction::AttachTool { .. }
         | SimpleAction::Evolve { .. }
         | SimpleAction::Activate { .. }
@@ -274,6 +275,17 @@ fn apply_deterministic_action(state: &mut State, action: &Action) {
             *energy_type,
             *amount,
         ),
+        SimpleAction::MoveEnergies {
+            from_in_play_idx,
+            to_in_play_idx,
+            energies,
+        } => apply_move_energies(
+            state,
+            action.actor,
+            *from_in_play_idx,
+            *to_in_play_idx,
+            energies,
+        ),
         SimpleAction::Place(card, index) => {
             apply_place_card(state, action.actor, card, *index, false)
         }
@@ -432,6 +444,37 @@ fn apply_move_energy(
     }
 
     // Add removed energies to destination
+    if !removed_energies.is_empty() {
+        if let Some(to_card) = actor_board[to_idx].as_mut() {
+            to_card.attached_energy.extend(removed_energies);
+        } else if let Some(from_card) = actor_board[from_idx].as_mut() {
+            // Put energies back if destination vanished (should not normally happen)
+            from_card.attached_energy.extend(removed_energies);
+        }
+    }
+}
+
+/// Move a specific (possibly mixed-type) set of energies between two of the actor's in-play
+/// Pokémon. Only energies actually attached to the source are moved (best effort).
+fn apply_move_energies(
+    state: &mut State,
+    actor: usize,
+    from_idx: usize,
+    to_idx: usize,
+    energies: &[EnergyType],
+) {
+    let actor_board = &mut state.in_play_pokemon[actor];
+    let mut removed_energies = Vec::new();
+
+    if let Some(from_card) = actor_board[from_idx].as_mut() {
+        for energy in energies {
+            if let Some(pos) = from_card.attached_energy.iter().position(|e| e == energy) {
+                from_card.attached_energy.swap_remove(pos);
+                removed_energies.push(*energy);
+            }
+        }
+    }
+
     if !removed_energies.is_empty() {
         if let Some(to_card) = actor_board[to_idx].as_mut() {
             to_card.attached_energy.extend(removed_energies);

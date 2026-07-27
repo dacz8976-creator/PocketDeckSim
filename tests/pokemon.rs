@@ -8,6 +8,8 @@ mod alolan_muk_power_of_alchemy_test;
 mod alolan_sandslash_spike_armor_test;
 #[path = "pokemon/altaria_dragon_arcana_test.rs"]
 mod altaria_dragon_arcana_test;
+#[path = "pokemon/alternative_cost_attacks_test.rs"]
+mod alternative_cost_attacks_test;
 #[path = "pokemon/ambipom_catching_tail_test.rs"]
 mod ambipom_catching_tail_test;
 #[path = "pokemon/applin_share_test.rs"]
@@ -70,6 +72,18 @@ mod eiscue_ice_face_test;
 mod emboar_flare_storm_test;
 #[path = "pokemon/emolga_dedenne_ex_tool_damage_test.rs"]
 mod emolga_dedenne_ex_tool_damage_test;
+#[path = "pokemon/energy_attach_attacks_test.rs"]
+mod energy_attach_attacks_test;
+#[path = "pokemon/energy_discard_attacks_test.rs"]
+mod energy_discard_attacks_test;
+#[path = "pokemon/energy_discard_coin_attacks_test.rs"]
+mod energy_discard_coin_attacks_test;
+#[path = "pokemon/energy_discard_combo_attacks_test.rs"]
+mod energy_discard_combo_attacks_test;
+#[path = "pokemon/energy_move_attacks_test.rs"]
+mod energy_move_attacks_test;
+#[path = "pokemon/energy_type_change_attacks_test.rs"]
+mod energy_type_change_attacks_test;
 #[path = "pokemon/falinks_coordinated_unit_test.rs"]
 mod falinks_coordinated_unit_test;
 #[path = "pokemon/flutter_mane_ex_test.rs"]
