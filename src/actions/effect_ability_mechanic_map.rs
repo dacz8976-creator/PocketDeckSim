@@ -6,8 +6,8 @@ use std::sync::LazyLock;
 
 use crate::actions::abilities::{
     AbilityMechanic, AttackCostReductionScope, DeckSearchKind, DiscardSearchKind, DiscardSelection,
-    KnockoutDamageTarget, NoRetreatCostCondition, NoRetreatCostTarget, ARCEUS_NAMES,
-    REGI_TRIO_NAMES,
+    KnockoutDamageTarget, NoRetreatCostCondition, NoRetreatCostTarget, RandomEvolutionTrigger,
+    ARCEUS_NAMES, REGI_TRIO_NAMES,
 };
 use crate::effects::CardEffect;
 use crate::models::{Card, EnergyType, PlayedCard, StatusCondition};
@@ -600,7 +600,12 @@ pub static EFFECT_ABILITY_MECHANIC_MAP: LazyLock<HashMap<&'static str, AbilityMe
                 amount: 20,
             },
         );
-        // map.insert("Whenever you attach an Energy from your Energy Zone to this Pokémon, put a random card from your deck that evolves from this Pokémon onto this Pokémon to evolve it.", todo_implementation);
+        map.insert(
+            "Whenever you attach an Energy from your Energy Zone to this Pokémon, put a random card from your deck that evolves from this Pokémon onto this Pokémon to evolve it.",
+            AbilityMechanic::RandomEvolutionFromDeck {
+                trigger: RandomEvolutionTrigger::OnEnergyZoneAttachToSelf,
+            },
+        );
         map.insert(
             "You must discard a card from your hand in order to use this Ability. Once during your turn, you may draw a card.",
             AbilityMechanic::DiscardFromHandToDrawCard,
@@ -740,7 +745,9 @@ pub static EFFECT_ABILITY_MECHANIC_MAP: LazyLock<HashMap<&'static str, AbilityMe
         // b3b mechanics
         map.insert(
             "At the end of your opponent's turn, if this Pokémon is in the Active Spot, put a random card from your deck that evolves from this Pokémon onto this Pokémon to evolve it.",
-            AbilityMechanic::QuickGrowth,
+            AbilityMechanic::RandomEvolutionFromDeck {
+                trigger: RandomEvolutionTrigger::EndOfOpponentTurnIfActive,
+            },
         );
         map
     });

@@ -6,7 +6,8 @@ use rand::rngs::StdRng;
 
 use crate::{
     actions::{
-        abilities::AbilityMechanic, effect_ability_mechanic_map::get_in_play_ability_mechanic,
+        abilities::{AbilityMechanic, RandomEvolutionTrigger},
+        effect_ability_mechanic_map::get_in_play_ability_mechanic,
         shared_mutations, SimpleAction,
     },
     card_ids::CardId,
@@ -137,9 +138,10 @@ fn start_turn_ability_outcomes(state: &State, player: usize) -> (Probabilities, 
             )
             .into_branches()
         }
-        AbilityMechanic::QuickGrowth => {
-            shared_mutations::quick_growth_evolution_outcomes_for_player(player, state)
-                .into_branches()
+        AbilityMechanic::RandomEvolutionFromDeck {
+            trigger: RandomEvolutionTrigger::EndOfOpponentTurnIfActive,
+        } => {
+            shared_mutations::random_evolution_from_deck_outcomes(player, 0, state).into_branches()
         }
         _ => (vec![1.0], vec![noop_mutation()]),
     }

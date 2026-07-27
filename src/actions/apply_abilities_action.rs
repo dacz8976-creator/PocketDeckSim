@@ -341,8 +341,8 @@ fn forecast_ability_by_mechanic(
             panic!("CannotAttackWithoutBenchedNames is a passive ability")
         }
         AbilityMechanic::TimeRecall => panic!("TimeRecall is a passive ability"),
-        AbilityMechanic::QuickGrowth => {
-            panic!("QuickGrowth is triggered at the end of the opponent's turn")
+        AbilityMechanic::RandomEvolutionFromDeck { .. } => {
+            panic!("RandomEvolutionFromDeck is a passive ability")
         }
     }
 }

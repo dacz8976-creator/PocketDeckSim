@@ -589,8 +589,26 @@ pub enum AbilityMechanic {
     /// Passive: while a Pokémon with this ability is in play, attack generation also offers the
     /// active evolved Pokémon the attacks from its previous evolutions (its under-cards).
     TimeRecall,
-    /// Caterpie's Quick Growth: "At the end of your opponent's turn, if this Pokémon is in the
-    /// Active Spot, put a random card from your deck that evolves from this Pokémon onto this
-    /// Pokémon to evolve it."
-    QuickGrowth,
+    /// "... put a random card from your deck that evolves from this Pokémon onto this Pokémon to
+    /// evolve it." Two printings share the effect and differ only in what sets it off, so the
+    /// trigger is a parameter:
+    /// - Caterpie's Quick Growth (B3b 001 / B3b 091): `EndOfOpponentTurnIfActive`.
+    /// - Porygon2's Buggy Evolution (A4 136): `OnEnergyZoneAttachToSelf`.
+    ///
+    /// Passive either way — there is no `UseAbility` action for it.
+    RandomEvolutionFromDeck {
+        trigger: RandomEvolutionTrigger,
+    },
+}
+
+/// What sets off a [`AbilityMechanic::RandomEvolutionFromDeck`] ability.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum RandomEvolutionTrigger {
+    /// "At the end of your opponent's turn, if this Pokémon is in the Active Spot" — resolved in
+    /// the start-of-turn ability outcomes, alongside the other end-of-turn triggers.
+    EndOfOpponentTurnIfActive,
+    /// "Whenever you attach an Energy from your Energy Zone to this Pokémon" — resolved when the
+    /// `Attach` action is forecast, so the random evolution shows up as real probability branches
+    /// instead of being hidden inside the state mutation.
+    OnEnergyZoneAttachToSelf,
 }

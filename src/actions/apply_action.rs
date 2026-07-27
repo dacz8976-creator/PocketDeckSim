@@ -6,9 +6,10 @@ use rand::{distributions::WeightedIndex, prelude::Distribution, rngs::StdRng};
 use crate::{
     actions::effect_ability_mechanic_map::get_entering_play_ability_mechanic,
     actions::{
-        abilities::AbilityMechanic,
+        abilities::{AbilityMechanic, RandomEvolutionTrigger},
         apply_abilities_action::forecast_ability,
         apply_action_helpers::{apply_activate, wrap_with_common_logic},
+        get_in_play_ability_mechanic,
     },
     effects::{CardEffect, TurnEffect},
     hooks::{
@@ -52,7 +53,6 @@ pub fn forecast_action(state: &State, action: &Action) -> Outcomes {
         // Deterministic Actions
         SimpleAction::DrawCard { .. } // TODO: DrawCard should return actual deck probabilities.
         | SimpleAction::Place(_, _)
-        | SimpleAction::Attach { .. }
         | SimpleAction::MoveEnergy { .. }
         | SimpleAction::MoveEnergies { .. }
         | SimpleAction::AttachTool { .. }
@@ -78,6 +78,10 @@ pub fn forecast_action(state: &State, action: &Action) -> Outcomes {
         | SimpleAction::ApplyStatusToOpponentActive { .. }
         | SimpleAction::DiscardOwnBenchedThenDamage { .. }
         | SimpleAction::Noop => forecast_deterministic_action(),
+        SimpleAction::Attach {
+            attachments,
+            is_turn_energy,
+        } => forecast_attach(state, action.actor, attachments, *is_turn_energy),
         SimpleAction::UseAbility { in_play_idx } => forecast_ability(state, action, *in_play_idx),
         SimpleAction::ApplyDamage {
             attacking_ref,
@@ -175,6 +179,60 @@ fn forecast_deterministic_action() -> Outcomes {
     Outcomes::single_fn(move |_, state, action| {
         apply_deterministic_action(state, action);
     })
+}
+
+/// Attaching Energy is deterministic unless the destination is a Pokémon with Porygon2's Buggy
+/// Evolution (A4 136): "Whenever you attach an Energy from your Energy Zone to this Pokémon, put a
+/// random card from your deck that evolves from this Pokémon onto this Pokémon to evolve it."
+///
+/// The evolution card is drawn at random, so the attach forecasts one branch per candidate in the
+/// deck rather than hiding the draw inside the mutation — the same shape Caterpie's Quick Growth
+/// uses at end of turn. The trigger fires at most once per action: after the first Energy the
+/// holder is no longer the Pokémon the Ability is printed on.
+fn forecast_attach(
+    state: &State,
+    actor: usize,
+    attachments: &[(u32, EnergyType, usize)],
+    is_turn_energy: bool,
+) -> Outcomes {
+    let Some(in_play_idx) = buggy_evolution_target(state, actor, attachments) else {
+        return forecast_deterministic_action();
+    };
+    let attachments = attachments.to_vec();
+    shared_mutations::random_evolution_from_deck_outcomes(actor, in_play_idx, state).map_mutations(
+        move |evolve| {
+            let attachments = attachments.clone();
+            Box::new(
+                move |rng: &mut StdRng, state: &mut State, action: &Action| {
+                    apply_attach_energy(state, actor, &attachments, is_turn_energy);
+                    evolve(rng, state, action);
+                },
+            )
+        },
+    )
+}
+
+/// The in-play index Buggy Evolution would fire on for this attachment list, if any.
+fn buggy_evolution_target(
+    state: &State,
+    actor: usize,
+    attachments: &[(u32, EnergyType, usize)],
+) -> Option<usize> {
+    attachments
+        .iter()
+        .map(|(_, _, in_play_idx)| *in_play_idx)
+        .find(|in_play_idx| {
+            state.in_play_pokemon[actor][*in_play_idx]
+                .as_ref()
+                .is_some_and(|pokemon| {
+                    matches!(
+                        get_in_play_ability_mechanic(state, pokemon),
+                        Some(AbilityMechanic::RandomEvolutionFromDeck {
+                            trigger: RandomEvolutionTrigger::OnEnergyZoneAttachToSelf,
+                        })
+                    )
+                })
+        })
 }
 
 /// ApplyDamage (damage queued through the move-generation stack, e.g. Mega Kangaskhan's second

@@ -288,6 +288,8 @@ mod oranguru_primates_trap_test;
 mod passimian_ex_offload_pass_test;
 #[path = "pokemon/politoed_lordly_cheering_test.rs"]
 mod politoed_lordly_cheering_test;
+#[path = "pokemon/porygon2_buggy_evolution_test.rs"]
+mod porygon2_buggy_evolution_test;
 #[path = "pokemon/porygon_data_scan_test.rs"]
 mod porygon_data_scan_test;
 #[path = "pokemon/porygonz_cyberjack_test.rs"]

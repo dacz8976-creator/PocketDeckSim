@@ -222,15 +222,29 @@ where
     Outcomes::from_parts(probabilities, outcomes)
 }
 
-/// Generates outcomes for Caterpie's Quick Growth ability: pick a random card from
-/// `player`'s deck that evolves from their current active Pokémon and evolve it.
-/// Returns a no-op (just shuffle) when no eligible evolution exists in the deck.
-pub(crate) fn quick_growth_evolution_outcomes_for_player(player: usize, state: &State) -> Outcomes {
-    let active = state.get_active(player);
+/// Generates outcomes for the `RandomEvolutionFromDeck` abilities (Caterpie's Quick Growth,
+/// Porygon2's Buggy Evolution): pick a random card from `player`'s deck that evolves from the
+/// Pokémon at `in_play_idx` and evolve it. Returns a no-op (just shuffle) when no eligible
+/// evolution exists in the deck.
+///
+/// The branch is chosen at forecast time but the board can still move between forecast and
+/// mutation (Buggy Evolution forecasts *before* the Energy attach that triggers it, and that
+/// attach can knock the holder out via Electromagnetic Wall), so each mutation re-checks that the
+/// evolution is still legal before applying it.
+pub(crate) fn random_evolution_from_deck_outcomes(
+    player: usize,
+    in_play_idx: usize,
+    state: &State,
+) -> Outcomes {
+    let Some(target) = state.in_play_pokemon[player][in_play_idx].as_ref() else {
+        return Outcomes::single_fn(move |rng, state, _action| {
+            state.decks[player].shuffle(false, rng);
+        });
+    };
     let evolution_cards: Vec<Card> = state.decks[player]
         .cards
         .iter()
-        .filter(|card| can_evolve_into(state, card, active))
+        .filter(|card| can_evolve_into(state, card, target))
         .cloned()
         .collect();
 
@@ -247,7 +261,13 @@ pub(crate) fn quick_growth_evolution_outcomes_for_player(player: usize, state: &
         .map(
             |evo_card| -> crate::actions::apply_action_helpers::Mutation {
                 Box::new(move |rng, state, _action| {
-                    apply_evolve(player, state, &evo_card, 0, true);
+                    let still_legal = state.in_play_pokemon[player][in_play_idx]
+                        .as_ref()
+                        .is_some_and(|target| can_evolve_into(state, &evo_card, target))
+                        && state.decks[player].cards.contains(&evo_card);
+                    if still_legal {
+                        apply_evolve(player, state, &evo_card, in_play_idx, true);
+                    }
                     state.decks[player].shuffle(false, rng);
                 })
             },
