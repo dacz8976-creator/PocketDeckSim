@@ -5,6 +5,7 @@ mod move_generation_trainer;
 use crate::actions::{
     abilities::AbilityMechanic, get_in_play_ability_mechanic, Action, SimpleAction,
 };
+use crate::effects::TurnEffect;
 use crate::hooks::{can_evolve_into, can_retreat, contains_energy, get_retreat_cost};
 use crate::models::Card;
 use crate::stadiums::{
@@ -258,7 +259,17 @@ fn can_evolve_at_position(state: &State, player: usize, position: usize) -> bool
     if position == 0 && has_opponent_aerodactyl_ex_primeval_law(state, player) {
         return false;
     }
-    true
+    !is_evolution_from_hand_blocked(state)
+}
+
+/// Malamar's Evolution Jammer: "During your opponent's next turn, they can't play any Pokémon from
+/// their hand to evolve their Pokémon." Covers both ordinary evolution and Rare Candy, which also
+/// plays a Pokémon from hand onto one in play.
+pub(crate) fn is_evolution_from_hand_blocked(state: &State) -> bool {
+    state
+        .get_current_turn_effects()
+        .iter()
+        .any(|effect| matches!(effect, TurnEffect::NoEvolutionFromHand))
 }
 
 fn has_opponent_aerodactyl_ex_primeval_law(state: &State, player: usize) -> bool {

@@ -15,6 +15,17 @@ pub enum CopyAttackSource {
     OpponentActive,
     OpponentInPlay,
     OwnBenchNonEx,
+    /// Mew's Miraculous Memory: every attack printed on a Pokémon in the opponent's hand *or*
+    /// deck. Unlike the other sources the attacker does not choose — one candidate is picked at
+    /// random (see [`CopyAttackSource::is_random`]).
+    OpponentHandAndDeck,
+}
+
+impl CopyAttackSource {
+    /// Whether the copied attack is chosen at random rather than by the attacking player.
+    pub(crate) fn is_random(&self) -> bool {
+        matches!(self, CopyAttackSource::OpponentHandAndDeck)
+    }
 }
 
 #[derive(Debug, Clone, PartialEq)]
@@ -407,9 +418,13 @@ pub enum Mechanic {
     InflictStatusIfStadiumInPlay {
         status: StatusCondition,
     },
+    /// Use one of the attacks reachable from `source` as this attack. When `coin_flip` is set the
+    /// copy only happens on heads (Mimikyu's Try to Imitate); when `source.is_random()` the engine
+    /// picks the copied attack instead of offering the choice (Mew's Miraculous Memory).
     CopyAttack {
         source: CopyAttackSource,
         require_attacker_energy_match: bool,
+        coin_flip: bool,
     },
     SelfAsleepAndHeal {
         amount: u32,
@@ -495,5 +510,22 @@ pub enum Mechanic {
     /// Pokémon in play (active + bench).
     DamagePerOwnToolAttached {
         damage_per: u32,
+    },
+    /// Oricorio's / Meloetta's Inspiring Dance: "During your next turn, attacks used by your
+    /// [`energy_type`] Pokémon do +`amount` damage to your opponent's Active Pokémon."
+    /// `energy_type: None` covers all of the attacker's Pokémon. Adds a
+    /// `TurnEffect::IncreasedDamageForPlayer` bound to the attacking player, which is why this
+    /// cannot be expressed as a plain `DamageAndTurnEffect` map entry.
+    IncreasedDamageNextTurn {
+        amount: u32,
+        energy_type: Option<EnergyType>,
+    },
+    /// Machop's Shatter: discard whichever Stadium is in play (it goes to its owner's discard
+    /// pile). Does nothing extra when there is no Stadium.
+    DiscardStadiumInPlay,
+    /// Quagsire's Amnesia: pick one of the opponent's Active Pokémon's attacks at random and lock
+    /// it out for `duration` turns via `CardEffect::CannotUseAttack`.
+    DisableRandomOpponentActiveAttack {
+        duration: u8,
     },
 }

@@ -162,6 +162,20 @@ pub(crate) fn get_retreat_cost(state: &State, card: &PlayedCard) -> Vec<EnergyTy
             normal_cost.pop(); // Remove one colorless energy from retreat cost
         }
 
+        // Oranguru's Primate's Trap: "its Retreat Cost is 1 [C] more", stored on the Pokémon
+        // itself. Added after the reductions so it can't be cancelled out of existence by a pop.
+        let extra_retreat_cost: u8 = card
+            .get_active_effects()
+            .iter()
+            .filter_map(|effect| match effect {
+                CardEffect::IncreasedRetreatCost { amount } => Some(*amount),
+                _ => None,
+            })
+            .sum();
+        for _ in 0..extra_retreat_cost {
+            normal_cost.push(EnergyType::Colorless);
+        }
+
         // Ariados Trap Territory: Your opponent's Active Pokémon's Retreat Cost is 1 more.
         // This check needs to look at if the OPPONENT has Ariados in play
         let opponent = (state.current_player + 1) % 2;

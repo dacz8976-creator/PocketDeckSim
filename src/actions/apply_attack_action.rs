@@ -795,7 +795,21 @@ fn forecast_effect_attack_by_mechanic(
         Mechanic::CopyAttack {
             source,
             require_attacker_energy_match,
-        } => copy_attack(state, source, *require_attacker_energy_match),
+            coin_flip,
+        } => copy_attack(
+            attack.fixed_damage,
+            source,
+            *require_attacker_energy_match,
+            *coin_flip,
+        ),
+        Mechanic::IncreasedDamageNextTurn {
+            amount,
+            energy_type,
+        } => increased_damage_next_turn(attack.fixed_damage, *amount, *energy_type),
+        Mechanic::DiscardStadiumInPlay => discard_stadium_in_play(attack.fixed_damage),
+        Mechanic::DisableRandomOpponentActiveAttack { duration } => {
+            disable_random_opponent_active_attack(attack.fixed_damage, *duration)
+        }
         Mechanic::SelfAsleepAndHeal { amount } => {
             self_asleep_and_heal_attack(*amount, attack.fixed_damage)
         }
@@ -883,17 +897,86 @@ fn forecast_effect_attack_by_mechanic(
 }
 
 fn copy_attack(
-    _state: &State,
+    damage: u32,
     source: &CopyAttackSource,
     require_attacker_energy_match: bool,
+    coin_flip: bool,
 ) -> AttackOutcomes {
     let source = source.clone();
-    active_damage_effect_doutcome(0, move |_, state, action| {
-        let choices =
+    let queue_copy = move |rng: &mut StdRng, state: &mut State, action: &Action| {
+        let mut choices =
             copied_attack_choices(state, action.actor, &source, require_attacker_energy_match);
-        if !choices.is_empty() {
-            state.move_generation_stack.push((action.actor, choices));
+        if choices.is_empty() {
+            return;
         }
+        // Mew's Miraculous Memory picks the attack itself instead of offering the choice, so it
+        // collapses to a single option before it reaches the move-generation stack.
+        if source.is_random() {
+            let picked = rng.gen_range(0..choices.len());
+            choices = vec![choices.swap_remove(picked)];
+        }
+        state.move_generation_stack.push((action.actor, choices));
+    };
+
+    if coin_flip {
+        AttackOutcomes::binary_coin(
+            active_damage_effect_outcome(damage, queue_copy),
+            active_damage_outcome(damage),
+        )
+    } else {
+        active_damage_effect_doutcome(damage, queue_copy)
+    }
+}
+
+/// Oricorio's / Meloetta's Inspiring Dance. The boost is bound to the attacking player so it does
+/// not leak into the opponent's turn, which the effect has to survive in order to reach "your next
+/// turn" (duration 2).
+fn increased_damage_next_turn(
+    damage: u32,
+    amount: u32,
+    energy_type: Option<EnergyType>,
+) -> AttackOutcomes {
+    active_damage_effect_doutcome(damage, move |_, state, action| {
+        state.add_turn_effect(
+            TurnEffect::IncreasedDamageForPlayer {
+                amount,
+                player: action.actor,
+                energy_type,
+            },
+            2,
+        );
+    })
+}
+
+/// Machop's Shatter: the discarded Stadium goes to the discard pile of the player who played it.
+fn discard_stadium_in_play(damage: u32) -> AttackOutcomes {
+    active_damage_effect_doutcome(damage, move |_, state, action| {
+        if let Some((stadium, owner)) = state.take_active_stadium() {
+            state.discard_piles[owner.unwrap_or(action.actor)].push(stadium);
+            state.refresh_hp_bonuses_all();
+        }
+    })
+}
+
+/// Quagsire's Amnesia: lock out one of the Defending Pokémon's attacks, chosen at random.
+fn disable_random_opponent_active_attack(damage: u32, duration: u8) -> AttackOutcomes {
+    active_damage_effect_doutcome(damage, move |rng, state, action| {
+        let opponent = (action.actor + 1) % 2;
+        let Some(defender) = state.in_play_pokemon[opponent][0].as_ref() else {
+            return;
+        };
+        let attack_titles: Vec<String> = defender
+            .get_attacks()
+            .iter()
+            .map(|attack| attack.title.clone())
+            .collect();
+        if attack_titles.is_empty() {
+            return;
+        }
+        let picked = attack_titles[rng.gen_range(0..attack_titles.len())].clone();
+        state
+            .get_active_mut(opponent)
+            .add_effect(CardEffect::CannotUseAttack(picked), duration);
     })
 }
 
@@ -931,7 +1014,51 @@ fn copied_attack_choices(
                 .map(|(idx, _)| idx),
             require_attacker_energy_match,
         ),
+        CopyAttackSource::OpponentHandAndDeck => copied_attack_choices_from_cards(
+            state,
+            acting_player,
+            state.hands[opponent]
+                .iter()
+                .chain(state.decks[opponent].cards.iter()),
+            require_attacker_energy_match,
+        ),
     }
+}
+
+/// Like [`copied_attack_choices_from_slots`], but sourced from cards that are not in play (Mew's
+/// Miraculous Memory reads the opponent's hand and deck). `Card::get_attacks` is empty for
+/// Trainers, so non-Pokémon simply contribute nothing.
+fn copied_attack_choices_from_cards<'a, I>(
+    state: &State,
+    acting_player: usize,
+    source_cards: I,
+    require_attacker_energy_match: bool,
+) -> Vec<SimpleAction>
+where
+    I: IntoIterator<Item = &'a Card>,
+{
+    let mut choices = Vec::new();
+    for card in source_cards {
+        for attack in card.get_attacks() {
+            if is_copy_attack(&attack) {
+                continue;
+            }
+            if require_attacker_energy_match {
+                let active = state.get_active(acting_player);
+                let modified_cost = get_attack_cost(&attack.energy_required, state, acting_player);
+                if !contains_energy(active, &modified_cost, state, acting_player) {
+                    continue;
+                }
+            }
+            let choice = SimpleAction::Attack(attack);
+            // The same printing can appear many times across a hand and deck; one entry each is
+            // enough (and keeps the random pick uniform over *distinct* attacks).
+            if !choices.contains(&choice) {
+                choices.push(choice);
+            }
+        }
+    }
+    choices
 }
 
 fn copied_attack_choices_from_slots<I>(

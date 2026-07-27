@@ -10,7 +10,7 @@ use crate::{
         apply_abilities_action::forecast_ability,
         apply_action_helpers::{apply_activate, wrap_with_common_logic},
     },
-    effects::TurnEffect,
+    effects::{CardEffect, TurnEffect},
     hooks::{
         get_retreat_cost, on_bench_from_hand, on_evolve, to_playable_card, DamageModifierContext,
     },
@@ -726,6 +726,41 @@ fn apply_retreat(player: usize, state: &mut State, bench_idx: usize, is_free: bo
     }
 
     apply_activate(player, state, bench_idx);
+
+    if !is_free {
+        apply_snapping_trap_on_retreat(player, state);
+    }
+}
+
+/// Galarian Stunfisk's Snapping Trap: "During your opponent's next turn, if this Pokémon is in the
+/// Active Spot when your opponent's Active Pokémon retreats, this attack does 40 damage to the new
+/// Active Pokémon." Only a genuine retreat triggers it, not a free promotion or a switch card, so
+/// this is called from the paid branch of `apply_retreat` after the promotion has happened.
+fn apply_snapping_trap_on_retreat(retreating_player: usize, state: &mut State) {
+    let trapper = (retreating_player + 1) % 2;
+    let damage: u32 = state.in_play_pokemon[trapper][0]
+        .as_ref()
+        .map(|pokemon| {
+            pokemon
+                .get_active_effects()
+                .iter()
+                .filter_map(|effect| match effect {
+                    CardEffect::DamageNewActiveOnRetreat { amount } => Some(*amount),
+                    _ => None,
+                })
+                .sum()
+        })
+        .unwrap_or(0);
+    if damage == 0 || state.in_play_pokemon[retreating_player][0].is_none() {
+        return;
+    }
+    handle_damage(
+        state,
+        (trapper, 0),
+        &[(damage, retreating_player, 0)],
+        false,
+        None,
+    );
 }
 
 // We will replace the PlayedCard, but taking into account the attached energy

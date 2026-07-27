@@ -568,6 +568,11 @@ fn can_play_rare_candy(state: &State, trainer_card: &TrainerCard) -> Option<Vec<
         return cannot_play_trainer();
     }
 
+    // Malamar's Evolution Jammer also stops Rare Candy: it plays a Pokémon from hand to evolve.
+    if super::is_evolution_from_hand_blocked(state) {
+        return cannot_play_trainer();
+    }
+
     let player = state.current_player;
     let hand = &state.hands[player];
 

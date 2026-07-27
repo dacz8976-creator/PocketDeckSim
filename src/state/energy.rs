@@ -3,7 +3,7 @@ use crate::{
         abilities::AbilityMechanic, get_in_play_ability_mechanic, handle_damage_only,
         handle_knockouts,
     },
-    effects::TurnEffect,
+    effects::{CardEffect, TurnEffect},
     hooks::DamageModifierContext,
     models::{EnergyType, StatusCondition},
     State,
@@ -26,7 +26,28 @@ impl State {
         if attached && is_turn_energy {
             self.energy_zone[actor].current = None;
         }
+        if attached {
+            self.apply_asleep_if_energy_attached(actor, in_play_idx);
+        }
         attached
+    }
+
+    /// Gothitelle's Stellar Cradle: "During your opponent's next turn, if they attach Energy from
+    /// their Energy Zone to the Defending Pokémon, that Pokémon will be Asleep." Only Energy-Zone
+    /// attachments trigger it, so this hangs off `attach_energy_from_zone` rather than off the
+    /// shared `attach_energy_internal` (which also serves discard-pile and card-driven attaches).
+    fn apply_asleep_if_energy_attached(&mut self, player: usize, in_play_idx: usize) {
+        let triggers = self.in_play_pokemon[player][in_play_idx]
+            .as_ref()
+            .is_some_and(|pokemon| {
+                pokemon
+                    .get_active_effects()
+                    .iter()
+                    .any(|effect| matches!(effect, CardEffect::AsleepIfEnergyAttached))
+            });
+        if triggers {
+            self.apply_status_condition(player, in_play_idx, StatusCondition::Asleep);
+        }
     }
 
     /// Attaches energies from the discard pile to a Pokemon in play.
