@@ -16,6 +16,8 @@ mod elesa_test;
 mod field_blower_test;
 #[path = "trainers/hala_test.rs"]
 mod hala_test;
+#[path = "trainers/ilima_test.rs"]
+mod ilima_test;
 #[path = "trainers/information_trainers_test.rs"]
 mod information_trainers_test;
 #[path = "trainers/iono_test.rs"]
@@ -34,6 +36,10 @@ mod lt_surge_juggler_test;
 mod marlon_test;
 #[path = "trainers/penny_test.rs"]
 mod penny_test;
+#[path = "trainers/piers_trainer_test.rs"]
+mod piers_trainer_test;
+#[path = "trainers/pokemon_center_lady_test.rs"]
+mod pokemon_center_lady_test;
 #[path = "trainers/professor_sada_test.rs"]
 mod professor_sada_test;
 #[path = "trainers/professor_turo_test.rs"]
