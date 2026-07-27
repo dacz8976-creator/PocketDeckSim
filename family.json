@@ -1,0 +1,356 @@
+[
+ {
+  "template": "Flip a coin. If heads, your opponent's Active Pokémon is now Paralyzed. If tails, your opponent's Active Pokémon is now Confused.",
+  "count": 4,
+  "cards": [
+   {
+    "id": "A4 065",
+    "name": "Lanturn ex",
+    "attack": "Flashing Signal",
+    "effect": "Flip a coin. If heads, your opponent's Active Pokémon is now Paralyzed. If tails, your opponent's Active Pokémon is now Confused."
+   },
+   {
+    "id": "A4 189",
+    "name": "Lanturn ex",
+    "attack": "Flashing Signal",
+    "effect": "Flip a coin. If heads, your opponent's Active Pokémon is now Paralyzed. If tails, your opponent's Active Pokémon is now Confused."
+   },
+   {
+    "id": "A4 204",
+    "name": "Lanturn ex",
+    "attack": "Flashing Signal",
+    "effect": "Flip a coin. If heads, your opponent's Active Pokémon is now Paralyzed. If tails, your opponent's Active Pokémon is now Confused."
+   },
+   {
+    "id": "A4b 142",
+    "name": "Lanturn ex",
+    "attack": "Flashing Signal",
+    "effect": "Flip a coin. If heads, your opponent's Active Pokémon is now Paralyzed. If tails, your opponent's Active Pokémon is now Confused."
+   }
+  ]
+ },
+ {
+  "template": "Flip a coin. If tails, during your next turn, this Pokémon can't attack.",
+  "count": 4,
+  "cards": [
+   {
+    "id": "A2a 060",
+    "name": "Origin Forme Dialga",
+    "attack": "Time Mash",
+    "effect": "Flip a coin. If tails, during your next turn, this Pokémon can't attack."
+   },
+   {
+    "id": "B1 129",
+    "name": "Hippowdon",
+    "attack": "Crashing Fangs",
+    "effect": "Flip a coin. If tails, during your next turn, this Pokémon can't attack."
+   },
+   {
+    "id": "B1 241",
+    "name": "Hippowdon",
+    "attack": "Crashing Fangs",
+    "effect": "Flip a coin. If tails, during your next turn, this Pokémon can't attack."
+   },
+   {
+    "id": "B2a 080",
+    "name": "Oinkologne",
+    "attack": "Leg Stomp",
+    "effect": "Flip a coin. If tails, during your next turn, this Pokémon can't attack."
+   }
+  ]
+ },
+ {
+  "template": "N Special Condition from among Asleep, Burned, Confused, Paralyzed, and Poisoned is chosen at random, and your opponent's Active Pokémon is now affected by that Special Condition. Any Special Conditions already affecting that Pokémon will not be chosen.",
+  "count": 4,
+  "cards": [
+   {
+    "id": "A3 111",
+    "name": "Alolan Muk ex",
+    "attack": "Chemical Panic",
+    "effect": "1 Special Condition from among Asleep, Burned, Confused, Paralyzed, and Poisoned is chosen at random, and your opponent's Active Pokémon is now affected by that Special Condition. Any Special Conditions already affecting that Pokémon will not be chosen."
+   },
+   {
+    "id": "A3 188",
+    "name": "Alolan Muk ex",
+    "attack": "Chemical Panic",
+    "effect": "1 Special Condition from among Asleep, Burned, Confused, Paralyzed, and Poisoned is chosen at random, and your opponent's Active Pokémon is now affected by that Special Condition. Any Special Conditions already affecting that Pokémon will not be chosen."
+   },
+   {
+    "id": "A3 206",
+    "name": "Alolan Muk ex",
+    "attack": "Chemical Panic",
+    "effect": "1 Special Condition from among Asleep, Burned, Confused, Paralyzed, and Poisoned is chosen at random, and your opponent's Active Pokémon is now affected by that Special Condition. Any Special Conditions already affecting that Pokémon will not be chosen."
+   },
+   {
+    "id": "A4b 235",
+    "name": "Alolan Muk ex",
+    "attack": "Chemical Panic",
+    "effect": "1 Special Condition from among Asleep, Burned, Confused, Paralyzed, and Poisoned is chosen at random, and your opponent's Active Pokémon is now affected by that Special Condition. Any Special Conditions already affecting that Pokémon will not be chosen."
+   }
+  ]
+ },
+ {
+  "template": "Flip a coin for each Pokémon you have in play. This attack does N damage for each heads.",
+  "count": 3,
+  "cards": [
+   {
+    "id": "A2 107",
+    "name": "Croagunk",
+    "attack": "Group Beatdown",
+    "effect": "Flip a coin for each Pokémon you have in play. This attack does 20 damage for each heads."
+   },
+   {
+    "id": "A2 108",
+    "name": "Toxicroak",
+    "attack": "Group Beatdown",
+    "effect": "Flip a coin for each Pokémon you have in play. This attack does 40 damage for each heads."
+   },
+   {
+    "id": "A2 173",
+    "name": "Croagunk",
+    "attack": "Group Beatdown",
+    "effect": "Flip a coin for each Pokémon you have in play. This attack does 20 damage for each heads."
+   }
+  ]
+ },
+ {
+  "template": "Flip a coin. If heads, your opponent's Active Pokémon is now Burned.",
+  "count": 3,
+  "cards": [
+   {
+    "id": "B1 029",
+    "name": "Arcanine",
+    "attack": "Fire Fang",
+    "effect": "Flip a coin. If heads, your opponent's Active Pokémon is now Burned."
+   },
+   {
+    "id": "P-A 073",
+    "name": "Toucannon",
+    "attack": "Beak Blast",
+    "effect": "Flip a coin. If heads, your opponent's Active Pokémon is now Burned."
+   },
+   {
+    "id": "P-B 013",
+    "name": "Arcanine",
+    "attack": "Fire Fang",
+    "effect": "Flip a coin. If heads, your opponent's Active Pokémon is now Burned."
+   }
+  ]
+ },
+ {
+  "template": "Flip a coin. If heads, your opponent's Active Pokémon is now Poisoned and Paralyzed.",
+  "count": 3,
+  "cards": [
+   {
+    "id": "A4a 016",
+    "name": "Tentacruel",
+    "attack": "Stun Poison",
+    "effect": "Flip a coin. If heads, your opponent's Active Pokémon is now Poisoned and Paralyzed."
+   },
+   {
+    "id": "B1 153",
+    "name": "Drapion",
+    "attack": "Stun Poison",
+    "effect": "Flip a coin. If heads, your opponent's Active Pokémon is now Poisoned and Paralyzed."
+   },
+   {
+    "id": "B3 108",
+    "name": "Amoonguss",
+    "attack": "Dangerous Spores",
+    "effect": "Flip a coin. If heads, your opponent's Active Pokémon is now Poisoned and Paralyzed."
+   }
+  ]
+ },
+ {
+  "template": "Flip N coins. This attack does N damage for each heads. If at least N of them is heads, your opponent's Active Pokémon is now Burned.",
+  "count": 2,
+  "cards": [
+   {
+    "id": "A3 027",
+    "name": "Alolan Marowak",
+    "attack": "Burning Bonemerang",
+    "effect": "Flip 2 coins. This attack does 70 damage for each heads. If at least 1 of them is heads, your opponent's Active Pokémon is now Burned."
+   },
+   {
+    "id": "A3 160",
+    "name": "Alolan Marowak",
+    "attack": "Burning Bonemerang",
+    "effect": "Flip 2 coins. This attack does 70 damage for each heads. If at least 1 of them is heads, your opponent's Active Pokémon is now Burned."
+   }
+  ]
+ },
+ {
+  "template": "Flip N coins. This attack does N damage for each heads. This Pokémon is now Confused.",
+  "count": 2,
+  "cards": [
+   {
+    "id": "A4 003",
+    "name": "Bellossom",
+    "attack": "Petal Dance",
+    "effect": "Flip 3 coins. This attack does 60 damage for each heads. This Pokémon is now Confused."
+   },
+   {
+    "id": "A4 163",
+    "name": "Bellossom",
+    "attack": "Petal Dance",
+    "effect": "Flip 3 coins. This attack does 60 damage for each heads. This Pokémon is now Confused."
+   }
+  ]
+ },
+ {
+  "template": "Your opponent's Active Pokémon is now Poisoned. Do N damage to this Pokémon instead of the usual amount for this Special Condition.",
+  "count": 2,
+  "cards": [
+   {
+    "id": "A2a 052",
+    "name": "Toxicroak",
+    "attack": "Toxic",
+    "effect": "Your opponent's Active Pokémon is now Poisoned. Do 20 damage to this Pokémon instead of the usual amount for this Special Condition."
+   },
+   {
+    "id": "B3b 047",
+    "name": "Toxapex",
+    "attack": "Severe Poison",
+    "effect": "Your opponent's Active Pokémon is now Poisoned. Do 40 damage to this Pokémon instead of the usual amount for this Special Condition."
+   }
+  ]
+ },
+ {
+  "template": "Your opponent's Active Pokémon is now Poisoned. During your opponent's next turn, that Pokémon can't retreat.",
+  "count": 2,
+  "cards": [
+   {
+    "id": "B2 005",
+    "name": "Roserade",
+    "attack": "Poison Ring",
+    "effect": "Your opponent's Active Pokémon is now Poisoned. During your opponent's next turn, that Pokémon can't retreat."
+   },
+   {
+    "id": "B2 157",
+    "name": "Roserade",
+    "attack": "Poison Ring",
+    "effect": "Your opponent's Active Pokémon is now Poisoned. During your opponent's next turn, that Pokémon can't retreat."
+   }
+  ]
+ },
+ {
+  "template": "Both Active Pokémon are now Asleep.",
+  "count": 1,
+  "cards": [
+   {
+    "id": "A4 091",
+    "name": "Musharna",
+    "attack": "Dream Dance",
+    "effect": "Both Active Pokémon are now Asleep."
+   }
+  ]
+ },
+ {
+  "template": "Flip N coins. If both of them are tails, this attack does nothing.",
+  "count": 1,
+  "cards": [
+   {
+    "id": "B1 176",
+    "name": "Druddigon",
+    "attack": "Giga Claw",
+    "effect": "Flip 2 coins. If both of them are tails, this attack does nothing."
+   }
+  ]
+ },
+ {
+  "template": "Flip N coins. This attack does N damage for each heads.",
+  "count": 1,
+  "cards": [
+   {
+    "id": "B3a 058",
+    "name": "Farigiraf",
+    "attack": "Double Hit",
+    "effect": "Flip 2 coins. This attack does 60 damage for each heads."
+   }
+  ]
+ },
+ {
+  "template": "Flip N coins. This attack does N damage for each heads. If at least N of them are heads, your opponent's Active Pokémon is now Poisoned.",
+  "count": 1,
+  "cards": [
+   {
+    "id": "A2 106",
+    "name": "Drapion",
+    "attack": "Cross Poison",
+    "effect": "Flip 4 coins. This attack does 40 damage for each heads. If at least 2 of them are heads, your opponent's Active Pokémon is now Poisoned."
+   }
+  ]
+ },
+ {
+  "template": "Flip N coins. This attack does N damage for each heads. If this Pokémon has Lucky Mittens attached, flip N coins instead.",
+  "count": 1,
+  "cards": [
+   {
+    "id": "B1 186",
+    "name": "Ambipom",
+    "attack": "Excited Tail",
+    "effect": "Flip 2 coins. This attack does 30 damage for each heads. If this Pokémon has Lucky Mittens attached, flip 4 coins instead."
+   }
+  ]
+ },
+ {
+  "template": "Flip a coin for each Tandemaus and Maushold you have in play. This attack does N damage for each heads.",
+  "count": 1,
+  "cards": [
+   {
+    "id": "B2 143",
+    "name": "Maushold",
+    "attack": "Family Beatdown",
+    "effect": "Flip a coin for each Tandemaus and Maushold you have in play. This attack does 60 damage for each heads."
+   }
+  ]
+ },
+ {
+  "template": "Flip a coin. If heads, this attack does N damage to your opponent's Active Pokémon. If tails, heal N damage from your opponent's Active Pokémon.",
+  "count": 1,
+  "cards": [
+   {
+    "id": "B2 032",
+    "name": "Delibird",
+    "attack": "Box of Surprises",
+    "effect": "Flip a coin. If heads, this attack does 70 damage to your opponent's Active Pokémon. If tails, heal 30 damage from your opponent's Active Pokémon."
+   }
+  ]
+ },
+ {
+  "template": "Flip a coin. If heads, this attack does N more damage. If tails, this Pokémon also does N damage to itself.",
+  "count": 1,
+  "cards": [
+   {
+    "id": "A2a 017",
+    "name": "Whiscash",
+    "attack": "Thrash",
+    "effect": "Flip a coin. If heads, this attack does 60 more damage. If tails, this Pokémon also does 20 damage to itself."
+   }
+  ]
+ },
+ {
+  "template": "Flip a coin. If tails, this attack does nothing. If heads, your opponent's Active Pokémon is now Paralyzed.",
+  "count": 1,
+  "cards": [
+   {
+    "id": "A3b 054",
+    "name": "Drampa",
+    "attack": "Dragon Breath",
+    "effect": "Flip a coin. If tails, this attack does nothing. If heads, your opponent's Active Pokémon is now Paralyzed."
+   }
+  ]
+ },
+ {
+  "template": "Your opponent's Active Pokémon is now Poisoned and Burned.",
+  "count": 1,
+  "cards": [
+   {
+    "id": "A3 036",
+    "name": "Salazzle",
+    "attack": "Heated Poison",
+    "effect": "Your opponent's Active Pokémon is now Poisoned and Burned."
+   }
+  ]
+ }
+]
