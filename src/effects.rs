@@ -79,7 +79,37 @@ pub enum CardEffect {
     CoinFlipToReduceIncomingDamage {
         amount: u32,
     },
+    // ---------------------------------------------------------------------------------------------
+    // "Until this Pokémon leaves the Active Spot" / next-turn lock effects.
+    // ---------------------------------------------------------------------------------------------
+    /// This Pokémon has no Abilities (Budew's Prickly Powder). Read at the single in-play Ability
+    /// chokepoint (`get_in_play_ability_mechanic` / `has_any_in_play_ability`), exactly like Alolan
+    /// Muk's Power of Alchemy, so no Ability read can leak past it.
+    NoAbilities,
+    /// This Pokémon's Retreat Cost is `amount` [C] more (Oranguru's Primate's Trap). Counterpart of
+    /// `TurnEffect::ReducedRetreatCost`, but scoped to one Pokémon rather than to a player's turn.
+    IncreasedRetreatCost {
+        amount: u8,
+    },
+    /// This Pokémon takes `amount` less damage from attacks by the opponent's Pokémon ex
+    /// (Aegislash's Superb Shield). Like `ReducedDamage`, but gated on the attacker being an ex.
+    ReducedDamageFromEx {
+        amount: u32,
+    },
+    /// If Energy is attached to this Pokémon from its controller's Energy Zone, it becomes Asleep
+    /// (Gothitelle's Stellar Cradle). Checked in `State::attach_energy_from_zone`.
+    AsleepIfEnergyAttached,
+    /// While this Pokémon is in the Active Spot, when the *opponent's* Active Pokémon retreats,
+    /// deal `amount` damage to the Pokémon that was promoted (Galarian Stunfisk's Snapping Trap).
+    DamageNewActiveOnRetreat {
+        amount: u32,
+    },
 }
+
+/// `CardEffect` duration for effects that read "until this Pokémon leaves the Active Spot": they
+/// never expire on their own, and are wiped by `PlayedCard::clear_status_and_effects` when the
+/// Pokémon is benched (see `apply_activate`). `u8::MAX` turns outlives any game.
+pub const UNTIL_LEAVES_ACTIVE_SPOT: u8 = u8::MAX;
 
 /// Which of a player's Pokémon a `TurnEffect::ReducedDamageForTarget` protects. The defensive
 /// Supporters/Items all read "During your opponent's next turn, <scope> take -N damage from
@@ -162,4 +192,20 @@ pub enum TurnEffect {
         amount: u8,
         pokemon_names: Vec<String>,
     },
+    /// "During your next turn, attacks used by your [`energy_type`] Pokémon do +`amount` damage to
+    /// your opponent's Active Pokémon" (Oricorio's and Meloetta's Inspiring Dance). `energy_type`
+    /// is `None` when the boost covers all of that player's Pokémon.
+    ///
+    /// Distinct from `IncreasedDamage`, which is un-scoped and is only ever added for the current
+    /// turn (Giovanni). A "during your next turn" effect has to survive the opponent's turn to
+    /// reach yours, so it must name the player it belongs to or it would boost their attacks too.
+    IncreasedDamageForPlayer {
+        amount: u32,
+        player: usize,
+        energy_type: Option<EnergyType>,
+    },
+    /// "During your opponent's next turn, they can't play any Pokémon from their hand to evolve
+    /// their Pokémon" (Malamar's Evolution Jammer). Like the other `No*Cards` lock effects, this is
+    /// un-scoped and relies on being added for the opponent's turn only.
+    NoEvolutionFromHand,
 }

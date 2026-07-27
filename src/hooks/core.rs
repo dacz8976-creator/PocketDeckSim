@@ -876,6 +876,7 @@ fn get_increased_turn_effect_modifiers(
     target_is_ex: bool,
     attacker_is_eevee_evolution: bool,
     attacking_pokemon: &crate::models::PlayedCard,
+    attacking_player: usize,
 ) -> u32 {
     if !is_active_to_active {
         return 0;
@@ -885,6 +886,19 @@ fn get_increased_turn_effect_modifiers(
         .iter()
         .map(|effect| match effect {
             TurnEffect::IncreasedDamage { amount } => *amount,
+            // Inspiring Dance (Oricorio / Meloetta). Player-scoped because it lives across the
+            // opponent's turn to reach "your next turn"; `energy_type: None` means every Pokémon.
+            TurnEffect::IncreasedDamageForPlayer {
+                amount,
+                player,
+                energy_type,
+            } if *player == attacking_player
+                && energy_type.is_none_or(|required| {
+                    attacking_pokemon.get_energy_type() == Some(required)
+                }) =>
+            {
+                *amount
+            }
             TurnEffect::IncreasedDamageForType {
                 amount,
                 energy_type,
@@ -969,6 +983,7 @@ fn get_reduced_card_effect_modifiers(
     state: &State,
     is_active_to_active: bool,
     target_player: usize,
+    attacker_is_ex: bool,
 ) -> u32 {
     if !is_active_to_active {
         return 0;
@@ -977,9 +992,10 @@ fn get_reduced_card_effect_modifiers(
         .get_active(target_player)
         .get_active_effects()
         .iter()
-        .filter(|effect| matches!(effect, CardEffect::ReducedDamage { .. }))
         .map(|effect| match effect {
             CardEffect::ReducedDamage { amount } => *amount,
+            // Aegislash's Superb Shield: same reduction, but only against the opponent's ex.
+            CardEffect::ReducedDamageFromEx { amount } if attacker_is_ex => *amount,
             _ => 0,
         })
         .sum::<u32>()
@@ -1326,6 +1342,7 @@ pub(crate) fn modify_damage(
         target_is_ex,
         attacker_is_eevee_evolution,
         attacking_pokemon,
+        attacking_player,
     );
     let increased_attack_specific_modifiers = get_increased_attack_specific_modifiers(
         attacking_pokemon,
@@ -1337,7 +1354,12 @@ pub(crate) fn modify_damage(
     let reduced_card_effect_modifiers = if skip_target_effects {
         0
     } else {
-        get_reduced_card_effect_modifiers(state, is_active_to_active, target_player)
+        get_reduced_card_effect_modifiers(
+            state,
+            is_active_to_active,
+            target_player,
+            attacking_pokemon.card.is_ex(),
+        )
     };
     let increased_vulnerability_modifiers = if skip_target_effects {
         0

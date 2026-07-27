@@ -1,6 +1,6 @@
 use crate::{
     actions::abilities::{AbilityMechanic, DeckSearchKind},
-    actions::{ability_mechanic_from_effect, basic_abilities_suppressed, SimpleAction},
+    actions::{abilities_switched_off, ability_mechanic_from_effect, SimpleAction},
     hooks::is_ultra_beast,
     models::{EnergyType, PlayedCard},
     tools::is_tool_card,
@@ -28,11 +28,11 @@ fn can_use_ability(state: &State, (in_play_index, card): (usize, &PlayedCard)) -
         return false;
     }
 
-    // Power of Alchemy (Alolan Muk): a Basic Pokémon in play "has no Abilities", so its activated
-    // Ability disappears from move generation entirely. Checked against the shared suppression
-    // predicate rather than `get_in_play_ability_mechanic`, so that a suppressed Ability is still
-    // distinguishable from an *unimplemented* one — which must keep panicking below.
-    if basic_abilities_suppressed(state) && card.card.is_basic() {
+    // Power of Alchemy (Alolan Muk) and Budew's Prickly Powder both take a Pokémon's Abilities
+    // away, so its activated Ability disappears from move generation entirely. Checked against the
+    // shared predicate rather than `get_in_play_ability_mechanic`, so that a switched-off Ability
+    // is still distinguishable from an *unimplemented* one — which must keep panicking below.
+    if abilities_switched_off(state, card) {
         return false;
     }
 

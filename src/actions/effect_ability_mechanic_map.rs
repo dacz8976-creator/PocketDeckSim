@@ -784,10 +784,26 @@ pub(crate) fn get_in_play_ability_mechanic(
     state: &State,
     pokemon: &PlayedCard,
 ) -> Option<&'static AbilityMechanic> {
-    if pokemon.card.is_basic() && basic_abilities_suppressed(state) {
+    if abilities_switched_off(state, pokemon) {
         return None;
     }
     get_ability_mechanic(&pokemon.card)
+}
+
+/// The two ways an in-play Pokémon can lose its printed Ability: board-wide suppression of Basic
+/// Pokémon (Alolan Muk's Power of Alchemy) and a per-Pokémon `CardEffect::NoAbilities` applied by
+/// an attack (Budew's Prickly Powder). Kept together here so both chokepoint accessors — and
+/// therefore every Ability read in the engine — apply them identically.
+pub(crate) fn abilities_switched_off(state: &State, pokemon: &PlayedCard) -> bool {
+    if pokemon.card.is_basic() && basic_abilities_suppressed(state) {
+        return true;
+    }
+    // `get_active_effects` (the raw stored list) rather than `get_effective_card_effects`, which
+    // derives effects *from* abilities and would recurse back into this function.
+    pokemon
+        .get_active_effects()
+        .iter()
+        .any(|effect| matches!(effect, CardEffect::NoAbilities))
 }
 
 /// The suppression-aware lookup for a card that is *entering* play — being placed onto the Bench
@@ -812,8 +828,7 @@ pub(crate) fn get_entering_play_ability_mechanic(
 /// unimplemented Ability still counts as an Ability; the only thing that takes it away is
 /// board-wide suppression.
 pub(crate) fn has_any_in_play_ability(state: &State, pokemon: &PlayedCard) -> bool {
-    pokemon.card.get_ability().is_some()
-        && !(pokemon.card.is_basic() && basic_abilities_suppressed(state))
+    pokemon.card.get_ability().is_some() && !abilities_switched_off(state, pokemon)
 }
 
 /// [`get_in_play_ability_mechanic`] + equality, the suppression-aware counterpart of

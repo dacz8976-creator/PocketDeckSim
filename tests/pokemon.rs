@@ -1,5 +1,7 @@
 #[path = "pokemon/additional_ability_logic_test.rs"]
 mod additional_ability_logic_test;
+#[path = "pokemon/aegislash_superb_shield_test.rs"]
+mod aegislash_superb_shield_test;
 #[path = "pokemon/aipom_imitate_test.rs"]
 mod aipom_imitate_test;
 #[path = "pokemon/alcremie_test.rs"]
@@ -36,6 +38,8 @@ mod bonsly_teary_attack_test;
 mod brambleghast_accept_pain_test;
 #[path = "pokemon/breloom_test.rs"]
 mod breloom_test;
+#[path = "pokemon/budew_prickly_powder_test.rs"]
+mod budew_prickly_powder_test;
 #[path = "pokemon/camerupt_eruption_test.rs"]
 mod camerupt_eruption_test;
 #[path = "pokemon/carbink_glittering_gift_test.rs"]
@@ -98,6 +102,8 @@ mod eiscue_ice_face_test;
 mod emboar_flare_storm_test;
 #[path = "pokemon/emolga_dedenne_ex_tool_damage_test.rs"]
 mod emolga_dedenne_ex_tool_damage_test;
+#[path = "pokemon/espathra_lumina_crash_test.rs"]
+mod espathra_lumina_crash_test;
 #[path = "pokemon/falinks_coordinated_unit_test.rs"]
 mod falinks_coordinated_unit_test;
 #[path = "pokemon/flutter_mane_ex_test.rs"]
@@ -110,6 +116,8 @@ mod free_tier_effect_mapping_test;
 mod galarian_cursola_perish_body_test;
 #[path = "pokemon/galarian_perrserker_dig_up_test.rs"]
 mod galarian_perrserker_dig_up_test;
+#[path = "pokemon/galarian_stunfisk_snapping_trap_test.rs"]
+mod galarian_stunfisk_snapping_trap_test;
 #[path = "pokemon/gallade_test.rs"]
 mod gallade_test;
 #[path = "pokemon/gardevoir_psy_turbo_test.rs"]
@@ -122,6 +130,8 @@ mod gigalith_archeops_next_turn_test;
 mod glimmora_point_denial_test;
 #[path = "pokemon/golurk_heavy_rocket_test.rs"]
 mod golurk_heavy_rocket_test;
+#[path = "pokemon/gothitelle_stellar_cradle_test.rs"]
+mod gothitelle_stellar_cradle_test;
 #[path = "pokemon/grafaiai_poison_coating_test.rs"]
 mod grafaiai_poison_coating_test;
 #[path = "pokemon/grovyle_slicing_snipe_test.rs"]
@@ -152,6 +162,8 @@ mod honchkrow_evil_admonition_test;
 mod hoothoot_insomnia_test;
 #[path = "pokemon/houndstone_last_respects_test.rs"]
 mod houndstone_last_respects_test;
+#[path = "pokemon/inspiring_dance_test.rs"]
+mod inspiring_dance_test;
 #[path = "pokemon/iron_bundle_ex_test.rs"]
 mod iron_bundle_ex_test;
 #[path = "pokemon/iron_bundle_test.rs"]
@@ -190,10 +202,14 @@ mod lucario_b3_test;
 mod lucario_fighting_coach_test;
 #[path = "pokemon/lunala_ex_test.rs"]
 mod lunala_ex_test;
+#[path = "pokemon/machop_shatter_test.rs"]
+mod machop_shatter_test;
 #[path = "pokemon/magneton_test.rs"]
 mod magneton_test;
 #[path = "pokemon/magnezone_mirror_shot_test.rs"]
 mod magnezone_mirror_shot_test;
+#[path = "pokemon/malamar_evolution_jammer_test.rs"]
+mod malamar_evolution_jammer_test;
 #[path = "pokemon/mandibuzz_blindside_test.rs"]
 mod mandibuzz_blindside_test;
 #[path = "pokemon/marshadow_revenge_test.rs"]
@@ -214,8 +230,14 @@ mod mega_steelix_adamantine_rolling_test;
 mod meowstic_test;
 #[path = "pokemon/meowth_carefree_steps_test.rs"]
 mod meowth_carefree_steps_test;
+#[path = "pokemon/mew_miraculous_memory_test.rs"]
+mod mew_miraculous_memory_test;
 #[path = "pokemon/milotic_ex_aqua_charge_test.rs"]
 mod milotic_ex_aqua_charge_test;
+#[path = "pokemon/miltank_rolling_frenzy_test.rs"]
+mod miltank_rolling_frenzy_test;
+#[path = "pokemon/mimikyu_try_to_imitate_test.rs"]
+mod mimikyu_try_to_imitate_test;
 #[path = "pokemon/miraidon_ex_test.rs"]
 mod miraidon_ex_test;
 #[path = "pokemon/modified_poison_damage_test.rs"]
@@ -226,10 +248,14 @@ mod morpeko_test;
 mod ninetales_ember_dance_test;
 #[path = "pokemon/no_retreat_cost_abilities_test.rs"]
 mod no_retreat_cost_abilities_test;
+#[path = "pokemon/octillery_octazooka_test.rs"]
+mod octillery_octazooka_test;
 #[path = "pokemon/opponent_hand_discard_attacks_test.rs"]
 mod opponent_hand_discard_attacks_test;
 #[path = "pokemon/opponent_hand_shuffle_attacks_test.rs"]
 mod opponent_hand_shuffle_attacks_test;
+#[path = "pokemon/oranguru_primates_trap_test.rs"]
+mod oranguru_primates_trap_test;
 #[path = "pokemon/passimian_ex_offload_pass_test.rs"]
 mod passimian_ex_offload_pass_test;
 #[path = "pokemon/politoed_lordly_cheering_test.rs"]
@@ -242,10 +268,14 @@ mod porygonz_cyberjack_test;
 mod primarina_melodious_healing_test;
 #[path = "pokemon/psyduck_test.rs"]
 mod psyduck_test;
+#[path = "pokemon/purrloin_playful_knockdown_test.rs"]
+mod purrloin_playful_knockdown_test;
 #[path = "pokemon/purugly_interrupt_test.rs"]
 mod purugly_interrupt_test;
 #[path = "pokemon/pyukumuku_innards_out_test.rs"]
 mod pyukumuku_innards_out_test;
+#[path = "pokemon/quagsire_amnesia_test.rs"]
+mod quagsire_amnesia_test;
 #[path = "pokemon/rampardos_head_smash_test.rs"]
 mod rampardos_head_smash_test;
 #[path = "pokemon/regigigas_seal_of_antiquity_test.rs"]
@@ -322,6 +352,8 @@ mod vaporeon_ex_test;
 mod vulpix_tail_whip_test;
 #[path = "pokemon/wailord_test.rs"]
 mod wailord_test;
+#[path = "pokemon/watchog_psych_up_test.rs"]
+mod watchog_psych_up_test;
 #[path = "pokemon/whiscash_thrash_test.rs"]
 mod whiscash_thrash_test;
 #[path = "pokemon/wishiwashi_tandemaus_bench_search_test.rs"]
