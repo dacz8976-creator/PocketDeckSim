@@ -265,6 +265,59 @@ pub(crate) fn search_and_bench_by_name(state: &State, card_name: String) -> Outc
     )
 }
 
+/// "Put `count` random cards from among <names> from your deck onto your Bench" (Wishiwashi's Call
+/// for Family, Tandemaus' Flock). The multi-name, multi-card generalization of
+/// [`search_and_bench_by_name`]: one equally likely branch per unordered combination the attack
+/// could pull, so the search bots price the real distribution rather than a pre-picked answer.
+///
+/// Takes fewer cards than asked for when the deck holds fewer, and stops early when the Bench fills
+/// up. The deck is always shuffled afterwards, even when nothing was found.
+pub(crate) fn search_and_bench_by_names(
+    state: &State,
+    names: Vec<String>,
+    count: usize,
+) -> Outcomes {
+    let eligible: Vec<Card> = state.decks[state.current_player]
+        .cards
+        .iter()
+        .filter(|card| names.iter().any(|name| card.get_name() == *name))
+        .cloned()
+        .collect();
+
+    let draw_count = min(count, eligible.len());
+    if draw_count == 0 {
+        return Outcomes::single_fn(|rng, state, action| {
+            state.decks[action.actor].shuffle(false, rng);
+        });
+    }
+
+    let combinations = generate_combinations(&eligible, draw_count);
+    let num_outcomes = combinations.len();
+    let probabilities = vec![1.0 / (num_outcomes as f64); num_outcomes];
+    let mutations: Mutations = combinations
+        .into_iter()
+        .map(|combo| -> crate::actions::apply_action_helpers::Mutation {
+            Box::new(move |rng, state, action| {
+                for card in &combo {
+                    let Some(bench_idx) = state.in_play_pokemon[action.actor]
+                        .iter()
+                        .position(|slot| slot.is_none())
+                    else {
+                        debug!("No bench space left, stopping the search early");
+                        break;
+                    };
+                    // The card must still be in the deck: the combination was drawn from it and
+                    // nothing else has touched it in between.
+                    apply_place_card(state, action.actor, card, bench_idx, true);
+                }
+                state.decks[action.actor].shuffle(false, rng);
+            })
+        })
+        .collect();
+
+    Outcomes::from_parts(probabilities, mutations)
+}
+
 pub(crate) fn search_and_bench_basic(state: &State) -> Outcomes {
     search_and_bench_with_filter(
         state,

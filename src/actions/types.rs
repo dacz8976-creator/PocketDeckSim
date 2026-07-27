@@ -192,6 +192,15 @@ pub enum SimpleAction {
     ApplyStatusToOpponentActive {
         condition: StatusCondition,
     },
+    /// Gyarados' Wild Swing: discard the chosen Benched Pokémon of your own (and everything
+    /// attached to them), then deal `damage` to the opponent's Active Pokémon. The two halves have
+    /// to travel together because the damage is a function of how many Pokémon were discarded, so
+    /// the player's choice decides both at once. Applying it queues the damage as a follow-up
+    /// `ApplyDamage` so the ordinary damage pipeline (modifiers, counterattacks, Guts) still runs.
+    DiscardOwnBenchedThenDamage {
+        in_play_idxs: Vec<usize>,
+        damage: u32,
+    },
     Noop, // No operation, used to have the user say "no" to a question
 }
 
@@ -380,6 +389,10 @@ impl fmt::Display for SimpleAction {
             SimpleAction::ApplyStatusToOpponentActive { condition } => {
                 write!(f, "ApplyStatusToOpponentActive({condition:?})")
             }
+            SimpleAction::DiscardOwnBenchedThenDamage {
+                in_play_idxs,
+                damage,
+            } => write!(f, "DiscardOwnBenchedThenDamage({in_play_idxs:?}, {damage})"),
             SimpleAction::Noop => write!(f, "Noop"),
         }
     }
