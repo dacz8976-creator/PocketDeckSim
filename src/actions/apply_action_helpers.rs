@@ -6,15 +6,16 @@ use rand::rngs::StdRng;
 
 use crate::{
     actions::{
-        abilities::AbilityMechanic, effect_ability_mechanic_map::get_in_play_ability_mechanic,
+        abilities::{AbilityMechanic, RandomEvolutionTrigger},
+        effect_ability_mechanic_map::get_in_play_ability_mechanic,
         shared_mutations, SimpleAction,
     },
     card_ids::CardId,
     effects::{CardEffect, TurnEffect},
     hooks::{
-        get_counterattack_damage, maybe_attach_energy_on_damaged, modify_damage,
-        on_attack_knockout, on_end_turn, on_knockout, should_poison_attacker,
-        DamageModifierContext,
+        get_counterattack_damage, maybe_attach_energy_on_damaged,
+        maybe_shuffle_attacker_hand_card_on_damaged, modify_damage, on_attack_knockout,
+        on_end_turn, on_knockout, should_poison_attacker, DamageModifierContext,
     },
     models::{Card, StatusCondition, TrainerType},
     state::GameOutcome,
@@ -137,9 +138,10 @@ fn start_turn_ability_outcomes(state: &State, player: usize) -> (Probabilities, 
             )
             .into_branches()
         }
-        AbilityMechanic::QuickGrowth => {
-            shared_mutations::quick_growth_evolution_outcomes_for_player(player, state)
-                .into_branches()
+        AbilityMechanic::RandomEvolutionFromDeck {
+            trigger: RandomEvolutionTrigger::EndOfOpponentTurnIfActive,
+        } => {
+            shared_mutations::random_evolution_from_deck_outcomes(player, 0, state).into_branches()
         }
         _ => (vec![1.0], vec![noop_mutation()]),
     }
@@ -592,6 +594,7 @@ pub(crate) fn handle_damage_only(
         // board) does not feed the defender's Energy Zone.
         if target_player != attacking_player {
             maybe_attach_energy_on_damaged(state, target_player);
+            maybe_shuffle_attacker_hand_card_on_damaged(state, target_player, attacking_player);
         }
     }
 }
@@ -712,10 +715,11 @@ pub(crate) fn handle_knockouts(
             // captured here, while the card is still in play. Fossils have no energy type and are
             // covered only by the untyped flag below.
             if is_from_active_attack && ko_receiver != attacking_ref.0 {
-                if let Some(energy_type) = state.in_play_pokemon[ko_receiver][ko_pokemon_idx]
+                let ko_types = state.in_play_pokemon[ko_receiver][ko_pokemon_idx]
                     .as_ref()
-                    .and_then(|pokemon| pokemon.get_energy_type())
-                {
+                    .map(|pokemon| state.pokemon_energy_types(pokemon))
+                    .unwrap_or_default();
+                for energy_type in ko_types {
                     state
                         .knocked_out_types_by_opponent_attack_this_turn
                         .push(energy_type);

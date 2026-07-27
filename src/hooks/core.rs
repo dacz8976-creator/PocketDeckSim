@@ -160,7 +160,7 @@ pub(crate) fn on_evolve(actor: usize, state: &mut State, to_card: &Card, from_ha
             let possible_moves: Vec<SimpleAction> = state
                 .enumerate_in_play_pokemon(actor)
                 .filter(|(_, pokemon)| {
-                    pokemon.is_damaged() && pokemon.get_energy_type() == Some(*energy_type)
+                    pokemon.is_damaged() && state.pokemon_is_type(pokemon, *energy_type)
                 })
                 .map(|(in_play_idx, _)| SimpleAction::Heal {
                     in_play_idx,
@@ -203,6 +203,15 @@ pub(crate) fn on_evolve(actor: usize, state: &mut State, to_card: &Card, from_ha
             card_kind,
             selection,
         }) => offer_put_cards_from_discard_to_hand(actor, state, *card_kind, *selection),
+        Some(AbilityMechanic::OpponentShuffleHandAndDrawOnEvolve) => {
+            state.move_generation_stack.push((
+                actor,
+                vec![
+                    SimpleAction::OpponentShuffleHandAndDrawRemainingPoints,
+                    SimpleAction::Noop,
+                ],
+            ));
+        }
         Some(AbilityMechanic::DiscardRandomEnergyFromOpponentActiveOnEvolve) => {
             let opponent = (actor + 1) % 2;
             let has_energy = state
@@ -572,7 +581,7 @@ fn get_metal_core_barrier_reduction(
         .expect("Defending Pokemon should be there when checking Metal Core Barrier");
     // Metal Core Barrier: "The [M] Pokémon this card is attached to takes -50 damage..."
     if has_tool(defending_pokemon, CardId::B2148MetalCoreBarrier)
-        && defending_pokemon.get_energy_type() == Some(EnergyType::Metal)
+        && state.pokemon_is_type(defending_pokemon, EnergyType::Metal)
     {
         debug!("Metal Core Barrier: Reducing damage by 50");
         return 50;
@@ -595,7 +604,7 @@ fn get_steel_apron_reduction(
         .expect("Defending Pokemon should be there when checking Steel Apron");
     // Steel Apron: "The [M] Pokémon this card is attached to takes -10 damage..."
     if has_tool(defending_pokemon, CardId::A4153SteelApron)
-        && defending_pokemon.get_energy_type() == Some(EnergyType::Metal)
+        && state.pokemon_is_type(defending_pokemon, EnergyType::Metal)
     {
         debug!("Steel Apron: Reducing damage by 10");
         return 10;
@@ -719,9 +728,10 @@ fn get_conditional_self_damage_reduction(
         Some(AbilityMechanic::ReduceDamageFromTypedAttackers {
             energy_types,
             amount,
-        }) if attacking_pokemon
-            .get_energy_type()
-            .is_some_and(|attacker_type| energy_types.contains(&attacker_type)) =>
+        }) if state
+            .pokemon_energy_types(attacking_pokemon)
+            .iter()
+            .any(|attacker_type| energy_types.contains(attacker_type)) =>
         {
             *amount
         }
@@ -881,6 +891,7 @@ fn get_increased_turn_effect_modifiers(
     if !is_active_to_active {
         return 0;
     }
+    let attacker_energy_types = state.pokemon_energy_types(attacking_pokemon);
     state
         .get_current_turn_effects()
         .iter()
@@ -893,16 +904,14 @@ fn get_increased_turn_effect_modifiers(
                 player,
                 energy_type,
             } if *player == attacking_player
-                && energy_type.is_none_or(|required| {
-                    attacking_pokemon.get_energy_type() == Some(required)
-                }) =>
+                && energy_type.is_none_or(|required| attacker_energy_types.contains(&required)) =>
             {
                 *amount
             }
             TurnEffect::IncreasedDamageForType {
                 amount,
                 energy_type,
-            } if attacking_pokemon.get_energy_type() == Some(*energy_type) => *amount,
+            } if attacker_energy_types.contains(energy_type) => *amount,
             TurnEffect::IncreasedDamageAgainstEx { amount } if target_is_ex => *amount,
             TurnEffect::IncreasedDamageForEeveeEvolutions { amount }
                 if attacker_is_eevee_evolution =>
@@ -940,9 +949,7 @@ fn get_increased_turn_effect_modifiers(
             TurnEffect::IncreasedDamageForTypeAgainstEx {
                 amount,
                 energy_type,
-            } if target_is_ex && attacking_pokemon.get_energy_type() == Some(*energy_type) => {
-                *amount
-            }
+            } if target_is_ex && attacker_energy_types.contains(energy_type) => *amount,
             _ => 0,
         })
         .sum::<u32>()
@@ -1032,7 +1039,7 @@ fn get_turn_effect_damage_reduction(
     if !is_from_active_attack || attacking_player == target_player {
         return 0;
     }
-    let target_energy_type = target_pokemon.get_energy_type();
+    let target_energy_types = state.pokemon_energy_types(target_pokemon);
     let attacker_is_ex = attacking_pokemon.card.is_ex();
     state
         .get_current_turn_effects()
@@ -1042,7 +1049,7 @@ fn get_turn_effect_damage_reduction(
                 amount,
                 energy_type,
                 player,
-            } if *player == target_player && target_energy_type == Some(*energy_type) => {
+            } if *player == target_player && target_energy_types.contains(energy_type) => {
                 Some(*amount)
             }
             TurnEffect::ReducedDamageForTarget {
@@ -1143,12 +1150,14 @@ fn get_weakness_application(
     }
 
     if let Card::Pokemon(pokemon_card) = &receiving.card {
-        if pokemon_card.weakness == attacking_pokemon.card.get_type() {
-            debug!(
-                "Weakness! {:?} is weak to {:?}",
-                pokemon_card,
-                attacking_pokemon.card.get_type()
-            );
+        // Through the type chokepoint: Urshifu's Double Type makes the attacker count as two
+        // types, and Weakness triggers if the defender is weak to either of them.
+        let attacker_types = state.pokemon_energy_types(attacking_pokemon);
+        if pokemon_card
+            .weakness
+            .is_some_and(|weakness| attacker_types.contains(&weakness))
+        {
+            debug!("Weakness! {pokemon_card:?} is weak to one of {attacker_types:?}");
             // Bounded Field: ×2 all damage (including other modifiers) for non-Mega-ex attackers
             if is_bounded_field_active(state)
                 && !(attacking_pokemon.card.is_mega() && attacking_pokemon.card.is_ex())
@@ -1424,13 +1433,14 @@ pub(crate) fn modify_damage(
     // Only applies to attacks against the opponent's Active Pokemon
     let stadium_damage_bonus = if is_active_to_active {
         let training_area = get_training_area_damage_bonus(state, get_stage(attacking_pokemon));
-        let arena_of_antiquity = get_arena_of_antiquity_damage_bonus(
-            state,
-            attacking_pokemon
-                .get_energy_type()
-                .unwrap_or(EnergyType::Colorless),
-            target_is_ex,
-        );
+        let arena_of_antiquity = state
+            .pokemon_energy_types(attacking_pokemon)
+            .into_iter()
+            .map(|energy_type| {
+                get_arena_of_antiquity_damage_bonus(state, energy_type, target_is_ex)
+            })
+            .max()
+            .unwrap_or(0);
         training_area + arena_of_antiquity
     } else {
         0
@@ -1520,10 +1530,10 @@ fn get_board_ability_damage_bonus(
     attacking_player: usize,
     attacking_pokemon: &PlayedCard,
 ) -> u32 {
-    let attacker_energy_type = match attacking_pokemon.get_energy_type() {
-        Some(energy_type) => energy_type,
-        None => return 0,
-    };
+    let attacker_energy_types = state.pokemon_energy_types(attacking_pokemon);
+    if attacker_energy_types.is_empty() {
+        return 0;
+    }
     let power_unown_enabled = has_non_power_unown_in_play(state, attacking_player);
 
     let mut bonus = 0;
@@ -1535,7 +1545,7 @@ fn get_board_ability_damage_bonus(
                 AbilityMechanic::IncreaseDamageForTypeInPlay {
                     energy_type,
                     amount,
-                } if attacker_energy_type == *energy_type => {
+                } if attacker_energy_types.contains(energy_type) => {
                     debug!("Type damage bonus: Increasing damage by {}", amount);
                     bonus += amount;
                 }
@@ -1543,8 +1553,8 @@ fn get_board_ability_damage_bonus(
                     energy_type_a,
                     energy_type_b,
                     amount,
-                } if attacker_energy_type == *energy_type_a
-                    || attacker_energy_type == *energy_type_b =>
+                } if attacker_energy_types.contains(energy_type_a)
+                    || attacker_energy_types.contains(energy_type_b) =>
                 {
                     debug!("Type damage bonus: Increasing damage by {}", amount);
                     bonus += amount;
@@ -1923,7 +1933,7 @@ fn apply_electrical_cord(
             .as_ref()
             .expect("Pokemon should be there if knocked out");
         has_tool(knocked_out_pokemon, CardId::A3a065ElectricalCord)
-            && knocked_out_pokemon.get_energy_type() == Some(EnergyType::Lightning)
+            && state.pokemon_is_type(knocked_out_pokemon, EnergyType::Lightning)
     };
     if !has_electrical_cord {
         return;

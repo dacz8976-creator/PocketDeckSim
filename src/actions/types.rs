@@ -205,6 +205,14 @@ pub enum SimpleAction {
     },
     /// Crawdaunt's Unruly Claw: discard a random Energy from the opponent's Active Pokémon
     DiscardRandomOpponentActiveEnergy,
+    /// Dark Pendant: your opponent reveals a random card from their hand and shuffles it into
+    /// their deck. Which card is picked is decided when the action is applied, exactly like the
+    /// attacks that print the same sentence (Liepard's Snatch and Flee & co.).
+    ShuffleRandomOpponentHandCard,
+    /// Polteageist's Refreshing Tea: your opponent shuffles their hand into their deck and draws
+    /// one card for each remaining point they need to win. Identical to Mars' effect, which is
+    /// where the shared implementation lives.
+    OpponentShuffleHandAndDrawRemainingPoints,
     /// Apply a chosen Special Condition to the opponent's Active Pokémon (e.g. Dustox's Select Powder).
     ApplyStatusToOpponentActive {
         condition: StatusCondition,
@@ -420,6 +428,12 @@ impl fmt::Display for SimpleAction {
             }
             SimpleAction::DiscardRandomOpponentActiveEnergy => {
                 write!(f, "DiscardRandomOpponentActiveEnergy")
+            }
+            SimpleAction::OpponentShuffleHandAndDrawRemainingPoints => {
+                write!(f, "OpponentShuffleHandAndDrawRemainingPoints")
+            }
+            SimpleAction::ShuffleRandomOpponentHandCard => {
+                write!(f, "ShuffleRandomOpponentHandCard")
             }
             SimpleAction::UseStadium => write!(f, "UseStadium"),
             SimpleAction::ApplyStatusToOpponentActive { condition } => {

@@ -1328,6 +1328,9 @@ fn discard_stadium_in_play(damage: u32) -> AttackOutcomes {
 fn disable_random_opponent_active_attack(damage: u32, duration: u8) -> AttackOutcomes {
     active_damage_effect_doutcome(damage, move |rng, state, action| {
         let opponent = (action.actor + 1) % 2;
+        if state.prevents_attack_effects(opponent, 0) {
+            return;
+        }
         let Some(defender) = state.in_play_pokemon[opponent][0].as_ref() else {
             return;
         };
@@ -1756,7 +1759,7 @@ fn moltres_inferno_dance() -> AttackOutcomes {
             // First collect all eligible fire pokemon in bench
             let mut fire_bench_idx = Vec::new();
             for (in_play_idx, pokemon) in state.enumerate_bench_pokemon(action.actor) {
-                if pokemon.get_energy_type() == Some(EnergyType::Fire) {
+                if state.pokemon_is_type(pokemon, EnergyType::Fire) {
                     fire_bench_idx.push(in_play_idx);
                 }
             }
@@ -1963,7 +1966,7 @@ pub(crate) fn energy_bench_attack(
     let choices = state
         .enumerate_bench_pokemon(state.current_player)
         .filter(|(_, played_card)| {
-            target_benched_type.is_none() || played_card.get_energy_type() == target_benched_type
+            target_benched_type.is_none_or(|t| state.pokemon_is_type(played_card, t))
         })
         .map(|(in_play_idx, _)| SimpleAction::Attach {
             attachments: energies
@@ -2125,7 +2128,10 @@ fn inflict_status_and_card_effects_attack(
     active_damage_effect_doutcome(damage, move |_, state, action| {
         let opponent = (action.actor + 1) % 2;
         for condition in &conditions {
-            state.apply_status_condition(opponent, 0, *condition);
+            state.apply_attack_status_condition(opponent, 0, *condition);
+        }
+        if state.prevents_attack_effects(opponent, 0) {
+            return;
         }
         let target = state.get_active_mut(opponent);
         for effect in &effects {
@@ -2142,7 +2148,7 @@ fn inflict_poison_with_custom_checkup_damage_attack(
 ) -> AttackOutcomes {
     active_damage_effect_doutcome(damage, move |_, state, action| {
         let opponent = (action.actor + 1) % 2;
-        state.apply_status_condition(opponent, 0, StatusCondition::Poisoned);
+        state.apply_attack_status_condition(opponent, 0, StatusCondition::Poisoned);
         if let Some(defender) = state.in_play_pokemon[opponent][0].as_mut() {
             // Only override when the poison actually stuck (immunities may have blocked it).
             if defender.is_poisoned() {
@@ -2182,6 +2188,9 @@ fn coin_flip_damage_or_heal_opponent_attack(damage: u32, heal: u32) -> AttackOut
         active_damage_outcome(damage),
         AttackOutcome::effect_only(move |_, state, action| {
             let opponent = (action.actor + 1) % 2;
+            if state.prevents_attack_effects(opponent, 0) {
+                return;
+            }
             state.heal_pokemon(opponent, 0, heal);
         }),
     )
@@ -2210,7 +2219,7 @@ fn bench_count_damage_attack(
         .iter()
         .flat_map(|&player| state.enumerate_bench_pokemon(player))
         .filter(|(_, pokemon)| {
-            energy_type.is_none_or(|energy| pokemon.get_energy_type() == Some(energy))
+            energy_type.is_none_or(|energy| state.pokemon_is_type(pokemon, energy))
         })
         .filter(|(_, pokemon)| {
             names
@@ -2487,7 +2496,7 @@ fn self_discard_energy_and_inflict_status(
 
         let opponent = (action.actor + 1) % 2;
         for condition in &conditions {
-            state.apply_status_condition(opponent, 0, *condition);
+            state.apply_attack_status_condition(opponent, 0, *condition);
         }
     })
 }
@@ -2510,6 +2519,9 @@ fn self_discard_energy_and_card_effect(
 fn damage_and_discard_energy(damage: u32, discard_count: usize) -> AttackOutcomes {
     active_damage_effect_doutcome(damage, move |rng, state, action| {
         let opponent = (action.actor + 1) % 2;
+        if state.prevents_attack_effects(opponent, 0) {
+            return;
+        }
         let mut to_discard = Vec::new();
         let mut remaining = state.get_active(opponent).attached_energy.clone();
 
@@ -2535,6 +2547,9 @@ fn discard_opponent_active_tools_before_damage(damage: u32) -> AttackOutcomes {
     AttackOutcomes::single(AttackOutcome::effect_then_damage(
         move |_, state, action| {
             let opponent = (action.actor + 1) % 2;
+            if state.prevents_attack_effects(opponent, 0) {
+                return;
+            }
             if state.in_play_pokemon[opponent][0]
                 .as_ref()
                 .is_some_and(|pokemon| pokemon.attached_tool.is_some())
@@ -2585,6 +2600,9 @@ fn vaporeon_hyper_whirlpool(_state: &State, damage: u32) -> AttackOutcomes {
     AttackOutcomes::geometric_until_tails(5, move |energies_to_remove| {
         active_damage_effect_outcome(damage, move |_, state, action| {
             let opponent = (action.actor + 1) % 2;
+            if state.prevents_attack_effects(opponent, 0) {
+                return;
+            }
             let mut to_discard = Vec::new();
             let mut remaining = state.get_active(opponent).attached_energy.clone();
 
@@ -2623,7 +2641,7 @@ fn damage_multiple_status_attack(
     active_damage_effect_doutcome(attack.fixed_damage, move |_, state, action| {
         let opponent = (action.actor + 1) % 2;
         for status in &statuses {
-            state.apply_status_condition(opponent, 0, *status);
+            state.apply_attack_status_condition(opponent, 0, *status);
         }
     })
 }
@@ -2650,7 +2668,7 @@ fn damage_and_both_active_multiple_status_attack(
         let opponent = (action.actor + 1) % 2;
         for status in &statuses {
             state.apply_status_condition(action.actor, 0, *status);
-            state.apply_status_condition(opponent, 0, *status);
+            state.apply_attack_status_condition(opponent, 0, *status);
         }
     })
 }
@@ -2823,7 +2841,7 @@ fn inflict_status_if_stadium_in_play(
     if state.active_stadium.is_some() {
         active_damage_effect_doutcome(damage, move |_, state, action| {
             let opponent = (action.actor + 1) % 2;
-            state.apply_status_condition(opponent, 0, status);
+            state.apply_attack_status_condition(opponent, 0, status);
         })
     } else {
         active_damage_doutcome(damage)
@@ -3003,6 +3021,9 @@ fn discard_type_energy_from_opponent_active(
 ) -> AttackOutcomes {
     active_damage_effect_doutcome(damage, move |_, state, action| {
         let opponent = (action.actor + 1) % 2;
+        if state.prevents_attack_effects(opponent, 0) {
+            return;
+        }
         let has_energy = state
             .get_active(opponent)
             .attached_energy
@@ -3066,7 +3087,7 @@ fn self_discard_all_energy_and_inflict_status(
         state.discard_from_active(action.actor, &to_discard);
         let opponent = (action.actor + 1) % 2;
         for condition in &conditions {
-            state.apply_status_condition(opponent, 0, *condition);
+            state.apply_attack_status_condition(opponent, 0, *condition);
         }
     })
 }
@@ -3080,6 +3101,9 @@ fn self_discard_all_energy_knock_out_opponent_active() -> AttackOutcomes {
         let to_discard = state.get_active(action.actor).attached_energy.clone();
         state.discard_from_active(action.actor, &to_discard);
         let opponent = (action.actor + 1) % 2;
+        if state.prevents_attack_effects(opponent, 0) {
+            return;
+        }
         if let Some(defender) = state.in_play_pokemon[opponent][0].as_mut() {
             defender.set_remaining_hp(0);
         }
@@ -3243,6 +3267,9 @@ fn attach_energy_from_zone_to_pokemon_named(
 fn change_random_opponent_active_energy_type(damage: u32) -> AttackOutcomes {
     active_damage_effect_doutcome(damage, move |rng, state, action| {
         let opponent = (action.actor + 1) % 2;
+        if state.prevents_attack_effects(opponent, 0) {
+            return;
+        }
         let Some(defender) = state.in_play_pokemon[opponent][0].as_mut() else {
             return;
         };
@@ -3845,7 +3872,7 @@ fn extra_damage_if_knocked_out_last_turn_attack(
     active_damage_effect_doutcome(base_damage + extra_damage, move |_, state, action| {
         let opponent = (action.actor + 1) % 2;
         for condition in &conditions {
-            state.apply_status_condition(opponent, 0, *condition);
+            state.apply_attack_status_condition(opponent, 0, *condition);
         }
     })
 }
@@ -4102,6 +4129,9 @@ fn extra_damage_if_evolved_this_turn_attack(
 fn knock_back_attack(damage: u32) -> AttackOutcomes {
     active_damage_effect_doutcome(damage, move |_, state, action| {
         let opponent = (action.actor + 1) % 2;
+        if state.prevents_attack_effects(opponent, 0) {
+            return;
+        }
         let mut choices = Vec::new();
         for (in_play_idx, _) in state.enumerate_bench_pokemon(opponent) {
             choices.push(SimpleAction::Activate {
@@ -4122,6 +4152,9 @@ fn mawile_crunch() -> AttackOutcomes {
         active_damage_effect_outcome(20, move |rng, state, action| {
             // Heads: damage + discard random energy
             let opponent = (action.actor + 1) % 2;
+            if state.prevents_attack_effects(opponent, 0) {
+                return;
+            }
             let active = state.get_active_mut(opponent);
 
             if !active.attached_energy.is_empty() {
@@ -4250,6 +4283,9 @@ fn discard_hand_cards_required_attack(
 fn block_basic_attack(damage: u32) -> AttackOutcomes {
     active_damage_effect_doutcome(damage, move |_, state, action| {
         let opponent = (action.actor + 1) % 2;
+        if state.prevents_attack_effects(opponent, 0) {
+            return;
+        }
         let opponent_active = state.get_active_mut(opponent);
 
         // Check if the defending Pokemon is a Basic Pokemon (stage 0)
@@ -4265,6 +4301,9 @@ fn shuffle_opponent_active_into_deck() -> AttackOutcomes {
         // Heads: shuffle opponent's active into deck
         active_damage_effect_outcome(0, move |rng, state, action| {
             let opponent = (action.actor + 1) % 2;
+            if state.prevents_attack_effects(opponent, 0) {
+                return;
+            }
 
             // Get the active Pokemon
             let active_pokemon = state.in_play_pokemon[opponent][0]
@@ -4307,7 +4346,7 @@ fn shuffle_random_opponent_hand_cards_per_heads(damage: u32, num_coins: usize) -
 /// Move up to `count` randomly chosen cards from `player`'s hand into their deck, then shuffle it.
 /// Moves fewer cards (possibly none) when the hand runs out; the deck is only shuffled if at least
 /// one card actually moved.
-fn shuffle_random_hand_cards_into_deck(
+pub(crate) fn shuffle_random_hand_cards_into_deck(
     rng: &mut StdRng,
     state: &mut State,
     player: usize,
@@ -4611,7 +4650,7 @@ fn coin_flip_charge_bench(
     let choices = state
         .enumerate_bench_pokemon(state.current_player)
         .filter(|(_, played_card)| {
-            target_benched_type.is_none() || played_card.get_energy_type() == target_benched_type
+            target_benched_type.is_none_or(|t| state.pokemon_is_type(played_card, t))
         })
         .map(|(in_play_idx, _)| SimpleAction::Attach {
             attachments: energies
@@ -5052,6 +5091,9 @@ fn conditional_bench_damage_attack(
 fn halve_opponent_active_remaining_hp() -> AttackOutcomes {
     AttackOutcomes::single_effect(|_, state, action| {
         let opponent = (action.actor + 1) % 2;
+        if state.prevents_attack_effects(opponent, 0) {
+            return;
+        }
         if let Some(target) = state.in_play_pokemon[opponent][0].as_mut() {
             let halved = target.get_remaining_hp() / 2 / 10 * 10;
             target.set_remaining_hp(halved);
@@ -5066,6 +5108,9 @@ fn coin_flip_set_opponent_active_remaining_hp(remaining_hp: u32) -> AttackOutcom
     AttackOutcomes::binary_coin(
         AttackOutcome::effect_only(move |_, state, action| {
             let opponent = (action.actor + 1) % 2;
+            if state.prevents_attack_effects(opponent, 0) {
+                return;
+            }
             if let Some(target) = state.in_play_pokemon[opponent][0].as_mut() {
                 let capped = target.get_remaining_hp().min(remaining_hp);
                 target.set_remaining_hp(capped);
@@ -5092,7 +5137,9 @@ fn flip_coins_remove_opponent_active(
         }
         AttackOutcome::damage_then_effect(vec![(damage, true, 0)], move |_, state, action| {
             let opponent = (action.actor + 1) % 2;
-            if state.in_play_pokemon[opponent][0].is_none() {
+            if state.in_play_pokemon[opponent][0].is_none()
+                || state.prevents_attack_effects(opponent, 0)
+            {
                 return;
             }
             if knocked_out {
@@ -5363,7 +5410,7 @@ fn discard_own_benched_type_for_damage(
 fn eligible_bench_discards(state: &State, player: usize, energy_type: EnergyType) -> Vec<usize> {
     state
         .enumerate_bench_pokemon(player)
-        .filter(|(_, pokemon)| pokemon.get_energy_type() == Some(energy_type))
+        .filter(|(_, pokemon)| state.pokemon_is_type(pokemon, energy_type))
         .map(|(idx, _)| idx)
         .collect()
 }
@@ -5397,7 +5444,7 @@ fn switch_self_with_bench_of_type(
 ) -> AttackOutcomes {
     let has_target = state
         .enumerate_bench_pokemon(state.current_player)
-        .any(|(_, pokemon)| pokemon.get_energy_type() == Some(energy_type));
+        .any(|(_, pokemon)| state.pokemon_is_type(pokemon, energy_type));
     if !has_target {
         return active_damage_doutcome(damage);
     }
@@ -5412,7 +5459,7 @@ fn switch_self_with_bench_of_type(
             }
             let choices: Vec<SimpleAction> = state
                 .enumerate_bench_pokemon(action.actor)
-                .filter(|(_, pokemon)| pokemon.get_energy_type() == Some(energy_type))
+                .filter(|(_, pokemon)| state.pokemon_is_type(pokemon, energy_type))
                 .map(|(in_play_idx, _)| SimpleAction::Activate {
                     player: action.actor,
                     in_play_idx,
@@ -5432,6 +5479,9 @@ fn coin_flip_return_opponent_active_to_hand() -> AttackOutcomes {
     AttackOutcomes::binary_coin(
         AttackOutcome::effect_only(|_, state, action| {
             let opponent = (action.actor + 1) % 2;
+            if state.prevents_attack_effects(opponent, 0) {
+                return;
+            }
             let Some(active) = state.in_play_pokemon[opponent][0].take() else {
                 return;
             };
@@ -5463,6 +5513,9 @@ fn switch_in_opponent_benched_then_damage(
     let make_outcome = move || {
         AttackOutcome::damage_then_effect(vec![(fixed_damage, true, 0)], move |_, state, action| {
             let opponent = (action.actor + 1) % 2;
+            if state.prevents_attack_effects(opponent, 0) {
+                return;
+            }
             let choices: Vec<SimpleAction> = state
                 .enumerate_bench_pokemon(opponent)
                 .map(|(in_play_idx, _)| SimpleAction::Activate {
@@ -5515,7 +5568,7 @@ fn heal_each_your_pokemon_attack(
             .filter(|(idx, pokemon)| {
                 (!benched_only || benched.contains(idx))
                     && (!basic_only || pokemon.card.is_basic())
-                    && energy_type.is_none_or(|t| pokemon.get_energy_type() == Some(t))
+                    && energy_type.is_none_or(|t| state.pokemon_is_type(pokemon, t))
             })
             .map(|(idx, _)| idx)
             .collect();
@@ -5535,6 +5588,9 @@ fn heal_each_your_pokemon_attack(
 fn devolve_opponent_active(damage: u32) -> AttackOutcomes {
     active_damage_effect_doutcome(damage, move |_, state, action| {
         let opponent = (action.actor + 1) % 2;
+        if state.prevents_attack_effects(opponent, 0) {
+            return;
+        }
         let Some(active) = state.in_play_pokemon[opponent][0].as_ref() else {
             return;
         };
@@ -5802,6 +5858,9 @@ fn extra_damage_if_card_in_discard_attack(
 fn coin_flip_to_block_attack_next_turn(damage: u32) -> AttackOutcomes {
     active_damage_effect_doutcome(damage, move |_, state, action| {
         let opponent = (action.actor + 1) % 2;
+        if state.prevents_attack_effects(opponent, 0) {
+            return;
+        }
         state
             .get_active_mut(opponent)
             .add_effect(CardEffect::CoinFlipToBlockAttack, 1);
@@ -5847,7 +5906,7 @@ fn first_attack_bonus_damage_and_status(
         if is_first {
             let opponent = (action.actor + 1) % 2;
             for status in &conditions {
-                state.apply_status_condition(opponent, 0, *status);
+                state.apply_attack_status_condition(opponent, 0, *status);
             }
         }
         if let Some(attacker) = state.in_play_pokemon[action.actor][0].as_mut() {

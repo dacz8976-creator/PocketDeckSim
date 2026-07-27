@@ -101,7 +101,7 @@ pub(crate) fn get_retreat_cost(state: &State, card: &PlayedCard) -> Vec<EnergyTy
         }
         let mut normal_cost = pokemon_card.retreat_cost.clone();
         if has_tool(card, CardId::A4a067InflatableBoat)
-            && card.get_energy_type() == Some(EnergyType::Water)
+            && state.pokemon_is_type(card, EnergyType::Water)
         {
             normal_cost.pop();
         }
@@ -137,7 +137,8 @@ pub(crate) fn get_retreat_cost(state: &State, card: &PlayedCard) -> Vec<EnergyTy
                 }
             }
         }
-        if let Some(active_energy_type) = card.get_energy_type() {
+        {
+            let active_energy_types = state.pokemon_energy_types(card);
             let current_player = state.current_player;
             for (_idx, benched_pokemon) in state.enumerate_bench_pokemon(current_player) {
                 if let Some(AbilityMechanic::ReduceRetreatCostOfYourActiveTypedFromBench {
@@ -145,7 +146,7 @@ pub(crate) fn get_retreat_cost(state: &State, card: &PlayedCard) -> Vec<EnergyTy
                     amount,
                 }) = get_in_play_ability_mechanic(state, benched_pokemon)
                 {
-                    if energy_type == &active_energy_type {
+                    if active_energy_types.contains(energy_type) {
                         to_subtract += *amount as u8;
                     }
                 }
@@ -153,9 +154,12 @@ pub(crate) fn get_retreat_cost(state: &State, card: &PlayedCard) -> Vec<EnergyTy
         }
 
         // Peculiar Plaza: Psychic Pokemon retreat cost is 2 less
-        if let Some(energy_type) = card.get_energy_type() {
-            to_subtract += get_peculiar_plaza_retreat_reduction(state, energy_type);
-        }
+        to_subtract += state
+            .pokemon_energy_types(card)
+            .into_iter()
+            .map(|energy_type| get_peculiar_plaza_retreat_reduction(state, energy_type))
+            .max()
+            .unwrap_or(0);
 
         // Retreat Effects accumulate so we add them.
         for _ in 0..to_subtract {

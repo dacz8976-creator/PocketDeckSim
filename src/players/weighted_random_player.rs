@@ -81,6 +81,8 @@ fn get_weight(action: &SimpleAction) -> u32 {
         SimpleAction::PutCardFromDiscardToHand { .. } => 10,
         SimpleAction::PutRandomCardsFromDiscardToHand { .. } => 10,
         SimpleAction::DiscardRandomOpponentActiveEnergy => 10,
+        SimpleAction::OpponentShuffleHandAndDrawRemainingPoints => 10,
+        SimpleAction::ShuffleRandomOpponentHandCard => 10,
         SimpleAction::ApplyStatusToOpponentActive { .. } => 10,
         SimpleAction::DiscardOwnBenchedThenDamage { .. } => 10,
         SimpleAction::UseStadium => 5, // Stadium abilities like Mesagoza

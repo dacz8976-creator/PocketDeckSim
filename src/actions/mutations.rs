@@ -59,7 +59,7 @@ pub(crate) fn build_status_effect(status: StatusCondition) -> FnMutation {
     Box::new({
         move |_, state: &mut State, action: &Action| {
             let opponent = (action.actor + 1) % 2;
-            state.apply_status_condition(opponent, 0, status);
+            state.apply_attack_status_condition(opponent, 0, status);
         }
     })
 }
@@ -71,7 +71,7 @@ pub(crate) fn build_multi_status_effect(statuses: Vec<StatusCondition>) -> FnMut
         move |_, state: &mut State, action: &Action| {
             let opponent = (action.actor + 1) % 2;
             for status in &statuses {
-                state.apply_status_condition(opponent, 0, *status);
+                state.apply_attack_status_condition(opponent, 0, *status);
             }
         }
     })

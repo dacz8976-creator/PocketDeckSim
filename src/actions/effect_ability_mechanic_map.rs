@@ -6,8 +6,8 @@ use std::sync::LazyLock;
 
 use crate::actions::abilities::{
     AbilityMechanic, AttackCostReductionScope, DeckSearchKind, DiscardSearchKind, DiscardSelection,
-    KnockoutDamageTarget, NoRetreatCostCondition, NoRetreatCostTarget, ARCEUS_NAMES,
-    REGI_TRIO_NAMES,
+    KnockoutDamageTarget, NoRetreatCostCondition, NoRetreatCostTarget, RandomEvolutionTrigger,
+    ARCEUS_NAMES, REGI_TRIO_NAMES,
 };
 use crate::effects::CardEffect;
 use crate::models::{Card, EnergyType, PlayedCard, StatusCondition};
@@ -285,7 +285,10 @@ pub static EFFECT_ABILITY_MECHANIC_MAP: LazyLock<HashMap<&'static str, AbilityMe
                 require_tool_attached: true,
             },
         );
-        // map.insert("Once during your turn, if this Pokémon is in the Active Spot, you may look at a random Supporter card from your opponent's hand. Use the effect of that card as the effect of this Ability.", todo_implementation);
+        map.insert(
+            "Once during your turn, if this Pokémon is in the Active Spot, you may look at a random Supporter card from your opponent's hand. Use the effect of that card as the effect of this Ability.",
+            AbilityMechanic::CopyRandomOpponentHandSupporter,
+        );
         map.insert("Once during your turn, if this Pokémon is in the Active Spot, you may make your opponent's Active Pokémon Poisoned.", AbilityMechanic::PoisonOpponentActive);
         map.insert(
             "Once during your turn, if this Pokémon is in the Active Spot, you may switch in 1 of your opponent's Benched Pokémon that has damage on it to the Active Spot.",
@@ -317,7 +320,10 @@ pub static EFFECT_ABILITY_MECHANIC_MAP: LazyLock<HashMap<&'static str, AbilityMe
             "Once during your turn, when you play this Pokémon from your hand to evolve 1 of your Pokémon, you may draw 2 cards.",
             AbilityMechanic::DrawCardsOnEvolve { amount: 2 },
         );
-        // map.insert("Once during your turn, when you play this Pokémon from your hand to evolve 1 of your Pokémon, you may have your opponent shuffle their hand into their deck. For each remaining point that your opponent needs to win, they draw a card.", todo_implementation);
+        map.insert(
+            "Once during your turn, when you play this Pokémon from your hand to evolve 1 of your Pokémon, you may have your opponent shuffle their hand into their deck. For each remaining point that your opponent needs to win, they draw a card.",
+            AbilityMechanic::OpponentShuffleHandAndDrawOnEvolve,
+        );
         map.insert(
             "Once during your turn, when you play this Pokémon from your hand to evolve 1 of your Pokémon, you may heal 60 damage from 1 of your [W] Pokémon.",
             AbilityMechanic::HealTypedPokemonOnEvolve {
@@ -515,7 +521,10 @@ pub static EFFECT_ABILITY_MECHANIC_MAP: LazyLock<HashMap<&'static str, AbilityMe
             "Prevent all damage done to this Pokémon by attacks from your opponent's Pokémon ex.",
             AbilityMechanic::PreventAllDamageFromEx,
         );
-        // map.insert("Prevent all effects of attacks used by your opponent's Pokémon done to this Pokémon.", todo_implementation);
+        map.insert(
+            "Prevent all effects of attacks used by your opponent's Pokémon done to this Pokémon.",
+            AbilityMechanic::PreventAttackEffects,
+        );
         map.insert(
             "This Ability works if you have any Unown in play with an Ability other than POWER. Attacks used by your Pokémon do +10 damage to your opponent's Active Pokémon.",
             AbilityMechanic::UnownPower { amount: 10 },
@@ -600,7 +609,12 @@ pub static EFFECT_ABILITY_MECHANIC_MAP: LazyLock<HashMap<&'static str, AbilityMe
                 amount: 20,
             },
         );
-        // map.insert("Whenever you attach an Energy from your Energy Zone to this Pokémon, put a random card from your deck that evolves from this Pokémon onto this Pokémon to evolve it.", todo_implementation);
+        map.insert(
+            "Whenever you attach an Energy from your Energy Zone to this Pokémon, put a random card from your deck that evolves from this Pokémon onto this Pokémon to evolve it.",
+            AbilityMechanic::RandomEvolutionFromDeck {
+                trigger: RandomEvolutionTrigger::OnEnergyZoneAttachToSelf,
+            },
+        );
         map.insert(
             "You must discard a card from your hand in order to use this Ability. Once during your turn, you may draw a card.",
             AbilityMechanic::DiscardFromHandToDrawCard,
@@ -696,8 +710,18 @@ pub static EFFECT_ABILITY_MECHANIC_MAP: LazyLock<HashMap<&'static str, AbilityMe
         );
 
         // b3 mechanics
-        // map.insert("As long as this Pokémon is in play, it is [F] and [D] type.", todo_implementation);
-        // map.insert("As long as this Pokémon is in play, it is [W] and [F] type.", todo_implementation);
+        map.insert(
+            "As long as this Pokémon is in play, it is [F] and [D] type.",
+            AbilityMechanic::DualType {
+                types: [EnergyType::Fighting, EnergyType::Darkness],
+            },
+        );
+        map.insert(
+            "As long as this Pokémon is in play, it is [W] and [F] type.",
+            AbilityMechanic::DualType {
+                types: [EnergyType::Water, EnergyType::Fighting],
+            },
+        );
         map.insert(
             "As long as this Pokémon is on your Bench, your Active [D] Pokémon's Retreat Cost is 1 less.",
             AbilityMechanic::ReduceRetreatCostOfYourActiveTypedFromBench {
@@ -715,6 +739,28 @@ pub static EFFECT_ABILITY_MECHANIC_MAP: LazyLock<HashMap<&'static str, AbilityMe
                 required_bench_names: REGI_TRIO_NAMES,
             },
         );
+        // DELIBERATELY UNIMPLEMENTED — Victini's Victory Star (B3 025 / P-B 049).
+        //
+        // "Once during your turn, after you flip any coins for an attack of 1 of your [R] Pokémon,
+        // you may ignore all results of those coin flips and begin flipping those coins again."
+        //
+        // Every other coin effect in deckgym is resolved at *forecast* time: `Outcomes` enumerates
+        // one branch per coin result, `apply_action` samples a branch and immediately runs its
+        // mutation. Victory Star needs a player decision *between* those two steps — the player has
+        // to see the flips, then choose whether to discard that result and resample from the same
+        // distribution. There is no point in the engine where a sampled-but-not-yet-applied outcome
+        // is offered to a player, and by the time the `move_generation_stack` could carry the
+        // decision the attack has already resolved (damage, knockouts, promotions, end of turn), so
+        // there is nothing left to take back.
+        //
+        // Implementing it faithfully means a new subsystem: splitting outcome resolution into
+        // "sample" / "offer" / "commit", retaining the pre-attack state so a re-roll can resample
+        // from it, and teaching the search bots to price a decision node nested inside a chance
+        // node. The two shortcuts are both wrong and are deliberately not taken: pre-committing to
+        // the re-roll before seeing the flips is mathematically identical to flipping once (the
+        // Ability would be a silent no-op), and "keep whichever result had more heads" invents a
+        // policy the player never chose. Modelled as inert instead.
+        //
         // map.insert("Once during your turn, after you flip any coins for an attack of 1 of your [R] Pokémon, you may ignore all results of those coin flips and begin flipping those coins again. You can't use more than 1 Victory Star Ability each turn.", todo_implementation);
         map.insert(
             "Once during your turn, if this Pokémon is in the Active Spot, you may make your opponent's Active Pokémon Confused.",
@@ -740,7 +786,9 @@ pub static EFFECT_ABILITY_MECHANIC_MAP: LazyLock<HashMap<&'static str, AbilityMe
         // b3b mechanics
         map.insert(
             "At the end of your opponent's turn, if this Pokémon is in the Active Spot, put a random card from your deck that evolves from this Pokémon onto this Pokémon to evolve it.",
-            AbilityMechanic::QuickGrowth,
+            AbilityMechanic::RandomEvolutionFromDeck {
+                trigger: RandomEvolutionTrigger::EndOfOpponentTurnIfActive,
+            },
         );
         map
     });

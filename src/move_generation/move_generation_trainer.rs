@@ -394,7 +394,7 @@ fn can_play_lucky_ice_pop(state: &State, trainer_card: &TrainerCard) -> Option<V
 fn can_play_erika(state: &State, trainer_card: &TrainerCard) -> Option<Vec<SimpleAction>> {
     let damaged_grass_count = state
         .enumerate_in_play_pokemon(state.current_player)
-        .filter(|(_, x)| x.is_damaged() && x.get_energy_type() == Some(EnergyType::Grass))
+        .filter(|(_, x)| x.is_damaged() && state.pokemon_is_type(x, EnergyType::Grass))
         .count();
     if damaged_grass_count > 0 {
         can_play_trainer(state, trainer_card)
@@ -762,7 +762,7 @@ fn can_play_flame_patch(state: &State, trainer_card: &TrainerCard) -> Option<Vec
 
     // Check if active pokemon exists and is Fire type
     let active_is_fire = active_pokemon
-        .map(|p| p.get_energy_type() == Some(EnergyType::Fire))
+        .map(|p| state.pokemon_is_type(p, EnergyType::Fire))
         .unwrap_or(false);
 
     // Check if there's at least 1 Fire energy in discard pile
@@ -782,7 +782,7 @@ fn can_play_electric_generator(
 ) -> Option<Vec<SimpleAction>> {
     let has_lightning_bench_target = state
         .enumerate_bench_pokemon(state.current_player)
-        .any(|(_, pokemon)| pokemon.get_energy_type() == Some(EnergyType::Lightning));
+        .any(|(_, pokemon)| state.pokemon_is_type(pokemon, EnergyType::Lightning));
 
     if has_lightning_bench_target {
         can_play_trainer(state, trainer_card)
@@ -960,7 +960,7 @@ fn can_play_parasol_lady(state: &State, trainer_card: &TrainerCard) -> Option<Ve
     let has_target = state
         .enumerate_in_play_pokemon(state.current_player)
         .any(|(_, pokemon)| {
-            pokemon.get_energy_type() == Some(EnergyType::Water) && !pokemon.card.is_ex()
+            state.pokemon_is_type(pokemon, EnergyType::Water) && !pokemon.card.is_ex()
         });
     if has_target {
         can_play_trainer(state, trainer_card)

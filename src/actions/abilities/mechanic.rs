@@ -494,6 +494,16 @@ pub enum AbilityMechanic {
         amount: u32,
     },
     DiscardRandomEnergyFromOpponentActiveOnEvolve,
+    /// Polteageist's Refreshing Tea (B2 075): "Once during your turn, when you play this Pokémon
+    /// from your hand to evolve 1 of your Pokémon, you may have your opponent shuffle their hand
+    /// into their deck. For each remaining point that your opponent needs to win, they draw a
+    /// card."
+    ///
+    /// The payload is exactly Mars' Supporter effect, so it rides the same implementation; the
+    /// Ability only changes when it happens. Passive: it is an on-evolve trigger, so it is offered
+    /// from the `on_evolve` hook (with a `Noop`, because it is a "may") rather than as a
+    /// `UseAbility` action.
+    OpponentShuffleHandAndDrawOnEvolve,
     /// "Once during your turn, when you play this Pokémon from your hand to evolve 1 of your
     /// Pokémon, you may put <selection> `card_kind` card(s) from your discard pile into your hand."
     ///
@@ -584,13 +594,66 @@ pub enum AbilityMechanic {
     CannotAttackWithoutBenchedNames {
         required_bench_names: &'static [&'static str],
     },
+    /// Double Type (Rapid Strike Urshifu B3 051: "As long as this Pokémon is in play, it is [W]
+    /// and [F] type."; Single Strike Urshifu B3 113: "... it is [F] and [D] type.").
+    ///
+    /// Replaces the holder's printed type with `types` — for both printings the printed type is
+    /// one of the two, so in practice it *adds* the second. Passive, and read through the single
+    /// accessor `State::pokemon_energy_types` / `State::pokemon_is_type`, which every
+    /// "what type is this Pokémon in play" question goes through (Weakness, the type damage
+    /// boosts, "each of your [X] Pokémon" filters, Retreat-cost discounts). Going through the
+    /// in-play Ability chokepoint means Prickly Powder's `NoAbilities` turns it back off.
+    DualType {
+        types: [EnergyType; 2],
+    },
+    /// Smeargle's Portrait (B2 130): "Once during your turn, if this Pokémon is in the Active
+    /// Spot, you may look at a random Supporter card from your opponent's hand. Use the effect of
+    /// that card as the effect of this Ability."
+    ///
+    /// The Ability twin of Penny (A3b 069), which draws its Supporter from the opponent's *deck*
+    /// instead of their hand; both fold the copied card's outcomes into one weighted distribution
+    /// through `copy_random_supporter_outcomes`. The card is only looked at, so it stays in the
+    /// opponent's hand, and — being an Ability — it does not consume the Supporter-per-turn slot.
+    CopyRandomOpponentHandSupporter,
+    /// Regice's Crystal Body (A2 034): "Prevent all effects of attacks used by your opponent's
+    /// Pokémon done to this Pokémon."
+    ///
+    /// Passive. "Effect" is everything an attack does *to a Pokémon* other than damage: Special
+    /// Conditions, lingering `CardEffect`s, Energy and Tool removal, Energy-type changes, forced
+    /// switches / return-to-hand / shuffle-into-deck, devolution, and the outright "this Pokémon is
+    /// Knocked Out" / "its remaining HP is now N" effects. Damage itself is not an effect and is
+    /// deliberately not blocked, and neither are effects from Abilities, Trainers or Stadiums —
+    /// the Ability names attacks only.
+    ///
+    /// Resolved at `State::prevents_attack_effects`, which the attack code calls (directly, or via
+    /// `State::apply_attack_status_condition`) at every point where an attack would touch the
+    /// defending Pokémon.
+    PreventAttackEffects,
     /// Celebi's Time Recall: "Each of your evolved Pokémon can use any attack from its previous
     /// Evolutions. (You still need the necessary Energy to use each attack.)"
     /// Passive: while a Pokémon with this ability is in play, attack generation also offers the
     /// active evolved Pokémon the attacks from its previous evolutions (its under-cards).
     TimeRecall,
-    /// Caterpie's Quick Growth: "At the end of your opponent's turn, if this Pokémon is in the
-    /// Active Spot, put a random card from your deck that evolves from this Pokémon onto this
-    /// Pokémon to evolve it."
-    QuickGrowth,
+    /// "... put a random card from your deck that evolves from this Pokémon onto this Pokémon to
+    /// evolve it." Two printings share the effect and differ only in what sets it off, so the
+    /// trigger is a parameter:
+    /// - Caterpie's Quick Growth (B3b 001 / B3b 091): `EndOfOpponentTurnIfActive`.
+    /// - Porygon2's Buggy Evolution (A4 136): `OnEnergyZoneAttachToSelf`.
+    ///
+    /// Passive either way — there is no `UseAbility` action for it.
+    RandomEvolutionFromDeck {
+        trigger: RandomEvolutionTrigger,
+    },
+}
+
+/// What sets off a [`AbilityMechanic::RandomEvolutionFromDeck`] ability.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum RandomEvolutionTrigger {
+    /// "At the end of your opponent's turn, if this Pokémon is in the Active Spot" — resolved in
+    /// the start-of-turn ability outcomes, alongside the other end-of-turn triggers.
+    EndOfOpponentTurnIfActive,
+    /// "Whenever you attach an Energy from your Energy Zone to this Pokémon" — resolved when the
+    /// `Attach` action is forecast, so the random evolution shows up as real probability branches
+    /// instead of being hidden inside the state mutation.
+    OnEnergyZoneAttachToSelf,
 }

@@ -6,9 +6,10 @@ use rand::{distributions::WeightedIndex, prelude::Distribution, rngs::StdRng};
 use crate::{
     actions::effect_ability_mechanic_map::get_entering_play_ability_mechanic,
     actions::{
-        abilities::AbilityMechanic,
+        abilities::{AbilityMechanic, RandomEvolutionTrigger},
         apply_abilities_action::forecast_ability,
         apply_action_helpers::{apply_activate, wrap_with_common_logic},
+        get_in_play_ability_mechanic,
     },
     effects::{CardEffect, TurnEffect},
     hooks::{
@@ -24,9 +25,9 @@ use super::{
         forecast_end_turn, guts_would_flip, handle_damage, handle_damage_only, handle_knockouts,
         Mutations,
     },
-    apply_attack_action::forecast_attack,
+    apply_attack_action::{self, forecast_attack},
     apply_stadium_action::{self, forecast_use_stadium},
-    apply_trainer_action::forecast_trainer_action,
+    apply_trainer_action::{self, forecast_trainer_action},
     outcomes::Outcomes,
     shared_mutations, Action, SimpleAction,
 };
@@ -52,7 +53,6 @@ pub fn forecast_action(state: &State, action: &Action) -> Outcomes {
         // Deterministic Actions
         SimpleAction::DrawCard { .. } // TODO: DrawCard should return actual deck probabilities.
         | SimpleAction::Place(_, _)
-        | SimpleAction::Attach { .. }
         | SimpleAction::MoveEnergy { .. }
         | SimpleAction::MoveEnergies { .. }
         | SimpleAction::AttachTool { .. }
@@ -78,6 +78,19 @@ pub fn forecast_action(state: &State, action: &Action) -> Outcomes {
         | SimpleAction::ApplyStatusToOpponentActive { .. }
         | SimpleAction::DiscardOwnBenchedThenDamage { .. }
         | SimpleAction::Noop => forecast_deterministic_action(),
+        SimpleAction::Attach {
+            attachments,
+            is_turn_energy,
+        } => forecast_attach(state, action.actor, attachments, *is_turn_energy),
+        SimpleAction::OpponentShuffleHandAndDrawRemainingPoints => {
+            Outcomes::single_fn(apply_trainer_action::mars_effect)
+        }
+        SimpleAction::ShuffleRandomOpponentHandCard => {
+            Outcomes::single_fn(|rng, state, action| {
+                let opponent = (action.actor + 1) % 2;
+                apply_attack_action::shuffle_random_hand_cards_into_deck(rng, state, opponent, 1);
+            })
+        }
         SimpleAction::UseAbility { in_play_idx } => forecast_ability(state, action, *in_play_idx),
         SimpleAction::ApplyDamage {
             attacking_ref,
@@ -175,6 +188,60 @@ fn forecast_deterministic_action() -> Outcomes {
     Outcomes::single_fn(move |_, state, action| {
         apply_deterministic_action(state, action);
     })
+}
+
+/// Attaching Energy is deterministic unless the destination is a Pokémon with Porygon2's Buggy
+/// Evolution (A4 136): "Whenever you attach an Energy from your Energy Zone to this Pokémon, put a
+/// random card from your deck that evolves from this Pokémon onto this Pokémon to evolve it."
+///
+/// The evolution card is drawn at random, so the attach forecasts one branch per candidate in the
+/// deck rather than hiding the draw inside the mutation — the same shape Caterpie's Quick Growth
+/// uses at end of turn. The trigger fires at most once per action: after the first Energy the
+/// holder is no longer the Pokémon the Ability is printed on.
+fn forecast_attach(
+    state: &State,
+    actor: usize,
+    attachments: &[(u32, EnergyType, usize)],
+    is_turn_energy: bool,
+) -> Outcomes {
+    let Some(in_play_idx) = buggy_evolution_target(state, actor, attachments) else {
+        return forecast_deterministic_action();
+    };
+    let attachments = attachments.to_vec();
+    shared_mutations::random_evolution_from_deck_outcomes(actor, in_play_idx, state).map_mutations(
+        move |evolve| {
+            let attachments = attachments.clone();
+            Box::new(
+                move |rng: &mut StdRng, state: &mut State, action: &Action| {
+                    apply_attach_energy(state, actor, &attachments, is_turn_energy);
+                    evolve(rng, state, action);
+                },
+            )
+        },
+    )
+}
+
+/// The in-play index Buggy Evolution would fire on for this attachment list, if any.
+fn buggy_evolution_target(
+    state: &State,
+    actor: usize,
+    attachments: &[(u32, EnergyType, usize)],
+) -> Option<usize> {
+    attachments
+        .iter()
+        .map(|(_, _, in_play_idx)| *in_play_idx)
+        .find(|in_play_idx| {
+            state.in_play_pokemon[actor][*in_play_idx]
+                .as_ref()
+                .is_some_and(|pokemon| {
+                    matches!(
+                        get_in_play_ability_mechanic(state, pokemon),
+                        Some(AbilityMechanic::RandomEvolutionFromDeck {
+                            trigger: RandomEvolutionTrigger::OnEnergyZoneAttachToSelf,
+                        })
+                    )
+                })
+        })
 }
 
 /// ApplyDamage (damage queued through the move-generation stack, e.g. Mega Kangaskhan's second
@@ -381,8 +448,10 @@ fn apply_deterministic_action(state: &mut State, action: &Action) {
             }
         }
         SimpleAction::ApplyStatusToOpponentActive { condition } => {
+            // Only ever queued by an attack (Dustox's Select Powder), so it goes through the
+            // attack-effect gate that Regice's Crystal Body sits behind.
             let opponent = (action.actor + 1) % 2;
-            state.apply_status_condition(opponent, 0, *condition);
+            state.apply_attack_status_condition(opponent, 0, *condition);
         }
         SimpleAction::DiscardOwnBenchedThenDamage {
             in_play_idxs,
@@ -412,16 +481,24 @@ fn apply_attach_energy(
 
 fn apply_attach_tool(state: &mut State, actor: usize, in_play_idx: usize, tool_card: &Card) {
     tools::ensure_tool_card(tool_card);
-    let pokemon = state.in_play_pokemon[actor][in_play_idx]
-        .as_mut()
-        .expect("Pokemon should be there if attaching tool to it");
-    pokemon.attached_tool = Some(tool_card.clone());
+    {
+        let pokemon = state.in_play_pokemon[actor][in_play_idx]
+            .as_mut()
+            .expect("Pokemon should be there if attaching tool to it");
+        pokemon.attached_tool = Some(tool_card.clone());
+    }
 
     // Steel Apron: "...recovers from all Special Conditions..." only for a [M] holder.
+    let pokemon = state.in_play_pokemon[actor][in_play_idx]
+        .as_ref()
+        .expect("Pokemon should be there if attaching tool to it");
     if tools::has_tool(pokemon, crate::card_ids::CardId::A4153SteelApron)
-        && pokemon.get_energy_type() == Some(crate::models::EnergyType::Metal)
+        && state.pokemon_is_type(pokemon, crate::models::EnergyType::Metal)
     {
-        pokemon.cure_status_conditions();
+        state.in_play_pokemon[actor][in_play_idx]
+            .as_mut()
+            .expect("Pokemon should be there if attaching tool to it")
+            .cure_status_conditions();
     }
 }
 

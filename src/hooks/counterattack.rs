@@ -89,6 +89,35 @@ fn bench_attach_choices(
         .collect()
 }
 
+/// Dark Pendant (A4 154): "If the [D] Pokémon this card is attached to is in the Active Spot and
+/// is damaged by an attack from your opponent's Pokémon, your opponent reveals a random card from
+/// their hand and shuffles it into their deck."
+///
+/// Fires from the same on-damaged spot as Poison Barb and Jellicent's Bouncy Body, so the caller
+/// has already checked that this was an opponent's attack landing on `player`'s Active Pokémon.
+/// Which card is revealed is random and the on-damaged path carries no RNG, so the disruption is
+/// queued as a one-option `move_generation_stack` entry and resolved when that action is applied.
+/// Nothing is queued when the attacker's hand is empty.
+pub(crate) fn maybe_shuffle_attacker_hand_card_on_damaged(
+    state: &mut State,
+    player: usize,
+    attacking_player: usize,
+) {
+    let fires = state.in_play_pokemon[player][0]
+        .as_ref()
+        .is_some_and(|pokemon| {
+            has_tool(pokemon, CardId::A4154DarkPendant)
+                && state.pokemon_is_type(pokemon, EnergyType::Darkness)
+        });
+    if !fires || state.hands[attacking_player].is_empty() {
+        return;
+    }
+    debug!("Dark Pendant: player {attacking_player} shuffles a random hand card into their deck");
+    state
+        .move_generation_stack
+        .push((player, vec![SimpleAction::ShuffleRandomOpponentHandCard]));
+}
+
 /// Check if the defending Pokemon should poison the attacker when damaged.
 /// Returns true if the attacker should be poisoned.
 pub(crate) fn should_poison_attacker(card: &PlayedCard) -> bool {

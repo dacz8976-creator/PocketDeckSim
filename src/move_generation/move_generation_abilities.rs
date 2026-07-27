@@ -1,6 +1,9 @@
 use crate::{
     actions::abilities::{AbilityMechanic, DeckSearchKind},
-    actions::{abilities_switched_off, ability_mechanic_from_effect, SimpleAction},
+    actions::{
+        abilities_switched_off, ability_mechanic_from_effect, supporter_candidates_in_hand,
+        SimpleAction,
+    },
     hooks::is_ultra_beast,
     models::{EnergyType, PlayedCard},
     tools::is_tool_card,
@@ -57,6 +60,7 @@ fn can_use_ability_by_mechanic(
     card: &PlayedCard,
 ) -> bool {
     let is_active = _in_play_index == 0;
+    let opponent = (state.current_player + 1) % 2;
     match mechanic {
         AbilityMechanic::VictreebelFragranceTrap => {
             is_active && can_use_victreebel_fragrance_trap(state, card)
@@ -201,6 +205,7 @@ fn can_use_ability_by_mechanic(
         AbilityMechanic::AttachEnergyFromZoneToActiveTypedOnEvolve { .. } => false,
         AbilityMechanic::DamageOpponentActiveOnEvolve { .. } => false,
         AbilityMechanic::DiscardRandomEnergyFromOpponentActiveOnEvolve => false,
+        AbilityMechanic::OpponentShuffleHandAndDrawOnEvolve => false, // triggered on evolve
         AbilityMechanic::PutCardsFromDiscardToHandOnEvolve { .. } => false,
         AbilityMechanic::CanEvolveIntoEeveeEvolution => false,
         AbilityMechanic::CanEvolveOnFirstTurnIfActive => false,
@@ -224,8 +229,15 @@ fn can_use_ability_by_mechanic(
         AbilityMechanic::AncientRoar => false, // triggered on bench placement, not via UseAbility
         AbilityMechanic::ReduceAttackCost { .. } => false, // passive ability
         AbilityMechanic::CannotAttackWithoutBenchedNames { .. } => false, // passive (attack generation)
+        AbilityMechanic::DualType { .. } => false,                        // Passive ability
+        AbilityMechanic::PreventAttackEffects => false,                   // Passive ability
+        AbilityMechanic::CopyRandomOpponentHandSupporter => {
+            is_active
+                && !card.ability_used
+                && !supporter_candidates_in_hand(state, opponent).is_empty()
+        }
         AbilityMechanic::TimeRecall => false, // passive ability (consumed in attack generation)
-        AbilityMechanic::QuickGrowth => false, // triggered at end of opponent's turn
+        AbilityMechanic::RandomEvolutionFromDeck { .. } => false, // Passive ability
     }
 }
 
@@ -264,7 +276,7 @@ fn can_use_switch_active_typed_with_bench(
         return false;
     }
     let active = state.get_active(state.current_player);
-    if active.get_energy_type() != Some(energy_type) {
+    if !state.pokemon_is_type(active, energy_type) {
         return false;
     }
     state
@@ -309,7 +321,7 @@ fn can_use_attach_energy_from_zone_to_active_typed(
         return false;
     }
     let active = state.get_active(state.current_player);
-    active.get_energy_type() == Some(energy_type)
+    state.pokemon_is_type(active, energy_type)
 }
 
 fn can_use_dusknoir_shadow_void(state: &State, dusknoir_idx: usize) -> bool {
@@ -411,7 +423,7 @@ fn can_use_umbreon_dark_chase(state: &State, card: &PlayedCard) -> bool {
 fn can_use_vaporeon_wash_out(state: &State) -> bool {
     // Check if active Pokémon is Water type
     let active = state.get_active(state.current_player);
-    if active.get_energy_type() != Some(EnergyType::Water) {
+    if !state.pokemon_is_type(active, EnergyType::Water) {
         return false;
     }
     // Check if there's a benched Water Pokémon with Water energy

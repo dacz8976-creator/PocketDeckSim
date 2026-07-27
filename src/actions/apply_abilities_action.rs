@@ -7,6 +7,7 @@ use crate::{
     actions::{
         abilities::{AbilityMechanic, DeckSearchKind},
         apply_action_helpers::{apply_activate, handle_damage, handle_knockouts, Mutation},
+        apply_trainer_action::{copy_random_supporter_outcomes, supporter_candidates_in_hand},
         effect_ability_mechanic_map::ability_mechanic_from_effect,
         outcomes::Outcomes,
         shared_mutations::{pokemon_search_outcomes, tool_search_outcomes},
@@ -289,6 +290,9 @@ fn forecast_ability_by_mechanic(
         AbilityMechanic::DiscardRandomEnergyFromOpponentActiveOnEvolve => {
             panic!("DiscardRandomEnergyFromOpponentActiveOnEvolve is triggered on evolve")
         }
+        AbilityMechanic::OpponentShuffleHandAndDrawOnEvolve => {
+            panic!("OpponentShuffleHandAndDrawOnEvolve is triggered on evolve")
+        }
         AbilityMechanic::PutCardsFromDiscardToHandOnEvolve { .. } => {
             panic!("PutCardsFromDiscardToHandOnEvolve is triggered on evolve")
         }
@@ -340,11 +344,27 @@ fn forecast_ability_by_mechanic(
         AbilityMechanic::CannotAttackWithoutBenchedNames { .. } => {
             panic!("CannotAttackWithoutBenchedNames is a passive ability")
         }
+        AbilityMechanic::DualType { .. } => panic!("DualType is a passive ability"),
+        AbilityMechanic::PreventAttackEffects => {
+            panic!("PreventAttackEffects is a passive ability")
+        }
+        AbilityMechanic::CopyRandomOpponentHandSupporter => {
+            copy_random_opponent_hand_supporter(state, action.actor)
+        }
         AbilityMechanic::TimeRecall => panic!("TimeRecall is a passive ability"),
-        AbilityMechanic::QuickGrowth => {
-            panic!("QuickGrowth is triggered at the end of the opponent's turn")
+        AbilityMechanic::RandomEvolutionFromDeck { .. } => {
+            panic!("RandomEvolutionFromDeck is a passive ability")
         }
     }
+}
+
+/// Smeargle's Portrait: fold the effects of every Supporter the opponent is holding into one
+/// weighted distribution, exactly as Penny does for the opponent's deck. The card is only looked
+/// at, so nothing leaves the opponent's hand.
+fn copy_random_opponent_hand_supporter(state: &State, acting_player: usize) -> Outcomes {
+    let opponent = (acting_player + 1) % 2;
+    let candidates = supporter_candidates_in_hand(state, opponent);
+    copy_random_supporter_outcomes(acting_player, state, &candidates)
 }
 
 fn discard_energy_to_increase_type_damage(
@@ -397,9 +417,16 @@ fn look_at_top_card_of_deck() -> Outcomes {
 
 fn heal_all_your_pokemon(amount: u32, energy_type: Option<EnergyType>) -> Outcomes {
     Outcomes::single_fn(move |_rng, state, action| {
-        state.heal_each_pokemon(action.actor, amount, |pokemon| {
-            energy_type.is_none_or(|required| pokemon.get_energy_type() == Some(required))
-        });
+        let eligible: Vec<usize> = state
+            .enumerate_in_play_pokemon(action.actor)
+            .filter(|(_, pokemon)| {
+                energy_type.is_none_or(|required| state.pokemon_is_type(pokemon, required))
+            })
+            .map(|(in_play_idx, _)| in_play_idx)
+            .collect();
+        for in_play_idx in eligible {
+            state.heal_pokemon(action.actor, in_play_idx, amount);
+        }
     })
 }
 

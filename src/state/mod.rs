@@ -165,17 +165,88 @@ impl State {
         let starting_plains_active = is_starting_plains_active(self);
         for player in 0..2 {
             let ability_bonuses = self.ability_hp_bonuses(player);
-            for pokemon in self.in_play_pokemon[player].iter_mut().flatten() {
-                pokemon.refresh_starting_plains_bonus(starting_plains_active);
-                let energy_type = pokemon.get_energy_type();
+            // Types are resolved up-front because `pokemon_energy_types` needs `&self` while the
+            // loop below holds a `&mut` borrow of the board.
+            let energy_types: Vec<(usize, Vec<EnergyType>)> = self
+                .enumerate_in_play_pokemon(player)
+                .map(|(idx, pokemon)| (idx, self.pokemon_energy_types(pokemon)))
+                .collect();
+            for (idx, types) in energy_types {
                 let bonus = ability_bonuses
                     .iter()
-                    .filter(|(bonus_type, _)| Some(*bonus_type) == energy_type)
+                    .filter(|(bonus_type, _)| types.contains(bonus_type))
                     .map(|(_, amount)| *amount)
                     .sum();
+                let pokemon = self.in_play_pokemon[player][idx]
+                    .as_mut()
+                    .expect("Pokemon should be there, it was just enumerated");
+                pokemon.refresh_starting_plains_bonus(starting_plains_active);
                 pokemon.set_ability_hp_bonus(bonus);
             }
         }
+    }
+
+    /// Every Energy type a Pokémon **in play** counts as right now.
+    ///
+    /// Normally that is just its printed type, but Urshifu's Double Type ("As long as this Pokémon
+    /// is in play, it is [W] and [F] type") gives it two. This is the single chokepoint for the
+    /// question — Weakness, the type damage boosts, the "each of your [X] Pokémon" filters and the
+    /// typed Retreat discounts all go through here (or through [`Self::pokemon_is_type`]) rather
+    /// than reading `PlayedCard::get_energy_type` directly, so a dual-typed Pokémon cannot be
+    /// recognised by one of them and missed by another. `PlayedCard::get_energy_type` remains the
+    /// *printed* type and is correct only where the printed value is what is wanted (display, and
+    /// cards that are not in play).
+    ///
+    /// Reads the Ability through `get_in_play_ability_mechanic`, so Prickly Powder's `NoAbilities`
+    /// reverts the Pokémon to its printed type.
+    pub(crate) fn pokemon_energy_types(&self, pokemon: &PlayedCard) -> Vec<EnergyType> {
+        if let Some(AbilityMechanic::DualType { types }) =
+            get_in_play_ability_mechanic(self, pokemon)
+        {
+            return types.to_vec();
+        }
+        pokemon.get_energy_type().into_iter().collect()
+    }
+
+    /// Whether an *attack's* non-damage effect aimed at this Pokémon is prevented — Regice's
+    /// Crystal Body (A2 034): "Prevent all effects of attacks used by your opponent's Pokémon done
+    /// to this Pokémon."
+    ///
+    /// This is the single chokepoint for that question. Attack code calls it (or
+    /// [`Self::apply_attack_status_condition`], which is built on it) immediately before touching
+    /// the defending Pokémon, so the shield covers Special Conditions, lingering `CardEffect`s,
+    /// Energy and Tool removal, Energy-type changes, forced switches and devolution alike.
+    ///
+    /// Deliberately *not* called from Ability, Trainer or Stadium code: Crystal Body names attacks
+    /// only. Damage is not an effect and is applied through the normal damage path regardless.
+    pub(crate) fn prevents_attack_effects(&self, player: usize, in_play_idx: usize) -> bool {
+        self.in_play_pokemon[player][in_play_idx]
+            .as_ref()
+            .is_some_and(|pokemon| {
+                has_in_play_ability_mechanic(self, pokemon, &AbilityMechanic::PreventAttackEffects)
+            })
+    }
+
+    /// [`Self::apply_status_condition`] for a Special Condition inflicted by an *attack*, which
+    /// Crystal Body shields against. Every attack that gives a Pokémon a Special Condition goes
+    /// through here; Abilities and Trainers keep using `apply_status_condition` directly.
+    pub(crate) fn apply_attack_status_condition(
+        &mut self,
+        player: usize,
+        in_play_idx: usize,
+        status: StatusCondition,
+    ) {
+        if self.prevents_attack_effects(player, in_play_idx) {
+            debug!("Crystal Body: preventing the attack's {status:?} effect");
+            return;
+        }
+        self.apply_status_condition(player, in_play_idx, status);
+    }
+
+    /// Whether a Pokémon in play counts as `energy_type` right now. See
+    /// [`Self::pokemon_energy_types`].
+    pub(crate) fn pokemon_is_type(&self, pokemon: &PlayedCard, energy_type: EnergyType) -> bool {
+        self.pokemon_energy_types(pokemon).contains(&energy_type)
     }
 
     /// The `IncreaseHpForTypeInPlay` bonuses `player` currently has in play, as (type, amount)
@@ -547,7 +618,7 @@ impl State {
         // Steel Apron: "The [M] Pokémon this card is attached to ... can't be affected by any
         // Special Conditions." The immunity only applies to a [M] holder.
         if has_tool(pokemon, crate::card_ids::CardId::A4153SteelApron)
-            && pokemon.get_energy_type() == Some(EnergyType::Metal)
+            && self.pokemon_is_type(pokemon, EnergyType::Metal)
         {
             debug!("Steel Apron: Pokémon is immune to status conditions");
             return;
@@ -605,7 +676,7 @@ impl State {
 
     pub(crate) fn num_in_play_of_type(&self, player: usize, energy: EnergyType) -> usize {
         self.enumerate_in_play_pokemon(player)
-            .filter(|(_, x)| x.get_energy_type() == Some(energy))
+            .filter(|(_, x)| self.pokemon_is_type(x, energy))
             .count()
     }
 

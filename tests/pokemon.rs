@@ -288,6 +288,10 @@ mod oranguru_primates_trap_test;
 mod passimian_ex_offload_pass_test;
 #[path = "pokemon/politoed_lordly_cheering_test.rs"]
 mod politoed_lordly_cheering_test;
+#[path = "pokemon/polteageist_refreshing_tea_test.rs"]
+mod polteageist_refreshing_tea_test;
+#[path = "pokemon/porygon2_buggy_evolution_test.rs"]
+mod porygon2_buggy_evolution_test;
 #[path = "pokemon/porygon_data_scan_test.rs"]
 mod porygon_data_scan_test;
 #[path = "pokemon/porygonz_cyberjack_test.rs"]
@@ -308,6 +312,8 @@ mod quagsire_amnesia_test;
 mod raid_evolved_this_turn_test;
 #[path = "pokemon/rampardos_head_smash_test.rs"]
 mod rampardos_head_smash_test;
+#[path = "pokemon/regice_crystal_body_test.rs"]
+mod regice_crystal_body_test;
 #[path = "pokemon/regigigas_seal_of_antiquity_test.rs"]
 mod regigigas_seal_of_antiquity_test;
 #[path = "pokemon/resilience_link_test.rs"]
@@ -330,6 +336,8 @@ mod shinx_hide_test;
 mod slither_wing_test;
 #[path = "pokemon/slowking_litter_test.rs"]
 mod slowking_litter_test;
+#[path = "pokemon/smeargle_portrait_test.rs"]
+mod smeargle_portrait_test;
 #[path = "pokemon/smoochum_test.rs"]
 mod smoochum_test;
 #[path = "pokemon/snorlax_massive_body_test.rs"]
@@ -374,6 +382,8 @@ mod unown_guard_test;
 mod unown_power_test;
 #[path = "pokemon/ursaluna_guts_test.rs"]
 mod ursaluna_guts_test;
+#[path = "pokemon/urshifu_double_type_test.rs"]
+mod urshifu_double_type_test;
 #[path = "pokemon/vanilluxe_test.rs"]
 mod vanilluxe_test;
 #[path = "pokemon/vaporeon_ex_test.rs"]
