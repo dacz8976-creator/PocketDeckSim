@@ -973,6 +973,34 @@ fn is_water_pokemon(card: &Card) -> bool {
 fn penny_outcomes(acting_player: usize, state: &State) -> Outcomes {
     let opponent = (acting_player + 1) % 2;
     let candidates = penny_candidates(state, opponent);
+    if candidates.is_empty() {
+        return Outcomes::single_fn(|_, _, _| {});
+    }
+    copy_random_supporter_outcomes(acting_player, state, &candidates).map_mutations(
+        move |mutation| -> Mutation {
+            Box::new(move |rng, state, action| {
+                mutation(rng, state, action);
+                // "...and shuffle it back into their deck."
+                state.decks[opponent].shuffle(false, rng);
+            })
+        },
+    )
+}
+
+/// "Use the effect of that card as the effect of this <card>", where the card is one Supporter
+/// drawn at random from `candidates` (distinct card + how many copies are in the pile it came
+/// from). Folds the outcomes of every candidate into a single distribution, weighted by how likely
+/// that card is to be the one drawn — so four copies of Cynthia are four times as likely as one
+/// Erika.
+///
+/// Shared by Penny (a Supporter in the opponent's *deck*) and Smeargle's Portrait (a Supporter in
+/// the opponent's *hand*). `acting_player` is the copier, so the copied effect resolves from their
+/// side of the board. Returns a single no-op branch when `candidates` is empty.
+pub(crate) fn copy_random_supporter_outcomes(
+    acting_player: usize,
+    state: &State,
+    candidates: &[(TrainerCard, usize)],
+) -> Outcomes {
     let total: usize = candidates.iter().map(|(_, count)| *count).sum();
     if total == 0 {
         return Outcomes::single_fn(|_, _, _| {});
@@ -980,28 +1008,20 @@ fn penny_outcomes(acting_player: usize, state: &State) -> Outcomes {
 
     let mut branches: Vec<(f64, Mutation, CoinPaths)> = vec![];
     for (trainer_card, count) in candidates {
-        let weight = count as f64 / total as f64;
-        let copied = penny_copied_outcomes(acting_player, state, &trainer_card).map_mutations(
-            move |mutation| -> Mutation {
-                Box::new(move |rng, state, action| {
-                    mutation(rng, state, action);
-                    // "...and shuffle it back into their deck."
-                    state.decks[opponent].shuffle(false, rng);
-                })
-            },
-        );
+        let weight = *count as f64 / total as f64;
+        let copied = copied_supporter_outcomes(acting_player, state, trainer_card);
         for (probability, mutation, coin_paths) in copied.into_branches_with_coin_paths() {
             branches.push((probability * weight, mutation, coin_paths));
         }
     }
 
     Outcomes::from_branches_with_coin_paths(branches)
-        .expect("penny_outcomes should produce a valid distribution")
+        .expect("copy_random_supporter_outcomes should produce a valid distribution")
 }
 
-/// The outcomes of the Supporter Penny drew, or a no-op if that Supporter cannot currently do
-/// anything (see `penny_outcomes`).
-fn penny_copied_outcomes(
+/// The outcomes of the copied Supporter, or a no-op if that Supporter cannot currently do anything
+/// (see `penny_outcomes`).
+fn copied_supporter_outcomes(
     acting_player: usize,
     state: &State,
     trainer_card: &TrainerCard,
@@ -1019,12 +1039,31 @@ fn penny_copied_outcomes(
 
 /// The Supporters in `player`'s deck that Penny can copy, with how many copies of each are there.
 pub(crate) fn penny_candidates(state: &State, player: usize) -> Vec<(TrainerCard, usize)> {
+    // Penny can copy anything but another Penny — that exclusion is what bounds the recursion.
+    distinct_supporters(state.decks[player].cards.iter(), Some("Penny"))
+}
+
+/// The Supporters in `player`'s hand that Smeargle's Portrait can copy, with how many copies of
+/// each are there. The hand mirror of [`penny_candidates`]; Portrait names no exclusion, and
+/// Smeargle is a Pokémon, so it cannot copy itself.
+pub(crate) fn supporter_candidates_in_hand(
+    state: &State,
+    player: usize,
+) -> Vec<(TrainerCard, usize)> {
+    distinct_supporters(state.hands[player].iter(), None)
+}
+
+fn distinct_supporters<'a>(
+    cards: impl Iterator<Item = &'a Card>,
+    exclude_name: Option<&str>,
+) -> Vec<(TrainerCard, usize)> {
     let mut candidates: Vec<(TrainerCard, usize)> = vec![];
-    for card in &state.decks[player].cards {
+    for card in cards {
         let Card::Trainer(trainer_card) = card else {
             continue;
         };
-        if trainer_card.trainer_card_type != TrainerType::Supporter || trainer_card.name == "Penny"
+        if trainer_card.trainer_card_type != TrainerType::Supporter
+            || exclude_name.is_some_and(|name| trainer_card.name == name)
         {
             continue;
         }

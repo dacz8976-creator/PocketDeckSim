@@ -25,6 +25,7 @@ pub(crate) use apply_action_helpers::handle_damage_only;
 pub(crate) use apply_action_helpers::handle_knockouts;
 pub use apply_trainer_action::may_effect;
 pub(crate) use apply_trainer_action::penny_candidates;
+pub(crate) use apply_trainer_action::supporter_candidates_in_hand;
 pub(crate) use effect_ability_mechanic_map::abilities_switched_off;
 pub use effect_ability_mechanic_map::ability_mechanic_from_effect;
 pub(crate) use effect_ability_mechanic_map::card_effect_from_ability_mechanic;

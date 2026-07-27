@@ -606,6 +606,15 @@ pub enum AbilityMechanic {
     DualType {
         types: [EnergyType; 2],
     },
+    /// Smeargle's Portrait (B2 130): "Once during your turn, if this Pokémon is in the Active
+    /// Spot, you may look at a random Supporter card from your opponent's hand. Use the effect of
+    /// that card as the effect of this Ability."
+    ///
+    /// The Ability twin of Penny (A3b 069), which draws its Supporter from the opponent's *deck*
+    /// instead of their hand; both fold the copied card's outcomes into one weighted distribution
+    /// through `copy_random_supporter_outcomes`. The card is only looked at, so it stays in the
+    /// opponent's hand, and — being an Ability — it does not consume the Supporter-per-turn slot.
+    CopyRandomOpponentHandSupporter,
     /// Regice's Crystal Body (A2 034): "Prevent all effects of attacks used by your opponent's
     /// Pokémon done to this Pokémon."
     ///

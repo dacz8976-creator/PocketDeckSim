@@ -336,6 +336,8 @@ mod shinx_hide_test;
 mod slither_wing_test;
 #[path = "pokemon/slowking_litter_test.rs"]
 mod slowking_litter_test;
+#[path = "pokemon/smeargle_portrait_test.rs"]
+mod smeargle_portrait_test;
 #[path = "pokemon/smoochum_test.rs"]
 mod smoochum_test;
 #[path = "pokemon/snorlax_massive_body_test.rs"]
