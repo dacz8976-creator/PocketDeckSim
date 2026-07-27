@@ -10,6 +10,15 @@ pub enum BenchSide {
     BothBenches,
 }
 
+/// Which cards a hand-disruption attack is allowed to pick from the opponent's hand.
+/// `Any` is the unrestricted "a random card" wording; the others restrict by Trainer type.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum HandCardKind {
+    Any,
+    Item,
+    Tool,
+}
+
 #[derive(Debug, Clone, PartialEq)]
 pub enum CopyAttackSource {
     OpponentActive,
@@ -433,7 +442,12 @@ pub enum Mechanic {
     ExtraDamagePerOpponentPokemonWithAbility {
         damage_per: u32,
     },
-    CoinFlipShuffleRandomOpponentHandCardIntoDeck,
+    /// "Flip N coins. For each heads, a card is chosen at random from your opponent's hand …
+    /// and shuffles it into their deck." With `num_coins: 1` this is the single-coin printing
+    /// ("Flip a coin. If heads, your opponent reveals a random card …" / Purrloin's Whiny Voice).
+    ShuffleRandomOpponentHandCardsPerHeads {
+        num_coins: usize,
+    },
     /// Teal Mask Ogerpon ex – Energized Leaves:
     /// If total energy on both Active Pokémon ≥ threshold, deal extra_damage more.
     ExtraDamageIfCombinedActiveEnergyAtLeast {
@@ -496,4 +510,64 @@ pub enum Mechanic {
     DamagePerOwnToolAttached {
         damage_per: u32,
     },
+
+    // ===== Opponent hand / deck disruption =====
+    /// "Discard a random [Item/Pokémon Tool] card from your opponent's hand", optionally gated
+    /// behind a coin flip ("Flip a coin. If heads, discard a random card from your opponent's
+    /// hand."). Discards fewer cards than `count` — possibly none — when the opponent's hand
+    /// holds fewer matching cards.
+    DiscardRandomOpponentHandCards {
+        kind: HandCardKind,
+        count: usize,
+        coin_flip: bool,
+    },
+    /// "Your opponent reveals their hand." Both players already see the whole state in this
+    /// engine, so revealing carries no mechanical consequence — the attack is plain damage.
+    /// Modelled explicitly (rather than left unimplemented) so the printings validate as done.
+    RevealOpponentHand,
+    /// "Discard the top N cards of your deck" / "of each player's deck". Either count may be 0
+    /// for the one-sided printings.
+    DiscardTopDeck {
+        own_count: usize,
+        opponent_count: usize,
+    },
+    /// Dugtrio's Cliff Crumbler: discard the top card of your own deck; if it is a Pokémon of
+    /// `energy_type`, the attack does `extra_damage` more.
+    DiscardTopSelfDeckExtraDamageIfType {
+        energy_type: EnergyType,
+        extra_damage: u32,
+    },
+    /// Slowking's Litter: "Discard up to `max_cards` Pokémon Tool cards from your hand. This
+    /// attack does `damage_per_card` damage for each card you discarded in this way." The
+    /// printed damage is replaced, not added to, so discarding nothing deals nothing.
+    DiscardToolsFromHandForDamage {
+        max_cards: usize,
+        damage_per_card: u32,
+    },
+    /// Aipom's Imitate: draw until your hand holds as many cards as your opponent's. Never
+    /// discards when your hand is already the bigger one.
+    DrawUntilHandMatchesOpponent,
+    /// Coalossal's Mountain Crush: flip a coin until tails, discarding the top card of your
+    /// opponent's deck for each heads.
+    FlipUntilTailsDiscardOpponentDeck,
+    /// Golurk's Heavy Rocket: reveal the top `reveal_count` cards of your deck, deal
+    /// `damage_per` for each Pokémon there with a Retreat Cost of `min_retreat_cost` or more,
+    /// then shuffle your deck. The printed damage is replaced by the computed total.
+    RevealTopDeckDamagePerHeavyPokemon {
+        reveal_count: usize,
+        min_retreat_cost: usize,
+        damage_per: u32,
+    },
+    /// Chatot's Mimic: shuffle your hand into your deck, then draw one card for each card in
+    /// your opponent's hand.
+    ShuffleHandIntoDeckDrawEqualToOpponentHand,
+    /// "Your opponent reveals a random card from their hand and shuffles it into their deck",
+    /// optionally followed by "Shuffle this Pokémon into your deck" (Liepard's Snatch and Flee).
+    ShuffleRandomOpponentHandCardsIntoDeck {
+        count: usize,
+        shuffle_self_into_deck: bool,
+    },
+    /// Purugly's Interrupt: the opponent reveals their hand and the attacker chooses any one
+    /// card there to shuffle into the opponent's deck.
+    ChooseOpponentHandCardToShuffleIntoDeck,
 }

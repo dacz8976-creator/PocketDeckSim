@@ -117,9 +117,11 @@ pub enum SimpleAction {
     SwitchHandCardForRandomTool {
         hand_card: Card,
     },
-    /// Silver: shuffle a specific Supporter from opponent's hand into their deck
-    ShuffleOpponentSupporter {
-        supporter_card: Card,
+    /// Shuffle a specific card from the opponent's hand into their deck. Silver restricts the
+    /// choice to Supporters, Purugly's Interrupt allows any card; the restriction lives at the
+    /// site that builds the choices, not here.
+    ShuffleOpponentHandCard {
+        card: Card,
     },
     /// Mega Absol Ex: discard a specific Supporter from opponent's hand
     DiscardOpponentSupporter {
@@ -128,6 +130,14 @@ pub enum SimpleAction {
     /// Discard multiple specific cards from own hand
     DiscardOwnCards {
         cards: Vec<Card>,
+    },
+    /// Slowking's Litter: discard the chosen cards from your own hand, then have the attacking
+    /// Pokémon deal `damage_per_card` × (number of cards discarded) to the opponent's Active
+    /// Pokémon. The damage depends on a choice the player makes *after* the attack resolves, so
+    /// it cannot be carried in the attack's own `AttackOutcome`.
+    DiscardOwnCardsForAttackDamage {
+        cards: Vec<Card>,
+        damage_per_card: u32,
     },
     /// Lusamine: attach energies from discard to a Pokemon
     AttachFromDiscard {
@@ -315,14 +325,23 @@ impl fmt::Display for SimpleAction {
             SimpleAction::SwitchHandCardForRandomTool { hand_card } => {
                 write!(f, "SwitchHandCardForRandomTool({hand_card})")
             }
-            SimpleAction::ShuffleOpponentSupporter { supporter_card } => {
-                write!(f, "ShuffleOpponentSupporter({supporter_card})")
+            SimpleAction::ShuffleOpponentHandCard { card } => {
+                write!(f, "ShuffleOpponentHandCard({card})")
             }
             SimpleAction::DiscardOpponentSupporter { supporter_card } => {
                 write!(f, "DiscardOpponentSupporter({supporter_card})")
             }
             SimpleAction::DiscardOwnCards { cards } => {
                 write!(f, "DiscardOwnCards({:?})", cards)
+            }
+            SimpleAction::DiscardOwnCardsForAttackDamage {
+                cards,
+                damage_per_card,
+            } => {
+                write!(
+                    f,
+                    "DiscardOwnCardsForAttackDamage({cards:?}, {damage_per_card})"
+                )
             }
             SimpleAction::AttachFromDiscard {
                 in_play_idx,

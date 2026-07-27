@@ -12,7 +12,7 @@ use crate::{
         attack_helpers::{
             collect_in_play_indices_by_type, energy_any_way_choices, generate_distributions,
         },
-        attacks::{BenchSide, CopyAttackSource, Mechanic},
+        attacks::{BenchSide, CopyAttackSource, HandCardKind, Mechanic},
         effect_ability_mechanic_map::{get_in_play_ability_mechanic, has_any_in_play_ability},
         effect_mechanic_map::EFFECT_MECHANIC_MAP,
         Action,
@@ -24,6 +24,7 @@ use crate::{
         get_attack_cost, get_retreat_cost, get_stage,
     },
     models::{Attack, Card, EnergyType, StatusCondition, TrainerType},
+    tools::is_tool_card,
     State,
 };
 
@@ -626,6 +627,64 @@ fn forecast_effect_attack_by_mechanic(
         Mechanic::DamagePerOwnToolAttached { damage_per } => {
             damage_per_own_tool_attached(state, *damage_per)
         }
+        Mechanic::DiscardRandomOpponentHandCards {
+            kind,
+            count,
+            coin_flip,
+        } => discard_random_opponent_hand_cards_attack(
+            attack.fixed_damage,
+            *kind,
+            *count,
+            *coin_flip,
+        ),
+        Mechanic::RevealOpponentHand => active_damage_doutcome(attack.fixed_damage),
+        Mechanic::DiscardTopDeck {
+            own_count,
+            opponent_count,
+        } => discard_top_deck_attack(attack.fixed_damage, *own_count, *opponent_count),
+        Mechanic::DiscardTopSelfDeckExtraDamageIfType {
+            energy_type,
+            extra_damage,
+        } => discard_top_self_deck_extra_damage_if_type(
+            state,
+            attack.fixed_damage,
+            *energy_type,
+            *extra_damage,
+        ),
+        Mechanic::DiscardToolsFromHandForDamage {
+            max_cards,
+            damage_per_card,
+        } => discard_tools_from_hand_for_damage(state, *max_cards, *damage_per_card),
+        Mechanic::DrawUntilHandMatchesOpponent => {
+            draw_until_hand_matches_opponent(state, attack.fixed_damage)
+        }
+        Mechanic::FlipUntilTailsDiscardOpponentDeck => {
+            flip_until_tails_discard_opponent_deck(attack.fixed_damage)
+        }
+        Mechanic::RevealTopDeckDamagePerHeavyPokemon {
+            reveal_count,
+            min_retreat_cost,
+            damage_per,
+        } => reveal_top_deck_damage_per_heavy_pokemon(
+            state,
+            *reveal_count,
+            *min_retreat_cost,
+            *damage_per,
+        ),
+        Mechanic::ShuffleHandIntoDeckDrawEqualToOpponentHand => {
+            shuffle_hand_into_deck_draw_equal_to_opponent_hand(state, attack.fixed_damage)
+        }
+        Mechanic::ShuffleRandomOpponentHandCardsIntoDeck {
+            count,
+            shuffle_self_into_deck,
+        } => shuffle_random_opponent_hand_cards_into_deck_attack(
+            attack.fixed_damage,
+            *count,
+            *shuffle_self_into_deck,
+        ),
+        Mechanic::ChooseOpponentHandCardToShuffleIntoDeck => {
+            choose_opponent_hand_card_to_shuffle_into_deck(attack.fixed_damage)
+        }
         Mechanic::DiscardRandomGlobalEnergy { count } => {
             discard_random_global_energy_attack(attack.fixed_damage, *count, state)
         }
@@ -821,8 +880,8 @@ fn forecast_effect_attack_by_mechanic(
         Mechanic::ExtraDamagePerOpponentPokemonWithAbility { damage_per } => {
             extra_damage_per_opponent_pokemon_with_ability(state, attack.fixed_damage, *damage_per)
         }
-        Mechanic::CoinFlipShuffleRandomOpponentHandCardIntoDeck => {
-            coin_flip_shuffle_random_opponent_hand_card_into_deck()
+        Mechanic::ShuffleRandomOpponentHandCardsPerHeads { num_coins } => {
+            shuffle_random_opponent_hand_cards_per_heads(attack.fixed_damage, *num_coins)
         }
         Mechanic::ExtraDamageIfCombinedActiveEnergyAtLeast {
             threshold,
@@ -3018,22 +3077,292 @@ fn shuffle_opponent_active_into_deck() -> AttackOutcomes {
     )
 }
 
-fn coin_flip_shuffle_random_opponent_hand_card_into_deck() -> AttackOutcomes {
-    AttackOutcomes::binary_coin(
-        // Heads: shuffle a random card from opponent's hand into their deck
-        active_damage_effect_outcome(0, move |rng, state, action| {
+/// "Flip N coins. For each heads, a card is chosen at random from your opponent's hand … and
+/// shuffles it into their deck." (Krookodile's Poaching Fangs, and the single-coin printings —
+/// Gastly/Murkrow's Astonish and Purrloin's Whiny Voice.)
+fn shuffle_random_opponent_hand_cards_per_heads(damage: u32, num_coins: usize) -> AttackOutcomes {
+    AttackOutcomes::binomial_by_heads(num_coins, move |heads| {
+        active_damage_effect_outcome(damage, move |rng, state, action| {
             let opponent = (action.actor + 1) % 2;
-            if state.hands[opponent].is_empty() {
-                return;
+            shuffle_random_hand_cards_into_deck(rng, state, opponent, heads);
+        })
+    })
+}
+
+/// Move up to `count` randomly chosen cards from `player`'s hand into their deck, then shuffle it.
+/// Moves fewer cards (possibly none) when the hand runs out; the deck is only shuffled if at least
+/// one card actually moved.
+fn shuffle_random_hand_cards_into_deck(
+    rng: &mut StdRng,
+    state: &mut State,
+    player: usize,
+    count: usize,
+) {
+    let mut moved = false;
+    for _ in 0..count {
+        if state.hands[player].is_empty() {
+            break;
+        }
+        let idx = rng.gen_range(0..state.hands[player].len());
+        let card = state.hands[player].remove(idx);
+        state.decks[player].cards.push(card);
+        moved = true;
+    }
+    if moved {
+        state.decks[player].shuffle(false, rng);
+    }
+}
+
+/// "Your opponent reveals a random card from their hand and shuffles it into their deck",
+/// optionally followed by "Shuffle this Pokémon into your deck" (Liepard's Snatch and Flee).
+fn shuffle_random_opponent_hand_cards_into_deck_attack(
+    damage: u32,
+    count: usize,
+    shuffle_self_into_deck: bool,
+) -> AttackOutcomes {
+    active_damage_effect_doutcome(damage, move |rng, state, action| {
+        let opponent = (action.actor + 1) % 2;
+        shuffle_random_hand_cards_into_deck(rng, state, opponent, count);
+        if shuffle_self_into_deck {
+            shuffle_own_active_into_deck(rng, state, action.actor);
+        }
+    })
+}
+
+/// Put the attacker's own Active Pokémon (and its evolution chain) back into its deck. Energy and
+/// any attached Tool go to the discard pile, mirroring `shuffle_opponent_active_into_deck`.
+fn shuffle_own_active_into_deck(rng: &mut StdRng, state: &mut State, player: usize) {
+    let Some(active) = state.in_play_pokemon[player][0].as_ref() else {
+        return; // Already gone (e.g. knocked out by a counterattack).
+    };
+    if active.attached_tool.is_some() {
+        state.discard_tool(player, 0);
+    }
+    let active = state.in_play_pokemon[player][0]
+        .take()
+        .expect("Active Pokemon was just checked to be there");
+
+    let mut cards_to_shuffle = active.cards_behind.clone();
+    cards_to_shuffle.push(active.card.clone());
+    state.decks[player].cards.extend(cards_to_shuffle);
+    state.discard_energies[player].extend(active.attached_energy.iter().cloned());
+    state.decks[player].shuffle(false, rng);
+
+    state.trigger_promotion_or_declare_winner(player);
+}
+
+/// Purugly's Interrupt: the opponent reveals their hand and the attacker picks any one card there
+/// to shuffle into the opponent's deck.
+fn choose_opponent_hand_card_to_shuffle_into_deck(damage: u32) -> AttackOutcomes {
+    active_damage_effect_doutcome(damage, move |_, state, action| {
+        let opponent = (action.actor + 1) % 2;
+        let choices: Vec<SimpleAction> = state.hands[opponent]
+            .iter()
+            .map(|card| SimpleAction::ShuffleOpponentHandCard { card: card.clone() })
+            .collect();
+        if !choices.is_empty() {
+            state.move_generation_stack.push((action.actor, choices));
+        }
+    })
+}
+
+/// Whether `card` may be picked by a hand-disruption attack restricted to `kind`.
+fn matches_hand_card_kind(card: &Card, kind: HandCardKind) -> bool {
+    match kind {
+        HandCardKind::Any => true,
+        HandCardKind::Item => {
+            matches!(card, Card::Trainer(trainer) if trainer.trainer_card_type == TrainerType::Item)
+        }
+        HandCardKind::Tool => is_tool_card(card),
+    }
+}
+
+/// "Discard a random [Item/Pokémon Tool] card from your opponent's hand", optionally gated behind
+/// a coin flip. Discards nothing when the opponent holds no matching card.
+fn discard_random_opponent_hand_cards_attack(
+    damage: u32,
+    kind: HandCardKind,
+    count: usize,
+    coin_flip: bool,
+) -> AttackOutcomes {
+    let discard = move |rng: &mut StdRng, state: &mut State, action: &Action| {
+        let opponent = (action.actor + 1) % 2;
+        discard_random_hand_cards(rng, state, opponent, kind, count);
+    };
+    if coin_flip {
+        AttackOutcomes::binary_coin(
+            active_damage_effect_outcome(damage, discard),
+            active_damage_outcome(damage),
+        )
+    } else {
+        active_damage_effect_doutcome(damage, discard)
+    }
+}
+
+fn discard_random_hand_cards(
+    rng: &mut StdRng,
+    state: &mut State,
+    player: usize,
+    kind: HandCardKind,
+    count: usize,
+) {
+    for _ in 0..count {
+        let matching: Vec<usize> = state.hands[player]
+            .iter()
+            .enumerate()
+            .filter(|(_, card)| matches_hand_card_kind(card, kind))
+            .map(|(index, _)| index)
+            .collect();
+        if matching.is_empty() {
+            return; // Nothing matching left to discard.
+        }
+        let index = matching[rng.gen_range(0..matching.len())];
+        let card = state.hands[player].remove(index);
+        state.discard_piles[player].push(card);
+    }
+}
+
+/// "Discard the top N cards of your deck" / "of each player's deck".
+fn discard_top_deck_attack(damage: u32, own_count: usize, opponent_count: usize) -> AttackOutcomes {
+    active_damage_effect_doutcome(damage, move |_, state, action| {
+        let opponent = (action.actor + 1) % 2;
+        discard_top_deck_cards(state, action.actor, own_count);
+        discard_top_deck_cards(state, opponent, opponent_count);
+    })
+}
+
+fn discard_top_deck_cards(state: &mut State, player: usize, count: usize) {
+    for _ in 0..count {
+        let Some(card) = state.decks[player].draw() else {
+            return; // Deck ran out.
+        };
+        state.discard_piles[player].push(card);
+    }
+}
+
+/// Dugtrio's Cliff Crumbler: discard the top card of your deck; if it is a Pokémon of
+/// `energy_type`, the attack does `extra_damage` more. The deck order is already concrete in the
+/// state, so the bonus is resolved at forecast time instead of branching.
+fn discard_top_self_deck_extra_damage_if_type(
+    state: &State,
+    base_damage: u32,
+    energy_type: EnergyType,
+    extra_damage: u32,
+) -> AttackOutcomes {
+    let top_matches = state.decks[state.current_player]
+        .cards
+        .first()
+        .is_some_and(|card| card.get_type() == Some(energy_type));
+    let damage = if top_matches {
+        base_damage + extra_damage
+    } else {
+        base_damage
+    };
+    active_damage_effect_doutcome(damage, move |_, state, action| {
+        discard_top_deck_cards(state, action.actor, 1);
+    })
+}
+
+/// Slowking's Litter: offer every "discard up to N Pokémon Tool cards" choice (including
+/// discarding nothing). The damage is decided by the choice, so it is carried by the queued
+/// `DiscardOwnCardsForAttackDamage` action rather than by this outcome.
+fn discard_tools_from_hand_for_damage(
+    state: &State,
+    max_cards: usize,
+    damage_per_card: u32,
+) -> AttackOutcomes {
+    let tools: Vec<Card> = state.hands[state.current_player]
+        .iter()
+        .filter(|card| is_tool_card(card))
+        .cloned()
+        .collect();
+    let max_discardable = max_cards.min(tools.len());
+    AttackOutcomes::single_effect(move |_, state, action| {
+        let mut choices = vec![SimpleAction::DiscardOwnCardsForAttackDamage {
+            cards: vec![],
+            damage_per_card,
+        }];
+        for count in 1..=max_discardable {
+            for cards in generate_combinations(&tools, count) {
+                choices.push(SimpleAction::DiscardOwnCardsForAttackDamage {
+                    cards,
+                    damage_per_card,
+                });
             }
-            let idx = rng.gen_range(0..state.hands[opponent].len());
-            let card = state.hands[opponent].remove(idx);
-            state.decks[opponent].cards.push(card);
-            state.decks[opponent].shuffle(false, rng);
-        }),
-        // Tails: do nothing
-        active_damage_outcome(0),
+        }
+        state.move_generation_stack.push((action.actor, choices));
+    })
+}
+
+/// Aipom's Imitate: draw until your hand is as big as your opponent's (never discards down).
+fn draw_until_hand_matches_opponent(state: &State, damage: u32) -> AttackOutcomes {
+    let acting_player = state.current_player;
+    let opponent = (acting_player + 1) % 2;
+    let amount = state.hands[opponent]
+        .len()
+        .saturating_sub(state.hands[acting_player].len())
+        .min(u8::MAX as usize) as u8;
+    if amount == 0 {
+        return active_damage_doutcome(damage);
+    }
+    active_damage_effect_doutcome(damage, move |_, state, action| {
+        state.queue_draw_action(action.actor, amount);
+    })
+}
+
+/// Coalossal's Mountain Crush: flip until tails, milling the opponent's deck once per heads.
+fn flip_until_tails_discard_opponent_deck(damage: u32) -> AttackOutcomes {
+    // Truncate at 8 heads to keep the probability space manageable, like the other
+    // flip-until-tails attacks.
+    AttackOutcomes::geometric_until_tails(8, move |heads| {
+        active_damage_effect_outcome(damage, move |_, state, action| {
+            let opponent = (action.actor + 1) % 2;
+            discard_top_deck_cards(state, opponent, heads);
+        })
+    })
+}
+
+/// Golurk's Heavy Rocket: the revealed cards are the concrete top of the deck, so the damage is
+/// known at forecast time; the effect only shuffles them back.
+fn reveal_top_deck_damage_per_heavy_pokemon(
+    state: &State,
+    reveal_count: usize,
+    min_retreat_cost: usize,
+    damage_per: u32,
+) -> AttackOutcomes {
+    let heavy_count = state.decks[state.current_player]
+        .cards
+        .iter()
+        .take(reveal_count)
+        .filter(|card| {
+            card.get_retreat_cost()
+                .is_some_and(|cost| cost.len() >= min_retreat_cost)
+        })
+        .count();
+    active_damage_effect_doutcome(
+        damage_per * heavy_count as u32,
+        move |rng, state, action| {
+            state.decks[action.actor].shuffle(false, rng);
+        },
     )
+}
+
+/// Chatot's Mimic: shuffle your whole hand into your deck, then draw one card for each card in
+/// your opponent's hand.
+fn shuffle_hand_into_deck_draw_equal_to_opponent_hand(
+    state: &State,
+    damage: u32,
+) -> AttackOutcomes {
+    let opponent = (state.current_player + 1) % 2;
+    let draw_amount = state.hands[opponent].len().min(u8::MAX as usize) as u8;
+    active_damage_effect_doutcome(damage, move |rng, state, action| {
+        let hand = std::mem::take(&mut state.hands[action.actor]);
+        state.decks[action.actor].cards.extend(hand);
+        state.decks[action.actor].shuffle(false, rng);
+        if draw_amount > 0 {
+            state.queue_draw_action(action.actor, draw_amount);
+        }
+    })
 }
 
 /// Teal Mask Ogerpon ex – Energized Leaves:

@@ -1620,9 +1620,7 @@ fn silver_effect(_: &mut StdRng, state: &mut State, action: &Action) {
     let possible_shuffles: Vec<SimpleAction> = state.hands[opponent]
         .iter()
         .filter(|card| card.is_support())
-        .map(|card| SimpleAction::ShuffleOpponentSupporter {
-            supporter_card: card.clone(),
-        })
+        .map(|card| SimpleAction::ShuffleOpponentHandCard { card: card.clone() })
         .collect();
 
     if !possible_shuffles.is_empty() {
