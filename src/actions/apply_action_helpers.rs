@@ -13,9 +13,9 @@ use crate::{
     card_ids::CardId,
     effects::{CardEffect, TurnEffect},
     hooks::{
-        get_counterattack_damage, maybe_attach_energy_on_damaged, modify_damage,
-        on_attack_knockout, on_end_turn, on_knockout, should_poison_attacker,
-        DamageModifierContext,
+        get_counterattack_damage, maybe_attach_energy_on_damaged,
+        maybe_shuffle_attacker_hand_card_on_damaged, modify_damage, on_attack_knockout,
+        on_end_turn, on_knockout, should_poison_attacker, DamageModifierContext,
     },
     models::{Card, StatusCondition, TrainerType},
     state::GameOutcome,
@@ -594,6 +594,7 @@ pub(crate) fn handle_damage_only(
         // board) does not feed the defender's Energy Zone.
         if target_player != attacking_player {
             maybe_attach_energy_on_damaged(state, target_player);
+            maybe_shuffle_attacker_hand_card_on_damaged(state, target_player, attacking_player);
         }
     }
 }

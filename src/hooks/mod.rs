@@ -27,6 +27,7 @@ pub use core::to_playable_card;
 pub(crate) use core::DamageModifierContext;
 pub(crate) use counterattack::get_counterattack_damage;
 pub(crate) use counterattack::maybe_attach_energy_on_damaged;
+pub(crate) use counterattack::maybe_shuffle_attacker_hand_card_on_damaged;
 pub(crate) use counterattack::should_poison_attacker;
 pub(crate) use retreat::can_retreat;
 pub(crate) use retreat::get_retreat_cost;

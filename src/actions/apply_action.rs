@@ -25,7 +25,7 @@ use super::{
         forecast_end_turn, guts_would_flip, handle_damage, handle_damage_only, handle_knockouts,
         Mutations,
     },
-    apply_attack_action::forecast_attack,
+    apply_attack_action::{self, forecast_attack},
     apply_stadium_action::{self, forecast_use_stadium},
     apply_trainer_action::{self, forecast_trainer_action},
     outcomes::Outcomes,
@@ -84,6 +84,12 @@ pub fn forecast_action(state: &State, action: &Action) -> Outcomes {
         } => forecast_attach(state, action.actor, attachments, *is_turn_energy),
         SimpleAction::OpponentShuffleHandAndDrawRemainingPoints => {
             Outcomes::single_fn(apply_trainer_action::mars_effect)
+        }
+        SimpleAction::ShuffleRandomOpponentHandCard => {
+            Outcomes::single_fn(|rng, state, action| {
+                let opponent = (action.actor + 1) % 2;
+                apply_attack_action::shuffle_random_hand_cards_into_deck(rng, state, opponent, 1);
+            })
         }
         SimpleAction::UseAbility { in_play_idx } => forecast_ability(state, action, *in_play_idx),
         SimpleAction::ApplyDamage {

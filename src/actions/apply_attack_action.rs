@@ -4307,7 +4307,7 @@ fn shuffle_random_opponent_hand_cards_per_heads(damage: u32, num_coins: usize) -
 /// Move up to `count` randomly chosen cards from `player`'s hand into their deck, then shuffle it.
 /// Moves fewer cards (possibly none) when the hand runs out; the deck is only shuffled if at least
 /// one card actually moved.
-fn shuffle_random_hand_cards_into_deck(
+pub(crate) fn shuffle_random_hand_cards_into_deck(
     rng: &mut StdRng,
     state: &mut State,
     player: usize,
