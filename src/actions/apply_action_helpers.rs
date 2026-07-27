@@ -295,6 +295,8 @@ fn apply_pokemon_checkup(
     mutated_state.knocked_out_by_opponent_attack_last_turn =
         mutated_state.knocked_out_by_opponent_attack_this_turn;
     mutated_state.knocked_out_by_opponent_attack_this_turn = false;
+    mutated_state.knocked_out_types_by_opponent_attack_last_turn =
+        std::mem::take(&mut mutated_state.knocked_out_types_by_opponent_attack_this_turn);
 }
 
 fn finish_turn_after_checkup(state: &mut State, rng: &mut StdRng) {
@@ -532,6 +534,12 @@ pub(crate) fn handle_damage_only(
                 .as_mut()
                 .expect("Pokemon should be there if taking damage");
             target_pokemon.apply_damage(damage); // Applies without surpassing 0 HP
+            if is_from_active_attack && target_player != attacking_player && target_pokemon_idx == 0
+            {
+                // Wobbuffet's Reply Strongly: remember the Active Spot was damaged by an
+                // opponent's attack this turn.
+                target_pokemon.damaged_by_attack_while_active_this_turn = true;
+            }
             debug!(
                 "Dealt {} damage to opponent's {} Pokemon. Remaining HP: {}",
                 damage,
@@ -694,6 +702,21 @@ pub(crate) fn handle_knockouts(
             // every knockout regardless of cause — self-damage and recoil KOs are still your Pokémon
             // being Knocked Out.
             state.own_knockouts_this_game[ko_receiver] += 1;
+
+            // Type-filtered vengeance attacks (Zarude's Dark Vengeance): record the energy type
+            // of each Pokémon Knocked Out by damage from an opponent's attack this turn. Must be
+            // captured here, while the card is still in play. Fossils have no energy type and are
+            // covered only by the untyped flag below.
+            if is_from_active_attack && ko_receiver != attacking_ref.0 {
+                if let Some(energy_type) = state.in_play_pokemon[ko_receiver][ko_pokemon_idx]
+                    .as_ref()
+                    .and_then(|pokemon| pokemon.get_energy_type())
+                {
+                    state
+                        .knocked_out_types_by_opponent_attack_this_turn
+                        .push(energy_type);
+                }
+            }
 
             // Rescue Scarf (A4 155): if an opponent's attack knocked this Pokémon out, its card goes
             // back to its owner's hand instead of the discard pile. The knockout still stands and the

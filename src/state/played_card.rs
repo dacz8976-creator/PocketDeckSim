@@ -31,6 +31,14 @@ pub struct PlayedCard {
     pub attached_tool: Option<Card>,
     pub played_this_turn: bool,
     pub moved_to_active_this_turn: bool,
+    /// Whether this Pokémon was damaged by an opponent's attack while it was in the Active Spot,
+    /// tracked for the current and the previous turn (Wobbuffet's Reply Strongly: "If this
+    /// Pokémon was damaged by an attack during your opponent's last turn while it was in the
+    /// Active Spot ..."). Shifted in `end_turn_maintenance`.
+    #[serde(default)]
+    pub damaged_by_attack_while_active_this_turn: bool,
+    #[serde(default)]
+    pub damaged_by_attack_while_active_last_turn: bool,
     pub ability_used: bool,
     poisoned: bool,
     paralyzed: bool,
@@ -63,6 +71,8 @@ impl PlayedCard {
             attached_energy,
             played_this_turn,
             moved_to_active_this_turn: false,
+            damaged_by_attack_while_active_this_turn: false,
+            damaged_by_attack_while_active_last_turn: false,
             cards_behind,
 
             attached_tool: None,
@@ -403,6 +413,12 @@ impl PlayedCard {
         self.played_this_turn = false;
         self.moved_to_active_this_turn = false;
         self.ability_used = false;
+
+        // Shift the "damaged by an attack while in the Active Spot" flag by one turn
+        // (Wobbuffet's Reply Strongly).
+        self.damaged_by_attack_while_active_last_turn =
+            self.damaged_by_attack_while_active_this_turn;
+        self.damaged_by_attack_while_active_this_turn = false;
     }
 
     /// Returns effective attached energy considering Serperior's Jungle Totem ability.

@@ -1063,6 +1063,11 @@ enum WeaknessApplication {
 const DAMAGE_UNAFFECTED_BY_WEAKNESS_EFFECT: &str =
     "This attack's damage isn't affected by Weakness.";
 
+/// Ledian's Swift: one clause combining the Weakness bypass with Sawk's opponent-active-effects
+/// bypass. Detected as its own exact string because it matches neither single-clause constant.
+const DAMAGE_UNAFFECTED_BY_WEAKNESS_OR_OPPONENT_ACTIVE_EFFECTS_EFFECT: &str =
+    "This attack's damage isn't affected by Weakness or by any effects on your opponent's Active Pokémon.";
+
 /// Sawk's Brick Break (and any card sharing this clause): the attack's damage ignores every effect
 /// on the opponent's Active Pokémon — ability-derived reductions/preventions, stored CardEffects,
 /// and damage-reducing Tools alike. See `attack_ignores_opponent_active_effects`.
@@ -1074,7 +1079,10 @@ pub(crate) const DAMAGE_UNAFFECTED_BY_OPPONENT_ACTIVE_EFFECTS_EFFECT: &str =
 /// another clause — e.g. Mega Medicham ex's "Chakra Fist" (the [P]-Energy damage bonus plus this
 /// clause) — share Sawk's bypass behavior.
 pub(crate) fn attack_effect_ignores_opponent_active_effects(effect: Option<&str>) -> bool {
-    effect.is_some_and(|e| e.contains(DAMAGE_UNAFFECTED_BY_OPPONENT_ACTIVE_EFFECTS_EFFECT))
+    effect.is_some_and(|e| {
+        e.contains(DAMAGE_UNAFFECTED_BY_OPPONENT_ACTIVE_EFFECTS_EFFECT)
+            || e.contains(DAMAGE_UNAFFECTED_BY_WEAKNESS_OR_OPPONENT_ACTIVE_EFFECTS_EFFECT)
+    })
 }
 
 #[derive(Clone, Copy, Default)]
@@ -1086,7 +1094,11 @@ pub(crate) struct DamageModifierContext<'a> {
 fn attack_effect_ignores_weakness(context: DamageModifierContext<'_>) -> bool {
     // TODO: If more attack text needs to alter damage-modifier stages, replace this
     // effect-string check with a typed attack metadata/damage-modifier capability.
-    context.attack_effect == Some(DAMAGE_UNAFFECTED_BY_WEAKNESS_EFFECT)
+    matches!(
+        context.attack_effect,
+        Some(DAMAGE_UNAFFECTED_BY_WEAKNESS_EFFECT)
+            | Some(DAMAGE_UNAFFECTED_BY_WEAKNESS_OR_OPPONENT_ACTIVE_EFFECTS_EFFECT)
+    )
 }
 
 fn attack_ignores_opponent_active_effects(context: DamageModifierContext<'_>) -> bool {
