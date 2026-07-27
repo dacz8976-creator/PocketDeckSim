@@ -145,12 +145,16 @@ fn start_turn_ability_outcomes(state: &State, player: usize) -> (Probabilities, 
     }
 }
 
-/// Calculate poison damage based on base damage (10) plus +10 for each opponent's Nihilego with More Poison ability
+/// Calculate poison damage based on base damage (usually 10, but attacks like Toxicroak's Toxic
+/// override it per-Pokémon) plus +10 for each opponent's Nihilego with More Poison ability.
 /// Only applies the bonus if the poisoned Pokemon is in the active spot (index 0)
 fn get_poison_damage(state: &State, player: usize, in_play_idx: usize) -> u32 {
     use crate::actions::{abilities::AbilityMechanic, get_in_play_ability_mechanic};
 
-    let base_damage = 10;
+    let base_damage = state.in_play_pokemon[player][in_play_idx]
+        .as_ref()
+        .and_then(|pokemon| pokemon.poison_checkup_damage())
+        .unwrap_or(10);
 
     // Nihilego's More Poison ability only affects the active Pokemon
     if in_play_idx != 0 {

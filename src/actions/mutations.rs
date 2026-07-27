@@ -64,6 +64,19 @@ pub(crate) fn build_status_effect(status: StatusCondition) -> FnMutation {
     })
 }
 
+/// Like `build_status_effect`, but applies every condition in `statuses` to the opponent's
+/// Active Pokémon (e.g. "Poisoned and Paralyzed"). An empty list is a no-op.
+pub(crate) fn build_multi_status_effect(statuses: Vec<StatusCondition>) -> FnMutation {
+    Box::new({
+        move |_, state: &mut State, action: &Action| {
+            let opponent = (action.actor + 1) % 2;
+            for status in &statuses {
+                state.apply_status_condition(opponent, 0, *status);
+            }
+        }
+    })
+}
+
 #[cfg(test)]
 mod test {
     use rand::SeedableRng;

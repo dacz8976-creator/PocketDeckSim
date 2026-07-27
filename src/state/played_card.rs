@@ -33,6 +33,11 @@ pub struct PlayedCard {
     pub moved_to_active_this_turn: bool,
     pub ability_used: bool,
     poisoned: bool,
+    /// Pokémon Checkup poison damage override ("Do N damage to this Pokémon instead of the usual
+    /// amount for this Special Condition", e.g. Toxicroak's Toxic). `None` = the usual 10.
+    /// Set only while `poisoned` is true; cleared whenever the poison is cleared or re-applied.
+    #[serde(default)]
+    poison_checkup_damage: Option<u32>,
     paralyzed: bool,
     asleep: bool,
     burned: bool,
@@ -68,6 +73,7 @@ impl PlayedCard {
             attached_tool: None,
             ability_used: false,
             poisoned: false,
+            poison_checkup_damage: None,
             paralyzed: false,
             asleep: false,
             burned: false,
@@ -352,6 +358,7 @@ impl PlayedCard {
 
     pub(crate) fn clear_status_and_effects(&mut self) {
         self.poisoned = false;
+        self.poison_checkup_damage = None;
         self.paralyzed = false;
         self.asleep = false;
         self.burned = false;
@@ -361,6 +368,7 @@ impl PlayedCard {
 
     pub(crate) fn cure_status_conditions(&mut self) {
         self.poisoned = false;
+        self.poison_checkup_damage = None;
         self.paralyzed = false;
         self.asleep = false;
         self.burned = false;
@@ -369,7 +377,10 @@ impl PlayedCard {
 
     pub(crate) fn clear_status_condition(&mut self, status: StatusCondition) {
         match status {
-            StatusCondition::Poisoned => self.poisoned = false,
+            StatusCondition::Poisoned => {
+                self.poisoned = false;
+                self.poison_checkup_damage = None;
+            }
             StatusCondition::Paralyzed => self.paralyzed = false,
             StatusCondition::Asleep => self.asleep = false,
             StatusCondition::Burned => self.burned = false,
@@ -382,10 +393,37 @@ impl PlayedCard {
         match status {
             StatusCondition::Asleep => self.asleep = true,
             StatusCondition::Paralyzed => self.paralyzed = true,
-            StatusCondition::Poisoned => self.poisoned = true,
+            StatusCondition::Poisoned => {
+                self.poisoned = true;
+                // A fresh (ordinary) poison replaces any modified poison; attacks with a
+                // custom Checkup amount set it again right after poisoning.
+                self.poison_checkup_damage = None;
+            }
             StatusCondition::Burned => self.burned = true,
             StatusCondition::Confused => self.confused = true,
         }
+    }
+
+    /// Whether this Pokémon is currently affected by `status`.
+    pub fn has_status(&self, status: StatusCondition) -> bool {
+        match status {
+            StatusCondition::Poisoned => self.poisoned,
+            StatusCondition::Paralyzed => self.paralyzed,
+            StatusCondition::Asleep => self.asleep,
+            StatusCondition::Burned => self.burned,
+            StatusCondition::Confused => self.confused,
+        }
+    }
+
+    /// Override the Pokémon Checkup poison damage for the current poison ("Do N damage to this
+    /// Pokémon instead of the usual amount"). Only meaningful while poisoned.
+    pub(crate) fn set_poison_checkup_damage(&mut self, amount: u32) {
+        self.poison_checkup_damage = Some(amount);
+    }
+
+    /// The Pokémon Checkup poison damage override for the current poison, if any.
+    pub(crate) fn poison_checkup_damage(&self) -> Option<u32> {
+        self.poison_checkup_damage
     }
 
     pub(crate) fn end_turn_maintenance(&mut self) {

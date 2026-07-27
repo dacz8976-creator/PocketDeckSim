@@ -13,7 +13,18 @@ use crate::{
 /// Map from attack effect text to its implementation.
 pub static EFFECT_MECHANIC_MAP: LazyLock<HashMap<&'static str, Mechanic>> = LazyLock::new(|| {
     let mut map: HashMap<&'static str, Mechanic> = HashMap::new();
-    // map.insert("1 Special Condition from among Asleep, Burned, Confused, Paralyzed, and Poisoned is chosen at random, and your opponent's Active Pokémon is now affected by that Special Condition. Any Special Conditions already affecting that Pokémon will not be chosen.", todo_implementation);
+    map.insert(
+        "1 Special Condition from among Asleep, Burned, Confused, Paralyzed, and Poisoned is chosen at random, and your opponent's Active Pokémon is now affected by that Special Condition. Any Special Conditions already affecting that Pokémon will not be chosen.",
+        Mechanic::RandomStatusFromEligible {
+            options: vec![
+                StatusCondition::Asleep,
+                StatusCondition::Burned,
+                StatusCondition::Confused,
+                StatusCondition::Paralyzed,
+                StatusCondition::Poisoned,
+            ],
+        },
+    );
     map.insert(
         "1 of your opponent's Benched Pokémon is chosen at random 3 times. For each time a Pokémon was chosen, also do 20 damage to it.",
         Mechanic::MegaAmpharosExLightningLancer,
@@ -61,7 +72,12 @@ pub static EFFECT_MECHANIC_MAP: LazyLock<HashMap<&'static str, Mechanic>> = Lazy
         "Before doing damage, discard all Pokémon Tools from your opponent's Active Pokémon.",
         Mechanic::DiscardOpponentActiveToolsBeforeDamage,
     );
-    // map.insert("Both Active Pokémon are now Asleep.", todo_implementation);
+    map.insert(
+        "Both Active Pokémon are now Asleep.",
+        Mechanic::InflictStatusConditionsOnBothActive {
+            conditions: vec![StatusCondition::Asleep],
+        },
+    );
     map.insert(
         "Both Active Pokémon are now Confused.",
         Mechanic::InflictStatusConditionsOnBothActive {
@@ -543,7 +559,10 @@ pub static EFFECT_MECHANIC_MAP: LazyLock<HashMap<&'static str, Mechanic>> = Lazy
             knocked_out: false,
         },
     );
-    // map.insert("Flip 2 coins. If both of them are tails, this attack does nothing.", todo_implementation);
+    map.insert(
+        "Flip 2 coins. If both of them are tails, this attack does nothing.",
+        Mechanic::CoinFlipNoEffect { num_coins: 2 },
+    );
     map.insert(
         "Flip 2 coins. This attack does 100 damage for each heads.",
         Mechanic::ExtraDamageForEachHeads {
@@ -576,7 +595,15 @@ pub static EFFECT_MECHANIC_MAP: LazyLock<HashMap<&'static str, Mechanic>> = Lazy
             num_coins: 2,
         },
     );
-    // map.insert("Flip 2 coins. This attack does 30 damage for each heads. If this Pokémon has Lucky Mittens attached, flip 4 coins instead.", todo_implementation);
+    map.insert(
+        "Flip 2 coins. This attack does 30 damage for each heads. If this Pokémon has Lucky Mittens attached, flip 4 coins instead.",
+        Mechanic::ExtraDamageForEachHeadsToolBoostedCoins {
+            damage_per_head: 30,
+            num_coins: 2,
+            boosted_num_coins: 4,
+            tool_name: "Lucky Mittens".to_string(),
+        },
+    );
     map.insert(
         "Flip 2 coins. This attack does 30 more damage for each heads.",
         Mechanic::ExtraDamageForEachHeads {
@@ -601,7 +628,25 @@ pub static EFFECT_MECHANIC_MAP: LazyLock<HashMap<&'static str, Mechanic>> = Lazy
             num_coins: 2,
         },
     );
-    // map.insert("Flip 2 coins. This attack does 70 damage for each heads. If at least 1 of them is heads, your opponent's Active Pokémon is now Burned.", todo_implementation);
+    map.insert(
+        "Flip 2 coins. This attack does 60 damage for each heads.",
+        Mechanic::ExtraDamageForEachHeads {
+            include_fixed_damage: false,
+            damage_per_head: 60,
+            num_coins: 2,
+        },
+    );
+    map.insert(
+        "Flip 2 coins. This attack does 70 damage for each heads. If at least 1 of them is heads, your opponent's Active Pokémon is now Burned.",
+        Mechanic::ExtraDamageForEachHeadsWithStatus {
+            include_fixed_damage: false,
+            damage_per_head: 70,
+            num_coins: 2,
+            status: StatusCondition::Burned,
+            min_heads_for_status: 1,
+            status_on_self: false,
+        },
+    );
     map.insert(
         "Flip 2 coins. This attack does 70 damage for each heads.",
         Mechanic::ExtraDamageForEachHeads {
@@ -671,7 +716,17 @@ pub static EFFECT_MECHANIC_MAP: LazyLock<HashMap<&'static str, Mechanic>> = Lazy
             num_coins: 3,
         },
     );
-    // map.insert("Flip 3 coins. This attack does 60 damage for each heads. This Pokémon is now Confused.", todo_implementation);
+    map.insert(
+        "Flip 3 coins. This attack does 60 damage for each heads. This Pokémon is now Confused.",
+        Mechanic::ExtraDamageForEachHeadsWithStatus {
+            include_fixed_damage: false,
+            damage_per_head: 60,
+            num_coins: 3,
+            status: StatusCondition::Confused,
+            min_heads_for_status: 0,
+            status_on_self: true,
+        },
+    );
     map.insert(
         "Flip 4 coins. This attack does 20 damage for each heads.",
         Mechanic::ExtraDamageForEachHeads {
@@ -688,7 +743,17 @@ pub static EFFECT_MECHANIC_MAP: LazyLock<HashMap<&'static str, Mechanic>> = Lazy
             num_coins: 4,
         },
     );
-    // map.insert("Flip 4 coins. This attack does 40 damage for each heads. If at least 2 of them are heads, your opponent's Active Pokémon is now Poisoned.", todo_implementation);
+    map.insert(
+        "Flip 4 coins. This attack does 40 damage for each heads. If at least 2 of them are heads, your opponent's Active Pokémon is now Poisoned.",
+        Mechanic::ExtraDamageForEachHeadsWithStatus {
+            include_fixed_damage: false,
+            damage_per_head: 40,
+            num_coins: 4,
+            status: StatusCondition::Poisoned,
+            min_heads_for_status: 2,
+            status_on_self: false,
+        },
+    );
     map.insert(
         "Flip 4 coins. This attack does 50 damage for each heads.",
         Mechanic::ExtraDamageForEachHeads {
@@ -706,8 +771,20 @@ pub static EFFECT_MECHANIC_MAP: LazyLock<HashMap<&'static str, Mechanic>> = Lazy
         },
     );
     map.insert("Flip a coin for each Energy attached to this Pokémon. This attack does 50 damage for each heads.", Mechanic::CelebiExPowerfulBloom);
-    // map.insert("Flip a coin for each Pokémon you have in play. This attack does 20 damage for each heads.", todo_implementation);
-    // map.insert("Flip a coin for each Pokémon you have in play. This attack does 40 damage for each heads.", todo_implementation);
+    map.insert(
+        "Flip a coin for each Pokémon you have in play. This attack does 20 damage for each heads.",
+        Mechanic::CoinFlipPerPokemonInPlay {
+            damage_per_heads: 20,
+            name_filter: None,
+        },
+    );
+    map.insert(
+        "Flip a coin for each Pokémon you have in play. This attack does 40 damage for each heads.",
+        Mechanic::CoinFlipPerPokemonInPlay {
+            damage_per_heads: 40,
+            name_filter: None,
+        },
+    );
     map.insert(
         "Flip a coin for each [M] Energy attached to this Pokémon. This attack does 50 damage for each heads.",
         Mechanic::CoinFlipPerSpecificEnergyType {
@@ -837,7 +914,13 @@ pub static EFFECT_MECHANIC_MAP: LazyLock<HashMap<&'static str, Mechanic>> = Lazy
         "Flip a coin. If heads, this attack does 60 more damage.",
         Mechanic::CoinFlipExtraDamage { extra_damage: 60 },
     );
-    // map.insert("Flip a coin. If heads, this attack does 60 more damage. If tails, this Pokémon also does 20 damage to itself.", todo_implementation);
+    map.insert(
+        "Flip a coin. If heads, this attack does 60 more damage. If tails, this Pokémon also does 20 damage to itself.",
+        Mechanic::CoinFlipExtraDamageOrSelfDamage {
+            extra_damage: 60,
+            self_damage: 20,
+        },
+    );
     map.insert(
         "Flip a coin. If heads, this attack does 70 more damage.",
         Mechanic::CoinFlipExtraDamage { extra_damage: 70 },
@@ -851,17 +934,39 @@ pub static EFFECT_MECHANIC_MAP: LazyLock<HashMap<&'static str, Mechanic>> = Lazy
         "Flip a coin. If heads, your opponent reveals their hand. Choose a Supporter card you find there and discard it.",
         Mechanic::OminousClaw,
     );
-    // map.insert("Flip a coin. If heads, your opponent's Active Pokémon is now Burned.", todo_implementation);
+    map.insert(
+        "Flip a coin. If heads, your opponent's Active Pokémon is now Burned.",
+        Mechanic::ChanceStatusAttack {
+            heads_conditions: vec![StatusCondition::Burned],
+            tails_conditions: vec![],
+        },
+    );
     map.insert(
         "Flip a coin. If heads, your opponent's Active Pokémon is now Confused.",
         Mechanic::ChanceStatusAttack {
-            condition: StatusCondition::Confused,
+            heads_conditions: vec![StatusCondition::Confused],
+            tails_conditions: vec![],
         },
     );
     map.insert(
         "Flip a coin. If heads, your opponent's Active Pokémon is now Paralyzed.",
         Mechanic::ChanceStatusAttack {
-            condition: StatusCondition::Paralyzed,
+            heads_conditions: vec![StatusCondition::Paralyzed],
+            tails_conditions: vec![],
+        },
+    );
+    map.insert(
+        "Flip a coin. If heads, your opponent's Active Pokémon is now Paralyzed. If tails, your opponent's Active Pokémon is now Confused.",
+        Mechanic::ChanceStatusAttack {
+            heads_conditions: vec![StatusCondition::Paralyzed],
+            tails_conditions: vec![StatusCondition::Confused],
+        },
+    );
+    map.insert(
+        "Flip a coin. If heads, your opponent's Active Pokémon is now Poisoned and Paralyzed.",
+        Mechanic::ChanceStatusAttack {
+            heads_conditions: vec![StatusCondition::Poisoned, StatusCondition::Paralyzed],
+            tails_conditions: vec![],
         },
     );
     // map.insert("Flip a coin. If heads, your opponent's Active Pokémon is now Paralyzed. If tails, your opponent's Active Pokémon is now Confused.", todo_implementation);
@@ -871,7 +976,14 @@ pub static EFFECT_MECHANIC_MAP: LazyLock<HashMap<&'static str, Mechanic>> = Lazy
         Mechanic::CoinFlipSetOpponentActiveRemainingHp { remaining_hp: 10 },
     );
     // map.insert("Flip a coin. If tails, discard 2 random Energy from this Pokémon.", todo_implementation);
-    // map.insert("Flip a coin. If tails, during your next turn, this Pokémon can't attack.", todo_implementation);
+    map.insert(
+        "Flip a coin. If tails, during your next turn, this Pokémon can't attack.",
+        Mechanic::CoinFlipTailsCardEffect {
+            opponent: false,
+            effect: CardEffect::CannotAttack,
+            duration: 2,
+        },
+    );
     map.insert(
         "Flip a coin. If tails, this Pokémon also does 20 damage to itself.",
         Mechanic::CoinFlipSelfDamage { self_damage: 20 },
@@ -882,14 +994,19 @@ pub static EFFECT_MECHANIC_MAP: LazyLock<HashMap<&'static str, Mechanic>> = Lazy
     );
     map.insert(
         "Flip a coin. If tails, this attack does nothing.",
-        Mechanic::CoinFlipNoEffect,
+        Mechanic::CoinFlipNoEffect { num_coins: 1 },
     );
     map.insert("Flip a coin. If tails, this attack does nothing. If heads, during your opponent's next turn, prevent all damage from—and effects of—attacks done to this Pokémon.", Mechanic::CoinFlipNoDamageOrDamageAndCardEffect {
         opponent: false,
         effect: CardEffect::PreventAllDamageAndEffects,
         duration: 1,
     });
-    // map.insert("Flip a coin. If tails, this attack does nothing. If heads, your opponent's Active Pokémon is now Paralyzed.", todo_implementation);
+    map.insert(
+        "Flip a coin. If tails, this attack does nothing. If heads, your opponent's Active Pokémon is now Paralyzed.",
+        Mechanic::CoinFlipNoDamageOrDamageAndStatus {
+            conditions: vec![StatusCondition::Paralyzed],
+        },
+    );
     map.insert(
         "Halve your opponent's Active Pokémon's remaining HP, rounded down.",
         Mechanic::HalveOpponentActiveRemainingHp,
@@ -1915,7 +2032,13 @@ pub static EFFECT_MECHANIC_MAP: LazyLock<HashMap<&'static str, Mechanic>> = Lazy
             target_opponent: true,
         },
     );
-    // map.insert("Your opponent's Active Pokémon is now Poisoned and Burned.", todo_implementation);
+    map.insert(
+        "Your opponent's Active Pokémon is now Poisoned and Burned.",
+        Mechanic::InflictStatusConditions {
+            conditions: vec![StatusCondition::Poisoned, StatusCondition::Burned],
+            target_opponent: true,
+        },
+    );
     map.insert(
         "Your opponent's Active Pokémon is now Poisoned and Asleep.",
         Mechanic::InflictStatusConditions {
@@ -1934,7 +2057,14 @@ pub static EFFECT_MECHANIC_MAP: LazyLock<HashMap<&'static str, Mechanic>> = Lazy
         "Discard a random Energy from among the Energy attached to all Pokémon (both yours and your opponent's).",
         Mechanic::DiscardRandomGlobalEnergy { count: 1 },
     );
-    // map.insert("Your opponent's Active Pokémon is now Poisoned. Do 20 damage to this Pokémon instead of the usual amount for this Special Condition.", todo_implementation);
+    map.insert(
+        "Your opponent's Active Pokémon is now Poisoned. Do 20 damage to this Pokémon instead of the usual amount for this Special Condition.",
+        Mechanic::InflictPoisonWithCustomCheckupDamage { checkup_damage: 20 },
+    );
+    map.insert(
+        "Your opponent's Active Pokémon is now Poisoned. Do 40 damage to this Pokémon instead of the usual amount for this Special Condition.",
+        Mechanic::InflictPoisonWithCustomCheckupDamage { checkup_damage: 40 },
+    );
     map.insert(
         "If this Pokémon has at least 2 extra [W] Energy attached, this attack also does 50 damage to 1 of your opponent's Benched Pokémon.",
         Mechanic::ConditionalBenchDamage {
@@ -1960,6 +2090,8 @@ pub static EFFECT_MECHANIC_MAP: LazyLock<HashMap<&'static str, Mechanic>> = Lazy
             damage_per_head: 90,
             num_coins: 2,
             status: StatusCondition::Confused,
+            min_heads_for_status: 0,
+            status_on_self: false,
         },
     );
     map.insert(
@@ -2051,12 +2183,18 @@ pub static EFFECT_MECHANIC_MAP: LazyLock<HashMap<&'static str, Mechanic>> = Lazy
             num_coins: 3,
         },
     );
-    // map.insert("Flip a coin for each Tandemaus and Maushold you have in play. This attack does 60 damage for each heads.", todo_implementation);
     map.insert(
         "Flip a coin. If heads, discard your opponent's Active Pokémon.",
         Mechanic::FlipCoinsRemoveOpponentActive {
             num_coins: 1,
             knocked_out: false,
+        },
+    );
+    map.insert(
+        "Flip a coin for each Tandemaus and Maushold you have in play. This attack does 60 damage for each heads.",
+        Mechanic::CoinFlipPerPokemonInPlay {
+            damage_per_heads: 60,
+            name_filter: Some(vec!["Tandemaus".to_string(), "Maushold".to_string()]),
         },
     );
     map.insert(
@@ -2083,7 +2221,13 @@ pub static EFFECT_MECHANIC_MAP: LazyLock<HashMap<&'static str, Mechanic>> = Lazy
         "Flip a coin. If heads, this attack also does 40 damage to 1 of your opponent's Benched Pokémon.",
         Mechanic::CoinFlipAlsoChoiceBenchDamage { opponent: true, damage: 40 },
     );
-    // map.insert("Flip a coin. If heads, this attack does 70 damage to your opponent's Active Pokémon. If tails, heal 30 damage from your opponent's Active Pokémon.", todo_implementation);
+    map.insert(
+        "Flip a coin. If heads, this attack does 70 damage to your opponent's Active Pokémon. If tails, heal 30 damage from your opponent's Active Pokémon.",
+        Mechanic::CoinFlipDamageOrHealOpponent {
+            damage: 70,
+            heal: 30,
+        },
+    );
     map.insert(
         "Flip a coin. If tails, this Pokémon also does 50 damage to itself.",
         Mechanic::CoinFlipSelfDamage { self_damage: 50 },
@@ -2216,7 +2360,14 @@ pub static EFFECT_MECHANIC_MAP: LazyLock<HashMap<&'static str, Mechanic>> = Lazy
             shuffle_self_into_deck: true,
         },
     );
-    // map.insert("Your opponent's Active Pokémon is now Poisoned. During your opponent's next turn, that Pokémon can't retreat.", todo_implementation);
+    map.insert(
+        "Your opponent's Active Pokémon is now Poisoned. During your opponent's next turn, that Pokémon can't retreat.",
+        Mechanic::InflictStatusAndCardEffects {
+            conditions: vec![StatusCondition::Poisoned],
+            effects: vec![CardEffect::NoRetreat],
+            duration: 1,
+        },
+    );
 
     // New Mechanics from B2a
     map.insert(

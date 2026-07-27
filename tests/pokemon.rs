@@ -4,6 +4,8 @@ mod additional_ability_logic_test;
 mod aipom_imitate_test;
 #[path = "pokemon/alcremie_test.rs"]
 mod alcremie_test;
+#[path = "pokemon/alolan_muk_chemical_panic_test.rs"]
+mod alolan_muk_chemical_panic_test;
 #[path = "pokemon/alolan_muk_power_of_alchemy_test.rs"]
 mod alolan_muk_power_of_alchemy_test;
 #[path = "pokemon/alolan_sandslash_spike_armor_test.rs"]
@@ -58,8 +60,16 @@ mod charmeleon_ignition_test;
 mod chatot_mimic_test;
 #[path = "pokemon/claydol_heal_block_test.rs"]
 mod claydol_heal_block_test;
+#[path = "pokemon/coin_flip_cant_attack_next_turn_test.rs"]
+mod coin_flip_cant_attack_next_turn_test;
 #[path = "pokemon/coin_flip_remove_active_test.rs"]
 mod coin_flip_remove_active_test;
+#[path = "pokemon/coin_heads_threshold_status_test.rs"]
+mod coin_heads_threshold_status_test;
+#[path = "pokemon/coin_per_heads_damage_test.rs"]
+mod coin_per_heads_damage_test;
+#[path = "pokemon/coin_status_flip_attacks_test.rs"]
+mod coin_status_flip_attacks_test;
 #[path = "pokemon/comfey_flower_shield_test.rs"]
 mod comfey_flower_shield_test;
 #[path = "pokemon/corviknight_line_test.rs"]
@@ -72,6 +82,8 @@ mod darkrai_ex_test;
 mod deck_mill_attacks_test;
 #[path = "pokemon/delcatty_search_for_friends_test.rs"]
 mod delcatty_search_for_friends_test;
+#[path = "pokemon/delibird_box_of_surprises_test.rs"]
+mod delibird_box_of_surprises_test;
 #[path = "pokemon/dugtrio_cliff_crumbler_test.rs"]
 mod dugtrio_cliff_crumbler_test;
 #[path = "pokemon/durant_test.rs"]
@@ -206,6 +218,8 @@ mod meowth_carefree_steps_test;
 mod milotic_ex_aqua_charge_test;
 #[path = "pokemon/miraidon_ex_test.rs"]
 mod miraidon_ex_test;
+#[path = "pokemon/modified_poison_damage_test.rs"]
+mod modified_poison_damage_test;
 #[path = "pokemon/morpeko_test.rs"]
 mod morpeko_test;
 #[path = "pokemon/ninetales_ember_dance_test.rs"]
@@ -244,6 +258,8 @@ mod reveal_opponent_hand_attacks_test;
 mod rillaboom_captivating_rhythm_test;
 #[path = "pokemon/roaring_moon_test.rs"]
 mod roaring_moon_test;
+#[path = "pokemon/roserade_poison_ring_test.rs"]
+mod roserade_poison_ring_test;
 #[path = "pokemon/salamence_test.rs"]
 mod salamence_test;
 #[path = "pokemon/sawk_test.rs"]
@@ -306,6 +322,8 @@ mod vaporeon_ex_test;
 mod vulpix_tail_whip_test;
 #[path = "pokemon/wailord_test.rs"]
 mod wailord_test;
+#[path = "pokemon/whiscash_thrash_test.rs"]
+mod whiscash_thrash_test;
 #[path = "pokemon/wishiwashi_tandemaus_bench_search_test.rs"]
 mod wishiwashi_tandemaus_bench_search_test;
 #[path = "pokemon/xatu_life_drain_test.rs"]

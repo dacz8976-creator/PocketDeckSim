@@ -32,7 +32,8 @@ use super::{
     attack_outcome::{AttackOutcome, AttackOutcomes, DamageTarget},
     mutations::{
         active_damage_doutcome, active_damage_effect_doutcome, active_damage_effect_outcome,
-        active_damage_outcome, build_status_effect, damage_effect_doutcome,
+        active_damage_outcome, build_multi_status_effect, build_status_effect,
+        damage_effect_doutcome,
     },
     outcomes::{CoinSeq, Outcomes},
     shared_mutations::{
@@ -363,8 +364,32 @@ fn forecast_effect_attack_by_mechanic(
         Mechanic::InflictStatusConditionsOnBothActive { conditions } => {
             damage_and_both_active_multiple_status_attack(attack.fixed_damage, conditions.clone())
         }
-        Mechanic::ChanceStatusAttack { condition } => {
-            damage_chance_status_attack(attack.fixed_damage, *condition)
+        Mechanic::ChanceStatusAttack {
+            heads_conditions,
+            tails_conditions,
+        } => damage_chance_status_attack(
+            attack.fixed_damage,
+            heads_conditions.clone(),
+            tails_conditions.clone(),
+        ),
+        Mechanic::CoinFlipNoDamageOrDamageAndStatus { conditions } => {
+            coin_flip_no_damage_or_damage_and_status_attack(attack.fixed_damage, conditions.clone())
+        }
+        Mechanic::RandomStatusFromEligible { options } => {
+            random_status_from_eligible_attack(state, attack.fixed_damage, options)
+        }
+        Mechanic::InflictStatusAndCardEffects {
+            conditions,
+            effects,
+            duration,
+        } => inflict_status_and_card_effects_attack(
+            attack.fixed_damage,
+            conditions.clone(),
+            effects.clone(),
+            *duration,
+        ),
+        Mechanic::InflictPoisonWithCustomCheckupDamage { checkup_damage } => {
+            inflict_poison_with_custom_checkup_damage_attack(attack.fixed_damage, *checkup_damage)
         }
         Mechanic::ChooseStatusToInflict { options } => {
             damage_and_choose_status_attack(attack.fixed_damage, options.clone())
@@ -427,7 +452,19 @@ fn forecast_effect_attack_by_mechanic(
             *energy_type,
             *damage_per_discarded_energy,
         ),
-        Mechanic::CoinFlipNoEffect => coinflip_no_effect(attack.fixed_damage),
+        Mechanic::CoinFlipNoEffect { num_coins } => {
+            coinflip_no_effect(attack.fixed_damage, *num_coins)
+        }
+        Mechanic::CoinFlipTailsCardEffect {
+            opponent,
+            effect,
+            duration,
+        } => coin_flip_tails_card_effect_attack(
+            attack.fixed_damage,
+            *opponent,
+            effect.clone(),
+            *duration,
+        ),
         Mechanic::SelfDiscardEnergy { energies } => {
             self_energy_discard_attack(attack.fixed_damage, energies.clone())
         }
@@ -775,13 +812,42 @@ fn forecast_effect_attack_by_mechanic(
             damage_per_head,
             num_coins,
             status,
+            min_heads_for_status,
+            status_on_self,
         } => damage_for_each_heads_with_status_attack(
             *include_fixed_damage,
             *damage_per_head,
             *num_coins,
             attack,
             *status,
+            *min_heads_for_status,
+            *status_on_self,
         ),
+        Mechanic::ExtraDamageForEachHeadsToolBoostedCoins {
+            damage_per_head,
+            num_coins,
+            boosted_num_coins,
+            tool_name,
+        } => {
+            let has_named_tool = state
+                .get_active(state.current_player)
+                .attached_tool
+                .as_ref()
+                .is_some_and(|tool| tool.get_name() == *tool_name);
+            let coins = if has_named_tool {
+                *boosted_num_coins
+            } else {
+                *num_coins
+            };
+            damage_for_each_heads_attack(false, *damage_per_head, coins, attack)
+        }
+        Mechanic::CoinFlipPerPokemonInPlay {
+            damage_per_heads,
+            name_filter,
+        } => coin_flip_per_pokemon_in_play_attack(state, *damage_per_heads, name_filter),
+        Mechanic::CoinFlipDamageOrHealOpponent { damage, heal } => {
+            coin_flip_damage_or_heal_opponent_attack(*damage, *heal)
+        }
         Mechanic::DamageAndMultipleCardEffects {
             opponent,
             effects,
@@ -1137,10 +1203,35 @@ fn recoil_if_ko_attack(damage: u32, self_damage: u32) -> AttackOutcomes {
     ))
 }
 
-fn coinflip_no_effect(fixed_damage: u32) -> AttackOutcomes {
+/// Flip `num_coins` coins; if every one of them is tails, the attack does nothing. Any heads
+/// deals the full printed damage (the damage does not scale with the number of heads).
+fn coinflip_no_effect(fixed_damage: u32, num_coins: usize) -> AttackOutcomes {
+    AttackOutcomes::binomial_by_heads(num_coins, move |heads| {
+        active_damage_outcome(if heads == 0 { 0 } else { fixed_damage })
+    })
+}
+
+/// Flip a coin; on tails add `effect` to the (own or opponent's) Active Pokémon for `duration`
+/// turns. Damage is dealt on both branches (e.g. "If tails, during your next turn, this Pokémon
+/// can't attack").
+fn coin_flip_tails_card_effect_attack(
+    damage: u32,
+    opponent: bool,
+    effect: CardEffect,
+    effect_duration: u8,
+) -> AttackOutcomes {
     AttackOutcomes::binary_coin(
-        active_damage_outcome(fixed_damage),
-        active_damage_outcome(0),
+        active_damage_outcome(damage),
+        active_damage_effect_outcome(damage, move |_, state, action| {
+            let player = if opponent {
+                (action.actor + 1) % 2
+            } else {
+                action.actor
+            };
+            state
+                .get_active_mut(player)
+                .add_effect(effect.clone(), effect_duration);
+        }),
     )
 }
 
@@ -1680,10 +1771,128 @@ fn damage_and_choose_status_attack(damage: u32, options: Vec<StatusCondition>) -
     })
 }
 
-fn damage_chance_status_attack(damage: u32, status: StatusCondition) -> AttackOutcomes {
+/// Flip a coin; heads applies `heads_conditions` to the opponent's Active, tails applies
+/// `tails_conditions` (usually empty). The damage is dealt on either branch.
+fn damage_chance_status_attack(
+    damage: u32,
+    heads_conditions: Vec<StatusCondition>,
+    tails_conditions: Vec<StatusCondition>,
+) -> AttackOutcomes {
     AttackOutcomes::binary_coin(
-        active_damage_effect_outcome(damage, build_status_effect(status)),
+        active_damage_effect_outcome(damage, build_multi_status_effect(heads_conditions)),
+        active_damage_effect_outcome(damage, build_multi_status_effect(tails_conditions)),
+    )
+}
+
+/// Flip a coin; tails → the attack does nothing at all; heads → damage plus `conditions` on the
+/// opponent's Active Pokémon (Drampa's Dragon Breath).
+fn coin_flip_no_damage_or_damage_and_status_attack(
+    damage: u32,
+    conditions: Vec<StatusCondition>,
+) -> AttackOutcomes {
+    AttackOutcomes::binary_coin(
+        active_damage_effect_outcome(damage, build_multi_status_effect(conditions)),
+        active_damage_outcome(0),
+    )
+}
+
+/// Alolan Muk ex's Chemical Panic: one Special Condition from `options` is chosen uniformly at
+/// random and applied to the opponent's Active Pokémon, excluding conditions it already has.
+/// The choice is a weighted set of outcome branches so search bots price each condition.
+fn random_status_from_eligible_attack(
+    state: &State,
+    damage: u32,
+    options: &[StatusCondition],
+) -> AttackOutcomes {
+    let opponent = (state.current_player + 1) % 2;
+    let defender = state.get_active(opponent);
+    let eligible: Vec<StatusCondition> = options
+        .iter()
+        .copied()
+        .filter(|status| !defender.has_status(*status))
+        .collect();
+    if eligible.is_empty() {
+        return active_damage_doutcome(damage);
+    }
+    let probability = 1.0 / eligible.len() as f64;
+    let probabilities = vec![probability; eligible.len()];
+    let outcomes = eligible
+        .into_iter()
+        .map(|status| active_damage_effect_outcome(damage, build_status_effect(status)))
+        .collect();
+    AttackOutcomes::from_parts(probabilities, outcomes)
+}
+
+/// Apply `conditions` plus lingering `effects` to the opponent's Active Pokémon (Roserade's
+/// Poison Ring: Poisoned + can't retreat during the opponent's next turn).
+fn inflict_status_and_card_effects_attack(
+    damage: u32,
+    conditions: Vec<StatusCondition>,
+    effects: Vec<CardEffect>,
+    effect_duration: u8,
+) -> AttackOutcomes {
+    active_damage_effect_doutcome(damage, move |_, state, action| {
+        let opponent = (action.actor + 1) % 2;
+        for condition in &conditions {
+            state.apply_status_condition(opponent, 0, *condition);
+        }
+        let target = state.get_active_mut(opponent);
+        for effect in &effects {
+            target.add_effect(effect.clone(), effect_duration);
+        }
+    })
+}
+
+/// Poison the opponent's Active Pokémon with a modified Pokémon Checkup damage ("Do N damage to
+/// this Pokémon instead of the usual amount for this Special Condition").
+fn inflict_poison_with_custom_checkup_damage_attack(
+    damage: u32,
+    checkup_damage: u32,
+) -> AttackOutcomes {
+    active_damage_effect_doutcome(damage, move |_, state, action| {
+        let opponent = (action.actor + 1) % 2;
+        state.apply_status_condition(opponent, 0, StatusCondition::Poisoned);
+        if let Some(defender) = state.in_play_pokemon[opponent][0].as_mut() {
+            // Only override when the poison actually stuck (immunities may have blocked it).
+            if defender.is_poisoned() {
+                defender.set_poison_checkup_damage(checkup_damage);
+            }
+        }
+    })
+}
+
+/// Flip a coin for each of the attacker's Pokémon in play (optionally only those named in
+/// `name_filter`); the attack does `damage_per_heads` for each heads, replacing printed damage.
+fn coin_flip_per_pokemon_in_play_attack(
+    state: &State,
+    damage_per_heads: u32,
+    name_filter: &Option<Vec<String>>,
+) -> AttackOutcomes {
+    let coins = state
+        .enumerate_in_play_pokemon(state.current_player)
+        .filter(|(_, pokemon)| {
+            name_filter
+                .as_ref()
+                .is_none_or(|names| names.iter().any(|name| *name == pokemon.get_name()))
+        })
+        .count();
+    if coins == 0 {
+        return active_damage_doutcome(0);
+    }
+    AttackOutcomes::binomial_by_heads(coins, move |heads| {
+        active_damage_outcome(damage_per_heads * heads as u32)
+    })
+}
+
+/// Delibird's Box of Surprises: heads → `damage` to the opponent's Active Pokémon; tails → heal
+/// `heal` damage from the opponent's Active Pokémon instead.
+fn coin_flip_damage_or_heal_opponent_attack(damage: u32, heal: u32) -> AttackOutcomes {
+    AttackOutcomes::binary_coin(
         active_damage_outcome(damage),
+        AttackOutcome::effect_only(move |_, state, action| {
+            let opponent = (action.actor + 1) % 2;
+            state.heal_pokemon(opponent, 0, heal);
+        }),
     )
 }
 
@@ -3793,21 +4002,36 @@ fn damage_and_multiple_card_effects_attack(
     })
 }
 
-/// Mega Lopunny ex - Rapid Smashers: Flips coins for damage and always inflicts status
+/// Coin-flip damage plus a status: flip `num_coins` coins for `damage_per_head` per heads, and
+/// inflict `status` when at least `min_heads_for_status` heads came up (0 = always, e.g. Mega
+/// Lopunny ex's Rapid Smashers; 1 = Alolan Marowak's Burning Bonemerang; 2 = Drapion's Cross
+/// Poison). `status_on_self` targets the attacker instead (Bellossom's Petal Dance).
 fn damage_for_each_heads_with_status_attack(
     include_fixed_damage: bool,
     damage_per_head: u32,
     num_coins: usize,
     attack: &Attack,
     status: StatusCondition,
+    min_heads_for_status: usize,
+    status_on_self: bool,
 ) -> AttackOutcomes {
+    let fixed_damage = attack.fixed_damage;
     AttackOutcomes::binomial_by_heads(num_coins, move |heads| {
         let damage = if include_fixed_damage {
-            attack.fixed_damage + (heads as u32 * damage_per_head)
+            fixed_damage + (heads as u32 * damage_per_head)
         } else {
             heads as u32 * damage_per_head
         };
-        active_damage_effect_outcome(damage, build_status_effect(status))
+        if heads < min_heads_for_status {
+            return active_damage_outcome(damage);
+        }
+        if status_on_self {
+            active_damage_effect_outcome(damage, move |_, state: &mut State, action: &Action| {
+                state.apply_status_condition(action.actor, 0, status);
+            })
+        } else {
+            active_damage_effect_outcome(damage, build_status_effect(status))
+        }
     })
 }
 
