@@ -1,5 +1,7 @@
 #[path = "pokemon/additional_ability_logic_test.rs"]
 mod additional_ability_logic_test;
+#[path = "pokemon/aipom_imitate_test.rs"]
+mod aipom_imitate_test;
 #[path = "pokemon/alcremie_test.rs"]
 mod alcremie_test;
 #[path = "pokemon/alolan_muk_power_of_alchemy_test.rs"]
@@ -52,6 +54,8 @@ mod celebi_time_recall_test;
 mod chansey_blissey_test;
 #[path = "pokemon/charmeleon_ignition_test.rs"]
 mod charmeleon_ignition_test;
+#[path = "pokemon/chatot_mimic_test.rs"]
+mod chatot_mimic_test;
 #[path = "pokemon/claydol_heal_block_test.rs"]
 mod claydol_heal_block_test;
 #[path = "pokemon/coin_flip_remove_active_test.rs"]
@@ -64,8 +68,12 @@ mod corviknight_line_test;
 mod crawdaunt_unruly_claw_test;
 #[path = "pokemon/darkrai_ex_test.rs"]
 mod darkrai_ex_test;
+#[path = "pokemon/deck_mill_attacks_test.rs"]
+mod deck_mill_attacks_test;
 #[path = "pokemon/delcatty_search_for_friends_test.rs"]
 mod delcatty_search_for_friends_test;
+#[path = "pokemon/dugtrio_cliff_crumbler_test.rs"]
+mod dugtrio_cliff_crumbler_test;
 #[path = "pokemon/durant_test.rs"]
 mod durant_test;
 #[path = "pokemon/dusknoir_shadow_void_test.rs"]
@@ -100,6 +108,8 @@ mod garganacl_blessed_salt_test;
 mod gigalith_archeops_next_turn_test;
 #[path = "pokemon/glimmora_point_denial_test.rs"]
 mod glimmora_point_denial_test;
+#[path = "pokemon/golurk_heavy_rocket_test.rs"]
+mod golurk_heavy_rocket_test;
 #[path = "pokemon/grafaiai_poison_coating_test.rs"]
 mod grafaiai_poison_coating_test;
 #[path = "pokemon/grovyle_slicing_snipe_test.rs"]
@@ -202,6 +212,10 @@ mod morpeko_test;
 mod ninetales_ember_dance_test;
 #[path = "pokemon/no_retreat_cost_abilities_test.rs"]
 mod no_retreat_cost_abilities_test;
+#[path = "pokemon/opponent_hand_discard_attacks_test.rs"]
+mod opponent_hand_discard_attacks_test;
+#[path = "pokemon/opponent_hand_shuffle_attacks_test.rs"]
+mod opponent_hand_shuffle_attacks_test;
 #[path = "pokemon/passimian_ex_offload_pass_test.rs"]
 mod passimian_ex_offload_pass_test;
 #[path = "pokemon/politoed_lordly_cheering_test.rs"]
@@ -214,6 +228,8 @@ mod porygonz_cyberjack_test;
 mod primarina_melodious_healing_test;
 #[path = "pokemon/psyduck_test.rs"]
 mod psyduck_test;
+#[path = "pokemon/purugly_interrupt_test.rs"]
+mod purugly_interrupt_test;
 #[path = "pokemon/pyukumuku_innards_out_test.rs"]
 mod pyukumuku_innards_out_test;
 #[path = "pokemon/rampardos_head_smash_test.rs"]
@@ -222,6 +238,8 @@ mod rampardos_head_smash_test;
 mod regigigas_seal_of_antiquity_test;
 #[path = "pokemon/resilience_link_test.rs"]
 mod resilience_link_test;
+#[path = "pokemon/reveal_opponent_hand_attacks_test.rs"]
+mod reveal_opponent_hand_attacks_test;
 #[path = "pokemon/rillaboom_captivating_rhythm_test.rs"]
 mod rillaboom_captivating_rhythm_test;
 #[path = "pokemon/roaring_moon_test.rs"]
@@ -234,6 +252,8 @@ mod sawk_test;
 mod shinx_hide_test;
 #[path = "pokemon/slither_wing_test.rs"]
 mod slither_wing_test;
+#[path = "pokemon/slowking_litter_test.rs"]
+mod slowking_litter_test;
 #[path = "pokemon/smoochum_test.rs"]
 mod smoochum_test;
 #[path = "pokemon/snorlax_massive_body_test.rs"]

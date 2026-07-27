@@ -105,13 +105,17 @@ pub fn forecast_action(state: &State, action: &Action) -> Outcomes {
                 hand_card,
             )
         }
-        SimpleAction::ShuffleOpponentSupporter { supporter_card } => {
-            forecast_shuffle_opponent_supporter(action.actor, supporter_card)
+        SimpleAction::ShuffleOpponentHandCard { card } => {
+            forecast_shuffle_opponent_hand_card(action.actor, card)
         }
         SimpleAction::DiscardOpponentSupporter { supporter_card } => {
             forecast_discard_opponent_supporter(action.actor, supporter_card)
         }
         SimpleAction::DiscardOwnCards { cards } => forecast_discard_own_cards(action.actor, cards),
+        SimpleAction::DiscardOwnCardsForAttackDamage {
+            cards,
+            damage_per_card,
+        } => forecast_discard_own_cards_for_attack_damage(action.actor, cards, *damage_per_card),
         SimpleAction::AttachFromDiscard {
             in_play_idx,
             num_random_energies,
@@ -884,16 +888,13 @@ fn forecast_shuffle_own_cards_into_deck(acting_player: usize, cards: &[Card]) ->
     })
 }
 
-fn forecast_shuffle_opponent_supporter(acting_player: usize, supporter_card: &Card) -> Outcomes {
-    let supporter_clone = supporter_card.clone();
+fn forecast_shuffle_opponent_hand_card(acting_player: usize, card: &Card) -> Outcomes {
+    let card_clone = card.clone();
     Outcomes::single_fn(move |rng, state, _action| {
         let opponent = (acting_player + 1) % 2;
-        state.transfer_card_from_hand_to_deck(opponent, &supporter_clone);
+        state.transfer_card_from_hand_to_deck(opponent, &card_clone);
         state.decks[opponent].shuffle(false, rng);
-        debug!(
-            "Silver: Shuffled {:?} from opponent's hand into their deck",
-            supporter_clone
-        );
+        debug!("Shuffled {card_clone:?} from opponent's hand into their deck");
     })
 }
 
@@ -916,6 +917,36 @@ fn forecast_discard_own_cards(acting_player: usize, cards: &[Card]) -> Outcomes 
             state.discard_card_from_hand(acting_player, card);
         }
         debug!("Discarded {:?} from hand", cards_clone);
+    })
+}
+
+/// Slowking's Litter: discard the chosen cards, then queue the attack's damage, which is
+/// `damage_per_card` for every card actually discarded. The damage goes through the normal
+/// `ApplyDamage` path (same as Bombirdier's Rock Throw) so weakness, damage modifiers and
+/// knockouts are handled by the shared pipeline.
+fn forecast_discard_own_cards_for_attack_damage(
+    acting_player: usize,
+    cards: &[Card],
+    damage_per_card: u32,
+) -> Outcomes {
+    let cards_clone = cards.to_vec();
+    Outcomes::single_fn(move |_rng, state, _action| {
+        for card in &cards_clone {
+            state.discard_card_from_hand(acting_player, card);
+        }
+        let damage = damage_per_card * cards_clone.len() as u32;
+        debug!("Discarded {cards_clone:?} from hand for {damage} attack damage");
+        if damage > 0 {
+            let opponent = (acting_player + 1) % 2;
+            state.move_generation_stack.push((
+                acting_player,
+                vec![SimpleAction::ApplyDamage {
+                    attacking_ref: (acting_player, 0),
+                    targets: vec![(damage, opponent, 0)],
+                    is_from_active_attack: true,
+                }],
+            ));
+        }
     })
 }
 
