@@ -246,5 +246,8 @@ fn test_musharna_dream_dance_puts_both_actives_asleep() {
     let state = game.get_state_clone();
     assert_eq!(180 - state.get_active(1).get_remaining_hp(), 60);
     assert!(state.get_active(1).is_asleep(), "defender must be Asleep");
-    assert!(state.get_active(0).is_asleep(), "attacker must be Asleep too");
+    assert!(
+        state.get_active(0).is_asleep(),
+        "attacker must be Asleep too"
+    );
 }

@@ -86,7 +86,10 @@ fn test_cross_poison_poisons_iff_at_least_two_heads() {
         saw_low_roll |= damage < 80;
     }
     assert!(saw_poison, "2+ heads must occur across seeds");
-    assert!(saw_low_roll, "0-1 heads (no poison) must occur across seeds");
+    assert!(
+        saw_low_roll,
+        "0-1 heads (no poison) must occur across seeds"
+    );
 }
 
 /// Bellossom (A4 003) "Petal Dance": flip 3 coins, 60 damage per heads; Bellossom is now Confused

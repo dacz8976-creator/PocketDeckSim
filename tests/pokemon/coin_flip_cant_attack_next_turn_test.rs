@@ -15,11 +15,13 @@ fn dialga_game(seed: u64) -> Game<'static> {
         seed,
         0,
         3,
-        vec![PlayedCard::from_id(CardId::A2a060OriginFormeDialga).with_energy(vec![
-            EnergyType::Metal,
-            EnergyType::Metal,
-            EnergyType::Colorless,
-        ])],
+        vec![
+            PlayedCard::from_id(CardId::A2a060OriginFormeDialga).with_energy(vec![
+                EnergyType::Metal,
+                EnergyType::Metal,
+                EnergyType::Colorless,
+            ]),
+        ],
         vec![
             // Mega Latios ex: 180 HP, no weakness — survives the 100 so damage is readable.
             PlayedCard::from_id(CardId::PB024MegaLatiosEx),
@@ -108,6 +110,12 @@ fn test_time_mash_tails_blocks_attack_next_turn() {
             break;
         }
     }
-    assert!(saw_blocked, "some seed must land tails and block the attack");
-    assert!(saw_allowed, "some seed must land heads and allow the attack");
+    assert!(
+        saw_blocked,
+        "some seed must land tails and block the attack"
+    );
+    assert!(
+        saw_allowed,
+        "some seed must land heads and allow the attack"
+    );
 }

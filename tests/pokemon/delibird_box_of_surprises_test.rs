@@ -60,8 +60,8 @@ fn test_box_of_surprises_tails_heals_opponent_30() {
     let (mut saw_damage, mut saw_heal) = (false, false);
     for seed in 0..60 {
         match run(seed, false) {
-            60 => saw_damage = true,  // heads: 130 - 70
-            160 => saw_heal = true,   // tails: 130 + 30 healed
+            60 => saw_damage = true, // heads: 130 - 70
+            160 => saw_heal = true,  // tails: 130 + 30 healed
             other => panic!("seed {seed}: unexpected opponent HP {other}, expected 60 or 160"),
         }
         if saw_damage && saw_heal {
@@ -69,7 +69,10 @@ fn test_box_of_surprises_tails_heals_opponent_30() {
         }
     }
     assert!(saw_damage, "heads branch must occur");
-    assert!(saw_heal, "tails branch must heal the opponent's Active by 30");
+    assert!(
+        saw_heal,
+        "tails branch must heal the opponent's Active by 30"
+    );
 }
 
 /// The tails-heal cannot overheal: an opponent with only 10 damage is healed back to full, not

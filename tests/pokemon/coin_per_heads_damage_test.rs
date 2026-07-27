@@ -61,8 +61,7 @@ fn test_farigiraf_double_hit_damage_is_per_heads_only() {
         }
     }
     assert_eq!(
-        seen,
-        [true; 3],
+        seen, [true; 3],
         "all of 0, 60 and 120 damage must occur across seeds"
     );
 }
@@ -186,7 +185,8 @@ fn test_maushold_family_beatdown_counts_only_tandemaus_and_maushold() {
 /// Lucky Mittens attached.
 #[test]
 fn test_ambipom_excited_tail_lucky_mittens_doubles_the_coins() {
-    let ambipom = || PlayedCard::from_id(CardId::B1186Ambipom).with_energy(vec![EnergyType::Darkness]);
+    let ambipom =
+        || PlayedCard::from_id(CardId::B1186Ambipom).with_energy(vec![EnergyType::Darkness]);
 
     // Without the tool: 2 coins, max 60.
     let mut max_plain = 0;

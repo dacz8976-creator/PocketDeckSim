@@ -53,8 +53,34 @@ pub enum Mechanic {
     InflictStatusConditionsOnBothActive {
         conditions: Vec<StatusCondition>,
     },
+    /// Flip a coin; on heads apply `heads_conditions` to the opponent's Active Pokémon, on tails
+    /// apply `tails_conditions` (usually empty). Damage is dealt on either branch.
     ChanceStatusAttack {
-        condition: StatusCondition,
+        heads_conditions: Vec<StatusCondition>,
+        tails_conditions: Vec<StatusCondition>,
+    },
+    /// Flip a coin. If tails, this attack does nothing. If heads, deal damage and apply
+    /// `conditions` to the opponent's Active Pokémon (e.g. Drampa's Dragon Breath).
+    CoinFlipNoDamageOrDamageAndStatus {
+        conditions: Vec<StatusCondition>,
+    },
+    /// One Special Condition from `options` is chosen at random (uniformly) and applied to the
+    /// opponent's Active Pokémon, excluding conditions already affecting it (Alolan Muk ex's
+    /// Chemical Panic). If every option is already present, only the damage is dealt.
+    RandomStatusFromEligible {
+        options: Vec<StatusCondition>,
+    },
+    /// Apply `conditions` plus lingering `effects` (for `duration` turns) to the opponent's
+    /// Active Pokémon (e.g. Roserade's Poison Ring: Poisoned + can't retreat).
+    InflictStatusAndCardEffects {
+        conditions: Vec<StatusCondition>,
+        effects: Vec<CardEffect>,
+        duration: u8,
+    },
+    /// The opponent's Active Pokémon is now Poisoned, and its Pokémon Checkup poison damage is
+    /// `checkup_damage` instead of the usual 10 (Toxicroak's Toxic, Toxapex's Severe Poison).
+    InflictPoisonWithCustomCheckupDamage {
+        checkup_damage: u32,
     },
     /// Deal damage, then let the player choose one of these Special Conditions to
     /// inflict on the opponent's Active Pokémon (e.g. Dustox's Select Powder).
@@ -110,7 +136,19 @@ pub enum Mechanic {
         energy_type: EnergyType,
         damage_per_discarded_energy: u32,
     },
-    CoinFlipNoEffect,
+    /// Flip `num_coins` coins; if ALL of them are tails the attack does nothing, otherwise the
+    /// printed damage is dealt unchanged.
+    CoinFlipNoEffect {
+        num_coins: usize,
+    },
+    /// Flip a coin; if TAILS, add `effect` to the Active Pokémon (own or opponent's) for
+    /// `duration` turns. Damage is dealt on either branch (e.g. "If tails, during your next
+    /// turn, this Pokémon can't attack").
+    CoinFlipTailsCardEffect {
+        opponent: bool,
+        effect: CardEffect,
+        duration: u8,
+    },
     SelfDiscardEnergy {
         energies: Vec<EnergyType>,
     },
@@ -210,11 +248,38 @@ pub enum Mechanic {
         num_bench_targets: usize,
         opponent: bool,
     },
+    /// Flip `num_coins` coins for `damage_per_head` damage per heads, and inflict `status` when at
+    /// least `min_heads_for_status` heads were flipped (0 = always). `status_on_self` targets the
+    /// attacker instead of the opponent's Active (Bellossom's Petal Dance).
     ExtraDamageForEachHeadsWithStatus {
         include_fixed_damage: bool,
         damage_per_head: u32,
         num_coins: usize,
         status: StatusCondition,
+        min_heads_for_status: usize,
+        status_on_self: bool,
+    },
+    /// Flip `num_coins` coins for `damage_per_head` damage per heads — but flip
+    /// `boosted_num_coins` instead if the attacker has the tool named `tool_name` attached
+    /// (Ambipom's Excited Tail + Lucky Mittens).
+    ExtraDamageForEachHeadsToolBoostedCoins {
+        damage_per_head: u32,
+        num_coins: usize,
+        boosted_num_coins: usize,
+        tool_name: String,
+    },
+    /// Flip a coin for each of the attacker's Pokémon in play (optionally only those whose name
+    /// is in `name_filter`); the attack does `damage_per_heads` damage for each heads, REPLACING
+    /// the printed damage (Group Beatdown, Family Beatdown).
+    CoinFlipPerPokemonInPlay {
+        damage_per_heads: u32,
+        name_filter: Option<Vec<String>>,
+    },
+    /// Flip a coin: heads → `damage` to the opponent's Active Pokémon; tails → heal `heal`
+    /// damage FROM the opponent's Active Pokémon (Delibird's Box of Surprises).
+    CoinFlipDamageOrHealOpponent {
+        damage: u32,
+        heal: u32,
     },
     DamageAndMultipleCardEffects {
         opponent: bool,
