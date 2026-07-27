@@ -688,8 +688,10 @@ fn cyrus_effect(_: &mut StdRng, state: &mut State, action: &Action) {
         .push((action.actor, possible_moves));
 }
 
-fn mars_effect(rng: &mut StdRng, state: &mut State, action: &Action) {
-    // Your opponent shuffles their hand into their deck and draws a card for each of their remaining points needed to win.
+/// "Your opponent shuffles their hand into their deck and draws a card for each of their remaining
+/// points needed to win." Mars (A2 173) prints this as a Supporter; Polteageist's Refreshing Tea
+/// (B2 075) offers the same effect on evolve, so both share this implementation.
+pub(crate) fn mars_effect(rng: &mut StdRng, state: &mut State, action: &Action) {
     let opponent_player = (action.actor + 1) % 2;
     let opponent_points = state.points[opponent_player];
     let cards_to_draw = (3 - opponent_points) as usize;

@@ -203,6 +203,15 @@ pub(crate) fn on_evolve(actor: usize, state: &mut State, to_card: &Card, from_ha
             card_kind,
             selection,
         }) => offer_put_cards_from_discard_to_hand(actor, state, *card_kind, *selection),
+        Some(AbilityMechanic::OpponentShuffleHandAndDrawOnEvolve) => {
+            state.move_generation_stack.push((
+                actor,
+                vec![
+                    SimpleAction::OpponentShuffleHandAndDrawRemainingPoints,
+                    SimpleAction::Noop,
+                ],
+            ));
+        }
         Some(AbilityMechanic::DiscardRandomEnergyFromOpponentActiveOnEvolve) => {
             let opponent = (actor + 1) % 2;
             let has_energy = state

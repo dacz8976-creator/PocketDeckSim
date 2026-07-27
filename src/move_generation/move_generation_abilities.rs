@@ -201,6 +201,7 @@ fn can_use_ability_by_mechanic(
         AbilityMechanic::AttachEnergyFromZoneToActiveTypedOnEvolve { .. } => false,
         AbilityMechanic::DamageOpponentActiveOnEvolve { .. } => false,
         AbilityMechanic::DiscardRandomEnergyFromOpponentActiveOnEvolve => false,
+        AbilityMechanic::OpponentShuffleHandAndDrawOnEvolve => false, // triggered on evolve
         AbilityMechanic::PutCardsFromDiscardToHandOnEvolve { .. } => false,
         AbilityMechanic::CanEvolveIntoEeveeEvolution => false,
         AbilityMechanic::CanEvolveOnFirstTurnIfActive => false,

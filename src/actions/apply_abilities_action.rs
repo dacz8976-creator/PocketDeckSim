@@ -289,6 +289,9 @@ fn forecast_ability_by_mechanic(
         AbilityMechanic::DiscardRandomEnergyFromOpponentActiveOnEvolve => {
             panic!("DiscardRandomEnergyFromOpponentActiveOnEvolve is triggered on evolve")
         }
+        AbilityMechanic::OpponentShuffleHandAndDrawOnEvolve => {
+            panic!("OpponentShuffleHandAndDrawOnEvolve is triggered on evolve")
+        }
         AbilityMechanic::PutCardsFromDiscardToHandOnEvolve { .. } => {
             panic!("PutCardsFromDiscardToHandOnEvolve is triggered on evolve")
         }

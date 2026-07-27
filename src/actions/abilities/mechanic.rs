@@ -494,6 +494,16 @@ pub enum AbilityMechanic {
         amount: u32,
     },
     DiscardRandomEnergyFromOpponentActiveOnEvolve,
+    /// Polteageist's Refreshing Tea (B2 075): "Once during your turn, when you play this Pokémon
+    /// from your hand to evolve 1 of your Pokémon, you may have your opponent shuffle their hand
+    /// into their deck. For each remaining point that your opponent needs to win, they draw a
+    /// card."
+    ///
+    /// The payload is exactly Mars' Supporter effect, so it rides the same implementation; the
+    /// Ability only changes when it happens. Passive: it is an on-evolve trigger, so it is offered
+    /// from the `on_evolve` hook (with a `Noop`, because it is a "may") rather than as a
+    /// `UseAbility` action.
+    OpponentShuffleHandAndDrawOnEvolve,
     /// "Once during your turn, when you play this Pokémon from your hand to evolve 1 of your
     /// Pokémon, you may put <selection> `card_kind` card(s) from your discard pile into your hand."
     ///

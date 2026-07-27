@@ -27,7 +27,7 @@ use super::{
     },
     apply_attack_action::forecast_attack,
     apply_stadium_action::{self, forecast_use_stadium},
-    apply_trainer_action::forecast_trainer_action,
+    apply_trainer_action::{self, forecast_trainer_action},
     outcomes::Outcomes,
     shared_mutations, Action, SimpleAction,
 };
@@ -82,6 +82,9 @@ pub fn forecast_action(state: &State, action: &Action) -> Outcomes {
             attachments,
             is_turn_energy,
         } => forecast_attach(state, action.actor, attachments, *is_turn_energy),
+        SimpleAction::OpponentShuffleHandAndDrawRemainingPoints => {
+            Outcomes::single_fn(apply_trainer_action::mars_effect)
+        }
         SimpleAction::UseAbility { in_play_idx } => forecast_ability(state, action, *in_play_idx),
         SimpleAction::ApplyDamage {
             attacking_ref,
