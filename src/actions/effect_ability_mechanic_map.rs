@@ -739,6 +739,28 @@ pub static EFFECT_ABILITY_MECHANIC_MAP: LazyLock<HashMap<&'static str, AbilityMe
                 required_bench_names: REGI_TRIO_NAMES,
             },
         );
+        // DELIBERATELY UNIMPLEMENTED — Victini's Victory Star (B3 025 / P-B 049).
+        //
+        // "Once during your turn, after you flip any coins for an attack of 1 of your [R] Pokémon,
+        // you may ignore all results of those coin flips and begin flipping those coins again."
+        //
+        // Every other coin effect in deckgym is resolved at *forecast* time: `Outcomes` enumerates
+        // one branch per coin result, `apply_action` samples a branch and immediately runs its
+        // mutation. Victory Star needs a player decision *between* those two steps — the player has
+        // to see the flips, then choose whether to discard that result and resample from the same
+        // distribution. There is no point in the engine where a sampled-but-not-yet-applied outcome
+        // is offered to a player, and by the time the `move_generation_stack` could carry the
+        // decision the attack has already resolved (damage, knockouts, promotions, end of turn), so
+        // there is nothing left to take back.
+        //
+        // Implementing it faithfully means a new subsystem: splitting outcome resolution into
+        // "sample" / "offer" / "commit", retaining the pre-attack state so a re-roll can resample
+        // from it, and teaching the search bots to price a decision node nested inside a chance
+        // node. The two shortcuts are both wrong and are deliberately not taken: pre-committing to
+        // the re-roll before seeing the flips is mathematically identical to flipping once (the
+        // Ability would be a silent no-op), and "keep whichever result had more heads" invents a
+        // policy the player never chose. Modelled as inert instead.
+        //
         // map.insert("Once during your turn, after you flip any coins for an attack of 1 of your [R] Pokémon, you may ignore all results of those coin flips and begin flipping those coins again. You can't use more than 1 Victory Star Ability each turn.", todo_implementation);
         map.insert(
             "Once during your turn, if this Pokémon is in the Active Spot, you may make your opponent's Active Pokémon Confused.",
