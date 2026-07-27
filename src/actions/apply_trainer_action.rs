@@ -450,7 +450,7 @@ fn parasol_lady_effect(acting_player: usize, state: &State) -> Outcomes {
     let choices: Vec<SimpleAction> = state
         .enumerate_in_play_pokemon(acting_player)
         .filter(|(_, pokemon)| {
-            pokemon.get_energy_type() == Some(EnergyType::Water) && !pokemon.card.is_ex()
+            state.pokemon_is_type(pokemon, EnergyType::Water) && !pokemon.card.is_ex()
         })
         .map(|(in_play_idx, _)| SimpleAction::ReturnPokemonToHand { in_play_idx })
         .collect();
@@ -570,7 +570,7 @@ fn electric_generator_outcomes() -> Outcomes {
     let heads_mutation = Box::new(|_: &mut StdRng, state: &mut State, action: &Action| {
         let possible_moves = state
             .enumerate_bench_pokemon(action.actor)
-            .filter(|(_, pokemon)| pokemon.get_energy_type() == Some(EnergyType::Lightning))
+            .filter(|(_, pokemon)| state.pokemon_is_type(pokemon, EnergyType::Lightning))
             .map(|(in_play_idx, _)| SimpleAction::Attach {
                 attachments: vec![(1, EnergyType::Lightning, in_play_idx)],
                 is_turn_energy: false,
@@ -598,7 +598,7 @@ fn inner_healing_effect(
 ) {
     let possible_moves = state
         .enumerate_in_play_pokemon(action.actor)
-        .filter(|(_, x)| energy.is_none() || x.get_energy_type() == Some(EnergyType::Grass))
+        .filter(|(_, x)| energy.is_none() || state.pokemon_is_type(x, EnergyType::Grass))
         .map(|(i, _)| SimpleAction::Heal {
             in_play_idx: i,
             amount,
@@ -619,7 +619,7 @@ fn misty_outcomes() -> Outcomes {
         Box::new(move |_: &mut StdRng, state: &mut State, action: &Action| {
             let possible_moves = state
                 .enumerate_in_play_pokemon(action.actor)
-                .filter(|(_, x)| x.get_energy_type() == Some(EnergyType::Water))
+                .filter(|(_, x)| state.pokemon_is_type(x, EnergyType::Water))
                 .map(|(i, _)| SimpleAction::Attach {
                     attachments: vec![(heads as u32, EnergyType::Water, i)],
                     is_turn_energy: false,

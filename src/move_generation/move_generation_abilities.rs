@@ -225,6 +225,7 @@ fn can_use_ability_by_mechanic(
         AbilityMechanic::AncientRoar => false, // triggered on bench placement, not via UseAbility
         AbilityMechanic::ReduceAttackCost { .. } => false, // passive ability
         AbilityMechanic::CannotAttackWithoutBenchedNames { .. } => false, // passive (attack generation)
+        AbilityMechanic::DualType { .. } => false,                        // Passive ability
         AbilityMechanic::TimeRecall => false, // passive ability (consumed in attack generation)
         AbilityMechanic::RandomEvolutionFromDeck { .. } => false, // Passive ability
     }
@@ -265,7 +266,7 @@ fn can_use_switch_active_typed_with_bench(
         return false;
     }
     let active = state.get_active(state.current_player);
-    if active.get_energy_type() != Some(energy_type) {
+    if !state.pokemon_is_type(active, energy_type) {
         return false;
     }
     state
@@ -310,7 +311,7 @@ fn can_use_attach_energy_from_zone_to_active_typed(
         return false;
     }
     let active = state.get_active(state.current_player);
-    active.get_energy_type() == Some(energy_type)
+    state.pokemon_is_type(active, energy_type)
 }
 
 fn can_use_dusknoir_shadow_void(state: &State, dusknoir_idx: usize) -> bool {
@@ -412,7 +413,7 @@ fn can_use_umbreon_dark_chase(state: &State, card: &PlayedCard) -> bool {
 fn can_use_vaporeon_wash_out(state: &State) -> bool {
     // Check if active Pokémon is Water type
     let active = state.get_active(state.current_player);
-    if active.get_energy_type() != Some(EnergyType::Water) {
+    if !state.pokemon_is_type(active, EnergyType::Water) {
         return false;
     }
     // Check if there's a benched Water Pokémon with Water energy

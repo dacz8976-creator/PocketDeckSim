@@ -1756,7 +1756,7 @@ fn moltres_inferno_dance() -> AttackOutcomes {
             // First collect all eligible fire pokemon in bench
             let mut fire_bench_idx = Vec::new();
             for (in_play_idx, pokemon) in state.enumerate_bench_pokemon(action.actor) {
-                if pokemon.get_energy_type() == Some(EnergyType::Fire) {
+                if state.pokemon_is_type(pokemon, EnergyType::Fire) {
                     fire_bench_idx.push(in_play_idx);
                 }
             }
@@ -1963,7 +1963,7 @@ pub(crate) fn energy_bench_attack(
     let choices = state
         .enumerate_bench_pokemon(state.current_player)
         .filter(|(_, played_card)| {
-            target_benched_type.is_none() || played_card.get_energy_type() == target_benched_type
+            target_benched_type.is_none_or(|t| state.pokemon_is_type(played_card, t))
         })
         .map(|(in_play_idx, _)| SimpleAction::Attach {
             attachments: energies
@@ -2210,7 +2210,7 @@ fn bench_count_damage_attack(
         .iter()
         .flat_map(|&player| state.enumerate_bench_pokemon(player))
         .filter(|(_, pokemon)| {
-            energy_type.is_none_or(|energy| pokemon.get_energy_type() == Some(energy))
+            energy_type.is_none_or(|energy| state.pokemon_is_type(pokemon, energy))
         })
         .filter(|(_, pokemon)| {
             names
@@ -4611,7 +4611,7 @@ fn coin_flip_charge_bench(
     let choices = state
         .enumerate_bench_pokemon(state.current_player)
         .filter(|(_, played_card)| {
-            target_benched_type.is_none() || played_card.get_energy_type() == target_benched_type
+            target_benched_type.is_none_or(|t| state.pokemon_is_type(played_card, t))
         })
         .map(|(in_play_idx, _)| SimpleAction::Attach {
             attachments: energies
@@ -5363,7 +5363,7 @@ fn discard_own_benched_type_for_damage(
 fn eligible_bench_discards(state: &State, player: usize, energy_type: EnergyType) -> Vec<usize> {
     state
         .enumerate_bench_pokemon(player)
-        .filter(|(_, pokemon)| pokemon.get_energy_type() == Some(energy_type))
+        .filter(|(_, pokemon)| state.pokemon_is_type(pokemon, energy_type))
         .map(|(idx, _)| idx)
         .collect()
 }
@@ -5397,7 +5397,7 @@ fn switch_self_with_bench_of_type(
 ) -> AttackOutcomes {
     let has_target = state
         .enumerate_bench_pokemon(state.current_player)
-        .any(|(_, pokemon)| pokemon.get_energy_type() == Some(energy_type));
+        .any(|(_, pokemon)| state.pokemon_is_type(pokemon, energy_type));
     if !has_target {
         return active_damage_doutcome(damage);
     }
@@ -5412,7 +5412,7 @@ fn switch_self_with_bench_of_type(
             }
             let choices: Vec<SimpleAction> = state
                 .enumerate_bench_pokemon(action.actor)
-                .filter(|(_, pokemon)| pokemon.get_energy_type() == Some(energy_type))
+                .filter(|(_, pokemon)| state.pokemon_is_type(pokemon, energy_type))
                 .map(|(in_play_idx, _)| SimpleAction::Activate {
                     player: action.actor,
                     in_play_idx,
@@ -5515,7 +5515,7 @@ fn heal_each_your_pokemon_attack(
             .filter(|(idx, pokemon)| {
                 (!benched_only || benched.contains(idx))
                     && (!basic_only || pokemon.card.is_basic())
-                    && energy_type.is_none_or(|t| pokemon.get_energy_type() == Some(t))
+                    && energy_type.is_none_or(|t| state.pokemon_is_type(pokemon, t))
             })
             .map(|(idx, _)| idx)
             .collect();

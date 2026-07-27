@@ -343,6 +343,7 @@ fn forecast_ability_by_mechanic(
         AbilityMechanic::CannotAttackWithoutBenchedNames { .. } => {
             panic!("CannotAttackWithoutBenchedNames is a passive ability")
         }
+        AbilityMechanic::DualType { .. } => panic!("DualType is a passive ability"),
         AbilityMechanic::TimeRecall => panic!("TimeRecall is a passive ability"),
         AbilityMechanic::RandomEvolutionFromDeck { .. } => {
             panic!("RandomEvolutionFromDeck is a passive ability")
@@ -400,9 +401,16 @@ fn look_at_top_card_of_deck() -> Outcomes {
 
 fn heal_all_your_pokemon(amount: u32, energy_type: Option<EnergyType>) -> Outcomes {
     Outcomes::single_fn(move |_rng, state, action| {
-        state.heal_each_pokemon(action.actor, amount, |pokemon| {
-            energy_type.is_none_or(|required| pokemon.get_energy_type() == Some(required))
-        });
+        let eligible: Vec<usize> = state
+            .enumerate_in_play_pokemon(action.actor)
+            .filter(|(_, pokemon)| {
+                energy_type.is_none_or(|required| state.pokemon_is_type(pokemon, required))
+            })
+            .map(|(in_play_idx, _)| in_play_idx)
+            .collect();
+        for in_play_idx in eligible {
+            state.heal_pokemon(action.actor, in_play_idx, amount);
+        }
     })
 }
 

@@ -714,10 +714,11 @@ pub(crate) fn handle_knockouts(
             // captured here, while the card is still in play. Fossils have no energy type and are
             // covered only by the untyped flag below.
             if is_from_active_attack && ko_receiver != attacking_ref.0 {
-                if let Some(energy_type) = state.in_play_pokemon[ko_receiver][ko_pokemon_idx]
+                let ko_types = state.in_play_pokemon[ko_receiver][ko_pokemon_idx]
                     .as_ref()
-                    .and_then(|pokemon| pokemon.get_energy_type())
-                {
+                    .map(|pokemon| state.pokemon_energy_types(pokemon))
+                    .unwrap_or_default();
+                for energy_type in ko_types {
                     state
                         .knocked_out_types_by_opponent_attack_this_turn
                         .push(energy_type);

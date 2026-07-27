@@ -21,7 +21,7 @@ pub fn wallace_candidates(state: &State, player: usize) -> Vec<(usize, Card)> {
         let Card::Pokemon(pokemon_card) = &pokemon.card else {
             continue;
         };
-        if pokemon.get_energy_type() != Some(EnergyType::Water) || pokemon_card.hp > 50 {
+        if !state.pokemon_is_type(pokemon, EnergyType::Water) || pokemon_card.hp > 50 {
             continue;
         }
 

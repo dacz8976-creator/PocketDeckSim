@@ -594,6 +594,18 @@ pub enum AbilityMechanic {
     CannotAttackWithoutBenchedNames {
         required_bench_names: &'static [&'static str],
     },
+    /// Double Type (Rapid Strike Urshifu B3 051: "As long as this Pokémon is in play, it is [W]
+    /// and [F] type."; Single Strike Urshifu B3 113: "... it is [F] and [D] type.").
+    ///
+    /// Replaces the holder's printed type with `types` — for both printings the printed type is
+    /// one of the two, so in practice it *adds* the second. Passive, and read through the single
+    /// accessor `State::pokemon_energy_types` / `State::pokemon_is_type`, which every
+    /// "what type is this Pokémon in play" question goes through (Weakness, the type damage
+    /// boosts, "each of your [X] Pokémon" filters, Retreat-cost discounts). Going through the
+    /// in-play Ability chokepoint means Prickly Powder's `NoAbilities` turns it back off.
+    DualType {
+        types: [EnergyType; 2],
+    },
     /// Celebi's Time Recall: "Each of your evolved Pokémon can use any attack from its previous
     /// Evolutions. (You still need the necessary Energy to use each attack.)"
     /// Passive: while a Pokémon with this ability is in play, attack generation also offers the
