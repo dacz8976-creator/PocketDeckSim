@@ -226,6 +226,7 @@ fn can_use_ability_by_mechanic(
         AbilityMechanic::ReduceAttackCost { .. } => false, // passive ability
         AbilityMechanic::CannotAttackWithoutBenchedNames { .. } => false, // passive (attack generation)
         AbilityMechanic::DualType { .. } => false,                        // Passive ability
+        AbilityMechanic::PreventAttackEffects => false,                   // Passive ability
         AbilityMechanic::TimeRecall => false, // passive ability (consumed in attack generation)
         AbilityMechanic::RandomEvolutionFromDeck { .. } => false, // Passive ability
     }

@@ -448,8 +448,10 @@ fn apply_deterministic_action(state: &mut State, action: &Action) {
             }
         }
         SimpleAction::ApplyStatusToOpponentActive { condition } => {
+            // Only ever queued by an attack (Dustox's Select Powder), so it goes through the
+            // attack-effect gate that Regice's Crystal Body sits behind.
             let opponent = (action.actor + 1) % 2;
-            state.apply_status_condition(opponent, 0, *condition);
+            state.apply_attack_status_condition(opponent, 0, *condition);
         }
         SimpleAction::DiscardOwnBenchedThenDamage {
             in_play_idxs,

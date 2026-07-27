@@ -606,6 +606,20 @@ pub enum AbilityMechanic {
     DualType {
         types: [EnergyType; 2],
     },
+    /// Regice's Crystal Body (A2 034): "Prevent all effects of attacks used by your opponent's
+    /// Pokémon done to this Pokémon."
+    ///
+    /// Passive. "Effect" is everything an attack does *to a Pokémon* other than damage: Special
+    /// Conditions, lingering `CardEffect`s, Energy and Tool removal, Energy-type changes, forced
+    /// switches / return-to-hand / shuffle-into-deck, devolution, and the outright "this Pokémon is
+    /// Knocked Out" / "its remaining HP is now N" effects. Damage itself is not an effect and is
+    /// deliberately not blocked, and neither are effects from Abilities, Trainers or Stadiums —
+    /// the Ability names attacks only.
+    ///
+    /// Resolved at `State::prevents_attack_effects`, which the attack code calls (directly, or via
+    /// `State::apply_attack_status_condition`) at every point where an attack would touch the
+    /// defending Pokémon.
+    PreventAttackEffects,
     /// Celebi's Time Recall: "Each of your evolved Pokémon can use any attack from its previous
     /// Evolutions. (You still need the necessary Energy to use each attack.)"
     /// Passive: while a Pokémon with this ability is in play, attack generation also offers the

@@ -312,6 +312,8 @@ mod quagsire_amnesia_test;
 mod raid_evolved_this_turn_test;
 #[path = "pokemon/rampardos_head_smash_test.rs"]
 mod rampardos_head_smash_test;
+#[path = "pokemon/regice_crystal_body_test.rs"]
+mod regice_crystal_body_test;
 #[path = "pokemon/regigigas_seal_of_antiquity_test.rs"]
 mod regigigas_seal_of_antiquity_test;
 #[path = "pokemon/resilience_link_test.rs"]

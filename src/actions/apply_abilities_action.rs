@@ -344,6 +344,9 @@ fn forecast_ability_by_mechanic(
             panic!("CannotAttackWithoutBenchedNames is a passive ability")
         }
         AbilityMechanic::DualType { .. } => panic!("DualType is a passive ability"),
+        AbilityMechanic::PreventAttackEffects => {
+            panic!("PreventAttackEffects is a passive ability")
+        }
         AbilityMechanic::TimeRecall => panic!("TimeRecall is a passive ability"),
         AbilityMechanic::RandomEvolutionFromDeck { .. } => {
             panic!("RandomEvolutionFromDeck is a passive ability")

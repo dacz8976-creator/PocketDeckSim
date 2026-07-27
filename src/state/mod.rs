@@ -208,6 +208,41 @@ impl State {
         pokemon.get_energy_type().into_iter().collect()
     }
 
+    /// Whether an *attack's* non-damage effect aimed at this Pokémon is prevented — Regice's
+    /// Crystal Body (A2 034): "Prevent all effects of attacks used by your opponent's Pokémon done
+    /// to this Pokémon."
+    ///
+    /// This is the single chokepoint for that question. Attack code calls it (or
+    /// [`Self::apply_attack_status_condition`], which is built on it) immediately before touching
+    /// the defending Pokémon, so the shield covers Special Conditions, lingering `CardEffect`s,
+    /// Energy and Tool removal, Energy-type changes, forced switches and devolution alike.
+    ///
+    /// Deliberately *not* called from Ability, Trainer or Stadium code: Crystal Body names attacks
+    /// only. Damage is not an effect and is applied through the normal damage path regardless.
+    pub(crate) fn prevents_attack_effects(&self, player: usize, in_play_idx: usize) -> bool {
+        self.in_play_pokemon[player][in_play_idx]
+            .as_ref()
+            .is_some_and(|pokemon| {
+                has_in_play_ability_mechanic(self, pokemon, &AbilityMechanic::PreventAttackEffects)
+            })
+    }
+
+    /// [`Self::apply_status_condition`] for a Special Condition inflicted by an *attack*, which
+    /// Crystal Body shields against. Every attack that gives a Pokémon a Special Condition goes
+    /// through here; Abilities and Trainers keep using `apply_status_condition` directly.
+    pub(crate) fn apply_attack_status_condition(
+        &mut self,
+        player: usize,
+        in_play_idx: usize,
+        status: StatusCondition,
+    ) {
+        if self.prevents_attack_effects(player, in_play_idx) {
+            debug!("Crystal Body: preventing the attack's {status:?} effect");
+            return;
+        }
+        self.apply_status_condition(player, in_play_idx, status);
+    }
+
     /// Whether a Pokémon in play counts as `energy_type` right now. See
     /// [`Self::pokemon_energy_types`].
     pub(crate) fn pokemon_is_type(&self, pokemon: &PlayedCard, energy_type: EnergyType) -> bool {
