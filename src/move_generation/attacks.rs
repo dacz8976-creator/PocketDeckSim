@@ -1,12 +1,12 @@
 use crate::{
     actions::{
-        abilities::AbilityMechanic, get_ability_mechanic, has_in_play_ability_mechanic,
-        SimpleAction,
+        abilities::AbilityMechanic, attacks::Mechanic, get_ability_mechanic,
+        has_in_play_ability_mechanic, SimpleAction, EFFECT_MECHANIC_MAP,
     },
     card_ids::CardId,
     effects::CardEffect,
     hooks::{contains_energy, get_attack_cost},
-    models::{Attack, PlayedCard},
+    models::{Attack, EnergyType, PlayedCard},
     tools::has_tool,
     State,
 };
@@ -59,14 +59,83 @@ pub(crate) fn generate_attack_actions(state: &State) -> Vec<SimpleAction> {
             if restricted_attack_names.contains(&attack.title) {
                 continue;
             }
+            // "You can use this attack only if ..." conditions (e.g. Mesprit's Supreme Blast).
+            if !attack_usage_condition_met(state, current_player, &attack) {
+                continue;
+            }
             let modified_cost = get_attack_cost(&attack.energy_required, state, current_player);
-            if contains_energy(active_pokemon, &modified_cost, state, current_player) {
+            if contains_energy(active_pokemon, &modified_cost, state, current_player)
+                || alternative_cost_payable(state, current_player, active_pokemon, &attack)
+            {
                 offered.push(attack.clone());
                 actions.push(SimpleAction::Attack(attack));
             }
         }
     }
     actions
+}
+
+/// Look up the `Mechanic` for an attack's effect text, if any.
+fn attack_mechanic(attack: &Attack) -> Option<&'static Mechanic> {
+    attack
+        .effect
+        .as_deref()
+        .and_then(|effect_text| EFFECT_MECHANIC_MAP.get(effect_text))
+}
+
+/// "You can use this attack only if ..." conditions gate the attack at move generation
+/// (e.g. Mesprit's Supreme Blast requires Uxie and Azelf on the attacker's Bench).
+fn attack_usage_condition_met(state: &State, player: usize, attack: &Attack) -> bool {
+    match attack_mechanic(attack) {
+        Some(Mechanic::RequiresBenchedNamesSelfDiscardAllEnergy {
+            required_bench_names,
+        }) => {
+            let bench_names: Vec<String> = state
+                .enumerate_bench_pokemon(player)
+                .map(|(_, pokemon)| pokemon.get_name())
+                .collect();
+            required_bench_names
+                .iter()
+                .all(|required| bench_names.iter().any(|name| name == required))
+        }
+        _ => true,
+    }
+}
+
+/// "If <condition>, this attack can be used for <cost>" effects (e.g. Boltund's Defiant Spark,
+/// Veluza's Shedding Spiral): when the condition holds, the attack is offered if the attacker
+/// can pay the alternative cost (run through the usual cost modifiers) even though it cannot
+/// pay the printed cost.
+fn alternative_cost_payable(
+    state: &State,
+    player: usize,
+    active_pokemon: &PlayedCard,
+    attack: &Attack,
+) -> bool {
+    let Some(alternative_cost) = alternative_attack_cost(state, player, active_pokemon, attack)
+    else {
+        return false;
+    };
+    let modified_cost = get_attack_cost(&alternative_cost, state, player);
+    contains_energy(active_pokemon, &modified_cost, state, player)
+}
+
+/// The alternative cost of `attack` if its condition currently holds for `player`.
+fn alternative_attack_cost(
+    state: &State,
+    player: usize,
+    active_pokemon: &PlayedCard,
+    attack: &Attack,
+) -> Option<Vec<EnergyType>> {
+    match attack_mechanic(attack) {
+        Some(Mechanic::AlternativeCostIfDamaged { cost }) => {
+            active_pokemon.is_damaged().then(|| cost.clone())
+        }
+        Some(Mechanic::AlternativeCostIfDeckEmpty { cost }) => {
+            state.decks[player].cards.is_empty().then(|| cost.clone())
+        }
+        _ => None,
+    }
 }
 
 /// Regigigas' Seal of Antiquity: "If you don't have Regirock, Regice, and Registeel on your Bench,

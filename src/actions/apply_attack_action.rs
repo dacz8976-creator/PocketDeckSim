@@ -325,6 +325,10 @@ fn forecast_effect_attack_by_mechanic(
             energy_type,
             amount,
         } => move_fixed_energy_type_to_bench(state, attack, *energy_type, *amount),
+        Mechanic::MoveAllEnergyToBench => move_energies_to_bench(state, attack, None),
+        Mechanic::MoveRandomEnergyToBench { count } => {
+            move_energies_to_bench(state, attack, Some(*count))
+        }
         Mechanic::ChargeBench {
             energies,
             target_benched_type,
@@ -400,6 +404,23 @@ fn forecast_effect_attack_by_mechanic(
         Mechanic::DiscardEnergyFromOpponentActive => {
             damage_and_discard_energy(attack.fixed_damage, 1)
         }
+        Mechanic::DiscardTypeEnergyFromOpponentActive { energy_type } => {
+            discard_type_energy_from_opponent_active(attack.fixed_damage, *energy_type)
+        }
+        Mechanic::DiscardRandomEnergyFromBothActive => {
+            discard_random_energy_from_both_active(attack.fixed_damage)
+        }
+        Mechanic::DiscardOpponentActiveEnergyIfEvolvedThisTurn { count } => {
+            discard_opponent_active_energy_if_evolved_this_turn(state, attack.fixed_damage, *count)
+        }
+        Mechanic::FlipCoinsDiscardOpponentEnergyPerHeads {
+            num_coins,
+            nothing_if_no_heads,
+        } => flip_coins_discard_opponent_energy_per_heads(
+            attack.fixed_damage,
+            *num_coins,
+            *nothing_if_no_heads,
+        ),
         Mechanic::CoinFlipDiscardEnergyFromOpponentActive => mawile_crunch(),
         Mechanic::DiscardOpponentActiveToolsBeforeDamage => {
             discard_opponent_active_tools_before_damage(attack.fixed_damage)
@@ -486,6 +507,37 @@ fn forecast_effect_attack_by_mechanic(
             effect.clone(),
             *duration,
         ),
+        Mechanic::SelfDiscardRandomEnergyAndCardEffect {
+            count,
+            effect,
+            duration,
+        } => self_discard_random_energy_and_card_effect(
+            attack.fixed_damage,
+            *count,
+            effect.clone(),
+            *duration,
+        ),
+        Mechanic::SelfDiscardEnergyAndChoiceBenchDamage {
+            energies,
+            bench_damage,
+        } => self_discard_energy_and_choice_bench_damage(
+            state,
+            attack.fixed_damage,
+            energies.clone(),
+            *bench_damage,
+        ),
+        Mechanic::SelfDiscardRandomEnergyAndBenchDamage {
+            count,
+            bench_damage,
+        } => self_discard_random_energy_and_bench_damage(
+            state,
+            attack.fixed_damage,
+            *count,
+            *bench_damage,
+        ),
+        Mechanic::SelfDiscardEnergyThenDamageAnyOpponentPokemon { energies, damage } => {
+            self_discard_energy_then_damage_any_opponent_pokemon(energies.clone(), *damage)
+        }
         Mechanic::ExtraDamageIfExtraEnergy {
             required_extra_energy,
             extra_damage,
@@ -544,6 +596,21 @@ fn forecast_effect_attack_by_mechanic(
         ),
         Mechanic::DrawCard { amount } => draw_and_damage_outcome(attack.fixed_damage, *amount),
         Mechanic::SelfDiscardAllEnergy => damage_and_discard_all_energy(attack.fixed_damage),
+        Mechanic::SelfDiscardAllEnergyAndInflictStatus { conditions } => {
+            self_discard_all_energy_and_inflict_status(attack.fixed_damage, conditions.clone())
+        }
+        Mechanic::SelfDiscardAllEnergyKnockOutOpponentActive => {
+            self_discard_all_energy_knock_out_opponent_active()
+        }
+        // The bench requirement is enforced at move generation; the attack itself is
+        // damage plus a full self energy discard.
+        Mechanic::RequiresBenchedNamesSelfDiscardAllEnergy { .. } => {
+            damage_and_discard_all_energy(attack.fixed_damage)
+        }
+        // The alternative cost only affects move generation; the attack itself is plain damage.
+        Mechanic::AlternativeCostIfDamaged { .. } | Mechanic::AlternativeCostIfDeckEmpty { .. } => {
+            active_damage_doutcome(attack.fixed_damage)
+        }
         Mechanic::SelfDiscardAllTypeEnergy { energy_type } => {
             discard_all_energy_of_type_attack(attack.fixed_damage, *energy_type)
         }
@@ -551,7 +618,12 @@ fn forecast_effect_attack_by_mechanic(
             energy_type,
             damage,
         } => discard_all_energy_of_type_then_damage_any_opponent_pokemon(*energy_type, *damage),
-        Mechanic::SelfDiscardRandomEnergy => damage_and_discard_random_energy(attack.fixed_damage),
+        Mechanic::SelfDiscardRandomEnergy { count } => {
+            damage_and_discard_random_energy(attack.fixed_damage, *count)
+        }
+        Mechanic::CoinFlipTailsSelfDiscardRandomEnergy { count } => {
+            coin_flip_tails_self_discard_random_energy(attack.fixed_damage, *count)
+        }
         Mechanic::AlsoBenchDamage {
             opponent,
             damage,
@@ -723,9 +795,10 @@ fn forecast_effect_attack_by_mechanic(
         Mechanic::ChooseOpponentHandCardToShuffleIntoDeck => {
             choose_opponent_hand_card_to_shuffle_into_deck(attack.fixed_damage)
         }
-        Mechanic::DiscardRandomGlobalEnergy { count } => {
-            discard_random_global_energy_attack(attack.fixed_damage, *count, state)
-        }
+        Mechanic::DiscardRandomGlobalEnergy {
+            count,
+            own_side_only,
+        } => discard_random_global_energy_attack(attack.fixed_damage, *count, *own_side_only),
         Mechanic::RandomDamageToOpponentPokemonPerSelfEnergy {
             energy_type,
             damage_per_hit,
@@ -776,6 +849,22 @@ fn forecast_effect_attack_by_mechanic(
         Mechanic::DirectDamageIfDamaged { damage } => direct_damage_if_damaged(*damage),
         Mechanic::AttachEnergyToBenchedBasic { energy_type } => {
             attach_energy_to_benched_basic(state.current_player, *energy_type)
+        }
+        Mechanic::AttachRandomBasicEnergyFromZoneToBench => {
+            attach_random_basic_energy_from_zone_to_bench(attack.fixed_damage)
+        }
+        Mechanic::AttachEnergyFromZoneToPokemonNamed { energy_type, names } => {
+            attach_energy_from_zone_to_pokemon_named(
+                attack.fixed_damage,
+                *energy_type,
+                names.clone(),
+            )
+        }
+        Mechanic::ChangeRandomOpponentActiveEnergyType => {
+            change_random_opponent_active_energy_type(attack.fixed_damage)
+        }
+        Mechanic::ChangeOpponentNextGeneratedEnergyType => {
+            change_opponent_next_generated_energy_type(attack.fixed_damage)
         }
         Mechanic::DamageAndDiscardOpponentDeck { discard_count } => {
             damage_and_discard_opponent_deck(attack.fixed_damage, *discard_count)
@@ -2755,13 +2844,373 @@ fn damage_and_discard_all_energy(damage: u32) -> AttackOutcomes {
     })
 }
 
-fn damage_and_discard_random_energy(damage: u32) -> AttackOutcomes {
+/// Pick up to `count` random energies from the given in-play Pokémon's attached energy.
+/// Returns the picked energies without removing them.
+fn pick_random_attached_energy(
+    rng: &mut StdRng,
+    state: &State,
+    player: usize,
+    in_play_idx: usize,
+    count: usize,
+) -> Vec<EnergyType> {
+    let Some(pokemon) = state.in_play_pokemon[player][in_play_idx].as_ref() else {
+        return vec![];
+    };
+    let mut remaining = pokemon.attached_energy.clone();
+    let mut picked = Vec::new();
+    for _ in 0..count {
+        if remaining.is_empty() {
+            break;
+        }
+        let idx = rng.gen_range(0..remaining.len());
+        picked.push(remaining.swap_remove(idx));
+    }
+    picked
+}
+
+/// Discard up to `count` random energies from the given player's Active Pokémon.
+fn discard_random_energy_from_player_active(
+    rng: &mut StdRng,
+    state: &mut State,
+    player: usize,
+    count: usize,
+) {
+    let to_discard = pick_random_attached_energy(rng, state, player, 0, count);
+    if !to_discard.is_empty() {
+        state.discard_from_active(player, &to_discard);
+    }
+}
+
+fn damage_and_discard_random_energy(damage: u32, count: usize) -> AttackOutcomes {
     active_damage_effect_doutcome(damage, move |rng, state, action| {
-        let active = state.get_active(action.actor);
-        if !active.attached_energy.is_empty() {
-            let idx = rng.gen_range(0..active.attached_energy.len());
-            let energy = active.attached_energy[idx];
-            state.discard_from_active(action.actor, &[energy]);
+        discard_random_energy_from_player_active(rng, state, action.actor, count);
+    })
+}
+
+/// Entei's Strong Flare: flip a coin; if tails, discard `count` random Energy from the attacker.
+fn coin_flip_tails_self_discard_random_energy(damage: u32, count: usize) -> AttackOutcomes {
+    AttackOutcomes::binary_coin(
+        active_damage_outcome(damage),
+        active_damage_effect_outcome(damage, move |rng, state, action| {
+            discard_random_energy_from_player_active(rng, state, action.actor, count);
+        }),
+    )
+}
+
+/// Oricorio's Kindle / Yveltal's Evil Crash: discard a random Energy from both Active Pokémon.
+fn discard_random_energy_from_both_active(damage: u32) -> AttackOutcomes {
+    active_damage_effect_doutcome(damage, move |rng, state, action| {
+        let opponent = (action.actor + 1) % 2;
+        discard_random_energy_from_player_active(rng, state, action.actor, 1);
+        discard_random_energy_from_player_active(rng, state, opponent, 1);
+    })
+}
+
+/// Dedenne's Electric Nibbling / Surskit's Firefighting: discard one Energy of a specific type
+/// from the opponent's Active Pokémon (if it has one).
+fn discard_type_energy_from_opponent_active(
+    damage: u32,
+    energy_type: EnergyType,
+) -> AttackOutcomes {
+    active_damage_effect_doutcome(damage, move |_, state, action| {
+        let opponent = (action.actor + 1) % 2;
+        let has_energy = state
+            .get_active(opponent)
+            .attached_energy
+            .contains(&energy_type);
+        if has_energy {
+            state.discard_from_active(opponent, &[energy_type]);
+        }
+    })
+}
+
+/// Dudunsparce's Sudden Drilling: only if this Pokémon evolved (was played) this turn, discard
+/// `count` random Energy from the opponent's Active Pokémon.
+fn discard_opponent_active_energy_if_evolved_this_turn(
+    state: &State,
+    damage: u32,
+    count: usize,
+) -> AttackOutcomes {
+    let evolved = state.in_play_pokemon[state.current_player][0]
+        .as_ref()
+        .map(|p| p.played_this_turn)
+        .unwrap_or(false);
+    if !evolved {
+        return active_damage_doutcome(damage);
+    }
+    active_damage_effect_doutcome(damage, move |rng, state, action| {
+        let opponent = (action.actor + 1) % 2;
+        discard_random_energy_from_player_active(rng, state, opponent, count);
+    })
+}
+
+/// Maushold's Triple Gnawing / Pidgeot's Twister / Mega Pidgeot ex's Giant Twister: flip
+/// `num_coins` coins and discard one random Energy from the opponent's Active Pokémon per
+/// heads. With `nothing_if_no_heads`, the zero-heads branch does nothing at all.
+fn flip_coins_discard_opponent_energy_per_heads(
+    damage: u32,
+    num_coins: usize,
+    nothing_if_no_heads: bool,
+) -> AttackOutcomes {
+    AttackOutcomes::binomial_by_heads(num_coins, move |heads| {
+        if heads == 0 {
+            if nothing_if_no_heads {
+                return AttackOutcome::noop();
+            }
+            return active_damage_outcome(damage);
+        }
+        active_damage_effect_outcome(damage, move |rng, state, action| {
+            let opponent = (action.actor + 1) % 2;
+            discard_random_energy_from_player_active(rng, state, opponent, heads);
+        })
+    })
+}
+
+/// Galvantula's Electric Shock: discard all Energy from the attacker and inflict the listed
+/// Special Conditions on the opponent's Active Pokémon.
+fn self_discard_all_energy_and_inflict_status(
+    damage: u32,
+    conditions: Vec<StatusCondition>,
+) -> AttackOutcomes {
+    active_damage_effect_doutcome(damage, move |_, state, action| {
+        let to_discard = state.get_active(action.actor).attached_energy.clone();
+        state.discard_from_active(action.actor, &to_discard);
+        let opponent = (action.actor + 1) % 2;
+        for condition in &conditions {
+            state.apply_status_condition(opponent, 0, *condition);
+        }
+    })
+}
+
+/// Raging Bolt's Baneful Boom: discard all Energy from the attacker, then Knock Out the
+/// opponent's Active Pokémon outright. This is a Knock Out effect rather than damage, so no
+/// damage modifiers (weakness, reductions, prevention) apply; the shared catch-all knockout
+/// pass then resolves the knockout and awards points.
+fn self_discard_all_energy_knock_out_opponent_active() -> AttackOutcomes {
+    AttackOutcomes::single_effect(move |_, state, action| {
+        let to_discard = state.get_active(action.actor).attached_energy.clone();
+        state.discard_from_active(action.actor, &to_discard);
+        let opponent = (action.actor + 1) % 2;
+        if let Some(defender) = state.in_play_pokemon[opponent][0].as_mut() {
+            defender.set_remaining_hp(0);
+        }
+    })
+}
+
+/// Gouging Fire's Scorching Interruption: discard `count` (randomly chosen) Energy from the
+/// attacker, then give the attacker a card effect.
+fn self_discard_random_energy_and_card_effect(
+    damage: u32,
+    count: usize,
+    effect: CardEffect,
+    duration: u8,
+) -> AttackOutcomes {
+    active_damage_effect_doutcome(damage, move |rng, state, action| {
+        discard_random_energy_from_player_active(rng, state, action.actor, count);
+        state
+            .get_active_mut(action.actor)
+            .add_effect(effect.clone(), duration);
+    })
+}
+
+/// Rapid Strike Urshifu's Tornado Shot: discard the listed Energy from the attacker, and the
+/// attack also does `bench_damage` to 1 of the opponent's Benched Pokémon (chosen).
+fn self_discard_energy_and_choice_bench_damage(
+    state: &State,
+    active_damage: u32,
+    to_discard: Vec<EnergyType>,
+    bench_damage: u32,
+) -> AttackOutcomes {
+    let opponent = (state.current_player + 1) % 2;
+    let choices: Vec<_> = state
+        .enumerate_bench_pokemon(opponent)
+        .map(|(in_play_idx, _)| {
+            let targets = vec![
+                (active_damage, opponent, 0),
+                (bench_damage, opponent, in_play_idx),
+            ];
+            SimpleAction::ApplyDamage {
+                attacking_ref: (state.current_player, 0),
+                targets,
+                is_from_active_attack: true,
+            }
+        })
+        .collect();
+    if choices.is_empty() {
+        // No benched target: just deal the active damage and discard.
+        return active_damage_effect_doutcome(active_damage, move |_, state, action| {
+            discard_requested_energy_from_active_best_effort(state, action.actor, &to_discard);
+        });
+    }
+    AttackOutcomes::single_effect(move |_, state, action| {
+        discard_requested_energy_from_active_best_effort(state, action.actor, &to_discard);
+        state
+            .move_generation_stack
+            .push((action.actor, choices.clone()));
+    })
+}
+
+/// Walking Wake's Sweeping Billow: discard `count` (randomly chosen) Energy from the attacker,
+/// and the attack also does `bench_damage` to each of the opponent's Benched Pokémon.
+fn self_discard_random_energy_and_bench_damage(
+    state: &State,
+    active_damage: u32,
+    count: usize,
+    bench_damage: u32,
+) -> AttackOutcomes {
+    let opponent = (state.current_player + 1) % 2;
+    let mut targets: Vec<(u32, bool, usize)> = state
+        .enumerate_bench_pokemon(opponent)
+        .map(|(idx, _)| (bench_damage, true, idx))
+        .collect();
+    targets.push((active_damage, true, 0));
+    AttackOutcomes::single(AttackOutcome::damage_then_effect(
+        targets,
+        move |rng, state, action| {
+            discard_random_energy_from_player_active(rng, state, action.actor, count);
+        },
+    ))
+}
+
+/// Volcarona's Volcanic Ash: discard the listed Energy from the attacker, then deal `damage`
+/// to 1 of the opponent's Pokémon (chosen, Active or Benched).
+fn self_discard_energy_then_damage_any_opponent_pokemon(
+    to_discard: Vec<EnergyType>,
+    damage: u32,
+) -> AttackOutcomes {
+    active_damage_effect_doutcome(0, move |_, state, action| {
+        discard_requested_energy_from_active_best_effort(state, action.actor, &to_discard);
+
+        let opponent = (action.actor + 1) % 2;
+        let mut choices = Vec::new();
+        for (in_play_idx, _) in state.enumerate_in_play_pokemon(opponent) {
+            choices.push(SimpleAction::ApplyDamage {
+                attacking_ref: (action.actor, 0),
+                targets: vec![(damage, opponent, in_play_idx)],
+                is_from_active_attack: true,
+            });
+        }
+        if !choices.is_empty() {
+            state.move_generation_stack.push((action.actor, choices));
+        }
+    })
+}
+
+/// All 8 basic Energy types ("[G], [R], [W], [L], [P], [F], [D], or [M]"), used by attacks that
+/// pick one of them at random.
+const BASIC_ENERGY_TYPES: [EnergyType; 8] = [
+    EnergyType::Grass,
+    EnergyType::Fire,
+    EnergyType::Water,
+    EnergyType::Lightning,
+    EnergyType::Psychic,
+    EnergyType::Fighting,
+    EnergyType::Darkness,
+    EnergyType::Metal,
+];
+
+/// Sableye's Jeweled Gift: take a random basic-type Energy from your Energy Zone and attach it
+/// to 1 of your Benched Pokémon (chosen).
+fn attach_random_basic_energy_from_zone_to_bench(damage: u32) -> AttackOutcomes {
+    active_damage_effect_doutcome(damage, move |rng, state, action| {
+        let energy_type = BASIC_ENERGY_TYPES[rng.gen_range(0..BASIC_ENERGY_TYPES.len())];
+        let choices: Vec<SimpleAction> = state
+            .enumerate_bench_pokemon(action.actor)
+            .map(|(in_play_idx, _)| SimpleAction::Attach {
+                attachments: vec![(1, energy_type, in_play_idx)],
+                is_turn_energy: false,
+            })
+            .collect();
+        if !choices.is_empty() {
+            state.move_generation_stack.push((action.actor, choices));
+        }
+    })
+}
+
+/// Uxie's Mind Boost: take an Energy of `energy_type` from your Energy Zone and attach it to
+/// 1 of your in-play Pokémon with one of the listed names (chosen).
+fn attach_energy_from_zone_to_pokemon_named(
+    damage: u32,
+    energy_type: EnergyType,
+    names: Vec<String>,
+) -> AttackOutcomes {
+    active_damage_effect_doutcome(damage, move |_, state, action| {
+        let choices: Vec<SimpleAction> = state
+            .enumerate_in_play_pokemon(action.actor)
+            .filter(|(_, pokemon)| names.contains(&pokemon.get_name()))
+            .map(|(in_play_idx, _)| SimpleAction::Attach {
+                attachments: vec![(1, energy_type, in_play_idx)],
+                is_turn_energy: false,
+            })
+            .collect();
+        if !choices.is_empty() {
+            state.move_generation_stack.push((action.actor, choices));
+        }
+    })
+}
+
+/// Smeargle's Splatter Coating: change the type of a random Energy attached to the opponent's
+/// Active Pokémon to a random basic type.
+fn change_random_opponent_active_energy_type(damage: u32) -> AttackOutcomes {
+    active_damage_effect_doutcome(damage, move |rng, state, action| {
+        let opponent = (action.actor + 1) % 2;
+        let Some(defender) = state.in_play_pokemon[opponent][0].as_mut() else {
+            return;
+        };
+        if defender.attached_energy.is_empty() {
+            return;
+        }
+        let idx = rng.gen_range(0..defender.attached_energy.len());
+        let new_type = BASIC_ENERGY_TYPES[rng.gen_range(0..BASIC_ENERGY_TYPES.len())];
+        defender.attached_energy[idx] = new_type;
+    })
+}
+
+/// Porygon-Z's Buggy Beam: change the type of the next Energy that will be generated for the
+/// opponent to a random basic type.
+fn change_opponent_next_generated_energy_type(damage: u32) -> AttackOutcomes {
+    active_damage_effect_doutcome(damage, move |rng, state, action| {
+        let opponent = (action.actor + 1) % 2;
+        let new_type = BASIC_ENERGY_TYPES[rng.gen_range(0..BASIC_ENERGY_TYPES.len())];
+        state.energy_zone[opponent].next = Some(new_type);
+    })
+}
+
+/// Swanna's Feathery Cyclone (`count: None` = all Energy) / Regice's Reflect Energy
+/// (`count: Some(n)` = `n` randomly chosen Energy): move Energy from the attacker to 1 of your
+/// Benched Pokémon (chosen). The moved set may mix types, so this uses `MoveEnergies`.
+fn move_energies_to_bench(state: &State, attack: &Attack, count: Option<usize>) -> AttackOutcomes {
+    let active = state.get_active(state.current_player);
+    if active.attached_energy.is_empty()
+        || state
+            .enumerate_bench_pokemon(state.current_player)
+            .next()
+            .is_none()
+    {
+        return active_damage_doutcome(attack.fixed_damage);
+    }
+
+    active_damage_effect_doutcome(attack.fixed_damage, move |rng, state, action| {
+        let to_move = match count {
+            None => state.in_play_pokemon[action.actor][0]
+                .as_ref()
+                .map(|p| p.attached_energy.clone())
+                .unwrap_or_default(),
+            Some(count) => pick_random_attached_energy(rng, state, action.actor, 0, count),
+        };
+        if to_move.is_empty() {
+            return;
+        }
+        let choices: Vec<SimpleAction> = state
+            .enumerate_bench_pokemon(action.actor)
+            .map(|(to_idx, _)| SimpleAction::MoveEnergies {
+                from_in_play_idx: 0,
+                to_in_play_idx: to_idx,
+                energies: to_move.clone(),
+            })
+            .collect();
+        if !choices.is_empty() {
+            state.move_generation_stack.push((action.actor, choices));
         }
     })
 }
@@ -2786,15 +3235,21 @@ fn discard_all_energy_of_type_attack(damage: u32, energy_type: EnergyType) -> At
 fn discard_random_global_energy_attack(
     fixed_damage: u32,
     count: usize,
-    _state: &State,
+    own_side_only: bool,
 ) -> AttackOutcomes {
-    active_damage_effect_doutcome(fixed_damage, move |rng, state, _action| {
+    active_damage_effect_doutcome(fixed_damage, move |rng, state, action| {
         for _ in 0..count {
             let mut pokemon_with_energy: Vec<(usize, usize, usize)> = Vec::new();
 
-            // Collect all Pokémon in play (yours and opponent's) that have energy attached
+            // Collect the in-play Pokémon in the pool (the attacker's side only, or both
+            // sides) that have energy attached.
             // Store (player_idx, in_play_idx, energy_count) for weighted selection
-            for player_idx in 0..2 {
+            let players: &[usize] = if own_side_only {
+                &[action.actor]
+            } else {
+                &[0, 1]
+            };
+            for &player_idx in players {
                 for (in_play_idx, pokemon) in state.enumerate_in_play_pokemon(player_idx) {
                     let energy_count = pokemon.attached_energy.len();
                     if energy_count > 0 {
