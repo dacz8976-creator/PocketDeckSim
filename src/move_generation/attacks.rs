@@ -1,6 +1,6 @@
 use crate::{
     actions::{
-        abilities::AbilityMechanic, attacks::Mechanic, get_ability_mechanic,
+        abilities::AbilityMechanic, attacks::Mechanic, get_in_play_ability_mechanic,
         has_in_play_ability_mechanic, SimpleAction, EFFECT_MECHANIC_MAP,
     },
     card_ids::CardId,
@@ -144,6 +144,10 @@ fn alternative_attack_cost(
 ///
 /// Only the Bench counts, so a Regi in the Active Spot does not satisfy the requirement — and the
 /// restriction is self-scoped, so a Benched holder never seals anyone else's attacks.
+///
+/// Seal of Antiquity is a drawback Ability, so switching it off *helps* its holder: read it through
+/// the suppression-aware accessor, and Alolan Muk's Power of Alchemy (or a `NoAbilities` effect)
+/// frees Regigigas — a Basic — to attack with no Regis benched at all.
 fn is_sealed_by_bench_requirement(
     state: &State,
     player: usize,
@@ -151,7 +155,7 @@ fn is_sealed_by_bench_requirement(
 ) -> bool {
     let Some(AbilityMechanic::CannotAttackWithoutBenchedNames {
         required_bench_names,
-    }) = get_ability_mechanic(&active_pokemon.card)
+    }) = get_in_play_ability_mechanic(state, active_pokemon)
     else {
         return false;
     };
