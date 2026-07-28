@@ -12,7 +12,10 @@ mod weighted_random_player;
 pub use attach_attack_player::AttachAttackPlayer;
 pub use end_turn_player::EndTurnPlayer;
 pub use evolution_rusher_player::EvolutionRusherPlayer;
-pub use expectiminimax_player::{ExpectiMiniMaxPlayer, ValueFunction};
+pub use expectiminimax_player::{
+    take_opponent_ply_stats, ExpectiMiniMaxPlayer, ValueFunction, OPPONENT_PLY_BRANCHES,
+    OPPONENT_PLY_NODES,
+};
 pub use human_player::HumanPlayer;
 pub use mcts_player::MctsPlayer;
 pub use random_player::RandomPlayer;
@@ -44,7 +47,20 @@ pub enum PlayerCode {
     W,
     M,
     V,
-    E { max_depth: usize },
+    E {
+        max_depth: usize,
+    },
+    /// §40. ExpectiMiniMax with the hidden-information leak in the value function closed.
+    /// Identical to `E` in every other respect, so `e<N>` vs `p<N>` isolates the leak.
+    P {
+        max_depth: usize,
+    },
+    /// §40. `P`, plus a bounded public-information-only search into the OPPONENT's turn.
+    /// `p<N>` vs `x<N>` isolates the opponent ply.
+    X {
+        max_depth: usize,
+        opponent_ply: usize,
+    },
     ER, // Evolution Rusher
 }
 /// Custom parser function enforcing case-insensitivity
@@ -62,6 +78,46 @@ pub fn parse_player_code(s: &str) -> Result<PlayerCode, String> {
             return Ok(PlayerCode::ER);
         }
         return Err(format!("Invalid player code: {s}. Use 'e<number>' for ExpectiMiniMax with depth, e.g., 'e2', 'e5'"));
+    }
+
+    // §40 tiers. 'p<N>' = leak-free evaluation. 'x<N>' = leak-free evaluation plus an
+    // opponent-turn ply; an optional suffix sets its size, so 'x3' is 'x3o3'.
+    if lower.starts_with('p') && lower.len() > 1 {
+        if let Ok(max_depth) = lower[1..].parse::<usize>() {
+            return Ok(PlayerCode::P { max_depth });
+        }
+        return Err(format!(
+            "Invalid player code: {s}. Use 'p<number>', e.g. 'p3'"
+        ));
+    }
+    if lower.starts_with('x') && lower.len() > 1 {
+        let rest = &lower[1..];
+        let (depth_part, ply_part) = match rest.split_once('o') {
+            Some((d, p)) => (d, Some(p)),
+            None => (rest, None),
+        };
+        if let Ok(max_depth) = depth_part.parse::<usize>() {
+            let opponent_ply = match ply_part {
+                Some(p) => match p.parse::<usize>() {
+                    Ok(v) if v > 0 => v,
+                    _ => {
+                        return Err(format!(
+                            "Invalid player code: {s}. Opponent ply must be a positive integer, e.g. 'x3o4'"
+                        ))
+                    }
+                },
+                // Default 3: enough for draw, attach, attack — the shortest sequence that can
+                // express "they KO me back", which is the whole point of the ply.
+                None => 3,
+            };
+            return Ok(PlayerCode::X {
+                max_depth,
+                opponent_ply,
+            });
+        }
+        return Err(format!(
+            "Invalid player code: {s}. Use 'x<number>' or 'x<number>o<ply>', e.g. 'x3' or 'x3o4'"
+        ));
     }
 
     match lower.as_str() {
@@ -120,6 +176,24 @@ fn get_player(deck: Deck, player: &PlayerCode) -> Box<dyn Player> {
             max_depth: *max_depth,
             write_debug_trees: false,
             value_function: Box::new(value_functions::baseline_value_function),
+            opponent_ply: 0,
+        }),
+        PlayerCode::P { max_depth } => Box::new(ExpectiMiniMaxPlayer {
+            deck,
+            max_depth: *max_depth,
+            write_debug_trees: false,
+            value_function: Box::new(value_functions::public_baseline_value_function),
+            opponent_ply: 0,
+        }),
+        PlayerCode::X {
+            max_depth,
+            opponent_ply,
+        } => Box::new(ExpectiMiniMaxPlayer {
+            deck,
+            max_depth: *max_depth,
+            write_debug_trees: false,
+            value_function: Box::new(value_functions::public_baseline_value_function),
+            opponent_ply: *opponent_ply,
         }),
         PlayerCode::ER => Box::new(EvolutionRusherPlayer { deck }),
     }

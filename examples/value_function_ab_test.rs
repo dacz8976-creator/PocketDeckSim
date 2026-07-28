@@ -104,12 +104,14 @@ fn run_comparison(config: ComparisonConfig) -> Result<Vec<DeckStats>, Box<dyn st
                     deck: deck_a,
                     max_depth: depth,
                     write_debug_trees: false,
+                    opponent_ply: 0,
                     value_function: Box::new(baseline_fn),
                 }),
                 Box::new(ExpectiMiniMaxPlayer {
                     deck: deck_b,
                     max_depth: depth,
                     write_debug_trees: false,
+                    opponent_ply: 0,
                     value_function: Box::new(test_fn),
                 }),
             ]

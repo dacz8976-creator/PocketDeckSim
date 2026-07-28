@@ -135,12 +135,14 @@ fn test_configuration(
                     deck: deck_a,
                     max_depth: depth,
                     write_debug_trees: false,
+                    opponent_ply: 0,
                     value_function: Box::new(baseline_fn),
                 }),
                 Box::new(ExpectiMiniMaxPlayer {
                     deck: deck_b,
                     max_depth: depth,
                     write_debug_trees: false,
+                    opponent_ply: 0,
                     value_function: Box::new(move |state, player| {
                         value_functions::parametric_value_function(state, player, &params_copy)
                     }),

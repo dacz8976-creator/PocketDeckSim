@@ -73,21 +73,54 @@ pub fn baseline_value_function(state: &State, myself: usize) -> f64 {
     parametric_value_function(state, myself, &ValueFunctionParams::baseline())
 }
 
+/// Hidden-information-respecting variant of [`baseline_value_function`]. (§40)
+///
+/// The baseline function computes the OPPONENT's `active_pokemon_online_score` by scanning
+/// the opponent's deck and hand for evolutions of their Active. That is information a real
+/// player cannot see, it is weighted 500.0, and it is measured at a 125-point evaluation
+/// swing on a 116-point baseline with deck size and hand size held constant — see
+/// `tests/value_function_hidden_info_test.rs`.
+///
+/// This version evaluates the opponent's Active as the card actually ON THE BOARD, and is
+/// otherwise identical. The player's own zones are still read in full, because a player may
+/// legitimately see their own deck and hand.
+pub fn public_baseline_value_function(state: &State, myself: usize) -> f64 {
+    parametric_value_function_ex(state, myself, &ValueFunctionParams::baseline(), true)
+}
+
 /// A variant of the baseline value function
 pub fn variant_value_function(state: &State, myself: usize) -> f64 {
     parametric_value_function(state, myself, &ValueFunctionParams::variant())
 }
 
-/// Parametric value function that uses the provided coefficients
+/// Parametric value function that uses the provided coefficients.
+///
+/// Preserved bit-for-bit: it reads the opponent's hidden zones, as it always has. Callers
+/// that want the hidden-information-respecting behaviour use
+/// [`parametric_value_function_ex`] with `public_eval = true`.
 pub fn parametric_value_function(
     state: &State,
     myself: usize,
     params: &ValueFunctionParams,
 ) -> f64 {
+    parametric_value_function_ex(state, myself, params, false)
+}
+
+/// [`parametric_value_function`], plus a switch for whether the OPPONENT's hidden zones
+/// (deck and hand CONTENTS) may be read when scoring how "online" their Active is. (§40)
+///
+/// `public_eval = false` reproduces the historical behaviour exactly. `public_eval = true`
+/// restricts the opponent's evaluation to public information.
+pub fn parametric_value_function_ex(
+    state: &State,
+    myself: usize,
+    params: &ValueFunctionParams,
+    public_eval: bool,
+) -> f64 {
     let opponent = (myself + 1) % 2;
     let (my, opp) = (
-        extract_features(state, myself, 1.0),
-        extract_features(state, opponent, 1.0),
+        extract_features(state, myself, 1.0, false),
+        extract_features(state, opponent, 1.0, public_eval),
     );
     let score = (my.points - opp.points) * params.points
         + (my.pokemon_value - opp.pokemon_value) * params.pokemon_value
@@ -127,8 +160,18 @@ struct Features {
     discard_size: f64,
 }
 
-/// Extract features for a single player
-fn extract_features(state: &State, player: usize, active_factor: f64) -> Features {
+/// Extract features for a single player.
+///
+/// `public_only` restricts the extraction to information an opposing player is entitled to
+/// see. Today that affects exactly one feature — `active_pokemon_online_score` — because it
+/// is the only one that reads deck or hand CONTENTS; `hand_size` and `deck_size` are counts
+/// and are public. (§40)
+fn extract_features(
+    state: &State,
+    player: usize,
+    active_factor: f64,
+    public_only: bool,
+) -> Features {
     let points = state.points[player] as f64;
     let pokemon_value = calculate_pokemon_value(state, player, active_factor);
     let hand_size = state.hands[player].len() as f64;
@@ -136,7 +179,8 @@ fn extract_features(state: &State, player: usize, active_factor: f64) -> Feature
     let active_retreat_cost = get_active_retreat_cost(state, player) as f64;
     let (online_pokemon_count, energy_distance_to_online) =
         calculate_online_metrics(state, player, active_factor);
-    let active_pokemon_online_score = calculate_active_pokemon_online_score(state, player);
+    let active_pokemon_online_score =
+        calculate_active_pokemon_online_score(state, player, public_only);
     let active_safety = calculate_active_safety(state, player);
     let active_has_tool = get_active_has_tool(state, player);
     let is_winner = check_is_winner(state, player);
@@ -331,14 +375,23 @@ fn calculate_active_safety(state: &State, player: usize) -> f64 {
 /// Calculate online score for active pokemon (0.0 to 1.0)
 /// Returns 1.0 if the active pokemon has enough energy to use the highest attack
 /// of its highest evolution available in deck+hand
-fn calculate_active_pokemon_online_score(state: &State, player: usize) -> f64 {
+fn calculate_active_pokemon_online_score(state: &State, player: usize, public_only: bool) -> f64 {
     let Some(active_pokemon) = state.maybe_get_active(player) else {
         return 0.0;
     };
 
-    // Get all cards available in deck + hand
-    let mut available_cards: Vec<Card> = state.decks[player].cards.to_vec();
-    available_cards.extend(state.hands[player].iter().cloned());
+    // Get all cards available in deck + hand.
+    //
+    // §40: these are HIDDEN zones. When scoring an opponent we must not look in them, so
+    // `public_only` leaves the list empty and the scan below falls through to the card that
+    // is actually on the board — which is what an opposing player can see.
+    let available_cards: Vec<Card> = if public_only {
+        Vec::new()
+    } else {
+        let mut cards: Vec<Card> = state.decks[player].cards.to_vec();
+        cards.extend(state.hands[player].iter().cloned());
+        cards
+    };
 
     // Find the highest evolution available
     let highest_evolutions = get_highest_evolutions(&active_pokemon.card, &available_cards);

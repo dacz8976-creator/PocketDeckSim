@@ -2,9 +2,10 @@ use log::{trace, LevelFilter};
 use rand::rngs::StdRng;
 use std::fmt::Debug;
 use std::fmt::Write;
+use std::sync::atomic::{AtomicUsize, Ordering};
 use std::vec;
 
-use crate::actions::{forecast_action, Action};
+use crate::actions::{forecast_action, Action, SimpleAction};
 use crate::{Deck, State};
 
 use super::Player;
@@ -32,6 +33,70 @@ pub struct ExpectiMiniMaxPlayer {
     pub max_depth: usize, // max_depth = 1 it should be value function player
     pub write_debug_trees: bool,
     pub value_function: ValueFunction,
+    /// §40. How many of the OPPONENT's actions to search once the turn passes to them.
+    ///
+    /// `0` reproduces the historical behaviour exactly: the search returns the static value
+    /// function the instant `state.current_player != myself`, so `max_depth` is an N-action
+    /// lookahead over the bot's OWN turn and nothing else. Any card whose payoff lands on the
+    /// opponent's turn — a damage-prevention lock, a forced Active switch, a wall — is priced
+    /// at zero by construction, which is one cause behind three separate failures to measure
+    /// such cards in this lab.
+    ///
+    /// A nonzero value searches that many opponent actions using PUBLIC INFORMATION ONLY (see
+    /// [`is_public_information_action`]). 3 is the useful minimum: draw, attach, attack.
+    pub opponent_ply: usize,
+}
+
+/// §40 instrumentation. Counts how many times the search actually crossed the turn boundary
+/// and searched the opponent's turn, and how many opponent branches it considered there.
+///
+/// This exists because of the §37-R rule: before reading anything into a null result from the
+/// opponent ply, prove the ply FIRED. A silent zero here would make "the opponent ply changes
+/// nothing" a statement about a dead code path rather than about the game.
+pub static OPPONENT_PLY_NODES: AtomicUsize = AtomicUsize::new(0);
+pub static OPPONENT_PLY_BRANCHES: AtomicUsize = AtomicUsize::new(0);
+
+/// Read and reset the §40 opponent-ply counters.
+pub fn take_opponent_ply_stats() -> (usize, usize) {
+    (
+        OPPONENT_PLY_NODES.swap(0, Ordering::Relaxed),
+        OPPONENT_PLY_BRANCHES.swap(0, Ordering::Relaxed),
+    )
+}
+
+/// §40. May the searching player consider this opponent action, given they cannot see the
+/// opponent's hand or deck?
+///
+/// Extending the search into the opponent's turn means generating the opponent's legal
+/// actions — but `generate_possible_actions` builds those from their actual hand, so using it
+/// unfiltered would hand the bot perfect information and make it strictly *more* omniscient
+/// than the leak this section set out to remove. This filter is what keeps the ply honest.
+///
+/// Allowed: attacking with the Active already in play, attaching the turn's Energy (the Energy
+/// Zone is public), retreating, using an Ability of a Pokémon in play, drawing, ending the
+/// turn. All of these are visible across the table.
+///
+/// Rejected: anything sourced from the hand or deck — playing a Trainer, placing a Pokémon,
+/// evolving, attaching a Tool.
+///
+/// Stack actions are always allowed: they are forced continuations of a choice already made,
+/// so filtering them would strand the search mid-resolution.
+fn is_public_information_action(action: &Action) -> bool {
+    if action.is_stack {
+        return true;
+    }
+    matches!(
+        action.action,
+        SimpleAction::Attack(_)
+            | SimpleAction::Retreat(_)
+            | SimpleAction::UseAbility { .. }
+            | SimpleAction::EndTurn
+            | SimpleAction::DrawCard { .. }
+            | SimpleAction::Attach {
+                is_turn_energy: true,
+                ..
+            }
+    )
 }
 
 impl Player for ExpectiMiniMaxPlayer {
@@ -61,6 +126,8 @@ impl Player for ExpectiMiniMaxPlayer {
                 state,
                 action,
                 self.max_depth - 1,
+                self.opponent_ply,
+                false,
                 myself,
                 &self.value_function,
             );
@@ -108,11 +175,14 @@ impl Player for ExpectiMiniMaxPlayer {
     }
 }
 
+#[allow(clippy::too_many_arguments)]
 fn expected_value_function(
     rng: &mut StdRng,
     state: &State,
     action: &Action,
     depth: usize,
+    opp_budget: usize,
+    opp_entered: bool,
     myself: usize,
     value_function: &ValueFunction,
 ) -> (f64, DebugActionNode) {
@@ -135,7 +205,15 @@ fn expected_value_function(
         value: 0.0,
     };
     for (prob, outcome) in probabilities.iter().zip(outcomes.iter()) {
-        let (score, mut state_node) = expectiminimax(rng, outcome, depth, myself, value_function);
+        let (score, mut state_node) = expectiminimax(
+            rng,
+            outcome,
+            depth,
+            opp_budget,
+            opp_entered,
+            myself,
+            value_function,
+        );
         scores.push(score);
         state_node.proba = *prob;
         action_node.children.push(state_node);
@@ -152,22 +230,52 @@ fn expected_value_function(
     (score, action_node)
 }
 
+#[allow(clippy::too_many_arguments)]
 fn expectiminimax(
     rng: &mut StdRng,
     state: &State,
     depth: usize,
+    opp_budget: usize,
+    opp_entered: bool,
     myself: usize,
     value_function: &ValueFunction,
 ) -> (f64, DebugStateNode) {
-    if state.is_game_over() || depth == 0 || state.current_player != myself {
+    let static_eval = || {
         let score = value_function(state, myself);
-        let state_node = DebugStateNode {
-            acting_player: state.current_player,
-            children: vec![],
-            proba: 1.0,
-            value: score,
-        };
-        return (score, state_node);
+        (
+            score,
+            DebugStateNode {
+                acting_player: state.current_player,
+                children: vec![],
+                proba: 1.0,
+                value: score,
+            },
+        )
+    };
+
+    if state.is_game_over() || depth == 0 {
+        return static_eval();
+    }
+
+    // §40 — THE TURN BOUNDARY.
+    //
+    // Historically this was `|| state.current_player != myself` in the guard above: the search
+    // stopped dead the moment the turn passed, so it never saw the opponent's reply. With
+    // `opponent_ply > 0` we instead search a bounded number of the opponent's actions, using
+    // public information only.
+    if state.current_player != myself {
+        if opp_budget == 0 {
+            return static_eval();
+        }
+        return opponent_ply_node(rng, state, depth, opp_budget, myself, value_function);
+    }
+
+    // Control has come back to us after the opponent's turn was searched. Stop here rather
+    // than recursing into another of our own turns: the point is to price the opponent's
+    // reply, not to buy extra depth for ourselves, and continuing would multiply cost by the
+    // full branching factor of a second own-turn search.
+    if opp_entered {
+        return static_eval();
     }
 
     let (actor, actions) = state.generate_possible_actions();
@@ -176,8 +284,16 @@ fn expectiminimax(
         let mut scores: Vec<f64> = Vec::with_capacity(actions.len());
         let mut children = vec![];
         for action in actions.iter() {
-            let (score, action_node) =
-                expected_value_function(rng, state, action, depth - 1, myself, value_function);
+            let (score, action_node) = expected_value_function(
+                rng,
+                state,
+                action,
+                depth - 1,
+                opp_budget,
+                opp_entered,
+                myself,
+                value_function,
+            );
             scores.push(score);
             children.push(action_node);
         }
@@ -190,14 +306,42 @@ fn expectiminimax(
         };
         (best_score, state_node)
     } else {
-        // TODO: If minimizing, we can't just generate_possible_actions since
-        //  not everything is public information. So we would have to have
-        //  our own version of it that only returns the actions that are
-        let mut scores: Vec<f64> = Vec::with_capacity(actions.len());
+        // The opponent has to act during OUR turn (a forced choice we caused).
+        //
+        // The upstream TODO here reads: "If minimizing, we can't just generate_possible_actions
+        // since not everything is public information." §40 supplies that filter — but only for
+        // the new tiers. With `opp_budget == 0` the action list is left exactly as it was, so
+        // `e<N>` stays bit-for-bit identical to every historical run in this lab.
+        let filtered: Vec<Action> = if opp_budget > 0 {
+            let public: Vec<Action> = actions
+                .iter()
+                .filter(|a| is_public_information_action(a))
+                .cloned()
+                .collect();
+            // Never strand the search: if the filter removes everything, fall back to the
+            // unfiltered list rather than returning a meaningless infinity.
+            if public.is_empty() {
+                actions.clone()
+            } else {
+                public
+            }
+        } else {
+            actions.clone()
+        };
+
+        let mut scores: Vec<f64> = Vec::with_capacity(filtered.len());
         let mut children: Vec<DebugActionNode> = Vec::new();
-        for action in actions.iter() {
-            let (score, action_node) =
-                expected_value_function(rng, state, action, depth - 1, myself, value_function);
+        for action in filtered.iter() {
+            let (score, action_node) = expected_value_function(
+                rng,
+                state,
+                action,
+                depth - 1,
+                opp_budget,
+                opp_entered,
+                myself,
+                value_function,
+            );
             scores.push(score);
             children.push(action_node);
         }
@@ -212,9 +356,190 @@ fn expectiminimax(
     }
 }
 
+/// §40 — search one bounded stretch of the OPPONENT's turn, from public information only.
+///
+/// This is the node that did not exist before: previously the search returned the static
+/// value function here, so nothing the opponent could do on their own turn was ever
+/// simulated. The opponent minimizes our value, and every branch is drawn from
+/// [`is_public_information_action`], so the bot gains no knowledge of their hand or deck.
+///
+/// `depth` is deliberately NOT decremented — opponent actions are paid for out of their own
+/// `opp_budget`, so this cannot silently eat the own-turn lookahead that `max_depth` buys.
+fn opponent_ply_node(
+    rng: &mut StdRng,
+    state: &State,
+    depth: usize,
+    opp_budget: usize,
+    myself: usize,
+    value_function: &ValueFunction,
+) -> (f64, DebugStateNode) {
+    OPPONENT_PLY_NODES.fetch_add(1, Ordering::Relaxed);
+    let (actor, actions) = state.generate_possible_actions();
+
+    let public: Vec<Action> = actions
+        .iter()
+        .filter(|a| is_public_information_action(a))
+        .cloned()
+        .collect();
+
+    // Nothing the opponent could publicly do here — score the position as it stands.
+    if public.is_empty() {
+        let score = value_function(state, myself);
+        return (
+            score,
+            DebugStateNode {
+                acting_player: actor,
+                children: vec![],
+                proba: 1.0,
+                value: score,
+            },
+        );
+    }
+
+    OPPONENT_PLY_BRANCHES.fetch_add(public.len(), Ordering::Relaxed);
+    let mut scores: Vec<f64> = Vec::with_capacity(public.len());
+    let mut children: Vec<DebugActionNode> = Vec::new();
+    for action in public.iter() {
+        let (score, action_node) = expected_value_function(
+            rng,
+            state,
+            action,
+            depth,
+            opp_budget - 1,
+            true,
+            myself,
+            value_function,
+        );
+        scores.push(score);
+        children.push(action_node);
+    }
+
+    // The opponent picks the reply that is worst for us.
+    let best_score = scores.iter().cloned().fold(f64::INFINITY, f64::min);
+    (
+        best_score,
+        DebugStateNode {
+            acting_player: actor,
+            children,
+            proba: 0.0, // set by parent
+            value: best_score,
+        },
+    )
+}
+
 impl Debug for ExpectiMiniMaxPlayer {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         write!(f, "ExpectiMiniMaxPlayer")
+    }
+}
+
+#[cfg(test)]
+mod public_information_filter_tests {
+    use super::*;
+    use crate::card_ids::CardId;
+    use crate::database::get_card_by_enum;
+    use crate::models::{Card, EnergyType, TrainerCard};
+
+    fn act(action: SimpleAction) -> Action {
+        Action {
+            actor: 1,
+            action,
+            is_stack: false,
+        }
+    }
+
+    fn a_pokemon() -> Card {
+        get_card_by_enum(CardId::A1003Venusaur)
+    }
+
+    fn a_trainer() -> TrainerCard {
+        match get_card_by_enum(CardId::A1219Erika) {
+            Card::Trainer(t) => t,
+            other => panic!("expected a Trainer card, got {other:?}"),
+        }
+    }
+
+    /// §40's PRIMARY CORRECTNESS GATE. The opponent ply may only branch on things visible
+    /// across the table. If any of these start passing, the search has become omniscient and
+    /// every number produced by `x<N>` is void.
+    #[test]
+    fn test_hand_sourced_actions_are_rejected() {
+        let hidden = [
+            act(SimpleAction::Play {
+                trainer_card: a_trainer(),
+            }),
+            act(SimpleAction::Place(a_pokemon(), 1)),
+            act(SimpleAction::Evolve {
+                evolution: a_pokemon(),
+                in_play_idx: 0,
+                from_deck: false,
+            }),
+            act(SimpleAction::Evolve {
+                evolution: a_pokemon(),
+                in_play_idx: 0,
+                from_deck: true,
+            }),
+            act(SimpleAction::AttachTool {
+                in_play_idx: 0,
+                tool_card: a_pokemon(),
+            }),
+        ];
+        for action in hidden {
+            assert!(
+                !is_public_information_action(&action),
+                "the opponent ply would branch on a HIDDEN-ZONE action: {:?}",
+                action.action
+            );
+        }
+    }
+
+    /// The mirror of the gate: if the filter rejected everything, the ply would collapse to
+    /// the static evaluation it was built to replace and would measure nothing. This is the
+    /// §37-R "prove a known-nonzero case" assertion for the filter.
+    #[test]
+    fn test_public_board_actions_are_allowed() {
+        let public = [
+            act(SimpleAction::EndTurn),
+            act(SimpleAction::Retreat(1)),
+            act(SimpleAction::UseAbility { in_play_idx: 0 }),
+            act(SimpleAction::DrawCard { amount: 1 }),
+            act(SimpleAction::Attach {
+                attachments: vec![(1, EnergyType::Grass, 0)],
+                is_turn_energy: true,
+            }),
+        ];
+        for action in public {
+            assert!(
+                is_public_information_action(&action),
+                "the opponent ply would refuse a PUBLIC action: {:?}",
+                action.action
+            );
+        }
+    }
+
+    /// Energy moved from somewhere other than the Energy Zone is the product of a card that
+    /// was played, so it is not independently observable as a choice.
+    #[test]
+    fn test_non_zone_energy_attachment_is_rejected() {
+        assert!(!is_public_information_action(&act(SimpleAction::Attach {
+            attachments: vec![(1, EnergyType::Grass, 0)],
+            is_turn_energy: false,
+        })));
+    }
+
+    /// Forced continuations of an already-made choice must survive the filter, or the search
+    /// strands itself mid-resolution and returns an infinity.
+    #[test]
+    fn test_stack_actions_always_survive() {
+        let mut stacked = act(SimpleAction::Play {
+            trainer_card: a_trainer(),
+        });
+        assert!(!is_public_information_action(&stacked));
+        stacked.is_stack = true;
+        assert!(
+            is_public_information_action(&stacked),
+            "stack actions are forced continuations and must not be filtered out"
+        );
     }
 }
 
