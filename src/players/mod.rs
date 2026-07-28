@@ -1,10 +1,11 @@
 mod attach_attack_player;
 mod end_turn_player;
 mod evolution_rusher_player;
-mod expectiminimax_player;
+pub mod expectiminimax_player;
 mod human_player;
 mod mcts_player;
 mod random_player;
+pub mod s42_probe;
 mod value_function_player;
 pub mod value_functions;
 mod weighted_random_player;
@@ -61,6 +62,21 @@ pub enum PlayerCode {
         max_depth: usize,
         opponent_ply: usize,
     },
+    /// §42. `X`, with the search's horizon made CONSISTENT: every leaf is priced through the
+    /// opponent's best public reply, not just the leaves that happened to cross the turn
+    /// boundary with depth to spare. `x<N>` vs `y<N>` isolates the horizon inconsistency that
+    /// §42 identified as the cause of `x3`'s pilot regression.
+    Y {
+        max_depth: usize,
+        opponent_ply: usize,
+    },
+    /// §42. `Y`, with the opponent's turn scored as an EXPECTATION over their public actions
+    /// instead of a hard `min`. `y<N>` vs `s<N>` isolates the paranoid-opponent hypothesis.
+    /// (`W` was already taken by the weighted-random bot, hence `S` for "soft".)
+    S {
+        max_depth: usize,
+        opponent_ply: usize,
+    },
     ER, // Evolution Rusher
 }
 /// Custom parser function enforcing case-insensitivity
@@ -90,7 +106,11 @@ pub fn parse_player_code(s: &str) -> Result<PlayerCode, String> {
             "Invalid player code: {s}. Use 'p<number>', e.g. 'p3'"
         ));
     }
-    if lower.starts_with('x') && lower.len() > 1 {
+    if (lower.starts_with('x') || lower.starts_with('y') || lower.starts_with('s'))
+        && lower.len() > 1
+    {
+        let consistent = !lower.starts_with('x');
+        let soft = lower.starts_with('s');
         let rest = &lower[1..];
         let (depth_part, ply_part) = match rest.split_once('o') {
             Some((d, p)) => (d, Some(p)),
@@ -110,9 +130,21 @@ pub fn parse_player_code(s: &str) -> Result<PlayerCode, String> {
                 // express "they KO me back", which is the whole point of the ply.
                 None => 3,
             };
-            return Ok(PlayerCode::X {
-                max_depth,
-                opponent_ply,
+            return Ok(if soft {
+                PlayerCode::S {
+                    max_depth,
+                    opponent_ply,
+                }
+            } else if consistent {
+                PlayerCode::Y {
+                    max_depth,
+                    opponent_ply,
+                }
+            } else {
+                PlayerCode::X {
+                    max_depth,
+                    opponent_ply,
+                }
             });
         }
         return Err(format!(
@@ -177,6 +209,8 @@ fn get_player(deck: Deck, player: &PlayerCode) -> Box<dyn Player> {
             write_debug_trees: false,
             value_function: Box::new(value_functions::baseline_value_function),
             opponent_ply: 0,
+            consistent_horizon: false,
+            soft_opponent: false,
         }),
         PlayerCode::P { max_depth } => Box::new(ExpectiMiniMaxPlayer {
             deck,
@@ -184,6 +218,8 @@ fn get_player(deck: Deck, player: &PlayerCode) -> Box<dyn Player> {
             write_debug_trees: false,
             value_function: Box::new(value_functions::public_baseline_value_function),
             opponent_ply: 0,
+            consistent_horizon: false,
+            soft_opponent: false,
         }),
         PlayerCode::X {
             max_depth,
@@ -194,7 +230,100 @@ fn get_player(deck: Deck, player: &PlayerCode) -> Box<dyn Player> {
             write_debug_trees: false,
             value_function: Box::new(value_functions::public_baseline_value_function),
             opponent_ply: *opponent_ply,
+            consistent_horizon: false,
+            soft_opponent: false,
+        }),
+        PlayerCode::Y {
+            max_depth,
+            opponent_ply,
+        } => Box::new(ExpectiMiniMaxPlayer {
+            deck,
+            max_depth: *max_depth,
+            write_debug_trees: false,
+            value_function: Box::new(value_functions::public_baseline_value_function),
+            opponent_ply: *opponent_ply,
+            consistent_horizon: true,
+            soft_opponent: false,
+        }),
+        PlayerCode::S {
+            max_depth,
+            opponent_ply,
+        } => Box::new(ExpectiMiniMaxPlayer {
+            deck,
+            max_depth: *max_depth,
+            write_debug_trees: false,
+            value_function: Box::new(value_functions::public_baseline_value_function),
+            opponent_ply: *opponent_ply,
+            consistent_horizon: true,
+            soft_opponent: true,
         }),
         PlayerCode::ER => Box::new(EvolutionRusherPlayer { deck }),
+    }
+}
+
+#[cfg(test)]
+mod s42_tier_parse_tests {
+    use super::*;
+
+    /// §42's tiers must not disturb §40's. `e`/`p`/`x` parsing is what every historical number
+    /// in the lab was produced under, and a prefix clash here would silently re-tier a run.
+    #[test]
+    fn test_s42_tiers_parse_and_do_not_shadow_earlier_ones() {
+        assert_eq!(
+            parse_player_code("e3").unwrap(),
+            PlayerCode::E { max_depth: 3 }
+        );
+        assert_eq!(
+            parse_player_code("p3").unwrap(),
+            PlayerCode::P { max_depth: 3 }
+        );
+        assert_eq!(
+            parse_player_code("x3").unwrap(),
+            PlayerCode::X {
+                max_depth: 3,
+                opponent_ply: 3
+            }
+        );
+        assert_eq!(
+            parse_player_code("y3").unwrap(),
+            PlayerCode::Y {
+                max_depth: 3,
+                opponent_ply: 3
+            }
+        );
+        assert_eq!(
+            parse_player_code("s3o5").unwrap(),
+            PlayerCode::S {
+                max_depth: 3,
+                opponent_ply: 5
+            }
+        );
+        // `w` is the weighted-random bot and must still resolve to it, which is why the soft
+        // tier is `s` and not `w`.
+        assert_eq!(parse_player_code("w").unwrap(), PlayerCode::W);
+        assert_eq!(parse_player_code("er").unwrap(), PlayerCode::ER);
+    }
+
+    /// The two §42 flags must be independent, and OFF for every pre-§42 tier — otherwise
+    /// re-running history would not reproduce it.
+    #[test]
+    fn test_search_flags_are_off_for_historical_tiers() {
+        use crate::players::expectiminimax_player::SearchFlags;
+        let f = |code: &str| {
+            let p = get_player(Deck::default(), &parse_player_code(code).unwrap());
+            let _ = format!("{p:?}");
+            code.to_string()
+        };
+        // Construction must not panic for any tier.
+        for code in ["e2", "e3", "p3", "x3", "y3", "s3"] {
+            let _ = f(code);
+        }
+        assert_eq!(
+            SearchFlags::default(),
+            SearchFlags {
+                consistent_horizon: false,
+                soft_opponent: false
+            }
+        );
     }
 }

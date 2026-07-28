@@ -28,6 +28,25 @@ struct DebugActionNode {
     value: f64,
 }
 
+/// §42. Which experimental modifications to the search are active. Bundled into one `Copy`
+/// struct so a new variant costs a field rather than another parameter on five signatures.
+#[derive(Debug, Clone, Copy, Default, PartialEq, Eq)]
+pub struct SearchFlags {
+    /// See [`ExpectiMiniMaxPlayer::consistent_horizon`].
+    pub consistent_horizon: bool,
+    /// §42. Score the opponent's turn as an EXPECTATION over their public actions instead of
+    /// a hard `min`.
+    ///
+    /// The `min` is textbook minimax, but it is being taken over a deliberately truncated
+    /// action set: [`is_public_information_action`] admits attacking, retreating, using an
+    /// Ability, drawing and attaching the turn's Energy, and rejects everything sourced from
+    /// the hand. What survives the filter is dominated by "they attack me", so the `min` is
+    /// not "the opponent's best reply" but "the opponent's most damaging reply, assumed
+    /// always". A bot that charges every one of its own lines with the opponent's best attack
+    /// will not race — it will retreat, which is what §42 measured `x3` doing.
+    pub soft_opponent: bool,
+}
+
 pub struct ExpectiMiniMaxPlayer {
     pub deck: Deck,
     pub max_depth: usize, // max_depth = 1 it should be value function player
@@ -45,6 +64,43 @@ pub struct ExpectiMiniMaxPlayer {
     /// A nonzero value searches that many opponent actions using PUBLIC INFORMATION ONLY (see
     /// [`is_public_information_action`]). 3 is the useful minimum: draw, attach, attack.
     pub opponent_ply: usize,
+
+    /// §42. Price EVERY leaf through the same opponent reply, instead of only the leaves that
+    /// happen to cross the turn boundary with search depth to spare.
+    ///
+    /// `x<N>` (this flag `false`) has an INCONSISTENT HORIZON. `expectiminimax` checks
+    /// `depth == 0` BEFORE it checks the turn boundary, and a line that never ends our turn
+    /// bottoms out on our own turn. So:
+    ///
+    /// * a line that ends our turn EARLY is charged the opponent's best public reply (a hard
+    ///   `min`), while
+    /// * a line that ends the turn on its last unit of depth, or never ends it at all, is
+    ///   scored by the static value function with **no reply priced whatsoever**.
+    ///
+    /// The own-turn node then takes a `max` over those two kinds of number. Attacking ends the
+    /// turn in Pocket, so the aggressive branch is the one that gets punished and the
+    /// turn-preserving branch is the one that gets off free. §42 measured the consequence:
+    /// among root decisions offering both kinds, `x3` picked the unpriced action about **four
+    /// times** as often as its share of the candidate list, and its retreat rate roughly
+    /// doubled against `p3`. That is not a deeper search — it is a search that subtracts a
+    /// punishment term from aggression and exempts passivity.
+    ///
+    /// With this flag set the boundary is checked first, and a leaf that runs out of depth on
+    /// our own turn passes the turn and is priced too. Every leaf is then "value after the
+    /// opponent's best public reply", which is a consistent quantity to take a `max` over.
+    pub consistent_horizon: bool,
+
+    /// §42. See [`SearchFlags::soft_opponent`].
+    pub soft_opponent: bool,
+}
+
+impl ExpectiMiniMaxPlayer {
+    fn flags(&self) -> SearchFlags {
+        SearchFlags {
+            consistent_horizon: self.consistent_horizon,
+            soft_opponent: self.soft_opponent,
+        }
+    }
 }
 
 /// §40 instrumentation. Counts how many times the search actually crossed the turn boundary
@@ -120,7 +176,11 @@ impl Player for ExpectiMiniMaxPlayer {
         let original_level = log::max_level();
         log::set_max_level(LevelFilter::Info); // Temporarily silence debug and trace logs
         let mut scores: Vec<f64> = Vec::with_capacity(possible_actions.len());
+        // §42. Per candidate: did evaluating it push the search across the turn boundary, so
+        // that the opponent's reply was actually priced? See `s42_probe`.
+        let mut priced: Vec<bool> = Vec::with_capacity(possible_actions.len());
         for action in possible_actions.iter() {
+            let before = OPPONENT_PLY_NODES.load(Ordering::Relaxed);
             let (score, action_node) = expected_value_function(
                 rng,
                 state,
@@ -128,9 +188,11 @@ impl Player for ExpectiMiniMaxPlayer {
                 self.max_depth - 1,
                 self.opponent_ply,
                 false,
+                self.flags(),
                 myself,
                 &self.value_function,
             );
+            priced.push(OPPONENT_PLY_NODES.load(Ordering::Relaxed) > before);
             scores.push(score);
             root.children.push(action_node);
         }
@@ -145,6 +207,12 @@ impl Player for ExpectiMiniMaxPlayer {
             .map(|(idx, score)| (idx, *score))
             .unwrap();
         root.value = best_score;
+        super::s42_probe::record_decision(
+            myself,
+            &possible_actions[best_idx].action,
+            &priced,
+            best_idx,
+        );
 
         // Output Tree in Dot format for visualization if enabled
         if self.write_debug_trees {
@@ -183,6 +251,7 @@ fn expected_value_function(
     depth: usize,
     opp_budget: usize,
     opp_entered: bool,
+    flags: SearchFlags,
     myself: usize,
     value_function: &ValueFunction,
 ) -> (f64, DebugActionNode) {
@@ -211,6 +280,7 @@ fn expected_value_function(
             depth,
             opp_budget,
             opp_entered,
+            flags,
             myself,
             value_function,
         );
@@ -237,6 +307,7 @@ fn expectiminimax(
     depth: usize,
     opp_budget: usize,
     opp_entered: bool,
+    flags: SearchFlags,
     myself: usize,
     value_function: &ValueFunction,
 ) -> (f64, DebugStateNode) {
@@ -253,7 +324,99 @@ fn expectiminimax(
         )
     };
 
-    if state.is_game_over() || depth == 0 {
+    if state.is_game_over() {
+        super::s42_probe::LEAF_AFTER_OPP_PLY.fetch_add(usize::from(opp_entered), Ordering::Relaxed);
+        return static_eval();
+    }
+
+    if depth == 0 {
+        // §42 leaf accounting. `opp_entered` marks a leaf whose opponent reply WAS searched;
+        // anything else that bottoms out here is a leaf where the reply was never priced.
+        // If aggressive lines land in the first bucket and passive lines in the second, the
+        // search is not comparing like with like.
+        if opp_entered {
+            super::s42_probe::LEAF_AFTER_OPP_PLY.fetch_add(1, Ordering::Relaxed);
+            return static_eval();
+        }
+        if state.current_player != myself {
+            // Our turn ENDED here, and the opponent budget may still be unspent — but under
+            // `x<N>` the depth check fires first, so the reply goes unpriced anyway. This is
+            // the inconsistency, counted separately because it is the one that discriminates
+            // by WHEN a line ends the turn rather than by whether it ends it at all.
+            if opp_budget > 0 {
+                super::s42_probe::LEAF_TURN_PASSED_DEPTH0.fetch_add(1, Ordering::Relaxed);
+                if flags.consistent_horizon {
+                    return opponent_ply_node(
+                        rng,
+                        state,
+                        depth,
+                        opp_budget,
+                        flags,
+                        myself,
+                        value_function,
+                    );
+                }
+            } else {
+                super::s42_probe::LEAF_BOUNDARY_UNPRICED.fetch_add(1, Ordering::Relaxed);
+            }
+            return static_eval();
+        }
+        super::s42_probe::LEAF_OWN_TURN.fetch_add(1, Ordering::Relaxed);
+        // §42 — THE CONSISTENCY FIX. We ran out of depth while still on our own turn, so this
+        // leaf would be scored with no opponent reply at all while its aggressive siblings
+        // were charged the opponent's best punish. Pass the turn and price it the same way.
+        // If the turn cannot be passed here (a forced choice is pending, or the opponent is
+        // the one to act) fall through to the static evaluation rather than inventing a line.
+        if flags.consistent_horizon && opp_budget > 0 {
+            let (actor, actions) = state.generate_possible_actions();
+            if actor == myself {
+                if let Some(end) = actions
+                    .iter()
+                    .find(|a| !a.is_stack && matches!(a.action, SimpleAction::EndTurn))
+                {
+                    // Applied INLINE rather than by recursing back through
+                    // `expected_value_function`: re-entering this same `depth == 0` branch
+                    // could look for EndTurn again on any state where passing does not in
+                    // fact hand over the turn, and loop. One pass, then price or fall back.
+                    let (probabilities, mutations) = forecast_action(state, end).into_branches();
+                    let mut outcomes: Vec<State> = vec![];
+                    for mutation in mutations {
+                        let mut state_copy = state.clone();
+                        mutation(rng, &mut state_copy, end);
+                        outcomes.push(state_copy);
+                    }
+                    let mut score = 0.0;
+                    for (prob, outcome) in probabilities.iter().zip(outcomes.iter()) {
+                        let v = if !outcome.is_game_over() && outcome.current_player != myself {
+                            opponent_ply_node(
+                                rng,
+                                outcome,
+                                depth,
+                                opp_budget,
+                                flags,
+                                myself,
+                                value_function,
+                            )
+                            .0
+                        } else {
+                            // Either the game ended or ending the turn did not actually pass
+                            // it. Nothing to price; score the position as it stands.
+                            value_function(outcome, myself)
+                        };
+                        score += prob * v;
+                    }
+                    return (
+                        score,
+                        DebugStateNode {
+                            acting_player: state.current_player,
+                            children: vec![],
+                            proba: 1.0,
+                            value: score,
+                        },
+                    );
+                }
+            }
+        }
         return static_eval();
     }
 
@@ -265,9 +428,10 @@ fn expectiminimax(
     // public information only.
     if state.current_player != myself {
         if opp_budget == 0 {
+            super::s42_probe::LEAF_BOUNDARY_UNPRICED.fetch_add(1, Ordering::Relaxed);
             return static_eval();
         }
-        return opponent_ply_node(rng, state, depth, opp_budget, myself, value_function);
+        return opponent_ply_node(rng, state, depth, opp_budget, flags, myself, value_function);
     }
 
     // Control has come back to us after the opponent's turn was searched. Stop here rather
@@ -275,6 +439,7 @@ fn expectiminimax(
     // reply, not to buy extra depth for ourselves, and continuing would multiply cost by the
     // full branching factor of a second own-turn search.
     if opp_entered {
+        super::s42_probe::LEAF_AFTER_OPP_PLY.fetch_add(1, Ordering::Relaxed);
         return static_eval();
     }
 
@@ -291,6 +456,7 @@ fn expectiminimax(
                 depth - 1,
                 opp_budget,
                 opp_entered,
+                flags,
                 myself,
                 value_function,
             );
@@ -339,6 +505,7 @@ fn expectiminimax(
                 depth - 1,
                 opp_budget,
                 opp_entered,
+                flags,
                 myself,
                 value_function,
             );
@@ -370,6 +537,7 @@ fn opponent_ply_node(
     state: &State,
     depth: usize,
     opp_budget: usize,
+    flags: SearchFlags,
     myself: usize,
     value_function: &ValueFunction,
 ) -> (f64, DebugStateNode) {
@@ -407,6 +575,7 @@ fn opponent_ply_node(
             depth,
             opp_budget - 1,
             true,
+            flags,
             myself,
             value_function,
         );
@@ -414,8 +583,15 @@ fn opponent_ply_node(
         children.push(action_node);
     }
 
-    // The opponent picks the reply that is worst for us.
-    let best_score = scores.iter().cloned().fold(f64::INFINITY, f64::min);
+    // The opponent picks the reply that is worst for us — or, under `soft_opponent`, we
+    // average over their public options instead. See [`SearchFlags::soft_opponent`]: the `min`
+    // is taken over a filtered action list that is dominated by attacks, so it does not mean
+    // "their best reply", it means "their hardest hit, every time".
+    let best_score = if flags.soft_opponent {
+        scores.iter().sum::<f64>() / scores.len() as f64
+    } else {
+        scores.iter().cloned().fold(f64::INFINITY, f64::min)
+    };
     (
         best_score,
         DebugStateNode {
