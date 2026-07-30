@@ -179,6 +179,12 @@ pub enum TurnEffect {
         amount: u32,
     },
     ForceFirstHeads,
+    /// A random-spread attack with this name chooses a Pokémon `amount` more times
+    /// (e.g. Drayden boosting Draco Meteor).
+    ExtraRandomSpreadHits {
+        amount: usize,
+        attack_name: String,
+    },
     BonusPointForHaxorusActiveKO,
     /// "During your opponent's next turn, if your <names> would be Knocked Out by damage from an
     /// attack, it is not Knocked Out and its remaining HP becomes `remaining_hp`" (Hala).

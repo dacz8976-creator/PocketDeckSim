@@ -75,6 +75,7 @@ pub fn forecast_action(state: &State, action: &Action) -> Outcomes {
         | SimpleAction::BenchOpponentFromDiscard { .. }
         | SimpleAction::PutCardFromDiscardToHand { .. }
         | SimpleAction::DiscardRandomOpponentActiveEnergy
+        | SimpleAction::MoveRandomOpponentEnergyToActive { .. }
         | SimpleAction::ApplyStatusToOpponentActive { .. }
         | SimpleAction::DiscardOwnBenchedThenDamage { .. }
         | SimpleAction::Noop => forecast_deterministic_action(),
@@ -447,6 +448,12 @@ fn apply_deterministic_action(state: &mut State, action: &Action) {
                 state.discard_from_active(opponent, &[energy]);
             }
         }
+        SimpleAction::MoveRandomOpponentEnergyToActive { from_in_play_idx } => {
+            let opponent = (action.actor + 1) % 2;
+            // NOTE: Using the last energy instead of a random one to avoid expanding the game
+            // tree, mirroring DiscardRandomOpponentActiveEnergy and Piers.
+            apply_move_last_energy(state, opponent, *from_in_play_idx, 0);
+        }
         SimpleAction::ApplyStatusToOpponentActive { condition } => {
             // Only ever queued by an attack (Dustox's Select Powder), so it goes through the
             // attack-effect gate that Regice's Crystal Body sits behind.
@@ -499,6 +506,17 @@ fn apply_attach_tool(state: &mut State, actor: usize, in_play_idx: usize, tool_c
             .as_mut()
             .expect("Pokemon should be there if attaching tool to it")
             .cure_status_conditions();
+    }
+}
+
+/// Moves 1 Energy from `from_idx` to `to_idx` within `player`'s own board, without the caller
+/// having to know which Energy types are attached.
+fn apply_move_last_energy(state: &mut State, player: usize, from_idx: usize, to_idx: usize) {
+    let energy = state.in_play_pokemon[player][from_idx]
+        .as_ref()
+        .and_then(|pokemon| pokemon.attached_energy.last().copied());
+    if let Some(energy) = energy {
+        apply_move_energy(state, player, from_idx, to_idx, energy, 1);
     }
 }
 
@@ -968,7 +986,7 @@ pub(crate) fn apply_evolve(
     }
 
     // Run special logic hooks on evolution
-    on_evolve(acting_player, state, to_card, !from_deck)
+    on_evolve(acting_player, state, to_card, position, !from_deck)
 }
 
 fn forecast_pokemon_communication(

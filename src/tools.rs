@@ -84,6 +84,8 @@ static BEASTITE_EFFECT: LazyLock<String> =
     LazyLock::new(|| tool_effect_text_from_card_id(CardId::A3a066Beastite));
 static DARK_PENDANT_EFFECT: LazyLock<String> =
     LazyLock::new(|| tool_effect_text_from_card_id(CardId::A4154DarkPendant));
+static DECEPTIVE_NEEDLE_EFFECT: LazyLock<String> =
+    LazyLock::new(|| tool_effect_text_from_card_id(CardId::B4148DeceptiveNeedle));
 
 pub fn tool_effects_equal(trainer_card: &TrainerCard, reference_tool_id: CardId) -> bool {
     ensure_tool_trainer(trainer_card);
@@ -144,5 +146,6 @@ pub fn is_tool_effect_implemented(trainer_card: &TrainerCard) -> bool {
             || e == RESCUE_SCARF_EFFECT.as_str()
             || e == BEASTITE_EFFECT.as_str()
             || e == DARK_PENDANT_EFFECT.as_str()
+            || e == DECEPTIVE_NEEDLE_EFFECT.as_str()
     )
 }

@@ -10,6 +10,8 @@ mod cynthia_test;
 mod damage_reduction_trainers_test;
 #[path = "trainers/disruption_items_test.rs"]
 mod disruption_items_test;
+#[path = "trainers/drayden_test.rs"]
+mod drayden_test;
 #[path = "trainers/elesa_test.rs"]
 mod elesa_test;
 #[path = "trainers/field_blower_test.rs"]
@@ -40,17 +42,25 @@ mod penny_test;
 mod piers_trainer_test;
 #[path = "trainers/pokemon_center_lady_test.rs"]
 mod pokemon_center_lady_test;
+#[path = "trainers/order_pad_test.rs"]
+mod order_pad_test;
 #[path = "trainers/professor_sada_test.rs"]
 mod professor_sada_test;
 #[path = "trainers/professor_turo_test.rs"]
 mod professor_turo_test;
+#[path = "trainers/psychic_test.rs"]
+mod psychic_test;
 #[path = "trainers/puppy_loving_girl_test.rs"]
 mod puppy_loving_girl_test;
 #[path = "trainers/sophocles_test.rs"]
 mod sophocles_test;
+#[path = "trainers/skyla_test.rs"]
+mod skyla_test;
 #[path = "trainers/volkner_test.rs"]
 mod volkner_test;
 #[path = "trainers/wallace_test.rs"]
 mod wallace_test;
 #[path = "trainers/whitney_mallow_test.rs"]
 mod whitney_mallow_test;
+#[path = "trainers/wally_test.rs"]
+mod wally_test;

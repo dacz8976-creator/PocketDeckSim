@@ -325,6 +325,11 @@ pub static EFFECT_ABILITY_MECHANIC_MAP: LazyLock<HashMap<&'static str, AbilityMe
             AbilityMechanic::OpponentShuffleHandAndDrawOnEvolve,
         );
         map.insert(
+            "Once during your turn, when you play this Pokémon from your hand to evolve 1 of your Pokémon, you may flip a coin. If heads, your opponent's Active Pokémon is now Paralyzed.",
+            AbilityMechanic::CoinFlipParalyzeOpponentActiveOnEvolve,
+        );
+        // map.insert("Once during your turn, when you play this Pokémon from your hand to evolve 1 of your Pokémon, you may have your opponent shuffle their hand into their deck. For each remaining point that your opponent needs to win, they draw a card.", todo_implementation);
+        map.insert(
             "Once during your turn, when you play this Pokémon from your hand to evolve 1 of your Pokémon, you may heal 60 damage from 1 of your [W] Pokémon.",
             AbilityMechanic::HealTypedPokemonOnEvolve {
                 energy_type: EnergyType::Water,
@@ -517,6 +522,17 @@ pub static EFFECT_ABILITY_MECHANIC_MAP: LazyLock<HashMap<&'static str, AbilityMe
             "Pokémon (both yours and your opponent's) can't be healed.",
             AbilityMechanic::PreventAllHealing,
         );
+        map.insert(
+            "Once during your turn, you may use this Ability. 1 Special Condition from among Burned, Confused, and Poisoned is chosen at random, and your opponent's Active Pokémon is now affected by that Special Condition. Any Special Conditions already affecting that Pokémon will not be chosen.",
+            AbilityMechanic::RandomStatusConditionToOpponentActive {
+                options: vec![
+                    StatusCondition::Burned,
+                    StatusCondition::Confused,
+                    StatusCondition::Poisoned,
+                ],
+            },
+        );
+        // map.insert("Pokémon (both yours and your opponent's) can't be healed.", todo_implementation);
         map.insert(
             "Prevent all damage done to this Pokémon by attacks from your opponent's Pokémon ex.",
             AbilityMechanic::PreventAllDamageFromEx,
