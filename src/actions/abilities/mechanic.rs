@@ -639,6 +639,46 @@ pub enum AbilityMechanic {
     /// `State::apply_attack_status_condition`) at every point where an attack would touch the
     /// defending Pokémon.
     PreventAttackEffects,
+
+    // ---------------------------------------------------------------------------------------
+    // §47 — B4 completion, wave 3.
+    // ---------------------------------------------------------------------------------------
+    /// Beldum (B4 106): "If you have another <same name> in play, this Pokémon's Retreat Cost is
+    /// `amount` less." Passive and self-scoped, resolved in `hooks::retreat::get_retreat_cost`.
+    /// The name is taken from the holder, so the same variant covers any card with this wording.
+    ReduceOwnRetreatCostIfAnotherSameNameInPlay {
+        amount: u8,
+    },
+    /// Poltchageist (B4 017): "when you put this Pokémon from your hand onto your Bench, you may
+    /// heal `amount` damage from your Active [`energy_type`] Pokémon." The bench-entry counterpart
+    /// of [`AbilityMechanic::HealTypedPokemonOnEvolve`], scoped to the Active Spot only.
+    HealActiveTypedOnBenchFromHand {
+        energy_type: EnergyType,
+        amount: u32,
+    },
+    /// Dragonair (B4 117 / 175 / 233): "if this Pokémon is on your Bench, you may attach an Energy
+    /// from your discard pile to your Active [`energy_type`] Pokémon."
+    ///
+    /// "An Energy" is the player's choice, so move generation offers one option per DISTINCT
+    /// Energy type sitting in the discard pile — bounded by the number of Energy types, unlike an
+    /// "as often as you like" ability (see §43-D).
+    AttachEnergyFromDiscardToActiveTypedFromBench {
+        energy_type: EnergyType,
+    },
+    /// Samurott (B4 044 / 163): "when you play this Pokémon from your hand to evolve 1 of your
+    /// Pokémon, you may prevent all damage from—and effects of—attacks from your opponent's
+    /// Pokémon done to this Pokémon until the end of your opponent's next turn."
+    PreventAllDamageAndEffectsOnEvolve {
+        duration: u8,
+    },
+    /// Raticate (B4 130 / 178 / 221): "when you play this Pokémon from your hand to evolve 1 of
+    /// your Pokémon, you may look at the top `count` cards of your deck and put all
+    /// `trainer_type` cards you find there into your hand. Shuffle the other cards back."
+    LookAtTopCardsPutTrainerTypeToHandOnEvolve {
+        count: usize,
+        trainer_type: TrainerType,
+    },
+
     /// Celebi's Time Recall: "Each of your evolved Pokémon can use any attack from its previous
     /// Evolutions. (You still need the necessary Energy to use each attack.)"
     /// Passive: while a Pokémon with this ability is in play, attack generation also offers the

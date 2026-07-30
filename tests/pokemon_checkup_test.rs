@@ -58,6 +58,7 @@ fn run_active_case(
                     target_player: 0,
                     target_in_play_idx: 0,
                     amount: 100,
+                    knock_out: false,
                 },
                 is_stack: false,
             });
@@ -107,6 +108,7 @@ fn run_meowscarada_bench_case(seed: u64) -> Result<deckgym::State, String> {
             target_player: 0,
             target_in_play_idx: 1,
             amount: 100,
+            knock_out: false,
         },
         is_stack: false,
     });

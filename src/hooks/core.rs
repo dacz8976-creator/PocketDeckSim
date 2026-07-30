@@ -221,6 +221,16 @@ pub(crate) fn on_evolve(
         Some(AbilityMechanic::CoinFlipParalyzeOpponentActiveOnEvolve) => {
             offer_on_evolve_ability(actor, state, in_play_idx);
         }
+        // §47 — Samurott's shield is always worth offering; Raticate's peek is only worth
+        // offering when there is a deck left to look at.
+        Some(AbilityMechanic::PreventAllDamageAndEffectsOnEvolve { .. }) => {
+            offer_on_evolve_ability(actor, state, in_play_idx);
+        }
+        Some(AbilityMechanic::LookAtTopCardsPutTrainerTypeToHandOnEvolve { .. }) => {
+            if !state.decks[actor].cards.is_empty() {
+                offer_on_evolve_ability(actor, state, in_play_idx);
+            }
+        }
         Some(AbilityMechanic::DiscardRandomEnergyFromOpponentActiveOnEvolve) => {
             let opponent = (actor + 1) % 2;
             let has_energy = state
@@ -325,6 +335,27 @@ pub(crate) fn on_bench_from_hand(actor: usize, state: &mut State, card: &Card, b
                 ],
             ));
         }
+        // §47 — Poltchageist (B4 017): offer the heal only when there is a matching Active with
+        // damage on it, so the bot is never asked to price a no-op.
+        Some(AbilityMechanic::HealActiveTypedOnBenchFromHand { energy_type, .. }) => {
+            let energy_type = *energy_type;
+            let worth_offering = state
+                .maybe_get_active(actor)
+                .is_some_and(|active| active.is_damaged() && state.pokemon_is_type(active, energy_type));
+            if !worth_offering || state.is_healing_blocked() {
+                return;
+            }
+            debug!("Poltchageist-style bench heal: offering");
+            state.move_generation_stack.push((
+                actor,
+                vec![
+                    SimpleAction::UseAbility {
+                        in_play_idx: bench_idx,
+                    },
+                    SimpleAction::Noop,
+                ],
+            ));
+        }
         _ => {}
     }
 }
@@ -396,7 +427,7 @@ pub(crate) fn on_end_turn(player_ending_turn: usize, state: &mut State) {
 
     // Process delayed spot damage effects from turn effects (e.g. Meowscarada ex's Flower Trick).
     // These target a board position, so they hit whichever Pokémon occupies the spot at trigger time.
-    let triggered_spot_damages: Vec<(usize, usize, usize, u32)> = state
+    let triggered_spot_damages: Vec<(usize, usize, usize, u32, bool)> = state
         .get_current_turn_effects()
         .into_iter()
         .filter_map(|effect| match effect {
@@ -405,21 +436,40 @@ pub(crate) fn on_end_turn(player_ending_turn: usize, state: &mut State) {
                 target_player,
                 target_in_play_idx,
                 amount,
-            } if target_player == player_ending_turn => {
-                Some((source_player, target_player, target_in_play_idx, amount))
-            }
+                knock_out,
+            } if target_player == player_ending_turn => Some((
+                source_player,
+                target_player,
+                target_in_play_idx,
+                amount,
+                knock_out,
+            )),
             _ => None,
         })
         .collect();
 
-    for (source_player, target_player, target_in_play_idx, amount) in triggered_spot_damages {
-        if state.in_play_pokemon[target_player][target_in_play_idx].is_none() {
+    for (source_player, target_player, target_in_play_idx, amount, knock_out) in
+        triggered_spot_damages
+    {
+        // The effect targets a SPOT, so a Pokémon that moved out of it is not hit and an empty
+        // spot resolves to nothing.
+        let Some(occupant) = state.in_play_pokemon[target_player][target_in_play_idx].as_ref()
+        else {
             continue;
-        }
+        };
+
+        // Armaldo's Abyssal Drop knocks the occupant out rather than dealing a printed number, so
+        // the damage is its remaining HP at trigger time — a bigger Pokémon standing in the spot
+        // does not survive it.
+        let amount = if knock_out {
+            occupant.get_remaining_hp()
+        } else {
+            amount
+        };
 
         debug!(
-            "Delayed spot damage: Applying {} damage to player {} slot {}",
-            amount, target_player, target_in_play_idx
+            "Delayed spot damage: Applying {} damage to player {} slot {} (ko={})",
+            amount, target_player, target_in_play_idx, knock_out
         );
         crate::actions::handle_damage(
             state,
@@ -814,7 +864,7 @@ fn get_conditional_self_damage_reduction(
 
 /// True if `player` has at least two Pokémon named `pokemon_name` in play — i.e. any one of them
 /// has "another <name> in play" (Falinks' Coordinated Unit).
-fn has_another_pokemon_named_in_play(state: &State, player: usize, pokemon_name: &str) -> bool {
+pub(crate) fn has_another_pokemon_named_in_play(state: &State, player: usize, pokemon_name: &str) -> bool {
     state
         .enumerate_in_play_pokemon(player)
         .filter(|(_, pokemon)| pokemon.get_name() == pokemon_name)

@@ -219,11 +219,18 @@ impl State {
     ///
     /// Deliberately *not* called from Ability, Trainer or Stadium code: Crystal Body names attacks
     /// only. Damage is not an effect and is applied through the normal damage path regardless.
+    /// Whether attack EFFECTS (Special Conditions, forced switches, energy discards, …) are
+    /// prevented on this Pokémon. Damage is unaffected — only the rider is.
+    ///
+    /// Two printings grant this: Crystal Body, an Ability
+    /// (`AbilityMechanic::PreventAttackEffects`), and Clear Veil (B4 149), a Pokémon Tool. They are
+    /// checked in the same place so that every call site covers both without knowing about either.
     pub(crate) fn prevents_attack_effects(&self, player: usize, in_play_idx: usize) -> bool {
         self.in_play_pokemon[player][in_play_idx]
             .as_ref()
             .is_some_and(|pokemon| {
                 has_in_play_ability_mechanic(self, pokemon, &AbilityMechanic::PreventAttackEffects)
+                    || crate::tools::has_tool(pokemon, crate::card_ids::CardId::B4149ClearVeil)
             })
     }
 

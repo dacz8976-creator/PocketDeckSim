@@ -86,6 +86,8 @@ fn get_weight(action: &SimpleAction) -> u32 {
         SimpleAction::MoveRandomOpponentEnergyToActive { .. } => 10,
         SimpleAction::ApplyStatusToOpponentActive { .. } => 10,
         SimpleAction::DiscardOwnBenchedThenDamage { .. } => 10,
+        // §47 — a purposeful Energy consolidation is usually the point of the turn when offered.
+        SimpleAction::ConsolidateEnergyToPokemon { .. } => 10,
         SimpleAction::UseStadium => 5, // Stadium abilities like Mesagoza
         SimpleAction::Noop => 0,       // No operation has no weight
     }

@@ -84,6 +84,11 @@ static BEASTITE_EFFECT: LazyLock<String> =
     LazyLock::new(|| tool_effect_text_from_card_id(CardId::A3a066Beastite));
 static DARK_PENDANT_EFFECT: LazyLock<String> =
     LazyLock::new(|| tool_effect_text_from_card_id(CardId::A4154DarkPendant));
+/// §47 — Clear Veil (B4 149): "Prevent all effects of attacks used by your opponent's Pokémon
+/// done to the Pokémon this card is attached to." The Tool-borne twin of Crystal Body
+/// (`AbilityMechanic::PreventAttackEffects`); both are resolved in `State::prevents_attack_effects`.
+static CLEAR_VEIL_EFFECT: LazyLock<String> =
+    LazyLock::new(|| tool_effect_text_from_card_id(CardId::B4149ClearVeil));
 static DECEPTIVE_NEEDLE_EFFECT: LazyLock<String> =
     LazyLock::new(|| tool_effect_text_from_card_id(CardId::B4148DeceptiveNeedle));
 
@@ -147,5 +152,6 @@ pub fn is_tool_effect_implemented(trainer_card: &TrainerCard) -> bool {
             || e == BEASTITE_EFFECT.as_str()
             || e == DARK_PENDANT_EFFECT.as_str()
             || e == DECEPTIVE_NEEDLE_EFFECT.as_str()
+            || e == CLEAR_VEIL_EFFECT.as_str()
     )
 }

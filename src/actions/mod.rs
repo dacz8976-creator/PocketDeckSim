@@ -9,6 +9,7 @@ pub(crate) mod attack_helpers;
 pub(crate) mod attack_outcome;
 pub(crate) mod attacks;
 mod effect_ability_mechanic_map;
+pub(crate) mod energy_moves;
 mod effect_mechanic_map;
 mod mutations;
 mod outcomes;

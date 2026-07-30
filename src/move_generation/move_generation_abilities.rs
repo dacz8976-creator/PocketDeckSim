@@ -1,7 +1,8 @@
 use crate::{
     actions::abilities::{AbilityMechanic, DeckSearchKind},
     actions::{
-        abilities_switched_off, ability_mechanic_from_effect, selectable_status_conditions,
+        abilities_switched_off, ability_mechanic_from_effect,
+        energy_moves::UNBOUNDED_ENERGY_MOVES, selectable_status_conditions,
         supporter_candidates_in_hand, SimpleAction,
     },
     hooks::is_ultra_beast,
@@ -101,7 +102,7 @@ fn can_use_ability_by_mechanic(
             can_use_celesteela_ultra_thrusters(state, card)
         }
         AbilityMechanic::MoveTypedEnergyFromBenchToActive { .. } => {
-            can_use_vaporeon_wash_out(state)
+            can_use_vaporeon_wash_out(state, card)
         }
         AbilityMechanic::MoveAllTypedEnergyFromBenchToActive { energy_type } => {
             !card.ability_used && has_benched_typed_pokemon_with_typed_energy(state, *energy_type)
@@ -241,6 +242,24 @@ fn can_use_ability_by_mechanic(
         AbilityMechanic::CannotAttackWithoutBenchedNames { .. } => false, // passive (attack generation)
         AbilityMechanic::DualType { .. } => false,                        // Passive ability
         AbilityMechanic::PreventAttackEffects => false,                   // Passive ability
+
+        // §47 — B4 completion, wave 3.
+        AbilityMechanic::ReduceOwnRetreatCostIfAnotherSameNameInPlay { .. } => false, // Passive
+        // Both of these fire from a hook (bench-entry / evolve) rather than from the player's
+        // action list, so they are never offered as a free-standing "use ability" move. The hook
+        // pushes the UseAbility/Noop pair itself once its own gate passes.
+        AbilityMechanic::HealActiveTypedOnBenchFromHand { .. } => false,
+        AbilityMechanic::PreventAllDamageAndEffectsOnEvolve { .. } => false,
+        AbilityMechanic::LookAtTopCardsPutTrainerTypeToHandOnEvolve { .. } => false,
+        AbilityMechanic::AttachEnergyFromDiscardToActiveTypedFromBench { energy_type } => {
+            // Bench-only, once per turn, needs Energy in the discard AND a matching Active.
+            !card.ability_used
+                && !is_active
+                && !state.discard_energies[state.current_player].is_empty()
+                && state
+                    .maybe_get_active(state.current_player)
+                    .is_some_and(|active| state.pokemon_is_type(active, *energy_type))
+        }
         AbilityMechanic::CopyRandomOpponentHandSupporter => {
             is_active
                 && !card.ability_used
@@ -430,7 +449,26 @@ fn can_use_umbreon_dark_chase(state: &State, card: &PlayedCard) -> bool {
         .any(|(_, pokemon)| pokemon.is_damaged())
 }
 
-fn can_use_vaporeon_wash_out(state: &State) -> bool {
+/// ⚠ §47 — In the BOUNDED mode (the default) Wash Out is once-per-turn per Vaporeon.
+///
+/// The printed card says "as often as you like", and honouring that literally is what made this a
+/// 9.5× cost outlier: ablation shows `milotic-vaporeon` drops from **21.4 s to 2.2 s** for 10
+/// games at `p2` when Vaporeon is swapped out, and the gate — not the width of each individual
+/// choice — is what drives it. The ability re-enters the legal action list after every use, so the
+/// search re-expands it at every node.
+///
+/// Bounded candidate generation already offers COMPLETE transfers as a single decision
+/// (`actions::energy_moves`), so one activation per turn expresses everything the repeated version
+/// could, minus arbitrary partial shuffles. `DECKGYM_UNBOUNDED_ENERGY_MOVES=1` restores both the
+/// literal candidate list and the ungated repetition.
+fn can_use_vaporeon_wash_out(state: &State, card: &PlayedCard) -> bool {
+    if !*UNBOUNDED_ENERGY_MOVES && card.ability_used {
+        return false;
+    }
+    can_use_vaporeon_wash_out_inner(state)
+}
+
+fn can_use_vaporeon_wash_out_inner(state: &State) -> bool {
     // Check if active Pokémon is Water type
     let active = state.get_active(state.current_player);
     if !state.pokemon_is_type(active, EnergyType::Water) {

@@ -420,6 +420,71 @@ pub enum Mechanic {
     ExtraDamagePerOwnPoint {
         damage_per_point: u32,
     },
+
+    // ---------------------------------------------------------------------------------------
+    // §47 — B4 completion, wave 2. Each of these is the mirror image, or a one-field variant,
+    // of a mechanic that already existed. They are separate variants rather than extra fields
+    // on the originals so that no currently-working map entry had to be touched.
+    // ---------------------------------------------------------------------------------------
+    /// Luxray's Revenge Blast: "+N damage for each point your OPPONENT has gotten." The mirror of
+    /// [`Mechanic::ExtraDamagePerOwnPoint`] — it rewards being behind rather than ahead.
+    ExtraDamagePerOpponentPoint {
+        damage_per_point: u32,
+    },
+    /// Pheromosa's Prelude: "If you haven't gotten any points, this attack does +N damage."
+    /// The own-side mirror of [`Mechanic::ExtraDamageIfOpponentPointsExactly`].
+    ExtraDamageIfOwnPointsExactly {
+        points: u8,
+        extra_damage: u32,
+    },
+    /// Swalot's Swallow Up: extra damage if the opponent's Active has LESS remaining HP than this
+    /// Pokémon. The mirror of [`Mechanic::ExtraDamageIfOpponentHpMoreThanSelf`] — a finisher
+    /// rather than a giant-killer.
+    ExtraDamageIfOpponentHpLessThanSelf {
+        extra_damage: u32,
+    },
+    /// Mr. Mime's Synchro Dance: extra damage if this Pokémon and the opponent's Active have the
+    /// SAME amount of Energy attached. Equality, where
+    /// [`Mechanic::ExtraDamageIfMoreEnergyThanDefender`] is strict inequality.
+    ExtraDamageIfEqualEnergyToDefender {
+        extra_damage: u32,
+    },
+    /// Chimecho's Extrasensory: extra damage if you have the same number of cards in hand as your
+    /// opponent. [`Mechanic::ExtraDamageIfHandSizeIn`] tests one hand against a fixed list; this
+    /// compares the two hands to each other.
+    ExtraDamageIfHandSizeEqualsOpponent {
+        extra_damage: u32,
+    },
+    /// Poochyena's Team Hunt: "Draw a card for each <name> you have in play." Count is resolved at
+    /// forecast time, so search bots see the true draw count rather than a fixed one.
+    DrawPerNamedPokemonInPlay {
+        name: String,
+    },
+    /// Teal Mask Ogerpon's Ogre's Whip: "This attack does damage equal to this Pokémon's remaining
+    /// HP." Printed `fixed_damage` is 0; the whole attack is the attacker's current HP, so it hits
+    /// hardest when untouched and fades as the Pokémon takes damage.
+    DamageEqualToSelfRemainingHp,
+    /// Pachirisu's Crackling Snap: "Discard the top card of your deck, and if that card is an Item,
+    /// this attack does +N damage." The Trainer-type counterpart of
+    /// [`Mechanic::DiscardTopSelfDeckExtraDamageIfType`], which tests an Energy type.
+    DiscardTopSelfDeckExtraDamageIfTrainerType {
+        trainer_type: TrainerType,
+        extra_damage: u32,
+    },
+    /// Kyogre's Tidal Blast: "Discard N [type] Energy from this Pokémon, and this attack does
+    /// `damage` to EACH of your opponent's Pokémon."
+    SelfDiscardTypedEnergyAndDamageAllOpponent {
+        energy_type: EnergyType,
+        count: usize,
+        damage: u32,
+    },
+    /// Psyduck's Migraine: "Flip a coin. If heads, your opponent's Active Pokémon is now
+    /// `condition`. If tails, THIS Pokémon is." Both branches deal the attack's damage; only the
+    /// recipient of the Special Condition differs.
+    CoinFlipStatusOpponentOrSelf {
+        condition: StatusCondition,
+    },
+
     ExtraDamageIfCardInDiscard {
         card_name: String,
         extra_damage: u32,
@@ -579,9 +644,14 @@ pub enum Mechanic {
     ExtraDamagePerRetreatCost {
         damage_per_energy: u32,
     },
+    /// `include_fixed_damage: false` — "This attack does N damage for each Energy attached to all
+    /// of your opponent's Pokémon" (the count IS the whole attack).
+    /// `include_fixed_damage: true` — "…does N MORE damage for each…" (added on top of the printed
+    /// damage, e.g. Eelektross' Energy Crush at B4 058).
     DamagePerEnergyAll {
         opponent: bool,
         damage_per_energy: u32,
+        include_fixed_damage: bool,
     },
     /// Choose 1 of the opponent's Pokémon; deal damage_per_energy × (energy on that Pokémon).
     DamageToAnyOpponentPerTargetEnergy {
@@ -838,6 +908,42 @@ pub enum Mechanic {
     /// Eldegoss' Float Up / Dunsparce's Bop 'n' Burrow: "You may shuffle this Pokémon and all
     /// attached cards into your deck." Declined with `SimpleAction::Noop`.
     MayShuffleSelfIntoDeck,
+
+    // ---------------------------------------------------------------------------------------
+    // §47 — B4 completion, wave 3.
+    // ---------------------------------------------------------------------------------------
+    /// Accelgor's Deck and Cover (B4 014 / B4 159): inflict `conditions` on the opponent's Active,
+    /// then shuffle THIS Pokémon and everything attached back into the deck.
+    ///
+    /// Unlike [`Mechanic::MayShuffleSelfIntoDeck`] the shuffle is mandatory — there is no "you
+    /// may" — so no `Noop` branch is offered.
+    InflictStatusConditionsAndShuffleSelfIntoDeck {
+        conditions: Vec<StatusCondition>,
+    },
+    /// Hoopa's Mischievous Ring (B4 077): "Before doing damage, shuffle all Pokémon Tools from
+    /// each of your opponent's Pokémon into their deck."
+    ///
+    /// "Before doing damage" matters: a Tool that would have reduced the incoming damage (Heavy
+    /// Helmet, Protective Poncho, …) is already gone when the damage is calculated, so the removal
+    /// is applied as a pre-damage mutation rather than an after-effect.
+    ShuffleOpponentToolsIntoDeckBeforeDamage,
+    /// Armaldo's Abyssal Drop (B4 082): "Discard all Energy from this Pokémon. Choose a spot from
+    /// among your opponent's Active Spot and Bench. At the end of your opponent's next turn, Knock
+    /// Out the Pokémon in the spot you chose."
+    ///
+    /// Targets a BOARD POSITION, not a Pokémon — whatever is standing in that spot when the timer
+    /// expires is knocked out, so switching the threatened Pokémon out saves it. Modelled on the
+    /// existing delayed-spot-damage plumbing with `knock_out: true`, which makes the damage equal
+    /// to the occupant's remaining HP at trigger time rather than a fixed number.
+    SelfDiscardAllEnergyAndDelayedSpotKnockOut,
+    /// Delcatty's Energy Blender (B4 135): "You may move any amount of Energy from your Pokémon in
+    /// play to your other Pokémon in any way you like."
+    ///
+    /// ⚠ The literal text is the full Energy-redistribution lattice. This is generated by
+    /// `actions::energy_moves::bounded_energy_move_candidates`, which offers only purposeful
+    /// redistributions — see that module for the deviation and why it is taken.
+    MoveEnergyFreelyAmongYourPokemon,
+
     /// Tapu Koko's Volt Switch: "Switch this Pokémon with 1 of your Benched [energy_type] Pokémon."
     /// The typed sibling of `SwitchSelfWithBench`.
     SwitchSelfWithBenchOfType {

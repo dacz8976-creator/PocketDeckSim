@@ -101,6 +101,20 @@ pub enum SimpleAction {
         target_player: usize,
         target_in_play_idx: usize,
         amount: u32,
+        /// Armaldo's Abyssal Drop: the spot is KNOCKED OUT rather than dealt `amount` damage.
+        /// Resolved at trigger time against whatever occupies the spot then.
+        knock_out: bool,
+    },
+    /// §47 — Move a specific multiset of Energy from one or more of your Pokémon onto one
+    /// destination, in a single action.
+    ///
+    /// Exists so that Vaporeon's Wash Out and Delcatty's Energy Blender can present a *complete*
+    /// redistribution as one decision instead of a repeated one-Energy-at-a-time choice, which is
+    /// what made them a branching-factor bomb (§43-D). See `actions::energy_moves`.
+    ConsolidateEnergyToPokemon {
+        to_in_play_idx: usize,
+        /// `(from_in_play_idx, energies to move off it)`, in ascending source order.
+        transfers: Vec<(usize, Vec<EnergyType>)>,
     },
     /// Switch the in_play_idx pokemon with the active pokemon.
     Activate {
@@ -344,9 +358,10 @@ impl fmt::Display for SimpleAction {
                 target_player,
                 target_in_play_idx,
                 amount,
+                knock_out,
             } => write!(
                 f,
-                "ScheduleDelayedSpotDamage(target:{target_player}:{target_in_play_idx}, amount:{amount})"
+                "ScheduleDelayedSpotDamage(target:{target_player}:{target_in_play_idx}, amount:{amount}, ko:{knock_out})"
             ),
             SimpleAction::Activate {
                 player,
@@ -443,6 +458,13 @@ impl fmt::Display for SimpleAction {
             SimpleAction::MoveRandomOpponentEnergyToActive { from_in_play_idx } => {
                 write!(f, "MoveRandomOpponentEnergyToActive({from_in_play_idx})")
             }
+            SimpleAction::ConsolidateEnergyToPokemon {
+                to_in_play_idx,
+                transfers,
+            } => write!(
+                f,
+                "ConsolidateEnergyToPokemon(to:{to_in_play_idx}, {transfers:?})"
+            ),
             SimpleAction::UseStadium => write!(f, "UseStadium"),
             SimpleAction::ApplyStatusToOpponentActive { condition } => {
                 write!(f, "ApplyStatusToOpponentActive({condition:?})")

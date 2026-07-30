@@ -1214,30 +1214,7 @@ fn traveling_merchant_effect(acting_player: usize, state: &State) -> Outcomes {
     // Look at the top 4 cards of your deck. Put all Pokémon Tool cards you find there into your
     // hand. Shuffle the other cards back into your deck. Modelled exactly like Sightseer: the deck
     // order is hidden, so every 4-card subset is an equally likely "top 4".
-    let deck_cards: Vec<Card> = state.decks[acting_player].cards.to_vec();
-    let look_count = min(4, deck_cards.len());
-
-    if look_count == 0 {
-        return Outcomes::single_fn(|_, _, _| {});
-    }
-
-    let top_combinations = generate_combinations(&deck_cards, look_count);
-    let num_outcomes = top_combinations.len();
-    let probabilities = vec![1.0 / num_outcomes as f64; num_outcomes];
-    let mut outcomes: Mutations = vec![];
-
-    for top_cards in top_combinations {
-        outcomes.push(Box::new(move |rng, state, _action| {
-            for card in &top_cards {
-                if is_tool_card(card) {
-                    state.transfer_card_from_deck_to_hand(acting_player, card);
-                }
-            }
-            state.decks[acting_player].shuffle(false, rng);
-        }));
-    }
-
-    Outcomes::from_parts(probabilities, outcomes)
+    super::shared_mutations::top_n_reveal_outcomes(acting_player, state, 4, is_tool_card)
 }
 
 fn fisher_outcomes() -> Outcomes {
@@ -2053,30 +2030,9 @@ fn serena_effect(acting_player: usize, state: &State) -> Outcomes {
 fn sightseer_effect(acting_player: usize, state: &State) -> Outcomes {
     // Look at the top 4 cards of your deck. Put all Stage 1 Pokémon you find there into your
     // hand. Shuffle the other cards back into your deck.
-    let deck_cards: Vec<Card> = state.decks[acting_player].cards.to_vec();
-    let look_count = min(4, deck_cards.len());
-
-    if look_count == 0 {
-        return Outcomes::single_fn(|_, _, _| {});
-    }
-
-    let top_combinations = generate_combinations(&deck_cards, look_count);
-    let num_outcomes = top_combinations.len();
-    let probabilities = vec![1.0 / num_outcomes as f64; num_outcomes];
-    let mut outcomes: Mutations = vec![];
-
-    for top_cards in top_combinations {
-        outcomes.push(Box::new(move |rng, state, _action| {
-            for card in &top_cards {
-                if matches!(card, Card::Pokemon(p) if p.stage == 1) {
-                    state.transfer_card_from_deck_to_hand(acting_player, card);
-                }
-            }
-            state.decks[acting_player].shuffle(false, rng);
-        }));
-    }
-
-    Outcomes::from_parts(probabilities, outcomes)
+    super::shared_mutations::top_n_reveal_outcomes(acting_player, state, 4, |card| {
+        matches!(card, Card::Pokemon(p) if p.stage == 1)
+    })
 }
 
 fn elesa_effect(_: &mut StdRng, state: &mut State, _: &Action) {
@@ -2094,31 +2050,9 @@ fn elesa_effect(_: &mut StdRng, state: &mut State, _: &Action) {
 fn puppy_loving_girl_effect(acting_player: usize, state: &State) -> Outcomes {
     // Look at the top 4 cards of your deck. Put all Pokémon you find there that have the
     // Puppy Pile attack into your hand. Shuffle the other cards back into your deck.
-    let deck_cards: Vec<Card> = state.decks[acting_player].cards.to_vec();
-    let look_count = min(4, deck_cards.len());
-
-    if look_count == 0 {
-        return Outcomes::single_fn(|_, _, _| {});
-    }
-
-    let top_combinations = generate_combinations(&deck_cards, look_count);
-    let num_outcomes = top_combinations.len();
-    let probabilities = vec![1.0 / num_outcomes as f64; num_outcomes];
-    let mut outcomes: Mutations = vec![];
-
-    for top_cards in top_combinations {
-        outcomes.push(Box::new(move |rng, state, _action| {
-            for card in &top_cards {
-                if matches!(card, Card::Pokemon(p) if p.attacks.iter().any(|a| a.title == "Puppy Pile"))
-                {
-                    state.transfer_card_from_deck_to_hand(acting_player, card);
-                }
-            }
-            state.decks[acting_player].shuffle(false, rng);
-        }));
-    }
-
-    Outcomes::from_parts(probabilities, outcomes)
+    super::shared_mutations::top_n_reveal_outcomes(acting_player, state, 4, |card| {
+        matches!(card, Card::Pokemon(p) if p.attacks.iter().any(|a| a.title == "Puppy Pile"))
+    })
 }
 
 fn quick_grow_extract_effect(acting_player: usize, state: &State) -> Outcomes {

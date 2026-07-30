@@ -10,7 +10,7 @@ use crate::actions::abilities::{
     ARCEUS_NAMES, REGI_TRIO_NAMES,
 };
 use crate::effects::CardEffect;
-use crate::models::{Card, EnergyType, PlayedCard, StatusCondition};
+use crate::models::{Card, EnergyType, PlayedCard, StatusCondition, TrainerType};
 use crate::State;
 
 /// Map from ability effect text to its AbilityMechanic.
@@ -806,6 +806,45 @@ pub static EFFECT_ABILITY_MECHANIC_MAP: LazyLock<HashMap<&'static str, AbilityMe
                 trigger: RandomEvolutionTrigger::EndOfOpponentTurnIfActive,
             },
         );
+
+        // -----------------------------------------------------------------------------------
+        // §47 — B4 completion, wave 3.
+        // -----------------------------------------------------------------------------------
+
+        // Beldum (B4 106) - Magnetic Linkage
+        map.insert(
+            "If you have another Beldum in play, this Pokémon's Retreat Cost is 2 less.",
+            AbilityMechanic::ReduceOwnRetreatCostIfAnotherSameNameInPlay { amount: 2 },
+        );
+        // Poltchageist (B4 017)
+        map.insert(
+            "Once during your turn, when you put this Pokémon from your hand onto your Bench, you may heal 20 damage from your Active [G] Pokémon.",
+            AbilityMechanic::HealActiveTypedOnBenchFromHand {
+                energy_type: EnergyType::Grass,
+                amount: 20,
+            },
+        );
+        // Dragonair (B4 117 / B4 175 / B4 233)
+        map.insert(
+            "Once during your turn, if this Pokémon is on your Bench, you may attach an Energy from your discard pile to your Active [N] Pokémon.",
+            AbilityMechanic::AttachEnergyFromDiscardToActiveTypedFromBench {
+                energy_type: EnergyType::Dragon,
+            },
+        );
+        // Samurott (B4 044 / B4 163)
+        map.insert(
+            "Once during your turn, when you play this Pokémon from your hand to evolve 1 of your Pokémon, you may prevent all damage from—and effects of—attacks from your opponent's Pokémon done to this Pokémon until the end of your opponent's next turn.",
+            AbilityMechanic::PreventAllDamageAndEffectsOnEvolve { duration: 1 },
+        );
+        // Raticate (B4 130 / B4 178 / B4 221)
+        map.insert(
+            "Once during your turn, when you play this Pokémon from your hand to evolve 1 of your Pokémon, you may look at the top 4 cards of your deck and put all Item cards you find there into your hand. Shuffle the other cards back into your deck.",
+            AbilityMechanic::LookAtTopCardsPutTrainerTypeToHandOnEvolve {
+                count: 4,
+                trainer_type: TrainerType::Item,
+            },
+        );
+
         map
     });
 

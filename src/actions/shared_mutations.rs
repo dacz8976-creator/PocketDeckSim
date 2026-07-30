@@ -405,3 +405,75 @@ where
         Outcomes::from_parts(probabilities, outcomes)
     }
 }
+
+/// §47 — "Look at the top N cards of your deck, put all <matching> cards into your hand, shuffle
+/// the rest back."
+///
+/// # ⚠ This shape was the single most expensive node in the engine
+///
+/// The obvious model — one outcome branch per C(deck, N) subset — is *correct* but ruinous: a
+/// 17-card deck gives **C(17,4) = 2,380 branches**, and an expectiminimax search evaluates every
+/// one of them at every node where the card is playable, at every depth. Three cards share this
+/// shape (Sightseer, Traveling Merchant, Puppy-Loving Girl).
+///
+/// **This is what actually made `milotic-vaporeon` a cost outlier — not Vaporeon's Wash Out.**
+/// §43-D attributed it to Wash Out's unbounded "as often as you like" branching. Ablation says
+/// otherwise: disabling Wash Out outright leaves the deck at 20.3 s / 10 games (vs 20.2 s with it),
+/// while removing Sightseer drops it to 3.2 s. The mechanism is *outcome* branching at a chance
+/// node, not *action* branching — which is why every previous look at degrees-per-ply (5.25, barely
+/// above the 5.01 field average) missed it.
+///
+/// # The collapse is exact, not a heuristic
+///
+/// The mutation only depends on WHICH matching cards were revealed; the non-matching ones are
+/// shuffled back and are unobservable. So all subsets sharing a matching-set produce the identical
+/// resulting state. Grouping them and summing their probabilities gives the *same* distribution
+/// over successor states with far fewer branches — typically single digits. Nothing is
+/// approximated and no play is removed.
+pub(crate) fn top_n_reveal_outcomes<F>(
+    acting_player: usize,
+    state: &State,
+    look_count: usize,
+    matches_filter: F,
+) -> Outcomes
+where
+    F: Fn(&Card) -> bool,
+{
+    let deck_cards: Vec<Card> = state.decks[acting_player].cards.to_vec();
+    let look_count = min(look_count, deck_cards.len());
+    if look_count == 0 {
+        return Outcomes::single_fn(|_, _, _| {});
+    }
+
+    let combinations = generate_combinations(&deck_cards, look_count);
+    let total = combinations.len() as f64;
+
+    // Key on the matching cards only — that is the whole observable content of the reveal.
+    let mut grouped: Vec<(Vec<Card>, f64)> = Vec::new();
+    for subset in combinations {
+        let mut taken: Vec<Card> = subset.into_iter().filter(|card| matches_filter(card)).collect();
+        taken.sort_by_key(|card| card.get_id());
+        match grouped.iter_mut().find(|(existing, _)| *existing == taken) {
+            Some((_, weight)) => *weight += 1.0,
+            None => grouped.push((taken, 1.0)),
+        }
+    }
+
+    debug!(
+        "Top-{look_count} reveal: {} distinct outcome(s) collapsed from {total} subset(s)",
+        grouped.len()
+    );
+
+    let mut probabilities = Vec::with_capacity(grouped.len());
+    let mut outcomes: Mutations = Vec::with_capacity(grouped.len());
+    for (taken, weight) in grouped {
+        probabilities.push(weight / total);
+        outcomes.push(Box::new(move |rng, state, _action| {
+            for card in &taken {
+                state.transfer_card_from_deck_to_hand(acting_player, card);
+            }
+            state.decks[acting_player].shuffle(false, rng);
+        }));
+    }
+    Outcomes::from_parts(probabilities, outcomes)
+}

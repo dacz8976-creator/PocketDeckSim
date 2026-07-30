@@ -127,15 +127,23 @@ fn test_vaporeon_wash_out_moves_water_energy_to_active() {
         is_stack: false,
     });
 
+    // §47 — Wash Out now offers COMPLETE, purposeful transfers as a single action rather than
+    // "move one [W]" repeatedly (which had no `ability_used` gate and was the §43-D branching
+    // bomb). The observable outcome is unchanged: the Energy ends up on the Active.
+    let (_actor, offered) = game.get_state_clone().generate_possible_actions();
+    assert!(
+        offered.len() <= 8,
+        "Wash Out's candidate list must stay bounded, got {}",
+        offered.len()
+    );
+
     let move_action = find_action(&game, |a| {
         matches!(
-            a.action,
-            SimpleAction::MoveEnergy {
-                from_in_play_idx: 2,
+            &a.action,
+            SimpleAction::ConsolidateEnergyToPokemon {
                 to_in_play_idx: 0,
-                energy_type: EnergyType::Water,
-                amount: 1,
-            }
+                transfers,
+            } if transfers.as_slice() == [(2usize, vec![EnergyType::Water])]
         )
     });
     game.apply_action(&move_action);

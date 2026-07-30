@@ -9,11 +9,12 @@ use crate::{
         apply_action_helpers::{apply_activate, handle_damage, handle_knockouts, Mutation},
         apply_trainer_action::{copy_random_supporter_outcomes, supporter_candidates_in_hand},
         effect_ability_mechanic_map::ability_mechanic_from_effect,
+        energy_moves::{bounded_energy_move_candidates, EnergyMoveScope, UNBOUNDED_ENERGY_MOVES},
         outcomes::Outcomes,
         shared_mutations::{pokemon_search_outcomes, tool_search_outcomes},
         Action, SimpleAction,
     },
-    effects::TurnEffect,
+    effects::{CardEffect, TurnEffect},
     hooks::is_ultra_beast,
     models::{Card, EnergyType, PlayedCard, StatusCondition},
     State,
@@ -353,6 +354,81 @@ fn forecast_ability_by_mechanic(
         AbilityMechanic::DualType { .. } => panic!("DualType is a passive ability"),
         AbilityMechanic::PreventAttackEffects => {
             panic!("PreventAttackEffects is a passive ability")
+        }
+
+        // §47 — B4 completion, wave 3.
+        AbilityMechanic::ReduceOwnRetreatCostIfAnotherSameNameInPlay { .. } => {
+            panic!("ReduceOwnRetreatCostIfAnotherSameNameInPlay is a passive ability")
+        }
+        AbilityMechanic::HealActiveTypedOnBenchFromHand { amount, .. } => {
+            // Bench-entry trigger. The [type] gate and the "is there anything to heal" gate are
+            // both applied by move generation, so by the time the player accepts, the Active is a
+            // legal target; `heal_pokemon` still honours Heal Block.
+            let amount = *amount;
+            Outcomes::single_fn(move |_rng, state, action| {
+                state.heal_pokemon(action.actor, 0, amount);
+            })
+        }
+        AbilityMechanic::AttachEnergyFromDiscardToActiveTypedFromBench { .. } => {
+            // "An Energy" is a choice, so offer one branch per DISTINCT Energy type in the discard
+            // pile rather than one per card. Bounded by the number of Energy types (see §43-D).
+            Outcomes::single_fn(move |_rng, state, action| {
+                let mut types: Vec<EnergyType> =
+                    state.discard_energies[action.actor].iter().copied().collect();
+                types.sort_by_key(|e| format!("{e:?}"));
+                types.dedup();
+                let choices: Vec<SimpleAction> = types
+                    .into_iter()
+                    .map(|energy_type| SimpleAction::AttachTypedFromDiscard {
+                        in_play_idx: 0,
+                        energy_type,
+                        count: 1,
+                    })
+                    .collect();
+                if choices.is_empty() {
+                    return;
+                }
+                state.move_generation_stack.push((action.actor, choices));
+            })
+        }
+        AbilityMechanic::PreventAllDamageAndEffectsOnEvolve { duration } => {
+            let duration = *duration;
+            Outcomes::single_fn(move |_rng, state, action| {
+                let SimpleAction::UseAbility { in_play_idx } = action.action else {
+                    panic!("Ability should be triggered by UseAbility action");
+                };
+                if let Some(pokemon) = state.in_play_pokemon[action.actor][in_play_idx].as_mut() {
+                    pokemon.add_effect(CardEffect::PreventAllDamageAndEffects, duration);
+                }
+            })
+        }
+        AbilityMechanic::LookAtTopCardsPutTrainerTypeToHandOnEvolve {
+            count,
+            trainer_type,
+        } => {
+            let count = *count;
+            let trainer_type = trainer_type.clone();
+            Outcomes::single_fn(move |_rng, state, action| {
+                // "Look at the top N, take the matches, shuffle the rest back." Removing the
+                // matches and leaving the rest in place is equivalent to shuffling them back: the
+                // deck is already in random order and nothing has observed it.
+                let deck = &mut state.decks[action.actor].cards;
+                let window = count.min(deck.len());
+                let mut taken = Vec::new();
+                let mut kept = Vec::new();
+                for card in deck.drain(..window) {
+                    if matches!(&card, Card::Trainer(t) if t.trainer_card_type == trainer_type) {
+                        taken.push(card);
+                    } else {
+                        kept.push(card);
+                    }
+                }
+                for card in kept.into_iter().rev() {
+                    deck.insert(0, card);
+                }
+                debug!("Raticate-style deck peek: took {} card(s)", taken.len());
+                state.hands[action.actor].extend(taken);
+            })
         }
         AbilityMechanic::CopyRandomOpponentHandSupporter => {
             copy_random_opponent_hand_supporter(state, action.actor)
@@ -936,26 +1012,45 @@ fn discard_from_hand_to_draw_card() -> Outcomes {
     })
 }
 
+/// Vaporeon's Wash Out: "As often as you like during your turn, you may move a [W] Energy from 1 of
+/// your Benched [W] Pokémon to your Active [W] Pokémon."
+///
+/// ⚠ **The bounded path is the default.** Offering "move exactly one [W]" with no `ability_used`
+/// gate is faithful to the text and is exactly what made this card a 5–13× cost outlier (§43-D) —
+/// the ability re-enters the action list after every use, multiplying branching at every node.
+/// [`bounded_energy_move_candidates`] instead offers complete, purposeful transfers as single
+/// decisions. Set `DECKGYM_UNBOUNDED_ENERGY_MOVES=1` for the literal behaviour; see
+/// `actions::energy_moves` for the full argument.
 fn vaporeon_wash_out(_: &mut StdRng, state: &mut State, action: &Action) {
-    // As often as you like during your turn, you may move a [W] Energy from 1 of your Benched [W] Pokémon to your Active [W] Pokémon.
     debug!("Vaporeon's Wash Out: Moving Water Energy from benched Water Pokemon to active");
     let acting_player = action.actor;
-    let possible_moves = state
-        .enumerate_bench_pokemon(acting_player)
-        .filter(|(_, pokemon)| {
-            pokemon.card.get_type() == Some(EnergyType::Water)
-                && pokemon.attached_energy.contains(&EnergyType::Water)
-        })
-        .map(|(in_play_idx, _)| SimpleAction::MoveEnergy {
-            from_in_play_idx: in_play_idx,
-            to_in_play_idx: 0, // Active spot
-            energy_type: EnergyType::Water,
-            amount: 1,
-        })
-        .collect::<Vec<_>>();
+
+    let possible_moves = if *UNBOUNDED_ENERGY_MOVES {
+        state
+            .enumerate_bench_pokemon(acting_player)
+            .filter(|(_, pokemon)| {
+                pokemon.card.get_type() == Some(EnergyType::Water)
+                    && pokemon.attached_energy.contains(&EnergyType::Water)
+            })
+            .map(|(in_play_idx, _)| SimpleAction::MoveEnergy {
+                from_in_play_idx: in_play_idx,
+                to_in_play_idx: 0, // Active spot
+                energy_type: EnergyType::Water,
+                amount: 1,
+            })
+            .collect::<Vec<_>>()
+    } else {
+        bounded_energy_move_candidates(
+            state,
+            acting_player,
+            EnergyMoveScope::TypedBenchToActive(EnergyType::Water),
+        )
+    };
+
     if possible_moves.is_empty() {
         return; // No benched Water Pokémon with Water Energy
     }
+    debug!("Wash Out: offering {} candidate(s)", possible_moves.len());
     state
         .move_generation_stack
         .push((acting_player, possible_moves));

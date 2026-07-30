@@ -5,7 +5,7 @@ use crate::{
     },
     card_ids::CardId,
     effects::{CardEffect, TurnEffect},
-    hooks::core::has_named_pokemon_in_play,
+    hooks::core::{has_another_pokemon_named_in_play, has_named_pokemon_in_play},
     models::{Card, EnergyType, PlayedCard},
     stadiums::get_peculiar_plaza_retreat_reduction,
     tools::has_tool,
@@ -150,6 +150,17 @@ pub(crate) fn get_retreat_cost(state: &State, card: &PlayedCard) -> Vec<EnergyTy
                         to_subtract += *amount as u8;
                     }
                 }
+            }
+        }
+
+        // §47 — Beldum (B4 106): "If you have another Beldum in play, this Pokémon's Retreat Cost
+        // is 2 less." Self-scoped and keyed on the holder's own name, so one variant covers every
+        // card printed with this wording.
+        if let Some(AbilityMechanic::ReduceOwnRetreatCostIfAnotherSameNameInPlay { amount }) =
+            get_in_play_ability_mechanic(state, card)
+        {
+            if has_another_pokemon_named_in_play(state, state.current_player, &card.get_name()) {
+                to_subtract += *amount;
             }
         }
 

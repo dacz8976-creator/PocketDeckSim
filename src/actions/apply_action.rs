@@ -78,6 +78,7 @@ pub fn forecast_action(state: &State, action: &Action) -> Outcomes {
         | SimpleAction::MoveRandomOpponentEnergyToActive { .. }
         | SimpleAction::ApplyStatusToOpponentActive { .. }
         | SimpleAction::DiscardOwnBenchedThenDamage { .. }
+        | SimpleAction::ConsolidateEnergyToPokemon { .. }
         | SimpleAction::Noop => forecast_deterministic_action(),
         SimpleAction::Attach {
             attachments,
@@ -376,12 +377,14 @@ fn apply_deterministic_action(state: &mut State, action: &Action) {
             target_player,
             target_in_play_idx,
             amount,
+            knock_out,
         } => apply_schedule_delayed_spot_damage(
             state,
             action.actor,
             *target_player,
             *target_in_play_idx,
             *amount,
+            *knock_out,
         ),
         // Trainer-Specific Actions
         SimpleAction::Heal {
@@ -422,6 +425,10 @@ fn apply_deterministic_action(state: &mut State, action: &Action) {
         SimpleAction::DiscardFossil { in_play_idx } => {
             apply_discard_fossil(action.actor, state, *in_play_idx)
         }
+        SimpleAction::ConsolidateEnergyToPokemon {
+            to_in_play_idx,
+            transfers,
+        } => apply_consolidate_energy_to_pokemon(action.actor, state, *to_in_play_idx, transfers),
         SimpleAction::ReturnPokemonToHand { in_play_idx } => {
             apply_return_pokemon_to_hand(action.actor, state, *in_play_idx)
         }
@@ -633,6 +640,44 @@ fn apply_discard_fossil(acting_player: usize, state: &mut State, in_play_idx: us
     }
 }
 
+/// §47 — Move the planned Energy onto `to_in_play_idx` in one step.
+///
+/// Sources and destination are re-checked here rather than trusted: the action is generated when
+/// the choice is offered, and a Pokémon can leave play between then and here.
+fn apply_consolidate_energy_to_pokemon(
+    acting_player: usize,
+    state: &mut State,
+    to_in_play_idx: usize,
+    transfers: &[(usize, Vec<EnergyType>)],
+) {
+    if state.in_play_pokemon[acting_player][to_in_play_idx].is_none() {
+        return;
+    }
+    let mut moved: Vec<EnergyType> = Vec::new();
+    for (from_in_play_idx, energies) in transfers {
+        let Some(source) = state.in_play_pokemon[acting_player][*from_in_play_idx].as_mut() else {
+            continue;
+        };
+        for energy in energies {
+            if let Some(position) = source.attached_energy.iter().position(|e| e == energy) {
+                source.attached_energy.remove(position);
+                moved.push(*energy);
+            }
+        }
+    }
+    if moved.is_empty() {
+        return;
+    }
+    debug!(
+        "Consolidating {} Energy onto slot {}",
+        moved.len(),
+        to_in_play_idx
+    );
+    if let Some(destination) = state.in_play_pokemon[acting_player][to_in_play_idx].as_mut() {
+        destination.attached_energy.extend(moved);
+    }
+}
+
 fn apply_return_pokemon_to_hand(acting_player: usize, state: &mut State, in_play_idx: usize) {
     let played_card = state.in_play_pokemon[acting_player][in_play_idx]
         .take()
@@ -724,6 +769,7 @@ fn apply_schedule_delayed_spot_damage(
     target_player: usize,
     target_in_play_idx: usize,
     amount: u32,
+    knock_out: bool,
 ) {
     state.add_turn_effect(
         TurnEffect::DelayedSpotDamage {
@@ -731,6 +777,7 @@ fn apply_schedule_delayed_spot_damage(
             target_player,
             target_in_play_idx,
             amount,
+            knock_out,
         },
         1,
     );

@@ -760,7 +760,61 @@ fn forecast_effect_attack_by_mechanic(
         Mechanic::DamagePerEnergyAll {
             opponent,
             damage_per_energy,
-        } => damage_per_energy_all(state, *opponent, *damage_per_energy),
+            include_fixed_damage,
+        } => damage_per_energy_all(
+            state,
+            if *include_fixed_damage {
+                attack.fixed_damage
+            } else {
+                0
+            },
+            *opponent,
+            *damage_per_energy,
+        ),
+
+        // §47 — B4 completion, wave 2.
+        Mechanic::ExtraDamagePerOpponentPoint { damage_per_point } => {
+            extra_damage_per_opponent_point_attack(state, attack.fixed_damage, *damage_per_point)
+        }
+        Mechanic::ExtraDamageIfOwnPointsExactly {
+            points,
+            extra_damage,
+        } => extra_damage_if_own_points_exactly(state, attack.fixed_damage, *points, *extra_damage),
+        Mechanic::ExtraDamageIfOpponentHpLessThanSelf { extra_damage } => {
+            extra_damage_if_opponent_hp_less_than_self(state, attack.fixed_damage, *extra_damage)
+        }
+        Mechanic::ExtraDamageIfEqualEnergyToDefender { extra_damage } => {
+            extra_damage_if_equal_energy_to_defender(state, attack.fixed_damage, *extra_damage)
+        }
+        Mechanic::ExtraDamageIfHandSizeEqualsOpponent { extra_damage } => {
+            extra_damage_if_hand_size_equals_opponent(state, attack.fixed_damage, *extra_damage)
+        }
+        Mechanic::DrawPerNamedPokemonInPlay { name } => {
+            draw_per_named_pokemon_in_play(state, attack.fixed_damage, name)
+        }
+        Mechanic::DamageEqualToSelfRemainingHp => damage_equal_to_self_remaining_hp(state),
+        Mechanic::DiscardTopSelfDeckExtraDamageIfTrainerType {
+            trainer_type,
+            extra_damage,
+        } => discard_top_self_deck_extra_damage_if_trainer_type(
+            state,
+            attack.fixed_damage,
+            trainer_type.clone(),
+            *extra_damage,
+        ),
+        Mechanic::SelfDiscardTypedEnergyAndDamageAllOpponent {
+            energy_type,
+            count,
+            damage,
+        } => self_discard_typed_energy_and_damage_all_opponent(
+            state,
+            *energy_type,
+            *count,
+            *damage,
+        ),
+        Mechanic::CoinFlipStatusOpponentOrSelf { condition } => {
+            coin_flip_status_opponent_or_self(attack.fixed_damage, *condition)
+        }
         Mechanic::DamageToAnyOpponentPerTargetEnergy { damage_per_energy } => {
             damage_to_any_opponent_per_target_energy(*damage_per_energy)
         }
@@ -1224,6 +1278,24 @@ fn forecast_effect_attack_by_mechanic(
             *damage_per,
         ),
         Mechanic::MayShuffleSelfIntoDeck => may_shuffle_self_into_deck(attack.fixed_damage),
+
+        // §47 — B4 completion, wave 3.
+        Mechanic::InflictStatusConditionsAndShuffleSelfIntoDeck { conditions } => {
+            inflict_status_conditions_and_shuffle_self_into_deck(
+                attack.fixed_damage,
+                conditions.clone(),
+            )
+        }
+        Mechanic::ShuffleOpponentToolsIntoDeckBeforeDamage => {
+            shuffle_opponent_tools_into_deck_before_damage(attack.fixed_damage)
+        }
+        Mechanic::SelfDiscardAllEnergyAndDelayedSpotKnockOut => {
+            self_discard_all_energy_and_delayed_spot_knock_out()
+        }
+        Mechanic::MoveEnergyFreelyAmongYourPokemon => {
+            move_energy_freely_among_your_pokemon(attack.fixed_damage)
+        }
+
         Mechanic::SwitchSelfWithBenchOfType { energy_type } => {
             switch_self_with_bench_of_type(state, attack.fixed_damage, *energy_type)
         }
@@ -2440,6 +2512,7 @@ fn delayed_spot_damage(damage: u32) -> AttackOutcomes {
                 target_player: opponent,
                 target_in_play_idx: in_play_idx,
                 amount: damage,
+                knock_out: false,
             });
         }
         if choices.is_empty() {
@@ -3777,7 +3850,12 @@ fn extra_damage_per_retreat_cost(
     active_damage_doutcome(damage)
 }
 
-fn damage_per_energy_all(state: &State, opponent: bool, damage_per_energy: u32) -> AttackOutcomes {
+fn damage_per_energy_all(
+    state: &State,
+    base_damage: u32,
+    opponent: bool,
+    damage_per_energy: u32,
+) -> AttackOutcomes {
     let target = if opponent {
         (state.current_player + 1) % 2
     } else {
@@ -3788,7 +3866,7 @@ fn damage_per_energy_all(state: &State, opponent: bool, damage_per_energy: u32) 
         .flatten()
         .map(|pokemon| pokemon.get_effective_attached_energy(state, target).len() as u32)
         .sum();
-    let damage = total_energy * damage_per_energy;
+    let damage = base_damage + total_energy * damage_per_energy;
     active_damage_doutcome(damage)
 }
 
@@ -6635,4 +6713,306 @@ mod test {
             }
         }
     }
+}
+
+// ===========================================================================================
+// §47 — B4 completion, wave 2. Mirror-image and one-field variants of existing mechanics.
+// ===========================================================================================
+
+/// Luxray's Revenge Blast: "+N damage for each point your OPPONENT has gotten."
+fn extra_damage_per_opponent_point_attack(
+    state: &State,
+    base_damage: u32,
+    damage_per_point: u32,
+) -> AttackOutcomes {
+    let opponent = (state.current_player + 1) % 2;
+    let points = state.points[opponent] as u32;
+    active_damage_doutcome(base_damage + points * damage_per_point)
+}
+
+/// Pheromosa's Prelude: "If you haven't gotten any points, this attack does +N damage."
+fn extra_damage_if_own_points_exactly(
+    state: &State,
+    base_damage: u32,
+    points: u8,
+    extra_damage: u32,
+) -> AttackOutcomes {
+    let damage = if state.points[state.current_player] == points {
+        base_damage + extra_damage
+    } else {
+        base_damage
+    };
+    active_damage_doutcome(damage)
+}
+
+/// Swalot's Swallow Up: extra damage if the opponent's Active has LESS remaining HP than this
+/// Pokémon. Ties do not count — the card says "less", not "less than or equal".
+fn extra_damage_if_opponent_hp_less_than_self(
+    state: &State,
+    base_damage: u32,
+    extra_damage: u32,
+) -> AttackOutcomes {
+    let attacker = state.get_active(state.current_player);
+    let defender = state.get_active((state.current_player + 1) % 2);
+    let damage = if defender.get_remaining_hp() < attacker.get_remaining_hp() {
+        base_damage + extra_damage
+    } else {
+        base_damage
+    };
+    active_damage_doutcome(damage)
+}
+
+/// Mr. Mime's Synchro Dance: extra damage if both Actives have the same Energy count.
+fn extra_damage_if_equal_energy_to_defender(
+    state: &State,
+    base_damage: u32,
+    extra_damage: u32,
+) -> AttackOutcomes {
+    let current_player = state.current_player;
+    let opponent = (current_player + 1) % 2;
+    let own_energy = state
+        .get_active(current_player)
+        .get_effective_attached_energy(state, current_player)
+        .len();
+    let opponent_energy = state
+        .get_active(opponent)
+        .get_effective_attached_energy(state, opponent)
+        .len();
+    let damage = if own_energy == opponent_energy {
+        base_damage + extra_damage
+    } else {
+        base_damage
+    };
+    active_damage_doutcome(damage)
+}
+
+/// Chimecho's Extrasensory: extra damage if both players hold the same number of cards.
+fn extra_damage_if_hand_size_equals_opponent(
+    state: &State,
+    base_damage: u32,
+    extra_damage: u32,
+) -> AttackOutcomes {
+    let opponent = (state.current_player + 1) % 2;
+    let damage = if state.hands[state.current_player].len() == state.hands[opponent].len() {
+        base_damage + extra_damage
+    } else {
+        base_damage
+    };
+    active_damage_doutcome(damage)
+}
+
+/// Poochyena's Team Hunt: "Draw a card for each <name> you have in play."
+///
+/// The count is resolved here, at forecast time, rather than inside the queued action, so that a
+/// search bot prices the attack by how many cards it will ACTUALLY draw on this board.
+fn draw_per_named_pokemon_in_play(
+    state: &State,
+    damage: u32,
+    name: &str,
+) -> AttackOutcomes {
+    let count = state
+        .enumerate_in_play_pokemon(state.current_player)
+        .filter(|(_, pokemon)| pokemon.get_name() == name)
+        .count() as u8;
+    if count == 0 {
+        return active_damage_doutcome(damage);
+    }
+    draw_and_damage_outcome(damage, count)
+}
+
+/// Teal Mask Ogerpon's Ogre's Whip: damage equal to the attacker's own remaining HP.
+fn damage_equal_to_self_remaining_hp(state: &State) -> AttackOutcomes {
+    let remaining = state.get_active(state.current_player).get_remaining_hp();
+    active_damage_doutcome(remaining)
+}
+
+/// Pachirisu's Crackling Snap: discard the top card of your deck; if it was a Trainer of
+/// `trainer_type`, the attack does `extra_damage` more.
+fn discard_top_self_deck_extra_damage_if_trainer_type(
+    state: &State,
+    base_damage: u32,
+    trainer_type: TrainerType,
+    extra_damage: u32,
+) -> AttackOutcomes {
+    let top_matches = state.decks[state.current_player]
+        .cards
+        .first()
+        .is_some_and(|card| matches!(card, Card::Trainer(t) if t.trainer_card_type == trainer_type));
+    let damage = if top_matches {
+        base_damage + extra_damage
+    } else {
+        base_damage
+    };
+    active_damage_effect_doutcome(damage, move |_, state, action| {
+        discard_top_deck_cards(state, action.actor, 1);
+    })
+}
+
+/// Kyogre's Tidal Blast: discard `count` `energy_type` Energy from this Pokémon, then deal
+/// `damage` to EVERY one of the opponent's Pokémon.
+///
+/// The discard is the cost and is paid whether or not the damage kills anything; it is applied in
+/// the mutation so that the damage targets are still computed against the pre-attack board.
+fn self_discard_typed_energy_and_damage_all_opponent(
+    state: &State,
+    energy_type: EnergyType,
+    count: usize,
+    damage: u32,
+) -> AttackOutcomes {
+    let opponent = (state.current_player + 1) % 2;
+    let mut targets: Vec<DamageTarget> = vec![(damage, true, 0)];
+    for (idx, _) in state.enumerate_bench_pokemon(opponent) {
+        targets.push((damage, true, idx));
+    }
+    damage_effect_doutcome(targets, move |_, state, action| {
+        let to_discard: Vec<EnergyType> = state
+            .get_active(action.actor)
+            .attached_energy
+            .iter()
+            .filter(|&&e| e == energy_type)
+            .take(count)
+            .copied()
+            .collect();
+        state.discard_from_active(action.actor, &to_discard);
+    })
+}
+
+/// Psyduck's Migraine: heads inflicts `condition` on the opponent's Active, tails inflicts it on
+/// this Pokémon. Damage is dealt on both branches.
+fn coin_flip_status_opponent_or_self(
+    damage: u32,
+    condition: StatusCondition,
+) -> AttackOutcomes {
+    AttackOutcomes::binary_coin(
+        active_damage_effect_outcome(damage, move |_, state, action| {
+            let opponent = (action.actor + 1) % 2;
+            state.apply_attack_status_condition(opponent, 0, condition);
+        }),
+        active_damage_effect_outcome(damage, move |_, state, action| {
+            state.apply_attack_status_condition(action.actor, 0, condition);
+        }),
+    )
+}
+
+// ===========================================================================================
+// §47 — B4 completion, wave 3.
+// ===========================================================================================
+
+/// Accelgor's Deck and Cover (B4 014 / B4 159): inflict the conditions, then shuffle this Pokémon
+/// and everything attached back into the deck.
+///
+/// The shuffle is mandatory (no "you may"), so it is applied inline rather than offered as a
+/// choice. It is skipped when the attacker is already knocked out — there is nothing left to
+/// shuffle, and `handle_knockouts` owns that Pokémon at that point.
+fn inflict_status_conditions_and_shuffle_self_into_deck(
+    damage: u32,
+    conditions: Vec<StatusCondition>,
+) -> AttackOutcomes {
+    active_damage_effect_doutcome(damage, move |_, state, action| {
+        let opponent = (action.actor + 1) % 2;
+        for condition in &conditions {
+            state.apply_attack_status_condition(opponent, 0, *condition);
+        }
+        let alive = state.in_play_pokemon[action.actor][0]
+            .as_ref()
+            .is_some_and(|pokemon| !pokemon.is_knocked_out());
+        if !alive {
+            return;
+        }
+        state.move_generation_stack.push((
+            action.actor,
+            vec![SimpleAction::ShuffleInPlayPokemonIntoDeck { in_play_idx: 0 }],
+        ));
+    })
+}
+
+/// Hoopa's Mischievous Ring (B4 077): "Before doing damage, shuffle all Pokémon Tools from each of
+/// your opponent's Pokémon into their deck."
+///
+/// ⚠ The "before doing damage" clause is load-bearing. Damage-reducing Tools (Heavy Helmet,
+/// Protective Poncho, Metal Core Barrier) must already be gone when the damage is computed, and
+/// `AttackOutcomes::single_effect` runs the mutation without pre-computing a damage target, so the
+/// damage is queued afterwards and re-priced against the stripped board.
+fn shuffle_opponent_tools_into_deck_before_damage(damage: u32) -> AttackOutcomes {
+    AttackOutcomes::single_effect(move |_, state, action| {
+        let opponent = (action.actor + 1) % 2;
+        let stripped: Vec<Card> = state.in_play_pokemon[opponent]
+            .iter_mut()
+            .flatten()
+            .filter_map(|pokemon| pokemon.attached_tool.take())
+            .collect();
+        if !stripped.is_empty() {
+            log::debug!("Mischievous Ring: shuffling {} Tool(s) back", stripped.len());
+            state.decks[opponent].cards.extend(stripped);
+        }
+        if state.in_play_pokemon[opponent][0].is_none() {
+            return;
+        }
+        state.move_generation_stack.push((
+            action.actor,
+            vec![SimpleAction::ApplyDamage {
+                attacking_ref: (action.actor, 0),
+                targets: vec![(damage, opponent, 0)],
+                is_from_active_attack: true,
+            }],
+        ));
+    })
+}
+
+/// Armaldo's Abyssal Drop (B4 082): "Discard all Energy from this Pokémon. Choose a spot from among
+/// your opponent's Active Spot and Bench. At the end of your opponent's next turn, Knock Out the
+/// Pokémon in the spot you chose."
+///
+/// The energy discard is the cost and is paid up front. The threat is stored against a BOARD
+/// POSITION with `knock_out: true`, so whatever is standing there when the timer expires dies —
+/// and switching the threatened Pokémon out of the spot is a legitimate answer.
+fn self_discard_all_energy_and_delayed_spot_knock_out() -> AttackOutcomes {
+    active_damage_effect_doutcome(0, move |_, state, action| {
+        let all_energy: Vec<EnergyType> = state
+            .get_active(action.actor)
+            .attached_energy
+            .iter()
+            .copied()
+            .collect();
+        state.discard_from_active(action.actor, &all_energy);
+
+        let opponent = (action.actor + 1) % 2;
+        let choices: Vec<SimpleAction> = state
+            .enumerate_in_play_pokemon(opponent)
+            .map(
+                |(in_play_idx, _)| SimpleAction::ScheduleDelayedSpotDamage {
+                    target_player: opponent,
+                    target_in_play_idx: in_play_idx,
+                    amount: 0,
+                    knock_out: true,
+                },
+            )
+            .collect();
+        if choices.is_empty() {
+            return;
+        }
+        state.move_generation_stack.push((action.actor, choices));
+    })
+}
+
+/// Delcatty's Energy Blender (B4 135): "You may move any amount of Energy from your Pokémon in play
+/// to your other Pokémon in any way you like."
+///
+/// ⚠ Candidate generation is BOUNDED — see `actions::energy_moves`. The "you may" is honoured with
+/// a `Noop` branch, so declining is always available; what is not available is an arbitrary
+/// partial shuffle with no immediate payoff.
+fn move_energy_freely_among_your_pokemon(damage: u32) -> AttackOutcomes {
+    active_damage_effect_doutcome(damage, move |_, state, action| {
+        let mut choices = crate::actions::energy_moves::bounded_energy_move_candidates(
+            state,
+            action.actor,
+            crate::actions::energy_moves::EnergyMoveScope::AnyToAny,
+        );
+        if choices.is_empty() {
+            return;
+        }
+        log::debug!("Energy Blender: offering {} candidate(s)", choices.len());
+        choices.push(SimpleAction::Noop);
+        state.move_generation_stack.push((action.actor, choices));
+    })
 }

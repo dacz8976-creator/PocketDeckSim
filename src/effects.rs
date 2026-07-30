@@ -177,6 +177,9 @@ pub enum TurnEffect {
         target_player: usize,
         target_in_play_idx: usize,
         amount: u32,
+        /// `true` = knock out the spot's occupant outright (Armaldo's Abyssal Drop) rather than
+        /// dealing a fixed `amount`.
+        knock_out: bool,
     },
     ForceFirstHeads,
     /// A random-spread attack with this name chooses a Pokémon `amount` more times

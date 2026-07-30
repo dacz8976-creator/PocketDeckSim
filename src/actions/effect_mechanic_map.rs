@@ -1978,6 +1978,7 @@ pub static EFFECT_MECHANIC_MAP: LazyLock<HashMap<&'static str, Mechanic>> = Lazy
         Mechanic::DamagePerEnergyAll {
             opponent: true,
             damage_per_energy: 20,
+            include_fixed_damage: false,
         },
     );
     map.insert(
@@ -3329,5 +3330,225 @@ pub static EFFECT_MECHANIC_MAP: LazyLock<HashMap<&'static str, Mechanic>> = Lazy
             damage_per_energy: 10,
         },
     );
+
+    // ---------------------------------------------------------------------------------------
+    // §47 — B4 completion, wave 1: cards whose printed effect maps onto a Mechanic that already
+    // exists. No engine change; these are map entries only.
+    // ---------------------------------------------------------------------------------------
+
+    // Archaludon (B4 113) - Raging Blade
+    map.insert(
+        "If this Pokémon has damage on it, this attack does 80 more damage.",
+        Mechanic::ExtraDamageIfHurt {
+            extra_damage: 80,
+            opponent: false,
+            benched: false,
+        },
+    );
+    // Galarian Obstagoon (B4 097) - Bass Control
+    map.insert(
+        "This attack does 80 damage to 1 of your opponent's Pokémon.",
+        Mechanic::DirectDamage {
+            damage: 80,
+            bench_only: false,
+        },
+    );
+    // Hydrapple (B4 127) - Fickle Beam
+    map.insert(
+        "Flip 2 coins. If both of them are heads, this attack does 100 more damage.",
+        Mechanic::ExtraDamageIfBothHeads {
+            extra_damage: 100,
+        },
+    );
+    // Kecleon (B4 136) - Samesies Slap
+    map.insert(
+        "If this Pokémon and your opponent's Active Pokémon have 1 or more of the same type of Energy attached, this attack does 30 more damage.",
+        Mechanic::ExtraDamageIfSharedEnergyType {
+            minimum_each: 1,
+            extra_damage: 30,
+        },
+    );
+    // Mewtwo (B4 070 / B4 212) - Psychic
+    map.insert(
+        "This attack does 40 more damage for each Energy attached to your opponent's Active Pokémon.",
+        Mechanic::ExtraDamagePerEnergy {
+            include_fixed_damage: true,
+            opponent: true,
+            damage_per_energy: 40,
+        },
+    );
+    // Noivern (B4 122 / B4 176) - Draco Meteor
+    map.insert(
+        "1 of your opponent's Pokémon is chosen at random 3 times. For each time a Pokémon was chosen, do 60 damage to it.",
+        Mechanic::RandomSpreadDamage {
+            times: 3,
+            damage_per_hit: 60,
+            include_own_bench: false,
+        },
+    );
+    // Sealeo (B4 039) - Frozen Splash
+    map.insert(
+        "If your opponent's Active Pokémon is a [F] Pokémon, this attack does 70 more damage.",
+        Mechanic::ExtraDamageIfDefenderType {
+            energy_types: vec![EnergyType::Fighting],
+            extra_damage: 70,
+        },
+    );
+    // Silvally (B4 144) - Gold Breaker
+    map.insert(
+        "If your opponent's Active Pokémon is a Pokémon ex, this attack does 90 more damage.",
+        Mechanic::ExtraDamageIfEx { extra_damage: 90 },
+    );
+    // Alomomola (B4 045) - Mineral Pump
+    map.insert(
+        "Heal 10 damage from each of your Benched Pokémon.",
+        Mechanic::HealEachYourPokemon {
+            amount: 10,
+            benched_only: true,
+            basic_only: false,
+            energy_type: None,
+        },
+    );
+    // Silcoon (B4 002) / Cascoon (B4 004) - Cocoon Collector
+    map.insert(
+        "Put 3 random cards from among Silcoon and Cascoon from your deck onto your Bench.",
+        Mechanic::SearchToBenchByNames {
+            names: vec!["Silcoon".to_string(), "Cascoon".to_string()],
+            count: 3,
+        },
+    );
+    // Revavroom (B4 115) - Overacceleration
+    map.insert(
+        "During your next turn, this Pokémon's Overacceleration attack does +70 damage.",
+        Mechanic::DamageAndCardEffect {
+            opponent: false,
+            effect: CardEffect::IncreasedDamageForAttack {
+                attack_name: "Overacceleration".to_string(),
+                amount: 70,
+            },
+            duration: 2,
+            coin_flip: false,
+        },
+    );
+    // Hariyama (B4 080) - Pivot Throw
+    map.insert(
+        "During your opponent's next turn, this Pokémon takes +50 damage from attacks.",
+        Mechanic::DamageAndCardEffect {
+            opponent: false,
+            effect: CardEffect::IncreasedVulnerability { amount: 50 },
+            duration: 1,
+            coin_flip: false,
+        },
+    );
+
+    // ---------------------------------------------------------------------------------------
+    // §47 — B4 completion, wave 2: mirror-image / one-field variants of existing mechanics.
+    // ---------------------------------------------------------------------------------------
+
+    // Luxray (B4 053) - Revenge Blast
+    map.insert(
+        "This attack does 50 more damage for each point your opponent has gotten.",
+        Mechanic::ExtraDamagePerOpponentPoint {
+            damage_per_point: 50,
+        },
+    );
+    // Pheromosa (B4 016) - Prelude
+    map.insert(
+        "If you haven't gotten any points, this attack does 60 more damage.",
+        Mechanic::ExtraDamageIfOwnPointsExactly {
+            points: 0,
+            extra_damage: 60,
+        },
+    );
+    // Swalot (B4 099) - Swallow Up
+    map.insert(
+        "If your opponent's Active Pokémon has less remaining HP than this Pokémon, this attack does 80 more damage.",
+        Mechanic::ExtraDamageIfOpponentHpLessThanSelf { extra_damage: 80 },
+    );
+    // Mr. Mime (B4 069 / B4 211) - Synchro Dance
+    map.insert(
+        "If this Pokémon and your opponent's Active Pokémon have the same amount of Energy attached, this attack does 40 more damage.",
+        Mechanic::ExtraDamageIfEqualEnergyToDefender { extra_damage: 40 },
+    );
+    // Chimecho (B4 073) - Extrasensory
+    map.insert(
+        "If you have the same number of cards in your hand as your opponent, this attack does 40 more damage.",
+        Mechanic::ExtraDamageIfHandSizeEqualsOpponent { extra_damage: 40 },
+    );
+    // Poochyena (B4 093 / B4 171) - Team Hunt
+    map.insert(
+        "Draw a card for each Poochyena you have in play.",
+        Mechanic::DrawPerNamedPokemonInPlay {
+            name: "Poochyena".to_string(),
+        },
+    );
+    // Teal Mask Ogerpon (B4 019) - Ogre's Whip
+    map.insert(
+        "This attack does damage to your opponent's Active Pokémon equal to this Pokémon's remaining HP.",
+        Mechanic::DamageEqualToSelfRemainingHp,
+    );
+    // Pachirisu (B4 054) - Crackling Snap
+    map.insert(
+        "Discard the top card of your deck, and if that card is an Item, this attack does 20 more damage.",
+        Mechanic::DiscardTopSelfDeckExtraDamageIfTrainerType {
+            trainer_type: TrainerType::Item,
+            extra_damage: 20,
+        },
+    );
+    // Eelektross (B4 058) - Energy Crush
+    map.insert(
+        "This attack does 20 more damage for each Energy attached to all of your opponent's Pokémon.",
+        Mechanic::DamagePerEnergyAll {
+            opponent: true,
+            damage_per_energy: 20,
+            include_fixed_damage: true,
+        },
+    );
+    // Kyogre (B4 041 / B4 162) - Tidal Blast
+    map.insert(
+        "Discard 3 [W] Energy from this Pokémon, and this attack does 50 damage to each of your opponent's Pokémon.",
+        Mechanic::SelfDiscardTypedEnergyAndDamageAllOpponent {
+            energy_type: EnergyType::Water,
+            count: 3,
+            damage: 50,
+        },
+    );
+    // Psyduck (B4 030) - Migraine
+    map.insert(
+        "Flip a coin. If heads, your opponent's Active Pokémon is now Confused. If tails, this Pokémon is now Confused.",
+        Mechanic::CoinFlipStatusOpponentOrSelf {
+            condition: StatusCondition::Confused,
+        },
+    );
+
+    // ---------------------------------------------------------------------------------------
+    // §47 — B4 completion, wave 3: genuinely new logic.
+    // ---------------------------------------------------------------------------------------
+
+    // Accelgor (B4 014 / B4 159) - Deck and Cover
+    map.insert(
+        "Your opponent's Active Pokémon is now Poisoned and Paralyzed. Shuffle this Pokémon and all attached cards into your deck.",
+        Mechanic::InflictStatusConditionsAndShuffleSelfIntoDeck {
+            conditions: vec![StatusCondition::Poisoned, StatusCondition::Paralyzed],
+        },
+    );
+    // Hoopa (B4 077) - Mischievous Ring
+    map.insert(
+        "Before doing damage, shuffle all Pokémon Tools from each of your opponent's Pokémon into their deck.",
+        Mechanic::ShuffleOpponentToolsIntoDeckBeforeDamage,
+    );
+    // Armaldo (B4 082) - Abyssal Drop
+    map.insert(
+        "Discard all Energy from this Pokémon. Choose a spot from among your opponent's Active Spot and Bench. At the end of your opponent's next turn, Knock Out the Pokémon in the spot you chose.",
+        Mechanic::SelfDiscardAllEnergyAndDelayedSpotKnockOut,
+    );
+    // Delcatty (B4 135) - Energy Blender.
+    // ⚠ Bounded candidate generation — see `actions::energy_moves` for the deviation from the
+    // printed "in any way you like".
+    map.insert(
+        "You may move any amount of Energy from your Pokémon in play to your other Pokémon in any way you like.",
+        Mechanic::MoveEnergyFreelyAmongYourPokemon,
+    );
+
     map
 });
