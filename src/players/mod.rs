@@ -70,6 +70,12 @@ pub enum PlayerCode {
     F {
         max_depth: usize,
     },
+    /// §117. `F` + spread-damage estimator classes, a discard-energy credit when a
+    /// recycler ability is in play, and the two dead "team online" weights turned on.
+    /// `f<N>` vs `g<N>` isolates the §117 bundle.
+    G {
+        max_depth: usize,
+    },
     /// §40. `P`, plus a bounded public-information-only search into the OPPONENT's turn.
     /// `p<N>` vs `x<N>` isolates the opponent ply.
     X {
@@ -136,6 +142,15 @@ pub fn parse_player_code(s: &str) -> Result<PlayerCode, String> {
         }
         return Err(format!(
             "Invalid player code: {s}. Use 'f<number>', e.g. 'f3'"
+        ));
+    }
+    // §117. 'g<N>' = 'f<N>' + spread classes + discard-energy credit + dead weights on.
+    if lower.starts_with('g') && lower.len() > 1 {
+        if let Ok(max_depth) = lower[1..].parse::<usize>() {
+            return Ok(PlayerCode::G { max_depth });
+        }
+        return Err(format!(
+            "Invalid player code: {s}. Use 'g<number>', e.g. 'g3'"
         ));
     }
     if (lower.starts_with('x') || lower.starts_with('y') || lower.starts_with('s'))
@@ -271,6 +286,15 @@ fn get_player(deck: Deck, player: &PlayerCode) -> Box<dyn Player> {
             consistent_horizon: false,
             soft_opponent: false,
         }),
+        PlayerCode::G { max_depth } => Box::new(ExpectiMiniMaxPlayer {
+            deck,
+            max_depth: *max_depth,
+            write_debug_trees: false,
+            value_function: Box::new(value_functions::public_development_value_function),
+            opponent_ply: 0,
+            consistent_horizon: false,
+            soft_opponent: false,
+        }),
         PlayerCode::X {
             max_depth,
             opponent_ply,
@@ -357,6 +381,11 @@ mod s42_tier_parse_tests {
         assert_eq!(
             parse_player_code("f3").unwrap(),
             PlayerCode::F { max_depth: 3 }
+        );
+        // §117: 'g<N>' must parse and must not shadow anything earlier.
+        assert_eq!(
+            parse_player_code("g3").unwrap(),
+            PlayerCode::G { max_depth: 3 }
         );
         // `w` is the weighted-random bot and must still resolve to it, which is why the soft
         // tier is `s` and not `w`.
