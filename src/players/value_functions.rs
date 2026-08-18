@@ -156,6 +156,42 @@ pub fn public_development_value_function(state: &State, myself: usize) -> f64 {
     )
 }
 
+/// s118 - the `t` tier. The s115 change with ONLY its threat-clock half enabled: the
+/// evolution-aware `turns_until_opponent_wins` scan (no 30.0 sentinel), with the
+/// HISTORICAL `HP x (energy+1)` Pokemon term. `p<N>` vs `t<N>` isolates the clock fix.
+pub fn public_clock_value_function(state: &State, myself: usize) -> f64 {
+    parametric_value_function_ex5(
+        state,
+        myself,
+        &ValueFunctionParams::baseline(),
+        true,
+        false,
+        true,
+        false,
+        false,
+    )
+}
+
+/// s118 - the `v` tier. The s115 change with ONLY its Pokemon-value half enabled: the
+/// additive damage/development-aware Pokemon term, with the HISTORICAL threat-clock scan
+/// (30.0 sentinel intact). `p<N>` vs `v<N>` isolates the leaf value formula.
+///
+/// NOTE the adjacency: bare `v` is the long-standing `ValueFunctionPlayer`. `v<N>` (with a
+/// depth digit) is this tier. Guarded by a parse test.
+pub fn public_pokemon_value_function(state: &State, myself: usize) -> f64 {
+    parametric_value_function_ex5(
+        state,
+        myself,
+        &ValueFunctionParams::baseline(),
+        true,
+        true,
+        false,
+        false,
+        false,
+    )
+}
+
+
 /// A variant of the baseline value function
 pub fn variant_value_function(state: &State, myself: usize) -> f64 {
     parametric_value_function(state, myself, &ValueFunctionParams::variant())
@@ -237,15 +273,64 @@ pub fn parametric_value_function_ex4(
     effect_aware: bool,
     reserve_aware: bool,
 ) -> f64 {
+    // s118: the historical `damage_aware` switch drove BOTH halves of the s115 change at
+    // once. It is preserved here as "both on", so every existing tier is bit-identical.
+    parametric_value_function_ex5(
+        state,
+        myself,
+        params,
+        public_eval,
+        damage_aware,
+        damage_aware,
+        effect_aware,
+        reserve_aware,
+    )
+}
+
+/// [`parametric_value_function_ex4`], with the s115 change SPLIT into its two independent
+/// halves (s118).
+///
+/// s115 shipped as one flag but was two logically separate edits, and `d<N>` therefore
+/// confounds them:
+///   * `value_aware`  - the additive Pokemon term (HP + dmg/(1+missing) + evolution
+///     potential x 0.5^steps) replacing `HP x (energy+1)`. Prime suspect for the
+///     pure-basics aggro regression (koraidon mirror ~41-42% under d/f/g).
+///   * `clock_aware`  - the evolution-aware `turns_until_opponent_wins` scan, which
+///     removes the 30.0 "can never win" sentinel and with it the -2,500 pt
+///     anti-evolution cliff. Prime suspect for the venusaur/wailord anchor improvement.
+///
+/// `t<N>` = clock only, `v<N>` = value only, `d<N>` = both, `p<N>` = neither. The 2x2
+/// tells us whether the anchor gain and the aggro loss ride on the same edit.
+#[allow(clippy::too_many_arguments)]
+pub fn parametric_value_function_ex5(
+    state: &State,
+    myself: usize,
+    params: &ValueFunctionParams,
+    public_eval: bool,
+    value_aware: bool,
+    clock_aware: bool,
+    effect_aware: bool,
+    reserve_aware: bool,
+) -> f64 {
     let opponent = (myself + 1) % 2;
     let (my, opp) = (
-        extract_features(state, myself, 1.0, false, damage_aware, effect_aware, reserve_aware),
+        extract_features(
+            state,
+            myself,
+            1.0,
+            false,
+            value_aware,
+            clock_aware,
+            effect_aware,
+            reserve_aware,
+        ),
         extract_features(
             state,
             opponent,
             1.0,
             public_eval,
-            damage_aware,
+            value_aware,
+            clock_aware,
             effect_aware,
             reserve_aware,
         ),
@@ -294,17 +379,19 @@ struct Features {
 /// see. Today that affects exactly one feature — `active_pokemon_online_score` — because it
 /// is the only one that reads deck or hand CONTENTS; `hand_size` and `deck_size` are counts
 /// and are public. (§40)
+#[allow(clippy::too_many_arguments)]
 fn extract_features(
     state: &State,
     player: usize,
     active_factor: f64,
     public_only: bool,
-    damage_aware: bool,
+    value_aware: bool,
+    clock_aware: bool,
     effect_aware: bool,
     reserve_aware: bool,
 ) -> Features {
     let points = state.points[player] as f64;
-    let pokemon_value = if damage_aware {
+    let pokemon_value = if value_aware {
         calculate_pokemon_value_damage_aware(
             state,
             player,
@@ -335,7 +422,7 @@ fn extract_features(
     // zone-read permission: it is true exactly when `player` is the OPPONENT of the
     // evaluating player, i.e. when the side being SCANNED for threats ((player+1)%2) is the
     // evaluating player themselves — whose deck and hand they may legitimately see.
-    let turns_until_opponent_wins = if damage_aware {
+    let turns_until_opponent_wins = if clock_aware {
         calculate_turns_until_opponent_wins_damage_aware(
             state,
             player,

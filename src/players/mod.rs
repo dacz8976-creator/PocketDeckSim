@@ -76,6 +76,18 @@ pub enum PlayerCode {
     G {
         max_depth: usize,
     },
+    /// s118. `P` with ONLY the s115 threat-clock half: the evolution-aware
+    /// `turns_until_opponent_wins` scan (no 30.0 sentinel), historical Pokemon term.
+    /// `p<N>` vs `t<N>` isolates the clock fix; `t<N>` vs `d<N>` isolates the value formula.
+    T {
+        max_depth: usize,
+    },
+    /// s118. `P` with ONLY the s115 Pokemon-value half: the additive damage/development
+    /// term, historical threat-clock scan. Completes the 2x2 with `p`/`t`/`d`.
+    /// NOTE: bare `v` is the long-standing ValueFunctionPlayer; `v<N>` is this tier.
+    VN {
+        max_depth: usize,
+    },
     /// §40. `P`, plus a bounded public-information-only search into the OPPONENT's turn.
     /// `p<N>` vs `x<N>` isolates the opponent ply.
     X {
@@ -133,6 +145,25 @@ pub fn parse_player_code(s: &str) -> Result<PlayerCode, String> {
         }
         return Err(format!(
             "Invalid player code: {s}. Use 'd<number>', e.g. 'd3'"
+        ));
+    }
+    // s118. 't<N>' = 'p<N>' with ONLY the s115 evolution-aware threat clock.
+    if lower.starts_with('t') && lower.len() > 1 {
+        if let Ok(max_depth) = lower[1..].parse::<usize>() {
+            return Ok(PlayerCode::T { max_depth });
+        }
+        return Err(format!(
+            "Invalid player code: {s}. Use 't<number>', e.g. 't3'"
+        ));
+    }
+    // s118. 'v<N>' = 'p<N>' with ONLY the s115 Pokemon-value term. Bare 'v' is still the
+    // ValueFunctionPlayer and is handled by the match below (len == 1 fails this guard).
+    if lower.starts_with('v') && lower.len() > 1 {
+        if let Ok(max_depth) = lower[1..].parse::<usize>() {
+            return Ok(PlayerCode::VN { max_depth });
+        }
+        return Err(format!(
+            "Invalid player code: {s}. Use 'v<number>', e.g. 'v3'"
         ));
     }
     // §116. 'f<N>' = 'd<N>' with effect-aware damage estimation.
@@ -277,6 +308,24 @@ fn get_player(deck: Deck, player: &PlayerCode) -> Box<dyn Player> {
             consistent_horizon: false,
             soft_opponent: false,
         }),
+        PlayerCode::T { max_depth } => Box::new(ExpectiMiniMaxPlayer {
+            deck,
+            max_depth: *max_depth,
+            write_debug_trees: false,
+            value_function: Box::new(value_functions::public_clock_value_function),
+            opponent_ply: 0,
+            consistent_horizon: false,
+            soft_opponent: false,
+        }),
+        PlayerCode::VN { max_depth } => Box::new(ExpectiMiniMaxPlayer {
+            deck,
+            max_depth: *max_depth,
+            write_debug_trees: false,
+            value_function: Box::new(value_functions::public_pokemon_value_function),
+            opponent_ply: 0,
+            consistent_horizon: false,
+            soft_opponent: false,
+        }),
         PlayerCode::F { max_depth } => Box::new(ExpectiMiniMaxPlayer {
             deck,
             max_depth: *max_depth,
@@ -338,6 +387,35 @@ fn get_player(deck: Deck, player: &PlayerCode) -> Box<dyn Player> {
 #[cfg(test)]
 mod s42_tier_parse_tests {
     use super::*;
+
+    /// s118. The `t`/`v` tiers must parse, and `v<N>` must NOT shadow bare `v`
+    /// (the long-standing ValueFunctionPlayer). A clash here would silently re-pilot
+    /// every historical `v` run.
+    #[test]
+    fn test_s118_tv_tiers_parse_and_bare_v_survives() {
+        assert_eq!(
+            parse_player_code("t3").unwrap(),
+            PlayerCode::T { max_depth: 3 }
+        );
+        assert_eq!(
+            parse_player_code("v3").unwrap(),
+            PlayerCode::VN { max_depth: 3 }
+        );
+        assert_eq!(parse_player_code("v").unwrap(), PlayerCode::V);
+        assert_eq!(parse_player_code("V").unwrap(), PlayerCode::V);
+        // the pre-existing tiers are untouched
+        assert_eq!(
+            parse_player_code("d3").unwrap(),
+            PlayerCode::D { max_depth: 3 }
+        );
+        assert_eq!(
+            parse_player_code("p3").unwrap(),
+            PlayerCode::P { max_depth: 3 }
+        );
+        // garbage after the letter is still an error, not a silent depth
+        assert!(parse_player_code("tt").is_err());
+        assert!(parse_player_code("vx").is_err());
+    }
 
     /// §42's tiers must not disturb §40's. `e`/`p`/`x` parsing is what every historical number
     /// in the lab was produced under, and a prefix clash here would silently re-tier a run.
