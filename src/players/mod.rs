@@ -63,6 +63,13 @@ pub enum PlayerCode {
     D {
         max_depth: usize,
     },
+    /// §116. `D` with effect-aware attack-damage estimation (Mega Burst's discard scaling,
+    /// bench-count damage, direct damage, coin-flip EVs, …) and the online score anchored
+    /// to the best payable attack instead of the lexicographic `.max()`. `d<N>` vs `f<N>`
+    /// isolates effect-aware damage estimation.
+    F {
+        max_depth: usize,
+    },
     /// §40. `P`, plus a bounded public-information-only search into the OPPONENT's turn.
     /// `p<N>` vs `x<N>` isolates the opponent ply.
     X {
@@ -120,6 +127,15 @@ pub fn parse_player_code(s: &str) -> Result<PlayerCode, String> {
         }
         return Err(format!(
             "Invalid player code: {s}. Use 'd<number>', e.g. 'd3'"
+        ));
+    }
+    // §116. 'f<N>' = 'd<N>' with effect-aware damage estimation.
+    if lower.starts_with('f') && lower.len() > 1 {
+        if let Ok(max_depth) = lower[1..].parse::<usize>() {
+            return Ok(PlayerCode::F { max_depth });
+        }
+        return Err(format!(
+            "Invalid player code: {s}. Use 'f<number>', e.g. 'f3'"
         ));
     }
     if (lower.starts_with('x') || lower.starts_with('y') || lower.starts_with('s'))
@@ -246,6 +262,15 @@ fn get_player(deck: Deck, player: &PlayerCode) -> Box<dyn Player> {
             consistent_horizon: false,
             soft_opponent: false,
         }),
+        PlayerCode::F { max_depth } => Box::new(ExpectiMiniMaxPlayer {
+            deck,
+            max_depth: *max_depth,
+            write_debug_trees: false,
+            value_function: Box::new(value_functions::public_effect_value_function),
+            opponent_ply: 0,
+            consistent_horizon: false,
+            soft_opponent: false,
+        }),
         PlayerCode::X {
             max_depth,
             opponent_ply,
@@ -327,6 +352,11 @@ mod s42_tier_parse_tests {
         assert_eq!(
             parse_player_code("d3").unwrap(),
             PlayerCode::D { max_depth: 3 }
+        );
+        // §116: 'f<N>' must parse and must not shadow anything earlier.
+        assert_eq!(
+            parse_player_code("f3").unwrap(),
+            PlayerCode::F { max_depth: 3 }
         );
         // `w` is the weighted-random bot and must still resolve to it, which is why the soft
         // tier is `s` and not `w`.
