@@ -88,6 +88,21 @@ pub fn public_baseline_value_function(state: &State, myself: usize) -> f64 {
     parametric_value_function_ex(state, myself, &ValueFunctionParams::baseline(), true)
 }
 
+/// §115 — the `d` tier. [`public_baseline_value_function`] with ONE substitution: the
+/// Pokémon term is [`calculate_pokemon_value_damage_aware`] instead of
+/// [`calculate_pokemon_value`]. Everything else is identical, so `p<N>` vs `d<N>`
+/// isolates the leaf evaluation of the board.
+///
+/// Motivation (§113): `calculate_pokemon_value` scores a Pokémon as
+/// `remaining_HP × (relevant_energy + 1)` and never reads attack damage, so an undamaged
+/// Bulbasaur (70 HP, 2-energy attack) outscores the Ivysaur it evolves into (100 HP,
+/// 1-energy utility attack) 210 to 200 — evolution is priced as a downgrade and setup
+/// decks never assemble (0 evolutions in 240 logged games; p3/p4/p5 identical, so it is
+/// the leaf, not the depth).
+pub fn public_damage_value_function(state: &State, myself: usize) -> f64 {
+    parametric_value_function_ex2(state, myself, &ValueFunctionParams::baseline(), true, true)
+}
+
 /// A variant of the baseline value function
 pub fn variant_value_function(state: &State, myself: usize) -> f64 {
     parametric_value_function(state, myself, &ValueFunctionParams::variant())
@@ -117,10 +132,24 @@ pub fn parametric_value_function_ex(
     params: &ValueFunctionParams,
     public_eval: bool,
 ) -> f64 {
+    parametric_value_function_ex2(state, myself, params, public_eval, false)
+}
+
+/// [`parametric_value_function_ex`], plus the §115 `damage_aware` switch. `false`
+/// reproduces the historical behaviour bit-for-bit (the branch selects the same
+/// [`calculate_pokemon_value`] call); `true` swaps in the damage/development-aware
+/// Pokémon term used by the `d` tier.
+pub fn parametric_value_function_ex2(
+    state: &State,
+    myself: usize,
+    params: &ValueFunctionParams,
+    public_eval: bool,
+    damage_aware: bool,
+) -> f64 {
     let opponent = (myself + 1) % 2;
     let (my, opp) = (
-        extract_features(state, myself, 1.0, false),
-        extract_features(state, opponent, 1.0, public_eval),
+        extract_features(state, myself, 1.0, false, damage_aware),
+        extract_features(state, opponent, 1.0, public_eval, damage_aware),
     );
     let score = (my.points - opp.points) * params.points
         + (my.pokemon_value - opp.pokemon_value) * params.pokemon_value
@@ -171,9 +200,14 @@ fn extract_features(
     player: usize,
     active_factor: f64,
     public_only: bool,
+    damage_aware: bool,
 ) -> Features {
     let points = state.points[player] as f64;
-    let pokemon_value = calculate_pokemon_value(state, player, active_factor);
+    let pokemon_value = if damage_aware {
+        calculate_pokemon_value_damage_aware(state, player, active_factor, public_only)
+    } else {
+        calculate_pokemon_value(state, player, active_factor)
+    };
     let hand_size = state.hands[player].len() as f64;
     let deck_size = state.decks[player].cards.len() as f64;
     let active_retreat_cost = get_active_retreat_cost(state, player) as f64;
@@ -184,7 +218,15 @@ fn extract_features(
     let active_safety = calculate_active_safety(state, player);
     let active_has_tool = get_active_has_tool(state, player);
     let is_winner = check_is_winner(state, player);
-    let turns_until_opponent_wins = calculate_turns_until_opponent_wins(state, player);
+    // §115: in the d path the threat scan is evolution-aware. `public_only` doubles as the
+    // zone-read permission: it is true exactly when `player` is the OPPONENT of the
+    // evaluating player, i.e. when the side being SCANNED for threats ((player+1)%2) is the
+    // evaluating player themselves — whose deck and hand they may legitimately see.
+    let turns_until_opponent_wins = if damage_aware {
+        calculate_turns_until_opponent_wins_damage_aware(state, player, public_only)
+    } else {
+        calculate_turns_until_opponent_wins(state, player)
+    };
     let discard_size = state.discard_piles[player].len() as f64;
 
     Features {
@@ -296,6 +338,104 @@ fn calculate_turns_until_opponent_wins(state: &State, player: usize) -> f64 {
     total_turns
 }
 
+/// §115 — [`calculate_turns_until_opponent_wins`] with the SECOND instance of the §113
+/// defect fixed. The original scans only attacks currently on the board and returns a
+/// "can never win" sentinel of 30.0 when none deal damage — so evolving into a utility
+/// Stage-1 (Ivysaur) zeroes the side's visible threat and the feature swings by thousands
+/// of points at coefficient 100. That cliff, not the 10-point Pokémon-term gap, is the
+/// bulk of why the pilot refused to evolve.
+///
+/// Here, when `read_scanned_zones` permits (see the call site: the scanned side is the
+/// evaluating player, whose own deck + hand are legitimately visible), each in-play
+/// Pokémon also threatens the attacks of its best evolution available in those zones,
+/// priced against the energy already on the slot, with each evolution step still to take
+/// counted as one more turn — the same unit as missing energy. When the scanned side is
+/// the true opponent, the scan stays board-only, preserving §40's leak closure.
+fn calculate_turns_until_opponent_wins_damage_aware(
+    state: &State,
+    player: usize,
+    read_scanned_zones: bool,
+) -> f64 {
+    let opponent = (player + 1) % 2;
+
+    let best_threat = state
+        .enumerate_in_play_pokemon(opponent)
+        .filter_map(|(_, pokemon)| {
+            let mut candidates: Vec<(u32, usize)> = pokemon
+                .card
+                .get_attacks()
+                .iter()
+                .filter(|atk| atk.fixed_damage > 0)
+                .map(|atk| {
+                    let missing = energy_missing(pokemon, &atk.energy_required, state, opponent);
+                    (atk.fixed_damage, missing.len())
+                })
+                .collect();
+            if read_scanned_zones {
+                if let Card::Pokemon(current) = &pokemon.card {
+                    let mut available: Vec<Card> = state.decks[opponent].cards.to_vec();
+                    available.extend(state.hands[opponent].iter().cloned());
+                    for target in get_highest_evolutions(&pokemon.card, &available) {
+                        let Card::Pokemon(t) = &target else { continue };
+                        let steps = t.stage.saturating_sub(current.stage) as usize;
+                        if steps == 0 {
+                            continue;
+                        }
+                        for atk in target.get_attacks() {
+                            if atk.fixed_damage > 0 {
+                                let missing =
+                                    energy_missing(pokemon, &atk.energy_required, state, opponent);
+                                candidates.push((atk.fixed_damage, missing.len() + steps));
+                            }
+                        }
+                    }
+                }
+            }
+            candidates
+                .into_iter()
+                .min_by_key(|(damage, missing)| (*missing, u32::MAX - damage))
+        })
+        .min_by_key(|(damage, missing)| (*missing, u32::MAX - damage));
+    let (max_damage, missing_energy) = match best_threat {
+        Some((damage, missing)) => (damage as f64, missing),
+        None => return 30.0, // No pokemon can deal damage, now or via any available evolution
+    };
+
+    let mut total_turns = 0.0;
+    let mut opp_points = state.points[opponent];
+
+    total_turns += missing_energy as f64;
+
+    if let Some(my_active) = state.maybe_get_active(player) {
+        let turns_to_ko = (my_active.get_remaining_hp() as f64 / max_damage).ceil();
+        total_turns += turns_to_ko;
+        opp_points += my_active.card.get_knockout_points();
+    }
+
+    while opp_points < 3 {
+        let safest_bench = state
+            .enumerate_bench_pokemon(player)
+            .max_by_key(|(_, card)| {
+                if opp_points == 2 {
+                    card.get_remaining_hp()
+                } else {
+                    let ko_points = card.card.get_knockout_points().max(1) as u32;
+                    card.get_remaining_hp() * 1000 / ko_points
+                }
+            });
+
+        let Some((_, safest_pokemon)) = safest_bench else {
+            break;
+        };
+
+        let turns_to_ko = (safest_pokemon.get_remaining_hp() as f64 / max_damage).ceil();
+        total_turns += turns_to_ko;
+        opp_points += safest_pokemon.card.get_knockout_points();
+    }
+
+    total_turns
+}
+
 /// Calculate online pokemon metrics: (count of online pokemon, total energy distance to online)
 /// A pokemon is "online" if it can use at least one attack
 /// Applies active_factor bonus to the active pokemon (position 0)
@@ -341,6 +481,97 @@ fn calculate_pokemon_value(state: &State, player: usize, active_factor: f64) -> 
             }
         })
         .sum()
+}
+
+/// §115 — the `d` tier's Pokémon term. Scores each Pokémon in play as
+///
+/// ```text
+/// remaining_HP + K_DAMAGE × best_damage_now + evolution_potential
+/// ```
+///
+/// - `best_damage_now`: the best of the card's OWN attacks, each valued at
+///   `fixed_damage / (1 + missing_energy)` against the slot's currently attached energy —
+///   a ready 40 is worth 40, a 120 missing two energy is worth 40. This is the damage term
+///   §113 showed was absent entirely, and because the anchor attack is chosen by DAMAGE it
+///   also retires `get_relevant_energy`'s lexicographic-`.max()` quirk in this path.
+/// - `evolution_potential`: the best evolution of this card available in the player's own
+///   deck + hand, valued the same way (HP net of damage carried, plus its discounted best
+///   damage against the energy already on the slot), then discounted by
+///   `EVOLUTION_STEP_DISCOUNT^steps`. Each evolution step taken moves value out of the
+///   discount and onto the board, so assembling a line is monotonically uphill —
+///   Bulbasaur 180 < Ivysaur 240 < Mega Venusaur ex 280 on the §113 whiteboard example
+///   that scored 210 > 200 under the old term. Reads the player's OWN hidden zones only;
+///   under `public_only` (opponent eval) it contributes 0, preserving §40's leak closure.
+fn calculate_pokemon_value_damage_aware(
+    state: &State,
+    player: usize,
+    active_factor: f64,
+    public_only: bool,
+) -> f64 {
+    state
+        .enumerate_in_play_pokemon(player)
+        .map(|(pos, card)| {
+            let value = card.get_remaining_hp() as f64
+                + K_DAMAGE * best_attack_value(card, &card.card, state, player)
+                + evolution_potential(state, player, card, public_only);
+            if pos == 0 {
+                value * active_factor
+            } else {
+                value
+            }
+        })
+        .sum()
+}
+
+/// §115 constants, fixed in `s115_prereg.txt` BEFORE the first d-tier game was run.
+const K_DAMAGE: f64 = 1.0;
+const EVOLUTION_STEP_DISCOUNT: f64 = 0.5;
+
+/// Best damage the Pokémon occupying `slot` could throw using `form`'s attacks, discounted
+/// by the energy still missing against the slot's CURRENT attached energy:
+/// `fixed_damage / (1 + missing)`. `form` is the slot's own card for the in-place term, or
+/// a prospective evolution for the potential term (energy survives evolution, so pricing a
+/// future form against today's energy is exact).
+fn best_attack_value(slot: &PlayedCard, form: &Card, state: &State, player: usize) -> f64 {
+    form.get_attacks()
+        .iter()
+        .filter(|atk| atk.fixed_damage > 0)
+        .map(|atk| {
+            let missing = energy_missing(slot, &atk.energy_required, state, player).len();
+            atk.fixed_damage as f64 / (1.0 + missing as f64)
+        })
+        .fold(0.0, f64::max)
+}
+
+/// §115 — what this slot could become: the best evolution reachable from the player's own
+/// deck + hand (via [`get_highest_evolutions`], the same helper the online score already
+/// uses), valued like a board Pokémon and discounted per evolution step still to take.
+/// Damage counters carry through evolution in Pocket, so they are subtracted from the
+/// target's HP.
+fn evolution_potential(state: &State, player: usize, slot: &PlayedCard, public_only: bool) -> f64 {
+    if public_only {
+        return 0.0;
+    }
+    let Card::Pokemon(current) = &slot.card else {
+        return 0.0;
+    };
+    let mut available: Vec<Card> = state.decks[player].cards.to_vec();
+    available.extend(state.hands[player].iter().cloned());
+    get_highest_evolutions(&slot.card, &available)
+        .iter()
+        .filter_map(|target| {
+            let Card::Pokemon(t) = target else {
+                return None;
+            };
+            let steps = t.stage.saturating_sub(current.stage);
+            if steps == 0 {
+                return None;
+            }
+            let hp = t.hp.saturating_sub(slot.get_damage_counters()) as f64;
+            let dmg = best_attack_value(slot, target, state, player);
+            Some((hp + K_DAMAGE * dmg) * EVOLUTION_STEP_DISCOUNT.powi(steps as i32))
+        })
+        .fold(0.0, f64::max)
 }
 
 /// Helper function to calculate relevant energy for a Pokemon
