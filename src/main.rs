@@ -39,6 +39,11 @@ enum Commands {
         #[arg(short, long)]
         seed: Option<u64>,
 
+        /// s118. Use `seed + game_index` for each game instead of `seed` for all of them.
+        /// Without this, `--seed` replays ONE game n times.
+        #[arg(long, default_value_t = false)]
+        seed_stream: bool,
+
         /// Run simulations in parallel
         #[arg(short, long, default_value_t = false)]
         parallel: bool,
@@ -104,6 +109,7 @@ fn simulate_against_folder(
     let total_num_simulations = sim_config.num_games;
     let players = sim_config.players;
     let seed = sim_config.seed;
+    let seed_stream = sim_config.seed_stream;
     let data_output = sim_config.data_output;
     let parallel = parallel_config.enabled;
     let num_threads = parallel_config.num_threads;
@@ -185,6 +191,7 @@ fn simulate_against_folder(
                 num_games: games_for_this_deck,
                 players: players.clone(),
                 seed,
+                seed_stream,
                 data_output: data_output.clone(),
             },
             ParallelConfig {
@@ -210,6 +217,7 @@ fn main() {
             players,
             num,
             seed,
+            seed_stream,
             parallel,
             threads,
             verbose,
@@ -229,6 +237,7 @@ fn main() {
                         num_games: num,
                         players,
                         seed,
+                        seed_stream,
                         data_output,
                     },
                     ParallelConfig {
@@ -244,6 +253,7 @@ fn main() {
                         num_games: num,
                         players,
                         seed,
+                        seed_stream,
                         data_output,
                     },
                     ParallelConfig {
@@ -272,6 +282,7 @@ fn main() {
                 num_games: num,
                 players,
                 seed,
+                seed_stream: false,
                 data_output: None,
             };
             let parallel_config = ParallelConfig {

@@ -191,6 +191,7 @@ fn simulate_against_folder(
                 num_games: games_for_this_deck,
                 players: None,
                 seed: None,
+                seed_stream: false,
                 data_output: None,
             },
             ParallelConfig {

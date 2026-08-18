@@ -34,6 +34,8 @@ pub struct SimulationConfig {
     pub num_games: u32,
     pub players: Option<Vec<PlayerCode>>,
     pub seed: Option<u64>,
+    /// s118. See `Simulation::with_seed_stream`. False = historical behaviour.
+    pub seed_stream: bool,
     pub data_output: Option<String>,
 }
 
@@ -528,6 +530,7 @@ mod tests {
             num_games: 1,
             players: Some(vec![PlayerCode::R, PlayerCode::R]),
             seed: None,
+            seed_stream: false,
             data_output: None,
         };
         let parallel_config = ParallelConfig {

@@ -61,6 +61,12 @@ pub struct Simulation {
     player_codes: Vec<PlayerCode>,
     num_simulations: u32,
     seed: Option<u64>,
+    /// s118. When true, game `k` of a seeded run uses `seed + k` instead of `seed`.
+    /// `--seed` alone gives EVERY game in the run the SAME seed, i.e. it replays one game
+    /// n times (a seeded n=200 cell is really n=1). Default false preserves that historical
+    /// behaviour byte-for-byte; the `--seed-stream` flag opts in to a reproducible SEQUENCE,
+    /// which is what paired-seed variance reduction across pilot tiers actually needs.
+    seed_stream: bool,
     handler_factories: Vec<Box<dyn Fn() -> Box<dyn SimulationEventHandler> + Send + Sync>>,
     parallel: bool,
     num_threads: Option<usize>,
@@ -107,6 +113,7 @@ impl Simulation {
             player_codes,
             num_simulations,
             seed,
+            seed_stream: false,
             handler_factories: vec![],
             parallel,
             num_threads,
@@ -134,6 +141,7 @@ impl Simulation {
             player_codes: vec![], // Not used when player_factory is provided
             num_simulations,
             seed,
+            seed_stream: false,
             handler_factories: vec![],
             parallel,
             num_threads,
@@ -141,6 +149,13 @@ impl Simulation {
             callbacks: None,
             player_factory: Some(Box::new(player_factory)),
         })
+    }
+
+    /// s118. Opt in to per-game seeding: game `k` uses `seed + k`. No effect when no
+    /// `--seed` was given (that path is already fully random per game).
+    pub fn with_seed_stream(mut self, on: bool) -> Self {
+        self.seed_stream = on;
+        self
     }
 
     pub fn register<T: SimulationEventHandler + Default + 'static>(mut self) -> Self {
@@ -189,7 +204,7 @@ impl Simulation {
             .and_then(|cbs| cbs.on_game_complete.as_ref());
 
         // Closure to run a single simulation
-        let run_single_simulation = |_| {
+        let run_single_simulation = |game_index: u32| {
             // Make a thread-local event handler for this simulation
             let mut event_handler = CompositeSimulationEventHandler::new(
                 self.handler_factories
@@ -207,7 +222,11 @@ impl Simulation {
                     self.player_codes.clone(),
                 )
             };
-            let seed = self.seed.unwrap_or(rand::random::<u64>());
+            let seed = match self.seed {
+                Some(base) if self.seed_stream => base.wrapping_add(game_index as u64),
+                Some(base) => base,
+                None => rand::random::<u64>(),
+            };
             let game_id = Uuid::new_v4();
             event_handler.on_game_start(game_id);
 
@@ -315,7 +334,8 @@ pub fn simulate(
         parallel_config.enabled,
         parallel_config.num_threads,
     )
-    .expect("Failed to create simulation");
+    .expect("Failed to create simulation")
+    .with_seed_stream(sim_config.seed_stream);
 
     simulation = simulation.register::<StatsCollector>();
     if let Some(output_folder) = sim_config.data_output {
