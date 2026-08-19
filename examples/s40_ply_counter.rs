@@ -47,6 +47,7 @@ fn main() {
                 num_games: num,
                 players: Some(vec![code.clone(), code]),
                 seed: None,
+                seed_stream: false,
                 data_output: None,
             },
             ParallelConfig {

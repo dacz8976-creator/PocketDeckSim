@@ -156,6 +156,32 @@ pub fn public_development_value_function(state: &State, myself: usize) -> f64 {
     )
 }
 
+/// s119 - the `k` tier (called `h` in s119's recommendation; `h` was already taken by the
+/// HumanPlayer code, so it ships as `k`).
+///
+/// The isolation s119 asked for: the evolution-aware threat CLOCK **plus** s116's
+/// effect-aware damage estimator and re-anchored online score, but **NO** additive Pokemon
+/// VALUE term - the historical `HP x (energy+1)` leaf stays.
+///
+/// Why: s119 measured t3 (clock, no value) at r=+0.426 against real matchup win rates,
+/// d3 (clock + value reading RAW `fixed_damage`) at +0.412, and f3 (clock + value reading
+/// the effect-aware estimator) at +0.498. So the value term HURTS on raw damage and HELPS
+/// on corrected damage. `k` separates the two things f3 added on top of t3: if k lands
+/// between t3 and f3 (closer to t3), the value term is doing real work once its input is
+/// right. If k MATCHES f3, the value term is inert and the whole gain is the estimator.
+pub fn public_clock_effect_value_function(state: &State, myself: usize) -> f64 {
+    parametric_value_function_ex5(
+        state,
+        myself,
+        &ValueFunctionParams::baseline(),
+        true,
+        false, // value_aware  - NO additive Pokemon value term
+        true,  // clock_aware  - evolution-aware threat scan
+        true,  // effect_aware - s116 estimator + re-anchored online score
+        false,
+    )
+}
+
 /// s118 - the `t` tier. The s115 change with ONLY its threat-clock half enabled: the
 /// evolution-aware `turns_until_opponent_wins` scan (no 30.0 sentinel), with the
 /// HISTORICAL `HP x (energy+1)` Pokemon term. `p<N>` vs `t<N>` isolates the clock fix.

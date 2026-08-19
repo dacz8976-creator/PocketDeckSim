@@ -88,6 +88,12 @@ pub enum PlayerCode {
     VN {
         max_depth: usize,
     },
+    /// s119. `T` + s116's effect-aware damage estimator and re-anchored online score, but
+    /// WITHOUT the additive Pokemon value term. Isolates the two things `f` adds over `t`.
+    /// (Called `h` in s119's recommendation; `h` is the HumanPlayer code, hence `k`.)
+    K {
+        max_depth: usize,
+    },
     /// §40. `P`, plus a bounded public-information-only search into the OPPONENT's turn.
     /// `p<N>` vs `x<N>` isolates the opponent ply.
     X {
@@ -154,6 +160,15 @@ pub fn parse_player_code(s: &str) -> Result<PlayerCode, String> {
         }
         return Err(format!(
             "Invalid player code: {s}. Use 't<number>', e.g. 't3'"
+        ));
+    }
+    // s119. 'k<N>' = 't<N>' + the s116 effect-aware estimator, no Pokemon-value term.
+    if lower.starts_with('k') && lower.len() > 1 {
+        if let Ok(max_depth) = lower[1..].parse::<usize>() {
+            return Ok(PlayerCode::K { max_depth });
+        }
+        return Err(format!(
+            "Invalid player code: {s}. Use 'k<number>', e.g. 'k3'"
         ));
     }
     // s118. 'v<N>' = 'p<N>' with ONLY the s115 Pokemon-value term. Bare 'v' is still the
@@ -326,6 +341,15 @@ fn get_player(deck: Deck, player: &PlayerCode) -> Box<dyn Player> {
             consistent_horizon: false,
             soft_opponent: false,
         }),
+        PlayerCode::K { max_depth } => Box::new(ExpectiMiniMaxPlayer {
+            deck,
+            max_depth: *max_depth,
+            write_debug_trees: false,
+            value_function: Box::new(value_functions::public_clock_effect_value_function),
+            opponent_ply: 0,
+            consistent_horizon: false,
+            soft_opponent: false,
+        }),
         PlayerCode::F { max_depth } => Box::new(ExpectiMiniMaxPlayer {
             deck,
             max_depth: *max_depth,
@@ -413,6 +437,12 @@ mod s42_tier_parse_tests {
             PlayerCode::P { max_depth: 3 }
         );
         // garbage after the letter is still an error, not a silent depth
+        assert_eq!(
+            parse_player_code("k3").unwrap(),
+            PlayerCode::K { max_depth: 3 }
+        );
+        assert!(parse_player_code("kk").is_err());
+        assert_eq!(parse_player_code("h").unwrap(), PlayerCode::H);
         assert!(parse_player_code("tt").is_err());
         assert!(parse_player_code("vx").is_err());
     }

@@ -59,6 +59,7 @@ fn main() {
                 num_games: num,
                 players: Some(vec![pa, pb]),
                 seed: None,
+                seed_stream: false,
                 data_output: None,
             },
             // Serial: the probe's counters are global, and interleaving seats across threads
