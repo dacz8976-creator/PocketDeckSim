@@ -382,9 +382,16 @@ fn irida_effect(_: &mut StdRng, state: &mut State, action: &Action) {
 
 fn pokemon_center_lady_effect(_: &mut StdRng, state: &mut State, action: &Action) {
     // Heal 30 damage from 1 of your Pokémon, and it recovers from all Special Conditions.
+    //
+    // F014 (§182/§183): an action card needs a valid thing to act on, so an undamaged AND
+    // unconditioned Pokémon is NOT a legal target — even when a different Pokémon is damaged
+    // and therefore makes the card playable. The playability check
+    // (`can_play_pokemon_center_lady`) already tests "some Pokémon is damaged or conditioned";
+    // this per-target filter is the half that was missing, so every in-play Pokémon was offered.
     debug!("Pokemon Center Lady: Healing 30 damage and curing status conditions");
     let possible_moves = state
         .enumerate_in_play_pokemon(action.actor)
+        .filter(|(_, pokemon)| pokemon.is_damaged() || pokemon.has_status_condition())
         .map(|(i, _)| SimpleAction::Heal {
             in_play_idx: i,
             amount: 30,
