@@ -126,6 +126,7 @@ pub fn trainer_move_generation_implementation(
         CardId::PA007ProfessorsResearch | CardId::A4b373ProfessorsResearch => {
             can_play_professors_research(state, trainer_card)
         }
+        CardId::PA005PokeBall => can_play_poke_ball(state, trainer_card),
         CardId::A2154Dawn | CardId::A2194Dawn | CardId::A4b342Dawn | CardId::A4b343Dawn => {
             can_play_dawn(state, trainer_card)
         }
@@ -197,7 +198,6 @@ pub fn trainer_move_generation_implementation(
         | CardId::A4b336Silver
         | CardId::A4b337Silver
         | CardId::PA002XSpeed
-        | CardId::PA005PokeBall
         | CardId::A2b111PokeBall
         | CardId::PA006RedCard
         | CardId::A1223Giovanni
@@ -490,6 +490,17 @@ fn can_play_professors_research(
     state: &State,
     trainer_card: &TrainerCard,
 ) -> Option<Vec<SimpleAction>> {
+    if state.decks[state.current_player].cards.is_empty() {
+        cannot_play_trainer()
+    } else {
+        can_play_trainer(state, trainer_card)
+    }
+}
+
+/// F018 (§189/§193): Poké Ball P-A 005 may search a nonempty hidden deck even when
+/// the search finds no Basic Pokémon, but an empty deck is public state and offers
+/// no legal search. This arm is deliberately limited to the measured print.
+fn can_play_poke_ball(state: &State, trainer_card: &TrainerCard) -> Option<Vec<SimpleAction>> {
     if state.decks[state.current_player].cards.is_empty() {
         cannot_play_trainer()
     } else {
