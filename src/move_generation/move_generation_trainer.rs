@@ -123,6 +123,9 @@ pub fn trainer_move_generation_implementation(
         CardId::A2b070PokemonCenterLady | CardId::A2b089PokemonCenterLady => {
             can_play_pokemon_center_lady(state, trainer_card)
         }
+        CardId::PA007ProfessorsResearch | CardId::A4b373ProfessorsResearch => {
+            can_play_professors_research(state, trainer_card)
+        }
         CardId::A2154Dawn | CardId::A2194Dawn | CardId::A4b342Dawn | CardId::A4b343Dawn => {
             can_play_dawn(state, trainer_card)
         }
@@ -197,8 +200,6 @@ pub fn trainer_move_generation_implementation(
         | CardId::PA005PokeBall
         | CardId::A2b111PokeBall
         | CardId::PA006RedCard
-        | CardId::PA007ProfessorsResearch
-        | CardId::A4b373ProfessorsResearch
         | CardId::A1223Giovanni
         | CardId::A1270Giovanni
         | CardId::A4b334Giovanni
@@ -478,6 +479,24 @@ fn can_play_elemental_switch(
 }
 
 /// Check if Pokemon Center Lady can be played (requires at least 1 damaged or status-affected pokemon)
+/// F017 (§186/§187): Professor's Research has NO target, but it does have a RESOURCE
+/// precondition — an action card needs a valid thing to act on, and drawing needs cards left in
+/// the deck. Measured on P-A 007: the card was offered with the actor's deck empty.
+///
+/// ⚠ This is a DIFFERENT SHAPE from F014's missing per-target filter, and it is deliberately
+/// scoped to this card's own arm: no other Supporter's playability is touched, which the
+/// acceptance test's third control checks.
+fn can_play_professors_research(
+    state: &State,
+    trainer_card: &TrainerCard,
+) -> Option<Vec<SimpleAction>> {
+    if state.decks[state.current_player].cards.is_empty() {
+        cannot_play_trainer()
+    } else {
+        can_play_trainer(state, trainer_card)
+    }
+}
+
 fn can_play_pokemon_center_lady(
     state: &State,
     trainer_card: &TrainerCard,
