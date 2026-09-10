@@ -54,6 +54,8 @@ static SOOTHING_SHORE_EFFECT: LazyLock<String> =
     LazyLock::new(|| stadium_effect_text_from_card_id(CardId::B4154SoothingShore));
 static RAINBOW_CAVE_EFFECT: LazyLock<String> =
     LazyLock::new(|| stadium_effect_text_from_card_id(CardId::B4155RainbowCave));
+static ARCADE_EFFECT: LazyLock<String> =
+    LazyLock::new(|| stadium_effect_text_from_card_id(CardId::B4a072Arcade));
 
 pub fn is_stadium_effect_implemented(trainer_card: &TrainerCard) -> bool {
     ensure_stadium_trainer(trainer_card);
@@ -72,6 +74,7 @@ pub fn is_stadium_effect_implemented(trainer_card: &TrainerCard) -> bool {
             || e == KIDS_ROOM_EFFECT.as_str()
             || e == SOOTHING_SHORE_EFFECT.as_str()
             || e == RAINBOW_CAVE_EFFECT.as_str()
+            || e == ARCADE_EFFECT.as_str()
     )
 }
 
@@ -226,4 +229,12 @@ pub fn can_use_kids_room(state: &State, player: usize) -> bool {
         .cards
         .iter()
         .any(|card| matches!(card, Card::Trainer(t) if t.trainer_card_type == TrainerType::Tool))
+}
+
+pub fn is_arcade_active(state: &State) -> bool {
+    has_stadium(state, CardId::B4a072Arcade)
+}
+
+pub fn can_use_arcade(state: &State, player: usize) -> bool {
+    is_arcade_active(state) && !state.has_used_stadium[player] && state.hands[player].len() < 7
 }

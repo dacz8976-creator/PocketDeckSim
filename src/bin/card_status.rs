@@ -1,6 +1,6 @@
 use clap::Parser;
 use deckgym::card_ids::CardId;
-use deckgym::card_validation::{get_implementation_status, ImplementationStatus};
+use deckgym::card_validation::{get_implementation_status, implementation_limitations, ImplementationStatus};
 use deckgym::database::get_card_by_enum;
 use std::collections::HashMap;
 use strum::IntoEnumIterator;
@@ -16,12 +16,18 @@ struct Args {
     /// Skip complete cards, show only incomplete ones
     #[arg(long)]
     incomplete_only: bool,
+
+    /// Emit a versioned machine-readable coverage inventory, including known limitations.
+    #[arg(long)]
+    json: bool,
 }
 
+#[derive(serde::Serialize)]
 struct CardStatusInfo {
     id: String,
     name: String,
     status: ImplementationStatus,
+    limitations: &'static [&'static str],
 }
 
 // Filtering logic: collect all card statuses
@@ -35,6 +41,7 @@ fn collect_card_statuses() -> Vec<CardStatusInfo> {
                 id: card.get_id(),
                 name: card.get_name(),
                 status,
+                limitations: implementation_limitations(card_id),
             }
         })
         .collect()
@@ -88,10 +95,20 @@ fn render_results(results: &[CardStatusInfo]) {
             width_id = max_id_len,
             width_name = max_name_len
         );
+        render_limitations(info);
     }
 
     // Print summary statistics
     print_summary(results);
+}
+
+fn render_limitations(info: &CardStatusInfo) {
+    if info.status == ImplementationStatus::RulesUnverified {
+        let id = CardId::from_card_id(&info.id).expect("Catalog ID must parse");
+        for limitation in implementation_limitations(id) {
+            println!("  - {limitation}");
+        }
+    }
 }
 
 fn print_summary(results: &[CardStatusInfo]) {
@@ -138,6 +155,18 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     // Collect all card statuses
     let all_results = collect_card_statuses();
 
+    if args.json {
+        let mut results = filter_results(all_results, args.incomplete_only || args.first_incomplete);
+        if args.first_incomplete { results.truncate(1); }
+        println!("{}", serde_json::to_string_pretty(&serde_json::json!({
+            "schema_version": 1,
+            "engine_version": env!("CARGO_PKG_VERSION"),
+            "scope": "Dispatch coverage and known limitations; Complete is not independent game-rule certification.",
+            "cards": results,
+        }))?);
+        return Ok(());
+    }
+
     // Handle first-incomplete flag
     if args.first_incomplete {
         if let Some(first_incomplete) = all_results.iter().find(|r| !r.status.is_complete()) {
@@ -147,6 +176,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 first_incomplete.name,
                 first_incomplete.status.description()
             );
+            render_limitations(first_incomplete);
         } else {
             println!("All cards are complete!");
         }

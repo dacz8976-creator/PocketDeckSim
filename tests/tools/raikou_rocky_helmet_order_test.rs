@@ -41,10 +41,17 @@ fn test_raikou_rocky_helmet_promotion_order() {
     assert_eq!(actor, 0);
     assert!(choices
         .iter()
-        .all(|choice| matches!(choice.action, SimpleAction::ApplyDamage { .. })));
+        .all(|choice| matches!(choice.action, SimpleAction::ApplyQueuedAttackDamage { .. })));
 
     let apply_damage_action = choices[0].clone();
     game.apply_action(&apply_damage_action);
+
+    // Both hits resolve before the Rocky Helmet knockout requires promotion.
+    let resolved = game.get_state_clone();
+    assert!(resolved.in_play_pokemon[0][0].is_none());
+    assert_eq!(resolved.points, [0, 2]);
+    assert_eq!(resolved.get_active(1).get_remaining_hp(), 10);
+    assert_eq!(resolved.in_play_pokemon[1][1].as_ref().unwrap().get_remaining_hp(), 50);
 
     // Assert Raikou was K.O. and attacker must activate
     let (actor, choices) = game.get_state_clone().generate_possible_actions();
@@ -52,7 +59,7 @@ fn test_raikou_rocky_helmet_promotion_order() {
     assert!(choices.iter().all(|choice| {
         matches!(
             choice.action,
-            SimpleAction::Activate {
+            SimpleAction::Promote {
                 player: 0,
                 in_play_idx: _
             }

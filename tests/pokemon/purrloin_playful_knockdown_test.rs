@@ -38,8 +38,8 @@ fn test_purrloin_playful_knockdown_discards_the_defenders_tool() {
         state.in_play_pokemon[1][0]
             .as_ref()
             .expect("Bulbasaur should still be in play")
-            .attached_tool
-            .is_none(),
+            .attached_tools
+            .is_empty(),
         "Playful Knockdown should discard the Tool"
     );
     assert_eq!(

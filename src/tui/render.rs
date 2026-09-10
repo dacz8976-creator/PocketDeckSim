@@ -225,7 +225,7 @@ pub(crate) fn render_pokemon_card<'a>(
             let mut lines = vec![name_hp_line];
 
             // Add tool name if attached
-            if let Some(tool_card) = &played_card.attached_tool {
+            for tool_card in &played_card.attached_tools {
                 let tool_name = tool_card.get_name();
                 lines.push(Line::from(vec![Span::styled(
                     format!("🔧{}", tool_name),
@@ -233,8 +233,9 @@ pub(crate) fn render_pokemon_card<'a>(
                         .fg(Color::Yellow)
                         .add_modifier(Modifier::ITALIC),
                 )]));
-            } else {
-                lines.push(Line::from("")); // Empty line if no tool
+            }
+            if played_card.attached_tools.is_empty() {
+                lines.push(Line::from(""));
             }
 
             // Add attack names

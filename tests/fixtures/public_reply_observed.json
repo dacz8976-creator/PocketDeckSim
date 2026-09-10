@@ -1,0 +1,1713 @@
+{
+  "opponent_turn_state": {
+    "active_stadium": null,
+    "active_stadium_owner": null,
+    "attack_name_used_count": [
+      {
+        "Electro Ball": 1,
+        "Hit and Hide": 2,
+        "Thunderclaw": 2
+      },
+      {
+        "Electro Ball": 1,
+        "Hit and Hide": 1,
+        "Thunderclaw": 2
+      }
+    ],
+    "attack_name_used_last_turn": [
+      "Thunderclaw",
+      "Hit and Hide"
+    ],
+    "attack_name_used_this_turn": [
+      null,
+      null
+    ],
+    "current_player": 1,
+    "decks": [
+      {
+        "cards": [
+          "Unknown",
+          "Unknown",
+          "Unknown",
+          "Unknown",
+          "Unknown"
+        ],
+        "energy_types": [
+          "Lightning"
+        ]
+      },
+      {
+        "cards": [
+          "Unknown",
+          "Unknown",
+          "Unknown",
+          "Unknown",
+          "Unknown",
+          "Unknown",
+          "Unknown",
+          "Unknown"
+        ],
+        "energy_types": []
+      }
+    ],
+    "discard_energies": [
+      [
+        "Lightning",
+        "Lightning"
+      ],
+      [
+        "Lightning",
+        "Lightning",
+        "Lightning"
+      ]
+    ],
+    "discard_piles": [
+      [
+        {
+          "Trainer": {
+            "booster_pack": "Promo A (P-A)",
+            "effect": "Draw 2 cards.",
+            "id": "P-A 007",
+            "name": "Professor's Research",
+            "rarity": "\u25ca",
+            "trainer_card_type": "Supporter"
+          }
+        },
+        {
+          "Trainer": {
+            "booster_pack": "Promo A (P-A)",
+            "effect": "Put a random Basic Pok\u00e9mon from your deck into your hand.",
+            "id": "P-A 005",
+            "name": "Pok\u00e9 Ball",
+            "rarity": "\u25ca",
+            "trainer_card_type": "Item"
+          }
+        },
+        {
+          "Trainer": {
+            "booster_pack": "Space-Time Smackdown (A2)",
+            "effect": "If the Pok\u00e9mon this card is attached to is in the Active Spot and is damaged by an attack from your opponent's Pok\u00e9mon, do 20 damage to the Attacking Pok\u00e9mon.",
+            "id": "A2 148",
+            "name": "Rocky Helmet",
+            "rarity": "\u25ca\u25ca",
+            "trainer_card_type": "Tool"
+          }
+        },
+        {
+          "Pokemon": {
+            "ability": {
+              "effect": "Once during your turn, you may look at a random card from your opponent's hand.",
+              "title": "Spy Ops"
+            },
+            "attacks": [
+              {
+                "effect": "Flip a coin. If heads, during your opponent's next turn, prevent all damage from\u2014and effects of\u2014attacks done to this Pok\u00e9mon.",
+                "energy_required": [
+                  "Colorless",
+                  "Colorless"
+                ],
+                "fixed_damage": 40,
+                "title": "Hit and Hide"
+              }
+            ],
+            "booster_pack": "Team Rocket's Ambition (B4a)",
+            "energy_type": "Colorless",
+            "evolves_from": null,
+            "hp": 70,
+            "id": "B4a 062",
+            "name": "Team Rocket's Kecleon",
+            "rarity": "\u25ca",
+            "retreat_cost": [
+              "Colorless"
+            ],
+            "stage": 0,
+            "weakness": "Fighting"
+          }
+        },
+        {
+          "Trainer": {
+            "booster_pack": "Promo A (P-A)",
+            "effect": "Heal 20 damage from 1 of your Pok\u00e9mon.",
+            "id": "P-A 001",
+            "name": "Potion",
+            "rarity": "\u25ca",
+            "trainer_card_type": "Item"
+          }
+        },
+        {
+          "Trainer": {
+            "booster_pack": "Promo A (P-A)",
+            "effect": "Draw 2 cards.",
+            "id": "P-A 007",
+            "name": "Professor's Research",
+            "rarity": "\u25ca",
+            "trainer_card_type": "Supporter"
+          }
+        },
+        {
+          "Trainer": {
+            "booster_pack": "Promo A (P-A)",
+            "effect": "Your opponent shuffles their hand into their deck and draws 3 cards.",
+            "id": "P-A 006",
+            "name": "Red Card",
+            "rarity": "\u25ca",
+            "trainer_card_type": "Item"
+          }
+        },
+        {
+          "Trainer": {
+            "booster_pack": "Promo A (P-A)",
+            "effect": "Your opponent shuffles their hand into their deck and draws 3 cards.",
+            "id": "P-A 006",
+            "name": "Red Card",
+            "rarity": "\u25ca",
+            "trainer_card_type": "Item"
+          }
+        }
+      ],
+      [
+        {
+          "Trainer": {
+            "booster_pack": "Team Rocket's Ambition (B4a)",
+            "effect": "Look at your opponent's hand and put any number of Basic Pok\u00e9mon you find there onto your opponent's Bench.",
+            "id": "B4a 071",
+            "name": "Team Rocket's Boss",
+            "rarity": "\u25ca\u25ca",
+            "trainer_card_type": "Supporter"
+          }
+        },
+        {
+          "Trainer": {
+            "booster_pack": "Promo A (P-A)",
+            "effect": "Your opponent shuffles their hand into their deck and draws 3 cards.",
+            "id": "P-A 006",
+            "name": "Red Card",
+            "rarity": "\u25ca",
+            "trainer_card_type": "Item"
+          }
+        },
+        {
+          "Trainer": {
+            "booster_pack": "Team Rocket's Ambition (B4a)",
+            "effect": "Look at your opponent's hand and put any number of Basic Pok\u00e9mon you find there onto your opponent's Bench.",
+            "id": "B4a 071",
+            "name": "Team Rocket's Boss",
+            "rarity": "\u25ca\u25ca",
+            "trainer_card_type": "Supporter"
+          }
+        },
+        {
+          "Trainer": {
+            "booster_pack": "Promo A (P-A)",
+            "effect": "Heal 20 damage from 1 of your Pok\u00e9mon.",
+            "id": "P-A 001",
+            "name": "Potion",
+            "rarity": "\u25ca",
+            "trainer_card_type": "Item"
+          }
+        },
+        {
+          "Trainer": {
+            "booster_pack": "Space-Time Smackdown (A2)",
+            "effect": "The Pok\u00e9mon this card is attached to gets +20 HP.",
+            "id": "A2 147",
+            "name": "Giant Cape",
+            "rarity": "\u25ca\u25ca",
+            "trainer_card_type": "Tool"
+          }
+        },
+        {
+          "Pokemon": {
+            "ability": null,
+            "attacks": [
+              {
+                "effect": null,
+                "energy_required": [
+                  "Lightning",
+                  "Colorless"
+                ],
+                "fixed_damage": 40,
+                "title": "Electro Ball"
+              },
+              {
+                "effect": "This attack also does 50 damage to 1 of your opponent's Benched Pok\u00e9mon that has damage on it.",
+                "energy_required": [
+                  "Lightning",
+                  "Lightning",
+                  "Colorless"
+                ],
+                "fixed_damage": 90,
+                "title": "Thunderclaw"
+              }
+            ],
+            "booster_pack": "Team Rocket's Ambition (B4a)",
+            "energy_type": "Lightning",
+            "evolves_from": null,
+            "hp": 120,
+            "id": "B4a 021",
+            "name": "Team Rocket's Zapdos ex",
+            "rarity": "\u25ca\u25ca\u25ca\u25ca",
+            "retreat_cost": [
+              "Colorless"
+            ],
+            "stage": 0,
+            "weakness": "Fighting"
+          }
+        }
+      ]
+    ],
+    "end_turn_pending": false,
+    "energy_zone": [
+      {
+        "current": null,
+        "next": "Lightning"
+      },
+      {
+        "current": "Lightning",
+        "next": null
+      }
+    ],
+    "hands": [
+      [
+        {
+          "Trainer": {
+            "booster_pack": "Promo A (P-A)",
+            "effect": "During this turn, the Retreat Cost of your Active Pok\u00e9mon is 1 less.",
+            "id": "P-A 002",
+            "name": "X Speed",
+            "rarity": "\u25ca",
+            "trainer_card_type": "Item"
+          }
+        },
+        {
+          "Trainer": {
+            "booster_pack": "Team Rocket's Ambition (B4a)",
+            "effect": "Look at your opponent's hand and put any number of Basic Pok\u00e9mon you find there onto your opponent's Bench.",
+            "id": "B4a 071",
+            "name": "Team Rocket's Boss",
+            "rarity": "\u25ca\u25ca",
+            "trainer_card_type": "Supporter"
+          }
+        },
+        {
+          "Trainer": {
+            "booster_pack": "Team Rocket's Ambition (B4a)",
+            "effect": "Look at your opponent's hand and put any number of Basic Pok\u00e9mon you find there onto your opponent's Bench.",
+            "id": "B4a 071",
+            "name": "Team Rocket's Boss",
+            "rarity": "\u25ca\u25ca",
+            "trainer_card_type": "Supporter"
+          }
+        },
+        {
+          "Trainer": {
+            "booster_pack": "Promo A (P-A)",
+            "effect": "During this turn, the Retreat Cost of your Active Pok\u00e9mon is 1 less.",
+            "id": "P-A 002",
+            "name": "X Speed",
+            "rarity": "\u25ca",
+            "trainer_card_type": "Item"
+          }
+        }
+      ],
+      [
+        "Unknown",
+        "Unknown",
+        "Unknown"
+      ]
+    ],
+    "has_played_support": false,
+    "has_retreated": false,
+    "has_used_stadium": [
+      false,
+      false
+    ],
+    "in_play_pokemon": [
+      [
+        {
+          "ability_hp_bonus": 0,
+          "ability_used": false,
+          "asleep": false,
+          "attached_energy": [
+            "Lightning",
+            "Lightning",
+            "Lightning"
+          ],
+          "attached_tools": [
+            {
+              "Trainer": {
+                "booster_pack": "Space-Time Smackdown (A2)",
+                "effect": "The Pok\u00e9mon this card is attached to gets +20 HP.",
+                "id": "A2 147",
+                "name": "Giant Cape",
+                "rarity": "\u25ca\u25ca",
+                "trainer_card_type": "Tool"
+              }
+            }
+          ],
+          "base_hp": 120,
+          "burned": false,
+          "card": {
+            "Pokemon": {
+              "ability": null,
+              "attacks": [
+                {
+                  "effect": null,
+                  "energy_required": [
+                    "Lightning",
+                    "Colorless"
+                  ],
+                  "fixed_damage": 40,
+                  "title": "Electro Ball"
+                },
+                {
+                  "effect": "This attack also does 50 damage to 1 of your opponent's Benched Pok\u00e9mon that has damage on it.",
+                  "energy_required": [
+                    "Lightning",
+                    "Lightning",
+                    "Colorless"
+                  ],
+                  "fixed_damage": 90,
+                  "title": "Thunderclaw"
+                }
+              ],
+              "booster_pack": "Team Rocket's Ambition (B4a)",
+              "energy_type": "Lightning",
+              "evolves_from": null,
+              "hp": 120,
+              "id": "B4a 021",
+              "name": "Team Rocket's Zapdos ex",
+              "rarity": "\u25ca\u25ca\u25ca\u25ca",
+              "retreat_cost": [
+                "Colorless"
+              ],
+              "stage": 0,
+              "weakness": "Fighting"
+            }
+          },
+          "cards_behind": [],
+          "confused": false,
+          "damage_counters": 110,
+          "damaged_by_attack_while_active_last_turn": false,
+          "damaged_by_attack_while_active_this_turn": false,
+          "effects": [],
+          "has_attacked_since_play": false,
+          "moved_to_active_this_turn": false,
+          "paralyzed": false,
+          "played_this_turn": false,
+          "poison_checkup_damage": null,
+          "poisoned": false,
+          "prevent_first_attack_damage_used": false,
+          "stadium_hp_bonus": 0
+        },
+        null,
+        null,
+        {
+          "ability_hp_bonus": 0,
+          "ability_used": false,
+          "asleep": false,
+          "attached_energy": [
+            "Lightning"
+          ],
+          "attached_tools": [],
+          "base_hp": 70,
+          "burned": false,
+          "card": {
+            "Pokemon": {
+              "ability": {
+                "effect": "Once during your turn, you may look at a random card from your opponent's hand.",
+                "title": "Spy Ops"
+              },
+              "attacks": [
+                {
+                  "effect": "Flip a coin. If heads, during your opponent's next turn, prevent all damage from\u2014and effects of\u2014attacks done to this Pok\u00e9mon.",
+                  "energy_required": [
+                    "Colorless",
+                    "Colorless"
+                  ],
+                  "fixed_damage": 40,
+                  "title": "Hit and Hide"
+                }
+              ],
+              "booster_pack": "Team Rocket's Ambition (B4a)",
+              "energy_type": "Colorless",
+              "evolves_from": null,
+              "hp": 70,
+              "id": "B4a 062",
+              "name": "Team Rocket's Kecleon",
+              "rarity": "\u25ca",
+              "retreat_cost": [
+                "Colorless"
+              ],
+              "stage": 0,
+              "weakness": "Fighting"
+            }
+          },
+          "cards_behind": [],
+          "confused": false,
+          "damage_counters": 0,
+          "damaged_by_attack_while_active_last_turn": false,
+          "damaged_by_attack_while_active_this_turn": false,
+          "effects": [],
+          "has_attacked_since_play": false,
+          "moved_to_active_this_turn": false,
+          "paralyzed": false,
+          "played_this_turn": false,
+          "poison_checkup_damage": null,
+          "poisoned": false,
+          "prevent_first_attack_damage_used": false,
+          "stadium_hp_bonus": 0
+        }
+      ],
+      [
+        {
+          "ability_hp_bonus": 0,
+          "ability_used": false,
+          "asleep": false,
+          "attached_energy": [
+            "Lightning",
+            "Lightning"
+          ],
+          "attached_tools": [
+            {
+              "Trainer": {
+                "booster_pack": "Space-Time Smackdown (A2)",
+                "effect": "The Pok\u00e9mon this card is attached to gets +20 HP.",
+                "id": "A2 147",
+                "name": "Giant Cape",
+                "rarity": "\u25ca\u25ca",
+                "trainer_card_type": "Tool"
+              }
+            }
+          ],
+          "base_hp": 70,
+          "burned": false,
+          "card": {
+            "Pokemon": {
+              "ability": {
+                "effect": "Once during your turn, you may look at a random card from your opponent's hand.",
+                "title": "Spy Ops"
+              },
+              "attacks": [
+                {
+                  "effect": "Flip a coin. If heads, during your opponent's next turn, prevent all damage from\u2014and effects of\u2014attacks done to this Pok\u00e9mon.",
+                  "energy_required": [
+                    "Colorless",
+                    "Colorless"
+                  ],
+                  "fixed_damage": 40,
+                  "title": "Hit and Hide"
+                }
+              ],
+              "booster_pack": "Team Rocket's Ambition (B4a)",
+              "energy_type": "Colorless",
+              "evolves_from": null,
+              "hp": 70,
+              "id": "B4a 062",
+              "name": "Team Rocket's Kecleon",
+              "rarity": "\u25ca",
+              "retreat_cost": [
+                "Colorless"
+              ],
+              "stage": 0,
+              "weakness": "Fighting"
+            }
+          },
+          "cards_behind": [],
+          "confused": false,
+          "damage_counters": 0,
+          "damaged_by_attack_while_active_last_turn": false,
+          "damaged_by_attack_while_active_this_turn": false,
+          "effects": [],
+          "has_attacked_since_play": false,
+          "moved_to_active_this_turn": false,
+          "paralyzed": false,
+          "played_this_turn": false,
+          "poison_checkup_damage": null,
+          "poisoned": false,
+          "prevent_first_attack_damage_used": false,
+          "stadium_hp_bonus": 0
+        },
+        null,
+        {
+          "ability_hp_bonus": 0,
+          "ability_used": false,
+          "asleep": false,
+          "attached_energy": [],
+          "attached_tools": [],
+          "base_hp": 70,
+          "burned": false,
+          "card": {
+            "Pokemon": {
+              "ability": {
+                "effect": "Once during your turn, you may look at a random card from your opponent's hand.",
+                "title": "Spy Ops"
+              },
+              "attacks": [
+                {
+                  "effect": "Flip a coin. If heads, during your opponent's next turn, prevent all damage from\u2014and effects of\u2014attacks done to this Pok\u00e9mon.",
+                  "energy_required": [
+                    "Colorless",
+                    "Colorless"
+                  ],
+                  "fixed_damage": 40,
+                  "title": "Hit and Hide"
+                }
+              ],
+              "booster_pack": "Team Rocket's Ambition (B4a)",
+              "energy_type": "Colorless",
+              "evolves_from": null,
+              "hp": 70,
+              "id": "B4a 062",
+              "name": "Team Rocket's Kecleon",
+              "rarity": "\u25ca",
+              "retreat_cost": [
+                "Colorless"
+              ],
+              "stage": 0,
+              "weakness": "Fighting"
+            }
+          },
+          "cards_behind": [],
+          "confused": false,
+          "damage_counters": 0,
+          "damaged_by_attack_while_active_last_turn": false,
+          "damaged_by_attack_while_active_this_turn": false,
+          "effects": [],
+          "has_attacked_since_play": false,
+          "moved_to_active_this_turn": false,
+          "paralyzed": false,
+          "played_this_turn": false,
+          "poison_checkup_damage": null,
+          "poisoned": false,
+          "prevent_first_attack_damage_used": false,
+          "stadium_hp_bonus": 0
+        },
+        null
+      ]
+    ],
+    "knocked_out_by_opponent_attack_last_turn": false,
+    "knocked_out_by_opponent_attack_this_turn": false,
+    "knocked_out_types_by_opponent_attack_last_turn": [],
+    "knocked_out_types_by_opponent_attack_this_turn": [],
+    "move_generation_stack": [
+      [
+        1,
+        [
+          {
+            "DrawCard": {
+              "amount": 1
+            }
+          }
+        ]
+      ]
+    ],
+    "own_knockouts_this_game": [
+      1,
+      1
+    ],
+    "points": [
+      2,
+      1
+    ],
+    "points_gained_during_own_last_turn": [
+      0,
+      0
+    ],
+    "points_gained_this_turn": [
+      0,
+      0
+    ],
+    "turn_count": 13,
+    "turn_effects": {},
+    "winner": null
+  },
+  "opponent_win_witness": {
+    "action": {
+      "Attack": {
+        "effect": "Flip a coin. If heads, during your opponent's next turn, prevent all damage from\u2014and effects of\u2014attacks done to this Pok\u00e9mon.",
+        "energy_required": [
+          "Colorless",
+          "Colorless"
+        ],
+        "fixed_damage": 40,
+        "title": "Hit and Hide"
+      }
+    },
+    "actor": 1,
+    "is_stack": false
+  },
+  "path_to_opponent_turn": [
+    {
+      "action": {
+        "Attack": {
+          "effect": "This attack also does 50 damage to 1 of your opponent's Benched Pok\u00e9mon that has damage on it.",
+          "energy_required": [
+            "Lightning",
+            "Lightning",
+            "Colorless"
+          ],
+          "fixed_damage": 90,
+          "title": "Thunderclaw"
+        }
+      },
+      "actor": 0,
+      "is_stack": false
+    },
+    {
+      "action": "EndTurn",
+      "actor": 0,
+      "is_stack": false
+    }
+  ],
+  "record_type": "flag",
+  "row": {
+    "actor": 0,
+    "chosen_action": {
+      "action": {
+        "Attack": {
+          "effect": "This attack also does 50 damage to 1 of your opponent's Benched Pok\u00e9mon that has damage on it.",
+          "energy_required": [
+            "Lightning",
+            "Lightning",
+            "Colorless"
+          ],
+          "fixed_damage": 90,
+          "title": "Thunderclaw"
+        }
+      },
+      "actor": 0,
+      "is_stack": false
+    },
+    "decision_randomness": {
+      "actor": 0,
+      "decision_index": 28,
+      "search_seed": 12892097050433432090
+    },
+    "evidence_source": {
+      "archive": "baseline/kecleon-zapdos-mirror-ab/serial/traces.tar.gz",
+      "member": "traces/86e80517-6e65-487c-9349-a5f94d922425/ply_0077.json"
+    },
+    "game_id": "86e80517-6e65-487c-9349-a5f94d922425",
+    "information_model": "closed-counts-unpriced-v6",
+    "luxury_coin_resolutions": [],
+    "playable_actions": [
+      {
+        "action": "EndTurn",
+        "actor": 0,
+        "is_stack": false
+      },
+      {
+        "action": {
+          "Attack": {
+            "effect": null,
+            "energy_required": [
+              "Lightning",
+              "Colorless"
+            ],
+            "fixed_damage": 40,
+            "title": "Electro Ball"
+          }
+        },
+        "actor": 0,
+        "is_stack": false
+      },
+      {
+        "action": {
+          "Attack": {
+            "effect": "This attack also does 50 damage to 1 of your opponent's Benched Pok\u00e9mon that has damage on it.",
+            "energy_required": [
+              "Lightning",
+              "Lightning",
+              "Colorless"
+            ],
+            "fixed_damage": 90,
+            "title": "Thunderclaw"
+          }
+        },
+        "actor": 0,
+        "is_stack": false
+      },
+      {
+        "action": {
+          "Play": {
+            "trainer_card": {
+              "booster_pack": "Promo A (P-A)",
+              "effect": "During this turn, the Retreat Cost of your Active Pok\u00e9mon is 1 less.",
+              "id": "P-A 002",
+              "name": "X Speed",
+              "rarity": "\u25ca",
+              "trainer_card_type": "Item"
+            }
+          }
+        },
+        "actor": 0,
+        "is_stack": false
+      },
+      {
+        "action": {
+          "Play": {
+            "trainer_card": {
+              "booster_pack": "Promo A (P-A)",
+              "effect": "During this turn, the Retreat Cost of your Active Pok\u00e9mon is 1 less.",
+              "id": "P-A 002",
+              "name": "X Speed",
+              "rarity": "\u25ca",
+              "trainer_card_type": "Item"
+            }
+          }
+        },
+        "actor": 0,
+        "is_stack": false
+      },
+      {
+        "action": {
+          "Retreat": 3
+        },
+        "actor": 0,
+        "is_stack": false
+      }
+    ],
+    "ply": 77,
+    "private_reveals": [],
+    "public_reveals": [],
+    "randomness": {
+      "game_seed": 611005,
+      "player_search_seeds": [
+        17696601970737790063,
+        14011616460877661700
+      ],
+      "scheme": "pdl-search-v1/rand-0.8-StdRng"
+    },
+    "state": {
+      "active_stadium": null,
+      "active_stadium_owner": null,
+      "attack_name_used_count": [
+        {
+          "Electro Ball": 1,
+          "Hit and Hide": 2,
+          "Thunderclaw": 1
+        },
+        {
+          "Electro Ball": 1,
+          "Hit and Hide": 1,
+          "Thunderclaw": 2
+        }
+      ],
+      "attack_name_used_last_turn": [
+        "Thunderclaw",
+        "Hit and Hide"
+      ],
+      "attack_name_used_this_turn": [
+        null,
+        null
+      ],
+      "current_player": 0,
+      "decks": [
+        {
+          "cards": [
+            {
+              "Pokemon": {
+                "ability": null,
+                "attacks": [
+                  {
+                    "effect": null,
+                    "energy_required": [
+                      "Lightning",
+                      "Colorless"
+                    ],
+                    "fixed_damage": 40,
+                    "title": "Electro Ball"
+                  },
+                  {
+                    "effect": "This attack also does 50 damage to 1 of your opponent's Benched Pok\u00e9mon that has damage on it.",
+                    "energy_required": [
+                      "Lightning",
+                      "Lightning",
+                      "Colorless"
+                    ],
+                    "fixed_damage": 90,
+                    "title": "Thunderclaw"
+                  }
+                ],
+                "booster_pack": "Team Rocket's Ambition (B4a)",
+                "energy_type": "Lightning",
+                "evolves_from": null,
+                "hp": 120,
+                "id": "B4a 021",
+                "name": "Team Rocket's Zapdos ex",
+                "rarity": "\u25ca\u25ca\u25ca\u25ca",
+                "retreat_cost": [
+                  "Colorless"
+                ],
+                "stage": 0,
+                "weakness": "Fighting"
+              }
+            },
+            {
+              "Trainer": {
+                "booster_pack": "Space-Time Smackdown (A2)",
+                "effect": "The Pok\u00e9mon this card is attached to gets +20 HP.",
+                "id": "A2 147",
+                "name": "Giant Cape",
+                "rarity": "\u25ca\u25ca",
+                "trainer_card_type": "Tool"
+              }
+            },
+            {
+              "Trainer": {
+                "booster_pack": "Space-Time Smackdown (A2)",
+                "effect": "If the Pok\u00e9mon this card is attached to is in the Active Spot and is damaged by an attack from your opponent's Pok\u00e9mon, do 20 damage to the Attacking Pok\u00e9mon.",
+                "id": "A2 148",
+                "name": "Rocky Helmet",
+                "rarity": "\u25ca\u25ca",
+                "trainer_card_type": "Tool"
+              }
+            },
+            {
+              "Trainer": {
+                "booster_pack": "Promo A (P-A)",
+                "effect": "Put a random Basic Pok\u00e9mon from your deck into your hand.",
+                "id": "P-A 005",
+                "name": "Pok\u00e9 Ball",
+                "rarity": "\u25ca",
+                "trainer_card_type": "Item"
+              }
+            },
+            {
+              "Trainer": {
+                "booster_pack": "Promo A (P-A)",
+                "effect": "Heal 20 damage from 1 of your Pok\u00e9mon.",
+                "id": "P-A 001",
+                "name": "Potion",
+                "rarity": "\u25ca",
+                "trainer_card_type": "Item"
+              }
+            }
+          ],
+          "energy_types": [
+            "Lightning"
+          ]
+        },
+        {
+          "cards": [
+            {
+              "Trainer": {
+                "booster_pack": "Space-Time Smackdown (A2)",
+                "effect": "If the Pok\u00e9mon this card is attached to is in the Active Spot and is damaged by an attack from your opponent's Pok\u00e9mon, do 20 damage to the Attacking Pok\u00e9mon.",
+                "id": "A2 148",
+                "name": "Rocky Helmet",
+                "rarity": "\u25ca\u25ca",
+                "trainer_card_type": "Tool"
+              }
+            },
+            {
+              "Trainer": {
+                "booster_pack": "Promo A (P-A)",
+                "effect": "Put a random Basic Pok\u00e9mon from your deck into your hand.",
+                "id": "P-A 005",
+                "name": "Pok\u00e9 Ball",
+                "rarity": "\u25ca",
+                "trainer_card_type": "Item"
+              }
+            },
+            {
+              "Trainer": {
+                "booster_pack": "Promo A (P-A)",
+                "effect": "During this turn, the Retreat Cost of your Active Pok\u00e9mon is 1 less.",
+                "id": "P-A 002",
+                "name": "X Speed",
+                "rarity": "\u25ca",
+                "trainer_card_type": "Item"
+              }
+            },
+            {
+              "Trainer": {
+                "booster_pack": "Promo A (P-A)",
+                "effect": "Draw 2 cards.",
+                "id": "P-A 007",
+                "name": "Professor's Research",
+                "rarity": "\u25ca",
+                "trainer_card_type": "Supporter"
+              }
+            },
+            {
+              "Trainer": {
+                "booster_pack": "Promo A (P-A)",
+                "effect": "Draw 2 cards.",
+                "id": "P-A 007",
+                "name": "Professor's Research",
+                "rarity": "\u25ca",
+                "trainer_card_type": "Supporter"
+              }
+            },
+            {
+              "Trainer": {
+                "booster_pack": "Promo A (P-A)",
+                "effect": "Your opponent shuffles their hand into their deck and draws 3 cards.",
+                "id": "P-A 006",
+                "name": "Red Card",
+                "rarity": "\u25ca",
+                "trainer_card_type": "Item"
+              }
+            },
+            {
+              "Trainer": {
+                "booster_pack": "Promo A (P-A)",
+                "effect": "Heal 20 damage from 1 of your Pok\u00e9mon.",
+                "id": "P-A 001",
+                "name": "Potion",
+                "rarity": "\u25ca",
+                "trainer_card_type": "Item"
+              }
+            },
+            {
+              "Trainer": {
+                "booster_pack": "Promo A (P-A)",
+                "effect": "Put a random Basic Pok\u00e9mon from your deck into your hand.",
+                "id": "P-A 005",
+                "name": "Pok\u00e9 Ball",
+                "rarity": "\u25ca",
+                "trainer_card_type": "Item"
+              }
+            }
+          ],
+          "energy_types": [
+            "Lightning"
+          ]
+        }
+      ],
+      "discard_energies": [
+        [
+          "Lightning",
+          "Lightning"
+        ],
+        [
+          "Lightning",
+          "Lightning",
+          "Lightning"
+        ]
+      ],
+      "discard_piles": [
+        [
+          {
+            "Trainer": {
+              "booster_pack": "Promo A (P-A)",
+              "effect": "Draw 2 cards.",
+              "id": "P-A 007",
+              "name": "Professor's Research",
+              "rarity": "\u25ca",
+              "trainer_card_type": "Supporter"
+            }
+          },
+          {
+            "Trainer": {
+              "booster_pack": "Promo A (P-A)",
+              "effect": "Put a random Basic Pok\u00e9mon from your deck into your hand.",
+              "id": "P-A 005",
+              "name": "Pok\u00e9 Ball",
+              "rarity": "\u25ca",
+              "trainer_card_type": "Item"
+            }
+          },
+          {
+            "Trainer": {
+              "booster_pack": "Space-Time Smackdown (A2)",
+              "effect": "If the Pok\u00e9mon this card is attached to is in the Active Spot and is damaged by an attack from your opponent's Pok\u00e9mon, do 20 damage to the Attacking Pok\u00e9mon.",
+              "id": "A2 148",
+              "name": "Rocky Helmet",
+              "rarity": "\u25ca\u25ca",
+              "trainer_card_type": "Tool"
+            }
+          },
+          {
+            "Pokemon": {
+              "ability": {
+                "effect": "Once during your turn, you may look at a random card from your opponent's hand.",
+                "title": "Spy Ops"
+              },
+              "attacks": [
+                {
+                  "effect": "Flip a coin. If heads, during your opponent's next turn, prevent all damage from\u2014and effects of\u2014attacks done to this Pok\u00e9mon.",
+                  "energy_required": [
+                    "Colorless",
+                    "Colorless"
+                  ],
+                  "fixed_damage": 40,
+                  "title": "Hit and Hide"
+                }
+              ],
+              "booster_pack": "Team Rocket's Ambition (B4a)",
+              "energy_type": "Colorless",
+              "evolves_from": null,
+              "hp": 70,
+              "id": "B4a 062",
+              "name": "Team Rocket's Kecleon",
+              "rarity": "\u25ca",
+              "retreat_cost": [
+                "Colorless"
+              ],
+              "stage": 0,
+              "weakness": "Fighting"
+            }
+          },
+          {
+            "Trainer": {
+              "booster_pack": "Promo A (P-A)",
+              "effect": "Heal 20 damage from 1 of your Pok\u00e9mon.",
+              "id": "P-A 001",
+              "name": "Potion",
+              "rarity": "\u25ca",
+              "trainer_card_type": "Item"
+            }
+          },
+          {
+            "Trainer": {
+              "booster_pack": "Promo A (P-A)",
+              "effect": "Draw 2 cards.",
+              "id": "P-A 007",
+              "name": "Professor's Research",
+              "rarity": "\u25ca",
+              "trainer_card_type": "Supporter"
+            }
+          },
+          {
+            "Trainer": {
+              "booster_pack": "Promo A (P-A)",
+              "effect": "Your opponent shuffles their hand into their deck and draws 3 cards.",
+              "id": "P-A 006",
+              "name": "Red Card",
+              "rarity": "\u25ca",
+              "trainer_card_type": "Item"
+            }
+          },
+          {
+            "Trainer": {
+              "booster_pack": "Promo A (P-A)",
+              "effect": "Your opponent shuffles their hand into their deck and draws 3 cards.",
+              "id": "P-A 006",
+              "name": "Red Card",
+              "rarity": "\u25ca",
+              "trainer_card_type": "Item"
+            }
+          }
+        ],
+        [
+          {
+            "Trainer": {
+              "booster_pack": "Team Rocket's Ambition (B4a)",
+              "effect": "Look at your opponent's hand and put any number of Basic Pok\u00e9mon you find there onto your opponent's Bench.",
+              "id": "B4a 071",
+              "name": "Team Rocket's Boss",
+              "rarity": "\u25ca\u25ca",
+              "trainer_card_type": "Supporter"
+            }
+          },
+          {
+            "Trainer": {
+              "booster_pack": "Promo A (P-A)",
+              "effect": "Your opponent shuffles their hand into their deck and draws 3 cards.",
+              "id": "P-A 006",
+              "name": "Red Card",
+              "rarity": "\u25ca",
+              "trainer_card_type": "Item"
+            }
+          },
+          {
+            "Trainer": {
+              "booster_pack": "Team Rocket's Ambition (B4a)",
+              "effect": "Look at your opponent's hand and put any number of Basic Pok\u00e9mon you find there onto your opponent's Bench.",
+              "id": "B4a 071",
+              "name": "Team Rocket's Boss",
+              "rarity": "\u25ca\u25ca",
+              "trainer_card_type": "Supporter"
+            }
+          },
+          {
+            "Trainer": {
+              "booster_pack": "Promo A (P-A)",
+              "effect": "Heal 20 damage from 1 of your Pok\u00e9mon.",
+              "id": "P-A 001",
+              "name": "Potion",
+              "rarity": "\u25ca",
+              "trainer_card_type": "Item"
+            }
+          },
+          {
+            "Trainer": {
+              "booster_pack": "Space-Time Smackdown (A2)",
+              "effect": "The Pok\u00e9mon this card is attached to gets +20 HP.",
+              "id": "A2 147",
+              "name": "Giant Cape",
+              "rarity": "\u25ca\u25ca",
+              "trainer_card_type": "Tool"
+            }
+          },
+          {
+            "Pokemon": {
+              "ability": null,
+              "attacks": [
+                {
+                  "effect": null,
+                  "energy_required": [
+                    "Lightning",
+                    "Colorless"
+                  ],
+                  "fixed_damage": 40,
+                  "title": "Electro Ball"
+                },
+                {
+                  "effect": "This attack also does 50 damage to 1 of your opponent's Benched Pok\u00e9mon that has damage on it.",
+                  "energy_required": [
+                    "Lightning",
+                    "Lightning",
+                    "Colorless"
+                  ],
+                  "fixed_damage": 90,
+                  "title": "Thunderclaw"
+                }
+              ],
+              "booster_pack": "Team Rocket's Ambition (B4a)",
+              "energy_type": "Lightning",
+              "evolves_from": null,
+              "hp": 120,
+              "id": "B4a 021",
+              "name": "Team Rocket's Zapdos ex",
+              "rarity": "\u25ca\u25ca\u25ca\u25ca",
+              "retreat_cost": [
+                "Colorless"
+              ],
+              "stage": 0,
+              "weakness": "Fighting"
+            }
+          }
+        ]
+      ],
+      "end_turn_pending": false,
+      "energy_zone": [
+        {
+          "current": null,
+          "next": "Lightning"
+        },
+        {
+          "current": null,
+          "next": "Lightning"
+        }
+      ],
+      "hands": [
+        [
+          {
+            "Trainer": {
+              "booster_pack": "Promo A (P-A)",
+              "effect": "During this turn, the Retreat Cost of your Active Pok\u00e9mon is 1 less.",
+              "id": "P-A 002",
+              "name": "X Speed",
+              "rarity": "\u25ca",
+              "trainer_card_type": "Item"
+            }
+          },
+          {
+            "Trainer": {
+              "booster_pack": "Team Rocket's Ambition (B4a)",
+              "effect": "Look at your opponent's hand and put any number of Basic Pok\u00e9mon you find there onto your opponent's Bench.",
+              "id": "B4a 071",
+              "name": "Team Rocket's Boss",
+              "rarity": "\u25ca\u25ca",
+              "trainer_card_type": "Supporter"
+            }
+          },
+          {
+            "Trainer": {
+              "booster_pack": "Team Rocket's Ambition (B4a)",
+              "effect": "Look at your opponent's hand and put any number of Basic Pok\u00e9mon you find there onto your opponent's Bench.",
+              "id": "B4a 071",
+              "name": "Team Rocket's Boss",
+              "rarity": "\u25ca\u25ca",
+              "trainer_card_type": "Supporter"
+            }
+          },
+          {
+            "Trainer": {
+              "booster_pack": "Promo A (P-A)",
+              "effect": "During this turn, the Retreat Cost of your Active Pok\u00e9mon is 1 less.",
+              "id": "P-A 002",
+              "name": "X Speed",
+              "rarity": "\u25ca",
+              "trainer_card_type": "Item"
+            }
+          }
+        ],
+        [
+          {
+            "Pokemon": {
+              "ability": null,
+              "attacks": [
+                {
+                  "effect": null,
+                  "energy_required": [
+                    "Lightning",
+                    "Colorless"
+                  ],
+                  "fixed_damage": 40,
+                  "title": "Electro Ball"
+                },
+                {
+                  "effect": "This attack also does 50 damage to 1 of your opponent's Benched Pok\u00e9mon that has damage on it.",
+                  "energy_required": [
+                    "Lightning",
+                    "Lightning",
+                    "Colorless"
+                  ],
+                  "fixed_damage": 90,
+                  "title": "Thunderclaw"
+                }
+              ],
+              "booster_pack": "Team Rocket's Ambition (B4a)",
+              "energy_type": "Lightning",
+              "evolves_from": null,
+              "hp": 120,
+              "id": "B4a 021",
+              "name": "Team Rocket's Zapdos ex",
+              "rarity": "\u25ca\u25ca\u25ca\u25ca",
+              "retreat_cost": [
+                "Colorless"
+              ],
+              "stage": 0,
+              "weakness": "Fighting"
+            }
+          },
+          {
+            "Trainer": {
+              "booster_pack": "Promo A (P-A)",
+              "effect": "During this turn, the Retreat Cost of your Active Pok\u00e9mon is 1 less.",
+              "id": "P-A 002",
+              "name": "X Speed",
+              "rarity": "\u25ca",
+              "trainer_card_type": "Item"
+            }
+          },
+          {
+            "Trainer": {
+              "booster_pack": "Space-Time Smackdown (A2)",
+              "effect": "If the Pok\u00e9mon this card is attached to is in the Active Spot and is damaged by an attack from your opponent's Pok\u00e9mon, do 20 damage to the Attacking Pok\u00e9mon.",
+              "id": "A2 148",
+              "name": "Rocky Helmet",
+              "rarity": "\u25ca\u25ca",
+              "trainer_card_type": "Tool"
+            }
+          }
+        ]
+      ],
+      "has_played_support": true,
+      "has_retreated": false,
+      "has_used_stadium": [
+        false,
+        false
+      ],
+      "in_play_pokemon": [
+        [
+          {
+            "ability_hp_bonus": 0,
+            "ability_used": false,
+            "asleep": false,
+            "attached_energy": [
+              "Lightning",
+              "Lightning",
+              "Lightning"
+            ],
+            "attached_tools": [
+              {
+                "Trainer": {
+                  "booster_pack": "Space-Time Smackdown (A2)",
+                  "effect": "The Pok\u00e9mon this card is attached to gets +20 HP.",
+                  "id": "A2 147",
+                  "name": "Giant Cape",
+                  "rarity": "\u25ca\u25ca",
+                  "trainer_card_type": "Tool"
+                }
+              }
+            ],
+            "base_hp": 120,
+            "burned": false,
+            "card": {
+              "Pokemon": {
+                "ability": null,
+                "attacks": [
+                  {
+                    "effect": null,
+                    "energy_required": [
+                      "Lightning",
+                      "Colorless"
+                    ],
+                    "fixed_damage": 40,
+                    "title": "Electro Ball"
+                  },
+                  {
+                    "effect": "This attack also does 50 damage to 1 of your opponent's Benched Pok\u00e9mon that has damage on it.",
+                    "energy_required": [
+                      "Lightning",
+                      "Lightning",
+                      "Colorless"
+                    ],
+                    "fixed_damage": 90,
+                    "title": "Thunderclaw"
+                  }
+                ],
+                "booster_pack": "Team Rocket's Ambition (B4a)",
+                "energy_type": "Lightning",
+                "evolves_from": null,
+                "hp": 120,
+                "id": "B4a 021",
+                "name": "Team Rocket's Zapdos ex",
+                "rarity": "\u25ca\u25ca\u25ca\u25ca",
+                "retreat_cost": [
+                  "Colorless"
+                ],
+                "stage": 0,
+                "weakness": "Fighting"
+              }
+            },
+            "cards_behind": [],
+            "confused": false,
+            "damage_counters": 110,
+            "damaged_by_attack_while_active_last_turn": true,
+            "damaged_by_attack_while_active_this_turn": false,
+            "effects": [],
+            "has_attacked_since_play": false,
+            "moved_to_active_this_turn": false,
+            "paralyzed": false,
+            "played_this_turn": false,
+            "poison_checkup_damage": null,
+            "poisoned": false,
+            "prevent_first_attack_damage_used": false,
+            "stadium_hp_bonus": 0
+          },
+          null,
+          null,
+          {
+            "ability_hp_bonus": 0,
+            "ability_used": true,
+            "asleep": false,
+            "attached_energy": [
+              "Lightning"
+            ],
+            "attached_tools": [],
+            "base_hp": 70,
+            "burned": false,
+            "card": {
+              "Pokemon": {
+                "ability": {
+                  "effect": "Once during your turn, you may look at a random card from your opponent's hand.",
+                  "title": "Spy Ops"
+                },
+                "attacks": [
+                  {
+                    "effect": "Flip a coin. If heads, during your opponent's next turn, prevent all damage from\u2014and effects of\u2014attacks done to this Pok\u00e9mon.",
+                    "energy_required": [
+                      "Colorless",
+                      "Colorless"
+                    ],
+                    "fixed_damage": 40,
+                    "title": "Hit and Hide"
+                  }
+                ],
+                "booster_pack": "Team Rocket's Ambition (B4a)",
+                "energy_type": "Colorless",
+                "evolves_from": null,
+                "hp": 70,
+                "id": "B4a 062",
+                "name": "Team Rocket's Kecleon",
+                "rarity": "\u25ca",
+                "retreat_cost": [
+                  "Colorless"
+                ],
+                "stage": 0,
+                "weakness": "Fighting"
+              }
+            },
+            "cards_behind": [],
+            "confused": false,
+            "damage_counters": 0,
+            "damaged_by_attack_while_active_last_turn": false,
+            "damaged_by_attack_while_active_this_turn": false,
+            "effects": [],
+            "has_attacked_since_play": false,
+            "moved_to_active_this_turn": false,
+            "paralyzed": false,
+            "played_this_turn": false,
+            "poison_checkup_damage": null,
+            "poisoned": false,
+            "prevent_first_attack_damage_used": false,
+            "stadium_hp_bonus": 0
+          }
+        ],
+        [
+          {
+            "ability_hp_bonus": 0,
+            "ability_used": false,
+            "asleep": false,
+            "attached_energy": [
+              "Lightning",
+              "Lightning"
+            ],
+            "attached_tools": [
+              {
+                "Trainer": {
+                  "booster_pack": "Space-Time Smackdown (A2)",
+                  "effect": "The Pok\u00e9mon this card is attached to gets +20 HP.",
+                  "id": "A2 147",
+                  "name": "Giant Cape",
+                  "rarity": "\u25ca\u25ca",
+                  "trainer_card_type": "Tool"
+                }
+              }
+            ],
+            "base_hp": 70,
+            "burned": false,
+            "card": {
+              "Pokemon": {
+                "ability": {
+                  "effect": "Once during your turn, you may look at a random card from your opponent's hand.",
+                  "title": "Spy Ops"
+                },
+                "attacks": [
+                  {
+                    "effect": "Flip a coin. If heads, during your opponent's next turn, prevent all damage from\u2014and effects of\u2014attacks done to this Pok\u00e9mon.",
+                    "energy_required": [
+                      "Colorless",
+                      "Colorless"
+                    ],
+                    "fixed_damage": 40,
+                    "title": "Hit and Hide"
+                  }
+                ],
+                "booster_pack": "Team Rocket's Ambition (B4a)",
+                "energy_type": "Colorless",
+                "evolves_from": null,
+                "hp": 70,
+                "id": "B4a 062",
+                "name": "Team Rocket's Kecleon",
+                "rarity": "\u25ca",
+                "retreat_cost": [
+                  "Colorless"
+                ],
+                "stage": 0,
+                "weakness": "Fighting"
+              }
+            },
+            "cards_behind": [],
+            "confused": false,
+            "damage_counters": 0,
+            "damaged_by_attack_while_active_last_turn": false,
+            "damaged_by_attack_while_active_this_turn": false,
+            "effects": [
+              [
+                "PreventAllDamageAndEffects",
+                0
+              ]
+            ],
+            "has_attacked_since_play": false,
+            "moved_to_active_this_turn": false,
+            "paralyzed": false,
+            "played_this_turn": false,
+            "poison_checkup_damage": null,
+            "poisoned": false,
+            "prevent_first_attack_damage_used": false,
+            "stadium_hp_bonus": 0
+          },
+          null,
+          {
+            "ability_hp_bonus": 0,
+            "ability_used": false,
+            "asleep": false,
+            "attached_energy": [],
+            "attached_tools": [],
+            "base_hp": 70,
+            "burned": false,
+            "card": {
+              "Pokemon": {
+                "ability": {
+                  "effect": "Once during your turn, you may look at a random card from your opponent's hand.",
+                  "title": "Spy Ops"
+                },
+                "attacks": [
+                  {
+                    "effect": "Flip a coin. If heads, during your opponent's next turn, prevent all damage from\u2014and effects of\u2014attacks done to this Pok\u00e9mon.",
+                    "energy_required": [
+                      "Colorless",
+                      "Colorless"
+                    ],
+                    "fixed_damage": 40,
+                    "title": "Hit and Hide"
+                  }
+                ],
+                "booster_pack": "Team Rocket's Ambition (B4a)",
+                "energy_type": "Colorless",
+                "evolves_from": null,
+                "hp": 70,
+                "id": "B4a 062",
+                "name": "Team Rocket's Kecleon",
+                "rarity": "\u25ca",
+                "retreat_cost": [
+                  "Colorless"
+                ],
+                "stage": 0,
+                "weakness": "Fighting"
+              }
+            },
+            "cards_behind": [],
+            "confused": false,
+            "damage_counters": 0,
+            "damaged_by_attack_while_active_last_turn": false,
+            "damaged_by_attack_while_active_this_turn": false,
+            "effects": [],
+            "has_attacked_since_play": false,
+            "moved_to_active_this_turn": false,
+            "paralyzed": false,
+            "played_this_turn": false,
+            "poison_checkup_damage": null,
+            "poisoned": false,
+            "prevent_first_attack_damage_used": false,
+            "stadium_hp_bonus": 0
+          },
+          null
+        ]
+      ],
+      "knocked_out_by_opponent_attack_last_turn": false,
+      "knocked_out_by_opponent_attack_this_turn": false,
+      "knocked_out_types_by_opponent_attack_last_turn": [],
+      "knocked_out_types_by_opponent_attack_this_turn": [],
+      "move_generation_stack": [],
+      "own_knockouts_this_game": [
+        1,
+        1
+      ],
+      "points": [
+        2,
+        1
+      ],
+      "points_gained_during_own_last_turn": [
+        2,
+        0
+      ],
+      "points_gained_this_turn": [
+        0,
+        0
+      ],
+      "turn_count": 12,
+      "turn_effects": {},
+      "winner": null
+    },
+    "unpriced_branches": [
+      {
+        "action": {
+          "action": "Noop",
+          "actor": 1,
+          "is_stack": false
+        },
+        "occurrences": 1,
+        "reason": "opponent reply requires an unknown hand or future energy model",
+        "root_action": {
+          "action": "EndTurn",
+          "actor": 0,
+          "is_stack": false
+        },
+        "selected": false
+      },
+      {
+        "action": {
+          "action": "Noop",
+          "actor": 1,
+          "is_stack": false
+        },
+        "occurrences": 1,
+        "reason": "opponent reply requires an unknown hand or future energy model",
+        "root_action": {
+          "action": {
+            "Attack": {
+              "effect": null,
+              "energy_required": [
+                "Lightning",
+                "Colorless"
+              ],
+              "fixed_damage": 40,
+              "title": "Electro Ball"
+            }
+          },
+          "actor": 0,
+          "is_stack": false
+        },
+        "selected": false
+      },
+      {
+        "action": {
+          "action": "Noop",
+          "actor": 1,
+          "is_stack": false
+        },
+        "occurrences": 1,
+        "reason": "opponent reply requires an unknown hand or future energy model",
+        "root_action": {
+          "action": {
+            "Attack": {
+              "effect": "This attack also does 50 damage to 1 of your opponent's Benched Pok\u00e9mon that has damage on it.",
+              "energy_required": [
+                "Lightning",
+                "Lightning",
+                "Colorless"
+              ],
+              "fixed_damage": 90,
+              "title": "Thunderclaw"
+            }
+          },
+          "actor": 0,
+          "is_stack": false
+        },
+        "selected": true
+      },
+      {
+        "action": {
+          "action": "Noop",
+          "actor": 1,
+          "is_stack": false
+        },
+        "occurrences": 14,
+        "reason": "opponent reply requires an unknown hand or future energy model",
+        "root_action": {
+          "action": {
+            "Play": {
+              "trainer_card": {
+                "booster_pack": "Promo A (P-A)",
+                "effect": "During this turn, the Retreat Cost of your Active Pok\u00e9mon is 1 less.",
+                "id": "P-A 002",
+                "name": "X Speed",
+                "rarity": "\u25ca",
+                "trainer_card_type": "Item"
+              }
+            }
+          },
+          "actor": 0,
+          "is_stack": false
+        },
+        "selected": false
+      },
+      {
+        "action": {
+          "action": "Noop",
+          "actor": 1,
+          "is_stack": false
+        },
+        "occurrences": 3,
+        "reason": "opponent reply requires an unknown hand or future energy model",
+        "root_action": {
+          "action": {
+            "Retreat": 3
+          },
+          "actor": 0,
+          "is_stack": false
+        },
+        "selected": false
+      }
+    ]
+  }
+}

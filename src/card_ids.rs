@@ -3565,6 +3565,116 @@ pub enum CardId {
     B4231MegaKangaskhanEx,
     B4232Raichu,
     B4233Dragonair,
+    B4a001Volbeat,
+    B4a002Illumise,
+    B4a003Snivy,
+    B4a004Servine,
+    B4a005Serperior,
+    B4a006TeamRocketsMagmar,
+    B4a007TeamRocketsMoltresEx,
+    B4a008TeamRocketsHoundour,
+    B4a009TeamRocketsHoundoom,
+    B4a010Fennekin,
+    B4a011Braixen,
+    B4a012Delphox,
+    B4a013TeamRocketsLapras,
+    B4a014TeamRocketsArticunoEx,
+    B4a015Wingull,
+    B4a016Pelipper,
+    B4a017HisuianBasculin,
+    B4a018HisuianBasculegion,
+    B4a019TeamRocketsVoltorb,
+    B4a020TeamRocketsElectrode,
+    B4a021TeamRocketsZapdosEx,
+    B4a022Blitzle,
+    B4a023Zebstrika,
+    B4a024TeamRocketsPincurchin,
+    B4a025TeamRocketsSlowpoke,
+    B4a026TeamRocketsSlowkingEx,
+    B4a027TeamRocketsDrowzee,
+    B4a028TeamRocketsHypno,
+    B4a029TeamRocketsMrMime,
+    B4a030TeamRocketsMewtwo,
+    B4a031Espurr,
+    B4a032Meowstic,
+    B4a033Oranguru,
+    B4a034Gimmighoul,
+    B4a035Cubone,
+    B4a036Marowak,
+    B4a037Landorus,
+    B4a038TeamRocketsEkans,
+    B4a039TeamRocketsArbok,
+    B4a040TeamRocketsGrimer,
+    B4a041TeamRocketsMuk,
+    B4a042TeamRocketsKoffing,
+    B4a043TeamRocketsWeezingEx,
+    B4a044TeamRocketsSneasel,
+    B4a045Togedemaru,
+    B4a046Cufant,
+    B4a047Copperajah,
+    B4a048TeamRocketsTinkatink,
+    B4a049TeamRocketsTinkatuff,
+    B4a050TeamRocketsTinkaton,
+    B4a051Gholdengo,
+    B4a052Gible,
+    B4a053Gabite,
+    B4a054Garchomp,
+    B4a055Duraludon,
+    B4a056Archaludon,
+    B4a057Regidrago,
+    B4a058TeamRocketsRattata,
+    B4a059TeamRocketsRaticateEx,
+    B4a060TeamRocketsMeowth,
+    B4a061TeamRocketsPersian,
+    B4a062TeamRocketsKecleon,
+    B4a063Happiny,
+    B4a064Furfrou,
+    B4a065Lechonk,
+    B4a066Oinkologne,
+    B4a067TeamRocketsThievingMachine,
+    B4a068TeamRocketsGoozooka,
+    B4a069TeamRocketsResearcher,
+    B4a070TeamRocketsMasterPlan,
+    B4a071TeamRocketsBoss,
+    B4a072Arcade,
+    B4a073Delphox,
+    B4a074TeamRocketsHypno,
+    B4a075TeamRocketsTinkaton,
+    B4a076TeamRocketsKecleon,
+    B4a077Happiny,
+    B4a078Lechonk,
+    B4a079TeamRocketsMoltresEx,
+    B4a080TeamRocketsArticunoEx,
+    B4a081TeamRocketsZapdosEx,
+    B4a082TeamRocketsSlowkingEx,
+    B4a083TeamRocketsWeezingEx,
+    B4a084TeamRocketsRaticateEx,
+    B4a085TeamRocketsResearcher,
+    B4a086TeamRocketsMasterPlan,
+    B4a087TeamRocketsBoss,
+    B4a088TeamRocketsMoltresEx,
+    B4a089TeamRocketsArticunoEx,
+    B4a090TeamRocketsZapdosEx,
+    B4a091TeamRocketsSlowkingEx,
+    B4a092TeamRocketsWeezingEx,
+    B4a093TeamRocketsRaticateEx,
+    B4a094TeamRocketsMasterPlan,
+    B4a095Vulpix,
+    B4a096Ninetales,
+    B4a097Goldeen,
+    B4a098Seaking,
+    B4a099Toxel,
+    B4a100Sinistea,
+    B4a101Polteageist,
+    B4a102Mawile,
+    B4a103Taillow,
+    B4a104Swellow,
+    B4a105MegaCharizardYEx,
+    B4a106ToxtricityEx,
+    B4a107MimikyuEx,
+    B4a108MegaMawileEx,
+    B4a109Gholdengo,
+    B4a110TeamRocketsGoozooka,
     PA001Potion,
     PA002XSpeed,
     PA003HandScope,
@@ -3768,6 +3878,14 @@ pub enum CardId {
     PB084Skitty,
     PB085Pachirisu,
     PB086Beldum,
+    PB087MegaSceptileEx,
+    PB088TeamRocketsScyther,
+    PB089TeamRocketsLapras,
+    PB090Wingull,
+    PB091TeamRocketsWobbuffet,
+    PB092Marowak,
+    PB093Fennekin,
+    PB094Meowstic,
 }
 
 static CARD_ID_MAP: LazyLock<HashMap<&'static str, CardId>> = LazyLock::new(|| {
@@ -7330,6 +7448,116 @@ static CARD_ID_MAP: LazyLock<HashMap<&'static str, CardId>> = LazyLock::new(|| {
     map.insert("B4 231", CardId::B4231MegaKangaskhanEx);
     map.insert("B4 232", CardId::B4232Raichu);
     map.insert("B4 233", CardId::B4233Dragonair);
+    map.insert("B4a 001", CardId::B4a001Volbeat);
+    map.insert("B4a 002", CardId::B4a002Illumise);
+    map.insert("B4a 003", CardId::B4a003Snivy);
+    map.insert("B4a 004", CardId::B4a004Servine);
+    map.insert("B4a 005", CardId::B4a005Serperior);
+    map.insert("B4a 006", CardId::B4a006TeamRocketsMagmar);
+    map.insert("B4a 007", CardId::B4a007TeamRocketsMoltresEx);
+    map.insert("B4a 008", CardId::B4a008TeamRocketsHoundour);
+    map.insert("B4a 009", CardId::B4a009TeamRocketsHoundoom);
+    map.insert("B4a 010", CardId::B4a010Fennekin);
+    map.insert("B4a 011", CardId::B4a011Braixen);
+    map.insert("B4a 012", CardId::B4a012Delphox);
+    map.insert("B4a 013", CardId::B4a013TeamRocketsLapras);
+    map.insert("B4a 014", CardId::B4a014TeamRocketsArticunoEx);
+    map.insert("B4a 015", CardId::B4a015Wingull);
+    map.insert("B4a 016", CardId::B4a016Pelipper);
+    map.insert("B4a 017", CardId::B4a017HisuianBasculin);
+    map.insert("B4a 018", CardId::B4a018HisuianBasculegion);
+    map.insert("B4a 019", CardId::B4a019TeamRocketsVoltorb);
+    map.insert("B4a 020", CardId::B4a020TeamRocketsElectrode);
+    map.insert("B4a 021", CardId::B4a021TeamRocketsZapdosEx);
+    map.insert("B4a 022", CardId::B4a022Blitzle);
+    map.insert("B4a 023", CardId::B4a023Zebstrika);
+    map.insert("B4a 024", CardId::B4a024TeamRocketsPincurchin);
+    map.insert("B4a 025", CardId::B4a025TeamRocketsSlowpoke);
+    map.insert("B4a 026", CardId::B4a026TeamRocketsSlowkingEx);
+    map.insert("B4a 027", CardId::B4a027TeamRocketsDrowzee);
+    map.insert("B4a 028", CardId::B4a028TeamRocketsHypno);
+    map.insert("B4a 029", CardId::B4a029TeamRocketsMrMime);
+    map.insert("B4a 030", CardId::B4a030TeamRocketsMewtwo);
+    map.insert("B4a 031", CardId::B4a031Espurr);
+    map.insert("B4a 032", CardId::B4a032Meowstic);
+    map.insert("B4a 033", CardId::B4a033Oranguru);
+    map.insert("B4a 034", CardId::B4a034Gimmighoul);
+    map.insert("B4a 035", CardId::B4a035Cubone);
+    map.insert("B4a 036", CardId::B4a036Marowak);
+    map.insert("B4a 037", CardId::B4a037Landorus);
+    map.insert("B4a 038", CardId::B4a038TeamRocketsEkans);
+    map.insert("B4a 039", CardId::B4a039TeamRocketsArbok);
+    map.insert("B4a 040", CardId::B4a040TeamRocketsGrimer);
+    map.insert("B4a 041", CardId::B4a041TeamRocketsMuk);
+    map.insert("B4a 042", CardId::B4a042TeamRocketsKoffing);
+    map.insert("B4a 043", CardId::B4a043TeamRocketsWeezingEx);
+    map.insert("B4a 044", CardId::B4a044TeamRocketsSneasel);
+    map.insert("B4a 045", CardId::B4a045Togedemaru);
+    map.insert("B4a 046", CardId::B4a046Cufant);
+    map.insert("B4a 047", CardId::B4a047Copperajah);
+    map.insert("B4a 048", CardId::B4a048TeamRocketsTinkatink);
+    map.insert("B4a 049", CardId::B4a049TeamRocketsTinkatuff);
+    map.insert("B4a 050", CardId::B4a050TeamRocketsTinkaton);
+    map.insert("B4a 051", CardId::B4a051Gholdengo);
+    map.insert("B4a 052", CardId::B4a052Gible);
+    map.insert("B4a 053", CardId::B4a053Gabite);
+    map.insert("B4a 054", CardId::B4a054Garchomp);
+    map.insert("B4a 055", CardId::B4a055Duraludon);
+    map.insert("B4a 056", CardId::B4a056Archaludon);
+    map.insert("B4a 057", CardId::B4a057Regidrago);
+    map.insert("B4a 058", CardId::B4a058TeamRocketsRattata);
+    map.insert("B4a 059", CardId::B4a059TeamRocketsRaticateEx);
+    map.insert("B4a 060", CardId::B4a060TeamRocketsMeowth);
+    map.insert("B4a 061", CardId::B4a061TeamRocketsPersian);
+    map.insert("B4a 062", CardId::B4a062TeamRocketsKecleon);
+    map.insert("B4a 063", CardId::B4a063Happiny);
+    map.insert("B4a 064", CardId::B4a064Furfrou);
+    map.insert("B4a 065", CardId::B4a065Lechonk);
+    map.insert("B4a 066", CardId::B4a066Oinkologne);
+    map.insert("B4a 067", CardId::B4a067TeamRocketsThievingMachine);
+    map.insert("B4a 068", CardId::B4a068TeamRocketsGoozooka);
+    map.insert("B4a 069", CardId::B4a069TeamRocketsResearcher);
+    map.insert("B4a 070", CardId::B4a070TeamRocketsMasterPlan);
+    map.insert("B4a 071", CardId::B4a071TeamRocketsBoss);
+    map.insert("B4a 072", CardId::B4a072Arcade);
+    map.insert("B4a 073", CardId::B4a073Delphox);
+    map.insert("B4a 074", CardId::B4a074TeamRocketsHypno);
+    map.insert("B4a 075", CardId::B4a075TeamRocketsTinkaton);
+    map.insert("B4a 076", CardId::B4a076TeamRocketsKecleon);
+    map.insert("B4a 077", CardId::B4a077Happiny);
+    map.insert("B4a 078", CardId::B4a078Lechonk);
+    map.insert("B4a 079", CardId::B4a079TeamRocketsMoltresEx);
+    map.insert("B4a 080", CardId::B4a080TeamRocketsArticunoEx);
+    map.insert("B4a 081", CardId::B4a081TeamRocketsZapdosEx);
+    map.insert("B4a 082", CardId::B4a082TeamRocketsSlowkingEx);
+    map.insert("B4a 083", CardId::B4a083TeamRocketsWeezingEx);
+    map.insert("B4a 084", CardId::B4a084TeamRocketsRaticateEx);
+    map.insert("B4a 085", CardId::B4a085TeamRocketsResearcher);
+    map.insert("B4a 086", CardId::B4a086TeamRocketsMasterPlan);
+    map.insert("B4a 087", CardId::B4a087TeamRocketsBoss);
+    map.insert("B4a 088", CardId::B4a088TeamRocketsMoltresEx);
+    map.insert("B4a 089", CardId::B4a089TeamRocketsArticunoEx);
+    map.insert("B4a 090", CardId::B4a090TeamRocketsZapdosEx);
+    map.insert("B4a 091", CardId::B4a091TeamRocketsSlowkingEx);
+    map.insert("B4a 092", CardId::B4a092TeamRocketsWeezingEx);
+    map.insert("B4a 093", CardId::B4a093TeamRocketsRaticateEx);
+    map.insert("B4a 094", CardId::B4a094TeamRocketsMasterPlan);
+    map.insert("B4a 095", CardId::B4a095Vulpix);
+    map.insert("B4a 096", CardId::B4a096Ninetales);
+    map.insert("B4a 097", CardId::B4a097Goldeen);
+    map.insert("B4a 098", CardId::B4a098Seaking);
+    map.insert("B4a 099", CardId::B4a099Toxel);
+    map.insert("B4a 100", CardId::B4a100Sinistea);
+    map.insert("B4a 101", CardId::B4a101Polteageist);
+    map.insert("B4a 102", CardId::B4a102Mawile);
+    map.insert("B4a 103", CardId::B4a103Taillow);
+    map.insert("B4a 104", CardId::B4a104Swellow);
+    map.insert("B4a 105", CardId::B4a105MegaCharizardYEx);
+    map.insert("B4a 106", CardId::B4a106ToxtricityEx);
+    map.insert("B4a 107", CardId::B4a107MimikyuEx);
+    map.insert("B4a 108", CardId::B4a108MegaMawileEx);
+    map.insert("B4a 109", CardId::B4a109Gholdengo);
+    map.insert("B4a 110", CardId::B4a110TeamRocketsGoozooka);
     map.insert("P-A 001", CardId::PA001Potion);
     map.insert("P-A 002", CardId::PA002XSpeed);
     map.insert("P-A 003", CardId::PA003HandScope);
@@ -7533,6 +7761,14 @@ static CARD_ID_MAP: LazyLock<HashMap<&'static str, CardId>> = LazyLock::new(|| {
     map.insert("P-B 084", CardId::PB084Skitty);
     map.insert("P-B 085", CardId::PB085Pachirisu);
     map.insert("P-B 086", CardId::PB086Beldum);
+    map.insert("P-B 087", CardId::PB087MegaSceptileEx);
+    map.insert("P-B 088", CardId::PB088TeamRocketsScyther);
+    map.insert("P-B 089", CardId::PB089TeamRocketsLapras);
+    map.insert("P-B 090", CardId::PB090Wingull);
+    map.insert("P-B 091", CardId::PB091TeamRocketsWobbuffet);
+    map.insert("P-B 092", CardId::PB092Marowak);
+    map.insert("P-B 093", CardId::PB093Fennekin);
+    map.insert("P-B 094", CardId::PB094Meowstic);
     map
 });
 

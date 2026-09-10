@@ -28,7 +28,7 @@ pub struct EvolutionRusherPlayer {
 }
 
 impl Player for EvolutionRusherPlayer {
-    fn decision_fn(
+    fn decide_omniscient(
         &mut self,
         _: &mut StdRng,
         state: &State,

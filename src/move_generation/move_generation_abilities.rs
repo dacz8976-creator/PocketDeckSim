@@ -1,9 +1,8 @@
 use crate::{
     actions::abilities::{AbilityMechanic, DeckSearchKind},
     actions::{
-        abilities_switched_off, ability_mechanic_from_effect,
-        energy_moves::UNBOUNDED_ENERGY_MOVES, selectable_status_conditions,
-        supporter_candidates_in_hand, SimpleAction,
+        abilities_switched_off, ability_mechanic_from_effect, energy_moves::UNBOUNDED_ENERGY_MOVES,
+        selectable_status_conditions, SimpleAction,
     },
     hooks::is_ultra_beast,
     models::{EnergyType, PlayedCard},
@@ -66,6 +65,7 @@ fn can_use_ability_by_mechanic(
         AbilityMechanic::VictreebelFragranceTrap => {
             is_active && can_use_victreebel_fragrance_trap(state, card)
         }
+        AbilityMechanic::VictoryStar | AbilityMechanic::LuxuryCoin => false, // Passive resolution choice
         AbilityMechanic::HealAllYourPokemon { .. } => !card.ability_used,
         AbilityMechanic::HealOneYourPokemon {
             require_active,
@@ -216,6 +216,8 @@ fn can_use_ability_by_mechanic(
         AbilityMechanic::DamageOpponentActiveOnEvolve { .. } => false,
         AbilityMechanic::CoinFlipParalyzeOpponentActiveOnEvolve => false,
         AbilityMechanic::DiscardRandomEnergyFromOpponentActiveOnEvolve => false,
+        AbilityMechanic::PoisonAndBurnOpponentActiveOnEvolve => false,
+        AbilityMechanic::MoveRandomEnergyFromOpponentActiveToSelfOnEvolve => false,
         AbilityMechanic::OpponentShuffleHandAndDrawOnEvolve => false, // triggered on evolve
         AbilityMechanic::PutCardsFromDiscardToHandOnEvolve { .. } => false,
         AbilityMechanic::CanEvolveIntoEeveeEvolution => false,
@@ -251,6 +253,11 @@ fn can_use_ability_by_mechanic(
         AbilityMechanic::HealActiveTypedOnBenchFromHand { .. } => false,
         AbilityMechanic::PreventAllDamageAndEffectsOnEvolve { .. } => false,
         AbilityMechanic::LookAtTopCardsPutTrainerTypeToHandOnEvolve { .. } => false,
+        AbilityMechanic::DrawCardsOncePerTurn { require_active, .. } => {
+            !card.ability_used
+                && (!require_active || is_active)
+                && !state.decks[state.current_player].cards.is_empty()
+        }
         AbilityMechanic::AttachEnergyFromDiscardToActiveTypedFromBench { energy_type } => {
             // Bench-only, once per turn, needs Energy in the discard AND a matching Active.
             !card.ability_used
@@ -263,8 +270,14 @@ fn can_use_ability_by_mechanic(
         AbilityMechanic::CopyRandomOpponentHandSupporter => {
             is_active
                 && !card.ability_used
-                && !supporter_candidates_in_hand(state, opponent).is_empty()
+                // A nonempty hidden hand permits an attempt, even without a Supporter.
+                // The referee consumes the ability use and resolves that case as a no-op.
+                && !state.hands[opponent].is_empty()
         }
+        AbilityMechanic::RevealRandomOpponentHandCard => {
+            !card.ability_used && !state.hands[opponent].is_empty()
+        }
+        AbilityMechanic::ToolCapacity { .. } => false, // Passive attachment capacity
         AbilityMechanic::TimeRecall => false, // passive ability (consumed in attack generation)
         AbilityMechanic::RandomEvolutionFromDeck { .. } => false, // Passive ability
     }

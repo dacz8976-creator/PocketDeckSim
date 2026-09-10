@@ -479,7 +479,7 @@ fn test_genome_hacking_best_effort_discards_matching_energy_for_attackid_copy() 
         .find(|action| {
             matches!(
                 action.action,
-                SimpleAction::Activate {
+                SimpleAction::Promote {
                     player: 1,
                     in_play_idx: 1,
                 }

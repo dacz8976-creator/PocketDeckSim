@@ -96,9 +96,9 @@ fn test_portrait_cannot_be_used_twice_in_a_turn() {
     );
 }
 
-/// NEGATIVE: nothing to look at when the opponent holds no Supporter.
+/// Hidden target absence does not disable an attempt.
 #[test]
-fn test_portrait_not_offered_without_a_supporter_in_the_opponent_hand() {
+fn test_portrait_offered_without_a_supporter_in_the_opponent_hand() {
     let game = game_with_opponent_hand(
         true,
         // A Pokémon and an Item are not Supporters.
@@ -109,8 +109,8 @@ fn test_portrait_not_offered_without_a_supporter_in_the_opponent_hand() {
     );
 
     assert!(
-        !can_use_portrait(&game, 0),
-        "Portrait needs a Supporter in the opponent's hand"
+        can_use_portrait(&game, 0),
+        "Hidden Supporter absence must not disable Portrait"
     );
 }
 

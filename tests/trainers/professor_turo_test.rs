@@ -80,7 +80,7 @@ fn test_professor_turo_active_triggers_promotion() {
     assert!(
         promo_choices
             .iter()
-            .any(|a| matches!(a.action, SimpleAction::Activate { in_play_idx: 1, .. })),
+            .any(|a| matches!(a.action, SimpleAction::Promote { in_play_idx: 1, .. })),
         "Should be prompted to promote bench pokemon, choices: {:?}",
         promo_choices
     );

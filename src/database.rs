@@ -40,6 +40,7 @@ static DATABASE: LazyLock<HashMap<CardId, Card>> = LazyLock::new(|| {
     populate_database_chunk_27(&mut map);
     populate_database_chunk_28(&mut map);
     populate_database_chunk_29(&mut map);
+    populate_database_chunk_30(&mut map);
     map
 });
 
@@ -79107,6 +79108,2388 @@ fn populate_database_chunk_27(map: &mut HashMap<CardId, Card>) {
             booster_pack: "Ruler of the Skies (B4)".to_string(),
         }));
     map.insert(
+        CardId::B4a001Volbeat,
+        Card::Pokemon(PokemonCard {
+            id: "B4a 001".to_string(),
+            name: "Volbeat".to_string(),
+            stage: 0,
+            evolves_from: None,
+            hp: 80,
+            energy_type: EnergyType::Grass,
+            ability: None,
+            attacks: vec![Attack {
+                energy_required: vec![EnergyType::Grass],
+                title: "Tackle".to_string(),
+                fixed_damage: 30,
+                effect: None,
+            }],
+            weakness: Some(EnergyType::Fire),
+            retreat_cost: vec![EnergyType::Colorless],
+            rarity: "◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }),
+    );
+    map.insert(
+        CardId::B4a002Illumise,
+        Card::Pokemon(PokemonCard {
+            id: "B4a 002".to_string(),
+            name: "Illumise".to_string(),
+            stage: 0,
+            evolves_from: None,
+            hp: 70,
+            energy_type: EnergyType::Grass,
+            ability: None,
+            attacks: vec![Attack {
+                energy_required: vec![EnergyType::Grass, EnergyType::Colorless],
+                title: "Ire-Fly".to_string(),
+                fixed_damage: 30,
+                effect: Some(
+                    "If Volbeat is in your discard pile, this attack does 60 more damage."
+                        .to_string(),
+                ),
+            }],
+            weakness: Some(EnergyType::Fire),
+            retreat_cost: vec![EnergyType::Colorless],
+            rarity: "◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }),
+    );
+    map.insert(
+        CardId::B4a003Snivy,
+        Card::Pokemon(PokemonCard {
+            id: "B4a 003".to_string(),
+            name: "Snivy".to_string(),
+            stage: 0,
+            evolves_from: None,
+            hp: 60,
+            energy_type: EnergyType::Grass,
+            ability: None,
+            attacks: vec![Attack {
+                energy_required: vec![EnergyType::Grass],
+                title: "Leaf Boomerang".to_string(),
+                fixed_damage: 20,
+                effect: Some(
+                    "Flip 2 coins. This attack does 20 damage for each heads.".to_string(),
+                ),
+            }],
+            weakness: Some(EnergyType::Fire),
+            retreat_cost: vec![EnergyType::Colorless],
+            rarity: "◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }),
+    );
+    map.insert(
+        CardId::B4a004Servine,
+        Card::Pokemon(PokemonCard {
+            id: "B4a 004".to_string(),
+            name: "Servine".to_string(),
+            stage: 1,
+            evolves_from: Some("Snivy".to_string()),
+            hp: 80,
+            energy_type: EnergyType::Grass,
+            ability: None,
+            attacks: vec![Attack {
+                energy_required: vec![EnergyType::Grass],
+                title: "Leaf Step".to_string(),
+                fixed_damage: 30,
+                effect: None,
+            }],
+            weakness: Some(EnergyType::Fire),
+            retreat_cost: vec![EnergyType::Colorless],
+            rarity: "◊◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }),
+    );
+    map.insert(
+        CardId::B4a005Serperior,
+        Card::Pokemon(PokemonCard {
+            id: "B4a 005".to_string(),
+            name: "Serperior".to_string(),
+            stage: 2,
+            evolves_from: Some("Servine".to_string()),
+            hp: 100,
+            energy_type: EnergyType::Grass,
+            ability: Some(Ability {
+                title: "Regal Bloom".to_string(),
+                effect: "This Pokémon gets +30 HP for each [G] Energy attached to it.".to_string(),
+            }),
+            attacks: vec![Attack {
+                energy_required: vec![
+                    EnergyType::Colorless,
+                    EnergyType::Colorless,
+                    EnergyType::Colorless,
+                ],
+                title: "Flog".to_string(),
+                fixed_damage: 60,
+                effect: Some("Flip a coin. If heads, this attack does 60 more damage.".to_string()),
+            }],
+            weakness: Some(EnergyType::Fire),
+            retreat_cost: vec![EnergyType::Colorless, EnergyType::Colorless],
+            rarity: "◊◊◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }),
+    );
+    map.insert(CardId::B4a006TeamRocketsMagmar, Card::Pokemon(PokemonCard {
+            id: "B4a 006".to_string(),
+            name: "Team Rocket's Magmar".to_string(),
+            stage: 0,
+            evolves_from: None,
+            hp: 70,
+            energy_type: EnergyType::Fire,
+            ability: None,
+            attacks: vec![
+                Attack {
+                    energy_required: vec![EnergyType::Colorless,],
+                    title: "Derisive Roasting".to_string(),
+                    fixed_damage: 10,
+                    effect: Some("This attack does 50 more damage for each Special Condition affecting your opponent's Active Pokémon.".to_string()),
+                },
+            ],
+            weakness: Some(EnergyType::Water),
+            retreat_cost: vec![EnergyType::Colorless,EnergyType::Colorless,],
+            rarity: "◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }));
+    map.insert(CardId::B4a007TeamRocketsMoltresEx, Card::Pokemon(PokemonCard {
+            id: "B4a 007".to_string(),
+            name: "Team Rocket's Moltres ex".to_string(),
+            stage: 0,
+            evolves_from: None,
+            hp: 130,
+            energy_type: EnergyType::Fire,
+            ability: None,
+            attacks: vec![
+                Attack {
+                    energy_required: vec![EnergyType::Fire,],
+                    title: "Heat Charged".to_string(),
+                    fixed_damage: 0,
+                    effect: Some("Flip 3 coins. For each heads, produce a [R] Energy from your Energy Zone and attach it to this Pokémon.".to_string()),
+                },
+                Attack {
+                    energy_required: vec![EnergyType::Fire,EnergyType::Fire,EnergyType::Fire,EnergyType::Colorless,],
+                    title: "Netherwing".to_string(),
+                    fixed_damage: 130,
+                    effect: Some("Discard a [R] Energy from this Pokémon.".to_string()),
+                },
+            ],
+            weakness: Some(EnergyType::Water),
+            retreat_cost: vec![EnergyType::Colorless,EnergyType::Colorless,],
+            rarity: "◊◊◊◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }));
+    map.insert(
+        CardId::B4a008TeamRocketsHoundour,
+        Card::Pokemon(PokemonCard {
+            id: "B4a 008".to_string(),
+            name: "Team Rocket's Houndour".to_string(),
+            stage: 0,
+            evolves_from: None,
+            hp: 60,
+            energy_type: EnergyType::Fire,
+            ability: None,
+            attacks: vec![Attack {
+                energy_required: vec![EnergyType::Fire],
+                title: "Live Coal".to_string(),
+                fixed_damage: 20,
+                effect: None,
+            }],
+            weakness: Some(EnergyType::Water),
+            retreat_cost: vec![EnergyType::Colorless],
+            rarity: "◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }),
+    );
+    map.insert(
+        CardId::B4a009TeamRocketsHoundoom,
+        Card::Pokemon(PokemonCard {
+            id: "B4a 009".to_string(),
+            name: "Team Rocket's Houndoom".to_string(),
+            stage: 1,
+            evolves_from: Some("Team Rocket's Houndour".to_string()),
+            hp: 90,
+            energy_type: EnergyType::Fire,
+            ability: None,
+            attacks: vec![Attack {
+                energy_required: vec![EnergyType::Fire],
+                title: "Toxfire Fang".to_string(),
+                fixed_damage: 20,
+                effect: Some(
+                    "Your opponent's Active Pokémon is now Poisoned and Burned.".to_string(),
+                ),
+            }],
+            weakness: Some(EnergyType::Water),
+            retreat_cost: vec![EnergyType::Colorless],
+            rarity: "◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }),
+    );
+    map.insert(
+        CardId::B4a010Fennekin,
+        Card::Pokemon(PokemonCard {
+            id: "B4a 010".to_string(),
+            name: "Fennekin".to_string(),
+            stage: 0,
+            evolves_from: None,
+            hp: 60,
+            energy_type: EnergyType::Fire,
+            ability: None,
+            attacks: vec![Attack {
+                energy_required: vec![EnergyType::Colorless],
+                title: "Scratch".to_string(),
+                fixed_damage: 10,
+                effect: None,
+            }],
+            weakness: Some(EnergyType::Water),
+            retreat_cost: vec![EnergyType::Colorless],
+            rarity: "◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }),
+    );
+    map.insert(
+        CardId::B4a011Braixen,
+        Card::Pokemon(PokemonCard {
+            id: "B4a 011".to_string(),
+            name: "Braixen".to_string(),
+            stage: 1,
+            evolves_from: Some("Fennekin".to_string()),
+            hp: 80,
+            energy_type: EnergyType::Fire,
+            ability: None,
+            attacks: vec![Attack {
+                energy_required: vec![EnergyType::Colorless, EnergyType::Colorless],
+                title: "Psyshot".to_string(),
+                fixed_damage: 30,
+                effect: None,
+            }],
+            weakness: Some(EnergyType::Water),
+            retreat_cost: vec![EnergyType::Colorless],
+            rarity: "◊◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }),
+    );
+    map.insert(CardId::B4a012Delphox, Card::Pokemon(PokemonCard {
+            id: "B4a 012".to_string(),
+            name: "Delphox".to_string(),
+            stage: 2,
+            evolves_from: Some("Braixen".to_string()),
+            hp: 130,
+            energy_type: EnergyType::Fire,
+            ability: None,
+            attacks: vec![
+                Attack {
+                    energy_required: vec![EnergyType::Colorless,EnergyType::Colorless,EnergyType::Colorless,],
+                    title: "Psychic".to_string(),
+                    fixed_damage: 60,
+                    effect: Some("This attack does 30 more damage for each Energy attached to your opponent's Active Pokémon.".to_string()),
+                },
+            ],
+            weakness: Some(EnergyType::Water),
+            retreat_cost: vec![EnergyType::Colorless,EnergyType::Colorless,],
+            rarity: "◊◊◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }));
+    map.insert(CardId::B4a013TeamRocketsLapras, Card::Pokemon(PokemonCard {
+            id: "B4a 013".to_string(),
+            name: "Team Rocket's Lapras".to_string(),
+            stage: 0,
+            evolves_from: None,
+            hp: 90,
+            energy_type: EnergyType::Water,
+            ability: None,
+            attacks: vec![
+                Attack {
+                    energy_required: vec![EnergyType::Water,EnergyType::Colorless,],
+                    title: "Ruthless Whirlpool".to_string(),
+                    fixed_damage: 40,
+                    effect: Some("If this Pokémon has more Energy attached than your opponent's Active Pokémon, this attack does 40 more damage.".to_string()),
+                },
+            ],
+            weakness: Some(EnergyType::Lightning),
+            retreat_cost: vec![EnergyType::Colorless,],
+            rarity: "◊◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }));
+    map.insert(
+        CardId::B4a014TeamRocketsArticunoEx,
+        Card::Pokemon(PokemonCard {
+            id: "B4a 014".to_string(),
+            name: "Team Rocket's Articuno ex".to_string(),
+            stage: 0,
+            evolves_from: None,
+            hp: 130,
+            energy_type: EnergyType::Water,
+            ability: None,
+            attacks: vec![
+                Attack {
+                    energy_required: vec![EnergyType::Water, EnergyType::Colorless],
+                    title: "Ice Wing".to_string(),
+                    fixed_damage: 40,
+                    effect: None,
+                },
+                Attack {
+                    energy_required: vec![
+                        EnergyType::Water,
+                        EnergyType::Water,
+                        EnergyType::Colorless,
+                    ],
+                    title: "Hailstorm".to_string(),
+                    fixed_damage: 130,
+                    effect: Some(
+                        "This attack also does 20 damage to each of your Benched Pokémon."
+                            .to_string(),
+                    ),
+                },
+            ],
+            weakness: Some(EnergyType::Metal),
+            retreat_cost: vec![EnergyType::Colorless, EnergyType::Colorless],
+            rarity: "◊◊◊◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }),
+    );
+    map.insert(
+        CardId::B4a015Wingull,
+        Card::Pokemon(PokemonCard {
+            id: "B4a 015".to_string(),
+            name: "Wingull".to_string(),
+            stage: 0,
+            evolves_from: None,
+            hp: 60,
+            energy_type: EnergyType::Water,
+            ability: None,
+            attacks: vec![Attack {
+                energy_required: vec![EnergyType::Colorless],
+                title: "Flap".to_string(),
+                fixed_damage: 10,
+                effect: None,
+            }],
+            weakness: Some(EnergyType::Lightning),
+            retreat_cost: vec![EnergyType::Colorless],
+            rarity: "◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }),
+    );
+    map.insert(
+        CardId::B4a016Pelipper,
+        Card::Pokemon(PokemonCard {
+            id: "B4a 016".to_string(),
+            name: "Pelipper".to_string(),
+            stage: 1,
+            evolves_from: Some("Wingull".to_string()),
+            hp: 110,
+            energy_type: EnergyType::Water,
+            ability: None,
+            attacks: vec![Attack {
+                energy_required: vec![EnergyType::Colorless, EnergyType::Colorless],
+                title: "Wing Attack".to_string(),
+                fixed_damage: 60,
+                effect: None,
+            }],
+            weakness: Some(EnergyType::Lightning),
+            retreat_cost: vec![EnergyType::Colorless, EnergyType::Colorless],
+            rarity: "◊◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }),
+    );
+    map.insert(
+        CardId::B4a017HisuianBasculin,
+        Card::Pokemon(PokemonCard {
+            id: "B4a 017".to_string(),
+            name: "Hisuian Basculin".to_string(),
+            stage: 0,
+            evolves_from: None,
+            hp: 70,
+            energy_type: EnergyType::Water,
+            ability: None,
+            attacks: vec![Attack {
+                energy_required: vec![EnergyType::Water],
+                title: "Bite".to_string(),
+                fixed_damage: 20,
+                effect: None,
+            }],
+            weakness: Some(EnergyType::Lightning),
+            retreat_cost: vec![EnergyType::Colorless],
+            rarity: "◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }),
+    );
+    map.insert(CardId::B4a018HisuianBasculegion, Card::Pokemon(PokemonCard {
+            id: "B4a 018".to_string(),
+            name: "Hisuian Basculegion".to_string(),
+            stage: 1,
+            evolves_from: Some("Hisuian Basculin".to_string()),
+            hp: 100,
+            energy_type: EnergyType::Water,
+            ability: None,
+            attacks: vec![
+                Attack {
+                    energy_required: vec![EnergyType::Water,EnergyType::Water,],
+                    title: "Soul Counter".to_string(),
+                    fixed_damage: 50,
+                    effect: Some("This attack does 50 more damage for each point your opponent got during their last turn.".to_string()),
+                },
+            ],
+            weakness: Some(EnergyType::Lightning),
+            retreat_cost: vec![EnergyType::Colorless,EnergyType::Colorless,],
+            rarity: "◊◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }));
+    map.insert(
+        CardId::B4a019TeamRocketsVoltorb,
+        Card::Pokemon(PokemonCard {
+            id: "B4a 019".to_string(),
+            name: "Team Rocket's Voltorb".to_string(),
+            stage: 0,
+            evolves_from: None,
+            hp: 60,
+            energy_type: EnergyType::Lightning,
+            ability: None,
+            attacks: vec![Attack {
+                energy_required: vec![EnergyType::Lightning],
+                title: "Rolling Attack".to_string(),
+                fixed_damage: 20,
+                effect: None,
+            }],
+            weakness: Some(EnergyType::Fighting),
+            retreat_cost: vec![EnergyType::Colorless],
+            rarity: "◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }),
+    );
+    map.insert(CardId::B4a020TeamRocketsElectrode, Card::Pokemon(PokemonCard {
+            id: "B4a 020".to_string(),
+            name: "Team Rocket's Electrode".to_string(),
+            stage: 1,
+            evolves_from: Some("Team Rocket's Voltorb".to_string()),
+            hp: 70,
+            energy_type: EnergyType::Lightning,
+            ability: Some(Ability { title: "Destiny Burst".to_string(), effect: "If this Pokémon is in the Active Spot and is Knocked Out by damage from an attack from your opponent's Pokémon, do 70 damage to the Attacking Pokémon.".to_string() }),
+            attacks: vec![
+                Attack {
+                    energy_required: vec![EnergyType::Lightning,],
+                    title: "Random Spark".to_string(),
+                    fixed_damage: 0,
+                    effect: Some("This attack does 30 damage to 1 of your opponent's Pokémon.".to_string()),
+                },
+            ],
+            weakness: Some(EnergyType::Fighting),
+            retreat_cost: vec![EnergyType::Colorless,],
+            rarity: "◊◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }));
+    map.insert(CardId::B4a021TeamRocketsZapdosEx, Card::Pokemon(PokemonCard {
+            id: "B4a 021".to_string(),
+            name: "Team Rocket's Zapdos ex".to_string(),
+            stage: 0,
+            evolves_from: None,
+            hp: 120,
+            energy_type: EnergyType::Lightning,
+            ability: None,
+            attacks: vec![
+                Attack {
+                    energy_required: vec![EnergyType::Lightning,EnergyType::Colorless,],
+                    title: "Electro Ball".to_string(),
+                    fixed_damage: 40,
+                    effect: None,
+                },
+                Attack {
+                    energy_required: vec![EnergyType::Lightning,EnergyType::Lightning,EnergyType::Colorless,],
+                    title: "Thunderclaw".to_string(),
+                    fixed_damage: 90,
+                    effect: Some("This attack also does 50 damage to 1 of your opponent's Benched Pokémon that has damage on it.".to_string()),
+                },
+            ],
+            weakness: Some(EnergyType::Fighting),
+            retreat_cost: vec![EnergyType::Colorless,],
+            rarity: "◊◊◊◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }));
+    map.insert(
+        CardId::B4a022Blitzle,
+        Card::Pokemon(PokemonCard {
+            id: "B4a 022".to_string(),
+            name: "Blitzle".to_string(),
+            stage: 0,
+            evolves_from: None,
+            hp: 60,
+            energy_type: EnergyType::Lightning,
+            ability: None,
+            attacks: vec![Attack {
+                energy_required: vec![EnergyType::Lightning],
+                title: "Double Headbutt".to_string(),
+                fixed_damage: 20,
+                effect: Some(
+                    "Flip 2 coins. This attack does 20 damage for each heads.".to_string(),
+                ),
+            }],
+            weakness: Some(EnergyType::Fighting),
+            retreat_cost: vec![EnergyType::Colorless],
+            rarity: "◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }),
+    );
+    map.insert(
+        CardId::B4a023Zebstrika,
+        Card::Pokemon(PokemonCard {
+            id: "B4a 023".to_string(),
+            name: "Zebstrika".to_string(),
+            stage: 1,
+            evolves_from: Some("Blitzle".to_string()),
+            hp: 90,
+            energy_type: EnergyType::Lightning,
+            ability: None,
+            attacks: vec![Attack {
+                energy_required: vec![EnergyType::Lightning],
+                title: "Zap Kick".to_string(),
+                fixed_damage: 50,
+                effect: None,
+            }],
+            weakness: Some(EnergyType::Fighting),
+            retreat_cost: vec![EnergyType::Colorless],
+            rarity: "◊◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }),
+    );
+    map.insert(
+        CardId::B4a024TeamRocketsPincurchin,
+        Card::Pokemon(PokemonCard {
+            id: "B4a 024".to_string(),
+            name: "Team Rocket's Pincurchin".to_string(),
+            stage: 0,
+            evolves_from: None,
+            hp: 70,
+            energy_type: EnergyType::Lightning,
+            ability: None,
+            attacks: vec![Attack {
+                energy_required: vec![EnergyType::Lightning],
+                title: "Poison Jab".to_string(),
+                fixed_damage: 20,
+                effect: Some("Your opponent's Active Pokémon is now Poisoned.".to_string()),
+            }],
+            weakness: Some(EnergyType::Fighting),
+            retreat_cost: vec![EnergyType::Colorless],
+            rarity: "◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }),
+    );
+    map.insert(
+        CardId::B4a025TeamRocketsSlowpoke,
+        Card::Pokemon(PokemonCard {
+            id: "B4a 025".to_string(),
+            name: "Team Rocket's Slowpoke".to_string(),
+            stage: 0,
+            evolves_from: None,
+            hp: 80,
+            energy_type: EnergyType::Psychic,
+            ability: None,
+            attacks: vec![Attack {
+                energy_required: vec![EnergyType::Psychic],
+                title: "Scavenge".to_string(),
+                fixed_damage: 0,
+                effect: Some(
+                    "Put a random Item card from your discard pile into your hand.".to_string(),
+                ),
+            }],
+            weakness: Some(EnergyType::Darkness),
+            retreat_cost: vec![EnergyType::Colorless, EnergyType::Colorless],
+            rarity: "◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }),
+    );
+    map.insert(CardId::B4a026TeamRocketsSlowkingEx, Card::Pokemon(PokemonCard {
+            id: "B4a 026".to_string(),
+            name: "Team Rocket's Slowking ex".to_string(),
+            stage: 1,
+            evolves_from: Some("Team Rocket's Slowpoke".to_string()),
+            hp: 130,
+            energy_type: EnergyType::Psychic,
+            ability: Some(Ability { title: "Evil Inspiration".to_string(), effect: "Once during your turn, if this Pokémon is in the Active Spot, you may draw a card.".to_string() }),
+            attacks: vec![
+                Attack {
+                    energy_required: vec![EnergyType::Psychic,EnergyType::Colorless,],
+                    title: "Hand Kinesis".to_string(),
+                    fixed_damage: 20,
+                    effect: Some("This attack does 20 damage for each card in your hand.".to_string()),
+                },
+            ],
+            weakness: Some(EnergyType::Darkness),
+            retreat_cost: vec![EnergyType::Colorless,EnergyType::Colorless,EnergyType::Colorless,],
+            rarity: "◊◊◊◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }));
+}
+
+fn populate_database_chunk_28(map: &mut HashMap<CardId, Card>) {
+    map.insert(
+        CardId::B4a027TeamRocketsDrowzee,
+        Card::Pokemon(PokemonCard {
+            id: "B4a 027".to_string(),
+            name: "Team Rocket's Drowzee".to_string(),
+            stage: 0,
+            evolves_from: None,
+            hp: 60,
+            energy_type: EnergyType::Psychic,
+            ability: None,
+            attacks: vec![Attack {
+                energy_required: vec![EnergyType::Psychic, EnergyType::Colorless],
+                title: "Mumble".to_string(),
+                fixed_damage: 40,
+                effect: None,
+            }],
+            weakness: Some(EnergyType::Darkness),
+            retreat_cost: vec![EnergyType::Colorless],
+            rarity: "◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }),
+    );
+    map.insert(CardId::B4a028TeamRocketsHypno, Card::Pokemon(PokemonCard {
+            id: "B4a 028".to_string(),
+            name: "Team Rocket's Hypno".to_string(),
+            stage: 1,
+            evolves_from: Some("Team Rocket's Drowzee".to_string()),
+            hp: 90,
+            energy_type: EnergyType::Psychic,
+            ability: None,
+            attacks: vec![
+                Attack {
+                    energy_required: vec![EnergyType::Psychic,EnergyType::Psychic,],
+                    title: "Entrap".to_string(),
+                    fixed_damage: 0,
+                    effect: Some("Switch in 1 of your opponent's Benched Pokémon to the Active Spot. If you do, this attack does 50 damage to the new Active Pokémon.".to_string()),
+                },
+            ],
+            weakness: Some(EnergyType::Darkness),
+            retreat_cost: vec![EnergyType::Colorless,EnergyType::Colorless,],
+            rarity: "◊◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }));
+    map.insert(
+        CardId::B4a029TeamRocketsMrMime,
+        Card::Pokemon(PokemonCard {
+            id: "B4a 029".to_string(),
+            name: "Team Rocket's Mr. Mime".to_string(),
+            stage: 0,
+            evolves_from: None,
+            hp: 60,
+            energy_type: EnergyType::Psychic,
+            ability: None,
+            attacks: vec![Attack {
+                energy_required: vec![EnergyType::Psychic],
+                title: "Slap Push".to_string(),
+                fixed_damage: 40,
+                effect: None,
+            }],
+            weakness: Some(EnergyType::Darkness),
+            retreat_cost: vec![EnergyType::Colorless],
+            rarity: "◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }),
+    );
+    map.insert(
+        CardId::B4a030TeamRocketsMewtwo,
+        Card::Pokemon(PokemonCard {
+            id: "B4a 030".to_string(),
+            name: "Team Rocket's Mewtwo".to_string(),
+            stage: 0,
+            evolves_from: None,
+            hp: 100,
+            energy_type: EnergyType::Psychic,
+            ability: None,
+            attacks: vec![Attack {
+                energy_required: vec![
+                    EnergyType::Psychic,
+                    EnergyType::Psychic,
+                    EnergyType::Colorless,
+                ],
+                title: "Psychic Explosion".to_string(),
+                fixed_damage: 130,
+                effect: Some("This Pokémon also does 70 damage to itself.".to_string()),
+            }],
+            weakness: Some(EnergyType::Darkness),
+            retreat_cost: vec![EnergyType::Colorless, EnergyType::Colorless],
+            rarity: "◊◊◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }),
+    );
+    map.insert(
+        CardId::B4a031Espurr,
+        Card::Pokemon(PokemonCard {
+            id: "B4a 031".to_string(),
+            name: "Espurr".to_string(),
+            stage: 0,
+            evolves_from: None,
+            hp: 60,
+            energy_type: EnergyType::Psychic,
+            ability: None,
+            attacks: vec![Attack {
+                energy_required: vec![EnergyType::Psychic, EnergyType::Psychic],
+                title: "Beam".to_string(),
+                fixed_damage: 40,
+                effect: None,
+            }],
+            weakness: Some(EnergyType::Darkness),
+            retreat_cost: vec![EnergyType::Colorless],
+            rarity: "◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }),
+    );
+    map.insert(
+        CardId::B4a032Meowstic,
+        Card::Pokemon(PokemonCard {
+            id: "B4a 032".to_string(),
+            name: "Meowstic".to_string(),
+            stage: 1,
+            evolves_from: Some("Espurr".to_string()),
+            hp: 90,
+            energy_type: EnergyType::Psychic,
+            ability: None,
+            attacks: vec![Attack {
+                energy_required: vec![EnergyType::Psychic, EnergyType::Psychic],
+                title: "Super Psy Bolt".to_string(),
+                fixed_damage: 70,
+                effect: None,
+            }],
+            weakness: Some(EnergyType::Darkness),
+            retreat_cost: vec![EnergyType::Colorless],
+            rarity: "◊◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }),
+    );
+    map.insert(
+        CardId::B4a033Oranguru,
+        Card::Pokemon(PokemonCard {
+            id: "B4a 033".to_string(),
+            name: "Oranguru".to_string(),
+            stage: 0,
+            evolves_from: None,
+            hp: 100,
+            energy_type: EnergyType::Psychic,
+            ability: None,
+            attacks: vec![Attack {
+                energy_required: vec![EnergyType::Psychic, EnergyType::Colorless],
+                title: "Punch and Draw".to_string(),
+                fixed_damage: 40,
+                effect: Some("Draw a card.".to_string()),
+            }],
+            weakness: Some(EnergyType::Darkness),
+            retreat_cost: vec![EnergyType::Colorless, EnergyType::Colorless],
+            rarity: "◊◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }),
+    );
+    map.insert(
+        CardId::B4a034Gimmighoul,
+        Card::Pokemon(PokemonCard {
+            id: "B4a 034".to_string(),
+            name: "Gimmighoul".to_string(),
+            stage: 0,
+            evolves_from: None,
+            hp: 50,
+            energy_type: EnergyType::Psychic,
+            ability: None,
+            attacks: vec![Attack {
+                energy_required: vec![EnergyType::Colorless],
+                title: "Tackle".to_string(),
+                fixed_damage: 20,
+                effect: None,
+            }],
+            weakness: Some(EnergyType::Darkness),
+            retreat_cost: vec![EnergyType::Colorless],
+            rarity: "◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }),
+    );
+    map.insert(
+        CardId::B4a035Cubone,
+        Card::Pokemon(PokemonCard {
+            id: "B4a 035".to_string(),
+            name: "Cubone".to_string(),
+            stage: 0,
+            evolves_from: None,
+            hp: 60,
+            energy_type: EnergyType::Fighting,
+            ability: None,
+            attacks: vec![Attack {
+                energy_required: vec![EnergyType::Fighting],
+                title: "Bone Beatdown".to_string(),
+                fixed_damage: 20,
+                effect: None,
+            }],
+            weakness: Some(EnergyType::Grass),
+            retreat_cost: vec![EnergyType::Colorless],
+            rarity: "◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }),
+    );
+    map.insert(CardId::B4a036Marowak, Card::Pokemon(PokemonCard {
+            id: "B4a 036".to_string(),
+            name: "Marowak".to_string(),
+            stage: 1,
+            evolves_from: Some("Cubone".to_string()),
+            hp: 110,
+            energy_type: EnergyType::Fighting,
+            ability: None,
+            attacks: vec![
+                Attack {
+                    energy_required: vec![EnergyType::Fighting,EnergyType::Colorless,],
+                    title: "Punish".to_string(),
+                    fixed_damage: 50,
+                    effect: Some("If your opponent's Active Pokémon has “Team Rocket” in its name, this attack does 70 more damage.".to_string()),
+                },
+            ],
+            weakness: Some(EnergyType::Grass),
+            retreat_cost: vec![EnergyType::Colorless,EnergyType::Colorless,],
+            rarity: "◊◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }));
+    map.insert(
+        CardId::B4a037Landorus,
+        Card::Pokemon(PokemonCard {
+            id: "B4a 037".to_string(),
+            name: "Landorus".to_string(),
+            stage: 0,
+            evolves_from: None,
+            hp: 100,
+            energy_type: EnergyType::Fighting,
+            ability: None,
+            attacks: vec![Attack {
+                energy_required: vec![
+                    EnergyType::Fighting,
+                    EnergyType::Fighting,
+                    EnergyType::Colorless,
+                ],
+                title: "Gaia Impact".to_string(),
+                fixed_damage: 130,
+                effect: Some("Discard all Energy from this Pokémon.".to_string()),
+            }],
+            weakness: Some(EnergyType::Grass),
+            retreat_cost: vec![EnergyType::Colorless],
+            rarity: "◊◊◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }),
+    );
+    map.insert(
+        CardId::B4a038TeamRocketsEkans,
+        Card::Pokemon(PokemonCard {
+            id: "B4a 038".to_string(),
+            name: "Team Rocket's Ekans".to_string(),
+            stage: 0,
+            evolves_from: None,
+            hp: 60,
+            energy_type: EnergyType::Darkness,
+            ability: None,
+            attacks: vec![Attack {
+                energy_required: vec![EnergyType::Darkness, EnergyType::Colorless],
+                title: "Darkness Fang".to_string(),
+                fixed_damage: 40,
+                effect: None,
+            }],
+            weakness: Some(EnergyType::Fighting),
+            retreat_cost: vec![EnergyType::Colorless],
+            rarity: "◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }),
+    );
+    map.insert(CardId::B4a039TeamRocketsArbok, Card::Pokemon(PokemonCard {
+            id: "B4a 039".to_string(),
+            name: "Team Rocket's Arbok".to_string(),
+            stage: 1,
+            evolves_from: Some("Team Rocket's Ekans".to_string()),
+            hp: 100,
+            energy_type: EnergyType::Darkness,
+            ability: None,
+            attacks: vec![
+                Attack {
+                    energy_required: vec![EnergyType::Darkness,EnergyType::Darkness,EnergyType::Colorless,],
+                    title: "Shadow Seeker".to_string(),
+                    fixed_damage: 70,
+                    effect: Some("This attack does 10 more damage for each Energy in your opponent's Active Pokémon's Retreat Cost.".to_string()),
+                },
+            ],
+            weakness: Some(EnergyType::Fighting),
+            retreat_cost: vec![EnergyType::Colorless,EnergyType::Colorless,],
+            rarity: "◊◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }));
+    map.insert(
+        CardId::B4a040TeamRocketsGrimer,
+        Card::Pokemon(PokemonCard {
+            id: "B4a 040".to_string(),
+            name: "Team Rocket's Grimer".to_string(),
+            stage: 0,
+            evolves_from: None,
+            hp: 60,
+            energy_type: EnergyType::Darkness,
+            ability: None,
+            attacks: vec![Attack {
+                energy_required: vec![EnergyType::Darkness],
+                title: "Sludge".to_string(),
+                fixed_damage: 20,
+                effect: Some("Your opponent's Active Pokémon is now Poisoned.".to_string()),
+            }],
+            weakness: Some(EnergyType::Fighting),
+            retreat_cost: vec![EnergyType::Colorless, EnergyType::Colorless],
+            rarity: "◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }),
+    );
+    map.insert(CardId::B4a041TeamRocketsMuk, Card::Pokemon(PokemonCard {
+            id: "B4a 041".to_string(),
+            name: "Team Rocket's Muk".to_string(),
+            stage: 1,
+            evolves_from: Some("Team Rocket's Grimer".to_string()),
+            hp: 120,
+            energy_type: EnergyType::Darkness,
+            ability: None,
+            attacks: vec![
+                Attack {
+                    energy_required: vec![EnergyType::Darkness,EnergyType::Darkness,EnergyType::Colorless,],
+                    title: "Poison Absorption".to_string(),
+                    fixed_damage: 80,
+                    effect: Some("If your opponent's Active Pokémon is Poisoned, heal 60 damage from this Pokémon.".to_string()),
+                },
+            ],
+            weakness: Some(EnergyType::Fighting),
+            retreat_cost: vec![EnergyType::Colorless,EnergyType::Colorless,EnergyType::Colorless,],
+            rarity: "◊◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }));
+    map.insert(
+        CardId::B4a042TeamRocketsKoffing,
+        Card::Pokemon(PokemonCard {
+            id: "B4a 042".to_string(),
+            name: "Team Rocket's Koffing".to_string(),
+            stage: 0,
+            evolves_from: None,
+            hp: 60,
+            energy_type: EnergyType::Darkness,
+            ability: None,
+            attacks: vec![Attack {
+                energy_required: vec![EnergyType::Darkness],
+                title: "Reverse Thrust".to_string(),
+                fixed_damage: 10,
+                effect: Some("Switch this Pokémon with 1 of your Benched Pokémon.".to_string()),
+            }],
+            weakness: Some(EnergyType::Fighting),
+            retreat_cost: vec![EnergyType::Colorless],
+            rarity: "◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }),
+    );
+    map.insert(CardId::B4a043TeamRocketsWeezingEx, Card::Pokemon(PokemonCard {
+            id: "B4a 043".to_string(),
+            name: "Team Rocket's Weezing ex".to_string(),
+            stage: 1,
+            evolves_from: Some("Team Rocket's Koffing".to_string()),
+            hp: 140,
+            energy_type: EnergyType::Darkness,
+            ability: Some(Ability { title: "Boiler Smog".to_string(), effect: "Once during your turn, when you play this Pokémon from your hand to evolve 1 of your Pokémon, you may make your opponent's Active Pokémon Poisoned and Burned.".to_string() }),
+            attacks: vec![
+                Attack {
+                    energy_required: vec![EnergyType::Darkness,EnergyType::Darkness,],
+                    title: "Confusion Gas".to_string(),
+                    fixed_damage: 60,
+                    effect: Some("Your opponent's Active Pokémon is now Confused.".to_string()),
+                },
+            ],
+            weakness: Some(EnergyType::Fighting),
+            retreat_cost: vec![EnergyType::Colorless,EnergyType::Colorless,],
+            rarity: "◊◊◊◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }));
+    map.insert(CardId::B4a044TeamRocketsSneasel, Card::Pokemon(PokemonCard {
+            id: "B4a 044".to_string(),
+            name: "Team Rocket's Sneasel".to_string(),
+            stage: 0,
+            evolves_from: None,
+            hp: 60,
+            energy_type: EnergyType::Darkness,
+            ability: None,
+            attacks: vec![
+                Attack {
+                    energy_required: vec![EnergyType::Darkness,EnergyType::Colorless,],
+                    title: "Group Beatdown".to_string(),
+                    fixed_damage: 30,
+                    effect: Some("Flip a coin for each Pokémon you have in play. This attack does 30 damage for each heads.".to_string()),
+                },
+            ],
+            weakness: Some(EnergyType::Grass),
+            retreat_cost: vec![EnergyType::Colorless,],
+            rarity: "◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }));
+    map.insert(
+        CardId::B4a045Togedemaru,
+        Card::Pokemon(PokemonCard {
+            id: "B4a 045".to_string(),
+            name: "Togedemaru".to_string(),
+            stage: 0,
+            evolves_from: None,
+            hp: 70,
+            energy_type: EnergyType::Metal,
+            ability: None,
+            attacks: vec![Attack {
+                energy_required: vec![EnergyType::Metal],
+                title: "Tumbling Attack".to_string(),
+                fixed_damage: 20,
+                effect: Some("Flip a coin. If heads, this attack does 30 more damage.".to_string()),
+            }],
+            weakness: Some(EnergyType::Fire),
+            retreat_cost: vec![EnergyType::Colorless],
+            rarity: "◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }),
+    );
+    map.insert(
+        CardId::B4a046Cufant,
+        Card::Pokemon(PokemonCard {
+            id: "B4a 046".to_string(),
+            name: "Cufant".to_string(),
+            stage: 0,
+            evolves_from: None,
+            hp: 90,
+            energy_type: EnergyType::Metal,
+            ability: None,
+            attacks: vec![Attack {
+                energy_required: vec![EnergyType::Metal, EnergyType::Colorless],
+                title: "Rollout".to_string(),
+                fixed_damage: 40,
+                effect: None,
+            }],
+            weakness: Some(EnergyType::Fire),
+            retreat_cost: vec![
+                EnergyType::Colorless,
+                EnergyType::Colorless,
+                EnergyType::Colorless,
+            ],
+            rarity: "◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }),
+    );
+    map.insert(
+        CardId::B4a047Copperajah,
+        Card::Pokemon(PokemonCard {
+            id: "B4a 047".to_string(),
+            name: "Copperajah".to_string(),
+            stage: 1,
+            evolves_from: Some("Cufant".to_string()),
+            hp: 160,
+            energy_type: EnergyType::Metal,
+            ability: None,
+            attacks: vec![Attack {
+                energy_required: vec![EnergyType::Metal, EnergyType::Metal, EnergyType::Colorless],
+                title: "Heavy Impact".to_string(),
+                fixed_damage: 80,
+                effect: None,
+            }],
+            weakness: Some(EnergyType::Fire),
+            retreat_cost: vec![
+                EnergyType::Colorless,
+                EnergyType::Colorless,
+                EnergyType::Colorless,
+                EnergyType::Colorless,
+            ],
+            rarity: "◊◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }),
+    );
+    map.insert(
+        CardId::B4a048TeamRocketsTinkatink,
+        Card::Pokemon(PokemonCard {
+            id: "B4a 048".to_string(),
+            name: "Team Rocket's Tinkatink".to_string(),
+            stage: 0,
+            evolves_from: None,
+            hp: 60,
+            energy_type: EnergyType::Metal,
+            ability: None,
+            attacks: vec![Attack {
+                energy_required: vec![EnergyType::Metal],
+                title: "Lunge Out".to_string(),
+                fixed_damage: 20,
+                effect: None,
+            }],
+            weakness: Some(EnergyType::Fire),
+            retreat_cost: vec![EnergyType::Colorless],
+            rarity: "◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }),
+    );
+    map.insert(
+        CardId::B4a049TeamRocketsTinkatuff,
+        Card::Pokemon(PokemonCard {
+            id: "B4a 049".to_string(),
+            name: "Team Rocket's Tinkatuff".to_string(),
+            stage: 1,
+            evolves_from: Some("Team Rocket's Tinkatink".to_string()),
+            hp: 80,
+            energy_type: EnergyType::Metal,
+            ability: None,
+            attacks: vec![Attack {
+                energy_required: vec![EnergyType::Metal, EnergyType::Colorless],
+                title: "Corkscrew Punch".to_string(),
+                fixed_damage: 50,
+                effect: None,
+            }],
+            weakness: Some(EnergyType::Fire),
+            retreat_cost: vec![EnergyType::Colorless, EnergyType::Colorless],
+            rarity: "◊◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }),
+    );
+    map.insert(CardId::B4a050TeamRocketsTinkaton, Card::Pokemon(PokemonCard {
+            id: "B4a 050".to_string(),
+            name: "Team Rocket's Tinkaton".to_string(),
+            stage: 2,
+            evolves_from: Some("Team Rocket's Tinkatuff".to_string()),
+            hp: 140,
+            energy_type: EnergyType::Metal,
+            ability: None,
+            attacks: vec![
+                Attack {
+                    energy_required: vec![EnergyType::Metal,EnergyType::Metal,EnergyType::Colorless,],
+                    title: "Pile-Driving Hammer".to_string(),
+                    fixed_damage: 80,
+                    effect: Some("During your opponent's next turn, attacks used by the Defending Pokémon cost 2 [C] more, and its Retreat Cost is 2 [C] more.".to_string()),
+                },
+            ],
+            weakness: Some(EnergyType::Fire),
+            retreat_cost: vec![EnergyType::Colorless,EnergyType::Colorless,],
+            rarity: "◊◊◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }));
+    map.insert(CardId::B4a051Gholdengo, Card::Pokemon(PokemonCard {
+            id: "B4a 051".to_string(),
+            name: "Gholdengo".to_string(),
+            stage: 1,
+            evolves_from: Some("Gimmighoul".to_string()),
+            hp: 100,
+            energy_type: EnergyType::Metal,
+            ability: Some(Ability { title: "Luxury Coin".to_string(), effect: "Once during your turn, when you flip any coins for an effect of your Trainer cards, you may ignore all results of those coin flips and begin flipping those coins again. You can't use more than 1 Luxury Coin Ability each turn.".to_string() }),
+            attacks: vec![
+                Attack {
+                    energy_required: vec![EnergyType::Colorless,EnergyType::Colorless,EnergyType::Colorless,],
+                    title: "Power Gem".to_string(),
+                    fixed_damage: 50,
+                    effect: None,
+                },
+            ],
+            weakness: Some(EnergyType::Fire),
+            retreat_cost: vec![EnergyType::Colorless,],
+            rarity: "◊◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }));
+    map.insert(
+        CardId::B4a052Gible,
+        Card::Pokemon(PokemonCard {
+            id: "B4a 052".to_string(),
+            name: "Gible".to_string(),
+            stage: 0,
+            evolves_from: None,
+            hp: 60,
+            energy_type: EnergyType::Dragon,
+            ability: None,
+            attacks: vec![Attack {
+                energy_required: vec![EnergyType::Colorless],
+                title: "Take Down".to_string(),
+                fixed_damage: 30,
+                effect: Some("This Pokémon also does 10 damage to itself.".to_string()),
+            }],
+            weakness: None,
+            retreat_cost: vec![EnergyType::Colorless],
+            rarity: "◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }),
+    );
+    map.insert(
+        CardId::B4a053Gabite,
+        Card::Pokemon(PokemonCard {
+            id: "B4a 053".to_string(),
+            name: "Gabite".to_string(),
+            stage: 1,
+            evolves_from: Some("Gible".to_string()),
+            hp: 80,
+            energy_type: EnergyType::Dragon,
+            ability: None,
+            attacks: vec![Attack {
+                energy_required: vec![EnergyType::Water, EnergyType::Fighting],
+                title: "Linear Attack".to_string(),
+                fixed_damage: 0,
+                effect: Some(
+                    "This attack does 50 damage to 1 of your opponent's Pokémon.".to_string(),
+                ),
+            }],
+            weakness: None,
+            retreat_cost: vec![EnergyType::Colorless],
+            rarity: "◊◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }),
+    );
+    map.insert(CardId::B4a054Garchomp, Card::Pokemon(PokemonCard {
+            id: "B4a 054".to_string(),
+            name: "Garchomp".to_string(),
+            stage: 2,
+            evolves_from: Some("Gabite".to_string()),
+            hp: 150,
+            energy_type: EnergyType::Dragon,
+            ability: Some(Ability { title: "Mach Stealth".to_string(), effect: "If your opponent's Pokémon is Knocked Out by damage from this Pokémon's attacks, during your opponent's next turn, prevent all damage from—and effects of—attacks done to this Pokémon.".to_string() }),
+            attacks: vec![
+                Attack {
+                    energy_required: vec![EnergyType::Water,EnergyType::Fighting,EnergyType::Colorless,],
+                    title: "Land Crush".to_string(),
+                    fixed_damage: 120,
+                    effect: None,
+                },
+            ],
+            weakness: None,
+            retreat_cost: vec![EnergyType::Colorless,],
+            rarity: "◊◊◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }));
+    map.insert(
+        CardId::B4a055Duraludon,
+        Card::Pokemon(PokemonCard {
+            id: "B4a 055".to_string(),
+            name: "Duraludon".to_string(),
+            stage: 0,
+            evolves_from: None,
+            hp: 100,
+            energy_type: EnergyType::Dragon,
+            ability: None,
+            attacks: vec![Attack {
+                energy_required: vec![EnergyType::Fighting, EnergyType::Metal],
+                title: "Power Beam".to_string(),
+                fixed_damage: 50,
+                effect: None,
+            }],
+            weakness: None,
+            retreat_cost: vec![EnergyType::Colorless, EnergyType::Colorless],
+            rarity: "◊◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }),
+    );
+    map.insert(
+        CardId::B4a056Archaludon,
+        Card::Pokemon(PokemonCard {
+            id: "B4a 056".to_string(),
+            name: "Archaludon".to_string(),
+            stage: 1,
+            evolves_from: Some("Duraludon".to_string()),
+            hp: 140,
+            energy_type: EnergyType::Dragon,
+            ability: None,
+            attacks: vec![Attack {
+                energy_required: vec![
+                    EnergyType::Fighting,
+                    EnergyType::Metal,
+                    EnergyType::Colorless,
+                    EnergyType::Colorless,
+                ],
+                title: "Protect Charge".to_string(),
+                fixed_damage: 110,
+                effect: Some(
+                    "During your opponent's next turn, this Pokémon takes -30 damage from attacks."
+                        .to_string(),
+                ),
+            }],
+            weakness: None,
+            retreat_cost: vec![
+                EnergyType::Colorless,
+                EnergyType::Colorless,
+                EnergyType::Colorless,
+            ],
+            rarity: "◊◊◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }),
+    );
+    map.insert(
+        CardId::B4a057Regidrago,
+        Card::Pokemon(PokemonCard {
+            id: "B4a 057".to_string(),
+            name: "Regidrago".to_string(),
+            stage: 0,
+            evolves_from: None,
+            hp: 110,
+            energy_type: EnergyType::Dragon,
+            ability: None,
+            attacks: vec![Attack {
+                energy_required: vec![EnergyType::Grass, EnergyType::Fire, EnergyType::Colorless],
+                title: "Draconic Slam".to_string(),
+                fixed_damage: 140,
+                effect: Some(
+                    "If this Pokémon has damage on it, this attack does -100 damage.".to_string(),
+                ),
+            }],
+            weakness: None,
+            retreat_cost: vec![EnergyType::Colorless, EnergyType::Colorless],
+            rarity: "◊◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }),
+    );
+    map.insert(
+        CardId::B4a058TeamRocketsRattata,
+        Card::Pokemon(PokemonCard {
+            id: "B4a 058".to_string(),
+            name: "Team Rocket's Rattata".to_string(),
+            stage: 0,
+            evolves_from: None,
+            hp: 40,
+            energy_type: EnergyType::Colorless,
+            ability: None,
+            attacks: vec![Attack {
+                energy_required: vec![EnergyType::Colorless],
+                title: "Ambush".to_string(),
+                fixed_damage: 20,
+                effect: Some("Flip a coin. If heads, this attack does 20 more damage.".to_string()),
+            }],
+            weakness: Some(EnergyType::Fighting),
+            retreat_cost: vec![EnergyType::Colorless],
+            rarity: "◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }),
+    );
+    map.insert(CardId::B4a059TeamRocketsRaticateEx, Card::Pokemon(PokemonCard {
+            id: "B4a 059".to_string(),
+            name: "Team Rocket's Raticate ex".to_string(),
+            stage: 1,
+            evolves_from: Some("Team Rocket's Rattata".to_string()),
+            hp: 120,
+            energy_type: EnergyType::Colorless,
+            ability: Some(Ability { title: "Thieving Incisors".to_string(), effect: "Once during your turn, when you play this Pokémon from your hand to evolve 1 of your Pokémon, you may move a random Energy from your opponent's Active Pokémon to this Pokémon.".to_string() }),
+            attacks: vec![
+                Attack {
+                    energy_required: vec![EnergyType::Colorless,EnergyType::Colorless,],
+                    title: "Boost Dash".to_string(),
+                    fixed_damage: 70,
+                    effect: None,
+                },
+            ],
+            weakness: Some(EnergyType::Fighting),
+            retreat_cost: vec![],
+            rarity: "◊◊◊◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }));
+    map.insert(
+        CardId::B4a060TeamRocketsMeowth,
+        Card::Pokemon(PokemonCard {
+            id: "B4a 060".to_string(),
+            name: "Team Rocket's Meowth".to_string(),
+            stage: 0,
+            evolves_from: None,
+            hp: 50,
+            energy_type: EnergyType::Colorless,
+            ability: None,
+            attacks: vec![Attack {
+                energy_required: vec![EnergyType::Colorless],
+                title: "Scratch".to_string(),
+                fixed_damage: 30,
+                effect: None,
+            }],
+            weakness: Some(EnergyType::Fighting),
+            retreat_cost: vec![EnergyType::Colorless],
+            rarity: "◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }),
+    );
+    map.insert(
+        CardId::B4a061TeamRocketsPersian,
+        Card::Pokemon(PokemonCard {
+            id: "B4a 061".to_string(),
+            name: "Team Rocket's Persian".to_string(),
+            stage: 1,
+            evolves_from: Some("Team Rocket's Meowth".to_string()),
+            hp: 100,
+            energy_type: EnergyType::Colorless,
+            ability: None,
+            attacks: vec![Attack {
+                energy_required: vec![EnergyType::Colorless, EnergyType::Colorless],
+                title: "Dangerous Rogue".to_string(),
+                fixed_damage: 10,
+                effect: Some(
+                    "This attack does 40 more damage for each of your opponent's Benched Pokémon."
+                        .to_string(),
+                ),
+            }],
+            weakness: Some(EnergyType::Fighting),
+            retreat_cost: vec![EnergyType::Colorless],
+            rarity: "◊◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }),
+    );
+    map.insert(CardId::B4a062TeamRocketsKecleon, Card::Pokemon(PokemonCard {
+            id: "B4a 062".to_string(),
+            name: "Team Rocket's Kecleon".to_string(),
+            stage: 0,
+            evolves_from: None,
+            hp: 70,
+            energy_type: EnergyType::Colorless,
+            ability: Some(Ability { title: "Spy Ops".to_string(), effect: "Once during your turn, you may look at a random card from your opponent's hand.".to_string() }),
+            attacks: vec![
+                Attack {
+                    energy_required: vec![EnergyType::Colorless,EnergyType::Colorless,],
+                    title: "Hit and Hide".to_string(),
+                    fixed_damage: 40,
+                    effect: Some("Flip a coin. If heads, during your opponent's next turn, prevent all damage from—and effects of—attacks done to this Pokémon.".to_string()),
+                },
+            ],
+            weakness: Some(EnergyType::Fighting),
+            retreat_cost: vec![EnergyType::Colorless,],
+            rarity: "◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }));
+    map.insert(CardId::B4a063Happiny, Card::Pokemon(PokemonCard {
+            id: "B4a 063".to_string(),
+            name: "Happiny".to_string(),
+            stage: 0,
+            evolves_from: None,
+            hp: 30,
+            energy_type: EnergyType::Colorless,
+            ability: None,
+            attacks: vec![
+                Attack {
+                    energy_required: vec![],
+                    title: "Chubby Cheer".to_string(),
+                    fixed_damage: 10,
+                    effect: Some("During your next turn, attacks used by your Pokémon do +20 damage to your opponent's Active Pokémon.".to_string()),
+                },
+            ],
+            weakness: None,
+            retreat_cost: vec![],
+            rarity: "◊◊◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }));
+    map.insert(
+        CardId::B4a064Furfrou,
+        Card::Pokemon(PokemonCard {
+            id: "B4a 064".to_string(),
+            name: "Furfrou".to_string(),
+            stage: 0,
+            evolves_from: None,
+            hp: 70,
+            energy_type: EnergyType::Colorless,
+            ability: Some(Ability {
+                title: "Fur Coat".to_string(),
+                effect: "This Pokémon takes -20 damage from attacks.".to_string(),
+            }),
+            attacks: vec![Attack {
+                energy_required: vec![EnergyType::Colorless],
+                title: "Continuous Steps".to_string(),
+                fixed_damage: 30,
+                effect: Some(
+                    "Flip a coin until you get tails. This attack does 30 damage for each heads."
+                        .to_string(),
+                ),
+            }],
+            weakness: Some(EnergyType::Fighting),
+            retreat_cost: vec![EnergyType::Colorless],
+            rarity: "◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }),
+    );
+    map.insert(
+        CardId::B4a065Lechonk,
+        Card::Pokemon(PokemonCard {
+            id: "B4a 065".to_string(),
+            name: "Lechonk".to_string(),
+            stage: 0,
+            evolves_from: None,
+            hp: 60,
+            energy_type: EnergyType::Colorless,
+            ability: None,
+            attacks: vec![Attack {
+                energy_required: vec![EnergyType::Colorless, EnergyType::Colorless],
+                title: "Headbutt".to_string(),
+                fixed_damage: 30,
+                effect: None,
+            }],
+            weakness: Some(EnergyType::Fighting),
+            retreat_cost: vec![EnergyType::Colorless],
+            rarity: "◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }),
+    );
+    map.insert(
+        CardId::B4a066Oinkologne,
+        Card::Pokemon(PokemonCard {
+            id: "B4a 066".to_string(),
+            name: "Oinkologne".to_string(),
+            stage: 1,
+            evolves_from: Some("Lechonk".to_string()),
+            hp: 110,
+            energy_type: EnergyType::Colorless,
+            ability: None,
+            attacks: vec![Attack {
+                energy_required: vec![EnergyType::Colorless, EnergyType::Colorless],
+                title: "Sitdown Splash".to_string(),
+                fixed_damage: 40,
+                effect: Some("Flip a coin. If heads, this attack does 60 more damage.".to_string()),
+            }],
+            weakness: Some(EnergyType::Fighting),
+            retreat_cost: vec![EnergyType::Colorless, EnergyType::Colorless],
+            rarity: "◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }),
+    );
+    map.insert(CardId::B4a067TeamRocketsThievingMachine, Card::Trainer(TrainerCard {
+            id: "B4a 067".to_string(),
+            name: "Team Rocket's Thieving Machine".to_string(),
+            effect: "Put a random Item card, except any Team Rocket's Thieving Machine, from your opponent's discard pile into your hand.".to_string(),
+            rarity: "◊◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+            trainer_card_type: TrainerType::Item,
+        }));
+    map.insert(CardId::B4a068TeamRocketsGoozooka, Card::Trainer(TrainerCard {
+            id: "B4a 068".to_string(),
+            name: "Team Rocket's Goo-zooka".to_string(),
+            effect: "Until the end of your opponent's next turn, your opponent's Active Pokémon's Retreat Cost is 1 more.".to_string(),
+            rarity: "◊◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+            trainer_card_type: TrainerType::Item,
+        }));
+    map.insert(CardId::B4a069TeamRocketsResearcher, Card::Trainer(TrainerCard {
+            id: "B4a 069".to_string(),
+            name: "Team Rocket's Researcher".to_string(),
+            effect: "Flip a coin until you get tails. For each heads, put a random Pokémon that has “Team Rocket” in its name from your deck into your hand.".to_string(),
+            rarity: "◊◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+            trainer_card_type: TrainerType::Supporter,
+        }));
+    map.insert(CardId::B4a070TeamRocketsMasterPlan, Card::Trainer(TrainerCard {
+            id: "B4a 070".to_string(),
+            name: "Team Rocket's Master Plan".to_string(),
+            effect: "Your opponent's Active Pokémon is now Confused. Flip a coin. If tails, your Active Pokémon is now also Confused.".to_string(),
+            rarity: "◊◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+            trainer_card_type: TrainerType::Supporter,
+        }));
+    map.insert(CardId::B4a071TeamRocketsBoss, Card::Trainer(TrainerCard {
+            id: "B4a 071".to_string(),
+            name: "Team Rocket's Boss".to_string(),
+            effect: "Look at your opponent's hand and put any number of Basic Pokémon you find there onto your opponent's Bench.".to_string(),
+            rarity: "◊◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+            trainer_card_type: TrainerType::Supporter,
+        }));
+    map.insert(CardId::B4a072Arcade, Card::Trainer(TrainerCard {
+            id: "B4a 072".to_string(),
+            name: "Arcade".to_string(),
+            effect: "Once during each player's turn, that player may flip 3 coins. If all of them are heads, that player draws cards until they have 7 cards in their hand.".to_string(),
+            rarity: "◊◊".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+            trainer_card_type: TrainerType::Stadium,
+        }));
+    map.insert(CardId::B4a073Delphox, Card::Pokemon(PokemonCard {
+            id: "B4a 073".to_string(),
+            name: "Delphox".to_string(),
+            stage: 2,
+            evolves_from: Some("Braixen".to_string()),
+            hp: 130,
+            energy_type: EnergyType::Fire,
+            ability: None,
+            attacks: vec![
+                Attack {
+                    energy_required: vec![EnergyType::Colorless,EnergyType::Colorless,EnergyType::Colorless,],
+                    title: "Psychic".to_string(),
+                    fixed_damage: 60,
+                    effect: Some("This attack does 30 more damage for each Energy attached to your opponent's Active Pokémon.".to_string()),
+                },
+            ],
+            weakness: Some(EnergyType::Water),
+            retreat_cost: vec![EnergyType::Colorless,EnergyType::Colorless,],
+            rarity: "☆".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }));
+    map.insert(CardId::B4a074TeamRocketsHypno, Card::Pokemon(PokemonCard {
+            id: "B4a 074".to_string(),
+            name: "Team Rocket's Hypno".to_string(),
+            stage: 1,
+            evolves_from: Some("Team Rocket's Drowzee".to_string()),
+            hp: 90,
+            energy_type: EnergyType::Psychic,
+            ability: None,
+            attacks: vec![
+                Attack {
+                    energy_required: vec![EnergyType::Psychic,EnergyType::Psychic,],
+                    title: "Entrap".to_string(),
+                    fixed_damage: 0,
+                    effect: Some("Switch in 1 of your opponent's Benched Pokémon to the Active Spot. If you do, this attack does 50 damage to the new Active Pokémon.".to_string()),
+                },
+            ],
+            weakness: Some(EnergyType::Darkness),
+            retreat_cost: vec![EnergyType::Colorless,EnergyType::Colorless,],
+            rarity: "☆".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }));
+    map.insert(CardId::B4a075TeamRocketsTinkaton, Card::Pokemon(PokemonCard {
+            id: "B4a 075".to_string(),
+            name: "Team Rocket's Tinkaton".to_string(),
+            stage: 2,
+            evolves_from: Some("Team Rocket's Tinkatuff".to_string()),
+            hp: 140,
+            energy_type: EnergyType::Metal,
+            ability: None,
+            attacks: vec![
+                Attack {
+                    energy_required: vec![EnergyType::Metal,EnergyType::Metal,EnergyType::Colorless,],
+                    title: "Pile-Driving Hammer".to_string(),
+                    fixed_damage: 80,
+                    effect: Some("During your opponent's next turn, attacks used by the Defending Pokémon cost 2 [C] more, and its Retreat Cost is 2 [C] more.".to_string()),
+                },
+            ],
+            weakness: Some(EnergyType::Fire),
+            retreat_cost: vec![EnergyType::Colorless,EnergyType::Colorless,],
+            rarity: "☆".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }));
+    map.insert(CardId::B4a076TeamRocketsKecleon, Card::Pokemon(PokemonCard {
+            id: "B4a 076".to_string(),
+            name: "Team Rocket's Kecleon".to_string(),
+            stage: 0,
+            evolves_from: None,
+            hp: 70,
+            energy_type: EnergyType::Colorless,
+            ability: Some(Ability { title: "Spy Ops".to_string(), effect: "Once during your turn, you may look at a random card from your opponent's hand.".to_string() }),
+            attacks: vec![
+                Attack {
+                    energy_required: vec![EnergyType::Colorless,EnergyType::Colorless,],
+                    title: "Hit and Hide".to_string(),
+                    fixed_damage: 40,
+                    effect: Some("Flip a coin. If heads, during your opponent's next turn, prevent all damage from—and effects of—attacks done to this Pokémon.".to_string()),
+                },
+            ],
+            weakness: Some(EnergyType::Fighting),
+            retreat_cost: vec![EnergyType::Colorless,],
+            rarity: "☆".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }));
+    map.insert(CardId::B4a077Happiny, Card::Pokemon(PokemonCard {
+            id: "B4a 077".to_string(),
+            name: "Happiny".to_string(),
+            stage: 0,
+            evolves_from: None,
+            hp: 30,
+            energy_type: EnergyType::Colorless,
+            ability: None,
+            attacks: vec![
+                Attack {
+                    energy_required: vec![],
+                    title: "Chubby Cheer".to_string(),
+                    fixed_damage: 10,
+                    effect: Some("During your next turn, attacks used by your Pokémon do +20 damage to your opponent's Active Pokémon.".to_string()),
+                },
+            ],
+            weakness: None,
+            retreat_cost: vec![],
+            rarity: "☆".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }));
+    map.insert(
+        CardId::B4a078Lechonk,
+        Card::Pokemon(PokemonCard {
+            id: "B4a 078".to_string(),
+            name: "Lechonk".to_string(),
+            stage: 0,
+            evolves_from: None,
+            hp: 60,
+            energy_type: EnergyType::Colorless,
+            ability: None,
+            attacks: vec![Attack {
+                energy_required: vec![EnergyType::Colorless, EnergyType::Colorless],
+                title: "Headbutt".to_string(),
+                fixed_damage: 30,
+                effect: None,
+            }],
+            weakness: Some(EnergyType::Fighting),
+            retreat_cost: vec![EnergyType::Colorless],
+            rarity: "☆".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }),
+    );
+    map.insert(CardId::B4a079TeamRocketsMoltresEx, Card::Pokemon(PokemonCard {
+            id: "B4a 079".to_string(),
+            name: "Team Rocket's Moltres ex".to_string(),
+            stage: 0,
+            evolves_from: None,
+            hp: 130,
+            energy_type: EnergyType::Fire,
+            ability: None,
+            attacks: vec![
+                Attack {
+                    energy_required: vec![EnergyType::Fire,],
+                    title: "Heat Charged".to_string(),
+                    fixed_damage: 0,
+                    effect: Some("Flip 3 coins. For each heads, produce a [R] Energy from your Energy Zone and attach it to this Pokémon.".to_string()),
+                },
+                Attack {
+                    energy_required: vec![EnergyType::Fire,EnergyType::Fire,EnergyType::Fire,EnergyType::Colorless,],
+                    title: "Netherwing".to_string(),
+                    fixed_damage: 130,
+                    effect: Some("Discard a [R] Energy from this Pokémon.".to_string()),
+                },
+            ],
+            weakness: Some(EnergyType::Water),
+            retreat_cost: vec![EnergyType::Colorless,EnergyType::Colorless,],
+            rarity: "☆☆".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }));
+    map.insert(
+        CardId::B4a080TeamRocketsArticunoEx,
+        Card::Pokemon(PokemonCard {
+            id: "B4a 080".to_string(),
+            name: "Team Rocket's Articuno ex".to_string(),
+            stage: 0,
+            evolves_from: None,
+            hp: 130,
+            energy_type: EnergyType::Water,
+            ability: None,
+            attacks: vec![
+                Attack {
+                    energy_required: vec![EnergyType::Water, EnergyType::Colorless],
+                    title: "Ice Wing".to_string(),
+                    fixed_damage: 40,
+                    effect: None,
+                },
+                Attack {
+                    energy_required: vec![
+                        EnergyType::Water,
+                        EnergyType::Water,
+                        EnergyType::Colorless,
+                    ],
+                    title: "Hailstorm".to_string(),
+                    fixed_damage: 130,
+                    effect: Some(
+                        "This attack also does 20 damage to each of your Benched Pokémon."
+                            .to_string(),
+                    ),
+                },
+            ],
+            weakness: Some(EnergyType::Metal),
+            retreat_cost: vec![EnergyType::Colorless, EnergyType::Colorless],
+            rarity: "☆☆".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }),
+    );
+    map.insert(CardId::B4a081TeamRocketsZapdosEx, Card::Pokemon(PokemonCard {
+            id: "B4a 081".to_string(),
+            name: "Team Rocket's Zapdos ex".to_string(),
+            stage: 0,
+            evolves_from: None,
+            hp: 120,
+            energy_type: EnergyType::Lightning,
+            ability: None,
+            attacks: vec![
+                Attack {
+                    energy_required: vec![EnergyType::Lightning,EnergyType::Colorless,],
+                    title: "Electro Ball".to_string(),
+                    fixed_damage: 40,
+                    effect: None,
+                },
+                Attack {
+                    energy_required: vec![EnergyType::Lightning,EnergyType::Lightning,EnergyType::Colorless,],
+                    title: "Thunderclaw".to_string(),
+                    fixed_damage: 90,
+                    effect: Some("This attack also does 50 damage to 1 of your opponent's Benched Pokémon that has damage on it.".to_string()),
+                },
+            ],
+            weakness: Some(EnergyType::Fighting),
+            retreat_cost: vec![EnergyType::Colorless,],
+            rarity: "☆☆".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }));
+    map.insert(CardId::B4a082TeamRocketsSlowkingEx, Card::Pokemon(PokemonCard {
+            id: "B4a 082".to_string(),
+            name: "Team Rocket's Slowking ex".to_string(),
+            stage: 1,
+            evolves_from: Some("Team Rocket's Slowpoke".to_string()),
+            hp: 130,
+            energy_type: EnergyType::Psychic,
+            ability: Some(Ability { title: "Evil Inspiration".to_string(), effect: "Once during your turn, if this Pokémon is in the Active Spot, you may draw a card.".to_string() }),
+            attacks: vec![
+                Attack {
+                    energy_required: vec![EnergyType::Psychic,EnergyType::Colorless,],
+                    title: "Hand Kinesis".to_string(),
+                    fixed_damage: 20,
+                    effect: Some("This attack does 20 damage for each card in your hand.".to_string()),
+                },
+            ],
+            weakness: Some(EnergyType::Darkness),
+            retreat_cost: vec![EnergyType::Colorless,EnergyType::Colorless,EnergyType::Colorless,],
+            rarity: "☆☆".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }));
+    map.insert(CardId::B4a083TeamRocketsWeezingEx, Card::Pokemon(PokemonCard {
+            id: "B4a 083".to_string(),
+            name: "Team Rocket's Weezing ex".to_string(),
+            stage: 1,
+            evolves_from: Some("Team Rocket's Koffing".to_string()),
+            hp: 140,
+            energy_type: EnergyType::Darkness,
+            ability: Some(Ability { title: "Boiler Smog".to_string(), effect: "Once during your turn, when you play this Pokémon from your hand to evolve 1 of your Pokémon, you may make your opponent's Active Pokémon Poisoned and Burned.".to_string() }),
+            attacks: vec![
+                Attack {
+                    energy_required: vec![EnergyType::Darkness,EnergyType::Darkness,],
+                    title: "Confusion Gas".to_string(),
+                    fixed_damage: 60,
+                    effect: Some("Your opponent's Active Pokémon is now Confused.".to_string()),
+                },
+            ],
+            weakness: Some(EnergyType::Fighting),
+            retreat_cost: vec![EnergyType::Colorless,EnergyType::Colorless,],
+            rarity: "☆☆".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }));
+    map.insert(CardId::B4a084TeamRocketsRaticateEx, Card::Pokemon(PokemonCard {
+            id: "B4a 084".to_string(),
+            name: "Team Rocket's Raticate ex".to_string(),
+            stage: 1,
+            evolves_from: Some("Team Rocket's Rattata".to_string()),
+            hp: 120,
+            energy_type: EnergyType::Colorless,
+            ability: Some(Ability { title: "Thieving Incisors".to_string(), effect: "Once during your turn, when you play this Pokémon from your hand to evolve 1 of your Pokémon, you may move a random Energy from your opponent's Active Pokémon to this Pokémon.".to_string() }),
+            attacks: vec![
+                Attack {
+                    energy_required: vec![EnergyType::Colorless,EnergyType::Colorless,],
+                    title: "Boost Dash".to_string(),
+                    fixed_damage: 70,
+                    effect: None,
+                },
+            ],
+            weakness: Some(EnergyType::Fighting),
+            retreat_cost: vec![],
+            rarity: "☆☆".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }));
+    map.insert(CardId::B4a085TeamRocketsResearcher, Card::Trainer(TrainerCard {
+            id: "B4a 085".to_string(),
+            name: "Team Rocket's Researcher".to_string(),
+            effect: "Flip a coin until you get tails. For each heads, put a random Pokémon that has “Team Rocket” in its name from your deck into your hand.".to_string(),
+            rarity: "☆☆".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+            trainer_card_type: TrainerType::Supporter,
+        }));
+    map.insert(CardId::B4a086TeamRocketsMasterPlan, Card::Trainer(TrainerCard {
+            id: "B4a 086".to_string(),
+            name: "Team Rocket's Master Plan".to_string(),
+            effect: "Your opponent's Active Pokémon is now Confused. Flip a coin. If tails, your Active Pokémon is now also Confused.".to_string(),
+            rarity: "☆☆".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+            trainer_card_type: TrainerType::Supporter,
+        }));
+    map.insert(CardId::B4a087TeamRocketsBoss, Card::Trainer(TrainerCard {
+            id: "B4a 087".to_string(),
+            name: "Team Rocket's Boss".to_string(),
+            effect: "Look at your opponent's hand and put any number of Basic Pokémon you find there onto your opponent's Bench.".to_string(),
+            rarity: "☆☆".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+            trainer_card_type: TrainerType::Supporter,
+        }));
+    map.insert(CardId::B4a088TeamRocketsMoltresEx, Card::Pokemon(PokemonCard {
+            id: "B4a 088".to_string(),
+            name: "Team Rocket's Moltres ex".to_string(),
+            stage: 0,
+            evolves_from: None,
+            hp: 130,
+            energy_type: EnergyType::Fire,
+            ability: None,
+            attacks: vec![
+                Attack {
+                    energy_required: vec![EnergyType::Fire,],
+                    title: "Heat Charged".to_string(),
+                    fixed_damage: 0,
+                    effect: Some("Flip 3 coins. For each heads, produce a [R] Energy from your Energy Zone and attach it to this Pokémon.".to_string()),
+                },
+                Attack {
+                    energy_required: vec![EnergyType::Fire,EnergyType::Fire,EnergyType::Fire,EnergyType::Colorless,],
+                    title: "Netherwing".to_string(),
+                    fixed_damage: 130,
+                    effect: Some("Discard a [R] Energy from this Pokémon.".to_string()),
+                },
+            ],
+            weakness: Some(EnergyType::Water),
+            retreat_cost: vec![EnergyType::Colorless,EnergyType::Colorless,],
+            rarity: "☆☆".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }));
+    map.insert(
+        CardId::B4a089TeamRocketsArticunoEx,
+        Card::Pokemon(PokemonCard {
+            id: "B4a 089".to_string(),
+            name: "Team Rocket's Articuno ex".to_string(),
+            stage: 0,
+            evolves_from: None,
+            hp: 130,
+            energy_type: EnergyType::Water,
+            ability: None,
+            attacks: vec![
+                Attack {
+                    energy_required: vec![EnergyType::Water, EnergyType::Colorless],
+                    title: "Ice Wing".to_string(),
+                    fixed_damage: 40,
+                    effect: None,
+                },
+                Attack {
+                    energy_required: vec![
+                        EnergyType::Water,
+                        EnergyType::Water,
+                        EnergyType::Colorless,
+                    ],
+                    title: "Hailstorm".to_string(),
+                    fixed_damage: 130,
+                    effect: Some(
+                        "This attack also does 20 damage to each of your Benched Pokémon."
+                            .to_string(),
+                    ),
+                },
+            ],
+            weakness: Some(EnergyType::Metal),
+            retreat_cost: vec![EnergyType::Colorless, EnergyType::Colorless],
+            rarity: "☆☆".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }),
+    );
+    map.insert(CardId::B4a090TeamRocketsZapdosEx, Card::Pokemon(PokemonCard {
+            id: "B4a 090".to_string(),
+            name: "Team Rocket's Zapdos ex".to_string(),
+            stage: 0,
+            evolves_from: None,
+            hp: 120,
+            energy_type: EnergyType::Lightning,
+            ability: None,
+            attacks: vec![
+                Attack {
+                    energy_required: vec![EnergyType::Lightning,EnergyType::Colorless,],
+                    title: "Electro Ball".to_string(),
+                    fixed_damage: 40,
+                    effect: None,
+                },
+                Attack {
+                    energy_required: vec![EnergyType::Lightning,EnergyType::Lightning,EnergyType::Colorless,],
+                    title: "Thunderclaw".to_string(),
+                    fixed_damage: 90,
+                    effect: Some("This attack also does 50 damage to 1 of your opponent's Benched Pokémon that has damage on it.".to_string()),
+                },
+            ],
+            weakness: Some(EnergyType::Fighting),
+            retreat_cost: vec![EnergyType::Colorless,],
+            rarity: "☆☆".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }));
+    map.insert(CardId::B4a091TeamRocketsSlowkingEx, Card::Pokemon(PokemonCard {
+            id: "B4a 091".to_string(),
+            name: "Team Rocket's Slowking ex".to_string(),
+            stage: 1,
+            evolves_from: Some("Team Rocket's Slowpoke".to_string()),
+            hp: 130,
+            energy_type: EnergyType::Psychic,
+            ability: Some(Ability { title: "Evil Inspiration".to_string(), effect: "Once during your turn, if this Pokémon is in the Active Spot, you may draw a card.".to_string() }),
+            attacks: vec![
+                Attack {
+                    energy_required: vec![EnergyType::Psychic,EnergyType::Colorless,],
+                    title: "Hand Kinesis".to_string(),
+                    fixed_damage: 20,
+                    effect: Some("This attack does 20 damage for each card in your hand.".to_string()),
+                },
+            ],
+            weakness: Some(EnergyType::Darkness),
+            retreat_cost: vec![EnergyType::Colorless,EnergyType::Colorless,EnergyType::Colorless,],
+            rarity: "☆☆".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }));
+    map.insert(CardId::B4a092TeamRocketsWeezingEx, Card::Pokemon(PokemonCard {
+            id: "B4a 092".to_string(),
+            name: "Team Rocket's Weezing ex".to_string(),
+            stage: 1,
+            evolves_from: Some("Team Rocket's Koffing".to_string()),
+            hp: 140,
+            energy_type: EnergyType::Darkness,
+            ability: Some(Ability { title: "Boiler Smog".to_string(), effect: "Once during your turn, when you play this Pokémon from your hand to evolve 1 of your Pokémon, you may make your opponent's Active Pokémon Poisoned and Burned.".to_string() }),
+            attacks: vec![
+                Attack {
+                    energy_required: vec![EnergyType::Darkness,EnergyType::Darkness,],
+                    title: "Confusion Gas".to_string(),
+                    fixed_damage: 60,
+                    effect: Some("Your opponent's Active Pokémon is now Confused.".to_string()),
+                },
+            ],
+            weakness: Some(EnergyType::Fighting),
+            retreat_cost: vec![EnergyType::Colorless,EnergyType::Colorless,],
+            rarity: "☆☆".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }));
+    map.insert(CardId::B4a093TeamRocketsRaticateEx, Card::Pokemon(PokemonCard {
+            id: "B4a 093".to_string(),
+            name: "Team Rocket's Raticate ex".to_string(),
+            stage: 1,
+            evolves_from: Some("Team Rocket's Rattata".to_string()),
+            hp: 120,
+            energy_type: EnergyType::Colorless,
+            ability: Some(Ability { title: "Thieving Incisors".to_string(), effect: "Once during your turn, when you play this Pokémon from your hand to evolve 1 of your Pokémon, you may move a random Energy from your opponent's Active Pokémon to this Pokémon.".to_string() }),
+            attacks: vec![
+                Attack {
+                    energy_required: vec![EnergyType::Colorless,EnergyType::Colorless,],
+                    title: "Boost Dash".to_string(),
+                    fixed_damage: 70,
+                    effect: None,
+                },
+            ],
+            weakness: Some(EnergyType::Fighting),
+            retreat_cost: vec![],
+            rarity: "☆☆".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }));
+    map.insert(CardId::B4a094TeamRocketsMasterPlan, Card::Trainer(TrainerCard {
+            id: "B4a 094".to_string(),
+            name: "Team Rocket's Master Plan".to_string(),
+            effect: "Your opponent's Active Pokémon is now Confused. Flip a coin. If tails, your Active Pokémon is now also Confused.".to_string(),
+            rarity: "☆☆☆".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+            trainer_card_type: TrainerType::Supporter,
+        }));
+    map.insert(
+        CardId::B4a095Vulpix,
+        Card::Pokemon(PokemonCard {
+            id: "B4a 095".to_string(),
+            name: "Vulpix".to_string(),
+            stage: 0,
+            evolves_from: None,
+            hp: 60,
+            energy_type: EnergyType::Fire,
+            ability: None,
+            attacks: vec![Attack {
+                energy_required: vec![EnergyType::Colorless],
+                title: "Hold Still".to_string(),
+                fixed_damage: 0,
+                effect: Some("Heal 20 damage from this Pokémon.".to_string()),
+            }],
+            weakness: Some(EnergyType::Water),
+            retreat_cost: vec![EnergyType::Colorless],
+            rarity: "*".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }),
+    );
+    map.insert(
+        CardId::B4a096Ninetales,
+        Card::Pokemon(PokemonCard {
+            id: "B4a 096".to_string(),
+            name: "Ninetales".to_string(),
+            stage: 1,
+            evolves_from: Some("Vulpix".to_string()),
+            hp: 100,
+            energy_type: EnergyType::Fire,
+            ability: None,
+            attacks: vec![Attack {
+                energy_required: vec![
+                    EnergyType::Fire,
+                    EnergyType::Colorless,
+                    EnergyType::Colorless,
+                ],
+                title: "Ember Dance".to_string(),
+                fixed_damage: 20,
+                effect: Some(
+                    "Flip 9 coins. This attack does 20 damage for each heads.".to_string(),
+                ),
+            }],
+            weakness: Some(EnergyType::Water),
+            retreat_cost: vec![EnergyType::Colorless],
+            rarity: "*".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }),
+    );
+    map.insert(
+        CardId::B4a097Goldeen,
+        Card::Pokemon(PokemonCard {
+            id: "B4a 097".to_string(),
+            name: "Goldeen".to_string(),
+            stage: 0,
+            evolves_from: None,
+            hp: 50,
+            energy_type: EnergyType::Water,
+            ability: None,
+            attacks: vec![Attack {
+                energy_required: vec![EnergyType::Water],
+                title: "Horn Attack".to_string(),
+                fixed_damage: 30,
+                effect: None,
+            }],
+            weakness: Some(EnergyType::Lightning),
+            retreat_cost: vec![EnergyType::Colorless],
+            rarity: "*".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }),
+    );
+    map.insert(
+        CardId::B4a098Seaking,
+        Card::Pokemon(PokemonCard {
+            id: "B4a 098".to_string(),
+            name: "Seaking".to_string(),
+            stage: 1,
+            evolves_from: Some("Goldeen".to_string()),
+            hp: 90,
+            energy_type: EnergyType::Water,
+            ability: None,
+            attacks: vec![Attack {
+                energy_required: vec![EnergyType::Water],
+                title: "Aqua Bullet".to_string(),
+                fixed_damage: 30,
+                effect: Some(
+                    "This attack also does 20 damage to 1 of your opponent's Benched Pokémon."
+                        .to_string(),
+                ),
+            }],
+            weakness: Some(EnergyType::Lightning),
+            retreat_cost: vec![EnergyType::Colorless],
+            rarity: "*".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }),
+    );
+    map.insert(
+        CardId::B4a099Toxel,
+        Card::Pokemon(PokemonCard {
+            id: "B4a 099".to_string(),
+            name: "Toxel".to_string(),
+            stage: 0,
+            evolves_from: None,
+            hp: 60,
+            energy_type: EnergyType::Lightning,
+            ability: None,
+            attacks: vec![Attack {
+                energy_required: vec![EnergyType::Lightning, EnergyType::Colorless],
+                title: "Static Shock".to_string(),
+                fixed_damage: 30,
+                effect: None,
+            }],
+            weakness: Some(EnergyType::Fighting),
+            retreat_cost: vec![EnergyType::Colorless],
+            rarity: "*".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }),
+    );
+    map.insert(CardId::B4a100Sinistea, Card::Pokemon(PokemonCard {
+            id: "B4a 100".to_string(),
+            name: "Sinistea".to_string(),
+            stage: 0,
+            evolves_from: None,
+            hp: 30,
+            energy_type: EnergyType::Psychic,
+            ability: None,
+            attacks: vec![
+                Attack {
+                    energy_required: vec![EnergyType::Psychic,],
+                    title: "Hide".to_string(),
+                    fixed_damage: 0,
+                    effect: Some("Flip a coin. If heads, during your opponent's next turn, prevent all damage from—and effects of—attacks done to this Pokémon.".to_string()),
+                },
+            ],
+            weakness: Some(EnergyType::Darkness),
+            retreat_cost: vec![EnergyType::Colorless,],
+            rarity: "*".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }));
+    map.insert(CardId::B4a101Polteageist, Card::Pokemon(PokemonCard {
+            id: "B4a 101".to_string(),
+            name: "Polteageist".to_string(),
+            stage: 1,
+            evolves_from: Some("Sinistea".to_string()),
+            hp: 70,
+            energy_type: EnergyType::Psychic,
+            ability: Some(Ability { title: "Refreshing Tea".to_string(), effect: "Once during your turn, when you play this Pokémon from your hand to evolve 1 of your Pokémon, you may have your opponent shuffle their hand into their deck. For each remaining point that your opponent needs to win, they draw a card.".to_string() }),
+            attacks: vec![
+                Attack {
+                    energy_required: vec![EnergyType::Psychic,],
+                    title: "Spooky Shot".to_string(),
+                    fixed_damage: 40,
+                    effect: None,
+                },
+            ],
+            weakness: Some(EnergyType::Darkness),
+            retreat_cost: vec![EnergyType::Colorless,],
+            rarity: "*".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }));
+    map.insert(
+        CardId::B4a102Mawile,
+        Card::Pokemon(PokemonCard {
+            id: "B4a 102".to_string(),
+            name: "Mawile".to_string(),
+            stage: 0,
+            evolves_from: None,
+            hp: 80,
+            energy_type: EnergyType::Metal,
+            ability: None,
+            attacks: vec![Attack {
+                energy_required: vec![EnergyType::Metal, EnergyType::Colorless],
+                title: "Cavernous Chomp".to_string(),
+                fixed_damage: 50,
+                effect: None,
+            }],
+            weakness: Some(EnergyType::Fire),
+            retreat_cost: vec![EnergyType::Colorless],
+            rarity: "*".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }),
+    );
+    map.insert(
+        CardId::B4a103Taillow,
+        Card::Pokemon(PokemonCard {
+            id: "B4a 103".to_string(),
+            name: "Taillow".to_string(),
+            stage: 0,
+            evolves_from: None,
+            hp: 60,
+            energy_type: EnergyType::Colorless,
+            ability: None,
+            attacks: vec![Attack {
+                energy_required: vec![EnergyType::Colorless],
+                title: "Peck".to_string(),
+                fixed_damage: 20,
+                effect: None,
+            }],
+            weakness: Some(EnergyType::Lightning),
+            retreat_cost: vec![EnergyType::Colorless],
+            rarity: "*".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }),
+    );
+    map.insert(CardId::B4a104Swellow, Card::Pokemon(PokemonCard {
+            id: "B4a 104".to_string(),
+            name: "Swellow".to_string(),
+            stage: 1,
+            evolves_from: Some("Taillow".to_string()),
+            hp: 80,
+            energy_type: EnergyType::Colorless,
+            ability: Some(Ability { title: "Repelling Wind".to_string(), effect: "Once during your turn, you may switch out your opponent's Active Basic Pokémon to the Bench. (Your opponent chooses the new Active Pokémon.)".to_string() }),
+            attacks: vec![
+                Attack {
+                    energy_required: vec![EnergyType::Colorless,EnergyType::Colorless,],
+                    title: "Wing Attack".to_string(),
+                    fixed_damage: 50,
+                    effect: None,
+                },
+            ],
+            weakness: Some(EnergyType::Lightning),
+            retreat_cost: vec![EnergyType::Colorless,],
+            rarity: "*".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }));
+    map.insert(
+        CardId::B4a105MegaCharizardYEx,
+        Card::Pokemon(PokemonCard {
+            id: "B4a 105".to_string(),
+            name: "Mega Charizard Y ex".to_string(),
+            stage: 2,
+            evolves_from: Some("Charmeleon".to_string()),
+            hp: 220,
+            energy_type: EnergyType::Fire,
+            ability: None,
+            attacks: vec![Attack {
+                energy_required: vec![
+                    EnergyType::Fire,
+                    EnergyType::Fire,
+                    EnergyType::Fire,
+                    EnergyType::Colorless,
+                ],
+                title: "Crimson Dive".to_string(),
+                fixed_damage: 250,
+                effect: Some("This Pokémon also does 50 damage to itself.".to_string()),
+            }],
+            weakness: Some(EnergyType::Water),
+            retreat_cost: vec![EnergyType::Colorless, EnergyType::Colorless],
+            rarity: "**".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }),
+    );
+    map.insert(CardId::B4a106ToxtricityEx, Card::Pokemon(PokemonCard {
+            id: "B4a 106".to_string(),
+            name: "Toxtricity ex".to_string(),
+            stage: 1,
+            evolves_from: Some("Toxel".to_string()),
+            hp: 150,
+            energy_type: EnergyType::Lightning,
+            ability: None,
+            attacks: vec![
+                Attack {
+                    energy_required: vec![EnergyType::Lightning,EnergyType::Lightning,EnergyType::Colorless,],
+                    title: "Damaging Spark".to_string(),
+                    fixed_damage: 90,
+                    effect: Some("This attack also does 30 damage to each of your opponent's Benched Pokémon that has damage on it.".to_string()),
+                },
+            ],
+            weakness: Some(EnergyType::Fighting),
+            retreat_cost: vec![EnergyType::Colorless,EnergyType::Colorless,],
+            rarity: "**".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }));
+    map.insert(CardId::B4a107MimikyuEx, Card::Pokemon(PokemonCard {
+            id: "B4a 107".to_string(),
+            name: "Mimikyu ex".to_string(),
+            stage: 0,
+            evolves_from: None,
+            hp: 120,
+            energy_type: EnergyType::Psychic,
+            ability: Some(Ability { title: "Disguise".to_string(), effect: "When this Pokémon is first damaged by an attack after coming into play, prevent that damage.".to_string() }),
+            attacks: vec![
+                Attack {
+                    energy_required: vec![EnergyType::Psychic,EnergyType::Psychic,],
+                    title: "Claw Slash".to_string(),
+                    fixed_damage: 70,
+                    effect: None,
+                },
+            ],
+            weakness: Some(EnergyType::Darkness),
+            retreat_cost: vec![EnergyType::Colorless,EnergyType::Colorless,],
+            rarity: "**".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }));
+    map.insert(CardId::B4a108MegaMawileEx, Card::Pokemon(PokemonCard {
+            id: "B4a 108".to_string(),
+            name: "Mega Mawile ex".to_string(),
+            stage: 0,
+            evolves_from: None,
+            hp: 170,
+            energy_type: EnergyType::Metal,
+            ability: None,
+            attacks: vec![
+                Attack {
+                    energy_required: vec![EnergyType::Metal,EnergyType::Colorless,],
+                    title: "Heat-Up Crunch".to_string(),
+                    fixed_damage: 60,
+                    effect: Some("Until this Pokémon leaves the Active Spot, this Pokémon's Heat-Up Crunch attack does +30 damage. This effect stacks.".to_string()),
+                },
+            ],
+            weakness: Some(EnergyType::Fire),
+            retreat_cost: vec![EnergyType::Colorless,],
+            rarity: "**".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }));
+    map.insert(CardId::B4a109Gholdengo, Card::Pokemon(PokemonCard {
+            id: "B4a 109".to_string(),
+            name: "Gholdengo".to_string(),
+            stage: 1,
+            evolves_from: Some("Gimmighoul".to_string()),
+            hp: 100,
+            energy_type: EnergyType::Metal,
+            ability: Some(Ability { title: "Luxury Coin".to_string(), effect: "Once during your turn, when you flip any coins for an effect of your Trainer cards, you may ignore all results of those coin flips and begin flipping those coins again. You can't use more than 1 Luxury Coin Ability each turn.".to_string() }),
+            attacks: vec![
+                Attack {
+                    energy_required: vec![EnergyType::Colorless,EnergyType::Colorless,EnergyType::Colorless,],
+                    title: "Power Gem".to_string(),
+                    fixed_damage: 50,
+                    effect: None,
+                },
+            ],
+            weakness: Some(EnergyType::Fire),
+            retreat_cost: vec![EnergyType::Colorless,],
+            rarity: "♛".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+        }));
+    map.insert(CardId::B4a110TeamRocketsGoozooka, Card::Trainer(TrainerCard {
+            id: "B4a 110".to_string(),
+            name: "Team Rocket's Goo-zooka".to_string(),
+            effect: "Until the end of your opponent's next turn, your opponent's Active Pokémon's Retreat Cost is 1 more.".to_string(),
+            rarity: "♛".to_string(),
+            booster_pack: "Team Rocket's Ambition (B4a)".to_string(),
+            trainer_card_type: TrainerType::Item,
+        }));
+    map.insert(
         CardId::PA001Potion,
         Card::Trainer(TrainerCard {
             id: "P-A 001".to_string(),
@@ -79645,9 +82028,6 @@ fn populate_database_chunk_27(map: &mut HashMap<CardId, Card>) {
             booster_pack: "Promo A (P-A)".to_string(),
         }),
     );
-}
-
-fn populate_database_chunk_28(map: &mut HashMap<CardId, Card>) {
     map.insert(
         CardId::PA027Snivy,
         Card::Pokemon(PokemonCard {
@@ -80046,6 +82426,9 @@ fn populate_database_chunk_28(map: &mut HashMap<CardId, Card>) {
             rarity: "◊◊◊".to_string(),
             booster_pack: "Promo A (P-A)".to_string(),
         }));
+}
+
+fn populate_database_chunk_29(map: &mut HashMap<CardId, Card>) {
     map.insert(CardId::PA045Nosepass, Card::Pokemon(PokemonCard {
             id: "P-A 045".to_string(),
             name: "Nosepass".to_string(),
@@ -82643,9 +85026,6 @@ fn populate_database_chunk_28(map: &mut HashMap<CardId, Card>) {
             booster_pack: "Promo B (P-B)".to_string(),
         }),
     );
-}
-
-fn populate_database_chunk_29(map: &mut HashMap<CardId, Card>) {
     map.insert(
         CardId::PB038Tinkaton,
         Card::Pokemon(PokemonCard {
@@ -83085,6 +85465,9 @@ fn populate_database_chunk_29(map: &mut HashMap<CardId, Card>) {
             booster_pack: "Promo B (P-B)".to_string(),
         }),
     );
+}
+
+fn populate_database_chunk_30(map: &mut HashMap<CardId, Card>) {
     map.insert(
         CardId::PB056MegaHeracrossEx,
         Card::Pokemon(PokemonCard {
@@ -83797,6 +86180,177 @@ fn populate_database_chunk_29(map: &mut HashMap<CardId, Card>) {
             }],
             weakness: Some(EnergyType::Fire),
             retreat_cost: vec![EnergyType::Colorless, EnergyType::Colorless],
+            rarity: "◊◊◊".to_string(),
+            booster_pack: "Promo B (P-B)".to_string(),
+        }),
+    );
+    map.insert(CardId::PB087MegaSceptileEx, Card::Pokemon(PokemonCard {
+            id: "P-B 087".to_string(),
+            name: "Mega Sceptile ex".to_string(),
+            stage: 2,
+            evolves_from: Some("Grovyle".to_string()),
+            hp: 210,
+            energy_type: EnergyType::Grass,
+            ability: None,
+            attacks: vec![
+                Attack {
+                    energy_required: vec![EnergyType::Grass,EnergyType::Grass,],
+                    title: "Terminating Tail".to_string(),
+                    fixed_damage: 130,
+                    effect: Some("Discard Grass[G] Energy from this Pokémon. Your opponent's Active Pokémon is now Poisoned.".to_string()),
+                },
+            ],
+            weakness: Some(EnergyType::Fire),
+            retreat_cost: vec![EnergyType::Colorless,],
+            rarity: "◊◊◊◊".to_string(),
+            booster_pack: "Promo B (P-B)".to_string(),
+        }));
+    map.insert(CardId::PB088TeamRocketsScyther, Card::Pokemon(PokemonCard {
+            id: "P-B 088".to_string(),
+            name: "Team Rocket's Scyther".to_string(),
+            stage: 0,
+            evolves_from: None,
+            hp: 60,
+            energy_type: EnergyType::Grass,
+            ability: None,
+            attacks: vec![
+                Attack {
+                    energy_required: vec![EnergyType::Grass,EnergyType::Colorless,],
+                    title: "Second Strike".to_string(),
+                    fixed_damage: 20,
+                    effect: Some("If your opponent's Active Pokémon has damage on it, this attack does 70 more damage.".to_string()),
+                },
+            ],
+            weakness: Some(EnergyType::Fire),
+            retreat_cost: vec![EnergyType::Colorless,],
+            rarity: "◊".to_string(),
+            booster_pack: "Promo B (P-B)".to_string(),
+        }));
+    map.insert(CardId::PB089TeamRocketsLapras, Card::Pokemon(PokemonCard {
+            id: "P-B 089".to_string(),
+            name: "Team Rocket's Lapras".to_string(),
+            stage: 0,
+            evolves_from: None,
+            hp: 90,
+            energy_type: EnergyType::Water,
+            ability: None,
+            attacks: vec![
+                Attack {
+                    energy_required: vec![EnergyType::Water,EnergyType::Colorless,],
+                    title: "Ruthless Whirlpool".to_string(),
+                    fixed_damage: 40,
+                    effect: Some("If this Pokémon has more Energy attached than your opponent's Active Pokémon, this attack does 40 more damage.".to_string()),
+                },
+            ],
+            weakness: Some(EnergyType::Lightning),
+            retreat_cost: vec![EnergyType::Colorless,],
+            rarity: "☆".to_string(),
+            booster_pack: "Promo B (P-B)".to_string(),
+        }));
+    map.insert(
+        CardId::PB090Wingull,
+        Card::Pokemon(PokemonCard {
+            id: "P-B 090".to_string(),
+            name: "Wingull".to_string(),
+            stage: 0,
+            evolves_from: None,
+            hp: 60,
+            energy_type: EnergyType::Water,
+            ability: None,
+            attacks: vec![Attack {
+                energy_required: vec![EnergyType::Colorless],
+                title: "Flap".to_string(),
+                fixed_damage: 10,
+                effect: None,
+            }],
+            weakness: Some(EnergyType::Lightning),
+            retreat_cost: vec![EnergyType::Colorless],
+            rarity: "◊".to_string(),
+            booster_pack: "Promo B (P-B)".to_string(),
+        }),
+    );
+    map.insert(CardId::PB091TeamRocketsWobbuffet, Card::Pokemon(PokemonCard {
+            id: "P-B 091".to_string(),
+            name: "Team Rocket's Wobbuffet".to_string(),
+            stage: 0,
+            evolves_from: None,
+            hp: 80,
+            energy_type: EnergyType::Psychic,
+            ability: None,
+            attacks: vec![
+                Attack {
+                    energy_required: vec![EnergyType::Colorless,EnergyType::Colorless,],
+                    title: "Rocket Frenzy".to_string(),
+                    fixed_damage: 30,
+                    effect: Some("Reveal the top 6 cards of your deck. This attack does 30 damage for each Pokémon you find there that has “Team Rocket” in its name. Shuffle the revealed cards back into your deck.".to_string()),
+                },
+            ],
+            weakness: Some(EnergyType::Darkness),
+            retreat_cost: vec![EnergyType::Colorless,EnergyType::Colorless,],
+            rarity: "◊◊◊".to_string(),
+            booster_pack: "Promo B (P-B)".to_string(),
+        }));
+    map.insert(CardId::PB092Marowak, Card::Pokemon(PokemonCard {
+            id: "P-B 092".to_string(),
+            name: "Marowak".to_string(),
+            stage: 1,
+            evolves_from: Some("Cubone".to_string()),
+            hp: 110,
+            energy_type: EnergyType::Fighting,
+            ability: None,
+            attacks: vec![
+                Attack {
+                    energy_required: vec![EnergyType::Fighting,EnergyType::Colorless,],
+                    title: "Punish".to_string(),
+                    fixed_damage: 50,
+                    effect: Some("If your opponent's Active Pokémon has “Team Rocket” in its name, this attack does 70 more damage.".to_string()),
+                },
+            ],
+            weakness: Some(EnergyType::Grass),
+            retreat_cost: vec![EnergyType::Colorless,EnergyType::Colorless,],
+            rarity: "◊◊".to_string(),
+            booster_pack: "Promo B (P-B)".to_string(),
+        }));
+    map.insert(
+        CardId::PB093Fennekin,
+        Card::Pokemon(PokemonCard {
+            id: "P-B 093".to_string(),
+            name: "Fennekin".to_string(),
+            stage: 0,
+            evolves_from: None,
+            hp: 60,
+            energy_type: EnergyType::Fire,
+            ability: None,
+            attacks: vec![Attack {
+                energy_required: vec![EnergyType::Colorless],
+                title: "Scratch".to_string(),
+                fixed_damage: 10,
+                effect: None,
+            }],
+            weakness: Some(EnergyType::Water),
+            retreat_cost: vec![EnergyType::Colorless],
+            rarity: "◊◊◊".to_string(),
+            booster_pack: "Promo B (P-B)".to_string(),
+        }),
+    );
+    map.insert(
+        CardId::PB094Meowstic,
+        Card::Pokemon(PokemonCard {
+            id: "P-B 094".to_string(),
+            name: "Meowstic".to_string(),
+            stage: 1,
+            evolves_from: Some("Espurr".to_string()),
+            hp: 90,
+            energy_type: EnergyType::Psychic,
+            ability: None,
+            attacks: vec![Attack {
+                energy_required: vec![EnergyType::Psychic, EnergyType::Psychic],
+                title: "Super Psy Bolt".to_string(),
+                fixed_damage: 70,
+                effect: None,
+            }],
+            weakness: Some(EnergyType::Darkness),
+            retreat_cost: vec![EnergyType::Colorless],
             rarity: "◊◊◊".to_string(),
             booster_pack: "Promo B (P-B)".to_string(),
         }),

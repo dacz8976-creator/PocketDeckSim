@@ -80,6 +80,7 @@ fn test_intimidating_fang_check_does_not_panic_when_defenders_active_was_knocked
         action: SimpleAction::DiscardToolFromPokemon {
             player: 0,
             in_play_idx: 0,
+            tool_idx: 0,
         },
         is_stack: true,
     });
@@ -100,7 +101,7 @@ fn test_intimidating_fang_check_does_not_panic_when_defenders_active_was_knocked
             .iter()
             .map(|a| a.action.clone())
             .collect::<Vec<_>>(),
-        vec![SimpleAction::Activate {
+        vec![SimpleAction::Promote {
             player: 0,
             in_play_idx: 1
         }],
@@ -110,7 +111,7 @@ fn test_intimidating_fang_check_does_not_panic_when_defenders_active_was_knocked
     // Resolve the forced promotion.
     game.apply_action(&Action {
         actor: 0,
-        action: SimpleAction::Activate {
+        action: SimpleAction::Promote {
             player: 0,
             in_play_idx: 1,
         },

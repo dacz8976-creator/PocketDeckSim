@@ -5,7 +5,7 @@ use crate::{
     card_ids::CardId,
     effects::CardEffect,
     models::{EnergyType, PlayedCard},
-    tools::has_tool,
+    tools::{has_tool, tool_count},
     State,
 };
 
@@ -13,7 +13,7 @@ use crate::{
 pub(crate) fn get_counterattack_damage(card: &PlayedCard) -> u32 {
     let mut total_damage = 0;
     if has_tool(card, CardId::A2148RockyHelmet) {
-        total_damage += 20;
+        total_damage += 20 * tool_count(card, CardId::A2148RockyHelmet);
     }
 
     // Temporary counterattack effects (e.g. Alolan Sandslash's Spike Armor).
@@ -103,19 +103,15 @@ pub(crate) fn maybe_shuffle_attacker_hand_card_on_damaged(
     player: usize,
     attacking_player: usize,
 ) {
-    let fires = state.in_play_pokemon[player][0]
-        .as_ref()
-        .is_some_and(|pokemon| {
-            has_tool(pokemon, CardId::A4154DarkPendant)
-                && state.pokemon_is_type(pokemon, EnergyType::Darkness)
-        });
-    if !fires || state.hands[attacking_player].is_empty() {
-        return;
+    let count = state.in_play_pokemon[player][0].as_ref().map_or(0, |pokemon| {
+        if state.pokemon_is_type(pokemon, EnergyType::Darkness) {
+            tool_count(pokemon, CardId::A4154DarkPendant)
+        } else { 0 }
+    });
+    if state.hands[attacking_player].is_empty() { return; }
+    for _ in 0..count {
+        state.move_generation_stack.push((player, vec![SimpleAction::ShuffleRandomOpponentHandCard]));
     }
-    debug!("Dark Pendant: player {attacking_player} shuffles a random hand card into their deck");
-    state
-        .move_generation_stack
-        .push((player, vec![SimpleAction::ShuffleRandomOpponentHandCard]));
 }
 
 /// Check if the defending Pokemon should poison the attacker when damaged.

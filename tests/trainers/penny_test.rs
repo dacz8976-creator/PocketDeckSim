@@ -113,9 +113,9 @@ fn test_penny_copies_a_turn_effect_supporter() {
     );
 }
 
-/// Negative case: no Supporter at all in the opponent's deck.
+/// No hidden target: Penny is still offered and the attempt resolves without an effect.
 #[test]
-fn test_penny_unplayable_without_a_supporter_in_the_opponent_deck() {
+fn test_penny_playable_without_a_supporter_in_the_opponent_deck() {
     let game = game_with_opponent_deck(
         CardId::A3b086Penny,
         vec![
@@ -124,8 +124,8 @@ fn test_penny_unplayable_without_a_supporter_in_the_opponent_deck() {
         ],
     );
     assert!(
-        !can_play(&game, "Penny"),
-        "Penny needs a Supporter in the opponent's deck to copy"
+        can_play(&game, "Penny"),
+        "Hidden Supporter absence must not disable Penny"
     );
 }
 
@@ -133,7 +133,7 @@ fn test_penny_unplayable_without_a_supporter_in_the_opponent_deck() {
 /// explicitly excludes.
 #[test]
 fn test_penny_cannot_copy_another_penny() {
-    let game = game_with_opponent_deck(
+    let mut game = game_with_opponent_deck(
         CardId::B2a109Penny,
         vec![
             get_card_by_enum(CardId::A3b069Penny),
@@ -141,7 +141,14 @@ fn test_penny_cannot_copy_another_penny() {
         ],
     );
     assert!(
-        !can_play(&game, "Penny"),
-        "\"a Supporter card that's not Penny\" excludes every Penny printing"
+        can_play(&game, "Penny"),
+        "A hidden deck containing only Penny still permits the attempt"
     );
+    let before = game.get_state_clone();
+    play_trainer(&mut game, CardId::B2a109Penny);
+    let after = game.get_state_clone();
+    assert_eq!(before.decks, after.decks);
+    assert_eq!(before.hands[1], after.hands[1]);
+    assert_eq!(before.hands[0].len() - 1, after.hands[0].len());
+    assert!(after.move_generation_stack.is_empty());
 }

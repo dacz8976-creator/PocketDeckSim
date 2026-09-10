@@ -19,7 +19,7 @@ use crate::{
         get_arena_of_antiquity_damage_bonus, get_training_area_damage_bonus,
         is_bounded_field_active, is_hiking_trail_active, is_soothing_shore_active,
     },
-    tools::has_tool,
+    tools::{has_tool, tool_count},
     State,
 };
 
@@ -96,6 +96,7 @@ pub fn to_playable_card(card: &crate::models::Card, played_this_turn: bool) -> P
                 panic!("Unplayable Trainer Card: {:?}", trainer_card);
             }
         }
+        Card::Unknown => panic!("Unknown card cannot be played"),
     };
     PlayedCard::new(card.clone(), 0, base_hp, vec![], played_this_turn, vec![])
 }
@@ -110,6 +111,7 @@ pub(crate) fn get_stage(played_card: &PlayedCard) -> u8 {
                 panic!("Trainer cards do not have a stage")
             }
         }
+        Card::Unknown => panic!("Unknown card cannot be in play"),
     }
 }
 
@@ -220,6 +222,20 @@ pub(crate) fn on_evolve(
         }
         Some(AbilityMechanic::CoinFlipParalyzeOpponentActiveOnEvolve) => {
             offer_on_evolve_ability(actor, state, in_play_idx);
+        }
+        Some(AbilityMechanic::PoisonAndBurnOpponentActiveOnEvolve) => {
+            if state.maybe_get_active((actor + 1) % 2).is_some() {
+                offer_on_evolve_ability(actor, state, in_play_idx);
+            }
+        }
+        Some(AbilityMechanic::MoveRandomEnergyFromOpponentActiveToSelfOnEvolve) => {
+            let opponent = (actor + 1) % 2;
+            if state
+                .maybe_get_active(opponent)
+                .is_some_and(|active| !active.attached_energy.is_empty())
+            {
+                offer_on_evolve_ability(actor, state, in_play_idx);
+            }
         }
         // §47 — Samurott's shield is always worth offering; Raticate's peek is only worth
         // offering when there is a deck left to look at.
@@ -389,7 +405,8 @@ pub(crate) fn on_end_turn(player_ending_turn: usize, state: &mut State) {
         CardId::A3b067Leftovers,
     ) {
         debug!("Leftovers: healing 10 damage from active");
-        state.heal_pokemon(player_ending_turn, 0, 10);
+        let amount = 10 * tool_count(state.get_active(player_ending_turn), CardId::A3b067Leftovers);
+        state.heal_pokemon(player_ending_turn, 0, amount);
     }
 
     apply_end_of_turn_berries(state);
@@ -494,7 +511,7 @@ pub(crate) fn on_end_turn(player_ending_turn: usize, state: &mut State) {
         .collect();
     for idx in barrier_indices {
         debug!("Metal Core Barrier: Discarding at end of opponent's turn");
-        state.discard_tool(tool_owner, idx);
+        while state.discard_one_matching_tool(tool_owner, idx, CardId::B2148MetalCoreBarrier) {}
     }
 
     // Check for Zeraora's Thunderclap Flash ability (on first turn only)
@@ -567,11 +584,12 @@ fn apply_deceptive_needle_damage(player_ending_turn: usize, state: &mut State) {
     if state.in_play_pokemon[opponent][0].is_none() {
         return;
     }
-    debug!("Deceptive Needle: Doing 10 damage to opponent's Active Pokémon");
+    let damage = 10 * tool_count(active, CardId::B4148DeceptiveNeedle);
+    debug!("Deceptive Needle: Doing {damage} damage to opponent's Active Pokémon");
     crate::actions::handle_damage(
         state,
         (player_ending_turn, 0),
-        &[(10, opponent, 0)],
+        &[(damage, opponent, 0)],
         false,
         None,
     );
@@ -669,7 +687,7 @@ fn get_heavy_helmet_reduction(state: &State, (target_player, target_idx): (usize
         if let Card::Pokemon(pokemon_card) = &defending_pokemon.card {
             if pokemon_card.retreat_cost.len() >= 3 {
                 debug!("Heavy Helmet: Reducing damage by 20");
-                return 20;
+                return 20 * tool_count(defending_pokemon, CardId::B1219HeavyHelmet);
             }
         }
     }
@@ -693,7 +711,7 @@ fn get_metal_core_barrier_reduction(
         && state.pokemon_is_type(defending_pokemon, EnergyType::Metal)
     {
         debug!("Metal Core Barrier: Reducing damage by 50");
-        return 50;
+        return 50 * tool_count(defending_pokemon, CardId::B2148MetalCoreBarrier);
     }
     0
 }
@@ -716,7 +734,7 @@ fn get_steel_apron_reduction(
         && state.pokemon_is_type(defending_pokemon, EnergyType::Metal)
     {
         debug!("Steel Apron: Reducing damage by 10");
-        return 10;
+        return 10 * tool_count(defending_pokemon, CardId::A4153SteelApron);
     }
     0
 }
@@ -733,12 +751,9 @@ fn get_intimidating_fang_reduction(
         return 0;
     }
 
-    // Invariant: the defending player always has an active Pokemon while any other
-    // action can be processed. If a knockout empties the active spot,
-    // `trigger_promotion_or_declare_winner` immediately queues an `Activate` choice
-    // at the top of `move_generation_stack` (or ends the game), which
-    // `generate_possible_actions` short-circuits to. So no further action - including
-    // this `ApplyDamage` - can run until the active spot is refilled (or the game ends).
+    // Local precondition: callers only ask for this reduction while the opposing Active target
+    // is occupied. A compulsory Promote is inserted at the bottom of any pending effect frames,
+    // so stack order alone does not guarantee that an empty Active has already been refilled.
     let defenders_active = state.in_play_pokemon[target_player][0]
         .as_ref()
         .expect("Defending Pokemon should be there when checking Intimidating Fang");
@@ -1223,6 +1238,169 @@ pub(crate) struct DamageModifierContext<'a> {
     pub(crate) attack_effect: Option<&'a str>,
 }
 
+#[derive(Clone, Copy, Default)]
+struct FiniteDamageReductions {
+    intimidating_fang: u32,
+    heavy_helmet: u32,
+    metal_core_barrier: u32,
+    steel_apron: u32,
+    ability: u32,
+    conditional_ability: u32,
+    coordinated_unit: u32,
+    card_effect: u32,
+    turn_effect: u32,
+}
+
+impl FiniteDamageReductions {
+    fn total_u64(self) -> u64 {
+        [
+            self.intimidating_fang,
+            self.heavy_helmet,
+            self.metal_core_barrier,
+            self.steel_apron,
+            self.ability,
+            self.conditional_ability,
+            self.coordinated_unit,
+            self.card_effect,
+            self.turn_effect,
+        ]
+        .into_iter()
+        .map(u64::from)
+        .sum()
+    }
+
+    fn total_u32_saturating(self) -> u32 {
+        u32::try_from(self.total_u64()).unwrap_or(u32::MAX)
+    }
+}
+
+fn finite_damage_reductions(
+    state: &State,
+    attacking_ref: (usize, usize),
+    target: (usize, usize),
+    is_from_active_attack: bool,
+    skip_target_effects: bool,
+) -> FiniteDamageReductions {
+    if skip_target_effects {
+        return FiniteDamageReductions::default();
+    }
+
+    let (attacking_player, attacking_idx) = attacking_ref;
+    let (target_player, target_idx) = target;
+    let attacking_pokemon = state.in_play_pokemon[attacking_player][attacking_idx]
+        .as_ref()
+        .expect("Attacking Pokemon should be there when calculating damage reduction");
+    let receiving_pokemon = state.in_play_pokemon[target_player][target_idx]
+        .as_ref()
+        .expect("Receiving Pokemon should be there when calculating damage reduction");
+    let is_active_to_active = target_idx == 0 && attacking_idx == 0 && is_from_active_attack;
+
+    FiniteDamageReductions {
+        intimidating_fang: get_intimidating_fang_reduction(
+            state,
+            attacking_ref,
+            (0, target_player, target_idx),
+            is_from_active_attack,
+        ),
+        heavy_helmet: get_heavy_helmet_reduction(state, target),
+        metal_core_barrier: get_metal_core_barrier_reduction(
+            state,
+            target,
+            is_from_active_attack,
+        ),
+        steel_apron: get_steel_apron_reduction(
+            state,
+            attacking_player,
+            target,
+            is_from_active_attack,
+        ),
+        ability: get_ability_damage_reduction(state, receiving_pokemon, is_from_active_attack),
+        conditional_ability: get_conditional_ability_damage_reduction(
+            state,
+            attacking_player,
+            attacking_pokemon,
+            target_player,
+            receiving_pokemon,
+            is_from_active_attack,
+        ),
+        coordinated_unit: get_coordinated_unit_reduction(
+            state,
+            attacking_player,
+            target_player,
+            receiving_pokemon,
+            is_from_active_attack,
+        ),
+        card_effect: get_reduced_card_effect_modifiers(
+            state,
+            is_active_to_active,
+            target_player,
+            attacking_pokemon.card.is_ex(),
+        ),
+        turn_effect: get_turn_effect_damage_reduction(
+            state,
+            target_player,
+            receiving_pokemon,
+            attacking_player,
+            attacking_pokemon,
+            is_from_active_attack,
+        ),
+    }
+}
+
+/// Conservative raw damage at which every larger active-to-active hit has the same lethal or
+/// fully-prevented successor. Positive bonuses and Weakness are deliberately ignored; doing so can
+/// only raise the boundary. Finite defender coin reduction is included because it is applied
+/// before `modify_damage`. A full-prevention coin branch is already identical at every damage.
+pub(crate) fn active_attack_damage_saturation_requirement(
+    state: &State,
+    acting_player: usize,
+    context: DamageModifierContext<'_>,
+) -> u64 {
+    let opponent = (acting_player + 1) % 2;
+    let attacking_ref = (acting_player, 0);
+    let target = (opponent, 0);
+    let receiving = state.in_play_pokemon[opponent][0]
+        .as_ref()
+        .expect("Defending Active should exist when calculating damage saturation");
+    let skip_target_effects = attack_ignores_opponent_active_effects(context);
+    let target_effects = if skip_target_effects {
+        Vec::new()
+    } else {
+        receiving.get_effective_card_effects(state)
+    };
+    let threshold_requirement = target_effects
+        .iter()
+        .filter_map(|effect| match effect {
+            CardEffect::PreventDamageIfLessOrEqual { threshold } => {
+                Some(u64::from(*threshold) + 1)
+            }
+            _ => None,
+        })
+        .max()
+        .unwrap_or(0);
+    let finite_coin_reduction = target_effects
+        .iter()
+        .find_map(|effect| match effect {
+            CardEffect::CoinFlipToReduceIncomingDamage { amount } => Some(*amount),
+            CardEffect::CoinFlipToPreventIncomingDamage => Some(u32::MAX),
+            _ => None,
+        })
+        .filter(|amount| *amount != u32::MAX)
+        .map(u64::from)
+        .unwrap_or(0);
+    let remaining_hp = receiving.get_remaining_hp();
+    assert!(
+        remaining_hp > 0,
+        "damage saturation requires a living Defending Active"
+    );
+    let post_reduction_requirement = u64::from(remaining_hp).max(threshold_requirement);
+    finite_damage_reductions(state, attacking_ref, target, true, skip_target_effects)
+        .total_u64()
+        .checked_add(finite_coin_reduction)
+        .and_then(|value| value.checked_add(post_reduction_requirement))
+        .expect("active-attack damage saturation requirement overflowed u64")
+}
+
 fn attack_effect_ignores_weakness(context: DamageModifierContext<'_>) -> bool {
     // TODO: If more attack text needs to alter damage-modifier stages, replace this
     // effect-string check with a typed attack metadata/damage-modifier capability.
@@ -1285,7 +1463,7 @@ fn get_future_booster_damage_bonus(attacking_pokemon: &PlayedCard) -> u32 {
         && is_future_pokemon(&attacking_pokemon.get_name())
     {
         debug!("Future Booster Energy Capsule: Increasing damage by 20");
-        return 20;
+        return 20 * tool_count(attacking_pokemon, CardId::B3a070FutureBoosterEnergyCapsule);
     }
     0
 }
@@ -1304,7 +1482,7 @@ fn get_beastite_damage_bonus(
     if has_tool(attacking_pokemon, CardId::A3a066Beastite)
         && is_ultra_beast(&attacking_pokemon.get_name())
     {
-        let bonus = 10 * state.points[attacking_player] as u32;
+        let bonus = 10 * state.points[attacking_player] as u32 * tool_count(attacking_pokemon, CardId::A3a066Beastite);
         debug!("Beastite: Increasing damage by {bonus}");
         return bonus;
     }
@@ -1421,61 +1599,16 @@ pub(crate) fn modify_damage(
     let target_is_ex = receiving_pokemon.card.is_ex();
     let attacker_is_eevee_evolution = attacking_pokemon.evolved_from("Eevee");
 
-    // Every damage-reducing effect/tool below sits on the *target*, so an attack that ignores
-    // effects on the opponent's Active Pokémon (Sawk) zeroes all of them.
-    let intimidating_fang_reduction = if skip_target_effects {
-        0
-    } else {
-        get_intimidating_fang_reduction(state, attacking_ref, target_ref, is_from_active_attack)
-    };
-    let heavy_helmet_reduction = if skip_target_effects {
-        0
-    } else {
-        get_heavy_helmet_reduction(state, (target_player, target_idx))
-    };
-    let metal_core_barrier_reduction = if skip_target_effects {
-        0
-    } else {
-        get_metal_core_barrier_reduction(state, (target_player, target_idx), is_from_active_attack)
-    };
-    let steel_apron_reduction = if skip_target_effects {
-        0
-    } else {
-        get_steel_apron_reduction(
-            state,
-            attacking_player,
-            (target_player, target_idx),
-            is_from_active_attack,
-        )
-    };
-    let ability_damage_reduction = if skip_target_effects {
-        0
-    } else {
-        get_ability_damage_reduction(state, receiving_pokemon, is_from_active_attack)
-    };
-    let conditional_ability_damage_reduction = if skip_target_effects {
-        0
-    } else {
-        get_conditional_ability_damage_reduction(
-            state,
-            attacking_player,
-            attacking_pokemon,
-            target_player,
-            receiving_pokemon,
-            is_from_active_attack,
-        )
-    };
-    let coordinated_unit_reduction = if skip_target_effects {
-        0
-    } else {
-        get_coordinated_unit_reduction(
-            state,
-            attacking_player,
-            target_player,
-            receiving_pokemon,
-            is_from_active_attack,
-        )
-    };
+    // Every damage-reducing effect/tool below sits on the target. Keep this calculation shared
+    // with geometric-damage saturation so a newly added reducer cannot make the symbolic tail
+    // stop before lethal damage.
+    let reductions = finite_damage_reductions(
+        state,
+        attacking_ref,
+        (target_player, target_idx),
+        is_from_active_attack,
+        skip_target_effects,
+    );
     let ability_damage_increase = get_ability_damage_increase(
         state,
         attacking_player,
@@ -1497,32 +1630,10 @@ pub(crate) fn modify_damage(
     );
     // Reductions and vulnerability are both "effects on the target"; ignore *any* of them (whether
     // they help or hurt the attacker) when the attack bypasses opponent-active effects.
-    let reduced_card_effect_modifiers = if skip_target_effects {
-        0
-    } else {
-        get_reduced_card_effect_modifiers(
-            state,
-            is_active_to_active,
-            target_player,
-            attacking_pokemon.card.is_ex(),
-        )
-    };
     let increased_vulnerability_modifiers = if skip_target_effects {
         0
     } else {
         get_increased_vulnerability_modifiers(state, is_active_to_active, target_player)
-    };
-    let reduced_turn_effect_modifiers = if skip_target_effects {
-        0
-    } else {
-        get_turn_effect_damage_reduction(
-            state,
-            target_player,
-            receiving_pokemon,
-            attacking_player,
-            attacking_pokemon,
-            is_from_active_attack,
-        )
     };
     let weakness_application = get_weakness_application(
         state,
@@ -1577,15 +1688,15 @@ pub(crate) fn modify_damage(
         increased_turn_effect_modifiers,
         increased_attack_specific_modifiers,
         increased_vulnerability_modifiers,
-        reduced_card_effect_modifiers,
-        reduced_turn_effect_modifiers,
-        heavy_helmet_reduction,
-        metal_core_barrier_reduction,
-        steel_apron_reduction,
-        intimidating_fang_reduction,
-        ability_damage_reduction,
-        conditional_ability_damage_reduction,
-        coordinated_unit_reduction,
+        reductions.card_effect,
+        reductions.turn_effect,
+        reductions.heavy_helmet,
+        reductions.metal_core_barrier,
+        reductions.steel_apron,
+        reductions.intimidating_fang,
+        reductions.ability,
+        reductions.conditional_ability,
+        reductions.coordinated_unit,
         ability_damage_increase,
         board_ability_bonus,
         stadium_damage_bonus,
@@ -1600,17 +1711,7 @@ pub(crate) fn modify_damage(
         + stadium_damage_bonus
         + future_booster_damage_bonus
         + beastite_damage_bonus)
-        .saturating_sub(
-            reduced_card_effect_modifiers
-                + reduced_turn_effect_modifiers
-                + heavy_helmet_reduction
-                + metal_core_barrier_reduction
-                + steel_apron_reduction
-                + intimidating_fang_reduction
-                + ability_damage_reduction
-                + conditional_ability_damage_reduction
-                + coordinated_unit_reduction,
-        );
+        .saturating_sub(reductions.total_u32_saturating());
     let final_damage = match weakness_application {
         WeaknessApplication::None => pre_weakness,
         WeaknessApplication::Flat(amount) => pre_weakness + amount,
@@ -1823,7 +1924,7 @@ fn attack_cost_reduction_applies(
             source_idx == 0 && has_arceus_in_play(state, player)
         }
         AttackCostReductionScope::SelfIfToolAttached => {
-            source_idx == 0 && active.attached_tool.is_some()
+            source_idx == 0 && !active.attached_tools.is_empty()
         }
     }
 }
@@ -1987,26 +2088,34 @@ fn apply_end_of_turn_berries(state: &mut State) {
             if let Some(pokemon) = state.in_play_pokemon[player][idx].as_mut() {
                 pokemon.cure_status_conditions();
             }
-            state.discard_tool(player, idx);
+            state.discard_one_matching_tool(player, idx, CardId::A2149LumBerry);
         }
 
-        let sitrus_indices: Vec<usize> = state.in_play_pokemon[player]
-            .iter()
-            .enumerate()
-            .filter(|(_, slot)| {
-                slot.as_ref().is_some_and(|pokemon| {
-                    has_tool(pokemon, CardId::B1218SitrusBerry)
-                        // "half of its maximum HP or less remaining" — compared against effective
-                        // total HP so tool and stadium HP bonuses are respected.
-                        && pokemon.get_remaining_hp() * 2 <= pokemon.get_effective_total_hp()
-                })
-            })
-            .map(|(idx, _)| idx)
-            .collect();
-        for idx in sitrus_indices {
-            debug!("Sitrus Berry: healing 30 and discarding");
-            state.heal_pokemon(player, idx, 30);
-            state.discard_tool(player, idx);
+        for idx in 0..state.in_play_pokemon[player].len() {
+            loop {
+                let eligible = state.in_play_pokemon[player][idx]
+                    .as_ref()
+                    .is_some_and(|pokemon| {
+                        has_tool(pokemon, CardId::B1218SitrusBerry)
+                            // Recheck after every Berry: a successful heal can move the holder
+                            // above half HP, leaving later copies attached.
+                            && pokemon.get_remaining_hp() * 2
+                                <= pokemon.get_effective_total_hp()
+                    });
+                if !eligible {
+                    break;
+                }
+
+                debug!("Sitrus Berry: healing 30 and discarding");
+                if state.heal_pokemon(player, idx, 30) == 0 {
+                    // Heal Block makes "If you do" false. Stop without consuming this or any
+                    // later copy; otherwise the unchanged board would also loop forever.
+                    break;
+                }
+                if !state.discard_one_matching_tool(player, idx, CardId::B1218SitrusBerry) {
+                    break;
+                }
+            }
         }
     }
 }
@@ -2068,45 +2177,27 @@ fn apply_electrical_cord(
         return;
     }
 
-    // Collect up to 2 Lightning energies from the knocked out Pokemon
-    let mut lightning_energies = vec![];
-    let knocked_out_pokemon_mut = state.in_play_pokemon[knocked_out_player][knocked_out_idx]
-        .as_mut()
-        .expect("Pokemon should be there if knocked out");
-    for _ in 0..2 {
-        if let Some(pos) = knocked_out_pokemon_mut
-            .attached_energy
-            .iter()
-            .position(|e| *e == EnergyType::Lightning)
-        {
-            // Remove from pokemon so it doesn't end up in discard pile
-            lightning_energies.push(knocked_out_pokemon_mut.attached_energy.swap_remove(pos));
-        }
-    }
-    if lightning_energies.is_empty() {
-        return;
-    }
-
-    // Distribute energies to benched Pokemon (1 each to up to 2 Pokemon)
-    debug!(
-        "Electrical Cord: Moving {} Lightning Energy from knocked out Pokemon",
-        lightning_energies.len()
+    let copies = tool_count(
+        state.in_play_pokemon[knocked_out_player][knocked_out_idx]
+            .as_ref().expect("Knocked out Pokemon is still present"),
+        CardId::A3a065ElectricalCord,
     );
-    // Collect just the indices to avoid borrow checker issues
-    let bench_indices: Vec<_> = state
-        .enumerate_bench_pokemon(knocked_out_player)
-        .map(|(idx, _)| idx)
-        .collect();
-    for (i, energy) in lightning_energies.into_iter().enumerate() {
-        if i < bench_indices.len() {
-            let bench_idx = bench_indices[i];
-            if let Some(pokemon) = state.in_play_pokemon[knocked_out_player][bench_idx].as_mut() {
-                pokemon.attached_energy.push(energy);
-                debug!(
-                    "Electrical Cord: Attached Lightning Energy to benched Pokemon at position {}",
-                    bench_idx
-                );
-            }
+    // Resolve the existing deterministic target policy, but remove Energy only when it has a
+    // recipient. With fewer than two Benched Pokemon, the rest must remain for the KO discard.
+    let bench_indices: Vec<_> = state.enumerate_bench_pokemon(knocked_out_player)
+        .map(|(idx, _)| idx).take(2).collect();
+    for _ in 0..copies {
+        for &bench_idx in &bench_indices {
+            let energy = {
+                let holder = state.in_play_pokemon[knocked_out_player][knocked_out_idx]
+                    .as_mut().expect("Knocked out Pokemon is still present");
+                holder.attached_energy.iter().position(|e| *e == EnergyType::Lightning)
+                    .map(|pos| holder.attached_energy.swap_remove(pos))
+            };
+            let Some(energy) = energy else { return; };
+            state.in_play_pokemon[knocked_out_player][bench_idx]
+                .as_mut().expect("Collected Bench recipient is still present")
+                .attached_energy.push(energy);
         }
     }
 }
@@ -2207,7 +2298,8 @@ pub(crate) fn on_attack_knockout(
     // Lucky Mittens (B1 220): draw a card whenever the holder's attack knocks out one of the
     // opponent's Pokémon. The early return above already restricts this to genuine opponent
     // knockouts from an active attack.
-    if has_tool(attacking_pokemon, CardId::B1220LuckyMittens) {
+    let mittens = tool_count(attacking_pokemon, CardId::B1220LuckyMittens);
+    for _ in 0..mittens {
         debug!("Lucky Mittens: drawing a card for the attack knockout");
         state.maybe_draw_card(attacking_ref.0);
     }

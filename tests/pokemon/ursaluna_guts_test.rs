@@ -149,7 +149,7 @@ fn test_guts_flips_again_on_kangaskhans_second_punch() {
             let follow_up = choices.iter().find(|choice| {
                 matches!(
                     choice.action,
-                    SimpleAction::ApplyDamage { .. } | SimpleAction::Activate { .. }
+                    SimpleAction::ApplyDamage { .. } | SimpleAction::Promote { .. }
                 )
             });
             match follow_up {

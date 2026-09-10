@@ -102,9 +102,14 @@ impl State {
         pokemon
             .attached_energy
             .extend(std::iter::repeat_n(energy, amount as usize));
+        // Soothing Wind / Flower Shield is continuous: recovery happens as soon as this
+        // attachment makes the recipient meet its Energy requirement. Do this before attachment
+        // hooks so a later status attempt still goes through the ordinary prevention gate.
+        self.apply_soothing_wind_to_pokemon(actor, in_play_idx);
         for _ in 0..amount {
             self.on_attach_energy(actor, in_play_idx, energy, from_zone, is_turn_energy);
         }
+        self.refresh_hp_bonuses_all();
         handle_knockouts(self, (0, 0), false);
         true
     }

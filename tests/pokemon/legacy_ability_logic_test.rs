@@ -644,9 +644,9 @@ fn test_wartortle_shell_shield_prevents_bench_damage() {
     });
 
     let bench_hit_action = find_action(&game, |a| match &a.action {
-        SimpleAction::ApplyDamage { targets, .. } => targets
+        SimpleAction::ApplyQueuedAttackDamage { targets, .. } => targets
             .iter()
-            .any(|(_, player, idx)| *player == 1 && *idx == 1),
+            .any(|(_, opponent, idx)| *opponent && *idx == 1),
         _ => false,
     });
     game.apply_action(&bench_hit_action);

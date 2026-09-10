@@ -133,12 +133,18 @@ impl Hash for TrainerCard {
 pub enum Card {
     Pokemon(PokemonCard),
     Trainer(TrainerCard),
+    /// A count-preserving placeholder for a card whose identity is not observable.
+    ///
+    /// This is deliberately not a card from the catalog and must never be played or
+    /// included in a legal deck. It exists only in sanitized observations/search worlds.
+    Unknown,
 }
 impl Hash for Card {
     fn hash<H: Hasher>(&self, state: &mut H) {
         match self {
             Card::Pokemon(pokemon_card) => pokemon_card.id.hash(state),
             Card::Trainer(trainer_card) => trainer_card.id.hash(state),
+            Card::Unknown => "Unknown".hash(state),
         }
     }
 }
@@ -147,6 +153,7 @@ impl Card {
         match self {
             Card::Pokemon(pokemon_card) => pokemon_card.id.clone(),
             Card::Trainer(trainer_card) => trainer_card.id.clone(),
+            Card::Unknown => "Unknown".to_string(),
         }
     }
 
@@ -154,7 +161,12 @@ impl Card {
         match self {
             Card::Pokemon(pokemon_card) => pokemon_card.name.clone(),
             Card::Trainer(trainer_card) => trainer_card.name.clone(),
+            Card::Unknown => "Unknown".to_string(),
         }
+    }
+
+    pub fn is_unknown(&self) -> bool {
+        matches!(self, Card::Unknown)
     }
 
     pub(crate) fn get_attacks(&self) -> Vec<Attack> {
@@ -190,6 +202,9 @@ impl Card {
     }
 
     pub(crate) fn get_knockout_points(&self) -> u8 {
+        if self.is_unknown() {
+            return 0;
+        }
         // Mega pokemon are worth 3 points, ex pokemon are worth 2, regular pokemon are worth 1
         if self.is_mega() {
             3
@@ -271,6 +286,7 @@ impl fmt::Display for Card {
         match self {
             Card::Pokemon(pokemon_card) => write!(f, "{}", pokemon_card.name),
             Card::Trainer(trainer_card) => write!(f, "{}", trainer_card.name),
+            Card::Unknown => write!(f, "Unknown"),
         }
     }
 }

@@ -9,7 +9,10 @@ use crate::State;
 use super::apply_action_helpers::{
     guts_would_flip, handle_damage_only, handle_knockouts, Mutation, Probabilities,
 };
-use super::outcomes::{generate_sequences_with_heads, CoinPaths, CoinSeq, Outcomes};
+use super::outcomes::{
+    generate_sequences_with_heads, saturated_geometric_classes, CoinConditionError, CoinPaths,
+    CoinSeq, ForecastBuildError, Outcomes,
+};
 use super::{Action, SimpleAction};
 
 /// A single damage target described as plain data: `(amount, is_opponent_target, in_play_idx)`.
@@ -81,6 +84,23 @@ impl AttackOutcome {
             damage: targets,
             pre_damage_effect: Some(Rc::new(effect)),
             post_damage_effect: None,
+        }
+    }
+
+    /// A pre-damage effect, followed by damage, followed by a post-damage effect.
+    pub fn effect_then_damage_then_effect<F, G>(
+        before_damage: F,
+        targets: Vec<DamageTarget>,
+        after_damage: G,
+    ) -> Self
+    where
+        F: Fn(&mut StdRng, &mut State, &Action) + 'static,
+        G: Fn(&mut StdRng, &mut State, &Action) + 'static,
+    {
+        Self {
+            damage: targets,
+            pre_damage_effect: Some(Rc::new(before_damage)),
+            post_damage_effect: Some(Rc::new(after_damage)),
         }
     }
 
@@ -216,6 +236,44 @@ impl AttackOutcomes {
         }
     }
 
+    /// A binary coin whose heads and/or tails result has additional finite random successors.
+    /// Heads remain before tails, matching [`Self::binary_coin`]'s established branch order.
+    pub(crate) fn binary_coin_weighted(
+        heads: Vec<(f64, AttackOutcome)>,
+        tails: Vec<(f64, AttackOutcome)>,
+    ) -> Result<Self, ForecastBuildError> {
+        let mut branches = Vec::new();
+        for (refinements, face) in [(heads, true), (tails, false)] {
+            if refinements.is_empty() {
+                return Err(ForecastBuildError::EmptyBranches);
+            }
+            let conditional_sum = refinements
+                .iter()
+                .map(|(probability, _)| *probability)
+                .sum::<f64>();
+            if refinements.iter().any(|(probability, _)| {
+                !probability.is_finite() || *probability <= 0.0 || *probability > 1.0
+            }) {
+                return Err(ForecastBuildError::ProbabilityOutOfRange);
+            }
+            if !conditional_sum.is_finite() || (conditional_sum - 1.0).abs() > 1e-9 {
+                return Err(ForecastBuildError::ProbabilitySumInvalid);
+            }
+            for (probability, outcome) in refinements {
+                let combined = 0.5 * probability;
+                if !combined.is_finite() || combined <= 0.0 {
+                    return Err(ForecastBuildError::ProbabilityOutOfRange);
+                }
+                branches.push(AttackBranch {
+                    probability: combined,
+                    outcome,
+                    coin_paths: CoinPaths::Exact(vec![CoinSeq(vec![face])]),
+                });
+            }
+        }
+        Ok(Self { branches })
+    }
+
     pub fn from_coin_branches(branches: Vec<(f64, AttackOutcome, Vec<CoinSeq>)>) -> Self {
         let branches = branches
             .into_iter()
@@ -245,6 +303,59 @@ impl AttackOutcomes {
         Self::from_coin_branches(branches)
     }
 
+    /// Binomial coin classes whose effect has additional finite random successors.
+    ///
+    /// Each conditional distribution refines one heads-count class without changing the
+    /// concrete coin paths carried by that class. This keeps acting-player coin provenance
+    /// available to Will and Victory Star while separately pricing a non-coin random effect.
+    pub(crate) fn binomial_by_heads_weighted(
+        flips: usize,
+        mut make_outcomes: impl FnMut(usize) -> Vec<(f64, AttackOutcome)>,
+    ) -> Result<Self, ForecastBuildError> {
+        let denominator = 2_usize.pow(flips as u32) as f64;
+        let mut branches = Vec::new();
+        for heads in 0..=flips {
+            let coin_probability = Outcomes::binomial_coefficient(flips, heads) as f64 / denominator;
+            let coin_paths = CoinPaths::Exact(
+                generate_sequences_with_heads(flips, heads)
+                    .into_iter()
+                    .map(CoinSeq)
+                    .collect(),
+            );
+            let refinements = make_outcomes(heads);
+            if refinements.is_empty() {
+                return Err(ForecastBuildError::EmptyBranches);
+            }
+            let conditional_sum = refinements
+                .iter()
+                .map(|(probability, _)| *probability)
+                .sum::<f64>();
+            if refinements.iter().any(|(probability, _)| {
+                !probability.is_finite() || *probability <= 0.0 || *probability > 1.0
+            }) {
+                return Err(ForecastBuildError::ProbabilityOutOfRange);
+            }
+            if !conditional_sum.is_finite() || (conditional_sum - 1.0).abs() > 1e-9 {
+                return Err(ForecastBuildError::ProbabilitySumInvalid);
+            }
+            for (probability, outcome) in refinements {
+                let combined = coin_probability * probability;
+                if !combined.is_finite() || combined <= 0.0 {
+                    return Err(ForecastBuildError::ProbabilityOutOfRange);
+                }
+                branches.push(AttackBranch {
+                    probability: combined,
+                    outcome,
+                    coin_paths: coin_paths.clone(),
+                });
+            }
+        }
+        Ok(Self { branches })
+    }
+
+    /// Legacy finite helper. Its final branch is an unterminated all-heads path, making
+    /// `max_heads` a gameplay cap. Existing mechanics retain it until their saturation points
+    /// are proven; new exact mechanics should use `geometric_until_tails_saturated`.
     pub fn geometric_until_tails(
         max_heads: usize,
         mut make_outcome: impl FnMut(usize) -> AttackOutcome,
@@ -261,6 +372,69 @@ impl AttackOutcomes {
             branches.push((probability, make_outcome(heads), vec![CoinSeq(sequence)]));
         }
         Self::from_coin_branches(branches)
+    }
+
+    /// Exact successor-state distribution for a geometric attack effect whose structured
+    /// outcome is identical after `saturation_heads`.
+    #[allow(dead_code)] // Primitive lands before the first card-specific saturation proof.
+    pub fn geometric_until_tails_saturated(
+        saturation_heads: usize,
+        mut make_outcome: impl FnMut(usize) -> AttackOutcome,
+    ) -> Result<Self, ForecastBuildError> {
+        let branches = saturated_geometric_classes(saturation_heads)?
+            .into_iter()
+            .map(|(probability, heads, coin_paths)| AttackBranch {
+                probability,
+                outcome: make_outcome(heads),
+                coin_paths,
+            })
+            .collect();
+        Ok(Self { branches })
+    }
+
+    /// Exact geometric classes whose effect has additional finite random successors.
+    ///
+    /// `make_outcomes(heads)` returns the conditional distribution after that coin class. Each
+    /// conditional probability must be positive and finite and the returned probabilities must
+    /// sum to one. Every refined successor retains the source class's coin-path evidence; this
+    /// lets Victory Star expose only the coin batch and defer the secondary random result until
+    /// Keep/Reroll commits it.
+    pub(crate) fn geometric_until_tails_saturated_weighted(
+        saturation_heads: usize,
+        mut make_outcomes: impl FnMut(usize) -> Vec<(f64, AttackOutcome)>,
+    ) -> Result<Self, ForecastBuildError> {
+        let mut branches = Vec::new();
+        for (coin_probability, heads, coin_paths) in saturated_geometric_classes(saturation_heads)?
+        {
+            let refinements = make_outcomes(heads);
+            if refinements.is_empty() {
+                return Err(ForecastBuildError::EmptyBranches);
+            }
+            let conditional_sum = refinements
+                .iter()
+                .map(|(probability, _)| *probability)
+                .sum::<f64>();
+            if refinements.iter().any(|(probability, _)| {
+                !probability.is_finite() || *probability <= 0.0 || *probability > 1.0
+            }) {
+                return Err(ForecastBuildError::ProbabilityOutOfRange);
+            }
+            if !conditional_sum.is_finite() || (conditional_sum - 1.0).abs() > 1e-9 {
+                return Err(ForecastBuildError::ProbabilitySumInvalid);
+            }
+            for (probability, outcome) in refinements {
+                let combined = coin_probability * probability;
+                if !combined.is_finite() || combined <= 0.0 {
+                    return Err(ForecastBuildError::ProbabilityOutOfRange);
+                }
+                branches.push(AttackBranch {
+                    probability: combined,
+                    outcome,
+                    coin_paths: coin_paths.clone(),
+                });
+            }
+        }
+        Ok(Self { branches })
     }
 
     /// Adapter for effect-only producers that already return an `Outcomes` (e.g. the shared
@@ -324,8 +498,8 @@ impl AttackOutcomes {
     /// `2^k` sub-branches (where `k` is the number of those Pokémon taking damage in that branch),
     /// one per combination of heads/tails, reducing (saturating at 0, at which point the damage
     /// entry is removed) the damage to the Pokémon whose coin came up heads while keeping all
-    /// other damage and all effects. Coin metadata is dropped (these are the defender's coins,
-    /// not the acting player's).
+    /// other damage and all effects. Existing metadata is preserved unchanged: it describes the
+    /// acting player's earlier attack-effect coins, while these defender coins stay unlabelled.
     pub fn split_with_damage_prevention(self, reductions: &[(usize, u32)]) -> Self {
         let mut branches = vec![];
         for branch in self.branches {
@@ -378,7 +552,7 @@ impl AttackOutcomes {
                 branches.push(AttackBranch {
                     probability: sub_probability,
                     outcome,
-                    coin_paths: CoinPaths::None,
+                    coin_paths: branch.coin_paths.clone(),
                 });
             }
         }
@@ -394,8 +568,8 @@ impl AttackOutcomes {
     /// sub-branches, one per combination of heads/tails. On heads the damage still applies in
     /// full — so on-damage triggers like Rocky Helmet's counterattack fire normally — and a
     /// post-damage effect then sets the survivor's remaining HP to exactly 10 before knockouts
-    /// are resolved. Coin metadata is dropped (these are the defender's coins, not the acting
-    /// player's).
+    /// are resolved. Existing acting-player coin metadata is copied unchanged; the Guts coin is
+    /// deliberately not added to it.
     ///
     /// Knock outs are forecast with the pre-attack board (like `expected_damage_to`), so damage
     /// modifiers changed by a branch's own pre-damage effect are not taken into account.
@@ -469,7 +643,7 @@ impl AttackOutcomes {
                 branches.push(AttackBranch {
                     probability: sub_probability,
                     outcome,
-                    coin_paths: CoinPaths::None,
+                    coin_paths: branch.coin_paths.clone(),
                 });
             }
         }
@@ -558,7 +732,7 @@ impl AttackOutcomes {
                 branches.push(AttackBranch {
                     probability: sub_probability,
                     outcome,
-                    coin_paths: CoinPaths::None,
+                    coin_paths: branch.coin_paths.clone(),
                 });
             }
         }
@@ -582,8 +756,8 @@ impl AttackOutcomes {
     ///   both knockouts in a single wave, so each player banks their own point before the win
     ///   checks and a mutual knockout can even end the game in a tie.
     ///
-    /// Knockouts are forecast against the pre-attack board, matching both siblings. Coin metadata
-    /// is dropped: this is the defender's coin, not the acting player's.
+    /// Knockouts are forecast against the pre-attack board, matching both siblings. Existing
+    /// acting-player coin metadata is copied unchanged; the defender's coin is not added to it.
     pub fn split_with_attacker_knockout(
         self,
         state: &State,
@@ -628,7 +802,7 @@ impl AttackOutcomes {
                 branches.push(AttackBranch {
                     probability: sub_probability,
                     outcome,
-                    coin_paths: CoinPaths::None,
+                    coin_paths: branch.coin_paths.clone(),
                 });
             }
         }
@@ -702,6 +876,70 @@ impl AttackOutcomes {
             attack_name,
             attack_effect,
         )
+    }
+
+    /// Victory Star supports any nonempty exact or symbolic class for the attack's own coin batch.
+    /// A concrete member is sampled later with the RNG supplied to the selected mutation.
+    pub(crate) fn all_branches_have_coin_paths(&self) -> bool {
+        !self.branches.is_empty()
+            && self
+                .branches
+                .iter()
+                .all(|branch| branch.coin_paths.has_paths())
+    }
+
+    /// Condition on one concrete observed coin path. Multiple successors may share the same
+    /// coin class when a card has secondary randomness (for example, random Energy selection).
+    pub(crate) fn select_coin_path(self, flips: &[bool]) -> Result<Self, &'static str> {
+        let concrete = CoinSeq(flips.to_vec());
+        let mut retained = Vec::new();
+        let mut malformed_symbolic = false;
+        let mut max_log_weight = f64::NEG_INFINITY;
+        for branch in self.branches {
+            let log_likelihood = match branch.coin_paths.log_likelihood(&concrete) {
+                Ok(Some(value)) => value,
+                Ok(None) => continue,
+                Err(CoinConditionError::InvalidObservedPath) => {
+                    malformed_symbolic = true;
+                    continue;
+                }
+                Err(_) => return Err("stored attack coin path has invalid likelihood"),
+            };
+            if branch.probability <= 0.0 || !branch.probability.is_finite() {
+                return Err("stored attack coin path has invalid prior probability");
+            }
+            let log_weight = branch.probability.ln() + log_likelihood;
+            max_log_weight = max_log_weight.max(log_weight);
+            retained.push((log_weight, branch.outcome, branch.coin_paths));
+        }
+        if retained.is_empty() {
+            return Err(if malformed_symbolic {
+                "stored attack coin path is not a terminating geometric sequence"
+            } else {
+                "stored attack coin path does not match any regenerated branch"
+            });
+        }
+        let mut selected = Vec::with_capacity(retained.len());
+        let mut probability_sum = 0.0;
+        for (log_weight, outcome, coin_paths) in retained {
+            let probability = (log_weight - max_log_weight).exp();
+            if !probability.is_finite() || probability <= 0.0 {
+                return Err("stored attack coin path has invalid posterior probability");
+            }
+            probability_sum += probability;
+            selected.push(AttackBranch {
+                probability,
+                outcome,
+                coin_paths,
+            });
+        }
+        if !probability_sum.is_finite() || probability_sum <= 0.0 {
+            return Err("stored attack coin path has invalid posterior probability");
+        }
+        for branch in &mut selected {
+            branch.probability /= probability_sum;
+        }
+        Ok(Self { branches: selected })
     }
 
     /// Lower into `Outcomes` and return its `(probabilities, mutations)` branches. Convenience
@@ -789,10 +1027,12 @@ struct AttackMetadata {
 
 fn attack_metadata_from_action(_state: &State, action: &Action) -> AttackMetadata {
     match &action.action {
-        SimpleAction::Attack(attack) => AttackMetadata {
-            name: Some(attack.title.clone()),
-            effect: attack.effect.clone(),
-        },
+        SimpleAction::Attack(attack) | SimpleAction::ApplyQueuedAttackDamage { attack, .. } => {
+            AttackMetadata {
+                name: Some(attack.title.clone()),
+                effect: attack.effect.clone(),
+            }
+        }
         _ => AttackMetadata {
             name: None,
             effect: None,
@@ -803,6 +1043,7 @@ fn attack_metadata_from_action(_state: &State, action: &Action) -> AttackMetadat
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::actions::outcomes::MAX_GEOMETRIC_SATURATION_HEADS;
     use crate::card_ids::CardId;
     use crate::models::PlayedCard;
 
@@ -847,5 +1088,228 @@ mod tests {
         });
         let total: f64 = outcomes.branches.iter().map(|b| b.probability).sum();
         assert!((total - 1.0).abs() < 1e-9);
+    }
+    #[test]
+    fn saturated_attack_adapter_preserves_symbolic_coin_metadata() {
+        let outcomes = AttackOutcomes::geometric_until_tails_saturated(2, |heads| {
+            AttackOutcome::damage(vec![(heads as u32 * 10, true, 0)])
+        })
+        .unwrap();
+        assert!(outcomes.all_branches_have_coin_paths());
+        let branches = outcomes.into_outcomes().into_branches_with_coin_paths();
+        assert_eq!(branches.len(), 3);
+        assert_eq!(branches[2].2, CoinPaths::UntilTailsAtLeast { min_heads: 2 });
+        let error = AttackOutcomes::geometric_until_tails_saturated(
+            MAX_GEOMETRIC_SATURATION_HEADS + 1,
+            |_| AttackOutcome::noop(),
+        )
+        .err()
+        .expect("attack constructor must reject an unrepresentable tail");
+        assert!(matches!(
+            error,
+            ForecastBuildError::GeometricSaturationOutOfRange { .. }
+        ));
+    }
+
+    #[test]
+    fn weighted_geometric_refinement_preserves_coin_classes_and_posterior_weights() {
+        let outcomes = AttackOutcomes::geometric_until_tails_saturated_weighted(1, |heads| {
+            if heads == 0 {
+                vec![
+                    (0.25, AttackOutcome::damage(vec![(10, true, 0)])),
+                    (0.75, AttackOutcome::damage(vec![(20, true, 0)])),
+                ]
+            } else {
+                vec![(1.0, AttackOutcome::damage(vec![(30, true, 0)]))]
+            }
+        })
+        .unwrap();
+        assert_eq!(
+            outcomes
+                .branches
+                .iter()
+                .map(|branch| branch.probability)
+                .collect::<Vec<_>>(),
+            vec![0.125, 0.375, 0.5]
+        );
+        assert_eq!(
+            outcomes.branches[0].coin_paths,
+            outcomes.branches[1].coin_paths
+        );
+        assert_eq!(
+            outcomes.branches[2].coin_paths,
+            CoinPaths::UntilTailsAtLeast { min_heads: 1 }
+        );
+
+        let selected = outcomes.select_coin_path(&[false]).unwrap();
+        assert_eq!(selected.branches.len(), 2);
+        assert!((selected.branches[0].probability - 0.25).abs() < 1e-12);
+        assert!((selected.branches[1].probability - 0.75).abs() < 1e-12);
+        assert_eq!(selected.branches[0].outcome.damage[0].0, 10);
+        assert_eq!(selected.branches[1].outcome.damage[0].0, 20);
+    }
+
+    #[test]
+    fn attack_coin_conditioning_uses_path_likelihood_and_stays_stable_for_long_tails() {
+        let overlapping_exact = AttackOutcomes {
+            branches: vec![
+                AttackBranch {
+                    probability: 0.5,
+                    outcome: AttackOutcome::damage(vec![(10, true, 0)]),
+                    coin_paths: CoinPaths::Exact(vec![
+                        CoinSeq(vec![true]),
+                        CoinSeq(vec![false]),
+                    ]),
+                },
+                AttackBranch {
+                    probability: 0.5,
+                    outcome: AttackOutcome::damage(vec![(20, true, 0)]),
+                    coin_paths: CoinPaths::Exact(vec![CoinSeq(vec![true])]),
+                },
+            ],
+        }
+        .select_coin_path(&[true])
+        .unwrap();
+        assert!((overlapping_exact.branches[0].probability - 1.0 / 3.0).abs() < 1e-12);
+        assert!((overlapping_exact.branches[1].probability - 2.0 / 3.0).abs() < 1e-12);
+
+        let long = std::iter::repeat_n(true, 700)
+            .chain(std::iter::once(false))
+            .collect::<Vec<_>>();
+        let symbolic = AttackOutcomes {
+            branches: vec![
+                AttackBranch {
+                    probability: 0.2,
+                    outcome: AttackOutcome::damage(vec![(10, true, 0)]),
+                    coin_paths: CoinPaths::UntilTailsAtLeast { min_heads: 1 },
+                },
+                AttackBranch {
+                    probability: 0.8,
+                    outcome: AttackOutcome::damage(vec![(20, true, 0)]),
+                    coin_paths: CoinPaths::UntilTailsAtLeast { min_heads: 1 },
+                },
+            ],
+        }
+        .select_coin_path(&long)
+        .unwrap();
+        assert!((symbolic.branches[0].probability - 0.2).abs() < 1e-12);
+        assert!((symbolic.branches[1].probability - 0.8).abs() < 1e-12);
+
+        let exact_beats_irrelevant_malformed_symbolic = AttackOutcomes {
+            branches: vec![
+                AttackBranch {
+                    probability: 0.5,
+                    outcome: AttackOutcome::noop(),
+                    coin_paths: CoinPaths::UntilTailsAtLeast { min_heads: 1 },
+                },
+                AttackBranch {
+                    probability: 0.5,
+                    outcome: AttackOutcome::damage(vec![(20, true, 0)]),
+                    coin_paths: CoinPaths::Exact(vec![CoinSeq(vec![true])]),
+                },
+            ],
+        }
+        .select_coin_path(&[true])
+        .unwrap();
+        assert_eq!(exact_beats_irrelevant_malformed_symbolic.branches.len(), 1);
+        assert_eq!(
+            exact_beats_irrelevant_malformed_symbolic.branches[0].outcome.damage[0].0,
+            20
+        );
+    }
+
+    #[test]
+    fn weighted_geometric_refinement_rejects_invalid_conditional_distributions() {
+        assert!(matches!(
+            AttackOutcomes::geometric_until_tails_saturated_weighted(1, |_| vec![]),
+            Err(ForecastBuildError::EmptyBranches)
+        ));
+        assert!(matches!(
+            AttackOutcomes::geometric_until_tails_saturated_weighted(1, |_| {
+                vec![(0.4, AttackOutcome::noop()), (0.4, AttackOutcome::noop())]
+            }),
+            Err(ForecastBuildError::ProbabilitySumInvalid)
+        ));
+        assert!(matches!(
+            AttackOutcomes::geometric_until_tails_saturated_weighted(1, |_| {
+                vec![(f64::NAN, AttackOutcome::noop())]
+            }),
+            Err(ForecastBuildError::ProbabilityOutOfRange)
+        ));
+        assert!(matches!(
+            AttackOutcomes::geometric_until_tails_saturated_weighted(
+                MAX_GEOMETRIC_SATURATION_HEADS,
+                |_| vec![
+                    (0.5, AttackOutcome::noop()),
+                    (0.5, AttackOutcome::noop()),
+                ],
+            ),
+            Err(ForecastBuildError::ProbabilityOutOfRange)
+        ));
+    }
+
+    #[test]
+    fn effect_adapter_preserves_symbolic_coin_metadata() {
+        let effects =
+            Outcomes::geometric_until_tails_saturated(1, |_| Box::new(|_, _, _| {})).unwrap();
+        let attacks = AttackOutcomes::from_effect_outcomes(effects);
+        assert!(attacks.all_branches_have_coin_paths());
+        let branches = attacks.into_outcomes().into_branches_with_coin_paths();
+        assert_eq!(
+            branches.last().unwrap().2,
+            CoinPaths::UntilTailsAtLeast { min_heads: 1 }
+        );
+    }
+
+    #[test]
+    fn serialized_concrete_path_selects_one_regenerated_symbolic_attack_branch() {
+        let serialized = serde_json::to_string(&vec![true, true, true, false]).unwrap();
+        let flips: Vec<bool> = serde_json::from_str(&serialized).unwrap();
+        let selected = AttackOutcomes::geometric_until_tails_saturated(2, |heads| {
+            AttackOutcome::damage(vec![(heads as u32 * 10, true, 0)])
+        })
+        .unwrap()
+        .select_coin_path(&flips)
+        .unwrap();
+        assert_eq!(selected.branches.len(), 1);
+        assert_eq!(selected.branches[0].probability, 1.0);
+        assert_eq!(selected.branches[0].outcome.damage, vec![(20, true, 0)]);
+
+        let unterminated = AttackOutcomes::geometric_until_tails_saturated(2, |heads| {
+            AttackOutcome::damage(vec![(heads as u32 * 10, true, 0)])
+        })
+        .unwrap()
+        .select_coin_path(&[true, true, true]);
+        assert!(unterminated.is_err());
+    }
+
+    #[test]
+    fn defender_coin_transforms_preserve_only_the_inherited_attacker_paths() {
+        let mut state = State::default();
+        state.in_play_pokemon[0][0] = Some(PlayedCard::from_id(CardId::B4a064Furfrou));
+        state.in_play_pokemon[1][0] = Some(PlayedCard::from_id(CardId::A3096Conkeldurr));
+        let base = || {
+            AttackOutcomes::binary_coin(
+                active_damage_outcome_for_test(200),
+                active_damage_outcome_for_test(30),
+            )
+        };
+
+        assert!(base()
+            .split_with_damage_prevention(&[(0, 80)])
+            .all_branches_have_coin_paths());
+        assert!(base()
+            .split_with_guts_survival(&state, 0, Some("Continuous Steps"), None, &[0])
+            .all_branches_have_coin_paths());
+        assert!(base()
+            .split_with_point_denial(&state, 0, Some("Continuous Steps"), None, &[0])
+            .all_branches_have_coin_paths());
+        assert!(base()
+            .split_with_attacker_knockout(&state, 0, Some("Continuous Steps"), None)
+            .all_branches_have_coin_paths());
+    }
+
+    fn active_damage_outcome_for_test(damage: u32) -> AttackOutcome {
+        AttackOutcome::damage(vec![(damage, true, 0)])
     }
 }

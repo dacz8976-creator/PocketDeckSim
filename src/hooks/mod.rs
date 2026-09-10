@@ -5,6 +5,7 @@ mod core;
 mod counterattack;
 mod retreat;
 
+pub(crate) use core::active_attack_damage_saturation_requirement;
 pub(crate) use core::attack_effect_ignores_opponent_active_effects;
 pub(crate) use core::can_evolve_into;
 pub(crate) use core::can_play_item;
@@ -31,4 +32,6 @@ pub(crate) use counterattack::maybe_attach_energy_on_damaged;
 pub(crate) use counterattack::maybe_shuffle_attacker_hand_card_on_damaged;
 pub(crate) use counterattack::should_poison_attacker;
 pub(crate) use retreat::can_retreat;
+pub(crate) use retreat::get_board_retreat_cost_for_player;
 pub(crate) use retreat::get_retreat_cost;
+pub(crate) use retreat::get_retreat_cost_for_player;

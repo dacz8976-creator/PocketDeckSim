@@ -9,6 +9,7 @@ use uuid::Uuid;
 
 use crate::{
     data_exporter::DataExporter,
+    game_result_exporter::{ExportedMatchup, GameResultExporter},
     optimize::{ParallelConfig, SimulationConfig},
     players::{create_players, fill_code_array, PlayerCode},
     simulation_event_handler::{
@@ -304,6 +305,19 @@ pub fn simulate(
     sim_config: SimulationConfig,
     parallel_config: ParallelConfig,
 ) {
+    simulate_with_results(deck_a_path, deck_b_path, sim_config, parallel_config, None)
+        .expect("Failed to run simulation");
+}
+
+/// Run a simulation with optional compact, seed-bound game results. Existing ply exports remain
+/// independent. Result-export failures are returned so callers cannot accept a partial batch.
+pub fn simulate_with_results(
+    deck_a_path: &str,
+    deck_b_path: &str,
+    sim_config: SimulationConfig,
+    parallel_config: ParallelConfig,
+    results_output: Option<String>,
+) -> Result<(), Box<dyn std::error::Error>> {
     let player_codes = fill_code_array(sim_config.players);
 
     warn!(
@@ -342,6 +356,17 @@ pub fn simulate(
         simulation = register_data_exporter(simulation, output_folder);
     }
 
+    if let Some(output_folder) = results_output {
+        let output_path = PathBuf::from(output_folder);
+        std::fs::create_dir_all(&output_path)?;
+        let player_labels = simulation.player_codes.iter().map(|code| format!("{code:?}")).collect();
+        let matchup = ExportedMatchup::from_decks(&simulation.deck_a, &simulation.deck_b, player_labels)
+            .map_err(|message| std::io::Error::new(std::io::ErrorKind::InvalidInput, message))?;
+        simulation = simulation.register_with_closure(move || {
+            Box::new(GameResultExporter::new(output_path.clone(), matchup.clone()))
+        });
+    }
+
     let pb_clone = pb.clone();
     simulation = simulation.with_callback(move || pb_clone.inc(1));
     simulation.run();
@@ -353,6 +378,15 @@ pub fn simulate(
         let stats = collector.compute_stats();
         print_stats(&stats);
     }
+    if let Some(exporter) = simulation.get_event_handler::<GameResultExporter>() {
+        if exporter.failure_count() != 0 {
+            return Err(std::io::Error::new(
+                std::io::ErrorKind::Other,
+                format!("Game result export reported {} failures; the batch is incomplete", exporter.failure_count()),
+            ).into());
+        }
+    }
+    Ok(())
 }
 
 /// Creates a styled progress bar with consistent styling across the codebase

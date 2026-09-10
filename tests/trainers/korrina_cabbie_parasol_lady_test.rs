@@ -349,7 +349,7 @@ fn test_parasol_lady_active_triggers_promotion() {
     assert!(
         promotion_choices
             .iter()
-            .all(|a| matches!(a.action, SimpleAction::Activate { player: 0, .. })),
-        "All choices should be Activate actions for player 0 to promote Charmander"
+            .all(|a| matches!(a.action, SimpleAction::Promote { player: 0, .. })),
+        "All choices should be Promote actions for player 0 to promote Charmander"
     );
 }

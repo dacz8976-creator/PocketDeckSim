@@ -246,7 +246,7 @@ fn test_raging_bolt_baneful_boom_discards_all_and_knocks_out() {
     assert_eq!(actor, 1, "Opponent must promote a new Active");
     assert!(choices
         .iter()
-        .all(|c| matches!(c.action, SimpleAction::Activate { player: 1, .. })));
+        .all(|c| matches!(c.action, SimpleAction::Promote { player: 1, .. })));
 }
 
 #[test]

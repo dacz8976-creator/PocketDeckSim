@@ -1,8 +1,7 @@
 use std::cmp::min;
 
 use log::debug;
-use rand::rngs::StdRng;
-use rand::Rng;
+use rand::{distributions::WeightedIndex, prelude::Distribution, rngs::StdRng, Rng};
 
 use crate::{
     actions::{
@@ -11,6 +10,10 @@ use crate::{
             card_search_outcomes_with_filter_multiple, discard_search_outcomes_with_filter,
             gladion_search_outcomes, item_search_outcomes, pokemon_search_outcomes,
             tool_search_outcomes,
+        },
+        team_rockets_researcher::{
+            copied_researcher_expansion, is_researcher_card, ResearcherPlan, UnpricedForecast,
+            MAX_PRICED_RESEARCHER_SUCCESSORS,
         },
     },
     card_ids::CardId,
@@ -30,11 +33,46 @@ use crate::{
 use super::{
     apply_action_helpers::{Mutation, Mutations},
     outcomes::{CoinPaths, CoinSeq, Outcomes},
-    Action, SimpleAction,
+    trainer_coin_plan, Action, SimpleAction,
 };
 
-// This is a reducer of all actions relating to trainer cards.
+pub fn try_forecast_trainer_action(
+    acting_player: usize,
+    state: &State,
+    trainer_card: &TrainerCard,
+) -> Result<Outcomes, UnpricedForecast> {
+    if is_misty_card(trainer_card) {
+        let misty = trainer_card.clone();
+        return Ok(Outcomes::single_fn(move |_, state, action| {
+            trainer_coin_plan::stage_misty_target(state, action, misty.clone());
+        }));
+    }
+    if is_researcher_card(trainer_card) {
+        return ResearcherPlan::from_state(state, acting_player).forecast_exact(acting_player);
+    }
+    if is_penny_card(trainer_card) {
+        return try_penny_outcomes(acting_player, state, trainer_card);
+    }
+    Ok(forecast_trainer_action_unchecked(
+        acting_player,
+        state,
+        trainer_card,
+    ))
+}
+
+/// Compatibility entry point for callers that require an exact distribution. Oversized
+/// Researcher trees are refused explicitly; real play must use `actions::apply_action`.
 pub fn forecast_trainer_action(
+    acting_player: usize,
+    state: &State,
+    trainer_card: &TrainerCard,
+) -> Outcomes {
+    try_forecast_trainer_action(acting_player, state, trainer_card)
+        .unwrap_or_else(|error| panic!("exact Trainer forecast refused: {}", error.reason))
+}
+
+// This is a reducer of all actions relating to trainer cards.
+pub(crate) fn forecast_trainer_action_unchecked(
     acting_player: usize,
     state: &State,
     trainer_card: &TrainerCard,
@@ -66,7 +104,9 @@ pub fn forecast_trainer_action(
         CardId::A1219Erika | CardId::A1266Erika | CardId::A4b328Erika | CardId::A4b329Erika => {
             Outcomes::single_fn(erika_effect)
         }
-        CardId::A1220Misty | CardId::A1267Misty => misty_outcomes(),
+        CardId::A1220Misty | CardId::A1267Misty => {
+            panic!("Misty requires the fallible exact forecast or physical sampler")
+        }
         CardId::A1221Blaine | CardId::A1268Blaine => Outcomes::single_fn(blaine_effect),
         CardId::A2152Cynthia | CardId::A2192Cynthia => Outcomes::single_fn(cynthia_effect),
         CardId::A1224Brock | CardId::A1271Brock => Outcomes::single_fn(brock_effect),
@@ -159,7 +199,7 @@ pub fn forecast_trainer_action(
         CardId::B1213PrankSpinner => Outcomes::single_fn(prank_spinner_effect),
         CardId::A1a064PokemonFlute => Outcomes::single_fn(pokemon_flute_effect),
         CardId::A3b069Penny | CardId::A3b086Penny | CardId::B2a092Penny | CardId::B2a109Penny => {
-            penny_outcomes(acting_player, state)
+            penny_outcomes(acting_player, state, trainer_card)
         }
         // Pure-information cards: see `information_only_effect`.
         CardId::A4a071Morty
@@ -234,7 +274,7 @@ pub fn forecast_trainer_action(
         CardId::A3142BigMalasada => Outcomes::single_fn(big_malasada_effect),
         CardId::B2150Sightseer | CardId::B2191Sightseer => sightseer_effect(acting_player, state),
         CardId::A2b072TeamRocketGrunt | CardId::A2b091TeamRocketGrunt => {
-            team_rocket_grunt_outcomes()
+            team_rocket_grunt_outcomes(state, acting_player)
         }
         CardId::B3147FieldBlower => Outcomes::single_fn(field_blower_effect),
         CardId::B3149Korrina | CardId::B3190Korrina => Outcomes::single_fn(korrina_effect),
@@ -269,8 +309,119 @@ pub fn forecast_trainer_action(
         CardId::B4153Wally | CardId::B4193Wally => Outcomes::single_fn(wally_effect),
         CardId::B4150Psychic | CardId::B4190Psychic => Outcomes::single_fn(psychic_effect),
         CardId::B4151Drayden | CardId::B4191Drayden => Outcomes::single_fn(drayden_effect),
+        CardId::B4a067TeamRocketsThievingMachine => {
+            team_rockets_thieving_machine_outcomes(acting_player, state)
+        }
+        CardId::B4a068TeamRocketsGoozooka | CardId::B4a110TeamRocketsGoozooka => {
+            Outcomes::single_fn(team_rockets_goozooka_effect)
+        }
+        CardId::B4a069TeamRocketsResearcher | CardId::B4a085TeamRocketsResearcher => {
+            unreachable!("Researcher is handled by the fallible exact Trainer forecast")
+        }
+        CardId::B4a070TeamRocketsMasterPlan
+        | CardId::B4a086TeamRocketsMasterPlan
+        | CardId::B4a094TeamRocketsMasterPlan => team_rockets_master_plan_outcomes(),
+        CardId::B4a071TeamRocketsBoss | CardId::B4a087TeamRocketsBoss => {
+            team_rockets_boss_outcomes(acting_player, state)
+        }
         _ => panic!("Unsupported Trainer Card"),
     }
+}
+
+fn team_rockets_boss_outcomes(acting_player: usize, state: &State) -> Outcomes {
+    let opponent = 1 - acting_player;
+    let capacity = state.in_play_pokemon[opponent]
+        .iter()
+        .skip(1)
+        .filter(|slot| slot.is_none())
+        .count();
+    let mut basics = state.hands[opponent]
+        .iter()
+        .filter(|card| matches!(card, Card::Pokemon(pokemon) if pokemon.stage == 0))
+        .cloned()
+        .collect::<Vec<_>>();
+    basics.sort_by_key(Card::get_id);
+    let mut choices = Vec::new();
+    for count in 0..=capacity.min(basics.len()) {
+        for mut cards in generate_combinations(&basics, count) {
+            cards.sort_by_key(Card::get_id);
+            let choice = SimpleAction::BenchOpponentHandBasics { cards };
+            if !choices.contains(&choice) {
+                choices.push(choice);
+            }
+        }
+    }
+    let revealed_hand = state.hands[opponent].clone();
+    Outcomes::single_fn(move |_, state, action| {
+        state
+            .private_reveal_events
+            .push(crate::state::PrivateRevealEvent {
+                viewer: action.actor,
+                zone_owner: 1 - action.actor,
+                cause: "Team Rocket's Boss".into(),
+                kind: crate::state::PrivateRevealKind::WholeHand,
+                cards: revealed_hand.clone(),
+            });
+        state
+            .move_generation_stack
+            .push((action.actor, choices.clone()));
+    })
+}
+
+fn team_rockets_master_plan_outcomes() -> Outcomes {
+    let heads: Mutation = Box::new(|_, state, action| {
+        let opponent = (action.actor + 1) % 2;
+        state.apply_status_condition(opponent, 0, StatusCondition::Confused);
+    });
+    let tails: Mutation = Box::new(|_, state, action| {
+        let opponent = (action.actor + 1) % 2;
+        state.apply_status_condition(opponent, 0, StatusCondition::Confused);
+        state.apply_status_condition(action.actor, 0, StatusCondition::Confused);
+    });
+    Outcomes::binary_coin(heads, tails)
+}
+
+fn team_rockets_thieving_machine_outcomes(acting_player: usize, state: &State) -> Outcomes {
+    let opponent = (acting_player + 1) % 2;
+    let eligible: Vec<Card> = state.discard_piles[opponent]
+        .iter()
+        .filter(|card| {
+            matches!(card, Card::Trainer(t)
+                if t.trainer_card_type == TrainerType::Item
+                    && t.name != "Team Rocket's Thieving Machine")
+        })
+        .cloned()
+        .collect();
+    if eligible.is_empty() {
+        return Outcomes::single_fn(|_, _, _| {});
+    }
+
+    let probability = 1.0 / eligible.len() as f64;
+    let probabilities = vec![probability; eligible.len()];
+    let mutations = eligible
+        .into_iter()
+        .map(|item| {
+            Box::new(move |_: &mut StdRng, state: &mut State, action: &Action| {
+                let opponent = (action.actor + 1) % 2;
+                if let Some(index) = state.discard_piles[opponent]
+                    .iter()
+                    .position(|card| card == &item)
+                {
+                    let item = state.discard_piles[opponent].remove(index);
+                    state.hands[action.actor].push(item);
+                }
+            }) as Mutation
+        })
+        .collect();
+    Outcomes::from_parts(probabilities, mutations)
+}
+
+fn team_rockets_goozooka_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    let opponent = (action.actor + 1) % 2;
+    state.get_active_mut(opponent).add_effect(
+        crate::effects::CardEffect::IncreasedRetreatCost { amount: 1 },
+        1,
+    );
 }
 
 fn big_malasada_effect(rng: &mut StdRng, state: &mut State, action: &Action) {
@@ -423,18 +574,20 @@ fn lillie_effect(_: &mut StdRng, state: &mut State, action: &Action) {
 }
 
 fn field_blower_effect(_: &mut StdRng, state: &mut State, action: &Action) {
-    // Offer one choice per Pokémon with a tool (both players) plus one choice to discard the stadium.
+    // Each attached Tool is a separate public choice, including either slot on Revavroom.
     let mut choices: Vec<SimpleAction> = (0..2)
         .flat_map(|player| {
             state
                 .enumerate_in_play_pokemon(player)
-                .filter(|(_, pokemon)| pokemon.has_tool_attached())
-                .map(
-                    move |(in_play_idx, _)| SimpleAction::DiscardToolFromPokemon {
-                        player,
-                        in_play_idx,
-                    },
-                )
+                .flat_map(move |(in_play_idx, pokemon)| {
+                    (0..pokemon.attached_tools.len()).map(move |tool_idx| {
+                        SimpleAction::DiscardToolFromPokemon {
+                            player,
+                            in_play_idx,
+                            tool_idx,
+                        }
+                    })
+                })
                 .collect::<Vec<_>>()
         })
         .collect();
@@ -502,7 +655,7 @@ fn guzma_effect(_: &mut StdRng, state: &mut State, action: &Action) {
         .collect();
 
     for idx in tool_indices {
-        state.discard_tool(opponent, idx);
+        state.discard_all_tools(opponent, idx);
     }
 
     // Resolve knockouts only after Guzma has discarded every opponent tool.
@@ -567,7 +720,16 @@ fn team_effect(rng: &mut StdRng, state: &mut State, action: &Action) {
     }
 }
 
-fn lucky_ice_pop_outcomes(_state: &State, _acting_player: usize) -> Outcomes {
+fn lucky_ice_pop_outcomes(state: &State, acting_player: usize) -> Outcomes {
+    let can_heal = !state.is_healing_blocked()
+        && state
+            .maybe_get_active(acting_player)
+            .is_some_and(|active| active.get_damage_counters() > 0);
+    if !can_heal {
+        return Outcomes::single_fn(|_, state, action| {
+            state.heal_pokemon(action.actor, 0, 20);
+        });
+    }
     let heads_mutation = Box::new(|_: &mut StdRng, state: &mut State, action: &Action| {
         state.heal_pokemon(action.actor, 0, 20);
         // Card was already discarded by wrap_with_common_logic, move it back to hand
@@ -640,25 +802,26 @@ fn inner_healing_effect(
     }
 }
 
-// Will return 6 outputs, one that attaches no energy, one that
-//  queues decision of attaching 1 energy to in_play waters.
-fn misty_outcomes() -> Outcomes {
-    Outcomes::geometric_until_tails(5, move |heads| {
-        Box::new(move |_: &mut StdRng, state: &mut State, action: &Action| {
-            let possible_moves = state
-                .enumerate_in_play_pokemon(action.actor)
-                .filter(|(_, x)| state.pokemon_is_type(x, EnergyType::Water))
-                .map(|(i, _)| SimpleAction::Attach {
-                    attachments: vec![(heads as u32, EnergyType::Water, i)],
-                    is_turn_energy: false,
-                })
-                .collect::<Vec<_>>();
-            if !possible_moves.is_empty() {
-                state
-                    .move_generation_stack
-                    .push((action.actor, possible_moves));
-            }
-        })
+pub(crate) fn is_misty_card(trainer_card: &TrainerCard) -> bool {
+    matches!(
+        CardId::from_card_id(&trainer_card.id),
+        Some(CardId::A1220Misty | CardId::A1267Misty)
+    )
+}
+
+/// Stage Misty's public target before its complete physical `H* T` batch is sampled.
+pub(crate) fn sample_misty_effect(
+    _rng: &mut StdRng,
+    _state: &State,
+    trainer_card: &TrainerCard,
+) -> Mutation {
+    assert!(
+        is_misty_card(trainer_card),
+        "Misty sampler received another card"
+    );
+    let misty = trainer_card.clone();
+    Box::new(move |_, state, action| {
+        trainer_coin_plan::stage_misty_target(state, action, misty.clone());
     })
 }
 
@@ -964,6 +1127,7 @@ fn gather_bench_energy_onto_active(
         .get_active_mut(player)
         .attached_energy
         .extend(gathered);
+    state.apply_soothing_wind_to_pokemon(player, 0);
 }
 
 /// Fishing Net's target predicate: "a random Basic [W] Pokémon from your discard pile".
@@ -998,21 +1162,41 @@ fn is_water_pokemon(card: &Card) -> bool {
 /// and would push an empty choice list.
 ///
 /// The looked-at card never leaves the opponent's deck; every branch just reshuffles it back.
-fn penny_outcomes(acting_player: usize, state: &State) -> Outcomes {
+fn is_penny_card(trainer_card: &TrainerCard) -> bool {
+    trainer_card.name == "Penny"
+}
+
+fn try_penny_outcomes(
+    acting_player: usize,
+    state: &State,
+    penny: &TrainerCard,
+) -> Result<Outcomes, UnpricedForecast> {
     let opponent = (acting_player + 1) % 2;
     let candidates = penny_candidates(state, opponent);
     if candidates.is_empty() {
-        return Outcomes::single_fn(|_, _, _| {});
+        return Ok(Outcomes::single_fn(|_, _, _| {}));
     }
-    copy_random_supporter_outcomes(acting_player, state, &candidates).map_mutations(
-        move |mutation| -> Mutation {
-            Box::new(move |rng, state, action| {
-                mutation(rng, state, action);
-                // "...and shuffle it back into their deck."
-                state.decks[opponent].shuffle(false, rng);
-            })
-        },
+    let penny = penny.clone();
+    Ok(
+        try_copy_random_supporter_outcomes(acting_player, state, &candidates)?.map_mutations(
+            move |mutation| -> Mutation {
+                let penny = penny.clone();
+                Box::new(move |rng, state, action| {
+                    mutation(rng, state, action);
+                    if trainer_coin_plan::defer_penny_shuffle_for_misty(state, &penny, opponent) {
+                        return;
+                    }
+                    // "...and shuffle it back into their deck."
+                    state.decks[opponent].shuffle(false, rng);
+                })
+            },
+        ),
     )
+}
+
+fn penny_outcomes(acting_player: usize, state: &State, penny: &TrainerCard) -> Outcomes {
+    try_penny_outcomes(acting_player, state, penny)
+        .unwrap_or_else(|error| panic!("exact Penny forecast refused: {}", error.reason))
 }
 
 /// "Use the effect of that card as the effect of this <card>", where the card is one Supporter
@@ -1024,45 +1208,207 @@ fn penny_outcomes(acting_player: usize, state: &State) -> Outcomes {
 /// Shared by Penny (a Supporter in the opponent's *deck*) and Smeargle's Portrait (a Supporter in
 /// the opponent's *hand*). `acting_player` is the copier, so the copied effect resolves from their
 /// side of the board. Returns a single no-op branch when `candidates` is empty.
-pub(crate) fn copy_random_supporter_outcomes(
+pub(crate) fn try_copy_random_supporter_outcomes(
     acting_player: usize,
     state: &State,
     candidates: &[(TrainerCard, usize)],
-) -> Outcomes {
+) -> Result<Outcomes, UnpricedForecast> {
     let total: usize = candidates.iter().map(|(_, count)| *count).sum();
     if total == 0 {
-        return Outcomes::single_fn(|_, _, _| {});
+        return Ok(Outcomes::single_fn(|_, _, _| {}));
     }
+
+    let has_researcher = ensure_copied_researcher_budget(acting_player, state, candidates)?;
 
     let mut branches: Vec<(f64, Mutation, CoinPaths)> = vec![];
     for (trainer_card, count) in candidates {
         let weight = *count as f64 / total as f64;
-        let copied = copied_supporter_outcomes(acting_player, state, trainer_card);
-        for (probability, mutation, coin_paths) in copied.into_branches_with_coin_paths() {
+        let mut copied = try_copied_supporter_outcomes(acting_player, state, trainer_card)?;
+        // Will belongs to the selected Supporter's coin batch, not to the random source choice.
+        // Penny recursively owns this handling for its eventual selected source.
+        if state.has_pending_will_first_heads() && !is_penny_card(trainer_card) {
+            copied = match copied.force_first_heads() {
+                Ok(forced) => forced.map_mutations(|mutation| {
+                    Box::new(move |rng, state, action| {
+                        assert!(state.consume_pending_will_first_heads());
+                        mutation(rng, state, action);
+                    })
+                }),
+                Err(original) => original,
+            };
+        }
+        let copied_branches = copied.into_branches_with_coin_paths();
+        let required = branches.len().saturating_add(copied_branches.len());
+        if has_researcher && required > MAX_PRICED_RESEARCHER_SUCCESSORS {
+            return Err(UnpricedForecast::too_many(required));
+        }
+        for (probability, mutation, coin_paths) in copied_branches {
             branches.push((probability * weight, mutation, coin_paths));
         }
     }
 
-    Outcomes::from_branches_with_coin_paths(branches)
-        .expect("copy_random_supporter_outcomes should produce a valid distribution")
+    Outcomes::from_branches_with_coin_paths(branches).map_err(|_| UnpricedForecast {
+        kind: super::team_rockets_researcher::UnpricedForecastKind::ResearcherNumeric,
+        reason: "copied Team Rocket's Researcher forecast produced invalid probabilities".into(),
+    })
 }
 
 /// The outcomes of the copied Supporter, or a no-op if that Supporter cannot currently do anything
 /// (see `penny_outcomes`).
-fn copied_supporter_outcomes(
+pub(crate) fn try_copied_supporter_outcomes(
     acting_player: usize,
     state: &State,
     trainer_card: &TrainerCard,
-) -> Outcomes {
+) -> Result<Outcomes, UnpricedForecast> {
+    let usable = copied_supporter_is_usable(state, trainer_card);
+    if usable {
+        try_forecast_trainer_action(acting_player, state, trainer_card)
+    } else {
+        Ok(Outcomes::single_fn(|_, _, _| {}))
+    }
+}
+
+pub(crate) fn ensure_copied_researcher_budget(
+    acting_player: usize,
+    state: &State,
+    candidates: &[(TrainerCard, usize)],
+) -> Result<bool, UnpricedForecast> {
+    let mut expansion = copied_researcher_expansion(state, acting_player, candidates)?;
+    let researcher_printings = candidates
+        .iter()
+        .filter(|(trainer, count)| *count > 0 && is_researcher_card(trainer))
+        .count();
+    let mut branch_floor = candidates
+        .len()
+        .saturating_add(expansion.saturating_sub(researcher_printings));
+    let penny_printings = candidates
+        .iter()
+        .filter(|(trainer, count)| *count > 0 && is_penny_card(trainer))
+        .count();
+    if penny_printings > 0 {
+        let opponent = 1 - acting_player;
+        let nested = penny_candidates(state, opponent);
+        let nested_expansion = copied_researcher_expansion(state, acting_player, &nested)?;
+        let nested_researcher_printings = nested
+            .iter()
+            .filter(|(trainer, count)| *count > 0 && is_researcher_card(trainer))
+            .count();
+        let nested_branch_floor = nested
+            .len()
+            .saturating_add(nested_expansion.saturating_sub(nested_researcher_printings));
+        expansion = expansion
+            .checked_add(nested_expansion.saturating_mul(penny_printings))
+            .unwrap_or(MAX_PRICED_RESEARCHER_SUCCESSORS + 1);
+        if nested_expansion > 0 {
+            branch_floor = branch_floor.saturating_add(
+                nested_branch_floor
+                    .saturating_sub(1)
+                    .saturating_mul(penny_printings),
+            );
+        }
+    }
+    let required = expansion.max(branch_floor);
+    if required > MAX_PRICED_RESEARCHER_SUCCESSORS {
+        return Err(UnpricedForecast::too_many(required));
+    }
+    Ok(expansion > 0)
+}
+
+pub(crate) fn choose_supporter_source(
+    rng: &mut StdRng,
+    candidates: &[(TrainerCard, usize)],
+) -> Option<TrainerCard> {
+    let total = candidates.iter().map(|(_, count)| *count).sum::<usize>();
+    if total == 0 {
+        return None;
+    }
+    let mut selected = rng.gen_range(0..total);
+    for (trainer, count) in candidates {
+        if selected < *count {
+            return Some(trainer.clone());
+        }
+        selected -= *count;
+    }
+    unreachable!("weighted Supporter source index must be in range")
+}
+
+fn sample_outcome_mutation(rng: &mut StdRng, outcomes: Outcomes) -> Mutation {
+    let (probabilities, mut mutations) = outcomes.into_branches();
+    let selected = if probabilities.len() == 1 {
+        0
+    } else {
+        WeightedIndex::new(&probabilities)
+            .expect("forecast probabilities must be valid")
+            .sample(rng)
+    };
+    mutations.remove(selected)
+}
+
+/// Sample the actual Supporter source once, then return its effect mutation without applying the
+/// outer Penny/Portrait common logic. Researcher uses its O(M + H) physical sampler here.
+pub(crate) fn sample_copied_supporter_effect(
+    rng: &mut StdRng,
+    acting_player: usize,
+    state: &State,
+    candidates: &[(TrainerCard, usize)],
+) -> Mutation {
+    let Some(trainer_card) = choose_supporter_source(rng, candidates) else {
+        return Box::new(|_, _, _| {});
+    };
     let usable = matches!(
-        trainer_move_generation_implementation(state, trainer_card),
+        trainer_move_generation_implementation(state, &trainer_card),
         Some(actions) if !actions.is_empty()
     );
-    if usable {
-        forecast_trainer_action(acting_player, state, trainer_card)
-    } else {
-        Outcomes::single_fn(|_, _, _| {})
+    if !usable {
+        return Box::new(|_, _, _| {});
     }
+
+    if is_researcher_card(&trainer_card) {
+        let plan = ResearcherPlan::from_state(state, acting_player);
+        let force_first = state.has_pending_will_first_heads();
+        let batch = plan.sample_batch(rng, force_first);
+        return Box::new(move |rng, state, _action| {
+            if force_first {
+                assert!(state.consume_pending_will_first_heads());
+            }
+            plan.apply_sampled(&batch, rng, state, acting_player);
+        });
+    }
+
+    if is_misty_card(&trainer_card) {
+        return sample_misty_effect(rng, state, &trainer_card);
+    }
+
+    if is_penny_card(&trainer_card) {
+        let opponent = 1 - acting_player;
+        let nested_candidates = penny_candidates(state, opponent);
+        if nested_candidates.is_empty() {
+            return Box::new(|_, _, _| {});
+        }
+        let nested = sample_copied_supporter_effect(rng, acting_player, state, &nested_candidates);
+        let penny = trainer_card.clone();
+        return Box::new(move |rng, state, action| {
+            nested(rng, state, action);
+            if trainer_coin_plan::defer_penny_shuffle_for_misty(state, &penny, opponent) {
+                return;
+            }
+            state.decks[opponent].shuffle(false, rng);
+        });
+    }
+
+    let mut outcomes = forecast_trainer_action_unchecked(acting_player, state, &trainer_card);
+    if state.has_pending_will_first_heads() {
+        outcomes = match outcomes.force_first_heads() {
+            Ok(forced) => forced.map_mutations(|mutation| {
+                Box::new(move |rng, state, action| {
+                    assert!(state.consume_pending_will_first_heads());
+                    mutation(rng, state, action);
+                })
+            }),
+            Err(original) => original,
+        };
+    }
+    sample_outcome_mutation(rng, outcomes)
 }
 
 /// The Supporters in `player`'s deck that Penny can copy, with how many copies of each are there.
@@ -2037,9 +2383,12 @@ fn serena_effect(acting_player: usize, state: &State) -> Outcomes {
 fn sightseer_effect(acting_player: usize, state: &State) -> Outcomes {
     // Look at the top 4 cards of your deck. Put all Stage 1 Pokémon you find there into your
     // hand. Shuffle the other cards back into your deck.
-    super::shared_mutations::top_n_reveal_outcomes(acting_player, state, 4, |card| {
-        matches!(card, Card::Pokemon(p) if p.stage == 1)
-    })
+    super::shared_mutations::top_n_reveal_outcomes(
+        acting_player,
+        state,
+        4,
+        |card| matches!(card, Card::Pokemon(p) if p.stage == 1),
+    )
 }
 
 fn elesa_effect(_: &mut StdRng, state: &mut State, _: &Action) {
@@ -2047,9 +2396,7 @@ fn elesa_effect(_: &mut StdRng, state: &mut State, _: &Action) {
     // their owner's hand.
     for player in 0..2 {
         for pokemon in state.in_play_pokemon[player].iter_mut().flatten() {
-            if let Some(tool) = pokemon.attached_tool.take() {
-                state.hands[player].push(tool);
-            }
+            state.hands[player].append(&mut pokemon.attached_tools);
         }
     }
 }
@@ -2057,9 +2404,12 @@ fn elesa_effect(_: &mut StdRng, state: &mut State, _: &Action) {
 fn puppy_loving_girl_effect(acting_player: usize, state: &State) -> Outcomes {
     // Look at the top 4 cards of your deck. Put all Pokémon you find there that have the
     // Puppy Pile attack into your hand. Shuffle the other cards back into your deck.
-    super::shared_mutations::top_n_reveal_outcomes(acting_player, state, 4, |card| {
-        matches!(card, Card::Pokemon(p) if p.attacks.iter().any(|a| a.title == "Puppy Pile"))
-    })
+    super::shared_mutations::top_n_reveal_outcomes(
+        acting_player,
+        state,
+        4,
+        |card| matches!(card, Card::Pokemon(p) if p.attacks.iter().any(|a| a.title == "Puppy Pile")),
+    )
 }
 
 fn quick_grow_extract_effect(acting_player: usize, state: &State) -> Outcomes {
@@ -2117,9 +2467,13 @@ fn wallace_effect(acting_player: usize, state: &State) -> Outcomes {
     Outcomes::from_parts(probabilities, outcomes)
 }
 
-fn team_rocket_grunt_outcomes() -> Outcomes {
+fn team_rocket_grunt_outcomes(state: &State, acting_player: usize) -> Outcomes {
     // Flip a coin until you get tails. For each heads, discard a random Energy from your opponent's Active Pokémon.
-    Outcomes::geometric_until_tails(5, move |heads| {
+    let opponent = 1 - acting_player;
+    let saturation = state
+        .maybe_get_active(opponent)
+        .map_or(0, |pokemon| pokemon.attached_energy.len());
+    Outcomes::geometric_until_tails_saturated(saturation, move |heads| {
         Box::new(
             move |rng: &mut StdRng, state: &mut State, action: &Action| {
                 let opponent = (action.actor + 1) % 2;
@@ -2141,6 +2495,14 @@ fn team_rocket_grunt_outcomes() -> Outcomes {
             },
         )
     })
+    .expect("attached Energy count must fit the geometric saturation boundary")
+}
+
+pub(crate) fn copied_supporter_is_usable(state: &State, trainer_card: &TrainerCard) -> bool {
+    matches!(
+        trainer_move_generation_implementation(state, trainer_card),
+        Some(actions) if !actions.is_empty()
+    )
 }
 
 #[cfg(test)]

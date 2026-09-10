@@ -92,7 +92,7 @@ fn test_zoroark_illusive_trickery_protects_after_attack_ko() {
     let (_actor, actions) = game.get_state_clone().generate_possible_actions();
     let promote_action = actions
         .into_iter()
-        .find(|action| matches!(action.action, SimpleAction::Activate { player: 1, .. }))
+        .find(|action| matches!(action.action, SimpleAction::Promote { player: 1, .. }))
         .expect("Opponent should promote after Bulbasaur is Knocked Out");
     game.apply_action(&promote_action);
 

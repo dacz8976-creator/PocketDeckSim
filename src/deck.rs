@@ -91,6 +91,10 @@ impl Deck {
     }
 
     pub fn is_valid(&self) -> bool {
+        // Unknown is an observation placeholder, never a legal deck card.
+        if self.cards.iter().any(Card::is_unknown) {
+            return false;
+        }
         let basic = self.cards.iter().filter(|x| x.is_basic()).count();
         let has_correct_size = self.cards.len() == 20 && basic >= 1;
 

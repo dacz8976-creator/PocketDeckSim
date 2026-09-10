@@ -5,7 +5,7 @@ use std::collections::HashMap;
 use std::sync::LazyLock;
 
 use crate::{
-    actions::attacks::{BenchSide, CopyAttackSource, HandCardKind, Mechanic},
+    actions::attacks::{BenchDamageFilter, BenchSide, CopyAttackSource, HandCardKind, Mechanic},
     effects::{CardEffect, TurnEffect, UNTIL_LEAVES_ACTIVE_SPOT},
     models::{EnergyType, StatusCondition, TrainerType},
 };
@@ -13,6 +13,17 @@ use crate::{
 /// Map from attack effect text to its implementation.
 pub static EFFECT_MECHANIC_MAP: LazyLock<HashMap<&'static str, Mechanic>> = LazyLock::new(|| {
     let mut map: HashMap<&'static str, Mechanic> = HashMap::new();
+    map.insert(
+        "If your opponent's Active Pokémon is Poisoned, heal 60 damage from this Pokémon.",
+        Mechanic::SelfHealIfDefenderHasStatus {
+            condition: StatusCondition::Poisoned,
+            amount: 60,
+        },
+    );
+    map.insert(
+        "This attack does 10 more damage for each Energy in your opponent's Active Pokémon's Retreat Cost.",
+        Mechanic::ExtraDamagePerRetreatCost { damage_per_energy: 10 },
+    );
     map.insert(
         "1 Special Condition from among Asleep, Burned, Confused, Paralyzed, and Poisoned is chosen at random, and your opponent's Active Pokémon is now affected by that Special Condition. Any Special Conditions already affecting that Pokémon will not be chosen.",
         Mechanic::RandomStatusFromEligible {
@@ -463,6 +474,18 @@ pub static EFFECT_MECHANIC_MAP: LazyLock<HashMap<&'static str, Mechanic>> = Lazy
             duration: 1,
         },
     );
+    // Team Rocket's Tinkaton (B4a 050 / 075) - Pile-Driving Hammer
+    map.insert(
+        "During your opponent's next turn, attacks used by the Defending Pokémon cost 2 [C] more, and its Retreat Cost is 2 [C] more.",
+        Mechanic::DamageAndMultipleCardEffects {
+            opponent: true,
+            effects: vec![
+                CardEffect::IncreasedAttackCost { amount: 2 },
+                CardEffect::IncreasedRetreatCost { amount: 2 },
+            ],
+            duration: 1,
+        },
+    );
     map.insert(
         "During your opponent's next turn, attacks used by the Defending Pokémon cost 1 [C] more.",
         Mechanic::DamageAndCardEffect {
@@ -790,6 +813,14 @@ pub static EFFECT_MECHANIC_MAP: LazyLock<HashMap<&'static str, Mechanic>> = Lazy
         },
     );
     map.insert(
+        "Flip 3 coins. This attack does 80 damage for each heads.",
+        Mechanic::ExtraDamageForEachHeads {
+            include_fixed_damage: false,
+            damage_per_head: 80,
+            num_coins: 3,
+        },
+    );
+    map.insert(
         "Flip 3 coins. This attack does 60 damage for each heads. This Pokémon is now Confused.",
         Mechanic::ExtraDamageForEachHeadsWithStatus {
             include_fixed_damage: false,
@@ -859,6 +890,13 @@ pub static EFFECT_MECHANIC_MAP: LazyLock<HashMap<&'static str, Mechanic>> = Lazy
         },
     );
     map.insert(
+        "Flip a coin for each Pokémon you have in play. This attack does 30 damage for each heads.",
+        Mechanic::CoinFlipPerPokemonInPlay {
+            damage_per_heads: 30,
+            name_filter: None,
+        },
+    );
+    map.insert(
         "Flip a coin for each [M] Energy attached to this Pokémon. This attack does 50 damage for each heads.",
         Mechanic::CoinFlipPerSpecificEnergyType {
             energy_type: EnergyType::Metal,
@@ -871,6 +909,12 @@ pub static EFFECT_MECHANIC_MAP: LazyLock<HashMap<&'static str, Mechanic>> = Lazy
         "Flip a coin until you get tails. This attack does 20 damage for each heads.",
         Mechanic::FlipUntilTailsDamage {
             damage_per_heads: 20,
+        },
+    );
+    map.insert(
+        "Flip a coin until you get tails. This attack does 30 damage for each heads.",
+        Mechanic::FlipUntilTailsDamage {
+            damage_per_heads: 30,
         },
     );
     map.insert(
@@ -1484,6 +1528,13 @@ pub static EFFECT_MECHANIC_MAP: LazyLock<HashMap<&'static str, Mechanic>> = Lazy
         },
     );
     map.insert(
+        "If your opponent's Active Pokémon has “Team Rocket” in its name, this attack does 70 more damage.",
+        Mechanic::ExtraDamageIfDefenderNameContains {
+            substring: "Team Rocket".to_string(),
+            extra_damage: 70,
+        },
+    );
+    map.insert(
         "If your opponent's Active Pokémon is a Basic Pokémon, this attack does 60 more damage.",
         Mechanic::ExtraDamageIfDefenderStage {
             evolution: false,
@@ -1551,6 +1602,12 @@ pub static EFFECT_MECHANIC_MAP: LazyLock<HashMap<&'static str, Mechanic>> = Lazy
     map.insert(
         "If your opponent's Active Pokémon is affected by a Special Condition, this attack does 60 more damage.",
         Mechanic::ExtraDamageIfOpponentHasSpecialCondition { extra_damage: 60 },
+    );
+    map.insert(
+        "This attack does 50 more damage for each Special Condition affecting your opponent's Active Pokémon.",
+        Mechanic::ExtraDamagePerOpponentSpecialCondition {
+            damage_per_condition: 50,
+        },
     );
     map.insert(
         "If your opponent's Active Pokémon is an evolved Pokémon, devolve it by putting the highest Stage Evolution card on it into your opponent's hand.",
@@ -2099,6 +2156,16 @@ pub static EFFECT_MECHANIC_MAP: LazyLock<HashMap<&'static str, Mechanic>> = Lazy
         },
     );
     map.insert(
+        "This attack does 40 more damage for each of your opponent's Benched Pokémon.",
+        Mechanic::BenchCountDamage {
+            include_fixed_damage: true,
+            damage_per: 40,
+            energy_type: None,
+            names: None,
+            bench_side: BenchSide::OpponentBench,
+        },
+    );
+    map.insert(
         "This attack does 30 damage for each of your Benched Pokémon.",
         Mechanic::BenchCountDamage {
             include_fixed_damage: false,
@@ -2413,6 +2480,13 @@ pub static EFFECT_MECHANIC_MAP: LazyLock<HashMap<&'static str, Mechanic>> = Lazy
         },
     );
     map.insert(
+        "If Volbeat is in your discard pile, this attack does 60 more damage.",
+        Mechanic::ExtraDamageIfCardInDiscard {
+            card_name: "Volbeat".to_string(),
+            extra_damage: 60,
+        },
+    );
+    map.insert(
         "During your opponent's next turn, if the Defending Pokémon tries to use an attack, your opponent flips a coin. If tails, that attack doesn't happen.",
         Mechanic::CoinFlipToBlockAttackNextTurn,
     );
@@ -2589,6 +2663,10 @@ pub static EFFECT_MECHANIC_MAP: LazyLock<HashMap<&'static str, Mechanic>> = Lazy
     map.insert(
         "If this Pokémon has more Energy attached than your opponent's Active Pokémon, this attack does 50 more damage.",
         Mechanic::ExtraDamageIfMoreEnergyThanDefender { extra_damage: 50 },
+    );
+    map.insert(
+        "If this Pokémon has more Energy attached than your opponent's Active Pokémon, this attack does 40 more damage.",
+        Mechanic::ExtraDamageIfMoreEnergyThanDefender { extra_damage: 40 },
     );
     map.insert(
         "If this Pokémon moved from your Bench to the Active Spot this turn, this attack does 40 more damage.",
@@ -2832,6 +2910,22 @@ pub static EFFECT_MECHANIC_MAP: LazyLock<HashMap<&'static str, Mechanic>> = Lazy
         },
     );
     map.insert(
+        "Reveal the top 6 cards of your deck. This attack does 30 damage for each Pokémon you find there that has “Team Rocket” in its name. Shuffle the revealed cards back into your deck.",
+        Mechanic::RevealTopDeckDamagePerPokemonName {
+            reveal_count: 6,
+            name_fragment: "Team Rocket".to_string(),
+            damage_per: 30,
+        },
+    );
+    map.insert(
+        "This attack also does 50 damage to 1 of your opponent's Benched Pokémon that has damage on it.",
+        Mechanic::AlsoChoiceBenchDamageFiltered {
+            opponent: true,
+            damage: 50,
+            filter: BenchDamageFilter::Damaged,
+        },
+    );
+    map.insert(
         "This attack does 20 more damage for each Pokémon in your discard pile.",
         Mechanic::ExtraDamagePerPokemonInDiscard {
             damage_per_pokemon: 20,
@@ -2961,6 +3055,12 @@ pub static EFFECT_MECHANIC_MAP: LazyLock<HashMap<&'static str, Mechanic>> = Lazy
         "This attack does 30 more damage for each point you have gotten.",
         Mechanic::ExtraDamagePerOwnPoint {
             damage_per_point: 30,
+        },
+    );
+    map.insert(
+        "This attack does 50 more damage for each point your opponent got during their last turn.",
+        Mechanic::ExtraDamagePerOpponentPointDuringOwnLastTurn {
+            damage_per_point: 50,
         },
     );
 
@@ -3356,9 +3456,7 @@ pub static EFFECT_MECHANIC_MAP: LazyLock<HashMap<&'static str, Mechanic>> = Lazy
     // Hydrapple (B4 127) - Fickle Beam
     map.insert(
         "Flip 2 coins. If both of them are heads, this attack does 100 more damage.",
-        Mechanic::ExtraDamageIfBothHeads {
-            extra_damage: 100,
-        },
+        Mechanic::ExtraDamageIfBothHeads { extra_damage: 100 },
     );
     // Kecleon (B4 136) - Samesies Slap
     map.insert(
@@ -3548,6 +3646,44 @@ pub static EFFECT_MECHANIC_MAP: LazyLock<HashMap<&'static str, Mechanic>> = Lazy
     map.insert(
         "You may move any amount of Energy from your Pokémon in play to your other Pokémon in any way you like.",
         Mechanic::MoveEnergyFreelyAmongYourPokemon,
+    );
+
+    // Team Rocket's Moltres ex (B4a 007 / 079 / 088) - Heat Charged
+    map.insert(
+        "Flip 3 coins. For each heads, produce a [R] Energy from your Energy Zone and attach it to this Pokémon.",
+        Mechanic::FlipCoinsSelfChargeActivePerHeads {
+            num_coins: 3,
+            energy_type: EnergyType::Fire,
+        },
+    );
+    // Team Rocket's Slowpoke (B4a 025) - Scavenge
+    map.insert(
+        "Put a random Item card from your discard pile into your hand.",
+        Mechanic::SearchRandomTrainerTypeFromDiscardToHand {
+            trainer_type: TrainerType::Item,
+        },
+    );
+    // Team Rocket's Slowking ex (B4a 026 / 082 / 091) - Hand Kinesis
+    map.insert(
+        "This attack does 20 damage for each card in your hand.",
+        Mechanic::ExtraDamagePerCardInOwnHand {
+            damage_per_card: 20,
+            include_fixed_damage: false,
+        },
+    );
+    // Regidrago (B4a 057) - Draconic Slam
+    map.insert(
+        "If this Pokémon has damage on it, this attack does -100 damage.",
+        Mechanic::LessDamageIfSelfHurt { reduction: 100 },
+    );
+    // Team Rocket's Scyther (P-B 088) - Second Strike
+    map.insert(
+        "If your opponent's Active Pokémon has damage on it, this attack does 70 more damage.",
+        Mechanic::ExtraDamageIfHurt {
+            extra_damage: 70,
+            opponent: true,
+            benched: false,
+        },
     );
 
     map

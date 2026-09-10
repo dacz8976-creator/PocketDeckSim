@@ -112,6 +112,12 @@ pub enum AttackCostReductionScope {
 #[derive(Debug, Clone, PartialEq)]
 pub enum AbilityMechanic {
     VictreebelFragranceTrap,
+    /// Victini B3 025 / P-B 049. A passive, once-per-turn optional replacement
+    /// of an attack-effect coin batch after its result is known.
+    VictoryStar,
+    /// Gholdengo B4a 051 / 109. Passive once-per-turn replacement of one complete
+    /// Trainer-effect coin batch after its faces are known.
+    LuxuryCoin,
     /// "Once during your turn, you may heal `amount` damage from each of your [type] Pokémon."
     ///
     /// `energy_type: None` heals every Pokémon you have in play (Shaymin's Fragrant Flower
@@ -141,6 +147,10 @@ pub enum AbilityMechanic {
     /// through, so the suppression cannot be applied to move generation but missed by some passive
     /// hook. Alolan Muk is a Stage 1, so it does not switch itself off.
     SuppressBasicAbilities,
+    /// Dual Customization: changes the maximum number of attached Pokémon Tools.
+    ToolCapacity {
+        max_tools: usize,
+    },
     /// Claydol's Heal Block (A3a 031): "Pokémon (both yours and your opponent's) can't be healed."
     ///
     /// Passive and symmetric: while any Pokémon with this Ability is in play, *no* Pokémon on
@@ -504,6 +514,12 @@ pub enum AbilityMechanic {
     /// now Paralyzed." Offered as an optional `UseAbility` when the evolution resolves.
     CoinFlipParalyzeOpponentActiveOnEvolve,
     DiscardRandomEnergyFromOpponentActiveOnEvolve,
+    /// Team Rocket's Weezing ex's Boiler Smog: when evolved from hand, optionally make the
+    /// opponent's Active Pokémon both Poisoned and Burned.
+    PoisonAndBurnOpponentActiveOnEvolve,
+    /// Team Rocket's Raticate ex's Thieving Incisors: when evolved from hand, optionally move one
+    /// uniformly random attached Energy from the opponent's Active Pokémon to this Pokémon.
+    MoveRandomEnergyFromOpponentActiveToSelfOnEvolve,
     /// Polteageist's Refreshing Tea (B2 075): "Once during your turn, when you play this Pokémon
     /// from your hand to evolve 1 of your Pokémon, you may have your opponent shuffle their hand
     /// into their deck. For each remaining point that your opponent needs to win, they draw a
@@ -625,6 +641,9 @@ pub enum AbilityMechanic {
     /// through `copy_random_supporter_outcomes`. The card is only looked at, so it stays in the
     /// opponent's hand, and — being an Ability — it does not consume the Supporter-per-turn slot.
     CopyRandomOpponentHandSupporter,
+    /// Team Rocket's Kecleon's Spy Ops: reveal one uniformly random physical card from the
+    /// opponent's hand to this ability's actor without moving it.
+    RevealRandomOpponentHandCard,
     /// Regice's Crystal Body (A2 034): "Prevent all effects of attacks used by your opponent's
     /// Pokémon done to this Pokémon."
     ///
@@ -677,6 +696,12 @@ pub enum AbilityMechanic {
     LookAtTopCardsPutTrainerTypeToHandOnEvolve {
         count: usize,
         trainer_type: TrainerType,
+    },
+    /// Team Rocket's Slowking ex - Evil Inspiration: an activated once-per-turn draw that may
+    /// require the holder to occupy the Active Spot.
+    DrawCardsOncePerTurn {
+        amount: u8,
+        require_active: bool,
     },
 
     /// Celebi's Time Recall: "Each of your evolved Pokémon can use any attack from its previous

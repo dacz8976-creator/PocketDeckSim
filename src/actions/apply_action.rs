@@ -7,16 +7,16 @@ use crate::{
     actions::effect_ability_mechanic_map::get_entering_play_ability_mechanic,
     actions::{
         abilities::{AbilityMechanic, RandomEvolutionTrigger},
-        apply_abilities_action::forecast_ability,
-        apply_action_helpers::{apply_activate, wrap_with_common_logic},
-        get_in_play_ability_mechanic,
+        apply_abilities_action::{forecast_ability, try_copy_random_opponent_hand_supporter},
+        apply_action_helpers::{apply_activate, wrap_with_common_logic, Mutation},
+        get_ability_mechanic, get_in_play_ability_mechanic,
     },
     effects::{CardEffect, TurnEffect},
     hooks::{
         get_retreat_cost, on_bench_from_hand, on_evolve, to_playable_card, DamageModifierContext,
     },
     models::{Card, EnergyType, StatusCondition},
-    state::State,
+    state::{PendingAttackCoinChoice, State},
     tools,
 };
 
@@ -27,15 +27,43 @@ use super::{
     },
     apply_attack_action::{self, forecast_attack},
     apply_stadium_action::{self, forecast_use_stadium},
-    apply_trainer_action::{self, forecast_trainer_action},
-    outcomes::Outcomes,
-    shared_mutations, Action, SimpleAction,
+    apply_trainer_action::{
+        self, ensure_copied_researcher_budget, forecast_trainer_action, is_misty_card,
+        penny_candidates, sample_copied_supporter_effect, sample_misty_effect,
+        supporter_candidates_in_hand, try_forecast_trainer_action,
+    },
+    outcomes::{CoinPaths, Outcomes},
+    shared_mutations,
+    team_rockets_researcher::{is_researcher_card, ResearcherPlan, UnpricedForecast},
+    trainer_coin_plan, Action, SimpleAction,
 };
 
 /// Main function to mutate the state based on the action. It forecasts the possible outcomes
 /// and then chooses one of them to apply. This is so that bot implementations can re-use the
 /// `forecast_action` function.
 pub fn apply_action(rng: &mut StdRng, state: &mut State, action: &Action) {
+    if matches!(action.action, SimpleAction::ChooseMistyTarget { .. }) {
+        let mutation = trainer_coin_plan::sample_misty_target_actual(rng, state, action);
+        mutation(rng, state, action);
+        return;
+    }
+    if matches!(
+        action.action,
+        SimpleAction::KeepTrainerCoinResults | SimpleAction::RerollTrainerCoins { .. }
+    ) {
+        let mutation = trainer_coin_plan::sample_choice_actual(rng, state, action);
+        mutation(rng, state, action);
+        return;
+    }
+    if let Some(mutation) = trainer_coin_plan::try_sample_entry_actual(rng, state, action) {
+        mutation(rng, state, action);
+        return;
+    }
+    if let Some(mutation) = sample_researcher_capable_actual(rng, state, action) {
+        let wrapped = wrap_with_common_logic(mutation);
+        wrapped(rng, state, action);
+        return;
+    }
     let (probabilities, mut lazy_mutations) = forecast_action(state, action).into_branches();
     if probabilities.len() == 1 {
         lazy_mutations.remove(0)(rng, state, action);
@@ -46,10 +74,331 @@ pub fn apply_action(rng: &mut StdRng, state: &mut State, action: &Action) {
     }
 }
 
+fn sample_researcher_capable_actual(
+    rng: &mut StdRng,
+    state: &State,
+    action: &Action,
+) -> Option<Mutation> {
+    match &action.action {
+        SimpleAction::Play { trainer_card } if is_misty_card(trainer_card) => {
+            Some(sample_misty_effect(rng, state, trainer_card))
+        }
+        SimpleAction::Play { trainer_card } if is_researcher_card(trainer_card) => {
+            let actor = action.actor;
+            let plan = ResearcherPlan::from_state(state, actor);
+            if let Err(error) = plan.ensure_priced() {
+                crate::observation::record_unpriced(action, &error.reason);
+            }
+            let force_first = state.has_pending_will_first_heads();
+            let batch = plan.sample_batch(rng, force_first);
+            Some(Box::new(move |rng, state, _action| {
+                if force_first {
+                    assert!(state.consume_pending_will_first_heads());
+                }
+                plan.apply_sampled(&batch, rng, state, actor);
+            }))
+        }
+        SimpleAction::Play { trainer_card } if trainer_card.name == "Penny" => {
+            let opponent = 1 - action.actor;
+            let penny = trainer_card.clone();
+            let candidates = penny_candidates(state, opponent);
+            if candidates.is_empty() {
+                return Some(Box::new(|_, _, _| {}));
+            }
+            if let Err(error) = ensure_copied_researcher_budget(action.actor, state, &candidates) {
+                crate::observation::record_unpriced(action, &error.reason);
+            }
+            let copied = sample_copied_supporter_effect(rng, action.actor, state, &candidates);
+            Some(Box::new(move |rng, state, action| {
+                copied(rng, state, action);
+                if trainer_coin_plan::defer_penny_shuffle_for_misty(state, &penny, opponent) {
+                    return;
+                }
+                state.decks[opponent].shuffle(false, rng);
+            }))
+        }
+        SimpleAction::UseAbility { .. } if action_uses_portrait(state, action) => {
+            let opponent = 1 - action.actor;
+            let candidates = supporter_candidates_in_hand(state, opponent);
+            if let Err(error) = ensure_copied_researcher_budget(action.actor, state, &candidates) {
+                crate::observation::record_unpriced(action, &error.reason);
+            }
+            Some(sample_copied_supporter_effect(
+                rng,
+                action.actor,
+                state,
+                &candidates,
+            ))
+        }
+        _ => None,
+    }
+}
+
+fn action_uses_portrait(state: &State, action: &Action) -> bool {
+    let SimpleAction::UseAbility { in_play_idx } = action.action else {
+        return false;
+    };
+    state.in_play_pokemon[action.actor][in_play_idx]
+        .as_ref()
+        .is_some_and(|pokemon| {
+            get_ability_mechanic(&pokemon.card)
+                == Some(&AbilityMechanic::CopyRandomOpponentHandSupporter)
+        })
+}
+
+fn victory_star_source(state: &State, actor: usize) -> Option<usize> {
+    if state.victory_star_used_this_turn[actor] {
+        return None;
+    }
+    let active = state.in_play_pokemon[actor][0].as_ref()?;
+    if !state.pokemon_is_type(active, EnergyType::Fire) {
+        return None;
+    }
+    state
+        .enumerate_in_play_pokemon(actor)
+        .find_map(|(idx, pokemon)| {
+            (get_in_play_ability_mechanic(state, pokemon) == Some(&AbilityMechanic::VictoryStar))
+                .then_some(idx)
+        })
+}
+
+/// Build the sample-only half of Victory Star. `None` means the ordinary attack path remains in
+/// charge (no eligible Victini, no attack-effect coin batch, or an explicitly unsupported gate).
+fn try_forecast_victory_star_attack(state: &State, action: &Action) -> Option<Outcomes> {
+    let SimpleAction::Attack(attack) = &action.action else {
+        return None;
+    };
+    assert!(
+        state.pending_attack_coin_choice.is_none(),
+        "cannot start an attack while a Victory Star coin choice is pending"
+    );
+    let source_idx = victory_star_source(state, action.actor)?;
+
+    // Pocket evidence is still needed for whether Victory Star can replace confusion and
+    // CoinFlipToBlockAttack checks. Resolving the printed attack-effect coin first would reverse
+    // their order, so this bounded implementation deliberately keeps legacy resolution there.
+    if apply_attack_action::has_unverified_attacker_coin_gate(action.actor, state, action.is_stack)
+    {
+        debug!("Victory Star attack-effect pause skipped for unverified attacker coin gate");
+        return None;
+    }
+
+    let base = apply_attack_action::forecast_attack_effect(action.actor, state, attack);
+    if !base.all_branches_have_coin_paths() {
+        return None;
+    }
+
+    let mut sampled = base.into_outcomes();
+    let mut will_consumed_on_sample = false;
+    if state.has_pending_will_first_heads() {
+        sampled = match sampled.force_first_heads() {
+            Ok(forced) => {
+                will_consumed_on_sample = true;
+                forced
+            }
+            Err(original) => original,
+        };
+    }
+
+    // Secondary random successors can refine one public coin class into several exact state
+    // branches. Stage only the marginal coin class: choosing and discarding one refined branch
+    // here would consume hidden RNG before the player decides Keep/Reroll and then choose the
+    // secondary result again at commit.
+    let mut coin_classes: Vec<(f64, CoinPaths)> = Vec::new();
+    for (probability, _uncommitted_attack, coin_paths) in sampled.into_branches_with_coin_paths() {
+        if let Some((total, _)) = coin_classes
+            .iter_mut()
+            .find(|(_, existing)| *existing == coin_paths)
+        {
+            *total += probability;
+        } else {
+            coin_classes.push((probability, coin_paths));
+        }
+    }
+
+    let attack = attack.clone();
+    let actor = action.actor;
+    let original_is_stack = action.is_stack;
+    let branches: Vec<(f64, Mutation, CoinPaths)> = coin_classes
+        .into_iter()
+        .map(|(probability, coin_paths)| {
+            let sampled_class = coin_paths.clone();
+            let attack = attack.clone();
+            let mutation: Mutation =
+                Box::new(move |rng: &mut StdRng, state: &mut State, _: &Action| {
+                    let flips = sampled_class
+                        .sample(rng)
+                        .expect("Victory Star staging requires a nonempty attack coin-path class");
+                    if will_consumed_on_sample {
+                        assert!(
+                            state.consume_pending_will_first_heads(),
+                            "Will must still be pending when its first coin batch is sampled"
+                        );
+                    }
+                    state.pending_attack_coin_choice = Some(PendingAttackCoinChoice {
+                        actor,
+                        attack: attack.clone(),
+                        original_is_stack,
+                        flips: flips.0,
+                        victory_star_in_play_idx: source_idx,
+                    });
+                    state.move_generation_stack.push((
+                        actor,
+                        vec![
+                            SimpleAction::KeepAttackCoinResults,
+                            SimpleAction::RerollAttackCoins {
+                                victory_star_in_play_idx: source_idx,
+                            },
+                        ],
+                    ));
+                });
+            (probability, mutation, coin_paths)
+        })
+        .collect();
+
+    Some(
+        Outcomes::from_branches_with_coin_paths(branches)
+            .expect("Victory Star sample branches must remain a valid distribution"),
+    )
+}
+
+fn forecast_victory_star_choice(state: &State, action: &Action) -> Outcomes {
+    let pending = state
+        .pending_attack_coin_choice
+        .clone()
+        .expect("Victory Star choice requires pending attack coin data");
+    assert!(
+        action.is_stack,
+        "Victory Star choice must be a stack action"
+    );
+    assert_eq!(
+        action.actor, pending.actor,
+        "Victory Star choice actor mismatch"
+    );
+
+    let (base, use_victory_star) = match &action.action {
+        SimpleAction::KeepAttackCoinResults => (
+            apply_attack_action::forecast_attack_effect(pending.actor, state, &pending.attack)
+                .select_coin_path(&pending.flips)
+                .unwrap_or_else(|reason| panic!("{reason}")),
+            false,
+        ),
+        SimpleAction::RerollAttackCoins {
+            victory_star_in_play_idx,
+        } => {
+            assert_eq!(
+                *victory_star_in_play_idx, pending.victory_star_in_play_idx,
+                "Victory Star source mismatch"
+            );
+            assert!(
+                !state.victory_star_used_this_turn[pending.actor],
+                "Victory Star was already used this turn"
+            );
+            let fresh =
+                apply_attack_action::forecast_attack_effect(pending.actor, state, &pending.attack);
+            assert!(
+                fresh.all_branches_have_coin_paths(),
+                "replacement must regenerate an attack-effect coin batch"
+            );
+            (fresh, true)
+        }
+        _ => panic!("pending Victory Star state accepts only Keep or Reroll"),
+    };
+
+    let outcomes = apply_attack_action::finish_attack_from_effect_outcomes(
+        pending.actor,
+        state,
+        &pending.attack,
+        pending.original_is_stack,
+        base,
+    );
+
+    outcomes.map_mutations(move |mutation| {
+        let pending = pending.clone();
+        let original_action = Action {
+            actor: pending.actor,
+            action: SimpleAction::Attack(pending.attack.clone()),
+            is_stack: pending.original_is_stack,
+        };
+        let committed_attack = wrap_with_common_logic(mutation);
+        Box::new(move |rng, state, _choice_action| {
+            assert_eq!(
+                state.pending_attack_coin_choice.as_ref(),
+                Some(&pending),
+                "Victory Star pending state changed before commit"
+            );
+            let (_, choices) = state
+                .move_generation_stack
+                .last()
+                .expect("Victory Star choice stack frame missing");
+            assert_eq!(
+                choices.len(),
+                2,
+                "Victory Star choice stack must have two actions"
+            );
+            state.move_generation_stack.pop();
+            state.pending_attack_coin_choice = None;
+            if use_victory_star {
+                state.victory_star_used_this_turn[pending.actor] = true;
+            }
+            // The pause frame is gone before the original wrapper runs. A copied attack can now
+            // pop its older selection frame, and any new effect choice pushed during commit stays.
+            committed_attack(rng, state, &original_action);
+        })
+    })
+}
+
+/// Exact-only forecast boundary. Researcher expansions that exceed the declared budget are
+/// returned as structured unpriced errors before any sampled substitute can enter `Outcomes`.
+pub fn try_forecast_action(state: &State, action: &Action) -> Result<Outcomes, UnpricedForecast> {
+    if matches!(action.action, SimpleAction::ChooseMistyTarget { .. }) {
+        return trainer_coin_plan::forecast_misty_target(state, action);
+    }
+    if matches!(
+        action.action,
+        SimpleAction::KeepTrainerCoinResults | SimpleAction::RerollTrainerCoins { .. }
+    ) {
+        return trainer_coin_plan::try_forecast_choice(state, action);
+    }
+    if let Some(staged) = trainer_coin_plan::try_forecast_entry(state, action)? {
+        return Ok(staged);
+    }
+    match &action.action {
+        SimpleAction::Play { trainer_card } => {
+            let outcomes = try_forecast_trainer_action(action.actor, state, trainer_card)?;
+            Ok(finish_forecast(state, action, outcomes))
+        }
+        SimpleAction::UseAbility { .. } if action_uses_portrait(state, action) => {
+            let outcomes = try_copy_random_opponent_hand_supporter(state, action.actor)?;
+            Ok(finish_forecast(state, action, outcomes))
+        }
+        _ => Ok(forecast_action_unchecked(state, action)),
+    }
+}
+
+/// Compatibility exact forecast. Callers that need to handle an unpriced Researcher tree should
+/// use `try_forecast_action`; real play should use `apply_action`.
+pub fn forecast_action(state: &State, action: &Action) -> Outcomes {
+    try_forecast_action(state, action)
+        .unwrap_or_else(|error| panic!("exact action forecast refused: {}", error.reason))
+}
+
 /// This should be mostly a "router" function that calls the appropriate forecast function
 /// based on the action type.
-pub fn forecast_action(state: &State, action: &Action) -> Outcomes {
-    let mut outcomes = match &action.action {
+fn forecast_action_unchecked(state: &State, action: &Action) -> Outcomes {
+    if matches!(action.action, SimpleAction::Attack(_)) {
+        if let Some(staged) = try_forecast_victory_star_attack(state, action) {
+            return staged;
+        }
+    }
+    if matches!(
+        action.action,
+        SimpleAction::KeepAttackCoinResults | SimpleAction::RerollAttackCoins { .. }
+    ) {
+        return forecast_victory_star_choice(state, action);
+    }
+
+    let outcomes = match &action.action {
         // Deterministic Actions
         SimpleAction::DrawCard { .. } // TODO: DrawCard should return actual deck probabilities.
         | SimpleAction::Place(_, _)
@@ -58,6 +407,7 @@ pub fn forecast_action(state: &State, action: &Action) -> Outcomes {
         | SimpleAction::AttachTool { .. }
         | SimpleAction::Evolve { .. }
         | SimpleAction::Activate { .. }
+        | SimpleAction::Promote { .. }
         | SimpleAction::Retreat(_)
         | SimpleAction::ScheduleDelayedSpotDamage { .. }
         | SimpleAction::Heal { .. }
@@ -69,10 +419,10 @@ pub fn forecast_action(state: &State, action: &Action) -> Outcomes {
         | SimpleAction::HealAllEeveeEvolutions
         | SimpleAction::DiscardFossil { .. }
         | SimpleAction::ReturnPokemonToHand { .. }
-        | SimpleAction::ShuffleInPlayPokemonIntoDeck { .. }
         | SimpleAction::DiscardToolFromPokemon { .. }
         | SimpleAction::DiscardActiveStadium
         | SimpleAction::BenchOpponentFromDiscard { .. }
+        | SimpleAction::BenchOpponentHandBasics { .. }
         | SimpleAction::PutCardFromDiscardToHand { .. }
         | SimpleAction::DiscardRandomOpponentActiveEnergy
         | SimpleAction::MoveRandomOpponentEnergyToActive { .. }
@@ -80,6 +430,13 @@ pub fn forecast_action(state: &State, action: &Action) -> Outcomes {
         | SimpleAction::DiscardOwnBenchedThenDamage { .. }
         | SimpleAction::ConsolidateEnergyToPokemon { .. }
         | SimpleAction::Noop => forecast_deterministic_action(),
+        SimpleAction::ShuffleInPlayPokemonIntoDeck { in_play_idx } => {
+            let in_play_idx = *in_play_idx;
+            Outcomes::single_fn(move |rng, state, action| {
+                apply_shuffle_in_play_pokemon_into_deck(action.actor, state, in_play_idx);
+                state.decks[action.actor].shuffle(false, rng);
+            })
+        }
         SimpleAction::Attach {
             attachments,
             is_turn_energy,
@@ -99,6 +456,14 @@ pub fn forecast_action(state: &State, action: &Action) -> Outcomes {
             targets,
             is_from_active_attack,
         } => forecast_apply_damage(state, *attacking_ref, targets, *is_from_active_attack),
+        SimpleAction::ApplyQueuedAttackDamage { attack, targets } => {
+            apply_attack_action::finish_queued_attack_damage(
+                action.actor,
+                state,
+                attack,
+                targets.clone(),
+            )
+        }
         SimpleAction::Attack(attack) => {
             forecast_attack(action.actor, state, attack, action.is_stack)
         }
@@ -151,6 +516,15 @@ pub fn forecast_action(state: &State, action: &Action) -> Outcomes {
         }
         SimpleAction::SadaAttach { assignments } => forecast_sada_attach(assignments),
         SimpleAction::UseStadium => forecast_use_stadium(state, action.actor),
+        SimpleAction::KeepAttackCoinResults | SimpleAction::RerollAttackCoins { .. } => {
+            unreachable!("Victory Star choices are routed before the generic action forecast")
+        }
+        SimpleAction::KeepTrainerCoinResults | SimpleAction::RerollTrainerCoins { .. } => {
+            unreachable!("Luxury Coin choices are routed before the generic action forecast")
+        }
+        SimpleAction::ChooseMistyTarget { .. } => {
+            unreachable!("Misty target choices are routed before the generic action forecast")
+        }
         // acting_player is not passed here, because there is only 1 turn to end. The current turn.
         SimpleAction::EndTurn => {
             let (probabilities, mutations) = forecast_end_turn(state);
@@ -158,9 +532,19 @@ pub fn forecast_action(state: &State, action: &Action) -> Outcomes {
         }
     };
 
-    // This is where we basically "apply" Will in a way that is forecasteable.
-    // (The player should know if they have an upcoming Will).
-    if is_will_eligible_action(&action.action) && state.has_pending_will_first_heads() {
+    finish_forecast(state, action, outcomes)
+}
+
+fn finish_forecast(state: &State, action: &Action, mut outcomes: Outcomes) -> Outcomes {
+    // Penny and Portrait condition Will inside each selected Supporter source. Applying Will to
+    // their flattened outer distribution would reweight which source card was selected and would
+    // consume Will on non-coin source branches.
+    let copied_supporter_owns_will = matches!(&action.action, SimpleAction::Play { trainer_card } if trainer_card.name == "Penny")
+        || action_uses_portrait(state, action);
+    if !copied_supporter_owns_will
+        && is_will_eligible_action(&action.action)
+        && state.has_pending_will_first_heads()
+    {
         outcomes = match outcomes.force_first_heads() {
             Ok(forced_outcomes) => forced_outcomes.map_mutations(|mutation| {
                 Box::new(move |rng, state, action| {
@@ -371,6 +755,10 @@ fn apply_deterministic_action(state: &mut State, action: &Action) {
         SimpleAction::Activate {
             player,
             in_play_idx,
+        }
+        | SimpleAction::Promote {
+            player,
+            in_play_idx,
         } => apply_retreat(*player, state, *in_play_idx, true),
         SimpleAction::Retreat(position) => apply_retreat(action.actor, state, *position, false),
         SimpleAction::ScheduleDelayedSpotDamage {
@@ -411,6 +799,9 @@ fn apply_deterministic_action(state: &mut State, action: &Action) {
         SimpleAction::BenchOpponentFromDiscard { card, bench_idx } => {
             apply_bench_opponent_from_discard(action.actor, state, card, *bench_idx)
         }
+        SimpleAction::BenchOpponentHandBasics { cards } => {
+            apply_bench_opponent_hand_basics(action.actor, state, cards)
+        }
         SimpleAction::MoveDamageToOpponentActive {
             from_in_play_idx,
             amount,
@@ -432,14 +823,12 @@ fn apply_deterministic_action(state: &mut State, action: &Action) {
         SimpleAction::ReturnPokemonToHand { in_play_idx } => {
             apply_return_pokemon_to_hand(action.actor, state, *in_play_idx)
         }
-        SimpleAction::ShuffleInPlayPokemonIntoDeck { in_play_idx } => {
-            apply_shuffle_in_play_pokemon_into_deck(action.actor, state, *in_play_idx)
-        }
         SimpleAction::DiscardToolFromPokemon {
             player,
             in_play_idx,
+            tool_idx,
         } => {
-            state.discard_tool(*player, *in_play_idx);
+            state.discard_tool(*player, *in_play_idx, *tool_idx);
         }
         SimpleAction::DiscardActiveStadium => {
             if let Some((stadium, owner)) = state.take_active_stadium() {
@@ -495,11 +884,18 @@ fn apply_attach_energy(
 
 fn apply_attach_tool(state: &mut State, actor: usize, in_play_idx: usize, tool_card: &Card) {
     tools::ensure_tool_card(tool_card);
+    let holder = state.in_play_pokemon[actor][in_play_idx]
+        .as_ref()
+        .expect("Pokemon should be there if attaching tool to it");
+    assert!(
+        holder.attached_tools.len() < tools::tool_capacity(state, holder),
+        "Pokemon has no free Tool slot"
+    );
     {
         let pokemon = state.in_play_pokemon[actor][in_play_idx]
             .as_mut()
             .expect("Pokemon should be there if attaching tool to it");
-        pokemon.attached_tool = Some(tool_card.clone());
+        pokemon.attached_tools.push(tool_card.clone());
     }
 
     // Steel Apron: "...recovers from all Special Conditions..." only for a [M] holder.
@@ -556,11 +952,18 @@ fn apply_move_energy(
 
     // Add removed energies to destination
     if !removed_energies.is_empty() {
-        if let Some(to_card) = actor_board[to_idx].as_mut() {
+        let moved_to_destination = if let Some(to_card) = actor_board[to_idx].as_mut() {
             to_card.attached_energy.extend(removed_energies);
+            true
         } else if let Some(from_card) = actor_board[from_idx].as_mut() {
             // Put energies back if destination vanished (should not normally happen)
             from_card.attached_energy.extend(removed_energies);
+            false
+        } else {
+            false
+        };
+        if moved_to_destination {
+            state.apply_soothing_wind_to_pokemon(actor, to_idx);
         }
     }
 }
@@ -587,11 +990,18 @@ fn apply_move_energies(
     }
 
     if !removed_energies.is_empty() {
-        if let Some(to_card) = actor_board[to_idx].as_mut() {
+        let moved_to_destination = if let Some(to_card) = actor_board[to_idx].as_mut() {
             to_card.attached_energy.extend(removed_energies);
+            true
         } else if let Some(from_card) = actor_board[from_idx].as_mut() {
             // Put energies back if destination vanished (should not normally happen)
             from_card.attached_energy.extend(removed_energies);
+            false
+        } else {
+            false
+        };
+        if moved_to_destination {
+            state.apply_soothing_wind_to_pokemon(actor, to_idx);
         }
     }
 }
@@ -675,6 +1085,7 @@ fn apply_consolidate_energy_to_pokemon(
     );
     if let Some(destination) = state.in_play_pokemon[acting_player][to_in_play_idx].as_mut() {
         destination.attached_energy.extend(moved);
+        state.apply_soothing_wind_to_pokemon(acting_player, to_in_play_idx);
     }
 }
 
@@ -685,6 +1096,9 @@ fn apply_return_pokemon_to_hand(acting_player: usize, state: &mut State, in_play
     let mut cards_to_collect = played_card.cards_behind.clone();
     cards_to_collect.push(played_card.card.clone());
     state.hands[acting_player].extend(cards_to_collect);
+    state.discard_piles[acting_player].extend(played_card.attached_tools);
+    state.discard_energies[acting_player].extend(played_card.attached_energy);
+    state.refresh_hp_bonuses_all();
 
     // If returning the active, trigger promotion or declare winner.
     if in_play_idx == 0 {
@@ -703,6 +1117,9 @@ fn apply_shuffle_in_play_pokemon_into_deck(
     let mut cards_to_shuffle = played_card.cards_behind.clone();
     cards_to_shuffle.push(played_card.card.clone());
     state.decks[acting_player].cards.extend(cards_to_shuffle);
+    state.discard_piles[acting_player].extend(played_card.attached_tools);
+    state.discard_energies[acting_player].extend(played_card.attached_energy);
+    state.refresh_hp_bonuses_all();
 
     if in_play_idx == 0 {
         state.trigger_promotion_or_declare_winner(acting_player);
@@ -839,6 +1256,33 @@ fn apply_bench_opponent_from_discard(
     let played_card = to_playable_card(card, true);
     state.in_play_pokemon[opponent][bench_idx] = Some(played_card);
     state.refresh_hp_bonuses_all();
+}
+
+fn apply_bench_opponent_hand_basics(actor: usize, state: &mut State, cards: &[Card]) {
+    let opponent = 1 - actor;
+    let free_slots = state.in_play_pokemon[opponent]
+        .iter()
+        .enumerate()
+        .skip(1)
+        .filter_map(|(idx, slot)| slot.is_none().then_some(idx))
+        .collect::<Vec<_>>();
+    if cards.len() > free_slots.len() {
+        return;
+    }
+
+    let mut remaining = state.hands[opponent].clone();
+    for card in cards {
+        if !matches!(card, Card::Pokemon(pokemon) if pokemon.stage == 0) {
+            return;
+        }
+        let Some(index) = remaining.iter().position(|candidate| candidate == card) else {
+            return;
+        };
+        remaining.remove(index);
+    }
+    for (card, bench_idx) in cards.iter().zip(free_slots) {
+        apply_place_card(state, opponent, card, bench_idx, false);
+    }
 }
 
 /// Acerola: move up to `amount` damage from one of `actor`'s Pokémon onto the opponent's Active
@@ -1016,7 +1460,7 @@ pub(crate) fn apply_evolve(
         let damage_taken = from_pokemon.get_damage_counters();
         played_card.apply_damage(damage_taken);
         played_card.attached_energy = from_pokemon.attached_energy.clone();
-        played_card.attached_tool = from_pokemon.attached_tool.clone();
+        played_card.attached_tools = from_pokemon.attached_tools.clone();
         played_card.cards_behind = from_pokemon.cards_behind.clone();
         played_card.cards_behind.push(from_pokemon.card.clone());
         state.in_play_pokemon[acting_player][position] = Some(played_card);
@@ -1270,15 +1714,74 @@ fn apply_heal_all_eevee_evolutions(acting_player: usize, state: &mut State) {
 // Test that when evolving a damanged pokemon, damage stays.
 #[cfg(test)]
 mod tests {
-    use rand::SeedableRng;
+    use rand::{RngCore, SeedableRng};
 
     use super::*;
     use crate::card_ids::CardId;
     use crate::database::get_card_by_enum;
     use crate::{
-        models::{EnergyType, PlayedCard},
+        models::{Card, EnergyType, PlayedCard},
         Deck,
     };
+
+    #[test]
+    fn victory_star_stages_only_vaporeons_coin_marginal() {
+        let Card::Pokemon(vaporeon) = get_card_by_enum(CardId::A3b016Vaporeon) else {
+            panic!("Vaporeon should be a Pokémon");
+        };
+        let attack = vaporeon.attacks[0].clone();
+        let mut state = State::default();
+        state.current_player = 0;
+        state.turn_count = 3;
+        // Pass Hyper Whirlpool as a copied attack used by the Active Fire-type Victini. This
+        // isolates Victory Star's generic staging contract; Vaporeon itself is Water-type.
+        state.in_play_pokemon[0][0] = Some(PlayedCard::from_id(CardId::B3025Victini));
+        state.in_play_pokemon[1][0] = Some(
+            PlayedCard::from_id(CardId::PB024MegaLatiosEx).with_energy(vec![
+                EnergyType::Water,
+                EnergyType::Water,
+                EnergyType::Lightning,
+            ]),
+        );
+        let action = Action {
+            actor: 0,
+            action: SimpleAction::Attack(attack),
+            is_stack: false,
+        };
+
+        let branches = try_forecast_victory_star_attack(&state, &action)
+            .expect("Victini should pause Hyper Whirlpool")
+            .into_branches_with_coin_paths();
+        assert_eq!(
+            branches
+                .iter()
+                .map(|(probability, _, _)| *probability)
+                .collect::<Vec<_>>(),
+            vec![0.5, 0.25, 0.125, 0.125],
+            "secondary Energy successors must not duplicate public coin classes"
+        );
+
+        for (index, (_, mutation, coin_paths)) in branches.into_iter().enumerate() {
+            let mut actual_rng = StdRng::seed_from_u64(90 + index as u64);
+            let mut expected_rng = actual_rng.clone();
+            let expected_flips = coin_paths.sample(&mut expected_rng).unwrap();
+            let mut next = state.clone();
+            mutation(&mut actual_rng, &mut next, &action);
+            assert_eq!(
+                next.pending_attack_coin_choice.as_ref().unwrap().flips,
+                expected_flips.0
+            );
+            assert_eq!(
+                actual_rng.next_u64(),
+                expected_rng.next_u64(),
+                "staging must consume RNG only for the publicly exposed coin batch"
+            );
+            assert_eq!(
+                next.get_active(1).attached_energy,
+                state.get_active(1).attached_energy
+            );
+        }
+    }
 
     #[test]
     fn test_apply_evolve() {

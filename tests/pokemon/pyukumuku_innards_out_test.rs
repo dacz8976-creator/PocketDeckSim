@@ -167,7 +167,7 @@ fn test_innards_out_can_knock_out_the_attacker() {
     assert!(
         choices
             .iter()
-            .all(|choice| matches!(choice.action, SimpleAction::Activate { .. })),
+            .all(|choice| matches!(choice.action, SimpleAction::Promote { .. })),
         "a promotion is pending after the mutual knockout"
     );
 }

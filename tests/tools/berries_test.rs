@@ -45,7 +45,7 @@ fn test_lum_berry_cures_status_and_discards_itself() {
         .expect("holder should still be in play");
     assert!(!holder.is_poisoned(), "Lum Berry cures Special Conditions");
     assert!(
-        holder.attached_tool.is_none(),
+        holder.attached_tools.is_empty(),
         "Lum Berry discards itself after curing"
     );
 }
@@ -79,8 +79,8 @@ fn test_lum_berry_stays_attached_when_there_is_nothing_to_cure() {
         game.get_state_clone().in_play_pokemon[0][0]
             .as_ref()
             .unwrap()
-            .attached_tool
-            .is_some(),
+            .attached_tools
+            .len() > 0,
         "Lum Berry should not discard itself with no Special Condition present"
     );
 }
@@ -116,7 +116,7 @@ fn test_sitrus_berry_heals_at_half_hp_and_discards_itself() {
     let holder = state.in_play_pokemon[0][0].as_ref().unwrap();
     assert_eq!(holder.get_remaining_hp(), 90, "Sitrus Berry heals 30");
     assert!(
-        holder.attached_tool.is_none(),
+        holder.attached_tools.is_empty(),
         "Sitrus Berry discards itself after healing"
     );
 }
@@ -150,7 +150,7 @@ fn test_sitrus_berry_does_nothing_above_half_hp() {
     let holder = state.in_play_pokemon[0][0].as_ref().unwrap();
     assert_eq!(holder.get_remaining_hp(), 150, "no heal above half HP");
     assert!(
-        holder.attached_tool.is_some(),
+        !holder.attached_tools.is_empty(),
         "Sitrus Berry stays attached until it actually heals"
     );
 }

@@ -167,7 +167,7 @@ fn test_giratina_ex_ability_end_turn_does_not_panic_if_ko_by_jolteon() {
     let (_actor, actions) = state.generate_possible_actions();
     let promotion_action = actions
         .iter()
-        .find(|action| matches!(action.action, SimpleAction::Activate { .. }))
+        .find(|action| matches!(action.action, SimpleAction::Promote { .. }))
         .expect("Should trigger promotion");
     game.apply_action(promotion_action);
 

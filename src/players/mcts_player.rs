@@ -25,8 +25,22 @@ impl MctsPlayer {
 }
 
 impl Player for MctsPlayer {
+    fn decision_fn(&mut self, rng: &mut StdRng, _: &crate::observation::PlayerObservation,
+        actions: &[Action]) -> Action {
+        // Legacy MCTS cannot represent unpriced continuations. Keep it explicitly
+        // experimental; closed mode uses a legal random fallback rather than fake rollouts.
+        let action = actions.choose(rng).expect("nonempty legal actions").clone();
+        crate::observation::with_root_action(&action, || {
+            crate::observation::record_unpriced(
+                &action,
+                "experimental MCTS has no closed-information rollout; random legal fallback",
+            );
+        });
+        action
+    }
+
     /// Perform MCTS search and return the best action
-    fn decision_fn(
+    fn decide_omniscient(
         &mut self,
         rng: &mut StdRng,
         state: &State,

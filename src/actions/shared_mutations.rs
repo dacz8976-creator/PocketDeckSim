@@ -451,7 +451,10 @@ where
     // Key on the matching cards only — that is the whole observable content of the reveal.
     let mut grouped: Vec<(Vec<Card>, f64)> = Vec::new();
     for subset in combinations {
-        let mut taken: Vec<Card> = subset.into_iter().filter(|card| matches_filter(card)).collect();
+        let mut taken: Vec<Card> = subset
+            .into_iter()
+            .filter(|card| matches_filter(card))
+            .collect();
         taken.sort_by_key(|card| card.get_id());
         match grouped.iter_mut().find(|(existing, _)| *existing == taken) {
             Some((_, weight)) => *weight += 1.0,

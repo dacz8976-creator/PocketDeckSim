@@ -10,6 +10,13 @@ pub enum BenchSide {
     BothBenches,
 }
 
+/// Restriction applied when an attack asks its user to choose one Benched Pokémon for damage.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum BenchDamageFilter {
+    Any,
+    Damaged,
+}
+
 /// Which cards a hand-disruption attack is allowed to pick from the opponent's hand.
 /// `Any` is the unrestricted "a random card" wording; the others restrict by Trainer type.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -42,6 +49,11 @@ pub enum Mechanic {
     SelfHeal {
         amount: u32,
     },
+    /// The defender's condition is checked when the attack resolves, before its damage.
+    SelfHealIfDefenderHasStatus {
+        condition: StatusCondition,
+        amount: u32,
+    },
     HealOneYourPokemon {
         amount: u32,
     },
@@ -71,6 +83,11 @@ pub enum Mechanic {
     },
     SearchToBenchBasic,
     SearchRandomPokemonToHand,
+    /// Team Rocket's Slowpoke - Scavenge: put one random Trainer card of the requested kind
+    /// from the attacker's discard pile into their hand.
+    SearchRandomTrainerTypeFromDiscardToHand {
+        trainer_type: TrainerType,
+    },
     SearchToHandByEvolvesFrom {
         name: String,
     },
@@ -175,8 +192,17 @@ pub enum Mechanic {
         name: String,
         extra_damage: u32,
     },
+    /// Extra damage when the defender's name contains the supplied text.
+    ExtraDamageIfDefenderNameContains {
+        substring: String,
+        extra_damage: u32,
+    },
     ExtraDamageIfOpponentHasSpecialCondition {
         extra_damage: u32,
+    },
+    /// Extra damage for every simultaneous Special Condition on the opponent's Active Pokémon.
+    ExtraDamagePerOpponentSpecialCondition {
+        damage_per_condition: u32,
     },
     ExtraDamageIfSupportPlayedThisTurn {
         extra_damage: u32,
@@ -308,6 +334,12 @@ pub enum Mechanic {
     CoinFlipSelfChargeActive {
         energies: Vec<EnergyType>,
     },
+    /// Team Rocket's Moltres ex - Heat Charged: attach one produced Energy of `energy_type`
+    /// to the attacker for each heads in a fixed coin batch.
+    FlipCoinsSelfChargeActivePerHeads {
+        num_coins: usize,
+        energy_type: EnergyType,
+    },
     ChargeYourTypeAnyWay {
         energy_type: EnergyType,
         count: usize,
@@ -431,6 +463,11 @@ pub enum Mechanic {
     ExtraDamagePerOpponentPoint {
         damage_per_point: u32,
     },
+    /// Hisuian Basculegion's Soul Counter: count only points the opponent received during their
+    /// most recently completed own turn, not their lifetime score or points gained on your turn.
+    ExtraDamagePerOpponentPointDuringOwnLastTurn {
+        damage_per_point: u32,
+    },
     /// Pheromosa's Prelude: "If you haven't gotten any points, this attack does +N damage."
     /// The own-side mirror of [`Mechanic::ExtraDamageIfOpponentPointsExactly`].
     ExtraDamageIfOwnPointsExactly {
@@ -454,6 +491,11 @@ pub enum Mechanic {
     /// compares the two hands to each other.
     ExtraDamageIfHandSizeEqualsOpponent {
         extra_damage: u32,
+    },
+    /// Damage scaling with the number of cards in the attacker's hand.
+    ExtraDamagePerCardInOwnHand {
+        damage_per_card: u32,
+        include_fixed_damage: bool,
     },
     /// Poochyena's Team Hunt: "Draw a card for each <name> you have in play." Count is resolved at
     /// forecast time, so search bots see the true draw count rather than a fixed one.
@@ -568,6 +610,13 @@ pub enum Mechanic {
         opponent: bool,
         damage: u32,
     },
+    /// A filtered counterpart to `AlsoChoiceBenchDamage`. Kept separate so existing effect-map
+    /// entries retain their stable debug representation.
+    AlsoChoiceBenchDamageFiltered {
+        opponent: bool,
+        damage: u32,
+        filter: BenchDamageFilter,
+    },
     /// Extra damage if a Pokémon has damage on it. `benched: false` checks the chosen side's
     /// Active Pokémon; `benched: true` checks whether ANY of that side's Benched Pokémon are
     /// damaged (Drampa's Berserk).
@@ -575,6 +624,10 @@ pub enum Mechanic {
         extra_damage: u32,
         opponent: bool,
         benched: bool,
+    },
+    /// Regidrago - Draconic Slam: reduce printed damage when the attacker is damaged.
+    LessDamageIfSelfHurt {
+        reduction: u32,
     },
     ExtraDamageIfUndamaged {
         extra_damage: u32,
@@ -1027,6 +1080,14 @@ pub enum Mechanic {
     RevealTopDeckDamagePerHeavyPokemon {
         reveal_count: usize,
         min_retreat_cost: usize,
+        damage_per: u32,
+    },
+    /// Reveal a deck prefix, deal replacement damage for each Pokémon whose printed name contains
+    /// `name_fragment`, then shuffle. The reveal is public and survives only as unordered deck
+    /// membership knowledge after the shuffle.
+    RevealTopDeckDamagePerPokemonName {
+        reveal_count: usize,
+        name_fragment: String,
         damage_per: u32,
     },
     /// Chatot's Mimic: shuffle your hand into your deck, then draw one card for each card in

@@ -17,6 +17,8 @@ pub enum ImplementationStatus {
     MissingAbility,
     MissingTrainer,
     MissingTool,
+    /// Mechanics are present, but known rule boundaries still need verification.
+    RulesUnverified,
 }
 
 impl ImplementationStatus {
@@ -32,6 +34,7 @@ impl ImplementationStatus {
             ImplementationStatus::MissingAbility => "Ability not implemented",
             ImplementationStatus::MissingTrainer => "Trainer logic not implemented",
             ImplementationStatus::MissingTool => "Tool not implemented",
+            ImplementationStatus::RulesUnverified => "Implemented with unverified rule boundaries",
         }
     }
 }
@@ -70,7 +73,43 @@ pub fn get_implementation_status(card_id: CardId) -> ImplementationStatus {
                 return ImplementationStatus::MissingTrainer;
             };
         }
+        // This sentinel is never present in the catalog, so it has no implementation status.
+        Card::Unknown => return ImplementationStatus::CardNotFound,
+    }
+
+    if !implementation_limitations(card_id).is_empty() {
+        return ImplementationStatus::RulesUnverified;
     }
 
     ImplementationStatus::Complete
+}
+
+/// Known limitations are explicit and printing-specific. This list is not a certification of
+/// other mapped cards: the implementation-status checker only verifies dispatch coverage.
+pub fn implementation_limitations(card_id: CardId) -> &'static [&'static str] {
+    match card_id {
+        CardId::B4115Revavroom => &[
+            "Owner-approved assumption, not verified in Pokémon TCG Pocket: when suppression or devolution removes Dual Customization, discard excess Tools most-recently-attached first.",
+            "Owner-approved assumption, not verified in Pokémon TCG Pocket: duplicate Sitrus Berries resolve sequentially and recheck current HP after every successful heal; Heal Block leaves them attached.",
+            "Owner-approved assumption, not verified in Pokémon TCG Pocket: duplicate Lum Berries resolve sequentially; the first cure removes all Special Conditions, so later copies remain attached.",
+        ],
+        CardId::B3025Victini | CardId::PB049Victini => &[
+            "Victory Star supports printed attack-effect coin batches; confusion and attacker-side coin gates currently bypass the reroll prompt pending Pocket rule verification.",
+        ],
+        CardId::B4a051Gholdengo | CardId::B4a109Gholdengo => &[
+            "Provisional engine convention, not verified in Pokémon TCG Pocket: complete Trainer coin batches are public while Luxury Coin is pending.",
+            "Provisional engine convention, not verified in Pokémon TCG Pocket: the player activating Arcade or Mesagoza may use Luxury Coin regardless of who played the Stadium.",
+            "Unverified Pokémon TCG Pocket boundary: Luxury Coin applies to coin batches produced by a Trainer source selected by Penny, but not to Portrait or Portrait copying Penny because those outer effects are Abilities.",
+            "Initial and replacement batches with infinitely many observable face sequences are explicitly unpriced (Misty, Team Rocket Grunt, and Team Rocket's Researcher), even when the resulting damage or Energy states eventually saturate.",
+        ],
+        CardId::B4a018HisuianBasculegion => &[
+            "Pokémon Checkup points are attributed to the turn that just ended; whether Pocket includes between-turn Checkup in ‘during their last turn’ remains unverified.",
+            "Legacy serialized states default the new turn-local point history to zero; a replay loaded midgame cannot reconstruct points from the preceding turn.",
+        ],
+        CardId::B4a069TeamRocketsResearcher | CardId::B4a085TeamRocketsResearcher => &[
+            "Unverified Pokémon TCG Pocket boundary: random Pokémon transferred by this effect are not capped at a 10-card hand; this inherits the engine's existing random-search transfer policy.",
+            "Unverified Pokémon TCG Pocket boundary: the deck is shuffled exactly once after resolution, including zero heads or no eligible Pokémon; this inherits the engine's hidden-zone normalization policy rather than printed card text.",
+        ],
+        _ => &[],
+    }
 }

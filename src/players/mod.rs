@@ -1,3 +1,4 @@
+pub mod public_reply;
 mod attach_attack_player;
 mod end_turn_player;
 mod evolution_rusher_player;
@@ -25,12 +26,24 @@ pub use value_functions::*;
 pub use weighted_random_player::WeightedRandomPlayer;
 
 use crate::{actions::Action, Deck, State};
-use rand::rngs::StdRng;
+use rand::{rngs::StdRng, RngCore, SeedableRng};
 use std::fmt::Debug;
 
 pub trait Player: Debug {
+    /// Production entry point: only allowed observations and independent search randomness.
+    fn decision_fn(&mut self, rng: &mut StdRng, observation: &crate::observation::PlayerObservation,
+        possible_actions: &[Action]) -> Action {
+        // Determinization and policy work have separate per-decision domains.
+        let mut observation_rng = StdRng::seed_from_u64(rng.clone().next_u64() ^ 0x50444c5f4f425331);
+        let state = observation.search_state(&mut observation_rng);
+        self.decide_omniscient(rng, &state, possible_actions)
+    }
+
+    /// Explicit diagnostic/constructed-state entry point. Never pass real engine
+    /// state here from gameplay; Game uses decision_fn with PlayerObservation.
+
     fn get_deck(&self) -> Deck;
-    fn decision_fn(
+    fn decide_omniscient(
         &mut self,
         rng: &mut StdRng,
         state: &State,
@@ -121,15 +134,20 @@ pub enum PlayerCode {
 pub fn parse_player_code(s: &str) -> Result<PlayerCode, String> {
     let lower = s.to_ascii_lowercase();
 
-    // Check if it starts with 'e' followed by digits (e.g., e2, e4)
+    // Resolve exact multi-letter codes before the parameterized one-letter prefixes.
+    // In particular, `et` must not be rejected as a malformed `e<number>`.
+    match lower.as_str() {
+        "aa" => return Ok(PlayerCode::AA),
+        "et" => return Ok(PlayerCode::ET),
+        "er" => return Ok(PlayerCode::ER),
+        _ => {}
+    }
+
+    // Check if it starts with 'e' followed by digits (e.g., e2, e4).
     if lower.starts_with('e') && lower.len() > 1 {
         let rest = &lower[1..];
         if let Ok(max_depth) = rest.parse::<usize>() {
             return Ok(PlayerCode::E { max_depth });
-        }
-        // If it starts with 'e' but not followed by valid number, check if it's 'er'
-        if lower == "er" {
-            return Ok(PlayerCode::ER);
         }
         return Err(format!("Invalid player code: {s}. Use 'e<number>' for ExpectiMiniMax with depth, e.g., 'e2', 'e5'"));
     }
@@ -246,15 +264,12 @@ pub fn parse_player_code(s: &str) -> Result<PlayerCode, String> {
     }
 
     match lower.as_str() {
-        "aa" => Ok(PlayerCode::AA),
-        "et" => Ok(PlayerCode::ET),
         "r" => Ok(PlayerCode::R),
         "h" => Ok(PlayerCode::H),
         "w" => Ok(PlayerCode::W),
         "m" => Ok(PlayerCode::M),
         "v" => Ok(PlayerCode::V),
         "e" => Ok(PlayerCode::E { max_depth: 3 }), // Default depth
-        "er" => Ok(PlayerCode::ER),
         _ => Err(format!("Invalid player code: {s}")),
     }
 }

@@ -7,11 +7,12 @@ use crate::{
     actions::{
         abilities::{AbilityMechanic, DeckSearchKind},
         apply_action_helpers::{apply_activate, handle_damage, handle_knockouts, Mutation},
-        apply_trainer_action::{copy_random_supporter_outcomes, supporter_candidates_in_hand},
+        apply_trainer_action::{supporter_candidates_in_hand, try_copy_random_supporter_outcomes},
         effect_ability_mechanic_map::ability_mechanic_from_effect,
         energy_moves::{bounded_energy_move_candidates, EnergyMoveScope, UNBOUNDED_ENERGY_MOVES},
         outcomes::Outcomes,
         shared_mutations::{pokemon_search_outcomes, tool_search_outcomes},
+        team_rockets_researcher::UnpricedForecast,
         Action, SimpleAction,
     },
     effects::{CardEffect, TurnEffect},
@@ -43,6 +44,12 @@ fn forecast_ability_by_mechanic(
 ) -> Outcomes {
     match mechanic {
         AbilityMechanic::VictreebelFragranceTrap => Outcomes::single_fn(victreebel_ability),
+        AbilityMechanic::VictoryStar => {
+            panic!("VictoryStar is a passive attack-resolution ability")
+        }
+        AbilityMechanic::LuxuryCoin => {
+            panic!("LuxuryCoin is a passive Trainer-resolution ability")
+        }
         AbilityMechanic::HealAllYourPokemon {
             amount,
             energy_type,
@@ -74,6 +81,9 @@ fn forecast_ability_by_mechanic(
         }
         AbilityMechanic::SwitchActiveUltraBeastWithBench => {
             Outcomes::single_fn(celesteela_ultra_thrusters)
+        }
+        AbilityMechanic::RevealRandomOpponentHandCard => {
+            reveal_random_opponent_hand_card(state, action.actor)
         }
         AbilityMechanic::MoveTypedEnergyFromBenchToActive { .. } => {
             Outcomes::single_fn(vaporeon_wash_out)
@@ -173,6 +183,7 @@ fn forecast_ability_by_mechanic(
             Outcomes::single(dusknoir_shadow_void(in_play_idx))
         }
         AbilityMechanic::DiscardOpponentActiveToolsAndDiscardSelf => dismantling_keys(in_play_idx),
+        AbilityMechanic::ToolCapacity { .. } => panic!("ToolCapacity is a passive ability"),
         AbilityMechanic::PreventFirstAttack => {
             panic!("PreventFirstAttack is a passive ability")
         }
@@ -297,6 +308,10 @@ fn forecast_ability_by_mechanic(
         AbilityMechanic::DiscardRandomEnergyFromOpponentActiveOnEvolve => {
             panic!("DiscardRandomEnergyFromOpponentActiveOnEvolve is triggered on evolve")
         }
+        AbilityMechanic::PoisonAndBurnOpponentActiveOnEvolve => poison_and_burn_opponent_active(),
+        AbilityMechanic::MoveRandomEnergyFromOpponentActiveToSelfOnEvolve => {
+            move_random_energy_from_opponent_active_to_self(state, action.actor, in_play_idx)
+        }
         AbilityMechanic::OpponentShuffleHandAndDrawOnEvolve => {
             panic!("OpponentShuffleHandAndDrawOnEvolve is triggered on evolve")
         }
@@ -373,8 +388,10 @@ fn forecast_ability_by_mechanic(
             // "An Energy" is a choice, so offer one branch per DISTINCT Energy type in the discard
             // pile rather than one per card. Bounded by the number of Energy types (see §43-D).
             Outcomes::single_fn(move |_rng, state, action| {
-                let mut types: Vec<EnergyType> =
-                    state.discard_energies[action.actor].iter().copied().collect();
+                let mut types: Vec<EnergyType> = state.discard_energies[action.actor]
+                    .iter()
+                    .copied()
+                    .collect();
                 types.sort_by_key(|e| format!("{e:?}"));
                 types.dedup();
                 let choices: Vec<SimpleAction> = types
@@ -430,6 +447,7 @@ fn forecast_ability_by_mechanic(
                 state.hands[action.actor].extend(taken);
             })
         }
+        AbilityMechanic::DrawCardsOncePerTurn { amount, .. } => draw_cards(*amount),
         AbilityMechanic::CopyRandomOpponentHandSupporter => {
             copy_random_opponent_hand_supporter(state, action.actor)
         }
@@ -444,9 +462,17 @@ fn forecast_ability_by_mechanic(
 /// weighted distribution, exactly as Penny does for the opponent's deck. The card is only looked
 /// at, so nothing leaves the opponent's hand.
 fn copy_random_opponent_hand_supporter(state: &State, acting_player: usize) -> Outcomes {
+    try_copy_random_opponent_hand_supporter(state, acting_player)
+        .unwrap_or_else(|error| panic!("exact Portrait forecast refused: {}", error.reason))
+}
+
+pub(crate) fn try_copy_random_opponent_hand_supporter(
+    state: &State,
+    acting_player: usize,
+) -> Result<Outcomes, UnpricedForecast> {
     let opponent = (acting_player + 1) % 2;
     let candidates = supporter_candidates_in_hand(state, opponent);
-    copy_random_supporter_outcomes(acting_player, state, &candidates)
+    try_copy_random_supporter_outcomes(acting_player, state, &candidates)
 }
 
 fn discard_energy_to_increase_type_damage(
@@ -495,6 +521,32 @@ fn search_random_card_from_deck(
 /// enforces the printed "Once during your turn".
 fn look_at_top_card_of_deck() -> Outcomes {
     Outcomes::single_fn(|_rng, _state, _action| {})
+}
+
+fn reveal_random_opponent_hand_card(state: &State, acting_player: usize) -> Outcomes {
+    let opponent = 1 - acting_player;
+    let candidates = state.hands[opponent].clone();
+    if candidates.is_empty() {
+        return Outcomes::single_fn(|_, _, _| {});
+    }
+    let probability = 1.0 / candidates.len() as f64;
+    let mutations: Vec<Mutation> = candidates
+        .into_iter()
+        .map(|card| {
+            Box::new(move |_: &mut StdRng, state: &mut State, action: &Action| {
+                state
+                    .private_reveal_events
+                    .push(crate::state::PrivateRevealEvent {
+                        viewer: action.actor,
+                        zone_owner: 1 - action.actor,
+                        cause: "Spy Ops".into(),
+                        kind: crate::state::PrivateRevealKind::RandomHandCard,
+                        cards: vec![card.clone()],
+                    });
+            }) as Mutation
+        })
+        .collect();
+    Outcomes::from_parts(vec![probability; mutations.len()], mutations)
 }
 
 fn heal_all_your_pokemon(amount: u32, energy_type: Option<EnergyType>) -> Outcomes {
@@ -823,6 +875,72 @@ fn coin_flip_paralyze_opponent_active() -> Outcomes {
     )
 }
 
+fn poison_and_burn_opponent_active() -> Outcomes {
+    Outcomes::single_fn(|_rng, state, action| {
+        let opponent = (action.actor + 1) % 2;
+        state.apply_status_condition(opponent, 0, StatusCondition::Poisoned);
+        state.apply_status_condition(opponent, 0, StatusCondition::Burned);
+    })
+}
+
+/// Build one branch per distinct Energy type, weighted by the number of copies attached. This is
+/// equivalent to choosing uniformly from the physical Energy cards while keeping the random
+/// result visible to search players and avoiding redundant identical branches.
+fn move_random_energy_from_opponent_active_to_self(
+    state: &State,
+    acting_player: usize,
+    to_in_play_idx: usize,
+) -> Outcomes {
+    let opponent = (acting_player + 1) % 2;
+    let energies = &state.get_active(opponent).attached_energy;
+    assert!(
+        !energies.is_empty(),
+        "Thieving Incisors requires an attached Energy"
+    );
+
+    let mut counts: std::collections::HashMap<EnergyType, usize> = std::collections::HashMap::new();
+    for energy in energies {
+        *counts.entry(*energy).or_default() += 1;
+    }
+    let total = energies.len() as f64;
+    let mut entries: Vec<(EnergyType, usize)> = counts.into_iter().collect();
+    entries.sort_by_key(|(energy, _)| format!("{energy:?}"));
+
+    let probabilities = entries
+        .iter()
+        .map(|(_, count)| *count as f64 / total)
+        .collect();
+    let mutations = entries
+        .into_iter()
+        .map(|(energy, _)| {
+            Box::new(
+                move |_rng: &mut StdRng, state: &mut State, action: &Action| {
+                    let opponent = (action.actor + 1) % 2;
+                    let Some(position) = state
+                        .get_active(opponent)
+                        .attached_energy
+                        .iter()
+                        .position(|candidate| *candidate == energy)
+                    else {
+                        return;
+                    };
+                    let moved = state
+                        .get_active_mut(opponent)
+                        .attached_energy
+                        .remove(position);
+                    if let Some(target) =
+                        state.in_play_pokemon[action.actor][to_in_play_idx].as_mut()
+                    {
+                        target.attached_energy.push(moved);
+                        state.apply_soothing_wind_to_pokemon(action.actor, to_in_play_idx);
+                    }
+                },
+            ) as Mutation
+        })
+        .collect();
+    Outcomes::from_parts(probabilities, mutations)
+}
+
 fn heal_active_your_pokemon(amount: u32) -> Outcomes {
     Outcomes::single_fn(move |_rng, state, action| {
         state.heal_pokemon(action.actor, 0, amount);
@@ -852,7 +970,11 @@ fn legendary_drive(bench_idx: usize) -> Outcomes {
             }
         }
         if let Some(active) = state.in_play_pokemon[player][0].as_mut() {
+            let moved_any = !gathered.is_empty();
             active.attached_energy.extend(gathered);
+            if moved_any {
+                state.apply_soothing_wind_to_pokemon(player, 0);
+            }
         }
     }))
 }
@@ -937,7 +1059,7 @@ fn dismantling_keys(klefki_idx: usize) -> Outcomes {
             return;
         }
 
-        state.discard_tool(opponent, 0);
+        state.discard_all_tools(opponent, 0);
         handle_knockouts(state, (action.actor, klefki_idx), false);
 
         if state.in_play_pokemon[action.actor][klefki_idx].is_some() {
@@ -1009,6 +1131,12 @@ fn discard_from_hand_to_draw_card() -> Outcomes {
         if !choices.is_empty() {
             state.move_generation_stack.push((action.actor, choices));
         }
+    })
+}
+
+fn draw_cards(amount: u8) -> Outcomes {
+    Outcomes::single_fn(move |_rng, state, action| {
+        state.queue_draw_action(action.actor, amount);
     })
 }
 
@@ -1097,6 +1225,7 @@ fn move_all_typed_energy_from_your_pokemon_to_self(
         debug!("Energy Plunder: moving {gathered} {energy_type:?} Energy to slot {self_idx}");
         if let Some(target) = state.in_play_pokemon[player][self_idx].as_mut() {
             target.attached_energy.extend(vec![energy_type; gathered]);
+            state.apply_soothing_wind_to_pokemon(player, self_idx);
         }
     })
 }
@@ -1134,4 +1263,50 @@ fn move_all_typed_energy_from_bench_to_active(
     state
         .move_generation_stack
         .push((acting_player, possible_moves));
+}
+
+#[cfg(test)]
+mod private_reveal_tests {
+    use rand::{rngs::StdRng, SeedableRng};
+
+    use super::*;
+    use crate::{card_ids::CardId, database::get_card_by_enum};
+
+    #[test]
+    fn spy_ops_forecasts_one_equal_branch_per_physical_hand_card() {
+        let potion = get_card_by_enum(CardId::PA001Potion);
+        let ball = get_card_by_enum(CardId::PA005PokeBall);
+        let mut state = State::default();
+        state.hands[1] = vec![potion.clone(), potion.clone(), ball.clone()];
+        let action = Action {
+            actor: 0,
+            action: SimpleAction::UseAbility { in_play_idx: 0 },
+            is_stack: false,
+        };
+        let (probabilities, mutations) =
+            reveal_random_opponent_hand_card(&state, 0).into_branches();
+        assert_eq!(probabilities, vec![1.0 / 3.0; 3]);
+
+        let mut potion_branches = 0;
+        let mut ball_branches = 0;
+        for (index, mutation) in mutations.into_iter().enumerate() {
+            let mut branch = state.clone();
+            mutation(
+                &mut StdRng::seed_from_u64(index as u64),
+                &mut branch,
+                &action,
+            );
+            let event = branch.private_reveal_events.iter().next().unwrap();
+            assert_eq!(event.viewer, 0);
+            assert_eq!(event.zone_owner, 1);
+            if event.cards == vec![potion.clone()] {
+                potion_branches += 1;
+            }
+            if event.cards == vec![ball.clone()] {
+                ball_branches += 1;
+            }
+        }
+        assert_eq!(potion_branches, 2);
+        assert_eq!(ball_branches, 1);
+    }
 }

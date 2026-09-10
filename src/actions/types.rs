@@ -97,6 +97,14 @@ pub enum SimpleAction {
         targets: Vec<(u32, usize, usize)>, // Vec of (damage, target_player, in_play_idx)
         is_from_active_attack: bool,
     },
+    /// Resolve a target choice that belongs to an attack whose attacker-side gates have already
+    /// run. The original Attack is carried so defender prevention, damage modification, knockout
+    /// coins and attribution use its title/effect without recording or gating the attack twice.
+    ApplyQueuedAttackDamage {
+        attack: Attack,
+        /// `(raw damage, is opponent target, in-play index)`, relative to `Action::actor`.
+        targets: Vec<(u32, bool, usize)>,
+    },
     ScheduleDelayedSpotDamage {
         target_player: usize,
         target_in_play_idx: usize,
@@ -118,6 +126,15 @@ pub enum SimpleAction {
     },
     /// Switch the in_play_idx pokemon with the active pokemon.
     Activate {
+        player: usize,
+        in_play_idx: usize,
+    },
+    /// Compulsory replacement after the Active Spot becomes empty.
+    ///
+    /// Only `State::trigger_promotion_or_declare_winner` constructs this variant. Keeping it
+    /// distinct from `Activate` lets search resolve the mandatory continuation without treating
+    /// effect-driven switches as free promotion.
+    Promote {
         player: usize,
         in_play_idx: usize,
     },
@@ -193,10 +210,12 @@ pub enum SimpleAction {
     ShuffleInPlayPokemonIntoDeck {
         in_play_idx: usize,
     },
-    /// Field Blower: discard the tool attached to a specific Pokémon (any player).
+    /// Field Blower: discard one selected Tool from a specific Pokémon (any player).
     DiscardToolFromPokemon {
         player: usize,
         in_play_idx: usize,
+        #[serde(default)]
+        tool_idx: usize,
     },
     /// Field Blower: discard the active stadium.
     DiscardActiveStadium,
@@ -204,6 +223,11 @@ pub enum SimpleAction {
     BenchOpponentFromDiscard {
         card: Card,
         bench_idx: usize,
+    },
+    /// Team Rocket's Boss: put this chosen multiset of Basic Pokémon from the opponent's hand
+    /// into the first available opponent Bench slots. An empty vector is the printed choose-zero.
+    BenchOpponentHandBasics {
+        cards: Vec<Card>,
     },
     /// Delcatty's Search for Friends: put a specific, player-chosen card from your own discard
     /// pile into your hand.
@@ -244,6 +268,22 @@ pub enum SimpleAction {
     DiscardOwnBenchedThenDamage {
         in_play_idxs: Vec<usize>,
         damage: u32,
+    },
+    /// Accept the sampled attack-effect coin batch stored in State.
+    KeepAttackCoinResults,
+    /// Ignore the sampled batch and commit one fresh replacement batch.
+    RerollAttackCoins {
+        victory_star_in_play_idx: usize,
+    },
+    /// Accept the sampled Trainer-effect coin batch stored in State.
+    KeepTrainerCoinResults,
+    /// Ignore the sampled Trainer batch and commit one fresh replacement batch.
+    RerollTrainerCoins {
+        luxury_coin_in_play_idx: usize,
+    },
+    /// Fix Misty's printed Water-Pokemon target before its first coin is sampled.
+    ChooseMistyTarget {
+        in_play_idx: usize,
     },
     Noop, // No operation, used to have the user say "no" to a question
 }
@@ -354,6 +394,20 @@ impl fmt::Display for SimpleAction {
                     attacking_ref, targets_str, is_from_active_attack
                 )
             }
+            SimpleAction::ApplyQueuedAttackDamage { attack, targets } => {
+                let targets_str = targets
+                    .iter()
+                    .map(|(damage, is_opponent, in_play_idx)| {
+                        format!("({damage}, opponent:{is_opponent}, {in_play_idx})")
+                    })
+                    .collect::<Vec<_>>()
+                    .join(", ");
+                write!(
+                    f,
+                    "ApplyQueuedAttackDamage({}, targets:[{}])",
+                    attack.title, targets_str
+                )
+            }
             SimpleAction::ScheduleDelayedSpotDamage {
                 target_player,
                 target_in_play_idx,
@@ -367,6 +421,10 @@ impl fmt::Display for SimpleAction {
                 player,
                 in_play_idx,
             } => write!(f, "Activate({player}, {in_play_idx})"),
+            SimpleAction::Promote {
+                player,
+                in_play_idx,
+            } => write!(f, "Promote({player}, {in_play_idx})"),
             SimpleAction::CommunicatePokemon { hand_pokemon } => {
                 write!(f, "CommunicatePokemon({hand_pokemon})")
             }
@@ -433,12 +491,15 @@ impl fmt::Display for SimpleAction {
             SimpleAction::ShuffleInPlayPokemonIntoDeck { in_play_idx } => {
                 write!(f, "ShuffleInPlayPokemonIntoDeck({in_play_idx})")
             }
-            SimpleAction::DiscardToolFromPokemon { player, in_play_idx } => {
-                write!(f, "DiscardToolFromPokemon({player}, {in_play_idx})")
+            SimpleAction::DiscardToolFromPokemon { player, in_play_idx, tool_idx } => {
+                write!(f, "DiscardToolFromPokemon({player}, {in_play_idx}, {tool_idx})")
             }
             SimpleAction::DiscardActiveStadium => write!(f, "DiscardActiveStadium"),
             SimpleAction::BenchOpponentFromDiscard { card, bench_idx } => {
                 write!(f, "BenchOpponentFromDiscard({card}, {bench_idx})")
+            }
+            SimpleAction::BenchOpponentHandBasics { cards } => {
+                write!(f, "BenchOpponentHandBasics({cards:?})")
             }
             SimpleAction::PutCardFromDiscardToHand { card } => {
                 write!(f, "PutCardFromDiscardToHand({card})")
@@ -473,6 +534,17 @@ impl fmt::Display for SimpleAction {
                 in_play_idxs,
                 damage,
             } => write!(f, "DiscardOwnBenchedThenDamage({in_play_idxs:?}, {damage})"),
+            SimpleAction::KeepAttackCoinResults => write!(f, "KeepAttackCoinResults"),
+            SimpleAction::RerollAttackCoins {
+                victory_star_in_play_idx,
+            } => write!(f, "RerollAttackCoins(VictoryStar:{victory_star_in_play_idx})"),
+            SimpleAction::KeepTrainerCoinResults => write!(f, "KeepTrainerCoinResults"),
+            SimpleAction::RerollTrainerCoins {
+                luxury_coin_in_play_idx,
+            } => write!(f, "RerollTrainerCoins(LuxuryCoin:{luxury_coin_in_play_idx})"),
+            SimpleAction::ChooseMistyTarget { in_play_idx } => {
+                write!(f, "ChooseMistyTarget({in_play_idx})")
+            }
             SimpleAction::Noop => write!(f, "Noop"),
         }
     }

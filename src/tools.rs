@@ -98,12 +98,22 @@ pub fn tool_effects_equal(trainer_card: &TrainerCard, reference_tool_id: CardId)
 }
 
 pub fn has_tool(played_card: &PlayedCard, reference_tool_id: CardId) -> bool {
+    tool_count(played_card, reference_tool_id) > 0
+}
+
+/// Count mechanically matching Tools, including different printings and duplicate copies.
+pub fn tool_count(played_card: &PlayedCard, reference_tool_id: CardId) -> u32 {
     let reference_effect = tool_effect_text_from_card_id(reference_tool_id);
-    let Some(attached_tool) = &played_card.attached_tool else {
-        return false;
-    };
-    let trainer_card = ensure_tool_card(attached_tool);
-    trainer_card.effect == reference_effect
+    played_card.attached_tools.iter()
+        .filter(|tool| ensure_tool_card(tool).effect == reference_effect)
+        .count() as u32
+}
+
+pub(crate) fn tool_capacity(state: &State, pokemon: &PlayedCard) -> usize {
+    match crate::actions::get_in_play_ability_mechanic(state, pokemon) {
+        Some(crate::actions::abilities::AbilityMechanic::ToolCapacity { max_tools }) => *max_tools,
+        _ => 1,
+    }
 }
 
 pub(crate) fn enumerate_tool_choices<'a>(
@@ -115,10 +125,10 @@ pub(crate) fn enumerate_tool_choices<'a>(
     // Pokémon Tools can be attached to ANY Pokémon — the game never restricts attachment by
     // type or stage. Tools whose effect is type/stage-specific (Leaf Cape [G] +30 HP, Big Air
     // Balloon Stage-2 free retreat, Steel Apron [M] −10, etc.) gate the *effect* at its
-    // application site, not the attachment. The only attachment rule is one tool per Pokémon.
+    // application site, not the attachment. Capacity is normally one, or two with Dual Customization.
     state
         .enumerate_in_play_pokemon(actor)
-        .filter(|(_, x)| !x.has_tool_attached())
+        .filter(|(_, x)| x.attached_tools.len() < tool_capacity(state, x))
         .collect()
 }
 

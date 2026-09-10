@@ -2,11 +2,13 @@ use clap::{ArgAction, Parser, Subcommand};
 use colored::Colorize;
 use deckgym::optimize::{ParallelConfig, SimulationConfig};
 use deckgym::players::{parse_player_code, PlayerCode};
-use deckgym::simulate::initialize_logger;
-use deckgym::{cli_optimize, simulate, Deck};
+use deckgym::simulate::{initialize_logger, simulate_with_results};
+use deckgym::{cli_optimize, Deck};
 use log::warn;
 use num_format::{Locale, ToFormattedString};
 use std::fs;
+
+mod cli_preflight;
 
 #[derive(Parser, Debug)]
 #[command(author, version, about, long_about = None)]
@@ -59,6 +61,10 @@ enum Commands {
         /// Output folder for exporting (state, action) pairs in JSON format
         #[arg(long)]
         data_output: Option<String>,
+
+        /// Output folder for compact per-game results, seeds and matchup identities
+        #[arg(long)]
+        results_output: Option<String>,
     },
     /// Optimize an incomplete deck against enemy decks
     Optimize {
@@ -105,6 +111,7 @@ fn simulate_against_folder(
     decks_folder: &str,
     sim_config: SimulationConfig,
     parallel_config: ParallelConfig,
+    results_output: Option<String>,
 ) {
     let total_num_simulations = sim_config.num_games;
     let players = sim_config.players;
@@ -184,7 +191,7 @@ fn simulate_against_folder(
         );
         warn!("{}", "=".repeat(60));
 
-        simulate(
+        simulate_with_results(
             deck_a_path,
             deck_path,
             SimulationConfig {
@@ -198,7 +205,11 @@ fn simulate_against_folder(
                 enabled: parallel,
                 num_threads,
             },
-        );
+            results_output.clone(),
+        ).unwrap_or_else(|error| {
+            eprintln!("{error}");
+            std::process::exit(1);
+        });
     }
 
     warn!("\n{}", "=".repeat(60));
@@ -208,6 +219,7 @@ fn simulate_against_folder(
 
 fn main() {
     let cli = Cli::parse();
+    eprintln!("PDL decision-integrity candidate {}: closed-list observations; unknown opponent continuations are UNPRICED. Historical seed results are not comparable.", env!("CARGO_PKG_VERSION"));
 
     // Branch depending on the chosen subcommand.
     match cli.command {
@@ -222,10 +234,16 @@ fn main() {
             threads,
             verbose,
             data_output,
+            results_output,
         } => {
             initialize_logger(verbose);
 
             warn!("Welcome to {} simulation!", "deckgym".blue().bold());
+
+            if let Err(error) = cli_preflight::simulation(&deck_a, &deck_b_or_folder) {
+                eprintln!("{error}");
+                std::process::exit(2);
+            }
 
             // Check if deck_b_or_folder is a directory
             let path = std::path::Path::new(&deck_b_or_folder);
@@ -244,9 +262,10 @@ fn main() {
                         enabled: parallel,
                         num_threads: threads,
                     },
+                    results_output,
                 );
             } else {
-                simulate(
+                simulate_with_results(
                     &deck_a,
                     &deck_b_or_folder,
                     SimulationConfig {
@@ -260,7 +279,11 @@ fn main() {
                         enabled: parallel,
                         num_threads: threads,
                     },
-                );
+                    results_output,
+                ).unwrap_or_else(|error| {
+                    eprintln!("{error}");
+                    std::process::exit(1);
+                });
             }
         }
         Commands::Optimize {
@@ -277,6 +300,15 @@ fn main() {
             initialize_logger(verbose);
 
             warn!("Welcome to {} optimizer!", "deckgym".blue().bold());
+
+            if let Err(error) = cli_preflight::optimization(
+                &incomplete_deck,
+                &candidate_cards,
+                &enemy_decks_folder,
+            ) {
+                eprintln!("{error}");
+                std::process::exit(2);
+            }
 
             let sim_config = SimulationConfig {
                 num_games: num,

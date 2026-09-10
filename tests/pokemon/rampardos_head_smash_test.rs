@@ -189,7 +189,7 @@ fn test_rampardos_head_smash_rocky_helmet_promotion_order() {
     assert!(choices.iter().all(|choice| {
         matches!(
             choice.action,
-            SimpleAction::Activate {
+            SimpleAction::Promote {
                 player: _,
                 in_play_idx: _
             }
@@ -205,7 +205,7 @@ fn test_rampardos_head_smash_rocky_helmet_promotion_order() {
     assert!(choices.iter().all(|choice| {
         matches!(
             choice.action,
-            SimpleAction::Activate {
+            SimpleAction::Promote {
                 player: _,
                 in_play_idx: _
             }

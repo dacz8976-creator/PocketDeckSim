@@ -48,14 +48,14 @@ fn test_elesa_returns_all_tools_to_owners_hand() {
         .as_ref()
         .expect("Player active should remain");
     assert!(
-        player_active.attached_tool.is_none(),
+        player_active.attached_tools.is_empty(),
         "Rocky Helmet should have been detached from player's Bulbasaur"
     );
     let opponent_active = state.in_play_pokemon[1][0]
         .as_ref()
         .expect("Opponent active should remain");
     assert!(
-        opponent_active.attached_tool.is_none(),
+        opponent_active.attached_tools.is_empty(),
         "Rocky Helmet should have been detached from opponent's Charmander"
     );
 
@@ -128,7 +128,7 @@ fn test_elesa_knocks_out_opponent_active_hanging_on_via_giant_cape() {
     assert!(choices.iter().all(|choice| {
         matches!(
             choice.action,
-            SimpleAction::Activate {
+            SimpleAction::Promote {
                 player: 1,
                 in_play_idx: _
             }
@@ -187,7 +187,7 @@ fn test_elesa_knocks_out_opponent_active_hanging_on_via_leaf_cape() {
     assert!(choices.iter().all(|choice| {
         matches!(
             choice.action,
-            SimpleAction::Activate {
+            SimpleAction::Promote {
                 player: 1,
                 in_play_idx: _
             }

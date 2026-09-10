@@ -98,7 +98,7 @@ fn capsule_case(holder: CardId) -> u32 {
     let state = game.get_state_clone();
     let active = state.get_active(0);
     assert!(
-        active.attached_tool.is_some(),
+        !active.attached_tools.is_empty(),
         "the Tool must stay attached — attachment is legal on any Pokemon (§172)"
     );
     active.get_remaining_hp()
@@ -136,7 +136,7 @@ fn leaf_cape_case(holder: CardId) -> u32 {
     let state = game.get_state_clone();
     let active = state.get_active(0);
     assert!(
-        active.attached_tool.is_some(),
+        !active.attached_tools.is_empty(),
         "the Tool must stay attached regardless of type (§173)"
     );
     active.get_remaining_hp()
@@ -186,7 +186,8 @@ fn hp_tool_removal_case(damage: u32) -> (Option<u32>, bool) {
             a,
             SimpleAction::DiscardToolFromPokemon {
                 player: 1,
-                in_play_idx: 0
+                in_play_idx: 0,
+                tool_idx: 0
             }
         )
     });
@@ -194,7 +195,7 @@ fn hp_tool_removal_case(damage: u32) -> (Option<u32>, bool) {
     let state = game.get_state_clone();
     let still = state.in_play_pokemon[1][0]
         .as_ref()
-        .map(|p| p.attached_tool.is_some())
+        .map(|p| !p.attached_tools.is_empty())
         .unwrap_or(false);
     (hp(&game, 1, 0), still)
 }

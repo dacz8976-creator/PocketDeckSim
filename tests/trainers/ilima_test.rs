@@ -101,8 +101,8 @@ fn test_ilima_returns_active_and_triggers_promotion() {
     assert!(
         promo_choices
             .iter()
-            .any(|action| matches!(action.action, SimpleAction::Activate { in_play_idx: 1, .. })),
-        "Promotion choices should include Activate for bench index 1, choices: {:?}",
+            .any(|action| matches!(action.action, SimpleAction::Promote { in_play_idx: 1, .. })),
+        "Promotion choices should include Promote for bench index 1, choices: {:?}",
         promo_choices
     );
 }

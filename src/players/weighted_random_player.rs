@@ -12,7 +12,12 @@ pub struct WeightedRandomPlayer {
 }
 
 impl Player for WeightedRandomPlayer {
-    fn decision_fn(&mut self, rng: &mut StdRng, _: &State, possible_actions: &[Action]) -> Action {
+    fn decide_omniscient(
+        &mut self,
+        rng: &mut StdRng,
+        _: &State,
+        possible_actions: &[Action],
+    ) -> Action {
         // Get weights for the possible actions
         let weights: Vec<u32> = possible_actions
             .iter()
@@ -50,6 +55,7 @@ fn get_weight(action: &SimpleAction) -> u32 {
         SimpleAction::UseAbility { .. } => 10,
         SimpleAction::Attack(_) => 10,
         SimpleAction::ApplyDamage { .. } => 10,
+        SimpleAction::ApplyQueuedAttackDamage { .. } => 10,
         SimpleAction::ScheduleDelayedSpotDamage { .. } => 10,
         SimpleAction::Retreat(_) => 2,
         SimpleAction::EndTurn => 1,
@@ -58,7 +64,7 @@ fn get_weight(action: &SimpleAction) -> u32 {
         SimpleAction::HealAndCureConditions { .. } => 5,
         SimpleAction::MoveAllDamage { .. } => 10,
         SimpleAction::MoveDamageToOpponentActive { .. } => 10,
-        SimpleAction::Activate { .. } => 1,
+        SimpleAction::Activate { .. } | SimpleAction::Promote { .. } => 1,
         SimpleAction::CommunicatePokemon { .. } => 5,
         SimpleAction::ShufflePokemonIntoDeck { .. } => 5,
         SimpleAction::ShuffleOwnCardsIntoDeck { .. } => 5,
@@ -78,6 +84,7 @@ fn get_weight(action: &SimpleAction) -> u32 {
         SimpleAction::DiscardToolFromPokemon { .. } => 5,
         SimpleAction::DiscardActiveStadium => 5,
         SimpleAction::BenchOpponentFromDiscard { .. } => 5,
+        SimpleAction::BenchOpponentHandBasics { .. } => 5,
         SimpleAction::PutCardFromDiscardToHand { .. } => 10,
         SimpleAction::PutRandomCardsFromDiscardToHand { .. } => 10,
         SimpleAction::DiscardRandomOpponentActiveEnergy => 10,
@@ -86,6 +93,11 @@ fn get_weight(action: &SimpleAction) -> u32 {
         SimpleAction::MoveRandomOpponentEnergyToActive { .. } => 10,
         SimpleAction::ApplyStatusToOpponentActive { .. } => 10,
         SimpleAction::DiscardOwnBenchedThenDamage { .. } => 10,
+        SimpleAction::KeepAttackCoinResults
+        | SimpleAction::RerollAttackCoins { .. }
+        | SimpleAction::KeepTrainerCoinResults
+        | SimpleAction::RerollTrainerCoins { .. }
+        | SimpleAction::ChooseMistyTarget { .. } => 10,
         // §47 — a purposeful Energy consolidation is usually the point of the turn when offered.
         SimpleAction::ConsolidateEnergyToPokemon { .. } => 10,
         SimpleAction::UseStadium => 5, // Stadium abilities like Mesagoza

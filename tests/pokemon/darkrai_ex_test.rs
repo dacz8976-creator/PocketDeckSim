@@ -155,7 +155,7 @@ fn test_darkrai_ex_nightmare_aura_ko_triggers_promotion() {
     let has_promotion = actor == 1
         && actions
             .iter()
-            .any(|a| matches!(a.action, SimpleAction::Activate { .. }));
+            .any(|a| matches!(a.action, SimpleAction::Promote { .. }));
 
     assert!(
         has_promotion,

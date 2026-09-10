@@ -577,8 +577,8 @@ fn test_starting_plains_ko_on_stadium_replace_promotes() {
     assert_eq!(actor, 1);
     let activate_action = actions
         .iter()
-        .find(|action| matches!(action.action, SimpleAction::Activate { .. }))
-        .expect("Expected Activate action for promotion");
+        .find(|action| matches!(action.action, SimpleAction::Promote { .. }))
+        .expect("Expected Promote action for promotion");
     game.apply_action(activate_action);
 
     let state = game.get_state_clone();

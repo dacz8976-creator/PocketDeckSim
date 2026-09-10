@@ -151,7 +151,7 @@ fn test_grass_pokemon_is_knocked_out_when_lilligant_leaves_play() {
     assert_eq!(actor, 1);
     let promote = choices
         .iter()
-        .find(|choice| matches!(choice.action, SimpleAction::Activate { player: 1, .. }))
+        .find(|choice| matches!(choice.action, SimpleAction::Promote { player: 1, .. }))
         .expect("Player 1 should have to promote after losing their Active")
         .clone();
     game.apply_action(&promote);

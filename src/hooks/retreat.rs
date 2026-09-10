@@ -8,7 +8,7 @@ use crate::{
     hooks::core::{has_another_pokemon_named_in_play, has_named_pokemon_in_play},
     models::{Card, EnergyType, PlayedCard},
     stadiums::get_peculiar_plaza_retreat_reduction,
-    tools::has_tool,
+    tools::{has_tool, tool_count},
     State,
 };
 
@@ -32,10 +32,9 @@ pub(crate) fn can_retreat(state: &State) -> bool {
 /// ([`NoRetreatCostTarget::ThisPokemon`], read straight off `card`), and abilities that free your
 /// Active Pokémon from anywhere in play ([`NoRetreatCostTarget::YourActive`] and
 /// [`NoRetreatCostTarget::YourActiveNamed`], which need a scan of your board for the granting
-/// Pokémon). Like the other owner-scoped retreat modifiers in this file, "your" means
-/// `state.current_player`.
-fn has_no_retreat_cost_ability(state: &State, card: &PlayedCard) -> bool {
-    let player = state.current_player;
+/// Pokémon). Owner-scoped "your" checks use the explicit `player`; ordinary retreat
+/// supplies `state.current_player`, while attacks inspecting the defender supply its owner.
+fn has_no_retreat_cost_ability(state: &State, player: usize, card: &PlayedCard) -> bool {
     if let Some(AbilityMechanic::NoRetreatCost {
         target: NoRetreatCostTarget::ThisPokemon,
         condition,
@@ -83,11 +82,36 @@ fn no_retreat_cost_condition_holds(
             has_named_pokemon_in_play(state, player, names)
         }
         NoRetreatCostCondition::StadiumInPlay => state.active_stadium.is_some(),
-        NoRetreatCostCondition::YourFirstTurn => state.is_users_first_turn(),
+        NoRetreatCostCondition::YourFirstTurn => player == state.current_player && state.is_users_first_turn(),
     }
 }
 
 pub(crate) fn get_retreat_cost(state: &State, card: &PlayedCard) -> Vec<EnergyType> {
+    get_retreat_cost_for_player(state, state.current_player, card)
+}
+
+/// Resolve the holder's side explicitly when another player inspects its Retreat Cost.
+pub(crate) fn get_retreat_cost_for_player(state: &State, player: usize, card: &PlayedCard) -> Vec<EnergyType> {
+    get_retreat_cost_for_player_internal(state, player, card, true)
+}
+
+/// Resolve the Retreat Cost supplied by the board while ignoring discounts that expire at the
+/// end of the current turn. Public search leaves use this to avoid treating a consumed X Speed
+/// or Leaf as a lasting improvement when no retreat follows.
+pub(crate) fn get_board_retreat_cost_for_player(
+    state: &State,
+    player: usize,
+    card: &PlayedCard,
+) -> Vec<EnergyType> {
+    get_retreat_cost_for_player_internal(state, player, card, false)
+}
+
+fn get_retreat_cost_for_player_internal(
+    state: &State,
+    player: usize,
+    card: &PlayedCard,
+    include_temporary_turn_discounts: bool,
+) -> Vec<EnergyType> {
     if let Card::Pokemon(pokemon_card) = &card.card {
         if matches!(
             get_in_play_ability_mechanic(state, card),
@@ -96,36 +120,43 @@ pub(crate) fn get_retreat_cost(state: &State, card: &PlayedCard) -> Vec<EnergyTy
         {
             return vec![];
         }
-        if has_no_retreat_cost_ability(state, card) {
+        if has_no_retreat_cost_ability(state, player, card) {
             return vec![];
         }
         let mut normal_cost = pokemon_card.retreat_cost.clone();
         if has_tool(card, CardId::A4a067InflatableBoat)
             && state.pokemon_is_type(card, EnergyType::Water)
         {
-            normal_cost.pop();
+            for _ in 0..tool_count(card, CardId::A4a067InflatableBoat) { normal_cost.pop(); }
         }
         if has_tool(card, CardId::B2a087BigAirBalloon) && pokemon_card.stage == 2 {
             return vec![];
         }
-        if has_tool(card, CardId::B3b064SmallBalloon) && pokemon_card.stage == 0 {
-            normal_cost.pop();
+        if pokemon_card.stage == 0 {
+            for _ in 0..tool_count(card, CardId::B3b064SmallBalloon) { normal_cost.pop(); }
         }
         // Implement Retreat Cost Modifiers here
-        let mut to_subtract = state
-            .get_current_turn_effects()
-            .iter()
-            .filter(|x| matches!(x, TurnEffect::ReducedRetreatCost { .. }))
-            .map(|x| match x {
-                TurnEffect::ReducedRetreatCost { amount } => *amount,
-                _ => 0,
-            })
-            .sum::<u8>();
+        let mut to_subtract = if include_temporary_turn_discounts {
+            state
+                .get_current_turn_effects()
+                .iter()
+                .filter(|x| {
+                    player == state.current_player
+                        && matches!(x, TurnEffect::ReducedRetreatCost { .. })
+                })
+                .map(|x| match x {
+                    TurnEffect::ReducedRetreatCost { amount } => *amount,
+                    _ => 0,
+                })
+                .sum::<u8>()
+        } else {
+            0
+        };
 
         // Shaymin's Sky Support: As long as this Pokémon is on your Bench, your Active Basic Pokémon's Retreat Cost is 1 less.
         if pokemon_card.stage == 0 {
             // Only affects Basic Pokemon
-            let current_player = state.current_player;
+            let current_player = player;
             for (_idx, benched_pokemon) in state.enumerate_bench_pokemon(current_player) {
                 if matches!(
                     get_in_play_ability_mechanic(state, benched_pokemon),
@@ -139,7 +170,7 @@ pub(crate) fn get_retreat_cost(state: &State, card: &PlayedCard) -> Vec<EnergyTy
         }
         {
             let active_energy_types = state.pokemon_energy_types(card);
-            let current_player = state.current_player;
+            let current_player = player;
             for (_idx, benched_pokemon) in state.enumerate_bench_pokemon(current_player) {
                 if let Some(AbilityMechanic::ReduceRetreatCostOfYourActiveTypedFromBench {
                     energy_type,
@@ -159,7 +190,7 @@ pub(crate) fn get_retreat_cost(state: &State, card: &PlayedCard) -> Vec<EnergyTy
         if let Some(AbilityMechanic::ReduceOwnRetreatCostIfAnotherSameNameInPlay { amount }) =
             get_in_play_ability_mechanic(state, card)
         {
-            if has_another_pokemon_named_in_play(state, state.current_player, &card.get_name()) {
+            if has_another_pokemon_named_in_play(state, player, &card.get_name()) {
                 to_subtract += *amount;
             }
         }
@@ -193,7 +224,7 @@ pub(crate) fn get_retreat_cost(state: &State, card: &PlayedCard) -> Vec<EnergyTy
 
         // Ariados Trap Territory: Your opponent's Active Pokémon's Retreat Cost is 1 more.
         // This check needs to look at if the OPPONENT has Ariados in play
-        let opponent = (state.current_player + 1) % 2;
+        let opponent = (player + 1) % 2;
         for (_idx, pokemon) in state.enumerate_in_play_pokemon(opponent) {
             if matches!(
                 get_in_play_ability_mechanic(state, pokemon),
@@ -266,9 +297,9 @@ mod tests {
         let state = State::default();
         let card = get_card_by_enum(CardId::A1055Blastoise);
         let mut playable_card = to_playable_card(&card, false);
-        playable_card.attached_tool = Some(crate::database::get_card_by_enum(
+        playable_card.attached_tools = vec![crate::database::get_card_by_enum(
             CardId::A4a067InflatableBoat,
-        ));
+        )];
         let retreat_cost = get_retreat_cost(&state, &playable_card);
         assert_eq!(
             retreat_cost,

@@ -43,7 +43,7 @@ fn test_jolteon_ex_electromagnetic_wall_ko_triggers_promotion() {
     let has_promotion = actor == 0
         && actions
             .iter()
-            .any(|a| matches!(a.action, SimpleAction::Activate { .. }));
+            .any(|a| matches!(a.action, SimpleAction::Promote { .. }));
 
     assert!(
         has_promotion,

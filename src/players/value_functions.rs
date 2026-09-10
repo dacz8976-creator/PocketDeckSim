@@ -6,11 +6,11 @@
 use log::trace;
 
 use crate::actions::abilities::AbilityMechanic;
-use crate::actions::attacks::{BenchSide, Mechanic};
+use crate::actions::attacks::{BenchDamageFilter, BenchSide, Mechanic};
 use crate::actions::{ability_mechanic_from_effect, EFFECT_MECHANIC_MAP};
 use crate::card_logic::get_highest_evolutions;
 use crate::hooks::energy_missing;
-use crate::models::{Attack, Card, EnergyType, PlayedCard, TrainerType};
+use crate::models::{Attack, Card, EnergyType, PlayedCard, StatusCondition, TrainerType};
 use crate::state::GameOutcome;
 use crate::State;
 
@@ -338,6 +338,37 @@ pub fn parametric_value_function_ex5(
     effect_aware: bool,
     reserve_aware: bool,
 ) -> f64 {
+    // A completed game has outcome utility only. Extra HP, cards, or points cannot
+    // improve a win (or salvage a loss). Keep the historical private evaluator intact.
+    if public_eval {
+        if let Some(outcome) = state.winner {
+            return match outcome {
+                GameOutcome::Win(winner) if winner == myself => params.is_winner,
+                GameOutcome::Win(_) => -params.is_winner,
+                GameOutcome::Tie => 0.0,
+            };
+        }
+    }
+    if state.setup_opponent_hidden {
+        // Own development terms only: a concealed opposing board must not become
+        // a fictitious no-threat/no-Pokemon position in the battle evaluator.
+        // Disable effect-based damage estimates here because some inspect targets.
+        let pokemon_value = if value_aware {
+            calculate_pokemon_value_damage_aware(state, myself, 1.0, false, false, false)
+        } else {
+            calculate_pokemon_value(state, myself, 1.0)
+        };
+        let (online, distance) = calculate_online_metrics(state, myself, 1.0);
+        return pokemon_value * params.pokemon_value
+            + state.hands[myself].len() as f64 * params.hand_size
+            - state.decks[myself].cards.len() as f64 * params.deck_size
+            - get_active_retreat_cost(state, myself, public_eval) as f64 * params.active_retreat_cost
+            + calculate_active_pokemon_online_score(state, myself, false, false, false)
+                * params.active_pokemon_online_score
+            + calculate_active_safety(state, myself) * params.active_safety
+            + online * params.online_pokemon_count
+            + distance * params.energy_distance_to_online;
+    }
     let opponent = (myself + 1) % 2;
     let (my, opp) = (
         extract_features(
@@ -349,6 +380,7 @@ pub fn parametric_value_function_ex5(
             clock_aware,
             effect_aware,
             reserve_aware,
+            public_eval,
         ),
         extract_features(
             state,
@@ -359,6 +391,7 @@ pub fn parametric_value_function_ex5(
             clock_aware,
             effect_aware,
             reserve_aware,
+            public_eval,
         ),
     );
     let score = (my.points - opp.points) * params.points
@@ -415,6 +448,7 @@ fn extract_features(
     clock_aware: bool,
     effect_aware: bool,
     reserve_aware: bool,
+    public_evaluation: bool,
 ) -> Features {
     let points = state.points[player] as f64;
     let pokemon_value = if value_aware {
@@ -431,7 +465,7 @@ fn extract_features(
     };
     let hand_size = state.hands[player].len() as f64;
     let deck_size = state.decks[player].cards.len() as f64;
-    let active_retreat_cost = get_active_retreat_cost(state, player) as f64;
+    let active_retreat_cost = get_active_retreat_cost(state, player, public_evaluation) as f64;
     let (online_pokemon_count, energy_distance_to_online) =
         calculate_online_metrics(state, player, active_factor);
     let active_pokemon_online_score = calculate_active_pokemon_online_score(
@@ -455,9 +489,10 @@ fn extract_features(
             public_only,
             effect_aware,
             reserve_aware,
+            public_evaluation,
         )
     } else {
-        calculate_turns_until_opponent_wins(state, player)
+        calculate_turns_until_opponent_wins(state, player, public_evaluation)
     };
     let discard_size = state.discard_piles[player].len() as f64;
 
@@ -478,10 +513,29 @@ fn extract_features(
     }
 }
 
-fn get_active_retreat_cost(state: &State, player: usize) -> usize {
+fn get_active_retreat_cost(state: &State, player: usize, public_evaluation: bool) -> usize {
+    // Effective-cost hooks may scan opposing abilities. During concealed setup,
+    // price our own board without exposing the opponent's unrevealed choices.
+    let setup_view;
+    let state = if public_evaluation && state.setup_opponent_hidden {
+        let mut view = state.clone();
+        view.in_play_pokemon[(player + 1) % 2] = Default::default();
+        setup_view = view;
+        &setup_view
+    } else {
+        state
+    };
     state
         .maybe_get_active(player)
-        .map(|card| card.card.get_retreat_cost().map(|rc| rc.len()).unwrap_or(5))
+        .map(|card| {
+            if public_evaluation {
+                // Use the holder's side and persistent board modifiers while excluding
+                // current-turn discounts that have no value unless a retreat follows.
+                crate::hooks::get_board_retreat_cost_for_player(state, player, card).len()
+            } else {
+                card.card.get_retreat_cost().map(|rc| rc.len()).unwrap_or(5)
+            }
+        })
         .unwrap_or(0)
 }
 
@@ -503,7 +557,9 @@ fn check_is_winner(state: &State, player: usize) -> f64 {
 
 /// Calculate expected turns until opponent wins
 /// Uses opponent's active damage and simulates KOs until opponent reaches 3 points
-fn calculate_turns_until_opponent_wins(state: &State, player: usize) -> f64 {
+fn calculate_turns_until_opponent_wins(
+    state: &State, player: usize, consume_bench: bool,
+) -> f64 {
     let opponent = (player + 1) % 2;
 
     // Find the closest pokemon to being able to deal damage (by energy requirements)
@@ -543,10 +599,14 @@ fn calculate_turns_until_opponent_wins(state: &State, player: usize) -> f64 {
     }
 
     // Simulate KOing bench pokemon until opponent has 3+ points
+    // Public estimates consume each victim once; running out of Pokemon also ends the game.
+    // Keep the historical private arithmetic when consume_bench is false.
+    let mut counted_slots = [false; 4];
     while opp_points < 3 {
         // Find the safest bench pokemon (highest hp / ko_points)
         let safest_bench = state
             .enumerate_bench_pokemon(player)
+            .filter(|(slot, _)| !consume_bench || !counted_slots[*slot])
             .max_by_key(|(_, card)| {
                 // if missing 1 point, just do by HP. if missing more than 1 point,
                 // do by point yield hp / ko_points
@@ -558,10 +618,13 @@ fn calculate_turns_until_opponent_wins(state: &State, player: usize) -> f64 {
                 }
             });
 
-        let Some((_, safest_pokemon)) = safest_bench else {
+        let Some((slot, safest_pokemon)) = safest_bench else {
             break; // No more bench pokemon
         };
 
+        if consume_bench {
+            counted_slots[slot] = true;
+        }
         let turns_to_ko = (safest_pokemon.get_remaining_hp() as f64 / max_damage).ceil();
         total_turns += turns_to_ko;
         opp_points += safest_pokemon.card.get_knockout_points();
@@ -589,6 +652,7 @@ fn calculate_turns_until_opponent_wins_damage_aware(
     read_scanned_zones: bool,
     effect_aware: bool,
     reserve_aware: bool,
+    consume_bench: bool,
 ) -> f64 {
     let opponent = (player + 1) % 2;
 
@@ -661,9 +725,13 @@ fn calculate_turns_until_opponent_wins_damage_aware(
         opp_points += my_active.card.get_knockout_points();
     }
 
+    // Public estimates consume each victim once; running out of Pokemon also ends the game.
+    // Keep the historical private arithmetic when consume_bench is false.
+    let mut counted_slots = [false; 4];
     while opp_points < 3 {
         let safest_bench = state
             .enumerate_bench_pokemon(player)
+            .filter(|(slot, _)| !consume_bench || !counted_slots[*slot])
             .max_by_key(|(_, card)| {
                 if opp_points == 2 {
                     card.get_remaining_hp()
@@ -673,10 +741,13 @@ fn calculate_turns_until_opponent_wins_damage_aware(
                 }
             });
 
-        let Some((_, safest_pokemon)) = safest_bench else {
+        let Some((slot, safest_pokemon)) = safest_bench else {
             break;
         };
 
+        if consume_bench {
+            counted_slots[slot] = true;
+        }
         let turns_to_ko = (safest_pokemon.get_remaining_hp() as f64 / max_damage).ceil();
         total_turns += turns_to_ko;
         opp_points += safest_pokemon.card.get_knockout_points();
@@ -947,6 +1018,26 @@ fn estimated_attack_damage_ex(
                 .count() as f64;
             fixed + *damage_per_energy as f64 * count
         }
+        // eval1: Magmar's Derisive Roasting uses the defending Active's public
+        // conditions. Match the apply-side count; Poison/Burn can coexist with one
+        // of Asleep, Confused or Paralyzed. Count kinds, not duplicate status entries.
+        Mechanic::ExtraDamagePerOpponentSpecialCondition {
+            damage_per_condition,
+        } => {
+            let count = state.maybe_get_active(opponent).map_or(0, |defender| {
+                [
+                    StatusCondition::Asleep,
+                    StatusCondition::Burned,
+                    StatusCondition::Confused,
+                    StatusCondition::Paralyzed,
+                    StatusCondition::Poisoned,
+                ]
+                .into_iter()
+                .filter(|condition| defender.has_status(*condition))
+                .count()
+            });
+            fixed + *damage_per_condition as f64 * count as f64
+        }
         Mechanic::ExtraDamagePerTrainerTypeInDiscard {
             trainer_type,
             damage_per_card,
@@ -963,6 +1054,40 @@ fn estimated_attack_damage_ex(
         Mechanic::ExtraDamagePerOwnPoint { damage_per_point } => {
             fixed + *damage_per_point as f64 * state.points[player] as f64
         }
+        Mechanic::ExtraDamagePerOpponentPointDuringOwnLastTurn { damage_per_point } => {
+            fixed
+                + *damage_per_point as f64
+                    * state.points_gained_during_own_last_turn[opponent] as f64
+        }
+        Mechanic::RevealTopDeckDamagePerPokemonName {
+            reveal_count,
+            name_fragment,
+            damage_per,
+        } => {
+            // This is a future-damage heuristic, not the current attack forecast. A
+            // shuffle's arbitrary sampled prefix must not improve an otherwise identical
+            // position. Average over the known remaining multiset; the real/forecast attack
+            // still reads its concrete prefix, including observation-authorized known tops.
+            // ValueFunction receives no revealed-prefix provenance, so this heuristic does
+            // not make a separate known-prefix adjustment or certify a knockout probability.
+            let deck = &state.decks[player].cards;
+            if deck.is_empty() {
+                return 0.0;
+            }
+            // Partly hidden decks retain the prior visible-prefix lower bound. In
+            // particular, do not dilute an authorized known top card across Unknown slots.
+            if deck.iter().any(|card| matches!(card, Card::Unknown)) {
+                return *damage_per as f64 * deck.iter().take(*reveal_count)
+                    .filter(|card| matches!(card, Card::Pokemon(pokemon)
+                        if pokemon.name.contains(name_fragment.as_str())))
+                    .count() as f64;
+            }
+            let qualifying = deck.iter().filter(|card| {
+                matches!(card, Card::Pokemon(pokemon) if pokemon.name.contains(name_fragment.as_str()))
+            }).count();
+            *damage_per as f64 * (*reveal_count).min(deck.len()) as f64
+                * qualifying as f64 / deck.len() as f64
+        }
         Mechanic::DirectDamage { damage, .. } => *damage as f64,
         Mechanic::DirectDamageAndSelfCardEffect { damage, .. } => *damage as f64,
         Mechanic::DelayedSpotDamage { amount } => *amount as f64,
@@ -976,6 +1101,24 @@ fn estimated_attack_damage_ex(
             damage,
         } => {
             if *hits_opponent {
+                fixed + *damage as f64
+            } else {
+                fixed
+            }
+        }
+        Mechanic::AlsoChoiceBenchDamageFiltered {
+            opponent: hits_opponent,
+            damage,
+            filter,
+        } => {
+            let bench_player = if *hits_opponent { opponent } else { player };
+            let has_target = state
+                .enumerate_bench_pokemon(bench_player)
+                .any(|(_, pokemon)| match filter {
+                    BenchDamageFilter::Any => true,
+                    BenchDamageFilter::Damaged => pokemon.is_damaged(),
+                });
+            if *hits_opponent && has_target {
                 fixed + *damage as f64
             } else {
                 fixed
@@ -999,6 +1142,12 @@ fn estimated_attack_damage_ex(
         } => {
             (if *include_fixed_damage { fixed } else { 0.0 })
                 + *damage_per_head as f64 * *num_coins as f64 / 2.0
+        }
+        // A fair flip-until-tails batch has E[heads] = 1. `Damage` replaces the printed
+        // multiplier value; `BonusDamage` keeps the printed base and adds the same expectation.
+        Mechanic::FlipUntilTailsDamage { damage_per_heads } => *damage_per_heads as f64,
+        Mechanic::FlipUntilTailsBonusDamage { damage_per_heads } => {
+            fixed + *damage_per_heads as f64
         }
         Mechanic::ExtraDamageIfExtraEnergy {
             required_extra_energy,
@@ -1224,4 +1373,147 @@ fn calculate_active_pokemon_online_score(
 
     // Return ratio (0.0 to 1.0)
     (have / total_needed).clamp(0.0, 1.0)
+}
+
+#[cfg(test)]
+mod soul_counter_tests {
+    use super::*;
+    use crate::{card_ids::CardId, database::get_card_by_enum};
+
+    #[test]
+    fn soul_counter_expected_damage_uses_the_same_turn_history_as_resolution() {
+        let attacker = PlayedCard::from_id(CardId::B4a018HisuianBasculegion);
+        let defender = PlayedCard::from_id(CardId::B4037WailordEx);
+        let mut state = State::default();
+        state.set_board(vec![attacker], vec![defender]);
+        state.current_player = 0;
+        state.points[1] = 3;
+        state.points_gained_this_turn[1] = 2;
+        let attack = get_card_by_enum(CardId::B4a018HisuianBasculegion).get_attacks()[0].clone();
+
+        assert_eq!(
+            estimated_attack_damage(&attack, state.get_active(0), &state, 0),
+            50.0,
+            "lifetime and current-turn points must not inflate the estimate"
+        );
+
+        state.points_gained_during_own_last_turn[1] = 2;
+        assert_eq!(
+            estimated_attack_damage(&attack, state.get_active(0), &state, 0),
+            150.0
+        );
+    }
+}
+
+#[cfg(test)]
+mod filtered_bench_damage_estimate_tests {
+    use super::*;
+    use crate::{card_ids::CardId, database::get_card_by_enum};
+
+    #[test]
+    fn thunderclaw_estimate_only_includes_bench_damage_when_a_target_is_eligible() {
+        let attacker = PlayedCard::from_id(CardId::B4a021TeamRocketsZapdosEx);
+        let attack = get_card_by_enum(CardId::B4a021TeamRocketsZapdosEx).get_attacks()[1].clone();
+        let mut state = State::default();
+        state.set_board(
+            vec![attacker],
+            vec![
+                PlayedCard::from_id(CardId::A1004VenusaurEx),
+                PlayedCard::from_id(CardId::A1056BlastoiseEx),
+            ],
+        );
+        state.current_player = 0;
+
+        assert_eq!(estimated_attack_damage(&attack, state.get_active(0), &state, 0), 90.0);
+        state.in_play_pokemon[1][1] =
+            Some(PlayedCard::from_id(CardId::A1056BlastoiseEx).with_remaining_hp(170));
+        assert_eq!(estimated_attack_damage(&attack, state.get_active(0), &state, 0), 140.0);
+    }
+}
+
+#[cfg(test)]
+mod geometric_damage_estimate_tests {
+    use super::*;
+    use crate::{card_ids::CardId, database::get_card_by_enum};
+
+    #[test]
+    fn flip_until_tails_uses_one_expected_head_and_preserves_bonus_base() {
+        let state = State::default();
+        let furfrou = PlayedCard::from_id(CardId::B4a064Furfrou);
+        let continuous_steps = match get_card_by_enum(CardId::B4a064Furfrou) {
+            Card::Pokemon(card) => card.attacks[0].clone(),
+            _ => panic!("Furfrou must be a Pokemon"),
+        };
+        assert_eq!(
+            estimated_attack_damage(&continuous_steps, &furfrou, &state, 0),
+            30.0
+        );
+
+        let iron_treads = PlayedCard::from_id(CardId::B3a051IronTreads);
+        let rolling_spin = match get_card_by_enum(CardId::B3a051IronTreads) {
+            Card::Pokemon(card) => card.attacks[0].clone(),
+            _ => panic!("Iron Treads must be a Pokemon"),
+        };
+        assert_eq!(
+            estimated_attack_damage(&rolling_spin, &iron_treads, &state, 0),
+            80.0
+        );
+    }
+}
+
+#[cfg(test)]
+mod rocket_frenzy_future_estimate_tests {
+    use super::*;
+    use crate::{card_ids::CardId,database::get_card_by_enum};
+
+    fn estimate(ids: &[CardId]) -> f64 {
+        let mut state=State::default();
+        let slot=PlayedCard::from_id(CardId::PB091TeamRocketsWobbuffet);
+        let attack=slot.card.get_attacks()[0].clone();
+        state.decks[0].cards=ids.iter().map(|id|get_card_by_enum(*id)).collect();
+        estimated_attack_damage(&attack,&slot,&state,0)
+    }
+
+    #[test]
+    fn rocket_frenzy_future_mean_handles_empty_short_and_nonqualifying_decks() {
+        assert_eq!(estimate(&[]),0.0);
+        // All three cards would be revealed; only the two Pokemon qualify.
+        assert_eq!(estimate(&[CardId::PB088TeamRocketsScyther,
+            CardId::B4a069TeamRocketsResearcher,CardId::PB091TeamRocketsWobbuffet]),60.0);
+        assert_eq!(estimate(&[CardId::B4a069TeamRocketsResearcher;8]),0.0);
+        assert_eq!(estimate(&[CardId::PB091TeamRocketsWobbuffet;8]),180.0);
+    }
+
+    #[test]
+    fn rocket_frenzy_future_mean_counts_physical_copies_not_prefix_positions() {
+        // Four qualifying physical copies among eight cards: six draws average three = 90.
+        let mut ids=vec![CardId::PB091TeamRocketsWobbuffet;4];
+        ids.extend(vec![CardId::A1001Bulbasaur;4]);
+        for _ in 0..8 {
+            assert_eq!(estimate(&ids),90.0);
+            ids.rotate_left(1);
+        }
+    }
+
+    #[test]
+    fn rocket_frenzy_future_mean_preserves_fractional_expected_damage() {
+        // The sole qualifying card is in six of seven equally likely six-card reveals.
+        let mut ids=vec![CardId::A1001Bulbasaur;6];
+        ids.push(CardId::PB091TeamRocketsWobbuffet);
+        assert!((estimate(&ids)-180.0/7.0).abs()<1e-12);
+    }
+
+    #[test]
+    fn rocket_frenzy_future_estimate_preserves_known_prefix_in_partly_hidden_deck() {
+        let slot=PlayedCard::from_id(CardId::PB091TeamRocketsWobbuffet);
+        let attack=slot.card.get_attacks()[0].clone();
+        let mut state=State::default();
+        state.decks[1].cards=vec![Card::Unknown;20];
+        state.decks[1].cards[0]=get_card_by_enum(CardId::PB091TeamRocketsWobbuffet);
+        assert_eq!(estimated_attack_damage(&attack,&slot,&state,1),30.0);
+        state.decks[1].cards[0]=get_card_by_enum(CardId::B4a069TeamRocketsResearcher);
+        assert_eq!(estimated_attack_damage(&attack,&slot,&state,1),0.0);
+        state.decks[1].cards[0]=Card::Unknown;
+        assert_eq!(estimated_attack_damage(&attack,&slot,&state,1),0.0);
+    }
 }

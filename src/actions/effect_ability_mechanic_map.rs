@@ -18,6 +18,10 @@ pub static EFFECT_ABILITY_MECHANIC_MAP: LazyLock<HashMap<&'static str, AbilityMe
     LazyLock::new(|| {
         let mut map: HashMap<&'static str, AbilityMechanic> = HashMap::new();
         map.insert(
+            "This Pokémon may have up to 2 Pokémon Tool cards attached to it.",
+            AbilityMechanic::ToolCapacity { max_tools: 2 },
+        );
+        map.insert(
             "Each of your evolved Pokémon can use any attack from its previous Evolutions. (You still need the necessary Energy to use each attack.)",
             AbilityMechanic::TimeRecall,
         );
@@ -189,6 +193,13 @@ pub static EFFECT_ABILITY_MECHANIC_MAP: LazyLock<HashMap<&'static str, AbilityMe
             },
         );
         map.insert(
+            "If this Pokémon is in the Active Spot and is Knocked Out by damage from an attack from your opponent's Pokémon, do 70 damage to the Attacking Pokémon.",
+            AbilityMechanic::DamageOnKnockoutInActive {
+                amount: 70,
+                target: KnockoutDamageTarget::Attacker,
+            },
+        );
+        map.insert(
             "If this Pokémon is in the Active Spot and is Knocked Out by damage from an attack from your opponent's Pokémon, do 50 damage to the Attacking Pokémon.",
             AbilityMechanic::DamageOnKnockoutInActive {
                 amount: 50,
@@ -355,6 +366,10 @@ pub static EFFECT_ABILITY_MECHANIC_MAP: LazyLock<HashMap<&'static str, AbilityMe
             AbilityMechanic::AttachEnergyFromZoneToActiveTypedOnEvolve {
                 energy_type: EnergyType::Fire,
             },
+        );
+        map.insert(
+            "Once during your turn, you may look at a random card from your opponent's hand.",
+            AbilityMechanic::RevealRandomOpponentHandCard,
         );
         map.insert(
             "Once during your turn, when you put this Pokémon from your hand onto your Bench, you may have your opponent reveal their hand.",
@@ -571,6 +586,21 @@ pub static EFFECT_ABILITY_MECHANIC_MAP: LazyLock<HashMap<&'static str, AbilityMe
             },
         );
         map.insert(
+            "This Pokémon gets +30 HP for each [G] Energy attached to it.",
+            AbilityMechanic::IncreaseHpPerAttachedEnergy {
+                energy_type: EnergyType::Grass,
+                amount: 30,
+            },
+        );
+        map.insert(
+            "Once during your turn, when you play this Pokémon from your hand to evolve 1 of your Pokémon, you may make your opponent's Active Pokémon Poisoned and Burned.",
+            AbilityMechanic::PoisonAndBurnOpponentActiveOnEvolve,
+        );
+        map.insert(
+            "Once during your turn, when you play this Pokémon from your hand to evolve 1 of your Pokémon, you may move a random Energy from your opponent's Active Pokémon to this Pokémon.",
+            AbilityMechanic::MoveRandomEnergyFromOpponentActiveToSelfOnEvolve,
+        );
+        map.insert(
             "This Pokémon takes -10 damage from attacks.",
             AbilityMechanic::ReduceDamageFromAttacks { amount: 10 },
         );
@@ -755,29 +785,14 @@ pub static EFFECT_ABILITY_MECHANIC_MAP: LazyLock<HashMap<&'static str, AbilityMe
                 required_bench_names: REGI_TRIO_NAMES,
             },
         );
-        // DELIBERATELY UNIMPLEMENTED — Victini's Victory Star (B3 025 / P-B 049).
-        //
-        // "Once during your turn, after you flip any coins for an attack of 1 of your [R] Pokémon,
-        // you may ignore all results of those coin flips and begin flipping those coins again."
-        //
-        // Every other coin effect in deckgym is resolved at *forecast* time: `Outcomes` enumerates
-        // one branch per coin result, `apply_action` samples a branch and immediately runs its
-        // mutation. Victory Star needs a player decision *between* those two steps — the player has
-        // to see the flips, then choose whether to discard that result and resample from the same
-        // distribution. There is no point in the engine where a sampled-but-not-yet-applied outcome
-        // is offered to a player, and by the time the `move_generation_stack` could carry the
-        // decision the attack has already resolved (damage, knockouts, promotions, end of turn), so
-        // there is nothing left to take back.
-        //
-        // Implementing it faithfully means a new subsystem: splitting outcome resolution into
-        // "sample" / "offer" / "commit", retaining the pre-attack state so a re-roll can resample
-        // from it, and teaching the search bots to price a decision node nested inside a chance
-        // node. The two shortcuts are both wrong and are deliberately not taken: pre-committing to
-        // the re-roll before seeing the flips is mathematically identical to flipping once (the
-        // Ability would be a silent no-op), and "keep whichever result had more heads" invents a
-        // policy the player never chose. Modelled as inert instead.
-        //
-        // map.insert("Once during your turn, after you flip any coins for an attack of 1 of your [R] Pokémon, you may ignore all results of those coin flips and begin flipping those coins again. You can't use more than 1 Victory Star Ability each turn.", todo_implementation);
+        map.insert(
+            "Once during your turn, after you flip any coins for an attack of 1 of your [R] Pokémon, you may ignore all results of those coin flips and begin flipping those coins again. You can't use more than 1 Victory Star Ability each turn.",
+            AbilityMechanic::VictoryStar,
+        );
+        map.insert(
+            "Once during your turn, when you flip any coins for an effect of your Trainer cards, you may ignore all results of those coin flips and begin flipping those coins again. You can't use more than 1 Luxury Coin Ability each turn.",
+            AbilityMechanic::LuxuryCoin,
+        );
         map.insert(
             "Once during your turn, if this Pokémon is in the Active Spot, you may make your opponent's Active Pokémon Confused.",
             AbilityMechanic::ConfuseOpponentActive,
@@ -842,6 +857,14 @@ pub static EFFECT_ABILITY_MECHANIC_MAP: LazyLock<HashMap<&'static str, AbilityMe
             AbilityMechanic::LookAtTopCardsPutTrainerTypeToHandOnEvolve {
                 count: 4,
                 trainer_type: TrainerType::Item,
+            },
+        );
+        // Team Rocket's Slowking ex (B4a 026 / 082 / 091) - Evil Inspiration
+        map.insert(
+            "Once during your turn, if this Pokémon is in the Active Spot, you may draw a card.",
+            AbilityMechanic::DrawCardsOncePerTurn {
+                amount: 1,
+                require_active: true,
             },
         );
 

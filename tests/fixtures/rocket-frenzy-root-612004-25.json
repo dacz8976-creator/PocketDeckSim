@@ -1,0 +1,1571 @@
+{
+  "game_id": "3375304e-da41-4c56-8e0d-357f41e26d3f",
+  "ply": 25,
+  "actor": 1,
+  "state": {
+    "winner": null,
+    "points": [
+      0,
+      0
+    ],
+    "points_gained_this_turn": [
+      0,
+      0
+    ],
+    "points_gained_during_own_last_turn": [
+      0,
+      0
+    ],
+    "turn_count": 4,
+    "current_player": 1,
+    "end_turn_pending": false,
+    "move_generation_stack": [],
+    "energy_zone": [
+      {
+        "current": null,
+        "next": "Psychic"
+      },
+      {
+        "current": null,
+        "next": "Psychic"
+      }
+    ],
+    "hands": [
+      [
+        {
+          "Trainer": {
+            "id": "P-A 002",
+            "trainer_card_type": "Item",
+            "name": "X Speed",
+            "effect": "During this turn, the Retreat Cost of your Active Pokémon is 1 less.",
+            "rarity": "◊",
+            "booster_pack": "Promo A (P-A)"
+          }
+        },
+        {
+          "Trainer": {
+            "id": "P-A 002",
+            "trainer_card_type": "Item",
+            "name": "X Speed",
+            "effect": "During this turn, the Retreat Cost of your Active Pokémon is 1 less.",
+            "rarity": "◊",
+            "booster_pack": "Promo A (P-A)"
+          }
+        },
+        {
+          "Pokemon": {
+            "id": "B4a 027",
+            "name": "Team Rocket's Drowzee",
+            "stage": 0,
+            "evolves_from": null,
+            "hp": 60,
+            "energy_type": "Psychic",
+            "ability": null,
+            "attacks": [
+              {
+                "energy_required": [
+                  "Psychic",
+                  "Colorless"
+                ],
+                "title": "Mumble",
+                "fixed_damage": 40,
+                "effect": null
+              }
+            ],
+            "weakness": "Darkness",
+            "retreat_cost": [
+              "Colorless"
+            ],
+            "rarity": "◊",
+            "booster_pack": "Team Rocket's Ambition (B4a)"
+          }
+        }
+      ],
+      [
+        {
+          "Trainer": {
+            "id": "P-A 002",
+            "trainer_card_type": "Item",
+            "name": "X Speed",
+            "effect": "During this turn, the Retreat Cost of your Active Pokémon is 1 less.",
+            "rarity": "◊",
+            "booster_pack": "Promo A (P-A)"
+          }
+        },
+        {
+          "Trainer": {
+            "id": "P-A 001",
+            "trainer_card_type": "Item",
+            "name": "Potion",
+            "effect": "Heal 20 damage from 1 of your Pokémon.",
+            "rarity": "◊",
+            "booster_pack": "Promo A (P-A)"
+          }
+        },
+        {
+          "Pokemon": {
+            "id": "B4a 058",
+            "name": "Team Rocket's Rattata",
+            "stage": 0,
+            "evolves_from": null,
+            "hp": 40,
+            "energy_type": "Colorless",
+            "ability": null,
+            "attacks": [
+              {
+                "energy_required": [
+                  "Colorless"
+                ],
+                "title": "Ambush",
+                "fixed_damage": 20,
+                "effect": "Flip a coin. If heads, this attack does 20 more damage."
+              }
+            ],
+            "weakness": "Fighting",
+            "retreat_cost": [
+              "Colorless"
+            ],
+            "rarity": "◊",
+            "booster_pack": "Team Rocket's Ambition (B4a)"
+          }
+        },
+        {
+          "Pokemon": {
+            "id": "B4a 062",
+            "name": "Team Rocket's Kecleon",
+            "stage": 0,
+            "evolves_from": null,
+            "hp": 70,
+            "energy_type": "Colorless",
+            "ability": {
+              "title": "Spy Ops",
+              "effect": "Once during your turn, you may look at a random card from your opponent's hand."
+            },
+            "attacks": [
+              {
+                "energy_required": [
+                  "Colorless",
+                  "Colorless"
+                ],
+                "title": "Hit and Hide",
+                "fixed_damage": 40,
+                "effect": "Flip a coin. If heads, during your opponent's next turn, prevent all damage from—and effects of—attacks done to this Pokémon."
+              }
+            ],
+            "weakness": "Fighting",
+            "retreat_cost": [
+              "Colorless"
+            ],
+            "rarity": "◊",
+            "booster_pack": "Team Rocket's Ambition (B4a)"
+          }
+        },
+        {
+          "Pokemon": {
+            "id": "P-B 091",
+            "name": "Team Rocket's Wobbuffet",
+            "stage": 0,
+            "evolves_from": null,
+            "hp": 80,
+            "energy_type": "Psychic",
+            "ability": null,
+            "attacks": [
+              {
+                "energy_required": [
+                  "Colorless",
+                  "Colorless"
+                ],
+                "title": "Rocket Frenzy",
+                "fixed_damage": 30,
+                "effect": "Reveal the top 6 cards of your deck. This attack does 30 damage for each Pokémon you find there that has “Team Rocket” in its name. Shuffle the revealed cards back into your deck."
+              }
+            ],
+            "weakness": "Darkness",
+            "retreat_cost": [
+              "Colorless",
+              "Colorless"
+            ],
+            "rarity": "◊◊◊",
+            "booster_pack": "Promo B (P-B)"
+          }
+        }
+      ]
+    ],
+    "decks": [
+      {
+        "cards": [
+          {
+            "Pokemon": {
+              "id": "B4a 058",
+              "name": "Team Rocket's Rattata",
+              "stage": 0,
+              "evolves_from": null,
+              "hp": 40,
+              "energy_type": "Colorless",
+              "ability": null,
+              "attacks": [
+                {
+                  "energy_required": [
+                    "Colorless"
+                  ],
+                  "title": "Ambush",
+                  "fixed_damage": 20,
+                  "effect": "Flip a coin. If heads, this attack does 20 more damage."
+                }
+              ],
+              "weakness": "Fighting",
+              "retreat_cost": [
+                "Colorless"
+              ],
+              "rarity": "◊",
+              "booster_pack": "Team Rocket's Ambition (B4a)"
+            }
+          },
+          {
+            "Pokemon": {
+              "id": "B4a 029",
+              "name": "Team Rocket's Mr. Mime",
+              "stage": 0,
+              "evolves_from": null,
+              "hp": 60,
+              "energy_type": "Psychic",
+              "ability": null,
+              "attacks": [
+                {
+                  "energy_required": [
+                    "Psychic"
+                  ],
+                  "title": "Slap Push",
+                  "fixed_damage": 40,
+                  "effect": null
+                }
+              ],
+              "weakness": "Darkness",
+              "retreat_cost": [
+                "Colorless"
+              ],
+              "rarity": "◊",
+              "booster_pack": "Team Rocket's Ambition (B4a)"
+            }
+          },
+          {
+            "Trainer": {
+              "id": "P-A 001",
+              "trainer_card_type": "Item",
+              "name": "Potion",
+              "effect": "Heal 20 damage from 1 of your Pokémon.",
+              "rarity": "◊",
+              "booster_pack": "Promo A (P-A)"
+            }
+          },
+          {
+            "Trainer": {
+              "id": "P-A 007",
+              "trainer_card_type": "Supporter",
+              "name": "Professor's Research",
+              "effect": "Draw 2 cards.",
+              "rarity": "◊",
+              "booster_pack": "Promo A (P-A)"
+            }
+          },
+          {
+            "Trainer": {
+              "id": "P-A 001",
+              "trainer_card_type": "Item",
+              "name": "Potion",
+              "effect": "Heal 20 damage from 1 of your Pokémon.",
+              "rarity": "◊",
+              "booster_pack": "Promo A (P-A)"
+            }
+          },
+          {
+            "Pokemon": {
+              "id": "P-B 091",
+              "name": "Team Rocket's Wobbuffet",
+              "stage": 0,
+              "evolves_from": null,
+              "hp": 80,
+              "energy_type": "Psychic",
+              "ability": null,
+              "attacks": [
+                {
+                  "energy_required": [
+                    "Colorless",
+                    "Colorless"
+                  ],
+                  "title": "Rocket Frenzy",
+                  "fixed_damage": 30,
+                  "effect": "Reveal the top 6 cards of your deck. This attack does 30 damage for each Pokémon you find there that has “Team Rocket” in its name. Shuffle the revealed cards back into your deck."
+                }
+              ],
+              "weakness": "Darkness",
+              "retreat_cost": [
+                "Colorless",
+                "Colorless"
+              ],
+              "rarity": "◊◊◊",
+              "booster_pack": "Promo B (P-B)"
+            }
+          },
+          {
+            "Pokemon": {
+              "id": "B4a 062",
+              "name": "Team Rocket's Kecleon",
+              "stage": 0,
+              "evolves_from": null,
+              "hp": 70,
+              "energy_type": "Colorless",
+              "ability": {
+                "title": "Spy Ops",
+                "effect": "Once during your turn, you may look at a random card from your opponent's hand."
+              },
+              "attacks": [
+                {
+                  "energy_required": [
+                    "Colorless",
+                    "Colorless"
+                  ],
+                  "title": "Hit and Hide",
+                  "fixed_damage": 40,
+                  "effect": "Flip a coin. If heads, during your opponent's next turn, prevent all damage from—and effects of—attacks done to this Pokémon."
+                }
+              ],
+              "weakness": "Fighting",
+              "retreat_cost": [
+                "Colorless"
+              ],
+              "rarity": "◊",
+              "booster_pack": "Team Rocket's Ambition (B4a)"
+            }
+          },
+          {
+            "Pokemon": {
+              "id": "B4a 064",
+              "name": "Furfrou",
+              "stage": 0,
+              "evolves_from": null,
+              "hp": 70,
+              "energy_type": "Colorless",
+              "ability": {
+                "title": "Fur Coat",
+                "effect": "This Pokémon takes -20 damage from attacks."
+              },
+              "attacks": [
+                {
+                  "energy_required": [
+                    "Colorless"
+                  ],
+                  "title": "Continuous Steps",
+                  "fixed_damage": 30,
+                  "effect": "Flip a coin until you get tails. This attack does 30 damage for each heads."
+                }
+              ],
+              "weakness": "Fighting",
+              "retreat_cost": [
+                "Colorless"
+              ],
+              "rarity": "◊",
+              "booster_pack": "Team Rocket's Ambition (B4a)"
+            }
+          },
+          {
+            "Trainer": {
+              "id": "P-A 007",
+              "trainer_card_type": "Supporter",
+              "name": "Professor's Research",
+              "effect": "Draw 2 cards.",
+              "rarity": "◊",
+              "booster_pack": "Promo A (P-A)"
+            }
+          },
+          {
+            "Pokemon": {
+              "id": "B4a 029",
+              "name": "Team Rocket's Mr. Mime",
+              "stage": 0,
+              "evolves_from": null,
+              "hp": 60,
+              "energy_type": "Psychic",
+              "ability": null,
+              "attacks": [
+                {
+                  "energy_required": [
+                    "Psychic"
+                  ],
+                  "title": "Slap Push",
+                  "fixed_damage": 40,
+                  "effect": null
+                }
+              ],
+              "weakness": "Darkness",
+              "retreat_cost": [
+                "Colorless"
+              ],
+              "rarity": "◊",
+              "booster_pack": "Team Rocket's Ambition (B4a)"
+            }
+          },
+          {
+            "Pokemon": {
+              "id": "B4a 027",
+              "name": "Team Rocket's Drowzee",
+              "stage": 0,
+              "evolves_from": null,
+              "hp": 60,
+              "energy_type": "Psychic",
+              "ability": null,
+              "attacks": [
+                {
+                  "energy_required": [
+                    "Psychic",
+                    "Colorless"
+                  ],
+                  "title": "Mumble",
+                  "fixed_damage": 40,
+                  "effect": null
+                }
+              ],
+              "weakness": "Darkness",
+              "retreat_cost": [
+                "Colorless"
+              ],
+              "rarity": "◊",
+              "booster_pack": "Team Rocket's Ambition (B4a)"
+            }
+          },
+          {
+            "Pokemon": {
+              "id": "B4a 058",
+              "name": "Team Rocket's Rattata",
+              "stage": 0,
+              "evolves_from": null,
+              "hp": 40,
+              "energy_type": "Colorless",
+              "ability": null,
+              "attacks": [
+                {
+                  "energy_required": [
+                    "Colorless"
+                  ],
+                  "title": "Ambush",
+                  "fixed_damage": 20,
+                  "effect": "Flip a coin. If heads, this attack does 20 more damage."
+                }
+              ],
+              "weakness": "Fighting",
+              "retreat_cost": [
+                "Colorless"
+              ],
+              "rarity": "◊",
+              "booster_pack": "Team Rocket's Ambition (B4a)"
+            }
+          },
+          {
+            "Pokemon": {
+              "id": "B4a 060",
+              "name": "Team Rocket's Meowth",
+              "stage": 0,
+              "evolves_from": null,
+              "hp": 50,
+              "energy_type": "Colorless",
+              "ability": null,
+              "attacks": [
+                {
+                  "energy_required": [
+                    "Colorless"
+                  ],
+                  "title": "Scratch",
+                  "fixed_damage": 30,
+                  "effect": null
+                }
+              ],
+              "weakness": "Fighting",
+              "retreat_cost": [
+                "Colorless"
+              ],
+              "rarity": "◊",
+              "booster_pack": "Team Rocket's Ambition (B4a)"
+            }
+          }
+        ],
+        "energy_types": [
+          "Psychic"
+        ]
+      },
+      {
+        "cards": [
+          {
+            "Pokemon": {
+              "id": "B4a 027",
+              "name": "Team Rocket's Drowzee",
+              "stage": 0,
+              "evolves_from": null,
+              "hp": 60,
+              "energy_type": "Psychic",
+              "ability": null,
+              "attacks": [
+                {
+                  "energy_required": [
+                    "Psychic",
+                    "Colorless"
+                  ],
+                  "title": "Mumble",
+                  "fixed_damage": 40,
+                  "effect": null
+                }
+              ],
+              "weakness": "Darkness",
+              "retreat_cost": [
+                "Colorless"
+              ],
+              "rarity": "◊",
+              "booster_pack": "Team Rocket's Ambition (B4a)"
+            }
+          },
+          {
+            "Trainer": {
+              "id": "P-A 001",
+              "trainer_card_type": "Item",
+              "name": "Potion",
+              "effect": "Heal 20 damage from 1 of your Pokémon.",
+              "rarity": "◊",
+              "booster_pack": "Promo A (P-A)"
+            }
+          },
+          {
+            "Pokemon": {
+              "id": "B4a 029",
+              "name": "Team Rocket's Mr. Mime",
+              "stage": 0,
+              "evolves_from": null,
+              "hp": 60,
+              "energy_type": "Psychic",
+              "ability": null,
+              "attacks": [
+                {
+                  "energy_required": [
+                    "Psychic"
+                  ],
+                  "title": "Slap Push",
+                  "fixed_damage": 40,
+                  "effect": null
+                }
+              ],
+              "weakness": "Darkness",
+              "retreat_cost": [
+                "Colorless"
+              ],
+              "rarity": "◊",
+              "booster_pack": "Team Rocket's Ambition (B4a)"
+            }
+          },
+          {
+            "Pokemon": {
+              "id": "B4a 064",
+              "name": "Furfrou",
+              "stage": 0,
+              "evolves_from": null,
+              "hp": 70,
+              "energy_type": "Colorless",
+              "ability": {
+                "title": "Fur Coat",
+                "effect": "This Pokémon takes -20 damage from attacks."
+              },
+              "attacks": [
+                {
+                  "energy_required": [
+                    "Colorless"
+                  ],
+                  "title": "Continuous Steps",
+                  "fixed_damage": 30,
+                  "effect": "Flip a coin until you get tails. This attack does 30 damage for each heads."
+                }
+              ],
+              "weakness": "Fighting",
+              "retreat_cost": [
+                "Colorless"
+              ],
+              "rarity": "◊",
+              "booster_pack": "Team Rocket's Ambition (B4a)"
+            }
+          },
+          {
+            "Trainer": {
+              "id": "P-A 002",
+              "trainer_card_type": "Item",
+              "name": "X Speed",
+              "effect": "During this turn, the Retreat Cost of your Active Pokémon is 1 less.",
+              "rarity": "◊",
+              "booster_pack": "Promo A (P-A)"
+            }
+          },
+          {
+            "Pokemon": {
+              "id": "B4a 064",
+              "name": "Furfrou",
+              "stage": 0,
+              "evolves_from": null,
+              "hp": 70,
+              "energy_type": "Colorless",
+              "ability": {
+                "title": "Fur Coat",
+                "effect": "This Pokémon takes -20 damage from attacks."
+              },
+              "attacks": [
+                {
+                  "energy_required": [
+                    "Colorless"
+                  ],
+                  "title": "Continuous Steps",
+                  "fixed_damage": 30,
+                  "effect": "Flip a coin until you get tails. This attack does 30 damage for each heads."
+                }
+              ],
+              "weakness": "Fighting",
+              "retreat_cost": [
+                "Colorless"
+              ],
+              "rarity": "◊",
+              "booster_pack": "Team Rocket's Ambition (B4a)"
+            }
+          },
+          {
+            "Pokemon": {
+              "id": "B4a 060",
+              "name": "Team Rocket's Meowth",
+              "stage": 0,
+              "evolves_from": null,
+              "hp": 50,
+              "energy_type": "Colorless",
+              "ability": null,
+              "attacks": [
+                {
+                  "energy_required": [
+                    "Colorless"
+                  ],
+                  "title": "Scratch",
+                  "fixed_damage": 30,
+                  "effect": null
+                }
+              ],
+              "weakness": "Fighting",
+              "retreat_cost": [
+                "Colorless"
+              ],
+              "rarity": "◊",
+              "booster_pack": "Team Rocket's Ambition (B4a)"
+            }
+          },
+          {
+            "Pokemon": {
+              "id": "B4a 058",
+              "name": "Team Rocket's Rattata",
+              "stage": 0,
+              "evolves_from": null,
+              "hp": 40,
+              "energy_type": "Colorless",
+              "ability": null,
+              "attacks": [
+                {
+                  "energy_required": [
+                    "Colorless"
+                  ],
+                  "title": "Ambush",
+                  "fixed_damage": 20,
+                  "effect": "Flip a coin. If heads, this attack does 20 more damage."
+                }
+              ],
+              "weakness": "Fighting",
+              "retreat_cost": [
+                "Colorless"
+              ],
+              "rarity": "◊",
+              "booster_pack": "Team Rocket's Ambition (B4a)"
+            }
+          },
+          {
+            "Pokemon": {
+              "id": "B4a 027",
+              "name": "Team Rocket's Drowzee",
+              "stage": 0,
+              "evolves_from": null,
+              "hp": 60,
+              "energy_type": "Psychic",
+              "ability": null,
+              "attacks": [
+                {
+                  "energy_required": [
+                    "Psychic",
+                    "Colorless"
+                  ],
+                  "title": "Mumble",
+                  "fixed_damage": 40,
+                  "effect": null
+                }
+              ],
+              "weakness": "Darkness",
+              "retreat_cost": [
+                "Colorless"
+              ],
+              "rarity": "◊",
+              "booster_pack": "Team Rocket's Ambition (B4a)"
+            }
+          }
+        ],
+        "energy_types": [
+          "Psychic"
+        ]
+      }
+    ],
+    "discard_piles": [
+      [],
+      [
+        {
+          "Trainer": {
+            "id": "P-A 007",
+            "trainer_card_type": "Supporter",
+            "name": "Professor's Research",
+            "effect": "Draw 2 cards.",
+            "rarity": "◊",
+            "booster_pack": "Promo A (P-A)"
+          }
+        },
+        {
+          "Trainer": {
+            "id": "P-A 007",
+            "trainer_card_type": "Supporter",
+            "name": "Professor's Research",
+            "effect": "Draw 2 cards.",
+            "rarity": "◊",
+            "booster_pack": "Promo A (P-A)"
+          }
+        }
+      ]
+    ],
+    "discard_energies": [
+      [],
+      []
+    ],
+    "in_play_pokemon": [
+      [
+        {
+          "card": {
+            "Pokemon": {
+              "id": "P-B 091",
+              "name": "Team Rocket's Wobbuffet",
+              "stage": 0,
+              "evolves_from": null,
+              "hp": 80,
+              "energy_type": "Psychic",
+              "ability": null,
+              "attacks": [
+                {
+                  "energy_required": [
+                    "Colorless",
+                    "Colorless"
+                  ],
+                  "title": "Rocket Frenzy",
+                  "fixed_damage": 30,
+                  "effect": "Reveal the top 6 cards of your deck. This attack does 30 damage for each Pokémon you find there that has “Team Rocket” in its name. Shuffle the revealed cards back into your deck."
+                }
+              ],
+              "weakness": "Darkness",
+              "retreat_cost": [
+                "Colorless",
+                "Colorless"
+              ],
+              "rarity": "◊◊◊",
+              "booster_pack": "Promo B (P-B)"
+            }
+          },
+          "damage_counters": 0,
+          "base_hp": 80,
+          "stadium_hp_bonus": 0,
+          "ability_hp_bonus": 0,
+          "attached_energy": [
+            "Psychic"
+          ],
+          "attached_tools": [],
+          "played_this_turn": false,
+          "moved_to_active_this_turn": false,
+          "damaged_by_attack_while_active_this_turn": false,
+          "damaged_by_attack_while_active_last_turn": false,
+          "ability_used": false,
+          "poisoned": false,
+          "poison_checkup_damage": null,
+          "paralyzed": false,
+          "asleep": false,
+          "burned": false,
+          "confused": false,
+          "cards_behind": [],
+          "prevent_first_attack_damage_used": false,
+          "has_attacked_since_play": false,
+          "effects": []
+        },
+        {
+          "card": {
+            "Pokemon": {
+              "id": "B4a 064",
+              "name": "Furfrou",
+              "stage": 0,
+              "evolves_from": null,
+              "hp": 70,
+              "energy_type": "Colorless",
+              "ability": {
+                "title": "Fur Coat",
+                "effect": "This Pokémon takes -20 damage from attacks."
+              },
+              "attacks": [
+                {
+                  "energy_required": [
+                    "Colorless"
+                  ],
+                  "title": "Continuous Steps",
+                  "fixed_damage": 30,
+                  "effect": "Flip a coin until you get tails. This attack does 30 damage for each heads."
+                }
+              ],
+              "weakness": "Fighting",
+              "retreat_cost": [
+                "Colorless"
+              ],
+              "rarity": "◊",
+              "booster_pack": "Team Rocket's Ambition (B4a)"
+            }
+          },
+          "damage_counters": 0,
+          "base_hp": 70,
+          "stadium_hp_bonus": 0,
+          "ability_hp_bonus": 0,
+          "attached_energy": [],
+          "attached_tools": [],
+          "played_this_turn": false,
+          "moved_to_active_this_turn": false,
+          "damaged_by_attack_while_active_this_turn": false,
+          "damaged_by_attack_while_active_last_turn": false,
+          "ability_used": false,
+          "poisoned": false,
+          "poison_checkup_damage": null,
+          "paralyzed": false,
+          "asleep": false,
+          "burned": false,
+          "confused": false,
+          "cards_behind": [],
+          "prevent_first_attack_damage_used": false,
+          "has_attacked_since_play": false,
+          "effects": []
+        },
+        {
+          "card": {
+            "Pokemon": {
+              "id": "B4a 060",
+              "name": "Team Rocket's Meowth",
+              "stage": 0,
+              "evolves_from": null,
+              "hp": 50,
+              "energy_type": "Colorless",
+              "ability": null,
+              "attacks": [
+                {
+                  "energy_required": [
+                    "Colorless"
+                  ],
+                  "title": "Scratch",
+                  "fixed_damage": 30,
+                  "effect": null
+                }
+              ],
+              "weakness": "Fighting",
+              "retreat_cost": [
+                "Colorless"
+              ],
+              "rarity": "◊",
+              "booster_pack": "Team Rocket's Ambition (B4a)"
+            }
+          },
+          "damage_counters": 0,
+          "base_hp": 50,
+          "stadium_hp_bonus": 0,
+          "ability_hp_bonus": 0,
+          "attached_energy": [],
+          "attached_tools": [],
+          "played_this_turn": false,
+          "moved_to_active_this_turn": false,
+          "damaged_by_attack_while_active_this_turn": false,
+          "damaged_by_attack_while_active_last_turn": false,
+          "ability_used": false,
+          "poisoned": false,
+          "poison_checkup_damage": null,
+          "paralyzed": false,
+          "asleep": false,
+          "burned": false,
+          "confused": false,
+          "cards_behind": [],
+          "prevent_first_attack_damage_used": false,
+          "has_attacked_since_play": false,
+          "effects": []
+        },
+        {
+          "card": {
+            "Pokemon": {
+              "id": "B4a 062",
+              "name": "Team Rocket's Kecleon",
+              "stage": 0,
+              "evolves_from": null,
+              "hp": 70,
+              "energy_type": "Colorless",
+              "ability": {
+                "title": "Spy Ops",
+                "effect": "Once during your turn, you may look at a random card from your opponent's hand."
+              },
+              "attacks": [
+                {
+                  "energy_required": [
+                    "Colorless",
+                    "Colorless"
+                  ],
+                  "title": "Hit and Hide",
+                  "fixed_damage": 40,
+                  "effect": "Flip a coin. If heads, during your opponent's next turn, prevent all damage from—and effects of—attacks done to this Pokémon."
+                }
+              ],
+              "weakness": "Fighting",
+              "retreat_cost": [
+                "Colorless"
+              ],
+              "rarity": "◊",
+              "booster_pack": "Team Rocket's Ambition (B4a)"
+            }
+          },
+          "damage_counters": 0,
+          "base_hp": 70,
+          "stadium_hp_bonus": 0,
+          "ability_hp_bonus": 0,
+          "attached_energy": [],
+          "attached_tools": [],
+          "played_this_turn": false,
+          "moved_to_active_this_turn": false,
+          "damaged_by_attack_while_active_this_turn": false,
+          "damaged_by_attack_while_active_last_turn": false,
+          "ability_used": false,
+          "poisoned": false,
+          "poison_checkup_damage": null,
+          "paralyzed": false,
+          "asleep": false,
+          "burned": false,
+          "confused": false,
+          "cards_behind": [],
+          "prevent_first_attack_damage_used": false,
+          "has_attacked_since_play": false,
+          "effects": []
+        }
+      ],
+      [
+        {
+          "card": {
+            "Pokemon": {
+              "id": "P-B 091",
+              "name": "Team Rocket's Wobbuffet",
+              "stage": 0,
+              "evolves_from": null,
+              "hp": 80,
+              "energy_type": "Psychic",
+              "ability": null,
+              "attacks": [
+                {
+                  "energy_required": [
+                    "Colorless",
+                    "Colorless"
+                  ],
+                  "title": "Rocket Frenzy",
+                  "fixed_damage": 30,
+                  "effect": "Reveal the top 6 cards of your deck. This attack does 30 damage for each Pokémon you find there that has “Team Rocket” in its name. Shuffle the revealed cards back into your deck."
+                }
+              ],
+              "weakness": "Darkness",
+              "retreat_cost": [
+                "Colorless",
+                "Colorless"
+              ],
+              "rarity": "◊◊◊",
+              "booster_pack": "Promo B (P-B)"
+            }
+          },
+          "damage_counters": 0,
+          "base_hp": 80,
+          "stadium_hp_bonus": 0,
+          "ability_hp_bonus": 0,
+          "attached_energy": [
+            "Psychic",
+            "Psychic"
+          ],
+          "attached_tools": [],
+          "played_this_turn": false,
+          "moved_to_active_this_turn": false,
+          "damaged_by_attack_while_active_this_turn": false,
+          "damaged_by_attack_while_active_last_turn": false,
+          "ability_used": false,
+          "poisoned": false,
+          "poison_checkup_damage": null,
+          "paralyzed": false,
+          "asleep": false,
+          "burned": false,
+          "confused": false,
+          "cards_behind": [],
+          "prevent_first_attack_damage_used": false,
+          "has_attacked_since_play": false,
+          "effects": []
+        },
+        {
+          "card": {
+            "Pokemon": {
+              "id": "B4a 060",
+              "name": "Team Rocket's Meowth",
+              "stage": 0,
+              "evolves_from": null,
+              "hp": 50,
+              "energy_type": "Colorless",
+              "ability": null,
+              "attacks": [
+                {
+                  "energy_required": [
+                    "Colorless"
+                  ],
+                  "title": "Scratch",
+                  "fixed_damage": 30,
+                  "effect": null
+                }
+              ],
+              "weakness": "Fighting",
+              "retreat_cost": [
+                "Colorless"
+              ],
+              "rarity": "◊",
+              "booster_pack": "Team Rocket's Ambition (B4a)"
+            }
+          },
+          "damage_counters": 0,
+          "base_hp": 50,
+          "stadium_hp_bonus": 0,
+          "ability_hp_bonus": 0,
+          "attached_energy": [],
+          "attached_tools": [],
+          "played_this_turn": false,
+          "moved_to_active_this_turn": false,
+          "damaged_by_attack_while_active_this_turn": false,
+          "damaged_by_attack_while_active_last_turn": false,
+          "ability_used": false,
+          "poisoned": false,
+          "poison_checkup_damage": null,
+          "paralyzed": false,
+          "asleep": false,
+          "burned": false,
+          "confused": false,
+          "cards_behind": [],
+          "prevent_first_attack_damage_used": false,
+          "has_attacked_since_play": false,
+          "effects": []
+        },
+        {
+          "card": {
+            "Pokemon": {
+              "id": "B4a 029",
+              "name": "Team Rocket's Mr. Mime",
+              "stage": 0,
+              "evolves_from": null,
+              "hp": 60,
+              "energy_type": "Psychic",
+              "ability": null,
+              "attacks": [
+                {
+                  "energy_required": [
+                    "Psychic"
+                  ],
+                  "title": "Slap Push",
+                  "fixed_damage": 40,
+                  "effect": null
+                }
+              ],
+              "weakness": "Darkness",
+              "retreat_cost": [
+                "Colorless"
+              ],
+              "rarity": "◊",
+              "booster_pack": "Team Rocket's Ambition (B4a)"
+            }
+          },
+          "damage_counters": 0,
+          "base_hp": 60,
+          "stadium_hp_bonus": 0,
+          "ability_hp_bonus": 0,
+          "attached_energy": [],
+          "attached_tools": [],
+          "played_this_turn": false,
+          "moved_to_active_this_turn": false,
+          "damaged_by_attack_while_active_this_turn": false,
+          "damaged_by_attack_while_active_last_turn": false,
+          "ability_used": false,
+          "poisoned": false,
+          "poison_checkup_damage": null,
+          "paralyzed": false,
+          "asleep": false,
+          "burned": false,
+          "confused": false,
+          "cards_behind": [],
+          "prevent_first_attack_damage_used": false,
+          "has_attacked_since_play": false,
+          "effects": []
+        },
+        {
+          "card": {
+            "Pokemon": {
+              "id": "B4a 062",
+              "name": "Team Rocket's Kecleon",
+              "stage": 0,
+              "evolves_from": null,
+              "hp": 70,
+              "energy_type": "Colorless",
+              "ability": {
+                "title": "Spy Ops",
+                "effect": "Once during your turn, you may look at a random card from your opponent's hand."
+              },
+              "attacks": [
+                {
+                  "energy_required": [
+                    "Colorless",
+                    "Colorless"
+                  ],
+                  "title": "Hit and Hide",
+                  "fixed_damage": 40,
+                  "effect": "Flip a coin. If heads, during your opponent's next turn, prevent all damage from—and effects of—attacks done to this Pokémon."
+                }
+              ],
+              "weakness": "Fighting",
+              "retreat_cost": [
+                "Colorless"
+              ],
+              "rarity": "◊",
+              "booster_pack": "Team Rocket's Ambition (B4a)"
+            }
+          },
+          "damage_counters": 0,
+          "base_hp": 70,
+          "stadium_hp_bonus": 0,
+          "ability_hp_bonus": 0,
+          "attached_energy": [],
+          "attached_tools": [],
+          "played_this_turn": false,
+          "moved_to_active_this_turn": false,
+          "damaged_by_attack_while_active_this_turn": false,
+          "damaged_by_attack_while_active_last_turn": false,
+          "ability_used": false,
+          "poisoned": false,
+          "poison_checkup_damage": null,
+          "paralyzed": false,
+          "asleep": false,
+          "burned": false,
+          "confused": false,
+          "cards_behind": [],
+          "prevent_first_attack_damage_used": false,
+          "has_attacked_since_play": false,
+          "effects": []
+        }
+      ]
+    ],
+    "active_stadium": null,
+    "active_stadium_owner": null,
+    "has_played_support": true,
+    "has_retreated": false,
+    "has_used_stadium": [
+      false,
+      false
+    ],
+    "knocked_out_by_opponent_attack_this_turn": false,
+    "knocked_out_by_opponent_attack_last_turn": false,
+    "knocked_out_types_by_opponent_attack_this_turn": [],
+    "knocked_out_types_by_opponent_attack_last_turn": [],
+    "attack_name_used_this_turn": [
+      null,
+      null
+    ],
+    "attack_name_used_last_turn": [
+      null,
+      null
+    ],
+    "attack_name_used_count": [
+      {},
+      {}
+    ],
+    "own_knockouts_this_game": [
+      0,
+      0
+    ],
+    "turn_effects": {}
+  },
+  "playable_actions": [
+    {
+      "actor": 1,
+      "action": "EndTurn",
+      "is_stack": false
+    },
+    {
+      "actor": 1,
+      "action": {
+        "Attack": {
+          "energy_required": [
+            "Colorless",
+            "Colorless"
+          ],
+          "title": "Rocket Frenzy",
+          "fixed_damage": 30,
+          "effect": "Reveal the top 6 cards of your deck. This attack does 30 damage for each Pokémon you find there that has “Team Rocket” in its name. Shuffle the revealed cards back into your deck."
+        }
+      },
+      "is_stack": false
+    },
+    {
+      "actor": 1,
+      "action": {
+        "Play": {
+          "trainer_card": {
+            "id": "P-A 002",
+            "trainer_card_type": "Item",
+            "name": "X Speed",
+            "effect": "During this turn, the Retreat Cost of your Active Pokémon is 1 less.",
+            "rarity": "◊",
+            "booster_pack": "Promo A (P-A)"
+          }
+        }
+      },
+      "is_stack": false
+    },
+    {
+      "actor": 1,
+      "action": {
+        "Retreat": 1
+      },
+      "is_stack": false
+    },
+    {
+      "actor": 1,
+      "action": {
+        "Retreat": 2
+      },
+      "is_stack": false
+    },
+    {
+      "actor": 1,
+      "action": {
+        "Retreat": 3
+      },
+      "is_stack": false
+    },
+    {
+      "actor": 1,
+      "action": {
+        "UseAbility": {
+          "in_play_idx": 3
+        }
+      },
+      "is_stack": false
+    }
+  ],
+  "chosen_action": {
+    "actor": 1,
+    "action": {
+      "Play": {
+        "trainer_card": {
+          "id": "P-A 002",
+          "trainer_card_type": "Item",
+          "name": "X Speed",
+          "effect": "During this turn, the Retreat Cost of your Active Pokémon is 1 less.",
+          "rarity": "◊",
+          "booster_pack": "Promo A (P-A)"
+        }
+      }
+    },
+    "is_stack": false
+  },
+  "randomness": {
+    "scheme": "pdl-search-v1/rand-0.8-StdRng",
+    "game_seed": 612004,
+    "player_search_seeds": [
+      951016348594869723,
+      17974296297512960042
+    ]
+  },
+  "decision_randomness": {
+    "actor": 1,
+    "decision_index": 10,
+    "search_seed": 5455765787516347410
+  },
+  "information_model": "closed-counts-unpriced-v6",
+  "unpriced_branches": [
+    {
+      "action": {
+        "actor": 0,
+        "action": "Noop",
+        "is_stack": false
+      },
+      "root_action": {
+        "actor": 1,
+        "action": "EndTurn",
+        "is_stack": false
+      },
+      "reason": "opponent reply requires an unknown hand or future energy model",
+      "occurrences": 1,
+      "selected": false
+    },
+    {
+      "action": {
+        "actor": 0,
+        "action": "Noop",
+        "is_stack": false
+      },
+      "root_action": {
+        "actor": 1,
+        "action": {
+          "Attack": {
+            "energy_required": [
+              "Colorless",
+              "Colorless"
+            ],
+            "title": "Rocket Frenzy",
+            "fixed_damage": 30,
+            "effect": "Reveal the top 6 cards of your deck. This attack does 30 damage for each Pokémon you find there that has “Team Rocket” in its name. Shuffle the revealed cards back into your deck."
+          }
+        },
+        "is_stack": false
+      },
+      "reason": "opponent reply requires an unknown hand or future energy model",
+      "occurrences": 3,
+      "selected": false
+    },
+    {
+      "action": {
+        "actor": 0,
+        "action": "Noop",
+        "is_stack": false
+      },
+      "root_action": {
+        "actor": 1,
+        "action": {
+          "Play": {
+            "trainer_card": {
+              "id": "P-A 002",
+              "trainer_card_type": "Item",
+              "name": "X Speed",
+              "effect": "During this turn, the Retreat Cost of your Active Pokémon is 1 less.",
+              "rarity": "◊",
+              "booster_pack": "Promo A (P-A)"
+            }
+          }
+        },
+        "is_stack": false
+      },
+      "reason": "opponent reply requires an unknown hand or future energy model",
+      "occurrences": 7,
+      "selected": true
+    },
+    {
+      "action": {
+        "actor": 1,
+        "action": {
+          "UseAbility": {
+            "in_play_idx": 3
+          }
+        },
+        "is_stack": false
+      },
+      "root_action": {
+        "actor": 1,
+        "action": {
+          "Play": {
+            "trainer_card": {
+              "id": "P-A 002",
+              "trainer_card_type": "Item",
+              "name": "X Speed",
+              "effect": "During this turn, the Retreat Cost of your Active Pokémon is 1 less.",
+              "rarity": "◊",
+              "booster_pack": "Promo A (P-A)"
+            }
+          }
+        },
+        "is_stack": false
+      },
+      "reason": "effect or choice depends on unrevealed opponent cards",
+      "occurrences": 3,
+      "selected": true
+    },
+    {
+      "action": {
+        "actor": 1,
+        "action": {
+          "UseAbility": {
+            "in_play_idx": 0
+          }
+        },
+        "is_stack": false
+      },
+      "root_action": {
+        "actor": 1,
+        "action": {
+          "Play": {
+            "trainer_card": {
+              "id": "P-A 002",
+              "trainer_card_type": "Item",
+              "name": "X Speed",
+              "effect": "During this turn, the Retreat Cost of your Active Pokémon is 1 less.",
+              "rarity": "◊",
+              "booster_pack": "Promo A (P-A)"
+            }
+          }
+        },
+        "is_stack": false
+      },
+      "reason": "effect or choice depends on unrevealed opponent cards",
+      "occurrences": 1,
+      "selected": true
+    },
+    {
+      "action": {
+        "actor": 0,
+        "action": "Noop",
+        "is_stack": false
+      },
+      "root_action": {
+        "actor": 1,
+        "action": {
+          "Retreat": 1
+        },
+        "is_stack": false
+      },
+      "reason": "opponent reply requires an unknown hand or future energy model",
+      "occurrences": 2,
+      "selected": false
+    },
+    {
+      "action": {
+        "actor": 1,
+        "action": {
+          "UseAbility": {
+            "in_play_idx": 3
+          }
+        },
+        "is_stack": false
+      },
+      "root_action": {
+        "actor": 1,
+        "action": {
+          "Retreat": 1
+        },
+        "is_stack": false
+      },
+      "reason": "effect or choice depends on unrevealed opponent cards",
+      "occurrences": 2,
+      "selected": false
+    },
+    {
+      "action": {
+        "actor": 0,
+        "action": "Noop",
+        "is_stack": false
+      },
+      "root_action": {
+        "actor": 1,
+        "action": {
+          "Retreat": 2
+        },
+        "is_stack": false
+      },
+      "reason": "opponent reply requires an unknown hand or future energy model",
+      "occurrences": 2,
+      "selected": false
+    },
+    {
+      "action": {
+        "actor": 1,
+        "action": {
+          "UseAbility": {
+            "in_play_idx": 3
+          }
+        },
+        "is_stack": false
+      },
+      "root_action": {
+        "actor": 1,
+        "action": {
+          "Retreat": 2
+        },
+        "is_stack": false
+      },
+      "reason": "effect or choice depends on unrevealed opponent cards",
+      "occurrences": 2,
+      "selected": false
+    },
+    {
+      "action": {
+        "actor": 0,
+        "action": "Noop",
+        "is_stack": false
+      },
+      "root_action": {
+        "actor": 1,
+        "action": {
+          "Retreat": 3
+        },
+        "is_stack": false
+      },
+      "reason": "opponent reply requires an unknown hand or future energy model",
+      "occurrences": 2,
+      "selected": false
+    },
+    {
+      "action": {
+        "actor": 1,
+        "action": {
+          "UseAbility": {
+            "in_play_idx": 0
+          }
+        },
+        "is_stack": false
+      },
+      "root_action": {
+        "actor": 1,
+        "action": {
+          "Retreat": 3
+        },
+        "is_stack": false
+      },
+      "reason": "effect or choice depends on unrevealed opponent cards",
+      "occurrences": 2,
+      "selected": false
+    },
+    {
+      "action": {
+        "actor": 1,
+        "action": {
+          "UseAbility": {
+            "in_play_idx": 3
+          }
+        },
+        "is_stack": false
+      },
+      "root_action": {
+        "actor": 1,
+        "action": {
+          "UseAbility": {
+            "in_play_idx": 3
+          }
+        },
+        "is_stack": false
+      },
+      "reason": "effect or choice depends on unrevealed opponent cards",
+      "occurrences": 1,
+      "selected": false
+    }
+  ],
+  "private_reveals": [],
+  "public_reveals": [],
+  "luxury_coin_resolutions": []
+}

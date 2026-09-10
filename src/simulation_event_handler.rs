@@ -6,7 +6,12 @@ use std::{
 };
 use uuid::Uuid;
 
-use crate::{actions::Action, state::GameOutcome, State};
+use crate::{
+    actions::Action,
+    game::{DecisionRandomness, GameRandomness},
+    state::GameOutcome,
+    State,
+};
 
 /// Trait to listen to simulation events
 /// Simulations are run in parallel. One instance of SimulationEventHandler will be created
@@ -18,8 +23,43 @@ pub trait SimulationEventHandler: any::Any + Send {
     fn on_simulation_end(&mut self) {}
     fn merge(&mut self, _other: &dyn SimulationEventHandler);
 
+    /// Opt in to successful public-reply search evidence. Off by default to avoid
+    /// allocating hypothetical board records in ordinary or results-only simulations.
+    fn wants_public_reply_evidence(&self) -> bool { false }
+    fn on_public_reply_evidence(
+        &mut self,
+        _game_id: Uuid,
+        _evidence: Option<&crate::public_reply_evidence::PublicReplyEvidence>,
+    ) {}
+
     // Game Methods (these will be called on per-thread instances of SimulationEventHandler)
     fn on_game_start(&mut self, _game_id: Uuid) {}
+    fn on_decision_information(
+        &mut self,
+        _game_id: Uuid,
+        _model: &str,
+        _unpriced: &[crate::observation::UnpricedBranch],
+    ) {
+    }
+    fn on_game_randomness(&mut self, _game_id: Uuid, _randomness: &GameRandomness) {}
+    fn on_decision_randomness(&mut self, _game_id: Uuid, _randomness: Option<&DecisionRandomness>) {
+    }
+    fn on_private_reveals(
+        &mut self,
+        _game_id: Uuid,
+        _reveals: &[crate::game::PrivateRevealRecord],
+    ) {
+    }
+
+    fn on_public_reveals(&mut self, _game_id: Uuid, _reveals: &[crate::game::PublicRevealRecord]) {}
+    fn on_luxury_coin_resolutions(
+        &mut self,
+        _game_id: Uuid,
+        _records: &[crate::game::LuxuryCoinResolutionRecord],
+    ) {
+    }
+    /// Called after the action and all result/reveal callbacks have resolved.
+    fn on_action_resolved(&mut self, _game_id: Uuid) {}
     fn on_action(
         &mut self,
         _game_id: Uuid,
@@ -54,6 +94,73 @@ impl CompositeSimulationEventHandler {
 }
 
 impl SimulationEventHandler for CompositeSimulationEventHandler {
+    fn wants_public_reply_evidence(&self) -> bool {
+        self.handlers.iter().any(|handler| handler.wants_public_reply_evidence())
+    }
+
+    fn on_public_reply_evidence(
+        &mut self,
+        game_id: Uuid,
+        evidence: Option<&crate::public_reply_evidence::PublicReplyEvidence>,
+    ) {
+        for handler in &mut self.handlers {
+            if handler.wants_public_reply_evidence() {
+                handler.on_public_reply_evidence(game_id, evidence);
+            }
+        }
+    }
+
+    fn on_decision_information(
+        &mut self,
+        game_id: Uuid,
+        model: &str,
+        unpriced: &[crate::observation::UnpricedBranch],
+    ) {
+        for handler in &mut self.handlers {
+            handler.on_decision_information(game_id, model, unpriced);
+        }
+    }
+
+    fn on_game_randomness(&mut self, game_id: Uuid, randomness: &GameRandomness) {
+        for handler in &mut self.handlers {
+            handler.on_game_randomness(game_id, randomness);
+        }
+    }
+
+    fn on_decision_randomness(&mut self, game_id: Uuid, randomness: Option<&DecisionRandomness>) {
+        for handler in &mut self.handlers {
+            handler.on_decision_randomness(game_id, randomness);
+        }
+    }
+
+    fn on_private_reveals(&mut self, game_id: Uuid, reveals: &[crate::game::PrivateRevealRecord]) {
+        for handler in &mut self.handlers {
+            handler.on_private_reveals(game_id, reveals);
+        }
+    }
+
+    fn on_public_reveals(&mut self, game_id: Uuid, reveals: &[crate::game::PublicRevealRecord]) {
+        for handler in &mut self.handlers {
+            handler.on_public_reveals(game_id, reveals);
+        }
+    }
+
+    fn on_luxury_coin_resolutions(
+        &mut self,
+        game_id: Uuid,
+        records: &[crate::game::LuxuryCoinResolutionRecord],
+    ) {
+        for handler in &mut self.handlers {
+            handler.on_luxury_coin_resolutions(game_id, records);
+        }
+    }
+
+    fn on_action_resolved(&mut self, game_id: Uuid) {
+        for handler in &mut self.handlers {
+            handler.on_action_resolved(game_id);
+        }
+    }
+
     fn on_game_start(&mut self, game_id: Uuid) {
         for handler in self.handlers.iter_mut() {
             handler.on_game_start(game_id);

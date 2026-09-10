@@ -1,5 +1,4 @@
 use crate::{
-    actions::penny_candidates,
     actions::{
         abilities::AbilityMechanic, get_in_play_ability_mechanic, has_any_in_play_ability,
         SimpleAction,
@@ -301,7 +300,36 @@ pub fn trainer_move_generation_implementation(
         CardId::B4153Wally | CardId::B4193Wally => can_play_wally(state, trainer_card),
         CardId::B4150Psychic | CardId::B4190Psychic => can_play_psychic(state, trainer_card),
         CardId::B4151Drayden | CardId::B4191Drayden => can_play_trainer(state, trainer_card),
+        CardId::B4a067TeamRocketsThievingMachine => {
+            can_play_team_rockets_thieving_machine(state, trainer_card)
+        }
+        CardId::B4a068TeamRocketsGoozooka
+        | CardId::B4a110TeamRocketsGoozooka
+        | CardId::B4a069TeamRocketsResearcher
+        | CardId::B4a085TeamRocketsResearcher
+        | CardId::B4a070TeamRocketsMasterPlan
+        | CardId::B4a086TeamRocketsMasterPlan
+        | CardId::B4a094TeamRocketsMasterPlan => can_play_trainer(state, trainer_card),
+        CardId::B4a071TeamRocketsBoss | CardId::B4a087TeamRocketsBoss => {
+            can_play_trainer(state, trainer_card)
+        }
         _ => None,
+    }
+}
+
+fn can_play_team_rockets_thieving_machine(
+    state: &State,
+    trainer_card: &TrainerCard,
+) -> Option<Vec<SimpleAction>> {
+    let opponent = (state.current_player + 1) % 2;
+    if state.discard_piles[opponent].iter().any(|card| {
+        matches!(card, Card::Trainer(t)
+            if t.trainer_card_type == TrainerType::Item
+                && t.name != "Team Rocket's Thieving Machine")
+    }) {
+        can_play_trainer(state, trainer_card)
+    } else {
+        cannot_play_trainer()
     }
 }
 
@@ -1054,10 +1082,11 @@ fn can_play_whitney(state: &State, trainer_card: &TrainerCard) -> Option<Vec<Sim
     }
 }
 
-/// Check if Penny can be played (requires at least one copyable Supporter in the opponent's deck)
+/// Hidden target absence cannot disable Penny. Only a publicly empty deck blocks
+/// the attempt; referee resolution consumes the Supporter and may have no effect.
 fn can_play_penny(state: &State, trainer_card: &TrainerCard) -> Option<Vec<SimpleAction>> {
     let opponent = (state.current_player + 1) % 2;
-    if penny_candidates(state, opponent).is_empty() {
+    if state.decks[opponent].cards.is_empty() {
         cannot_play_trainer()
     } else {
         can_play_trainer(state, trainer_card)

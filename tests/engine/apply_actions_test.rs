@@ -147,10 +147,24 @@ fn test_play_pokeball_action() {
 #[test]
 fn test_place_action() {
     let mut game = get_initialized_game(3);
-    let state = game.get_state_clone();
+    let mut state = game.get_state_clone();
     let current_player = state.current_player;
+    // The fixture requires Bulbasaur in hand; make that card explicit instead of relying on
+    // setup draw order.
+    state.hands[current_player][0] = get_card_by_enum(CardId::A1001Bulbasaur);
     let hand = state.hands[current_player].clone();
-    let bulbasaur = &hand[0];
+    // Setup placement is randomized; keep the active cards but clear the bench explicitly.
+    let active = state.in_play_pokemon[current_player][0]
+        .clone()
+        .expect("initialized player should have an active Pokémon");
+    let opponent_active = state.in_play_pokemon[1 - current_player][0]
+        .clone()
+        .expect("initialized opponent should have an active Pokémon");
+    state.set_board(vec![active], vec![opponent_active]);
+    let bulbasaur = hand
+        .iter()
+        .find(|card| card.get_name() == "Bulbasaur")
+        .expect("fixture hand should contain Bulbasaur");
     let action = SimpleAction::Place(bulbasaur.clone(), 2);
     assert_eq!(state.enumerate_bench_pokemon(current_player).count(), 0); // no bench
     game.set_state(state);

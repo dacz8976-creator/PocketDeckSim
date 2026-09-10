@@ -5,14 +5,14 @@ use super::State;
 use crate::{
     actions::{
         abilities::AbilityMechanic, card_effect_from_ability_mechanic,
-        get_in_play_ability_mechanic, has_ability_mechanic, has_in_play_ability_mechanic,
+        get_in_play_ability_mechanic, has_in_play_ability_mechanic,
     },
     card_ids::CardId,
     database::get_card_by_enum,
     effects::CardEffect,
     hooks::is_ancient_pokemon,
     models::{Attack, Card, EnergyType, StatusCondition, TrainerType, BASIC_STAGE},
-    tools::has_tool,
+    tools::tool_count,
 };
 
 /// This represents a card in the mat. Has a pointer to the card
@@ -23,12 +23,18 @@ pub struct PlayedCard {
     damage_counters: u32,
     base_hp: u32,
     stadium_hp_bonus: u32,
-    /// Board-conditional HP granted by an ability in play (Lilligant's Toughness Aroma). Stored
+    /// Board-conditional HP granted by abilities in play. Stored
     /// rather than computed because `get_effective_total_hp` has no access to `State`; kept in
     /// sync by `State::refresh_hp_bonuses_all`, exactly like `stadium_hp_bonus`.
     ability_hp_bonus: u32,
     pub attached_energy: Vec<EnergyType>,
-    pub attached_tool: Option<Card>,
+    /// All attached Tools in attachment order. Legacy single-Tool snapshots still deserialize.
+    #[serde(
+        default,
+        alias = "attached_tool",
+        deserialize_with = "deserialize_attached_tools"
+    )]
+    pub attached_tools: Vec<Card>,
     pub played_this_turn: bool,
     pub moved_to_active_this_turn: bool,
     /// Whether this Pokémon was damaged by an opponent's attack while it was in the Active Spot,
@@ -58,6 +64,22 @@ pub struct PlayedCard {
     /// The second value is the number of turns left for the effect.
     effects: Vec<(CardEffect, u8)>,
 }
+fn deserialize_attached_tools<'de, D>(deserializer: D) -> Result<Vec<Card>, D::Error>
+where
+    D: serde::Deserializer<'de>,
+{
+    #[derive(Deserialize)]
+    #[serde(untagged)]
+    enum ToolInput {
+        Multiple(Vec<Card>),
+        Legacy(Option<Card>),
+    }
+    Ok(match ToolInput::deserialize(deserializer)? {
+        ToolInput::Multiple(tools) => tools,
+        ToolInput::Legacy(tool) => tool.into_iter().collect(),
+    })
+}
+
 impl PlayedCard {
     pub fn new(
         card: Card,
@@ -80,7 +102,7 @@ impl PlayedCard {
             damaged_by_attack_while_active_last_turn: false,
             cards_behind,
 
-            attached_tool: None,
+            attached_tools: vec![],
             ability_used: false,
             poisoned: false,
             poison_checkup_damage: None,
@@ -108,6 +130,7 @@ impl PlayedCard {
                     );
                 }
             }
+            Card::Unknown => panic!("Unknown card cannot be played"),
         };
         Self::new(card.clone(), 0, base_hp, vec![], false, vec![])
     }
@@ -141,7 +164,17 @@ impl PlayedCard {
     }
 
     pub fn with_tool(mut self, tool: Card) -> Self {
-        self.attached_tool = Some(tool);
+        self.attached_tools = vec![tool];
+        self
+    }
+
+    /// Fixture builder: attach a specified collection without replaying attachment choices.
+    /// Legal play uses the capacity check in `apply_attach_tool`.
+    pub fn with_tools(mut self, tools: Vec<Card>) -> Self {
+        for tool in &tools {
+            crate::tools::ensure_tool_card(tool);
+        }
+        self.attached_tools = tools;
         self
     }
 
@@ -157,6 +190,7 @@ impl PlayedCard {
         match &self.card {
             Card::Pokemon(pokemon_card) => pokemon_card.id.clone(),
             Card::Trainer(trainer_card) => trainer_card.id.clone(),
+            Card::Unknown => "Unknown".to_string(),
         }
     }
 
@@ -164,6 +198,7 @@ impl PlayedCard {
         match &self.card {
             Card::Pokemon(pokemon_card) => pokemon_card.name.clone(),
             Card::Trainer(trainer_card) => trainer_card.name.clone(),
+            Card::Unknown => "Unknown".to_string(),
         }
     }
 
@@ -231,7 +266,7 @@ impl PlayedCard {
         };
     }
 
-    /// Toughness Aroma (Lilligant): "Each of your [G] Pokémon gets +20 HP." Set by
+    /// Team-wide and per-attached-Energy HP bonuses. Set by
     /// `State::refresh_hp_bonuses_all` whenever the board changes; `bonus` is already the total
     /// across every matching ability in play.
     pub(crate) fn set_ability_hp_bonus(&mut self, bonus: u32) {
@@ -257,45 +292,19 @@ impl PlayedCard {
 
         // Tool bonuses. Type/stage-specific caps only apply to matching Pokémon (the tools are
         // attachable to anything, but their HP bonus is gated by the holder).
-        if has_tool(self, CardId::A2147GiantCape) {
-            effective_hp += 20;
-        } else if has_tool(self, CardId::A3147LeafCape)
-            && self.get_energy_type() == Some(EnergyType::Grass)
-        {
-            // Leaf Cape: "The [G] Pokémon this card is attached to gets +30 HP."
-            effective_hp += 30;
-        } else if has_tool(self, CardId::B3b065ElegantCape)
-            && matches!(&self.card, Card::Pokemon(p) if p.stage == 1)
-        {
-            // Elegant Cape: "The Stage 1 Pokémon this card is attached to gets +30 HP."
-            effective_hp += 30;
-        } else if has_tool(self, CardId::B3a069AncientBoosterEnergyCapsule)
-            && is_ancient_pokemon(&self.get_name())
-        {
-            effective_hp += 40;
+        effective_hp += 20 * tool_count(self, CardId::A2147GiantCape);
+        if self.get_energy_type() == Some(EnergyType::Grass) {
+            effective_hp += 30 * tool_count(self, CardId::A3147LeafCape);
+        }
+        if matches!(&self.card, Card::Pokemon(p) if p.stage == 1) {
+            effective_hp += 30 * tool_count(self, CardId::B3b065ElegantCape);
+        }
+        if is_ancient_pokemon(&self.get_name()) {
+            effective_hp += 40 * tool_count(self, CardId::B3a069AncientBoosterEnergyCapsule);
         }
 
         effective_hp += self.stadium_hp_bonus;
         effective_hp += self.ability_hp_bonus;
-
-        // Reuniclus Infinite Increase: +30 HP for each Psychic Energy attached.
-        // Reads the *printed* Ability rather than the suppression-aware accessor because this
-        // method has no `State`. That is sound here: Infinite Increase is only printed on
-        // Reuniclus, a Stage 2, so Power of Alchemy (Basics only) can never switch it off.
-        if has_ability_mechanic(
-            &self.card,
-            &AbilityMechanic::IncreaseHpPerAttachedEnergy {
-                energy_type: EnergyType::Psychic,
-                amount: 30,
-            },
-        ) {
-            let psychic_count = self
-                .attached_energy
-                .iter()
-                .filter(|e| **e == EnergyType::Psychic)
-                .count() as u32;
-            effective_hp += psychic_count * 30;
-        }
 
         effective_hp
     }
@@ -325,7 +334,7 @@ impl PlayedCard {
     }
 
     pub(crate) fn has_tool_attached(&self) -> bool {
-        self.attached_tool.is_some()
+        !self.attached_tools.is_empty()
     }
 
     /// Duration means:

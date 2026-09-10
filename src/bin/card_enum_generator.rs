@@ -215,6 +215,7 @@ fn print_card_insert(enum_name: &str, card: &Card) {
             );
             println!("        }}));");
         }
+        Card::Unknown => panic!("Unknown is not a catalog card"),
     }
     // TODO: AttackIds and AbilitiesIds
 }

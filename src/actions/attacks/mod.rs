@@ -1,3 +1,3 @@
 mod mechanic;
 
-pub use mechanic::{BenchSide, CopyAttackSource, HandCardKind, Mechanic};
+pub use mechanic::{BenchDamageFilter, BenchSide, CopyAttackSource, HandCardKind, Mechanic};

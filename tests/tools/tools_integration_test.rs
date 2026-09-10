@@ -61,7 +61,7 @@ fn test_giant_cape_attach_increases_hp() {
 
     let state = game.get_state_clone();
     let active = state.get_active(0);
-    assert!(active.attached_tool.is_some());
+    assert!(!active.attached_tools.is_empty());
     assert_eq!(active.get_remaining_hp(), base_remaining_hp + 20);
 }
 
@@ -118,7 +118,7 @@ fn test_elegant_cape_attaches_to_any_and_boosts_only_stage_1() {
         .as_ref()
         .expect("expected stage-1 target");
     let base_remaining_hp = PlayedCard::from_id(CardId::A1002Ivysaur).get_remaining_hp();
-    assert!(stage1.attached_tool.is_some());
+    assert!(!stage1.attached_tools.is_empty());
     assert_eq!(stage1.get_remaining_hp(), base_remaining_hp + 30);
 }
 
@@ -174,7 +174,7 @@ fn test_leaf_cape_attaches_to_any_and_boosts_only_grass() {
 
     let state = game.get_state_clone();
     let active = state.get_active(0);
-    assert!(active.attached_tool.is_some());
+    assert!(!active.attached_tools.is_empty());
     assert_eq!(active.get_remaining_hp(), base_remaining_hp + 30);
 }
 
@@ -217,8 +217,8 @@ fn test_guzma_kos_pokemon_surviving_on_giant_cape() {
     assert_eq!(actor, 1, "Opponent should be prompted to promote");
     let activate_action = choices
         .iter()
-        .find(|action| matches!(action.action, SimpleAction::Activate { .. }))
-        .expect("Expected Activate action for promotion");
+        .find(|action| matches!(action.action, SimpleAction::Promote { .. }))
+        .expect("Expected Promote action for promotion");
     game.apply_action(activate_action);
 
     let state = game.get_state_clone();
@@ -394,7 +394,7 @@ fn test_guzma_discards_all_tools_before_promotion() {
     let activate_targets: Vec<usize> = actions
         .iter()
         .filter_map(|action| match action.action {
-            SimpleAction::Activate { in_play_idx, .. } => Some(in_play_idx),
+            SimpleAction::Promote { in_play_idx, .. } => Some(in_play_idx),
             _ => None,
         })
         .collect();
@@ -407,7 +407,7 @@ fn test_guzma_discards_all_tools_before_promotion() {
     game.apply_action(
         actions
             .iter()
-            .find(|action| matches!(action.action, SimpleAction::Activate { in_play_idx: 3, .. }))
+            .find(|action| matches!(action.action, SimpleAction::Promote { in_play_idx: 3, .. }))
             .expect("Expected promotion into the surviving bench slot"),
     );
 

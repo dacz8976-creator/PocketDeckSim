@@ -12,7 +12,13 @@ pub struct HumanPlayer {
 }
 
 impl Player for HumanPlayer {
-    fn decision_fn(
+    fn decision_fn(&mut self, rng: &mut StdRng, observation: &crate::observation::PlayerObservation,
+        actions: &[Action]) -> Action {
+        println!("Closed information: unknown opponent cards are not revealed.");
+        self.decide_omniscient(rng, observation.visible_state(), actions)
+    }
+
+    fn decide_omniscient(
         &mut self,
         _: &mut StdRng,
         state: &State,

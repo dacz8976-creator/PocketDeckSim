@@ -231,22 +231,33 @@ fn test_dialga_rocky_helmet_knockout_with_energy_attach() {
         "Expected Metal energy Attach choices after Metallic Turbo"
     );
 
-    // Continue with play_tick() until the next turn or game over
-    let initial_turn = state.turn_count;
-    let mut iterations = 0;
-    let max_iterations = 100; // Safety limit
-
-    while iterations < max_iterations {
-        let state = game.get_state_clone();
-
-        // Break if game is over or turn has advanced
-        if game.is_game_over() || state.turn_count > initial_turn {
-            break;
-        }
-
-        game.play_tick();
-        iterations += 1;
-    }
+    // Resolve the intended branch explicitly. Canonical action ordering makes a random
+    // player choose the first promotion target, which can move the newly energized bench
+    // Pokémon active and erase the fixture's bench-energy assertion.
+    let attach_action = actions
+        .iter()
+        .find(|action| {
+            matches!(
+                &action.action,
+                SimpleAction::Attach { attachments, .. }
+                    if attachments.iter().all(|(_, energy, idx)| *energy == EnergyType::Metal && *idx == 2)
+            )
+        })
+        .expect("Expected Metallic Turbo attach choice for bench index 2");
+    game.apply_action(attach_action);
+    let promotion = game
+        .get_state_clone()
+        .generate_possible_actions()
+        .1
+        .into_iter()
+        .find(|action| {
+            matches!(
+                action.action,
+                SimpleAction::Promote { player: 0, in_play_idx: 1 }
+            )
+        })
+        .expect("Expected explicit promotion choice after Dialga knockout");
+    game.apply_action(&promotion);
 
     // Final state assertions
     let final_state = game.get_state_clone();

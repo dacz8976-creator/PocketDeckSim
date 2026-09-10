@@ -24,8 +24,12 @@ mod applin_share_test;
 mod arceus_ex_test;
 #[path = "pokemon/attack_cost_reduction_abilities_test.rs"]
 mod attack_cost_reduction_abilities_test;
+#[path = "pokemon/attack_geometric_completion_test.rs"]
+mod attack_geometric_completion_test;
 #[path = "pokemon/audino_test.rs"]
 mod audino_test;
+#[path = "pokemon/b4a_ability_batch2_test.rs"]
+mod b4a_ability_batch2_test;
 #[path = "pokemon/bench_spread_attacks_test.rs"]
 mod bench_spread_attacks_test;
 #[path = "pokemon/bidoof_super_fang_test.rs"]
@@ -250,6 +254,8 @@ mod marshadow_revenge_test;
 mod mega_camerupt_ex_test;
 #[path = "pokemon/mega_diancie_ex_test.rs"]
 mod mega_diancie_ex_test;
+#[path = "pokemon/mega_houndoom_ex_test.rs"]
+mod mega_houndoom_ex_test;
 #[path = "pokemon/mega_kangaskhan_double_punching_family_test.rs"]
 mod mega_kangaskhan_double_punching_family_test;
 #[path = "pokemon/mega_medicham_ex_test.rs"]

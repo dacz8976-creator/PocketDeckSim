@@ -33,6 +33,7 @@ pub fn generate_temp_deck(card: &Card) -> String {
                 generate_trainer_deck(card, &trainer.trainer_card_type)
             }
         }
+        Card::Unknown => "Error: Unknown card cannot generate a deck".to_string(),
     }
 }
 
@@ -121,10 +122,7 @@ fn find_stage2_evolution(stage1_name: &str) -> Option<Card> {
 fn find_card_by_name(name: &str) -> Option<Card> {
     for id in CardId::iter() {
         let card = get_card_by_enum(id);
-        let card_name = match &card {
-            Card::Pokemon(pokemon) => &pokemon.name,
-            Card::Trainer(trainer) => &trainer.name,
-        };
+        let card_name = card.get_name();
         if card_name == name {
             return Some(card);
         }
@@ -261,6 +259,7 @@ fn format_card_line(card: &Card, count: u8) -> String {
     match card {
         Card::Pokemon(pokemon) => format!("{} {} {}", count, pokemon.name, formatted_id),
         Card::Trainer(trainer) => format!("{} {} {}", count, trainer.name, formatted_id),
+        Card::Unknown => "Error: Unknown card cannot be serialized into a deck".to_string(),
     }
 }
 

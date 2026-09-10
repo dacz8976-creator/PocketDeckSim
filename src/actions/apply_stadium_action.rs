@@ -7,8 +7,8 @@ use crate::{
     },
     models::{Card, EnergyType, TrainerType},
     stadiums::{
-        is_area_zero_active, is_fragrant_forest_active, is_kids_room_active, is_mesagoza_active,
-        is_rainbow_cave_active,
+        is_arcade_active, is_area_zero_active, is_fragrant_forest_active, is_kids_room_active,
+        is_mesagoza_active, is_rainbow_cave_active,
     },
     State,
 };
@@ -22,22 +22,57 @@ use super::{
 /// Forecasts the UseStadium action for activated stadiums like Mesagoza, Fragrant Forest, Area
 /// Zero, and Kid's Room.
 pub(crate) fn forecast_use_stadium(state: &State, acting_player: usize) -> Outcomes {
+    let outcomes = if is_mesagoza_active(state) {
+        forecast_mesagoza_effect(state, acting_player)
+    } else if is_fragrant_forest_active(state) {
+        forecast_fragrant_forest_effect(state, acting_player)
+    } else if is_area_zero_active(state) {
+        forecast_area_zero_effect(state, acting_player)
+    } else if is_kids_room_active(state) {
+        forecast_kids_room_effect(state, acting_player)
+    } else if is_rainbow_cave_active(state) {
+        forecast_rainbow_cave_effect()
+    } else if is_arcade_active(state) {
+        forecast_arcade_effect()
+    } else {
+        Outcomes::single_fn(|_, _, _| {})
+    };
+    outcomes.map_mutations(|mutation| {
+        Box::new(move |rng, state, action| {
+            state.has_used_stadium[action.actor] = true;
+            mutation(rng, state, action);
+        })
+    })
+}
+
+/// Unwrapped effect used when Luxury Coin consumes the Stadium-use flag before exposing a batch.
+pub(crate) fn forecast_coin_stadium_effect(
+    state: &State,
+    acting_player: usize,
+) -> Option<Outcomes> {
     if is_mesagoza_active(state) {
-        return forecast_mesagoza_effect(state, acting_player);
+        return Some(forecast_mesagoza_effect(state, acting_player));
     }
-    if is_fragrant_forest_active(state) {
-        return forecast_fragrant_forest_effect(state, acting_player);
+    if is_arcade_active(state) {
+        return Some(forecast_arcade_effect());
     }
-    if is_area_zero_active(state) {
-        return forecast_area_zero_effect(state, acting_player);
-    }
-    if is_kids_room_active(state) {
-        return forecast_kids_room_effect(state, acting_player);
-    }
-    if is_rainbow_cave_active(state) {
-        return forecast_rainbow_cave_effect();
-    }
-    Outcomes::single_fn(|_, _, _| {})
+    None
+}
+
+fn forecast_arcade_effect() -> Outcomes {
+    Outcomes::binomial_by_heads(3, |heads| {
+        Box::new(move |_, state, action| {
+            if heads == 3 {
+                while state.hands[action.actor].len() < 7 {
+                    let before = state.hands[action.actor].len();
+                    state.maybe_draw_card(action.actor);
+                    if state.hands[action.actor].len() == before {
+                        break;
+                    }
+                }
+            }
+        })
+    })
 }
 
 /// Rainbow Cave: Once during each player's turn, that player may discard the Energy that has been
@@ -89,14 +124,12 @@ fn forecast_mesagoza_effect(state: &State, acting_player: usize) -> Outcomes {
         Vec::with_capacity(search_probs.len() + 1);
     for (prob, mutation) in search_probs.into_iter().zip(search_mutations) {
         let wrapped: Mutation = Box::new(move |rng, state, action| {
-            state.has_used_stadium[action.actor] = true;
             mutation(rng, state, action);
             debug!("Mesagoza: Flipped heads, searched for Pokemon");
         });
         branches.push((0.5 * prob, wrapped, vec![CoinSeq(vec![true])]));
     }
-    let tails_mutation: Mutation = Box::new(move |_, state, action| {
-        state.has_used_stadium[action.actor] = true;
+    let tails_mutation: Mutation = Box::new(move |_, _state, _action| {
         debug!("Mesagoza: Flipped tails, nothing happens");
     });
     branches.push((0.5, tails_mutation, vec![CoinSeq(vec![false])]));

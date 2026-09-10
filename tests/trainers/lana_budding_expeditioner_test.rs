@@ -140,7 +140,7 @@ fn test_budding_expeditioner_returns_active_mew_ex_to_hand() {
     assert_eq!(actor, 0);
     assert!(choices
         .iter()
-        .all(|a| matches!(a.action, SimpleAction::Activate { player: 0, .. })));
+        .all(|a| matches!(a.action, SimpleAction::Promote { player: 0, .. })));
 }
 
 /// Negative case: only a Mew ex in the Active Spot can be picked up.

@@ -7,7 +7,9 @@ use rand::rngs::StdRng;
 use crate::{
     actions::{
         abilities::{AbilityMechanic, RandomEvolutionTrigger},
-        effect_ability_mechanic_map::get_in_play_ability_mechanic,
+        effect_ability_mechanic_map::{
+            basic_abilities_suppressed, get_in_play_ability_mechanic,
+        },
         shared_mutations, SimpleAction,
     },
     card_ids::CardId,
@@ -101,7 +103,9 @@ fn forecast_pokemon_checkup(state: &State) -> (Probabilities, Mutations) {
     let mut outcomes: Mutations = Vec::with_capacity(outcome_ids.len());
     for outcome in outcome_ids {
         let mut preview_after_checkup = preview_state.clone();
-        apply_pokemon_checkup(&mut preview_after_checkup, &checkup_targets, &outcome);
+        if !preview_after_checkup.is_game_over() {
+            apply_pokemon_checkup(&mut preview_after_checkup, &checkup_targets, &outcome);
+        }
         let (start_probs, start_mutations) =
             start_turn_ability_outcomes(&preview_after_checkup, next_player);
         for (start_prob, start_mutation) in start_probs.into_iter().zip(start_mutations) {
@@ -109,11 +113,20 @@ fn forecast_pokemon_checkup(state: &State) -> (Probabilities, Mutations) {
             probabilities.push(base_probability * start_prob);
             outcomes.push(Box::new(move |rng, state, action| {
                 on_end_turn(action.actor, state);
+                if state.is_game_over() {
+                    return;
+                }
                 let live_checkup_targets = collect_checkup_targets(state);
                 apply_pokemon_checkup(state, &live_checkup_targets, &outcome);
+                // A Checkup result ends the game before another turn or its abilities.
+                // In particular, advancing past turn 30 must not replace that result with Tie.
+                if state.is_game_over() {
+                    return;
+                }
                 finish_turn_after_checkup(state, rng);
-
-                start_mutation(rng, state, action);
+                if !state.is_game_over() {
+                    start_mutation(rng, state, action);
+                }
             }));
         }
     }
@@ -121,6 +134,9 @@ fn forecast_pokemon_checkup(state: &State) -> (Probabilities, Mutations) {
 }
 
 fn start_turn_ability_outcomes(state: &State, player: usize) -> (Probabilities, Mutations) {
+    if state.is_game_over() {
+        return (vec![1.0], vec![noop_mutation()]);
+    }
     let Some(active) = state.maybe_get_active(player) else {
         return (vec![1.0], vec![noop_mutation()]);
     };
@@ -621,6 +637,7 @@ fn is_iris_bonus_active(
                 CardId::from_card_id(match &attacker.card {
                     Card::Pokemon(p) => p.id.as_str(),
                     Card::Trainer(t) => t.id.as_str(),
+                    Card::Unknown => return false,
                 }),
                 Some(CardId::B2b056Haxorus | CardId::B2b110Haxorus | CardId::PB045Haxorus)
             )
@@ -666,23 +683,29 @@ pub(crate) fn handle_knockouts(
 
             // Award points
             {
-                let ko_pokemon = state.in_play_pokemon[ko_receiver][ko_pokemon_idx]
-                    .as_ref()
-                    .expect("Pokemon should be there if knocked out");
                 let ko_initiator = (ko_receiver + 1) % 2;
                 // Dusknoir "Fade into Darkness" / Glimmora "Shattering Crystal": the coin was already
                 // flipped at forecast time, and a heads branch tagged this Pokémon with
                 // DenyKnockoutPoints. The knockout itself still stands — only the score is denied.
-                let points_denied = ko_pokemon
-                    .get_effective_card_effects(state)
-                    .iter()
-                    .any(|effect| matches!(effect, CardEffect::DenyKnockoutPoints));
-                let points_won = if points_denied {
-                    0
-                } else {
-                    ko_pokemon.card.get_knockout_points()
+                let (points_denied, points_won) = {
+                    let ko_pokemon = state.in_play_pokemon[ko_receiver][ko_pokemon_idx]
+                        .as_ref()
+                        .expect("Pokemon should be there if knocked out");
+                    let points_denied = ko_pokemon
+                        .get_effective_card_effects(state)
+                        .iter()
+                        .any(|effect| matches!(effect, CardEffect::DenyKnockoutPoints));
+                    let points_won = if points_denied {
+                        0
+                    } else {
+                        ko_pokemon.card.get_knockout_points()
+                    };
+                    (points_denied, points_won)
                 };
-                state.points[ko_initiator] += points_won;
+                state.award_points(ko_initiator, points_won);
+                let ko_pokemon = state.in_play_pokemon[ko_receiver][ko_pokemon_idx]
+                    .as_ref()
+                    .expect("Pokemon should still be present while logging its knockout");
                 debug!(
                     "Pokemon {:?} fainted. Player {} won {} points for a total of {}{}",
                     ko_pokemon,
@@ -696,8 +719,12 @@ pub(crate) fn handle_knockouts(
                     }
                 );
                 // Iris bonus: 1 extra point if Haxorus KOs opponent's Active Pokemon
-                if iris_bonus_active && ko_pokemon_idx == 0 && ko_receiver != attacking_ref.0 {
-                    state.points[ko_initiator] += 1;
+                if !points_denied
+                    && iris_bonus_active
+                    && ko_pokemon_idx == 0
+                    && ko_receiver != attacking_ref.0
+                {
+                    state.award_points(ko_initiator, 1);
                     debug!(
                         "Iris: Player {} gets 1 bonus point for Haxorus KO",
                         ko_initiator
@@ -799,6 +826,10 @@ pub(crate) fn handle_knockouts(
         return;
     }
 
+    if !knockouts.is_empty() {
+        prune_stale_bench_activate_choices(state);
+    }
+
     // Queue up promotion actions if the game is still on after a knockout
     for (ko_receiver, ko_pokemon_idx) in knockouts {
         if ko_pokemon_idx != 0 {
@@ -871,63 +902,143 @@ pub(crate) fn apply_activate(player: usize, state: &mut State, bench_idx: usize)
     }
 }
 
+/// Apply costs and one-time bookkeeping that belong to starting an action.  A paused coin effect
+/// uses this before exposing its result so the played card and Supporter slot already match the
+/// public game state while the player decides whether to replace the batch.
+pub(crate) fn apply_common_action_prefix(state: &mut State, action: &Action) {
+    if action.is_stack {
+        state.move_generation_stack.pop();
+    }
+    if let SimpleAction::Play { trainer_card } = &action.action {
+        let card = Card::Trainer(trainer_card.clone());
+        if trainer_card.trainer_card_type == TrainerType::Stadium {
+            // Replaced Stadium cards go to the discard pile of the player who played them.
+            if let Some((old_stadium, old_owner)) =
+                state.set_active_stadium_for_player(action.actor, card.clone())
+            {
+                state.discard_piles[old_owner.unwrap_or(action.actor)].push(old_stadium);
+            }
+            state.remove_card_from_hand(action.actor, &card);
+            state.refresh_hp_bonuses_all();
+            handle_knockouts(state, (action.actor, 0), false);
+        } else if trainer_card.trainer_card_type == TrainerType::Tool {
+            state.remove_card_from_hand(action.actor, &card);
+        } else {
+            state.discard_card_from_hand(action.actor, &card);
+        }
+        if card.is_support() {
+            state.has_played_support = true;
+        }
+    }
+    if let SimpleAction::UseAbility { in_play_idx } = &action.action {
+        let pokemon = state.in_play_pokemon[action.actor][*in_play_idx]
+            .as_mut()
+            .expect("Pokemon should be there if using ability");
+        pokemon.ability_used = true;
+    }
+    if let SimpleAction::Attack(attack) = &action.action {
+        state.record_attack_used(action.actor, attack.title.clone());
+    }
+}
+
+/// Remove only publicly impossible Bench choices from an ordinary switch frame after every
+/// knockout wave has settled. The existing frame remains the eligibility upper bound: this does
+/// not add targets or reconsider card-specific switch restrictions.
+fn prune_stale_bench_activate_choices(state: &mut State) {
+    let in_play_pokemon = &state.in_play_pokemon;
+    state.move_generation_stack.retain_mut(|(_, choices)| {
+        if choices.is_empty() {
+            return true;
+        }
+
+        let mut target_player = None;
+        let mut has_activate = false;
+        for choice in choices.iter() {
+            match choice {
+                SimpleAction::Noop => {}
+                SimpleAction::Activate {
+                    player,
+                    in_play_idx,
+                } => {
+                    let Some(board) = in_play_pokemon.get(*player) else {
+                        return true;
+                    };
+                    if *in_play_idx == 0 || *in_play_idx >= board.len() {
+                        return true;
+                    }
+                    if target_player.is_some_and(|prior| prior != *player) {
+                        return true;
+                    }
+                    target_player = Some(*player);
+                    has_activate = true;
+                }
+                _ => return true,
+            }
+        }
+
+        if !has_activate {
+            return true;
+        }
+        let player = target_player.expect("an Activate choice supplied the target player");
+        if in_play_pokemon[player][0].is_none() {
+            return true;
+        }
+
+        choices.retain(|choice| match choice {
+            SimpleAction::Noop => true,
+            SimpleAction::Activate {
+                player,
+                in_play_idx,
+            } => in_play_pokemon[*player][*in_play_idx].is_some(),
+            _ => unreachable!("the frame was validated before pruning"),
+        });
+        !choices.is_empty()
+    });
+}
+
+/// Apply the shared state repair that follows an action's effect.  This is separate from the
+/// prefix so a paused Trainer coin effect can commit without paying its Play cost twice.
+pub(crate) fn apply_common_action_suffix(state: &mut State, action: &Action) {
+    // Energy movement can change per-Energy HP abilities (including effective Energy altered
+    // by Jungle Totem), and board changes can change team-wide bonuses.
+    state.refresh_hp_bonuses_all();
+
+    // Catch-all knockout check: any action could have reduced a Pokemon's
+    // effective HP below its damage taken (e.g. Field Blower discarding a
+    // Giant Cape). This way individual mutations don't need to remember to
+    // check for knockouts themselves. Damage-dealing mutations already call
+    // handle_knockouts with the proper attacking context, so this is a no-op
+    // for them.
+    // Skipped during the initial setup phase, where players place their boards
+    // one at a time and "0 Pokemon in play" doesn't mean a loss.
+    if state.turn_count > 0 {
+        handle_knockouts(state, (action.actor, 0), false);
+    }
+
+    if let SimpleAction::Attack(_) = &action.action {
+        // We use a flag instead of .move_generation_stack to reduce
+        // stack surgery to make sure things happen in order.
+        // This ensures move_generation_stack (effects and promotions)
+        // has priority over ending the turn.
+        state.end_turn_pending = true;
+    }
+}
+
 // Apply common logic in outcomes
 pub(crate) fn wrap_with_common_logic(mutation: Mutation) -> Mutation {
     Box::new(move |rng, state, action| {
-        if action.is_stack {
-            state.move_generation_stack.pop();
-        }
-        if let SimpleAction::Play { trainer_card } = &action.action {
-            let card = Card::Trainer(trainer_card.clone());
-            if trainer_card.trainer_card_type == TrainerType::Stadium {
-                // Replaced Stadium cards go to the discard pile of the player who played them.
-                if let Some((old_stadium, old_owner)) =
-                    state.set_active_stadium_for_player(action.actor, card.clone())
-                {
-                    state.discard_piles[old_owner.unwrap_or(action.actor)].push(old_stadium);
-                }
-                state.remove_card_from_hand(action.actor, &card);
-                state.refresh_hp_bonuses_all();
-                handle_knockouts(state, (action.actor, 0), false);
-            } else if trainer_card.trainer_card_type == TrainerType::Tool {
-                state.remove_card_from_hand(action.actor, &card);
-            } else {
-                state.discard_card_from_hand(action.actor, &card);
-            }
-            if card.is_support() {
-                state.has_played_support = true;
-            }
-        }
-        if let SimpleAction::UseAbility { in_play_idx } = &action.action {
-            let pokemon = state.in_play_pokemon[action.actor][*in_play_idx]
-                .as_mut()
-                .expect("Pokemon should be there if using ability");
-            pokemon.ability_used = true;
-        }
-        if let SimpleAction::Attack(attack) = &action.action {
-            state.record_attack_used(action.actor, attack.title.clone());
-        }
-
+        let basic_abilities_were_suppressed = basic_abilities_suppressed(state);
+        apply_common_action_prefix(state, action);
         mutation(rng, state, action); // in the case of attacks, have this be damage + effect.
-
-        // Catch-all knockout check: any action could have reduced a Pokemon's
-        // effective HP below its damage taken (e.g. Field Blower discarding a
-        // Giant Cape). This way individual mutations don't need to remember to
-        // check for knockouts themselves. Damage-dealing mutations already call
-        // handle_knockouts with the proper attacking context, so this is a no-op
-        // for them.
-        // Skipped during the initial setup phase, where players place their boards
-        // one at a time and "0 Pokemon in play" doesn't mean a loss.
-        if state.turn_count > 0 {
-            handle_knockouts(state, (action.actor, 0), false);
-        }
-
-        if let SimpleAction::Attack(_) = &action.action {
-            // We use a flag instead of .move_generation_stack to reduce
-            // stack surgery to make sure things happen in order.
-            // This ensures move_generation_stack (effects and promotions)
-            // has priority over ending the turn.
-            state.end_turn_pending = true;
+                                      // Misty has a public target phase before its coins. Its one-time suffix belongs to the
+                                      // eventual target/coin commit, not the initial Play/Ability that created the prompt.
+        if state.pending_misty_target_choice.is_none() {
+            apply_common_action_suffix(state, action);
+            // Reconcile only after the suffix completes its catch-all knockout pass. This
+            // prevents a 0-HP Comfey or Ogerpon from curing before the same wave removes it.
+            if basic_abilities_were_suppressed && !basic_abilities_suppressed(state) {
+                state.apply_effective_soothing_wind_for_all_players();
+            }
         }
     })
 }
@@ -935,6 +1046,10 @@ pub(crate) fn wrap_with_common_logic(mutation: Mutation) -> Mutation {
 fn noop_mutation() -> Mutation {
     Box::new(|_, _, _| {})
 }
+
+#[cfg(test)]
+#[path = "bench_switch_target_tests.rs"]
+mod bench_switch_target_tests;
 
 #[cfg(test)]
 mod tests {

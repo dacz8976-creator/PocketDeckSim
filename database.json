@@ -80102,6 +80102,2507 @@
     }
   },
   {
+    "Pokemon": {
+      "id": "B4a 001",
+      "name": "Volbeat",
+      "stage": 0,
+      "evolves_from": null,
+      "hp": 80,
+      "energy_type": "Grass",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Grass"],
+          "title": "Tackle",
+          "fixed_damage": 30,
+          "effect": null
+        }
+      ],
+      "weakness": "Fire",
+      "retreat_cost": ["Colorless"],
+      "rarity": "◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 002",
+      "name": "Illumise",
+      "stage": 0,
+      "evolves_from": null,
+      "hp": 70,
+      "energy_type": "Grass",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Grass", "Colorless"],
+          "title": "Ire-Fly",
+          "fixed_damage": 30,
+          "effect": "If Volbeat is in your discard pile, this attack does 60 more damage."
+        }
+      ],
+      "weakness": "Fire",
+      "retreat_cost": ["Colorless"],
+      "rarity": "◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 003",
+      "name": "Snivy",
+      "stage": 0,
+      "evolves_from": null,
+      "hp": 60,
+      "energy_type": "Grass",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Grass"],
+          "title": "Leaf Boomerang",
+          "fixed_damage": 20,
+          "effect": "Flip 2 coins. This attack does 20 damage for each heads."
+        }
+      ],
+      "weakness": "Fire",
+      "retreat_cost": ["Colorless"],
+      "rarity": "◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 004",
+      "name": "Servine",
+      "stage": 1,
+      "evolves_from": "Snivy",
+      "hp": 80,
+      "energy_type": "Grass",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Grass"],
+          "title": "Leaf Step",
+          "fixed_damage": 30,
+          "effect": null
+        }
+      ],
+      "weakness": "Fire",
+      "retreat_cost": ["Colorless"],
+      "rarity": "◊◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 005",
+      "name": "Serperior",
+      "stage": 2,
+      "evolves_from": "Servine",
+      "hp": 100,
+      "energy_type": "Grass",
+      "ability": {
+        "title": "Regal Bloom",
+        "effect": "This Pokémon gets +30 HP for each [G] Energy attached to it."
+      },
+      "attacks": [
+        {
+          "energy_required": ["Colorless", "Colorless", "Colorless"],
+          "title": "Flog",
+          "fixed_damage": 60,
+          "effect": "Flip a coin. If heads, this attack does 60 more damage."
+        }
+      ],
+      "weakness": "Fire",
+      "retreat_cost": ["Colorless", "Colorless"],
+      "rarity": "◊◊◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 006",
+      "name": "Team Rocket's Magmar",
+      "stage": 0,
+      "evolves_from": null,
+      "hp": 70,
+      "energy_type": "Fire",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Colorless"],
+          "title": "Derisive Roasting",
+          "fixed_damage": 10,
+          "effect": "This attack does 50 more damage for each Special Condition affecting your opponent's Active Pokémon."
+        }
+      ],
+      "weakness": "Water",
+      "retreat_cost": ["Colorless", "Colorless"],
+      "rarity": "◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 007",
+      "name": "Team Rocket's Moltres ex",
+      "stage": 0,
+      "evolves_from": null,
+      "hp": 130,
+      "energy_type": "Fire",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Fire"],
+          "title": "Heat Charged",
+          "fixed_damage": 0,
+          "effect": "Flip 3 coins. For each heads, produce a [R] Energy from your Energy Zone and attach it to this Pokémon."
+        },
+        {
+          "energy_required": ["Fire", "Fire", "Fire", "Colorless"],
+          "title": "Netherwing",
+          "fixed_damage": 130,
+          "effect": "Discard a [R] Energy from this Pokémon."
+        }
+      ],
+      "weakness": "Water",
+      "retreat_cost": ["Colorless", "Colorless"],
+      "rarity": "◊◊◊◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 008",
+      "name": "Team Rocket's Houndour",
+      "stage": 0,
+      "evolves_from": null,
+      "hp": 60,
+      "energy_type": "Fire",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Fire"],
+          "title": "Live Coal",
+          "fixed_damage": 20,
+          "effect": null
+        }
+      ],
+      "weakness": "Water",
+      "retreat_cost": ["Colorless"],
+      "rarity": "◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 009",
+      "name": "Team Rocket's Houndoom",
+      "stage": 1,
+      "evolves_from": "Team Rocket's Houndour",
+      "hp": 90,
+      "energy_type": "Fire",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Fire"],
+          "title": "Toxfire Fang",
+          "fixed_damage": 20,
+          "effect": "Your opponent's Active Pokémon is now Poisoned and Burned."
+        }
+      ],
+      "weakness": "Water",
+      "retreat_cost": ["Colorless"],
+      "rarity": "◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 010",
+      "name": "Fennekin",
+      "stage": 0,
+      "evolves_from": null,
+      "hp": 60,
+      "energy_type": "Fire",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Colorless"],
+          "title": "Scratch",
+          "fixed_damage": 10,
+          "effect": null
+        }
+      ],
+      "weakness": "Water",
+      "retreat_cost": ["Colorless"],
+      "rarity": "◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 011",
+      "name": "Braixen",
+      "stage": 1,
+      "evolves_from": "Fennekin",
+      "hp": 80,
+      "energy_type": "Fire",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Colorless", "Colorless"],
+          "title": "Psyshot",
+          "fixed_damage": 30,
+          "effect": null
+        }
+      ],
+      "weakness": "Water",
+      "retreat_cost": ["Colorless"],
+      "rarity": "◊◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 012",
+      "name": "Delphox",
+      "stage": 2,
+      "evolves_from": "Braixen",
+      "hp": 130,
+      "energy_type": "Fire",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Colorless", "Colorless", "Colorless"],
+          "title": "Psychic",
+          "fixed_damage": 60,
+          "effect": "This attack does 30 more damage for each Energy attached to your opponent's Active Pokémon."
+        }
+      ],
+      "weakness": "Water",
+      "retreat_cost": ["Colorless", "Colorless"],
+      "rarity": "◊◊◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 013",
+      "name": "Team Rocket's Lapras",
+      "stage": 0,
+      "evolves_from": null,
+      "hp": 90,
+      "energy_type": "Water",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Water", "Colorless"],
+          "title": "Ruthless Whirlpool",
+          "fixed_damage": 40,
+          "effect": "If this Pokémon has more Energy attached than your opponent's Active Pokémon, this attack does 40 more damage."
+        }
+      ],
+      "weakness": "Lightning",
+      "retreat_cost": ["Colorless"],
+      "rarity": "◊◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 014",
+      "name": "Team Rocket's Articuno ex",
+      "stage": 0,
+      "evolves_from": null,
+      "hp": 130,
+      "energy_type": "Water",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Water", "Colorless"],
+          "title": "Ice Wing",
+          "fixed_damage": 40,
+          "effect": null
+        },
+        {
+          "energy_required": ["Water", "Water", "Colorless"],
+          "title": "Hailstorm",
+          "fixed_damage": 130,
+          "effect": "This attack also does 20 damage to each of your Benched Pokémon."
+        }
+      ],
+      "weakness": "Metal",
+      "retreat_cost": ["Colorless", "Colorless"],
+      "rarity": "◊◊◊◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 015",
+      "name": "Wingull",
+      "stage": 0,
+      "evolves_from": null,
+      "hp": 60,
+      "energy_type": "Water",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Colorless"],
+          "title": "Flap",
+          "fixed_damage": 10,
+          "effect": null
+        }
+      ],
+      "weakness": "Lightning",
+      "retreat_cost": ["Colorless"],
+      "rarity": "◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 016",
+      "name": "Pelipper",
+      "stage": 1,
+      "evolves_from": "Wingull",
+      "hp": 110,
+      "energy_type": "Water",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Colorless", "Colorless"],
+          "title": "Wing Attack",
+          "fixed_damage": 60,
+          "effect": null
+        }
+      ],
+      "weakness": "Lightning",
+      "retreat_cost": ["Colorless", "Colorless"],
+      "rarity": "◊◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 017",
+      "name": "Hisuian Basculin",
+      "stage": 0,
+      "evolves_from": null,
+      "hp": 70,
+      "energy_type": "Water",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Water"],
+          "title": "Bite",
+          "fixed_damage": 20,
+          "effect": null
+        }
+      ],
+      "weakness": "Lightning",
+      "retreat_cost": ["Colorless"],
+      "rarity": "◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 018",
+      "name": "Hisuian Basculegion",
+      "stage": 1,
+      "evolves_from": "Hisuian Basculin",
+      "hp": 100,
+      "energy_type": "Water",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Water", "Water"],
+          "title": "Soul Counter",
+          "fixed_damage": 50,
+          "effect": "This attack does 50 more damage for each point your opponent got during their last turn."
+        }
+      ],
+      "weakness": "Lightning",
+      "retreat_cost": ["Colorless", "Colorless"],
+      "rarity": "◊◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 019",
+      "name": "Team Rocket's Voltorb",
+      "stage": 0,
+      "evolves_from": null,
+      "hp": 60,
+      "energy_type": "Lightning",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Lightning"],
+          "title": "Rolling Attack",
+          "fixed_damage": 20,
+          "effect": null
+        }
+      ],
+      "weakness": "Fighting",
+      "retreat_cost": ["Colorless"],
+      "rarity": "◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 020",
+      "name": "Team Rocket's Electrode",
+      "stage": 1,
+      "evolves_from": "Team Rocket's Voltorb",
+      "hp": 70,
+      "energy_type": "Lightning",
+      "ability": {
+        "title": "Destiny Burst",
+        "effect": "If this Pokémon is in the Active Spot and is Knocked Out by damage from an attack from your opponent's Pokémon, do 70 damage to the Attacking Pokémon."
+      },
+      "attacks": [
+        {
+          "energy_required": ["Lightning"],
+          "title": "Random Spark",
+          "fixed_damage": 0,
+          "effect": "This attack does 30 damage to 1 of your opponent's Pokémon."
+        }
+      ],
+      "weakness": "Fighting",
+      "retreat_cost": ["Colorless"],
+      "rarity": "◊◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 021",
+      "name": "Team Rocket's Zapdos ex",
+      "stage": 0,
+      "evolves_from": null,
+      "hp": 120,
+      "energy_type": "Lightning",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Lightning", "Colorless"],
+          "title": "Electro Ball",
+          "fixed_damage": 40,
+          "effect": null
+        },
+        {
+          "energy_required": ["Lightning", "Lightning", "Colorless"],
+          "title": "Thunderclaw",
+          "fixed_damage": 90,
+          "effect": "This attack also does 50 damage to 1 of your opponent's Benched Pokémon that has damage on it."
+        }
+      ],
+      "weakness": "Fighting",
+      "retreat_cost": ["Colorless"],
+      "rarity": "◊◊◊◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 022",
+      "name": "Blitzle",
+      "stage": 0,
+      "evolves_from": null,
+      "hp": 60,
+      "energy_type": "Lightning",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Lightning"],
+          "title": "Double Headbutt",
+          "fixed_damage": 20,
+          "effect": "Flip 2 coins. This attack does 20 damage for each heads."
+        }
+      ],
+      "weakness": "Fighting",
+      "retreat_cost": ["Colorless"],
+      "rarity": "◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 023",
+      "name": "Zebstrika",
+      "stage": 1,
+      "evolves_from": "Blitzle",
+      "hp": 90,
+      "energy_type": "Lightning",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Lightning"],
+          "title": "Zap Kick",
+          "fixed_damage": 50,
+          "effect": null
+        }
+      ],
+      "weakness": "Fighting",
+      "retreat_cost": ["Colorless"],
+      "rarity": "◊◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 024",
+      "name": "Team Rocket's Pincurchin",
+      "stage": 0,
+      "evolves_from": null,
+      "hp": 70,
+      "energy_type": "Lightning",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Lightning"],
+          "title": "Poison Jab",
+          "fixed_damage": 20,
+          "effect": "Your opponent's Active Pokémon is now Poisoned."
+        }
+      ],
+      "weakness": "Fighting",
+      "retreat_cost": ["Colorless"],
+      "rarity": "◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 025",
+      "name": "Team Rocket's Slowpoke",
+      "stage": 0,
+      "evolves_from": null,
+      "hp": 80,
+      "energy_type": "Psychic",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Psychic"],
+          "title": "Scavenge",
+          "fixed_damage": 0,
+          "effect": "Put a random Item card from your discard pile into your hand."
+        }
+      ],
+      "weakness": "Darkness",
+      "retreat_cost": ["Colorless", "Colorless"],
+      "rarity": "◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 026",
+      "name": "Team Rocket's Slowking ex",
+      "stage": 1,
+      "evolves_from": "Team Rocket's Slowpoke",
+      "hp": 130,
+      "energy_type": "Psychic",
+      "ability": {
+        "title": "Evil Inspiration",
+        "effect": "Once during your turn, if this Pokémon is in the Active Spot, you may draw a card."
+      },
+      "attacks": [
+        {
+          "energy_required": ["Psychic", "Colorless"],
+          "title": "Hand Kinesis",
+          "fixed_damage": 20,
+          "effect": "This attack does 20 damage for each card in your hand."
+        }
+      ],
+      "weakness": "Darkness",
+      "retreat_cost": ["Colorless", "Colorless", "Colorless"],
+      "rarity": "◊◊◊◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 027",
+      "name": "Team Rocket's Drowzee",
+      "stage": 0,
+      "evolves_from": null,
+      "hp": 60,
+      "energy_type": "Psychic",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Psychic", "Colorless"],
+          "title": "Mumble",
+          "fixed_damage": 40,
+          "effect": null
+        }
+      ],
+      "weakness": "Darkness",
+      "retreat_cost": ["Colorless"],
+      "rarity": "◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 028",
+      "name": "Team Rocket's Hypno",
+      "stage": 1,
+      "evolves_from": "Team Rocket's Drowzee",
+      "hp": 90,
+      "energy_type": "Psychic",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Psychic", "Psychic"],
+          "title": "Entrap",
+          "fixed_damage": 0,
+          "effect": "Switch in 1 of your opponent's Benched Pokémon to the Active Spot. If you do, this attack does 50 damage to the new Active Pokémon."
+        }
+      ],
+      "weakness": "Darkness",
+      "retreat_cost": ["Colorless", "Colorless"],
+      "rarity": "◊◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 029",
+      "name": "Team Rocket's Mr. Mime",
+      "stage": 0,
+      "evolves_from": null,
+      "hp": 60,
+      "energy_type": "Psychic",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Psychic"],
+          "title": "Slap Push",
+          "fixed_damage": 40,
+          "effect": null
+        }
+      ],
+      "weakness": "Darkness",
+      "retreat_cost": ["Colorless"],
+      "rarity": "◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 030",
+      "name": "Team Rocket's Mewtwo",
+      "stage": 0,
+      "evolves_from": null,
+      "hp": 100,
+      "energy_type": "Psychic",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Psychic", "Psychic", "Colorless"],
+          "title": "Psychic Explosion",
+          "fixed_damage": 130,
+          "effect": "This Pokémon also does 70 damage to itself."
+        }
+      ],
+      "weakness": "Darkness",
+      "retreat_cost": ["Colorless", "Colorless"],
+      "rarity": "◊◊◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 031",
+      "name": "Espurr",
+      "stage": 0,
+      "evolves_from": null,
+      "hp": 60,
+      "energy_type": "Psychic",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Psychic", "Psychic"],
+          "title": "Beam",
+          "fixed_damage": 40,
+          "effect": null
+        }
+      ],
+      "weakness": "Darkness",
+      "retreat_cost": ["Colorless"],
+      "rarity": "◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 032",
+      "name": "Meowstic",
+      "stage": 1,
+      "evolves_from": "Espurr",
+      "hp": 90,
+      "energy_type": "Psychic",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Psychic", "Psychic"],
+          "title": "Super Psy Bolt",
+          "fixed_damage": 70,
+          "effect": null
+        }
+      ],
+      "weakness": "Darkness",
+      "retreat_cost": ["Colorless"],
+      "rarity": "◊◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 033",
+      "name": "Oranguru",
+      "stage": 0,
+      "evolves_from": null,
+      "hp": 100,
+      "energy_type": "Psychic",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Psychic", "Colorless"],
+          "title": "Punch and Draw",
+          "fixed_damage": 40,
+          "effect": "Draw a card."
+        }
+      ],
+      "weakness": "Darkness",
+      "retreat_cost": ["Colorless", "Colorless"],
+      "rarity": "◊◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 034",
+      "name": "Gimmighoul",
+      "stage": 0,
+      "evolves_from": null,
+      "hp": 50,
+      "energy_type": "Psychic",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Colorless"],
+          "title": "Tackle",
+          "fixed_damage": 20,
+          "effect": null
+        }
+      ],
+      "weakness": "Darkness",
+      "retreat_cost": ["Colorless"],
+      "rarity": "◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 035",
+      "name": "Cubone",
+      "stage": 0,
+      "evolves_from": null,
+      "hp": 60,
+      "energy_type": "Fighting",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Fighting"],
+          "title": "Bone Beatdown",
+          "fixed_damage": 20,
+          "effect": null
+        }
+      ],
+      "weakness": "Grass",
+      "retreat_cost": ["Colorless"],
+      "rarity": "◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 036",
+      "name": "Marowak",
+      "stage": 1,
+      "evolves_from": "Cubone",
+      "hp": 110,
+      "energy_type": "Fighting",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Fighting", "Colorless"],
+          "title": "Punish",
+          "fixed_damage": 50,
+          "effect": "If your opponent's Active Pokémon has “Team Rocket” in its name, this attack does 70 more damage."
+        }
+      ],
+      "weakness": "Grass",
+      "retreat_cost": ["Colorless", "Colorless"],
+      "rarity": "◊◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 037",
+      "name": "Landorus",
+      "stage": 0,
+      "evolves_from": null,
+      "hp": 100,
+      "energy_type": "Fighting",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Fighting", "Fighting", "Colorless"],
+          "title": "Gaia Impact",
+          "fixed_damage": 130,
+          "effect": "Discard all Energy from this Pokémon."
+        }
+      ],
+      "weakness": "Grass",
+      "retreat_cost": ["Colorless"],
+      "rarity": "◊◊◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 038",
+      "name": "Team Rocket's Ekans",
+      "stage": 0,
+      "evolves_from": null,
+      "hp": 60,
+      "energy_type": "Darkness",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Darkness", "Colorless"],
+          "title": "Darkness Fang",
+          "fixed_damage": 40,
+          "effect": null
+        }
+      ],
+      "weakness": "Fighting",
+      "retreat_cost": ["Colorless"],
+      "rarity": "◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 039",
+      "name": "Team Rocket's Arbok",
+      "stage": 1,
+      "evolves_from": "Team Rocket's Ekans",
+      "hp": 100,
+      "energy_type": "Darkness",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Darkness", "Darkness", "Colorless"],
+          "title": "Shadow Seeker",
+          "fixed_damage": 70,
+          "effect": "This attack does 10 more damage for each Energy in your opponent's Active Pokémon's Retreat Cost."
+        }
+      ],
+      "weakness": "Fighting",
+      "retreat_cost": ["Colorless", "Colorless"],
+      "rarity": "◊◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 040",
+      "name": "Team Rocket's Grimer",
+      "stage": 0,
+      "evolves_from": null,
+      "hp": 60,
+      "energy_type": "Darkness",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Darkness"],
+          "title": "Sludge",
+          "fixed_damage": 20,
+          "effect": "Your opponent's Active Pokémon is now Poisoned."
+        }
+      ],
+      "weakness": "Fighting",
+      "retreat_cost": ["Colorless", "Colorless"],
+      "rarity": "◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 041",
+      "name": "Team Rocket's Muk",
+      "stage": 1,
+      "evolves_from": "Team Rocket's Grimer",
+      "hp": 120,
+      "energy_type": "Darkness",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Darkness", "Darkness", "Colorless"],
+          "title": "Poison Absorption",
+          "fixed_damage": 80,
+          "effect": "If your opponent's Active Pokémon is Poisoned, heal 60 damage from this Pokémon."
+        }
+      ],
+      "weakness": "Fighting",
+      "retreat_cost": ["Colorless", "Colorless", "Colorless"],
+      "rarity": "◊◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 042",
+      "name": "Team Rocket's Koffing",
+      "stage": 0,
+      "evolves_from": null,
+      "hp": 60,
+      "energy_type": "Darkness",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Darkness"],
+          "title": "Reverse Thrust",
+          "fixed_damage": 10,
+          "effect": "Switch this Pokémon with 1 of your Benched Pokémon."
+        }
+      ],
+      "weakness": "Fighting",
+      "retreat_cost": ["Colorless"],
+      "rarity": "◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 043",
+      "name": "Team Rocket's Weezing ex",
+      "stage": 1,
+      "evolves_from": "Team Rocket's Koffing",
+      "hp": 140,
+      "energy_type": "Darkness",
+      "ability": {
+        "title": "Boiler Smog",
+        "effect": "Once during your turn, when you play this Pokémon from your hand to evolve 1 of your Pokémon, you may make your opponent's Active Pokémon Poisoned and Burned."
+      },
+      "attacks": [
+        {
+          "energy_required": ["Darkness", "Darkness"],
+          "title": "Confusion Gas",
+          "fixed_damage": 60,
+          "effect": "Your opponent's Active Pokémon is now Confused."
+        }
+      ],
+      "weakness": "Fighting",
+      "retreat_cost": ["Colorless", "Colorless"],
+      "rarity": "◊◊◊◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 044",
+      "name": "Team Rocket's Sneasel",
+      "stage": 0,
+      "evolves_from": null,
+      "hp": 60,
+      "energy_type": "Darkness",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Darkness", "Colorless"],
+          "title": "Group Beatdown",
+          "fixed_damage": 30,
+          "effect": "Flip a coin for each Pokémon you have in play. This attack does 30 damage for each heads."
+        }
+      ],
+      "weakness": "Grass",
+      "retreat_cost": ["Colorless"],
+      "rarity": "◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 045",
+      "name": "Togedemaru",
+      "stage": 0,
+      "evolves_from": null,
+      "hp": 70,
+      "energy_type": "Metal",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Metal"],
+          "title": "Tumbling Attack",
+          "fixed_damage": 20,
+          "effect": "Flip a coin. If heads, this attack does 30 more damage."
+        }
+      ],
+      "weakness": "Fire",
+      "retreat_cost": ["Colorless"],
+      "rarity": "◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 046",
+      "name": "Cufant",
+      "stage": 0,
+      "evolves_from": null,
+      "hp": 90,
+      "energy_type": "Metal",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Metal", "Colorless"],
+          "title": "Rollout",
+          "fixed_damage": 40,
+          "effect": null
+        }
+      ],
+      "weakness": "Fire",
+      "retreat_cost": ["Colorless", "Colorless", "Colorless"],
+      "rarity": "◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 047",
+      "name": "Copperajah",
+      "stage": 1,
+      "evolves_from": "Cufant",
+      "hp": 160,
+      "energy_type": "Metal",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Metal", "Metal", "Colorless"],
+          "title": "Heavy Impact",
+          "fixed_damage": 80,
+          "effect": null
+        }
+      ],
+      "weakness": "Fire",
+      "retreat_cost": ["Colorless", "Colorless", "Colorless", "Colorless"],
+      "rarity": "◊◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 048",
+      "name": "Team Rocket's Tinkatink",
+      "stage": 0,
+      "evolves_from": null,
+      "hp": 60,
+      "energy_type": "Metal",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Metal"],
+          "title": "Lunge Out",
+          "fixed_damage": 20,
+          "effect": null
+        }
+      ],
+      "weakness": "Fire",
+      "retreat_cost": ["Colorless"],
+      "rarity": "◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 049",
+      "name": "Team Rocket's Tinkatuff",
+      "stage": 1,
+      "evolves_from": "Team Rocket's Tinkatink",
+      "hp": 80,
+      "energy_type": "Metal",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Metal", "Colorless"],
+          "title": "Corkscrew Punch",
+          "fixed_damage": 50,
+          "effect": null
+        }
+      ],
+      "weakness": "Fire",
+      "retreat_cost": ["Colorless", "Colorless"],
+      "rarity": "◊◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 050",
+      "name": "Team Rocket's Tinkaton",
+      "stage": 2,
+      "evolves_from": "Team Rocket's Tinkatuff",
+      "hp": 140,
+      "energy_type": "Metal",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Metal", "Metal", "Colorless"],
+          "title": "Pile-Driving Hammer",
+          "fixed_damage": 80,
+          "effect": "During your opponent's next turn, attacks used by the Defending Pokémon cost 2 [C] more, and its Retreat Cost is 2 [C] more."
+        }
+      ],
+      "weakness": "Fire",
+      "retreat_cost": ["Colorless", "Colorless"],
+      "rarity": "◊◊◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 051",
+      "name": "Gholdengo",
+      "stage": 1,
+      "evolves_from": "Gimmighoul",
+      "hp": 100,
+      "energy_type": "Metal",
+      "ability": {
+        "title": "Luxury Coin",
+        "effect": "Once during your turn, when you flip any coins for an effect of your Trainer cards, you may ignore all results of those coin flips and begin flipping those coins again. You can't use more than 1 Luxury Coin Ability each turn."
+      },
+      "attacks": [
+        {
+          "energy_required": ["Colorless", "Colorless", "Colorless"],
+          "title": "Power Gem",
+          "fixed_damage": 50,
+          "effect": null
+        }
+      ],
+      "weakness": "Fire",
+      "retreat_cost": ["Colorless"],
+      "rarity": "◊◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 052",
+      "name": "Gible",
+      "stage": 0,
+      "evolves_from": null,
+      "hp": 60,
+      "energy_type": "Dragon",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Colorless"],
+          "title": "Take Down",
+          "fixed_damage": 30,
+          "effect": "This Pokémon also does 10 damage to itself."
+        }
+      ],
+      "weakness": null,
+      "retreat_cost": ["Colorless"],
+      "rarity": "◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 053",
+      "name": "Gabite",
+      "stage": 1,
+      "evolves_from": "Gible",
+      "hp": 80,
+      "energy_type": "Dragon",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Water", "Fighting"],
+          "title": "Linear Attack",
+          "fixed_damage": 0,
+          "effect": "This attack does 50 damage to 1 of your opponent's Pokémon."
+        }
+      ],
+      "weakness": null,
+      "retreat_cost": ["Colorless"],
+      "rarity": "◊◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 054",
+      "name": "Garchomp",
+      "stage": 2,
+      "evolves_from": "Gabite",
+      "hp": 150,
+      "energy_type": "Dragon",
+      "ability": {
+        "title": "Mach Stealth",
+        "effect": "If your opponent's Pokémon is Knocked Out by damage from this Pokémon's attacks, during your opponent's next turn, prevent all damage from—and effects of—attacks done to this Pokémon."
+      },
+      "attacks": [
+        {
+          "energy_required": ["Water", "Fighting", "Colorless"],
+          "title": "Land Crush",
+          "fixed_damage": 120,
+          "effect": null
+        }
+      ],
+      "weakness": null,
+      "retreat_cost": ["Colorless"],
+      "rarity": "◊◊◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 055",
+      "name": "Duraludon",
+      "stage": 0,
+      "evolves_from": null,
+      "hp": 100,
+      "energy_type": "Dragon",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Fighting", "Metal"],
+          "title": "Power Beam",
+          "fixed_damage": 50,
+          "effect": null
+        }
+      ],
+      "weakness": null,
+      "retreat_cost": ["Colorless", "Colorless"],
+      "rarity": "◊◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 056",
+      "name": "Archaludon",
+      "stage": 1,
+      "evolves_from": "Duraludon",
+      "hp": 140,
+      "energy_type": "Dragon",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Fighting", "Metal", "Colorless", "Colorless"],
+          "title": "Protect Charge",
+          "fixed_damage": 110,
+          "effect": "During your opponent's next turn, this Pokémon takes -30 damage from attacks."
+        }
+      ],
+      "weakness": null,
+      "retreat_cost": ["Colorless", "Colorless", "Colorless"],
+      "rarity": "◊◊◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 057",
+      "name": "Regidrago",
+      "stage": 0,
+      "evolves_from": null,
+      "hp": 110,
+      "energy_type": "Dragon",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Grass", "Fire", "Colorless"],
+          "title": "Draconic Slam",
+          "fixed_damage": 140,
+          "effect": "If this Pokémon has damage on it, this attack does -100 damage."
+        }
+      ],
+      "weakness": null,
+      "retreat_cost": ["Colorless", "Colorless"],
+      "rarity": "◊◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 058",
+      "name": "Team Rocket's Rattata",
+      "stage": 0,
+      "evolves_from": null,
+      "hp": 40,
+      "energy_type": "Colorless",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Colorless"],
+          "title": "Ambush",
+          "fixed_damage": 20,
+          "effect": "Flip a coin. If heads, this attack does 20 more damage."
+        }
+      ],
+      "weakness": "Fighting",
+      "retreat_cost": ["Colorless"],
+      "rarity": "◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 059",
+      "name": "Team Rocket's Raticate ex",
+      "stage": 1,
+      "evolves_from": "Team Rocket's Rattata",
+      "hp": 120,
+      "energy_type": "Colorless",
+      "ability": {
+        "title": "Thieving Incisors",
+        "effect": "Once during your turn, when you play this Pokémon from your hand to evolve 1 of your Pokémon, you may move a random Energy from your opponent's Active Pokémon to this Pokémon."
+      },
+      "attacks": [
+        {
+          "energy_required": ["Colorless", "Colorless"],
+          "title": "Boost Dash",
+          "fixed_damage": 70,
+          "effect": null
+        }
+      ],
+      "weakness": "Fighting",
+      "retreat_cost": [],
+      "rarity": "◊◊◊◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 060",
+      "name": "Team Rocket's Meowth",
+      "stage": 0,
+      "evolves_from": null,
+      "hp": 50,
+      "energy_type": "Colorless",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Colorless"],
+          "title": "Scratch",
+          "fixed_damage": 30,
+          "effect": null
+        }
+      ],
+      "weakness": "Fighting",
+      "retreat_cost": ["Colorless"],
+      "rarity": "◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 061",
+      "name": "Team Rocket's Persian",
+      "stage": 1,
+      "evolves_from": "Team Rocket's Meowth",
+      "hp": 100,
+      "energy_type": "Colorless",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Colorless", "Colorless"],
+          "title": "Dangerous Rogue",
+          "fixed_damage": 10,
+          "effect": "This attack does 40 more damage for each of your opponent's Benched Pokémon."
+        }
+      ],
+      "weakness": "Fighting",
+      "retreat_cost": ["Colorless"],
+      "rarity": "◊◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 062",
+      "name": "Team Rocket's Kecleon",
+      "stage": 0,
+      "evolves_from": null,
+      "hp": 70,
+      "energy_type": "Colorless",
+      "ability": {
+        "title": "Spy Ops",
+        "effect": "Once during your turn, you may look at a random card from your opponent's hand."
+      },
+      "attacks": [
+        {
+          "energy_required": ["Colorless", "Colorless"],
+          "title": "Hit and Hide",
+          "fixed_damage": 40,
+          "effect": "Flip a coin. If heads, during your opponent's next turn, prevent all damage from—and effects of—attacks done to this Pokémon."
+        }
+      ],
+      "weakness": "Fighting",
+      "retreat_cost": ["Colorless"],
+      "rarity": "◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 063",
+      "name": "Happiny",
+      "stage": 0,
+      "evolves_from": null,
+      "hp": 30,
+      "energy_type": "Colorless",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": [],
+          "title": "Chubby Cheer",
+          "fixed_damage": 10,
+          "effect": "During your next turn, attacks used by your Pokémon do +20 damage to your opponent's Active Pokémon."
+        }
+      ],
+      "weakness": null,
+      "retreat_cost": [],
+      "rarity": "◊◊◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 064",
+      "name": "Furfrou",
+      "stage": 0,
+      "evolves_from": null,
+      "hp": 70,
+      "energy_type": "Colorless",
+      "ability": {
+        "title": "Fur Coat",
+        "effect": "This Pokémon takes -20 damage from attacks."
+      },
+      "attacks": [
+        {
+          "energy_required": ["Colorless"],
+          "title": "Continuous Steps",
+          "fixed_damage": 30,
+          "effect": "Flip a coin until you get tails. This attack does 30 damage for each heads."
+        }
+      ],
+      "weakness": "Fighting",
+      "retreat_cost": ["Colorless"],
+      "rarity": "◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 065",
+      "name": "Lechonk",
+      "stage": 0,
+      "evolves_from": null,
+      "hp": 60,
+      "energy_type": "Colorless",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Colorless", "Colorless"],
+          "title": "Headbutt",
+          "fixed_damage": 30,
+          "effect": null
+        }
+      ],
+      "weakness": "Fighting",
+      "retreat_cost": ["Colorless"],
+      "rarity": "◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 066",
+      "name": "Oinkologne",
+      "stage": 1,
+      "evolves_from": "Lechonk",
+      "hp": 110,
+      "energy_type": "Colorless",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Colorless", "Colorless"],
+          "title": "Sitdown Splash",
+          "fixed_damage": 40,
+          "effect": "Flip a coin. If heads, this attack does 60 more damage."
+        }
+      ],
+      "weakness": "Fighting",
+      "retreat_cost": ["Colorless", "Colorless"],
+      "rarity": "◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Trainer": {
+      "id": "B4a 067",
+      "trainer_card_type": "Item",
+      "name": "Team Rocket's Thieving Machine",
+      "effect": "Put a random Item card, except any Team Rocket's Thieving Machine, from your opponent's discard pile into your hand.",
+      "rarity": "◊◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Trainer": {
+      "id": "B4a 068",
+      "trainer_card_type": "Item",
+      "name": "Team Rocket's Goo-zooka",
+      "effect": "Until the end of your opponent's next turn, your opponent's Active Pokémon's Retreat Cost is 1 more.",
+      "rarity": "◊◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Trainer": {
+      "id": "B4a 069",
+      "trainer_card_type": "Supporter",
+      "name": "Team Rocket's Researcher",
+      "effect": "Flip a coin until you get tails. For each heads, put a random Pokémon that has “Team Rocket” in its name from your deck into your hand.",
+      "rarity": "◊◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Trainer": {
+      "id": "B4a 070",
+      "trainer_card_type": "Supporter",
+      "name": "Team Rocket's Master Plan",
+      "effect": "Your opponent's Active Pokémon is now Confused. Flip a coin. If tails, your Active Pokémon is now also Confused.",
+      "rarity": "◊◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Trainer": {
+      "id": "B4a 071",
+      "trainer_card_type": "Supporter",
+      "name": "Team Rocket's Boss",
+      "effect": "Look at your opponent's hand and put any number of Basic Pokémon you find there onto your opponent's Bench.",
+      "rarity": "◊◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Trainer": {
+      "id": "B4a 072",
+      "trainer_card_type": "Stadium",
+      "name": "Arcade",
+      "effect": "Once during each player's turn, that player may flip 3 coins. If all of them are heads, that player draws cards until they have 7 cards in their hand.",
+      "rarity": "◊◊",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 073",
+      "name": "Delphox",
+      "stage": 2,
+      "evolves_from": "Braixen",
+      "hp": 130,
+      "energy_type": "Fire",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Colorless", "Colorless", "Colorless"],
+          "title": "Psychic",
+          "fixed_damage": 60,
+          "effect": "This attack does 30 more damage for each Energy attached to your opponent's Active Pokémon."
+        }
+      ],
+      "weakness": "Water",
+      "retreat_cost": ["Colorless", "Colorless"],
+      "rarity": "☆",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 074",
+      "name": "Team Rocket's Hypno",
+      "stage": 1,
+      "evolves_from": "Team Rocket's Drowzee",
+      "hp": 90,
+      "energy_type": "Psychic",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Psychic", "Psychic"],
+          "title": "Entrap",
+          "fixed_damage": 0,
+          "effect": "Switch in 1 of your opponent's Benched Pokémon to the Active Spot. If you do, this attack does 50 damage to the new Active Pokémon."
+        }
+      ],
+      "weakness": "Darkness",
+      "retreat_cost": ["Colorless", "Colorless"],
+      "rarity": "☆",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 075",
+      "name": "Team Rocket's Tinkaton",
+      "stage": 2,
+      "evolves_from": "Team Rocket's Tinkatuff",
+      "hp": 140,
+      "energy_type": "Metal",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Metal", "Metal", "Colorless"],
+          "title": "Pile-Driving Hammer",
+          "fixed_damage": 80,
+          "effect": "During your opponent's next turn, attacks used by the Defending Pokémon cost 2 [C] more, and its Retreat Cost is 2 [C] more."
+        }
+      ],
+      "weakness": "Fire",
+      "retreat_cost": ["Colorless", "Colorless"],
+      "rarity": "☆",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 076",
+      "name": "Team Rocket's Kecleon",
+      "stage": 0,
+      "evolves_from": null,
+      "hp": 70,
+      "energy_type": "Colorless",
+      "ability": {
+        "title": "Spy Ops",
+        "effect": "Once during your turn, you may look at a random card from your opponent's hand."
+      },
+      "attacks": [
+        {
+          "energy_required": ["Colorless", "Colorless"],
+          "title": "Hit and Hide",
+          "fixed_damage": 40,
+          "effect": "Flip a coin. If heads, during your opponent's next turn, prevent all damage from—and effects of—attacks done to this Pokémon."
+        }
+      ],
+      "weakness": "Fighting",
+      "retreat_cost": ["Colorless"],
+      "rarity": "☆",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 077",
+      "name": "Happiny",
+      "stage": 0,
+      "evolves_from": null,
+      "hp": 30,
+      "energy_type": "Colorless",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": [],
+          "title": "Chubby Cheer",
+          "fixed_damage": 10,
+          "effect": "During your next turn, attacks used by your Pokémon do +20 damage to your opponent's Active Pokémon."
+        }
+      ],
+      "weakness": null,
+      "retreat_cost": [],
+      "rarity": "☆",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 078",
+      "name": "Lechonk",
+      "stage": 0,
+      "evolves_from": null,
+      "hp": 60,
+      "energy_type": "Colorless",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Colorless", "Colorless"],
+          "title": "Headbutt",
+          "fixed_damage": 30,
+          "effect": null
+        }
+      ],
+      "weakness": "Fighting",
+      "retreat_cost": ["Colorless"],
+      "rarity": "☆",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 079",
+      "name": "Team Rocket's Moltres ex",
+      "stage": 0,
+      "evolves_from": null,
+      "hp": 130,
+      "energy_type": "Fire",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Fire"],
+          "title": "Heat Charged",
+          "fixed_damage": 0,
+          "effect": "Flip 3 coins. For each heads, produce a [R] Energy from your Energy Zone and attach it to this Pokémon."
+        },
+        {
+          "energy_required": ["Fire", "Fire", "Fire", "Colorless"],
+          "title": "Netherwing",
+          "fixed_damage": 130,
+          "effect": "Discard a [R] Energy from this Pokémon."
+        }
+      ],
+      "weakness": "Water",
+      "retreat_cost": ["Colorless", "Colorless"],
+      "rarity": "☆☆",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 080",
+      "name": "Team Rocket's Articuno ex",
+      "stage": 0,
+      "evolves_from": null,
+      "hp": 130,
+      "energy_type": "Water",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Water", "Colorless"],
+          "title": "Ice Wing",
+          "fixed_damage": 40,
+          "effect": null
+        },
+        {
+          "energy_required": ["Water", "Water", "Colorless"],
+          "title": "Hailstorm",
+          "fixed_damage": 130,
+          "effect": "This attack also does 20 damage to each of your Benched Pokémon."
+        }
+      ],
+      "weakness": "Metal",
+      "retreat_cost": ["Colorless", "Colorless"],
+      "rarity": "☆☆",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 081",
+      "name": "Team Rocket's Zapdos ex",
+      "stage": 0,
+      "evolves_from": null,
+      "hp": 120,
+      "energy_type": "Lightning",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Lightning", "Colorless"],
+          "title": "Electro Ball",
+          "fixed_damage": 40,
+          "effect": null
+        },
+        {
+          "energy_required": ["Lightning", "Lightning", "Colorless"],
+          "title": "Thunderclaw",
+          "fixed_damage": 90,
+          "effect": "This attack also does 50 damage to 1 of your opponent's Benched Pokémon that has damage on it."
+        }
+      ],
+      "weakness": "Fighting",
+      "retreat_cost": ["Colorless"],
+      "rarity": "☆☆",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 082",
+      "name": "Team Rocket's Slowking ex",
+      "stage": 1,
+      "evolves_from": "Team Rocket's Slowpoke",
+      "hp": 130,
+      "energy_type": "Psychic",
+      "ability": {
+        "title": "Evil Inspiration",
+        "effect": "Once during your turn, if this Pokémon is in the Active Spot, you may draw a card."
+      },
+      "attacks": [
+        {
+          "energy_required": ["Psychic", "Colorless"],
+          "title": "Hand Kinesis",
+          "fixed_damage": 20,
+          "effect": "This attack does 20 damage for each card in your hand."
+        }
+      ],
+      "weakness": "Darkness",
+      "retreat_cost": ["Colorless", "Colorless", "Colorless"],
+      "rarity": "☆☆",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 083",
+      "name": "Team Rocket's Weezing ex",
+      "stage": 1,
+      "evolves_from": "Team Rocket's Koffing",
+      "hp": 140,
+      "energy_type": "Darkness",
+      "ability": {
+        "title": "Boiler Smog",
+        "effect": "Once during your turn, when you play this Pokémon from your hand to evolve 1 of your Pokémon, you may make your opponent's Active Pokémon Poisoned and Burned."
+      },
+      "attacks": [
+        {
+          "energy_required": ["Darkness", "Darkness"],
+          "title": "Confusion Gas",
+          "fixed_damage": 60,
+          "effect": "Your opponent's Active Pokémon is now Confused."
+        }
+      ],
+      "weakness": "Fighting",
+      "retreat_cost": ["Colorless", "Colorless"],
+      "rarity": "☆☆",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 084",
+      "name": "Team Rocket's Raticate ex",
+      "stage": 1,
+      "evolves_from": "Team Rocket's Rattata",
+      "hp": 120,
+      "energy_type": "Colorless",
+      "ability": {
+        "title": "Thieving Incisors",
+        "effect": "Once during your turn, when you play this Pokémon from your hand to evolve 1 of your Pokémon, you may move a random Energy from your opponent's Active Pokémon to this Pokémon."
+      },
+      "attacks": [
+        {
+          "energy_required": ["Colorless", "Colorless"],
+          "title": "Boost Dash",
+          "fixed_damage": 70,
+          "effect": null
+        }
+      ],
+      "weakness": "Fighting",
+      "retreat_cost": [],
+      "rarity": "☆☆",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Trainer": {
+      "id": "B4a 085",
+      "trainer_card_type": "Supporter",
+      "name": "Team Rocket's Researcher",
+      "effect": "Flip a coin until you get tails. For each heads, put a random Pokémon that has “Team Rocket” in its name from your deck into your hand.",
+      "rarity": "☆☆",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Trainer": {
+      "id": "B4a 086",
+      "trainer_card_type": "Supporter",
+      "name": "Team Rocket's Master Plan",
+      "effect": "Your opponent's Active Pokémon is now Confused. Flip a coin. If tails, your Active Pokémon is now also Confused.",
+      "rarity": "☆☆",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Trainer": {
+      "id": "B4a 087",
+      "trainer_card_type": "Supporter",
+      "name": "Team Rocket's Boss",
+      "effect": "Look at your opponent's hand and put any number of Basic Pokémon you find there onto your opponent's Bench.",
+      "rarity": "☆☆",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 088",
+      "name": "Team Rocket's Moltres ex",
+      "stage": 0,
+      "evolves_from": null,
+      "hp": 130,
+      "energy_type": "Fire",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Fire"],
+          "title": "Heat Charged",
+          "fixed_damage": 0,
+          "effect": "Flip 3 coins. For each heads, produce a [R] Energy from your Energy Zone and attach it to this Pokémon."
+        },
+        {
+          "energy_required": ["Fire", "Fire", "Fire", "Colorless"],
+          "title": "Netherwing",
+          "fixed_damage": 130,
+          "effect": "Discard a [R] Energy from this Pokémon."
+        }
+      ],
+      "weakness": "Water",
+      "retreat_cost": ["Colorless", "Colorless"],
+      "rarity": "☆☆",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 089",
+      "name": "Team Rocket's Articuno ex",
+      "stage": 0,
+      "evolves_from": null,
+      "hp": 130,
+      "energy_type": "Water",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Water", "Colorless"],
+          "title": "Ice Wing",
+          "fixed_damage": 40,
+          "effect": null
+        },
+        {
+          "energy_required": ["Water", "Water", "Colorless"],
+          "title": "Hailstorm",
+          "fixed_damage": 130,
+          "effect": "This attack also does 20 damage to each of your Benched Pokémon."
+        }
+      ],
+      "weakness": "Metal",
+      "retreat_cost": ["Colorless", "Colorless"],
+      "rarity": "☆☆",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 090",
+      "name": "Team Rocket's Zapdos ex",
+      "stage": 0,
+      "evolves_from": null,
+      "hp": 120,
+      "energy_type": "Lightning",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Lightning", "Colorless"],
+          "title": "Electro Ball",
+          "fixed_damage": 40,
+          "effect": null
+        },
+        {
+          "energy_required": ["Lightning", "Lightning", "Colorless"],
+          "title": "Thunderclaw",
+          "fixed_damage": 90,
+          "effect": "This attack also does 50 damage to 1 of your opponent's Benched Pokémon that has damage on it."
+        }
+      ],
+      "weakness": "Fighting",
+      "retreat_cost": ["Colorless"],
+      "rarity": "☆☆",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 091",
+      "name": "Team Rocket's Slowking ex",
+      "stage": 1,
+      "evolves_from": "Team Rocket's Slowpoke",
+      "hp": 130,
+      "energy_type": "Psychic",
+      "ability": {
+        "title": "Evil Inspiration",
+        "effect": "Once during your turn, if this Pokémon is in the Active Spot, you may draw a card."
+      },
+      "attacks": [
+        {
+          "energy_required": ["Psychic", "Colorless"],
+          "title": "Hand Kinesis",
+          "fixed_damage": 20,
+          "effect": "This attack does 20 damage for each card in your hand."
+        }
+      ],
+      "weakness": "Darkness",
+      "retreat_cost": ["Colorless", "Colorless", "Colorless"],
+      "rarity": "☆☆",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 092",
+      "name": "Team Rocket's Weezing ex",
+      "stage": 1,
+      "evolves_from": "Team Rocket's Koffing",
+      "hp": 140,
+      "energy_type": "Darkness",
+      "ability": {
+        "title": "Boiler Smog",
+        "effect": "Once during your turn, when you play this Pokémon from your hand to evolve 1 of your Pokémon, you may make your opponent's Active Pokémon Poisoned and Burned."
+      },
+      "attacks": [
+        {
+          "energy_required": ["Darkness", "Darkness"],
+          "title": "Confusion Gas",
+          "fixed_damage": 60,
+          "effect": "Your opponent's Active Pokémon is now Confused."
+        }
+      ],
+      "weakness": "Fighting",
+      "retreat_cost": ["Colorless", "Colorless"],
+      "rarity": "☆☆",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 093",
+      "name": "Team Rocket's Raticate ex",
+      "stage": 1,
+      "evolves_from": "Team Rocket's Rattata",
+      "hp": 120,
+      "energy_type": "Colorless",
+      "ability": {
+        "title": "Thieving Incisors",
+        "effect": "Once during your turn, when you play this Pokémon from your hand to evolve 1 of your Pokémon, you may move a random Energy from your opponent's Active Pokémon to this Pokémon."
+      },
+      "attacks": [
+        {
+          "energy_required": ["Colorless", "Colorless"],
+          "title": "Boost Dash",
+          "fixed_damage": 70,
+          "effect": null
+        }
+      ],
+      "weakness": "Fighting",
+      "retreat_cost": [],
+      "rarity": "☆☆",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Trainer": {
+      "id": "B4a 094",
+      "trainer_card_type": "Supporter",
+      "name": "Team Rocket's Master Plan",
+      "effect": "Your opponent's Active Pokémon is now Confused. Flip a coin. If tails, your Active Pokémon is now also Confused.",
+      "rarity": "☆☆☆",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 095",
+      "name": "Vulpix",
+      "stage": 0,
+      "evolves_from": null,
+      "hp": 60,
+      "energy_type": "Fire",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Colorless"],
+          "title": "Hold Still",
+          "fixed_damage": 0,
+          "effect": "Heal 20 damage from this Pokémon."
+        }
+      ],
+      "weakness": "Water",
+      "retreat_cost": ["Colorless"],
+      "rarity": "*",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 096",
+      "name": "Ninetales",
+      "stage": 1,
+      "evolves_from": "Vulpix",
+      "hp": 100,
+      "energy_type": "Fire",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Fire", "Colorless", "Colorless"],
+          "title": "Ember Dance",
+          "fixed_damage": 20,
+          "effect": "Flip 9 coins. This attack does 20 damage for each heads."
+        }
+      ],
+      "weakness": "Water",
+      "retreat_cost": ["Colorless"],
+      "rarity": "*",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 097",
+      "name": "Goldeen",
+      "stage": 0,
+      "evolves_from": null,
+      "hp": 50,
+      "energy_type": "Water",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Water"],
+          "title": "Horn Attack",
+          "fixed_damage": 30,
+          "effect": null
+        }
+      ],
+      "weakness": "Lightning",
+      "retreat_cost": ["Colorless"],
+      "rarity": "*",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 098",
+      "name": "Seaking",
+      "stage": 1,
+      "evolves_from": "Goldeen",
+      "hp": 90,
+      "energy_type": "Water",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Water"],
+          "title": "Aqua Bullet",
+          "fixed_damage": 30,
+          "effect": "This attack also does 20 damage to 1 of your opponent's Benched Pokémon."
+        }
+      ],
+      "weakness": "Lightning",
+      "retreat_cost": ["Colorless"],
+      "rarity": "*",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 099",
+      "name": "Toxel",
+      "stage": 0,
+      "evolves_from": null,
+      "hp": 60,
+      "energy_type": "Lightning",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Lightning", "Colorless"],
+          "title": "Static Shock",
+          "fixed_damage": 30,
+          "effect": null
+        }
+      ],
+      "weakness": "Fighting",
+      "retreat_cost": ["Colorless"],
+      "rarity": "*",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 100",
+      "name": "Sinistea",
+      "stage": 0,
+      "evolves_from": null,
+      "hp": 30,
+      "energy_type": "Psychic",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Psychic"],
+          "title": "Hide",
+          "fixed_damage": 0,
+          "effect": "Flip a coin. If heads, during your opponent's next turn, prevent all damage from—and effects of—attacks done to this Pokémon."
+        }
+      ],
+      "weakness": "Darkness",
+      "retreat_cost": ["Colorless"],
+      "rarity": "*",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 101",
+      "name": "Polteageist",
+      "stage": 1,
+      "evolves_from": "Sinistea",
+      "hp": 70,
+      "energy_type": "Psychic",
+      "ability": {
+        "title": "Refreshing Tea",
+        "effect": "Once during your turn, when you play this Pokémon from your hand to evolve 1 of your Pokémon, you may have your opponent shuffle their hand into their deck. For each remaining point that your opponent needs to win, they draw a card."
+      },
+      "attacks": [
+        {
+          "energy_required": ["Psychic"],
+          "title": "Spooky Shot",
+          "fixed_damage": 40,
+          "effect": null
+        }
+      ],
+      "weakness": "Darkness",
+      "retreat_cost": ["Colorless"],
+      "rarity": "*",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 102",
+      "name": "Mawile",
+      "stage": 0,
+      "evolves_from": null,
+      "hp": 80,
+      "energy_type": "Metal",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Metal", "Colorless"],
+          "title": "Cavernous Chomp",
+          "fixed_damage": 50,
+          "effect": null
+        }
+      ],
+      "weakness": "Fire",
+      "retreat_cost": ["Colorless"],
+      "rarity": "*",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 103",
+      "name": "Taillow",
+      "stage": 0,
+      "evolves_from": null,
+      "hp": 60,
+      "energy_type": "Colorless",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Colorless"],
+          "title": "Peck",
+          "fixed_damage": 20,
+          "effect": null
+        }
+      ],
+      "weakness": "Lightning",
+      "retreat_cost": ["Colorless"],
+      "rarity": "*",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 104",
+      "name": "Swellow",
+      "stage": 1,
+      "evolves_from": "Taillow",
+      "hp": 80,
+      "energy_type": "Colorless",
+      "ability": {
+        "title": "Repelling Wind",
+        "effect": "Once during your turn, you may switch out your opponent's Active Basic Pokémon to the Bench. (Your opponent chooses the new Active Pokémon.)"
+      },
+      "attacks": [
+        {
+          "energy_required": ["Colorless", "Colorless"],
+          "title": "Wing Attack",
+          "fixed_damage": 50,
+          "effect": null
+        }
+      ],
+      "weakness": "Lightning",
+      "retreat_cost": ["Colorless"],
+      "rarity": "*",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 105",
+      "name": "Mega Charizard Y ex",
+      "stage": 2,
+      "evolves_from": "Charmeleon",
+      "hp": 220,
+      "energy_type": "Fire",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Fire", "Fire", "Fire", "Colorless"],
+          "title": "Crimson Dive",
+          "fixed_damage": 250,
+          "effect": "This Pokémon also does 50 damage to itself."
+        }
+      ],
+      "weakness": "Water",
+      "retreat_cost": ["Colorless", "Colorless"],
+      "rarity": "**",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 106",
+      "name": "Toxtricity ex",
+      "stage": 1,
+      "evolves_from": "Toxel",
+      "hp": 150,
+      "energy_type": "Lightning",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Lightning", "Lightning", "Colorless"],
+          "title": "Damaging Spark",
+          "fixed_damage": 90,
+          "effect": "This attack also does 30 damage to each of your opponent's Benched Pokémon that has damage on it."
+        }
+      ],
+      "weakness": "Fighting",
+      "retreat_cost": ["Colorless", "Colorless"],
+      "rarity": "**",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 107",
+      "name": "Mimikyu ex",
+      "stage": 0,
+      "evolves_from": null,
+      "hp": 120,
+      "energy_type": "Psychic",
+      "ability": {
+        "title": "Disguise",
+        "effect": "When this Pokémon is first damaged by an attack after coming into play, prevent that damage."
+      },
+      "attacks": [
+        {
+          "energy_required": ["Psychic", "Psychic"],
+          "title": "Claw Slash",
+          "fixed_damage": 70,
+          "effect": null
+        }
+      ],
+      "weakness": "Darkness",
+      "retreat_cost": ["Colorless", "Colorless"],
+      "rarity": "**",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 108",
+      "name": "Mega Mawile ex",
+      "stage": 0,
+      "evolves_from": null,
+      "hp": 170,
+      "energy_type": "Metal",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Metal", "Colorless"],
+          "title": "Heat-Up Crunch",
+          "fixed_damage": 60,
+          "effect": "Until this Pokémon leaves the Active Spot, this Pokémon's Heat-Up Crunch attack does +30 damage. This effect stacks."
+        }
+      ],
+      "weakness": "Fire",
+      "retreat_cost": ["Colorless"],
+      "rarity": "**",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "B4a 109",
+      "name": "Gholdengo",
+      "stage": 1,
+      "evolves_from": "Gimmighoul",
+      "hp": 100,
+      "energy_type": "Metal",
+      "ability": {
+        "title": "Luxury Coin",
+        "effect": "Once during your turn, when you flip any coins for an effect of your Trainer cards, you may ignore all results of those coin flips and begin flipping those coins again. You can't use more than 1 Luxury Coin Ability each turn."
+      },
+      "attacks": [
+        {
+          "energy_required": ["Colorless", "Colorless", "Colorless"],
+          "title": "Power Gem",
+          "fixed_damage": 50,
+          "effect": null
+        }
+      ],
+      "weakness": "Fire",
+      "retreat_cost": ["Colorless"],
+      "rarity": "♛",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
+    "Trainer": {
+      "id": "B4a 110",
+      "trainer_card_type": "Item",
+      "name": "Team Rocket's Goo-zooka",
+      "effect": "Until the end of your opponent's next turn, your opponent's Active Pokémon's Retreat Cost is 1 more.",
+      "rarity": "♛",
+      "booster_pack": "Team Rocket's Ambition (B4a)"
+    }
+  },
+  {
     "Trainer": {
       "id": "P-A 001",
       "trainer_card_type": "Item",
@@ -84791,6 +87292,190 @@
       ],
       "weakness": "Fire",
       "retreat_cost": ["Colorless", "Colorless"],
+      "rarity": "◊◊◊",
+      "booster_pack": "Promo B (P-B)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "P-B 087",
+      "name": "Mega Sceptile ex",
+      "stage": 2,
+      "evolves_from": "Grovyle",
+      "hp": 210,
+      "energy_type": "Grass",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Grass", "Grass"],
+          "title": "Terminating Tail",
+          "fixed_damage": 130,
+          "effect": "Discard Grass[G] Energy from this Pokémon. Your opponent's Active Pokémon is now Poisoned."
+        }
+      ],
+      "weakness": "Fire",
+      "retreat_cost": ["Colorless"],
+      "rarity": "◊◊◊◊",
+      "booster_pack": "Promo B (P-B)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "P-B 088",
+      "name": "Team Rocket's Scyther",
+      "stage": 0,
+      "evolves_from": null,
+      "hp": 60,
+      "energy_type": "Grass",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Grass", "Colorless"],
+          "title": "Second Strike",
+          "fixed_damage": 20,
+          "effect": "If your opponent's Active Pokémon has damage on it, this attack does 70 more damage."
+        }
+      ],
+      "weakness": "Fire",
+      "retreat_cost": ["Colorless"],
+      "rarity": "◊",
+      "booster_pack": "Promo B (P-B)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "P-B 089",
+      "name": "Team Rocket's Lapras",
+      "stage": 0,
+      "evolves_from": null,
+      "hp": 90,
+      "energy_type": "Water",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Water", "Colorless"],
+          "title": "Ruthless Whirlpool",
+          "fixed_damage": 40,
+          "effect": "If this Pokémon has more Energy attached than your opponent's Active Pokémon, this attack does 40 more damage."
+        }
+      ],
+      "weakness": "Lightning",
+      "retreat_cost": ["Colorless"],
+      "rarity": "☆",
+      "booster_pack": "Promo B (P-B)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "P-B 090",
+      "name": "Wingull",
+      "stage": 0,
+      "evolves_from": null,
+      "hp": 60,
+      "energy_type": "Water",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Colorless"],
+          "title": "Flap",
+          "fixed_damage": 10,
+          "effect": null
+        }
+      ],
+      "weakness": "Lightning",
+      "retreat_cost": ["Colorless"],
+      "rarity": "◊",
+      "booster_pack": "Promo B (P-B)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "P-B 091",
+      "name": "Team Rocket's Wobbuffet",
+      "stage": 0,
+      "evolves_from": null,
+      "hp": 80,
+      "energy_type": "Psychic",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Colorless", "Colorless"],
+          "title": "Rocket Frenzy",
+          "fixed_damage": 30,
+          "effect": "Reveal the top 6 cards of your deck. This attack does 30 damage for each Pokémon you find there that has “Team Rocket” in its name. Shuffle the revealed cards back into your deck."
+        }
+      ],
+      "weakness": "Darkness",
+      "retreat_cost": ["Colorless", "Colorless"],
+      "rarity": "◊◊◊",
+      "booster_pack": "Promo B (P-B)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "P-B 092",
+      "name": "Marowak",
+      "stage": 1,
+      "evolves_from": "Cubone",
+      "hp": 110,
+      "energy_type": "Fighting",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Fighting", "Colorless"],
+          "title": "Punish",
+          "fixed_damage": 50,
+          "effect": "If your opponent's Active Pokémon has “Team Rocket” in its name, this attack does 70 more damage."
+        }
+      ],
+      "weakness": "Grass",
+      "retreat_cost": ["Colorless", "Colorless"],
+      "rarity": "◊◊",
+      "booster_pack": "Promo B (P-B)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "P-B 093",
+      "name": "Fennekin",
+      "stage": 0,
+      "evolves_from": null,
+      "hp": 60,
+      "energy_type": "Fire",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Colorless"],
+          "title": "Scratch",
+          "fixed_damage": 10,
+          "effect": null
+        }
+      ],
+      "weakness": "Water",
+      "retreat_cost": ["Colorless"],
+      "rarity": "◊◊◊",
+      "booster_pack": "Promo B (P-B)"
+    }
+  },
+  {
+    "Pokemon": {
+      "id": "P-B 094",
+      "name": "Meowstic",
+      "stage": 1,
+      "evolves_from": "Espurr",
+      "hp": 90,
+      "energy_type": "Psychic",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Psychic", "Psychic"],
+          "title": "Super Psy Bolt",
+          "fixed_damage": 70,
+          "effect": null
+        }
+      ],
+      "weakness": "Darkness",
+      "retreat_cost": ["Colorless"],
       "rarity": "◊◊◊",
       "booster_pack": "Promo B (P-B)"
     }
