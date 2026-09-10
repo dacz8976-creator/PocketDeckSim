@@ -35,3 +35,4 @@ pub(crate) use retreat::can_retreat;
 pub(crate) use retreat::get_board_retreat_cost_for_player;
 pub(crate) use retreat::get_retreat_cost;
 pub(crate) use retreat::get_retreat_cost_for_player;
+pub(crate) use retreat::special_condition_blocks_attack_or_retreat;

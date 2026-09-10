@@ -13,7 +13,8 @@ use crate::{
     },
     effects::{CardEffect, TurnEffect},
     hooks::{
-        get_retreat_cost, on_bench_from_hand, on_evolve, to_playable_card, DamageModifierContext,
+        get_retreat_cost, on_bench_from_hand, on_evolve,
+        special_condition_blocks_attack_or_retreat, to_playable_card, DamageModifierContext,
     },
     models::{Card, EnergyType, StatusCondition},
     state::{PendingAttackCoinChoice, State},
@@ -42,6 +43,7 @@ use super::{
 /// and then chooses one of them to apply. This is so that bot implementations can re-use the
 /// `forecast_action` function.
 pub fn apply_action(rng: &mut StdRng, state: &mut State, action: &Action) {
+    assert_status_allows_normal_action(state, action);
     if matches!(action.action, SimpleAction::ChooseMistyTarget { .. }) {
         let mutation = trainer_coin_plan::sample_misty_target_actual(rng, state, action);
         mutation(rng, state, action);
@@ -72,6 +74,21 @@ pub fn apply_action(rng: &mut StdRng, state: &mut State, action: &Action) {
         let chosen_index = dist.sample(rng);
         lazy_mutations.remove(chosen_index)(rng, state, action);
     }
+}
+
+fn assert_status_allows_normal_action(state: &State, action: &Action) {
+    // Stack actions are continuations already certified by the action that created their stack
+    // frame. Rechecking them as a fresh normal action would break copied attacks and effect
+    // choices whose source has already passed its own legality gate.
+    if action.is_stack
+        || !matches!(action.action, SimpleAction::Attack(_) | SimpleAction::Retreat(_))
+    {
+        return;
+    }
+    assert!(
+        !special_condition_blocks_attack_or_retreat(state.get_active(action.actor)),
+        "Asleep or Paralyzed Active Pokemon cannot attack or retreat"
+    );
 }
 
 fn sample_researcher_capable_actual(

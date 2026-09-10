@@ -21,7 +21,16 @@ pub(crate) fn can_retreat(state: &State) -> bool {
     // Check if active card is a Fossil (Fossils can never retreat)
     let is_fossil = active.is_fossil();
 
-    !state.has_retreated && !has_no_retreat_effect && !is_fossil
+    !state.has_retreated
+        && !has_no_retreat_effect
+        && !is_fossil
+        && !special_condition_blocks_attack_or_retreat(active)
+}
+
+/// Asleep and Paralyzed prevent the Active Pokemon from using its ordinary Attack and Retreat
+/// actions. Effect-driven switches use Activate/Promote and are deliberately outside this gate.
+pub(crate) fn special_condition_blocks_attack_or_retreat(active: &PlayedCard) -> bool {
+    active.is_asleep() || active.is_paralyzed()
 }
 
 /// Resolves the passive `AbilityMechanic::NoRetreatCost` family (Speed Link, Fluffy Flight,

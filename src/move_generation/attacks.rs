@@ -5,7 +5,7 @@ use crate::{
     },
     card_ids::CardId,
     effects::CardEffect,
-    hooks::{contains_energy, get_attack_cost},
+    hooks::{contains_energy, get_attack_cost, special_condition_blocks_attack_or_retreat},
     models::{Attack, EnergyType, PlayedCard},
     tools::has_tool,
     State,
@@ -17,6 +17,10 @@ pub(crate) fn generate_attack_actions(state: &State) -> Vec<SimpleAction> {
     if let Some(active_pokemon) = &state.in_play_pokemon[current_player][0] {
         // Fossil cards cannot attack
         if active_pokemon.is_fossil() {
+            return actions;
+        }
+
+        if special_condition_blocks_attack_or_retreat(active_pokemon) {
             return actions;
         }
 
