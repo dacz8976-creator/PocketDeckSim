@@ -232,8 +232,8 @@ fn target_phase_is_serialized_and_copied_source_is_redacted_from_opponent() {
 
     let actor = PlayerObservation::from_state(&referee, 0, &RevealedKnowledge::default());
     let opponent = PlayerObservation::from_state(&referee, 1, &RevealedKnowledge::default());
-    assert_eq!(actor.information_model, "closed-counts-unpriced-v6");
-    assert_eq!(INFORMATION_MODEL, "closed-counts-unpriced-v6");
+    assert_eq!(actor.information_model, "closed-counts-unpriced-v7");
+    assert_eq!(INFORMATION_MODEL, "closed-counts-unpriced-v7");
     assert!(actor
         .visible_state()
         .pending_misty_target_choice

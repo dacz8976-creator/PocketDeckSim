@@ -1,9 +1,51 @@
 use deckgym::{
-    actions::{Action, SimpleAction},
+    actions::{try_forecast_action, Action, SimpleAction},
     card_ids::CardId,
     models::{EnergyType, PlayedCard, StatusCondition},
-    test_support::{attack_action, get_initialized_game},
+    test_support::{attack_action, get_initialized_game, get_initialized_game_with_board},
 };
+use rand::{rngs::StdRng, SeedableRng};
+
+#[test]
+fn confused_tails_has_no_attack_effect_or_self_damage_and_consumes_the_attack() {
+    let game = get_initialized_game_with_board(
+        4_242,
+        0,
+        3,
+        vec![PlayedCard::from_id(CardId::A1001Bulbasaur)
+            .with_energy(vec![EnergyType::Grass])
+            .with_status_condition(StatusCondition::Confused)],
+        vec![PlayedCard::from_id(CardId::PB024MegaLatiosEx)],
+    );
+    let before = game.get_state_clone();
+    let attack = Action {
+        actor: 0,
+        action: attack_action(CardId::A1001Bulbasaur, 0),
+        is_stack: false,
+    };
+    let (probabilities, mutations) = try_forecast_action(&before, &attack)
+        .expect("a confused attack should have an exact forecast")
+        .into_branches();
+    assert_eq!(probabilities, vec![0.5, 0.5]);
+
+    let mut branches = mutations
+        .into_iter()
+        .enumerate()
+        .map(|(index, mutation)| {
+            let mut state = before.clone();
+            mutation(&mut StdRng::seed_from_u64(50 + index as u64), &mut state, &attack);
+            state
+        });
+    let tails = branches
+        .find(|state| state.get_active(1) == before.get_active(1))
+        .expect("one confusion branch should nullify the attack");
+
+    assert_eq!(tails.get_active(0).get_remaining_hp(), before.get_active(0).get_remaining_hp());
+    assert_eq!(tails.get_active(1), before.get_active(1));
+    let (_, actions) = tails.generate_possible_actions();
+    assert_eq!(actions.len(), 1);
+    assert!(matches!(actions[0].action, SimpleAction::EndTurn));
+}
 
 /// Test that a confused Pokémon can still attack but has different outcomes
 #[test]

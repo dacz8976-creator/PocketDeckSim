@@ -368,6 +368,7 @@ fn forecast_victory_star_choice(state: &State, action: &Action) -> Outcomes {
 /// Exact-only forecast boundary. Researcher expansions that exceed the declared budget are
 /// returned as structured unpriced errors before any sampled substitute can enter `Outcomes`.
 pub fn try_forecast_action(state: &State, action: &Action) -> Result<Outcomes, UnpricedForecast> {
+    assert_status_allows_normal_action(state, action);
     if matches!(action.action, SimpleAction::ChooseMistyTarget { .. }) {
         return trainer_coin_plan::forecast_misty_target(state, action);
     }

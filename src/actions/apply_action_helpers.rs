@@ -215,7 +215,9 @@ fn collect_checkup_targets(state: &State) -> CheckupTargets {
             if pokemon.is_asleep() {
                 targets.sleeps.push((player, i));
             }
-            if pokemon.is_paralyzed() {
+            // `current_player` is still the player whose turn is ending until `advance_turn`.
+            // Paralysis recovers after its owner's turn, not at every player's Checkup.
+            if pokemon.is_paralyzed() && player == state.current_player {
                 targets.paralyzed.push((player, i));
             }
             if pokemon.is_poisoned() {

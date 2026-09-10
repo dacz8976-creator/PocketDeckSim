@@ -1,6 +1,6 @@
 //! Closed-list policy boundary. Unknown slots are counts, never invented card identities.
 use crate::{
-    actions::{Action, SimpleAction},
+    actions::{abilities::AbilityMechanic, Action, SimpleAction},
     models::Card,
     State,
 };
@@ -8,7 +8,7 @@ use rand::{rngs::StdRng, seq::SliceRandom};
 use serde::{Deserialize, Serialize};
 use std::cell::RefCell;
 
-pub const INFORMATION_MODEL: &str = "closed-counts-unpriced-v6";
+pub const INFORMATION_MODEL: &str = "closed-counts-unpriced-v7";
 
 #[derive(Debug, Clone, Default, PartialEq, Eq, Serialize, Deserialize)]
 pub struct RevealedKnowledge {
@@ -301,6 +301,25 @@ pub fn hidden_continuation_reason(state: &State, action: &Action) -> Option<&'st
         }
         _ => {}
     }
+    // Boiler Smog's printed sentence mentions both "your hand" (the already-resolved
+    // evolution trigger) and the opponent (the public Active receiving conditions). Its
+    // pending UseAbility branch reads no hidden identity. Keep this mapped-mechanic
+    // exception local; other hand/deck text retains the conservative default below.
+    let public_board_only_ability = match &action.action {
+        SimpleAction::UseAbility { in_play_idx } => state
+            .in_play_pokemon
+            .get(action.actor)
+            .and_then(|board| board.get(*in_play_idx))
+            .and_then(Option::as_ref)
+            .and_then(|pokemon| crate::actions::get_ability_mechanic(&pokemon.card))
+            .is_some_and(|mechanic| {
+                matches!(
+                    mechanic,
+                    AbilityMechanic::PoisonAndBurnOpponentActiveOnEvolve
+                )
+            }),
+        _ => false,
+    };
     let text = match &action.action {
         SimpleAction::Play { trainer_card } => trainer_card.effect.clone(),
         SimpleAction::Attack(attack) | SimpleAction::ApplyQueuedAttackDamage { attack, .. } => {
@@ -335,7 +354,8 @@ pub fn hidden_continuation_reason(state: &State, action: &Action) -> Option<&'st
         _ => String::new(),
     }
     .to_lowercase();
-    if text.contains("opponent")
+    if !public_board_only_ability
+        && text.contains("opponent")
         && (text.contains("hand") || text.contains("deck"))
         && unknown(1 - action.actor)
     {
