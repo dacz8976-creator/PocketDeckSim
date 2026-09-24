@@ -1,4 +1,3 @@
-use crate::actions::ability_mechanic_from_effect;
 use std::collections::{BTreeMap, HashMap, HashSet};
 
 use log::trace;
@@ -7,12 +6,12 @@ use rand::{rngs::StdRng, Rng};
 use crate::{
     actions::{
         abilities::AbilityMechanic,
-        apply_action_helpers::handle_knockouts,
         apply_evolve,
         attack_helpers::{
             collect_in_play_indices_by_type, energy_any_way_choices, generate_distributions,
         },
         attacks::{BenchDamageFilter, BenchSide, CopyAttackSource, HandCardKind, Mechanic},
+        energy_discard_choices::attack_discard_choices,
         effect_ability_mechanic_map::{get_in_play_ability_mechanic, has_any_in_play_ability},
         effect_mechanic_map::EFFECT_MECHANIC_MAP,
         Action,
@@ -292,9 +291,12 @@ fn apply_defender_perish_body_if_needed(
     let opponent = (acting_player + 1) % 2;
     let has_perish_body = state.in_play_pokemon[opponent][0]
         .as_ref()
-        .and_then(|pokemon| pokemon.card.get_ability())
-        .and_then(|a| ability_mechanic_from_effect(&a.effect))
-        .is_some_and(|m| matches!(m, AbilityMechanic::CoinFlipToKnockOutAttackerOnKnockout));
+        .is_some_and(|pokemon| {
+            matches!(
+                get_in_play_ability_mechanic(state, pokemon),
+                Some(AbilityMechanic::CoinFlipToKnockOutAttackerOnKnockout)
+            )
+        });
 
     if !has_perish_body {
         return outcomes;
@@ -641,11 +643,11 @@ fn forecast_effect_attack_by_mechanic(
             effect.clone(),
             *duration,
         ),
-        Mechanic::SelfDiscardRandomEnergyAndCardEffect {
+        Mechanic::SelfDiscardChosenEnergyAndCardEffect {
             count,
             effect,
             duration,
-        } => self_discard_random_energy_and_card_effect(
+        } => self_discard_chosen_energy_and_card_effect(
             acting_player,
             state,
             attack.fixed_damage,
@@ -662,10 +664,10 @@ fn forecast_effect_attack_by_mechanic(
             energies.clone(),
             *bench_damage,
         ),
-        Mechanic::SelfDiscardRandomEnergyAndBenchDamage {
+        Mechanic::SelfDiscardChosenEnergyAndBenchDamage {
             count,
             bench_damage,
-        } => self_discard_random_energy_and_bench_damage(
+        } => self_discard_chosen_energy_and_bench_damage(
             acting_player,
             state,
             attack.fixed_damage,
@@ -1115,9 +1117,15 @@ fn forecast_effect_attack_by_mechanic(
         Mechanic::ExtraDamageIfMovedFromBench { extra_damage } => {
             extra_damage_if_moved_from_bench_attack(state, attack.fixed_damage, *extra_damage)
         }
-        Mechanic::ExtraDamageIfEvolvedThisTurn { extra_damage } => {
-            extra_damage_if_evolved_this_turn_attack(state, attack.fixed_damage, *extra_damage)
-        }
+        Mechanic::ExtraDamageIfEvolvedThisTurn {
+            extra_damage,
+            evolved_from,
+        } => extra_damage_if_evolved_this_turn_attack(
+            state,
+            attack.fixed_damage,
+            *extra_damage,
+            *evolved_from,
+        ),
         Mechanic::RecoilIfKo { self_damage } => {
             recoil_if_ko_attack(attack.fixed_damage, *self_damage)
         }
@@ -1989,10 +1997,9 @@ fn coin_flip_per_specific_energy_type(
 
 fn mega_kangaskhan_ex_double_punching_family(attack: &Attack) -> AttackOutcomes {
     active_damage_effect_doutcome(attack.fixed_damage, |_, state, action| {
-        // Force Handle K.O., to maybe .insert(0 promotions to the move_generation_stack
+        // The structured attack resolves retaliation and KOs after this effect. Keep the
+        // second hit underneath any promotions that pass will add to the LIFO stack.
         let attacking_ref = (action.actor, 0);
-        let is_from_active_attack = true;
-        handle_knockouts(state, attacking_ref, is_from_active_attack);
 
         // .insert(0 damage to purposely do after the K.O. promotions
         let opponent = (action.actor + 1) % 2;
@@ -3694,9 +3701,9 @@ fn self_discard_all_energy_knock_out_opponent_active() -> AttackOutcomes {
     })
 }
 
-/// Gouging Fire's Scorching Interruption: discard `count` (randomly chosen) Energy from the
-/// attacker, then give the attacker a card effect.
-fn self_discard_random_energy_and_card_effect(
+/// Gouging Fire's Scorching Interruption: damage, then let its player choose which
+/// physical Energy to discard before attack retaliation and knockouts resolve.
+fn self_discard_chosen_energy_and_card_effect(
     acting_player: usize,
     state: &State,
     damage: u32,
@@ -3704,24 +3711,15 @@ fn self_discard_random_energy_and_card_effect(
     effect: CardEffect,
     duration: u8,
 ) -> AttackOutcomes {
-    let weighted = random_active_energy_multisets(state, acting_player, count)
-        .into_iter()
-        .map(|(probability, to_discard)| {
-            let effect = effect.clone();
-            (
-                probability,
-                active_damage_effect_outcome(damage, move |_, state, _| {
-                    if !to_discard.is_empty() {
-                        state.discard_energy_from_in_play(acting_player, 0, &to_discard);
-                    }
-                    state
-                        .get_active_mut(acting_player)
-                        .add_effect(effect.clone(), duration);
-                }),
-            )
-        })
-        .collect();
-    weighted_attack_outcomes(weighted)
+    let choices = attack_discard_choices(&state.get_active(acting_player).attached_energy, count);
+    active_damage_effect_doutcome(damage, move |_, state, _| {
+        state.move_generation_stack.push((acting_player, choices.iter().cloned().map(|energies| {
+            SimpleAction::ChooseAttackEnergyDiscard {
+                energies,
+                defensive_effect: Some((effect.clone(), duration)),
+            }
+        }).collect()));
+    })
 }
 
 /// Rapid Strike Urshifu's Tornado Shot: discard the listed Energy from the attacker, and the
@@ -3761,9 +3759,9 @@ fn self_discard_energy_and_choice_bench_damage(
     })
 }
 
-/// Walking Wake's Sweeping Billow: discard `count` (randomly chosen) Energy from the attacker,
-/// and the attack also does `bench_damage` to each of the opponent's Benched Pokémon.
-fn self_discard_random_energy_and_bench_damage(
+/// Walking Wake's Sweeping Billow: deal all damage, then let its player choose
+/// which physical Energy to discard before attack retaliation and knockouts resolve.
+fn self_discard_chosen_energy_and_bench_damage(
     acting_player: usize,
     state: &State,
     active_damage: u32,
@@ -3776,21 +3774,12 @@ fn self_discard_random_energy_and_bench_damage(
         .map(|(idx, _)| (bench_damage, true, idx))
         .collect();
     targets.push((active_damage, true, 0));
-    let weighted = random_active_energy_multisets(state, acting_player, count)
-        .into_iter()
-        .map(|(probability, to_discard)| {
-            let targets = targets.clone();
-            (
-                probability,
-                AttackOutcome::damage_then_effect(targets, move |_, state, _| {
-                    if !to_discard.is_empty() {
-                        state.discard_energy_from_in_play(acting_player, 0, &to_discard);
-                    }
-                }),
-            )
-        })
-        .collect();
-    weighted_attack_outcomes(weighted)
+    let choices = attack_discard_choices(&state.get_active(acting_player).attached_energy, count);
+    AttackOutcomes::single(AttackOutcome::damage_then_effect(targets, move |_, state, _| {
+        state.move_generation_stack.push((acting_player, choices.iter().cloned().map(|energies| {
+            SimpleAction::ChooseAttackEnergyDiscard { energies, defensive_effect: None }
+        }).collect()));
+    }))
 }
 
 /// Volcarona's Volcanic Ash: discard the listed Energy from the attacker, then deal `damage`
@@ -4938,10 +4927,18 @@ fn extra_damage_if_evolved_this_turn_attack(
     state: &State,
     base_damage: u32,
     extra_damage: u32,
+    evolved_from: Option<&str>,
 ) -> AttackOutcomes {
     let evolved = state.in_play_pokemon[state.current_player][0]
         .as_ref()
-        .map(|p| p.played_this_turn)
+        .map(|p| {
+            p.played_this_turn
+                && evolved_from.is_none_or(|required_name| {
+                    p.cards_behind
+                        .last()
+                        .is_some_and(|previous_stage| previous_stage.get_name() == required_name)
+                })
+        })
         .unwrap_or(false);
     let damage = if evolved {
         base_damage + extra_damage

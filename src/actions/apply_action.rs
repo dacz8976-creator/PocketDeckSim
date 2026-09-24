@@ -8,6 +8,7 @@ use crate::{
     actions::{
         abilities::{AbilityMechanic, RandomEvolutionTrigger},
         apply_abilities_action::{forecast_ability, try_copy_random_opponent_hand_supporter},
+        energy_discard_choices::retreat_payment_choices,
         apply_action_helpers::{apply_activate, wrap_with_common_logic, Mutation},
         get_ability_mechanic, get_in_play_ability_mechanic,
     },
@@ -427,6 +428,8 @@ fn forecast_action_unchecked(state: &State, action: &Action) -> Outcomes {
         | SimpleAction::Activate { .. }
         | SimpleAction::Promote { .. }
         | SimpleAction::Retreat(_)
+        | SimpleAction::ChooseRetreatEnergy { .. }
+        | SimpleAction::ChooseAttackEnergyDiscard { .. }
         | SimpleAction::ScheduleDelayedSpotDamage { .. }
         | SimpleAction::Heal { .. }
         | SimpleAction::HealAndDiscardEnergy { .. }
@@ -488,6 +491,8 @@ fn forecast_action_unchecked(state: &State, action: &Action) -> Outcomes {
         SimpleAction::Play { trainer_card } => {
             forecast_trainer_action(action.actor, state, trainer_card)
         }
+        SimpleAction::ChooseRandomEvolutionTarget { in_play_idx, energy_type } =>
+            apply_trainer_action::random_typed_evolution_outcomes(action.actor, *in_play_idx, *energy_type, state),
         SimpleAction::CommunicatePokemon { hand_pokemon } => {
             forecast_pokemon_communication(action.actor, state, hand_pokemon)
         }
@@ -542,6 +547,50 @@ fn forecast_action_unchecked(state: &State, action: &Action) -> Outcomes {
         }
         SimpleAction::ChooseMistyTarget { .. } => {
             unreachable!("Misty target choices are routed before the generic action forecast")
+        }
+        SimpleAction::ResolveAttackRetaliation { attacking_ref, damaged_refs, perish_body_heads, point_denial_flips } => {
+            let flips = point_denial_flips.clone();
+            let perish = *perish_body_heads;
+            let source = *attacking_ref;
+            let targets = damaged_refs.clone();
+            Outcomes::single_fn(move |_, state, _| {
+                super::apply_action_helpers::handle_attack_retaliation(state, source, &targets);
+                if perish { super::attack_outcome::apply_perish_body_retaliation(state, source, &targets); }
+                super::attack_outcome::apply_point_denial_results(state, &flips);
+                handle_knockouts(state, source, true);
+            })
+        }
+        SimpleAction::ResolveKnockoutPoints { player, in_play_idx, attacking_ref, is_from_active_attack, prior_knockouts } => {
+            let (player, idx, source, from_attack) = (*player, *in_play_idx, *attacking_ref, *is_from_active_attack);
+            let mutations = [false, true].into_iter().map(|heads| -> Mutation {
+                let prior = prior_knockouts.clone();
+                Box::new(move |_, state, _| {
+                    if let Some(pokemon) = state.in_play_pokemon[player][idx].as_mut() {
+                        pokemon.add_effect(CardEffect::KnockoutPointsCoinResolved, 0);
+                        if heads { pokemon.add_effect(CardEffect::DenyKnockoutPoints, 0); }
+                    }
+                    super::apply_action_helpers::handle_knockouts_with_prior(state, source, from_attack, prior);
+                })
+            }).collect();
+            Outcomes::from_parts(vec![0.5, 0.5], mutations)
+        }
+        SimpleAction::ResolvePokemonCheckup => {
+            let (p, m) = super::apply_action_helpers::forecast_checkup_phase(state);
+            Outcomes::from_parts(p, m)
+        }
+        SimpleAction::FinishPokemonCheckup => {
+            let (p, m) = super::apply_action_helpers::forecast_finish_checkup(state);
+            Outcomes::from_parts(p, m)
+        }
+        SimpleAction::ResolveEndTurnEvolution { player } => {
+            let active_has_ability = state.maybe_get_active(*player).is_some_and(|pokemon|
+                matches!(get_in_play_ability_mechanic(state, pokemon),
+                    Some(AbilityMechanic::RandomEvolutionFromDeck {
+                        trigger: RandomEvolutionTrigger::EndOfOpponentTurnIfActive
+                    })));
+            if active_has_ability {
+                shared_mutations::random_evolution_from_deck_outcomes(*player, 0, state)
+            } else { Outcomes::single_fn(|_, _, _| {}) }
         }
         // acting_player is not passed here, because there is only 1 turn to end. The current turn.
         SimpleAction::EndTurn => {
@@ -702,7 +751,7 @@ fn forecast_apply_damage(
             .collect();
         let targets = targets.to_vec();
         mutations.push(Box::new(move |_, state, _| {
-            handle_damage_only(
+            let damaged_actives = handle_damage_only(
                 state,
                 attacking_ref,
                 &targets,
@@ -717,6 +766,7 @@ fn forecast_apply_damage(
                     pokemon.set_remaining_hp(10);
                 }
             }
+            super::apply_action_helpers::handle_attack_retaliation(state, attacking_ref, &damaged_actives);
             handle_knockouts(state, attacking_ref, is_from_active_attack);
         }));
     }
@@ -779,6 +829,19 @@ fn apply_deterministic_action(state: &mut State, action: &Action) {
             in_play_idx,
         } => apply_retreat(*player, state, *in_play_idx, true),
         SimpleAction::Retreat(position) => apply_retreat(action.actor, state, *position, false),
+        SimpleAction::ChooseRetreatEnergy { to_in_play_idx, energies } =>
+            finish_paid_retreat(action.actor, state, *to_in_play_idx, energies),
+        SimpleAction::ChooseAttackEnergyDiscard { energies, defensive_effect } => {
+            let legal = super::energy_discard_choices::attack_discard_choices(
+                &state.get_active(action.actor).attached_energy,
+                energies.len(),
+            );
+            assert!(legal.contains(energies), "attack Energy payment must be a legal offered multiset");
+            state.discard_energy_from_in_play(action.actor, 0, energies);
+            if let Some((effect, duration)) = defensive_effect {
+                state.get_active_mut(action.actor).add_effect(effect.clone(), *duration);
+            }
+        },
         SimpleAction::ScheduleDelayedSpotDamage {
             target_player,
             target_in_play_idx,
@@ -1366,62 +1429,42 @@ fn apply_move_all_damage(actor: usize, state: &mut State, from: usize, to: usize
 /// is_free is analogous to "via retreat". If false, its because this comes from an Activate.
 /// Note: This might be called when a K.O. happens, so can't assume there is an active...
 fn apply_retreat(player: usize, state: &mut State, bench_idx: usize, is_free: bool) {
-    if !is_free {
-        let active = state.in_play_pokemon[player][0]
-            .as_ref()
-            .expect("Active Pokemon should be there if paid retreating");
-        let double_grass = active.has_double_grass(state, player);
-        let retreat_cost = get_retreat_cost(state, active).len();
-        let attached_energy: &mut Vec<_> = state.in_play_pokemon[player][0]
-            .as_mut()
-            .expect("Active Pokemon should be there if paid retreating")
-            .attached_energy
-            .as_mut();
-
-        // TODO: Maybe give option to user to select which energy to discard
-
-        // Some energies are worth more than others... For now decide the ordering
-        // that keeps as much Grass energy as possible (since possibly worth more).
-
-        // Re-order energies so that Grass are at the beginning
-        attached_energy.sort_by(|a, b| {
-            if *a == EnergyType::Grass && *b != EnergyType::Grass {
-                std::cmp::Ordering::Less
-            } else if *a != EnergyType::Grass && *b == EnergyType::Grass {
-                std::cmp::Ordering::Greater
-            } else {
-                std::cmp::Ordering::Equal
-            }
-        });
-
-        // Start walking from the back in the attached, removing energies until retreat cost is paid
-        let mut remaining_cost = retreat_cost;
-        let mut discarded: Vec<EnergyType> = vec![];
-        while remaining_cost > 0 && !attached_energy.is_empty() {
-            let energy = attached_energy.pop().unwrap();
-            discarded.push(energy);
-            if energy == EnergyType::Grass && double_grass {
-                remaining_cost = remaining_cost.saturating_sub(2);
-            } else {
-                remaining_cost = remaining_cost.saturating_sub(1);
-            }
-        }
-        if remaining_cost > 0 {
-            panic!("Not enough energy to pay retreat cost");
-        }
-
-        if !discarded.is_empty() {
-            state.discard_energies[player].extend(discarded);
-        }
-
-        state.has_retreated = true;
+    if is_free {
+        apply_activate(player, state, bench_idx);
+        return;
     }
+    let active = state.in_play_pokemon[player][0]
+        .as_ref()
+        .expect("Active Pokemon should be there if paid retreating");
+    let choices = retreat_payment_choices(
+        &active.attached_energy,
+        get_retreat_cost(state, active).len(),
+        active.has_double_grass(state, player),
+    );
+    assert!(!choices.is_empty(), "Not enough Energy to pay retreat cost");
+    if choices.len() == 1 {
+        finish_paid_retreat(player, state, bench_idx, &choices[0]);
+    } else {
+        state.move_generation_stack.push((player, choices.into_iter().map(|energies| {
+            SimpleAction::ChooseRetreatEnergy { to_in_play_idx: bench_idx, energies }
+        }).collect()));
+    }
+}
 
+fn finish_paid_retreat(player: usize, state: &mut State, bench_idx: usize, energies: &[EnergyType]) {
+    let active = state.in_play_pokemon[player][0]
+        .as_ref()
+        .expect("Active Pokemon should be there if paid retreating");
+    let legal = retreat_payment_choices(
+        &active.attached_energy,
+        get_retreat_cost(state, active).len(),
+        active.has_double_grass(state, player),
+    );
+    assert!(legal.iter().any(|choice| choice == energies), "retreat payment must be a legal offered multiset");
+    state.discard_energy_from_in_play(player, 0, energies);
+    state.has_retreated = true;
     apply_activate(player, state, bench_idx);
-
-    if !is_free {
-        apply_snapping_trap_on_retreat(player, state);
-    }
+    apply_snapping_trap_on_retreat(player, state);
 }
 
 /// Galarian Stunfisk's Snapping Trap: "During your opponent's next turn, if this Pokémon is in the

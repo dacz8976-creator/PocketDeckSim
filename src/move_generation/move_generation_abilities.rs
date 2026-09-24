@@ -1,12 +1,11 @@
 use crate::{
-    actions::abilities::{AbilityMechanic, DeckSearchKind},
+    actions::abilities::AbilityMechanic,
     actions::{
         abilities_switched_off, ability_mechanic_from_effect, energy_moves::UNBOUNDED_ENERGY_MOVES,
         selectable_status_conditions, SimpleAction,
     },
     hooks::is_ultra_beast,
     models::{EnergyType, PlayedCard},
-    tools::is_tool_card,
     State,
 };
 
@@ -136,8 +135,11 @@ fn can_use_ability_by_mechanic(
         AbilityMechanic::IncreaseDamageForEvolutionsFromBench { .. } => false, // Passive ability
         AbilityMechanic::CoordinatedUnit { .. } => false, // Passive ability
         AbilityMechanic::StartTurnRandomPokemonToHand { .. } => false,
-        AbilityMechanic::SearchRandomCardFromDeck { card_kind } => {
-            !card.ability_used && deck_has_searchable_card(state, *card_kind)
+        AbilityMechanic::SearchRandomCardFromDeck { .. } => {
+            // Deck contents are hidden. The game can block this Ability only when the
+            // controller can see that the deck itself is empty, not when no matching card
+            // happens to remain.
+            !card.ability_used && !state.decks[state.current_player].cards.is_empty()
         }
         AbilityMechanic::LookAtTopCardOfDeck { either_player } => {
             can_look_at_top_card(state, card, *either_player)
@@ -195,7 +197,9 @@ fn can_use_ability_by_mechanic(
                 && (!require_opponent_active_basic || opponent_active_is_basic(state))
         }
         AbilityMechanic::DiscardFromHandToDrawCard => {
-            !card.ability_used && !state.hands[state.current_player].is_empty()
+            !card.ability_used
+                && !state.hands[state.current_player].is_empty()
+                && !state.decks[state.current_player].cards.is_empty()
         }
         AbilityMechanic::ImmuneToStatusConditions { .. } => false, // Passive ability
         AbilityMechanic::SoothingWind { .. } => false,             // Passive ability
@@ -393,17 +397,6 @@ fn can_use_crobat_cunning_link(state: &State, card: &PlayedCard) -> bool {
             let name = pokemon.get_name();
             name == "Arceus" || name == "Arceus ex"
         })
-}
-
-/// True when the current player's deck still holds a card the search could actually find. Without
-/// this, "put a random <kind> card from your deck into your hand" would be offered against a deck
-/// with no eligible card and resolve into a bare shuffle, wasting its once-per-turn use.
-fn deck_has_searchable_card(state: &State, card_kind: DeckSearchKind) -> bool {
-    let player = state.current_player;
-    match card_kind {
-        DeckSearchKind::Pokemon => state.iter_deck_pokemon(player).next().is_some(),
-        DeckSearchKind::Tool => state.decks[player].cards.iter().any(is_tool_card),
-    }
 }
 
 /// "Look at the top card of <someone's> deck" needs a top card to exist. Data Scan can only look

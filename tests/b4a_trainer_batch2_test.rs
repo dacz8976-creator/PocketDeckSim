@@ -312,7 +312,7 @@ fn arcade_has_real_three_coin_outcomes_draws_to_seven_and_is_once_per_turn() {
 }
 
 #[test]
-fn arcade_is_available_to_each_player_on_their_own_turn_and_stops_at_deck_exhaustion() {
+fn arcade_is_blocked_at_the_hand_limit_and_at_deck_exhaustion() {
     let mut game = setup(0);
     let mut state = game.get_state_clone();
     state.active_stadium = Some(get_card_by_enum(CardId::B4a072Arcade));
@@ -325,10 +325,9 @@ fn arcade_is_available_to_each_player_on_their_own_turn_and_stops_at_deck_exhaus
     let mut state = game.get_state_clone();
     state.current_player = 1;
     game.set_state(state);
-    assert!(has_use_stadium(&game.get_state_clone()));
-    use_stadium(&mut game, 1);
+    assert!(!has_use_stadium(&game.get_state_clone()));
     let state = game.get_state_clone();
     assert_eq!(state.hands[1].len(), 6);
-    assert!(state.has_used_stadium[1]);
+    assert!(!state.has_used_stadium[1]);
     assert!(!state.has_used_stadium[0]);
 }

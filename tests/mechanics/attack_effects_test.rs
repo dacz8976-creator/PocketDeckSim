@@ -63,6 +63,15 @@ fn test_metallic_turbo_does_not_panic_if_target_ko_by_jolteon() {
     game.apply_action(attach_action);
 
     let state = game.get_state_clone();
+    let (_, actions) = state.generate_possible_actions();
+    assert_eq!(actions.len(), 1, "attack retaliation should follow the attach choice");
+    let reaction = actions
+        .into_iter()
+        .find(|action| matches!(action.action, SimpleAction::ResolveAttackRetaliation { .. }))
+        .expect("Metallic Turbo should queue attack retaliation");
+    game.apply_action(&reaction);
+
+    let state = game.get_state_clone();
     assert!(
         state.in_play_pokemon[1][2].is_none(),
         "Bench target should be knocked out"
@@ -245,6 +254,16 @@ fn test_dialga_rocky_helmet_knockout_with_energy_attach() {
         })
         .expect("Expected Metallic Turbo attach choice for bench index 2");
     game.apply_action(attach_action);
+
+    let state = game.get_state_clone();
+    let (_, actions) = state.generate_possible_actions();
+    assert_eq!(actions.len(), 1, "attack retaliation should follow the attach choice");
+    let reaction = actions
+        .into_iter()
+        .find(|action| matches!(action.action, SimpleAction::ResolveAttackRetaliation { .. }))
+        .expect("Rocky Helmet should resolve through attack retaliation");
+    game.apply_action(&reaction);
+
     let promotion = game
         .get_state_clone()
         .generate_possible_actions()

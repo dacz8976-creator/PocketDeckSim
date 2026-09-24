@@ -570,7 +570,12 @@ fn expectiminimax_with_public_reply(
     // A voluntary pass and setup handoff must still consume their normal search depth.
     let forced_end_turn = state.turn_count > 0
         && match state.move_generation_stack.last() {
-            Some((_, choices)) => matches!(choices.as_slice(), [SimpleAction::EndTurn]),
+            Some((_, choices)) => matches!(choices.as_slice(), [SimpleAction::EndTurn
+                | SimpleAction::ResolveKnockoutPoints { .. }
+            | SimpleAction::ResolveAttackRetaliation { .. }
+                | SimpleAction::ResolvePokemonCheckup
+                | SimpleAction::FinishPokemonCheckup
+                | SimpleAction::ResolveEndTurnEvolution { .. }]),
             None => state.end_turn_pending,
         };
     if forced_end_turn {
@@ -600,7 +605,8 @@ fn expectiminimax_with_public_reply(
             .is_some_and(|(_, choices)| {
                 !choices.is_empty()
                     && choices.iter().all(|choice| {
-                        matches!(choice, SimpleAction::ApplyQueuedAttackDamage { .. })
+                        matches!(choice, SimpleAction::ApplyQueuedAttackDamage { .. }
+                            | SimpleAction::ChooseRandomEvolutionTarget { .. })
                     })
             });
     if state.pending_attack_coin_choice.is_some()

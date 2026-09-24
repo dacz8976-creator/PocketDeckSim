@@ -410,8 +410,16 @@ impl PlayedCard {
     /// Raw status setter — does NOT check immunity. Use `State::apply_status_condition` instead.
     pub(crate) fn set_status_raw(&mut self, status: StatusCondition) {
         match status {
-            StatusCondition::Asleep => self.asleep = true,
-            StatusCondition::Paralyzed => self.paralyzed = true,
+            StatusCondition::Asleep => {
+                self.paralyzed = false;
+                self.confused = false;
+                self.asleep = true;
+            }
+            StatusCondition::Paralyzed => {
+                self.asleep = false;
+                self.confused = false;
+                self.paralyzed = true;
+            }
             StatusCondition::Poisoned => {
                 self.poisoned = true;
                 // A fresh (ordinary) poison replaces any modified poison; attacks with a
@@ -419,7 +427,11 @@ impl PlayedCard {
                 self.poison_checkup_damage = None;
             }
             StatusCondition::Burned => self.burned = true,
-            StatusCondition::Confused => self.confused = true,
+            StatusCondition::Confused => {
+                self.asleep = false;
+                self.paralyzed = false;
+                self.confused = true;
+            }
         }
     }
 

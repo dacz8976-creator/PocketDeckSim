@@ -128,19 +128,25 @@ impl Deck {
     /// Shuffles the deck of cards.
     pub fn shuffle(&mut self, initial_shuffle: bool, rng: &mut impl Rng) {
         if initial_shuffle {
-            // Ensure there is at least 1 basic pokemon in the initial 5 cards
-            let (mut matching, mut non_matching): (Vec<_>, Vec<_>) =
-                self.cards.clone().into_iter().partition(is_basic);
-            matching.shuffle(rng);
-            non_matching.shuffle(rng);
-
-            let shuffled_cards: Vec<Card> =
-                vec![matching.pop().expect("Decks must have at least 1 basic")];
-
-            let mut remaining = [matching, non_matching].concat();
-            remaining.shuffle(rng);
-
-            self.cards = [shuffled_cards, remaining].concat();
+            // Pocket deals five random cards first. Only a zero-Basic hand is repaired: one
+            // random hand card is exchanged for one random Basic from the remaining deck, then
+            // the remainder is reshuffled. This avoids favouring extra Basics in every hand.
+            self.cards.shuffle(rng);
+            if !self.cards.iter().take(5).any(is_basic) {
+                let basic_indices: Vec<usize> = self
+                    .cards
+                    .iter()
+                    .enumerate()
+                    .skip(5)
+                    .filter_map(|(idx, card)| card.is_basic().then_some(idx))
+                    .collect();
+                let basic_idx = *basic_indices
+                    .choose(rng)
+                    .expect("Decks must have at least 1 basic");
+                let hand_idx = rng.gen_range(0..5);
+                self.cards.swap(hand_idx, basic_idx);
+                self.cards[5..].shuffle(rng);
+            }
         } else {
             self.cards.shuffle(rng);
         }

@@ -52,6 +52,12 @@ fn test_quick_grow_extract_evolves_from_deck() {
     };
 
     game.apply_action(&play_extract);
+    let (_actor, choices) = game.get_state_clone().generate_possible_actions();
+    let evolve = choices
+        .into_iter()
+        .find(|choice| matches!(choice.action, SimpleAction::ChooseRandomEvolutionTarget { in_play_idx: 0, .. }))
+        .expect("Quick-Grow Extract should let the player choose Bulbasaur");
+    game.apply_action(&evolve);
     let state = game.get_state_clone();
 
     // Verify that Bulbasaur evolved into Ivysaur

@@ -136,10 +136,26 @@ fn test_float_up_can_shuffle_the_attacker_back_into_the_deck() {
         .clone();
     game.apply_action(&shuffle);
 
-    // The empty Active Spot triggers a promotion from the Bench.
+    // Finish the attack reaction before promoting. This keeps a removed attacker from being
+    // confused with its eventual replacement in the Active Spot.
     let (actor, choices) = game.get_state_clone().generate_possible_actions();
     assert_eq!(actor, 0);
-    game.apply_action(&choices[0].clone());
+    let reaction = choices
+        .iter()
+        .find(|choice| matches!(choice.action, SimpleAction::ResolveAttackRetaliation { .. }))
+        .expect("attack retaliation should precede promotion")
+        .clone();
+    game.apply_action(&reaction);
+
+    // The empty Active Spot then triggers a promotion from the Bench.
+    let (actor, choices) = game.get_state_clone().generate_possible_actions();
+    assert_eq!(actor, 0);
+    let promotion = choices
+        .iter()
+        .find(|choice| matches!(choice.action, SimpleAction::Promote { .. }))
+        .expect("the benched Pokémon should be offered for promotion")
+        .clone();
+    game.apply_action(&promotion);
 
     let state = game.get_state_clone();
     assert_eq!(state.get_active(0).get_name(), "Bulbasaur");

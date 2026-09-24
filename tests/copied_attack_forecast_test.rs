@@ -44,6 +44,13 @@ fn queued(s: &State, actor: usize) -> Action {
     assert!(actions[0].is_stack); assert!(matches!(actions[0].action, SimpleAction::Attack(_)));
     actions[0].clone()
 }
+fn queued_retaliation(s: &State, actor: usize) -> Action {
+    let (chooser, actions) = s.generate_possible_actions();
+    assert_eq!(chooser,actor); assert_eq!(actions.len(),1);
+    assert!(actions[0].is_stack);
+    assert!(matches!(actions[0].action, SimpleAction::ResolveAttackRetaliation { .. }));
+    actions[0].clone()
+}
 fn title(a: &Action) -> String {
     let SimpleAction::Attack(a)=&a.action else {panic!("expected attack")}; a.title.clone()
 }
@@ -64,10 +71,15 @@ fn memory_exposes_half_win_mass_after_forced_copy_in_both_seats() {
             assert_eq!(t.get_active(1-actor).get_remaining_hp(),50);
             let forced=queued(&t,actor);
             for (q,u) in branches(&t,&forced) {
-                match u.winner {
-                    Some(GameOutcome::Win(w)) => {assert_eq!(w,actor); win+=p*q;},
-                    None => {assert_eq!(u.get_active(1-actor).get_remaining_hp(),10); live+=p*q;},
-                    other=>panic!("unexpected {other:?}"),
+                assert!(u.winner.is_none());
+                let reaction=queued_retaliation(&u,actor);
+                for (r,v) in branches(&u,&reaction) {
+                    close(r,1.0);
+                    match v.winner {
+                        Some(GameOutcome::Win(w)) => {assert_eq!(w,actor); win+=p*q*r;},
+                        None => {assert_eq!(v.get_active(1-actor).get_remaining_hp(),10); live+=p*q*r;},
+                        other=>panic!("unexpected {other:?}"),
+                    }
                 }
             }
         }

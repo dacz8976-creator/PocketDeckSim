@@ -7,7 +7,8 @@ use crate::hooks::{modify_damage, DamageModifierContext};
 use crate::State;
 
 use super::apply_action_helpers::{
-    guts_would_flip, handle_damage_only, handle_knockouts, Mutation, Probabilities,
+    apply_survive_knockout_turn_effects, guts_would_flip, handle_attack_retaliation,
+    handle_damage_only, handle_knockouts, Mutation, Probabilities,
 };
 use super::outcomes::{
     generate_sequences_with_heads, saturated_geometric_classes, CoinConditionError, CoinPaths,
@@ -139,9 +140,10 @@ impl AttackOutcome {
                 pre(rng, state, action);
             }
 
+            let mut damaged_actives = Vec::new();
             if !resolved.is_empty() {
                 let attack_metadata = attack_metadata_from_action(state, action);
-                handle_damage_only(
+                damaged_actives = handle_damage_only(
                     state,
                     attacking_ref,
                     &resolved,
@@ -151,16 +153,58 @@ impl AttackOutcome {
                         attack_effect: attack_metadata.effect.as_deref(),
                     },
                 );
+                // Hala-style survival changes a would-be knockout into 10 HP before the
+                // attack's own switch or other post-damage choices are exposed.
+                apply_survive_knockout_turn_effects(state);
+            }
+
+            // Keep a reaction continuation below any choices created by the attack effect. The
+            // reference-bearing frame is installed before the effect runs so an immediate switch
+            // can remap it through `apply_activate` as well.
+            let reaction_stack_base = state.move_generation_stack.len();
+            if !resolved.is_empty() {
+                state.move_generation_stack.insert(
+                    reaction_stack_base,
+                    (
+                        action.actor,
+                        vec![SimpleAction::ResolveAttackRetaliation {
+                            attacking_ref,
+                            damaged_refs: damaged_actives.clone(),
+                            perish_body_heads: false,
+                            point_denial_flips: vec![],
+                        }],
+                    ),
+                );
             }
 
             if let Some(post) = &self.post_damage_effect {
                 post(rng, state, action);
             }
 
+            let retaliation_deferred = !resolved.is_empty()
+                && state.move_generation_stack.len() > reaction_stack_base + 1;
+            if !resolved.is_empty() && !retaliation_deferred {
+                let (_, choices) = state.move_generation_stack.remove(reaction_stack_base);
+                let [SimpleAction::ResolveAttackRetaliation {
+                    attacking_ref,
+                    damaged_refs,
+                    perish_body_heads,
+                    point_denial_flips,
+                }] = choices.as_slice()
+                else {
+                    unreachable!("the immediate attack-reaction frame must remain intact")
+                };
+                handle_attack_retaliation(state, *attacking_ref, damaged_refs);
+                if *perish_body_heads {
+                    apply_perish_body_retaliation(state, *attacking_ref, damaged_refs);
+                }
+                apply_point_denial_results(state, point_denial_flips);
+            }
+
             // Only resolve knockouts here when this outcome dealt damage. Pure-effect outcomes
             // rely on the catch-all knockout pass in `wrap_with_common_logic`, matching the
             // historical behavior of effect-only outcomes.
-            if !resolved.is_empty() {
+            if !resolved.is_empty() && !retaliation_deferred {
                 handle_knockouts(state, attacking_ref, true);
             }
         })
@@ -656,9 +700,9 @@ impl AttackOutcomes {
     ///
     /// Structurally a sibling of [`Self::split_with_guts_survival`], with one important
     /// difference: this coin does not change whether the Pokémon dies, only whether the knockout
-    /// scores. So the branch never touches HP — on heads it tags the doomed Pokémon with
-    /// `CardEffect::DenyKnockoutPoints`, which `handle_knockouts` reads when awarding points and
-    /// which is discarded along with the Pokémon in the same resolution.
+    /// scores. The branch records the coin result on the attack's reaction continuation. After
+    /// every attack-effect choice resolves, that continuation rechecks the remapped defender and
+    /// tags it with `CardEffect::DenyKnockoutPoints` on heads before knockout scoring.
     ///
     /// Splitting at forecast time rather than flipping inline during knockout resolution is what
     /// lets the search bots price the ability: a Glimmora in front of a lethal attack is a real
@@ -707,28 +751,50 @@ impl AttackOutcomes {
             let combos = 1usize << flipping.len();
             let sub_probability = branch.probability / combos as f64;
             for mask in 0..combos {
-                // The subset whose coin came up heads — these deny their points.
-                let denying: Vec<usize> = flipping
-                    .iter()
-                    .enumerate()
-                    .filter(|(bit, _)| (mask >> bit) & 1 == 1)
-                    .map(|(_, idx)| *idx)
-                    .collect();
+                let flips: Vec<(usize, bool)> = flipping.iter().enumerate()
+                    .map(|(bit, idx)| (*idx, (mask >> bit) & 1 == 1)).collect();
                 let mut outcome = branch.outcome.clone();
-                if !denying.is_empty() {
-                    let previous_post = outcome.post_damage_effect.take();
-                    outcome.post_damage_effect = Some(Rc::new(move |rng, state, action| {
-                        let opponent = (action.actor + 1) % 2;
-                        for idx in &denying {
-                            if let Some(pokemon) = state.in_play_pokemon[opponent][*idx].as_mut() {
-                                pokemon.add_effect(CardEffect::DenyKnockoutPoints, 1);
-                            }
-                        }
-                        if let Some(post) = &previous_post {
-                            post(rng, state, action);
-                        }
-                    }));
-                }
+                let previous_post = outcome.post_damage_effect.take();
+                outcome.post_damage_effect = Some(Rc::new(move |rng, state, action| {
+                    let opponent = 1 - action.actor;
+                    let resolved_flips: Vec<((usize, usize), bool)> = flips
+                        .iter()
+                        .map(|&(idx, heads)| ((opponent, idx), heads))
+                        .collect();
+                    if let Some(SimpleAction::ResolveAttackRetaliation {
+                        point_denial_flips,
+                        ..
+                    }) = state
+                        .move_generation_stack
+                        .iter_mut()
+                        .rev()
+                        .flat_map(|(_, choices)| choices.iter_mut().rev())
+                        .find(|choice| {
+                            matches!(choice, SimpleAction::ResolveAttackRetaliation { .. })
+                        })
+                    {
+                        point_denial_flips.extend(resolved_flips);
+                    } else {
+                        let stack_base = state.move_generation_stack.len();
+                        state.move_generation_stack.insert(
+                            stack_base,
+                            (
+                                action.actor,
+                                vec![SimpleAction::ResolveAttackRetaliation {
+                                    attacking_ref: (action.actor, 0),
+                                    damaged_refs: vec![],
+                                    perish_body_heads: false,
+                                    point_denial_flips: resolved_flips,
+                                }],
+                            ),
+                        );
+                    }
+                    // Store the original references before the attack effect runs. An immediate
+                    // switch then remaps the denial source through the already-installed frame.
+                    if let Some(post) = &previous_post {
+                        post(rng, state, action);
+                    }
+                }));
                 branches.push(AttackBranch {
                     probability: sub_probability,
                     outcome,
@@ -750,11 +816,10 @@ impl AttackOutcomes {
     ///
     /// - It only ever applies to the defender's Active Spot (the Ability says so), so it takes no
     ///   list of indices.
-    /// - On heads the branch zeroes the *attacker's* HP in a post-damage effect, after checking the
-    ///   defender really was Knocked Out (an intervening effect could have changed that). Nothing
-    ///   else is needed: the `handle_knockouts` pass that `into_mutation` already runs resolves
-    ///   both knockouts in a single wave, so each player banks their own point before the win
-    ///   checks and a mutual knockout can even end the game in a tie.
+    /// - On heads the branch marks the attack's reaction continuation. After every attack-effect
+    ///   choice resolves, that continuation rechecks the referenced defender's knockout and live
+    ///   Ability before zeroing the referenced attacker's HP. The shared knockout pass then
+    ///   resolves both knockouts in one attack-scoped wave.
     ///
     /// Knockouts are forecast against the pre-attack board, matching both siblings. Existing
     /// acting-player coin metadata is copied unchanged; the defender's coin is not added to it.
@@ -793,9 +858,25 @@ impl AttackOutcomes {
                 if heads {
                     let previous_post = outcome.post_damage_effect.take();
                     outcome.post_damage_effect = Some(Rc::new(move |rng, state, action| {
-                        knock_out_attacker_if_defender_fainted(state, action.actor);
                         if let Some(post) = &previous_post {
                             post(rng, state, action);
+                        }
+                        // The generic reaction frame sits below every choice the attack effect
+                        // just created. Record this branch's heads result there so Perish Body
+                        // follows both original Pokémon through any later switch.
+                        if let Some(SimpleAction::ResolveAttackRetaliation {
+                            perish_body_heads,
+                            ..
+                        }) = state
+                            .move_generation_stack
+                            .iter_mut()
+                            .rev()
+                            .flat_map(|(_, choices)| choices.iter_mut().rev())
+                            .find(|choice| {
+                                matches!(choice, SimpleAction::ResolveAttackRetaliation { .. })
+                            })
+                        {
+                            *perish_body_heads = true;
                         }
                     }));
                 }
@@ -999,23 +1080,67 @@ fn would_knock_out(
     remaining > 0 && modified >= remaining
 }
 
-/// Perish Body heads: the Attacking Pokémon is Knocked Out along with the defender.
-///
-/// Runs as a post-damage effect, i.e. after damage has landed but before `into_mutation`'s
-/// `handle_knockouts` pass, so setting the attacker's HP to 0 is enough — that pass discards both
-/// Pokémon in the same wave and awards each player the point for the other's knockout. The
-/// forecast decided the coin against the pre-attack board, so the defender's knockout is
-/// re-checked here: an intervening effect (or a Pokémon that was switched out) means no trigger.
-fn knock_out_attacker_if_defender_fainted(state: &mut State, acting_player: usize) {
-    let opponent = (acting_player + 1) % 2;
-    let defender_fainted = state.in_play_pokemon[opponent][0]
-        .as_ref()
-        .is_some_and(|pokemon| pokemon.is_knocked_out());
-    if !defender_fainted {
-        return;
+/// Apply a forecasted Perish Body heads after the attack effect and ordinary on-damaged reactions.
+/// Both references follow the original Pokémon through attack-effect switches. The Ability and
+/// knockout are checked again because the effect may have suppressed the Ability,
+/// healed/evolved/removed the defender, or otherwise made the forecast-time trigger inapplicable.
+pub(crate) fn apply_perish_body_retaliation(
+    state: &mut State,
+    attacking_ref: (usize, usize),
+    damaged_refs: &[(usize, usize)],
+) {
+    let trigger_still_applies = damaged_refs.iter().any(|&(player, idx)| {
+        state.in_play_pokemon[player][idx]
+            .as_ref()
+            .is_some_and(|pokemon| {
+                idx == 0 && pokemon.is_knocked_out()
+                    && matches!(
+                        super::get_in_play_ability_mechanic(state, pokemon),
+                        Some(
+                            super::abilities::AbilityMechanic::CoinFlipToKnockOutAttackerOnKnockout
+                        )
+                    )
+            })
+    });
+    if trigger_still_applies {
+        if let Some(attacker) =
+            state.in_play_pokemon[attacking_ref.0][attacking_ref.1].as_mut()
+        {
+            attacker.set_remaining_hp(0);
+        }
     }
-    if let Some(attacker) = state.in_play_pokemon[acting_player][0].as_mut() {
-        attacker.set_remaining_hp(0);
+}
+
+/// Apply forecasted point-denial coins after every attack-effect choice has resolved. References
+/// are remapped with the reaction continuation when an effect switches either board. Rechecking
+/// the live Ability prevents a suppressed, evolved, healed, or removed source from consuming a
+/// stale forecast coin, while `KnockoutPointsCoinResolved` prevents the universal KO path from
+/// offering the same coin a second time.
+pub(crate) fn apply_point_denial_results(
+    state: &mut State,
+    flips: &[((usize, usize), bool)],
+) {
+    for &((player, idx), heads) in flips {
+        let still_applies = state.in_play_pokemon[player][idx]
+            .as_ref()
+            .is_some_and(|pokemon| {
+                pokemon.is_knocked_out()
+                    && matches!(
+                        super::get_in_play_ability_mechanic(state, pokemon),
+                        Some(
+                            super::abilities::AbilityMechanic::CoinFlipToDenyKnockoutPoints
+                        )
+                    )
+            });
+        if still_applies {
+            let pokemon = state.in_play_pokemon[player][idx]
+                .as_mut()
+                .expect("point-denial source was just checked in play");
+            pokemon.add_effect(CardEffect::KnockoutPointsCoinResolved, 0);
+            if heads {
+                pokemon.add_effect(CardEffect::DenyKnockoutPoints, 0);
+            }
+        }
     }
 }
 

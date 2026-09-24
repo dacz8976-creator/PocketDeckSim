@@ -38,11 +38,19 @@ fn apply_single(state: &mut State, action: &Action) {
     let (probabilities, mutations) = forecast_action(state, action).into_branches();
     assert_eq!(probabilities, vec![1.0]);
     assert_eq!(mutations.len(), 1);
-    mutations.into_iter().next().unwrap()(
-        &mut StdRng::seed_from_u64(73),
-        state,
-        action,
-    );
+    mutations.into_iter().next().unwrap()(&mut StdRng::seed_from_u64(73), state, action);
+}
+
+fn resolve_attack_reaction(state: &mut State) {
+    let Some(reaction) = state
+        .generate_possible_actions()
+        .1
+        .into_iter()
+        .find(|action| matches!(action.action, SimpleAction::ResolveAttackRetaliation { .. }))
+    else {
+        return;
+    };
+    apply_single(state, &reaction);
 }
 
 fn promotion_choice(player: usize, in_play_idx: usize) -> SimpleAction {
@@ -102,7 +110,10 @@ fn depth_zero_promotion_uses_the_frame_actor_for_max_and_min() {
         state.in_play_pokemon[frame_actor][0] = None;
         state.move_generation_stack.push((
             frame_actor,
-            vec![promotion_choice(frame_actor, 1), promotion_choice(frame_actor, 2)],
+            vec![
+                promotion_choice(frame_actor, 1),
+                promotion_choice(frame_actor, 2),
+            ],
         ));
         let evaluator: ValueFunction = Box::new(move |state, _| choice_value(state, frame_actor));
         let (score, node) = expectiminimax(
@@ -138,8 +149,7 @@ fn promotion_leaves_nonzero_depth_for_the_next_ordinary_action() {
     let mut state = state_with_boards(
         vec![
             PlayedCard::from_id(CardId::A1001Bulbasaur),
-            PlayedCard::from_id(CardId::A1198Farfetchd)
-                .with_energy(vec![EnergyType::Psychic]),
+            PlayedCard::from_id(CardId::A1198Farfetchd).with_energy(vec![EnergyType::Psychic]),
         ],
         vec![PlayedCard::from_id(CardId::A1001Bulbasaur).with_remaining_hp(30)],
     );
@@ -167,7 +177,10 @@ fn promotion_leaves_nonzero_depth_for_the_next_ordinary_action() {
         &evaluator,
     );
 
-    assert_eq!(score, 1.0, "the retained action ply must see Farfetch'd's winning attack");
+    assert_eq!(
+        score, 1.0,
+        "the retained action ply must see Farfetch'd's winning attack"
+    );
     assert_eq!(node.children.len(), 1);
     assert!(matches!(
         node.children[0].action.action,
@@ -394,7 +407,7 @@ fn trigger_cleanup_removes_only_stale_same_board_switch_frames() {
 }
 
 #[test]
-fn lethal_knock_back_leaves_one_promotion_while_nonlethal_keeps_the_switch() {
+fn knock_back_finishes_switch_before_retaliation_and_final_knockouts() {
     let fixture = |target| {
         state_with_boards(
             vec![PlayedCard::from_id(CardId::A1163Grapploct)
@@ -406,46 +419,49 @@ fn lethal_knock_back_leaves_one_promotion_while_nonlethal_keeps_the_switch() {
             ],
         )
     };
-
-    let mut lethal = fixture(CardId::A1001Bulbasaur);
-    let attack = action_by_attack_title(&lethal, "Knock Back");
-    apply_single(&mut lethal, &attack);
-    assert_eq!(lethal.points, [1, 0]);
-    assert!(lethal.in_play_pokemon[1][0].is_none());
-    assert_eq!(lethal.move_generation_stack.len(), 1);
-    let (actor, choices) = lethal.move_generation_stack.last().unwrap();
-    assert_eq!(*actor, 1);
-    assert_eq!(
-        choices,
-        &vec![promotion_choice(1, 1), promotion_choice(1, 2)]
-    );
-    assert!(!choices
-        .iter()
-        .any(|choice| matches!(choice, SimpleAction::Activate { .. })));
-    let promote = lethal.generate_possible_actions().1[0].clone();
-    apply_single(&mut lethal, &promote);
-    assert!(lethal.in_play_pokemon[1][0].is_some());
-    assert!(lethal.move_generation_stack.is_empty());
-    assert_eq!(lethal.winner, None);
-
-    let mut nonlethal = fixture(CardId::A1128Mewtwo);
-    let before_hp = nonlethal.get_active(1).get_remaining_hp();
-    let attack = action_by_attack_title(&nonlethal, "Knock Back");
-    apply_single(&mut nonlethal, &attack);
-    assert_eq!(nonlethal.points, [0, 0]);
-    assert_eq!(nonlethal.get_active(1).get_remaining_hp(), before_hp - 70);
-    assert_eq!(nonlethal.move_generation_stack.len(), 1);
-    assert!(nonlethal.move_generation_stack[0]
-        .1
-        .iter()
-        .all(|choice| matches!(choice, SimpleAction::Activate { player: 1, .. })));
+    for (target, lethal) in [(CardId::A1001Bulbasaur, true), (CardId::A1128Mewtwo, false)] {
+        let mut state = fixture(target);
+        let before_hp = state.get_active(1).get_remaining_hp();
+        let attack = action_by_attack_title(&state, "Knock Back");
+        apply_single(&mut state, &attack);
+        assert_eq!(state.points, [0, 0]);
+        assert_eq!(
+            state.get_active(1).get_remaining_hp(),
+            before_hp.saturating_sub(70)
+        );
+        let (actor, choices) = state.generate_possible_actions();
+        assert_eq!(actor, 1);
+        assert_eq!(choices.len(), 2);
+        assert!(choices
+            .iter()
+            .all(|choice| matches!(choice.action, SimpleAction::Activate { player: 1, .. })));
+        apply_single(&mut state, &choices[0]);
+        resolve_attack_reaction(&mut state);
+        assert_eq!(state.get_active(1).get_id(), "A1 033");
+        assert_eq!(state.points, if lethal { [1, 0] } else { [0, 0] });
+        if lethal {
+            assert!(state.in_play_pokemon[1][1].is_none());
+        } else {
+            assert_eq!(
+                state.in_play_pokemon[1][1]
+                    .as_ref()
+                    .unwrap()
+                    .get_remaining_hp(),
+                before_hp - 70
+            );
+        }
+        assert!(
+            state.move_generation_stack.is_empty(),
+            "the effect already selected the replacement"
+        );
+        assert_eq!(state.winner, None);
+    }
 }
 
 #[test]
 fn hala_rescue_preserves_knock_backs_ordinary_switch_choice() {
     let mut state = state_with_boards(
-        vec![PlayedCard::from_id(CardId::A1163Grapploct)
-            .with_energy(vec![EnergyType::Fighting; 3])],
+        vec![PlayedCard::from_id(CardId::A1163Grapploct).with_energy(vec![EnergyType::Fighting; 3])],
         vec![
             PlayedCard::from_id(CardId::B1127Hariyama).with_remaining_hp(70),
             PlayedCard::from_id(CardId::A1033Charmander),
@@ -464,15 +480,25 @@ fn hala_rescue_preserves_knock_backs_ordinary_switch_choice() {
 
     assert_eq!(state.points, [0, 0]);
     assert_eq!(state.get_active(1).get_remaining_hp(), 10);
-    assert_eq!(state.move_generation_stack.len(), 1);
-    assert!(state.move_generation_stack[0]
+    assert_eq!(state.move_generation_stack.len(), 2);
+    assert!(state
+        .move_generation_stack
+        .last()
+        .unwrap()
         .1
         .iter()
         .all(|choice| matches!(choice, SimpleAction::Activate { player: 1, .. })));
-    assert!(!state.move_generation_stack[0]
+    assert!(!state
+        .move_generation_stack
+        .last()
+        .unwrap()
         .1
         .iter()
         .any(|choice| matches!(choice, SimpleAction::Promote { .. })));
+    assert!(matches!(
+        state.move_generation_stack[0].1.as_slice(),
+        [SimpleAction::ResolveAttackRetaliation { .. }]
+    ));
 }
 
 #[test]
@@ -495,10 +521,18 @@ fn self_switch_retaliation_keeps_only_both_real_promotions() {
     let mut mutual_ko = fixture(20);
     let attack = action_by_attack_title(&mutual_ko, "U-turn");
     apply_single(&mut mutual_ko, &attack);
+    let self_switch = mutual_ko.generate_possible_actions().1[0].clone();
+    assert!(matches!(
+        self_switch.action,
+        SimpleAction::Activate { player: 0, .. }
+    ));
+    apply_single(&mut mutual_ko, &self_switch);
+    resolve_attack_reaction(&mut mutual_ko);
     assert_eq!(mutual_ko.points, [1, 1]);
-    assert!(mutual_ko.in_play_pokemon[0][0].is_none());
+    assert!(mutual_ko.in_play_pokemon[0][0].is_some());
+    assert!(mutual_ko.in_play_pokemon[0][1].is_none());
     assert!(mutual_ko.in_play_pokemon[1][0].is_none());
-    assert_eq!(mutual_ko.move_generation_stack.len(), 2);
+    assert_eq!(mutual_ko.move_generation_stack.len(), 1);
     assert!(mutual_ko.move_generation_stack.iter().all(|(_, choices)| {
         !choices.is_empty()
             && choices
@@ -518,8 +552,11 @@ fn self_switch_retaliation_keeps_only_both_real_promotions() {
     apply_single(&mut nonlethal, &attack);
     assert_eq!(nonlethal.points, [0, 0]);
     assert_eq!(nonlethal.get_active(1).get_remaining_hp(), 40);
-    assert_eq!(nonlethal.move_generation_stack.len(), 1);
-    assert!(nonlethal.move_generation_stack[0]
+    assert_eq!(nonlethal.move_generation_stack.len(), 2);
+    assert!(nonlethal
+        .move_generation_stack
+        .last()
+        .unwrap()
         .1
         .iter()
         .all(|choice| matches!(choice, SimpleAction::Activate { player: 0, .. })));
@@ -541,6 +578,14 @@ fn optional_self_switch_noop_is_removed_when_final_scream_kos_the_attacker() {
     );
     let attack = action_by_attack_title(&state, "Breeze-By Attack");
     apply_single(&mut state, &attack);
+    let decline = state
+        .generate_possible_actions()
+        .1
+        .into_iter()
+        .find(|action| matches!(action.action, SimpleAction::Noop))
+        .expect("Breeze-By Attack should remain optional");
+    apply_single(&mut state, &decline);
+    resolve_attack_reaction(&mut state);
 
     assert_eq!(state.points, [1, 2]);
     assert!(state.in_play_pokemon[0][0].is_none());
@@ -560,17 +605,16 @@ fn optional_self_switch_noop_is_removed_when_final_scream_kos_the_attacker() {
                 .all(|choice| matches!(choice, SimpleAction::Promote { .. }))
     }));
     assert!(!state.move_generation_stack.iter().any(|(_, choices)| {
-        choices.iter().any(|choice| {
-            matches!(choice, SimpleAction::Activate { .. } | SimpleAction::Noop)
-        })
+        choices
+            .iter()
+            .any(|choice| matches!(choice, SimpleAction::Activate { .. } | SimpleAction::Noop))
     }));
 }
 
 #[test]
 fn coin_ko_branch_resolves_promotion_without_changing_probability() {
     let state = state_with_boards(
-        vec![PlayedCard::from_id(CardId::A1023ExeggutorEx)
-            .with_energy(vec![EnergyType::Grass])],
+        vec![PlayedCard::from_id(CardId::A1023ExeggutorEx).with_energy(vec![EnergyType::Grass])],
         vec![
             PlayedCard::from_id(CardId::A1001Bulbasaur).with_remaining_hp(60),
             PlayedCard::from_id(CardId::A1053Squirtle),

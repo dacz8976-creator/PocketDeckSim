@@ -190,21 +190,6 @@ fn generate_hand_actions(state: &State) -> Vec<SimpleAction> {
                     // Exception: Eevee with Boosted Evolution ability can evolve on first turn
                     // or turn it was played, if it's in the active spot.
 
-                    // Check if we should skip evolution checks due to first turn
-                    // (unless there's a Boosted Evolution Eevee in active spot)
-                    let has_boosted_evolution_in_active = state.in_play_pokemon[current_player][0]
-                        .as_ref()
-                        .is_some_and(|active| {
-                            matches!(
-                                get_in_play_ability_mechanic(state, active),
-                                Some(AbilityMechanic::CanEvolveOnFirstTurnIfActive)
-                            )
-                        });
-
-                    if state.is_users_first_turn() && !has_boosted_evolution_in_active {
-                        return;
-                    }
-
                     // For each non-zero stage pokemon in hand, check if it can evolve
                     // from any pokemon in play (using can_evolve_into which handles special abilities)
                     state
@@ -217,7 +202,12 @@ fn generate_hand_actions(state: &State) -> Vec<SimpleAction> {
                                     Some(AbilityMechanic::CanEvolveOnFirstTurnIfActive)
                                 );
 
-                            if (!pokemon.played_this_turn || can_bypass_timing)
+                            // Boosted Evolution belongs only to the Active Eevee carrying it. It
+                            // must not open the first-turn evolution window for the rest of the
+                            // board. The suppression-aware lookup also makes Power of Alchemy
+                            // remove this timing exception.
+                            if (!state.is_users_first_turn() || can_bypass_timing)
+                                && (!pokemon.played_this_turn || can_bypass_timing)
                                 && can_evolve_into(state, hand_card, pokemon)
                                 && can_evolve_at_position(state, current_player, i)
                             {

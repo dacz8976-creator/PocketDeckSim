@@ -1,7 +1,9 @@
 use std::cmp::min;
 
 use log::debug;
-use rand::{distributions::WeightedIndex, prelude::Distribution, rngs::StdRng, Rng};
+use rand::{
+    distributions::WeightedIndex, prelude::Distribution, rngs::StdRng, seq::SliceRandom, Rng,
+};
 
 use crate::{
     actions::{
@@ -19,11 +21,11 @@ use crate::{
     card_ids::CardId,
     card_logic::{
         acerola_targets, can_rare_candy_evolve, diantha_targets, ilima_targets, mallow_targets,
-        psychic_energy_sources, quick_grow_extract_candidates, wallace_candidates, whitney_targets,
+        psychic_energy_sources, whitney_targets,
     },
     combinatorics::generate_combinations,
     effects::{DamageReductionScope, TurnEffect},
-    hooks::{get_stage, is_ancient_pokemon, is_future_pokemon, is_ultra_beast},
+    hooks::{can_evolve_into, get_stage, is_ancient_pokemon, is_future_pokemon, is_ultra_beast},
     models::{Card, EnergyType, StatusCondition, TrainerCard, TrainerType},
     move_generation::trainer_move_generation_implementation,
     tools::{enumerate_tool_choices, is_tool_card, is_tool_effect_implemented},
@@ -509,7 +511,7 @@ fn marlon_effect(_: &mut StdRng, state: &mut State, action: &Action) {
     let targets = ["Carracosta", "Jellicent"];
     let possible_moves = state
         .enumerate_in_play_pokemon(action.actor)
-        .filter(|(_, x)| targets.contains(&x.get_name().as_str()))
+        .filter(|(_, x)| x.is_damaged() && targets.contains(&x.get_name().as_str()))
         .map(|(i, _)| SimpleAction::Heal {
             in_play_idx: i,
             amount: 70,
@@ -559,7 +561,7 @@ fn pokemon_center_lady_effect(_: &mut StdRng, state: &mut State, action: &Action
 fn lillie_effect(_: &mut StdRng, state: &mut State, action: &Action) {
     let possible_moves = state
         .enumerate_in_play_pokemon(action.actor)
-        .filter(|(_, x)| get_stage(x) == 2)
+        .filter(|(_, x)| x.is_damaged() && get_stage(x) == 2)
         .map(|(i, _)| SimpleAction::Heal {
             in_play_idx: i,
             amount: 60,
@@ -788,7 +790,10 @@ fn inner_healing_effect(
 ) {
     let possible_moves = state
         .enumerate_in_play_pokemon(action.actor)
-        .filter(|(_, x)| energy.is_none() || state.pokemon_is_type(x, EnergyType::Grass))
+        .filter(|(_, x)| {
+            x.is_damaged()
+                && (energy.is_none() || state.pokemon_is_type(x, EnergyType::Grass))
+        })
         .map(|(i, _)| SimpleAction::Heal {
             in_play_idx: i,
             amount,
@@ -938,21 +943,13 @@ fn adaman_effect(_: &mut StdRng, state: &mut State, action: &Action) {
     );
 }
 
-fn piers_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+fn piers_effect(rng: &mut StdRng, state: &mut State, action: &Action) {
     // Discard 2 random Energy from your opponent's Active Pokémon.
     let opponent = (action.actor + 1) % 2;
     let active = state.get_active(opponent);
     let mut remaining_energy = active.attached_energy.clone();
-    let mut to_discard = Vec::new();
-
-    for _ in 0..2 {
-        if let Some(energy) = remaining_energy.pop() {
-            // NOTE: Using last energy instead of random selection to avoid expanding the game tree.
-            to_discard.push(energy);
-        } else {
-            break;
-        }
-    }
+    remaining_energy.shuffle(rng);
+    let to_discard = remaining_energy.into_iter().take(2).collect::<Vec<_>>();
 
     if !to_discard.is_empty() {
         state.discard_from_active(opponent, &to_discard);
@@ -1862,7 +1859,7 @@ fn professor_oak_effect(_: &mut StdRng, state: &mut State, action: &Action) {
 fn mythical_slab_effect(_: &mut StdRng, state: &mut State, action: &Action) {
     // Look at the top card of your deck. If that card is a Psychic Pokemon,\n        put it in your hand. If it is not a Psychic Pokemon, put it on the\n        bottom of your deck.
     if let Some(card) = state.decks[action.actor].cards.first() {
-        if card.is_basic() {
+        if matches!(card, Card::Pokemon(pokemon) if pokemon.energy_type == EnergyType::Psychic) {
             state.hands[action.actor].push(card.clone());
             state.decks[action.actor].cards.remove(0);
         } else {
@@ -2415,56 +2412,100 @@ fn puppy_loving_girl_effect(acting_player: usize, state: &State) -> Outcomes {
 fn quick_grow_extract_effect(acting_player: usize, state: &State) -> Outcomes {
     // Choose 1 of your [G] Pokémon in play. Put a random [G] Pokémon from your deck
     // that evolves from that Pokémon onto that Pokémon to evolve it.
-    // Similar to rare candy but automatic random evolution from deck
+    let choices = state
+        .enumerate_in_play_pokemon(acting_player)
+        .filter(|(_, pokemon)| {
+            state.pokemon_is_type(pokemon, EnergyType::Grass) && !pokemon.played_this_turn
+        })
+        .map(|(in_play_idx, _)| SimpleAction::ChooseRandomEvolutionTarget {
+            in_play_idx,
+            energy_type: EnergyType::Grass,
+        })
+        .collect::<Vec<_>>();
 
-    // Find all valid evolution candidates
-    let evolution_choices = quick_grow_extract_candidates(state, acting_player);
-
-    if evolution_choices.is_empty() {
-        // No valid evolution targets
-        return Outcomes::single_fn(|rng, state, action| {
-            state.decks[action.actor].shuffle(false, rng);
-        });
-    }
-
-    // Create one outcome per possible evolution
-    let num_outcomes = evolution_choices.len();
-    let probabilities = vec![1.0 / (num_outcomes as f64); num_outcomes];
-    let mut outcomes: Mutations = vec![];
-
-    for (in_play_idx, evolution_card) in evolution_choices {
-        outcomes.push(Box::new(move |rng, state, action| {
-            apply_evolve(action.actor, state, &evolution_card, in_play_idx, true);
-            state.decks[action.actor].shuffle(false, rng);
-        }));
-    }
-
-    Outcomes::from_parts(probabilities, outcomes)
+    Outcomes::single_fn(move |_, state, action| {
+        if !choices.is_empty() {
+            state
+                .move_generation_stack
+                .push((action.actor, choices.clone()));
+        }
+    })
 }
 
 fn wallace_effect(acting_player: usize, state: &State) -> Outcomes {
     // Choose 1 of your [W] Pokémon in play with a maximum HP of 50 or less. Put a random [W]
     // Pokémon from your deck that evolves from that Pokémon onto that Pokémon to evolve it.
-    let evolution_choices = wallace_candidates(state, acting_player);
+    let choices = state
+        .enumerate_in_play_pokemon(acting_player)
+        .filter(|(_, pokemon)| {
+            state.pokemon_is_type(pokemon, EnergyType::Water)
+                && pokemon.get_effective_total_hp() <= 50
+        })
+        .map(|(in_play_idx, _)| SimpleAction::ChooseRandomEvolutionTarget {
+            in_play_idx,
+            energy_type: EnergyType::Water,
+        })
+        .collect::<Vec<_>>();
 
-    if evolution_choices.is_empty() {
-        return Outcomes::single_fn(|rng, state, action| {
-            state.decks[action.actor].shuffle(false, rng);
+    Outcomes::single_fn(move |_, state, action| {
+        if !choices.is_empty() {
+            state
+                .move_generation_stack
+                .push((action.actor, choices.clone()));
+        }
+    })
+}
+
+/// Resolve the random half of Quick-Grow Extract and Wallace after the player has selected the
+/// visible in-play target. Only matching-type evolutions of that one target are probability
+/// branches; the deck is shuffled even when the search finds nothing.
+pub(crate) fn random_typed_evolution_outcomes(
+    player: usize,
+    in_play_idx: usize,
+    energy_type: EnergyType,
+    state: &State,
+) -> Outcomes {
+    let Some(target) = state.in_play_pokemon[player][in_play_idx].as_ref() else {
+        return Outcomes::single_fn(move |rng, state, _| {
+            state.decks[player].shuffle(false, rng);
+        });
+    };
+    let evolution_cards = state.decks[player]
+        .cards
+        .iter()
+        .filter(|card| {
+            matches!(card, Card::Pokemon(pokemon) if pokemon.energy_type == energy_type)
+                && can_evolve_into(state, card, target)
+        })
+        .cloned()
+        .collect::<Vec<_>>();
+
+    if evolution_cards.is_empty() {
+        return Outcomes::single_fn(move |rng, state, _| {
+            state.decks[player].shuffle(false, rng);
         });
     }
 
-    let num_outcomes = evolution_choices.len();
-    let probabilities = vec![1.0 / (num_outcomes as f64); num_outcomes];
-    let mut outcomes: Mutations = vec![];
-
-    for (in_play_idx, evolution_card) in evolution_choices {
-        outcomes.push(Box::new(move |rng, state, action| {
-            apply_evolve(action.actor, state, &evolution_card, in_play_idx, true);
-            state.decks[action.actor].shuffle(false, rng);
-        }));
-    }
-
-    Outcomes::from_parts(probabilities, outcomes)
+    let probability = 1.0 / evolution_cards.len() as f64;
+    let outcomes = evolution_cards
+        .into_iter()
+        .map(|evolution_card| -> Mutation {
+            Box::new(move |rng, state, _| {
+                let still_legal = state.in_play_pokemon[player][in_play_idx]
+                    .as_ref()
+                    .is_some_and(|target| {
+                        matches!(&evolution_card, Card::Pokemon(pokemon) if pokemon.energy_type == energy_type)
+                            && can_evolve_into(state, &evolution_card, target)
+                    })
+                    && state.decks[player].cards.contains(&evolution_card);
+                if still_legal {
+                    apply_evolve(player, state, &evolution_card, in_play_idx, true);
+                }
+                state.decks[player].shuffle(false, rng);
+            })
+        })
+        .collect::<Mutations>();
+    Outcomes::from_parts(vec![probability; outcomes.len()], outcomes)
 }
 
 fn team_rocket_grunt_outcomes(state: &State, acting_player: usize) -> Outcomes {

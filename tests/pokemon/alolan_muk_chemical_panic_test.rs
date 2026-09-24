@@ -68,38 +68,46 @@ fn test_chemical_panic_applies_exactly_one_random_condition() {
 }
 
 #[test]
-fn test_chemical_panic_never_picks_conditions_already_present() {
-    // Defender already has 4 of the 5 conditions; only Asleep is eligible, so the "random" pick
-    // must deterministically be Asleep.
-    for seed in 0..25 {
+fn test_chemical_panic_never_reselects_existing_compatible_conditions() {
+    // Burn, Poison and one of Asleep/Paralyzed/Confused can coexist. With Paralyzed already
+    // present, Chemical Panic must choose Asleep or Confused; either one replaces Paralysis.
+    let mut saw_asleep = false;
+    let mut saw_confused = false;
+    for seed in 0..50 {
         let defender = PlayedCard::from_id(CardId::PB024MegaLatiosEx)
             .with_status_condition(StatusCondition::Burned)
-            .with_status_condition(StatusCondition::Confused)
             .with_status_condition(StatusCondition::Paralyzed)
             .with_status_condition(StatusCondition::Poisoned);
         let game = attack(seed, defender);
         let state = game.get_state_clone();
         let defender = state.get_active(1);
         assert_eq!(180 - defender.get_remaining_hp(), 80, "seed {seed}");
-        assert!(
+        assert!(defender.is_burned(), "seed {seed}: Burn must remain");
+        assert!(defender.is_poisoned(), "seed {seed}: Poison must remain");
+        assert!(!defender.is_paralyzed(), "seed {seed}: the new trio condition replaces Paralysis");
+        assert_ne!(
             defender.is_asleep(),
-            "seed {seed}: Asleep is the only eligible condition and must be chosen"
+            defender.is_confused(),
+            "seed {seed}: exactly one eligible trio condition must be applied"
         );
+        saw_asleep |= defender.is_asleep();
+        saw_confused |= defender.is_confused();
     }
+    assert!(saw_asleep && saw_confused, "both eligible replacement conditions should be reachable");
 }
 
 #[test]
-fn test_chemical_panic_with_all_conditions_present_still_does_damage() {
-    // Negative case: nothing is eligible, so no new condition is added but the 80 still lands.
+fn test_chemical_panic_replaces_the_existing_trio_condition_and_still_does_damage() {
     let defender = PlayedCard::from_id(CardId::PB024MegaLatiosEx)
         .with_status_condition(StatusCondition::Asleep)
         .with_status_condition(StatusCondition::Burned)
-        .with_status_condition(StatusCondition::Confused)
-        .with_status_condition(StatusCondition::Paralyzed)
         .with_status_condition(StatusCondition::Poisoned);
     let game = attack(0, defender);
     let state = game.get_state_clone();
     let defender = state.get_active(1);
     assert_eq!(180 - defender.get_remaining_hp(), 80);
-    assert_eq!(condition_flags(defender), [true; 5]);
+    assert!(defender.is_burned());
+    assert!(defender.is_poisoned());
+    assert!(!defender.is_asleep());
+    assert_ne!(defender.is_confused(), defender.is_paralyzed());
 }

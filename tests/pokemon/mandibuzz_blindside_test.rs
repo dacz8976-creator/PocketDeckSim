@@ -48,6 +48,14 @@ fn test_mandibuzz_blindside_only_targets_damaged_pokemon() {
 
     game.apply_action(&choices[0].clone());
 
+    let (_, choices) = game.get_state_clone().generate_possible_actions();
+    let reaction = choices
+        .iter()
+        .find(|choice| matches!(choice.action, SimpleAction::ResolveAttackRetaliation { .. }))
+        .expect("Blindside's queued damage should return through attack retaliation")
+        .clone();
+    game.apply_action(&reaction);
+
     // 60 damage into 50 remaining HP knocks it out, so the slot is emptied.
     let state = game.get_state_clone();
     assert!(

@@ -80,6 +80,16 @@ fn expected_value_function(rng: &mut StdRng, state: &State, action: &Action, mys
 /// valued, rather than a terminal zero-damage state. Resolve exactly this bounded choice and stop
 /// after the attack commits.
 fn value_after_mandatory_continuation(rng: &mut StdRng, state: &State, myself: usize) -> f64 {
+    if state.is_game_over() { return value_function(state, myself); }
+    let forced_rule_phase = state.move_generation_stack.last().is_some_and(|(_, choices)|
+        matches!(choices.as_slice(), [SimpleAction::ResolveKnockoutPoints { .. }
+            | SimpleAction::ResolveAttackRetaliation { .. }
+            | SimpleAction::ResolvePokemonCheckup | SimpleAction::FinishPokemonCheckup
+            | SimpleAction::ResolveEndTurnEvolution { .. }]));
+    if forced_rule_phase {
+        let (_, actions) = state.generate_possible_actions();
+        return expected_value_function(rng, state, &actions[0], myself);
+    }
     let queued_attack_damage_choice =
         state
             .move_generation_stack
@@ -87,7 +97,8 @@ fn value_after_mandatory_continuation(rng: &mut StdRng, state: &State, myself: u
             .is_some_and(|(_, choices)| {
                 !choices.is_empty()
                     && choices.iter().all(|choice| {
-                        matches!(choice, SimpleAction::ApplyQueuedAttackDamage { .. })
+                        matches!(choice, SimpleAction::ApplyQueuedAttackDamage { .. }
+                            | SimpleAction::ChooseRandomEvolutionTarget { .. })
                     })
             });
     if state.pending_attack_coin_choice.is_none()

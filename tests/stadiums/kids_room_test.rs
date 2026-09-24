@@ -71,7 +71,7 @@ fn test_kids_room_use_stadium_available_with_tool_in_deck() {
 }
 
 #[test]
-fn test_kids_room_use_stadium_not_available_without_tool_in_deck() {
+fn test_kids_room_use_stadium_available_without_visible_tool_in_deck() {
     let game = setup_game_with_kids_room(false);
     let state = game.get_state_clone();
 
@@ -81,8 +81,8 @@ fn test_kids_room_use_stadium_not_available_without_tool_in_deck() {
         .any(|action| matches!(action.action, SimpleAction::UseStadium));
 
     assert!(
-        !has_use_stadium,
-        "UseStadium should NOT be available when deck has no Pokemon Tool card"
+        has_use_stadium,
+        "hidden deck contents must not reveal whether Kid's Room will find a Pokemon Tool"
     );
 }
 

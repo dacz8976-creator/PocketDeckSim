@@ -258,7 +258,8 @@ pub fn hidden_continuation_reason(state: &State, action: &Action) -> Option<&'st
     // searches. Conservatively leave the bundled action unpriced until its phases
     // can be forecast separately; known deck identities remain forecastable. Use the
     // printed mechanic: suppression may disappear during Checkup when its source is KO'd.
-    if matches!(action.action, SimpleAction::EndTurn) && state.turn_count > 0 {
+    if matches!(action.action, SimpleAction::EndTurn | SimpleAction::ResolvePokemonCheckup
+        | SimpleAction::FinishPokemonCheckup) && state.turn_count > 0 {
         use crate::actions::abilities::{AbilityMechanic, RandomEvolutionTrigger};
         let next = 1 - state.current_player;
         if state.decks[next].cards.contains(&Card::Unknown) {
@@ -273,6 +274,14 @@ pub fn hidden_continuation_reason(state: &State, action: &Action) -> Option<&'st
                 return Some("automatic next-turn ability searches an unknown deck");
             }
         }
+    }
+    let evolving_player = match action.action {
+        SimpleAction::ChooseRandomEvolutionTarget { .. } => Some(action.actor),
+        SimpleAction::ResolveEndTurnEvolution { player } => Some(player),
+        _ => None,
+    };
+    if evolving_player.is_some_and(|player| state.decks[player].cards.contains(&Card::Unknown)) {
+        return Some("random evolution searches an unknown deck");
     }
     let unknown = |p: usize| {
         state.hands[p].contains(&Card::Unknown) || state.decks[p].cards.contains(&Card::Unknown)
@@ -625,6 +634,10 @@ pub(crate) fn update_knowledge(
 /// This deliberately does not compare concealed card identities: equal public counts can hide a
 /// swap, and a removal can be masked by adding more cards than were removed.
 fn action_may_remove_from_deck(action: &Action, deck_owner: usize, text: &str) -> bool {
+    if matches!(&action.action, SimpleAction::ChooseRandomEvolutionTarget { .. }
+        | SimpleAction::ResolveEndTurnEvolution { .. }) {
+        return action.actor == deck_owner;
+    }
     if matches!(&action.action, SimpleAction::DrawCard { .. }) {
         return action.actor == deck_owner;
     }

@@ -117,12 +117,29 @@ fn test_jumpluff_ex_takes_rocky_helmet_damage_even_when_switching() {
         .clone();
     game.apply_action(&switch_action);
 
+    let (_, choices) = game.get_state_clone().generate_possible_actions();
+    let reaction = choices
+        .iter()
+        .find(|choice| matches!(choice.action, SimpleAction::ResolveAttackRetaliation { .. }))
+        .expect("Rocky Helmet retaliation should follow Jumpluff's switch")
+        .clone();
+    game.apply_action(&reaction);
+
     let state = game.get_state_clone();
     assert_eq!(state.get_active(0).get_name(), "Charmander");
+    assert_eq!(
+        state.get_active(0).get_remaining_hp(),
+        60,
+        "the replacement Active must not take Rocky Helmet damage"
+    );
 
     let benched_jumpluff = state.in_play_pokemon[0][1]
         .as_ref()
         .expect("Jumpluff ex should be on the bench after switching");
     assert_eq!(benched_jumpluff.get_name(), "Jumpluff ex");
-    assert_eq!(benched_jumpluff.get_remaining_hp(), 140);
+    assert_eq!(
+        benched_jumpluff.get_remaining_hp(),
+        140,
+        "Rocky Helmet damage follows the original attacker to the Bench"
+    );
 }

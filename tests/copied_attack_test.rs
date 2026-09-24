@@ -420,6 +420,16 @@ fn test_genome_hacking_best_effort_discards_only_matching_typed_energy() {
         state.discard_energies[0].is_empty(),
         "Genome Hacking should not send unrelated energy to the discard pile"
     );
+
+    let (_, actions) = state.generate_possible_actions();
+    assert_eq!(actions.len(), 1, "attack retaliation should be the only forced continuation");
+    let reaction = actions
+        .into_iter()
+        .find(|action| matches!(action.action, SimpleAction::ResolveAttackRetaliation { .. }))
+        .expect("copied Crimson Storm should queue attack retaliation");
+    game.apply_action(&reaction);
+
+    let state = game.get_state_clone();
     assert_eq!(
         state.points[0], 2,
         "Copied Crimson Storm should still resolve its damage and KO the opponent Charizard ex"
@@ -467,6 +477,16 @@ fn test_genome_hacking_best_effort_discards_matching_energy_for_attackid_copy() 
         vec![EnergyType::Water],
         "Only the matching Water energy should be discarded from Mew ex"
     );
+
+    let (_, actions) = state.generate_possible_actions();
+    assert_eq!(actions.len(), 1, "attack retaliation should be the only forced continuation");
+    let reaction = actions
+        .into_iter()
+        .find(|action| matches!(action.action, SimpleAction::ResolveAttackRetaliation { .. }))
+        .expect("copied Dimensional Storm should queue attack retaliation");
+    game.apply_action(&reaction);
+
+    let state = game.get_state_clone();
     assert_eq!(
         state.points[0], 2,
         "Copied Dimensional Storm should still KO the opponent active"

@@ -48,6 +48,17 @@ fn can_retreat_to(state: &deckgym::State, bench_idx: usize) -> bool {
         .any(|action| matches!(action.action, SimpleAction::Retreat(idx) if idx == bench_idx))
 }
 
+fn finish_retreat_choice(game: &mut Game<'static>) {
+    let (_, payments) = game.get_state_clone().generate_possible_actions();
+    if matches!(payments.first().map(|action| &action.action),
+        Some(SimpleAction::ChooseRetreatEnergy { .. })) {
+        assert!(payments.iter().all(|action| matches!(
+            action.action, SimpleAction::ChooseRetreatEnergy { .. }
+        )));
+        game.apply_action(&payments[0]);
+    }
+}
+
 #[test]
 fn pile_driving_hammer_adds_two_to_attack_and_retreat_cost_for_both_printings() {
     for card_id in [
@@ -95,6 +106,7 @@ fn pile_driving_hammer_adds_two_to_attack_and_retreat_cost_for_both_printings() 
             action: SimpleAction::Retreat(1),
             is_stack: false,
         });
+        finish_retreat_choice(&mut game);
         let state = game.get_state_clone();
         assert_eq!(state.get_active(1).get_name(), "Charmander");
         assert_eq!(
@@ -160,6 +172,7 @@ fn pile_driving_hammer_riders_respect_crystal_body_and_clear_veil() {
             action: SimpleAction::Retreat(1),
             is_stack: false,
         });
+        finish_retreat_choice(&mut game);
         assert_eq!(
             game.get_state_clone().discard_energies[1].len(),
             printed_retreat_cost,
@@ -211,6 +224,7 @@ fn pile_driving_hammer_riders_expire_after_the_opponents_next_turn() {
         action: SimpleAction::Retreat(1),
         is_stack: false,
     });
+        finish_retreat_choice(&mut game);
     assert_eq!(
         game.get_state_clone().discard_energies[1].len(),
         1,
@@ -248,6 +262,7 @@ fn pile_driving_hammer_riders_clear_when_defender_retreats_and_stay_gone_when_re
         action: SimpleAction::Retreat(1),
         is_stack: false,
     });
+        finish_retreat_choice(&mut game);
 
     let mut state = game.get_state_clone();
     assert_eq!(

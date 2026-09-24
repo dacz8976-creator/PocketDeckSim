@@ -320,6 +320,10 @@ pub struct State {
     // Turn Flags (remember to reset these in reset_turn_states)
     pub(crate) has_played_support: bool,
     pub(crate) has_retreated: bool,
+    /// A Stadium card has been played during the current player's turn. This is distinct from
+    /// using an activated Stadium effect, which is tracked per player below.
+    #[serde(default)]
+    pub(crate) has_played_stadium: bool,
     pub has_used_stadium: [bool; 2], // Tracks if each player has used the stadium this turn
     /// Victory Star is limited across all copies a player controls, not per card.
     #[serde(default, skip_serializing_if = "all_false")]
@@ -552,6 +556,7 @@ impl State {
             active_stadium_owner: None,
             has_played_support: false,
             has_retreated: false,
+            has_played_stadium: false,
             has_used_stadium: [false, false],
             victory_star_used_this_turn: [false, false],
             luxury_coin_used_this_turn: [false, false],
@@ -946,6 +951,7 @@ impl State {
 
         self.has_played_support = false;
         self.has_retreated = false;
+        self.has_played_stadium = false;
         self.has_used_stadium[self.current_player] = false;
         self.victory_star_used_this_turn[self.current_player] = false;
         self.luxury_coin_used_this_turn[self.current_player] = false;
@@ -1398,8 +1404,23 @@ impl State {
 
             // Using .insert(0, should not have issues with EndTurn mechanics, since those are
             // done only when move_generation_stack is stable (empty).
+            // A paused Checkup must not advance or begin the next phase before promotion.
+            let phase_floor = self.move_generation_stack.iter().rposition(|(_, choices)|
+                choices.iter().any(|action| matches!(action,
+                    SimpleAction::FinishPokemonCheckup | SimpleAction::ResolvePokemonCheckup)))
+                .map_or(0, |idx| idx + 1);
+            // A later hit (for example Double Punching Family) requires a replacement
+            // before its damage forecast can inspect the new Active Pokémon.
+            let pending_hit_floor = self.move_generation_stack.iter().rposition(|(_, choices)|
+                choices.iter().any(|action| match action {
+                    SimpleAction::ApplyDamage { attacking_ref, targets, .. } =>
+                        *attacking_ref == (player_with_empty_active, 0)
+                        || targets.iter().any(|(_, player, idx)|
+                            *player == player_with_empty_active && *idx == 0),
+                    _ => false,
+                })).map_or(0, |idx| idx + 1);
             self.move_generation_stack
-                .insert(0, (player_with_empty_active, possible_moves));
+                .insert(phase_floor.max(pending_hit_floor), (player_with_empty_active, possible_moves));
         }
     }
 

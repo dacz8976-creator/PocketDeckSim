@@ -58,7 +58,15 @@ fn get_weight(action: &SimpleAction) -> u32 {
         SimpleAction::ApplyQueuedAttackDamage { .. } => 10,
         SimpleAction::ScheduleDelayedSpotDamage { .. } => 10,
         SimpleAction::Retreat(_) => 2,
-        SimpleAction::EndTurn => 1,
+        SimpleAction::ChooseRetreatEnergy { .. }
+        | SimpleAction::ChooseAttackEnergyDiscard { .. } => 10,
+        SimpleAction::EndTurn
+        | SimpleAction::ResolveKnockoutPoints { .. }
+            | SimpleAction::ResolveAttackRetaliation { .. }
+        | SimpleAction::ResolvePokemonCheckup
+        | SimpleAction::FinishPokemonCheckup
+        | SimpleAction::ResolveEndTurnEvolution { .. } => 1,
+        SimpleAction::ChooseRandomEvolutionTarget { .. } => 10,
         SimpleAction::Heal { .. } => 5,
         SimpleAction::HealAndDiscardEnergy { .. } => 5,
         SimpleAction::HealAndCureConditions { .. } => 5,

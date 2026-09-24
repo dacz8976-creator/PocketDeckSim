@@ -409,7 +409,10 @@ pub(crate) fn on_end_turn(player_ending_turn: usize, state: &mut State) {
         state.heal_pokemon(player_ending_turn, 0, amount);
     }
 
-    apply_end_of_turn_berries(state);
+    // End-of-turn effects belonging to the player whose turn is ending resolve first. In
+    // particular, their Bad Dreams must resolve before the opponent's Lum Berry can cure Sleep.
+    apply_bad_dreams_damage_for_owner(player_ending_turn, state);
+    apply_end_of_turn_berries_for_owner(player_ending_turn, state);
 
     // Process delayed damage effects on active Pokemon
     // Delayed damage triggers at the end of the opponent's turn (when their turn ends, the effect expires)
@@ -566,7 +569,9 @@ pub(crate) fn on_end_turn(player_ending_turn: usize, state: &mut State) {
 
     apply_deceptive_needle_damage(player_ending_turn, state);
 
-    apply_bad_dreams_damage(state);
+    let other_player = (player_ending_turn + 1) % 2;
+    apply_end_of_turn_berries_for_owner(other_player, state);
+    apply_bad_dreams_damage_for_owner(other_player, state);
 }
 
 /// Deceptive Needle: At the end of your turn, if the [D] Pokémon this card is attached to is in
@@ -575,7 +580,8 @@ fn apply_deceptive_needle_damage(player_ending_turn: usize, state: &mut State) {
     let Some(active) = state.maybe_get_active(player_ending_turn) else {
         return;
     };
-    if !has_tool(active, CardId::B4148DeceptiveNeedle)
+    if active.is_knocked_out()
+        || !has_tool(active, CardId::B4148DeceptiveNeedle)
         || active.get_energy_type() != Some(EnergyType::Darkness)
     {
         return;
@@ -603,24 +609,22 @@ fn apply_soothing_shore_healing(player_ending_turn: usize, state: &mut State) {
     }
     debug!("Soothing Shore: Healing 20 from each [W]-Energy Pokémon");
     state.heal_each_pokemon(player_ending_turn, 20, |pokemon| {
-        pokemon.attached_energy.contains(&EnergyType::Water)
+        !pokemon.is_knocked_out()
+            && pokemon.attached_energy.contains(&EnergyType::Water)
     });
 }
 
-/// Apply Bad Dreams ability damage: for each player's Darkrai in play, if that player's
-/// opponent has an Asleep Active Pokémon, deal 20 damage to it.
-fn apply_bad_dreams_damage(state: &mut State) {
+/// Apply Bad Dreams damage from one player's Darkrai, preserving end-of-turn owner order.
+fn apply_bad_dreams_damage_for_owner(darkrai_owner: usize, state: &mut State) {
     let mut sources: Vec<(usize, usize, u32)> = vec![];
-    for player in 0..2 {
-        for (idx, pokemon) in state.enumerate_in_play_pokemon(player) {
-            if pokemon.is_knocked_out() {
-                continue;
-            }
-            if let Some(AbilityMechanic::BadDreamsEndOfTurn { amount }) =
-                get_in_play_ability_mechanic(state, pokemon)
-            {
-                sources.push((player, idx, *amount));
-            }
+    for (idx, pokemon) in state.enumerate_in_play_pokemon(darkrai_owner) {
+        if pokemon.is_knocked_out() {
+            continue;
+        }
+        if let Some(AbilityMechanic::BadDreamsEndOfTurn { amount }) =
+            get_in_play_ability_mechanic(state, pokemon)
+        {
+            sources.push((darkrai_owner, idx, *amount));
         }
     }
 
@@ -679,7 +683,15 @@ pub(crate) fn can_play_item(state: &State) -> bool {
     !has_modifiers
 }
 
-fn get_heavy_helmet_reduction(state: &State, (target_player, target_idx): (usize, usize)) -> u32 {
+fn get_heavy_helmet_reduction(
+    state: &State,
+    attacking_player: usize,
+    (target_player, target_idx): (usize, usize),
+    is_from_active_attack: bool,
+) -> u32 {
+    if !is_from_active_attack || attacking_player == target_player {
+        return 0;
+    }
     let defending_pokemon = &state.in_play_pokemon[target_player][target_idx]
         .as_ref()
         .expect("Defending Pokemon should be there when checking Heavy Helmet");
@@ -1012,15 +1024,12 @@ fn get_increased_turn_effect_modifiers(
     attacking_pokemon: &crate::models::PlayedCard,
     attacking_player: usize,
 ) -> u32 {
-    if !is_active_to_active {
-        return 0;
-    }
     let attacker_energy_types = state.pokemon_energy_types(attacking_pokemon);
     state
         .get_current_turn_effects()
         .iter()
         .map(|effect| match effect {
-            TurnEffect::IncreasedDamage { amount } => *amount,
+            TurnEffect::IncreasedDamage { amount } if is_active_to_active => *amount,
             // Inspiring Dance (Oricorio / Meloetta). Player-scoped because it lives across the
             // opponent's turn to reach "your next turn"; `energy_type: None` means every Pokémon.
             TurnEffect::IncreasedDamageForPlayer {
@@ -1028,6 +1037,7 @@ fn get_increased_turn_effect_modifiers(
                 player,
                 energy_type,
             } if *player == attacking_player
+                && is_active_to_active
                 && energy_type.is_none_or(|required| attacker_energy_types.contains(&required)) =>
             {
                 *amount
@@ -1035,10 +1045,14 @@ fn get_increased_turn_effect_modifiers(
             TurnEffect::IncreasedDamageForType {
                 amount,
                 energy_type,
-            } if attacker_energy_types.contains(energy_type) => *amount,
-            TurnEffect::IncreasedDamageAgainstEx { amount } if target_is_ex => *amount,
+            } if is_active_to_active && attacker_energy_types.contains(energy_type) => *amount,
+            TurnEffect::IncreasedDamageAgainstEx { amount }
+                if is_active_to_active && target_is_ex =>
+            {
+                *amount
+            }
             TurnEffect::IncreasedDamageForEeveeEvolutions { amount }
-                if attacker_is_eevee_evolution =>
+                if is_active_to_active && attacker_is_eevee_evolution =>
             {
                 *amount
             }
@@ -1047,7 +1061,12 @@ fn get_increased_turn_effect_modifiers(
                 pokemon_names,
             } => {
                 let attacker_name = attacking_pokemon.get_name();
-                if pokemon_names
+                let is_backpack = *amount == 20
+                    && pokemon_names.len() == 2
+                    && pokemon_names.iter().any(|name| name == "Magneton")
+                    && pokemon_names.iter().any(|name| name == "Heliolisk");
+                if (is_active_to_active || is_backpack)
+                    && pokemon_names
                     .iter()
                     .any(|name| name.as_str() == attacker_name)
                 {
@@ -1059,7 +1078,7 @@ fn get_increased_turn_effect_modifiers(
             TurnEffect::IncreasedDamageForSpecificPokemonAgainstEx {
                 amount,
                 pokemon_names,
-            } if target_is_ex => {
+            } if is_active_to_active && target_is_ex => {
                 let attacker_name = attacking_pokemon.get_name();
                 if pokemon_names
                     .iter()
@@ -1073,7 +1092,12 @@ fn get_increased_turn_effect_modifiers(
             TurnEffect::IncreasedDamageForTypeAgainstEx {
                 amount,
                 energy_type,
-            } if target_is_ex && attacker_energy_types.contains(energy_type) => *amount,
+            } if is_active_to_active
+                && target_is_ex
+                && attacker_energy_types.contains(energy_type) =>
+            {
+                *amount
+            }
             _ => 0,
         })
         .sum::<u32>()
@@ -1240,7 +1264,6 @@ pub(crate) struct DamageModifierContext<'a> {
 
 #[derive(Clone, Copy, Default)]
 struct FiniteDamageReductions {
-    intimidating_fang: u32,
     heavy_helmet: u32,
     metal_core_barrier: u32,
     steel_apron: u32,
@@ -1254,7 +1277,6 @@ struct FiniteDamageReductions {
 impl FiniteDamageReductions {
     fn total_u64(self) -> u64 {
         [
-            self.intimidating_fang,
             self.heavy_helmet,
             self.metal_core_barrier,
             self.steel_apron,
@@ -1296,13 +1318,12 @@ fn finite_damage_reductions(
     let is_active_to_active = target_idx == 0 && attacking_idx == 0 && is_from_active_attack;
 
     FiniteDamageReductions {
-        intimidating_fang: get_intimidating_fang_reduction(
+        heavy_helmet: get_heavy_helmet_reduction(
             state,
-            attacking_ref,
-            (0, target_player, target_idx),
+            attacking_player,
+            target,
             is_from_active_attack,
         ),
-        heavy_helmet: get_heavy_helmet_reduction(state, target),
         metal_core_barrier: get_metal_core_barrier_reduction(
             state,
             target,
@@ -1394,9 +1415,15 @@ pub(crate) fn active_attack_damage_saturation_requirement(
         "damage saturation requires a living Defending Active"
     );
     let post_reduction_requirement = u64::from(remaining_hp).max(threshold_requirement);
+    let intimidating_fang_reduction = if skip_target_effects {
+        0
+    } else {
+        get_intimidating_fang_reduction(state, attacking_ref, (0, opponent, 0), true)
+    };
     finite_damage_reductions(state, attacking_ref, target, true, skip_target_effects)
         .total_u64()
-        .checked_add(finite_coin_reduction)
+        .checked_add(u64::from(intimidating_fang_reduction))
+        .and_then(|value| value.checked_add(finite_coin_reduction))
         .and_then(|value| value.checked_add(post_reduction_requirement))
         .expect("active-attack damage saturation requirement overflowed u64")
 }
@@ -1569,6 +1596,7 @@ pub(crate) fn modify_damage(
     // Protective Poncho: prevent all damage to benched Pokémon with this tool attached
     if target_idx != 0
         && !skip_target_effects
+        && attacking_player != target_player
         && has_tool(receiving_pokemon, CardId::B2147ProtectivePoncho)
     {
         debug!("Protective Poncho: Preventing all damage to benched Pokémon");
@@ -1599,9 +1627,19 @@ pub(crate) fn modify_damage(
     let target_is_ex = receiving_pokemon.card.is_ex();
     let attacker_is_eevee_evolution = attacking_pokemon.evolved_from("Eevee");
 
-    // Every damage-reducing effect/tool below sits on the target. Keep this calculation shared
-    // with geometric-damage saturation so a newly added reducer cannot make the symbolic tail
-    // stop before lethal damage.
+    // Intimidating Fang changes the damage done by the opponent's Active, so it belongs to the
+    // attacker-modifier stage before Weakness. It is still bypassed by attacks that ignore effects
+    // on the opponent's Active because the Ability is carried by that Active.
+    let intimidating_fang_reduction = if skip_target_effects {
+        0
+    } else {
+        get_intimidating_fang_reduction(
+            state,
+            attacking_ref,
+            (base_damage, target_player, target_idx),
+            is_from_active_attack,
+        )
+    };
     let reductions = finite_damage_reductions(
         state,
         attacking_ref,
@@ -1683,7 +1721,7 @@ pub(crate) fn modify_damage(
     };
 
     debug!(
-        "Attack: {:?}, IncreasedDamage: {}, IncreasedAttackSpecific: {}, IncreasedVulnerability: {}, ReducedDamage: {}, TurnEffectReduction: {}, HeavyHelmet: {}, MetalCoreBarrier: {}, SteelApron: {}, IntimidatingFang: {}, AbilityReduction: {}, ConditionalAbilityReduction: {}, CoordinatedUnit: {}, AbilityIncrease: {}, BoardAbilityBonus: {}, StadiumBonus: {}, FutureBooster: {}",
+        "Attack: {:?}, IncreasedDamage: {}, IncreasedAttackSpecific: {}, IncreasedVulnerability: {}, ReducedDamage: {}, TurnEffectReduction: {}, HeavyHelmet: {}, MetalCoreBarrier: {}, SteelApron: {}, IntimidatingFangAttackerReduction: {}, AbilityReduction: {}, ConditionalAbilityReduction: {}, CoordinatedUnit: {}, AbilityIncrease: {}, BoardAbilityBonus: {}, StadiumBonus: {}, FutureBooster: {}",
         base_damage,
         increased_turn_effect_modifiers,
         increased_attack_specific_modifiers,
@@ -1693,7 +1731,7 @@ pub(crate) fn modify_damage(
         reductions.heavy_helmet,
         reductions.metal_core_barrier,
         reductions.steel_apron,
-        reductions.intimidating_fang,
+        intimidating_fang_reduction,
         reductions.ability,
         reductions.conditional_ability,
         reductions.coordinated_unit,
@@ -1702,21 +1740,38 @@ pub(crate) fn modify_damage(
         stadium_damage_bonus,
         future_booster_damage_bonus
     );
-    let pre_weakness = (base_damage
+    let pre_weakness = base_damage
         + ability_damage_increase
         + increased_turn_effect_modifiers
         + increased_attack_specific_modifiers
-        + increased_vulnerability_modifiers
         + board_ability_bonus
         + stadium_damage_bonus
         + future_booster_damage_bonus
-        + beastite_damage_bonus)
-        .saturating_sub(reductions.total_u32_saturating());
-    let final_damage = match weakness_application {
+        + beastite_damage_bonus;
+    // Growl, Moonblast and Teary Attack follow the Pokemon that was hit. Their reduction
+    // affects each opposing target of that Pokemon's attack, including Bench damage,
+    // even when the original user has switched out. Ability/status damage bypasses it.
+    let carried_attack_reduction: u32 = if is_from_active_attack && attacking_player != target_player {
+        attacking_pokemon.get_active_effects().iter().filter_map(|effect| match effect {
+            CardEffect::ReducedAttackDamage { amount } => Some(*amount),
+            _ => None,
+        }).sum()
+    } else {
+        0
+    };
+    let pre_weakness = pre_weakness
+        .saturating_sub(intimidating_fang_reduction)
+        .saturating_sub(carried_attack_reduction);
+    let after_weakness = match weakness_application {
         WeaknessApplication::None => pre_weakness,
         WeaknessApplication::Flat(amount) => pre_weakness + amount,
         WeaknessApplication::Double => pre_weakness * 2,
     };
+    // Effects on the Defending Pokémon are step 4: after Weakness. This includes both
+    // vulnerability (+damage) and reductions, with the final result floored at zero.
+    let final_damage = after_weakness
+        .saturating_add(increased_vulnerability_modifiers)
+        .saturating_sub(reductions.total_u32_saturating());
 
     // Threshold-based prevention (e.g. Cascoon's Harden): prevent all damage if it is low enough.
     let prevented_by_threshold = target_effects
@@ -2069,52 +2124,52 @@ fn apply_knockout_retaliation(
 /// just their owner's — and both discard themselves only in the turn they actually do something,
 /// so a berry attached with nothing to fix stays on for later.
 ///
-/// Both players' boards are scanned, hence the pass over every in-play slot rather than just the
-/// Active. Indices are collected before mutating, matching the Metal Core Barrier handling above.
-fn apply_end_of_turn_berries(state: &mut State) {
-    for player in 0..2 {
-        let lum_indices: Vec<usize> = state.in_play_pokemon[player]
-            .iter()
-            .enumerate()
-            .filter(|(_, slot)| {
-                slot.as_ref().is_some_and(|pokemon| {
-                    has_tool(pokemon, CardId::A2149LumBerry) && pokemon.has_status_condition()
-                })
+/// One owner's whole board is scanned rather than just the Active. Indices are collected before
+/// mutating, matching the Metal Core Barrier handling above.
+fn apply_end_of_turn_berries_for_owner(player: usize, state: &mut State) {
+    let lum_indices: Vec<usize> = state.in_play_pokemon[player]
+        .iter()
+        .enumerate()
+        .filter(|(_, slot)| {
+            slot.as_ref().is_some_and(|pokemon| {
+                !pokemon.is_knocked_out()
+                    && has_tool(pokemon, CardId::A2149LumBerry)
+                    && pokemon.has_status_condition()
             })
-            .map(|(idx, _)| idx)
-            .collect();
-        for idx in lum_indices {
-            debug!("Lum Berry: curing Special Conditions and discarding");
-            if let Some(pokemon) = state.in_play_pokemon[player][idx].as_mut() {
-                pokemon.cure_status_conditions();
-            }
-            state.discard_one_matching_tool(player, idx, CardId::A2149LumBerry);
+        })
+        .map(|(idx, _)| idx)
+        .collect();
+    for idx in lum_indices {
+        debug!("Lum Berry: curing Special Conditions and discarding");
+        if let Some(pokemon) = state.in_play_pokemon[player][idx].as_mut() {
+            pokemon.cure_status_conditions();
         }
+        state.discard_one_matching_tool(player, idx, CardId::A2149LumBerry);
+    }
 
-        for idx in 0..state.in_play_pokemon[player].len() {
-            loop {
-                let eligible = state.in_play_pokemon[player][idx]
-                    .as_ref()
-                    .is_some_and(|pokemon| {
-                        has_tool(pokemon, CardId::B1218SitrusBerry)
-                            // Recheck after every Berry: a successful heal can move the holder
-                            // above half HP, leaving later copies attached.
-                            && pokemon.get_remaining_hp() * 2
-                                <= pokemon.get_effective_total_hp()
-                    });
-                if !eligible {
-                    break;
-                }
+    for idx in 0..state.in_play_pokemon[player].len() {
+        loop {
+            let eligible = state.in_play_pokemon[player][idx]
+                .as_ref()
+                .is_some_and(|pokemon| {
+                    !pokemon.is_knocked_out()
+                        && has_tool(pokemon, CardId::B1218SitrusBerry)
+                        // Recheck after every Berry: a successful heal can move the holder
+                        // above half HP, leaving later copies attached.
+                        && pokemon.get_remaining_hp() * 2 <= pokemon.get_effective_total_hp()
+                });
+            if !eligible {
+                break;
+            }
 
-                debug!("Sitrus Berry: healing 30 and discarding");
-                if state.heal_pokemon(player, idx, 30) == 0 {
-                    // Heal Block makes "If you do" false. Stop without consuming this or any
-                    // later copy; otherwise the unchanged board would also loop forever.
-                    break;
-                }
-                if !state.discard_one_matching_tool(player, idx, CardId::B1218SitrusBerry) {
-                    break;
-                }
+            debug!("Sitrus Berry: healing 30 and discarding");
+            if state.heal_pokemon(player, idx, 30) == 0 {
+                // Heal Block makes "If you do" false. Stop without consuming this or any
+                // later copy; otherwise the unchanged board would also loop forever.
+                break;
+            }
+            if !state.discard_one_matching_tool(player, idx, CardId::B1218SitrusBerry) {
+                break;
             }
         }
     }

@@ -114,6 +114,12 @@ fn test_defender_is_unhindered_without_primates_trap() {
         is_stack: false,
     });
 
+    let (_, payments) = game.get_state_clone().generate_possible_actions();
+    assert_eq!(payments.len(), 2, "the player chooses which Energy pays one retreat symbol");
+    assert!(payments.iter().all(|action| matches!(
+        action.action, SimpleAction::ChooseRetreatEnergy { .. }
+    )));
+    game.apply_action(&payments[0]);
     let state = game.get_state_clone();
     let benched_bulbasaur = state.in_play_pokemon[1][1]
         .as_ref()

@@ -530,7 +530,7 @@ fn resolve_certified_attack(
     };
     let mut successor = state.clone();
     let opponent = 1 - action.actor;
-    crate::actions::handle_damage_only(
+    let damaged_actives = crate::actions::handle_damage_only(
         &mut successor,
         (action.actor, 0),
         &[(attack.fixed_damage, opponent, 0)],
@@ -560,6 +560,7 @@ fn resolve_certified_attack(
             .get_active_mut(action.actor)
             .add_effect(effect, 1);
     }
+    crate::actions::handle_attack_retaliation(&mut successor, (action.actor, 0), &damaged_actives);
     crate::actions::handle_knockouts(&mut successor, (action.actor, 0), true);
     successor
 }

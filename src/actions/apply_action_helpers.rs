@@ -1,4 +1,3 @@
-use crate::actions::get_ability_mechanic;
 use std::collections::HashMap;
 
 use log::debug;
@@ -86,10 +85,40 @@ pub(crate) fn forecast_end_turn(state: &State) -> (Probabilities, Mutations) {
 
 /// Handle Status Effects
 fn forecast_pokemon_checkup(state: &State) -> (Probabilities, Mutations) {
-    let next_player = (state.current_player + 1) % 2;
-    let mut preview_state = state.clone();
-    // Important for these to happen before Pokemon Checkup (Zeraora, Suicune, etc)
-    on_end_turn(state.current_player, &mut preview_state);
+    let mut preview = state.clone();
+    on_end_turn(state.current_player, &mut preview);
+    let next = 1 - state.current_player;
+    let end_evolution = preview.maybe_get_active(next).is_some_and(|active|
+        matches!(get_in_play_ability_mechanic(&preview, active),
+            Some(AbilityMechanic::RandomEvolutionFromDeck {
+                trigger: RandomEvolutionTrigger::EndOfOpponentTurnIfActive
+            })));
+    if pending_point_denial(&preview) || end_evolution {
+        return (vec![1.0], vec![Box::new(move |_, state, action| {
+            let stack_base = state.move_generation_stack.len();
+            on_end_turn(action.actor, state);
+            if state.is_game_over() { return; }
+            state.move_generation_stack.insert(stack_base,
+                (action.actor, vec![SimpleAction::ResolvePokemonCheckup]));
+            if end_evolution {
+                state.move_generation_stack.insert(stack_base + 1,
+                    (next, vec![SimpleAction::ResolveEndTurnEvolution { player: next }]));
+            }
+        })]);
+    }
+    let (probabilities, phases) = forecast_checkup_phase(&preview);
+    let mutations = phases.into_iter().map(|phase| -> Mutation {
+        Box::new(move |rng, state, action| {
+            on_end_turn(action.actor, state);
+            if !state.is_game_over() { phase(rng, state, action); }
+        })
+    }).collect();
+    (probabilities, mutations)
+}
+
+pub(crate) fn forecast_checkup_phase(state: &State) -> (Probabilities, Mutations) {
+    let next_player = 1 - state.current_player;
+    let preview_state = state.clone();
     let checkup_targets = collect_checkup_targets(&preview_state);
 
     // Get all binary vectors representing the possible outcomes.
@@ -106,18 +135,26 @@ fn forecast_pokemon_checkup(state: &State) -> (Probabilities, Mutations) {
         if !preview_after_checkup.is_game_over() {
             apply_pokemon_checkup(&mut preview_after_checkup, &checkup_targets, &outcome);
         }
-        let (start_probs, start_mutations) =
-            start_turn_ability_outcomes(&preview_after_checkup, next_player);
+        let (start_probs, start_mutations) = if pending_point_denial(&preview_after_checkup) {
+            (vec![1.0], vec![noop_mutation()])
+        } else {
+            start_turn_ability_outcomes(&preview_after_checkup, next_player)
+        };
         for (start_prob, start_mutation) in start_probs.into_iter().zip(start_mutations) {
             let outcome = outcome.clone();
             probabilities.push(base_probability * start_prob);
             outcomes.push(Box::new(move |rng, state, action| {
-                on_end_turn(action.actor, state);
                 if state.is_game_over() {
                     return;
                 }
+                let stack_base = state.move_generation_stack.len();
                 let live_checkup_targets = collect_checkup_targets(state);
                 apply_pokemon_checkup(state, &live_checkup_targets, &outcome);
+                if pending_point_denial(state) {
+                    state.move_generation_stack.insert(stack_base,
+                        (state.current_player, vec![SimpleAction::FinishPokemonCheckup]));
+                    return;
+                }
                 // A Checkup result ends the game before another turn or its abilities.
                 // In particular, advancing past turn 30 must not replace that result with Tie.
                 if state.is_game_over() {
@@ -131,6 +168,23 @@ fn forecast_pokemon_checkup(state: &State) -> (Probabilities, Mutations) {
         }
     }
     (probabilities, outcomes)
+}
+
+pub(crate) fn forecast_finish_checkup(state: &State) -> (Probabilities, Mutations) {
+    let (probabilities, starts) = start_turn_ability_outcomes(state, 1 - state.current_player);
+    let mutations = starts.into_iter().map(|start| -> Mutation {
+        Box::new(move |rng, state, action| {
+            if state.is_game_over() { return; }
+            finish_turn_after_checkup(state, rng);
+            if !state.is_game_over() { start(rng, state, action); }
+        })
+    }).collect();
+    (probabilities, mutations)
+}
+
+fn pending_point_denial(state: &State) -> bool {
+    state.move_generation_stack.iter().any(|(_, choices)| choices.iter().any(|action|
+        matches!(action, SimpleAction::ResolveKnockoutPoints { .. })))
 }
 
 fn start_turn_ability_outcomes(state: &State, player: usize) -> (Probabilities, Mutations) {
@@ -153,11 +207,6 @@ fn start_turn_ability_outcomes(state: &State, player: usize) -> (Probabilities, 
                 *energy_type,
             )
             .into_branches()
-        }
-        AbilityMechanic::RandomEvolutionFromDeck {
-            trigger: RandomEvolutionTrigger::EndOfOpponentTurnIfActive,
-        } => {
-            shared_mutations::random_evolution_from_deck_outcomes(player, 0, state).into_branches()
         }
         _ => (vec![1.0], vec![noop_mutation()]),
     }
@@ -210,7 +259,7 @@ fn collect_checkup_targets(state: &State) -> CheckupTargets {
         burned: vec![],
     };
 
-    for player in 0..2 {
+    for player in [state.current_player, 1 - state.current_player] {
         for (i, pokemon) in state.enumerate_in_play_pokemon(player) {
             if pokemon.is_asleep() {
                 targets.sleeps.push((player, i));
@@ -243,76 +292,38 @@ fn apply_pokemon_checkup(
     let num_sleeps = checkup_targets.sleeps.len();
     debug_assert!(outcome.len() >= num_sleeps + checkup_targets.burned.len());
 
-    // Official Pokemon Checkup order: Poisoned -> Burned -> Asleep -> Paralyzed.
-    for (player, in_play_idx) in checkup_targets.poisoned.iter().copied() {
-        if mutated_state.in_play_pokemon[player][in_play_idx].is_none() {
-            continue;
+    for player in [mutated_state.current_player, 1 - mutated_state.current_player] {
+        for &(_, idx) in checkup_targets.poisoned.iter().filter(|(p, _)| *p == player) {
+            let damage = get_poison_damage(mutated_state, player, idx);
+            handle_damage_only(mutated_state, (player, idx), &[(damage, player, idx)],
+                false, DamageModifierContext::default());
         }
-        let attacking_ref = (player, in_play_idx); // present it as self-damage
-        let poison_damage = get_poison_damage(mutated_state, player, in_play_idx);
-
-        handle_damage(
-            mutated_state,
-            attacking_ref,
-            &[(poison_damage, player, in_play_idx)],
-            false,
-            None,
-        );
-    }
-
-    // Burn always deals 20 damage, then coin flip for healing
-    for (i, (player, in_play_idx)) in checkup_targets.burned.iter().copied().enumerate() {
-        if mutated_state.in_play_pokemon[player][in_play_idx].is_none() {
-            continue;
+        for (i, &(_, idx)) in checkup_targets.burned.iter().enumerate().filter(|(_, (p, _))| *p == player) {
+            handle_damage_only(mutated_state, (player, idx), &[(20, player, idx)],
+                false, DamageModifierContext::default());
+            if outcome[num_sleeps + i] {
+                if let Some(pokemon) = mutated_state.in_play_pokemon[player][idx].as_mut() {
+                    pokemon.clear_status_condition(StatusCondition::Burned);
+                }
+            }
         }
-
-        let attacking_ref = (player, in_play_idx); // present it as self-damage
-        handle_damage(
-            mutated_state,
-            attacking_ref,
-            &[(20, player, in_play_idx)],
-            false,
-            None,
-        );
-
-        let heals_from_burn = outcome[num_sleeps + i];
-        if !heals_from_burn {
-            continue;
+        for (i, &(_, idx)) in checkup_targets.sleeps.iter().enumerate().filter(|(_, (p, _))| *p == player) {
+            if outcome[i] {
+                if let Some(pokemon) = mutated_state.in_play_pokemon[player][idx].as_mut() {
+                    pokemon.clear_status_condition(StatusCondition::Asleep);
+                }
+            }
         }
-        let Some(pokemon) = mutated_state.in_play_pokemon[player][in_play_idx].as_mut() else {
-            continue;
-        };
-        pokemon.clear_status_condition(StatusCondition::Burned);
-        debug!("{player}'s Pokemon {in_play_idx} healed from burn");
-    }
-
-    // Handle sleep coin flips after poison/burn damage has resolved.
-    for ((player, in_play_idx), is_awake) in checkup_targets
-        .sleeps
-        .iter()
-        .copied()
-        .zip(&outcome[0..num_sleeps])
-    {
-        if !*is_awake {
-            continue;
+        for &(_, idx) in checkup_targets.paralyzed.iter().filter(|(p, _)| *p == player) {
+            if let Some(pokemon) = mutated_state.in_play_pokemon[player][idx].as_mut() {
+                pokemon.clear_status_condition(StatusCondition::Paralyzed);
+            }
         }
-        let Some(pokemon) = mutated_state.in_play_pokemon[player][in_play_idx].as_mut() else {
-            continue;
-        };
-        pokemon.clear_status_condition(StatusCondition::Asleep);
-        debug!("{player}'s Pokemon {in_play_idx} woke up");
-    }
-
-    for (player, in_play_idx) in checkup_targets.paralyzed.iter().copied() {
-        let Some(pokemon) = mutated_state.in_play_pokemon[player][in_play_idx].as_mut() else {
-            continue;
-        };
-        pokemon.clear_status_condition(StatusCondition::Paralyzed);
-        debug!("{player}'s Pokemon {in_play_idx} is un-paralyzed");
     }
 
     apply_snowy_terrain_checkup_damage(mutated_state);
     apply_blessed_salt_checkup_healing(mutated_state);
+    handle_knockouts(mutated_state, (mutated_state.current_player, 0), false);
 
     // Shift the per-turn KO flag. Turn advancement (including energy rotation) is performed
     // separately by `finish_turn_after_checkup` so it can consume the shared rng.
@@ -331,13 +342,13 @@ fn finish_turn_after_checkup(state: &mut State, rng: &mut StdRng) {
 ///
 /// Unlike the checkup *damage* abilities above, this one carries no Active Spot requirement, so
 /// the whole board is scanned rather than just each player's Active. It runs after the checkup
-/// damage so that a Pokémon left on 0 HP by Poison or Snowy Terrain is already Knocked Out and
-/// gone — healing cannot rescue it — matching the official checkup order.
+/// damage, while every Pokémon remains in play. Knockouts are checked only after all
+/// Checkup effects have finished. The relative damage/healing order remains source-qualified.
 fn apply_blessed_salt_checkup_healing(state: &mut State) {
     for player in 0..2 {
         let total_heal: u32 = state
             .enumerate_in_play_pokemon(player)
-            .filter_map(|(_, pokemon)| match get_ability_mechanic(&pokemon.card) {
+            .filter_map(|(_, pokemon)| match get_in_play_ability_mechanic(state, pokemon) {
                 Some(AbilityMechanic::CheckupHealAllYourPokemon { amount }) => Some(*amount),
                 _ => None,
             })
@@ -355,13 +366,10 @@ fn apply_snowy_terrain_checkup_damage(state: &mut State) {
     let mut active_only_damage: Vec<(usize, u32)> = vec![];
     let mut all_opponent_damage: Vec<(usize, u32)> = vec![];
 
-    for player in 0..2 {
+    for player in [state.current_player, 1 - state.current_player] {
         let Some(active) = state.in_play_pokemon[player][0].as_ref() else {
             continue;
         };
-        if active.is_knocked_out() {
-            continue;
-        }
         match get_in_play_ability_mechanic(state, active) {
             Some(AbilityMechanic::CheckupDamageToOpponentActive { amount }) => {
                 active_only_damage.push((player, *amount));
@@ -380,12 +388,12 @@ fn apply_snowy_terrain_checkup_damage(state: &mut State) {
                 "Snowy Terrain: Player {} active Pokémon deals {} checkup damage to opponent active",
                 source_player, checkup_damage
             );
-            handle_damage(
+            handle_damage_only(
                 state,
                 (source_player, 0),
                 &[(checkup_damage, target_player, 0)],
                 false,
-                None,
+                DamageModifierContext::default(),
             );
         }
     }
@@ -401,7 +409,7 @@ fn apply_snowy_terrain_checkup_damage(state: &mut State) {
                 "Sand Slammer: Player {} active Pokémon deals {} checkup damage to all opponent Pokémon",
                 source_player, checkup_damage
             );
-            handle_damage(state, (source_player, 0), &targets, false, None);
+            handle_damage_only(state, (source_player, 0), &targets, false, DamageModifierContext::default());
         }
     }
 }
@@ -491,7 +499,7 @@ pub(crate) fn handle_damage(
     is_from_active_attack: bool,
     attack_name: Option<&str>,
 ) {
-    handle_damage_only(
+    let damaged_actives = handle_damage_only(
         state,
         attacking_ref,
         targets,
@@ -501,10 +509,11 @@ pub(crate) fn handle_damage(
             attack_effect: None,
         },
     );
+    handle_attack_retaliation(state, attacking_ref, &damaged_actives);
     handle_knockouts(state, attacking_ref, is_from_active_attack);
 }
 
-// This function handles Counter-Attacks and Attack Modifiers, but doesn't handle K.O.s or
+// This function handles Attack Modifiers and Attack Modifiers, but doesn't handle K.O.s or
 // queues up promotion decisions. Use carefully, probably just in a few places
 pub(crate) fn handle_damage_only(
     state: &mut State,
@@ -512,7 +521,8 @@ pub(crate) fn handle_damage_only(
     targets: &[(u32, usize, usize)], // damage, target_player, in_play_idx
     is_from_active_attack: bool,
     context: DamageModifierContext<'_>,
-) {
+) -> Vec<(usize, usize)> {
+    let mut damaged_actives = Vec::new();
     let attacking_player = attacking_ref.0;
 
     // Reduce and sum damage for duplicate targets
@@ -572,48 +582,32 @@ pub(crate) fn handle_damage_only(
             );
         }
 
-        // Consider Counter-Attack (only if from Active Attack to Active)
-        if !(is_from_active_attack && target_pokemon_idx == 0) {
-            continue;
+        if is_from_active_attack && target_player != attacking_player && target_pokemon_idx == 0 {
+            damaged_actives.push((target_player, target_pokemon_idx));
         }
+    }
+    damaged_actives
+}
 
-        let target_pokemon = state.in_play_pokemon[target_player][target_pokemon_idx]
-            .as_ref()
-            .expect("Pokemon should be there if taking damage");
-        let counter_damage = {
-            if target_pokemon_idx == 0 {
-                get_counterattack_damage(target_pokemon)
-            } else {
-                0
-            }
-        };
-        let should_poison = should_poison_attacker(target_pokemon);
-
-        // Apply counterattack damage and poison
-        if counter_damage > 0 {
-            let attacking_pokemon = state.in_play_pokemon[attacking_player][0]
-                .as_mut()
-                .expect("Active Pokemon should be there");
-            attacking_pokemon.apply_damage(counter_damage);
-            debug!(
-                "Dealt {} counterattack damage to active Pokemon. Remaining HP: {}",
-                counter_damage,
-                attacking_pokemon.get_remaining_hp()
-            );
+/// Resolve reactions only after the attack's own effects, using the current Ability state.
+pub(crate) fn handle_attack_retaliation(
+    state: &mut State,
+    attacking_ref: (usize, usize),
+    damaged_actives: &[(usize, usize)],
+) {
+    let attacking_player = attacking_ref.0;
+    for &(target_player, target_idx) in damaged_actives {
+        let Some(target) = state.in_play_pokemon[target_player][target_idx].as_ref() else { continue; };
+        let counter_damage = get_counterattack_damage(state, target);
+        let should_poison = should_poison_attacker(state, target);
+        if let Some(attacker) = state.in_play_pokemon[attacking_player][attacking_ref.1].as_mut() {
+            attacker.apply_damage(counter_damage);
         }
-
-        if should_poison {
-            state.apply_status_condition(attacking_player, 0, StatusCondition::Poisoned);
-            debug!("Poison Barb: Poisoned the attacking Pokemon");
+        if should_poison && attacking_ref.1 == 0 {
+            state.apply_status_condition(attacking_player, attacking_ref.1, StatusCondition::Poisoned);
         }
-
-        // Jellicent's Bouncy Body. Unlike the counterattacks above it is scoped to damage from
-        // *your opponent's* Pokémon, so a self-inflicted hit (recoil, Raging Hammer on your own
-        // board) does not feed the defender's Energy Zone.
-        if target_player != attacking_player {
-            maybe_attach_energy_on_damaged(state, target_player);
-            maybe_shuffle_attacker_hand_card_on_damaged(state, target_player, attacking_player);
-        }
+        maybe_attach_energy_on_damaged(state, target_player, target_idx);
+        maybe_shuffle_attacker_hand_card_on_damaged(state, target_player, target_idx, attacking_player);
     }
 }
 
@@ -652,6 +646,18 @@ pub(crate) fn handle_knockouts(
     attacking_ref: (usize, usize), // (attacking_player, attacking_pokemon_idx)
     is_from_active_attack: bool,
 ) {
+    handle_knockouts_with_prior(state, attacking_ref, is_from_active_attack, Vec::new());
+}
+
+pub(crate) fn handle_knockouts_with_prior(
+    state: &mut State,
+    attacking_ref: (usize, usize),
+    is_from_active_attack: bool,
+    mut knockouts: Vec<(usize, usize)>,
+) {
+    // An attack's target choices and reactions must settle before its KO wave.
+    if state.move_generation_stack.iter().any(|(_, choices)| choices.iter().any(|a|
+        matches!(a, SimpleAction::ResolveAttackRetaliation { .. }))) { return; }
     // Hala: rescue the named Pokémon at 10 HP *before* anything counts as a knockout, so no points
     // are awarded, nothing is discarded, and no promotion is queued for them.
     if is_from_active_attack {
@@ -666,14 +672,32 @@ pub(crate) fn handle_knockouts(
     // effective HP of the ones left behind — Lilligant's Toughness Aroma ("Each of your [G]
     // Pokémon gets +20 HP") is removed as soon as Lilligant leaves play — which can knock those
     // Pokémon out in turn. Each wave discards at least one Pokémon, so this always terminates.
-    let mut knockouts: Vec<(usize, usize)> = vec![];
     loop {
         let wave = get_knocked_out(state);
         if wave.is_empty() {
             break;
         }
+        // Finish all required coins before discarding any member of this simultaneous wave.
+        // This also preserves suppression while a suppressor is in the same KO wave.
+        if pending_point_denial(state) { return; }
+        for &(player, idx) in &wave {
+            let pokemon = state.in_play_pokemon[player][idx].as_ref().unwrap();
+            let coin_resolved = pokemon.get_active_effects().iter().any(|effect|
+                matches!(effect, CardEffect::KnockoutPointsCoinResolved));
+            if !coin_resolved && matches!(get_in_play_ability_mechanic(state, pokemon),
+                Some(AbilityMechanic::CoinFlipToDenyKnockoutPoints)) {
+                state.move_generation_stack.push((player, vec![SimpleAction::ResolveKnockoutPoints {
+                    player, in_play_idx: idx, attacking_ref, is_from_active_attack,
+                    prior_knockouts: knockouts.clone(),
+                }]));
+                return;
+            }
+        }
+        // Run every knockout hook while the full simultaneous wave is still in play. An on-KO
+        // Ability may target another member of the wave: Destiny Burst, for example, must still
+        // find an attacker that Rocky Helmet has already reduced to 0 HP. Discarding the attacker
+        // before the defender's hook runs made that legal double-KO sequence panic.
         for (ko_receiver, ko_pokemon_idx) in wave.iter().copied() {
-            // Call knockout hook (e.g., for Electrical Cord)
             on_knockout(
                 state,
                 ko_receiver,
@@ -682,7 +706,9 @@ pub(crate) fn handle_knockouts(
                 is_from_active_attack,
             );
             on_attack_knockout(state, attacking_ref, ko_receiver, is_from_active_attack);
+        }
 
+        for (ko_receiver, ko_pokemon_idx) in wave.iter().copied() {
             // Award points
             {
                 let ko_initiator = (ko_receiver + 1) % 2;
@@ -799,8 +825,23 @@ pub(crate) fn handle_knockouts(
         }
     }
 
-    // If game ends because of knockouts, set winner and return so as to short-circuit promotion logic
-    // Note even attacking player can lose by counterattack K.O.
+    // If game ends because of knockouts, set winner and return so as to short-circuit promotion logic.
+    // T2: a last attacking Pokemon can take its third point while a same-attack
+    // retaliation knocks it out. The point win and no-Pokemon loss cancel to a tie
+    // when the opponent still has Pokemon and has not also reached three points.
+    let p0_remaining = state.enumerate_in_play_pokemon(0).count();
+    let p1_remaining = state.enumerate_in_play_pokemon(1).count();
+    if ((state.points[0] >= 3 && state.points[1] < 3)
+        && p0_remaining == 0 && p1_remaining > 0)
+        || ((state.points[1] >= 3 && state.points[0] < 3)
+            && p1_remaining == 0 && p0_remaining > 0)
+    {
+        debug!("Third point and last Pokemon knocked out in the same exchange, tie");
+        state.winner = Some(GameOutcome::Tie);
+        return;
+    }
+
+    // Note even the attacking player can lose by counterattack K.O.
     if state.points[0] >= 3 && state.points[1] >= 3 {
         debug!("Both players have 3 points, it's a tie");
         state.winner = Some(GameOutcome::Tie);
@@ -813,9 +854,7 @@ pub(crate) fn handle_knockouts(
         return;
     }
 
-    // If a player has no Pokemon left in play, they immediately lose (even if points < 3)
-    let p0_remaining = state.enumerate_in_play_pokemon(0).count();
-    let p1_remaining = state.enumerate_in_play_pokemon(1).count();
+    // If a player has no Pokemon left in play, they immediately lose (even if points < 3).
     if p0_remaining == 0 && p1_remaining == 0 {
         debug!("Both players have no Pokemon left in play, it's a tie");
         state.winner = Some(GameOutcome::Tie);
@@ -832,7 +871,12 @@ pub(crate) fn handle_knockouts(
         prune_stale_bench_activate_choices(state);
     }
 
-    // Queue up promotion actions if the game is still on after a knockout
+    // Promotion frames are inserted below earlier frames; enqueue the attacker first
+    // so the attacker is offered the first replacement in either seat.
+    if is_from_active_attack {
+        knockouts.sort_by_key(|(player, _)| *player != attacking_ref.0);
+    }
+    // Checkup double-KO promotion order remains an open rule question.
     for (ko_receiver, ko_pokemon_idx) in knockouts {
         if ko_pokemon_idx != 0 {
             continue; // Only promote if K.O. was on Active
@@ -848,7 +892,7 @@ pub(crate) fn handle_knockouts(
 /// Runs before knockouts are collected, so a rescued Pokémon never appears in a knockout wave: it
 /// stays in play, awards no points, and does not trigger a promotion. Only invoked for damage from
 /// an attack, matching the card's wording.
-fn apply_survive_knockout_turn_effects(state: &mut State) {
+pub(crate) fn apply_survive_knockout_turn_effects(state: &mut State) {
     let rescues: Vec<(usize, Vec<String>, u32)> = state
         .get_current_turn_effects()
         .into_iter()
@@ -893,6 +937,23 @@ fn get_knocked_out(state: &State) -> Vec<(usize, usize)> {
 /// Swap a bench pokemon into the active spot, clearing status/effects and setting turn flags.
 /// This is the swap portion of retreat without energy payment.
 pub(crate) fn apply_activate(player: usize, state: &mut State, bench_idx: usize) {
+    // Attack reactions refer to the Pokémon which actually attacked/took damage, even
+    // when that attack's effect moves either Pokémon before the reaction resolves.
+    for (_, choices) in &mut state.move_generation_stack {
+        for choice in choices {
+            if let SimpleAction::ResolveAttackRetaliation { attacking_ref, damaged_refs, point_denial_flips, .. } = choice {
+                let remap = |target: &mut (usize, usize)| {
+                    if target.0 == player {
+                        if target.1 == 0 { target.1 = bench_idx; }
+                        else if target.1 == bench_idx { target.1 = 0; }
+                    }
+                };
+                remap(attacking_ref);
+                for target in damaged_refs { remap(target); }
+                for (target, _) in point_denial_flips { remap(target); }
+            }
+        }
+    }
     state.in_play_pokemon[player].swap(0, bench_idx);
 
     if let Some(pokemon) = state.in_play_pokemon[player][bench_idx].as_mut() {
@@ -914,6 +975,7 @@ pub(crate) fn apply_common_action_prefix(state: &mut State, action: &Action) {
     if let SimpleAction::Play { trainer_card } = &action.action {
         let card = Card::Trainer(trainer_card.clone());
         if trainer_card.trainer_card_type == TrainerType::Stadium {
+            state.has_played_stadium = true;
             // Replaced Stadium cards go to the discard pile of the player who played them.
             if let Some((old_stadium, old_owner)) =
                 state.set_active_stadium_for_player(action.actor, card.clone())

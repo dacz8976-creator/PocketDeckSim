@@ -384,6 +384,8 @@ mod sylveon_soothing_ribbon_test;
 mod tapu_lele_energy_arrow_test;
 #[path = "pokemon/tepig_stoke_test.rs"]
 mod tepig_stoke_test;
+#[path = "pokemon/team_rocket_electrode_destiny_burst_test.rs"]
+mod team_rocket_electrode_destiny_burst_test;
 #[path = "pokemon/terapagos_ex_test.rs"]
 mod terapagos_ex_test;
 #[path = "pokemon/thick_fat_test.rs"]

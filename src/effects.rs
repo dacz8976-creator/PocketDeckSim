@@ -9,6 +9,11 @@ pub enum CardEffect {
     ReducedDamage {
         amount: u32,
     },
+    /// Attacks used by this Pokemon do less damage until this attack effect expires.
+    /// Applied before Weakness, and cleared when this Pokemon evolves or leaves the Active Spot.
+    ReducedAttackDamage {
+        amount: u32,
+    },
     IncreasedVulnerability {
         amount: u32,
     },
@@ -44,6 +49,8 @@ pub enum CardEffect {
     /// forecast branch's post-damage effect and consumed by `handle_knockouts` in the same
     /// resolution — it is never expected to survive to a later turn.
     DenyKnockoutPoints,
+    /// Internal marker to keep a resolved tails coin from being flipped again in a KO wave.
+    KnockoutPointsCoinResolved,
     // ---------------------------------------------------------------------------------------------
     // Ability-derived effects. These are not added via `add_effect`; they are *derived* on the fly
     // from a Pokémon's passive ability by `PlayedCard::get_effective_card_effects` (see

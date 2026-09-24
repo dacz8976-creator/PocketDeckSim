@@ -142,11 +142,19 @@ fn test_walking_wake_sweeping_billow_discards_energy_and_splashes_bench() {
     });
 
     let state = game.get_state_clone();
-    assert_eq!(
-        state.get_active(0).attached_energy.len(),
-        1,
-        "Sweeping Billow should discard 1 Energy from the attacker"
-    );
+    assert_eq!(state.get_active(0).attached_energy,
+        vec![EnergyType::Fire, EnergyType::Water],
+        "Damage resolves before the Energy selection");
+    let (_, choices) = state.generate_possible_actions();
+    assert_eq!(choices.len(), 2);
+    let water = choices.into_iter().find(|choice| matches!(
+        &choice.action,
+        SimpleAction::ChooseAttackEnergyDiscard { energies, .. }
+            if energies == &vec![EnergyType::Water]
+    )).expect("Water should be selectable");
+    game.apply_action(&water);
+    let state = game.get_state_clone();
+    assert_eq!(state.get_active(0).attached_energy, vec![EnergyType::Fire]);
     assert_eq!(state.get_active(1).get_remaining_hp(), 180 - 60);
     for idx in 1..=2 {
         let bench = state.in_play_pokemon[1][idx].as_ref().unwrap();
@@ -186,13 +194,23 @@ fn test_gouging_fire_scorching_interruption_discards_two_and_reduces_damage() {
     });
 
     let state = game.get_state_clone();
-    assert_eq!(
-        state.get_active(0).attached_energy.len(),
-        1,
-        "Scorching Interruption should discard 2 Energy from the attacker"
-    );
+    assert_eq!(state.get_active(0).attached_energy.len(), 3,
+        "Damage resolves before the Energy selection");
+    let (_, choices) = state.generate_possible_actions();
+    assert_eq!(choices.len(), 3);
+    let keep_fire = choices.into_iter().find(|choice| matches!(
+        &choice.action,
+        SimpleAction::ChooseAttackEnergyDiscard { energies, .. }
+            if energies == &vec![EnergyType::Lightning, EnergyType::Colorless]
+    )).expect("Lightning and Colorless should be selectable");
+    game.apply_action(&keep_fire);
+    let state = game.get_state_clone();
+    assert_eq!(state.get_active(0).attached_energy, vec![EnergyType::Fire]);
     assert_eq!(state.get_active(1).get_remaining_hp(), 150 - 100);
 
+    let (_, reaction) = game.get_state_clone().generate_possible_actions();
+    assert!(matches!(reaction[0].action, SimpleAction::ResolveAttackRetaliation { .. }));
+    game.apply_action(&reaction[0]);
     game.apply_action(&Action {
         actor: 0,
         action: SimpleAction::EndTurn,

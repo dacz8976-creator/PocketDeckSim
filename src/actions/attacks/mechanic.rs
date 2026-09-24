@@ -255,9 +255,9 @@ pub enum Mechanic {
         effect: CardEffect,
         duration: u8,
     },
-    /// Gouging Fire's Scorching Interruption: discard `count` (untyped, so randomly chosen)
+    /// Gouging Fire's Scorching Interruption: player chooses `count` physical Energy
     /// Energy from the attacker, then give the attacker a card effect.
-    SelfDiscardRandomEnergyAndCardEffect {
+    SelfDiscardChosenEnergyAndCardEffect {
         count: usize,
         effect: CardEffect,
         duration: u8,
@@ -268,10 +268,10 @@ pub enum Mechanic {
         energies: Vec<EnergyType>,
         bench_damage: u32,
     },
-    /// Walking Wake's Sweeping Billow: discard `count` (untyped, so randomly chosen) Energy
+    /// Walking Wake's Sweeping Billow: player chooses `count` physical Energy
     /// from the attacker, and the attack also does `bench_damage` to each of the opponent's
     /// Benched Pokémon.
-    SelfDiscardRandomEnergyAndBenchDamage {
+    SelfDiscardChosenEnergyAndBenchDamage {
         count: usize,
         bench_damage: u32,
     },
@@ -671,6 +671,9 @@ pub enum Mechanic {
     },
     ExtraDamageIfEvolvedThisTurn {
         extra_damage: u32,
+        /// Some attacks name the exact Pokémon this card must have evolved from. `None` is the
+        /// generic "evolved during this turn" wording.
+        evolved_from: Option<&'static str>,
     },
     /// Damage scaling with the number of Benched Pokémon on `bench_side`, optionally filtered by
     /// `energy_type` and/or by exact Pokémon `names` (Wishiwashi ex's School Storm counts benched

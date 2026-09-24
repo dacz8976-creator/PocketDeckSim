@@ -111,7 +111,7 @@ fn test_fragrant_forest_draws_basic_grass_to_hand() {
 }
 
 #[test]
-fn test_fragrant_forest_use_stadium_not_available_without_basic_grass() {
+fn test_fragrant_forest_use_stadium_available_without_visible_basic_grass() {
     let mut game = get_initialized_game(0);
     let mut state = game.get_state_clone();
 
@@ -141,8 +141,8 @@ fn test_fragrant_forest_use_stadium_not_available_without_basic_grass() {
         .any(|action| matches!(action.action, SimpleAction::UseStadium));
 
     assert!(
-        !has_use_stadium,
-        "UseStadium should NOT be available when deck has no Basic Grass Pokemon"
+        has_use_stadium,
+        "hidden deck contents must not reveal whether Fragrant Forest will find a Basic Grass Pokemon"
     );
 }
 

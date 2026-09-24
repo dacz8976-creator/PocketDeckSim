@@ -1,7 +1,7 @@
 use log::debug;
 
 use crate::{
-    actions::{abilities::AbilityMechanic, get_ability_mechanic, SimpleAction},
+    actions::{abilities::AbilityMechanic, get_in_play_ability_mechanic, SimpleAction},
     card_ids::CardId,
     effects::CardEffect,
     models::{EnergyType, PlayedCard},
@@ -10,7 +10,7 @@ use crate::{
 };
 
 /// Some cards counterattack either because of RockyHelmet or because of their own ability.
-pub(crate) fn get_counterattack_damage(card: &PlayedCard) -> u32 {
+pub(crate) fn get_counterattack_damage(state: &State, card: &PlayedCard) -> u32 {
     let mut total_damage = 0;
     if has_tool(card, CardId::A2148RockyHelmet) {
         total_damage += 20 * tool_count(card, CardId::A2148RockyHelmet);
@@ -26,19 +26,10 @@ pub(crate) fn get_counterattack_damage(card: &PlayedCard) -> u32 {
         })
         .sum::<u32>();
 
-    // Some cards have it as an ability
-    let card_id = CardId::from_card_id(&card.card.get_id());
-    match card_id {
-        Some(CardId::A1061Poliwrath)
-        | Some(CardId::A1a056Druddigon)
-        | Some(CardId::A2b028Pawmot)
-        | Some(CardId::A3a052Ferrothorn)
-        | Some(CardId::A4a065Zangoose)
-        | Some(CardId::B1297Poliwrath)
-        | Some(CardId::PA054Pawmot) => {
-            total_damage += 20;
-        }
-        _ => {}
+    if let Some(AbilityMechanic::CounterattackDamage { amount }) =
+        get_in_play_ability_mechanic(state, card)
+    {
+        total_damage += amount;
     }
 
     total_damage
@@ -54,10 +45,14 @@ pub(crate) fn get_counterattack_damage(card: &PlayedCard) -> u32 {
 /// list of `Attach` actions onto the `move_generation_stack` (mirroring Passimian ex's Offload
 /// Pass) rather than resolving it here. An empty Bench leaves no legal target, so nothing is
 /// pushed and the Energy is simply not taken.
-pub(crate) fn maybe_attach_energy_on_damaged(state: &mut State, player: usize) {
-    let energy_type = state.in_play_pokemon[player][0]
+pub(crate) fn maybe_attach_energy_on_damaged(
+    state: &mut State,
+    player: usize,
+    damaged_idx: usize,
+) {
+    let energy_type = state.in_play_pokemon[player][damaged_idx]
         .as_ref()
-        .and_then(|pokemon| match get_ability_mechanic(&pokemon.card) {
+        .and_then(|pokemon| match get_in_play_ability_mechanic(state, pokemon) {
             Some(AbilityMechanic::AttachEnergyFromZoneToBenchOnDamaged { energy_type }) => {
                 Some(*energy_type)
             }
@@ -101,9 +96,12 @@ fn bench_attach_choices(
 pub(crate) fn maybe_shuffle_attacker_hand_card_on_damaged(
     state: &mut State,
     player: usize,
+    damaged_idx: usize,
     attacking_player: usize,
 ) {
-    let count = state.in_play_pokemon[player][0].as_ref().map_or(0, |pokemon| {
+    let count = state.in_play_pokemon[player][damaged_idx]
+        .as_ref()
+        .map_or(0, |pokemon| {
         if state.pokemon_is_type(pokemon, EnergyType::Darkness) {
             tool_count(pokemon, CardId::A4154DarkPendant)
         } else { 0 }
@@ -116,21 +114,11 @@ pub(crate) fn maybe_shuffle_attacker_hand_card_on_damaged(
 
 /// Check if the defending Pokemon should poison the attacker when damaged.
 /// Returns true if the attacker should be poisoned.
-pub(crate) fn should_poison_attacker(card: &PlayedCard) -> bool {
+pub(crate) fn should_poison_attacker(state: &State, card: &PlayedCard) -> bool {
     if has_tool(card, CardId::A3146PoisonBarb) {
         return true;
     }
 
-    // Some cards have it as an ability (Dragalge ex's Poison Point)
-    let card_id = CardId::from_card_id(&card.card.get_id());
-    match card_id {
-        Some(CardId::B1160DragalgeEx)
-        | Some(CardId::B1263DragalgeEx)
-        | Some(CardId::B1281DragalgeEx) => {
-            return true;
-        }
-        _ => {}
-    }
-
-    false
+    matches!(get_in_play_ability_mechanic(state, card),
+        Some(AbilityMechanic::PoisonAttackerOnDamaged))
 }

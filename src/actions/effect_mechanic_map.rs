@@ -498,8 +498,8 @@ pub static EFFECT_MECHANIC_MAP: LazyLock<HashMap<&'static str, Mechanic>> = Lazy
     map.insert(
         "During your opponent's next turn, attacks used by the Defending Pokémon do -20 damage.",
         Mechanic::DamageAndCardEffect {
-            opponent: false,
-            effect: CardEffect::ReducedDamage { amount: 20 },
+            opponent: true,
+            effect: CardEffect::ReducedAttackDamage { amount: 20 },
             duration: 1,
             coin_flip: false,
         },
@@ -507,8 +507,8 @@ pub static EFFECT_MECHANIC_MAP: LazyLock<HashMap<&'static str, Mechanic>> = Lazy
     map.insert(
         "During your opponent's next turn, attacks used by the Defending Pokémon do -30 damage.",
         Mechanic::DamageAndCardEffect {
-            opponent: false,
-            effect: CardEffect::ReducedDamage { amount: 30 },
+            opponent: true,
+            effect: CardEffect::ReducedAttackDamage { amount: 30 },
             duration: 1,
             coin_flip: false,
         },
@@ -1250,7 +1250,10 @@ pub static EFFECT_MECHANIC_MAP: LazyLock<HashMap<&'static str, Mechanic>> = Lazy
     );
     map.insert(
         "If this Pokémon evolved during this turn, this attack does 20 more damage.",
-        Mechanic::ExtraDamageIfEvolvedThisTurn { extra_damage: 20 },
+        Mechanic::ExtraDamageIfEvolvedThisTurn {
+            extra_damage: 20,
+            evolved_from: None,
+        },
     );
     map.insert(
         "If this Pokémon has 2 or more different types of Energy attached, this attack does 60 more damage.",
@@ -1779,9 +1782,8 @@ pub static EFFECT_MECHANIC_MAP: LazyLock<HashMap<&'static str, Mechanic>> = Lazy
     );
     map.insert(
         "Take a [L] Energy from your Energy Zone and attach it to 1 of your Benched Basic Pokémon.",
-        Mechanic::ChargeBench {
-            energies: vec![EnergyType::Lightning],
-            target_benched_type: None,
+        Mechanic::AttachEnergyToBenchedBasic {
+            energy_type: EnergyType::Lightning,
         },
     );
     map.insert(
@@ -3265,11 +3267,17 @@ pub static EFFECT_MECHANIC_MAP: LazyLock<HashMap<&'static str, Mechanic>> = Lazy
     );
     map.insert(
         "If this Pokémon evolved from Poliwhirl during this turn, this attack does 50 more damage.",
-        Mechanic::ExtraDamageIfEvolvedThisTurn { extra_damage: 50 },
+        Mechanic::ExtraDamageIfEvolvedThisTurn {
+            extra_damage: 50,
+            evolved_from: Some("Poliwhirl"),
+        },
     );
     map.insert(
         "If this Pokémon evolved from Sneasel during this turn, this attack does 20 more damage.",
-        Mechanic::ExtraDamageIfEvolvedThisTurn { extra_damage: 20 },
+        Mechanic::ExtraDamageIfEvolvedThisTurn {
+            extra_damage: 20,
+            evolved_from: Some("Sneasel"),
+        },
     );
     map.insert(
         "If this Pokémon has any [F] Energy attached, this attack does 60 more damage.",
@@ -3378,7 +3386,7 @@ pub static EFFECT_MECHANIC_MAP: LazyLock<HashMap<&'static str, Mechanic>> = Lazy
     );
     map.insert(
         "Discard 2 Energy from this Pokémon. During your opponent's next turn, this Pokémon takes -30 damage from attacks.",
-        Mechanic::SelfDiscardRandomEnergyAndCardEffect {
+        Mechanic::SelfDiscardChosenEnergyAndCardEffect {
             count: 2,
             effect: CardEffect::ReducedDamage { amount: 30 },
             duration: 1,
@@ -3386,7 +3394,7 @@ pub static EFFECT_MECHANIC_MAP: LazyLock<HashMap<&'static str, Mechanic>> = Lazy
     );
     map.insert(
         "Discard an Energy from this Pokémon, and this attack also does 20 damage to each of your opponent's Benched Pokémon.",
-        Mechanic::SelfDiscardRandomEnergyAndBenchDamage {
+        Mechanic::SelfDiscardChosenEnergyAndBenchDamage {
             count: 1,
             bench_damage: 20,
         },

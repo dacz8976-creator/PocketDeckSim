@@ -91,7 +91,8 @@ pub fn is_mesagoza_active(state: &State) -> bool {
     has_stadium(state, CardId::B2a093Mesagoza)
 }
 
-/// Returns true if the player can use Mesagoza's effect (stadium is active, not used this turn, deck has Pokemon)
+/// Returns true if the player can use Mesagoza's effect. The contents of a nonempty deck are
+/// hidden, so absence of a Pokemon cannot block the attempt before the coin is flipped.
 pub fn can_use_mesagoza(state: &State, player: usize) -> bool {
     if !is_mesagoza_active(state) {
         return false;
@@ -99,11 +100,7 @@ pub fn can_use_mesagoza(state: &State, player: usize) -> bool {
     if state.has_used_stadium[player] {
         return false;
     }
-    // Must have at least one Pokemon in deck
-    state.decks[player]
-        .cards
-        .iter()
-        .any(|card| matches!(card, Card::Pokemon(_)))
+    !state.decks[player].cards.is_empty()
 }
 
 pub fn has_stadium(state: &State, reference_stadium_id: CardId) -> bool {
@@ -164,7 +161,8 @@ pub fn is_fragrant_forest_active(state: &State) -> bool {
     has_stadium(state, CardId::B3153FragrantForest)
 }
 
-/// Returns true if the player can use Fragrant Forest's effect (stadium is active, not used this turn, deck has Basic Grass Pokemon)
+/// Returns true if the player can use Fragrant Forest's effect. Eligibility inside a nonempty
+/// deck is hidden; a failed search is still a legal use.
 pub fn can_use_fragrant_forest(state: &State, player: usize) -> bool {
     if !is_fragrant_forest_active(state) {
         return false;
@@ -172,10 +170,7 @@ pub fn can_use_fragrant_forest(state: &State, player: usize) -> bool {
     if state.has_used_stadium[player] {
         return false;
     }
-    state.decks[player]
-        .cards
-        .iter()
-        .any(|card| matches!(card, Card::Pokemon(p) if p.stage == 0 && p.energy_type == EnergyType::Grass))
+    !state.decks[player].cards.is_empty()
 }
 
 pub fn is_area_zero_active(state: &State) -> bool {
@@ -214,7 +209,7 @@ pub fn is_kids_room_active(state: &State) -> bool {
 }
 
 /// Returns true if the player can use Kid's Room's effect (stadium is active, not used this turn,
-/// hand has a card, and deck has a Pokemon Tool card)
+/// hand has a card, and the deck is nonempty. Whether it contains a Tool is hidden.
 pub fn can_use_kids_room(state: &State, player: usize) -> bool {
     if !is_kids_room_active(state) {
         return false;
@@ -225,10 +220,7 @@ pub fn can_use_kids_room(state: &State, player: usize) -> bool {
     if state.hands[player].is_empty() {
         return false;
     }
-    state.decks[player]
-        .cards
-        .iter()
-        .any(|card| matches!(card, Card::Trainer(t) if t.trainer_card_type == TrainerType::Tool))
+    !state.decks[player].cards.is_empty()
 }
 
 pub fn is_arcade_active(state: &State) -> bool {
@@ -236,5 +228,8 @@ pub fn is_arcade_active(state: &State) -> bool {
 }
 
 pub fn can_use_arcade(state: &State, player: usize) -> bool {
-    is_arcade_active(state) && !state.has_used_stadium[player] && state.hands[player].len() < 7
+    is_arcade_active(state)
+        && !state.has_used_stadium[player]
+        && state.hands[player].len() < 7
+        && !state.decks[player].cards.is_empty()
 }

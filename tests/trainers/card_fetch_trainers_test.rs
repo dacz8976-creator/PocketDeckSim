@@ -78,19 +78,20 @@ fn test_team_galactic_grunt_fetches_a_named_basic_from_deck() {
     assert_eq!(state.decks[0].cards.len(), 1);
 }
 
-/// Negative case: the deck has none of the three named Pokémon.
+/// Hidden deck contents cannot decide whether a search card is playable.
 #[test]
-fn test_team_galactic_grunt_unplayable_without_targets_in_deck() {
-    let game = game_with_zones(
+fn test_team_galactic_grunt_playable_without_visible_targets_in_deck() {
+    let mut game = game_with_zones(
         0,
         CardId::A2191TeamGalacticGrunt,
         vec![get_card_by_enum(CardId::A1001Bulbasaur)],
         vec![],
     );
-    assert!(
-        !can_play(&game, "Team Galactic Grunt"),
-        "No Glameow/Stunky/Croagunk in the deck"
-    );
+    assert!(can_play(&game, "Team Galactic Grunt"));
+    play_trainer(&mut game, CardId::A2191TeamGalacticGrunt);
+    let state = game.get_state_clone();
+    assert_eq!(state.hands[0].len(), 0);
+    assert_eq!(state.decks[0].cards.len(), 1);
 }
 
 // --- Traveling Merchant ---

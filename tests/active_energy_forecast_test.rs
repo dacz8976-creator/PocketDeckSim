@@ -134,10 +134,51 @@ fn evolved_discard_gate_retains_damage_and_refines_only_evolved_branch() {
 }
 
 #[test]
-fn walking_wake_refinements_keep_all_damage_and_bench_knockout_effects() {
-    let s=board(0,vec![PlayedCard::from_id(CardId::B3a053WalkingWake).with_energy(vec![EnergyType::Fire,EnergyType::Water,EnergyType::Water])],vec![sponge(),PlayedCard::from_id(CardId::A1001Bulbasaur).with_remaining_hp(10),PlayedCard::from_id(CardId::A1033Charmander)]);let a=attack(0,CardId::B3a053WalkingWake);assert!(s.generate_possible_actions().1.contains(&a));let mut mass=BTreeMap::new();
-    for(p,t)in outcomes(&s,&a){assert_eq!(t.get_active(1).get_remaining_hp(),120);assert!(t.in_play_pokemon[1][1].is_none());assert_eq!(t.in_play_pokemon[1][2].as_ref().unwrap().get_remaining_hp(),40);assert_eq!(t.points[0],1);assert_eq!(total(&s,0),total(&t,0));*mass.entry(energy_key(&t,0)).or_insert(0.0)+=p;}
-    assert_eq!(mass.len(),2);close(mass[&vec![EnergyType::Fire]],1.0/3.0);close(mass[&vec![EnergyType::Water]],2.0/3.0);
+fn walking_wake_player_choice_follows_damage_and_precedes_bench_knockout() {
+    let s = board(0,
+        vec![PlayedCard::from_id(CardId::B3a053WalkingWake)
+            .with_energy(vec![EnergyType::Fire, EnergyType::Water, EnergyType::Water])],
+        vec![sponge(),
+             PlayedCard::from_id(CardId::A1001Bulbasaur).with_remaining_hp(10),
+             PlayedCard::from_id(CardId::A1033Charmander)]);
+    let a = attack(0, CardId::B3a053WalkingWake);
+    assert!(s.generate_possible_actions().1.contains(&a));
+    let paths = outcomes(&s, &a);
+    assert_eq!(paths.len(), 1, "the player discard adds no random branch");
+    let (p, t) = &paths[0];
+    close(*p, 1.0);
+    assert_eq!(t.get_active(1).get_remaining_hp(), 120);
+    assert_eq!(t.in_play_pokemon[1][1].as_ref().unwrap().get_remaining_hp(), 0);
+    assert_eq!(t.in_play_pokemon[1][2].as_ref().unwrap().get_remaining_hp(), 40);
+    assert_eq!(t.points[0], 0, "the KO waits for the Energy choice and retaliation");
+    assert_eq!(t.get_active(0).attached_energy.len(), 3);
+    let (_, choices) = t.generate_possible_actions();
+    assert_eq!(choices.len(), 2, "F/W/W offers Fire or Water once each");
+    let mut discarded = Vec::new();
+    for choice in choices {
+        let SimpleAction::ChooseAttackEnergyDiscard { energies, .. } = &choice.action
+            else { panic!("expected the player's post-damage Energy choice") };
+        assert_eq!(energies.len(), 1);
+        discarded.push(energies[0]);
+        let selected = outcomes(t, &choice);
+        assert_eq!(selected.len(), 1);
+        let (p, chosen) = &selected[0];
+        close(*p, 1.0);
+        assert_eq!(chosen.discard_energies[0], *energies);
+        assert_eq!(chosen.points[0], 0);
+        assert_eq!(total(&s, 0), total(chosen, 0));
+        let (_, reaction) = chosen.generate_possible_actions();
+        assert_eq!(reaction.len(), 1);
+        assert!(matches!(reaction[0].action, SimpleAction::ResolveAttackRetaliation { .. }));
+        let resolved = outcomes(chosen, &reaction[0]);
+        assert_eq!(resolved.len(), 1);
+        let (_, after) = &resolved[0];
+        assert!(after.in_play_pokemon[1][1].is_none());
+        assert_eq!(after.points[0], 1);
+        assert_eq!(total(&s, 0), total(after, 0));
+    }
+    discarded.sort();
+    assert_eq!(discarded, vec![EnergyType::Fire, EnergyType::Water]);
 }
 
 #[test]
@@ -176,12 +217,58 @@ fn pidgeot_two_tails_nullifies_damage_but_one_head_has_weighted_discard() {
 }
 
 #[test]
-fn gouging_fire_keeps_next_turn_damage_reduction_for_every_discard_multiset() {
-    let s=board(0,vec![PlayedCard::from_id(CardId::B3a054GougingFire).with_energy(vec![EnergyType::Fire,EnergyType::Lightning,EnergyType::Water]),PlayedCard::from_id(CardId::A1001Bulbasaur)],vec![PlayedCard::from_id(CardId::A4a020SuicuneEx).with_energy(vec![EnergyType::Water;2]),PlayedCard::from_id(CardId::A1033Charmander)]);let a=attack(0,CardId::B3a054GougingFire);assert!(s.generate_possible_actions().1.contains(&a));let paths=outcomes(&s,&a);assert_eq!(paths.len(),3);
-    for(p,mut t)in paths{close(p,1.0/3.0);assert_eq!(t.discard_energies[0].len(),2);assert_eq!(total(&s,0),total(&t,0));assert_eq!(t.get_active(1).get_remaining_hp(),40);
-        for _ in 0..8 {if t.current_player==1 && t.move_generation_stack.is_empty(){break;}let(_,offered)=t.generate_possible_actions();assert_eq!(offered.len(),1);let paths=outcomes(&t,&offered[0]);assert_eq!(paths.len(),1);t=paths.into_iter().next().unwrap().1;}
-        assert_eq!(t.current_player,1);let reply=attack(1,CardId::A4a020SuicuneEx);assert!(t.generate_possible_actions().1.contains(&reply));for(_,after)in outcomes(&t,&reply){assert_eq!(after.get_active(0).get_remaining_hp(),100,"40 printed board damage minus30 reduction must deal10 in every refined branch");}
+fn gouging_fire_player_choices_all_keep_next_turn_damage_reduction() {
+    let s = board(0,
+        vec![PlayedCard::from_id(CardId::B3a054GougingFire)
+            .with_energy(vec![EnergyType::Fire, EnergyType::Lightning, EnergyType::Water]),
+             PlayedCard::from_id(CardId::A1001Bulbasaur)],
+        vec![PlayedCard::from_id(CardId::A4a020SuicuneEx)
+            .with_energy(vec![EnergyType::Water; 2]),
+             PlayedCard::from_id(CardId::A1033Charmander)]);
+    let a = attack(0, CardId::B3a054GougingFire);
+    assert!(s.generate_possible_actions().1.contains(&a));
+    let paths = outcomes(&s, &a);
+    assert_eq!(paths.len(), 1, "the player discard adds no random branch");
+    let (p, damaged) = &paths[0];
+    close(*p, 1.0);
+    assert_eq!(damaged.get_active(1).get_remaining_hp(), 40);
+    assert!(damaged.discard_energies[0].is_empty());
+    let (_, choices) = damaged.generate_possible_actions();
+    assert_eq!(choices.len(), 3, "F/L/W has three distinct two-Energy payments");
+    let mut seen = BTreeMap::new();
+    for choice in choices {
+        let SimpleAction::ChooseAttackEnergyDiscard { energies, defensive_effect } = &choice.action
+            else { panic!("expected a post-damage Energy choice") };
+        assert_eq!(energies.len(), 2);
+        assert!(defensive_effect.is_some());
+        let selected = outcomes(damaged, &choice);
+        assert_eq!(selected.len(), 1);
+        let (p, mut t) = selected.into_iter().next().unwrap();
+        close(p, 1.0);
+        assert_eq!(t.discard_energies[0], *energies);
+        assert_eq!(t.get_active(0).attached_energy.len(), 1);
+        assert_eq!(total(&s, 0), total(&t, 0));
+        seen.insert(energy_key(&t, 0), ());
+        for _ in 0..8 {
+            if t.current_player == 1 && t.move_generation_stack.is_empty() { break; }
+            let (_, offered) = t.generate_possible_actions();
+            assert_eq!(offered.len(), 1);
+            let paths = outcomes(&t, &offered[0]);
+            assert_eq!(paths.len(), 1);
+            t = paths.into_iter().next().unwrap().1;
+        }
+        assert_eq!(t.current_player, 1);
+        let reply = attack(1, CardId::A4a020SuicuneEx);
+        assert!(t.generate_possible_actions().1.contains(&reply));
+        for (_, after) in outcomes(&t, &reply) {
+            assert_eq!(after.get_active(0).get_remaining_hp(), 100,
+                "the 40-damage reply loses 30 for every chosen payment");
+        }
     }
+    assert_eq!(seen.len(), 3);
+    assert!(seen.contains_key(&vec![EnergyType::Fire, EnergyType::Lightning]));
+    assert!(seen.contains_key(&vec![EnergyType::Fire, EnergyType::Water]));
+    assert!(seen.contains_key(&vec![EnergyType::Water, EnergyType::Lightning]));
 }
 
 #[test]

@@ -141,6 +141,11 @@ fn test_meloetta_inspiring_dance_does_not_boost_a_non_fighting_attacker() {
         action: SimpleAction::Retreat(1),
         is_stack: false,
     });
+    let (_, payments) = game.get_state_clone().generate_possible_actions();
+    assert!(payments.iter().all(|action| matches!(
+        action.action, SimpleAction::ChooseRetreatEnergy { .. }
+    )));
+    game.apply_action(&payments[0]);
     game.apply_action(&Action {
         actor: 0,
         action: attack_action(CardId::A1033Charmander, 0),

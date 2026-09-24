@@ -6,8 +6,7 @@ use crate::{
     card_ids::CardId,
     card_logic::{
         acerola_targets, active_has_psychic_attack, can_rare_candy_evolve, diantha_targets,
-        ilima_targets, mallow_targets, psychic_energy_sources, quick_grow_extract_candidates,
-        wallace_candidates, whitney_targets,
+        ilima_targets, mallow_targets, psychic_energy_sources, whitney_targets,
     },
     effects::TurnEffect,
     hooks::{
@@ -25,6 +24,19 @@ fn can_play_trainer(_state: &State, trainer_card: &TrainerCard) -> Option<Vec<Si
     Some(vec![SimpleAction::Play {
         trainer_card: trainer_card.clone(),
     }])
+}
+
+/// A deck search or top-deck effect is legal whenever the deck is visibly nonempty. Its hidden
+/// contents cannot suppress the action before it resolves.
+fn can_search_nonempty_deck(
+    state: &State,
+    trainer_card: &TrainerCard,
+) -> Option<Vec<SimpleAction>> {
+    if state.decks[state.current_player].cards.is_empty() {
+        cannot_play_trainer()
+    } else {
+        can_play_trainer(state, trainer_card)
+    }
 }
 
 /// Helper function to return empty action vector
@@ -136,7 +148,9 @@ pub fn trainer_move_generation_implementation(
         CardId::A2146PokemonCommunication
         | CardId::A4b316PokemonCommunication
         | CardId::A4b317PokemonCommunication => can_play_pokemon_communication(state, trainer_card),
-        CardId::A3a067Gladion | CardId::A3a081Gladion => can_play_gladion(state, trainer_card),
+        CardId::A3a067Gladion | CardId::A3a081Gladion => {
+            can_search_nonempty_deck(state, trainer_card)
+        }
         CardId::A3a069Lusamine
         | CardId::A3a083Lusamine
         | CardId::A4b350Lusamine
@@ -157,10 +171,10 @@ pub fn trainer_move_generation_implementation(
         CardId::B2151Juggler | CardId::B2192Juggler => can_play_juggler(state, trainer_card),
         CardId::A3152Lana | CardId::A3194Lana => can_play_lana(state, trainer_card),
         CardId::A2151TeamGalacticGrunt | CardId::A2191TeamGalacticGrunt => {
-            can_play_team_galactic_grunt(state, trainer_card)
+            can_search_nonempty_deck(state, trainer_card)
         }
         CardId::A4a070TravelingMerchant | CardId::A4a084TravelingMerchant => {
-            can_play_trainer(state, trainer_card)
+            can_search_nonempty_deck(state, trainer_card)
         }
         CardId::A4159Fisher | CardId::A4199Fisher => can_play_fisher(state, trainer_card),
         CardId::A3143FishingNet => can_play_fishing_net(state, trainer_card),
@@ -203,7 +217,6 @@ pub fn trainer_move_generation_implementation(
         | CardId::A1270Giovanni
         | CardId::A4b334Giovanni
         | CardId::A4b335Giovanni
-        | CardId::A1a065MythicalSlab
         | CardId::A1a068Leaf
         | CardId::A1a082Leaf
         | CardId::A4b346Leaf
@@ -215,6 +228,7 @@ pub fn trainer_move_generation_implementation(
         | CardId::A3151Guzma
         | CardId::A3193Guzma
         | CardId::A3208Guzma => can_play_trainer(state, trainer_card),
+        CardId::A1a065MythicalSlab => can_search_nonempty_deck(state, trainer_card),
         CardId::A3b066EeveeBag
         | CardId::A3b107EeveeBag
         | CardId::A4b308EeveeBag
@@ -230,9 +244,13 @@ pub fn trainer_move_generation_implementation(
         | CardId::B2a089Iono
         | CardId::B2a106Iono => can_play_trainer(state, trainer_card),
         CardId::B1221Marlon | CardId::B1266Marlon => can_play_marlon(state, trainer_card),
-        CardId::B1223May | CardId::B1268May => can_play_trainer(state, trainer_card),
+        CardId::B1223May | CardId::B1268May => {
+            can_search_nonempty_deck(state, trainer_card)
+        }
         CardId::B1224Fantina | CardId::B1269Fantina => can_play_trainer(state, trainer_card),
-        CardId::B1226Lisia | CardId::B1271Lisia => can_play_trainer(state, trainer_card),
+        CardId::B1226Lisia | CardId::B1271Lisia => {
+            can_search_nonempty_deck(state, trainer_card)
+        }
         CardId::A2a073CelesticTownElder | CardId::A2a088CelesticTownElder => {
             can_play_celestic_town_elder(state, trainer_card)
         }
@@ -241,14 +259,18 @@ pub fn trainer_move_generation_implementation(
         CardId::B2149Diantha | CardId::B2190Diantha => can_play_diantha(state, trainer_card),
         CardId::B2152Piers | CardId::B2193Piers => can_play_piers(state, trainer_card),
         CardId::B1a066ClemontsBackpack => can_play_trainer(state, trainer_card),
-        CardId::B1a068Clemont | CardId::B1a081Clemont => can_play_trainer(state, trainer_card),
+        CardId::B1a068Clemont | CardId::B1a081Clemont => {
+            can_search_nonempty_deck(state, trainer_card)
+        }
         CardId::B1a067QuickGrowExtract | CardId::B1a103QuickGrowExtract => {
             can_play_quick_grow_extract(state, trainer_card)
         }
-        CardId::B1a069Serena | CardId::B1a082Serena => can_play_trainer(state, trainer_card),
+        CardId::B1a069Serena | CardId::B1a082Serena => {
+            can_search_nonempty_deck(state, trainer_card)
+        }
         CardId::B2a090Nemona | CardId::B2a107Nemona => can_play_trainer(state, trainer_card),
         CardId::B2a091Arven | CardId::B2a108Arven | CardId::B2a115Arven => {
-            can_play_trainer(state, trainer_card)
+            can_search_nonempty_deck(state, trainer_card)
         }
         CardId::B2a086ElectricGenerator | CardId::B2a131ElectricGenerator => {
             can_play_electric_generator(state, trainer_card)
@@ -273,17 +295,23 @@ pub fn trainer_move_generation_implementation(
         CardId::B2b065NastyNotice => can_play_trainer(state, trainer_card),
         CardId::A3b068Hau | CardId::A3b085Hau => can_play_trainer(state, trainer_card),
         CardId::A3142BigMalasada => can_play_big_malasada(state, trainer_card),
-        CardId::B2150Sightseer | CardId::B2191Sightseer => can_play_trainer(state, trainer_card),
+        CardId::B2150Sightseer | CardId::B2191Sightseer => {
+            can_search_nonempty_deck(state, trainer_card)
+        }
         CardId::A2b072TeamRocketGrunt | CardId::A2b091TeamRocketGrunt => {
             can_play_team_rocket_grunt(state, trainer_card)
         }
         CardId::B3147FieldBlower => can_play_field_blower(state, trainer_card),
         CardId::B3149Korrina | CardId::B3190Korrina => can_play_trainer(state, trainer_card),
-        CardId::B3150Cabbie | CardId::B3191Cabbie => can_play_cabbie(state, trainer_card),
+        CardId::B3150Cabbie | CardId::B3191Cabbie => {
+            can_search_nonempty_deck(state, trainer_card)
+        }
         CardId::B3152ParasolLady | CardId::B3193ParasolLady => {
             can_play_parasol_lady(state, trainer_card)
         }
-        CardId::B3a071Juliana | CardId::B3a086Juliana => can_play_trainer(state, trainer_card),
+        CardId::B3a071Juliana | CardId::B3a086Juliana => {
+            can_search_nonempty_deck(state, trainer_card)
+        }
         CardId::B3a072ProfessorSada | CardId::B3a087ProfessorSada => {
             can_play_professor_sada(state, trainer_card)
         }
@@ -292,10 +320,10 @@ pub fn trainer_move_generation_implementation(
         }
         CardId::B3b066Elesa | CardId::B3b083Elesa => can_play_trainer(state, trainer_card),
         CardId::B3b067PuppyLovingGirl | CardId::B3b084PuppyLovingGirl => {
-            can_play_trainer(state, trainer_card)
+            can_search_nonempty_deck(state, trainer_card)
         }
         CardId::B3b068Wallace | CardId::B3b085Wallace => can_play_wallace(state, trainer_card),
-        CardId::B4145OrderPad => can_play_trainer(state, trainer_card),
+        CardId::B4145OrderPad => can_search_nonempty_deck(state, trainer_card),
         CardId::B4152Skyla | CardId::B4192Skyla => can_play_skyla(state, trainer_card),
         CardId::B4153Wally | CardId::B4193Wally => can_play_wally(state, trainer_card),
         CardId::B4150Psychic | CardId::B4190Psychic => can_play_psychic(state, trainer_card),
@@ -305,11 +333,12 @@ pub fn trainer_move_generation_implementation(
         }
         CardId::B4a068TeamRocketsGoozooka
         | CardId::B4a110TeamRocketsGoozooka
-        | CardId::B4a069TeamRocketsResearcher
-        | CardId::B4a085TeamRocketsResearcher
         | CardId::B4a070TeamRocketsMasterPlan
         | CardId::B4a086TeamRocketsMasterPlan
         | CardId::B4a094TeamRocketsMasterPlan => can_play_trainer(state, trainer_card),
+        CardId::B4a069TeamRocketsResearcher | CardId::B4a085TeamRocketsResearcher => {
+            can_search_nonempty_deck(state, trainer_card)
+        }
         CardId::B4a071TeamRocketsBoss | CardId::B4a087TeamRocketsBoss => {
             can_play_trainer(state, trainer_card)
         }
@@ -368,6 +397,10 @@ fn can_play_tool(state: &State, trainer_card: &TrainerCard) -> Option<Vec<Simple
 
 /// Check if a Stadium can be played (cannot play if same-named Stadium is already active)
 fn can_play_stadium(state: &State, trainer_card: &TrainerCard) -> Option<Vec<SimpleAction>> {
+    if state.has_played_stadium {
+        return cannot_play_trainer();
+    }
+
     // Cannot play same-name stadium
     if let Some(active_name) = state.get_active_stadium_name() {
         if active_name == trainer_card.name {
@@ -651,7 +684,8 @@ fn can_play_rare_candy(state: &State, trainer_card: &TrainerCard) -> Option<Vec<
     }
 }
 
-/// Check if Pokemon Communication can be played (requires at least 1 Pokemon in hand and 1 in deck)
+/// Check if Pokemon Communication can be played. A Pokemon in hand and a nonempty deck are
+/// visible requirements; whether that hidden deck contains a Pokemon is not.
 fn can_play_pokemon_communication(
     state: &State,
     trainer_card: &TrainerCard,
@@ -660,59 +694,10 @@ fn can_play_pokemon_communication(
     let has_pokemon_in_hand = state.hands[player]
         .iter()
         .any(|card| matches!(card, Card::Pokemon(_)));
-    let has_pokemon_in_deck = state.decks[player]
-        .cards
-        .iter()
-        .any(|card| matches!(card, Card::Pokemon(_)));
-    if has_pokemon_in_hand && has_pokemon_in_deck {
+    if has_pokemon_in_hand && !state.decks[player].cards.is_empty() {
         can_play_trainer(state, trainer_card)
     } else {
         cannot_play_trainer()
-    }
-}
-
-/// Check if Gladion can be played (requires possibility of Type: Null or Silvally in deck)
-fn can_play_gladion(state: &State, trainer_card: &TrainerCard) -> Option<Vec<SimpleAction>> {
-    let player = state.current_player;
-
-    // Count Type: Null and Silvally in play and discard
-    let mut type_null_count = 0;
-    let mut silvally_count = 0;
-
-    // Count in play Pokemon (including cards_behind)
-    for pokemon in state.in_play_pokemon[player].iter().flatten() {
-        // Check the current card
-        if pokemon.get_name() == "Type: Null" {
-            type_null_count += 1;
-        } else if pokemon.get_name() == "Silvally" {
-            silvally_count += 1;
-        }
-
-        // Check cards_behind (evolution chain)
-        for card in &pokemon.cards_behind {
-            if card.get_name() == "Type: Null" {
-                type_null_count += 1;
-            } else if card.get_name() == "Silvally" {
-                silvally_count += 1;
-            }
-        }
-    }
-
-    // Count in discard pile
-    for card in &state.discard_piles[player] {
-        if card.get_name() == "Type: Null" {
-            type_null_count += 1;
-        } else if card.get_name() == "Silvally" {
-            silvally_count += 1;
-        }
-    }
-
-    // Can play if we haven't accounted for all 2 Type: Null and 2 Silvally
-    // (meaning there might still be some in the deck)
-    if type_null_count >= 2 && silvally_count >= 2 {
-        cannot_play_trainer()
-    } else {
-        can_play_trainer(state, trainer_card)
     }
 }
 
@@ -978,8 +963,8 @@ fn can_play_big_malasada(state: &State, trainer_card: &TrainerCard) -> Option<Ve
 }
 
 /// Check if Quick-Grow Extract can be played
-/// Requires: not first turn, at least 1 Grass pokemon that wasn't played this turn,
-/// with a valid Grass evolution available in deck
+/// Requires a nonempty deck, a non-first turn, and a visible Grass target that was not put into
+/// play this turn. Whether the hidden deck contains an eligible evolution is resolved later.
 fn can_play_quick_grow_extract(
     state: &State,
     trainer_card: &TrainerCard,
@@ -989,8 +974,13 @@ fn can_play_quick_grow_extract(
         return cannot_play_trainer();
     }
 
-    // Check if there are any valid evolution candidates
-    if quick_grow_extract_candidates(state, state.current_player).is_empty() {
+    let player = state.current_player;
+    let has_visible_target = state
+        .enumerate_in_play_pokemon(player)
+        .any(|(_, pokemon)| {
+            state.pokemon_is_type(pokemon, EnergyType::Grass) && !pokemon.played_this_turn
+        });
+    if state.decks[player].cards.is_empty() || !has_visible_target {
         cannot_play_trainer()
     } else {
         can_play_trainer(state, trainer_card)
@@ -998,10 +988,17 @@ fn can_play_quick_grow_extract(
 }
 
 /// Check if Wallace can be played
-/// Requires at least 1 Water pokemon with 50 HP or less, that wasn't played this turn,
-/// with a valid Water evolution available in deck
+/// Requires a nonempty deck and a visible Water target whose current maximum HP, including
+/// bonuses, is 50 or less. Wallace itself permits a Pokemon played this turn.
 fn can_play_wallace(state: &State, trainer_card: &TrainerCard) -> Option<Vec<SimpleAction>> {
-    if wallace_candidates(state, state.current_player).is_empty() {
+    let player = state.current_player;
+    let has_visible_target = state
+        .enumerate_in_play_pokemon(player)
+        .any(|(_, pokemon)| {
+            state.pokemon_is_type(pokemon, EnergyType::Water)
+                && pokemon.get_effective_total_hp() <= 50
+        });
+    if state.decks[player].cards.is_empty() || !has_visible_target {
         cannot_play_trainer()
     } else {
         can_play_trainer(state, trainer_card)
@@ -1041,18 +1038,6 @@ fn can_play_field_blower(state: &State, trainer_card: &TrainerCard) -> Option<Ve
         .any(|(_, pokemon)| pokemon.has_tool_attached());
     let any_stadium = state.active_stadium.is_some();
     if any_tool || any_stadium {
-        can_play_trainer(state, trainer_card)
-    } else {
-        cannot_play_trainer()
-    }
-}
-
-/// Check if Cabbie can be played (requires at least one Stadium card in the deck)
-fn can_play_cabbie(state: &State, trainer_card: &TrainerCard) -> Option<Vec<SimpleAction>> {
-    let has_stadium = state.decks[state.current_player].cards.iter().any(
-        |card| matches!(card, Card::Trainer(tc) if tc.trainer_card_type == TrainerType::Stadium),
-    );
-    if has_stadium {
         can_play_trainer(state, trainer_card)
     } else {
         cannot_play_trainer()
@@ -1142,22 +1127,6 @@ fn can_play_pokemon_flute(state: &State, trainer_card: &TrainerCard) -> Option<V
         .skip(1)
         .any(|slot| slot.is_none());
     if has_basic && has_bench_space {
-        can_play_trainer(state, trainer_card)
-    } else {
-        cannot_play_trainer()
-    }
-}
-
-/// Check if Team Galactic Grunt can be played (requires a Glameow, Stunky or Croagunk in the deck)
-fn can_play_team_galactic_grunt(
-    state: &State,
-    trainer_card: &TrainerCard,
-) -> Option<Vec<SimpleAction>> {
-    let has_target = state.decks[state.current_player]
-        .cards
-        .iter()
-        .any(|card| matches!(card.get_name().as_str(), "Glameow" | "Stunky" | "Croagunk"));
-    if has_target {
         can_play_trainer(state, trainer_card)
     } else {
         cannot_play_trainer()

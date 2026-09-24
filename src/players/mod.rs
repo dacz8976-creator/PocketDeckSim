@@ -4,6 +4,7 @@ mod end_turn_player;
 mod evolution_rusher_player;
 pub mod expectiminimax_player;
 mod human_player;
+pub mod jev_player;
 mod mcts_player;
 mod random_player;
 pub mod s42_probe;
@@ -19,6 +20,7 @@ pub use expectiminimax_player::{
     OPPONENT_PLY_NODES,
 };
 pub use human_player::HumanPlayer;
+pub use jev_player::JevPlayer;
 pub use mcts_player::MctsPlayer;
 pub use random_player::RandomPlayer;
 pub use value_function_player::ValueFunctionPlayer;
@@ -54,6 +56,7 @@ pub trait Player: Debug {
 /// Enum for allowed player strategies
 #[derive(Debug, Clone, PartialEq)]
 pub enum PlayerCode {
+    Jev,
     AA,
     ET,
     R,
@@ -137,6 +140,7 @@ pub fn parse_player_code(s: &str) -> Result<PlayerCode, String> {
     // Resolve exact multi-letter codes before the parameterized one-letter prefixes.
     // In particular, `et` must not be rejected as a malformed `e<number>`.
     match lower.as_str() {
+        "jev" => return Ok(PlayerCode::Jev),
         "aa" => return Ok(PlayerCode::AA),
         "et" => return Ok(PlayerCode::ET),
         "er" => return Ok(PlayerCode::ER),
@@ -304,6 +308,7 @@ pub fn create_players(
 
 fn get_player(deck: Deck, player: &PlayerCode) -> Box<dyn Player> {
     match player {
+        PlayerCode::Jev => Box::new(JevPlayer::new(deck)),
         PlayerCode::AA => Box::new(AttachAttackPlayer { deck }),
         PlayerCode::ET => Box::new(EndTurnPlayer { deck }),
         PlayerCode::R => Box::new(RandomPlayer { deck }),

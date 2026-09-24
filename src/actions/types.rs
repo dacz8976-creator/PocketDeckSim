@@ -1,4 +1,5 @@
 use crate::actions::abilities::DiscardSearchKind;
+use crate::effects::CardEffect;
 use crate::models::{Attack, Card, EnergyType, StatusCondition, TrainerCard};
 use serde::{Deserialize, Serialize};
 use std::fmt;
@@ -29,6 +30,10 @@ pub enum SimpleAction {
         in_play_idx: usize,
         from_deck: bool,
     },
+    ChooseRandomEvolutionTarget {
+        in_play_idx: usize,
+        energy_type: EnergyType,
+    },
     UseAbility {
         in_play_idx: usize,
     },
@@ -40,7 +45,31 @@ pub enum SimpleAction {
     Attack(Attack),
     // usize is in_play_pokemon index to retreat to. Can't Retreat(0)
     Retreat(usize),
+    /// Forced choice of physical Energy to pay an ordinary retreat.
+    ChooseRetreatEnergy { to_in_play_idx: usize, energies: Vec<EnergyType> },
+    /// Post-damage attack Energy choice. The optional effect belongs to Scorching Interruption.
+    ChooseAttackEnergyDiscard {
+        energies: Vec<EnergyType>,
+        defensive_effect: Option<(CardEffect, u8)>,
+    },
     EndTurn,
+    /// Forced chance continuation. There is no player choice about flipping this coin.
+    ResolveAttackRetaliation {
+        attacking_ref: (usize, usize),
+        perish_body_heads: bool,
+        point_denial_flips: Vec<((usize, usize), bool)>,
+        damaged_refs: Vec<(usize, usize)>,
+    },
+    ResolveKnockoutPoints {
+        prior_knockouts: Vec<(usize, usize)>,
+        player: usize,
+        in_play_idx: usize,
+        attacking_ref: (usize, usize),
+        is_from_active_attack: bool,
+    },
+    ResolvePokemonCheckup,
+    FinishPokemonCheckup,
+    ResolveEndTurnEvolution { player: usize },
 
     // Atomic actions as part of different effects.
     Attach {
@@ -304,10 +333,21 @@ impl fmt::Display for SimpleAction {
                     "Evolve({evolution}, {in_play_idx}, from_deck: {from_deck})"
                 )
             }
+            SimpleAction::ChooseRandomEvolutionTarget { in_play_idx, energy_type } =>
+                write!(f, "ChooseRandomEvolutionTarget({in_play_idx}, {energy_type:?})"),
             SimpleAction::UseAbility { in_play_idx } => write!(f, "UseAbility({in_play_idx})"),
             SimpleAction::Attack(attack) => write!(f, "Attack({})", attack.title),
             SimpleAction::Retreat(index) => write!(f, "Retreat({index})"),
+            SimpleAction::ChooseRetreatEnergy { to_in_play_idx, energies } =>
+                write!(f, "ChooseRetreatEnergy({to_in_play_idx}, {energies:?})"),
+            SimpleAction::ChooseAttackEnergyDiscard { energies, .. } =>
+                write!(f, "ChooseAttackEnergyDiscard({energies:?})"),
             SimpleAction::EndTurn => write!(f, "EndTurn"),
+            SimpleAction::ResolveAttackRetaliation { .. } => write!(f, "ResolveAttackRetaliation"),
+            SimpleAction::ResolveKnockoutPoints { player, in_play_idx, .. } => write!(f, "ResolveKnockoutPoints({player}, {in_play_idx})"),
+            SimpleAction::ResolvePokemonCheckup => write!(f, "ResolvePokemonCheckup"),
+            SimpleAction::FinishPokemonCheckup => write!(f, "FinishPokemonCheckup"),
+            SimpleAction::ResolveEndTurnEvolution { player } => write!(f, "ResolveEndTurnEvolution({player})"),
             SimpleAction::Attach {
                 attachments,
                 is_turn_energy,
