@@ -13,6 +13,7 @@ greedy-fill guaranteed anyway. The fix is to validate the INPUT and the SHAPE.
 
 usage:
   deck_check.py pool <dir>            validate every .txt deck in a pool dir
+  deck_check.py files <deck.txt>...   validate these deck files (run scripts call this)
   deck_check.py lists <file.jsonl>    validate RAW parsed source lists (one JSON obj per line,
                                       {"src":..., "cards":[[n,"name","SET NNN"],...]})
   deck_check.py selftest              run the regression suite
@@ -213,19 +214,27 @@ if __name__ == '__main__':
     mode = sys.argv[1] if len(sys.argv) > 1 else 'selftest'
     if mode == 'selftest': sys.exit(0 if selftest() else 1)
     if mode == 'lists': sys.exit(0 if check_source_lists(sys.argv[2]) else 1)
-    if mode == 'pool':
-        d = sys.argv[2]; bad = 0
-        for f in sorted(os.listdir(d)):
-            if not f.endswith('.txt'): continue
-            _, cards = parse(os.path.join(d, f))
-            res = check(f[:-4], cards)
+    if mode in ('pool', 'files'):
+        if mode == 'pool':
+            d = sys.argv[2]
+            paths = [os.path.join(d, f) for f in sorted(os.listdir(d)) if f.endswith('.txt')]
+        else:
+            paths = sys.argv[2:]
+            if not paths: sys.exit('files mode needs at least one deck file')
+        bad = 0
+        for path in paths:
+            name = os.path.basename(path)[:-4]
+            _, cards = parse(path)
+            res = check(name, cards)
             errs = [m for s, m in res if s == 'ERROR']
             warns = [m for s, m in res if s == 'WARN']
             if errs:
-                bad += 1; print(f'❌ {f[:-4]}')
+                bad += 1; print(f'❌ {name}')
                 for m in errs: print(f'     ERROR {m}')
             elif warns:
-                print(f'⚠  {f[:-4]}')
+                print(f'⚠  {name}')
                 for m in warns[:2]: print(f'     WARN  {m}')
-        print(f'\n{"❌ "+str(bad)+" deck(s) FAILED — DO NOT SIM" if bad else "✅ pool clean"}')
+        print(f'\n{"❌ "+str(bad)+" deck(s) FAILED — DO NOT SIM" if bad else "✅ " + ("pool" if mode == "pool" else "decks") + " clean"}')
         sys.exit(1 if bad else 0)
+    # Anything else used to fall through and exit 0 having checked nothing.
+    sys.exit(f'unknown mode {mode!r}: use pool <dir>, files <deck.txt>..., lists <file.jsonl> or selftest')

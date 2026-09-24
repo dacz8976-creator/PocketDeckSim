@@ -22,13 +22,17 @@ use deckgym::players::{create_players, parse_player_code};
 use deckgym::state::GameOutcome;
 use deckgym::{Deck, Game, State};
 use rayon::prelude::*;
-use std::collections::{BTreeMap, HashMap};
+use std::collections::hash_map::DefaultHasher;
+use std::collections::{BTreeMap, HashMap, HashSet};
+use std::hash::{Hash, Hasher};
 
 const NAMES: [&str; 8] = [
     "altaria", "blaziken", "hydreigon", "lucario", "sceptile", "suicune", "vespiquen", "weezing",
 ];
 const SEED_BASE: u64 = 72_000_000;
 const EXAMPLES_KEPT: usize = 4;
+/// The rules page these checks were written from. It describes the rules4 engine.
+const RULES_SOURCE: &str = "RULES_FOR_AGENTS.md (updated 2026-09-22, rules4)";
 
 #[derive(Default)]
 struct Findings {
@@ -319,6 +323,8 @@ fn update_turn(turn: &mut Turn, before: &State, after: &State, actor: usize, act
 
 struct GameResult {
     first_deck_score: f64,
+    /// Fingerprint of every chosen move in order: distinct games have distinct fingerprints.
+    fingerprint: u64,
     findings: Findings,
 }
 
@@ -335,6 +341,7 @@ fn play_one(decks: &[Deck; 8], pairing: usize, i: u64, bot: &str) -> GameResult 
     let mut findings = Findings::default();
     let mut seen: BTreeMap<String, bool> = BTreeMap::new();
     let mut turn = Turn::default();
+    let mut moves = DefaultHasher::new();
     let start = game.get_state_clone();
     let start_cards = [card_count(&start, 0), card_count(&start, 1)];
     let mut record = |findings: &mut Findings, list: Vec<(String, String)>, state: &State| {
@@ -363,6 +370,7 @@ fn play_one(decks: &[Deck; 8], pairing: usize, i: u64, bot: &str) -> GameResult 
         let offered = check_offered(&before, &turn, actor, &actions);
         record(&mut findings, offered, &before);
         let chosen = game.play_tick();
+        format!("{:?}", chosen).hash(&mut moves);
         let after = game.get_state_clone();
         update_turn(&mut turn, &before, &after, chosen.actor, &chosen);
         let state_findings: Vec<(String, String)> = check_state(&after, start_cards, game.is_game_over())
@@ -375,7 +383,7 @@ fn play_one(decks: &[Deck; 8], pairing: usize, i: u64, bot: &str) -> GameResult 
         Some(GameOutcome::Win(w)) => f64::from(u8::from(w == first_seat)),
         _ => 0.5,
     };
-    GameResult { first_deck_score, findings }
+    GameResult { first_deck_score, fingerprint: moves.finish(), findings }
 }
 
 fn arg(args: &[String], flag: &str) -> Option<String> {
@@ -390,9 +398,12 @@ fn main() {
         arg(&args, "--pairings").map(|x| x.split(',').map(|p| p.trim().parse().unwrap()).collect());
     let bot = arg(&args, "--bot").unwrap_or_else(|| "k3".into());
     parse_player_code(&bot).expect("player code");
+    // The jev bot calls a paid outside service; no scan or table run may use it (Dustin, Sept 24).
+    assert!(!bot.eq_ignore_ascii_case("jev"), "the jev bot calls a paid API and is not allowed here");
     let decks: [Deck; 8] = NAMES.map(|n| Deck::from_file(&format!("{dir}/{n}.txt")).expect("deck file"));
     let pairs: Vec<(usize, usize)> = (0..8).flat_map(|a| (a + 1..8).map(move |b| (a, b))).collect();
 
+    println!("bot {bot}, {games} table deals per pairing, rules checked against {RULES_SOURCE}");
     let mut all = Findings::default();
     for (p, (a, b)) in pairs.iter().enumerate() {
         if only.as_ref().is_some_and(|o| !o.contains(&p)) {
@@ -401,7 +412,11 @@ fn main() {
         let results: Vec<GameResult> = (0..games).into_par_iter().map(|i| play_one(&decks, p, i, &bot)).collect();
         let score: f64 = results.iter().map(|r| r.first_deck_score).sum::<f64>() / games as f64;
         let flagged = results.iter().filter(|r| !r.findings.count.is_empty()).count();
-        println!("{:>9} v {:<9} first deck {:5.1}%   games with findings: {flagged}", NAMES[*a], NAMES[*b], 100.0 * score);
+        let distinct = results.iter().map(|r| r.fingerprint).collect::<HashSet<_>>().len();
+        println!(
+            "{:>9} v {:<9} first deck {:5.1}%   distinct games {distinct} of {games}   games with findings: {flagged}",
+            NAMES[*a], NAMES[*b], 100.0 * score
+        );
         for r in results {
             all.merge(r.findings);
         }

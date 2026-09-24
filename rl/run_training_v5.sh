@@ -93,6 +93,20 @@ sys.exit(0 if isinstance(seeds, dict) and need <= set(seeds) and all(v >= 9_000_
 PYEOF
 fi
 
+# Every deck the run will load goes through the legality check first: the add-on loads decks with
+# Deck::from_file and skips the check the command-line tool runs (Dustin, Sept 24).
+RUN_DECKS=$(PDL_SETTINGS_TEXT="$SETTINGS_TEXT" python3 - <<'PYEOF'
+import json, os
+s = json.loads(os.environ["PDL_SETTINGS_TEXT"])
+decks = list((s.get("pool") or {}).values()) + list((s.get("held_out") or {}).values())
+print("\n".join(decks))
+PYEOF
+)
+[ -n "$RUN_DECKS" ] || { echo "REFUSED: the settings name no decks (\"pool\"), so they can't be checked"; exit 1; }
+DECK_PATHS=()
+while IFS= read -r d; do case "$d" in /*) DECK_PATHS+=("$d") ;; *) DECK_PATHS+=("$ROOT/$d") ;; esac; done <<< "$RUN_DECKS"
+python3 "$ROOT/lib/deck_check.py" files "${DECK_PATHS[@]}" || { echo "REFUSED: a deck failed lib/deck_check.py (above)"; exit 1; }
+
 # the add-on: exactly the 0.7.2 wheel the add-on README names, or nothing
 [ -f "$WHL" ] || { echo "MISSING $WHL"; exit 1; }
 grep -q "$WHL_SHA" "$ADDON/README.md" || { echo "REFUSED: the add-on README does not list $WHL_SHA"; exit 1; }
