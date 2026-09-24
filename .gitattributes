@@ -1,3 +1,9 @@
+# Never convert line endings, on any machine and whatever core.autocrlf or GitHub Desktop is set to.
+# Files check out byte for byte as stored, so source and deck fingerprints (project_manifest.json,
+# deep_table.py, the add-on's source hashes) match everywhere. The engine's history stores many files
+# with Windows line endings; converting them made a Windows clone show them all as changed.
+* -text
+
 # Shell scripts keep Unix line endings so bash in WSL can run them after a Windows checkout.
 *.sh text eol=lf
 
