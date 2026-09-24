@@ -1,0 +1,93 @@
+{
+  "schema": "pdl-game-result/v1",
+  "game_id": "95e95ab5-eb1e-4088-91d4-7cb65a3a86cc",
+  "engine_version": "0.1.0-pdl.rules4",
+  "randomness": {
+    "scheme": "pdl-search-v1/rand-0.8-StdRng",
+    "game_seed": 21000300001,
+    "player_search_seeds": [
+      8125406599667144846,
+      10437661003351924716
+    ]
+  },
+  "outcome": {
+    "Win": 1
+  },
+  "state_winner": {
+    "Win": 1
+  },
+  "completion": "completed",
+  "lifecycle_errors": 0,
+  "plies": 65,
+  "actions_by_player": [
+    39,
+    26
+  ],
+  "final_turn": 8,
+  "final_points": [
+    1,
+    3
+  ],
+  "matchup": {
+    "decks": [
+      {
+        "card_ids": [
+          "B2a 034",
+          "P-B 037",
+          "B2a 036",
+          "B2a 036",
+          "A4a 020",
+          "A4a 020",
+          "B2a 037",
+          "P-A 007",
+          "P-A 007",
+          "B4a 071",
+          "A2b 070",
+          "B1 225",
+          "A3 144",
+          "A3 144",
+          "P-A 005",
+          "P-A 005",
+          "B3 147",
+          "A4a 067",
+          "A2 147",
+          "B4 154"
+        ],
+        "energy_types": [
+          "Water"
+        ]
+      },
+      {
+        "card_ids": [
+          "B1 196",
+          "B1 196",
+          "B1 102",
+          "B1 184",
+          "B1 184",
+          "B3a 020",
+          "B3a 020",
+          "B2b 040",
+          "B2b 040",
+          "A4a 059",
+          "P-A 007",
+          "P-A 007",
+          "B1 225",
+          "B1 225",
+          "A1 225",
+          "P-A 005",
+          "P-A 005",
+          "B3 147",
+          "B3b 064",
+          "B2 153"
+        ],
+        "energy_types": [
+          "Psychic"
+        ]
+      }
+    ],
+    "player_codes": [
+      "K { max_depth: 3 }",
+      "K { max_depth: 3 }"
+    ]
+  }
+}

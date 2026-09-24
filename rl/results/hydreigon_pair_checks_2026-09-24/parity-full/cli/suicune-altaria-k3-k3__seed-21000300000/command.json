@@ -1,0 +1,20 @@
+{
+  "argv": [
+    "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/addon-0.7.2/deckgym",
+    "simulate",
+    "--num",
+    "1",
+    "--players",
+    "k3,k3",
+    "--seed",
+    "21000300000",
+    "--results-output",
+    "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/hydreigon_pair_checks_2026-09-24/parity-full/cli/suicune-altaria-k3-k3__seed-21000300000/record",
+    "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/suicune.txt",
+    "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/altaria.txt"
+  ],
+  "cwd": "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim",
+  "return_code": 0,
+  "stderr": "PDL decision-integrity candidate 0.1.0-pdl.rules4: closed-list observations; unknown opponent continuations are UNPRICED. Historical seed results are not comparable.\nWelcome to deckgym simulation!\nRunning 1 games with players:\n\tPlayer 0: K { max_depth: 3 }(/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/suicune.txt)\n\tPlayer 1: K { max_depth: 3 }(/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/altaria.txt)\nRan 1 simulations in 277ms 789us 272ns (277ms 789us 272ns per game)!\nAverage number of turns per game: 6.00\nAverage number of plys per game: 43.00\nAverage number of degrees per ply: 3.67\nPlayer 0 won: 0 (0.00%)\nPlayer 1 won: 1 (100.00%)\nDraws: 0 (0.00%)\n",
+  "stdout": ""
+}

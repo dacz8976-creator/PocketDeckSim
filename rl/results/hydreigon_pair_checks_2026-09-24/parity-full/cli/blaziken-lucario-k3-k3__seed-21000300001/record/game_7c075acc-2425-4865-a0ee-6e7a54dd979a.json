@@ -1,0 +1,93 @@
+{
+  "schema": "pdl-game-result/v1",
+  "game_id": "7c075acc-2425-4865-a0ee-6e7a54dd979a",
+  "engine_version": "0.1.0-pdl.rules4",
+  "randomness": {
+    "scheme": "pdl-search-v1/rand-0.8-StdRng",
+    "game_seed": 21000300001,
+    "player_search_seeds": [
+      8125406599667144846,
+      10437661003351924716
+    ]
+  },
+  "outcome": {
+    "Win": 0
+  },
+  "state_winner": {
+    "Win": 0
+  },
+  "completion": "completed",
+  "lifecycle_errors": 0,
+  "plies": 66,
+  "actions_by_player": [
+    34,
+    32
+  ],
+  "final_turn": 9,
+  "final_points": [
+    4,
+    1
+  ],
+  "matchup": {
+    "decks": [
+      {
+        "card_ids": [
+          "B1 033",
+          "B1 033",
+          "B1 036",
+          "B1 036",
+          "B1 044",
+          "B3 024",
+          "P-A 005",
+          "P-A 005",
+          "A3 144",
+          "A3 144",
+          "B1 217",
+          "B1 217",
+          "B3 147",
+          "A2 148",
+          "P-A 007",
+          "P-A 007",
+          "A2 150",
+          "B1 225",
+          "B1 225",
+          "B2b 069"
+        ],
+        "energy_types": [
+          "Fire"
+        ]
+      },
+      {
+        "card_ids": [
+          "B3 079",
+          "B3 079",
+          "B3 081",
+          "B3 081",
+          "A2 092",
+          "B3 078",
+          "A1 154",
+          "P-A 007",
+          "P-A 007",
+          "B1 225",
+          "B1 225",
+          "B3 149",
+          "A2b 070",
+          "A2 150",
+          "P-A 005",
+          "P-A 005",
+          "B3 147",
+          "P-A 002",
+          "B2 147",
+          "B3 154"
+        ],
+        "energy_types": [
+          "Fighting"
+        ]
+      }
+    ],
+    "player_codes": [
+      "K { max_depth: 3 }",
+      "K { max_depth: 3 }"
+    ]
+  }
+}

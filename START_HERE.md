@@ -132,7 +132,7 @@ its seed-overlap check; the rest was added since.
 | 10,000,000,000 – 12,901,999,999 | Hydreigon run training |
 | 13,000,000,000 – 13,300,000,000 blocks | Hydreigon run evaluation (k3, random, confirmation, held-out) |
 | 19,000,000,000 – 19,800,000,000 blocks | Opus's cloud practice test of the Hydreigon settings (program test only) |
-| 20,000,000,000+ | Claude Code diagnostics (Caterpie counterplay from 20.0B); new blocks go above the last one used |
+| 20,000,000,000+ | Claude Code diagnostics (Caterpie counterplay from 20.0B); 21,000,000,000 – 21,001,999,999: Hydreigon pair checks and readout smoke tests (Sept 24); new blocks go above the last one used |
 | 1M, 2M, 8M, 9M | step-3 checks |
 | 5M, 6M | v2.2 checks (Astra's rules4 recheck also 6M) |
 | 18M, 18.5M, 18.9M, 28.5M | step-1 checks (18M, 18.5M); Astra's interface checks (18.5M, 28.5M) and mirror benchmark (18.9M) |
@@ -140,7 +140,7 @@ its seed-overlap check; the rest was added since.
 | 40M, 41M, 43M | matchup tests; knockout audit v2 (43M) |
 | 50M | k3 screen; speed tests; Astra's screen benchmark |
 | 60M, 61M, 62M, 70M | run 2 (k3, random, previous checkpoints, confirmation); speed tests (60M); step-3 checks (70M) |
-| 72,000,000 – 72,279,999 | Limitless check k3 table (72,000,000 + pairing × 10,000 + game), deeper-search tables k4–k6, the d3/p3/y3 probes, list-refresh variant games, Hydreigon transcripts |
+| 72,000,000 – 72,279,999 | Limitless check k3 table (72,000,000 + pairing × 10,000 + game), deeper-search tables k4–k6, the d3/p3/y3 probes, list-refresh variant games, Hydreigon transcripts, option B first look and option B table (Sept 24, i < 500) |
 | 73,000,000+ | auditor's part 2 (bot vs bot) |
 | 80,000,000 – 80,951,000 | runs 3–4 k3 evaluation (also step 0) |
 | 81,000,000 – 81,100,000 | runs 3–4 random-move games (also step 0) |

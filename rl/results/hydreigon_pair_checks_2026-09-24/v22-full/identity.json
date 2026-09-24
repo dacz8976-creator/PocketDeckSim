@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "addon_version": "0.7.2",
+  "python": "/home/dacz8976/.cache/pocket-deck-lab/run5-venv/bin/python",
+  "module": "/home/dacz8976/.cache/pocket-deck-lab/run5-venv/lib/python3.14/site-packages/pdl_rl_env.abi3.so",
+  "module_sha256": "0fee43ceaf9cf6bc15ed2319bb08c100397621a60703880cf26ace8f044a9101",
+  "extensions": {
+    "/home/dacz8976/.cache/pocket-deck-lab/run5-venv/lib/python3.14/site-packages/pdl_rl_env.abi3.so": "0fee43ceaf9cf6bc15ed2319bb08c100397621a60703880cf26ace8f044a9101"
+  },
+  "decks": {
+    "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/hydreigon.txt": "6ea0042236b4844458a1b2d0f0e6cefb4c50ce0148a38aded1162f4d27e935e9",
+    "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/lucario.txt": "46a4820bc788b4fd9ac1d9491e62bf7123c467441e7e30012e42e8a70c91e3f3"
+  },
+  "script_sha256": "1d16548c7d55ffe9c77ed962798ba478daf110ababaeab3900cb6e02c5317528",
+  "vocab": [
+    "A1 154",
+    "A1 225",
+    "A2 092",
+    "A2 150",
+    "A2b 070",
+    "A3 144",
+    "B1 151",
+    "B1 155",
+    "B1 157",
+    "B1 225",
+    "B2 145",
+    "B2 147",
+    "B3 078",
+    "B3 079",
+    "B3 081",
+    "B3 115",
+    "B3 147",
+    "B3 149",
+    "B3 154",
+    "B4 148",
+    "P-A 002",
+    "P-A 005",
+    "P-A 007"
+  ],
+  "games": 20,
+  "seed": 21000200000,
+  "observation_dim": 577,
+  "action_dim": 170,
+  "chance_seeds_per_action": [
+    1592590336,
+    1592590337,
+    1592590338,
+    1592590339
+  ],
+  "diagnostics_available": true
+}

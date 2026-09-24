@@ -1,0 +1,802 @@
+{
+  "games_expected": 16,
+  "games_matched": 16,
+  "games_recorded": 16,
+  "identity_after": {
+    "decks": {
+      "altaria": "435a2bebc567ca8357696e400643fdc821cc36ae4765a7a16663fd4413a3bd7f",
+      "blaziken": "69c521a33339a45633c5770b3e4acad5b8912f9367288a3044147e7fa45d5800",
+      "hydreigon": "6ea0042236b4844458a1b2d0f0e6cefb4c50ce0148a38aded1162f4d27e935e9",
+      "lucario": "46a4820bc788b4fd9ac1d9491e62bf7123c467441e7e30012e42e8a70c91e3f3",
+      "suicune": "7affe6530b8d096b2d81425380bbb92c303de84458bc2fd1ee0936c40f922633",
+      "weezing": "c322fe64d6052bf9c55875ecf8bebcf9460e819df19d21fc8a20a04ff7a79e9b"
+    },
+    "engine_sha256": "e6593ed816d0d5dbaf24fc8bc81a8317ed8069cda6ae7162c3d53e1fa7a12415",
+    "module_sha256": "0fee43ceaf9cf6bc15ed2319bb08c100397621a60703880cf26ace8f044a9101"
+  },
+  "identity_before": {
+    "decks": {
+      "altaria": "435a2bebc567ca8357696e400643fdc821cc36ae4765a7a16663fd4413a3bd7f",
+      "blaziken": "69c521a33339a45633c5770b3e4acad5b8912f9367288a3044147e7fa45d5800",
+      "hydreigon": "6ea0042236b4844458a1b2d0f0e6cefb4c50ce0148a38aded1162f4d27e935e9",
+      "lucario": "46a4820bc788b4fd9ac1d9491e62bf7123c467441e7e30012e42e8a70c91e3f3",
+      "suicune": "7affe6530b8d096b2d81425380bbb92c303de84458bc2fd1ee0936c40f922633",
+      "weezing": "c322fe64d6052bf9c55875ecf8bebcf9460e819df19d21fc8a20a04ff7a79e9b"
+    },
+    "engine_sha256": "e6593ed816d0d5dbaf24fc8bc81a8317ed8069cda6ae7162c3d53e1fa7a12415",
+    "module_sha256": "0fee43ceaf9cf6bc15ed2319bb08c100397621a60703880cf26ace8f044a9101"
+  },
+  "identity_unchanged": true,
+  "input_identity": "input_identity.json",
+  "rows": [
+    {
+      "addon": {
+        "points": [
+          4,
+          2
+        ],
+        "turns": 11,
+        "winner": 0
+      },
+      "case": "hydreigon-lucario-k2-k3",
+      "cli": {
+        "game_id": "cafc4e92-7148-479a-b3b1-90957ea9f46e",
+        "points": [
+          4,
+          2
+        ],
+        "record_engine_version": "0.1.0-pdl.rules4",
+        "record_path": "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/hydreigon_pair_checks_2026-09-24/parity-full/cli/hydreigon-lucario-k2-k3__seed-21000300000/record/game_cafc4e92-7148-479a-b3b1-90957ea9f46e.json",
+        "record_sha256": "27e5318cdcebf47499e1d9f682da00f07fe64fe5c1a4497dfcb84dc236d30148",
+        "seed": 21000300000,
+        "turns": 11,
+        "winner": 0
+      },
+      "command": [
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/addon-0.7.2/deckgym",
+        "simulate",
+        "--num",
+        "1",
+        "--players",
+        "k2,k3",
+        "--seed",
+        "21000300000",
+        "--results-output",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/hydreigon_pair_checks_2026-09-24/parity-full/cli/hydreigon-lucario-k2-k3__seed-21000300000/record",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/hydreigon.txt",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/lucario.txt"
+      ],
+      "deck_order": [
+        "hydreigon",
+        "lucario"
+      ],
+      "matched": true,
+      "players": [
+        "k2",
+        "k3"
+      ],
+      "seed": 21000300000
+    },
+    {
+      "addon": {
+        "points": [
+          1,
+          4
+        ],
+        "turns": 8,
+        "winner": 1
+      },
+      "case": "hydreigon-lucario-k2-k3",
+      "cli": {
+        "game_id": "3ec86601-9969-42ea-800d-685d9eb4858a",
+        "points": [
+          1,
+          4
+        ],
+        "record_engine_version": "0.1.0-pdl.rules4",
+        "record_path": "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/hydreigon_pair_checks_2026-09-24/parity-full/cli/hydreigon-lucario-k2-k3__seed-21000300001/record/game_3ec86601-9969-42ea-800d-685d9eb4858a.json",
+        "record_sha256": "89a723a4665cd03a15080f08eb0470e36bb7be30efe5d54b8c9dee31e01d110a",
+        "seed": 21000300001,
+        "turns": 8,
+        "winner": 1
+      },
+      "command": [
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/addon-0.7.2/deckgym",
+        "simulate",
+        "--num",
+        "1",
+        "--players",
+        "k2,k3",
+        "--seed",
+        "21000300001",
+        "--results-output",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/hydreigon_pair_checks_2026-09-24/parity-full/cli/hydreigon-lucario-k2-k3__seed-21000300001/record",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/hydreigon.txt",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/lucario.txt"
+      ],
+      "deck_order": [
+        "hydreigon",
+        "lucario"
+      ],
+      "matched": true,
+      "players": [
+        "k2",
+        "k3"
+      ],
+      "seed": 21000300001
+    },
+    {
+      "addon": {
+        "points": [
+          4,
+          2
+        ],
+        "turns": 11,
+        "winner": 0
+      },
+      "case": "hydreigon-lucario-k3-k3",
+      "cli": {
+        "game_id": "0b6cc47f-0458-458f-8ee2-e27f3ffb16d7",
+        "points": [
+          4,
+          2
+        ],
+        "record_engine_version": "0.1.0-pdl.rules4",
+        "record_path": "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/hydreigon_pair_checks_2026-09-24/parity-full/cli/hydreigon-lucario-k3-k3__seed-21000300000/record/game_0b6cc47f-0458-458f-8ee2-e27f3ffb16d7.json",
+        "record_sha256": "84968a11da5e42997aed175d487734e3d91afdafe1a70931430fca6d8ac6ac46",
+        "seed": 21000300000,
+        "turns": 11,
+        "winner": 0
+      },
+      "command": [
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/addon-0.7.2/deckgym",
+        "simulate",
+        "--num",
+        "1",
+        "--players",
+        "k3,k3",
+        "--seed",
+        "21000300000",
+        "--results-output",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/hydreigon_pair_checks_2026-09-24/parity-full/cli/hydreigon-lucario-k3-k3__seed-21000300000/record",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/hydreigon.txt",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/lucario.txt"
+      ],
+      "deck_order": [
+        "hydreigon",
+        "lucario"
+      ],
+      "matched": true,
+      "players": [
+        "k3",
+        "k3"
+      ],
+      "seed": 21000300000
+    },
+    {
+      "addon": {
+        "points": [
+          1,
+          4
+        ],
+        "turns": 8,
+        "winner": 1
+      },
+      "case": "hydreigon-lucario-k3-k3",
+      "cli": {
+        "game_id": "448be3d5-69ef-42c0-a560-8a5ee9fa867d",
+        "points": [
+          1,
+          4
+        ],
+        "record_engine_version": "0.1.0-pdl.rules4",
+        "record_path": "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/hydreigon_pair_checks_2026-09-24/parity-full/cli/hydreigon-lucario-k3-k3__seed-21000300001/record/game_448be3d5-69ef-42c0-a560-8a5ee9fa867d.json",
+        "record_sha256": "c29a6d43ec14aca4af8d7951ab852e5ba97fbd2682752ae147c25c4db124f1fd",
+        "seed": 21000300001,
+        "turns": 8,
+        "winner": 1
+      },
+      "command": [
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/addon-0.7.2/deckgym",
+        "simulate",
+        "--num",
+        "1",
+        "--players",
+        "k3,k3",
+        "--seed",
+        "21000300001",
+        "--results-output",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/hydreigon_pair_checks_2026-09-24/parity-full/cli/hydreigon-lucario-k3-k3__seed-21000300001/record",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/hydreigon.txt",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/lucario.txt"
+      ],
+      "deck_order": [
+        "hydreigon",
+        "lucario"
+      ],
+      "matched": true,
+      "players": [
+        "k3",
+        "k3"
+      ],
+      "seed": 21000300001
+    },
+    {
+      "addon": {
+        "points": [
+          4,
+          2
+        ],
+        "turns": 9,
+        "winner": 0
+      },
+      "case": "blaziken-lucario-k2-k3",
+      "cli": {
+        "game_id": "18fd902b-ec6f-450e-819d-0de367917424",
+        "points": [
+          4,
+          2
+        ],
+        "record_engine_version": "0.1.0-pdl.rules4",
+        "record_path": "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/hydreigon_pair_checks_2026-09-24/parity-full/cli/blaziken-lucario-k2-k3__seed-21000300000/record/game_18fd902b-ec6f-450e-819d-0de367917424.json",
+        "record_sha256": "14bf9c727d6ce70daf9bf88035336eff5ffbc296e345a801e2d42a772d6c6483",
+        "seed": 21000300000,
+        "turns": 9,
+        "winner": 0
+      },
+      "command": [
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/addon-0.7.2/deckgym",
+        "simulate",
+        "--num",
+        "1",
+        "--players",
+        "k2,k3",
+        "--seed",
+        "21000300000",
+        "--results-output",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/hydreigon_pair_checks_2026-09-24/parity-full/cli/blaziken-lucario-k2-k3__seed-21000300000/record",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/dustin/06-mega-blaziken-tournament-list.txt",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/lucario.txt"
+      ],
+      "deck_order": [
+        "blaziken",
+        "lucario"
+      ],
+      "matched": true,
+      "players": [
+        "k2",
+        "k3"
+      ],
+      "seed": 21000300000
+    },
+    {
+      "addon": {
+        "points": [
+          4,
+          1
+        ],
+        "turns": 9,
+        "winner": 0
+      },
+      "case": "blaziken-lucario-k2-k3",
+      "cli": {
+        "game_id": "10e5e907-0f40-4995-a6e3-b6aa3dda9b61",
+        "points": [
+          4,
+          1
+        ],
+        "record_engine_version": "0.1.0-pdl.rules4",
+        "record_path": "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/hydreigon_pair_checks_2026-09-24/parity-full/cli/blaziken-lucario-k2-k3__seed-21000300001/record/game_10e5e907-0f40-4995-a6e3-b6aa3dda9b61.json",
+        "record_sha256": "fc2d3328d0baaf9e253ab9b2c45571f1e5e58d76a4109a7eae892d2414cf1384",
+        "seed": 21000300001,
+        "turns": 9,
+        "winner": 0
+      },
+      "command": [
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/addon-0.7.2/deckgym",
+        "simulate",
+        "--num",
+        "1",
+        "--players",
+        "k2,k3",
+        "--seed",
+        "21000300001",
+        "--results-output",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/hydreigon_pair_checks_2026-09-24/parity-full/cli/blaziken-lucario-k2-k3__seed-21000300001/record",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/dustin/06-mega-blaziken-tournament-list.txt",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/lucario.txt"
+      ],
+      "deck_order": [
+        "blaziken",
+        "lucario"
+      ],
+      "matched": true,
+      "players": [
+        "k2",
+        "k3"
+      ],
+      "seed": 21000300001
+    },
+    {
+      "addon": {
+        "points": [
+          4,
+          2
+        ],
+        "turns": 9,
+        "winner": 0
+      },
+      "case": "blaziken-lucario-k3-k3",
+      "cli": {
+        "game_id": "fe45fe86-07f2-4193-93e6-43793d5fbd0d",
+        "points": [
+          4,
+          2
+        ],
+        "record_engine_version": "0.1.0-pdl.rules4",
+        "record_path": "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/hydreigon_pair_checks_2026-09-24/parity-full/cli/blaziken-lucario-k3-k3__seed-21000300000/record/game_fe45fe86-07f2-4193-93e6-43793d5fbd0d.json",
+        "record_sha256": "861538f562b31b61e4201781dd8bfc6b8261b377034c266a583119d8257fc3bf",
+        "seed": 21000300000,
+        "turns": 9,
+        "winner": 0
+      },
+      "command": [
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/addon-0.7.2/deckgym",
+        "simulate",
+        "--num",
+        "1",
+        "--players",
+        "k3,k3",
+        "--seed",
+        "21000300000",
+        "--results-output",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/hydreigon_pair_checks_2026-09-24/parity-full/cli/blaziken-lucario-k3-k3__seed-21000300000/record",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/dustin/06-mega-blaziken-tournament-list.txt",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/lucario.txt"
+      ],
+      "deck_order": [
+        "blaziken",
+        "lucario"
+      ],
+      "matched": true,
+      "players": [
+        "k3",
+        "k3"
+      ],
+      "seed": 21000300000
+    },
+    {
+      "addon": {
+        "points": [
+          4,
+          1
+        ],
+        "turns": 9,
+        "winner": 0
+      },
+      "case": "blaziken-lucario-k3-k3",
+      "cli": {
+        "game_id": "7c075acc-2425-4865-a0ee-6e7a54dd979a",
+        "points": [
+          4,
+          1
+        ],
+        "record_engine_version": "0.1.0-pdl.rules4",
+        "record_path": "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/hydreigon_pair_checks_2026-09-24/parity-full/cli/blaziken-lucario-k3-k3__seed-21000300001/record/game_7c075acc-2425-4865-a0ee-6e7a54dd979a.json",
+        "record_sha256": "ba0bb674bd242034af97dcd30aff815b49fb21078c814b7b78ec0ad0d078ddbb",
+        "seed": 21000300001,
+        "turns": 9,
+        "winner": 0
+      },
+      "command": [
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/addon-0.7.2/deckgym",
+        "simulate",
+        "--num",
+        "1",
+        "--players",
+        "k3,k3",
+        "--seed",
+        "21000300001",
+        "--results-output",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/hydreigon_pair_checks_2026-09-24/parity-full/cli/blaziken-lucario-k3-k3__seed-21000300001/record",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/dustin/06-mega-blaziken-tournament-list.txt",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/lucario.txt"
+      ],
+      "deck_order": [
+        "blaziken",
+        "lucario"
+      ],
+      "matched": true,
+      "players": [
+        "k3",
+        "k3"
+      ],
+      "seed": 21000300001
+    },
+    {
+      "addon": {
+        "points": [
+          0,
+          3
+        ],
+        "turns": 6,
+        "winner": 1
+      },
+      "case": "suicune-altaria-k2-k3",
+      "cli": {
+        "game_id": "3585c8ca-89c6-4608-8c27-0a5f4870a82f",
+        "points": [
+          0,
+          3
+        ],
+        "record_engine_version": "0.1.0-pdl.rules4",
+        "record_path": "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/hydreigon_pair_checks_2026-09-24/parity-full/cli/suicune-altaria-k2-k3__seed-21000300000/record/game_3585c8ca-89c6-4608-8c27-0a5f4870a82f.json",
+        "record_sha256": "0fa403a58948df1c7f5532f9e5c08bce788ef086a54e308b7fa50474d94876c4",
+        "seed": 21000300000,
+        "turns": 6,
+        "winner": 1
+      },
+      "command": [
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/addon-0.7.2/deckgym",
+        "simulate",
+        "--num",
+        "1",
+        "--players",
+        "k2,k3",
+        "--seed",
+        "21000300000",
+        "--results-output",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/hydreigon_pair_checks_2026-09-24/parity-full/cli/suicune-altaria-k2-k3__seed-21000300000/record",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/suicune.txt",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/altaria.txt"
+      ],
+      "deck_order": [
+        "suicune",
+        "altaria"
+      ],
+      "matched": true,
+      "players": [
+        "k2",
+        "k3"
+      ],
+      "seed": 21000300000
+    },
+    {
+      "addon": {
+        "points": [
+          1,
+          3
+        ],
+        "turns": 8,
+        "winner": 1
+      },
+      "case": "suicune-altaria-k2-k3",
+      "cli": {
+        "game_id": "5a022cc2-d5a0-4e0e-a6a8-1a0a01b2f9eb",
+        "points": [
+          1,
+          3
+        ],
+        "record_engine_version": "0.1.0-pdl.rules4",
+        "record_path": "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/hydreigon_pair_checks_2026-09-24/parity-full/cli/suicune-altaria-k2-k3__seed-21000300001/record/game_5a022cc2-d5a0-4e0e-a6a8-1a0a01b2f9eb.json",
+        "record_sha256": "8dd335ab246b4bd413d861ba9a2aff2b1ab4c554a299dfcca255187b1a53e14f",
+        "seed": 21000300001,
+        "turns": 8,
+        "winner": 1
+      },
+      "command": [
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/addon-0.7.2/deckgym",
+        "simulate",
+        "--num",
+        "1",
+        "--players",
+        "k2,k3",
+        "--seed",
+        "21000300001",
+        "--results-output",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/hydreigon_pair_checks_2026-09-24/parity-full/cli/suicune-altaria-k2-k3__seed-21000300001/record",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/suicune.txt",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/altaria.txt"
+      ],
+      "deck_order": [
+        "suicune",
+        "altaria"
+      ],
+      "matched": true,
+      "players": [
+        "k2",
+        "k3"
+      ],
+      "seed": 21000300001
+    },
+    {
+      "addon": {
+        "points": [
+          0,
+          3
+        ],
+        "turns": 6,
+        "winner": 1
+      },
+      "case": "suicune-altaria-k3-k3",
+      "cli": {
+        "game_id": "a7d6cf32-8cd1-4c60-9bbd-b4a36794ab7f",
+        "points": [
+          0,
+          3
+        ],
+        "record_engine_version": "0.1.0-pdl.rules4",
+        "record_path": "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/hydreigon_pair_checks_2026-09-24/parity-full/cli/suicune-altaria-k3-k3__seed-21000300000/record/game_a7d6cf32-8cd1-4c60-9bbd-b4a36794ab7f.json",
+        "record_sha256": "21f8386b9bbd8eac90f0caa861a824e3813d68fb744b39e559a4d7a3fce1aa72",
+        "seed": 21000300000,
+        "turns": 6,
+        "winner": 1
+      },
+      "command": [
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/addon-0.7.2/deckgym",
+        "simulate",
+        "--num",
+        "1",
+        "--players",
+        "k3,k3",
+        "--seed",
+        "21000300000",
+        "--results-output",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/hydreigon_pair_checks_2026-09-24/parity-full/cli/suicune-altaria-k3-k3__seed-21000300000/record",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/suicune.txt",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/altaria.txt"
+      ],
+      "deck_order": [
+        "suicune",
+        "altaria"
+      ],
+      "matched": true,
+      "players": [
+        "k3",
+        "k3"
+      ],
+      "seed": 21000300000
+    },
+    {
+      "addon": {
+        "points": [
+          1,
+          3
+        ],
+        "turns": 8,
+        "winner": 1
+      },
+      "case": "suicune-altaria-k3-k3",
+      "cli": {
+        "game_id": "95e95ab5-eb1e-4088-91d4-7cb65a3a86cc",
+        "points": [
+          1,
+          3
+        ],
+        "record_engine_version": "0.1.0-pdl.rules4",
+        "record_path": "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/hydreigon_pair_checks_2026-09-24/parity-full/cli/suicune-altaria-k3-k3__seed-21000300001/record/game_95e95ab5-eb1e-4088-91d4-7cb65a3a86cc.json",
+        "record_sha256": "aa3d7082348c5f86499adebb3aaa27165f78e379b9d79cfee9a7fed5df4872d7",
+        "seed": 21000300001,
+        "turns": 8,
+        "winner": 1
+      },
+      "command": [
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/addon-0.7.2/deckgym",
+        "simulate",
+        "--num",
+        "1",
+        "--players",
+        "k3,k3",
+        "--seed",
+        "21000300001",
+        "--results-output",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/hydreigon_pair_checks_2026-09-24/parity-full/cli/suicune-altaria-k3-k3__seed-21000300001/record",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/suicune.txt",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/altaria.txt"
+      ],
+      "deck_order": [
+        "suicune",
+        "altaria"
+      ],
+      "matched": true,
+      "players": [
+        "k3",
+        "k3"
+      ],
+      "seed": 21000300001
+    },
+    {
+      "addon": {
+        "points": [
+          2,
+          0
+        ],
+        "turns": 5,
+        "winner": 0
+      },
+      "case": "weezing-lucario-k2-k3",
+      "cli": {
+        "game_id": "6083115e-0842-458c-a808-1f335f504b91",
+        "points": [
+          2,
+          0
+        ],
+        "record_engine_version": "0.1.0-pdl.rules4",
+        "record_path": "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/hydreigon_pair_checks_2026-09-24/parity-full/cli/weezing-lucario-k2-k3__seed-21000300000/record/game_6083115e-0842-458c-a808-1f335f504b91.json",
+        "record_sha256": "3b5a3b8aa037db46f2e3bc0ec747978d24a9fde4ee6cdcd954b4f7b69e309560",
+        "seed": 21000300000,
+        "turns": 5,
+        "winner": 0
+      },
+      "command": [
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/addon-0.7.2/deckgym",
+        "simulate",
+        "--num",
+        "1",
+        "--players",
+        "k2,k3",
+        "--seed",
+        "21000300000",
+        "--results-output",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/hydreigon_pair_checks_2026-09-24/parity-full/cli/weezing-lucario-k2-k3__seed-21000300000/record",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/weezing.txt",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/lucario.txt"
+      ],
+      "deck_order": [
+        "weezing",
+        "lucario"
+      ],
+      "matched": true,
+      "players": [
+        "k2",
+        "k3"
+      ],
+      "seed": 21000300000
+    },
+    {
+      "addon": {
+        "points": [
+          1,
+          4
+        ],
+        "turns": 11,
+        "winner": 1
+      },
+      "case": "weezing-lucario-k2-k3",
+      "cli": {
+        "game_id": "59be8c7e-9cc5-45e9-8e12-c505c3d0e0ac",
+        "points": [
+          1,
+          4
+        ],
+        "record_engine_version": "0.1.0-pdl.rules4",
+        "record_path": "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/hydreigon_pair_checks_2026-09-24/parity-full/cli/weezing-lucario-k2-k3__seed-21000300001/record/game_59be8c7e-9cc5-45e9-8e12-c505c3d0e0ac.json",
+        "record_sha256": "4cb950bf610dd35eaa9acee8b41a3b67d28d6b01b26f9fa65626185d4f648aa1",
+        "seed": 21000300001,
+        "turns": 11,
+        "winner": 1
+      },
+      "command": [
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/addon-0.7.2/deckgym",
+        "simulate",
+        "--num",
+        "1",
+        "--players",
+        "k2,k3",
+        "--seed",
+        "21000300001",
+        "--results-output",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/hydreigon_pair_checks_2026-09-24/parity-full/cli/weezing-lucario-k2-k3__seed-21000300001/record",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/weezing.txt",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/lucario.txt"
+      ],
+      "deck_order": [
+        "weezing",
+        "lucario"
+      ],
+      "matched": true,
+      "players": [
+        "k2",
+        "k3"
+      ],
+      "seed": 21000300001
+    },
+    {
+      "addon": {
+        "points": [
+          2,
+          0
+        ],
+        "turns": 5,
+        "winner": 0
+      },
+      "case": "weezing-lucario-k3-k3",
+      "cli": {
+        "game_id": "5aefcb9a-5abb-4b83-9e3a-8b3ac20d4548",
+        "points": [
+          2,
+          0
+        ],
+        "record_engine_version": "0.1.0-pdl.rules4",
+        "record_path": "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/hydreigon_pair_checks_2026-09-24/parity-full/cli/weezing-lucario-k3-k3__seed-21000300000/record/game_5aefcb9a-5abb-4b83-9e3a-8b3ac20d4548.json",
+        "record_sha256": "4fe062c2a414b203059a10d6a6bd678d5a75492d9491b4548ca2d5e02455e0ea",
+        "seed": 21000300000,
+        "turns": 5,
+        "winner": 0
+      },
+      "command": [
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/addon-0.7.2/deckgym",
+        "simulate",
+        "--num",
+        "1",
+        "--players",
+        "k3,k3",
+        "--seed",
+        "21000300000",
+        "--results-output",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/hydreigon_pair_checks_2026-09-24/parity-full/cli/weezing-lucario-k3-k3__seed-21000300000/record",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/weezing.txt",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/lucario.txt"
+      ],
+      "deck_order": [
+        "weezing",
+        "lucario"
+      ],
+      "matched": true,
+      "players": [
+        "k3",
+        "k3"
+      ],
+      "seed": 21000300000
+    },
+    {
+      "addon": {
+        "points": [
+          1,
+          4
+        ],
+        "turns": 11,
+        "winner": 1
+      },
+      "case": "weezing-lucario-k3-k3",
+      "cli": {
+        "game_id": "be27c0fb-a70c-49a4-8b68-51b36794a278",
+        "points": [
+          1,
+          4
+        ],
+        "record_engine_version": "0.1.0-pdl.rules4",
+        "record_path": "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/hydreigon_pair_checks_2026-09-24/parity-full/cli/weezing-lucario-k3-k3__seed-21000300001/record/game_be27c0fb-a70c-49a4-8b68-51b36794a278.json",
+        "record_sha256": "a3883a0254dcc5d0b9188032a2fa05862ffecb4c061940571b71635da03c280e",
+        "seed": 21000300001,
+        "turns": 11,
+        "winner": 1
+      },
+      "command": [
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/addon-0.7.2/deckgym",
+        "simulate",
+        "--num",
+        "1",
+        "--players",
+        "k3,k3",
+        "--seed",
+        "21000300001",
+        "--results-output",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/hydreigon_pair_checks_2026-09-24/parity-full/cli/weezing-lucario-k3-k3__seed-21000300001/record",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/weezing.txt",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/lucario.txt"
+      ],
+      "deck_order": [
+        "weezing",
+        "lucario"
+      ],
+      "matched": true,
+      "players": [
+        "k3",
+        "k3"
+      ],
+      "seed": 21000300001
+    }
+  ],
+  "status": "passed"
+}

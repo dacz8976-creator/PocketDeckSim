@@ -1,0 +1,191 @@
+{
+  "by_action_kind": {
+    "Activate": {
+      "count_checked": 59,
+      "flag_checked": 25,
+      "flag_skip_changed_active": 34,
+      "layout_checked": 59,
+      "offered": 59
+    },
+    "ApplyDamage": {
+      "count_checked": 66,
+      "flag_checked": 66,
+      "layout_checked": 66,
+      "offered": 66
+    },
+    "Attach": {
+      "count_checked": 2875,
+      "flag_checked": 2865,
+      "flag_skip_ended": 10,
+      "layout_checked": 2875,
+      "offered": 2875
+    },
+    "AttachTool": {
+      "count_checked": 145,
+      "flag_checked": 145,
+      "layout_checked": 145,
+      "offered": 145
+    },
+    "Attack": {
+      "count_checked": 634,
+      "count_skip_unpriced": 202,
+      "flag_checked": 487,
+      "flag_skip_ended": 48,
+      "flag_skip_pending_choice": 99,
+      "flag_skip_unpriced": 202,
+      "layout_checked": 836,
+      "offered": 836
+    },
+    "DiscardActiveStadium": {
+      "count_checked": 12,
+      "flag_checked": 12,
+      "layout_checked": 12,
+      "offered": 12
+    },
+    "DiscardOpponentSupporter": {
+      "count_checked": 18,
+      "flag_checked": 7,
+      "flag_skip_ended": 2,
+      "flag_skip_pending_choice": 9,
+      "layout_checked": 18,
+      "offered": 18
+    },
+    "DiscardToolFromPokemon": {
+      "count_checked": 35,
+      "flag_checked": 35,
+      "layout_checked": 35,
+      "offered": 35
+    },
+    "EndTurn": {
+      "count_checked": 1848,
+      "count_skip_unpriced": 10,
+      "flag_checked": 1791,
+      "flag_skip_ended": 46,
+      "flag_skip_pending_choice": 11,
+      "flag_skip_unpriced": 10,
+      "layout_checked": 1858,
+      "offered": 1858
+    },
+    "Evolve": {
+      "count_checked": 314,
+      "flag_checked": 203,
+      "flag_skip_changed_active": 111,
+      "layout_checked": 314,
+      "offered": 314
+    },
+    "Heal": {
+      "count_checked": 16,
+      "flag_checked": 16,
+      "layout_checked": 16,
+      "offered": 16
+    },
+    "Place": {
+      "count_checked": 801,
+      "flag_checked": 783,
+      "flag_skip_changed_active": 18,
+      "layout_checked": 801,
+      "offered": 801
+    },
+    "Play": {
+      "count_checked": 2606,
+      "count_skip_unpriced": 443,
+      "flag_checked": 1934,
+      "flag_skip_changed_active": 33,
+      "flag_skip_mixed_chance_boundaries": 1,
+      "flag_skip_pending_choice": 638,
+      "flag_skip_unpriced": 443,
+      "layout_checked": 3049,
+      "offered": 3049
+    },
+    "Promote": {
+      "count_checked": 69,
+      "flag_skip_changed_active": 65,
+      "flag_skip_ended": 4,
+      "layout_checked": 69,
+      "offered": 69
+    },
+    "Retreat": {
+      "count_checked": 1619,
+      "flag_checked": 115,
+      "flag_skip_changed_active": 1503,
+      "flag_skip_ended": 1,
+      "layout_checked": 1619,
+      "offered": 1619
+    },
+    "UseAbility": {
+      "count_skip_self_damage": 577,
+      "flag_checked": 567,
+      "flag_skip_pending_choice": 10,
+      "layout_checked": 577,
+      "offered": 577
+    }
+  },
+  "elapsed_seconds": 74.1877224589989,
+  "examples": [],
+  "identity": {
+    "action_dim": 170,
+    "addon_version": "0.7.2",
+    "chance_seeds_per_action": [
+      1592590336,
+      1592590337,
+      1592590338,
+      1592590339
+    ],
+    "decks": {
+      "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/hydreigon.txt": "6ea0042236b4844458a1b2d0f0e6cefb4c50ce0148a38aded1162f4d27e935e9",
+      "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/lucario.txt": "46a4820bc788b4fd9ac1d9491e62bf7123c467441e7e30012e42e8a70c91e3f3"
+    },
+    "diagnostics_available": true,
+    "extensions": {
+      "/home/dacz8976/.cache/pocket-deck-lab/run5-venv/lib/python3.14/site-packages/pdl_rl_env.abi3.so": "0fee43ceaf9cf6bc15ed2319bb08c100397621a60703880cf26ace8f044a9101"
+    },
+    "games": 20,
+    "module": "/home/dacz8976/.cache/pocket-deck-lab/run5-venv/lib/python3.14/site-packages/pdl_rl_env.abi3.so",
+    "module_sha256": "0fee43ceaf9cf6bc15ed2319bb08c100397621a60703880cf26ace8f044a9101",
+    "observation_dim": 577,
+    "python": "/home/dacz8976/.cache/pocket-deck-lab/run5-venv/bin/python",
+    "schema": 1,
+    "script_sha256": "1d16548c7d55ffe9c77ed962798ba478daf110ababaeab3900cb6e02c5317528",
+    "seed": 21000200000,
+    "vocab": [
+      "A1 154",
+      "A1 225",
+      "A2 092",
+      "A2 150",
+      "A2b 070",
+      "A3 144",
+      "B1 151",
+      "B1 155",
+      "B1 157",
+      "B1 225",
+      "B2 145",
+      "B2 147",
+      "B3 078",
+      "B3 079",
+      "B3 081",
+      "B3 115",
+      "B3 147",
+      "B3 149",
+      "B3 154",
+      "B4 148",
+      "P-A 002",
+      "P-A 005",
+      "P-A 007"
+    ]
+  },
+  "passed": true,
+  "scope": "All offered moves; four sampled chance streams for eligible loss flags. Terminal, pending, changed-active and stochastic boundaries explicitly skipped. This audit does not validate every points/win forecast.",
+  "totals": {
+    "count_checked": 11117,
+    "count_skip_self_damage": 577,
+    "count_skip_unpriced": 655,
+    "flag_checked": 9051,
+    "flag_skip_changed_active": 1764,
+    "flag_skip_ended": 111,
+    "flag_skip_mixed_chance_boundaries": 1,
+    "flag_skip_pending_choice": 767,
+    "flag_skip_unpriced": 655,
+    "layout_checked": 12349,
+    "offered": 12349
+  }
+}

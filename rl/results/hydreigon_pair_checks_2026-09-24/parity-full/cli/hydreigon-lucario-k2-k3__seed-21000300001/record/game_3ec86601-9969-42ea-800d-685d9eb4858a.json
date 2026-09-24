@@ -1,0 +1,93 @@
+{
+  "schema": "pdl-game-result/v1",
+  "game_id": "3ec86601-9969-42ea-800d-685d9eb4858a",
+  "engine_version": "0.1.0-pdl.rules4",
+  "randomness": {
+    "scheme": "pdl-search-v1/rand-0.8-StdRng",
+    "game_seed": 21000300001,
+    "player_search_seeds": [
+      8125406599667144846,
+      10437661003351924716
+    ]
+  },
+  "outcome": {
+    "Win": 1
+  },
+  "state_winner": {
+    "Win": 1
+  },
+  "completion": "completed",
+  "lifecycle_errors": 0,
+  "plies": 62,
+  "actions_by_player": [
+    29,
+    33
+  ],
+  "final_turn": 8,
+  "final_points": [
+    1,
+    4
+  ],
+  "matchup": {
+    "decks": [
+      {
+        "card_ids": [
+          "B1 155",
+          "B1 155",
+          "B1 157",
+          "B1 157",
+          "B3 115",
+          "B1 151",
+          "P-A 007",
+          "P-A 007",
+          "B1 225",
+          "B1 225",
+          "A2 150",
+          "A1 225",
+          "P-A 005",
+          "P-A 005",
+          "A3 144",
+          "A3 144",
+          "B2 145",
+          "B2 145",
+          "B4 148",
+          "B4 148"
+        ],
+        "energy_types": [
+          "Darkness"
+        ]
+      },
+      {
+        "card_ids": [
+          "B3 079",
+          "B3 079",
+          "B3 081",
+          "B3 081",
+          "A2 092",
+          "B3 078",
+          "A1 154",
+          "P-A 007",
+          "P-A 007",
+          "B1 225",
+          "B1 225",
+          "B3 149",
+          "A2b 070",
+          "A2 150",
+          "P-A 005",
+          "P-A 005",
+          "B3 147",
+          "P-A 002",
+          "B2 147",
+          "B3 154"
+        ],
+        "energy_types": [
+          "Fighting"
+        ]
+      }
+    ],
+    "player_codes": [
+      "K { max_depth: 2 }",
+      "K { max_depth: 3 }"
+    ]
+  }
+}
