@@ -85,3 +85,46 @@ impl Player for ListAwarePlayer {
         self.search.get_deck()
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::super::{get_player, PlayerCode};
+    use crate::{Deck, Game};
+
+    /// With an empty opponent list and one sample, `b3` must be `k3` exactly, game for game, on the
+    /// Sept 23 table's deals: the same value function, search settings and random streams, and a guess
+    /// that fills nothing. Then every difference a b-tier shows comes from the guess alone. Both bots
+    /// come from the production constructor. PDL_EQUIV_DEALS sets the deals per pairing (default 12).
+    #[test]
+    fn b3_with_an_empty_list_plays_k3_game_for_game() {
+        let names = ["altaria", "blaziken", "hydreigon", "lucario", "sceptile", "suicune", "vespiquen", "weezing"];
+        let deals: u64 = std::env::var("PDL_EQUIV_DEALS").ok().and_then(|v| v.parse().ok()).unwrap_or(12);
+        let pairs: Vec<(usize, usize)> = (0..8).flat_map(|a| (a + 1..8).map(move |b| (a, b))).collect();
+        let deck = |n: usize| Deck::from_file(&format!("../decks/research/{}.txt", names[n])).unwrap();
+        let empty = Deck::default();
+        let k3 = PlayerCode::K { max_depth: 3 };
+        let b3 = PlayerCode::B { max_depth: 3, opponent_ply: 0, samples: 1 };
+        // Hydreigon v Lucario, Sceptile v Vespiquen, Altaria v Blaziken; the table's seed and seat rule.
+        for pairing in [13usize, 23, 0] {
+            let (a, b) = pairs[pairing];
+            for i in 0..deals {
+                let seed = 72_000_000 + pairing as u64 * 10_000 + i;
+                let (d0, d1) = if i % 2 == 0 { (a, b) } else { (b, a) };
+                let play = |code: &PlayerCode| {
+                    let players = vec![get_player(deck(d0), &empty, code), get_player(deck(d1), &empty, code)];
+                    let mut game = Game::new(players, seed);
+                    let mut moves = Vec::new();
+                    while !game.is_game_over() {
+                        moves.push(game.play_tick());
+                    }
+                    (moves, game.get_state_clone().winner)
+                };
+                let (k3_moves, k3_winner) = play(&k3);
+                let (b3_moves, b3_winner) = play(&b3);
+                assert_eq!(k3_moves.len(), b3_moves.len(), "seed {seed}: game lengths differ");
+                assert!(k3_moves == b3_moves, "seed {seed}: the moves differ");
+                assert_eq!(k3_winner, b3_winner, "seed {seed}");
+            }
+        }
+    }
+}
