@@ -51,9 +51,9 @@ sys.path.insert(0, str(HERE))
 from model import MLP  # noqa: E402
 from pdl_env import PocketEnv  # noqa: E402
 
-ROOT = HERE.parent.parent
+ROOT = HERE.parent  # the repo root (on the laptop this file sat two folders down)
 HIDDEN = (512, 256)
-STUDY = "Boss Folder/competitive-deck-study-2026-09-08/round-robin-checkpoint/reports/research/decks"
+STUDY = "decks/research"  # the Sept 8 study lists, copied byte for byte
 DECKS = {}  # {"paths": {name: absolute path}, "features": name}; set once from the run's settings in every process
 
 POOL = {  # name -> path from the project root; the order is fixed and used everywhere

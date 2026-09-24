@@ -1,0 +1,28 @@
+# Build output
+target/
+__pycache__/
+*.pyc
+*.so
+*.pyd
+*.whl
+wheels/
+
+# Python environments
+.venv/
+venv/
+
+# Secrets
+.env
+
+# Training runs: keep the plain-words STATUS.txt and REPORT.txt; checkpoints, game records
+# and logs stay on the machine that made them (they're large and change constantly).
+rl/runs/*.log
+rl/runs/*/*
+!rl/runs/*/STATUS.txt
+!rl/runs/*/REPORT.txt
+
+# OS and editor clutter
+.DS_Store
+Thumbs.db
+desktop.ini
+~$*

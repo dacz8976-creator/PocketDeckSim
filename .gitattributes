@@ -1,0 +1,2 @@
+# Shell scripts keep Unix line endings so bash in WSL can run them after a Windows checkout.
+*.sh text eol=lf
