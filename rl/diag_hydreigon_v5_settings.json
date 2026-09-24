@@ -1,0 +1,63 @@
+{
+ "pool": {
+  "hydreigon": "Boss Folder/competitive-deck-study-2026-09-08/round-robin-checkpoint/reports/research/decks/hydreigon.txt",
+  "lucario": "Boss Folder/competitive-deck-study-2026-09-08/round-robin-checkpoint/reports/research/decks/lucario.txt"
+ },
+ "pairing_weights": {
+  "hydreigon|lucario": 1.0
+ },
+ "budget": 2000000,
+ "checkpoints": [
+  100000,
+  200000,
+  400000,
+  600000,
+  800000,
+  1000000,
+  1200000,
+  1400000,
+  1600000,
+  1800000,
+  2000000
+ ],
+ "floors": [],
+ "held_out": {},
+ "criteria": null,
+ "stop_on_level_off": false,
+ "avg_half_life_games": 100000,
+ "eval_k3_per_matchup": 1000,
+ "eval_random": 200,
+ "eval_random_per_matchup": 200,
+ "confirm_per_matchup": 2000,
+ "bar_per_pairing": 2000,
+ "seeds": {
+  "train": 10000000000,
+  "k3": 13000000000,
+  "random": 13100000000,
+  "confirm": 13200000000,
+  "transfer": 13300000000
+ },
+ "draw_gate_at": 250000,
+ "draw_window": 20000,
+ "draw_gate_max": 0.1,
+ "shaping_off_below": 0.05,
+ "eps_early": 0.1,
+ "eps_late": 0.05,
+ "eps_switch": 1000000,
+ "past_share": 0.2,
+ "lr": 0.0001,
+ "batch": 512,
+ "buffer": 40000,
+ "min_buffer": 4000,
+ "uses_target": 2.0,
+ "publish_every": 50,
+ "gamma": 0.97,
+ "level_window": 3,
+ "level_spread": 0.03,
+ "level_prev_max": 0.55,
+ "runner_up_gap": 0.02,
+ "checkup_report": {
+  "winnable_q": -0.5
+ },
+ "features": "v2.2"
+}

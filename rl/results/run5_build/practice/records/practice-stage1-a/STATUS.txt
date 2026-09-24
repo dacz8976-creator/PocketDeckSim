@@ -1,0 +1,62 @@
+Run 5 trainer (one network per deck, encoding v2.2) — practice-stage1-a   (updated 2026-09-23 01:31)
+Networks: weezing, lucario · each pilots only its own deck · the 1 pairing between them, evenly
+State: FINISHED — every network leveled off at 3,000 games; best confirmed checkpoint per network weezing ckpt_2k (-15.0), lucario ckpt_3k (-40.0). The report steps (audit, REPORT.txt) run next, automatically
+
+The bars: k3's own win rate piloting the row deck against k3 piloting the column deck
+(20 games per pairing, on the confirmation seeds):
+             weezing  lucario
+  weezing          —      35%
+  lucario        65%        —
+
+Games played: 3,000 (safety cap 4,000) · 3 min of training + 0.0 h of evaluation · 20 games/sec lately
+Trainer: each recorded move trained on 2.0 times lately (2.0 overall); target 2. Under 1 means the trainer is falling behind (try fewer workers).
+Turn-limit draws in training, last 500 games: 0.6% (started at 44%). Tiebreak shaping: off.
+Draw gate at 1,000 games: passed (28.4%; needed under 95% and below the start)
+Training games vs earlier checkpoints: the current networks won 55% of 593
+
+Checkpoints. Each network's margin = its win rate minus k3's own result in the same matchup,
+averaged over its 1 matchup (20 games each, seeds the confirmation never uses).
+'vs previous' = of the games this checkpoint and the one before it decided differently, the share this one
+won (50% = no change). 'vs random' = against uniformly random moves.
+
+  checkpoint                 weezing               lucario
+                 margin  prev random   margin  prev random
+  ckpt_1k         -30.0    50%  100%    -65.0    50%   12%
+  ckpt_2k         -20.0    75%  100%    -55.0   100%  100%
+  ckpt_3k         -30.0     0%  100%    -50.0   100%  100%
+
+Averaged copy (run 5): updated every time a network's live weights are published, avg = decay x avg + (1 - decay) x live, decay = 0.5 ** (games since that network's last update / 100,000), a half-life of about 100,000 games. It never plays training games, is never a past opponent and is never trained; level-off and stopping read the live networks only. Same seeds and seats as the live evaluation.
+
+  checkpoint          weezing live / avg        lucario live / avg
+  ckpt_1k             -30.0    -35.0 (12%)        -65.0    -65.0 (0%)
+  ckpt_2k             -20.0    -35.0 (12%)        -55.0    -65.0 (0%)
+  ckpt_3k             -30.0    -35.0 (25%)        -50.0    -65.0 (0%)
+
+Margin by matchup at ckpt_3k (points; row = the deck's own network, column = k3's deck):
+             weezing  lucario
+  weezing          —      -30
+  lucario        -50        —
+Best checkpoint per network: weezing ckpt_2k (-20.0), lucario ckpt_3k (-50.0)
+Leveled off (per network) = 3 checkpoints in a row within 90 points of each other, with the newest winning no more than 100% of the games it and the one before it decided differently. It is re-read at every checkpoint and is not sticky: the run ends when every network is leveled off at the same checkpoint, or at the cap.
+Leveled off so far: weezing, lucario
+
+Confirmation of weezing's ckpt_2k (paired with the bars): margin -15.0 points over its 1 matchup; lowest weezing vs lucario -15.0.
+    weezing vs lucario      -15.0
+
+Confirmation of weezing's ckpt_1k (paired with the bars): margin -25.0 points over its 1 matchup; lowest weezing vs lucario -25.0.
+    weezing vs lucario      -25.0
+
+Confirmation of lucario's ckpt_3k (paired with the bars): margin -40.0 points over its 1 matchup; lowest lucario vs weezing -40.0.
+    lucario vs weezing      -40.0
+
+Confirmation of lucario's ckpt_2k (paired with the bars): margin -50.0 points over its 1 matchup; lowest lucario vs weezing -50.0.
+    lucario vs weezing      -50.0
+
+Best confirmed checkpoint per network (live or averaged): weezing ckpt_2k, lucario ckpt_3k. No pass/fail rule in code; the decision is read from REPORT.txt.
+
+Flags:
+  - resumed at 1,000 games from the last save (2026-09-23 01:29); games after that save were lost
+  - resumed at 2,000 games from the last save (2026-09-23 01:30); games after that save were lost
+  - tiebreak shaping switched off at 3,000 games (turn-limit draws under 5% at two checks in a row)
+
+The full report: REPORT.txt (verdict, confirmations, audit and held-out test).

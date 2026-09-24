@@ -1,0 +1,12 @@
+Rules limitation (reviewed September 21, 2026):
+  This frozen add-on offers a turn-1 evolution of Benched Swablu into Mega Altaria ex
+  when Eevee is Active. Eevee's exception should apply only to Eevee. This was reproduced
+  with this run's add-on and decks; its frequency and effect on results were not measured.
+  Altaria rows AND columns, including averages containing them, describe this faulty
+  simulator. They do not validate Altaria's real-game strength or the bots' handling of it.
+  The other networks also trained against this opponent, so effects can extend beyond
+  direct Altaria matchups. Shared rule errors need not affect k3 and the networks equally.
+  The pass/fail below retains the original experiment's numerical rules. It is not a
+  real-game usability verdict. Altaria must not count as validated usable until retrained
+  and reevaluated on a corrected engine. Run 5's pool must follow a corrected k3 screen.
+

@@ -1,0 +1,268 @@
+# Run 5: does a learned position score make k3's search better? (one matchup)
+
+Written September 22, 2026. Owner: Dustin. Lead: Opus. Code review: Astra.
+**Status (Sept 23, closed): step 0 GO; stage 1 finished (Weezing +3.2 over k3, averaged copy); stage 2 dropped. Plan after Run 5 at the end — revised Sept 24.** History and every earlier result are in
+`FEASIBILITY.md`. This page is meant to be read on its own.
+
+## The question, and why this one first
+
+Can the network's judgment, used as the score at the end of k3's own look-ahead, beat k3 in a
+matchup where deeper search pays? Search comes first on purpose:
+- It's the only lever with a chance of moving the decks that reward calculation. Weezing and Suicune
+  were the two networks under k3 in run 4, and they're the decks where k3 gains most over k2.
+- Calculation is a prerequisite for piloting those decks at all.
+- The other big gap is facing unfamiliar decks (every run 4 network lost ground to k3 against
+  Ninetales). That's a problem with the scorer's inputs, not with search. It's queued as the run 6
+  question: describe cards by what they are (HP, type, attack cost and damage) instead of by card
+  number. Per-deck networks keyed to card numbers won't survive new sets. Eight meta decks would
+  need about 17M games at run 4's rate, and would still know nothing about the next set.
+
+## Matchup (decided)
+
+**The network pilots Weezing against k3 piloting Lucario.** On rules4 over 1,000 paired games, k3
+piloting Weezing wins 46.9% and k2 wins 36.8%, so depth is worth 10.1 points here. In run 4 (old
+engine) the Weezing network was 6.5 points under k3 in this matchup. Astra's chosen-pair checks on
+this pair all passed on add-on 0.7.2: replays, hidden cards, forecasts with skipped counts, and
+choice encoding (`results/astra-review/rules4-addon-recheck-2026-09-22/`).
+
+Why Weezing [inference]: its Poison and Burn pay off over later turns. A hand-written position score
+prices that roughly; a score learned from game results might not.
+
+**Accepted rules limits for this pair.** They're reported with every result.
+- Reverse Thrust's delayed knockout: the forecast was fixed in 0.7.1/0.7.2.
+- Hoopa's self-knockout finish: the observed tie case is fixed. Broader simultaneous-finish variants
+  are still unconfirmed.
+- Open question #22: a Checkup on turn 30.
+- Open question #24: how random deck searches are weighted.
+
+**Fallback:** the network pilots Weezing against k3 piloting Suicune. There, k3 wins 38.0% and k2
+18.9%, a 19.1-point gap. It's used only if stage 1 shows the plain network already clearly ahead of
+k3 in Weezing vs Lucario, and it needs its own chosen-pair checks first.
+
+## Step 0: regression pilot (no new code, about 1.2 h)
+
+Run 4's pilot settings, unchanged: Blaziken vs Lucario, two networks, encoding v2.2, 300,000 games.
+The only difference is rules4 and add-on 0.7.2, in a new run folder. Run 4's pilot confirmed
+**+10.2** at 250k. This checks whether the new setup still learns; it isn't a strength claim, since
+the rules changed and an exact match isn't expected.
+- **Go:** Blaziken's confirmed margin is **+5 or better**.
+- **Below +5:** find out why before stage 1.
+
+## Stage 1: plain network on the corrected engine
+
+- Same trainer and settings as run 4: two networks, one per side, learning from final results only,
+  encoding v2.2, 20% of games against past versions. One pairing: Weezing vs Lucario.
+- **One code change:** keep a running average of each network's weights over roughly the last 100,000
+  games (exact setting recorded in the build). Evaluate it beside the live weights at every checkpoint,
+  on the same seeds. It never feeds back into training.
+- **Learning-rate decay stays out.** It changes training, and this run changes one training thing at a
+  time: none.
+- **Budget:**
+  - a safety cap of 2M games (about 8 h plus evaluation, estimated);
+  - checkpoints at 100k and then every 200k;
+  - **runs to the 2M cap** (changed Sept 23, see below). Level-off is reported, not used to stop;
+  - the draw gate as before.
+- **Evaluation at each checkpoint:** 1,000 paired games against k3 per network (500 per seat), for
+  live and averaged weights, plus 200 against random moves.
+- **Confirmation:** Weezing's best checkpoint (live or averaged, whichever is higher), plus a runner-up
+  within 2 points. Each is played on 2,000 fresh paired seeds from a new seed range, followed by the
+  existing knockout audit.
+- **What it decides:**
+  - Plain Weezing margin **below +5** over k3: stage 2 runs on this matchup.
+  - **+5 or more:** record it (the plain network already beats k3 here) and move stage 2 to the fallback.
+  - **Dropped Sept 23, 6:05 PM, before the confirmation ran:** no switch to the fallback. See the decision below.
+- **Averaging verdict** (descriptive, read from 400k on): does the averaged copy score higher, and does it move less
+  between checkpoints than the live one? This decides whether averaging becomes the default later.
+
+## Stage 2: the learned score inside k3's search
+
+k3 looks ahead up to three of its own moves within the turn, then scores the resulting position with a
+hand-written formula. It never searches the opponent's reply. Stage 2 replaces only that formula.
+
+1. **Position scorer.** A separate small network that reads the Weezing player's own view and predicts
+   the result.
+   - **Training data:** games between stage 1's confirmed networks (with the usual 5% random moves),
+     recorded at every decision point in the game, on both players' turns, with the final result.
+     Stage 1's network is not changed.
+   - **Finished games** score exactly +1 / −1 / 0, because k3 scores finished games through the same
+     function and the scales must match.
+   - **Hidden cards:** it reads only its own player's view, so k3's search over a guessed board can't
+     leak the opponent's hand.
+   - **Speed watch:** the view includes the v2 threat numbers, and each of those runs a small
+     look-ahead. If that makes scoring each position too slow, the scorer drops them.
+   - **Known risk** [inference]: it learns from network-vs-network games but is used in games against
+     k3. Training it on games against k3 would be tuning to the exam, so it isn't done.
+2. **Runs inside the engine** (Rust), not a Python call per position. It must match the Python version
+   to within 0.00001 on sampled positions.
+3. **Gate, connection test:** the new search with **k3's own formula** plugged in must reproduce k3 game
+   for game, over 100 seeds in both seats, every decision and every final state. Any mismatch stops
+   stage 2.
+4. **Speed, measured before any evaluation:** positions scored per decision, and seconds per game
+   compared with k3.
+   - Target: at most 3× k3's time.
+   - Over 10× after the simple fixes (batching, a smaller scorer): stop and redesign.
+5. **Evaluation.** A fresh seed range, 2,000 paired games (1,000 per seat), all against k3 piloting
+   Lucario. Three pilots of Weezing:
+   - (a) k3;
+   - (b) stage 1's plain network;
+   - (c) k3's search with the learned scorer.
+
+## What counts (fixed now, before anything runs)
+
+- **Success:** (c) beats (a) by **+5 points or more**, with the paired 95% interval above zero. Next
+  would be an unfamiliar opponent and a second matchup.
+- **Helps, but not enough:** (c) beats (b) by 5 or more but doesn't beat (a) by 5. The learned scorer
+  helps the network but isn't yet better than k3's formula. One follow-up is allowed (more scorer
+  data), then decide.
+- **Failure:** (c) is not better than (b). That rejects this implementation and budget, not learned
+  search in general.
+- **Why 2,000 games:** a paired margin at run 4's rate of games decided differently (about 40%) is
+  roughly ±3 points at 95% [estimate].
+
+## Lead's decisions after the build (Sept 23)
+
+The build is in `results/run5_build/` (`BUILD_NOTES.md`). Step 0 runs on `train_v5.py` with averaging
+off, because `train_v4.py` can't find add-on 0.7.2's single-file install. Its game lists, seeds and
+game-playing code match run 4's pilot.
+
+1. **Stage 1 runs to its 2M cap. It doesn't stop when the networks level off.** Run 4's level-off rule
+   was set for checkpoints 500k apart. At this page's 100k/200k spacing it could stop the run at 400k
+   games. That would leave the plain Weezing network undertrained, and stage 2's "beats the plain
+   network" comparison would be too easy. Laptop time is cheap, so the cap it is. Level-off is still
+   reported. (My spec error; one small setting and code change for the builder.)
+2. **Step 0 keeps run 4's pilot seeds.** For a check of whether the new setup still learns, the same
+   games with only the rules and add-on changed is the cleaner comparison. It isn't a fresh-sample
+   strength claim.
+3. **No held-out row in stage 1.** Unfamiliar opponents are run 6's question.
+4. **The averaged copy starts at the untrained network** (my formula). The start still counts for 50%
+   at 100k and 6% at 400k, so the averaging verdict is read from 400k on. No code change.
+5. **If an averaged checkpoint is confirmed best,** it's stage 1's plain network for stage 2: it's
+   baseline (b) and it plays the games the scorer learns from. It went through the same confirmation.
+6. **Step 0 stays at +5 or better to go on,** read by the lead before stage 1 starts.
+
+**Step 0 result (Sept 23, 11:07): GO.** Blaziken ckpt_250k confirmed at **+10.7** over k3 on 1,000 paired
+games (58.1% vs 47.4%; runner-up ckpt_200k +8.7). Habits are close to run 4's pilot: attacked 88% of offered turns
+(run 4 90%), skipped 26% of benching chances (22%), missed 4.5% of sure knockouts (3.5%), no sure wins missed.
+Lucario's network confirmed at +3.5 (run 4's pilot: −1.5). Both lose to k3 against held-out Ninetales (−12.3, −13.0;
+300 games each). Report: `runs/run5-step0-blaziken-lucario/REPORT.txt`. The new setup learns as before.
+
+**Decided Sept 23, 6:05 PM, before stage 1's confirmation ran (lead, after the independent audit):**
+- **No switch to the Suicune fallback, whatever the confirmation shows.** At 1.6M the averaged Weezing copy scored
+  +5.8, right on the old line, and the confirmation is only accurate to about ±3. Stage 2's comparisons against k3
+  and against the plain network stay meaningful at any plain-network margin. The switch would cost another round of
+  Astra checks and a 9-hour run over half a point of noise. This is decided before the confirmed number exists.
+- **The stage 2 build is on hold** until Dustin decides on the audit's proposal: measure whether better piloting moves
+  the simulator's matchup table toward Limitless before building more against k3.
+
+**Stage 1 result (Sept 23, 19:09): finished at the 2M cap.** Report: `runs/run5-stage1-weezing-lucario/REPORT.txt`.
+- **Weezing:** best confirmed checkpoint **ckpt_1800k_avg, +3.2 over k3** on 2,000 fresh paired games (51.7% vs 48.5%;
+  351 vs 287 games won only by one side). The runner-up ckpt_1600k_avg confirmed at +2.3. Both were +5.3 and +5.8 on
+  their 1,000-game checkpoint scores; the confirmation took the usual 2–3 points off the best-of-many. Under +5, so the
+  dropped fallback switch would not have fired anyway. Run 4's Weezing network was −6.5 here on the old engine.
+- **Weezing habits vs k3 piloting Weezing:** attacked 86% (k3 92%), benched 66% (k3 95%), missed 45 of 999 sure
+  knockouts (k3 58 of 893), missed 8 of 787 sure wins (k3 0).
+- **Lucario:** ckpt_1800k_avg confirmed at **+25.6** (76.8% vs 51.2%). Benched only 54% (k3 92%), 3.2 checkup deaths
+  per 1,000 turns (k3 0.5): a much better Lucario strategy than k3's exists in this matchup, with sloppy habits intact.
+- **Averaging verdict (read from 400k on):** the averaged copy scored higher than the live one at all 9 checkpoints from
+  400k, for both networks, and both confirmed winners are averaged copies. For Weezing it also moved less between
+  checkpoints (about 1.5 points on average vs the live copy's 2.4); for Lucario about the same (1.5 vs 1.7 from 600k).
+  The report's own 'average change' line counts the 100k–400k warm-up, when the average is still mostly the untrained
+  start, so it overstates how much the averaged copy moves. Verdict: averaging helps; make it the default.
+- **For the Limitless comparison (part 2):** use ckpt_1800k_avg for both Weezing and Lucario. The pair is lopsided
+  (+3.2 vs +25.6 over k3), so network vs network will lean toward Lucario for pilot skill, not just the matchup.
+
+## After Run 5: the plan (decided Sept 23 with Dustin)
+
+The independent audit asked whether beating k3 makes the simulator more realistic. The Limitless check
+(`results/limitless_check_2026-09-23.md`: 111 B4a tournaments, 25,143 matches) answered what it could:
+- **k3 vs k3 on rules4 is a usable coarse filter:** favorite right in 23 of 28 top-deck matchups (15 of 16 clearly
+  one-sided), typical real miss about 9 points, and 9 matchups off by more than chance. Altaria is underrated
+  in four, Sceptile overrated, Vespiquen underrated.
+- **Trained bots told us little:** bot vs bot ended closer to Limitless in Blaziken–Lucario (2.0 vs k3's 5.9 off) and
+  further away in Weezing–Lucario (9.7 vs 6.4). k3 was already inside Limitless's range in both. The mixed rows
+  show the Weezing–Lucario result is mostly Lucario's much stronger pilot, and a bot's margin over k3 didn't
+  predict its head-to-head result.
+
+**Decisions (Sept 23; items 3 and 4 are now done or dropped, see the Sept 24 revision below):**
+1. **Stage 2 as designed is dropped.** A scorer trained on one matchup with card numbers doesn't serve the goal.
+2. **The Limitless table is the scoreboard.** Any change to piloting or lists gets re-scored against it
+   (about 1.5 h of cloud time, no Fable or Astra).
+3. Multi-list check of the suspect decks — **done Sept 24:** list drift is ruled out (see `results/limitless_check_2026-09-23.md`).
+4. Option B (k3 guesses the opponent's hand and searches their reply) — **dropped Sept 24** (see below).
+5. **Run 6 is the long bet:** one bot that reads cards by what they are and plays every deck.
+6. **Weight averaging is the default** in any future training.
+
+## The plan, revised Sept 24 (Dustin, after reviews by Fable, Astra and Opus)
+
+Since Sept 23: the list refresh ruled out list drift; the deeper-search table showed k4/k5/k6 don't move the
+systematic misses (`results/deep_search_table/STATUS.txt`); the Hyper Ray count showed a k3 valuation blind spot,
+not a rules error, and the d3 damage-weighted formula has the same blind spot; the existing reply search was found
+to be inert (296 of 300 games identical with it on and off).
+
+**How to read the table.** Observed average miss is 9.3; the floor for a perfect simulator, from Limitless's own
+sample sizes, is about 4.0; the simulator's real error after removing chance is about 8.8. Errors don't subtract.
+**Target: about 6 points observed and 3–4 pairings beyond chance** — roughly halving the real error, not chasing
+the floor. The table is development data and a proxy (mixed BO1/BO3, tournament population); matching it is not
+proof of human-level play. What matters for deck testing is a pilot that is *equally* competent with every deck,
+not a stronger pilot overall. Whether the remaining misses come from play, from a card's engine behaviour, or from
+who plays these decks on Limitless is **open** — nothing so far separates the three.
+
+**Order of work.**
+1. **Ladder games when time allows** (Dustin): a few a week, concentrated on one brew at a time until it has 20–30
+   games, rather than spread across many decks. Each game plus recording takes about 15 minutes, so this is a slow
+   signal, not a gate — nothing below waits on it. Brew-06 has never been played; the Ladder Log's last entry is Sept 16.
+2. **Tonight: the Hydreigon network run** (lead). Read three ways: does it chip with Hyper Ray, does it gain over
+   k3, and does the Hydreigon v Lucario cell move toward 54.4 real — including network v network, since a bot can
+   gain over k3 and take a matchup further from reality (part 2 of the Limitless check).
+   - **Setup:** run folder `runs/diag-hydreigon-lucario`; settings `diag_hydreigon_v5_settings.json` (stage 1's
+     settings with Hydreigon in Weezing's place). Seeds: training 10,000,000,000+, evaluation 13.0–13.3 billion,
+     clear of the 72M/73M Limitless-check games, stage 1 and the practice block (9.0–9.8 billion). The launcher
+     files any folder outside Run 5 under its practice rule, which only means seeds of 9 billion or more.
+   - **Rows:** the standard confirmation gives network Hydreigon v k3 Lucario, k3 Hydreigon v network Lucario and
+     k3 v k3 on the same seeds. The auditor adds network v network and the Hyper Ray count afterwards, and runs the
+     pair checks (his check, not Astra's); the result isn't read until they pass. Benching is in the report.
+   - **Reading, set before it runs:** chips with Hyper Ray and gains 10+ over k3 → learning finds the play k3
+     misses; chips but lands near k3 → check its benching before concluding; gains without chipping → the gain is
+     elsewhere; neither → ambiguous, and only then is a forced-Hyper-Ray k3 build worth it.
+3. **Cheap card check of Altaria, Sceptile and Vespiquen** (Opus first pass, discrepancies to Astra): engine text vs
+   the Limitless card page for every card, then a **legality scan of the table's own games** for illegal offered
+   moves — the run 4 Eevee/turn-1 Mega Altaria bug had no text mismatch and would pass a text-only check.
+   Plus Sceptile v Vespiquen transcripts (sim 66–34, real 33–67) for Dustin to read, made the way the Hydreigon
+   ones were. Fold in one look at *why* the existing reply search never changes a decision (dead code or a gate that
+   never fires), on the Hydreigon cell. Building option B is dropped; that question is not.
+4. **Two clerical tables** (cheap agent, no engine work): a BO1-only version of the 28 cells from the tournament
+   API, with future events reserved for confirmation; and a top-finishing-players-only version. If the
+   Altaria/Sceptile/Vespiquen misses shrink against top players, the population is the cause and those cells
+   shouldn't drive bot design.
+5. **Run 6**, only after 2–4, since they decide whether its accuracy case is real. Design: card-description
+   encoding (HP, type, attack cost/damage, abilities, conditions, evolution links, delayed effects); train on a wide
+   pool (the 8 meta lists, Dustin's 15 decks, the brews); hold out whole decks and test the bot **piloting** a
+   held-out deck as well as facing one (run 4 only tested facing); use the network as the scorer inside k3's search,
+   not only as a policy (networks miss sure knockouts and bench less than k3; k3's hand-written score is where it
+   goes wrong); weight averaging on; an imitation-warm-start arm (from k3 games) as an A/B inside the pilot, not a
+   design commitment. One design page, one review, run, one report; no side studies unless they decide something on
+   the page. Headline number = the table score; margin over k3 is a side note.
+6. **Dropped:** tuning k3's evaluation weights against the table (d3 evidence, overfitting 28 cells, no value for
+   brews); building option B; k7 or a larger specialist run as an automatic next step.
+
+**Until run 6 passes a held-out-deck test, the simulator does not screen brews.** Its brew job is "does the combo
+fire"; the ladder is the screen. Positions Dustin annotates while reading transcripts are diagnostics for a specific
+fix, not the yardstick.
+
+## Limits on every number from this run
+
+- These are simulator results on rules4, and the open rules above are reachable in this pair.
+- One matchup, one opponent. Nothing here says anything about unfamiliar decks.
+- The play-time "take the win" rule stays off in experiments. It goes on only for a bot Dustin plays
+  against.
+
+## Order of work (Sept 22; history — stage 2 was dropped; the current order is "The plan, revised Sept 24" above)
+
+1. Opus builds step 0's launcher for 0.7.2 and stage 1's averaging and settings, and practice-tests
+   them in the cloud.
+2. Astra reviews that build once.
+3. Dustin starts step 0, then stage 1.
+4. While stage 1 runs, Opus builds stage 2: the scorer, the in-engine version and the connection test.
+5. Astra reviews that build once.
+6. The connection gate and the speed check pass before any evaluation.
+7. Side studies get one review pass from one reviewer.

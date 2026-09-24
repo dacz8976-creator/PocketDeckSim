@@ -1,0 +1,56 @@
+Run 5 trainer (one network per deck, encoding v2.2) — run5-step0-blaziken-lucario   (updated 2026-09-23 11:02)
+Networks: blaziken, lucario · each pilots only its own deck · the 1 pairing between them, evenly
+State: PASSED — safety cap of 300,000 games reached at 300,000 games; best checkpoint per network blaziken ckpt_250k (+10.7), lucario ckpt_300k (+3.5). The report steps (audit, held-out test, REPORT.txt) run next, automatically
+
+The bars: k3's own win rate piloting the row deck against k3 piloting the column deck
+(1,000 games per pairing, on the confirmation seeds):
+              blaziken   lucario
+  blaziken           —       47%
+  lucario          52%         —
+
+Games played: 300,000 (safety cap 300,000) · 1.1 h of training + 0.1 h of evaluation · 73 games/sec lately
+Trainer: each recorded move trained on 2.0 times lately (2.0 overall); target 2. Under 1 means the trainer is falling behind (try fewer workers).
+Turn-limit draws in training, last 20,000 games: 0.5% (started at 3%). Tiebreak shaping: off.
+Draw gate at 50,000 games: passed (1.0%; needed under 10% and below the start)
+Training games vs earlier checkpoints: the current networks won 71% of 60,035
+
+Checkpoints. Each network's margin = its win rate minus k3's own result in the same matchup,
+averaged over its 1 matchup (500 games each, seeds the confirmation never uses).
+'vs previous' = of the games this checkpoint and the one before it decided differently, the share this one
+won (50% = no change). 'vs random' = against uniformly random moves.
+
+  checkpoint                blaziken               lucario
+                 margin  prev random   margin  prev random
+  ckpt_50k         -0.2    50%  100%     -9.5    50%   96%
+  ckpt_100k        +2.6    54%   98%    -10.7    48%  100%
+  ckpt_150k        +7.0    56%   96%     -3.9    60%  100%
+  ckpt_200k       +12.6    58%  100%     -4.7    49%   98%
+  ckpt_250k       +14.6    53%  100%     -0.5    55%  100%
+  ckpt_300k       +12.0    46%  100%     +9.5    64%  100%
+
+Margin by matchup at ckpt_300k (points; row = the deck's own network, column = k3's deck):
+              blaziken   lucario
+  blaziken           —       +12
+  lucario           +9         —
+Best checkpoint per network: blaziken ckpt_250k (+14.6), lucario ckpt_300k (+9.5)
+Leveled off (per network) = 3 checkpoints in a row within 3 points of each other, with the newest winning no more than 55% of the games it and the one before it decided differently. It is re-read at every checkpoint and is not sticky: the run ends when every network is leveled off at the same checkpoint, or at the cap.
+Leveled off, by checkpoint: ckpt_50k none; ckpt_100k none; ckpt_150k none; ckpt_200k none; ckpt_250k none; ckpt_300k blaziken
+
+Confirmation of blaziken's ckpt_250k (paired with the bars): margin +10.7 points over its 1 matchup; lowest blaziken vs lucario +10.7.
+    blaziken vs lucario     +10.7
+
+Confirmation of blaziken's ckpt_200k (paired with the bars): margin +8.7 points over its 1 matchup; lowest blaziken vs lucario +8.7.
+    blaziken vs lucario      +8.7
+
+Confirmation of lucario's ckpt_300k (paired with the bars): margin +3.5 points over its 1 matchup; lowest lucario vs blaziken +3.5.
+    lucario vs blaziken      +3.5
+
+The pass rules, on each network's best confirmed checkpoint (blaziken ckpt_250k, lucario ckpt_300k):
+  - blaziken vs lucario: +10.7 points over k3 (needed +10) → yes
+  - every matchup, no more than 5 points under k3: lowest is lucario vs blaziken at +3.5 → yes
+  → PASS. The audit and held-out results follow in REPORT.txt.
+
+Flags:
+  - tiebreak shaping switched off at 100,000 games (turn-limit draws under 5% at two checks in a row)
+
+The full report: REPORT.txt (verdict, confirmations, audit and held-out test).

@@ -1,0 +1,46 @@
+Run 2 (one matchup, encoding v2) — blaziken-lucario-v21-01   (updated 2026-09-19 12:29)
+Network pilots 06-mega-blaziken-tournament-list against lucario
+State: PASSED — leveled off at 1,000,000 games; ckpt_1000k scored 62.3% on the 1,000-game confirmation vs k3's 47.6% on the same games (2 checkpoints confirmed)
+
+k3's own result piloting 06-mega-blaziken-tournament-list here (the bar), 1,000 games: 47.6% (seat 0 46.4%, seat 1 48.8%), draws 0%
+
+Time budget: 6 h of training + evaluation; 3.40 h used (checked at each checkpoint)
+Games played: 1,000,000 of 4,000,000 · 3.4 h of training (evaluation time not counted) · 80 games/sec lately
+Trainer: each recorded move trained on 2.0 times lately (2.0 overall); target 2. This is an average, not a guarantee for every move. Under 1 indicates insufficient training throughput (try fewer workers).
+Turn-limit draws in self-play, last 20,000 games: 1% (started at 3%). Tiebreak shaping: off.
+Draw gate at 250,000 games: passed (1%; needed under 10% and below the start)
+Training games vs earlier checkpoints: latest network won 70% of 199,809
+
+Checkpoints (network pilots the deck above with its best move; draws count as non-wins;
+'vs previous' swaps decks between the two networks, so 50% = no change):
+  checkpoint   vs k3: all (seat 0 / seat 1)   draws   vs random   vs previous
+  ckpt_0          0% (0% / 0%)          0%         0%           —
+    k3 W/L/D: seat 0 0/249/1; seat 1 0/250/0
+    random W/L/D: seat 0 0/8/92; seat 1 0/10/90
+  ckpt_100k      50% (53% / 48%)          0%        98%         98%
+    k3 W/L/D: seat 0 132/118/0; seat 1 120/130/0
+    random W/L/D: seat 0 98/1/1; seat 1 98/0/2
+    prev W/L/D: seat 0 197/0/3; seat 1 197/0/3
+  ckpt_250k      53% (54% / 52%)          0%        99%         65%
+    k3 W/L/D: seat 0 136/114/0; seat 1 130/120/0
+    random W/L/D: seat 0 98/1/1; seat 1 100/0/0
+    prev W/L/D: seat 0 125/74/1; seat 1 135/65/0
+  ckpt_500k      63% (60% / 65%)          0%        99%         55%
+    k3 W/L/D: seat 0 151/99/0; seat 1 163/87/0
+    random W/L/D: seat 0 99/1/0; seat 1 99/1/0
+    prev W/L/D: seat 0 113/85/2; seat 1 105/92/3
+  ckpt_750k      60% (61% / 60%)          0%        98%         55%
+    k3 W/L/D: seat 0 152/98/0; seat 1 149/101/0
+    random W/L/D: seat 0 98/1/1; seat 1 98/0/2
+    prev W/L/D: seat 0 114/84/2; seat 1 105/94/1
+  ckpt_1000k     64% (63% / 66%)          0%        99%         51%
+    k3 W/L/D: seat 0 157/93/0; seat 1 164/85/1
+    random W/L/D: seat 0 99/1/0; seat 1 99/1/0
+    prev W/L/D: seat 0 100/100/0; seat 1 105/93/2
+Best so far against k3: ckpt_1000k (64%)
+Leveled off = 3 checkpoints in a row within 5% of each other against k3 and each at or under 55% against its previous one. Then the best checkpoint gets the 1,000-game confirmation.
+Confirmation of ckpt_1000k on 1,000 fresh games (same seeds as the bar): 62.3% (seat 0 60.6%, seat 1 64.0%) → PASS (needed 52.6% = k3's 47.6% + 5%, and neither seat more than 5% under k3's result in that seat)
+Confirmation of ckpt_500k on 1,000 fresh games (same seeds as the bar): 56.6% (seat 0 53.8%, seat 1 59.4%) → PASS (needed 52.6% = k3's 47.6% + 5%, and neither seat more than 5% under k3's result in that seat)
+
+Flags:
+  - tiebreak shaping switched off at 250,000 games (turn-limit draws under 5% at two checks in a row)

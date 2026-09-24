@@ -1,0 +1,63 @@
+Run 5 report — practice-stage1-a   (2026-09-23 01:32)
+
+Result: FINISHED — every network leveled off at 3,000 games; best confirmed checkpoint per network weezing ckpt_2k (-15.0), lucario ckpt_3k (-40.0)
+Report problems: audit of the weezing network's ckpt_2k out of date; audit of the weezing network's ckpt_1k out of date; audit of the lucario network's ckpt_3k out of date; audit of the lucario network's ckpt_2k out of date.
+
+3,000 games · 0.0 h of training + 0.0 h of evaluation · 3 checkpoints · one network per deck
+
+Run history (the run's own flags, in order):
+  - resumed at 1,000 games from the last save (2026-09-23 01:29); games after that save were lost
+  - resumed at 2,000 games from the last save (2026-09-23 01:30); games after that save were lost
+  - tiebreak shaping switched off at 3,000 games (turn-limit draws under 5% at two checks in a row)
+
+Accepted rules limits for Weezing vs Lucario (RUN5.md; reported with every result):
+  - Reverse Thrust's delayed knockout: the forecast was fixed in add-on 0.7.1/0.7.2.
+  - Hoopa's self-knockout finish: the observed tie case is fixed; broader simultaneous-finish variants
+    are still unconfirmed.
+  - Open question #22: a Checkup on turn 30.
+  - Open question #24: how random deck searches are weighted.
+  These are simulator results on rules4 and say nothing about unfamiliar decks.
+
+Averaging verdict (descriptive; no rule). The averaged copy: avg = decay x avg + (1 - decay) x live at every publish of that network, decay = 0.5 ** (games since its last update / 100,000). Margins are points over k3 on the same 20-game-per-matchup evaluation seeds and seats; 'change' is the size of the move from the previous checkpoint.
+
+  checkpoint                                         weezing                                     lucario
+                     live     avg  avg-live chg live chg avg     live     avg  avg-live chg live chg avg
+  ckpt_1k           -30.0   -35.0      -5.0        —       —    -65.0   -65.0      +0.0        —       —
+  ckpt_2k           -20.0   -35.0     -15.0     10.0     0.0    -55.0   -65.0     -10.0     10.0     0.0
+  ckpt_3k           -30.0   -35.0      -5.0     10.0     0.0    -50.0   -65.0     -15.0      5.0     0.0
+
+  weezing: averaged copy scored higher at 0 of 3 checkpoints; average change between consecutive checkpoints: live 10.0 points, averaged 0.0 points; best live -20.0, best averaged -35.0.
+  lucario: averaged copy scored higher at 0 of 3 checkpoints; average change between consecutive checkpoints: live 7.5 points, averaged 0.0 points; best live -50.0, best averaged -65.0.
+
+Best confirmed checkpoint per network, live or averaged (lucario ckpt_3k, weezing ckpt_2k). No pass/fail rule in code: RUN5.md's '+5' decision is read from the confirmation lines below.
+
+  Margin by matchup, points (row = the deck's own network, column = the deck k3 pilots):
+               weezing  lucario
+    weezing          —      -15
+    lucario        -40        —
+
+Confirmation of the weezing network's ckpt_2k (used for the verdict): 20 games per matchup on the bars' own seeds (paired). Margin over k3 -15.0 points.
+  matchup                 network  k3, same deck   margin   games won only by
+  weezing vs lucario        20.0%          35.0%   -15.0   network    0 / k3    3 (p 0.25)
+
+(audit of the weezing network's ckpt_2k: the saved result doesn't match its current inputs; rerun run_training_v5.sh to redo it)
+
+Confirmation of the weezing network's ckpt_1k: 20 games per matchup on the bars' own seeds (paired). Margin over k3 -25.0 points.
+  matchup                 network  k3, same deck   margin   games won only by
+  weezing vs lucario        10.0%          35.0%   -25.0   network    0 / k3    5 (p 0.062)
+
+(audit of the weezing network's ckpt_1k: the saved result doesn't match its current inputs; rerun run_training_v5.sh to redo it)
+
+Confirmation of the lucario network's ckpt_3k (used for the verdict): 20 games per matchup on the bars' own seeds (paired). Margin over k3 -40.0 points.
+  matchup                 network  k3, same deck   margin   games won only by
+  lucario vs weezing        25.0%          65.0%   -40.0   network    0 / k3    8 (p 0.0078)
+
+(audit of the lucario network's ckpt_3k: the saved result doesn't match its current inputs; rerun run_training_v5.sh to redo it)
+
+Confirmation of the lucario network's ckpt_2k: 20 games per matchup on the bars' own seeds (paired). Margin over k3 -50.0 points.
+  matchup                 network  k3, same deck   margin   games won only by
+  lucario vs weezing        15.0%          65.0%   -50.0   network    0 / k3   10 (p 0.002)
+
+(audit of the lucario network's ckpt_2k: the saved result doesn't match its current inputs; rerun run_training_v5.sh to redo it)
+
+Held-out test: not part of this run (its settings name no held-out deck).

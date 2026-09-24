@@ -1,0 +1,38 @@
+Run 3 (five-deck pool, encoding v2.1) — pool5-v21-01   (updated 2026-09-19 19:23)
+Pool: blaziken, lucario, weezing, altaria, suicune · the 10 pairings between them · the network pilots both sides
+State: STOPPED — floor missed at 1,000,000 games: avg_margin -11.4 (needed -10)
+
+The bars: k3's own win rate piloting the row deck against k3 piloting the column deck
+(1,000 games per pairing, on the confirmation seeds):
+              blaziken   lucario   weezing   altaria   suicune
+  blaziken           —       48%       48%       44%       50%
+  lucario          52%         —       50%       47%       50%
+  weezing          51%       50%         —       66%       37%
+  altaria          56%       53%       34%         —       34%
+  suicune          50%       50%       63%       66%         —
+
+Games played: 1,000,000 (safety cap 20,000,000) · 4.0 h of training + 0.4 h of evaluation · 67 games/sec lately
+Trainer: each recorded move trained on 2.0 times lately (2.0 overall); target 2. Under 1 means the trainer is falling behind (try fewer workers).
+Turn-limit draws in self-play, last 20,000 games: 0.4% (started at 1%). Tiebreak shaping: off.
+Draw gate at 250,000 games: passed (0.2%; needed under 10% and below the start)
+Training games vs earlier checkpoints: latest network won 81% of 199,875
+
+Checkpoints. Average margin = the network's win rate minus k3's own result in the same matchup,
+averaged over the 20 matchups (1,000 games each, seeds the confirmation never uses).
+'vs previous' swaps decks between the two networks, so 50% = no change.
+  checkpoint     average margin   weakest matchup              vs previous   vs random
+  ckpt_500k         -11.2 pts     suicune vs weezing -32.8         95%         99%
+  ckpt_1000k        -11.4 pts     suicune vs weezing -36.4         50%         97%
+
+Margin by matchup at ckpt_1000k (points; row = deck the network pilots, column = deck k3 pilots):
+              blaziken   lucario   weezing   altaria   suicune
+  blaziken           —        +1        +2        -8        +8
+  lucario          -18         —        +4        -6       +19
+  weezing          -17       -15         —       -28       -16
+  altaria          -15       -12        -8         —        -2
+  suicune          -22       -24       -36       -33         —
+Best so far: ckpt_500k (-11.2 points on average)
+Leveled off = 3 checkpoints in a row within 3 points of each other on the average margin, each at or under 55% against its previous one. Then the best checkpoint (and the runner-up within 2 points) plays every matchup on the bars' own seeds, 1,000 games each.
+
+Flags:
+  - tiebreak shaping switched off at 500,000 games (turn-limit draws under 5% at two checks in a row)

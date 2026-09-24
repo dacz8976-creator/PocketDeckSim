@@ -1,0 +1,199 @@
+Run 3 report — pool5-v21-01-cont   (2026-09-20 03:45)
+
+Result: FINISHED — leveled off at 2,000,000 games; ckpt_500k confirmed at -12.1 points on average over k3 (paired) — not a pass (2 checkpoints confirmed)
+
+2,000,000 games · 7.8 h of training + 1.0 h of evaluation · 4 checkpoints
+
+Confirmation of ckpt_500k: 1,000 games per matchup on the bars' own seeds (paired). Average margin over k3 -12.1 points. Not a pass:
+  - blaziken vs lucario: -0.8 points over k3 (needed +10) → NO
+  - blaziken vs weezing: -6.2 points over k3 (needed +0 or better) → NO
+  - blaziken vs altaria: -7.7 points over k3 (needed +0 or better) → NO
+  - every matchup, either side, no more than 5 points under k3: lowest is suicune vs weezing at -30.5 → NO
+
+  Margin by matchup, points (row = deck the network pilots, column = deck k3 pilots):
+                blaziken   lucario   weezing   altaria   suicune
+    blaziken           —        -1        -6        -8        +5
+    lucario           -9         —        -0        -7       +21
+    weezing          -14       -20         —       -27       -21
+    altaria          -15       -12       -12         —        -9
+    suicune          -23       -26       -30       -28         —
+
+  matchup                 network  k3, same deck   margin   games won only by
+  blaziken vs lucario       47.0%          47.8%    -0.8   network  208 / k3  216 (p 0.73)
+  blaziken vs weezing       42.2%          48.4%    -6.2   network  138 / k3  200 (p 0.00088)
+  blaziken vs altaria       36.5%          44.2%    -7.7   network  148 / k3  225 (p 7.9e-05)
+  blaziken vs suicune       54.1%          49.5%    +4.6   network  215 / k3  169 (p 0.022)
+  lucario vs blaziken       43.4%          52.1%    -8.7   network  157 / k3  244 (p 1.6e-05)
+  lucario vs weezing        49.6%          50.0%    -0.4   network  160 / k3  164 (p 0.87)
+  lucario vs altaria        39.8%          46.9%    -7.1   network  150 / k3  221 (p 0.00027)
+  lucario vs suicune        71.0%          49.7%   +21.3   network  313 / k3  100 (p 1.2e-26)
+  weezing vs blaziken       36.7%          51.1%   -14.4   network  105 / k3  249 (p 1.3e-14)
+  weezing vs lucario        30.3%          49.9%   -19.6   network   68 / k3  264 (p 2.1e-28)
+  weezing vs altaria        39.2%          66.1%   -26.9   network   81 / k3  350 (p 6.5e-41)
+  weezing vs suicune        15.4%          36.8%   -21.4   network   56 / k3  270 (p 9.4e-35)
+  altaria vs blaziken       40.8%          55.8%   -15.0   network  135 / k3  285 (p 2e-13)
+  altaria vs lucario        41.1%          53.1%   -12.0   network  146 / k3  266 (p 3.6e-09)
+  altaria vs weezing        21.9%          33.9%   -12.0   network  103 / k3  223 (p 2.6e-11)
+  altaria vs suicune        25.2%          34.0%    -8.8   network  133 / k3  221 (p 3.4e-06)
+  suicune vs blaziken       27.0%          50.4%   -23.4   network   33 / k3  267 (p 1.2e-46)
+  suicune vs lucario        24.5%          50.3%   -25.8   network   32 / k3  290 (p 3.6e-53)
+  suicune vs weezing        32.4%          62.9%   -30.5   network   55 / k3  360 (p 5.1e-56)
+  suicune vs altaria        38.5%          66.0%   -27.5   network   61 / k3  336 (p 3.9e-47)
+
+Knockout audit (run 3) — pool5-v21-01-cont ckpt_500k: 20,000 confirmation games and 10,000 bar games replayed; replay problems: 0
+
+Per matchup: the network piloting the first deck (bot) vs k3 piloting the same deck on the same seeds (k3).
+Rates per 1,000 player-turns. Checkup deaths: loose / strict (a retreat was offered that turn) / strict and still winnable (network only).
+
+  matchup               who    turns  sure win missed  sure KO missed  attack giveaways          checkup deaths
+  altaria vs blaziken   bot     6372        0 of 252        81 of 696               2.8           0.6 / 0.2 / 0.0
+  altaria vs blaziken   k3      6685        0 of 366        54 of 951               1.2                 0.1 / 0.0
+  altaria vs lucario    bot     6340        0 of 276        63 of 799               0.0           0.0 / 0.0 / 0.0
+  altaria vs lucario    k3      6590        0 of 348        35 of 846               0.0                 0.0 / 0.0
+  altaria vs suicune    bot     7066        0 of 219        30 of 624               0.0           0.0 / 0.0 / 0.0
+  altaria vs suicune    k3      7450        0 of 294        44 of 796               0.0                 0.0 / 0.0
+  altaria vs weezing    bot     6065        0 of 184        27 of 477               0.0           4.9 / 0.7 / 0.5
+  altaria vs weezing    k3      6554        0 of 263        61 of 670               0.0                 0.9 / 0.0
+  blaziken vs altaria   bot     6529        0 of 347        64 of 1159              0.0          17.5 / 0.0 / 0.0
+  blaziken vs altaria   k3      6329        0 of 408        12 of 1342              0.0                 6.8 / 0.0
+  blaziken vs lucario   bot     6334        1 of 426        85 of 849               0.0           0.0 / 0.0 / 0.0
+  blaziken vs lucario   k3      5874        0 of 400         6 of 1026              0.0                 0.0 / 0.0
+  blaziken vs suicune   bot     5769        0 of 107        13 of 311               0.0           0.0 / 0.0 / 0.0
+  blaziken vs suicune   k3      5396        0 of 77          5 of 326               0.0                 0.0 / 0.0
+  blaziken vs weezing   bot     5203        2 of 177        18 of 483               0.0           3.5 / 1.3 / 0.6
+  blaziken vs weezing   k3      5214        0 of 252         2 of 696               0.0                 0.0 / 0.0
+  lucario vs altaria    bot     5813        0 of 398        47 of 1390              0.0           7.4 / 0.0 / 0.0
+  lucario vs altaria    k3      5908        0 of 468         0 of 1449              0.0                 4.1 / 0.0
+  lucario vs blaziken   bot     5587        0 of 434       120 of 1279              1.6           1.3 / 0.2 / 0.0
+  lucario vs blaziken   k3      5636        0 of 519         3 of 1450              0.5                 0.0 / 0.0
+  lucario vs suicune    bot     5522        0 of 710        17 of 1558              0.0           0.0 / 0.0 / 0.0
+  lucario vs suicune    k3      5874        0 of 497         0 of 1172              0.0                 0.0 / 0.0
+  lucario vs weezing    bot     4915        0 of 483        35 of 1167              0.0           5.3 / 0.6 / 0.6
+  lucario vs weezing    k3      5023        0 of 484         2 of 1087              0.0                 0.2 / 0.0
+  suicune vs altaria    bot     6877        0 of 385        45 of 1532              0.0           2.6 / 0.0 / 0.0
+  suicune vs altaria    k3      6925        0 of 660         0 of 2091              0.0                 1.0 / 0.0
+  suicune vs blaziken   bot     5171        0 of 270        62 of 1045              1.0           1.9 / 0.0 / 0.0
+  suicune vs blaziken   k3      4932        0 of 499         1 of 1701              2.0                 0.0 / 0.0
+  suicune vs lucario    bot     5731        2 of 242        49 of 894               0.0           0.0 / 0.0 / 0.0
+  suicune vs lucario    k3      5858        0 of 497         0 of 1557              0.0                 0.0 / 0.0
+  suicune vs weezing    bot     6156       19 of 339        40 of 881               0.0           1.5 / 0.0 / 0.0
+  suicune vs weezing    k3      6297        0 of 616         3 of 1411              0.0                 0.0 / 0.0
+  weezing vs altaria    bot     6848        5 of 371        51 of 755               2.5           2.5 / 0.0 / 0.0
+  weezing vs altaria    k3      6558        0 of 559        18 of 557               1.5                 2.3 / 0.0
+  weezing vs blaziken   bot     5534        0 of 295        50 of 506               2.5           4.0 / 1.3 / 0.2
+  weezing vs blaziken   k3      5432        0 of 301        21 of 454               0.9                 0.2 / 0.0
+  weezing vs lucario    bot     5522        1 of 245        99 of 570               4.0           0.0 / 0.0 / 0.0
+  weezing vs lucario    k3      5443        0 of 325        24 of 459               1.5                 0.0 / 0.0
+  weezing vs suicune    bot     6426        0 of 142        37 of 469               3.1           0.0 / 0.0 / 0.0
+  weezing vs suicune    k3      6608        0 of 306        16 of 557               1.4                 0.0 / 0.0
+
+Confirmation of ckpt_1000k: 1,000 games per matchup on the bars' own seeds (paired). Average margin over k3 -10.9 points. Not a pass:
+  - blaziken vs lucario: +0.7 points over k3 (needed +10) → NO
+  - blaziken vs weezing: -2.0 points over k3 (needed +0 or better) → NO
+  - blaziken vs altaria: -5.5 points over k3 (needed +0 or better) → NO
+  - every matchup, either side, no more than 5 points under k3: lowest is suicune vs altaria at -32.3 → NO
+
+  Margin by matchup, points (row = deck the network pilots, column = deck k3 pilots):
+                blaziken   lucario   weezing   altaria   suicune
+    blaziken           —        +1        -2        -5       +10
+    lucario          -16         —        +3        -3       +21
+    weezing          -16       -16         —       -28       -16
+    altaria          -15       -14        -8         —        -3
+    suicune          -22       -23       -32       -32         —
+
+  matchup                 network  k3, same deck   margin   games won only by
+  blaziken vs lucario       48.5%          47.8%    +0.7   network  204 / k3  197 (p 0.76)
+  blaziken vs weezing       46.4%          48.4%    -2.0   network  163 / k3  183 (p 0.31)
+  blaziken vs altaria       38.7%          44.2%    -5.5   network  155 / k3  210 (p 0.0046)
+  blaziken vs suicune       59.2%          49.5%    +9.7   network  216 / k3  119 (p 1.3e-07)
+  lucario vs blaziken       35.7%          52.1%   -16.4   network  133 / k3  297 (p 1.7e-15)
+  lucario vs weezing        52.5%          50.0%    +2.5   network  190 / k3  165 (p 0.2)
+  lucario vs altaria        43.8%          46.9%    -3.1   network  165 / k3  196 (p 0.11)
+  lucario vs suicune        70.7%          49.7%   +21.0   network  301 / k3   91 (p 2.4e-27)
+  weezing vs blaziken       34.7%          51.1%   -16.4   network  104 / k3  268 (p 8.3e-18)
+  weezing vs lucario        33.6%          49.9%   -16.3   network   82 / k3  245 (p 5.3e-20)
+  weezing vs altaria        38.1%          66.1%   -28.0   network   68 / k3  348 (p 2.2e-46)
+  weezing vs suicune        20.7%          36.8%   -16.1   network   81 / k3  242 (p 9e-20)
+  altaria vs blaziken       41.0%          55.8%   -14.8   network  150 / k3  298 (p 2.4e-12)
+  altaria vs lucario        38.8%          53.1%   -14.3   network  142 / k3  285 (p 4e-12)
+  altaria vs weezing        26.4%          33.9%    -7.5   network  130 / k3  205 (p 4.9e-05)
+  altaria vs suicune        31.2%          34.0%    -2.8   network  178 / k3  206 (p 0.17)
+  suicune vs blaziken       28.6%          50.4%   -21.8   network   44 / k3  262 (p 6.3e-39)
+  suicune vs lucario        27.1%          50.3%   -23.2   network   47 / k3  279 (p 2.7e-41)
+  suicune vs weezing        30.9%          62.9%   -32.0   network   49 / k3  369 (p 8.2e-62)
+  suicune vs altaria        33.7%          66.0%   -32.3   network   49 / k3  372 (p 1.5e-62)
+
+Knockout audit (run 3) — pool5-v21-01-cont ckpt_1000k: 20,000 confirmation games and 10,000 bar games replayed; replay problems: 0
+
+Per matchup: the network piloting the first deck (bot) vs k3 piloting the same deck on the same seeds (k3).
+Rates per 1,000 player-turns. Checkup deaths: loose / strict (a retreat was offered that turn) / strict and still winnable (network only).
+
+  matchup               who    turns  sure win missed  sure KO missed  attack giveaways          checkup deaths
+  altaria vs blaziken   bot     6277        0 of 247       104 of 676               2.4           1.3 / 0.3 / 0.2
+  altaria vs blaziken   k3      6685        0 of 366        54 of 951               1.2                 0.1 / 0.0
+  altaria vs lucario    bot     6286        0 of 260        79 of 748               0.0           0.0 / 0.0 / 0.0
+  altaria vs lucario    k3      6590        0 of 348        35 of 846               0.0                 0.0 / 0.0
+  altaria vs suicune    bot     7258        0 of 288        34 of 762               0.0           0.0 / 0.0 / 0.0
+  altaria vs suicune    k3      7450        0 of 294        44 of 796               0.0                 0.0 / 0.0
+  altaria vs weezing    bot     5938        2 of 219        16 of 542               0.0           3.0 / 0.3 / 0.0
+  altaria vs weezing    k3      6554        0 of 263        61 of 670               0.0                 0.9 / 0.0
+  blaziken vs altaria   bot     6172        1 of 360        67 of 1188              0.0          16.0 / 0.0 / 0.0
+  blaziken vs altaria   k3      6329        0 of 408        12 of 1342              0.0                 6.8 / 0.0
+  blaziken vs lucario   bot     6070        0 of 444       103 of 856               0.0           0.0 / 0.0 / 0.0
+  blaziken vs lucario   k3      5874        0 of 400         6 of 1026              0.0                 0.0 / 0.0
+  blaziken vs suicune   bot     5259        0 of 136         5 of 342               0.0           0.0 / 0.0 / 0.0
+  blaziken vs suicune   k3      5396        0 of 77          5 of 326               0.0                 0.0 / 0.0
+  blaziken vs weezing   bot     5178        0 of 204        12 of 550               0.0           2.7 / 0.4 / 0.2
+  blaziken vs weezing   k3      5214        0 of 252         2 of 696               0.0                 0.0 / 0.0
+  lucario vs altaria    bot     5818        0 of 438        52 of 1473              0.0          12.7 / 0.0 / 0.0
+  lucario vs altaria    k3      5908        0 of 468         0 of 1449              0.0                 4.1 / 0.0
+  lucario vs blaziken   bot     5559        0 of 357       114 of 1090              2.2           6.5 / 2.2 / 0.2
+  lucario vs blaziken   k3      5636        0 of 519         3 of 1450              0.5                 0.0 / 0.0
+  lucario vs suicune    bot     5798        1 of 708        14 of 1553              0.0           0.0 / 0.0 / 0.0
+  lucario vs suicune    k3      5874        0 of 497         0 of 1172              0.0                 0.0 / 0.0
+  lucario vs weezing    bot     4912        0 of 504        21 of 1178              0.0           3.7 / 1.0 / 0.8
+  lucario vs weezing    k3      5023        0 of 484         2 of 1087              0.0                 0.2 / 0.0
+  suicune vs altaria    bot     6483        3 of 340        52 of 1321              0.0           5.9 / 0.0 / 0.0
+  suicune vs altaria    k3      6925        0 of 660         0 of 2091              0.0                 1.0 / 0.0
+  suicune vs blaziken   bot     5045        0 of 286        74 of 1118              0.6           2.4 / 1.0 / 0.2
+  suicune vs blaziken   k3      4932        0 of 499         1 of 1701              2.0                 0.0 / 0.0
+  suicune vs lucario    bot     5759        1 of 269        85 of 940               0.0           0.0 / 0.0 / 0.0
+  suicune vs lucario    k3      5858        0 of 497         0 of 1557              0.0                 0.0 / 0.0
+  suicune vs weezing    bot     5959        4 of 308        28 of 774               0.0           6.2 / 0.2 / 0.0
+  suicune vs weezing    k3      6297        0 of 616         3 of 1411              0.0                 0.0 / 0.0
+  weezing vs altaria    bot     6688        7 of 362        38 of 677               2.8           4.5 / 0.0 / 0.0
+  weezing vs altaria    k3      6558        0 of 559        18 of 557               1.5                 2.3 / 0.0
+  weezing vs blaziken   bot     5357        1 of 278        37 of 485               3.0           8.8 / 2.1 / 0.0
+  weezing vs blaziken   k3      5432        0 of 301        21 of 454               0.9                 0.2 / 0.0
+  weezing vs lucario    bot     5578        5 of 272        36 of 458               5.0           0.0 / 0.0 / 0.0
+  weezing vs lucario    k3      5443        0 of 325        24 of 459               1.5                 0.0 / 0.0
+  weezing vs suicune    bot     6526        1 of 180        27 of 524               3.4           0.0 / 0.0 / 0.0
+  weezing vs suicune    k3      6608        0 of 306        16 of 557               1.4                 0.0 / 0.0
+
+Held-out test (run 3) — pool5-v21-01-cont ckpt_500k: 1,000 games per row, paired with k3 on the same seeds
+
+  network pilotsagainst (k3)    network  k3, same deck   margin           games won only by
+  (a) facing ninetales, a deck it never met:
+  blaziken      ninetales         28.6%          41.3%   -12.7   network  101 / k3  228 (p 2e-12)
+  lucario       ninetales         45.0%          58.9%   -13.9   network   91 / k3  230 (p 5e-15)
+  weezing       ninetales         31.9%          61.9%   -30.0   network   64 / k3  364 (p 5e-52)
+  altaria       ninetales         46.9%          71.3%   -24.4   network  100 / k3  344 (p 2e-32)
+  suicune       ninetales         30.7%          63.3%   -32.6   network   32 / k3  358 (p 7.3e-71)
+  (b) piloting ninetales, a deck it never trained on:
+  ninetales     blaziken          33.0%          58.7%   -25.7   network   54 / k3  311 (p 5.2e-45)
+  ninetales     lucario           22.9%          41.1%   -18.2   network   70 / k3  252 (p 2.9e-25)
+  ninetales     weezing           23.7%          38.1%   -14.4   network   98 / k3  242 (p 3.4e-15)
+  ninetales     altaria           13.7%          28.7%   -15.0   network   83 / k3  233 (p 1.2e-17)
+  ninetales     suicune           31.3%          36.7%    -5.4   network  148 / k3  202 (p 0.0045)
+  (a) facing manectric, a deck it never met:
+  blaziken      manectric         35.6%          40.4%    -4.8   network  153 / k3  201 (p 0.012)
+  lucario       manectric         54.6%          65.3%   -10.7   network  112 / k3  219 (p 4.2e-09)
+  weezing       manectric         27.4%          47.7%   -20.3   network   74 / k3  277 (p 1e-28)
+  altaria       manectric         30.7%          42.3%   -11.6   network  132 / k3  248 (p 2.8e-09)
+  suicune       manectric         17.7%          43.1%   -25.4   network   44 / k3  298 (p 1.7e-47)
+  (b) piloting manectric, a deck it never trained on:
+  manectric     blaziken          29.3%          59.4%   -30.1   network   49 / k3  350 (p 3.8e-57)
+  manectric     lucario           19.8%          34.7%   -14.9   network   53 / k3  202 (p 1.1e-21)
+  manectric     weezing           22.1%          52.2%   -30.1   network   47 / k3  348 (p 7e-58)
+  manectric     altaria           33.8%          57.7%   -23.9   network   87 / k3  326 (p 1.4e-33)
+  manectric     suicune           29.1%          56.9%   -27.8   network   58 / k3  336 (p 1.1e-48)

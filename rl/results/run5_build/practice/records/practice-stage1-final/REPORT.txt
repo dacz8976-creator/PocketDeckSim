@@ -1,0 +1,97 @@
+Run 5 report — practice-stage1-final   (2026-09-23 02:13)
+
+Result: FINISHED — every network leveled off at 3,000 games; best confirmed checkpoint per network weezing ckpt_1k (-20.0), lucario ckpt_3k (-35.0)
+
+3,000 games · 0.0 h of training + 0.0 h of evaluation · 3 checkpoints · one network per deck
+
+Run history (the run's own flags, in order):
+  - resumed at 1,000 games from the last save (2026-09-23 02:10); games after that save were lost
+  - tiebreak shaping switched off at 3,000 games (turn-limit draws under 5% at two checks in a row)
+
+Accepted rules limits for Weezing vs Lucario (RUN5.md; reported with every result):
+  - Reverse Thrust's delayed knockout: the forecast was fixed in add-on 0.7.1/0.7.2.
+  - Hoopa's self-knockout finish: the observed tie case is fixed; broader simultaneous-finish variants
+    are still unconfirmed.
+  - Open question #22: a Checkup on turn 30.
+  - Open question #24: how random deck searches are weighted.
+  These are simulator results on rules4 and say nothing about unfamiliar decks.
+
+Averaging verdict (descriptive; no rule). The averaged copy: avg = decay x avg + (1 - decay) x live at every publish of that network, decay = 0.5 ** (games since its last update / 100,000). Margins are points over k3 on the same 20-game-per-matchup evaluation seeds and seats; 'change' is the size of the move from the previous checkpoint.
+
+  checkpoint                                         weezing                                     lucario
+                     live     avg  avg-live chg live chg avg     live     avg  avg-live chg live chg avg
+  ckpt_1k           -25.0   -35.0     -10.0        —       —    -65.0   -65.0      +0.0        —       —
+  ckpt_2k           -20.0   -35.0     -15.0      5.0     0.0    -65.0   -65.0      +0.0      0.0     0.0
+  ckpt_3k           -25.0   -35.0     -10.0      5.0     0.0    -55.0   -65.0     -10.0     10.0     0.0
+
+  weezing: averaged copy scored higher at 0 of 3 checkpoints; average change between consecutive checkpoints: live 5.0 points, averaged 0.0 points; best live -20.0, best averaged -35.0.
+  lucario: averaged copy scored higher at 0 of 3 checkpoints; average change between consecutive checkpoints: live 5.0 points, averaged 0.0 points; best live -55.0, best averaged -65.0.
+
+Best confirmed checkpoint per network, live or averaged (lucario ckpt_3k, weezing ckpt_1k). No pass/fail rule in code: RUN5.md's '+5' decision is read from the confirmation lines below.
+
+  Margin by matchup, points (row = the deck's own network, column = the deck k3 pilots):
+               weezing  lucario
+    weezing          —      -20
+    lucario        -35        —
+
+Confirmation of the weezing network's ckpt_2k: 20 games per matchup on the bars' own seeds (paired). Margin over k3 -30.0 points.
+  matchup                 network  k3, same deck   margin   games won only by
+  weezing vs lucario         5.0%          35.0%   -30.0   network    0 / k3    6 (p 0.031)
+
+Knockout audit (run 4) — practice-stage1-final, the weezing network's ckpt_2k: 20 confirmation games and 20 bar games replayed; replay problems: 0
+
+Per matchup: the network piloting the first deck (bot) vs k3 piloting the same deck on the same seeds (k3).
+'attacked' / 'benched' = of the turns where that move was on offer, the share where it was made. Setup (turn 0) is excluded from both, as the run 2/run 3 benching benchmark excludes it. (k3 attacks 99% and benches 97%. Run 3's shared network: attacked 68%, benched 54%. Run 2's Blaziken specialist, the like-for-like bar for the pilot: benched 63%.)
+Giveaways and checkup deaths are rates per 1,000 player-turns. Checkup deaths: loose / strict (a retreat was offered that turn) / strict and still winnable (network only).
+
+  matchup               who    turns  sure win missed  sure KO missed  attacked  benched  giveaways          checkup deaths
+  lucario vs weezing    k3        89        0 of 12          0 of 25          99%      96%        0.0                 0.0 / 0.0
+  weezing vs lucario    bot      112        0 of 1           0 of 5           65%      67%        8.9           0.0 / 0.0 / 0.0
+  weezing vs lucario    k3        96        0 of 6           0 of 8           89%      95%        0.0                 0.0 / 0.0
+
+Confirmation of the weezing network's ckpt_1k (used for the verdict): 20 games per matchup on the bars' own seeds (paired). Margin over k3 -20.0 points.
+  matchup                 network  k3, same deck   margin   games won only by
+  weezing vs lucario        15.0%          35.0%   -20.0   network    0 / k3    4 (p 0.12)
+
+Knockout audit (run 4) — practice-stage1-final, the weezing network's ckpt_1k: 20 confirmation games and 20 bar games replayed; replay problems: 0
+
+Per matchup: the network piloting the first deck (bot) vs k3 piloting the same deck on the same seeds (k3).
+'attacked' / 'benched' = of the turns where that move was on offer, the share where it was made. Setup (turn 0) is excluded from both, as the run 2/run 3 benching benchmark excludes it. (k3 attacks 99% and benches 97%. Run 3's shared network: attacked 68%, benched 54%. Run 2's Blaziken specialist, the like-for-like bar for the pilot: benched 63%.)
+Giveaways and checkup deaths are rates per 1,000 player-turns. Checkup deaths: loose / strict (a retreat was offered that turn) / strict and still winnable (network only).
+
+  matchup               who    turns  sure win missed  sure KO missed  attacked  benched  giveaways          checkup deaths
+  lucario vs weezing    k3        89        0 of 12          0 of 25          99%      96%        0.0                 0.0 / 0.0
+  weezing vs lucario    bot      103        0 of 3           1 of 3          100%      69%        0.0           0.0 / 0.0 / 0.0
+  weezing vs lucario    k3        96        0 of 6           0 of 8           89%      95%        0.0                 0.0 / 0.0
+
+Confirmation of the lucario network's ckpt_3k (used for the verdict): 20 games per matchup on the bars' own seeds (paired). Margin over k3 -35.0 points.
+  matchup                 network  k3, same deck   margin   games won only by
+  lucario vs weezing        30.0%          65.0%   -35.0   network    1 / k3    8 (p 0.039)
+
+Knockout audit (run 4) — practice-stage1-final, the lucario network's ckpt_3k: 20 confirmation games and 20 bar games replayed; replay problems: 0
+
+Per matchup: the network piloting the first deck (bot) vs k3 piloting the same deck on the same seeds (k3).
+'attacked' / 'benched' = of the turns where that move was on offer, the share where it was made. Setup (turn 0) is excluded from both, as the run 2/run 3 benching benchmark excludes it. (k3 attacks 99% and benches 97%. Run 3's shared network: attacked 68%, benched 54%. Run 2's Blaziken specialist, the like-for-like bar for the pilot: benched 63%.)
+Giveaways and checkup deaths are rates per 1,000 player-turns. Checkup deaths: loose / strict (a retreat was offered that turn) / strict and still winnable (network only).
+
+  matchup               who    turns  sure win missed  sure KO missed  attacked  benched  giveaways          checkup deaths
+  lucario vs weezing    bot       93        0 of 5           0 of 13          67%      86%        0.0           0.0 / 0.0 / 0.0
+  lucario vs weezing    k3        89        0 of 12          0 of 25          99%      96%        0.0                 0.0 / 0.0
+  weezing vs lucario    k3        96        0 of 6           0 of 8           89%      95%        0.0                 0.0 / 0.0
+
+Confirmation of the lucario network's ckpt_1k: 20 games per matchup on the bars' own seeds (paired). Margin over k3 -60.0 points.
+  matchup                 network  k3, same deck   margin   games won only by
+  lucario vs weezing         5.0%          65.0%   -60.0   network    0 / k3   12 (p 0.00049)
+
+Knockout audit (run 4) — practice-stage1-final, the lucario network's ckpt_1k: 20 confirmation games and 20 bar games replayed; replay problems: 0
+
+Per matchup: the network piloting the first deck (bot) vs k3 piloting the same deck on the same seeds (k3).
+'attacked' / 'benched' = of the turns where that move was on offer, the share where it was made. Setup (turn 0) is excluded from both, as the run 2/run 3 benching benchmark excludes it. (k3 attacks 99% and benches 97%. Run 3's shared network: attacked 68%, benched 54%. Run 2's Blaziken specialist, the like-for-like bar for the pilot: benched 63%.)
+Giveaways and checkup deaths are rates per 1,000 player-turns. Checkup deaths: loose / strict (a retreat was offered that turn) / strict and still winnable (network only).
+
+  matchup               who    turns  sure win missed  sure KO missed  attacked  benched  giveaways          checkup deaths
+  lucario vs weezing    bot       64        0 of 1           0 of 1           82%      62%        0.0           0.0 / 0.0 / 0.0
+  lucario vs weezing    k3        89        0 of 12          0 of 25          99%      96%        0.0                 0.0 / 0.0
+  weezing vs lucario    k3        96        0 of 6           0 of 8           89%      95%        0.0                 0.0 / 0.0
+
+Held-out test: not part of this run (its settings name no held-out deck).

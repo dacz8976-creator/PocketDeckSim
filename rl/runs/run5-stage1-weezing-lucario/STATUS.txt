@@ -1,0 +1,76 @@
+Run 5 trainer (one network per deck, encoding v2.2) — run5-stage1-weezing-lucario   (updated 2026-09-23 18:58)
+Networks: weezing, lucario · each pilots only its own deck · the 1 pairing between them, evenly
+State: FINISHED — safety cap of 2,000,000 games reached at 2,000,000 games; best confirmed checkpoint per network weezing ckpt_1800k_avg (+3.2), lucario ckpt_1800k_avg (+25.6). The report steps (audit, REPORT.txt) run next, automatically
+
+The bars: k3's own win rate piloting the row deck against k3 piloting the column deck
+(2,000 games per pairing, on the confirmation seeds):
+             weezing  lucario
+  weezing          —      49%
+  lucario        51%        —
+
+Games played: 2,000,000 (safety cap 2,000,000) · 7.4 h of training + 0.4 h of evaluation · 99 games/sec lately
+Trainer: each recorded move trained on 2.0 times lately (2.0 overall); target 2. Under 1 means the trainer is falling behind (try fewer workers).
+Turn-limit draws in training, last 20,000 games: 0.0% (started at 2%). Tiebreak shaping: off.
+Draw gate at 250,000 games: passed (0.0%; needed under 10% and below the start)
+Training games vs earlier checkpoints: the current networks won 64% of 399,286
+
+Checkpoints. Each network's margin = its win rate minus k3's own result in the same matchup,
+averaged over its 1 matchup (1,000 games each, seeds the confirmation never uses).
+'vs previous' = of the games this checkpoint and the one before it decided differently, the share this one
+won (50% = no change). 'vs random' = against uniformly random moves.
+
+  checkpoint                 weezing               lucario
+                 margin  prev random   margin  prev random
+  ckpt_100k       -15.2    50%   99%     +4.1    50%  100%
+  ckpt_200k        -8.5    61%   99%    +10.8    61%  100%
+  ckpt_400k        -5.5    55%   99%    +13.9    56%   99%
+  ckpt_600k        -2.0    55%  100%    +14.9    52%  100%
+  ckpt_800k        -2.5    49%  100%    +15.9    52%  100%
+  ckpt_1000k       -4.2    47%  100%    +18.7    56%  100%
+  ckpt_1200k       +1.1    59%   99%    +17.8    48%  100%
+  ckpt_1400k       -0.2    48%  100%    +19.2    53%  100%
+  ckpt_1600k       -1.2    48%   99%    +22.6    57%   99%
+  ckpt_1800k       +1.7    55%   99%    +20.9    47%   98%
+  ckpt_2000k       -1.4    45%  100%    +20.4    49%  100%
+
+Averaged copy (run 5): updated every time a network's live weights are published, avg = decay x avg + (1 - decay) x live, decay = 0.5 ** (games since that network's last update / 100,000), a half-life of about 100,000 games. It never plays training games, is never a past opponent and is never trained; level-off and stopping read the live networks only. Same seeds and seats as the live evaluation.
+
+  checkpoint  weezing live / avg (avg vs random)lucario live / avg (avg vs random)
+  ckpt_100k                 -15.2   -32.4 ( 93%)               +4.1   -21.2 ( 94%)
+  ckpt_200k                  -8.5   -16.0 (100%)              +10.8    +5.8 (100%)
+  ckpt_400k                  -5.5    -2.4 ( 98%)              +13.9   +15.0 (100%)
+  ckpt_600k                  -2.0    -0.6 ( 98%)              +14.9   +20.0 ( 99%)
+  ckpt_800k                  -2.5    -1.4 ( 99%)              +15.9   +22.1 ( 99%)
+  ckpt_1000k                 -4.2    +2.2 ( 99%)              +18.7   +24.1 ( 98%)
+  ckpt_1200k                 +1.1    +1.8 (100%)              +17.8   +22.5 (100%)
+  ckpt_1400k                 -0.2    +3.3 (100%)              +19.2   +21.8 ( 98%)
+  ckpt_1600k                 -1.2    +5.8 (100%)              +22.6   +23.3 ( 98%)
+  ckpt_1800k                 +1.7    +5.3 (100%)              +20.9   +25.1 (100%)
+  ckpt_2000k                 -1.4    +4.6 (100%)              +20.4   +25.8 (100%)
+
+Margin by matchup at ckpt_2000k (points; row = the deck's own network, column = k3's deck):
+             weezing  lucario
+  weezing          —       -1
+  lucario        +20        —
+Best checkpoint per network: weezing ckpt_1800k (+1.7), lucario ckpt_1600k (+22.6)
+Leveled off (per network) = 3 checkpoints in a row within 3 points of each other, with the newest winning no more than 55% of the games it and the one before it decided differently. It is re-read at every checkpoint and is not sticky: here it is shown for information only; this run does not stop on it and ends at its 2,000,000-game budget.
+Leveled off, by checkpoint: ckpt_100k none; ckpt_200k none; ckpt_400k none; ckpt_600k none; ckpt_800k lucario; ckpt_1000k weezing; ckpt_1200k lucario; ckpt_1400k lucario; ckpt_1600k weezing; ckpt_1800k weezing; ckpt_2000k weezing, lucario
+
+Confirmation of weezing's ckpt_1600k_avg (paired with the bars): margin +2.3 points over its 1 matchup; lowest weezing vs lucario +2.3.
+    weezing vs lucario       +2.3
+
+Confirmation of weezing's ckpt_1800k_avg (paired with the bars): margin +3.2 points over its 1 matchup; lowest weezing vs lucario +3.2.
+    weezing vs lucario       +3.2
+
+Confirmation of lucario's ckpt_2000k_avg (paired with the bars): margin +24.4 points over its 1 matchup; lowest lucario vs weezing +24.4.
+    lucario vs weezing      +24.4
+
+Confirmation of lucario's ckpt_1800k_avg (paired with the bars): margin +25.6 points over its 1 matchup; lowest lucario vs weezing +25.6.
+    lucario vs weezing      +25.6
+
+Best confirmed checkpoint per network (live or averaged): weezing ckpt_1800k_avg, lucario ckpt_1800k_avg. No pass/fail rule in code; the decision is read from REPORT.txt.
+
+Flags:
+  - tiebreak shaping switched off at 200,000 games (turn-limit draws under 5% at two checks in a row)
+
+The full report: REPORT.txt (verdict, confirmations, audit and held-out test).

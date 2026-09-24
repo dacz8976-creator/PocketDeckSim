@@ -1,0 +1,40 @@
+Deeper-search table (k4 / k5 / k6 on both sides), updated 2026-09-24 13:54
+28 pairings x 1000 games per level, the Sept 23 k3 table's exact deals. Same command resumes.
+
+k3 (Sept 23 table): correlation 0.68, average miss 9.3, favorite right 23/28, clear ones 15/16, beyond chance 9
+k4: 28,000 of 28,000 games
+   on its 28 finished pairings: correlation 0.71 (k3 on the same: 0.68), average miss 9.1 (k3 9.3), favorite right 23/28 (k3 23), clear ones 15/16 (k3 15), beyond chance 10 (k3 9)
+k5: 28,000 of 28,000 games
+   on its 28 finished pairings: correlation 0.74 (k3 on the same: 0.68), average miss 8.9 (k3 9.3), favorite right 22/28 (k3 23), clear ones 15/16 (k3 15), beyond chance 11 (k3 9)
+k6: 26,741 of 28,000 games · 0.7 games/sec · about 0.5 h left
+   on its 26 finished pairings: correlation 0.69 (k3 on the same: 0.64), average miss 9.3 (k3 9.4), favorite right 21/26 (k3 21), clear ones 12/14 (k3 13), beyond chance 11 (k3 8)
+
+Per pairing (first deck's score): k3 | finished levels | Limitless (95%)
+    altaria v blaziken  k3  58.3 | k4  57.9 | k5  56.7 | k6  58.1 | Limitless  74.2 ± 8.8 (n 95)
+    altaria v hydreigon k3  57.0 | k4  58.0 | k5  59.4 | k6  57.9 | Limitless  57.0 ± 8.4 (n 135)
+    altaria v lucario   k3  56.0 | k4  55.9 | k5  57.5 | k6  56.4 | Limitless  71.9 ± 4.9 (n 318)
+    altaria v sceptile  k3  38.3 | k4  40.3 | k5  40.2 | k6  41.0 | Limitless  49.1 ± 6.6 (n 219)
+    altaria v suicune   k3  39.0 | k4  33.3 | k5  33.1 | k6  32.4 | Limitless  52.3 ± 8.0 (n 150)
+    altaria v vespiquen k3  43.1 | k4  41.0 | k5  37.9 | k6  36.8 | Limitless  38.8 ± 6.8 (n 200)
+    altaria v weezing   k3  37.5 | k4  37.0 | k5  38.0 | k6  37.5 | Limitless  34.8 ± 9.2 (n 102)
+   blaziken v hydreigon k3  65.5 | k4  65.3 | k5  64.8 | k6  65.0 | Limitless  59.0 ± 12.3 (n 61)
+   blaziken v lucario   k3  46.9 | k4  45.5 | k5  45.8 | k6  45.0 | Limitless  44.8 ± 8.1 (n 144)
+   blaziken v sceptile  k3  60.5 | k4  59.8 | k5  61.4 | k6  60.0 | Limitless  82.8 ± 9.0 (n 67)
+   blaziken v suicune   k3  54.3 | k4  49.6 | k5  49.4 | k6  49.6 | Limitless  60.8 ± 12.4 (n 60)
+   blaziken v vespiquen k3  77.5 | k4  76.2 | k5  74.2 | k6  75.3 | Limitless  81.4 ± 12.9 (n 35)
+   blaziken v weezing   k3  50.2 | k4  49.2 | k5  50.0 | k6  48.8 | Limitless  49.0 ± 14.1 (n 48)
+  hydreigon v lucario   k3  30.2 | k4  31.2 | k5  31.3 | k6  31.0 | Limitless  54.4 ± 8.0 (n 149)
+  hydreigon v sceptile  k3  29.2 | k4  30.0 | k5  30.0 | k6  30.3 | Limitless  39.4 ± 10.7 (n 80)
+  hydreigon v suicune   k3  37.9 | k4  37.0 | k5  35.9 | k6  32.6 | Limitless  34.7 ± 11.8 (n 62)
+  hydreigon v vespiquen k3  29.9 | k4  29.5 | k5  27.6 | k6  27.6 | Limitless  38.4 ± 9.8 (n 95)
+  hydreigon v weezing   k3  38.5 | k4  40.0 | k5  39.5 | k6  39.4 | Limitless  47.1 ± 13.7 (n 51)
+    lucario v sceptile  k3  35.7 | k4  36.1 | k5  37.1 | k6  35.4 | Limitless  37.9 ± 6.3 (n 231)
+    lucario v suicune   k3  52.4 | k4  51.8 | k5  50.1 | k6  49.2 | Limitless  58.5 ± 7.7 (n 158)
+    lucario v vespiquen k3  65.7 | k4  60.9 | k5  60.7 | k6  59.9 | Limitless  69.3 ± 6.4 (n 197)
+    lucario v weezing   k3  52.1 | k4  51.5 | k5  53.1 | k6  52.1 | Limitless  56.6 ± 8.3 (n 136)
+   sceptile v suicune   k3  57.0 | k4  50.5 | k5  50.1 | k6  48.3 | Limitless  47.2 ± 9.5 (n 107)
+   sceptile v vespiquen k3  66.1 | k4  59.2 | k5  56.5 | k6  56.8 | Limitless  33.1 ± 8.2 (n 127)
+   sceptile v weezing   k3  73.2 | k4  71.9 | k5  70.6 | k6  71.2 | Limitless  66.2 ± 10.4 (n 80)
+    suicune v vespiquen k3  46.0 | k4  48.5 | k5  46.5 | k6  48.6 | Limitless  27.0 ± 7.7 (n 128)
+    suicune v weezing   k3  62.7 | k4  67.9 | k5  68.9 | Limitless  64.2 ± 10.4 (n 81)
+  vespiquen v weezing   k3  68.8 | k4  74.5 | k5  76.2 | Limitless  83.5 ± 7.9 (n 85)

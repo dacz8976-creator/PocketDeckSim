@@ -1,0 +1,327 @@
+Run 4 report — pool5-v22-perdeck-01   (2026-09-22 02:47)
+
+Result: FINISHED — safety cap of 6,000,000 games reached at 6,000,000 games; best checkpoint per network blaziken ckpt_4000k (+4.9), lucario ckpt_1500k (+10.5), weezing ckpt_5000k (-7.1), altaria ckpt_2500k (+10.3), suicune ckpt_5000k (-14.0) — not a pass
+
+6,000,000 games · 22.8 h of training + 2.6 h of evaluation · 12 checkpoints · one network per deck
+
+Run history (the run's own flags, in order):
+  - tiebreak shaping switched off at 500,000 games (turn-limit draws under 5% at two checks in a row)
+  - trainer replaced at the 3,000,000-game save (2026-09-21 12:27): memory fix: capped weights-only network caches (Astra/Fable, Sept 21) (train_v4.py e05c1e3aed33 -> 74d54db888a8; identity_changes.json)
+  - resumed at 3,000,000 games from the last save (2026-09-21 12:28); games after that save were lost
+Changes to the run's recorded inputs (identity_changes.json):
+  - 2026-09-21 12:27, at the 3,000,000-game save: trainer e05c1e3aed33437832e6c16dfecd0952318b267dfe5e4a6bb79494f660aaa339 -> 74d54db888a830fe296cc107131829019c039e624917370667d4faab0420e80f. memory fix: capped weights-only network caches (Astra/Fable, Sept 21)
+
+Rules limitation (reviewed September 21, 2026):
+  This frozen add-on offers a turn-1 evolution of Benched Swablu into Mega Altaria ex
+  when Eevee is Active. Eevee's exception should apply only to Eevee. This was reproduced
+  with this run's add-on and decks; its frequency and effect on results were not measured.
+  Altaria rows AND columns, including averages containing them, describe this faulty
+  simulator. They do not validate Altaria's real-game strength or the bots' handling of it.
+  The other networks also trained against this opponent, so effects can extend beyond
+  direct Altaria matchups. Shared rule errors need not affect k3 and the networks equally.
+  The pass/fail below retains the original experiment's numerical rules. It is not a
+  real-game usability verdict. Altaria must not count as validated usable until retrained
+  and reevaluated on a corrected engine. Run 5's pool must follow a corrected k3 screen.
+
+The pass rules, on each network's best confirmed checkpoint (altaria ckpt_2500k, blaziken ckpt_4000k, lucario ckpt_1500k, suicune ckpt_5000k, weezing ckpt_5000k):
+  - blaziken vs lucario: +5.6 points over k3 (needed +10) → NO
+  - blaziken vs weezing: +3.5 points over k3 (needed +0 or better; deeper search barely pays here) → yes
+  - altaria vs blaziken: +8.9 points over k3 (needed +0 or better; deeper search barely pays here) → yes
+  - altaria vs lucario: +8.3 points over k3 (needed +0 or better; deeper search barely pays here) → yes
+  - altaria vs suicune: +18.1 points over k3 (needed +0 or better; deeper search barely pays here) → yes
+  - every matchup, no more than 5 points under k3: lowest is suicune vs altaria at -16.7 → NO
+  → Not a pass.
+
+  Margin by matchup, points (row = the deck's own network, column = the deck k3 pilots):
+                blaziken   lucario   weezing   altaria   suicune
+    blaziken           —        +6        +4        -3       +14
+    lucario           -1         —       +12        +4       +27
+    weezing           -6        -6         —       -15        -0
+    altaria           +9        +8        +6         —       +18
+    suicune          -14       -10       -16       -17         —
+
+Confirmation of the blaziken network's ckpt_4000k (used for the verdict): 1,000 games per matchup on the bars' own seeds (paired). Margin over k3 +4.9 points.
+  matchup                 network  k3, same deck   margin   games won only by
+  blaziken vs lucario       53.4%          47.8%    +5.6   network  237 / k3  181 (p 0.0071)
+  blaziken vs weezing       51.9%          48.4%    +3.5   network  187 / k3  152 (p 0.065)
+  blaziken vs altaria       40.9%          44.2%    -3.3   network  164 / k3  197 (p 0.092)
+  blaziken vs suicune       63.1%          49.5%   +13.6   network  246 / k3  110 (p 4.4e-13)
+
+Knockout audit (run 4) — pool5-v22-perdeck-01, the blaziken network's ckpt_4000k: 4,000 confirmation games and 4,000 bar games replayed; replay problems: 0
+
+Per matchup: the network piloting the first deck (bot) vs k3 piloting the same deck on the same seeds (k3).
+'attacked' / 'benched' = of the turns where that move was on offer, the share where it was made. Setup (turn 0) is excluded from both, as the run 2/run 3 benching benchmark excludes it. (k3 attacks 99% and benches 97%. Run 3's shared network: attacked 68%, benched 54%. Run 2's Blaziken specialist, the like-for-like bar for the pilot: benched 63%.)
+Giveaways and checkup deaths are rates per 1,000 player-turns. Checkup deaths: loose / strict (a retreat was offered that turn) / strict and still winnable (network only).
+
+  matchup               who    turns  sure win missed  sure KO missed  attacked  benched  giveaways          checkup deaths
+  altaria vs blaziken   k3      6685        0 of 366        54 of 951         97%      90%        1.2                 0.1 / 0.0
+  blaziken vs altaria   bot     6358        3 of 378        43 of 1187        78%      57%        0.0          24.7 / 0.0 / 0.0
+  blaziken vs altaria   k3      6329        0 of 408        12 of 1342        99%      99%        0.0                 6.8 / 0.0
+  blaziken vs lucario   bot     6334        1 of 465        40 of 830         78%      69%        0.0           0.0 / 0.0 / 0.0
+  blaziken vs lucario   k3      5874        0 of 400         6 of 1026        99%      98%        0.0                 0.0 / 0.0
+  blaziken vs suicune   bot     5316        1 of 116         5 of 344         82%      47%        0.0           0.0 / 0.0 / 0.0
+  blaziken vs suicune   k3      5396        0 of 77          5 of 326         98%      80%        0.0                 0.0 / 0.0
+  blaziken vs weezing   bot     5133        3 of 245        12 of 610         75%      55%        0.0           3.1 / 0.4 / 0.2
+  blaziken vs weezing   k3      5214        0 of 252         2 of 696         94%      98%        0.0                 0.0 / 0.0
+  lucario vs blaziken   k3      5636        0 of 519         3 of 1450        99%      93%        0.5                 0.0 / 0.0
+  suicune vs blaziken   k3      4932        0 of 499         1 of 1701        97%      94%        2.0                 0.0 / 0.0
+  weezing vs blaziken   k3      5432        0 of 301        21 of 454         92%      95%        0.9                 0.2 / 0.0
+
+Confirmation of the blaziken network's ckpt_6000k: 1,000 games per matchup on the bars' own seeds (paired). Margin over k3 +3.8 points.
+  matchup                 network  k3, same deck   margin   games won only by
+  blaziken vs lucario       51.7%          47.8%    +3.9   network  228 / k3  189 (p 0.063)
+  blaziken vs weezing       49.7%          48.4%    +1.3   network  191 / k3  178 (p 0.53)
+  blaziken vs altaria       39.0%          44.2%    -5.2   network  161 / k3  213 (p 0.0083)
+  blaziken vs suicune       64.7%          49.5%   +15.2   network  256 / k3  104 (p 6.4e-16)
+
+Knockout audit (run 4) — pool5-v22-perdeck-01, the blaziken network's ckpt_6000k: 4,000 confirmation games and 4,000 bar games replayed; replay problems: 0
+
+Per matchup: the network piloting the first deck (bot) vs k3 piloting the same deck on the same seeds (k3).
+'attacked' / 'benched' = of the turns where that move was on offer, the share where it was made. Setup (turn 0) is excluded from both, as the run 2/run 3 benching benchmark excludes it. (k3 attacks 99% and benches 97%. Run 3's shared network: attacked 68%, benched 54%. Run 2's Blaziken specialist, the like-for-like bar for the pilot: benched 63%.)
+Giveaways and checkup deaths are rates per 1,000 player-turns. Checkup deaths: loose / strict (a retreat was offered that turn) / strict and still winnable (network only).
+
+  matchup               who    turns  sure win missed  sure KO missed  attacked  benched  giveaways          checkup deaths
+  altaria vs blaziken   k3      6685        0 of 366        54 of 951         97%      90%        1.2                 0.1 / 0.0
+  blaziken vs altaria   bot     6446        1 of 351        44 of 1094        83%      63%        0.0          30.6 / 0.0 / 0.0
+  blaziken vs altaria   k3      6329        0 of 408        12 of 1342        99%      99%        0.0                 6.8 / 0.0
+  blaziken vs lucario   bot     6351        0 of 439        57 of 861         79%      65%        0.0           0.0 / 0.0 / 0.0
+  blaziken vs lucario   k3      5874        0 of 400         6 of 1026        99%      98%        0.0                 0.0 / 0.0
+  blaziken vs suicune   bot     5373        0 of 95          1 of 290         78%      45%        0.0           0.0 / 0.0 / 0.0
+  blaziken vs suicune   k3      5396        0 of 77          5 of 326         98%      80%        0.0                 0.0 / 0.0
+  blaziken vs weezing   bot     5357        0 of 208        14 of 580         71%      66%        0.0           4.9 / 1.9 / 0.9
+  blaziken vs weezing   k3      5214        0 of 252         2 of 696         94%      98%        0.0                 0.0 / 0.0
+  lucario vs blaziken   k3      5636        0 of 519         3 of 1450        99%      93%        0.5                 0.0 / 0.0
+  suicune vs blaziken   k3      4932        0 of 499         1 of 1701        97%      94%        2.0                 0.0 / 0.0
+  weezing vs blaziken   k3      5432        0 of 301        21 of 454         92%      95%        0.9                 0.2 / 0.0
+
+Confirmation of the lucario network's ckpt_1500k (used for the verdict): 1,000 games per matchup on the bars' own seeds (paired). Margin over k3 +10.5 points.
+  matchup                 network  k3, same deck   margin   games won only by
+  lucario vs blaziken       50.9%          52.1%    -1.2   network  217 / k3  229 (p 0.6)
+  lucario vs weezing        62.0%          50.0%   +12.0   network  220 / k3  100 (p 1.7e-11)
+  lucario vs altaria        50.5%          46.9%    +3.6   network  187 / k3  151 (p 0.057)
+  lucario vs suicune        77.1%          49.7%   +27.4   network  339 / k3   65 (p 8.1e-46)
+
+Knockout audit (run 4) — pool5-v22-perdeck-01, the lucario network's ckpt_1500k: 4,000 confirmation games and 4,000 bar games replayed; replay problems: 0
+
+Per matchup: the network piloting the first deck (bot) vs k3 piloting the same deck on the same seeds (k3).
+'attacked' / 'benched' = of the turns where that move was on offer, the share where it was made. Setup (turn 0) is excluded from both, as the run 2/run 3 benching benchmark excludes it. (k3 attacks 99% and benches 97%. Run 3's shared network: attacked 68%, benched 54%. Run 2's Blaziken specialist, the like-for-like bar for the pilot: benched 63%.)
+Giveaways and checkup deaths are rates per 1,000 player-turns. Checkup deaths: loose / strict (a retreat was offered that turn) / strict and still winnable (network only).
+
+  matchup               who    turns  sure win missed  sure KO missed  attacked  benched  giveaways          checkup deaths
+  altaria vs lucario    k3      6590        0 of 348        35 of 846         97%      88%        0.0                 0.0 / 0.0
+  blaziken vs lucario   k3      5874        0 of 400         6 of 1026        99%      98%        0.0                 0.0 / 0.0
+  lucario vs altaria    bot     6117        1 of 506        41 of 1583        89%      62%        0.0           7.7 / 0.0 / 0.0
+  lucario vs altaria    k3      5908        0 of 468         0 of 1449        99%      93%        0.0                 4.1 / 0.0
+  lucario vs blaziken   bot     5986        0 of 507       103 of 1131        82%      56%        5.2           1.7 / 0.7 / 0.2
+  lucario vs blaziken   k3      5636        0 of 519         3 of 1450        99%      93%        0.5                 0.0 / 0.0
+  lucario vs suicune    bot     5694        0 of 771        10 of 1641        91%      31%        0.0           0.0 / 0.0 / 0.0
+  lucario vs suicune    k3      5874        0 of 497         0 of 1172        98%      70%        0.0                 0.0 / 0.0
+  lucario vs weezing    bot     4941        0 of 602         7 of 1354        91%      45%        0.0           4.5 / 0.2 / 0.2
+  lucario vs weezing    k3      5023        0 of 484         2 of 1087        98%      91%        0.0                 0.2 / 0.0
+  suicune vs lucario    k3      5858        0 of 497         0 of 1557        96%      94%        0.0                 0.0 / 0.0
+  weezing vs lucario    k3      5443        0 of 325        24 of 459         93%      95%        1.5                 0.0 / 0.0
+
+Confirmation of the lucario network's ckpt_3500k: 1,000 games per matchup on the bars' own seeds (paired). Margin over k3 +9.8 points.
+  matchup                 network  k3, same deck   margin   games won only by
+  lucario vs blaziken       52.1%          52.1%    +0.0   network  201 / k3  201 (p 1)
+  lucario vs weezing        59.4%          50.0%    +9.4   network  219 / k3  125 (p 4.6e-07)
+  lucario vs altaria        48.6%          46.9%    +1.7   network  197 / k3  180 (p 0.41)
+  lucario vs suicune        77.7%          49.7%   +28.0   network  340 / k3   60 (p 1.4e-48)
+
+Knockout audit (run 4) — pool5-v22-perdeck-01, the lucario network's ckpt_3500k: 4,000 confirmation games and 4,000 bar games replayed; replay problems: 0
+
+Per matchup: the network piloting the first deck (bot) vs k3 piloting the same deck on the same seeds (k3).
+'attacked' / 'benched' = of the turns where that move was on offer, the share where it was made. Setup (turn 0) is excluded from both, as the run 2/run 3 benching benchmark excludes it. (k3 attacks 99% and benches 97%. Run 3's shared network: attacked 68%, benched 54%. Run 2's Blaziken specialist, the like-for-like bar for the pilot: benched 63%.)
+Giveaways and checkup deaths are rates per 1,000 player-turns. Checkup deaths: loose / strict (a retreat was offered that turn) / strict and still winnable (network only).
+
+  matchup               who    turns  sure win missed  sure KO missed  attacked  benched  giveaways          checkup deaths
+  altaria vs lucario    k3      6590        0 of 348        35 of 846         97%      88%        0.0                 0.0 / 0.0
+  blaziken vs lucario   k3      5874        0 of 400         6 of 1026        99%      98%        0.0                 0.0 / 0.0
+  lucario vs altaria    bot     5898        0 of 486        47 of 1485        73%      59%        0.0          12.5 / 0.0 / 0.0
+  lucario vs altaria    k3      5908        0 of 468         0 of 1449        99%      93%        0.0                 4.1 / 0.0
+  lucario vs blaziken   bot     6199        0 of 520       149 of 1321        80%      69%        1.6           2.4 / 1.0 / 0.0
+  lucario vs blaziken   k3      5636        0 of 519         3 of 1450        99%      93%        0.5                 0.0 / 0.0
+  lucario vs suicune    bot     5951        0 of 777        12 of 1643        78%      48%        0.0           0.0 / 0.0 / 0.0
+  lucario vs suicune    k3      5874        0 of 497         0 of 1172        98%      70%        0.0                 0.0 / 0.0
+  lucario vs weezing    bot     5117        0 of 580        15 of 1342        88%      60%        0.0           4.3 / 0.2 / 0.2
+  lucario vs weezing    k3      5023        0 of 484         2 of 1087        98%      91%        0.0                 0.2 / 0.0
+  suicune vs lucario    k3      5858        0 of 497         0 of 1557        96%      94%        0.0                 0.0 / 0.0
+  weezing vs lucario    k3      5443        0 of 325        24 of 459         93%      95%        1.5                 0.0 / 0.0
+
+Confirmation of the weezing network's ckpt_5000k (used for the verdict): 1,000 games per matchup on the bars' own seeds (paired). Margin over k3 -7.1 points.
+  matchup                 network  k3, same deck   margin   games won only by
+  weezing vs blaziken       45.0%          51.1%    -6.1   network  139 / k3  200 (p 0.0011)
+  weezing vs lucario        43.4%          49.9%    -6.5   network  142 / k3  207 (p 0.00059)
+  weezing vs altaria        50.8%          66.1%   -15.3   network  121 / k3  274 (p 9.5e-15)
+  weezing vs suicune        36.5%          36.8%    -0.3   network  158 / k3  161 (p 0.91)
+
+Knockout audit (run 4) — pool5-v22-perdeck-01, the weezing network's ckpt_5000k: 4,000 confirmation games and 4,000 bar games replayed; replay problems: 0
+
+Per matchup: the network piloting the first deck (bot) vs k3 piloting the same deck on the same seeds (k3).
+'attacked' / 'benched' = of the turns where that move was on offer, the share where it was made. Setup (turn 0) is excluded from both, as the run 2/run 3 benching benchmark excludes it. (k3 attacks 99% and benches 97%. Run 3's shared network: attacked 68%, benched 54%. Run 2's Blaziken specialist, the like-for-like bar for the pilot: benched 63%.)
+Giveaways and checkup deaths are rates per 1,000 player-turns. Checkup deaths: loose / strict (a retreat was offered that turn) / strict and still winnable (network only).
+
+  matchup               who    turns  sure win missed  sure KO missed  attacked  benched  giveaways          checkup deaths
+  altaria vs weezing    k3      6554        0 of 263        61 of 670         96%      86%        0.0                 0.9 / 0.0
+  blaziken vs weezing   k3      5214        0 of 252         2 of 696         94%      98%        0.0                 0.0 / 0.0
+  lucario vs weezing    k3      5023        0 of 484         2 of 1087        98%      91%        0.0                 0.2 / 0.0
+  suicune vs weezing    k3      6297        0 of 616         3 of 1411        95%      92%        0.0                 0.0 / 0.0
+  weezing vs altaria    bot     6584        9 of 486        17 of 646         90%      48%        2.0           7.9 / 0.0 / 0.0
+  weezing vs altaria    k3      6558        0 of 559        18 of 557         92%      94%        1.5                 2.3 / 0.0
+  weezing vs blaziken   bot     5391        3 of 329        10 of 440         84%      59%        1.3           9.5 / 1.7 / 0.0
+  weezing vs blaziken   k3      5432        0 of 301        21 of 454         92%      95%        0.9                 0.2 / 0.0
+  weezing vs lucario    bot     5570        9 of 329        21 of 377         92%      56%        1.8           0.0 / 0.0 / 0.0
+  weezing vs lucario    k3      5443        0 of 325        24 of 459         93%      95%        1.5                 0.0 / 0.0
+  weezing vs suicune    bot     6589        4 of 326         9 of 587         90%      48%        1.2           0.0 / 0.0 / 0.0
+  weezing vs suicune    k3      6608        0 of 306        16 of 557         98%      82%        1.4                 0.0 / 0.0
+
+Confirmation of the weezing network's ckpt_6000k: 1,000 games per matchup on the bars' own seeds (paired). Margin over k3 -9.4 points.
+  matchup                 network  k3, same deck   margin   games won only by
+  weezing vs blaziken       38.0%          51.1%   -13.1   network  117 / k3  248 (p 6.1e-12)
+  weezing vs lucario        45.7%          49.9%    -4.2   network  140 / k3  182 (p 0.022)
+  weezing vs altaria        44.7%          66.1%   -21.4   network   96 / k3  310 (p 2.2e-27)
+  weezing vs suicune        37.9%          36.8%    +1.1   network  162 / k3  151 (p 0.57)
+
+Knockout audit (run 4) — pool5-v22-perdeck-01, the weezing network's ckpt_6000k: 4,000 confirmation games and 4,000 bar games replayed; replay problems: 0
+
+Per matchup: the network piloting the first deck (bot) vs k3 piloting the same deck on the same seeds (k3).
+'attacked' / 'benched' = of the turns where that move was on offer, the share where it was made. Setup (turn 0) is excluded from both, as the run 2/run 3 benching benchmark excludes it. (k3 attacks 99% and benches 97%. Run 3's shared network: attacked 68%, benched 54%. Run 2's Blaziken specialist, the like-for-like bar for the pilot: benched 63%.)
+Giveaways and checkup deaths are rates per 1,000 player-turns. Checkup deaths: loose / strict (a retreat was offered that turn) / strict and still winnable (network only).
+
+  matchup               who    turns  sure win missed  sure KO missed  attacked  benched  giveaways          checkup deaths
+  altaria vs weezing    k3      6554        0 of 263        61 of 670         96%      86%        0.0                 0.9 / 0.0
+  blaziken vs weezing   k3      5214        0 of 252         2 of 696         94%      98%        0.0                 0.0 / 0.0
+  lucario vs weezing    k3      5023        0 of 484         2 of 1087        98%      91%        0.0                 0.2 / 0.0
+  suicune vs weezing    k3      6297        0 of 616         3 of 1411        95%      92%        0.0                 0.0 / 0.0
+  weezing vs altaria    bot     6465        5 of 416        13 of 610         91%      51%        1.9          14.1 / 0.0 / 0.0
+  weezing vs altaria    k3      6558        0 of 559        18 of 557         92%      94%        1.5                 2.3 / 0.0
+  weezing vs blaziken   bot     5488        3 of 269        28 of 434         78%      54%        2.6          11.8 / 2.0 / 0.2
+  weezing vs blaziken   k3      5432        0 of 301        21 of 454         92%      95%        0.9                 0.2 / 0.0
+  weezing vs lucario    bot     5591        0 of 348        28 of 499         89%      54%        1.1           0.0 / 0.0 / 0.0
+  weezing vs lucario    k3      5443        0 of 325        24 of 459         93%      95%        1.5                 0.0 / 0.0
+  weezing vs suicune    bot     6290        0 of 337        12 of 669         91%      34%        2.2           0.0 / 0.0 / 0.0
+  weezing vs suicune    k3      6608        0 of 306        16 of 557         98%      82%        1.4                 0.0 / 0.0
+
+Confirmation of the altaria network's ckpt_2500k (used for the verdict): 1,000 games per matchup on the bars' own seeds (paired). Margin over k3 +10.3 points.
+  matchup                 network  k3, same deck   margin   games won only by
+  altaria vs blaziken       64.7%          55.8%    +8.9   network  247 / k3  158 (p 1.1e-05)
+  altaria vs lucario        61.4%          53.1%    +8.3   network  235 / k3  152 (p 2.9e-05)
+  altaria vs weezing        40.0%          33.9%    +6.1   network  221 / k3  160 (p 0.0021)
+  altaria vs suicune        52.1%          34.0%   +18.1   network  303 / k3  122 (p 7.4e-19)
+
+Knockout audit (run 4) — pool5-v22-perdeck-01, the altaria network's ckpt_2500k: 4,000 confirmation games and 4,000 bar games replayed; replay problems: 0
+
+Per matchup: the network piloting the first deck (bot) vs k3 piloting the same deck on the same seeds (k3).
+'attacked' / 'benched' = of the turns where that move was on offer, the share where it was made. Setup (turn 0) is excluded from both, as the run 2/run 3 benching benchmark excludes it. (k3 attacks 99% and benches 97%. Run 3's shared network: attacked 68%, benched 54%. Run 2's Blaziken specialist, the like-for-like bar for the pilot: benched 63%.)
+Giveaways and checkup deaths are rates per 1,000 player-turns. Checkup deaths: loose / strict (a retreat was offered that turn) / strict and still winnable (network only).
+
+  matchup               who    turns  sure win missed  sure KO missed  attacked  benched  giveaways          checkup deaths
+  altaria vs blaziken   bot     6517        0 of 443        78 of 960         92%      69%        1.2           0.2 / 0.0 / 0.0
+  altaria vs blaziken   k3      6685        0 of 366        54 of 951         97%      90%        1.2                 0.1 / 0.0
+  altaria vs lucario    bot     6211        0 of 449        32 of 1035        92%      68%        0.0           0.0 / 0.0 / 0.0
+  altaria vs lucario    k3      6590        0 of 348        35 of 846         97%      88%        0.0                 0.0 / 0.0
+  altaria vs suicune    bot     7441        0 of 484        38 of 1068        90%      66%        0.0           0.0 / 0.0 / 0.0
+  altaria vs suicune    k3      7450        0 of 294        44 of 796         97%      79%        0.0                 0.0 / 0.0
+  altaria vs weezing    bot     6023        0 of 331        24 of 724         92%      63%        0.0           3.7 / 0.2 / 0.0
+  altaria vs weezing    k3      6554        0 of 263        61 of 670         96%      86%        0.0                 0.9 / 0.0
+  blaziken vs altaria   k3      6329        0 of 408        12 of 1342        99%      99%        0.0                 6.8 / 0.0
+  lucario vs altaria    k3      5908        0 of 468         0 of 1449        99%      93%        0.0                 4.1 / 0.0
+  suicune vs altaria    k3      6925        0 of 660         0 of 2091        96%      94%        0.0                 1.0 / 0.0
+  weezing vs altaria    k3      6558        0 of 559        18 of 557         92%      94%        1.5                 2.3 / 0.0
+
+Confirmation of the altaria network's ckpt_3000k: 1,000 games per matchup on the bars' own seeds (paired). Margin over k3 +8.4 points.
+  matchup                 network  k3, same deck   margin   games won only by
+  altaria vs blaziken       59.6%          55.8%    +3.8   network  229 / k3  191 (p 0.071)
+  altaria vs lucario        60.8%          53.1%    +7.7   network  246 / k3  169 (p 0.00018)
+  altaria vs weezing        41.4%          33.9%    +7.5   network  223 / k3  148 (p 0.00012)
+  altaria vs suicune        48.6%          34.0%   +14.6   network  283 / k3  137 (p 8.9e-13)
+
+Knockout audit (run 4) — pool5-v22-perdeck-01, the altaria network's ckpt_3000k: 4,000 confirmation games and 4,000 bar games replayed; replay problems: 0
+
+Per matchup: the network piloting the first deck (bot) vs k3 piloting the same deck on the same seeds (k3).
+'attacked' / 'benched' = of the turns where that move was on offer, the share where it was made. Setup (turn 0) is excluded from both, as the run 2/run 3 benching benchmark excludes it. (k3 attacks 99% and benches 97%. Run 3's shared network: attacked 68%, benched 54%. Run 2's Blaziken specialist, the like-for-like bar for the pilot: benched 63%.)
+Giveaways and checkup deaths are rates per 1,000 player-turns. Checkup deaths: loose / strict (a retreat was offered that turn) / strict and still winnable (network only).
+
+  matchup               who    turns  sure win missed  sure KO missed  attacked  benched  giveaways          checkup deaths
+  altaria vs blaziken   bot     6559        0 of 391       105 of 840         88%      66%        1.4           0.5 / 0.0 / 0.0
+  altaria vs blaziken   k3      6685        0 of 366        54 of 951         97%      90%        1.2                 0.1 / 0.0
+  altaria vs lucario    bot     6321        0 of 431        52 of 1018        87%      65%        0.0           0.0 / 0.0 / 0.0
+  altaria vs lucario    k3      6590        0 of 348        35 of 846         97%      88%        0.0                 0.0 / 0.0
+  altaria vs suicune    bot     7319        1 of 452        16 of 976         89%      59%        0.0           0.0 / 0.0 / 0.0
+  altaria vs suicune    k3      7450        0 of 294        44 of 796         97%      79%        0.0                 0.0 / 0.0
+  altaria vs weezing    bot     6192        0 of 352        33 of 757         90%      72%        0.0           3.6 / 0.6 / 0.2
+  altaria vs weezing    k3      6554        0 of 263        61 of 670         96%      86%        0.0                 0.9 / 0.0
+  blaziken vs altaria   k3      6329        0 of 408        12 of 1342        99%      99%        0.0                 6.8 / 0.0
+  lucario vs altaria    k3      5908        0 of 468         0 of 1449        99%      93%        0.0                 4.1 / 0.0
+  suicune vs altaria    k3      6925        0 of 660         0 of 2091        96%      94%        0.0                 1.0 / 0.0
+  weezing vs altaria    k3      6558        0 of 559        18 of 557         92%      94%        1.5                 2.3 / 0.0
+
+Confirmation of the suicune network's ckpt_1500k: 1,000 games per matchup on the bars' own seeds (paired). Margin over k3 -16.1 points.
+  matchup                 network  k3, same deck   margin   games won only by
+  suicune vs blaziken       37.6%          50.4%   -12.8   network   75 / k3  203 (p 8.6e-15)
+  suicune vs lucario        33.1%          50.3%   -17.2   network   74 / k3  246 (p 1e-22)
+  suicune vs weezing        42.3%          62.9%   -20.6   network   66 / k3  272 (p 7.8e-31)
+  suicune vs altaria        52.2%          66.0%   -13.8   network   85 / k3  223 (p 2e-15)
+
+Knockout audit (run 4) — pool5-v22-perdeck-01, the suicune network's ckpt_1500k: 4,000 confirmation games and 4,000 bar games replayed; replay problems: 0
+
+Per matchup: the network piloting the first deck (bot) vs k3 piloting the same deck on the same seeds (k3).
+'attacked' / 'benched' = of the turns where that move was on offer, the share where it was made. Setup (turn 0) is excluded from both, as the run 2/run 3 benching benchmark excludes it. (k3 attacks 99% and benches 97%. Run 3's shared network: attacked 68%, benched 54%. Run 2's Blaziken specialist, the like-for-like bar for the pilot: benched 63%.)
+Giveaways and checkup deaths are rates per 1,000 player-turns. Checkup deaths: loose / strict (a retreat was offered that turn) / strict and still winnable (network only).
+
+  matchup               who    turns  sure win missed  sure KO missed  attacked  benched  giveaways          checkup deaths
+  altaria vs suicune    k3      7450        0 of 294        44 of 796         97%      79%        0.0                 0.0 / 0.0
+  blaziken vs suicune   k3      5396        0 of 77          5 of 326         98%      80%        0.0                 0.0 / 0.0
+  lucario vs suicune    k3      5874        0 of 497         0 of 1172        98%      70%        0.0                 0.0 / 0.0
+  suicune vs altaria    bot     6802        7 of 529        27 of 1740        80%      71%        0.0           2.9 / 0.0 / 0.0
+  suicune vs altaria    k3      6925        0 of 660         0 of 2091        96%      94%        0.0                 1.0 / 0.0
+  suicune vs blaziken   bot     4981        0 of 371        70 of 1224        72%      62%        1.4           4.4 / 0.6 / 0.0
+  suicune vs blaziken   k3      4932        0 of 499         1 of 1701        97%      94%        2.0                 0.0 / 0.0
+  suicune vs lucario    bot     5577        0 of 322        38 of 983         74%      51%        0.0           0.0 / 0.0 / 0.0
+  suicune vs lucario    k3      5858        0 of 497         0 of 1557        96%      94%        0.0                 0.0 / 0.0
+  suicune vs weezing    bot     6194        0 of 416        28 of 1037        85%      72%        0.0           1.9 / 0.3 / 0.0
+  suicune vs weezing    k3      6297        0 of 616         3 of 1411        95%      92%        0.0                 0.0 / 0.0
+  weezing vs suicune    k3      6608        0 of 306        16 of 557         98%      82%        1.4                 0.0 / 0.0
+
+Confirmation of the suicune network's ckpt_5000k (used for the verdict): 1,000 games per matchup on the bars' own seeds (paired). Margin over k3 -14.0 points.
+  matchup                 network  k3, same deck   margin   games won only by
+  suicune vs blaziken       36.7%          50.4%   -13.7   network   73 / k3  210 (p 1.6e-16)
+  suicune vs lucario        40.6%          50.3%    -9.7   network  103 / k3  200 (p 2.7e-08)
+  suicune vs weezing        47.2%          62.9%   -15.7   network   86 / k3  243 (p 1.7e-18)
+  suicune vs altaria        49.3%          66.0%   -16.7   network   91 / k3  258 (p 1.2e-19)
+
+Knockout audit (run 4) — pool5-v22-perdeck-01, the suicune network's ckpt_5000k: 4,000 confirmation games and 4,000 bar games replayed; replay problems: 0
+
+Per matchup: the network piloting the first deck (bot) vs k3 piloting the same deck on the same seeds (k3).
+'attacked' / 'benched' = of the turns where that move was on offer, the share where it was made. Setup (turn 0) is excluded from both, as the run 2/run 3 benching benchmark excludes it. (k3 attacks 99% and benches 97%. Run 3's shared network: attacked 68%, benched 54%. Run 2's Blaziken specialist, the like-for-like bar for the pilot: benched 63%.)
+Giveaways and checkup deaths are rates per 1,000 player-turns. Checkup deaths: loose / strict (a retreat was offered that turn) / strict and still winnable (network only).
+
+  matchup               who    turns  sure win missed  sure KO missed  attacked  benched  giveaways          checkup deaths
+  altaria vs suicune    k3      7450        0 of 294        44 of 796         97%      79%        0.0                 0.0 / 0.0
+  blaziken vs suicune   k3      5396        0 of 77          5 of 326         98%      80%        0.0                 0.0 / 0.0
+  lucario vs suicune    k3      5874        0 of 497         0 of 1172        98%      70%        0.0                 0.0 / 0.0
+  suicune vs altaria    bot     6626        0 of 493        16 of 1615        86%      76%        0.0           4.7 / 0.0 / 0.0
+  suicune vs altaria    k3      6925        0 of 660         0 of 2091        96%      94%        0.0                 1.0 / 0.0
+  suicune vs blaziken   bot     5008        0 of 359        59 of 1204        76%      61%        1.2           3.6 / 0.4 / 0.0
+  suicune vs blaziken   k3      4932        0 of 499         1 of 1701        97%      94%        2.0                 0.0 / 0.0
+  suicune vs lucario    bot     5698        0 of 394        29 of 1075        79%      57%        0.0           0.0 / 0.0 / 0.0
+  suicune vs lucario    k3      5858        0 of 497         0 of 1557        96%      94%        0.0                 0.0 / 0.0
+  suicune vs weezing    bot     6116       10 of 466        39 of 1056        90%      71%        0.0           2.8 / 0.0 / 0.0
+  suicune vs weezing    k3      6297        0 of 616         3 of 1411        95%      92%        0.0                 0.0 / 0.0
+  weezing vs suicune    k3      6608        0 of 306        16 of 557         98%      82%        1.4                 0.0 / 0.0
+
+Held-out test (run 4) — pool5-v22-perdeck-01, each network's best confirmed checkpoint (altaria ckpt_2500k, blaziken ckpt_4000k, lucario ckpt_1500k, suicune ckpt_5000k, weezing ckpt_5000k): 1,000 games per row, paired with k3 on the same seeds
+
+  network pilotsagainst (k3)    network  k3, same deck   margin           games won only by
+  facing ninetales, a deck none of them ever met:
+  blaziken      ninetales         32.8%          41.3%    -8.5   network  118 / k3  203 (p 2.4e-06)
+  lucario       ninetales         50.7%          58.9%    -8.2   network  112 / k3  194 (p 3.2e-06)
+  weezing       ninetales         45.4%          61.9%   -16.5   network  118 / k3  283 (p 9.6e-17)
+  altaria       ninetales         63.7%          71.3%    -7.6   network  144 / k3  220 (p 8e-05)
+  suicune       ninetales         36.0%          63.3%   -27.3   network   42 / k3  315 (p 7.4e-53)
+  facing manectric, a deck none of them ever met:
+  blaziken      manectric         38.1%          40.4%    -2.3   network  169 / k3  192 (p 0.25)
+  lucario       manectric         63.9%          65.3%    -1.4   network  155 / k3  169 (p 0.47)
+  weezing       manectric         37.2%          47.7%   -10.5   network  130 / k3  235 (p 4.2e-08)
+  altaria       manectric         43.6%          42.3%    +1.3   network  202 / k3  189 (p 0.54)
+  suicune       manectric         31.0%          43.1%   -12.1   network   94 / k3  215 (p 4.7e-12)

@@ -1,0 +1,36 @@
+brew-03a self-play training — brew03a-01   (updated 2026-09-18 16:19)
+State: PASSED — ckpt_1500k passed the 1,000-game confirmation against k3
+
+Games played: 1,500,000 of 5,000,000 · 2.2 h of training (evaluation time not counted) · 188 games/sec lately
+Trainer: each recorded move trained on 2.0 times lately (2.0 overall); target 2. This is an average, not a guarantee for every move. Under 1 indicates insufficient training throughput (try fewer workers).
+Turn-limit draws in self-play, last 20,000 games: 0% (started at 6%). Tiebreak shaping: off.
+Draw gate at 250,000 games: passed (1%; needed under 10% and below the start)
+Training games vs earlier checkpoints: latest network won 69% of 300,161
+
+Checkpoints (network plays its best move; draws count as non-wins):
+  checkpoint   vs k3: all (seat 0 / seat 1)   draws   vs random   vs previous
+  ckpt_0          6% (7% / 5%)          1%        55%           —
+    k3 W/L/D: seat 0 14/183/3; seat 1 10/188/2
+    random W/L/D: seat 0 52/2/46; seat 1 57/1/42
+  ckpt_100k      39% (40% / 38%)          4%        95%         88%
+    k3 W/L/D: seat 0 80/115/5; seat 1 76/113/11
+    random W/L/D: seat 0 94/1/5; seat 1 96/0/4
+    prev W/L/D: seat 0 176/21/3; seat 1 174/22/4
+  ckpt_500k      50% (50% / 50%)          1%        97%         67%
+    k3 W/L/D: seat 0 100/98/2; seat 1 101/96/3
+    random W/L/D: seat 0 97/0/3; seat 1 97/0/3
+    prev W/L/D: seat 0 126/66/8; seat 1 143/51/6
+  ckpt_1000k     51% (52% / 51%)          2%        98%         50%
+    k3 W/L/D: seat 0 103/93/4; seat 1 102/92/6
+    random W/L/D: seat 0 99/0/1; seat 1 96/0/4
+    prev W/L/D: seat 0 98/94/8; seat 1 100/95/5
+  ckpt_1500k     57% (59% / 55%)          2%       100%         57%
+    k3 W/L/D: seat 0 118/77/5; seat 1 109/87/4
+    random W/L/D: seat 0 100/0/0; seat 1 99/0/1
+    prev W/L/D: seat 0 114/79/7; seat 1 114/84/2
+Best so far against k3: ckpt_1500k (57%)
+Confirmation of ckpt_1500k on 1,000 fresh games: 55.5% (seat 0 56.8%, seat 1 54.2%) → PASS
+Confirmation of ckpt_1000k on 1,000 fresh games: 47.9% (seat 0 48.4%, seat 1 47.4%) → not a pass; flag: seat 0 at 48.4% (between 45% and 50%), seat 1 at 47.4% (between 45% and 50%)
+
+Flags:
+  - tiebreak shaping switched off at 250,000 games (turn-limit draws under 5% at two checks in a row)

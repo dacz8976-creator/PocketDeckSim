@@ -1,0 +1,125 @@
+Run 4 (one network per deck, encoding v2.2) — pool5-v22-perdeck-01   (updated 2026-09-22 01:24)
+Networks: blaziken, lucario, weezing, altaria, suicune · each pilots only its own deck · the 10 pairings between them, evenly
+State: FINISHED — safety cap of 6,000,000 games reached at 6,000,000 games; best checkpoint per network blaziken ckpt_4000k (+4.9), lucario ckpt_1500k (+10.5), weezing ckpt_5000k (-7.1), altaria ckpt_2500k (+10.3), suicune ckpt_5000k (-14.0) — not a pass. The report steps (audit, held-out test, REPORT.txt) run next, automatically
+
+The bars: k3's own win rate piloting the row deck against k3 piloting the column deck
+(1,000 games per pairing, on the confirmation seeds):
+              blaziken   lucario   weezing   altaria   suicune
+  blaziken           —       48%       48%       44%       50%
+  lucario          52%         —       50%       47%       50%
+  weezing          51%       50%         —       66%       37%
+  altaria          56%       53%       34%         —       34%
+  suicune          50%       50%       63%       66%         —
+
+Games played: 6,000,000 (safety cap 6,000,000) · 22.8 h of training + 2.6 h of evaluation · 72 games/sec lately
+Trainer: each recorded move trained on 2.0 times lately (2.0 overall); target 2. Under 1 means the trainer is falling behind (try fewer workers).
+Turn-limit draws in training, last 20,000 games: 0.1% (started at 5%). Tiebreak shaping: off.
+Draw gate at 250,000 games: passed (0.4%; needed under 10% and below the start)
+Training games vs earlier checkpoints: the current networks won 63% of 1,200,987
+
+Checkpoints. Each network's margin = its win rate minus k3's own result in the same matchup,
+averaged over its 4 matchups (1,000 games each, seeds the confirmation never uses).
+'vs previous' = of the games this checkpoint and the one before it decided differently, the share this one
+won (50% = no change). 'vs random' = against uniformly random moves.
+
+  checkpoint                blaziken               lucario               weezing               altaria               suicune
+                 margin  prev random   margin  prev random   margin  prev random   margin  prev random   margin  prev random
+  ckpt_500k        +0.5    50%   98%     +5.0    50%   98%    -16.2    50%  100%     +0.5    50%  100%    -21.0    50%   99%
+  ckpt_1000k       +3.4    54%   99%     +3.0    47%   99%    -14.1    53%   99%     +5.9    57%   99%    -24.9    43%   98%
+  ckpt_1500k       +2.0    48%   97%    +11.1    63%   99%    -10.0    56%   99%     +7.9    53%   99%    -12.9    69%   99%
+  ckpt_2000k       +1.0    48%   99%     +9.8    48%   99%    -11.8    47%   99%     +7.7    50%   99%    -17.2    43%   97%
+  ckpt_2500k       +4.8    56%   98%     +7.4    46%   99%    -11.0    51%   99%    +10.3    54%   99%    -19.2    47%   96%
+  ckpt_3000k       +1.1    44%   98%     +7.9    51%  100%    -12.0    48%   99%    +10.2    50%   99%    -15.8    56%   97%
+  ckpt_3500k       +1.2    50%   98%    +10.6    54%   98%    -10.3    53%   99%     +9.4    49%   99%    -19.2    44%   97%
+  ckpt_4000k       +7.0    58%   99%    +10.2    49%   99%    -10.1    50%   99%     +8.2    48%   99%    -21.1    47%   96%
+  ckpt_4500k       +0.9    41%   99%     +8.8    48%   99%    -14.7    43%   98%     +8.7    51%   99%    -18.1    55%   93%
+  ckpt_5000k       +3.5    54%   99%     +8.1    49%   99%     -8.6    60%   99%     +8.1    49%   99%    -13.3    58%   98%
+  ckpt_5500k       +3.6    50%   97%     +9.7    53%   98%     -8.8    50%   99%     +9.9    53%  100%    -14.8    47%   97%
+  ckpt_6000k       +5.1    52%   99%     +9.3    49%   99%     -8.6    50%   99%    +10.1    50%   99%    -18.8    43%   96%
+
+Margin by matchup at ckpt_6000k (points; row = the deck's own network, column = k3's deck):
+              blaziken   lucario   weezing   altaria   suicune
+  blaziken           —        +7        +3        -6       +16
+  lucario           -6         —       +12        +2       +29
+  weezing          -13        -2         —       -18        -1
+  altaria           +9       +10        +8         —       +13
+  suicune          -18       -27       -18       -13         —
+Best checkpoint per network: blaziken ckpt_4000k (+7.0), lucario ckpt_1500k (+11.1), weezing ckpt_5000k (-8.6), altaria ckpt_2500k (+10.3), suicune ckpt_1500k (-12.9)
+Leveled off (per network) = 3 checkpoints in a row within 3 points of each other, with the newest winning no more than 55% of the games it and the one before it decided differently. It is re-read at every checkpoint and is not sticky: the run ends when every network is leveled off at the same checkpoint, or at the cap.
+Leveled off so far: blaziken, lucario, weezing, altaria
+
+Confirmation of blaziken's ckpt_4000k (paired with the bars): margin +4.9 points over its 4 matchups; lowest blaziken vs altaria -3.3.
+    blaziken vs altaria      -3.3
+    blaziken vs lucario      +5.6
+    blaziken vs suicune     +13.6
+    blaziken vs weezing      +3.5
+
+Confirmation of blaziken's ckpt_6000k (paired with the bars): margin +3.8 points over its 4 matchups; lowest blaziken vs altaria -5.2.
+    blaziken vs altaria      -5.2
+    blaziken vs lucario      +3.9
+    blaziken vs suicune     +15.2
+    blaziken vs weezing      +1.3
+
+Confirmation of lucario's ckpt_1500k (paired with the bars): margin +10.5 points over its 4 matchups; lowest lucario vs blaziken -1.2.
+    lucario vs altaria       +3.6
+    lucario vs blaziken      -1.2
+    lucario vs suicune      +27.4
+    lucario vs weezing      +12.0
+
+Confirmation of lucario's ckpt_3500k (paired with the bars): margin +9.8 points over its 4 matchups; lowest lucario vs blaziken +0.0.
+    lucario vs altaria       +1.7
+    lucario vs blaziken      +0.0
+    lucario vs suicune      +28.0
+    lucario vs weezing       +9.4
+
+Confirmation of weezing's ckpt_5000k (paired with the bars): margin -7.1 points over its 4 matchups; lowest weezing vs altaria -15.3.
+    weezing vs altaria      -15.3
+    weezing vs blaziken      -6.1
+    weezing vs lucario       -6.5
+    weezing vs suicune       -0.3
+
+Confirmation of weezing's ckpt_6000k (paired with the bars): margin -9.4 points over its 4 matchups; lowest weezing vs altaria -21.4.
+    weezing vs altaria      -21.4
+    weezing vs blaziken     -13.1
+    weezing vs lucario       -4.2
+    weezing vs suicune       +1.1
+
+Confirmation of altaria's ckpt_2500k (paired with the bars): margin +10.3 points over its 4 matchups; lowest altaria vs weezing +6.1.
+    altaria vs blaziken      +8.9
+    altaria vs lucario       +8.3
+    altaria vs suicune      +18.1
+    altaria vs weezing       +6.1
+
+Confirmation of altaria's ckpt_3000k (paired with the bars): margin +8.4 points over its 4 matchups; lowest altaria vs blaziken +3.8.
+    altaria vs blaziken      +3.8
+    altaria vs lucario       +7.7
+    altaria vs suicune      +14.6
+    altaria vs weezing       +7.5
+
+Confirmation of suicune's ckpt_1500k (paired with the bars): margin -16.1 points over its 4 matchups; lowest suicune vs weezing -20.6.
+    suicune vs altaria      -13.8
+    suicune vs blaziken     -12.8
+    suicune vs lucario      -17.2
+    suicune vs weezing      -20.6
+
+Confirmation of suicune's ckpt_5000k (paired with the bars): margin -14.0 points over its 4 matchups; lowest suicune vs altaria -16.7.
+    suicune vs altaria      -16.7
+    suicune vs blaziken     -13.7
+    suicune vs lucario       -9.7
+    suicune vs weezing      -15.7
+
+The pass rules, on each network's best confirmed checkpoint (blaziken ckpt_4000k, lucario ckpt_1500k, weezing ckpt_5000k, altaria ckpt_2500k, suicune ckpt_5000k):
+  - blaziken vs lucario: +5.6 points over k3 (needed +10) → NO
+  - blaziken vs weezing: +3.5 points over k3 (needed +0 or better; deeper search barely pays here) → yes
+  - altaria vs blaziken: +8.9 points over k3 (needed +0 or better; deeper search barely pays here) → yes
+  - altaria vs lucario: +8.3 points over k3 (needed +0 or better; deeper search barely pays here) → yes
+  - altaria vs suicune: +18.1 points over k3 (needed +0 or better; deeper search barely pays here) → yes
+  - every matchup, no more than 5 points under k3: lowest is suicune vs altaria at -16.7 → NO
+  → not a pass. The audit and held-out results follow in REPORT.txt.
+
+Flags:
+  - tiebreak shaping switched off at 500,000 games (turn-limit draws under 5% at two checks in a row)
+  - trainer replaced at the 3,000,000-game save (2026-09-21 12:27): memory fix: capped weights-only network caches (Astra/Fable, Sept 21) (train_v4.py e05c1e3aed33 -> 74d54db888a8; identity_changes.json)
+  - resumed at 3,000,000 games from the last save (2026-09-21 12:28); games after that save were lost
+
+The full report: REPORT.txt (verdict, confirmations, audit and held-out test).

@@ -1,0 +1,320 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-09-22",
+  "purpose": "One canonical source tree and one hash-bound executable for new runs; historical evidence remains preserved.",
+  "project_windows": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab",
+  "project_wsl": "/mnt/c/Users/dacz8/Projects/Pocket Deck Lab",
+  "media_wsl": "/mnt/c/Users/dacz8/OneDrive/Desktop/Battle Logs",
+  "runtime_relative_to_home": "pocket-deck-lab-runtime/bin/deckgym",
+  "historical_runtime": {
+    "name": "s120k",
+    "sha256": "3dd6ae5bc36bb1c15b297977bbcb51776f71af6211fcdd37eb49a8274d27648e",
+    "source_commit": "b6ae00cf7488953b10b3fa31ea5f466ac48fe449",
+    "purpose": "Retired; preserved only as non-executable history, not authorized for new numerical runs.",
+    "retired": true
+  },
+  "historical_releases": [
+    {
+      "name": "s193",
+      "archive": "deckgym-bin-3518-s193-linux-x86_64.tar.gz",
+      "sha256": "87f119367004fb922736baec63b71742b22eac57461298aa4349db52c40e01c2",
+      "purpose": "Contains later mechanics fixes; not activated by this audit"
+    },
+    {
+      "name": "cards2",
+      "archive": "Boss Folder/card-support-update-2026-09-05/candidate/deckgym",
+      "artifact": "Boss Folder/card-support-update-2026-09-05/candidate/deckgym",
+      "sha256": "5a76a4c337ad707b0cdd920763a00d3194a3cbaa9daa791b4b19bf6c2bf141a2",
+      "source_sha256_manifest": "Boss Folder/card-support-update-2026-09-05/source-sha256.json",
+      "source_sha256_manifest_sha256": "1904ba00caa7def6077fa8d97f3cb4b18975cbc4169c8c8a38ffbd95e16c9f36",
+      "purpose": "Card-support candidate; not installed and not identified until its recorded SHA-256 matches"
+    },
+    {
+      "name": "cards3",
+      "archive": "Boss Folder/card-support-continuation-2026-09-05/candidate/deckgym",
+      "artifact": "Boss Folder/card-support-continuation-2026-09-05/candidate/deckgym",
+      "sha256": "110fc4367d178e89417f65168918bca38eef049b10fcabb0872f17a90aa9f38c",
+      "source_sha256_manifest": "Boss Folder/card-support-continuation-2026-09-05/source-sha256.json",
+      "source_sha256_manifest_sha256": "f1b438a4f8a21b931543467f972f906bdcbfefe0774f198d51b06fff6f4fb1b2",
+      "purpose": "Tested development candidate; installed historical runtime unchanged; see named limitations"
+    },
+    {
+      "name": "cards4",
+      "archive": "Boss Folder/card-support-reveals-2026-09-05/candidate/deckgym",
+      "artifact": "Boss Folder/card-support-reveals-2026-09-05/candidate/deckgym",
+      "sha256": "2335e7d5ed3be09be192e1067d0e58f4778abaeff9c7a8ab4b5ec1fdf8943dda",
+      "source_sha256_manifest": "Boss Folder/card-support-reveals-2026-09-05/source-sha256.json",
+      "source_sha256_manifest_sha256": "801a0588d8b2ec477738117077b321c74513f0055365598870f3020060535885",
+      "purpose": "Tested development candidate; installed historical runtime unchanged; see named limitations"
+    },
+    {
+      "name": "cards5",
+      "archive": "Boss Folder/card-support-observed-checkpoint-2026-09-05/candidate/deckgym",
+      "artifact": "Boss Folder/card-support-observed-checkpoint-2026-09-05/candidate/deckgym",
+      "sha256": "f047061feb31916c5086a928bd813e158633236079f11bbc5f8e5859dceac812",
+      "source_sha256_manifest": "Boss Folder/card-support-observed-checkpoint-2026-09-05/source-sha256.json",
+      "source_sha256_manifest_sha256": "fcf46f87a9b507903995c62f42aaaf73675cec025572ded0bdd5b4b2ffdceae6",
+      "purpose": "Tested development candidate with six observed-outcome fixtures; installed historical runtime unchanged; see qualifications"
+    },
+    {
+      "name": "cards6",
+      "archive": "Boss Folder/card-support-researcher-2026-09-05/candidate/deckgym",
+      "artifact": "Boss Folder/card-support-researcher-2026-09-05/candidate/deckgym",
+      "sha256": "5355749af85c955818f593795914485f94d12add05c3f83b68d0ae6255fcae87",
+      "source_sha256_manifest": "Boss Folder/card-support-researcher-2026-09-05/source-sha256.json",
+      "source_sha256_manifest_sha256": "57ee7b2af6b6c48f07b55ae0885669e1805572b95561b534a075a676957c6402",
+      "purpose": "Tested development candidate with Researcher and observed-outcome fixtures; explicit rules/search qualifications; installed runtime unchanged"
+    },
+    {
+      "name": "cards7",
+      "archive": "Boss Folder/card-support-luxury-coin-2026-09-05/candidate/deckgym",
+      "artifact": "Boss Folder/card-support-luxury-coin-2026-09-05/candidate/deckgym",
+      "sha256": "95a0939b08b063f54e792800177fe6c0981f7f1bb86e74384b35d666e8d2b371",
+      "source_sha256_manifest": "Boss Folder/card-support-luxury-coin-2026-09-05/source-sha256.json",
+      "source_sha256_manifest_sha256": "f616246d1168377a8faacb2bdceda4d848a88b5be9874eba7760a831d51e3a69",
+      "purpose": "Tested development candidate with Luxury Coin and retained observed-outcome fixtures; explicit rules/search qualifications; installed runtime unchanged"
+    },
+    {
+      "name": "cards8",
+      "archive": "Boss Folder/card-support-misty-geometric-2026-09-06/candidate/deckgym",
+      "artifact": "Boss Folder/card-support-misty-geometric-2026-09-06/candidate/deckgym",
+      "sha256": "cc3098dfddd5aedce7b5a4d63c007a87a094767c55aaa82b02b0482dd0af7278",
+      "source_sha256_manifest": "Boss Folder/card-support-misty-geometric-2026-09-06/source-sha256.json",
+      "source_sha256_manifest_sha256": "56744d15be510d4225d9262153c1040bd9923794e219cfc5937272505db365d5",
+      "purpose": "Tested development candidate with pre-coin Misty targeting and corrected geometric attacks; explicit rule/search qualifications; installed runtime unchanged"
+    },
+    {
+      "name": "cards8-optimized",
+      "archive": "Boss Folder/optimized-candidate-2026-09-06/candidate/deckgym",
+      "artifact": "Boss Folder/optimized-candidate-2026-09-06/candidate/deckgym",
+      "sha256": "7edaca991e04038bb51b63532b81ca4e26f5e40ef780a66f616067692d9e5957",
+      "source_sha256_manifest": "Boss Folder/optimized-candidate-2026-09-06/source-sha256.json",
+      "source_sha256_manifest_sha256": "56744d15be510d4225d9262153c1040bd9923794e219cfc5937272505db365d5",
+      "purpose": "Optimized cards8 candidate; full release tests and twelve fixed-seed dev/release serial/parallel trajectories matched; installed historical runtime unchanged; see qualifications"
+    },
+    {
+      "name": "eval1-optimized",
+      "archive": "Boss Folder/bot-evaluation-magmar-2026-09-06/candidate/deckgym",
+      "artifact": "Boss Folder/bot-evaluation-magmar-2026-09-06/candidate/deckgym",
+      "sha256": "8b4bae62786f7be16abeb61a3bee82443943f4f62b01b73b6719b2a0d40bfab4",
+      "source_sha256_manifest": "Boss Folder/bot-evaluation-magmar-2026-09-06/source-sha256.json",
+      "source_sha256_manifest_sha256": "a0bb24bdcd77458c2c0951d29a5d2b61cca97890caf757abfe74265862107703",
+      "purpose": "Optimized Magmar conditional-damage evaluation correction; 1,542 tests, public decision checks and fixed-seed serial/parallel equality; historical installed runtime preserved; see named limits"
+    },
+    {
+      "name": "eval2-optimized",
+      "archive": "Boss Folder/bot-search-checkup-2026-09-06/candidate/deckgym",
+      "artifact": "Boss Folder/bot-search-checkup-2026-09-06/candidate/deckgym",
+      "sha256": "2c6ad8217fb0287a9fe0b047ad0ae45accac1d9a7be8b72af3a362cadd87f875",
+      "source_sha256_manifest": "Boss Folder/bot-search-checkup-2026-09-06/source-sha256.json",
+      "source_sha256_manifest_sha256": "f75184d6f1b82e7bc40e9c0ad0fae2dec65589d8350aa2fa244f195c4e641beb",
+      "purpose": "Video-backed forced Checkup search and terminal-order correction; 1,567 optimized tests; closed-counts-unpriced-v6; source-qualified Celebi/Xatu controls and serial/parallel equality; historical runtime preserved; see named limits"
+    },
+    {
+      "name": "eval3-optimized",
+      "archive": "Boss Folder/bot-terminal-outcome-2026-09-06/candidate/deckgym",
+      "artifact": "Boss Folder/bot-terminal-outcome-2026-09-06/candidate/deckgym",
+      "sha256": "91b32d695c552fd2f8caa027202b1422c7a5ce4390ab69a38552e47e412fd0aa",
+      "source_sha256_manifest": "Boss Folder/bot-terminal-outcome-2026-09-06/source-sha256.json",
+      "source_sha256_manifest_sha256": "b1de8c9a9f64cff39258f4001fe0fdf29c58d570a91f673efe17b88fde2ebba8",
+      "purpose": "Fixed public terminal outcomes and exact-score represented-win distance tie-break; 1,582 optimized tests; closed-counts-unpriced-v6; serial/parallel equality; historical installed runtime preserved; named policy checks are not ladder-strength evidence"
+    },
+    {
+      "name": "eval5-optimized",
+      "archive": "Boss Folder/bot-forecast-integrity-2026-09-07/candidate/deckgym",
+      "artifact": "Boss Folder/bot-forecast-integrity-2026-09-07/candidate/deckgym",
+      "sha256": "4914e9a44d99a9910c69be9268aefe2cb0dfa185f931dda794d1e0adb1631188",
+      "source_sha256_manifest": "Boss Folder/bot-forecast-integrity-2026-09-07/source-sha256.json",
+      "source_sha256_manifest_sha256": "84a39ec1547b016281ff5ee22b002e9ae1ada927a974745170d6b3506870c8f4",
+      "purpose": "Explicit Amnesia/Sableye/Smeargle/Porygon-Z random outcomes; unique public survival-clock targets; standing retreat cost without unused temporary-discount credit; 1,599 optimized tests; closed-counts-unpriced-v6; named policy controls and serial/parallel equality; historical installed runtime preserved; no ladder-strength claim"
+    },
+    {
+      "name": "eval6-optimized",
+      "archive": "Boss Folder/bot-promotion-continuation-2026-09-07/candidate/deckgym",
+      "artifact": "Boss Folder/bot-promotion-continuation-2026-09-07/candidate/deckgym",
+      "sha256": "abc299835fcd9263f28b914da6dad010733efb8f029fff30860d7f3ffc21f4e2",
+      "source_sha256_manifest": "Boss Folder/bot-promotion-continuation-2026-09-07/source-sha256.json",
+      "source_sha256_manifest_sha256": "2b923ff825ee1aa8e2d4e360d75797c6e1ebdc0395a32f05e90992ff21db73f4",
+      "purpose": "Explicit mandatory replacement and same-depth search continuation; stale switches canceled after actual Active removal; 1,610 optimized tests; all six saved unused-X-Speed roots corrected with useful-retreat control retained; closed-counts-unpriced-v6; historical runtime preserved; see trace compatibility and remaining Bench-target limitation"
+    },
+    {
+      "name": "eval7-optimized",
+      "archive": "Boss Folder/bot-bench-switch-target-2026-09-07/candidate/deckgym",
+      "artifact": "Boss Folder/bot-bench-switch-target-2026-09-07/candidate/deckgym",
+      "sha256": "5d08815c7c45f76889b36a89cd79c4aa4289418235f28824899185343b38fbf5",
+      "source_sha256_manifest": "Boss Folder/bot-bench-switch-target-2026-09-07/source-sha256.json",
+      "source_sha256_manifest_sha256": "c305b9bb0f15baf77b8317b4fd3873a7475a7048af40fca962057eb8b6940d85",
+      "purpose": "Post-knockout pruning of captured ordinary Bench-switch targets whose public slots are now empty; strict frame-shape and no-knockout guards; 1,618 optimized tests; eval6 mandatory replacement and forecast/evaluator corrections retained; closed-counts-unpriced-v6; historical runtime preserved"
+    },
+    {
+      "name": "eval8-optimized",
+      "archive": "Boss Folder/bot-global-energy-forecast-2026-09-07/candidate/deckgym",
+      "artifact": "Boss Folder/bot-global-energy-forecast-2026-09-07/candidate/deckgym",
+      "sha256": "df7974e7850623c369ea346db1ecb533759c378283eb0f8df95b7ae0501ba965",
+      "source_sha256_manifest": "Boss Folder/bot-global-energy-forecast-2026-09-07/source-sha256.json",
+      "source_sha256_manifest_sha256": "9b73bb597dd4f6709d5989db6e2c8ff69bcd12c626c28f1294e192d299ea8d23",
+      "purpose": "Exact global random Energy-discard forecasts, owner discard-ledger conservation and preserved damage/discard/KO ordering; 1,625 optimized tests; earlier repairs retained; other sampled forecast families remain qualified; historical runtime preserved"
+    },
+    {
+      "name": "eval9-optimized",
+      "archive": "Boss Folder/bot-active-energy-forecast-2026-09-07/candidate/deckgym",
+      "artifact": "Boss Folder/bot-active-energy-forecast-2026-09-07/candidate/deckgym",
+      "sha256": "f09cd30e635fb7a426d2c5ef87c97351c059225581120a440202363dd6e7e0e1",
+      "source_sha256_manifest": "Boss Folder/bot-active-energy-forecast-2026-09-07/source-sha256.json",
+      "source_sha256_manifest_sha256": "0e13658982e75937503b8c2f71add4e88b78eba773b662c7bfa84113588d6dbf",
+      "purpose": "Exact Active Energy-discard/movement forecasts with coin provenance, corrected printed damage for shared coin-discard cards, and full attack-effect immunity; 1,644 optimized tests; historical runtime preserved; copied/hidden forecast uncertainty remains qualified"
+    },
+    {
+      "name": "eval10-optimized",
+      "archive": "Boss Folder/bot-copied-attack-forecast-2026-09-07/candidate/deckgym",
+      "artifact": "Boss Folder/bot-copied-attack-forecast-2026-09-07/candidate/deckgym",
+      "sha256": "850059968d130e85d785edb5fa1dc4de862a2a2627377e3d57fe1a700c9fe11f",
+      "source_sha256_manifest": "Boss Folder/bot-copied-attack-forecast-2026-09-07/source-sha256.json",
+      "source_sha256_manifest_sha256": "69760804a11736a868f63b58f69767430b6add3ff0b9b3d35a3307ed27d3f233",
+      "purpose": "Explicit Miraculous Memory copied-attack forecast branches under the preserved distinct-attack model; 1,653 optimized tests; hidden sources remain unpriced by player guards; external duplicate weighting and broad reply certainty remain unqualified"
+    },
+    {
+      "name": "eval11-optimized",
+      "archive": "Boss Folder/bot-public-reply-certification-2026-09-07/candidate/deckgym",
+      "artifact": "Boss Folder/bot-public-reply-certification-2026-09-07/candidate/deckgym",
+      "sha256": "a6d781e01f6cada947e5c9638b0189fce978a232a3dffdae5b2514d7c61c4412",
+      "source_sha256_manifest": "Boss Folder/bot-public-reply-certification-2026-09-07/source-sha256.json",
+      "source_sha256_manifest_sha256": "b14602894a77e5ab81ef0db49812065f5aa74f78fbcc042da7e4d92d471ea421",
+      "purpose": "Bounded public immediate attack-win certificates with observation provenance and conservative uncertainty; 1,677 optimized tests; no broad playing-strength claim"
+    },
+    {
+      "name": "eval12-optimized",
+      "archive": "Boss Folder/bot-game-results-2026-09-07/candidate/deckgym",
+      "artifact": "Boss Folder/bot-game-results-2026-09-07/candidate/deckgym",
+      "sha256": "e3d5a09f2b91e761726d7d595ff1cdfa9d7ce617cf7b3c65d281df7c1c06f43f",
+      "source_sha256_manifest": "Boss Folder/bot-game-results-2026-09-07/source-sha256.json",
+      "source_sha256_manifest_sha256": "fe3d6244895e89cd2bfa59255ff3e0e98ad8188feae7317c14c55d82e26e24d3",
+      "purpose": "Compact seed-bound per-game outcome records and a strict batch runner with lifecycle, identity, matchup and accounting validation; 1,689 optimized tests; simulation gameplay and policy unchanged; no playing-strength claim"
+    },
+    {
+      "name": "eval13-optimized",
+      "archive": "Boss Folder/bot-public-reply-evidence-2026-09-07/candidate/deckgym",
+      "artifact": "Boss Folder/bot-public-reply-evidence-2026-09-07/candidate/deckgym",
+      "sha256": "fb7295c4ea6d89f374a204a6ce0fb4f2a0fb1f37af7ee6f01cac55d3bc0f3a20",
+      "source_sha256_manifest": "Boss Folder/bot-public-reply-evidence-2026-09-07/source-sha256.json",
+      "source_sha256_manifest_sha256": "bfeaea8270d42b1bb620e49a70d3eaac5c2031fa176d205fe437a3b0ee2716ba",
+      "purpose": "Opt-in successful public-reply witness evidence in full --data-output traces; 1,704 optimized tests; compact results, gameplay and policy unchanged; bounded hypothetical-leaf diagnostics, not a whole-root loss or causal claim"
+    },
+    {
+      "name": "eval14-optimized",
+      "archive": "Boss Folder/bot-rocket-frenzy-evaluation-2026-09-07/candidate/deckgym",
+      "artifact": "Boss Folder/bot-rocket-frenzy-evaluation-2026-09-07/candidate/deckgym",
+      "sha256": "002865a4a7aab595fa4f1464ee7529b0e957b9d24b307efc14e736f141683b92",
+      "source_sha256_manifest": "Boss Folder/bot-rocket-frenzy-evaluation-2026-09-07/source-sha256.json",
+      "source_sha256_manifest_sha256": "cfa2c46ee196f041323ce3053d4ab030c305189cd203e2b39df8990284b2903d",
+      "purpose": "Unordered remaining-deck mean for fully known Rocket Frenzy future-damage estimates; 1,712 optimized tests; two saved X Speed roots corrected; concrete-prefix attack resolution and eval13 trace telemetry retained; no exact knockout-probability or strength claim"
+    },
+    {
+      "name": "eval15-optimized",
+      "archive": "Boss Folder/bot-player-code-parser-2026-09-07/candidate/deckgym",
+      "artifact": "Boss Folder/bot-player-code-parser-2026-09-07/candidate/deckgym",
+      "sha256": "beecebc4842ec2f3685c73bbf2838865dd7b9ef5896c3d5607850867cd5a9f44",
+      "source_sha256_manifest": "Boss Folder/bot-player-code-parser-2026-09-07/source-sha256.json",
+      "source_sha256_manifest_sha256": "f6e509a7c901351137e86dbac8890d4d3c236e17e5e1cd244a980bca3cc6cc83",
+      "purpose": "Exact case-insensitive et EndTurn player-code parsing before e<number>; six targeted optimized parser/CLI tests plus named preservation games; no gameplay, card or policy change; eval14's 1,712-test optimized suite remains the latest complete suite"
+    },
+    {
+      "name": "eval16-optimized",
+      "archive": "Boss Folder/bot-counterattack-reply-2026-09-07/candidate/deckgym",
+      "artifact": "Boss Folder/bot-counterattack-reply-2026-09-07/candidate/deckgym",
+      "sha256": "a98449923f6dbf136e51815754154db3e3069f42cf765f38b903d56a39e0b794",
+      "source_sha256_manifest": "Boss Folder/bot-counterattack-reply-2026-09-07/source-sha256.json",
+      "source_sha256_manifest_sha256": "7970dd327ae597e1829948cddd749b1f644d74a08f8d678ca44e109b4d222cc8",
+      "purpose": "Exact deterministic self-Counterattack immediate-reply certificates; 1,729 optimized tests; one constructed defensive position corrected across 15 settings; fixed-game preservation and diagnostics; no natural-game witness or playing-strength claim"
+    },
+    {
+      "name": "eval17-optimized",
+      "archive": "Boss Folder/bot-soothing-wind-recovery-2026-09-07/candidate/deckgym",
+      "artifact": "Boss Folder/bot-soothing-wind-recovery-2026-09-07/candidate/deckgym",
+      "sha256": "ba14d192acd4490bcc635f5d72b52e7d009d697a4f1fbc5395e6aad6ed2a5433",
+      "source_sha256_manifest": "Boss Folder/bot-soothing-wind-recovery-2026-09-07/source-sha256.json",
+      "source_sha256_manifest_sha256": "d6c06b24bd4d5d6eed7e8aa0cf93223f00e3a37b85141e5be6d39b5a8abd110b",
+      "purpose": "Continuous Soothing Wind / Flower Shield recovery when qualifying Energy arrives by covered attachment and movement routes; eight generated-action regressions and 1,737 optimized tests; eval16/eval17 control traces preserved; mechanics only; suppression restoration and support valuation remain pending"
+    },
+    {
+      "name": "eval18-optimized",
+      "archive": "Boss Folder/bot-soothing-wind-restoration-2026-09-08/candidate/deckgym",
+      "artifact": "Boss Folder/bot-soothing-wind-restoration-2026-09-08/candidate/deckgym",
+      "sha256": "fd2c351cac9e0d8d23f3a98c622e1ce4b853ccfa1b9edf1b3f937be2a663df6e",
+      "source_sha256_manifest": "Boss Folder/bot-soothing-wind-restoration-2026-09-08/source-sha256.json",
+      "source_sha256_manifest_sha256": "0a4d82f81ec58d6ac2b527bb32a16c524e15e5ad602b76043640b8fbd2b46ead",
+      "purpose": "Restore continuous Soothing Wind / Flower Shield recovery after the final Power of Alchemy suppressor leaves play or is devolved; six generated-action regressions and 1,743 optimized tests; eval17 recovery and fixed controls preserved; mechanics only, with NoAbilities restoration and strategy valuation separate"
+    },
+    {
+      "name": "unified1",
+      "artifact": "deckgym-unified1",
+      "sha256": "a1daf813879ea465b32b9b687e74101248384a80c735beb270a43fb1c99765b8",
+      "source_sha256_manifest": "deckgym-source-sha256.json",
+      "source_sha256_manifest_sha256": "d52ac44e9781d7853c1f9b3fc51142b3b2a4a9a4df6bbc5cd5f7d1b390c6ba42",
+      "source_commit": "237b0f8198308f3608c5b790cd81b33342de91fb",
+      "source_tag": "pdl-unified1-release",
+      "purpose": "Canonical engine for new runs: accumulated fork/B4a plus status1, paralysis1 and smog1; full cargo test; one release build."
+    },
+    {
+      "name": "rules1",
+      "artifact": "Boss Folder/rules-repair-2026-09-22/candidate/deckgym",
+      "sha256": "384ebdd630a69e32c56feff069cbb482c5c5dcfe65e7a69ce4ca0035ef0d607c",
+      "source_sha256_manifest": "Boss Folder/rules-repair-2026-09-22/source-sha256.json",
+      "source_sha256_manifest_sha256": "0cdd9c9e9d9cbfe44dba0afdf84038eaaa469f6b5ce5196525cc1f594b4ab5dd",
+      "source_base_commit": "237b0f8198308f3608c5b790cd81b33342de91fb",
+      "source_archive": "Boss Folder/rules-repair-2026-09-22/source-after.tar.gz",
+      "source_archive_sha256": "443fc02d80ce6a0df9c5429b0eaa419638116e47556400c692b8dda71d73e345",
+      "source_working_tree": true,
+      "purpose": "September 22 confirmed rules repairs; 1811 tests passed; new opening-hand distribution and corrected damage, status, Checkup, retaliation and Trainer behavior. See repair report for unresolved rules and historical RL wheels."
+    },
+    {
+      "name": "rules2",
+      "artifact": "Boss Folder/review-replay-priority-2026-09-22/engine-repair/candidate/deckgym",
+      "sha256": "e5cac38d8e58b4abe42c3adf4f68a0ec409530d30ff81dfc5f46a2ea9d14b68b",
+      "source_sha256_manifest": "Boss Folder/review-replay-priority-2026-09-22/engine-repair/source-sha256.json",
+      "source_sha256_manifest_sha256": "9fb1c9888c396c7ab1d76fe8e73036f2e463ee2ba05be84ffcb5ed701165be77",
+      "source_base_commit": "237b0f8198308f3608c5b790cd81b33342de91fb",
+      "source_archive": "Boss Folder/review-replay-priority-2026-09-22/engine-repair/source-after.tar.gz",
+      "source_archive_sha256": "f19f247f2367da5e173eada467578e79abfd30352b763d4fde85c5830bca4d1a",
+      "source_working_tree": true,
+      "purpose": "Replay-discovered simultaneous KO fix: retain both zero-HP Pokemon until their on-KO effects finish; 1812 engine tests passed. Preserves prior September22 rules repairs; historical RL wheels unchanged."
+    },
+    {
+      "name": "rules3",
+      "artifact": "Boss Folder/rules3-repairs-2026-09-22/candidate/deckgym",
+      "sha256": "66acb493724ec189300ddaae6bd61de9a175d07677ad3df23da36414a3a922f2",
+      "source_sha256_manifest": "Boss Folder/rules3-repairs-2026-09-22/source-sha256.json",
+      "source_sha256_manifest_sha256": "77280596fb5a8a9442cb0086c4fae8239c4519a3a0eb268423ad621883f89906",
+      "source_base_commit": "237b0f8198308f3608c5b790cd81b33342de91fb",
+      "source_archive": "Boss Folder/rules3-repairs-2026-09-22/source-after.tar.gz",
+      "source_archive_sha256": "1ace8cc88aa1c50b9562dee2c981148d04d134f485dad881a4651e701e01ed0b",
+      "source_working_tree": true,
+      "purpose": "Player-selected Energy discards for retreat, Gouging Fire and Walking Wake; Cubone/Clefable/Bonsly outgoing attack reductions follow the affected Pokemon and clear on evolution/switching. 1823 engine tests and 44 accepted-review segments passed; historical RL wheels unchanged."
+    }
+  ],
+  "available_release": {
+    "name": "rules4",
+    "artifact": "Boss Folder/rules4-t2-repair-2026-09-22/candidate/deckgym",
+    "sha256": "e6593ed816d0d5dbaf24fc8bc81a8317ed8069cda6ae7162c3d53e1fa7a12415",
+    "source_sha256_manifest": "Boss Folder/rules4-t2-repair-2026-09-22/source-sha256.json",
+    "source_sha256_manifest_sha256": "ddb6bc9b8add3ffdf5fe84db39a5fbbb0ff0fa66955cc39df25c1de9958c839c",
+    "source_base_commit": "237b0f8198308f3608c5b790cd81b33342de91fb",
+    "source_archive": "Boss Folder/rules4-t2-repair-2026-09-22/source-after.tar.gz",
+    "source_archive_sha256": "69a7ce40c1fec70493367ba79f55ea4dcee677a597c2c965d2e146351a21bbc6",
+    "source_working_tree": true,
+    "purpose": "T2-confirmed tie when the sole third-point earner also loses its last Pokemon while the opponent remains below three points with Pokemon in play. Retains rules3 Energy choices and defender-bound attack reductions. 1826 engine tests and44 accepted-review segments passed; broader simultaneous-finish variants remain unconfirmed."
+  },
+  "latest_source_directory": "deckgym-fork-s193",
+  "latest_source_commit": "237b0f8198308f3608c5b790cd81b33342de91fb",
+  "latest_source_version": "0.1.0-pdl.rules4",
+  "active_app": "apps/battle_log/s244_battle_log_review.html",
+  "benchmark_pool": "pool9",
+  "benchmark_date": "2026-08-17",
+  "benchmark_pilot": "k3,k3",
+  "benchmark_scope": "33-deck historical tournament frame; not a current ladder forecast",
+  "card_catalog": "s216_card_catalog_v1.json",
+  "card_catalog_release": "2.10.0",
+  "card_catalog_printings": 3879,
+  "card_catalog_scope": "Pinned community release 2.10.0 with 3,879 printings, including Team Rocket's Ambition (B4a)",
+  "latest_source_working_tree": true
+}

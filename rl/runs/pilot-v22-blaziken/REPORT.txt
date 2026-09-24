@@ -1,0 +1,67 @@
+Run 4 report — pilot-v22-blaziken   (2026-09-20 17:11)
+
+Result: PASSED — safety cap of 300,000 games reached at 300,000 games; best checkpoint per network blaziken ckpt_250k (+10.2), lucario ckpt_300k (-1.5)
+
+300,000 games · 1.2 h of training + 0.1 h of evaluation · 6 checkpoints · one network per deck
+
+The pass rules, on each network's best confirmed checkpoint (blaziken ckpt_250k, lucario ckpt_300k):
+  - blaziken vs lucario: +10.2 points over k3 (needed +10) → yes
+  - every matchup, no more than 5 points under k3: lowest is lucario vs blaziken at -1.5 → yes
+  → PASS.
+
+  Margin by matchup, points (row = the deck's own network, column = the deck k3 pilots):
+                blaziken   lucario
+    blaziken           —       +10
+    lucario           -2         —
+
+Confirmation of the blaziken network's ckpt_200k: 1,000 games per matchup on the bars' own seeds (paired). Margin over k3 +9.0 points.
+  matchup                 network  k3, same deck   margin   games won only by
+  blaziken vs lucario       56.8%          47.8%    +9.0   network  245 / k3  155 (p 7.9e-06)
+
+Knockout audit (run 4) — pilot-v22-blaziken, the blaziken network's ckpt_200k: 1,000 confirmation games and 1,000 bar games replayed; replay problems: 0
+
+Per matchup: the network piloting the first deck (bot) vs k3 piloting the same deck on the same seeds (k3).
+'attacked' / 'benched' = of the turns where that move was on offer, the share where it was made. Setup (turn 0) is excluded from both, as the run 2/run 3 benching benchmark excludes it. (k3 attacks 99% and benches 97%. Run 3's shared network: attacked 68%, benched 54%. Run 2's Blaziken specialist, the like-for-like bar for the pilot: benched 63%.)
+Giveaways and checkup deaths are rates per 1,000 player-turns. Checkup deaths: loose / strict (a retreat was offered that turn) / strict and still winnable (network only).
+
+  matchup               who    turns  sure win missed  sure KO missed  attacked  benched  giveaways          checkup deaths
+  blaziken vs lucario   bot     6468        0 of 481        22 of 912         87%      63%        0.0           0.0 / 0.0 / 0.0
+  blaziken vs lucario   k3      5874        0 of 400         6 of 1026        99%      98%        0.0                 0.0 / 0.0
+  lucario vs blaziken   k3      5636        0 of 519         3 of 1450        99%      93%        0.5                 0.0 / 0.0
+
+Confirmation of the blaziken network's ckpt_250k (used for the verdict): 1,000 games per matchup on the bars' own seeds (paired). Margin over k3 +10.2 points.
+  matchup                 network  k3, same deck   margin   games won only by
+  blaziken vs lucario       58.0%          47.8%   +10.2   network  258 / k3  156 (p 6.1e-07)
+
+Knockout audit (run 4) — pilot-v22-blaziken, the blaziken network's ckpt_250k: 1,000 confirmation games and 1,000 bar games replayed; replay problems: 0
+
+Per matchup: the network piloting the first deck (bot) vs k3 piloting the same deck on the same seeds (k3).
+'attacked' / 'benched' = of the turns where that move was on offer, the share where it was made. Setup (turn 0) is excluded from both, as the run 2/run 3 benching benchmark excludes it. (k3 attacks 99% and benches 97%. Run 3's shared network: attacked 68%, benched 54%. Run 2's Blaziken specialist, the like-for-like bar for the pilot: benched 63%.)
+Giveaways and checkup deaths are rates per 1,000 player-turns. Checkup deaths: loose / strict (a retreat was offered that turn) / strict and still winnable (network only).
+
+  matchup               who    turns  sure win missed  sure KO missed  attacked  benched  giveaways          checkup deaths
+  blaziken vs lucario   bot     6466        1 of 489        33 of 946         90%      78%        0.0           0.0 / 0.0 / 0.0
+  blaziken vs lucario   k3      5874        0 of 400         6 of 1026        99%      98%        0.0                 0.0 / 0.0
+  lucario vs blaziken   k3      5636        0 of 519         3 of 1450        99%      93%        0.5                 0.0 / 0.0
+
+Confirmation of the lucario network's ckpt_300k (used for the verdict): 1,000 games per matchup on the bars' own seeds (paired). Margin over k3 -1.5 points.
+  matchup                 network  k3, same deck   margin   games won only by
+  lucario vs blaziken       50.6%          52.1%    -1.5   network  183 / k3  198 (p 0.47)
+
+Knockout audit (run 4) — pilot-v22-blaziken, the lucario network's ckpt_300k: 1,000 confirmation games and 1,000 bar games replayed; replay problems: 0
+
+Per matchup: the network piloting the first deck (bot) vs k3 piloting the same deck on the same seeds (k3).
+'attacked' / 'benched' = of the turns where that move was on offer, the share where it was made. Setup (turn 0) is excluded from both, as the run 2/run 3 benching benchmark excludes it. (k3 attacks 99% and benches 97%. Run 3's shared network: attacked 68%, benched 54%. Run 2's Blaziken specialist, the like-for-like bar for the pilot: benched 63%.)
+Giveaways and checkup deaths are rates per 1,000 player-turns. Checkup deaths: loose / strict (a retreat was offered that turn) / strict and still winnable (network only).
+
+  matchup               who    turns  sure win missed  sure KO missed  attacked  benched  giveaways          checkup deaths
+  blaziken vs lucario   k3      5874        0 of 400         6 of 1026        99%      98%        0.0                 0.0 / 0.0
+  lucario vs blaziken   bot     5748        0 of 506       115 of 1239        67%      63%        1.9           1.4 / 0.3 / 0.3
+  lucario vs blaziken   k3      5636        0 of 519         3 of 1450        99%      93%        0.5                 0.0 / 0.0
+
+Held-out test (run 4) — pilot-v22-blaziken, each network's best confirmed checkpoint (blaziken ckpt_250k, lucario ckpt_300k): 300 games per row, paired with k3 on the same seeds
+
+  network pilotsagainst (k3)    network  k3, same deck   margin           games won only by
+  facing ninetales, a deck none of them ever met:
+  blaziken      ninetales         29.0%          38.3%    -9.3   network   29 / k3   57 (p 0.0034)
+  lucario       ninetales         30.0%          56.7%   -26.7   network   24 / k3  104 (p 4.6e-13)

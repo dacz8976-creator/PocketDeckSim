@@ -1,0 +1,36 @@
+Run 5 trainer (one network per deck, encoding v2.2) — practice-corrupt   (updated 2026-09-23 01:53)
+Networks: weezing, lucario · each pilots only its own deck · the 1 pairing between them, evenly
+State: INTERRUPTED — run interrupted; rerun the same command to resume the last committed save
+
+The bars: k3's own win rate piloting the row deck against k3 piloting the column deck
+(20 games per pairing, on the confirmation seeds):
+             weezing  lucario
+  weezing          —      35%
+  lucario        65%        —
+
+Games played: 1,000 (safety cap 4,000) · 1 min of training + 0.0 h of evaluation · 15 games/sec lately
+Trainer: each recorded move trained on 2.0 times lately (2.0 overall); target 2. Under 1 means the trainer is falling behind (try fewer workers).
+Turn-limit draws in training, last 500 games: 31.0% (started at 45%). Tiebreak shaping: on.
+Draw gate at 1,000 games: passed (31.0%; needed under 95% and below the start)
+Training games vs earlier checkpoints: the current networks won 32% of 206
+
+Checkpoints. Each network's margin = its win rate minus k3's own result in the same matchup,
+averaged over its 1 matchup (20 games each, seeds the confirmation never uses).
+'vs previous' = of the games this checkpoint and the one before it decided differently, the share this one
+won (50% = no change). 'vs random' = against uniformly random moves.
+
+  checkpoint                 weezing               lucario
+                 margin  prev random   margin  prev random
+  ckpt_1k         -35.0    50%  100%    -65.0    50%   62%
+
+Averaged copy (run 5): updated every time a network's live weights are published, avg = decay x avg + (1 - decay) x live, decay = 0.5 ** (games since that network's last update / 100,000), a half-life of about 100,000 games. It never plays training games, is never a past opponent and is never trained; level-off and stopping read the live networks only. Same seeds and seats as the live evaluation.
+
+  checkpoint  weezing live / avg (avg vs random)lucario live / avg (avg vs random)
+  ckpt_1k                   -35.0   -35.0 ( 12%)              -65.0   -65.0 (  0%)
+
+Margin by matchup at ckpt_1k (points; row = the deck's own network, column = k3's deck):
+             weezing  lucario
+  weezing          —      -35
+  lucario        -65        —
+Best checkpoint per network: weezing ckpt_1k (-35.0), lucario ckpt_1k (-65.0)
+Leveled off (per network) = 3 checkpoints in a row within 90 points of each other, with the newest winning no more than 100% of the games it and the one before it decided differently. It is re-read at every checkpoint and is not sticky: the run ends when every network is leveled off at the same checkpoint, or at the cap.

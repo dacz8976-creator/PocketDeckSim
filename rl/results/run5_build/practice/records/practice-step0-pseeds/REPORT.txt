@@ -1,0 +1,91 @@
+Run 5 report — practice-step0-pseeds   (2026-09-23 02:55)
+
+Result: FINISHED — every network leveled off at 3,000 games; best checkpoint per network blaziken ckpt_2k (-25.0), lucario ckpt_2k (-60.0) — not a pass
+
+3,000 games · 0.0 h of training + 0.0 h of evaluation · 3 checkpoints · one network per deck
+
+Run history: trained start to finish with no interruptions and no change to its inputs.
+
+Level-off (run 4's rule, live networks): 3 checkpoints in a row within 90 points, the newest winning no more than 100% of the games it and the one before it decided differently. The run stops when every network is leveled off at the same checkpoint.
+  ckpt_1k       leveled off: none
+  ckpt_2k       leveled off: none
+  ckpt_3k       leveled off: blaziken, lucario
+
+The pass rules, on each network's best confirmed checkpoint (blaziken ckpt_2k, lucario ckpt_2k):
+  - blaziken vs lucario: -25.0 points over k3 (needed +10) → NO
+  - every matchup, no more than 5 points under k3: lowest is lucario vs blaziken at -60.0 → NO
+  → Not a pass.
+
+  Margin by matchup, points (row = the deck's own network, column = the deck k3 pilots):
+                blaziken   lucario
+    blaziken           —       -25
+    lucario          -60         —
+
+Confirmation of the blaziken network's ckpt_1k: 20 games per matchup on the bars' own seeds (paired). Margin over k3 -35.0 points.
+  matchup                 network  k3, same deck   margin   games won only by
+  blaziken vs lucario        0.0%          35.0%   -35.0   network    0 / k3    7 (p 0.016)
+
+Knockout audit (run 4) — practice-step0-pseeds, the blaziken network's ckpt_1k: 20 confirmation games and 20 bar games replayed; replay problems: 0
+
+Per matchup: the network piloting the first deck (bot) vs k3 piloting the same deck on the same seeds (k3).
+'attacked' / 'benched' = of the turns where that move was on offer, the share where it was made. Setup (turn 0) is excluded from both, as the run 2/run 3 benching benchmark excludes it. (k3 attacks 99% and benches 97%. Run 3's shared network: attacked 68%, benched 54%. Run 2's Blaziken specialist, the like-for-like bar for the pilot: benched 63%.)
+Giveaways and checkup deaths are rates per 1,000 player-turns. Checkup deaths: loose / strict (a retreat was offered that turn) / strict and still winnable (network only).
+
+  matchup               who    turns  sure win missed  sure KO missed  attacked  benched  giveaways          checkup deaths
+  blaziken vs lucario   bot      116        0 of 0           0 of 1           97%      76%        0.0           0.0 / 0.0 / 0.0
+  blaziken vs lucario   k3       119        0 of 6           0 of 21          96%     100%        0.0                 0.0 / 0.0
+  lucario vs blaziken   k3       109        0 of 13          0 of 36         100%      94%        0.0                 0.0 / 0.0
+
+Confirmation of the blaziken network's ckpt_2k (used for the verdict): 20 games per matchup on the bars' own seeds (paired). Margin over k3 -25.0 points.
+  matchup                 network  k3, same deck   margin   games won only by
+  blaziken vs lucario       10.0%          35.0%   -25.0   network    2 / k3    7 (p 0.18)
+
+Knockout audit (run 4) — practice-step0-pseeds, the blaziken network's ckpt_2k: 20 confirmation games and 20 bar games replayed; replay problems: 0
+
+Per matchup: the network piloting the first deck (bot) vs k3 piloting the same deck on the same seeds (k3).
+'attacked' / 'benched' = of the turns where that move was on offer, the share where it was made. Setup (turn 0) is excluded from both, as the run 2/run 3 benching benchmark excludes it. (k3 attacks 99% and benches 97%. Run 3's shared network: attacked 68%, benched 54%. Run 2's Blaziken specialist, the like-for-like bar for the pilot: benched 63%.)
+Giveaways and checkup deaths are rates per 1,000 player-turns. Checkup deaths: loose / strict (a retreat was offered that turn) / strict and still winnable (network only).
+
+  matchup               who    turns  sure win missed  sure KO missed  attacked  benched  giveaways          checkup deaths
+  blaziken vs lucario   bot      112        0 of 2           0 of 9           76%      70%        0.0           0.0 / 0.0 / 0.0
+  blaziken vs lucario   k3       119        0 of 6           0 of 21          96%     100%        0.0                 0.0 / 0.0
+  lucario vs blaziken   k3       109        0 of 13          0 of 36         100%      94%        0.0                 0.0 / 0.0
+
+Confirmation of the lucario network's ckpt_2k (used for the verdict): 20 games per matchup on the bars' own seeds (paired). Margin over k3 -60.0 points.
+  matchup                 network  k3, same deck   margin   games won only by
+  lucario vs blaziken        5.0%          65.0%   -60.0   network    1 / k3   13 (p 0.0018)
+
+Knockout audit (run 4) — practice-step0-pseeds, the lucario network's ckpt_2k: 20 confirmation games and 20 bar games replayed; replay problems: 0
+
+Per matchup: the network piloting the first deck (bot) vs k3 piloting the same deck on the same seeds (k3).
+'attacked' / 'benched' = of the turns where that move was on offer, the share where it was made. Setup (turn 0) is excluded from both, as the run 2/run 3 benching benchmark excludes it. (k3 attacks 99% and benches 97%. Run 3's shared network: attacked 68%, benched 54%. Run 2's Blaziken specialist, the like-for-like bar for the pilot: benched 63%.)
+Giveaways and checkup deaths are rates per 1,000 player-turns. Checkup deaths: loose / strict (a retreat was offered that turn) / strict and still winnable (network only).
+
+  matchup               who    turns  sure win missed  sure KO missed  attacked  benched  giveaways          checkup deaths
+  blaziken vs lucario   k3       119        0 of 6           0 of 21          96%     100%        0.0                 0.0 / 0.0
+  lucario vs blaziken   bot       88        0 of 1           0 of 12          78%      76%       11.4           0.0 / 0.0 / 0.0
+  lucario vs blaziken   k3       109        0 of 13          0 of 36         100%      94%        0.0                 0.0 / 0.0
+
+Confirmation of the lucario network's ckpt_3k: 20 games per matchup on the bars' own seeds (paired). Margin over k3 -60.0 points.
+  matchup                 network  k3, same deck   margin   games won only by
+  lucario vs blaziken        5.0%          65.0%   -60.0   network    0 / k3   12 (p 0.00049)
+
+Knockout audit (run 4) — practice-step0-pseeds, the lucario network's ckpt_3k: 20 confirmation games and 20 bar games replayed; replay problems: 0
+
+Per matchup: the network piloting the first deck (bot) vs k3 piloting the same deck on the same seeds (k3).
+'attacked' / 'benched' = of the turns where that move was on offer, the share where it was made. Setup (turn 0) is excluded from both, as the run 2/run 3 benching benchmark excludes it. (k3 attacks 99% and benches 97%. Run 3's shared network: attacked 68%, benched 54%. Run 2's Blaziken specialist, the like-for-like bar for the pilot: benched 63%.)
+Giveaways and checkup deaths are rates per 1,000 player-turns. Checkup deaths: loose / strict (a retreat was offered that turn) / strict and still winnable (network only).
+
+  matchup               who    turns  sure win missed  sure KO missed  attacked  benched  giveaways          checkup deaths
+  blaziken vs lucario   k3       119        0 of 6           0 of 21          96%     100%        0.0                 0.0 / 0.0
+  lucario vs blaziken   bot       85        0 of 1           0 of 11          85%      53%       35.3           0.0 / 0.0 / 0.0
+  lucario vs blaziken   k3       109        0 of 13          0 of 36         100%      94%        0.0                 0.0 / 0.0
+
+Held-out test (run 5 trainer) — practice-step0-pseeds, each network's best confirmed checkpoint (blaziken ckpt_2k, lucario ckpt_2k): 10 games per row, paired with k3 on the same seeds
+
+  network pilotsagainst (k3)    network  k3, same deck   margin           games won only by
+  facing ninetales, a deck none of them ever met:
+  blaziken      ninetales         10.0%          50.0%   -40.0   network    0 / k3    4 (p 0.12)
+  lucario       ninetales         10.0%          70.0%   -60.0   network    0 / k3    6 (p 0.031)
+
+RUN5.md step 0 rule: GO if Blaziken's confirmed margin is +5 or better; below +5, find out why before stage 1. (The PASS / not-a-pass line above is run 4's own +10 rule from the unchanged pilot settings.)
