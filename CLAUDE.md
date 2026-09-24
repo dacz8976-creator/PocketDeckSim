@@ -12,9 +12,9 @@
   20,000,000,000 and up.
 - Build: `cd engine && cargo build --release`. Tests: `cargo test --release --features test-utils`.
   A cloud build reproduces the Sept 23 table exactly (Altaria v Blaziken 58.3% on its seeds).
-- Laptop-only: the training launchers (`rl/run_training_v*.sh`) and the scoreboard tool's module
-  check expect the add-on 0.7.2 wheel from Pocket Deck Lab; `project_manifest.json` and
-  `current_engine.py` point at the Lab's engine program.
+- The verified add-on 0.7.2 wheel (`rl/addon-0.7.2/wheels/`) and rules4 engine program
+  (`rl/addon-0.7.2/deckgym`) are in the repo, with their hashes in `project_manifest.json`. Run
+  identities bind to that wheel: copy it, never rebuild it. Both are Linux files (WSL or the cloud).
 - `engine/CLAUDE.md` is upstream deckgym's card-implementation guide, not the project's instructions.
 - Dustin is new to GitHub. Explain git steps in GitHub Desktop terms (Commit, Push origin, Fetch
   origin, Pull origin), not command lines.

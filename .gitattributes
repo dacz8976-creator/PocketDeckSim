@@ -1,2 +1,6 @@
 # Shell scripts keep Unix line endings so bash in WSL can run them after a Windows checkout.
 *.sh text eol=lf
+
+# The verified add-on wheel and engine program are kept byte for byte; their hashes are in project_manifest.json.
+*.whl binary
+rl/addon-0.7.2/deckgym binary

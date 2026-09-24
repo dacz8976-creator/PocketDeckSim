@@ -34,11 +34,11 @@ python3 decks/screen/run_screen.py decks/brews/brew-03a-arceus-nihilego-toxapex.
     --engine engine/target/release/deckgym
 ```
 
-**Laptop only for now:** the training launchers (`rl/run_training_v*.sh`) install a hash-checked
-add-on wheel from `Boss Folder`, the scoreboard tool (`rl/results/deep_search_table/`) checks for that
-same add-on build, and `project_manifest.json`, `current_engine.py` and
-`candidate_run.py` point at a binary there. Those files are kept as the record of how past runs
-were made.
+**Verified builds:** the training launchers (`rl/run_training_v*.sh`) install the hash-checked
+add-on wheel from `rl/addon-0.7.2/wheels/`, the scoreboard tool (`rl/results/deep_search_table/`)
+checks for that same add-on build, and `project_manifest.json`, `current_engine.py` and
+`candidate_run.py` use the rules4 engine program at `rl/addon-0.7.2/deckgym`. Both are Linux files,
+copied from Pocket Deck Lab on Sept 24 with their hashes unchanged.
 
 ## Keeping the laptop and GitHub in sync (GitHub Desktop)
 
