@@ -61,7 +61,7 @@ fn choice_win_distance(
     }
 }
 
-fn prefer_shorter_win(a: Option<usize>, b: Option<usize>) -> std::cmp::Ordering {
+pub(crate) fn prefer_shorter_win(a: Option<usize>, b: Option<usize>) -> std::cmp::Ordering {
     match (a, b) {
         (Some(a), Some(b)) => b.cmp(&a),
         (Some(_), None) => std::cmp::Ordering::Greater,
@@ -241,6 +241,47 @@ fn is_current_promotion_frame(
 }
 
 impl ExpectiMiniMaxPlayer {
+    /// Option B (`list_aware_player`): the root scores `decide_with_public_reply_provenance`
+    /// compares, one `(expected value, win distance)` per candidate, without choosing. Kept
+    /// separate so the k-tiers' own decision path, and every table built on it, is unchanged.
+    pub(crate) fn score_candidates(
+        &self,
+        rng: &mut StdRng,
+        state: &State,
+        possible_actions: &[Action],
+        public_reply_provenance: PublicReplyProvenance,
+    ) -> Vec<(f64, Option<usize>)> {
+        let myself = possible_actions[0].actor;
+        let original_level = log::max_level();
+        log::set_max_level(LevelFilter::Info);
+        let mut scores = Vec::with_capacity(possible_actions.len());
+        for action in possible_actions.iter() {
+            let (score, action_node) = crate::observation::with_root_action(action, || {
+                if state.setup_opponent_hidden {
+                    crate::observation::record_unpriced(
+                        action,
+                        "opponent setup is hidden; only own setup development is scored",
+                    );
+                }
+                expected_value_function_with_public_reply(
+                    rng,
+                    state,
+                    action,
+                    self.max_depth - 1,
+                    self.opponent_ply,
+                    false,
+                    self.flags(),
+                    myself,
+                    &self.value_function,
+                    public_reply_provenance,
+                )
+            });
+            scores.push((score, action_node.win_distance));
+        }
+        log::set_max_level(original_level);
+        scores
+    }
+
     fn decide_with_public_reply_provenance(
         &mut self,
         rng: &mut StdRng,

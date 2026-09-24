@@ -2,7 +2,7 @@
 use crate::{
     actions::{abilities::AbilityMechanic, Action, SimpleAction},
     models::Card,
-    State,
+    Deck, State,
 };
 use rand::{rngs::StdRng, seq::SliceRandom};
 use serde::{Deserialize, Serialize};
@@ -154,6 +154,54 @@ impl PlayerObservation {
         }
         remainder.shuffle(rng);
         state.decks[self.actor].cards = top.iter().cloned().chain(remainder).collect();
+        state
+    }
+
+    /// Option B (rl/RUN5.md): `search_state`, then one guess at the opponent's hidden cards, drawn
+    /// from a decklist the caller supplies (the opponent's known list). Every card the opponent has
+    /// visibly used (in play, under an evolution, attached, discarded, their Stadium, anything
+    /// already revealed) is removed from the list first, and the rest fill the Unknown hand and deck
+    /// slots in random order. This is an explicit matchup prior, so it is kept out of
+    /// `search_state`; slots the list can't fill stay Unknown and keep their usual handling.
+    pub fn search_state_with_opponent_list(&self, rng: &mut StdRng, opponent_list: &Deck) -> State {
+        let mut state = self.search_state(rng);
+        let opponent = 1 - self.actor;
+        let mut remaining = opponent_list.cards.clone();
+        let mut remove = |card: &Card| {
+            if let Some(i) = remaining.iter().position(|c| c == card) {
+                remaining.swap_remove(i);
+            }
+        };
+        for pokemon in state.in_play_pokemon[opponent].iter().flatten() {
+            remove(&pokemon.card);
+            pokemon.cards_behind.iter().for_each(&mut remove);
+            pokemon.attached_tools.iter().for_each(&mut remove);
+        }
+        state.discard_piles[opponent].iter().for_each(&mut remove);
+        if state.active_stadium_owner == Some(opponent) {
+            if let Some(stadium) = &state.active_stadium {
+                remove(stadium);
+            }
+        }
+        state.hands[opponent]
+            .iter()
+            .chain(state.decks[opponent].cards.iter())
+            .filter(|c| **c != Card::Unknown)
+            .for_each(&mut remove);
+        canonical_cards(&mut remaining);
+        remaining.shuffle(rng);
+        let mut fill = remaining.into_iter();
+        for slot in state.hands[opponent]
+            .iter_mut()
+            .chain(state.decks[opponent].cards.iter_mut())
+            .filter(|c| **c == Card::Unknown)
+        {
+            match fill.next() {
+                Some(card) => *slot = card,
+                None => break,
+            }
+        }
+        state.decks[opponent].energy_types = opponent_list.energy_types.clone();
         state
     }
 }
@@ -1071,6 +1119,62 @@ mod attribution_tests {
             assert!(knowledge.deck_top[0].is_empty());
             assert!(knowledge.deck_top[1].is_empty());
             assert!(knowledge.opponent_deck_membership.is_empty());
+        }
+    }
+}
+
+#[cfg(test)]
+mod opponent_list_tests {
+    use super::*;
+    use crate::players::{Player, RandomPlayer};
+    use crate::Game;
+    use rand::SeedableRng;
+
+    fn ids<'a>(cards: impl Iterator<Item = &'a Card>) -> Vec<String> {
+        let mut v: Vec<String> = cards.map(Card::get_id).collect();
+        v.sort();
+        v
+    }
+
+    #[test]
+    fn list_sampling_fills_only_hidden_slots_with_the_unseen_rest_of_the_list() {
+        let deck_a = Deck::from_file("example_decks/altaria.txt").unwrap();
+        let deck_b = Deck::from_file("example_decks/blastoiseex.txt").unwrap();
+        for seed in 0..20 {
+            let players: Vec<Box<dyn Player>> = vec![
+                Box::new(RandomPlayer { deck: deck_a.clone() }),
+                Box::new(RandomPlayer { deck: deck_b.clone() }),
+            ];
+            let mut game = Game::new(players, seed);
+            while !game.is_game_over() && game.get_state_clone().turn_count < 5 {
+                game.play_tick();
+            }
+            let real = game.get_state_clone();
+            let observation = PlayerObservation::from_state(&real, 0, &RevealedKnowledge::default());
+            let sampled = observation
+                .search_state_with_opponent_list(&mut StdRng::seed_from_u64(seed), &deck_b);
+
+            // Every hidden slot is filled; sizes and the whole public board are unchanged.
+            assert!(!sampled.hands[1].contains(&Card::Unknown));
+            assert!(!sampled.decks[1].cards.contains(&Card::Unknown));
+            assert_eq!(sampled.hands[1].len(), real.hands[1].len());
+            assert_eq!(sampled.decks[1].cards.len(), real.decks[1].cards.len());
+            assert_eq!(sampled.in_play_pokemon, real.in_play_pokemon);
+            assert_eq!(sampled.discard_piles, real.discard_piles);
+            assert_eq!(sampled.hands[0], real.hands[0]);
+
+            // The opponent's cards, visible and guessed, are exactly their list.
+            let board = sampled.in_play_pokemon[1].iter().flatten().flat_map(|p| {
+                std::iter::once(&p.card).chain(p.cards_behind.iter()).chain(p.attached_tools.iter())
+            });
+            let stadium = sampled.active_stadium.iter().filter(|_| sampled.active_stadium_owner == Some(1));
+            let all = sampled.hands[1]
+                .iter()
+                .chain(sampled.decks[1].cards.iter())
+                .chain(sampled.discard_piles[1].iter())
+                .chain(board)
+                .chain(stadium);
+            assert_eq!(ids(all), ids(deck_b.cards.iter()), "seed {seed}");
         }
     }
 }

@@ -4,6 +4,7 @@ mod end_turn_player;
 mod evolution_rusher_player;
 pub mod expectiminimax_player;
 mod human_player;
+pub mod list_aware_player;
 pub mod jev_player;
 mod mcts_player;
 mod random_player;
@@ -21,6 +22,7 @@ pub use expectiminimax_player::{
 };
 pub use human_player::HumanPlayer;
 pub use jev_player::JevPlayer;
+pub use list_aware_player::ListAwarePlayer;
 pub use mcts_player::MctsPlayer;
 pub use random_player::RandomPlayer;
 pub use value_function_player::ValueFunctionPlayer;
@@ -132,6 +134,14 @@ pub enum PlayerCode {
         opponent_ply: usize,
     },
     ER, // Evolution Rusher
+    /// Option B (rl/RUN5.md): the k<N> search with the opponent's hidden hand and deck sampled from
+    /// their decklist. 'b<N>' = k<N> plus sampling; 'b<N>o<P>' also searches P opponent actions
+    /// (consistent horizon); a trailing 'n<S>' sets the samples per decision (default 4).
+    B {
+        max_depth: usize,
+        opponent_ply: usize,
+        samples: usize,
+    },
 }
 /// Custom parser function enforcing case-insensitivity
 pub fn parse_player_code(s: &str) -> Result<PlayerCode, String> {
@@ -183,6 +193,20 @@ pub fn parse_player_code(s: &str) -> Result<PlayerCode, String> {
         return Err(format!(
             "Invalid player code: {s}. Use 't<number>', e.g. 't3'"
         ));
+    }
+    // Option B. 'b<N>[o<P>][n<S>]' = 'k<N>' with list-sampled hidden cards (see PlayerCode::B).
+    if lower.starts_with('b') && lower.len() > 1 {
+        let invalid = || format!("Invalid player code: {s}. Use 'b<depth>[o<ply>][n<samples>]', e.g. 'b3', 'b3o3n8'");
+        let (rest, samples) = match lower[1..].split_once('n') {
+            Some((r, n)) => (r, n.parse::<usize>().ok().filter(|v| *v > 0).ok_or_else(invalid)?),
+            None => (&lower[1..], 4),
+        };
+        let (depth, opponent_ply) = match rest.split_once('o') {
+            Some((d, p)) => (d, p.parse::<usize>().ok().filter(|v| *v > 0).ok_or_else(invalid)?),
+            None => (rest, 0),
+        };
+        let max_depth = depth.parse::<usize>().map_err(|_| invalid())?;
+        return Ok(PlayerCode::B { max_depth, opponent_ply, samples });
     }
     // s119. 'k<N>' = 't<N>' + the s116 effect-aware estimator, no Pokemon-value term.
     if lower.starts_with('k') && lower.len() > 1 {
@@ -301,12 +325,12 @@ pub fn create_players(
     deck_b: Deck,
     players: Vec<PlayerCode>,
 ) -> Vec<Box<dyn Player>> {
-    let player_a: Box<dyn Player> = get_player(deck_a.clone(), &players[0]);
-    let player_b: Box<dyn Player> = get_player(deck_b.clone(), &players[1]);
+    let player_a: Box<dyn Player> = get_player(deck_a.clone(), &deck_b, &players[0]);
+    let player_b: Box<dyn Player> = get_player(deck_b.clone(), &deck_a, &players[1]);
     vec![player_a, player_b]
 }
 
-fn get_player(deck: Deck, player: &PlayerCode) -> Box<dyn Player> {
+fn get_player(deck: Deck, opponent_deck: &Deck, player: &PlayerCode) -> Box<dyn Player> {
     match player {
         PlayerCode::Jev => Box::new(JevPlayer::new(deck)),
         PlayerCode::AA => Box::new(AttachAttackPlayer { deck }),
@@ -425,6 +449,19 @@ fn get_player(deck: Deck, player: &PlayerCode) -> Box<dyn Player> {
             soft_opponent: true,
         }),
         PlayerCode::ER => Box::new(EvolutionRusherPlayer { deck }),
+        PlayerCode::B { max_depth, opponent_ply, samples } => Box::new(ListAwarePlayer {
+            search: ExpectiMiniMaxPlayer {
+                deck,
+                max_depth: *max_depth,
+                write_debug_trees: false,
+                value_function: Box::new(value_functions::public_clock_effect_value_function),
+                opponent_ply: *opponent_ply,
+                consistent_horizon: *opponent_ply > 0,
+                soft_opponent: false,
+            },
+            opponent_list: opponent_deck.clone(),
+            samples: *samples,
+        }),
     }
 }
 
@@ -500,6 +537,18 @@ mod s42_tier_parse_tests {
                 opponent_ply: 5
             }
         );
+        // Option B: 'b<N>[o<P>][n<S>]'.
+        assert_eq!(
+            parse_player_code("b3").unwrap(),
+            PlayerCode::B { max_depth: 3, opponent_ply: 0, samples: 4 }
+        );
+        assert_eq!(
+            parse_player_code("B3o3n8").unwrap(),
+            PlayerCode::B { max_depth: 3, opponent_ply: 3, samples: 8 }
+        );
+        assert!(parse_player_code("b3o0").is_err());
+        assert!(parse_player_code("b3n0").is_err());
+        assert!(parse_player_code("bx").is_err());
         // §115: 'd<N>' must parse and must not shadow anything earlier.
         assert_eq!(
             parse_player_code("d3").unwrap(),
@@ -527,7 +576,7 @@ mod s42_tier_parse_tests {
     fn test_search_flags_are_off_for_historical_tiers() {
         use crate::players::expectiminimax_player::SearchFlags;
         let f = |code: &str| {
-            let p = get_player(Deck::default(), &parse_player_code(code).unwrap());
+            let p = get_player(Deck::default(), &Deck::default(), &parse_player_code(code).unwrap());
             let _ = format!("{p:?}");
             code.to_string()
         };
