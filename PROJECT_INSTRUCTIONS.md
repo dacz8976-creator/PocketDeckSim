@@ -31,17 +31,17 @@ the rules added since then. Read `START_HERE.md` first. Where the two differ, `S
 - **The Limitless table is the scoreboard** for any change to how the simulator plays
   (`rl/results/deep_search_table/`).
 
-## Who does what
+## Who does what (changed Sept 24 evening)
 
-- **Dustin** owns the project, decides, and starts the long runs on his laptop.
-- **Opus (Claude, Cowork)** leads and builds the RL work, runs checks and simulator runs, and does deck
-  discovery.
-- **Fable (Claude)** reviews designs and results. It's expensive, so it builds or runs things only when
-  Dustin asks.
-- **Astra (Codex)** owns the engine and reviews code. It's expensive too, so use it for targeted reviews,
-  not routine work.
-- **An auditor (Claude, Cowork)** runs independent measurements.
-- **A Claude Code agent** works in this repo on GitHub.
+This section is current. `START_HERE.md`'s "Who does what" is Pocket Deck Lab's earlier text.
+
+- **Dustin** owns the project, decides, and starts runs on his laptop.
+- **The Claude Code agent (this repo)** owns the engine, the add-on and all runs: builds, tests, training and
+  simulator tables. Its results are committed here.
+- **Astra (Codex)** reviews engine code. It's expensive, so use it for targeted reviews, not routine work.
+- **The Cowork side (Pocket Deck Lab):** Opus does deck discovery and Limitless reading and reviews results,
+  including reading the Hydreigon run's verdict, which it designed. Fable reviews designs and results; it's
+  expensive, so it builds or runs things only when Dustin asks. An auditor re-checks results when asked.
 
 ## How to work
 
