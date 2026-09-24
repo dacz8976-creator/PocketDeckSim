@@ -1,0 +1,12 @@
+--- a/engine/src/actions/apply_action_helpers.rs	2026-09-24 19:01:23.710584106 +0000
++++ b/engine/src/actions/apply_action_helpers.rs	2026-09-24 19:25:16.716747067 +0000
+@@ -88,7 +88,8 @@
+     let mut preview = state.clone();
+     on_end_turn(state.current_player, &mut preview);
+     let next = 1 - state.current_player;
+-    let end_evolution = preview.maybe_get_active(next).is_some_and(|active|
++    // DIAGNOSTIC BUILD ONLY: PDL_DIAG_NO_QUICK_GROWTH=1 switches Caterpie's Quick Growth off.
++    let end_evolution = std::env::var_os("PDL_DIAG_NO_QUICK_GROWTH").is_none() && preview.maybe_get_active(next).is_some_and(|active|
+         matches!(get_in_play_ability_mechanic(&preview, active),
+             Some(AbilityMechanic::RandomEvolutionFromDeck {
+                 trigger: RandomEvolutionTrigger::EndOfOpponentTurnIfActive
