@@ -321,8 +321,27 @@ fn update_turn(turn: &mut Turn, before: &State, after: &State, actor: usize, act
     }
 }
 
+/// Hyper Ray use, counted per turn exactly as rl/results/see_everything_2026-09-24.md's hydsum.py does:
+/// a turn where Hyper Ray was legal counts as "used" if Hyper Ray was the turn's attack, or "passed" if the
+/// player ended the turn at a point where Hyper Ray was on offer. "KO-able" means the opponent's Active had
+/// 130 HP or less left at that moment.
+#[derive(Default, Clone, Copy)]
+struct HyperRay {
+    ko_used: u64,
+    ko_passed: u64,
+    noko_used: u64,
+    noko_passed: u64,
+}
+
+#[derive(Default)]
+struct HyperTurn {
+    used_opp_hp: Option<Option<u32>>,
+    declined_opp_hp: Option<Option<u32>>,
+}
+
 struct GameResult {
     first_deck_score: f64,
+    hyper_ray: HyperRay,
     /// Fingerprint of every chosen move in order: distinct games have distinct fingerprints.
     fingerprint: u64,
     findings: Findings,
@@ -342,6 +361,7 @@ fn play_one(decks: &[Deck; 8], pairing: usize, i: u64, bot: &str) -> GameResult 
     let mut seen: BTreeMap<String, bool> = BTreeMap::new();
     let mut turn = Turn::default();
     let mut moves = DefaultHasher::new();
+    let mut hyper_turns: BTreeMap<(usize, u8), HyperTurn> = BTreeMap::new();
     let start = game.get_state_clone();
     let start_cards = [card_count(&start, 0), card_count(&start, 1)];
     let mut record = |findings: &mut Findings, list: Vec<(String, String)>, state: &State| {
@@ -371,6 +391,16 @@ fn play_one(decks: &[Deck; 8], pairing: usize, i: u64, bot: &str) -> GameResult 
         record(&mut findings, offered, &before);
         let chosen = game.play_tick();
         format!("{:?}", chosen).hash(&mut moves);
+        let is_hyper = |a: &SimpleAction| matches!(a, SimpleAction::Attack(x) if x.title == "Hyper Ray");
+        if before.turn_count > 0 && actions.iter().any(|a| is_hyper(&a.action)) {
+            let opp_hp = before.in_play_pokemon[1 - actor][0].as_ref().map(|p| p.get_remaining_hp());
+            let record = hyper_turns.entry((actor, before.turn_count)).or_default();
+            if is_hyper(&chosen.action) {
+                record.used_opp_hp = Some(opp_hp);
+            } else if matches!(chosen.action, SimpleAction::EndTurn) {
+                record.declined_opp_hp = Some(opp_hp);
+            }
+        }
         let after = game.get_state_clone();
         update_turn(&mut turn, &before, &after, chosen.actor, &chosen);
         let state_findings: Vec<(String, String)> = check_state(&after, start_cards, game.is_game_over())
@@ -383,7 +413,16 @@ fn play_one(decks: &[Deck; 8], pairing: usize, i: u64, bot: &str) -> GameResult 
         Some(GameOutcome::Win(w)) => f64::from(u8::from(w == first_seat)),
         _ => 0.5,
     };
-    GameResult { first_deck_score, fingerprint: moves.finish(), findings }
+    let mut hyper_ray = HyperRay::default();
+    for record in hyper_turns.values() {
+        let ko = |hp: &Option<u32>| hp.is_some_and(|h| h <= 130);
+        if let Some(hp) = &record.used_opp_hp {
+            if ko(hp) { hyper_ray.ko_used += 1 } else { hyper_ray.noko_used += 1 }
+        } else if let Some(hp) = &record.declined_opp_hp {
+            if ko(hp) { hyper_ray.ko_passed += 1 } else { hyper_ray.noko_passed += 1 }
+        }
+    }
+    GameResult { first_deck_score, hyper_ray, fingerprint: moves.finish(), findings }
 }
 
 fn arg(args: &[String], flag: &str) -> Option<String> {
@@ -417,6 +456,20 @@ fn main() {
             "{:>9} v {:<9} first deck {:5.1}%   distinct games {distinct} of {games}   games with findings: {flagged}",
             NAMES[*a], NAMES[*b], 100.0 * score
         );
+        let h = results.iter().fold(HyperRay::default(), |mut s, r| {
+            s.ko_used += r.hyper_ray.ko_used;
+            s.ko_passed += r.hyper_ray.ko_passed;
+            s.noko_used += r.hyper_ray.noko_used;
+            s.noko_passed += r.hyper_ray.noko_passed;
+            s
+        });
+        if h.ko_used + h.ko_passed + h.noko_used + h.noko_passed > 0 {
+            let pct = 100.0 * h.noko_used as f64 / (h.noko_used + h.noko_passed).max(1) as f64;
+            println!(
+                "      Hyper Ray turns: KO-able used {} passed {} | not KO-able used {} passed {} ({pct:.0}% used)",
+                h.ko_used, h.ko_passed, h.noko_used, h.noko_passed
+            );
+        }
         for r in results {
             all.merge(r.findings);
         }
