@@ -1,0 +1,114 @@
+use rand::distributions::{Distribution, WeightedIndex};
+use rand::rngs::StdRng;
+use std::fmt::Debug;
+
+use crate::actions::{Action, SimpleAction};
+use crate::{Deck, State};
+
+use super::Player;
+
+pub struct WeightedRandomPlayer {
+    pub deck: Deck,
+}
+
+impl Player for WeightedRandomPlayer {
+    fn decide_omniscient(
+        &mut self,
+        rng: &mut StdRng,
+        _: &State,
+        possible_actions: &[Action],
+    ) -> Action {
+        // Get weights for the possible actions
+        let weights: Vec<u32> = possible_actions
+            .iter()
+            .map(|action| get_weight(&action.action))
+            .collect();
+
+        // Create a WeightedIndex based on the weights
+        let dist = WeightedIndex::new(&weights).expect("Weights should be non-empty and non-zero");
+
+        // Select a weighted random action
+        possible_actions[dist.sample(rng)].clone()
+    }
+
+    fn get_deck(&self) -> Deck {
+        self.deck.clone()
+    }
+}
+
+impl Debug for WeightedRandomPlayer {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "WeightedRandomPlayer")
+    }
+}
+
+fn get_weight(action: &SimpleAction) -> u32 {
+    match action {
+        SimpleAction::DrawCard { .. } => 1,
+        SimpleAction::Play { .. } => 5,
+        SimpleAction::Place(_, _) => 5,
+        SimpleAction::Attach { .. } => 10,
+        SimpleAction::MoveEnergy { .. } => 10,
+        SimpleAction::MoveEnergies { .. } => 10,
+        SimpleAction::AttachTool { .. } => 10,
+        SimpleAction::Evolve { .. } => 10,
+        SimpleAction::UseAbility { .. } => 10,
+        SimpleAction::Attack(_) => 10,
+        SimpleAction::ApplyDamage { .. } => 10,
+        SimpleAction::ApplyQueuedAttackDamage { .. } => 10,
+        SimpleAction::ScheduleDelayedSpotDamage { .. } => 10,
+        SimpleAction::Retreat(_) => 2,
+        SimpleAction::ChooseRetreatEnergy { .. }
+        | SimpleAction::ChooseAttackEnergyDiscard { .. } => 10,
+        SimpleAction::EndTurn
+        | SimpleAction::ResolveKnockoutPoints { .. }
+            | SimpleAction::ResolveAttackRetaliation { .. }
+        | SimpleAction::ResolvePokemonCheckup
+        | SimpleAction::FinishPokemonCheckup
+        | SimpleAction::ResolveEndTurnEvolution { .. } => 1,
+        SimpleAction::ChooseRandomEvolutionTarget { .. } => 10,
+        SimpleAction::Heal { .. } => 5,
+        SimpleAction::HealAndDiscardEnergy { .. } => 5,
+        SimpleAction::HealAndCureConditions { .. } => 5,
+        SimpleAction::MoveAllDamage { .. } => 10,
+        SimpleAction::MoveDamageToOpponentActive { .. } => 10,
+        SimpleAction::Activate { .. } | SimpleAction::Promote { .. } => 1,
+        SimpleAction::CommunicatePokemon { .. } => 5,
+        SimpleAction::ShufflePokemonIntoDeck { .. } => 5,
+        SimpleAction::ShuffleOwnCardsIntoDeck { .. } => 5,
+        SimpleAction::SwitchHandCardForRandomTool { .. } => 5,
+        SimpleAction::ShuffleOpponentHandCard { .. } => 5,
+        SimpleAction::DiscardOpponentSupporter { .. } => 5,
+        SimpleAction::DiscardOwnCards { .. } => 5,
+        SimpleAction::DiscardOwnCardsForAttackDamage { .. } => 5,
+        SimpleAction::AttachFromDiscard { .. } => 10,
+        SimpleAction::AttachTypedFromDiscard { .. } => 10,
+        SimpleAction::SadaAttach { .. } => 10,
+        SimpleAction::ApplyEeveeBagDamageBoost => 5,
+        SimpleAction::HealAllEeveeEvolutions => 5,
+        SimpleAction::DiscardFossil { .. } => 1, // Low weight to discard fossils
+        SimpleAction::ReturnPokemonToHand { .. } => 5,
+        SimpleAction::ShuffleInPlayPokemonIntoDeck { .. } => 5,
+        SimpleAction::DiscardToolFromPokemon { .. } => 5,
+        SimpleAction::DiscardActiveStadium => 5,
+        SimpleAction::BenchOpponentFromDiscard { .. } => 5,
+        SimpleAction::BenchOpponentHandBasics { .. } => 5,
+        SimpleAction::PutCardFromDiscardToHand { .. } => 10,
+        SimpleAction::PutRandomCardsFromDiscardToHand { .. } => 10,
+        SimpleAction::DiscardRandomOpponentActiveEnergy => 10,
+        SimpleAction::OpponentShuffleHandAndDrawRemainingPoints => 10,
+        SimpleAction::ShuffleRandomOpponentHandCard => 10,
+        SimpleAction::MoveRandomOpponentEnergyToActive { .. } => 10,
+        SimpleAction::ApplyStatusToOpponentActive { .. } => 10,
+        SimpleAction::DiscardOwnBenchedThenDamage { .. } => 10,
+        SimpleAction::KeepAttackCoinResults
+        | SimpleAction::RerollAttackCoins { .. }
+        | SimpleAction::KeepTrainerCoinResults
+        | SimpleAction::RerollTrainerCoins { .. }
+        | SimpleAction::ChooseMistyTarget { .. } => 10,
+        // §47 — a purposeful Energy consolidation is usually the point of the turn when offered.
+        SimpleAction::ConsolidateEnergyToPokemon { .. } => 10,
+        SimpleAction::UseStadium => 5, // Stadium abilities like Mesagoza
+        SimpleAction::Noop => 0,       // No operation has no weight
+    }
+}

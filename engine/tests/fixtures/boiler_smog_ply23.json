@@ -1,0 +1,1073 @@
+{
+  "game_id": "ab70b3a4-416d-4099-85b0-c0c3f7838f91",
+  "ply": 23,
+  "actor": 1,
+  "state": {
+    "winner": null,
+    "points": [
+      0,
+      0
+    ],
+    "points_gained_this_turn": [
+      0,
+      0
+    ],
+    "points_gained_during_own_last_turn": [
+      0,
+      0
+    ],
+    "turn_count": 3,
+    "current_player": 1,
+    "end_turn_pending": false,
+    "move_generation_stack": [
+      [
+        1,
+        [
+          {
+            "UseAbility": {
+              "in_play_idx": 0
+            }
+          },
+          "Noop"
+        ]
+      ]
+    ],
+    "energy_zone": [
+      {
+        "current": null,
+        "next": "Water"
+      },
+      {
+        "current": "Darkness",
+        "next": "Darkness"
+      }
+    ],
+    "hands": [
+      [
+        {
+          "Trainer": {
+            "id": "A3 144",
+            "trainer_card_type": "Item",
+            "name": "Rare Candy",
+            "effect": "Choose 1 of your Basic Pokémon in play. If you have a Stage 2 card in your hand that evolves from that Pokémon, put that card onto the Basic Pokémon to evolve it, skipping the Stage 1. You can't use this card during your first turn or on a Basic Pokémon that was put into play this turn.",
+            "rarity": "◊◊",
+            "booster_pack": "Celestial Guardians (A3)"
+          }
+        },
+        {
+          "Trainer": {
+            "id": "A3 144",
+            "trainer_card_type": "Item",
+            "name": "Rare Candy",
+            "effect": "Choose 1 of your Basic Pokémon in play. If you have a Stage 2 card in your hand that evolves from that Pokémon, put that card onto the Basic Pokémon to evolve it, skipping the Stage 1. You can't use this card during your first turn or on a Basic Pokémon that was put into play this turn.",
+            "rarity": "◊◊",
+            "booster_pack": "Celestial Guardians (A3)"
+          }
+        },
+        {
+          "Pokemon": {
+            "id": "B2a 036",
+            "name": "Baxcalibur",
+            "stage": 2,
+            "evolves_from": "Arctibax",
+            "hp": 140,
+            "energy_type": "Water",
+            "ability": {
+              "title": "Ice Maker",
+              "effect": "Once during your turn, you may take a [W] Energy from your Energy Zone and attach it to the [W] Pokémon in the Active Spot."
+            },
+            "attacks": [
+              {
+                "energy_required": [
+                  "Water",
+                  "Water",
+                  "Water"
+                ],
+                "title": "Buster Tail",
+                "fixed_damage": 90,
+                "effect": null
+              }
+            ],
+            "weakness": "Metal",
+            "retreat_cost": [
+              "Colorless",
+              "Colorless",
+              "Colorless"
+            ],
+            "rarity": "◊◊◊",
+            "booster_pack": "Paldean Wonders (B2a)"
+          }
+        }
+      ],
+      [
+        {
+          "Trainer": {
+            "id": "B3 147",
+            "trainer_card_type": "Item",
+            "name": "Field Blower",
+            "effect": "Discard a Pokémon Tool card from a Pokémon (yours or your opponent's), or discard a Stadium card in play.",
+            "rarity": "◊◊",
+            "booster_pack": "Pulsing Aura (B3)"
+          }
+        }
+      ]
+    ],
+    "decks": [
+      {
+        "cards": [
+          {
+            "Pokemon": {
+              "id": "A4a 020",
+              "name": "Suicune ex",
+              "stage": 0,
+              "evolves_from": null,
+              "hp": 140,
+              "energy_type": "Water",
+              "ability": {
+                "title": "Legendary Pulse",
+                "effect": "At the end of your turn, if this Pokémon is in the Active Spot, draw a card."
+              },
+              "attacks": [
+                {
+                  "energy_required": [
+                    "Water",
+                    "Water"
+                  ],
+                  "title": "Crystal Waltz",
+                  "fixed_damage": 20,
+                  "effect": "This attack does 20 damage for each Benched Pokémon (both yours and your opponent's)."
+                }
+              ],
+              "weakness": "Lightning",
+              "retreat_cost": [
+                "Colorless",
+                "Colorless"
+              ],
+              "rarity": "◊◊◊◊",
+              "booster_pack": "Secluded Springs (A4a)"
+            }
+          },
+          {
+            "Pokemon": {
+              "id": "P-B 037",
+              "name": "Frigibax",
+              "stage": 0,
+              "evolves_from": null,
+              "hp": 60,
+              "energy_type": "Water",
+              "ability": null,
+              "attacks": [
+                {
+                  "energy_required": [
+                    "Water"
+                  ],
+                  "title": "Stiffen",
+                  "fixed_damage": 0,
+                  "effect": "During your opponent's next turn, this Pokémon takes -20 damage from attacks."
+                }
+              ],
+              "weakness": "Metal",
+              "retreat_cost": [
+                "Colorless"
+              ],
+              "rarity": "◊",
+              "booster_pack": "Promo B (P-B)"
+            }
+          },
+          {
+            "Trainer": {
+              "id": "A2b 070",
+              "trainer_card_type": "Supporter",
+              "name": "Pokémon Center Lady",
+              "effect": "Heal 30 damage from 1 of your Pokémon, and it recovers from all Special Conditions.",
+              "rarity": "◊◊",
+              "booster_pack": "Shining Revelry (A2b)"
+            }
+          },
+          {
+            "Trainer": {
+              "id": "B4 154",
+              "trainer_card_type": "Stadium",
+              "name": "Soothing Shore",
+              "effect": "At the end of each player's turn, that player heals 20 damage from each of their Pokémon that has any [W] Energy attached.",
+              "rarity": "◊◊",
+              "booster_pack": "Ruler of the Skies (B4)"
+            }
+          },
+          {
+            "Trainer": {
+              "id": "P-A 005",
+              "trainer_card_type": "Item",
+              "name": "Poké Ball",
+              "effect": "Put a random Basic Pokémon from your deck into your hand.",
+              "rarity": "◊",
+              "booster_pack": "Promo A (P-A)"
+            }
+          },
+          {
+            "Trainer": {
+              "id": "B3 147",
+              "trainer_card_type": "Item",
+              "name": "Field Blower",
+              "effect": "Discard a Pokémon Tool card from a Pokémon (yours or your opponent's), or discard a Stadium card in play.",
+              "rarity": "◊◊",
+              "booster_pack": "Pulsing Aura (B3)"
+            }
+          },
+          {
+            "Trainer": {
+              "id": "B4a 071",
+              "trainer_card_type": "Supporter",
+              "name": "Team Rocket's Boss",
+              "effect": "Look at your opponent's hand and put any number of Basic Pokémon you find there onto your opponent's Bench.",
+              "rarity": "◊◊",
+              "booster_pack": "Team Rocket's Ambition (B4a)"
+            }
+          },
+          {
+            "Trainer": {
+              "id": "A4a 067",
+              "trainer_card_type": "Tool",
+              "name": "Inflatable Boat",
+              "effect": "The Retreat Cost of the [W] Pokémon this card is attached to is 1 less.",
+              "rarity": "◊◊",
+              "booster_pack": "Secluded Springs (A4a)"
+            }
+          },
+          {
+            "Pokemon": {
+              "id": "B2a 036",
+              "name": "Baxcalibur",
+              "stage": 2,
+              "evolves_from": "Arctibax",
+              "hp": 140,
+              "energy_type": "Water",
+              "ability": {
+                "title": "Ice Maker",
+                "effect": "Once during your turn, you may take a [W] Energy from your Energy Zone and attach it to the [W] Pokémon in the Active Spot."
+              },
+              "attacks": [
+                {
+                  "energy_required": [
+                    "Water",
+                    "Water",
+                    "Water"
+                  ],
+                  "title": "Buster Tail",
+                  "fixed_damage": 90,
+                  "effect": null
+                }
+              ],
+              "weakness": "Metal",
+              "retreat_cost": [
+                "Colorless",
+                "Colorless",
+                "Colorless"
+              ],
+              "rarity": "◊◊◊",
+              "booster_pack": "Paldean Wonders (B2a)"
+            }
+          },
+          {
+            "Trainer": {
+              "id": "B1 225",
+              "trainer_card_type": "Supporter",
+              "name": "Copycat",
+              "effect": "Shuffle your hand into your deck. Draw a card for each card in your opponent's hand.",
+              "rarity": "◊◊",
+              "booster_pack": "Mega Rising (B1)"
+            }
+          },
+          {
+            "Trainer": {
+              "id": "P-A 007",
+              "trainer_card_type": "Supporter",
+              "name": "Professor's Research",
+              "effect": "Draw 2 cards.",
+              "rarity": "◊",
+              "booster_pack": "Promo A (P-A)"
+            }
+          }
+        ],
+        "energy_types": [
+          "Water"
+        ]
+      },
+      {
+        "cards": [
+          {
+            "Pokemon": {
+              "id": "A2 110",
+              "name": "Darkrai ex",
+              "stage": 0,
+              "evolves_from": null,
+              "hp": 140,
+              "energy_type": "Darkness",
+              "ability": {
+                "title": "Nightmare Aura",
+                "effect": "Whenever you attach a [D] Energy from your Energy Zone to this Pokémon, do 20 damage to your opponent's Active Pokémon."
+              },
+              "attacks": [
+                {
+                  "energy_required": [
+                    "Darkness",
+                    "Darkness",
+                    "Colorless"
+                  ],
+                  "title": "Dark Prism",
+                  "fixed_damage": 80,
+                  "effect": null
+                }
+              ],
+              "weakness": "Grass",
+              "retreat_cost": [
+                "Colorless",
+                "Colorless"
+              ],
+              "rarity": "◊◊◊◊",
+              "booster_pack": "Space-Time Smackdown (A2)"
+            }
+          },
+          {
+            "Trainer": {
+              "id": "P-A 002",
+              "trainer_card_type": "Item",
+              "name": "X Speed",
+              "effect": "During this turn, the Retreat Cost of your Active Pokémon is 1 less.",
+              "rarity": "◊",
+              "booster_pack": "Promo A (P-A)"
+            }
+          },
+          {
+            "Trainer": {
+              "id": "P-A 007",
+              "trainer_card_type": "Supporter",
+              "name": "Professor's Research",
+              "effect": "Draw 2 cards.",
+              "rarity": "◊",
+              "booster_pack": "Promo A (P-A)"
+            }
+          },
+          {
+            "Trainer": {
+              "id": "B1 225",
+              "trainer_card_type": "Supporter",
+              "name": "Copycat",
+              "effect": "Shuffle your hand into your deck. Draw a card for each card in your opponent's hand.",
+              "rarity": "◊◊",
+              "booster_pack": "Mega Rising (B1)"
+            }
+          },
+          {
+            "Pokemon": {
+              "id": "B4a 043",
+              "name": "Team Rocket's Weezing ex",
+              "stage": 1,
+              "evolves_from": "Team Rocket's Koffing",
+              "hp": 140,
+              "energy_type": "Darkness",
+              "ability": {
+                "title": "Boiler Smog",
+                "effect": "Once during your turn, when you play this Pokémon from your hand to evolve 1 of your Pokémon, you may make your opponent's Active Pokémon Poisoned and Burned."
+              },
+              "attacks": [
+                {
+                  "energy_required": [
+                    "Darkness",
+                    "Darkness"
+                  ],
+                  "title": "Confusion Gas",
+                  "fixed_damage": 60,
+                  "effect": "Your opponent's Active Pokémon is now Confused."
+                }
+              ],
+              "weakness": "Fighting",
+              "retreat_cost": [
+                "Colorless",
+                "Colorless"
+              ],
+              "rarity": "◊◊◊◊",
+              "booster_pack": "Team Rocket's Ambition (B4a)"
+            }
+          },
+          {
+            "Trainer": {
+              "id": "B1 225",
+              "trainer_card_type": "Supporter",
+              "name": "Copycat",
+              "effect": "Shuffle your hand into your deck. Draw a card for each card in your opponent's hand.",
+              "rarity": "◊◊",
+              "booster_pack": "Mega Rising (B1)"
+            }
+          },
+          {
+            "Trainer": {
+              "id": "A2 150",
+              "trainer_card_type": "Supporter",
+              "name": "Cyrus",
+              "effect": "Switch in 1 of your opponent's Benched Pokémon that has damage on it to the Active Spot.",
+              "rarity": "◊◊",
+              "booster_pack": "Space-Time Smackdown (A2)"
+            }
+          },
+          {
+            "Trainer": {
+              "id": "P-A 005",
+              "trainer_card_type": "Item",
+              "name": "Poké Ball",
+              "effect": "Put a random Basic Pokémon from your deck into your hand.",
+              "rarity": "◊",
+              "booster_pack": "Promo A (P-A)"
+            }
+          },
+          {
+            "Trainer": {
+              "id": "A2 150",
+              "trainer_card_type": "Supporter",
+              "name": "Cyrus",
+              "effect": "Switch in 1 of your opponent's Benched Pokémon that has damage on it to the Active Spot.",
+              "rarity": "◊◊",
+              "booster_pack": "Space-Time Smackdown (A2)"
+            }
+          },
+          {
+            "Trainer": {
+              "id": "P-A 007",
+              "trainer_card_type": "Supporter",
+              "name": "Professor's Research",
+              "effect": "Draw 2 cards.",
+              "rarity": "◊",
+              "booster_pack": "Promo A (P-A)"
+            }
+          },
+          {
+            "Trainer": {
+              "id": "B4 148",
+              "trainer_card_type": "Tool",
+              "name": "Deceptive Needle",
+              "effect": "At the end of your turn, if the [D] Pokémon this card is attached to is in the Active Spot, do 10 damage to your opponent's Active Pokémon.",
+              "rarity": "◊◊",
+              "booster_pack": "Ruler of the Skies (B4)"
+            }
+          },
+          {
+            "Trainer": {
+              "id": "B4 148",
+              "trainer_card_type": "Tool",
+              "name": "Deceptive Needle",
+              "effect": "At the end of your turn, if the [D] Pokémon this card is attached to is in the Active Spot, do 10 damage to your opponent's Active Pokémon.",
+              "rarity": "◊◊",
+              "booster_pack": "Ruler of the Skies (B4)"
+            }
+          }
+        ],
+        "energy_types": [
+          "Darkness"
+        ]
+      }
+    ],
+    "discard_piles": [
+      [
+        {
+          "Trainer": {
+            "id": "P-A 007",
+            "trainer_card_type": "Supporter",
+            "name": "Professor's Research",
+            "effect": "Draw 2 cards.",
+            "rarity": "◊",
+            "booster_pack": "Promo A (P-A)"
+          }
+        },
+        {
+          "Trainer": {
+            "id": "P-A 005",
+            "trainer_card_type": "Item",
+            "name": "Poké Ball",
+            "effect": "Put a random Basic Pokémon from your deck into your hand.",
+            "rarity": "◊",
+            "booster_pack": "Promo A (P-A)"
+          }
+        }
+      ],
+      [
+        {
+          "Trainer": {
+            "id": "P-A 005",
+            "trainer_card_type": "Item",
+            "name": "Poké Ball",
+            "effect": "Put a random Basic Pokémon from your deck into your hand.",
+            "rarity": "◊",
+            "booster_pack": "Promo A (P-A)"
+          }
+        },
+        {
+          "Trainer": {
+            "id": "A2 155",
+            "trainer_card_type": "Supporter",
+            "name": "Mars",
+            "effect": "Your opponent shuffles their hand into their deck and draws a card for each of their remaining points needed to win.",
+            "rarity": "◊◊",
+            "booster_pack": "Space-Time Smackdown (A2)"
+          }
+        }
+      ]
+    ],
+    "discard_energies": [
+      [],
+      []
+    ],
+    "in_play_pokemon": [
+      [
+        {
+          "card": {
+            "Pokemon": {
+              "id": "A4a 020",
+              "name": "Suicune ex",
+              "stage": 0,
+              "evolves_from": null,
+              "hp": 140,
+              "energy_type": "Water",
+              "ability": {
+                "title": "Legendary Pulse",
+                "effect": "At the end of your turn, if this Pokémon is in the Active Spot, draw a card."
+              },
+              "attacks": [
+                {
+                  "energy_required": [
+                    "Water",
+                    "Water"
+                  ],
+                  "title": "Crystal Waltz",
+                  "fixed_damage": 20,
+                  "effect": "This attack does 20 damage for each Benched Pokémon (both yours and your opponent's)."
+                }
+              ],
+              "weakness": "Lightning",
+              "retreat_cost": [
+                "Colorless",
+                "Colorless"
+              ],
+              "rarity": "◊◊◊◊",
+              "booster_pack": "Secluded Springs (A4a)"
+            }
+          },
+          "damage_counters": 0,
+          "base_hp": 140,
+          "stadium_hp_bonus": 0,
+          "ability_hp_bonus": 0,
+          "attached_energy": [
+            "Water"
+          ],
+          "attached_tools": [
+            {
+              "Trainer": {
+                "id": "A2 147",
+                "trainer_card_type": "Tool",
+                "name": "Giant Cape",
+                "effect": "The Pokémon this card is attached to gets +20 HP.",
+                "rarity": "◊◊",
+                "booster_pack": "Space-Time Smackdown (A2)"
+              }
+            }
+          ],
+          "played_this_turn": false,
+          "moved_to_active_this_turn": false,
+          "damaged_by_attack_while_active_this_turn": false,
+          "damaged_by_attack_while_active_last_turn": false,
+          "ability_used": false,
+          "poisoned": false,
+          "poison_checkup_damage": null,
+          "paralyzed": false,
+          "asleep": false,
+          "burned": false,
+          "confused": false,
+          "cards_behind": [],
+          "prevent_first_attack_damage_used": false,
+          "has_attacked_since_play": false,
+          "effects": []
+        },
+        null,
+        {
+          "card": {
+            "Pokemon": {
+              "id": "B2a 034",
+              "name": "Frigibax",
+              "stage": 0,
+              "evolves_from": null,
+              "hp": 60,
+              "energy_type": "Water",
+              "ability": null,
+              "attacks": [
+                {
+                  "energy_required": [
+                    "Water"
+                  ],
+                  "title": "Chilly",
+                  "fixed_damage": 20,
+                  "effect": null
+                }
+              ],
+              "weakness": "Metal",
+              "retreat_cost": [
+                "Colorless"
+              ],
+              "rarity": "◊",
+              "booster_pack": "Paldean Wonders (B2a)"
+            }
+          },
+          "damage_counters": 0,
+          "base_hp": 60,
+          "stadium_hp_bonus": 0,
+          "ability_hp_bonus": 0,
+          "attached_energy": [],
+          "attached_tools": [],
+          "played_this_turn": false,
+          "moved_to_active_this_turn": false,
+          "damaged_by_attack_while_active_this_turn": false,
+          "damaged_by_attack_while_active_last_turn": false,
+          "ability_used": false,
+          "poisoned": false,
+          "poison_checkup_damage": null,
+          "paralyzed": false,
+          "asleep": false,
+          "burned": false,
+          "confused": false,
+          "cards_behind": [],
+          "prevent_first_attack_damage_used": false,
+          "has_attacked_since_play": false,
+          "effects": []
+        },
+        {
+          "card": {
+            "Pokemon": {
+              "id": "B2a 037",
+              "name": "Chien-Pao ex",
+              "stage": 0,
+              "evolves_from": null,
+              "hp": 130,
+              "energy_type": "Water",
+              "ability": null,
+              "attacks": [
+                {
+                  "energy_required": [
+                    "Water"
+                  ],
+                  "title": "Icicle",
+                  "fixed_damage": 20,
+                  "effect": null
+                },
+                {
+                  "energy_required": [
+                    "Water",
+                    "Water",
+                    "Water"
+                  ],
+                  "title": "Diving Icicles",
+                  "fixed_damage": 0,
+                  "effect": "Discard all [W] Energy from this Pokémon. This attack does 130 damage to 1 of your opponent's Pokémon."
+                }
+              ],
+              "weakness": "Metal",
+              "retreat_cost": [
+                "Colorless"
+              ],
+              "rarity": "◊◊◊◊",
+              "booster_pack": "Paldean Wonders (B2a)"
+            }
+          },
+          "damage_counters": 0,
+          "base_hp": 130,
+          "stadium_hp_bonus": 0,
+          "ability_hp_bonus": 0,
+          "attached_energy": [],
+          "attached_tools": [],
+          "played_this_turn": false,
+          "moved_to_active_this_turn": false,
+          "damaged_by_attack_while_active_this_turn": false,
+          "damaged_by_attack_while_active_last_turn": false,
+          "ability_used": false,
+          "poisoned": false,
+          "poison_checkup_damage": null,
+          "paralyzed": false,
+          "asleep": false,
+          "burned": false,
+          "confused": false,
+          "cards_behind": [],
+          "prevent_first_attack_damage_used": false,
+          "has_attacked_since_play": false,
+          "effects": []
+        }
+      ],
+      [
+        {
+          "card": {
+            "Pokemon": {
+              "id": "B4a 043",
+              "name": "Team Rocket's Weezing ex",
+              "stage": 1,
+              "evolves_from": "Team Rocket's Koffing",
+              "hp": 140,
+              "energy_type": "Darkness",
+              "ability": {
+                "title": "Boiler Smog",
+                "effect": "Once during your turn, when you play this Pokémon from your hand to evolve 1 of your Pokémon, you may make your opponent's Active Pokémon Poisoned and Burned."
+              },
+              "attacks": [
+                {
+                  "energy_required": [
+                    "Darkness",
+                    "Darkness"
+                  ],
+                  "title": "Confusion Gas",
+                  "fixed_damage": 60,
+                  "effect": "Your opponent's Active Pokémon is now Confused."
+                }
+              ],
+              "weakness": "Fighting",
+              "retreat_cost": [
+                "Colorless",
+                "Colorless"
+              ],
+              "rarity": "◊◊◊◊",
+              "booster_pack": "Team Rocket's Ambition (B4a)"
+            }
+          },
+          "damage_counters": 0,
+          "base_hp": 140,
+          "stadium_hp_bonus": 0,
+          "ability_hp_bonus": 0,
+          "attached_energy": [],
+          "attached_tools": [],
+          "played_this_turn": true,
+          "moved_to_active_this_turn": false,
+          "damaged_by_attack_while_active_this_turn": false,
+          "damaged_by_attack_while_active_last_turn": false,
+          "ability_used": false,
+          "poisoned": false,
+          "poison_checkup_damage": null,
+          "paralyzed": false,
+          "asleep": false,
+          "burned": false,
+          "confused": false,
+          "cards_behind": [
+            {
+              "Pokemon": {
+                "id": "B4a 042",
+                "name": "Team Rocket's Koffing",
+                "stage": 0,
+                "evolves_from": null,
+                "hp": 60,
+                "energy_type": "Darkness",
+                "ability": null,
+                "attacks": [
+                  {
+                    "energy_required": [
+                      "Darkness"
+                    ],
+                    "title": "Reverse Thrust",
+                    "fixed_damage": 10,
+                    "effect": "Switch this Pokémon with 1 of your Benched Pokémon."
+                  }
+                ],
+                "weakness": "Fighting",
+                "retreat_cost": [
+                  "Colorless"
+                ],
+                "rarity": "◊",
+                "booster_pack": "Team Rocket's Ambition (B4a)"
+              }
+            }
+          ],
+          "prevent_first_attack_damage_used": false,
+          "has_attacked_since_play": false,
+          "effects": []
+        },
+        {
+          "card": {
+            "Pokemon": {
+              "id": "B4 103",
+              "name": "Hoopa ex",
+              "stage": 0,
+              "evolves_from": null,
+              "hp": 150,
+              "energy_type": "Darkness",
+              "ability": null,
+              "attacks": [
+                {
+                  "energy_required": [
+                    "Darkness"
+                  ],
+                  "title": "Shadow Bullet",
+                  "fixed_damage": 30,
+                  "effect": "This attack also does 20 damage to 1 of your opponent's Benched Pokémon."
+                },
+                {
+                  "energy_required": [
+                    "Darkness",
+                    "Darkness",
+                    "Colorless"
+                  ],
+                  "title": "Dynamite Punch",
+                  "fixed_damage": 100,
+                  "effect": "This Pokémon also does 20 damage to itself."
+                }
+              ],
+              "weakness": "Grass",
+              "retreat_cost": [
+                "Colorless",
+                "Colorless"
+              ],
+              "rarity": "◊◊◊◊",
+              "booster_pack": "Ruler of the Skies (B4)"
+            }
+          },
+          "damage_counters": 0,
+          "base_hp": 150,
+          "stadium_hp_bonus": 0,
+          "ability_hp_bonus": 0,
+          "attached_energy": [],
+          "attached_tools": [],
+          "played_this_turn": true,
+          "moved_to_active_this_turn": false,
+          "damaged_by_attack_while_active_this_turn": false,
+          "damaged_by_attack_while_active_last_turn": false,
+          "ability_used": false,
+          "poisoned": false,
+          "poison_checkup_damage": null,
+          "paralyzed": false,
+          "asleep": false,
+          "burned": false,
+          "confused": false,
+          "cards_behind": [],
+          "prevent_first_attack_damage_used": false,
+          "has_attacked_since_play": false,
+          "effects": []
+        },
+        {
+          "card": {
+            "Pokemon": {
+              "id": "B4 103",
+              "name": "Hoopa ex",
+              "stage": 0,
+              "evolves_from": null,
+              "hp": 150,
+              "energy_type": "Darkness",
+              "ability": null,
+              "attacks": [
+                {
+                  "energy_required": [
+                    "Darkness"
+                  ],
+                  "title": "Shadow Bullet",
+                  "fixed_damage": 30,
+                  "effect": "This attack also does 20 damage to 1 of your opponent's Benched Pokémon."
+                },
+                {
+                  "energy_required": [
+                    "Darkness",
+                    "Darkness",
+                    "Colorless"
+                  ],
+                  "title": "Dynamite Punch",
+                  "fixed_damage": 100,
+                  "effect": "This Pokémon also does 20 damage to itself."
+                }
+              ],
+              "weakness": "Grass",
+              "retreat_cost": [
+                "Colorless",
+                "Colorless"
+              ],
+              "rarity": "◊◊◊◊",
+              "booster_pack": "Ruler of the Skies (B4)"
+            }
+          },
+          "damage_counters": 0,
+          "base_hp": 150,
+          "stadium_hp_bonus": 0,
+          "ability_hp_bonus": 0,
+          "attached_energy": [],
+          "attached_tools": [],
+          "played_this_turn": false,
+          "moved_to_active_this_turn": false,
+          "damaged_by_attack_while_active_this_turn": false,
+          "damaged_by_attack_while_active_last_turn": false,
+          "ability_used": false,
+          "poisoned": false,
+          "poison_checkup_damage": null,
+          "paralyzed": false,
+          "asleep": false,
+          "burned": false,
+          "confused": false,
+          "cards_behind": [],
+          "prevent_first_attack_damage_used": false,
+          "has_attacked_since_play": false,
+          "effects": []
+        },
+        {
+          "card": {
+            "Pokemon": {
+              "id": "B4a 042",
+              "name": "Team Rocket's Koffing",
+              "stage": 0,
+              "evolves_from": null,
+              "hp": 60,
+              "energy_type": "Darkness",
+              "ability": null,
+              "attacks": [
+                {
+                  "energy_required": [
+                    "Darkness"
+                  ],
+                  "title": "Reverse Thrust",
+                  "fixed_damage": 10,
+                  "effect": "Switch this Pokémon with 1 of your Benched Pokémon."
+                }
+              ],
+              "weakness": "Fighting",
+              "retreat_cost": [
+                "Colorless"
+              ],
+              "rarity": "◊",
+              "booster_pack": "Team Rocket's Ambition (B4a)"
+            }
+          },
+          "damage_counters": 0,
+          "base_hp": 60,
+          "stadium_hp_bonus": 0,
+          "ability_hp_bonus": 0,
+          "attached_energy": [],
+          "attached_tools": [],
+          "played_this_turn": false,
+          "moved_to_active_this_turn": false,
+          "damaged_by_attack_while_active_this_turn": false,
+          "damaged_by_attack_while_active_last_turn": false,
+          "ability_used": false,
+          "poisoned": false,
+          "poison_checkup_damage": null,
+          "paralyzed": false,
+          "asleep": false,
+          "burned": false,
+          "confused": false,
+          "cards_behind": [],
+          "prevent_first_attack_damage_used": false,
+          "has_attacked_since_play": false,
+          "effects": []
+        }
+      ]
+    ],
+    "active_stadium": null,
+    "active_stadium_owner": null,
+    "has_played_support": false,
+    "has_retreated": false,
+    "has_used_stadium": [
+      false,
+      false
+    ],
+    "knocked_out_by_opponent_attack_this_turn": false,
+    "knocked_out_by_opponent_attack_last_turn": false,
+    "knocked_out_types_by_opponent_attack_this_turn": [],
+    "knocked_out_types_by_opponent_attack_last_turn": [],
+    "attack_name_used_this_turn": [
+      null,
+      null
+    ],
+    "attack_name_used_last_turn": [
+      null,
+      null
+    ],
+    "attack_name_used_count": [
+      {},
+      {}
+    ],
+    "own_knockouts_this_game": [
+      0,
+      0
+    ],
+    "turn_effects": {}
+  },
+  "playable_actions": [
+    {
+      "actor": 1,
+      "action": "Noop",
+      "is_stack": true
+    },
+    {
+      "actor": 1,
+      "action": {
+        "UseAbility": {
+          "in_play_idx": 0
+        }
+      },
+      "is_stack": true
+    }
+  ],
+  "chosen_action": {
+    "actor": 1,
+    "action": "Noop",
+    "is_stack": true
+  },
+  "randomness": {
+    "scheme": "pdl-search-v1/rand-0.8-StdRng",
+    "game_seed": 929115000,
+    "player_search_seeds": [
+      17685657137015883005,
+      2774265073897752914
+    ]
+  },
+  "decision_randomness": {
+    "actor": 1,
+    "decision_index": 8,
+    "search_seed": 12463439594353392692
+  },
+  "information_model": "closed-counts-unpriced-v6",
+  "unpriced_branches": [
+    {
+      "action": {
+        "actor": 0,
+        "action": "Noop",
+        "is_stack": false
+      },
+      "root_action": {
+        "actor": 1,
+        "action": "Noop",
+        "is_stack": true
+      },
+      "reason": "public reply board contains a hook outside the audited certificate registry",
+      "occurrences": 5,
+      "selected": true
+    },
+    {
+      "action": {
+        "actor": 1,
+        "action": {
+          "UseAbility": {
+            "in_play_idx": 0
+          }
+        },
+        "is_stack": true
+      },
+      "root_action": {
+        "actor": 1,
+        "action": {
+          "UseAbility": {
+            "in_play_idx": 0
+          }
+        },
+        "is_stack": true
+      },
+      "reason": "effect or choice depends on unrevealed opponent cards",
+      "occurrences": 1,
+      "selected": false
+    }
+  ],
+  "public_reply_evidence": {
+    "schema": "pdl-public-reply-evidence/v1",
+    "records": [],
+    "total_occurrences": 0,
+    "dropped_occurrences": 0
+  },
+  "private_reveals": [],
+  "public_reveals": [],
+  "luxury_coin_resolutions": []
+}

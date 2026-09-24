@@ -1,0 +1,1358 @@
+{
+  "game_id": "862aa571-fa1f-4ae1-8c4e-a7041a209ea4",
+  "ply": 37,
+  "actor": 1,
+  "state": {
+    "winner": null,
+    "points": [
+      0,
+      0
+    ],
+    "points_gained_this_turn": [
+      0,
+      0
+    ],
+    "points_gained_during_own_last_turn": [
+      0,
+      0
+    ],
+    "turn_count": 5,
+    "current_player": 1,
+    "end_turn_pending": false,
+    "move_generation_stack": [],
+    "energy_zone": [
+      {
+        "current": null,
+        "next": "Psychic"
+      },
+      {
+        "current": "Fire",
+        "next": "Fire"
+      }
+    ],
+    "hands": [
+      [],
+      [
+        {
+          "Trainer": {
+            "id": "B3 147",
+            "trainer_card_type": "Item",
+            "name": "Field Blower",
+            "effect": "Discard a Pokémon Tool card from a Pokémon (yours or your opponent's), or discard a Stadium card in play.",
+            "rarity": "◊◊",
+            "booster_pack": "Pulsing Aura (B3)"
+          }
+        },
+        {
+          "Trainer": {
+            "id": "A3 144",
+            "trainer_card_type": "Item",
+            "name": "Rare Candy",
+            "effect": "Choose 1 of your Basic Pokémon in play. If you have a Stage 2 card in your hand that evolves from that Pokémon, put that card onto the Basic Pokémon to evolve it, skipping the Stage 1. You can't use this card during your first turn or on a Basic Pokémon that was put into play this turn.",
+            "rarity": "◊◊",
+            "booster_pack": "Celestial Guardians (A3)"
+          }
+        }
+      ]
+    ],
+    "decks": [
+      {
+        "cards": [
+          {
+            "Trainer": {
+              "id": "B1 225",
+              "trainer_card_type": "Supporter",
+              "name": "Copycat",
+              "effect": "Shuffle your hand into your deck. Draw a card for each card in your opponent's hand.",
+              "rarity": "◊◊",
+              "booster_pack": "Mega Rising (B1)"
+            }
+          },
+          {
+            "Trainer": {
+              "id": "P-A 007",
+              "trainer_card_type": "Supporter",
+              "name": "Professor's Research",
+              "effect": "Draw 2 cards.",
+              "rarity": "◊",
+              "booster_pack": "Promo A (P-A)"
+            }
+          },
+          {
+            "Pokemon": {
+              "id": "B1 102",
+              "name": "Mega Altaria ex",
+              "stage": 1,
+              "evolves_from": "Swablu",
+              "hp": 190,
+              "energy_type": "Psychic",
+              "ability": null,
+              "attacks": [
+                {
+                  "energy_required": [
+                    "Psychic",
+                    "Psychic"
+                  ],
+                  "title": "Mega Harmony",
+                  "fixed_damage": 40,
+                  "effect": "This attack does 30 more damage for each of your Benched Pokémon."
+                }
+              ],
+              "weakness": "Metal",
+              "retreat_cost": [
+                "Colorless"
+              ],
+              "rarity": "◊◊◊◊",
+              "booster_pack": "Mega Rising (B1)"
+            }
+          },
+          {
+            "Trainer": {
+              "id": "P-A 005",
+              "trainer_card_type": "Item",
+              "name": "Poké Ball",
+              "effect": "Put a random Basic Pokémon from your deck into your hand.",
+              "rarity": "◊",
+              "booster_pack": "Promo A (P-A)"
+            }
+          },
+          {
+            "Trainer": {
+              "id": "B1 225",
+              "trainer_card_type": "Supporter",
+              "name": "Copycat",
+              "effect": "Shuffle your hand into your deck. Draw a card for each card in your opponent's hand.",
+              "rarity": "◊◊",
+              "booster_pack": "Mega Rising (B1)"
+            }
+          },
+          {
+            "Pokemon": {
+              "id": "B1 196",
+              "name": "Swablu",
+              "stage": 0,
+              "evolves_from": null,
+              "hp": 50,
+              "energy_type": "Colorless",
+              "ability": null,
+              "attacks": [
+                {
+                  "energy_required": [
+                    "Colorless"
+                  ],
+                  "title": "Sing",
+                  "fixed_damage": 0,
+                  "effect": "Your opponent's Active Pokémon is now Asleep."
+                }
+              ],
+              "weakness": "Lightning",
+              "retreat_cost": [
+                "Colorless"
+              ],
+              "rarity": "◊",
+              "booster_pack": "Mega Rising (B1)"
+            }
+          },
+          {
+            "Pokemon": {
+              "id": "A4a 059",
+              "name": "Igglybuff",
+              "stage": 0,
+              "evolves_from": null,
+              "hp": 30,
+              "energy_type": "Colorless",
+              "ability": null,
+              "attacks": [
+                {
+                  "energy_required": [],
+                  "title": "Sleepy Lullaby",
+                  "fixed_damage": 10,
+                  "effect": "Your opponent's Active Pokémon is now Asleep."
+                }
+              ],
+              "weakness": null,
+              "retreat_cost": [],
+              "rarity": "◊◊◊",
+              "booster_pack": "Secluded Springs (A4a)"
+            }
+          },
+          {
+            "Trainer": {
+              "id": "B3 147",
+              "trainer_card_type": "Item",
+              "name": "Field Blower",
+              "effect": "Discard a Pokémon Tool card from a Pokémon (yours or your opponent's), or discard a Stadium card in play.",
+              "rarity": "◊◊",
+              "booster_pack": "Pulsing Aura (B3)"
+            }
+          },
+          {
+            "Pokemon": {
+              "id": "B2b 040",
+              "name": "Darkrai",
+              "stage": 0,
+              "evolves_from": null,
+              "hp": 100,
+              "energy_type": "Darkness",
+              "ability": {
+                "title": "Bad Dreams",
+                "effect": "At the end of each turn, if your opponent's Active Pokémon is Asleep, do 20 damage to that Pokémon."
+              },
+              "attacks": [
+                {
+                  "energy_required": [
+                    "Colorless",
+                    "Colorless",
+                    "Colorless"
+                  ],
+                  "title": "Dark Slumber",
+                  "fixed_damage": 40,
+                  "effect": "Your opponent's Active Pokémon is now Asleep."
+                }
+              ],
+              "weakness": "Grass",
+              "retreat_cost": [
+                "Colorless",
+                "Colorless"
+              ],
+              "rarity": "◊◊◊",
+              "booster_pack": "Mega Shine (B2b)"
+            }
+          },
+          {
+            "Trainer": {
+              "id": "B3b 064",
+              "trainer_card_type": "Tool",
+              "name": "Small Balloon",
+              "effect": "The Retreat Cost of the Basic Pokémon this card is attached to is 1 less.",
+              "rarity": "◊◊",
+              "booster_pack": "Everyday Wonders (B3b)"
+            }
+          },
+          {
+            "Trainer": {
+              "id": "P-A 007",
+              "trainer_card_type": "Supporter",
+              "name": "Professor's Research",
+              "effect": "Draw 2 cards.",
+              "rarity": "◊",
+              "booster_pack": "Promo A (P-A)"
+            }
+          },
+          {
+            "Trainer": {
+              "id": "P-A 005",
+              "trainer_card_type": "Item",
+              "name": "Poké Ball",
+              "effect": "Put a random Basic Pokémon from your deck into your hand.",
+              "rarity": "◊",
+              "booster_pack": "Promo A (P-A)"
+            }
+          },
+          {
+            "Pokemon": {
+              "id": "B3a 020",
+              "name": "Espeon",
+              "stage": 1,
+              "evolves_from": "Eevee",
+              "hp": 90,
+              "energy_type": "Psychic",
+              "ability": null,
+              "attacks": [
+                {
+                  "energy_required": [
+                    "Psychic"
+                  ],
+                  "title": "Hypnoblast",
+                  "fixed_damage": 40,
+                  "effect": "Your opponent's Active Pokémon is now Asleep."
+                }
+              ],
+              "weakness": "Darkness",
+              "retreat_cost": [
+                "Colorless"
+              ],
+              "rarity": "◊◊",
+              "booster_pack": "Paradox Drive (B3a)"
+            }
+          }
+        ],
+        "energy_types": [
+          "Psychic"
+        ]
+      },
+      {
+        "cards": [
+          {
+            "Trainer": {
+              "id": "A3 144",
+              "trainer_card_type": "Item",
+              "name": "Rare Candy",
+              "effect": "Choose 1 of your Basic Pokémon in play. If you have a Stage 2 card in your hand that evolves from that Pokémon, put that card onto the Basic Pokémon to evolve it, skipping the Stage 1. You can't use this card during your first turn or on a Basic Pokémon that was put into play this turn.",
+              "rarity": "◊◊",
+              "booster_pack": "Celestial Guardians (A3)"
+            }
+          },
+          {
+            "Trainer": {
+              "id": "P-A 005",
+              "trainer_card_type": "Item",
+              "name": "Poké Ball",
+              "effect": "Put a random Basic Pokémon from your deck into your hand.",
+              "rarity": "◊",
+              "booster_pack": "Promo A (P-A)"
+            }
+          },
+          {
+            "Trainer": {
+              "id": "B1 217",
+              "trainer_card_type": "Item",
+              "name": "Flame Patch",
+              "effect": "Attach a [R] Energy from your discard pile to your Active [R] Pokémon.",
+              "rarity": "◊◊",
+              "booster_pack": "Mega Rising (B1)"
+            }
+          },
+          {
+            "Pokemon": {
+              "id": "B1 036",
+              "name": "Mega Blaziken ex",
+              "stage": 2,
+              "evolves_from": "Combusken",
+              "hp": 210,
+              "energy_type": "Fire",
+              "ability": null,
+              "attacks": [
+                {
+                  "energy_required": [
+                    "Fire",
+                    "Fire"
+                  ],
+                  "title": "Mega Burning",
+                  "fixed_damage": 120,
+                  "effect": "Discard Fire[R] Energy from this Pokémon. Your opponent's Active Pokémon is now Burned."
+                }
+              ],
+              "weakness": "Water",
+              "retreat_cost": [
+                "Colorless"
+              ],
+              "rarity": "◊◊◊◊",
+              "booster_pack": "Mega Rising (B1)"
+            }
+          },
+          {
+            "Trainer": {
+              "id": "A2 150",
+              "trainer_card_type": "Supporter",
+              "name": "Cyrus",
+              "effect": "Switch in 1 of your opponent's Benched Pokémon that has damage on it to the Active Spot.",
+              "rarity": "◊◊",
+              "booster_pack": "Space-Time Smackdown (A2)"
+            }
+          },
+          {
+            "Trainer": {
+              "id": "B2b 069",
+              "trainer_card_type": "Stadium",
+              "name": "Hiking Trail",
+              "effect": "At the end of each player's turn, that player draws cards until they have 3 cards in their hand.",
+              "rarity": "◊◊",
+              "booster_pack": "Mega Shine (B2b)"
+            }
+          },
+          {
+            "Pokemon": {
+              "id": "B1 036",
+              "name": "Mega Blaziken ex",
+              "stage": 2,
+              "evolves_from": "Combusken",
+              "hp": 210,
+              "energy_type": "Fire",
+              "ability": null,
+              "attacks": [
+                {
+                  "energy_required": [
+                    "Fire",
+                    "Fire"
+                  ],
+                  "title": "Mega Burning",
+                  "fixed_damage": 120,
+                  "effect": "Discard Fire[R] Energy from this Pokémon. Your opponent's Active Pokémon is now Burned."
+                }
+              ],
+              "weakness": "Water",
+              "retreat_cost": [
+                "Colorless"
+              ],
+              "rarity": "◊◊◊◊",
+              "booster_pack": "Mega Rising (B1)"
+            }
+          },
+          {
+            "Trainer": {
+              "id": "B1 225",
+              "trainer_card_type": "Supporter",
+              "name": "Copycat",
+              "effect": "Shuffle your hand into your deck. Draw a card for each card in your opponent's hand.",
+              "rarity": "◊◊",
+              "booster_pack": "Mega Rising (B1)"
+            }
+          },
+          {
+            "Trainer": {
+              "id": "P-A 007",
+              "trainer_card_type": "Supporter",
+              "name": "Professor's Research",
+              "effect": "Draw 2 cards.",
+              "rarity": "◊",
+              "booster_pack": "Promo A (P-A)"
+            }
+          }
+        ],
+        "energy_types": [
+          "Fire"
+        ]
+      }
+    ],
+    "discard_piles": [
+      [
+        {
+          "Trainer": {
+            "id": "A1 225",
+            "trainer_card_type": "Supporter",
+            "name": "Sabrina",
+            "effect": "Switch out your opponent's Active Pokémon to the Bench. (Your opponent chooses the new Active Pokémon.)",
+            "rarity": "◊◊",
+            "booster_pack": "Genetic Apex (A1)"
+          }
+        }
+      ],
+      [
+        {
+          "Trainer": {
+            "id": "B1 225",
+            "trainer_card_type": "Supporter",
+            "name": "Copycat",
+            "effect": "Shuffle your hand into your deck. Draw a card for each card in your opponent's hand.",
+            "rarity": "◊◊",
+            "booster_pack": "Mega Rising (B1)"
+          }
+        },
+        {
+          "Trainer": {
+            "id": "P-A 005",
+            "trainer_card_type": "Item",
+            "name": "Poké Ball",
+            "effect": "Put a random Basic Pokémon from your deck into your hand.",
+            "rarity": "◊",
+            "booster_pack": "Promo A (P-A)"
+          }
+        },
+        {
+          "Trainer": {
+            "id": "B1 217",
+            "trainer_card_type": "Item",
+            "name": "Flame Patch",
+            "effect": "Attach a [R] Energy from your discard pile to your Active [R] Pokémon.",
+            "rarity": "◊◊",
+            "booster_pack": "Mega Rising (B1)"
+          }
+        },
+        {
+          "Trainer": {
+            "id": "P-A 007",
+            "trainer_card_type": "Supporter",
+            "name": "Professor's Research",
+            "effect": "Draw 2 cards.",
+            "rarity": "◊",
+            "booster_pack": "Promo A (P-A)"
+          }
+        }
+      ]
+    ],
+    "discard_energies": [
+      [
+        "Psychic"
+      ],
+      []
+    ],
+    "in_play_pokemon": [
+      [
+        {
+          "card": {
+            "Pokemon": {
+              "id": "B3a 020",
+              "name": "Espeon",
+              "stage": 1,
+              "evolves_from": "Eevee",
+              "hp": 90,
+              "energy_type": "Psychic",
+              "ability": null,
+              "attacks": [
+                {
+                  "energy_required": [
+                    "Psychic"
+                  ],
+                  "title": "Hypnoblast",
+                  "fixed_damage": 40,
+                  "effect": "Your opponent's Active Pokémon is now Asleep."
+                }
+              ],
+              "weakness": "Darkness",
+              "retreat_cost": [
+                "Colorless"
+              ],
+              "rarity": "◊◊",
+              "booster_pack": "Paradox Drive (B3a)"
+            }
+          },
+          "damage_counters": 20,
+          "base_hp": 90,
+          "stadium_hp_bonus": 0,
+          "ability_hp_bonus": 0,
+          "attached_energy": [
+            "Psychic"
+          ],
+          "attached_tools": [],
+          "played_this_turn": false,
+          "moved_to_active_this_turn": false,
+          "damaged_by_attack_while_active_this_turn": false,
+          "damaged_by_attack_while_active_last_turn": false,
+          "ability_used": false,
+          "poisoned": false,
+          "poison_checkup_damage": null,
+          "paralyzed": false,
+          "asleep": false,
+          "burned": false,
+          "confused": false,
+          "cards_behind": [
+            {
+              "Pokemon": {
+                "id": "B1 184",
+                "name": "Eevee",
+                "stage": 0,
+                "evolves_from": null,
+                "hp": 50,
+                "energy_type": "Colorless",
+                "ability": {
+                  "title": "Boosted Evolution",
+                  "effect": "As long as this Pokémon is in the Active Spot, it can evolve during your first turn or the turn you play it."
+                },
+                "attacks": [
+                  {
+                    "energy_required": [
+                      "Colorless"
+                    ],
+                    "title": "Stampede",
+                    "fixed_damage": 10,
+                    "effect": null
+                  }
+                ],
+                "weakness": "Fighting",
+                "retreat_cost": [
+                  "Colorless"
+                ],
+                "rarity": "◊",
+                "booster_pack": "Mega Rising (B1)"
+              }
+            }
+          ],
+          "prevent_first_attack_damage_used": false,
+          "has_attacked_since_play": false,
+          "effects": []
+        },
+        {
+          "card": {
+            "Pokemon": {
+              "id": "B2b 040",
+              "name": "Darkrai",
+              "stage": 0,
+              "evolves_from": null,
+              "hp": 100,
+              "energy_type": "Darkness",
+              "ability": {
+                "title": "Bad Dreams",
+                "effect": "At the end of each turn, if your opponent's Active Pokémon is Asleep, do 20 damage to that Pokémon."
+              },
+              "attacks": [
+                {
+                  "energy_required": [
+                    "Colorless",
+                    "Colorless",
+                    "Colorless"
+                  ],
+                  "title": "Dark Slumber",
+                  "fixed_damage": 40,
+                  "effect": "Your opponent's Active Pokémon is now Asleep."
+                }
+              ],
+              "weakness": "Grass",
+              "retreat_cost": [
+                "Colorless",
+                "Colorless"
+              ],
+              "rarity": "◊◊◊",
+              "booster_pack": "Mega Shine (B2b)"
+            }
+          },
+          "damage_counters": 30,
+          "base_hp": 100,
+          "stadium_hp_bonus": 0,
+          "ability_hp_bonus": 0,
+          "attached_energy": [],
+          "attached_tools": [],
+          "played_this_turn": false,
+          "moved_to_active_this_turn": false,
+          "damaged_by_attack_while_active_this_turn": false,
+          "damaged_by_attack_while_active_last_turn": false,
+          "ability_used": false,
+          "poisoned": false,
+          "poison_checkup_damage": null,
+          "paralyzed": false,
+          "asleep": false,
+          "burned": false,
+          "confused": false,
+          "cards_behind": [],
+          "prevent_first_attack_damage_used": false,
+          "has_attacked_since_play": false,
+          "effects": []
+        },
+        {
+          "card": {
+            "Pokemon": {
+              "id": "B1 184",
+              "name": "Eevee",
+              "stage": 0,
+              "evolves_from": null,
+              "hp": 50,
+              "energy_type": "Colorless",
+              "ability": {
+                "title": "Boosted Evolution",
+                "effect": "As long as this Pokémon is in the Active Spot, it can evolve during your first turn or the turn you play it."
+              },
+              "attacks": [
+                {
+                  "energy_required": [
+                    "Colorless"
+                  ],
+                  "title": "Stampede",
+                  "fixed_damage": 10,
+                  "effect": null
+                }
+              ],
+              "weakness": "Fighting",
+              "retreat_cost": [
+                "Colorless"
+              ],
+              "rarity": "◊",
+              "booster_pack": "Mega Rising (B1)"
+            }
+          },
+          "damage_counters": 0,
+          "base_hp": 50,
+          "stadium_hp_bonus": 0,
+          "ability_hp_bonus": 0,
+          "attached_energy": [],
+          "attached_tools": [],
+          "played_this_turn": false,
+          "moved_to_active_this_turn": false,
+          "damaged_by_attack_while_active_this_turn": false,
+          "damaged_by_attack_while_active_last_turn": false,
+          "ability_used": false,
+          "poisoned": false,
+          "poison_checkup_damage": null,
+          "paralyzed": false,
+          "asleep": false,
+          "burned": false,
+          "confused": false,
+          "cards_behind": [],
+          "prevent_first_attack_damage_used": false,
+          "has_attacked_since_play": false,
+          "effects": []
+        },
+        {
+          "card": {
+            "Pokemon": {
+              "id": "B1 196",
+              "name": "Swablu",
+              "stage": 0,
+              "evolves_from": null,
+              "hp": 50,
+              "energy_type": "Colorless",
+              "ability": null,
+              "attacks": [
+                {
+                  "energy_required": [
+                    "Colorless"
+                  ],
+                  "title": "Sing",
+                  "fixed_damage": 0,
+                  "effect": "Your opponent's Active Pokémon is now Asleep."
+                }
+              ],
+              "weakness": "Lightning",
+              "retreat_cost": [
+                "Colorless"
+              ],
+              "rarity": "◊",
+              "booster_pack": "Mega Rising (B1)"
+            }
+          },
+          "damage_counters": 0,
+          "base_hp": 50,
+          "stadium_hp_bonus": 0,
+          "ability_hp_bonus": 0,
+          "attached_energy": [],
+          "attached_tools": [],
+          "played_this_turn": false,
+          "moved_to_active_this_turn": false,
+          "damaged_by_attack_while_active_this_turn": false,
+          "damaged_by_attack_while_active_last_turn": false,
+          "ability_used": false,
+          "poisoned": false,
+          "poison_checkup_damage": null,
+          "paralyzed": false,
+          "asleep": false,
+          "burned": false,
+          "confused": false,
+          "cards_behind": [],
+          "prevent_first_attack_damage_used": false,
+          "has_attacked_since_play": false,
+          "effects": []
+        }
+      ],
+      [
+        {
+          "card": {
+            "Pokemon": {
+              "id": "B1 044",
+              "name": "Heatmor",
+              "stage": 0,
+              "evolves_from": null,
+              "hp": 80,
+              "energy_type": "Fire",
+              "ability": null,
+              "attacks": [
+                {
+                  "energy_required": [
+                    "Fire"
+                  ],
+                  "title": "Tongue Whip",
+                  "fixed_damage": 0,
+                  "effect": "This attack does 30 damage to 1 of your opponent's Benched Pokémon."
+                }
+              ],
+              "weakness": "Water",
+              "retreat_cost": [
+                "Colorless"
+              ],
+              "rarity": "◊",
+              "booster_pack": "Mega Rising (B1)"
+            }
+          },
+          "damage_counters": 70,
+          "base_hp": 80,
+          "stadium_hp_bonus": 0,
+          "ability_hp_bonus": 0,
+          "attached_energy": [
+            "Fire"
+          ],
+          "attached_tools": [
+            {
+              "Trainer": {
+                "id": "A2 148",
+                "trainer_card_type": "Tool",
+                "name": "Rocky Helmet",
+                "effect": "If the Pokémon this card is attached to is in the Active Spot and is damaged by an attack from your opponent's Pokémon, do 20 damage to the Attacking Pokémon.",
+                "rarity": "◊◊",
+                "booster_pack": "Space-Time Smackdown (A2)"
+              }
+            }
+          ],
+          "played_this_turn": false,
+          "moved_to_active_this_turn": false,
+          "damaged_by_attack_while_active_this_turn": false,
+          "damaged_by_attack_while_active_last_turn": true,
+          "ability_used": false,
+          "poisoned": false,
+          "poison_checkup_damage": null,
+          "paralyzed": false,
+          "asleep": true,
+          "burned": false,
+          "confused": false,
+          "cards_behind": [],
+          "prevent_first_attack_damage_used": false,
+          "has_attacked_since_play": false,
+          "effects": []
+        },
+        {
+          "card": {
+            "Pokemon": {
+              "id": "B3 024",
+              "name": "Castform Sunny Form",
+              "stage": 0,
+              "evolves_from": null,
+              "hp": 70,
+              "energy_type": "Fire",
+              "ability": null,
+              "attacks": [
+                {
+                  "energy_required": [
+                    "Fire"
+                  ],
+                  "title": "Sunny Scorching",
+                  "fixed_damage": 30,
+                  "effect": "If a Stadium is in play, your opponent's Active Pokémon is now Burned."
+                }
+              ],
+              "weakness": "Water",
+              "retreat_cost": [
+                "Colorless"
+              ],
+              "rarity": "◊",
+              "booster_pack": "Pulsing Aura (B3)"
+            }
+          },
+          "damage_counters": 0,
+          "base_hp": 70,
+          "stadium_hp_bonus": 0,
+          "ability_hp_bonus": 0,
+          "attached_energy": [],
+          "attached_tools": [],
+          "played_this_turn": false,
+          "moved_to_active_this_turn": false,
+          "damaged_by_attack_while_active_this_turn": false,
+          "damaged_by_attack_while_active_last_turn": false,
+          "ability_used": false,
+          "poisoned": false,
+          "poison_checkup_damage": null,
+          "paralyzed": false,
+          "asleep": false,
+          "burned": false,
+          "confused": false,
+          "cards_behind": [],
+          "prevent_first_attack_damage_used": false,
+          "has_attacked_since_play": false,
+          "effects": []
+        },
+        {
+          "card": {
+            "Pokemon": {
+              "id": "B1 033",
+              "name": "Torchic",
+              "stage": 0,
+              "evolves_from": null,
+              "hp": 60,
+              "energy_type": "Fire",
+              "ability": null,
+              "attacks": [
+                {
+                  "energy_required": [
+                    "Fire"
+                  ],
+                  "title": "Peck",
+                  "fixed_damage": 20,
+                  "effect": null
+                }
+              ],
+              "weakness": "Water",
+              "retreat_cost": [
+                "Colorless"
+              ],
+              "rarity": "◊",
+              "booster_pack": "Mega Rising (B1)"
+            }
+          },
+          "damage_counters": 0,
+          "base_hp": 60,
+          "stadium_hp_bonus": 0,
+          "ability_hp_bonus": 0,
+          "attached_energy": [],
+          "attached_tools": [],
+          "played_this_turn": false,
+          "moved_to_active_this_turn": false,
+          "damaged_by_attack_while_active_this_turn": false,
+          "damaged_by_attack_while_active_last_turn": false,
+          "ability_used": false,
+          "poisoned": false,
+          "poison_checkup_damage": null,
+          "paralyzed": false,
+          "asleep": false,
+          "burned": false,
+          "confused": false,
+          "cards_behind": [],
+          "prevent_first_attack_damage_used": false,
+          "has_attacked_since_play": false,
+          "effects": []
+        },
+        {
+          "card": {
+            "Pokemon": {
+              "id": "B1 033",
+              "name": "Torchic",
+              "stage": 0,
+              "evolves_from": null,
+              "hp": 60,
+              "energy_type": "Fire",
+              "ability": null,
+              "attacks": [
+                {
+                  "energy_required": [
+                    "Fire"
+                  ],
+                  "title": "Peck",
+                  "fixed_damage": 20,
+                  "effect": null
+                }
+              ],
+              "weakness": "Water",
+              "retreat_cost": [
+                "Colorless"
+              ],
+              "rarity": "◊",
+              "booster_pack": "Mega Rising (B1)"
+            }
+          },
+          "damage_counters": 0,
+          "base_hp": 60,
+          "stadium_hp_bonus": 0,
+          "ability_hp_bonus": 0,
+          "attached_energy": [],
+          "attached_tools": [],
+          "played_this_turn": false,
+          "moved_to_active_this_turn": false,
+          "damaged_by_attack_while_active_this_turn": false,
+          "damaged_by_attack_while_active_last_turn": false,
+          "ability_used": false,
+          "poisoned": false,
+          "poison_checkup_damage": null,
+          "paralyzed": false,
+          "asleep": false,
+          "burned": false,
+          "confused": false,
+          "cards_behind": [],
+          "prevent_first_attack_damage_used": false,
+          "has_attacked_since_play": false,
+          "effects": []
+        }
+      ]
+    ],
+    "active_stadium": {
+      "Trainer": {
+        "id": "B2 153",
+        "trainer_card_type": "Stadium",
+        "name": "Training Area",
+        "effect": "Attacks used by Stage 1 Pokémon in play (both yours and your opponent's) do +10 damage to the opponent's Active Pokémon.",
+        "rarity": "◊◊",
+        "booster_pack": "Fantastical Parade (B2)"
+      }
+    },
+    "active_stadium_owner": 0,
+    "has_played_support": false,
+    "has_retreated": false,
+    "has_used_stadium": [
+      false,
+      false
+    ],
+    "knocked_out_by_opponent_attack_this_turn": false,
+    "knocked_out_by_opponent_attack_last_turn": false,
+    "knocked_out_types_by_opponent_attack_this_turn": [],
+    "knocked_out_types_by_opponent_attack_last_turn": [],
+    "attack_name_used_this_turn": [
+      null,
+      null
+    ],
+    "attack_name_used_last_turn": [
+      "Hypnoblast",
+      "Tongue Whip"
+    ],
+    "attack_name_used_count": [
+      {
+        "Hypnoblast": 1
+      },
+      {
+        "Tongue Whip": 1
+      }
+    ],
+    "own_knockouts_this_game": [
+      0,
+      0
+    ],
+    "turn_effects": {}
+  },
+  "playable_actions": [
+    {
+      "actor": 1,
+      "action": "EndTurn",
+      "is_stack": false
+    },
+    {
+      "actor": 1,
+      "action": {
+        "Attach": {
+          "attachments": [
+            [
+              1,
+              "Fire",
+              0
+            ]
+          ],
+          "is_turn_energy": true
+        }
+      },
+      "is_stack": false
+    },
+    {
+      "actor": 1,
+      "action": {
+        "Attach": {
+          "attachments": [
+            [
+              1,
+              "Fire",
+              1
+            ]
+          ],
+          "is_turn_energy": true
+        }
+      },
+      "is_stack": false
+    },
+    {
+      "actor": 1,
+      "action": {
+        "Attach": {
+          "attachments": [
+            [
+              1,
+              "Fire",
+              2
+            ]
+          ],
+          "is_turn_energy": true
+        }
+      },
+      "is_stack": false
+    },
+    {
+      "actor": 1,
+      "action": {
+        "Attach": {
+          "attachments": [
+            [
+              1,
+              "Fire",
+              3
+            ]
+          ],
+          "is_turn_energy": true
+        }
+      },
+      "is_stack": false
+    },
+    {
+      "actor": 1,
+      "action": {
+        "Attack": {
+          "energy_required": [
+            "Fire"
+          ],
+          "title": "Tongue Whip",
+          "fixed_damage": 0,
+          "effect": "This attack does 30 damage to 1 of your opponent's Benched Pokémon."
+        }
+      },
+      "is_stack": false
+    },
+    {
+      "actor": 1,
+      "action": {
+        "Play": {
+          "trainer_card": {
+            "id": "B3 147",
+            "trainer_card_type": "Item",
+            "name": "Field Blower",
+            "effect": "Discard a Pokémon Tool card from a Pokémon (yours or your opponent's), or discard a Stadium card in play.",
+            "rarity": "◊◊",
+            "booster_pack": "Pulsing Aura (B3)"
+          }
+        }
+      },
+      "is_stack": false
+    },
+    {
+      "actor": 1,
+      "action": {
+        "Retreat": 1
+      },
+      "is_stack": false
+    },
+    {
+      "actor": 1,
+      "action": {
+        "Retreat": 2
+      },
+      "is_stack": false
+    },
+    {
+      "actor": 1,
+      "action": {
+        "Retreat": 3
+      },
+      "is_stack": false
+    }
+  ],
+  "chosen_action": {
+    "actor": 1,
+    "action": {
+      "Retreat": 1
+    },
+    "is_stack": false
+  },
+  "randomness": {
+    "scheme": "pdl-search-v1/rand-0.8-StdRng",
+    "game_seed": 929111000,
+    "player_search_seeds": [
+      5505795377614960782,
+      6462431895868645257
+    ]
+  },
+  "decision_randomness": {
+    "actor": 1,
+    "decision_index": 15,
+    "search_seed": 4848894736784600841
+  },
+  "information_model": "closed-counts-unpriced-v6",
+  "unpriced_branches": [
+    {
+      "action": {
+        "actor": 0,
+        "action": "Noop",
+        "is_stack": false
+      },
+      "root_action": {
+        "actor": 1,
+        "action": "EndTurn",
+        "is_stack": false
+      },
+      "reason": "public reply board contains a hook outside the audited certificate registry",
+      "occurrences": 1,
+      "selected": false
+    },
+    {
+      "action": {
+        "actor": 0,
+        "action": "Noop",
+        "is_stack": false
+      },
+      "root_action": {
+        "actor": 1,
+        "action": {
+          "Attach": {
+            "attachments": [
+              [
+                1,
+                "Fire",
+                0
+              ]
+            ],
+            "is_turn_energy": true
+          }
+        },
+        "is_stack": false
+      },
+      "reason": "public reply board contains a hook outside the audited certificate registry",
+      "occurrences": 7,
+      "selected": false
+    },
+    {
+      "action": {
+        "actor": 0,
+        "action": "Noop",
+        "is_stack": false
+      },
+      "root_action": {
+        "actor": 1,
+        "action": {
+          "Attach": {
+            "attachments": [
+              [
+                1,
+                "Fire",
+                1
+              ]
+            ],
+            "is_turn_energy": true
+          }
+        },
+        "is_stack": false
+      },
+      "reason": "public reply board contains a hook outside the audited certificate registry",
+      "occurrences": 9,
+      "selected": false
+    },
+    {
+      "action": {
+        "actor": 0,
+        "action": "Noop",
+        "is_stack": false
+      },
+      "root_action": {
+        "actor": 1,
+        "action": {
+          "Attach": {
+            "attachments": [
+              [
+                1,
+                "Fire",
+                2
+              ]
+            ],
+            "is_turn_energy": true
+          }
+        },
+        "is_stack": false
+      },
+      "reason": "public reply board contains a hook outside the audited certificate registry",
+      "occurrences": 8,
+      "selected": false
+    },
+    {
+      "action": {
+        "actor": 0,
+        "action": "Noop",
+        "is_stack": false
+      },
+      "root_action": {
+        "actor": 1,
+        "action": {
+          "Attach": {
+            "attachments": [
+              [
+                1,
+                "Fire",
+                3
+              ]
+            ],
+            "is_turn_energy": true
+          }
+        },
+        "is_stack": false
+      },
+      "reason": "public reply board contains a hook outside the audited certificate registry",
+      "occurrences": 8,
+      "selected": false
+    },
+    {
+      "action": {
+        "actor": 0,
+        "action": "Noop",
+        "is_stack": false
+      },
+      "root_action": {
+        "actor": 1,
+        "action": {
+          "Attack": {
+            "energy_required": [
+              "Fire"
+            ],
+            "title": "Tongue Whip",
+            "fixed_damage": 0,
+            "effect": "This attack does 30 damage to 1 of your opponent's Benched Pokémon."
+          }
+        },
+        "is_stack": false
+      },
+      "reason": "public reply board contains a hook outside the audited certificate registry",
+      "occurrences": 3,
+      "selected": false
+    },
+    {
+      "action": {
+        "actor": 0,
+        "action": "Noop",
+        "is_stack": false
+      },
+      "root_action": {
+        "actor": 1,
+        "action": {
+          "Play": {
+            "trainer_card": {
+              "id": "B3 147",
+              "trainer_card_type": "Item",
+              "name": "Field Blower",
+              "effect": "Discard a Pokémon Tool card from a Pokémon (yours or your opponent's), or discard a Stadium card in play.",
+              "rarity": "◊◊",
+              "booster_pack": "Pulsing Aura (B3)"
+            }
+          }
+        },
+        "is_stack": false
+      },
+      "reason": "public reply board contains a hook outside the audited certificate registry",
+      "occurrences": 2,
+      "selected": false
+    },
+    {
+      "action": {
+        "actor": 0,
+        "action": "Noop",
+        "is_stack": false
+      },
+      "root_action": {
+        "actor": 1,
+        "action": {
+          "Retreat": 1
+        },
+        "is_stack": false
+      },
+      "reason": "public reply board contains a hook outside the audited certificate registry",
+      "occurrences": 7,
+      "selected": true
+    },
+    {
+      "action": {
+        "actor": 0,
+        "action": "Noop",
+        "is_stack": false
+      },
+      "root_action": {
+        "actor": 1,
+        "action": {
+          "Retreat": 2
+        },
+        "is_stack": false
+      },
+      "reason": "public reply board contains a hook outside the audited certificate registry",
+      "occurrences": 6,
+      "selected": false
+    },
+    {
+      "action": {
+        "actor": 0,
+        "action": "Noop",
+        "is_stack": false
+      },
+      "root_action": {
+        "actor": 1,
+        "action": {
+          "Retreat": 3
+        },
+        "is_stack": false
+      },
+      "reason": "public reply board contains a hook outside the audited certificate registry",
+      "occurrences": 6,
+      "selected": false
+    }
+  ],
+  "public_reply_evidence": {
+    "schema": "pdl-public-reply-evidence/v1",
+    "records": [],
+    "total_occurrences": 0,
+    "dropped_occurrences": 0
+  },
+  "private_reveals": [],
+  "public_reveals": [],
+  "luxury_coin_resolutions": []
+}

@@ -1,0 +1,2717 @@
+use std::cmp::min;
+
+use log::debug;
+use rand::{
+    distributions::WeightedIndex, prelude::Distribution, rngs::StdRng, seq::SliceRandom, Rng,
+};
+
+use crate::{
+    actions::{
+        apply_evolve, handle_knockouts, has_any_in_play_ability,
+        shared_mutations::{
+            card_search_outcomes_with_filter_multiple, discard_search_outcomes_with_filter,
+            gladion_search_outcomes, item_search_outcomes, pokemon_search_outcomes,
+            tool_search_outcomes,
+        },
+        team_rockets_researcher::{
+            copied_researcher_expansion, is_researcher_card, ResearcherPlan, UnpricedForecast,
+            MAX_PRICED_RESEARCHER_SUCCESSORS,
+        },
+    },
+    card_ids::CardId,
+    card_logic::{
+        acerola_targets, can_rare_candy_evolve, diantha_targets, ilima_targets, mallow_targets,
+        psychic_energy_sources, whitney_targets,
+    },
+    combinatorics::generate_combinations,
+    effects::{DamageReductionScope, TurnEffect},
+    hooks::{can_evolve_into, get_stage, is_ancient_pokemon, is_future_pokemon, is_ultra_beast},
+    models::{Card, EnergyType, StatusCondition, TrainerCard, TrainerType},
+    move_generation::trainer_move_generation_implementation,
+    tools::{enumerate_tool_choices, is_tool_card, is_tool_effect_implemented},
+    State,
+};
+
+use super::{
+    apply_action_helpers::{Mutation, Mutations},
+    outcomes::{CoinPaths, CoinSeq, Outcomes},
+    trainer_coin_plan, Action, SimpleAction,
+};
+
+pub fn try_forecast_trainer_action(
+    acting_player: usize,
+    state: &State,
+    trainer_card: &TrainerCard,
+) -> Result<Outcomes, UnpricedForecast> {
+    if is_misty_card(trainer_card) {
+        let misty = trainer_card.clone();
+        return Ok(Outcomes::single_fn(move |_, state, action| {
+            trainer_coin_plan::stage_misty_target(state, action, misty.clone());
+        }));
+    }
+    if is_researcher_card(trainer_card) {
+        return ResearcherPlan::from_state(state, acting_player).forecast_exact(acting_player);
+    }
+    if is_penny_card(trainer_card) {
+        return try_penny_outcomes(acting_player, state, trainer_card);
+    }
+    Ok(forecast_trainer_action_unchecked(
+        acting_player,
+        state,
+        trainer_card,
+    ))
+}
+
+/// Compatibility entry point for callers that require an exact distribution. Oversized
+/// Researcher trees are refused explicitly; real play must use `actions::apply_action`.
+pub fn forecast_trainer_action(
+    acting_player: usize,
+    state: &State,
+    trainer_card: &TrainerCard,
+) -> Outcomes {
+    try_forecast_trainer_action(acting_player, state, trainer_card)
+        .unwrap_or_else(|error| panic!("exact Trainer forecast refused: {}", error.reason))
+}
+
+// This is a reducer of all actions relating to trainer cards.
+pub(crate) fn forecast_trainer_action_unchecked(
+    acting_player: usize,
+    state: &State,
+    trainer_card: &TrainerCard,
+) -> Outcomes {
+    if trainer_card.trainer_card_type == TrainerType::Tool {
+        if is_tool_effect_implemented(trainer_card) {
+            return Outcomes::single_fn(attach_tool);
+        }
+        panic!("Unsupported Trainer Tool");
+    }
+
+    // Stadiums: placement is handled in wrap_with_common_logic, no additional effect needed
+    if trainer_card.trainer_card_type == TrainerType::Stadium {
+        return Outcomes::single_fn(|_, _, _| {});
+    }
+
+    let trainer_id =
+        CardId::from_card_id(trainer_card.id.as_str()).expect("CardId should be known");
+    match trainer_id {
+        CardId::PA001Potion => Outcomes::single_fn(potion_effect),
+        CardId::PA002XSpeed => Outcomes::single_fn(x_speed_effect),
+        CardId::PA005PokeBall | CardId::A2b111PokeBall => {
+            pokemon_search_outcomes(acting_player, state, true)
+        }
+        CardId::PA006RedCard => Outcomes::single_fn(red_card_effect),
+        CardId::PA007ProfessorsResearch | CardId::A4b373ProfessorsResearch => {
+            Outcomes::single_fn(professor_oak_effect)
+        }
+        CardId::A1219Erika | CardId::A1266Erika | CardId::A4b328Erika | CardId::A4b329Erika => {
+            Outcomes::single_fn(erika_effect)
+        }
+        CardId::A1220Misty | CardId::A1267Misty => {
+            panic!("Misty requires the fallible exact forecast or physical sampler")
+        }
+        CardId::A1221Blaine | CardId::A1268Blaine => Outcomes::single_fn(blaine_effect),
+        CardId::A2152Cynthia | CardId::A2192Cynthia => Outcomes::single_fn(cynthia_effect),
+        CardId::A1224Brock | CardId::A1271Brock => Outcomes::single_fn(brock_effect),
+        CardId::A2a072Irida | CardId::A2a087Irida | CardId::A4b330Irida | CardId::A4b331Irida => {
+            Outcomes::single_fn(irida_effect)
+        }
+        CardId::A2b070PokemonCenterLady | CardId::A2b089PokemonCenterLady => {
+            Outcomes::single_fn(pokemon_center_lady_effect)
+        }
+        CardId::A3155Lillie
+        | CardId::A3197Lillie
+        | CardId::A3209Lillie
+        | CardId::A4b348Lillie
+        | CardId::A4b349Lillie
+        | CardId::A4b374Lillie => Outcomes::single_fn(lillie_effect),
+        CardId::A3151Guzma | CardId::A3193Guzma | CardId::A3208Guzma => {
+            Outcomes::single_fn(guzma_effect)
+        }
+        CardId::A1222Koga | CardId::A1269Koga => Outcomes::single_fn(koga_effect),
+        CardId::A1223Giovanni
+        | CardId::A1270Giovanni
+        | CardId::A4b334Giovanni
+        | CardId::A4b335Giovanni => Outcomes::single_fn(giovanni_effect),
+        CardId::A2b071Red | CardId::A2b090Red | CardId::A4b352Red | CardId::A4b353Red => {
+            Outcomes::single_fn(red_effect)
+        }
+        CardId::A1225Sabrina
+        | CardId::A1272Sabrina
+        | CardId::A4b338Sabrina
+        | CardId::A4b339Sabrina => Outcomes::single_fn(sabrina_effect),
+        CardId::A1a065MythicalSlab => Outcomes::single_fn(mythical_slab_effect),
+        CardId::A1a068Leaf | CardId::A1a082Leaf | CardId::A4b346Leaf | CardId::A4b347Leaf => {
+            Outcomes::single_fn(leaf_effect)
+        }
+        CardId::A2150Cyrus | CardId::A2190Cyrus | CardId::A4b326Cyrus | CardId::A4b327Cyrus => {
+            Outcomes::single_fn(cyrus_effect)
+        }
+        CardId::A2155Mars | CardId::A2195Mars | CardId::A4b344Mars | CardId::A4b345Mars => {
+            Outcomes::single_fn(mars_effect)
+        }
+        CardId::A3144RareCandy
+        | CardId::A4b314RareCandy
+        | CardId::A4b315RareCandy
+        | CardId::A4b379RareCandy => Outcomes::single_fn(rare_candy_effect),
+        CardId::A3a064Repel => Outcomes::single_fn(repel_effect),
+        CardId::A2146PokemonCommunication
+        | CardId::A4b316PokemonCommunication
+        | CardId::A4b317PokemonCommunication => Outcomes::single_fn(pokemon_communication_effect),
+        CardId::A2154Dawn | CardId::A2194Dawn | CardId::A4b342Dawn | CardId::A4b343Dawn => {
+            Outcomes::single_fn(dawn_effect)
+        }
+        CardId::A4151ElementalSwitch
+        | CardId::A4b310ElementalSwitch
+        | CardId::A4b311ElementalSwitch => Outcomes::single_fn(elemental_switch_effect),
+        CardId::A3a067Gladion | CardId::A3a081Gladion => {
+            gladion_search_outcomes(acting_player, state)
+        }
+        CardId::A3a069Lusamine
+        | CardId::A3a083Lusamine
+        | CardId::A4b350Lusamine
+        | CardId::A4b351Lusamine
+        | CardId::A4b375Lusamine => Outcomes::single_fn(lusamine_effect),
+        CardId::A3149Ilima | CardId::A3191Ilima => Outcomes::single_fn(ilima_effect),
+        CardId::A3153Sophocles | CardId::A3195Sophocles => Outcomes::single_fn(sophocles_effect),
+        CardId::A1a067Blue | CardId::A1a081Blue => Outcomes::single_fn(blue_effect),
+        CardId::A4160Jasmine | CardId::A4200Jasmine => Outcomes::single_fn(jasmine_effect),
+        CardId::B3151Cheren | CardId::B3192Cheren => Outcomes::single_fn(cheren_effect),
+        CardId::A3a063BeastWall => Outcomes::single_fn(beast_wall_effect),
+        CardId::B1222Hala | CardId::B1267Hala => Outcomes::single_fn(hala_effect),
+        CardId::A4a069Whitney | CardId::A4a083Whitney => Outcomes::single_fn(whitney_effect),
+        CardId::A3154Mallow | CardId::A3196Mallow => Outcomes::single_fn(mallow_effect),
+        CardId::A3148Acerola | CardId::A3190Acerola => Outcomes::single_fn(acerola_effect),
+        CardId::A1226LtSurge | CardId::A1273LtSurge => Outcomes::single_fn(lt_surge_effect),
+        CardId::B2151Juggler | CardId::B2192Juggler => Outcomes::single_fn(juggler_effect),
+        CardId::A3152Lana | CardId::A3194Lana => Outcomes::single_fn(lana_effect),
+        CardId::A2151TeamGalacticGrunt | CardId::A2191TeamGalacticGrunt => {
+            card_search_outcomes_with_filter_multiple(acting_player, state, 1, |card| {
+                matches!(card.get_name().as_str(), "Glameow" | "Stunky" | "Croagunk")
+            })
+        }
+        CardId::A4a070TravelingMerchant | CardId::A4a084TravelingMerchant => {
+            traveling_merchant_effect(acting_player, state)
+        }
+        CardId::A4159Fisher | CardId::A4199Fisher => fisher_outcomes(),
+        CardId::A3143FishingNet => {
+            discard_search_outcomes_with_filter(acting_player, state, is_basic_water_pokemon)
+        }
+        CardId::A4152SquirtBottle => Outcomes::single_fn(squirt_bottle_effect),
+        CardId::B1215HittingHammer => hitting_hammer_outcomes(),
+        CardId::B1213PrankSpinner => Outcomes::single_fn(prank_spinner_effect),
+        CardId::A1a064PokemonFlute => Outcomes::single_fn(pokemon_flute_effect),
+        CardId::A3b069Penny | CardId::A3b086Penny | CardId::B2a092Penny | CardId::B2a109Penny => {
+            penny_outcomes(acting_player, state, trainer_card)
+        }
+        // Pure-information cards: see `information_only_effect`.
+        CardId::A4a071Morty
+        | CardId::A4a085Morty
+        | CardId::A4161Hiker
+        | CardId::A4201Hiker
+        | CardId::A3a068Looker
+        | CardId::A3a082Looker
+        | CardId::PA004PokedEx
+        | CardId::PA008PokedEx
+        | CardId::A3145RotomDEx
+        | CardId::PA003HandScope => Outcomes::single_fn(information_only_effect),
+        CardId::A1a066BuddingExpeditioner | CardId::A1a080BuddingExpeditioner => {
+            Outcomes::single_fn(budding_expeditioner_effect)
+        }
+        CardId::A3150Kiawe | CardId::A3192Kiawe => Outcomes::single_fn(kiawe_effect),
+        CardId::A4157Lyra | CardId::A4197Lyra | CardId::A4b332Lyra | CardId::A4b333Lyra => {
+            Outcomes::single_fn(lyra_effect)
+        }
+        CardId::A4156Will | CardId::A4196Will => Outcomes::single_fn(will_effect),
+        CardId::A4158Silver | CardId::A4198Silver | CardId::A4b336Silver | CardId::A4b337Silver => {
+            Outcomes::single_fn(silver_effect)
+        }
+        CardId::A3b066EeveeBag
+        | CardId::A3b107EeveeBag
+        | CardId::A4b308EeveeBag
+        | CardId::A4b309EeveeBag => Outcomes::single_fn(eevee_bag_effect),
+        CardId::B1217FlamePatch | CardId::B1331FlamePatch => {
+            Outcomes::single_fn(flame_patch_effect)
+        }
+        CardId::A2153Volkner | CardId::A2193Volkner => Outcomes::single_fn(volkner_effect),
+        CardId::B1225Copycat | CardId::B1270Copycat => Outcomes::single_fn(copycat_effect),
+        CardId::A2b069Iono
+        | CardId::A2b088Iono
+        | CardId::A4b340Iono
+        | CardId::A4b341Iono
+        | CardId::B2a089Iono
+        | CardId::B2a106Iono => Outcomes::single_fn(iono_effect),
+        CardId::B1221Marlon | CardId::B1266Marlon => Outcomes::single_fn(marlon_effect),
+        CardId::B1223May | CardId::B1268May => may_effect(acting_player, state),
+        CardId::B1224Fantina | CardId::B1269Fantina => Outcomes::single_fn(fantina_effect),
+        CardId::B1226Lisia | CardId::B1271Lisia => lisia_effect(acting_player, state),
+        CardId::A2a073CelesticTownElder | CardId::A2a088CelesticTownElder => {
+            celestic_town_elder_effect(acting_player, state)
+        }
+        CardId::A2a074Barry | CardId::A2a089Barry => Outcomes::single_fn(barry_effect),
+        CardId::A2a075Adaman | CardId::A2a090Adaman => Outcomes::single_fn(adaman_effect),
+        CardId::B2149Diantha | CardId::B2190Diantha => Outcomes::single_fn(diantha_effect),
+        CardId::B2152Piers | CardId::B2193Piers => Outcomes::single_fn(piers_effect),
+        CardId::B1a066ClemontsBackpack => Outcomes::single_fn(clemonts_backpack_effect),
+        CardId::B1a068Clemont | CardId::B1a081Clemont => clemont_effect(acting_player, state),
+        CardId::B1a067QuickGrowExtract | CardId::B1a103QuickGrowExtract => {
+            quick_grow_extract_effect(acting_player, state)
+        }
+        CardId::B1a069Serena | CardId::B1a082Serena => serena_effect(acting_player, state),
+        CardId::B2a090Nemona | CardId::B2a107Nemona => Outcomes::single_fn(nemona_effect),
+        CardId::B2a091Arven | CardId::B2a108Arven | CardId::B2a115Arven => {
+            arven_outcomes(acting_player, state)
+        }
+        CardId::B2a086ElectricGenerator | CardId::B2a131ElectricGenerator => {
+            electric_generator_outcomes()
+        }
+        CardId::B2a088TeamStarGrunt | CardId::B2a105TeamStarGrunt => {
+            Outcomes::single_fn(team_effect)
+        }
+        CardId::B2145LuckyIcePop => lucky_ice_pop_outcomes(state, acting_player),
+        CardId::B2b066Maintenance => Outcomes::single_fn(maintenance_effect),
+        CardId::B2b067Iris | CardId::B2b081Iris => Outcomes::single_fn(iris_effect),
+        CardId::B2b068Calem | CardId::B2b082Calem => Outcomes::single_fn(calem_effect),
+        CardId::B2b065NastyNotice => Outcomes::single_fn(nasty_notice_effect),
+        CardId::A3b068Hau | CardId::A3b085Hau => Outcomes::single_fn(hau_effect),
+        CardId::A3142BigMalasada => Outcomes::single_fn(big_malasada_effect),
+        CardId::B2150Sightseer | CardId::B2191Sightseer => sightseer_effect(acting_player, state),
+        CardId::A2b072TeamRocketGrunt | CardId::A2b091TeamRocketGrunt => {
+            team_rocket_grunt_outcomes(state, acting_player)
+        }
+        CardId::B3147FieldBlower => Outcomes::single_fn(field_blower_effect),
+        CardId::B3149Korrina | CardId::B3190Korrina => Outcomes::single_fn(korrina_effect),
+        CardId::B3150Cabbie | CardId::B3191Cabbie => card_search_outcomes_with_filter_multiple(
+            acting_player,
+            state,
+            1,
+            |card| matches!(card, Card::Trainer(tc) if tc.trainer_card_type == TrainerType::Stadium),
+        ),
+        CardId::B3152ParasolLady | CardId::B3193ParasolLady => {
+            parasol_lady_effect(acting_player, state)
+        }
+        CardId::B3a071Juliana | CardId::B3a086Juliana => card_search_outcomes_with_filter_multiple(
+            acting_player,
+            state,
+            1,
+            |card| matches!(card, Card::Pokemon(p) if p.stage == 2),
+        ),
+        CardId::B3a072ProfessorSada | CardId::B3a087ProfessorSada => {
+            Outcomes::single_fn(professor_sada_effect)
+        }
+        CardId::B3a073ProfessorTuro | CardId::B3a088ProfessorTuro => {
+            professor_turo_effect(acting_player, state)
+        }
+        CardId::B3b066Elesa | CardId::B3b083Elesa => Outcomes::single_fn(elesa_effect),
+        CardId::B3b067PuppyLovingGirl | CardId::B3b084PuppyLovingGirl => {
+            puppy_loving_girl_effect(acting_player, state)
+        }
+        CardId::B3b068Wallace | CardId::B3b085Wallace => wallace_effect(acting_player, state),
+        CardId::B4145OrderPad => order_pad_outcomes(acting_player, state),
+        CardId::B4152Skyla | CardId::B4192Skyla => Outcomes::single_fn(skyla_effect),
+        CardId::B4153Wally | CardId::B4193Wally => Outcomes::single_fn(wally_effect),
+        CardId::B4150Psychic | CardId::B4190Psychic => Outcomes::single_fn(psychic_effect),
+        CardId::B4151Drayden | CardId::B4191Drayden => Outcomes::single_fn(drayden_effect),
+        CardId::B4a067TeamRocketsThievingMachine => {
+            team_rockets_thieving_machine_outcomes(acting_player, state)
+        }
+        CardId::B4a068TeamRocketsGoozooka | CardId::B4a110TeamRocketsGoozooka => {
+            Outcomes::single_fn(team_rockets_goozooka_effect)
+        }
+        CardId::B4a069TeamRocketsResearcher | CardId::B4a085TeamRocketsResearcher => {
+            unreachable!("Researcher is handled by the fallible exact Trainer forecast")
+        }
+        CardId::B4a070TeamRocketsMasterPlan
+        | CardId::B4a086TeamRocketsMasterPlan
+        | CardId::B4a094TeamRocketsMasterPlan => team_rockets_master_plan_outcomes(),
+        CardId::B4a071TeamRocketsBoss | CardId::B4a087TeamRocketsBoss => {
+            team_rockets_boss_outcomes(acting_player, state)
+        }
+        _ => panic!("Unsupported Trainer Card"),
+    }
+}
+
+fn team_rockets_boss_outcomes(acting_player: usize, state: &State) -> Outcomes {
+    let opponent = 1 - acting_player;
+    let capacity = state.in_play_pokemon[opponent]
+        .iter()
+        .skip(1)
+        .filter(|slot| slot.is_none())
+        .count();
+    let mut basics = state.hands[opponent]
+        .iter()
+        .filter(|card| matches!(card, Card::Pokemon(pokemon) if pokemon.stage == 0))
+        .cloned()
+        .collect::<Vec<_>>();
+    basics.sort_by_key(Card::get_id);
+    let mut choices = Vec::new();
+    for count in 0..=capacity.min(basics.len()) {
+        for mut cards in generate_combinations(&basics, count) {
+            cards.sort_by_key(Card::get_id);
+            let choice = SimpleAction::BenchOpponentHandBasics { cards };
+            if !choices.contains(&choice) {
+                choices.push(choice);
+            }
+        }
+    }
+    let revealed_hand = state.hands[opponent].clone();
+    Outcomes::single_fn(move |_, state, action| {
+        state
+            .private_reveal_events
+            .push(crate::state::PrivateRevealEvent {
+                viewer: action.actor,
+                zone_owner: 1 - action.actor,
+                cause: "Team Rocket's Boss".into(),
+                kind: crate::state::PrivateRevealKind::WholeHand,
+                cards: revealed_hand.clone(),
+            });
+        state
+            .move_generation_stack
+            .push((action.actor, choices.clone()));
+    })
+}
+
+fn team_rockets_master_plan_outcomes() -> Outcomes {
+    let heads: Mutation = Box::new(|_, state, action| {
+        let opponent = (action.actor + 1) % 2;
+        state.apply_status_condition(opponent, 0, StatusCondition::Confused);
+    });
+    let tails: Mutation = Box::new(|_, state, action| {
+        let opponent = (action.actor + 1) % 2;
+        state.apply_status_condition(opponent, 0, StatusCondition::Confused);
+        state.apply_status_condition(action.actor, 0, StatusCondition::Confused);
+    });
+    Outcomes::binary_coin(heads, tails)
+}
+
+fn team_rockets_thieving_machine_outcomes(acting_player: usize, state: &State) -> Outcomes {
+    let opponent = (acting_player + 1) % 2;
+    let eligible: Vec<Card> = state.discard_piles[opponent]
+        .iter()
+        .filter(|card| {
+            matches!(card, Card::Trainer(t)
+                if t.trainer_card_type == TrainerType::Item
+                    && t.name != "Team Rocket's Thieving Machine")
+        })
+        .cloned()
+        .collect();
+    if eligible.is_empty() {
+        return Outcomes::single_fn(|_, _, _| {});
+    }
+
+    let probability = 1.0 / eligible.len() as f64;
+    let probabilities = vec![probability; eligible.len()];
+    let mutations = eligible
+        .into_iter()
+        .map(|item| {
+            Box::new(move |_: &mut StdRng, state: &mut State, action: &Action| {
+                let opponent = (action.actor + 1) % 2;
+                if let Some(index) = state.discard_piles[opponent]
+                    .iter()
+                    .position(|card| card == &item)
+                {
+                    let item = state.discard_piles[opponent].remove(index);
+                    state.hands[action.actor].push(item);
+                }
+            }) as Mutation
+        })
+        .collect();
+    Outcomes::from_parts(probabilities, mutations)
+}
+
+fn team_rockets_goozooka_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    let opponent = (action.actor + 1) % 2;
+    state.get_active_mut(opponent).add_effect(
+        crate::effects::CardEffect::IncreasedRetreatCost { amount: 1 },
+        1,
+    );
+}
+
+fn big_malasada_effect(rng: &mut StdRng, state: &mut State, action: &Action) {
+    // Heal 10 damage and remove a random Special Condition from your Active Pokémon.
+    state.heal_pokemon(action.actor, 0, 10);
+    if let Some(active) = state.in_play_pokemon[action.actor][0].as_mut() {
+        let conditions: Vec<StatusCondition> = [
+            active.is_poisoned().then_some(StatusCondition::Poisoned),
+            active.is_paralyzed().then_some(StatusCondition::Paralyzed),
+            active.is_asleep().then_some(StatusCondition::Asleep),
+            active.is_burned().then_some(StatusCondition::Burned),
+            active.is_confused().then_some(StatusCondition::Confused),
+        ]
+        .into_iter()
+        .flatten()
+        .collect();
+        if !conditions.is_empty() {
+            let chosen = conditions[rng.gen_range(0..conditions.len())];
+            active.clear_status_condition(chosen);
+        }
+    }
+}
+
+fn iris_effect(_: &mut StdRng, state: &mut State, _: &Action) {
+    // During this turn, if your opponent's Active Pokémon is Knocked Out by damage from
+    // an attack used by your Haxorus, you get 1 more point.
+    state.add_turn_effect(TurnEffect::BonusPointForHaxorusActiveKO, 0);
+}
+
+fn maintenance_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    let hand_cards = state.hands[action.actor].to_vec();
+    let shuffle_choices: Vec<SimpleAction> = generate_combinations(&hand_cards, 2)
+        .into_iter()
+        .map(|cards| SimpleAction::ShuffleOwnCardsIntoDeck { cards })
+        .collect();
+
+    if !shuffle_choices.is_empty() {
+        state
+            .move_generation_stack
+            .push((action.actor, shuffle_choices));
+    }
+}
+
+fn calem_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    // Draw a card for each Mega Evolution Pokémon ex in play (both yours and your opponent's).
+    let mega_count = state
+        .in_play_pokemon
+        .iter()
+        .flat_map(|player_pokemon| player_pokemon.iter())
+        .flatten()
+        .filter(|p| p.card.is_mega())
+        .count();
+    debug!(
+        "Calem: {} Mega Evolution Pokemon ex in play, drawing {} cards",
+        mega_count, mega_count
+    );
+    for _ in 0..mega_count {
+        state.maybe_draw_card(action.actor);
+    }
+}
+
+fn nasty_notice_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    // Your opponent discards cards from their hand until they have 4 cards in their hand.
+    let opponent = (action.actor + 1) % 2;
+    let excess_cards = state.hands[opponent].len().saturating_sub(4);
+
+    if excess_cards == 0 {
+        return;
+    }
+
+    let choices = generate_combinations(&state.hands[opponent], excess_cards)
+        .into_iter()
+        .map(|cards| SimpleAction::DiscardOwnCards { cards })
+        .collect::<Vec<_>>();
+
+    state.move_generation_stack.push((opponent, choices));
+}
+
+fn erika_effect(rng: &mut StdRng, state: &mut State, action: &Action) {
+    inner_healing_effect(rng, state, action, 50, Some(EnergyType::Grass));
+}
+
+fn marlon_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    // Heal 70 damage from 1 of your Carracosta or Jellicent.
+    let targets = ["Carracosta", "Jellicent"];
+    let possible_moves = state
+        .enumerate_in_play_pokemon(action.actor)
+        .filter(|(_, x)| x.is_damaged() && targets.contains(&x.get_name().as_str()))
+        .map(|(i, _)| SimpleAction::Heal {
+            in_play_idx: i,
+            amount: 70,
+            cure_status: false,
+        })
+        .collect::<Vec<_>>();
+    if !possible_moves.is_empty() {
+        state
+            .move_generation_stack
+            .push((action.actor, possible_moves));
+    }
+}
+
+fn irida_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    // Heal 40 damage from each of your Pokémon that has any Water Energy attached.
+    debug!("Irida: Healing 40 damage from each Pokemon with Water Energy attached");
+    state.heal_each_pokemon(action.actor, 40, |pokemon| {
+        pokemon.attached_energy.contains(&EnergyType::Water)
+    });
+}
+
+fn pokemon_center_lady_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    // Heal 30 damage from 1 of your Pokémon, and it recovers from all Special Conditions.
+    //
+    // F014 (§182/§183): an action card needs a valid thing to act on, so an undamaged AND
+    // unconditioned Pokémon is NOT a legal target — even when a different Pokémon is damaged
+    // and therefore makes the card playable. The playability check
+    // (`can_play_pokemon_center_lady`) already tests "some Pokémon is damaged or conditioned";
+    // this per-target filter is the half that was missing, so every in-play Pokémon was offered.
+    debug!("Pokemon Center Lady: Healing 30 damage and curing status conditions");
+    let possible_moves = state
+        .enumerate_in_play_pokemon(action.actor)
+        .filter(|(_, pokemon)| pokemon.is_damaged() || pokemon.has_status_condition())
+        .map(|(i, _)| SimpleAction::Heal {
+            in_play_idx: i,
+            amount: 30,
+            cure_status: true,
+        })
+        .collect::<Vec<_>>();
+    if !possible_moves.is_empty() {
+        state
+            .move_generation_stack
+            .push((action.actor, possible_moves));
+    }
+}
+
+fn lillie_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    let possible_moves = state
+        .enumerate_in_play_pokemon(action.actor)
+        .filter(|(_, x)| x.is_damaged() && get_stage(x) == 2)
+        .map(|(i, _)| SimpleAction::Heal {
+            in_play_idx: i,
+            amount: 60,
+            cure_status: false,
+        })
+        .collect::<Vec<_>>();
+    if !possible_moves.is_empty() {
+        state
+            .move_generation_stack
+            .push((action.actor, possible_moves));
+    }
+}
+
+fn field_blower_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    // Each attached Tool is a separate public choice, including either slot on Revavroom.
+    let mut choices: Vec<SimpleAction> = (0..2)
+        .flat_map(|player| {
+            state
+                .enumerate_in_play_pokemon(player)
+                .flat_map(move |(in_play_idx, pokemon)| {
+                    (0..pokemon.attached_tools.len()).map(move |tool_idx| {
+                        SimpleAction::DiscardToolFromPokemon {
+                            player,
+                            in_play_idx,
+                            tool_idx,
+                        }
+                    })
+                })
+                .collect::<Vec<_>>()
+        })
+        .collect();
+    if state.active_stadium.is_some() {
+        choices.push(SimpleAction::DiscardActiveStadium);
+    }
+    if !choices.is_empty() {
+        state.move_generation_stack.push((action.actor, choices));
+    }
+}
+
+fn korrina_effect(_: &mut StdRng, state: &mut State, _: &Action) {
+    // During this turn, attacks used by your [F] Pokémon do +30 damage to your opponent's Active Pokémon ex.
+    state.add_turn_effect(
+        TurnEffect::IncreasedDamageForTypeAgainstEx {
+            amount: 30,
+            energy_type: EnergyType::Fighting,
+        },
+        0,
+    );
+}
+
+fn parasol_lady_effect(acting_player: usize, state: &State) -> Outcomes {
+    // Put 1 of your [W] Pokémon in play, except any Pokémon ex, into your hand.
+    let choices: Vec<SimpleAction> = state
+        .enumerate_in_play_pokemon(acting_player)
+        .filter(|(_, pokemon)| {
+            state.pokemon_is_type(pokemon, EnergyType::Water) && !pokemon.card.is_ex()
+        })
+        .map(|(in_play_idx, _)| SimpleAction::ReturnPokemonToHand { in_play_idx })
+        .collect();
+
+    Outcomes::single_fn(move |_, state, action| {
+        if !choices.is_empty() {
+            state
+                .move_generation_stack
+                .push((action.actor, choices.clone()));
+        }
+    })
+}
+
+fn professor_turo_effect(acting_player: usize, state: &State) -> Outcomes {
+    // Shuffle 1 of your Future Pokémon in play into your deck.
+    let choices: Vec<SimpleAction> = state
+        .enumerate_in_play_pokemon(acting_player)
+        .filter(|(_, pokemon)| is_future_pokemon(&pokemon.get_name()))
+        .map(|(in_play_idx, _)| SimpleAction::ShuffleInPlayPokemonIntoDeck { in_play_idx })
+        .collect();
+
+    Outcomes::single_fn(move |_, state, action| {
+        if !choices.is_empty() {
+            state
+                .move_generation_stack
+                .push((action.actor, choices.clone()));
+        }
+    })
+}
+
+fn guzma_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    let opponent = (action.actor + 1) % 2;
+    let tool_indices: Vec<usize> = state
+        .enumerate_in_play_pokemon(opponent)
+        .filter(|(_, pokemon)| pokemon.has_tool_attached())
+        .map(|(idx, _)| idx)
+        .collect();
+
+    for idx in tool_indices {
+        state.discard_all_tools(opponent, idx);
+    }
+
+    // Resolve knockouts only after Guzma has discarded every opponent tool.
+    handle_knockouts(state, (action.actor, 0), false);
+}
+
+fn potion_effect(rng: &mut StdRng, state: &mut State, action: &Action) {
+    inner_healing_effect(rng, state, action, 20, None);
+}
+
+// Coin flip: heads = random Item from deck to hand, tails = random Tool from deck to hand
+fn arven_outcomes(acting_player: usize, state: &State) -> Outcomes {
+    let (item_probs, item_mutations) = item_search_outcomes(acting_player, state).into_branches();
+    let (tool_probs, tool_mutations) = tool_search_outcomes(acting_player, state).into_branches();
+
+    let mut branches = vec![];
+
+    for (p, m) in item_probs.into_iter().zip(item_mutations) {
+        branches.push((p * 0.5, m, vec![CoinSeq(vec![true])]));
+    }
+    for (p, m) in tool_probs.into_iter().zip(tool_mutations) {
+        branches.push((p * 0.5, m, vec![CoinSeq(vec![false])]));
+    }
+
+    Outcomes::from_coin_branches(branches)
+        .expect("arven_outcomes should produce valid coin branches")
+}
+
+// Order Pad: "Flip a coin. If heads, put a random Item card from your deck into your hand."
+fn order_pad_outcomes(acting_player: usize, state: &State) -> Outcomes {
+    let (item_probs, item_mutations) = item_search_outcomes(acting_player, state).into_branches();
+
+    let mut branches: Vec<(f64, Mutation, Vec<CoinSeq>)> = Vec::with_capacity(item_probs.len() + 1);
+    for (p, m) in item_probs.into_iter().zip(item_mutations) {
+        branches.push((p * 0.5, m, vec![CoinSeq(vec![true])]));
+    }
+    let tails_mutation: Mutation = Box::new(|_, _, _| debug!("Order Pad: Flipped tails"));
+    branches.push((0.5, tails_mutation, vec![CoinSeq(vec![false])]));
+
+    // Not `binary_coin`: heads fans out into many equally-weighted search outcomes (one per
+    // distinct Item card in the deck), not a single mutation.
+    Outcomes::from_coin_branches(branches).expect("Order Pad coin branches should be valid")
+}
+
+fn team_effect(rng: &mut StdRng, state: &mut State, action: &Action) {
+    // Discard a random Energy from among all Energy attached to opponent Pokémon with an Ability.
+    let opponent = (action.actor + 1) % 2;
+    let mut eligible_energy: Vec<(usize, EnergyType)> = Vec::new();
+
+    for (in_play_idx, pokemon) in state.enumerate_in_play_pokemon(opponent) {
+        if has_any_in_play_ability(state, pokemon) {
+            for energy in pokemon.attached_energy.iter().copied() {
+                eligible_energy.push((in_play_idx, energy));
+            }
+        }
+    }
+
+    if !eligible_energy.is_empty() {
+        let random_idx = rng.gen_range(0..eligible_energy.len());
+        let (in_play_idx, energy) = eligible_energy[random_idx];
+        state.discard_energy_from_in_play(opponent, in_play_idx, &[energy]);
+    }
+}
+
+fn lucky_ice_pop_outcomes(state: &State, acting_player: usize) -> Outcomes {
+    let can_heal = !state.is_healing_blocked()
+        && state
+            .maybe_get_active(acting_player)
+            .is_some_and(|active| active.get_damage_counters() > 0);
+    if !can_heal {
+        return Outcomes::single_fn(|_, state, action| {
+            state.heal_pokemon(action.actor, 0, 20);
+        });
+    }
+    let heads_mutation = Box::new(|_: &mut StdRng, state: &mut State, action: &Action| {
+        state.heal_pokemon(action.actor, 0, 20);
+        // Card was already discarded by wrap_with_common_logic, move it back to hand
+        if let SimpleAction::Play { trainer_card } = &action.action {
+            let card = Card::Trainer(trainer_card.clone());
+            if let Some(pos) = state.discard_piles[action.actor]
+                .iter()
+                .position(|c| *c == card)
+            {
+                state.discard_piles[action.actor].remove(pos);
+                state.hands[action.actor].push(card);
+            }
+        }
+    });
+
+    let tails_mutation = Box::new(|_: &mut StdRng, state: &mut State, action: &Action| {
+        state.heal_pokemon(action.actor, 0, 20);
+    });
+
+    Outcomes::binary_coin(heads_mutation, tails_mutation)
+}
+
+fn will_effect(_: &mut StdRng, state: &mut State, _: &Action) {
+    state.set_pending_will_first_heads();
+}
+
+fn electric_generator_outcomes() -> Outcomes {
+    let heads_mutation = Box::new(|_: &mut StdRng, state: &mut State, action: &Action| {
+        let possible_moves = state
+            .enumerate_bench_pokemon(action.actor)
+            .filter(|(_, pokemon)| state.pokemon_is_type(pokemon, EnergyType::Lightning))
+            .map(|(in_play_idx, _)| SimpleAction::Attach {
+                attachments: vec![(1, EnergyType::Lightning, in_play_idx)],
+                is_turn_energy: false,
+            })
+            .collect::<Vec<_>>();
+
+        if !possible_moves.is_empty() {
+            state
+                .move_generation_stack
+                .push((action.actor, possible_moves));
+        }
+    });
+    let tails_mutation = Box::new(|_: &mut StdRng, _: &mut State, _: &Action| {});
+
+    Outcomes::binary_coin(heads_mutation, tails_mutation)
+}
+
+// Queues up the decision of healing an in_play pokemon that matches energy (if None, then any)
+fn inner_healing_effect(
+    _: &mut StdRng,
+    state: &mut State,
+    action: &Action,
+    amount: u32,
+    energy: Option<EnergyType>,
+) {
+    let possible_moves = state
+        .enumerate_in_play_pokemon(action.actor)
+        .filter(|(_, x)| {
+            x.is_damaged()
+                && (energy.is_none() || state.pokemon_is_type(x, EnergyType::Grass))
+        })
+        .map(|(i, _)| SimpleAction::Heal {
+            in_play_idx: i,
+            amount,
+            cure_status: false,
+        })
+        .collect::<Vec<_>>();
+    if !possible_moves.is_empty() {
+        state
+            .move_generation_stack
+            .push((action.actor, possible_moves));
+    }
+}
+
+pub(crate) fn is_misty_card(trainer_card: &TrainerCard) -> bool {
+    matches!(
+        CardId::from_card_id(&trainer_card.id),
+        Some(CardId::A1220Misty | CardId::A1267Misty)
+    )
+}
+
+/// Stage Misty's public target before its complete physical `H* T` batch is sampled.
+pub(crate) fn sample_misty_effect(
+    _rng: &mut StdRng,
+    _state: &State,
+    trainer_card: &TrainerCard,
+) -> Mutation {
+    assert!(
+        is_misty_card(trainer_card),
+        "Misty sampler received another card"
+    );
+    let misty = trainer_card.clone();
+    Box::new(move |_, state, action| {
+        trainer_coin_plan::stage_misty_target(state, action, misty.clone());
+    })
+}
+
+// Remember to implement these in the main controller / hooks.
+fn x_speed_effect(_: &mut StdRng, state: &mut State, _: &Action) {
+    state.add_turn_effect(TurnEffect::ReducedRetreatCost { amount: 1 }, 0);
+}
+fn leaf_effect(_: &mut StdRng, state: &mut State, _: &Action) {
+    state.add_turn_effect(TurnEffect::ReducedRetreatCost { amount: 2 }, 0);
+}
+
+fn sabrina_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    // Switch out your opponent's Active Pokémon to the Bench. (Your opponent chooses the new Active Pokémon.)
+    let opponent_player = (action.actor + 1) % 2;
+    let possible_moves = state
+        .enumerate_bench_pokemon(opponent_player)
+        .map(|(i, _)| SimpleAction::Activate {
+            player: opponent_player,
+            in_play_idx: i,
+        })
+        .collect::<Vec<_>>();
+    state
+        .move_generation_stack
+        .push((opponent_player, possible_moves));
+}
+
+fn repel_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    // Switch out your opponent's Active Basic Pokémon to the Bench. (Your opponent chooses the new Active Pokémon.)
+    let opponent_player = (action.actor + 1) % 2;
+    let possible_moves = state
+        .enumerate_bench_pokemon(opponent_player)
+        .map(|(i, _)| SimpleAction::Activate {
+            player: opponent_player,
+            in_play_idx: i,
+        })
+        .collect::<Vec<_>>();
+    state
+        .move_generation_stack
+        .push((opponent_player, possible_moves));
+}
+
+fn cyrus_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    // Switch 1 of your opponent's Pokemon that has damage on it to the Active Spot.
+    let opponent_player = (action.actor + 1) % 2;
+    let possible_moves = state
+        .enumerate_bench_pokemon(opponent_player)
+        .filter(|(_, x)| x.is_damaged())
+        .map(|(in_play_idx, _)| SimpleAction::Activate {
+            player: opponent_player,
+            in_play_idx,
+        })
+        .collect::<Vec<_>>();
+    state
+        .move_generation_stack
+        .push((action.actor, possible_moves));
+}
+
+/// "Your opponent shuffles their hand into their deck and draws a card for each of their remaining
+/// points needed to win." Mars (A2 173) prints this as a Supporter; Polteageist's Refreshing Tea
+/// (B2 075) offers the same effect on evolve, so both share this implementation.
+pub(crate) fn mars_effect(rng: &mut StdRng, state: &mut State, action: &Action) {
+    let opponent_player = (action.actor + 1) % 2;
+    let opponent_points = state.points[opponent_player];
+    let cards_to_draw = (3 - opponent_points) as usize;
+
+    debug!(
+        "Mars: Opponent has {} points, shuffling hand and drawing {} cards",
+        opponent_points, cards_to_draw
+    );
+
+    // Shuffle opponent's hand back into deck
+    state.decks[opponent_player]
+        .cards
+        .append(&mut state.hands[opponent_player]);
+    state.decks[opponent_player].shuffle(false, rng);
+
+    // Draw cards
+    for _ in 0..cards_to_draw {
+        if let Some(card) = state.decks[opponent_player].draw() {
+            state.hands[opponent_player].push(card);
+        }
+    }
+}
+
+fn giovanni_effect(_: &mut StdRng, state: &mut State, _: &Action) {
+    // During this turn, attacks used by your Pokémon do +10 damage to your opponent's Active Pokémon.
+    state.add_turn_effect(TurnEffect::IncreasedDamage { amount: 10 }, 0);
+}
+
+fn barry_effect(_: &mut StdRng, state: &mut State, _: &Action) {
+    // During this turn, attacks used by your Snorlax, Heracross, and Staraptor cost 2 less [C] Energy.
+    state.add_turn_effect(
+        TurnEffect::ReducedAttackCostForSpecificPokemon {
+            amount: 2,
+            pokemon_names: vec![
+                "Snorlax".to_string(),
+                "Heracross".to_string(),
+                "Staraptor".to_string(),
+            ],
+        },
+        0,
+    );
+}
+
+fn adaman_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    // During your opponent's next turn, all of your [M] Pokémon take -20 damage from attacks.
+    state.add_turn_effect(
+        TurnEffect::ReducedDamageForType {
+            amount: 20,
+            energy_type: EnergyType::Metal,
+            player: action.actor,
+        },
+        1,
+    );
+}
+
+fn piers_effect(rng: &mut StdRng, state: &mut State, action: &Action) {
+    // Discard 2 random Energy from your opponent's Active Pokémon.
+    let opponent = (action.actor + 1) % 2;
+    let active = state.get_active(opponent);
+    let mut remaining_energy = active.attached_energy.clone();
+    remaining_energy.shuffle(rng);
+    let to_discard = remaining_energy.into_iter().take(2).collect::<Vec<_>>();
+
+    if !to_discard.is_empty() {
+        state.discard_from_active(opponent, &to_discard);
+    }
+}
+
+fn diantha_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    // Heal 90 damage from 1 of your [P] Pokemon with >= 2 [P] Energy. If healed, discard 2 [P].
+    let possible_moves = diantha_targets(state, action.actor)
+        .into_iter()
+        .map(|in_play_idx| SimpleAction::HealAndDiscardEnergy {
+            in_play_idx,
+            heal_amount: 90,
+            discard_energies: vec![EnergyType::Psychic; 2],
+        })
+        .collect::<Vec<_>>();
+
+    if !possible_moves.is_empty() {
+        state
+            .move_generation_stack
+            .push((action.actor, possible_moves));
+    }
+}
+
+fn blaine_effect(_: &mut StdRng, state: &mut State, _: &Action) {
+    // During this turn, attacks used by your Ninetales, Rapidash, or Magmar do +30 damage to your opponent's Active Pokémon.
+    state.add_turn_effect(
+        TurnEffect::IncreasedDamageForSpecificPokemon {
+            amount: 30,
+            pokemon_names: vec![
+                "Ninetales".to_string(),
+                "Rapidash".to_string(),
+                "Magmar".to_string(),
+            ],
+        },
+        0,
+    );
+}
+
+fn cynthia_effect(_: &mut StdRng, state: &mut State, _: &Action) {
+    // During this turn, attacks used by your Garchomp or Togekiss do +50 damage to your opponent's Active Pokemon.
+    state.add_turn_effect(
+        TurnEffect::IncreasedDamageForSpecificPokemon {
+            amount: 50,
+            pokemon_names: vec!["Garchomp".to_string(), "Togekiss".to_string()],
+        },
+        0,
+    );
+}
+
+fn hau_effect(_: &mut StdRng, state: &mut State, _: &Action) {
+    // During this turn, attacks used by your Decidueye ex, Incineroar ex, or Primarina ex do +30 damage to your opponent's Active Pokémon.
+    state.add_turn_effect(
+        TurnEffect::IncreasedDamageForSpecificPokemon {
+            amount: 30,
+            pokemon_names: vec![
+                "Decidueye ex".to_string(),
+                "Incineroar ex".to_string(),
+                "Primarina ex".to_string(),
+            ],
+        },
+        0,
+    );
+}
+
+/// Shared body of the "During your opponent's next turn, <scope> take -N damage from attacks from
+/// your opponent's Pokémon" cards (Blue, Jasmine, Cheren, Beast Wall). Duration 1 = this turn plus
+/// the opponent's next turn.
+fn add_damage_reduction_for_next_turn(
+    state: &mut State,
+    player: usize,
+    amount: u32,
+    scope: DamageReductionScope,
+    only_from_ex: bool,
+) {
+    state.add_turn_effect(
+        TurnEffect::ReducedDamageForTarget {
+            amount,
+            player,
+            scope,
+            only_from_ex,
+        },
+        1,
+    );
+}
+
+fn named_scope(names: &[&str]) -> DamageReductionScope {
+    DamageReductionScope::NamedPokemon(names.iter().map(|name| name.to_string()).collect())
+}
+
+fn blue_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    // During your opponent's next turn, all of your Pokémon take -10 damage from attacks from
+    // your opponent's Pokémon.
+    add_damage_reduction_for_next_turn(
+        state,
+        action.actor,
+        10,
+        DamageReductionScope::AllPokemon,
+        false,
+    );
+}
+
+fn jasmine_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    // During your opponent's next turn, all of your Steelix and Skarmory ex take -50 damage from
+    // attacks from your opponent's Pokémon.
+    let scope = named_scope(&["Steelix", "Skarmory ex"]);
+    add_damage_reduction_for_next_turn(state, action.actor, 50, scope, false);
+}
+
+fn cheren_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    // During your opponent's next turn, all of your Watchog and Stoutland take -100 damage from
+    // attacks from your opponent's Pokémon ex.
+    let scope = named_scope(&["Watchog", "Stoutland"]);
+    add_damage_reduction_for_next_turn(state, action.actor, 100, scope, true);
+}
+
+fn beast_wall_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    // During your opponent's next turn, all of your Ultra Beasts take -20 damage from attacks
+    // from your opponent's Pokémon.
+    add_damage_reduction_for_next_turn(
+        state,
+        action.actor,
+        20,
+        DamageReductionScope::UltraBeasts,
+        false,
+    );
+}
+
+/// The three Special Conditions Whitney's Miltank recovers from. Poisoned and Burned are
+/// deliberately absent — the card names only these.
+const WHITNEY_CURED_CONDITIONS: [StatusCondition; 3] = [
+    StatusCondition::Asleep,
+    StatusCondition::Paralyzed,
+    StatusCondition::Confused,
+];
+
+/// Move every Energy matching `only_type` (all Energy when `None`) from `player`'s Benched Pokémon
+/// onto their Active Pokémon. Shared by Lt. Surge ([L] only) and Juggler (everything).
+fn gather_bench_energy_onto_active(
+    state: &mut State,
+    player: usize,
+    only_type: Option<EnergyType>,
+) {
+    if state.maybe_get_active(player).is_none() {
+        return;
+    }
+    let mut gathered: Vec<EnergyType> = Vec::new();
+    for bench_idx in 1..state.in_play_pokemon[player].len() {
+        let Some(pokemon) = state.in_play_pokemon[player][bench_idx].as_mut() else {
+            continue;
+        };
+        match only_type {
+            None => gathered.append(&mut pokemon.attached_energy),
+            Some(energy_type) => {
+                let (moved, kept) = pokemon
+                    .attached_energy
+                    .iter()
+                    .partition(|energy| **energy == energy_type);
+                pokemon.attached_energy = kept;
+                gathered.extend::<Vec<EnergyType>>(moved);
+            }
+        }
+    }
+    if gathered.is_empty() {
+        return;
+    }
+    debug!(
+        "Gathering {} Energy from the Bench onto the Active",
+        gathered.len()
+    );
+    state
+        .get_active_mut(player)
+        .attached_energy
+        .extend(gathered);
+    state.apply_soothing_wind_to_pokemon(player, 0);
+}
+
+/// Fishing Net's target predicate: "a random Basic [W] Pokémon from your discard pile".
+fn is_basic_water_pokemon(card: &Card) -> bool {
+    card.is_basic() && card.get_type() == Some(EnergyType::Water)
+}
+
+/// Fisher's target predicate: "a [W] Pokémon ... from your discard pile" (any stage).
+fn is_water_pokemon(card: &Card) -> bool {
+    matches!(card, Card::Pokemon(_)) && card.get_type() == Some(EnergyType::Water)
+}
+
+/// Penny: "Look at a random Supporter card that's not Penny from your opponent's deck and shuffle
+/// it back into their deck. Use the effect of that card as the effect of this card."
+///
+/// This is a copy-another-card effect, resolved by recursing into `forecast_trainer_action` for
+/// each candidate Supporter and folding the resulting distributions together, weighted by how
+/// likely that card is to be the one drawn (so four copies of Cynthia are four times as likely as
+/// one Erika). The copy is evaluated with `acting_player` set to Penny's controller, so the copied
+/// effect applies from *this* player's side of the board.
+///
+/// Penny itself is excluded by name, so a Penny can never copy a Penny — that is what bounds the
+/// recursion. Restricting to Supporters also sidesteps the two effects that inspect
+/// `action.action` (tool attachment and Lucky Ice Pop): under Penny the played card is Penny, not
+/// the copied card.
+///
+/// A candidate whose own play conditions are not currently met (Sabrina with an empty opponent
+/// Bench, Kiawe with no Alolan Marowak, ...) — or that is not implemented at all — still occupies
+/// its share of the probability mass, but resolves as a no-op. That matches the card: you draw
+/// whatever you draw and use its effect, which may simply do nothing. Running such an effect
+/// anyway would be unsafe, since those effects assume their move-generation gate already passed
+/// and would push an empty choice list.
+///
+/// The looked-at card never leaves the opponent's deck; every branch just reshuffles it back.
+fn is_penny_card(trainer_card: &TrainerCard) -> bool {
+    trainer_card.name == "Penny"
+}
+
+fn try_penny_outcomes(
+    acting_player: usize,
+    state: &State,
+    penny: &TrainerCard,
+) -> Result<Outcomes, UnpricedForecast> {
+    let opponent = (acting_player + 1) % 2;
+    let candidates = penny_candidates(state, opponent);
+    if candidates.is_empty() {
+        return Ok(Outcomes::single_fn(|_, _, _| {}));
+    }
+    let penny = penny.clone();
+    Ok(
+        try_copy_random_supporter_outcomes(acting_player, state, &candidates)?.map_mutations(
+            move |mutation| -> Mutation {
+                let penny = penny.clone();
+                Box::new(move |rng, state, action| {
+                    mutation(rng, state, action);
+                    if trainer_coin_plan::defer_penny_shuffle_for_misty(state, &penny, opponent) {
+                        return;
+                    }
+                    // "...and shuffle it back into their deck."
+                    state.decks[opponent].shuffle(false, rng);
+                })
+            },
+        ),
+    )
+}
+
+fn penny_outcomes(acting_player: usize, state: &State, penny: &TrainerCard) -> Outcomes {
+    try_penny_outcomes(acting_player, state, penny)
+        .unwrap_or_else(|error| panic!("exact Penny forecast refused: {}", error.reason))
+}
+
+/// "Use the effect of that card as the effect of this <card>", where the card is one Supporter
+/// drawn at random from `candidates` (distinct card + how many copies are in the pile it came
+/// from). Folds the outcomes of every candidate into a single distribution, weighted by how likely
+/// that card is to be the one drawn — so four copies of Cynthia are four times as likely as one
+/// Erika.
+///
+/// Shared by Penny (a Supporter in the opponent's *deck*) and Smeargle's Portrait (a Supporter in
+/// the opponent's *hand*). `acting_player` is the copier, so the copied effect resolves from their
+/// side of the board. Returns a single no-op branch when `candidates` is empty.
+pub(crate) fn try_copy_random_supporter_outcomes(
+    acting_player: usize,
+    state: &State,
+    candidates: &[(TrainerCard, usize)],
+) -> Result<Outcomes, UnpricedForecast> {
+    let total: usize = candidates.iter().map(|(_, count)| *count).sum();
+    if total == 0 {
+        return Ok(Outcomes::single_fn(|_, _, _| {}));
+    }
+
+    let has_researcher = ensure_copied_researcher_budget(acting_player, state, candidates)?;
+
+    let mut branches: Vec<(f64, Mutation, CoinPaths)> = vec![];
+    for (trainer_card, count) in candidates {
+        let weight = *count as f64 / total as f64;
+        let mut copied = try_copied_supporter_outcomes(acting_player, state, trainer_card)?;
+        // Will belongs to the selected Supporter's coin batch, not to the random source choice.
+        // Penny recursively owns this handling for its eventual selected source.
+        if state.has_pending_will_first_heads() && !is_penny_card(trainer_card) {
+            copied = match copied.force_first_heads() {
+                Ok(forced) => forced.map_mutations(|mutation| {
+                    Box::new(move |rng, state, action| {
+                        assert!(state.consume_pending_will_first_heads());
+                        mutation(rng, state, action);
+                    })
+                }),
+                Err(original) => original,
+            };
+        }
+        let copied_branches = copied.into_branches_with_coin_paths();
+        let required = branches.len().saturating_add(copied_branches.len());
+        if has_researcher && required > MAX_PRICED_RESEARCHER_SUCCESSORS {
+            return Err(UnpricedForecast::too_many(required));
+        }
+        for (probability, mutation, coin_paths) in copied_branches {
+            branches.push((probability * weight, mutation, coin_paths));
+        }
+    }
+
+    Outcomes::from_branches_with_coin_paths(branches).map_err(|_| UnpricedForecast {
+        kind: super::team_rockets_researcher::UnpricedForecastKind::ResearcherNumeric,
+        reason: "copied Team Rocket's Researcher forecast produced invalid probabilities".into(),
+    })
+}
+
+/// The outcomes of the copied Supporter, or a no-op if that Supporter cannot currently do anything
+/// (see `penny_outcomes`).
+pub(crate) fn try_copied_supporter_outcomes(
+    acting_player: usize,
+    state: &State,
+    trainer_card: &TrainerCard,
+) -> Result<Outcomes, UnpricedForecast> {
+    let usable = copied_supporter_is_usable(state, trainer_card);
+    if usable {
+        try_forecast_trainer_action(acting_player, state, trainer_card)
+    } else {
+        Ok(Outcomes::single_fn(|_, _, _| {}))
+    }
+}
+
+pub(crate) fn ensure_copied_researcher_budget(
+    acting_player: usize,
+    state: &State,
+    candidates: &[(TrainerCard, usize)],
+) -> Result<bool, UnpricedForecast> {
+    let mut expansion = copied_researcher_expansion(state, acting_player, candidates)?;
+    let researcher_printings = candidates
+        .iter()
+        .filter(|(trainer, count)| *count > 0 && is_researcher_card(trainer))
+        .count();
+    let mut branch_floor = candidates
+        .len()
+        .saturating_add(expansion.saturating_sub(researcher_printings));
+    let penny_printings = candidates
+        .iter()
+        .filter(|(trainer, count)| *count > 0 && is_penny_card(trainer))
+        .count();
+    if penny_printings > 0 {
+        let opponent = 1 - acting_player;
+        let nested = penny_candidates(state, opponent);
+        let nested_expansion = copied_researcher_expansion(state, acting_player, &nested)?;
+        let nested_researcher_printings = nested
+            .iter()
+            .filter(|(trainer, count)| *count > 0 && is_researcher_card(trainer))
+            .count();
+        let nested_branch_floor = nested
+            .len()
+            .saturating_add(nested_expansion.saturating_sub(nested_researcher_printings));
+        expansion = expansion
+            .checked_add(nested_expansion.saturating_mul(penny_printings))
+            .unwrap_or(MAX_PRICED_RESEARCHER_SUCCESSORS + 1);
+        if nested_expansion > 0 {
+            branch_floor = branch_floor.saturating_add(
+                nested_branch_floor
+                    .saturating_sub(1)
+                    .saturating_mul(penny_printings),
+            );
+        }
+    }
+    let required = expansion.max(branch_floor);
+    if required > MAX_PRICED_RESEARCHER_SUCCESSORS {
+        return Err(UnpricedForecast::too_many(required));
+    }
+    Ok(expansion > 0)
+}
+
+pub(crate) fn choose_supporter_source(
+    rng: &mut StdRng,
+    candidates: &[(TrainerCard, usize)],
+) -> Option<TrainerCard> {
+    let total = candidates.iter().map(|(_, count)| *count).sum::<usize>();
+    if total == 0 {
+        return None;
+    }
+    let mut selected = rng.gen_range(0..total);
+    for (trainer, count) in candidates {
+        if selected < *count {
+            return Some(trainer.clone());
+        }
+        selected -= *count;
+    }
+    unreachable!("weighted Supporter source index must be in range")
+}
+
+fn sample_outcome_mutation(rng: &mut StdRng, outcomes: Outcomes) -> Mutation {
+    let (probabilities, mut mutations) = outcomes.into_branches();
+    let selected = if probabilities.len() == 1 {
+        0
+    } else {
+        WeightedIndex::new(&probabilities)
+            .expect("forecast probabilities must be valid")
+            .sample(rng)
+    };
+    mutations.remove(selected)
+}
+
+/// Sample the actual Supporter source once, then return its effect mutation without applying the
+/// outer Penny/Portrait common logic. Researcher uses its O(M + H) physical sampler here.
+pub(crate) fn sample_copied_supporter_effect(
+    rng: &mut StdRng,
+    acting_player: usize,
+    state: &State,
+    candidates: &[(TrainerCard, usize)],
+) -> Mutation {
+    let Some(trainer_card) = choose_supporter_source(rng, candidates) else {
+        return Box::new(|_, _, _| {});
+    };
+    let usable = matches!(
+        trainer_move_generation_implementation(state, &trainer_card),
+        Some(actions) if !actions.is_empty()
+    );
+    if !usable {
+        return Box::new(|_, _, _| {});
+    }
+
+    if is_researcher_card(&trainer_card) {
+        let plan = ResearcherPlan::from_state(state, acting_player);
+        let force_first = state.has_pending_will_first_heads();
+        let batch = plan.sample_batch(rng, force_first);
+        return Box::new(move |rng, state, _action| {
+            if force_first {
+                assert!(state.consume_pending_will_first_heads());
+            }
+            plan.apply_sampled(&batch, rng, state, acting_player);
+        });
+    }
+
+    if is_misty_card(&trainer_card) {
+        return sample_misty_effect(rng, state, &trainer_card);
+    }
+
+    if is_penny_card(&trainer_card) {
+        let opponent = 1 - acting_player;
+        let nested_candidates = penny_candidates(state, opponent);
+        if nested_candidates.is_empty() {
+            return Box::new(|_, _, _| {});
+        }
+        let nested = sample_copied_supporter_effect(rng, acting_player, state, &nested_candidates);
+        let penny = trainer_card.clone();
+        return Box::new(move |rng, state, action| {
+            nested(rng, state, action);
+            if trainer_coin_plan::defer_penny_shuffle_for_misty(state, &penny, opponent) {
+                return;
+            }
+            state.decks[opponent].shuffle(false, rng);
+        });
+    }
+
+    let mut outcomes = forecast_trainer_action_unchecked(acting_player, state, &trainer_card);
+    if state.has_pending_will_first_heads() {
+        outcomes = match outcomes.force_first_heads() {
+            Ok(forced) => forced.map_mutations(|mutation| {
+                Box::new(move |rng, state, action| {
+                    assert!(state.consume_pending_will_first_heads());
+                    mutation(rng, state, action);
+                })
+            }),
+            Err(original) => original,
+        };
+    }
+    sample_outcome_mutation(rng, outcomes)
+}
+
+/// The Supporters in `player`'s deck that Penny can copy, with how many copies of each are there.
+pub(crate) fn penny_candidates(state: &State, player: usize) -> Vec<(TrainerCard, usize)> {
+    // Penny can copy anything but another Penny — that exclusion is what bounds the recursion.
+    distinct_supporters(state.decks[player].cards.iter(), Some("Penny"))
+}
+
+/// The Supporters in `player`'s hand that Smeargle's Portrait can copy, with how many copies of
+/// each are there. The hand mirror of [`penny_candidates`]; Portrait names no exclusion, and
+/// Smeargle is a Pokémon, so it cannot copy itself.
+pub(crate) fn supporter_candidates_in_hand(
+    state: &State,
+    player: usize,
+) -> Vec<(TrainerCard, usize)> {
+    distinct_supporters(state.hands[player].iter(), None)
+}
+
+fn distinct_supporters<'a>(
+    cards: impl Iterator<Item = &'a Card>,
+    exclude_name: Option<&str>,
+) -> Vec<(TrainerCard, usize)> {
+    let mut candidates: Vec<(TrainerCard, usize)> = vec![];
+    for card in cards {
+        let Card::Trainer(trainer_card) = card else {
+            continue;
+        };
+        if trainer_card.trainer_card_type != TrainerType::Supporter
+            || exclude_name.is_some_and(|name| trainer_card.name == name)
+        {
+            continue;
+        }
+        match candidates
+            .iter_mut()
+            .find(|(existing, _)| existing.id == trainer_card.id)
+        {
+            Some((_, count)) => *count += 1,
+            None => candidates.push((trainer_card.clone(), 1)),
+        }
+    }
+    candidates
+}
+
+/// Cards whose entire printed effect is revealing or reordering hidden cards:
+///
+/// - Morty  — "For each of your [P] Pokémon in play, look at that many cards from the top of your
+///   opponent's deck and put them back in any order."
+/// - Hiker  — the same for the top of *your* deck.
+/// - Looker — "Your opponent reveals all of the Supporter cards in their deck."
+/// - Pokédex — "Look at the top 3 cards of your deck."
+/// - Rotom Dex — "Look at the top card of your deck. Then, you may shuffle your deck."
+/// - Hand Scope — "Your opponent reveals their hand."
+///
+/// deckgym's bots have no hidden-information model: they cannot condition on a revealed card, and
+/// reordering a deck they cannot see has no effect on any decision they make. So these resolve as
+/// legal-but-inert plays rather than being faked into some mechanical benefit. They are still
+/// fully playable, and the Supporters among them still consume the once-per-turn Supporter slot,
+/// which is the part of their cost that *is* mechanically real.
+///
+/// Rotom Dex's optional shuffle is likewise omitted: with the deck unobservable, shuffling or not
+/// is value-neutral, so offering it would only widen the game tree.
+fn information_only_effect(_: &mut StdRng, _: &mut State, _: &Action) {}
+
+fn squirt_bottle_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    // Discard a [R] Energy from your opponent's Active Pokémon.
+    let opponent = (action.actor + 1) % 2;
+    let has_fire = state
+        .maybe_get_active(opponent)
+        .is_some_and(|active| active.attached_energy.contains(&EnergyType::Fire));
+    if has_fire {
+        state.discard_from_active(opponent, &[EnergyType::Fire]);
+    }
+}
+
+fn hitting_hammer_outcomes() -> Outcomes {
+    // Flip 2 coins. If both of them are heads, discard a random Energy from your opponent's
+    // Active Pokémon.
+    Outcomes::binomial_by_heads(2, move |heads| {
+        Box::new(
+            move |rng: &mut StdRng, state: &mut State, action: &Action| {
+                if heads < 2 {
+                    return;
+                }
+                let opponent = (action.actor + 1) % 2;
+                let Some(active) = state.maybe_get_active(opponent) else {
+                    return;
+                };
+                if active.attached_energy.is_empty() {
+                    return;
+                }
+                let picked = rng.gen_range(0..active.attached_energy.len());
+                let energy = active.attached_energy[picked];
+                state.discard_from_active(opponent, &[energy]);
+            },
+        )
+    })
+}
+
+fn prank_spinner_effect(rng: &mut StdRng, state: &mut State, _: &Action) {
+    // A card from among both player's hands is chosen at random, revealed to the other player, and
+    // shuffled into its owner's deck. The reveal is informational only — deckgym's bots have no
+    // hidden-information model — so only the shuffle is modelled. The pick uses the rng rather than
+    // an Outcomes branch per card so the game tree does not blow up with (and leak) hand contents.
+    let total = state.hands[0].len() + state.hands[1].len();
+    if total == 0 {
+        return;
+    }
+    let picked = rng.gen_range(0..total);
+    let (owner, index) = if picked < state.hands[0].len() {
+        (0, picked)
+    } else {
+        (1, picked - state.hands[0].len())
+    };
+    let card = state.hands[owner].remove(index);
+    debug!("Prank Spinner: shuffling {card:?} from player {owner}'s hand into their deck");
+    state.decks[owner].cards.push(card);
+    state.decks[owner].shuffle(false, rng);
+}
+
+fn pokemon_flute_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    // Put a Basic Pokémon from your opponent's discard pile onto their Bench. The player who used
+    // Pokémon Flute picks which one (and which open Bench slot it lands in).
+    let opponent = (action.actor + 1) % 2;
+    let Some(bench_idx) = first_open_bench_slot(state, opponent) else {
+        return;
+    };
+    let mut seen: Vec<Card> = Vec::new();
+    let choices: Vec<SimpleAction> = state.discard_piles[opponent]
+        .iter()
+        .filter(|card| card.is_basic())
+        .filter(|card| {
+            let is_new = !seen.contains(card);
+            if is_new {
+                seen.push((*card).clone());
+            }
+            is_new
+        })
+        .map(|card| SimpleAction::BenchOpponentFromDiscard {
+            card: card.clone(),
+            bench_idx,
+        })
+        .collect();
+    if !choices.is_empty() {
+        state.move_generation_stack.push((action.actor, choices));
+    }
+}
+
+/// The lowest-numbered empty Bench slot for `player`, if any. Bench slots are interchangeable, so
+/// Pokémon Flute only needs to offer one of them.
+fn first_open_bench_slot(state: &State, player: usize) -> Option<usize> {
+    (1..state.in_play_pokemon[player].len())
+        .find(|idx| state.in_play_pokemon[player][*idx].is_none())
+}
+
+fn traveling_merchant_effect(acting_player: usize, state: &State) -> Outcomes {
+    // Look at the top 4 cards of your deck. Put all Pokémon Tool cards you find there into your
+    // hand. Shuffle the other cards back into your deck. Modelled exactly like Sightseer: the deck
+    // order is hidden, so every 4-card subset is an equally likely "top 4".
+    super::shared_mutations::top_n_reveal_outcomes(acting_player, state, 4, is_tool_card)
+}
+
+fn fisher_outcomes() -> Outcomes {
+    // Flip 3 coins. For each heads, a [W] Pokémon is chosen at random from your discard pile and
+    // put into your hand. `binomial_by_heads` keeps the coins visible to the search bots so they
+    // price the flips instead of seeing an expected value.
+    Outcomes::binomial_by_heads(3, move |heads| {
+        Box::new(
+            move |rng: &mut StdRng, state: &mut State, action: &Action| {
+                for _ in 0..heads {
+                    let candidates: Vec<usize> = state.discard_piles[action.actor]
+                        .iter()
+                        .enumerate()
+                        .filter(|(_, card)| is_water_pokemon(card))
+                        .map(|(idx, _)| idx)
+                        .collect();
+                    if candidates.is_empty() {
+                        break;
+                    }
+                    let picked = candidates[rng.gen_range(0..candidates.len())];
+                    let card = state.discard_piles[action.actor].remove(picked);
+                    state.hands[action.actor].push(card);
+                }
+            },
+        )
+    })
+}
+
+fn lana_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    // Switch in 1 of your opponent's Benched Pokémon to the Active Spot. The player who used Lana
+    // picks, exactly like Cyrus.
+    let opponent = (action.actor + 1) % 2;
+    let possible_moves = state
+        .enumerate_bench_pokemon(opponent)
+        .map(|(in_play_idx, _)| SimpleAction::Activate {
+            player: opponent,
+            in_play_idx,
+        })
+        .collect::<Vec<_>>();
+    if !possible_moves.is_empty() {
+        state
+            .move_generation_stack
+            .push((action.actor, possible_moves));
+    }
+}
+
+fn budding_expeditioner_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    // Put your Mew ex in the Active Spot into your hand. Same shape as Koga: the Pokémon and
+    // everything it evolved from go back to hand, its Energy is lost, and the empty Active Spot
+    // forces a promotion (or loses the game if the Bench is empty).
+    return_active_to_hand(state, action.actor);
+}
+
+/// Moves the Active Pokémon (plus its evolution chain) from play back into its owner's hand,
+/// discarding its Energy, then triggers promotion. Shared by Koga and Budding Expeditioner.
+fn return_active_to_hand(state: &mut State, player: usize) {
+    let active = state.in_play_pokemon[player][0]
+        .as_ref()
+        .expect("Active Pokemon should be there when returning it to hand");
+    let mut cards_to_collect = active.cards_behind.clone();
+    cards_to_collect.push(active.card.clone());
+    state.hands[player].extend(cards_to_collect);
+    // Energy disappears
+    state.in_play_pokemon[player][0] = None;
+
+    // if no bench pokemon, finish game as a loss
+    state.trigger_promotion_or_declare_winner(player);
+}
+
+fn lt_surge_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    // Move all [L] Energy from your Benched Pokémon to your Raichu, Electrode, or Electabuzz in
+    // the Active Spot.
+    gather_bench_energy_onto_active(state, action.actor, Some(EnergyType::Lightning));
+}
+
+fn juggler_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    // Move all Energy from each of your Benched Pokémon to your Active Pokémon.
+    gather_bench_energy_onto_active(state, action.actor, None);
+}
+
+fn acerola_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    // Choose 1 of your Palossand or Mimikyu that has damage on it, and move 40 of its damage to
+    // your opponent's Active Pokémon.
+    let choices = acerola_targets(state, action.actor)
+        .into_iter()
+        .map(
+            |from_in_play_idx| SimpleAction::MoveDamageToOpponentActive {
+                from_in_play_idx,
+                amount: 40,
+            },
+        )
+        .collect::<Vec<_>>();
+    if !choices.is_empty() {
+        state.move_generation_stack.push((action.actor, choices));
+    }
+}
+
+fn whitney_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    // Heal 60 damage from 1 of your Miltank, and it recovers from being Asleep, Paralyzed, and Confused.
+    let choices = whitney_targets(state, action.actor)
+        .into_iter()
+        .map(|in_play_idx| SimpleAction::HealAndCureConditions {
+            in_play_idx,
+            amount: 60,
+            conditions: WHITNEY_CURED_CONDITIONS.to_vec(),
+        })
+        .collect::<Vec<_>>();
+    if !choices.is_empty() {
+        state.move_generation_stack.push((action.actor, choices));
+    }
+}
+
+fn mallow_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    // Heal all damage from 1 of your Shiinotic or Tsareena. If you do, discard all Energy from
+    // that Pokémon. "All damage" and "all Energy" are both read off the chosen Pokémon here, so
+    // the queued action stays a plain deterministic `HealAndDiscardEnergy`.
+    let choices = mallow_targets(state, action.actor)
+        .into_iter()
+        .map(
+            |(in_play_idx, heal_amount, discard_energies)| SimpleAction::HealAndDiscardEnergy {
+                in_play_idx,
+                heal_amount,
+                discard_energies,
+            },
+        )
+        .collect::<Vec<_>>();
+    if !choices.is_empty() {
+        state.move_generation_stack.push((action.actor, choices));
+    }
+}
+
+fn hala_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    // During your opponent's next turn, if your Hariyama or Crabominable would be Knocked Out by
+    // damage from an attack, it is not Knocked Out and its remaining HP becomes 10.
+    state.add_turn_effect(
+        TurnEffect::SurviveKnockoutForSpecificPokemon {
+            remaining_hp: 10,
+            pokemon_names: vec!["Hariyama".to_string(), "Crabominable".to_string()],
+            player: action.actor,
+        },
+        1,
+    );
+}
+
+fn sophocles_effect(_: &mut StdRng, state: &mut State, _: &Action) {
+    // During this turn, attacks used by your Alolan Golem, Vikavolt, or Togedemaru do +30 damage
+    // to your opponent's Active Pokémon.
+    state.add_turn_effect(
+        TurnEffect::IncreasedDamageForSpecificPokemon {
+            amount: 30,
+            pokemon_names: vec![
+                "Alolan Golem".to_string(),
+                "Vikavolt".to_string(),
+                "Togedemaru".to_string(),
+            ],
+        },
+        0,
+    );
+}
+
+fn brock_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    // Take a [F] Energy from your Energy Zone and attach it to Golem or Onix.
+    attach_energy_from_zone_to_specific_pokemon(
+        state,
+        action.actor,
+        EnergyType::Fighting,
+        &["Golem", "Onix"],
+    );
+}
+
+fn kiawe_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    // Choose 1 of your Alolan Marowak or Turtonator. Take 2 [R] Energy from your Energy Zone and attach it to that Pokémon. Your turn ends.
+    let possible_targets: Vec<SimpleAction> = state
+        .enumerate_in_play_pokemon(action.actor)
+        .filter(|(_, pokemon)| {
+            matches!(pokemon.get_name().as_str(), "Alolan Marowak" | "Turtonator")
+        })
+        .map(|(in_play_idx, _)| SimpleAction::Attach {
+            attachments: vec![(2, EnergyType::Fire, in_play_idx)],
+            is_turn_energy: false,
+        })
+        .collect();
+    if !possible_targets.is_empty() {
+        state
+            .move_generation_stack
+            .push((action.actor, vec![SimpleAction::EndTurn]));
+        state
+            .move_generation_stack
+            .push((action.actor, possible_targets));
+    }
+}
+
+/// Generic helper to attach energy from Energy Zone (unlimited) to specific Pokemon by name
+/// Used by cards like Brock, Kiawe, etc.
+fn attach_energy_from_zone_to_specific_pokemon(
+    state: &mut State,
+    player: usize,
+    energy_type: EnergyType,
+    pokemon_names: &[&str],
+) {
+    // Enumerate all matching Pokemon in play
+    let possible_targets: Vec<SimpleAction> = state
+        .enumerate_in_play_pokemon(player)
+        .filter(|(_, pokemon)| {
+            let name = pokemon.get_name();
+            pokemon_names.iter().any(|&target_name| name == target_name)
+        })
+        .map(|(in_play_idx, _)| SimpleAction::Attach {
+            attachments: vec![(1, energy_type, in_play_idx)],
+            is_turn_energy: false,
+        })
+        .collect();
+
+    if !possible_targets.is_empty() {
+        state.move_generation_stack.push((player, possible_targets));
+    }
+}
+
+/// Attach energy to ALL Pokemon matching the specified names (not a choice)
+fn attach_energy_to_all_matching_pokemon(
+    state: &mut State,
+    player: usize,
+    energy_type: EnergyType,
+    pokemon_names: &[&str],
+) {
+    // Collect indices first to avoid borrow checker issues
+    let matching_indices: Vec<usize> = state
+        .enumerate_in_play_pokemon(player)
+        .filter_map(|(in_play_idx, pokemon)| {
+            let name = pokemon.get_name();
+            if pokemon_names.iter().any(|&target_name| name == target_name) {
+                Some(in_play_idx)
+            } else {
+                None
+            }
+        })
+        .collect();
+
+    // Attach energy to all matching Pokemon
+    for in_play_idx in matching_indices {
+        debug!(
+            "Fantina: Attaching {} Energy to Pokemon at position {}",
+            energy_type, in_play_idx
+        );
+        state.attach_energy_from_zone(player, in_play_idx, energy_type, 1, false);
+    }
+}
+
+fn fantina_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    // Take a [P] Energy from your Energy Zone and attach it to each of your Drifblim and Mismagius.
+    attach_energy_to_all_matching_pokemon(
+        state,
+        action.actor,
+        EnergyType::Psychic,
+        &["Drifblim", "Mismagius"],
+    );
+}
+
+fn red_effect(_: &mut StdRng, state: &mut State, _: &Action) {
+    // During this turn, attacks used by your Pokémon do +20 damage to your opponent's Active Pokémon ex.
+    state.add_turn_effect(TurnEffect::IncreasedDamageAgainstEx { amount: 20 }, 0);
+}
+
+fn koga_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    // Put your Muk or Weezing in the Active Spot into your hand.
+    return_active_to_hand(state, action.actor);
+}
+
+fn ilima_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    // Put 1 of your [C] Pokemon that has damage on it into your hand.
+    let choices = ilima_targets(state, action.actor)
+        .into_iter()
+        .map(|in_play_idx| SimpleAction::ReturnPokemonToHand { in_play_idx })
+        .collect::<Vec<_>>();
+
+    if !choices.is_empty() {
+        state.move_generation_stack.push((action.actor, choices));
+    }
+}
+
+// TODO: Problem. With doing 1.0, we are basically giving bots the ability to see the cards in deck.
+// TODO: In theory this should give a probability distribution over cards in deck.
+fn professor_oak_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    // Draw 2 cards.
+    for _ in 0..2 {
+        state.maybe_draw_card(action.actor);
+    }
+}
+
+// TODO: Actually use distribution of possibilities to capture probabilities
+// of pulling the different psychic left in deck vs pushing an item to the bottom.
+fn mythical_slab_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    // Look at the top card of your deck. If that card is a Psychic Pokemon,\n        put it in your hand. If it is not a Psychic Pokemon, put it on the\n        bottom of your deck.
+    if let Some(card) = state.decks[action.actor].cards.first() {
+        if matches!(card, Card::Pokemon(pokemon) if pokemon.energy_type == EnergyType::Psychic) {
+            state.hands[action.actor].push(card.clone());
+            state.decks[action.actor].cards.remove(0);
+        } else {
+            let card = state.decks[action.actor].cards.remove(0);
+            state.decks[action.actor].cards.push(card);
+        }
+    } // else do nothing
+}
+
+// Here we will simplify the output possibilities, counting with the fact that value functions
+// should not use the cards of the enemy as input.
+fn red_card_effect(rng: &mut StdRng, state: &mut State, action: &Action) {
+    // Your opponent shuffles their hand into their deck and draws 3 cards.
+    let acting_player = action.actor;
+    let opponent = (acting_player + 1) % 2;
+    let opponent_hand = &mut state.hands[opponent];
+    let opponent_deck = &mut state.decks[opponent];
+    opponent_deck.cards.append(opponent_hand);
+    opponent_deck.shuffle(false, rng);
+    for _ in 0..3 {
+        state.maybe_draw_card(opponent);
+    }
+}
+
+// Give the choice to the player to attach a tool to one of their pokemon.
+fn attach_tool(_: &mut StdRng, state: &mut State, action: &Action) {
+    if let SimpleAction::Play { trainer_card } = &action.action {
+        let tool_card = Card::Trainer(trainer_card.clone());
+        let choices = enumerate_tool_choices(trainer_card, state, action.actor)
+            .into_iter()
+            .map(|(in_play_idx, _)| SimpleAction::AttachTool {
+                in_play_idx,
+                tool_card: tool_card.clone(),
+            })
+            .collect::<Vec<_>>();
+        state.move_generation_stack.push((action.actor, choices));
+    } else {
+        panic!("Tool should have been played");
+    }
+}
+
+/// Makes user select what Stage2-Basic pair to evolve.
+fn rare_candy_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    let player = action.actor;
+    let hand = &state.hands[player];
+
+    // Flat-map basic in play with valid stage 2 in hand pairs
+    let possible_candy_evolutions: Vec<SimpleAction> = state
+        .enumerate_in_play_pokemon(player)
+        .flat_map(|(in_play_idx, in_play)| {
+            hand.iter()
+                .filter(|card| can_rare_candy_evolve(card, in_play))
+                .map(move |card| SimpleAction::Evolve {
+                    evolution: card.clone(),
+                    in_play_idx,
+                    from_deck: false, // Rare Candy uses evolution from hand
+                })
+        })
+        .collect();
+
+    if !possible_candy_evolutions.is_empty() {
+        state
+            .move_generation_stack
+            .push((player, possible_candy_evolutions));
+    }
+}
+
+/// Queue the decision for user to select which Pokemon from hand to swap
+fn pokemon_communication_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    let player = action.actor;
+    let possible_swaps: Vec<SimpleAction> = state.hands[player]
+        .iter()
+        .filter(|card| matches!(card, Card::Pokemon(_)))
+        .map(|card| SimpleAction::CommunicatePokemon {
+            hand_pokemon: card.clone(),
+        })
+        .collect();
+
+    if !possible_swaps.is_empty() {
+        state.move_generation_stack.push((player, possible_swaps));
+    }
+}
+
+fn dawn_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    let player = action.actor;
+    if state.maybe_get_active(player).is_none() {
+        return;
+    }
+    let mut possible_transfers = Vec::new();
+
+    for (from_idx, pokemon) in state.enumerate_bench_pokemon(player) {
+        for &energy in &pokemon.attached_energy {
+            let move_action = SimpleAction::MoveEnergy {
+                from_in_play_idx: from_idx,
+                to_in_play_idx: 0,
+                energy_type: energy,
+                amount: 1,
+            };
+            if !possible_transfers.contains(&move_action) {
+                possible_transfers.push(move_action);
+            }
+        }
+    }
+
+    if !possible_transfers.is_empty() {
+        state
+            .move_generation_stack
+            .push((player, possible_transfers));
+    }
+}
+
+fn elemental_switch_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    let player = action.actor;
+    if state.maybe_get_active(player).is_none() {
+        return;
+    }
+    let allowed_types = [EnergyType::Fire, EnergyType::Water, EnergyType::Lightning];
+    let mut possible_transfers = Vec::new();
+
+    for (from_idx, pokemon) in state.enumerate_bench_pokemon(player) {
+        for &energy in &pokemon.attached_energy {
+            if allowed_types.contains(&energy) {
+                let move_action = SimpleAction::MoveEnergy {
+                    from_in_play_idx: from_idx,
+                    to_in_play_idx: 0,
+                    energy_type: energy,
+                    amount: 1,
+                };
+                if !possible_transfers.contains(&move_action) {
+                    possible_transfers.push(move_action);
+                }
+            }
+        }
+    }
+
+    if !possible_transfers.is_empty() {
+        state
+            .move_generation_stack
+            .push((player, possible_transfers));
+    }
+}
+
+/// Queue the decision for user to select which Supporter from opponent's hand to shuffle
+fn silver_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    let player = action.actor;
+    let opponent = (player + 1) % 2;
+    let possible_shuffles: Vec<SimpleAction> = state.hands[opponent]
+        .iter()
+        .filter(|card| card.is_support())
+        .map(|card| SimpleAction::ShuffleOpponentHandCard { card: card.clone() })
+        .collect();
+
+    if !possible_shuffles.is_empty() {
+        state
+            .move_generation_stack
+            .push((player, possible_shuffles));
+    }
+}
+
+fn professor_sada_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    let player = action.actor;
+    let ancient_slots: Vec<usize> = state
+        .enumerate_in_play_pokemon(player)
+        .filter(|(_, pokemon)| is_ancient_pokemon(&pokemon.get_name()))
+        .map(|(idx, _)| idx)
+        .collect();
+
+    let choices: Vec<SimpleAction> =
+        crate::actions::professor_sada::generate_professor_sada_assignments(
+            &ancient_slots,
+            &state.discard_energies[player],
+        )
+        .into_iter()
+        .map(|assignments| SimpleAction::SadaAttach { assignments })
+        .collect();
+
+    if !choices.is_empty() {
+        state.move_generation_stack.push((player, choices));
+    }
+}
+
+/// Queue the decision for user to select which Ultra Beast to attach energies to
+fn lusamine_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    let player = action.actor;
+    let num_energies_to_attach = min(2, state.discard_energies[player].len());
+
+    let possible_attachments: Vec<SimpleAction> = state
+        .enumerate_in_play_pokemon(player)
+        .filter(|(_, pokemon)| is_ultra_beast(&pokemon.get_name()))
+        .map(|(idx, _)| SimpleAction::AttachFromDiscard {
+            in_play_idx: idx,
+            num_random_energies: num_energies_to_attach,
+        })
+        .collect();
+
+    if !possible_attachments.is_empty() {
+        state
+            .move_generation_stack
+            .push((player, possible_attachments));
+    }
+}
+
+/// Queue the decision for user to select Electivire or Luxray to attach Lightning energy to
+fn volkner_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    let player = action.actor;
+    let num_lightning_to_attach = std::cmp::min(
+        2,
+        state.discard_energies[player]
+            .iter()
+            .filter(|e| **e == EnergyType::Lightning)
+            .count(),
+    );
+
+    let possible_attachments: Vec<SimpleAction> = state
+        .enumerate_in_play_pokemon(player)
+        .filter(|(_, pokemon)| matches!(pokemon.get_name().as_str(), "Electivire" | "Luxray"))
+        .map(|(idx, _)| SimpleAction::AttachTypedFromDiscard {
+            in_play_idx: idx,
+            energy_type: EnergyType::Lightning,
+            count: num_lightning_to_attach,
+        })
+        .collect();
+
+    if !possible_attachments.is_empty() {
+        state
+            .move_generation_stack
+            .push((player, possible_attachments));
+    }
+}
+
+fn lyra_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    let possible_activations = state
+        .enumerate_bench_pokemon(action.actor)
+        .map(|(idx, _)| SimpleAction::Activate {
+            player: action.actor,
+            in_play_idx: idx,
+        })
+        .collect();
+    state
+        .move_generation_stack
+        .push((action.actor, possible_activations))
+}
+
+fn skyla_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    // Switch your Active Stage 1 Pokémon with 1 of your Benched Pokémon.
+    let possible_activations = state
+        .enumerate_bench_pokemon(action.actor)
+        .map(|(in_play_idx, _)| SimpleAction::Activate {
+            player: action.actor,
+            in_play_idx,
+        })
+        .collect::<Vec<_>>();
+    if !possible_activations.is_empty() {
+        state
+            .move_generation_stack
+            .push((action.actor, possible_activations));
+    }
+}
+
+fn drayden_effect(_: &mut StdRng, state: &mut State, _: &Action) {
+    // During this turn, 1 of your opponent's Pokémon is chosen 1 more time for the Draco Meteor
+    // attack used by your Pokémon.
+    state.add_turn_effect(
+        TurnEffect::ExtraRandomSpreadHits {
+            amount: 1,
+            attack_name: "Draco Meteor".to_string(),
+        },
+        0,
+    );
+}
+
+fn psychic_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    // Choose 1 of your opponent's Benched Pokémon and move a random Energy from it to your
+    // opponent's Active Pokémon.
+    let opponent = (action.actor + 1) % 2;
+    let choices = psychic_energy_sources(state, opponent)
+        .into_iter()
+        .map(|from_in_play_idx| SimpleAction::MoveRandomOpponentEnergyToActive { from_in_play_idx })
+        .collect::<Vec<_>>();
+    if !choices.is_empty() {
+        state.move_generation_stack.push((action.actor, choices));
+    }
+}
+
+fn wally_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    // Take a [C] Energy from your Energy Zone and attach it to 1 of your Stage 2 Pokémon.
+    let possible_targets = state
+        .enumerate_in_play_pokemon(action.actor)
+        .filter(|(_, pokemon)| get_stage(pokemon) == 2)
+        .map(|(in_play_idx, _)| SimpleAction::Attach {
+            attachments: vec![(1, EnergyType::Colorless, in_play_idx)],
+            is_turn_energy: false,
+        })
+        .collect::<Vec<_>>();
+    if !possible_targets.is_empty() {
+        state
+            .move_generation_stack
+            .push((action.actor, possible_targets));
+    }
+}
+
+fn eevee_bag_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    let choices = vec![
+        SimpleAction::ApplyEeveeBagDamageBoost,
+        SimpleAction::HealAllEeveeEvolutions,
+    ];
+    state.move_generation_stack.push((action.actor, choices));
+}
+
+fn flame_patch_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    state.attach_energy_from_discard(action.actor, 0, &[EnergyType::Fire]);
+}
+
+fn copycat_effect(rng: &mut StdRng, state: &mut State, action: &Action) {
+    // Shuffle your hand into your deck. Draw a card for each card in your opponent's hand.
+    let player = action.actor;
+    let opponent = (player + 1) % 2;
+
+    // Count opponent's hand size before shuffling
+    let opponent_hand_size = state.hands[opponent].len();
+
+    debug!(
+        "Copycat: Shuffling hand into deck and drawing {} cards (opponent's hand size)",
+        opponent_hand_size
+    );
+
+    // Shuffle player's hand into their deck
+    state.decks[player].cards.append(&mut state.hands[player]);
+    state.decks[player].shuffle(false, rng);
+
+    // Draw cards equal to opponent's hand size
+    for _ in 0..opponent_hand_size {
+        state.maybe_draw_card(player);
+    }
+}
+
+fn iono_effect(rng: &mut StdRng, state: &mut State, action: &Action) {
+    // Each player shuffles the cards in their hand into their deck, then draws that many cards.
+    let player = action.actor;
+    let opponent = (player + 1) % 2;
+
+    // Count each player's hand size before shuffling
+    let player_hand_size = state.hands[player].len();
+    let opponent_hand_size = state.hands[opponent].len();
+
+    debug!(
+        "Iono: Player {} shuffling {} cards, opponent shuffling {} cards",
+        player, player_hand_size, opponent_hand_size
+    );
+
+    // Shuffle player's hand into their deck
+    state.decks[player].cards.append(&mut state.hands[player]);
+    state.decks[player].shuffle(false, rng);
+
+    // Shuffle opponent's hand into their deck
+    state.decks[opponent]
+        .cards
+        .append(&mut state.hands[opponent]);
+    state.decks[opponent].shuffle(false, rng);
+
+    // Each player draws the same number of cards they had
+    for _ in 0..player_hand_size {
+        state.maybe_draw_card(player);
+    }
+    for _ in 0..opponent_hand_size {
+        state.maybe_draw_card(opponent);
+    }
+}
+
+pub fn may_effect(acting_player: usize, state: &State) -> Outcomes {
+    // Put 2 random Pokémon from your deck into your hand.
+    // For each Pokémon you put into your hand in this way, choose a Pokémon to shuffle from your hand into your deck.
+    let deck_pokemon: Vec<Card> = state.iter_deck_pokemon(acting_player).cloned().collect();
+    let num_pokemon = deck_pokemon.len();
+    if num_pokemon == 0 {
+        // No Pokemon in deck, just shuffle
+        return Outcomes::single_fn(|rng, state, action| {
+            state.decks[action.actor].shuffle(false, rng);
+        });
+    }
+
+    // For drawing 2 Pokemon, we need to generate all possible pairs
+    // Each outcome draws 2 different Pokemon (or fewer if not enough in deck)
+    let num_to_draw = min(2, num_pokemon);
+    if num_to_draw == 1 {
+        // Only 1 Pokemon in deck - simple case
+        let probabilities = vec![1.0];
+        let mut outcomes: Mutations = vec![];
+        outcomes.push(Box::new(move |_rng, state, action| {
+            let pokemon = state
+                .iter_deck_pokemon(action.actor)
+                .next()
+                .cloned()
+                .expect("Pokemon should be in deck");
+            state.transfer_card_from_deck_to_hand(action.actor, &pokemon);
+            // Queue shuffling that Pokemon back into deck
+            state.move_generation_stack.push((
+                action.actor,
+                vec![SimpleAction::ShufflePokemonIntoDeck {
+                    hand_pokemon: vec![pokemon],
+                }],
+            ));
+        }));
+        return Outcomes::from_parts(probabilities, outcomes);
+    }
+
+    // Drawing 2 Pokemon - generate all possible unordered combinations
+    let draw_combinations = generate_combinations(&deck_pokemon, num_to_draw);
+    let num_outcomes = draw_combinations.len();
+    let probabilities = vec![1.0 / (num_outcomes as f64); num_outcomes];
+    let mut outcomes: Mutations = vec![];
+    for combo in draw_combinations {
+        outcomes.push(Box::new(move |_rng, state, action| {
+            // Transfer each Pokemon from the combination to hand
+            for pokemon in &combo {
+                state.transfer_card_from_deck_to_hand(action.actor, pokemon);
+            }
+
+            // Generate all possible 2-combinations of Pokemon in hand to shuffle back
+            let hand_pokemon: Vec<Card> = state.iter_hand_pokemon(action.actor).cloned().collect();
+            let combinations = generate_combinations(&hand_pokemon, num_to_draw);
+            let shuffle_choices: Vec<SimpleAction> = combinations
+                .into_iter()
+                .map(|combo| SimpleAction::ShufflePokemonIntoDeck {
+                    hand_pokemon: combo,
+                })
+                .collect();
+            state
+                .move_generation_stack
+                .push((action.actor, shuffle_choices));
+        }));
+    }
+
+    Outcomes::from_parts(probabilities, outcomes)
+}
+
+fn lisia_effect(acting_player: usize, state: &State) -> Outcomes {
+    // Put 2 random Basic Pokémon with 50 HP or less from your deck into your hand.
+    card_search_outcomes_with_filter_multiple(acting_player, state, 2, |card| {
+        if let Card::Pokemon(pokemon_card) = card {
+            pokemon_card.stage == 0 && pokemon_card.hp <= 50
+        } else {
+            false
+        }
+    })
+}
+
+fn celestic_town_elder_effect(acting_player: usize, state: &State) -> Outcomes {
+    // Put 1 random Basic Pokémon from your discard pile into your hand.
+    let basic_pokemon: Vec<Card> = state.discard_piles[acting_player]
+        .iter()
+        .filter(|card| card.is_basic())
+        .cloned()
+        .collect();
+
+    if basic_pokemon.is_empty() {
+        // No basic Pokemon in discard, nothing to do
+        return Outcomes::single_fn(|_, _, _| {});
+    }
+
+    // Create one outcome for each possible basic Pokemon that could be selected
+    let num_outcomes = basic_pokemon.len();
+    let probabilities = vec![1.0 / (num_outcomes as f64); num_outcomes];
+    let mut outcomes: Mutations = vec![];
+
+    for pokemon in basic_pokemon {
+        outcomes.push(Box::new(move |_, state, action| {
+            // Find and remove this specific Pokemon from discard pile
+            if let Some(idx) = state.discard_piles[action.actor]
+                .iter()
+                .position(|card| card == &pokemon)
+            {
+                state.discard_piles[action.actor].remove(idx);
+                state.hands[action.actor].push(pokemon.clone());
+            }
+        }));
+    }
+
+    Outcomes::from_parts(probabilities, outcomes)
+}
+
+fn nemona_effect(_: &mut StdRng, state: &mut State, _: &Action) {
+    // During this turn, attacks used by your Pawmot do +80 damage to your opponent's Active Pokémon ex.
+    state.add_turn_effect(
+        TurnEffect::IncreasedDamageForSpecificPokemonAgainstEx {
+            amount: 80,
+            pokemon_names: vec!["Pawmot".to_string()],
+        },
+        0,
+    );
+}
+
+fn clemonts_backpack_effect(_: &mut StdRng, state: &mut State, _: &Action) {
+    // During this turn, attacks used by your Magneton or Heliolisk do +20 damage to your opponent's Pokémon.
+    state.add_turn_effect(
+        TurnEffect::IncreasedDamageForSpecificPokemon {
+            amount: 20,
+            pokemon_names: vec!["Magneton".to_string(), "Heliolisk".to_string()],
+        },
+        0,
+    );
+}
+
+fn clemont_effect(acting_player: usize, state: &State) -> Outcomes {
+    // Put 2 random cards from among Magneton, Heliolisk, and Clemont's Backpack from your deck into your hand.
+    card_search_outcomes_with_filter_multiple(acting_player, state, 2, |card| {
+        let name = card.get_name();
+        name == "Magneton" || name == "Heliolisk" || name == "Clemont's Backpack"
+    })
+}
+
+fn serena_effect(acting_player: usize, state: &State) -> Outcomes {
+    // Put a random Mega Evolution Pokémon ex from your deck into your hand.
+    // All Mega evolutions are ex by definition
+    card_search_outcomes_with_filter_multiple(acting_player, state, 1, |card| card.is_mega())
+}
+
+fn sightseer_effect(acting_player: usize, state: &State) -> Outcomes {
+    // Look at the top 4 cards of your deck. Put all Stage 1 Pokémon you find there into your
+    // hand. Shuffle the other cards back into your deck.
+    super::shared_mutations::top_n_reveal_outcomes(
+        acting_player,
+        state,
+        4,
+        |card| matches!(card, Card::Pokemon(p) if p.stage == 1),
+    )
+}
+
+fn elesa_effect(_: &mut StdRng, state: &mut State, _: &Action) {
+    // Return all Pokémon Tools attached to each Pokémon (both yours and your opponent's) to
+    // their owner's hand.
+    for player in 0..2 {
+        for pokemon in state.in_play_pokemon[player].iter_mut().flatten() {
+            state.hands[player].append(&mut pokemon.attached_tools);
+        }
+    }
+}
+
+fn puppy_loving_girl_effect(acting_player: usize, state: &State) -> Outcomes {
+    // Look at the top 4 cards of your deck. Put all Pokémon you find there that have the
+    // Puppy Pile attack into your hand. Shuffle the other cards back into your deck.
+    super::shared_mutations::top_n_reveal_outcomes(
+        acting_player,
+        state,
+        4,
+        |card| matches!(card, Card::Pokemon(p) if p.attacks.iter().any(|a| a.title == "Puppy Pile")),
+    )
+}
+
+fn quick_grow_extract_effect(acting_player: usize, state: &State) -> Outcomes {
+    // Choose 1 of your [G] Pokémon in play. Put a random [G] Pokémon from your deck
+    // that evolves from that Pokémon onto that Pokémon to evolve it.
+    let choices = state
+        .enumerate_in_play_pokemon(acting_player)
+        .filter(|(_, pokemon)| {
+            state.pokemon_is_type(pokemon, EnergyType::Grass) && !pokemon.played_this_turn
+        })
+        .map(|(in_play_idx, _)| SimpleAction::ChooseRandomEvolutionTarget {
+            in_play_idx,
+            energy_type: EnergyType::Grass,
+        })
+        .collect::<Vec<_>>();
+
+    Outcomes::single_fn(move |_, state, action| {
+        if !choices.is_empty() {
+            state
+                .move_generation_stack
+                .push((action.actor, choices.clone()));
+        }
+    })
+}
+
+fn wallace_effect(acting_player: usize, state: &State) -> Outcomes {
+    // Choose 1 of your [W] Pokémon in play with a maximum HP of 50 or less. Put a random [W]
+    // Pokémon from your deck that evolves from that Pokémon onto that Pokémon to evolve it.
+    let choices = state
+        .enumerate_in_play_pokemon(acting_player)
+        .filter(|(_, pokemon)| {
+            state.pokemon_is_type(pokemon, EnergyType::Water)
+                && pokemon.get_effective_total_hp() <= 50
+        })
+        .map(|(in_play_idx, _)| SimpleAction::ChooseRandomEvolutionTarget {
+            in_play_idx,
+            energy_type: EnergyType::Water,
+        })
+        .collect::<Vec<_>>();
+
+    Outcomes::single_fn(move |_, state, action| {
+        if !choices.is_empty() {
+            state
+                .move_generation_stack
+                .push((action.actor, choices.clone()));
+        }
+    })
+}
+
+/// Resolve the random half of Quick-Grow Extract and Wallace after the player has selected the
+/// visible in-play target. Only matching-type evolutions of that one target are probability
+/// branches; the deck is shuffled even when the search finds nothing.
+pub(crate) fn random_typed_evolution_outcomes(
+    player: usize,
+    in_play_idx: usize,
+    energy_type: EnergyType,
+    state: &State,
+) -> Outcomes {
+    let Some(target) = state.in_play_pokemon[player][in_play_idx].as_ref() else {
+        return Outcomes::single_fn(move |rng, state, _| {
+            state.decks[player].shuffle(false, rng);
+        });
+    };
+    let evolution_cards = state.decks[player]
+        .cards
+        .iter()
+        .filter(|card| {
+            matches!(card, Card::Pokemon(pokemon) if pokemon.energy_type == energy_type)
+                && can_evolve_into(state, card, target)
+        })
+        .cloned()
+        .collect::<Vec<_>>();
+
+    if evolution_cards.is_empty() {
+        return Outcomes::single_fn(move |rng, state, _| {
+            state.decks[player].shuffle(false, rng);
+        });
+    }
+
+    let probability = 1.0 / evolution_cards.len() as f64;
+    let outcomes = evolution_cards
+        .into_iter()
+        .map(|evolution_card| -> Mutation {
+            Box::new(move |rng, state, _| {
+                let still_legal = state.in_play_pokemon[player][in_play_idx]
+                    .as_ref()
+                    .is_some_and(|target| {
+                        matches!(&evolution_card, Card::Pokemon(pokemon) if pokemon.energy_type == energy_type)
+                            && can_evolve_into(state, &evolution_card, target)
+                    })
+                    && state.decks[player].cards.contains(&evolution_card);
+                if still_legal {
+                    apply_evolve(player, state, &evolution_card, in_play_idx, true);
+                }
+                state.decks[player].shuffle(false, rng);
+            })
+        })
+        .collect::<Mutations>();
+    Outcomes::from_parts(vec![probability; outcomes.len()], outcomes)
+}
+
+fn team_rocket_grunt_outcomes(state: &State, acting_player: usize) -> Outcomes {
+    // Flip a coin until you get tails. For each heads, discard a random Energy from your opponent's Active Pokémon.
+    let opponent = 1 - acting_player;
+    let saturation = state
+        .maybe_get_active(opponent)
+        .map_or(0, |pokemon| pokemon.attached_energy.len());
+    Outcomes::geometric_until_tails_saturated(saturation, move |heads| {
+        Box::new(
+            move |rng: &mut StdRng, state: &mut State, action: &Action| {
+                let opponent = (action.actor + 1) % 2;
+                for _ in 0..heads {
+                    let energy_len = state.in_play_pokemon[opponent][0]
+                        .as_ref()
+                        .map(|p| p.attached_energy.len())
+                        .unwrap_or(0);
+                    if energy_len == 0 {
+                        break;
+                    }
+                    let random_idx = rng.gen_range(0..energy_len);
+                    let energy = state.in_play_pokemon[opponent][0]
+                        .as_ref()
+                        .unwrap()
+                        .attached_energy[random_idx];
+                    state.discard_from_active(opponent, &[energy]);
+                }
+            },
+        )
+    })
+    .expect("attached Energy count must fit the geometric saturation boundary")
+}
+
+pub(crate) fn copied_supporter_is_usable(state: &State, trainer_card: &TrainerCard) -> bool {
+    matches!(
+        trainer_move_generation_implementation(state, trainer_card),
+        Some(actions) if !actions.is_empty()
+    )
+}
+
+#[cfg(test)]
+mod tests {
+    use std::collections::BTreeSet;
+
+    use rand::{rngs::StdRng, SeedableRng};
+
+    use super::*;
+    use crate::{card_ids::CardId, database::get_card_by_enum, hooks::to_playable_card};
+
+    fn make_action() -> Action {
+        Action {
+            actor: 0,
+            action: SimpleAction::Noop,
+            is_stack: false,
+        }
+    }
+
+    fn make_state_with_damaged_active() -> State {
+        let mut state = State::default();
+        let bulbasaur = get_card_by_enum(CardId::A1001Bulbasaur);
+        let mut played = to_playable_card(&bulbasaur, false);
+        played.apply_damage(30);
+        state.in_play_pokemon[0][0] = Some(played);
+        state
+    }
+
+    #[test]
+    fn test_big_malasada_heals_10_damage() {
+        let mut rng = StdRng::seed_from_u64(0);
+        let mut state = make_state_with_damaged_active();
+        let hp_before = state.get_active(0).get_remaining_hp();
+
+        big_malasada_effect(&mut rng, &mut state, &make_action());
+
+        assert_eq!(state.get_active(0).get_remaining_hp(), hp_before + 10);
+    }
+
+    #[test]
+    fn test_big_malasada_cures_poisoned() {
+        let mut rng = StdRng::seed_from_u64(0);
+        let mut state = make_state_with_damaged_active();
+        state.apply_status_condition(0, 0, StatusCondition::Poisoned);
+
+        big_malasada_effect(&mut rng, &mut state, &make_action());
+
+        assert!(!state.get_active(0).is_poisoned());
+    }
+
+    #[test]
+    fn test_big_malasada_cures_paralyzed() {
+        let mut rng = StdRng::seed_from_u64(0);
+        let mut state = make_state_with_damaged_active();
+        state.apply_status_condition(0, 0, StatusCondition::Paralyzed);
+
+        big_malasada_effect(&mut rng, &mut state, &make_action());
+
+        assert!(!state.get_active(0).is_paralyzed());
+    }
+
+    #[test]
+    fn test_big_malasada_cures_asleep() {
+        let mut rng = StdRng::seed_from_u64(0);
+        let mut state = make_state_with_damaged_active();
+        state.apply_status_condition(0, 0, StatusCondition::Asleep);
+
+        big_malasada_effect(&mut rng, &mut state, &make_action());
+
+        assert!(!state.get_active(0).is_asleep());
+    }
+
+    #[test]
+    fn test_big_malasada_cures_burned() {
+        let mut rng = StdRng::seed_from_u64(0);
+        let mut state = make_state_with_damaged_active();
+        state.apply_status_condition(0, 0, StatusCondition::Burned);
+
+        big_malasada_effect(&mut rng, &mut state, &make_action());
+
+        assert!(!state.get_active(0).is_burned());
+    }
+
+    #[test]
+    fn test_nasty_notice_queues_opponent_discard_choices() {
+        let mut state = State::default();
+        state.hands[1] = vec![
+            get_card_by_enum(CardId::A1001Bulbasaur),
+            get_card_by_enum(CardId::A1033Charmander),
+            get_card_by_enum(CardId::A1053Squirtle),
+            get_card_by_enum(CardId::A1a025Pikachu),
+            get_card_by_enum(CardId::PA001Potion),
+        ];
+
+        nasty_notice_effect(&mut StdRng::seed_from_u64(0), &mut state, &make_action());
+
+        let (actor, choices) = state
+            .move_generation_stack
+            .pop()
+            .expect("Nasty Notice should queue discard choices");
+
+        assert_eq!(actor, 1);
+        assert_eq!(choices.len(), 5);
+
+        let actual_discards = choices
+            .into_iter()
+            .map(|choice| match choice {
+                SimpleAction::DiscardOwnCards { cards } => {
+                    assert_eq!(cards.len(), 1);
+                    cards[0].get_name()
+                }
+                other => panic!("Unexpected action: {other:?}"),
+            })
+            .collect::<BTreeSet<_>>();
+
+        let expected_discards = ["Bulbasaur", "Charmander", "Pikachu", "Potion", "Squirtle"]
+            .into_iter()
+            .map(str::to_string)
+            .collect::<BTreeSet<_>>();
+
+        assert_eq!(actual_discards, expected_discards);
+    }
+
+    #[test]
+    fn test_nasty_notice_does_nothing_at_four_cards() {
+        let mut state = State::default();
+        state.hands[1] = vec![
+            get_card_by_enum(CardId::A1001Bulbasaur),
+            get_card_by_enum(CardId::A1033Charmander),
+            get_card_by_enum(CardId::A1053Squirtle),
+            get_card_by_enum(CardId::A1a025Pikachu),
+        ];
+
+        nasty_notice_effect(&mut StdRng::seed_from_u64(0), &mut state, &make_action());
+
+        assert!(state.move_generation_stack.is_empty());
+    }
+
+    #[test]
+    fn test_big_malasada_cures_confused() {
+        let mut rng = StdRng::seed_from_u64(0);
+        let mut state = make_state_with_damaged_active();
+        state.apply_status_condition(0, 0, StatusCondition::Confused);
+
+        big_malasada_effect(&mut rng, &mut state, &make_action());
+
+        assert!(!state.get_active(0).is_confused());
+    }
+
+    #[test]
+    fn test_maintenance_effect_creates_two_card_shuffle_choices() {
+        let mut state = State::default();
+        state.hands[0] = vec![
+            get_card_by_enum(CardId::PA005PokeBall),
+            get_card_by_enum(CardId::PA006RedCard),
+            get_card_by_enum(CardId::PA007ProfessorsResearch),
+        ];
+
+        maintenance_effect(&mut StdRng::seed_from_u64(0), &mut state, &make_action());
+
+        let (_, choices) = state
+            .move_generation_stack
+            .last()
+            .expect("Maintenance should push choices onto the stack");
+        assert_eq!(choices.len(), 3);
+        assert!(choices.iter().all(|choice| matches!(
+            choice,
+            SimpleAction::ShuffleOwnCardsIntoDeck { cards } if cards.len() == 2
+        )));
+    }
+}
