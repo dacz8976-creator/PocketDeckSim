@@ -81,6 +81,7 @@ Astra's working area; its dated packages are records of runs, not instructions.
 ## Who does what (updated Sept 24)
 
 Dustin owns it and decides.
+- **Changed Sept 24 evening:** the roles below are Pocket Deck Lab's earlier text; current roles are in `PROJECT_INSTRUCTIONS.md`.
 - **Opus (Claude)** leads and builds the RL work, runs checks, analyses and sim runs, and does deck
   discovery (classifier, brews, Limitless reading). Its tokens are cheap, so it runs checks, follow-up
   analyses and cloud runs without asking at every step, unless Dustin says tokens are low. It still
@@ -105,11 +106,10 @@ the sim liked and the ladder didn't. Full list with what catches each: `docs/AUD
 ## Running now, and seed ranges already used (added for this repo, Sept 24, 3 PM)
 
 **Running or next**
-- **Laptop (Pocket Deck Lab, WSL):** the Hydreigon network run, RUN5.md plan item 2 (run folder
-  `runs/diag-hydreigon-lucario`, settings `rl/diag_hydreigon_v5_settings.json`). Starts Sept 24 afternoon or
-  evening and takes about 8 hours. Its results land in Pocket Deck Lab.
-- **Auditor (Claude, Cowork):** pair checks on Hydreigon v Lucario while it trains; network v network and the
-  Hyper Ray count after it finishes.
+- **The Hydreigon network run** (RUN5.md plan item 2) moved to this repo on Sept 24 evening before it started;
+  nothing ran from Pocket Deck Lab. Run folder `runs/diag-hydreigon-lucario`, settings
+  `rl/diag_hydreigon_v5_settings.json`, about 8 hours on the laptop. The pair checks, network v network and
+  the Hyper Ray count go with it. Opus reads the verdict.
 - **Finished Sept 24:** the deeper-search table, k4–k6 on all 28 pairings (`rl/results/deep_search_table/STATUS.txt`).
   Deeper search within a turn doesn't improve the fit to Limitless.
 - **Next in the plan** (`rl/RUN5.md`, "The plan, revised Sept 24"): card check of Altaria, Sceptile and Vespiquen
