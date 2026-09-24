@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 # Run 5 (RUN5.md): step 0 (run 4's pilot on rules4 + add-on 0.7.2) or stage 1 (Weezing vs Lucario, plus an
-# averaged copy of each network). In WSL Ubuntu, from any folder:
-#   bash "/mnt/c/Users/dacz8/Projects/Pocket Deck Lab/Boss Folder/rl-feasibility-2026-09-18/run_training_v5.sh" --step0
-#   bash "/mnt/c/Users/dacz8/Projects/Pocket Deck Lab/Boss Folder/rl-feasibility-2026-09-18/run_training_v5.sh" --stage1
+# averaged copy of each network). In WSL Ubuntu, from the repo folder:
+#   bash rl/run_training_v5.sh --step0
+#   bash rl/run_training_v5.sh --stage1
+# The Hydreigon run (RUN5.md plan item 2) is a practice-rule run with its own settings:
+#   RUN=runs/diag-hydreigon-lucario SETTINGS_FILE=rl/diag_hydreigon_v5_settings.json bash rl/run_training_v5.sh --stage1
 # The same line again resumes after any interruption. After training, without anyone asking: the paired
 # confirmations, the knockout audit, the held-out test (step 0 only) and REPORT.txt.
 # Step 0: about 1.2 h. Stage 1: at most about 8 h of training plus evaluation (it can stop earlier).
@@ -16,8 +18,8 @@
 set -euo pipefail
 export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"   # works from any folder
-ROOT="$(cd "$HERE/../.." && pwd)"
-ADDON="$ROOT/Boss Folder/rules4-t2-repair-2026-09-22/addon"
+ROOT="$(cd "$HERE/.." && pwd)"   # the repo root
+ADDON="$HERE/addon-0.7.2"   # the wheel goes in wheels/ here; README.md lists its SHA-256
 WHL="$ADDON/wheels/pdl_rl_env-0.7.2-cp38-abi3-linux_x86_64.whl"
 WHL_SHA="56ca0bad21a569b852da3c82c321f6ab3f08b162e8019d0cf5871c82636c925b"   # add-on README
 SO_SHA="0fee43ceaf9cf6bc15ed2319bb08c100397621a60703880cf26ace8f044a9101"    # add-on README: installed library

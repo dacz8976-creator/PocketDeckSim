@@ -1,7 +1,7 @@
 # Run 5: does a learned position score make k3's search better? (one matchup)
 
 Written September 22, 2026. Owner: Dustin. Lead: Opus. Code review: Astra.
-**Status (Sept 23, closed): step 0 GO; stage 1 finished (Weezing +3.2 over k3, averaged copy); stage 2 dropped. Plan after Run 5 at the end — revised Sept 24.** History and every earlier result are in
+**Status (Sept 23, closed): step 0 GO; stage 1 finished (Weezing +3.2 over k3, averaged copy); stage 2 dropped. Plan after Run 5 at the end — revised Sept 24.; option B reopened Sept 24 evening (update at the end of the plan).** History and every earlier result are in
 `FEASIBILITY.md`. This page is meant to be read on its own.
 
 ## The question, and why this one first
@@ -188,7 +188,7 @@ The independent audit asked whether beating k3 makes the simulator more realisti
 2. **The Limitless table is the scoreboard.** Any change to piloting or lists gets re-scored against it
    (about 1.5 h of cloud time, no Fable or Astra).
 3. Multi-list check of the suspect decks — **done Sept 24:** list drift is ruled out (see `results/limitless_check_2026-09-23.md`).
-4. Option B (k3 guesses the opponent's hand and searches their reply) — **dropped Sept 24** (see below).
+4. Option B (k3 guesses the opponent's hand and searches their reply) — **dropped Sept 24, reopened the same evening** (see below).
 5. **Run 6 is the long bet:** one bot that reads cards by what they are and plays every deck.
 6. **Weight averaging is the default** in any future training.
 
@@ -229,7 +229,7 @@ who plays these decks on Limitless is **open** — nothing so far separates the 
    moves — the run 4 Eevee/turn-1 Mega Altaria bug had no text mismatch and would pass a text-only check.
    Plus Sceptile v Vespiquen transcripts (sim 66–34, real 33–67) for Dustin to read, made the way the Hydreigon
    ones were. Fold in one look at *why* the existing reply search never changes a decision (dead code or a gate that
-   never fires), on the Hydreigon cell. Building option B is dropped; that question is not.
+   never fires), on the Hydreigon cell. Building option B was dropped here and is reopened (update below).
 4. **Two clerical tables** (cheap agent, no engine work): a BO1-only version of the 28 cells from the tournament
    API, with future events reserved for confirmation; and a top-finishing-players-only version. If the
    Altaria/Sceptile/Vespiquen misses shrink against top players, the population is the cause and those cells
@@ -243,11 +243,33 @@ who plays these decks on Limitless is **open** — nothing so far separates the 
    design commitment. One design page, one review, run, one report; no side studies unless they decide something on
    the page. Headline number = the table score; margin over k3 is a side note.
 6. **Dropped:** tuning k3's evaluation weights against the table (d3 evidence, overfitting 28 cells, no value for
-   brews); building option B; k7 or a larger specialist run as an automatic next step.
+   brews); k7 or a larger specialist run as an automatic next step. (Building option B was on this list; reopened below.)
 
 **Until run 6 passes a held-out-deck test, the simulator does not screen brews.** Its brew job is "does the combo
 fire"; the ladder is the screen. Positions Dustin annotates while reading transcripts are diagnostics for a specific
 fix, not the yardstick.
+
+## Update, Sept 24 evening (Claude Code; the repo is now the project's home)
+
+- **Option B is back on**, by Fable's condition. The see-everything test (Cowork cloud, 500 deals per matchup, the
+  table's deals, both sides given the same information): Hydreigon v Lucario goes from 30.8 with both blind to
+  **44.7** when both see hands and 46.8 when both see everything (Limitless 54.4 ± 8.0). Seeing hands gives almost all
+  of it, so a guess of the hand from the known list can capture most of the gain; knowing the next draw adds little.
+  Blaziken v Sceptile moves +3.6 / +5.1 (noise). Altaria v Lucario, Altaria v Blaziken and Sceptile v Vespiquen don't
+  move at all. One-sided arms: pending. Caveat: played blind, the reply search never runs (the opponent's cards are
+  blank, so it stops at their draw), so the test measures information plus a working reply search, which is what
+  option B would build. That also answers item 3's "why the reply search never changes a decision."
+- **Item 3, card text:** all 29 cards in the Altaria, Sceptile and Vespiquen lists match Limitless in HP, type, stage,
+  weakness, retreat, costs, damage and effect text (internet-side agent, Sept 24). Mega Sceptile ex's text is missing
+  an "a"; the code discards one Grass Energy, as on the card. The legality scan of the table's games is still to do.
+- **Sceptile diagnostics** (Claude Code; seeds 81.0M–81.07M and 20.0B+; not for any ranking). In the sim, Butterfree
+  (Sunny Wind), not Mega Sceptile ex, wins Sceptile's games. Switching Caterpie's Quick Growth off moves all seven
+  Sceptile cells 11–22 points (Sceptile's average 59 → 43; Limitless 48). But the ability behaves as its text and the
+  published ruling say (Fable), opponents stop Caterpie before it evolves in only 1–35% of cases, and k5 opponents
+  don't stop it more often. So Quick Growth isn't shown to be wrong; what inflates Sceptile is still open. Weakness
+  (+20 against Grass) checked in play: correct.
+- **Item 2, the Hydreigon run, moves to the repo.** `rl/run_training_v5.sh` now reads the add-on from
+  `rl/addon-0.7.2/wheels/`; the wheel itself (SHA-256 56ca0bad…925b) still has to be added there.
 
 ## Limits on every number from this run
 

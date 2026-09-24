@@ -6,6 +6,8 @@ __pycache__/
 *.pyd
 *.whl
 wheels/
+!rl/addon-0.7.2/wheels/
+!rl/addon-0.7.2/wheels/*.whl
 
 # Python environments
 .venv/
