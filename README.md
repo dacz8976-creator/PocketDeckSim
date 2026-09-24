@@ -7,6 +7,7 @@ The simulator's matchup table is scored against real tournament results from Lim
 
 | Folder | What's in it |
 |---|---|
+| `START_HERE.md`, `PROJECT_INSTRUCTIONS.md` | **Read first.** What's true now, who does what, seed ranges in use. |
 | `engine/` | The game engine (Rust), a fork of [deckgym-core](https://github.com/bcollazo/deckgym-core) with the rules4 fixes. Includes the k-bots (`k3` looks three of its own moves ahead). |
 | `rl/` | Self-play training (Run 5 scripts, `pdl_rl_env/` Python wrapper), plans and reports. |
 | `rl/RUN5.md` | **The current plan.** See "The plan, revised Sept 24". |
@@ -34,7 +35,8 @@ python3 decks/screen/run_screen.py decks/brews/brew-03a-arceus-nihilego-toxapex.
 ```
 
 **Laptop only for now:** the training launchers (`rl/run_training_v*.sh`) install a hash-checked
-add-on wheel from `Boss Folder`, and `project_manifest.json`, `current_engine.py` and
+add-on wheel from `Boss Folder`, the scoreboard tool (`rl/results/deep_search_table/`) checks for that
+same add-on build, and `project_manifest.json`, `current_engine.py` and
 `candidate_run.py` point at a binary there. Those files are kept as the record of how past runs
 were made.
 

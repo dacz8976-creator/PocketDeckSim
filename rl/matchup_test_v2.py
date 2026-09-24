@@ -1,6 +1,6 @@
 """Run 2 transfer test: does the specialist carry over to matchups it never trained on?
 Run from the project root, inside WSL, after training has finished:
-    python "Boss Folder/rl-feasibility-2026-09-18/matchup_test_v2.py" --run runs/<run 2 folder>
+    python rl/matchup_test_v2.py --run runs/<run 2 folder>
 
 The bot always pilots the run's own deck (Dustin's); k3 always pilots the opponent deck.
 Three rows per opponent, on the same seeds, half from each seat (draws count as non-wins):
@@ -31,8 +31,8 @@ sys.path.insert(0, str(HERE))
 from pdl_env import PocketEnv, engine_play  # noqa: E402
 from train_v2 import load_net  # noqa: E402
 
-ROOT = HERE.parent.parent
-STUDY = ROOT / "Boss Folder/competitive-deck-study-2026-09-08/round-robin-checkpoint/reports/research/decks"
+ROOT = HERE.parent  # the repo root (on the laptop this file sat two folders down)
+STUDY = ROOT / "decks/research"
 SEED0 = 41_000_000  # separate from every training and evaluation seed range (run 1's test used 40M)
 
 _W = {}

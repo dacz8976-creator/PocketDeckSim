@@ -24,7 +24,7 @@ sys.path.insert(0, str(HERE))
 from model import MLP  # noqa: E402
 from pdl_rl_env import RawEnv  # noqa: E402
 
-ROOT = HERE.parent.parent
+ROOT = HERE.parent  # the repo root (on the laptop this file sat two folders down)
 BREW = str(ROOT / "decks/brews/brew-03a-arceus-nihilego-toxapex.txt")
 HIDDEN = (512, 256)
 SLOT = ["Active", "Bench 1", "Bench 2", "Bench 3"]

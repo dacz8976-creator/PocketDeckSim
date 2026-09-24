@@ -12,9 +12,8 @@ import argparse, hashlib, itertools, json, math, os, sys, time
 from multiprocessing import Pool
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-ROOT = os.path.abspath(os.path.join(HERE, "..", "..", "..", ".."))           # the project folder
-DECKS = os.path.join(ROOT, "Boss Folder", "competitive-deck-study-2026-09-08", "round-robin-checkpoint",
-                     "reports", "research", "decks")
+ROOT = os.path.abspath(os.path.join(HERE, "..", "..", ".."))                 # the repo root
+DECKS = os.path.join(ROOT, "decks", "research")
 NAMES = ["altaria", "blaziken", "hydreigon", "lucario", "sceptile", "suicune", "vespiquen", "weezing"]
 DECK_SHA = {"altaria": "435a2bebc567ca83", "blaziken": "fb08470e8801e93c", "hydreigon": "6ea0042236b48444",
             "lucario": "46a4820bc788b4fd", "sceptile": "7404c99e49161e68", "suicune": "7affe6530b8d096b",

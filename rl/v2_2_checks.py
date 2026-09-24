@@ -16,8 +16,8 @@ import numpy as np
 from pdl_rl_env import RawEnv
 
 HERE = Path(__file__).resolve().parent
-ROOT = HERE.parent.parent
-STUDY = "Boss Folder/competitive-deck-study-2026-09-08/round-robin-checkpoint/reports/research/decks"
+ROOT = HERE.parent  # the repo root (on the laptop this file sat two folders down)
+STUDY = "decks/research"  # the Sept 8 study lists, copied byte for byte
 DECKS = [str(ROOT / "decks/dustin/06-mega-blaziken-tournament-list.txt"), str(ROOT / STUDY / "lucario.txt"),
          str(ROOT / STUDY / "weezing.txt"), str(ROOT / STUDY / "altaria.txt"), str(ROOT / STUDY / "suicune.txt")]
 N = int(sys.argv[1]) if len(sys.argv) > 1 else 20

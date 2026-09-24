@@ -1,5 +1,5 @@
 """Is k3 through the add-on the same k3 as in the engine's own loop? Run from the project root:
-    python "Boss Folder/rl-feasibility-2026-09-18/step1b_k3_replay_check.py"
+    python rl/step1b_k3_replay_check.py
 
 For each seed: play k3 vs k3 in the engine's own loop and record one seat's choices. Then
 replay the game through the add-on: that seat goes through `step` (the path the network
@@ -23,7 +23,7 @@ sys.path.insert(0, str(HERE))
 from pdl_env import PocketEnv  # noqa: E402
 from pdl_rl_env import engine_play_record  # noqa: E402
 
-ROOT = HERE.parent.parent
+ROOT = HERE.parent  # the repo root (on the laptop this file sat two folders down)
 DECK = str(ROOT / "decks/brews/brew-03a-arceus-nihilego-toxapex.txt")
 N, SEED0 = 50, 18_500_000
 

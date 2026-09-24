@@ -2,7 +2,7 @@
 # Deeper-search table: k4, then k5, then k6 piloting both sides of the Sept 23 Limitless check's 28 pairings,
 # on that table's exact deals, scored against the same Limitless numbers. Nothing is trained or changed.
 # Start, or resume after any interruption, with the same line in WSL Ubuntu:
-#   bash "/mnt/c/Users/dacz8/Projects/Pocket Deck Lab/Boss Folder/rl-feasibility-2026-09-18/results/deep_search_table/run_deep_table.sh"
+#   bash rl/results/deep_search_table/run_deep_table.sh
 # It runs in the background. Progress, in plain words, every minute: STATUS.txt beside this file.
 set -euo pipefail
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"

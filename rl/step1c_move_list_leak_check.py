@@ -1,5 +1,5 @@
 """Can the legal-move list leak hidden cards? Run from the project root:
-    python "Boss Folder/rl-feasibility-2026-09-18/step1c_move_list_leak_check.py"
+    python rl/step1c_move_list_leak_check.py
 
 At every decision, rebuild the position with the opponent's hidden cards (hand + deck)
 reshuffled and our own deck reordered, and ask the engine for the legal moves again.
@@ -21,7 +21,7 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 from pdl_env import PocketEnv  # noqa: E402
 
-ROOT = HERE.parent.parent
+ROOT = HERE.parent  # the repo root (on the laptop this file sat two folders down)
 DECK = str(ROOT / "decks/brews/brew-03a-arceus-nihilego-toxapex.txt")
 
 

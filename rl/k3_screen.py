@@ -1,6 +1,6 @@
 """Which matchups have room to measure a trained bot? k3 pilots both sides.
 Run from the project root:
-    python "Boss Folder/rl-feasibility-2026-09-18/k3_screen.py" --games 100 --workers 8
+    python rl/k3_screen.py --games 100 --workers 8
 
 Every deck in decks/dustin/ and decks/brews/ against every Limitless deck in the Sept 8 study
 folder, half the games from each seat. This is a SCREEN, not a ranking: the project's rule is
@@ -17,8 +17,8 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
-ROOT = HERE.parent.parent
-META = ROOT / "Boss Folder/competitive-deck-study-2026-09-08/round-robin-checkpoint/reports/research/decks"
+ROOT = HERE.parent  # the repo root (on the laptop this file sat two folders down)
+META = ROOT / "decks/research"
 SEED0 = 50_000_000
 NOTE = ("READ THIS AS: which matchups leave room to measure a trained pilot (k3 roughly even, 35-65%).\n"
         "NOT a ranking of which decks are good: the simulator can't rank decks (project rule), and k3 piloting\n"
