@@ -1,0 +1,28 @@
+{
+  "utc": "2026-09-22T23:32:30.061157+00:00",
+  "name": "rules4",
+  "version": "deckgym 0.1.0-pdl.rules4",
+  "source_sha256_manifest": "Boss Folder/rules4-t2-repair-2026-09-22/source-sha256.json",
+  "source_sha256_manifest_sha256": "ddb6bc9b8add3ffdf5fe84db39a5fbbb0ff0fa66955cc39df25c1de9958c839c",
+  "source_archive": "Boss Folder/rules4-t2-repair-2026-09-22/source-after.tar.gz",
+  "source_archive_sha256": "69a7ce40c1fec70493367ba79f55ea4dcee677a597c2c965d2e146351a21bbc6",
+  "source_base_commit": "237b0f8198308f3608c5b790cd81b33342de91fb",
+  "source_working_tree": true,
+  "source_files": 545,
+  "repair_changed_files": [
+    "src/actions/apply_action_helpers.rs",
+    "Cargo.toml",
+    "Cargo.lock",
+    "tests/rules4_t2_simultaneous_finish.rs"
+  ],
+  "changed_source_sha256": {
+    "src/actions/apply_action_helpers.rs": "0238547dc0b046b875fca3881823478b0ef624d4095d8cf841e7417dce623787",
+    "Cargo.toml": "4777f8a40d3474b2f8db092569c77a56c3627122000a041ffa05ff0433985ba2",
+    "Cargo.lock": "9692f031a7e9c775b6e3419475223f3ad30f7ab92af53852234ab07e7ad0ebde",
+    "tests/rules4_t2_simultaneous_finish.rs": "7d8d5960483198c897a310f067123774fa3b3df092fed55d147b00acd68929a0"
+  },
+  "prior_rules3_source_manifest_sha256": "77280596fb5a8a9442cb0086c4fae8239c4519a3a0eb268423ad621883f89906",
+  "archive_verified_file_by_file": true,
+  "artifact": "Boss Folder/rules4-t2-repair-2026-09-22/candidate/deckgym",
+  "sha256": "e6593ed816d0d5dbaf24fc8bc81a8317ed8069cda6ae7162c3d53e1fa7a12415"
+}

@@ -1,0 +1,70 @@
+{
+ "workers": 8,
+ "budget": 300000,
+ "features": "v2.2",
+ "pool": {
+  "blaziken": "decks/dustin/06-mega-blaziken-tournament-list.txt",
+  "lucario": "Boss Folder/competitive-deck-study-2026-09-08/round-robin-checkpoint/reports/research/decks/lucario.txt"
+ },
+ "pairing_weights": {
+  "blaziken|lucario": 1.0
+ },
+ "checkpoints": [
+  50000,
+  100000,
+  150000,
+  200000,
+  250000,
+  300000
+ ],
+ "draw_gate_at": 50000,
+ "draw_window": 20000,
+ "draw_gate_max": 0.1,
+ "shaping_off_below": 0.05,
+ "eps_early": 0.1,
+ "eps_late": 0.05,
+ "eps_switch": 150000,
+ "past_share": 0.2,
+ "lr": 0.0001,
+ "batch": 512,
+ "buffer": 40000,
+ "min_buffer": 4000,
+ "uses_target": 2.0,
+ "publish_every": 50,
+ "gamma": 0.97,
+ "eval_k3_per_matchup": 500,
+ "eval_random": 200,
+ "confirm_per_matchup": 1000,
+ "bar_per_pairing": 1000,
+ "floors": [],
+ "level_window": 3,
+ "level_spread": 0.03,
+ "level_prev_max": 0.55,
+ "runner_up_gap": 0.02,
+ "criteria": {
+  "hold": {
+   "blaziken>lucario": 0.1
+  },
+  "at_least_k3": [],
+  "no_matchup_below": -0.05
+ },
+ "checkup_report": {
+  "winnable_q": -0.5
+ },
+ "held_out": {
+  "ninetales": "decks/dustin/13-a-ninetales-raticate.txt"
+ },
+ "transfer_per_row": 300,
+ "record_selfplay_every": 1000,
+ "queue_max": 4000,
+ "avg_half_life_games": null,
+ "eval_random_per_matchup": null,
+ "stop_on_level_off": true,
+ "seeds": {
+  "train": 3000000000,
+  "k3": 80000000,
+  "random": 81000000,
+  "confirm": 90000000,
+  "transfer": 95000000
+ }
+}
