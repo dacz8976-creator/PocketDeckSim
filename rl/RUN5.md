@@ -245,7 +245,7 @@ who plays these decks on Limitless is **open** — nothing so far separates the 
 6. **Dropped:** tuning k3's evaluation weights against the table (d3 evidence, overfitting 28 cells, no value for
    brews); k7 or a larger specialist run as an automatic next step. (Building option B was on this list; reopened below.)
 
-**Until run 6 passes a held-out-deck test, the simulator does not screen brews.** Its brew job is "does the combo
+**Until run 6 passes a held-out-deck test, the simulator does not screen brews.** (Brew screening and its cutoffs wait until the engine is trustworthy and realistic (Dustin, Sept 24).) Its brew job is "does the combo
 fire"; the ladder is the screen. Positions Dustin annotates while reading transcripts are diagnostics for a specific
 fix, not the yardstick.
 

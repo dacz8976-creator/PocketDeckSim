@@ -21,13 +21,8 @@ the rules added since then. Read `START_HERE.md` first. Where the two differ, `S
 
 - **It doesn't rank decks.** Real results come from Limitless (`decks/classifier/`,
   `rl/results/limitless_check_2026-09-23.md`) and Dustin's own ladder games.
-- **It doesn't judge brews; the ladder does.** Two current wordings:
-  - `rl/RUN5.md` ("The plan, revised Sept 24"): until run 6 passes a held-out-deck test, the simulator
-    doesn't screen brews. Its brew job is "does the combo fire."
-  - `START_HERE.md` (updated later that day): a quick screen only catches clearly broken lists (under 35%
-    against the panel isn't handed to Dustin), and it doesn't rank decks.
-
-  `START_HERE.md` wins where they differ.
+- **It doesn't judge brews; the ladder does.** Brew screening and its cutoffs wait until the engine is trustworthy and realistic (Dustin, Sept 24): fixing the engine comes first.
+  Until then the simulator's brew job is "does the combo fire".
 - **The Limitless table is the scoreboard** for any change to how the simulator plays
   (`rl/results/deep_search_table/`).
 

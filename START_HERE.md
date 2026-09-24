@@ -45,9 +45,8 @@ the ladder and wins with.
 ## The loop
 
 Deck building has its own folder and rules: **`decks/README.md`** (*Pocket Deck Lab only*; kept separate from the bot/RL
-work). In short: draft in `decks/brews/` → quick bot screen (`decks/screen/`; under 35% vs the
-panel is not handed to Dustin) → QR + Ladder Log → Dustin plays 10–15 games → keep, adjust or
-retire. The screen only catches clearly broken lists; it does not rank decks.
+work). In short: draft in `decks/brews/` → QR + Ladder Log → Dustin plays 10–15 games → keep, adjust or
+retire. Brew screening and its cutoffs wait until the engine is trustworthy and realistic (Dustin, Sept 24); the quick bot screen (`decks/screen/`) is on hold until then.
 
 ## Before you do anything
 
@@ -114,7 +113,9 @@ the sim liked and the ladder didn't. Full list with what catches each: `docs/AUD
   Deeper search within a turn doesn't improve the fit to Limitless.
 - **Next in the plan** (`rl/RUN5.md`, "The plan, revised Sept 24"): card check of Altaria, Sceptile and Vespiquen
   with a legality scan; the two Limitless side tables; run 6 after those.
-- **This repo (Claude Code):** Quick Growth diagnostic, seeds 81,000,000–81,070,000.
+- **This repo (Claude Code): engine first** (Dustin, Sept 24). Option B, k3 guessing the opponent's hand from
+  their list and searching their reply, is reopened (`rl/RUN5.md`, update at the end of the plan), plus the
+  legality scan of the table's games. Quick Growth diagnostic done (seeds 81,000,000–81,070,000 and 20B+).
 
 **Seed ranges already used.** Pick a new block outside all of these for any new measurement. Everything up to
 Run 5 stage 1 is from `rl/results/run5_build/BUILD_NOTES.md` ("Ranges already used", read from the code) and
@@ -131,6 +132,7 @@ its seed-overlap check; the rest was added since.
 | 10,000,000,000 – 12,901,999,999 | Hydreigon run training |
 | 13,000,000,000 – 13,300,000,000 blocks | Hydreigon run evaluation (k3, random, confirmation, held-out) |
 | 19,000,000,000 – 19,800,000,000 blocks | Opus's cloud practice test of the Hydreigon settings (program test only) |
+| 20,000,000,000+ | Claude Code diagnostics (Caterpie counterplay from 20.0B); new blocks go above the last one used |
 | 1M, 2M, 8M, 9M | step-3 checks |
 | 5M, 6M | v2.2 checks (Astra's rules4 recheck also 6M) |
 | 18M, 18.5M, 18.9M, 28.5M | step-1 checks (18M, 18.5M); Astra's interface checks (18.5M, 28.5M) and mirror benchmark (18.9M) |
