@@ -1,12 +1,14 @@
 # kd3 mixed rows, Sept 25 (run before kd3's table is read)
 
+**Done:** 14,000 games in each direction, with no rule findings. Both conditions for using them held (below). The reading that uses them is `../table_readings_2026-09-24/kd3_paired_reading.md`: kd3 not adopted. Played on one side only, kd3 pilots Lucario, Vespiquen and Hydreigon slightly worse than kp3, beyond noise.
+
 **What these are for:**
 - kd3 is read against kp3 under the veto rule pre-registered on Sept 25 (rules v2).
 - Under v2, a veto counts only when mixed rows on the same deals show that the changed pilot's own side got worse. A mixed row has kd3 on one deck only and kp3 on the other.
 - These are those rows. They cover all 28 pairings in both directions, fixed before any kd3 table existed, so no choice depends on which vetoes fire.
 
 **Build:**
-- `legality_scan` was built in WSL from `git archive` of 0c0e7f9, the commit the cloud's kd3 table runs at (its 68117fa).
+- `legality_scan` was built in WSL from `git archive` of 0c0e7f9, the commit the cloud's kd3 table runs at (its 68117fa). Its sha256 is `8800cdd809b38cf57bb9516205b8bec6dd2500adce935df6569dd393beb7c055`.
 - It is not the official engine. It carries the amended kd:
   - Dustin's option 3 at 97ca8f4.
   - The second-review fixes at 5ae7490.
@@ -15,9 +17,12 @@
 
 **Checks before these rows are used:**
 1. **kp3 is unchanged on this build.** kp3 plays the other side of every mixed game. A spot replay of pairings 0–2 (1,500 games) is compared with the kp3 reference files, move by move (`spot_kp3_p0-2_compare.txt`). The cloud's full replay covers the rest.
-   - On the stopped 5ae7490 build it matched 1,500 of 1,500 on every field, including the move hash. The 0c0e7f9 result is filled in when its run finishes.
+   - **Result on the 0c0e7f9 build: 1,500 of 1,500 identical** on every field, including the move hash. The stopped 5ae7490 build had matched the same.
    - The file's last line reads "NOT IDENTICAL" only because compare.py expects the full table: the reference also holds the other 12,500 games, which the spot does not play.
 2. **kd3 is the same kd3 as the table's.** When the cloud pushes the finished `kd3_500.jsonl`, its commit must still be 0c0e7f9 (or have the same `engine/`). One pairing of kd3 v kd3 from this build must also match the cloud's file move by move. If either check fails, these rows are rerun on the table's build.
+   - **Result: pairing 1 (Altaria v Hydreigon, 500 games), kd3 on both sides from this build, is identical to the cloud's partial `kd3_500.jsonl` on 500 of 500 games, move hash included** (`kd3_replay_p1*`).
+     - The cloud file was read at its commit ef40196, which holds 12 complete pairings. The "NOT IDENTICAL" line only reflects those other 5,500 games.
+     - The two scan binaries hash differently (cloud f19ad3f3…, laptop 8800cdd8…), as builds on different machines do. The games are the same.
 
 **How they are read:**
 ```

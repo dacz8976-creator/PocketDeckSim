@@ -407,6 +407,23 @@ def main():
             if ch:
                 p(f"  {k[0]:>9} v {k[1]:<10} " + "; ".join(
                     f"{d} {side_change([v])[0]:+5.1f} ± {side_change([v])[1]:3.1f} ({len(v)})" for d, v in ch.items()))
+        p("")
+        p(f"Mixed rows by deck, decision set (reported only; the vetoes above use them only when a veto fires): the deck's "
+          f"own side with {new_name} on it only, and its opponents' own side with {new_name} on them only, pooled over the "
+          "deck's cells (mean of cell changes, 95% range)")
+        for d in D.NAMES:
+            dk = [k for k in qk if d in k]
+            own, opp = [], []
+            for k in dk:
+                ch = own_changes(k)
+                other = k[1] if k[0] == d else k[0]
+                if d in ch and other in ch:
+                    own.append(ch[d]); opp.append(ch[other])
+            if own and len(own) == len(dk):
+                (mo, ho, _), (mp, hp, _) = side_change(own), side_change(opp)
+                flag = lambda m, h: " (worse beyond noise)" if m < -h else ""  # noqa: E731
+                p(f"  {d:>9}: own side {mo:+5.1f} ± {ho:3.1f}{flag(mo, ho)}; its opponents' side {mp:+5.1f} ± {hp:3.1f}"
+                  f"{flag(mp, hp)} ({len(dk)} cells)")
     print("\n".join(out))
 
 
