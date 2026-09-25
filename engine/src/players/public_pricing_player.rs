@@ -452,4 +452,37 @@ mod tests {
         assert_eq!(decide(PlayerCode::KP { max_depth: 3 }), SimpleAction::Promote { player: 0, in_play_idx: 1 });
         assert_eq!(decide(PlayerCode::KD { max_depth: 3 }), SimpleAction::Promote { player: 0, in_play_idx: 2 });
     }
+
+    /// The Hyper Ray position through get_player: Hydreigon with [D][D][D] against a Mewtwo ex that 130 doesn't
+    /// knock out, this turn's Energy already attached, a [D] showing for next turn. kp3 (like k3) declines Hyper Ray,
+    /// because discarding all three Energy costs the Active's whole readiness. kpr3 sees next turn's [D] plus Roar
+    /// in Unison's two refill it, and attacks. If the KPR arm of get_player stopped using the kpr value function,
+    /// kpr3 would play as kp3 and this fails.
+    #[test]
+    fn kpr3_from_get_player_chips_with_hyper_ray_where_kp3_declines() {
+        let mut game = crate::test_support::get_initialized_game(0);
+        let mut state = game.get_state_clone();
+        state.set_board(
+            vec![PlayedCard::from_id(CardId::B1157Hydreigon).with_energy(vec![EnergyType::Darkness; 3])],
+            vec![PlayedCard::from_id(CardId::A1129MewtwoEx).with_energy(vec![EnergyType::Psychic; 2])],
+        );
+        state.current_player = 0;
+        state.turn_count = 5;
+        state.move_generation_stack.clear();
+        state.energy_zone[0].current = None;
+        state.energy_zone[0].next = Some(EnergyType::Darkness);
+        state.in_play_pokemon[0][0].as_mut().unwrap().ability_used = true;
+        game.set_state(state);
+        let real = game.get_state_clone();
+        let observation = PlayerObservation::from_state(&real, 0, &RevealedKnowledge::default());
+        let (_, mut actions) = real.generate_possible_actions();
+        crate::observation::canonical_actions(&mut actions);
+        let decide = |code: PlayerCode| {
+            let mut player = get_player(Deck::default(), &Deck::default(), &code);
+            player.decision_fn(&mut StdRng::seed_from_u64(3), &observation, &actions).action
+        };
+        let is_hyper_ray = |action: &SimpleAction| matches!(action, SimpleAction::Attack(attack) if attack.title == "Hyper Ray");
+        assert!(!is_hyper_ray(&decide(PlayerCode::KP { max_depth: 3 })), "kp3 declines Hyper Ray");
+        assert!(is_hyper_ray(&decide(PlayerCode::KPR { max_depth: 3 })), "kpr3 chips with Hyper Ray");
+    }
 }
