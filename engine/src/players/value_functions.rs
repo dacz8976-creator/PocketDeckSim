@@ -793,101 +793,42 @@ fn calculate_turns_until_opponent_wins_damage_aware(
         }
     };
 
-    let best_threat = state
-        .enumerate_in_play_pokemon(opponent)
-        .filter_map(|(slot, pokemon)| {
-            // (damage, missing, form, attack): `form` is `None` for the Pokemon as it is, or the index of the
-            // evolution target in `evolution_targets`; `attack` is the attack's index on that form. Only kd reads them.
-            let mut candidates: Vec<(u32, usize, Option<usize>, usize)> = pokemon
-                .card
-                .get_attacks()
-                .iter()
-                .enumerate()
-                .filter_map(|(index, atk)| {
-                    let damage = attack_damage(atk, pokemon);
-                    if damage == 0 {
-                        return None;
+    // Every attack the owner could threaten with, in scan order. The threat is the first with the fewest missing
+    // Energy, then the most damage (the same pick as the historical per-slot scan, flattened).
+    let mut candidates: Vec<ThreatCandidate> = Vec::new();
+    for (slot, pokemon) in state.enumerate_in_play_pokemon(opponent) {
+        for (attack, atk) in pokemon.card.get_attacks().iter().enumerate() {
+            let damage = attack_damage(atk, pokemon);
+            if damage == 0 {
+                continue;
+            }
+            let missing = energy_missing(pokemon, &atk.energy_required, state, opponent).len();
+            candidates.push(ThreatCandidate { slot, damage, missing, form: None, attack });
+        }
+        if read_scanned_zones {
+            if let Card::Pokemon(current) = &pokemon.card {
+                for (form, target) in evolution_targets(state, opponent, pokemon).into_iter().enumerate() {
+                    let Card::Pokemon(t) = &target else { continue };
+                    let steps = t.stage.saturating_sub(current.stage) as usize;
+                    if steps == 0 {
+                        continue;
                     }
-                    let missing = energy_missing(pokemon, &atk.energy_required, state, opponent);
-                    Some((damage, missing.len(), None, index))
-                })
-                .collect();
-            if read_scanned_zones {
-                if let Card::Pokemon(current) = &pokemon.card {
-                    for (form, target) in evolution_targets(state, opponent, pokemon).into_iter().enumerate() {
-                        let Card::Pokemon(t) = &target else { continue };
-                        let steps = t.stage.saturating_sub(current.stage) as usize;
-                        if steps == 0 {
-                            continue;
-                        }
-                        for (index, atk) in target.get_attacks().iter().enumerate() {
-                            let damage = attack_damage(atk, pokemon);
-                            if damage > 0 {
-                                let missing =
-                                    energy_missing(pokemon, &atk.energy_required, state, opponent);
-                                candidates.push((damage, missing.len() + steps, Some(form), index));
-                            }
+                    for (attack, atk) in target.get_attacks().iter().enumerate() {
+                        let damage = attack_damage(atk, pokemon);
+                        if damage > 0 {
+                            let missing =
+                                energy_missing(pokemon, &atk.energy_required, state, opponent).len() + steps;
+                            candidates.push(ThreatCandidate { slot, damage, missing, form: Some(form), attack });
                         }
                     }
                 }
             }
-            candidates
-                .into_iter()
-                .min_by_key(|(damage, missing, _, _)| (*missing, u32::MAX - damage))
-                .map(|(damage, missing, form, attack)| (damage, missing, slot, form, attack))
-        })
-        .min_by_key(|(damage, missing, _, _, _)| (*missing, u32::MAX - damage));
-    let (max_damage, missing_energy, threat_slot, threat_form, threat_attack) = match best_threat {
-        Some((damage, missing, slot, form, attack)) => (damage as f64, missing, slot, form, attack),
-        None => return 30.0, // No pokemon can deal damage, now or via any available evolution
-    };
-
-    // kd: the threat as the Pokemon that attacks (its evolution target, if the threat is one) and the attack it
-    // uses, so each victim's Weakness and persistent reductions can be priced against it. The threat itself is
-    // chosen as before.
-    let kd_threat: Option<(PlayedCard, Attack)> = if defender_modifiers {
-        let threat = state.in_play_pokemon[opponent][threat_slot]
-            .as_ref()
-            .expect("the threat was found in play");
-        let attacker = match threat_form {
-            None => threat.clone(),
-            Some(form) => {
-                // Only the evaluating player's own threats are scanned for evolutions (no hidden zone is read).
-                debug_assert!(read_scanned_zones);
-                to_playable_card(&evolution_targets(state, opponent, threat)[form], false)
-            }
-        };
-        let attack = attacker.card.get_attacks()[threat_attack].clone();
-        Some((attacker, attack))
-    } else {
-        None
-    };
-    // kd: turns for the threat to knock `victim` out, its first hit and every later one priced through
-    // `persistent_defender_damage`; `None` when its hits do no damage.
-    let kd_ko_turns = |(threat, attack): &(PlayedCard, Attack), victim: &PlayedCard| -> Option<f64> {
-        let hp = victim.get_remaining_hp() as f64;
-        if hp == 0.0 {
-            return Some(0.0);
         }
-        let context = DamageModifierContext {
-            attack_name: Some(&attack.title),
-            attack_effect: attack.effect.as_deref(),
-        };
-        let (first, later) = persistent_defender_damage(
-            state,
-            opponent,
-            threat,
-            player,
-            victim,
-            max_damage as u32,
-            context,
-            !only_damages_the_bench(attack),
-        );
-        if later <= 0.0 {
-            return None;
-        }
-        Some(ko_turns_after_first_attack(hp, first, later))
+    }
+    let Some(threat) = candidates.iter().min_by_key(|c| (c.missing, u32::MAX - c.damage)) else {
+        return 30.0; // No pokemon can deal damage, now or via any available evolution
     };
+    let (max_damage, missing_energy, _threat_slot) = (threat.damage as f64, threat.missing, threat.slot);
 
     let mut total_turns = 0.0;
     let mut opp_points = state.points[opponent];
@@ -897,7 +838,7 @@ fn calculate_turns_until_opponent_wins_damage_aware(
     // B2b diagnostic, only in builds with the `status-clock` feature: a threat in the Active Spot that is
     // Asleep misses its next attack half the time (the checkup coin), and one that is Paralyzed misses it.
     #[cfg(feature = "status-clock")]
-    if threat_slot == 0 {
+    if _threat_slot == 0 {
         if let Some(threat) = state.maybe_get_active(opponent) {
             if threat.has_status(StatusCondition::Paralyzed) {
                 total_turns += 1.0;
@@ -907,24 +848,28 @@ fn calculate_turns_until_opponent_wins_damage_aware(
         }
     }
 
+    // kd counts the victims its own way (kd_turns_to_win), capped at 30: 30 means "never", so no finite clock may
+    // pass it. kq's first-attack pricing isn't combined with it.
+    if defender_modifiers {
+        return match kd_turns_to_win(state, player, opponent, &candidates, threat, consume_bench) {
+            Some(turns) => (total_turns + turns).min(30.0),
+            None => 30.0,
+        };
+    }
+
     // kq: when the threat is the Active and carries effects that cut or cancel its next attack, the first
     // knockout's first attack turn is priced through them (or through the owner's escape into a ready benched
     // attacker, whichever is faster). Only that turn: later turns keep the clock's pace.
-    let mut first_turn_damage = if next_attack_reduction && threat_slot == 0 {
+    let mut first_turn_damage = if next_attack_reduction && _threat_slot == 0 {
         first_attack_turn(state, opponent, max_damage, &attack_damage)
     } else {
         None
     };
 
     if let Some(my_active) = state.maybe_get_active(player) {
-        let turns_to_ko = match (first_turn_damage.take(), &kd_threat) {
-            (None, None) => (my_active.get_remaining_hp() as f64 / max_damage).ceil(),
-            (Some(first), _) => first.ko_turns(my_active.get_remaining_hp() as f64, max_damage),
-            // kd: a victim the threat can't damage means the threat can't win: the clock's sentinel.
-            (None, Some(threat)) => match kd_ko_turns(threat, my_active) {
-                Some(turns) => turns,
-                None => return 30.0,
-            },
+        let turns_to_ko = match first_turn_damage.take() {
+            None => (my_active.get_remaining_hp() as f64 / max_damage).ceil(),
+            Some(first) => first.ko_turns(my_active.get_remaining_hp() as f64, max_damage),
         };
         total_turns += turns_to_ko;
         opp_points += my_active.card.get_knockout_points();
@@ -953,23 +898,144 @@ fn calculate_turns_until_opponent_wins_damage_aware(
         if consume_bench {
             counted_slots[slot] = true;
         }
-        let turns_to_ko = match (first_turn_damage.take(), &kd_threat) {
-            (None, None) => (safest_pokemon.get_remaining_hp() as f64 / max_damage).ceil(),
-            (Some(first), _) => first.ko_turns(safest_pokemon.get_remaining_hp() as f64, max_damage),
-            (None, Some(threat)) => match kd_ko_turns(threat, safest_pokemon) {
-                Some(turns) => turns,
-                None => return 30.0,
-            },
+        let turns_to_ko = match first_turn_damage.take() {
+            None => (safest_pokemon.get_remaining_hp() as f64 / max_damage).ceil(),
+            Some(first) => first.ko_turns(safest_pokemon.get_remaining_hp() as f64, max_damage),
         };
         total_turns += turns_to_ko;
         opp_points += safest_pokemon.card.get_knockout_points();
     }
 
-    // kd: 30 means "never", so no finite clock may pass it (a sturdier board must never read as a faster loss).
-    if defender_modifiers {
-        return total_turns.min(30.0);
-    }
     total_turns
+}
+
+/// One attack the damage-aware clock's scan found for the threatening side.
+#[derive(Debug, Clone, Copy)]
+struct ThreatCandidate {
+    /// The in-play slot of the Pokemon that has it.
+    slot: usize,
+    /// The clock's damage estimate for it, before the victim's modifiers.
+    damage: u32,
+    /// Missing Energy, plus one per evolution step for an evolved form.
+    missing: usize,
+    /// `None` for the Pokemon as it is, or the index of the evolution target in `evolution_targets`. Forms are only
+    /// scanned for the evaluating player's own threats, so no hidden zone of the opponent is read.
+    form: Option<usize>,
+    /// The attack's index on that form.
+    attack: usize,
+}
+
+/// kd: the turns after the threat's own readiness until `owner` has knocked out enough of `victim_owner`'s Pokemon
+/// to win, or `None` ("never") when a victim the count reaches can't be damaged by anything `owner` has.
+/// - Each hit on a victim goes through the victim's Weakness and persistent reductions (`persistent_defender_damage`),
+///   for the attacking form and the attack it uses (so its own text counts).
+/// - A victim the global threat can't damage is priced with the owner's best candidate that can: fewest missing
+///   Energy, then the most damage to that victim. It first waits for that candidate's missing Energy beyond the
+///   threat's, counted once per Pokemon (Energy stays attached).
+/// - After the Active, the victims come in the order the defender would promote them, by kd's own turns: the one
+///   that lasts longest (per knockout point, unless this knockout wins), as k orders them by HP. One that can't be
+///   damaged at all would be promoted first, so the count is "never".
+fn kd_turns_to_win(
+    state: &State,
+    victim_owner: usize,
+    owner: usize,
+    candidates: &[ThreatCandidate],
+    threat: &ThreatCandidate,
+    consume_bench: bool,
+) -> Option<f64> {
+    // The attacking form and its attack.
+    let attacker = |c: &ThreatCandidate| -> (PlayedCard, Attack) {
+        let pokemon = state.in_play_pokemon[owner][c.slot]
+            .as_ref()
+            .expect("the candidate was found in play");
+        let form = match c.form {
+            None => pokemon.clone(),
+            Some(form) => to_playable_card(&evolution_targets(state, owner, pokemon)[form], false),
+        };
+        let attack = form.card.get_attacks()[c.attack].clone();
+        (form, attack)
+    };
+    // (first, later): `c`'s expected damage on its first hit on `victim`, and on every hit after it.
+    let hits = |c: &ThreatCandidate, (form, attack): &(PlayedCard, Attack), victim: &PlayedCard| -> (f64, f64) {
+        let context = DamageModifierContext {
+            attack_name: Some(&attack.title),
+            attack_effect: attack.effect.as_deref(),
+        };
+        persistent_defender_damage(
+            state,
+            owner,
+            form,
+            victim_owner,
+            victim,
+            c.damage,
+            context,
+            !only_damages_the_bench(attack),
+        )
+    };
+    let threat_attacker = attacker(threat);
+    // (turns, the attacker's slot, that slot's extra Energy paid after this victim), or None if nothing can damage
+    // `victim`. `paid[slot]` is the Energy beyond the threat's already counted for the Pokemon in `slot`.
+    let victim_turns = |victim: &PlayedCard, paid: &[usize; 4]| -> Option<(f64, usize, usize)> {
+        let hp = victim.get_remaining_hp() as f64;
+        if hp == 0.0 {
+            return Some((0.0, threat.slot, paid[threat.slot]));
+        }
+        let (first, later) = hits(threat, &threat_attacker, victim);
+        if later > 0.0 {
+            return Some((ko_turns_after_first_attack(hp, first, later), threat.slot, paid[threat.slot]));
+        }
+        let (fallback, first, later) = candidates
+            .iter()
+            .filter_map(|c| {
+                let (first, later) = hits(c, &attacker(c), victim);
+                (later > 0.0).then_some((c, first, later))
+            })
+            .min_by(|a, b| a.0.missing.cmp(&b.0.missing).then(b.2.total_cmp(&a.2)))?;
+        let extra = fallback.missing - threat.missing;
+        let wait = extra.saturating_sub(paid[fallback.slot]);
+        Some((
+            wait as f64 + ko_turns_after_first_attack(hp, first, later),
+            fallback.slot,
+            paid[fallback.slot].max(extra),
+        ))
+    };
+
+    let mut paid = [0usize; 4];
+    let mut turns = 0.0;
+    let mut points = state.points[owner];
+    if let Some(active) = state.maybe_get_active(victim_owner) {
+        let (victim_turns, slot, now_paid) = victim_turns(active, &paid)?;
+        turns += victim_turns;
+        paid[slot] = now_paid;
+        points += active.card.get_knockout_points();
+    }
+    let mut counted_slots = [false; 4];
+    while points < 3 {
+        // (key, slot, turns, attacker slot, paid, knockout points) of the victim the defender would promote.
+        let mut promoted: Option<(f64, usize, f64, usize, usize, u8)> = None;
+        for (slot, victim) in state
+            .enumerate_bench_pokemon(victim_owner)
+            .filter(|(slot, _)| !consume_bench || !counted_slots[*slot])
+        {
+            let (turns, attacker_slot, now_paid) = victim_turns(victim, &paid)?;
+            let ko_points = victim.card.get_knockout_points();
+            let key = if points == 2 { turns } else { turns / ko_points.max(1) as f64 };
+            // `>=` keeps the last of equal keys, as k's max_by_key does.
+            if promoted.map_or(true, |best| key >= best.0) {
+                promoted = Some((key, slot, turns, attacker_slot, now_paid, ko_points));
+            }
+        }
+        let Some((_, slot, victim_turns, attacker_slot, now_paid, ko_points)) = promoted else {
+            break;
+        };
+        if consume_bench {
+            counted_slots[slot] = true;
+        }
+        turns += victim_turns;
+        paid[attacker_slot] = now_paid;
+        points += ko_points;
+    }
+    Some(turns)
 }
 
 /// kq: the first attack turn of the first knockout, when the threat (`owner`'s Active) carries effects that cut
@@ -2445,6 +2511,38 @@ mod kd_feature_tests {
         let mut helmeted = cloysters();
         helmeted[0] = mon(CardId::A1067Cloyster).with_tool(get_card_by_enum(CardId::B1219HeavyHelmet));
         assert_eq!(clocks(&board(helmeted, vec![weedle()]), false), (18.0, 30.0));
+    }
+
+    #[test]
+    fn a_victim_the_threat_cannot_damage_is_priced_with_the_best_attacker_that_can() {
+        // Shuckle ex v Weedle (Sting 20, ready) and a benched Mewtwo ex with one [P] (Psychic Sphere 50, one short).
+        // k's threat is Sting: 6 turns. Sting does 0 through Solid Shell, so kd prices Shuckle ex with Psychic
+        // Sphere: 1 turn for its Energy, then 30 a hit, 4 hits: 5.
+        let mewtwo_one = with(CardId::A1129MewtwoEx, EnergyType::Psychic, 1);
+        let state = board(vec![mon(CardId::A4021ShuckleEx)], vec![weedle(), mewtwo_one.clone()]);
+        assert_eq!(clocks(&state, false), (6.0, 5.0));
+        // Two Shuckle ex: the fallback's Energy is counted once (5 + 4), not per victim (5 + 5).
+        let state = board(vec![mon(CardId::A4021ShuckleEx), mon(CardId::A4021ShuckleEx)], vec![weedle(), mewtwo_one]);
+        assert_eq!(clocks(&state, false), (12.0, 9.0));
+    }
+
+    #[test]
+    fn victims_come_in_the_order_the_defender_would_promote_them() {
+        // Riolu Active, Shuckle ex and Suicune ex benched, v Sting only. k takes Suicune ex next (more HP) and stops
+        // at 3 points: 3 + 7. The defender would promote Shuckle ex, which Sting can't damage: kd's "never".
+        let state = board(
+            vec![mon(CardId::B3079Riolu), mon(CardId::A4021ShuckleEx), mon(CardId::A4a020SuicuneEx)],
+            vec![weedle()],
+        );
+        assert_eq!(clocks(&state, false), (10.0, 30.0));
+        // Opponent at 1 point, Treecko Active, Treecko and Riolu benched, v Mewtwo ex's 50. The next knockout wins,
+        // so the defender promotes whichever lasts longer: Treecko (2 hits), not Riolu (1 hit, weak to Psychic).
+        // Equal HP leaves k's order to the Bench slots; kd's is the same in either order.
+        for bench in [[CardId::B3005Treecko, CardId::B3079Riolu], [CardId::B3079Riolu, CardId::B3005Treecko]] {
+            let mut state = board(vec![mon(CardId::B3005Treecko), mon(bench[0]), mon(bench[1])], vec![mewtwo()]);
+            state.points = [0, 1];
+            assert_eq!(clocks(&state, false).1, 4.0);
+        }
     }
 
     #[test]
