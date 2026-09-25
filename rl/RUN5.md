@@ -385,7 +385,10 @@ sides with k3 still available; the 0.7.2 wheel and its run identities are untouc
   show the changed pilot's own side got worse beyond the mixed row's paired noise (about ±4 at 500 games), and never
   on a cell whose Limitless band is wider than about ±15; otherwise they are investigation items (this refinement is
   pre-registered as of Sept 25 for tables read from now on). Correlation, average miss, favorites right and pairings
-  beyond chance are reported, never decided on. Candidates are confirmed on the holdout before adoption is permanent.
+  beyond chance are reported, never decided on. Candidates are confirmed on the holdout before adoption is permanent, and confirmation needs size as well as
+  direction (Dustin, Sept 25): on the holdout alone, the τ̂ margin must be at least half the development half's and its
+  own 90% interval must lie above zero; the pooled interval and the sign are reported beside it but cannot confirm on
+  their own.
 - Variants and process: whole table paired by deal, never the five worst cells; τ̂ margin E = 3 with the 90% interval,
   doubling deals to 2,000 when undecided; every experiment names the decision it changes; two review tiers (engine
   rules, the scoreboard tool and any pilot adopted or played by Dustin get a second reader; diagnostics none); one
