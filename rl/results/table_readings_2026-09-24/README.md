@@ -20,8 +20,23 @@ These readings follow the rules in section 8 of `docs/REVIEW_2026-09-24_directio
 | b3o3n4 | 4 list guesses + 3-move reply search | unpaired (indicative) | 10.3 | −25.2 (−73.0 to +21.7) | 5 cells, 1 deck (indicative only) | not adopted | `option_b_table_2026-09-24_reading.md` |
 | b3n1 | 1 list guess, no reply search | paired | 9.2 | −46.8 (−84.7 to −7.5) | Altaria v Hydreigon +6.1; Vespiquen deck +2.1 | not adopted | `b3n1_vs_k3_paired_reading.md` |
 | kp3 | public pricing, no list (tier-1 sound; conditions met at c7cb688) | paired | 9.3 | −45.5 (−84.4 to −4.8) | Altaria v Hydreigon +8.7; Hydreigon v Suicune +7.6; Vespiquen deck +2.3 | not adopted; Dustin's override question | `kp3_paired_reading.md` |
-| kq3 | kp3 + next-attack-reduction clock term + benched-main-attacker readiness (weight 250, set in advance) | pending | | | | | |
-| kd3 | kq3 + the defender's Weakness and damage reductions in the clock | pending | | | | | |
+| kq3 (v1) | kp3 + next-attack-reduction clock term + benched-main-attacker readiness (weight 250, set in advance) | **diagnostic, not an adoption candidate** | | | | | |
+| kv3 (kq v2) | kp3 + next-attack reduction + 250 × max over eligible attackers of readiness × min(1, strength / 150) | pending (registered before any kv table) | | | | | |
+| kd3 | kv3 + the defender's Weakness and damage reductions in the clock | pending | | | | | |
+
+**Why kq3 is a diagnostic only.** The tier-1 read of a188c14 found that the code implements its pre-set spec exactly, with no leak, and that k3 and kp3 are identical (14,000 of 14,000 replays). But it confirmed three flaws in the spec itself (value_functions.rs 490-498, 1564-1566, 1597-1620):
+1. The bench credit is tied to the Bench, so promoting a ready benched attacker costs −250 where kp pays 0. The risk is stalling with a free-attack front.
+2. Ties go to the lower slot, so up to 250 depends on bench order.
+3. The main-attacker pick switches, so benching a stronger line drops the credit.
+
+The kq3 table still runs as registered, to see whether these flaws show in play. It counts promotions into, and retreats to, a ready main attacker, kq3 vs kp3.
+
+**What kv changes.** kv (kq v2) was registered with the corrected formula before any of its tables:
+- Eligible attackers are every benched Pokémon, plus the Active only at its target form, with a damaging attack that costs Energy.
+- Strength is the best such attack over all highest evolutions, estimated as if its cost were paid.
+- S = 150 is set in advance.
+- The opponent's side is priced from the board only.
+- A ready Active attacker gets both the 500 Active term and this term. That is intended: it makes promotion neutral, like kp.
 
 **Other comparisons:**
 - **b3n1 vs kp3 (margin-rule quantity):** real error differs by only 0.07 (90% interval −0.70 to +0.83). Going list-free costs nothing measurable.
