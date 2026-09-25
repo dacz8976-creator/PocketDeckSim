@@ -278,7 +278,9 @@ fix, not the yardstick.
   see-everything bot's reply search does see Sleep, and Altaria didn't move there. Cheap test: a
   diagnostic copy whose clock adds half a turn for an Asleep threat and a whole turn for a Paralyzed one,
   k3 on both sides, the four Altaria misses (Lucario, Blaziken, Suicune, Sceptile) plus two cells without
-  Sleep as controls, 500 table deals each.
+  Sleep as controls, 500 table deals each. **Tested Sept 25 and refuted** (Altaria's cells moved −0.2 to +1.0
+  against gaps of 11 to 18; `rl/results/status_clock_2026-09-25/`; section 8 of
+  `docs/REVIEW_2026-09-24_direction.md`, B2b). The Altaria gap stays open; see "The plan, revised Sept 25".
 
 ## Limits on every number from this run
 
