@@ -1,7 +1,7 @@
 # Run 5: does a learned position score make k3's search better? (one matchup)
 
 Written September 22, 2026. Owner: Dustin. Lead: Opus. Code review: Astra.
-**Status (Sept 23, closed): step 0 GO; stage 1 finished (Weezing +3.2 over k3, averaged copy); stage 2 dropped. Plan after Run 5 at the end — revised Sept 24.; option B reopened Sept 24 evening (update at the end of the plan).** History and every earlier result are in
+**Status (Sept 23, closed): step 0 GO; stage 1 finished (Weezing +3.2 over k3, averaged copy); stage 2 dropped. Plan after Run 5 at the end — revised Sept 24.; option B reopened Sept 24 evening (update at the end of the plan). Superseded Sept 25: the current plan is "The plan, revised Sept 25 (approved by Dustin)" at the end of this page.** History and every earlier result are in
 `FEASIBILITY.md`. This page is meant to be read on its own.
 
 ## The question, and why this one first
@@ -289,9 +289,55 @@ fix, not the yardstick.
 6. The connection gate and the speed check pass before any evaluation.
 7. Side studies get one review pass from one reviewer.
 
-## Pointer, Sept 24 late evening (Fable; no plan change here until Dustin says yes)
+## The plan, revised Sept 25 (approved by Dustin, Sept 25)
 
-A consensus plan reached between Fable and the laptop Claude Code session, with the evidence that produced it, the
-reading rules and the decisions Dustin is asked for at breakfast, is in `docs/REVIEW_2026-09-24_direction.md`,
-section 8 ("Consensus plan, Sept 24 late evening, for Dustin's OK"). Read it before starting anything new. This page's
-plan stands until Dustin approves that section, at which point it moves here.
+Consensus of Fable's Claude Code session and the laptop Claude Code session, with a second Fable session's independent
+read agreeing. Objective for this month: the bot decides which brew gets Dustin's ladder games and improves a list
+before he plays it; the Limitless table is the regression test for pilot quality, not the objective. Full record and
+every number: `docs/REVIEW_2026-09-24_direction.md`, section 8. This section supersedes "The plan, revised Sept 24".
+
+**Decisions taken Sept 25 (approved by Dustin):** scoreboard v2 rebuilt from pairings on the development half (done,
+971901b; every Sept 23 cell within noise at v2's n); kp3 adopted as the screen's pilot on both sides and as the working
+table pilot pending the holdout confirmation, by Dustin's override of the pre-registered rule (on v2 alone kp3's ΔMSE
+interval crosses zero because v2 has half the matches; the point estimate is unchanged), k3 kept as the reproduction
+reference, the vetoed cells (Hydreigon v Suicune, the Vespiquen deck; Blaziken v Hydreigon on a 24-match cell) on the
+investigation list; the holdout spent once, on the pilot Dustin picks after kd's reading; the screen re-run with kp3 on
+both sides and the A2 hold decided on it; kd read against kp3 on v2; the Sleep and Paralysis fix published upstream.
+
+**Order of work.**
+1. Scoreboard v2 is the table for decisions (development half); the holdout confirms, once.
+2. Brew tools: A1 harness (one build kept, the other a fixture; coverage flag checked against kp's audited texts; the
+   one pre-registered tempo metric, with the dated prediction that brews 07 and 08 are fastest and 10 slowest); A2
+   screen readouts with kp3 on both sides, a ladder-weighted panel, worst matchup and failure modes instead of an
+   average, one-sided rows; A3 per-game calibration from the Ladder Log; A4 one brew to 15 to 20 ladder games with a
+   stop-loss; A5 B4b as a data refresh with bit-for-bit reproduction of the k3 table plus a card-effect pass, and an
+   upstream code-merge trial in the cloud before C1.
+3. Pilot quality: kd (the defender's Weakness and reductions in the clock) read against kp3 on v2; kpr (projected
+   readiness for the Active) registered with its census footprint, read the same way; B2e held-out archetypes that
+   are Dustin's own decks (card check, legality scan, k3 and kp3 rows; no fix may move one more than 2 further from
+   Limitless); B3 features then a Texel fit (Weakness, status, the three B2c habits), judged by the adoption rule and
+   the held-out decks, then left alone; B4 Dustin's one-hour blind quiz on decisive positions, then about ten saved
+   games with the sequential stopping rule, the bot on the archetype's list and never his exact list; B5 blind-spot
+   fixes under the card-agnostic rule, each with a paired A/B and the sentinels; B6 done (skill explains under 0.6 of
+   any gap; Sceptile v Vespiquen out of quarantine as drift-sensitive, Altaria v Sceptile in); B7 not now, gated by
+   the cloud transfer probe or three card-patch entries in B5's log.
+4. Not doing: policy networks trained on who won; k7 or depth tables; tuning to Limitless cells; new launchers,
+   guards, gates or ledgers; five-worst-cell screens; "cheapest within noise"; the kq/kv bench-credit line.
+
+**Rules.**
+- PASS for the pilot: real error τ̂ at 5.5 or less; every cell's confident miss at 10 or less; every deck's
+  7-opponent average within ±6; confirmed on the holdout.
+- Adoption of a pilot: paired ΔMSE bootstrap with the whole 95% interval below zero; vetoes (a cell's miss grows more
+  than 6, a deck's gap more than 2, a held-out deck more than 2 further) count only when mixed rows on the same deals
+  show the changed pilot's own side got worse beyond the mixed row's paired noise (about ±4 at 500 games), and never
+  on a cell whose Limitless band is wider than about ±15; otherwise they are investigation items (this refinement is
+  pre-registered as of Sept 25 for tables read from now on). Correlation, average miss, favorites right and pairings
+  beyond chance are reported, never decided on. Candidates are confirmed on the holdout before adoption is permanent.
+- Variants and process: whole table paired by deal, never the five worst cells; τ̂ margin E = 3 with the 90% interval,
+  doubling deals to 2,000 when undecided; every experiment names the decision it changes; two review tiers (engine
+  rules, the scoreboard tool and any pilot adopted or played by Dustin get a second reader; diagnostics none); one
+  owner per results file; every brew number carries its coverage flag.
+
+**Owners:** the WSL session runs on the laptop; the laptop session coordinates, second-reads tier 1 and owns the
+readings; the cloud session does engine items and the B7 probe; the Cowork agent does Limitless data; Fable reviews
+on request; Dustin decides, plays the quiz and the ladder.

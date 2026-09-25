@@ -26,9 +26,12 @@ the rules added since then. Read `START_HERE.md` first. Where the two differ, `S
 - **The Limitless table is the scoreboard** for any change to how the simulator plays
   (`rl/results/deep_search_table/`).
 
-## Who does what (changed Sept 24 evening)
+## Who does what (changed Sept 24 evening; owners updated Sept 25)
 
-This section is current. `START_HERE.md`'s "Who does what" is Pocket Deck Lab's earlier text.
+The current owners are the "Owners" line of "The plan, revised Sept 25" in `rl/RUN5.md` (approved by Dustin): the WSL
+session runs on the laptop, the laptop session coordinates and owns the readings, the cloud session does engine items,
+a Cowork agent does Limitless data, Fable reviews on request, Dustin decides. The roles below are the Sept 24 text and
+are kept for the record; where they differ, RUN5.md wins.
 
 - **Dustin** owns the project, decides, and starts runs on his laptop.
 - **The Claude Code agent (this repo)** owns the engine, the add-on and all runs: builds, tests, training and
