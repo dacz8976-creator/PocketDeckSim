@@ -1,0 +1,60 @@
+diff --git a/engine/examples/legality_scan.rs b/engine/examples/legality_scan.rs
+index dda35d8..72ee39c 100644
+--- a/engine/examples/legality_scan.rs
++++ b/engine/examples/legality_scan.rs
+@@ -474,6 +474,13 @@ fn main() {
+             all.merge(r.findings);
+         }
+     }
++    {
++        use deckgym::players::expectiminimax_player::*;
++        use std::sync::atomic::Ordering::Relaxed;
++        println!("DIAG certificate: blind guard {} calls / {} proofs; b-tier boundary {} calls / {} proofs",
++            DIAG_GUARD_CALLS.load(Relaxed), DIAG_GUARD_HITS.load(Relaxed),
++            DIAG_BOUNDARY_CALLS.load(Relaxed), DIAG_BOUNDARY_HITS.load(Relaxed));
++    }
+     println!("\nFindings (occurrences / games affected):");
+     if all.count.is_empty() {
+         println!("  none");
+diff --git a/engine/src/players/expectiminimax_player.rs b/engine/src/players/expectiminimax_player.rs
+index 4f5cb88..0166d42 100644
+--- a/engine/src/players/expectiminimax_player.rs
++++ b/engine/src/players/expectiminimax_player.rs
+@@ -61,6 +61,11 @@ fn choice_win_distance(
+     }
+ }
+ 
++pub static DIAG_GUARD_CALLS: AtomicUsize = AtomicUsize::new(0);
++pub static DIAG_GUARD_HITS: AtomicUsize = AtomicUsize::new(0);
++pub static DIAG_BOUNDARY_CALLS: AtomicUsize = AtomicUsize::new(0);
++pub static DIAG_BOUNDARY_HITS: AtomicUsize = AtomicUsize::new(0);
++
+ pub(crate) fn prefer_shorter_win(a: Option<usize>, b: Option<usize>) -> std::cmp::Ordering {
+     match (a, b) {
+         (Some(a), Some(b)) => b.cmp(&a),
+@@ -587,8 +592,10 @@ fn expectiminimax_with_public_reply(
+     // first); the b-tiers' guessed worlds fail the guard and used to skip the certificate.
+     // `projected_free_opponent_turn` re-masks every hand and deck, so a guess can't leak into it.
+     let boundary_fallback = || {
++        DIAG_BOUNDARY_CALLS.fetch_add(1, Ordering::Relaxed);
+         certified_public_reply_loss_value(state, myself, value_function, public_reply_provenance)
+             .map(|score| {
++                DIAG_BOUNDARY_HITS.fetch_add(1, Ordering::Relaxed);
+                 (
+                     score,
+                     DebugStateNode {
+@@ -777,12 +784,14 @@ fn expectiminimax_with_public_reply(
+                 .contains(&crate::models::Card::Unknown)
+             || state.decks[state.current_player].energy_types.is_empty())
+     {
++        DIAG_GUARD_CALLS.fetch_add(1, Ordering::Relaxed);
+         if let Some(score) = certified_public_reply_loss_value(
+             state,
+             myself,
+             value_function,
+             public_reply_provenance,
+         ) {
++            DIAG_GUARD_HITS.fetch_add(1, Ordering::Relaxed);
+             return (
+                 score,
+                 DebugStateNode {
