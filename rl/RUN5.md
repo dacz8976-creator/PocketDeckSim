@@ -334,7 +334,13 @@ first.
    identity recorded, meaning its hash plus proof that k3 and kp3 replay all 14,000 table games move for move, and
    `project_manifest.json` and `decks/screen/run_screen.py` pointed at that build, since the verified rules4 program has
    no kp3 and the screen script hard-codes k3), a ladder-weighted panel, worst matchup and failure modes instead of an
-   average, one-sided rows; A3 per-game calibration from the Ladder Log; A4 one brew to 15 to 20 ladder games with a
+   average, one-sided rows. **Dustin's decision, Sept 25:** the hold lifts for the floor check only; ranking stays on
+   hold until the ladder-weighted panel and the held-out decks exist. The floor starts after the engine switch passes.
+   Bar: 20% under kp3 on both sides; a result within the screen's own noise of 20% reads "borderline". A fail or
+   borderline result shows the worst matchups, the failure modes and the coverage flag, recomputed under kp3. A result
+   reads "untrusted" instead of "fail" only when a flagged card central to the list was used on a small share of the
+   turns it was available; the page reports available and used counts for every flagged card. Check before use: both
+   Payback lists must come out "fail", not "untrusted"; A3 per-game calibration from the Ladder Log; A4 one brew to 15 to 20 ladder games with a
    stop-loss; A5 B4b as a data refresh with bit-for-bit reproduction of the k3 table plus a card-effect pass, and an
    upstream code-merge trial in the cloud before C1.
 3. Pilot quality: kd (the defender's Weakness and reductions in the clock) read against kp3 on v2; then, approved by
