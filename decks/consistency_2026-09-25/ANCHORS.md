@@ -1,5 +1,15 @@
 # Consistency harness (A1): anchors and the answer to D1
 
+> **Prediction, made before any of these brews was played on the ladder: 2026-09-25, about 00:15 CDT (commit
+> 2f37f86's numbers).** On Dustin's first ladder games with brews 07-10, the lists should reach their first attack
+> of 30 or more damage having conceded, from least to most: **08 Entei (0.00) and 07 Hoopa/Darkrai/Sableye (0.04)
+> fastest, 09 Sableye/Obstagoon (0.29), then 10 Diancie/Giratina (0.48) slowest.** This comes from one pre-set
+> measure: points conceded before the first attack of 30 or more damage or a knockout, scripted pilot against the
+> 'aa' bot, mean of the two seats. It is a prospective test, so don't change the measure or the numbers after the
+> games are played. To score it: for each ladder game with 07-10, note the points you had conceded when your deck
+> first hit for 30 or more. With 3-5 games per brew, only a gross failure will show (for example, 10 clearly
+> fastest or 08 clearly slowest).
+
 Built 2026-09-24, late evening, on branch `laptop/engine-first-2026-09-24` (`lib/consistency.py`); fix pass later
 the same night after a review. There is one page per list in this folder. The table at the bottom is rewritten by
 `--batch`; the text above it was written by hand from that run (10,000 solitaire deals per seat and 150 engine
