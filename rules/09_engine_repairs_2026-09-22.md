@@ -69,3 +69,17 @@ Rules1/rules2 verification results are in their historical records. Rules3 build
 ## Replay follow-up, September 22
 
 The accepted 225430 segment revealed that a zero-HP attacker was discarded before Destiny Burst finished. All on-KO effects in the simultaneous wave now finish while every member remains present, before point accounting and cleanup. A regression covers both seats, and the recorded segment checks both promotions. This change retains the earlier repairs and does not settle the open simultaneous-win or lethal Checkup-healing questions.
+
+## Open engine bugs (not fixed yet)
+
+- **Coin-flip damage cuts come off before Weakness** (found Sept 25, in the kd review). Guarded Grill (Bastiodon A2
+  114, heads: −100) and Securely Sheltered (Hisuian Goodra B3b 050, heads: −80) are Abilities. The engine takes their
+  cut off the attack's raw damage in the attack outcome (`AttackOutcomes::split_with_damage_prevention`,
+  `engine/src/actions/attack_outcome.rs`), before `modify_damage` adds Weakness or applies Bounded Field. By the
+  rules (`02_damage_knockouts_points.md`, step 4) coin-flip prevention is a defender-side effect and comes after
+  Weakness; the repair above moved the fixed reductions there, but not this one. Example: Charmeleon's Fire Claws
+  (60) into Bastiodon under Bounded Field, heads: the engine does (60 − 100) → 0, the rules 120 − 100 = 20. None of
+  these cards are in the eight table decks. The kd bot prices the engine's current order on purpose. Its test
+  `guarded_grill_under_bounded_field_pins_the_engines_current_order_coin_cut_before_weakness`
+  (`engine/src/hooks/core.rs`) fails when this is fixed and names the matching one-line kd change. Fix the engine
+  first; kd follows.

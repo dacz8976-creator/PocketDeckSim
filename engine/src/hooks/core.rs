@@ -2914,6 +2914,7 @@ mod persistent_defender_damage_tests {
     //! persistent modifiers are in play, and different exactly where a temporary one is left out.
     use super::*;
     use crate::database::get_card_by_enum;
+    use rand::{rngs::StdRng, SeedableRng};
 
     fn mon(id: CardId) -> PlayedCard {
         PlayedCard::from_id(id)
@@ -3073,13 +3074,40 @@ mod persistent_defender_damage_tests {
         assert_eq!(both(mon(CardId::A4080Togekiss), mon(CardId::A1001Bulbasaur), 40).0, (20.0, 20.0));
         // Guarded Grill: heads takes -100 from the damage before modifiers (Bastiodon is weak to Fire).
         assert_eq!(both(mon(CardId::A2114Bastiodon), mon(CardId::A1033Charmander), 40).0, (30.0, 30.0));
-        // Under Bounded Field the order shows: tails (120 + Weakness) x2 = 240, heads (120 - 100) x2 = 40, as the
-        // engine cuts the raw damage before modify_damage. Cutting after would give (240 + 140) / 2.
-        let mut state = duel(vec![mon(CardId::A2114Bastiodon)], vec![mon(CardId::A1033Charmander)]);
+    }
+
+    /// PINS THE ENGINE'S CURRENT ORDER, which is a known engine bug (rules/09, "Open engine bugs"): the engine takes
+    /// Guarded Grill's -100 off the raw damage, before Weakness; by the rules (rules/02, step 4) it comes after.
+    /// kd prices what the engine does, so the bot's clock agrees with the engine it plays in. When the engine is
+    /// fixed, this fails on purpose: then make the matching one-line change in `persistent_defender_damage` (take
+    /// the heads reduction off the damage after the rest of the pipeline, not off `base_damage`).
+    #[test]
+    fn guarded_grill_under_bounded_field_pins_the_engines_current_order_coin_cut_before_weakness() {
+        // Charmeleon's Fire Claws (60) into Bastiodon (160 HP, weak to Fire) under Bounded Field. The engine today:
+        // tails 60 x2 = 120, heads 60 - 100 = 0, so 60 on average. By the rules: tails 120, heads 120 - 100 = 20: 70.
+        let charmeleon = mon(CardId::A1034Charmeleon).with_energy(vec![EnergyType::Fire; 3]);
+        let mut state = duel(vec![mon(CardId::A2114Bastiodon)], vec![charmeleon]);
         state.active_stadium = Some(get_card_by_enum(CardId::B3155BoundedField));
-        assert_eq!(both_on(&state, 120, None, 0).0, (140.0, 140.0));
-        assert_eq!(modify_damage(&state, (1, 0), (120, 0, 0), true, DamageModifierContext::default()), 240);
-        assert_eq!(modify_damage(&state, (1, 0), (20, 0, 0), true, DamageModifierContext::default()), 40);
+        state.current_player = 1;
+        state.turn_count = 5;
+        let fire_claws = state
+            .generate_possible_actions()
+            .1
+            .into_iter()
+            .find(|action| matches!(&action.action, SimpleAction::Attack(attack) if attack.title == "Fire Claws"))
+            .expect("Fire Claws is playable");
+        let (probabilities, mutations) = crate::actions::forecast_action(&state, &fire_claws).into_branches();
+        let engine: f64 = probabilities
+            .iter()
+            .zip(mutations)
+            .map(|(probability, mutate)| {
+                let mut branch = state.clone();
+                mutate(&mut StdRng::seed_from_u64(20_000_000_001), &mut branch, &fire_claws);
+                probability * (160 - branch.get_active(0).get_remaining_hp()) as f64
+            })
+            .sum();
+        assert_eq!(engine, 60.0, "the engine's Guarded Grill order changed: see this test's doc comment");
+        assert_eq!(both_on(&state, 60, None, 0).0, (engine, engine));
     }
 
     #[test]
