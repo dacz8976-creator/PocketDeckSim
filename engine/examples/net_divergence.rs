@@ -76,6 +76,41 @@ fn label(state: &State, action: &Action) -> String {
     }
 }
 
+/// Card-agnostic description of a move: its kind, the Trainer type, and whether it targets the Active
+/// Spot or the Bench; for an attack, its printed damage and whether that alone knocks out the Active.
+fn detail(state: &State, action: &Action) -> serde_json::Value {
+    let me = action.actor;
+    let role = |idx: usize| if idx == 0 { "active" } else { "bench" };
+    let opp_hp = state.in_play_pokemon[1 - me][0].as_ref().map(|p| p.get_remaining_hp());
+    match &action.action {
+        SimpleAction::Play { trainer_card } => serde_json::json!({ "kind": "play",
+            "trainer": format!("{:?}", trainer_card.trainer_card_type).to_lowercase() }),
+        SimpleAction::Attack(atk) => serde_json::json!({ "kind": "attack", "damage": atk.fixed_damage,
+            "has_effect": atk.effect.is_some(), "printed_ko": opp_hp.is_some_and(|h| atk.fixed_damage >= h) }),
+        SimpleAction::UseAbility { in_play_idx } => serde_json::json!({ "kind": "ability", "target": role(*in_play_idx) }),
+        SimpleAction::Evolve { in_play_idx, .. } => serde_json::json!({ "kind": "evolve", "target": role(*in_play_idx) }),
+        SimpleAction::Place(..) => serde_json::json!({ "kind": "place" }),
+        SimpleAction::AttachTool { in_play_idx, .. } => serde_json::json!({ "kind": "tool", "target": role(*in_play_idx) }),
+        SimpleAction::Attach { attachments, .. } => serde_json::json!({ "kind": "energy",
+            "target": attachments.first().map(|(_, _, idx)| role(*idx)).unwrap_or("none") }),
+        SimpleAction::Retreat(_) => serde_json::json!({ "kind": "retreat" }),
+        SimpleAction::EndTurn => serde_json::json!({ "kind": "end turn" }),
+        other => serde_json::json!({ "kind": format!("{other:?}").split(|c: char| !c.is_alphanumeric()).next().unwrap_or("").to_lowercase() }),
+    }
+}
+
+/// The board around a decision, from the mover's side.
+fn context(state: &State, me: usize, actions: &[Action]) -> serde_json::Value {
+    let hp = |p: usize| state.in_play_pokemon[p][0].as_ref().map(|c| c.get_remaining_hp());
+    let bench = |p: usize| state.in_play_pokemon[p][1..].iter().flatten().count();
+    let energy = |p: usize| state.in_play_pokemon[p][0].as_ref().map(|c| c.attached_energy.len());
+    serde_json::json!({
+        "own_active_hp": hp(me), "opp_active_hp": hp(1 - me), "own_bench": bench(me), "opp_bench": bench(1 - me),
+        "own_active_energy": energy(me), "opp_active_energy": energy(1 - me), "hand": state.hands[me].len(),
+        "attack_offered": actions.iter().any(|a| matches!(a.action, SimpleAction::Attack(_))),
+    })
+}
+
 fn lucario_score(state: &State, lucario_seat: usize) -> f64 {
     match state.winner {
         Some(GameOutcome::Win(w)) => f64::from(u8::from(w == lucario_seat)),
@@ -128,6 +163,8 @@ fn replay(g: &Recorded, decks: &[Deck; 2], probes: u64) -> (Vec<serde_json::Valu
                 "net": idx, "net_move": label(&state, &actions[idx]), "net_q": net.q[idx],
                 "k3": k3_moves, "k3_move": label(&state, &actions[k3i]), "net_q_of_k3_move": net.q[k3i],
                 "k3_agrees_with_itself": k3_moves.iter().all(|m| *m == k3i),
+                "net_detail": detail(&state, &actions[idx]), "k3_detail": detail(&state, &actions[k3i]),
+                "context": context(&state, actor, &actions),
                 "differs": !same, "game_won": g.winner == g.lucario_seat as i64,
             });
             if !same {
@@ -205,6 +242,9 @@ fn main() {
     }
     eprintln!("{} games, {problems} out of sync; {} network decisions, {} where k3 differs beyond move order; \
         rolling out", games.len(), records.len(), positions.len());
+    if rollouts == 0 {
+        positions.clear();
+    }
     let results: Vec<(Vec<f64>, Vec<f64>)> = positions.par_iter().map(|pos| {
         let seat = seat_of[&pos.i];
         let seed = |r: u64| 22_400_000_000 + pos.i * 100_000 + pos.j as u64 * 100 + r;
