@@ -5,6 +5,7 @@ mod evolution_rusher_player;
 pub mod expectiminimax_player;
 mod human_player;
 pub mod list_aware_player;
+pub mod public_pricing_player;
 pub mod jev_player;
 mod mcts_player;
 mod random_player;
@@ -23,6 +24,7 @@ pub use expectiminimax_player::{
 pub use human_player::HumanPlayer;
 pub use jev_player::JevPlayer;
 pub use list_aware_player::ListAwarePlayer;
+pub use public_pricing_player::PublicPricingPlayer;
 pub use mcts_player::MctsPlayer;
 pub use random_player::RandomPlayer;
 pub use value_function_player::ValueFunctionPlayer;
@@ -142,6 +144,9 @@ pub enum PlayerCode {
         opponent_ply: usize,
         samples: usize,
     },
+    /// B1' public pricing: 'kp<N>' is the k<N> search, blind, with effects that mention the opponent's
+    /// hand or deck priced against the Unknown cards instead of left unpriced (public_pricing_player).
+    KP { max_depth: usize },
 }
 /// Custom parser function enforcing case-insensitivity
 pub fn parse_player_code(s: &str) -> Result<PlayerCode, String> {
@@ -193,6 +198,14 @@ pub fn parse_player_code(s: &str) -> Result<PlayerCode, String> {
         return Err(format!(
             "Invalid player code: {s}. Use 't<number>', e.g. 't3'"
         ));
+    }
+    // B1'. 'kp<N>' = 'k<N>' with public pricing (see PlayerCode::KP). Before 'k<N>', which would
+    // reject it.
+    if let Some(depth) = lower.strip_prefix("kp") {
+        if let Ok(max_depth) = depth.parse::<usize>() {
+            return Ok(PlayerCode::KP { max_depth });
+        }
+        return Err(format!("Invalid player code: {s}. Use 'kp<number>', e.g. 'kp3'"));
     }
     // Option B. 'b<N>[o<P>][n<S>]' = 'k<N>' with list-sampled hidden cards (see PlayerCode::B).
     if lower.starts_with('b') && lower.len() > 1 {
@@ -462,6 +475,18 @@ fn get_player(deck: Deck, opponent_deck: &Deck, player: &PlayerCode) -> Box<dyn 
             opponent_list: opponent_deck.clone(),
             samples: *samples,
         }),
+        // The K arm's search, field for field, inside the public-pricing wrapper.
+        PlayerCode::KP { max_depth } => Box::new(PublicPricingPlayer {
+            search: ExpectiMiniMaxPlayer {
+                deck,
+                max_depth: *max_depth,
+                write_debug_trees: false,
+                value_function: Box::new(value_functions::public_clock_effect_value_function),
+                opponent_ply: 0,
+                consistent_horizon: false,
+                soft_opponent: false,
+            },
+        }),
     }
 }
 
@@ -549,6 +574,12 @@ mod s42_tier_parse_tests {
         assert!(parse_player_code("b3o0").is_err());
         assert!(parse_player_code("b3n0").is_err());
         assert!(parse_player_code("bx").is_err());
+        // B1': 'kp<N>', and 'k<N>' is unchanged.
+        assert_eq!(parse_player_code("kp3").unwrap(), PlayerCode::KP { max_depth: 3 });
+        assert_eq!(parse_player_code("KP5").unwrap(), PlayerCode::KP { max_depth: 5 });
+        assert_eq!(parse_player_code("k3").unwrap(), PlayerCode::K { max_depth: 3 });
+        assert!(parse_player_code("kp").is_err());
+        assert!(parse_player_code("kpx").is_err());
         // §115: 'd<N>' must parse and must not shadow anything earlier.
         assert_eq!(
             parse_player_code("d3").unwrap(),

@@ -6,7 +6,7 @@ use crate::{
 };
 use rand::{rngs::StdRng, seq::SliceRandom};
 use serde::{Deserialize, Serialize};
-use std::cell::RefCell;
+use std::cell::{Cell, RefCell};
 
 pub const INFORMATION_MODEL: &str = "closed-counts-unpriced-v7";
 
@@ -321,9 +321,45 @@ pub(crate) fn record_unpriced(action: &Action, reason: &str) {
     });
 }
 
+thread_local! {
+    /// B1' public pricing (the `kp<N>` tiers): while set, an effect whose text mentions the opponent's
+    /// hand or deck is resolved against the Unknown cards instead of being left unpriced.
+    static PUBLIC_PRICING: Cell<bool> = const { Cell::new(false) };
+}
+
+/// Runs `f` with public pricing on for this thread (the `kp<N>` tiers' decisions). An Unknown card has
+/// no identity, so an effect that looks for a Supporter or a Basic among the opponent's hidden cards
+/// finds none, while its public parts are priced as printed: Darkness Claw's damage, Copycat's draw count
+/// (the opponent's hand size), Mars' draw count (their remaining points). No card is special-cased.
+pub fn with_public_pricing<T>(f: impl FnOnce() -> T) -> T {
+    struct Restore(bool);
+    impl Drop for Restore {
+        fn drop(&mut self) {
+            PUBLIC_PRICING.with(|flag| flag.set(self.0));
+        }
+    }
+    let _restore = Restore(PUBLIC_PRICING.with(|flag| flag.replace(true)));
+    f()
+}
+
 /// Conservative boundary, deliberately over-inclusive for effects mentioning hidden
 /// zones. Returning a static leaf here means "unpriced", not "effect has zero value".
+/// Under [`with_public_pricing`] the opponent-hand/deck text rule is lifted; see
+/// [`hidden_continuation_reason_strict`] for callers that must keep it.
 pub fn hidden_continuation_reason(state: &State, action: &Action) -> Option<&'static str> {
+    hidden_continuation_reason_in(state, action, PUBLIC_PRICING.with(Cell::get))
+}
+
+/// The historical rule whatever the thread's pricing mode (the public-reply certificate uses it).
+pub(crate) fn hidden_continuation_reason_strict(state: &State, action: &Action) -> Option<&'static str> {
+    hidden_continuation_reason_in(state, action, false)
+}
+
+fn hidden_continuation_reason_in(
+    state: &State,
+    action: &Action,
+    public_pricing: bool,
+) -> Option<&'static str> {
     if state.setup_opponent_hidden && matches!(action.action, SimpleAction::EndTurn) {
         return Some("setup handoff or reveal requires the concealed opponent board");
     }
@@ -438,6 +474,7 @@ pub fn hidden_continuation_reason(state: &State, action: &Action) -> Option<&'st
     }
     .to_lowercase();
     if !public_board_only_ability
+        && !public_pricing
         && text.contains("opponent")
         && (text.contains("hand") || text.contains("deck"))
         && unknown(1 - action.actor)

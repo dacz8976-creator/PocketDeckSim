@@ -17,7 +17,7 @@ use crate::{
     effects::{CardEffect, TurnEffect},
     hooks::DamageModifierContext,
     models::{Attack, Card, EnergyType, TrainerType},
-    observation::{hidden_continuation_reason, PlayerObservation},
+    observation::{hidden_continuation_reason_strict, PlayerObservation},
     state::GameOutcome,
     State,
 };
@@ -356,7 +356,8 @@ fn assess_trusted_leaf(leaf: &State, myself: usize) -> PublicReplyAssessment {
     for action in actions.into_iter().filter(|candidate| {
         !candidate.is_stack && matches!(candidate.action, SimpleAction::Attack(_))
     }) {
-        if hidden_continuation_reason(&public, &action).is_some() {
+        // The certificate keeps the historical rule even inside a public-pricing (kp) search.
+        if hidden_continuation_reason_strict(&public, &action).is_some() {
             unsupported.push(UnsupportedAction {
                 action,
                 reason: UnsupportedReason::HiddenIdentity,
