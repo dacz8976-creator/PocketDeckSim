@@ -324,7 +324,12 @@ copied into `rl/engine-2026-09-25/` with a README naming the commit, both hashes
 (`current_engine.py` reads the manifest, so it needs no change), `run_screen.py` defaults its engine to the manifest's
 build and its players to kp3,kp3 with k3,k3 still available, and START_HERE's engine line is updated; the 0.7.2 wheel
 and its run identities are untouched; a failing replay or parity check leaves the manifest untouched and is reported
-first.
+first. **Done Sept 25, 10:50 (61d773c):** k3 and kp3 replayed 14,000 of 14,000 each, field by field including the move
+hash; `deckgym simulate` k3,k3 on seed 7100 identical to rules4; the kp3 smoke test runs; evidence in
+`rl/results/engine_identity_2026-09-25/`. The official engine is now main-7fc6ccb in `rl/engine-2026-09-25/`
+(`deckgym` f4d235e5…1034, `legality_scan` d5c0a952…bfbb); rules4 is in the manifest's historical releases with its hash;
+`run_screen.py` resolves the engine through `current_engine.py`, refuses any other binary, and defaults to kp3 on both
+sides with k3 still available; the 0.7.2 wheel and its run identities are untouched.
 
 **Order of work.**
 1. Scoreboard v2 is the table for decisions (development half); the holdout confirms, once.
