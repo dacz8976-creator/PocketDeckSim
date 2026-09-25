@@ -108,7 +108,14 @@ def main():
     ap.add_argument("--old-games")
     ap.add_argument("--new-games")
     ap.add_argument("--reps", type=int, default=4000)
+    ap.add_argument("--limitless", help="JSON whose 'cells' are {\"a|b\": [W, L, T]}, replacing the Sept 23 cells "
+                    "(scoreboard v2, ../scoreboard_v2_2026-09-25/limitless_v2_dev.json); default: deep_table.py's")
     a = ap.parse_args()
+    if a.limitless:
+        with open(a.limitless, encoding="utf-8") as f:
+            v2 = json.load(f)["cells"]
+        D.LIMITLESS.clear()
+        D.LIMITLESS.update({tuple(k.split("|")): tuple(v) for k, v in v2.items()})
     paired = bool(a.old_games and a.new_games)
     if paired:
         Og, Ng = parse_games(a.old_games), parse_games(a.new_games)
@@ -132,6 +139,7 @@ def main():
     p = out.append
     p(f"Reading: {new_name} (new) against {a.old} (current), {len(allk)} common pairings.")
     p(f"Source: {src}")
+    p(f"Limitless cells: {a.limitless or 'the Sept 23 table (deep_table.py)'}")
     p("")
     for label, keys in (("all cells", allk), ("decision set (Altaria v Sceptile quarantined)", qk)):
         p(f"== {label}: {len(keys)} pairings")

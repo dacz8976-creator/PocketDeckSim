@@ -1,0 +1,38 @@
+Scoreboard v2: the 28 cells from the development half's pairings, against the Sept 23 table
+
+1,608 panel matches from 58 development events (split.json; holdout not read).
+Score = first deck's (W + T/2)/n. 'band' = the Sept 23 score's own 95% binomial band at v2's n.
+'outside' = the v2 score falls outside that band (descriptive: the samples overlap).
+
+  pair                       Sept 23 W-L-T     n   score         v2 W-L-T     n   score  v2 - Sept23     band  outside
+  altaria v blaziken               69-23-3    95    74.2           25-7-2    34    76.5         +2.3     14.7  
+  altaria v hydreigon              74-55-6   135    57.0          29-24-3    56    54.5         -2.6     13.0  
+  altaria v lucario              223-84-11   318    71.9         114-42-5   161    72.4         +0.5      6.9  
+  altaria v sceptile            101-105-13   219    49.1          45-55-8   108    45.4         -3.7      9.4  
+  altaria v suicune                76-69-5   150    52.3          35-27-3    65    56.2         +3.8     12.1  
+  altaria v vespiquen            72-117-11   200    38.8          32-55-6    93    37.6         -1.1      9.9  
+  altaria v weezing                33-64-5   102    34.8          14-30-3    47    33.0         -1.8     13.6  
+  blaziken v hydreigon             33-22-6    61    59.0           15-7-2    24    66.7         +7.7     19.7  
+  blaziken v lucario               63-78-3   144    44.8          24-35-0    59    40.7         -4.1     12.7  
+  blaziken v sceptile              54-10-3    67    82.8           17-5-1    23    76.1         -6.7     15.4  
+  blaziken v suicune               35-22-3    60    60.8           13-7-1    21    64.3         +3.5     20.9  
+  blaziken v vespiquen              28-6-1    35    81.4           24-6-1    31    79.0         -2.4     13.7  
+  blaziken v weezing               22-23-3    48    49.0            6-9-2    17    41.2         -7.8     23.8  
+  hydreigon v lucario              78-65-6   149    54.4          34-19-2    55    63.6         +9.3     13.2  
+  hydreigon v sceptile             30-47-3    80    39.4          12-19-4    35    40.0         +0.6     16.2  
+  hydreigon v suicune              20-39-3    62    34.7          10-24-1    35    30.0         -4.7     15.8  
+  hydreigon v vespiquen            35-57-3    95    38.4          13-23-2    38    36.8         -1.6     15.5  
+  hydreigon v weezing              23-26-2    51    47.1          11-13-0    24    45.8         -1.2     20.0  
+  lucario v sceptile              85-141-5   231    37.9          44-68-2   114    39.5         +1.6      8.9  
+  lucario v suicune                91-64-3   158    58.5          49-34-2    85    58.8         +0.3     10.5  
+  lucario v vespiquen             133-57-7   197    69.3          73-31-3   107    69.6         +0.3      8.7  
+  lucario v weezing                74-56-6   136    56.6          46-28-4    78    61.5         +4.9     11.0  
+  sceptile v suicune               49-55-3   107    47.2          25-25-2    52    50.0         +2.8     13.6  
+  sceptile v vespiquen             41-84-2   127    33.1          19-35-2    56    35.7         +2.6     12.3  
+  sceptile v weezing               51-25-4    80    66.2          24-11-1    36    68.1         +1.8     15.4  
+  suicune v vespiquen              33-92-3   128    27.0          20-51-1    72    28.5         +1.5     10.2  
+  suicune v weezing                50-27-4    81    64.2          23-15-1    39    60.3         -3.9     15.0  
+  vespiquen v weezing              70-13-2    85    83.5           35-6-2    43    83.7         +0.2     11.1  
+
+Cells outside the band: 0 of 28
+Written: limitless_v2_dev.json, cells_v2.txt
