@@ -1,5 +1,32 @@
 # The floor check's Payback pre-use check, Sept 25
 
+**Result: the check passes on the laptop's run.** Both Payback lists read "fail", and the k3 control reads "untrusted". The floor can be used once the second read in a separate session agrees.
+
+| deck | pilots | wins of 1,920 | verdict | needed |
+|---|---|---:|---|---|
+| brew-06 (Pyukumuku/Silvally Payback) | kp3, kp3 | 128 (6.7%) | **fail** | fail ✔ |
+| brew-06b (Grass, Team Rocket's Scyther) | kp3, kp3 | 281 (14.6%) | **fail** | fail ✔ |
+| deck 14 (Comfey/Raticate/Hypno), control | k3, k3 | 195 (10.2%) | **control reading: untrusted** | untrusted ✔ |
+| brew-05b (Meowstic/Hatterene/Comfey) | kp3, kp3 | 597 (31.1%) | clears the floor | descriptive |
+| deck 07 (Skarmory stall) | kp3, kp3 | 908 (47.3%) | clears the floor | descriptive |
+
+**What the pages show:**
+- **The Payback lists fail with their flagged cards in use**, so a fail is not the bot ignoring their plan:
+  - brew-06: Silvally attacks on 595 of 597 chances, Pyukumuku is benched on 58%, Rocky Helmet is played on 90%.
+  - brew-06b: Silvally 592 of 599, Team Rocket's Scyther 182 of 188, Pyukumuku 66%, Rocky Helmet 62%.
+  - Both are worst against Sceptile, at 2%.
+- **brew-06b was well clear of the borderline line.** 281 wins against the 349 edge. The risk stated below did not happen.
+- **The control works.** Team Rocket's Raticate ex uses Thieving Incisors on 50 of 1,628 chances (3.1%), inside the 3–5% the brew pilot check measured. Team Rocket's Goo-zooka is also under 25% (64 of 4,510).
+- **The anchors hold.**
+  - brew-05b is 31.1%, against 29.4% ± 4.1 this morning.
+  - Deck 07 is 47.3%, against 47.7% ± 4.5.
+- **For a person to look at, not part of the check:** on deck 07, kp3 plays Jasmine on 50 of 3,968 chances (1.3%). Deck 07 clears the floor anyway, but it is Dustin's own deck, and it is the kind of thing the flag is for.
+- **Tracing changed no game.** A plain `run_screen.py` at 240 games per matchup, same seeds (`run_screen.txt`), gives exactly the same wins against every opponent for brew-06 and brew-06b.
+
+Everything below this line was written and committed (32b3d6a) before any game of this check was played.
+
+---
+
 **Written and committed before any game of this check was played.**
 
 **What it decides:** whether `decks/screen/floor.py` may be used on Dustin's decks.

@@ -121,10 +121,12 @@ the per-candidate table readings are indexed in `rl/results/table_readings_2026-
 - **Earlier:** the deeper-search table (k4–k6 don't help, Sept 24), the option B and kp3 table readings, the
   discard-attack census.
 
-**Running or next** (in the plan's order): the A2 screen re-run with kp3 on both sides (a diagnostic on the scratch
-add-on, for Dustin's decision on the screen hold; the screen's own switch to kp3 needs a new engine build, see RUN5's
-A2 line); kd (the defender's Weakness and reductions in the clock) built in the cloud, read against kp3 on v2; kpr
-after it. The quick bot screen stays on hold until Dustin lifts it.
+**Running or next** (in the plan's order; refreshed Sept 25 afternoon):
+- **The official engine** is `rl/engine-2026-09-25/` since Sept 25 (built from main at 7fc6ccb; its README).
+- **The A2 floor check** (`decks/screen/floor.py`) is built and reviewed. Next is its Payback pre-use check: brew-06 and brew-06b must read "fail", and the deck 14 control under k3 must read "untrusted". A second session reads it. Until then no floor verdict is used.
+- **kd** (the defender's Weakness and reductions in the clock, amended before any table): the table is running in the cloud. It is read against kp3 on scoreboard v2 under veto rule v2. Its mixed rows are running on the laptop (`rl/results/kd_mixed_rows_2026-09-25/`).
+- **After kd:** kpr, the holdout confirmation of whichever pilot Dustin picks, and the optional Altaria detector network.
+- The quick screen's ranking stays on hold (Dustin, Sept 25). The hold lifts for the floor check only.
 
 **Seed ranges already used.** Pick a new block outside all of these for any new measurement. Everything up to
 Run 5 stage 1 is from `rl/results/run5_build/BUILD_NOTES.md` ("Ranges already used", read from the code) and
@@ -143,7 +145,8 @@ its seed-overlap check; the rest was added since.
 | 14,000,000,000 – 17,999,999,999 | reserved: Altaria detector network training (not started; after kd is read) |
 | 18,000,000,000 – 18,300,000,000 blocks | reserved: Altaria detector network evaluation (k3, random, confirmation, transfer) |
 | 19,000,000,000 – 19,800,000,000 blocks | Opus's cloud practice test of the Hydreigon settings (program test only) |
-| 20,000,000,000+ | Claude Code diagnostics (Caterpie counterplay from 20.0B); 21,000,000,000 – 21,001,999,999: Hydreigon pair checks and readout smoke tests (Sept 24); 21,002,000,000+: the laptop's A1 build (branch `laptop/engine-first-2026-09-24`); 21,020,000,000 + pairing × 100,000 + i, i < 200: discard-attack census (Sept 25); 21,030,000,000 – 21,032,079,999: Raticate brew pilot check; 21,050,000,000 – 21,064,079,999: all-15-decks pilot check (Sept 25); 21,070,000,000 – 21,093,079,999: A2 screen re-run with kp3 (Sept 25); 22,000,000,000 – 22,599,999,999: the cloud's Sept 25 overnight list (its own row below); new blocks go above the last one used |
+| 20,000,000,000+ | Claude Code diagnostics (Caterpie counterplay from 20.0B); 21,000,000,000 – 21,001,999,999: Hydreigon pair checks and readout smoke tests (Sept 24); 21,002,000,000+: the laptop's A1 build (branch `laptop/engine-first-2026-09-24`); 21,020,000,000 + pairing × 100,000 + i, i < 200: discard-attack census (Sept 25); 21,030,000,000 – 21,032,079,999: Raticate brew pilot check; 21,050,000,000 – 21,064,079,999: all-15-decks pilot check (Sept 25); 21,070,000,000 – 21,093,079,999: A2 screen re-run with kp3 (Sept 25); 21,100,000,000 – 21,100,999,999: floor.py development runs and checks (Sept 25); 22,000,000,000 – 22,599,999,999: the cloud's Sept 25 overnight list (its own row below); new blocks go above the last one used |
+| 7,100 – 14,719 | the quick screen and the A2 floor check: seed 7,100 + 1,000 × opponent (deck in seat 0) and + 500 (seat 1), `--seed-stream`, 8 opponents; the floor plays 120 games per call (240 per matchup) |
 | 1M, 2M, 8M, 9M | step-3 checks |
 | 5M, 6M | v2.2 checks (Astra's rules4 recheck also 6M) |
 | 18M, 18.5M, 18.9M, 28.5M | step-1 checks (18M, 18.5M); Astra's interface checks (18.5M, 28.5M) and mirror benchmark (18.9M) |
@@ -151,7 +154,7 @@ its seed-overlap check; the rest was added since.
 | 40M, 41M, 43M | matchup tests; knockout audit v2 (43M) |
 | 50M | k3 screen; speed tests; Astra's screen benchmark |
 | 60M, 61M, 62M, 70M | run 2 (k3, random, previous checkpoints, confirmation); speed tests (60M); step-3 checks (70M) |
-| 72,000,000 – 72,279,999 | Limitless check k3 table (72,000,000 + pairing × 10,000 + game), deeper-search tables k4–k6, the d3/p3/y3 probes, list-refresh variant games, Hydreigon transcripts, option B first look and option B table (Sept 24, i < 500) |
+| 72,000,000 – 72,279,999 | Limitless check k3 table (72,000,000 + pairing × 10,000 + game), deeper-search tables k4–k6, the d3/p3/y3 probes, list-refresh variant games, Hydreigon transcripts, option B first look and option B table (Sept 24, i < 500); every later table and mixed row (b3n1, kp3, kq3, kd3; Hydreigon, Vespiquen and kd3 mixed rows) reuses these deals on purpose, for pairing |
 | 73,000,000+ | auditor's part 2 (bot vs bot) |
 | 80,000,000 – 80,951,000 | runs 3–4 k3 evaluation (also step 0) |
 | 81,000,000 – 81,100,000 | runs 3–4 random-move games (also step 0) |

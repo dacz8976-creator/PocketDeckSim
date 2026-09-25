@@ -53,7 +53,12 @@ RULES = {
           "pilot's own side got worse beyond their paired noise, and never on a cell whose Limitless band is wider "
           "than +/-15; otherwise it is an investigation item",
 }
-BAND_MAX = 15.0  # points, the 95% binomial half-width of the Limitless cell as printed in the per-cell table
+# Points: the 95% binomial half-width of the Limitless cell as printed in the per-cell table. "About +/-15" was fixed at
+# exactly 15.0 on Sept 25, before kd3's table and independently of any candidate; it is not moved after a reading.
+# A band is wider than 15.0 only for a cell with fewer than 43 matches (at a 50% score; fewer still at lopsided scores).
+# Coincidence noted in advance: on scoreboard v2, Hydreigon v Suicune (30.0%, 35 matches) has a band of +/-15.2, so it is
+# out of cell vetoes by 0.2; the deck veto still covers Hydreigon and Suicune.
+BAND_MAX = 15.0
 
 
 def parse_text(paths):

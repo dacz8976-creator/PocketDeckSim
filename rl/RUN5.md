@@ -341,7 +341,16 @@ sides with k3 still available; the 0.7.2 wheel and its run identities are untouc
    no kp3 and the screen script hard-codes k3), a ladder-weighted panel, worst matchup and failure modes instead of an
    average, one-sided rows. **Dustin's decision, Sept 25:** the hold lifts for the floor check only; ranking stays on
    hold until the ladder-weighted panel and the held-out decks exist. The floor starts after the engine switch passes.
-   Bar: 20% under kp3 on both sides; a result within the screen's own noise of 20% reads "borderline". A fail or
+   Bar: 20% under kp3 on both sides; a result within the screen's own noise of 20% reads "borderline". Game count fixed by
+   Dustin on Sept 25 before any floor game: 240 per matchup, 1,920 per floor run (band about ±1.8 at 20%). The 25%
+   "small share" threshold stays, with the actual share printed beside every verdict; it is a flag for a human, and is
+   revisited only if a case lands in the 25 to 45 gap. "Untrusted" keys on the coverage flag only (cards the bot is known not
+   to price), not on "central" cards, which Dustin rejected on Sept 25 (every card has a use, and "used" is not one
+   thing: Crobat's job is its ability, Comfey's is the bench, Regigigas's is to take hits). Each flagged card carries a
+   role set by the page's author, printed beside its count: attacker (attack chosen when payable), activated ability
+   (used when offered), bench piece or passive (benched when in hand and benchable), wall (kept Active when a switch was
+   available), Tool or Stadium (played when playable); roles with no countable move are marked "not countable" and
+   never feed "untrusted". No confirmation from Dustin is needed; he objects on the page when a role is wrong. A fail or
    borderline result shows the worst matchups, the failure modes and the coverage flag, recomputed under kp3. A result
    reads "untrusted" instead of "fail" only when a flagged card central to the list was used on a small share of the
    turns it was available; the page reports available and used counts for every flagged card. Check before use: both

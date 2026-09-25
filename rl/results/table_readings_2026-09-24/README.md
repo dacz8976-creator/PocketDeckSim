@@ -15,6 +15,10 @@ These readings follow the rules in section 8 of `docs/REVIEW_2026-09-24_directio
 **Which veto rule each reading used.** `score.py --rules` is now required, and every reading prints its rule.
 - **v1 (Sept 24):** every cell and deck veto counts. The b3o3n4, b3n1, kp3 and kq3 readings below used v1 and keep it.
 - **v2 (pre-registered Sept 25, for tables read from then on, starting with kd3):** a veto counts only when mixed rows on the same deals show the changed pilot's own side got worse beyond their paired noise. It never counts on a cell whose Limitless band is wider than ±15. Otherwise it is an investigation item. If a veto has no mixed rows yet, the reading says "not decided" until they are in.
+  - "About ±15" was fixed at exactly 15.0 on Sept 25, on the printed binomial band, before kd3's table and independently of any candidate (Fable and the laptop agreed). It is not moved after a reading.
+  - A band is wider than 15.0 only for cells with fewer than 43 matches at a 50% score, and fewer still at lopsided scores.
+  - Noted in advance: on v2, Hydreigon v Suicune (30.0%, 35 matches) has a band of ±15.2, so it is out of cell vetoes by 0.2. The deck veto still covers Hydreigon and Suicune.
+  - kp3's status is unaffected either way, since it was adopted by Dustin's override under v1.
 - **Check of the new code:** the v1 reading of kp3 on scoreboard v2 reproduces `../scoreboard_v2_2026-09-25/kp3_vs_k3_v2.txt` number for number. The v2 mixed-row lines reproduce the Vespiquen table in `../vespiquen_mixed_rows_2026-09-25/`: +2.9 ± 1.5 on its own side, +5.6 ± 1.5 for its opponents.
 - **For illustration only, not a reading (kp3 stays under v1 and Dustin's override):**
   - Under v2 on the Sept 23 table, kp3's Vespiquen deck veto would be an investigation item. The other two vetoes would wait for mixed rows.
