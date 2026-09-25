@@ -34,6 +34,20 @@ These readings follow the rules in section 8 of `docs/REVIEW_2026-09-24_directio
   - Real error on the decision set: +0.01 to +3.69 against +0.00 to +3.74.
   - None of the 4,000 event draws left a cell empty.
 
+**The holdout confirmation of kp3, pre-registered Sept 25 afternoon.** Fable proposed it and the laptop agreed. It was written before any holdout file was opened, and it applies only if Dustin picks kp3 as the pilot the holdout is spent on.
+- **What is compared:** kp3 against k3, paired by deal, on the decision set of 27 cells (Altaria v Sceptile quarantined, as everywhere else), under veto rule v2.
+- **The holdout cells:** the frozen holdout half of B6's split, counted exactly as `../scoreboard_v2_2026-09-25/build_v2.py` counts the development half. That means cells and per-event cells, with one pairing entry counted as one match.
+- **Confirmed only if all three hold:**
+  1. The holdout's ΔMSE (kp3 − k3) has the same sign as the development half's, which is negative (−45.8 on v2).
+  2. The pooled development + holdout ΔMSE 95% interval is entirely below zero, both binomial and by event.
+  3. No veto counts under rule v2 on the holdout cells. The mixed rows are kp3 against k3 on all 28 pairings, both directions (`../kp3_mixed_rows_2026-09-25/`). They are simulator-side only, and were run on the official legality_scan before the holdout was opened.
+- **If all three hold:** kp3's adoption by override becomes a confirmed adoption.
+- **If any fails:** kp3 stays the working pilot by Dustin's override. The next confirmation is on Limitless events after the freeze date.
+- **Caveat on condition 2, written beside the rule:**
+  - The pooled development + holdout table is essentially the Sept 23 pooled table rebuilt by pairings.
+  - kp3's interval was already below zero there (−84.4 to −4.8), and that table informed which candidates were built.
+  - So condition 2 is close to guaranteed, and **condition 1 is the real test**. Events after the freeze date are the truly unseen test.
+
 **What the holdout can and can't show.**
 - The Sept 23 pooled table included the events now reserved as the holdout, and that table informed which candidates were built.
 - So the holdout checks against a table that no v2 adoption decision used, but it is not a completely unseen test.

@@ -63,6 +63,14 @@ The mixed rows compare each deck's own score with kd3 on one side only against k
   - This is the mirror of the kp3 reading, where the opponents improved. kd's defender modifiers don't reach Vespiquen's own weakness.
 - **Lucario's deck average moves toward Limitless** (52.0 → 50.1, against 50.4), but because Lucario is piloted worse. It is an example of a table cell moving the right way for the wrong reason, which is what the mixed rows are for.
 
+## What the verdict refutes (Fable's attribution note, agreed)
+
+- kd is a bundle: Weakness and reductions in the clock, the fallback attacker, reach, defender bonuses, and the promotion order.
+- The one clear signal in the mixed rows is Lucario (−2.2; −6.6 against Suicune, −6.2 against Vespiquen). It fits the sniper-as-threat pricing, which comes from the **reach** sub-change, not the Weakness term.
+- So this reading refutes **the bundle as built**, not Weakness pricing as such.
+- The Weakness feature stays in B3's feature set for the fit to weight. Reach is the suspect if anyone ever revisits kd.
+- No split run now: nothing at stake would change a decision.
+
 ## Known limits of kd3 (for the record, not a reason for the verdict)
 
 - Effects that last a turn are left out: attack-stored cuts, Metal Core Barrier, turn effects.
