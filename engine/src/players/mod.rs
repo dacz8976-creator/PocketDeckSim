@@ -155,8 +155,9 @@ pub enum PlayerCode {
     /// 'kd<N>' is 'kp<N>' with the damage-aware clock pricing the threat's damage to each victim through the
     /// victim's Weakness and persistent damage reductions (value_functions::public_clock_effect_kd_value_function).
     KD { max_depth: usize },
-    /// 'kpr<N>' is 'kp<N>' with the Active online score priced on the Energy the Active will have at its next attack
-    /// (value_functions::public_clock_effect_kpr_value_function).
+    /// 'kpr<N>' is 'kp<N>' with each side's Active priced as it will stand at its next attack, with the Energy its
+    /// owner's public sources will have given it by then: in the Active online score, and in the damage-aware clock
+    /// (the faster of the clock with and without the projection) (value_functions::public_clock_effect_kpr_value_function).
     KPR { max_depth: usize },
 }
 /// Custom parser function enforcing case-insensitivity

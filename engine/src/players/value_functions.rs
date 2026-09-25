@@ -7,6 +7,7 @@ use log::trace;
 
 use crate::actions::abilities::AbilityMechanic;
 use crate::actions::attacks::{BenchDamageFilter, BenchSide, Mechanic};
+use crate::actions::SimpleAction;
 use crate::actions::{
     ability_mechanic_from_effect, get_in_play_ability_mechanic, has_any_in_play_ability, EFFECT_MECHANIC_MAP,
 };
@@ -229,10 +230,11 @@ pub fn public_clock_effect_kd_value_function(state: &State, myself: usize) -> f6
     )
 }
 
-/// The `kpr` tier (players/mod.rs `KPR`, piloted like `kp`): `k`'s evaluator with the Active online score (weight
-/// 500, both sides) priced on the Active as it will stand at its next attack: its attached Energy plus the Energy its
-/// owner's public sources will have given it by then ([`projected_active_energy`]). kq's and kd's features stay off.
-/// Fixed before any table was run.
+/// The `kpr` tier (players/mod.rs `KPR`, piloted like `kp`): `k`'s evaluator with each side's Active priced as it
+/// will stand at its next attack: its attached Energy plus the Energy its owner's public sources will have given it
+/// by then ([`projected_active_energy`]). That copy is used in the Active online score (weight 500, both sides) and,
+/// for the threatening Active's missing Energy and damage, in the damage-aware clock, which takes the faster of the
+/// clock with and without it. kq's and kd's features stay off. Fixed before any table was run.
 pub fn public_clock_effect_kpr_value_function(state: &State, myself: usize) -> f64 {
     parametric_value_function_ex6(
         state,
@@ -262,8 +264,8 @@ struct EvalFeatures {
     /// ([`persistent_defender_damage`]). Not combined with `next_attack_reduction`: no player code sets both, and
     /// if both were set, a knockout priced by kq's first attack turn would keep kq's arithmetic.
     defender_modifiers: bool,
-    /// kpr: the Active online score counts the Energy the Active will have at its next attack
-    /// ([`projected_active_energy`]), not only the Energy attached now.
+    /// kpr: the Active online score and the damage-aware clock count the Energy each Active will have at its next
+    /// attack ([`projected_active_energy`]), not only the Energy attached now.
     projected_readiness: bool,
 }
 
@@ -807,7 +809,46 @@ fn calculate_turns_until_opponent_wins(
 /// priced against the energy already on the slot, with each evolution step still to take
 /// counted as one more turn — the same unit as missing energy. When the scanned side is
 /// the true opponent, the scan stays board-only, preserving §40's leak closure.
+///
+/// kpr (`projected_readiness`): the smaller of this clock with the threatening Active projected to its next attack
+/// ([`at_next_attack`]) and without. Projecting only the Active can otherwise make the win slower: a weak Active one
+/// attach short would displace a stronger benched attacker as the threat.
+#[allow(clippy::too_many_arguments)]
 fn calculate_turns_until_opponent_wins_damage_aware(
+    state: &State,
+    player: usize,
+    read_scanned_zones: bool,
+    effect_aware: bool,
+    reserve_aware: bool,
+    consume_bench: bool,
+    next_attack_reduction: bool,
+    defender_modifiers: bool,
+    projected_readiness: bool,
+) -> f64 {
+    let clock = |projected| {
+        turns_until_opponent_wins_scan(
+            state,
+            player,
+            read_scanned_zones,
+            effect_aware,
+            reserve_aware,
+            consume_bench,
+            next_attack_reduction,
+            defender_modifiers,
+            projected,
+        )
+    };
+    if projected_readiness {
+        clock(false).min(clock(true))
+    } else {
+        clock(false)
+    }
+}
+
+/// The body of [`calculate_turns_until_opponent_wins_damage_aware`], with the threatening Active projected to its
+/// next attack when `projected_readiness` is set.
+#[allow(clippy::too_many_arguments)]
+fn turns_until_opponent_wins_scan(
     state: &State,
     player: usize,
     read_scanned_zones: bool,
@@ -835,7 +876,8 @@ fn calculate_turns_until_opponent_wins_damage_aware(
     // Energy, then the most damage (the same pick as the historical per-slot scan, flattened).
     let mut candidates: Vec<ThreatCandidate> = Vec::new();
     for (slot, pokemon) in state.enumerate_in_play_pokemon(opponent) {
-        // kpr: the Active's missing Energy is counted as it will stand at its next attack ([`at_next_attack`]).
+        // kpr: the Active's missing Energy and damage are counted as it will stand at its next attack
+        // ([`at_next_attack`]).
         let projected;
         let charged: &PlayedCard = if projected_readiness && slot == 0 {
             projected = at_next_attack(state, opponent, pokemon);
@@ -844,7 +886,7 @@ fn calculate_turns_until_opponent_wins_damage_aware(
             pokemon
         };
         for (attack, atk) in pokemon.card.get_attacks().iter().enumerate() {
-            let damage = attack_damage(atk, pokemon);
+            let damage = attack_damage(atk, charged);
             if damage == 0 {
                 continue;
             }
@@ -860,7 +902,7 @@ fn calculate_turns_until_opponent_wins_damage_aware(
                         continue;
                     }
                     for (attack, atk) in target.get_attacks().iter().enumerate() {
-                        let damage = attack_damage(atk, pokemon);
+                        let damage = attack_damage(atk, charged);
                         if damage > 0 {
                             let missing =
                                 energy_missing(charged, &atk.energy_required, state, opponent).len() + steps;
@@ -1989,84 +2031,155 @@ fn at_next_attack(state: &State, owner: usize, active: &PlayedCard) -> PlayedCar
     charged
 }
 
+/// kpr: whether `owner`'s current turn can bring no more Energy or attacks: it has attacked, or its end is
+/// already under way (a pending end, a forced `EndTurn` on the stack, a deferred or paused Checkup, an
+/// end-of-turn evolution).
+fn owner_turn_is_over(state: &State, owner: usize) -> bool {
+    state.end_turn_pending
+        || state.attack_name_used_this_turn[owner].is_some()
+        || state.move_generation_stack.iter().any(|(_, choices)| {
+            matches!(choices.as_slice(), [SimpleAction::EndTurn])
+                || choices.iter().any(|choice| {
+                    matches!(
+                        choice,
+                        SimpleAction::ResolvePokemonCheckup
+                            | SimpleAction::FinishPokemonCheckup
+                            | SimpleAction::ResolveEndTurnEvolution { .. }
+                    )
+                })
+        })
+}
+
 /// kpr: the Energy `owner`'s Active will have been given by its next attack, from public sources its owner controls.
-/// The next attack is this turn if `owner` is to move and hasn't attacked, else `owner`'s next turn. The sources:
-/// - the turn's attach from the Energy Zone, of the visible type: `current` this turn (if still unused), `next` for
-///   the next turn; none if the Zone shows no type, or a `NoEnergyFromZoneToActive` turn effect covers that turn;
-/// - Abilities that attach Energy to the Active, each once, keyed on their mechanic (an Ability already used counts
-///   only for the next turn, when it resets): `AttachEnergyFromZoneToActiveTypedPokemon` (Ice Maker: to an Active
-///   of its type); `AttachEnergyFromZoneToYourTypedPokemon`, `AttachEnergyFromZoneToSelf` and
-///   `AttachEnergyFromZoneToSelfAndDamage` (Roar in Unison) when the Active holds them (the typed one only if the
-///   Active is of its type); `AttachEnergyFromDiscardToSelfAndDamage` when the Active holds it and that Energy is in
-///   its owner's discard pile; `AttachEnergyFromDiscardToActiveTypedFromBench` (Dragon's Blessing) from the Bench to
-///   an Active of its type, with an Energy of the Active's type from the discard pile if there is one, else the first
-///   there. The Zone ones are blocked with the turn's attach.
+///
+/// Timing. If `owner` is to move and its turn isn't over ([`owner_turn_is_over`]), this turn's unused sources count,
+/// and so do next turn's; otherwise next turn's only. For any one attack this is the same as "this turn if this
+/// turn's sources pay for it, else next turn with both", so the same board scores the same mid-turn and after the
+/// turn ends, except for sources left unused, which are really lost. Next turn is `turn_count + 2` while `owner` is
+/// to move, else `turn_count + 1`. Nothing is projected during setup (turn 0).
+///
+/// Sources, each turn:
+/// - the turn's attach from the Energy Zone, of the visible type: `current` this turn (if still unused), `next` next
+///   turn; none if the Zone shows no type, or a `NoEnergyFromZoneToActive` turn effect covers that turn;
+/// - Abilities that attach Energy to the Active, each once a turn, keyed on their mechanic (one already used this
+///   turn counts only next turn): `AttachEnergyFromZoneToActiveTypedPokemon` (Ice Maker: to an Active of its type);
+///   `AttachEnergyFromZoneToYourTypedPokemon`, `AttachEnergyFromZoneToSelf` and `AttachEnergyFromZoneToSelfAndDamage`
+///   (Roar in Unison) when the Active holds them (the typed one only if the Active is of its type);
+///   `AttachEnergyFromDiscardToSelfAndDamage` (Combust) when the Active holds it and that Energy is in the discard
+///   pile; `AttachEnergyFromDiscardToActiveTypedFromBench` (Dragon's Blessing) from the Bench to an Active of its type.
+///   The Zone ones are blocked with the turn's attach.
+/// - Discard-pile sources take each discarded Energy once. Dragon's Blessing takes the type that leaves the Active's
+///   attacks fewest missing Energy (the lowest for any one attack, then the total), ties to the one discarded first,
+///   after the turn's other sources.
+/// - An Ability that damages its holder is skipped once the damage it and earlier ones do would knock the Active out.
 ///
 /// Not counted: an Ability that ends the turn (`AttachEnergyFromZoneToSelfAndEndTurn`: no attack follows it),
-/// one-off Abilities (on evolving, end of the first turn), and anything feeding the Bench. Only the Active is
-/// projected, so the turn's single attach is counted once, and only for it.
+/// one-off Abilities (on evolving, end of the first turn), anything feeding the Bench, and Energy moved from the
+/// Bench. Known limits: an attach that puts the Active to sleep (Snoozing Habit, Comatose, Stellar Cradle) still
+/// counts; and a `next` drawn inside the search (Rainbow Cave, or a search that crosses into `owner`'s next turn) is
+/// a guess, which matters only for decks with more than one Energy type.
 fn projected_active_energy(state: &State, owner: usize, active: &PlayedCard) -> Vec<EnergyType> {
-    let this_turn = state.current_player == owner
-        && !state.end_turn_pending
-        && state.attack_name_used_this_turn[owner].is_none();
-    let attack_turn = if this_turn {
-        state.turn_count
-    } else if state.current_player != owner {
-        state.turn_count + 1
-    } else {
-        state.turn_count + 2
-    };
-    let zone_blocked = state
-        .get_turn_effects(attack_turn)
-        .iter()
-        .any(|effect| matches!(effect, TurnEffect::NoEnergyFromZoneToActive));
-    let zone = if this_turn {
-        state.energy_zone[owner].current
-    } else {
-        state.energy_zone[owner].next
-    };
-    let mut energy: Vec<EnergyType> = Vec::new();
-    if !zone_blocked {
-        energy.extend(zone);
+    if state.turn_count == 0 {
+        return Vec::new();
     }
-    let discard = &state.discard_energies[owner];
-    for (slot, holder) in state.enumerate_in_play_pokemon(owner) {
-        if this_turn && holder.ability_used {
+    let owner_to_move = state.current_player == owner;
+    let mut turns: Vec<(u8, bool)> = Vec::with_capacity(2);
+    if owner_to_move && !owner_turn_is_over(state, owner) {
+        turns.push((state.turn_count, true));
+    }
+    turns.push((state.turn_count + if owner_to_move { 2 } else { 1 }, false));
+
+    let mut charged = active.clone();
+    let before = charged.attached_energy.len();
+    let mut discard = state.discard_energies[owner].clone();
+    let mut self_damage = 0u32;
+    let remaining_hp = active.get_remaining_hp();
+    for (turn, this_turn) in turns {
+        let zone_blocked = state
+            .get_turn_effects(turn)
+            .iter()
+            .any(|effect| matches!(effect, TurnEffect::NoEnergyFromZoneToActive));
+        let zone = if this_turn {
+            state.energy_zone[owner].current
+        } else {
+            state.energy_zone[owner].next
+        };
+        if !zone_blocked {
+            charged.attached_energy.extend(zone);
+        }
+        let mut blessings = 0;
+        for (slot, holder) in state.enumerate_in_play_pokemon(owner) {
+            if this_turn && holder.ability_used {
+                continue;
+            }
+            let holds_it = slot == 0;
+            match get_in_play_ability_mechanic(state, holder) {
+                Some(AbilityMechanic::AttachEnergyFromZoneToActiveTypedPokemon { energy_type })
+                    if !zone_blocked && state.pokemon_is_type(active, *energy_type) =>
+                {
+                    charged.attached_energy.push(*energy_type);
+                }
+                Some(AbilityMechanic::AttachEnergyFromZoneToYourTypedPokemon { energy_type })
+                    if holds_it && !zone_blocked && state.pokemon_is_type(active, *energy_type) =>
+                {
+                    charged.attached_energy.push(*energy_type);
+                }
+                Some(AbilityMechanic::AttachEnergyFromZoneToSelf { energy_type, amount }) if holds_it && !zone_blocked => {
+                    charged.attached_energy.extend(std::iter::repeat_n(*energy_type, *amount as usize));
+                }
+                Some(AbilityMechanic::AttachEnergyFromZoneToSelfAndDamage { energy_type, amount, self_damage: hit })
+                    if holds_it && !zone_blocked && self_damage + hit < remaining_hp =>
+                {
+                    self_damage += hit;
+                    charged.attached_energy.extend(std::iter::repeat_n(*energy_type, *amount as usize));
+                }
+                Some(AbilityMechanic::AttachEnergyFromDiscardToSelfAndDamage { energy_type, self_damage: hit })
+                    if holds_it && self_damage + hit < remaining_hp =>
+                {
+                    if let Some(at) = discard.iter().position(|energy| energy == energy_type) {
+                        discard.remove(at);
+                        self_damage += hit;
+                        charged.attached_energy.push(*energy_type);
+                    }
+                }
+                Some(AbilityMechanic::AttachEnergyFromDiscardToActiveTypedFromBench { energy_type })
+                    if !holds_it && state.pokemon_is_type(active, *energy_type) =>
+                {
+                    blessings += 1;
+                }
+                _ => {}
+            }
+        }
+        for _ in 0..blessings {
+            let Some(at) = best_discard_energy_for(state, owner, &charged, &discard) else { break };
+            charged.attached_energy.push(discard.remove(at));
+        }
+    }
+    charged.attached_energy.split_off(before)
+}
+
+/// kpr: the index in `discard` of the Energy that, attached to `charged`, leaves its attacks fewest missing Energy
+/// (the lowest for any one attack, then the total), ties to the first; `None` if `discard` is empty.
+fn best_discard_energy_for(state: &State, owner: usize, charged: &PlayedCard, discard: &[EnergyType]) -> Option<usize> {
+    let mut best: Option<(usize, (usize, usize))> = None;
+    for (at, energy) in discard.iter().enumerate() {
+        if discard[..at].contains(energy) {
             continue;
         }
-        let holds_it = slot == 0;
-        match get_in_play_ability_mechanic(state, holder) {
-            Some(AbilityMechanic::AttachEnergyFromZoneToActiveTypedPokemon { energy_type })
-                if !zone_blocked && state.pokemon_is_type(active, *energy_type) =>
-            {
-                energy.push(*energy_type);
-            }
-            Some(AbilityMechanic::AttachEnergyFromZoneToYourTypedPokemon { energy_type })
-                if holds_it && !zone_blocked && state.pokemon_is_type(active, *energy_type) =>
-            {
-                energy.push(*energy_type);
-            }
-            Some(AbilityMechanic::AttachEnergyFromZoneToSelf { energy_type, amount })
-            | Some(AbilityMechanic::AttachEnergyFromZoneToSelfAndDamage { energy_type, amount, .. })
-                if holds_it && !zone_blocked =>
-            {
-                energy.extend(std::iter::repeat_n(*energy_type, *amount as usize));
-            }
-            Some(AbilityMechanic::AttachEnergyFromDiscardToSelfAndDamage { energy_type, .. })
-                if holds_it && discard.contains(energy_type) =>
-            {
-                energy.push(*energy_type);
-            }
-            Some(AbilityMechanic::AttachEnergyFromDiscardToActiveTypedFromBench { energy_type })
-                if !holds_it && state.pokemon_is_type(active, *energy_type) && !discard.is_empty() =>
-            {
-                let own_type = active.get_energy_type();
-                energy.push(*discard.iter().find(|e| Some(**e) == own_type).unwrap_or(&discard[0]));
-            }
-            _ => {}
+        let mut trial = charged.clone();
+        trial.attached_energy.push(*energy);
+        let missing: Vec<usize> = trial
+            .card
+            .get_attacks()
+            .iter()
+            .map(|atk| energy_missing(&trial, &atk.energy_required, state, owner).len())
+            .collect();
+        let key = (missing.iter().copied().min().unwrap_or(0), missing.iter().sum());
+        if best.is_none_or(|(_, best_key)| key < best_key) {
+            best = Some((at, key));
         }
     }
-    energy
+    best.map(|(at, _)| at)
 }
 
 /// The online score of any one of `player`'s in-play Pokemon: [`calculate_active_pokemon_online_score`]'s
@@ -3103,8 +3216,8 @@ mod kd_feature_tests {
 
 #[cfg(test)]
 mod kpr_feature_tests {
-    //! kpr: the Active online score priced on the Energy the Active will have at its next attack, checked in built
-    //! positions against `k`'s score.
+    //! kpr: the Active priced as it will stand at its next attack ([`projected_active_energy`]), in the online score
+    //! and in the clock, checked in built positions against `k`'s values.
     use super::*;
     use crate::card_ids::CardId;
     use crate::database::get_card_by_enum;
@@ -3128,10 +3241,27 @@ mod kpr_feature_tests {
         state
     }
 
+    /// As [`opponents_turn`], but player 0 is to move on turn 5 with `current` in its Energy Zone.
+    fn my_turn(mine: Vec<PlayedCard>, current: Option<EnergyType>, next: Option<EnergyType>) -> State {
+        let mut state = opponents_turn(mine, next);
+        state.turn_count = 5;
+        state.current_player = 0;
+        state.energy_zone[0].current = current;
+        state
+    }
+
     /// Player 0's Active online score: (k's, kpr's).
     fn scores(state: &State) -> (f64, f64) {
         let score = |projected| calculate_active_pokemon_online_score(state, 0, false, true, false, projected);
         (score(false), score(true))
+    }
+
+    /// Turns until player 0 beats player 1, from player 1's side (player 0 is the threat): (k's, kpr's).
+    fn clocks(state: &State) -> (f64, f64) {
+        let clock = |kpr| {
+            calculate_turns_until_opponent_wins_damage_aware(state, 1, true, true, false, true, false, false, kpr)
+        };
+        (clock(false), clock(true))
     }
 
     #[test]
@@ -3152,34 +3282,85 @@ mod kpr_feature_tests {
     }
 
     #[test]
-    fn the_turns_attach_counts_once() {
-        // Player 0 to move on turn 5 with a [D] still in its Zone: its next attack is this turn, one [D] away.
-        let mut state = opponents_turn(vec![mon(CardId::B1156Zweilous)], Some(EnergyType::Darkness));
-        state.turn_count = 5;
-        state.current_player = 0;
-        state.energy_zone[0].current = Some(EnergyType::Darkness);
+    fn the_same_board_scores_the_same_mid_turn_and_once_the_turn_is_over() {
+        // Zweilous holding one [D], this turn's attach already made, [D] showing next: mid-turn its next attack is
+        // next turn, 2 of 2, the same as once the turn is over. (Priced "this turn only", mid-turn would read 1 of 2
+        // and ending the turn would gain 250 for nothing.)
+        let mut state = my_turn(vec![with(CardId::B1156Zweilous, EnergyType::Darkness, 1)], None, Some(EnergyType::Darkness));
+        assert_eq!(scores(&state), (0.5, 1.0));
+        state.attack_name_used_this_turn[0] = Some("Darkness Fang".to_string());
+        assert_eq!(scores(&state), (0.5, 1.0));
+        // With this turn's [D] still unused, mid-turn counts it and next turn's; ending the turn without it loses it.
+        let mut state = my_turn(vec![mon(CardId::B1156Zweilous)], Some(EnergyType::Darkness), Some(EnergyType::Darkness));
+        assert_eq!(scores(&state), (0.0, 1.0));
+        state.move_generation_stack.push((0, vec![SimpleAction::EndTurn]));
         assert_eq!(scores(&state), (0.0, 0.5));
-        // Once attached, the Zone is empty for the turn: the same 1 of 2, not 2 of 2.
-        let mut attached = state.clone();
-        attached.in_play_pokemon[0][0] = Some(with(CardId::B1156Zweilous, EnergyType::Darkness, 1));
-        attached.energy_zone[0].current = None;
-        assert_eq!(scores(&attached), (0.5, 0.5));
-        // After attacking, the next attack is next turn, with next turn's [D]: 2 of 2.
-        attached.attack_name_used_this_turn[0] = Some("Darkness Fang".to_string());
-        assert_eq!(scores(&attached), (0.5, 1.0));
+    }
+
+    #[test]
+    fn a_turn_that_is_ending_counts_only_next_turn() {
+        // Zweilous with no Energy, this turn's [D] unused, nothing showing next: 1 of 2 while the turn runs, 0 once
+        // it can bring nothing more.
+        let running = my_turn(vec![mon(CardId::B1156Zweilous)], Some(EnergyType::Darkness), None);
+        assert_eq!(scores(&running), (0.0, 0.5));
+        let ending: Vec<Box<dyn Fn(&mut State)>> = vec![
+            Box::new(|state| state.end_turn_pending = true),
+            Box::new(|state| state.attack_name_used_this_turn[0] = Some("Darkness Fang".to_string())),
+            Box::new(|state| state.move_generation_stack.push((0, vec![SimpleAction::EndTurn]))),
+            Box::new(|state| state.move_generation_stack.push((0, vec![SimpleAction::ResolvePokemonCheckup]))),
+            Box::new(|state| state.move_generation_stack.push((0, vec![SimpleAction::FinishPokemonCheckup]))),
+            Box::new(|state| {
+                state.move_generation_stack.push((1, vec![SimpleAction::ResolveEndTurnEvolution { player: 1 }]))
+            }),
+        ];
+        for mark in ending {
+            let mut state = running.clone();
+            mark(&mut state);
+            assert_eq!(scores(&state), (0.0, 0.0));
+        }
+        // On the opponent's turn, a [D] left over in `current` is gone at the rotation: it doesn't count.
+        let mut theirs = running.clone();
+        theirs.current_player = 1;
+        assert_eq!(scores(&theirs), (0.0, 0.0));
+    }
+
+    #[test]
+    fn nothing_is_projected_during_setup() {
+        let mut state = opponents_turn(vec![mon(CardId::B1157Hydreigon)], Some(EnergyType::Darkness));
+        state.turn_count = 0;
+        assert_eq!(scores(&state), (0.0, 0.0));
     }
 
     #[test]
     fn an_ability_used_this_turn_counts_only_for_next_turn() {
-        let mut state = opponents_turn(vec![mon(CardId::B1157Hydreigon)], Some(EnergyType::Darkness));
-        state.turn_count = 5;
-        state.current_player = 0;
-        state.energy_zone[0].current = None;
-        // Roar in Unison unused this turn: two [D] now, 2 of 3.
-        assert_eq!(scores(&state), (0.0, 2.0 / 3.0));
-        // Already used this turn: nothing more this turn.
+        // Hydreigon with no Energy, nothing in the Zone. Roar in Unison unused: two [D] this turn and two next,
+        // 3 of 3.
+        let mut state = my_turn(vec![mon(CardId::B1157Hydreigon)], None, None);
+        assert_eq!(scores(&state), (0.0, 1.0));
+        // Already used this turn: next turn's two only, 2 of 3.
         state.in_play_pokemon[0][0].as_mut().unwrap().ability_used = true;
-        assert_eq!(scores(&state), (0.0, 0.0));
+        assert_eq!(scores(&state), (0.0, 2.0 / 3.0));
+    }
+
+    #[test]
+    fn an_ability_that_would_knock_the_active_out_is_not_counted() {
+        // Roar in Unison does 30 to Hydreigon (150 HP). With 30 HP left and one [D] plus this turn's [D]: Roar would
+        // knock it out, so 2 of 3.
+        let hurt = |damage| mon(CardId::B1157Hydreigon).with_damage(damage);
+        let state = my_turn(vec![hurt(120).with_energy(vec![EnergyType::Darkness])], Some(EnergyType::Darkness), None);
+        assert_eq!(scores(&state), (1.0 / 3.0, 2.0 / 3.0));
+        // With 60 HP left, this turn's Roar is fine but a second, next turn, would knock it out: 2 of 3. With 90
+        // left, both: 3 of 3.
+        assert_eq!(scores(&my_turn(vec![hurt(90)], None, None)), (0.0, 2.0 / 3.0));
+        assert_eq!(scores(&my_turn(vec![hurt(60)], None, None)), (0.0, 1.0));
+        // Combust does 20 to Flareon ex: with 20 HP left it isn't counted.
+        let flareon = |remaining| {
+            let mut state = opponents_turn(vec![mon(CardId::A3b009FlareonEx).with_remaining_hp(remaining)], None);
+            state.discard_energies[0].push(EnergyType::Fire);
+            scores(&state)
+        };
+        assert_eq!(flareon(20), (0.0, 0.0));
+        assert_eq!(flareon(40), (0.0, 1.0 / 3.0));
     }
 
     #[test]
@@ -3189,6 +3370,23 @@ mod kpr_feature_tests {
         assert_eq!(scores(&state), (0.0, 1.0));
         // A Grass Active gets the Zone's Energy only.
         let state = opponents_turn(vec![mon(CardId::A1001Bulbasaur), mon(CardId::B2a036Baxcalibur)], Some(EnergyType::Grass));
+        assert_eq!(scores(&state), (0.0, 0.5));
+    }
+
+    #[test]
+    fn zone_abilities_held_by_the_active_feed_only_the_active() {
+        // Leafeon ex (Forest Breath: from the Active Spot, a [G] to one of your [G] Pokémon; Solar Beam [G][C][C]) as
+        // the Active: next turn's [G] and its own, 2 of 3. Benched behind a Bulbasaur (Vine Whip, [G][C]), it can't
+        // use it: the Bulbasaur gets the Zone's [G] only, 1 of 2.
+        let state = opponents_turn(vec![mon(CardId::A2a010LeafeonEx)], Some(EnergyType::Grass));
+        assert_eq!(scores(&state), (0.0, 2.0 / 3.0));
+        let state = opponents_turn(vec![mon(CardId::A1001Bulbasaur), mon(CardId::A2a010LeafeonEx)], Some(EnergyType::Grass));
+        assert_eq!(scores(&state), (0.0, 0.5));
+        // Magneton (Volt Charge: a [L] to itself; Spinning Attack [L][C][C][C]) as the Active: 2 of 4. Benched, it
+        // charges itself, not the Active.
+        let state = opponents_turn(vec![mon(CardId::A1098Magneton)], Some(EnergyType::Lightning));
+        assert_eq!(scores(&state), (0.0, 0.5));
+        let state = opponents_turn(vec![mon(CardId::A1001Bulbasaur), mon(CardId::A1098Magneton)], Some(EnergyType::Grass));
         assert_eq!(scores(&state), (0.0, 0.5));
     }
 
@@ -3209,6 +3407,33 @@ mod kpr_feature_tests {
     }
 
     #[test]
+    fn dragons_blessing_takes_each_discarded_energy_once_and_the_type_the_active_needs() {
+        // Haxorus (Frenzied Blade, [F][M][C]) with no Energy, two Dragonair, one [F] in the discard pile, [M] showing
+        // next: [M] and the one [F], 2 of 3 (the second Dragonair finds nothing).
+        let mut state = opponents_turn(
+            vec![mon(CardId::B2b056Haxorus), mon(CardId::B4117Dragonair), mon(CardId::B4117Dragonair)],
+            Some(EnergyType::Metal),
+        );
+        state.discard_energies[0].push(EnergyType::Fighting);
+        assert_eq!(scores(&state), (0.0, 2.0 / 3.0));
+        // Holding an [M], one Dragonair, discard pile [M, F], [M] next: the Blessing takes the [F] it's missing, not
+        // the first discarded: 3 of 3.
+        let mut state = opponents_turn(
+            vec![with(CardId::B2b056Haxorus, EnergyType::Metal, 1), mon(CardId::B4117Dragonair)],
+            Some(EnergyType::Metal),
+        );
+        state.discard_energies[0].extend([EnergyType::Metal, EnergyType::Fighting]);
+        assert_eq!(scores(&state), (1.0 / 3.0, 1.0));
+        // Only from the Bench, and only to a Dragon Active: a Dragonair Active (Draconic Whip, [C][C]) gets nothing
+        // from its own Blessing, nor does a Bulbasaur with a Dragonair behind it.
+        for mine in [vec![mon(CardId::B4117Dragonair)], vec![mon(CardId::A1001Bulbasaur), mon(CardId::B4117Dragonair)]] {
+            let mut state = opponents_turn(mine, None);
+            state.discard_energies[0].push(EnergyType::Grass);
+            assert_eq!(scores(&state), (0.0, 0.0));
+        }
+    }
+
+    #[test]
     fn a_turn_effect_blocking_zone_attaches_to_the_active_blocks_the_projection() {
         // "Can't attach Energy from the Zone to the Active" on player 0's next turn: neither the turn's [D] nor Roar
         // in Unison counts.
@@ -3217,46 +3442,102 @@ mod kpr_feature_tests {
         state.add_turn_effect(TurnEffect::NoEnergyFromZoneToActive, 0);
         state.turn_count = 6;
         assert_eq!(scores(&state), (0.0, 0.0));
+        // Nor Ice Maker's [W].
+        let mut state = opponents_turn(vec![mon(CardId::A4a020SuicuneEx), mon(CardId::B2a036Baxcalibur)], None);
+        state.turn_count = 7;
+        state.add_turn_effect(TurnEffect::NoEnergyFromZoneToActive, 0);
+        state.turn_count = 6;
+        assert_eq!(scores(&state), (0.0, 0.0));
+        // Player 0 to move on turn 5 with the block on turn 5 only: this turn's [D] and Roar don't count, next
+        // turn's (turn 7) Roar does: 2 of 3.
+        let mut state = my_turn(vec![mon(CardId::B1157Hydreigon)], Some(EnergyType::Darkness), None);
+        state.add_turn_effect(TurnEffect::NoEnergyFromZoneToActive, 0);
+        assert_eq!(scores(&state), (0.0, 2.0 / 3.0));
+        // With the block on turn 7 instead: this turn's Roar counts, next turn's doesn't: 2 of 3.
+        let mut state = my_turn(vec![mon(CardId::B1157Hydreigon)], None, Some(EnergyType::Darkness));
+        state.turn_count = 7;
+        state.add_turn_effect(TurnEffect::NoEnergyFromZoneToActive, 0);
+        state.turn_count = 5;
+        assert_eq!(scores(&state), (0.0, 2.0 / 3.0));
     }
 
     #[test]
     fn the_kpr_evaluator_differs_from_k_by_the_active_score_and_the_clock() {
         let k = public_clock_effect_value_function;
         let kpr = public_clock_effect_kpr_value_function;
-        // Player 0's empty Hydreigon v player 1's Bulbasaur. Readiness 0 to 1: +500. Player 0's win: k counts 3 turns
-        // of missing Energy and 1 to knock Bulbasaur out; kpr counts the Energy that arrives by next turn, so 1: +300.
+        // Player 0's empty Hydreigon v player 1's Bulbasaur. Player 0: readiness 0 to 1, +500; its win, k counts 3
+        // turns of missing Energy and 1 to knock Bulbasaur out, kpr 1: +300. Player 1, to move, with this turn's Zone
+        // empty and [G] next: its Bulbasaur (Vine Whip, [G][C]) gains 1 of 2 (-250) and is one Energy closer in its
+        // clock (-100).
         let mut state = opponents_turn(vec![mon(CardId::B1157Hydreigon)], Some(EnergyType::Darkness));
         state.energy_zone[1].next = Some(EnergyType::Grass);
-        assert_eq!(kpr(&state, 0) - k(&state, 0), 800.0);
-        // Player 1, to move, still has this turn's [G]: its Bulbasaur (Vine Whip, [G][C]) gains 1 of 2 (-250) and is
-        // one Energy closer in its own clock (-100). (Its next Zone type doesn't count: its next attack is this turn.)
-        state.energy_zone[1].current = Some(EnergyType::Grass);
         assert_eq!(kpr(&state, 0) - k(&state, 0), 450.0);
+        // With this turn's [G] too, Bulbasaur is ready by its next attack: -500 and two Energy closer, -200.
+        state.energy_zone[1].current = Some(EnergyType::Grass);
+        assert_eq!(kpr(&state, 0) - k(&state, 0), 100.0);
     }
 
     #[test]
     fn the_clock_counts_the_active_threats_energy_at_its_next_attack() {
-        // Turns until player 1 (the Bulbasaur) is beaten, from player 1's side: player 0's Hydreigon is the threat.
-        let clock = |state: &State, kpr: bool| {
-            calculate_turns_until_opponent_wins_damage_aware(state, 1, true, true, false, true, false, false, kpr)
-        };
+        // Player 0's Hydreigon: k counts its 3 missing Energy and 1 hit on Bulbasaur; kpr sees it ready next turn.
         let state = opponents_turn(vec![mon(CardId::B1157Hydreigon)], Some(EnergyType::Darkness));
-        assert_eq!((clock(&state, false), clock(&state, true)), (4.0, 1.0));
-        // Only the Active is projected: a benched Hydreigon behind a Bonsly keeps its three missing Energy.
+        assert_eq!(clocks(&state), (4.0, 1.0));
+        // Only the Active is projected. Bonsly (Teary Attack 10, free) is the threat: 7 hits on Bulbasaur. A benched
+        // Zweilous holding one [D] stays one short: projected, it would be ready with 40 and the clock would be 2.
         let state = opponents_turn(
-            vec![mon(CardId::B3078Bonsly), mon(CardId::B1157Hydreigon)],
+            vec![mon(CardId::B3078Bonsly), with(CardId::B1156Zweilous, EnergyType::Darkness, 1)],
             Some(EnergyType::Darkness),
         );
-        assert_eq!(clock(&state, false), clock(&state, true));
+        assert_eq!(clocks(&state), (7.0, 7.0));
+    }
+
+    /// Player 0's `mine` against player 1's Suicune ex (140 HP) alone, player 1 to move.
+    fn against_suicune(mine: Vec<PlayedCard>, next: Option<EnergyType>) -> State {
+        let mut state = opponents_turn(mine.clone(), next);
+        state.set_board(mine, vec![mon(CardId::A4a020SuicuneEx)]);
+        state
+    }
+
+    #[test]
+    fn the_clock_never_gets_slower_for_the_projection() {
+        // Deino (Headbutt [D], 20) Active with nothing, Mega Absol ex (Darkness Claw [D][D], 80) benched holding a
+        // [D], [D] next. k: Absol, one Energy and 2 hits, 3. Projected, Deino is ready first and would be the threat:
+        // 7 hits. kpr takes the faster, 3.
+        let state = against_suicune(
+            vec![mon(CardId::B1155Deino), with(CardId::B1151MegaAbsolEx, EnergyType::Darkness, 1)],
+            Some(EnergyType::Darkness),
+        );
+        assert_eq!(clocks(&state), (3.0, 3.0));
+        assert_eq!(turns_until_opponent_wins_scan(&state, 1, true, true, false, true, false, false, true), 7.0);
+    }
+
+    #[test]
+    fn the_clock_prices_the_damage_the_active_will_do_at_its_next_attack() {
+        // Mega Lucario ex (Fighting Pulse [F][F], 90, +50 with an extra [F]) holding [F][F], [F] next: k prices 90,
+        // 2 hits on Suicune ex; at its next attack it has the extra [F] and does 140: 1.
+        let state = against_suicune(vec![with(CardId::B3081MegaLucarioEx, EnergyType::Fighting, 2)], Some(EnergyType::Fighting));
+        assert_eq!(clocks(&state), (2.0, 1.0));
+    }
+
+    #[test]
+    fn the_clock_projects_the_actives_evolution_forms_too() {
+        // Koffing (Division, no damage) Active with nothing, Weezing (Sludge Bomb [D][D], 70) in player 0's hand, [D]
+        // next. k: 2 Energy, 1 evolution and 1 hit on Bulbasaur, 4. kpr: next turn's [D] leaves 1 Energy, so 3.
+        let mut state = opponents_turn(vec![mon(CardId::A1a049Koffing)], Some(EnergyType::Darkness));
+        state.hands[0].push(get_card_by_enum(CardId::B3102Weezing));
+        assert_eq!(clocks(&state), (4.0, 3.0));
     }
 
     #[test]
     fn kpr_reads_no_hidden_card() {
-        // The projection reads the board, the Energy Zones and the discard piles, all public: swapping a card in
-        // player 1's hand or deck for another doesn't change player 0's kpr value.
-        let value = |hidden: CardId, in_hand: bool| {
+        // The projection and the scores read the board, the Energy Zones and the discard piles, all public. Player
+        // 1 is to move with [G] next. Its Bulbasaur (Vine Whip, [G][C]) holds a [G], so it's ready next turn; an
+        // Ivysaur (Razor Leaf, [G][C][C]) hidden in its hand or deck must not make that 2 of 3. Nor may a hidden
+        // Baxcalibur add Ice Maker's [W] to its Suicune ex.
+        let value = |active: PlayedCard, next: EnergyType, hidden: CardId, in_hand: bool| {
             let mut state = opponents_turn(vec![mon(CardId::B1157Hydreigon)], Some(EnergyType::Darkness));
-            state.energy_zone[1].next = Some(EnergyType::Grass);
+            state.in_play_pokemon[1][0] = Some(active);
+            state.energy_zone[1].next = Some(next);
             let card = get_card_by_enum(hidden);
             if in_hand {
                 state.hands[1].push(card);
@@ -3265,8 +3546,17 @@ mod kpr_feature_tests {
             }
             public_clock_effect_kpr_value_function(&state, 0)
         };
+        let bulbasaur = || with(CardId::A1001Bulbasaur, EnergyType::Grass, 1);
+        let suicune = || mon(CardId::A4a020SuicuneEx);
         for in_hand in [false, true] {
-            assert_eq!(value(CardId::B2a036Baxcalibur, in_hand), value(CardId::A1001Bulbasaur, in_hand));
+            assert_eq!(
+                value(bulbasaur(), EnergyType::Grass, CardId::A1002Ivysaur, in_hand),
+                value(bulbasaur(), EnergyType::Grass, CardId::A1053Squirtle, in_hand)
+            );
+            assert_eq!(
+                value(suicune(), EnergyType::Water, CardId::B2a036Baxcalibur, in_hand),
+                value(suicune(), EnergyType::Water, CardId::A1001Bulbasaur, in_hand)
+            );
         }
     }
 }

@@ -489,4 +489,21 @@ mod tests {
         assert!(!is_hyper_ray(&decide(PlayerCode::KP { max_depth: 3 })), "kp3 declines Hyper Ray");
         assert!(is_hyper_ray(&decide(PlayerCode::KPR { max_depth: 3 })), "kpr3 chips with Hyper Ray");
     }
+
+    /// kpr3 is built the same way (get_player) and keeps kp's pricing: it prices Darkness Claw too.
+    #[test]
+    fn kpr3_from_get_player_also_prices_darkness_claw() {
+        let real = darkness_claw_game();
+        let observation = PlayerObservation::from_state(&real, 0, &RevealedKnowledge::default());
+        let (_, mut actions) = real.generate_possible_actions();
+        crate::observation::canonical_actions(&mut actions);
+        let claw = darkness_claw(&actions);
+        let mut player = get_player(Deck::default(), &Deck::default(), &PlayerCode::KPR { max_depth: 3 });
+        let (choice, branches) = crate::observation::collect_unpriced(|| {
+            player.decision_fn(&mut StdRng::seed_from_u64(3), &observation, &actions)
+        });
+        assert!(!branches.iter().any(|b| b.reason == "effect or choice depends on unrevealed opponent cards"
+            && matches!(&b.action.action, SimpleAction::Attack(x) if x.title == "Darkness Claw")));
+        assert_eq!(choice, actions[claw]);
+    }
 }
