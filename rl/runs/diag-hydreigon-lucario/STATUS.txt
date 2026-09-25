@@ -1,0 +1,76 @@
+Run 5 trainer (one network per deck, encoding v2.2) — diag-hydreigon-lucario   (updated 2026-09-25 05:15)
+Networks: hydreigon, lucario · each pilots only its own deck · the 1 pairing between them, evenly
+State: FINISHED — safety cap of 2,000,000 games reached at 2,000,000 games; best confirmed checkpoint per network hydreigon ckpt_2000k_avg (+40.8), lucario ckpt_2000k_avg (+8.3). The report steps (audit, REPORT.txt) run next, automatically
+
+The bars: k3's own win rate piloting the row deck against k3 piloting the column deck
+(2,000 games per pairing, on the confirmation seeds):
+               hydreigon    lucario
+  hydreigon            —        34%
+  lucario            66%          —
+
+Games played: 2,000,000 (safety cap 2,000,000) · 7.3 h of training + 0.4 h of evaluation · 81 games/sec lately
+Trainer: each recorded move trained on 2.0 times lately (2.0 overall); target 2. Under 1 means the trainer is falling behind (try fewer workers).
+Turn-limit draws in training, last 20,000 games: 0.2% (started at 2%). Tiebreak shaping: off.
+Draw gate at 250,000 games: passed (0.1%; needed under 10% and below the start)
+Training games vs earlier checkpoints: the current networks won 64% of 399,432
+
+Checkpoints. Each network's margin = its win rate minus k3's own result in the same matchup,
+averaged over its 1 matchup (1,000 games each, seeds the confirmation never uses).
+'vs previous' = of the games this checkpoint and the one before it decided differently, the share this one
+won (50% = no change). 'vs random' = against uniformly random moves.
+
+  checkpoint               hydreigon               lucario
+                 margin  prev random   margin  prev random
+  ckpt_100k       +11.8    50%  100%     -4.2    50%   99%
+  ckpt_200k       +14.9    54%  100%     +1.9    59%   99%
+  ckpt_400k       +18.6    55%  100%     +3.3    52%  100%
+  ckpt_600k       +21.3    54%  100%     +0.1    45%   98%
+  ckpt_800k       +26.7    58%   99%     +0.0    50%   99%
+  ckpt_1000k      +23.7    45%  100%     -0.2    50%   98%
+  ckpt_1200k      +28.7    59%  100%     +2.1    54%   99%
+  ckpt_1400k      +31.8    55%  100%     +5.0    55%   99%
+  ckpt_1600k      +30.5    48%  100%     +1.7    44%   99%
+  ckpt_1800k      +34.7    58%  100%     +5.0    56%   98%
+  ckpt_2000k      +35.8    52%  100%     +1.3    44%  100%
+
+Averaged copy (run 5): updated every time a network's live weights are published, avg = decay x avg + (1 - decay) x live, decay = 0.5 ** (games since that network's last update / 100,000), a half-life of about 100,000 games. It never plays training games, is never a past opponent and is never trained; level-off and stopping read the live networks only. Same seeds and seats as the live evaluation.
+
+  checkpoint  hydreigon live / avg (avg vs random)lucario live / avg (avg vs random)
+  ckpt_100k                 +11.8   -16.3 ( 68%)               -4.2   -24.5 ( 92%)
+  ckpt_200k                 +14.9   +14.1 ( 99%)               +1.9    -2.0 ( 99%)
+  ckpt_400k                 +18.6   +22.3 (100%)               +3.3    +3.5 ( 99%)
+  ckpt_600k                 +21.3   +29.4 (100%)               +0.1    +5.0 (100%)
+  ckpt_800k                 +26.7   +31.3 (100%)               +0.0    +7.1 (100%)
+  ckpt_1000k                +23.7   +32.8 (100%)               -0.2    +7.1 (100%)
+  ckpt_1200k                +28.7   +34.9 (100%)               +2.1    +7.1 (100%)
+  ckpt_1400k                +31.8   +34.3 (100%)               +5.0    +5.9 (100%)
+  ckpt_1600k                +30.5   +34.8 (100%)               +1.7    +8.8 (100%)
+  ckpt_1800k                +34.7   +36.2 (100%)               +5.0    +9.1 ( 98%)
+  ckpt_2000k                +35.8   +37.6 (100%)               +1.3    +9.9 ( 99%)
+
+Margin by matchup at ckpt_2000k (points; row = the deck's own network, column = k3's deck):
+               hydreigon    lucario
+  hydreigon            —        +36
+  lucario             +1          —
+Best checkpoint per network: hydreigon ckpt_2000k (+35.8), lucario ckpt_1400k (+5.0)
+Leveled off (per network) = 3 checkpoints in a row within 3 points of each other, with the newest winning no more than 55% of the games it and the one before it decided differently. It is re-read at every checkpoint and is not sticky: here it is shown for information only; this run does not stop on it and ends at its 2,000,000-game budget.
+Leveled off, by checkpoint: ckpt_100k none; ckpt_200k none; ckpt_400k none; ckpt_600k none; ckpt_800k none; ckpt_1000k lucario; ckpt_1200k lucario; ckpt_1400k none; ckpt_1600k none; ckpt_1800k none; ckpt_2000k none
+
+Confirmation of hydreigon's ckpt_2000k_avg (paired with the bars): margin +40.8 points over its 1 matchup; lowest hydreigon vs lucario +40.8.
+    hydreigon vs lucario    +40.8
+
+Confirmation of hydreigon's ckpt_1800k_avg (paired with the bars): margin +39.4 points over its 1 matchup; lowest hydreigon vs lucario +39.4.
+    hydreigon vs lucario    +39.4
+
+Confirmation of lucario's ckpt_2000k_avg (paired with the bars): margin +8.3 points over its 1 matchup; lowest lucario vs hydreigon +8.3.
+    lucario vs hydreigon     +8.3
+
+Confirmation of lucario's ckpt_1800k_avg (paired with the bars): margin +8.2 points over its 1 matchup; lowest lucario vs hydreigon +8.2.
+    lucario vs hydreigon     +8.2
+
+Best confirmed checkpoint per network (live or averaged): hydreigon ckpt_2000k_avg, lucario ckpt_2000k_avg. No pass/fail rule in code; the decision is read from REPORT.txt.
+
+Flags:
+  - tiebreak shaping switched off at 200,000 games (turn-limit draws under 5% at two checks in a row)
+
+The full report: REPORT.txt (verdict, confirmations, audit and held-out test).

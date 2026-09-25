@@ -1,0 +1,109 @@
+Run 5 report — diag-hydreigon-lucario   (2026-09-25 05:27)
+
+Result: FINISHED — safety cap of 2,000,000 games reached at 2,000,000 games; best confirmed checkpoint per network hydreigon ckpt_2000k_avg (+40.8), lucario ckpt_2000k_avg (+8.3)
+
+2,000,000 games · 7.3 h of training + 0.4 h of evaluation · 11 checkpoints · one network per deck
+
+Run history (the run's own flags, in order):
+  - tiebreak shaping switched off at 200,000 games (turn-limit draws under 5% at two checks in a row)
+
+Level-off (run 4's rule, live networks): 3 checkpoints in a row within 3 points, the newest winning no more than 55% of the games it and the one before it decided differently. Shown for information only: this run did not stop on it and ran to its 2,000,000-game budget.
+  ckpt_100k     leveled off: none
+  ckpt_200k     leveled off: none
+  ckpt_400k     leveled off: none
+  ckpt_600k     leveled off: none
+  ckpt_800k     leveled off: none
+  ckpt_1000k    leveled off: lucario
+  ckpt_1200k    leveled off: lucario
+  ckpt_1400k    leveled off: none
+  ckpt_1600k    leveled off: none
+  ckpt_1800k    leveled off: none
+  ckpt_2000k    leveled off: none
+
+Averaging verdict (descriptive; no rule). The averaged copy: avg = decay x avg + (1 - decay) x live at every publish of that network, decay = 0.5 ** (games since its last update / 100,000). Margins are points over k3 on the same 1,000-game-per-matchup evaluation seeds and seats; 'change' is the size of the move from the previous checkpoint.
+
+  checkpoint                                       hydreigon                                     lucario
+                     live     avg  avg-live chg live chg avg     live     avg  avg-live chg live chg avg
+  ckpt_100k         +11.8   -16.3     -28.1        —       —     -4.2   -24.5     -20.3        —       —
+  ckpt_200k         +14.9   +14.1      -0.8      3.1    30.4     +1.9    -2.0      -3.9      6.1    22.5
+  ckpt_400k         +18.6   +22.3      +3.7      3.7     8.2     +3.3    +3.5      +0.2      1.4     5.5
+  ckpt_600k         +21.3   +29.4      +8.1      2.7     7.1     +0.1    +5.0      +4.9      3.2     1.5
+  ckpt_800k         +26.7   +31.3      +4.6      5.4     1.9     +0.0    +7.1      +7.1      0.1     2.1
+  ckpt_1000k        +23.7   +32.8      +9.1      3.0     1.5     -0.2    +7.1      +7.3      0.2     0.0
+  ckpt_1200k        +28.7   +34.9      +6.2      5.0     2.1     +2.1    +7.1      +5.0      2.3     0.0
+  ckpt_1400k        +31.8   +34.3      +2.5      3.1     0.6     +5.0    +5.9      +0.9      2.9     1.2
+  ckpt_1600k        +30.5   +34.8      +4.3      1.3     0.5     +1.7    +8.8      +7.1      3.3     2.9
+  ckpt_1800k        +34.7   +36.2      +1.5      4.2     1.4     +5.0    +9.1      +4.1      3.3     0.3
+  ckpt_2000k        +35.8   +37.6      +1.8      1.1     1.4     +1.3    +9.9      +8.6      3.7     0.8
+
+  hydreigon: averaged copy scored higher at 9 of 11 checkpoints; average change between consecutive checkpoints: live 3.3 points, averaged 5.5 points; best live +35.8, best averaged +37.6.
+  lucario: averaged copy scored higher at 9 of 11 checkpoints; average change between consecutive checkpoints: live 2.6 points, averaged 3.7 points; best live +5.0, best averaged +9.9.
+
+Best confirmed checkpoint per network, live or averaged (hydreigon ckpt_2000k_avg, lucario ckpt_2000k_avg). No pass/fail rule in code: RUN5.md's '+5' decision is read from the confirmation lines below.
+
+  Margin by matchup, points (row = the deck's own network, column = the deck k3 pilots):
+                 hydreigon    lucario
+    hydreigon            —        +41
+    lucario             +8          —
+
+Confirmation of the hydreigon network's ckpt_2000k_avg (used for the verdict): 2,000 games per matchup on the bars' own seeds (paired). Margin over k3 +40.8 points.
+  matchup                 network  k3, same deck   margin   games won only by
+  hydreigon vs lucario      75.0%          34.2%   +40.8   network  877 / k3   60 (p 6.5e-187)
+
+Knockout audit (run 4) — diag-hydreigon-lucario, the hydreigon network's ckpt_2000k_avg: 2,000 confirmation games and 2,000 bar games replayed; replay problems: 0
+
+Per matchup: the network piloting the first deck (bot) vs k3 piloting the same deck on the same seeds (k3).
+'attacked' / 'benched' = of the turns where that move was on offer, the share where it was made. Setup (turn 0) is excluded from both, as the run 2/run 3 benching benchmark excludes it. (k3 attacks 99% and benches 97%. Run 3's shared network: attacked 68%, benched 54%. Run 2's Blaziken specialist, the like-for-like bar for the pilot: benched 63%.)
+Giveaways and checkup deaths are rates per 1,000 player-turns. Checkup deaths: loose / strict (a retreat was offered that turn) / strict and still winnable (network only).
+
+  matchup               who    turns  sure win missed  sure KO missed  attacked  benched  giveaways          checkup deaths
+  hydreigon vs lucario  bot    10530        3 of 949        39 of 2432        91%      66%        0.0           0.0 / 0.0 / 0.0
+  hydreigon vs lucario  k3     11623        2 of 615        23 of 2605        81%      97%        0.0                 0.0 / 0.0
+  lucario vs hydreigon  k3     11921        0 of 1300        4 of 3416       100%      92%        0.0                 0.0 / 0.0
+
+Confirmation of the hydreigon network's ckpt_1800k_avg: 2,000 games per matchup on the bars' own seeds (paired). Margin over k3 +39.4 points.
+  matchup                 network  k3, same deck   margin   games won only by
+  hydreigon vs lucario      73.6%          34.2%   +39.4   network  866 / k3   79 (p 3.3e-168)
+
+Knockout audit (run 4) — diag-hydreigon-lucario, the hydreigon network's ckpt_1800k_avg: 2,000 confirmation games and 2,000 bar games replayed; replay problems: 0
+
+Per matchup: the network piloting the first deck (bot) vs k3 piloting the same deck on the same seeds (k3).
+'attacked' / 'benched' = of the turns where that move was on offer, the share where it was made. Setup (turn 0) is excluded from both, as the run 2/run 3 benching benchmark excludes it. (k3 attacks 99% and benches 97%. Run 3's shared network: attacked 68%, benched 54%. Run 2's Blaziken specialist, the like-for-like bar for the pilot: benched 63%.)
+Giveaways and checkup deaths are rates per 1,000 player-turns. Checkup deaths: loose / strict (a retreat was offered that turn) / strict and still winnable (network only).
+
+  matchup               who    turns  sure win missed  sure KO missed  attacked  benched  giveaways          checkup deaths
+  hydreigon vs lucario  bot    10415        3 of 902        41 of 2363        89%      66%        0.0           0.0 / 0.0 / 0.0
+  hydreigon vs lucario  k3     11623        2 of 615        23 of 2605        81%      97%        0.0                 0.0 / 0.0
+  lucario vs hydreigon  k3     11921        0 of 1300        4 of 3416       100%      92%        0.0                 0.0 / 0.0
+
+Confirmation of the lucario network's ckpt_2000k_avg (used for the verdict): 2,000 games per matchup on the bars' own seeds (paired). Margin over k3 +8.3 points.
+  matchup                 network  k3, same deck   margin   games won only by
+  lucario vs hydreigon      74.1%          65.8%    +8.3   network  363 / k3  197 (p 2.2e-12)
+
+Knockout audit (run 4) — diag-hydreigon-lucario, the lucario network's ckpt_2000k_avg: 2,000 confirmation games and 2,000 bar games replayed; replay problems: 0
+
+Per matchup: the network piloting the first deck (bot) vs k3 piloting the same deck on the same seeds (k3).
+'attacked' / 'benched' = of the turns where that move was on offer, the share where it was made. Setup (turn 0) is excluded from both, as the run 2/run 3 benching benchmark excludes it. (k3 attacks 99% and benches 97%. Run 3's shared network: attacked 68%, benched 54%. Run 2's Blaziken specialist, the like-for-like bar for the pilot: benched 63%.)
+Giveaways and checkup deaths are rates per 1,000 player-turns. Checkup deaths: loose / strict (a retreat was offered that turn) / strict and still winnable (network only).
+
+  matchup               who    turns  sure win missed  sure KO missed  attacked  benched  giveaways          checkup deaths
+  hydreigon vs lucario  k3     11623        2 of 615        23 of 2605        81%      97%        0.0                 0.0 / 0.0
+  lucario vs hydreigon  bot    12409        1 of 1459      255 of 3644        85%      69%        0.0           0.0 / 0.0 / 0.0
+  lucario vs hydreigon  k3     11921        0 of 1300        4 of 3416       100%      92%        0.0                 0.0 / 0.0
+
+Confirmation of the lucario network's ckpt_1800k_avg: 2,000 games per matchup on the bars' own seeds (paired). Margin over k3 +8.2 points.
+  matchup                 network  k3, same deck   margin   games won only by
+  lucario vs hydreigon      74.0%          65.8%    +8.2   network  376 / k3  212 (p 1.3e-11)
+
+Knockout audit (run 4) — diag-hydreigon-lucario, the lucario network's ckpt_1800k_avg: 2,000 confirmation games and 2,000 bar games replayed; replay problems: 0
+
+Per matchup: the network piloting the first deck (bot) vs k3 piloting the same deck on the same seeds (k3).
+'attacked' / 'benched' = of the turns where that move was on offer, the share where it was made. Setup (turn 0) is excluded from both, as the run 2/run 3 benching benchmark excludes it. (k3 attacks 99% and benches 97%. Run 3's shared network: attacked 68%, benched 54%. Run 2's Blaziken specialist, the like-for-like bar for the pilot: benched 63%.)
+Giveaways and checkup deaths are rates per 1,000 player-turns. Checkup deaths: loose / strict (a retreat was offered that turn) / strict and still winnable (network only).
+
+  matchup               who    turns  sure win missed  sure KO missed  attacked  benched  giveaways          checkup deaths
+  hydreigon vs lucario  k3     11623        2 of 615        23 of 2605        81%      97%        0.0                 0.0 / 0.0
+  lucario vs hydreigon  bot    12397        2 of 1466      239 of 3602        86%      68%        0.0           0.0 / 0.0 / 0.0
+  lucario vs hydreigon  k3     11921        0 of 1300        4 of 3416       100%      92%        0.0                 0.0 / 0.0
+
+Held-out test: not part of this run (its settings name no held-out deck).

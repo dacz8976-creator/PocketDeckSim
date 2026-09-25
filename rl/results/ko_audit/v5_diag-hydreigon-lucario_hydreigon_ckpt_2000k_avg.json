@@ -1,0 +1,100 @@
+{
+ "summary": "Knockout audit (run 4) \u2014 diag-hydreigon-lucario, the hydreigon network's ckpt_2000k_avg: 2,000 confirmation games and 2,000 bar games replayed; replay problems: 0\n\nPer matchup: the network piloting the first deck (bot) vs k3 piloting the same deck on the same seeds (k3).\n'attacked' / 'benched' = of the turns where that move was on offer, the share where it was made. Setup (turn 0) is excluded from both, as the run 2/run 3 benching benchmark excludes it. (k3 attacks 99% and benches 97%. Run 3's shared network: attacked 68%, benched 54%. Run 2's Blaziken specialist, the like-for-like bar for the pilot: benched 63%.)\nGiveaways and checkup deaths are rates per 1,000 player-turns. Checkup deaths: loose / strict (a retreat was offered that turn) / strict and still winnable (network only).\n\n  matchup               who    turns  sure win missed  sure KO missed  attacked  benched  giveaways          checkup deaths\n  hydreigon vs lucario  bot    10530        3 of 949        39 of 2432        91%      66%        0.0           0.0 / 0.0 / 0.0\n  hydreigon vs lucario  k3     11623        2 of 615        23 of 2605        81%      97%        0.0                 0.0 / 0.0\n  lucario vs hydreigon  k3     11921        0 of 1300        4 of 3416       100%      92%        0.0                 0.0 / 0.0",
+ "stats": {
+  "k3opp|hydreigon>lucario": {
+   "turns": 10391,
+   "win_turns": 489,
+   "win_missed": 0,
+   "ko_turns": 2324,
+   "ko_missed": 3,
+   "give_attack": 0,
+   "checkup_loose": 0,
+   "checkup_strict": 0,
+   "checkup_strict_winnable": 0,
+   "attack_turns": 7197,
+   "attack_made": 7173,
+   "bench_turns": 3253,
+   "bench_made": 3046
+  },
+  "bot|hydreigon>lucario": {
+   "turns": 10530,
+   "win_turns": 949,
+   "win_missed": 3,
+   "ko_turns": 2432,
+   "ko_missed": 39,
+   "give_attack": 0,
+   "checkup_loose": 0,
+   "checkup_strict": 0,
+   "checkup_strict_winnable": 0,
+   "attack_turns": 6806,
+   "attack_made": 6174,
+   "bench_turns": 4487,
+   "bench_made": 2978
+  },
+  "k3|lucario>hydreigon": {
+   "turns": 11921,
+   "win_turns": 1300,
+   "win_missed": 0,
+   "ko_turns": 3416,
+   "ko_missed": 4,
+   "give_attack": 0,
+   "checkup_loose": 0,
+   "checkup_strict": 0,
+   "checkup_strict_winnable": 0,
+   "attack_turns": 8672,
+   "attack_made": 8629,
+   "bench_turns": 3509,
+   "bench_made": 3239
+  },
+  "k3|hydreigon>lucario": {
+   "turns": 11623,
+   "win_turns": 615,
+   "win_missed": 2,
+   "ko_turns": 2605,
+   "ko_missed": 23,
+   "give_attack": 0,
+   "checkup_loose": 0,
+   "checkup_strict": 0,
+   "checkup_strict_winnable": 0,
+   "attack_turns": 7805,
+   "attack_made": 6291,
+   "bench_turns": 3502,
+   "bench_made": 3384
+  }
+ },
+ "replay_problems": 0,
+ "complete": true,
+ "failed_replays": [],
+ "inputs": {
+  "step": "audit",
+  "checkpoint": "ckpt_2000k_avg",
+  "checkpoint sha256": {
+   "hydreigon": "261c70970d892a080eb1b44a392687b722bfce15f76e9bcfa16d19a48b46418e"
+  },
+  "decks": {
+   "hydreigon": "6ea0042236b4844458a1b2d0f0e6cefb4c50ce0148a38aded1162f4d27e935e9",
+   "lucario": "46a4820bc788b4fd9ac1d9491e62bf7123c467441e7e30012e42e8a70c91e3f3"
+  },
+  "settings": {
+   "pool": {
+    "hydreigon": "decks/research/hydreigon.txt",
+    "lucario": "decks/research/lucario.txt"
+   },
+   "features": "v2.2",
+   "checkup_report": {
+    "winnable_q": -0.5
+   }
+  },
+  "code": {
+   "audit_v5.py": "6f92178366d0f575e91619625f14168148af556cf95a69e63b0c2c3ee32063d2",
+   "model.py": "5bd3c6585b086d5d435635c1a022e80f3caf6e8bc644004a6a5d66ac64886f46",
+   "pdl_env.py": "34ba9661843d6f71d6fc656622b810d7276f64ff9fde87099cb37e80a080f49c",
+   "train_v5.py": "844a046ccefddf350373443a6a115177207fa6db497ec5b6a4c353102ad26780"
+  },
+  "add-on": "0fee43ceaf9cf6bc15ed2319bb08c100397621a60703880cf26ace8f044a9101",
+  "records sha256": "2c5759c3d6f6965768f22d051e2d8f70e20d369c10443f153a56278c87ab091d",
+  "deck": "hydreigon",
+  "K": 4
+ },
+ "winnable_q": -0.5
+}
