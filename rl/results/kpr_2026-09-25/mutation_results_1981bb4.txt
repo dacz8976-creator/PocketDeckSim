@@ -1,1 +1,65 @@
 baseline (no mutation): test result: ok. 22 passed; 0 failed; 0 ignored; 0 measured; 325 filtered out; finished in 0.01s
+KPR const switched off: caught by 2: the_kpr_evaluator_differs_from_k_by_the_active_score_and_the_clock, kpr3_from_get_player_chips_with_hyper_ray_where_kp3_declines
+KPR arm uses the kp value function: caught by 1: kpr3_from_get_player_chips_with_hyper_ray_where_kp3_declines
+KPR arm without the pricing wrapper: caught by 1: kpr3_from_get_player_also_prices_darkness_claw
+online score not projected: caught by 2: kpr3_from_get_player_chips_with_hyper_ray_where_kp3_declines, the_kpr_evaluator_differs_from_k_by_the_active_score_and_the_clock
+clock not projected: caught by 2: the_kpr_evaluator_differs_from_k_by_the_active_score_and_the_clock, kpr3_from_get_player_chips_with_hyper_ray_where_kp3_declines
+own Active read at its next attack: SURVIVED
+opponent's threat read through its next turn: caught by 2: the_opponents_reading_is_the_same_either_side_of_its_turn_start, the_kpr_evaluator_differs_from_k_by_the_active_score_and_the_clock
+opponent's Active read through its next turn: caught by 1: the_kpr_evaluator_differs_from_k_by_the_active_score_and_the_clock
+own threat read at its next attack: caught by 1: the_opponents_reading_is_the_same_either_side_of_its_turn_start
+horizon ignored: both read through next turn (0adfeb7): caught by 3: the_kpr_evaluator_differs_from_k_by_the_active_score_and_the_clock, the_opponents_active_is_priced_at_its_very_next_attack, the_opponents_reading_is_the_same_either_side_of_its_turn_start
+horizon ignored: both read at the next attack (9a35f54): caught by 6: a_turn_effect_blocking_zone_attaches_to_the_active_blocks_the_projection, an_ability_that_would_knock_the_active_out_is_not_counted, the_same_board_scores_the_same_mid_turn_and_once_the_turn_is_over, the_opponents_reading_is_the_same_either_side_of_its_turn_start, the_opponents_active_is_priced_at_its_very_next_attack, an_ability_used_this_turn_counts_only_for_next_turn
+opponent's scores read hidden zones: caught by 1: kpr_reads_no_hidden_card
+min of the clocks dropped: caught by 1: the_clock_never_gets_slower_for_the_projection
+Bench projected too: caught by 2: the_clock_counts_the_active_threats_energy_at_its_next_attack, the_clock_never_gets_slower_for_the_projection
+clock damage not projected: caught by 1: the_clock_prices_the_damage_the_active_will_do_at_its_next_attack
+forms not projected: caught by 1: the_clock_projects_the_actives_evolution_forms_too
+forms' damage not projected: caught by 1: the_clock_projects_the_actives_evolution_forms_too
+projected during setup: caught by 1: nothing_is_projected_during_setup
+turn-over check dropped: caught by 3: a_turn_that_is_ending_counts_only_next_turn, the_opponents_active_is_priced_at_its_very_next_attack, the_same_board_scores_the_same_mid_turn_and_once_the_turn_is_over
+next turn is always turn + 1: caught by 1: a_turn_effect_blocking_zone_attaches_to_the_active_blocks_the_projection
+this turn's block read on turn + 1: caught by 1: a_turn_effect_blocking_zone_attaches_to_the_active_blocks_the_projection
+next turn uses this turn's Zone: caught by 17: a_turn_that_is_ending_counts_only_next_turn, an_ability_that_would_knock_the_active_out_is_not_counted, a_turn_effect_blocking_zone_attaches_to_the_active_blocks_the_projection, kpr3_from_get_player_chips_with_hyper_ray_where_kp3_declines, discard_pile_sources_need_the_energy_there, dragons_blessing_takes_each_discarded_energy_once_and_the_type_the_active_needs, ice_maker_feeds_an_active_of_its_type_only, hydreigon_emptied_by_hyper_ray_is_ready_again_next_turn, the_clock_counts_the_active_threats_energy_at_its_next_attack, the_clock_never_gets_slower_for_the_projection, the_clock_prices_the_damage_the_active_will_do_at_its_next_attack, the_opponents_active_is_priced_at_its_very_next_attack, the_kpr_evaluator_differs_from_k_by_the_active_score_and_the_clock, the_clock_projects_the_actives_evolution_forms_too, the_same_board_scores_the_same_mid_turn_and_once_the_turn_is_over, zone_abilities_held_by_the_active_feed_only_the_active, without_an_ability_only_the_turns_attach_counts
+pending end not a turn end: caught by 1: a_turn_that_is_ending_counts_only_next_turn
+attack used not a turn end: caught by 2: a_turn_that_is_ending_counts_only_next_turn, the_opponents_active_is_priced_at_its_very_next_attack
+forced EndTurn not a turn end: caught by 2: a_turn_that_is_ending_counts_only_next_turn, the_same_board_scores_the_same_mid_turn_and_once_the_turn_is_over
+deferred Checkup not a turn end: caught by 1: a_turn_that_is_ending_counts_only_next_turn
+paused Checkup not a turn end: caught by 1: a_turn_that_is_ending_counts_only_next_turn
+end-of-turn evolution not a turn end: caught by 1: a_turn_that_is_ending_counts_only_next_turn
+turn-end marker read only on top of the stack: caught by 1: a_turn_that_is_ending_counts_only_next_turn
+Zone block ignored for the Zone: caught by 1: a_turn_effect_blocking_zone_attaches_to_the_active_blocks_the_projection
+used Ability counted this turn: caught by 1: an_ability_used_this_turn_counts_only_for_next_turn
+used Ability not counted next turn: caught by 1: an_ability_used_this_turn_counts_only_for_next_turn
+Ice Maker ignores the block: caught by 1: a_turn_effect_blocking_zone_attaches_to_the_active_blocks_the_projection
+Ice Maker ignores the type: caught by 1: ice_maker_feeds_an_active_of_its_type_only
+Forest Breath from the Bench: caught by 1: zone_abilities_held_by_the_active_feed_only_the_active
+Forest Breath ignores the block: caught by 1: a_turn_effect_blocking_zone_attaches_to_the_active_blocks_the_projection
+Forest Breath arm dropped: caught by 1: zone_abilities_held_by_the_active_feed_only_the_active
+Volt Charge from the Bench: caught by 1: zone_abilities_held_by_the_active_feed_only_the_active
+Volt Charge ignores the block: caught by 1: a_turn_effect_blocking_zone_attaches_to_the_active_blocks_the_projection
+Volt Charge arm dropped: caught by 1: zone_abilities_held_by_the_active_feed_only_the_active
+Roar ignores the block: caught by 1: a_turn_effect_blocking_zone_attaches_to_the_active_blocks_the_projection
+Roar knock-out guard dropped: caught by 1: an_ability_that_would_knock_the_active_out_is_not_counted
+Roar damage not cumulative: caught by 1: an_ability_that_would_knock_the_active_out_is_not_counted
+Combust knock-out guard dropped: caught by 1: an_ability_that_would_knock_the_active_out_is_not_counted
+Combust from the Bench: SURVIVED
+Combust keeps the discarded Energy: caught by 1: an_ability_that_would_knock_the_active_out_is_not_counted
+Combust damage not cumulative: caught by 1: an_ability_that_would_knock_the_active_out_is_not_counted
+Blessing keeps the discarded Energy: caught by 1: dragons_blessing_takes_each_discarded_energy_once_and_the_type_the_active_needs
+Blessing takes the first discarded: caught by 1: dragons_blessing_takes_each_discarded_energy_once_and_the_type_the_active_needs
+Blessing key: lowest only: caught by 1: dragons_blessing_takes_each_discarded_energy_once_and_the_type_the_active_needs
+Blessing key: total only: SURVIVED
+Blessing ties to the last: caught by 1: dragons_blessing_takes_each_discarded_energy_once_and_the_type_the_active_needs
+Blessing from the Active: caught by 1: dragons_blessing_takes_each_discarded_energy_once_and_the_type_the_active_needs
+Blessing ignores the type: caught by 1: dragons_blessing_takes_each_discarded_energy_once_and_the_type_the_active_needs
+
+Rerun of the three survivors with the two tests added at 53638a7 (the bot's code unchanged from 1981bb4):
+own Active read at its next attack: caught by 1: the_kpr_evaluator_differs_from_k_by_the_active_score_and_the_clock
+Combust from the Bench: caught by 1: an_ability_that_would_knock_the_active_out_is_not_counted
+Blessing key: total only: SURVIVED. Equivalent on every card in the database: Dragon's Blessing feeds only a Dragon
+  Active; every Dragon but one has a single attack (lowest = total), and the one with two, Ultra Necrozma ex, has
+  Photon Claw [C][C][C], which any discarded type pays alike, so the lowest ties whenever the total ties. The two keys
+  can't pick differently. The test with Ultra Necrozma ex pins the total as the tie-break.
+Result: 53 of 54 caught; the 54th can't change any value with today's cards.
+Builds: incremental (CARGO_INCREMENTAL=1) in a scratch copy; that changes build time only.
