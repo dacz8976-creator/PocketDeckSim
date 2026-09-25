@@ -147,6 +147,11 @@ pub enum PlayerCode {
     /// B1' public pricing: 'kp<N>' is the k<N> search, blind, with effects that mention the opponent's
     /// hand or deck priced against the Unknown cards instead of left unpriced (public_pricing_player).
     KP { max_depth: usize },
+    /// B5: 'kq<N>' is 'kp<N>' with two more evaluation features, both card-agnostic
+    /// (value_functions::public_clock_effect_kq_value_function): the threat clock prices a threat whose
+    /// next attack is cut or cancelled by an effect it carries, and the benched main attacker's readiness
+    /// is credited at a pre-set 250 (half the Active's 500).
+    KQ { max_depth: usize },
 }
 /// Custom parser function enforcing case-insensitivity
 pub fn parse_player_code(s: &str) -> Result<PlayerCode, String> {
@@ -206,6 +211,14 @@ pub fn parse_player_code(s: &str) -> Result<PlayerCode, String> {
             return Ok(PlayerCode::KP { max_depth });
         }
         return Err(format!("Invalid player code: {s}. Use 'kp<number>', e.g. 'kp3'"));
+    }
+    // B5. 'kq<N>' = 'kp<N>' with the kq evaluation features (see PlayerCode::KQ). Before 'k<N>', which
+    // would reject it.
+    if let Some(depth) = lower.strip_prefix("kq") {
+        if let Ok(max_depth) = depth.parse::<usize>() {
+            return Ok(PlayerCode::KQ { max_depth });
+        }
+        return Err(format!("Invalid player code: {s}. Use 'kq<number>', e.g. 'kq3'"));
     }
     // Option B. 'b<N>[o<P>][n<S>]' = 'k<N>' with list-sampled hidden cards (see PlayerCode::B).
     if lower.starts_with('b') && lower.len() > 1 {
@@ -487,6 +500,18 @@ fn get_player(deck: Deck, opponent_deck: &Deck, player: &PlayerCode) -> Box<dyn 
                 soft_opponent: false,
             },
         }),
+        // The KP arm with the kq value function in place of k's; nothing else differs.
+        PlayerCode::KQ { max_depth } => Box::new(PublicPricingPlayer {
+            search: ExpectiMiniMaxPlayer {
+                deck,
+                max_depth: *max_depth,
+                write_debug_trees: false,
+                value_function: Box::new(value_functions::public_clock_effect_kq_value_function),
+                opponent_ply: 0,
+                consistent_horizon: false,
+                soft_opponent: false,
+            },
+        }),
     }
 }
 
@@ -580,6 +605,12 @@ mod s42_tier_parse_tests {
         assert_eq!(parse_player_code("k3").unwrap(), PlayerCode::K { max_depth: 3 });
         assert!(parse_player_code("kp").is_err());
         assert!(parse_player_code("kpx").is_err());
+        // B5: 'kq<N>', and 'kp<N>' and 'k<N>' are unchanged.
+        assert_eq!(parse_player_code("kq3").unwrap(), PlayerCode::KQ { max_depth: 3 });
+        assert_eq!(parse_player_code("KQ5").unwrap(), PlayerCode::KQ { max_depth: 5 });
+        assert_eq!(parse_player_code("kp3").unwrap(), PlayerCode::KP { max_depth: 3 });
+        assert!(parse_player_code("kq").is_err());
+        assert!(parse_player_code("kqx").is_err());
         // §115: 'd<N>' must parse and must not shadow anything earlier.
         assert_eq!(
             parse_player_code("d3").unwrap(),

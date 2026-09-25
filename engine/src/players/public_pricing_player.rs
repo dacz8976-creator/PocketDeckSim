@@ -248,6 +248,62 @@ mod tests {
         assert!(claw_unpriced(&k3_branches), "k3 on the same thread still leaves Darkness Claw unpriced");
     }
 
+    /// kq3 is built the same way (get_player) and keeps kp's pricing: it prices Darkness Claw too.
+    #[test]
+    fn kq3_from_get_player_also_prices_darkness_claw() {
+        let real = darkness_claw_game();
+        let observation = PlayerObservation::from_state(&real, 0, &RevealedKnowledge::default());
+        let (_, mut actions) = real.generate_possible_actions();
+        crate::observation::canonical_actions(&mut actions);
+        let claw = darkness_claw(&actions);
+        let mut player = get_player(Deck::default(), &Deck::default(), &PlayerCode::KQ { max_depth: 3 });
+        let (choice, branches) = crate::observation::collect_unpriced(|| {
+            player.decision_fn(&mut StdRng::seed_from_u64(3), &observation, &actions)
+        });
+        assert!(!branches.iter().any(|b| b.reason == "effect or choice depends on unrevealed opponent cards"
+            && matches!(&b.action.action, SimpleAction::Attack(x) if x.title == "Darkness Claw")));
+        assert_eq!(choice, actions[claw]);
+    }
+
+    /// The B2c position, through get_player: Bonsly (free Teary Attack) Active, Riolu with 1 Fighting on
+    /// the Bench, Mega Lucario ex in the deck, Bulbasaur with Vine Whip paid for across the table, this
+    /// turn's Energy Fighting. kp3 (like k3) retreats Bonsly, pushing the unevolved Riolu into the Active
+    /// Spot; kq3 powers Riolu on the Bench instead. If the KQ arm of get_player stopped using the kq value
+    /// function, kq3 would play as kp3 and this fails.
+    #[test]
+    fn kq3_from_get_player_builds_the_benched_attacker_where_kp3_retreats_into_it() {
+        let mut game = crate::test_support::get_initialized_game(0);
+        let mut state = game.get_state_clone();
+        state.set_board(
+            vec![
+                PlayedCard::from_id(CardId::B3078Bonsly),
+                PlayedCard::from_id(CardId::B3079Riolu).with_energy(vec![EnergyType::Fighting]),
+            ],
+            vec![PlayedCard::from_id(CardId::A1001Bulbasaur)
+                .with_energy(vec![EnergyType::Grass, EnergyType::Colorless])],
+        );
+        state.current_player = 0;
+        state.turn_count = 4;
+        state.move_generation_stack.clear();
+        state.decks[0].cards.push(crate::database::get_card_by_enum(CardId::B3081MegaLucarioEx));
+        state.energy_zone[0].current = Some(EnergyType::Fighting);
+        game.set_state(state);
+        let real = game.get_state_clone();
+        let observation = PlayerObservation::from_state(&real, 0, &RevealedKnowledge::default());
+        let (_, mut actions) = real.generate_possible_actions();
+        crate::observation::canonical_actions(&mut actions);
+        let decide = |code: PlayerCode| {
+            let mut player = get_player(Deck::default(), &Deck::default(), &code);
+            player.decision_fn(&mut StdRng::seed_from_u64(3), &observation, &actions).action
+        };
+        assert_eq!(decide(PlayerCode::KP { max_depth: 3 }), SimpleAction::Retreat(1));
+        assert!(
+            matches!(decide(PlayerCode::KQ { max_depth: 3 }),
+                SimpleAction::Attach { ref attachments, .. } if attachments == &vec![(1, EnergyType::Fighting, 1)]),
+            "kq3 attaches the turn's Fighting to the benched Riolu"
+        );
+    }
+
     /// The audited list is exactly the set of card texts the rule covers today, sorted. A new card with such
     /// a text fails this until it is audited and added (until then kp leaves it unpriced, as k does).
     #[test]
