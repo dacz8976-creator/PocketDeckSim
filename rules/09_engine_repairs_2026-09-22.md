@@ -60,7 +60,8 @@ These rules remain source questions and were not settled by the code work:
 - promotion order after a Checkup double Knock Out;
 - what happens when a card effect returns a card to an already full hand;
 - whether Weakness applies when an attack's damage has been reduced to zero before Weakness;
-- Heavy Helmet with a changed Retreat Cost; and
+- Heavy Helmet with a changed Retreat Cost (settled since, 2026-09-25: it reads the current cost; the engine bug is
+  listed under "Open engine bugs" below); and
 - exact turn-limit timing.
 
 The audit's bot-planning limits, latent omniscient export paths and other items not named above are not claimed fixed.
@@ -128,10 +129,10 @@ The accepted 225430 segment revealed that a zero-HP attacker was discarded befor
   from Rare Candy or otherwise." So Rare Candy onto the Active should be blocked, as for Evolution Jammer. No deck here
   has Aerodactyl ex; against one, the Rare Candy decks (research: Hydreigon, Blaziken, Suicune; Dustin's 01, 02, 05,
   06; brews 01, 03b, 05, 05b, 09) would get an illegal play. Fix after kpr's table is read.
-- **Heavy Helmet reads the printed Retreat Cost, not the current one** (Dustin's answer, 2026-09-25, owner testimony;
-  his in-game test pending; `rl/results/recordings_check_2026-09-25/OWNER_ANSWERS.md` on main). "If the Pokémon this
-  card is attached to has a Retreat Cost of 3 or more, it takes −20 damage from attacks": Dustin says it uses the
-  current cost, like attacks that depend on it. The engine checks the printed cost (`heavy_helmet_reduction`,
+- **Heavy Helmet reads the printed Retreat Cost, not the current one — CONFIRMED in-game 2026-09-25** (Dustin's
+  recording `Battle Logs/heavyhelmet_test.MP4`: printed Retreat Cost 3, Peculiar Plaza in play, Helmet attached, a
+  40-damage attack did 40; the engine would have made it 20). "If the Pokémon this card is attached to has a Retreat
+  Cost of 3 or more, it takes −20 damage from attacks" reads the current cost, like attacks that depend on it. The engine checks the printed cost (`heavy_helmet_reduction`,
   `engine/src/hooks/core.rs`), so it gives −20 under Peculiar Plaza at 1–2 and none when Ariados's Trap Territory or
   Goo-zooka raises a printed 2 to 3. No table deck has Heavy Helmet; Dustin's 01 and 03 do, his 12 has Ariados, and
   brews 05b and 10 play Plaza. The fix is to read the effective Retreat Cost the engine already computes for retreat
