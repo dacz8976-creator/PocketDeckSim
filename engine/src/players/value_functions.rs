@@ -2880,6 +2880,25 @@ mod kd_feature_tests {
     }
 
     #[test]
+    fn the_threats_own_text_reaches_the_clock() {
+        // Staryu's Swift (20) isn't affected by effects on the opponent's Active: Solid Shell doesn't cut it, so
+        // Shuckle ex falls in 6, not "never".
+        let staryu = with(CardId::B4032Staryu, EnergyType::Water, 1);
+        assert_eq!(clocks(&board(vec![mon(CardId::A4021ShuckleEx)], vec![staryu]), false), (6.0, 6.0));
+    }
+
+    #[test]
+    fn disguise_is_not_a_victim_the_threat_cannot_damage() {
+        // Mimikyu ex (120 HP, Disguise, weak to Darkness) v Mewtwo ex's Psychic Sphere (50, the threat) and
+        // Zweilous's Darkness Fang (40 + 20 Weakness = 60), both ready. Sphere's first hit is prevented, but later
+        // ones land, so the threat keeps the victim: 1 + 3. (Were the first hit taken as "can't damage", Darkness
+        // Fang would take over: 1 + 2.)
+        let zweilous = with(CardId::B1156Zweilous, EnergyType::Darkness, 2);
+        let state = board(vec![mon(CardId::B2073MimikyuEx)], vec![mewtwo(), zweilous]);
+        assert_eq!(clocks(&state, false).1, 4.0);
+    }
+
+    #[test]
     fn a_victim_at_0_hp_takes_no_turns_even_if_it_could_not_be_damaged() {
         let fainted = mon(CardId::A4021ShuckleEx).with_remaining_hp(0);
         let state = board(vec![fainted, mon(CardId::B3005Treecko)], vec![weedle()]);
