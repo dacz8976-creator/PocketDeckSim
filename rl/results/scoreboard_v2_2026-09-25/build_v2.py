@@ -2,8 +2,10 @@
 """Scoreboard v2: the 28 Limitless cells rebuilt from the pairings of the development half only (B6's split; the
 frozen holdout half is not read). Run from anywhere:
     python build_v2.py
-Writes limitless_v2_dev.json (the cells, in the shape score.py's --limitless takes) and cells_v2.txt (every cell
-against the Sept 23 table).
+Writes limitless_v2_dev.json (the cells, in the shape score.py's --limitless takes), limitless_v2_dev_events.json
+(the same cells split by tournament event, for score.py's --limitless-events: matches in one event share players,
+lists and a field, so resampling events gives the Limitless side's clustered uncertainty) and cells_v2.txt (every
+cell against the Sept 23 table).
 
 Source: ../limitless_skill_model_2026-09-25/development_matches.csv (63 development events, split fixed in its
 split.json before any outcome was read). A match is counted exactly as that folder's analyze.py counts a cell
@@ -33,6 +35,7 @@ PANEL = ["altaria", "blaziken", "hydreigon", "lucario", "sceptile", "suicune", "
 
 def main():
     cells = {k: [0, 0, 0] for k in combinations(PANEL, 2)}
+    per_event = {}
     events, rows_used, splits = set(), 0, set()
     with open(SRC, encoding="utf-8", newline="") as f:
         for r in csv.DictReader(f):
@@ -45,6 +48,7 @@ def main():
             key = tuple(sorted((a, b)))
             idx = 2 if r["result_status"] == "tie" else (0 if (r["winner"] == r["player1"]) == (a == key[0]) else 1)
             cells[key][idx] += 1
+            per_event.setdefault(r["event_id"], {}).setdefault(key, [0, 0, 0])[idx] += 1
             events.add(r["event_id"])
             rows_used += 1
     if splits != {"development"}:
@@ -55,6 +59,11 @@ def main():
            "cells": {f"{a}|{b}": v for (a, b), v in cells.items()}}
     with open(os.path.join(HERE, "limitless_v2_dev.json"), "w", encoding="utf-8") as f:
         json.dump(out, f, indent=1)
+    ev = {"source": out["source"], "rule": out["rule"], "note": "per event; summed over events these are "
+          "limitless_v2_dev.json's cells", "events": [{"event_id": e, "cells": {f"{a}|{b}": v for (a, b), v in
+          sorted(c.items())}} for e, c in sorted(per_event.items())]}
+    with open(os.path.join(HERE, "limitless_v2_dev_events.json"), "w", encoding="utf-8") as f:
+        json.dump(ev, f, indent=1)
 
     L = ["Scoreboard v2: the 28 cells from the development half's pairings, against the Sept 23 table", "",
          f"{rows_used:,} panel matches from {len(events)} development events (split.json; holdout not read).",
@@ -77,7 +86,7 @@ def main():
         L.append(f"  {k[0] + ' v ' + k[1]:<24}{f'{w0}-{l0}-{t0}':>16}{n0:>6}{100 * p0:>8.1f}   {f'{w1}-{l1}-{t1}':>14}"
                  f"{n1:>6}{100 * p1:>8.1f}{100 * (p1 - p0):>+13.1f}{100 * band:>9.1f}  {'OUTSIDE' if outside else ''}")
     L += ["", f"Cells outside the band: {len(flagged)} of 28" + (": " + ", ".join(f"{a} v {b}" for a, b in flagged) if flagged else ""),
-          "Written: limitless_v2_dev.json, cells_v2.txt"]
+          "Written: limitless_v2_dev.json, limitless_v2_dev_events.json, cells_v2.txt"]
     text = "\n".join(L) + "\n"
     print(text)
     with open(os.path.join(HERE, "cells_v2.txt"), "w", encoding="utf-8") as f:
