@@ -10,6 +10,13 @@
 |---|---|
 | `deckgym` (the command-line engine; `deckgym simulate`) | `f4d235e596cdd713546c17450fd66bd9d5eefe4baf53e93d66d8bbe1628e1034` |
 | `legality_scan` (the table tool; per-game output with `--games-out`) | `d5c0a9528e076299875ac603667f7076951de885ea8465f3be0d1089b5afbbfb` |
+| `goldfish` (A1's goldfish and card-coverage tool; added after the switch, see below) | `318c82c897f08a376e836bd23f68d1aa53d8312adc00b04603137a6c86dbe997` |
+
+**The goldfish, added later on Sept 25:**
+- The floor check (`decks/screen/floor.py`) takes its flagged-card list from `goldfish --coverage`. So a floor verdict now needs this exact program, checked by hash.
+- It was built at 11:28 with `cargo build --release --example goldfish`, in the same WSL tree that built the two programs above.
+- That tree's `engine/src`, `engine/examples` and `Cargo.lock` were checked identical to 7fc6ccb, and no source file there is newer than `deckgym`.
+- It plays no game that any table or screen uses.
 
 **Source and build:**
 - git commit `7fc6ccbcecbfeadf19962be2e11b6c570aa7b88d` on main. `engine/` there is identical to 6a38b40, the tip right after PR #1 and the laptop branch were merged.
