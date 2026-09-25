@@ -1,0 +1,764 @@
+{
+ "synthesis": {
+  "explanation": "Short answer: the bot doesn't see the -50 from either card. It plays Metal Core Barrier for an unrelated reason, and Jasmine gets nothing from that reason.\n\n1. The search never plays out the opponent's turn. kp3 looks 3 moves ahead on its own turn only (opponent_ply 0). It scores the position the moment its turn ends (expectiminimax_player.rs:914-918). Both -50s only matter when the opponent attacks, and that attack is never simulated. The scoring's threat clock divides raw HP by the attacker's damage (value_functions.rs:905, 941), so it ignores reductions. Even the kd pilot's defender pricing leaves out Metal Core Barrier and turn effects on purpose (hooks/core.rs:1577-1580).\n\n2. Why the Tool gets played anyway: the score adds a flat +10 whenever your Active holds any Tool (value_functions.rs:50, 516, 667-672). It doesn't check which Tool it is or whether the holder is Metal. Each card that leaves your hand costs 1 point (lines 45, 510). So Metal Core Barrier on the Active nets +9, while Jasmine nets -1, the same as a Tool on the Bench.\n- **The Indeedee ex evidence:** the bot put Metal Core Barrier on a Psychic Indeedee ex Active 57 to 63 times per 240 games. The Barrier does nothing there, and that attach still scored exactly +10 over the Bench at 25 of 25 decisions.\n- **The causal test (same 240 seeds):** with the +10 set to 0, Metal Core Barrier dropped from 74.6% of its turns to 1.5%, and Steel Apron from 70.5% to 2.7%. Giving Jasmine's stored effect the same +10 raised Jasmine from 1.8% to 82.4%.\n\n3. Jasmine is held because it scores 1 lower, not because the bot judged it and turned it down. At all 191 decisions where the bot ended its turn with Jasmine playable, Jasmine scored exactly 1.0 lower (the card-in-hand point). On 439 to 535 turns per 240 games, it played no Supporter at all.\n\n4. The rare real Jasmine plays are an accident. The opponent's Hiking Trail refills your hand to 3 at the end of your turn, so playing any card draws one, and the smaller deck scores +1 (value_functions.rs:511). Of the 10 real plays examined, 9 were against Blaziken, the only list with Hiking Trail. One play against Altaria is unexplained.\n\n5. The engine is correct. Both cards cut a 150 hit on Skarmory ex to 100, at the same step after Weakness and for the same turn. Jasmine actually covers more: it also protects a benched or switched-in Skarmory ex, and it stacks with Steel Apron. The Tool costs no Supporter slot.\n\n6. The Tools still help, even though the bot plays them for the wrong reason. Removing the +10 cut deck 07's wins from 132 to 97 of 240, and every matchup went down. Pricing Jasmine gave 146 of 240 (+5.8 points), which is within noise at 240 games.",
+  "key_claims": [
+   {
+    "id": "C1",
+    "claim": "kp3 searches only its own turn (depth 3, opponent_ply 0) and scores the position at the turn boundary; the opponent's attack, where both -50s act, is never simulated.",
+    "evidence": "Verified (code angle, confirmed by causal angle): players/mod.rs:502-512; expectiminimax_player.rs:633-657 (an attack forces end of turn), 773-798 and 914-918 (the boundary gets a certificate or the static score)."
+   },
+   {
+    "id": "C2",
+    "claim": "kp3's evaluator is public_clock_effect_value_function with ValueFunctionParams::baseline() and EvalFeatures::OFF (no defender modifiers).",
+    "evidence": "Verified: value_functions.rs:176-187 (re-read in synthesis: baseline() at line 180), 421-431 (ex5 passes OFF), 248-252."
+   },
+   {
+    "id": "C3",
+    "claim": "The score adds +10 whenever the bot's Active has any Tool attached, whatever the Tool is and whatever the Pokemon's type.",
+    "evidence": "Verified (re-read in synthesis): value_functions.rs:50 (active_has_tool: 10.0 in baseline()), 516 ((my - opp) x weight), 667-672 (1.0 if has_tool_attached); played_card.rs:336-338. Line 82 is the same value inside variant(), which kp3 does not use."
+   },
+   {
+    "id": "C4",
+    "claim": "Each card leaving the hand costs 1 point. Net leaf deltas: Metal Core Barrier or Steel Apron on the Active +9; a Tool on the Bench -1; Jasmine -1.",
+    "evidence": "Verified: value_functions.rs:45 (hand_size 1.0), 510. Measured in two independent probes: code angle (seed 21,102,000,001) and engine angle each got Jasmine -1.000, MCB on the Active +9.000, MCB on the Bench -1.000."
+   },
+   {
+    "id": "C5",
+    "claim": "No term in kp3's scoring reads Jasmine's stored turn effect or Metal Core Barrier's -50.",
+    "evidence": "Verified: the threat clock uses raw HP / damage (value_functions.rs:905, 941), and the kd defender branch (847-874) is off for kp3. kd's persistent_defender_damage explicitly excludes both (hooks/core.rs:1577-1580, grep-confirmed in synthesis)."
+   },
+   {
+    "id": "C6",
+    "claim": "In the engine the two cards give the same -50 at the same step (after Weakness, floored at 0) and for the same duration (the opponent's next turn).",
+    "evidence": "Verified by probe (engine angle): Fire into Skarmory ex at base 10/60/100/Bounded Field 60 gave 0/30/70/70 for both Jasmine and the Barrier. Code-angle probe: Psydrive 150 into a full-HP Skarmory ex left 40 HP with either card and knocked it out with no card. Code: hooks/core.rs:715-735, 1189-1236, 1276-1307; apply_trainer_action.rs:1018-1060; Barrier discarded at core.rs:504-519."
+   },
+   {
+    "id": "C7",
+    "claim": "Jasmine covers every Skarmory ex (Active, Bench and one switched in) and stacks with Steel Apron but uses the Supporter slot. The Barrier covers only its holder and needs a free Tool slot (1 per Pokemon).",
+    "evidence": "Verified by probe (engine angle): 100 into [Active Skarmory ex, Bench Skarmory ex, Bench Indeedee ex] = [50,50,100] under Jasmine. After a switch: Jasmine [50,50], Barrier [100,50]. Jasmine + Apron: 60 -> 20. tools.rs:112-117 (capacity 1)."
+   },
+   {
+    "id": "C8",
+    "claim": "In real games the bot attaches Metal Core Barrier to a Psychic Indeedee ex Active, where it does nothing, about 1 time in 5.",
+    "evidence": "Verified (traces): 63 of 284 Barrier plays, plus 21 Steel Apron. Verified (causal, different seeds): 57 of 311 Barrier plays, 24 Apron. Engine: core.rs:728-729 requires a [M] holder."
+   },
+   {
+    "id": "C9",
+    "claim": "A Tool on the Active scores exactly 10 above the same Tool on the Bench, for either Tool and either Pokemon.",
+    "evidence": "Verified (traces, instrumented replay identical to the official engine in 240 of 240 games): MCB/Indeedee 25 of 25, MCB/Skarmory 112 of 116, Apron/Indeedee 11 of 11, Apron/Skarmory 77 of 85. Causal debug replay (seed 21,102,501,005): Active 159.2 vs Bench 149.2."
+   },
+   {
+    "id": "C10",
+    "claim": "The +10 causes the Tool plays: with it set to 0, the bot stops playing both Tools.",
+    "evidence": "Verified (causal, same 240 seeds, unmodified build matches official sha256 f4d235e5...): Metal Core Barrier 311/417 (74.6%) -> 15/1029 (1.5%); Steel Apron 160/227 (70.5%) -> 19/715 (2.7%); 0 Barrier attaches to an Active."
+   },
+   {
+    "id": "C11",
+    "claim": "Giving Jasmine's stored effect the same +10 when it covers the Active makes the bot play Jasmine.",
+    "evidence": "Verified (causal variant B): Jasmine 8/447 (1.8%) -> 266/323 (82.4%), 241 of the 266 with Skarmory ex Active."
+   },
+   {
+    "id": "C12",
+    "claim": "The bot holds Jasmine because the hand-size point makes it score exactly 1 lower than ending the turn.",
+    "evidence": "Verified (traces): at 191 of 191 EndTurn decisions with Jasmine offered, Jasmine was -1.0. No Supporter was played on 535 of 1,129 Jasmine-offered turns (traces) and 439 of 1,085 (causal)."
+   },
+   {
+    "id": "C13",
+    "claim": "The real Jasmine plays observed come from the opponent's Hiking Trail refill (+1 on the deck-size term), not from the -50.",
+    "evidence": "Verified for 3 plays, inferred for 6 more. Traces: 2 of 2 plays vs Blaziken, scores 308.6 vs 307.6 and 399.4 vs 398.4. Causal: 7 of 8 plays vs Blaziken (1 verified by score, 160.2 vs 159.2); the 8th, vs Altaria, is unexplained. Code: hooks/core.rs:554-567 (Hiking Trail), value_functions.rs:511 (deck-size term)."
+   },
+   {
+    "id": "C14",
+    "claim": "When both Tools can go on a Tool-free Active, the bot picks Metal Core Barrier only because of move order: the two score the same.",
+    "evidence": "Verified (traces): the scores were equal at 155 of 155 decisions, and the Barrier went first on 54 of 54 turns. expectiminimax_player.rs:343 uses max_by, which keeps the last of equal maxima (grep-confirmed)."
+   },
+   {
+    "id": "C15",
+    "claim": "Most of the turns where Metal Core Barrier was playable but not played are turns where the Active's single Tool slot was already filled.",
+    "evidence": "Measured (traces): 77 of 96 non-play turns. Code angle's probe B: with Apron on the Active, the Barrier could only go to the Bench (-1) and was held."
+   },
+   {
+    "id": "C16",
+    "claim": "Playing the Tools, even for the wrong reason, raises deck 07's win rate under kp3.",
+    "evidence": "Verified (causal, paired seeds): 132/240 official vs 97/240 (+10 removed for both pilots) and 96/240 (deck's pilot only). Lower in all 8 matchups; about 3 standard errors."
+   },
+   {
+    "id": "C17",
+    "claim": "Pricing Jasmine has not been shown to change the win rate.",
+    "evidence": "Causal variant B: 146/240 vs 132/240 (+5.8 points, about 1.3 standard errors). Not lower in any matchup, but within noise."
+   },
+   {
+    "id": "C18",
+    "claim": "Public pricing plays no part for these two cards: kp3 behaves like k3 here.",
+    "evidence": "Verified (code angle): observation.rs:478-490 (neither text trips the rule); neither text is in AUDITED_TEXTS (public_pricing_player.rs:32-95)."
+   },
+   {
+    "id": "C19",
+    "claim": "A second route to a Jasmine play exists: the public-reply certificate scores a plain EndTurn as a certified loss (-100,000), and a Trainer play voids the certificate. This route has only been shown in a built position.",
+    "evidence": "Code angle probe D2 (built board, Jasmine the only card in hand): EndTurn -100,000 vs Jasmine -1, and the bot chose Jasmine. public_reply.rs:233-260. The certificate refuses boards with abilities, Tools other than Giant Cape, or a Stadium (573-671), which deck 07 usually has. Not observed in any real game."
+   },
+   {
+    "id": "C20",
+    "claim": "The floor check's numbers are as quoted.",
+    "evidence": "Read in synthesis: rl/results/floor_payback_check_2026-09-25/07-skarmory-stall.md lines 3-4 and 24-25: 908/1,920 wins (47.29%); Metal Core Barrier 2,430/3,054 (79.6%); Jasmine 50/3,968 (1.3%). Both cards are flagged as paying off 'during the opponent's turn, which the search doesn't play out'."
+   }
+  ],
+  "conflicts": [
+   "The deck's baseline win rate differs across seed blocks with the same official binary: 47.3% (1,920 games, seed 7100), 44.2% (240 games, traces block 21,102,000,000+) and 55.0% (240 games, causal block 21,102,500,000+). The causal block is about 2.4 standard errors above the traces block. The causal A/B used paired seeds and every one of the 8 matchups moved the same way, so the direction (the Tools help) is solid. The size ('about 15 points') comes from a high-baseline block and should be re-measured at 1,920 games.",
+   "Why Jasmine ever gets played: the code angle proposed the certificate escape and proved it only in a built position (D2). The traces and causal angles found the opponent's Hiking Trail refill behind 9 of 10 real plays examined. Weighing the traces over the code reading, Hiking Trail is the observed cause, and the certificate route has never been seen in a real game. One causal-angle play vs Altaria (no Hiking Trail) is unexplained. The 50 plays in the seed-7100 floor check were not traced.",
+   "The Jasmine play rate varies by run: 0.4% (2/537, traces), 1.3% (50/3,968, floor) and 1.8% (8/447, causal). All counts are small and all are under 2%, so this does not change the answer.",
+   "The traces angle cites the weight at value_functions.rs:50 and :82. Line 82 is inside variant(), which kp3 does not use (causal angle; confirmed in synthesis by reading lines 41-89 and 180). Only line 50 matters for kp3.",
+   "The traces angle's '+10 exactly' gap held in 112 of 116 Barrier/Skarmory and 77 of 85 Apron/Skarmory decisions (8 Apron cases scored higher). No investigation explained the residuals; they probably reflect differing deeper lines, but that was not checked.",
+   "The engine angle alone found that Metal Core Barrier has no attacker-is-opponent check (the owner's own attack onto its benched holder was reduced 60 -> 10), contrary to rules/09 H2. No other angle checked it. It does not affect deck 07.",
+   "Evidence missing: nobody measured how much damage Jasmine would actually have saved. The traces angle's 113 of 309 unprotected Skarmory ex hits at 50+ is a rough estimate from damage deltas, not a replay with Jasmine played.",
+   "Not run, code read only: attacks that ignore effects on the defending Active (hooks/core.rs:1316-1318, 1672-1675) drop both reductions together. Whether Pocket's rulings treat Jasmine that way was not checked.",
+   "Housekeeping against the task rules: raw trace folders were deleted by all angles. The traces angle left /home/dacz8976/jasmine_traced (about 449 MB: an engine copy plus compact.jsonl and scores.jsonl), and the code angle left scratch source at /home/dacz8976/jasmine_evalcode (its target was deleted). Both can be removed once no follow-up needs them."
+  ],
+  "implications": "For deck 07:\n- The simulator's Jasmine numbers say nothing about how good Jasmine is. The bot never scores the -50, so Jasmine's 1.3% floor play rate and the deck's 47.3% floor both come from a pilot that treats Jasmine as a dead card.\n- The Metal Core Barrier numbers aren't evidence either. About 1 in 5 Barriers go onto Indeedee ex for nothing, and when both Tools fit, the Barrier beats Steel Apron only on move order.\n- When Dustin plays the ladder by hand, the reasonable reading (an inference, not measured) is: Jasmine is worth playing on a turn with no better Supporter, when Skarmory ex is Active and facing a hit of 50 or more. Metal Core Barrier should go only on a [M] Pokemon.\n- Whether putting Jasmine in the bot's scoring actually raises the win rate is unproven. The +5.8 points in variant B is within noise at 240 games.\n\nFor other decks:\n- The +10 is blind to what the Tool does, so any deck with Tools will see the bot put any Tool on its Active, even where the Tool does nothing for that Pokemon. Win rates for Tool-heavy decks are partly driven by this term.\n- Any Supporter whose only payoff is a stored effect during the opponent's turn gets nothing but the -1 hand cost. The bot will hold it unless the opponent's Hiking Trail (or a similar refill) accidentally makes dumping a card worth +1. floor.py already flags this category; the flag is correct.\n\nPossible fixes (none built into the official pilot; each would be a new pilot and needs its own A/B at 1,920 games, Dustin's call):\n1. Price the real reductions. Extend kd's persistent_defender_damage, or the threat clock, to count Metal Core Barrier and ReducedDamageForTarget turn effects that cover the defender during the opponent's next turn. This is the principled fix, and it would also retire the card-blind bonus.\n2. Make active_has_tool card-aware: count a Tool only if its effect applies to its holder. That would stop the Indeedee ex attaches.\n3. Variant B, the blunt version already tested: +10 for Jasmine's effect while it covers the Active. Jasmine went to 82.4% and wins to 146/240, which is noise-level.\n4. Do not simply zero the +10: that cost about 15 points of win rate (132 -> 97 of 240), because the Tools do help once played.\n\nSeparately, and not affecting 07: the engine's Metal Core Barrier is missing the attacker-is-opponent gate that rules/09 H2 calls for."
+ },
+ "skeptics": [
+  {
+   "lens": "code-skeptic",
+   "result": {
+    "verdicts": [
+     {
+      "id": "C1",
+      "holds": true,
+      "reason": "Re-read: players/mod.rs:502-512 builds KP with opponent_ply 0 and consistent_horizon false; the root passes max_depth-1 (expectiminimax_player.rs:323), own actions and stack choices cost depth-1 (945-959), an attack's forced end of turn costs nothing (633-657). With the opponent to move and its hand or deck Unknown, 773-798 returns the certificate or the static score. No opponent move is searched. Citation nit: for kp the line that fires is 773-798, not 914-918 (the comment at 586 says the k-tiers never reach the later fallback). Same behaviour either way."
+     },
+     {
+      "id": "C2",
+      "holds": true,
+      "reason": "value_functions.rs:176-187 calls ex5 with ValueFunctionParams::baseline() (line 180). ex5 passes EvalFeatures::OFF to ex6 (421-431), and OFF has defender_modifiers and next_attack_reduction false (248-252)."
+     },
+     {
+      "id": "C3",
+      "holds": true,
+      "reason": "Line 50 sets active_has_tool 10.0 in baseline(). Line 516 adds (my-opp) times the weight. get_active_has_tool (667-672) calls has_tool_attached, which is !attached_tools.is_empty() (played_card.rs:336-338). Nothing checks the card or the holder's type. variant() (line 82) is used only by variant_value_function (line 303, grep-confirmed)."
+     },
+     {
+      "id": "C4",
+      "holds": true,
+      "reason": "hand_size weight 1.0 (line 45), used at 510. Own discard is not scored, only opp.discard_size (523). No other term reads the Tool or the turn effect, so +10-1 on the Active, -1 on the Bench and -1 for Jasmine follow from the code. I did not re-run the probes."
+     },
+     {
+      "id": "C5",
+      "holds": true,
+      "reason": "For kp the clock takes the (None, None) arm: raw remaining HP / max_damage at 905 and 941. estimated_attack_damage_ex reads the defender's HP and status only, not reductions. kd's persistent_defender_damage doc (hooks/core.rs:1577-1581) excludes Metal Core Barrier and turn effects and includes Steel Apron (1615). Nothing in value_functions.rs reads turn_effects."
+     },
+     {
+      "id": "C6",
+      "holds": true,
+      "reason": "Code agrees. Both reductions are fields of the same FiniteDamageReductions bucket (core.rs:1276-1307, 1330-1377). Jasmine is stored with duration 1 (apply_trainer_action.rs:1021-1060). The Barrier is discarded at the end of the opponent's turn (core.rs:504-519). I did not re-run the engine probe numbers."
+     },
+     {
+      "id": "C7",
+      "holds": true,
+      "reason": "Code agrees. The turn effect matches by exact name and does not check the slot (core.rs:1213-1236), and tool_capacity is 1 unless an Ability grants more (tools.rs:112-114). The probe numbers themselves were not re-run."
+     },
+     {
+      "id": "C8",
+      "holds": true,
+      "reason": "The Barrier needs a [M] holder (core.rs:728-729). Indeedee ex is Psychic (lib/card.py). The score data I re-ran shows 25 AttachTool decisions of the Barrier onto an Indeedee ex Active. I did not recount the 63/284 and 57/311 play totals."
+     },
+     {
+      "id": "C9",
+      "holds": true,
+      "reason": "I re-ran analyze_scores.py on /home/dacz8976/jasmine_traced and reproduced the counts exactly: MCB/Indeedee +10 25/25, MCB/Skarmory 112/116, Apron/Indeedee 11/11, Apron/Skarmory 77/85, replays 240/240 identical."
+     },
+     {
+      "id": "C10",
+      "holds": true,
+      "reason": "Measured by the causal angle; not re-run. Consistent with the code: line 50 is the only weight kp reads."
+     },
+     {
+      "id": "C11",
+      "holds": true,
+      "reason": "Measured by the causal angle; not re-run. It is consistent with nothing else in the evaluator pricing Jasmine."
+     },
+     {
+      "id": "C12",
+      "holds": true,
+      "reason": "Reproduced: at EndTurn-chosen decisions where Jasmine was offered, Jasmine minus EndTurn was -1.0 at 191 of 191. Caveat: that count covers only the paired decisions (5,093 paired, 1,356 score lines left unpaired). The traces angle counted 214 turns that closed with EndTurn and Jasmine playable, so about 23 were not scored."
+     },
+     {
+      "id": "C13",
+      "holds": true,
+      "reason": "Hiking Trail's text (lib/card.py) and code (core.rs:554-567) refill the player whose turn is ending to 3. The deck-size term at vf:511 rewards a smaller own deck. Blaziken is the only panel list with Hiking Trail (grep of decks/screen/opponents). I reproduced both traced plays (seeds 21,102,001,002 turn 5 and 21,102,001,004 turn 7): hand of 3, Hiking Trail in play, Jasmine +1.0 over EndTurn. The other 6 plays vs Blaziken are inferred, as stated."
+     },
+     {
+      "id": "C14",
+      "holds": true,
+      "reason": "max_by (expectiminimax_player.rs:340-350) returns the last of equal maxima. The tie-breaker prefer_shorter_win returns Equal for (None, None) (64-71). I did not independently recount the 155 equal-score decisions."
+     },
+     {
+      "id": "C15",
+      "holds": true,
+      "reason": "Measured by the traces angle (77 of 96); not recounted. It agrees with capacity 1 (tools.rs:112) and a Bench attach scoring -1."
+     },
+     {
+      "id": "C16",
+      "holds": false,
+      "reason": "The drop is measured (132 to 97 or 96 of 240, lower in all 8 matchups), but it is not isolated to the Tools being played. The same weight also charges -10 when the opponent's Active holds a Tool, and 7 of 8 panel lists run Tools (Rocky Helmet, Protective Poncho, Leaf Cape, Giant Cape, Deceptive Needle). It also penalises retreating a Tooled Active. So zeroing it in variant C changes the pilot's Sabrina/Cyrus, switching and retreat choices too. Plausible, but not shown as stated."
+     },
+     {
+      "id": "C17",
+      "holds": true,
+      "reason": "146 vs 132 of 240 is about 1.3 SE (0.608 vs 0.550, SE about 0.045). Correctly called noise."
+     },
+     {
+      "id": "C18",
+      "holds": true,
+      "reason": "observation.rs:478-490 needs 'opponent' plus hand/deck, or hand/deck/draw with unknown own zones. Neither card's text (lib/card.py) contains hand, deck or draw. Neither text is in AUDITED_TEXTS (public_pricing_player.rs:32-95). The wrapper only toggles that rule (112-121)."
+     },
+     {
+      "id": "C19",
+      "holds": true,
+      "reason": "transition_admission voids provenance for any Play other than X Speed (public_reply.rs:233-260). The certificate refuses a Stadium, any Tool other than Giant Cape, active effects, any ability except Spy Ops (584-671) and non-empty turn effects (575-577). So a board with the Barrier or Jasmine is never certified. The built-position probe was not re-run."
+     },
+     {
+      "id": "C20",
+      "holds": true,
+      "reason": "The file reads 908/1920 (47.29%), Jasmine 50/3968 (1.3%) and MCB 2430/3054 (79.6%) at lines 3-4 and 24-25, with the 'doesn't play out' flag. It also flags Steel Wing."
+     }
+    ],
+    "missed": "1) C16 overclaims (explanation point 6 and implication 4). Zeroing active_has_tool does more than stop Tool plays. The same weight gives the pilot -10 whenever the opponent's Active holds a Tool (7 of 8 panel lists run Tools), and it penalises retreating or switching away from a Tooled Active. The 132 -> 96 drop is real, but 'the Tools help once played' has not been isolated. A cleaner test would keep the weight and block or force Tool attaches, or make the term card-aware.\n\n2) The unexplained residuals in the conflicts section have a likely cause. 6 of the 8 Steel Apron/Skarmory gaps that were not +10 were vs t-weezing: gaps 45, 115, 145, 215, 217.5 and 10,445.1, the last an avoided knockout. Weezing ex's Boiler Smog poisons and burns. Apron's 'recovers from all Special Conditions' prevents the Checkup damage, which lands before the turn-boundary leaf, so the bot does price that part of the Tool. This is inferred: status is not in compact.jsonl. It sharpens the thesis: the bot sees Tool effects that resolve on its own turn, and misses only the ones that pay off in the opponent's turn. The one Altaria outlier (11,970.1) is unexplained.\n\n3) The engine comparison and the ladder advice leave out Field Blower. 6 of 8 panel lists run it, and it can discard Metal Core Barrier on the opponent's turn before they attack. Jasmine's turn effect cannot be removed that way. That is a real reason to prefer Jasmine in some turns.\n\n4) There is a third route to Jasmine parity besides Hiking Trail and the certificate: horizon ties. The re-run found Jasmine tied 0.0 with EndTurn twice vs t-suicune on turn 1 with no Stadium. The best Jasmine line carried other positive moves (Poke Ball) inside the 3-ply horizon, and ties go to the later move in the list. This is a candidate for the unexplained Altaria play; not verified.\n\n5) 'The opponent's attack is never simulated' is slightly too strong. The public-reply certificate does evaluate the opponent's immediate public attacks on clean boards. It refuses any board holding a non-Giant-Cape Tool or a turn effect, so it never sees either -50; the conclusion stands.\n\n6) The 191/191 count covers only paired decisions (1,356 score lines unpaired; the traces angle counted 214 EndTurn closings with Jasmine playable).\n\n7) Skarmory ex's own Steel Wing -20 is also unpriced (the floor file flags it). The deck's whole damage-reduction plan is invisible to kp3, and only a card-blind bonus gets the Tools played.\n\n8) Fix 1's claim that pricing the reductions 'would also retire the card-blind bonus' is unsupported. Pricing the reductions does not remove the +10 term. Removing that term is exactly what cost about 15 points, which may be confounded (see 1).\n\n9) Point 1 cites expectiminimax_player.rs:914-918. For kp the line that fires is 773-798 (the opponent's zones are Unknown), with the same result.\n\nHousekeeping: I only added scratchpad/skeptic_apron.py (read-only analysis of /home/dacz8976/jasmine_traced). No builds, no runs and no trace folders."
+   }
+  },
+  {
+   "lens": "data-skeptic",
+   "result": {
+    "verdicts": [
+     {
+      "id": "C1",
+      "holds": true,
+      "reason": "Re-read: players/mod.rs:502-512 (KP arm, opponent_ply 0, consistent_horizon false); expectiminimax_player.rs:914-918 returns boundary_fallback when opp_budget is 0, and 800-905 gives a static score at depth 0 on the bot's own turn. The opponent's attack is never searched."
+     },
+     {
+      "id": "C2",
+      "holds": true,
+      "reason": "Re-read: value_functions.rs:176-187 passes baseline() to ex5, ex5 passes EvalFeatures::OFF (421-431), and OFF sets defender_modifiers and next_attack_reduction to false (248-252)."
+     },
+     {
+      "id": "C3",
+      "holds": true,
+      "reason": "Re-read: line 50 (10.0 in baseline()), 516 ((my - opp) x weight), 667-672 (1.0 if has_tool_attached), played_card.rs:336-338 (!attached_tools.is_empty()). Nothing checks which Tool it is or the holder's type. Line 82 is in variant()."
+     },
+     {
+      "id": "C4",
+      "holds": true,
+      "reason": "Lines 45 and 510 confirmed. The trace scores agree: MCB/Indeedee Active minus Bench = +10 at 25 of 25, and Jasmine minus EndTurn = -1.0 at 278 matched decisions (my re-run of the traces angle's analyze_scores.py)."
+     },
+     {
+      "id": "C5",
+      "holds": true,
+      "reason": "A grep of engine/src/players finds no read of turn_effects in value_functions.rs, and the only Tool read is has_tool_attached. The clock uses raw remaining HP / max_damage when both kd and kq are off (905, 941). hooks/core.rs:1577-1580 explicitly leaves out Metal Core Barrier and turn effects."
+     },
+     {
+      "id": "C6",
+      "holds": true,
+      "reason": "Code agrees (core.rs:715-735 needs a Metal holder and an attack; discarded at 504-519). I did not re-run the engine probe."
+     },
+     {
+      "id": "C7",
+      "holds": true,
+      "reason": "Not re-run by me. It fits the card texts (lib/card.py): Jasmine names every Steelix/Skarmory ex; the Barrier covers only its holder."
+     },
+     {
+      "id": "C8",
+      "holds": true,
+      "reason": "Replicated on a fresh block (seeds 21,102,900,000+, official binary): 47 of 297 Barrier attaches went onto an Active Indeedee ex (16%), plus 21 Steel Apron. Across three blocks it is 16-22%, so 'about 1 in 5' is slightly high but fair."
+     },
+     {
+      "id": "C9",
+      "holds": true,
+      "reason": "Re-running the traces angle's analysis reproduces 25/25, 112/116 (the others were +1 x3 and 0 x1), 11/11 and 77/85. Caveat: only 5,093 of 6,449 multi-action decisions could be matched to score lines (79%). The 8 higher Apron gaps (45 to 11,970) are likely explained by Apron's second clause, which cures Special Conditions; that is an inference and was not checked per case."
+     },
+     {
+      "id": "C10",
+      "holds": true,
+      "reason": "Independently replicated. My build with line 50 set to 0.0 has sha256 cf62f237..., identical to the causal angle's variant A. On my fresh 240-game block, Barrier went from 297/375 (79.2%) to 12/908 (1.3%) and Steel Apron from 155/213 (72.8%) to 21/629 (3.3%)."
+     },
+     {
+      "id": "C11",
+      "holds": true,
+      "reason": "Not re-run. summary_jasval.json in /home/dacz8976/jasmine_causal shows 266/323, with Jasmine plays spread across all 8 opponents (27-39 each)."
+     },
+     {
+      "id": "C12",
+      "holds": true,
+      "reason": "Holds with two caveats. (1) It is 191 of 214 such decisions: the other 23 could not be matched to score lines. (2) Across the 2,216 matched decisions that offered Jasmine, it tied the best score at 38 (27 at the +100,000 won-game value, about 11 otherwise) and lost only on move order. So the -1 is the usual reason, not the only one."
+     },
+     {
+      "id": "C13",
+      "holds": true,
+      "reason": "Mostly holds, but incomplete. In my block, 5 of the 7 Jasmine plays were vs Blaziken with Hiking Trail in play and a 3-card hand. Replayed with scores, all 5 show Jasmine and Red both exactly +1 over EndTurn/Attack, with Jasmine picked because it is listed after Red. The other 2 (vs Altaria, no Stadium) were exact ties at -337.7 and -162.5 with Place and Red, with Jasmine last in the move list. Pooled over three blocks: 14 of 17 plays vs Blaziken, and all 3 non-Blaziken plays had Jasmine last. The 'unexplained' Altaria play fits this tie mechanism."
+     },
+     {
+      "id": "C14",
+      "holds": true,
+      "reason": "max_by at expectiminimax_player.rs:340-350 keeps the last of equal maxima (prefer_shorter_win is Equal when neither line wins). Every move list I inspected puts Red before Jasmine and Steel Apron before the Barrier, consistent with card-id order. I did not recount the 155/155 myself."
+     },
+     {
+      "id": "C15",
+      "holds": true,
+      "reason": "Roughly replicated, on a slightly different definition (whether the Active was a Tool-free Metal Pokemon when the Barrier was first offered). In my block, 60 of the 78 non-play turns were turns where it wasn't; with a free Metal Active, the Barrier was played on 237 of 255 turns."
+     },
+     {
+      "id": "C16",
+      "holds": true,
+      "reason": "Replicated on a fresh block: 114/240 (47.5%) to 84/240 (35.0%), -12.5 points, about 2.8 SE. Pooled with the causal block: 246/480 to 181/480 (-13.5 points). But 'lower in every matchup' did not replicate (Lucario went 4 to 6 in my block; 7 of 8 were lower). Zeroing the weight also changes retreat/switch choices and the opponent-Tool term, so 'the Tools help once played' is the likely channel but was not isolated."
+     },
+     {
+      "id": "C17",
+      "holds": true,
+      "reason": "146 vs 132 of 240 is about 1.3 SE, and the claim itself says it is unproven."
+     },
+     {
+      "id": "C18",
+      "holds": true,
+      "reason": "observation.rs:478-490 re-read: the rule needs 'opponent' plus 'hand' or 'deck'. Neither card text (lib/card.py) has that."
+     },
+     {
+      "id": "C19",
+      "holds": true,
+      "reason": "Not examined by me. It is stated as shown only in a built position and never observed, which is appropriately hedged. None of the 7 plays I replayed needed it."
+     },
+     {
+      "id": "C20",
+      "holds": true,
+      "reason": "Read the file: lines 3-4 and 24-25 give 908/1,920 (47.29%), Barrier 2,430/3,054 (79.6%) and Jasmine 50/3,968 (1.3%)."
+     }
+    ],
+    "missed": "What I ran: the official binary and a rebuilt no-+10 variant on a fresh block, seeds 21,102,900,000 + 1,000 x opponent (+500 for seat 1), 15 games per seat, 240 games each. The variant's sha256 cf62f237... is byte-identical to the causal angle's. I also replayed 7 of my games with the traces angle's score-printing build. Total about 8 minutes (build 349 s). Files: /home/dacz8976/jasmine_skeptic (count.py, run_official.log, run_notool.log, summary_*.json; the engine copy and replay folders were deleted, and no trace folders remain), plus scratchpad skeptic_count.py and skeptic_pairing.py. Main things the explanation gets wrong or leaves out:\n\n1. There is a second accidental route to a Jasmine play: exact score ties settled by move order. Both non-Hiking-Trail plays in my block (vs Altaria, seeds 21,102,900,003 and 21,102,900,007) were exact ties: Place, Red and Jasmine all scored -337.7 (and -162.5). Ending the turn scored about 1,100 lower, so every best 3-move line spends its last move on some -1 card. max_by keeps the last of equal scores, and Jasmine is listed last. All 3 non-Blaziken plays across three blocks had Jasmine last in the list, including the causal angle's 'unexplained' Altaria play (index 6 of 7). The traces data show the same tie (Jasmine equal to the best) at 38 of 2,216 matched decisions. So point 4 should say 'Hiking Trail, or an exact tie at the search horizon', not 'one play unexplained'. The 50 floor plays at seed 7100 are still untraced; my block reproduces their rate (7/497 = 1.4%), and 5 of its 7 plays were Hiking Trail.\n\n2. Even the Hiking Trail plays go to Jasmine over Red only by move order. In all 5 I replayed, Red scored exactly the same +1, and Jasmine is listed after Red.\n\n3. The '191 of 191' is 191 of 214. The traces angle's score pairing matched only 5,093 of 6,449 multi-action decisions (79%), and 128 of 240 games had unmatched decisions. There is no sign that this biases anything, but 'all' overstates the coverage.\n\n4. The baseline conflict is resolved. My fresh block gave 114/240 (47.5%), matching the 1,920-game floor (47.3%), so the causal block's 55.0% was the high outlier. The Tool effect still replicated: -12.5 points on my block (84/240), -13.5 points pooled over 480 games. 'Every matchup went down' did not replicate (Lucario 4 to 6). The official and variant runs share seeds but diverge almost at once (only 6 of 240 and 10 of 240 games were identical move for move), so 'paired seeds' buys little and the unpaired SE is the right one.\n\n5. The A/B zeroes a weight that also affects retreat and switch choices and the -10 for the opponent's tooled Active. 'The Tools help once played' is the likely reading but was not isolated; for example, no run took the Tools out of the list.\n\n6. The Steel Apron residuals (8 of 85 gaps above +10, up to 11,970) are probably Apron's second clause ('recovers from all Special Conditions', via lib/card.py), which the scoring does see through HP and knockouts. That is an inference, not checked per case.\n\n7. The Barrier-on-Indeedee rate is 16-22% across three blocks (47, 57 and 63 per 240 games), so '57 to 63' should read '47 to 63'.\n\nNone of this overturns the core answer. The bot never scores either -50; the Barrier is played because of the card-blind +10 for any Tool on the Active; Jasmine is held because it only costs the card-in-hand point; and removing the +10 stops the Tool plays and costs about 12-15 points of win rate."
+   }
+  },
+  {
+   "lens": "alternative-skeptic",
+   "result": {
+    "verdicts": [
+     {
+      "id": "C1",
+      "holds": true,
+      "reason": "Verified by reading the code. players/mod.rs:502-512 sets opponent_ply 0 and consistent_horizon false. expectiminimax_player.rs:633-657 turns an attack into a forced EndTurn. Lines 773-798 and 914-918 score the boundary with the certificate or the static eval. One nuance: EndTurn is applied inside the search, so end-of-turn hooks (Checkup, Bad Dreams, poison/burn, Hiking Trail at core.rs:554-567) ARE priced. Only the opponent's moves are skipped."
+     },
+     {
+      "id": "C2",
+      "holds": true,
+      "reason": "Verified: value_functions.rs:176-187 (baseline() at line 180, value_aware false), 421-431 (ex5 passes EvalFeatures::OFF), 248-252."
+     },
+     {
+      "id": "C3",
+      "holds": true,
+      "reason": "Verified: lines 50, 516 and 667-672 check only has_tool_attached on the Active. In my fresh 1,920-game official block (seeds 21,102,860,000+), 448 of 2,433 Metal Core Barrier attaches and 201 of 1,257 Steel Apron attaches went onto a Psychic Indeedee ex Active."
+     },
+     {
+      "id": "C4",
+      "holds": true,
+      "reason": "Re-measured in a debug replay identical to the official game (seed 21,102,861,002, turn 4): Attack 976.3, Metal Core Barrier 985.3 (+9), Jasmine 975.3 (-1)."
+     },
+     {
+      "id": "C5",
+      "holds": true,
+      "reason": "Grep of value_functions.rs finds no read of turn_effects or of any specific Tool. The only Tool read is has_tool_attached. Both clock branches use raw HP / max_damage (905, 941). hooks/core.rs:1577-1580 explicitly leaves Metal Core Barrier and turn effects out of kd."
+     },
+     {
+      "id": "C6",
+      "holds": true,
+      "reason": "Not re-run. Code read agrees: core.rs:715-735 applies the Barrier's -50 to a [M] holder hit by an attack, and 504-519 discards it at the end of the opponent's turn. The same read confirms the engine angle's side finding: line 720 has no attacker-is-opponent check, unlike Steel Apron (743) and Heavy Helmet (693)."
+     },
+     {
+      "id": "C7",
+      "holds": true,
+      "reason": "Not re-run. Card text (lib/card.py) says 'all of your Steelix and Skarmory ex', which fits a board-wide, name-based effect. No contrary evidence."
+     },
+     {
+      "id": "C8",
+      "holds": true,
+      "reason": "Replicated at 1,920 games: 448 of 2,433 Barrier attaches (18.4%) went onto an Indeedee ex Active, about 1 in 5."
+     },
+     {
+      "id": "C9",
+      "holds": true,
+      "reason": "Not re-measured. It holds as a pattern, but 'exactly 10' has exceptions in the traces angle's own data (4 of 116 and 8 of 85 were not exactly 10)."
+     },
+     {
+      "id": "C10",
+      "holds": true,
+      "reason": "Replicated with the +10 off for the deck's seat only, 1,920 games in a fresh block, same build as official (240 of 240 identical with env unset): Barrier 131/8,085 (1.6%), Apron 178/5,270 (3.4%). The detail '0 Barrier attaches to an Active' does not generalize: 35 of 160 Barrier attaches went to an Active at this sample size."
+     },
+     {
+      "id": "C11",
+      "holds": true,
+      "reason": "Replicated at 1,920 games with the stored-effect +10 for the deck's pilot only: Jasmine 2,129/2,605 (81.7%) vs 39/3,858 (1.0%) official."
+     },
+     {
+      "id": "C12",
+      "holds": true,
+      "reason": "Consistent with my replays: at decisions not involving a Hiking Trail refill or a tie, Jasmine is exactly 1 under the best move. But 'held because it scores 1 lower' is only half the story. When Jasmine does get played it is almost always an exact tie: 34 of 39 official plays tied the best score (see C13)."
+     },
+     {
+      "id": "C13",
+      "holds": false,
+      "reason": "Only partly true. I replayed all 39 Jasmine plays in a fresh 1,920-game official block, all 39 identical to official. 26 were vs Blaziken, all with Hiking Trail in play and a hand of 3 or fewer; 5 of these were a strict +1.0. The other 13 of 39 (33%) had no Hiking Trail: 12 vs Altaria and 1 vs Weezing. All 13 were exact ties with 1 to 5 other moves (Place, Attach, Red), and Jasmine won because max_by keeps the last of equal scores and moves are listed in card-id order. In all 12 Altaria plays the Active was Asleep; in the Weezing play it was Poisoned and Burned. Ending the turn there is penalized (Bad Dreams, checkup damage), so every best 3-ply line needs one filler card play. That makes Jasmine cost nothing relative to the alternatives. 5 of the 12 Altaria plays had Indeedee ex Active. The causal angle's 'unexplained' Altaria play (seed 21,102,500,007, turn 8) is the same: Place x2, Red and Jasmine all 164.4, with Indeedee ex Active and Asleep."
+     },
+     {
+      "id": "C14",
+      "holds": true,
+      "reason": "Replays show Play moves listed in card-id order (A2b 070, A2b 071, A4 160, B2 145, P-A 005). Steel Apron (A4 153) therefore comes before Metal Core Barrier (B2 148), and max_by at expectiminimax_player.rs:340-350 keeps the last of equal scores. The same tie-break drives most Jasmine plays (C13)."
+     },
+     {
+      "id": "C15",
+      "holds": true,
+      "reason": "Roughly consistent at 1,920 games: of 712 turns where the Barrier was playable but not played, 583 were turns where the Active was not a Tool-free Metal Pokemon when first offered. My split also counts Indeedee ex Active, so this is not exactly 'slot filled'."
+     },
+     {
+      "id": "C16",
+      "holds": true,
+      "reason": "Survived the confound test. Zeroing the +10 also changes other choices (the opponent's-Tool penalty, keeping a Tool holder Active). So I kept the +10 and made Tools unplayable for the deck's seat instead. Result: 674/1,920 vs official 959/1,920 (-14.8 points; paired 348 vs 63 discordant games, McNemar z = 14.1; lower in all 8 matchups). With the +10 zeroed for the deck's seat: 712/1,920 (-12.9; 317 vs 70, z = 12.6). The loss comes from not playing the Tools, and the size (~13-15 points) holds in a fresh block."
+     },
+     {
+      "id": "C17",
+      "holds": false,
+      "reason": "It is now shown, at least for a deck-seat-only version of variant B. In the same fresh paired block: 1,068/1,920 (55.6%) vs 959/1,920 (49.9%), +5.7 points; paired 206 vs 97 discordant, McNemar z = 6.3; higher in all 8 matchups. Caveat: this pricing pays a flat +10 whenever Jasmine covers the Active, whatever the threat."
+     },
+     {
+      "id": "C18",
+      "holds": true,
+      "reason": "Verified: observation.rs:478-490 needs 'opponent' plus 'hand' or 'deck'. Jasmine's text has 'opponent' but neither of the other words, and the Barrier's has neither."
+     },
+     {
+      "id": "C19",
+      "holds": true,
+      "reason": "Not contradicted. None of my 39 classified plays needed the certificate route. Where EndTurn scored -100,000 it tied with Jasmine (seed 21,102,860,585) or came from real in-search losses (for example, an end-of-turn knockout of the only Pokemon)."
+     },
+     {
+      "id": "C20",
+      "holds": true,
+      "reason": "Read 07-skarmory-stall.md: 908/1,920 (47.29%); Jasmine 50/3,968; Barrier 2,430/3,054. The companion _games.jsonl has no per-card fields (older floor.py), so the 50 plays can't be split by opponent from it."
+     }
+    ],
+    "missed": "What the explanation misses or gets wrong:\n\n1. Jasmine plays have a second cause besides Hiking Trail, and it is common. In a fresh 1,920-game official block (seeds 21,102,860,000-21,102,867,619, official binary sha f4d235e5), Jasmine was played 39/3,858 times (1.0%). All 39 replays were identical to official. 34 of 39 were exact ties won by max_by's keep-last rule, since moves are listed in card-id order. 13 of 39 (33%) came from no-Hiking-Trail boards: 12 vs Altaria, all with the Active Asleep (5 with Indeedee ex Active), and 1 vs Weezing with the Active Poisoned and Burned. When ending the turn is penalized (Bad Dreams, checkup damage), every best 3-ply line stays inside the turn and needs one filler card play. Jasmine then costs nothing relative to the alternatives and wins the tie. This explains the causal angle's 'unexplained' Altaria play (seed 21,102,500,007, turn 8: Place x2, Red and Jasmine all 164.4). Point 4 and the 'other decks' implication should say: held unless a Hiking Trail refill OR a depth-horizon tie makes it free. The sample of 9 of 10 vs Blaziken came from only 480 games.\n\n2. The search does apply end-of-turn hooks before scoring: Checkup, sleep coin, burn/poison, Bad Dreams, Hiking Trail. 'Scores the position the moment its turn ends' is right, but those hooks are exactly what creates the stall ties.\n\n3. C16's confound is resolved in the explanation's favor, with bigger evidence. Keeping the +10 but making Tools unplayable for the deck's seat gave 674/1,920 vs official 959/1,920 (paired z = 14.1). Zeroing the +10 for the deck's seat gave 712/1,920 (z = 12.6). Every matchup was lower in both. The ~15-point size is confirmed at 1,920 games.\n\n4. C17 and implication fix 3 are out of date. Pricing Jasmine for the deck's pilot only gave 1,068/1,920 vs 959/1,920: +5.7 points, paired 206 vs 97 discordant, z = 6.3, higher in all 8 matchups. The fix measurably helps. It is still card-blind (+10 whenever Jasmine covers the Active).\n\n5. Baseline conflict: my fresh 1,920 block gives 959/1,920 = 49.9% official, between the 44.2% and 55.0% blocks and 2.6 points above the seed-7100 floor.\n\n6. Small corrections: C10's '0 Barrier attaches to an Active' fails at 1,920 games (35 of 160). C9's 'exactly 10' has exceptions.\n\nThe alternatives I was asked to try do not replace the main story:\n- 'The Supporter slot is worth more elsewhere' fails. floor.py:390 already drops turns with another Supporter played, and 'none' was the most common outcome on Jasmine-offered turns (3,819 of 8,674 in my block).\n- 'Tool played to thin the hand' fails, because the hand term is +1 per card.\n- 'Fewer real situations than counted' is only a minor effect: 1,476 of 8,674 Jasmine offers had Indeedee ex Active, and the rate is still about 1% with Skarmory ex Active.\n\nHousekeeping: work is in /home/dacz8976/jasmine_altskeptic (14 MB: engine source with env-gated patches JSK_FORBID_TOOL_SEAT / JSK_NOTOOL_SEAT / JSK_JASVAL_SEAT / JSK_SCORES in altskeptic.diff, count.py, summary_*.json, run_*.log, classify_official1920.log). The build target was deleted and no trace folders remain. Scripts are in the scratchpad: altskeptic_patch.py, altskeptic_patch_b.py, altskeptic_debug.py, altskeptic_classify.py. The repo was not modified."
+   }
+  }
+ ],
+ "investigations": [
+  {
+   "angle": "code",
+   "result": {
+    "summary": "Short answer: the bot doesn't understand the -50 from either card. It plays Metal Core Barrier because its scoring gives a flat +10 whenever its Active Pokemon is holding any Tool. That bonus ignores what the Tool does. Nothing in its scoring reads Jasmine's effect, so Jasmine only ever shows up as one fewer card in hand, which scores -1.\n\nHow kp3 scores these plays (value_functions.rs):\n- Card in hand: +1 per card (weight at line 45, used at line 510).\n- Tool on the Active: +10 (weight at line 50, used at line 516). `get_active_has_tool` (667-672) returns 1 if the Active has anything attached (played_card.rs:336-338). It does not look at the Tool's name or effect, or whether the Pokemon is Metal.\n- Net result: any Tool onto the Active is +9. A Tool onto a Benched Pokemon is -1. Jasmine is -1.\n\nWhat never reads either card:\n- The threat clock divides raw HP by the attacker's damage (lines 905 and 941) and ignores reductions. kp3 runs with the kd feature off (421-431, 248-252).\n- Even kd's defender pricing leaves out Metal Core Barrier and turn effects on purpose (hooks/core.rs:1577-1580). It does read Steel Apron (1615).\n- Public pricing changes nothing for either card. Neither text mentions the opponent's hand or deck (observation.rs:478-490), and neither is in AUDITED_TEXTS. For these two cards, kp3 plays exactly like k3.\n\nThe search: it looks 3 actions ahead on its own turn only. A Tool costs 2 of those 3 actions (play the card, then choose where to attach it), which leaves exactly one for the attack. Jasmine costs 1. An attack ends the turn without using up an action (expectiminimax_player.rs:633-657). The position is then scored at the start of the opponent's turn, with no opponent move played out (773-798). Both effects are still live in the game state at that point; the scoring just doesn't read them.\n\nA scratch test (seed 21,102,000,001) matched all of this exactly. The engine itself applies both cards correctly: against a 150-damage attack, Jasmine and Metal Core Barrier each leave Skarmory ex at 40 HP, while no card or Steel Apron gets it knocked out. So the rules are right and the bot's scoring is what's wrong.\n\nWhy Jasmine still got played 50 times (inference, not measured): I found one way it can win. If the bot can prove the opponent wins outright when the turn simply ends, that line scores -100,000. Playing any Trainer other than X Speed voids that proof, so Jasmine escapes the penalty when it's the only such play available. That was confirmed in a built position, but it is probably rare in this deck: the proof refuses boards with Indeedee ex in play, any Tool other than Giant Cape, Starting Plains, or Steel Wing's effect.",
+    "claims": [
+     {
+      "claim": "kp3 is k3's ExpectiMiniMax search (depth 3, opponent_ply 0, consistent_horizon false) using public_clock_effect_value_function, wrapped in public pricing.",
+      "verified": true,
+      "evidence": "players/mod.rs:502-512. value_functions.rs:176-187 calls ex5 with value_aware false, clock_aware true, effect_aware true. ex5 passes EvalFeatures::OFF (421-431), so defender_modifiers and next_attack_reduction are false (248-252)."
+     },
+     {
+      "claim": "The leaf score includes +10 when the evaluating player's Active has any Tool attached (minus 10 when the opponent's Active does). The check is Active only, and blind to which Tool it is, what it does, and the Pokemon's type.",
+      "verified": true,
+      "evidence": "value_functions.rs:50 (weight 10.0), 516 ((my - opp) x weight), 601, 667-672 (maybe_get_active, then has_tool_attached). played_card.rs:336-338 is !attached_tools.is_empty(). Probe: Metal Core Barrier on an Indeedee ex Active, where it has no effect, scores +9.000."
+     },
+     {
+      "claim": "The hand-size term is +1 per card, so any card leaving the hand costs 1 point. Your own discard pile is not scored (only the opponent's, at 0.1).",
+      "verified": true,
+      "evidence": "value_functions.rs:45 (hand_size 1.0), 510, 588, 523 (opp.discard_size only). apply_action_helpers.rs:988-992: a Tool is removed from hand, a Supporter is discarded."
+     },
+     {
+      "claim": "All else equal, the leaf difference is: Metal Core Barrier or Steel Apron onto the Active +9, a Tool onto the Bench -1, a Tool played but not yet attached -1, Jasmine -1. This holds both at leaves on the bot's own turn and at the turn boundary after an attack.",
+      "verified": true,
+      "evidence": "Scratch probe, position A: Jasmine -1.000, MCB played but unattached -1.000, MCB to Active +9.000, MCB to Bench -1.000, Apron to Active +9.000. The same deltas appear at the boundary after Steel Wing (base 338)."
+     },
+     {
+      "claim": "No term in kp3's evaluation reads Jasmine's stored turn effect or a damage-reducing Tool on the defender. The threat clock uses raw remaining HP divided by the threat's damage.",
+      "verified": true,
+      "evidence": "value_functions.rs: the only tool read is get_active_has_tool, and nothing reads turn effects. The clock uses (remaining HP / max_damage).ceil() at 905 and 941. The kd branch (847-874, via persistent_defender_damage) runs only when defender_modifiers is true, and it is false for kp3. estimated_attack_damage_ex (1249-1530) is attacker-side only."
+     },
+     {
+      "claim": "Even the kd tier's defender pricing deliberately excludes Metal Core Barrier and turn effects such as Jasmine. It does include Steel Apron.",
+      "verified": true,
+      "evidence": "hooks/core.rs:1562-1581 doc comment ('Left out ... Metal Core Barrier ... turn effects'). Steel Apron is included at 1615."
+     },
+     {
+      "claim": "Public pricing is irrelevant to both cards. Neither text trips the unpriced-text rule and neither is in AUDITED_TEXTS, so both are priced under both k3 and kp3.",
+      "verified": true,
+      "evidence": "observation.rs:478-485 needs 'opponent' AND ('hand' or 'deck'). 486-490 needs hand/deck/draw plus unknown own zones. Card texts (lib/card.py) contain neither. public_pricing_player.rs:32-95 lists neither text."
+     },
+     {
+      "claim": "Playing a Tool takes 2 of the 3 search plies (Play, then a stacked AttachTool choice over every own Pokemon with free Tool capacity). Jasmine takes 1. An attack's forced end of turn takes none, and the line is then scored at the turn boundary with no opponent move searched.",
+      "verified": true,
+      "evidence": "move_generation_trainer.rs:79-84. apply_trainer_action.rs:82-85 and 1888-1902 push the AttachTool choices. tools.rs:112-133 (capacity 1, any Pokemon). expectiminimax_player.rs:940-959 (depth-1 per action, stack actions included), 633-657 (forced end turn), 773-798 and 914-918 (boundary: certificate or static eval), 800-906 (depth 0 on own turn gives static eval)."
+     },
+     {
+      "claim": "At a typical decision (Skarmory ex Active with 2 [M], opponent Mewtwo ex ready), kp3 plays Metal Core Barrier first: Tool then Attack beats Attack alone by 9 and beats Jasmine then Attack by 10.",
+      "verified": true,
+      "evidence": "Probe root A: Attack 338, Play MCB 347, Play Steel Apron 347, Play Jasmine 337, UseAbility 338, EndTurn -7. get_player(KP{3}) chose Play(Metal Core Barrier)."
+     },
+     {
+      "claim": "With Steel Apron already on the Active (capacity 1), Metal Core Barrier could only go to the Bench (-1), so kp3 holds both Metal Core Barrier and Jasmine.",
+      "verified": true,
+      "evidence": "Probe root B: Attack 347, UseAbility 347, Jasmine 346, MCB 346. The bot chose UseAbility, which tied with Attack; max_by keeps the last of equal scores (expectiminimax_player.rs:340-350)."
+     },
+     {
+      "claim": "In the real engine both Jasmine and Metal Core Barrier reduce damage to Skarmory ex by 50, and Steel Apron by 10. Against Psydrive 150 on a full-HP Skarmory ex: no card played = knocked out, Jasmine = 40 HP left, MCB = 40 HP left, Apron = knocked out.",
+      "verified": true,
+      "evidence": "Probe section E (apply_action through EndTurn and the opponent's Psydrive). Engine code: hooks/core.rs:715-735 (MCB), 737-762 (Apron), 1213-1223 (ReducedDamageForTarget turn effect); apply_trainer_action.rs:1021-1060 (Jasmine stores the effect for this turn plus the opponent's next); hooks/core.rs:504-519 (MCB discarded at the end of the opponent's turn)."
+     },
+     {
+      "claim": "Jasmine's own effect never scores above not playing it. The only way found for Jasmine to be chosen is the public-reply certificate asymmetry: a line that just ends the turn can be certified as an immediate opponent win (-100,000), while any Trainer play other than X Speed voids the certificate's provenance and is scored statically.",
+      "verified": true,
+      "evidence": "public_reply.rs:233-260 (only X Speed, Retreat, EndTurn and admitted attacks keep provenance), 221 (turn effects void it). Probe D2 (Skarmory ex alone, opponent on 1 point, only Jasmine in hand): EndTurn -100000, Jasmine -1 relative to the static score, and kp3 chose Jasmine. Probe D (full hand): kp3 chose Metal Core Barrier (+9) over Jasmine (+8, via Jasmine then MCB then Attach). Probe D3 (after MCB attached): EndTurn preferred, Jasmine -1."
+     },
+     {
+      "claim": "The certificate rarely applies in this deck, because it refuses boards containing any ability (Indeedee ex's Watch Over), any Tool other than Giant Cape, a Stadium (Starting Plains), a status condition, or an active effect (Steel Wing's -20).",
+      "verified": true,
+      "evidence": "public_reply.rs:573-579 and 584-671 (stadium 585, tools 604-610, status 611, active effects 632-638, abilities 639-646). How often it actually fired in the 1,920 games was not measured."
+     },
+     {
+      "claim": "Part of why Metal Core Barrier is played on 79.6% rather than 100% of eligible turns is that the Active's single Tool slot is sometimes already taken (by Steel Apron), and then the only legal target is the Bench, which scores -1.",
+      "verified": false,
+      "evidence": "Inference from tools.rs:112-117 (capacity 1) and probe B. Not measured on the floor-check games."
+     },
+     {
+      "claim": "The 50 real Jasmine plays in the floor check come at least partly from the certificate escape.",
+      "verified": false,
+      "evidence": "The mechanism is demonstrated (probe D2), but the actual games were not traced. The per-game records in rl/results/floor_payback_check_2026-09-25/07-skarmory-stall_games.jsonl have no per-turn actions."
+     }
+    ],
+    "numbers": "All probe numbers come from a scratch copy of engine/src (identical to /home/dacz8976/engine-main/engine/src by diff), with one test module added: /home/dacz8976/jasmine_evalcode/engine/src/players/jasmine_eval_probe.rs (same file in the Windows scratchpad). It was a debug build; the 1.1 GB target dir has been deleted. Seed 21,102,000,001 was used for the board fixture, the actions and the search. The log is at /home/dacz8976/jasmine_evalcode/test3.log. Deltas were identical in an earlier run that used the test helper's built-in seed 0.\n\nPosition: player 0 on turn 3 with no turn Energy. Skarmory ex Active with [M][M] at full 140 HP, Indeedee ex benched, hand = Jasmine, Metal Core Barrier, Steel Apron. Opponent: Mewtwo ex with 4 [P] (Psydrive 150 ready).\n\nLeaf deltas from public_clock_effect_value_function (kp3's evaluator):\n- Jasmine: -1.000\n- Metal Core Barrier played, not yet attached: -1.000\n- Metal Core Barrier onto the Active: +9.000\n- Metal Core Barrier onto the Bench: -1.000\n- Steel Apron onto the Active: +9.000\n- Metal Core Barrier onto an Indeedee ex Active (no effect on a [P] Pokemon): +9.000\n- Same deltas at the turn-boundary leaf after Steel Wing (base 338.000).\n\nkp3 root scores, best 3-ply line from each first action:\n- A (typical): Attack 338; MCB 347; Apron 347; Jasmine 337; UseAbility 338; EndTurn -7; Retreat -782. Chose Metal Core Barrier.\n- B (Apron already on the Active): Attack 347; UseAbility 347; Jasmine 346; MCB 346. Chose UseAbility (tied with Attack).\n- C (Indeedee ex Active, hand = MCB only): MCB +9; UseAbility +9. Chose UseAbility (tie).\n- D (Skarmory ex alone with no Energy, opponent on 1 point): EndTurn -100,000 (certified loss); Apron +9; MCB +9; Jasmine +8. Chose MCB.\n- D2 (same, hand = Jasmine only): EndTurn -100,000; Jasmine -1. Chose Jasmine.\n- D3 (D after MCB attached): EndTurn +0; Jasmine -1. Chose EndTurn.\n\nReal engine damage, Psydrive 150 into a full-HP Skarmory ex:\n- No card played: knocked out (opponent points [0,2])\n- Jasmine: 40 HP left\n- Metal Core Barrier: 40 HP left\n- Steel Apron: knocked out\n\nFrom the repo file (not rerun): Metal Core Barrier played on 2,430 of 3,054 eligible turns, Jasmine on 50 of 3,968, 47.3% wins (floor_payback_check_2026-09-25/07-skarmory-stall.md).",
+    "open_questions": [
+     "Which mechanism produced the 50 real Jasmine plays in the floor check? The certificate escape is one confirmed way (probe D2), but the actual games were not traced; a trace-based angle would have to settle this.",
+     "Were essentially all 2,430 Metal Core Barrier plays onto the Active? The code predicts a Bench attach scores -1 and would only happen as part of a larger line, but this was not measured.",
+     "How often do the 624 turns where Metal Core Barrier was not played coincide with the Active already holding Steel Apron or a Metal Core Barrier from the same turn? Not measured.",
+     "A fix direction to test, not built here: price Jasmine and Metal Core Barrier through the damage-aware clock (kd's persistent_defender_damage explicitly excludes both), or drop or zero the blind active_has_tool = 10 term. Either needs its own A/B."
+    ]
+   }
+  },
+  {
+   "angle": "engine",
+   "result": {
+    "summary": "In the engine the two cards do give the same -50. They are applied at the same point in the damage math and last for the same turn, but they cover different Pokemon and use up different resources. The engine does not make one weaker than the other, so the gap in how often the bot plays them comes from the bot.\n\nWhat matches: the engine stores Jasmine as a turn effect for this turn and the next one (apply_trainer_action.rs:1018-1060, state/mod.rs:1063-1078). It reduces only an opposing attack's damage (core.rs:1197). Metal Core Barrier checks that the holder is [M] and the damage comes from an attack (core.rs:715-735). It is discarded at the end of the opponent's turn (core.rs:504-519). Both sit in the same reduction bucket, subtracted after Weakness and never below 0 (core.rs:1276-1307, 1876-1885). I ran a probe on a copy of the official source. Fire attacks into Skarmory ex (weak to Fire) came out identical for Jasmine and for the Tool: 10->0, 60->30, 100->70, and 60 under Bounded Field ->70. With both, 100->20. Neither carries into later turns.\n\nWhat differs:\n- Jasmine covers every Skarmory ex, Active and Bench, including one the opponent switches in. It does not cover Indeedee ex.\n- The Tool covers only the Pokemon holding it and moves with it. After a switch, the new Active took 100 and the benched holder took 50.\n- Only one Tool fits per Pokemon. With Steel Apron on the Active, the Tool was offered only to the Bench, but Jasmine still stacks with Apron (60->20).\n- Jasmine uses up the turn's Supporter; the Tool doesn't.\n\nExisting tests: Jasmine is only tested on Steelix. No test covers Skarmory ex, the Bench, when it expires, or stacking; my probe covered those. The 5 existing tests for these two cards pass.\n\nOne engine deviation, which doesn't matter for this deck: Metal Core Barrier has no check that the attacker is the opponent. Your own 60-damage attack onto your own benched holder did only 10, which contradicts the H2 repair in rules/09. Nothing in 07 damages its own Bench.\n\nThe bot (measured, not a search replay): kp3's scorer never sees either -50. It gives +10 whenever the Active holds any Tool. So the Tool on the Active scored +9 and Jasmine scored -1, the same as the Tool on the Bench.",
+    "claims": [
+     {
+      "claim": "Jasmine is stored as TurnEffect::ReducedDamageForTarget{amount 50, scope NamedPokemon[\"Steelix\",\"Skarmory ex\"], only_from_ex false} with duration 1, i.e. keyed to turn T and T+1 in State.turn_effects",
+      "verified": true,
+      "evidence": "engine/src/actions/apply_trainer_action.rs:177, 1018-1037, 1055-1060; engine/src/effects.rs:121-132, 148-156; engine/src/state/mod.rs:359, 1063-1086"
+     },
+     {
+      "claim": "Jasmine's reduction applies only to attack damage from the opposing player, to any Pokemon whose exact name is Steelix or Skarmory ex, Active or Bench",
+      "verified": true,
+      "evidence": "hooks/core.rs:1189-1236 (guard at 1197, exact-name match at 1233). Probe: 100 into [Active Skarmory ex, Bench Skarmory ex, Bench Indeedee ex] on the opponent's next turn took [50,50,100]"
+     },
+     {
+      "claim": "Jasmine's protection works only during the opponent's next turn: nothing before it is played, nothing on the Jasmine player's next turn or the opponent's second turn",
+      "verified": true,
+      "evidence": "Probe: T3 before playing [100,100,100]; T4 [50,50,100]; T5 [100,100,100]; T6 [100,100,100]. The effect is also stored for the Jasmine player's own turn T3 (an artificial opponent hit there took [50,50,100]), which is harmless because the opponent never attacks on that turn"
+     },
+     {
+      "claim": "Metal Core Barrier gives -50 per matching Tool only to an [M] holder and only for attack damage; it is offered to every Pokemon (Active and Bench), stays through the owner's end of turn, and is discarded at the end of the opponent's turn",
+      "verified": true,
+      "evidence": "hooks/core.rs:715-735, 504-519; tools.rs:119-133. Probe via real Play + AttachTool: targets 0,1,2 offered; still attached after own EndTurn; opponent's turn [50,100,100]; after the opponent's EndTurn it was in the discard pile; next hit [100,100,100]. On Indeedee ex (Psychic), 100 -> 100"
+     },
+     {
+      "claim": "One Tool per Pokemon: Steel Apron on the Active blocks Metal Core Barrier there, so the deck can't have Apron and Barrier on the same Skarmory ex, but Jasmine stacks with Apron",
+      "verified": true,
+      "evidence": "tools.rs:112-117 (capacity 1 unless an Ability grants more), apply_action.rs:971-974 assert. Probe: with Apron on the Active, Barrier targets offered were [1,2]; Jasmine+Apron: Fire 60 -> 20, 100 -> 60"
+     },
+     {
+      "claim": "Both reductions sit in the same bucket, applied after Weakness and Bounded Field and floored at 0, and they stack additively",
+      "verified": true,
+      "evidence": "hooks/core.rs:1276-1379, 1854-1885. Probe with a Fire attacker into Skarmory ex (weak to Fire): Jasmine and Barrier identical at base10->0, base60->30, base100->70, Bounded Field 60->70; both together 0/0/20/20; no card 30/80/120/120. Matches RULES_FOR_AGENTS.md:54-59 and rules/02:29,45"
+     },
+     {
+      "claim": "If the opponent switches a different Skarmory ex into the Active Spot, Jasmine still protects it; Metal Core Barrier stays on its original holder",
+      "verified": true,
+      "evidence": "Probe (slot swap simulating the opponent's switch during its turn): after Jasmine, [new Active, old Active] took [50,50]; with Barrier on the old Active, they took [100,50]"
+     },
+     {
+      "claim": "Engine deviation: Metal Core Barrier has no attacker-is-opponent check (Heavy Helmet and Steel Apron have one), so it reduces the owner's own attack damage to its own holder. This contradicts rules/09:13 H2. It doesn't matter for deck 07",
+      "verified": true,
+      "evidence": "hooks/core.rs:715-735 vs 693 and 743. Probe: own 60-damage ApplyDamage onto own Bench, Barrier holder took 10 and Apron holder took 60. Own-Bench attack damage exists in the engine (apply_attack_action.rs:6180-6199), but no card in 07 uses it"
+     },
+     {
+      "claim": "Attacks that 'aren't affected by any effects on your opponent's Active Pokemon' drop both reductions equally when they hit the Active",
+      "verified": false,
+      "evidence": "Code read only: hooks/core.rs:1316-1318 and 1672-1675 return empty FiniteDamageReductions, which includes turn_effect and metal_core_barrier. Not run"
+     },
+     {
+      "claim": "The existing tests pin Jasmine only on Steelix and on an unnamed Pokemon; nothing tests Skarmory ex, the Bench, expiry or stacking. The Barrier tests cover the non-Metal holder, two Barriers expiring, and Weakness before the reduction on Skarmory ex. All 5 pass",
+      "verified": true,
+      "evidence": "tests/trainers/damage_reduction_trainers_test.rs:113-129, 133-149; tests/tools/tool_effect_gating_test.rs:35-56; tests/revavroom_tools_test.rs:663-681; tests/rules_repair_damage_opening.rs:172-202. Ran these: 5 passed. Not run: the lib unit test core.rs:2900-2915, which confirms that kd's persistent_defender_damage deliberately leaves out Barrier and turn effects"
+     },
+     {
+      "claim": "kp3's leaf evaluator doesn't see either -50. It scores Barrier on the Active +9 (+10 for a Tool on the Active, -1 for the card leaving the hand) and Jasmine -1",
+      "verified": true,
+      "evidence": "players/mod.rs:502-507 (KP uses public_clock_effect_value_function); value_functions.rs:176-187, 197-198 (EvalFeatures::OFF, no defender modifiers), 50, 516, 667-672. Probe of public_clock_effect_value_function on the same board: Jasmine -1.000 (before and after EndTurn); Barrier on the Active +9.000/+9.000; Barrier on the Bench Skarmory ex -1.000"
+     },
+     {
+      "claim": "The 79.6% vs 1.3% play-rate gap comes from the bot's evaluator (the card-agnostic Tool-on-Active term plus Jasmine competing for the Supporter slot), not from the engine's card implementations",
+      "verified": false,
+      "evidence": "Inference from the verified pieces: the engine's -50 is equal, the search covers only the bot's own turn so neither -50 is ever computed, and the evaluator deltas are +9 vs -1. No kp3 decision was replayed to confirm"
+     }
+    ],
+    "numbers": "Probe: scratch copy of the official source (repo engine/src is byte-identical to /home/dacz8976/engine-main/engine/src; that copy's release deckgym SHA-256 f4d235e5... matches rl/engine-2026-09-25/deckgym). Test file /home/dacz8976/jasmine_engine/engine/tests/jasmine_engine_probe.rs (also at C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\jasmine_engine_probe.rs). Seeds 21,102,700,001-21,102,700,003. Release build 4m11s; 7/7 probe tests pass. Damage goes through the real ApplyDamage -> handle_damage -> modify_damage path.\nJasmine, 100 into [Active Skarmory ex, Bench Skarmory ex, Bench Indeedee ex]: T3 before 100/100/100; T4 (opponent's next turn) 50/50/100; T5 100s; T6 100s.\nMetal Core Barrier on the Active: T4 50/100/100; discarded at the end of T4; T5 100s. Steel Apron on the Active -> Barrier offered to [1,2] only. Barrier on Indeedee ex: 100->100.\nFire into Skarmory ex (weak to Fire), base 10/60/100/Bounded Field 60: none 30/80/120/120; Jasmine 0/30/70/70; Barrier 0/30/70/70; Apron 20/70/110/110; Jasmine+Barrier 0/0/20/20; Jasmine+Apron 0/20/60/60.\nOpponent switches the Active: Jasmine [50,50]; Barrier on the old Active [new Active 100, holder 50].\nOwn 60 onto own Bench: Barrier holder took 10, Apron holder took 60.\nkp evaluator (public_clock_effect_value_function): baseline 597 (595 after EndTurn); Jasmine -1/-1; Barrier on the Active +9/+9; Barrier on the Bench -1.\nExisting engine tests run: 5 passed (2 Jasmine, 3 Barrier).\nCleanup: removed the 454M build target; about 13M of source remains in /home/dacz8976/jasmine_engine. No trace folders were created.",
+    "open_questions": [
+     "Why did kp3 play Jasmine at all on 50 turns when the evaluator scores it -1? Not examined (search ties, chance nodes, hand-size effects?).",
+     "Does Jasmine's effect count as an 'effect on your opponent's Active Pokemon' for the Morgrem / Mega Medicham ex / Ledian bypass? The engine drops it together with the Tool (core.rs:1316-1318, 1672-1675). Not checked against a ruling.",
+     "Does Jasmine cover Mega Steelix ex in the real game? The engine matches exact names, so it doesn't. This doesn't matter for deck 07.",
+     "Should Metal Core Barrier get the attacker-is-opponent gate that rules/09 H2 says the attack-only reductions have? Engine-only issue; no effect on 07.",
+     "The lib unit test core.rs:2900-2915 was not run (lib test build skipped); it only concerns the kd clock, not kp3."
+    ]
+   }
+  },
+  {
+   "angle": "traces",
+   "result": {
+    "summary": "I played 240 traced games with the official engine (rl/engine-2026-09-25/deckgym, kp3 on both sides): deck 07 against the 8 screen lists, 15 games per seat, seeds 21,102,000,000 + 1,000 x opponent (+500 for seat 1). Deck 07 won 106 of 240 (44.2%). To see why moves were chosen, I rebuilt the same source in /home/dacz8976/jasmine_traced/engine with one print added: the score of every candidate move at each decision, shown only when the JT_SCORES variable is set. Replaying all 240 games with it gave the same games move for move (240 of 240).\n\n**Metal Core Barrier:** played on 284 of the 380 turns it could be (74.7%), always onto the Active except once. 63 of the 284 went onto Indeedee ex, a Psychic Pokemon, where the card does nothing. Steel Apron shows the same pattern: 153 of 155 onto the Active, 21 of them onto Indeedee ex.\n\nThe scores show why. Putting a Tool on the Active scores exactly 10 more than putting it on the Bench:\n- Metal Core Barrier on an Indeedee ex Active: +10 at all 25 such decisions.\n- Steel Apron on an Indeedee ex Active: +10 at all 11.\n- Metal Core Barrier on a Skarmory ex Active: +10 at 112 of 116.\n- A benched Skarmory ex and a benched Indeedee ex score the same.\n\nThat 10 is the active_has_tool weight (value_functions.rs:50, used at :516). get_active_has_tool (:667-672) gives 1.0 for any Tool, whatever it does and whatever Pokemon holds it. The Tool's -50 itself is never counted.\n\nWhen both Tools could go on a Tool-free Active, the two scored exactly the same (155 of 155 decisions). Metal Core Barrier won every time only because it came later in the move list and ties go to the last move (expectiminimax_player.rs:340-350).\n\n**Jasmine:** offered on 1,129 turns. Another Supporter was played on 592 of them. On 535 no Supporter was played at all. Jasmine was played twice: 2 of 537 chances, 0.4%.\n- On all 535 no-Supporter turns, Jasmine was still playable at the turn's last decision.\n- 275 of those turns ended with a Skarmory ex Active holding no Tool.\n- On all 191 decisions where the bot chose EndTurn with Jasmine available, Jasmine scored exactly 1 lower: one card fewer in hand, and nothing for the -50.\n\nBoth Jasmine plays came from the opponent's Hiking Trail, not the -50. Hiking Trail draws you back up to 3 cards at the end of your turn (hooks/core.rs:554-567). Playing Jasmine from a 3-card hand got a card drawn, the smaller deck scored +1 (value_functions.rs:511), and Jasmine came out 1 ahead of EndTurn. Red scored the same +1 in the one decision where both were offered.",
+    "claims": [
+     {
+      "claim": "In 240 traced games, deck 07 won 106 (44.2%). Metal Core Barrier was playable on 380 of the deck's turns and played on 284 (74.7%); Steel Apron was playable on 216 and played on 155 (71.8%).",
+      "verified": true,
+      "evidence": "Traces from rl/engine-2026-09-25/deckgym simulate --players kp3,kp3 --seed-stream, seeds 21,102,000,000 + 1,000 x opponent index (+500 for seat 1), 15 games per call. Each call's printed win counts matched its result files. Scripts: scratchpad run_extract.py and analyze.py."
+     },
+     {
+      "claim": "Metal Core Barrier went onto the Active on 283 of 284 plays (220 on Skarmory ex, 63 on Indeedee ex). In 172 decisions where both an Active and a Bench target were offered, the bot chose the Active 171 times.",
+      "verified": true,
+      "evidence": "Counted from the AttachTool moves in the traces. The single Bench attach was onto a benched Indeedee ex while a Skarmory ex was Active with no Tool; its score tied with the Active target."
+     },
+     {
+      "claim": "Metal Core Barrier was attached to a non-Metal Pokemon (Indeedee ex) 64 times (63 Active, 1 Bench), and Steel Apron 21 times. The engine gives both Tools no effect on a non-Metal holder.",
+      "verified": true,
+      "evidence": "Trace counts. Engine: hooks/core.rs:728-729 (Metal Core Barrier needs a Metal holder), core.rs:754-756, apply_action.rs:986-987 and state/mod.rs:1153-1154 (Steel Apron needs a Metal holder)."
+     },
+     {
+      "claim": "The bot scores a Tool on the Active exactly +10 above the same Tool on the Bench, whatever the Tool and whatever the Pokemon: Metal Core Barrier on Indeedee ex +10 (25 of 25), Metal Core Barrier on Skarmory ex +10 (112 of 116), Steel Apron on Indeedee ex +10 (11 of 11), Steel Apron on Skarmory ex +10 (77 of 85; the other 8 scored higher). Benched Skarmory ex and benched Indeedee ex score the same.",
+      "verified": true,
+      "evidence": "Root scores from the instrumented replay (/home/dacz8976/jasmine_traced/scores.jsonl, 240 of 240 games identical to the official engine). The +10 matches active_has_tool = 10.0 at value_functions.rs:50 and :82, used at :516, computed at :666-672 as 1.0 for any Tool."
+     },
+     {
+      "claim": "The active_has_tool weight is the reason the bot plays Metal Core Barrier.",
+      "verified": false,
+      "evidence": "Inferred from the exact +10 gap and from the Tool being put on a Psychic Indeedee ex as readily as on Skarmory ex. I did not turn the weight off to see whether the plays stop."
+     },
+     {
+      "claim": "When both Tools could go on a Tool-free Active, the bot put Metal Core Barrier on first in 54 of 54 turns. The two Tools scored exactly the same at all 155 such decisions; Metal Core Barrier was always later in the move list, and ties go to the last move.",
+      "verified": true,
+      "evidence": "scores.jsonl; expectiminimax_player.rs:340-350 uses Iterator::max_by, which returns the last of equal maxima."
+     },
+     {
+      "claim": "Jasmine was offered on 1,129 of the deck's turns: another Supporter was played on 592 (Professor's Research 158, Cyrus 123, Red 120, Sabrina 102, Pokemon Center Lady 89), no Supporter on 535, Jasmine on 2. That is 2 of 537 floor-style opportunities (0.4%).",
+      "verified": true,
+      "evidence": "analyze.py over the traces, using floor.py's definition (a turn where another Supporter was played is not an opportunity)."
+     },
+     {
+      "claim": "On all 535 no-Supporter turns, Jasmine was still playable at the turn's closing move (Attack 321, EndTurn 214). 468 of those turns closed with Skarmory ex Active; 275 of them with no Tool on it. Another Supporter was also left unplayed on 346 (mostly Red, 304).",
+      "verified": true,
+      "evidence": "analyze.py, from playable_actions at the first Attack or EndTurn decision of each turn."
+     },
+     {
+      "claim": "At all 191 decisions where the bot chose EndTurn while Jasmine was offered, Jasmine scored exactly 1.0 lower than EndTurn.",
+      "verified": true,
+      "evidence": "scores.jsonl through analyze_scores.py. The 1 point is the hand-size term (value_functions.rs:510, weight 1.0 at :45). kp3 uses public_clock_effect_value_function with EvalFeatures::OFF (players/mod.rs:502-512; value_functions.rs:176-187 and :421-431), so the threat clock does not read reductions, and with opponent_ply 0 the search stops as soon as the turn passes (expectiminimax_player.rs:97-108, :914-918)."
+     },
+     {
+      "claim": "Both Jasmine plays were vs t-blaziken, deck in seat 0 (game seeds 21,102,001,002 turn 5 and 21,102,001,004 turn 7). In each, Skarmory ex was Active and undamaged and already held a Tool (Steel Apron; Metal Core Barrier), the hand was 3 cards (Jasmine was not the last card), the score was 0-0, and the opponent's Hiking Trail was in play.",
+      "verified": true,
+      "evidence": "Traces. Moves offered at those decisions: [EndTurn, Jasmine, Starting Plains] and [EndTurn, Red, Jasmine, Jasmine]."
+     },
+     {
+      "claim": "Both Jasmine plays came from Hiking Trail's refill draw, not the -50. Jasmine then EndTurn left the hand at 3 and the deck one smaller, worth +1 on the deck-size term, so Jasmine scored 1 above EndTurn (308.6 vs 307.6; 399.4 vs 398.4). Red scored the same 399.4 where it was offered.",
+      "verified": true,
+      "evidence": "Scores and scoring breakdown from the instrumented build (JT_FEATS). Hiking Trail refill: hooks/core.rs:554-567. Deck-size term (opp.deck_size - my.deck_size) x 1.0: value_functions.rs:511."
+     },
+     {
+      "claim": "Jasmine would have mattered often. After the 468 Skarmory-Active no-Supporter turns, the opponent attacked Skarmory ex on its next turn 345 times, 309 of them with no Metal Core Barrier on it. Of those 309 hits, 113 did 50 or more damage; 50 ended in a knockout or a switch.",
+      "verified": false,
+      "evidence": "Approximate. Damage is the change in damage on the Active between the opponent's Attack ply and the next ply, so heals and effects can distort it (61 hits read as 0). Script: analyze3.py."
+     },
+     {
+      "claim": "Metal Core Barrier often did not pay off: after 220 attaches to a Skarmory ex Active, the opponent hit the barrier holder 115 times, did not attack 49 times, and hit something else 56 times.",
+      "verified": true,
+      "evidence": "analyze3.py: the opponent's first Attack on the next turn, and whether the deck's Active then held Metal Core Barrier."
+     }
+    ],
+    "numbers": "Games: 240 (8 opponents x 15 per seat), deck 07 wins 106 (44.2%). Per call, deck wins seat 0 / seat 1: altaria 6/5, blaziken 1/6, hydreigon 7/8, lucario 5/7, sceptile 6/1, suicune 10/11, vespiquen 5/8, weezing 8/12.\n\nMetal Core Barrier: 380 turns playable, 284 played.\n- Attached to: Active Skarmory ex 220, Active Indeedee ex 63, Bench Indeedee ex 1.\n- Choice when both Active and Bench were offered: Active 171, Bench 1. Active was the only target 112 times.\n- Of the 96 turns it was playable but not played, the Active already had a Tool at every offer on 77.\n\nSteel Apron: 216 turns playable, 155 played.\n- Attached to: Active Skarmory ex 132, Active Indeedee ex 21, Bench Skarmory ex 2 (Bench was the only option).\n\nBoth Tools playable with a Tool-free Active: 54 turns, Metal Core Barrier first on all 54. Metal Core Barrier minus Steel Apron score = 0.0 at 155 of 155 decisions.\n\nJasmine:\n- Offered on 1,129 turns: other Supporter 592, none 535, Jasmine 2. Floor-style share 2 of 537 = 0.37% (floor.py at seed 7100: 50 of 3,968 = 1.3%).\n- On the 535 no-Supporter turns: still playable at the close 535; Skarmory ex Active at close 468; Skarmory ex with no Tool at close 275; hand size at close mostly 3-5 (3: 147, 4: 167, 5: 105).\n- Score(Jasmine) minus score(EndTurn) when EndTurn was chosen: -1.0 at 191 of 191. Jasmine was exactly 1 below the best move at 1,029 of 2,216 decisions offering it.\n\nTool on Active minus Tool on Bench: +10 exactly (Metal Core Barrier/Indeedee ex 25 of 25, Metal Core Barrier/Skarmory ex 112 of 116, Steel Apron/Indeedee ex 11 of 11, Steel Apron/Skarmory ex 77 of 85).\n\nInstrumented replay: 240 of 240 games identical to the official engine.\n\nHow obtained: official deckgym traces, compacted to /home/dacz8976/jasmine_traced/compact.jsonl (raw traces deleted after each call). Candidate scores come from a scratch build of the same source (/home/dacz8976/jasmine_traced/engine), which prints them when the JT_SCORES or JT_FEATS variable is set; stored in scores.jsonl. The analysis scripts are run_extract.py, analyze.py, scores_run.py, analyze_scores.py, analyze3.py and analyze4.py in C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\. The repo was not modified.",
+    "open_questions": [
+     "Does turning active_has_tool to 0 stop the Metal Core Barrier plays (and the Tools on Indeedee ex), and what does it do to the win rate? I did not test it; it is the causal check for the Tool half.",
+     "The 50 Jasmine plays at seed 7100: were they also Hiking Trail (or other deck-size) artifacts? I only checked the 2 in my 240 games.",
+     "Would kd3, whose clock prices damage reductions through persistent_defender_damage, see Jasmine's one-turn reduction? Neither a Tool nor Jasmine is checked here.",
+     "The damage Jasmine would have saved (113 hits of 50+ on an unprotected Skarmory ex) is a rough trace estimate, not a replay with Jasmine played.",
+     "Cleanup: /home/dacz8976/jasmine_traced (about 449 MB: the instrumented engine copy 431 MB, compact.jsonl 13.7 MB, scores.jsonl 4.4 MB) is left for follow-up checks. Raw per-decision traces are already deleted. The folder can be removed with rm -rf when no longer needed."
+    ]
+   }
+  },
+  {
+   "angle": "causal",
+   "result": {
+    "summary": "The +10 is the cause. kp3's evaluator gives +10 whenever the Active Pokemon has any Tool attached. It never looks at the -50 from either card. I removed that +10 in a scratch build, and Metal Core Barrier went from 74.6% of its turns to 1.5%. Steel Apron fell from 70.5% to 2.7%. When I instead gave Jasmine's stored effect the same +10 (only while it protects the Active), Jasmine rose from 1.8% to 82.4%.\n\nHow it works: kp3 uses public_clock_effect_value_function with the baseline() parameter set (mod.rs:502-511, value_functions.rs:176-187). The only weight that matters is line 50. Line 82 belongs to variant(), which kp3 never uses. The score line (value_functions.rs:516) adds (my.active_has_tool - opp.active_has_tool) x 10. get_active_has_tool (667-672) returns 1.0 for any Tool, with no type or damage check. Nothing in kp's evaluator reads Jasmine's stored effect or Metal Core Barrier's -50: the defender and turn-effect pricing in the threat clock is switched off for kp. Even kd's defender pricing deliberately leaves out Metal Core Barrier and turn effects (hooks/core.rs ~1563-1581).\n\nThe traces show it directly. With the official binary, Metal Core Barrier went on the Active Skarmory ex 251 times, but also 57 times on the Active Indeedee ex, which is Psychic, so the -50 can't apply. With the +10 removed, it went on an Active 0 times. A debug replay showed the tool choice as: Active 159.2 against bench 149.2, a gap of exactly 10.\n\nJasmine gets nothing for its effect, and playing it costs the one-card hand-size term. On 439 of the 1,085 turns it was in hand, the bot played no Supporter at all. Seven of its 8 plays were against Blaziken, whose Hiking Trail refills the hand to 3 at the end of each turn. That makes dumping any card worth +1 in the search.\n\nWins over 240 games: official 132, no +10 on both sides 97, no +10 on the deck's side only 96, Jasmine priced 146. The drop of about 15 points is about 3 standard errors, so the tools really help once played. The +6 for Jasmine is within noise at this size.",
+    "claims": [
+     {
+      "claim": "kp3's evaluator is public_clock_effect_value_function with ValueFunctionParams::baseline(), no opponent move searched (opponent_ply 0); only line 50 (baseline) sets kp3's tool weight; line 82 (variant()) is used only by variant_value_function",
+      "verified": true,
+      "evidence": "engine/src/players/mod.rs:502-511 (KP arm); value_functions.rs:176-187 (baseline() passed to ex5), 411-432 (ex5 -> ex6 with EvalFeatures::OFF), 302-304 (only caller of variant()). I changed only line 50."
+     },
+     {
+      "claim": "The +10 is paid for any Tool on the Active, whatever the card or the Pokemon's type",
+      "verified": true,
+      "evidence": "value_functions.rs:516 adds (my.active_has_tool - opp.active_has_tool) * params.active_has_tool; get_active_has_tool (667-672) returns 1.0 if has_tool_attached(). Official traces: Metal Core Barrier attached to an Active Indeedee ex (Psychic, lib/card.py) 57 times and Steel Apron 24 times, where the -50/-10 cannot apply (hooks/core.rs:715-735 requires a [M] Pokemon)."
+     },
+     {
+      "claim": "Removing the +10 makes the bot stop playing both tools (causal)",
+      "verified": true,
+      "evidence": "Same 240 seeds. Official: Metal Core Barrier 311/417 turns (74.6%), Steel Apron 160/227 (70.5%). Line 50 set to 0.0: Metal Core Barrier 15/1029 (1.5%), Steel Apron 19/715 (2.7%), 0 Metal Core Barrier attaches to an Active. Deck-side-only variant: 15/1030 (1.5%), 20/713 (2.8%)."
+     },
+     {
+      "claim": "The +10 decides the tool's target (debug replay)",
+      "verified": true,
+      "evidence": "Debug build (eprintln only), seed 21,102,501,005, deck seat 0 vs t-blaziken, turn 4: AttachTool scores [Active 159.2, bench 149.2, bench 149.2]; leaf features differ only in my.active_has_tool 1.0 vs 0.0 (score 154.2 vs 144.2)."
+     },
+     {
+      "claim": "kp3's evaluator puts no value on Jasmine's effect or on Metal Core Barrier's -50",
+      "verified": true,
+      "evidence": "Jasmine stores TurnEffect::ReducedDamageForTarget for this turn and the next (apply_trainer_action.rs:1019-1035, 1055-1060; state/mod.rs:1063-1078), read only in damage resolution (hooks/core.rs ~1188-1227). kp's clock uses defender modifiers only under kd and effect-on-threat reductions only under kq, both off for kp (value_functions.rs:258-262, 847-901). Even kd's persistent_defender_damage lists Metal Core Barrier and turn effects as left out (hooks/core.rs ~1563-1581)."
+     },
+     {
+      "claim": "Pricing Jasmine's stored effect like a tool on the Active (+10) makes the bot play Jasmine",
+      "verified": true,
+      "evidence": "Variant B (turn_effects_for accessor in state/mod.rs plus active_turn_shield in value_functions.rs, weight = active_has_tool = 10, tool bonus kept): Jasmine 266/323 turns (82.4%) vs official 8/447 (1.8%); 241 of the 266 plays had Skarmory ex Active. Metal Core Barrier stayed at 315/426 (73.9%)."
+     },
+     {
+      "claim": "The bot mostly holds Jasmine and plays nothing: of 1,085 turns with Jasmine playable (Skarmory ex Active on 919), it played no Supporter on 439",
+      "verified": true,
+      "evidence": "Official run traces: Supporter played on Jasmine-offered turns: none 439, Professor's Research 167, Red 136, Pokemon Center Lady 106, Cyrus 129, Sabrina 100, Jasmine 8."
+     },
+     {
+      "claim": "The rare official Jasmine plays are card dumping under the opponent's Hiking Trail, not the -50",
+      "verified": false,
+      "evidence": "Verified for one play (seed 21,102,501,005): scores [EndTurn 159.2, Jasmine 160.2]; at the turn-boundary leaf Hiking Trail (B2b 069, draw to 3 at end of turn) refills the deck's hand to 3, so each emptied card shows as one fewer deck card (+1 via the deck_size term). 7 of the 8 official plays were vs t-blaziken, the only list with Hiking Trail. The 8th (vs t-altaria) is unexplained."
+     },
+     {
+      "claim": "Tool play is worth about 15 points of win rate for this deck under kp3",
+      "verified": true,
+      "evidence": "Wins over 240 games: official 132 (55.0%); no +10 for both pilots 97 (40.4%); no +10 for the deck's pilot only (env-var seat switch) 96 (40.0%). About 3 standard errors, lower in every one of the 8 matchups."
+     },
+     {
+      "claim": "Pricing Jasmine raises the deck's win rate",
+      "verified": false,
+      "evidence": "146/240 (60.8%) vs 132/240 (55.0%): +5.8 points, about 1.3 standard errors; not separable from noise at 240 games. Not lower in any matchup."
+     },
+     {
+      "claim": "My unmodified scratch build equals the official binary, so the comparison isolates the one change",
+      "verified": true,
+      "evidence": "Unmodified build sha256 f4d235e596cdd713546c17450fd66bd9d5eefe4baf53e93d66d8bbe1628e1034 = official; all 240 games had identical move-sequence hashes."
+     }
+    ],
+    "numbers": "All runs: deck 07 with kp3 on both sides against the 8 lists in decks/screen/opponents (sorted), 15 games per opponent per seat = 240 games. Seeds 21,102,500,000 + 1,000 x opponent index (+500 for seat 1), --seed-stream, --data-output traces, -p. Counted with floor.py's own game_record/role_sets (Trainer (played); Supporter opportunities leave out turns with another Supporter).\n\nOFFICIAL rl/engine-2026-09-25/deckgym (sha256 f4d235e596cdd713546c17450fd66bd9d5eefe4baf53e93d66d8bbe1628e1034; my unmodified scratch build has the same sha and matched all 240 games): wins 132/240. Metal Core Barrier 311/417 (74.6%); Steel Apron 160/227 (70.5%); Jasmine 8/447 (1.8%); Professor's Research 287/294; Red 180/535; Cyrus 161/176; Sabrina 153/213; Pokemon Center Lady 131/160; Lucky Ice Pop 170/224; Poke Ball 240/458. Attaches: Metal Core Barrier -> Active Skarmory ex 251, Active Indeedee ex 57, bench Indeedee 3; Steel Apron -> Active Skarmory 134, Active Indeedee 24, bench Skarmory 2.\n\nA: line 50 active_has_tool 10.0 -> 0.0, both pilots (sha256 cf62f2374fc45cd1be6f9b86aa16cc37be699ffd7b7b015ee5a0b10c85607c80): wins 97/240. Metal Core Barrier 15/1029 (1.5%); Steel Apron 19/715 (2.7%); Jasmine 5/432 (1.2%). Metal Core Barrier attaches: 0 to an Active (6 bench Skarmory, 10 bench Indeedee).\n\nC: same change for the deck's seat only, via env var JASMINE_NOTOOL_SEAT in public_clock_effect_value_function (sha256 21d36c9bfd9dc1823be0943192c8974d17127213801acb93b0a7c23638ffe63c): wins 96/240. Metal Core Barrier 15/1030 (1.5%); Steel Apron 20/713 (2.8%); Jasmine 5/426 (1.2%).\n\nB: official plus Jasmine's stored effect worth +10 when it covers the Active (sha256 c33a6b7a219d4c2f1e1a02248e427bea9129c19e7860832584117438ba1a5f45): wins 146/240. Jasmine 266/323 (82.4%); Metal Core Barrier 315/426 (73.9%); Steel Apron 161/221 (72.9%); Professor's Research 286/302; Red 183/438.\n\nWins per opponent, 30 games each (official / A / C / B): altaria 22/18/16/25; blaziken 8/6/6/9; hydreigon 21/13/13/22; lucario 9/6/6/11; sceptile 11/8/8/11; suicune 24/19/20/29; vespiquen 16/12/12/18; weezing 21/15/15/21.\n\nDebug build D (eprintln only, sha256 1c2113d86e3ab5b8d1e8f3423db39ad6d080494c33643bf01d76fd00a91da5d6), seed 21,102,501,005, turn 4: AttachTool Active 159.2 vs bench 149.2; later EndTurn 159.2 vs Jasmine 160.2 (Hiking Trail refill).\n\nBuild times 8m43s (first), then 2.5-4 min each. Kept in /home/dacz8976/jasmine_causal/ (332K): count.py, patch_b.py, patch_c.py, patch_d.py, variant_a_notool.diff, variant_b.diff, variant_c.diff, variant_d_debug.diff, summary_*.json, run_*.log, build_*.log. Deleted: all trace folders (none remain), engine/target (218M), the binaries (57M), the debug logs and the scratch source copy. The repo was not modified.",
+    "open_questions": [
+     "One official Jasmine play (vs t-altaria, which runs Training Area, not Hiking Trail) is unexplained. I did not debug it.",
+     "The +10 is card-blind: the bot attaches Metal Core Barrier and Steel Apron to an Active Indeedee ex (Psychic), where neither reduction applies. That was 81 of 469 official tool attaches. A fix that prices the actual reduction (like kd does for Steel Apron, extended to Metal Core Barrier and turn effects) would be a new pilot. That is Dustin's call, not something this test decides.",
+     "Variant B pays +10 whether Jasmine's -50 matters or not, the same bluntness as the tool bonus. Its +5.8-point win change needs more games (for example the fixed 1,920-game floor on the project seeds) before anyone relies on it.",
+     "Pricing Jasmine at +10 also makes the bot pass up other Supporters. Professor's Research fell slightly (287/294 to 286/302) and Red rose (33.6% to 41.8%). Whether those trades are right was not checked."
+    ]
+   }
+  }
+ ]
+}
