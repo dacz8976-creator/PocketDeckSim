@@ -6,8 +6,8 @@
 //! Input: the games from rl/results/lucario_network_divergence_2026-09-25/play_network_games.py (the network
 //! piloting Lucario through add-on 0.7.2, k3 piloting Weezing), one JSON line each with every move.
 //! Each game is replayed here from its seed by applying the recorded moves, and each move must be one this
-//! engine offers (the network's own move must sit at the same index in the canonical list the add-on showed
-//! it); the final score and turn must match the recording. At each network decision k3 is asked for its move
+//! engine offers (the network's own move must be the move at the index the add-on showed it; two copies of a
+//! card give two identical moves); the final score and turn must match the recording. At each network decision k3 is asked for its move
 //! from the same observation, under `--probes` search seeds. Where k3's first-probe move differs from the
 //! network's (by card names: a Basic onto either empty Bench slot is the same move) and the network doesn't
 //! play k3's move later in the same turn (an order-only difference), both moves are played out from that position `--rollouts` times with k3 piloting both decks
@@ -133,12 +133,17 @@ fn replay(g: &Recorded, decks: &[Deck; 2], probes: u64) -> (Vec<serde_json::Valu
             Ok(s) => s,
             Err(e) => return (out, positions, Some(format!("move {n}: unreadable ({e})"))),
         };
-        let Some(idx) = actions.iter().position(|a| a.action == simple && a.actor == *p) else {
+        let Some(mut idx) = actions.iter().position(|a| a.action == simple && a.actor == *p) else {
             return (out, positions, Some(format!("move {n} ({kind}) is not offered here: {js}")));
         };
         if kind == "agent" {
             let net = &g.net[j];
-            if net.chosen != idx || net.q.len() != actions.len() {
+            // Two copies of a card in hand give two identical moves; the network may have picked the second.
+            let same_move = actions.get(net.chosen).is_some_and(|a| a.action == simple && a.actor == *p);
+            if same_move {
+                idx = net.chosen;
+            }
+            if !same_move || net.q.len() != actions.len() {
                 return (out, positions, Some(format!("decision {j}: index {idx} of {} here, add-on {} of {}",
                     actions.len(), net.chosen, net.q.len())));
             }
