@@ -313,7 +313,18 @@ table pilot pending the holdout confirmation, by Dustin's override of the pre-re
 interval crosses zero because v2 has half the matches; the point estimate is unchanged), k3 kept as the reproduction
 reference, the vetoed cells (Hydreigon v Suicune, the Vespiquen deck; Blaziken v Hydreigon on a 24-match cell) on the
 investigation list; the holdout spent once, on the pilot Dustin picks after kd's reading; the screen re-run with kp3 on
-both sides and the A2 hold decided on it; kd read against kp3 on v2; the Sleep and Paralysis fix published upstream.
+both sides and the A2 hold decided on it; kd read against kp3 on v2; the Sleep and Paralysis fix published upstream;
+PR #1 and the laptop branch merged (cf78d02, bbd5d9d); and, Dustin's word on Sept 25 late morning, the merged-main
+engine build becomes the official engine once the identity replay in `rl/results/engine_identity_2026-09-25/` passes on
+its own conditions (k3 and kp3 on 28 × 500 matching the reference per-game files field by field), plus a direct CLI parity check
+of the new `deckgym` program against the rules4 one (k3,k3 on the screen's seed 7100, four matchups × 30, identical
+win and draw lines) and a kp3 smoke test on the new program; at which point the new `deckgym` and `legality_scan` are
+copied into `rl/engine-2026-09-25/` with a README naming the commit, both hashes and the replay and parity results,
+`project_manifest.json` moves rules4 into its historical releases and names the new build as the available release
+(`current_engine.py` reads the manifest, so it needs no change), `run_screen.py` defaults its engine to the manifest's
+build and its players to kp3,kp3 with k3,k3 still available, and START_HERE's engine line is updated; the 0.7.2 wheel
+and its run identities are untouched; a failing replay or parity check leaves the manifest untouched and is reported
+first.
 
 **Order of work.**
 1. Scoreboard v2 is the table for decisions (development half); the holdout confirms, once.
