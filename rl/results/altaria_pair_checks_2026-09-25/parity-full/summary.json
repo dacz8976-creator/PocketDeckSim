@@ -1,0 +1,800 @@
+{
+  "games_expected": 16,
+  "games_matched": 16,
+  "games_recorded": 16,
+  "identity_after": {
+    "decks": {
+      "altaria": "435a2bebc567ca8357696e400643fdc821cc36ae4765a7a16663fd4413a3bd7f",
+      "blaziken": "69c521a33339a45633c5770b3e4acad5b8912f9367288a3044147e7fa45d5800",
+      "lucario": "46a4820bc788b4fd9ac1d9491e62bf7123c467441e7e30012e42e8a70c91e3f3",
+      "suicune": "7affe6530b8d096b2d81425380bbb92c303de84458bc2fd1ee0936c40f922633",
+      "weezing": "c322fe64d6052bf9c55875ecf8bebcf9460e819df19d21fc8a20a04ff7a79e9b"
+    },
+    "engine_sha256": "e6593ed816d0d5dbaf24fc8bc81a8317ed8069cda6ae7162c3d53e1fa7a12415",
+    "module_sha256": "0fee43ceaf9cf6bc15ed2319bb08c100397621a60703880cf26ace8f044a9101"
+  },
+  "identity_before": {
+    "decks": {
+      "altaria": "435a2bebc567ca8357696e400643fdc821cc36ae4765a7a16663fd4413a3bd7f",
+      "blaziken": "69c521a33339a45633c5770b3e4acad5b8912f9367288a3044147e7fa45d5800",
+      "lucario": "46a4820bc788b4fd9ac1d9491e62bf7123c467441e7e30012e42e8a70c91e3f3",
+      "suicune": "7affe6530b8d096b2d81425380bbb92c303de84458bc2fd1ee0936c40f922633",
+      "weezing": "c322fe64d6052bf9c55875ecf8bebcf9460e819df19d21fc8a20a04ff7a79e9b"
+    },
+    "engine_sha256": "e6593ed816d0d5dbaf24fc8bc81a8317ed8069cda6ae7162c3d53e1fa7a12415",
+    "module_sha256": "0fee43ceaf9cf6bc15ed2319bb08c100397621a60703880cf26ace8f044a9101"
+  },
+  "identity_unchanged": true,
+  "input_identity": "input_identity.json",
+  "rows": [
+    {
+      "addon": {
+        "points": [
+          4,
+          2
+        ],
+        "turns": 12,
+        "winner": 0
+      },
+      "case": "altaria-lucario-k2-k3",
+      "cli": {
+        "game_id": "0289c12b-22f0-43fe-b4e1-0bef0fcaf80c",
+        "points": [
+          4,
+          2
+        ],
+        "record_engine_version": "0.1.0-pdl.rules4",
+        "record_path": "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/altaria_pair_checks_2026-09-25/parity-full/cli/altaria-lucario-k2-k3__seed-21101300000/record/game_0289c12b-22f0-43fe-b4e1-0bef0fcaf80c.json",
+        "record_sha256": "8f9600019a025d500c2f9ed90289aa671cdf3aea202750269461bdadb1dbafb8",
+        "seed": 21101300000,
+        "turns": 12,
+        "winner": 0
+      },
+      "command": [
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/addon-0.7.2/deckgym",
+        "simulate",
+        "--num",
+        "1",
+        "--players",
+        "k2,k3",
+        "--seed",
+        "21101300000",
+        "--results-output",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/altaria_pair_checks_2026-09-25/parity-full/cli/altaria-lucario-k2-k3__seed-21101300000/record",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/altaria.txt",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/lucario.txt"
+      ],
+      "deck_order": [
+        "altaria",
+        "lucario"
+      ],
+      "matched": true,
+      "players": [
+        "k2",
+        "k3"
+      ],
+      "seed": 21101300000
+    },
+    {
+      "addon": {
+        "points": [
+          0,
+          5
+        ],
+        "turns": 12,
+        "winner": 1
+      },
+      "case": "altaria-lucario-k2-k3",
+      "cli": {
+        "game_id": "997d1fc9-50d4-4e81-b33d-c5cdf481878c",
+        "points": [
+          0,
+          5
+        ],
+        "record_engine_version": "0.1.0-pdl.rules4",
+        "record_path": "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/altaria_pair_checks_2026-09-25/parity-full/cli/altaria-lucario-k2-k3__seed-21101300001/record/game_997d1fc9-50d4-4e81-b33d-c5cdf481878c.json",
+        "record_sha256": "2d788193f1bc526953253266316eff31c2a90801d8760b899e48b4504e6b685d",
+        "seed": 21101300001,
+        "turns": 12,
+        "winner": 1
+      },
+      "command": [
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/addon-0.7.2/deckgym",
+        "simulate",
+        "--num",
+        "1",
+        "--players",
+        "k2,k3",
+        "--seed",
+        "21101300001",
+        "--results-output",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/altaria_pair_checks_2026-09-25/parity-full/cli/altaria-lucario-k2-k3__seed-21101300001/record",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/altaria.txt",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/lucario.txt"
+      ],
+      "deck_order": [
+        "altaria",
+        "lucario"
+      ],
+      "matched": true,
+      "players": [
+        "k2",
+        "k3"
+      ],
+      "seed": 21101300001
+    },
+    {
+      "addon": {
+        "points": [
+          3,
+          1
+        ],
+        "turns": 8,
+        "winner": 0
+      },
+      "case": "altaria-lucario-k3-k3",
+      "cli": {
+        "game_id": "8cabc82b-df1e-48c1-a417-623cb1bec120",
+        "points": [
+          3,
+          1
+        ],
+        "record_engine_version": "0.1.0-pdl.rules4",
+        "record_path": "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/altaria_pair_checks_2026-09-25/parity-full/cli/altaria-lucario-k3-k3__seed-21101300000/record/game_8cabc82b-df1e-48c1-a417-623cb1bec120.json",
+        "record_sha256": "922dac27e9ac39e56339424826fb138e5bbaf7d70daec0ab100f1ceb1b0b83b2",
+        "seed": 21101300000,
+        "turns": 8,
+        "winner": 0
+      },
+      "command": [
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/addon-0.7.2/deckgym",
+        "simulate",
+        "--num",
+        "1",
+        "--players",
+        "k3,k3",
+        "--seed",
+        "21101300000",
+        "--results-output",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/altaria_pair_checks_2026-09-25/parity-full/cli/altaria-lucario-k3-k3__seed-21101300000/record",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/altaria.txt",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/lucario.txt"
+      ],
+      "deck_order": [
+        "altaria",
+        "lucario"
+      ],
+      "matched": true,
+      "players": [
+        "k3",
+        "k3"
+      ],
+      "seed": 21101300000
+    },
+    {
+      "addon": {
+        "points": [
+          4,
+          2
+        ],
+        "turns": 11,
+        "winner": 0
+      },
+      "case": "altaria-lucario-k3-k3",
+      "cli": {
+        "game_id": "c2415756-91f4-4820-b33e-155645fcc836",
+        "points": [
+          4,
+          2
+        ],
+        "record_engine_version": "0.1.0-pdl.rules4",
+        "record_path": "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/altaria_pair_checks_2026-09-25/parity-full/cli/altaria-lucario-k3-k3__seed-21101300001/record/game_c2415756-91f4-4820-b33e-155645fcc836.json",
+        "record_sha256": "fe5669cefa7ce4244108e7c105ab6393d96393f8dc39b4b2919eb9132a91c1b8",
+        "seed": 21101300001,
+        "turns": 11,
+        "winner": 0
+      },
+      "command": [
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/addon-0.7.2/deckgym",
+        "simulate",
+        "--num",
+        "1",
+        "--players",
+        "k3,k3",
+        "--seed",
+        "21101300001",
+        "--results-output",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/altaria_pair_checks_2026-09-25/parity-full/cli/altaria-lucario-k3-k3__seed-21101300001/record",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/altaria.txt",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/lucario.txt"
+      ],
+      "deck_order": [
+        "altaria",
+        "lucario"
+      ],
+      "matched": true,
+      "players": [
+        "k3",
+        "k3"
+      ],
+      "seed": 21101300001
+    },
+    {
+      "addon": {
+        "points": [
+          4,
+          1
+        ],
+        "turns": 12,
+        "winner": 0
+      },
+      "case": "blaziken-lucario-k2-k3",
+      "cli": {
+        "game_id": "ebbf01c6-016f-414c-81e9-ae3f68ebb521",
+        "points": [
+          4,
+          1
+        ],
+        "record_engine_version": "0.1.0-pdl.rules4",
+        "record_path": "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/altaria_pair_checks_2026-09-25/parity-full/cli/blaziken-lucario-k2-k3__seed-21101300000/record/game_ebbf01c6-016f-414c-81e9-ae3f68ebb521.json",
+        "record_sha256": "0913a5f9ff48ca2cb3ce8f08e41a30a6745578e026714ed739cc1980d00a5e81",
+        "seed": 21101300000,
+        "turns": 12,
+        "winner": 0
+      },
+      "command": [
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/addon-0.7.2/deckgym",
+        "simulate",
+        "--num",
+        "1",
+        "--players",
+        "k2,k3",
+        "--seed",
+        "21101300000",
+        "--results-output",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/altaria_pair_checks_2026-09-25/parity-full/cli/blaziken-lucario-k2-k3__seed-21101300000/record",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/dustin/06-mega-blaziken-tournament-list.txt",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/lucario.txt"
+      ],
+      "deck_order": [
+        "blaziken",
+        "lucario"
+      ],
+      "matched": true,
+      "players": [
+        "k2",
+        "k3"
+      ],
+      "seed": 21101300000
+    },
+    {
+      "addon": {
+        "points": [
+          4,
+          1
+        ],
+        "turns": 11,
+        "winner": 0
+      },
+      "case": "blaziken-lucario-k2-k3",
+      "cli": {
+        "game_id": "156a9fce-a3cd-4d0c-8030-a986bddee45e",
+        "points": [
+          4,
+          1
+        ],
+        "record_engine_version": "0.1.0-pdl.rules4",
+        "record_path": "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/altaria_pair_checks_2026-09-25/parity-full/cli/blaziken-lucario-k2-k3__seed-21101300001/record/game_156a9fce-a3cd-4d0c-8030-a986bddee45e.json",
+        "record_sha256": "b36b223696b9819144a227f0a29e283b08bae99e061504a1f24560856f8ba29d",
+        "seed": 21101300001,
+        "turns": 11,
+        "winner": 0
+      },
+      "command": [
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/addon-0.7.2/deckgym",
+        "simulate",
+        "--num",
+        "1",
+        "--players",
+        "k2,k3",
+        "--seed",
+        "21101300001",
+        "--results-output",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/altaria_pair_checks_2026-09-25/parity-full/cli/blaziken-lucario-k2-k3__seed-21101300001/record",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/dustin/06-mega-blaziken-tournament-list.txt",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/lucario.txt"
+      ],
+      "deck_order": [
+        "blaziken",
+        "lucario"
+      ],
+      "matched": true,
+      "players": [
+        "k2",
+        "k3"
+      ],
+      "seed": 21101300001
+    },
+    {
+      "addon": {
+        "points": [
+          2,
+          3
+        ],
+        "turns": 9,
+        "winner": 1
+      },
+      "case": "blaziken-lucario-k3-k3",
+      "cli": {
+        "game_id": "d97252ce-b661-495f-b17f-5bdb219d22fb",
+        "points": [
+          2,
+          3
+        ],
+        "record_engine_version": "0.1.0-pdl.rules4",
+        "record_path": "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/altaria_pair_checks_2026-09-25/parity-full/cli/blaziken-lucario-k3-k3__seed-21101300000/record/game_d97252ce-b661-495f-b17f-5bdb219d22fb.json",
+        "record_sha256": "ee3f1d39a8cc56e142deb37e33452c6aeab80521dd4e86ed3b099a13390bdc73",
+        "seed": 21101300000,
+        "turns": 9,
+        "winner": 1
+      },
+      "command": [
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/addon-0.7.2/deckgym",
+        "simulate",
+        "--num",
+        "1",
+        "--players",
+        "k3,k3",
+        "--seed",
+        "21101300000",
+        "--results-output",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/altaria_pair_checks_2026-09-25/parity-full/cli/blaziken-lucario-k3-k3__seed-21101300000/record",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/dustin/06-mega-blaziken-tournament-list.txt",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/lucario.txt"
+      ],
+      "deck_order": [
+        "blaziken",
+        "lucario"
+      ],
+      "matched": true,
+      "players": [
+        "k3",
+        "k3"
+      ],
+      "seed": 21101300000
+    },
+    {
+      "addon": {
+        "points": [
+          4,
+          1
+        ],
+        "turns": 11,
+        "winner": 0
+      },
+      "case": "blaziken-lucario-k3-k3",
+      "cli": {
+        "game_id": "7b3ffa73-90f0-4d4e-987f-5ceb7a703c5a",
+        "points": [
+          4,
+          1
+        ],
+        "record_engine_version": "0.1.0-pdl.rules4",
+        "record_path": "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/altaria_pair_checks_2026-09-25/parity-full/cli/blaziken-lucario-k3-k3__seed-21101300001/record/game_7b3ffa73-90f0-4d4e-987f-5ceb7a703c5a.json",
+        "record_sha256": "bc36a8e6aca400a00343e03f22fe54b4488f884d5f3db8eca6e2221e34a6519a",
+        "seed": 21101300001,
+        "turns": 11,
+        "winner": 0
+      },
+      "command": [
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/addon-0.7.2/deckgym",
+        "simulate",
+        "--num",
+        "1",
+        "--players",
+        "k3,k3",
+        "--seed",
+        "21101300001",
+        "--results-output",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/altaria_pair_checks_2026-09-25/parity-full/cli/blaziken-lucario-k3-k3__seed-21101300001/record",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/dustin/06-mega-blaziken-tournament-list.txt",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/lucario.txt"
+      ],
+      "deck_order": [
+        "blaziken",
+        "lucario"
+      ],
+      "matched": true,
+      "players": [
+        "k3",
+        "k3"
+      ],
+      "seed": 21101300001
+    },
+    {
+      "addon": {
+        "points": [
+          0,
+          3
+        ],
+        "turns": 9,
+        "winner": 1
+      },
+      "case": "suicune-altaria-k2-k3",
+      "cli": {
+        "game_id": "fc65b386-f925-4159-a032-bd53ebd71594",
+        "points": [
+          0,
+          3
+        ],
+        "record_engine_version": "0.1.0-pdl.rules4",
+        "record_path": "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/altaria_pair_checks_2026-09-25/parity-full/cli/suicune-altaria-k2-k3__seed-21101300000/record/game_fc65b386-f925-4159-a032-bd53ebd71594.json",
+        "record_sha256": "8e1fcc78954fbe54e812b4146b4b37fa32a7300c157d8d90c331e1885f3df86e",
+        "seed": 21101300000,
+        "turns": 9,
+        "winner": 1
+      },
+      "command": [
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/addon-0.7.2/deckgym",
+        "simulate",
+        "--num",
+        "1",
+        "--players",
+        "k2,k3",
+        "--seed",
+        "21101300000",
+        "--results-output",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/altaria_pair_checks_2026-09-25/parity-full/cli/suicune-altaria-k2-k3__seed-21101300000/record",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/suicune.txt",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/altaria.txt"
+      ],
+      "deck_order": [
+        "suicune",
+        "altaria"
+      ],
+      "matched": true,
+      "players": [
+        "k2",
+        "k3"
+      ],
+      "seed": 21101300000
+    },
+    {
+      "addon": {
+        "points": [
+          3,
+          0
+        ],
+        "turns": 11,
+        "winner": 0
+      },
+      "case": "suicune-altaria-k2-k3",
+      "cli": {
+        "game_id": "7fb19430-932e-4259-b02f-1ddc0174eeae",
+        "points": [
+          3,
+          0
+        ],
+        "record_engine_version": "0.1.0-pdl.rules4",
+        "record_path": "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/altaria_pair_checks_2026-09-25/parity-full/cli/suicune-altaria-k2-k3__seed-21101300001/record/game_7fb19430-932e-4259-b02f-1ddc0174eeae.json",
+        "record_sha256": "537964150f0682551a402ffbb7412a484e40f246f6dbb6573f228594573a2125",
+        "seed": 21101300001,
+        "turns": 11,
+        "winner": 0
+      },
+      "command": [
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/addon-0.7.2/deckgym",
+        "simulate",
+        "--num",
+        "1",
+        "--players",
+        "k2,k3",
+        "--seed",
+        "21101300001",
+        "--results-output",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/altaria_pair_checks_2026-09-25/parity-full/cli/suicune-altaria-k2-k3__seed-21101300001/record",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/suicune.txt",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/altaria.txt"
+      ],
+      "deck_order": [
+        "suicune",
+        "altaria"
+      ],
+      "matched": true,
+      "players": [
+        "k2",
+        "k3"
+      ],
+      "seed": 21101300001
+    },
+    {
+      "addon": {
+        "points": [
+          0,
+          4
+        ],
+        "turns": 9,
+        "winner": 1
+      },
+      "case": "suicune-altaria-k3-k3",
+      "cli": {
+        "game_id": "28f4c85e-ec15-4161-8189-4d153375dba7",
+        "points": [
+          0,
+          4
+        ],
+        "record_engine_version": "0.1.0-pdl.rules4",
+        "record_path": "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/altaria_pair_checks_2026-09-25/parity-full/cli/suicune-altaria-k3-k3__seed-21101300000/record/game_28f4c85e-ec15-4161-8189-4d153375dba7.json",
+        "record_sha256": "8dcf25cb27a4a6f461664cff0619bb39c55470a7b1638c34bc6c77bd4f62475b",
+        "seed": 21101300000,
+        "turns": 9,
+        "winner": 1
+      },
+      "command": [
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/addon-0.7.2/deckgym",
+        "simulate",
+        "--num",
+        "1",
+        "--players",
+        "k3,k3",
+        "--seed",
+        "21101300000",
+        "--results-output",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/altaria_pair_checks_2026-09-25/parity-full/cli/suicune-altaria-k3-k3__seed-21101300000/record",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/suicune.txt",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/altaria.txt"
+      ],
+      "deck_order": [
+        "suicune",
+        "altaria"
+      ],
+      "matched": true,
+      "players": [
+        "k3",
+        "k3"
+      ],
+      "seed": 21101300000
+    },
+    {
+      "addon": {
+        "points": [
+          3,
+          0
+        ],
+        "turns": 11,
+        "winner": 0
+      },
+      "case": "suicune-altaria-k3-k3",
+      "cli": {
+        "game_id": "e2769d8c-7206-4c73-9677-c0732947edf2",
+        "points": [
+          3,
+          0
+        ],
+        "record_engine_version": "0.1.0-pdl.rules4",
+        "record_path": "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/altaria_pair_checks_2026-09-25/parity-full/cli/suicune-altaria-k3-k3__seed-21101300001/record/game_e2769d8c-7206-4c73-9677-c0732947edf2.json",
+        "record_sha256": "fa708e9323f789b8722b5669d599f930558517db3a75f5495947a9e552288e34",
+        "seed": 21101300001,
+        "turns": 11,
+        "winner": 0
+      },
+      "command": [
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/addon-0.7.2/deckgym",
+        "simulate",
+        "--num",
+        "1",
+        "--players",
+        "k3,k3",
+        "--seed",
+        "21101300001",
+        "--results-output",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/altaria_pair_checks_2026-09-25/parity-full/cli/suicune-altaria-k3-k3__seed-21101300001/record",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/suicune.txt",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/altaria.txt"
+      ],
+      "deck_order": [
+        "suicune",
+        "altaria"
+      ],
+      "matched": true,
+      "players": [
+        "k3",
+        "k3"
+      ],
+      "seed": 21101300001
+    },
+    {
+      "addon": {
+        "points": [
+          3,
+          1
+        ],
+        "turns": 8,
+        "winner": 0
+      },
+      "case": "weezing-lucario-k2-k3",
+      "cli": {
+        "game_id": "2cbb238f-be27-41b5-ab61-a1f1a4afa189",
+        "points": [
+          3,
+          1
+        ],
+        "record_engine_version": "0.1.0-pdl.rules4",
+        "record_path": "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/altaria_pair_checks_2026-09-25/parity-full/cli/weezing-lucario-k2-k3__seed-21101300000/record/game_2cbb238f-be27-41b5-ab61-a1f1a4afa189.json",
+        "record_sha256": "e42102809e077fca333800e99a2b4e216343a55936c8f3bb60b2dc07cd9b2723",
+        "seed": 21101300000,
+        "turns": 8,
+        "winner": 0
+      },
+      "command": [
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/addon-0.7.2/deckgym",
+        "simulate",
+        "--num",
+        "1",
+        "--players",
+        "k2,k3",
+        "--seed",
+        "21101300000",
+        "--results-output",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/altaria_pair_checks_2026-09-25/parity-full/cli/weezing-lucario-k2-k3__seed-21101300000/record",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/weezing.txt",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/lucario.txt"
+      ],
+      "deck_order": [
+        "weezing",
+        "lucario"
+      ],
+      "matched": true,
+      "players": [
+        "k2",
+        "k3"
+      ],
+      "seed": 21101300000
+    },
+    {
+      "addon": {
+        "points": [
+          0,
+          1
+        ],
+        "turns": 5,
+        "winner": 1
+      },
+      "case": "weezing-lucario-k2-k3",
+      "cli": {
+        "game_id": "a8981340-a11e-4102-bc5f-136b8930138c",
+        "points": [
+          0,
+          1
+        ],
+        "record_engine_version": "0.1.0-pdl.rules4",
+        "record_path": "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/altaria_pair_checks_2026-09-25/parity-full/cli/weezing-lucario-k2-k3__seed-21101300001/record/game_a8981340-a11e-4102-bc5f-136b8930138c.json",
+        "record_sha256": "c1fd5c225197bd8807bc6f71fec99cc761e222c03ea231fde37a4941b29da01b",
+        "seed": 21101300001,
+        "turns": 5,
+        "winner": 1
+      },
+      "command": [
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/addon-0.7.2/deckgym",
+        "simulate",
+        "--num",
+        "1",
+        "--players",
+        "k2,k3",
+        "--seed",
+        "21101300001",
+        "--results-output",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/altaria_pair_checks_2026-09-25/parity-full/cli/weezing-lucario-k2-k3__seed-21101300001/record",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/weezing.txt",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/lucario.txt"
+      ],
+      "deck_order": [
+        "weezing",
+        "lucario"
+      ],
+      "matched": true,
+      "players": [
+        "k2",
+        "k3"
+      ],
+      "seed": 21101300001
+    },
+    {
+      "addon": {
+        "points": [
+          5,
+          0
+        ],
+        "turns": 8,
+        "winner": 0
+      },
+      "case": "weezing-lucario-k3-k3",
+      "cli": {
+        "game_id": "ba00dc9a-a72f-4d1f-9619-d18162ba595c",
+        "points": [
+          5,
+          0
+        ],
+        "record_engine_version": "0.1.0-pdl.rules4",
+        "record_path": "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/altaria_pair_checks_2026-09-25/parity-full/cli/weezing-lucario-k3-k3__seed-21101300000/record/game_ba00dc9a-a72f-4d1f-9619-d18162ba595c.json",
+        "record_sha256": "f231406c81817adccc6063eb8da1943f77310fde238ed6b31e68d47d1663f42f",
+        "seed": 21101300000,
+        "turns": 8,
+        "winner": 0
+      },
+      "command": [
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/addon-0.7.2/deckgym",
+        "simulate",
+        "--num",
+        "1",
+        "--players",
+        "k3,k3",
+        "--seed",
+        "21101300000",
+        "--results-output",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/altaria_pair_checks_2026-09-25/parity-full/cli/weezing-lucario-k3-k3__seed-21101300000/record",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/weezing.txt",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/lucario.txt"
+      ],
+      "deck_order": [
+        "weezing",
+        "lucario"
+      ],
+      "matched": true,
+      "players": [
+        "k3",
+        "k3"
+      ],
+      "seed": 21101300000
+    },
+    {
+      "addon": {
+        "points": [
+          1,
+          3
+        ],
+        "turns": 9,
+        "winner": 1
+      },
+      "case": "weezing-lucario-k3-k3",
+      "cli": {
+        "game_id": "83c6b952-80a5-4ba8-829e-01ec5a8babd6",
+        "points": [
+          1,
+          3
+        ],
+        "record_engine_version": "0.1.0-pdl.rules4",
+        "record_path": "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/altaria_pair_checks_2026-09-25/parity-full/cli/weezing-lucario-k3-k3__seed-21101300001/record/game_83c6b952-80a5-4ba8-829e-01ec5a8babd6.json",
+        "record_sha256": "1b5f9ef8927731a64a933c83267df595200cee987e6451a5a039388c3c45b5eb",
+        "seed": 21101300001,
+        "turns": 9,
+        "winner": 1
+      },
+      "command": [
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/addon-0.7.2/deckgym",
+        "simulate",
+        "--num",
+        "1",
+        "--players",
+        "k3,k3",
+        "--seed",
+        "21101300001",
+        "--results-output",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/altaria_pair_checks_2026-09-25/parity-full/cli/weezing-lucario-k3-k3__seed-21101300001/record",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/weezing.txt",
+        "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/lucario.txt"
+      ],
+      "deck_order": [
+        "weezing",
+        "lucario"
+      ],
+      "matched": true,
+      "players": [
+        "k3",
+        "k3"
+      ],
+      "seed": 21101300001
+    }
+  ],
+  "status": "passed"
+}

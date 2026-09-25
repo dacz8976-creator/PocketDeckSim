@@ -1,0 +1,132 @@
+{
+  "addon_name": "pdl_rl_env",
+  "addon_version": "0.7.2",
+  "cases": [
+    {
+      "case": "altaria-lucario-k2-k3",
+      "deck_order": [
+        "altaria",
+        "lucario"
+      ],
+      "players": [
+        "k2",
+        "k3"
+      ]
+    },
+    {
+      "case": "altaria-lucario-k3-k3",
+      "deck_order": [
+        "altaria",
+        "lucario"
+      ],
+      "players": [
+        "k3",
+        "k3"
+      ]
+    },
+    {
+      "case": "blaziken-lucario-k2-k3",
+      "deck_order": [
+        "blaziken",
+        "lucario"
+      ],
+      "players": [
+        "k2",
+        "k3"
+      ]
+    },
+    {
+      "case": "blaziken-lucario-k3-k3",
+      "deck_order": [
+        "blaziken",
+        "lucario"
+      ],
+      "players": [
+        "k3",
+        "k3"
+      ]
+    },
+    {
+      "case": "suicune-altaria-k2-k3",
+      "deck_order": [
+        "suicune",
+        "altaria"
+      ],
+      "players": [
+        "k2",
+        "k3"
+      ]
+    },
+    {
+      "case": "suicune-altaria-k3-k3",
+      "deck_order": [
+        "suicune",
+        "altaria"
+      ],
+      "players": [
+        "k3",
+        "k3"
+      ]
+    },
+    {
+      "case": "weezing-lucario-k2-k3",
+      "deck_order": [
+        "weezing",
+        "lucario"
+      ],
+      "players": [
+        "k2",
+        "k3"
+      ]
+    },
+    {
+      "case": "weezing-lucario-k3-k3",
+      "deck_order": [
+        "weezing",
+        "lucario"
+      ],
+      "players": [
+        "k3",
+        "k3"
+      ]
+    }
+  ],
+  "created_utc": "2026-09-25T19:59:26.223883+00:00",
+  "decks": {
+    "altaria": {
+      "path": "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/altaria.txt",
+      "sha256": "435a2bebc567ca8357696e400643fdc821cc36ae4765a7a16663fd4413a3bd7f"
+    },
+    "blaziken": {
+      "path": "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/dustin/06-mega-blaziken-tournament-list.txt",
+      "sha256": "69c521a33339a45633c5770b3e4acad5b8912f9367288a3044147e7fa45d5800"
+    },
+    "lucario": {
+      "path": "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/lucario.txt",
+      "sha256": "46a4820bc788b4fd9ac1d9491e62bf7123c467441e7e30012e42e8a70c91e3f3"
+    },
+    "suicune": {
+      "path": "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/suicune.txt",
+      "sha256": "7affe6530b8d096b2d81425380bbb92c303de84458bc2fd1ee0936c40f922633"
+    },
+    "weezing": {
+      "path": "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/weezing.txt",
+      "sha256": "c322fe64d6052bf9c55875ecf8bebcf9460e819df19d21fc8a20a04ff7a79e9b"
+    }
+  },
+  "engine_path": "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/addon-0.7.2/deckgym",
+  "engine_sha256": "e6593ed816d0d5dbaf24fc8bc81a8317ed8069cda6ae7162c3d53e1fa7a12415",
+  "engine_version_expected": "0.1.0-pdl.rules4",
+  "games_expected": 16,
+  "module_path": "/home/dacz8976/.cache/pocket-deck-lab/run5-venv/lib/python3.14/site-packages/pdl_rl_env.abi3.so",
+  "module_sha256": "0fee43ceaf9cf6bc15ed2319bb08c100397621a60703880cf26ace8f044a9101",
+  "protocol": "rules3 six-cell CLI/add-on parity protocol plus Altaria v Lucario cells, rules4 (PocketDeckSim)",
+  "python_path": "/usr/bin/python3.14",
+  "root": "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim",
+  "script_path": "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/altaria_pair_checks_2026-09-25/cli_addon_parity.py",
+  "script_sha256": "8a8df35f1a764d12ef4910b4a434bb4a008d5842ef48a1789d250d75a7184b58",
+  "seeds": [
+    21101300000,
+    21101300001
+  ]
+}

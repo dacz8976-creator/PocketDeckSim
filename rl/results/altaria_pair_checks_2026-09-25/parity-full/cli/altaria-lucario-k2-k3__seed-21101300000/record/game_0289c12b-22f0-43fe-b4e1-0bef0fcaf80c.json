@@ -1,0 +1,93 @@
+{
+  "schema": "pdl-game-result/v1",
+  "game_id": "0289c12b-22f0-43fe-b4e1-0bef0fcaf80c",
+  "engine_version": "0.1.0-pdl.rules4",
+  "randomness": {
+    "scheme": "pdl-search-v1/rand-0.8-StdRng",
+    "game_seed": 21101300000,
+    "player_search_seeds": [
+      15409075452536367718,
+      2041501561511077633
+    ]
+  },
+  "outcome": {
+    "Win": 0
+  },
+  "state_winner": {
+    "Win": 0
+  },
+  "completion": "completed",
+  "lifecycle_errors": 0,
+  "plies": 81,
+  "actions_by_player": [
+    40,
+    41
+  ],
+  "final_turn": 12,
+  "final_points": [
+    4,
+    2
+  ],
+  "matchup": {
+    "decks": [
+      {
+        "card_ids": [
+          "B1 196",
+          "B1 196",
+          "B1 102",
+          "B1 184",
+          "B1 184",
+          "B3a 020",
+          "B3a 020",
+          "B2b 040",
+          "B2b 040",
+          "A4a 059",
+          "P-A 007",
+          "P-A 007",
+          "B1 225",
+          "B1 225",
+          "A1 225",
+          "P-A 005",
+          "P-A 005",
+          "B3 147",
+          "B3b 064",
+          "B2 153"
+        ],
+        "energy_types": [
+          "Psychic"
+        ]
+      },
+      {
+        "card_ids": [
+          "B3 079",
+          "B3 079",
+          "B3 081",
+          "B3 081",
+          "A2 092",
+          "B3 078",
+          "A1 154",
+          "P-A 007",
+          "P-A 007",
+          "B1 225",
+          "B1 225",
+          "B3 149",
+          "A2b 070",
+          "A2 150",
+          "P-A 005",
+          "P-A 005",
+          "B3 147",
+          "P-A 002",
+          "B2 147",
+          "B3 154"
+        ],
+        "energy_types": [
+          "Fighting"
+        ]
+      }
+    ],
+    "player_codes": [
+      "K { max_depth: 2 }",
+      "K { max_depth: 3 }"
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "schema": 1,
+  "addon_version": "0.7.2",
+  "python": "/home/dacz8976/.cache/pocket-deck-lab/run5-venv/bin/python",
+  "module": "/home/dacz8976/.cache/pocket-deck-lab/run5-venv/lib/python3.14/site-packages/pdl_rl_env.abi3.so",
+  "module_sha256": "0fee43ceaf9cf6bc15ed2319bb08c100397621a60703880cf26ace8f044a9101",
+  "extensions": {
+    "/home/dacz8976/.cache/pocket-deck-lab/run5-venv/lib/python3.14/site-packages/pdl_rl_env.abi3.so": "0fee43ceaf9cf6bc15ed2319bb08c100397621a60703880cf26ace8f044a9101"
+  },
+  "decks": {
+    "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/altaria.txt": "435a2bebc567ca8357696e400643fdc821cc36ae4765a7a16663fd4413a3bd7f",
+    "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/lucario.txt": "46a4820bc788b4fd9ac1d9491e62bf7123c467441e7e30012e42e8a70c91e3f3"
+  },
+  "script_sha256": "53ce2e2369c36aec010b26e001fb32596a6a29087b991a2cfeaecd1581ad6cba",
+  "vocab": [
+    "A1 154",
+    "A1 225",
+    "A2 092",
+    "A2 150",
+    "A2b 070",
+    "A4a 059",
+    "B1 102",
+    "B1 184",
+    "B1 196",
+    "B1 225",
+    "B2 147",
+    "B2 153",
+    "B2b 040",
+    "B3 078",
+    "B3 079",
+    "B3 081",
+    "B3 147",
+    "B3 149",
+    "B3 154",
+    "B3a 020",
+    "B3b 064",
+    "P-A 002",
+    "P-A 005",
+    "P-A 007"
+  ],
+  "games": 20,
+  "seed": 21101200000,
+  "observation_dim": 589,
+  "action_dim": 171,
+  "chance_seeds_per_action": [
+    1592590336,
+    1592590337,
+    1592590338,
+    1592590339
+  ],
+  "diagnostics_available": true
+}

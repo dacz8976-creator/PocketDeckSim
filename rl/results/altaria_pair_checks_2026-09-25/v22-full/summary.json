@@ -1,0 +1,176 @@
+{
+  "by_action_kind": {
+    "Activate": {
+      "count_checked": 40,
+      "flag_checked": 9,
+      "flag_skip_changed_active": 31,
+      "layout_checked": 40,
+      "offered": 40
+    },
+    "ApplyDamage": {
+      "count_checked": 54,
+      "flag_checked": 54,
+      "layout_checked": 54,
+      "offered": 54
+    },
+    "Attach": {
+      "count_checked": 2658,
+      "flag_checked": 2632,
+      "flag_skip_ended": 26,
+      "layout_checked": 2658,
+      "offered": 2658
+    },
+    "AttachTool": {
+      "count_checked": 96,
+      "flag_checked": 96,
+      "layout_checked": 96,
+      "offered": 96
+    },
+    "Attack": {
+      "count_checked": 492,
+      "count_skip_unpriced": 137,
+      "flag_checked": 383,
+      "flag_skip_ended": 27,
+      "flag_skip_pending_choice": 82,
+      "flag_skip_unpriced": 137,
+      "layout_checked": 629,
+      "offered": 629
+    },
+    "DiscardActiveStadium": {
+      "count_checked": 18,
+      "flag_checked": 18,
+      "layout_checked": 18,
+      "offered": 18
+    },
+    "DiscardToolFromPokemon": {
+      "count_checked": 28,
+      "flag_checked": 28,
+      "layout_checked": 28,
+      "offered": 28
+    },
+    "EndTurn": {
+      "count_checked": 1522,
+      "count_skip_self_damage": 28,
+      "count_skip_unpriced": 17,
+      "flag_checked": 1511,
+      "flag_skip_changed_active": 4,
+      "flag_skip_ended": 28,
+      "flag_skip_pending_choice": 7,
+      "flag_skip_unpriced": 17,
+      "layout_checked": 1567,
+      "offered": 1567
+    },
+    "Evolve": {
+      "count_checked": 406,
+      "flag_checked": 249,
+      "flag_skip_changed_active": 157,
+      "layout_checked": 406,
+      "offered": 406
+    },
+    "Heal": {
+      "count_checked": 4,
+      "flag_checked": 4,
+      "layout_checked": 4,
+      "offered": 4
+    },
+    "Place": {
+      "count_checked": 883,
+      "flag_checked": 850,
+      "flag_skip_changed_active": 33,
+      "layout_checked": 883,
+      "offered": 883
+    },
+    "Play": {
+      "count_checked": 1801,
+      "count_skip_unpriced": 385,
+      "flag_checked": 1457,
+      "flag_skip_ended": 1,
+      "flag_skip_pending_choice": 343,
+      "flag_skip_unpriced": 385,
+      "layout_checked": 2186,
+      "offered": 2186
+    },
+    "Promote": {
+      "count_checked": 55,
+      "flag_skip_changed_active": 55,
+      "layout_checked": 55,
+      "offered": 55
+    },
+    "Retreat": {
+      "count_checked": 1205,
+      "flag_checked": 76,
+      "flag_skip_changed_active": 1126,
+      "flag_skip_ended": 3,
+      "layout_checked": 1205,
+      "offered": 1205
+    }
+  },
+  "elapsed_seconds": 75.13776086800135,
+  "examples": [],
+  "identity": {
+    "action_dim": 171,
+    "addon_version": "0.7.2",
+    "chance_seeds_per_action": [
+      1592590336,
+      1592590337,
+      1592590338,
+      1592590339
+    ],
+    "decks": {
+      "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/altaria.txt": "435a2bebc567ca8357696e400643fdc821cc36ae4765a7a16663fd4413a3bd7f",
+      "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/lucario.txt": "46a4820bc788b4fd9ac1d9491e62bf7123c467441e7e30012e42e8a70c91e3f3"
+    },
+    "diagnostics_available": true,
+    "extensions": {
+      "/home/dacz8976/.cache/pocket-deck-lab/run5-venv/lib/python3.14/site-packages/pdl_rl_env.abi3.so": "0fee43ceaf9cf6bc15ed2319bb08c100397621a60703880cf26ace8f044a9101"
+    },
+    "games": 20,
+    "module": "/home/dacz8976/.cache/pocket-deck-lab/run5-venv/lib/python3.14/site-packages/pdl_rl_env.abi3.so",
+    "module_sha256": "0fee43ceaf9cf6bc15ed2319bb08c100397621a60703880cf26ace8f044a9101",
+    "observation_dim": 589,
+    "python": "/home/dacz8976/.cache/pocket-deck-lab/run5-venv/bin/python",
+    "schema": 1,
+    "script_sha256": "53ce2e2369c36aec010b26e001fb32596a6a29087b991a2cfeaecd1581ad6cba",
+    "seed": 21101200000,
+    "vocab": [
+      "A1 154",
+      "A1 225",
+      "A2 092",
+      "A2 150",
+      "A2b 070",
+      "A4a 059",
+      "B1 102",
+      "B1 184",
+      "B1 196",
+      "B1 225",
+      "B2 147",
+      "B2 153",
+      "B2b 040",
+      "B3 078",
+      "B3 079",
+      "B3 081",
+      "B3 147",
+      "B3 149",
+      "B3 154",
+      "B3a 020",
+      "B3b 064",
+      "P-A 002",
+      "P-A 005",
+      "P-A 007"
+    ]
+  },
+  "passed": true,
+  "scope": "All offered moves; four sampled chance streams for eligible loss flags. Terminal, pending, changed-active and stochastic boundaries explicitly skipped. This audit does not validate every points/win forecast.",
+  "totals": {
+    "count_checked": 9262,
+    "count_skip_self_damage": 28,
+    "count_skip_unpriced": 539,
+    "flag_checked": 7367,
+    "flag_skip_changed_active": 1406,
+    "flag_skip_ended": 85,
+    "flag_skip_pending_choice": 432,
+    "flag_skip_unpriced": 539,
+    "layout_checked": 9829,
+    "offered": 9829
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "argv": [
+    "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/addon-0.7.2/deckgym",
+    "simulate",
+    "--num",
+    "1",
+    "--players",
+    "k3,k3",
+    "--seed",
+    "21101300001",
+    "--results-output",
+    "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/altaria_pair_checks_2026-09-25/parity-full/cli/altaria-lucario-k3-k3__seed-21101300001/record",
+    "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/altaria.txt",
+    "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/lucario.txt"
+  ],
+  "cwd": "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim",
+  "return_code": 0,
+  "stderr": "PDL decision-integrity candidate 0.1.0-pdl.rules4: closed-list observations; unknown opponent continuations are UNPRICED. Historical seed results are not comparable.\nWelcome to deckgym simulation!\nRunning 1 games with players:\n\tPlayer 0: K { max_depth: 3 }(/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/altaria.txt)\n\tPlayer 1: K { max_depth: 3 }(/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/research/lucario.txt)\nRan 1 simulations in 370ms 150us 190ns (370ms 150us 190ns per game)!\nAverage number of turns per game: 11.00\nAverage number of plys per game: 74.00\nAverage number of degrees per ply: 4.43\nPlayer 0 won: 1 (100.00%)\nPlayer 1 won: 0 (0.00%)\nDraws: 0 (0.00%)\n",
+  "stdout": ""
+}

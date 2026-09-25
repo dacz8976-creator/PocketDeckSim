@@ -1,0 +1,18 @@
+FAIL  Interface C1+C2 passed
+OK    C1 ran 100 k3 replays (50 seeds)
+OK    C2 ran 100 hidden-card games
+OK    C1/C2 used seeds 21,101,000,000 / 21,101,100,000
+OK    C1/C2 used v2.2 features
+OK    C1/C2 used Altaria + Lucario
+OK    C1/C2 used add-on module 0fee43ce
+OK    v2.2 check passed
+OK    v2.2 ran 20 games
+OK    v2.2 used seed 21,101,200,000
+OK    v2.2 used Altaria + Lucario
+OK    v2.2 used add-on module 0fee43ce
+OK    CLI/add-on parity passed
+OK    Parity ran all 8 cases
+OK    Parity used seeds 21,101,300,000-001
+OK    Parity 16 of 16 games matched
+OK    Parity used engine e6593ed8 and module 0fee43ce
+FAIL: 1 of 17 readout checks failed; the Altaria run stays unread

@@ -1,0 +1,109 @@
+Decks: altaria.txt 435a2bebc567ca83, lucario.txt 46a4820bc788b4fd; module 0fee43ceaf9cf6bc; engine e6593ed816d0d5db
+Seeds: C1 21,101,000,000 to 21,101,000,049; C2 21,101,100,000 to 21,101,100,099. Output: /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/altaria_pair_checks_2026-09-25/interface-full
+C1 progress: 10/50 seeds, 20/20 exact k3 replays
+C1 progress: 20/50 seeds, 40/40 exact k3 replays
+C1 progress: 30/50 seeds, 60/60 exact k3 replays
+C1 progress: 40/50 seeds, 80/80 exact k3 replays
+C1 progress: 50/50 seeds, 100/100 exact k3 replays
+C2 progress: 10/100 games, 10 completed
+C2 progress: 20/100 games, 20 completed
+C2 progress: 30/100 games, 30 completed
+C2 progress: 40/100 games, 40 completed
+C2 progress: 50/100 games, 50 completed
+C2 progress: 60/100 games, 60 completed
+C2 progress: 70/100 games, 70 completed
+C2 progress: 80/100 games, 80 completed
+C2 progress: 90/100 games, 88 completed
+C2 progress: 100/100 games, 98 completed
+{
+  "features": "v2.2",
+  "input_identity": "input_identity.json",
+  "c2": {
+    "pass": false,
+    "games_expected": 100,
+    "games_completed_with_decisions": 98,
+    "random_games_expected": 50,
+    "one_k3_games_expected": 50,
+    "probe_decisions": 4971,
+    "hidden_invariance_pass": true,
+    "own_hand_controls_detect_changes": true,
+    "counts": {
+      "random.hidden.observation_and_action_features": {
+        "checked": 4182,
+        "same": 4182,
+        "changed": 0,
+        "none": 0,
+        "errors": 0
+      },
+      "random.hidden.legal_moves": {
+        "checked": 4182,
+        "same": 4182,
+        "changed": 0,
+        "none": 0,
+        "errors": 0
+      },
+      "random.own_hand_control.observation_and_action_features": {
+        "checked": 3097,
+        "same": 0,
+        "changed": 3097,
+        "none": 1085,
+        "errors": 0
+      },
+      "random.own_hand_control.legal_moves": {
+        "checked": 4182,
+        "same": 1437,
+        "changed": 2745,
+        "none": 0,
+        "errors": 0
+      },
+      "one_k3.hidden.observation_and_action_features": {
+        "checked": 789,
+        "same": 789,
+        "changed": 0,
+        "none": 0,
+        "errors": 0
+      },
+      "one_k3.hidden.legal_moves": {
+        "checked": 789,
+        "same": 789,
+        "changed": 0,
+        "none": 0,
+        "errors": 0
+      },
+      "one_k3.own_hand_control.observation_and_action_features": {
+        "checked": 764,
+        "same": 0,
+        "changed": 764,
+        "none": 25,
+        "errors": 0
+      },
+      "one_k3.own_hand_control.legal_moves": {
+        "checked": 789,
+        "same": 106,
+        "changed": 683,
+        "none": 0,
+        "errors": 0
+      }
+    }
+  },
+  "post_check_identity": {
+    "sha256": {
+      "deck_a": "435a2bebc567ca8357696e400643fdc821cc36ae4765a7a16663fd4413a3bd7f",
+      "deck_b": "46a4820bc788b4fd9ac1d9491e62bf7123c467441e7e30012e42e8a70c91e3f3",
+      "module": "0fee43ceaf9cf6bc15ed2319bb08c100397621a60703880cf26ace8f044a9101"
+    },
+    "unchanged": true
+  },
+  "pass": false,
+  "scope": "C1/C2 only; no training; v2.2 skip/forecast diagnostics are separate",
+  "c1": {
+    "pass": true,
+    "distinct_seeds": 50,
+    "k3_replays_expected": 100,
+    "k3_replays_exact": 100,
+    "k3_failures": 0,
+    "k2_negative_control_exact_matches": 22,
+    "decisions_compared": 2033,
+    "fingerprint_mismatches": 0
+  }
+}

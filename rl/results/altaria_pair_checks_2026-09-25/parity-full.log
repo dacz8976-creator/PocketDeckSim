@@ -1,0 +1,31 @@
+Seeds: 21,101,300,000 to 21,101,300,001 for each of 8 cases (16 games). Engine e6593ed816d0d5db, module 0fee43ceaf9cf6bc. Output: /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/altaria_pair_checks_2026-09-25/parity-full
+{
+  "status": "passed",
+  "games_expected": 16,
+  "games_recorded": 16,
+  "games_matched": 16,
+  "identity_unchanged": true,
+  "identity_before": {
+    "engine_sha256": "e6593ed816d0d5dbaf24fc8bc81a8317ed8069cda6ae7162c3d53e1fa7a12415",
+    "module_sha256": "0fee43ceaf9cf6bc15ed2319bb08c100397621a60703880cf26ace8f044a9101",
+    "decks": {
+      "blaziken": "69c521a33339a45633c5770b3e4acad5b8912f9367288a3044147e7fa45d5800",
+      "lucario": "46a4820bc788b4fd9ac1d9491e62bf7123c467441e7e30012e42e8a70c91e3f3",
+      "weezing": "c322fe64d6052bf9c55875ecf8bebcf9460e819df19d21fc8a20a04ff7a79e9b",
+      "altaria": "435a2bebc567ca8357696e400643fdc821cc36ae4765a7a16663fd4413a3bd7f",
+      "suicune": "7affe6530b8d096b2d81425380bbb92c303de84458bc2fd1ee0936c40f922633"
+    }
+  },
+  "identity_after": {
+    "engine_sha256": "e6593ed816d0d5dbaf24fc8bc81a8317ed8069cda6ae7162c3d53e1fa7a12415",
+    "module_sha256": "0fee43ceaf9cf6bc15ed2319bb08c100397621a60703880cf26ace8f044a9101",
+    "decks": {
+      "blaziken": "69c521a33339a45633c5770b3e4acad5b8912f9367288a3044147e7fa45d5800",
+      "lucario": "46a4820bc788b4fd9ac1d9491e62bf7123c467441e7e30012e42e8a70c91e3f3",
+      "weezing": "c322fe64d6052bf9c55875ecf8bebcf9460e819df19d21fc8a20a04ff7a79e9b",
+      "altaria": "435a2bebc567ca8357696e400643fdc821cc36ae4765a7a16663fd4413a3bd7f",
+      "suicune": "7affe6530b8d096b2d81425380bbb92c303de84458bc2fd1ee0936c40f922633"
+    }
+  },
+  "input_identity": "input_identity.json"
+}
