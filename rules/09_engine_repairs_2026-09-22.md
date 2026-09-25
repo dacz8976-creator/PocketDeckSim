@@ -124,6 +124,16 @@ The accepted 225430 segment revealed that a zero-HP attacker was discarded befor
   any Pokémon from their hand to evolve their Active Pokémon" is checked only in `can_evolve_at_position`
   (`engine/src/move_generation/mod.rs`); `can_play_rare_candy` (`move_generation_trainer.rs`) checks Malamar's
   Evolution Jammer but not Primeval Law, though the engine's own comment on Evolution Jammer says the same wording
-  stops Rare Candy. No Pocket source settles the ruling; the engine should at least agree with itself. No deck here
+  stops Rare Candy. Dustin (2026-09-25, owner testimony, his in-game test pending): "Pretty sure it blocks evolution
+  from Rare Candy or otherwise." So Rare Candy onto the Active should be blocked, as for Evolution Jammer. No deck here
   has Aerodactyl ex; against one, the Rare Candy decks (research: Hydreigon, Blaziken, Suicune; Dustin's 01, 02, 05,
   06; brews 01, 03b, 05, 05b, 09) would get an illegal play. Fix after kpr's table is read.
+- **Heavy Helmet reads the printed Retreat Cost, not the current one** (Dustin's answer, 2026-09-25, owner testimony;
+  his in-game test pending; `rl/results/recordings_check_2026-09-25/OWNER_ANSWERS.md` on main). "If the Pokémon this
+  card is attached to has a Retreat Cost of 3 or more, it takes −20 damage from attacks": Dustin says it uses the
+  current cost, like attacks that depend on it. The engine checks the printed cost (`heavy_helmet_reduction`,
+  `engine/src/hooks/core.rs`), so it gives −20 under Peculiar Plaza at 1–2 and none when Ariados's Trap Territory or
+  Goo-zooka raises a printed 2 to 3. No table deck has Heavy Helmet; Dustin's 01 and 03 do, his 12 has Ariados, and
+  brews 05b and 10 play Plaza. The fix is to read the effective Retreat Cost the engine already computes for retreat
+  (`get_retreat_cost_for_player`); it needs an identity replay, after kpr's table is read. Any scorer that prices Heavy
+  Helmet (kd did; the kt draft would) follows the engine until then and changes with it.
