@@ -323,14 +323,16 @@ pub(crate) fn record_unpriced(action: &Action, reason: &str) {
 
 thread_local! {
     /// B1' public pricing (the `kp<N>` tiers): while set, an effect whose text mentions the opponent's
-    /// hand or deck is resolved against the Unknown cards instead of being left unpriced.
+    /// hand or deck, and is one of the audited texts (players/public_pricing_player.rs, `AUDITED_TEXTS`),
+    /// is resolved against the Unknown cards instead of being left unpriced.
     static PUBLIC_PRICING: Cell<bool> = const { Cell::new(false) };
 }
 
 /// Runs `f` with public pricing on for this thread (the `kp<N>` tiers' decisions). An Unknown card has
 /// no identity, so an effect that looks for a Supporter or a Basic among the opponent's hidden cards
 /// finds none, while its public parts are priced as printed: Darkness Claw's damage, Copycat's draw count
-/// (the opponent's hand size), Mars' draw count (their remaining points). No card is special-cased.
+/// (the opponent's hand size), Mars' draw count (their remaining points). No card is special-cased, but
+/// only audited texts are lifted: a card added later stays unpriced until it is audited.
 pub fn with_public_pricing<T>(f: impl FnOnce() -> T) -> T {
     struct Restore(bool);
     impl Drop for Restore {
@@ -474,7 +476,7 @@ fn hidden_continuation_reason_in(
     }
     .to_lowercase();
     if !public_board_only_ability
-        && !public_pricing
+        && !(public_pricing && crate::players::public_pricing_player::is_audited(&text))
         && text.contains("opponent")
         && (text.contains("hand") || text.contains("deck"))
         && unknown(1 - action.actor)
