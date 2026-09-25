@@ -1,0 +1,280 @@
+Brew pilot check: Dustin's 24 brews under k3 and kp3   (2026-09-25 10:08)
+
+Diagnostic add-on /home/dacz8976/diag-kp-addon/module/pdl_rl_env.abi3.so sha256 c048388b4bcf7103375ea0a1e7c9e965be8e350000c3ac873bd111b69e1eae19 (engine at c7cb688; not the verified 0.7.2 wheel).
+60 paired deals per matchup, seeds 21,070,000,000 + brew x 1,000,000 + opponent x 10,000 + i. Games that did not replay exactly or raised an error: 0 of 23,040; a deal counts only when all 2 rows' games are clean.
+
+Rows are brew pilot | opponent pilot. The brew's win % in each row; three paired differences (95% interval):
+  'pilot' = kp3|k3 - k3|k3 (what k3 understates, against k3 opponents);
+  'meta'  = kp3|kp3 - kp3|k3 (does it move again when the meta side prices too);
+  'both'  = kp3|kp3 - k3|k3 (kp3 on both sides against k3 on both sides).
+Per brew turn where Thieving Incisors (TI) / Copycat was on offer: turns the brew used it / turns on offer.
+
+  brew v opponent                       n  k3|k3  kp3|k3  kp3|kp3         pilot          meta          both        TI k3|k3    TI kp3|k3   TI kp3|kp3    Copycat k3|k3 Copycat kp3|k3
+  brew-06-pyukumuku-sil v altaria      60    8.3     nan      1.7    +nan ±nan     +nan ±nan     -6.7 ±6.4              0/0            —          0/0       64/176 36%              —
+  brew-06-pyukumuku-sil v blaziken     60    5.0     nan      5.0    +nan ±nan     +nan ±nan     +0.0 ±4.7              0/0            —          0/0       59/141 42%              —
+  brew-06-pyukumuku-sil v hydreigon    60   10.0     nan      8.3    +nan ±nan     +nan ±nan     -1.7 ±8.7              0/0            —          0/0       57/143 40%              —
+  brew-06-pyukumuku-sil v lucario      60   10.0     nan      0.0    +nan ±nan     +nan ±nan    -10.0 ±7.7              0/0            —          0/0       69/185 37%              —
+  brew-06-pyukumuku-sil v sceptile     60    5.0     nan      1.7    +nan ±nan     +nan ±nan     -3.3 ±6.5              0/0            —          0/0       66/145 46%              —
+  brew-06-pyukumuku-sil v suicune      60    3.3     nan      0.0    +nan ±nan     +nan ±nan     -3.3 ±4.6              0/0            —          0/0       59/137 43%              —
+  brew-06-pyukumuku-sil v vespiquen    60   21.7     nan     16.7    +nan ±nan     +nan ±nan     -5.0 ±9.8              0/0            —          0/0       62/186 33%              —
+  brew-06-pyukumuku-sil v weezing      60    1.7     nan      1.7    +nan ±nan     +nan ±nan     +0.0 ±4.7              0/0            —          0/0       60/131 46%              —
+  brew-06-pyukumuku-sil v all eight   480    8.1     nan      4.4    +nan ±nan     +nan ±nan     -3.8 ±2.4              0/0            —          0/0     496/1244 40%              —
+
+  brew-06b-pyukumuku-si v altaria      60   18.3     nan     23.3    +nan ±nan     +nan ±nan     +5.0 ±11.8             0/0            —          0/0       52/176 30%              —
+  brew-06b-pyukumuku-si v blaziken     60   10.0     nan      8.3    +nan ±nan     +nan ±nan     -1.7 ±7.4              0/0            —          0/0       39/156 25%              —
+  brew-06b-pyukumuku-si v hydreigon    60   33.3     nan     28.3    +nan ±nan     +nan ±nan     -5.0 ±14.3             0/0            —          0/0       34/143 24%              —
+  brew-06b-pyukumuku-si v lucario      60   21.7     nan     15.0    +nan ±nan     +nan ±nan     -6.7 ±10.3             0/0            —          0/0       45/185 24%              —
+  brew-06b-pyukumuku-si v sceptile     60    6.7     nan      8.3    +nan ±nan     +nan ±nan     +1.7 ±7.4              0/0            —          0/0       47/136 35%              —
+  brew-06b-pyukumuku-si v suicune      60   10.0     nan      5.0    +nan ±nan     +nan ±nan     -5.0 ±7.3              0/0            —          0/0       50/157 32%              —
+  brew-06b-pyukumuku-si v vespiquen    60   30.0     nan     30.0    +nan ±nan     +nan ±nan     +0.0 ±13.2             0/0            —          0/0       41/180 23%              —
+  brew-06b-pyukumuku-si v weezing      60   20.0     nan     20.0    +nan ±nan     +nan ±nan     +0.0 ±10.4             0/0            —          0/0       54/149 36%              —
+  brew-06b-pyukumuku-si v all eight   480   18.8     nan     17.3    +nan ±nan     +nan ±nan     -1.5 ±3.7              0/0            —          0/0     362/1282 28%              —
+
+  brew-05b-meowstic-hat v altaria      60   48.3     nan     43.3    +nan ±nan     +nan ±nan     -5.0 ±15.7             0/0            —          0/0       21/217 10%              —
+  brew-05b-meowstic-hat v blaziken     60   35.0     nan     40.0    +nan ±nan     +nan ±nan     +5.0 ±17.1             0/0            —          0/0       25/192 13%              —
+  brew-05b-meowstic-hat v hydreigon    60   20.0     nan     10.0    +nan ±nan     +nan ±nan    -10.0 ±12.1             0/0            —          0/0       31/170 18%              —
+  brew-05b-meowstic-hat v lucario      60   63.3     nan     61.7    +nan ±nan     +nan ±nan     -1.7 ±12.8             0/0            —          0/0       30/195 15%              —
+  brew-05b-meowstic-hat v sceptile     60   20.0     nan     23.3    +nan ±nan     +nan ±nan     +3.3 ±11.4             0/0            —          0/0       37/222 17%              —
+  brew-05b-meowstic-hat v suicune      60   25.0     nan     25.0    +nan ±nan     +nan ±nan     +0.0 ±9.3              0/0            —          0/0       37/185 20%              —
+  brew-05b-meowstic-hat v vespiquen    60   20.0     nan     16.7    +nan ±nan     +nan ±nan     -3.3 ±12.3             0/0            —          0/0       40/190 21%              —
+  brew-05b-meowstic-hat v weezing      60   21.7     nan     15.0    +nan ±nan     +nan ±nan     -6.7 ±10.3             0/0            —          0/0       25/166 15%              —
+  brew-05b-meowstic-hat v all eight   480   31.7     nan     29.4    +nan ±nan     +nan ±nan     -2.3 ±4.5              0/0            —          0/0     246/1537 16%              —
+
+  brew-01-arceus-crobat v altaria      60   30.0     nan     35.0    +nan ±nan     +nan ±nan     +5.0 ±12.7             0/0            —          0/0              0/0              —
+  brew-01-arceus-crobat v blaziken     60   25.0     nan     20.0    +nan ±nan     +nan ±nan     -5.0 ±9.8              0/0            —          0/0              0/0              —
+  brew-01-arceus-crobat v hydreigon    60   30.0     nan      8.3    +nan ±nan     +nan ±nan    -21.7 ±12.4             0/0            —          0/0              0/0              —
+  brew-01-arceus-crobat v lucario      60   21.7     nan     15.0    +nan ±nan     +nan ±nan     -6.7 ±7.9              0/0            —          0/0              0/0              —
+  brew-01-arceus-crobat v sceptile     60   21.7     nan     20.0    +nan ±nan     +nan ±nan     -1.7 ±8.7              0/0            —          0/0              0/0              —
+  brew-01-arceus-crobat v suicune      60   13.3     nan     11.7    +nan ±nan     +nan ±nan     -1.7 ±5.7              0/0            —          0/0              0/0              —
+  brew-01-arceus-crobat v vespiquen    60   16.7     nan     13.3    +nan ±nan     +nan ±nan     -3.3 ±8.0              0/0            —          0/0              0/0              —
+  brew-01-arceus-crobat v weezing      60   21.7     nan     18.3    +nan ±nan     +nan ±nan     -3.3 ±9.3              0/0            —          0/0              0/0              —
+  brew-01-arceus-crobat v all eight   480   22.5     nan     17.7    +nan ±nan     +nan ±nan     -4.8 ±3.4              0/0            —          0/0              0/0              —
+
+  brew-03a-arceus-nihil v altaria      60   51.7     nan     40.0    +nan ±nan     +nan ±nan    -11.7 ±12.4             0/0            —          0/0              0/0              —
+  brew-03a-arceus-nihil v blaziken     60   20.0     nan     15.0    +nan ±nan     +nan ±nan     -5.0 ±10.9             0/0            —          0/0              0/0              —
+  brew-03a-arceus-nihil v hydreigon    60   15.0     nan     11.7    +nan ±nan     +nan ±nan     -3.3 ±10.4             0/0            —          0/0              0/0              —
+  brew-03a-arceus-nihil v lucario      60   13.3     nan      5.0    +nan ±nan     +nan ±nan     -8.3 ±7.1              0/0            —          0/0              0/0              —
+  brew-03a-arceus-nihil v sceptile     60   18.3     nan     16.7    +nan ±nan     +nan ±nan     -1.7 ±5.7              0/0            —          0/0              0/0              —
+  brew-03a-arceus-nihil v suicune      60   13.3     nan      8.3    +nan ±nan     +nan ±nan     -5.0 ±5.6              0/0            —          0/0              0/0              —
+  brew-03a-arceus-nihil v vespiquen    60    6.7     nan      5.0    +nan ±nan     +nan ±nan     -1.7 ±5.7              0/0            —          0/0              0/0              —
+  brew-03a-arceus-nihil v weezing      60   13.3     nan      8.3    +nan ±nan     +nan ±nan     -5.0 ±9.8              0/0            —          0/0              0/0              —
+  brew-03a-arceus-nihil v all eight   480   19.0     nan     13.8    +nan ±nan     +nan ±nan     -5.2 ±3.1              0/0            —          0/0              0/0              —
+
+  brew-07-hoopa-darkrai v altaria      60   71.7     nan     70.0    +nan ±nan     +nan ±nan     -1.7 ±10.9             0/0            —          0/0        13/96 14%              —
+  brew-07-hoopa-darkrai v blaziken     60   61.7     nan     66.7    +nan ±nan     +nan ±nan     +5.0 ±13.5             0/0            —          0/0         4/126 3%              —
+  brew-07-hoopa-darkrai v hydreigon    60   85.0     nan     81.7    +nan ±nan     +nan ±nan     -3.3 ±9.3              0/0            —          0/0         6/111 5%              —
+  brew-07-hoopa-darkrai v lucario      60   48.3     nan     48.3    +nan ±nan     +nan ±nan     +0.0 ±14.0             0/0            —          0/0         8/118 7%              —
+  brew-07-hoopa-darkrai v sceptile     60   26.7     nan     28.3    +nan ±nan     +nan ±nan     +1.7 ±9.9              0/0            —          0/0         8/107 7%              —
+  brew-07-hoopa-darkrai v suicune      60   66.7     nan     58.3    +nan ±nan     +nan ±nan     -8.3 ±11.7             0/0            —          0/0         6/166 4%              —
+  brew-07-hoopa-darkrai v vespiquen    60   53.3     nan     56.7    +nan ±nan     +nan ±nan     +3.3 ±14.0             0/0            —          0/0         4/129 3%              —
+  brew-07-hoopa-darkrai v weezing      60   70.0     nan     70.0    +nan ±nan     +nan ±nan     +0.0 ±12.3             0/0            —          0/0       10/100 10%              —
+  brew-07-hoopa-darkrai v all eight   480   60.4     nan     60.0    +nan ±nan     +nan ±nan     -0.4 ±4.2              0/0            —          0/0        59/953 6%              —
+
+  brew-08-entei-rainbow v altaria      60   41.7     nan     38.3    +nan ±nan     +nan ±nan     -3.3 ±16.1             0/0            —          0/0       33/252 13%              —
+  brew-08-entei-rainbow v blaziken     60   31.7     nan     18.3    +nan ±nan     +nan ±nan    -13.3 ±12.7             0/0            —          0/0        17/230 7%              —
+  brew-08-entei-rainbow v hydreigon    60   85.0     nan     51.7    +nan ±nan     +nan ±nan    -33.3 ±15.2             0/0            —          0/0        23/318 7%              —
+  brew-08-entei-rainbow v lucario      60   36.7     nan     36.7    +nan ±nan     +nan ±nan     +0.0 ±14.0             0/0            —          0/0        18/220 8%              —
+  brew-08-entei-rainbow v sceptile     60   53.3     nan     53.3    +nan ±nan     +nan ±nan     +0.0 ±14.0             0/0            —          0/0       30/251 12%              —
+  brew-08-entei-rainbow v suicune      60   26.7     nan     30.0    +nan ±nan     +nan ±nan     +3.3 ±12.3             0/0            —          0/0        22/245 9%              —
+  brew-08-entei-rainbow v vespiquen    60   76.7     nan     76.7    +nan ±nan     +nan ±nan     +0.0 ±15.5             0/0            —          0/0       23/233 10%              —
+  brew-08-entei-rainbow v weezing      60   48.3     nan     45.0    +nan ±nan     +nan ±nan     -3.3 ±17.4             0/0            —          0/0        18/242 7%              —
+  brew-08-entei-rainbow v all eight   480   50.0     nan     43.8    +nan ±nan     +nan ±nan     -6.2 ±5.3              0/0            —          0/0      184/1991 9%              —
+
+  brew-09-sableye-obsta v altaria      60   61.7     nan     61.7    +nan ±nan     +nan ±nan     +0.0 ±14.7             0/0            —          0/0       35/194 18%              —
+  brew-09-sableye-obsta v blaziken     60   61.7     nan     61.7    +nan ±nan     +nan ±nan     +0.0 ±14.7             0/0            —          0/0       21/185 11%              —
+  brew-09-sableye-obsta v hydreigon    60   80.0     nan     56.7    +nan ±nan     +nan ±nan    -23.3 ±15.7             0/0            —          0/0       31/215 14%              —
+  brew-09-sableye-obsta v lucario      60   60.0     nan     48.3    +nan ±nan     +nan ±nan    -11.7 ±13.3             0/0            —          0/0       20/175 11%              —
+  brew-09-sableye-obsta v sceptile     60   30.0     nan     30.0    +nan ±nan     +nan ±nan     +0.0 ±11.4             0/0            —          0/0       22/156 14%              —
+  brew-09-sableye-obsta v suicune      60   38.3     nan     45.0    +nan ±nan     +nan ±nan     +6.7 ±13.9             0/0            —          0/0       22/173 13%              —
+  brew-09-sableye-obsta v vespiquen    60   35.0     nan     31.7    +nan ±nan     +nan ±nan     -3.3 ±12.3             0/0            —          0/0       38/165 23%              —
+  brew-09-sableye-obsta v weezing      60   41.7     nan     43.3    +nan ±nan     +nan ±nan     +1.7 ±12.8             0/0            —          0/0       26/158 16%              —
+  brew-09-sableye-obsta v all eight   480   51.0     nan     47.3    +nan ±nan     +nan ±nan     -3.8 ±4.9              0/0            —          0/0     215/1421 15%              —
+
+  brew-10-diancie-girat v altaria      60   46.7     nan     38.3    +nan ±nan     +nan ±nan     -8.3 ±13.4             0/0            —          0/0       24/197 12%              —
+  brew-10-diancie-girat v blaziken     60   45.0     nan     31.7    +nan ±nan     +nan ±nan    -13.3 ±14.3             0/0            —          0/0        12/232 5%              —
+  brew-10-diancie-girat v hydreigon    60   60.0     nan     46.7    +nan ±nan     +nan ±nan    -13.3 ±16.4             0/0            —          0/0        12/200 6%              —
+  brew-10-diancie-girat v lucario      60   43.3     nan     56.7    +nan ±nan     +nan ±nan    +13.3 ±12.7             0/0            —          0/0         9/159 6%              —
+  brew-10-diancie-girat v sceptile     60   51.7     nan     51.7    +nan ±nan     +nan ±nan     +0.0 ±12.3             0/0            —          0/0         6/211 3%              —
+  brew-10-diancie-girat v suicune      60   33.3     nan     28.3    +nan ±nan     +nan ±nan     -5.0 ±11.8             0/0            —          0/0        14/225 6%              —
+  brew-10-diancie-girat v vespiquen    60   48.3     nan     51.7    +nan ±nan     +nan ±nan     +3.3 ±12.3             0/0            —          0/0        14/197 7%              —
+  brew-10-diancie-girat v weezing      60   26.7     nan     21.7    +nan ±nan     +nan ±nan     -5.0 ±10.9             0/0            —          0/0        13/216 6%              —
+  brew-10-diancie-girat v all eight   480   44.4     nan     40.8    +nan ±nan     +nan ±nan     -3.5 ±4.7              0/0            —          0/0      104/1637 6%              —
+
+  01-muk-glimmora-kinga v altaria      60   30.0     nan     30.0    +nan ±nan     +nan ±nan     +0.0 ±14.0             0/0            —          0/0       61/188 32%              —
+  01-muk-glimmora-kinga v blaziken     60   16.7     nan     10.0    +nan ±nan     +nan ±nan     -6.7 ±13.1             0/0            —          0/0       55/193 28%              —
+  01-muk-glimmora-kinga v hydreigon    60   35.0     nan     30.0    +nan ±nan     +nan ±nan     -5.0 ±15.0             0/0            —          0/0       73/222 33%              —
+  01-muk-glimmora-kinga v lucario      60   13.3     nan      6.7    +nan ±nan     +nan ±nan     -6.7 ±10.3             0/0            —          0/0       49/180 27%              —
+  01-muk-glimmora-kinga v sceptile     60    6.7     nan      5.0    +nan ±nan     +nan ±nan     -1.7 ±5.7              0/0            —          0/0       72/185 39%              —
+  01-muk-glimmora-kinga v suicune      60    8.3     nan     10.0    +nan ±nan     +nan ±nan     +1.7 ±9.9              0/0            —          0/0       74/201 37%              —
+  01-muk-glimmora-kinga v vespiquen    60   23.3     nan     16.7    +nan ±nan     +nan ±nan     -6.7 ±11.3             0/0            —          0/0       67/210 32%              —
+  01-muk-glimmora-kinga v weezing      60   20.0     nan     20.0    +nan ±nan     +nan ±nan     +0.0 ±12.3             0/0            —          0/0       54/186 29%              —
+  01-muk-glimmora-kinga v all eight   480   19.2     nan     16.0    +nan ±nan     +nan ±nan     -3.1 ±4.1              0/0            —          0/0     505/1565 32%              —
+
+  02-arceus-crobat v altaria           60   58.3     nan     48.3    +nan ±nan     +nan ±nan    -10.0 ±12.9             0/0            —          0/0       25/117 21%              —
+  02-arceus-crobat v blaziken          60   40.0     nan     46.7    +nan ±nan     +nan ±nan     +6.7 ±13.1             0/0            —          0/0       11/105 10%              —
+  02-arceus-crobat v hydreigon         60   50.0     nan     28.3    +nan ±nan     +nan ±nan    -21.7 ±16.2             0/0            —          0/0       11/110 10%              —
+  02-arceus-crobat v lucario           60   18.3     nan     18.3    +nan ±nan     +nan ±nan     +0.0 ±11.4             0/0            —          0/0       13/106 12%              —
+  02-arceus-crobat v sceptile          60   30.0     nan     25.0    +nan ±nan     +nan ±nan     -5.0 ±9.8              0/0            —          0/0       11/109 10%              —
+  02-arceus-crobat v suicune           60   15.0     nan     18.3    +nan ±nan     +nan ±nan     +3.3 ±8.0              0/0            —          0/0       14/127 11%              —
+  02-arceus-crobat v vespiquen         60   36.7     nan     26.7    +nan ±nan     +nan ±nan    -10.0 ±14.5             0/0            —          0/0        19/99 19%              —
+  02-arceus-crobat v weezing           60   18.3     nan     23.3    +nan ±nan     +nan ±nan     +5.0 ±10.9             0/0            —          0/0       20/113 18%              —
+  02-arceus-crobat v all eight        480   33.3     nan     29.4    +nan ±nan     +nan ±nan     -4.0 ±4.4              0/0            —          0/0      124/886 14%              —
+
+  03-wailord-indeedee-w v altaria      60   70.0     nan     68.3    +nan ±nan     +nan ±nan     -1.7 ±10.9             0/0            —          0/0        43/91 47%              —
+  03-wailord-indeedee-w v blaziken     60   71.7     nan     68.3    +nan ±nan     +nan ±nan     -3.3 ±11.4             0/0            —          0/0        32/90 36%              —
+  03-wailord-indeedee-w v hydreigon    60   73.3     nan     70.0    +nan ±nan     +nan ±nan     -3.3 ±12.3             0/0            —          0/0       26/117 22%              —
+  03-wailord-indeedee-w v lucario      60   48.3     nan     48.3    +nan ±nan     +nan ±nan     +0.0 ±12.3             0/0            —          0/0        35/67 52%              —
+  03-wailord-indeedee-w v sceptile     60   70.0     nan     70.0    +nan ±nan     +nan ±nan     +0.0 ±12.3             0/0            —          0/0       33/130 25%              —
+  03-wailord-indeedee-w v suicune      60   60.0     nan     60.0    +nan ±nan     +nan ±nan     +0.0 ±14.0             0/0            —          0/0       39/149 26%              —
+  03-wailord-indeedee-w v vespiquen    60   60.0     nan     63.3    +nan ±nan     +nan ±nan     +3.3 ±14.7             0/0            —          0/0       31/113 27%              —
+  03-wailord-indeedee-w v weezing      60   75.0     nan     66.7    +nan ±nan     +nan ±nan     -8.3 ±14.2             0/0            —          0/0       30/172 17%              —
+  03-wailord-indeedee-w v all eight   480   66.0     nan     64.4    +nan ±nan     +nan ±nan     -1.7 ±4.5              0/0            —          0/0      269/929 29%              —
+
+  04-absol-hoopa-darkra v altaria      60   56.7     nan     60.0    +nan ±nan     +nan ±nan     +3.3 ±14.7             0/0            —          0/0       22/215 10%              —
+  04-absol-hoopa-darkra v blaziken     60   41.7     nan     33.3    +nan ±nan     +nan ±nan     -8.3 ±14.9             0/0            —          0/0         7/187 4%              —
+  04-absol-hoopa-darkra v hydreigon    60   51.7     nan     46.7    +nan ±nan     +nan ±nan     -5.0 ±18.3             0/0            —          0/0         5/259 2%              —
+  04-absol-hoopa-darkra v lucario      60   45.0     nan     30.0    +nan ±nan     +nan ±nan    -15.0 ±12.2             0/0            —          0/0         4/154 3%              —
+  04-absol-hoopa-darkra v sceptile     60   20.0     nan     13.3    +nan ±nan     +nan ±nan     -6.7 ±11.3             0/0            —          0/0        11/182 6%              —
+  04-absol-hoopa-darkra v suicune      60   11.7     nan     26.7    +nan ±nan     +nan ±nan    +15.0 ±11.2             0/0            —          0/0         6/231 3%              —
+  04-absol-hoopa-darkra v vespiquen    60   10.0     nan     10.0    +nan ±nan     +nan ±nan     +0.0 ±9.3              0/0            —          0/0         9/196 5%              —
+  04-absol-hoopa-darkra v weezing      60   26.7     nan     26.7    +nan ±nan     +nan ±nan     +0.0 ±14.0             0/0            —          0/0        10/210 5%              —
+  04-absol-hoopa-darkra v all eight   480   32.9     nan     30.8    +nan ±nan     +nan ±nan     -2.1 ±4.8              0/0            —          0/0       74/1634 5%              —
+
+  05-indeedee-stoutland v altaria      60   33.3     nan     26.7    +nan ±nan     +nan ±nan     -6.7 ±14.6             0/0            —          0/0       43/181 24%              —
+  05-indeedee-stoutland v blaziken     60   33.3     nan     23.3    +nan ±nan     +nan ±nan    -10.0 ±10.1             0/0            —          0/0       33/159 21%              —
+  05-indeedee-stoutland v hydreigon    60   31.7     nan     30.0    +nan ±nan     +nan ±nan     -1.7 ±14.4             0/0            —          0/0       37/171 22%              —
+  05-indeedee-stoutland v lucario      60   38.3     nan     25.0    +nan ±nan     +nan ±nan    -13.3 ±11.8             0/0            —          0/0       36/151 24%              —
+  05-indeedee-stoutland v sceptile     60   23.3     nan     18.3    +nan ±nan     +nan ±nan     -5.0 ±8.6              0/0            —          0/0       37/228 16%              —
+  05-indeedee-stoutland v suicune      60   41.7     nan     38.3    +nan ±nan     +nan ±nan     -3.3 ±15.4             0/0            —          0/0       32/197 16%              —
+  05-indeedee-stoutland v vespiquen    60   30.0     nan     30.0    +nan ±nan     +nan ±nan     +0.0 ±13.2             0/0            —          0/0       34/188 18%              —
+  05-indeedee-stoutland v weezing      60   26.7     nan     25.0    +nan ±nan     +nan ±nan     -1.7 ±12.8             0/0            —          0/0       32/145 22%              —
+  05-indeedee-stoutland v all eight   480   32.3     nan     27.1    +nan ±nan     +nan ±nan     -5.2 ±4.5              0/0            —          0/0     284/1420 20%              —
+
+  06-mega-blaziken-tour v altaria      60   35.0     nan     48.3    +nan ±nan     +nan ±nan    +13.3 ±15.8             0/0            —          0/0       42/195 22%              —
+  06-mega-blaziken-tour v blaziken     60   53.3     nan     53.3    +nan ±nan     +nan ±nan     +0.0 ±14.7             0/0            —          0/0        17/186 9%              —
+  06-mega-blaziken-tour v hydreigon    60   68.3     nan     53.3    +nan ±nan     +nan ±nan    -15.0 ±13.8             0/0            —          0/0        12/217 6%              —
+  06-mega-blaziken-tour v lucario      60   41.7     nan     51.7    +nan ±nan     +nan ±nan    +10.0 ±13.7             0/0            —          0/0        15/194 8%              —
+  06-mega-blaziken-tour v sceptile     60   51.7     nan     66.7    +nan ±nan     +nan ±nan    +15.0 ±13.0             0/0            —          0/0         9/160 6%              —
+  06-mega-blaziken-tour v suicune      60   61.7     nan     71.7    +nan ±nan     +nan ±nan    +10.0 ±11.1             0/0            —          0/0       17/159 11%              —
+  06-mega-blaziken-tour v vespiquen    60   66.7     nan     81.7    +nan ±nan     +nan ±nan    +15.0 ±13.8             0/0            —          0/0        14/219 6%              —
+  06-mega-blaziken-tour v weezing      60   45.0     nan     53.3    +nan ±nan     +nan ±nan     +8.3 ±13.4             0/0            —          0/0       21/164 13%              —
+  06-mega-blaziken-tour v all eight   480   52.9     nan     60.0    +nan ±nan     +nan ±nan     +7.1 ±4.9              0/0            —          0/0     147/1494 10%              —
+
+  07-skarmory-stall v altaria          60   56.7     nan     60.0    +nan ±nan     +nan ±nan     +3.3 ±12.3             0/0            —          0/0              0/0              —
+  07-skarmory-stall v blaziken         60   28.3     nan     15.0    +nan ±nan     +nan ±nan    -13.3 ±9.8              0/0            —          0/0              0/0              —
+  07-skarmory-stall v hydreigon        60   93.3     nan     68.3    +nan ±nan     +nan ±nan    -25.0 ±11.0             0/0            —          0/0              0/0              —
+  07-skarmory-stall v lucario          60   41.7     nan     33.3    +nan ±nan     +nan ±nan     -8.3 ±11.7             0/0            —          0/0              0/0              —
+  07-skarmory-stall v sceptile         60   35.0     nan     38.3    +nan ±nan     +nan ±nan     +3.3 ±11.4             0/0            —          0/0              0/0              —
+  07-skarmory-stall v suicune          60   60.0     nan     66.7    +nan ±nan     +nan ±nan     +6.7 ±9.2              0/0            —          0/0              0/0              —
+  07-skarmory-stall v vespiquen        60   40.0     nan     40.0    +nan ±nan     +nan ±nan     +0.0 ±14.0             0/0            —          0/0              0/0              —
+  07-skarmory-stall v weezing          60   66.7     nan     60.0    +nan ±nan     +nan ±nan     -6.7 ±11.3             0/0            —          0/0              0/0              —
+  07-skarmory-stall v all eight       480   52.7     nan     47.7    +nan ±nan     +nan ±nan     -5.0 ±4.1              0/0            —          0/0              0/0              —
+
+  08-garchomp-toolbox v altaria        60   43.3     nan     40.0    +nan ±nan     +nan ±nan     -3.3 ±11.4             0/0            —          0/0       14/126 11%              —
+  08-garchomp-toolbox v blaziken       60   11.7     nan     16.7    +nan ±nan     +nan ±nan     +5.0 ±9.8              0/0            —          0/0       19/105 18%              —
+  08-garchomp-toolbox v hydreigon      60   21.7     nan     23.3    +nan ±nan     +nan ±nan     +1.7 ±13.6             0/0            —          0/0       14/113 12%              —
+  08-garchomp-toolbox v lucario        60   41.7     nan     40.0    +nan ±nan     +nan ±nan     -1.7 ±14.4             0/0            —          0/0        13/145 9%              —
+  08-garchomp-toolbox v sceptile       60   18.3     nan     18.3    +nan ±nan     +nan ±nan     +0.0 ±11.4             0/0            —          0/0       16/157 10%              —
+  08-garchomp-toolbox v suicune        60   23.3     nan     26.7    +nan ±nan     +nan ±nan     +3.3 ±9.3              0/0            —          0/0       12/126 10%              —
+  08-garchomp-toolbox v vespiquen      60   36.7     nan     53.3    +nan ±nan     +nan ±nan    +16.7 ±13.3             0/0            —          0/0       17/109 16%              —
+  08-garchomp-toolbox v weezing        60   28.3     nan     18.3    +nan ±nan     +nan ±nan    -10.0 ±13.7             0/0            —          0/0        17/95 18%              —
+  08-garchomp-toolbox v all eight     480   28.1     nan     29.6    +nan ±nan     +nan ±nan     +1.5 ±4.3              0/0            —          0/0      122/976 12%              —
+
+  09-mega-manectric-hel v altaria      60   65.0     nan     70.0    +nan ±nan     +nan ±nan     +5.0 ±10.9             0/0            —          0/0       12/105 11%              —
+  09-mega-manectric-hel v blaziken     60   63.3     nan     66.7    +nan ±nan     +nan ±nan     +3.3 ±11.4             0/0            —          0/0          5/99 5%              —
+  09-mega-manectric-hel v hydreigon    60   73.3     nan     73.3    +nan ±nan     +nan ±nan     +0.0 ±14.7             0/0            —          0/0          7/88 8%              —
+  09-mega-manectric-hel v lucario      60   46.7     nan     46.7    +nan ±nan     +nan ±nan     +0.0 ±10.4             0/0            —          0/0          7/78 9%              —
+  09-mega-manectric-hel v sceptile     60   36.7     nan     45.0    +nan ±nan     +nan ±nan     +8.3 ±8.5              0/0            —          0/0          5/80 6%              —
+  09-mega-manectric-hel v suicune      60   56.7     nan     63.3    +nan ±nan     +nan ±nan     +6.7 ±10.3             0/0            —          0/0          8/86 9%              —
+  09-mega-manectric-hel v vespiquen    60   56.7     nan     51.7    +nan ±nan     +nan ±nan     -5.0 ±14.3             0/0            —          0/0         7/112 6%              —
+  09-mega-manectric-hel v weezing      60   60.0     nan     46.7    +nan ±nan     +nan ±nan    -13.3 ±11.8             0/0            —          0/0          6/90 7%              —
+  09-mega-manectric-hel v all eight   480   57.3     nan     57.9    +nan ±nan     +nan ±nan     +0.6 ±4.1              0/0            —          0/0        57/738 8%              —
+
+  10-xatu-oricorio-tr-w v altaria      60   23.3     nan     23.3    +nan ±nan     +nan ±nan     +0.0 ±14.0             0/0            —          0/0       22/122 18%              —
+  10-xatu-oricorio-tr-w v blaziken     60   25.0     nan     26.7    +nan ±nan     +nan ±nan     +1.7 ±11.9             0/0            —          0/0       17/165 10%              —
+  10-xatu-oricorio-tr-w v hydreigon    60   25.0     nan      8.3    +nan ±nan     +nan ±nan    -16.7 ±10.6             0/0            —          0/0       15/120 12%              —
+  10-xatu-oricorio-tr-w v lucario      60   46.7     nan     35.0    +nan ±nan     +nan ±nan    -11.7 ±13.3             0/0            —          0/0       13/125 10%              —
+  10-xatu-oricorio-tr-w v sceptile     60    8.3     nan     11.7    +nan ±nan     +nan ±nan     +3.3 ±6.5              0/0            —          0/0       17/153 11%              —
+  10-xatu-oricorio-tr-w v suicune      60    3.3     nan      8.3    +nan ±nan     +nan ±nan     +5.0 ±5.6              0/0            —          0/0       19/143 13%              —
+  10-xatu-oricorio-tr-w v vespiquen    60   13.3     nan     13.3    +nan ±nan     +nan ±nan     +0.0 ±11.4             0/0            —          0/0       23/148 16%              —
+  10-xatu-oricorio-tr-w v weezing      60    3.3     nan      3.3    +nan ±nan     +nan ±nan     +0.0 ±4.7              0/0            —          0/0       11/102 11%              —
+  10-xatu-oricorio-tr-w v all eight   480   18.5     nan     16.2    +nan ±nan     +nan ±nan     -2.3 ±3.7              0/0            —          0/0     137/1078 13%              —
+
+  11-archaludon-haxorus v altaria      60   20.0     nan     15.0    +nan ±nan     +nan ±nan     -5.0 ±13.5             0/0            —          0/0        41/80 51%              —
+  11-archaludon-haxorus v blaziken     60   18.3     nan     15.0    +nan ±nan     +nan ±nan     -3.3 ±11.4             0/0            —          0/0        36/76 47%              —
+  11-archaludon-haxorus v hydreigon    60   26.7     nan     16.7    +nan ±nan     +nan ±nan    -10.0 ±11.1             0/0            —          0/0        25/72 35%              —
+  11-archaludon-haxorus v lucario      60   13.3     nan     16.7    +nan ±nan     +nan ±nan     +3.3 ±11.4             0/0            —          0/0        29/61 48%              —
+  11-archaludon-haxorus v sceptile     60    6.7     nan      6.7    +nan ±nan     +nan ±nan     +0.0 ±8.1              0/0            —          0/0        29/73 40%              —
+  11-archaludon-haxorus v suicune      60   15.0     nan     18.3    +nan ±nan     +nan ±nan     +3.3 ±10.4             0/0            —          0/0        35/64 55%              —
+  11-archaludon-haxorus v vespiquen    60   20.0     nan     18.3    +nan ±nan     +nan ±nan     -1.7 ±10.9             0/0            —          0/0        30/58 52%              —
+  11-archaludon-haxorus v weezing      60   11.7     nan     10.0    +nan ±nan     +nan ±nan     -1.7 ±7.4              0/0            —          0/0        19/45 42%              —
+  11-archaludon-haxorus v all eight   480   16.5     nan     14.6    +nan ±nan     +nan ±nan     -1.9 ±3.8              0/0            —          0/0      244/529 46%              —
+
+  12-ariados-whimsicott v altaria      60   55.0     nan     43.3    +nan ±nan     +nan ±nan    -11.7 ±12.4             0/0            —          0/0        12/131 9%              —
+  12-ariados-whimsicott v blaziken     60   18.3     nan     13.3    +nan ±nan     +nan ±nan     -5.0 ±11.8             0/0            —          0/0        13/96 14%              —
+  12-ariados-whimsicott v hydreigon    60   58.3     nan     35.0    +nan ±nan     +nan ±nan    -23.3 ±14.3             0/0            —          0/0         8/142 6%              —
+  12-ariados-whimsicott v lucario      60   38.3     nan     25.0    +nan ±nan     +nan ±nan    -13.3 ±10.9             0/0            —          0/0        13/94 14%              —
+  12-ariados-whimsicott v sceptile     60   23.3     nan     25.0    +nan ±nan     +nan ±nan     +1.7 ±10.9             0/0            —          0/0         9/175 5%              —
+  12-ariados-whimsicott v suicune      60   23.3     nan     30.0    +nan ±nan     +nan ±nan     +6.7 ±11.3             0/0            —          0/0       14/124 11%              —
+  12-ariados-whimsicott v vespiquen    60   31.7     nan     31.7    +nan ±nan     +nan ±nan     +0.0 ±14.7             0/0            —          0/0         9/146 6%              —
+  12-ariados-whimsicott v weezing      60   55.0     nan     58.3    +nan ±nan     +nan ±nan     +3.3 ±12.3             0/0            —          0/0        10/125 8%              —
+  12-ariados-whimsicott v all eight   480   37.9     nan     32.7    +nan ±nan     +nan ±nan     -5.2 ±4.4              0/0            —          0/0       88/1033 9%              —
+
+  13-a-ninetales-ratica v altaria      60   36.7     nan     46.7    +nan ±nan     +nan ±nan    +10.0 ±14.5         1/50 2%            —   53/53 100%       11/111 10%              —
+  13-a-ninetales-ratica v blaziken     60   60.0     nan     73.3    +nan ±nan     +nan ±nan    +13.3 ±14.3         0/49 0%            —   49/49 100%         8/127 6%              —
+  13-a-ninetales-ratica v hydreigon    60   58.3     nan     63.3    +nan ±nan     +nan ±nan     +5.0 ±14.3         0/45 0%            —   52/52 100%        10/154 6%              —
+  13-a-ninetales-ratica v lucario      60   48.3     nan     61.7    +nan ±nan     +nan ±nan    +13.3 ±17.1         1/35 3%            —   36/36 100%         9/118 8%              —
+  13-a-ninetales-ratica v sceptile     60   43.3     nan     43.3    +nan ±nan     +nan ±nan     +0.0 ±13.2         2/44 5%            —   52/52 100%       14/113 12%              —
+  13-a-ninetales-ratica v suicune      60   51.7     nan     65.0    +nan ±nan     +nan ±nan    +13.3 ±14.3         4/70 6%            —    71/72 99%         9/176 5%              —
+  13-a-ninetales-ratica v vespiquen    60   21.7     nan     50.0    +nan ±nan     +nan ±nan    +28.3 ±15.5         1/49 2%            —   69/69 100%       16/111 14%              —
+  13-a-ninetales-ratica v weezing      60   36.7     nan     55.0    +nan ±nan     +nan ±nan    +18.3 ±12.8         1/37 3%            —   53/53 100%          7/97 7%              —
+  13-a-ninetales-ratica v all eight   480   44.6     nan     57.3    +nan ±nan     +nan ±nan    +12.7 ±5.2        10/379 3%            — 435/436 100%       84/1007 8%              —
+
+  14-comfey-raticate-hy v altaria      60   23.3     nan     41.7    +nan ±nan     +nan ±nan    +18.3 ±12.8         1/45 2%            —   47/47 100%        20/84 24%              —
+  14-comfey-raticate-hy v blaziken     60    5.0     nan     18.3    +nan ±nan     +nan ±nan    +13.3 ±11.8         3/59 5%            —   64/64 100%       22/102 22%              —
+  14-comfey-raticate-hy v hydreigon    60    5.0     nan     10.0    +nan ±nan     +nan ±nan     +5.0 ±8.6          1/47 2%            —   45/45 100%        18/81 22%              —
+  14-comfey-raticate-hy v lucario      60   21.7     nan     21.7    +nan ±nan     +nan ±nan     +0.0 ±11.4         2/45 4%            —   48/48 100%        26/83 31%              —
+  14-comfey-raticate-hy v sceptile     60    1.7     nan      5.0    +nan ±nan     +nan ±nan     +3.3 ±6.5          2/58 3%            —   64/64 100%       14/100 14%              —
+  14-comfey-raticate-hy v suicune      60    0.0     nan      5.0    +nan ±nan     +nan ±nan     +5.0 ±5.6          4/72 6%            —   68/68 100%       21/109 19%              —
+  14-comfey-raticate-hy v vespiquen    60    6.7     nan     25.0    +nan ±nan     +nan ±nan    +18.3 ±11.9         1/53 2%            —   65/65 100%       20/115 17%              —
+  14-comfey-raticate-hy v weezing      60    0.0     nan      6.7    +nan ±nan     +nan ±nan     +6.7 ±6.4          0/51 0%            —   59/59 100%        18/48 38%              —
+  14-comfey-raticate-hy v all eight   480    7.9     nan     16.7    +nan ±nan     +nan ±nan     +8.8 ±3.5        14/430 3%            — 460/460 100%      159/722 22%              —
+
+  15-jolteon-oricorio-r v altaria      60   38.3     nan     33.3    +nan ±nan     +nan ±nan     -5.0 ±14.3         2/43 5%            —   43/43 100%        17/97 18%              —
+  15-jolteon-oricorio-r v blaziken     60   26.7     nan     43.3    +nan ±nan     +nan ±nan    +16.7 ±15.6         2/54 4%            —   65/65 100%        14/97 14%              —
+  15-jolteon-oricorio-r v hydreigon    60   46.7     nan     36.7    +nan ±nan     +nan ±nan    -10.0 ±15.2         1/44 2%            —   46/46 100%        14/87 16%              —
+  15-jolteon-oricorio-r v lucario      60   21.7     nan     16.7    +nan ±nan     +nan ±nan     -5.0 ±9.8          3/34 9%            —   36/36 100%        13/87 15%              —
+  15-jolteon-oricorio-r v sceptile     60   15.0     nan     25.0    +nan ±nan     +nan ±nan    +10.0 ±12.9        5/50 10%            —    65/66 98%       17/124 14%              —
+  15-jolteon-oricorio-r v suicune      60   23.3     nan     40.0    +nan ±nan     +nan ±nan    +16.7 ±16.3         2/48 4%            —   54/54 100%       19/135 14%              —
+  15-jolteon-oricorio-r v vespiquen    60   18.3     nan     38.3    +nan ±nan     +nan ±nan    +20.0 ±15.3         3/58 5%            —   64/64 100%       11/114 10%              —
+  15-jolteon-oricorio-r v weezing      60   18.3     nan     38.3    +nan ±nan     +nan ±nan    +20.0 ±13.8         3/48 6%            —   56/56 100%        11/80 14%              —
+  15-jolteon-oricorio-r v all eight   480   26.0     nan     34.0    +nan ±nan     +nan ±nan     +7.9 ±5.1        21/379 6%            — 429/430 100%      116/821 14%              —
+
+Screen summary (decks/screen/results.md's bar: under 20% against the panel = broken), panel win %:
+  brew                                       k3|k3  kp3|kp3          both   side of the bar
+  brew-06-pyukumuku-silvally-payback           8.1      4.4    -3.8 ±2.4    under 20 -> under 20
+  brew-06b-pyukumuku-silvally-scyther-gras    18.8     17.3    -1.5 ±3.7    under 20 -> under 20
+  brew-05b-meowstic-hatterene-comfey          31.7     29.4    -2.3 ±4.5    20+ -> 20+
+  brew-01-arceus-crobat-xatu                  22.5     17.7    -4.8 ±3.4    20+ -> under 20   FLIPS
+  brew-03a-arceus-nihilego-toxapex            19.0     13.8    -5.2 ±3.1    under 20 -> under 20
+  brew-07-hoopa-darkrai-sableye               60.4     60.0    -0.4 ±4.2    20+ -> 20+
+  brew-08-entei-rainbow-cave                  50.0     43.8    -6.2 ±5.3    20+ -> 20+
+  brew-09-sableye-obstagoon                   51.0     47.3    -3.8 ±4.9    20+ -> 20+
+  brew-10-diancie-giratina                    44.4     40.8    -3.5 ±4.7    20+ -> 20+
+  01-muk-glimmora-kingambit-regigigas         19.2     16.0    -3.1 ±4.1    under 20 -> under 20
+  02-arceus-crobat                            33.3     29.4    -4.0 ±4.4    20+ -> 20+
+  03-wailord-indeedee-wall                    66.0     64.4    -1.7 ±4.5    20+ -> 20+
+  04-absol-hoopa-darkrai                      32.9     30.8    -2.1 ±4.8    20+ -> 20+
+  05-indeedee-stoutland                       32.3     27.1    -5.2 ±4.5    20+ -> 20+
+  06-mega-blaziken-tournament-list            52.9     60.0    +7.1 ±4.9    20+ -> 20+
+  07-skarmory-stall                           52.7     47.7    -5.0 ±4.1    20+ -> 20+
+  08-garchomp-toolbox                         28.1     29.6    +1.5 ±4.3    20+ -> 20+
+  09-mega-manectric-heliolisk                 57.3     57.9    +0.6 ±4.1    20+ -> 20+
+  10-xatu-oricorio-tr-weezing                 18.5     16.2    -2.3 ±3.7    under 20 -> under 20
+  11-archaludon-haxorus-dragonair             16.5     14.6    -1.9 ±3.8    under 20 -> under 20
+  12-ariados-whimsicott-ogerpon               37.9     32.7    -5.2 ±4.4    20+ -> 20+
+  13-a-ninetales-raticate                     44.6     57.3   +12.7 ±5.2    20+ -> 20+
+  14-comfey-raticate-hypno                     7.9     16.7    +8.8 ±3.5    under 20 -> under 20
+  15-jolteon-oricorio-raticate                26.0     34.0    +7.9 ±5.1    20+ -> 20+
+
+Took 2754 s with 8 workers; 23,040 games.

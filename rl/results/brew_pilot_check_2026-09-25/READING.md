@@ -73,6 +73,59 @@ The per-matchup lines are in `brew_pilot.txt`.
 - **Skarmory stall (07) plays the same games move for move.** Its list has no card whose text kp prices, and kp is built to play exactly like k3 then. That is a live confirmation of that property on a deck it was never tested on.
 - **Copycat is played far more often under kp3 in every deck that runs it,** but in most decks that changes the win rate by little.
 
+## The A2 screen re-run with kp3 on both sides (for Dustin's decision on the screen hold)
+
+`screen_rerun_kp3.txt`:
+- **Decks:** 24 in all.
+  - The screen's calibration decks: Payback brew-06 and brew-06b, brew-05b, and Skarmory (07).
+  - brew-01 and brew-03a.
+  - New brews 07–10.
+  - All 15 of Dustin's decks.
+- **Opponents:** the 8-deck panel, identical card for card to `decks/screen/opponents`.
+- **Pilots:** 60 paired deals per matchup, rows k3|k3 and kp3|kp3.
+- **Seeds:** 21,070,000,000 and up.
+- **Cleanliness:** 0 of 23,040 games unclean.
+- **Build:** the scratch diagnostic add-on.
+- **Timing:** the reading was fixed in the script's docstring at 09:19:47, before the first game at about 09:22.
+
+**Checked by three independent agents before this was written:**
+- A recompute from the per-matchup lines found no discrepancies.
+- A ladder cross-check used the 33 ladder games, Sept 15–24, with each deck mapped card for card.
+- A skeptic judged the wording, adopted below.
+
+**The rule fixed before the run is met.** With kp3 on both sides, the screen's four reference decks stay on the side of their lines that the ladder puts them. The ± values are 95% binomial half-widths at 480 games.
+
+| reference deck | ladder | k3 both sides | kp3 both sides | line | how clear |
+|---|---|---|---|---|---|
+| brew-06 Payback (Psychic) | 0-3 | 8.1 | 4.4 ± 1.8 | under 20 | clear |
+| brew-06b Payback (Grass) | 0-3 | 18.8 | 17.3 ± 3.4 | under 20 | **within noise** |
+| brew-05b Meowstic/Hatterene/Comfey | 3-3 | 31.7 | 29.4 ± 4.1 | 20 or more | clear |
+| 07 Skarmory stall | 3-1 | 52.7 | 47.7 ± 4.5 | 45 or more | **within noise** |
+
+**Against Dustin's ladder, kp3 does at least as well as k3.**
+- Seven decks have ladder records and map card for card to the files.
+- kp3 on both sides puts 6 of the 7 on the ladder's side of the 20% bar; k3 puts 5.
+- The only deck that crosses the bar is brew-01 (1-3 on the ladder): 22.5 under k3, 17.7 under kp3.
+- On the three decks that aren't reference decks (brew-01, brew-03a, deck 02), kp3 gets 2 right and k3 gets 1.
+- Both miss deck 02 Arceus/Crobat: 1-3 on the ladder, about 30% on the panel.
+- Rank agreement with the ladder is about the same for both pilots. The ladder is 16 games, so it can't separate them.
+
+**What moved:**
+- 20 of the 24 decks run neither Team Rocket's Raticate ex nor the Mega Blaziken list. 18 of those drop, by about 3 points on average, fairly uniformly. That is the meta side pricing its own Copycat and similar cards.
+- The three Raticate decks rise by 8 to 13, and Mega Blaziken by 7.
+- The order of decks barely changes (rank correlation 0.94). What changes is which decks sit near the 20% bar.
+
+**What this does and does not support** (the skeptic's wording, adopted):
+- **"The reference-deck condition for the screen is met on the diagnostic build, with two of the four within noise. Nothing more."**
+- It is a necessary condition, not proof that the screen works. The plan's full A2 readout is not in this run:
+  - a panel weighted to Dustin's ladder (about half of his ladder opponents are off-panel, and he has never met Sceptile, which counts as 1/8 of every average here);
+  - worst matchups and failure modes instead of an average;
+  - one-sided rows;
+  - B2e's check that held-out archetypes land inside their Limitless intervals.
+- The lines were drawn around the k3 numbers on Sept 24. They were fixed before any kp3-on-both-sides game, but the test had little room to fail.
+- **The screen tool itself (`decks/screen/run_screen.py`) cannot run kp3 yet.** It will once the merged-main engine passes its identity replay and becomes the official build.
+- **Lifting the hold is Dustin's call.** If he lifts it, the screen should report the full A2 readout, not the 8-deck average alone.
+
 ## What this does not show
 
 - **How these brews do on the ladder.** The eight research decks are the table's meta, not the ladder's, and the simulator still overrates or underrates some of them.
