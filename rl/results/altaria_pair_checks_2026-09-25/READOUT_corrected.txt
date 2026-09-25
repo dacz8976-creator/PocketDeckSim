@@ -1,0 +1,23 @@
+Readout under the corrected C2 completeness rule (README.md). The original rule's readout is READOUT.txt.
+OK    Interface C1 passed (100 of 100 exact replays)
+OK    Interface C2 passed under the corrected rule: 98 games probed, 2 with no decision for the probed seat (listed), 0 errors; hidden invariance on 4971 decisions, controls sensed
+OK    C1 ran 100 k3 replays (50 seeds)
+OK    C2 ran 100 hidden-card games
+OK    C1/C2 used seeds 21,101,000,000 / 21,101,100,000
+OK    C1/C2 used v2.2 features
+OK    C1/C2 used Altaria + Lucario
+OK    C1/C2 used add-on module 0fee43ce
+OK    v2.2 check passed
+OK    v2.2 ran 20 games
+OK    v2.2 used seed 21,101,200,000
+OK    v2.2 used Altaria + Lucario
+OK    v2.2 used add-on module 0fee43ce
+OK    CLI/add-on parity passed
+OK    Parity ran all 8 cases
+OK    Parity used seeds 21,101,300,000-001
+OK    Parity 16 of 16 games matched
+OK    Parity used engine e6593ed8 and module 0fee43ce
+Games in which the probed seat had no decision (not failures under the corrected rule):
+  C2 game 83, seed 21,101,100,083, one_k3, result [0, 1, 0, 1]: Altaria went first; Igglybuff's Sleepy Lullaby (10, Asleep) on Lucario's lone Bonsly (30 HP), then a Benched Darkrai's Bad Dreams (20) at the end of turn 1; Lucario's setup was forced
+  C2 game 88, seed 21,101,100,088, one_k3, result [1, 0, 1, 1]: the same line: Altaria first, Sleepy Lullaby then Bad Dreams knock out a lone Bonsly on turn 1; Lucario's setup was forced
+PAIR CHECKS PASSED UNDER THE CORRECTED RULE (18 of 18 OK)

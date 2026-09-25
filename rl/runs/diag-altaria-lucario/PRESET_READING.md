@@ -20,6 +20,10 @@ Approved by Dustin on Sept 25 as optional, to run only after kd is read (`rl/RUN
 
 **Before anything is read:**
 - The pair checks must pass, as for the Hydreigon run (`rl/results/hydreigon_pair_checks_2026-09-24/`, adapted to this pool).
+  - **Done Sept 25, before training:** `rl/results/altaria_pair_checks_2026-09-25/`.
+  - **One change to the pass rule** (Fable's ruling, written before any training result; Dustin can overrule): C2's completeness condition counts only games in which the probed seat had a decision. A game with no decision for the probed seat is listed with its seed and how it ended, and is not a failure.
+  - The reason: in this matchup Altaria can win on turn 1, legally, before Lucario has any choice (Sleepy Lullaby, then Bad Dreams, against a lone 30-HP Bonsly). That happened in 2 of the 100 C2 games.
+  - Under that rule all 18 checks pass. Under the original rule, 16 of 17 pass. Both readouts are kept.
 - The readout's identity gates must pass: the run's recorded games replay exactly, and the network re-chooses every recorded move.
 
 ## Readings, fixed now

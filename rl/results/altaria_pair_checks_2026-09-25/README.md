@@ -1,6 +1,14 @@
 # Pair checks for the Altaria detector network (Sept 25)
 
-**Result: 16 of 17 readout checks pass. The one failure is a counting condition that this matchup can fail through legal play; it is not a leak.** Whether the preset gate counts as met is for Fable and Dustin to rule on (below). The network has not been trained or read.
+**Result: the gate is met under a corrected C2 completeness rule (Fable's ruling, Sept 25, written before any training result existed; Dustin can overrule). 18 of 18 checks pass under it (`READOUT_corrected.txt`).**
+- Under the original rule, 16 of 17 checks pass (`READOUT.txt`, kept unchanged). The one failure is a counting condition this matchup can fail through legal play. It is not a leak.
+- **The corrected rule:**
+  - Every C2 game in which the probed seat had at least one decision must contribute at least one probed decision.
+  - A game in which the probed seat had no decision is counted and listed with its seed and how it ended, and is not a failure.
+  - Such a game is one that ends with no error before the probed seat has any choice; the add-on plays single-option moves itself.
+- **Why the rule was changed:** C2 exists to test that no hidden card reaches the network's inputs or legal moves, and a game with no decision has nothing to probe. Rerunning on fresh seeds until all 100 games had a probe would pass by luck about 13% of the time and prove nothing.
+- **Under it:** 98 games were probed, and 2 had no decision for the probed seat (listed below). There were 0 errors. Hidden invariance held on all 4,971 probed decisions.
+- The network has not been trained or read.
 
 **What these are:**
 - These are the Hydreigon run's pair checks (`../hydreigon_pair_checks_2026-09-24/`), with only three things changed:
@@ -32,7 +40,9 @@
   - The engine follows that order (`engine/src/hooks/core.rs` 414, 618–644).
 - **Why it matters for the check:** the Hydreigon pair never produces a no-choice game, so its C2 passed 100 of 100. Altaria's turn-1 Sleep + Bad Dreams kill against a lone 30-HP Basic makes a few such games unavoidable. Rerunning on new seeds would pass only by luck: with 2 games in 100 like this, all 100 of a fresh draw have a decision about 13% of the time.
 
-## What the gate needs (for Fable, then Dustin)
+Game 88 was replayed too: the same line, with Altaria in the other seat. Altaria went first, Sleepy Lullaby put a lone Bonsly to sleep, and Bad Dreams knocked it out at the end of turn 1. Lucario's setup was forced.
+
+## What the gate needed (the laptop's recommendation before the ruling, kept for the record)
 
 - The preset reading (`../../runs/diag-altaria-lucario/PRESET_READING.md`) says the pair checks must pass, as for the Hydreigon run, before anything is read.
 - **The laptop's recommendation:** treat the gate as met on substance, with this record kept beside it.
