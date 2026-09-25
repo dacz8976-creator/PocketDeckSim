@@ -1,1 +1,8 @@
 baseline (no mutation): test result: ok. 20 passed; 0 failed; 0 ignored; 0 measured; 325 filtered out; finished in 0.01s
+KPR const switched off: caught by 2: kpr3_from_get_player_chips_with_hyper_ray_where_kp3_declines, the_kpr_evaluator_differs_from_k_by_the_active_score_and_the_clock
+KPR arm uses the kp value function: caught by 1: kpr3_from_get_player_chips_with_hyper_ray_where_kp3_declines
+KPR arm without the pricing wrapper: caught by 1: kpr3_from_get_player_also_prices_darkness_claw
+online score not projected: caught by 2: kpr3_from_get_player_chips_with_hyper_ray_where_kp3_declines, the_kpr_evaluator_differs_from_k_by_the_active_score_and_the_clock
+clock not projected: caught by 2: kpr3_from_get_player_chips_with_hyper_ray_where_kp3_declines, the_kpr_evaluator_differs_from_k_by_the_active_score_and_the_clock
+opponent's scores read hidden zones: caught by 1: kpr_reads_no_hidden_card
+min of the clocks dropped: caught by 1: the_clock_never_gets_slower_for_the_projection
