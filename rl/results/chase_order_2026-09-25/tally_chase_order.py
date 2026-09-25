@@ -8,6 +8,7 @@ that every game replays its table game move for move (same fingerprint as ../pub
 and ../kq_2026-09-25/kq3_500.jsonl), then counts per bot: choices offered, discards, and what was discarded.
 """
 import json
+import random
 from collections import Counter
 from pathlib import Path
 
@@ -55,6 +56,21 @@ def main():
         print(f"{bot}: {len(new)} games, all identical to the table's. Chase Order offered in {games_offered} games, "
               f"{offered} choices, {discarded} discards ({100 * discarded / offered:.1f}%): "
               + ", ".join(f"{n} {k} ({100 * k / offered:.1f}% of choices)" for n, k in sorted(names.items())))
+    # Change in each rate, kq3 - kp3, with a 95% range from resampling whole games (choices within a game go together).
+    games = {bot: [json.loads(l)["chase_order"] for l in open(HERE / f"{bot}_vespiquen.jsonl")
+                   if l.strip() and "chase_order" in json.loads(l)] for bot in ("kp3", "kq3")}
+
+    def rate(gs, key):
+        return sum(g["discarded"] if key is None else g["names"].get(key, 0) for g in gs) / sum(g["offered"] for g in gs)
+
+    rng = random.Random(20_000_000_123)
+    print("\nShare of choices, kp3 -> kq3 (95% range, games resampled 2,000 times):")
+    for key in (None, "Combee", "Shuckle ex", "Teal Mask Ogerpon ex"):
+        diffs = sorted(rate([rng.choice(games["kq3"]) for _ in games["kq3"]], key)
+                       - rate([rng.choice(games["kp3"]) for _ in games["kp3"]], key) for _ in range(2000))
+        a, b = rate(games["kp3"], key), rate(games["kq3"], key)
+        print(f"  {key or 'any discard':22} {100 * a:5.1f} -> {100 * b:5.1f}  ({100 * (b - a):+.1f}; "
+              f"{100 * diffs[50]:+.1f} to {100 * diffs[1949]:+.1f})")
     print("\nPer pairing (discards of choices; Combee discards):")
     for p in sorted(rows["kp3"][5]):
         line = f"  pairing {p:2}:"
