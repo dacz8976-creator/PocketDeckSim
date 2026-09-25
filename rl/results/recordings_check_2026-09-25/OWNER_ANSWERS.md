@@ -1,0 +1,19 @@
+# Dustin's answers to open rules questions (Sept 25, evening, in the laptop session's chat)
+
+These are first-hand rules facts from the owner (strength: owner testimony). "Will test" items become confirmed once he records them.
+
+**Tool attachment (asked earlier the same evening).** "The game doesn't block playing tools on Pokémon for any reason that I can think of. It just doesn't have the effect if it doesn't meet the criteria."
+- He puts Elegant Cape on a Basic only when it will evolve to a Stage 1.
+- **Engine: matches.** Any Tool may go on any Pokémon (`engine/src/tools.rs` 119-133).
+- So Metal Core Barrier on Indeedee ex is a bot mistake, not an engine legality bug. It contradicts `rules/04` line 79's suggestion that the game blocks a Tool whose condition can't be met.
+- He also remembers Pocket's own Auto AI sometimes making the same Tool mistake with his deck. Not yet found in the reviews read so far.
+
+| # | Question | Dustin | Engine (official, 7fc6ccb) | Status |
+|---|---|---|---|---|
+| 1 | End of the Suicune ex player's turn with Hiking Trail in play and 0-2 cards in hand: Legendary Pulse and Hiking Trail, which first? | Gut: Pulse first, then Hiking Trail tops up last, ending on **3** cards. Will check. | Hiking Trail first, then Pulse: ends on **4** (`hooks/core.rs` 385-393 queue Pulse; 554-567 Trail draws at once; the queued draw resolves after the turn change) | **Conflict, pending his check.** Touches the meta Suicune v Blaziken cell (Blaziken runs Hiking Trail) and his Hiking Trail decks 06, 10, 12. |
+| 2 | Both players reach 3 points on one attack | His video (it took about 20 tries) ended in a Tie | Tie when both reach 3; Tie also in the narrow T2 case (`apply_action_helpers.rs` 832-861) | Matches. The video is the T2 recording (`rules/08` T2). |
+| 3 | Rare Candy onto your Active while the opponent's Aerodactyl ex (Primeval Law) is in play | "Pretty sure it blocks evolution from Rare Candy or otherwise." Will test. | **Allowed**: `can_play_rare_candy` (`move_generation_trainer.rs` 663-685) checks only the first turn and Evolution Jammer | **Engine deviation, by testimony; test pending.** Already on the cloud's list. |
+| 4 | Regigigas (Seal of Antiquity) with Alolan Muk (Power of Alchemy) in play | Yes, it can attack: that's the point of deck 01. Muk also removes the opponent's Basic Pokémon Abilities. | Can attack (`move_generation/attacks.rs` 145-174; tests at `regigigas_seal_of_antiquity_test.rs` 137-173) | Matches. |
+| 5 | Heavy Helmet when the Retreat Cost is changed (Peculiar Plaza lowers it; Ariados or Goo-zooka raises it) | Uses the **current** Retreat Cost, like attacks that depend on it. So no −20 at 2 or 1, and −20 when Ariados raises it to 3. Easy to test; will test. | Uses the **printed** cost (`hooks/core.rs` 702-713) | **Engine deviation, by testimony; test pending.** Touches his deck 12 (Ariados) and any Helmet holder under Plaza (brews 05b, 10 play Plaza). |
+| 6 | Toxapex's Severe Poison with Nihilego | Tested: Toxapex makes Poison 40, Nihilego adds +10, and it stacks (two benched Nihilego: 60) | 40 + 10 per Nihilego (`apply_action_helpers.rs` 218-252) | Matches. His test confirms brews 03a/03b. Whether a later ordinary Poison resets it to 10 is still open (the engine resets it). |
+| 7 | A Checkup after turn 30 | "I would think it would be a tie, but almost never happens in real life" | Turn 30's Checkup happens, and a KO there gives the win; a Tie comes only at turn 31 (`state/mod.rs` 1199-1204) | Dropped as too rare to matter. His guess is recorded against the engine. |
