@@ -20,8 +20,9 @@ These readings follow the rules in section 8 of `docs/REVIEW_2026-09-24_directio
 | b3o3n4 | 4 list guesses + 3-move reply search | unpaired (indicative) | 10.3 | −25.2 (−73.0 to +21.7) | 5 cells, 1 deck (indicative only) | not adopted | `option_b_table_2026-09-24_reading.md` |
 | b3n1 | 1 list guess, no reply search | paired | 9.2 | −46.8 (−84.7 to −7.5) | Altaria v Hydreigon +6.1; Vespiquen deck +2.1 | not adopted | `b3n1_vs_k3_paired_reading.md` |
 | kp3 | public pricing, no list (tier-1 sound; conditions met at c7cb688) | paired | 9.3 | −45.5 (−84.4 to −4.8) | Altaria v Hydreigon +8.7; Hydreigon v Suicune +7.6; Vespiquen deck +2.3 | not adopted; Dustin's override question | `kp3_paired_reading.md` |
-| kq3 (v1) | kp3 + next-attack-reduction clock term + benched-main-attacker readiness (weight 250, set in advance) | **diagnostic, not an adoption candidate** | | | | | |
-| kv3 (kq v2) | kp3 + next-attack reduction + 250 × max over eligible attackers of readiness × min(1, strength / 150) | pending (registered before any kv table) | | | | | |
+| kq3 (v1, a188c14) | kp3 + next-attack-reduction clock term + benched-main-attacker readiness (weight 250, set in advance) | **diagnostic, not an adoption candidate**; no table at a188c14 | | | | | |
+| kq3 (rework, ba20dd8) | the same two habits, reworked before any table: best benched attacker's readiness (max), escape and timing rules | paired | 11.1 | −9.0 (−54.8 to +37.9); **vs kp3 +36.5 (+13.2 to +59.9): worse** | 6 cells (AvH +10.7, AvV +9.6, BvH +6.2, HvSu +12.0, ScvSu +9.0, VvW +6.6); Vespiquen deck +5.9 | not adopted | `kq3_paired_reading.md` |
+| kv3 (kq v2) | kp3 + next-attack reduction + 250 × max over eligible attackers of readiness × min(1, strength / 150) | **not built**: it shares kq's bench-readiness core, and kq3 is reliably worse than kp3 | | | | | |
 | kd3 | kv3 + the defender's Weakness and damage reductions in the clock | pending | | | | | |
 
 **Why kq3 is a diagnostic only.** The tier-1 read of a188c14 found that the code implements its pre-set spec exactly, with no leak, and that k3 and kp3 are identical (14,000 of 14,000 replays). But it confirmed three flaws in the spec itself (value_functions.rs 490-498, 1564-1566, 1597-1620):
