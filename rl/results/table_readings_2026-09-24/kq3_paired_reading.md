@@ -45,6 +45,7 @@ Deck averages (all cells), k3 / kp3 / kq3 (Limitless):
   - A mechanism, not tested: Chase Order discards a benched Basic [G] Pokémon for +70. Combee is a benched attacker under kq's filter, so when it holds the bench maximum, kq charges up to 250 for the discard.
   - Any bench-readiness term taxes decks that spend their Bench.
   - Counting Chase Order discards, kq3 vs kp3, would test it.
+  - **Tested (Sept 25, cloud, `rl/results/chase_order_2026-09-25/`): refuted.** kq3 discards Combee as often as kp3 (12.7% of choices against 13.1%; −0.4, 95% −1.9 to +1.3). What moves is which ex gets discarded: kq3 keeps Shuckle ex more (36.8% against 41.6%) and discards Teal Mask Ogerpon ex more (17.4% against 12.9%). It also reaches Chase Order less often (3,135 choices against 3,510), which fits its opponents improving. Unpaired shares over different positions.
 - **kv (kq v2) shares the bench-readiness core.** With kq3 reliably worse than kp3, kv is not worth its multiple-comparisons cost. It is not built, unless Dustin wants it.
   - The cloud offered a per-feature split (each habit alone, two new player codes) as a diagnostic. That is Dustin's call.
 - **The rule is unchanged, and so is the pilot:** k3 stays the frozen table pilot.
