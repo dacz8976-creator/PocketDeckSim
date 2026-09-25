@@ -12,7 +12,7 @@ use crate::card_logic::get_highest_evolutions;
 use crate::effects::CardEffect;
 use crate::hooks::{
     energy_missing, get_retreat_cost_for_player, persistent_defender_damage, special_condition_blocks_attack_or_retreat,
-    to_playable_card,
+    to_playable_card, DamageModifierContext,
 };
 use crate::models::{Attack, Card, EnergyType, PlayedCard, StatusCondition, TrainerType};
 use crate::state::GameOutcome;
@@ -796,19 +796,20 @@ fn calculate_turns_until_opponent_wins_damage_aware(
     let best_threat = state
         .enumerate_in_play_pokemon(opponent)
         .filter_map(|(slot, pokemon)| {
-            // (damage, missing, form): `form` is `None` for the Pokemon as it is, or the index of the
-            // evolution target in `evolution_targets`. Only kd reads it.
-            let mut candidates: Vec<(u32, usize, Option<usize>)> = pokemon
+            // (damage, missing, form, attack): `form` is `None` for the Pokemon as it is, or the index of the
+            // evolution target in `evolution_targets`; `attack` is the attack's index on that form. Only kd reads them.
+            let mut candidates: Vec<(u32, usize, Option<usize>, usize)> = pokemon
                 .card
                 .get_attacks()
                 .iter()
-                .filter_map(|atk| {
+                .enumerate()
+                .filter_map(|(index, atk)| {
                     let damage = attack_damage(atk, pokemon);
                     if damage == 0 {
                         return None;
                     }
                     let missing = energy_missing(pokemon, &atk.energy_required, state, opponent);
-                    Some((damage, missing.len(), None))
+                    Some((damage, missing.len(), None, index))
                 })
                 .collect();
             if read_scanned_zones {
@@ -819,12 +820,12 @@ fn calculate_turns_until_opponent_wins_damage_aware(
                         if steps == 0 {
                             continue;
                         }
-                        for atk in &target.get_attacks() {
+                        for (index, atk) in target.get_attacks().iter().enumerate() {
                             let damage = attack_damage(atk, pokemon);
                             if damage > 0 {
                                 let missing =
                                     energy_missing(pokemon, &atk.energy_required, state, opponent);
-                                candidates.push((damage, missing.len() + steps, Some(form)));
+                                candidates.push((damage, missing.len() + steps, Some(form), index));
                             }
                         }
                     }
@@ -832,45 +833,60 @@ fn calculate_turns_until_opponent_wins_damage_aware(
             }
             candidates
                 .into_iter()
-                .min_by_key(|(damage, missing, _)| (*missing, u32::MAX - damage))
-                .map(|(damage, missing, form)| (damage, missing, slot, form))
+                .min_by_key(|(damage, missing, _, _)| (*missing, u32::MAX - damage))
+                .map(|(damage, missing, form, attack)| (damage, missing, slot, form, attack))
         })
-        .min_by_key(|(damage, missing, _, _)| (*missing, u32::MAX - damage));
-    let (max_damage, missing_energy, _threat_slot, threat_form) = match best_threat {
-        Some((damage, missing, slot, form)) => (damage as f64, missing, slot, form),
+        .min_by_key(|(damage, missing, _, _, _)| (*missing, u32::MAX - damage));
+    let (max_damage, missing_energy, threat_slot, threat_form, threat_attack) = match best_threat {
+        Some((damage, missing, slot, form, attack)) => (damage as f64, missing, slot, form, attack),
         None => return 30.0, // No pokemon can deal damage, now or via any available evolution
     };
 
-    // kd: the threat as the Pokemon that attacks (its evolution target, if the threat is one), so each victim's
-    // Weakness and persistent reductions can be priced against it. The threat itself is chosen as before.
-    let evolved_threat;
-    let kd_threat: Option<&PlayedCard> = if defender_modifiers {
-        let threat = state.in_play_pokemon[opponent][_threat_slot]
+    // kd: the threat as the Pokemon that attacks (its evolution target, if the threat is one) and the attack it
+    // uses, so each victim's Weakness and persistent reductions can be priced against it. The threat itself is
+    // chosen as before.
+    let kd_threat: Option<(PlayedCard, Attack)> = if defender_modifiers {
+        let threat = state.in_play_pokemon[opponent][threat_slot]
             .as_ref()
             .expect("the threat was found in play");
-        match threat_form {
-            None => Some(threat),
+        let attacker = match threat_form {
+            None => threat.clone(),
             Some(form) => {
-                evolved_threat = to_playable_card(&evolution_targets(state, opponent, threat)[form], false);
-                Some(&evolved_threat)
+                // Only the evaluating player's own threats are scanned for evolutions (no hidden zone is read).
+                debug_assert!(read_scanned_zones);
+                to_playable_card(&evolution_targets(state, opponent, threat)[form], false)
             }
-        }
+        };
+        let attack = attacker.card.get_attacks()[threat_attack].clone();
+        Some((attacker, attack))
     } else {
         None
     };
-    // kd: turns for `threat` to knock `victim` out, its first hit and every later one priced through
-    // `persistent_defender_damage`; `None` when the first hit does no damage.
-    let kd_ko_turns = |threat: &PlayedCard, victim: &PlayedCard| -> Option<f64> {
-        let (first, later) =
-            persistent_defender_damage(state, opponent, threat, player, victim, max_damage as u32);
-        if first == 0 {
+    // kd: turns for the threat to knock `victim` out, its first hit and every later one priced through
+    // `persistent_defender_damage`; `None` when its hits do no damage.
+    let kd_ko_turns = |(threat, attack): &(PlayedCard, Attack), victim: &PlayedCard| -> Option<f64> {
+        let hp = victim.get_remaining_hp() as f64;
+        if hp == 0.0 {
+            return Some(0.0);
+        }
+        let context = DamageModifierContext {
+            attack_name: Some(&attack.title),
+            attack_effect: attack.effect.as_deref(),
+        };
+        let (first, later) = persistent_defender_damage(
+            state,
+            opponent,
+            threat,
+            player,
+            victim,
+            max_damage as u32,
+            context,
+            !only_damages_the_bench(attack),
+        );
+        if later <= 0.0 {
             return None;
         }
-        Some(ko_turns_after_first_attack(
-            victim.get_remaining_hp() as f64,
-            first as f64,
-            later as f64,
-        ))
+        Some(ko_turns_after_first_attack(hp, first, later))
     };
 
     let mut total_turns = 0.0;
@@ -881,7 +897,7 @@ fn calculate_turns_until_opponent_wins_damage_aware(
     // B2b diagnostic, only in builds with the `status-clock` feature: a threat in the Active Spot that is
     // Asleep misses its next attack half the time (the checkup coin), and one that is Paralyzed misses it.
     #[cfg(feature = "status-clock")]
-    if _threat_slot == 0 {
+    if threat_slot == 0 {
         if let Some(threat) = state.maybe_get_active(opponent) {
             if threat.has_status(StatusCondition::Paralyzed) {
                 total_turns += 1.0;
@@ -894,14 +910,14 @@ fn calculate_turns_until_opponent_wins_damage_aware(
     // kq: when the threat is the Active and carries effects that cut or cancel its next attack, the first
     // knockout's first attack turn is priced through them (or through the owner's escape into a ready benched
     // attacker, whichever is faster). Only that turn: later turns keep the clock's pace.
-    let mut first_turn_damage = if next_attack_reduction && _threat_slot == 0 {
+    let mut first_turn_damage = if next_attack_reduction && threat_slot == 0 {
         first_attack_turn(state, opponent, max_damage, &attack_damage)
     } else {
         None
     };
 
     if let Some(my_active) = state.maybe_get_active(player) {
-        let turns_to_ko = match (first_turn_damage.take(), kd_threat) {
+        let turns_to_ko = match (first_turn_damage.take(), &kd_threat) {
             (None, None) => (my_active.get_remaining_hp() as f64 / max_damage).ceil(),
             (Some(first), _) => first.ko_turns(my_active.get_remaining_hp() as f64, max_damage),
             // kd: a victim the threat can't damage means the threat can't win: the clock's sentinel.
@@ -937,7 +953,7 @@ fn calculate_turns_until_opponent_wins_damage_aware(
         if consume_bench {
             counted_slots[slot] = true;
         }
-        let turns_to_ko = match (first_turn_damage.take(), kd_threat) {
+        let turns_to_ko = match (first_turn_damage.take(), &kd_threat) {
             (None, None) => (safest_pokemon.get_remaining_hp() as f64 / max_damage).ceil(),
             (Some(first), _) => first.ko_turns(safest_pokemon.get_remaining_hp() as f64, max_damage),
             (None, Some(threat)) => match kd_ko_turns(threat, safest_pokemon) {
@@ -949,6 +965,10 @@ fn calculate_turns_until_opponent_wins_damage_aware(
         opp_points += safest_pokemon.card.get_knockout_points();
     }
 
+    // kd: 30 means "never", so no finite clock may pass it (a sturdier board must never read as a faster loss).
+    if defender_modifiers {
+        return total_turns.min(30.0);
+    }
     total_turns
 }
 
@@ -985,12 +1005,16 @@ fn ko_turns_after_first_attack(hp: f64, first: f64, max_damage: f64) -> f64 {
     }
 }
 
-/// The highest evolutions of `pokemon` that `owner` has in deck or hand, in `get_highest_evolutions`' order. The
-/// clock's threat scan and kd's threat form both read it, so a form index means the same card in both.
+/// The highest evolutions of `pokemon` that `owner` has in deck or hand, sorted by card id. The clock's threat scan
+/// and kd's threat form both read it, so a form index means the same card in both. The sort makes the form that
+/// wins a tie independent of the order of the (shuffled) deck; tied forms have the same damage and missing
+/// Energy, so the clock of every tier without kd is unchanged by it.
 fn evolution_targets(state: &State, owner: usize, pokemon: &PlayedCard) -> Vec<Card> {
     let mut available: Vec<Card> = state.decks[owner].cards.to_vec();
     available.extend(state.hands[owner].iter().cloned());
-    get_highest_evolutions(&pokemon.card, &available)
+    let mut targets = get_highest_evolutions(&pokemon.card, &available);
+    targets.sort_by_cached_key(|card| card.get_id());
+    targets
 }
 
 /// kq: [`FirstAttackTurn`] for `owner`, or `None` when its Active carries no effect that reaches its first attack
@@ -2313,9 +2337,18 @@ mod kd_feature_tests {
         PlayedCard::from_id(id)
     }
 
+    fn with(id: CardId, energy: EnergyType, count: usize) -> PlayedCard {
+        mon(id).with_energy(vec![energy; count])
+    }
+
     /// Mewtwo ex with Psychic Sphere (50) paid for.
     fn mewtwo() -> PlayedCard {
-        mon(CardId::A1129MewtwoEx).with_energy(vec![EnergyType::Psychic, EnergyType::Colorless])
+        with(CardId::A1129MewtwoEx, EnergyType::Psychic, 2)
+    }
+
+    /// Weedle with Sting (20) paid for.
+    fn weedle() -> PlayedCard {
+        with(CardId::A1008Weedle, EnergyType::Grass, 1)
     }
 
     /// Turns until player 0's opponent wins: (k's clock, kd's clock).
@@ -2340,8 +2373,11 @@ mod kd_feature_tests {
         let mixed = board(vec![mon(CardId::B3005Treecko), mon(CardId::B3079Riolu)], vec![mewtwo()]);
         assert_eq!(clocks(&mixed, false), (4.0, 3.0));
         // A Colorless threat hits no Weakness: Pidgey's Peck (30) on Riolu is 2 turns either way.
-        let pidgey = mon(CardId::B1180Pidgey).with_energy(vec![EnergyType::Colorless, EnergyType::Colorless]);
+        let pidgey = with(CardId::B1180Pidgey, EnergyType::Psychic, 2);
         assert_eq!(clocks(&board(vec![mon(CardId::B3079Riolu)], vec![pidgey]), false), (2.0, 2.0));
+        // A damaged victim: Hitmonlee (weak to Psychic) at 70 HP falls to one 70 where k counts two 50s.
+        let hitmonlee = mon(CardId::A1154Hitmonlee).with_remaining_hp(70);
+        assert_eq!(clocks(&board(vec![hitmonlee], vec![mewtwo()]), false), (2.0, 1.0));
     }
 
     #[test]
@@ -2349,27 +2385,80 @@ mod kd_feature_tests {
         // Swablu (Colorless) has no damaging attack of its own; its threat is Mega Altaria ex (Psychic) from its
         // owner's deck, Mega Harmony 40 with [P][P] already attached: one evolution step, then 40 a turn. Riolu is
         // weak to Psychic, so kd prices 60 a hit through the Mega's type: 1 + 1 turns, where k counts 1 + 2.
-        let swablu = mon(CardId::B1196Swablu).with_energy(vec![EnergyType::Psychic, EnergyType::Psychic]);
-        let mut state = board(vec![mon(CardId::B3079Riolu)], vec![swablu]);
+        let swablu = with(CardId::B1196Swablu, EnergyType::Psychic, 2);
+        let mut state = board(vec![mon(CardId::B3079Riolu)], vec![swablu.clone()]);
         state.decks[1].cards.push(get_card_by_enum(CardId::B1102MegaAltariaEx));
         assert_eq!(clocks(&state, true), (3.0, 2.0));
+        // The Mega is an ex, so Oricorio's Safeguard stops it: kd's sentinel.
+        let mut state = board(vec![mon(CardId::A3066Oricorio)], vec![swablu]);
+        state.decks[1].cards.push(get_card_by_enum(CardId::B1102MegaAltariaEx));
+        assert_eq!(clocks(&state, true), (3.0, 30.0));
+    }
+
+    #[test]
+    fn tied_evolutions_are_priced_the_same_whatever_the_deck_order() {
+        // Eevee (A3b 055, no damaging attack, no Energy) with Espeon ex ([P][P] 80) and Umbreon ex ([D][D] 80) in its
+        // owner's deck: a tie, 3 turns away. The victim, Espeon (90 HP), is weak to Darkness, so the form matters.
+        // kd prices the same form (the first by card id, Espeon ex: 80, 2 hits) in either deck order.
+        let clock = |order: [CardId; 2]| {
+            let mut state = board(vec![mon(CardId::B3a020Espeon)], vec![mon(CardId::A3b055Eevee)]);
+            state.decks[1].cards = order.iter().map(|id| get_card_by_enum(*id)).collect();
+            clocks(&state, true)
+        };
+        assert_eq!(clock([CardId::A4083EspeonEx, CardId::A4112UmbreonEx]), (5.0, 5.0));
+        assert_eq!(clock([CardId::A4112UmbreonEx, CardId::A4083EspeonEx]), (5.0, 5.0));
     }
 
     #[test]
     fn solid_shell_slows_the_clock() {
         // Shuckle ex (120 HP) v Bulbasaur's Vine Whip (40): k 3 turns, kd 6 (20 a hit).
-        let bulbasaur = mon(CardId::A1001Bulbasaur).with_energy(vec![EnergyType::Grass, EnergyType::Colorless]);
+        let bulbasaur = with(CardId::A1001Bulbasaur, EnergyType::Grass, 2);
         assert_eq!(clocks(&board(vec![mon(CardId::A4021ShuckleEx)], vec![bulbasaur]), false), (3.0, 6.0));
+    }
+
+    #[test]
+    fn first_hit_protections_are_priced_once() {
+        // Eiscue (80 HP, Ice Face -40 at full HP) v Mewtwo ex's 50: 10, then 50s: 3 turns where k counts 2.
+        assert_eq!(clocks(&board(vec![mon(CardId::B1080Eiscue)], vec![mewtwo()]), false), (2.0, 3.0));
+        // Mimikyu ex (120 HP, Disguise) v 50: the first hit is prevented, then 3 hits.
+        assert_eq!(clocks(&board(vec![mon(CardId::B2073MimikyuEx)], vec![mewtwo()]), false), (3.0, 4.0));
     }
 
     #[test]
     fn a_victim_the_threat_cannot_damage_is_the_sentinel() {
         // Weedle's Sting (20) does 0 to Shuckle ex through Solid Shell: kd returns the clock's 30-turn sentinel.
-        let weedle = || mon(CardId::A1008Weedle).with_energy(vec![EnergyType::Grass]);
         assert_eq!(clocks(&board(vec![mon(CardId::A4021ShuckleEx)], vec![weedle()]), false), (6.0, 30.0));
         // The same when that victim is on the Bench: Riolu takes 3 turns, then Shuckle ex can't be knocked out.
         let state = board(vec![mon(CardId::B3079Riolu), mon(CardId::A4021ShuckleEx)], vec![weedle()]);
         assert_eq!(clocks(&state, false), (9.0, 30.0));
+        // Ice Face absorbing a whole hit leaves Eiscue at full HP, so it absorbs every hit.
+        let bulbasaur = with(CardId::A1001Bulbasaur, EnergyType::Grass, 2);
+        assert_eq!(clocks(&board(vec![mon(CardId::B1080Eiscue)], vec![bulbasaur]), false), (2.0, 30.0));
+    }
+
+    #[test]
+    fn no_finite_kd_clock_passes_the_sentinel() {
+        // Three Cloyster (120 HP, Shell Armor -10) v Sting: 12 hits each, 36, capped at 30 ("never") for kd.
+        let cloysters = || vec![mon(CardId::A1067Cloyster), mon(CardId::A1067Cloyster), mon(CardId::A1067Cloyster)];
+        assert_eq!(clocks(&board(cloysters(), vec![weedle()]), false), (18.0, 30.0));
+        // Heavy Helmet on the Active Cloyster takes Sting to 0: still 30, never faster than without it.
+        let mut helmeted = cloysters();
+        helmeted[0] = mon(CardId::A1067Cloyster).with_tool(get_card_by_enum(CardId::B1219HeavyHelmet));
+        assert_eq!(clocks(&board(helmeted, vec![weedle()]), false), (18.0, 30.0));
+    }
+
+    #[test]
+    fn a_victim_already_at_0_hp_takes_no_turns() {
+        let fainted = mon(CardId::B3079Riolu).with_remaining_hp(0);
+        let state = board(vec![fainted, mon(CardId::B3005Treecko)], vec![mewtwo()]);
+        assert_eq!(clocks(&state, false), (2.0, 2.0));
+    }
+
+    #[test]
+    fn bench_only_damage_gets_no_weakness() {
+        // Heatmor's Tongue Whip (30, Bench only) v Vespiquen ex (140 HP, weak to Fire): 5 turns for both, not 3.
+        let heatmor = with(CardId::B1044Heatmor, EnergyType::Fire, 1);
+        assert_eq!(clocks(&board(vec![mon(CardId::B4011VespiquenEx)], vec![heatmor]), false), (5.0, 5.0));
     }
 
     #[test]
@@ -2385,5 +2474,24 @@ mod kd_feature_tests {
         // No Weakness or reduction in play: the same value.
         let plain = board(vec![mon(CardId::B3005Treecko)], vec![mewtwo()]);
         assert_eq!(kd(&plain, 0), k(&plain, 0));
+    }
+
+    #[test]
+    fn kd_reads_no_hidden_card_of_the_opponent() {
+        // Player 1's Swablu has a Psychic Mega in its deck or hand, or a card of the same count that isn't one; my
+        // Riolu is weak to Psychic. Evaluating as player 0, kd's value doesn't change: only the board is read.
+        let value = |hidden: CardId, in_hand: bool| {
+            let mut state = board(vec![mon(CardId::B3079Riolu)], vec![with(CardId::B1196Swablu, EnergyType::Psychic, 2)]);
+            let card = get_card_by_enum(hidden);
+            if in_hand {
+                state.hands[1].push(card);
+            } else {
+                state.decks[1].cards.push(card);
+            }
+            public_clock_effect_kd_value_function(&state, 0)
+        };
+        for in_hand in [false, true] {
+            assert_eq!(value(CardId::B1102MegaAltariaEx, in_hand), value(CardId::A1001Bulbasaur, in_hand));
+        }
     }
 }
