@@ -453,18 +453,22 @@ mod tests {
         assert_eq!(decide(PlayerCode::KD { max_depth: 3 }), SimpleAction::Promote { player: 0, in_play_idx: 2 });
     }
 
-    /// The Hyper Ray position through get_player: Hydreigon with [D][D][D] against a Mewtwo ex that 130 doesn't
-    /// knock out, this turn's Energy already attached, a [D] showing for next turn. kp3 (like k3) declines Hyper Ray,
-    /// because discarding all three Energy costs the Active's whole readiness. kpr3 sees next turn's [D] plus Roar
-    /// in Unison's two refill it, and attacks. If the KPR arm of get_player stopped using the kpr value function,
-    /// kpr3 would play as kp3 and this fails.
+    /// The Hyper Ray position through get_player: Hydreigon with [D][D][D] against a Suicune ex (140 HP, not weak to
+    /// Darkness) that 130 doesn't knock out, with a Bulbasaur benched, this turn's Energy already attached and a [D]
+    /// showing for next turn. kp3 (like k3) declines Hyper Ray: discarding all three Energy costs the Active's whole
+    /// readiness and, in the clock, three turns of missing Energy. kpr3 counts next turn's [D] plus Roar in Unison's
+    /// two, which refill it, and attacks. If the KPR arm of get_player stopped using the kpr value function, kpr3
+    /// would play as kp3 and this fails.
     #[test]
     fn kpr3_from_get_player_chips_with_hyper_ray_where_kp3_declines() {
         let mut game = crate::test_support::get_initialized_game(0);
         let mut state = game.get_state_clone();
         state.set_board(
             vec![PlayedCard::from_id(CardId::B1157Hydreigon).with_energy(vec![EnergyType::Darkness; 3])],
-            vec![PlayedCard::from_id(CardId::A1129MewtwoEx).with_energy(vec![EnergyType::Psychic; 2])],
+            vec![
+                PlayedCard::from_id(CardId::A4a020SuicuneEx).with_energy(vec![EnergyType::Water; 2]),
+                PlayedCard::from_id(CardId::A1001Bulbasaur),
+            ],
         );
         state.current_player = 0;
         state.turn_count = 5;

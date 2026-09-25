@@ -650,6 +650,7 @@ fn extract_features(
             public_evaluation,
             next_attack_reduction,
             defender_modifiers,
+            projected_readiness,
         )
     } else {
         calculate_turns_until_opponent_wins(state, player, public_evaluation)
@@ -815,6 +816,7 @@ fn calculate_turns_until_opponent_wins_damage_aware(
     consume_bench: bool,
     next_attack_reduction: bool,
     defender_modifiers: bool,
+    projected_readiness: bool,
 ) -> f64 {
     let opponent = (player + 1) % 2;
 
@@ -833,12 +835,20 @@ fn calculate_turns_until_opponent_wins_damage_aware(
     // Energy, then the most damage (the same pick as the historical per-slot scan, flattened).
     let mut candidates: Vec<ThreatCandidate> = Vec::new();
     for (slot, pokemon) in state.enumerate_in_play_pokemon(opponent) {
+        // kpr: the Active's missing Energy is counted as it will stand at its next attack ([`at_next_attack`]).
+        let projected;
+        let charged: &PlayedCard = if projected_readiness && slot == 0 {
+            projected = at_next_attack(state, opponent, pokemon);
+            &projected
+        } else {
+            pokemon
+        };
         for (attack, atk) in pokemon.card.get_attacks().iter().enumerate() {
             let damage = attack_damage(atk, pokemon);
             if damage == 0 {
                 continue;
             }
-            let missing = energy_missing(pokemon, &atk.energy_required, state, opponent).len();
+            let missing = energy_missing(charged, &atk.energy_required, state, opponent).len();
             candidates.push(ThreatCandidate { slot, damage, missing, form: None, attack });
         }
         if read_scanned_zones {
@@ -853,7 +863,7 @@ fn calculate_turns_until_opponent_wins_damage_aware(
                         let damage = attack_damage(atk, pokemon);
                         if damage > 0 {
                             let missing =
-                                energy_missing(pokemon, &atk.energy_required, state, opponent).len() + steps;
+                                energy_missing(charged, &atk.energy_required, state, opponent).len() + steps;
                             candidates.push(ThreatCandidate { slot, damage, missing, form: Some(form), attack });
                         }
                     }
@@ -1966,13 +1976,17 @@ fn calculate_active_pokemon_online_score(
         return 0.0;
     };
     if projected {
-        let mut at_next_attack = active_pokemon.clone();
-        at_next_attack
-            .attached_energy
-            .extend(projected_active_energy(state, player, active_pokemon));
-        return pokemon_online_score(state, player, &at_next_attack, public_only, effect_aware, reserve_aware);
+        let charged = at_next_attack(state, player, active_pokemon);
+        return pokemon_online_score(state, player, &charged, public_only, effect_aware, reserve_aware);
     }
     pokemon_online_score(state, player, active_pokemon, public_only, effect_aware, reserve_aware)
+}
+
+/// kpr: `owner`'s Active as it will stand at its next attack: a copy with [`projected_active_energy`] attached.
+fn at_next_attack(state: &State, owner: usize, active: &PlayedCard) -> PlayedCard {
+    let mut charged = active.clone();
+    charged.attached_energy.extend(projected_active_energy(state, owner, active));
+    charged
 }
 
 /// kpr: the Energy `owner`'s Active will have been given by its next attack, from public sources its owner controls.
@@ -2403,7 +2417,7 @@ mod kq_feature_tests {
 
     /// Turns until `player`'s opponent wins, as the clock prices it for k (`kq = false`) and kq.
     fn clock(state: &State, player: usize, kq: bool) -> f64 {
-        calculate_turns_until_opponent_wins_damage_aware(state, player, false, true, false, true, kq, false)
+        calculate_turns_until_opponent_wins_damage_aware(state, player, false, true, false, true, kq, false, false)
     }
 
     /// [`first_attack_turn`] for `owner`, with the clock's own damage estimate and pace.
@@ -2728,7 +2742,7 @@ mod kd_feature_tests {
     /// Turns until player 0's opponent wins: (k's clock, kd's clock).
     fn clocks(state: &State, read_scanned_zones: bool) -> (f64, f64) {
         let clock = |kd: bool| {
-            calculate_turns_until_opponent_wins_damage_aware(state, 0, read_scanned_zones, true, false, true, false, kd)
+            calculate_turns_until_opponent_wins_damage_aware(state, 0, read_scanned_zones, true, false, true, false, kd, false)
         };
         (clock(false), clock(true))
     }
@@ -3206,19 +3220,34 @@ mod kpr_feature_tests {
     }
 
     #[test]
-    fn the_kpr_evaluator_differs_from_k_by_the_active_score_only() {
+    fn the_kpr_evaluator_differs_from_k_by_the_active_score_and_the_clock() {
         let k = public_clock_effect_value_function;
         let kpr = public_clock_effect_kpr_value_function;
-        // Player 0's empty Hydreigon: +1 of readiness on player 0's side, worth +500.
+        // Player 0's empty Hydreigon v player 1's Bulbasaur. Readiness 0 to 1: +500. Player 0's win: k counts 3 turns
+        // of missing Energy and 1 to knock Bulbasaur out; kpr counts the Energy that arrives by next turn, so 1: +300.
         let mut state = opponents_turn(vec![mon(CardId::B1157Hydreigon)], Some(EnergyType::Darkness));
-        state.energy_zone[1].next = None;
-        assert_eq!(kpr(&state, 0) - k(&state, 0), 500.0);
-        // Player 1, to move, still has this turn's [G] in its Zone: its Bulbasaur (Vine Whip, [G][C]) gains 1 of 2,
-        // -250. (Its next Zone type doesn't count: its next attack is this turn.)
         state.energy_zone[1].next = Some(EnergyType::Grass);
-        assert_eq!(kpr(&state, 0) - k(&state, 0), 500.0);
+        assert_eq!(kpr(&state, 0) - k(&state, 0), 800.0);
+        // Player 1, to move, still has this turn's [G]: its Bulbasaur (Vine Whip, [G][C]) gains 1 of 2 (-250) and is
+        // one Energy closer in its own clock (-100). (Its next Zone type doesn't count: its next attack is this turn.)
         state.energy_zone[1].current = Some(EnergyType::Grass);
-        assert_eq!(kpr(&state, 0) - k(&state, 0), 250.0);
+        assert_eq!(kpr(&state, 0) - k(&state, 0), 450.0);
+    }
+
+    #[test]
+    fn the_clock_counts_the_active_threats_energy_at_its_next_attack() {
+        // Turns until player 1 (the Bulbasaur) is beaten, from player 1's side: player 0's Hydreigon is the threat.
+        let clock = |state: &State, kpr: bool| {
+            calculate_turns_until_opponent_wins_damage_aware(state, 1, true, true, false, true, false, false, kpr)
+        };
+        let state = opponents_turn(vec![mon(CardId::B1157Hydreigon)], Some(EnergyType::Darkness));
+        assert_eq!((clock(&state, false), clock(&state, true)), (4.0, 1.0));
+        // Only the Active is projected: a benched Hydreigon behind a Bonsly keeps its three missing Energy.
+        let state = opponents_turn(
+            vec![mon(CardId::B3078Bonsly), mon(CardId::B1157Hydreigon)],
+            Some(EnergyType::Darkness),
+        );
+        assert_eq!(clock(&state, false), clock(&state, true));
     }
 
     #[test]
