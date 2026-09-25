@@ -393,4 +393,63 @@ mod tests {
             }
         }
     }
+
+    /// kd3 is built the same way (get_player) and keeps kp's pricing: it prices Darkness Claw too.
+    #[test]
+    fn kd3_from_get_player_also_prices_darkness_claw() {
+        let real = darkness_claw_game();
+        let observation = PlayerObservation::from_state(&real, 0, &RevealedKnowledge::default());
+        let (_, mut actions) = real.generate_possible_actions();
+        crate::observation::canonical_actions(&mut actions);
+        let claw = darkness_claw(&actions);
+        let mut player = get_player(Deck::default(), &Deck::default(), &PlayerCode::KD { max_depth: 3 });
+        let (choice, branches) = crate::observation::collect_unpriced(|| {
+            player.decision_fn(&mut StdRng::seed_from_u64(3), &observation, &actions)
+        });
+        assert!(!branches.iter().any(|b| b.reason == "effect or choice depends on unrevealed opponent cards"
+            && matches!(&b.action.action, SimpleAction::Attack(x) if x.title == "Darkness Claw")));
+        assert_eq!(choice, actions[claw]);
+    }
+
+    /// A promotion through get_player. Player 0 must promote Suicune ex (140 HP, [W][W] attached) or Shuckle ex
+    /// (120 HP, Solid Shell -20); player 1 has 2 points and Weedle (Sting 20) Active. kp3 (k's clock: 20 a hit)
+    /// promotes Suicune ex; kd3 sees that Sting can't damage Shuckle ex and promotes it. If the KD arm of
+    /// get_player stopped using the kd value function, kd3 would play as kp3 and this fails.
+    #[test]
+    fn kd3_from_get_player_promotes_the_pokemon_the_threat_cannot_damage() {
+        let mut game = crate::test_support::get_initialized_game(0);
+        let mut state = game.get_state_clone();
+        state.set_board(
+            vec![
+                PlayedCard::from_id(CardId::A4a020SuicuneEx),
+                PlayedCard::from_id(CardId::A4a020SuicuneEx).with_energy(vec![EnergyType::Water, EnergyType::Water]),
+                PlayedCard::from_id(CardId::A4021ShuckleEx),
+            ],
+            vec![PlayedCard::from_id(CardId::A1008Weedle).with_energy(vec![EnergyType::Grass])],
+        );
+        state.in_play_pokemon[0][0] = None;
+        state.points = [0, 2];
+        state.current_player = 1;
+        state.turn_count = 6;
+        state.move_generation_stack.clear();
+        state.move_generation_stack.push((
+            0,
+            vec![
+                SimpleAction::Promote { player: 0, in_play_idx: 1 },
+                SimpleAction::Promote { player: 0, in_play_idx: 2 },
+            ],
+        ));
+        game.set_state(state);
+        let real = game.get_state_clone();
+        let observation = PlayerObservation::from_state(&real, 0, &RevealedKnowledge::default());
+        let (actor, mut actions) = real.generate_possible_actions();
+        assert_eq!(actor, 0);
+        crate::observation::canonical_actions(&mut actions);
+        let decide = |code: PlayerCode| {
+            let mut player = get_player(Deck::default(), &Deck::default(), &code);
+            player.decision_fn(&mut StdRng::seed_from_u64(3), &observation, &actions).action
+        };
+        assert_eq!(decide(PlayerCode::KP { max_depth: 3 }), SimpleAction::Promote { player: 0, in_play_idx: 1 });
+        assert_eq!(decide(PlayerCode::KD { max_depth: 3 }), SimpleAction::Promote { player: 0, in_play_idx: 2 });
+    }
 }

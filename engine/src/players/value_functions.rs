@@ -10,7 +10,10 @@ use crate::actions::attacks::{BenchDamageFilter, BenchSide, Mechanic};
 use crate::actions::{ability_mechanic_from_effect, EFFECT_MECHANIC_MAP};
 use crate::card_logic::get_highest_evolutions;
 use crate::effects::CardEffect;
-use crate::hooks::{energy_missing, get_retreat_cost_for_player, special_condition_blocks_attack_or_retreat};
+use crate::hooks::{
+    energy_missing, get_retreat_cost_for_player, persistent_defender_damage, special_condition_blocks_attack_or_retreat,
+    to_playable_card,
+};
 use crate::models::{Attack, Card, EnergyType, PlayedCard, StatusCondition, TrainerType};
 use crate::state::GameOutcome;
 use crate::State;
@@ -192,7 +195,7 @@ pub fn public_clock_effect_value_function(state: &State, myself: usize) -> f64 {
 ///   the Active, weighted [`KQ_BENCH_ATTACKER_WEIGHT`] = 250, half the Active's 500
 ///   ([`best_benched_attacker_online_score`]).
 /// `k`, `kp` and every older tier reach [`parametric_value_function_ex6`] through
-/// [`parametric_value_function_ex5`] with [`KqFeatures::OFF`], where neither runs.
+/// [`parametric_value_function_ex5`] with [`EvalFeatures::OFF`], where neither runs.
 pub fn public_clock_effect_kq_value_function(state: &State, myself: usize) -> f64 {
     parametric_value_function_ex6(
         state,
@@ -203,7 +206,24 @@ pub fn public_clock_effect_kq_value_function(state: &State, myself: usize) -> f6
         true,
         true,
         false,
-        KqFeatures::KQ,
+        EvalFeatures::KQ,
+    )
+}
+
+/// The `kd` tier (players/mod.rs `KD`, piloted like `kp`): `k`'s evaluator with the damage-aware clock pricing
+/// the threat's damage to each victim through the victim's Weakness and persistent damage reductions
+/// ([`persistent_defender_damage`]), on both sides. kq's two features stay off. Fixed before any table was run.
+pub fn public_clock_effect_kd_value_function(state: &State, myself: usize) -> f64 {
+    parametric_value_function_ex6(
+        state,
+        myself,
+        &ValueFunctionParams::baseline(),
+        true,
+        false,
+        true,
+        true,
+        false,
+        EvalFeatures::KD,
     )
 }
 
@@ -211,21 +231,34 @@ pub fn public_clock_effect_kq_value_function(state: &State, myself: usize) -> f6
 /// [`ValueFunctionParams::baseline`]. Pre-set before any A/B and not tuned on the table.
 pub const KQ_BENCH_ATTACKER_WEIGHT: f64 = 250.0;
 
-/// The `kq` switches. [`KqFeatures::OFF`] is every older tier: no new code runs.
+/// The evaluator switches added after `kp`. [`EvalFeatures::OFF`] is every older tier: no new code runs.
 #[derive(Debug, Clone, Copy)]
-struct KqFeatures {
+struct EvalFeatures {
+    /// kq: next-attack reduction in the threat clock ([`first_attack_turn`]).
     next_attack_reduction: bool,
+    /// kq: weight of the benched-attacker readiness term ([`best_benched_attacker_online_score`]).
     bench_attacker_weight: f64,
+    /// kd: the clock's damage to each victim goes through its Weakness and persistent reductions
+    /// ([`persistent_defender_damage`]). Not combined with `next_attack_reduction`: no player code sets both, and
+    /// if both were set, a knockout priced by kq's first attack turn would keep kq's arithmetic.
+    defender_modifiers: bool,
 }
 
-impl KqFeatures {
-    const OFF: KqFeatures = KqFeatures {
+impl EvalFeatures {
+    const OFF: EvalFeatures = EvalFeatures {
         next_attack_reduction: false,
         bench_attacker_weight: 0.0,
+        defender_modifiers: false,
     };
-    const KQ: KqFeatures = KqFeatures {
+    const KQ: EvalFeatures = EvalFeatures {
         next_attack_reduction: true,
         bench_attacker_weight: KQ_BENCH_ATTACKER_WEIGHT,
+        defender_modifiers: false,
+    };
+    const KD: EvalFeatures = EvalFeatures {
+        next_attack_reduction: false,
+        bench_attacker_weight: 0.0,
+        defender_modifiers: true,
     };
 }
 
@@ -394,12 +427,12 @@ pub fn parametric_value_function_ex5(
         clock_aware,
         effect_aware,
         reserve_aware,
-        KqFeatures::OFF,
+        EvalFeatures::OFF,
     )
 }
 
-/// [`parametric_value_function_ex5`] with the `kq` switches ([`KqFeatures`]). With [`KqFeatures::OFF`] it
-/// is ex5 exactly: the clock takes its old path and no bench term is added.
+/// [`parametric_value_function_ex5`] with the switches added after `kp` ([`EvalFeatures`]). With
+/// [`EvalFeatures::OFF`] it is ex5 exactly: the clock takes its old path and no bench term is added.
 #[allow(clippy::too_many_arguments)]
 fn parametric_value_function_ex6(
     state: &State,
@@ -410,7 +443,7 @@ fn parametric_value_function_ex6(
     clock_aware: bool,
     effect_aware: bool,
     reserve_aware: bool,
-    kq: KqFeatures,
+    features: EvalFeatures,
 ) -> f64 {
     // A completed game has outcome utility only. Extra HP, cards, or points cannot
     // improve a win (or salvage a loss). Keep the historical private evaluator intact.
@@ -455,7 +488,8 @@ fn parametric_value_function_ex6(
             effect_aware,
             reserve_aware,
             public_eval,
-            kq.next_attack_reduction,
+            features.next_attack_reduction,
+            features.defender_modifiers,
         ),
         extract_features(
             state,
@@ -467,7 +501,8 @@ fn parametric_value_function_ex6(
             effect_aware,
             reserve_aware,
             public_eval,
-            kq.next_attack_reduction,
+            features.next_attack_reduction,
+            features.defender_modifiers,
         ),
     );
     let score = (my.points - opp.points) * params.points
@@ -489,12 +524,12 @@ fn parametric_value_function_ex6(
     trace!("parametric_value_function: {score} (params: {params:?}, my: {my:?}, opp: {opp:?})");
     // kq: the best benched attacker's readiness, on both sides as for the Active (the opponent's priced from
     // the board only). Every older tier has weight 0 and skips it, so its score is untouched.
-    if kq.bench_attacker_weight != 0.0 {
+    if features.bench_attacker_weight != 0.0 {
         let my_bench =
             best_benched_attacker_online_score(state, myself, false, effect_aware, reserve_aware);
         let opp_bench =
             best_benched_attacker_online_score(state, opponent, public_eval, effect_aware, reserve_aware);
-        return score + (my_bench - opp_bench) * kq.bench_attacker_weight;
+        return score + (my_bench - opp_bench) * features.bench_attacker_weight;
     }
     score
 }
@@ -535,6 +570,7 @@ fn extract_features(
     reserve_aware: bool,
     public_evaluation: bool,
     next_attack_reduction: bool,
+    defender_modifiers: bool,
 ) -> Features {
     let points = state.points[player] as f64;
     let pokemon_value = if value_aware {
@@ -577,6 +613,7 @@ fn extract_features(
             reserve_aware,
             public_evaluation,
             next_attack_reduction,
+            defender_modifiers,
         )
     } else {
         calculate_turns_until_opponent_wins(state, player, public_evaluation)
@@ -741,6 +778,7 @@ fn calculate_turns_until_opponent_wins_damage_aware(
     reserve_aware: bool,
     consume_bench: bool,
     next_attack_reduction: bool,
+    defender_modifiers: bool,
 ) -> f64 {
     let opponent = (player + 1) % 2;
 
@@ -758,7 +796,9 @@ fn calculate_turns_until_opponent_wins_damage_aware(
     let best_threat = state
         .enumerate_in_play_pokemon(opponent)
         .filter_map(|(slot, pokemon)| {
-            let mut candidates: Vec<(u32, usize)> = pokemon
+            // (damage, missing, form): `form` is `None` for the Pokemon as it is, or the index of the
+            // evolution target in `evolution_targets`. Only kd reads it.
+            let mut candidates: Vec<(u32, usize, Option<usize>)> = pokemon
                 .card
                 .get_attacks()
                 .iter()
@@ -768,14 +808,12 @@ fn calculate_turns_until_opponent_wins_damage_aware(
                         return None;
                     }
                     let missing = energy_missing(pokemon, &atk.energy_required, state, opponent);
-                    Some((damage, missing.len()))
+                    Some((damage, missing.len(), None))
                 })
                 .collect();
             if read_scanned_zones {
                 if let Card::Pokemon(current) = &pokemon.card {
-                    let mut available: Vec<Card> = state.decks[opponent].cards.to_vec();
-                    available.extend(state.hands[opponent].iter().cloned());
-                    for target in get_highest_evolutions(&pokemon.card, &available) {
+                    for (form, target) in evolution_targets(state, opponent, pokemon).into_iter().enumerate() {
                         let Card::Pokemon(t) = &target else { continue };
                         let steps = t.stage.saturating_sub(current.stage) as usize;
                         if steps == 0 {
@@ -786,7 +824,7 @@ fn calculate_turns_until_opponent_wins_damage_aware(
                             if damage > 0 {
                                 let missing =
                                     energy_missing(pokemon, &atk.energy_required, state, opponent);
-                                candidates.push((damage, missing.len() + steps));
+                                candidates.push((damage, missing.len() + steps, Some(form)));
                             }
                         }
                     }
@@ -794,13 +832,45 @@ fn calculate_turns_until_opponent_wins_damage_aware(
             }
             candidates
                 .into_iter()
-                .min_by_key(|(damage, missing)| (*missing, u32::MAX - damage))
-                .map(|(damage, missing)| (damage, missing, slot))
+                .min_by_key(|(damage, missing, _)| (*missing, u32::MAX - damage))
+                .map(|(damage, missing, form)| (damage, missing, slot, form))
         })
-        .min_by_key(|(damage, missing, _)| (*missing, u32::MAX - damage));
-    let (max_damage, missing_energy, _threat_slot) = match best_threat {
-        Some((damage, missing, slot)) => (damage as f64, missing, slot),
+        .min_by_key(|(damage, missing, _, _)| (*missing, u32::MAX - damage));
+    let (max_damage, missing_energy, _threat_slot, threat_form) = match best_threat {
+        Some((damage, missing, slot, form)) => (damage as f64, missing, slot, form),
         None => return 30.0, // No pokemon can deal damage, now or via any available evolution
+    };
+
+    // kd: the threat as the Pokemon that attacks (its evolution target, if the threat is one), so each victim's
+    // Weakness and persistent reductions can be priced against it. The threat itself is chosen as before.
+    let evolved_threat;
+    let kd_threat: Option<&PlayedCard> = if defender_modifiers {
+        let threat = state.in_play_pokemon[opponent][_threat_slot]
+            .as_ref()
+            .expect("the threat was found in play");
+        match threat_form {
+            None => Some(threat),
+            Some(form) => {
+                evolved_threat = to_playable_card(&evolution_targets(state, opponent, threat)[form], false);
+                Some(&evolved_threat)
+            }
+        }
+    } else {
+        None
+    };
+    // kd: turns for `threat` to knock `victim` out, its first hit and every later one priced through
+    // `persistent_defender_damage`; `None` when the first hit does no damage.
+    let kd_ko_turns = |threat: &PlayedCard, victim: &PlayedCard| -> Option<f64> {
+        let (first, later) =
+            persistent_defender_damage(state, opponent, threat, player, victim, max_damage as u32);
+        if first == 0 {
+            return None;
+        }
+        Some(ko_turns_after_first_attack(
+            victim.get_remaining_hp() as f64,
+            first as f64,
+            later as f64,
+        ))
     };
 
     let mut total_turns = 0.0;
@@ -831,9 +901,14 @@ fn calculate_turns_until_opponent_wins_damage_aware(
     };
 
     if let Some(my_active) = state.maybe_get_active(player) {
-        let turns_to_ko = match first_turn_damage.take() {
-            None => (my_active.get_remaining_hp() as f64 / max_damage).ceil(),
-            Some(first) => first.ko_turns(my_active.get_remaining_hp() as f64, max_damage),
+        let turns_to_ko = match (first_turn_damage.take(), kd_threat) {
+            (None, None) => (my_active.get_remaining_hp() as f64 / max_damage).ceil(),
+            (Some(first), _) => first.ko_turns(my_active.get_remaining_hp() as f64, max_damage),
+            // kd: a victim the threat can't damage means the threat can't win: the clock's sentinel.
+            (None, Some(threat)) => match kd_ko_turns(threat, my_active) {
+                Some(turns) => turns,
+                None => return 30.0,
+            },
         };
         total_turns += turns_to_ko;
         opp_points += my_active.card.get_knockout_points();
@@ -862,9 +937,13 @@ fn calculate_turns_until_opponent_wins_damage_aware(
         if consume_bench {
             counted_slots[slot] = true;
         }
-        let turns_to_ko = match first_turn_damage.take() {
-            None => (safest_pokemon.get_remaining_hp() as f64 / max_damage).ceil(),
-            Some(first) => first.ko_turns(safest_pokemon.get_remaining_hp() as f64, max_damage),
+        let turns_to_ko = match (first_turn_damage.take(), kd_threat) {
+            (None, None) => (safest_pokemon.get_remaining_hp() as f64 / max_damage).ceil(),
+            (Some(first), _) => first.ko_turns(safest_pokemon.get_remaining_hp() as f64, max_damage),
+            (None, Some(threat)) => match kd_ko_turns(threat, safest_pokemon) {
+                Some(turns) => turns,
+                None => return 30.0,
+            },
         };
         total_turns += turns_to_ko;
         opp_points += safest_pokemon.card.get_knockout_points();
@@ -897,13 +976,21 @@ impl FirstAttackTurn {
     }
 }
 
-/// kq: turns to knock out `hp` when the first attack does `first` and every later one `max_damage`.
+/// kq and kd: turns to knock out `hp` when the first attack does `first` and every later one `max_damage`.
 fn ko_turns_after_first_attack(hp: f64, first: f64, max_damage: f64) -> f64 {
     if first >= hp {
         1.0
     } else {
         1.0 + ((hp - first) / max_damage).ceil()
     }
+}
+
+/// The highest evolutions of `pokemon` that `owner` has in deck or hand, in `get_highest_evolutions`' order. The
+/// clock's threat scan and kd's threat form both read it, so a form index means the same card in both.
+fn evolution_targets(state: &State, owner: usize, pokemon: &PlayedCard) -> Vec<Card> {
+    let mut available: Vec<Card> = state.decks[owner].cards.to_vec();
+    available.extend(state.hands[owner].iter().cloned());
+    get_highest_evolutions(&pokemon.card, &available)
 }
 
 /// kq: [`FirstAttackTurn`] for `owner`, or `None` when its Active carries no effect that reaches its first attack
@@ -1918,7 +2005,7 @@ mod kq_feature_tests {
 
     /// Turns until `player`'s opponent wins, as the clock prices it for k (`kq = false`) and kq.
     fn clock(state: &State, player: usize, kq: bool) -> f64 {
-        calculate_turns_until_opponent_wins_damage_aware(state, player, false, true, false, true, kq)
+        calculate_turns_until_opponent_wins_damage_aware(state, player, false, true, false, true, kq, false)
     }
 
     /// [`first_attack_turn`] for `owner`, with the clock's own damage estimate and pace.
@@ -2202,5 +2289,101 @@ mod kq_feature_tests {
         // With only the utility Ivysaur in the deck it isn't one.
         state.decks[0].cards = vec![get_card_by_enum(CardId::B1a002Ivysaur)];
         assert_eq!(bench_score(&state, 0, false), 0.0);
+    }
+}
+
+#[cfg(test)]
+mod kd_feature_tests {
+    //! kd: the damage-aware clock prices the threat's damage to each victim through the victim's Weakness and
+    //! persistent reductions, checked in built positions against `k`'s clock.
+    use super::*;
+    use crate::card_ids::CardId;
+    use crate::database::get_card_by_enum;
+
+    /// Player 0: `victim` Active (and Bench). Player 1: `threat` Active (and Bench). Player 0 to move on turn 5.
+    fn board(victim: Vec<PlayedCard>, threat: Vec<PlayedCard>) -> State {
+        let mut state = State::default();
+        state.set_board(victim, threat);
+        state.turn_count = 5;
+        state.current_player = 0;
+        state
+    }
+
+    fn mon(id: CardId) -> PlayedCard {
+        PlayedCard::from_id(id)
+    }
+
+    /// Mewtwo ex with Psychic Sphere (50) paid for.
+    fn mewtwo() -> PlayedCard {
+        mon(CardId::A1129MewtwoEx).with_energy(vec![EnergyType::Psychic, EnergyType::Colorless])
+    }
+
+    /// Turns until player 0's opponent wins: (k's clock, kd's clock).
+    fn clocks(state: &State, read_scanned_zones: bool) -> (f64, f64) {
+        let clock = |kd: bool| {
+            calculate_turns_until_opponent_wins_damage_aware(state, 0, read_scanned_zones, true, false, true, false, kd)
+        };
+        (clock(false), clock(true))
+    }
+
+    #[test]
+    fn weakness_is_priced_per_victim() {
+        // Two Riolu (60 HP, weak to Psychic) v Mewtwo ex's 50: k counts 2 + 2 turns, kd 1 + 1 (70 each).
+        let riolus = board(vec![mon(CardId::B3079Riolu), mon(CardId::B3079Riolu)], vec![mewtwo()]);
+        assert_eq!(clocks(&riolus, false), (4.0, 2.0));
+        // Treecko is weak to Fire: no change.
+        let treeckos = board(vec![mon(CardId::B3005Treecko), mon(CardId::B3005Treecko)], vec![mewtwo()]);
+        assert_eq!(clocks(&treeckos, false), (4.0, 4.0));
+        // One of each: only the Riolu speeds up, Active or benched.
+        let mixed = board(vec![mon(CardId::B3079Riolu), mon(CardId::B3005Treecko)], vec![mewtwo()]);
+        assert_eq!(clocks(&mixed, false), (4.0, 3.0));
+        let mixed = board(vec![mon(CardId::B3005Treecko), mon(CardId::B3079Riolu)], vec![mewtwo()]);
+        assert_eq!(clocks(&mixed, false), (4.0, 3.0));
+        // A Colorless threat hits no Weakness: Pidgey's Peck (30) on Riolu is 2 turns either way.
+        let pidgey = mon(CardId::B1180Pidgey).with_energy(vec![EnergyType::Colorless, EnergyType::Colorless]);
+        assert_eq!(clocks(&board(vec![mon(CardId::B3079Riolu)], vec![pidgey]), false), (2.0, 2.0));
+    }
+
+    #[test]
+    fn weakness_follows_the_evolution_the_threat_attacks_as() {
+        // Swablu (Colorless) has no damaging attack of its own; its threat is Mega Altaria ex (Psychic) from its
+        // owner's deck, Mega Harmony 40 with [P][P] already attached: one evolution step, then 40 a turn. Riolu is
+        // weak to Psychic, so kd prices 60 a hit through the Mega's type: 1 + 1 turns, where k counts 1 + 2.
+        let swablu = mon(CardId::B1196Swablu).with_energy(vec![EnergyType::Psychic, EnergyType::Psychic]);
+        let mut state = board(vec![mon(CardId::B3079Riolu)], vec![swablu]);
+        state.decks[1].cards.push(get_card_by_enum(CardId::B1102MegaAltariaEx));
+        assert_eq!(clocks(&state, true), (3.0, 2.0));
+    }
+
+    #[test]
+    fn solid_shell_slows_the_clock() {
+        // Shuckle ex (120 HP) v Bulbasaur's Vine Whip (40): k 3 turns, kd 6 (20 a hit).
+        let bulbasaur = mon(CardId::A1001Bulbasaur).with_energy(vec![EnergyType::Grass, EnergyType::Colorless]);
+        assert_eq!(clocks(&board(vec![mon(CardId::A4021ShuckleEx)], vec![bulbasaur]), false), (3.0, 6.0));
+    }
+
+    #[test]
+    fn a_victim_the_threat_cannot_damage_is_the_sentinel() {
+        // Weedle's Sting (20) does 0 to Shuckle ex through Solid Shell: kd returns the clock's 30-turn sentinel.
+        let weedle = || mon(CardId::A1008Weedle).with_energy(vec![EnergyType::Grass]);
+        assert_eq!(clocks(&board(vec![mon(CardId::A4021ShuckleEx)], vec![weedle()]), false), (6.0, 30.0));
+        // The same when that victim is on the Bench: Riolu takes 3 turns, then Shuckle ex can't be knocked out.
+        let state = board(vec![mon(CardId::B3079Riolu), mon(CardId::A4021ShuckleEx)], vec![weedle()]);
+        assert_eq!(clocks(&state, false), (9.0, 30.0));
+    }
+
+    #[test]
+    fn the_kd_evaluator_prices_both_sides_and_nothing_else() {
+        let k = public_clock_effect_value_function;
+        let kd = public_clock_effect_kd_value_function;
+        // Player 0's Riolu v player 1's Mewtwo ex: player 0's clock drops a turn (2 to 1), worth -100.
+        let exposed = board(vec![mon(CardId::B3079Riolu)], vec![mewtwo()]);
+        assert_eq!(kd(&exposed, 0) - k(&exposed, 0), -100.0);
+        // Mirrored: player 0's Mewtwo ex knocks player 1's Riolu out a turn sooner, worth +100.
+        let threatening = board(vec![mewtwo()], vec![mon(CardId::B3079Riolu)]);
+        assert_eq!(kd(&threatening, 0) - k(&threatening, 0), 100.0);
+        // No Weakness or reduction in play: the same value.
+        let plain = board(vec![mon(CardId::B3005Treecko)], vec![mewtwo()]);
+        assert_eq!(kd(&plain, 0), k(&plain, 0));
     }
 }
