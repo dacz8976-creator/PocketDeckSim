@@ -2782,13 +2782,15 @@ mod kd_feature_tests {
     fn the_kd_evaluator_prices_both_sides_and_nothing_else() {
         let k = public_clock_effect_value_function;
         let kd = public_clock_effect_kd_value_function;
-        // Player 0's Riolu v player 1's Mewtwo ex: player 0's clock drops a turn (2 to 1), worth -100.
+        // Player 0's Riolu v player 1's Mewtwo ex. Player 0's clock drops a turn (Psychic Sphere does 70 to Riolu:
+        // 2 turns to 1), worth -100. Player 1's clock drops 11 (Riolu, one Energy short, does 40 to an ex with Fighting
+        // Fist, not 10: 1 + 15 turns to 1 + 4), worth +1,100.
         let exposed = board(vec![mon(CardId::B3079Riolu)], vec![mewtwo()]);
-        assert_eq!(kd(&exposed, 0) - k(&exposed, 0), -100.0);
-        // Mirrored: player 0's Mewtwo ex knocks player 1's Riolu out a turn sooner, worth +100.
+        assert_eq!(kd(&exposed, 0) - k(&exposed, 0), 1000.0);
+        // Mirrored, the same two changes with the sides swapped.
         let threatening = board(vec![mewtwo()], vec![mon(CardId::B3079Riolu)]);
-        assert_eq!(kd(&threatening, 0) - k(&threatening, 0), 100.0);
-        // No Weakness or reduction in play: the same value.
+        assert_eq!(kd(&threatening, 0) - k(&threatening, 0), -1000.0);
+        // No Weakness, reduction or defender bonus in play: the same value.
         let plain = board(vec![mon(CardId::B3005Treecko)], vec![mewtwo()]);
         assert_eq!(kd(&plain, 0), k(&plain, 0));
     }
