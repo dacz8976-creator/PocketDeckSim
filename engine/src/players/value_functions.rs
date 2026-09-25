@@ -7,7 +7,7 @@ use log::trace;
 
 use crate::actions::abilities::AbilityMechanic;
 use crate::actions::attacks::{BenchDamageFilter, BenchSide, Mechanic};
-use crate::actions::SimpleAction;
+use crate::actions::{Action, SimpleAction};
 use crate::actions::{
     ability_mechanic_from_effect, get_in_play_ability_mechanic, has_any_in_play_ability, EFFECT_MECHANIC_MAP,
 };
@@ -2074,10 +2074,20 @@ fn owner_turn_is_over(state: &State, owner: usize) -> bool {
         })
 }
 
+/// kpr: whether the search would score `owner`'s EndTurn from here on the state before it. It does that when it can't
+/// see the continuation (`observation::hidden_continuation_reason`), for example against an Active Caterpie whose
+/// Quick Growth searches an unknown deck. Such a leaf is really past the turn, so the owner's own reading counts the
+/// turn as over wherever that holds, mid-turn leaves included, and the two kinds of leaf read alike.
+fn end_turn_scored_before_it(state: &State, owner: usize) -> bool {
+    let end_turn = Action { actor: owner, action: SimpleAction::EndTurn, is_stack: false };
+    crate::observation::hidden_continuation_reason(state, &end_turn).is_some()
+}
+
 /// kpr: the Energy `owner`'s Active will have been given by the end of `horizon`, from public sources its owner
 /// controls.
 ///
-/// Timing. The owner's turn is running if `owner` is to move and the turn isn't over ([`owner_turn_is_over`]).
+/// Timing. The owner's turn is running if `owner` is to move and the turn isn't over ([`owner_turn_is_over`]); for
+/// the own reading, also not where the search scores its EndTurn before it ([`end_turn_scored_before_it`]).
 /// - [`Horizon::ThroughNextTurn`] (the evaluating player's own Active): while the turn is running, this turn's unused
 ///   sources count, and so do next turn's; otherwise next turn's only. For the missing Energy of any one attack this
 ///   is the same as "this turn if this turn's sources pay for it, else next turn with both", so the same board scores
@@ -2117,7 +2127,9 @@ fn projected_active_energy(state: &State, owner: usize, active: &PlayedCard, hor
         return Vec::new();
     }
     let owner_to_move = state.current_player == owner;
-    let running = owner_to_move && !owner_turn_is_over(state, owner);
+    let running = owner_to_move
+        && !owner_turn_is_over(state, owner)
+        && !(horizon == Horizon::ThroughNextTurn && end_turn_scored_before_it(state, owner));
     let mut turns: Vec<(u8, bool)> = Vec::with_capacity(2);
     if running {
         turns.push((state.turn_count, true));
@@ -3425,6 +3437,25 @@ mod kpr_feature_tests {
         let mut theirs = running.clone();
         theirs.current_player = 1;
         assert_eq!(scores(&theirs), (0.0, 0.0));
+    }
+
+    #[test]
+    fn where_the_search_scores_end_turn_before_it_the_own_turn_counts_as_over() {
+        // Player 1's Active is Caterpie (Quick Growth) and its deck is unknown, as in a search: the search scores
+        // player 0's EndTurn on the state before it. Zweilous with no Energy, this turn's [D] unused, [D] next: the
+        // own reading counts the turn as over, 1 of 2, on every leaf alike, so attaching before ending the turn keeps
+        // its 250. With the deck known, the turn is running: 2 of 2.
+        let mut state = my_turn(vec![mon(CardId::B1156Zweilous)], Some(EnergyType::Darkness), Some(EnergyType::Darkness));
+        state.in_play_pokemon[1][0] = Some(mon(CardId::B3b001Caterpie));
+        assert_eq!(scores(&state), (0.0, 1.0));
+        state.decks[1].cards.push(Card::Unknown);
+        assert_eq!(scores(&state), (0.0, 0.5));
+        // The reading at the next attack (the opponent's side) doesn't use it: holding one [D] with this turn's attach
+        // made, it stays at this turn, 1 of 2.
+        state.in_play_pokemon[0][0] = Some(with(CardId::B1156Zweilous, EnergyType::Darkness, 1));
+        state.energy_zone[0].current = None;
+        let as_opponent = calculate_active_pokemon_online_score(&state, 0, false, true, false, Some(Horizon::NextAttack));
+        assert_eq!(as_opponent, 0.5);
     }
 
     #[test]
