@@ -1559,10 +1559,20 @@ pub(crate) fn get_extra_random_spread_hits(state: &State, attack_name: &str) -> 
         .sum()
 }
 
+/// How kd's clock counts a hit on a victim (see [`persistent_defender_damage`]).
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub(crate) enum DefenderHit {
+    /// An attack that can hit the Active, on the victim as the Active (the clock promotes each victim in turn).
+    Active,
+    /// An attack that can only damage the Bench, on a victim that is on the Bench: as the engine prices Bench
+    /// damage (no Weakness; Protective Poncho and Shell Shield prevent it; Intimidating Fang comes from the
+    /// defender's current Active).
+    Benched,
+}
+
 /// The damage `attacker` does with `base_damage` to `defender` through the defender's persistent public modifiers,
-/// the attacker taken as Active and `context` its attack's name and text. For the kd value function's clock, which
-/// asks how fast a threat knocks each victim out in turn. `hits_active` is false for an attack that can only damage
-/// the Bench: the engine gives Bench damage no Weakness. Otherwise the defender is taken as the Active.
+/// the attacker taken as Active and `context` its attack's name and text, the hit counted as `hit` says. For the kd
+/// value function's clock, which asks how fast a threat knocks each victim out in turn.
 ///
 /// Returns `(first, later)`: the expected damage of the threat's first hit on this defender, and of every hit after
 /// it. They differ for Disguise (`PreventFirstAttack`, while unused: the first hit does 0) and Ice Face
@@ -1573,11 +1583,13 @@ pub(crate) fn get_extra_random_spread_hits(state: &State, attack_name: &str) -> 
 /// It runs `modify_damage`'s own stages, in its order, restricted to what stays on the board:
 /// - `base_damage == 0` does nothing;
 /// - the attack's text: "isn't affected by Weakness" drops Weakness, and "isn't affected by any effects on your
-///   opponent's Active Pokemon" drops every defender stage below, as `skip_target_effects` does, and the coin
-///   flip (Disguise still applies, as in `handle_damage_only`);
-/// - prevention: `PreventAllDamageFromEx` (Safeguard) from the defender's Ability, against an attacker ex;
-/// - before Weakness: `ReduceOpponentActiveDamage` (Intimidating Fang) from the defender's Ability;
-/// - Weakness: the printed rule, +20 or Bounded Field's x2 (`printed_weakness_application`);
+///   opponent's Active Pokemon" drops every defender stage below on the Active, as `skip_target_effects` does, and
+///   the coin flip (Disguise still applies, as in `handle_damage_only`);
+/// - prevention: `PreventAllDamageFromEx` (Safeguard) from the defender's Ability, against an attacker ex; and on
+///   the Bench, Protective Poncho and `PreventDamageWhileBenched` (Shell Shield);
+/// - before Weakness: `ReduceOpponentActiveDamage` (Intimidating Fang) from the Ability of the defending side's
+///   Active: the defender's own when it is the Active, the current Active's for a Benched hit;
+/// - Weakness: the printed rule, +20 or Bounded Field's x2 (`printed_weakness_application`), on the Active only;
 /// - after Weakness, every finite reduction that isn't temporary: the Tools Heavy Helmet and Steel Apron;
 ///   `ReduceDamageFromAttacks` from the defender's Ability (Solid Shell, Shell Armor, ...); the conditional
 ///   Abilities `ReduceDamageFromTypedAttackers`, `ReduceDamageIfArceusInPlay`, `ReduceDamageAtFullHp` and
@@ -1586,9 +1598,9 @@ pub(crate) fn get_extra_random_spread_hits(state: &State, attack_name: &str) -> 
 /// Left out, because they don't last or aren't the defender's: effects stored on the defender by attacks
 /// (`ReducedDamage`, `ReducedDamageFromEx`, `NoWeakness`, `PreventDamageFromBasic`, `PreventAllDamageAndEffects`,
 /// `PreventDamageIfLessOrEqual`, a stored `ReduceDamageFromAttacks`); Metal Core Barrier (it discards itself at the
-/// end of the opponent's turn); turn effects; vulnerability; the attacker's bonuses and carried reductions;
-/// Guts (`CoinFlipToSurviveKnockOut`, which saves a knockout rather than cutting damage); and the Bench-only
-/// protections. Abilities are read through the engine's suppression-aware lookup.
+/// end of the opponent's turn); turn effects; vulnerability; the attacker's bonuses and carried reductions; and
+/// Guts (`CoinFlipToSurviveKnockOut`, which saves a knockout rather than cutting damage). Abilities are read through
+/// the engine's suppression-aware lookup.
 #[allow(clippy::too_many_arguments)]
 pub(crate) fn persistent_defender_damage(
     state: &State,
@@ -1598,16 +1610,31 @@ pub(crate) fn persistent_defender_damage(
     defender: &PlayedCard,
     base_damage: u32,
     context: DamageModifierContext<'_>,
-    hits_active: bool,
+    hit: DefenderHit,
 ) -> (f64, f64) {
-    let skip_target_effects = hits_active && attack_ignores_opponent_active_effects(context);
+    let skip_target_effects = hit == DefenderHit::Active && attack_ignores_opponent_active_effects(context);
     let own_ability = get_in_play_ability_mechanic(state, defender);
     let ability_effect = if skip_target_effects {
         None
     } else {
         own_ability.and_then(card_effect_from_ability_mechanic)
     };
-    let weakness_applies = hits_active && !attack_effect_ignores_weakness(context);
+    if hit == DefenderHit::Benched
+        && (matches!(ability_effect, Some(CardEffect::PreventDamageWhileBenched))
+            || (attacking_player != defending_player && has_tool(defender, CardId::B2147ProtectivePoncho)))
+    {
+        return (0.0, 0.0);
+    }
+    // Intimidating Fang works from the defending side's Active Spot.
+    let fang_holder_effect = if hit == DefenderHit::Benched {
+        state
+            .maybe_get_active(defending_player)
+            .and_then(|active| get_in_play_ability_mechanic(state, active))
+            .and_then(card_effect_from_ability_mechanic)
+    } else {
+        ability_effect.clone()
+    };
+    let weakness_applies = hit == DefenderHit::Active && !attack_effect_ignores_weakness(context);
     // One hit of `base` raw damage: (first, later) as above, before coins and Disguise.
     let hit = |base: u32| -> (u32, u32) {
         if base == 0 {
@@ -1616,7 +1643,7 @@ pub(crate) fn persistent_defender_damage(
         if matches!(ability_effect, Some(CardEffect::PreventAllDamageFromEx)) && attacker.card.is_ex() {
             return (0, 0);
         }
-        let intimidating_fang = match ability_effect {
+        let intimidating_fang = match fang_holder_effect {
             Some(CardEffect::ReduceOpponentActiveDamage { amount }) => amount,
             _ => 0,
         };
@@ -2906,9 +2933,18 @@ mod persistent_defender_damage_tests {
         let attacker = state.get_active(1);
         let defender = state.in_play_pokemon[0][target].as_ref().unwrap();
         (
-            persistent_defender_damage(state, 1, attacker, 0, defender, base, context, target == 0),
+            persistent_defender_damage(state, 1, attacker, 0, defender, base, context, hit(target)),
             modify_damage(state, (1, 0), (base, 0, target), true, context) as f64,
         )
+    }
+
+    /// An attack on the Active hits it as the Active; one on the Bench is Bench damage.
+    fn hit(target: usize) -> DefenderHit {
+        if target == 0 {
+            DefenderHit::Active
+        } else {
+            DefenderHit::Benched
+        }
     }
 
     fn both(defender: PlayedCard, attacker: PlayedCard, base: u32) -> ((f64, f64), f64) {
@@ -3017,11 +3053,18 @@ mod persistent_defender_damage_tests {
 
     #[test]
     fn disguise_prevents_the_first_hit_until_used() {
-        // modify_damage doesn't apply Disguise (handle_damage_only does), so only kd's figures change.
-        assert_eq!(both(mon(CardId::B2073MimikyuEx), mon(CardId::A1001Bulbasaur), 40), ((0.0, 40.0), 40.0));
+        assert_eq!(both(mon(CardId::B2073MimikyuEx), mon(CardId::A1001Bulbasaur), 40).0, (0.0, 40.0));
         let mut used = mon(CardId::B2073MimikyuEx);
         used.prevent_first_attack_damage_used = true;
         assert_eq!(both(used, mon(CardId::A1001Bulbasaur), 40), ((40.0, 40.0), 40.0));
+        // The engine applies Disguise in handle_damage_only: two 40-damage attacks take 0, then 40.
+        let mut state = duel(vec![mon(CardId::B2073MimikyuEx)], vec![mon(CardId::A1001Bulbasaur)]);
+        let hp = |state: &State| state.get_active(0).get_remaining_hp();
+        let full = hp(&state);
+        handle_damage_only(&mut state, (1, 0), &[(40, 0, 0)], true, DamageModifierContext::default());
+        assert_eq!(full - hp(&state), 0);
+        handle_damage_only(&mut state, (1, 0), &[(40, 0, 0)], true, DamageModifierContext::default());
+        assert_eq!(full - hp(&state), 40);
     }
 
     #[test]
@@ -3030,6 +3073,13 @@ mod persistent_defender_damage_tests {
         assert_eq!(both(mon(CardId::A4080Togekiss), mon(CardId::A1001Bulbasaur), 40).0, (20.0, 20.0));
         // Guarded Grill: heads takes -100 from the damage before modifiers (Bastiodon is weak to Fire).
         assert_eq!(both(mon(CardId::A2114Bastiodon), mon(CardId::A1033Charmander), 40).0, (30.0, 30.0));
+        // Under Bounded Field the order shows: tails (120 + Weakness) x2 = 240, heads (120 - 100) x2 = 40, as the
+        // engine cuts the raw damage before modify_damage. Cutting after would give (240 + 140) / 2.
+        let mut state = duel(vec![mon(CardId::A2114Bastiodon)], vec![mon(CardId::A1033Charmander)]);
+        state.active_stadium = Some(get_card_by_enum(CardId::B3155BoundedField));
+        assert_eq!(both_on(&state, 120, None, 0).0, (140.0, 140.0));
+        assert_eq!(modify_damage(&state, (1, 0), (120, 0, 0), true, DamageModifierContext::default()), 240);
+        assert_eq!(modify_damage(&state, (1, 0), (20, 0, 0), true, DamageModifierContext::default()), 40);
     }
 
     #[test]
@@ -3051,13 +3101,23 @@ mod persistent_defender_damage_tests {
     }
 
     #[test]
-    fn bench_only_damage_gets_no_weakness() {
+    fn bench_damage_is_priced_as_the_engine_prices_it() {
+        let heatmor = || vec![mon(CardId::B1044Heatmor)];
         // Heatmor's Tongue Whip (30 to a Benched Pokemon) on a benched Vespiquen ex, weak to Fire: 30, not 50.
-        let state = duel(
-            vec![mon(CardId::A1001Bulbasaur), mon(CardId::B4011VespiquenEx)],
-            vec![mon(CardId::B1044Heatmor)],
-        );
+        let state = duel(vec![mon(CardId::A1001Bulbasaur), mon(CardId::B4011VespiquenEx)], heatmor());
         assert_eq!(both_on(&state, 30, None, 1), ((30.0, 30.0), 30.0));
+        // Protective Poncho and Shell Shield prevent Bench damage.
+        let poncho = mon(CardId::B4011VespiquenEx).with_tool(get_card_by_enum(CardId::B2147ProtectivePoncho));
+        let state = duel(vec![mon(CardId::A1001Bulbasaur), poncho], heatmor());
+        assert_eq!(both_on(&state, 30, None, 1), ((0.0, 0.0), 0.0));
+        let state = duel(vec![mon(CardId::A1001Bulbasaur), mon(CardId::B1a018Wartortle)], heatmor());
+        assert_eq!(both_on(&state, 30, None, 1), ((0.0, 0.0), 0.0));
+        // Intimidating Fang works from the Active Spot: a benched Luxray's does nothing, an Active Luxray's cuts the
+        // damage to a benched Pokemon.
+        let state = duel(vec![mon(CardId::A1001Bulbasaur), mon(CardId::A3a015Luxray)], heatmor());
+        assert_eq!(both_on(&state, 30, None, 1), ((30.0, 30.0), 30.0));
+        let state = duel(vec![mon(CardId::A3a015Luxray), mon(CardId::B4011VespiquenEx)], heatmor());
+        assert_eq!(both_on(&state, 30, None, 1), ((10.0, 10.0), 10.0));
     }
 
     #[test]
