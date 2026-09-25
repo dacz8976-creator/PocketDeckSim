@@ -1,0 +1,145 @@
+# Consistency: 07-skarmory-stall
+
+`decks/dustin/07-skarmory-stall.txt` · Energy: Metal · main attacker: Skarmory ex (Basic), Steel Wing [MM] 70 · combo: Skarmory ex + Metal Core Barrier or Jasmine
+
+Ladder record: 3-1
+
+**In one line:** 07-skarmory-stall: one-Basic opening 86%; Skarmory ex online by own T3 95% first / 95% second (T4 97%/97%); combo by T4 96%/96%; goldfish (scripted pilot v aa): damaging attack by own T3 77% with 0.3 pts conceded first, Skarmory ex attacks by T4 98% with 0.3 conceded first, 1.4 dead cards/turn; unpriced-text cards (a): 0
+
+Turns are the player's own turns (own turn 1 is your first turn whether you go first or second). Going first: no Energy on own turn 1, but you draw. Nobody evolves on their own turn 1. Solitaire figures come from 10,000 deals per seat (about ±1 point); the opening table is exact.
+
+## 1. Opening hand
+
+3 Basic Pokémon in 20 cards. The 5-card hand is dealt at random; only a hand with no Basic has one random card swapped for a random Basic, so extra Basics are not favoured. The opening is the same going first or second.
+
+| Basics in the opening hand | 1 | 2 | 3 | 4 | 5 |
+|---|---|---|---|---|---|
+| exact | 86% | 13% | 1% | 0% | 0% |
+| solitaire check | 86% | 13% | 1% | 0% | 0% |
+
+**Exactly one Basic: 86%** (of which 40% are swap-in hands that had none).
+
+| Only Basic in the hand is… | chance | | Card in the opening hand | chance |
+|---|---|---|---|---|
+| Skarmory ex | 57% | | Skarmory ex | 71% |
+| Indeedee ex | 29% | | Metal Core Barrier | 41% |
+|  |  | | Jasmine | 41% |
+
+## 2. Main attacker online
+
+"Online" = Skarmory ex in play (Active or Bench) with the Energy for Steel Wing [MM] attached, at the moment you would attack. Fastest possible without acceleration: own turn 3 going first, 2 going second.
+
+| | going first T2 | T3 | T4 | going second T2 | T3 | T4 |
+|---|---|---|---|---|---|---|
+| Skarmory ex online | 0% | 95% | 97% | 92% | 95% | 97% |
+| Skarmory ex in play (any Energy) | 95% | 97% | 98% | 95% | 97% | 98% |
+| online, draw/search cards not played | 0% | 79% | 82% | 76% | 79% | 83% |
+
+Where "in play" is well above "online", Energy is the limit (one a turn); where both are low, finding the cards is the limit. The last row shows what the list's draw and search cards add.
+
+## 3. Stage 2 in play
+
+No Stage 2 in the list.
+
+## 4. Combo assembled
+
+Pieces: Skarmory ex + Metal Core Barrier or Jasmine. A Pokémon piece counts when it is in play; a Trainer piece when it is in hand or already played.
+
+| by own turn | 2 | 3 | 4 | 5 |
+|---|---|---|---|---|
+| going first | 86% | 92% | 96% | 98% |
+| going second | 87% | 92% | 96% | 98% |
+
+Each piece on its own (going first / second):
+
+| piece | by T3 | by T5 |
+|---|---|---|
+| Skarmory ex | 97% / 97% | 99% / 99% |
+| Metal Core Barrier or Jasmine | 95% / 95% | 99% / 99% |
+
+### Drawing each card
+
+Each card, drawn or fetched at least once by own turn 3 / by own turn 5 (the opening hand counts; going first, the list's draw and search cards played; "no draw" = the same deals with them left in hand):
+
+| card | copies | by T3 | by T5 | by T3, no draw | by T5, no draw |
+|---|---|---|---|---|---|
+| Skarmory ex | 2 | 97% | 99% | 82% | 88% |
+| Indeedee ex | 1 | 81% | 91% | 51% | 60% |
+| Poké Ball | 2 | 73% | 85% | 63% | 74% |
+| Lucky Ice Pop | 1 | 49% | 63% | 39% | 49% |
+| Steel Apron | 1 | 49% | 63% | 38% | 48% |
+| Metal Core Barrier | 2 | 74% | 87% | 63% | 75% |
+| Professor's Research | 2 | 63% | 76% | 64% | 75% |
+| Sabrina | 1 | 48% | 62% | 39% | 49% |
+| Cyrus | 2 | 75% | 87% | 64% | 75% |
+| Pokémon Center Lady | 1 | 48% | 62% | 37% | 47% |
+| Red | 2 | 75% | 87% | 62% | 74% |
+| Jasmine | 2 | 75% | 87% | 63% | 76% |
+| Starting Plains | 1 | 49% | 62% | 38% | 49% |
+
+## 5. Goldfish against the engine
+
+The real engine (rules4: rl/addon-0.7.2/deckgym and the pdl_rl_env 0.7.2 add-on built from the same rules) plays this list against `decks/research/weezing.txt` piloted by the engine's `aa` bot (attach-and-attack: it puts its Energy on the Active and attacks whenever it can, and nothing else). Because the engine lists End Turn first among the legal moves and `aa` takes the first move when it cannot attach or attack, `aa` never benches a Pokémon, not even at setup, and never plays a Trainer: the opponent is one Active Pokémon, and knocking it out wins. That makes it a fixed clock (here mostly Hoopa ex: 30 a turn from its first Energy, 100 from its third), not a real opponent.
+
+Two pilots for this list. **sp** (scripted pilot, the main reading): the solitaire model's priorities playing the real engine through the add-on: benches Basics, plays the draw, search, Rare Candy and Energy cards, evolves, puts Energy on the main line, attaches defensive Tools, heals a hurt Active, retreats to a Pokémon that can attack, and attacks for the most damage. **aa** (the brief's pilot): the engine's own bot on this side too, so both sides have a single Pokémon and the game ends at the first knockout; its "points conceded" can never exceed what one knockout gives. `et` ends every turn at once and never attacks, so it is not used. 150 games per pilot; the coin decides who goes first.
+
+"Damaging attack" = the list's first attack that damaged or knocked out the opposing Active (poison it applied counts). "Conceded" = the opponent's points at that moment (or at the end if it never came). "Main attacks" = the first attack by the main attacker. "Dead" = cards in hand at the end of the turn that the rules did not let you play then (own turns 1-4; a second Supporter after one was played counts as dead; cards that need an opposing Bench, such as Cyrus and Sabrina, are left out because this opponent never has one).
+
+| pilot | seat | games | won | damaging attack by T2 | by T3 | by T4 | never | points conceded before it | conceded 2+ | main attacks by T3 | by T4 | never | conceded before main | dead cards / turn |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| sp | first | 77 | 97% | 0% | 58% | 97% | 1% | 0.49 | 25% | 58% | 97% | 1% | 0.49 | 1.3 |
+| sp | second | 73 | 99% | 60% | 96% | 99% | 1% | 0.08 | 4% | 96% | 99% | 1% | 0.08 | 1.5 |
+| aa | first | 71 | 28% | 0% | 59% | 59% | 41% | 0.82 | 41% | - | - | - | - | 0.2 |
+| aa | second | 79 | 73% | 73% | 73% | 73% | 27% | 0.53 | 27% | - | - | - | - | 0.2 |
+
+Most often dead at end of turn (sp): Red 38%, Jasmine 22%, Pokémon Center Lady 19%, Lucky Ice Pop 13% of turn-ends.
+
+Most often dead at end of turn (aa): Lucky Ice Pop 11%, Pokémon Center Lady 9% of turn-ends.
+
+Engine game seeds (one per game): sp: 21,002,000,000 to 21,002,000,149, aa: 21,002,005,000 to 21,002,005,149. The won column is against a single Pokémon that never plays a Trainer and means little; read the tempo columns. The `aa` opponent also never plays a card, so its hand grows and Copycat draws more than it would on the ladder.
+
+## 6. Coverage flag
+
+Cards that hit known blind spots of the engine's bots, so the simulator's numbers for this list are less trustworthy where these cards matter:
+- **(a)** text names the opponent's hand or deck: blind k3 leaves the move unpriced (engine/src/observation.rs `hidden_continuation_reason`).
+- **(b)** attack effect outside the damage estimator: the bots value the attack at printed damage (engine/src/players/value_functions.rs `estimated_attack_damage_ex`, fallback `_ => fixed`; effect texts read from engine/src/actions/effect_mechanic_map.rs). "b-" = the effect does not change damage (status, self-damage), so only its side effect is unvalued.
+- **(c)** played from hand: the opponent-reply search (the `o` tiers such as b3o3n4; k3 has no reply ply) only considers attacks, retreats, Abilities, draws and the turn's Energy (engine/src/players/expectiminimax_player.rs `is_public_information_action`).
+
+| card | flags |
+|---|---|
+| Skarmory ex ×2 | **(b-)** attack Steel Wing: effect not in the damage estimate (mechanic DamageAndCardEffect has no damage estimator); damage read as printed 70 |
+| Lucky Ice Pop ×1 | **(c)** played from hand and changes the next exchange: the opponent's reply search never sees it |
+| Steel Apron ×1 | **(c)** played from hand and changes the next exchange: the opponent's reply search never sees it |
+| Metal Core Barrier ×2 | **(c)** played from hand and changes the next exchange: the opponent's reply search never sees it |
+| Sabrina ×1 | **(c)** played from hand and changes the next exchange: the opponent's reply search never sees it |
+| Cyrus ×2 | **(c)** played from hand and changes the next exchange: the opponent's reply search never sees it |
+| Pokémon Center Lady ×1 | **(c)** played from hand and changes the next exchange: the opponent's reply search never sees it |
+| Red ×2 | **(c)** played from hand and changes the next exchange: the opponent's reply search never sees it |
+| Jasmine ×2 | **(c)** played from hand and changes the next exchange: the opponent's reply search never sees it |
+| Starting Plains ×1 | **(c)** played from hand and changes the next exchange: the opponent's reply search never sees it |
+
+**Reading:** no (a) or (b) hits; only the reply-search limit (c) applies.
+
+## Draw, search and Energy effects in this list
+
+What the solitaire model plays (card text from lib/card.py):
+
+| card | text | model |
+|---|---|---|
+| Poké Ball ×2 | Put a random Basic Pokémon from your deck into your hand. | modeled: search 1 random Basic Pokémon to hand |
+| Lucky Ice Pop ×1 | Heal 20 damage from your Active Pokémon. If you healed any damage in this way, flip a coin. If heads, put this Lucky Ice Pop into your hand instead of the discard pile. | ignored: not a draw, search, evolution or Energy effect |
+| Steel Apron ×1 | The [M] Pokémon this card is attached to takes -10 damage from attacks from your opponent's Pokémon, recovers from all Special Conditions, and can't be affected by any Special Conditions. | ignored: not a draw, search, evolution or Energy effect |
+| Metal Core Barrier ×2 | If this card is attached to 1 of your Pokémon, discard it at the end of your opponent's turn.The [M] Pokémon this card is attached to takes -50 damage from attacks from your opponent's Pokémon. | ignored: not a draw, search, evolution or Energy effect |
+| Professor's Research ×2 | Draw 2 cards. | modeled: draw 2 |
+| Sabrina ×1 | Switch out your opponent's Active Pokémon to the Bench. (Your opponent chooses the new Active Pokémon.) | ignored: not a draw, search, evolution or Energy effect |
+| Cyrus ×2 | Switch in 1 of your opponent's Benched Pokémon that has damage on it to the Active Spot. | ignored: not a draw, search, evolution or Energy effect |
+| Pokémon Center Lady ×1 | Heal 30 damage from 1 of your Pokémon, and it recovers from all Special Conditions. | ignored: not a draw, search, evolution or Energy effect |
+| Red ×2 | During this turn, attacks used by your Pokémon do +20 damage to your opponent's Active Pokémon ex. | ignored: not a draw, search, evolution or Energy effect |
+| Jasmine ×2 | During your opponent's next turn, all of your Steelix and Skarmory ex take -50 damage from attacks from your opponent's Pokémon. | ignored: not a draw, search, evolution or Energy effect |
+| Starting Plains ×1 | Each Basic Pokémon in play (both yours and your opponent's) gets +20 HP. | ignored: not a draw, search, evolution or Energy effect |
+
+## How the solitaire pilot plays
+
+Setup: all Basics in hand go into play (Active: a Basic with an "if Active" draw Ability, else one outside the main line). Each own turn: draw; then repeat until nothing changes: play a Stadium that does something here, use it, play Items (Poké Ball and other searches take a random matching card, as printed; Rare Candy on the main line first), bench Basics the plan needs (others only while the Bench has room to spare), evolve (main line first), use draw Abilities, attach Tool pieces; when nothing else moves, one Supporter: a search that finds a missing piece, else a draw, else Copycat when the hand is small and holds nothing needed (Copycat assumes the opponent holds 4 cards). Then the turn's Energy (random among the declared types) goes to the main line first, then other combo attackers, else the Active; Energy from the discard or from Abilities is added; then the check; an Ability that ends the turn is used only when the main attacker cannot attack. No opponent, no knockouts, no retreat, no attacks (attack effects that set up, such as Flock or Glittering Gift, are ignored), no coin-flip Supporters. Hand limit 10.
+
+Generated by `lib/consistency.py` in 24 s; solitaire seed 21,002,000,000 (Python random, same deals across variants).
