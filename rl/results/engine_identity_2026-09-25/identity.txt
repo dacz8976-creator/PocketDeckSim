@@ -1,0 +1,13 @@
+d5c0a9528e076299875ac603667f7076951de885ea8465f3be0d1089b5afbbfb  /home/dacz8976/engine-main/engine/target/release/examples/legality_scan
+
+== compare k3
+new: /home/dacz8976/engine-main/k3_500.jsonl (14,000 games); reference: ../per_game_table_2026-09-25/k3_500.jsonl (14,000 games)
+games in both: 14,000; identical on a, b, seed, first_seat, moves, winner_seat, points, turns, first_deck_score: 14,000 of 14,000
+only in new: 0; only in reference: 0
+RESULT: IDENTICAL
+
+== compare kp3
+new: /home/dacz8976/engine-main/kp3_500.jsonl (14,000 games); reference: ../public_pricing_2026-09-25/kp3_500_worst5.jsonl, ../public_pricing_2026-09-25/kp3_500_rest.jsonl (14,000 games)
+games in both: 14,000; identical on a, b, seed, first_seat, moves, winner_seat, points, turns, first_deck_score: 14,000 of 14,000
+only in new: 0; only in reference: 0
+RESULT: IDENTICAL

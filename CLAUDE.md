@@ -12,9 +12,11 @@
   20,000,000,000 and up.
 - Build: `cd engine && cargo build --release`. Tests: `cargo test --release --features test-utils`.
   A cloud build reproduces the Sept 23 table exactly (Altaria v Blaziken 58.3% on its seeds).
-- The verified add-on 0.7.2 wheel (`rl/addon-0.7.2/wheels/`) and rules4 engine program
-  (`rl/addon-0.7.2/deckgym`) are in the repo, with their hashes in `project_manifest.json`. Run
-  identities bind to that wheel: copy it, never rebuild it. Both are Linux files (WSL or the cloud).
+- The official engine program is `rl/engine-2026-09-25/deckgym` (since Sept 25; built from main at 7fc6ccb,
+  same rules as rules4 plus the kp/kd players; `rl/engine-2026-09-25/README.md`). The rules4 program
+  (`rl/addon-0.7.2/deckgym`) is kept as history. The verified add-on 0.7.2 wheel (`rl/addon-0.7.2/wheels/`)
+  is unchanged. Hashes for all of them are in `project_manifest.json`. Run identities bind to that wheel:
+  copy it, never rebuild it. All are Linux files (WSL or the cloud).
 - `engine/CLAUDE.md` is upstream deckgym's card-implementation guide, not the project's instructions.
 - Dustin is new to GitHub. Explain git steps in GitHub Desktop terms (Commit, Push origin, Fetch
   origin, Pull origin), not command lines.

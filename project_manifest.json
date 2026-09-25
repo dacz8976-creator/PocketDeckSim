@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "reviewed_on": "2026-09-24",
+  "reviewed_on": "2026-09-25",
   "purpose": "One canonical source tree and one hash-bound executable for new runs; historical evidence remains preserved.",
   "project_windows": "C:\\Users\\dacz8\\Projects\\Pocket Deck Sim\\PocketDeckSim",
   "project_wsl": "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim",
@@ -290,21 +290,34 @@
       "source_archive_sha256": "1ace8cc88aa1c50b9562dee2c981148d04d134f485dad881a4651e701e01ed0b",
       "source_working_tree": true,
       "purpose": "Player-selected Energy discards for retreat, Gouging Fire and Walking Wake; Cubone/Clefable/Bonsly outgoing attack reductions follow the affected Pokemon and clear on evolution/switching. 1823 engine tests and 44 accepted-review segments passed; historical RL wheels unchanged."
+    },
+    {
+      "name": "rules4",
+      "artifact": "rl/addon-0.7.2/deckgym",
+      "sha256": "e6593ed816d0d5dbaf24fc8bc81a8317ed8069cda6ae7162c3d53e1fa7a12415",
+      "copied_from": "Pocket Deck Lab/Boss Folder/rules4-t2-repair-2026-09-22/candidate/deckgym (2026-09-24, hash unchanged)",
+      "source_sha256_manifest": "rl/addon-0.7.2/source-sha256.json",
+      "source_sha256_manifest_sha256": "ddb6bc9b8add3ffdf5fe84db39a5fbbb0ff0fa66955cc39df25c1de9958c839c",
+      "source_base_commit": "237b0f8198308f3608c5b790cd81b33342de91fb",
+      "source_commit": "e2ca3bae248186b5b89910e78ea6471f43c591e4",
+      "source_archive_location": "Pocket Deck Lab/Boss Folder/rules4-t2-repair-2026-09-22/source-after.tar.gz (not copied; engine/ at source_commit matches its source manifest except 3 __pycache__ files)",
+      "source_archive_sha256": "69a7ce40c1fec70493367ba79f55ea4dcee677a597c2c965d2e146351a21bbc6",
+      "source_working_tree": false,
+      "purpose": "T2-confirmed tie when the sole third-point earner also loses its last Pokemon while the opponent remains below three points with Pokemon in play. Retains rules3 Energy choices and defender-bound attack reductions. 1826 engine tests and44 accepted-review segments passed; broader simultaneous-finish variants remain unconfirmed. Official release until Sept 25, 2026; superseded by main-7fc6ccb (the same rules, identical k3 play); preserved with its hash unchanged."
     }
   ],
   "available_release": {
-    "name": "rules4",
-    "artifact": "rl/addon-0.7.2/deckgym",
-    "sha256": "e6593ed816d0d5dbaf24fc8bc81a8317ed8069cda6ae7162c3d53e1fa7a12415",
-    "copied_from": "Pocket Deck Lab/Boss Folder/rules4-t2-repair-2026-09-22/candidate/deckgym (2026-09-24, hash unchanged)",
-    "source_sha256_manifest": "rl/addon-0.7.2/source-sha256.json",
-    "source_sha256_manifest_sha256": "ddb6bc9b8add3ffdf5fe84db39a5fbbb0ff0fa66955cc39df25c1de9958c839c",
-    "source_base_commit": "237b0f8198308f3608c5b790cd81b33342de91fb",
-    "source_commit": "e2ca3bae248186b5b89910e78ea6471f43c591e4",
-    "source_archive_location": "Pocket Deck Lab/Boss Folder/rules4-t2-repair-2026-09-22/source-after.tar.gz (not copied; engine/ at source_commit matches its source manifest except 3 __pycache__ files)",
-    "source_archive_sha256": "69a7ce40c1fec70493367ba79f55ea4dcee677a597c2c965d2e146351a21bbc6",
+    "name": "main-7fc6ccb",
+    "artifact": "rl/engine-2026-09-25/deckgym",
+    "sha256": "f4d235e596cdd713546c17450fd66bd9d5eefe4baf53e93d66d8bbe1628e1034",
+    "legality_scan": "rl/engine-2026-09-25/legality_scan",
+    "legality_scan_sha256": "d5c0a9528e076299875ac603667f7076951de885ea8465f3be0d1089b5afbbfb",
+    "source_commit": "7fc6ccbcecbfeadf19962be2e11b6c570aa7b88d",
     "source_working_tree": false,
-    "purpose": "T2-confirmed tie when the sole third-point earner also loses its last Pokemon while the opponent remains below three points with Pokemon in play. Retains rules3 Energy choices and defender-bound attack reductions. 1826 engine tests and44 accepted-review segments passed; broader simultaneous-finish variants remain unconfirmed."
+    "built": "2026-09-25 in WSL: cargo build --release and --example legality_scan, from git archive of origin/main at source_commit (engine/ identical at 6a38b40)",
+    "identity_evidence": "rl/results/engine_identity_2026-09-25/: k3 and kp3 replay the table's 14,000 reference games each, field by field including the hash of every move (14,000 of 14,000); deckgym simulate k3,k3 matches rules4 exactly on seed 7100 in four matchups; kp3 runs",
+    "approved": "Dustin, Sept 25, 2026, conditional on the identity replay; conditions met at 10:49",
+    "purpose": "Official engine for new tables, the screen and diagnostics from Sept 25. Game rules as rules4 (version 0.1.0-pdl.rules4), plus the kp (public pricing), kd and kq (flagged, not a candidate) players and legality_scan's per-game output and counters. The 0.7.2 RL add-on wheel and its run identities are unchanged."
   },
   "addon_wheel": {
     "name": "pdl_rl_env 0.7.2 (rules4)",
@@ -315,8 +328,8 @@
     "purpose": "The wheel the training launchers and the scoreboard tool check. Run identities bind to it, so it is copied, never rebuilt."
   },
   "latest_source_directory": "engine",
-  "latest_source_commit": "e2ca3bae248186b5b89910e78ea6471f43c591e4",
-  "latest_source_note": "engine/ is tracked in git. e2ca3ba is the rules4 release source; later engine commits (option B player and legality scan, 1adc455) are newer source, not the rules4 build.",
+  "latest_source_commit": "7fc6ccbcecbfeadf19962be2e11b6c570aa7b88d",
+  "latest_source_note": "engine/ is tracked in git. The available release (main-7fc6ccb) was built from this commit; later engine commits are newer source, not the release build.",
   "latest_source_version": "0.1.0-pdl.rules4",
   "active_app": "apps/battle_log/s244_battle_log_review.html",
   "benchmark_pool": "pool9",

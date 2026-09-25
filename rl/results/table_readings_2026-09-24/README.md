@@ -39,6 +39,11 @@ The kq3 table still runs as registered, to see whether these flaws show in play.
 - The opponent's side is priced from the board only.
 - A ready Active attacker gets both the 500 Active term and this term. That is intended: it makes promotion neutral, like kp.
 
+**The official engine changed on Sept 25:**
+- It is now `rl/engine-2026-09-25/deckgym`, built from main at 7fc6ccb.
+- Dustin approved the switch conditional on an identity replay, and the replay passed. k3 and kp3 replay this table's reference per-game files on 14,000 of 14,000 games each, move for move, and `deckgym` matches rules4 on the screen's seeds (`rl/results/engine_identity_2026-09-25/`).
+- So every reading above is unchanged under the new build.
+
 **Other comparisons:**
 - **b3n1 vs kp3 (margin-rule quantity):** real error differs by only 0.07 (90% interval −0.70 to +0.83). Going list-free costs nothing measurable.
 - **Mixed rows explain the vetoes** (only one deck changes bot):

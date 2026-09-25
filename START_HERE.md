@@ -18,8 +18,11 @@ the ladder and wins with.
 
 - **The engine is `0.1.0-pdl.rules4`** (September 22). It retains the earlier rules repairs,
   player-selected Energy discards and corrected Cubone/Clefable/Bonsly effects, and fixes the
-  T2 last-Pokemon/third-point result to a tie. `project_manifest.json` names the verified executable (`rl/addon-0.7.2/deckgym`, copied from
-  Pocket Deck Lab on Sept 24 with its hash unchanged; identities: `rl/addon-0.7.2/release-identity.json`).
+  T2 last-Pokemon/third-point result to a tie. **Since Sept 25 the official executable is `rl/engine-2026-09-25/deckgym`**
+  (with `legality_scan` beside it), built from main at 7fc6ccb: the same rules4 rules, plus the kp, kd and kq players.
+  It replaced the rules4 program `rl/addon-0.7.2/deckgym` (copied from Pocket Deck Lab on Sept 24, hash unchanged,
+  still kept) after k3 and kp3 replayed all 14,000 table games move for move (`rl/engine-2026-09-25/README.md`).
+  `project_manifest.json` names it; `current_engine.py` and the screen resolve to it.
   Verification: 1,826 engine tests, 44 accepted-review segments and four k3 smoke games.
   See the [rules4 repair and evidence limits](rl/addon-0.7.2/rules4-repair-README.md)
   and earlier rules3 repairs (`Boss Folder/rules3-repairs-2026-09-22/README.md`, *Pocket Deck Lab only*).
