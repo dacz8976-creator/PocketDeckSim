@@ -132,7 +132,7 @@ its seed-overlap check; the rest was added since.
 | 10,000,000,000 – 12,901,999,999 | Hydreigon run training |
 | 13,000,000,000 – 13,300,000,000 blocks | Hydreigon run evaluation (k3, random, confirmation, held-out) |
 | 19,000,000,000 – 19,800,000,000 blocks | Opus's cloud practice test of the Hydreigon settings (program test only) |
-| 20,000,000,000+ | Claude Code diagnostics (Caterpie counterplay from 20.0B); 21,000,000,000 – 21,001,999,999: Hydreigon pair checks and readout smoke tests (Sept 24); 21,002,000,000+: the laptop's A1 build (branch `laptop/engine-first-2026-09-24`); 21,020,000,000 + pairing × 100,000 + i, i < 200: discard-attack census (Sept 25); 22,000,000,000 – 22,500,000,000: the cloud's Sept 24–25 diagnostics; new blocks go above the last one used |
+| 20,000,000,000+ | Claude Code diagnostics (Caterpie counterplay from 20.0B); 21,000,000,000 – 21,001,999,999: Hydreigon pair checks and readout smoke tests (Sept 24); 21,002,000,000+: the laptop's A1 build (branch `laptop/engine-first-2026-09-24`); 21,020,000,000 + pairing × 100,000 + i, i < 200: discard-attack census (Sept 25); 21,030,000,000 – 21,032,079,999: Raticate brew pilot check; 21,050,000,000 – 21,064,079,999: all-15-decks pilot check (Sept 25); 22,000,000,000 – 22,500,000,000: the cloud's Sept 24–25 diagnostics; new blocks go above the last one used |
 | 1M, 2M, 8M, 9M | step-3 checks |
 | 5M, 6M | v2.2 checks (Astra's rules4 recheck also 6M) |
 | 18M, 18.5M, 18.9M, 28.5M | step-1 checks (18M, 18.5M); Astra's interface checks (18.5M, 28.5M) and mirror benchmark (18.9M) |
