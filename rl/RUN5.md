@@ -288,3 +288,10 @@ fix, not the yardstick.
 5. Astra reviews that build once.
 6. The connection gate and the speed check pass before any evaluation.
 7. Side studies get one review pass from one reviewer.
+
+## Pointer, Sept 24 late evening (Fable; no plan change here until Dustin says yes)
+
+A consensus plan reached between Fable and the laptop Claude Code session, with the evidence that produced it, the
+reading rules and the decisions Dustin is asked for at breakfast, is in `docs/REVIEW_2026-09-24_direction.md`,
+section 8 ("Consensus plan, Sept 24 late evening, for Dustin's OK"). Read it before starting anything new. This page's
+plan stands until Dustin approves that section, at which point it moves here.
