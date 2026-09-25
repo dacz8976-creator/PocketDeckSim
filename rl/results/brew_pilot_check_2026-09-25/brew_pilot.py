@@ -24,6 +24,11 @@ game): descriptive only. Rows are (brew pilot | opponent pilot): k3|k3, kp3|k3, 
   the Thieving Incisors and Copycat rates say where it comes from.
   kp3|kp3 minus kp3|k3: whether the number moves again when the meta side prices too.
 Nothing here is a table or a deck ranking.
+
+Options added after the Raticate run (06:30; its defaults and results unchanged): --brews all (every deck in
+decks/dustin), --rows (e.g. "k3|k3,kp3|k3"), --seed0. The all-decks run's reading, set before its first game: the
+same "pilot" difference per brew, descriptive only; it says which of Dustin's brews' simulator numbers depend on the
+pilot, and by how much, not how good any brew is.
 """
 import os
 
@@ -74,7 +79,10 @@ def opath(o):
     return str(ROOT / "decks/research" / f"{o}.txt")
 
 
-def _init():
+def _init(brews, seed0):
+    BREWS[:] = brews
+    global SEED0
+    SEED0 = seed0
     env = PocketEnv(vocab_deck_paths=[bpath(b) for b in BREWS] + [opath(o) for o in OPPS], features="v2.2")
     env.reset(bpath(BREWS[0]), opath(OPPS[0]), 1)
     _W["env"] = env
@@ -125,19 +133,35 @@ def play(task):
 
 
 def main():
+    global ROWS, SEED0
     ap = argparse.ArgumentParser()
     ap.add_argument("--deals", type=int, default=200)
     ap.add_argument("--workers", type=int, default=8)
     ap.add_argument("--out", default=str(HERE / "brew_pilot.txt"))
+    ap.add_argument("--brews", default=None, help="comma list of decks/dustin names, or 'all'; default the three Raticate brews")
+    ap.add_argument("--rows", default=",".join(ROWS), help="comma list of brew|opponent pilot rows; k3|k3 must be one")
+    ap.add_argument("--seed0", type=int, default=SEED0)
     a = ap.parse_args()
+    if a.brews == "all":
+        BREWS[:] = sorted(p.stem for p in (ROOT / "decks/dustin").glob("*.txt"))
+    elif a.brews:
+        BREWS[:] = a.brews.split(",")
+    ROWS = tuple(a.rows.split(","))
+    SEED0 = a.seed0
+    if "k3|k3" not in ROWS or any(r.split("|")[0] not in ("k3", "kp3") or r.split("|")[1] not in ("k3", "kp3") for r in ROWS):
+        raise SystemExit(f"--rows {a.rows}: each row is <k3|kp3>|<k3|kp3>, and k3|k3 must be one of them")
+    missing = [b for b in BREWS if not Path(bpath(b)).exists()]
+    if missing:
+        raise SystemExit(f"no such deck in decks/dustin: {missing}")
     t0 = time.time()
     tasks = [(b, o, i, r) for b in range(len(BREWS)) for o in range(len(OPPS)) for i in range(a.deals) for r in ROWS]
-    with mp.get_context("spawn").Pool(a.workers, initializer=_init) as pool:
+    with mp.get_context("spawn").Pool(a.workers, initializer=_init, initargs=(list(BREWS), SEED0)) as pool:
         res = pool.map(play, tasks, chunksize=4)
     by = {(r["b"], r["o"], r["i"], r["row"]): r for r in res}
     errors = [r for r in res if not r["ok"]]
     sha = hashlib.sha256(Path(pdl_rl_env.__file__).read_bytes()).hexdigest()
-    L = [f"Brew pilot check: Dustin's Raticate brews under k3 and kp3   ({time.strftime('%Y-%m-%d %H:%M')})", "",
+    what = "Raticate brews" if len(BREWS) == 3 and BREWS[0].startswith("13-") else f"{len(BREWS)} brews"
+    L = [f"Brew pilot check: Dustin's {what} under k3 and kp3   ({time.strftime('%Y-%m-%d %H:%M')})", "",
          f"Diagnostic add-on {pdl_rl_env.__file__} sha256 {sha} (engine at c7cb688; not the verified 0.7.2 wheel).",
          f"{a.deals} paired deals per matchup, seeds {SEED0:,} + brew x 1,000,000 + opponent x 10,000 + i. Games that did "
          f"not replay exactly or raised an error: {len(errors)} of {len(res):,}; a deal counts only when all three rows' "
@@ -157,12 +181,17 @@ def main():
         w = {r: np.array([by[(*k, r)]["won"] for k in good]) for r in ROWS}
 
         def diff(x, y):
+            if x not in w or y not in w:
+                return float("nan"), float("nan")
             d = w[x] - w[y]
             return 100 * d.mean(), (1.96 * 100 * d.std(ddof=1) / math.sqrt(len(d)) if len(d) > 1 else float("nan"))
         cs = {r: {x: sum(by[(*k, r)]["count"][x] for k in good) for x in ("ti_on", "ti", "cc_on", "cc")} for r in ROWS}
         f = lambda c, u, on: f"{c[u]}/{c[on]}" + (f" {100 * c[u] / c[on]:.0f}%" if c[on] else "")  # noqa: E731
-        return (len(good), {r: 100 * w[r].mean() for r in ROWS}, diff("kp3|k3", "k3|k3"), diff("kp3|kp3", "kp3|k3"),
-                [f(cs[r], "ti", "ti_on") for r in ROWS], [f(cs[r], "cc", "cc_on") for r in ROWS[:2]])
+        every = ("k3|k3", "kp3|k3", "kp3|kp3")
+        return (len(good), {r: 100 * w[r].mean() if r in w else float("nan") for r in every},
+                diff("kp3|k3", "k3|k3"), diff("kp3|kp3", "kp3|k3"),
+                [f(cs[r], "ti", "ti_on") if r in cs else "—" for r in every],
+                [f(cs[r], "cc", "cc_on") if r in cs else "—" for r in every[:2]])
 
     def row(label, v):
         if v is None:
