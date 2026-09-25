@@ -102,3 +102,28 @@ The accepted 225430 segment revealed that a zero-HP attacker was discarded befor
   `a_direct_damage_snipe_on_togekiss_pins_the_engines_current_behaviour_no_coin` (`engine/src/hooks/core.rs`)
   fails when this is fixed. For the other attacks kd still flips the coin, as the card text says, so kd and the
   engine disagree there until the engine is fixed. Fix the engine first; kd follows.
+- **"Discard all Energy from this Pokémon" never puts that Energy in the discard pile** (found Sept 25 in the laptop's
+  recordings check, `rl/results/recordings_check_2026-09-25/` on main; confirmed in the code here). The attack effect
+  `damage_and_discard_all_energy` (`engine/src/actions/apply_attack_action.rs`) clears the Active's Energy without
+  adding it to `state.discard_energies`; the normal discard path does (`State::discard_from_active`). Affected
+  attacks: Hyper Ray (Hydreigon), Thunderbolt (Raichu, Pikachu ex, Heliolisk), Luster Purge (Latios), Gaia Impact
+  (Landorus), Sonic Impulse (Mega Latios ex) and Supreme Blast (Mesprit). Cards and code that read the pile then
+  undercount it: Volkner, Lusamine, Professor Sada, Flame Patch, Combust, Dragon's Blessing, the bot's
+  `discard_energy_credit` and kpr's projection. No deck in `decks/research`, `decks/dustin` or `decks/brews` has a
+  combination that reads the pile after one of these attacks. Fixing it changes game states, so it needs an identity
+  replay, and it waits until kpr's table is read.
+- **Two "random" Energy effects always take the last-attached Energy** (same source, confirmed in the code). Crawdaunt's
+  Unruly Claw ("discard a random Energy from your opponent's Active Pokémon",
+  `SimpleAction::DiscardRandomOpponentActiveEnergy`) and the Supporter Psychic ("move a random Energy",
+  `SimpleAction::MoveRandomOpponentEnergyToActive` through `apply_move_last_energy`) use `.last()` in
+  `engine/src/actions/apply_action.rs`, and treat the outcome as fixed, so the bots do too. Piers, which their comment
+  cites, was already fixed to pick at random. It matters only when the Pokémon holds more than one Energy type: the
+  table decks each use one type; Dustin's two-type decks (08, 11) are exposed to Crawdaunt on the ladder. The fix is a
+  chance branch per distinct type held, weighted by count, and needs an identity replay after kpr's table is read.
+- **Rare Candy ignores Aerodactyl ex's Primeval Law** (same source, confirmed in the code). "Your opponent can't play
+  any Pokémon from their hand to evolve their Active Pokémon" is checked only in `can_evolve_at_position`
+  (`engine/src/move_generation/mod.rs`); `can_play_rare_candy` (`move_generation_trainer.rs`) checks Malamar's
+  Evolution Jammer but not Primeval Law, though the engine's own comment on Evolution Jammer says the same wording
+  stops Rare Candy. No Pocket source settles the ruling; the engine should at least agree with itself. No deck here
+  has Aerodactyl ex; against one, the Rare Candy decks (research: Hydreigon, Blaziken, Suicune; Dustin's 01, 02, 05,
+  06; brews 01, 03b, 05, 05b, 09) would get an illegal play. Fix after kpr's table is read.

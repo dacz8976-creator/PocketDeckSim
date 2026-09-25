@@ -132,6 +132,10 @@ Every cell, against k3 or kp3: `../per_game_table_2026-09-25/analyze_tables.py -
   - The snipes-only case leaves out attacks that can hit any of the opponent's Pokémon.
   - For attacks other than direct damage that deliver their damage through a queued choice, kd flips the coin Abilities (as the card text says) where the engine doesn't. That one isn't on the table.
 
+Two more from the laptop's tier-1 read at 0c0e7f9 (`rl/results/table_readings_2026-09-24/kd3_tier1_read.md` on main). Neither needs a kd3 change; a fix would be a new spec and new code.
+- **The queued-damage coin, sized.** kd's no-coin exemption covers only the direct-damage mechanics. The engine also skips the coin for every attack whose damage is queued as a separate damage step: Diving Icicles (Chien-Pao ex), Volcarona's discard-then-damage, Tapu Lele's per-Energy damage, Chase Order's no-discard branch, switch-in-then-damage. Example: Diving Icicles into an Active Togekiss does 130 in the engine; kd prices 65. None of the coin Abilities is in the eight decks. The engine bug is on rules/09's open list; engine first, kd follows.
+- **A Bench-only sniper as the main threat.** Benched victims are then priced by sniping even when the Active attacker would be faster, and powering the sniper can lengthen kd's count by a turn. It affects the Lucario (Hitmonlee), Blaziken (Heatmor) and Sceptile (Grovyle) rows, and fits Lucario's −2.2 when kd3 pilots one side only in the laptop's mixed rows.
+
 ## Files
 
 - `kd3_500.{txt,jsonl}`: the kd3 table. `run_kd3_table.sh` is its command. The legality_scan was built at 0c0e7f9, SHA-256 `f19ad3f378a9042c3e3497bf22361f3db2077c62d6b664c58f065bd46ccb82ae`.
