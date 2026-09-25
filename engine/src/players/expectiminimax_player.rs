@@ -581,6 +581,27 @@ fn expectiminimax_with_public_reply(
             },
         )
     };
+    // The search is about to stop at a turn boundary without searching the opponent's reply.
+    // Price a proven immediate opponent win first, as the hidden-zone guard below always does.
+    // The k-tiers never get here (their opponent zones are always Unknown, so that guard returns
+    // first); the b-tiers' guessed worlds fail the guard and used to skip the certificate.
+    // `projected_free_opponent_turn` re-masks every hand and deck, so a guess can't leak into it.
+    let boundary_fallback = || {
+        certified_public_reply_loss_value(state, myself, value_function, public_reply_provenance)
+            .map(|score| {
+                (
+                    score,
+                    DebugStateNode {
+                        acting_player: state.current_player,
+                        children: vec![],
+                        proba: 1.0,
+                        value: score,
+                        win_distance: None,
+                    },
+                )
+            })
+            .unwrap_or_else(static_eval)
+    };
 
     // A settled outcome needs no private continuation, nor any further turn resolution.
     // In particular, do not run Checkup after an attack has already ended the game.
@@ -807,7 +828,7 @@ fn expectiminimax_with_public_reply(
             } else {
                 super::s42_probe::LEAF_BOUNDARY_UNPRICED.fetch_add(1, Ordering::Relaxed);
             }
-            return static_eval();
+            return boundary_fallback();
         }
         super::s42_probe::LEAF_OWN_TURN.fetch_add(1, Ordering::Relaxed);
         // §42 — THE CONSISTENCY FIX. We ran out of depth while still on our own turn, so this
@@ -893,7 +914,7 @@ fn expectiminimax_with_public_reply(
     if state.current_player != myself {
         if opp_budget == 0 {
             super::s42_probe::LEAF_BOUNDARY_UNPRICED.fetch_add(1, Ordering::Relaxed);
-            return static_eval();
+            return boundary_fallback();
         }
         return opponent_ply_node(
             rng,

@@ -270,6 +270,15 @@ fix, not the yardstick.
   (+20 against Grass) checked in play: correct.
 - **Item 2, the Hydreigon run, moves to the repo.** `rl/run_training_v5.sh` now reads the add-on from
   `rl/addon-0.7.2/wheels/`; the wheel itself (SHA-256 56ca0bad…925b) still has to be added there.
+- **Lead for Altaria, from reading the code (not yet tested):** k3's position score ignores Sleep and
+  Paralysis. Its threat clock (`calculate_turns_until_opponent_wins_damage_aware` in
+  `engine/src/players/value_functions.rs`) treats an Asleep or Paralyzed attacker as able to attack next
+  turn, and no other term rewards putting the opponent's Active to sleep, so k3 prices Swablu's Sing at
+  nothing. That would underrate the Sleep deck in every matchup, as the table does. Against it: the
+  see-everything bot's reply search does see Sleep, and Altaria didn't move there. Cheap test: a
+  diagnostic copy whose clock adds half a turn for an Asleep threat and a whole turn for a Paralyzed one,
+  k3 on both sides, the four Altaria misses (Lucario, Blaziken, Suicune, Sceptile) plus two cells without
+  Sleep as controls, 500 table deals each.
 
 ## Limits on every number from this run
 

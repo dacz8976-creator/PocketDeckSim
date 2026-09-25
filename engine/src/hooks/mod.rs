@@ -20,6 +20,7 @@ pub(crate) use core::is_ancient_pokemon;
 pub(crate) use core::is_future_pokemon;
 pub(crate) use core::is_ultra_beast;
 pub(crate) use core::modify_damage;
+pub(crate) use core::persistent_defender_damage;
 pub(crate) use core::on_attack_knockout;
 pub(crate) use core::on_bench_from_hand;
 pub(crate) use core::on_end_turn;

@@ -34,6 +34,8 @@ test-utils = []
 python = ["pyo3"]
 tui = ["ratatui", "crossterm"]
 csv-export = ["csv"]
+# B2b diagnostic: the damage-aware clock delays an Asleep (+1/2 turn) or Paralyzed (+1) Active threat.
+status-clock = []
 
 [lib]
 name = "deckgym"

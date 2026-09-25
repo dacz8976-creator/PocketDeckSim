@@ -6,7 +6,7 @@ use crate::{
 };
 use rand::{rngs::StdRng, seq::SliceRandom};
 use serde::{Deserialize, Serialize};
-use std::cell::RefCell;
+use std::cell::{Cell, RefCell};
 
 pub const INFORMATION_MODEL: &str = "closed-counts-unpriced-v7";
 
@@ -161,7 +161,7 @@ impl PlayerObservation {
     /// from a decklist the caller supplies (the opponent's known list). Every card the opponent has
     /// visibly used (in play, under an evolution, attached, discarded, their Stadium, anything
     /// already revealed) is removed from the list first, and the rest fill the Unknown hand and deck
-    /// slots in random order. This is an explicit matchup prior, so it is kept out of
+    /// slots in random order. Cards publicly known to be somewhere in the deck only fill deck slots. This is an explicit matchup prior, so it is kept out of
     /// `search_state`; slots the list can't fill stay Unknown and keep their usual handling.
     pub fn search_state_with_opponent_list(&self, rng: &mut StdRng, opponent_list: &Deck) -> State {
         let mut state = self.search_state(rng);
@@ -188,14 +188,40 @@ impl PlayerObservation {
             .chain(state.decks[opponent].cards.iter())
             .filter(|c| **c != Card::Unknown)
             .for_each(&mut remove);
+        // Cards publicly known to be somewhere in the opponent's deck (beyond any known top cards,
+        // already placed) can't be in their hand: set them aside for the deck's Unknown slots.
+        let mut membership = self.revealed.opponent_deck_membership.clone();
+        for known in state.decks[opponent].cards.iter().filter(|c| **c != Card::Unknown) {
+            if let Some(i) = membership.iter().position(|c| c == known) {
+                membership.swap_remove(i);
+            }
+        }
+        let mut deck_bound = Vec::new();
+        for card in membership {
+            if let Some(i) = remaining.iter().position(|c| *c == card) {
+                deck_bound.push(remaining.swap_remove(i));
+            }
+        }
         canonical_cards(&mut remaining);
         remaining.shuffle(rng);
         let mut fill = remaining.into_iter();
-        for slot in state.hands[opponent]
-            .iter_mut()
-            .chain(state.decks[opponent].cards.iter_mut())
-            .filter(|c| **c == Card::Unknown)
-        {
+        for slot in state.hands[opponent].iter_mut().filter(|c| **c == Card::Unknown) {
+            match fill.next() {
+                Some(card) => *slot = card,
+                None => break,
+            }
+        }
+        // With nothing set aside this is the same single stream as before; otherwise the
+        // set-aside cards join the rest and the deck's order is drawn afresh.
+        let mut fill: Box<dyn Iterator<Item = Card>> = if deck_bound.is_empty() {
+            Box::new(fill)
+        } else {
+            let mut rest: Vec<Card> = fill.chain(deck_bound).collect();
+            canonical_cards(&mut rest);
+            rest.shuffle(rng);
+            Box::new(rest.into_iter())
+        };
+        for slot in state.decks[opponent].cards.iter_mut().filter(|c| **c == Card::Unknown) {
             match fill.next() {
                 Some(card) => *slot = card,
                 None => break,
@@ -295,9 +321,47 @@ pub(crate) fn record_unpriced(action: &Action, reason: &str) {
     });
 }
 
+thread_local! {
+    /// B1' public pricing (the `kp<N>` tiers): while set, an effect whose text mentions the opponent's
+    /// hand or deck, and is one of the audited texts (players/public_pricing_player.rs, `AUDITED_TEXTS`),
+    /// is resolved against the Unknown cards instead of being left unpriced.
+    static PUBLIC_PRICING: Cell<bool> = const { Cell::new(false) };
+}
+
+/// Runs `f` with public pricing on for this thread (the `kp<N>` tiers' decisions). An Unknown card has
+/// no identity, so an effect that looks for a Supporter or a Basic among the opponent's hidden cards
+/// finds none, while its public parts are priced as printed: Darkness Claw's damage, Copycat's draw count
+/// (the opponent's hand size), Mars' draw count (their remaining points). No card is special-cased, but
+/// only audited texts are lifted: a card added later stays unpriced until it is audited.
+pub fn with_public_pricing<T>(f: impl FnOnce() -> T) -> T {
+    struct Restore(bool);
+    impl Drop for Restore {
+        fn drop(&mut self) {
+            PUBLIC_PRICING.with(|flag| flag.set(self.0));
+        }
+    }
+    let _restore = Restore(PUBLIC_PRICING.with(|flag| flag.replace(true)));
+    f()
+}
+
 /// Conservative boundary, deliberately over-inclusive for effects mentioning hidden
 /// zones. Returning a static leaf here means "unpriced", not "effect has zero value".
+/// Under [`with_public_pricing`] the opponent-hand/deck text rule is lifted; see
+/// [`hidden_continuation_reason_strict`] for callers that must keep it.
 pub fn hidden_continuation_reason(state: &State, action: &Action) -> Option<&'static str> {
+    hidden_continuation_reason_in(state, action, PUBLIC_PRICING.with(Cell::get))
+}
+
+/// The historical rule whatever the thread's pricing mode (the public-reply certificate uses it).
+pub(crate) fn hidden_continuation_reason_strict(state: &State, action: &Action) -> Option<&'static str> {
+    hidden_continuation_reason_in(state, action, false)
+}
+
+fn hidden_continuation_reason_in(
+    state: &State,
+    action: &Action,
+    public_pricing: bool,
+) -> Option<&'static str> {
     if state.setup_opponent_hidden && matches!(action.action, SimpleAction::EndTurn) {
         return Some("setup handoff or reveal requires the concealed opponent board");
     }
@@ -412,6 +476,7 @@ pub fn hidden_continuation_reason(state: &State, action: &Action) -> Option<&'st
     }
     .to_lowercase();
     if !public_board_only_ability
+        && !(public_pricing && crate::players::public_pricing_player::is_audited(&text))
         && text.contains("opponent")
         && (text.contains("hand") || text.contains("deck"))
         && unknown(1 - action.actor)
@@ -1176,5 +1241,36 @@ mod opponent_list_tests {
                 .chain(stadium);
             assert_eq!(ids(all), ids(deck_b.cards.iter()), "seed {seed}");
         }
+    }
+
+    #[test]
+    fn cards_known_to_be_in_the_deck_are_never_dealt_to_the_guessed_hand() {
+        let deck_a = Deck::from_file("example_decks/altaria.txt").unwrap();
+        let deck_b = Deck::from_file("example_decks/blastoiseex.txt").unwrap();
+        let mut checked = 0;
+        for seed in 0..40 {
+            let players: Vec<Box<dyn Player>> = vec![
+                Box::new(RandomPlayer { deck: deck_a.clone() }),
+                Box::new(RandomPlayer { deck: deck_b.clone() }),
+            ];
+            let mut game = Game::new(players, seed);
+            while !game.is_game_over() && game.get_state_clone().turn_count < 5 {
+                game.play_tick();
+            }
+            let real = game.get_state_clone();
+            // Publicly known: every card really left in the opponent's deck is in the deck.
+            let known = RevealedKnowledge {
+                opponent_deck_membership: real.decks[1].cards.clone(),
+                ..Default::default()
+            };
+            let observation = PlayerObservation::from_state(&real, 0, &known);
+            let sampled = observation
+                .search_state_with_opponent_list(&mut StdRng::seed_from_u64(seed), &deck_b);
+            // Then the guess must reproduce the real split between hand and deck exactly.
+            assert_eq!(ids(sampled.decks[1].cards.iter()), ids(real.decks[1].cards.iter()), "seed {seed}");
+            assert_eq!(ids(sampled.hands[1].iter()), ids(real.hands[1].iter()), "seed {seed}");
+            checked += usize::from(!real.decks[1].cards.is_empty() && !real.hands[1].is_empty());
+        }
+        assert!(checked > 20, "too few positions with both a hand and a deck: {checked}");
     }
 }
