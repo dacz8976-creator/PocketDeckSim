@@ -1,0 +1,42 @@
+Brew pilot check: Dustin's Raticate brews under k3 and kp3   (2026-09-25 06:28)
+
+Diagnostic add-on /home/dacz8976/diag-kp-addon/module/pdl_rl_env.abi3.so sha256 c048388b4bcf7103375ea0a1e7c9e965be8e350000c3ac873bd111b69e1eae19 (engine at c7cb688; not the verified 0.7.2 wheel).
+200 paired deals per matchup, seeds 21,030,000,000 + brew x 1,000,000 + opponent x 10,000 + i. Games that did not replay exactly or raised an error: 0 of 14,400; a deal counts only when all three rows' games are clean.
+
+Rows are brew pilot | opponent pilot. The brew's win % in each row; two paired differences (95% interval):
+  'pilot' = kp3|k3 - k3|k3 (what k3 understates, against k3 opponents);
+  'meta'  = kp3|kp3 - kp3|k3 (does it move again when the meta side prices too).
+Per brew turn where Thieving Incisors (TI) / Copycat was on offer: turns the brew used it / turns on offer.
+
+  brew v opponent                     n  k3|k3  kp3|k3  kp3|kp3         pilot          meta        TI k3|k3    TI kp3|k3   TI kp3|kp3    Copycat k3|k3 Copycat kp3|k3
+  13-a-ninetales-ra v altaria       200   30.0    45.0     37.0   +15.0 ±7.4     -8.0 ±7.5        10/174 6% 180/180 100% 160/160 100%       64/431 15%    116/226 51%
+  13-a-ninetales-ra v blaziken      200   49.0    65.5     60.0   +16.5 ±6.9     -5.5 ±5.2         0/160 0% 192/192 100% 183/183 100%        22/400 6%    105/183 57%
+  13-a-ninetales-ra v hydreigon     200   54.0    57.0     43.5    +3.0 ±5.5    -13.5 ±7.3         6/145 4% 169/169 100% 151/151 100%        32/346 9%     96/199 48%
+  13-a-ninetales-ra v lucario       200   47.0    64.0     59.5   +17.0 ±6.2     -4.5 ±5.3         2/126 2% 150/150 100% 158/158 100%       33/338 10%    101/171 59%
+  13-a-ninetales-ra v sceptile      200   36.0    49.0     49.5   +13.0 ±6.6     +0.5 ±4.5         4/150 3%  189/190 99%  183/184 99%        32/393 8%    109/173 63%
+  13-a-ninetales-ra v suicune       200   42.5    64.5     62.5   +22.0 ±7.2     -2.0 ±4.8         9/196 5% 212/213 100% 205/206 100%        38/449 8%    116/209 56%
+  13-a-ninetales-ra v vespiquen     200   36.0    62.5     59.5   +26.5 ±7.3     -3.0 ±6.7         5/192 3% 235/235 100% 228/228 100%       39/395 10%    121/215 56%
+  13-a-ninetales-ra v weezing       200   40.5    57.0     47.0   +16.5 ±6.9    -10.0 ±6.9         2/136 1%  160/161 99% 151/151 100%       38/353 11%    107/175 61%
+  13-a-ninetales-ra v all eight    1600   41.9    58.1     52.3   +16.2 ±2.4     -5.8 ±2.2       38/1279 3%1487/1490 100%1419/1421 100%     298/3105 10%   871/1551 56%
+
+  14-comfey-raticat v altaria       200   15.0    26.0     27.0   +11.0 ±5.5     +1.0 ±6.2         9/149 6% 157/157 100% 149/149 100%       69/300 23%     98/229 43%
+  14-comfey-raticat v blaziken      200   12.0    23.5     18.0   +11.5 ±6.2     -5.5 ±5.8         4/189 2% 227/227 100% 222/222 100%       62/351 18%    103/179 58%
+  14-comfey-raticat v hydreigon     200   11.0    19.5     11.5    +8.5 ±5.3     -8.0 ±5.3         8/141 6% 144/144 100% 140/140 100%       72/246 29%     94/162 58%
+  14-comfey-raticat v lucario       200   16.0    23.0     22.5    +7.0 ±5.3     -0.5 ±6.1         5/122 4% 135/135 100% 136/136 100%       61/265 23%     96/166 58%
+  14-comfey-raticat v sceptile      200    2.0     7.5      7.0    +5.5 ±3.2     -0.5 ±1.7         5/192 3% 216/216 100% 217/217 100%       73/253 29%    101/204 50%
+  14-comfey-raticat v suicune       200    1.0     9.0      8.5    +8.0 ±4.3     -0.5 ±3.5         2/202 1% 213/213 100% 210/210 100%       65/319 20%    107/233 46%
+  14-comfey-raticat v vespiquen     200    6.5    26.0     27.5   +19.5 ±6.2     +1.5 ±6.7         8/195 4% 236/236 100% 235/235 100%       63/317 20%    111/239 46%
+  14-comfey-raticat v weezing       200    3.5    19.0     16.0   +15.5 ±5.2     -3.0 ±5.4         4/158 3% 189/189 100% 189/189 100%       54/249 22%     95/187 51%
+  14-comfey-raticat v all eight    1600    8.4    19.2     17.2   +10.8 ±1.9     -1.9 ±1.9       45/1348 3%1517/1517 100%1498/1498 100%     519/2300 23%   805/1599 50%
+
+  15-jolteon-oricor v altaria       200   32.0    50.0     37.0   +18.0 ±6.3    -13.0 ±7.0         9/137 7% 147/147 100% 143/143 100%       58/330 18%     96/226 42%
+  15-jolteon-oricor v blaziken      200   32.0    42.0     35.0   +10.0 ±5.4     -7.0 ±6.7         5/149 3% 182/182 100% 192/192 100%       36/359 10%    104/213 49%
+  15-jolteon-oricor v hydreigon     200   43.5    50.0     31.0    +6.5 ±5.7    -19.0 ±7.3         9/131 7% 147/147 100% 145/145 100%       41/322 13%     91/193 47%
+  15-jolteon-oricor v lucario       200   24.5    40.0     36.0   +15.5 ±6.2     -4.0 ±5.7         8/107 7% 121/121 100% 126/126 100%       40/273 15%     88/173 51%
+  15-jolteon-oricor v sceptile      200    9.0    25.5     21.0   +16.5 ±5.5     -4.5 ±3.5         9/172 5% 222/222 100% 217/217 100%       50/281 18%     99/218 45%
+  15-jolteon-oricor v suicune       200   25.0    43.5     43.5   +18.5 ±7.4     +0.0 ±5.9         7/187 4% 213/214 100% 219/220 100%       41/408 10%    111/240 46%
+  15-jolteon-oricor v vespiquen     200   25.5    40.0     39.0   +14.5 ±7.4     -1.0 ±6.7        13/190 7% 218/218 100% 214/214 100%       46/410 11%    123/240 51%
+  15-jolteon-oricor v weezing       200   19.0    44.5     42.5   +25.5 ±6.8     -2.0 ±7.7         1/140 1% 174/174 100% 171/171 100%        35/378 9%    111/243 46%
+  15-jolteon-oricor v all eight    1600   26.3    41.9     35.6   +15.6 ±2.3     -6.3 ±2.3       61/1213 5%1424/1425 100%1427/1428 100%     347/2761 13%   823/1746 47%
+
+Took 1425 s with 8 workers; 14,400 games.
