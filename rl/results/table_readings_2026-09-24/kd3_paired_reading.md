@@ -67,9 +67,13 @@ The mixed rows compare each deck's own score with kd3 on one side only against k
 
 - kd is a bundle: Weakness and reductions in the clock, the fallback attacker, reach, defender bonuses, and the promotion order.
 - The one clear signal in the mixed rows is Lucario (−2.2; −6.6 against Suicune, −6.2 against Vespiquen). It fits the sniper-as-threat pricing, which comes from the **reach** sub-change, not the Weakness term.
-- So this reading refutes **the bundle as built**, not Weakness pricing as such.
-- The Weakness feature stays in B3's feature set for the fit to weight. Reach is the suspect if anyone ever revisits kd.
+- So this reading refutes **the bundle as built**, not Weakness pricing as such. Reach is the suspect if anyone ever revisits kd.
 - No split run now: nothing at stake would change a decision.
+- **On B3 (corrected at Dustin's word, relayed by Fable):** the Weakness term stays available as a position feature for B3. B3 is the Texel-style fit the plan describes:
+  - It regresses **game outcome on position features, over positions from self-play** (k3 or kp3 games).
+  - It is **never a fit against the Limitless table.** Tuning to the table was dropped on Sept 24, because it overfits 28 cells and has no value for brews.
+  - The table only judges the fitted evaluation afterwards, by the adoption rule and the held-out decks. The weights are then left alone.
+  - When B3 is built, it is registered as its own candidate with the overfitting answer written into its registration, not as a sub-clause of this negative result.
 
 ## Known limits of kd3 (for the record, not a reason for the verdict)
 

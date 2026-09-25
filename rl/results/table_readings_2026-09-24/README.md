@@ -37,12 +37,17 @@ These readings follow the rules in section 8 of `docs/REVIEW_2026-09-24_directio
 **The holdout confirmation of kp3, pre-registered Sept 25 afternoon.** Fable proposed it and the laptop agreed. It was written before any holdout file was opened, and it applies only if Dustin picks kp3 as the pilot the holdout is spent on.
 - **What is compared:** kp3 against k3, paired by deal, on the decision set of 27 cells (Altaria v Sceptile quarantined, as everywhere else), under veto rule v2.
 - **The holdout cells:** the frozen holdout half of B6's split, counted exactly as `../scoreboard_v2_2026-09-25/build_v2.py` counts the development half. That means cells and per-event cells, with one pairing entry counted as one match.
-- **Confirmed only if all three hold:**
+- **Confirmed only if all four hold:**
   1. The holdout's ΔMSE (kp3 − k3) has the same sign as the development half's, which is negative (−45.8 on v2).
   2. The pooled development + holdout ΔMSE 95% interval is entirely below zero, both binomial and by event.
   3. No veto counts under rule v2 on the holdout cells. The mixed rows are kp3 against k3 on all 28 pairings, both directions (`../kp3_mixed_rows_2026-09-25/`). They are simulator-side only, and were run on the official legality_scan before the holdout was opened.
-- **If all three hold:** kp3's adoption by override becomes a confirmed adoption.
-- **If any fails:** kp3 stays the working pilot by Dustin's override. The next confirmation is on Limitless events after the freeze date.
+  4. **Added Sept 25 afternoon, before the holdout was opened (Dustin, relayed by Fable): size and direction, judged on the holdout alone.** Without this, the rule's only independent condition was a sign test, which a candidate with no real effect passes half the time.
+     - The real-error margin (k3 τ̂ minus kp3 τ̂), computed on the holdout cells alone over the decision set, must be at least half the development half's +2.36, that is **at least +1.18**.
+     - Its 90% interval on the holdout alone must lie **entirely above zero**. The development half's was +0.01 to +3.69.
+     - The quantities are the ones score.py prints on the decision set as "real error, current minus new", with current k3 and new kp3. The interval is the binomial one, the same statistic as the development figure. The by-event interval is printed beside it.
+     - **Known in advance:** if the development estimate were exactly the truth, the holdout would pass (4) about two times in three. At a similar standard error, about ±1.1 points, its 90% interval clears zero when the holdout estimate is above about +1.8. If the development estimate is inflated, the chance is lower. So a failure of (4) doesn't show kp3 is no better; it means the holdout didn't confirm it.
+- **If all four hold:** kp3's adoption by override becomes a confirmed adoption.
+- **If any fails** (including (4) failing while (1)–(3) hold): kp3 stays the working pilot by Dustin's override and is not recorded as confirmed. The next confirmation is on Limitless events after the freeze date.
 - **Caveat on condition 2, written beside the rule:**
   - The pooled development + holdout table is essentially the Sept 23 pooled table rebuilt by pairings.
   - kp3's interval was already below zero there (−84.4 to −4.8), and that table informed which candidates were built.
