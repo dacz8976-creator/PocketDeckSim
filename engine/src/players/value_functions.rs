@@ -3473,6 +3473,10 @@ mod kpr_feature_tests {
         assert_eq!(flareon_to_move(150, 1), (0.0, 1.0 / 3.0));
         assert_eq!(flareon_to_move(150, 2), (0.0, 2.0 / 3.0));
         assert_eq!(flareon_to_move(30, 2), (0.0, 1.0 / 3.0));
+        // Combust attaches to its holder only: a benched Flareon ex gives the Active (Charmander, Ember [R]) nothing.
+        let mut state = opponents_turn(vec![mon(CardId::A1033Charmander), mon(CardId::A3b009FlareonEx)], None);
+        state.discard_energies[0].push(EnergyType::Fire);
+        assert_eq!(scores(&state), (0.0, 0.0));
     }
 
     #[test]
@@ -3607,6 +3611,12 @@ mod kpr_feature_tests {
         // its clock (-100).
         state.energy_zone[1].current = Some(EnergyType::Grass);
         assert_eq!(kpr(&state, 0) - k(&state, 0), 450.0);
+        // Player 0 mid-turn, its own Active read through its next turn: Zweilous holding one [D], this turn's attach
+        // made, [D] next, against a bare Bulbasaur with nothing coming. Ready by next turn: +250 (1 of 2 to 2 of 2)
+        // and one Energy nearer its win (+100). Read only to its next attack (this turn) it would gain nothing.
+        let mut state = my_turn(vec![with(CardId::B1156Zweilous, EnergyType::Darkness, 1)], None, Some(EnergyType::Darkness));
+        state.energy_zone[1].next = None;
+        assert_eq!(kpr(&state, 0) - k(&state, 0), 350.0);
     }
 
     #[test]
