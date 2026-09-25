@@ -88,7 +88,10 @@ The accepted 225430 segment revealed that a zero-HP attacker was discarded befor
   this Pokémon by attacks, flip a coin". The engine flips only for damage carried in the attack's outcome
   (`split_with_damage_prevention` skips entries of 0). Direct-damage attacks put 0 there and deliver their damage
   through a queued `ApplyDamage` choice, so they never trigger the coin. Verified for `DirectDamage` (Heatmor's Tongue
-  Whip into a benched Togekiss: always 30). Several other attacks also deliver damage through `ApplyDamage` choices
+  Whip, an attack, into a benched Togekiss: always 30). Only attacks trigger these Abilities. Damage from an Ability
+  (Darkrai ex's Nightmare Aura, Darkrai's Bad Dreams), a Tool or Checkup must never flip them, and the engine already
+  gets that right: the coin is only set up in the attack path (`apply_attack_action.rs`). Keep it that way when
+  fixing this. Several other attacks also deliver damage through `ApplyDamage` choices
   and are likely affected; check them when fixing. They include the functions `also_choice_bench_damage`,
   `optional_discard_benched_basic_for_extra_damage` (Chase Order),
   `discard_all_energy_of_type_then_damage_any_opponent_pokemon`, `damage_to_any_opponent_per_target_energy`,
