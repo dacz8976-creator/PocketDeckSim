@@ -336,6 +336,16 @@ struct HyperRay {
     noko_passed: u64,
 }
 
+/// Chase Order-style choices (an attack offering "discard one of your Benched Pokemon for more damage",
+/// SimpleAction::DiscardOwnBenchedThenDamage): how often the choice was offered, how often a Pokemon was
+/// discarded, and which.
+#[derive(Default, Clone)]
+struct ChaseOrder {
+    offered: u64,
+    discarded: u64,
+    names: BTreeMap<String, u64>,
+}
+
 #[derive(Default)]
 struct HyperTurn {
     used_opp_hp: Option<Option<u32>>,
@@ -351,6 +361,7 @@ struct GameResult {
     turns: u8,
     first_deck_score: f64,
     hyper_ray: HyperRay,
+    chase_order: ChaseOrder,
     /// Fingerprint of every chosen move in order: distinct games have distinct fingerprints.
     fingerprint: u64,
     findings: Findings,
@@ -372,6 +383,7 @@ fn play_one(decks: &[Deck; 8], pairing: usize, i: u64, bot_a: &str, bot_b: &str)
     let mut turn = Turn::default();
     let mut moves = DefaultHasher::new();
     let mut hyper_turns: BTreeMap<(usize, u8), HyperTurn> = BTreeMap::new();
+    let mut chase_order = ChaseOrder::default();
     let start = game.get_state_clone();
     let start_cards = [card_count(&start, 0), card_count(&start, 1)];
     let mut record = |findings: &mut Findings, list: Vec<(String, String)>, state: &State| {
@@ -401,6 +413,16 @@ fn play_one(decks: &[Deck; 8], pairing: usize, i: u64, bot_a: &str, bot_b: &str)
         record(&mut findings, offered, &before);
         let chosen = game.play_tick();
         format!("{:?}", chosen).hash(&mut moves);
+        if actions.iter().any(|a| matches!(a.action, SimpleAction::DiscardOwnBenchedThenDamage { .. })) {
+            chase_order.offered += 1;
+            if let SimpleAction::DiscardOwnBenchedThenDamage { in_play_idxs, .. } = &chosen.action {
+                chase_order.discarded += 1;
+                for idx in in_play_idxs {
+                    let name = before.in_play_pokemon[actor][*idx].as_ref().map(|p| p.get_name()).unwrap_or_default();
+                    *chase_order.names.entry(name).or_default() += 1;
+                }
+            }
+        }
         let is_hyper = |a: &SimpleAction| matches!(a, SimpleAction::Attack(x) if x.title == "Hyper Ray");
         if before.turn_count > 0 && actions.iter().any(|a| is_hyper(&a.action)) {
             let opp_hp = before.in_play_pokemon[1 - actor][0].as_ref().map(|p| p.get_remaining_hp());
@@ -441,6 +463,7 @@ fn play_one(decks: &[Deck; 8], pairing: usize, i: u64, bot_a: &str, bot_b: &str)
         turns: end.turn_count,
         first_deck_score,
         hyper_ray,
+        chase_order,
         fingerprint: moves.finish(),
         findings,
     }
@@ -498,6 +521,21 @@ fn main() {
                 h.ko_used, h.ko_passed, h.noko_used, h.noko_passed
             );
         }
+        let chase = results.iter().fold(ChaseOrder::default(), |mut s, r| {
+            s.offered += r.chase_order.offered;
+            s.discarded += r.chase_order.discarded;
+            for (name, n) in &r.chase_order.names {
+                *s.names.entry(name.clone()).or_default() += n;
+            }
+            s
+        });
+        if chase.offered > 0 {
+            let names: Vec<String> = chase.names.iter().map(|(name, n)| format!("{name} {n}")).collect();
+            println!(
+                "      Chase Order choices: discarded {} of {} ({})",
+                chase.discarded, chase.offered, names.join(", ")
+            );
+        }
         if let Some(out) = games_out.as_mut() {
             use std::io::Write;
             for (i, r) in results.iter().enumerate() {
@@ -510,6 +548,10 @@ fn main() {
                 });
                 if h.ko_used + h.ko_passed + h.noko_used + h.noko_passed > 0 {
                     line["hyper_ray"] = serde_json::json!([h.ko_used, h.ko_passed, h.noko_used, h.noko_passed]);
+                }
+                if r.chase_order.offered > 0 {
+                    line["chase_order"] = serde_json::json!({ "offered": r.chase_order.offered,
+                        "discarded": r.chase_order.discarded, "names": r.chase_order.names });
                 }
                 writeln!(out, "{line}").expect("write games-out");
             }
