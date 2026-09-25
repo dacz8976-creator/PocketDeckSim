@@ -315,8 +315,15 @@ both sides and the A2 hold decided on it; kd read against kp3 on v2; the Sleep a
    average, one-sided rows; A3 per-game calibration from the Ladder Log; A4 one brew to 15 to 20 ladder games with a
    stop-loss; A5 B4b as a data refresh with bit-for-bit reproduction of the k3 table plus a card-effect pass, and an
    upstream code-merge trial in the cloud before C1.
-3. Pilot quality: kd (the defender's Weakness and reductions in the clock) read against kp3 on v2; kpr (projected
-   readiness for the Active) registered with its census footprint, read the same way; B2e held-out archetypes that
+3. Pilot quality: kd (the defender's Weakness and reductions in the clock) read against kp3 on v2; then, approved by
+   Dustin on Sept 25 as optional and only after kd is read, **one Altaria detector network** on an otherwise idle
+   laptop night: the Hydreigon recipe (two networks trained against each other, pair checks passed before anything is
+   read), read afterwards against kp3 with the key comparison fixed before training as the network's Altaria against
+   kp3's opponent minus kp3 against kp3, pairing Altaria v Lucario (Limitless ±4.9, kp3 62.4 against real 71.9), the
+   same readout as Hydreigon's (attack and ability use rates against kp3 on the same deals, benching, the knockout
+   audit, network v network), a new seed block, and no follow-up training whatever it shows: its value is the audit of
+   what it does differently, not the bot; kpr (projected readiness for the Active) registered with its census
+   footprint, read the same way; B2e held-out archetypes that
    are Dustin's own decks (card check, legality scan, k3 and kp3 rows; no fix may move one more than 2 further from
    Limitless); B3 features then a Texel fit (Weakness, status, the three B2c habits), judged by the adoption rule and
    the held-out decks, then left alone; B4 Dustin's one-hour blind quiz on decisive positions, then about ten saved
@@ -324,8 +331,9 @@ both sides and the A2 hold decided on it; kd read against kp3 on v2; the Sleep a
    fixes under the card-agnostic rule, each with a paired A/B and the sentinels; B6 done (skill explains under 0.6 of
    any gap; Sceptile v Vespiquen out of quarantine as drift-sensitive, Altaria v Sceptile in); B7 not now, gated by
    the cloud transfer probe or three card-patch entries in B5's log.
-4. Not doing: policy networks trained on who won; k7 or depth tables; tuning to Limitless cells; new launchers,
-   guards, gates or ledgers; five-worst-cell screens; "cheapest within noise"; the kq/kv bench-credit line.
+4. Not doing: policy networks trained on who won as the pilot (one network per mispiloted deck as a blind-spot
+   detector is allowed, read the way the Hydreigon run was); k7 or depth tables; tuning to Limitless cells; new
+   launchers, guards, gates or ledgers; five-worst-cell screens; "cheapest within noise"; the kq/kv bench-credit line.
 
 **Rules.**
 - PASS for the pilot: real error τ̂ at 5.5 or less; every cell's confident miss at 10 or less; every deck's
