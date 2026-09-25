@@ -1,5 +1,12 @@
 #!/usr/bin/env python3
-"""Run one manifest-identified DeckGym candidate pairing with durable local evidence."""
+"""Run one manifest-identified DeckGym candidate pairing with durable local evidence.
+
+RETIRED, Sept 25, 2026. Nothing in the current plan (rl/RUN5.md) uses this runner. Since the engine switch (61d773c) it
+refuses to start: it requires the source-hash fields (source_sha256_manifest and its hash) that the Pocket Deck Lab
+candidates carried and the official release main-7fc6ccb does not. New runs go through the official programs that
+current_engine.py resolves: deckgym simulate (decks/screen/run_screen.py, decks/screen/floor.py) and legality_scan
+(the tables). The file is kept as history; it is not updated to the new manifest.
+"""
 
 from __future__ import annotations
 
