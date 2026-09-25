@@ -43,7 +43,7 @@ Seeds: the table's deals only. 72,000,000 + pairing × 10,000 + i, i < 500, even
   - The two engine-bug pins run real attacks through the engine's forecast.
 - **Adversarial review, three rounds** (3 reviewers, then 2, then 1). Every implementation finding was fixed. The design findings went to Dustin: the fallback attacker and the promotion order (adopted, 97ca8f4). The review's point on snipe targets is settled below.
 - **Identity.** k3, kp3 and kq3 replay the whole table exactly with the kd code at 97ca8f4: 14,000 of 14,000 games each, no rule findings (`identity_{k3,kp3,kq3}_500.*`). From 97ca8f4 to 0c0e7f9, only kd's own functions and the tests change.
-- **Mutations.** 43 of 46 were caught, on 5ae7490's code. The three that survived are now covered by tests: 8004222 and 0c0e7f9. A rerun on the table's code is to follow.
+- **Mutations.** All 49 were caught on the table's code (0c0e7f9): each deliberate break of kd's damage function, reach, promotion order, fallback, bonuses, coin rules or wiring makes at least one test fail (`mutation_results_0c0e7f9.txt`; `mutate.py`, which applies each break to a scratch copy of the engine). An earlier run on 5ae7490 caught 43 of 46; tests added in 8004222 and 0c0e7f9 cover the other three.
 
 ## For the laptop's kd3 mixed rows
 
@@ -137,6 +137,6 @@ Every cell, against k3 or kp3: `../per_game_table_2026-09-25/analyze_tables.py -
 - `kd3_500.{txt,jsonl}`: the kd3 table. `run_kd3_table.sh` is its command. The legality_scan was built at 0c0e7f9, SHA-256 `f19ad3f378a9042c3e3497bf22361f3db2077c62d6b664c58f065bd46ccb82ae`.
 - `identity_{k3,kp3,kq3}_500.{txt,jsonl}`: the full-table replays at 97ca8f4, identical to the reference tables. `run_identity.sh` is their command.
 - `identity_k3_45a8030_partial.*`: an earlier partial replay at 45a8030 (pairings 0-4, 2,500 of 2,500 identical).
-- `deck_averages.py`: the readouts above. `timing.txt`: wall times.
+- `deck_averages.py`: the readouts above. `mutation_results_0c0e7f9.txt` and `mutate.py`: the mutation checks. `timing.txt`: wall times.
   - kd3 took 2,913 s, with the kq3 replay sharing the machine for part of it.
   - kp3 took 1,561 s on a free machine, so the two timings aren't a controlled comparison.
