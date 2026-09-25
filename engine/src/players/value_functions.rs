@@ -10,7 +10,7 @@ use crate::actions::attacks::{BenchDamageFilter, BenchSide, Mechanic};
 use crate::actions::{ability_mechanic_from_effect, EFFECT_MECHANIC_MAP};
 use crate::card_logic::get_highest_evolutions;
 use crate::effects::CardEffect;
-use crate::hooks::energy_missing;
+use crate::hooks::{energy_missing, get_retreat_cost_for_player, special_condition_blocks_attack_or_retreat};
 use crate::models::{Attack, Card, EnergyType, PlayedCard, StatusCondition, TrainerType};
 use crate::state::GameOutcome;
 use crate::State;
@@ -912,10 +912,13 @@ fn ko_turns_after_first_attack(hp: f64, first: f64, max_damage: f64) -> f64 {
 /// - `CannotUseAttack(title)` (the same): that attack isn't offered, so its best other attack;
 /// - `ReducedAttackDamage { amount }` (hooks/core.rs `modify_damage`): the amounts summed, floored at 0;
 /// - `CoinFlipToBlockAttack` (apply_attack_action.rs): the attack happens or not on a coin, 50/50.
-/// Timing follows Pocket: a Pokemon attaches one Energy a turn and may attack the same turn, so the Active's first
-/// attack turn is its owner's next turn if its cheapest damaging attack is at most one Energy short, and two
-/// global turns later for each further Energy. An effect with `d` turns left is live through turn `t + d`
-/// (`PlayedCard::end_turn_maintenance`); the owner's next turn is this one if it is to move and hasn't attacked.
+/// Timing follows Pocket: a Pokemon attaches one Energy a turn (from the Energy Zone, if this turn's is still
+/// there) and may attack the same turn. The owner's next turn is this one if it is to move and hasn't attacked;
+/// the Active's first attack turn is the one where its cheapest damaging attack is paid for, two global turns per
+/// attach. An effect with `d` turns left is live through turn `t + d` (`PlayedCard::end_turn_maintenance`).
+/// The escape is a retreat the Active can make on the owner's next turn (not blocked by a special condition,
+/// `NoRetreat` or a retreat already made this turn, its Energy covering the cost) into a benched Pokemon whose
+/// attack can hit the Active, paid for by then. Evolving, which also clears the effects, is not counted.
 fn first_attack_turn(
     state: &State,
     owner: usize,
@@ -930,14 +933,24 @@ fn first_attack_turn(
     let damaging: Vec<&Attack> = attacks.iter().filter(|atk| attack_damage(atk, active) > 0).collect();
     let fewest_missing = damaging.iter().map(|atk| missing(active, atk)).min()?;
     let t = state.turn_count as u32;
-    let next_turn = if state.current_player != owner {
-        t + 1
-    } else if state.end_turn_pending || state.attack_name_used_this_turn[owner].is_some() {
-        t + 2
-    } else {
+    let owner_to_move_now = state.current_player == owner
+        && !state.end_turn_pending
+        && state.attack_name_used_this_turn[owner].is_none();
+    let next_turn = if owner_to_move_now {
         t
+    } else if state.current_player != owner {
+        t + 1
+    } else {
+        t + 2
     };
-    let first_attack = next_turn + 2 * fewest_missing.saturating_sub(1) as u32;
+    // Energy attachable on the owner's next turn: this turn's, if it is still in the Energy Zone.
+    let attach_next = if next_turn == t { state.energy_zone[owner].current.is_some() as usize } else { 1 };
+    // The first attack turn, and how much Energy the Active can have had attached by then.
+    let (first_attack, attachable) = match fewest_missing {
+        0 => (next_turn, attach_next),
+        m if attach_next == 1 => (next_turn + 2 * (m as u32 - 1), m),
+        m => (next_turn + 2 * m as u32, m),
+    };
     let (mut relevant, mut cannot_attack, mut coin_block, mut reduction) = (false, false, false, 0u32);
     let mut blocked: Vec<&str> = Vec::new();
     for (effect, turns_left) in active.get_effects() {
@@ -961,7 +974,7 @@ fn first_attack_turn(
     } else {
         let best = damaging
             .iter()
-            .filter(|atk| !blocked.contains(&atk.title.as_str()) && missing(active, atk) <= fewest_missing)
+            .filter(|atk| !blocked.contains(&atk.title.as_str()) && missing(active, atk) <= attachable)
             .map(|atk| attack_damage(atk, active) as f64)
             .fold(0.0, f64::max)
             .min(max_damage);
@@ -972,19 +985,33 @@ fn first_attack_turn(
             vec![(1.0, damage)]
         }
     };
-    let escape = state
-        .enumerate_bench_pokemon(owner)
-        .flat_map(|(_, pokemon)| {
-            pokemon
-                .card
-                .get_attacks()
-                .iter()
-                .filter(|atk| missing(pokemon, atk) <= 1)
-                .map(|atk| attack_damage(atk, pokemon) as f64)
-                .collect::<Vec<_>>()
-        })
-        .fold(0.0, f64::max)
-        .min(max_damage);
+    let can_retreat = !special_condition_blocks_attack_or_retreat(active)
+        && !active.get_active_effects().contains(&CardEffect::NoRetreat)
+        && !active.is_fossil()
+        && !(next_turn == t && state.has_retreated);
+    let retreat_cost = get_retreat_cost_for_player(state, owner, active).len();
+    let escape = if !can_retreat {
+        0.0
+    } else {
+        state
+            .enumerate_bench_pokemon(owner)
+            .flat_map(|(_, pokemon)| {
+                pokemon
+                    .card
+                    .get_attacks()
+                    .iter()
+                    .filter(|atk| !only_damages_the_bench(atk))
+                    .filter(|atk| {
+                        // The turn's Energy goes either to the benched attacker or to the retreat.
+                        let short = missing(pokemon, atk);
+                        short <= attach_next && retreat_cost + short <= active.attached_energy.len() + attach_next
+                    })
+                    .map(|atk| attack_damage(atk, pokemon) as f64)
+                    .collect::<Vec<_>>()
+            })
+            .fold(0.0, f64::max)
+            .min(max_damage)
+    };
     Some(FirstAttackTurn { through, escape })
 }
 
@@ -1623,9 +1650,11 @@ fn pokemon_online_score(
 /// kq (B5): the best benched attacker's readiness: the highest [`pokemon_online_score`] (`k`'s Active online score,
 /// unchanged) among `player`'s benched attackers, 0 when there is none. A benched Pokemon is an attacker when one
 /// of its target forms (its highest evolutions in deck and hand on the evaluating player's own side, else the card
-/// on the board; the opponent's side is priced from the board only) has an attack that costs Energy, does damage
-/// by the same estimate, and can hit the Active. So a free attack (Bonsly, Igglybuff: readiness 1.0 for nothing)
-/// or a Bench-only snipe can't stand in for an attacker, and benching another Pokemon never lowers the score.
+/// on the board; the opponent's side is priced from the board only) has an attack that costs Energy, can hit the
+/// Active, and does damage: printed damage, a damage estimate with the spread classes on, or a damage mechanic the
+/// estimator doesn't price ([`deals_damage_without_printing_it`]). So a free attack (Bonsly, Igglybuff: readiness
+/// 1.0 for nothing), a Bench-only snipe or a utility attack can't stand in for an attacker, and benching another
+/// Pokemon never lowers the score.
 fn best_benched_attacker_online_score(
     state: &State,
     player: usize,
@@ -1649,12 +1678,11 @@ fn best_benched_attacker_online_score(
         };
         forms.iter().any(|form| {
             form.get_attacks().iter().any(|atk| {
-                let damage = if effect_aware {
-                    estimated_attack_damage_ex(atk, pokemon, state, player, reserve_aware)
-                } else {
-                    atk.fixed_damage as f64
-                };
-                !atk.energy_required.is_empty() && damage > 0.0 && !only_damages_the_bench(atk)
+                !atk.energy_required.is_empty()
+                    && !only_damages_the_bench(atk)
+                    && (atk.fixed_damage > 0
+                        || (effect_aware && estimated_attack_damage_ex(atk, pokemon, state, player, true) > 0.0)
+                        || deals_damage_without_printing_it(atk))
             })
         })
     };
@@ -1663,6 +1691,38 @@ fn best_benched_attacker_online_score(
         .filter(|(_, pokemon)| is_attacker(pokemon))
         .map(|(_, pokemon)| pokemon_online_score(state, player, pokemon, public_only, effect_aware, reserve_aware))
         .fold(0.0, f64::max)
+}
+
+/// kq: an attack with no printed damage whose mechanic damages or knocks out an opponent's Pokemon, among those the
+/// damage estimate prices at 0 (found by scanning every card: the rest of that set is utility - draw, search, heal,
+/// switch, charge, conditions). Keyed on mechanic types, not card names.
+fn deals_damage_without_printing_it(attack: &Attack) -> bool {
+    attack
+        .effect
+        .as_deref()
+        .and_then(|effect| EFFECT_MECHANIC_MAP.get(effect))
+        .is_some_and(|mechanic| {
+            matches!(
+                mechanic,
+                Mechanic::CoinFlipDamageOrHealOpponent { .. }
+                    | Mechanic::CoinFlipSetOpponentActiveRemainingHp { .. }
+                    | Mechanic::CopyAttack { .. }
+                    | Mechanic::DamageAllOpponentPokemon { .. }
+                    | Mechanic::DamageAllOpponentPokemonWithNextTurnBonus { .. }
+                    | Mechanic::DamageEqualToSelfDamage
+                    | Mechanic::DamageEqualToSelfRemainingHp
+                    | Mechanic::DamageToAnyOpponentPerTargetEnergy { .. }
+                    | Mechanic::DirectDamageIfDamaged { .. }
+                    | Mechanic::FlipCoinsRemoveOpponentActive { .. }
+                    | Mechanic::HalveOpponentActiveRemainingHp
+                    | Mechanic::InflictPoisonWithCustomCheckupDamage { .. }
+                    | Mechanic::RandomDamageToOpponentPokemonPerSelfEnergy { .. }
+                    | Mechanic::SelfDiscardAllEnergyAndDelayedSpotKnockOut
+                    | Mechanic::SelfDiscardEnergyThenDamageAnyOpponentPokemon { .. }
+                    | Mechanic::SelfDiscardTypedEnergyAndDamageAllOpponent { .. }
+                    | Mechanic::SwitchInOpponentBenchedThenDamage { .. }
+            )
+        })
 }
 
 /// kq: an attack whose damage can only go to the opponent's Bench (its mechanic says so), not the Active.
@@ -1910,6 +1970,16 @@ mod kq_feature_tests {
         assert_eq!(first(&state, 1, 80.0), Some(FirstAttackTurn { through: vec![(1.0, 40.0)], escape: 0.0 }));
         // Hitmonlee (80 HP): k says one turn; kq says Ice Wing then Blizzard, two.
         assert_eq!((clock(&state, 0, false), clock(&state, 0, true)), (1.0, 2.0));
+        // With two Water, Ice Wing blocked: Blizzard is one short, and the turn's Water pays for it (capped at
+        // the clock's pace, Ice Wing's 40): kq agrees with k.
+        let articuno = with_effect(
+            PlayedCard::from_id(CardId::A1084ArticunoEx).with_energy(vec![EnergyType::Water; 2]),
+            CardEffect::CannotUseAttack("Ice Wing".into()),
+            1,
+        );
+        let state = board(vec![hitmonlee()], vec![articuno]);
+        assert_eq!(first(&state, 1, 40.0), Some(FirstAttackTurn { through: vec![(1.0, 40.0)], escape: 0.0 }));
+        assert_eq!((clock(&state, 0, false), clock(&state, 0, true)), (2.0, 2.0));
     }
 
     #[test]
@@ -1922,6 +1992,14 @@ mod kq_feature_tests {
         let mut state = state;
         state.current_player = 1;
         assert!(first(&state, 1, 40.0).is_some());
+        // One Energy short on its own turn: it attaches this turn's Energy and attacks through the cut...
+        let mut short = board(vec![hitmonlee()], vec![with_effect(bulbasaur(1), cut(), 0)]);
+        short.current_player = 1;
+        short.energy_zone[1].current = Some(EnergyType::Grass);
+        assert!(first(&short, 1, 40.0).is_some());
+        // ...but once this turn's Energy is spent it can't attack before the cut has gone.
+        short.energy_zone[1].current = None;
+        assert_eq!(first(&short, 1, 40.0), None);
         // The same after Bulbasaur has attacked this turn: spent.
         state.attack_name_used_this_turn[1] = Some("Vine Whip".into());
         assert_eq!(first(&state, 1, 40.0), None);
@@ -1958,14 +2036,43 @@ mod kq_feature_tests {
         let state = board(vec![hitmonlee()], vec![locked(), riolu]);
         assert_eq!(first(&state, 1, 40.0).unwrap().escape, 10.0);
         assert_eq!(clock(&state, 0, true), 3.0);
+        // A Bench-only snipe (Hitmonlee's Stretch Kick) can't hit the Active being knocked out: no escape.
+        let sniper = hitmonlee().with_energy(vec![EnergyType::Fighting]);
+        let state = board(vec![hitmonlee()], vec![locked(), sniper]);
+        assert_eq!(first(&state, 1, 40.0).unwrap().escape, 0.0);
+        assert_eq!(clock(&state, 0, true), 3.0);
+    }
+
+    #[test]
+    fn the_escape_never_outpaces_the_clock_and_needs_a_payable_retreat() {
+        // A benched Articuno ex (two Water; Blizzard 80 once the turn's Water goes on) behind a locked Bulbasaur:
+        // the escape is capped at the clock's pace (40), so kq is never faster than k (2 turns).
+        let articuno = |water| PlayedCard::from_id(CardId::A1084ArticunoEx).with_energy(vec![EnergyType::Water; water]);
+        let state = board(vec![hitmonlee()], vec![with_effect(bulbasaur(2), CardEffect::CannotAttack, 1), articuno(2)]);
+        assert_eq!(first(&state, 1, 40.0).unwrap().escape, 40.0);
+        assert_eq!((clock(&state, 0, false), clock(&state, 0, true)), (2.0, 2.0));
+        // A locked Articuno ex (one Water, Retreat Cost 2) behind a Bulbasaur one Energy short: the turn's Energy
+        // can pay for Vine Whip or towards the retreat, not both, so there is no escape and the lock costs a turn.
+        let state = board(vec![hitmonlee()], vec![with_effect(articuno(1), CardEffect::CannotAttack, 1), bulbasaur(1)]);
+        assert_eq!(first(&state, 1, 40.0).unwrap().escape, 0.0);
+        assert_eq!((clock(&state, 0, false), clock(&state, 0, true)), (3.0, 4.0));
+        // With two Water on Articuno the retreat is paid and Vine Whip lands: k's 2 turns.
+        let state = board(vec![hitmonlee()], vec![with_effect(articuno(2), CardEffect::CannotAttack, 1), bulbasaur(1)]);
+        assert_eq!(first(&state, 1, 40.0).unwrap().escape, 40.0);
+        assert_eq!((clock(&state, 0, false), clock(&state, 0, true)), (2.0, 2.0));
     }
 
     #[test]
     fn only_the_active_threat_and_only_the_first_knockout_are_repriced() {
-        // The best threat is a benched Articuno ex (Blizzard 80): a lock on the Active Bulbasaur changes nothing.
-        let articuno = PlayedCard::from_id(CardId::A1084ArticunoEx).with_energy(vec![EnergyType::Water; 3]);
-        let state = board(vec![hitmonlee()], vec![with_effect(bulbasaur(2), CardEffect::CannotAttack, 1), articuno]);
-        assert_eq!(clock(&state, 0, true), clock(&state, 0, false));
+        // The best threat is a benched Mega Lucario ex (Fighting Pulse 90, two Energy short) behind an unpowered
+        // Articuno ex carrying a lasting coin block: the threat isn't the Active, so kq changes nothing (3 turns).
+        let articuno = with_effect(
+            PlayedCard::from_id(CardId::A1084ArticunoEx),
+            CardEffect::CoinFlipToBlockAttack,
+            crate::effects::UNTIL_LEAVES_ACTIVE_SPOT,
+        );
+        let state = board(vec![hitmonlee()], vec![articuno, PlayedCard::from_id(CardId::B3081MegaLucarioEx)]);
+        assert_eq!((clock(&state, 0, false), clock(&state, 0, true)), (3.0, 3.0));
         // Hitmonlee then a benched Riolu (60 HP): the -30 slows the first knockout only (3 + 2 against 2 + 2).
         let riolu = PlayedCard::from_id(CardId::B3079Riolu);
         let state = board(
@@ -2070,5 +2177,30 @@ mod kq_feature_tests {
         // Nor is a Bench-only snipe (Hitmonlee's Stretch Kick), even paid for.
         let sniper = hitmonlee().with_energy(vec![EnergyType::Fighting]);
         assert_eq!(bench_score(&benched(vec![sniper]), 0, false), 0.0);
+    }
+
+    #[test]
+    fn attackers_with_no_printed_damage_still_count() {
+        // Glaceon's Ice Blade (50 to any Pokemon, printed 0) is priced by the estimate; Xatu's Life Drain (the
+        // Active's remaining HP becomes 10 on heads) is a damage mechanic the estimate doesn't price. Paid for: 1.0.
+        let glaceon = PlayedCard::from_id(CardId::A3b073Glaceon).with_energy(vec![EnergyType::Water; 2]);
+        assert_eq!(bench_score(&benched(vec![glaceon]), 0, false), 1.0);
+        let xatu = PlayedCard::from_id(CardId::A4082Xatu).with_energy(vec![EnergyType::Psychic; 2]);
+        assert_eq!(bench_score(&benched(vec![xatu]), 0, false), 1.0);
+    }
+
+    #[test]
+    fn any_highest_evolution_can_make_a_benched_pokemon_an_attacker() {
+        // Bulbasaur with a Grass, the deck listing a utility Ivysaur (Synthesis) before a damaging one (Razor Leaf):
+        // either form makes Bulbasaur an attacker, whatever the deck order.
+        let mut state = benched(vec![bulbasaur(1)]);
+        state.decks[0].cards = vec![
+            get_card_by_enum(CardId::B1a002Ivysaur),
+            get_card_by_enum(CardId::A1002Ivysaur),
+        ];
+        assert!(bench_score(&state, 0, false) > 0.0);
+        // With only the utility Ivysaur in the deck it isn't one.
+        state.decks[0].cards = vec![get_card_by_enum(CardId::B1a002Ivysaur)];
+        assert_eq!(bench_score(&state, 0, false), 0.0);
     }
 }
