@@ -1,0 +1,4 @@
+--deck /home/user/PocketDeckSim/decks/dustin/07-skarmory-stall.txt --panel /home/user/PocketDeckSim/decks/research --bot k3 --opp-bot et --games 50 --seed 22200000000 --attackers Skarmory ex --games-out /home/user/PocketDeckSim/rl/results/brew_consistency_2026-09-25/raw/07-skarmory-stall_et.jsonl --coverage /home/user/PocketDeckSim/rl/results/brew_consistency_2026-09-25/raw/07-skarmory-stall_coverage.json
+/home/user/PocketDeckSim/decks/dustin/07-skarmory-stall.txt: bot k3 v et, 400 games (0 crashed), attackers ["Skarmory ex"]
+  going first: 194 games | main attacker could attack by turn 2 0%, 3 71%, 4 95%; did 0%, 71%, 95% | points conceded before it 0.00 | Stage 2 by turn 3 0% | dead cards per end of turn 2-4 2.22 | won 98%
+  going second: 206 games | main attacker could attack by turn 2 73%, 3 94%, 4 96%; did 73%, 94%, 96% | points conceded before it 0.00 | Stage 2 by turn 3 0% | dead cards per end of turn 2-4 1.88 | won 99%
