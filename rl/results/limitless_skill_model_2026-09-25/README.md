@@ -209,6 +209,13 @@ Tournament matches mix BO1 games and BO3 series (and a small number of BO5 match
 
 The frozen half is archived and used only for the two explicitly labeled integrity checks. It has supplied no skill records, early/late estimates, verdicts, outside-archetype W-L-T, decklist selections, or validation estimates. A later one-time confirmation can rate holdout players from development events, after these verdicts are frozen. The existing Sept 23 aggregate had already exposed pooled information about some frozen events; this is a new event split, not a claim that all historical aggregate information was unseen.
 
+**The one-time confirmation has now been used (added Sept 25, 2026, by the laptop Claude Code session).**
+- **When and why:** the holdout's panel-v-panel match outcomes were read once, at 2026-09-25T19:49:50Z. The purpose was to confirm the simulator pilot kp3 against k3, on Dustin's word in the laptop session's chat.
+- **The rule, fixed before opening:** `../table_readings_2026-09-24/README.md`, commits 10c4e66, e45eb50 and b1740b4.
+- **Code and results:** `../holdout_kp3_2026-09-25/`, with the result in its `READING.md`. The holdout cells were counted from `matches.csv` exactly as the development cells in `../scoreboard_v2_2026-09-25/build_v2.py`: 1,948 matches from 57 events.
+- **What was not done:** no skill records were fitted on holdout players, and nothing in this folder's outputs was changed.
+- **The holdout is spent for pilot decisions.** Later confirmations use events after the freeze date.
+
 ## Ladder Log
 
 [ladder_log_games.csv](ladder_log_games.csv) contains the saved season snapshot: **33 games, 12 wins and 21 losses**, September 15–24. It was exported from the saved authoritative Claude artifact database read, not from the obsolete July log. Opponent and note text are preserved. [ladder_log_provenance.json](ladder_log_provenance.json) records the source artifact, snapshot, timezone and limitations. It was not used in the skill model.

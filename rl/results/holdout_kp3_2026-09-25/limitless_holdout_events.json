@@ -1,0 +1,3611 @@
+{
+ "rule": "analyze.py lines 75-76: panel v panel, different archetypes, decisive or tie; one pairing = one match",
+ "note": "holdout half, per event",
+ "events": [
+  {
+   "event_id": "6a7632cfcdc0391d7fa5fb1b",
+   "cells": {
+    "altaria|blaziken": [
+     1,
+     1,
+     0
+    ],
+    "altaria|sceptile": [
+     3,
+     4,
+     0
+    ],
+    "altaria|vespiquen": [
+     1,
+     2,
+     0
+    ],
+    "blaziken|vespiquen": [
+     0,
+     2,
+     0
+    ],
+    "lucario|sceptile": [
+     2,
+     2,
+     0
+    ],
+    "lucario|vespiquen": [
+     1,
+     0,
+     0
+    ],
+    "sceptile|vespiquen": [
+     2,
+     5,
+     1
+    ]
+   }
+  },
+  {
+   "event_id": "6a7e29c6cdc0391d7fa65af3",
+   "cells": {
+    "altaria|blaziken": [
+     5,
+     1,
+     1
+    ],
+    "altaria|hydreigon": [
+     6,
+     5,
+     1
+    ],
+    "altaria|lucario": [
+     3,
+     2,
+     0
+    ],
+    "altaria|sceptile": [
+     2,
+     4,
+     0
+    ],
+    "altaria|suicune": [
+     6,
+     2,
+     0
+    ],
+    "altaria|vespiquen": [
+     4,
+     1,
+     0
+    ],
+    "altaria|weezing": [
+     1,
+     2,
+     0
+    ],
+    "blaziken|hydreigon": [
+     5,
+     3,
+     2
+    ],
+    "blaziken|lucario": [
+     4,
+     5,
+     0
+    ],
+    "blaziken|sceptile": [
+     4,
+     0,
+     0
+    ],
+    "blaziken|suicune": [
+     7,
+     2,
+     0
+    ],
+    "blaziken|vespiquen": [
+     3,
+     0,
+     0
+    ],
+    "blaziken|weezing": [
+     6,
+     0,
+     0
+    ],
+    "hydreigon|lucario": [
+     11,
+     7,
+     1
+    ],
+    "hydreigon|sceptile": [
+     6,
+     2,
+     0
+    ],
+    "hydreigon|suicune": [
+     2,
+     2,
+     2
+    ],
+    "hydreigon|vespiquen": [
+     5,
+     6,
+     0
+    ],
+    "hydreigon|weezing": [
+     4,
+     2,
+     1
+    ],
+    "lucario|sceptile": [
+     0,
+     5,
+     0
+    ],
+    "lucario|suicune": [
+     3,
+     4,
+     0
+    ],
+    "lucario|vespiquen": [
+     2,
+     2,
+     1
+    ],
+    "lucario|weezing": [
+     4,
+     4,
+     1
+    ],
+    "sceptile|suicune": [
+     2,
+     3,
+     0
+    ],
+    "sceptile|vespiquen": [
+     3,
+     1,
+     0
+    ],
+    "sceptile|weezing": [
+     3,
+     4,
+     0
+    ],
+    "suicune|vespiquen": [
+     1,
+     5,
+     0
+    ],
+    "suicune|weezing": [
+     3,
+     2,
+     1
+    ],
+    "vespiquen|weezing": [
+     3,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "event_id": "6a7f939a78baaa6d1c21f6c6",
+   "cells": {
+    "altaria|lucario": [
+     5,
+     3,
+     0
+    ],
+    "altaria|sceptile": [
+     3,
+     1,
+     1
+    ],
+    "altaria|suicune": [
+     5,
+     10,
+     2
+    ],
+    "altaria|vespiquen": [
+     3,
+     6,
+     0
+    ],
+    "altaria|weezing": [
+     2,
+     9,
+     1
+    ],
+    "hydreigon|lucario": [
+     0,
+     1,
+     0
+    ],
+    "hydreigon|weezing": [
+     0,
+     3,
+     0
+    ],
+    "lucario|sceptile": [
+     1,
+     4,
+     0
+    ],
+    "lucario|suicune": [
+     6,
+     5,
+     0
+    ],
+    "lucario|vespiquen": [
+     2,
+     0,
+     2
+    ],
+    "lucario|weezing": [
+     2,
+     1,
+     0
+    ],
+    "sceptile|suicune": [
+     4,
+     3,
+     0
+    ],
+    "sceptile|vespiquen": [
+     1,
+     6,
+     0
+    ],
+    "sceptile|weezing": [
+     2,
+     0,
+     2
+    ],
+    "suicune|vespiquen": [
+     2,
+     6,
+     1
+    ],
+    "suicune|weezing": [
+     8,
+     4,
+     1
+    ],
+    "vespiquen|weezing": [
+     6,
+     3,
+     0
+    ]
+   }
+  },
+  {
+   "event_id": "6a89c2a78302ae761e5f98c4",
+   "cells": {
+    "altaria|lucario": [
+     1,
+     0,
+     0
+    ],
+    "lucario|sceptile": [
+     1,
+     0,
+     0
+    ],
+    "lucario|suicune": [
+     0,
+     1,
+     0
+    ],
+    "lucario|vespiquen": [
+     2,
+     0,
+     0
+    ],
+    "sceptile|vespiquen": [
+     2,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "event_id": "6a8c6fc581741245b151d898",
+   "cells": {
+    "altaria|lucario": [
+     1,
+     0,
+     0
+    ],
+    "altaria|sceptile": [
+     0,
+     2,
+     0
+    ],
+    "altaria|vespiquen": [
+     1,
+     2,
+     0
+    ],
+    "lucario|vespiquen": [
+     0,
+     1,
+     0
+    ],
+    "sceptile|vespiquen": [
+     0,
+     1,
+     0
+    ]
+   }
+  },
+  {
+   "event_id": "6a8f4bb80580a332c84208a5",
+   "cells": {
+    "altaria|sceptile": [
+     1,
+     0,
+     0
+    ],
+    "altaria|vespiquen": [
+     2,
+     0,
+     0
+    ],
+    "altaria|weezing": [
+     2,
+     0,
+     0
+    ],
+    "blaziken|lucario": [
+     1,
+     1,
+     0
+    ],
+    "blaziken|weezing": [
+     0,
+     2,
+     0
+    ],
+    "hydreigon|suicune": [
+     1,
+     0,
+     0
+    ],
+    "lucario|suicune": [
+     1,
+     0,
+     0
+    ],
+    "lucario|vespiquen": [
+     1,
+     0,
+     0
+    ],
+    "sceptile|suicune": [
+     0,
+     1,
+     0
+    ],
+    "sceptile|vespiquen": [
+     0,
+     1,
+     0
+    ],
+    "sceptile|weezing": [
+     0,
+     1,
+     0
+    ],
+    "vespiquen|weezing": [
+     2,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "event_id": "6a8f4c5e0580a332c84208a8",
+   "cells": {
+    "altaria|lucario": [
+     1,
+     1,
+     0
+    ],
+    "blaziken|lucario": [
+     2,
+     1,
+     0
+    ],
+    "blaziken|sceptile": [
+     1,
+     0,
+     0
+    ],
+    "blaziken|suicune": [
+     1,
+     0,
+     0
+    ],
+    "lucario|sceptile": [
+     0,
+     1,
+     0
+    ],
+    "lucario|suicune": [
+     2,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "event_id": "6a90ac6a7a62de8130140984",
+   "cells": {
+    "altaria|blaziken": [
+     1,
+     0,
+     0
+    ],
+    "altaria|hydreigon": [
+     0,
+     1,
+     0
+    ],
+    "altaria|lucario": [
+     0,
+     3,
+     0
+    ],
+    "altaria|sceptile": [
+     1,
+     0,
+     0
+    ],
+    "altaria|vespiquen": [
+     1,
+     0,
+     0
+    ],
+    "altaria|weezing": [
+     1,
+     2,
+     0
+    ],
+    "blaziken|lucario": [
+     5,
+     2,
+     1
+    ],
+    "blaziken|vespiquen": [
+     3,
+     0,
+     0
+    ],
+    "blaziken|weezing": [
+     1,
+     1,
+     0
+    ],
+    "hydreigon|lucario": [
+     2,
+     3,
+     0
+    ],
+    "hydreigon|vespiquen": [
+     0,
+     2,
+     0
+    ],
+    "hydreigon|weezing": [
+     1,
+     1,
+     0
+    ],
+    "lucario|sceptile": [
+     1,
+     0,
+     0
+    ],
+    "lucario|suicune": [
+     2,
+     2,
+     0
+    ],
+    "lucario|vespiquen": [
+     3,
+     0,
+     0
+    ],
+    "lucario|weezing": [
+     5,
+     4,
+     0
+    ],
+    "sceptile|suicune": [
+     2,
+     1,
+     0
+    ],
+    "sceptile|weezing": [
+     1,
+     0,
+     0
+    ],
+    "suicune|vespiquen": [
+     1,
+     0,
+     0
+    ],
+    "suicune|weezing": [
+     2,
+     0,
+     1
+    ],
+    "vespiquen|weezing": [
+     3,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "event_id": "6a93312fabb94822375035b1",
+   "cells": {
+    "blaziken|lucario": [
+     0,
+     1,
+     0
+    ],
+    "blaziken|weezing": [
+     2,
+     1,
+     0
+    ],
+    "hydreigon|lucario": [
+     0,
+     1,
+     0
+    ],
+    "hydreigon|sceptile": [
+     1,
+     0,
+     0
+    ],
+    "hydreigon|vespiquen": [
+     0,
+     1,
+     0
+    ],
+    "lucario|sceptile": [
+     1,
+     3,
+     0
+    ],
+    "lucario|suicune": [
+     4,
+     2,
+     0
+    ],
+    "lucario|vespiquen": [
+     1,
+     1,
+     1
+    ],
+    "lucario|weezing": [
+     1,
+     0,
+     0
+    ],
+    "sceptile|suicune": [
+     3,
+     3,
+     0
+    ],
+    "sceptile|vespiquen": [
+     0,
+     2,
+     0
+    ],
+    "suicune|vespiquen": [
+     0,
+     2,
+     0
+    ],
+    "suicune|weezing": [
+     1,
+     1,
+     0
+    ],
+    "vespiquen|weezing": [
+     3,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "event_id": "6a93ad75abb9482237503a65",
+   "cells": {
+    "altaria|hydreigon": [
+     0,
+     1,
+     0
+    ],
+    "altaria|lucario": [
+     1,
+     0,
+     0
+    ],
+    "altaria|vespiquen": [
+     1,
+     0,
+     0
+    ],
+    "altaria|weezing": [
+     0,
+     1,
+     0
+    ],
+    "blaziken|hydreigon": [
+     0,
+     1,
+     0
+    ],
+    "blaziken|lucario": [
+     1,
+     2,
+     0
+    ],
+    "blaziken|sceptile": [
+     1,
+     3,
+     0
+    ],
+    "blaziken|vespiquen": [
+     2,
+     2,
+     0
+    ],
+    "blaziken|weezing": [
+     1,
+     0,
+     1
+    ],
+    "hydreigon|lucario": [
+     0,
+     1,
+     0
+    ],
+    "hydreigon|sceptile": [
+     1,
+     1,
+     0
+    ],
+    "hydreigon|suicune": [
+     1,
+     1,
+     0
+    ],
+    "hydreigon|vespiquen": [
+     3,
+     1,
+     0
+    ],
+    "hydreigon|weezing": [
+     0,
+     1,
+     0
+    ],
+    "lucario|sceptile": [
+     1,
+     2,
+     0
+    ],
+    "lucario|vespiquen": [
+     2,
+     0,
+     0
+    ],
+    "lucario|weezing": [
+     0,
+     2,
+     0
+    ],
+    "sceptile|suicune": [
+     2,
+     1,
+     0
+    ],
+    "sceptile|vespiquen": [
+     0,
+     1,
+     0
+    ],
+    "sceptile|weezing": [
+     0,
+     2,
+     0
+    ],
+    "suicune|vespiquen": [
+     2,
+     1,
+     0
+    ],
+    "suicune|weezing": [
+     0,
+     1,
+     0
+    ],
+    "vespiquen|weezing": [
+     3,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "event_id": "6a9451c3abb9482237503eab",
+   "cells": {
+    "altaria|blaziken": [
+     0,
+     1,
+     0
+    ],
+    "altaria|weezing": [
+     0,
+     1,
+     0
+    ],
+    "blaziken|lucario": [
+     1,
+     0,
+     0
+    ],
+    "blaziken|suicune": [
+     0,
+     2,
+     0
+    ],
+    "blaziken|vespiquen": [
+     1,
+     0,
+     0
+    ],
+    "blaziken|weezing": [
+     0,
+     1,
+     0
+    ],
+    "hydreigon|lucario": [
+     0,
+     1,
+     0
+    ],
+    "lucario|suicune": [
+     2,
+     1,
+     0
+    ],
+    "lucario|vespiquen": [
+     1,
+     0,
+     0
+    ],
+    "lucario|weezing": [
+     0,
+     1,
+     0
+    ],
+    "suicune|vespiquen": [
+     2,
+     3,
+     0
+    ]
+   }
+  },
+  {
+   "event_id": "6a94b42fabb948223750436b",
+   "cells": {
+    "hydreigon|lucario": [
+     1,
+     0,
+     0
+    ],
+    "lucario|sceptile": [
+     0,
+     2,
+     0
+    ]
+   }
+  },
+  {
+   "event_id": "6a94b87aabb9482237504398",
+   "cells": {
+    "altaria|blaziken": [
+     3,
+     1,
+     0
+    ],
+    "altaria|lucario": [
+     3,
+     1,
+     0
+    ],
+    "altaria|sceptile": [
+     1,
+     1,
+     0
+    ],
+    "blaziken|hydreigon": [
+     0,
+     2,
+     0
+    ],
+    "blaziken|lucario": [
+     3,
+     0,
+     0
+    ],
+    "blaziken|sceptile": [
+     1,
+     0,
+     0
+    ],
+    "blaziken|suicune": [
+     0,
+     1,
+     0
+    ],
+    "blaziken|vespiquen": [
+     2,
+     1,
+     0
+    ],
+    "blaziken|weezing": [
+     0,
+     1,
+     0
+    ],
+    "hydreigon|lucario": [
+     1,
+     1,
+     0
+    ],
+    "hydreigon|sceptile": [
+     1,
+     2,
+     0
+    ],
+    "hydreigon|suicune": [
+     0,
+     1,
+     0
+    ],
+    "hydreigon|vespiquen": [
+     0,
+     3,
+     0
+    ],
+    "lucario|sceptile": [
+     1,
+     2,
+     0
+    ],
+    "lucario|suicune": [
+     3,
+     0,
+     0
+    ],
+    "lucario|vespiquen": [
+     1,
+     1,
+     0
+    ],
+    "lucario|weezing": [
+     0,
+     1,
+     0
+    ],
+    "sceptile|suicune": [
+     0,
+     1,
+     0
+    ],
+    "sceptile|vespiquen": [
+     1,
+     1,
+     0
+    ],
+    "suicune|vespiquen": [
+     0,
+     4,
+     0
+    ],
+    "vespiquen|weezing": [
+     0,
+     1,
+     0
+    ]
+   }
+  },
+  {
+   "event_id": "6a952d24629039f77d8a6534",
+   "cells": {
+    "altaria|blaziken": [
+     0,
+     1,
+     0
+    ],
+    "altaria|lucario": [
+     3,
+     1,
+     0
+    ],
+    "altaria|suicune": [
+     1,
+     1,
+     0
+    ],
+    "altaria|weezing": [
+     1,
+     0,
+     0
+    ],
+    "blaziken|lucario": [
+     1,
+     3,
+     0
+    ],
+    "blaziken|sceptile": [
+     2,
+     0,
+     0
+    ],
+    "blaziken|suicune": [
+     2,
+     1,
+     0
+    ],
+    "blaziken|vespiquen": [
+     1,
+     1,
+     0
+    ],
+    "lucario|sceptile": [
+     1,
+     4,
+     0
+    ],
+    "lucario|suicune": [
+     1,
+     3,
+     0
+    ],
+    "sceptile|suicune": [
+     0,
+     3,
+     0
+    ],
+    "sceptile|weezing": [
+     1,
+     0,
+     0
+    ],
+    "suicune|vespiquen": [
+     1,
+     1,
+     0
+    ],
+    "suicune|weezing": [
+     1,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "event_id": "6a95b87b629039f77d8a6954",
+   "cells": {
+    "altaria|blaziken": [
+     10,
+     1,
+     0
+    ],
+    "altaria|hydreigon": [
+     8,
+     3,
+     0
+    ],
+    "altaria|lucario": [
+     12,
+     4,
+     1
+    ],
+    "altaria|sceptile": [
+     5,
+     3,
+     0
+    ],
+    "altaria|suicune": [
+     4,
+     6,
+     0
+    ],
+    "altaria|vespiquen": [
+     4,
+     7,
+     2
+    ],
+    "altaria|weezing": [
+     3,
+     2,
+     0
+    ],
+    "blaziken|hydreigon": [
+     1,
+     1,
+     0
+    ],
+    "blaziken|lucario": [
+     0,
+     7,
+     0
+    ],
+    "blaziken|sceptile": [
+     5,
+     0,
+     0
+    ],
+    "blaziken|suicune": [
+     2,
+     3,
+     0
+    ],
+    "blaziken|vespiquen": [
+     5,
+     2,
+     0
+    ],
+    "blaziken|weezing": [
+     2,
+     2,
+     0
+    ],
+    "hydreigon|lucario": [
+     3,
+     7,
+     0
+    ],
+    "hydreigon|sceptile": [
+     3,
+     4,
+     0
+    ],
+    "hydreigon|suicune": [
+     1,
+     3,
+     0
+    ],
+    "hydreigon|vespiquen": [
+     1,
+     2,
+     0
+    ],
+    "lucario|sceptile": [
+     6,
+     3,
+     0
+    ],
+    "lucario|suicune": [
+     8,
+     4,
+     1
+    ],
+    "lucario|vespiquen": [
+     7,
+     5,
+     0
+    ],
+    "lucario|weezing": [
+     2,
+     6,
+     0
+    ],
+    "sceptile|suicune": [
+     1,
+     2,
+     0
+    ],
+    "sceptile|vespiquen": [
+     2,
+     3,
+     0
+    ],
+    "sceptile|weezing": [
+     3,
+     1,
+     0
+    ],
+    "suicune|vespiquen": [
+     0,
+     2,
+     0
+    ],
+    "suicune|weezing": [
+     2,
+     0,
+     0
+    ],
+    "vespiquen|weezing": [
+     5,
+     2,
+     0
+    ]
+   }
+  },
+  {
+   "event_id": "6a96b262629039f77d8a73bd",
+   "cells": {
+    "blaziken|hydreigon": [
+     1,
+     0,
+     0
+    ],
+    "blaziken|vespiquen": [
+     1,
+     0,
+     0
+    ],
+    "hydreigon|lucario": [
+     1,
+     0,
+     0
+    ],
+    "hydreigon|vespiquen": [
+     1,
+     0,
+     0
+    ],
+    "hydreigon|weezing": [
+     0,
+     1,
+     0
+    ],
+    "lucario|sceptile": [
+     1,
+     1,
+     0
+    ],
+    "sceptile|vespiquen": [
+     0,
+     2,
+     0
+    ],
+    "sceptile|weezing": [
+     1,
+     0,
+     1
+    ],
+    "vespiquen|weezing": [
+     1,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "event_id": "6a96ba14abb94822375054ef",
+   "cells": {
+    "altaria|blaziken": [
+     1,
+     1,
+     0
+    ],
+    "altaria|hydreigon": [
+     1,
+     0,
+     0
+    ],
+    "altaria|lucario": [
+     1,
+     1,
+     0
+    ],
+    "altaria|sceptile": [
+     0,
+     1,
+     0
+    ],
+    "altaria|suicune": [
+     1,
+     0,
+     0
+    ],
+    "altaria|weezing": [
+     0,
+     1,
+     0
+    ],
+    "blaziken|hydreigon": [
+     1,
+     1,
+     0
+    ],
+    "blaziken|lucario": [
+     2,
+     0,
+     0
+    ],
+    "blaziken|sceptile": [
+     1,
+     0,
+     0
+    ],
+    "blaziken|suicune": [
+     1,
+     0,
+     0
+    ],
+    "hydreigon|lucario": [
+     3,
+     0,
+     0
+    ],
+    "hydreigon|weezing": [
+     0,
+     1,
+     0
+    ],
+    "lucario|suicune": [
+     2,
+     0,
+     0
+    ],
+    "lucario|vespiquen": [
+     1,
+     0,
+     0
+    ],
+    "suicune|weezing": [
+     1,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "event_id": "6a970a0eabb94822375058bc",
+   "cells": {
+    "altaria|hydreigon": [
+     1,
+     0,
+     0
+    ],
+    "altaria|sceptile": [
+     0,
+     1,
+     0
+    ],
+    "blaziken|hydreigon": [
+     0,
+     2,
+     0
+    ],
+    "blaziken|lucario": [
+     2,
+     0,
+     0
+    ],
+    "blaziken|sceptile": [
+     1,
+     0,
+     0
+    ],
+    "blaziken|suicune": [
+     1,
+     0,
+     1
+    ],
+    "blaziken|vespiquen": [
+     1,
+     0,
+     0
+    ],
+    "blaziken|weezing": [
+     0,
+     1,
+     0
+    ],
+    "hydreigon|lucario": [
+     2,
+     1,
+     0
+    ],
+    "hydreigon|sceptile": [
+     0,
+     1,
+     0
+    ],
+    "hydreigon|suicune": [
+     0,
+     1,
+     0
+    ],
+    "lucario|sceptile": [
+     2,
+     0,
+     1
+    ],
+    "lucario|weezing": [
+     1,
+     1,
+     0
+    ],
+    "sceptile|suicune": [
+     1,
+     0,
+     0
+    ],
+    "sceptile|vespiquen": [
+     1,
+     0,
+     0
+    ],
+    "sceptile|weezing": [
+     2,
+     1,
+     0
+    ],
+    "suicune|weezing": [
+     1,
+     0,
+     0
+    ],
+    "vespiquen|weezing": [
+     2,
+     1,
+     0
+    ]
+   }
+  },
+  {
+   "event_id": "6a975797ab080c8c957f7614",
+   "cells": {
+    "altaria|lucario": [
+     2,
+     0,
+     0
+    ],
+    "altaria|suicune": [
+     1,
+     1,
+     0
+    ],
+    "altaria|weezing": [
+     0,
+     2,
+     0
+    ],
+    "blaziken|lucario": [
+     1,
+     2,
+     0
+    ],
+    "blaziken|weezing": [
+     0,
+     1,
+     0
+    ],
+    "hydreigon|vespiquen": [
+     0,
+     1,
+     0
+    ],
+    "lucario|sceptile": [
+     0,
+     1,
+     0
+    ],
+    "lucario|suicune": [
+     1,
+     0,
+     0
+    ],
+    "lucario|vespiquen": [
+     3,
+     1,
+     0
+    ],
+    "lucario|weezing": [
+     1,
+     1,
+     0
+    ],
+    "sceptile|suicune": [
+     0,
+     1,
+     0
+    ],
+    "sceptile|vespiquen": [
+     0,
+     1,
+     0
+    ],
+    "suicune|vespiquen": [
+     0,
+     2,
+     0
+    ],
+    "suicune|weezing": [
+     0,
+     1,
+     0
+    ],
+    "vespiquen|weezing": [
+     2,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "event_id": "6a9829eca4272c53be644d77",
+   "cells": {
+    "altaria|hydreigon": [
+     1,
+     1,
+     0
+    ],
+    "altaria|lucario": [
+     2,
+     0,
+     1
+    ],
+    "altaria|sceptile": [
+     3,
+     3,
+     0
+    ],
+    "altaria|suicune": [
+     1,
+     0,
+     0
+    ],
+    "altaria|weezing": [
+     1,
+     0,
+     0
+    ],
+    "hydreigon|sceptile": [
+     0,
+     2,
+     0
+    ],
+    "lucario|sceptile": [
+     0,
+     1,
+     0
+    ]
+   }
+  },
+  {
+   "event_id": "6a98ae3aab080c8c957f84ad",
+   "cells": {
+    "altaria|hydreigon": [
+     2,
+     1,
+     0
+    ],
+    "altaria|lucario": [
+     3,
+     2,
+     0
+    ],
+    "altaria|sceptile": [
+     1,
+     0,
+     0
+    ],
+    "altaria|suicune": [
+     0,
+     1,
+     0
+    ],
+    "altaria|vespiquen": [
+     0,
+     2,
+     0
+    ],
+    "blaziken|hydreigon": [
+     1,
+     0,
+     0
+    ],
+    "blaziken|lucario": [
+     0,
+     0,
+     1
+    ],
+    "blaziken|sceptile": [
+     3,
+     0,
+     0
+    ],
+    "hydreigon|lucario": [
+     3,
+     2,
+     0
+    ],
+    "hydreigon|suicune": [
+     1,
+     0,
+     0
+    ],
+    "hydreigon|vespiquen": [
+     3,
+     1,
+     0
+    ],
+    "lucario|sceptile": [
+     1,
+     4,
+     0
+    ],
+    "lucario|suicune": [
+     5,
+     0,
+     0
+    ],
+    "lucario|vespiquen": [
+     2,
+     1,
+     0
+    ],
+    "lucario|weezing": [
+     2,
+     0,
+     0
+    ],
+    "sceptile|suicune": [
+     1,
+     1,
+     0
+    ],
+    "sceptile|vespiquen": [
+     0,
+     1,
+     0
+    ],
+    "sceptile|weezing": [
+     1,
+     1,
+     0
+    ],
+    "suicune|vespiquen": [
+     2,
+     2,
+     0
+    ],
+    "suicune|weezing": [
+     2,
+     0,
+     0
+    ],
+    "vespiquen|weezing": [
+     1,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "event_id": "6a98d44ca4272c53be645681",
+   "cells": {
+    "altaria|blaziken": [
+     3,
+     3,
+     0
+    ],
+    "altaria|hydreigon": [
+     2,
+     3,
+     0
+    ],
+    "altaria|lucario": [
+     6,
+     3,
+     0
+    ],
+    "altaria|sceptile": [
+     1,
+     0,
+     0
+    ],
+    "altaria|suicune": [
+     0,
+     3,
+     0
+    ],
+    "altaria|vespiquen": [
+     2,
+     9,
+     1
+    ],
+    "blaziken|hydreigon": [
+     2,
+     1,
+     1
+    ],
+    "blaziken|lucario": [
+     2,
+     2,
+     0
+    ],
+    "blaziken|sceptile": [
+     2,
+     0,
+     0
+    ],
+    "blaziken|suicune": [
+     2,
+     2,
+     0
+    ],
+    "blaziken|vespiquen": [
+     3,
+     1,
+     0
+    ],
+    "hydreigon|lucario": [
+     3,
+     1,
+     1
+    ],
+    "hydreigon|suicune": [
+     1,
+     1,
+     0
+    ],
+    "hydreigon|vespiquen": [
+     4,
+     1,
+     0
+    ],
+    "lucario|sceptile": [
+     0,
+     2,
+     0
+    ],
+    "lucario|suicune": [
+     4,
+     1,
+     0
+    ],
+    "sceptile|vespiquen": [
+     0,
+     1,
+     0
+    ],
+    "suicune|vespiquen": [
+     0,
+     1,
+     1
+    ]
+   }
+  },
+  {
+   "event_id": "6a996defa4272c53be6459e3",
+   "cells": {
+    "altaria|weezing": [
+     0,
+     1,
+     0
+    ],
+    "blaziken|lucario": [
+     0,
+     0,
+     1
+    ],
+    "blaziken|weezing": [
+     0,
+     1,
+     0
+    ],
+    "lucario|weezing": [
+     2,
+     2,
+     1
+    ]
+   }
+  },
+  {
+   "event_id": "6a99f64ca4272c53be6461ee",
+   "cells": {
+    "altaria|blaziken": [
+     1,
+     1,
+     0
+    ],
+    "altaria|hydreigon": [
+     1,
+     1,
+     0
+    ],
+    "altaria|lucario": [
+     4,
+     0,
+     0
+    ],
+    "altaria|sceptile": [
+     5,
+     9,
+     0
+    ],
+    "altaria|suicune": [
+     2,
+     0,
+     0
+    ],
+    "altaria|vespiquen": [
+     1,
+     3,
+     0
+    ],
+    "altaria|weezing": [
+     0,
+     1,
+     0
+    ],
+    "blaziken|hydreigon": [
+     2,
+     0,
+     0
+    ],
+    "blaziken|lucario": [
+     2,
+     5,
+     0
+    ],
+    "blaziken|sceptile": [
+     1,
+     1,
+     0
+    ],
+    "blaziken|suicune": [
+     0,
+     0,
+     1
+    ],
+    "blaziken|vespiquen": [
+     0,
+     1,
+     0
+    ],
+    "blaziken|weezing": [
+     2,
+     0,
+     0
+    ],
+    "hydreigon|lucario": [
+     3,
+     1,
+     0
+    ],
+    "hydreigon|sceptile": [
+     1,
+     1,
+     0
+    ],
+    "hydreigon|suicune": [
+     1,
+     3,
+     0
+    ],
+    "hydreigon|vespiquen": [
+     0,
+     1,
+     0
+    ],
+    "hydreigon|weezing": [
+     1,
+     0,
+     0
+    ],
+    "lucario|sceptile": [
+     7,
+     10,
+     1
+    ],
+    "lucario|suicune": [
+     3,
+     3,
+     0
+    ],
+    "lucario|vespiquen": [
+     3,
+     1,
+     0
+    ],
+    "lucario|weezing": [
+     1,
+     0,
+     0
+    ],
+    "sceptile|suicune": [
+     1,
+     2,
+     1
+    ],
+    "sceptile|vespiquen": [
+     2,
+     3,
+     1
+    ],
+    "sceptile|weezing": [
+     1,
+     0,
+     0
+    ],
+    "suicune|vespiquen": [
+     0,
+     1,
+     0
+    ]
+   }
+  },
+  {
+   "event_id": "6a9a57f8a4272c53be6466dd",
+   "cells": {
+    "altaria|blaziken": [
+     2,
+     0,
+     0
+    ],
+    "altaria|suicune": [
+     1,
+     0,
+     0
+    ],
+    "blaziken|hydreigon": [
+     1,
+     0,
+     1
+    ],
+    "blaziken|lucario": [
+     1,
+     0,
+     0
+    ],
+    "blaziken|sceptile": [
+     4,
+     0,
+     0
+    ],
+    "blaziken|suicune": [
+     1,
+     2,
+     0
+    ],
+    "blaziken|vespiquen": [
+     1,
+     0,
+     0
+    ],
+    "hydreigon|suicune": [
+     1,
+     0,
+     0
+    ],
+    "hydreigon|vespiquen": [
+     0,
+     2,
+     1
+    ],
+    "sceptile|suicune": [
+     1,
+     1,
+     0
+    ],
+    "sceptile|vespiquen": [
+     1,
+     0,
+     0
+    ],
+    "sceptile|weezing": [
+     1,
+     1,
+     0
+    ],
+    "suicune|vespiquen": [
+     1,
+     1,
+     0
+    ],
+    "suicune|weezing": [
+     0,
+     1,
+     0
+    ],
+    "vespiquen|weezing": [
+     1,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "event_id": "6a9b859fab080c8c957fa744",
+   "cells": {
+    "hydreigon|lucario": [
+     2,
+     0,
+     0
+    ],
+    "hydreigon|sceptile": [
+     1,
+     0,
+     0
+    ],
+    "hydreigon|suicune": [
+     0,
+     2,
+     0
+    ],
+    "sceptile|weezing": [
+     1,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "event_id": "6a9deb7ea4272c53be649474",
+   "cells": {
+    "altaria|blaziken": [
+     1,
+     0,
+     0
+    ],
+    "altaria|lucario": [
+     2,
+     1,
+     0
+    ],
+    "altaria|sceptile": [
+     1,
+     0,
+     0
+    ],
+    "altaria|suicune": [
+     0,
+     3,
+     0
+    ],
+    "hydreigon|lucario": [
+     2,
+     0,
+     0
+    ],
+    "lucario|vespiquen": [
+     0,
+     1,
+     0
+    ],
+    "sceptile|suicune": [
+     0,
+     1,
+     0
+    ],
+    "suicune|vespiquen": [
+     1,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "event_id": "6a9eb0fca4272c53be649ac8",
+   "cells": {
+    "altaria|blaziken": [
+     2,
+     1,
+     0
+    ],
+    "altaria|hydreigon": [
+     0,
+     1,
+     1
+    ],
+    "altaria|sceptile": [
+     0,
+     3,
+     0
+    ],
+    "altaria|suicune": [
+     0,
+     1,
+     0
+    ],
+    "altaria|vespiquen": [
+     1,
+     0,
+     0
+    ],
+    "blaziken|hydreigon": [
+     1,
+     0,
+     0
+    ],
+    "blaziken|sceptile": [
+     4,
+     0,
+     0
+    ],
+    "blaziken|suicune": [
+     1,
+     0,
+     0
+    ],
+    "blaziken|vespiquen": [
+     1,
+     0,
+     1
+    ],
+    "hydreigon|lucario": [
+     1,
+     0,
+     0
+    ],
+    "hydreigon|sceptile": [
+     0,
+     2,
+     0
+    ],
+    "hydreigon|suicune": [
+     0,
+     1,
+     0
+    ],
+    "hydreigon|vespiquen": [
+     0,
+     3,
+     0
+    ],
+    "hydreigon|weezing": [
+     0,
+     2,
+     0
+    ],
+    "sceptile|vespiquen": [
+     2,
+     2,
+     0
+    ],
+    "suicune|weezing": [
+     1,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "event_id": "6a9ed44ca4272c53be649bf6",
+   "cells": {
+    "altaria|blaziken": [
+     1,
+     1,
+     0
+    ],
+    "altaria|hydreigon": [
+     4,
+     1,
+     0
+    ],
+    "altaria|lucario": [
+     10,
+     8,
+     0
+    ],
+    "altaria|sceptile": [
+     2,
+     1,
+     0
+    ],
+    "altaria|suicune": [
+     4,
+     2,
+     0
+    ],
+    "altaria|vespiquen": [
+     2,
+     3,
+     1
+    ],
+    "blaziken|hydreigon": [
+     1,
+     0,
+     0
+    ],
+    "blaziken|lucario": [
+     0,
+     1,
+     0
+    ],
+    "blaziken|suicune": [
+     1,
+     1,
+     0
+    ],
+    "blaziken|vespiquen": [
+     1,
+     0,
+     0
+    ],
+    "hydreigon|lucario": [
+     2,
+     4,
+     0
+    ],
+    "hydreigon|sceptile": [
+     1,
+     2,
+     0
+    ],
+    "hydreigon|suicune": [
+     0,
+     2,
+     0
+    ],
+    "hydreigon|vespiquen": [
+     2,
+     1,
+     0
+    ],
+    "hydreigon|weezing": [
+     1,
+     0,
+     0
+    ],
+    "lucario|sceptile": [
+     1,
+     1,
+     0
+    ],
+    "lucario|suicune": [
+     3,
+     5,
+     0
+    ],
+    "lucario|vespiquen": [
+     8,
+     1,
+     0
+    ],
+    "lucario|weezing": [
+     1,
+     0,
+     0
+    ],
+    "sceptile|vespiquen": [
+     1,
+     5,
+     0
+    ],
+    "sceptile|weezing": [
+     1,
+     0,
+     0
+    ],
+    "suicune|vespiquen": [
+     0,
+     2,
+     0
+    ],
+    "suicune|weezing": [
+     2,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "event_id": "6a9ef3c4a4272c53be649db8",
+   "cells": {
+    "altaria|blaziken": [
+     2,
+     1,
+     0
+    ],
+    "altaria|lucario": [
+     4,
+     1,
+     1
+    ],
+    "altaria|sceptile": [
+     1,
+     1,
+     0
+    ],
+    "altaria|suicune": [
+     2,
+     1,
+     0
+    ],
+    "altaria|vespiquen": [
+     2,
+     0,
+     0
+    ],
+    "altaria|weezing": [
+     0,
+     3,
+     1
+    ],
+    "blaziken|hydreigon": [
+     1,
+     0,
+     0
+    ],
+    "blaziken|lucario": [
+     1,
+     3,
+     0
+    ],
+    "blaziken|sceptile": [
+     1,
+     1,
+     0
+    ],
+    "blaziken|suicune": [
+     2,
+     0,
+     0
+    ],
+    "blaziken|weezing": [
+     1,
+     0,
+     0
+    ],
+    "hydreigon|sceptile": [
+     1,
+     1,
+     0
+    ],
+    "lucario|sceptile": [
+     2,
+     0,
+     0
+    ],
+    "lucario|vespiquen": [
+     1,
+     0,
+     0
+    ],
+    "lucario|weezing": [
+     2,
+     3,
+     0
+    ],
+    "sceptile|suicune": [
+     1,
+     0,
+     0
+    ],
+    "sceptile|vespiquen": [
+     1,
+     0,
+     0
+    ],
+    "sceptile|weezing": [
+     3,
+     2,
+     0
+    ],
+    "suicune|weezing": [
+     1,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "event_id": "6a9f69deab080c8c957fdb77",
+   "cells": {
+    "altaria|blaziken": [
+     1,
+     0,
+     0
+    ],
+    "altaria|hydreigon": [
+     3,
+     1,
+     0
+    ],
+    "altaria|lucario": [
+     2,
+     1,
+     1
+    ],
+    "altaria|sceptile": [
+     2,
+     0,
+     0
+    ],
+    "altaria|suicune": [
+     2,
+     0,
+     0
+    ],
+    "altaria|vespiquen": [
+     0,
+     5,
+     0
+    ],
+    "altaria|weezing": [
+     0,
+     1,
+     0
+    ],
+    "blaziken|hydreigon": [
+     0,
+     1,
+     0
+    ],
+    "blaziken|lucario": [
+     3,
+     0,
+     0
+    ],
+    "blaziken|vespiquen": [
+     1,
+     0,
+     0
+    ],
+    "hydreigon|lucario": [
+     1,
+     3,
+     0
+    ],
+    "hydreigon|sceptile": [
+     1,
+     1,
+     0
+    ],
+    "hydreigon|vespiquen": [
+     1,
+     1,
+     0
+    ],
+    "hydreigon|weezing": [
+     2,
+     0,
+     0
+    ],
+    "lucario|sceptile": [
+     2,
+     2,
+     0
+    ],
+    "lucario|suicune": [
+     0,
+     2,
+     0
+    ],
+    "lucario|vespiquen": [
+     2,
+     3,
+     0
+    ],
+    "lucario|weezing": [
+     1,
+     0,
+     0
+    ],
+    "sceptile|suicune": [
+     1,
+     2,
+     0
+    ],
+    "sceptile|vespiquen": [
+     0,
+     1,
+     0
+    ],
+    "suicune|vespiquen": [
+     0,
+     1,
+     0
+    ]
+   }
+  },
+  {
+   "event_id": "6a9fe20cab080c8c957fdde8",
+   "cells": {
+    "altaria|blaziken": [
+     1,
+     0,
+     0
+    ],
+    "altaria|hydreigon": [
+     1,
+     1,
+     0
+    ],
+    "altaria|lucario": [
+     3,
+     3,
+     0
+    ],
+    "altaria|sceptile": [
+     0,
+     1,
+     0
+    ],
+    "blaziken|hydreigon": [
+     0,
+     1,
+     0
+    ],
+    "blaziken|sceptile": [
+     1,
+     0,
+     0
+    ],
+    "hydreigon|lucario": [
+     2,
+     4,
+     0
+    ],
+    "hydreigon|vespiquen": [
+     1,
+     0,
+     0
+    ],
+    "lucario|sceptile": [
+     3,
+     4,
+     0
+    ],
+    "lucario|vespiquen": [
+     3,
+     2,
+     0
+    ],
+    "sceptile|suicune": [
+     1,
+     0,
+     0
+    ],
+    "sceptile|vespiquen": [
+     0,
+     4,
+     0
+    ],
+    "suicune|vespiquen": [
+     0,
+     1,
+     0
+    ]
+   }
+  },
+  {
+   "event_id": "6aa00050ab080c8c957fded7",
+   "cells": {
+    "altaria|suicune": [
+     1,
+     0,
+     0
+    ],
+    "blaziken|lucario": [
+     1,
+     2,
+     0
+    ],
+    "blaziken|sceptile": [
+     1,
+     0,
+     0
+    ],
+    "hydreigon|lucario": [
+     0,
+     1,
+     0
+    ],
+    "hydreigon|vespiquen": [
+     0,
+     1,
+     0
+    ],
+    "lucario|sceptile": [
+     0,
+     2,
+     0
+    ],
+    "lucario|suicune": [
+     1,
+     0,
+     0
+    ],
+    "lucario|vespiquen": [
+     1,
+     1,
+     0
+    ],
+    "suicune|vespiquen": [
+     1,
+     0,
+     0
+    ],
+    "suicune|weezing": [
+     1,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "event_id": "6aa05fa8a4272c53be64b127",
+   "cells": {
+    "altaria|blaziken": [
+     1,
+     0,
+     0
+    ],
+    "altaria|lucario": [
+     4,
+     0,
+     1
+    ],
+    "altaria|sceptile": [
+     1,
+     0,
+     1
+    ],
+    "altaria|suicune": [
+     1,
+     0,
+     0
+    ],
+    "altaria|vespiquen": [
+     0,
+     1,
+     0
+    ],
+    "altaria|weezing": [
+     0,
+     1,
+     0
+    ],
+    "blaziken|vespiquen": [
+     1,
+     1,
+     0
+    ],
+    "blaziken|weezing": [
+     0,
+     1,
+     0
+    ],
+    "lucario|sceptile": [
+     1,
+     3,
+     0
+    ],
+    "lucario|vespiquen": [
+     3,
+     0,
+     0
+    ],
+    "sceptile|suicune": [
+     1,
+     0,
+     0
+    ],
+    "sceptile|vespiquen": [
+     0,
+     4,
+     0
+    ],
+    "suicune|vespiquen": [
+     0,
+     1,
+     0
+    ],
+    "suicune|weezing": [
+     0,
+     1,
+     0
+    ]
+   }
+  },
+  {
+   "event_id": "6aa0602aab080c8c957fe51c",
+   "cells": {
+    "altaria|hydreigon": [
+     0,
+     1,
+     0
+    ],
+    "altaria|lucario": [
+     1,
+     1,
+     0
+    ],
+    "hydreigon|lucario": [
+     1,
+     5,
+     1
+    ],
+    "hydreigon|sceptile": [
+     0,
+     1,
+     0
+    ],
+    "hydreigon|suicune": [
+     1,
+     0,
+     0
+    ],
+    "hydreigon|weezing": [
+     2,
+     0,
+     0
+    ],
+    "lucario|sceptile": [
+     1,
+     1,
+     0
+    ],
+    "lucario|vespiquen": [
+     3,
+     0,
+     0
+    ],
+    "lucario|weezing": [
+     0,
+     1,
+     0
+    ],
+    "sceptile|vespiquen": [
+     1,
+     1,
+     0
+    ],
+    "sceptile|weezing": [
+     1,
+     0,
+     0
+    ],
+    "vespiquen|weezing": [
+     2,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "event_id": "6aa0644bab080c8c957fe59c",
+   "cells": {
+    "altaria|hydreigon": [
+     2,
+     1,
+     0
+    ],
+    "altaria|lucario": [
+     3,
+     1,
+     0
+    ],
+    "altaria|sceptile": [
+     5,
+     6,
+     1
+    ],
+    "altaria|vespiquen": [
+     1,
+     1,
+     0
+    ],
+    "altaria|weezing": [
+     2,
+     5,
+     0
+    ],
+    "blaziken|lucario": [
+     2,
+     1,
+     0
+    ],
+    "blaziken|sceptile": [
+     0,
+     0,
+     1
+    ],
+    "blaziken|suicune": [
+     1,
+     0,
+     0
+    ],
+    "hydreigon|sceptile": [
+     1,
+     1,
+     0
+    ],
+    "lucario|sceptile": [
+     2,
+     5,
+     1
+    ],
+    "lucario|vespiquen": [
+     2,
+     1,
+     0
+    ],
+    "lucario|weezing": [
+     1,
+     0,
+     0
+    ],
+    "sceptile|vespiquen": [
+     1,
+     0,
+     0
+    ],
+    "sceptile|weezing": [
+     2,
+     0,
+     0
+    ],
+    "suicune|weezing": [
+     0,
+     1,
+     0
+    ]
+   }
+  },
+  {
+   "event_id": "6aa17016a4272c53be64bb41",
+   "cells": {
+    "hydreigon|lucario": [
+     1,
+     0,
+     0
+    ],
+    "hydreigon|suicune": [
+     0,
+     1,
+     0
+    ]
+   }
+  },
+  {
+   "event_id": "6aa1c5d9a4272c53be64c23c",
+   "cells": {
+    "altaria|lucario": [
+     3,
+     1,
+     0
+    ],
+    "altaria|vespiquen": [
+     1,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "event_id": "6aa2b675ab080c8c95800125",
+   "cells": {
+    "altaria|hydreigon": [
+     3,
+     1,
+     0
+    ],
+    "altaria|lucario": [
+     6,
+     2,
+     0
+    ],
+    "altaria|sceptile": [
+     1,
+     1,
+     1
+    ],
+    "altaria|suicune": [
+     4,
+     1,
+     0
+    ],
+    "altaria|vespiquen": [
+     5,
+     4,
+     0
+    ],
+    "hydreigon|lucario": [
+     1,
+     1,
+     0
+    ],
+    "hydreigon|vespiquen": [
+     1,
+     1,
+     0
+    ],
+    "lucario|suicune": [
+     0,
+     1,
+     0
+    ],
+    "lucario|vespiquen": [
+     2,
+     2,
+     0
+    ],
+    "lucario|weezing": [
+     1,
+     0,
+     0
+    ],
+    "sceptile|vespiquen": [
+     1,
+     1,
+     0
+    ],
+    "suicune|vespiquen": [
+     0,
+     1,
+     0
+    ],
+    "suicune|weezing": [
+     1,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "event_id": "6aa2b9bcab080c8c95800137",
+   "cells": {
+    "altaria|hydreigon": [
+     4,
+     4,
+     0
+    ],
+    "altaria|lucario": [
+     5,
+     1,
+     1
+    ],
+    "altaria|sceptile": [
+     7,
+     1,
+     0
+    ],
+    "altaria|suicune": [
+     0,
+     1,
+     0
+    ],
+    "altaria|vespiquen": [
+     2,
+     1,
+     0
+    ],
+    "altaria|weezing": [
+     0,
+     1,
+     0
+    ],
+    "blaziken|lucario": [
+     1,
+     1,
+     0
+    ],
+    "blaziken|weezing": [
+     1,
+     1,
+     0
+    ],
+    "hydreigon|lucario": [
+     2,
+     0,
+     0
+    ],
+    "hydreigon|sceptile": [
+     1,
+     2,
+     0
+    ],
+    "lucario|sceptile": [
+     0,
+     3,
+     0
+    ],
+    "sceptile|suicune": [
+     1,
+     0,
+     0
+    ],
+    "sceptile|vespiquen": [
+     0,
+     2,
+     0
+    ],
+    "sceptile|weezing": [
+     1,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "event_id": "6aa38978ab080c8c95800d80",
+   "cells": {
+    "blaziken|vespiquen": [
+     1,
+     0,
+     0
+    ],
+    "lucario|sceptile": [
+     2,
+     0,
+     0
+    ],
+    "lucario|vespiquen": [
+     1,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "event_id": "6aa3fab838886b36383bbf26",
+   "cells": {
+    "altaria|blaziken": [
+     3,
+     1,
+     0
+    ],
+    "altaria|hydreigon": [
+     2,
+     1,
+     0
+    ],
+    "altaria|lucario": [
+     8,
+     1,
+     0
+    ],
+    "altaria|sceptile": [
+     2,
+     5,
+     0
+    ],
+    "altaria|suicune": [
+     1,
+     2,
+     0
+    ],
+    "altaria|vespiquen": [
+     0,
+     1,
+     0
+    ],
+    "altaria|weezing": [
+     2,
+     0,
+     0
+    ],
+    "blaziken|lucario": [
+     1,
+     2,
+     0
+    ],
+    "blaziken|sceptile": [
+     1,
+     0,
+     0
+    ],
+    "blaziken|vespiquen": [
+     1,
+     0,
+     0
+    ],
+    "blaziken|weezing": [
+     0,
+     1,
+     0
+    ],
+    "hydreigon|lucario": [
+     0,
+     0,
+     1
+    ],
+    "hydreigon|suicune": [
+     0,
+     1,
+     0
+    ],
+    "lucario|sceptile": [
+     0,
+     3,
+     0
+    ],
+    "lucario|suicune": [
+     0,
+     1,
+     0
+    ],
+    "lucario|vespiquen": [
+     1,
+     0,
+     0
+    ],
+    "sceptile|suicune": [
+     0,
+     1,
+     0
+    ],
+    "sceptile|weezing": [
+     1,
+     1,
+     0
+    ]
+   }
+  },
+  {
+   "event_id": "6aa7d7cef1243e65f9800e75",
+   "cells": {
+    "altaria|hydreigon": [
+     0,
+     0,
+     1
+    ],
+    "altaria|lucario": [
+     2,
+     0,
+     0
+    ],
+    "altaria|sceptile": [
+     3,
+     3,
+     1
+    ],
+    "hydreigon|sceptile": [
+     0,
+     2,
+     0
+    ],
+    "hydreigon|weezing": [
+     1,
+     0,
+     0
+    ],
+    "lucario|sceptile": [
+     1,
+     3,
+     0
+    ]
+   }
+  },
+  {
+   "event_id": "6aa81acef1243e65f98011a9",
+   "cells": {
+    "altaria|blaziken": [
+     1,
+     1,
+     0
+    ],
+    "altaria|hydreigon": [
+     1,
+     1,
+     0
+    ],
+    "altaria|lucario": [
+     2,
+     1,
+     0
+    ],
+    "altaria|sceptile": [
+     2,
+     1,
+     0
+    ],
+    "altaria|suicune": [
+     3,
+     4,
+     0
+    ],
+    "altaria|weezing": [
+     2,
+     0,
+     0
+    ],
+    "blaziken|lucario": [
+     1,
+     0,
+     0
+    ],
+    "blaziken|sceptile": [
+     1,
+     0,
+     0
+    ],
+    "hydreigon|suicune": [
+     1,
+     1,
+     0
+    ],
+    "hydreigon|weezing": [
+     0,
+     0,
+     1
+    ],
+    "lucario|suicune": [
+     0,
+     1,
+     0
+    ],
+    "lucario|vespiquen": [
+     0,
+     1,
+     0
+    ],
+    "lucario|weezing": [
+     0,
+     1,
+     0
+    ],
+    "sceptile|suicune": [
+     0,
+     0,
+     1
+    ],
+    "sceptile|weezing": [
+     1,
+     0,
+     0
+    ],
+    "suicune|vespiquen": [
+     1,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "event_id": "6aa84414f1243e65f980140f",
+   "cells": {
+    "altaria|blaziken": [
+     4,
+     0,
+     0
+    ],
+    "altaria|hydreigon": [
+     3,
+     1,
+     0
+    ],
+    "altaria|lucario": [
+     11,
+     1,
+     0
+    ],
+    "altaria|sceptile": [
+     6,
+     4,
+     0
+    ],
+    "altaria|suicune": [
+     3,
+     3,
+     0
+    ],
+    "altaria|vespiquen": [
+     2,
+     7,
+     0
+    ],
+    "blaziken|hydreigon": [
+     1,
+     0,
+     0
+    ],
+    "blaziken|lucario": [
+     0,
+     1,
+     0
+    ],
+    "blaziken|sceptile": [
+     1,
+     0,
+     0
+    ],
+    "blaziken|vespiquen": [
+     1,
+     0,
+     0
+    ],
+    "hydreigon|lucario": [
+     1,
+     3,
+     0
+    ],
+    "hydreigon|sceptile": [
+     0,
+     2,
+     0
+    ],
+    "hydreigon|vespiquen": [
+     0,
+     1,
+     0
+    ],
+    "lucario|sceptile": [
+     0,
+     2,
+     0
+    ],
+    "lucario|vespiquen": [
+     3,
+     2,
+     0
+    ],
+    "sceptile|suicune": [
+     0,
+     2,
+     0
+    ],
+    "sceptile|vespiquen": [
+     3,
+     2,
+     0
+    ],
+    "suicune|vespiquen": [
+     0,
+     2,
+     0
+    ]
+   }
+  },
+  {
+   "event_id": "6aa92efcf1243e65f9801fcf",
+   "cells": {
+    "altaria|hydreigon": [
+     1,
+     0,
+     0
+    ],
+    "altaria|lucario": [
+     1,
+     1,
+     0
+    ],
+    "blaziken|sceptile": [
+     1,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "event_id": "6aaa8945f1243e65f98029e8",
+   "cells": {
+    "altaria|vespiquen": [
+     1,
+     2,
+     0
+    ],
+    "sceptile|vespiquen": [
+     0,
+     1,
+     0
+    ]
+   }
+  },
+  {
+   "event_id": "6aab16d1f1243e65f9803089",
+   "cells": {
+    "altaria|blaziken": [
+     0,
+     1,
+     0
+    ],
+    "altaria|suicune": [
+     0,
+     1,
+     0
+    ],
+    "altaria|vespiquen": [
+     1,
+     0,
+     0
+    ],
+    "blaziken|hydreigon": [
+     0,
+     1,
+     0
+    ],
+    "blaziken|lucario": [
+     1,
+     1,
+     0
+    ],
+    "blaziken|vespiquen": [
+     1,
+     0,
+     0
+    ],
+    "lucario|suicune": [
+     0,
+     1,
+     0
+    ]
+   }
+  },
+  {
+   "event_id": "6aae8066f127b1b52c27ce16",
+   "cells": {
+    "altaria|weezing": [
+     1,
+     0,
+     0
+    ],
+    "lucario|sceptile": [
+     0,
+     1,
+     0
+    ],
+    "sceptile|vespiquen": [
+     0,
+     1,
+     0
+    ]
+   }
+  },
+  {
+   "event_id": "6aae8fc6f127b1b52c27ceb5",
+   "cells": {
+    "altaria|blaziken": [
+     1,
+     0,
+     0
+    ],
+    "altaria|hydreigon": [
+     1,
+     1,
+     0
+    ],
+    "altaria|lucario": [
+     2,
+     0,
+     0
+    ],
+    "altaria|vespiquen": [
+     4,
+     9,
+     1
+    ],
+    "altaria|weezing": [
+     0,
+     1,
+     0
+    ],
+    "blaziken|hydreigon": [
+     0,
+     1,
+     0
+    ],
+    "hydreigon|sceptile": [
+     0,
+     1,
+     0
+    ],
+    "hydreigon|vespiquen": [
+     1,
+     4,
+     0
+    ],
+    "hydreigon|weezing": [
+     0,
+     1,
+     0
+    ],
+    "lucario|sceptile": [
+     1,
+     0,
+     0
+    ],
+    "lucario|vespiquen": [
+     3,
+     0,
+     0
+    ],
+    "sceptile|suicune": [
+     1,
+     0,
+     0
+    ],
+    "sceptile|vespiquen": [
+     1,
+     2,
+     0
+    ],
+    "suicune|vespiquen": [
+     0,
+     2,
+     0
+    ],
+    "vespiquen|weezing": [
+     1,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "event_id": "6aaed331e905c1db68745953",
+   "cells": {
+    "altaria|sceptile": [
+     1,
+     0,
+     0
+    ],
+    "sceptile|suicune": [
+     0,
+     1,
+     0
+    ]
+   }
+  },
+  {
+   "event_id": "6aafba0ae905c1db6874609e",
+   "cells": {
+    "altaria|sceptile": [
+     1,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "event_id": "6ab1b3b0f127b1b52c27f152",
+   "cells": {
+    "altaria|lucario": [
+     0,
+     1,
+     0
+    ],
+    "lucario|vespiquen": [
+     1,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "event_id": "6ab26a9af127b1b52c27f777",
+   "cells": {
+    "blaziken|sceptile": [
+     0,
+     0,
+     1
+    ],
+    "blaziken|vespiquen": [
+     1,
+     0,
+     0
+    ],
+    "hydreigon|vespiquen": [
+     0,
+     1,
+     0
+    ]
+   }
+  },
+  {
+   "event_id": "6ab2d594e905c1db68747f7c",
+   "cells": {
+    "altaria|blaziken": [
+     1,
+     0,
+     0
+    ],
+    "altaria|hydreigon": [
+     0,
+     1,
+     0
+    ],
+    "altaria|lucario": [
+     2,
+     0,
+     0
+    ],
+    "altaria|sceptile": [
+     2,
+     0,
+     0
+    ],
+    "altaria|suicune": [
+     1,
+     0,
+     0
+    ],
+    "altaria|weezing": [
+     2,
+     0,
+     0
+    ],
+    "blaziken|suicune": [
+     0,
+     1,
+     0
+    ],
+    "hydreigon|weezing": [
+     0,
+     1,
+     0
+    ],
+    "lucario|suicune": [
+     0,
+     2,
+     0
+    ],
+    "lucario|weezing": [
+     1,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "event_id": "6ab421caf127b1b52c2808a2",
+   "cells": {
+    "altaria|blaziken": [
+     1,
+     0,
+     0
+    ],
+    "altaria|lucario": [
+     1,
+     1,
+     0
+    ],
+    "altaria|vespiquen": [
+     0,
+     1,
+     0
+    ],
+    "hydreigon|lucario": [
+     0,
+     1,
+     0
+    ],
+    "hydreigon|vespiquen": [
+     0,
+     1,
+     0
+    ],
+    "lucario|vespiquen": [
+     2,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "event_id": "6ab4b084f127b1b52c280fbf",
+   "cells": {
+    "altaria|sceptile": [
+     0,
+     1,
+     0
+    ],
+    "lucario|sceptile": [
+     0,
+     1,
+     0
+    ]
+   }
+  }
+ ]
+}

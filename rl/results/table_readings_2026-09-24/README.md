@@ -34,6 +34,16 @@ These readings follow the rules in section 8 of `docs/REVIEW_2026-09-24_directio
   - Real error on the decision set: +0.01 to +3.69 against +0.00 to +3.74.
   - None of the 4,000 event draws left a cell empty.
 
+**Result: kp3 is confirmed on the holdout.** All four conditions below hold (`../holdout_kp3_2026-09-25/READING.md`).
+- **When and how:** the holdout was opened once, at 2026-09-25T19:49:50Z, on Dustin's "Kp3" in the laptop session's chat. The rule commits were 10c4e66, e45eb50 and b1740b4. It held 1,948 matches from 57 events.
+- **The decision set, condition by condition:**
+  1. Holdout ΔMSE −44.6, against −45.8 on the development half.
+  2. The pooled interval is −85.5 to −4.9 (binomial) and −86.5 to −2.5 (by event).
+  3. No veto counts. Altaria v Hydreigon and the Vespiquen deck are investigation items; Hydreigon v Suicune is out by band.
+  4. The τ̂ margin on the holdout is +2.29, with a binomial 90% interval of +0.18 to +3.59.
+- **Reported, not a gate:** the by-event interval for (4) is −0.22 to +3.59, which doesn't clear zero.
+- **The holdout is now spent.** Later candidates are confirmed only on events after the freeze date.
+
 **The holdout confirmation of kp3, pre-registered Sept 25 afternoon.** Fable proposed it and the laptop agreed. It was written before any holdout file was opened, and it applies only if Dustin picks kp3 as the pilot the holdout is spent on.
 - **What is compared:** kp3 against k3, paired by deal, on the decision set of 27 cells (Altaria v Sceptile quarantined, as everywhere else), under veto rule v2.
 - **The holdout cells:** the frozen holdout half of B6's split, counted exactly as `../scoreboard_v2_2026-09-25/build_v2.py` counts the development half. That means cells and per-event cells, with one pairing entry counted as one match.
@@ -66,7 +76,7 @@ These readings follow the rules in section 8 of `docs/REVIEW_2026-09-24_directio
 | k3 | the frozen table pilot | reference | 11.5 | — | — | reference | — |
 | b3o3n4 | 4 list guesses + 3-move reply search | unpaired (indicative) | 10.3 | −25.2 (−73.0 to +21.7) | 5 cells, 1 deck (indicative only) | not adopted | `option_b_table_2026-09-24_reading.md` |
 | b3n1 | 1 list guess, no reply search | paired | 9.2 | −46.8 (−84.7 to −7.5) | Altaria v Hydreigon +6.1; Vespiquen deck +2.1 | not adopted | `b3n1_vs_k3_paired_reading.md` |
-| kp3 | public pricing, no list (tier-1 sound; conditions met at c7cb688) | paired | 9.3 | −45.5 (−84.4 to −4.8) | Altaria v Hydreigon +8.7; Hydreigon v Suicune +7.6; Vespiquen deck +2.3 | not adopted; Dustin's override question | `kp3_paired_reading.md` |
+| kp3 | public pricing, no list (tier-1 sound; conditions met at c7cb688) | paired | 9.3 | −45.5 (−84.4 to −4.8) | Altaria v Hydreigon +8.7; Hydreigon v Suicune +7.6; Vespiquen deck +2.3 | not adopted by rule v1; adopted by Dustin's override (Sept 25); **confirmed on the frozen holdout, Sept 25** (all four pre-registered conditions) | `kp3_paired_reading.md`, `../holdout_kp3_2026-09-25/READING.md` |
 | kq3 (v1, a188c14) | kp3 + next-attack-reduction clock term + benched-main-attacker readiness (weight 250, set in advance) | **diagnostic, not an adoption candidate**; no table at a188c14 | | | | | |
 | kq3 (rework, ba20dd8) | the same two habits, reworked before any table: best benched attacker's readiness (max), escape and timing rules | paired | 11.1 | −9.0 (−54.8 to +37.9); **vs kp3 +36.5 (+13.2 to +59.9): worse** | 6 cells (AvH +10.7, AvV +9.6, BvH +6.2, HvSu +12.0, ScvSu +9.0, VvW +6.6); Vespiquen deck +5.9 | not adopted | `kq3_paired_reading.md` |
 | kv3 (kq v2) | kp3 + next-attack reduction + 250 × max over eligible attackers of readiness × min(1, strength / 150) | **not built**: it shares kq's bench-readiness core, and kq3 is reliably worse than kp3 | | | | | |

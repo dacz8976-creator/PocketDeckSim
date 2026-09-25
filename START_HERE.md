@@ -125,7 +125,8 @@ the per-candidate table readings are indexed in `rl/results/table_readings_2026-
 - **The official engine** is `rl/engine-2026-09-25/` since Sept 25 (built from main at 7fc6ccb; its README).
 - **The A2 floor check** (`decks/screen/floor.py`) is built and reviewed. Next is its Payback pre-use check: brew-06 and brew-06b must read "fail", and the deck 14 control under k3 must read "untrusted". A second session reads it. Until then no floor verdict is used.
 - **kd** (the defender's Weakness and reductions in the clock, amended before any table): the table is running in the cloud. It is read against kp3 on scoreboard v2 under veto rule v2. Its mixed rows are running on the laptop (`rl/results/kd_mixed_rows_2026-09-25/`).
-- **After kd:** kpr, the holdout confirmation of whichever pilot Dustin picks, and the optional Altaria detector network.
+- **kd3 was read and not adopted.** kp3 was then **confirmed on the frozen holdout** (Sept 25; `rl/results/holdout_kp3_2026-09-25/READING.md`), and the holdout is now spent. kp3 is the confirmed pilot. Later candidates are confirmed only on events after the freeze date.
+- **Next:** kpr (the cloud, built on kp), and the optional Altaria detector network (the laptop, after its pair checks).
 - The quick screen's ranking stays on hold (Dustin, Sept 25). The hold lifts for the floor check only.
 
 **Seed ranges already used.** Pick a new block outside all of these for any new measurement. Everything up to

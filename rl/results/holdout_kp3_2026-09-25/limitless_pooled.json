@@ -1,0 +1,149 @@
+{
+ "source": "rl/results/limitless_skill_model_2026-09-25/matches.csv",
+ "split": "development + holdout",
+ "rule": "analyze.py lines 75-76: panel v panel, different archetypes, decisive or tie; one pairing = one match",
+ "cells": {
+  "altaria|blaziken": [
+   72,
+   24,
+   3
+  ],
+  "altaria|hydreigon": [
+   76,
+   56,
+   6
+  ],
+  "altaria|lucario": [
+   234,
+   89,
+   11
+  ],
+  "altaria|sceptile": [
+   108,
+   112,
+   13
+  ],
+  "altaria|suicune": [
+   79,
+   70,
+   5
+  ],
+  "altaria|vespiquen": [
+   74,
+   122,
+   11
+  ],
+  "altaria|weezing": [
+   34,
+   64,
+   5
+  ],
+  "blaziken|hydreigon": [
+   33,
+   22,
+   6
+  ],
+  "blaziken|lucario": [
+   63,
+   78,
+   3
+  ],
+  "blaziken|sceptile": [
+   54,
+   10,
+   3
+  ],
+  "blaziken|suicune": [
+   35,
+   22,
+   3
+  ],
+  "blaziken|vespiquen": [
+   56,
+   17,
+   2
+  ],
+  "blaziken|weezing": [
+   22,
+   23,
+   3
+  ],
+  "hydreigon|lucario": [
+   83,
+   68,
+   6
+  ],
+  "hydreigon|sceptile": [
+   31,
+   47,
+   4
+  ],
+  "hydreigon|suicune": [
+   21,
+   44,
+   3
+  ],
+  "hydreigon|vespiquen": [
+   36,
+   58,
+   3
+  ],
+  "hydreigon|weezing": [
+   23,
+   26,
+   2
+  ],
+  "lucario|sceptile": [
+   86,
+   146,
+   5
+  ],
+  "lucario|suicune": [
+   100,
+   73,
+   3
+  ],
+  "lucario|vespiquen": [
+   141,
+   58,
+   7
+  ],
+  "lucario|weezing": [
+   74,
+   56,
+   6
+  ],
+  "sceptile|suicune": [
+   49,
+   55,
+   4
+  ],
+  "sceptile|vespiquen": [
+   45,
+   90,
+   4
+  ],
+  "sceptile|weezing": [
+   51,
+   25,
+   4
+  ],
+  "suicune|vespiquen": [
+   35,
+   92,
+   3
+  ],
+  "suicune|weezing": [
+   50,
+   27,
+   4
+  ],
+  "vespiquen|weezing": [
+   70,
+   13,
+   2
+  ]
+ },
+ "events_with_panel_matches": 115,
+ "matches": 3556
+}

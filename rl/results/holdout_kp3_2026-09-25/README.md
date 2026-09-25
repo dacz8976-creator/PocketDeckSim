@@ -1,11 +1,11 @@
-# The one-time holdout confirmation of kp3 against k3 (prepared Sept 25; NOT YET OPENED)
+# The one-time holdout confirmation of kp3 against k3 (Sept 25)
 
-**Status: prepared, not opened.** No holdout outcome has been read.
-- The only thing read from `matches.csv` so far is the header and the count of rows per split: 16,089 holdout, 14,127 development.
-- `OPENED.txt` appears here, with the time, when the holdout is opened.
+**Status: opened once, at 2026-09-25T19:49:50Z, on Dustin's "Kp3" in the laptop session's chat. kp3 is confirmed** (`READING.md`).
+- Before opening, the only thing read from `matches.csv` was the header and the count of rows per split: 16,089 holdout, 14,127 development.
+- `OPENED.txt` holds the time and counts.
 
 **The rule:** `../table_readings_2026-09-24/README.md`, "The holdout confirmation of kp3".
-- Conditions (1) to (3) were committed at 10c4e66. Condition (4), size and direction on the holdout alone, was added before opening; its commit is recorded here when made.
+- Conditions (1) to (3) were committed at 10c4e66. Condition (4), size and direction on the holdout alone, was added at e45eb50, and its reporting note at b1740b4, all before opening.
 - Kp3 is confirmed only if all four hold. Otherwise kp3 stays the working pilot by Dustin's override, and the next confirmation is on events after the freeze date.
 
 **How it runs** (`run_confirmation.sh`, once):
