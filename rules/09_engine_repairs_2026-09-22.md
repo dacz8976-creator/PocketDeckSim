@@ -83,3 +83,19 @@ The accepted 225430 segment revealed that a zero-HP attacker was discarded befor
   `guarded_grill_under_bounded_field_pins_the_engines_current_order_coin_cut_before_weakness`
   (`engine/src/hooks/core.rs`) fails when this is fixed and names the matching one-line kd change. Fix the engine
   first; kd follows.
+- **Coin-flip damage Abilities never flip for damage dealt through a queued choice** (found Sept 25, in the kd
+  review). Carefree Steps, Celestial Blessing, Guarded Grill and Securely Sheltered read "If any damage is done to
+  this Pokémon by attacks, flip a coin". The engine flips only for damage carried in the attack's outcome
+  (`split_with_damage_prevention` skips entries of 0). Direct-damage attacks put 0 there and deliver their damage
+  through a queued `ApplyDamage` choice, so they never trigger the coin. Verified for `DirectDamage` (Heatmor's Tongue
+  Whip into a benched Togekiss: always 30). Several other attacks also deliver damage through `ApplyDamage` choices
+  and are likely affected; check them when fixing. They include the functions `also_choice_bench_damage`,
+  `optional_discard_benched_basic_for_extra_damage` (Chase Order),
+  `discard_all_energy_of_type_then_damage_any_opponent_pokemon`, `damage_to_any_opponent_per_target_energy`,
+  `self_discard_energy_then_damage_any_opponent_pokemon`, `switch_in_opponent_benched_then_damage` and
+  `direct_damage_if_damaged` in `engine/src/actions/apply_attack_action.rs`. None of the coin Abilities are in the
+  eight table decks. The kd bot mirrors the engine for the direct-damage group (`DirectDamage`,
+  `DirectDamageAndSelfCardEffect`, `DirectDamageIfDamaged`). Its test
+  `a_direct_damage_snipe_on_togekiss_pins_the_engines_current_behaviour_no_coin` (`engine/src/hooks/core.rs`)
+  fails when this is fixed. For the other attacks kd still flips the coin, as the card text says, so kd and the
+  engine disagree there until the engine is fixed. Fix the engine first; kd follows.

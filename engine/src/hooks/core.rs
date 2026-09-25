@@ -9,9 +9,9 @@ use crate::{
             AbilityMechanic, AttackCostReductionScope, DiscardSearchKind, DiscardSelection,
             KnockoutDamageTarget, ARCEUS_NAMES,
         },
-        card_effect_from_ability_mechanic, get_ability_mechanic, get_entering_play_ability_mechanic,
-        get_in_play_ability_mechanic, handle_damage_only, has_any_in_play_ability,
-        has_in_play_ability_mechanic, SimpleAction,
+        attacks::Mechanic, card_effect_from_ability_mechanic, get_ability_mechanic,
+        get_entering_play_ability_mechanic, get_in_play_ability_mechanic, handle_damage_only,
+        has_any_in_play_ability, has_in_play_ability_mechanic, SimpleAction, EFFECT_MECHANIC_MAP,
     },
     card_ids::CardId,
     effects::{CardEffect, DamageReductionScope, TurnEffect},
@@ -1578,7 +1578,10 @@ pub(crate) enum DefenderHit {
 /// it. They differ for Disguise (`PreventFirstAttack`, while unused: the first hit does 0) and Ice Face
 /// (`ReduceDamageAtFullHp`: only while undamaged, so the first hit only, or every hit if the first does 0).
 /// Expected, because two Abilities flip a coin: `CoinFlipToPreventIncomingDamage` and
-/// `CoinFlipToReduceIncomingDamage` (heads: the damage before modifiers is cut, as `apply_attack_action` does).
+/// `CoinFlipToReduceIncomingDamage` (heads: the damage before modifiers is cut, as `apply_attack_action` does). As in
+/// the engine, the coin isn't flipped for the direct-damage attacks (`DirectDamage`, `DirectDamageAndSelfCardEffect`,
+/// `DirectDamageIfDamaged`): their damage lands through a queued choice the coin never sees. Both orders are known
+/// engine bugs (rules/09, "Open engine bugs"); kd follows the engine, and tests pin both.
 ///
 /// It runs `modify_damage`'s own stages, in its order, restricted to what stays on the board:
 /// - `base_damage == 0` does nothing;
@@ -1635,6 +1638,17 @@ pub(crate) fn persistent_defender_damage(
         ability_effect.clone()
     };
     let weakness_applies = hit == DefenderHit::Active && !attack_effect_ignores_weakness(context);
+    let engine_flips_coin = !context
+        .attack_effect
+        .and_then(|effect| EFFECT_MECHANIC_MAP.get(effect))
+        .is_some_and(|mechanic| {
+            matches!(
+                mechanic,
+                Mechanic::DirectDamage { .. }
+                    | Mechanic::DirectDamageAndSelfCardEffect { .. }
+                    | Mechanic::DirectDamageIfDamaged { .. }
+            )
+        });
     // One hit of `base` raw damage: (first, later) as above, before coins and Disguise.
     let hit = |base: u32| -> (u32, u32) {
         if base == 0 {
@@ -1700,11 +1714,11 @@ pub(crate) fn persistent_defender_damage(
         (first, later)
     };
     let (first, later) = match ability_effect {
-        Some(CardEffect::CoinFlipToPreventIncomingDamage) => {
+        Some(CardEffect::CoinFlipToPreventIncomingDamage) if engine_flips_coin => {
             let (first, later) = hit(base_damage);
             (0.5 * first as f64, 0.5 * later as f64)
         }
-        Some(CardEffect::CoinFlipToReduceIncomingDamage { amount }) => {
+        Some(CardEffect::CoinFlipToReduceIncomingDamage { amount }) if engine_flips_coin => {
             let (tails_first, tails_later) = hit(base_damage);
             let (heads_first, heads_later) = hit(base_damage.saturating_sub(amount));
             (
@@ -3108,6 +3122,52 @@ mod persistent_defender_damage_tests {
             .sum();
         assert_eq!(engine, 60.0, "the engine's Guarded Grill order changed: see this test's doc comment");
         assert_eq!(both_on(&state, 60, None, 0).0, (engine, engine));
+    }
+
+    /// PINS THE ENGINE'S CURRENT BEHAVIOUR, a known engine bug (rules/09, "Open engine bugs"): a direct-damage
+    /// attack's damage lands through a queued choice, and the defender's coin-flip Ability never flips for it.
+    /// kd follows the engine. When the engine is fixed this fails on purpose: then drop the direct-damage exception
+    /// (`engine_flips_coin`) in `persistent_defender_damage`.
+    #[test]
+    fn a_direct_damage_snipe_on_togekiss_pins_the_engines_current_behaviour_no_coin() {
+        // Heatmor's Tongue Whip (30 to a Benched Pokemon) on a benched Togekiss (Celestial Blessing: heads prevents).
+        let heatmor = mon(CardId::B1044Heatmor).with_energy(vec![EnergyType::Fire]);
+        let mut state = duel(vec![mon(CardId::A1001Bulbasaur), mon(CardId::A4080Togekiss)], vec![heatmor]);
+        state.current_player = 1;
+        state.turn_count = 5;
+        let tongue_whip = state
+            .generate_possible_actions()
+            .1
+            .into_iter()
+            .find(|action| matches!(&action.action, SimpleAction::Attack(attack) if attack.title == "Tongue Whip"))
+            .expect("Tongue Whip is playable");
+        let effect = match &tongue_whip.action {
+            SimpleAction::Attack(attack) => attack.effect.clone(),
+            _ => None,
+        };
+        let mut rng = StdRng::seed_from_u64(20_000_000_002);
+        let (probabilities, mutations) = crate::actions::forecast_action(&state, &tongue_whip).into_branches();
+        let mut engine = 0.0;
+        for (probability, mutate) in probabilities.iter().zip(mutations) {
+            let mut branch = state.clone();
+            mutate(&mut rng, &mut branch, &tongue_whip);
+            let snipe = branch
+                .generate_possible_actions()
+                .1
+                .into_iter()
+                .find(|action| matches!(&action.action, SimpleAction::ApplyDamage { targets, .. } if targets[0].2 == 1))
+                .expect("the snipe at Togekiss is offered");
+            let (snipe_probabilities, snipe_mutations) =
+                crate::actions::forecast_action(&branch, &snipe).into_branches();
+            for (snipe_probability, mutate) in snipe_probabilities.iter().zip(snipe_mutations) {
+                let mut after = branch.clone();
+                mutate(&mut rng, &mut after, &snipe);
+                let togekiss = after.in_play_pokemon[0][1].as_ref().expect("Togekiss survives 30");
+                engine += probability * snipe_probability * (140 - togekiss.get_remaining_hp()) as f64;
+            }
+        }
+        assert_eq!(engine, 30.0, "the engine now flips Celestial Blessing for direct damage: see this test's doc comment");
+        assert_eq!(both_on(&state, 30, effect.as_deref(), 1).0, (engine, engine));
     }
 
     #[test]

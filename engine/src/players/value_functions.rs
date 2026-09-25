@@ -7,7 +7,7 @@ use log::trace;
 
 use crate::actions::abilities::AbilityMechanic;
 use crate::actions::attacks::{BenchDamageFilter, BenchSide, Mechanic};
-use crate::actions::{ability_mechanic_from_effect, EFFECT_MECHANIC_MAP};
+use crate::actions::{ability_mechanic_from_effect, has_any_in_play_ability, EFFECT_MECHANIC_MAP};
 use crate::card_logic::get_highest_evolutions;
 use crate::effects::CardEffect;
 use crate::hooks::{
@@ -1086,10 +1086,38 @@ fn kd_attacker(
     (form, attack)
 }
 
+/// kd: the part of the clock's damage estimate that lands on the opponent's Bench, not the Active: the extra of
+/// `AlsoBenchDamage`, `AlsoChoiceBenchDamage` and `AlsoChoiceBenchDamageFiltered` (when it has a target), which
+/// `estimated_attack_damage_ex` adds to the attack's damage (kd runs it with `spread_aware` off). A hit on the Active
+/// is priced without it.
+fn estimated_bench_spill(attack: &Attack, state: &State, owner: usize) -> u32 {
+    let Some(mechanic) = attack.effect.as_deref().and_then(|effect| EFFECT_MECHANIC_MAP.get(effect)) else {
+        return 0;
+    };
+    match mechanic {
+        Mechanic::AlsoBenchDamage { opponent: true, damage, .. }
+        | Mechanic::AlsoChoiceBenchDamage { opponent: true, damage } => *damage,
+        Mechanic::AlsoChoiceBenchDamageFiltered { opponent: true, damage, filter } => {
+            let has_target = state
+                .enumerate_bench_pokemon((owner + 1) % 2)
+                .any(|(_, pokemon)| match filter {
+                    BenchDamageFilter::Any => true,
+                    BenchDamageFilter::Damaged => pokemon.is_damaged(),
+                });
+            if has_target {
+                *damage
+            } else {
+                0
+            }
+        }
+        _ => 0,
+    }
+}
+
 /// kd: the attack's bonus that depends only on who the defending Active is (a Pokemon ex, its type, its stage, its
-/// name), for `victim` as that Active, as apply_attack_action prices it. The clock's estimate leaves these at the
-/// printed damage.
-fn defender_identity_bonus(attack: &Attack, victim: &PlayedCard) -> u32 {
+/// name, whether it has an Ability), for `victim` as that Active, as apply_attack_action prices it. The clock's
+/// estimate leaves these at the printed damage.
+fn defender_identity_bonus(state: &State, attack: &Attack, victim: &PlayedCard) -> u32 {
     let Some(mechanic) = attack.effect.as_deref().and_then(|effect| EFFECT_MECHANIC_MAP.get(effect)) else {
         return 0;
     };
@@ -1109,6 +1137,9 @@ fn defender_identity_bonus(attack: &Attack, victim: &PlayedCard) -> u32 {
         Mechanic::ExtraDamageIfDefenderNameContains { substring, extra_damage }
             if victim.get_name().contains(substring.as_str()) =>
         {
+            *extra_damage
+        }
+        Mechanic::ExtraDamageIfOpponentActiveHasAbility { extra_damage } if has_any_in_play_ability(state, victim) => {
             *extra_damage
         }
         _ => 0,
@@ -1134,7 +1165,11 @@ impl KdPricer<'_> {
         let (hit, base) = match (only_damages_the_bench(attack), place) {
             (true, VictimPlace::Active) | (false, VictimPlace::BenchedOnly) => return (0.0, 0.0),
             (true, _) => (DefenderHit::Benched, c.damage),
-            (false, _) => (DefenderHit::Active, c.damage + defender_identity_bonus(attack, victim)),
+            (false, _) => (
+                DefenderHit::Active,
+                c.damage.saturating_sub(estimated_bench_spill(attack, self.state, self.owner))
+                    + defender_identity_bonus(self.state, attack, victim),
+            ),
         };
         let context = DamageModifierContext {
             attack_name: Some(&attack.title),
@@ -2750,6 +2785,98 @@ mod kd_feature_tests {
         // Fire: 30 + 20 - 20 = 30 a hit, 1 turn for the Energy and 4 hits.
         let state = board(vec![mon(CardId::A4021ShuckleEx)], vec![weedle(), mon(CardId::A1033Charmander)]);
         assert_eq!(clocks(&state, false), (6.0, 5.0));
+    }
+
+    #[test]
+    fn a_sniper_snipes_in_the_order_that_wins_soonest() {
+        // Heatmor alone can't touch the Active Vespiquen ex. The opponent at 1 point needs 2 more: sniping the benched
+        // Vespiquen ex (140 HP, 5 turns) does it alone, faster than Combee then Vespiquen ex (2 + 5).
+        let heatmor = with(CardId::B1044Heatmor, EnergyType::Fire, 1);
+        let mut state = board(
+            vec![mon(CardId::B4011VespiquenEx), mon(CardId::B4010Combee), mon(CardId::B4011VespiquenEx)],
+            vec![heatmor],
+        );
+        state.points = [0, 1];
+        assert_eq!(clocks(&state, false).1, 5.0);
+    }
+
+    #[test]
+    fn a_sniper_hits_a_benched_victim_where_it_is() {
+        // Heatmor (Tongue Whip 30) is the threat and can't touch Bulbasaur; Charmander's Ember (50 on the Fire-weak
+        // Bulbasaur) knocks it out in 2. Combee, benched, is sniped where it is: 30 a hit, no Weakness, 2 more.
+        let state = board(
+            vec![mon(CardId::A1001Bulbasaur), mon(CardId::B4010Combee)],
+            vec![with(CardId::B1044Heatmor, EnergyType::Fire, 1), with(CardId::A1033Charmander, EnergyType::Fire, 1)],
+        );
+        assert_eq!(clocks(&state, false), (5.0, 4.0));
+    }
+
+    #[test]
+    fn the_count_stops_at_3_points() {
+        // The opponent at 2: knocking out Riolu wins, so the Shuckle ex that Sting can't damage never matters.
+        let mut state = board(vec![mon(CardId::B3079Riolu), mon(CardId::A4021ShuckleEx)], vec![weedle()]);
+        state.points = [0, 2];
+        assert_eq!(clocks(&state, false), (3.0, 3.0));
+    }
+
+    #[test]
+    fn the_fallback_with_the_most_damage_wins_a_tie_on_missing_energy() {
+        // Sting does 0 to Shuckle ex. Riolu and Charmander are each one Energy short: Fighting Fist does 40 - 20 = 20,
+        // Ember 30 + 20 (Weakness) - 20 = 30. kd takes Ember: 1 + 4.
+        let state = board(
+            vec![mon(CardId::A4021ShuckleEx)],
+            vec![weedle(), mon(CardId::B3079Riolu), mon(CardId::A1033Charmander)],
+        );
+        assert_eq!(clocks(&state, false), (6.0, 5.0));
+    }
+
+    #[test]
+    fn damage_to_the_bench_is_not_priced_on_the_active() {
+        // Hoopa ex's Shadow Bullet: 30, and 20 to a benched Pokemon. The clock's estimate says 50; the Active takes 30,
+        // 10 through Solid Shell: Shuckle ex in 12, where k counts 3.
+        let hoopa = with(CardId::B4103HoopaEx, EnergyType::Darkness, 1);
+        assert_eq!(clocks(&board(vec![mon(CardId::A4021ShuckleEx)], vec![hoopa]), false), (3.0, 12.0));
+    }
+
+    #[test]
+    fn a_bonus_for_who_the_defender_is_needs_its_condition() {
+        // Fighting Fist's +30 is only against a Pokemon ex: Riolu v Treecko (60 HP) is 10 a hit, 6 turns.
+        let riolu = with(CardId::B3079Riolu, EnergyType::Fighting, 1);
+        assert_eq!(clocks(&board(vec![mon(CardId::B3005Treecko)], vec![riolu]), false), (6.0, 6.0));
+    }
+
+    #[test]
+    fn defender_identity_bonus_follows_each_condition() {
+        let attack_with = |wanted: &dyn Fn(&Mechanic) -> bool| -> Attack {
+            let mut texts: Vec<&str> =
+                EFFECT_MECHANIC_MAP.iter().filter(|(_, mechanic)| wanted(mechanic)).map(|(text, _)| *text).collect();
+            texts.sort();
+            Attack {
+                energy_required: vec![],
+                title: "Test".to_string(),
+                fixed_damage: 10,
+                effect: Some(texts[0].to_string()),
+            }
+        };
+        let state = State::default();
+        let bonus = |attack: &Attack, victim: CardId| defender_identity_bonus(&state, attack, &mon(victim));
+        let ex = attack_with(&|m| matches!(m, Mechanic::ExtraDamageIfEx { extra_damage: 30 }));
+        assert_eq!((bonus(&ex, CardId::A1129MewtwoEx), bonus(&ex, CardId::B3005Treecko)), (30, 0));
+        let darkness = attack_with(&|m| {
+            matches!(m, Mechanic::ExtraDamageIfDefenderType { energy_types, extra_damage: 30 }
+                if energy_types == &vec![EnergyType::Darkness])
+        });
+        assert_eq!((bonus(&darkness, CardId::B1155Deino), bonus(&darkness, CardId::B3005Treecko)), (30, 0));
+        let basic = attack_with(&|m| {
+            matches!(m, Mechanic::ExtraDamageIfDefenderStage { evolution: false, extra_damage: 60 })
+        });
+        assert_eq!((bonus(&basic, CardId::A1001Bulbasaur), bonus(&basic, CardId::A1034Charmeleon)), (60, 0));
+        let zangoose = attack_with(&|m| matches!(m, Mechanic::ExtraDamageIfDefenderNamed { .. }));
+        assert_eq!((bonus(&zangoose, CardId::A4a065Zangoose), bonus(&zangoose, CardId::A1001Bulbasaur)), (40, 0));
+        let rocket = attack_with(&|m| matches!(m, Mechanic::ExtraDamageIfDefenderNameContains { .. }));
+        assert_eq!((bonus(&rocket, CardId::B4a042TeamRocketsKoffing), bonus(&rocket, CardId::A1001Bulbasaur)), (70, 0));
+        let ability = attack_with(&|m| matches!(m, Mechanic::ExtraDamageIfOpponentActiveHasAbility { .. }));
+        assert_eq!((bonus(&ability, CardId::A4021ShuckleEx), bonus(&ability, CardId::A1001Bulbasaur)), (40, 0));
     }
 
     #[test]
