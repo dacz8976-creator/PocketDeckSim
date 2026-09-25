@@ -308,7 +308,10 @@ both sides and the A2 hold decided on it; kd read against kp3 on v2; the Sleep a
 1. Scoreboard v2 is the table for decisions (development half); the holdout confirms, once.
 2. Brew tools: A1 harness (one build kept, the other a fixture; coverage flag checked against kp's audited texts; the
    one pre-registered tempo metric, with the dated prediction that brews 07 and 08 are fastest and 10 slowest); A2
-   screen readouts with kp3 on both sides, a ladder-weighted panel, worst matchup and failure modes instead of an
+   screen readouts with kp3 on both sides (which needs PR #1 merged, an engine built from the merged main with its
+   identity recorded, meaning its hash plus proof that k3 and kp3 replay all 14,000 table games move for move, and
+   `project_manifest.json` and `decks/screen/run_screen.py` pointed at that build, since the verified rules4 program has
+   no kp3 and the screen script hard-codes k3), a ladder-weighted panel, worst matchup and failure modes instead of an
    average, one-sided rows; A3 per-game calibration from the Ladder Log; A4 one brew to 15 to 20 ladder games with a
    stop-loss; A5 B4b as a data refresh with bit-for-bit reproduction of the k3 table plus a card-effect pass, and an
    upstream code-merge trial in the cloud before C1.

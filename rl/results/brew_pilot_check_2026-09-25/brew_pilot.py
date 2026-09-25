@@ -29,6 +29,15 @@ Options added after the Raticate run (06:30; its defaults and results unchanged)
 decks/dustin), --rows (e.g. "k3|k3,kp3|k3"), --seed0. The all-decks run's reading, set before its first game: the
 same "pilot" difference per brew, descriptive only; it says which of Dustin's brews' simulator numbers depend on the
 pilot, and by how much, not how good any brew is.
+
+Added about 09:20 for the A2 screen re-run (RUN5, the plan revised Sept 25): --brews also takes repo-relative deck
+paths (e.g. decks/brews/brew-07-hoopa-darkrai-sableye.txt) and the token "all"; a 'both' column (kp3|kp3 - k3|k3);
+and a closing screen summary against decks/screen/results.md's bar. The opponents are decks/research, identical card
+for card to decks/screen/opponents (checked). READING for that re-run, set before its first game: the screen's own
+anchors must hold with kp3 on both sides for the screen to be usable again: the two Payback decks (brew-06, brew-06b;
+0-3 each on the ladder) under 20%, Skarmory stall (07; 3-1) at 45% or more, brew-05b (3-3) at 20% or more. The bar
+(under 20% = broken) is unchanged; brews whose side of the bar differs between k3|k3 and kp3|kp3 are listed.
+Descriptive otherwise; not a ranking. Dustin decides the A2 hold on it.
 """
 import os
 
@@ -72,7 +81,11 @@ _W = {}
 
 
 def bpath(b):
-    return str(ROOT / "decks/dustin" / f"{b}.txt")
+    return str(ROOT / b) if "/" in b else str(ROOT / "decks/dustin" / f"{b}.txt")
+
+
+def label(b):
+    return Path(b).stem if "/" in b else b
 
 
 def opath(o):
@@ -142,17 +155,18 @@ def main():
     ap.add_argument("--rows", default=",".join(ROWS), help="comma list of brew|opponent pilot rows; k3|k3 must be one")
     ap.add_argument("--seed0", type=int, default=SEED0)
     a = ap.parse_args()
-    if a.brews == "all":
-        BREWS[:] = sorted(p.stem for p in (ROOT / "decks/dustin").glob("*.txt"))
-    elif a.brews:
-        BREWS[:] = a.brews.split(",")
+    if a.brews:
+        picked = []
+        for tok in a.brews.split(","):
+            picked += sorted(p.stem for p in (ROOT / "decks/dustin").glob("*.txt")) if tok == "all" else [tok]
+        BREWS[:] = list(dict.fromkeys(picked))
     ROWS = tuple(a.rows.split(","))
     SEED0 = a.seed0
     if "k3|k3" not in ROWS or any(r.split("|")[0] not in ("k3", "kp3") or r.split("|")[1] not in ("k3", "kp3") for r in ROWS):
         raise SystemExit(f"--rows {a.rows}: each row is <k3|kp3>|<k3|kp3>, and k3|k3 must be one of them")
     missing = [b for b in BREWS if not Path(bpath(b)).exists()]
     if missing:
-        raise SystemExit(f"no such deck in decks/dustin: {missing}")
+        raise SystemExit(f"no such deck (a name in decks/dustin, or a repo-relative path): {missing}")
     t0 = time.time()
     tasks = [(b, o, i, r) for b in range(len(BREWS)) for o in range(len(OPPS)) for i in range(a.deals) for r in ROWS]
     with mp.get_context("spawn").Pool(a.workers, initializer=_init, initargs=(list(BREWS), SEED0)) as pool:
@@ -164,13 +178,14 @@ def main():
     L = [f"Brew pilot check: Dustin's {what} under k3 and kp3   ({time.strftime('%Y-%m-%d %H:%M')})", "",
          f"Diagnostic add-on {pdl_rl_env.__file__} sha256 {sha} (engine at c7cb688; not the verified 0.7.2 wheel).",
          f"{a.deals} paired deals per matchup, seeds {SEED0:,} + brew x 1,000,000 + opponent x 10,000 + i. Games that did "
-         f"not replay exactly or raised an error: {len(errors)} of {len(res):,}; a deal counts only when all three rows' "
-         f"games are clean.", "",
-         "Rows are brew pilot | opponent pilot. The brew's win % in each row; two paired differences (95% interval):",
+         f"not replay exactly or raised an error: {len(errors)} of {len(res):,}; a deal counts only when all {len(ROWS)} "
+         f"rows' games are clean.", "",
+         "Rows are brew pilot | opponent pilot. The brew's win % in each row; three paired differences (95% interval):",
          "  'pilot' = kp3|k3 - k3|k3 (what k3 understates, against k3 opponents);",
-         "  'meta'  = kp3|kp3 - kp3|k3 (does it move again when the meta side prices too).",
+         "  'meta'  = kp3|kp3 - kp3|k3 (does it move again when the meta side prices too);",
+         "  'both'  = kp3|kp3 - k3|k3 (kp3 on both sides against k3 on both sides).",
          "Per brew turn where Thieving Incisors (TI) / Copycat was on offer: turns the brew used it / turns on offer.", ""]
-    hdr = (f"  {'brew v opponent':<32}{'n':>5}{'k3|k3':>7}{'kp3|k3':>8}{'kp3|kp3':>9}{'pilot':>14}{'meta':>14}"
+    hdr = (f"  {'brew v opponent':<34}{'n':>5}{'k3|k3':>7}{'kp3|k3':>8}{'kp3|kp3':>9}{'pilot':>14}{'meta':>14}{'both':>14}"
            f"   {'TI k3|k3':>13}{'TI kp3|k3':>13}{'TI kp3|kp3':>13}   {'Copycat k3|k3':>14}{'Copycat kp3|k3':>15}")
     L.append(hdr)
 
@@ -189,21 +204,35 @@ def main():
         f = lambda c, u, on: f"{c[u]}/{c[on]}" + (f" {100 * c[u] / c[on]:.0f}%" if c[on] else "")  # noqa: E731
         every = ("k3|k3", "kp3|k3", "kp3|kp3")
         return (len(good), {r: 100 * w[r].mean() if r in w else float("nan") for r in every},
-                diff("kp3|k3", "k3|k3"), diff("kp3|kp3", "kp3|k3"),
+                diff("kp3|k3", "k3|k3"), diff("kp3|kp3", "kp3|k3"), diff("kp3|kp3", "k3|k3"),
                 [f(cs[r], "ti", "ti_on") if r in cs else "—" for r in every],
                 [f(cs[r], "cc", "cc_on") if r in cs else "—" for r in every[:2]])
 
     def row(label, v):
         if v is None:
-            return f"  {label:<32}  no clean deals"
-        n, won, (p, ph), (m, mh), ti, cc = v
-        return (f"  {label:<32}{n:>5}{won['k3|k3']:>7.1f}{won['kp3|k3']:>8.1f}{won['kp3|kp3']:>9.1f}"
-                f"{p:>+8.1f} ±{ph:<4.1f}{m:>+8.1f} ±{mh:<4.1f}   {ti[0]:>13}{ti[1]:>13}{ti[2]:>13}   {cc[0]:>14}{cc[1]:>15}")
+            return f"  {label:<34}  no clean deals"
+        n, won, (p, ph), (m, mh), (bo, bh), ti, cc = v
+        return (f"  {label:<34}{n:>5}{won['k3|k3']:>7.1f}{won['kp3|k3']:>8.1f}{won['kp3|kp3']:>9.1f}"
+                f"{p:>+8.1f} ±{ph:<4.1f}{m:>+8.1f} ±{mh:<4.1f}{bo:>+8.1f} ±{bh:<4.1f}"
+                f"   {ti[0]:>13}{ti[1]:>13}{ti[2]:>13}   {cc[0]:>14}{cc[1]:>15}")
 
+    totals = {}
     for b, brew in enumerate(BREWS):
         for o, opp in enumerate(OPPS):
-            L.append(row(f"{brew[:17]} v {opp}", agg([(b, o, i) for i in range(a.deals)])))
-        L += [row(f"{brew[:17]} v all eight", agg([(b, o, i) for o in range(len(OPPS)) for i in range(a.deals)])), ""]
+            L.append(row(f"{label(brew)[:21]} v {opp}", agg([(b, o, i) for i in range(a.deals)])))
+        totals[brew] = agg([(b, o, i) for o in range(len(OPPS)) for i in range(a.deals)])
+        L += [row(f"{label(brew)[:21]} v all eight", totals[brew]), ""]
+    if "kp3|kp3" in ROWS:
+        L += ["Screen summary (decks/screen/results.md's bar: under 20% against the panel = broken), panel win %:",
+              f"  {'brew':<40}{'k3|k3':>8}{'kp3|kp3':>9}{'both':>14}   side of the bar"]
+        for brew, v in totals.items():
+            if v is None:
+                continue
+            k, kp, (bo, bh) = v[1]["k3|k3"], v[1]["kp3|kp3"], v[4]
+            side = lambda x: "under 20" if x < 20 else "20+"  # noqa: E731
+            flip = "" if side(k) == side(kp) else "   FLIPS"
+            L.append(f"  {label(brew)[:40]:<40}{k:>8.1f}{kp:>9.1f}{bo:>+8.1f} ±{bh:<4.1f}   {side(k)} -> {side(kp)}{flip}")
+        L.append("")
     if errors:
         kinds = {}
         for r in errors:

@@ -102,20 +102,26 @@ claim files, 1,100+ root files — instead of decks. Four different "current" en
 Sixty sessions on video/OCR that never read a single card. Fixating on one deck (Zoroark) that
 the sim liked and the ladder didn't. Full list with what catches each: `docs/AUDIT_2026-09-10/`.
 
-## Running now, and seed ranges already used (added for this repo, Sept 24, 3 PM)
+## Running now, and seed ranges already used (added for this repo, Sept 24; refreshed Sept 25 morning)
 
-**Running or next**
-- **The Hydreigon network run** (RUN5.md plan item 2) moved to this repo on Sept 24 evening before it started;
-  nothing ran from Pocket Deck Lab. Run folder `runs/diag-hydreigon-lucario`, settings
-  `rl/diag_hydreigon_v5_settings.json`, about 8 hours on the laptop. The pair checks, network v network and
-  the Hyper Ray count go with it. Opus reads the verdict.
-- **Finished Sept 24:** the deeper-search table, k4–k6 on all 28 pairings (`rl/results/deep_search_table/STATUS.txt`).
-  Deeper search within a turn doesn't improve the fit to Limitless.
-- **Next in the plan** (`rl/RUN5.md`, "The plan, revised Sept 24"): card check of Altaria, Sceptile and Vespiquen
-  with a legality scan; the two Limitless side tables; run 6 after those.
-- **This repo (Claude Code): engine first** (Dustin, Sept 24). Option B, k3 guessing the opponent's hand from
-  their list and searching their reply, is reopened (`rl/RUN5.md`, update at the end of the plan), plus the
-  legality scan of the table's games. Quick Growth diagnostic done (seeds 81,000,000–81,070,000 and 20B+).
+**The current plan** is "The plan, revised Sept 25 (approved by Dustin)" at the end of `rl/RUN5.md`. It supersedes
+the Sept 24 plan. The full record and every number behind it is section 8 of `docs/REVIEW_2026-09-24_direction.md`;
+the per-candidate table readings are indexed in `rl/results/table_readings_2026-09-24/README.md`.
+
+**Finished**
+- **The Hydreigon network run** (Sept 24–25, `runs/diag-hydreigon-lucario`): +40.8 over k3, two k3 blind spots
+  found (Darkness Claw pricing, the Hyper Ray chip). Reading: `rl/results/hydreigon_network_readout/READING.md`;
+  summary in section 8. It was the last run of that family; run 6 is B7 in the plan and not now.
+- **Scoreboard v2** (the 28 cells rebuilt from the development half's pairings; holdout reserved):
+  `rl/results/scoreboard_v2_2026-09-25/`.
+- **Brew pilot checks** (k3 against kp3 on Dustin's decks): `rl/results/brew_pilot_check_2026-09-25/`.
+- **Earlier:** the deeper-search table (k4–k6 don't help, Sept 24), the option B and kp3 table readings, the
+  discard-attack census.
+
+**Running or next** (in the plan's order): the A2 screen re-run with kp3 on both sides (a diagnostic on the scratch
+add-on, for Dustin's decision on the screen hold; the screen's own switch to kp3 needs a new engine build, see RUN5's
+A2 line); kd (the defender's Weakness and reductions in the clock) built in the cloud, read against kp3 on v2; kpr
+after it. The quick bot screen stays on hold until Dustin lifts it.
 
 **Seed ranges already used.** Pick a new block outside all of these for any new measurement. Everything up to
 Run 5 stage 1 is from `rl/results/run5_build/BUILD_NOTES.md` ("Ranges already used", read from the code) and
@@ -132,7 +138,7 @@ its seed-overlap check; the rest was added since.
 | 10,000,000,000 – 12,901,999,999 | Hydreigon run training |
 | 13,000,000,000 – 13,300,000,000 blocks | Hydreigon run evaluation (k3, random, confirmation, held-out) |
 | 19,000,000,000 – 19,800,000,000 blocks | Opus's cloud practice test of the Hydreigon settings (program test only) |
-| 20,000,000,000+ | Claude Code diagnostics (Caterpie counterplay from 20.0B); 21,000,000,000 – 21,001,999,999: Hydreigon pair checks and readout smoke tests (Sept 24); 21,002,000,000+: the laptop's A1 build (branch `laptop/engine-first-2026-09-24`); 21,020,000,000 + pairing × 100,000 + i, i < 200: discard-attack census (Sept 25); 21,030,000,000 – 21,032,079,999: Raticate brew pilot check; 21,050,000,000 – 21,064,079,999: all-15-decks pilot check (Sept 25); 22,000,000,000 – 22,500,000,000: the cloud's Sept 24–25 diagnostics; new blocks go above the last one used |
+| 20,000,000,000+ | Claude Code diagnostics (Caterpie counterplay from 20.0B); 21,000,000,000 – 21,001,999,999: Hydreigon pair checks and readout smoke tests (Sept 24); 21,002,000,000+: the laptop's A1 build (branch `laptop/engine-first-2026-09-24`); 21,020,000,000 + pairing × 100,000 + i, i < 200: discard-attack census (Sept 25); 21,030,000,000 – 21,032,079,999: Raticate brew pilot check; 21,050,000,000 – 21,064,079,999: all-15-decks pilot check (Sept 25); 21,070,000,000 – 21,093,079,999: A2 screen re-run with kp3 (Sept 25); 22,000,000,000 – 22,500,000,000: the cloud's Sept 24–25 diagnostics; new blocks go above the last one used |
 | 1M, 2M, 8M, 9M | step-3 checks |
 | 5M, 6M | v2.2 checks (Astra's rules4 recheck also 6M) |
 | 18M, 18.5M, 18.9M, 28.5M | step-1 checks (18M, 18.5M); Astra's interface checks (18.5M, 28.5M) and mirror benchmark (18.9M) |
