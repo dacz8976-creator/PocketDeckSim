@@ -185,12 +185,12 @@ pub fn public_clock_effect_value_function(state: &State, myself: usize) -> f64 {
 
 /// B5 - the `kq` tier (players/mod.rs `KQ`, piloted like `kp`): `k`'s evaluator plus two card-agnostic
 /// features, both fixed before any table was run:
-/// - next-attack reduction in the threat clock: a threatening Active that carries an effect cutting or
-///   cancelling its next attack is priced at that damage for its first attack turn
-///   ([`first_attack_turn_damage`]);
-/// - benched-main-attacker readiness: `k`'s online score for the benched main attacker, on both sides as
-///   for the Active, weighted [`KQ_BENCH_MAIN_ATTACKER_WEIGHT`] = 250, half the Active's 500
-///   ([`benched_main_attacker_online_score`]).
+/// - next-attack reduction in the threat clock: when the threatening Active carries effects that cut or
+///   cancel its next attack, the first knockout's first attack turn is priced through them, or through the
+///   owner's escape (a ready benched attacker), whichever is faster ([`first_attack_turn`]);
+/// - benched-attacker readiness: `k`'s online score for the best benched attacker, on both sides as for
+///   the Active, weighted [`KQ_BENCH_ATTACKER_WEIGHT`] = 250, half the Active's 500
+///   ([`best_benched_attacker_online_score`]).
 /// `k`, `kp` and every older tier reach [`parametric_value_function_ex6`] through
 /// [`parametric_value_function_ex5`] with [`KqFeatures::OFF`], where neither runs.
 pub fn public_clock_effect_kq_value_function(state: &State, myself: usize) -> f64 {
@@ -207,25 +207,25 @@ pub fn public_clock_effect_kq_value_function(state: &State, myself: usize) -> f6
     )
 }
 
-/// Weight of [`benched_main_attacker_online_score`] in `kq`: half the Active online score's 500 in
+/// Weight of [`best_benched_attacker_online_score`] in `kq`: half the Active online score's 500 in
 /// [`ValueFunctionParams::baseline`]. Pre-set before any A/B and not tuned on the table.
-pub const KQ_BENCH_MAIN_ATTACKER_WEIGHT: f64 = 250.0;
+pub const KQ_BENCH_ATTACKER_WEIGHT: f64 = 250.0;
 
 /// The `kq` switches. [`KqFeatures::OFF`] is every older tier: no new code runs.
 #[derive(Debug, Clone, Copy)]
 struct KqFeatures {
     next_attack_reduction: bool,
-    bench_main_attacker_weight: f64,
+    bench_attacker_weight: f64,
 }
 
 impl KqFeatures {
     const OFF: KqFeatures = KqFeatures {
         next_attack_reduction: false,
-        bench_main_attacker_weight: 0.0,
+        bench_attacker_weight: 0.0,
     };
     const KQ: KqFeatures = KqFeatures {
         next_attack_reduction: true,
-        bench_main_attacker_weight: KQ_BENCH_MAIN_ATTACKER_WEIGHT,
+        bench_attacker_weight: KQ_BENCH_ATTACKER_WEIGHT,
     };
 }
 
@@ -487,14 +487,14 @@ fn parametric_value_function_ex6(
             * params.energy_distance_to_online
         + opp.discard_size * params.opponent_discard_size;
     trace!("parametric_value_function: {score} (params: {params:?}, my: {my:?}, opp: {opp:?})");
-    // kq: the benched main attacker's readiness, on both sides as for the Active (the opponent's priced from
+    // kq: the best benched attacker's readiness, on both sides as for the Active (the opponent's priced from
     // the board only). Every older tier has weight 0 and skips it, so its score is untouched.
-    if kq.bench_main_attacker_weight != 0.0 {
+    if kq.bench_attacker_weight != 0.0 {
         let my_bench =
-            benched_main_attacker_online_score(state, myself, false, effect_aware, reserve_aware);
+            best_benched_attacker_online_score(state, myself, false, effect_aware, reserve_aware);
         let opp_bench =
-            benched_main_attacker_online_score(state, opponent, public_eval, effect_aware, reserve_aware);
-        return score + (my_bench - opp_bench) * kq.bench_main_attacker_weight;
+            best_benched_attacker_online_score(state, opponent, public_eval, effect_aware, reserve_aware);
+        return score + (my_bench - opp_bench) * kq.bench_attacker_weight;
     }
     score
 }
@@ -821,13 +821,11 @@ fn calculate_turns_until_opponent_wins_damage_aware(
         }
     }
 
-    // kq: a threatening Active that carries an effect cutting or cancelling its next attack is priced at that
-    // damage for its first attack turn, which is the next KO's first turn. Only when it can attack at once
-    // (no Energy missing): otherwise, in the clock's own units, its first attack falls after that turn.
-    let mut first_turn_damage = if next_attack_reduction && _threat_slot == 0 && missing_energy == 0 {
-        state
-            .maybe_get_active(opponent)
-            .and_then(|threat| first_attack_turn_damage(state, opponent, threat, max_damage, &attack_damage))
+    // kq: when the threat is the Active and carries effects that cut or cancel its next attack, the first
+    // knockout's first attack turn is priced through them (or through the owner's escape into a ready benched
+    // attacker, whichever is faster). Only that turn: later turns keep the clock's pace.
+    let mut first_turn_damage = if next_attack_reduction && _threat_slot == 0 {
+        first_attack_turn(state, opponent, max_damage, &attack_damage)
     } else {
         None
     };
@@ -835,7 +833,7 @@ fn calculate_turns_until_opponent_wins_damage_aware(
     if let Some(my_active) = state.maybe_get_active(player) {
         let turns_to_ko = match first_turn_damage.take() {
             None => (my_active.get_remaining_hp() as f64 / max_damage).ceil(),
-            Some(first) => ko_turns_after_first_attack(my_active.get_remaining_hp() as f64, first, max_damage),
+            Some(first) => first.ko_turns(my_active.get_remaining_hp() as f64, max_damage),
         };
         total_turns += turns_to_ko;
         opp_points += my_active.card.get_knockout_points();
@@ -866,7 +864,7 @@ fn calculate_turns_until_opponent_wins_damage_aware(
         }
         let turns_to_ko = match first_turn_damage.take() {
             None => (safest_pokemon.get_remaining_hp() as f64 / max_damage).ceil(),
-            Some(first) => ko_turns_after_first_attack(safest_pokemon.get_remaining_hp() as f64, first, max_damage),
+            Some(first) => first.ko_turns(safest_pokemon.get_remaining_hp() as f64, max_damage),
         };
         total_turns += turns_to_ko;
         opp_points += safest_pokemon.card.get_knockout_points();
@@ -875,38 +873,79 @@ fn calculate_turns_until_opponent_wins_damage_aware(
     total_turns
 }
 
-/// kq: the damage `threat`, `owner`'s Active, does on its first attack turn when it carries an effect that cuts
-/// or cancels its next attack, or `None` when no such effect reaches that turn. Keyed on the effect types the
-/// engine itself enforces, never on card names:
-/// - `CannotAttack` (move_generation/attacks.rs): no attack that turn, 0;
-/// - `CannotUseAttack(title)` (the same): that attack isn't offered, so the best other attack it can pay now;
+/// kq: the first attack turn of the first knockout, when the threat (`owner`'s Active) carries effects that cut
+/// or cancel its next attack. The owner takes whichever option is faster: attack through the effects, or retreat
+/// (which clears them) into its best ready benched attacker. Damage never exceeds the clock's `max_damage`, so kq
+/// can only make the opponent slower than `k` does, never faster.
+#[derive(Debug, Clone, PartialEq)]
+struct FirstAttackTurn {
+    /// Attacking through the effects: (probability, damage) outcomes.
+    through: Vec<(f64, f64)>,
+    /// The best damage a benched Pokemon of the owner can do that turn instead.
+    escape: f64,
+}
+
+impl FirstAttackTurn {
+    /// Expected turns to knock out `hp` when this is the first attack turn and every later one does `max_damage`.
+    fn ko_turns(&self, hp: f64, max_damage: f64) -> f64 {
+        let through: f64 = self
+            .through
+            .iter()
+            .map(|(p, damage)| p * ko_turns_after_first_attack(hp, *damage, max_damage))
+            .sum();
+        through.min(ko_turns_after_first_attack(hp, self.escape, max_damage))
+    }
+}
+
+/// kq: turns to knock out `hp` when the first attack does `first` and every later one `max_damage`.
+fn ko_turns_after_first_attack(hp: f64, first: f64, max_damage: f64) -> f64 {
+    if first >= hp {
+        1.0
+    } else {
+        1.0 + ((hp - first) / max_damage).ceil()
+    }
+}
+
+/// kq: [`FirstAttackTurn`] for `owner`, or `None` when its Active carries no effect that reaches its first attack
+/// turn. Keyed on the effect types the engine enforces, never on card names:
+/// - `CannotAttack` (move_generation/attacks.rs): no attack that turn;
+/// - `CannotUseAttack(title)` (the same): that attack isn't offered, so its best other attack;
 /// - `ReducedAttackDamage { amount }` (hooks/core.rs `modify_damage`): the amounts summed, floored at 0;
-/// - `CoinFlipToBlockAttack` (apply_attack_action.rs): the attack happens half the time, so half the damage.
-/// An effect with `d` turns left is live for turns `t..=t+d` (`PlayedCard::end_turn_maintenance`). The owner's
-/// next attack turn is this one if it is to move and hasn't attacked, else the next one it gets.
-fn first_attack_turn_damage(
+/// - `CoinFlipToBlockAttack` (apply_attack_action.rs): the attack happens or not on a coin, 50/50.
+/// Timing follows Pocket: a Pokemon attaches one Energy a turn and may attack the same turn, so the Active's first
+/// attack turn is its owner's next turn if its cheapest damaging attack is at most one Energy short, and two
+/// global turns later for each further Energy. An effect with `d` turns left is live through turn `t + d`
+/// (`PlayedCard::end_turn_maintenance`); the owner's next turn is this one if it is to move and hasn't attacked.
+fn first_attack_turn(
     state: &State,
     owner: usize,
-    threat: &PlayedCard,
     max_damage: f64,
     attack_damage: &dyn Fn(&Attack, &PlayedCard) -> u32,
-) -> Option<f64> {
+) -> Option<FirstAttackTurn> {
+    let active = state.maybe_get_active(owner)?;
+    let missing = |pokemon: &PlayedCard, attack: &Attack| {
+        energy_missing(pokemon, &attack.energy_required, state, owner).len()
+    };
+    let attacks = active.card.get_attacks();
+    let damaging: Vec<&Attack> = attacks.iter().filter(|atk| attack_damage(atk, active) > 0).collect();
+    let fewest_missing = damaging.iter().map(|atk| missing(active, atk)).min()?;
     let t = state.turn_count as u32;
-    let next_attack_turn = if state.current_player != owner {
+    let next_turn = if state.current_player != owner {
         t + 1
     } else if state.end_turn_pending || state.attack_name_used_this_turn[owner].is_some() {
         t + 2
     } else {
         t
     };
-    let (mut relevant, mut coin_block, mut reduction) = (false, false, 0u32);
+    let first_attack = next_turn + 2 * fewest_missing.saturating_sub(1) as u32;
+    let (mut relevant, mut cannot_attack, mut coin_block, mut reduction) = (false, false, false, 0u32);
     let mut blocked: Vec<&str> = Vec::new();
-    for (effect, turns_left) in threat.get_effects() {
-        if next_attack_turn > t + *turns_left as u32 {
+    for (effect, turns_left) in active.get_effects() {
+        if first_attack > t + *turns_left as u32 {
             continue;
         }
         match effect {
-            CardEffect::CannotAttack => return Some(0.0),
+            CardEffect::CannotAttack => cannot_attack = true,
             CardEffect::CannotUseAttack(title) => blocked.push(title.as_str()),
             CardEffect::ReducedAttackDamage { amount } => reduction += *amount,
             CardEffect::CoinFlipToBlockAttack => coin_block = true,
@@ -917,29 +956,36 @@ fn first_attack_turn_damage(
     if !relevant {
         return None;
     }
-    let damage = if blocked.is_empty() {
-        max_damage
+    let through = if cannot_attack {
+        vec![(1.0, 0.0)]
     } else {
-        threat
-            .card
-            .get_attacks()
+        let best = damaging
             .iter()
-            .filter(|atk| !blocked.contains(&atk.title.as_str()))
-            .filter(|atk| energy_missing(threat, &atk.energy_required, state, owner).is_empty())
-            .map(|atk| attack_damage(atk, threat) as f64)
+            .filter(|atk| !blocked.contains(&atk.title.as_str()) && missing(active, atk) <= fewest_missing)
+            .map(|atk| attack_damage(atk, active) as f64)
             .fold(0.0, f64::max)
+            .min(max_damage);
+        let damage = (best - reduction as f64).max(0.0);
+        if coin_block {
+            vec![(0.5, damage), (0.5, 0.0)]
+        } else {
+            vec![(1.0, damage)]
+        }
     };
-    let damage = (damage - reduction as f64).max(0.0);
-    Some(if coin_block { damage * 0.5 } else { damage })
-}
-
-/// kq: turns to knock out `hp` when the first attack does `first` and every later one `max_damage`.
-fn ko_turns_after_first_attack(hp: f64, first: f64, max_damage: f64) -> f64 {
-    if first >= hp {
-        1.0
-    } else {
-        1.0 + ((hp - first) / max_damage).ceil()
-    }
+    let escape = state
+        .enumerate_bench_pokemon(owner)
+        .flat_map(|(_, pokemon)| {
+            pokemon
+                .card
+                .get_attacks()
+                .iter()
+                .filter(|atk| missing(pokemon, atk) <= 1)
+                .map(|atk| attack_damage(atk, pokemon) as f64)
+                .collect::<Vec<_>>()
+        })
+        .fold(0.0, f64::max)
+        .min(max_damage);
+    Some(FirstAttackTurn { through, escape })
 }
 
 /// Calculate online pokemon metrics: (count of online pokemon, total energy distance to online)
@@ -1574,13 +1620,13 @@ fn pokemon_online_score(
     (have / total_needed).clamp(0.0, 1.0)
 }
 
-/// kq (B5): the online score of `player`'s benched main attacker, 0 when there is none. The main attacker is the
-/// benched Pokemon whose target form (the one [`pokemon_online_score`] prices: its highest evolution in deck and
-/// hand on the evaluating player's own side, the card on the board for the opponent's) has the strongest
-/// damaging attack that costs Energy, by the same damage estimate; ties go to the lower Bench slot. A Pokemon
-/// whose attacks are all free or do no damage is not an attacker here, so a benched Bonsly or Igglybuff (free
-/// attacks, readiness 1.0) can't stand in for the attacker being built.
-fn benched_main_attacker_online_score(
+/// kq (B5): the best benched attacker's readiness: the highest [`pokemon_online_score`] (`k`'s Active online score,
+/// unchanged) among `player`'s benched attackers, 0 when there is none. A benched Pokemon is an attacker when one
+/// of its target forms (its highest evolutions in deck and hand on the evaluating player's own side, else the card
+/// on the board; the opponent's side is priced from the board only) has an attack that costs Energy, does damage
+/// by the same estimate, and can hit the Active. So a free attack (Bonsly, Igglybuff: readiness 1.0 for nothing)
+/// or a Bench-only snipe can't stand in for an attacker, and benching another Pokemon never lowers the score.
+fn best_benched_attacker_online_score(
     state: &State,
     player: usize,
     public_only: bool,
@@ -1594,29 +1640,44 @@ fn benched_main_attacker_online_score(
         cards.extend(state.hands[player].iter().cloned());
         cards
     };
-    let mut main: Option<(f64, &PlayedCard)> = None;
-    for (_, pokemon) in state.enumerate_bench_pokemon(player) {
+    let is_attacker = |pokemon: &PlayedCard| {
         let highest_evolutions = get_highest_evolutions(&pokemon.card, &available_cards);
-        let target_card = highest_evolutions.first().unwrap_or(&pokemon.card);
-        let strength = target_card
-            .get_attacks()
-            .iter()
-            .filter(|atk| !atk.energy_required.is_empty())
-            .map(|atk| {
-                if effect_aware {
+        let forms: Vec<&Card> = if highest_evolutions.is_empty() {
+            vec![&pokemon.card]
+        } else {
+            highest_evolutions.iter().collect()
+        };
+        forms.iter().any(|form| {
+            form.get_attacks().iter().any(|atk| {
+                let damage = if effect_aware {
                     estimated_attack_damage_ex(atk, pokemon, state, player, reserve_aware)
                 } else {
                     atk.fixed_damage as f64
-                }
+                };
+                !atk.energy_required.is_empty() && damage > 0.0 && !only_damages_the_bench(atk)
             })
-            .fold(0.0, f64::max);
-        if strength > 0.0 && main.map_or(true, |(best, _)| strength > best) {
-            main = Some((strength, pokemon));
-        }
-    }
-    main.map_or(0.0, |(_, pokemon)| {
-        pokemon_online_score(state, player, pokemon, public_only, effect_aware, reserve_aware)
-    })
+        })
+    };
+    state
+        .enumerate_bench_pokemon(player)
+        .filter(|(_, pokemon)| is_attacker(pokemon))
+        .map(|(_, pokemon)| pokemon_online_score(state, player, pokemon, public_only, effect_aware, reserve_aware))
+        .fold(0.0, f64::max)
+}
+
+/// kq: an attack whose damage can only go to the opponent's Bench (its mechanic says so), not the Active.
+fn only_damages_the_bench(attack: &Attack) -> bool {
+    attack
+        .effect
+        .as_deref()
+        .and_then(|effect| EFFECT_MECHANIC_MAP.get(effect))
+        .is_some_and(|mechanic| {
+            matches!(
+                mechanic,
+                Mechanic::DirectDamage { bench_only: true, .. }
+                    | Mechanic::DirectDamageAndSelfCardEffect { bench_only: true, .. }
+            )
+        })
 }
 
 #[cfg(test)]
@@ -1771,67 +1832,157 @@ mod kq_feature_tests {
     use crate::database::get_card_by_enum;
     use crate::test_support::{attack_action, get_initialized_game};
 
-    /// Hitmonlee (80 HP, player 0) faces Bulbasaur (player 1) with Vine Whip paid for (40): the clock
-    /// counts two of Bulbasaur's turns to knock Hitmonlee out. Player 0 is to move on turn 5.
-    fn vine_whip_on_hitmonlee(bulbasaur_effect: Option<(CardEffect, u8)>) -> State {
-        let mut bulbasaur = PlayedCard::from_id(CardId::A1001Bulbasaur)
-            .with_energy(vec![EnergyType::Grass, EnergyType::Colorless]);
-        if let Some((effect, turns)) = bulbasaur_effect {
-            bulbasaur.add_effect(effect, turns);
-        }
+    /// Player 0: `victim` Active (and `victim_bench`). Player 1: `threat` Active (and `threat_bench`).
+    /// Player 0 is to move on turn 5 and hasn't attacked.
+    fn board(victim: Vec<PlayedCard>, threat: Vec<PlayedCard>) -> State {
         let mut state = State::default();
-        state.set_board(vec![PlayedCard::from_id(CardId::A1154Hitmonlee)], vec![bulbasaur]);
+        state.set_board(victim, threat);
         state.turn_count = 5;
         state.current_player = 0;
         state
     }
 
-    fn clock(state: &State, kq: bool) -> f64 {
-        calculate_turns_until_opponent_wins_damage_aware(state, 0, false, true, false, true, kq)
+    fn bulbasaur(energy: usize) -> PlayedCard {
+        PlayedCard::from_id(CardId::A1001Bulbasaur)
+            .with_energy([EnergyType::Grass, EnergyType::Colorless][..energy].to_vec())
+    }
+
+    fn with_effect(mut pokemon: PlayedCard, effect: CardEffect, turns: u8) -> PlayedCard {
+        pokemon.add_effect(effect, turns);
+        pokemon
+    }
+
+    fn hitmonlee() -> PlayedCard {
+        PlayedCard::from_id(CardId::A1154Hitmonlee)
+    }
+
+    /// Turns until `player`'s opponent wins, as the clock prices it for k (`kq = false`) and kq.
+    fn clock(state: &State, player: usize, kq: bool) -> f64 {
+        calculate_turns_until_opponent_wins_damage_aware(state, player, false, true, false, true, kq)
+    }
+
+    /// [`first_attack_turn`] for `owner`, with the clock's own damage estimate and pace.
+    fn first(state: &State, owner: usize, max_damage: f64) -> Option<FirstAttackTurn> {
+        let damage = |atk: &Attack, slot: &PlayedCard| -> u32 {
+            estimated_attack_damage_ex(atk, slot, state, owner, false).round() as u32
+        };
+        first_attack_turn(state, owner, max_damage, &damage)
     }
 
     #[test]
-    fn next_attack_reduction_prices_the_threats_first_attack_turn() {
-        let plain = vine_whip_on_hitmonlee(None);
-        assert_eq!(clock(&plain, false), 2.0, "80 HP at 40 a turn");
-        assert_eq!(clock(&plain, true), 2.0, "no effect, no change");
-        // Each effect type costs Bulbasaur its first turn's knockout progress: the first attack does 10
-        // (-30), 0 (can't attack, or its only attack can't be used) or 20 on average (coin): 3 turns.
-        for effect in [
-            CardEffect::ReducedAttackDamage { amount: 30 },
-            CardEffect::CannotAttack,
-            CardEffect::CannotUseAttack("Vine Whip".into()),
-            CardEffect::CoinFlipToBlockAttack,
-        ] {
-            let state = vine_whip_on_hitmonlee(Some((effect.clone(), 1)));
-            assert_eq!(clock(&state, false), 2.0, "{effect:?}: k never reads it");
-            assert_eq!(clock(&state, true), 3.0, "{effect:?}: kq prices the first turn");
+    fn next_attack_reduction_prices_each_effect_type_on_the_first_attack_turn() {
+        // Hitmonlee (80 HP) v Bulbasaur with Vine Whip paid for (40): k counts 2 turns.
+        let plain = board(vec![hitmonlee()], vec![bulbasaur(2)]);
+        assert_eq!(first(&plain, 1, 40.0), None);
+        assert_eq!((clock(&plain, 0, false), clock(&plain, 0, true)), (2.0, 2.0));
+        let cases = [
+            (vec![CardEffect::ReducedAttackDamage { amount: 30 }], vec![(1.0, 10.0)], 3.0),
+            // Two cuts sum, as the engine sums them, floored at 0.
+            (vec![CardEffect::ReducedAttackDamage { amount: 20 }, CardEffect::ReducedAttackDamage { amount: 30 }],
+             vec![(1.0, 0.0)], 3.0),
+            (vec![CardEffect::CannotAttack], vec![(1.0, 0.0)], 3.0),
+            // Its only attack is blocked: nothing else to use.
+            (vec![CardEffect::CannotUseAttack("Vine Whip".into())], vec![(1.0, 0.0)], 3.0),
+            // The coin: all of Vine Whip half the time (2 turns), nothing the other half (3): 2.5 expected.
+            (vec![CardEffect::CoinFlipToBlockAttack], vec![(0.5, 40.0), (0.5, 0.0)], 2.5),
+        ];
+        for (effects, through, turns) in cases {
+            let mut threat = bulbasaur(2);
+            for effect in &effects {
+                threat.add_effect(effect.clone(), 1);
+            }
+            let state = board(vec![hitmonlee()], vec![threat]);
+            assert_eq!(first(&state, 1, 40.0), Some(FirstAttackTurn { through, escape: 0.0 }), "{effects:?}");
+            assert_eq!(clock(&state, 0, false), 2.0, "{effects:?}: k never reads it");
+            assert_eq!(clock(&state, 0, true), turns, "{effects:?}");
         }
-        // Two cuts sum, as the engine sums them (40 - 20 - 30 floors at 0).
-        let mut state = vine_whip_on_hitmonlee(Some((CardEffect::ReducedAttackDamage { amount: 20 }, 1)));
-        state.in_play_pokemon[1][0].as_mut().unwrap().add_effect(CardEffect::ReducedAttackDamage { amount: 30 }, 1);
-        assert_eq!(clock(&state, true), 3.0);
     }
 
     #[test]
-    fn next_attack_reduction_follows_the_effects_duration() {
-        let cut = || Some((CardEffect::ReducedAttackDamage { amount: 30 }, 0));
+    fn a_blocked_attack_leaves_the_best_other_attack_it_can_pay() {
+        // Articuno ex with three Water: Blizzard (80) and Ice Wing (40) both paid for. Blizzard blocked: Ice Wing.
+        let articuno = with_effect(
+            PlayedCard::from_id(CardId::A1084ArticunoEx).with_energy(vec![EnergyType::Water; 3]),
+            CardEffect::CannotUseAttack("Blizzard".into()),
+            1,
+        );
+        let state = board(vec![hitmonlee()], vec![articuno]);
+        assert_eq!(first(&state, 1, 80.0), Some(FirstAttackTurn { through: vec![(1.0, 40.0)], escape: 0.0 }));
+        // Hitmonlee (80 HP): k says one turn; kq says Ice Wing then Blizzard, two.
+        assert_eq!((clock(&state, 0, false), clock(&state, 0, true)), (1.0, 2.0));
+    }
+
+    #[test]
+    fn next_attack_reduction_follows_the_effects_timing() {
+        let cut = || CardEffect::ReducedAttackDamage { amount: 30 };
         // 0 turns left while player 0 is to move: it ends before Bulbasaur's next turn.
-        assert_eq!(clock(&vine_whip_on_hitmonlee(cut()), true), 2.0);
+        let state = board(vec![hitmonlee()], vec![with_effect(bulbasaur(2), cut(), 0)]);
+        assert_eq!(first(&state, 1, 40.0), None);
         // 0 turns left on Bulbasaur's own turn before it attacks: this is the turn it covers.
-        let mut state = vine_whip_on_hitmonlee(cut());
+        let mut state = state;
         state.current_player = 1;
-        assert_eq!(clock(&state, true), 3.0);
+        assert!(first(&state, 1, 40.0).is_some());
         // The same after Bulbasaur has attacked this turn: spent.
         state.attack_name_used_this_turn[1] = Some("Vine Whip".into());
-        assert_eq!(clock(&state, true), 2.0);
-        // An effect on a threat that can't attack at once anyway (an Energy missing) changes nothing.
-        let mut state = vine_whip_on_hitmonlee(Some((CardEffect::CannotAttack, 1)));
-        state.in_play_pokemon[1][0].as_mut().unwrap().attached_energy.pop();
-        assert_eq!(clock(&state, true), clock(&state, false));
-        // Unrelated effects on the threat are not read.
-        let state = vine_whip_on_hitmonlee(Some((CardEffect::ReducedDamage { amount: 30 }, 1)));
-        assert_eq!(clock(&state, true), 2.0);
+        assert_eq!(first(&state, 1, 40.0), None);
+        // One Energy short: in Pocket it attaches and attacks on its next turn, the turn the effect covers.
+        let state = board(vec![hitmonlee()], vec![with_effect(bulbasaur(1), cut(), 1)]);
+        assert_eq!(first(&state, 1, 40.0), Some(FirstAttackTurn { through: vec![(1.0, 10.0)], escape: 0.0 }));
+        assert_eq!((clock(&state, 0, false), clock(&state, 0, true)), (3.0, 4.0));
+        // Two Energy short: its first attack is two turns later, after a one-turn effect has ended...
+        let state = board(vec![hitmonlee()], vec![with_effect(bulbasaur(0), cut(), 1)]);
+        assert_eq!(first(&state, 1, 40.0), None);
+        // ...but not after one that lasts while it stays Active (Octazooka's coin, u8::MAX turns).
+        let state = board(
+            vec![hitmonlee()],
+            vec![with_effect(bulbasaur(0), CardEffect::CoinFlipToBlockAttack, crate::effects::UNTIL_LEAVES_ACTIVE_SPOT)],
+        );
+        assert!(first(&state, 1, 40.0).is_some());
+        // Effects that don't touch its own attacks are not read.
+        let state = board(vec![hitmonlee()], vec![with_effect(bulbasaur(2), CardEffect::ReducedDamage { amount: 30 }, 1)]);
+        assert_eq!(first(&state, 1, 40.0), None);
+    }
+
+    #[test]
+    fn the_owner_escapes_into_a_ready_benched_attacker_when_that_is_faster() {
+        // A paid-up Bulbasaur on the Bench: retreating clears the lock and Vine Whip still lands: k's 2 turns.
+        let locked = || with_effect(bulbasaur(2), CardEffect::CannotAttack, 1);
+        let state = board(vec![hitmonlee()], vec![locked(), bulbasaur(2)]);
+        assert_eq!(first(&state, 1, 40.0), Some(FirstAttackTurn { through: vec![(1.0, 0.0)], escape: 40.0 }));
+        assert_eq!(clock(&state, 0, true), clock(&state, 0, false));
+        // One Energy short on the Bench still escapes (attach, retreat, attack).
+        let state = board(vec![hitmonlee()], vec![locked(), bulbasaur(1)]);
+        assert_eq!(first(&state, 1, 40.0).unwrap().escape, 40.0);
+        // A weak benched attacker (Riolu's Fighting Fist, 10) doesn't beat waiting: 3 turns either way.
+        let riolu = PlayedCard::from_id(CardId::B3079Riolu).with_energy(vec![EnergyType::Fighting]);
+        let state = board(vec![hitmonlee()], vec![locked(), riolu]);
+        assert_eq!(first(&state, 1, 40.0).unwrap().escape, 10.0);
+        assert_eq!(clock(&state, 0, true), 3.0);
+    }
+
+    #[test]
+    fn only_the_active_threat_and_only_the_first_knockout_are_repriced() {
+        // The best threat is a benched Articuno ex (Blizzard 80): a lock on the Active Bulbasaur changes nothing.
+        let articuno = PlayedCard::from_id(CardId::A1084ArticunoEx).with_energy(vec![EnergyType::Water; 3]);
+        let state = board(vec![hitmonlee()], vec![with_effect(bulbasaur(2), CardEffect::CannotAttack, 1), articuno]);
+        assert_eq!(clock(&state, 0, true), clock(&state, 0, false));
+        // Hitmonlee then a benched Riolu (60 HP): the -30 slows the first knockout only (3 + 2 against 2 + 2).
+        let riolu = PlayedCard::from_id(CardId::B3079Riolu);
+        let state = board(
+            vec![hitmonlee(), riolu],
+            vec![with_effect(bulbasaur(2), CardEffect::ReducedAttackDamage { amount: 30 }, 1)],
+        );
+        assert_eq!((clock(&state, 0, false), clock(&state, 0, true)), (4.0, 5.0));
+    }
+
+    #[test]
+    fn the_evaluators_own_locked_attacker_counts_against_it() {
+        // Player 0's own Bulbasaur can't attack this turn (a self-lock): player 1's clock (turns until player 0
+        // wins) gains a turn, and kq's value for player 0 drops by the clock's 100.
+        let state = board(vec![with_effect(bulbasaur(2), CardEffect::CannotAttack, 1)], vec![hitmonlee()]);
+        assert_eq!((clock(&state, 1, false), clock(&state, 1, true)), (2.0, 3.0));
+        let gain = public_clock_effect_kq_value_function(&state, 0) - public_clock_effect_value_function(&state, 0);
+        assert_eq!(gain, -100.0);
     }
 
     /// Through the Game API: Bonsly's Teary Attack (-30 on the Defending Pokemon's next attack) lands on
@@ -1842,11 +1993,7 @@ mod kq_feature_tests {
     fn kq_values_a_landed_teary_attack_and_k_does_not() {
         let mut game = get_initialized_game(0);
         let mut state = game.get_state_clone();
-        state.set_board(
-            vec![PlayedCard::from_id(CardId::B3078Bonsly)],
-            vec![PlayedCard::from_id(CardId::A1001Bulbasaur)
-                .with_energy(vec![EnergyType::Grass, EnergyType::Colorless])],
-        );
+        state.set_board(vec![PlayedCard::from_id(CardId::B3078Bonsly)], vec![bulbasaur(2)]);
         state.current_player = 0;
         game.set_state(state);
         let k_before = public_clock_effect_value_function(&game.get_state_clone(), 0);
@@ -1861,59 +2008,67 @@ mod kq_feature_tests {
         assert_eq!(kq - k, 100.0);
     }
 
-    /// Player 0: Hitmonlee Active, Riolu on the Bench with `fighting` Energy, Mega Lucario ex in the deck
-    /// (Riolu's target form: Fighting Pulse [FF] 90). Player 1: Bulbasaur Active, nothing benched.
-    fn riolu_on_the_bench(fighting: usize, extra_bench: Vec<PlayedCard>) -> State {
-        let mut state = State::default();
-        let mut mine = vec![
-            PlayedCard::from_id(CardId::A1154Hitmonlee),
-            PlayedCard::from_id(CardId::B3079Riolu).with_energy(vec![EnergyType::Fighting; fighting]),
-        ];
-        mine.extend(extra_bench);
-        state.set_board(mine, vec![PlayedCard::from_id(CardId::A1001Bulbasaur)]);
+    /// Player 0: Hitmonlee Active, then `bench`, with Mega Lucario ex in the deck (Riolu's target form: Fighting
+    /// Pulse [FF] 90). Player 1: Bulbasaur Active, nothing benched.
+    fn benched(bench: Vec<PlayedCard>) -> State {
+        let mut mine = vec![hitmonlee()];
+        mine.extend(bench);
+        let mut state = board(mine, vec![PlayedCard::from_id(CardId::A1001Bulbasaur)]);
         state.decks[0].cards = vec![get_card_by_enum(CardId::B3081MegaLucarioEx)];
-        state.turn_count = 5;
-        state.current_player = 0;
         state
     }
 
-    fn bench(state: &State, player: usize, public_only: bool) -> f64 {
-        benched_main_attacker_online_score(state, player, public_only, true, false)
+    fn riolu(fighting: usize) -> PlayedCard {
+        PlayedCard::from_id(CardId::B3079Riolu).with_energy(vec![EnergyType::Fighting; fighting])
+    }
+
+    fn bench_score(state: &State, player: usize, public_only: bool) -> f64 {
+        best_benched_attacker_online_score(state, player, public_only, true, false)
+    }
+
+    fn kq_gain(state: &State) -> f64 {
+        public_clock_effect_kq_value_function(state, 0) - public_clock_effect_value_function(state, 0)
     }
 
     #[test]
-    fn benched_main_attacker_readiness_counts_energy_on_the_attacker_being_built() {
+    fn benched_attacker_readiness_counts_energy_on_the_attacker_being_built() {
         for (fighting, readiness) in [(0, 0.0), (1, 0.5), (2, 1.0)] {
-            let state = riolu_on_the_bench(fighting, vec![]);
-            assert_eq!(bench(&state, 0, false), readiness, "{fighting} Fighting toward Fighting Pulse [FF]");
+            let state = benched(vec![riolu(fighting)]);
+            assert_eq!(bench_score(&state, 0, false), readiness, "{fighting} Fighting toward Fighting Pulse [FF]");
             // In the value: 250 per unit of readiness, the opponent having no Bench; the clock is untouched.
-            let gain = public_clock_effect_kq_value_function(&state, 0) - public_clock_effect_value_function(&state, 0);
-            assert_eq!(gain, KQ_BENCH_MAIN_ATTACKER_WEIGHT * readiness);
+            assert_eq!(kq_gain(&state), KQ_BENCH_ATTACKER_WEIGHT * readiness);
         }
         // The opponent sees the board only: Riolu is priced on its own Fighting Fist [F].
-        assert_eq!(bench(&riolu_on_the_bench(1, vec![]), 0, true), 1.0);
-        // Symmetric: the same Riolu on the opponent's Bench counts against player 0, priced as the
-        // opponent sees it (board only).
-        let mut state = riolu_on_the_bench(0, vec![]);
-        let riolu = state.in_play_pokemon[0][1].take().unwrap().with_energy(vec![EnergyType::Fighting]);
-        state.in_play_pokemon[1][1] = Some(riolu);
-        let gain = public_clock_effect_kq_value_function(&state, 0) - public_clock_effect_value_function(&state, 0);
-        assert_eq!(gain, -KQ_BENCH_MAIN_ATTACKER_WEIGHT);
+        assert_eq!(bench_score(&benched(vec![riolu(1)]), 0, true), 1.0);
     }
 
     #[test]
-    fn the_main_attacker_is_the_strongest_paid_attacker_not_the_readiest_bench_pokemon() {
-        // A paid-up Lucario (Submarine Blow [FF] 40) beside an unpowered Riolu whose target is Mega Lucario
-        // ex (90): the main attacker is Riolu, so readiness 0, not Lucario's 1.0.
-        let lucario = PlayedCard::from_id(CardId::A2092Lucario).with_energy(vec![EnergyType::Fighting; 2]);
-        assert_eq!(bench(&riolu_on_the_bench(0, vec![lucario]), 0, false), 0.0);
-        // A free attacker (Bonsly's Teary Attack costs nothing) is not an attacker here: it can't pin the
+    fn the_opponents_bench_is_priced_from_the_board_only() {
+        // Riolu (1 Fighting) on player 1's Bench and Mega Lucario ex in player 1's deck: player 0 sees Riolu on the
+        // board (Fighting Fist [F], ready: 1.0, so -250). Reading player 1's deck would price Fighting Pulse (0.5).
+        let mut state = benched(vec![]);
+        state.in_play_pokemon[1][1] = Some(riolu(1));
+        state.decks[1].cards = vec![get_card_by_enum(CardId::B3081MegaLucarioEx)];
+        assert_eq!(kq_gain(&state), -KQ_BENCH_ATTACKER_WEIGHT);
+    }
+
+    #[test]
+    fn the_best_benched_attacker_is_the_readiest_real_attacker() {
+        let lucario = || PlayedCard::from_id(CardId::A2092Lucario).with_energy(vec![EnergyType::Fighting; 2]);
+        // A paid-up Lucario (Submarine Blow [FF] 40) is ready: 1.0, and benching an unpowered Riolu next to it
+        // doesn't lower that. Bench order doesn't matter.
+        assert_eq!(bench_score(&benched(vec![lucario()]), 0, false), 1.0);
+        assert_eq!(bench_score(&benched(vec![lucario(), riolu(0)]), 0, false), 1.0);
+        assert_eq!(bench_score(&benched(vec![riolu(0), lucario()]), 0, false), 1.0);
+        assert_eq!(bench_score(&benched(vec![riolu(0), riolu(2)]), 0, false), 1.0);
+        assert_eq!(bench_score(&benched(vec![riolu(2), riolu(0)]), 0, false), 1.0);
+        // A free attacker (Bonsly's Teary Attack costs nothing) is not an attacker: 0 alone, and it can't pin the
         // score at 1.0 while Riolu is being built.
-        let bonsly = PlayedCard::from_id(CardId::B3078Bonsly);
-        assert_eq!(bench(&riolu_on_the_bench(1, vec![bonsly.clone()]), 0, false), 0.5);
-        // With Bonsly the only benched Pokemon there is no attacker: 0.
-        let mut state = riolu_on_the_bench(0, vec![bonsly]);
-        state.in_play_pokemon[0][1] = None;
-        assert_eq!(bench(&state, 0, false), 0.0);
+        let bonsly = || PlayedCard::from_id(CardId::B3078Bonsly);
+        assert_eq!(bench_score(&benched(vec![bonsly()]), 0, false), 0.0);
+        assert_eq!(bench_score(&benched(vec![bonsly(), riolu(1)]), 0, false), 0.5);
+        // Nor is a Bench-only snipe (Hitmonlee's Stretch Kick), even paid for.
+        let sniper = hitmonlee().with_energy(vec![EnergyType::Fighting]);
+        assert_eq!(bench_score(&benched(vec![sniper]), 0, false), 0.0);
     }
 }
