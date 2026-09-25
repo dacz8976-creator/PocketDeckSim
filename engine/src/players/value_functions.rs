@@ -3386,6 +3386,7 @@ mod kpr_feature_tests {
         after.turn_count = 6;
         after.current_player = 1;
         after.energy_zone[1].current = after.energy_zone[1].next.take();
+        after.queue_draw_action(1, 1); // as advance_turn leaves it: the turn's draw on the stack
         // Turns until player 1 wins, from player 0's side. Before, player 1's next attack is next turn: [W] and Ice
         // Maker's [W] pay Icicle, 10 hits of 20 on Mega Lucario ex. After, its next attack is this turn: the same.
         let clock = |state: &State, horizon| {
@@ -3398,6 +3399,22 @@ mod kpr_feature_tests {
         assert_eq!(clock(&after, Horizon::ThroughNextTurn), 2.0);
         // The whole evaluator: kpr's difference from k is the same on both sides of the boundary.
         let extra = |state: &State| public_clock_effect_kpr_value_function(state, 0) - public_clock_effect_value_function(state, 0);
+        assert_eq!(extra(&before), extra(&after));
+        // A board that needs this turn's Zone: player 1's Mega Absol ex (Darkness Claw [D][D]) with no Energy and no
+        // Ability source, [D] next. Before, next turn's [D]: 1 of 2. At the turn start (its draw on the stack), this
+        // turn's [D]: 1 of 2 again.
+        let mut before = before.clone();
+        before.in_play_pokemon[1] = [Some(mon(CardId::B1151MegaAbsolEx)), None, None, None];
+        before.energy_zone[1].next = Some(EnergyType::Darkness);
+        let mut after = before.clone();
+        after.turn_count = 6;
+        after.current_player = 1;
+        after.energy_zone[1].current = after.energy_zone[1].next.take();
+        after.queue_draw_action(1, 1);
+        let as_opponent = |state: &State| {
+            calculate_active_pokemon_online_score(state, 1, true, true, false, Some(Horizon::NextAttack))
+        };
+        assert_eq!((as_opponent(&before), as_opponent(&after)), (0.5, 0.5));
         assert_eq!(extra(&before), extra(&after));
     }
 
@@ -3450,6 +3467,11 @@ mod kpr_feature_tests {
         assert_eq!(scores(&state), (0.0, 1.0));
         state.decks[1].cards.push(Card::Unknown);
         assert_eq!(scores(&state), (0.0, 0.5));
+        // Every search has the opponent's deck unknown; against an ordinary Active (a Bulbasaur) the EndTurn is played
+        // out, and the turn runs: 2 of 2.
+        let mut control = state.clone();
+        control.in_play_pokemon[1][0] = Some(mon(CardId::A1001Bulbasaur));
+        assert_eq!(scores(&control), (0.0, 1.0));
         // The reading at the next attack (the opponent's side) doesn't use it: holding one [D] with this turn's attach
         // made, it stays at this turn, 1 of 2.
         state.in_play_pokemon[0][0] = Some(with(CardId::B1156Zweilous, EnergyType::Darkness, 1));
@@ -3463,6 +3485,14 @@ mod kpr_feature_tests {
         let mut state = opponents_turn(vec![mon(CardId::B1157Hydreigon)], Some(EnergyType::Darkness));
         state.turn_count = 0;
         assert_eq!(scores(&state), (0.0, 0.0));
+        // From turn 1 on it is. Turn 1, player 0 to move with no Energy this turn (the first player's Zone is empty):
+        // Zweilous gets next turn's [D], 1 of 2. Turn 2, with this turn's [D] and next turn's: 2 of 2.
+        let mut state = my_turn(vec![mon(CardId::B1156Zweilous)], None, Some(EnergyType::Darkness));
+        state.turn_count = 1;
+        assert_eq!(scores(&state), (0.0, 0.5));
+        state.turn_count = 2;
+        state.energy_zone[0].current = Some(EnergyType::Darkness);
+        assert_eq!(scores(&state), (0.0, 1.0));
     }
 
     #[test]
@@ -3508,6 +3538,35 @@ mod kpr_feature_tests {
         let mut state = opponents_turn(vec![mon(CardId::A1033Charmander), mon(CardId::A3b009FlareonEx)], None);
         state.discard_energies[0].push(EnergyType::Fire);
         assert_eq!(scores(&state), (0.0, 0.0));
+    }
+
+    #[test]
+    fn roar_in_unison_feeds_only_its_holder() {
+        // Mega Absol ex (Darkness Claw [D][D]) Active with nothing, Hydreigon benched, [D] next: Roar attaches to the
+        // Hydreigon, not the Active, which gets next turn's [D] only: 1 of 2.
+        let state = opponents_turn(vec![mon(CardId::B1151MegaAbsolEx), mon(CardId::B1157Hydreigon)], Some(EnergyType::Darkness));
+        assert_eq!(scores(&state), (0.0, 0.5));
+    }
+
+    #[test]
+    fn ice_maker_works_from_the_active_and_from_each_baxcalibur() {
+        // Baxcalibur (Buster Tail [W][W][W]) as the Active feeds itself: next turn's [W] and its own Ice Maker, 2 of 3.
+        let state = opponents_turn(vec![mon(CardId::B2a036Baxcalibur)], Some(EnergyType::Water));
+        assert_eq!(scores(&state), (0.0, 2.0 / 3.0));
+        // Two Baxcalibur each attach one: Chien-Pao ex with no Energy, [W] next, reaches [W][W][W] for Diving Icicles
+        // (130). Against Mega Lucario ex (190 HP): k counts Icicle, one Energy and 10 hits of 20; kpr 2 hits of 130.
+        let mut state = opponents_turn(
+            vec![mon(CardId::B2a037ChienPaoEx), mon(CardId::B2a036Baxcalibur), mon(CardId::B2a036Baxcalibur)],
+            Some(EnergyType::Water),
+        );
+        state.set_board(state.in_play_pokemon[0].iter().flatten().cloned().collect(), vec![mon(CardId::B3081MegaLucarioEx)]);
+        assert_eq!(clocks(&state), (11.0, 2.0));
+        // A benched Baxcalibur that has used Ice Maker this turn feeds only next turn: Suicune ex (Crystal Waltz
+        // [W][W]) to move, nothing in the Zone: 1 of 2.
+        let mut baxcalibur = mon(CardId::B2a036Baxcalibur);
+        baxcalibur.ability_used = true;
+        let state = my_turn(vec![mon(CardId::A4a020SuicuneEx), baxcalibur], None, None);
+        assert_eq!(scores(&state), (0.0, 0.5));
     }
 
     #[test]
@@ -3721,13 +3780,13 @@ mod kpr_feature_tests {
     #[test]
     fn kpr_reads_no_hidden_card() {
         // The projection and the scores read the board, the Energy Zones and the discard piles, all public. Player
-        // 1 is to move with [G] next. Its Bulbasaur (Vine Whip, [G][C]) holds a [G], so it's ready next turn; an
-        // Ivysaur (Razor Leaf, [G][C][C]) hidden in its hand or deck must not make that 2 of 3. Nor may a hidden
-        // Baxcalibur add Ice Maker's [W] to its Suicune ex.
-        let value = |active: PlayedCard, next: EnergyType, hidden: CardId, in_hand: bool| {
+        // 1 is to move, read at its next attack (this turn), with a [G] in this turn's Zone. Its Bulbasaur (Vine Whip,
+        // [G][C]) holds a [G], so it's ready this turn; an Ivysaur (Razor Leaf, [G][C][C]) hidden in its hand or deck
+        // must not make that 2 of 3. Nor may a hidden Baxcalibur add Ice Maker's [W] to its Suicune ex.
+        let value = |active: PlayedCard, current: EnergyType, hidden: CardId, in_hand: bool| {
             let mut state = opponents_turn(vec![mon(CardId::B1157Hydreigon)], Some(EnergyType::Darkness));
             state.in_play_pokemon[1][0] = Some(active);
-            state.energy_zone[1].next = Some(next);
+            state.energy_zone[1].current = Some(current);
             let card = get_card_by_enum(hidden);
             if in_hand {
                 state.hands[1].push(card);
