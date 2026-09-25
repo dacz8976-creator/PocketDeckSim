@@ -1,0 +1,36 @@
+{
+  "all_passed": true,
+  "checks": [
+    {
+      "check": "all leave-one-event-out skill records independently summed from development standings only",
+      "passed": true,
+      "records": 4884
+    },
+    {
+      "check": "independent statsmodels GLM on original player1 orientation agrees with canonical-pair SciPy fit",
+      "passed": true,
+      "beta_absolute_error": 2.46441462570246e-07,
+      "maximum_cell_percentage_point_error": 0.0001136604209719394
+    },
+    {
+      "check": "bootstrap removes every copy of current source event, including triplicated and absent events",
+      "passed": true
+    },
+    {
+      "check": "both-at-p75 equals equal skill exactly, as specified by skill-difference model",
+      "passed": true
+    },
+    {
+      "check": "six 20-card files exactly match their development API decklists, including set and card number",
+      "passed": true
+    },
+    {
+      "check": "early/late calendar-date partition covers development only without overlap",
+      "passed": true
+    },
+    {
+      "check": "all estimate outputs explicitly labeled development only",
+      "passed": true
+    }
+  ]
+}

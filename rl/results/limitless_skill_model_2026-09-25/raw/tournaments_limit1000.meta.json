@@ -1,0 +1,21 @@
+{
+  "url": "https://play.limitlesstcg.com/api/tournaments?game=POCKET&limit=1000",
+  "requested_url": "https://play.limitlesstcg.com/api/tournaments?game=POCKET&limit=1000",
+  "status": 200,
+  "headers": {
+    "Date": "Fri, 25 Sep 2026 01:23:47 GMT",
+    "Content-Type": "application/json; charset=utf-8",
+    "Transfer-Encoding": "chunked",
+    "Connection": "keep-alive",
+    "Server": "nginx/1.30.4",
+    "X-Powered-By": "Express",
+    "Access-Control-Allow-Origin": "*",
+    "RateLimit": "\"50-in-5min\"; r=48; t=222",
+    "RateLimit-Policy": "\"50-in-5min\"; q=50; w=300; pk=:NGViYjMxYjYxMDJj:",
+    "ETag": "W/\"2c570-RJW2gSB1nwgxZrfaAGJzBYovBTg\"",
+    "Content-Encoding": "gzip"
+  },
+  "fetched_at": "2026-09-25T01:23:47.606975+00:00",
+  "sha256": "bf51d2b17ac1966ae707a06b68b8b2740d27942cc0b50c539308899d4221a72f",
+  "body": "tournaments_limit1000.json.gz"
+}

@@ -1,0 +1,65 @@
+{
+  "panel": [
+    "altaria",
+    "blaziken",
+    "hydreigon",
+    "lucario",
+    "sceptile",
+    "suicune",
+    "vespiquen",
+    "weezing"
+  ],
+  "held_archetypes": [
+    "manectric_heliolisk",
+    "raticate_ninetales",
+    "hoopa_absol",
+    "garchomp",
+    "whimsicott_ariados",
+    "charizardy_entei"
+  ],
+  "deck_ids": {
+    "altaria": [
+      "mega-altaria-ex-b1-espeon-b3a"
+    ],
+    "blaziken": [
+      "mega-blaziken-ex-b1"
+    ],
+    "hydreigon": [
+      "hydreigon-mega-absol-ex-b1"
+    ],
+    "lucario": [
+      "mega-lucario-ex-b3-lucario-a2"
+    ],
+    "sceptile": [
+      "butterfree-b3b-mega-sceptile-ex-b3"
+    ],
+    "suicune": [
+      "suicune-ex-a4a-baxcalibur-b2a"
+    ],
+    "vespiquen": [
+      "vespiquen-ex-b4-shuckle-ex-a4"
+    ],
+    "weezing": [
+      "team-rockets-weezing-ex-b4a-hoopa-ex-b4"
+    ],
+    "manectric_heliolisk": [
+      "mega-manectric-ex-b2b-heliolisk-b4"
+    ],
+    "raticate_ninetales": [
+      "team-rockets-raticate-ex-b4a-alolan-ninetales-ex-b2"
+    ],
+    "hoopa_absol": [
+      "hoopa-ex-b4-mega-absol-ex-b1"
+    ],
+    "garchomp": [
+      "garchomp-b4a"
+    ],
+    "whimsicott_ariados": [
+      "whimsicott-ex-b1-ariados-b1a"
+    ],
+    "charizardy_entei": [
+      "mega-charizard-y-ex-b1a-entei-ex-a4a"
+    ]
+  },
+  "rule": "Exact API deck ID equality; subtypes from the Sept 8 study README behind the Sept 23 table. No broad substring matching. Garchomp is B4a, not A2 or Garchomp ex; Heliolisk is B4, not B1a."
+}

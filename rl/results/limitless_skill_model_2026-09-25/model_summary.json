@@ -1,0 +1,28 @@
+{
+  "scope": "development only",
+  "beta": 0.2915210365630222,
+  "beta_ci95": [
+    -0.0645549094848526,
+    0.4295736929794047
+  ],
+  "bootstrap_replicates_requested": 2000,
+  "bootstrap_successful": 2000,
+  "bootstrap_failed": [],
+  "bootstrap_seed": 26092500002,
+  "bootstrap_method": "Resample whole development events with replacement; recompute all skills each draw; remove every copy of current source event before rating; unpenalized logistic fit each draw; percentile 2.5/97.5 intervals.",
+  "skill_p75_player_event_weighted": 0.1013524942602875,
+  "number_development_events": 63,
+  "panel_model_matches": 1918,
+  "panel_model_mirrors": 310,
+  "panel_model_ties": 85,
+  "main_fit_max_gradient": 2.7886899451434743e-05,
+  "players": 1253,
+  "rating_rows": 4884,
+  "rating_rows_no_other_games": 568,
+  "skill_formula": "logit((other-event wins + 5)/(other-event wins + losses + ties + 10)); final standings records, including byes/administrative outcomes as recorded. Development events only.",
+  "outcome_formula": "win=1, loss=0, tie=0.5; fractional-binomial logit models expected match score, not a separate probability of a decisive win. Double losses/unresolved/byes excluded from fit.",
+  "pair_effect": "28 independent unordered-pair effects, sign reversed for opposite seats. Mirrors have effect 0 and inform beta. No global seat effect; player1 is pairing order, not game first turn.",
+  "p75_identity": "Both players at the SAME pooled 75th percentile gives s1-s2=0 exactly. Equal-skill and both-p75 values and intervals are identical by construction.",
+  "verdict_rule": "Compare development raw seven-opponent score gap with equal-skill gap, both minus fixed K3. Undetermined if either CI endpoint is >8 percentage points from estimate or <95% bootstrap coverage; otherwise Population if absolute gap shrinks >50%; bot/engine if >=50% remains same direction; otherwise undetermined. Point-estimate diagnostic labels, not causal attribution.",
+  "largest_cell_rule": "For each deck remove opponent with largest absolute development raw-vs-K3 cell gap; use the same six remaining opponents for K3, raw, adjusted. No refit."
+}

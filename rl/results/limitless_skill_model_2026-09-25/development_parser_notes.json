@@ -1,0 +1,16 @@
+{
+  "changes_before_one_shot_reproduction": [
+    {
+      "source_event": "6a789b5ccdc0391d7fa61ba9",
+      "split": "development",
+      "bug": "Single-player automatic losses have no table or bracket-match label; identity based only on event/phase/round/table/match falsely flagged distinct players as duplicates.",
+      "fix": "Include both player IDs in the identity. Distinct automatic-loss rows remain archived and excluded from matchup calculations.",
+      "evidence": "raw/6a789b5ccdc0391d7fa61ba9_pairings.json.gz"
+    },
+    {
+      "change": "Use median UTC calendar date, not time of day, for the requested early/late split.",
+      "scope": "development only; completed before reproduction and recorded in early_late_split.json"
+    }
+  ],
+  "mapping_changes_after_outcome_reproduction": []
+}

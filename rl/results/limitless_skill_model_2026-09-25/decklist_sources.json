@@ -1,0 +1,933 @@
+{
+  "scope": "development only",
+  "selection_rule": "Most frequent exact 20-card multiset among final placing 1-8; ties by best placing, largest event, earliest date, player id, card multiset. Card identifiers copied directly from each API decklist; zero-padded number only. No normalization of alternate art or card names.",
+  "selections": {
+    "manectric_heliolisk": {
+      "status": "saved",
+      "file": "decklists/manectric_heliolisk.txt",
+      "sha256": "ad1a23b5d01efc9a006c373bf635e1df4b3792e7ae659b77c35c9b7edc9c337e",
+      "frequency_among_top8": 9,
+      "eligible_top8_entries": 11,
+      "distinct_exact_lists": 3,
+      "representative": {
+        "event_id": "6aa0471eab080c8c957fe27d",
+        "date": "2026-09-14T23:00:00.000Z",
+        "event_name": "The PokeBounty Showdown $1000 Prize Pool (#2NA)",
+        "players": 142,
+        "player": "nyrq",
+        "placing": 1,
+        "deck_id": "mega-manectric-ex-b2b-heliolisk-b4",
+        "decklist_url": "https://play.limitlesstcg.com/tournament/6aa0471eab080c8c957fe27d/player/nyrq/decklist",
+        "raw_source": "raw/6aa0471eab080c8c957fe27d_standings.json.gz",
+        "card_names": [
+          {
+            "set": "B1a",
+            "number": "028",
+            "count": 2,
+            "name": "Helioptile"
+          },
+          {
+            "set": "B4",
+            "number": "061",
+            "count": 2,
+            "name": "Heliolisk"
+          },
+          {
+            "set": "B2b",
+            "number": "026",
+            "count": 1,
+            "name": "Electrike"
+          },
+          {
+            "set": "B2b",
+            "number": "027",
+            "count": 2,
+            "name": "Mega Manectric ex"
+          },
+          {
+            "set": "B1a",
+            "number": "068",
+            "count": 2,
+            "name": "Clemont"
+          },
+          {
+            "set": "P-A",
+            "number": "007",
+            "count": 2,
+            "name": "Professor's Research"
+          },
+          {
+            "set": "B1",
+            "number": "225",
+            "count": 1,
+            "name": "Copycat"
+          },
+          {
+            "set": "A2",
+            "number": "150",
+            "count": 1,
+            "name": "Cyrus"
+          },
+          {
+            "set": "B1a",
+            "number": "066",
+            "count": 2,
+            "name": "Clemont's Backpack"
+          },
+          {
+            "set": "P-A",
+            "number": "005",
+            "count": 2,
+            "name": "Poké Ball"
+          },
+          {
+            "set": "B3",
+            "number": "147",
+            "count": 1,
+            "name": "Field Blower"
+          },
+          {
+            "set": "B3b",
+            "number": "065",
+            "count": 1,
+            "name": "Elegant Cape"
+          },
+          {
+            "set": "B2",
+            "number": "153",
+            "count": 1,
+            "name": "Training Area"
+          }
+        ]
+      },
+      "matching_entries": [
+        {
+          "event_id": "6a7e2b83cdc0391d7fa65afb",
+          "date": "2026-09-11T17:45:00.000Z",
+          "event_name": "Umbreon99's Aura Sphere #4: $15 USD + Oak",
+          "players": 219,
+          "player": "castro37",
+          "placing": 3,
+          "deck_id": "mega-manectric-ex-b2b-heliolisk-b4",
+          "decklist_url": "https://play.limitlesstcg.com/tournament/6a7e2b83cdc0391d7fa65afb/player/castro37/decklist",
+          "raw_source": "raw/6a7e2b83cdc0391d7fa65afb_standings.json.gz"
+        },
+        {
+          "event_id": "6a7e2b83cdc0391d7fa65afb",
+          "date": "2026-09-11T17:45:00.000Z",
+          "event_name": "Umbreon99's Aura Sphere #4: $15 USD + Oak",
+          "players": 219,
+          "player": "sekinokatsu",
+          "placing": 6,
+          "deck_id": "mega-manectric-ex-b2b-heliolisk-b4",
+          "decklist_url": "https://play.limitlesstcg.com/tournament/6a7e2b83cdc0391d7fa65afb/player/sekinokatsu/decklist",
+          "raw_source": "raw/6a7e2b83cdc0391d7fa65afb_standings.json.gz"
+        },
+        {
+          "event_id": "6a90c1890580a332c842170e",
+          "date": "2026-08-30T09:00:00.000Z",
+          "event_name": "🚀Nuggie's POG Tourney #14 $25 Winner Takes ALL🚀",
+          "players": 106,
+          "player": "tommykamikace",
+          "placing": 5,
+          "deck_id": "mega-manectric-ex-b2b-heliolisk-b4",
+          "decklist_url": "https://play.limitlesstcg.com/tournament/6a90c1890580a332c842170e/player/tommykamikace/decklist",
+          "raw_source": "raw/6a90c1890580a332c842170e_standings.json.gz"
+        },
+        {
+          "event_id": "6a94b2ffabb9482237504367",
+          "date": "2026-09-02T08:30:00.000Z",
+          "event_name": "♨️Sauna X Almond POG Tournament #24|10USD + FA!",
+          "players": 110,
+          "player": "roky",
+          "placing": 1,
+          "deck_id": "mega-manectric-ex-b2b-heliolisk-b4",
+          "decklist_url": "https://play.limitlesstcg.com/tournament/6a94b2ffabb9482237504367/player/roky/decklist",
+          "raw_source": "raw/6a94b2ffabb9482237504367_standings.json.gz"
+        },
+        {
+          "event_id": "6a989e74a4272c53be6453c4",
+          "date": "2026-09-13T00:45:00.000Z",
+          "event_name": "🔥 TBC × HYPE PACKS: AFTERMADS #1 — $150 🔥",
+          "players": 134,
+          "player": "jlng",
+          "placing": 8,
+          "deck_id": "mega-manectric-ex-b2b-heliolisk-b4",
+          "decklist_url": "https://play.limitlesstcg.com/tournament/6a989e74a4272c53be6453c4/player/jlng/decklist",
+          "raw_source": "raw/6a989e74a4272c53be6453c4_standings.json.gz"
+        },
+        {
+          "event_id": "6a9dc423ab080c8c957fc250",
+          "date": "2026-09-07T00:45:00.000Z",
+          "event_name": "The Breakfast Club Nightly-$20",
+          "players": 118,
+          "player": "ibfasting",
+          "placing": 2,
+          "deck_id": "mega-manectric-ex-b2b-heliolisk-b4",
+          "decklist_url": "https://play.limitlesstcg.com/tournament/6a9dc423ab080c8c957fc250/player/ibfasting/decklist",
+          "raw_source": "raw/6a9dc423ab080c8c957fc250_standings.json.gz"
+        },
+        {
+          "event_id": "6aa0471eab080c8c957fe27d",
+          "date": "2026-09-14T23:00:00.000Z",
+          "event_name": "The PokeBounty Showdown $1000 Prize Pool (#2NA)",
+          "players": 142,
+          "player": "nyrq",
+          "placing": 1,
+          "deck_id": "mega-manectric-ex-b2b-heliolisk-b4",
+          "decklist_url": "https://play.limitlesstcg.com/tournament/6aa0471eab080c8c957fe27d/player/nyrq/decklist",
+          "raw_source": "raw/6aa0471eab080c8c957fe27d_standings.json.gz"
+        },
+        {
+          "event_id": "6aa13feaa4272c53be64b94a",
+          "date": "2026-09-09T14:00:00.000Z",
+          "event_name": "DR KELP’S CHUM BUCKET POP UP",
+          "players": 49,
+          "player": "flipinton",
+          "placing": 3,
+          "deck_id": "mega-manectric-ex-b2b-heliolisk-b4",
+          "decklist_url": "https://play.limitlesstcg.com/tournament/6aa13feaa4272c53be64b94a/player/flipinton/decklist",
+          "raw_source": "raw/6aa13feaa4272c53be64b94a_standings.json.gz"
+        },
+        {
+          "event_id": "6aa17ddeab080c8c957ff0fe",
+          "date": "2026-09-12T20:30:00.000Z",
+          "event_name": "Dark League Pocket Tournament | 20$USD Prize Pool",
+          "players": 118,
+          "player": "normo360",
+          "placing": 5,
+          "deck_id": "mega-manectric-ex-b2b-heliolisk-b4",
+          "decklist_url": "https://play.limitlesstcg.com/tournament/6aa17ddeab080c8c957ff0fe/player/normo360/decklist",
+          "raw_source": "raw/6aa17ddeab080c8c957ff0fe_standings.json.gz"
+        }
+      ]
+    },
+    "raticate_ninetales": {
+      "status": "saved",
+      "file": "decklists/raticate_ninetales.txt",
+      "sha256": "57b8f9783f7ad4d89a8d7382932fa59a2ab35a8495cdc6e0898ed7bf4cc7668b",
+      "frequency_among_top8": 2,
+      "eligible_top8_entries": 3,
+      "distinct_exact_lists": 2,
+      "representative": {
+        "event_id": "6aaad41638886b36383c1ad5",
+        "date": "2026-09-17T03:00:00.000Z",
+        "event_name": "Pop Up Series 9 || FA OAK",
+        "players": 27,
+        "player": "shmo",
+        "placing": 3,
+        "deck_id": "team-rockets-raticate-ex-b4a-alolan-ninetales-ex-b2",
+        "decklist_url": "https://play.limitlesstcg.com/tournament/6aaad41638886b36383c1ad5/player/shmo/decklist",
+        "raw_source": "raw/6aaad41638886b36383c1ad5_standings.json.gz",
+        "card_names": [
+          {
+            "set": "A3",
+            "number": "040",
+            "count": 2,
+            "name": "Alolan Vulpix"
+          },
+          {
+            "set": "B2",
+            "number": "029",
+            "count": 2,
+            "name": "Alolan Ninetales ex"
+          },
+          {
+            "set": "B4a",
+            "number": "058",
+            "count": 2,
+            "name": "Team Rocket's Rattata"
+          },
+          {
+            "set": "B4a",
+            "number": "059",
+            "count": 2,
+            "name": "Team Rocket's Raticate ex"
+          },
+          {
+            "set": "P-A",
+            "number": "007",
+            "count": 2,
+            "name": "Professor's Research"
+          },
+          {
+            "set": "B1",
+            "number": "225",
+            "count": 2,
+            "name": "Copycat"
+          },
+          {
+            "set": "A2",
+            "number": "150",
+            "count": 1,
+            "name": "Cyrus"
+          },
+          {
+            "set": "A1",
+            "number": "225",
+            "count": 1,
+            "name": "Sabrina"
+          },
+          {
+            "set": "P-A",
+            "number": "005",
+            "count": 2,
+            "name": "Poké Ball"
+          },
+          {
+            "set": "A3a",
+            "number": "064",
+            "count": 1,
+            "name": "Repel"
+          },
+          {
+            "set": "B3b",
+            "number": "065",
+            "count": 1,
+            "name": "Elegant Cape"
+          },
+          {
+            "set": "B4",
+            "number": "154",
+            "count": 1,
+            "name": "Soothing Shore"
+          },
+          {
+            "set": "B2",
+            "number": "153",
+            "count": 1,
+            "name": "Training Area"
+          }
+        ]
+      },
+      "matching_entries": [
+        {
+          "event_id": "6a9d5a0bab080c8c957fbb20",
+          "date": "2026-09-06T14:50:00.000Z",
+          "event_name": "DR. KELP’S CHUM BUCKET POP UP",
+          "players": 34,
+          "player": "hunter_316",
+          "placing": 7,
+          "deck_id": "team-rockets-raticate-ex-b4a-alolan-ninetales-ex-b2",
+          "decklist_url": "https://play.limitlesstcg.com/tournament/6a9d5a0bab080c8c957fbb20/player/hunter_316/decklist",
+          "raw_source": "raw/6a9d5a0bab080c8c957fbb20_standings.json.gz"
+        },
+        {
+          "event_id": "6aaad41638886b36383c1ad5",
+          "date": "2026-09-17T03:00:00.000Z",
+          "event_name": "Pop Up Series 9 || FA OAK",
+          "players": 27,
+          "player": "shmo",
+          "placing": 3,
+          "deck_id": "team-rockets-raticate-ex-b4a-alolan-ninetales-ex-b2",
+          "decklist_url": "https://play.limitlesstcg.com/tournament/6aaad41638886b36383c1ad5/player/shmo/decklist",
+          "raw_source": "raw/6aaad41638886b36383c1ad5_standings.json.gz"
+        }
+      ]
+    },
+    "hoopa_absol": {
+      "status": "saved",
+      "file": "decklists/hoopa_absol.txt",
+      "sha256": "5b64376fa6148813152ee4c61b28fa8903a14eea6f4357ee916dfac438ded6aa",
+      "frequency_among_top8": 12,
+      "eligible_top8_entries": 20,
+      "distinct_exact_lists": 9,
+      "representative": {
+        "event_id": "6aa682e4f1243e65f97ffebe",
+        "date": "2026-09-13T16:30:00.000Z",
+        "event_name": "The PokeBounty Showdown Sunday Pop Up",
+        "players": 83,
+        "player": "douka",
+        "placing": 1,
+        "deck_id": "hoopa-ex-b4-mega-absol-ex-b1",
+        "decklist_url": "https://play.limitlesstcg.com/tournament/6aa682e4f1243e65f97ffebe/player/douka/decklist",
+        "raw_source": "raw/6aa682e4f1243e65f97ffebe_standings.json.gz",
+        "card_names": [
+          {
+            "set": "B4",
+            "number": "103",
+            "count": 2,
+            "name": "Hoopa ex"
+          },
+          {
+            "set": "B1",
+            "number": "151",
+            "count": 1,
+            "name": "Mega Absol ex"
+          },
+          {
+            "set": "A2",
+            "number": "110",
+            "count": 1,
+            "name": "Darkrai ex"
+          },
+          {
+            "set": "A2",
+            "number": "150",
+            "count": 2,
+            "name": "Cyrus"
+          },
+          {
+            "set": "P-A",
+            "number": "007",
+            "count": 2,
+            "name": "Professor's Research"
+          },
+          {
+            "set": "A2",
+            "number": "155",
+            "count": 1,
+            "name": "Mars"
+          },
+          {
+            "set": "B1",
+            "number": "225",
+            "count": 1,
+            "name": "Copycat"
+          },
+          {
+            "set": "A2b",
+            "number": "070",
+            "count": 1,
+            "name": "Pokémon Center Lady"
+          },
+          {
+            "set": "P-A",
+            "number": "005",
+            "count": 2,
+            "name": "Poké Ball"
+          },
+          {
+            "set": "B2",
+            "number": "145",
+            "count": 2,
+            "name": "Lucky Ice Pop"
+          },
+          {
+            "set": "P-A",
+            "number": "002",
+            "count": 1,
+            "name": "X Speed"
+          },
+          {
+            "set": "A3a",
+            "number": "064",
+            "count": 1,
+            "name": "Repel"
+          },
+          {
+            "set": "B3",
+            "number": "147",
+            "count": 1,
+            "name": "Field Blower"
+          },
+          {
+            "set": "B4",
+            "number": "148",
+            "count": 2,
+            "name": "Deceptive Needle"
+          }
+        ]
+      },
+      "matching_entries": [
+        {
+          "event_id": "6aa0471eab080c8c957fe27d",
+          "date": "2026-09-14T23:00:00.000Z",
+          "event_name": "The PokeBounty Showdown $1000 Prize Pool (#2NA)",
+          "players": 142,
+          "player": "supreme13",
+          "placing": 3,
+          "deck_id": "hoopa-ex-b4-mega-absol-ex-b1",
+          "decklist_url": "https://play.limitlesstcg.com/tournament/6aa0471eab080c8c957fe27d/player/supreme13/decklist",
+          "raw_source": "raw/6aa0471eab080c8c957fe27d_standings.json.gz"
+        },
+        {
+          "event_id": "6aa0471eab080c8c957fe27d",
+          "date": "2026-09-14T23:00:00.000Z",
+          "event_name": "The PokeBounty Showdown $1000 Prize Pool (#2NA)",
+          "players": 142,
+          "player": "sinorci200",
+          "placing": 6,
+          "deck_id": "hoopa-ex-b4-mega-absol-ex-b1",
+          "decklist_url": "https://play.limitlesstcg.com/tournament/6aa0471eab080c8c957fe27d/player/sinorci200/decklist",
+          "raw_source": "raw/6aa0471eab080c8c957fe27d_standings.json.gz"
+        },
+        {
+          "event_id": "6aa6410b38886b36383be710",
+          "date": "2026-09-14T10:30:00.000Z",
+          "event_name": "🏰FORT TOURNAMENTS POCKET DEBUT🏰 $20 + FA CARDS",
+          "players": 114,
+          "player": "illus",
+          "placing": 2,
+          "deck_id": "hoopa-ex-b4-mega-absol-ex-b1",
+          "decklist_url": "https://play.limitlesstcg.com/tournament/6aa6410b38886b36383be710/player/illus/decklist",
+          "raw_source": "raw/6aa6410b38886b36383be710_standings.json.gz"
+        },
+        {
+          "event_id": "6aa682e4f1243e65f97ffebe",
+          "date": "2026-09-13T16:30:00.000Z",
+          "event_name": "The PokeBounty Showdown Sunday Pop Up",
+          "players": 83,
+          "player": "douka",
+          "placing": 1,
+          "deck_id": "hoopa-ex-b4-mega-absol-ex-b1",
+          "decklist_url": "https://play.limitlesstcg.com/tournament/6aa682e4f1243e65f97ffebe/player/douka/decklist",
+          "raw_source": "raw/6aa682e4f1243e65f97ffebe_standings.json.gz"
+        },
+        {
+          "event_id": "6aa6eed0f1243e65f9800555",
+          "date": "2026-09-13T22:50:00.000Z",
+          "event_name": "🩷random r0zey pop up #3 | $25 + FA🩷",
+          "players": 146,
+          "player": "asterphoenix",
+          "placing": 8,
+          "deck_id": "hoopa-ex-b4-mega-absol-ex-b1",
+          "decklist_url": "https://play.limitlesstcg.com/tournament/6aa6eed0f1243e65f9800555/player/asterphoenix/decklist",
+          "raw_source": "raw/6aa6eed0f1243e65f9800555_standings.json.gz"
+        },
+        {
+          "event_id": "6aa7cd2ff1243e65f9800e0f",
+          "date": "2026-09-15T23:15:00.000Z",
+          "event_name": "TBC KELP CLASSIC 10th ANNIVERSARY- $10 + FA CYRUS",
+          "players": 78,
+          "player": "guunnz",
+          "placing": 5,
+          "deck_id": "hoopa-ex-b4-mega-absol-ex-b1",
+          "decklist_url": "https://play.limitlesstcg.com/tournament/6aa7cd2ff1243e65f9800e0f/player/guunnz/decklist",
+          "raw_source": "raw/6aa7cd2ff1243e65f9800e0f_standings.json.gz"
+        },
+        {
+          "event_id": "6aa7cd2ff1243e65f9800e0f",
+          "date": "2026-09-15T23:15:00.000Z",
+          "event_name": "TBC KELP CLASSIC 10th ANNIVERSARY- $10 + FA CYRUS",
+          "players": 78,
+          "player": "xanypopper",
+          "placing": 6,
+          "deck_id": "hoopa-ex-b4-mega-absol-ex-b1",
+          "decklist_url": "https://play.limitlesstcg.com/tournament/6aa7cd2ff1243e65f9800e0f/player/xanypopper/decklist",
+          "raw_source": "raw/6aa7cd2ff1243e65f9800e0f_standings.json.gz"
+        },
+        {
+          "event_id": "6aa7cd2ff1243e65f9800e0f",
+          "date": "2026-09-15T23:15:00.000Z",
+          "event_name": "TBC KELP CLASSIC 10th ANNIVERSARY- $10 + FA CYRUS",
+          "players": 78,
+          "player": "abnermoyai",
+          "placing": 8,
+          "deck_id": "hoopa-ex-b4-mega-absol-ex-b1",
+          "decklist_url": "https://play.limitlesstcg.com/tournament/6aa7cd2ff1243e65f9800e0f/player/abnermoyai/decklist",
+          "raw_source": "raw/6aa7cd2ff1243e65f9800e0f_standings.json.gz"
+        },
+        {
+          "event_id": "6aaac3d9f1243e65f9802bad",
+          "date": "2026-09-18T13:00:00.000Z",
+          "event_name": "🥊 20$ BEC'S KING OF THE HILL - ANY FA PRIZE!",
+          "players": 95,
+          "player": "luckyex888",
+          "placing": 3,
+          "deck_id": "hoopa-ex-b4-mega-absol-ex-b1",
+          "decklist_url": "https://play.limitlesstcg.com/tournament/6aaac3d9f1243e65f9802bad/player/luckyex888/decklist",
+          "raw_source": "raw/6aaac3d9f1243e65f9802bad_standings.json.gz"
+        },
+        {
+          "event_id": "6aabc43df1243e65f9803602",
+          "date": "2026-09-17T14:15:00.000Z",
+          "event_name": "DR KELP’S CHUM BUCKET POP UP",
+          "players": 29,
+          "player": "guunnz",
+          "placing": 3,
+          "deck_id": "hoopa-ex-b4-mega-absol-ex-b1",
+          "decklist_url": "https://play.limitlesstcg.com/tournament/6aabc43df1243e65f9803602/player/guunnz/decklist",
+          "raw_source": "raw/6aabc43df1243e65f9803602_standings.json.gz"
+        },
+        {
+          "event_id": "6aac7e78f127b1b52c27ba59",
+          "date": "2026-09-19T13:00:00.000Z",
+          "event_name": "$40 USD+FA | 巫獅對戰塔盃 LeoWizard BattleTower Cup #12",
+          "players": 112,
+          "player": "popay",
+          "placing": 3,
+          "deck_id": "hoopa-ex-b4-mega-absol-ex-b1",
+          "decklist_url": "https://play.limitlesstcg.com/tournament/6aac7e78f127b1b52c27ba59/player/popay/decklist",
+          "raw_source": "raw/6aac7e78f127b1b52c27ba59_standings.json.gz"
+        },
+        {
+          "event_id": "6ab3aa2de905c1db68748664",
+          "date": "2026-09-23T19:00:00.000Z",
+          "event_name": "TH Event's Presents: When DX Pack?!|5$ + FA's!",
+          "players": 68,
+          "player": "dariuspopek",
+          "placing": 3,
+          "deck_id": "hoopa-ex-b4-mega-absol-ex-b1",
+          "decklist_url": "https://play.limitlesstcg.com/tournament/6ab3aa2de905c1db68748664/player/dariuspopek/decklist",
+          "raw_source": "raw/6ab3aa2de905c1db68748664_standings.json.gz"
+        }
+      ]
+    },
+    "garchomp": {
+      "status": "saved",
+      "file": "decklists/garchomp.txt",
+      "sha256": "7f436968726ab981c67a072b2c09d1ffb26eae44f0f253b838f9aa58a2c73e6c",
+      "frequency_among_top8": 1,
+      "eligible_top8_entries": 1,
+      "distinct_exact_lists": 1,
+      "representative": {
+        "event_id": "6a91426eabb94822375023de",
+        "date": "2026-08-28T09:50:00.000Z",
+        "event_name": "Dark League Pop Up",
+        "players": 21,
+        "player": "cosmooo",
+        "placing": 2,
+        "deck_id": "garchomp-b4a",
+        "decklist_url": "https://play.limitlesstcg.com/tournament/6a91426eabb94822375023de/player/cosmooo/decklist",
+        "raw_source": "raw/6a91426eabb94822375023de_standings.json.gz",
+        "card_names": [
+          {
+            "set": "A2",
+            "number": "121",
+            "count": 1,
+            "name": "Gible"
+          },
+          {
+            "set": "B4a",
+            "number": "052",
+            "count": 1,
+            "name": "Gible"
+          },
+          {
+            "set": "B4a",
+            "number": "054",
+            "count": 2,
+            "name": "Garchomp"
+          },
+          {
+            "set": "B4a",
+            "number": "063",
+            "count": 1,
+            "name": "Happiny"
+          },
+          {
+            "set": "A4a",
+            "number": "023",
+            "count": 1,
+            "name": "Mantyke"
+          },
+          {
+            "set": "A4",
+            "number": "077",
+            "count": 1,
+            "name": "Cleffa"
+          },
+          {
+            "set": "P-A",
+            "number": "007",
+            "count": 2,
+            "name": "Professor's Research"
+          },
+          {
+            "set": "A2",
+            "number": "152",
+            "count": 2,
+            "name": "Cynthia"
+          },
+          {
+            "set": "A2",
+            "number": "150",
+            "count": 1,
+            "name": "Cyrus"
+          },
+          {
+            "set": "B1",
+            "number": "226",
+            "count": 1,
+            "name": "Lisia"
+          },
+          {
+            "set": "B1",
+            "number": "225",
+            "count": 1,
+            "name": "Copycat"
+          },
+          {
+            "set": "B4",
+            "number": "153",
+            "count": 1,
+            "name": "Wally"
+          },
+          {
+            "set": "A3",
+            "number": "144",
+            "count": 2,
+            "name": "Rare Candy"
+          },
+          {
+            "set": "P-A",
+            "number": "005",
+            "count": 1,
+            "name": "Poké Ball"
+          },
+          {
+            "set": "B2",
+            "number": "147",
+            "count": 1,
+            "name": "Protective Poncho"
+          },
+          {
+            "set": "B4",
+            "number": "155",
+            "count": 1,
+            "name": "Rainbow Cave"
+          }
+        ]
+      },
+      "matching_entries": [
+        {
+          "event_id": "6a91426eabb94822375023de",
+          "date": "2026-08-28T09:50:00.000Z",
+          "event_name": "Dark League Pop Up",
+          "players": 21,
+          "player": "cosmooo",
+          "placing": 2,
+          "deck_id": "garchomp-b4a",
+          "decklist_url": "https://play.limitlesstcg.com/tournament/6a91426eabb94822375023de/player/cosmooo/decklist",
+          "raw_source": "raw/6a91426eabb94822375023de_standings.json.gz"
+        }
+      ]
+    },
+    "whimsicott_ariados": {
+      "status": "saved",
+      "file": "decklists/whimsicott_ariados.txt",
+      "sha256": "82fb25bbaeb765246661b12164a952249d926f475a3a9bc5334445e9d7d435b8",
+      "frequency_among_top8": 1,
+      "eligible_top8_entries": 2,
+      "distinct_exact_lists": 2,
+      "representative": {
+        "event_id": "6a90e8157a62de8130140dee",
+        "date": "2026-08-28T22:30:00.000Z",
+        "event_name": "The Breakfast Club Xastur's Showdown-$5+OAK+",
+        "players": 97,
+        "player": "birdnest",
+        "placing": 3,
+        "deck_id": "whimsicott-ex-b1-ariados-b1a",
+        "decklist_url": "https://play.limitlesstcg.com/tournament/6a90e8157a62de8130140dee/player/birdnest/decklist",
+        "raw_source": "raw/6a90e8157a62de8130140dee_standings.json.gz",
+        "card_names": [
+          {
+            "set": "B1",
+            "number": "015",
+            "count": 2,
+            "name": "Cottonee"
+          },
+          {
+            "set": "B1",
+            "number": "016",
+            "count": 2,
+            "name": "Whimsicott ex"
+          },
+          {
+            "set": "B1a",
+            "number": "005",
+            "count": 2,
+            "name": "Spinarak"
+          },
+          {
+            "set": "B1a",
+            "number": "006",
+            "count": 2,
+            "name": "Ariados"
+          },
+          {
+            "set": "A3a",
+            "number": "007",
+            "count": 1,
+            "name": "Pheromosa"
+          },
+          {
+            "set": "P-A",
+            "number": "007",
+            "count": 2,
+            "name": "Professor's Research"
+          },
+          {
+            "set": "A2",
+            "number": "150",
+            "count": 1,
+            "name": "Cyrus"
+          },
+          {
+            "set": "B1",
+            "number": "225",
+            "count": 1,
+            "name": "Copycat"
+          },
+          {
+            "set": "B1a",
+            "number": "067",
+            "count": 2,
+            "name": "Quick-Grow Extract"
+          },
+          {
+            "set": "B4a",
+            "number": "068",
+            "count": 2,
+            "name": "Team Rocket's Goo-zooka"
+          },
+          {
+            "set": "A3",
+            "number": "147",
+            "count": 1,
+            "name": "Leaf Cape"
+          },
+          {
+            "set": "B3",
+            "number": "153",
+            "count": 2,
+            "name": "Fragrant Forest"
+          }
+        ]
+      },
+      "matching_entries": [
+        {
+          "event_id": "6a90e8157a62de8130140dee",
+          "date": "2026-08-28T22:30:00.000Z",
+          "event_name": "The Breakfast Club Xastur's Showdown-$5+OAK+",
+          "players": 97,
+          "player": "birdnest",
+          "placing": 3,
+          "deck_id": "whimsicott-ex-b1-ariados-b1a",
+          "decklist_url": "https://play.limitlesstcg.com/tournament/6a90e8157a62de8130140dee/player/birdnest/decklist",
+          "raw_source": "raw/6a90e8157a62de8130140dee_standings.json.gz"
+        }
+      ]
+    },
+    "charizardy_entei": {
+      "status": "saved",
+      "file": "decklists/charizardy_entei.txt",
+      "sha256": "b3fe8356c3574145420a7ee20497dc9306862becfa667231681d1b122fba6f89",
+      "frequency_among_top8": 3,
+      "eligible_top8_entries": 13,
+      "distinct_exact_lists": 11,
+      "representative": {
+        "event_id": "6a9b4f52ab080c8c957fa3d7",
+        "date": "2026-09-06T01:45:00.000Z",
+        "event_name": "TBC Presents: Breakfast & Breakdowns🔥",
+        "players": 97,
+        "player": "ibfasting",
+        "placing": 6,
+        "deck_id": "mega-charizard-y-ex-b1a-entei-ex-a4a",
+        "decklist_url": "https://play.limitlesstcg.com/tournament/6a9b4f52ab080c8c957fa3d7/player/ibfasting/decklist",
+        "raw_source": "raw/6a9b4f52ab080c8c957fa3d7_standings.json.gz",
+        "card_names": [
+          {
+            "set": "B2b",
+            "number": "007",
+            "count": 2,
+            "name": "Charmander"
+          },
+          {
+            "set": "B2b",
+            "number": "008",
+            "count": 2,
+            "name": "Charmeleon"
+          },
+          {
+            "set": "B1a",
+            "number": "014",
+            "count": 1,
+            "name": "Mega Charizard Y ex"
+          },
+          {
+            "set": "A4a",
+            "number": "010",
+            "count": 2,
+            "name": "Entei ex"
+          },
+          {
+            "set": "B1",
+            "number": "225",
+            "count": 2,
+            "name": "Copycat"
+          },
+          {
+            "set": "P-A",
+            "number": "007",
+            "count": 2,
+            "name": "Professor's Research"
+          },
+          {
+            "set": "B4",
+            "number": "153",
+            "count": 1,
+            "name": "Wally"
+          },
+          {
+            "set": "B1",
+            "number": "217",
+            "count": 2,
+            "name": "Flame Patch"
+          },
+          {
+            "set": "P-A",
+            "number": "005",
+            "count": 2,
+            "name": "Poké Ball"
+          },
+          {
+            "set": "B2",
+            "number": "147",
+            "count": 1,
+            "name": "Protective Poncho"
+          },
+          {
+            "set": "A2",
+            "number": "147",
+            "count": 1,
+            "name": "Giant Cape"
+          },
+          {
+            "set": "B4",
+            "number": "155",
+            "count": 2,
+            "name": "Rainbow Cave"
+          }
+        ]
+      },
+      "matching_entries": [
+        {
+          "event_id": "6a78c5912b308b6067b4f421",
+          "date": "2026-09-05T19:05:00.000Z",
+          "event_name": "Tournament Vegegras cash prize 100usd",
+          "players": 116,
+          "player": "winsters",
+          "placing": 8,
+          "deck_id": "mega-charizard-y-ex-b1a-entei-ex-a4a",
+          "decklist_url": "https://play.limitlesstcg.com/tournament/6a78c5912b308b6067b4f421/player/winsters/decklist",
+          "raw_source": "raw/6a78c5912b308b6067b4f421_standings.json.gz"
+        },
+        {
+          "event_id": "6a9b4f52ab080c8c957fa3d7",
+          "date": "2026-09-06T01:45:00.000Z",
+          "event_name": "TBC Presents: Breakfast & Breakdowns🔥",
+          "players": 97,
+          "player": "ibfasting",
+          "placing": 6,
+          "deck_id": "mega-charizard-y-ex-b1a-entei-ex-a4a",
+          "decklist_url": "https://play.limitlesstcg.com/tournament/6a9b4f52ab080c8c957fa3d7/player/ibfasting/decklist",
+          "raw_source": "raw/6a9b4f52ab080c8c957fa3d7_standings.json.gz"
+        },
+        {
+          "event_id": "6a9b4f52ab080c8c957fa3d7",
+          "date": "2026-09-06T01:45:00.000Z",
+          "event_name": "TBC Presents: Breakfast & Breakdowns🔥",
+          "players": 97,
+          "player": "guunnz",
+          "placing": 8,
+          "deck_id": "mega-charizard-y-ex-b1a-entei-ex-a4a",
+          "decklist_url": "https://play.limitlesstcg.com/tournament/6a9b4f52ab080c8c957fa3d7/player/guunnz/decklist",
+          "raw_source": "raw/6a9b4f52ab080c8c957fa3d7_standings.json.gz"
+        }
+      ]
+    }
+  },
+  "invalid_or_missing_top8_lists": []
+}

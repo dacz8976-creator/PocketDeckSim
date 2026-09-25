@@ -1,0 +1,49 @@
+{
+  "exported_at": "2026-09-24",
+  "source": {
+    "title": "Ladder Log",
+    "artifact_url": "https://claude.ai/artifact/GHSfGSCzNiWNj8SFPXV3R1",
+    "artifact_id": "7bc4cb29-f833-4029-813b-d2053ecdf4b8",
+    "artifact_version": "1789508061-0a55",
+    "artifact_visibility_at_read": "private, owned by Dustin",
+    "database_collection": "logs",
+    "database_snapshot_marker": "019aaffa",
+    "snapshot_document_count": 10,
+    "snapshot_game_count": 33,
+    "snapshot_read_at": "2026-09-25T00:21:01.800Z",
+    "saved_read_transcript": "/mnt/c/Users/dacz8/.claude/projects/C--Users-dacz8-Projects/1b119d13-736d-4588-ba63-0e9ef1756970/subagents/workflows/wf_4a7e0de4-df9/agent-a03efba917e986c10.jsonl",
+    "saved_read_transcript_line": 183
+  },
+  "scope": {
+    "season_start": "2026-09-15",
+    "latest_game_date": "2026-09-24",
+    "timezone_for_date_conversion": "America/Chicago",
+    "rows_exported": 33,
+    "wins": 12,
+    "losses": 21
+  },
+  "transformations": [
+    "Sorted games by the raw millisecond timestamp ascending.",
+    "Converted each raw timestamp to a calendar date in America/Chicago.",
+    "Copied opponent, result, and note text verbatim from the saved logs collection.",
+    "Expanded deck IDs to readable names using the artifact HTML declaration for its built-in decks and the corresponding checked-in brew deck filenames/lists for brew-06 and brew-06b.",
+    "Used the custom deck label Skarmory ex / Chandelure recorded in the saved review that read the same Ladder Log snapshot."
+  ],
+  "verification": {
+    "csv_columns": [
+      "date",
+      "dustin_deck_or_brew",
+      "opponent_archetype",
+      "result",
+      "note"
+    ],
+    "aggregate_matches_saved_snapshot": true,
+    "notes_preserved": true,
+    "credentials_in_output": false
+  },
+  "limitations": [
+    "The CSV is a point-in-time export of the complete saved logs collection read on 2026-09-25 UTC; games added to the live artifact afterward are not included.",
+    "Opponent archetype spelling and capitalization are user-entered and intentionally not normalized.",
+    "Only the requested calendar date is exported; the source retains millisecond timestamps."
+  ]
+}

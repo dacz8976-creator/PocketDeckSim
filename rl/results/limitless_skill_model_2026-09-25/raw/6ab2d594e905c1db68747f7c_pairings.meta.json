@@ -1,0 +1,21 @@
+{
+  "url": "https://play.limitlesstcg.com/api/tournaments/6ab2d594e905c1db68747f7c/pairings",
+  "requested_url": "https://play.limitlesstcg.com/api/tournaments/6ab2d594e905c1db68747f7c/pairings",
+  "status": 200,
+  "headers": {
+    "Date": "Fri, 25 Sep 2026 01:41:25 GMT",
+    "Content-Type": "application/json; charset=utf-8",
+    "Transfer-Encoding": "chunked",
+    "Connection": "keep-alive",
+    "Server": "nginx/1.30.4",
+    "X-Powered-By": "Express",
+    "Access-Control-Allow-Origin": "*",
+    "RateLimit": "\"50-in-5min\"; r=13; t=252",
+    "RateLimit-Policy": "\"50-in-5min\"; q=50; w=300; pk=:NGViYjMxYjYxMDJj:",
+    "ETag": "W/\"216b-5fUm+5MpWW6crWkwnKDNK9K5SHg\"",
+    "Content-Encoding": "gzip"
+  },
+  "fetched_at": "2026-09-25T01:41:25.151015+00:00",
+  "sha256": "7f04ddf4cc30aebaded76b747eccfbdb5b3104199360732fb92a550c30db315f",
+  "body": "6ab2d594e905c1db68747f7c_pairings.json.gz"
+}

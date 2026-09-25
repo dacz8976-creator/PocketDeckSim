@@ -1,0 +1,20 @@
+{
+  "status": "complete",
+  "started_at": "2026-09-25T01:43:55.623469+00:00",
+  "protocol_sha256": "d6ca61c34bbdd2d619ffd71fe65796edb74260cea56389bd49e7b7a0d5550fa1",
+  "analyze_sha256": "ad48d1b47079c9aa0249db75e75811e0f4a3ec2f463a83c1e3d74b727e75854e",
+  "completed_at": "2026-09-25T01:43:57.130892+00:00",
+  "scope": "all events, integrity check",
+  "event_count": 124,
+  "legacy_event_count": 111,
+  "event_count_difference": 13,
+  "total_matches": 25856,
+  "legacy_total_matches": 25143,
+  "total_difference": 713,
+  "total_pass": true,
+  "cells_with_exact_WLT": 10,
+  "cells_within_fixed_binomial_noise": 28,
+  "exact_match": false,
+  "approximate_tolerance_pass": true,
+  "label": "approximate, event-count difference +13; exact differing membership unknown because the old 111 event ids were not saved"
+}

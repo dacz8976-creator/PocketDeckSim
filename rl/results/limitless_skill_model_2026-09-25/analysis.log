@@ -1,0 +1,213 @@
+Bootstrap 100/2000, failed 0
+Bootstrap 200/2000, failed 0
+Bootstrap 300/2000, failed 0
+Bootstrap 400/2000, failed 0
+Bootstrap 500/2000, failed 0
+Bootstrap 600/2000, failed 0
+Bootstrap 700/2000, failed 0
+Bootstrap 800/2000, failed 0
+Bootstrap 900/2000, failed 0
+Bootstrap 1000/2000, failed 0
+Bootstrap 1100/2000, failed 0
+Bootstrap 1200/2000, failed 0
+Bootstrap 1300/2000, failed 0
+Bootstrap 1400/2000, failed 0
+Bootstrap 1500/2000, failed 0
+Bootstrap 1600/2000, failed 0
+Bootstrap 1700/2000, failed 0
+Bootstrap 1800/2000, failed 0
+Bootstrap 1900/2000, failed 0
+Bootstrap 2000/2000, failed 0
+{
+  "beta": 0.2915210365630222,
+  "ci": [
+    -0.0645549094848526,
+    0.4295736929794047
+  ],
+  "decks": [
+    {
+      "scope": "development only",
+      "deck": "altaria",
+      "n_nonmirror": 564,
+      "K3_average_pct": 47.028571428571425,
+      "raw_average_pct": 53.63321013248674,
+      "equal_skill_average_pct": 54.17636761520248,
+      "ci_low_pct": 49.77268159876444,
+      "ci_high_pct": 58.04856556338662,
+      "both_p75_average_pct": 54.17636761520248,
+      "raw_minus_sim_pp": 6.604638703915313,
+      "equal_minus_sim_pp": 7.147796186631055,
+      "gap_shrink_fraction": -0.08223878807992202,
+      "verdict": "bot/engine",
+      "reason": "at least half the development gap remains on the same side",
+      "removed_opponent": "blaziken",
+      "K3_6opponent_pct": 45.15,
+      "raw_6opponent_pct": 49.82698044868551,
+      "equal_6opponent_pct": 50.37316345352485,
+      "raw_6opponent_gap_pp": 4.676980448685512,
+      "equal_6opponent_gap_pp": 5.223163453524855,
+      "valid_bootstraps": 2000
+    },
+    {
+      "scope": "development only",
+      "deck": "blaziken",
+      "n_nonmirror": 209,
+      "K3_average_pct": 56.65714285714286,
+      "raw_average_pct": 55.92220628475319,
+      "equal_skill_average_pct": 55.74888842526949,
+      "ci_low_pct": 51.030240770534235,
+      "ci_high_pct": 60.510780577291314,
+      "both_p75_average_pct": 55.74888842526949,
+      "raw_minus_sim_pp": -0.734936572389671,
+      "equal_minus_sim_pp": -0.9082544318733667,
+      "gap_shrink_fraction": -0.23582696248214563,
+      "verdict": "bot/engine",
+      "reason": "at least half the development gap remains on the same side",
+      "removed_opponent": "altaria",
+      "K3_6opponent_pct": 59.15,
+      "raw_6opponent_pct": 61.32100537142774,
+      "equal_6opponent_pct": 61.20630192702577,
+      "raw_6opponent_gap_pp": 2.1710053714277393,
+      "equal_6opponent_gap_pp": 2.056301927025771,
+      "valid_bootstraps": 2000
+    },
+    {
+      "scope": "development only",
+      "deck": "hydreigon",
+      "n_nonmirror": 267,
+      "K3_average_pct": 34.74285714285714,
+      "raw_average_pct": 42.16869283598607,
+      "equal_skill_average_pct": 41.62350473914034,
+      "ci_low_pct": 36.43471810602729,
+      "ci_high_pct": 47.23388144623784,
+      "both_p75_average_pct": 41.62350473914034,
+      "raw_minus_sim_pp": 7.425835693128931,
+      "equal_minus_sim_pp": 6.880647596283197,
+      "gap_shrink_fraction": 0.07341774304947157,
+      "verdict": "bot/engine",
+      "reason": "at least half the development gap remains on the same side",
+      "removed_opponent": "lucario",
+      "K3_6opponent_pct": 35.5,
+      "raw_6opponent_pct": 38.59074770258981,
+      "equal_6opponent_pct": 38.083820271601134,
+      "raw_6opponent_gap_pp": 3.090747702589809,
+      "equal_6opponent_gap_pp": 2.583820271601134,
+      "valid_bootstraps": 2000
+    },
+    {
+      "scope": "development only",
+      "deck": "lucario",
+      "n_nonmirror": 659,
+      "K3_average_pct": 53.25714285714286,
+      "raw_average_pct": 50.398180742826874,
+      "equal_skill_average_pct": 50.91148636700454,
+      "ci_low_pct": 47.15418552122982,
+      "ci_high_pct": 54.30911060807881,
+      "both_p75_average_pct": 50.91148636700454,
+      "raw_minus_sim_pp": -2.858962114315986,
+      "equal_minus_sim_pp": -2.3456564901383175,
+      "gap_shrink_fraction": 0.17954264647556484,
+      "verdict": "bot/engine",
+      "reason": "at least half the development gap remains on the same side",
+      "removed_opponent": "hydreigon",
+      "K3_6opponent_pct": 50.5,
+      "raw_6opponent_pct": 52.73727147269196,
+      "equal_6opponent_pct": 53.20700268556789,
+      "raw_6opponent_gap_pp": 2.2372714726919583,
+      "equal_6opponent_gap_pp": 2.7070026855678933,
+      "valid_bootstraps": 2000
+    },
+    {
+      "scope": "development only",
+      "deck": "sceptile",
+      "n_nonmirror": 424,
+      "K3_average_pct": 61.800000000000004,
+      "raw_average_pct": 50.40554716674364,
+      "equal_skill_average_pct": 50.55373432071108,
+      "ci_low_pct": 44.34931061089431,
+      "ci_high_pct": 56.002157845168036,
+      "both_p75_average_pct": 50.55373432071108,
+      "raw_minus_sim_pp": -11.394452833256366,
+      "equal_minus_sim_pp": -11.246265679288925,
+      "gap_shrink_fraction": 0.013005201402469746,
+      "verdict": "bot/engine",
+      "reason": "at least half the development gap remains on the same side",
+      "removed_opponent": "vespiquen",
+      "K3_6opponent_pct": 61.083333333333336,
+      "raw_6opponent_pct": 52.85409074215329,
+      "equal_6opponent_pct": 52.969763099109834,
+      "raw_6opponent_gap_pp": -8.229242591180046,
+      "equal_6opponent_gap_pp": -8.113570234223502,
+      "valid_bootstraps": 2000
+    },
+    {
+      "scope": "development only",
+      "deck": "suicune",
+      "n_nonmirror": 369,
+      "K3_average_pct": 52.58571428571429,
+      "raw_average_pct": 47.06650608961534,
+      "equal_skill_average_pct": 46.849978961288514,
+      "ci_low_pct": 42.26379899705972,
+      "ci_high_pct": 51.559043877821665,
+      "both_p75_average_pct": 46.849978961288514,
+      "raw_minus_sim_pp": -5.519208196098951,
+      "equal_minus_sim_pp": -5.735735324425775,
+      "gap_shrink_fraction": -0.03923155652650823,
+      "verdict": "bot/engine",
+      "reason": "at least half the development gap remains on the same side",
+      "removed_opponent": "vespiquen",
+      "K3_6opponent_pct": 53.68333333333334,
+      "raw_6opponent_pct": 50.16555340084752,
+      "equal_6opponent_pct": 49.95616201927442,
+      "raw_6opponent_gap_pp": -3.5177799324858157,
+      "equal_6opponent_gap_pp": -3.727171314058914,
+      "valid_bootstraps": 2000
+    },
+    {
+      "scope": "development only",
+      "deck": "vespiquen",
+      "n_nonmirror": 440,
+      "K3_average_pct": 48.642857142857146,
+      "raw_average_pct": 56.62849744884665,
+      "equal_skill_average_pct": 56.502387050112596,
+      "ci_low_pct": 52.32869345552434,
+      "ci_high_pct": 60.56686929553734,
+      "both_p75_average_pct": 56.502387050112596,
+      "raw_minus_sim_pp": 7.985640305989506,
+      "equal_minus_sim_pp": 7.85952990725545,
+      "gap_shrink_fraction": 0.015792146140049534,
+      "verdict": "bot/engine",
+      "reason": "at least half the development gap remains on the same side",
+      "removed_opponent": "sceptile",
+      "K3_6opponent_pct": 51.099999999999994,
+      "raw_6opponent_pct": 55.35229464270205,
+      "equal_6opponent_pct": 55.26237850018445,
+      "raw_6opponent_gap_pp": 4.252294642702054,
+      "equal_6opponent_gap_pp": 4.162378500184452,
+      "valid_bootstraps": 2000
+    },
+    {
+      "scope": "development only",
+      "deck": "weezing",
+      "n_nonmirror": 284,
+      "K3_average_pct": 45.285714285714285,
+      "raw_average_pct": 43.7771592987415,
+      "equal_skill_average_pct": 43.633652521270974,
+      "ci_low_pct": 37.7592156269914,
+      "ci_high_pct": 50.307239326927295,
+      "both_p75_average_pct": 43.633652521270974,
+      "raw_minus_sim_pp": -1.5085549869727828,
+      "equal_minus_sim_pp": -1.6520617644433102,
+      "gap_shrink_fraction": -0.09512863548878814,
+      "verdict": "bot/engine",
+      "reason": "at least half the development gap remains on the same side",
+      "removed_opponent": "vespiquen",
+      "K3_6opponent_pct": 47.63333333333333,
+      "raw_6opponent_pct": 48.36017422062478,
+      "equal_6opponent_pct": 48.210643772343445,
+      "raw_6opponent_gap_pp": 0.7268408872914449,
+      "equal_6opponent_gap_pp": 0.5773104390101125,
+      "valid_bootstraps": 2000
+    }
+  ]
+}

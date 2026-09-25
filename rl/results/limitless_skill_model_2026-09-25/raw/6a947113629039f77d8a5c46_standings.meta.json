@@ -1,0 +1,21 @@
+{
+  "url": "https://play.limitlesstcg.com/api/tournaments/6a947113629039f77d8a5c46/standings",
+  "requested_url": "https://play.limitlesstcg.com/api/tournaments/6a947113629039f77d8a5c46/standings",
+  "status": 200,
+  "headers": {
+    "Date": "Fri, 25 Sep 2026 01:27:01 GMT",
+    "Content-Type": "application/json; charset=utf-8",
+    "Transfer-Encoding": "chunked",
+    "Connection": "keep-alive",
+    "Server": "nginx/1.30.4",
+    "X-Powered-By": "Express",
+    "Access-Control-Allow-Origin": "*",
+    "RateLimit": "\"50-in-5min\"; r=28; t=28",
+    "RateLimit-Policy": "\"50-in-5min\"; q=50; w=300; pk=:NGViYjMxYjYxMDJj:",
+    "ETag": "W/\"eb81-xyWPHlTJUR2/Ke+ol2+dvVImnwU\"",
+    "Content-Encoding": "gzip"
+  },
+  "fetched_at": "2026-09-25T01:27:01.629596+00:00",
+  "sha256": "44128ac91d4e3bec4d7d73b1d7a5c89d60328c613e8d58215cea83c9d74698cc",
+  "body": "6a947113629039f77d8a5c46_standings.json.gz"
+}
