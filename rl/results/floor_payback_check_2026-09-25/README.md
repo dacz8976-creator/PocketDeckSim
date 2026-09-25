@@ -62,7 +62,7 @@ Everything below this line was written and committed (32b3d6a) before any game o
 
 - The hashes of floor.py's commit, the engine and the goldfish.
 - A plain `run_screen.py` run at 240 games per matchup for brew-06 and brew-06b, with the same seeds. It must give the same wins per opponent and seat as each page's "For a second reader" section, which shows tracing changed no game. `run_screen.txt` here holds the laptop's own copy.
-- A hand recount of one flagged card from `<deck>_games.jsonl`.
+- A hand recount of one flagged card from `<deck>_games.jsonl`. [Amended after the read, on Fable's note: the per-game records written at dc17627 carry no per-card counts, so the recount was done from a re-traced call instead (READ_BY_FABLE.md, item 5). Later floor.py versions write them.]
 - The flagged set checked against `<deck>_coverage.json` and the list.
 - Two games re-run by seed.
 - The control reading untrusted.

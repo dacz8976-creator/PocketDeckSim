@@ -484,6 +484,8 @@ def main():
     n = len(recs)
     wins = sum(r["won"] for r in recs)
     counts, role_src = {}, {}
+    for r in recs:                  # per game: {flagged card: [opportunities, used]}, so a reader can recount exactly
+        r["flagged"] = {}
     for cname, card in flagged.items():
         ability_offered = any(off[cname]["ability"] for _, off, _, _, _ in per_game)
         role = ROLES.get(rel, {}).get(cname)
@@ -491,10 +493,11 @@ def main():
         role = role or default_role(card, ability_offered)
         assert role in ROLES_ALL, role
         opp_t, used_t = set(), set()
-        for gid, off, cho, kept, sup in per_game:
+        for k, (gid, off, cho, kept, sup) in enumerate(per_game):   # per_game[k] is recs[k]'s game
             o_, u_ = role_sets(role, card, off[cname], cho[cname], kept[cname], sup)
             opp_t |= {(gid, t) for t in o_}
             used_t |= {(gid, t) for t in u_ if t in o_}
+            recs[k]["flagged"][cname] = [len(o_), sum(1 for t in u_ if t in o_)]
         counts[cname] = (len(opp_t), len(used_t), role)
     verdict = verdict_of(wins, n, counts)
     if a.games != FIXED_GAMES:
@@ -550,7 +553,8 @@ def main():
           "", "## For a second reader", "",
           f"- Coverage from {os.path.relpath(a.goldfish, ROOT) if a.goldfish.startswith(ROOT) else a.goldfish} "
           f"(sha256 {goldfish_sha}; {'the official release' if goldfish_sha == release['goldfish_sha256'] else 'NOT the official release'}; "
-          f"`--games 0 --coverage`): `{name}_coverage.json`. Per-game records: `{name}_games.jsonl`.",
+          f"`--games 0 --coverage`): `{name}_coverage.json`. Per-game records: `{name}_games.jsonl` (each game's "
+          f"'flagged' field holds every flagged card's [opportunities, used] under its role; they sum to the table above).",
           "- The engine's own printed lines per call (player 0 won / player 1 won / draws); a plain run_screen.py run "
           "with the same pilots, seeds and games must print the same:"]
     for oname, seat, (p0w, p1w, dr) in printed_lines:
