@@ -2,7 +2,7 @@
 
 `decks/research/suicune.txt` · Energy: Water · main attacker: Suicune ex (Basic), Crystal Waltz [WW] 20 · combo: Suicune ex + Baxcalibur
 
-**In one line:** research-suicune: one-Basic opening 63%; Suicune ex online by own T3 87% first / 88% second (T4 92%/92%); combo by T4 75%/74%; goldfish (scripted pilot v aa): damaging attack by own T3 81% with 0.2 pts conceded first, Suicune ex attacks by T4 69% with 0.5 conceded first, 2.4 dead cards/turn; unpriced-text cards (a): 2
+**In one line:** research-suicune: one-Basic opening 63%; Suicune ex online by own T3 87% first / 88% second (T4 92%/92%); combo by T4 75%/74%; goldfish (scripted pilot v aa, seat-balanced): 0.61 pts conceded before the first 30+ damage attack (by own T3 in 62%), Suicune ex attacks by T4 69% with 0.49 conceded first, 2.4 dead cards/turn; unpriced-text cards (a): 2
 
 Turns are the player's own turns (own turn 1 is your first turn whether you go first or second). Going first: no Energy on own turn 1, but you draw. Nobody evolves on their own turn 1. Solitaire figures come from 10,000 deals per seat (about ±1 point); the opening table is exact.
 
@@ -85,16 +85,26 @@ Each card, drawn or fetched at least once by own turn 3 / by own turn 5 (the ope
 
 The real engine (rules4: rl/addon-0.7.2/deckgym and the pdl_rl_env 0.7.2 add-on built from the same rules) plays this list against `decks/research/weezing.txt` piloted by the engine's `aa` bot (attach-and-attack: it puts its Energy on the Active and attacks whenever it can, and nothing else). Because the engine lists End Turn first among the legal moves and `aa` takes the first move when it cannot attach or attack, `aa` never benches a Pokémon, not even at setup, and never plays a Trainer: the opponent is one Active Pokémon, and knocking it out wins. That makes it a fixed clock (here mostly Hoopa ex: 30 a turn from its first Energy, 100 from its third), not a real opponent.
 
-Two pilots for this list. **sp** (scripted pilot, the main reading): the solitaire model's priorities playing the real engine through the add-on: benches Basics, plays the draw, search, Rare Candy and Energy cards, evolves, puts Energy on the main line, attaches defensive Tools, heals a hurt Active, retreats to a Pokémon that can attack, and attacks for the most damage. **aa** (the brief's pilot): the engine's own bot on this side too, so both sides have a single Pokémon and the game ends at the first knockout; its "points conceded" can never exceed what one knockout gives. `et` ends every turn at once and never attacks, so it is not used. 150 games per pilot; the coin decides who goes first.
+Two pilots for this list. **sp** (scripted pilot, the main reading): the solitaire model's priorities playing the real engine through the add-on. It leads with a Basic whose Ability works from the Active Spot (Pyukumuku's Innards Out, Entei ex's Legendary Pulse), else one outside the main line with the most HP (`--lead` overrides); benches Basics, plays the draw, search, Rare Candy and Energy cards, evolves, puts Energy on the main line, attaches defensive Tools, heals a hurt Active, uses Abilities that draw, search, add Energy, damage the opposing Active (Crobat's Cunning Link) or give it a Special Condition (Meowstic's Perplexing Ears), plays a Supporter such as Team Rocket's Master Plan when the Active's attack gains from the Condition this turn, and attacks for the most damage. When a main or combo Pokémon is Active and the turn's Energy lets it attack this turn for as much as a Benched one could, the Energy goes on it. Otherwise, when a Benched main or combo Pokémon can attack and the Active cannot (or the Benched one does 40+ more and the Active is outside the main line), the turn's Energy goes on the Active until it can retreat, and it retreats. **aa** (the brief's pilot): the engine's own bot on this side too, so both sides have a single Pokémon and the game ends at the first knockout; its "points conceded" can never exceed what one knockout gives. `et` ends every turn at once and never attacks, so it is not used. 150 games per pilot; the coin decides who goes first, so the seats get different numbers of games; the "both seats" row is the plain mean of the two seat means.
 
-"Damaging attack" = the list's first attack that damaged or knocked out the opposing Active (poison it applied counts). "Conceded" = the opponent's points at that moment (or at the end if it never came). "Main attacks" = the first attack by the main attacker. "Dead" = cards in hand at the end of the turn that the rules did not let you play then (own turns 1-4; a second Supporter after one was played counts as dead; cards that need an opposing Bench, such as Cyrus and Sabrina, are left out because this opponent never has one).
+"30+ attack" (the headline tempo reading) = the list's first attack that did 30 or more damage to the opposing Active or knocked it out (Poison or Burn the attack applied counts at the next Checkup; Poison or Burn that was already there does not). "Damaging attack" = the first attack that did any damage, chip damage included (Hatenna's Stampede for 10 counts). "Conceded" = the opponent's points at that moment (or at the end if it never came); ± is the standard error of the mean over these games: simulation noise only, nothing about the ladder. "Main attacks" = the first attack by the main attacker. "Dead" = cards in hand at the end of the turn that the rules did not let you play then (own turns 1-4; a second Supporter after one was played counts as dead; cards that need an opposing Bench, such as Cyrus and Sabrina, are left out because this opponent never has one).
 
-| pilot | seat | games | won | damaging attack by T2 | by T3 | by T4 | never | points conceded before it | conceded 2+ | main attacks by T3 | by T4 | never | conceded before main | dead cards / turn |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| sp | first | 66 | 65% | 26% | 65% | 88% | 9% | 0.39 | 11% | 55% | 70% | 23% | 0.64 | 2.3 |
-| sp | second | 84 | 88% | 71% | 94% | 98% | 1% | 0.07 | 2% | 57% | 69% | 29% | 0.40 | 2.4 |
-| aa | first | 75 | 4% | 29% | 29% | 29% | 71% | 1.13 | 53% | - | - | - | - | 1.7 |
-| aa | second | 75 | 20% | 33% | 33% | 33% | 67% | 1.20 | 55% | - | - | - | - | 1.7 |
+| pilot | seat | games | won | 30+ attack by T3 | by T4 | never | conceded before it | damaging attack by T3 | never | conceded before it | main attacks by T3 | by T4 | never | conceded before main | dead cards / turn |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| sp | first | 66 | 67% | 56% | 73% | 23% | 0.82 ± 0.17 | 65% | 9% | 0.39 ± 0.11 | 55% | 70% | 23% | 0.59 | 2.3 |
+| sp | second | 84 | 88% | 68% | 85% | 7% | 0.40 ± 0.11 | 94% | 1% | 0.07 ± 0.04 | 57% | 69% | 29% | 0.39 | 2.4 |
+| sp | **both seats** | 66 + 84 | - | 62% | 79% | 15% | 0.61 ± 0.10 | 80% | 5% | 0.23 ± 0.06 | 56% | 69% | 26% | 0.49 | 2.4 |
+| aa | first | 75 | 4% | - | - | - | - | 29% | 71% | 1.13 ± 0.11 | - | - | - | - | 1.7 |
+| aa | second | 75 | 20% | - | - | - | - | 33% | 67% | 1.20 ± 0.11 | - | - | - | - | 1.7 |
+| aa | **both seats** | 75 + 75 | - | - | - | - | - | 31% | 69% | 1.17 ± 0.08 | - | - | - | - | 1.7 |
+
+Who made the first damaging attack (sp, both seats, 150 games): Suicune ex 61%, Chien-Pao ex 17%, Baxcalibur 12%, (none) 5%, Frigibax 5%.
+
+Who made the first 30+ attack (sp, both seats, 150 games): Suicune ex 63%, Baxcalibur 18%, (none) 14%, Chien-Pao ex 5%.
+
+Who led (Active at the start) (sp, both seats, 150 games): Suicune ex 53%, Frigibax 26%, Chien-Pao ex 21%.
+
+Games in which the scripted pilot retreated at least once: 8%.
 
 Most often dead at end of turn (sp): Rare Candy 48%, Baxcalibur 42%, Field Blower 26%, Team Rocket's Boss 21% of turn-ends.
 
@@ -145,6 +155,6 @@ What the solitaire model plays (card text from lib/card.py):
 
 ## How the solitaire pilot plays
 
-Setup: all Basics in hand go into play (Active: a Basic with an "if Active" draw Ability, else one outside the main line). Each own turn: draw; then repeat until nothing changes: play a Stadium that does something here, use it, play Items (Poké Ball and other searches take a random matching card, as printed; Rare Candy on the main line first), bench Basics the plan needs (others only while the Bench has room to spare), evolve (main line first), use draw Abilities, attach Tool pieces; when nothing else moves, one Supporter: a search that finds a missing piece, else a draw, else Copycat when the hand is small and holds nothing needed (Copycat assumes the opponent holds 4 cards). Then the turn's Energy (random among the declared types) goes to the main line first, then other combo attackers, else the Active; Energy from the discard or from Abilities is added; then the check; an Ability that ends the turn is used only when the main attacker cannot attack. No opponent, no knockouts, no retreat, no attacks (attack effects that set up, such as Flock or Glittering Gift, are ignored), no coin-flip Supporters. Hand limit 10.
+Setup: all Basics in hand go into play (Active: the `--lead` Basic if given, else a Basic whose Ability works from the Active Spot, else one outside the main line with the most HP). Each own turn: draw; then repeat until nothing changes: play a Stadium that does something here, use it, play Items (Poké Ball and other searches take a random matching card, as printed; Rare Candy on the main line first), bench Basics the plan needs (others only while the Bench has room to spare), evolve (main line first), use draw Abilities, attach Tool pieces; when nothing else moves, one Supporter: a search that finds a missing piece, else a draw, else Copycat when the hand is small and holds nothing needed (Copycat assumes the opponent holds 4 cards). Then the turn's Energy (random among the declared types) goes to the main line first, then other combo attackers, else the Active; Energy from the discard or from Abilities is added; then the check; an Ability that ends the turn is used only when the main attacker cannot attack. No opponent, no knockouts, no retreat, no attacks (attack effects that set up, such as Flock or Glittering Gift, are ignored), no coin-flip Supporters. Hand limit 10.
 
-Generated by `lib/consistency.py` in 38 s; solitaire seed 21,002,160,000 (Python random, same deals across variants).
+Generated by `lib/consistency.py` in 36 s; solitaire seed 21,002,160,000 (Python random, same deals across variants).

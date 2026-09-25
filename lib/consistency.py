@@ -3,7 +3,7 @@
 
 usage:
   python3 lib/consistency.py <deck.txt> [--main "<card name>[:<attack>]"] [--combo "<name>,<name>|<alt>"]
-                             [--games N] [--goldfish N] [--seed S]
+                             [--lead "<Basic>"] [--games N] [--goldfish N] [--seed S]
   python3 lib/consistency.py --batch decks/consistency_2026-09-25/lists.tsv [--games N] [--goldfish N]
 
 Writes one plain-language page per list to decks/consistency_2026-09-25/<deck>.md and prints a
@@ -16,7 +16,9 @@ What it measures, going first and going second separately:
   4. Combo pieces assembled by own turn 2..5 (Pokemon pieces in play, Trainer pieces in hand
      or already played).
   5. Goldfish against the engine: points conceded before the list's first attack that does
-     damage, turn of that attack, dead cards in hand at the end of each turn.
+     30+ damage (the headline; also before any damaging attack and before the main attacker's
+     first attack), turn of that attack, who made it, dead cards in hand at the end of each turn.
+     Figures over both seats are the plain mean of the two seat means.
   6. Coverage flag: the list's cards that hit known blind spots of the engine's bots.
 
 Parts 2 to 4 come from a solitaire model written here (a sensible pilot playing the list's draw,
@@ -371,8 +373,24 @@ def describe_eff(e):
 # The plan: main attacker, combo, lines
 # ----------------------------------------------------------------------------------------------
 
+ACTIVE_SPOT_ABILITY = re.compile(r'(?:[Ii]f|[Aa]s long as|[Ww]hile) this Pokémon is in the Active Spot')
+
+
+def active_spot_ability(c):
+    """An Ability that only works while this Pokémon is Active (Innards Out, Legendary Pulse, Quick Growth...)."""
+    return bool(c and c.kind == 'P' and c.ability and ACTIVE_SPOT_ABILITY.search(c.ability[1]))
+
+
+def lead_key(plan, c):
+    """Which Basic starts in the Active Spot (lowest key): --lead if given, else a Basic whose Ability works
+    from the Active Spot, else one outside the main line, then the most HP."""
+    if plan.lead and c.name == plan.lead:
+        return (-1, 0, 0)
+    return (0 if active_spot_ability(c) else 1, 1 if c.name in plan.main_line_set else 0, -(c.hp or 0))
+
+
 class Plan:
-    def __init__(self, path, types, cards, main=None, combo=None, copycat_k=4):
+    def __init__(self, path, types, cards, main=None, combo=None, copycat_k=4, lead=None):
         self.path, self.types, self.cards = path, types, cards
         self.copycat_k = copycat_k
         self.names = collections.Counter(c.name for c in cards)
@@ -413,6 +431,9 @@ class Plan:
         self.targets = list(dict.fromkeys(self.targets))
         self.lines = {t: line_of(t) for t in self.targets}
         self.line_names = set(n for t in self.targets for n in self.lines[t])
+        self.lead = self.find_name(lead) if lead else None
+        if self.lead and not self.byname[self.lead].is_basic:
+            sys.exit(f'{path}: --lead {self.lead!r} is not a Basic Pokémon')
 
     def find_name(self, want):
         want = want.strip()
@@ -579,12 +600,7 @@ class Solo:
     # -- setup
     def setup(self):
         basics = [c for c in self.hand if c.is_basic]
-
-        def akey(c):
-            wants = any(e.get('active_only') for e in self.P.effects.get(c.name, ())
-                        if e['kind'] in ('eot_draw', 'draw_ability', 'quick_growth', 'early_evolve'))
-            return (0 if wants else 1, 1 if c.name in self.P.main_line_set else 0, -c.hp)
-        basics.sort(key=akey)
+        basics.sort(key=lambda c: lead_key(self.P, c))
         act = basics[0]
         self.hand.remove(act)
         self.play.append(Slot(act, 0))
@@ -1149,7 +1165,32 @@ def needs_opp_bench(name):
     """Cards that are unplayable only because the aa opponent never benches (Cyrus, Sabrina...)."""
     c = db()['name'].get(name)
     return bool(c and c.kind == 'T' and OPP_BENCH.search(c.text))
+
+
 HEAL = re.compile(r'^Heal \d+ damage')
+# "If your opponent's Active Pokémon is Confused / is a Pokémon ex / has damage on it, this attack does N more"
+COND_BONUS = re.compile(r"If your opponent's Active Pokémon (is a Pokémon ex|is (Confused|Poisoned|Asleep|Paralyzed|"
+                        r"Burned)|has damage on it), this attack does (\d+) more damage")
+HIT_ABILITY = re.compile(r"you may do \d+ damage to your opponent's Active Pokémon")
+STATUS_ABILITY = re.compile(r"you may make your opponent's Active Pokémon (Confused|Poisoned|Asleep|Paralyzed|Burned)")
+STATUS_TRAINER = re.compile(r"^Your opponent's Active Pokémon is now (Confused|Poisoned|Asleep|Paralyzed|Burned)")
+BIG_HIT = 30            # "real" attack: at least this much damage to the opposing Active, or a knockout
+
+
+def attack_value(dmg, effect, opp):
+    """Damage an attack does now. A bonus whose condition shows on the opposing Active (Confused, ex, damaged)
+    counts in full when met and not at all when not; other conditional bonuses count half (est_damage)."""
+    effect = effect or ''
+    m = COND_BONUS.search(effect)
+    if m and opp:
+        if m.group(1) == 'is a Pokémon ex':
+            ok = bool(opp.get('ex'))
+        elif m.group(2):
+            ok = m.group(2) in (opp.get('status') or [])
+        else:
+            ok = (opp.get('hp_left') or 0) < (opp.get('hp_card') or 0)
+        return (dmg or 0) + (int(m.group(3)) if ok else 0)
+    return est_damage(dict(dmg=dmg or 0, effect=effect))
 
 
 class Pilot:
@@ -1185,7 +1226,7 @@ class Pilot:
                 need.update(n for n in piece if self.P.byname[n].kind == 'T')
         return need
 
-    def best_attack(self, name, energy):
+    def best_attack(self, name, energy, opp=None):
         c = self.c(name)
         if not c:
             return None, 0
@@ -1193,8 +1234,24 @@ class Pilot:
                 and missing(a['cost'], energy) == 0]
         if not atks:
             return None, 0
-        a = max(atks, key=est_damage)
-        return a, est_damage(a)
+        val = lambda a: attack_value(a['dmg'], a['effect'], opp)   # noqa: E731
+        a = max(atks, key=val)
+        return a, val(a)
+
+    def gains_from(self, slot, status, turn_energy):
+        """True if this Pokémon has an attack that does more damage against `status` and can pay for it this
+        turn (now, or with one of the turn's Energy options attached to it)."""
+        c = self.c(slot['name']) if slot else None
+        if not c:
+            return False
+        for a in c.attacks:
+            m = COND_BONUS.search(a['effect'])
+            if not (m and m.group(2) == status and payable(a, self.P.types)):
+                continue
+            if missing(a['cost'], slot['energy']) == 0 or any(missing(a['cost'], slot['energy'] + [et]) == 0
+                                                              for et in turn_energy):
+                return True
+        return False
 
     def role_cost(self, name):
         if name in self.P.main_line_set:
@@ -1216,13 +1273,7 @@ class Pilot:
         hand = v['me']['hand']
         if v['me']['board'][0] is None:
             opts = [(i, card_name(a['Place'][0])) for i, a in enumerate(acts) if K[i] == 'Place']
-
-            def akey(nm):
-                wants = any(e.get('active_only') for e in self.P.effects.get(nm, ())
-                            if e['kind'] in ('eot_draw', 'draw_ability', 'quick_growth', 'early_evolve'))
-                c = self.c(nm)
-                return (0 if wants else 1, 1 if nm in self.P.main_line_set else 0, -(c.hp if c else 0))
-            return min(opts, key=lambda x: akey(x[1]))[0]
+            return min(opts, key=lambda x: lead_key(self.P, self.c(x[1])))[0]
         opts = [(i, card_name(a['Place'][0])) for i, a in enumerate(acts) if K[i] == 'Place']
         if opts:
             return min(opts, key=lambda x: self.prio(x[1]))[0]
@@ -1254,7 +1305,27 @@ class Pilot:
                     return i
         if all(k == 'Heal' for k in K):
             return next((i for i, a in enumerate(acts) if a['Heal']['in_play_idx'] == 0), 0)
+        if set(K) == {'Noop', 'UseAbility'}:    # an optional triggered Ability (Weezing ex's Boiler Smog on evolve)
+            for i, a in enumerate(acts):
+                if K[i] == 'UseAbility' and self.wants_ability(board[a['UseAbility']['in_play_idx']], v['them']['board'][0]):
+                    return i
+            return K.index('Noop')
         return 0
+
+    def wants_ability(self, s, opp_act):
+        """Abilities the pilot uses: draw, search, Energy (not the ones that end the turn), damage to the opposing
+        Active, or a Special Condition it does not have yet."""
+        if not s:
+            return False
+        for e in self.P.effects.get(s['name'], ()):
+            if e['kind'] in ('draw_ability', 'search_ability') or (e['kind'] == 'accel_ability' and not e['ends_turn']):
+                return True
+        c = self.c(s['name'])
+        t = c.ability[1] if c and c.ability else ''
+        if HIT_ABILITY.search(t):
+            return True
+        m = STATUS_ABILITY.search(t)
+        return bool(m and opp_act and m.group(1) not in (opp_act.get('status') or []))
 
     def decide(self, v, acts):
         K = [akind(a) for a in acts]
@@ -1311,7 +1382,10 @@ class Pilot:
                         for h in hand)
             if kinds & {'search_stadium', 'arcade'} or ('reroll_energy' in kinds and patch):
                 return K.index('UseStadium')
-        # 5. Abilities that draw, search or add Energy (not the ones that end the turn)
+        # 5. Abilities that draw, search or add Energy (not the ones that end the turn); then Abilities that
+        #    damage the opposing Active (Crobat's Cunning Link) or give it a Special Condition it does not
+        #    have yet (Meowstic's Perplexing Ears)
+        opp_act = them['board'][0]
         for i, a in enumerate(acts):
             if K[i] != 'UseAbility':
                 continue
@@ -1319,9 +1393,21 @@ class Pilot:
             for e in self.P.effects.get(s['name'], ()) if s else ():
                 if e['kind'] in ('draw_ability', 'search_ability') or (e['kind'] == 'accel_ability' and not e['ends_turn']):
                     return i
-        # 6. one Supporter: search for a missing piece, else draw, else Copycat on a small hand, else defence
+        for i, a in enumerate(acts):
+            if K[i] == 'UseAbility' and self.wants_ability(board[a['UseAbility']['in_play_idx']], opp_act):
+                return i
+        # 6. one Supporter: a Supporter that gives the opposing Active a Special Condition the Active's attack
+        #    gains from this turn (Team Rocket's Master Plan for Hatterene); else search for a missing piece,
+        #    else draw, else Copycat on a small hand, else defence
         sups = [(i, tc) for i, tc in plays if tc['trainer_card_type'] == 'Supporter']
+        turn_energy = [a['Attach']['attachments'][0][1] for i, a in enumerate(acts) if K[i] == 'Attach'
+                       and a['Attach'].get('is_turn_energy') and a['Attach']['attachments'][0][2] == 0]
         pick = None
+        for i, tc in sups:
+            m = STATUS_TRAINER.search(tc['effect'] or '')
+            if pick is None and m and opp_act and m.group(1) not in (opp_act.get('status') or []) \
+                    and self.gains_from(act, m.group(1), turn_energy):
+                pick = i
         for i, tc in sups:
             if pick is None and need and any(e['kind'] == 'search' for e in self.P.effects.get(tc['name'], ())):
                 pick = i
@@ -1342,25 +1428,40 @@ class Pilot:
         if pick is not None:
             return pick
         # 7. the turn's Energy: main line first, then other combo attackers, else the Active.
-        #    Exception: a Benched Pokémon can attack now, the Active cannot, and one Energy on the
-        #    Active is all its retreat needs -> Energy on the Active, then retreat (step 8).
+        #    Exception ("switch"): a Benched main or combo Pokémon can attack now and the Active cannot (or,
+        #    when the Active is outside the main line, the Benched one does 40+ more damage). Then a Stadium
+        #    or Item that lowers the Retreat Cost, and the turn's Energy goes on the Active until it can
+        #    retreat, whatever its Retreat Cost; step 8 retreats.
         att = [(i, a['Attach']) for i, a in enumerate(acts) if K[i] == 'Attach' and a['Attach'].get('is_turn_energy')]
         atks = [(i, a['Attack']) for i, a in enumerate(acts) if K[i] == 'Attack']
-        best_now = max([est_damage(dict(dmg=a.get('fixed_damage') or 0, effect=a.get('effect') or ''))
-                        for _, a in atks], default=0)
-        ready_bench = [j for j, s in enumerate(board) if j and s and s['name'] in self.P.targets
-                       and self.best_attack(s['name'], s['energy'])[1] > 0]
-        if att and act and best_now <= 0 and ready_bench and 'Retreat' not in K:
-            ac = self.c(act['name'])
-            if ac and ac.retreat - len(act['energy']) == 1:
-                for i, at in att:
-                    if at['attachments'][0][2] == 0:
-                        return i
-        if best_now <= 0 and ready_bench and 'Retreat' not in K:
+        aval = lambda a: attack_value(a.get('fixed_damage') or 0, a.get('effect') or '', opp_act)   # noqa: E731
+        best_now = max([aval(a) for _, a in atks], default=0)
+        bench_val = {j: self.best_attack(s['name'], s['energy'], opp_act)[1] for j, s in enumerate(board)
+                     if j and s and s['name'] in self.P.targets}
+        bench_best = max(bench_val.values(), default=0)
+        # a main or combo Pokémon in the Active Spot can attack this turn if it takes the turn's Energy, as well
+        # as a Benched one that would otherwise switch in: power it and attack (step 9) rather than pay a retreat
+        act_after, act_after_i = 0, None
+        for i, at in att:
+            _, et, idx = at['attachments'][0]
+            if idx == 0 and act:
+                v2 = self.best_attack(act['name'], act['energy'] + [et], opp_act)[1]
+                if v2 > act_after:
+                    act_after, act_after_i = v2, i
+        if best_now <= 0 and bench_best > 0 and act['name'] in self.P.targets and act_after >= bench_best:
+            return act_after_i
+        switch = bool(act) and bench_best > 0 and (
+            best_now <= 0 or (act['name'] not in self.P.main_line_set and bench_best >= best_now + 40))
+        if switch and 'Retreat' not in K:
             for i, tc in plays:          # a Stadium or Item that lowers the Retreat Cost
                 if 'Retreat Cost' in (tc['effect'] or '') and 'less' in (tc['effect'] or '') \
                         and tc['trainer_card_type'] in ('Item', 'Stadium'):
                     return i
+            ac = self.c(act['name'])
+            if att and ac and ac.retreat - len(act['energy']) >= 1:
+                for i, at in att:
+                    if at['attachments'][0][2] == 0:
+                        return i
         if att:
             best, key = None, None
             for i, at in att:
@@ -1376,24 +1477,25 @@ class Pilot:
                 k = (role, -((c.stage or 0) if c else 0), before)
                 if key is None or k < key:
                     best, key = i, k
+            if best is None and switch:      # nothing needs it: the Pokémon about to switch in, not the leaver
+                to = max(bench_val, key=lambda j: bench_val[j])
+                best = next((i for i, at in att if at['attachments'][0][2] == to), None)
             if best is None:
                 best = next((i for i, at in att if at['attachments'][0][2] == 0), att[0][0])
             return best
-        # 8. retreat to a Benched Pokémon that can attack now, if the Active cannot
-        if best_now <= 0:
+        # 8. retreat to a Benched main or combo Pokémon that can attack now (the "switch" case of step 7)
+        if switch:
             rets = []
             for i, a in enumerate(acts):
                 if K[i] == 'Retreat':
-                    s = board[a['Retreat']]
-                    _, dmg = self.best_attack(s['name'], s['energy']) if s and s['name'] in self.P.targets else (None, 0)
-                    if dmg > 0:
-                        rets.append((i, -dmg, self.prio(s['name'])))
+                    dmg = bench_val.get(a['Retreat'], 0)
+                    if dmg > 0 and (best_now <= 0 or dmg >= best_now + 40):
+                        rets.append((i, -dmg, self.prio(board[a['Retreat']]['name'])))
             if rets:
                 return min(rets, key=lambda x: (x[2], x[1]))[0]
-        # 9. attack: the most damage
+        # 9. attack: the most damage (a bonus counts when its condition shows on the opposing Active)
         if atks:
-            return max(atks, key=lambda x: est_damage(dict(dmg=x[1].get('fixed_damage') or 0,
-                                                            effect=x[1].get('effect') or '')))[0]
+            return max(atks, key=lambda x: aval(x[1]))[0]
         # 10. an Ability that ends the turn, when not attacking
         for i, a in enumerate(acts):
             if K[i] == 'UseAbility':
@@ -1403,11 +1505,11 @@ class Pilot:
         return K.index('EndTurn')
 
 
-def scripted_games(deck_path, opp_path, n, seed, main, combo, copycat_k):
+def scripted_games(deck_path, opp_path, n, seed, main, combo, copycat_k, lead=None):
     """Runs inside the add-on's Python. The pilot plays seat 0; the engine's aa bot plays seat 1."""
     import pdl_rl_env
     types, cards = read_deck(deck_path)
-    plan = Plan(deck_path, types, cards, main, combo, copycat_k)
+    plan = Plan(deck_path, types, cards, main, combo, copycat_k, lead)
     pilot = Pilot(plan)
     vocab = sorted(set(pdl_rl_env.RawEnv.deck_card_ids(deck_path)) | set(pdl_rl_env.RawEnv.deck_card_ids(opp_path)))
     env = pdl_rl_env.RawEnv(vocab)
@@ -1417,23 +1519,27 @@ def scripted_games(deck_path, opp_path, n, seed, main, combo, copycat_k):
         s = seed + k
         env.reset(deck_path, opp_path, s, [None, 'aa'])
         first = None
-        rec = {'seed': s, 'first_real': None, 'first_attack': None, 'conceded': None,
-               'main_attack': None, 'main_conceded': None, 'dead': {}, 'forced_turns': 0}
-        pending = None          # (own turn, their active HP before my attack, their points, main?)
+        rec = {'seed': s, 'first_real': None, 'first_attack': None, 'conceded': None, 'first_real_by': None,
+               'first_real_dmg': None, 'first_big': None, 'big_conceded': None, 'first_big_by': None,
+               'main_attack': None, 'main_conceded': None, 'dead': {}, 'forced_turns': 0,
+               'lead': None, 'retreats': 0}
+        pending = None          # the attack just chosen, until its damage is known
         hist_seen = 0
         forced_end = False
-        last_hand = None
-        last_turn = None
         while not env.done:
             v = json.loads(env.describe(0))
             acts = [json.loads(a) for a in env.legal_actions_json()]
             tc = v['turn']
             if first is None and tc >= 1:
                 first = (tc % 2 == 1)
+            if rec['lead'] is None and tc >= 1 and v['me']['board'][0]:
+                rec['lead'] = v['me']['board'][0]['name']
             own = ((tc + 1) // 2 if first else tc // 2) if tc >= 1 else 0
             i = pilot.decide(v, acts)
             a = acts[i]
             kd = akind(a)
+            if kd == 'Retreat' and tc >= 1:
+                rec['retreats'] += 1
             if tc >= 1 and kd in ('EndTurn', 'Attack') and 'EndTurn' in [akind(x) for x in acts]:
                 live = set()
                 for x in acts:
@@ -1445,35 +1551,57 @@ def scripted_games(deck_path, opp_path, n, seed, main, combo, copycat_k):
                 rec['dead'].setdefault(own, (len(v['me']['hand']), dead))
             if kd == 'Attack' and tc >= 1:
                 opp_act = v['them']['board'][0]
-                is_main = v['me']['board'][0]['name'] == plan.main
+                by = v['me']['board'][0]['name']
                 if rec['first_attack'] is None:
                     rec['first_attack'] = own
-                if is_main and rec['main_attack'] is None:
+                if by == plan.main and rec['main_attack'] is None:
                     rec['main_attack'], rec['main_conceded'] = own, v['them']['points']
-                if rec['first_real'] is None:
-                    pending = (own, opp_act['hp_left'] if opp_act else None, v['them']['points'])
+                if rec['first_real'] is None or rec['first_big'] is None:
+                    # Poison and Burn already on the opposing Active tick at the Checkup before we can look:
+                    # take them off, so only damage from this attack (and Conditions it applied) counts
+                    st = (opp_act or {}).get('status') or []
+                    tick = 20 if 'Burned' in st else 0
+                    if 'Poisoned' in st:
+                        tick += 10
+                        for s_ in v['me']['board']:
+                            c_ = pilot.c(s_['name']) if s_ else None
+                            m_ = re.search(r'takes \+(\d+) damage from being Poisoned', c_.ability[1]) \
+                                if c_ and c_.ability else None
+                            tick += int(m_.group(1)) if m_ else 0
+                    pending = {'own': own, 'hp': opp_act['hp_left'] if opp_act else None, 'tick': tick,
+                               'name': opp_act['name'] if opp_act else None, 'their': v['them']['points'],
+                               'mine': v['me']['points'], 'by': by}
             env.step(i)
             hist = env.history()
             new = hist[hist_seen:]
             hist_seen = len(hist)
             if pending is not None:
-                real = None
+                # damage to the opposing Active, read at the opponent's first decision after the attack
+                # (so Poison or Burn from the checkup counts); a knockout counts as all its HP
+                ko, dmg = False, 0
                 if env.done:
                     w, pts, _ = env.result()
-                    real = w == 0 or pts[0] > 0
+                    ko = w == 0 or pts[0] > pending['mine']
                 else:
+                    a0, seen = None, False
                     for (p, kind, mv, view) in new:
                         if p == 1 and view:
-                            ov = json.loads(view)
-                            a0 = ov['me']['board'][0]
-                            real = a0 is None or pending[1] is None or a0['hp_left'] < pending[1]
+                            a0, seen = json.loads(view)['me']['board'][0], True
                             break
-                    if real is None:
-                        nv = json.loads(env.describe(0))
-                        a0 = nv['them']['board'][0]
-                        real = a0 is None or pending[1] is None or a0['hp_left'] < pending[1]
-                if real:
-                    rec['first_real'], rec['conceded'] = pending[0], pending[2]
+                    if not seen:
+                        a0 = json.loads(env.describe(0))['them']['board'][0]
+                    if pending['hp'] is None or a0 is None or a0['name'] != pending['name']:
+                        ko = True
+                    else:
+                        dmg = pending['hp'] - a0['hp_left'] - pending['tick']
+                if ko:
+                    dmg = pending['hp'] or 0
+                if (ko or dmg > 0) and rec['first_real'] is None:
+                    rec['first_real'], rec['conceded'] = pending['own'], pending['their']
+                    rec['first_real_by'], rec['first_real_dmg'] = pending['by'], ('KO' if ko else dmg)
+                if (ko or dmg >= BIG_HIT) and rec['first_big'] is None:
+                    rec['first_big'], rec['big_conceded'] = pending['own'], pending['their']
+                    rec['first_big_by'] = pending['by']
                 pending = None
             # turns that ended with only EndTurn legal (auto-played): all of the hand was dead
             for (p, kind, mv, view) in new:
@@ -1492,6 +1620,8 @@ def scripted_games(deck_path, opp_path, n, seed, main, combo, copycat_k):
         rec.update({'first': bool(first), 'win': w == 0, 'tie': w == -1, 'final': list(pts), 'turns': turns})
         if rec['first_real'] is None:
             rec['conceded'] = pts[1]
+        if rec['first_big'] is None:
+            rec['big_conceded'] = pts[1]
         if rec['main_attack'] is None:
             rec['main_conceded'] = pts[1]
         rec['dead'] = {str(k): v for k, v in rec['dead'].items()}
@@ -1499,10 +1629,10 @@ def scripted_games(deck_path, opp_path, n, seed, main, combo, copycat_k):
     return games
 
 
-def run_scripted(deck_path, opp_path, n, seed, main, combo, copycat_k, addon_py):
+def run_scripted(deck_path, opp_path, n, seed, main, combo, copycat_k, addon_py, lead=None):
     if not os.path.exists(addon_py):
         raise RuntimeError(f'add-on Python not found at {addon_py}')
-    args = json.dumps([deck_path, opp_path, n, seed, main, combo, copycat_k])
+    args = json.dumps([deck_path, opp_path, n, seed, main, combo, copycat_k, lead])
     r = subprocess.run([addon_py, os.path.abspath(__file__), '--worker', args], capture_output=True, text=True)
     if r.returncode != 0:
         raise RuntimeError(f'scripted pilot failed: {r.stderr[-1500:]}')
@@ -1510,6 +1640,18 @@ def run_scripted(deck_path, opp_path, n, seed, main, combo, copycat_k, addon_py)
     for g in games:
         g['dead'] = {int(k): (v[0], v[1]) for k, v in g['dead'].items()}
     return games
+
+
+def mean_se(xs):
+    """Mean and its standard error (simulation noise only)."""
+    n = len(xs)
+    if not n:
+        return 0.0, 0.0
+    m = sum(xs) / n
+    if n < 2:
+        return m, 0.0
+    var = sum((x - m) ** 2 for x in xs) / (n - 1)
+    return m, math.sqrt(var / n)
 
 
 def summarize_goldfish(games):
@@ -1529,28 +1671,57 @@ def summarize_goldfish(games):
                     for nm in set(d) - {'(unseen)'}:
                         dead_names[nm] += 1
         att = [x for x in fr if x is not None]
-        if 'main_attack' in gs[0]:
+        conceded, conceded_se = mean_se([g['conceded'] for g in gs])
+        extra = {}
+        if 'main_attack' in gs[0]:          # scripted pilot only
             ma = [g['main_attack'] for g in gs]
-            main_stats = {
+            mc, mc_se = mean_se([g['main_conceded'] for g in gs])
+            fb = [g['first_big'] for g in gs]
+            bc, bc_se = mean_se([g['big_conceded'] for g in gs])
+            extra = {
                 'main_by3': sum(1 for x in ma if x is not None and x <= 3) / n,
                 'main_by4': sum(1 for x in ma if x is not None and x <= 4) / n,
                 'main_never': sum(1 for x in ma if x is None) / n,
-                'main_conceded': sum(g['main_conceded'] for g in gs) / n,
+                'main_conceded': mc, 'main_conceded_se': mc_se,
+                'big_by3': sum(1 for x in fb if x is not None and x <= 3) / n,
+                'big_by4': sum(1 for x in fb if x is not None and x <= 4) / n,
+                'big_never': sum(1 for x in fb if x is None) / n,
+                'big_conceded': bc, 'big_conceded_se': bc_se,
+                'retreat_games': sum(1 for g in gs if g['retreats'] > 0) / n,
+                'real_by': collections.Counter(g['first_real_by'] or '(none)' for g in gs),
+                'big_by': collections.Counter(g['first_big_by'] or '(none)' for g in gs),
+                'leads': collections.Counter(g['lead'] or '(none)' for g in gs),
             }
-        else:
-            main_stats = {}
-        out[seat] = {**main_stats,
+        out[seat] = {**extra,
             'n': n, 'wins': sum(g['win'] for g in gs), 'ties': sum(g['tie'] for g in gs),
             'by2': sum(1 for x in fr if x is not None and x <= 2) / n,
             'by3': sum(1 for x in fr if x is not None and x <= 3) / n,
             'by4': sum(1 for x in fr if x is not None and x <= 4) / n,
             'never': sum(1 for x in fr if x is None) / n,
             'median': (sorted(att)[len(att) // 2] if att else None),
-            'conceded': sum(g['conceded'] for g in gs) / n,
+            'conceded': conceded, 'conceded_se': conceded_se,
             'conceded2': sum(1 for g in gs if g['conceded'] >= 2) / n,
             'dead': (sum(dead_counts) / len(dead_counts)) if dead_counts else 0.0,
             'dead_names': [(nm, c / checks) for nm, c in dead_names.most_common(5)] if checks else [],
         }
+    return out
+
+
+def seat_balanced(summ):
+    """Each float figure as the plain mean of the going-first and going-second means (the coin sets how many
+    games each seat gets, and the seats differ a lot), and each '_se' figure combined the same way."""
+    seats = [summ[k] for k in (True, False) if k in summ]
+    if not seats:
+        return {}
+    keys = set.intersection(*[set(k for k, x in v.items() if isinstance(x, float)) for v in seats])
+    out = {}
+    for k in keys:
+        if k.endswith('_se'):
+            out[k] = math.sqrt(sum(v[k] ** 2 for v in seats)) / len(seats)
+        else:
+            out[k] = sum(v[k] for v in seats) / len(seats)
+    out['n'] = sum(v['n'] for v in seats)
+    out['n_seats'] = tuple(summ[k]['n'] if k in summ else 0 for k in (True, False))
     return out
 
 
@@ -1691,10 +1862,10 @@ def deck_label(path):
 
 def build(path, main=None, combo=None, games=10000, gold=150, seed=SEED0, engine=DEFAULT_ENGINE,
           opp=DEFAULT_OPP, copycat_k=4, out_dir=DEFAULT_OUT, ladder=None, quiet=False,
-          addon_py=DEFAULT_ADDON_PY):
+          addon_py=DEFAULT_ADDON_PY, lead=None):
     t0 = time.time()
     types, cards = read_deck(path)
-    plan = Plan(path, types, cards, main, combo, copycat_k)
+    plan = Plan(path, types, cards, main, combo, copycat_k, lead)
     label = deck_label(path)
     op = opening_exact(plan)
     sol = solitaire(plan, games, seed)
@@ -1704,7 +1875,7 @@ def build(path, main=None, combo=None, games=10000, gold=150, seed=SEED0, engine
         # 'sp': the scripted pilot on the real engine (add-on); 'aa': the engine's own bot as pilot
         try:
             gs = run_scripted(os.path.abspath(path), os.path.abspath(opp), gold, seed, main, combo,
-                              copycat_k, addon_py)
+                              copycat_k, addon_py, lead)
             gold_res['sp'] = (seed, summarize_goldfish(gs))
         except Exception as e:  # report, do not hide
             gold_err.append(f'scripted pilot: {e}')
@@ -1745,22 +1916,18 @@ def render(plan, label, op, sol, gold_res, gold_err, cov, games, gold, seed, opp
     one_basic = op['final'][1]
     # --- one-line summary
     gs = ''
-    gavg = {}
-    for pilot, (s0, s) in gold_res.items():
-        allg = sum(v['n'] for v in s.values())
-        keys = set.intersection(*[set(k for k, x in v.items() if isinstance(x, float)) for v in s.values()])
-        gavg[pilot] = {k: sum(v[k] * v['n'] for v in s.values()) / allg for k in keys}
-    if 'sp' in gavg:
+    gavg = {pilot: seat_balanced(s) for pilot, (s0, s) in gold_res.items()}   # mean of the two seat means
+    if 'sp' in gavg and 'big_conceded' in gavg['sp']:
         a = gavg['sp']
-        gs = (f'; goldfish (scripted pilot v aa): damaging attack by own T3 {pct(a["by3"])} with '
-              f'{a["conceded"]:.1f} pts conceded first, {P.main} attacks by T4 {pct(a["main_by4"])} with '
-              f'{a["main_conceded"]:.1f} conceded first, {a["dead"]:.1f} dead cards/turn')
+        gs = (f'; goldfish (scripted pilot v aa, seat-balanced): {a["big_conceded"]:.2f} pts conceded before the '
+              f'first {BIG_HIT}+ damage attack (by own T3 in {pct(a["big_by3"])}), {P.main} attacks by T4 '
+              f'{pct(a["main_by4"])} with {a["main_conceded"]:.2f} conceded first, {a["dead"]:.1f} dead cards/turn')
     nflag = sum(1 for _, fl in cov if any(c == 'a' for c, _ in fl))
     line = (f'{label}: one-Basic opening {pct(one_basic)}; {P.main} online by own T3 {pct(r(g1, "online", 3))} first / '
             f'{pct(r(g2, "online", 3))} second (T4 {pct(r(g1, "online", 4))}/{pct(r(g2, "online", 4))}); '
             f'combo by T4 {pct(r(g1, "combo", 4))}/{pct(r(g2, "combo", 4))}{gs}; '
             f'unpriced-text cards (a): {nflag}')
-    row = {'label': label, 'ladder': ladder, 'one_basic': one_basic, 'main': P.main,
+    row = {'label': label, 'ladder': ladder, 'one_basic': one_basic, 'main': P.main, 'basics': op['B'],
            'on3': (r(g1, 'online', 3), r(g2, 'online', 3)), 'on4': (r(g1, 'online', 4), r(g2, 'online', 4)),
            'on2': (r(g1, 'online', 2), r(g2, 'online', 2)),
            'combo4': (r(g1, 'combo', 4), r(g2, 'combo', 4)), 'combo': P.combo_text(),
@@ -1771,7 +1938,8 @@ def render(plan, label, op, sol, gold_res, gold_err, cov, games, gold, seed, opp
     w(f'# Consistency: {label}\n')
     w(f'`{os.path.relpath(P.path, ROOT) if os.path.isabs(P.path) else P.path}` · Energy: {", ".join(P.types)} · '
       f'main attacker: {main_desc} · combo: {P.combo_text()}'
-      + (' (inferred from the list; pass --combo to name it)' if P.combo_inferred else '') + '\n')
+      + (' (inferred from the list; pass --combo to name it)' if P.combo_inferred else '')
+      + (f' · lead (when in the opening hand): {P.lead}' if P.lead else '') + '\n')
     if ladder:
         w(f'Ladder record: {ladder}\n')
     w(f'**In one line:** {line}\n')
@@ -1882,34 +2050,67 @@ def render(plan, label, op, sol, gold_res, gold_err, cov, games, gold, seed, opp
           'the opponent is one Active Pokémon, and knocking it out wins. That makes it a fixed clock (here mostly '
           'Hoopa ex: 30 a turn from its first Energy, 100 from its third), not a real opponent.\n')
         w('Two pilots for this list. **sp** (scripted pilot, the main reading): the solitaire model\'s priorities '
-          'playing the real engine through the add-on: benches Basics, plays the draw, search, Rare Candy and '
-          'Energy cards, evolves, puts Energy on the main line, attaches defensive Tools, heals a hurt Active, '
-          'retreats to a Pokémon that can attack, and attacks for the most damage. **aa** (the brief\'s pilot): '
-          'the engine\'s own bot on this side too, so both sides have a single Pokémon and the game ends at the '
-          'first knockout; its "points conceded" can never exceed what one knockout gives. `et` ends every turn '
-          'at once and never attacks, so it is not used. '
-          f'{gold} games per pilot; the coin decides who goes first.\n')
-        w('"Damaging attack" = the list\'s first attack that damaged or knocked out the opposing Active (poison '
-          'it applied counts). "Conceded" = the opponent\'s points at that moment (or at the end if it never came). '
-          '"Main attacks" = the first attack by the main attacker. "Dead" = cards in hand at the end of the '
-          'turn that the rules did not let you play then (own turns 1-4; a second Supporter after one was '
-          'played counts as dead; cards that need an opposing Bench, such as Cyrus and Sabrina, are left out '
-          'because this opponent never has one).\n')
-        w('| pilot | seat | games | won | damaging attack by T2 | by T3 | by T4 | never | '
-          'points conceded before it | conceded 2+ | main attacks by T3 | by T4 | never | conceded before main | '
-          'dead cards / turn |')
-        w('|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|')
+          'playing the real engine through the add-on. It leads with a Basic whose Ability works from the Active '
+          'Spot (Pyukumuku\'s Innards Out, Entei ex\'s Legendary Pulse), else one outside the main line with the '
+          'most HP (`--lead` overrides); benches Basics, plays the draw, search, Rare Candy and Energy cards, '
+          'evolves, puts Energy on the main line, attaches defensive Tools, heals a hurt Active, uses Abilities '
+          'that draw, search, add Energy, damage the opposing Active (Crobat\'s Cunning Link) or give it a '
+          'Special Condition (Meowstic\'s Perplexing Ears), plays a Supporter such as Team Rocket\'s Master Plan '
+          'when the Active\'s attack gains from the Condition this turn, and attacks for the most damage. When a '
+          'main or combo Pokémon is Active and the turn\'s Energy lets it attack this turn for as much as a '
+          'Benched one could, the Energy goes on it. Otherwise, when a Benched main or combo Pokémon can attack '
+          'and the Active cannot (or '
+          'the Benched one does 40+ more and the Active is outside the main line), the turn\'s Energy goes on the '
+          'Active until it can retreat, and it retreats. **aa** (the brief\'s pilot): the engine\'s own bot on this side too, so both sides have a '
+          'single Pokémon and the game ends at the first knockout; its "points conceded" can never exceed what '
+          'one knockout gives. `et` ends every turn at once and never attacks, so it is not used. '
+          f'{gold} games per pilot; the coin decides who goes first, so the seats get different numbers of games; '
+          'the "both seats" row is the plain mean of the two seat means.\n')
+        w(f'"{BIG_HIT}+ attack" (the headline tempo reading) = the list\'s first attack that did {BIG_HIT} or more '
+          'damage to the opposing Active or knocked it out (Poison or Burn the attack applied counts at the next '
+          'Checkup; Poison or Burn that was already there does not). "Damaging attack" = '
+          'the first attack that did any damage, chip damage included (Hatenna\'s Stampede for 10 counts). '
+          '"Conceded" = the opponent\'s points at that moment (or at the end if it never came); ± is the standard '
+          'error of the mean over these games: simulation noise only, nothing about the ladder. "Main attacks" = '
+          'the first attack by the main attacker. "Dead" = cards in hand at the end of the turn that the rules '
+          'did not let you play then (own turns 1-4; a second Supporter after one was played counts as dead; '
+          'cards that need an opposing Bench, such as Cyrus and Sabrina, are left out because this opponent '
+          'never has one).\n')
+        w(f'| pilot | seat | games | won | {BIG_HIT}+ attack by T3 | by T4 | never | conceded before it | '
+          'damaging attack by T3 | never | conceded before it | main attacks by T3 | by T4 | never | '
+          'conceded before main | dead cards / turn |')
+        w('|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|')
+
+        def grow(pilot, label_, v, games_):
+            big = (f'{pct(v["big_by3"])} | {pct(v["big_by4"])} | {pct(v["big_never"])} | '
+                   f'{v["big_conceded"]:.2f} ± {v["big_conceded_se"]:.2f}' if 'big_by3' in v else '- | - | - | -')
+            ms = (f'{pct(v["main_by3"])} | {pct(v["main_by4"])} | {pct(v["main_never"])} | {v["main_conceded"]:.2f}'
+                  if 'main_by3' in v else '- | - | - | -')
+            won = pct(v['wins'] / v['n']) if 'wins' in v else '-'
+            w(f'| {pilot} | {label_} | {games_} | {won} | {big} | {pct(v["by3"])} | {pct(v["never"])} | '
+              f'{v["conceded"]:.2f} ± {v["conceded_se"]:.2f} | {ms} | {v["dead"]:.1f} |')
         for pilot, (s0, summ) in gold_res.items():
             for seat in (True, False):
-                if seat not in summ:
-                    continue
-                v = summ[seat]
-                ms = (f'{pct(v["main_by3"])} | {pct(v["main_by4"])} | {pct(v["main_never"])} | {v["main_conceded"]:.2f}'
-                      if 'main_by3' in v else '- | - | - | -')
-                w(f'| {pilot} | {"first" if seat else "second"} | {v["n"]} | {pct(v["wins"] / v["n"])} | '
-                  f'{pct(v["by2"])} | {pct(v["by3"])} | {pct(v["by4"])} | {pct(v["never"])} | '
-                  f'{v["conceded"]:.2f} | {pct(v["conceded2"])} | {ms} | {v["dead"]:.1f} |')
+                if seat in summ:
+                    grow(pilot, 'first' if seat else 'second', summ[seat], summ[seat]['n'])
+            if len(summ) == 2:
+                bal = seat_balanced(summ)
+                grow(pilot, '**both seats**', bal, f'{bal["n_seats"][0]} + {bal["n_seats"][1]}')
         w('')
+        if 'sp' in gold_res:
+            summ = gold_res['sp'][1]
+            tot = sum(v['n'] for v in summ.values())
+            for key, what in (('real_by', 'Who made the first damaging attack'),
+                              ('big_by', f'Who made the first {BIG_HIT}+ attack'),
+                              ('leads', 'Who led (Active at the start)')):
+                cnt = collections.Counter()
+                for v in summ.values():
+                    cnt.update(v.get(key) or {})
+                if cnt:
+                    w(f'{what} (sp, both seats, {tot} games): ' + ', '.join(
+                        f'{nm} {pct(c / tot)}' for nm, c in cnt.most_common(6)) + '.\n')
+            rg = sum(v.get('retreat_games', 0) * v['n'] for v in summ.values()) / tot if tot else 0
+            w(f'Games in which the scripted pilot retreated at least once: {pct(rg)}.\n')
         for pilot, (s0, summ) in gold_res.items():
             names = collections.Counter()
             tot = 0
@@ -1971,8 +2172,8 @@ def render(plan, label, op, sol, gold_res, gold_err, cov, games, gold, seed, opp
         w(f'| {nm} ×{P.names[nm]} | {text} | {note} |')
     w('')
     w('## How the solitaire pilot plays\n')
-    w('Setup: all Basics in hand go into play (Active: a Basic with an "if Active" draw Ability, else one '
-      'outside the main line). Each own turn: draw; then repeat until nothing changes: play a Stadium that does '
+    w('Setup: all Basics in hand go into play (Active: the `--lead` Basic if given, else a Basic whose Ability '
+      'works from the Active Spot, else one outside the main line with the most HP). Each own turn: draw; then repeat until nothing changes: play a Stadium that does '
       'something here, use it, play Items (Poké Ball and other searches take a random matching card, as printed; '
       'Rare Candy on the main line first), bench Basics the plan needs (others only while the Bench has room to '
       'spare), evolve (main line first), use draw Abilities, attach Tool pieces; when nothing else moves, one '
@@ -1998,42 +2199,127 @@ def read_batch(path):
         if not ln.strip() or ln.startswith('#'):
             continue
         p = [x.strip() for x in ln.rstrip('\n').split('\t')]
-        p += [''] * (6 - len(p))
+        p += [''] * (7 - len(p))
         rows.append({'deck': p[0], 'main': p[1] or None, 'combo': p[2] or None,
-                     'ladder': p[3] or None, 'screen': p[4] or None, 'role': p[5] or ''})
+                     'ladder': p[3] or None, 'screen': p[4] or None, 'role': p[5] or '', 'lead': p[6] or None})
     return rows
 
 
 def anchors_table(results):
-    L = ['| List | Role | Ladder | k3 screen | 1-Basic open | Main online by T3 (1st / 2nd) | by T4 (1st / 2nd) | '
-         'Combo by T4 (1st / 2nd) | sp: damaging attack by T3 | sp: pts conceded before it | '
-         'sp: main attacks by T4 | sp: pts conceded before main | sp: dead cards/turn | aa: damaging attack by T3 | '
-         '(a) cards |',
-         '|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|']
+    L = ['| List | Role | Ladder | k3 screen | Basics | 1-Basic open | Main online by T3 (1st / 2nd) | '
+         'by T4 (1st / 2nd) | Combo by T4 (1st / 2nd) | '
+         f'sp: {BIG_HIT}+ attack by T3 | **sp: pts conceded before the first {BIG_HIT}+ attack** (± sim. noise) | '
+         'sp: pts conceded before any damaging attack | sp: main attacks by T4 | sp: pts conceded before main | '
+         'sp: dead cards/turn | aa: damaging attack by T3 | (a) cards |',
+         '|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|']
     for b, row in results:
         gd = row['gold']
 
         def g(p, k, f):
             return f(gd[p][k]) if gd.get(p) and k in gd[p] else '-'
         f2 = lambda x: f'{x:.2f}'   # noqa: E731
+        head = '-'
+        if gd.get('sp') and 'big_conceded' in gd['sp']:
+            head = f'**{gd["sp"]["big_conceded"]:.2f}** ± {gd["sp"]["big_conceded_se"]:.2f}'
         L.append(f'| {row["label"]} (main {row["main"]}) | {b["role"]} | {b["ladder"] or "-"} | {b["screen"] or "-"} | '
-                 f'{pct(row["one_basic"])} | {pct(row["on3"][0])} / {pct(row["on3"][1])} | '
+                 f'{row.get("basics", "-")} | {pct(row["one_basic"])} | {pct(row["on3"][0])} / {pct(row["on3"][1])} | '
                  f'{pct(row["on4"][0])} / {pct(row["on4"][1])} | {pct(row["combo4"][0])} / {pct(row["combo4"][1])} | '
-                 f'{g("sp", "by3", pct)} | {g("sp", "conceded", f2)} | {g("sp", "main_by4", pct)} | '
+                 f'{g("sp", "big_by3", pct)} | {head} | {g("sp", "conceded", f2)} | {g("sp", "main_by4", pct)} | '
                  f'{g("sp", "main_conceded", f2)} | {g("sp", "dead", lambda x: f"{x:.1f}")} | '
                  f'{g("aa", "by3", pct)} | {row["flags_a"]} |')
     return '\n'.join(L)
 
 
+def ladder_frac(s):
+    m = re.match(r'\s*(\d+)\s*-\s*(\d+)\s*$', s or '')
+    if not m or int(m.group(1)) + int(m.group(2)) == 0:
+        return None
+    return int(m.group(1)) / (int(m.group(1)) + int(m.group(2)))
+
+
+def order_check(results):
+    """For each measure: among pairs of anchor lists with different ladder records, how many the measure puts
+    in the ladder's order, how many it reverses, how many it ties (at the precision shown in the table)."""
+    def sp(k, scale=100, nd=0):
+        return lambda row, b: (round(row['gold']['sp'][k] * scale, nd)
+                               if row['gold'].get('sp') and k in row['gold']['sp'] else None)
+
+    def aa(k):
+        return lambda row, b: (round(row['gold']['aa'][k] * 100) if row['gold'].get('aa') and k in row['gold']['aa']
+                               else None)
+
+    def screen(row, b):
+        m = re.match(r'\s*(\d+)%', b.get('screen') or '')
+        return int(m.group(1)) if m else None
+    # (measure, value, direction: +1 higher is better, -1 lower is better, 0 no set direction)
+    measures = [
+        ('Basics in the list', lambda r, b: r.get('basics'), 0),
+        ('1-Basic opening', lambda r, b: round(r['one_basic'] * 100), 0),
+        ('main online by T3, going first', lambda r, b: round(r['on3'][0] * 100), 1),
+        ('main online by T3, going second', lambda r, b: round(r['on3'][1] * 100), 1),
+        ('main online by T4 (mean of seats)', lambda r, b: round(50 * (r['on4'][0] + r['on4'][1])), 1),
+        ('combo by T4 (mean of seats)', lambda r, b: round(50 * (r['combo4'][0] + r['combo4'][1])), 1),
+        (f'sp: {BIG_HIT}+ attack by T3', sp('big_by3'), 1),
+        (f'**sp: pts conceded before the first {BIG_HIT}+ attack (headline)**', sp('big_conceded', 1, 2), -1),
+        ('sp: damaging attack (any) by T3', sp('by3'), 1),
+        ('sp: pts conceded before any damaging attack', sp('conceded', 1, 2), -1),
+        ('sp: main attacks by T4', sp('main_by4'), 1),
+        ('sp: pts conceded before the main attacker attacks', sp('main_conceded', 1, 2), -1),
+        ('sp: dead cards per turn', sp('dead', 1, 1), -1),
+        ('aa: damaging attack by T3', aa('by3'), 1),
+        ('k3 screen (Lab)', screen, 1),
+    ]
+    anchors = [(b, row, ladder_frac(b['ladder'])) for b, row in results
+               if b['role'].startswith('anchor') and ladder_frac(b['ladder']) is not None]
+    L = ['| measure | good direction | anchor pairs in ladder order | reversed | tied | reading |',
+         '|---|---|---|---|---|---|']
+    for name, get, d in measures:
+        con = dis = tie = 0
+        vals = [(get(row, b), lf) for b, row, lf in anchors]
+        for i in range(len(vals)):
+            for j in range(i + 1, len(vals)):
+                (vi, li), (vj, lj) = vals[i], vals[j]
+                if vi is None or vj is None or li == lj:
+                    continue
+                if vi == vj:
+                    tie += 1
+                elif (vi - vj) * (li - lj) * (d or 1) > 0:
+                    con += 1
+                else:
+                    dis += 1
+        if con + dis + tie == 0:
+            continue
+        if dis == 0 and con > 0:
+            reading = 'ladder order' + (' (with ties)' if tie else '')
+        elif con == 0 and dis > 0:
+            reading = 'exact reverse order' + (' (with ties)' if tie else '')
+        else:
+            reading = f'{dis} inversion{"s" if dis != 1 else ""}'
+        dn = {1: 'higher', -1: 'lower', 0: 'none set (counted as higher)'}[d]
+        L.append(f'| {name} | {dn} | {con} | {dis} | {tie} | {reading} |')
+    return '\n'.join(L), len(anchors)
+
+
 def write_anchors(out_dir, results, lines, args):
     path = os.path.join(out_dir, 'ANCHORS.md')
     table = anchors_table(results)
+    order, na = order_check(results)
     auto = ('<!-- table:start (rewritten by lib/consistency.py --batch) -->\n'
             f'Run: {args.games:,} solitaire deals per seat, {args.goldfish} engine games per pilot per list, '
             f'seeds from {args.seed:,} (list i: solitaire and scripted-pilot seeds {args.seed:,} + 10,000·i, '
             f'aa-pilot seeds that +5,000), opponent `{os.path.relpath(args.opponent, ROOT)}` piloted by aa. '
-            'sp = scripted pilot on the real engine; aa = the engine\'s attach-and-attack bot as pilot.\n\n'
-            + table + '\n\nOne line per list:\n\n' + '\n'.join(f'- {x}' for x in lines) + '\n'
+            'sp = scripted pilot on the real engine; aa = the engine\'s attach-and-attack bot as pilot. Every sp '
+            'and aa figure is seat-balanced: the plain mean of the going-first and going-second means. '
+            f'"{BIG_HIT}+ attack" = the first attack that did {BIG_HIT} or more damage or knocked out; ± is its '
+            'standard error over these games (simulation noise only, nothing about the ladder).\n\n'
+            + table + '\n\n'
+            f'### Order check on the {na} anchors\n\n'
+            'Pairs of anchor lists with different ladder records (the two 1-3 lists and the two 0-3 lists are not '
+            'compared with each other): how many pairs each measure puts in the ladder\'s order. With only about '
+            'four independent anchors (06 and 06b are near-copies; 01 and 03a are both Arceus ex CCC lists), a '
+            'measure with no real signal still puts them in perfect order about 1 time in 24, and this table has '
+            '15 measures.\n\n' + order +
+            '\n\nOne line per list:\n\n' + '\n'.join(f'- {x}' for x in lines) + '\n'
             '<!-- table:end -->')
     if os.path.exists(path):
         old = io.open(path, encoding='utf-8').read()
@@ -2062,7 +2348,11 @@ def main(argv=None):
     ap.add_argument('--main', help='main attacker name, optionally "Name:Attack title" (default: inferred)')
     ap.add_argument('--combo', help='combo pieces, comma-separated; alternatives with | (default: inferred)')
     ap.add_argument('--games', type=int, default=10000, help='solitaire deals per seat (default 10000)')
-    ap.add_argument('--goldfish', type=int, default=150, help='engine games per pilot (aa and er); 0 skips (default 150)')
+    ap.add_argument('--goldfish', type=int, default=150,
+                    help='engine games per pilot (scripted pilot and aa); 0 skips (default 150)')
+    ap.add_argument('--lead', help='Basic the scripted pilot and the solitaire model start in the Active Spot when '
+                                   'it is in the opening hand (default: a Basic whose Ability works from the Active '
+                                   'Spot, else one outside the main line with the most HP)')
     ap.add_argument('--seed', type=int, default=SEED0, help=f'seed (default {SEED0:,})')
     ap.add_argument('--engine', default=DEFAULT_ENGINE, help='deckgym engine program (Linux)')
     ap.add_argument('--opponent', default=DEFAULT_OPP, help='goldfish opponent list, piloted by aa')
@@ -2070,7 +2360,8 @@ def main(argv=None):
                     help='Python with the pdl_rl_env add-on, for the scripted pilot (default: the rules4 add-on venv)')
     ap.add_argument('--copycat-hand', type=int, default=4, help='opponent hand size Copycat assumes (default 4)')
     ap.add_argument('--out', default=DEFAULT_OUT, help='output folder')
-    ap.add_argument('--batch', help='TSV: deck, main, combo, ladder, k3 screen, role (one list per line)')
+    ap.add_argument('--batch', help='TSV: deck, main, combo, ladder, k3 screen, role, lead (one list per line; '
+                                    'empty cells mean the default)')
     ap.add_argument('--ladder', help='ladder record to print on the page')
     args = ap.parse_args(argv)
     args.opponent = os.path.abspath(args.opponent)
@@ -2083,7 +2374,8 @@ def main(argv=None):
                   file=sys.stderr, flush=True)
             path = b['deck'] if os.path.isabs(b['deck']) else os.path.join(ROOT, b['deck'])
             line, row = build(path, b['main'], b['combo'], args.games, args.goldfish, s, args.engine,
-                              args.opponent, args.copycat_hand, args.out, b['ladder'], addon_py=args.addon_python)
+                              args.opponent, args.copycat_hand, args.out, b['ladder'], addon_py=args.addon_python,
+                              lead=b['lead'])
             results.append((b, row))
             lines.append(line)
         write_anchors(args.out, results, lines, args)
@@ -2091,7 +2383,7 @@ def main(argv=None):
     if not args.deck:
         ap.error('give a deck file or --batch')
     build(args.deck, args.main, args.combo, args.games, args.goldfish, args.seed, args.engine,
-          args.opponent, args.copycat_hand, args.out, args.ladder, addon_py=args.addon_python)
+          args.opponent, args.copycat_hand, args.out, args.ladder, addon_py=args.addon_python, lead=args.lead)
 
 
 if __name__ == '__main__':
