@@ -1,5 +1,10 @@
 Decision this informs: whether kd (the defender's Weakness and lasting damage cuts, priced in the threat clock) goes into the pilot on top of kp. On its own table kd3 fits Limitless worse than kp3 (mean squared miss 124.5 against 112.2), though better than k3 (159.3) and kq3 (147.3). It narrows Vespiquen's gap by 1.2 points (±1.7, so not clearly), and it moves Altaria v Lucario the wrong way. The laptop scores it by the adoption rule. Engine commit 0c0e7f9 for the kd3 table; branch commit 413a4aa has the same `engine/`. k3, kp3 and kq3 were shown unchanged at 97ca8f4, and nothing on their path changed after it.
 
+**Outcome (laptop, rule v2):** not adopted; kp3 stays the pilot. Main dfd3919, `rl/results/table_readings_2026-09-24/kd3_paired_reading.md`:
+- τ̂: kp3 8.6, kd3 9.4. ΔMSE +14.2 (95%: −11.1 to +39.6). No vetoes.
+- The laptop's mixed rows (0c0e7f9 build) matched this table's pairing 1 on 500 of 500 games.
+- With kd3 on one side only, Lucario (−2.2 ± 1.4), Vespiquen (−1.5) and Hydreigon (−1.1) were piloted worse beyond noise. The laptop's tier-1 read ties Lucario's drop to how kd prices a sniper as the threat.
+
 Seeds: the table's deals only. 72,000,000 + pairing × 10,000 + i, i < 500, even i = first-named deck in seat 0.
 
 # kd3: kp3 plus the defender's Weakness and damage cuts in the clock (Sept 25)
