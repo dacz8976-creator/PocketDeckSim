@@ -669,7 +669,7 @@ fn calculate_turns_until_opponent_wins_damage_aware(
 
     let best_threat = state
         .enumerate_in_play_pokemon(opponent)
-        .filter_map(|(_, pokemon)| {
+        .filter_map(|(slot, pokemon)| {
             let mut candidates: Vec<(u32, usize)> = pokemon
                 .card
                 .get_attacks()
@@ -707,10 +707,11 @@ fn calculate_turns_until_opponent_wins_damage_aware(
             candidates
                 .into_iter()
                 .min_by_key(|(damage, missing)| (*missing, u32::MAX - damage))
+                .map(|(damage, missing)| (damage, missing, slot))
         })
-        .min_by_key(|(damage, missing)| (*missing, u32::MAX - damage));
-    let (max_damage, missing_energy) = match best_threat {
-        Some((damage, missing)) => (damage as f64, missing),
+        .min_by_key(|(damage, missing, _)| (*missing, u32::MAX - damage));
+    let (max_damage, missing_energy, _threat_slot) = match best_threat {
+        Some((damage, missing, slot)) => (damage as f64, missing, slot),
         None => return 30.0, // No pokemon can deal damage, now or via any available evolution
     };
 
@@ -718,6 +719,19 @@ fn calculate_turns_until_opponent_wins_damage_aware(
     let mut opp_points = state.points[opponent];
 
     total_turns += missing_energy as f64;
+
+    // B2b diagnostic, only in builds with the `status-clock` feature: a threat in the Active Spot that is
+    // Asleep misses its next attack half the time (the checkup coin), and one that is Paralyzed misses it.
+    #[cfg(feature = "status-clock")]
+    if _threat_slot == 0 {
+        if let Some(threat) = state.maybe_get_active(opponent) {
+            if threat.has_status(StatusCondition::Paralyzed) {
+                total_turns += 1.0;
+            } else if threat.has_status(StatusCondition::Asleep) {
+                total_turns += 0.5;
+            }
+        }
+    }
 
     if let Some(my_active) = state.maybe_get_active(player) {
         let turns_to_ko = (my_active.get_remaining_hp() as f64 / max_damage).ceil();
