@@ -1,0 +1,6199 @@
+{
+  "altaria": {
+    "branches": [
+      {
+        "branch": "DrawCard",
+        "occurrences": 494,
+        "reason": "draw reaches an unknown card identity"
+      },
+      {
+        "branch": "EndTurn",
+        "occurrences": 28103,
+        "reason": "automatic next-turn ability searches an unknown deck"
+      },
+      {
+        "branch": "EndTurn",
+        "occurrences": 1172,
+        "reason": "opponent setup is hidden; only own setup development is scored"
+      },
+      {
+        "branch": "EndTurn",
+        "occurrences": 21485,
+        "reason": "setup handoff or reveal requires the concealed opponent board"
+      },
+      {
+        "branch": "Noop",
+        "occurrences": 908,
+        "reason": "no certified public immediate winning reply; unsupported replies remain unknown"
+      },
+      {
+        "branch": "Noop",
+        "occurrences": 3,
+        "reason": "private pending choice is unavailable to this observer"
+      },
+      {
+        "branch": "Noop",
+        "occurrences": 648,
+        "reason": "public reply attack mechanic is outside the audited certificate registry"
+      },
+      {
+        "branch": "Noop",
+        "occurrences": 1236103,
+        "reason": "public reply board contains a hook outside the audited certificate registry"
+      },
+      {
+        "branch": "Noop",
+        "occurrences": 40969,
+        "reason": "public reply certificate encountered an unsupported prefix action"
+      },
+      {
+        "branch": "place Darkrai",
+        "occurrences": 1195,
+        "reason": "opponent setup is hidden; only own setup development is scored"
+      },
+      {
+        "branch": "place Eevee",
+        "occurrences": 2735,
+        "reason": "opponent setup is hidden; only own setup development is scored"
+      },
+      {
+        "branch": "place Igglybuff",
+        "occurrences": 296,
+        "reason": "opponent setup is hidden; only own setup development is scored"
+      },
+      {
+        "branch": "place Swablu",
+        "occurrences": 2019,
+        "reason": "opponent setup is hidden; only own setup development is scored"
+      }
+    ],
+    "decisions": 33337,
+    "hidden_itself": {
+      "chosen": 43,
+      "offered": 1957
+    },
+    "kinds": {
+      "boundary": {
+        "chosen": 29652,
+        "offered": 30375
+      },
+      "hidden": {
+        "chosen": 3194,
+        "offered": 3301
+      },
+      "other": {
+        "chosen": 2008,
+        "offered": 2008
+      }
+    },
+    "roots": [
+      {
+        "chosen": 218,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 218,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Activate"
+      },
+      {
+        "chosen": 4,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 4,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Activate"
+      },
+      {
+        "chosen": 139,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 392,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Attach"
+      },
+      {
+        "chosen": 5564,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 16674,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Attach"
+      },
+      {
+        "chosen": 50,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 271,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Attach"
+      },
+      {
+        "chosen": 54,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 181,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Copycat"
+      },
+      {
+        "chosen": 1453,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 4908,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Copycat"
+      },
+      {
+        "chosen": 66,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 192,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Copycat"
+      },
+      {
+        "chosen": 0,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 2,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Dark Slumber (Darkrai)"
+      },
+      {
+        "chosen": 208,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 429,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Dark Slumber (Darkrai)"
+      },
+      {
+        "chosen": 0,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 10,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "DiscardActiveStadium"
+      },
+      {
+        "chosen": 11,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 314,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "DiscardActiveStadium"
+      },
+      {
+        "chosen": 12,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 12,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "DiscardToolFromPokemon"
+      },
+      {
+        "chosen": 379,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 390,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "DiscardToolFromPokemon"
+      },
+      {
+        "chosen": 43,
+        "itself": true,
+        "kind": "hidden",
+        "offered": 785,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "EndTurn"
+      },
+      {
+        "chosen": 12,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 619,
+        "reason": "no certified public immediate winning reply; unsupported replies remain unknown",
+        "root": "EndTurn"
+      },
+      {
+        "chosen": 0,
+        "itself": true,
+        "kind": "other",
+        "offered": 1172,
+        "reason": "opponent setup is hidden; only own setup development is scored",
+        "root": "EndTurn"
+      },
+      {
+        "chosen": 1297,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 26710,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "EndTurn"
+      },
+      {
+        "chosen": 0,
+        "itself": true,
+        "kind": "hidden",
+        "offered": 1172,
+        "reason": "setup handoff or reveal requires the concealed opponent board",
+        "root": "EndTurn"
+      },
+      {
+        "chosen": 14,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 170,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Field Blower"
+      },
+      {
+        "chosen": 609,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 4791,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Field Blower"
+      },
+      {
+        "chosen": 0,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 2,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Field Blower"
+      },
+      {
+        "chosen": 15,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 37,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Hypnoblast (Espeon)"
+      },
+      {
+        "chosen": 12,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 42,
+        "reason": "public reply attack mechanic is outside the audited certificate registry",
+        "root": "Hypnoblast (Espeon)"
+      },
+      {
+        "chosen": 1445,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 3804,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Hypnoblast (Espeon)"
+      },
+      {
+        "chosen": 21,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 38,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Mega Harmony (Mega Altaria ex)"
+      },
+      {
+        "chosen": 8,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 38,
+        "reason": "public reply attack mechanic is outside the audited certificate registry",
+        "root": "Mega Harmony (Mega Altaria ex)"
+      },
+      {
+        "chosen": 971,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 2617,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Mega Harmony (Mega Altaria ex)"
+      },
+      {
+        "chosen": 96,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 159,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Poké Ball"
+      },
+      {
+        "chosen": 1683,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 3194,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Poké Ball"
+      },
+      {
+        "chosen": 112,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 187,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Poké Ball"
+      },
+      {
+        "chosen": 60,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 124,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Professor's Research"
+      },
+      {
+        "chosen": 1533,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 3131,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Professor's Research"
+      },
+      {
+        "chosen": 60,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 148,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Professor's Research"
+      },
+      {
+        "chosen": 1,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 1,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Promote"
+      },
+      {
+        "chosen": 181,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 181,
+        "reason": "draw reaches an unknown card identity",
+        "root": "Promote"
+      },
+      {
+        "chosen": 1,
+        "itself": false,
+        "kind": "other",
+        "offered": 1,
+        "reason": "private pending choice is unavailable to this observer",
+        "root": "Promote"
+      },
+      {
+        "chosen": 1466,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 1466,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Promote"
+      },
+      {
+        "chosen": 56,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 199,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Retreat"
+      },
+      {
+        "chosen": 5,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 200,
+        "reason": "no certified public immediate winning reply; unsupported replies remain unknown",
+        "root": "Retreat"
+      },
+      {
+        "chosen": 4,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 46,
+        "reason": "public reply attack mechanic is outside the audited certificate registry",
+        "root": "Retreat"
+      },
+      {
+        "chosen": 1194,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 13333,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Retreat"
+      },
+      {
+        "chosen": 4,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 172,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Retreat"
+      },
+      {
+        "chosen": 54,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 213,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Sabrina"
+      },
+      {
+        "chosen": 662,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 2693,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Sabrina"
+      },
+      {
+        "chosen": 5,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 70,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Sabrina"
+      },
+      {
+        "chosen": 14,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 48,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Sing (Swablu)"
+      },
+      {
+        "chosen": 8,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 32,
+        "reason": "public reply attack mechanic is outside the audited certificate registry",
+        "root": "Sing (Swablu)"
+      },
+      {
+        "chosen": 580,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 1834,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Sing (Swablu)"
+      },
+      {
+        "chosen": 23,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 108,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Sleepy Lullaby (Igglybuff)"
+      },
+      {
+        "chosen": 7,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 178,
+        "reason": "public reply attack mechanic is outside the audited certificate registry",
+        "root": "Sleepy Lullaby (Igglybuff)"
+      },
+      {
+        "chosen": 648,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 2906,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Sleepy Lullaby (Igglybuff)"
+      },
+      {
+        "chosen": 52,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 172,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Small Balloon"
+      },
+      {
+        "chosen": 924,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 2809,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Small Balloon"
+      },
+      {
+        "chosen": 27,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 127,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Small Balloon"
+      },
+      {
+        "chosen": 14,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 25,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Stampede (Eevee)"
+      },
+      {
+        "chosen": 152,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 474,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Stampede (Eevee)"
+      },
+      {
+        "chosen": 9,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 247,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Training Area"
+      },
+      {
+        "chosen": 659,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 6890,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Training Area"
+      },
+      {
+        "chosen": 26,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 176,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Training Area"
+      },
+      {
+        "chosen": 29,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 380,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "UseStadium"
+      },
+      {
+        "chosen": 287,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 3927,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "UseStadium"
+      },
+      {
+        "chosen": 49,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 49,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "attach Small Balloon"
+      },
+      {
+        "chosen": 856,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 856,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "attach Small Balloon"
+      },
+      {
+        "chosen": 15,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 15,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "attach Small Balloon"
+      },
+      {
+        "chosen": 49,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 94,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "evolve into Espeon"
+      },
+      {
+        "chosen": 1295,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 2136,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "evolve into Espeon"
+      },
+      {
+        "chosen": 6,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 6,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "evolve into Mega Altaria ex"
+      },
+      {
+        "chosen": 846,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 1447,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "evolve into Mega Altaria ex"
+      },
+      {
+        "chosen": 11,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 18,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "evolve into Mega Altaria ex"
+      },
+      {
+        "chosen": 59,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 86,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "place Darkrai"
+      },
+      {
+        "chosen": 558,
+        "itself": true,
+        "kind": "other",
+        "offered": 699,
+        "reason": "opponent setup is hidden; only own setup development is scored",
+        "root": "place Darkrai"
+      },
+      {
+        "chosen": 1319,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 1766,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "place Darkrai"
+      },
+      {
+        "chosen": 113,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 138,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "place Darkrai"
+      },
+      {
+        "chosen": 558,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 699,
+        "reason": "setup handoff or reveal requires the concealed opponent board",
+        "root": "place Darkrai"
+      },
+      {
+        "chosen": 60,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 154,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "place Eevee"
+      },
+      {
+        "chosen": 576,
+        "itself": true,
+        "kind": "other",
+        "offered": 1256,
+        "reason": "opponent setup is hidden; only own setup development is scored",
+        "root": "place Eevee"
+      },
+      {
+        "chosen": 1089,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 3456,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "place Eevee"
+      },
+      {
+        "chosen": 44,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 158,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "place Eevee"
+      },
+      {
+        "chosen": 576,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 1256,
+        "reason": "setup handoff or reveal requires the concealed opponent board",
+        "root": "place Eevee"
+      },
+      {
+        "chosen": 18,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 73,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "place Igglybuff"
+      },
+      {
+        "chosen": 296,
+        "itself": true,
+        "kind": "other",
+        "offered": 296,
+        "reason": "opponent setup is hidden; only own setup development is scored",
+        "root": "place Igglybuff"
+      },
+      {
+        "chosen": 416,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 2830,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "place Igglybuff"
+      },
+      {
+        "chosen": 7,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 55,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "place Igglybuff"
+      },
+      {
+        "chosen": 296,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 296,
+        "reason": "setup handoff or reveal requires the concealed opponent board",
+        "root": "place Igglybuff"
+      },
+      {
+        "chosen": 59,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 103,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "place Swablu"
+      },
+      {
+        "chosen": 577,
+        "itself": true,
+        "kind": "other",
+        "offered": 975,
+        "reason": "opponent setup is hidden; only own setup development is scored",
+        "root": "place Swablu"
+      },
+      {
+        "chosen": 1253,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 2386,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "place Swablu"
+      },
+      {
+        "chosen": 43,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 89,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "place Swablu"
+      },
+      {
+        "chosen": 577,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 975,
+        "reason": "setup handoff or reveal requires the concealed opponent board",
+        "root": "place Swablu"
+      }
+    ]
+  },
+  "blaziken": {
+    "branches": [
+      {
+        "branch": "DrawCard",
+        "occurrences": 306,
+        "reason": "draw reaches an unknown card identity"
+      },
+      {
+        "branch": "EndTurn",
+        "occurrences": 14269,
+        "reason": "automatic next-turn ability searches an unknown deck"
+      },
+      {
+        "branch": "EndTurn",
+        "occurrences": 357,
+        "reason": "opponent setup is hidden; only own setup development is scored"
+      },
+      {
+        "branch": "EndTurn",
+        "occurrences": 4915,
+        "reason": "setup handoff or reveal requires the concealed opponent board"
+      },
+      {
+        "branch": "Noop",
+        "occurrences": 3965,
+        "reason": "no certified public immediate winning reply; unsupported replies remain unknown"
+      },
+      {
+        "branch": "Noop",
+        "occurrences": 981,
+        "reason": "public reply attack mechanic is outside the audited certificate registry"
+      },
+      {
+        "branch": "Noop",
+        "occurrences": 639788,
+        "reason": "public reply board contains a hook outside the audited certificate registry"
+      },
+      {
+        "branch": "Noop",
+        "occurrences": 46265,
+        "reason": "public reply certificate encountered an unsupported prefix action"
+      },
+      {
+        "branch": "place Castform Sunny Form",
+        "occurrences": 388,
+        "reason": "opponent setup is hidden; only own setup development is scored"
+      },
+      {
+        "branch": "place Heatmor",
+        "occurrences": 175,
+        "reason": "opponent setup is hidden; only own setup development is scored"
+      },
+      {
+        "branch": "place Torchic",
+        "occurrences": 1255,
+        "reason": "opponent setup is hidden; only own setup development is scored"
+      }
+    ],
+    "decisions": 30343,
+    "hidden_itself": {
+      "chosen": 20,
+      "offered": 887
+    },
+    "kinds": {
+      "boundary": {
+        "chosen": 28240,
+        "offered": 29023
+      },
+      "hidden": {
+        "chosen": 1654,
+        "offered": 1697
+      },
+      "other": {
+        "chosen": 682,
+        "offered": 682
+      }
+    },
+    "roots": [
+      {
+        "chosen": 215,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 215,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Activate"
+      },
+      {
+        "chosen": 3,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 3,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Activate"
+      },
+      {
+        "chosen": 2,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 2,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "ApplyDamage"
+      },
+      {
+        "chosen": 649,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 655,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "ApplyDamage"
+      },
+      {
+        "chosen": 56,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 56,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "ApplyDamage"
+      },
+      {
+        "chosen": 124,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 358,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Attach"
+      },
+      {
+        "chosen": 4655,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 13014,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Attach"
+      },
+      {
+        "chosen": 349,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 940,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Attach"
+      },
+      {
+        "chosen": 47,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 143,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Copycat"
+      },
+      {
+        "chosen": 1210,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 4831,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Copycat"
+      },
+      {
+        "chosen": 216,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 642,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Copycat"
+      },
+      {
+        "chosen": 2,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 7,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Cyrus"
+      },
+      {
+        "chosen": 322,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 940,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Cyrus"
+      },
+      {
+        "chosen": 15,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 42,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Cyrus"
+      },
+      {
+        "chosen": 0,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 6,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "DiscardActiveStadium"
+      },
+      {
+        "chosen": 7,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 368,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "DiscardActiveStadium"
+      },
+      {
+        "chosen": 6,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 6,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "DiscardToolFromPokemon"
+      },
+      {
+        "chosen": 410,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 418,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "DiscardToolFromPokemon"
+      },
+      {
+        "chosen": 20,
+        "itself": true,
+        "kind": "hidden",
+        "offered": 530,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "EndTurn"
+      },
+      {
+        "chosen": 81,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 2673,
+        "reason": "no certified public immediate winning reply; unsupported replies remain unknown",
+        "root": "EndTurn"
+      },
+      {
+        "chosen": 0,
+        "itself": true,
+        "kind": "other",
+        "offered": 357,
+        "reason": "opponent setup is hidden; only own setup development is scored",
+        "root": "EndTurn"
+      },
+      {
+        "chosen": 405,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 22551,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "EndTurn"
+      },
+      {
+        "chosen": 0,
+        "itself": true,
+        "kind": "hidden",
+        "offered": 357,
+        "reason": "setup handoff or reveal requires the concealed opponent board",
+        "root": "EndTurn"
+      },
+      {
+        "chosen": 13,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 170,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Field Blower"
+      },
+      {
+        "chosen": 594,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 5241,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Field Blower"
+      },
+      {
+        "chosen": 3,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 16,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Field Blower"
+      },
+      {
+        "chosen": 51,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 64,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Flame Patch"
+      },
+      {
+        "chosen": 1630,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 3253,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Flame Patch"
+      },
+      {
+        "chosen": 111,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 202,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Flame Patch"
+      },
+      {
+        "chosen": 12,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 158,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Hiking Trail"
+      },
+      {
+        "chosen": 688,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 3146,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Hiking Trail"
+      },
+      {
+        "chosen": 118,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 691,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Hiking Trail"
+      },
+      {
+        "chosen": 39,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 75,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Mega Burning (Mega Blaziken ex)"
+      },
+      {
+        "chosen": 41,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 107,
+        "reason": "public reply attack mechanic is outside the audited certificate registry",
+        "root": "Mega Burning (Mega Blaziken ex)"
+      },
+      {
+        "chosen": 1114,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 2844,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Mega Burning (Mega Blaziken ex)"
+      },
+      {
+        "chosen": 18,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 61,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Peck (Torchic)"
+      },
+      {
+        "chosen": 35,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 145,
+        "reason": "no certified public immediate winning reply; unsupported replies remain unknown",
+        "root": "Peck (Torchic)"
+      },
+      {
+        "chosen": 448,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 1994,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Peck (Torchic)"
+      },
+      {
+        "chosen": 85,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 162,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Poké Ball"
+      },
+      {
+        "chosen": 1329,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 3501,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Poké Ball"
+      },
+      {
+        "chosen": 364,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 589,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Poké Ball"
+      },
+      {
+        "chosen": 66,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 127,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Professor's Research"
+      },
+      {
+        "chosen": 1366,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 2814,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Professor's Research"
+      },
+      {
+        "chosen": 233,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 443,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Professor's Research"
+      },
+      {
+        "chosen": 4,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 4,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Promote"
+      },
+      {
+        "chosen": 122,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 122,
+        "reason": "draw reaches an unknown card identity",
+        "root": "Promote"
+      },
+      {
+        "chosen": 1036,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 1036,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Promote"
+      },
+      {
+        "chosen": 21,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 28,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Rare Candy"
+      },
+      {
+        "chosen": 1170,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 1827,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Rare Candy"
+      },
+      {
+        "chosen": 68,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 91,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Rare Candy"
+      },
+      {
+        "chosen": 42,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 171,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Retreat"
+      },
+      {
+        "chosen": 111,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 649,
+        "reason": "no certified public immediate winning reply; unsupported replies remain unknown",
+        "root": "Retreat"
+      },
+      {
+        "chosen": 15,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 59,
+        "reason": "public reply attack mechanic is outside the audited certificate registry",
+        "root": "Retreat"
+      },
+      {
+        "chosen": 1329,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 10528,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Retreat"
+      },
+      {
+        "chosen": 108,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 544,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Retreat"
+      },
+      {
+        "chosen": 44,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 150,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Rocky Helmet"
+      },
+      {
+        "chosen": 760,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 3293,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Rocky Helmet"
+      },
+      {
+        "chosen": 150,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 594,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Rocky Helmet"
+      },
+      {
+        "chosen": 41,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 112,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Sunny Scorching (Castform Sunny Form)"
+      },
+      {
+        "chosen": 89,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 223,
+        "reason": "public reply attack mechanic is outside the audited certificate registry",
+        "root": "Sunny Scorching (Castform Sunny Form)"
+      },
+      {
+        "chosen": 1476,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 4248,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Sunny Scorching (Castform Sunny Form)"
+      },
+      {
+        "chosen": 10,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 32,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Tongue Whip (Heatmor)"
+      },
+      {
+        "chosen": 108,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 301,
+        "reason": "public reply attack mechanic is outside the audited certificate registry",
+        "root": "Tongue Whip (Heatmor)"
+      },
+      {
+        "chosen": 937,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 2872,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Tongue Whip (Heatmor)"
+      },
+      {
+        "chosen": 1,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 314,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "UseStadium"
+      },
+      {
+        "chosen": 39,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 3385,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "UseStadium"
+      },
+      {
+        "chosen": 34,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 34,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "attach Rocky Helmet"
+      },
+      {
+        "chosen": 637,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 637,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "attach Rocky Helmet"
+      },
+      {
+        "chosen": 97,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 97,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "attach Rocky Helmet"
+      },
+      {
+        "chosen": 12,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 12,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "evolve into Mega Blaziken ex"
+      },
+      {
+        "chosen": 534,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 534,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "evolve into Mega Blaziken ex"
+      },
+      {
+        "chosen": 40,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 40,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "evolve into Mega Blaziken ex"
+      },
+      {
+        "chosen": 37,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 50,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "place Castform Sunny Form"
+      },
+      {
+        "chosen": 181,
+        "itself": true,
+        "kind": "other",
+        "offered": 250,
+        "reason": "opponent setup is hidden; only own setup development is scored",
+        "root": "place Castform Sunny Form"
+      },
+      {
+        "chosen": 608,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 936,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "place Castform Sunny Form"
+      },
+      {
+        "chosen": 143,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 222,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "place Castform Sunny Form"
+      },
+      {
+        "chosen": 181,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 250,
+        "reason": "setup handoff or reveal requires the concealed opponent board",
+        "root": "place Castform Sunny Form"
+      },
+      {
+        "chosen": 31,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 48,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "place Heatmor"
+      },
+      {
+        "chosen": 175,
+        "itself": true,
+        "kind": "other",
+        "offered": 175,
+        "reason": "opponent setup is hidden; only own setup development is scored",
+        "root": "place Heatmor"
+      },
+      {
+        "chosen": 603,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 956,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "place Heatmor"
+      },
+      {
+        "chosen": 130,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 223,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "place Heatmor"
+      },
+      {
+        "chosen": 175,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 175,
+        "reason": "setup handoff or reveal requires the concealed opponent board",
+        "root": "place Heatmor"
+      },
+      {
+        "chosen": 88,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 145,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "place Torchic"
+      },
+      {
+        "chosen": 326,
+        "itself": true,
+        "kind": "other",
+        "offered": 568,
+        "reason": "opponent setup is hidden; only own setup development is scored",
+        "root": "place Torchic"
+      },
+      {
+        "chosen": 1227,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 2164,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "place Torchic"
+      },
+      {
+        "chosen": 282,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 567,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "place Torchic"
+      },
+      {
+        "chosen": 326,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 568,
+        "reason": "setup handoff or reveal requires the concealed opponent board",
+        "root": "place Torchic"
+      }
+    ]
+  },
+  "hydreigon": {
+    "branches": [
+      {
+        "branch": "DrawCard",
+        "occurrences": 201,
+        "reason": "draw reaches an unknown card identity"
+      },
+      {
+        "branch": "EndTurn",
+        "occurrences": 17238,
+        "reason": "automatic next-turn ability searches an unknown deck"
+      },
+      {
+        "branch": "EndTurn",
+        "occurrences": 396,
+        "reason": "opponent setup is hidden; only own setup development is scored"
+      },
+      {
+        "branch": "EndTurn",
+        "occurrences": 5653,
+        "reason": "setup handoff or reveal requires the concealed opponent board"
+      },
+      {
+        "branch": "Noop",
+        "occurrences": 1640,
+        "reason": "no certified public immediate winning reply; unsupported replies remain unknown"
+      },
+      {
+        "branch": "Noop",
+        "occurrences": 2,
+        "reason": "private pending choice is unavailable to this observer"
+      },
+      {
+        "branch": "Noop",
+        "occurrences": 143,
+        "reason": "public reply attack mechanic is outside the audited certificate registry"
+      },
+      {
+        "branch": "Noop",
+        "occurrences": 1003676,
+        "reason": "public reply board contains a hook outside the audited certificate registry"
+      },
+      {
+        "branch": "Noop",
+        "occurrences": 26776,
+        "reason": "public reply certificate encountered an unsupported prefix action"
+      },
+      {
+        "branch": "place Bombirdier",
+        "occurrences": 190,
+        "reason": "opponent setup is hidden; only own setup development is scored"
+      },
+      {
+        "branch": "place Deino",
+        "occurrences": 969,
+        "reason": "opponent setup is hidden; only own setup development is scored"
+      },
+      {
+        "branch": "place Mega Absol ex",
+        "occurrences": 868,
+        "reason": "opponent setup is hidden; only own setup development is scored"
+      }
+    ],
+    "decisions": 33909,
+    "hidden_itself": {
+      "chosen": 12,
+      "offered": 1088
+    },
+    "kinds": {
+      "boundary": {
+        "chosen": 31590,
+        "offered": 32327
+      },
+      "hidden": {
+        "chosen": 1935,
+        "offered": 2014
+      },
+      "other": {
+        "chosen": 748,
+        "offered": 748
+      }
+    },
+    "roots": [
+      {
+        "chosen": 163,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 163,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Activate"
+      },
+      {
+        "chosen": 2,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 2,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Activate"
+      },
+      {
+        "chosen": 156,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 512,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Attach"
+      },
+      {
+        "chosen": 5212,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 18329,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Attach"
+      },
+      {
+        "chosen": 116,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 535,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Attach"
+      },
+      {
+        "chosen": 59,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 166,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Copycat"
+      },
+      {
+        "chosen": 1210,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 5866,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Copycat"
+      },
+      {
+        "chosen": 130,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 413,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Copycat"
+      },
+      {
+        "chosen": 2,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 8,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Cyrus"
+      },
+      {
+        "chosen": 279,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 908,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Cyrus"
+      },
+      {
+        "chosen": 6,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 22,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Cyrus"
+      },
+      {
+        "chosen": 54,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 103,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Dark Cutter (Bombirdier)"
+      },
+      {
+        "chosen": 1592,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 4832,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Dark Cutter (Bombirdier)"
+      },
+      {
+        "chosen": 24,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 59,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Darkness Claw (Mega Absol ex)"
+      },
+      {
+        "chosen": 31,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 116,
+        "reason": "public reply attack mechanic is outside the audited certificate registry",
+        "root": "Darkness Claw (Mega Absol ex)"
+      },
+      {
+        "chosen": 1648,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 5571,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Darkness Claw (Mega Absol ex)"
+      },
+      {
+        "chosen": 92,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 301,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Deceptive Needle"
+      },
+      {
+        "chosen": 1578,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 6034,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Deceptive Needle"
+      },
+      {
+        "chosen": 178,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 556,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Deceptive Needle"
+      },
+      {
+        "chosen": 6,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 6,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "DiscardOpponentSupporter"
+      },
+      {
+        "chosen": 341,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 341,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "DiscardOpponentSupporter"
+      },
+      {
+        "chosen": 1,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 1,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "DiscardOpponentSupporter"
+      },
+      {
+        "chosen": 12,
+        "itself": true,
+        "kind": "hidden",
+        "offered": 692,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "EndTurn"
+      },
+      {
+        "chosen": 25,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 1301,
+        "reason": "no certified public immediate winning reply; unsupported replies remain unknown",
+        "root": "EndTurn"
+      },
+      {
+        "chosen": 0,
+        "itself": true,
+        "kind": "other",
+        "offered": 396,
+        "reason": "opponent setup is hidden; only own setup development is scored",
+        "root": "EndTurn"
+      },
+      {
+        "chosen": 859,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 27650,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "EndTurn"
+      },
+      {
+        "chosen": 0,
+        "itself": true,
+        "kind": "hidden",
+        "offered": 396,
+        "reason": "setup handoff or reveal requires the concealed opponent board",
+        "root": "EndTurn"
+      },
+      {
+        "chosen": 13,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 37,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Headbutt (Deino)"
+      },
+      {
+        "chosen": 12,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 58,
+        "reason": "no certified public immediate winning reply; unsupported replies remain unknown",
+        "root": "Headbutt (Deino)"
+      },
+      {
+        "chosen": 219,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 781,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Headbutt (Deino)"
+      },
+      {
+        "chosen": 34,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 91,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Hydreigon's ability"
+      },
+      {
+        "chosen": 1855,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 5044,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Hydreigon's ability"
+      },
+      {
+        "chosen": 36,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 77,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Hyper Ray (Hydreigon)"
+      },
+      {
+        "chosen": 614,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 2661,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Hyper Ray (Hydreigon)"
+      },
+      {
+        "chosen": 58,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 65,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Lucky Ice Pop"
+      },
+      {
+        "chosen": 2956,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 4534,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Lucky Ice Pop"
+      },
+      {
+        "chosen": 44,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 60,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Lucky Ice Pop"
+      },
+      {
+        "chosen": 105,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 157,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Poké Ball"
+      },
+      {
+        "chosen": 1291,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 3911,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Poké Ball"
+      },
+      {
+        "chosen": 262,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 360,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Poké Ball"
+      },
+      {
+        "chosen": 62,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 126,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Professor's Research"
+      },
+      {
+        "chosen": 1456,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 3377,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Professor's Research"
+      },
+      {
+        "chosen": 130,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 337,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Professor's Research"
+      },
+      {
+        "chosen": 3,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 3,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Promote"
+      },
+      {
+        "chosen": 87,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 87,
+        "reason": "draw reaches an unknown card identity",
+        "root": "Promote"
+      },
+      {
+        "chosen": 1,
+        "itself": false,
+        "kind": "other",
+        "offered": 1,
+        "reason": "private pending choice is unavailable to this observer",
+        "root": "Promote"
+      },
+      {
+        "chosen": 912,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 912,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Promote"
+      },
+      {
+        "chosen": 12,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 13,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Rare Candy"
+      },
+      {
+        "chosen": 1113,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 1947,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Rare Candy"
+      },
+      {
+        "chosen": 41,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 61,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Rare Candy"
+      },
+      {
+        "chosen": 63,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 186,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Retreat"
+      },
+      {
+        "chosen": 8,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 186,
+        "reason": "no certified public immediate winning reply; unsupported replies remain unknown",
+        "root": "Retreat"
+      },
+      {
+        "chosen": 1,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 3,
+        "reason": "public reply attack mechanic is outside the audited certificate registry",
+        "root": "Retreat"
+      },
+      {
+        "chosen": 1686,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 14203,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Retreat"
+      },
+      {
+        "chosen": 5,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 140,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Retreat"
+      },
+      {
+        "chosen": 43,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 161,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Sabrina"
+      },
+      {
+        "chosen": 605,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 2626,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Sabrina"
+      },
+      {
+        "chosen": 26,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 133,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Sabrina"
+      },
+      {
+        "chosen": 21,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 471,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "UseStadium"
+      },
+      {
+        "chosen": 232,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 5447,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "UseStadium"
+      },
+      {
+        "chosen": 60,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 60,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "attach Deceptive Needle"
+      },
+      {
+        "chosen": 1295,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 1295,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "attach Deceptive Needle"
+      },
+      {
+        "chosen": 76,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 76,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "attach Deceptive Needle"
+      },
+      {
+        "chosen": 4,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 4,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "evolve into Hydreigon"
+      },
+      {
+        "chosen": 471,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 471,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "evolve into Hydreigon"
+      },
+      {
+        "chosen": 19,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 19,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "evolve into Hydreigon"
+      },
+      {
+        "chosen": 45,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 58,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "place Bombirdier"
+      },
+      {
+        "chosen": 190,
+        "itself": true,
+        "kind": "other",
+        "offered": 190,
+        "reason": "opponent setup is hidden; only own setup development is scored",
+        "root": "place Bombirdier"
+      },
+      {
+        "chosen": 547,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 858,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "place Bombirdier"
+      },
+      {
+        "chosen": 154,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 224,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "place Bombirdier"
+      },
+      {
+        "chosen": 190,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 190,
+        "reason": "setup handoff or reveal requires the concealed opponent board",
+        "root": "place Bombirdier"
+      },
+      {
+        "chosen": 95,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 161,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "place Deino"
+      },
+      {
+        "chosen": 359,
+        "itself": true,
+        "kind": "other",
+        "offered": 500,
+        "reason": "opponent setup is hidden; only own setup development is scored",
+        "root": "place Deino"
+      },
+      {
+        "chosen": 1413,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 2650,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "place Deino"
+      },
+      {
+        "chosen": 87,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 263,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "place Deino"
+      },
+      {
+        "chosen": 359,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 500,
+        "reason": "setup handoff or reveal requires the concealed opponent board",
+        "root": "place Deino"
+      },
+      {
+        "chosen": 42,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 85,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "place Mega Absol ex"
+      },
+      {
+        "chosen": 198,
+        "itself": true,
+        "kind": "other",
+        "offered": 435,
+        "reason": "opponent setup is hidden; only own setup development is scored",
+        "root": "place Mega Absol ex"
+      },
+      {
+        "chosen": 651,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 1196,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "place Mega Absol ex"
+      },
+      {
+        "chosen": 44,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 136,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "place Mega Absol ex"
+      },
+      {
+        "chosen": 198,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 435,
+        "reason": "setup handoff or reveal requires the concealed opponent board",
+        "root": "place Mega Absol ex"
+      }
+    ]
+  },
+  "lucario": {
+    "branches": [
+      {
+        "branch": "DrawCard",
+        "occurrences": 220,
+        "reason": "draw reaches an unknown card identity"
+      },
+      {
+        "branch": "EndTurn",
+        "occurrences": 19074,
+        "reason": "automatic next-turn ability searches an unknown deck"
+      },
+      {
+        "branch": "EndTurn",
+        "occurrences": 337,
+        "reason": "opponent setup is hidden; only own setup development is scored"
+      },
+      {
+        "branch": "EndTurn",
+        "occurrences": 4816,
+        "reason": "setup handoff or reveal requires the concealed opponent board"
+      },
+      {
+        "branch": "Noop",
+        "occurrences": 6272,
+        "reason": "no certified public immediate winning reply; unsupported replies remain unknown"
+      },
+      {
+        "branch": "Noop",
+        "occurrences": 2581,
+        "reason": "public reply attack mechanic is outside the audited certificate registry"
+      },
+      {
+        "branch": "Noop",
+        "occurrences": 749355,
+        "reason": "public reply board contains a hook outside the audited certificate registry"
+      },
+      {
+        "branch": "Noop",
+        "occurrences": 79755,
+        "reason": "public reply certificate encountered an unsupported prefix action"
+      },
+      {
+        "branch": "place Bonsly",
+        "occurrences": 155,
+        "reason": "opponent setup is hidden; only own setup development is scored"
+      },
+      {
+        "branch": "place Hitmonlee",
+        "occurrences": 357,
+        "reason": "opponent setup is hidden; only own setup development is scored"
+      },
+      {
+        "branch": "place Riolu",
+        "occurrences": 1213,
+        "reason": "opponent setup is hidden; only own setup development is scored"
+      }
+    ],
+    "decisions": 28885,
+    "hidden_itself": {
+      "chosen": 31,
+      "offered": 911
+    },
+    "kinds": {
+      "boundary": {
+        "chosen": 26781,
+        "offered": 27522
+      },
+      "hidden": {
+        "chosen": 1505,
+        "offered": 1516
+      },
+      "other": {
+        "chosen": 637,
+        "offered": 637
+      }
+    },
+    "roots": [
+      {
+        "chosen": 173,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 173,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Activate"
+      },
+      {
+        "chosen": 4,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 4,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Activate"
+      },
+      {
+        "chosen": 7,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 7,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "ApplyDamage"
+      },
+      {
+        "chosen": 844,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 846,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "ApplyDamage"
+      },
+      {
+        "chosen": 75,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 75,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "ApplyDamage"
+      },
+      {
+        "chosen": 5,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 228,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Arena of Antiquity"
+      },
+      {
+        "chosen": 555,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 5794,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Arena of Antiquity"
+      },
+      {
+        "chosen": 53,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 1007,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Arena of Antiquity"
+      },
+      {
+        "chosen": 102,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 316,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Attach"
+      },
+      {
+        "chosen": 4538,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 13077,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Attach"
+      },
+      {
+        "chosen": 338,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 1209,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Attach"
+      },
+      {
+        "chosen": 44,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 143,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Copycat"
+      },
+      {
+        "chosen": 1021,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 4315,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Copycat"
+      },
+      {
+        "chosen": 205,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 777,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Copycat"
+      },
+      {
+        "chosen": 2,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 13,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Cyrus"
+      },
+      {
+        "chosen": 330,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 1017,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Cyrus"
+      },
+      {
+        "chosen": 18,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 82,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Cyrus"
+      },
+      {
+        "chosen": 0,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 6,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "DiscardActiveStadium"
+      },
+      {
+        "chosen": 0,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 259,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "DiscardActiveStadium"
+      },
+      {
+        "chosen": 7,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 7,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "DiscardToolFromPokemon"
+      },
+      {
+        "chosen": 307,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 307,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "DiscardToolFromPokemon"
+      },
+      {
+        "chosen": 31,
+        "itself": true,
+        "kind": "hidden",
+        "offered": 574,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "EndTurn"
+      },
+      {
+        "chosen": 125,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 3017,
+        "reason": "no certified public immediate winning reply; unsupported replies remain unknown",
+        "root": "EndTurn"
+      },
+      {
+        "chosen": 0,
+        "itself": true,
+        "kind": "other",
+        "offered": 337,
+        "reason": "opponent setup is hidden; only own setup development is scored",
+        "root": "EndTurn"
+      },
+      {
+        "chosen": 638,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 21417,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "EndTurn"
+      },
+      {
+        "chosen": 0,
+        "itself": true,
+        "kind": "hidden",
+        "offered": 337,
+        "reason": "setup handoff or reveal requires the concealed opponent board",
+        "root": "EndTurn"
+      },
+      {
+        "chosen": 10,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 104,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Field Blower"
+      },
+      {
+        "chosen": 508,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 4640,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Field Blower"
+      },
+      {
+        "chosen": 2,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 11,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Field Blower"
+      },
+      {
+        "chosen": 13,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 36,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Fighting Fist (Riolu)"
+      },
+      {
+        "chosen": 20,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 74,
+        "reason": "public reply attack mechanic is outside the audited certificate registry",
+        "root": "Fighting Fist (Riolu)"
+      },
+      {
+        "chosen": 358,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 1195,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Fighting Fist (Riolu)"
+      },
+      {
+        "chosen": 41,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 67,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Fighting Pulse (Mega Lucario ex)"
+      },
+      {
+        "chosen": 51,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 144,
+        "reason": "public reply attack mechanic is outside the audited certificate registry",
+        "root": "Fighting Pulse (Mega Lucario ex)"
+      },
+      {
+        "chosen": 1568,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 3970,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Fighting Pulse (Mega Lucario ex)"
+      },
+      {
+        "chosen": 1,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 1,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Heal"
+      },
+      {
+        "chosen": 60,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 60,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Heal"
+      },
+      {
+        "chosen": 2,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 2,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Heal"
+      },
+      {
+        "chosen": 0,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 128,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Korrina"
+      },
+      {
+        "chosen": 369,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 3837,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Korrina"
+      },
+      {
+        "chosen": 29,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 510,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Korrina"
+      },
+      {
+        "chosen": 88,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 121,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Poké Ball"
+      },
+      {
+        "chosen": 1104,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 2802,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Poké Ball"
+      },
+      {
+        "chosen": 385,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 595,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Poké Ball"
+      },
+      {
+        "chosen": 6,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 6,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Pokémon Center Lady"
+      },
+      {
+        "chosen": 456,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 1864,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Pokémon Center Lady"
+      },
+      {
+        "chosen": 22,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 117,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Pokémon Center Lady"
+      },
+      {
+        "chosen": 57,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 101,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Professor's Research"
+      },
+      {
+        "chosen": 1208,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 2521,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Professor's Research"
+      },
+      {
+        "chosen": 262,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 505,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Professor's Research"
+      },
+      {
+        "chosen": 4,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 4,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Promote"
+      },
+      {
+        "chosen": 98,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 98,
+        "reason": "draw reaches an unknown card identity",
+        "root": "Promote"
+      },
+      {
+        "chosen": 955,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 955,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Promote"
+      },
+      {
+        "chosen": 37,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 120,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Protective Poncho"
+      },
+      {
+        "chosen": 639,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 3127,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Protective Poncho"
+      },
+      {
+        "chosen": 183,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 751,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Protective Poncho"
+      },
+      {
+        "chosen": 38,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 182,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Retreat"
+      },
+      {
+        "chosen": 167,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 1048,
+        "reason": "no certified public immediate winning reply; unsupported replies remain unknown",
+        "root": "Retreat"
+      },
+      {
+        "chosen": 87,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 316,
+        "reason": "public reply attack mechanic is outside the audited certificate registry",
+        "root": "Retreat"
+      },
+      {
+        "chosen": 1113,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 10832,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Retreat"
+      },
+      {
+        "chosen": 115,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 847,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Retreat"
+      },
+      {
+        "chosen": 28,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 37,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Stretch Kick (Hitmonlee)"
+      },
+      {
+        "chosen": 174,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 425,
+        "reason": "public reply attack mechanic is outside the audited certificate registry",
+        "root": "Stretch Kick (Hitmonlee)"
+      },
+      {
+        "chosen": 1194,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 3241,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Stretch Kick (Hitmonlee)"
+      },
+      {
+        "chosen": 2,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 7,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Submarine Blow (Lucario)"
+      },
+      {
+        "chosen": 272,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 621,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Submarine Blow (Lucario)"
+      },
+      {
+        "chosen": 37,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 182,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Teary Attack (Bonsly)"
+      },
+      {
+        "chosen": 121,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 697,
+        "reason": "public reply attack mechanic is outside the audited certificate registry",
+        "root": "Teary Attack (Bonsly)"
+      },
+      {
+        "chosen": 688,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 3181,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Teary Attack (Bonsly)"
+      },
+      {
+        "chosen": 6,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 283,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "UseStadium"
+      },
+      {
+        "chosen": 139,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 3563,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "UseStadium"
+      },
+      {
+        "chosen": 13,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 196,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "X Speed"
+      },
+      {
+        "chosen": 88,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 720,
+        "reason": "no certified public immediate winning reply; unsupported replies remain unknown",
+        "root": "X Speed"
+      },
+      {
+        "chosen": 17,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 358,
+        "reason": "public reply attack mechanic is outside the audited certificate registry",
+        "root": "X Speed"
+      },
+      {
+        "chosen": 305,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 5453,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "X Speed"
+      },
+      {
+        "chosen": 83,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 642,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "X Speed"
+      },
+      {
+        "chosen": 21,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 21,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "attach Protective Poncho"
+      },
+      {
+        "chosen": 509,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 509,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "attach Protective Poncho"
+      },
+      {
+        "chosen": 116,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 116,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "attach Protective Poncho"
+      },
+      {
+        "chosen": 4,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 5,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "evolve into Lucario"
+      },
+      {
+        "chosen": 398,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 1147,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "evolve into Lucario"
+      },
+      {
+        "chosen": 44,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 160,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "evolve into Lucario"
+      },
+      {
+        "chosen": 10,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 12,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "evolve into Mega Lucario ex"
+      },
+      {
+        "chosen": 1131,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 1725,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "evolve into Mega Lucario ex"
+      },
+      {
+        "chosen": 123,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 223,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "evolve into Mega Lucario ex"
+      },
+      {
+        "chosen": 30,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 63,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "place Bonsly"
+      },
+      {
+        "chosen": 155,
+        "itself": true,
+        "kind": "other",
+        "offered": 155,
+        "reason": "opponent setup is hidden; only own setup development is scored",
+        "root": "place Bonsly"
+      },
+      {
+        "chosen": 599,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 1779,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "place Bonsly"
+      },
+      {
+        "chosen": 118,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 342,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "place Bonsly"
+      },
+      {
+        "chosen": 155,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 155,
+        "reason": "setup handoff or reveal requires the concealed opponent board",
+        "root": "place Bonsly"
+      },
+      {
+        "chosen": 41,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 69,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "place Hitmonlee"
+      },
+      {
+        "chosen": 153,
+        "itself": true,
+        "kind": "other",
+        "offered": 228,
+        "reason": "opponent setup is hidden; only own setup development is scored",
+        "root": "place Hitmonlee"
+      },
+      {
+        "chosen": 519,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 877,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "place Hitmonlee"
+      },
+      {
+        "chosen": 151,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 284,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "place Hitmonlee"
+      },
+      {
+        "chosen": 153,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 228,
+        "reason": "setup handoff or reveal requires the concealed opponent board",
+        "root": "place Hitmonlee"
+      },
+      {
+        "chosen": 85,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 116,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "place Riolu"
+      },
+      {
+        "chosen": 329,
+        "itself": true,
+        "kind": "other",
+        "offered": 538,
+        "reason": "opponent setup is hidden; only own setup development is scored",
+        "root": "place Riolu"
+      },
+      {
+        "chosen": 1087,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 1783,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "place Riolu"
+      },
+      {
+        "chosen": 320,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 483,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "place Riolu"
+      },
+      {
+        "chosen": 329,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 538,
+        "reason": "setup handoff or reveal requires the concealed opponent board",
+        "root": "place Riolu"
+      }
+    ]
+  },
+  "sceptile": {
+    "branches": [
+      {
+        "branch": "DrawCard",
+        "occurrences": 126,
+        "reason": "draw reaches an unknown card identity"
+      },
+      {
+        "branch": "EndTurn",
+        "occurrences": 201,
+        "reason": "opponent setup is hidden; only own setup development is scored"
+      },
+      {
+        "branch": "EndTurn",
+        "occurrences": 2678,
+        "reason": "setup handoff or reveal requires the concealed opponent board"
+      },
+      {
+        "branch": "Noop",
+        "occurrences": 1269,
+        "reason": "no certified public immediate winning reply; unsupported replies remain unknown"
+      },
+      {
+        "branch": "Noop",
+        "occurrences": 376,
+        "reason": "public reply attack mechanic is outside the audited certificate registry"
+      },
+      {
+        "branch": "Noop",
+        "occurrences": 825383,
+        "reason": "public reply board contains a hook outside the audited certificate registry"
+      },
+      {
+        "branch": "Noop",
+        "occurrences": 15635,
+        "reason": "public reply certificate encountered an unsupported prefix action"
+      },
+      {
+        "branch": "place Caterpie",
+        "occurrences": 891,
+        "reason": "opponent setup is hidden; only own setup development is scored"
+      },
+      {
+        "branch": "place Treecko",
+        "occurrences": 128,
+        "reason": "opponent setup is hidden; only own setup development is scored"
+      }
+    ],
+    "decisions": 29987,
+    "hidden_itself": {
+      "chosen": 0,
+      "offered": 201
+    },
+    "kinds": {
+      "boundary": {
+        "chosen": 28721,
+        "offered": 29532
+      },
+      "hidden": {
+        "chosen": 459,
+        "offered": 463
+      },
+      "other": {
+        "chosen": 388,
+        "offered": 388
+      }
+    },
+    "roots": [
+      {
+        "chosen": 169,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 169,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Activate"
+      },
+      {
+        "chosen": 282,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 303,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "ApplyDamage"
+      },
+      {
+        "chosen": 10,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 10,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "ApplyDamage"
+      },
+      {
+        "chosen": 4823,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 15396,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Attach"
+      },
+      {
+        "chosen": 193,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 560,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Attach"
+      },
+      {
+        "chosen": 1085,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 1085,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "ChooseRandomEvolutionTarget"
+      },
+      {
+        "chosen": 17,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 17,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "ChooseRandomEvolutionTarget"
+      },
+      {
+        "chosen": 626,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 3248,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Copycat"
+      },
+      {
+        "chosen": 31,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 137,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Copycat"
+      },
+      {
+        "chosen": 401,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 883,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Cyrus"
+      },
+      {
+        "chosen": 5,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 8,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Cyrus"
+      },
+      {
+        "chosen": 5,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 903,
+        "reason": "no certified public immediate winning reply; unsupported replies remain unknown",
+        "root": "EndTurn"
+      },
+      {
+        "chosen": 0,
+        "itself": true,
+        "kind": "other",
+        "offered": 201,
+        "reason": "opponent setup is hidden; only own setup development is scored",
+        "root": "EndTurn"
+      },
+      {
+        "chosen": 294,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 25779,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "EndTurn"
+      },
+      {
+        "chosen": 0,
+        "itself": true,
+        "kind": "hidden",
+        "offered": 201,
+        "reason": "setup handoff or reveal requires the concealed opponent board",
+        "root": "EndTurn"
+      },
+      {
+        "chosen": 639,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 2588,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Erika"
+      },
+      {
+        "chosen": 17,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 76,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Erika"
+      },
+      {
+        "chosen": 919,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 3984,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Fragrant Forest"
+      },
+      {
+        "chosen": 131,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 414,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Fragrant Forest"
+      },
+      {
+        "chosen": 85,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 85,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Heal"
+      },
+      {
+        "chosen": 3,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 3,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Heal"
+      },
+      {
+        "chosen": 28,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 127,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Hook (Caterpie)"
+      },
+      {
+        "chosen": 896,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 2072,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Leaf Cape"
+      },
+      {
+        "chosen": 85,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 149,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Leaf Cape"
+      },
+      {
+        "chosen": 8,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 31,
+        "reason": "no certified public immediate winning reply; unsupported replies remain unknown",
+        "root": "Pound (Treecko)"
+      },
+      {
+        "chosen": 341,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 1389,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Pound (Treecko)"
+      },
+      {
+        "chosen": 1503,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 3096,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Professor's Research"
+      },
+      {
+        "chosen": 120,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 186,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Professor's Research"
+      },
+      {
+        "chosen": 71,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 75,
+        "reason": "draw reaches an unknown card identity",
+        "root": "Promote"
+      },
+      {
+        "chosen": 624,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 645,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Promote"
+      },
+      {
+        "chosen": 1492,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 3538,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Quick-Grow Extract"
+      },
+      {
+        "chosen": 37,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 91,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Quick-Grow Extract"
+      },
+      {
+        "chosen": 25,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 98,
+        "reason": "no certified public immediate winning reply; unsupported replies remain unknown",
+        "root": "Ram (Metapod)"
+      },
+      {
+        "chosen": 854,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 3121,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Ram (Metapod)"
+      },
+      {
+        "chosen": 13,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 170,
+        "reason": "no certified public immediate winning reply; unsupported replies remain unknown",
+        "root": "Retreat"
+      },
+      {
+        "chosen": 9,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 39,
+        "reason": "public reply attack mechanic is outside the audited certificate registry",
+        "root": "Retreat"
+      },
+      {
+        "chosen": 711,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 10716,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Retreat"
+      },
+      {
+        "chosen": 13,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 134,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Retreat"
+      },
+      {
+        "chosen": 681,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 3186,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Sabrina"
+      },
+      {
+        "chosen": 16,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 105,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Sabrina"
+      },
+      {
+        "chosen": 12,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 19,
+        "reason": "public reply attack mechanic is outside the audited certificate registry",
+        "root": "Slicing Snipe (Grovyle)"
+      },
+      {
+        "chosen": 347,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 794,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Slicing Snipe (Grovyle)"
+      },
+      {
+        "chosen": 50,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 181,
+        "reason": "public reply attack mechanic is outside the audited certificate registry",
+        "root": "Sunny Wind (Butterfree)"
+      },
+      {
+        "chosen": 3061,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 9395,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Sunny Wind (Butterfree)"
+      },
+      {
+        "chosen": 8,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 22,
+        "reason": "public reply attack mechanic is outside the audited certificate registry",
+        "root": "Terminating Tail (Mega Sceptile ex)"
+      },
+      {
+        "chosen": 378,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 906,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Terminating Tail (Mega Sceptile ex)"
+      },
+      {
+        "chosen": 1780,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 12938,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "UseStadium"
+      },
+      {
+        "chosen": 497,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 497,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "attach Leaf Cape"
+      },
+      {
+        "chosen": 9,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 9,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "attach Leaf Cape"
+      },
+      {
+        "chosen": 1084,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 1869,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "evolve into Butterfree"
+      },
+      {
+        "chosen": 25,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 47,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "evolve into Butterfree"
+      },
+      {
+        "chosen": 641,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 1413,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "evolve into Grovyle"
+      },
+      {
+        "chosen": 23,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 33,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "evolve into Grovyle"
+      },
+      {
+        "chosen": 440,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 667,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "evolve into Mega Sceptile ex"
+      },
+      {
+        "chosen": 11,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 20,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "evolve into Mega Sceptile ex"
+      },
+      {
+        "chosen": 882,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 1802,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "evolve into Metapod"
+      },
+      {
+        "chosen": 260,
+        "itself": true,
+        "kind": "other",
+        "offered": 388,
+        "reason": "opponent setup is hidden; only own setup development is scored",
+        "root": "place Caterpie"
+      },
+      {
+        "chosen": 1457,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 1924,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "place Caterpie"
+      },
+      {
+        "chosen": 48,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 78,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "place Caterpie"
+      },
+      {
+        "chosen": 260,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 388,
+        "reason": "setup handoff or reveal requires the concealed opponent board",
+        "root": "place Caterpie"
+      },
+      {
+        "chosen": 128,
+        "itself": true,
+        "kind": "other",
+        "offered": 128,
+        "reason": "opponent setup is hidden; only own setup development is scored",
+        "root": "place Treecko"
+      },
+      {
+        "chosen": 776,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 1027,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "place Treecko"
+      },
+      {
+        "chosen": 24,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 28,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "place Treecko"
+      },
+      {
+        "chosen": 128,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 128,
+        "reason": "setup handoff or reveal requires the concealed opponent board",
+        "root": "place Treecko"
+      }
+    ]
+  },
+  "suicune": {
+    "branches": [
+      {
+        "branch": "EndTurn",
+        "occurrences": 16951,
+        "reason": "automatic next-turn ability searches an unknown deck"
+      },
+      {
+        "branch": "EndTurn",
+        "occurrences": 646,
+        "reason": "opponent setup is hidden; only own setup development is scored"
+      },
+      {
+        "branch": "EndTurn",
+        "occurrences": 10026,
+        "reason": "setup handoff or reveal requires the concealed opponent board"
+      },
+      {
+        "branch": "Noop",
+        "occurrences": 949,
+        "reason": "no certified public immediate winning reply; unsupported replies remain unknown"
+      },
+      {
+        "branch": "Noop",
+        "occurrences": 29,
+        "reason": "public reply attack mechanic is outside the audited certificate registry"
+      },
+      {
+        "branch": "Noop",
+        "occurrences": 1068327,
+        "reason": "public reply board contains a hook outside the audited certificate registry"
+      },
+      {
+        "branch": "Noop",
+        "occurrences": 17434,
+        "reason": "public reply certificate encountered an unsupported prefix action"
+      },
+      {
+        "branch": "place Chien-Pao ex",
+        "occurrences": 732,
+        "reason": "opponent setup is hidden; only own setup development is scored"
+      },
+      {
+        "branch": "place Frigibax",
+        "occurrences": 1806,
+        "reason": "opponent setup is hidden; only own setup development is scored"
+      },
+      {
+        "branch": "place Suicune ex",
+        "occurrences": 810,
+        "reason": "opponent setup is hidden; only own setup development is scored"
+      }
+    ],
+    "decisions": 37893,
+    "hidden_itself": {
+      "chosen": 82,
+      "offered": 1275
+    },
+    "kinds": {
+      "boundary": {
+        "chosen": 35305,
+        "offered": 35998
+      },
+      "hidden": {
+        "chosen": 2234,
+        "offered": 2234
+      },
+      "other": {
+        "chosen": 1182,
+        "offered": 1182
+      }
+    },
+    "roots": [
+      {
+        "chosen": 376,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 376,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Activate"
+      },
+      {
+        "chosen": 9,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 9,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "ApplyDamage"
+      },
+      {
+        "chosen": 87,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 139,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "ApplyDamage"
+      },
+      {
+        "chosen": 1,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 1,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "ApplyDamage"
+      },
+      {
+        "chosen": 130,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 415,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Attach"
+      },
+      {
+        "chosen": 5686,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 18653,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Attach"
+      },
+      {
+        "chosen": 41,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 196,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Attach"
+      },
+      {
+        "chosen": 66,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 88,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Baxcalibur's ability"
+      },
+      {
+        "chosen": 3686,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 5843,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Baxcalibur's ability"
+      },
+      {
+        "chosen": 6,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 6,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "BenchOpponentHandBasics"
+      },
+      {
+        "chosen": 14,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 44,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Buster Tail (Baxcalibur)"
+      },
+      {
+        "chosen": 725,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 2488,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Buster Tail (Baxcalibur)"
+      },
+      {
+        "chosen": 4,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 4,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Chilly (Frigibax)"
+      },
+      {
+        "chosen": 6,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 9,
+        "reason": "no certified public immediate winning reply; unsupported replies remain unknown",
+        "root": "Chilly (Frigibax)"
+      },
+      {
+        "chosen": 86,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 293,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Chilly (Frigibax)"
+      },
+      {
+        "chosen": 31,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 90,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Copycat"
+      },
+      {
+        "chosen": 709,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 4456,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Copycat"
+      },
+      {
+        "chosen": 38,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 135,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Copycat"
+      },
+      {
+        "chosen": 52,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 144,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Crystal Waltz (Suicune ex)"
+      },
+      {
+        "chosen": 2609,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 9297,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Crystal Waltz (Suicune ex)"
+      },
+      {
+        "chosen": 0,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 2,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "DiscardActiveStadium"
+      },
+      {
+        "chosen": 7,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 439,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "DiscardActiveStadium"
+      },
+      {
+        "chosen": 8,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 8,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "DiscardToolFromPokemon"
+      },
+      {
+        "chosen": 552,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 560,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "DiscardToolFromPokemon"
+      },
+      {
+        "chosen": 9,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 20,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Diving Icicles (Chien-Pao ex)"
+      },
+      {
+        "chosen": 1,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 3,
+        "reason": "public reply attack mechanic is outside the audited certificate registry",
+        "root": "Diving Icicles (Chien-Pao ex)"
+      },
+      {
+        "chosen": 140,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 303,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Diving Icicles (Chien-Pao ex)"
+      },
+      {
+        "chosen": 82,
+        "itself": true,
+        "kind": "hidden",
+        "offered": 629,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "EndTurn"
+      },
+      {
+        "chosen": 38,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 810,
+        "reason": "no certified public immediate winning reply; unsupported replies remain unknown",
+        "root": "EndTurn"
+      },
+      {
+        "chosen": 0,
+        "itself": true,
+        "kind": "other",
+        "offered": 646,
+        "reason": "opponent setup is hidden; only own setup development is scored",
+        "root": "EndTurn"
+      },
+      {
+        "chosen": 1233,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 30470,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "EndTurn"
+      },
+      {
+        "chosen": 0,
+        "itself": true,
+        "kind": "hidden",
+        "offered": 646,
+        "reason": "setup handoff or reveal requires the concealed opponent board",
+        "root": "EndTurn"
+      },
+      {
+        "chosen": 13,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 165,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Field Blower"
+      },
+      {
+        "chosen": 662,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 8485,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Field Blower"
+      },
+      {
+        "chosen": 0,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 47,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Field Blower"
+      },
+      {
+        "chosen": 54,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 114,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Giant Cape"
+      },
+      {
+        "chosen": 998,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 2841,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Giant Cape"
+      },
+      {
+        "chosen": 67,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 190,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Giant Cape"
+      },
+      {
+        "chosen": 7,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 7,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Heal"
+      },
+      {
+        "chosen": 201,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 201,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Heal"
+      },
+      {
+        "chosen": 9,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 9,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Icicle (Chien-Pao ex)"
+      },
+      {
+        "chosen": 15,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 52,
+        "reason": "no certified public immediate winning reply; unsupported replies remain unknown",
+        "root": "Icicle (Chien-Pao ex)"
+      },
+      {
+        "chosen": 428,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 2126,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Icicle (Chien-Pao ex)"
+      },
+      {
+        "chosen": 42,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 201,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Inflatable Boat"
+      },
+      {
+        "chosen": 940,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 5584,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Inflatable Boat"
+      },
+      {
+        "chosen": 48,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 199,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Inflatable Boat"
+      },
+      {
+        "chosen": 103,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 169,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Poké Ball"
+      },
+      {
+        "chosen": 1663,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 4332,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Poké Ball"
+      },
+      {
+        "chosen": 158,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 230,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Poké Ball"
+      },
+      {
+        "chosen": 11,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 20,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Pokémon Center Lady"
+      },
+      {
+        "chosen": 862,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 3067,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Pokémon Center Lady"
+      },
+      {
+        "chosen": 3,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 15,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Pokémon Center Lady"
+      },
+      {
+        "chosen": 67,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 111,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Professor's Research"
+      },
+      {
+        "chosen": 1773,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 3417,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Professor's Research"
+      },
+      {
+        "chosen": 106,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 181,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Professor's Research"
+      },
+      {
+        "chosen": 1,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 1,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Promote"
+      },
+      {
+        "chosen": 1032,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 1032,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Promote"
+      },
+      {
+        "chosen": 18,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 34,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Rare Candy"
+      },
+      {
+        "chosen": 1465,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 4075,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Rare Candy"
+      },
+      {
+        "chosen": 25,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 34,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Rare Candy"
+      },
+      {
+        "chosen": 19,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 94,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Retreat"
+      },
+      {
+        "chosen": 2,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 55,
+        "reason": "no certified public immediate winning reply; unsupported replies remain unknown",
+        "root": "Retreat"
+      },
+      {
+        "chosen": 1224,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 13646,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Retreat"
+      },
+      {
+        "chosen": 2,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 34,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Retreat"
+      },
+      {
+        "chosen": 6,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 248,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Soothing Shore"
+      },
+      {
+        "chosen": 952,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 6042,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Soothing Shore"
+      },
+      {
+        "chosen": 11,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 217,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Soothing Shore"
+      },
+      {
+        "chosen": 6,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 9,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Stiffen (Frigibax)"
+      },
+      {
+        "chosen": 7,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 17,
+        "reason": "public reply attack mechanic is outside the audited certificate registry",
+        "root": "Stiffen (Frigibax)"
+      },
+      {
+        "chosen": 76,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 303,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Stiffen (Frigibax)"
+      },
+      {
+        "chosen": 0,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 160,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Team Rocket's Boss"
+      },
+      {
+        "chosen": 41,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 10138,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Team Rocket's Boss"
+      },
+      {
+        "chosen": 0,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 166,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Team Rocket's Boss"
+      },
+      {
+        "chosen": 20,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 285,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "UseStadium"
+      },
+      {
+        "chosen": 209,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 3571,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "UseStadium"
+      },
+      {
+        "chosen": 35,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 35,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "attach Giant Cape"
+      },
+      {
+        "chosen": 861,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 861,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "attach Giant Cape"
+      },
+      {
+        "chosen": 19,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 19,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "attach Giant Cape"
+      },
+      {
+        "chosen": 41,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 41,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "attach Inflatable Boat"
+      },
+      {
+        "chosen": 869,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 869,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "attach Inflatable Boat"
+      },
+      {
+        "chosen": 20,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 20,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "attach Inflatable Boat"
+      },
+      {
+        "chosen": 11,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 11,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "evolve into Baxcalibur"
+      },
+      {
+        "chosen": 611,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 611,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "evolve into Baxcalibur"
+      },
+      {
+        "chosen": 14,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 14,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "evolve into Baxcalibur"
+      },
+      {
+        "chosen": 40,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 62,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "place Chien-Pao ex"
+      },
+      {
+        "chosen": 234,
+        "itself": true,
+        "kind": "other",
+        "offered": 409,
+        "reason": "opponent setup is hidden; only own setup development is scored",
+        "root": "place Chien-Pao ex"
+      },
+      {
+        "chosen": 760,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 1251,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "place Chien-Pao ex"
+      },
+      {
+        "chosen": 43,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 87,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "place Chien-Pao ex"
+      },
+      {
+        "chosen": 234,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 409,
+        "reason": "setup handoff or reveal requires the concealed opponent board",
+        "root": "place Chien-Pao ex"
+      },
+      {
+        "chosen": 71,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 120,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "place Frigibax"
+      },
+      {
+        "chosen": 454,
+        "itself": true,
+        "kind": "other",
+        "offered": 810,
+        "reason": "opponent setup is hidden; only own setup development is scored",
+        "root": "place Frigibax"
+      },
+      {
+        "chosen": 1535,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 2739,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "place Frigibax"
+      },
+      {
+        "chosen": 79,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 173,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "place Frigibax"
+      },
+      {
+        "chosen": 454,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 810,
+        "reason": "setup handoff or reveal requires the concealed opponent board",
+        "root": "place Frigibax"
+      },
+      {
+        "chosen": 73,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 141,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "place Suicune ex"
+      },
+      {
+        "chosen": 494,
+        "itself": true,
+        "kind": "other",
+        "offered": 529,
+        "reason": "opponent setup is hidden; only own setup development is scored",
+        "root": "place Suicune ex"
+      },
+      {
+        "chosen": 1378,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 2362,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "place Suicune ex"
+      },
+      {
+        "chosen": 121,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 262,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "place Suicune ex"
+      },
+      {
+        "chosen": 494,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 529,
+        "reason": "setup handoff or reveal requires the concealed opponent board",
+        "root": "place Suicune ex"
+      }
+    ]
+  },
+  "vespiquen": {
+    "branches": [
+      {
+        "branch": "DrawCard",
+        "occurrences": 236,
+        "reason": "draw reaches an unknown card identity"
+      },
+      {
+        "branch": "EndTurn",
+        "occurrences": 37954,
+        "reason": "automatic next-turn ability searches an unknown deck"
+      },
+      {
+        "branch": "EndTurn",
+        "occurrences": 638,
+        "reason": "opponent setup is hidden; only own setup development is scored"
+      },
+      {
+        "branch": "EndTurn",
+        "occurrences": 9820,
+        "reason": "setup handoff or reveal requires the concealed opponent board"
+      },
+      {
+        "branch": "Noop",
+        "occurrences": 546,
+        "reason": "no certified public immediate winning reply; unsupported replies remain unknown"
+      },
+      {
+        "branch": "Noop",
+        "occurrences": 30,
+        "reason": "public reply attack mechanic is outside the audited certificate registry"
+      },
+      {
+        "branch": "Noop",
+        "occurrences": 1911938,
+        "reason": "public reply board contains a hook outside the audited certificate registry"
+      },
+      {
+        "branch": "Noop",
+        "occurrences": 5469,
+        "reason": "public reply certificate encountered an unsupported prefix action"
+      },
+      {
+        "branch": "place Combee",
+        "occurrences": 1791,
+        "reason": "opponent setup is hidden; only own setup development is scored"
+      },
+      {
+        "branch": "place Shuckle ex",
+        "occurrences": 1257,
+        "reason": "opponent setup is hidden; only own setup development is scored"
+      },
+      {
+        "branch": "place Teal Mask Ogerpon ex",
+        "occurrences": 254,
+        "reason": "opponent setup is hidden; only own setup development is scored"
+      }
+    ],
+    "decisions": 36488,
+    "hidden_itself": {
+      "chosen": 60,
+      "offered": 1439
+    },
+    "kinds": {
+      "boundary": {
+        "chosen": 33736,
+        "offered": 34372
+      },
+      "hidden": {
+        "chosen": 2679,
+        "offered": 2726
+      },
+      "other": {
+        "chosen": 1173,
+        "offered": 1173
+      }
+    },
+    "roots": [
+      {
+        "chosen": 272,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 272,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Activate"
+      },
+      {
+        "chosen": 4,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 4,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "ApplyDamage"
+      },
+      {
+        "chosen": 315,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 1306,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "ApplyDamage"
+      },
+      {
+        "chosen": 175,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 390,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Attach"
+      },
+      {
+        "chosen": 5691,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 14506,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Attach"
+      },
+      {
+        "chosen": 10,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 69,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Attach"
+      },
+      {
+        "chosen": 29,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 34,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Chase Order (Vespiquen ex)"
+      },
+      {
+        "chosen": 0,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 1,
+        "reason": "public reply attack mechanic is outside the audited certificate registry",
+        "root": "Chase Order (Vespiquen ex)"
+      },
+      {
+        "chosen": 1323,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 1807,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Chase Order (Vespiquen ex)"
+      },
+      {
+        "chosen": 57,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 190,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Copycat"
+      },
+      {
+        "chosen": 1180,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 6522,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Copycat"
+      },
+      {
+        "chosen": 35,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 106,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Copycat"
+      },
+      {
+        "chosen": 3,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 3,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Cyrus"
+      },
+      {
+        "chosen": 332,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 702,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Cyrus"
+      },
+      {
+        "chosen": 1,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 1,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Cyrus"
+      },
+      {
+        "chosen": 0,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 11,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "DiscardActiveStadium"
+      },
+      {
+        "chosen": 1,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 414,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "DiscardActiveStadium"
+      },
+      {
+        "chosen": 25,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 29,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "DiscardOwnBenchedThenDamage"
+      },
+      {
+        "chosen": 687,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 1002,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "DiscardOwnBenchedThenDamage"
+      },
+      {
+        "chosen": 17,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 17,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "DiscardToolFromPokemon"
+      },
+      {
+        "chosen": 491,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 492,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "DiscardToolFromPokemon"
+      },
+      {
+        "chosen": 60,
+        "itself": true,
+        "kind": "hidden",
+        "offered": 801,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "EndTurn"
+      },
+      {
+        "chosen": 4,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 292,
+        "reason": "no certified public immediate winning reply; unsupported replies remain unknown",
+        "root": "EndTurn"
+      },
+      {
+        "chosen": 0,
+        "itself": true,
+        "kind": "other",
+        "offered": 638,
+        "reason": "opponent setup is hidden; only own setup development is scored",
+        "root": "EndTurn"
+      },
+      {
+        "chosen": 1044,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 29814,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "EndTurn"
+      },
+      {
+        "chosen": 0,
+        "itself": true,
+        "kind": "hidden",
+        "offered": 638,
+        "reason": "setup handoff or reveal requires the concealed opponent board",
+        "root": "EndTurn"
+      },
+      {
+        "chosen": 8,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 19,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Energized Leaves (Teal Mask Ogerpon ex)"
+      },
+      {
+        "chosen": 1134,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 3405,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Energized Leaves (Teal Mask Ogerpon ex)"
+      },
+      {
+        "chosen": 16,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 272,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Field Blower"
+      },
+      {
+        "chosen": 553,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 7919,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Field Blower"
+      },
+      {
+        "chosen": 48,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 113,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Fragrant Forest"
+      },
+      {
+        "chosen": 1046,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 3985,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Fragrant Forest"
+      },
+      {
+        "chosen": 71,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 146,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Fragrant Forest"
+      },
+      {
+        "chosen": 115,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 285,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Leaf Cape"
+      },
+      {
+        "chosen": 1745,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 4397,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Leaf Cape"
+      },
+      {
+        "chosen": 40,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 135,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Leaf Cape"
+      },
+      {
+        "chosen": 79,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 161,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Professor's Research"
+      },
+      {
+        "chosen": 1539,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 3278,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Professor's Research"
+      },
+      {
+        "chosen": 40,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 99,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Professor's Research"
+      },
+      {
+        "chosen": 84,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 84,
+        "reason": "draw reaches an unknown card identity",
+        "root": "Promote"
+      },
+      {
+        "chosen": 726,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 726,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Promote"
+      },
+      {
+        "chosen": 16,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 82,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Reckless Charge (Combee)"
+      },
+      {
+        "chosen": 3,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 16,
+        "reason": "public reply attack mechanic is outside the audited certificate registry",
+        "root": "Reckless Charge (Combee)"
+      },
+      {
+        "chosen": 304,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 1043,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Reckless Charge (Combee)"
+      },
+      {
+        "chosen": 40,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 357,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Retreat"
+      },
+      {
+        "chosen": 2,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 11,
+        "reason": "no certified public immediate winning reply; unsupported replies remain unknown",
+        "root": "Retreat"
+      },
+      {
+        "chosen": 1861,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 14877,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Retreat"
+      },
+      {
+        "chosen": 0,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 7,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Retreat"
+      },
+      {
+        "chosen": 52,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 188,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Sabrina"
+      },
+      {
+        "chosen": 691,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 2951,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Sabrina"
+      },
+      {
+        "chosen": 4,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 20,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Sabrina"
+      },
+      {
+        "chosen": 126,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 475,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Triple Slap (Shuckle ex)"
+      },
+      {
+        "chosen": 2347,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 9765,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Triple Slap (Shuckle ex)"
+      },
+      {
+        "chosen": 164,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 504,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "UseStadium"
+      },
+      {
+        "chosen": 2595,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 13664,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "UseStadium"
+      },
+      {
+        "chosen": 31,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 567,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "X Speed"
+      },
+      {
+        "chosen": 22,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 145,
+        "reason": "no certified public immediate winning reply; unsupported replies remain unknown",
+        "root": "X Speed"
+      },
+      {
+        "chosen": 1,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 10,
+        "reason": "public reply attack mechanic is outside the audited certificate registry",
+        "root": "X Speed"
+      },
+      {
+        "chosen": 898,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 14338,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "X Speed"
+      },
+      {
+        "chosen": 22,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 136,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "X Speed"
+      },
+      {
+        "chosen": 79,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 79,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "attach Leaf Cape"
+      },
+      {
+        "chosen": 1284,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 1284,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "attach Leaf Cape"
+      },
+      {
+        "chosen": 6,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 6,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "attach Leaf Cape"
+      },
+      {
+        "chosen": 28,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 36,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "evolve into Vespiquen ex"
+      },
+      {
+        "chosen": 1456,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 2521,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "evolve into Vespiquen ex"
+      },
+      {
+        "chosen": 1,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 3,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "evolve into Vespiquen ex"
+      },
+      {
+        "chosen": 105,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 154,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "place Combee"
+      },
+      {
+        "chosen": 458,
+        "itself": true,
+        "kind": "other",
+        "offered": 807,
+        "reason": "opponent setup is hidden; only own setup development is scored",
+        "root": "place Combee"
+      },
+      {
+        "chosen": 1613,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 2868,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "place Combee"
+      },
+      {
+        "chosen": 14,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 31,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "place Combee"
+      },
+      {
+        "chosen": 458,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 807,
+        "reason": "setup handoff or reveal requires the concealed opponent board",
+        "root": "place Combee"
+      },
+      {
+        "chosen": 99,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 148,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "place Shuckle ex"
+      },
+      {
+        "chosen": 461,
+        "itself": true,
+        "kind": "other",
+        "offered": 671,
+        "reason": "opponent setup is hidden; only own setup development is scored",
+        "root": "place Shuckle ex"
+      },
+      {
+        "chosen": 1538,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 2385,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "place Shuckle ex"
+      },
+      {
+        "chosen": 31,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 71,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "place Shuckle ex"
+      },
+      {
+        "chosen": 461,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 671,
+        "reason": "setup handoff or reveal requires the concealed opponent board",
+        "root": "place Shuckle ex"
+      },
+      {
+        "chosen": 46,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 67,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "place Teal Mask Ogerpon ex"
+      },
+      {
+        "chosen": 254,
+        "itself": true,
+        "kind": "other",
+        "offered": 254,
+        "reason": "opponent setup is hidden; only own setup development is scored",
+        "root": "place Teal Mask Ogerpon ex"
+      },
+      {
+        "chosen": 770,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 1111,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "place Teal Mask Ogerpon ex"
+      },
+      {
+        "chosen": 16,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 32,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "place Teal Mask Ogerpon ex"
+      },
+      {
+        "chosen": 254,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 254,
+        "reason": "setup handoff or reveal requires the concealed opponent board",
+        "root": "place Teal Mask Ogerpon ex"
+      }
+    ]
+  },
+  "weezing": {
+    "branches": [
+      {
+        "branch": "DrawCard",
+        "occurrences": 326,
+        "reason": "draw reaches an unknown card identity"
+      },
+      {
+        "branch": "EndTurn",
+        "occurrences": 20278,
+        "reason": "automatic next-turn ability searches an unknown deck"
+      },
+      {
+        "branch": "EndTurn",
+        "occurrences": 636,
+        "reason": "opponent setup is hidden; only own setup development is scored"
+      },
+      {
+        "branch": "EndTurn",
+        "occurrences": 9970,
+        "reason": "setup handoff or reveal requires the concealed opponent board"
+      },
+      {
+        "branch": "Noop",
+        "occurrences": 2047,
+        "reason": "no certified public immediate winning reply; unsupported replies remain unknown"
+      },
+      {
+        "branch": "Noop",
+        "occurrences": 6,
+        "reason": "private pending choice is unavailable to this observer"
+      },
+      {
+        "branch": "Noop",
+        "occurrences": 535,
+        "reason": "public reply attack mechanic is outside the audited certificate registry"
+      },
+      {
+        "branch": "Noop",
+        "occurrences": 908047,
+        "reason": "public reply board contains a hook outside the audited certificate registry"
+      },
+      {
+        "branch": "Noop",
+        "occurrences": 34399,
+        "reason": "public reply certificate encountered an unsupported prefix action"
+      },
+      {
+        "branch": "place Darkrai ex",
+        "occurrences": 757,
+        "reason": "opponent setup is hidden; only own setup development is scored"
+      },
+      {
+        "branch": "place Hoopa ex",
+        "occurrences": 750,
+        "reason": "opponent setup is hidden; only own setup development is scored"
+      },
+      {
+        "branch": "place Team Rocket's Koffing",
+        "occurrences": 1795,
+        "reason": "opponent setup is hidden; only own setup development is scored"
+      }
+    ],
+    "decisions": 34182,
+    "hidden_itself": {
+      "chosen": 29,
+      "offered": 1354
+    },
+    "kinds": {
+      "boundary": {
+        "chosen": 31360,
+        "offered": 32008
+      },
+      "hidden": {
+        "chosen": 2132,
+        "offered": 2193
+      },
+      "other": {
+        "chosen": 1157,
+        "offered": 1157
+      }
+    },
+    "roots": [
+      {
+        "chosen": 460,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 460,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Activate"
+      },
+      {
+        "chosen": 2,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 2,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Activate"
+      },
+      {
+        "chosen": 9,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 9,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "ApplyQueuedAttackDamage"
+      },
+      {
+        "chosen": 1973,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 2011,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "ApplyQueuedAttackDamage"
+      },
+      {
+        "chosen": 20,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 20,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "ApplyQueuedAttackDamage"
+      },
+      {
+        "chosen": 100,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 346,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Attach"
+      },
+      {
+        "chosen": 5388,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 13289,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Attach"
+      },
+      {
+        "chosen": 105,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 469,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Attach"
+      },
+      {
+        "chosen": 4,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 15,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Confusion Gas (Team Rocket's Weezing ex)"
+      },
+      {
+        "chosen": 362,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 955,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Confusion Gas (Team Rocket's Weezing ex)"
+      },
+      {
+        "chosen": 63,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 154,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Copycat"
+      },
+      {
+        "chosen": 1074,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 4529,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Copycat"
+      },
+      {
+        "chosen": 142,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 369,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Copycat"
+      },
+      {
+        "chosen": 8,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 59,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Cyrus"
+      },
+      {
+        "chosen": 849,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 2295,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Cyrus"
+      },
+      {
+        "chosen": 11,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 27,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Cyrus"
+      },
+      {
+        "chosen": 5,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 8,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Dark Prism (Darkrai ex)"
+      },
+      {
+        "chosen": 235,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 546,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Dark Prism (Darkrai ex)"
+      },
+      {
+        "chosen": 59,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 247,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Deceptive Needle"
+      },
+      {
+        "chosen": 1449,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 5906,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Deceptive Needle"
+      },
+      {
+        "chosen": 197,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 634,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Deceptive Needle"
+      },
+      {
+        "chosen": 0,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 7,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "DiscardActiveStadium"
+      },
+      {
+        "chosen": 4,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 233,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "DiscardActiveStadium"
+      },
+      {
+        "chosen": 11,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 11,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "DiscardToolFromPokemon"
+      },
+      {
+        "chosen": 358,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 363,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "DiscardToolFromPokemon"
+      },
+      {
+        "chosen": 1,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 4,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Dynamite Punch (Hoopa ex)"
+      },
+      {
+        "chosen": 0,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 6,
+        "reason": "public reply attack mechanic is outside the audited certificate registry",
+        "root": "Dynamite Punch (Hoopa ex)"
+      },
+      {
+        "chosen": 108,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 330,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Dynamite Punch (Hoopa ex)"
+      },
+      {
+        "chosen": 29,
+        "itself": true,
+        "kind": "hidden",
+        "offered": 718,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "EndTurn"
+      },
+      {
+        "chosen": 16,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 1491,
+        "reason": "no certified public immediate winning reply; unsupported replies remain unknown",
+        "root": "EndTurn"
+      },
+      {
+        "chosen": 0,
+        "itself": true,
+        "kind": "other",
+        "offered": 636,
+        "reason": "opponent setup is hidden; only own setup development is scored",
+        "root": "EndTurn"
+      },
+      {
+        "chosen": 1194,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 23839,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "EndTurn"
+      },
+      {
+        "chosen": 0,
+        "itself": true,
+        "kind": "hidden",
+        "offered": 636,
+        "reason": "setup handoff or reveal requires the concealed opponent board",
+        "root": "EndTurn"
+      },
+      {
+        "chosen": 15,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 131,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Field Blower"
+      },
+      {
+        "chosen": 510,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 4674,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Field Blower"
+      },
+      {
+        "chosen": 1,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 5,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Field Blower"
+      },
+      {
+        "chosen": 8,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 82,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Mars"
+      },
+      {
+        "chosen": 431,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 3792,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Mars"
+      },
+      {
+        "chosen": 31,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 248,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Mars"
+      },
+      {
+        "chosen": 0,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 6,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Noop"
+      },
+      {
+        "chosen": 2,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 1437,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Noop"
+      },
+      {
+        "chosen": 105,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 166,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Poké Ball"
+      },
+      {
+        "chosen": 1397,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 2808,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Poké Ball"
+      },
+      {
+        "chosen": 258,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 388,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Poké Ball"
+      },
+      {
+        "chosen": 60,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 119,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Professor's Research"
+      },
+      {
+        "chosen": 1387,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 2414,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Professor's Research"
+      },
+      {
+        "chosen": 142,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 274,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Professor's Research"
+      },
+      {
+        "chosen": 1,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 1,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Promote"
+      },
+      {
+        "chosen": 118,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 118,
+        "reason": "draw reaches an unknown card identity",
+        "root": "Promote"
+      },
+      {
+        "chosen": 2,
+        "itself": false,
+        "kind": "other",
+        "offered": 2,
+        "reason": "private pending choice is unavailable to this observer",
+        "root": "Promote"
+      },
+      {
+        "chosen": 842,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 843,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Promote"
+      },
+      {
+        "chosen": 27,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 54,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Retreat"
+      },
+      {
+        "chosen": 35,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 69,
+        "reason": "no certified public immediate winning reply; unsupported replies remain unknown",
+        "root": "Retreat"
+      },
+      {
+        "chosen": 3,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 6,
+        "reason": "public reply attack mechanic is outside the audited certificate registry",
+        "root": "Retreat"
+      },
+      {
+        "chosen": 650,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 4488,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Retreat"
+      },
+      {
+        "chosen": 23,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 42,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "Retreat"
+      },
+      {
+        "chosen": 1,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 26,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Reverse Thrust (Team Rocket's Koffing)"
+      },
+      {
+        "chosen": 2,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 21,
+        "reason": "public reply attack mechanic is outside the audited certificate registry",
+        "root": "Reverse Thrust (Team Rocket's Koffing)"
+      },
+      {
+        "chosen": 40,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 403,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Reverse Thrust (Team Rocket's Koffing)"
+      },
+      {
+        "chosen": 53,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 134,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Shadow Bullet (Hoopa ex)"
+      },
+      {
+        "chosen": 41,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 178,
+        "reason": "public reply attack mechanic is outside the audited certificate registry",
+        "root": "Shadow Bullet (Hoopa ex)"
+      },
+      {
+        "chosen": 3068,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 10137,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Shadow Bullet (Hoopa ex)"
+      },
+      {
+        "chosen": 6,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 6,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "Team Rocket's Weezing ex's ability"
+      },
+      {
+        "chosen": 1420,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 1422,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "Team Rocket's Weezing ex's ability"
+      },
+      {
+        "chosen": 22,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 321,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "UseStadium"
+      },
+      {
+        "chosen": 245,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 4669,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "UseStadium"
+      },
+      {
+        "chosen": 19,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 210,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "X Speed"
+      },
+      {
+        "chosen": 51,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 366,
+        "reason": "no certified public immediate winning reply; unsupported replies remain unknown",
+        "root": "X Speed"
+      },
+      {
+        "chosen": 0,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 58,
+        "reason": "public reply attack mechanic is outside the audited certificate registry",
+        "root": "X Speed"
+      },
+      {
+        "chosen": 465,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 6369,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "X Speed"
+      },
+      {
+        "chosen": 51,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 320,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "X Speed"
+      },
+      {
+        "chosen": 45,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 45,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "attach Deceptive Needle"
+      },
+      {
+        "chosen": 1293,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 1294,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "attach Deceptive Needle"
+      },
+      {
+        "chosen": 136,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 136,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "attach Deceptive Needle"
+      },
+      {
+        "chosen": 6,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 10,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "evolve into Team Rocket's Weezing ex"
+      },
+      {
+        "chosen": 1391,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 3146,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "evolve into Team Rocket's Weezing ex"
+      },
+      {
+        "chosen": 45,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 100,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "evolve into Team Rocket's Weezing ex"
+      },
+      {
+        "chosen": 45,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 92,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "place Darkrai ex"
+      },
+      {
+        "chosen": 234,
+        "itself": true,
+        "kind": "other",
+        "offered": 428,
+        "reason": "opponent setup is hidden; only own setup development is scored",
+        "root": "place Darkrai ex"
+      },
+      {
+        "chosen": 588,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 909,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "place Darkrai ex"
+      },
+      {
+        "chosen": 123,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 314,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "place Darkrai ex"
+      },
+      {
+        "chosen": 234,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 428,
+        "reason": "setup handoff or reveal requires the concealed opponent board",
+        "root": "place Darkrai ex"
+      },
+      {
+        "chosen": 91,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 147,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "place Hoopa ex"
+      },
+      {
+        "chosen": 463,
+        "itself": true,
+        "kind": "other",
+        "offered": 491,
+        "reason": "opponent setup is hidden; only own setup development is scored",
+        "root": "place Hoopa ex"
+      },
+      {
+        "chosen": 1269,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 1938,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "place Hoopa ex"
+      },
+      {
+        "chosen": 159,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 313,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "place Hoopa ex"
+      },
+      {
+        "chosen": 463,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 491,
+        "reason": "setup handoff or reveal requires the concealed opponent board",
+        "root": "place Hoopa ex"
+      },
+      {
+        "chosen": 66,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 126,
+        "reason": "automatic next-turn ability searches an unknown deck",
+        "root": "place Team Rocket's Koffing"
+      },
+      {
+        "chosen": 458,
+        "itself": true,
+        "kind": "other",
+        "offered": 798,
+        "reason": "opponent setup is hidden; only own setup development is scored",
+        "root": "place Team Rocket's Koffing"
+      },
+      {
+        "chosen": 1261,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 2224,
+        "reason": "public reply board contains a hook outside the audited certificate registry",
+        "root": "place Team Rocket's Koffing"
+      },
+      {
+        "chosen": 130,
+        "itself": false,
+        "kind": "boundary",
+        "offered": 238,
+        "reason": "public reply certificate encountered an unsupported prefix action",
+        "root": "place Team Rocket's Koffing"
+      },
+      {
+        "chosen": 458,
+        "itself": false,
+        "kind": "hidden",
+        "offered": 798,
+        "reason": "setup handoff or reveal requires the concealed opponent board",
+        "root": "place Team Rocket's Koffing"
+      }
+    ]
+  }
+}

@@ -1,0 +1,64 @@
+bot kp3, table deals i < 200; a decision counts when the bot had more than one move
+
+altaria: 33337 decisions (% with such a candidate / % where the bot chose one)
+    hidden, the candidate itself scored as nothing: 5.9% / 0.1%
+    boundary anywhere in the candidate's search: 91.1% / 88.9%
+    hidden   anywhere in the candidate's search: 9.9% / 9.6%
+    other    anywhere in the candidate's search: 6.0% / 6.0%
+      EndTurn                                offered   1172 chosen      0   setup handoff or reveal requires the concealed opponent board
+      EndTurn                                offered    785 chosen     43   automatic next-turn ability searches an unknown deck
+
+blaziken: 30343 decisions (% with such a candidate / % where the bot chose one)
+    hidden, the candidate itself scored as nothing: 2.9% / 0.1%
+    boundary anywhere in the candidate's search: 95.6% / 93.1%
+    hidden   anywhere in the candidate's search: 5.6% / 5.5%
+    other    anywhere in the candidate's search: 2.2% / 2.2%
+      EndTurn                                offered    530 chosen     20   automatic next-turn ability searches an unknown deck
+      EndTurn                                offered    357 chosen      0   setup handoff or reveal requires the concealed opponent board
+
+hydreigon: 33909 decisions (% with such a candidate / % where the bot chose one)
+    hidden, the candidate itself scored as nothing: 3.2% / 0.0%
+    boundary anywhere in the candidate's search: 95.3% / 93.2%
+    hidden   anywhere in the candidate's search: 5.9% / 5.7%
+    other    anywhere in the candidate's search: 2.2% / 2.2%
+      EndTurn                                offered    692 chosen     12   automatic next-turn ability searches an unknown deck
+      EndTurn                                offered    396 chosen      0   setup handoff or reveal requires the concealed opponent board
+
+lucario: 28885 decisions (% with such a candidate / % where the bot chose one)
+    hidden, the candidate itself scored as nothing: 3.2% / 0.1%
+    boundary anywhere in the candidate's search: 95.3% / 92.7%
+    hidden   anywhere in the candidate's search: 5.2% / 5.2%
+    other    anywhere in the candidate's search: 2.2% / 2.2%
+      EndTurn                                offered    574 chosen     31   automatic next-turn ability searches an unknown deck
+      EndTurn                                offered    337 chosen      0   setup handoff or reveal requires the concealed opponent board
+
+sceptile: 29987 decisions (% with such a candidate / % where the bot chose one)
+    hidden, the candidate itself scored as nothing: 0.7% / 0.0%
+    boundary anywhere in the candidate's search: 98.5% / 95.8%
+    hidden   anywhere in the candidate's search: 1.5% / 1.5%
+    other    anywhere in the candidate's search: 1.3% / 1.3%
+      EndTurn                                offered    201 chosen      0   setup handoff or reveal requires the concealed opponent board
+
+suicune: 37893 decisions (% with such a candidate / % where the bot chose one)
+    hidden, the candidate itself scored as nothing: 3.4% / 0.2%
+    boundary anywhere in the candidate's search: 95.0% / 93.2%
+    hidden   anywhere in the candidate's search: 5.9% / 5.9%
+    other    anywhere in the candidate's search: 3.1% / 3.1%
+      EndTurn                                offered    646 chosen      0   setup handoff or reveal requires the concealed opponent board
+      EndTurn                                offered    629 chosen     82   automatic next-turn ability searches an unknown deck
+
+vespiquen: 36488 decisions (% with such a candidate / % where the bot chose one)
+    hidden, the candidate itself scored as nothing: 3.9% / 0.2%
+    boundary anywhere in the candidate's search: 94.2% / 92.5%
+    hidden   anywhere in the candidate's search: 7.5% / 7.3%
+    other    anywhere in the candidate's search: 3.2% / 3.2%
+      EndTurn                                offered    801 chosen     60   automatic next-turn ability searches an unknown deck
+      EndTurn                                offered    638 chosen      0   setup handoff or reveal requires the concealed opponent board
+
+weezing: 34182 decisions (% with such a candidate / % where the bot chose one)
+    hidden, the candidate itself scored as nothing: 4.0% / 0.1%
+    boundary anywhere in the candidate's search: 93.6% / 91.7%
+    hidden   anywhere in the candidate's search: 6.4% / 6.2%
+    other    anywhere in the candidate's search: 3.4% / 3.4%
+      EndTurn                                offered    718 chosen     29   automatic next-turn ability searches an unknown deck
+      EndTurn                                offered    636 chosen      0   setup handoff or reveal requires the concealed opponent board
