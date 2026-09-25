@@ -51,7 +51,7 @@ Your two conditions:
 
 ## The table
 
-`kd3_500.{txt,jsonl}`: all 28 pairings × 500 table deals, one JSON line per game. Distinct games 500 of 500 in every pairing, and no rule findings.
+`kd3_500.{txt,jsonl}`: all 28 pairings × 500 table deals, one JSON line per game. No rule findings. Distinct games 500 of 500 in 26 pairings, 497 in Blaziken v Sceptile and 499 in Lucario v Sceptile. A few deals give the same short game, as in the kp3, k3 and kq3 tables.
 
 **Against Limitless, over 28 cells** (`deck_averages.py`):
 
