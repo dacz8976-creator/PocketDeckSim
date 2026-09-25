@@ -1,5 +1,15 @@
 # Dustin's recorded battles against the official engine, Sept 25
 
+**Update, same evening: a second pass (`second_pass/`).** The first pass below read only each battle's REVIEW.md and RESEARCH_HANDOFF.md, about 30% of the trusted review text (486 of 1,666 KB). Dustin suspected it was missing things, and it was.
+- **What the second pass read:** the other 317 accepted-packet files (coverage, lead acceptance, uncertainties, Sol verifications, reconciliations, audits, three REVIEW.md files), plus two battles the first pass skipped (SweetGameBuddy, the partial Luckycad Xatu review). The Gemini transcripts were excluded on purpose: the whole-video Gemini method failed source verification (`Pocket Deck Lab/Boss Folder/wsl-review-campaign-2026-09-22/RESULTS.md`).
+- **Result:** 204 new claims. 193 match the engine. 5 apparent contradictions were all refuted by three skeptics each. 3 can't be settled from footage, and 3 are things the engine doesn't model.
+- **56 corrections** to what the first pass took from the summaries, mostly rules stated too broadly (`second_pass/corrections.json`).
+- **Two open questions** need new footage. Both are low priority (`second_pass/open_questions.json`).
+- **Side findings:**
+  - The engine lets the A2b 111 Poké Ball be played with an empty deck, while the P-A 005 printing is blocked.
+  - Legendary Pulse's draw resolves a step late. That is the same cause as the Hiking Trail order bug Dustin confirmed in-game (`OWNER_ANSWERS.md`).
+- The plain report is `second_pass/report_for_dustin.md`. Dustin's answers to the open rules questions are in `OWNER_ANSWERS.md`.
+
 **In plain words:** nothing in Dustin's recorded battles contradicts the engine. That covers every rule his finished reviews describe, across about 44 battles.
 - 249 distinct rule claims were checked against the engine's code and tests. 235 match.
 - 8 looked like disagreements. Three skeptics threw each one out, 3 votes to 0 every time: in each case the note had misread the video or said more than it showed.

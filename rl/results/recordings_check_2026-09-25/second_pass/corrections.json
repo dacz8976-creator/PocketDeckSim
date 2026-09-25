@@ -1,0 +1,338 @@
+[
+ {
+  "battle": "20260909_023151000_iOS.MP4",
+  "first_pass_said": "Training Area (Stadium) added a flat +10 damage to attacks hitting the Active Pokemon for both players",
+  "packet_says": "Lead describes it as 'Training Area's Stage1+10 giving120'. Every boosted attacker (Heliolisk, Combusken, Mega Manectric ex) was Stage 1, and the Bench spread got no bonus ('Active +10 only'). This narrows the claim to Stage 1 attackers hitting the Active.",
+  "source_file": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\video-review-coordinator-2026-09-09\\previously-finished-audit\\battle-023151\\LEAD_FINAL_ATTACK.md"
+ },
+ {
+  "battle": "20260909_023151000_iOS.MP4",
+  "first_pass_said": "Elegant Cape added a flat +30 max HP; a Basic Electrike with Cape attached evolved straight into Mega Manectric ex showing 210 HP",
+  "packet_says": "'Cape does not raise the Basic Electrike's displayed 60HP' (f141 ~140s). README: 'the Cape's Stage 1 HP increase applies after evolution'. So the +30 is not flat on any holder; it did not apply while the holder was Basic.",
+  "source_file": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\video-review-coordinator-2026-09-09\\previously-finished-audit\\battle-023151\\LEAD_OPENING_STATES.md"
+ },
+ {
+  "battle": "20260909_023151000_iOS.MP4",
+  "first_pass_said": "unused Supporter/Energy end-turn warning: 'turn 9, ~02:54-03:38'",
+  "packet_says": "The warning frame is f333 at ~332s (about 05:32). T9 runs ~326-343s in a 343.97s video, so the first-pass timestamps cannot be video-relative times for T9.",
+  "source_file": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\video-review-coordinator-2026-09-09\\previously-finished-audit\\battle-023151\\evidence\\MANIFEST.json"
+ },
+ {
+  "battle": "20260909_023151000_iOS.MP4",
+  "first_pass_said": "Rare Candy evolved damaged Torchic into Mega Blaziken ex: 'turn 8, ~02:42-02:54'",
+  "packet_says": "Rare Candy play frame at ~288s (about 04:48); Mega Blaziken printed 210 / 200 remaining at ~297-299s. T8 spans ~252-325s.",
+  "source_file": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\video-review-coordinator-2026-09-09\\previously-finished-audit\\battle-023151\\evidence\\MANIFEST.json"
+ },
+ {
+  "battle": "20260921_155818000_iOS.MP4",
+  "first_pass_said": "Watch Over healed 20 HP on 8 of 9 uses; on the 9th it healed only 10 HP (Skarmory at 130/140)",
+  "packet_says": "'effective healing is 20 except the max-HP-capped 10 on T17'. The uses ran T3-T19, with a final Watch Over on T19. So the capped heal was the 8th use (T17), not the last, and the T19 use healed the full 20.",
+  "source_file": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\wsl-review-campaign-2026-09-22\\battle-20260921-155818\\SOL_VERIFICATION.md"
+ },
+ {
+  "battle": "20260921_155818000_iOS.MP4",
+  "first_pass_said": "Across all 19 turns of the match, neither side ever played more than one Supporter card in a single turn.",
+  "packet_says": "Supporters: player played 6 (T1, T5, T11, T13, T15, T19); 'Opponent: none visible'. The one-per-turn evidence therefore comes only from the player's turns. The Red, Cyrus and other enlargements were previews, not plays.",
+  "source_file": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\wsl-review-campaign-2026-09-22\\battle-20260921-155818\\COVERAGE.md"
+ },
+ {
+  "battle": "EnergyRetreatAttackChoice.MP4",
+  "first_pass_said": "Scorching Interruption 'applies a -30 damage penalty to the opponent's very next attack regardless of which opposing Pokemon makes it'",
+  "packet_says": "The printed effect reads 'During your opponent's next turn, this Pokemon takes -30 damage from attacks'. It is a reduction on damage taken by Gouging Fire itself, not a penalty on whichever attack comes next. The reduced Ambush (10) was on T7, while Gouging Fire was still Active.",
+  "source_file": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\wsl-review-campaign-2026-09-22\\battle-energy-retreat-attack-choice\\AUDIT_FINDINGS.md"
+ },
+ {
+  "battle": "EnergyRetreatAttackChoice.MP4",
+  "first_pass_said": "'Small Balloon reduces its holder's printed Retreat Cost by 1'",
+  "packet_says": "'Small Balloon reduces a Basic Pokemon's retreat cost by 1', which narrows it to Basic holders (Gouging Fire retreat 2 to 1).",
+  "source_file": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\wsl-review-campaign-2026-09-22\\battle-energy-retreat-attack-choice\\AUDIT_FINDINGS.md"
+ },
+ {
+  "battle": "20260907_232617",
+  "first_pass_said": "'Giovanni's +10 attack-damage bonus applied only on the turn it was played (turn 9)'",
+  "packet_says": "T9: 'Giovanni played; no attack/retreat observed.' Giovanni never added to any attack. The only verified fact is 'Giovanni from T9 does not carry over' to the T11 Fighting Pulse (180).",
+  "source_file": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260907_232617_v5_review\\final_packet\\COVERAGE.md"
+ },
+ {
+  "battle": "20260909_032418",
+  "first_pass_said": "Luxury Coin: 'the recording shows it used once per turn, limited to one use each turn' (strength: seen)",
+  "packet_says": "Lead limit: 'Once-per-turn ability limit is a card-rule statement, not independently proven by a single use'. The recording does not demonstrate the limit.",
+  "source_file": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\competitive-deck-study-2026-09-08\\ongoing-campaign-2026-09-08\\native-random-rotom\\LEAD_ACCEPTANCE.json"
+ },
+ {
+  "battle": "20260909_133834",
+  "first_pass_said": "'the match ended on this KO even though the on-screen point animation hadn't finished filling all 3 markers yet'",
+  "packet_says": "'Final 312.7 frame has end transition, no completed score/WIN banner. t308 only preexisting 1 point.' The win is only 'supported by defeated Mega Sharpedo visible 3 point rule'. The source shows no win or score, and earlier final-score files are marked incorrect and superseded.",
+  "source_file": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\competitive-deck-study-2026-09-08\\ongoing-campaign-2026-09-08\\native-skarmory-indeedee\\LEAD_REVIEW.json"
+ },
+ {
+  "battle": "20260907_181914",
+  "first_pass_said": "Seal of Antiquity prevented Regigigas from attacking 'while it remained Active for the whole recorded game'.",
+  "packet_says": "T7: 'Crystal Waltz 120 KOs Regigigas from 30 ... owner promotes first Glimmora'. Regigigas was Active only from T1 to T7, not the whole game.",
+  "source_file": "EVENTS.json"
+ },
+ {
+  "battle": "20260907_181914",
+  "first_pass_said": "Ice Maker Water was 'seen going to the Active, to itself, and to a different Benched Pokemon'.",
+  "packet_says": "Recipients were Active Suicune (T5), 'attaches Water to itself' on the Bench (T11), 'active Baxcalibur uses its Ice Maker on itself' (T13), and the already-promoted Active Iron Bundle ex (T13). It was never used on a different Benched Pokemon.",
+  "source_file": "EVENTS.json"
+ },
+ {
+  "battle": "20260907_181914",
+  "first_pass_said": "Poison did 100->90 at Checkup 'after an earlier attack had taken it 140->110->100'.",
+  "packet_says": "T8: 'Venomous Hit 30 and Poison: Suicune 140->110->100'. The attack did only 30 (140->110); 110->100 was itself the Poison Checkup at the end of T8.",
+  "source_file": "EVENTS.json"
+ },
+ {
+  "battle": "20260907_020124",
+  "first_pass_said": "Victory Star's reroll 'produced an entirely new batch ... that alone determined Energy gained'; the original Head 'was not kept'.",
+  "packet_says": "'Victory Star is observed only on a favorable replacement ... does not decide what happens on a worse replacement.' The footage cannot distinguish a forced replacement from keeping the better batch.",
+  "source_file": "UNCERTAINTIES.md"
+ },
+ {
+  "battle": "20260907_020124",
+  "first_pass_said": "Heat-Up Crunch showed 60 plus a '+30' stacking message, 'but the damage actually dealt ... was 60'.",
+  "packet_says": "'presentation shows 60 ... reports does +30 damage, and 60 damage is observed ... does not independently demonstrate a later stacked attack value'. The shown and dealt damage agree; the +30 went untested because the battle ended.",
+  "source_file": "UNCERTAINTIES.md"
+ },
+ {
+  "battle": "20260921_235356",
+  "first_pass_said": "'A successful Poke Ball search reveals the found Basic Pokemon and puts it into hand' (turns 2 and 11).",
+  "packet_says": "Only the player's own T2 finds were shown. The opponent's T11 Poke Ball showed a card back going to hand: 'the Basic Pokemon's face is never shown'.",
+  "source_file": "UNCERTAINTIES.json"
+ },
+ {
+  "battle": "20260921_235356",
+  "first_pass_said": "Exeggcute 'evolving into Exeggutor ex before that opponent's turn cleared the effect'.",
+  "packet_says": "'Evolution clears Teary Attack's -30 before Exeggutor attacks.' The evolution happened during the opponent's T3 itself ('T3 Energy/evolutions/Research/Tropical Swing KO'), before the attack.",
+  "source_file": "SOL_VERIFICATION.md"
+ },
+ {
+  "battle": "20260908_190933",
+  "first_pass_said": "Protective Poncho 'only visibly started blocking opposing attack/Ability damage after that Pokemon retreated to the Bench; it did not visibly block while it was still Active.'",
+  "packet_says": "The opponent attached the Poncho to its damaged Active Mega on its own T8, and that Mega retreated for free in the same turn. The ledger records only that the 'Poncho prevention activates on the now-Benched damaged Mega' (~343s). No attack or Ability hit that Mega while it was Active with the Poncho, and no blocked hit is recorded afterward. Active-spot behavior was never tested, and no actual blocking was seen.",
+  "source_file": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\video-review-coordinator-2026-09-09\\previously-finished-audit\\second-altaria\\COVERAGE.md"
+ },
+ {
+  "battle": "20260907_221051",
+  "first_pass_said": "'The Elegant Cape-holding Mega Sharpedo ex retreated for 0 Energy cost on two separate turns' (T7 and T13).",
+  "packet_says": "The Cape copy retreated on T7 and was then discarded by Wild Swing that same turn, Elegant Cape included. The T13 free retreat was made by the second, uncaped Mega Sharpedo ex (190 HP, at 80). The review states that Mega Sharpedo ex 'uses its zero retreat cost', so the free retreat comes from the card, not the Cape.",
+  "source_file": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\video-review-coordinator-2026-09-09\\battle-20260907-220914-221051\\REVIEW.md"
+ },
+ {
+  "battle": "20260907_221051",
+  "first_pass_said": "Air Crash 'removed the target's remaining attached Energy afterward, leaving it with none.'",
+  "packet_says": "Each time, the target had exactly one Water: 'discards that Active's sole Water' (T6) and 'removes its sole Water' (T12). The footage cannot tell whether Air Crash discards one Energy or all of them.",
+  "source_file": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\video-review-coordinator-2026-09-09\\battle-20260907-220914-221051\\REVIEW.md"
+ },
+ {
+  "battle": "20260908_232955",
+  "first_pass_said": "Flame Patch ... used twice in the battle to rebuild Energy after a KO (turns 5, 9).",
+  "packet_says": "On T5 there was no KO: Flame Patch reattached the Fire Castform had discarded to retreat. Only on T9, after Mega Blaziken ex was promoted following Castform's KO, did it supply the first of two Fire, before the ordinary attachment.",
+  "source_file": "/mnt/c/Users/dacz8/Projects/Pocket Deck Lab/Boss Folder/video-review-coordinator-2026-09-09/previously-finished-audit/battle-232955/AUDIT.md"
+ },
+ {
+  "battle": "20260908_232955",
+  "first_pass_said": "Small Balloon reduced the holder's retreat cost by 1.",
+  "packet_says": "Narrowed: the readable text (f061) says 'the attached Basic Pokémon's Retreat Cost is one less', so it works only on Basic Pokémon. Mega Diancie ex qualified as a Basic.",
+  "source_file": "/mnt/c/Users/dacz8/Projects/Pocket Deck Lab/Boss Folder/video-review-coordinator-2026-09-09/previously-finished-audit/battle-232955/LEAD_FIELD_BLOWER_CHECK.md"
+ },
+ {
+  "battle": "20260907_220914",
+  "first_pass_said": "'Ability Energy placement order' and 'Repeated ability effect': Mega Sharpedo ex's Turbo Shark treated as an Ability.",
+  "packet_says": "Turbo Shark is an attack. The lead viewed readable 'TurboShark attack text' and a 'Turbo Shark declaration'. Its Bench Energy placement is the attack's post-damage effect.",
+  "source_file": "/mnt/c/Users/dacz8/Projects/Pocket Deck Lab/Boss Folder/video-review-coordinator-2026-09-09/battle-20260907-220914-221051/LEAD_SPLIT_BOUNDARY_CHECK.md"
+ },
+ {
+  "battle": "20260907_220914",
+  "first_pass_said": "Turbo Shark's secondary effect 'still resolved after that lethal damage, before the KO's point/promotion sequence' (seen).",
+  "packet_says": "Narrowed: the effect is seen at the end of part 1 (84.0 s) and the +1 award at the start of part 2, with a nominal 12.39 s unrecorded gap between them. The lead says the matching states support a compulsory continuation, 'not frame-perfect continuity'.",
+  "source_file": "/mnt/c/Users/dacz8/Projects/Pocket Deck Lab/Boss Folder/video-review-coordinator-2026-09-09/battle-20260907-220914-221051/LEAD_ACCEPTANCE.md"
+ },
+ {
+  "battle": "20260908_004344",
+  "first_pass_said": "Checkup ordering: Poison damage resolves first (knocking out Hypno), and the Burn coin flip is shown afterward (seen, T6 03:18-03:22).",
+  "packet_says": "Sol confirmed only that Hypno's KO scored 1 point. The Poison-then-Burn ordering comes from the Gemini v7 outline. Sol's check was selective and the lead records every_decoded_frame_reviewed: false, so this should not be marked 'seen'.",
+  "source_file": "/mnt/c/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20260908_004344_v7_review/final_packet/SOL_VERIFICATION.md"
+ },
+ {
+  "battle": "20260908_004344",
+  "first_pass_said": "Derisive Roasting deals 10 + 50 per Special Condition (110 with two conditions); 'seen 3 times' (T4, T6, T8).",
+  "packet_says": "Only the final T8 attack's displayed 110 (Raticate ex to 0 HP) was independently checked, by Astra. The T3-4 sequence is backed only by Sol's note that a prior focused Comfey review agrees with it. T6's 110 and the formula wording rest on the Gemini outline.",
+  "source_file": "/mnt/c/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20260908_004344_v7_review/final_packet/ASTRA_CLARIFICATION.md"
+ },
+ {
+  "battle": "20260908_004344",
+  "first_pass_said": "Several items marked 'seen': Turn-1 restriction (T1), Poké Ball fails with no Basic left (T7), Poison Barb poisons the attacker on KO (T7), Master Plan Tails confuses the user's own Active (T8), retreating cures Confusion (T8).",
+  "packet_says": "None of these are among Sol's confirmed items or Astra's clarifications. Sol and Astra verified only turn structure, the opening Actives, the KO/point transitions, Auto, Darkness Energy, the second Drowzee and the final 110/+2/Defeat. These mechanics come from the Gemini-built ledger.",
+  "source_file": "/mnt/c/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20260908_004344_v7_review/final_packet/SOL_VERIFICATION.md"
+ },
+ {
+  "battle": "20260908_004344",
+  "first_pass_said": "Team Rocket's Researcher: 5 coins (4 Heads) add one card per Heads; Boiler Smog triggers on evolution (T4 and T6); Flower Shield blocks only with Psychic attached (all 'seen').",
+  "packet_says": "For T3-4, the only independent support is Sol's line that the prior focused Comfey review 'agrees with the Turn 3-4 sequence'; there is no per-mechanic frame check. The T6 Boiler Smog on Hypno is Gemini-outline only.",
+  "source_file": "/mnt/c/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20260908_004344_v7_review/final_packet/SOL_VERIFICATION.md"
+ },
+ {
+  "battle": "20260908_230007",
+  "first_pass_said": "Rocky Helmet deals 20 damage back to the attacker whenever the holder is Knocked Out by that attack",
+  "packet_says": "Submarine Blow deals literal 60 and KOs Heatmor, then Rocky Helmet deals literal 20 (Lucario 100->80). This was the only trigger: the Helmet went on during T3 and the very next opponent attack KO'd its holder. The packet never says a KO is required, and no non-KO hit on a Helmet holder was observed.",
+  "source_file": "/mnt/c/Users/dacz8/Projects/Pocket Deck Lab/Boss Folder/video-review-coordinator-2026-09-09/previously-finished-audit/battle-230007/AUDIT.md"
+ },
+ {
+  "battle": "20260908_230007",
+  "first_pass_said": "Mega Burning discards 1 Fire Energy from itself as a cost every time it is used",
+  "packet_says": "The printed text is read as 'Mega Burning (120; discard a Fire; Burn the opposing Active)': the discard is an attack effect alongside the Burn, not a cost paid before the attack. Ledger order: 'deals 120 to Gallade 190->70 and discards one Fire'.",
+  "source_file": "/mnt/c/Users/dacz8/Projects/Pocket Deck Lab/Boss Folder/video-review-coordinator-2026-09-09/previously-finished-audit/battle-230007/COVERAGE.md"
+ },
+ {
+  "battle": "20260907_023511",
+  "first_pass_said": "a coin flip resulted in Tails, so the card was discarded instead of shuffled back",
+  "packet_says": "This packet only says 'Lucky Ice Pop heal precedes its Tails result and discard'. Other packets show that on Heads it goes back to the hand, not into the deck: 'heads returns it to hand' (022627 SOL_VERIFICATION) and 'Lucky Ice Pop returns to hand after heads' (224540 COVERAGE).",
+  "source_file": "/mnt/c/Users/dacz8/Projects/Pocket Deck Lab/Boss Folder/wsl-review-campaign-2026-09-22/battle-20260908-022627/SOL_VERIFICATION.md"
+ },
+ {
+  "battle": "20260908_022627",
+  "first_pass_said": "Mega Absol ex's Darkness Claw dealt direct damage ... and also revealed the opponent's hand and discarded one specific card (Cyrus), as part of the same Ability",
+  "packet_says": "Darkness Claw is Mega Absol ex's attack for that turn, not an Ability: 'hyp attaches Mega Absol ex's second Darkness. Darkness Claw deals 80+20 weakness=100, KOs the 10-HP Hypno, reveals the hand, discards Cyrus'.",
+  "source_file": "/mnt/c/Users/dacz8/Projects/Pocket Deck Lab/Boss Folder/wsl-review-campaign-2026-09-22/battle-20260908-022627/SOL_VERIFICATION.md"
+ },
+ {
+  "battle": "20260908_225430",
+  "first_pass_said": "Rocky Helmet deals 20 damage back to the attacker whenever its holder takes attack damage, whether or not that damage is lethal (seen twice).",
+  "packet_says": "Both Helmet triggers in this battle came after lethal hits on the holder: 'Both Electrode Knock Outs are caused by attack damage' (Electrode at 20 by Sunny Scorching 30; Electrode at 70 by Mega Burning 120). No non-lethal Helmet trigger occurs in this battle.",
+  "source_file": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\video-review-coordinator-2026-09-09\\previously-finished-audit\\battle-225430\\AUDIT.md"
+ },
+ {
+  "battle": "20260908_012720",
+  "first_pass_said": "Soothing Wind also blocked Confusion from the opponent's Team Rocket's Master Plan on three separate turns (5, 7, 9).",
+  "packet_says": "Master Plan is played only on T5 (Confusion blocked at 01:52.4) and T7 (blocked at 02:27.4). T9 is Cyrus, a Darkness attachment and a Confusion Gas KO of Ogerpon ex, with no Confusion block recorded.",
+  "source_file": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260908_012720_v7_review\\final_packet\\COVERAGE.md"
+ },
+ {
+  "battle": "20260908_012720",
+  "first_pass_said": "Soothing Wind prevented Poison and Burn ... 'didn't become Poisoned or Burned.' (turns 1, 3, 6)",
+  "packet_says": "Blocks are recorded on T3 (Boiler Smog, 01:10.2), T4 (Poison Barb, 01:39.4), T6 (Poison Barb, 02:20.8) and T8 (Poison Barb on Whimsicott ex, 02:54.8). None is recorded on T1, when Ogerpon had no Energy yet.",
+  "source_file": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260908_012720_v7_review\\final_packet\\COVERAGE.md"
+ },
+ {
+  "battle": "20260907_224312",
+  "first_pass_said": "self-damage energy-ramp attack: Hydreigon's Roar in Unison always added 2 Energy from the Energy Zone to itself and dealt a flat 30 self-damage",
+  "packet_says": "On each turn, Roar in Unison adds 2 Darkness and does 30 to Hydreigon, and Hydreigon then attacks with Hyper Ray 130 in the same turn (T6: 'Roar in Unison adds 2 Darkness and does 30 to Hydreigon; normal third Darkness; Hyper Ray 130'). So Roar in Unison is not that turn's attack; it is most likely an Ability.",
+  "source_file": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260907_224312_v5_review\\final_packet\\COVERAGE.md"
+ },
+ {
+  "battle": "20260907_224312",
+  "first_pass_said": "Tool delayed conditional effect (unresolved): Cursed Jewel showed a conditional 40-damage effect appearing only after its holder was KO'd by an 80-damage attack",
+  "packet_says": "Cursed Jewel is Mega Sableye ex's attack, used with 2 Darkness, not a Tool with a holder. It is listed under 'All attacks observed' as 'opponent Cursed Jewel 80'. Its direct 80 KO'd the 60-HP Gabite before the conditional 40 callout (03:55-03:58).",
+  "source_file": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260907_224312_v5_review\\final_packet\\ASTRA_VERIFICATION.md"
+ },
+ {
+  "battle": "20260907_224312",
+  "first_pass_said": "delayed conditional effect voided by target's KO: since Gabite was already KO'd, that effect never had a next turn to trigger (strength: seen)",
+  "packet_says": "The 40 effect 'never triggers because the battle ends' (the KO gave the opponent its third point). The packet says 'Trigger/expiry mechanics and retaliation KOs cannot be tested from this clip', so nothing about voiding by KO was observed.",
+  "source_file": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260907_224312_v5_review\\final_packet\\UNCERTAINTIES.json"
+ },
+ {
+  "battle": "20260922_010316",
+  "first_pass_said": "Weakness adds flat +20, seen 3 times: 90+20=110, 120+20=140, 60+20=80 (when: 'Turns 6, 18, 20')",
+  "packet_says": "Land Crush 90+20 KO'd Arbok (T6). 'T18 heads allows 80-damage Seismic Toss' (the packet does not split the 80 into base plus Weakness). 'Mega Punch 120 plus 20 Weakness KOs Muk' on T20. Read as pairs, the first pass has T18 and T20 swapped.",
+  "source_file": "/mnt/c/Users/dacz8/Projects/Pocket Deck Lab/Boss Folder/wsl-review-campaign-2026-09-22/battle-20260922-010316/SOL_VERIFICATION.md"
+ },
+ {
+  "battle": "20260907_031901",
+  "first_pass_said": "Darkrai's Nightmare Aura triggers whenever Darkness is attached... (when: 'turns 4 & 10')",
+  "packet_says": "Adds a third trigger: 'attach Darkness #2 to benched Darkrai ex; Nightmare Aura 20: Oricorio 60->40' on T6. So Aura fired on T4, T6 and T10, and on T6 it went through Safeguard.",
+  "source_file": "/mnt/c/Users/dacz8/Projects/Pocket Deck Lab/Boss Folder/video-review-coordinator-2026-09-09/battle-20260907-031901/EVENTS.json"
+ },
+ {
+  "battle": "20260907_170229",
+  "first_pass_said": "Hitting Hammer needs both coin flips Heads to discard an Energy",
+  "packet_says": "Readable card text: flip two coins; if both are Heads, discard a random Energy from the opponent's Active Pokemon. (Narrows which Energy and from where. The lead also fixed its own earlier 'Missing Hammer' name to Hitting Hammer.)",
+  "source_file": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\video-review-coordinator-2026-09-09\\battle-20260907-170229\\LEAD_HAMMER_NAME_CHECK.md"
+ },
+ {
+  "battle": "20260907_222326",
+  "first_pass_said": "Aerodactyl ex's Primeval Law ability blocks evolving the Active Pokemon while it is in play",
+  "packet_says": "The text says the opponent can't play Pokemon from hand to evolve THEIR Active Pokemon. The message is a notice that the Ability became active after evolving, 'not proof of a failed evolution attempt'. Benched Vibrava still evolved into Flygon ex.",
+  "source_file": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\video-review-coordinator-2026-09-09\\battle-20260907-222326\\LEAD_MIDDLE_STATE_CHECK.md"
+ },
+ {
+  "battle": "20260921_234155",
+  "first_pass_said": "Jasmine reduces incoming attack damage by 50 on the turn it's played",
+  "packet_says": "Dustin played Jasmine on his own T9 and T11. The -50 applied to the opponent's Ultimate Force on the following turns, T10 (130-50-50-20=10) and T12 (130-50-20=60). It works during the opponent's next turn, not the turn it is played.",
+  "source_file": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\wsl-review-campaign-2026-09-22\\battle-20260921-234155\\SOL_VERIFICATION.md"
+ },
+ {
+  "battle": "20260908_234514",
+  "first_pass_said": "damaged Kirlia (had 50 HP left) was already knocked out by that Checkup",
+  "packet_says": "Sunny Scorching deals 30, Kirlia 50->20, and Burns it... Checkup deals 20, Kirlia 20->0, before literal Heads and the recovery message (Kirlia had 20 HP, not 50, when Checkup hit)",
+  "source_file": "/mnt/c/Users/dacz8/Projects/Pocket Deck Lab/Boss Folder/video-review-coordinator-2026-09-09/previously-finished-audit/battle-234514/COVERAGE.md"
+ },
+ {
+  "battle": "20260907_025604",
+  "first_pass_said": "Rare Candy evolved a Basic directly to Stage 2 ... twice: Honedge straight to Aegislash, and a Zubat straight to Crobat (turns 6, 7, 15)",
+  "packet_says": "Three Rare Candy evolutions: T6 opponent Honedge->Aegislash, T7 owner Zubat->Crobat, T15 owner 'remaining Zubat evolves directly to Crobat'",
+  "source_file": "/mnt/c/Users/dacz8/Projects/Pocket Deck Lab/Boss Folder/video-review-coordinator-2026-09-09/battle-20260907-025604/EVENTS.json"
+ },
+ {
+  "battle": "20260907_025604",
+  "first_pass_said": "The '+3 points!' award pushed the owner's total past the visible 3-point track",
+  "packet_says": "The final KO at 2-2 shows a literal +3 award, then the three-point goal display; 'The UI does not display a score of five' and the lead makes 'no claim five points displayed'. A total above 3 is not shown.",
+  "source_file": "/mnt/c/Users/dacz8/Projects/Pocket Deck Lab/Boss Folder/video-review-coordinator-2026-09-09/battle-20260907-025604/COVERAGE.md"
+ },
+ {
+  "battle": "20260907_232035",
+  "first_pass_said": "Eevee's Boosted Evolution attack evolves it into Jolteon ex as part of using the attack, during the owner's own turn.",
+  "packet_says": "T2 events: 'Boosted Evolution Eevee to Jolteon ex', then 'attach ordinary Lightning to Jolteon 0->1', then 'no attack'. Coverage also says Jolteon was already evolved before the Lightning settled. The evolution happened with no attack used that turn, so it was not an attack.",
+  "source_file": "/mnt/c/Users/dacz8/Projects/Pocket Deck Lab/Boss Folder/video-review-coordinator-2026-09-09/battle-20260907-232035/EVENTS.json"
+ },
+ {
+  "battle": "20260907_221914",
+  "first_pass_said": "Hand Kinesis dealt 160, 180, then 200 damage across three uses, matching its 20-per-card formula for hand sizes 8, 9, then 10 (strength: seen); also 'rising in steps of 20 as its hand grew'.",
+  "packet_says": "Lead acceptance: 'hand sizes 8/9/10 are explicitly inferences from printed 20x and observed damage, not observed hidden identities.' The damage values were seen; the hand sizes were inferred.",
+  "source_file": "/mnt/c/Users/dacz8/Projects/Pocket Deck Lab/Boss Folder/video-review-coordinator-2026-09-09/battle-20260907-221914/LEAD_ACCEPTANCE.md"
+ },
+ {
+  "battle": "20260907_221914",
+  "first_pass_said": "Soul Shot dealt 30 damage first (70 to 40), then required discarding a card from hand as an additional cost, in that order.",
+  "packet_says": "Lead Soul Shot check: the damage-then-discard sequence 'does not justify calling the discard a pre-attack cost; final wording should describe the observed attack effect'. Events: 'discarded from hand after damage under attack effect'.",
+  "source_file": "/mnt/c/Users/dacz8/Projects/Pocket Deck Lab/Boss Folder/video-review-coordinator-2026-09-09/battle-20260907-221914/LEAD_SOUL_SHOT_DISCARD.md"
+ },
+ {
+  "battle": "20260909_000905",
+  "first_pass_said": "Lightning Accelerator dealt 110; 'implying the attack's damage scales with points already earned' (strength: inferred).",
+  "packet_says": "Sol verification corrected the rule basis: 'its +30 is for each point Dacz8976 [the attacker's side] has taken, not each opponent point.' This narrows the claim to the attacker's own points.",
+  "source_file": "/mnt/c/Users/dacz8/Projects/Pocket Deck Lab/Boss Folder/wsl-review-campaign-2026-09-22/battle-20260909-000905/SOL_VERIFICATION.md"
+ },
+ {
+  "battle": "20260907_014933",
+  "first_pass_said": "Knocking out an ex Pokemon (Moltres ex) awarded 2 points, taking the score from 2 to 3.",
+  "packet_says": "The lead correction says the opponent already had 2 points, the ex KO awarded 2 (2+2=4), and the display stopped at the 3-point win cap (\"2 to 3 shown\"). The 2->3 is only what the screen showed, not a 1-point award.",
+  "source_file": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\video-review-coordinator-2026-09-09\\battle-20260907-014933\\LEAD_RAINBOW_CHECK.json"
+ },
+ {
+  "battle": "20260907_031007",
+  "first_pass_said": "Securely Sheltered: 'Heads fully prevents the attack for literal 0 damage' (strength: seen).",
+  "packet_says": "For the turn-9 Heads, only the blue result state and the literal 0 damage were captured. The one-frame-per-second pool \"does not preserve the brief Heads! word overlay itself\", so Heads is deduced, not directly seen.",
+  "source_file": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\video-review-coordinator-2026-09-09\\battle-20260907-031007\\UNCERTAINTIES.md"
+ },
+ {
+  "battle": "20260921_145205",
+  "first_pass_said": "A failed search item (Poke Ball for a Basic, Cabbie for a Stadium) showed a no-target message and still resolved/entered discard; turns 2, 4, 5, 7.",
+  "packet_says": "Sol verified only Cabbie's failed random-Stadium search at 02:38.9 (turn 5), and did not state where Cabbie went. Gemini's claim that Pokemon Communication failed at ~02:35 was withdrawn: it was only inspected. The Poke Ball failures on turns 2, 4 and 7 come only from the Gemini first pass.",
+  "source_file": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\video-review-coordinator-2026-09-21\\battle-20260921-145205\\SOL_VERIFICATION.md"
+ },
+ {
+  "battle": "20260921_145205",
+  "first_pass_said": "Lucky Ice Pop healed 20 HP each use regardless of the coin; Heads returned the card, Tails discarded it after healing (turn 7, 03:21-03:38).",
+  "packet_says": "Sol checked only 03:29.5-03:30.8: the first flip was Heads and the same card was replayed. The 20-HP heal amounts and the Tails discard in this battle come only from the Gemini first pass.",
+  "source_file": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\video-review-coordinator-2026-09-21\\battle-20260921-145205\\SOL_VERIFICATION.md"
+ },
+ {
+  "battle": "20260921_145205",
+  "first_pass_said": "These were rated 'seen': Random Spark hit a Benched 30-HP Magikarp; Electric Generator flipped Tails; Electro Ball did 40+20 Weakness; Turbo Shark showed a no-Water-Bench message; first-turn restrictions.",
+  "packet_says": "COVERAGE says that outside the checked intervals (02:32-02:40, 03:29-03:31, 03:38-04:02), the battle account \"remains attributed to the Gemini first pass\". Sol \"does not claim\" to have reviewed the whole video, so none of these facts was independently checked.",
+  "source_file": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\video-review-coordinator-2026-09-21\\battle-20260921-145205\\COVERAGE.md"
+ }
+]

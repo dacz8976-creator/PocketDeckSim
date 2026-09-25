@@ -1,0 +1,482 @@
+[
+ {
+  "question": "How was Entei ex's 60-damage Blazing Beatdown made up (was its extra-damage condition met), and what does Training Area boost: a Basic ex like Entei ex, or an opponent's Stage 1 like Ivysaur?",
+  "battles": [
+   "20260909_023151000_iOS.MP4",
+   "20260908_190031"
+  ],
+  "cards": [
+   "Entei ex",
+   "Training Area",
+   "Ivysaur"
+  ],
+  "what_to_record": "Nothing new. The printed card text answers both parts. If someone wants to confirm, the existing 023151 frames at about 310-315 s should show Entei ex with 2 Fire Energy and no bonus.",
+  "worth_recording": false,
+  "why": "Already settled by card text (lib/card.py). Blazing Beatdown (A4a 010) does 60, plus 60 more only with at least 2 extra Fire beyond its Fire-Fire cost (4 Fire in all). So 60 on 2 visible Fire means the condition was not met. Training Area (B2 153) boosts only attacks by Stage 1 Pokemon, 'both yours and your opponent's', and only against the Active. Entei ex is a Basic, so it gets nothing, and an opposing Ivysaur does get +10. rules/04 §6 (Stadiums) already records Training Area boosting an opponent's Stage 1. Engine: engine_matches. Blazing Beatdown needs its cost plus 2 extra Fire (engine/src/actions/effect_mechanic_map.rs:1333-1338; engine/src/actions/apply_attack_action.rs:3254-3281). Training Area checks only stage == 1 and has no owner check (engine/src/stadiums.rs:129-137). It applies only Active-to-Active (engine/src/hooks/core.rs:1817-1832). Tests: engine/tests/stadiums/stadium_test.rs:382 (no bonus for a Basic) and :683 (both players' Stage 1 get it)."
+ },
+ {
+  "question": "Does the game show a Victory/Defeat result screen after the winning point, and what were the final scores? (Several recordings end before any result screen. In 133834 the 3 points and win from the last Mega Sharpedo ex KO are inferred. The log-scroll source never shows the opponent's final total.)",
+  "battles": [
+   "20260909_023151000_iOS.MP4",
+   "20260921_155818000_iOS.MP4",
+   "20260909_133834",
+   "ScreenRecording_08-26-2026 21-47-38_1_H264.MP4"
+  ],
+  "cards": [
+   "Mega Sharpedo ex"
+  ],
+  "what_to_record": "No special test. In future recordings, keep recording a few seconds past the last Knock Out, through the result screen. rules/08 §2 already asks for this.",
+  "worth_recording": false,
+  "why": "Bookkeeping, and the rules are already settled. A Mega Evolution ex Knock Out gives 3 points, and 3 points wins (RULES_FOR_AGENTS.md 'Deck, points, winning'; rules/02 §6). The game does show a result overlay: the T2 test showed 'Tie' (rules/05 #2), and 232617 showed 'Defeat'. These clips simply stopped early. Engine: engine_matches. Mega ex = 3 points (engine/src/models/card.rs:204-216). Reaching 3 or more wins at once (engine/src/actions/apply_action_helpers.rs:849-855). The Cursed Jewel fixture ends the game on the third point (engine/tests/video_evidence/mega_sableye.rs:120-146)."
+ },
+ {
+  "question": "When a Knock Out takes a player past 3 points (2 to 4 after an ex KO, 2 to 5 after a Mega KO), does the game record the full total or cap it at 3?",
+  "battles": [
+   "20260907_232617",
+   "20260907_025604"
+  ],
+  "cards": [
+   "Jolteon ex",
+   "Mega Mawile ex",
+   "Arceus ex"
+  ],
+  "what_to_record": "Nothing. Only a post-match stats page or Battle Log could show it, and no rule depends on it.",
+  "worth_recording": false,
+  "why": "Bookkeeping, not a rule. The game ends the moment a player reaches 3, so a stored 4 or 5 changes nothing, and the screen only has 3 markers. Engine: not_covered, because nothing can observe it. The engine adds points with no cap (engine/src/state/mod.rs:1212-1215) and declares the winner at 3 or more (engine/src/actions/apply_action_helpers.rs:834-855). Internally it would hold 4 or 5, with the same result."
+ },
+ {
+  "question": "Did the player going first really attach an Energy on turn 1 (Fighting to Riolu in the SweetGameBuddy video; Lightning to Pikachu in 031901)?",
+  "battles": [
+   "Pokemon TCG Pocket Battle - SweetGameBuddy.mp4",
+   "20260907_031901"
+  ],
+  "cards": [
+   "Riolu",
+   "Pikachu"
+  ],
+  "what_to_record": "Nothing new. A frame check of the existing footage (SweetGameBuddy 00:22-00:36; 031901 00:13-00:25, or Pikachu's Energy count before the T4 KO) will most likely show the review mislabeled the turn or the player.",
+  "worth_recording": false,
+  "why": "Already settled: the player going first gets no Energy on their first turn (RULES_FOR_AGENTS.md 'Board and turn'; rules/README.md item 6; official FAQ plus several recordings). The evidence behind both claims is weak. The SweetGameBuddy turn number is inferred from a later banner and flagged review_needed, and the single 031901 frame is unclear. Neither card has an effect that attaches on turn 1. Engine: engine_matches. Both Energy Zones start with no current Energy, and the first rotation comes on the second player's turn (engine/src/state/mod.rs:1620-1640, test_initialize_populates_next_energy_for_both_players; rotation in advance_turn at engine/src/state/mod.rs:1186-1207)."
+ },
+ {
+  "question": "Are the 010207 details that only the Gemini outline named correct: Alolan Vulpix retreating for 0 Energy at T6, Hydro Pump as 40 + 40, and the two Ambush Heads results?",
+  "battles": [
+   "20260908_010207000_iOS.MP4"
+  ],
+  "cards": [
+   "Alolan Vulpix",
+   "Primarina ex",
+   "Team Rocket's Rattata"
+  ],
+  "what_to_record": "No new recording. Targeted frame checks of the existing video. 02:18-02:21: was a retreat reducer played or attached, and did Vulpix keep its Energy? 01:41-01:44: Primarina ex needs at least 2 Water for 80. 00:54.8 and 01:20.6: the Ambush coin faces.",
+  "worth_recording": false,
+  "why": "Bookkeeping on an existing video; the rules are settled by card text. Hydro Pump (Primarina ex) is 40, plus 40 with at least 1 extra Water, so 80 means 2 or more Water attached. Ambush (Team Rocket's Rattata B4a 058) is 20, plus 20 on Heads. Both Alolan Vulpix printings have Retreat Cost 1, so a 0-Energy retreat needs a reducer such as X Speed, Leaf or Small Balloon (rules/04 §2). If the frames show no reducer, the Gemini claim is wrong, not the rule. The Poke Ball part is merged into the Poke Ball question. Engine: engine_matches. Hydro Pump needs its cost plus 1 extra Water (engine/src/actions/effect_mechanic_map.rs:1309-1313; engine/src/actions/apply_attack_action.rs:3254-3281)."
+ },
+ {
+  "question": "What did each Poke Ball find, and did any find nothing? Cases: the opponent's T7 play in 152812; the opponent's T1 play in 010207 with no Pokemon placed; the Gemini 'Poke Ball whiffing' in 004344; the 'Poke Ball failures' in 145205.",
+  "battles": [
+   "20260921_152812",
+   "20260908_010207000_iOS.MP4",
+   "20260908_004344",
+   "20260921_145205"
+  ],
+  "cards": [
+   "Poke Ball"
+  ],
+  "what_to_record": "Nothing new. At most, count the opponent's hand-size card backs just before and after in the existing frames (152812 03:16.4-03:19.8), or look for the 'no cards in the deck can be the target' message.",
+  "worth_recording": false,
+  "why": "Hidden information, and the rules are settled. Poke Ball puts a random Basic into the hand face down, and the opponent never sees which one (rules/04 §9-10, observed 3 times). It can be played with no Basic left, and then the game shows a no-target message and the card is used up (rules/04 §6, observed 234514 and 225430). It never puts anything on the Bench, so 'no Pokemon placed' is normal. Only the hand count is public. Engine: engine_matches. Each eligible Basic has an equal chance (pokemon_search_outcomes, engine/src/actions/shared_mutations.rs:16). It is playable whenever the deck isn't empty (rules/09, hidden-deck repair)."
+ },
+ {
+  "question": "In the SweetGameBuddy video, how did Active Lucario switch to Sudowoodo on T7: a paid 2-Energy retreat, or a switch effect?",
+  "battles": [
+   "Pokemon TCG Pocket Battle - SweetGameBuddy.mp4"
+  ],
+  "cards": [
+   "Lucario",
+   "Sudowoodo"
+  ],
+  "what_to_record": "Nothing new. Frames at 160-168 s of the existing video (a retreat prompt, discard animation or played card) decide it.",
+  "worth_recording": false,
+  "why": "Bookkeeping. Both paths are legal and either fits the board. The Fighting Coach Lucario (A2 092) has Retreat Cost 2, so a paid retreat discards 2 Energy, which fits its later 0 Energy. A switch card costs nothing (rules/04 §2-3). Engine: engine_matches either way. The later outcome, 80 damage to an Energy-less Lucario with Rocky Helmet returning 20, is already bound in engine/tests/observed_gameplay_outcomes_test.rs:164-182."
+ },
+ {
+  "question": "In the SweetGameBuddy video, is the extra +20 in Fighting Headbutt (40) and Head Smash (150) really benched Lucario's Fighting Coach?",
+  "battles": [
+   "Pokemon TCG Pocket Battle - SweetGameBuddy.mp4"
+  ],
+  "cards": [
+   "Sudowoodo",
+   "Rampardos",
+   "Lucario"
+  ],
+  "what_to_record": "Nothing new. Optionally, a readable frame at 02:50-02:57 and 05:28-05:37 of the existing video.",
+  "worth_recording": false,
+  "why": "Already settled and already in the engine tests. Fighting Coach (Lucario A2 092) is a passive Ability that works from the Bench and adds +20 to Fighting attacks against the opponent's Active (card text; rules/02 §1 step 2; rules/04 §5). Fighting Headbutt is 20, with its +30 only against an ex, and the target Ivysaur is neither an ex nor weak to Fighting, so 40 = 20 + 20. Head Smash is 130 + 20 = 150. Engine: engine_matches, with tests built from these very frames: engine/tests/observed_gameplay_outcomes_test.rs:66 (Sudowoodo does 40 with one benched Fighting Coach) and :210 (Head Smash 150, recoil only after the KO). Code: engine/src/hooks/core.rs:1795-1803 and 1915-1943."
+ },
+ {
+  "question": "In the SweetGameBuddy video, which card produced the 'no cards in deck can be the target' message on T13?",
+  "battles": [
+   "Pokemon TCG Pocket Battle - SweetGameBuddy.mp4"
+  ],
+  "cards": [],
+  "what_to_record": "A frame of the played card at 311-318 s of the existing video. No new recording.",
+  "worth_recording": false,
+  "why": "Bookkeeping. The rule is settled: a search of the hidden deck can be played and find nothing, and the game then shows this message (rules/04 §6, seen with Cabbie, Gladion and Poke Ball). Naming the card only fills in the ledger. Engine: engine_matches for the known cases (hidden-deck legality repair, rules/09)."
+ },
+ {
+  "question": "In the SweetGameBuddy video, which card forced the lower player to switch Exeggutor for Bulbasaur (Sabrina?), and so which effect wording applies?",
+  "battles": [
+   "Pokemon TCG Pocket Battle - SweetGameBuddy.mp4"
+  ],
+  "cards": [
+   "Sabrina"
+  ],
+  "what_to_record": "A readable card-name frame at 109-119 s of the existing video. No new recording.",
+  "worth_recording": false,
+  "why": "Bookkeeping. If it is Sabrina, its text is settled: the opponent's Active goes to the Bench and the opponent picks the new Active, which fits what was seen. Cyrus or Lana would have let the player who played the card choose (rules/04 §3; Sabrina seen 4 times). Engine: engine_matches for Sabrina. The choice is pushed to the opponent (engine/src/actions/apply_trainer_action.rs:841-853)."
+ },
+ {
+  "question": "Is Gholdengo's Luxury Coin really limited to one use per turn?",
+  "battles": [
+   "20260909_032418"
+  ],
+  "cards": [
+   "Gholdengo"
+  ],
+  "what_to_record": "Nothing.",
+  "worth_recording": false,
+  "why": "Already settled by card text (Gholdengo B4a 051): 'Once during your turn ... You can't use more than 1 Luxury Coin Ability each turn.' A recording can't add anything to printed text. Engine: engine_matches. The flag is per player per turn and resets at turn start (engine/src/state/mod.rs:957). Test: engine/tests/gholdengo_luxury_coin_test.rs:319 (reroll_is_single_use_and_durably_records_both_batches)."
+ },
+ {
+  "question": "What was the result of the opponent's T7 Mesagoza coin flip in 181914, and did it find a Pokemon?",
+  "battles": [
+   "20260907_181914"
+  ],
+  "cards": [
+   "Mesagoza"
+  ],
+  "what_to_record": "Nothing new. The opponent's hand-size card backs before and after (03:09-03:32) in the existing frames would show whether a card arrived.",
+  "worth_recording": false,
+  "why": "Hidden information. A phone notification covered the coin, and a Heads result goes into the hand face down (rules/04 §10). What Mesagoza does is printed (B2a 093). Engine: engine_matches. It flips a coin, and on Heads puts a random Pokemon from the deck into the hand (engine/src/actions/apply_stadium_action.rs:116-138). It is once per player per turn (engine/tests/stadiums/stadium_test.rs:762)."
+ },
+ {
+  "question": "What exactly did Area Zero's T13 activation in 181914 do, and which cards were exchanged?",
+  "battles": [
+   "20260907_181914"
+  ],
+  "cards": [
+   "Area Zero"
+  ],
+  "what_to_record": "Nothing.",
+  "worth_recording": false,
+  "why": "Card text plus hidden information. Area Zero (B3a 074): once per turn, shuffle a Basic from your hand into your deck, then draw a card. The hand size stays the same, and the drawn card is hidden (rules/04 §10). Nothing recorded from Dustin's side can show the opponent's cards. Engine: engine_matches (engine/src/actions/apply_stadium_action.rs:95-114; test engine/tests/stadiums/area_zero_test.rs:84)."
+ },
+ {
+  "question": "Victini's Victory Star: does a worse reroll stand, how often can it be used, does Ability suppression stop it, and does it work with Confusion (on the Confusion flip itself, or on the attack's own coins after the Confusion flip is Heads)?",
+  "battles": [
+   "20260907_020124",
+   "20260907_013104"
+  ],
+  "cards": [
+   "Victini",
+   "Moltres ex"
+  ],
+  "what_to_record": "Only the Confusion part is open. Needed: Victini in play and a Confused Fire Active using a coin-flip attack. Record whether the game offers Victory Star (a) on the Confusion flip and (b) on the attack's own coins after the Confusion flip comes up Heads. The opponent has to Confuse him, so this needs a friend battle or ladder luck. Low priority: only Fire decks running Victini care.",
+  "worth_recording": true,
+  "why": "The rest is settled by card text (B3 025): 'ignore all results ... begin flipping those coins again', once per turn, and no more than 1 Victory Star per turn. So the new batch stands even if it is worse. rules/04 §9 (observed 020124, 014933) agrees: the reroll replaces the whole batch. Engine, for those parts: engine_matches. The worse reroll is binding (engine/tests/victini_victory_star_test.rs:189). It is one use per turn (:251). It needs a Fire Active and the in-play, suppression-aware Ability lookup (engine/src/actions/apply_action.rs:167-181). Confusion: the engine switches Victory Star off entirely when the attacker is Confused (engine/src/actions/apply_action.rs:195-202; engine/src/actions/apply_attack_action.rs:94-108; test engine/tests/victini_victory_star_test.rs:341). engine/src/card_validation.rs:96-98 flags this as pending verification. For part (b) that is engine_contradicts the card text, because the attack's own coins are plainly 'coins for an attack'. It is a documented limitation in the code, but not on the rules/ known-bug list. Part (a) is cannot_determine until seen in the game."
+ },
+ {
+  "question": "Does Mega Mawile ex's 'Heat-Up Crunch does +30 damage' raise later uses of the attack?",
+  "battles": [
+   "20260907_020124"
+  ],
+  "cards": [
+   "Mega Mawile ex"
+  ],
+  "what_to_record": "Nothing.",
+  "worth_recording": false,
+  "why": "Already settled by card text (B2 113): 'Until this Pokemon leaves the Active Spot, this Pokemon's Heat-Up Crunch attack does +30 damage. This effect stacks.' So the uses go 60, then 90, then 120. The bonus ends if Mawile goes to the Bench or evolves (rules/04 §7). Engine: engine_matches. Each use stores a +30 attack-specific effect that lasts while Active (engine/src/actions/effect_mechanic_map.rs:2768-2778), and the copies are summed before Weakness (engine/src/hooks/core.rs:1116-1145). No test fires the attack twice in a row, though. engine/tests/terminal_win_policy_test.rs:33 starts from one stored +30."
+ },
+ {
+  "question": "When one Pokemon holds two Sitrus Berries (Revavroom's Dual Customization), is the half-HP condition rechecked after the first heal, or checked once for both?",
+  "battles": [
+   "20260907_020124",
+   "20260907_013104"
+  ],
+  "cards": [
+   "Sitrus Berry",
+   "Revavroom"
+  ],
+  "what_to_record": "Revavroom (B4 115, 120 HP) holding two Sitrus Berries, at 40, 50 or 60 HP when a turn ends. Record the end of that turn. If only one Berry heals (for example 50 to 80) and the second stays attached, the game rechecks. If both heal (50 to 110) and both are discarded, it checks once. A Solo battle is enough, since it is his own Pokemon taking normal damage.",
+  "worth_recording": true,
+  "why": "A real open question, and none of the reasons to skip apply. The card text doesn't say how two copies interact. The only case seen (120 to 20 to 50 to 80 in 013104) stays at or below half after the first heal, so it can't tell the two readings apart. Engine: cannot_determine. It rechecks HP after each Berry (engine/src/hooks/core.rs:2261-2286; tests engine/tests/revavroom_assumptions_test.rs:30 and :50). engine/src/card_validation.rs:93 lists this as an 'owner-approved assumption, not verified'. Low priority: it only matters for Revavroom decks with two Sitrus Berries, and those aren't among Dustin's decks."
+ },
+ {
+  "question": "What did Galarian Perrserker's Dig Up produce when it evolved?",
+  "battles": [
+   "20260907_020124"
+  ],
+  "cards": [
+   "Galarian Perrserker"
+  ],
+  "what_to_record": "Nothing.",
+  "worth_recording": false,
+  "why": "Bookkeeping. The effect is settled by card text (B2 111): when it is played to evolve, put 2 random Tools from your discard pile into your hand. The Tools come from a public zone, so which ones left can be worked out from the discard pile before and after (rules/04 §10). No rule is in doubt. Engine: engine_matches (engine/tests/pokemon/galarian_perrserker_dig_up_test.rs:59, :111, :161)."
+ },
+ {
+  "question": "Which Supporter tried to Confuse both Active Pokemon at T9 of 021327, and does Team Rocket's Master Plan also Confuse its user's own Active on Tails (a Gemini claim in 004344)?",
+  "battles": [
+   "20260908_021327",
+   "20260908_004344"
+  ],
+  "cards": [
+   "Team Rocket's Master Plan"
+  ],
+  "what_to_record": "Nothing.",
+  "worth_recording": false,
+  "why": "Settled by card text. Team Rocket's Master Plan (B4a 070) is the only Trainer in the card database that Confuses both Actives: 'Your opponent's Active Pokemon is now Confused. Flip a coin. If tails, your Active Pokemon is now also Confused.' The only other Trainer that mentions Confusion, Whitney, cures it. Engine: engine_matches (engine/tests/b4a_trainer_batch2_test.rs:222, master_plan_always_confuses_opponent_and_tails_confuses_self). The Luckycad recording observed the Heads branch (engine/tests/video_evidence/luckycad_poison_barb.rs:3-6)."
+ },
+ {
+  "question": "Would Espeon's Hypnoblast Sleep, plus 2 x 20 Bad Dreams, have stopped Mega Manectric ex's final attack? Would Tails at the Checkup block both its attack and its retreat, even with its 0 Retreat Cost?",
+  "battles": [
+   "20260908_190933"
+  ],
+  "cards": [
+   "Espeon",
+   "Mega Manectric ex",
+   "Darkrai"
+  ],
+  "what_to_record": "Nothing.",
+  "worth_recording": false,
+  "why": "Strategy (a line that wasn't played), and the rules it relies on are settled. Asleep blocks attacking and retreating even with a 0 Retreat Cost (rules/03 §1 and §4, official Tips). Bad Dreams resolves at end of turn, before the Checkup (rules/03 §5, observed in second-altaria). The Sleep flip comes at the very next Checkup, so Mega Manectric has a 50% chance to wake before its own turn. Its only other escapes would be switch or cure cards in a hidden hand. Engine: engine_matches (engine/tests/status_action_restriction_test.rs:42, asleep_and_paralyzed_remove_attack_and_paid_or_free_retreat; Sleep flip at engine/src/actions/apply_action_helpers.rs:310-316; engine/tests/darkrai_bad_dreams_test.rs)."
+ },
+ {
+  "question": "In the 12.39 s gap between the two clips of 220914/221051, did anything happen between Turbo Shark's post-KO Bench Energy attachment and the +1 point and forced promotion?",
+  "battles": [
+   "20260907_220914",
+   "20260907_221051"
+  ],
+  "cards": [
+   "Mega Sharpedo ex",
+   "Rookidee"
+  ],
+  "what_to_record": "No test needed. In future, avoid stopping a recording in the middle of a Knock Out.",
+  "worth_recording": false,
+  "why": "Already settled. After an attack the order is: damage, the attack's own effects (Turbo Shark's attachment), Tool and Ability retaliation, then Knock Outs, points and promotion. The only player action in there is the promotion choice (rules/02 §5; observed 3 times in 220914 and in 225430). The matching states on both sides of the gap fit that. Engine: engine_matches. Turbo Shark queues its Bench attachment after damage (engine/src/actions/apply_attack_action.rs:2318-2345), and Knock Outs wait for pending attack choices and retaliation (engine/src/actions/apply_action_helpers.rs:659-660). Test: engine/tests/mechanics/attack_effects_test.rs:196 goes damage, attach choice, retaliation, then KO and promotion."
+ },
+ {
+  "question": "How many cards did the opponent's T12 Copycat draw, and did it equal Dustin's hand size?",
+  "battles": [
+   "20260907_221051"
+  ],
+  "cards": [
+   "Copycat"
+  ],
+  "what_to_record": "Nothing new. Dustin's hand size is public, so it can be counted in the existing frames at ~141-148 s if anyone needs it.",
+  "worth_recording": false,
+  "why": "Card text plus bookkeeping. Copycat (B1 225): shuffle your hand into your deck, then draw one card per card in your opponent's hand, stopping at the 10-card hand limit (RULES_FOR_AGENTS.md). Engine: engine_matches. It counts the opponent's hand before shuffling (engine/src/actions/apply_trainer_action.rs:2176-2197), and draws stop at 10 cards (engine/src/state/mod.rs:811-818)."
+ },
+ {
+  "question": "Was 152812 a Solo (AI) match or PvP?",
+  "battles": [
+   "20260921_152812"
+  ],
+  "cards": [],
+  "what_to_record": "Nothing. Ask Dustin.",
+  "worth_recording": false,
+  "why": "Not a rules question. The screen only says 'Opponent', and Dustin's memory settles it faster than any footage."
+ },
+ {
+  "question": "In 004344's T6 Checkup, with Hypno both Poisoned and Burned, does Poison resolve before the Burn damage and flip, and does Poison alone cause the Knock Out?",
+  "battles": [
+   "20260908_004344"
+  ],
+  "cards": [
+   "Hypno",
+   "Weezing ex"
+  ],
+  "what_to_record": "No new recording. A frame check of 03:14-03:26 in the existing video would be a free check of the end-of-Checkup Knock Out rule: if Poison took Hypno to 0, the Burn 20 and its coin should still show before the Knock Out.",
+  "worth_recording": false,
+  "why": "Already settled by the official in-app Tips. On one Pokemon the order is Poison, then Burn (20, then the flip), then Sleep, then Paralysis, and Knock Outs happen only at the end of the Checkup (rules/03 §5). So 'Poison alone causes the KO' isn't quite right: both damages land, and then the KO happens. The only support for the question is Gemini's outline, which is weak. Engine: engine_matches. For each player it does Poison, then Burn damage and its flip, then Sleep and Paralysis, then one Knock Out wave (engine/src/actions/apply_action_helpers.rs:286-326). Test: engine/tests/rules_repair_timing.rs:47 (checkup_heals_before_knockout_in_both_seats)."
+ },
+ {
+  "question": "Are the other Gemini-only mechanics in 004344 real: retreat curing Confusion, Poison Barb Poisoning the attacker when its holder is Knocked Out, Team Rocket's Researcher giving a coin per card, and no attachment or attack on turn 1?",
+  "battles": [
+   "20260908_004344"
+  ],
+  "cards": [
+   "Poison Barb",
+   "Team Rocket's Researcher"
+  ],
+  "what_to_record": "No new recording. One housekeeping note: rules/README.md item 4 cites 004344 for Poison Barb firing on a KO, and 004344's claim is Gemini-only. It would be better to cite the independently checked Luckycad recording (02:59-03:10), or to frame-check 03:34.6 here.",
+  "worth_recording": false,
+  "why": "All already settled. Retreat cures every Special Condition (rules/03 §3, official); engine_matches (engine/tests/mechanics/confusion_test.rs:94). Poison Barb (A3 146) poisons the attacker when its Active holder 'is damaged by an attack', so a KO doesn't stop it, and the Luckycad recording showed exactly that; engine_matches (engine/src/hooks/counterattack.rs:117-124; engine/src/actions/apply_action_helpers.rs:593-612; test engine/tests/video_evidence/luckycad_poison_barb.rs:17). Team Rocket's Researcher (B4a 069) flips until Tails, and each Heads puts a random 'Team Rocket' Pokemon from the deck into the hand. It is a search, not a draw (engine/src/actions/team_rockets_researcher.rs; engine/tests/team_rockets_researcher_test.rs). On turn 1 the first player gets no Energy and can attack only with a free attack (rules/README.md item 6); engine_matches (engine/src/state/mod.rs:1620-1640). Master Plan and Poke Ball are in their own questions."
+ },
+ {
+  "question": "Which printings, and so which card texts, are behind Watch Over, Whale Pump, Razor Shell, Soothing Shore and Lucky Ice Pop in the post-match log?",
+  "battles": [
+   "ScreenRecording_08-26-2026 21-47-38_1_H264.MP4",
+   "ScreenRecording_08-26-2026 21-47-38_1.MP4"
+  ],
+  "cards": [
+   "Wailord",
+   "Wailmer",
+   "Dewott",
+   "Lucky Ice Pop",
+   "Indeedee ex",
+   "Soothing Shore"
+  ],
+  "what_to_record": "Nothing. A card lookup settles it.",
+  "worth_recording": false,
+  "why": "Settled by the card database: each of these names has only one text. Whale Pump is only on Wailord B1 057 (60 + 10 per Water, so 110/120 means 5/6 Water). Razor Shell is only on Dewott B4 043. Watch Over is on Indeedee ex, whose 4 printings share one text (heal 20 from your Active). Soothing Shore is B4 154 only (at the end of each player's turn, heal 20 from each of their Pokemon with Water attached). Lucky Ice Pop is B2 145 only. Which artwork was used doesn't change any effect. The two log recordings are the same source and were merged."
+ },
+ {
+  "question": "Does the Hiking Trail Stadium also refill the opponent's hand at the end of the opponent's turn, and to how many cards?",
+  "battles": [
+   "20260908_230007"
+  ],
+  "cards": [
+   "Hiking Trail"
+  ],
+  "what_to_record": "Nothing. The opponent's hand size is public (card backs), so the existing frames near 212 s can confirm it if wanted.",
+  "worth_recording": false,
+  "why": "Settled by card text (Hiking Trail B2b 069): 'At the end of each player's turn, that player draws cards until they have 3 cards in their hand.' So the opponent refills to 3 at the end of its own turn. Engine: engine_matches. It draws for whichever player's turn is ending, up to 3 (engine/src/hooks/core.rs:554-567)."
+ },
+ {
+  "question": "When the Psychic Supporter moves a Benched Energy to the opponent's Active, how is the Energy chosen when several Benched Pokemon carry Energy?",
+  "battles": [
+   "20260907_023511"
+  ],
+  "cards": [
+   "Psychic"
+  ],
+  "what_to_record": "Nothing.",
+  "worth_recording": false,
+  "why": "How it works is settled by card text (Psychic B4 150): 'Choose 1 of your opponent's Benched Pokemon and move a random Energy from it ...'. The player picks the Benched Pokemon, and only the Energy on that one Pokemon is random. Measuring the random spread would take many samples for a rare, low-impact case, the same reasoning as rules/05 #24. Engine: engine_contradicts, already known. It lets the player choose the source correctly (engine/src/actions/apply_trainer_action.rs:2134-2145), but then moves the last Energy instead of a random one (engine/src/actions/apply_action.rs:928-933). That only matters when the chosen Pokemon holds mixed Energy types."
+ },
+ {
+  "question": "Does Mega Sableye ex's Cursed Jewel 40-damage counter really fire when Sableye is attacked during the next turn, and when does it expire?",
+  "battles": [
+   "20260907_224312"
+  ],
+  "cards": [
+   "Mega Sableye ex"
+  ],
+  "what_to_record": "Nothing.",
+  "worth_recording": false,
+  "why": "Settled by card text (B3b 041): 'During your opponent's next turn, if this Pokemon is damaged by an attack, do 40 damage to the Attacking Pokemon.' It lasts only through the opponent's next turn, and ends early if Sableye goes to the Bench or evolves (rules/04 §7). The card doesn't say whether it fires when that attack KOs Sableye, but Rocky Helmet's matching wording fires on a KO in 5 recorded cases (rules/README.md item 4). Engine: engine_matches. It stores Counterattack 40 for 1 turn (engine/src/actions/effect_mechanic_map.rs:544-551), and retaliation runs before Knock Outs (engine/src/actions/apply_action_helpers.rs:512-513). Tests: engine/tests/video_evidence/mega_sableye.rs:214 (the counter fires on the next attack) and :221 (prevented damage doesn't trigger it)."
+ },
+ {
+  "question": "If Giant Cape is removed from a Pokemon whose damage is more than its HP without the Cape (Benched Carvanha, 60 damage, 50 base HP), is it Knocked Out?",
+  "battles": [
+   "20260907_024406"
+  ],
+  "cards": [
+   "Field Blower",
+   "Giant Cape",
+   "Carvanha"
+  ],
+  "what_to_record": "Nothing.",
+  "worth_recording": false,
+  "why": "Already settled. Removing an HP bonus Knocks Out right away any Pokemon whose damage is at least its new HP. Points are scored at once, and the turn goes on (rules/02 §8 [DUSTIN]; rules/05 settled list, observed 025604). Carvanha B4 034 has 50 base HP, so it would have been KO'd and given the point. Engine: engine_matches. A catch-all Knock Out check runs after every action, and its comment names this exact Field Blower/Giant Cape case (engine/src/actions/apply_action_helpers.rs:1070-1080). Tests: engine/tests/tools/tools_integration_test.rs:182 and engine/tests/pokemon/klefki_dismantling_keys_test.rs:86."
+ },
+ {
+  "question": "What does Protective Poncho actually do (for example, against damage to the Bench)?",
+  "battles": [
+   "20260907_024406"
+  ],
+  "cards": [
+   "Protective Poncho"
+  ],
+  "what_to_record": "Nothing.",
+  "worth_recording": false,
+  "why": "Settled by card text (B2 147): while its holder is on the Bench, it prevents all damage from the opponent's attacks and Abilities, but not from your own. Seen working in second-altaria (rules/02 §3). Engine: engine_matches since the rules1 repair (rules/09). The opponent-only check is at engine/src/hooks/core.rs:1707-1715. Tests: engine/tests/tools/protective_poncho_test.rs:15 (attack), :62 (Greninja's Ability), :119 (no protection while Active), and engine/tests/rules_repair_damage_opening.rs:234 (doesn't block its owner's own attack)."
+ },
+ {
+  "question": "What are the exact Energy icons and counts during some attachment animations in 025604 (for example 01:20)?",
+  "battles": [
+   "20260907_025604"
+  ],
+  "cards": [],
+  "what_to_record": "Nothing new. Frame-by-frame checks of the existing footage, if an exact count ever matters.",
+  "worth_recording": false,
+  "why": "Bookkeeping. The counts were reconciled from the steady states before and after, and no rule depends on reading an icon in the middle of an animation."
+ },
+ {
+  "question": "Luckycad Xatu video: did a Confusion interaction happen or change the result at 17:24-17:36, and do the rules hold on the turns nobody checked?",
+  "battles": [
+   "Pokemon TCG Pocket Battles - Luckycad Xatu.mp4"
+  ],
+  "cards": [],
+  "what_to_record": "Nothing from Dustin. Denser frames or a full turn-by-turn pass of this third-party video would be review work, not a recording.",
+  "worth_recording": false,
+  "why": "Bookkeeping on someone else's video. The Confusion rules are official: on Tails the attack doesn't happen, with no self-damage (rules/03 §1). The accepted transitions from this video are already engine tests (engine/tests/video_evidence/luckycad_poison_barb.rs; engine/tests/video_evidence/xatu_checkup.rs)."
+ },
+ {
+  "question": "In 232035 T1, did a Heads coin give the opponent's Meowth its damage-prevention notice and blue marker, and what effect caused it?",
+  "battles": [
+   "20260907_232035"
+  ],
+  "cards": [
+   "Meowth"
+  ],
+  "what_to_record": "Nothing. If wanted, tapping a Carefree Steps Meowth in any later game would confirm the blue marker is the Ability indicator.",
+  "worth_recording": false,
+  "why": "Settled by card text. The 50-HP Meowth is B2 124, whose passive Ability Carefree Steps reads: 'If any damage is done to this Pokemon by attacks, flip a coin. If heads, prevent that damage.' The notice the packet quotes ('Prevent damage from attacks if heads is flipped') is that Ability's text, shown when Meowth was benched. No attack happened on T1, so no coin could have been flipped. The blue marker is most likely the game's indicator for this Ability. Engine: engine_matches (engine/tests/pokemon/meowth_carefree_steps_test.rs:20, :75)."
+ },
+ {
+  "question": "Was the opponent's hand really 8, 9 and 10 cards when Team Rocket's Slowking ex's Hand Kinesis did 160, 180 and 200?",
+  "battles": [
+   "20260907_221914"
+  ],
+  "cards": [
+   "Team Rocket's Slowking ex"
+  ],
+  "what_to_record": "Nothing new. The opponent's hand size is public (a fan of card backs), so it can be counted in the existing frames at T4, T6 and T8.",
+  "worth_recording": false,
+  "why": "Card text plus bookkeeping; it is not actually hidden. Hand Kinesis is 20 for each card in the attacker's own hand. Houndstone and Galarian Corsola are weak to Darkness, not Psychic, so 160/180/200 means 8/9/10 cards, and 200 is the most possible under the 10-card limit. Hand size is public (rules/04 §10). Engine: engine_matches (engine/tests/b4a_attack_batch2_test.rs:266)."
+ },
+ {
+  "question": "Was the turn-9 Securely Sheltered flip in 031007 literally Heads?",
+  "battles": [
+   "20260907_031007"
+  ],
+  "cards": [
+   "Hisuian Goodra",
+   "Hitmonchan"
+  ],
+  "what_to_record": "Nothing new. An exact-seek frame sequence at ~196-198 s of the existing video would show the word, if anyone wants it.",
+  "worth_recording": false,
+  "why": "Bookkeeping, and the deduction holds. Securely Sheltered (Hisuian Goodra B3b 050): on Heads, the Pokemon takes -80 from that attack. Against the 70-damage Quick Straight in rules/02 §1, Tails would leave 70, or 50 if a Heavy Helmet -20 applied. Only Heads can produce the literal 0 shown. Engine: engine_matches (engine/tests/pokemon/hisuian_goodra_securely_sheltered_test.rs:16; :64 checks the floor at 0)."
+ },
+ {
+  "question": "In 145205, did Rocky Helmet's 20 (Mega Sharpedo ex 190 to 170) resolve before Destiny Burst's 70 (170 to 100), and which Pokemon held the Helmet?",
+  "battles": [
+   "20260921_145205"
+  ],
+  "cards": [
+   "Rocky Helmet",
+   "Electrode",
+   "Mega Sharpedo ex"
+  ],
+  "what_to_record": "No new recording. An independent frame check of 02:44-02:55 in the existing video would add a second recorded example.",
+  "worth_recording": false,
+  "why": "The order is already settled: damage, the attack's effects, Tool retaliation (Rocky Helmet), on-KO Abilities (Destiny Burst), then Knock Outs (rules/02 §5, observed twice in 225430). Both cards only work in the Active Spot when hit by that attack, so the Helmet must have been on the Active Team Rocket's Electrode. Only confirming that is bookkeeping. Engine: engine_matches. Retaliation runs before the on-KO hooks (engine/src/actions/apply_action_helpers.rs:512-513, 593-612, 696-709). Test: engine/tests/pokemon/team_rocket_electrode_destiny_burst_test.rs:60 (Destiny Burst still hits an attacker already at 0 from Rocky Helmet)."
+ },
+ {
+  "question": "Are 145205's other first-pass (Gemini) facts right: Random Spark hitting the Bench, Electric Generator on Tails, Electro Ball's +20 Weakness, Turbo Shark's no-target message, and the first-turn restrictions?",
+  "battles": [
+   "20260921_145205"
+  ],
+  "cards": [
+   "Electrode",
+   "Electric Generator",
+   "Pikachu",
+   "Mega Sharpedo ex"
+  ],
+  "what_to_record": "No new recording. Frame checks of the existing video (00:30-00:54, 02:17-02:28, 02:44-02:47, 03:13-03:15) if the ledger needs them.",
+  "worth_recording": false,
+  "why": "All settled by card text or rules; confirming them is bookkeeping. Random Spark (Team Rocket's Electrode B4a 020) does 30 to any one opposing Pokemon, Bench included, with no Weakness on the Bench (rules/02 §2). Electric Generator (B2a 086) attaches only on Heads. Electro Ball (Pikachu B3b 021) is 40, so 60 into Mega Sharpedo ex (weak to Lightning) is the +20 Weakness. Turbo Shark attaches only to a Benched Water Pokemon, so with none it does nothing, and the app says so. First-turn rules: rules/README.md item 6. Engine: engine_matches. Weakness applies only Active-to-Active (engine/src/hooks/core.rs:1787-1793, 1876-1880). Turbo Shark with no target silently skips (engine/src/actions/apply_attack_action.rs:2337-2344). The Poke Ball part is in the Poke Ball question."
+ }
+]
