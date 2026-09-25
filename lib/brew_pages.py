@@ -184,6 +184,7 @@ def main():
     ap.add_argument("--trials", type=int, default=20000)
     ap.add_argument("--only", default="")
     a = ap.parse_args()
+    a.out_dir = os.path.abspath(a.out_dir)
     os.makedirs(os.path.join(a.out_dir, "raw"), exist_ok=True)
     engine_commit = subprocess.run(["git", "rev-parse", "--short", "HEAD"], cwd=ROOT, capture_output=True,
                                    text=True).stdout.strip()
