@@ -1,0 +1,53 @@
+Hydreigon network run readout — diag-hydreigon-lucario   (2026-09-25 05:34)
+
+Confirmed checkpoints (state.json verdict picks, recorded by finish() in train_v5.py): hydreigon ckpt_2000k_avg (+40.8 over k3), lucario ckpt_2000k_avg (+8.3 over k3).
+  REPORT.txt names the same ones as 'used for the verdict': hydreigon yes, lucario yes
+  Weights: ckpt_2000k_avg_hydreigon.npz 261c70970d89, ckpt_2000k_avg_lucario.npz 150d0b90b03a. Add-on 0fee43ceaf9c (the run's own)
+
+Deals: the run's own confirmation deals, 2,000 of them: seed 13,200,000,000 + i for i = 0 to 1999 (settings 'confirm' base), hydreigon in seat 0 on even i and seat 1 on odd i, as in the bars; the engine's coin decides who goes first.
+  No new seeds. Reusing this block is deliberate: it is reserved for this run's evaluation, and it makes the
+  four rows below paired. Network v network starts from the same deal as the bar; later draws can differ
+  once the play differs.
+
+1. Hydreigon's result on those deals (row = who pilots each side). 'change' = won % minus k3 v k3's on the same
+   deals, with a paired 95% interval (1.96 x standard deviation of the per-deal difference / sqrt n).
+   'won only' = deals Hydreigon won here and not in k3 v k3 / the reverse. Score counts a draw as half (Limitless's way).
+
+  condition                                  n   won %  draws  score %    change         won only here / in bar
+  k3 Hydreigon v k3 Lucario (the bars)    2000    34.2      0     34.2      +0.0 ±0.0          0 / 0    
+  network Hydreigon v k3 Lucario          2000    75.0      0     75.0     +40.8 ±2.4        877 / 60   
+  k3 Hydreigon v network Lucario          2000    25.9      1     25.9      -8.3 ±2.3        196 / 363  
+  network v network (new)                 2000    57.6      0     57.6     +23.4 ±2.8        684 / 215  
+  Check: the run's own confirmed margin for Hydreigon is +40.8; this table's +40.8 (same); bars 34.2% in state.json.
+
+2. Hyper Ray, per turn of the Hydreigon network where it was on offer: used / passed (use %).
+   'KOs' = Lucario's Active had no more HP left than Hyper Ray's damage (the attack's own fixed_damage in
+   the legal move; 130 for Hyper Ray), the transcripts file's definition. Passed = the turn ended with EndTurn
+   while it was on offer (classified there); 'other' = offered earlier in the turn, not when it ended.
+
+                                               KOs: used / passed    doesn't KO: used / passed   other
+  network Hydreigon v k3 Lucario (replayed)   1584 / 5    (100%)       702 / 7    (99%)        6
+  network v network (live)                    1665 / 30   (98%)        675 / 4    (99%)        8
+  k3 reference numbers (not recomputed; Hyper Ray, other seeds):
+  k3 v k3, first 500 table seeds (see_everything_2026-09-24.md):  KOs 366 / 4;  doesn't KO 8 / 225 (3%);  Roar used when healthy 630 / 776
+  k3 v k3, all 1,000 table games (hydreigon_v_lucario_k3_transcripts_2026-09-24.md):  KOs 732 / 8 (99%);  doesn't KO 12 / 434 (3%);  17 other;  Roar on 83% of the turns it was usable without knocking Hydreigon out
+  searched bots kr3 (see-everything): sees everything  KOs 312 / 15;  doesn't KO 74 / 16 (82%);  guesses from the list  304 / 21;  66 / 13 (84%)
+  Roar in Unison, network Hydreigon v k3 Lucario: used on 2603 of the 3077 turns it was usable on a Hydreigon with more than 30 HP left (85%); uses that knocked out its own Hydreigon: 41.
+  Roar in Unison, network v network: used on 2650 of the 3441 turns it was usable on a Hydreigon with more than 30 HP left (77%); uses that knocked out its own Hydreigon: 53.
+  Replays: 2,000 of 2,000 Hydreigon confirmation games replayed exactly (winner and turns); the Hydreigon network re-chose the recorded move at 39,969 of 39,969 decisions, the Lucario network at 1,117 of 1,117 (first 50 of its confirmation games). All equal = the right weights were loaded.
+
+3. READING (RUN5.md's reading, set before the run, applied as written; no new thresholds)
+  Gain over k3: the Hydreigon network's confirmed margin is +40.8 points (the run's own number, 2,000 paired deals; its paired 95% interval is in table 1). RUN5's line is 10+: yes.
+  Chips with Hyper Ray: it used Hyper Ray on 702 of 709 turns where it was on offer and wouldn't KO (99%) in its games against k3 (99% against the Lucario network). k3: 3%. Searched bots: 82-84%.
+  RUN5 sets no number for 'chips'. Read here only against those two references: 99% is at the searched bots' level (82-84%).
+  The see-everything file's guide: near ~80% = the network learned the same fix as the searched bot; wins more
+  with Hyper Ray still low = it found something else.
+  -> chips with Hyper Ray and gains 10+ over k3 -> learning finds the play k3 misses.
+  Toward Limitless (Hydreigon 54.4 ± 8.0, results/limitless_check_2026-09-23.md), scores with draws as half:
+    k3 v k3 34.2 (off by 20.2); network v network 57.6 (off by 3.2): moved toward Limitless; inside Limitless's 95% range.
+    One side only: network Hydreigon v k3 Lucario 75.0 (off by 20.6); k3 Hydreigon v network Lucario 25.9 (off by 28.5).
+    RUN5's warning: a bot can gain over k3 and still take the matchup further from reality.
+  Before any of this is read: RUN5 says the result isn't read until the auditor's pair checks pass. This
+  readout does not run them.
+
+Took 72 s with 8 workers. Games played here: 2,000 network v network, 2,050 confirmation replays.

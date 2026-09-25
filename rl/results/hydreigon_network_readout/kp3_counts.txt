@@ -1,0 +1,15 @@
+kp3's attack counts on the bar deals — diag-hydreigon-lucario   (2026-09-25 05:49)
+
+Deals: the run's bar deals, first 2,000 (seed 13,200,000,000 to 13,200,001,999); kp3 pilots both sides.
+Replayed exactly (winner and turns equal the engine loop's own game): 2,000 of 2,000. Only those are counted.
+
+Per turn of kp3 piloting Hydreigon where the attack was on offer: used / passed (use %). Same definitions as
+readout.py's table 2 (look() and tally() imported from it): 'KOs' = the opponent's Active had no more HP left
+than the attack's fixed damage; 'other' = offered earlier in the turn but not when it ended.
+
+                                   KOs: used / passed    doesn't KO: used / passed   other
+  kp3 Hydreigon: Hyper Ray        1221 / 15   (99%)         16 / 485  (3%)       102
+  kp3 Hydreigon: Darkness Claw    1180 / 11   (99%)       1068 / 0    (100%)     429
+  Roar in Unison, kp3 Hydreigon v kp3 Lucario: used on 2355 of the 3096 turns it was usable on a Hydreigon with more than 30 HP left; uses that knocked out its own Hydreigon: 7.
+
+Took 131 s with 8 workers.

@@ -1,0 +1,30 @@
+Hydreigon network v kp3 rows — diag-hydreigon-lucario   (2026-09-25 05:43)
+
+Diagnostic add-on: /home/dacz8976/diag-kp-addon/module/pdl_rl_env.abi3.so sha256 c048388b4bcf (not the verified 0.7.2 wheel; built against the engine at c7cb688 for kp3). Network: ckpt_2000k_avg_hydreigon.npz 261c70970d89 (state.json's confirmed hydreigon checkpoint).
+
+Identity, first 200 deals: k3 v k3 equals the bar rows in 200 of 200 (winner, turns);
+  network v k3 equals the confirmation rows in 200 of 200 (winner, turns, every move).
+
+Deals: the run's bar deals, 2,000 (seed 13,200,000,000 to 13,200,001,999), bar seats.
+
+  Hydreigon | Lucario pilots           n   won %  draws  score %   Limitless 54.4 ± 8.0
+  k3|k3 (recorded)                  2000    34.2      0     34.2
+  net|k3 (recorded)                 2000    75.0      0     75.0
+  kp3|k3                            2000    48.0      0     48.0
+  kp3|kp3                           2000    45.1      0     45.1
+  net|kp3                           2000    70.3      0     70.3
+
+Paired differences in Hydreigon's win % (95% interval = 1.96 x sd of the per-deal difference / sqrt n; 'won only' = deals won in the first row and not the second / the reverse):
+                                                             points              won only
+  DECISIVE net|kp3 - kp3|kp3 (network v kp3, Lucario sees)    +25.2 ± 2.6      671 / 167   
+  net|k3 - k3|k3 (the run's margin, recomputed)               +40.8 ± 2.4      877 / 60    
+  kp3|k3 - k3|k3 (kp3's edge over k3, Lucario blind)          +13.9 ± 2.2      410 / 133   
+  net|k3 - kp3|k3 (network v kp3, Lucario blind)              +27.0 ± 2.6      693 / 153   
+  net|k3 - net|kp3 (what Lucario's pricing takes from the net)   +4.8 ± 1.9      230 / 135   
+  kp3|k3 - kp3|kp3 (what it takes from kp3's Hydreigon)        +2.9 ± 2.1      267 / 208   
+
+READING (set before any row was played; RUN5's 10-point line, reused):
+  net|kp3 minus kp3|kp3 = +25.2 points: +10 or more -> the network plays Hydreigon better than kp3 even against a Lucario that sees Darkness Claw coming: play beyond pricing, which B2c's divergence mining can name (a later step).
+  Everything else above is descriptive.
+
+Took 232 s with 8 workers; played 400 identity games and 6,000 kp3-row games.
