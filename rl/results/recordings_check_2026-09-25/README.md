@@ -72,7 +72,7 @@
 3. **Rare Candy ignores Aerodactyl ex's Primeval Law** ("Your opponent can't play any Pokémon from their hand to evolve their Active Pokémon").
    - The code: the Primeval Law check is only in `can_evolve_at_position` (`move_generation/mod.rs:252-282`). `can_play_rare_candy` (`move_generation_trainer.rs:663-685`) checks Malamar's Evolution Jammer but not Primeval Law.
    - The engine's own comment (`mod.rs:260-262`) says Jammer's near-identical wording also stops Rare Candy, so the engine disagrees with itself.
-   - No Pocket source settles the ruling.
+   - No Pocket source settled the ruling at first. Dustin then tested it in-game the same evening: Rare Candy can't be used on the Active while Aerodactyl ex is in play, so this is an engine bug (`OWNER_ANSWERS.md` #3).
    - Exposure: no deck has Aerodactyl ex. Against one, these Rare Candy decks would get an illegal play:
      - research: Hydreigon, Blaziken, Suicune
      - Dustin's: 01, 02, 05, 06
