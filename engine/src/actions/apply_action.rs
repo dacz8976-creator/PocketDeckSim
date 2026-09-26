@@ -17,7 +17,7 @@ use crate::{
         get_retreat_cost, on_bench_from_hand, on_evolve,
         special_condition_blocks_attack_or_retreat, to_playable_card, DamageModifierContext,
     },
-    models::{Card, EnergyType, StatusCondition},
+    models::{Card, EnergyType, PlayedCard, StatusCondition},
     state::{PendingAttackCoinChoice, State},
     tools,
 };
@@ -445,12 +445,24 @@ fn forecast_action_unchecked(state: &State, action: &Action) -> Outcomes {
         | SimpleAction::BenchOpponentFromDiscard { .. }
         | SimpleAction::BenchOpponentHandBasics { .. }
         | SimpleAction::PutCardFromDiscardToHand { .. }
-        | SimpleAction::DiscardRandomOpponentActiveEnergy
-        | SimpleAction::MoveRandomOpponentEnergyToActive { .. }
         | SimpleAction::ApplyStatusToOpponentActive { .. }
         | SimpleAction::DiscardOwnBenchedThenDamage { .. }
         | SimpleAction::ConsolidateEnergyToPokemon { .. }
         | SimpleAction::Noop => forecast_deterministic_action(),
+        // Crawdaunt's Unruly Claw: "discard a random Energy from your opponent's Active Pokémon".
+        SimpleAction::DiscardRandomOpponentActiveEnergy => {
+            let opponent = (action.actor + 1) % 2;
+            random_energy_outcomes(state.maybe_get_active(opponent), move |state, energy| {
+                state.discard_from_active(opponent, &[energy]);
+            })
+        }
+        // The Supporter Psychic: "move a random Energy from it to your opponent's Active Pokémon".
+        SimpleAction::MoveRandomOpponentEnergyToActive { from_in_play_idx } => {
+            let (opponent, from) = ((action.actor + 1) % 2, *from_in_play_idx);
+            random_energy_outcomes(state.in_play_pokemon[opponent][from].as_ref(), move |state, energy| {
+                apply_move_energy(state, opponent, from, 0, energy, 1);
+            })
+        }
         SimpleAction::ShuffleInPlayPokemonIntoDeck { in_play_idx } => {
             let in_play_idx = *in_play_idx;
             Outcomes::single_fn(move |rng, state, action| {
@@ -919,18 +931,6 @@ fn apply_deterministic_action(state: &mut State, action: &Action) {
         SimpleAction::PutCardFromDiscardToHand { card } => {
             state.transfer_card_from_discard_to_hand(action.actor, card)
         }
-        SimpleAction::DiscardRandomOpponentActiveEnergy => {
-            let opponent = (action.actor + 1) % 2;
-            if let Some(energy) = state.get_active(opponent).attached_energy.last().copied() {
-                state.discard_from_active(opponent, &[energy]);
-            }
-        }
-        SimpleAction::MoveRandomOpponentEnergyToActive { from_in_play_idx } => {
-            let opponent = (action.actor + 1) % 2;
-            // NOTE: Using the last energy instead of a random one to avoid expanding the game
-            // tree, mirroring DiscardRandomOpponentActiveEnergy and Piers.
-            apply_move_last_energy(state, opponent, *from_in_play_idx, 0);
-        }
         SimpleAction::ApplyStatusToOpponentActive { condition } => {
             // Only ever queued by an attack (Dustox's Select Powder), so it goes through the
             // attack-effect gate that Regice's Crystal Body sits behind.
@@ -993,15 +993,32 @@ fn apply_attach_tool(state: &mut State, actor: usize, in_play_idx: usize, tool_c
     }
 }
 
-/// Moves 1 Energy from `from_idx` to `to_idx` within `player`'s own board, without the caller
-/// having to know which Energy types are attached.
-fn apply_move_last_energy(state: &mut State, player: usize, from_idx: usize, to_idx: usize) {
-    let energy = state.in_play_pokemon[player][from_idx]
-        .as_ref()
-        .and_then(|pokemon| pokemon.attached_energy.last().copied());
-    if let Some(energy) = energy {
-        apply_move_energy(state, player, from_idx, to_idx, energy, 1);
+/// "A random Energy" from `pokemon`: one chance branch per Energy type it holds, in attachment order, weighted by
+/// how many of that type it holds; `apply` takes one Energy of the chosen type. With one type it is a single branch,
+/// as before. rules/09: the engine took the last-attached Energy, which Piers had already stopped doing.
+fn random_energy_outcomes(
+    pokemon: Option<&PlayedCard>,
+    apply: impl Fn(&mut State, EnergyType) + Copy + 'static,
+) -> Outcomes {
+    let attached = pokemon.map(|pokemon| pokemon.attached_energy.clone()).unwrap_or_default();
+    let mut types: Vec<EnergyType> = Vec::new();
+    for energy in &attached {
+        if !types.contains(energy) {
+            types.push(*energy);
+        }
     }
+    if types.is_empty() {
+        return Outcomes::single_fn(|_, _, _| {});
+    }
+    let probabilities = types
+        .iter()
+        .map(|t| attached.iter().filter(|energy| *energy == t).count() as f64 / attached.len() as f64)
+        .collect();
+    let mutations: Mutations = types
+        .into_iter()
+        .map(|energy| -> Mutation { Box::new(move |_, state, _| apply(state, energy)) })
+        .collect();
+    Outcomes::from_parts(probabilities, mutations)
 }
 
 fn apply_move_energy(
@@ -1784,6 +1801,58 @@ mod tests {
         models::{Card, EnergyType, PlayedCard},
         Deck,
     };
+
+    /// rules/09: "a random Energy" (Crawdaunt's Unruly Claw, the Supporter Psychic) is a chance over the Energy
+    /// attached, not the last-attached one.
+    #[test]
+    fn a_random_energy_is_a_chance_over_the_types_attached() {
+        let branches = |state: &State, action: SimpleAction| {
+            let action = Action { actor: 0, action, is_stack: false };
+            let (probabilities, mutations) = forecast_action(state, &action).into_branches();
+            let after: Vec<State> = mutations
+                .into_iter()
+                .map(|mutate| {
+                    let mut branch = state.clone();
+                    mutate(&mut StdRng::seed_from_u64(20_000_000_003), &mut branch, &action);
+                    branch
+                })
+                .collect();
+            (probabilities, after)
+        };
+        let mut state = State::default();
+        state.in_play_pokemon[0][0] = Some(PlayedCard::from_id(CardId::A1001Bulbasaur));
+        state.in_play_pokemon[1][0] = Some(
+            PlayedCard::from_id(CardId::A1055Blastoise)
+                .with_energy(vec![EnergyType::Water, EnergyType::Fire, EnergyType::Water]),
+        );
+        state.in_play_pokemon[1][1] = Some(
+            PlayedCard::from_id(CardId::A1055Blastoise).with_energy(vec![EnergyType::Fire, EnergyType::Water]),
+        );
+
+        let (probabilities, after) = branches(&state, SimpleAction::DiscardRandomOpponentActiveEnergy);
+        assert_eq!(probabilities, vec![2.0 / 3.0, 1.0 / 3.0]);
+        let mut left: Vec<Vec<EnergyType>> = after.iter().map(|s| s.get_active(1).attached_energy.clone()).collect();
+        left.iter_mut().for_each(|energy| energy.sort_by_key(|e| format!("{e:?}")));
+        assert_eq!(left, vec![vec![EnergyType::Fire, EnergyType::Water], vec![EnergyType::Water, EnergyType::Water]]);
+        assert_eq!(after[0].discard_energies[1], vec![EnergyType::Water]);
+        assert_eq!(after[1].discard_energies[1], vec![EnergyType::Fire]);
+
+        let (probabilities, after) =
+            branches(&state, SimpleAction::MoveRandomOpponentEnergyToActive { from_in_play_idx: 1 });
+        assert_eq!(probabilities, vec![0.5, 0.5]);
+        let moved: Vec<(Vec<EnergyType>, usize)> = after
+            .iter()
+            .map(|s| {
+                (s.in_play_pokemon[1][1].as_ref().unwrap().attached_energy.clone(), s.get_active(1).attached_energy.len())
+            })
+            .collect();
+        assert_eq!(moved, vec![(vec![EnergyType::Water], 4), (vec![EnergyType::Fire], 4)]);
+
+        // One type held: one branch, as before.
+        state.in_play_pokemon[1][0] =
+            Some(PlayedCard::from_id(CardId::A1055Blastoise).with_energy(vec![EnergyType::Water; 2]));
+        assert_eq!(branches(&state, SimpleAction::DiscardRandomOpponentActiveEnergy).0, vec![1.0]);
+    }
 
     #[test]
     fn victory_star_stages_only_vaporeons_coin_marginal() {
