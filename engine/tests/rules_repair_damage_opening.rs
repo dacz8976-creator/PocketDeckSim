@@ -256,6 +256,32 @@ fn clemonts_backpack_boosts_bench_damage_but_giovanni_does_not() {
     assert_eq!(bench_damage(CardId::A1223Giovanni), 10);
 }
 
+/// rules/09 (laptop's Raticate/Manectric card check, Sept 26): the hand holds 10 cards. Clemont played from a 10-card
+/// hand leaves room for one of its two random cards; the other stays in the deck, as a draw past 10 does.
+#[test]
+fn clemont_from_a_ten_card_hand_stops_at_ten() {
+    let clemont = trainer_from_id(CardId::B1a068Clemont);
+    let targets = [CardId::A1098Magneton, CardId::B4061Heliolisk];
+    for seed in 20_000_000_010..20_000_000_030u64 {
+        let mut game = get_initialized_game(seed);
+        let mut state = game.get_state_clone();
+        state.set_board(vec![PlayedCard::from_id(CardId::A1001Bulbasaur)], vec![PlayedCard::from_id(CardId::A1001Bulbasaur)]);
+        state.current_player = 0;
+        state.turn_count = 3;
+        state.hands[0] = vec![Card::Trainer(clemont.clone())];
+        state.hands[0].extend((0..9).map(|_| get_card_by_enum(CardId::PA001Potion)));
+        state.decks[0].cards = targets.iter().map(|id| get_card_by_enum(*id)).collect();
+        state.decks[0].cards.extend((0..4).map(|_| get_card_by_enum(CardId::PA001Potion)));
+        game.set_state(state);
+        game.apply_action(&Action { actor: 0, action: SimpleAction::Play { trainer_card: clemont.clone() }, is_stack: false });
+        let state = game.get_state_clone();
+        assert_eq!(state.hands[0].len(), 10);
+        let in_hand = |id: CardId| state.hands[0].contains(&get_card_by_enum(id));
+        assert!(in_hand(targets[0]) != in_hand(targets[1]), "exactly one of the two fits");
+        assert_eq!(state.decks[0].cards.len(), 5, "the other stays in the deck");
+    }
+}
+
 /// rules/09 (laptop's Raticate/Manectric card check, Sept 26): the Backpack's +20 is for attacks used by Magneton or
 /// Heliolisk against the opponent's Pokémon. A Poisoned Heliolisk takes the plain 10 at Checkup the turn it is played.
 #[test]
