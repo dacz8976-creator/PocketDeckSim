@@ -85,4 +85,26 @@ It found two test gaps, now covered: kpf's opponent side with R on, and a recove
 
 ## Identity at the build (REGISTRATION.md section 5)
 
-Filled in when `run_identity.sh` finishes.
+**Every check passes** (`run_identity.sh`, `identity_check.txt`; 40 deals of all 28 pairings, a superset of the registered 2 × 40):
+
+| check | result |
+|---|---|
+| kp3 at 9bffbda vs `../rules09_fixes_2026-09-26/af8489f_kp3_500.jsonl` (first 40 deals) | equal in moves, decisions, openings and results: 1,120 of 1,120 |
+| k3 at 9bffbda vs `af8489f_k3_500.jsonl` (first 40 deals) | equal, 1,120 of 1,120 |
+| kpr3 at 9bffbda vs `af8489f_kpr3_40.jsonl` | equal, 1,120 of 1,120 |
+| kpf3 smoke | clean (no findings); choices differ from kpr3 in 23 games (2.1%), all in Blaziken's cells |
+| kpg3 smoke | clean; choices differ from kp3 in 23 games (2.1%), all in Blaziken's cells |
+
+- **kpr3's check.** kpr3 at the kpf build equals the cloud's kpr3 run at the repaired engine. The difference from kpr's Sept 25 table (e09fb46) is the engine repairs alone; that's the registration's second identity clause.
+- **Where F reaches the table:** only Blaziken's cells. Blaziken's list runs Flame Patch (B1 217), which brings back the [R] Mega Burning discards. No other table list has a recovery source. Rayquaza, the deck F was designed around, is in the 17 new cells, not the 28.
+- **What the laptop runs next** (REGISTRATION.md section 6), all at this build:
+  - k3, kp3, kpr3 and kpf3 on the 28 table cells and the 17 new cells (21,108,000,000 + pairing × 10,000 + i, with `--pairs`);
+  - B2e's 48 held-out pairings;
+  - kpg3 on the 45 cells for F's own share;
+  - the trace diagnostics.
+
+## Files
+
+- `run_identity.sh`: the command. `timing.txt`: wall times.
+- `identity_{kp3,k3,kpr3,kpf3,kpg3}_40.{jsonl,txt}`: the raw outputs.
+- `identity_check.txt`: the comparison above.
