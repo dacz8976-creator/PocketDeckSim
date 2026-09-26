@@ -1,0 +1,37 @@
+﻿== first line of the test module at 53638a7 and e09fb46
+1981bb4: 2392:#[cfg(test)]
+ 2422:#[cfg(test)] 2448:#[cfg(test)]
+  lines 3711
+53638a7: 2392:#[cfg(test)]
+ 2422:#[cfg(test)] 2448:#[cfg(test)]
+  lines 3721
+14c7d9b: 2404:#[cfg(test)]
+ 2434:#[cfg(test)] 2460:#[cfg(test)]
+  lines 3752
+e09fb46: 2404:#[cfg(test)]
+ 2434:#[cfg(test)] 2460:#[cfg(test)]
+  lines 3811
+== hunk headers 1981bb4..53638a7
+@@ -3475,0 +3476,4 @@ mod kpr_feature_tests {
+@@ -3609,0 +3614,6 @@ mod kpr_feature_tests {
+== hunk headers 14c7d9b..e09fb46 (e09fb46's parent chain from 14c7d9b; engine only)
+@@ -3388,0 +3389 @@ mod kpr_feature_tests {
+@@ -3401,0 +3403,16 @@ mod kpr_feature_tests {
+@@ -3452,0 +3470,5 @@ mod kpr_feature_tests {
+@@ -3465,0 +3488,8 @@ mod kpr_feature_tests {
+@@ -3512,0 +3543,29 @@ mod kpr_feature_tests {
+@@ -3724,4 +3783,4 @@ mod kpr_feature_tests {
+@@ -3730 +3789 @@ mod kpr_feature_tests {
+== removed lines 14c7d9b..e09fb46
+-        // 1 is to move with [G] next. Its Bulbasaur (Vine Whip, [G][C]) holds a [G], so it's ready next turn; an
+-        // Ivysaur (Razor Leaf, [G][C][C]) hidden in its hand or deck must not make that 2 of 3. Nor may a hidden
+-        // Baxcalibur add Ice Maker's [W] to its Suicune ex.
+-        let value = |active: PlayedCard, next: EnergyType, hidden: CardId, in_hand: bool| {
+-            state.energy_zone[1].next = Some(next);
+== hunk headers 53638a7..14c7d9b (amendment 6's code)
+@@ -10 +10 @@ use crate::actions::attacks::{BenchDamageFilter, BenchSide, Mechanic};
+@@ -2076,0 +2077,9 @@ fn owner_turn_is_over(state: &State, owner: usize) -> bool {
+@@ -2080 +2089,2 @@ fn owner_turn_is_over(state: &State, owner: usize) -> bool {
+@@ -2120 +2130,3 @@ fn projected_active_energy(state: &State, owner: usize, active: &PlayedCard, hor
+@@ -3429,0 +3442,19 @@ mod kpr_feature_tests {
+34	3	engine/src/players/value_functions.rs

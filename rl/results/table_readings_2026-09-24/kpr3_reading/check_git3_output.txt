@@ -1,0 +1,14 @@
+﻿== 9a35f54's message, lines mentioning 'discard decks' or 'moves more'
+60:   can attach and attack in the same turn), and it moves more than the discard decks.
+== Hyper Ray card text
+Hydreigon  [B1 157, B1 245]  Darkness  Stage 2 (from Zweilous)  HP 150  weak Grass  retreat 2
+  Ability Roar in Unison: Once during your turn, you may take 2 [D] Energy from your Energy Zone and attach it to this Pokémon. If you do, do 30 damage to this Pokémon.
+  [DDD] Hyper Ray 130 — Discard all Energy from this Pokémon.
+
+== discard-pile sources in 0adfeb7's message
+45:   - Discard-pile sources take each discarded Energy once (a local copy of the discard pile). Reason: two Dragonair
+46:     each took the same single discarded Energy (Dustin's 11 runs two).
+47:   - Dragon's Blessing takes the discarded type that leaves the Active's attacks fewest missing Energy (the lowest for
+48:     any one attack, then the total), ties to the one discarded first, after the turn's other sources. Reason: the
+50:     always took the oldest discard. Haxorus holding [M], discard [M, F], [M] next: now [F], ready.
+67:  discard once, picks the missing type, only from the Bench, only to a Dragon; Forest Breath and Volt Charge only

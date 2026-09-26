@@ -1,0 +1,54 @@
+﻿== per cell: table change (first deck) | first deck's side | second deck's side | interaction (first deck's view)
+    altaria v blaziken    -6.0 +/- 5.0 |  -4.8 +/- 4.8 |  -1.2 +/- 3.7 |  -2.4 +/- 4.8
+    altaria v hydreigon   -7.8 +/- 5.1 |  -0.8 +/- 4.8 |  +4.2 +/- 4.1 |  -2.8 +/- 5.2
+    altaria v lucario     -3.6 +/- 4.7 |  -7.0 +/- 4.0 |  +0.4 +/- 4.2 |  +3.8 +/- 4.7
+    altaria v sceptile    +0.0 +/- 4.6 |  +3.4 +/- 4.4 |  -1.6 +/- 3.3 |  -5.0 +/- 4.0  (quarantined)
+    altaria v suicune     -6.6 +/- 5.1 |  -8.8 +/- 4.8 |  +2.2 +/- 3.7 |  +4.4 +/- 4.5
+    altaria v vespiquen   +3.0 +/- 5.0 |  +1.8 +/- 4.5 |  -3.8 +/- 4.0 |  -2.6 +/- 4.8
+    altaria v weezing     +0.0 +/- 4.7 |  -1.7 +/- 4.5 |  +0.0 +/- 3.9 |  +1.7 +/- 5.2
+   blaziken v hydreigon   +1.6 +/- 4.9 |  +2.8 +/- 3.7 |  +1.2 +/- 4.4 |  +0.0 +/- 4.5
+   blaziken v lucario    +10.9 +/- 5.1 |  +2.1 +/- 4.3 | -11.6 +/- 4.6 |  -2.8 +/- 5.3
+   blaziken v sceptile    -2.1 +/- 4.0 |  +0.3 +/- 3.7 |  +2.2 +/- 2.8 |  -0.2 +/- 3.4
+   blaziken v suicune     +2.6 +/- 4.4 |  +0.2 +/- 3.8 |  -1.6 +/- 3.3 |  +0.8 +/- 3.3
+   blaziken v vespiquen   -0.9 +/- 4.1 |  -1.7 +/- 3.3 |  +0.6 +/- 3.6 |  +1.4 +/- 3.6
+   blaziken v weezing    +11.7 +/- 4.1 |  +5.6 +/- 3.8 |  -7.6 +/- 3.7 |  -1.5 +/- 4.2
+  hydreigon v lucario     +8.8 +/- 4.8 |  +7.8 +/- 4.4 |  +3.0 +/- 4.1 |  +4.0 +/- 5.4
+  hydreigon v sceptile    -3.6 +/- 4.4 |  -2.4 +/- 4.0 |  +1.4 +/- 2.8 |  +0.2 +/- 3.5
+  hydreigon v suicune     +9.4 +/- 5.0 |  +7.0 +/- 4.6 |  -2.4 +/- 3.9 |  +0.0 +/- 4.8
+  hydreigon v vespiquen  +15.8 +/- 5.6 |  +9.6 +/- 5.0 |  -1.4 +/- 4.9 |  +4.8 +/- 6.0
+  hydreigon v weezing     +4.0 +/- 5.0 |  -0.6 +/- 4.7 |  -3.8 +/- 4.3 |  +0.8 +/- 5.4
+    lucario v sceptile    +3.0 +/- 4.2 |  +1.0 +/- 4.2 |  -1.6 +/- 2.8 |  +0.4 +/- 3.8
+    lucario v suicune     -9.2 +/- 4.6 | -11.6 +/- 4.3 |  -0.8 +/- 3.4 |  +1.6 +/- 3.8
+    lucario v vespiquen   +0.6 +/- 4.5 |  -5.0 +/- 4.3 |  -3.4 +/- 3.6 |  +2.2 +/- 4.5
+    lucario v weezing     +3.0 +/- 4.6 |  -3.8 +/- 4.3 |  -4.2 +/- 3.6 |  +2.6 +/- 3.9
+   sceptile v suicune     +2.0 +/- 3.9 |  -1.6 +/- 3.0 |  -1.2 +/- 3.4 |  +2.4 +/- 3.2
+   sceptile v vespiquen   +2.2 +/- 4.6 |  +1.8 +/- 3.7 |  -3.8 +/- 4.2 |  -3.4 +/- 4.2
+   sceptile v weezing     -0.8 +/- 3.9 |  +0.4 +/- 2.9 |  +0.8 +/- 3.1 |  -0.4 +/- 2.8
+    suicune v vespiquen   +6.6 +/- 5.1 |  +0.6 +/- 4.2 |  -6.4 +/- 4.9 |  -0.4 +/- 5.2
+    suicune v weezing     +8.5 +/- 4.4 |  +0.5 +/- 3.7 | -12.9 +/- 3.9 |  -4.9 +/- 4.2
+  vespiquen v weezing     +6.8 +/- 4.7 |  +0.8 +/- 4.6 | -10.6 +/- 4.3 |  -4.6 +/- 5.6
+  cell sides better beyond noise: 5: {'hydreigon': 4, 'blaziken': 1}
+  cell sides worse beyond noise: 11: {'altaria': 3, 'lucario': 3, 'weezing': 4, 'vespiquen': 1}
+  cell sides within 0.15 of their noise bound (4 decimals):
+    altaria v blaziken, altaria's side: -4.8000 +/- 4.7550 -> beyond
+    altaria v hydreigon, hydreigon's side: +4.2000 +/- 4.0801 -> beyond
+== per deck, all 28 cells: table change | own side | opponents' side (their own score) | interaction (deck's view)
+    altaria (7 cells): table  -3.0 +/- 1.9 worse | own  -2.6 +/- 1.7 worse | opp  +0.0 +/- 1.5 | inter  -0.4 +/- 1.8 | check: own - opp + inter = -3.00
+   blaziken (7 cells): table  +4.3 +/- 1.7 better | own  +1.2 +/- 1.4 | opp  -3.1 +/- 1.5 worse | inter  +0.0 +/- 1.6 | check: own - opp + inter = +4.26
+  hydreigon (7 cells): table  +5.8 +/- 1.9 better | own  +3.8 +/- 1.7 better | opp  -0.2 +/- 1.6 | inter  +1.8 +/- 1.9 | check: own - opp + inter = +5.80
+    lucario (7 cells): table  -2.7 +/- 1.8 worse | own  -3.9 +/- 1.6 worse | opp  -1.0 +/- 1.4 | inter  +0.3 +/- 1.7 | check: own - opp + inter = -2.67
+   sceptile (7 cells): table  +0.9 +/- 1.6 | own  +0.1 +/- 1.2 | opp  -0.3 +/- 1.5 | inter  +0.5 +/- 1.4 | check: own - opp + inter = +0.87
+    suicune (7 cells): table  +2.4 +/- 1.8 better | own  -0.4 +/- 1.4 | opp  -4.9 +/- 1.6 worse | inter  -2.1 +/- 1.6 worse | check: own - opp + inter = +2.41
+  vespiquen (7 cells): table  -2.9 +/- 1.8 worse | own  -2.5 +/- 1.6 worse | opp  -0.5 +/- 1.6 | inter  -0.9 +/- 1.9 | check: own - opp + inter = -2.93
+    weezing (7 cells): table  -4.7 +/- 1.7 worse | own  -5.5 +/- 1.5 worse | opp  +0.2 +/- 1.6 | inter  +0.9 +/- 1.7 | check: own - opp + inter = -4.74
+== per deck, decision set (27 cells): table change | own side | opponents' side (their own score) | interaction (deck's view)
+    altaria (6 cells): table  -3.5 +/- 2.0 worse | own  -3.5 +/- 1.9 worse | opp  +0.3 +/- 1.6 | inter  +0.4 +/- 2.0 | check: own - opp + inter = -3.50
+   blaziken (7 cells): table  +4.3 +/- 1.7 better | own  +1.2 +/- 1.4 | opp  -3.1 +/- 1.5 worse | inter  +0.0 +/- 1.6 | check: own - opp + inter = +4.26
+  hydreigon (7 cells): table  +5.8 +/- 1.9 better | own  +3.8 +/- 1.7 better | opp  -0.2 +/- 1.6 | inter  +1.8 +/- 1.9 | check: own - opp + inter = +5.80
+    lucario (7 cells): table  -2.7 +/- 1.8 worse | own  -3.9 +/- 1.6 worse | opp  -1.0 +/- 1.4 | inter  +0.3 +/- 1.7 | check: own - opp + inter = -2.67
+   sceptile (6 cells): table  +1.0 +/- 1.7 | own  +0.4 +/- 1.2 | opp  -0.9 +/- 1.6 | inter  -0.3 +/- 1.4 | check: own - opp + inter = +1.02
+    suicune (7 cells): table  +2.4 +/- 1.8 better | own  -0.4 +/- 1.4 | opp  -4.9 +/- 1.6 worse | inter  -2.1 +/- 1.6 worse | check: own - opp + inter = +2.41
+  vespiquen (7 cells): table  -2.9 +/- 1.8 worse | own  -2.5 +/- 1.6 worse | opp  -0.5 +/- 1.6 | inter  -0.9 +/- 1.9 | check: own - opp + inter = -2.93
+    weezing (7 cells): table  -4.7 +/- 1.7 worse | own  -5.5 +/- 1.5 worse | opp  +0.2 +/- 1.6 | inter  +0.9 +/- 1.7 | check: own - opp + inter = -4.74
+== Hydreigon: own +3.83 of table +5.80 = 0.66; inter +1.80
+== head to head: kpr3 scores 48.79% over 28000 mixed games (kp3 v kp3 same deals, same sides 50.00%); pooled change over 56 cell sides -1.21 +/- 0.54

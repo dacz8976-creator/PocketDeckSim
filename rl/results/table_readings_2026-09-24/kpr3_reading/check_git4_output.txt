@@ -1,0 +1,32 @@
+﻿== README.md: commits on any ref (oldest last)
+8845ac6 2026-09-26 05:06 kpr3 mixed rows: build and run scripts, fixed before the laptop reads the kpr3 table
+== run_kpr_mixed.sh: commits on any ref (oldest last)
+8845ac6 2026-09-26 05:06 kpr3 mixed rows: build and run scripts, fixed before the laptop reads the kpr3 table
+== mixed_kpr3_first.jsonl: commits on any ref (oldest last)
+ed15b02 2026-09-26 09:15 kpr3 mixed rows: 28 pairings x 500 both directions on legality_scan at e09fb46; kp3 spot replay 1,500/1,500 and kpr3 pairing-1 replay 5
+== mixed_kpr3_second.jsonl: commits on any ref (oldest last)
+ed15b02 2026-09-26 09:15 kpr3 mixed rows: 28 pairings x 500 both directions on legality_scan at e09fb46; kp3 spot replay 1,500/1,500 and kpr3 pairing-1 replay 5
+== spot_kp3_p0-2.jsonl: commits on any ref (oldest last)
+ed15b02 2026-09-26 09:15 kpr3 mixed rows: 28 pairings x 500 both directions on legality_scan at e09fb46; kp3 spot replay 1,500/1,500 and kpr3 pairing-1 replay 5
+== kpr3_replay_p1.jsonl: commits on any ref (oldest last)
+ed15b02 2026-09-26 09:15 kpr3 mixed rows: 28 pairings x 500 both directions on legality_scan at e09fb46; kp3 spot replay 1,500/1,500 and kpr3 pairing-1 replay 5
+== git status of the folder (read-only)
+?? rl/results/table_readings_2026-09-24/kpr3_paired_reading.md
+?? rl/results/table_readings_2026-09-24/kpr3_reading/
+== file times (UTC)
+total 6396
+-rwxrwxrwx 1 dacz8976 dacz8976    2380 2026-09-26 05:05 README.md
+-rwxrwxrwx 1 dacz8976 dacz8976     954 2026-09-26 05:03 build_kpr_scan.sh
+-rwxrwxrwx 1 dacz8976 dacz8976     101 2026-09-26 08:22 identity.txt
+-rwxrwxrwx 1 dacz8976 dacz8976  108502 2026-09-26 08:24 kpr3_replay_p1.jsonl
+-rwxrwxrwx 1 dacz8976 dacz8976     344 2026-09-26 08:24 kpr3_replay_p1.txt
+-rwxrwxrwx 1 dacz8976 dacz8976     399 2026-09-26 08:24 kpr3_replay_p1_compare.txt
+-rwxrwxrwx 1 dacz8976 dacz8976 3045985 2026-09-26 08:38 mixed_kpr3_first.jsonl
+-rwxrwxrwx 1 dacz8976 dacz8976    4149 2026-09-26 08:38 mixed_kpr3_first.txt
+-rwxrwxrwx 1 dacz8976 dacz8976 3046072 2026-09-26 08:52 mixed_kpr3_second.jsonl
+-rwxrwxrwx 1 dacz8976 dacz8976    4150 2026-09-26 08:52 mixed_kpr3_second.txt
+-rwxrwxrwx 1 dacz8976 dacz8976    1876 2026-09-26 05:04 run_kpr_mixed.sh
+-rwxrwxrwx 1 dacz8976 dacz8976  308146 2026-09-26 08:23 spot_kp3_p0-2.jsonl
+-rwxrwxrwx 1 dacz8976 dacz8976     527 2026-09-26 08:23 spot_kp3_p0-2.txt
+-rwxrwxrwx 1 dacz8976 dacz8976     640 2026-09-26 08:23 spot_kp3_p0-2_compare.txt
+-rwxrwxrwx 1 dacz8976 dacz8976     126 2026-09-26 08:52 timing.txt

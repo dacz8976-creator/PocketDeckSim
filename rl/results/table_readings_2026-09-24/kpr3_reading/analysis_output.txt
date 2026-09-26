@@ -1,0 +1,174 @@
+﻿== A. inputs
+  kp3 table            14,000 games; bots [('kp3', 'kp3')] (expected [('kp3', 'kp3')]); same deal and seat as kp3's: 14,000
+  kpr3 table           14,000 games; bots [('kpr3', 'kpr3')] (expected [('kpr3', 'kpr3')]); same deal and seat as kp3's: 14,000
+  mixed, kpr3 first    14,000 games; bots [('kpr3', 'kp3')] (expected [('kpr3', 'kp3')]); same deal and seat as kp3's: 14,000
+  mixed, kpr3 second   14,000 games; bots [('kp3', 'kpr3')] (expected [('kp3', 'kpr3')]); same deal and seat as kp3's: 14,000
+
+== B. identity checks on the laptop's e09fb46 build (field by field)
+  kp3 spot, pairings 0-2: 1,500 of 1,500 identical to the reference on seed, first_seat, moves, winner_seat, points, turns, first_deck_score
+  kpr3 v kpr3, pairing 1: 500 of 500 identical to the reference on seed, first_seat, moves, winner_seat, points, turns, first_deck_score
+  kp3 Chase Order replay (chase_order_2026-09-25): 3,500 of 3,500 identical to kp3's table games
+
+== C. footprint: games whose move fingerprint (or result) differs from kp3's on the same deal
+  table (kpr3 on both sides): moves differ 13,117 of 14,000 (93.7%); identical 883; result differs 4,052 (28.9%)
+  for scale: kp3 and k3 identical in 1,242 of 14,000
+  least-changed cell blaziken v sceptile 413 of 500; most-changed altaria v vespiquen 492 of 500
+  mixed rows, kpr3 on one deck only (that deck's cells, both seats), moves differ / result differs, of 3,500:
+    kpr3 on altaria  : moves differ 3,127 (89.3%), result differs   955 (27.3%)
+    kpr3 on blaziken : moves differ 2,688 (76.8%), result differs   658 (18.8%)
+    kpr3 on hydreigon: moves differ 2,956 (84.5%), result differs   915 (26.1%)
+    kpr3 on lucario  : moves differ 2,816 (80.5%), result differs   850 (24.3%)
+    kpr3 on sceptile : moves differ 2,264 (64.7%), result differs   431 (12.3%)
+    kpr3 on suicune  : moves differ 2,585 (73.9%), result differs   614 (17.5%)
+    kpr3 on vespiquen: moves differ 2,997 (85.6%), result differs   847 (24.2%)
+    kpr3 on weezing  : moves differ 2,900 (82.9%), result differs   705 (20.1%)
+  all mixed games: moves differ 22,333 of 28,000 (79.8%)
+
+== D. per cell (first-named deck's view unless named): table change; A's own side; B's own side; interaction
+   (A's side = kpr3 on A only, A's score; B's side = kpr3 on B only, B's score; 95% ranges from per-deal differences)
+    altaria v blaziken   table  -6.0 ± 5.0 | altaria side  -4.8 ± 4.8 | blaziken side  -1.2 ± 3.7 | interaction  -2.4 ± 4.8
+    altaria v hydreigon  table  -7.8 ± 5.1 | altaria side  -0.8 ± 4.8 | hydreigon side  +4.2 ± 4.1 | interaction  -2.8 ± 5.2  [cell veto candidate that awaited mixed rows]
+    altaria v lucario    table  -3.6 ± 4.7 | altaria side  -7.0 ± 4.0 | lucario side  +0.4 ± 4.2 | interaction  +3.8 ± 4.7
+    altaria v sceptile   table  +0.0 ± 4.6 | altaria side  +3.4 ± 4.4 | sceptile side  -1.6 ± 3.3 | interaction  -5.0 ± 4.0  [quarantined]
+    altaria v suicune    table  -6.6 ± 5.1 | altaria side  -8.8 ± 4.8 | suicune side  +2.2 ± 3.7 | interaction  +4.4 ± 4.5  [cell veto candidate that awaited mixed rows]
+    altaria v vespiquen  table  +3.0 ± 5.0 | altaria side  +1.8 ± 4.5 | vespiquen side  -3.8 ± 4.0 | interaction  -2.6 ± 4.8
+    altaria v weezing    table  +0.0 ± 4.7 | altaria side  -1.7 ± 4.5 | weezing side  +0.0 ± 3.9 | interaction  +1.7 ± 5.2
+   blaziken v hydreigon  table  +1.6 ± 4.9 | blaziken side  +2.8 ± 3.7 | hydreigon side  +1.2 ± 4.4 | interaction  +0.0 ± 4.5
+   blaziken v lucario    table +10.9 ± 5.1 | blaziken side  +2.1 ± 4.3 | lucario side -11.6 ± 4.6 | interaction  -2.8 ± 5.3  [cell veto candidate that awaited mixed rows]
+   blaziken v sceptile   table  -2.1 ± 4.0 | blaziken side  +0.3 ± 3.7 | sceptile side  +2.2 ± 2.8 | interaction  -0.2 ± 3.4
+   blaziken v suicune    table  +2.6 ± 4.4 | blaziken side  +0.2 ± 3.8 | suicune side  -1.6 ± 3.3 | interaction  +0.8 ± 3.3
+   blaziken v vespiquen  table  -0.9 ± 4.1 | blaziken side  -1.7 ± 3.3 | vespiquen side  +0.6 ± 3.6 | interaction  +1.4 ± 3.6
+   blaziken v weezing    table +11.7 ± 4.1 | blaziken side  +5.6 ± 3.8 | weezing side  -7.6 ± 3.7 | interaction  -1.5 ± 4.2  [never counts: Limitless band ±23.4]
+  hydreigon v lucario    table  +8.8 ± 4.8 | hydreigon side  +7.8 ± 4.4 | lucario side  +3.0 ± 4.1 | interaction  +4.0 ± 5.4
+  hydreigon v sceptile   table  -3.6 ± 4.4 | hydreigon side  -2.4 ± 4.0 | sceptile side  +1.4 ± 2.8 | interaction  +0.2 ± 3.5
+  hydreigon v suicune    table  +9.4 ± 5.0 | hydreigon side  +7.0 ± 4.6 | suicune side  -2.4 ± 3.9 | interaction  +0.0 ± 4.8  [never counts: Limitless band ±15.2]
+  hydreigon v vespiquen  table +15.8 ± 5.6 | hydreigon side  +9.6 ± 5.0 | vespiquen side  -1.4 ± 4.9 | interaction  +4.8 ± 6.0  [never counts: Limitless band ±15.3]
+  hydreigon v weezing    table  +4.0 ± 5.0 | hydreigon side  -0.6 ± 4.7 | weezing side  -3.8 ± 4.3 | interaction  +0.8 ± 5.4
+    lucario v sceptile   table  +3.0 ± 4.2 | lucario side  +1.0 ± 4.2 | sceptile side  -1.6 ± 2.8 | interaction  +0.4 ± 3.8
+    lucario v suicune    table  -9.2 ± 4.6 | lucario side -11.6 ± 4.3 | suicune side  -0.8 ± 3.4 | interaction  +1.6 ± 3.8  [cell veto candidate that awaited mixed rows]
+    lucario v vespiquen  table  +0.6 ± 4.5 | lucario side  -5.0 ± 4.3 | vespiquen side  -3.4 ± 3.6 | interaction  +2.2 ± 4.5
+    lucario v weezing    table  +3.0 ± 4.6 | lucario side  -3.8 ± 4.3 | weezing side  -4.2 ± 3.6 | interaction  +2.6 ± 3.9
+   sceptile v suicune    table  +2.0 ± 3.9 | sceptile side  -1.6 ± 3.0 | suicune side  -1.2 ± 3.4 | interaction  +2.4 ± 3.2
+   sceptile v vespiquen  table  +2.2 ± 4.6 | sceptile side  +1.8 ± 3.7 | vespiquen side  -3.8 ± 4.2 | interaction  -3.4 ± 4.2
+   sceptile v weezing    table  -0.8 ± 3.9 | sceptile side  +0.4 ± 2.9 | weezing side  +0.8 ± 3.1 | interaction  -0.4 ± 2.8
+    suicune v vespiquen  table  +6.6 ± 5.1 | suicune side  +0.6 ± 4.2 | vespiquen side  -6.4 ± 4.9 | interaction  -0.4 ± 5.2  [cell veto candidate that awaited mixed rows]
+    suicune v weezing    table  +8.5 ± 4.4 | suicune side  +0.5 ± 3.7 | weezing side -12.9 ± 3.9 | interaction  -4.9 ± 4.2
+  vespiquen v weezing    table  +6.8 ± 4.7 | vespiquen side  +0.8 ± 4.6 | weezing side -10.6 ± 4.3 | interaction  -4.6 ± 5.6
+
+== E0. kpr3 head to head against kp3 (all 28,000 mixed games; kp3 v kp3 on the same games is 50% by symmetry): kpr3 scores 48.8% ( -1.2 ± 0.5 points, pooled over the 56 cell sides)
+
+== E. per deck, all 28 cells (7 per deck): own side (kpr3 on the deck only); opponents' side (kpr3 on its opponents only, the opponents' own score); table change; interaction (table - own + opponents' side)
+  altaria   (7 cells): own  -2.6 ± 1.7 worse | opponents  +0.0 ± 1.5       | table  -3.0 ± 1.9 | own - opponents  -2.6 | interaction  -0.4 ± 1.8
+  blaziken  (7 cells): own  +1.2 ± 1.4       | opponents  -3.1 ± 1.5 worse | table  +4.3 ± 1.7 | own - opponents  +4.2 | interaction  +0.0 ± 1.6
+  hydreigon (7 cells): own  +3.8 ± 1.7 better | opponents  -0.2 ± 1.6       | table  +5.8 ± 1.9 | own - opponents  +4.0 | interaction  +1.8 ± 1.9
+  lucario   (7 cells): own  -3.9 ± 1.6 worse | opponents  -1.0 ± 1.4       | table  -2.7 ± 1.8 | own - opponents  -2.9 | interaction  +0.3 ± 1.7
+  sceptile  (7 cells): own  +0.1 ± 1.2       | opponents  -0.3 ± 1.5       | table  +0.9 ± 1.6 | own - opponents  +0.4 | interaction  +0.5 ± 1.4
+  suicune   (7 cells): own  -0.4 ± 1.4       | opponents  -4.9 ± 1.6 worse | table  +2.4 ± 1.8 | own - opponents  +4.5 | interaction  -2.1 ± 1.6
+  vespiquen (7 cells): own  -2.5 ± 1.6 worse | opponents  -0.5 ± 1.6       | table  -2.9 ± 1.8 | own - opponents  -2.0 | interaction  -0.9 ± 1.9
+  weezing   (7 cells): own  -5.5 ± 1.5 worse | opponents  +0.2 ± 1.6       | table  -4.7 ± 1.7 | own - opponents  -5.6 | interaction  +0.9 ± 1.7
+
+== E. per deck, decision set (27 cells; Altaria and Sceptile 6): own side (kpr3 on the deck only); opponents' side (kpr3 on its opponents only, the opponents' own score); table change; interaction (table - own + opponents' side)
+  altaria   (6 cells): own  -3.6 ± 1.9 worse | opponents  +0.3 ± 1.6       | table  -3.5 ± 2.0 | own - opponents  -3.9 | interaction  +0.4 ± 2.0
+  blaziken  (7 cells): own  +1.2 ± 1.4       | opponents  -3.1 ± 1.5 worse | table  +4.3 ± 1.7 | own - opponents  +4.2 | interaction  +0.0 ± 1.6
+  hydreigon (7 cells): own  +3.8 ± 1.7 better | opponents  -0.2 ± 1.6       | table  +5.8 ± 1.9 | own - opponents  +4.0 | interaction  +1.8 ± 1.9
+  lucario   (7 cells): own  -3.9 ± 1.6 worse | opponents  -1.0 ± 1.4       | table  -2.7 ± 1.8 | own - opponents  -2.9 | interaction  +0.3 ± 1.7
+  sceptile  (6 cells): own  +0.4 ± 1.2       | opponents  -0.9 ± 1.6       | table  +1.0 ± 1.7 | own - opponents  +1.3 | interaction  -0.3 ± 1.4
+  suicune   (7 cells): own  -0.4 ± 1.4       | opponents  -4.9 ± 1.6 worse | table  +2.4 ± 1.8 | own - opponents  +4.5 | interaction  -2.1 ± 1.6
+  vespiquen (7 cells): own  -2.5 ± 1.6 worse | opponents  -0.5 ± 1.6       | table  -2.9 ± 1.8 | own - opponents  -2.0 | interaction  -0.9 ± 1.9
+  weezing   (7 cells): own  -5.5 ± 1.5 worse | opponents  +0.2 ± 1.6       | table  -4.7 ± 1.7 | own - opponents  -5.6 | interaction  +0.9 ± 1.7
+
+== F. Hyper Ray (Hydreigon), per cell: [KO-able used, KO-able passed, not KO-able used, not KO-able passed]
+  altaria v hydreigon
+    kp3 table                    [401, 1, 3, 61]  no-KO used 3/64 =    5% ±  5 | KO-able passed 1/402 =  0.2% ± 0.5
+    kpr3 table                   [409, 2, 71, 10]  no-KO used 71/81 =   88% ±  7 | KO-able passed 2/411 =  0.5% ± 0.7
+    mixed: kpr3 on Hydreigon     [422, 1, 58, 3]  no-KO used 58/61 =   95% ±  5 | KO-able passed 1/423 =  0.2% ± 0.5
+    mixed: kpr3 on the opponent  [388, 2, 1, 96]  no-KO used 1/97 =    1% ±  2 | KO-able passed 2/390 =  0.5% ± 0.7
+  blaziken v hydreigon
+    kp3 table                    [327, 4, 1, 97]  no-KO used 1/98 =    1% ±  2 | KO-able passed 4/331 =  1.2% ± 1.2
+    kpr3 table                   [410, 0, 65, 31]  no-KO used 65/96 =   68% ± 10 | KO-able passed 0/410 =  0.0% ± 0.0
+    mixed: kpr3 on Hydreigon     [399, 0, 75, 24]  no-KO used 75/99 =   76% ±  9 | KO-able passed 0/399 =  0.0% ± 0.0
+    mixed: kpr3 on the opponent  [322, 2, 1, 84]  no-KO used 1/85 =    1% ±  2 | KO-able passed 2/324 =  0.6% ± 0.9
+  hydreigon v lucario
+    kp3 table                    [300, 4, 1, 127]  no-KO used 1/128 =    1% ±  2 | KO-able passed 4/304 =  1.3% ± 1.3
+    kpr3 table                   [330, 0, 117, 12]  no-KO used 117/129 =   91% ±  5 | KO-able passed 0/330 =  0.0% ± 0.0
+    mixed: kpr3 on Hydreigon     [359, 3, 103, 9]  no-KO used 103/112 =   92% ±  5 | KO-able passed 3/362 =  0.8% ± 0.9
+    mixed: kpr3 on the opponent  [297, 0, 4, 141]  no-KO used 4/145 =    3% ±  3 | KO-able passed 0/297 =  0.0% ± 0.0
+  hydreigon v sceptile
+    kp3 table                    [408, 0, 4, 66]  no-KO used 4/70 =    6% ±  6 | KO-able passed 0/408 =  0.0% ± 0.0
+    kpr3 table                   [446, 0, 71, 2]  no-KO used 71/73 =   97% ±  4 | KO-able passed 0/446 =  0.0% ± 0.0
+    mixed: kpr3 on Hydreigon     [469, 0, 76, 3]  no-KO used 76/79 =   96% ±  4 | KO-able passed 0/469 =  0.0% ± 0.0
+    mixed: kpr3 on the opponent  [399, 0, 3, 65]  no-KO used 3/68 =    4% ±  5 | KO-able passed 0/399 =  0.0% ± 0.0
+  hydreigon v suicune
+    kp3 table                    [300, 0, 101, 151]  no-KO used 101/252 =   40% ±  6 | KO-able passed 0/300 =  0.0% ± 0.0
+    kpr3 table                   [267, 0, 322, 16]  no-KO used 322/338 =   95% ±  2 | KO-able passed 0/267 =  0.0% ± 0.0
+    mixed: kpr3 on Hydreigon     [269, 0, 298, 21]  no-KO used 298/319 =   93% ±  2 | KO-able passed 0/269 =  0.0% ± 0.0
+    mixed: kpr3 on the opponent  [300, 0, 116, 162]  no-KO used 116/278 =   42% ±  6 | KO-able passed 0/300 =  0.0% ± 0.0
+  hydreigon v vespiquen
+    kp3 table                    [274, 79, 29, 164]  no-KO used 29/193 =   15% ±  5 | KO-able passed 79/353 = 22.4% ± 4.7
+    kpr3 table                   [317, 35, 180, 35]  no-KO used 180/215 =   84% ±  5 | KO-able passed 35/352 =  9.9% ± 3.6
+    mixed: kpr3 on Hydreigon     [316, 32, 167, 31]  no-KO used 167/198 =   84% ±  6 | KO-able passed 32/348 =  9.2% ± 3.7
+    mixed: kpr3 on the opponent  [285, 63, 30, 165]  no-KO used 30/195 =   15% ±  5 | KO-able passed 63/348 = 18.1% ± 4.7
+  hydreigon v weezing
+    kp3 table                    [236, 0, 78, 153]  no-KO used 78/231 =   34% ±  6 | KO-able passed 0/236 =  0.0% ± 0.0
+    kpr3 table                   [217, 1, 279, 16]  no-KO used 279/295 =   95% ±  2 | KO-able passed 1/218 =  0.5% ± 0.9
+    mixed: kpr3 on Hydreigon     [208, 0, 247, 16]  no-KO used 247/263 =   94% ±  3 | KO-able passed 0/208 =  0.0% ± 0.0
+    mixed: kpr3 on the opponent  [262, 0, 76, 161]  no-KO used 76/237 =   32% ±  6 | KO-able passed 0/262 =  0.0% ± 0.0
+  all seven cells pooled (turns summed):
+    kp3 table                    no-KO used 217/1036 = 20.9% ± 2.5 | KO-able passed 88/2334 =  3.8% ± 0.9
+    kpr3 table                   no-KO used 1105/1227 = 90.1% ± 1.7 | KO-able passed 38/2434 =  1.6% ± 0.6
+    mixed: kpr3 on Hydreigon     no-KO used 1024/1131 = 90.5% ± 1.8 | KO-able passed 36/2478 =  1.5% ± 0.6
+    mixed: kpr3 on the opponent  no-KO used 231/1105 = 20.9% ± 2.5 | KO-able passed 67/2320 =  2.9% ± 0.8
+
+  Hydreigon's own score change per cell against its no-KO Hyper Ray use change (table; and mixed own side):
+    v altaria   table: use +83.0 pts, Hydreigon  +7.8 ± 5.1 | own side only: use +90.4 pts, Hydreigon  +4.2 ± 4.1
+    v blaziken  table: use +66.7 pts, Hydreigon  -1.6 ± 4.9 | own side only: use +74.7 pts, Hydreigon  +1.2 ± 4.4
+    v lucario   table: use +89.9 pts, Hydreigon  +8.8 ± 4.8 | own side only: use +91.2 pts, Hydreigon  +7.8 ± 4.4
+    v sceptile  table: use +91.5 pts, Hydreigon  -3.6 ± 4.4 | own side only: use +90.5 pts, Hydreigon  -2.4 ± 4.0
+    v suicune   table: use +55.2 pts, Hydreigon  +9.4 ± 5.0 | own side only: use +53.3 pts, Hydreigon  +7.0 ± 4.6
+    v vespiquen table: use +68.7 pts, Hydreigon +15.8 ± 5.6 | own side only: use +69.3 pts, Hydreigon  +9.6 ± 5.0
+    v weezing   table: use +60.8 pts, Hydreigon  +4.0 ± 5.0 | own side only: use +60.2 pts, Hydreigon  -0.6 ± 4.7
+    correlation over the seven cells: table r = -0.24; mixed own side r = -0.14
+
+== G. Chase Order (Vespiquen's choice), per cell: discarded / offered, Combee discards; game-clustered 95% half-width
+  altaria v vespiquen
+    kp3 table                    discarded 286/525 = 54.5% ± 4.0  (Combee 47, Shuckle ex 185, Ogerpon ex 54)
+    kpr3 table                   discarded 332/524 = 63.4% ± 3.8  (Combee 76, Shuckle ex 188, Ogerpon ex 68)
+    mixed: kpr3 on Vespiquen     discarded 355/552 = 64.3% ± 3.7  (Combee 62, Shuckle ex 226, Ogerpon ex 67)
+    mixed: kpr3 on the opponent  discarded 291/515 = 56.5% ± 3.8  (Combee 58, Shuckle ex 167, Ogerpon ex 66)
+  blaziken v vespiquen
+    kp3 table                    discarded 131/316 = 41.5% ± 5.0  (Combee 30, Shuckle ex 65, Ogerpon ex 36)
+    kpr3 table                   discarded 161/375 = 42.9% ± 4.4  (Combee 50, Shuckle ex 75, Ogerpon ex 36)
+    mixed: kpr3 on Vespiquen     discarded 150/347 = 43.2% ± 4.5  (Combee 37, Shuckle ex 74, Ogerpon ex 39)
+    mixed: kpr3 on the opponent  discarded 142/339 = 41.9% ± 4.8  (Combee 34, Shuckle ex 74, Ogerpon ex 34)
+  hydreigon v vespiquen
+    kp3 table                    discarded 280/589 = 47.5% ± 3.1  (Combee 69, Shuckle ex 166, Ogerpon ex 45)
+    kpr3 table                   discarded 321/582 = 55.2% ± 3.2  (Combee 95, Shuckle ex 191, Ogerpon ex 35)
+    mixed: kpr3 on Vespiquen     discarded 340/641 = 53.0% ± 3.1  (Combee 88, Shuckle ex 199, Ogerpon ex 53)
+    mixed: kpr3 on the opponent  discarded 301/573 = 52.5% ± 3.1  (Combee 80, Shuckle ex 178, Ogerpon ex 43)
+  lucario v vespiquen
+    kp3 table                    discarded 210/366 = 57.4% ± 4.8  (Combee 48, Shuckle ex 112, Ogerpon ex 50)
+    kpr3 table                   discarded 268/387 = 69.3% ± 4.5  (Combee 67, Shuckle ex 147, Ogerpon ex 54)
+    mixed: kpr3 on Vespiquen     discarded 228/356 = 64.0% ± 4.9  (Combee 55, Shuckle ex 116, Ogerpon ex 57)
+    mixed: kpr3 on the opponent  discarded 236/401 = 58.9% ± 4.4  (Combee 59, Shuckle ex 139, Ogerpon ex 38)
+  sceptile v vespiquen
+    kp3 table                    discarded 606/686 = 88.3% ± 2.2  (Combee 116, Shuckle ex 364, Ogerpon ex 126)
+    kpr3 table                   discarded 715/782 = 91.4% ± 1.8  (Combee 113, Shuckle ex 446, Ogerpon ex 156)
+    mixed: kpr3 on Vespiquen     discarded 686/744 = 92.2% ± 1.8  (Combee 99, Shuckle ex 425, Ogerpon ex 162)
+    mixed: kpr3 on the opponent  discarded 631/726 = 86.9% ± 2.3  (Combee 118, Shuckle ex 398, Ogerpon ex 115)
+  suicune v vespiquen
+    kp3 table                    discarded 560/630 = 88.9% ± 2.2  (Combee 112, Shuckle ex 375, Ogerpon ex 73)
+    kpr3 table                   discarded 561/641 = 87.5% ± 2.4  (Combee 131, Shuckle ex 352, Ogerpon ex 78)
+    mixed: kpr3 on Vespiquen     discarded 544/613 = 88.7% ± 2.3  (Combee 125, Shuckle ex 349, Ogerpon ex 70)
+    mixed: kpr3 on the opponent  discarded 578/655 = 88.2% ± 2.3  (Combee 111, Shuckle ex 395, Ogerpon ex 72)
+  vespiquen v weezing
+    kp3 table                    discarded 298/398 = 74.9% ± 4.1  (Combee 38, Shuckle ex 192, Ogerpon ex 68)
+    kpr3 table                   discarded 410/471 = 87.0% ± 3.0  (Combee 56, Shuckle ex 269, Ogerpon ex 85)
+    mixed: kpr3 on Vespiquen     discarded 410/475 = 86.3% ± 3.1  (Combee 54, Shuckle ex 265, Ogerpon ex 91)
+    mixed: kpr3 on the opponent  discarded 325/428 = 75.9% ± 3.8  (Combee 43, Shuckle ex 216, Ogerpon ex 66)
+  all seven cells pooled:
+    kp3 table                    choices 3,510; discarded 2,371 = 67.5% ± 1.5; Combee 460 (13.1% of choices ± 1.1)
+    kpr3 table                   choices 3,762; discarded 2,768 = 73.6% ± 1.4; Combee 588 (15.6% of choices ± 1.1)
+    mixed: kpr3 on Vespiquen     choices 3,728; discarded 2,713 = 72.8% ± 1.4; Combee 520 (13.9% of choices ± 1.1)
+    mixed: kpr3 on the opponent  choices 3,637; discarded 2,504 = 68.8% ± 1.5; Combee 503 (13.8% of choices ± 1.0)
+
+== H. counters the per-game files carry: hyper_ray, chase_order only (no Diving Icicles, Mega Burning, Terminating Tail or attach-Ability counters)

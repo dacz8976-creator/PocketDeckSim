@@ -1,0 +1,13 @@
+﻿reference tables: {'k3': '14,000 games', 'kp3': '14,000 games', 'kq3': '14,000 games', 'kd3': '14,000 games', 'kpr3': '14,000 games'}
+  cloud identity_k3_500.jsonl                14,000 of 14,000 identical to the k3 table (28 pairings, deals 0-499; also compared: {'hyper_ray (both carry)': [2414, 2414], 'chase_order only in replay': 2022})
+  cloud identity_kp3_500.jsonl               14,000 of 14,000 identical to the kp3 table (28 pairings, deals 0-499; also compared: {'hyper_ray (both carry)': [1956, 1956], 'chase_order only in replay': 2083})
+  cloud identity_kq3_500.jsonl               14,000 of 14,000 identical to the kq3 table (28 pairings, deals 0-499; also compared: {'hyper_ray (both carry)': [1914, 1914], 'chase_order only in replay': 1879})
+  cloud identity_kd3_40.jsonl                1,120 of 1,120 identical to the kd3 table (28 pairings, deals 0-39; also compared: {'hyper_ray (both carry)': [151, 151], 'chase_order (both carry)': [155, 155]})
+  cloud table_commit_identity_k3_40.jsonl    1,120 of 1,120 identical to the k3 table (28 pairings, deals 0-39; also compared: {'hyper_ray (both carry)': [192, 192], 'chase_order only in replay': 160})
+  cloud table_commit_identity_kp3_40.jsonl   1,120 of 1,120 identical to the kp3 table (28 pairings, deals 0-39; also compared: {'hyper_ray (both carry)': [163, 163], 'chase_order only in replay': 180})
+  cloud table_commit_identity_kq3_40.jsonl   1,120 of 1,120 identical to the kq3 table (28 pairings, deals 0-39; also compared: {'hyper_ray (both carry)': [158, 158], 'chase_order only in replay': 155})
+  laptop spot_kp3_p0-2.jsonl                 1,500 of 1,500 identical to the kp3 table (3 pairings; also compared: {'hyper_ray (both carry)': [282, 282]})
+  laptop kpr3_replay_p1.jsonl                500 of 500 identical to the kpr3 table (1 pairings; also compared: {'hyper_ray (both carry)': [287, 287]})
+  byte-identical? cloud identity_kp3_500.jsonl vs engine_identity_2026-09-25/kp3_500.jsonl: True
+  laptop scan identity.txt: legality_scan 3133ebaa53a996bc9f025dbb5afdfc27e4afd2fb80940873abe0341b3e07564b  (built from e09fb46)
+  kpr3 table sha256: 19b95ae0f8849c815cb8b82158441a4bd8b2216f89d162d9466d1d02f9a5bde0

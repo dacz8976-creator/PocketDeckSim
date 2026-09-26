@@ -1,0 +1,94 @@
+﻿inputs: kp3 14000 games, kpr3 14000, k3 14000; v2 cells 28, 1608 matches; events 58
+== scoreboard v2, decision set: 27 cells, kpr3 against kp3
+     k3: MSE  177.5 | tau 10.93 | favorites right 22/27 | correlation 0.64 | mean |miss| 10.39
+         PASS (b) cells over by >10 beyond noise: hydreigon v lucario, sceptile v vespiquen, suicune v vespiquen | (c) decks off by >6: altaria, hydreigon, sceptile, vespiquen
+    kp3: MSE  131.7 | tau  8.57 | favorites right 20/27 | correlation 0.71 | mean |miss| 9.26
+         PASS (b) cells over by >10 beyond noise: sceptile v vespiquen | (c) decks off by >6: sceptile, vespiquen
+   kpr3: MSE  206.4 | tau 12.18 | favorites right 15/27 | correlation 0.50 | mean |miss| 11.86
+         PASS (b) cells over by >10 beyond noise: hydreigon v suicune, sceptile v vespiquen | (c) decks off by >6: altaria, hydreigon, sceptile, vespiquen
+  dMSE kpr3 - kp3: +74.7; 95% binomial +27.9 to +123.2; by event +28.9 to +124.9 (0 event draws redrawn)
+  tau margin kp3 - kpr3: -3.60; 90% binomial -4.35 to -1.41; by event -4.32 to -1.56
+== scoreboard v2, all 28: 28 cells, kpr3 against kp3
+     k3: MSE  173.2 | tau 10.78 | favorites right 23/28 | correlation 0.64 | mean |miss| 10.29
+         PASS (b) cells over by >10 beyond noise: hydreigon v lucario, sceptile v vespiquen, suicune v vespiquen | (c) decks off by >6: altaria, hydreigon, sceptile, vespiquen
+    kp3: MSE  127.2 | tau  8.37 | favorites right 21/28 | correlation 0.72 | mean |miss| 9.02
+         PASS (b) cells over by >10 beyond noise: sceptile v vespiquen | (c) decks off by >6: sceptile, vespiquen
+   kpr3: MSE  199.3 | tau 11.92 | favorites right 16/28 | correlation 0.51 | mean |miss| 11.53
+         PASS (b) cells over by >10 beyond noise: hydreigon v suicune, sceptile v vespiquen | (c) decks off by >6: altaria, hydreigon, sceptile, vespiquen
+  dMSE kpr3 - kp3: +72.1; 95% binomial +26.7 to +119.2; by event +27.4 to +119.8 (0 event draws redrawn)
+  tau margin kp3 - kpr3: -3.55; 90% binomial -4.27 to -1.38; by event -4.26 to -1.53
+== Sept 23 cells, decision set: 27 cells, kpr3 against kp3
+     k3: MSE  160.6 | tau 11.49 | favorites right 22/27 | correlation 0.66 | mean |miss| 9.60
+         PASS (b) cells over by >10 beyond noise: blaziken v sceptile, hydreigon v lucario, sceptile v vespiquen, suicune v vespiquen | (c) decks off by >6: altaria, hydreigon, sceptile, vespiquen
+    kp3: MSE  115.1 | tau  9.30 | favorites right 20/27 | correlation 0.74 | mean |miss| 7.97
+         PASS (b) cells over by >10 beyond noise: sceptile v vespiquen | (c) decks off by >6: sceptile, vespiquen
+   kpr3: MSE  181.6 | tau 12.37 | favorites right 15/27 | correlation 0.56 | mean |miss| 10.44
+         PASS (b) cells over by >10 beyond noise: altaria v blaziken, sceptile v vespiquen, suicune v vespiquen | (c) decks off by >6: altaria, hydreigon, sceptile, vespiquen
+  dMSE kpr3 - kp3: +66.5; 95% binomial +31.3 to +102.1
+  tau margin kp3 - kpr3: -3.07; 90% binomial -3.90 to -1.57
+== Sept 23 cells, all 28: 28 cells, kpr3 against kp3
+     k3: MSE  159.5 | tau 11.46 | favorites right 23/28 | correlation 0.66 | mean |miss| 9.66
+         PASS (b) cells over by >10 beyond noise: blaziken v sceptile, hydreigon v lucario, sceptile v vespiquen, suicune v vespiquen | (c) decks off by >6: altaria, hydreigon, sceptile, vespiquen
+    kp3: MSE  112.4 | tau  9.17 | favorites right 21/28 | correlation 0.74 | mean |miss| 7.91
+         PASS (b) cells over by >10 beyond noise: sceptile v vespiquen | (c) decks off by >6: sceptile, vespiquen
+   kpr3: MSE  176.5 | tau 12.18 | favorites right 16/28 | correlation 0.55 | mean |miss| 10.29
+         PASS (b) cells over by >10 beyond noise: altaria v blaziken, sceptile v vespiquen, suicune v vespiquen | (c) decks off by >6: altaria, hydreigon, sceptile, vespiquen
+  dMSE kpr3 - kp3: +64.1; 95% binomial +30.4 to +98.5
+  tau margin kp3 - kpr3: -3.00; 90% binomial -3.83 to -1.51
+== scoreboard v2, decision set, against k3: 27 cells, kpr3 against k3
+     k3: MSE  177.5 | tau 10.93 | favorites right 22/27 | correlation 0.64 | mean |miss| 10.39
+         PASS (b) cells over by >10 beyond noise: hydreigon v lucario, sceptile v vespiquen, suicune v vespiquen | (c) decks off by >6: altaria, hydreigon, sceptile, vespiquen
+    kp3: MSE  131.7 | tau  8.57 | favorites right 20/27 | correlation 0.71 | mean |miss| 9.26
+         PASS (b) cells over by >10 beyond noise: sceptile v vespiquen | (c) decks off by >6: sceptile, vespiquen
+   kpr3: MSE  206.4 | tau 12.18 | favorites right 15/27 | correlation 0.50 | mean |miss| 11.86
+         PASS (b) cells over by >10 beyond noise: hydreigon v suicune, sceptile v vespiquen | (c) decks off by >6: altaria, hydreigon, sceptile, vespiquen
+  dMSE kpr3 - k3: +28.9; 95% binomial -44.9 to +103.6; by event -36.7 to +95.2 (0 event draws redrawn)
+  tau margin k3 - kpr3: -1.25; 90% binomial -3.26 to +1.24; by event -3.02 to +0.99
+== scoreboard v2, decision set, kp3 against k3 (for 'kp3 was -45.8'): 27 cells, kp3 against k3
+     k3: MSE  177.5 | tau 10.93 | favorites right 22/27 | correlation 0.64 | mean |miss| 10.39
+         PASS (b) cells over by >10 beyond noise: hydreigon v lucario, sceptile v vespiquen, suicune v vespiquen | (c) decks off by >6: altaria, hydreigon, sceptile, vespiquen
+    kp3: MSE  131.7 | tau  8.57 | favorites right 20/27 | correlation 0.71 | mean |miss| 9.26
+         PASS (b) cells over by >10 beyond noise: sceptile v vespiquen | (c) decks off by >6: sceptile, vespiquen
+   kpr3: MSE  206.4 | tau 12.18 | favorites right 15/27 | correlation 0.50 | mean |miss| 11.86
+         PASS (b) cells over by >10 beyond noise: hydreigon v suicune, sceptile v vespiquen | (c) decks off by >6: altaria, hydreigon, sceptile, vespiquen
+  dMSE kp3 - k3: -45.8; 95% binomial -103.1 to +9.8; by event -101.9 to +6.9 (0 event draws redrawn)
+  tau margin k3 - kp3: +2.36; 90% binomial -0.02 to +3.82; by event +0.06 to +3.74
+== Sept 23 cells rounded to one decimal, all 28: MSE k3 159.3, kp3 112.2, kpr3 176.1
+== v2 decision set: cells (kp3 | kpr3 | Limitless +/- 95% | change in miss)
+    altaria v blaziken    58.6 |  52.6 |  76.5 +/- 14.3 | +6.00
+    altaria v hydreigon   47.6 |  39.8 |  54.5 +/- 13.0 | +7.80  CELL VETO CANDIDATE
+    altaria v lucario     62.4 |  58.8 |  72.4 +/-  6.9 | +3.60
+    altaria v suicune     48.8 |  42.2 |  56.2 +/- 12.1 | +6.60  CELL VETO CANDIDATE
+    altaria v vespiquen   47.4 |  50.4 |  37.6 +/-  9.8 | +3.00
+    altaria v weezing     40.4 |  40.4 |  33.0 +/- 13.4 | +0.00
+   blaziken v hydreigon   48.0 |  49.6 |  66.7 +/- 18.9 | -1.60
+   blaziken v lucario     45.1 |  56.0 |  40.7 +/- 12.5 | +10.90  CELL VETO CANDIDATE
+   blaziken v sceptile    65.1 |  63.0 |  76.1 +/- 17.4 | +2.10
+   blaziken v suicune     59.6 |  62.2 |  64.3 +/- 20.5 | -2.60
+   blaziken v vespiquen   81.4 |  80.5 |  79.0 +/- 14.3 | -0.90
+   blaziken v weezing     48.4 |  60.1 |  41.2 +/- 23.4 | +11.70  CELL VETO CANDIDATE
+  hydreigon v lucario     43.8 |  52.6 |  63.6 +/- 12.7 | -8.80
+  hydreigon v sceptile    43.6 |  40.0 |  40.0 +/- 16.2 | -3.60
+  hydreigon v suicune     46.4 |  55.8 |  30.0 +/- 15.2 | +9.40  CELL VETO CANDIDATE
+  hydreigon v vespiquen   41.0 |  56.8 |  36.8 +/- 15.3 | +15.80  CELL VETO CANDIDATE
+  hydreigon v weezing     52.8 |  56.8 |  45.8 +/- 19.9 | +4.00
+    lucario v sceptile    35.6 |  38.6 |  39.5 +/-  9.0 | -3.00
+    lucario v suicune     58.8 |  49.6 |  58.8 +/- 10.5 | +9.20  CELL VETO CANDIDATE
+    lucario v vespiquen   68.2 |  68.8 |  69.6 +/-  8.7 | -0.60
+    lucario v weezing     52.8 |  55.8 |  61.5 +/- 10.8 | -3.00
+   sceptile v suicune     60.6 |  62.6 |  50.0 +/- 13.6 | +2.00
+   sceptile v vespiquen   64.4 |  66.6 |  35.7 +/- 12.5 | +2.20
+   sceptile v weezing     70.0 |  69.2 |  68.1 +/- 15.2 | -0.80
+    suicune v vespiquen   43.0 |  49.6 |  28.5 +/- 10.4 | +6.60  CELL VETO CANDIDATE
+    suicune v weezing     56.5 |  65.0 |  60.3 +/- 15.4 | +0.99
+  vespiquen v weezing     65.9 |  72.7 |  83.7 +/- 11.0 | -6.80
+  (quarantined) altaria v sceptile  42.8 |  42.8 |  45.4 +/-  9.4
+== v2 decision set: deck averages kp3 / kpr3 / Limitless, gap change
+    altaria:  50.9 /  47.4 /  55.0  +3.50  DECK VETO CANDIDATE
+   blaziken:  55.6 /  59.8 /  55.9  +3.56  DECK VETO CANDIDATE
+  hydreigon:  47.4 /  53.2 /  42.2  +5.80  DECK VETO CANDIDATE
+    lucario:  52.0 /  49.3 /  50.4  -0.56
+   sceptile:  58.4 /  59.5 /  49.7  +1.02
+    suicune:  46.5 /  48.9 /  47.1  +1.22
+  vespiquen:  45.8 /  42.9 /  56.6  +2.93  DECK VETO CANDIDATE
+    weezing:  44.7 /  40.0 /  43.8  +2.81  DECK VETO CANDIDATE

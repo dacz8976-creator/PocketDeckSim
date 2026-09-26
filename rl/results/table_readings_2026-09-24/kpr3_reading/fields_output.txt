@@ -1,0 +1,22 @@
+﻿public_pricing_2026-09-25\kp3_500_worst5.jsonl
+  2500 games; fields: a (2500), b (2500), bot_a (2500), bot_b (2500), first_deck_score (2500), first_seat (2500), hyper_ray (252), i (2500), moves (2500), pairing (2500), points (2500), seed (2500), turns (2500), winner_seat (2500)
+  example hyper_ray: ('hydreigon', 'lucario', 0, [3, 0, 0, 0])
+public_pricing_2026-09-25\kp3_500_rest.jsonl
+  11500 games; fields: a (11500), b (11500), bot_a (11500), bot_b (11500), first_deck_score (11500), first_seat (11500), hyper_ray (1704), i (11500), moves (11500), pairing (11500), points (11500), seed (11500), turns (11500), winner_seat (11500)
+  example hyper_ray: ('altaria', 'hydreigon', 0, [2, 0, 0, 0])
+C:\Users\dacz8\AppData\Local\Temp\claude\C--Users-dacz8-Projects\1b119d13-736d-4588-ba63-0e9ef1756970\scratchpad\branch\kpr3_500.jsonl
+  14000 games; fields: a (14000), b (14000), bot_a (14000), bot_b (14000), chase_order (2254), first_deck_score (14000), first_seat (14000), hyper_ray (2164), i (14000), moves (14000), pairing (14000), points (14000), seed (14000), turns (14000), winner_seat (14000)
+  example hyper_ray: ('altaria', 'hydreigon', 1, [3, 0, 0, 0])
+  example chase_order: ('altaria', 'vespiquen', 4, {'discarded': 1, 'names': {'Combee': 1}, 'offered': 1})
+kpr_mixed_rows_2026-09-26\mixed_kpr3_first.jsonl
+  14000 games; fields: a (14000), b (14000), bot_a (14000), bot_b (14000), chase_order (2198), first_deck_score (14000), first_seat (14000), hyper_ray (2077), i (14000), moves (14000), pairing (14000), points (14000), seed (14000), turns (14000), winner_seat (14000)
+  example hyper_ray: ('altaria', 'hydreigon', 0, [1, 0, 0, 0])
+  example chase_order: ('altaria', 'vespiquen', 4, {'discarded': 0, 'names': {}, 'offered': 2})
+kpr_mixed_rows_2026-09-26\mixed_kpr3_second.jsonl
+  14000 games; fields: a (14000), b (14000), bot_a (14000), bot_b (14000), chase_order (2200), first_deck_score (14000), first_seat (14000), hyper_ray (2011), i (14000), moves (14000), pairing (14000), points (14000), seed (14000), turns (14000), winner_seat (14000)
+  example hyper_ray: ('altaria', 'hydreigon', 1, [3, 0, 0, 0])
+  example chase_order: ('altaria', 'vespiquen', 0, {'discarded': 1, 'names': {'Shuckle ex': 1}, 'offered': 1})
+chase_order_2026-09-25\kp3_vespiquen.jsonl
+  3500 games; fields: a (3500), b (3500), bot_a (3500), bot_b (3500), chase_order (2083), first_deck_score (3500), first_seat (3500), hyper_ray (304), i (3500), moves (3500), pairing (3500), points (3500), seed (3500), turns (3500), winner_seat (3500)
+  example chase_order: ('altaria', 'vespiquen', 1, {'discarded': 1, 'names': {'Shuckle ex': 1}, 'offered': 1})
+  example hyper_ray: ('hydreigon', 'vespiquen', 2, [2, 0, 0, 0])
