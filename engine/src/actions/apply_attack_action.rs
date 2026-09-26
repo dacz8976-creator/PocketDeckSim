@@ -3522,11 +3522,12 @@ fn coin_flip_no_damage_or_damage_and_card_effect_attack(
     )
 }
 
-/// Discard all energy from this Pokemon
+/// Discard all energy from this Pokemon, into the discard pile like any other discard (rules/09: clearing the
+/// Energy without adding it to `discard_energies` left Volkner, Flame Patch, Dragon's Blessing and the rest short).
 fn damage_and_discard_all_energy(damage: u32) -> AttackOutcomes {
     active_damage_effect_doutcome(damage, move |_, state, action| {
-        let active = state.get_active_mut(action.actor);
-        active.attached_energy.clear(); // Discard all energy
+        let energies = state.get_active(action.actor).attached_energy.clone();
+        state.discard_from_active(action.actor, &energies);
     })
 }
 

@@ -138,6 +138,29 @@ fn helmet_hit(player0: Vec<PlayedCard>, player1: Vec<PlayedCard>, plaza: bool, t
     before - game.get_state_clone().in_play_pokemon[0][target_idx].as_ref().unwrap().get_remaining_hp()
 }
 
+/// rules/09 (laptop recordings check, 2026-09-25): "Discard all Energy from this Pokémon" puts the Energy in the
+/// discard pile, where Volkner, Flame Patch, Dragon's Blessing and the rest read it.
+#[test]
+fn hyper_ray_puts_the_discarded_energy_in_the_discard_pile() {
+    let energy = vec![EnergyType::Darkness, EnergyType::Darkness, EnergyType::Darkness, EnergyType::Colorless];
+    let mut game = get_test_game_with_board(
+        vec![PlayedCard::from_id(CardId::B1157Hydreigon).with_energy(energy.clone())],
+        vec![PlayedCard::from_id(CardId::A1055Blastoise)],
+    );
+    let mut state = game.get_state_clone();
+    state.discard_energies[0].clear();
+    game.set_state(state);
+    game.apply_action(&Action { actor: 0, action: attack_action(CardId::B1157Hydreigon, 0), is_stack: false });
+    let state = game.get_state_clone();
+    assert!(state.get_active(0).attached_energy.is_empty());
+    assert_eq!(state.get_active(1).get_remaining_hp(), 20, "Hyper Ray still does 130");
+    let mut discarded = state.discard_energies[0].clone();
+    discarded.sort_by_key(|e| format!("{e:?}"));
+    let mut expected = energy;
+    expected.sort_by_key(|e| format!("{e:?}"));
+    assert_eq!(discarded, expected);
+}
+
 #[test]
 fn heavy_helmet_reads_the_current_retreat_cost_where_the_holder_sits() {
     let helmet = |id| PlayedCard::from_id(id).with_tool(get_card_by_enum(CardId::B1219HeavyHelmet));
