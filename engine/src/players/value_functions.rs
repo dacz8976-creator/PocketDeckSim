@@ -249,6 +249,23 @@ pub fn public_clock_effect_kpr_value_function(state: &State, myself: usize) -> f
     )
 }
 
+/// The `koa` tier (players/mod.rs `KOA`, piloted like `kp`): `k`'s evaluator plus switch A of the opening-Active
+/// candidate in the setup evaluation (registered Sept 26, `rl/results/opening_active_census_2026-09-26/REGISTRATION.md`).
+/// Nothing outside turn 0 changes.
+pub fn public_clock_effect_koa_value_function(state: &State, myself: usize) -> f64 {
+    parametric_value_function_ex6(state, myself, &ValueFunctionParams::baseline(), true, false, true, true, false, EvalFeatures::KOA)
+}
+
+/// The `kob` diagnostic: `koa` with switch B in place of A. Mixed rows only; not registered for adoption.
+pub fn public_clock_effect_kob_value_function(state: &State, myself: usize) -> f64 {
+    parametric_value_function_ex6(state, myself, &ValueFunctionParams::baseline(), true, false, true, true, false, EvalFeatures::KOB)
+}
+
+/// The `kor` diagnostic: `koa` with switch R in place of A. Mixed rows only; not registered for adoption.
+pub fn public_clock_effect_kor_value_function(state: &State, myself: usize) -> f64 {
+    parametric_value_function_ex6(state, myself, &ValueFunctionParams::baseline(), true, false, true, true, false, EvalFeatures::KOR)
+}
+
 /// Weight of [`best_benched_attacker_online_score`] in `kq`: half the Active online score's 500 in
 /// [`ValueFunctionParams::baseline`]. Pre-set before any A/B and not tuned on the table.
 pub const KQ_BENCH_ATTACKER_WEIGHT: f64 = 250.0;
@@ -267,6 +284,11 @@ struct EvalFeatures {
     /// kpr: the Active online score and the damage-aware clock count the Energy each Active will have at its next
     /// attack ([`projected_active_energy`]), not only the Energy attached now.
     projected_readiness: bool,
+    /// koa (switch A), kob (switch B), kor (switch R): the opening-Active term in the setup evaluation
+    /// ([`super::opening_class::opening_active_term`]). Read only while the opponent's setup is masked.
+    opening_first_turn_active: bool,
+    opening_bench_working: bool,
+    opening_readiness: bool,
 }
 
 impl EvalFeatures {
@@ -275,25 +297,44 @@ impl EvalFeatures {
         bench_attacker_weight: 0.0,
         defender_modifiers: false,
         projected_readiness: false,
+        opening_first_turn_active: false,
+        opening_bench_working: false,
+        opening_readiness: false,
     };
     const KQ: EvalFeatures = EvalFeatures {
         next_attack_reduction: true,
         bench_attacker_weight: KQ_BENCH_ATTACKER_WEIGHT,
         defender_modifiers: false,
         projected_readiness: false,
+        opening_first_turn_active: false,
+        opening_bench_working: false,
+        opening_readiness: false,
     };
     const KD: EvalFeatures = EvalFeatures {
         next_attack_reduction: false,
         bench_attacker_weight: 0.0,
         defender_modifiers: true,
         projected_readiness: false,
+        opening_first_turn_active: false,
+        opening_bench_working: false,
+        opening_readiness: false,
     };
     const KPR: EvalFeatures = EvalFeatures {
         next_attack_reduction: false,
         bench_attacker_weight: 0.0,
         defender_modifiers: false,
         projected_readiness: true,
+        opening_first_turn_active: false,
+        opening_bench_working: false,
+        opening_readiness: false,
     };
+    const KOA: EvalFeatures = EvalFeatures { opening_first_turn_active: true, ..EvalFeatures::OFF };
+    const KOB: EvalFeatures = EvalFeatures { opening_bench_working: true, ..EvalFeatures::OFF };
+    const KOR: EvalFeatures = EvalFeatures { opening_readiness: true, ..EvalFeatures::OFF };
+
+    fn any_opening_switch(&self) -> bool {
+        self.opening_first_turn_active || self.opening_bench_working || self.opening_readiness
+    }
 }
 
 /// s118 - the `t` tier. The s115 change with ONLY its threat-clock half enabled: the
@@ -500,7 +541,7 @@ fn parametric_value_function_ex6(
             calculate_pokemon_value(state, myself, 1.0)
         };
         let (online, distance) = calculate_online_metrics(state, myself, 1.0);
-        return pokemon_value * params.pokemon_value
+        let setup_score = pokemon_value * params.pokemon_value
             + state.hands[myself].len() as f64 * params.hand_size
             - state.decks[myself].cards.len() as f64 * params.deck_size
             - get_active_retreat_cost(state, myself, public_eval) as f64 * params.active_retreat_cost
@@ -515,6 +556,19 @@ fn parametric_value_function_ex6(
             + calculate_active_safety(state, myself) * params.active_safety
             + online * params.online_pokemon_count
             + distance * params.energy_distance_to_online;
+        // koa, kob, kor: the opening-Active term. Every other tier skips it, so its setup score is untouched.
+        return if features.any_opening_switch() {
+            setup_score
+                + super::opening_class::opening_active_term(
+                    state,
+                    myself,
+                    features.opening_first_turn_active,
+                    features.opening_bench_working,
+                    features.opening_readiness,
+                )
+        } else {
+            setup_score
+        };
     }
     let opponent = (myself + 1) % 2;
     let (my, opp) = (
