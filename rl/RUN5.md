@@ -370,7 +370,9 @@ sides with k3 still available; the 0.7.2 wheel and its run identities are untouc
    Limitless); B3 features then a Texel fit (Weakness, status, the three B2c habits), judged by the adoption rule and
    the held-out decks, then left alone; B4 Dustin's one-hour blind quiz on decisive positions, then about ten saved
    games with the sequential stopping rule, the bot on the archetype's list and never his exact list; B5 blind-spot
-   fixes under the card-agnostic rule, each with a paired A/B and the sentinels; B6 done (skill explains under 0.6 of
+   fixes under the card-agnostic rule, each with a paired A/B and the sentinels (queued classes, Sept 26: Tools and
+   turn effects (`kt`); Trainer pricing, shown early by the gauntlet's variation check, where one swapped Trainer moved a
+   deck 4 to 7 points on average, Team Rocket's Boss especially; discard-cost attacks and discard-pile Energy (`kpf`)); B6 done (skill explains under 0.6 of
    any gap; Sceptile v Vespiquen out of quarantine as drift-sensitive, Altaria v Sceptile in); B7 not now, gated by
    the cloud transfer probe or three card-patch entries in B5's log.
 4. Not doing: policy networks trained on who won as the pilot (one network per mispiloted deck as a blind-spot
@@ -389,6 +391,17 @@ sides with k3 still available; the 0.7.2 wheel and its run identities are untouc
   direction (Dustin, Sept 25): on the holdout alone, the τ̂ margin must be at least half the development half's and its
   own 90% interval must lie above zero; the pooled interval and the sign are reported beside it but cannot confirm on
   their own.
+- **A "not adopted" is provisional until the coverage decks are read** (Dustin, Sept 26 evening, registered as a rule).
+  - It has happened twice:
+    - kp3 was vetoed, then found to be the fix.
+    - kpr3 was "not adopted" on the 28 cells on Sept 26. On the 17 new scoreboard cells it was then the best pilot by a wide margin and the only one that plays Rayquaza (`results/gauntlet_runs_2026-09-26/`).
+    - Both times the meta table couldn't see what the fix did.
+  - So a scoreboard "not adopted" stands only once the candidate has also been read on the gauntlet's coverage decks: the new scoreboard decks, the held-out archetypes and the coverage rows.
+  - A candidate can be reopened by coverage evidence, and that does not count as moving the goalposts.
+  - Reopening means a new reading under the rules in force. It never re-reads an old reading until it passes.
+- **Development data, stated with each reading:**
+  - Cells used to diagnose a problem or design a candidate are development data for that candidate.
+  - For the 17 new scoreboard cells (used Sept 26 to diagnose Rayquaza and design `kpf`), the holdout is Limitless events after the freeze date, not a split of the 17.
 - **Reserve route for a change the table can barely see** (Dustin, Sept 26: "approved as sharpened").
   - Its clauses (a) to (e) and the closure sentence are as fixed in section 8 of `docs/REVIEW_2026-09-24_direction.md` (line 130), including that the gain must show on at least one deck that isn't Dustin's.
   - The route is chosen by the footprint measured on the table, read before anything else; under 15% it applies, otherwise the ordinary adoption rule does.
