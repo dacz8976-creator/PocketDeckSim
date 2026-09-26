@@ -175,7 +175,11 @@ Dustin's decisions, in the order they block things:
   - The rule going forward: **"his decks" means only the files he gave the project** (`decks/dustin/` and the brews built with him). A Limitless archetype that shares some Pokémon with one of them is still a non-Dustin deck.
   - **Dustin's follow-up:** "if my deck matches a limitless deck, that doesn't mean you shouldn't test it. This argues for a broader test group after repairs, not restriction."
     - Nothing is excluded from testing because it matches his decks. Clause (d) asks only that the gain also show on a real Limitless list, not on his own files alone.
-    - A broader standard test group after the engine repairs is proposed to him in the chat.
+    - **A broader standard test group after the engine repairs: approved.** Dustin: "Yes. In the past we used a 'gauntlet' consisting of the most used limitless decks, at least one of every energy type. Smaller tests for finding and repairing bugs, then a larger test for changes to the engine."
+      - The gauntlet is the 8 table decks, the 6 held-out archetypes against them, Dustin's matching files reported beside, and additions until every Energy type is covered. The additions are proposed in `rl/results/gauntlet_proposal_2026-09-26/`, for his OK.
+      - koa's registration takes the held-out part as amendment 1, before any koa game.
+      - RUN5's rules carry the test groups.
+    - **Decks aren't fixed lists:** Limitless archetypes cover variations, and players swap Trainers (game8 and other sites list alternatives). The gauntlet proposal reports each archetype's Trainer variation.
   - So the reserve route's (d) is open for kt's switch 1 with Dragonair Mega Rayquaza ex (135 of 143 development lists carry Gouging Fire; `rl/results/kt_carrier_census_2026-09-26/README.md`), as well as with Suicune under ruling (ii).
 - **koa: registered.** "Register the draft." `rl/results/opening_active_census_2026-09-26/REGISTRATION.md`, from the reviewed draft d7dbfb2.
   - The route is fixed by koa's measured table footprint: predicted 6.0%; under 15% the reserve route, else the ordinary rule.

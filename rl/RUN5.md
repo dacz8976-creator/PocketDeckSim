@@ -398,6 +398,11 @@ sides with k3 still available; the 0.7.2 wheel and its run identities are untouc
     - An archetype he also plays still qualifies. "His decks" means the files he gave the project (`decks/dustin/` and the brews built with him).
     - So Dragonair Mega Rayquaza ex can serve for kt's switch 1, and his own files and the held-out archetypes that match them (B2e) are tested and reported too.
   - Registered under it so far: `koa` (`rl/results/opening_active_census_2026-09-26/REGISTRATION.md`).
+- **Test groups** (Dustin, Sept 26: "Smaller tests for finding and repairing bugs, then a larger test for changes to the engine").
+  - **Small tests find and repair bugs:** identity replays, spot replays, card checks, footage checks.
+  - **The gauntlet is for engine and pilot changes.** It is the most-used Limitless decks, with at least one deck of every Energy type. It starts with the 8 table decks (28 pairings), plus the 6 held-out tournament archetypes against the 8 (B2e, 48 pairings, read in every candidate's reading, not only as the veto), plus Dustin's own files in those archetypes, reported beside and not counted for adoption. Archetypes are added until every Energy type is covered; the proposal is in `rl/results/gauntlet_proposal_2026-09-26/`, for Dustin's OK on the additions.
+  - This is the standard after the engine repairs land, when kp3's reference is regenerated anyway (Dustin, Sept 26).
+  - **Decks aren't fixed lists** (Dustin: "the limitless decks cover variations of the same archetypes ... often recommendations/alternative cards you can use for the same deck. Usually just different trainers"). A test list stands for its archetype's usual list, and the proposal reports how much each archetype's Trainers vary. A result that hangs on one exact flex card is read with that in mind.
 - Variants and process: whole table paired by deal, never the five worst cells; τ̂ margin E = 3 with the 90% interval,
   doubling deals to 2,000 when undecided; every experiment names the decision it changes; two review tiers (engine
   rules, the scoreboard tool and any pilot adopted or played by Dustin get a second reader; diagnostics none); one

@@ -16,6 +16,13 @@
   - **Altaria's seven real Limitless cells, before and after, are read beside (d).** Dustin: the gain "can be checked against Limitless directly". They are reported with the prediction that they move toward Limitless, alongside (b)'s τ̂ margin, which already reads Limitless for the whole table. They are not a separate gate.
   - **Switch A alone (`koa`) is the one candidate.** Switches B and R stay diagnostics (`kob`, `kor`), not registered for adoption.
 - **Who builds:** the cloud session, which owns player code, from this file. The laptop runs the tables, mixed rows and readings.
+- **Amendment 1 (Sept 26, before any game or build of `koa`; Dustin's word in the laptop chat): the broader test group.**
+  - `koa` is also read on the 6 held-out tournament archetypes against the 8 panel lists (B2e's 48 archetype pairings: `rl/results/b2e_card_check_2026-09-26/b2e_pairings.tsv`, pairings 0-47, the same deals and seeds as B2e), with `koa` on both sides against kp3's B2e rows (`rl/results/b2e_rows_2026-09-26/b2e_kp3_arch.jsonl`).
+  - Dustin's 6 files in those archetypes (pairings 48-95) are reported beside and not counted.
+  - What is read: RUN5's held-out veto (no held-out archetype more than 2 further from pooled Limitless than under kp3; the baseline is B2e's table) and each held-out archetype's score change, reported.
+  - The prediction: `koa` changes an opening only where Altaria's list or deck 15 is piloted. In these pairings the held decks never open differently, and their games against the panel's Altaria move only through Altaria's own openings. So the held-out changes should sit within noise, except the Altaria cells, which should move the held deck's score down slightly as Altaria improves.
+  - The base is the same as section 2's: if the repaired engine is the base, B2e's rows are regenerated there first.
+  - Gauntlet additions Dustin approves later are added by a further dated amendment before the table they belong to.
 - **Where the numbers come from.** Every number below is from `README.md`, `census.json` and `limitless_carriers.md` / `.json` in this folder. No game was played to make any of them.
   - census.py was checked by check_census.py and by a second read the same day. That read (README section 9) corrected the Suicune `kor` transition in section 5.
   - The rule check behind "0 contradictions in 220 informative games" is `rule_check.py`, with its output in `rule_check_output.txt` and in `census.json` → `validation` → `altaria (kp3 probe, B2c Sept 26)` → `rule_check`.
