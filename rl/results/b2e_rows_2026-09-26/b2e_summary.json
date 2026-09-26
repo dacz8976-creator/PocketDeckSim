@@ -1,0 +1,3903 @@
+{
+ "a2_bar": {
+  "inside": 2,
+  "line": "A2 bar line: 2 of 6 archetype lists inside their pooled interval under kp3; not every one lands inside.",
+  "of": 6,
+  "verdicts": {
+   "charizardy_entei": "inside",
+   "garchomp": "outside",
+   "hoopa_absol": "outside",
+   "manectric": "outside",
+   "raticate": "outside",
+   "whimsicott": "inside"
+  }
+ },
+ "binary_sha256": "45ecfda47cf4ccb4d12494f9b1a59954db1c357413f7ab4edabc372327e53b5b",
+ "decks": {
+  "charizardy_entei": {
+   "cells": {
+    "altaria": {
+     "archetype_list": {
+      "k3": {
+       "L": 218,
+       "T": 13,
+       "W": 269,
+       "band": 4.359834855587996,
+       "n": 500,
+       "pct": 55.1,
+       "var": 0.0004947980000000001,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 275,
+       "T": 4,
+       "W": 221,
+       "band": 4.357058398506956,
+       "n": 500,
+       "pct": 44.6,
+       "var": 0.000494168,
+       "withheld": false
+      }
+     },
+     "dustin_file": {
+      "k3": {
+       "L": 275,
+       "T": 0,
+       "W": 225,
+       "band": 4.360724710412249,
+       "n": 500,
+       "pct": 45.0,
+       "var": 0.000495,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 308,
+       "T": 0,
+       "W": 192,
+       "band": 4.263114895003418,
+       "n": 500,
+       "pct": 38.4,
+       "var": 0.00047308800000000003,
+       "withheld": false
+      }
+     },
+     "limitless_development": {
+      "L": 32,
+      "T": 1,
+      "W": 21,
+      "band": 13.056487042235457,
+      "n": 54,
+      "one_sided": false,
+      "pct": 39.81481481481482,
+      "wide": false
+     },
+     "limitless_pooled": {
+      "L": 60,
+      "T": 2,
+      "W": 41,
+      "band": 9.490515373118129,
+      "n": 103,
+      "one_sided": false,
+      "pct": 40.77669902912621,
+      "wide": false
+     }
+    },
+    "blaziken": {
+     "archetype_list": {
+      "k3": {
+       "L": 289,
+       "T": 5,
+       "W": 206,
+       "band": 4.321886665797704,
+       "n": 500,
+       "pct": 41.699999999999996,
+       "var": 0.0004862219999999999,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 351,
+       "T": 5,
+       "W": 144,
+       "band": 3.9894643289544525,
+       "n": 500,
+       "pct": 29.299999999999997,
+       "var": 0.000414302,
+       "withheld": false
+      }
+     },
+     "dustin_file": {
+      "k3": {
+       "L": 294,
+       "T": 3,
+       "W": 203,
+       "band": 4.309495818306359,
+       "n": 500,
+       "pct": 40.9,
+       "var": 0.00048343799999999993,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 377,
+       "T": 1,
+       "W": 122,
+       "band": 3.7698805286109534,
+       "n": 500,
+       "pct": 24.5,
+       "var": 0.00036995,
+       "withheld": false
+      }
+     },
+     "limitless_development": {
+      "L": 7,
+      "T": 0,
+      "W": 4,
+      "band": 28.427983800476955,
+      "n": 11,
+      "one_sided": false,
+      "pct": 36.36363636363637,
+      "wide": true
+     },
+     "limitless_pooled": {
+      "L": 19,
+      "T": 0,
+      "W": 9,
+      "band": 17.298843892006197,
+      "n": 28,
+      "one_sided": false,
+      "pct": 32.142857142857146,
+      "wide": true
+     }
+    },
+    "hydreigon": {
+     "archetype_list": {
+      "k3": {
+       "L": 185,
+       "T": 0,
+       "W": 315,
+       "band": 4.231966351473036,
+       "n": 500,
+       "pct": 63.0,
+       "var": 0.0004662,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 270,
+       "T": 0,
+       "W": 230,
+       "band": 4.368646106060778,
+       "n": 500,
+       "pct": 46.0,
+       "var": 0.0004968,
+       "withheld": false
+      }
+     },
+     "dustin_file": {
+      "k3": {
+       "L": 68,
+       "T": 0,
+       "W": 432,
+       "band": 3.004674246569834,
+       "n": 500,
+       "pct": 86.4,
+       "var": 0.000235008,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 201,
+       "T": 0,
+       "W": 299,
+       "band": 4.297686060195649,
+       "n": 500,
+       "pct": 59.8,
+       "var": 0.000480792,
+       "withheld": false
+      }
+     },
+     "limitless_development": {
+      "L": 13,
+      "T": 1,
+      "W": 10,
+      "band": 19.847268388874074,
+      "n": 24,
+      "one_sided": false,
+      "pct": 43.75,
+      "wide": true
+     },
+     "limitless_pooled": {
+      "L": 21,
+      "T": 3,
+      "W": 19,
+      "band": 14.928685797063794,
+      "n": 43,
+      "one_sided": false,
+      "pct": 47.674418604651166,
+      "wide": false
+     }
+    },
+    "lucario": {
+     "archetype_list": {
+      "k3": {
+       "L": 220,
+       "T": 4,
+       "W": 276,
+       "band": 4.355118235823225,
+       "n": 500,
+       "pct": 55.60000000000001,
+       "var": 0.000493728,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 244,
+       "T": 6,
+       "W": 250,
+       "band": 4.382377670625844,
+       "n": 500,
+       "pct": 50.6,
+       "var": 0.000499928,
+       "withheld": false
+      }
+     },
+     "dustin_file": {
+      "k3": {
+       "L": 282,
+       "T": 0,
+       "W": 218,
+       "band": 4.346641936943967,
+       "n": 500,
+       "pct": 43.6,
+       "var": 0.000491808,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 309,
+       "T": 0,
+       "W": 191,
+       "band": 4.258895541334631,
+       "n": 500,
+       "pct": 38.2,
+       "var": 0.00047215200000000004,
+       "withheld": false
+      }
+     },
+     "limitless_development": {
+      "L": 13,
+      "T": 0,
+      "W": 34,
+      "band": 12.788523890418375,
+      "n": 47,
+      "one_sided": false,
+      "pct": 72.3404255319149,
+      "wide": false
+     },
+     "limitless_pooled": {
+      "L": 29,
+      "T": 4,
+      "W": 60,
+      "band": 9.58094484806175,
+      "n": 93,
+      "one_sided": false,
+      "pct": 66.66666666666666,
+      "wide": false
+     }
+    },
+    "sceptile": {
+     "archetype_list": {
+      "k3": {
+       "L": 172,
+       "T": 2,
+       "W": 326,
+       "band": 4.169634550892919,
+       "n": 500,
+       "pct": 65.4,
+       "var": 0.000452568,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 192,
+       "T": 3,
+       "W": 305,
+       "band": 4.269301136251693,
+       "n": 500,
+       "pct": 61.3,
+       "var": 0.000474462,
+       "withheld": false
+      }
+     },
+     "dustin_file": {
+      "k3": {
+       "L": 214,
+       "T": 0,
+       "W": 286,
+       "band": 4.3370154382939425,
+       "n": 500,
+       "pct": 57.199999999999996,
+       "var": 0.000489632,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 237,
+       "T": 0,
+       "W": 263,
+       "band": 4.376763823648702,
+       "n": 500,
+       "pct": 52.6,
+       "var": 0.000498648,
+       "withheld": false
+      }
+     },
+     "limitless_development": {
+      "L": 8,
+      "T": 0,
+      "W": 23,
+      "band": 15.403607439524846,
+      "n": 31,
+      "one_sided": false,
+      "pct": 74.19354838709677,
+      "wide": true
+     },
+     "limitless_pooled": {
+      "L": 16,
+      "T": 1,
+      "W": 45,
+      "band": 11.000595801393361,
+      "n": 62,
+      "one_sided": false,
+      "pct": 73.38709677419355,
+      "wide": false
+     }
+    },
+    "suicune": {
+     "archetype_list": {
+      "k3": {
+       "L": 336,
+       "T": 18,
+       "W": 146,
+       "band": 4.053932017190224,
+       "n": 500,
+       "pct": 31.0,
+       "var": 0.00042779999999999994,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 356,
+       "T": 12,
+       "W": 132,
+       "band": 3.918274820376947,
+       "n": 500,
+       "pct": 27.6,
+       "var": 0.000399648,
+       "withheld": false
+      }
+     },
+     "dustin_file": {
+      "k3": {
+       "L": 365,
+       "T": 0,
+       "W": 135,
+       "band": 3.8914762237485148,
+       "n": 500,
+       "pct": 27.0,
+       "var": 0.0003942,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 367,
+       "T": 0,
+       "W": 133,
+       "band": 3.8731107662962594,
+       "n": 500,
+       "pct": 26.6,
+       "var": 0.000390488,
+       "withheld": false
+      }
+     },
+     "limitless_development": {
+      "L": 12,
+      "T": 0,
+      "W": 3,
+      "band": 20.242792956177432,
+      "n": 15,
+      "one_sided": false,
+      "pct": 20.0,
+      "wide": true
+     },
+     "limitless_pooled": {
+      "L": 27,
+      "T": 1,
+      "W": 5,
+      "band": 12.71548275463821,
+      "n": 33,
+      "one_sided": false,
+      "pct": 16.666666666666664,
+      "wide": false
+     }
+    },
+    "vespiquen": {
+     "archetype_list": {
+      "k3": {
+       "L": 170,
+       "T": 3,
+       "W": 327,
+       "band": 4.161029684104645,
+       "n": 500,
+       "pct": 65.7,
+       "var": 0.000450702,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 172,
+       "T": 1,
+       "W": 327,
+       "band": 4.166786675605076,
+       "n": 500,
+       "pct": 65.5,
+       "var": 0.00045194999999999995,
+       "withheld": false
+      }
+     },
+     "dustin_file": {
+      "k3": {
+       "L": 99,
+       "T": 0,
+       "W": 401,
+       "band": 3.49293777098877,
+       "n": 500,
+       "pct": 80.2,
+       "var": 0.00031759199999999995,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 110,
+       "T": 0,
+       "W": 390,
+       "band": 3.6310289450787914,
+       "n": 500,
+       "pct": 78.0,
+       "var": 0.00034319999999999994,
+       "withheld": false
+      }
+     },
+     "limitless_development": {
+      "L": 10,
+      "T": 1,
+      "W": 12,
+      "band": 20.357009221473717,
+      "n": 23,
+      "one_sided": false,
+      "pct": 54.347826086956516,
+      "wide": true
+     },
+     "limitless_pooled": {
+      "L": 20,
+      "T": 2,
+      "W": 34,
+      "band": 12.67995465291576,
+      "n": 56,
+      "one_sided": false,
+      "pct": 62.5,
+      "wide": false
+     }
+    },
+    "weezing": {
+     "archetype_list": {
+      "k3": {
+       "L": 280,
+       "T": 10,
+       "W": 210,
+       "band": 4.339530297163508,
+       "n": 500,
+       "pct": 43.0,
+       "var": 0.0004902,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 338,
+       "T": 4,
+       "W": 158,
+       "band": 4.088843748543101,
+       "n": 500,
+       "pct": 32.0,
+       "var": 0.00043519999999999995,
+       "withheld": false
+      }
+     },
+     "dustin_file": {
+      "k3": {
+       "L": 226,
+       "T": 0,
+       "W": 274,
+       "band": 4.3624510394960305,
+       "n": 500,
+       "pct": 54.800000000000004,
+       "var": 0.000495392,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 297,
+       "T": 0,
+       "W": 203,
+       "band": 4.304545556501871,
+       "n": 500,
+       "pct": 40.6,
+       "var": 0.000482328,
+       "withheld": false
+      }
+     },
+     "limitless_development": {
+      "L": 7,
+      "T": 1,
+      "W": 6,
+      "band": 26.124700955226263,
+      "n": 14,
+      "one_sided": false,
+      "pct": 46.42857142857143,
+      "wide": true
+     },
+     "limitless_pooled": {
+      "L": 11,
+      "T": 3,
+      "W": 13,
+      "band": 18.808295209932176,
+      "n": 27,
+      "one_sided": false,
+      "pct": 53.70370370370371,
+      "wide": true
+     }
+    }
+   },
+   "kp3_minus_k3": {
+    "archetype_list": {
+     "band": 1.6711291778315644,
+     "pct": -7.95
+    },
+    "dustin_file": {
+     "band": 1.7151035968710464,
+     "pct": -9.55
+    }
+   },
+   "limitless_development": {
+    "avg": 48.40485282662385,
+    "band": 7.2,
+    "hi": 55.6,
+    "lo": 41.2,
+    "opponents": [
+     "lucario",
+     "altaria",
+     "sceptile",
+     "vespiquen",
+     "suicune",
+     "hydreigon",
+     "weezing",
+     "blaziken"
+    ]
+   },
+   "limitless_pooled": {
+    "avg": 49.18976357348314,
+    "band": 4.8,
+    "hi": 54.0,
+    "lo": 44.3,
+    "opponents": [
+     "lucario",
+     "altaria",
+     "sceptile",
+     "vespiquen",
+     "suicune",
+     "hydreigon",
+     "weezing",
+     "blaziken"
+    ]
+   },
+   "name": "Mega Charizard Y ex Entei ex",
+   "pilots": {
+    "k3": {
+     "a2_inside_pooled_interval": true,
+     "abs_gap_development": 4.157647173376148,
+     "abs_gap_pooled": 3.372736426516859,
+     "archetype_list_panel": {
+      "band": 1.5027545889133063,
+      "cells": 8,
+      "pct": 52.5625
+     },
+     "archetype_list_panel_dev_opponents": {
+      "band": 1.5027545889133063,
+      "cells": 8,
+      "pct": 52.5625
+     },
+     "cells_beyond_band": [
+      "lucario",
+      "altaria",
+      "suicune"
+     ],
+     "cells_no_information": [],
+     "dustin_file_panel": {
+      "band": 1.429018025603596,
+      "cells": 8,
+      "pct": 54.3875
+     },
+     "gap_development": 4.157647173376148,
+     "gap_pooled": 3.372736426516859,
+     "list_difference": {
+      "band": 2.073731870806831,
+      "pct": -1.8250000000000028
+     }
+    },
+    "kp3": {
+     "a2_inside_pooled_interval": true,
+     "abs_gap_development": 3.792352826623855,
+     "abs_gap_pooled": 4.577263573483144,
+     "archetype_list_panel": {
+      "band": 1.4835064592040037,
+      "cells": 8,
+      "pct": 44.6125
+     },
+     "archetype_list_panel_dev_opponents": {
+      "band": 1.4835064592040037,
+      "cells": 8,
+      "pct": 44.6125
+     },
+     "cells_beyond_band": [
+      "lucario",
+      "sceptile",
+      "weezing"
+     ],
+     "cells_no_information": [],
+     "dustin_file_panel": {
+      "band": 1.4516422636104254,
+      "cells": 8,
+      "pct": 44.8375
+     },
+     "gap_development": -3.792352826623855,
+     "gap_pooled": -4.577263573483144,
+     "list_difference": {
+      "band": 2.0755858633166686,
+      "pct": -0.22500000000000142
+     }
+    }
+   },
+   "untrusted_prone": {
+    "archetype_list": "no",
+    "dustin_file": "no"
+   }
+  },
+  "garchomp": {
+   "cells": {
+    "altaria": {
+     "archetype_list": {
+      "k3": {
+       "L": 369,
+       "T": 0,
+       "W": 131,
+       "band": 3.854338878718372,
+       "n": 500,
+       "pct": 26.200000000000003,
+       "var": 0.000386712,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 373,
+       "T": 0,
+       "W": 127,
+       "band": 3.815551688550425,
+       "n": 500,
+       "pct": 25.4,
+       "var": 0.00037896800000000003,
+       "withheld": false
+      }
+     },
+     "dustin_file": {
+      "k3": {
+       "L": 264,
+       "T": 0,
+       "W": 236,
+       "band": 4.3758157767438055,
+       "n": 500,
+       "pct": 47.199999999999996,
+       "var": 0.0004984319999999999,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 283,
+       "T": 0,
+       "W": 217,
+       "band": 4.344343426572076,
+       "n": 500,
+       "pct": 43.4,
+       "var": 0.0004912880000000001,
+       "withheld": false
+      }
+     },
+     "limitless_development": {
+      "L": 7,
+      "T": 0,
+      "W": 4,
+      "band": 28.427983800476955,
+      "n": 11,
+      "one_sided": false,
+      "pct": 36.36363636363637,
+      "wide": true
+     },
+     "limitless_pooled": {
+      "L": 9,
+      "T": 0,
+      "W": 9,
+      "band": 23.098821518760552,
+      "n": 18,
+      "one_sided": false,
+      "pct": 50.0,
+      "wide": true
+     }
+    },
+    "blaziken": {
+     "archetype_list": {
+      "k3": {
+       "L": 417,
+       "T": 3,
+       "W": 80,
+       "band": 3.237632868624854,
+       "n": 500,
+       "pct": 16.3,
+       "var": 0.000272862,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 438,
+       "T": 5,
+       "W": 57,
+       "band": 2.838131435997988,
+       "n": 500,
+       "pct": 11.899999999999999,
+       "var": 0.000209678,
+       "withheld": false
+      }
+     },
+     "dustin_file": {
+      "k3": {
+       "L": 396,
+       "T": 2,
+       "W": 102,
+       "band": 3.5449893156397523,
+       "n": 500,
+       "pct": 20.599999999999998,
+       "var": 0.000327128,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 407,
+       "T": 0,
+       "W": 93,
+       "band": 3.410670334113222,
+       "n": 500,
+       "pct": 18.6,
+       "var": 0.000302808,
+       "withheld": false
+      }
+     },
+     "limitless_development": {
+      "L": 1,
+      "T": 0,
+      "W": 1,
+      "band": 69.29646455628166,
+      "n": 2,
+      "one_sided": false,
+      "pct": 50.0,
+      "wide": true
+     },
+     "limitless_pooled": {
+      "L": 9,
+      "T": 0,
+      "W": 1,
+      "band": 18.594192641790073,
+      "n": 10,
+      "one_sided": false,
+      "pct": 10.0,
+      "wide": true
+     }
+    },
+    "hydreigon": {
+     "archetype_list": {
+      "k3": {
+       "L": 368,
+       "T": 0,
+       "W": 132,
+       "band": 3.86377599350687,
+       "n": 500,
+       "pct": 26.400000000000002,
+       "var": 0.00038860800000000003,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 401,
+       "T": 0,
+       "W": 99,
+       "band": 3.492937770988771,
+       "n": 500,
+       "pct": 19.8,
+       "var": 0.00031759200000000006,
+       "withheld": false
+      }
+     },
+     "dustin_file": {
+      "k3": {
+       "L": 323,
+       "T": 0,
+       "W": 177,
+       "band": 4.191688095266631,
+       "n": 500,
+       "pct": 35.4,
+       "var": 0.000457368,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 401,
+       "T": 0,
+       "W": 99,
+       "band": 3.492937770988771,
+       "n": 500,
+       "pct": 19.8,
+       "var": 0.00031759200000000006,
+       "withheld": false
+      }
+     },
+     "limitless_development": {
+      "L": 4,
+      "T": 0,
+      "W": 2,
+      "band": 37.72021758705555,
+      "n": 6,
+      "one_sided": false,
+      "pct": 33.33333333333333,
+      "wide": true
+     },
+     "limitless_pooled": {
+      "L": 9,
+      "T": 0,
+      "W": 4,
+      "band": 25.08951656772575,
+      "n": 13,
+      "one_sided": false,
+      "pct": 30.76923076923077,
+      "wide": true
+     }
+    },
+    "lucario": {
+     "archetype_list": {
+      "k3": {
+       "L": 384,
+       "T": 0,
+       "W": 116,
+       "band": 3.699948436397459,
+       "n": 500,
+       "pct": 23.200000000000003,
+       "var": 0.000356352,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 392,
+       "T": 0,
+       "W": 108,
+       "band": 3.6070816747060217,
+       "n": 500,
+       "pct": 21.6,
+       "var": 0.00033868799999999997,
+       "withheld": false
+      }
+     },
+     "dustin_file": {
+      "k3": {
+       "L": 340,
+       "T": 0,
+       "W": 160,
+       "band": 4.088843748543101,
+       "n": 500,
+       "pct": 32.0,
+       "var": 0.00043519999999999995,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 346,
+       "T": 0,
+       "W": 154,
+       "band": 4.046685699680666,
+       "n": 500,
+       "pct": 30.8,
+       "var": 0.000426272,
+       "withheld": false
+      }
+     },
+     "limitless_development": {
+      "L": 9,
+      "T": 2,
+      "W": 9,
+      "band": 21.913466179497938,
+      "n": 20,
+      "one_sided": false,
+      "pct": 50.0,
+      "wide": true
+     },
+     "limitless_pooled": {
+      "L": 18,
+      "T": 4,
+      "W": 13,
+      "band": 16.395121225535355,
+      "n": 35,
+      "one_sided": false,
+      "pct": 42.857142857142854,
+      "wide": true
+     }
+    },
+    "sceptile": {
+     "archetype_list": {
+      "k3": {
+       "L": 435,
+       "T": 0,
+       "W": 65,
+       "band": 2.947829574449649,
+       "n": 500,
+       "pct": 13.0,
+       "var": 0.00022620000000000002,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 428,
+       "T": 0,
+       "W": 72,
+       "band": 3.077437188311079,
+       "n": 500,
+       "pct": 14.399999999999999,
+       "var": 0.000246528,
+       "withheld": false
+      }
+     },
+     "dustin_file": {
+      "k3": {
+       "L": 387,
+       "T": 0,
+       "W": 113,
+       "band": 3.666027927880528,
+       "n": 500,
+       "pct": 22.6,
+       "var": 0.000349848,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 404,
+       "T": 0,
+       "W": 96,
+       "band": 3.4524497320019014,
+       "n": 500,
+       "pct": 19.2,
+       "var": 0.00031027200000000005,
+       "withheld": false
+      }
+     },
+     "limitless_development": {
+      "L": 3,
+      "T": 0,
+      "W": 3,
+      "band": 40.00833246545857,
+      "n": 6,
+      "one_sided": false,
+      "pct": 50.0,
+      "wide": true
+     },
+     "limitless_pooled": {
+      "L": 10,
+      "T": 0,
+      "W": 5,
+      "band": 23.856360282447234,
+      "n": 15,
+      "one_sided": false,
+      "pct": 33.33333333333333,
+      "wide": true
+     }
+    },
+    "suicune": {
+     "archetype_list": {
+      "k3": {
+       "L": 321,
+       "T": 0,
+       "W": 179,
+       "band": 4.2022326865608,
+       "n": 500,
+       "pct": 35.8,
+       "var": 0.00045967199999999995,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 310,
+       "T": 0,
+       "W": 190,
+       "band": 4.254599769661066,
+       "n": 500,
+       "pct": 38.0,
+       "var": 0.0004712,
+       "withheld": false
+      }
+     },
+     "dustin_file": {
+      "k3": {
+       "L": 374,
+       "T": 0,
+       "W": 126,
+       "band": 3.805591238165234,
+       "n": 500,
+       "pct": 25.2,
+       "var": 0.000376992,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 362,
+       "T": 0,
+       "W": 138,
+       "band": 3.918274820376947,
+       "n": 500,
+       "pct": 27.6,
+       "var": 0.000399648,
+       "withheld": false
+      }
+     },
+     "limitless_development": {
+      "L": 7,
+      "T": 0,
+      "W": 2,
+      "band": 27.161661029914534,
+      "n": 9,
+      "one_sided": false,
+      "pct": 22.22222222222222,
+      "wide": true
+     },
+     "limitless_pooled": {
+      "L": 14,
+      "T": 0,
+      "W": 7,
+      "band": 20.16230439504668,
+      "n": 21,
+      "one_sided": false,
+      "pct": 33.33333333333333,
+      "wide": true
+     }
+    },
+    "vespiquen": {
+     "archetype_list": {
+      "k3": {
+       "L": 333,
+       "T": 0,
+       "W": 167,
+       "band": 4.134104184463666,
+       "n": 500,
+       "pct": 33.4,
+       "var": 0.00044488799999999995,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 343,
+       "T": 0,
+       "W": 157,
+       "band": 4.068159304648725,
+       "n": 500,
+       "pct": 31.4,
+       "var": 0.00043080799999999997,
+       "withheld": false
+      }
+     },
+     "dustin_file": {
+      "k3": {
+       "L": 277,
+       "T": 0,
+       "W": 223,
+       "band": 4.357058398506956,
+       "n": 500,
+       "pct": 44.6,
+       "var": 0.000494168,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 297,
+       "T": 0,
+       "W": 203,
+       "band": 4.304545556501871,
+       "n": 500,
+       "pct": 40.6,
+       "var": 0.000482328,
+       "withheld": false
+      }
+     },
+     "limitless_development": {
+      "L": 3,
+      "T": 0,
+      "W": 2,
+      "band": 42.941448508405024,
+      "n": 5,
+      "one_sided": false,
+      "pct": 40.0,
+      "wide": true
+     },
+     "limitless_pooled": {
+      "L": 10,
+      "T": 0,
+      "W": 8,
+      "band": 22.95579338492601,
+      "n": 18,
+      "one_sided": false,
+      "pct": 44.44444444444444,
+      "wide": true
+     }
+    },
+    "weezing": {
+     "archetype_list": {
+      "k3": {
+       "L": 439,
+       "T": 0,
+       "W": 61,
+       "band": 2.868786592272071,
+       "n": 500,
+       "pct": 12.2,
+       "var": 0.00021423200000000002,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 448,
+       "T": 0,
+       "W": 52,
+       "band": 2.6757266467260816,
+       "n": 500,
+       "pct": 10.4,
+       "var": 0.00018636800000000002,
+       "withheld": false
+      }
+     },
+     "dustin_file": {
+      "k3": {
+       "L": 397,
+       "T": 0,
+       "W": 103,
+       "band": 3.5449893156397523,
+       "n": 500,
+       "pct": 20.599999999999998,
+       "var": 0.000327128,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 423,
+       "T": 0,
+       "W": 77,
+       "band": 3.163855288726082,
+       "n": 500,
+       "pct": 15.4,
+       "var": 0.000260568,
+       "withheld": false
+      }
+     },
+     "limitless_development": {
+      "L": 9,
+      "T": 1,
+      "W": 1,
+      "band": 20.280304702542043,
+      "n": 11,
+      "one_sided": false,
+      "pct": 13.636363636363635,
+      "wide": true
+     },
+     "limitless_pooled": {
+      "L": 13,
+      "T": 1,
+      "W": 2,
+      "band": 17.79151724664032,
+      "n": 16,
+      "one_sided": false,
+      "pct": 15.625,
+      "wide": true
+     }
+    }
+   },
+   "kp3_minus_k3": {
+    "archetype_list": {
+     "band": 1.2782258376359008,
+     "pct": -1.7000000000000002
+    },
+    "dustin_file": {
+     "band": 1.529490869537965,
+     "pct": -4.1000000000000005
+    }
+   },
+   "limitless_development": {
+    "avg": 36.94444444444444,
+    "band": 13.8,
+    "hi": 50.7,
+    "lo": 23.2,
+    "opponents": [
+     "lucario",
+     "altaria",
+     "sceptile",
+     "vespiquen",
+     "suicune",
+     "hydreigon",
+     "weezing",
+     "blaziken"
+    ]
+   },
+   "limitless_pooled": {
+    "avg": 32.545310592185594,
+    "band": 7.5,
+    "hi": 40.0,
+    "lo": 25.0,
+    "opponents": [
+     "lucario",
+     "altaria",
+     "sceptile",
+     "vespiquen",
+     "suicune",
+     "hydreigon",
+     "weezing",
+     "blaziken"
+    ]
+   },
+   "name": "Garchomp",
+   "pilots": {
+    "k3": {
+     "a2_inside_pooled_interval": false,
+     "abs_gap_development": 13.631944444444443,
+     "abs_gap_pooled": 9.232810592185594,
+     "archetype_list_panel": {
+      "band": 1.2846801086262682,
+      "cells": 8,
+      "pct": 23.3125
+     },
+     "archetype_list_panel_dev_opponents": {
+      "band": 1.2846801086262682,
+      "cells": 8,
+      "pct": 23.3125
+     },
+     "cells_beyond_band": [
+      "lucario",
+      "altaria"
+     ],
+     "cells_no_information": [],
+     "dustin_file_panel": {
+      "band": 1.4002053299427195,
+      "cells": 8,
+      "pct": 31.025
+     },
+     "gap_development": -13.631944444444443,
+     "gap_pooled": -9.232810592185594,
+     "list_difference": {
+      "band": 1.9002573371783096,
+      "pct": -7.712499999999999
+     }
+    },
+    "kp3": {
+     "a2_inside_pooled_interval": false,
+     "abs_gap_development": 15.331944444444442,
+     "abs_gap_pooled": 10.932810592185593,
+     "archetype_list_panel": {
+      "band": 1.2444046598675207,
+      "cells": 8,
+      "pct": 21.6125
+     },
+     "archetype_list_panel_dev_opponents": {
+      "band": 1.2444046598675207,
+      "cells": 8,
+      "pct": 21.6125
+     },
+     "cells_beyond_band": [
+      "lucario",
+      "altaria"
+     ],
+     "cells_no_information": [],
+     "dustin_file_panel": {
+      "band": 1.3398556989467187,
+      "cells": 8,
+      "pct": 26.925
+     },
+     "gap_development": -15.331944444444442,
+     "gap_pooled": -10.932810592185593,
+     "list_difference": {
+      "band": 1.8285940641651446,
+      "pct": -5.3125
+     }
+    }
+   },
+   "untrusted_prone": {
+    "archetype_list": "yes",
+    "dustin_file": "yes"
+   }
+  },
+  "hoopa_absol": {
+   "cells": {
+    "altaria": {
+     "archetype_list": {
+      "k3": {
+       "L": 134,
+       "T": 4,
+       "W": 362,
+       "band": 3.9005083402038765,
+       "n": 500,
+       "pct": 72.8,
+       "var": 0.000396032,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 136,
+       "T": 0,
+       "W": 364,
+       "band": 3.9005083402038765,
+       "n": 500,
+       "pct": 72.8,
+       "var": 0.000396032,
+       "withheld": false
+      }
+     },
+     "dustin_file": {
+      "k3": {
+       "L": 209,
+       "T": 2,
+       "W": 289,
+       "band": 4.32623106179039,
+       "n": 500,
+       "pct": 57.99999999999999,
+       "var": 0.0004872,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 215,
+       "T": 0,
+       "W": 285,
+       "band": 4.339530297163508,
+       "n": 500,
+       "pct": 56.99999999999999,
+       "var": 0.0004902,
+       "withheld": false
+      }
+     },
+     "limitless_development": {
+      "L": 21,
+      "T": 6,
+      "W": 54,
+      "band": 9.944239873102218,
+      "n": 81,
+      "one_sided": false,
+      "pct": 70.37037037037037,
+      "wide": false
+     },
+     "limitless_pooled": {
+      "L": 35,
+      "T": 10,
+      "W": 95,
+      "band": 7.483314773547883,
+      "n": 140,
+      "one_sided": false,
+      "pct": 71.42857142857143,
+      "wide": false
+     }
+    },
+    "blaziken": {
+     "archetype_list": {
+      "k3": {
+       "L": 221,
+       "T": 0,
+       "W": 279,
+       "band": 4.353106609307886,
+       "n": 500,
+       "pct": 55.800000000000004,
+       "var": 0.000493272,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 211,
+       "T": 1,
+       "W": 288,
+       "band": 4.330411420638921,
+       "n": 500,
+       "pct": 57.699999999999996,
+       "var": 0.000488142,
+       "withheld": false
+      }
+     },
+     "dustin_file": {
+      "k3": {
+       "L": 300,
+       "T": 6,
+       "W": 194,
+       "band": 4.283073154640252,
+       "n": 500,
+       "pct": 39.4,
+       "var": 0.000477528,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 308,
+       "T": 3,
+       "W": 189,
+       "band": 4.256757222111687,
+       "n": 500,
+       "pct": 38.1,
+       "var": 0.000471678,
+       "withheld": false
+      }
+     },
+     "limitless_development": {
+      "L": 2,
+      "T": 1,
+      "W": 9,
+      "band": 22.978200216404794,
+      "n": 12,
+      "one_sided": false,
+      "pct": 79.16666666666666,
+      "wide": true
+     },
+     "limitless_pooled": {
+      "L": 7,
+      "T": 1,
+      "W": 16,
+      "band": 18.544358418847136,
+      "n": 24,
+      "one_sided": false,
+      "pct": 68.75,
+      "wide": true
+     }
+    },
+    "hydreigon": {
+     "archetype_list": {
+      "k3": {
+       "L": 93,
+       "T": 0,
+       "W": 407,
+       "band": 3.410670334113223,
+       "n": 500,
+       "pct": 81.39999999999999,
+       "var": 0.00030280800000000006,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 146,
+       "T": 0,
+       "W": 354,
+       "band": 3.9854661398636924,
+       "n": 500,
+       "pct": 70.8,
+       "var": 0.000413472,
+       "withheld": false
+      }
+     },
+     "dustin_file": {
+      "k3": {
+       "L": 199,
+       "T": 0,
+       "W": 301,
+       "band": 4.290529089984125,
+       "n": 500,
+       "pct": 60.199999999999996,
+       "var": 0.00047919200000000003,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 305,
+       "T": 0,
+       "W": 195,
+       "band": 4.275316690024261,
+       "n": 500,
+       "pct": 39.0,
+       "var": 0.0004758,
+       "withheld": false
+      }
+     },
+     "limitless_development": {
+      "L": 9,
+      "T": 0,
+      "W": 17,
+      "band": 18.286970521416627,
+      "n": 26,
+      "one_sided": false,
+      "pct": 65.38461538461539,
+      "wide": true
+     },
+     "limitless_pooled": {
+      "L": 15,
+      "T": 1,
+      "W": 32,
+      "band": 13.22823022713657,
+      "n": 48,
+      "one_sided": false,
+      "pct": 67.70833333333334,
+      "wide": false
+     }
+    },
+    "lucario": {
+     "archetype_list": {
+      "k3": {
+       "L": 267,
+       "T": 0,
+       "W": 233,
+       "band": 4.372548708476557,
+       "n": 500,
+       "pct": 46.6,
+       "var": 0.000497688,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 237,
+       "T": 0,
+       "W": 263,
+       "band": 4.376763823648702,
+       "n": 500,
+       "pct": 52.6,
+       "var": 0.000498648,
+       "withheld": false
+      }
+     },
+     "dustin_file": {
+      "k3": {
+       "L": 302,
+       "T": 0,
+       "W": 198,
+       "band": 4.286838588983728,
+       "n": 500,
+       "pct": 39.6,
+       "var": 0.000478368,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 318,
+       "T": 0,
+       "W": 182,
+       "band": 4.217453654517142,
+       "n": 500,
+       "pct": 36.4,
+       "var": 0.000463008,
+       "withheld": false
+      }
+     },
+     "limitless_development": {
+      "L": 30,
+      "T": 1,
+      "W": 29,
+      "band": 12.64998828867852,
+      "n": 60,
+      "one_sided": false,
+      "pct": 49.166666666666664,
+      "wide": false
+     },
+     "limitless_pooled": {
+      "L": 53,
+      "T": 1,
+      "W": 41,
+      "band": 9.974051418846207,
+      "n": 95,
+      "one_sided": false,
+      "pct": 43.684210526315795,
+      "wide": false
+     }
+    },
+    "sceptile": {
+     "archetype_list": {
+      "k3": {
+       "L": 386,
+       "T": 0,
+       "W": 114,
+       "band": 3.677453101264515,
+       "n": 500,
+       "pct": 22.8,
+       "var": 0.000352032,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 375,
+       "T": 0,
+       "W": 125,
+       "band": 3.7955236792832685,
+       "n": 500,
+       "pct": 25.0,
+       "var": 0.000375,
+       "withheld": false
+      }
+     },
+     "dustin_file": {
+      "k3": {
+       "L": 402,
+       "T": 1,
+       "W": 97,
+       "band": 3.4728523147407238,
+       "n": 500,
+       "pct": 19.5,
+       "var": 0.00031395,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 404,
+       "T": 0,
+       "W": 96,
+       "band": 3.4524497320019014,
+       "n": 500,
+       "pct": 19.2,
+       "var": 0.00031027200000000005,
+       "withheld": false
+      }
+     },
+     "limitless_development": {
+      "L": 27,
+      "T": 2,
+      "W": 18,
+      "band": 14.030240016376004,
+      "n": 47,
+      "one_sided": false,
+      "pct": 40.42553191489361,
+      "wide": false
+     },
+     "limitless_pooled": {
+      "L": 50,
+      "T": 3,
+      "W": 24,
+      "band": 10.512201775832105,
+      "n": 77,
+      "one_sided": false,
+      "pct": 33.116883116883116,
+      "wide": false
+     }
+    },
+    "suicune": {
+     "archetype_list": {
+      "k3": {
+       "L": 300,
+       "T": 0,
+       "W": 200,
+       "band": 4.294144850840502,
+       "n": 500,
+       "pct": 40.0,
+       "var": 0.00047999999999999996,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 228,
+       "T": 0,
+       "W": 272,
+       "band": 4.365690466352373,
+       "n": 500,
+       "pct": 54.400000000000006,
+       "var": 0.000496128,
+       "withheld": false
+      }
+     },
+     "dustin_file": {
+      "k3": {
+       "L": 424,
+       "T": 1,
+       "W": 75,
+       "band": 3.1384368032509427,
+       "n": 500,
+       "pct": 15.1,
+       "var": 0.00025639799999999997,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 405,
+       "T": 1,
+       "W": 94,
+       "band": 3.431724366553934,
+       "n": 500,
+       "pct": 18.9,
+       "var": 0.000306558,
+       "withheld": false
+      }
+     },
+     "limitless_development": {
+      "L": 15,
+      "T": 1,
+      "W": 14,
+      "band": 17.88232729902989,
+      "n": 30,
+      "one_sided": false,
+      "pct": 48.333333333333336,
+      "wide": true
+     },
+     "limitless_pooled": {
+      "L": 25,
+      "T": 1,
+      "W": 25,
+      "band": 13.722744823474494,
+      "n": 51,
+      "one_sided": false,
+      "pct": 50.0,
+      "wide": false
+     }
+    },
+    "vespiquen": {
+     "archetype_list": {
+      "k3": {
+       "L": 301,
+       "T": 0,
+       "W": 199,
+       "band": 4.290529089984125,
+       "n": 500,
+       "pct": 39.800000000000004,
+       "var": 0.00047919200000000003,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 273,
+       "T": 0,
+       "W": 227,
+       "band": 4.364106264517399,
+       "n": 500,
+       "pct": 45.4,
+       "var": 0.0004957680000000001,
+       "withheld": false
+      }
+     },
+     "dustin_file": {
+      "k3": {
+       "L": 390,
+       "T": 2,
+       "W": 108,
+       "band": 3.6191175764266075,
+       "n": 500,
+       "pct": 21.8,
+       "var": 0.00034095200000000005,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 399,
+       "T": 1,
+       "W": 100,
+       "band": 3.5127115406762335,
+       "n": 500,
+       "pct": 20.1,
+       "var": 0.00032119799999999997,
+       "withheld": false
+      }
+     },
+     "limitless_development": {
+      "L": 20,
+      "T": 3,
+      "W": 5,
+      "band": 15.638494173033413,
+      "n": 28,
+      "one_sided": false,
+      "pct": 23.214285714285715,
+      "wide": true
+     },
+     "limitless_pooled": {
+      "L": 38,
+      "T": 3,
+      "W": 12,
+      "band": 11.730261639543652,
+      "n": 53,
+      "one_sided": false,
+      "pct": 25.471698113207548,
+      "wide": false
+     }
+    },
+    "weezing": {
+     "archetype_list": {
+      "k3": {
+       "L": 162,
+       "T": 0,
+       "W": 338,
+       "band": 4.102200868802014,
+       "n": 500,
+       "pct": 67.60000000000001,
+       "var": 0.000438048,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 135,
+       "T": 0,
+       "W": 365,
+       "band": 3.8914762237485148,
+       "n": 500,
+       "pct": 73.0,
+       "var": 0.0003942,
+       "withheld": false
+      }
+     },
+     "dustin_file": {
+      "k3": {
+       "L": 335,
+       "T": 5,
+       "W": 160,
+       "band": 4.1054865728680685,
+       "n": 500,
+       "pct": 32.5,
+       "var": 0.00043875,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 340,
+       "T": 2,
+       "W": 158,
+       "band": 4.082035868534229,
+       "n": 500,
+       "pct": 31.8,
+       "var": 0.000433752,
+       "withheld": false
+      }
+     },
+     "limitless_development": {
+      "L": 12,
+      "T": 0,
+      "W": 7,
+      "band": 21.690287721140624,
+      "n": 19,
+      "one_sided": false,
+      "pct": 36.84210526315789,
+      "wide": true
+     },
+     "limitless_pooled": {
+      "L": 20,
+      "T": 0,
+      "W": 13,
+      "band": 16.67139093240951,
+      "n": 33,
+      "one_sided": false,
+      "pct": 39.39393939393939,
+      "wide": true
+     }
+    }
+   },
+   "kp3_minus_k3": {
+    "archetype_list": {
+     "band": 1.6207193512449958,
+     "pct": 3.1125
+    },
+    "dustin_file": {
+     "band": 1.5847436341566417,
+     "pct": -3.2
+    }
+   },
+   "limitless_development": {
+    "avg": 51.6129469142487,
+    "band": 6.1,
+    "hi": 57.7,
+    "lo": 45.5,
+    "opponents": [
+     "lucario",
+     "altaria",
+     "sceptile",
+     "vespiquen",
+     "suicune",
+     "hydreigon",
+     "weezing",
+     "blaziken"
+    ]
+   },
+   "limitless_pooled": {
+    "avg": 49.94420448903133,
+    "band": 4.7,
+    "hi": 54.6,
+    "lo": 45.3,
+    "opponents": [
+     "lucario",
+     "altaria",
+     "sceptile",
+     "vespiquen",
+     "suicune",
+     "hydreigon",
+     "weezing",
+     "blaziken"
+    ]
+   },
+   "name": "Hoopa ex Mega Absol ex",
+   "pilots": {
+    "k3": {
+     "a2_inside_pooled_interval": true,
+     "abs_gap_development": 1.737053085751299,
+     "abs_gap_pooled": 3.405795510968673,
+     "archetype_list_panel": {
+      "band": 1.4367682373994772,
+      "cells": 8,
+      "pct": 53.35
+     },
+     "archetype_list_panel_dev_opponents": {
+      "band": 1.4367682373994772,
+      "cells": 8,
+      "pct": 53.35
+     },
+     "cells_beyond_band": [
+      "vespiquen",
+      "hydreigon",
+      "weezing"
+     ],
+     "cells_no_information": [],
+     "dustin_file_panel": {
+      "band": 1.4015066480398872,
+      "cells": 8,
+      "pct": 35.762499999999996
+     },
+     "gap_development": 1.737053085751299,
+     "gap_pooled": 3.405795510968673,
+     "list_difference": {
+      "band": 2.0071182955919666,
+      "pct": 17.587500000000006
+     }
+    },
+    "kp3": {
+     "a2_inside_pooled_interval": false,
+     "abs_gap_development": 4.849553085751296,
+     "abs_gap_pooled": 6.51829551096867,
+     "archetype_list_panel": {
+      "band": 1.4612745626678103,
+      "cells": 8,
+      "pct": 56.4625
+     },
+     "archetype_list_panel_dev_opponents": {
+      "band": 1.4612745626678103,
+      "cells": 8,
+      "pct": 56.4625
+     },
+     "cells_beyond_band": [
+      "vespiquen",
+      "weezing"
+     ],
+     "cells_no_information": [],
+     "dustin_file_panel": {
+      "band": 1.4015340582732907,
+      "cells": 8,
+      "pct": 32.5625
+     },
+     "gap_development": 4.849553085751296,
+     "gap_pooled": 6.51829551096867,
+     "list_difference": {
+      "band": 2.0247520993938988,
+      "pct": 23.9
+     }
+    }
+   },
+   "untrusted_prone": {
+    "archetype_list": "yes",
+    "dustin_file": "yes"
+   }
+  },
+  "manectric": {
+   "cells": {
+    "altaria": {
+     "archetype_list": {
+      "k3": {
+       "L": 161,
+       "T": 0,
+       "W": 339,
+       "band": 4.095565273805314,
+       "n": 500,
+       "pct": 67.80000000000001,
+       "var": 0.00043663199999999995,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 166,
+       "T": 0,
+       "W": 334,
+       "band": 4.127892153629985,
+       "n": 500,
+       "pct": 66.8,
+       "var": 0.000443552,
+       "withheld": false
+      }
+     },
+     "dustin_file": {
+      "k3": {
+       "L": 159,
+       "T": 0,
+       "W": 341,
+       "band": 4.082035868534229,
+       "n": 500,
+       "pct": 68.2,
+       "var": 0.000433752,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 170,
+       "T": 0,
+       "W": 330,
+       "band": 4.152240455464977,
+       "n": 500,
+       "pct": 66.0,
+       "var": 0.00044879999999999996,
+       "withheld": false
+      }
+     },
+     "limitless_development": {
+      "L": 22,
+      "T": 3,
+      "W": 26,
+      "band": 13.68047211672424,
+      "n": 51,
+      "one_sided": false,
+      "pct": 53.92156862745098,
+      "wide": false
+     },
+     "limitless_pooled": {
+      "L": 48,
+      "T": 7,
+      "W": 55,
+      "band": 9.324994647132288,
+      "n": 110,
+      "one_sided": false,
+      "pct": 53.18181818181819,
+      "wide": false
+     }
+    },
+    "blaziken": {
+     "archetype_list": {
+      "k3": {
+       "L": 149,
+       "T": 1,
+       "W": 350,
+       "band": 4.0129677755995,
+       "n": 500,
+       "pct": 70.1,
+       "var": 0.000419198,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 164,
+       "T": 2,
+       "W": 334,
+       "band": 4.121596195650418,
+       "n": 500,
+       "pct": 67.0,
+       "var": 0.00044219999999999996,
+       "withheld": false
+      }
+     },
+     "dustin_file": {
+      "k3": {
+       "L": 171,
+       "T": 0,
+       "W": 329,
+       "band": 4.158120483102913,
+       "n": 500,
+       "pct": 65.8,
+       "var": 0.000450072,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 204,
+       "T": 0,
+       "W": 296,
+       "band": 4.307864198416659,
+       "n": 500,
+       "pct": 59.199999999999996,
+       "var": 0.000483072,
+       "withheld": false
+      }
+     },
+     "limitless_development": {
+      "L": 3,
+      "T": 2,
+      "W": 10,
+      "band": 22.37924964816325,
+      "n": 15,
+      "one_sided": false,
+      "pct": 73.33333333333333,
+      "wide": true
+     },
+     "limitless_pooled": {
+      "L": 12,
+      "T": 3,
+      "W": 22,
+      "band": 15.511517981723417,
+      "n": 37,
+      "one_sided": false,
+      "pct": 63.51351351351351,
+      "wide": true
+     }
+    },
+    "hydreigon": {
+     "archetype_list": {
+      "k3": {
+       "L": 123,
+       "T": 0,
+       "W": 377,
+       "band": 3.775063799195982,
+       "n": 500,
+       "pct": 75.4,
+       "var": 0.000370968,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 138,
+       "T": 0,
+       "W": 362,
+       "band": 3.918274820376947,
+       "n": 500,
+       "pct": 72.39999999999999,
+       "var": 0.000399648,
+       "withheld": false
+      }
+     },
+     "dustin_file": {
+      "k3": {
+       "L": 98,
+       "T": 0,
+       "W": 402,
+       "band": 3.4795824301200278,
+       "n": 500,
+       "pct": 80.4,
+       "var": 0.00031516799999999995,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 162,
+       "T": 0,
+       "W": 338,
+       "band": 4.102200868802014,
+       "n": 500,
+       "pct": 67.60000000000001,
+       "var": 0.000438048,
+       "withheld": false
+      }
+     },
+     "limitless_development": {
+      "L": 12,
+      "T": 0,
+      "W": 8,
+      "band": 21.470724254202512,
+      "n": 20,
+      "one_sided": false,
+      "pct": 40.0,
+      "wide": true
+     },
+     "limitless_pooled": {
+      "L": 27,
+      "T": 0,
+      "W": 24,
+      "band": 13.698982476947869,
+      "n": 51,
+      "one_sided": false,
+      "pct": 47.05882352941176,
+      "wide": false
+     }
+    },
+    "lucario": {
+     "archetype_list": {
+      "k3": {
+       "L": 233,
+       "T": 0,
+       "W": 267,
+       "band": 4.372548708476557,
+       "n": 500,
+       "pct": 53.400000000000006,
+       "var": 0.000497688,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 224,
+       "T": 0,
+       "W": 276,
+       "band": 4.3589271927849405,
+       "n": 500,
+       "pct": 55.2,
+       "var": 0.000494592,
+       "withheld": false
+      }
+     },
+     "dustin_file": {
+      "k3": {
+       "L": 258,
+       "T": 0,
+       "W": 242,
+       "band": 4.380448722220133,
+       "n": 500,
+       "pct": 48.4,
+       "var": 0.000499488,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 276,
+       "T": 0,
+       "W": 224,
+       "band": 4.3589271927849405,
+       "n": 500,
+       "pct": 44.800000000000004,
+       "var": 0.0004945920000000001,
+       "withheld": false
+      }
+     },
+     "limitless_development": {
+      "L": 21,
+      "T": 1,
+      "W": 14,
+      "band": 16.021587695693874,
+      "n": 36,
+      "one_sided": false,
+      "pct": 40.27777777777778,
+      "wide": true
+     },
+     "limitless_pooled": {
+      "L": 55,
+      "T": 3,
+      "W": 35,
+      "band": 9.924355315744494,
+      "n": 93,
+      "one_sided": false,
+      "pct": 39.247311827956985,
+      "wide": false
+     }
+    },
+    "sceptile": {
+     "archetype_list": {
+      "k3": {
+       "L": 228,
+       "T": 0,
+       "W": 272,
+       "band": 4.365690466352373,
+       "n": 500,
+       "pct": 54.400000000000006,
+       "var": 0.000496128,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 219,
+       "T": 0,
+       "W": 281,
+       "band": 4.348868564580907,
+       "n": 500,
+       "pct": 56.2,
+       "var": 0.000492312,
+       "withheld": false
+      }
+     },
+     "dustin_file": {
+      "k3": {
+       "L": 247,
+       "T": 0,
+       "W": 253,
+       "band": 4.382377670625844,
+       "n": 500,
+       "pct": 50.6,
+       "var": 0.000499928,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 237,
+       "T": 0,
+       "W": 263,
+       "band": 4.376763823648702,
+       "n": 500,
+       "pct": 52.6,
+       "var": 0.000498648,
+       "withheld": false
+      }
+     },
+     "limitless_development": {
+      "L": 23,
+      "T": 2,
+      "W": 13,
+      "band": 15.337349533505842,
+      "n": 38,
+      "one_sided": false,
+      "pct": 36.84210526315789,
+      "wide": true
+     },
+     "limitless_pooled": {
+      "L": 45,
+      "T": 3,
+      "W": 29,
+      "band": 10.924369466216815,
+      "n": 77,
+      "one_sided": false,
+      "pct": 39.61038961038961,
+      "wide": false
+     }
+    },
+    "suicune": {
+     "archetype_list": {
+      "k3": {
+       "L": 147,
+       "T": 0,
+       "W": 353,
+       "band": 3.9934392756119386,
+       "n": 500,
+       "pct": 70.6,
+       "var": 0.00041512800000000007,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 143,
+       "T": 0,
+       "W": 357,
+       "band": 3.9609849441773948,
+       "n": 500,
+       "pct": 71.39999999999999,
+       "var": 0.000408408,
+       "withheld": false
+      }
+     },
+     "dustin_file": {
+      "k3": {
+       "L": 178,
+       "T": 0,
+       "W": 322,
+       "band": 4.197000315463415,
+       "n": 500,
+       "pct": 64.4,
+       "var": 0.000458528,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 174,
+       "T": 0,
+       "W": 326,
+       "band": 4.175269269400477,
+       "n": 500,
+       "pct": 65.2,
+       "var": 0.00045379199999999995,
+       "withheld": false
+      }
+     },
+     "limitless_development": {
+      "L": 9,
+      "T": 2,
+      "W": 17,
+      "band": 17.74823934929885,
+      "n": 28,
+      "one_sided": false,
+      "pct": 64.28571428571429,
+      "wide": true
+     },
+     "limitless_pooled": {
+      "L": 14,
+      "T": 6,
+      "W": 27,
+      "band": 13.737078262405849,
+      "n": 47,
+      "one_sided": false,
+      "pct": 63.829787234042556,
+      "wide": false
+     }
+    },
+    "vespiquen": {
+     "archetype_list": {
+      "k3": {
+       "L": 148,
+       "T": 0,
+       "W": 352,
+       "band": 4.001319718292954,
+       "n": 500,
+       "pct": 70.39999999999999,
+       "var": 0.00041676800000000003,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 148,
+       "T": 0,
+       "W": 352,
+       "band": 4.001319718292954,
+       "n": 500,
+       "pct": 70.39999999999999,
+       "var": 0.00041676800000000003,
+       "withheld": false
+      }
+     },
+     "dustin_file": {
+      "k3": {
+       "L": 166,
+       "T": 0,
+       "W": 334,
+       "band": 4.127892153629985,
+       "n": 500,
+       "pct": 66.8,
+       "var": 0.000443552,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 145,
+       "T": 0,
+       "W": 355,
+       "band": 3.977399753607877,
+       "n": 500,
+       "pct": 71.0,
+       "var": 0.00041180000000000003,
+       "withheld": false
+      }
+     },
+     "limitless_development": {
+      "L": 17,
+      "T": 1,
+      "W": 12,
+      "band": 17.64201634566584,
+      "n": 30,
+      "one_sided": false,
+      "pct": 41.66666666666667,
+      "wide": true
+     },
+     "limitless_pooled": {
+      "L": 32,
+      "T": 2,
+      "W": 35,
+      "band": 11.786657274990645,
+      "n": 69,
+      "one_sided": false,
+      "pct": 52.17391304347826,
+      "wide": false
+     }
+    },
+    "weezing": {
+     "archetype_list": {
+      "k3": {
+       "L": 226,
+       "T": 1,
+       "W": 273,
+       "band": 4.363287534875509,
+       "n": 500,
+       "pct": 54.7,
+       "var": 0.0004955819999999999,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 238,
+       "T": 1,
+       "W": 261,
+       "band": 4.378053890942869,
+       "n": 500,
+       "pct": 52.300000000000004,
+       "var": 0.000498942,
+       "withheld": false
+      }
+     },
+     "dustin_file": {
+      "k3": {
+       "L": 209,
+       "T": 2,
+       "W": 289,
+       "band": 4.32623106179039,
+       "n": 500,
+       "pct": 57.99999999999999,
+       "var": 0.0004872,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 225,
+       "T": 0,
+       "W": 275,
+       "band": 4.360724710412249,
+       "n": 500,
+       "pct": 55.00000000000001,
+       "var": 0.000495,
+       "withheld": false
+      }
+     },
+     "limitless_development": {
+      "L": 8,
+      "T": 0,
+      "W": 4,
+      "band": 26.672221643639052,
+      "n": 12,
+      "one_sided": false,
+      "pct": 33.33333333333333,
+      "wide": true
+     },
+     "limitless_pooled": {
+      "L": 13,
+      "T": 0,
+      "W": 7,
+      "band": 20.90411442754751,
+      "n": 20,
+      "one_sided": false,
+      "pct": 35.0,
+      "wide": true
+     }
+    }
+   },
+   "kp3_minus_k3": {
+    "archetype_list": {
+     "band": 1.4420704994902296,
+     "pct": -0.6375000000000001
+    },
+    "dustin_file": {
+     "band": 1.5155787924090254,
+     "pct": -2.65
+    }
+   },
+   "limitless_development": {
+    "avg": 47.957562410929285,
+    "band": 6.8,
+    "hi": 54.8,
+    "lo": 41.1,
+    "opponents": [
+     "lucario",
+     "altaria",
+     "sceptile",
+     "vespiquen",
+     "suicune",
+     "hydreigon",
+     "weezing",
+     "blaziken"
+    ]
+   },
+   "limitless_pooled": {
+    "avg": 49.20194461757636,
+    "band": 4.8,
+    "hi": 54.0,
+    "lo": 44.4,
+    "opponents": [
+     "lucario",
+     "altaria",
+     "sceptile",
+     "vespiquen",
+     "suicune",
+     "hydreigon",
+     "weezing",
+     "blaziken"
+    ]
+   },
+   "name": "Mega Manectric ex Heliolisk",
+   "pilots": {
+    "k3": {
+     "a2_inside_pooled_interval": false,
+     "abs_gap_development": 16.64243758907071,
+     "abs_gap_pooled": 15.398055382423635,
+     "archetype_list_panel": {
+      "band": 1.4593636363155003,
+      "cells": 8,
+      "pct": 64.6
+     },
+     "archetype_list_panel_dev_opponents": {
+      "band": 1.4593636363155003,
+      "cells": 8,
+      "pct": 64.6
+     },
+     "cells_beyond_band": [
+      "lucario",
+      "altaria",
+      "sceptile",
+      "vespiquen",
+      "hydreigon"
+     ],
+     "cells_no_information": [],
+     "dustin_file_panel": {
+      "band": 1.4674841471034705,
+      "cells": 8,
+      "pct": 62.825
+     },
+     "gap_development": 16.64243758907071,
+     "gap_pooled": 15.398055382423635,
+     "list_difference": {
+      "band": 2.069601880797367,
+      "pct": 1.7749999999999915
+     }
+    },
+    "kp3": {
+     "a2_inside_pooled_interval": false,
+     "abs_gap_development": 16.004937589070714,
+     "abs_gap_pooled": 14.76055538242364,
+     "archetype_list_panel": {
+      "band": 1.4692693100653809,
+      "cells": 8,
+      "pct": 63.9625
+     },
+     "archetype_list_panel_dev_opponents": {
+      "band": 1.4692693100653809,
+      "cells": 8,
+      "pct": 63.9625
+     },
+     "cells_beyond_band": [
+      "lucario",
+      "altaria",
+      "sceptile",
+      "vespiquen",
+      "hydreigon"
+     ],
+     "cells_no_information": [],
+     "dustin_file_panel": {
+      "band": 1.4950525535913444,
+      "cells": 8,
+      "pct": 60.175000000000004
+     },
+     "gap_development": 16.004937589070714,
+     "gap_pooled": 14.76055538242364,
+     "list_difference": {
+      "band": 2.0961713774164554,
+      "pct": 3.7874999999999943
+     }
+    }
+   },
+   "untrusted_prone": {
+    "archetype_list": "no",
+    "dustin_file": "no"
+   }
+  },
+  "raticate": {
+   "cells": {
+    "altaria": {
+     "archetype_list": {
+      "k3": {
+       "L": 336,
+       "T": 0,
+       "W": 164,
+       "band": 4.115215925319108,
+       "n": 500,
+       "pct": 32.800000000000004,
+       "var": 0.00044083199999999994,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 282,
+       "T": 0,
+       "W": 218,
+       "band": 4.346641936943967,
+       "n": 500,
+       "pct": 43.6,
+       "var": 0.000491808,
+       "withheld": false
+      }
+     },
+     "dustin_file": {
+      "k3": {
+       "L": 339,
+       "T": 0,
+       "W": 161,
+       "band": 4.095565273805314,
+       "n": 500,
+       "pct": 32.2,
+       "var": 0.00043663199999999995,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 311,
+       "T": 0,
+       "W": 189,
+       "band": 4.25022734827209,
+       "n": 500,
+       "pct": 37.8,
+       "var": 0.000470232,
+       "withheld": false
+      }
+     },
+     "limitless_development": {
+      "L": 9,
+      "T": 0,
+      "W": 1,
+      "band": 18.594192641790073,
+      "n": 10,
+      "one_sided": false,
+      "pct": 10.0,
+      "wide": true
+     },
+     "limitless_pooled": {
+      "L": 29,
+      "T": 0,
+      "W": 3,
+      "band": 10.099287374302705,
+      "n": 32,
+      "one_sided": false,
+      "pct": 9.375,
+      "wide": false
+     }
+    },
+    "blaziken": {
+     "archetype_list": {
+      "k3": {
+       "L": 221,
+       "T": 0,
+       "W": 279,
+       "band": 4.353106609307886,
+       "n": 500,
+       "pct": 55.800000000000004,
+       "var": 0.000493272,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 139,
+       "T": 0,
+       "W": 361,
+       "band": 3.9270105311801755,
+       "n": 500,
+       "pct": 72.2,
+       "var": 0.000401432,
+       "withheld": false
+      }
+     },
+     "dustin_file": {
+      "k3": {
+       "L": 222,
+       "T": 0,
+       "W": 278,
+       "band": 4.355118235823225,
+       "n": 500,
+       "pct": 55.60000000000001,
+       "var": 0.000493728,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 141,
+       "T": 0,
+       "W": 359,
+       "band": 3.944190161744233,
+       "n": 500,
+       "pct": 71.8,
+       "var": 0.00040495200000000004,
+       "withheld": false
+      }
+     },
+     "limitless_development": {
+      "L": 1,
+      "T": 0,
+      "W": 7,
+      "band": 22.91765149399039,
+      "n": 8,
+      "one_sided": false,
+      "pct": 87.5,
+      "wide": true
+     },
+     "limitless_pooled": {
+      "L": 6,
+      "T": 0,
+      "W": 12,
+      "band": 21.77777777777778,
+      "n": 18,
+      "one_sided": false,
+      "pct": 66.66666666666666,
+      "wide": true
+     }
+    },
+    "hydreigon": {
+     "archetype_list": {
+      "k3": {
+       "L": 224,
+       "T": 0,
+       "W": 276,
+       "band": 4.3589271927849405,
+       "n": 500,
+       "pct": 55.2,
+       "var": 0.000494592,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 236,
+       "T": 0,
+       "W": 264,
+       "band": 4.3758157767438055,
+       "n": 500,
+       "pct": 52.800000000000004,
+       "var": 0.0004984319999999999,
+       "withheld": false
+      }
+     },
+     "dustin_file": {
+      "k3": {
+       "L": 240,
+       "T": 0,
+       "W": 260,
+       "band": 4.37918567772594,
+       "n": 500,
+       "pct": 52.0,
+       "var": 0.0004992,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 252,
+       "T": 0,
+       "W": 248,
+       "band": 4.382552987472028,
+       "n": 500,
+       "pct": 49.6,
+       "var": 0.000499968,
+       "withheld": false
+      }
+     },
+     "limitless_development": {
+      "L": 4,
+      "T": 0,
+      "W": 3,
+      "band": 36.66060555964672,
+      "n": 7,
+      "one_sided": false,
+      "pct": 42.857142857142854,
+      "wide": true
+     },
+     "limitless_pooled": {
+      "L": 9,
+      "T": 0,
+      "W": 9,
+      "band": 23.098821518760552,
+      "n": 18,
+      "one_sided": false,
+      "pct": 50.0,
+      "wide": true
+     }
+    },
+    "lucario": {
+     "archetype_list": {
+      "k3": {
+       "L": 278,
+       "T": 0,
+       "W": 222,
+       "band": 4.355118235823225,
+       "n": 500,
+       "pct": 44.4,
+       "var": 0.000493728,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 193,
+       "T": 0,
+       "W": 307,
+       "band": 4.267258057347832,
+       "n": 500,
+       "pct": 61.4,
+       "var": 0.000474008,
+       "withheld": false
+      }
+     },
+     "dustin_file": {
+      "k3": {
+       "L": 266,
+       "T": 0,
+       "W": 234,
+       "band": 4.37370827010673,
+       "n": 500,
+       "pct": 46.800000000000004,
+       "var": 0.0004979520000000001,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 216,
+       "T": 0,
+       "W": 284,
+       "band": 4.341972919307535,
+       "n": 500,
+       "pct": 56.8,
+       "var": 0.000490752,
+       "withheld": false
+      }
+     },
+     "limitless_development": {
+      "L": 13,
+      "T": 0,
+      "W": 12,
+      "band": 19.584313722977377,
+      "n": 25,
+      "one_sided": false,
+      "pct": 48.0,
+      "wide": true
+     },
+     "limitless_pooled": {
+      "L": 32,
+      "T": 0,
+      "W": 22,
+      "band": 13.105444669206982,
+      "n": 54,
+      "one_sided": false,
+      "pct": 40.74074074074074,
+      "wide": false
+     }
+    },
+    "sceptile": {
+     "archetype_list": {
+      "k3": {
+       "L": 382,
+       "T": 0,
+       "W": 118,
+       "band": 3.7219775560849366,
+       "n": 500,
+       "pct": 23.599999999999998,
+       "var": 0.000360608,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 278,
+       "T": 0,
+       "W": 222,
+       "band": 4.355118235823225,
+       "n": 500,
+       "pct": 44.4,
+       "var": 0.000493728,
+       "withheld": false
+      }
+     },
+     "dustin_file": {
+      "k3": {
+       "L": 343,
+       "T": 0,
+       "W": 157,
+       "band": 4.068159304648725,
+       "n": 500,
+       "pct": 31.4,
+       "var": 0.00043080799999999997,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 260,
+       "T": 0,
+       "W": 240,
+       "band": 4.37918567772594,
+       "n": 500,
+       "pct": 48.0,
+       "var": 0.0004992,
+       "withheld": false
+      }
+     },
+     "limitless_development": {
+      "L": 7,
+      "T": 1,
+      "W": 8,
+      "band": 24.452101615965447,
+      "n": 16,
+      "one_sided": false,
+      "pct": 53.125,
+      "wide": true
+     },
+     "limitless_pooled": {
+      "L": 19,
+      "T": 1,
+      "W": 9,
+      "band": 17.0819789689099,
+      "n": 29,
+      "one_sided": false,
+      "pct": 32.758620689655174,
+      "wide": true
+     }
+    },
+    "suicune": {
+     "archetype_list": {
+      "k3": {
+       "L": 269,
+       "T": 0,
+       "W": 231,
+       "band": 4.370017687836057,
+       "n": 500,
+       "pct": 46.2,
+       "var": 0.0004971120000000001,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 140,
+       "T": 0,
+       "W": 360,
+       "band": 3.9356487648162912,
+       "n": 500,
+       "pct": 72.0,
+       "var": 0.0004032,
+       "withheld": false
+      }
+     },
+     "dustin_file": {
+      "k3": {
+       "L": 258,
+       "T": 0,
+       "W": 242,
+       "band": 4.380448722220133,
+       "n": 500,
+       "pct": 48.4,
+       "var": 0.000499488,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 159,
+       "T": 0,
+       "W": 341,
+       "band": 4.082035868534229,
+       "n": 500,
+       "pct": 68.2,
+       "var": 0.000433752,
+       "withheld": false
+      }
+     },
+     "limitless_development": {
+      "L": 11,
+      "T": 0,
+      "W": 8,
+      "band": 22.2007172678733,
+      "n": 19,
+      "one_sided": false,
+      "pct": 42.10526315789473,
+      "wide": true
+     },
+     "limitless_pooled": {
+      "L": 17,
+      "T": 1,
+      "W": 16,
+      "band": 16.79959036748716,
+      "n": 34,
+      "one_sided": false,
+      "pct": 48.529411764705884,
+      "wide": true
+     }
+    },
+    "vespiquen": {
+     "archetype_list": {
+      "k3": {
+       "L": 335,
+       "T": 0,
+       "W": 165,
+       "band": 4.121596195650418,
+       "n": 500,
+       "pct": 33.0,
+       "var": 0.00044219999999999996,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 196,
+       "T": 0,
+       "W": 304,
+       "band": 4.279232589144927,
+       "n": 500,
+       "pct": 60.8,
+       "var": 0.000476672,
+       "withheld": false
+      }
+     },
+     "dustin_file": {
+      "k3": {
+       "L": 304,
+       "T": 0,
+       "W": 196,
+       "band": 4.279232589144927,
+       "n": 500,
+       "pct": 39.2,
+       "var": 0.000476672,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 193,
+       "T": 0,
+       "W": 307,
+       "band": 4.267258057347832,
+       "n": 500,
+       "pct": 61.4,
+       "var": 0.000474008,
+       "withheld": false
+      }
+     },
+     "limitless_development": {
+      "L": 8,
+      "T": 0,
+      "W": 6,
+      "band": 25.922962793631438,
+      "n": 14,
+      "one_sided": false,
+      "pct": 42.857142857142854,
+      "wide": true
+     },
+     "limitless_pooled": {
+      "L": 21,
+      "T": 1,
+      "W": 19,
+      "band": 15.286808386403614,
+      "n": 41,
+      "one_sided": false,
+      "pct": 47.5609756097561,
+      "wide": true
+     }
+    },
+    "weezing": {
+     "archetype_list": {
+      "k3": {
+       "L": 310,
+       "T": 0,
+       "W": 190,
+       "band": 4.254599769661066,
+       "n": 500,
+       "pct": 38.0,
+       "var": 0.0004712,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 234,
+       "T": 0,
+       "W": 266,
+       "band": 4.373708270106729,
+       "n": 500,
+       "pct": 53.2,
+       "var": 0.000497952,
+       "withheld": false
+      }
+     },
+     "dustin_file": {
+      "k3": {
+       "L": 295,
+       "T": 0,
+       "W": 205,
+       "band": 4.3111089988540074,
+       "n": 500,
+       "pct": 41.0,
+       "var": 0.00048380000000000005,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 223,
+       "T": 0,
+       "W": 277,
+       "band": 4.357058398506956,
+       "n": 500,
+       "pct": 55.400000000000006,
+       "var": 0.000494168,
+       "withheld": false
+      }
+     },
+     "limitless_development": {
+      "L": 9,
+      "T": 1,
+      "W": 4,
+      "band": 24.464259645450138,
+      "n": 14,
+      "one_sided": false,
+      "pct": 32.142857142857146,
+      "wide": true
+     },
+     "limitless_pooled": {
+      "L": 20,
+      "T": 1,
+      "W": 10,
+      "band": 16.660387972901663,
+      "n": 31,
+      "one_sided": false,
+      "pct": 33.87096774193548,
+      "wide": true
+     }
+    }
+   },
+   "kp3_minus_k3": {
+    "archetype_list": {
+     "band": 1.7679930639004213,
+     "pct": 16.425
+    },
+    "dustin_file": {
+     "band": 1.7321565841459021,
+     "pct": 12.8
+    }
+   },
+   "limitless_development": {
+    "avg": 44.8234257518797,
+    "band": 8.8,
+    "hi": 53.6,
+    "lo": 36.0,
+    "opponents": [
+     "lucario",
+     "altaria",
+     "sceptile",
+     "vespiquen",
+     "suicune",
+     "hydreigon",
+     "weezing",
+     "blaziken"
+    ]
+   },
+   "limitless_pooled": {
+    "avg": 41.1877979016825,
+    "band": 6.1,
+    "hi": 47.3,
+    "lo": 35.1,
+    "opponents": [
+     "lucario",
+     "altaria",
+     "sceptile",
+     "vespiquen",
+     "suicune",
+     "hydreigon",
+     "weezing",
+     "blaziken"
+    ]
+   },
+   "name": "Team Rocket's Raticate ex Alolan Ninetales ex",
+   "pilots": {
+    "k3": {
+     "a2_inside_pooled_interval": true,
+     "abs_gap_development": 3.6984257518796966,
+     "abs_gap_pooled": 0.06279790168250088,
+     "archetype_list_panel": {
+      "band": 1.4889760864432982,
+      "cells": 8,
+      "pct": 41.125
+     },
+     "archetype_list_panel_dev_opponents": {
+      "band": 1.4889760864432982,
+      "cells": 8,
+      "pct": 41.125
+     },
+     "cells_beyond_band": [
+      "altaria"
+     ],
+     "cells_no_information": [],
+     "dustin_file_panel": {
+      "band": 1.51390969677851,
+      "cells": 8,
+      "pct": 43.325
+     },
+     "gap_development": -3.6984257518796966,
+     "gap_pooled": -0.06279790168250088,
+     "list_difference": {
+      "band": 2.1234340950450994,
+      "pct": -2.200000000000003
+     }
+    },
+    "kp3": {
+     "a2_inside_pooled_interval": false,
+     "abs_gap_development": 12.7265742481203,
+     "abs_gap_pooled": 16.362202098317496,
+     "archetype_list_panel": {
+      "band": 1.4977561577239469,
+      "cells": 8,
+      "pct": 57.55
+     },
+     "archetype_list_panel_dev_opponents": {
+      "band": 1.4977561577239469,
+      "cells": 8,
+      "pct": 57.55
+     },
+     "cells_beyond_band": [
+      "lucario",
+      "altaria",
+      "suicune",
+      "weezing"
+     ],
+     "cells_no_information": [],
+     "dustin_file_panel": {
+      "band": 1.5037157171486901,
+      "cells": 8,
+      "pct": 56.125
+     },
+     "gap_development": 12.7265742481203,
+     "gap_pooled": 16.362202098317496,
+     "list_difference": {
+      "band": 2.122365299848261,
+      "pct": 1.4249999999999972
+     }
+    }
+   },
+   "untrusted_prone": {
+    "archetype_list": "yes",
+    "dustin_file": "yes"
+   }
+  },
+  "whimsicott": {
+   "cells": {
+    "altaria": {
+     "archetype_list": {
+      "k3": {
+       "L": 292,
+       "T": 0,
+       "W": 208,
+       "band": 4.32040199611101,
+       "n": 500,
+       "pct": 41.6,
+       "var": 0.000485888,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 332,
+       "T": 0,
+       "W": 168,
+       "band": 4.140232665925914,
+       "n": 500,
+       "pct": 33.6,
+       "var": 0.00044620799999999997,
+       "withheld": false
+      }
+     },
+     "dustin_file": {
+      "k3": {
+       "L": 256,
+       "T": 0,
+       "W": 244,
+       "band": 4.38143083843623,
+       "n": 500,
+       "pct": 48.8,
+       "var": 0.000499712,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 286,
+       "T": 0,
+       "W": 214,
+       "band": 4.3370154382939425,
+       "n": 500,
+       "pct": 42.8,
+       "var": 0.000489632,
+       "withheld": false
+      }
+     },
+     "limitless_development": {
+      "L": 0,
+      "T": 0,
+      "W": 1,
+      "band": 0.0,
+      "n": 1,
+      "one_sided": true,
+      "pct": 100.0,
+      "wide": false
+     },
+     "limitless_pooled": {
+      "L": 3,
+      "T": 0,
+      "W": 1,
+      "band": 42.43524478543749,
+      "n": 4,
+      "one_sided": false,
+      "pct": 25.0,
+      "wide": true
+     }
+    },
+    "blaziken": {
+     "archetype_list": {
+      "k3": {
+       "L": 412,
+       "T": 0,
+       "W": 88,
+       "band": 3.33803594468364,
+       "n": 500,
+       "pct": 17.599999999999998,
+       "var": 0.00029004800000000005,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 425,
+       "T": 0,
+       "W": 75,
+       "band": 3.1298690068435775,
+       "n": 500,
+       "pct": 15.0,
+       "var": 0.000255,
+       "withheld": false
+      }
+     },
+     "dustin_file": {
+      "k3": {
+       "L": 400,
+       "T": 0,
+       "W": 100,
+       "band": 3.5061545887196703,
+       "n": 500,
+       "pct": 20.0,
+       "var": 0.0003200000000000001,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 429,
+       "T": 0,
+       "W": 71,
+       "band": 3.0595593721972447,
+       "n": 500,
+       "pct": 14.2,
+       "var": 0.00024367199999999998,
+       "withheld": false
+      }
+     },
+     "limitless_development": null,
+     "limitless_pooled": {
+      "L": 1,
+      "T": 0,
+      "W": 0,
+      "band": 0.0,
+      "n": 1,
+      "one_sided": true,
+      "pct": 0.0,
+      "wide": false
+     }
+    },
+    "hydreigon": {
+     "archetype_list": {
+      "k3": {
+       "L": 175,
+       "T": 0,
+       "W": 325,
+       "band": 4.180822885509502,
+       "n": 500,
+       "pct": 65.0,
+       "var": 0.00045499999999999995,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 292,
+       "T": 0,
+       "W": 208,
+       "band": 4.32040199611101,
+       "n": 500,
+       "pct": 41.6,
+       "var": 0.000485888,
+       "withheld": false
+      }
+     },
+     "dustin_file": {
+      "k3": {
+       "L": 255,
+       "T": 0,
+       "W": 245,
+       "band": 4.381816609581008,
+       "n": 500,
+       "pct": 49.0,
+       "var": 0.0004998,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 357,
+       "T": 0,
+       "W": 143,
+       "band": 3.9609849441773948,
+       "n": 500,
+       "pct": 28.599999999999998,
+       "var": 0.0004084079999999999,
+       "withheld": false
+      }
+     },
+     "limitless_development": {
+      "L": 3,
+      "T": 0,
+      "W": 2,
+      "band": 42.941448508405024,
+      "n": 5,
+      "one_sided": false,
+      "pct": 40.0,
+      "wide": true
+     },
+     "limitless_pooled": {
+      "L": 3,
+      "T": 0,
+      "W": 3,
+      "band": 40.00833246545857,
+      "n": 6,
+      "one_sided": false,
+      "pct": 50.0,
+      "wide": true
+     }
+    },
+    "lucario": {
+     "archetype_list": {
+      "k3": {
+       "L": 337,
+       "T": 0,
+       "W": 163,
+       "band": 4.108750949862987,
+       "n": 500,
+       "pct": 32.6,
+       "var": 0.00043944799999999994,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 339,
+       "T": 0,
+       "W": 161,
+       "band": 4.095565273805314,
+       "n": 500,
+       "pct": 32.2,
+       "var": 0.00043663199999999995,
+       "withheld": false
+      }
+     },
+     "dustin_file": {
+      "k3": {
+       "L": 340,
+       "T": 0,
+       "W": 160,
+       "band": 4.088843748543101,
+       "n": 500,
+       "pct": 32.0,
+       "var": 0.00043519999999999995,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 369,
+       "T": 0,
+       "W": 131,
+       "band": 3.854338878718372,
+       "n": 500,
+       "pct": 26.200000000000003,
+       "var": 0.000386712,
+       "withheld": false
+      }
+     },
+     "limitless_development": {
+      "L": 3,
+      "T": 0,
+      "W": 5,
+      "band": 33.54800664719142,
+      "n": 8,
+      "one_sided": false,
+      "pct": 62.5,
+      "wide": true
+     },
+     "limitless_pooled": {
+      "L": 10,
+      "T": 0,
+      "W": 6,
+      "band": 23.72202299552043,
+      "n": 16,
+      "one_sided": false,
+      "pct": 37.5,
+      "wide": true
+     }
+    },
+    "sceptile": {
+     "archetype_list": {
+      "k3": {
+       "L": 371,
+       "T": 0,
+       "W": 129,
+       "band": 3.835154592972753,
+       "n": 500,
+       "pct": 25.8,
+       "var": 0.000382872,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 377,
+       "T": 0,
+       "W": 123,
+       "band": 3.775063799195982,
+       "n": 500,
+       "pct": 24.6,
+       "var": 0.000370968,
+       "withheld": false
+      }
+     },
+     "dustin_file": {
+      "k3": {
+       "L": 359,
+       "T": 0,
+       "W": 141,
+       "band": 3.944190161744233,
+       "n": 500,
+       "pct": 28.199999999999996,
+       "var": 0.0004049519999999999,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 382,
+       "T": 0,
+       "W": 118,
+       "band": 3.7219775560849366,
+       "n": 500,
+       "pct": 23.599999999999998,
+       "var": 0.000360608,
+       "withheld": false
+      }
+     },
+     "limitless_development": {
+      "L": 2,
+      "T": 0,
+      "W": 0,
+      "band": 0.0,
+      "n": 2,
+      "one_sided": true,
+      "pct": 0.0,
+      "wide": false
+     },
+     "limitless_pooled": {
+      "L": 4,
+      "T": 0,
+      "W": 1,
+      "band": 35.06154588719671,
+      "n": 5,
+      "one_sided": false,
+      "pct": 20.0,
+      "wide": true
+     }
+    },
+    "suicune": {
+     "archetype_list": {
+      "k3": {
+       "L": 292,
+       "T": 0,
+       "W": 208,
+       "band": 4.32040199611101,
+       "n": 500,
+       "pct": 41.6,
+       "var": 0.000485888,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 277,
+       "T": 0,
+       "W": 223,
+       "band": 4.357058398506956,
+       "n": 500,
+       "pct": 44.6,
+       "var": 0.000494168,
+       "withheld": false
+      }
+     },
+     "dustin_file": {
+      "k3": {
+       "L": 354,
+       "T": 0,
+       "W": 146,
+       "band": 3.9854661398636924,
+       "n": 500,
+       "pct": 29.2,
+       "var": 0.00041347199999999996,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 353,
+       "T": 0,
+       "W": 147,
+       "band": 3.9934392756119377,
+       "n": 500,
+       "pct": 29.4,
+       "var": 0.00041512799999999996,
+       "withheld": false
+      }
+     },
+     "limitless_development": {
+      "L": 3,
+      "T": 0,
+      "W": 3,
+      "band": 40.00833246545857,
+      "n": 6,
+      "one_sided": false,
+      "pct": 50.0,
+      "wide": true
+     },
+     "limitless_pooled": {
+      "L": 4,
+      "T": 0,
+      "W": 5,
+      "band": 32.46439433999694,
+      "n": 9,
+      "one_sided": false,
+      "pct": 55.55555555555556,
+      "wide": true
+     }
+    },
+    "vespiquen": {
+     "archetype_list": {
+      "k3": {
+       "L": 243,
+       "T": 0,
+       "W": 257,
+       "band": 4.380974883287965,
+       "n": 500,
+       "pct": 51.4,
+       "var": 0.000499608,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 241,
+       "T": 0,
+       "W": 259,
+       "band": 4.379852329930771,
+       "n": 500,
+       "pct": 51.800000000000004,
+       "var": 0.000499352,
+       "withheld": false
+      }
+     },
+     "dustin_file": {
+      "k3": {
+       "L": 340,
+       "T": 0,
+       "W": 160,
+       "band": 4.088843748543101,
+       "n": 500,
+       "pct": 32.0,
+       "var": 0.00043519999999999995,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 346,
+       "T": 0,
+       "W": 154,
+       "band": 4.046685699680666,
+       "n": 500,
+       "pct": 30.8,
+       "var": 0.000426272,
+       "withheld": false
+      }
+     },
+     "limitless_development": {
+      "L": 4,
+      "T": 0,
+      "W": 3,
+      "band": 36.66060555964672,
+      "n": 7,
+      "one_sided": false,
+      "pct": 42.857142857142854,
+      "wide": true
+     },
+     "limitless_pooled": {
+      "L": 6,
+      "T": 0,
+      "W": 5,
+      "band": 29.425758813377275,
+      "n": 11,
+      "one_sided": false,
+      "pct": 45.45454545454545,
+      "wide": true
+     }
+    },
+    "weezing": {
+     "archetype_list": {
+      "k3": {
+       "L": 271,
+       "T": 0,
+       "W": 229,
+       "band": 4.367203722291874,
+       "n": 500,
+       "pct": 45.800000000000004,
+       "var": 0.0004964720000000001,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 264,
+       "T": 0,
+       "W": 236,
+       "band": 4.3758157767438055,
+       "n": 500,
+       "pct": 47.199999999999996,
+       "var": 0.0004984319999999999,
+       "withheld": false
+      }
+     },
+     "dustin_file": {
+      "k3": {
+       "L": 236,
+       "T": 0,
+       "W": 264,
+       "band": 4.3758157767438055,
+       "n": 500,
+       "pct": 52.800000000000004,
+       "var": 0.0004984319999999999,
+       "withheld": false
+      },
+      "kp3": {
+       "L": 247,
+       "T": 0,
+       "W": 253,
+       "band": 4.382377670625844,
+       "n": 500,
+       "pct": 50.6,
+       "var": 0.000499928,
+       "withheld": false
+      }
+     },
+     "limitless_development": {
+      "L": 4,
+      "T": 0,
+      "W": 1,
+      "band": 35.06154588719671,
+      "n": 5,
+      "one_sided": false,
+      "pct": 20.0,
+      "wide": true
+     },
+     "limitless_pooled": {
+      "L": 6,
+      "T": 0,
+      "W": 2,
+      "band": 30.006249349093927,
+      "n": 8,
+      "one_sided": false,
+      "pct": 25.0,
+      "wide": true
+     }
+    }
+   },
+   "kp3_minus_k3": {
+    "archetype_list": {
+     "band": 1.5729290028478715,
+     "pct": -3.85
+    },
+    "dustin_file": {
+     "band": 1.5179358530583564,
+     "pct": -5.725
+    }
+   },
+   "limitless_development": {
+    "avg": 45.05102040816326,
+    "band": 12.1,
+    "hi": 57.1,
+    "lo": 33.0,
+    "opponents": [
+     "lucario",
+     "altaria",
+     "sceptile",
+     "vespiquen",
+     "suicune",
+     "hydreigon",
+     "weezing"
+    ]
+   },
+   "limitless_pooled": {
+    "avg": 32.31376262626263,
+    "band": 11.2,
+    "hi": 43.5,
+    "lo": 21.1,
+    "opponents": [
+     "lucario",
+     "altaria",
+     "sceptile",
+     "vespiquen",
+     "suicune",
+     "hydreigon",
+     "weezing",
+     "blaziken"
+    ]
+   },
+   "name": "Whimsicott ex Ariados",
+   "pilots": {
+    "k3": {
+     "a2_inside_pooled_interval": true,
+     "abs_gap_development": 1.6510204081632622,
+     "abs_gap_pooled": 7.861237373737367,
+     "archetype_list_panel": {
+      "band": 1.4567148677761204,
+      "cells": 8,
+      "pct": 40.175
+     },
+     "archetype_list_panel_dev_opponents": {
+      "band": 1.5950604954044845,
+      "cells": 7,
+      "pct": 43.4
+     },
+     "cells_beyond_band": [],
+     "cells_no_information": [
+      "blaziken"
+     ],
+     "dustin_file_panel": {
+      "band": 1.4508402710153865,
+      "cells": 8,
+      "pct": 36.5
+     },
+     "gap_development": -1.6510204081632622,
+     "gap_pooled": 7.861237373737367,
+     "list_difference": {
+      "band": 2.0559561517697795,
+      "pct": 3.674999999999997
+     }
+    },
+    "kp3": {
+     "a2_inside_pooled_interval": true,
+     "abs_gap_development": 5.679591836734687,
+     "abs_gap_pooled": 4.011237373737373,
+     "archetype_list_panel": {
+      "band": 1.4466722026775796,
+      "cells": 8,
+      "pct": 36.325
+     },
+     "archetype_list_panel_dev_opponents": {
+      "band": 1.5917323996199866,
+      "cells": 7,
+      "pct": 39.371428571428574
+     },
+     "cells_beyond_band": [],
+     "cells_no_information": [
+      "blaziken"
+     ],
+     "dustin_file_panel": {
+      "band": 1.3924882728411037,
+      "cells": 8,
+      "pct": 30.775
+     },
+     "gap_development": -5.679591836734687,
+     "gap_pooled": 4.011237373737373,
+     "list_difference": {
+      "band": 2.0079551917311305,
+      "pct": 5.550000000000004
+     }
+    }
+   },
+   "untrusted_prone": {
+    "archetype_list": "yes",
+    "dustin_file": "yes"
+   }
+  }
+ },
+ "findings": {
+  "k3": {
+   "72": {
+    "CHECK hand: more than 10 cards": {
+     "first_example": "dustin_garchomp v lucario, seed 21106720372, turn 7: 11 cards; after UseStadium",
+     "first_example_deal": 372,
+     "first_example_seed": 21106720372,
+     "games": 2
+    }
+   },
+   "74": {
+    "CHECK hand: more than 10 cards": {
+     "first_example": "sceptile v dustin_garchomp, seed 21106740493, turn 7: 11 cards; after UseStadium",
+     "first_example_deal": 493,
+     "first_example_seed": 21106740493,
+     "games": 1
+    }
+   }
+  },
+  "kp3": {}
+ },
+ "games_per_pairing": 500,
+ "identity": "IDENTITY PASS 45ecfda47cf4ccb4d12494f9b1a59954db1c357413f7ab4edabc372327e53b5b: table pairings 0,5,13,23 x 500 deals for k3 and kp3 (4,000 games): default flags identical to the table references on a, b, seed, first_seat, moves, winner_seat, points, turns, first_deck_score and byte for byte to the official 7fc6ccb scan's lines; --pairs mode with --seed-base 72000000 replays the same 4,000 games; --pairs refuses a missing --seed-base, --decks, a mismatched seed_first and --games above 10,000; --seed-base and --root are refused without --pairs",
+ "rows_check": "ROWS PASS: /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/b2e_rows_2026-09-26/b2e_k3_arch.jsonl, /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/b2e_rows_2026-09-26/b2e_k3_dustin.jsonl, /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/b2e_rows_2026-09-26/b2e_kp3_arch.jsonl, /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/b2e_rows_2026-09-26/b2e_kp3_dustin.jsonl: each pilot's two block files hold its 96 pairings x 500 deals as /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/b2e_card_check_2026-09-26/b2e_pairings.tsv (seeds, seats, decks, pilots, blocks); RULE findings in 0 pilot-pairings",
+ "seed_base": 21106000000,
+ "withheld_pairings": {
+  "k3": [],
+  "kp3": []
+ }
+}

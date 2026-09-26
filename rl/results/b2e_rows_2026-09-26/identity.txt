@@ -1,0 +1,51 @@
+45ecfda47cf4ccb4d12494f9b1a59954db1c357413f7ab4edabc372327e53b5b  legality_scan_b2e_7fc6ccb  (/home/dacz8976/engine-b2e-7fc6ccb/legality_scan_b2e_7fc6ccb)
+
+source: 7fc6ccb 7fc6ccbcecbfeadf19962be2e11b6c570aa7b88d (main; the official engine's commit) + legality_scan_pairs.patch
+patch sha256: 6fb3fd058086edf859bf3642d481bd331b024b6f13f54f5b0d132ea52bc5aa68
+official deckgym (rl/engine-2026-09-25/deckgym; not used to play B2e games): f4d235e596cdd713546c17450fd66bd9d5eefe4baf53e93d66d8bbe1628e1034
+official legality_scan (unpatched, same commit): d5c0a9528e076299875ac603667f7076951de885ea8465f3be0d1089b5afbbfb
+built 2026-09-26T09:19:50Z with cargo 1.93.1 (083ac5135 2025-12-15) (built from a source tarball), rustc 1.93.1 (01f6ddf75 2026-02-11) (built from a source tarball)
+
+inputs (sha256, path relative to the repo root; the copies in /home/dacz8976/engine-b2e-7fc6ccb are the ones played):
+c3f4f7f8a97708c680bae3838b52167107ce873b24d4567dde4992f7ad1041cb  rl/results/b2e_card_check_2026-09-26/b2e_pairings.tsv
+b3392d82475130e400887897b75e1add156ca4151f3ce85b38042233bd7336a0  decks/brews/brew-08-entei-rainbow-cave.txt
+a4355e7fdb711ef1ec63baf6472017495da9fb2bf89dafa0e105b0f3d159e2ea  decks/dustin/04-absol-hoopa-darkrai.txt
+564575a6e2c078d5eab367295c70c688aa109a2aa13c516d5f584a2f2ead6f6f  decks/dustin/08-garchomp-toolbox.txt
+48ca6b6c6aeefb36678abff741896ad4931ae101e9e4a698f1faefb3f3e4f91e  decks/dustin/09-mega-manectric-heliolisk.txt
+4d059bd2c5cba229cc025746f05dca2d03281ebe07c0712917d9fc8d53c65bd5  decks/dustin/12-ariados-whimsicott-ogerpon.txt
+f79ad459a1188f10ba34be4606f3cbc60db21386e8ef91721c5506239653b6fa  decks/dustin/13-a-ninetales-raticate.txt
+c3a57b9c835be77ba864514e2636645885c4f22d75028c5f29e2686edcbe171f  decks/screen/opponents/t-altaria.txt
+d88a70e56dae8f8500d539348223b5fee5eaba705667578a8fcbca95963fd7ed  decks/screen/opponents/t-blaziken.txt
+18688bd9ab09f2638538006590767a5750abe763572c0fb636c47eec93155f3b  decks/screen/opponents/t-hydreigon.txt
+76ad71c4d932da51fddc8c3082f184f8012c86e1f1e15c5858e055190560f634  decks/screen/opponents/t-lucario.txt
+fe0b7fc4de2f9dff0268a65d30dd39bfd5b73e7e5115b48e59f3975777018cd2  decks/screen/opponents/t-sceptile.txt
+639778c3cdc056130278fa13984b1bb1c508226032334d54b7a01a25d3187783  decks/screen/opponents/t-suicune.txt
+8356844fd2d143a44c547356ff5a32b74977478fbb1f9fc2a716a7f2233f8255  decks/screen/opponents/t-vespiquen.txt
+26cb869fe5f2c7cd79f8b974bf7667f802837bdb6ec9442db5360aef490ce5a1  decks/screen/opponents/t-weezing.txt
+07b98258ec896664f27d4722db83a26041d23230d598d8216115ba7a77b43cef  rl/results/b2e_card_check_2026-09-26/decks/h-charizardy_entei.txt
+ea1ead9eabed8ef99533d3b00db3cfae9c42e0840e16af01a29b8c7b0f922975  rl/results/b2e_card_check_2026-09-26/decks/h-garchomp.txt
+8ae12458aec1a13bd9e02272a640a44d297e4b56cc3612fceef1ff354c8c85e1  rl/results/b2e_card_check_2026-09-26/decks/h-hoopa_absol.txt
+921cb698081320aa3c51e404a08fee547671d2a5ba476f25af3776a4e07082e3  rl/results/b2e_card_check_2026-09-26/decks/h-manectric.txt
+24591310f598992eae8e3104167bacab8fa255eb90fcd443ad8332792bee37e4  rl/results/b2e_card_check_2026-09-26/decks/h-raticate.txt
+9f30313868ccaec41bbd2cac293360986dbc6da7c68f625e1b8af61be4ab1fe5  rl/results/b2e_card_check_2026-09-26/decks/h-whimsicott.txt
+
+decks/brews/brew-08-entei-rainbow-cave.txt  from 7fc6ccb
+decks/dustin/04-absol-hoopa-darkrai.txt  from 7fc6ccb
+decks/dustin/08-garchomp-toolbox.txt  from 7fc6ccb
+decks/dustin/09-mega-manectric-heliolisk.txt  from 7fc6ccb
+decks/dustin/12-ariados-whimsicott-ogerpon.txt  from 7fc6ccb
+decks/dustin/13-a-ninetales-raticate.txt  from 7fc6ccb
+decks/screen/opponents/t-altaria.txt  from 7fc6ccb
+decks/screen/opponents/t-blaziken.txt  from 7fc6ccb
+decks/screen/opponents/t-hydreigon.txt  from 7fc6ccb
+decks/screen/opponents/t-lucario.txt  from 7fc6ccb
+decks/screen/opponents/t-sceptile.txt  from 7fc6ccb
+decks/screen/opponents/t-suicune.txt  from 7fc6ccb
+decks/screen/opponents/t-vespiquen.txt  from 7fc6ccb
+decks/screen/opponents/t-weezing.txt  from 7fc6ccb
+rl/results/b2e_card_check_2026-09-26/decks/h-charizardy_entei.txt  from the working copy = e5aab26's version
+rl/results/b2e_card_check_2026-09-26/decks/h-garchomp.txt  from the working copy = e5aab26's version
+rl/results/b2e_card_check_2026-09-26/decks/h-hoopa_absol.txt  from the working copy = e5aab26's version
+rl/results/b2e_card_check_2026-09-26/decks/h-manectric.txt  from the working copy = e5aab26's version
+rl/results/b2e_card_check_2026-09-26/decks/h-raticate.txt  from the working copy = e5aab26's version
+rl/results/b2e_card_check_2026-09-26/decks/h-whimsicott.txt  from the working copy = e5aab26's version

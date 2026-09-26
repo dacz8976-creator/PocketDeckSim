@@ -1,0 +1,59 @@
+identity check of /home/dacz8976/engine-b2e-7fc6ccb/legality_scan_b2e_7fc6ccb, sha256 45ecfda47cf4ccb4d12494f9b1a59954db1c357413f7ab4edabc372327e53b5b, started 2026-09-26T09:19:50Z
+pairings 0,5,13,23 x 500 deals; k3 then kp3; (a) default flags, (b) --pairs mode, (c) --pairs guards; 14 threads of 16 cores, nice 10
+reference files (sha256):
+6876da30c61421c418d0fd9c7fb0db9bceeb51d5ca4f89533632d47204a72e53  /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/b2e_rows_2026-09-26/../per_game_table_2026-09-25/k3_500.jsonl
+7f8d27509d102147d321e2907d99e86c684d2bc62bd6a9a0348ecf8128a18ca5  /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/b2e_rows_2026-09-26/../public_pricing_2026-09-25/kp3_500_worst5.jsonl
+02cde63ec4c9017933d2db39097bf0dc48e5e5293ea292aaf2156bcec9096f5b  /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/b2e_rows_2026-09-26/../public_pricing_2026-09-25/kp3_500_rest.jsonl
+79fe1af726ddd9b06d3eb7062800eac62c28410d7d2aa4cf0c0d9a875cb81438  /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/b2e_rows_2026-09-26/../engine_identity_2026-09-25/k3_500.jsonl
+cc1e1c4f4af7b0034cf691720414bc5f124ac0d5c306a55f400252ba31dd5fb0  /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/b2e_rows_2026-09-26/../engine_identity_2026-09-25/kp3_500.jsonl
+1d793ee93fbbd45ebfaf54d38622fceb05f2b4b823ddbb2e85b1f404280ec978  /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/b2e_rows_2026-09-26/../engine_identity_2026-09-25/compare.py
+subset of /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/b2e_rows_2026-09-26/../per_game_table_2026-09-25/k3_500.jsonl: 2,000 games (pairings [0, 5, 13, 23], deals < 500, bot k3); problems: 0
+subset of /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/b2e_rows_2026-09-26/../engine_identity_2026-09-25/k3_500.jsonl: 2,000 games (pairings [0, 5, 13, 23], deals < 500, bot k3); problems: 0
+subset of /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/b2e_rows_2026-09-26/../public_pricing_2026-09-25/kp3_500_worst5.jsonl, /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/b2e_rows_2026-09-26/../public_pricing_2026-09-25/kp3_500_rest.jsonl: 2,000 games (pairings [0, 5, 13, 23], deals < 500, bot kp3); problems: 0
+subset of /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/b2e_rows_2026-09-26/../engine_identity_2026-09-25/kp3_500.jsonl: 2,000 games (pairings [0, 5, 13, 23], deals < 500, bot kp3); problems: 0
+table_tsv: /home/dacz8976/engine-b2e-7fc6ccb/identity_pairs.tsv: pairings [0, 5, 13, 23] from /home/dacz8976/engine-b2e-7fc6ccb/ref_k3.jsonl, seed_first = 72,000,000 + 10,000 x pairing
+pairing	block	held_key	held_file	opponent	panel_file	seed_first
+0	table	altaria	decks/research/altaria.txt	blaziken	decks/research/blaziken.txt	72000000
+5	table	altaria	decks/research/altaria.txt	vespiquen	decks/research/vespiquen.txt	72050000
+13	table	hydreigon	decks/research/hydreigon.txt	lucario	decks/research/lucario.txt	72130000
+23	table	sceptile	decks/research/sceptile.txt	vespiquen	decks/research/vespiquen.txt	72230000
+refused, as it should: --pairs without --seed-base ("--pairs needs --seed-base")
+refused, as it should: --pairs with --decks ("--pairs names its own deck files")
+refused, as it should: a seed_first that doesn't match --seed-base ("seed_first doesn't match --seed-base")
+refused, as it should: --games above 10,000 with --pairs ("sub-block holds 10,000 seeds")
+refused, as it should: --seed-base without --pairs ("--seed-base is only for --pairs")
+refused, as it should: --root without --pairs ("--root is only for --pairs")
+
+== k3, (a) default flags
+subset of /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/b2e_rows_2026-09-26/identity_k3.jsonl: 2,000 games (pairings [0, 5, 13, 23], deals < 500, bot k3); problems: 0
+new: /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/b2e_rows_2026-09-26/identity_k3.jsonl (2,000 games); reference: /home/dacz8976/engine-b2e-7fc6ccb/ref_k3.jsonl (2,000 games)
+games in both: 2,000; identical on a, b, seed, first_seat, moves, winner_seat, points, turns, first_deck_score: 2,000 of 2,000
+only in new: 0; only in reference: 0
+RESULT: IDENTICAL
+same lines (byte for byte): /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/b2e_rows_2026-09-26/identity_k3.jsonl v /home/dacz8976/engine-b2e-7fc6ccb/off_k3.jsonl: 2,000 of 2,000 games identical; problems: 0
+
+== k3, (b) --pairs mode, --seed-base 72000000
+subset of /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/b2e_rows_2026-09-26/identity_pairs_k3.jsonl: 2,000 games (pairings [0, 5, 13, 23], deals < 500, bot k3); problems: 0
+new: /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/b2e_rows_2026-09-26/identity_pairs_k3.jsonl (2,000 games); reference: /home/dacz8976/engine-b2e-7fc6ccb/ref_k3.jsonl (2,000 games)
+games in both: 2,000; identical on a, b, seed, first_seat, moves, winner_seat, points, turns, first_deck_score: 2,000 of 2,000
+only in new: 0; only in reference: 0
+RESULT: IDENTICAL
+same lines (without a_file,b_file, types included): /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/b2e_rows_2026-09-26/identity_pairs_k3.jsonl v /home/dacz8976/engine-b2e-7fc6ccb/off_k3.jsonl: 2,000 of 2,000 games identical; problems: 0
+
+== kp3, (a) default flags
+subset of /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/b2e_rows_2026-09-26/identity_kp3.jsonl: 2,000 games (pairings [0, 5, 13, 23], deals < 500, bot kp3); problems: 0
+new: /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/b2e_rows_2026-09-26/identity_kp3.jsonl (2,000 games); reference: /home/dacz8976/engine-b2e-7fc6ccb/ref_kp3.jsonl (2,000 games)
+games in both: 2,000; identical on a, b, seed, first_seat, moves, winner_seat, points, turns, first_deck_score: 2,000 of 2,000
+only in new: 0; only in reference: 0
+RESULT: IDENTICAL
+same lines (byte for byte): /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/b2e_rows_2026-09-26/identity_kp3.jsonl v /home/dacz8976/engine-b2e-7fc6ccb/off_kp3.jsonl: 2,000 of 2,000 games identical; problems: 0
+
+== kp3, (b) --pairs mode, --seed-base 72000000
+subset of /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/b2e_rows_2026-09-26/identity_pairs_kp3.jsonl: 2,000 games (pairings [0, 5, 13, 23], deals < 500, bot kp3); problems: 0
+new: /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/b2e_rows_2026-09-26/identity_pairs_kp3.jsonl (2,000 games); reference: /home/dacz8976/engine-b2e-7fc6ccb/ref_kp3.jsonl (2,000 games)
+games in both: 2,000; identical on a, b, seed, first_seat, moves, winner_seat, points, turns, first_deck_score: 2,000 of 2,000
+only in new: 0; only in reference: 0
+RESULT: IDENTICAL
+same lines (without a_file,b_file, types included): /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/b2e_rows_2026-09-26/identity_pairs_kp3.jsonl v /home/dacz8976/engine-b2e-7fc6ccb/off_kp3.jsonl: 2,000 of 2,000 games identical; problems: 0
+
+IDENTITY PASS 45ecfda47cf4ccb4d12494f9b1a59954db1c357413f7ab4edabc372327e53b5b: table pairings 0,5,13,23 x 500 deals for k3 and kp3 (4,000 games): default flags identical to the table references on a, b, seed, first_seat, moves, winner_seat, points, turns, first_deck_score and byte for byte to the official 7fc6ccb scan's lines; --pairs mode with --seed-base 72000000 replays the same 4,000 games; --pairs refuses a missing --seed-base, --decks, a mismatched seed_first and --games above 10,000; --seed-base and --root are refused without --pairs

@@ -1,0 +1,13 @@
+scan binary 45ecfda47cf4ccb4d12494f9b1a59954db1c357413f7ab4edabc372327e53b5b
+k3 arch: /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/b2e_rows_2026-09-26/b2e_k3_arch.jsonl: 24,000 lines, 24,000 distinct games; problems 0
+k3 dustin: /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/b2e_rows_2026-09-26/b2e_k3_dustin.jsonl: 24,000 lines, 24,000 distinct games; problems 0
+kp3 arch: /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/b2e_rows_2026-09-26/b2e_kp3_arch.jsonl: 24,000 lines, 24,000 distinct games; problems 0
+kp3 dustin: /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/b2e_rows_2026-09-26/b2e_kp3_dustin.jsonl: 24,000 lines, 24,000 distinct games; problems 0
+k3 and kp3 on the same 48,000 deals (pairing, i, seed)
+k3 RULE findings: none
+k3 CHECK findings: in 2 pairings
+   pairing 72 (dustin_garchomp v lucario): CHECK hand: more than 10 cards: 2 games (e.g. deal 372: dustin_garchomp v lucario, seed 21106720372, turn 7: 11 cards; after UseStadium)
+   pairing 74 (dustin_garchomp v sceptile): CHECK hand: more than 10 cards: 1 games (e.g. deal 493: sceptile v dustin_garchomp, seed 21106740493, turn 7: 11 cards; after UseStadium)
+kp3 RULE findings: none
+kp3 CHECK findings: none
+ROWS PASS: /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/b2e_rows_2026-09-26/b2e_k3_arch.jsonl, /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/b2e_rows_2026-09-26/b2e_k3_dustin.jsonl, /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/b2e_rows_2026-09-26/b2e_kp3_arch.jsonl, /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/b2e_rows_2026-09-26/b2e_kp3_dustin.jsonl: each pilot's two block files hold its 96 pairings x 500 deals as /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/b2e_card_check_2026-09-26/b2e_pairings.tsv (seeds, seats, decks, pilots, blocks); RULE findings in 0 pilot-pairings
