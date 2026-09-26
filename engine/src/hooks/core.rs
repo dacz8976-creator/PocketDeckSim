@@ -1814,17 +1814,21 @@ pub(crate) fn modify_damage(
         return 0;
     }
 
+    // The three protections below cover damage "by attacks" only, as Safeguard and Shell Shield above do: an
+    // Ability's damage (Bad Dreams) goes through them (rules/09, laptop's Altaria card check).
     // Check for PreventAllDamageAndEffects (Shinx's Hide)
-    if target_effects
-        .iter()
-        .any(|effect| matches!(effect, CardEffect::PreventAllDamageAndEffects))
+    if is_from_active_attack
+        && target_effects
+            .iter()
+            .any(|effect| matches!(effect, CardEffect::PreventAllDamageAndEffects))
     {
         debug!("PreventAllDamageAndEffects: Preventing all damage and effects");
         return 0;
     }
 
     // Check for PreventDamageFromBasic (Carracosta's Blocking Shell)
-    if attacking_pokemon.card.is_basic()
+    if is_from_active_attack
+        && attacking_pokemon.card.is_basic()
         && target_effects
             .iter()
             .any(|effect| matches!(effect, CardEffect::PreventDamageFromBasic))
@@ -1985,9 +1989,10 @@ pub(crate) fn modify_damage(
         .saturating_sub(reductions.total_u32_saturating());
 
     // Threshold-based prevention (e.g. Cascoon's Harden): prevent all damage if it is low enough.
-    let prevented_by_threshold = target_effects
-        .iter()
-        .any(|effect| matches!(effect, CardEffect::PreventDamageIfLessOrEqual { threshold } if final_damage <= *threshold));
+    let prevented_by_threshold = is_from_active_attack
+        && target_effects
+            .iter()
+            .any(|effect| matches!(effect, CardEffect::PreventDamageIfLessOrEqual { threshold } if final_damage <= *threshold));
     if prevented_by_threshold {
         debug!("PreventDamageIfLessOrEqual: Preventing {final_damage} damage");
         return 0;
