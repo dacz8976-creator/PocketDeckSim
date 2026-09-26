@@ -1,5 +1,10 @@
 # kt carrier census (Sept 26, 2026): which Limitless top-30 decks carry the cards kt switch 1 prices
 
+> **Dustin's rulings, Sept 26 (laptop chat; recorded in `docs/REVIEW_2026-09-24_direction.md` section 8 and `rl/RUN5.md`), added after this census was written:**
+> - Dragonair Mega Rayquaza ex is **not** his deck. "His decks" means only the files he gave the project, so the census's conservative `shares_pokemon` flag doesn't apply. His words: "mega rayquaza is in none of the decks I gave you, dragonair is in one, but mega rayquaza is unique fire and lightning and I think the one I gave you with dragonair is fighting and metal energy". Deck 11's file reads "Energy: Fighting, Metal".
+> - A panel archetype whose lists carry the card may also serve (Suicune).
+> - So clause (d) has carriers for kt's switch 1: Dragonair Mega Rayquaza ex (135 of 143 lists with Gouging Fire), and Suicune.
+
 This file REPORTS. It decides nothing and changes no rule. Every figure below comes from a file in this folder (named in each section); card texts come from `python lib/card.py` as quoted in those files, never from memory. Development-half Limitless standings only; the 63 holdout standings files were never opened. No engine game was played (the only engine run was `goldfish --games 0 --coverage`, five times, once per list). Nothing is committed: `git status` (read through WSL, read-only) shows only untracked files under this folder from this work; `docs/REVIEW_2026-09-24_direction.md` shows as modified in the working tree, which predates this census and was not touched.
 
 ## 1. What this answers

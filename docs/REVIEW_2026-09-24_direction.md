@@ -171,7 +171,9 @@ Dustin's decisions, in the order they block things:
 - **(iii) The reserve route: approved.** "The small-fix route: yes, approved as sharpened, with the one change I asked for — the gain must show on at least one deck that isn't yours." The "pending Dustin's OK" on the Skarmory bullet's route is closed. RUN5's rules now carry it.
   - He added that the route is chosen by the footprint measured on the table, read before anything else: "the 15 percent trigger decides which route applies, and it should be read before the route is chosen, as the rule says."
 - **(ii) A panel archetype as the (d) deck: yes.** "Altaria is a non-Dustin deck whose real cells are known, so the gain can be checked against Limitless directly rather than only against paired noise. Yes, it counts, and the same ruling covers Suicune for the Tool fix."
-- **(i) Dragonair Mega Rayquaza ex as "his deck":** not answered yet.
+- **(i) Dragonair Mega Rayquaza ex is not his deck.** Dustin: "Yes mega rayquaza is in none of the decks I gave you, dragonair is in one, but mega rayquaza is unique fire and lightning and I think the one I gave you with dragonair is fighting and metal energy". Checked: deck 11's file reads "Energy: Fighting, Metal".
+  - The rule going forward: **"his decks" means only the files he gave the project** (`decks/dustin/` and the brews built with him). A Limitless archetype that shares some Pokémon with one of them is still a non-Dustin deck.
+  - So the reserve route's (d) is open for kt's switch 1 with Dragonair Mega Rayquaza ex (135 of 143 development lists carry Gouging Fire; `rl/results/kt_carrier_census_2026-09-26/README.md`), as well as with Suicune under ruling (ii).
 - **koa: registered.** "Register the draft." `rl/results/opening_active_census_2026-09-26/REGISTRATION.md`, from the reviewed draft d7dbfb2.
   - The route is fixed by koa's measured table footprint: predicted 6.0%; under 15% the reserve route, else the ordinary rule.
   - Altaria's seven real cells are read before and after beside (d).
@@ -182,7 +184,7 @@ Dustin's decisions, in the order they block things:
   - The chip is real and good. The rest of the network's Hydreigon edge is unnamed, and kpr3 fails through its effect on the other decks.
 - **kpr provenance:** Dustin's go-ahead was for option 2 (the clock too), which is 9a35f54 ("Dustin's option 2"). He did not approve 1981bb4 (amendment 5, the opponent-side horizon fix): it was reported to him as already recorded, and he took it as the builder's own correction. 1981bb4's message and the cloud README's line 29 are wrong on this point.
 - **Seed table:** approved as hygiene. START_HERE now lists 21,102,000,000 to 21,107,199,999 (this session's blocks, Sept 25-26) and 21,110,000,000 to 21,200,799,999 (Altaria B2c).
-- **Still his:** kt's registration (item 2), the ladder panel and A3 (item 5), B4b's questions (item 6), the A1 build, the quiz and ladder games (item 8), and ruling (i).
+- **Still his:** kt's registration (item 2), the ladder panel and A3 (item 5), B4b's questions (item 6), the A1 build, the quiz and ladder games (item 8).
 
 ### Objective for this month
 
