@@ -180,6 +180,16 @@ Dustin's decisions, in the order they block things:
       - koa's registration takes the held-out part as amendment 1, before any koa game.
       - RUN5's rules carry the test groups.
     - **Decks aren't fixed lists:** Limitless archetypes cover variations, and players swap Trainers (game8 and other sites list alternatives). The gauntlet proposal reports each archetype's Trainer variation.
+    - **The gauntlet additions (6e379d8's proposal): all three yes, Sept 26 midday.**
+      - **The Metal deck** (Mega Scizor ex / Revavroom) is **a coverage row, not a scoreboard row**. Dustin: "A deck that no real cells can check shouldn't count toward accuracy, but a bot that has never played against Metal is a worse screen opponent for a Metal brew. Coverage row, not scoreboard row." His Skarmory deck is Metal, and so will some brews be.
+      - **Dragonair Mega Rayquaza ex and Mega Altaria ex Greninja join the scoreboard**, which grows from 28 cells to 45. Dustin: "More real cells is the cheapest power increase available." His conditions:
+        - The 28 existing cells stay frozen. The new cells are added beside them with their own seed rows, so nothing already read moves.
+        - k3 and kp3 are both run on the new cells before any candidate is, so the baselines exist.
+        - The repo's uncommon Rayquaza list (the kt census file, with Skull Fossil) is replaced by the most common list for the gauntlet.
+      - **The variation check runs once, with the 3-point rule applied to each deck's seven-opponent average, never to single cells.** Dustin: "A single-Trainer swap at 500 games per cell carries about ±4 of noise, so a 3-point threshold on a cell would add second lists on noise alone; the seven-opponent average has about ±1.5 and can carry that rule." Lucario and Suicune are the first targets.
+      - **The ceiling:** past about 50 matchups, Limitless can't check the simulator. Ten or eleven decks is where the scoreboard tops out. Beyond that, gauntlet decks are for brew realism and coverage, "and should be labelled that way so nobody reads a 30-deck gauntlet as a 30-deck accuracy claim."
+      - Runs: `rl/results/gauntlet_runs_2026-09-26/`, seeds 21,108,000,000+ for the new cells. The first runs use the official engine (7fc6ccb) and are re-run when the repaired engine becomes the baseline.
+    - **The rules/09 fix replays are split onto the laptop** (Dustin: "Seven hours to one and a half is worth the one message"). Games are fixed by their seeds, and cloud-laptop reproduction held on the 28 cells, so replays from either machine are comparable if each carries its build hash. The laptop runs 3c2250f, 14745ce, 050cf51 and a30b5f8 (`rl/results/rules09_fixes_2026-09-26/run_replay_laptop.sh`, `timing_laptop.txt`). The cloud keeps 5bab907, 5b75bf9 and 3102c9e.
   - So the reserve route's (d) is open for kt's switch 1 with Dragonair Mega Rayquaza ex (135 of 143 development lists carry Gouging Fire; `rl/results/kt_carrier_census_2026-09-26/README.md`), as well as with Suicune under ruling (ii).
 - **koa: registered.** "Register the draft." `rl/results/opening_active_census_2026-09-26/REGISTRATION.md`, from the reviewed draft d7dbfb2.
   - The route is fixed by koa's measured table footprint: predicted 6.0%; under 15% the reserve route, else the ordinary rule.

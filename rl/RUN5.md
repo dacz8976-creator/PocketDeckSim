@@ -402,6 +402,13 @@ sides with k3 still available; the 0.7.2 wheel and its run identities are untouc
   - **Small tests find and repair bugs:** identity replays, spot replays, card checks, footage checks.
   - **The gauntlet is for engine and pilot changes.** It is the most-used Limitless decks, with at least one deck of every Energy type. It starts with the 8 table decks (28 pairings), plus the 6 held-out tournament archetypes against the 8 (B2e, 48 pairings, read in every candidate's reading, not only as the veto), plus Dustin's own files in those archetypes, reported beside and not counted for adoption. Archetypes are added until every Energy type is covered; the proposal is in `rl/results/gauntlet_proposal_2026-09-26/`, for Dustin's OK on the additions.
   - This is the standard after the engine repairs land, when kp3's reference is regenerated anyway (Dustin, Sept 26).
+  - **Scoreboard rows and coverage rows** (Dustin, Sept 26 midday, on the additions proposal).
+    - **The scoreboard** is the cells real Limitless results can check. It grows from 28 to 45 cells with Dragonair Mega Rayquaza ex and Mega Altaria ex Greninja: each against the 8, plus each other.
+      - The 28 stay frozen. The 17 new cells have their own seeds (21,108,000,000+).
+      - k3 and kp3 are run on them before any candidate is.
+    - **A coverage row** is a deck with too few real results to check, played so the bot has met it. The Metal deck, Mega Scizor ex / Revavroom, is one. It is reported, but never counted toward accuracy.
+    - Past about 10–11 decks (about 50 matchups), Limitless can't check the simulator. Further gauntlet decks are for brew realism and coverage, and are labelled that way. A 30-deck gauntlet is not a 30-deck accuracy claim.
+    - **List variation:** a deck's second list joins the gauntlet when it moves that deck's opponent average by 3 points or more. Single cells don't count: they are about ±4 at 500 games, and the average is about ±1.5.
   - **Where the gauntlet is heading** (Dustin, Sept 26: "The more of the limitless percentage we include the more it mimics real life ladder play and decks I would likely encounter. That would be how we tests new decks once the engine is good enough to approximate the play").
     - The gauntlet grows toward covering most of real Limitless play by share. Once the pilot passes, it is how brews are tested: a usage-weighted gauntlet, the ladder-weighted panel of A2.
     - Each proposal states the share of Limitless play it covers.
