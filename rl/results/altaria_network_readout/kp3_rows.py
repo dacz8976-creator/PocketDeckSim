@@ -21,7 +21,9 @@ Rows (row = who pilots the focus deck | who pilots the other), all on the run's 
   k3|k3 and net|k3 are the run's own recorded games (bars and confirmation; the network is the confirmed focus
   checkpoint in state.json); net|kp3, kp3|kp3 and kp3|k3 are played here. The network picks as eval_chunk does
   (rng seeded with the deal's seed). In net|kp3 the network's play is also counted with readout.py's audit
-  (PRESET_READING item 3, the network against kp3), which reads the game and never changes it.
+  (PRESET_READING item 3, the network against kp3), which reads the game and never changes it: the attack blocks
+  (engine rule, with the fixed rule's split beside it), the abilities, Asleep turns, bench size, attacking and
+  benching. The knockout audit itself is not played against kp3 here (readout.py section 3 states that deviation).
 
 READING (altaria), PRESET_READING.md item 2, fixed before training: D = (network Altaria v kp3 Lucario) - (kp3 Altaria
 v kp3 Lucario), Altaria's win %, paired over the run's 2,000 bar deals, bar seats.
@@ -34,7 +36,8 @@ v kp3 Lucario), Altaria's win %, paired over the run's 2,000 bar deals, bar seat
                    a piloting blind spot that play can reveal. The leads that remain are card or rules implementation
                    (a card check of the Altaria list's texts in the engine) and the population, neither tested by
                    this run.
-  Also printed: the run's own RUN5 line (PRESET item 1: the network's confirmed margin over k3, +10 or more = a gain).
+  Also printed: the run's own RUN5 line (PRESET item 1: the network's confirmed margin over k3, +10 or more = a gain),
+  and readout.py's transparency note (what was seen of the run before the readout ran).
 READING (hydreigon), set before any row was played (Sept 25, about 05:50 CDT): net|kp3 minus kp3|kp3, RUN5's
 10-point line reused; +10 or more -> play beyond pricing; under +10 -> most of the +40.8 is pricing plus what k3's
 blind Lucario gives away.
@@ -256,7 +259,9 @@ def main():
         full = len(seeds) == S["bar_per_pairing"] and len(ids) >= R.IDENTITY_DEALS
         L += ["", f"The audit, the network against kp3 (PRESET_READING item 3, descriptive): the {F} network's play in "
                   f"net|kp3, live,", "  per turn of its own where the move was on offer; the definitions are readout.py's "
-                  "section 2."] + R.ko_words(A, F, O) + [""]
+                  "section 2.",
+              "  The knockout audit (audit_v5.py) is not played against kp3 here: readout.py section 3 states that "
+              "deviation from PRESET item 3."] + R.ko_words(A, F, O) + [""]
         L += R.audit_lines([(f"network {F} v kp3 {O} (live)", c_net)], A)
         L += ["", "READING (PRESET_READING.md item 2, fixed before training; applied as written):"]
         if not full:
@@ -276,8 +281,10 @@ def main():
                       "tested by this run."),
               f"  Item 1, the run's own RUN5 line: the {F} network's confirmed margin over k3 is {100 * margin:+.1f} points "
               f"(state.json; recomputed above as net|k3 - k3|k3). +10 or more counts as a gain: "
-              f"{'yes' if R.at_least_10(100 * margin) else 'no'}.",
-              "  Everything else above is descriptive.", ""]
+              f"{'yes' if R.at_least_10(100 * margin) else 'no'}."]
+        if a.reading == "altaria":
+            L += R.TRANSPARENCY   # the same note as readout.py section 4 (the dry run's precheck was this script's)
+        L += ["  Everything else above is descriptive.", ""]
     L.append(f"Took {time.time() - t0:.0f} s with {a.workers} workers; played {2 * len(ids)} identity games and "
              f"{len(res):,} kp3-row games.")
     text = "\n".join(L) + "\n"

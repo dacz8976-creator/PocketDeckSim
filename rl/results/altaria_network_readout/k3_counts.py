@@ -11,7 +11,8 @@ For each bar deal (the bot pilots both sides; the run's own seeds and seats): th
 records the focus deck's choices (engine_play_record, as step1b_k3_replay_check.py); the game is then replayed
 through the add-on with the bot on the other side, and each focus decision is classified with readout.py's own look()
 and tally(). A replay counts only if its winner and turns equal the bar row's (k3), which also proves the engine's
-loop played the same games the run recorded as its bars. Nothing is trained; no new seeds. It needs no network, but
+loop played the same games the run recorded as its bars. Under the engine rule each attack block also prints the fixed
+rule's split of the same turns (readout.py's audit_lines()). Nothing is trained; no new seeds. It needs no network, but
 like readout.py it refuses until state.json has its verdict (nothing is read before then; --check-only plays nothing
 and works any time). --bot k3 refuses if PDL_ADDON_DIR is set: the k3 column is on the verified 0.7.2 wheel.
 

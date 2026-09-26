@@ -17,7 +17,9 @@ What it does, on the run's own confirmation deals (seed = the settings' confirma
      does) and live in the network v network games: each audited attack per turn it was on offer (used / passed,
      split by whether it would knock out), each ability, Asleep turns created (Bad Dreams), bench size when the bench
      attack is used, attacking and benching on offered turns;
-  4. (altaria) prints the knockout audit of both networks (results/ko_audit, written by the run's report steps);
+  4. (altaria) prints the knockout audit of both networks (results/ko_audit, written by the run's report steps); it is
+     the run's own, the network against k3, a deviation from PRESET item 3's "network against kp3" that the text
+     states with its reason;
   5. applies the pre-set reading: PRESET_READING.md items 1 and 3 (altaria), or RUN5's Hyper Ray reading (hydreigon);
   6. prints the text and writes it to readout.txt here (never overwritten: a taken name gets a time suffix), with
      the network v network games beside it (<same name>_nvn_games.jsonl) and every game's counts
@@ -36,12 +38,18 @@ file's ids); a name no card in the list has stops the script. An ability is coun
                                                    / turns it evolved then;
   "At the end of each turn ... Asleep ..."         automatic (Bad Dreams): counted as Asleep turns created, i.e.
                                                    turns ending with an attack whose text puts the opponent's Active
-                                                   to sleep, used without a knockout, and how many had the owner in play.
+                                                   to sleep, used without a knockout, and how many (and what share)
+                                                   had the owner in play. Its limits are printed with it: a count of
+                                                   sleep attacks, not of damage (waking at the Checkup and the hits
+                                                   that landed aren't tracked; an Active already Asleep also counts).
 'Would knock out' (--ko-rule): "fixed" = the opponent's Active had no more HP left than the attack's printed damage
 (the Hydreigon readout's definition, from the transcripts file); "engine" = a sure knockout as the knockout audit
 defines it (audit_v5.py): in each of 4 copies of the true game under different chance seeds, the move gains the
 pilot at least one point. The copies are analysis only; the game itself is untouched. "engine" counts Mega Harmony's
 bench bonus, Weakness, Training Area and Bad Dreams at the end of the turn, which the printed damage leaves out.
+Under "engine" (Altaria's), every attack block also prints the fixed rule's split of the same offered turns under
+each row, labelled, so the Hydreigon table stays comparable; it plays nothing and changes no engine-rule number.
+The two rules are not interchangeable.
 """
 import os
 
@@ -105,6 +113,15 @@ REFERENCE = [
 ]
 ATT_KEYS = ("ko_used", "ko_passed", "noko_used", "noko_passed", "other")
 HABIT_KEYS = ("turns", "attack_turns", "attack_made", "bench_turns", "bench_made")
+FIXED_LABEL = "  fixed rule (printed damage), same turns"   # the sub-row under each engine-rule row in the attack blocks
+# Printed in section 4 under the Altaria reading (and kept in README.md), as Fable approved it on Sept 25.
+TRANSPARENCY = [
+    "  Transparency (what was seen before this readout ran): the dry run replayed 200 Altaria k3 v k3 bar rows (fixed",
+    "  before training) as an identity precheck; the reviewer glimpsed STATUS.txt's header (games played, bars 55/45,",
+    "  draw gate) with no checkpoint margins. Also: while checking progress at 23:11 CDT on Sept 25, the laptop",
+    "  session's own grep of STATUS.txt showed the live-evaluation margin lines for checkpoints 1000k-1400k. This was",
+    "  after every definition had been fixed and approved, and nothing in the scripts was changed because of it.",
+]
 
 _W = {}
 
@@ -273,9 +290,13 @@ def look(env, p, mv):
     title = lambda x: x.get("Attack", {}).get("title") if isinstance(x, dict) else None  # noqa: E731
     labels = []
 
+    def fixed_ko(i):
+        # the fixed rule (the Hydreigon readout's): the opponent's Active had no more HP left than the printed damage
+        return opp is not None and opp["hp_left"] <= acts[i]["Attack"]["fixed_damage"]
+
     def ko(i):
         if A["ko_rule"] == "fixed":
-            return opp is not None and opp["hp_left"] <= acts[i]["Attack"]["fixed_damage"]
+            return fixed_ko(i)
         if not labels:
             labels.append(env.raw.outcome_labels(KO_COPIES))
         return labels[0][i][0] >= 1
@@ -284,7 +305,9 @@ def look(env, p, mv):
     for name in A["attacks"]:
         idx = [i for i, x in enumerate(acts) if title(x) == name]
         if idx:
-            att[name] = [mv in idx, bool(ko(idx[0]))]
+            # [chosen, would knock out under the run's rule, under the fixed rule]. The third is a second reading of
+            # the same position (plain reads of the view and the legal move); it plays and changes nothing.
+            att[name] = [mv in idx, bool(ko(idx[0])), bool(fixed_ko(idx[0]))]
     ab = {}
     for b in A["abilities"]:
         if b["kind"] == "activated":
@@ -310,32 +333,47 @@ def look(env, p, mv):
 
 
 def new_count(A):
-    return {"attacks": {n: dict.fromkeys(ATT_KEYS, 0) for n in A["attacks"]},
-            "abilities": {b["name"]: {"turns": 0, "used": 0, "self_ko": 0} for b in A["abilities"]
-                          if b["kind"] in ("activated", "evolve-early")},   # automatic ones: "asleep" below
-            "asleep": {"created": 0, "with_owner": 0}, "habits": dict.fromkeys(HABIT_KEYS, 0),
-            "bench_at": [0, 0, 0, 0]}
+    c = {"attacks": {n: dict.fromkeys(ATT_KEYS, 0) for n in A["attacks"]},
+         "abilities": {b["name"]: {"turns": 0, "used": 0, "self_ko": 0} for b in A["abilities"]
+                       if b["kind"] in ("activated", "evolve-early")},   # automatic ones: "asleep" below
+         "asleep": {"created": 0, "with_owner": 0}, "habits": dict.fromkeys(HABIT_KEYS, 0),
+         "bench_at": [0, 0, 0, 0]}
+    if A["ko_rule"] == "engine":
+        # the same offered turns split by the fixed rule (printed damage), printed beside the engine rule's split so
+        # the Hydreigon table stays comparable; under the fixed rule it would be the same numbers, so it isn't kept
+        c["attacks_fixed"] = {n: dict.fromkeys(ATT_KEYS, 0) for n in A["attacks"]}
+    return c
+
+
+def _split(k, ds, name, j):
+    """One turn `ds` of one attack into k: used / passed / other, classified by look()'s knockout flag j (1 = the
+    run's rule, 2 = the fixed rule) at the decision where it was used, or where the turn ended."""
+    used = [r for r in ds if name in r["att"] and r["att"][name][0]]
+    passed = [r for r in ds if name in r["att"] and r["end"]]
+    if used:
+        k["ko_used" if used[0]["att"][name][j] else "noko_used"] += 1
+    elif passed:
+        k["ko_passed" if passed[0]["att"][name][j] else "noko_passed"] += 1
+    elif any(name in r["att"] for r in ds):
+        k["other"] += 1
 
 
 def tally(recs, A):
     """Per turn of the focus deck, as the transcripts file counted k3: an attack used (classified at the decision
     where it was used), passed (the turn ended with EndTurn while it was on offer; classified there), or offered
     earlier in the turn but not when the turn ended ("other"). An ability: turns it was offered (usable) and turns it
-    was used. Attacking and benching: of the turns where the move was on offer (setup excluded, as audit_v5.py)."""
+    was used. Attacking and benching: of the turns where the move was on offer (setup excluded, as audit_v5.py).
+    Under the engine rule the same turns are also split by the fixed rule ("attacks_fixed"); only the knockout
+    split can differ, since used, passed and other don't depend on the rule."""
     c = new_count(A)
     turns = {}
     for r in recs:
         turns.setdefault(r["turn"], []).append(r)
     for t, ds in turns.items():
         for name, k in c["attacks"].items():
-            used = [r for r in ds if name in r["att"] and r["att"][name][0]]
-            passed = [r for r in ds if name in r["att"] and r["end"]]
-            if used:
-                k["ko_used" if used[0]["att"][name][1] else "noko_used"] += 1
-            elif passed:
-                k["ko_passed" if passed[0]["att"][name][1] else "noko_passed"] += 1
-            elif any(name in r["att"] for r in ds):
-                k["other"] += 1
+            _split(k, ds, name, 1)
+            if "attacks_fixed" in c:
+                _split(c["attacks_fixed"][name], ds, name, 2)
         for name, k in c["abilities"].items():
             if any(r["ab"][name][0] for r in ds):
                 k["turns"] += 1
@@ -464,7 +502,11 @@ def ko_words(A, focus_name, opp_name):
     return [f"   'KOs' = a sure knockout, the knockout audit's definition (audit_v5.py): in each of {KO_COPIES} copies of the true",
             "   game under different chance seeds, the move gains the pilot at least one point (analysis only; the game",
             "   itself is untouched). Every damage change and end-of-turn effect counts (for Altaria: Mega Harmony's",
-            "   bench bonus, Weakness, Training Area, Bad Dreams), which the printed damage leaves out."]
+            "   bench bonus, Weakness, Training Area, Bad Dreams), which the printed damage leaves out. This rule is primary.",
+            f"   Under each row, '{FIXED_LABEL.strip()}' splits the same turns by the Hydreigon readout's rule",
+            f"   ({opp_name}'s Active had no more HP left than the attack's printed damage), so that table stays comparable.",
+            "   The two rules are not interchangeable: the fixed rule ignores Mega Harmony's bench bonus, Weakness, Training "
+            "Area and Bad Dreams."]
 
 
 def audit_lines(rows, A, w=46):
@@ -475,7 +517,10 @@ def audit_lines(rows, A, w=46):
     for name in A["attacks"]:
         L.append(f"  {name + ' (' + '/'.join(A['owners'][name]) + ')':<{w + 2}}"
                  "   KOs: used / passed    doesn't KO: used / passed   other")
-        L += ["  " + hr_line(label, c["attacks"][name], w) for label, c in rows]
+        for label, c in rows:
+            L.append("  " + hr_line(label, c["attacks"][name], w))
+            if "attacks_fixed" in c:   # the engine rule: the fixed rule's split of the same turns, beside it
+                L.append("  " + hr_line(FIXED_LABEL, c["attacks_fixed"][name], w))
     for b in A["abilities"]:
         who = "/".join(b["owners"])
         if b["kind"] == "activated":
@@ -494,10 +539,14 @@ def audit_lines(rows, A, w=46):
             L += [f"  {b['name']} ({who}) is automatic; counted as Asleep turns created: turns ending with "
                   + " / ".join(A["sleep"]) + " used without a knockout,",
                   f"  per 100 of the pilot's turns with a choice (setup excluded), and how many of those turns had a {who} in play "
-                  f"({b['name']} then hits at that turn's end)"]
+                  f"(and their share; {b['name']} needs a {who} in play)"]
             L += [f"    {label:<{w}}{c['asleep']['created']:>6} of {c['habits']['turns']:<6}"
                   f"({100 * c['asleep']['created'] / c['habits']['turns'] if c['habits']['turns'] else 0:.1f} per 100)"
-                  f"   with {who} in play {c['asleep']['with_owner']}" for label, c in rows]
+                  f"   with {who} in play {c['asleep']['with_owner']} of {c['asleep']['created']} "
+                  f"({pct(c['asleep']['with_owner'], c['asleep']['created'])})" for label, c in rows]
+            L += [f"    Limits: a count of sleep attacks used, not of damage dealt. Not tracked: waking at the Checkup, and "
+                  f"the {b['name']} hits that",
+                  "    actually landed. A sleep attack on an Active that was already Asleep also counts."]
     if A["bench_attack"]:
         L.append(f"  Bench size when {A['bench_attack']} was used (Benched Pokemon at that moment: 0 / 1 / 2 / 3; mean)")
         for label, c in rows:
@@ -799,7 +848,12 @@ def preset_reading(a, S, A, cf, c_rep, rows_out, run_dir, picks, focus, opp, wei
     """PRESET_READING.md's items 1 and 3 (item 2 is kp3_rows.py's), plus the knockout audit (section 3)."""
     F, O = focus.capitalize(), opp.capitalize()
     L = [f"3. The knockout audit (PRESET_READING item 3; audit_v5.py, written by the run's report steps). 'bot' = the",
-         "   network piloting the first deck, 'k3' = k3 piloting it on the same seeds (the bars).", ""]
+         "   network piloting the first deck, 'k3' = k3 piloting it on the same seeds (the bars).",
+         "   STATED DEVIATION from PRESET_READING item 3, which asks for the audit \"network against kp3\": the knockout",
+         "   audit shown here is the run's own, the network against k3. Reason: a knockout audit of net|kp3 would be new",
+         "   code. The decisive D (net|kp3 win % minus kp3|kp3 win %, kp3_rows.py) is unaffected, and the attack and bench",
+         "   counts for net|kp3 are live in kp3_rows.py's audit block. A knockout audit against kp3, if ever needed for a",
+         "   decision, is a later registered addition.", ""]
     got = {}
     for d in (focus, opp):
         p = ko_audit_file(run_dir, d, picks[d])
@@ -835,13 +889,15 @@ def preset_reading(a, S, A, cf, c_rep, rows_out, run_dir, picks, focus, opp, wei
           f"{'yes' if replays_ok else 'NO'}; the network re-chose every recorded move: {'NO' if weights_bad else 'yes'}.",
           ("  The pair checks passed before training (PRESET; rl/results/altaria_pair_checks_2026-09-25/). This readout"
            if a.reading == "altaria" else "  The pair checks are the run's own record, not this readout's. This readout"),
-          "  does not run them.",
-          f"  Item 1, the run's own RUN5 line: the {F} network's confirmed margin over k3 is {gain:+.1f} points on "
+          "  does not run them."]
+    if a.reading == "altaria":
+        L += TRANSPARENCY
+    L += [f"  Item 1, the run's own RUN5 line: the {F} network's confirmed margin over k3 is {gain:+.1f} points on "
           f"{S['confirm_per_matchup']:,} paired bar deals (state.json; its paired 95% interval is in table 1). +10 or "
           f"more counts as a gain: {'yes' if at_least_10(gain) else 'no'}.",
           "  Item 2, the decisive comparison D = (network v kp3) - (kp3 v kp3): kp3_rows.py, on the diagnostic add-on.",
           "  Item 3, the audit: sections 2 and 3 above, with k3_counts.py's k3 and kp3 counts and kp3_rows.py's network",
-          f"  v kp3 counts beside them (descriptive)."]
+          f"  v kp3 counts beside them (descriptive; the knockout audit is against k3, the deviation stated in section 3)."]
     if a.limitless:
         mid, pm = a.limitless
         miss = lambda x: abs(x - mid)  # noqa: E731
