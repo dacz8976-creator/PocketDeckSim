@@ -1,0 +1,46 @@
+{
+  "key": "c-jumpluff_ex_team_rocket_s_electrode",
+  "archetype": "Jumpluff ex Team Rocket's Electrode",
+  "deck_id": "jumpluff-ex-a4a-team-rockets-electrode-b4a",
+  "file": "rl/results/kt_carrier_census_2026-09-26/decks/c-jumpluff_ex_team_rocket_s_electrode.txt",
+  "source": "Cowork Limitless pull, raw standings rl/results/limitless_skill_model_2026-09-25/raw/6a96069dabb9482237504f7f_standings.json.gz (development-split event; entry player=ravenoussix). The event id was checked against split.json before the file was opened; no holdout standings file was opened. Not a decklist_sources.json representative (that file has no entry for this archetype).",
+  "player": "ravenoussix (INLG | RavenousSix, US)",
+  "event": "Plasma Daily #22| Team Rocket's Ambitions| FA Card (113 players)",
+  "event_id": "6a96069dabb9482237504f7f",
+  "date": "2026-09-01",
+  "placing": 7,
+  "record": "6-2-1",
+  "url": "https://play.limitlesstcg.com/tournament/6a96069dabb9482237504f7f/player/ravenoussix/decklist",
+  "census_cards_carried": [
+    "Rocky Helmet x2 [A2 148] (census group 4: priced by kt switch 3 as counter damage; not a switch-1 damage-cut card)"
+  ],
+  "selection_rule": "B2e rule: best placing first, larger event as the tiebreaker; the list must carry at least one census card; development-half entries only (rl/results/kt_carrier_census_2026-09-26/carrier_entries.csv rows for this archetype).",
+  "selection_note": "17 carrier entries of this archetype in development-half events (every one carries 2 Rocky Helmet A2 148 and nothing else from the census set; none carries a switch-1 card). ravenoussix's 7th of 113 (6-2-1, Sept 1) is the best placing outright, so no tiebreak was needed. The only 18th list of this name in the development half is tababahani's 29th of 113 at the same event (4-3-0), which runs Mars and Red Card in place of Rocky Helmet and is not a carrier, so it was not eligible. The literal largest event is PMPT #44 (378 players, Aug 29), where breaking2mirror placed 90th (4-3-0) with a carrier list; placing comes first under the rule, so it was not used.",
+  "alternatives_considered": [
+    {"player": "christopher_0626", "event_id": "6a99bbffa4272c53be645f44", "event": "Block Dragon Pop Up (RR Team Rockets Raticate)", "size": 60, "date": "2026-09-03", "placing": 9, "record": "6-1-0", "cards_carried": "Rocky Helmet x2 [A2 148]"},
+    {"player": "castro37", "event_id": "6a92710aabb9482237502fc0", "event": "Hit Sparrow #10 | TCG Pocket", "size": 20, "date": "2026-09-02", "placing": 11, "record": "1-1-1", "cards_carried": "Rocky Helmet x2 [A2 148]"},
+    {"player": "flipinton", "event_id": "6a9b22fba4272c53be646f96", "event": "OTS Pokemon TCG Pocket Arena Pop Up", "size": 14, "date": "2026-09-04", "placing": 11, "record": "1-3-0", "cards_carried": "Rocky Helmet x2 [A2 148]"},
+    {"player": "gavinkadink", "event_id": "6aaad41638886b36383c1ad5", "event": "Pop Up Series 9 || FA OAK", "size": 27, "date": "2026-09-17", "placing": 13, "record": "2-2-1", "cards_carried": "Rocky Helmet x2 [A2 148]"},
+    {"player": "draxoz", "event_id": "6a981923a4272c53be644ca8", "event": "DR. KELP'S CHUM BUCKET POP UP", "size": 31, "date": "2026-09-02", "placing": 17, "record": "2-3-1", "cards_carried": "Rocky Helmet x2 [A2 148]"},
+    {"player": "ravenoussix", "event_id": "6a96b86babb948223750549c", "event": "Dark League Pop Up", "size": 46, "date": "2026-09-01", "placing": 20, "record": "3-3-1", "cards_carried": "Rocky Helmet x2 [A2 148]"},
+    {"player": "zonice", "event_id": "6a94b2ffabb9482237504367", "event": "Sauna X Almond POG Tournament #24|10USD + FA!", "size": 110, "date": "2026-09-02", "placing": 31, "record": "4-3-0", "cards_carried": "Rocky Helmet x2 [A2 148]"},
+    {"player": "draxoz", "event_id": "6aa682e4f1243e65f97ffebe", "event": "The PokeBounty Showdown Sunday Pop Up", "size": 83, "date": "2026-09-13", "placing": 38, "record": "3-3-0", "cards_carried": "Rocky Helmet x2 [A2 148]"},
+    {"player": "neophyte885", "event_id": "6a98fd1ba4272c53be6457c3", "event": "TBC The Rowdy Russell Rumble-$20-QUICK", "size": 53, "date": "2026-09-03", "placing": 43, "record": "1-5-0", "cards_carried": "Rocky Helmet x2 [A2 148]"},
+    {"player": "7earless", "event_id": "6a9b4f52ab080c8c957fa3d7", "event": "TBC Presents: Breakfast & Breakdowns", "size": 97, "date": "2026-09-06", "placing": 44, "record": "3-4-0", "cards_carried": "Rocky Helmet x2 [A2 148]"},
+    {"player": "neophyte885", "event_id": "6a94b2ffabb9482237504367", "event": "Sauna X Almond POG Tournament #24|10USD + FA!", "size": 110, "date": "2026-09-02", "placing": 47, "record": "3-3-0", "cards_carried": "Rocky Helmet x2 [A2 148]"},
+    {"player": "draxoz", "event_id": "6a9718fd629039f77d8a790e", "event": "Plasma Daily #23| Team Rocket's Ambitions| FA Card", "size": 119, "date": "2026-09-02", "placing": 54, "record": "2-4-0", "cards_carried": "Rocky Helmet x2 [A2 148]"},
+    {"player": "breaking2mirror", "event_id": "6a8c5eb881741245b151d7e3", "event": "PMPT #44 - TEAM ROCKETS AMBITION!!! | $100 USD", "size": 378, "date": "2026-08-29", "placing": 90, "record": "4-3-0", "cards_carried": "Rocky Helmet x2 [A2 148]"},
+    {"player": "fury64140", "event_id": "6a9718fd629039f77d8a790e", "event": "Plasma Daily #23| Team Rocket's Ambitions| FA Card", "size": 119, "date": "2026-09-02", "placing": null, "record": "2-3-0", "cards_carried": "Rocky Helmet x2 [A2 148]"},
+    {"player": "garoth", "event_id": "6a90c1890580a332c842170e", "event": "Nuggie's POG Tourney #14 $25 Winner Takes ALL", "size": 106, "date": "2026-08-30", "placing": null, "record": "0-2-0", "cards_carried": "Rocky Helmet x2 [A2 148]"},
+    {"player": "tababahani", "event_id": "6a947113629039f77d8a5c46", "event": "Dark League Pop Up", "size": 57, "date": "2026-08-30", "placing": null, "record": "2-3-0", "cards_carried": "Rocky Helmet x2 [A2 148]"},
+    {"player": "tababahani", "event_id": "6a96069dabb9482237504f7f", "event": "Plasma Daily #22| Team Rocket's Ambitions| FA Card", "size": 113, "date": "2026-09-01", "placing": 29, "record": "4-3-0", "cards_carried": "none (Mars A2 155 and Red Card P-A 006 in place of Rocky Helmet); NOT eligible"}
+  ],
+  "list": {
+    "energy": ["Lightning"],
+    "pokemon": ["2 Hoppip A4a 001", "2 Jumpluff ex A4a 003", "2 Team Rocket's Voltorb B4a 019", "2 Team Rocket's Electrode B4a 020", "1 Oricorio A3 066"],
+    "trainers": ["2 Professor's Research P-A 007", "1 Cyrus A2 150", "1 Copycat B1 225", "2 Rare Candy A3 144", "2 Poké Ball P-A 005", "2 Rocky Helmet A2 148", "1 Hiking Trail B2b 069"],
+    "count": 20
+  },
+  "printings": "Every card uses the exact set/number the Limitless source names (numbers zero-padded to three digits in the deck file). python lib/card.py reports each of the 12 ids as '1 printings, 1 distinct', so no printing choice was needed.",
+  "holdout_discipline": "Only development-half standings were opened (this event and, for the consensus note, the other development events holding this archetype). The 63 holdout event ids in split.json were listed and never read."
+}

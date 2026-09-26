@@ -1,0 +1,287 @@
+{
+ "archetype": "Dragonair Mega Rayquaza ex",
+ "key": "dragonair_mega_rayquaza_ex",
+ "source": "C:\\Users\\dacz8\\Projects\\Pocket Deck Sim\\PocketDeckSim\\rl\\results\\limitless_skill_model_2026-09-25\\matches.csv",
+ "records_total": 30216,
+ "split_consistency": {
+  "hold_ok": 16089,
+  "dev_ok": 14127
+ },
+ "window": {
+  "start_date_utc": "2026-08-26",
+  "end_date_utc": "2026-09-24",
+  "events_development": 63,
+  "events_holdout": 63
+ },
+ "held_deck_ids_and_labels": {
+  "dragonair-mega-rayquaza-ex-b4 [(no label)]": 1696
+ },
+ "panel_deck_names": {
+  "lucario": [
+   "Mega Lucario ex Lucario"
+  ],
+  "altaria": [
+   "Mega Altaria ex Espeon"
+  ],
+  "sceptile": [
+   "Butterfree Mega Sceptile ex"
+  ],
+  "vespiquen": [
+   "Vespiquen ex Shuckle ex"
+  ],
+  "suicune": [
+   "Suicune ex Baxcalibur"
+  ],
+  "hydreigon": [
+   "Hydreigon Mega Absol ex"
+  ],
+  "weezing": [
+   "Team Rocket's Weezing ex Hoopa ex"
+  ],
+  "blaziken": [
+   "Mega Blaziken ex"
+  ]
+ },
+ "mirror_records_set_aside": {
+  "development": 23,
+  "pooled": 37
+ },
+ "datasets": {
+  "development": {
+   "cells": {
+    "lucario": {
+     "W": 42,
+     "L": 15,
+     "T": 1,
+     "DL": 4,
+     "n": 58,
+     "n_bo1": 42,
+     "score_pct": 73.3,
+     "band95_pts": 11.4,
+     "score_bo1_pct": 72.6
+    },
+    "altaria": {
+     "W": 39,
+     "L": 44,
+     "T": 3,
+     "DL": 2,
+     "n": 86,
+     "n_bo1": 55,
+     "score_pct": 47.1,
+     "band95_pts": 10.5,
+     "score_bo1_pct": 47.3
+    },
+    "sceptile": {
+     "W": 20,
+     "L": 25,
+     "T": 5,
+     "DL": 1,
+     "n": 50,
+     "n_bo1": 36,
+     "score_pct": 45.0,
+     "band95_pts": 13.8,
+     "score_bo1_pct": 43.1
+    },
+    "vespiquen": {
+     "W": 21,
+     "L": 13,
+     "T": 2,
+     "DL": 0,
+     "n": 36,
+     "n_bo1": 24,
+     "score_pct": 61.1,
+     "band95_pts": 15.9,
+     "score_bo1_pct": 56.2
+    },
+    "suicune": {
+     "W": 9,
+     "L": 17,
+     "T": 2,
+     "DL": 1,
+     "n": 28,
+     "n_bo1": 23,
+     "score_pct": 35.7,
+     "band95_pts": 17.7,
+     "score_bo1_pct": 39.1
+    },
+    "hydreigon": {
+     "W": 7,
+     "L": 13,
+     "T": 0,
+     "DL": 0,
+     "n": 20,
+     "n_bo1": 17,
+     "score_pct": 35.0,
+     "band95_pts": 20.9,
+     "score_bo1_pct": 35.3
+    },
+    "weezing": {
+     "W": 3,
+     "L": 12,
+     "T": 0,
+     "DL": 0,
+     "n": 15,
+     "n_bo1": 12,
+     "score_pct": 20.0,
+     "band95_pts": 20.2,
+     "score_bo1_pct": 25.0
+    },
+    "blaziken": {
+     "W": 4,
+     "L": 4,
+     "T": 0,
+     "DL": 0,
+     "n": 8,
+     "n_bo1": 6,
+     "score_pct": 50.0,
+     "band95_pts": 34.6,
+     "score_bo1_pct": 33.3
+    }
+   },
+   "equal_weight": {
+    "opponents": 8,
+    "avg_pct": 45.9,
+    "band95_pts": 6.9,
+    "lo_pct": 39.0,
+    "hi_pct": 52.8
+   },
+   "match_weighted": {
+    "W": 145,
+    "L": 143,
+    "T": 13,
+    "DL": 8,
+    "n": 301,
+    "n_bo1": 215,
+    "score_pct": 50.3,
+    "band95_pts": 5.6
+   },
+   "totals": {
+    "records": 857,
+    "scored": 818,
+    "vs_panel_records": 309,
+    "bye": 20,
+    "dl": 19
+   },
+   "mirror_records_set_aside": 23,
+   "thinnest_cell_n": 8
+  },
+  "pooled": {
+   "cells": {
+    "lucario": {
+     "W": 76,
+     "L": 43,
+     "T": 1,
+     "DL": 5,
+     "n": 120,
+     "n_bo1": 79,
+     "score_pct": 63.7,
+     "band95_pts": 8.6,
+     "score_bo1_pct": 66.5
+    },
+    "altaria": {
+     "W": 82,
+     "L": 83,
+     "T": 8,
+     "DL": 3,
+     "n": 173,
+     "n_bo1": 98,
+     "score_pct": 49.7,
+     "band95_pts": 7.5,
+     "score_bo1_pct": 46.9
+    },
+    "sceptile": {
+     "W": 38,
+     "L": 51,
+     "T": 5,
+     "DL": 2,
+     "n": 94,
+     "n_bo1": 61,
+     "score_pct": 43.1,
+     "band95_pts": 10.0,
+     "score_bo1_pct": 40.2
+    },
+    "vespiquen": {
+     "W": 33,
+     "L": 28,
+     "T": 3,
+     "DL": 1,
+     "n": 64,
+     "n_bo1": 36,
+     "score_pct": 53.9,
+     "band95_pts": 12.2,
+     "score_bo1_pct": 54.2
+    },
+    "suicune": {
+     "W": 20,
+     "L": 30,
+     "T": 4,
+     "DL": 1,
+     "n": 54,
+     "n_bo1": 37,
+     "score_pct": 40.7,
+     "band95_pts": 13.1,
+     "score_bo1_pct": 45.9
+    },
+    "hydreigon": {
+     "W": 20,
+     "L": 30,
+     "T": 0,
+     "DL": 0,
+     "n": 50,
+     "n_bo1": 32,
+     "score_pct": 40.0,
+     "band95_pts": 13.6,
+     "score_bo1_pct": 34.4
+    },
+    "weezing": {
+     "W": 10,
+     "L": 18,
+     "T": 0,
+     "DL": 1,
+     "n": 28,
+     "n_bo1": 20,
+     "score_pct": 35.7,
+     "band95_pts": 17.7,
+     "score_bo1_pct": 40.0
+    },
+    "blaziken": {
+     "W": 10,
+     "L": 13,
+     "T": 0,
+     "DL": 1,
+     "n": 23,
+     "n_bo1": 13,
+     "score_pct": 43.5,
+     "band95_pts": 20.3,
+     "score_bo1_pct": 15.4
+    }
+   },
+   "equal_weight": {
+    "opponents": 8,
+    "avg_pct": 46.3,
+    "band95_pts": 4.8,
+    "lo_pct": 41.5,
+    "hi_pct": 51.1
+   },
+   "match_weighted": {
+    "W": 289,
+    "L": 296,
+    "T": 21,
+    "DL": 14,
+    "n": 606,
+    "n_bo1": 376,
+    "score_pct": 49.4,
+    "band95_pts": 4.0
+   },
+   "totals": {
+    "records": 1696,
+    "scored": 1610,
+    "vs_panel_records": 620,
+    "bye": 48,
+    "dl": 38
+   },
+   "mirror_records_set_aside": 37,
+   "thinnest_cell_n": 23
+  }
+ }
+}

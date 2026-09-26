@@ -1,0 +1,1533 @@
+{
+ "title": "kt carrier census: the card set the kt candidate prices (engine-derived; settled after the skeptic pass)",
+ "date": "2026-09-26",
+ "engine": "main 4924008 (working tree, Sept 26, 2026)",
+ "sources": {
+  "card_text": "python lib/card.py --exact <name> for the first pass and python lib/card.py \"<name>\" for the adjudication (lib/deckgym-database.json), Sept 26",
+  "engine_files": [
+   "engine/src/actions/apply_abilities_action.rs",
+   "engine/src/actions/apply_action_helpers.rs",
+   "engine/src/actions/apply_attack_action.rs",
+   "engine/src/actions/apply_trainer_action.rs",
+   "engine/src/actions/effect_ability_mechanic_map.rs",
+   "engine/src/actions/effect_mechanic_map.rs",
+   "engine/src/effects.rs",
+   "engine/src/hooks/core.rs",
+   "engine/src/hooks/counterattack.rs",
+   "engine/src/move_generation/move_generation_trainer.rs",
+   "engine/src/state/mod.rs",
+   "engine/src/state/played_card.rs",
+   "engine/src/tools.rs"
+  ],
+  "decks": [
+   "decks/dustin/*.txt (15 files)",
+   "decks/brews/*.txt (13 files)"
+  ],
+  "spec": "rl/results/fable_reviews_2026-09-26/kt_spec_review.md (proposed registration, switch 1 'cards scanned')",
+  "skeptic": "rl/results/kt_carrier_census_2026-09-26/cards_skeptic.md (read-only pass, Sept 26)"
+ },
+ "switch1_relevant_kinds": [
+  "trainer_turn_effect",
+  "tool_reduction",
+  "attack_self_reduction"
+ ],
+ "groups": {
+  "group1_trainer_turn_effects": [
+   {
+    "name": "Jasmine",
+    "ids": [
+     "A4 160",
+     "A4 200"
+    ],
+    "kind": "trainer_turn_effect",
+    "subtype": "Supporter",
+    "effect": "During your opponent's next turn, all of your Steelix and Skarmory ex take -50 damage from attacks from your opponent's Pokémon.",
+    "engine": "TurnEffect::ReducedDamageForTarget{amount:50, scope:NamedPokemon[Steelix, Skarmory ex], only_from_ex:false}",
+    "evidence": "engine/src/actions/apply_trainer_action.rs:177 (dispatch), 1055-1060 jasmine_effect -> 1021-1037 add_damage_reduction_for_next_turn (add_turn_effect(ReducedDamageForTarget, 1)); playable via move_generation_trainer.rs:163; engine/src/state/mod.rs:1063-1078 add_turn_effect(effect, duration=1) registers the effect for turns t and t+1 (this turn and the opponent's next); engine/src/hooks/core.rs:1189-1227 get_turn_effect_damage_reduction sums ReducedDamageForType / ReducedDamageForTarget for the defending player (scope at 1230-1236, only_from_ex at 1219); summed into the finite reductions at core.rs:1370-1377 and subtracted after Weakness at core.rs:1883-1885; not in persistent_defender_damage (doc at core.rs:1577-1580)",
+    "in_dustin_files": [
+     "decks/dustin/07-skarmory-stall.txt (2 Jasmine A4 160)"
+    ],
+    "same_name_other_printing": []
+   },
+   {
+    "name": "Cheren",
+    "ids": [
+     "B3 151",
+     "B3 192"
+    ],
+    "kind": "trainer_turn_effect",
+    "subtype": "Supporter",
+    "effect": "During your opponent's next turn, all of your Watchog and Stoutland take -100 damage from attacks from your opponent's Pokémon ex.",
+    "engine": "TurnEffect::ReducedDamageForTarget{amount:100, scope:NamedPokemon[Watchog, Stoutland], only_from_ex:true}",
+    "evidence": "engine/src/actions/apply_trainer_action.rs:178 (dispatch), 1062-1067 cheren_effect (only_from_ex = true) -> 1021-1037; move_generation_trainer.rs:164; engine/src/state/mod.rs:1063-1078 add_turn_effect(effect, duration=1) registers the effect for turns t and t+1 (this turn and the opponent's next); engine/src/hooks/core.rs:1189-1227 get_turn_effect_damage_reduction sums ReducedDamageForType / ReducedDamageForTarget for the defending player (scope at 1230-1236, only_from_ex at 1219); summed into the finite reductions at core.rs:1370-1377 and subtracted after Weakness at core.rs:1883-1885; not in persistent_defender_damage (doc at core.rs:1577-1580)",
+    "in_dustin_files": [
+     "decks/dustin/05-indeedee-stoutland.txt (1 Cheren B3 151)"
+    ],
+    "same_name_other_printing": []
+   },
+   {
+    "name": "Blue",
+    "ids": [
+     "A1a 067",
+     "A1a 081"
+    ],
+    "kind": "trainer_turn_effect",
+    "subtype": "Supporter",
+    "effect": "During your opponent's next turn, all of your Pokémon take -10 damage from attacks from your opponent's Pokémon.",
+    "engine": "TurnEffect::ReducedDamageForTarget{amount:10, scope:AllPokemon, only_from_ex:false}",
+    "evidence": "engine/src/actions/apply_trainer_action.rs:176 (dispatch), 1043-1053 blue_effect -> 1021-1037; move_generation_trainer.rs:162; engine/src/state/mod.rs:1063-1078 add_turn_effect(effect, duration=1) registers the effect for turns t and t+1 (this turn and the opponent's next); engine/src/hooks/core.rs:1189-1227 get_turn_effect_damage_reduction sums ReducedDamageForType / ReducedDamageForTarget for the defending player (scope at 1230-1236, only_from_ex at 1219); summed into the finite reductions at core.rs:1370-1377 and subtracted after Weakness at core.rs:1883-1885; not in persistent_defender_damage (doc at core.rs:1577-1580)",
+    "in_dustin_files": [],
+    "same_name_other_printing": []
+   },
+   {
+    "name": "Beast Wall",
+    "ids": [
+     "A3a 063"
+    ],
+    "kind": "trainer_turn_effect",
+    "subtype": "Item",
+    "effect": "You can use this card only if your opponent hasn't gotten any points.During your opponent's next turn, all of your Ultra Beasts take -20 damage from attacks from your opponent's Pokémon.",
+    "engine": "TurnEffect::ReducedDamageForTarget{amount:20, scope:UltraBeasts, only_from_ex:false}",
+    "evidence": "engine/src/actions/apply_trainer_action.rs:179 (dispatch), 1069-1078 beast_wall_effect -> 1021-1037; play gate can_play_beast_wall at move_generation_trainer.rs:165; scope via is_ultra_beast at core.rs:1234; engine/src/state/mod.rs:1063-1078 add_turn_effect(effect, duration=1) registers the effect for turns t and t+1 (this turn and the opponent's next); engine/src/hooks/core.rs:1189-1227 get_turn_effect_damage_reduction sums ReducedDamageForType / ReducedDamageForTarget for the defending player (scope at 1230-1236, only_from_ex at 1219); summed into the finite reductions at core.rs:1370-1377 and subtracted after Weakness at core.rs:1883-1885; not in persistent_defender_damage (doc at core.rs:1577-1580)",
+    "in_dustin_files": [],
+    "same_name_other_printing": []
+   },
+   {
+    "name": "Adaman",
+    "ids": [
+     "A2a 075",
+     "A2a 090"
+    ],
+    "kind": "trainer_turn_effect",
+    "subtype": "Supporter",
+    "effect": "During your opponent's next turn, all of your [M] Pokémon take -20 damage from attacks from your opponent's Pokémon.",
+    "engine": "TurnEffect::ReducedDamageForType{amount:20, energy_type:Metal, player}",
+    "evidence": "engine/src/actions/apply_trainer_action.rs:251 (dispatch), 934-944 adaman_effect (add_turn_effect(ReducedDamageForType, 1)); read at core.rs:1206-1212 (target's energy types contain Metal); engine/src/state/mod.rs:1063-1078 add_turn_effect(effect, duration=1) registers the effect for turns t and t+1 (this turn and the opponent's next); engine/src/hooks/core.rs:1189-1227 get_turn_effect_damage_reduction sums ReducedDamageForType / ReducedDamageForTarget for the defending player (scope at 1230-1236, only_from_ex at 1219); summed into the finite reductions at core.rs:1370-1377 and subtracted after Weakness at core.rs:1883-1885; not in persistent_defender_damage (doc at core.rs:1577-1580)",
+    "in_dustin_files": [],
+    "same_name_other_printing": []
+   }
+  ],
+  "group2_tool_reductions": [
+   {
+    "name": "Heavy Helmet",
+    "ids": [
+     "B1 219"
+    ],
+    "kind": "tool_reduction",
+    "subtype": "Tool",
+    "effect": "If the Pokémon this card is attached to has a Retreat Cost of 3 or more, it takes -20 damage from attacks from your opponent's Pokémon.",
+    "engine": "heavy_helmet_reduction: 20 x tool_count when the holder's PRINTED retreat_cost.len() >= 3 (rules/09 has the current-cost fix queued); active attacks from the opponent only; permanent (in persistent_defender_damage)",
+    "evidence": "engine/src/hooks/core.rs:687-713 (get_heavy_helmet_reduction / heavy_helmet_reduction), summed at 1331-1336, subtracted after Weakness at 1883-1885; persistent_defender_damage 1614; identity text engine/src/tools.rs:53-54",
+    "in_dustin_files": [
+     "decks/dustin/01-muk-glimmora-kingambit-regigigas.txt (1 Heavy Helmet B1 219)",
+     "decks/dustin/03-wailord-indeedee-wall.txt (2 Heavy Helmet B1 219)"
+    ],
+    "same_name_other_printing": []
+   },
+   {
+    "name": "Steel Apron",
+    "ids": [
+     "A4 153"
+    ],
+    "kind": "tool_reduction",
+    "subtype": "Tool",
+    "effect": "The [M] Pokémon this card is attached to takes -10 damage from attacks from your opponent's Pokémon, recovers from all Special Conditions, and can't be affected by any Special Conditions.",
+    "engine": "steel_apron_reduction: 10 x tool_count when the holder is a [M] Pokémon (state.pokemon_is_type Metal); opponent's active attacks only; permanent (in persistent_defender_damage)",
+    "evidence": "engine/src/hooks/core.rs:737-762 (get_steel_apron_reduction / steel_apron_reduction), summed at 1342-1347; persistent_defender_damage 1615; tools.rs:51-52",
+    "in_dustin_files": [
+     "decks/dustin/07-skarmory-stall.txt (1 Steel Apron A4 153)"
+    ],
+    "same_name_other_printing": []
+   },
+   {
+    "name": "Metal Core Barrier",
+    "ids": [
+     "B2 148",
+     "B2b 117"
+    ],
+    "kind": "tool_reduction",
+    "subtype": "Tool",
+    "effect": "If this card is attached to 1 of your Pokémon, discard it at the end of your opponent's turn.The [M] Pokémon this card is attached to takes -50 damage from attacks from your opponent's Pokémon.",
+    "engine": "get_metal_core_barrier_reduction: 50 x tool_count when the holder is [M]; active attacks only; TEMPORARY: discarded at the end of the opponent's turn whether hit or not; deliberately left out of persistent_defender_damage",
+    "evidence": "engine/src/hooks/core.rs:715-735 (reduction), summed at 1337-1341; discard at core.rs:504-519 (end of the tool owner's opponent's turn); excluded from persistent_defender_damage by its doc at 1577-1580; tools.rs:57-58",
+    "in_dustin_files": [
+     "decks/dustin/07-skarmory-stall.txt (2 Metal Core Barrier B2 148)"
+    ],
+    "same_name_other_printing": []
+   }
+  ],
+  "group3_attack_self_reductions": [
+   {
+    "name": "Mr. Mime",
+    "ids": [
+     "A1 126"
+    ],
+    "kind": "attack_self_reduction",
+    "subtype": "Pokémon",
+    "attack": "Barrier Attack",
+    "attack_cost": "PC",
+    "attack_damage": 30,
+    "card": "Psychic Basic HP 80",
+    "effect": "During your opponent's next turn, this Pokémon takes -20 damage from attacks.",
+    "engine": "ReducedDamage 20",
+    "evidence": "CardEffect::ReducedDamage{amount:20}, duration 1, on self; engine/src/actions/effect_mechanic_map.rs -> Mechanic::DamageAndCardEffect{opponent:false, ..., duration:1}; dispatched at engine/src/actions/apply_attack_action.rs:722-733 to damage_and_card_effect_attack (3467-3500), which add_effect()s on the attacker's own Active (map 602-610); engine/src/state/played_card.rs:344-346 add_effect (doc comment 340-343)(effect, duration=1) = 'during opponent's next turn'; engine/src/hooks/core.rs:1147-1167 get_reduced_card_effect_modifiers reads CardEffect::ReducedDamage and ReducedDamageFromEx (ex attacker only) on the defending Active, active-to-active hits only; subtracted after Weakness at core.rs:1883-1885; left out of persistent_defender_damage (core.rs:1577-1580)",
+    "in_dustin_files": [],
+    "same_name_other_printing": []
+   },
+   {
+    "name": "Drifloon",
+    "ids": [
+     "A2 073",
+     "A2 165"
+    ],
+    "kind": "attack_self_reduction",
+    "subtype": "Pokémon",
+    "attack": "Expand",
+    "attack_cost": "P",
+    "attack_damage": 10,
+    "card": "Psychic Basic HP 50",
+    "effect": "During your opponent's next turn, this Pokémon takes -20 damage from attacks.",
+    "engine": "ReducedDamage 20",
+    "evidence": "CardEffect::ReducedDamage{amount:20}, duration 1, on self; engine/src/actions/effect_mechanic_map.rs -> Mechanic::DamageAndCardEffect{opponent:false, ..., duration:1}; dispatched at engine/src/actions/apply_attack_action.rs:722-733 to damage_and_card_effect_attack (3467-3500), which add_effect()s on the attacker's own Active (map 602-610); engine/src/state/played_card.rs:344-346 add_effect (doc comment 340-343)(effect, duration=1) = 'during opponent's next turn'; engine/src/hooks/core.rs:1147-1167 get_reduced_card_effect_modifiers reads CardEffect::ReducedDamage and ReducedDamageFromEx (ex attacker only) on the defending Active, active-to-active hits only; subtracted after Weakness at core.rs:1883-1885; left out of persistent_defender_damage (core.rs:1577-1580)",
+    "in_dustin_files": [],
+    "same_name_other_printing": []
+   },
+   {
+    "name": "Bronzong",
+    "ids": [
+     "A2 117"
+    ],
+    "kind": "attack_self_reduction",
+    "subtype": "Pokémon",
+    "attack": "Guard Press",
+    "attack_cost": "MMC",
+    "attack_damage": 60,
+    "card": "Metal Stage 1 HP 120",
+    "effect": "During your opponent's next turn, this Pokémon takes -20 damage from attacks.",
+    "engine": "ReducedDamage 20",
+    "evidence": "CardEffect::ReducedDamage{amount:20}, duration 1, on self; engine/src/actions/effect_mechanic_map.rs -> Mechanic::DamageAndCardEffect{opponent:false, ..., duration:1}; dispatched at engine/src/actions/apply_attack_action.rs:722-733 to damage_and_card_effect_attack (3467-3500), which add_effect()s on the attacker's own Active (map 602-610); engine/src/state/played_card.rs:344-346 add_effect (doc comment 340-343)(effect, duration=1) = 'during opponent's next turn'; engine/src/hooks/core.rs:1147-1167 get_reduced_card_effect_modifiers reads CardEffect::ReducedDamage and ReducedDamageFromEx (ex attacker only) on the defending Active, active-to-active hits only; subtracted after Weakness at core.rs:1883-1885; left out of persistent_defender_damage (core.rs:1577-1580)",
+    "in_dustin_files": [],
+    "same_name_other_printing": []
+   },
+   {
+    "name": "Probopass ex",
+    "ids": [
+     "A2a 057",
+     "A2a 085",
+     "A2a 094",
+     "A4b 253"
+    ],
+    "kind": "attack_self_reduction",
+    "subtype": "Pokémon",
+    "attack": "Defensive Unit",
+    "attack_cost": "MMC",
+    "attack_damage": 90,
+    "card": "Metal Stage 1 HP 160",
+    "effect": "During your opponent's next turn, this Pokémon takes -20 damage from attacks.",
+    "engine": "ReducedDamage 20",
+    "evidence": "CardEffect::ReducedDamage{amount:20}, duration 1, on self; engine/src/actions/effect_mechanic_map.rs -> Mechanic::DamageAndCardEffect{opponent:false, ..., duration:1}; dispatched at engine/src/actions/apply_attack_action.rs:722-733 to damage_and_card_effect_attack (3467-3500), which add_effect()s on the attacker's own Active (map 602-610); engine/src/state/played_card.rs:344-346 add_effect (doc comment 340-343)(effect, duration=1) = 'during opponent's next turn'; engine/src/hooks/core.rs:1147-1167 get_reduced_card_effect_modifiers reads CardEffect::ReducedDamage and ReducedDamageFromEx (ex attacker only) on the defending Active, active-to-active hits only; subtracted after Weakness at core.rs:1883-1885; left out of persistent_defender_damage (core.rs:1577-1580)",
+    "in_dustin_files": [],
+    "same_name_other_printing": []
+   },
+   {
+    "name": "Cloyster",
+    "ids": [
+     "A3 043",
+     "B1a 093"
+    ],
+    "kind": "attack_self_reduction",
+    "subtype": "Pokémon",
+    "attack": "Guard Press",
+    "attack_cost": "WW",
+    "attack_damage": 50,
+    "card": "Water Stage 1 HP 110 (not the A1 067 Shell Armor printing)",
+    "effect": "During your opponent's next turn, this Pokémon takes -20 damage from attacks.",
+    "engine": "ReducedDamage 20",
+    "evidence": "CardEffect::ReducedDamage{amount:20}, duration 1, on self; engine/src/actions/effect_mechanic_map.rs -> Mechanic::DamageAndCardEffect{opponent:false, ..., duration:1}; dispatched at engine/src/actions/apply_attack_action.rs:722-733 to damage_and_card_effect_attack (3467-3500), which add_effect()s on the attacker's own Active (map 602-610); engine/src/state/played_card.rs:344-346 add_effect (doc comment 340-343)(effect, duration=1) = 'during opponent's next turn'; engine/src/hooks/core.rs:1147-1167 get_reduced_card_effect_modifiers reads CardEffect::ReducedDamage and ReducedDamageFromEx (ex attacker only) on the defending Active, active-to-active hits only; subtracted after Weakness at core.rs:1883-1885; left out of persistent_defender_damage (core.rs:1577-1580)",
+    "in_dustin_files": [],
+    "same_name_other_printing": []
+   },
+   {
+    "name": "Stakataka",
+    "ids": [
+     "A3a 053",
+     "P-A 080"
+    ],
+    "kind": "attack_self_reduction",
+    "subtype": "Pokémon",
+    "attack": "Brass Rock",
+    "attack_cost": "MC",
+    "attack_damage": 40,
+    "card": "Metal Basic HP 110 (Ultra Beast)",
+    "effect": "During your opponent's next turn, this Pokémon takes -20 damage from attacks.",
+    "engine": "ReducedDamage 20",
+    "evidence": "CardEffect::ReducedDamage{amount:20}, duration 1, on self; engine/src/actions/effect_mechanic_map.rs -> Mechanic::DamageAndCardEffect{opponent:false, ..., duration:1}; dispatched at engine/src/actions/apply_attack_action.rs:722-733 to damage_and_card_effect_attack (3467-3500), which add_effect()s on the attacker's own Active (map 602-610); engine/src/state/played_card.rs:344-346 add_effect (doc comment 340-343)(effect, duration=1) = 'during opponent's next turn'; engine/src/hooks/core.rs:1147-1167 get_reduced_card_effect_modifiers reads CardEffect::ReducedDamage and ReducedDamageFromEx (ex attacker only) on the defending Active, active-to-active hits only; subtracted after Weakness at core.rs:1883-1885; left out of persistent_defender_damage (core.rs:1577-1580)",
+    "in_dustin_files": [],
+    "same_name_other_printing": []
+   },
+   {
+    "name": "Skarmory ex",
+    "ids": [
+     "A4 124",
+     "A4 194",
+     "A4 209",
+     "A4b 252"
+    ],
+    "kind": "attack_self_reduction",
+    "subtype": "Pokémon",
+    "attack": "Steel Wing",
+    "attack_cost": "MM",
+    "attack_damage": 70,
+    "card": "Metal Basic HP 140",
+    "effect": "During your opponent's next turn, this Pokémon takes -20 damage from attacks.",
+    "engine": "ReducedDamage 20",
+    "evidence": "CardEffect::ReducedDamage{amount:20}, duration 1, on self; engine/src/actions/effect_mechanic_map.rs -> Mechanic::DamageAndCardEffect{opponent:false, ..., duration:1}; dispatched at engine/src/actions/apply_attack_action.rs:722-733 to damage_and_card_effect_attack (3467-3500), which add_effect()s on the attacker's own Active (map 602-610); engine/src/state/played_card.rs:344-346 add_effect (doc comment 340-343)(effect, duration=1) = 'during opponent's next turn'; engine/src/hooks/core.rs:1147-1167 get_reduced_card_effect_modifiers reads CardEffect::ReducedDamage and ReducedDamageFromEx (ex attacker only) on the defending Active, active-to-active hits only; subtracted after Weakness at core.rs:1883-1885; left out of persistent_defender_damage (core.rs:1577-1580)",
+    "in_dustin_files": [
+     "decks/dustin/07-skarmory-stall.txt (2 Skarmory ex A4 124)"
+    ],
+    "same_name_other_printing": []
+   },
+   {
+    "name": "Avalugg",
+    "ids": [
+     "B1 075"
+    ],
+    "kind": "attack_self_reduction",
+    "subtype": "Pokémon",
+    "attack": "Frost Barrier",
+    "attack_cost": "WWC",
+    "attack_damage": 70,
+    "card": "Water Stage 1 HP 140",
+    "effect": "During your opponent's next turn, this Pokémon takes -20 damage from attacks.",
+    "engine": "ReducedDamage 20",
+    "evidence": "CardEffect::ReducedDamage{amount:20}, duration 1, on self; engine/src/actions/effect_mechanic_map.rs -> Mechanic::DamageAndCardEffect{opponent:false, ..., duration:1}; dispatched at engine/src/actions/apply_attack_action.rs:722-733 to damage_and_card_effect_attack (3467-3500), which add_effect()s on the attacker's own Active (map 602-610); engine/src/state/played_card.rs:344-346 add_effect (doc comment 340-343)(effect, duration=1) = 'during opponent's next turn'; engine/src/hooks/core.rs:1147-1167 get_reduced_card_effect_modifiers reads CardEffect::ReducedDamage and ReducedDamageFromEx (ex attacker only) on the defending Active, active-to-active hits only; subtracted after Weakness at core.rs:1883-1885; left out of persistent_defender_damage (core.rs:1577-1580)",
+    "in_dustin_files": [],
+    "same_name_other_printing": []
+   },
+   {
+    "name": "Swirlix",
+    "ids": [
+     "B1 117"
+    ],
+    "kind": "attack_self_reduction",
+    "subtype": "Pokémon",
+    "attack": "Cotton Guard",
+    "attack_cost": "P",
+    "attack_damage": 10,
+    "card": "Psychic Basic HP 60",
+    "effect": "During your opponent's next turn, this Pokémon takes -20 damage from attacks.",
+    "engine": "ReducedDamage 20",
+    "evidence": "CardEffect::ReducedDamage{amount:20}, duration 1, on self; engine/src/actions/effect_mechanic_map.rs -> Mechanic::DamageAndCardEffect{opponent:false, ..., duration:1}; dispatched at engine/src/actions/apply_attack_action.rs:722-733 to damage_and_card_effect_attack (3467-3500), which add_effect()s on the attacker's own Active (map 602-610); engine/src/state/played_card.rs:344-346 add_effect (doc comment 340-343)(effect, duration=1) = 'during opponent's next turn'; engine/src/hooks/core.rs:1147-1167 get_reduced_card_effect_modifiers reads CardEffect::ReducedDamage and ReducedDamageFromEx (ex attacker only) on the defending Active, active-to-active hits only; subtracted after Weakness at core.rs:1883-1885; left out of persistent_defender_damage (core.rs:1577-1580)",
+    "in_dustin_files": [],
+    "same_name_other_printing": []
+   },
+   {
+    "name": "Ferrothorn",
+    "ids": [
+     "B1 167"
+    ],
+    "kind": "attack_self_reduction",
+    "subtype": "Pokémon",
+    "attack": "Guard Press",
+    "attack_cost": "MM",
+    "attack_damage": 50,
+    "card": "Metal Stage 1 HP 110",
+    "effect": "During your opponent's next turn, this Pokémon takes -20 damage from attacks.",
+    "engine": "ReducedDamage 20",
+    "evidence": "CardEffect::ReducedDamage{amount:20}, duration 1, on self; engine/src/actions/effect_mechanic_map.rs -> Mechanic::DamageAndCardEffect{opponent:false, ..., duration:1}; dispatched at engine/src/actions/apply_attack_action.rs:722-733 to damage_and_card_effect_attack (3467-3500), which add_effect()s on the attacker's own Active (map 602-610); engine/src/state/played_card.rs:344-346 add_effect (doc comment 340-343)(effect, duration=1) = 'during opponent's next turn'; engine/src/hooks/core.rs:1147-1167 get_reduced_card_effect_modifiers reads CardEffect::ReducedDamage and ReducedDamageFromEx (ex attacker only) on the defending Active, active-to-active hits only; subtracted after Weakness at core.rs:1883-1885; left out of persistent_defender_damage (core.rs:1577-1580)",
+    "in_dustin_files": [],
+    "same_name_other_printing": []
+   },
+   {
+    "name": "Porygon",
+    "ids": [
+     "B1a 056",
+     "B3 222"
+    ],
+    "kind": "attack_self_reduction",
+    "subtype": "Pokémon",
+    "attack": "Stiffen",
+    "attack_cost": "C",
+    "attack_damage": 0,
+    "card": "Colorless Basic HP 60",
+    "effect": "During your opponent's next turn, this Pokémon takes -20 damage from attacks.",
+    "engine": "ReducedDamage 20",
+    "evidence": "CardEffect::ReducedDamage{amount:20}, duration 1, on self; engine/src/actions/effect_mechanic_map.rs -> Mechanic::DamageAndCardEffect{opponent:false, ..., duration:1}; dispatched at engine/src/actions/apply_attack_action.rs:722-733 to damage_and_card_effect_attack (3467-3500), which add_effect()s on the attacker's own Active (map 602-610); engine/src/state/played_card.rs:344-346 add_effect (doc comment 340-343)(effect, duration=1) = 'during opponent's next turn'; engine/src/hooks/core.rs:1147-1167 get_reduced_card_effect_modifiers reads CardEffect::ReducedDamage and ReducedDamageFromEx (ex attacker only) on the defending Active, active-to-active hits only; subtracted after Weakness at core.rs:1883-1885; left out of persistent_defender_damage (core.rs:1577-1580)",
+    "in_dustin_files": [],
+    "same_name_other_printing": []
+   },
+   {
+    "name": "Shuckle",
+    "ids": [
+     "B2 003"
+    ],
+    "kind": "attack_self_reduction",
+    "subtype": "Pokémon",
+    "attack": "Guard Press",
+    "attack_cost": "GG",
+    "attack_damage": 40,
+    "card": "Grass Basic HP 80",
+    "effect": "During your opponent's next turn, this Pokémon takes -20 damage from attacks.",
+    "engine": "ReducedDamage 20",
+    "evidence": "CardEffect::ReducedDamage{amount:20}, duration 1, on self; engine/src/actions/effect_mechanic_map.rs -> Mechanic::DamageAndCardEffect{opponent:false, ..., duration:1}; dispatched at engine/src/actions/apply_attack_action.rs:722-733 to damage_and_card_effect_attack (3467-3500), which add_effect()s on the attacker's own Active (map 602-610); engine/src/state/played_card.rs:344-346 add_effect (doc comment 340-343)(effect, duration=1) = 'during opponent's next turn'; engine/src/hooks/core.rs:1147-1167 get_reduced_card_effect_modifiers reads CardEffect::ReducedDamage and ReducedDamageFromEx (ex attacker only) on the defending Active, active-to-active hits only; subtracted after Weakness at core.rs:1883-1885; left out of persistent_defender_damage (core.rs:1577-1580)",
+    "in_dustin_files": [],
+    "same_name_other_printing": []
+   },
+   {
+    "name": "Wigglytuff",
+    "ids": [
+     "B3b 052"
+    ],
+    "kind": "attack_self_reduction",
+    "subtype": "Pokémon",
+    "attack": "Expand",
+    "attack_cost": "CC",
+    "attack_damage": 50,
+    "card": "Colorless Stage 1 HP 100",
+    "effect": "During your opponent's next turn, this Pokémon takes -20 damage from attacks.",
+    "engine": "ReducedDamage 20",
+    "evidence": "CardEffect::ReducedDamage{amount:20}, duration 1, on self; engine/src/actions/effect_mechanic_map.rs -> Mechanic::DamageAndCardEffect{opponent:false, ..., duration:1}; dispatched at engine/src/actions/apply_attack_action.rs:722-733 to damage_and_card_effect_attack (3467-3500), which add_effect()s on the attacker's own Active (map 602-610); engine/src/state/played_card.rs:344-346 add_effect (doc comment 340-343)(effect, duration=1) = 'during opponent's next turn'; engine/src/hooks/core.rs:1147-1167 get_reduced_card_effect_modifiers reads CardEffect::ReducedDamage and ReducedDamageFromEx (ex attacker only) on the defending Active, active-to-active hits only; subtracted after Weakness at core.rs:1883-1885; left out of persistent_defender_damage (core.rs:1577-1580)",
+    "in_dustin_files": [],
+    "same_name_other_printing": []
+   },
+   {
+    "name": "Frigibax",
+    "ids": [
+     "P-B 037"
+    ],
+    "kind": "attack_self_reduction",
+    "subtype": "Pokémon",
+    "attack": "Stiffen",
+    "attack_cost": "W",
+    "attack_damage": 0,
+    "card": "Water Basic HP 60 (the Suicune table deck's Stiffen)",
+    "effect": "During your opponent's next turn, this Pokémon takes -20 damage from attacks.",
+    "engine": "ReducedDamage 20",
+    "evidence": "CardEffect::ReducedDamage{amount:20}, duration 1, on self; engine/src/actions/effect_mechanic_map.rs -> Mechanic::DamageAndCardEffect{opponent:false, ..., duration:1}; dispatched at engine/src/actions/apply_attack_action.rs:722-733 to damage_and_card_effect_attack (3467-3500), which add_effect()s on the attacker's own Active (map 602-610); engine/src/state/played_card.rs:344-346 add_effect (doc comment 340-343)(effect, duration=1) = 'during opponent's next turn'; engine/src/hooks/core.rs:1147-1167 get_reduced_card_effect_modifiers reads CardEffect::ReducedDamage and ReducedDamageFromEx (ex attacker only) on the defending Active, active-to-active hits only; subtracted after Weakness at core.rs:1883-1885; left out of persistent_defender_damage (core.rs:1577-1580)",
+    "in_dustin_files": [],
+    "same_name_other_printing": []
+   },
+   {
+    "name": "Golem",
+    "ids": [
+     "A1a 045",
+     "B1 309"
+    ],
+    "kind": "attack_self_reduction",
+    "subtype": "Pokémon",
+    "attack": "Guard Press",
+    "attack_cost": "FFFC",
+    "attack_damage": 120,
+    "card": "Fighting Stage 2 HP 160",
+    "effect": "During your opponent's next turn, this Pokémon takes -30 damage from attacks.",
+    "engine": "ReducedDamage 30",
+    "evidence": "CardEffect::ReducedDamage{amount:30}, duration 1, on self; engine/src/actions/effect_mechanic_map.rs -> Mechanic::DamageAndCardEffect{opponent:false, ..., duration:1}; dispatched at engine/src/actions/apply_attack_action.rs:722-733 to damage_and_card_effect_attack (3467-3500), which add_effect()s on the attacker's own Active (map 611-619); engine/src/state/played_card.rs:344-346 add_effect (doc comment 340-343)(effect, duration=1) = 'during opponent's next turn'; engine/src/hooks/core.rs:1147-1167 get_reduced_card_effect_modifiers reads CardEffect::ReducedDamage and ReducedDamageFromEx (ex attacker only) on the defending Active, active-to-active hits only; subtracted after Weakness at core.rs:1883-1885; left out of persistent_defender_damage (core.rs:1577-1580)",
+    "in_dustin_files": [],
+    "same_name_other_printing": []
+   },
+   {
+    "name": "Pupitar",
+    "ids": [
+     "A4 104"
+    ],
+    "kind": "attack_self_reduction",
+    "subtype": "Pokémon",
+    "attack": "Guard Press",
+    "attack_cost": "CC",
+    "attack_damage": 20,
+    "card": "Fighting Stage 1 HP 80",
+    "effect": "During your opponent's next turn, this Pokémon takes -30 damage from attacks.",
+    "engine": "ReducedDamage 30",
+    "evidence": "CardEffect::ReducedDamage{amount:30}, duration 1, on self; engine/src/actions/effect_mechanic_map.rs -> Mechanic::DamageAndCardEffect{opponent:false, ..., duration:1}; dispatched at engine/src/actions/apply_attack_action.rs:722-733 to damage_and_card_effect_attack (3467-3500), which add_effect()s on the attacker's own Active (map 611-619); engine/src/state/played_card.rs:344-346 add_effect (doc comment 340-343)(effect, duration=1) = 'during opponent's next turn'; engine/src/hooks/core.rs:1147-1167 get_reduced_card_effect_modifiers reads CardEffect::ReducedDamage and ReducedDamageFromEx (ex attacker only) on the defending Active, active-to-active hits only; subtracted after Weakness at core.rs:1883-1885; left out of persistent_defender_damage (core.rs:1577-1580)",
+    "in_dustin_files": [],
+    "same_name_other_printing": []
+   },
+   {
+    "name": "Carbink",
+    "ids": [
+     "B1 119"
+    ],
+    "kind": "attack_self_reduction",
+    "subtype": "Pokémon",
+    "attack": "Guard Press",
+    "attack_cost": "P",
+    "attack_damage": 30,
+    "card": "Psychic Basic HP 50 (not the B3b 031 Glittering Gift printing)",
+    "effect": "During your opponent's next turn, this Pokémon takes -30 damage from attacks.",
+    "engine": "ReducedDamage 30",
+    "evidence": "CardEffect::ReducedDamage{amount:30}, duration 1, on self; engine/src/actions/effect_mechanic_map.rs -> Mechanic::DamageAndCardEffect{opponent:false, ..., duration:1}; dispatched at engine/src/actions/apply_attack_action.rs:722-733 to damage_and_card_effect_attack (3467-3500), which add_effect()s on the attacker's own Active (map 611-619); engine/src/state/played_card.rs:344-346 add_effect (doc comment 340-343)(effect, duration=1) = 'during opponent's next turn'; engine/src/hooks/core.rs:1147-1167 get_reduced_card_effect_modifiers reads CardEffect::ReducedDamage and ReducedDamageFromEx (ex attacker only) on the defending Active, active-to-active hits only; subtracted after Weakness at core.rs:1883-1885; left out of persistent_defender_damage (core.rs:1577-1580)",
+    "in_dustin_files": [],
+    "same_name_other_printing": [
+     "decks/brews/brew-10-diancie-giratina.txt (2 Carbink B3b 031: same name, a different printing, not this card)"
+    ]
+   },
+   {
+    "name": "Registeel",
+    "ids": [
+     "B3 116"
+    ],
+    "kind": "attack_self_reduction",
+    "subtype": "Pokémon",
+    "attack": "Protect Charge",
+    "attack_cost": "MCC",
+    "attack_damage": 60,
+    "card": "Metal Basic HP 110",
+    "effect": "During your opponent's next turn, this Pokémon takes -30 damage from attacks.",
+    "engine": "ReducedDamage 30",
+    "evidence": "CardEffect::ReducedDamage{amount:30}, duration 1, on self; engine/src/actions/effect_mechanic_map.rs -> Mechanic::DamageAndCardEffect{opponent:false, ..., duration:1}; dispatched at engine/src/actions/apply_attack_action.rs:722-733 to damage_and_card_effect_attack (3467-3500), which add_effect()s on the attacker's own Active (map 611-619); engine/src/state/played_card.rs:344-346 add_effect (doc comment 340-343)(effect, duration=1) = 'during opponent's next turn'; engine/src/hooks/core.rs:1147-1167 get_reduced_card_effect_modifiers reads CardEffect::ReducedDamage and ReducedDamageFromEx (ex attacker only) on the defending Active, active-to-active hits only; subtracted after Weakness at core.rs:1883-1885; left out of persistent_defender_damage (core.rs:1577-1580)",
+    "in_dustin_files": [],
+    "same_name_other_printing": []
+   },
+   {
+    "name": "Archaludon",
+    "ids": [
+     "B4a 056"
+    ],
+    "kind": "attack_self_reduction",
+    "subtype": "Pokémon",
+    "attack": "Protect Charge",
+    "attack_cost": "FMCC",
+    "attack_damage": 110,
+    "card": "Dragon Stage 1 HP 140 (not the B4 113 Raging Blade printing)",
+    "effect": "During your opponent's next turn, this Pokémon takes -30 damage from attacks.",
+    "engine": "ReducedDamage 30",
+    "evidence": "CardEffect::ReducedDamage{amount:30}, duration 1, on self; engine/src/actions/effect_mechanic_map.rs -> Mechanic::DamageAndCardEffect{opponent:false, ..., duration:1}; dispatched at engine/src/actions/apply_attack_action.rs:722-733 to damage_and_card_effect_attack (3467-3500), which add_effect()s on the attacker's own Active (map 611-619); engine/src/state/played_card.rs:344-346 add_effect (doc comment 340-343)(effect, duration=1) = 'during opponent's next turn'; engine/src/hooks/core.rs:1147-1167 get_reduced_card_effect_modifiers reads CardEffect::ReducedDamage and ReducedDamageFromEx (ex attacker only) on the defending Active, active-to-active hits only; subtracted after Weakness at core.rs:1883-1885; left out of persistent_defender_damage (core.rs:1577-1580)",
+    "in_dustin_files": [
+     "decks/dustin/11-archaludon-haxorus-dragonair.txt (1 Archaludon B4a 056)"
+    ],
+    "same_name_other_printing": []
+   },
+   {
+    "name": "Cosmoem",
+    "ids": [
+     "A3 086",
+     "A4b 182",
+     "A4b 183"
+    ],
+    "kind": "attack_self_reduction",
+    "subtype": "Pokémon",
+    "attack": "Stiffen",
+    "attack_cost": "CC",
+    "attack_damage": 0,
+    "card": "Psychic Stage 1 HP 100",
+    "effect": "During your opponent's next turn, this Pokémon takes -50 damage from attacks.",
+    "engine": "ReducedDamage 50",
+    "evidence": "CardEffect::ReducedDamage{amount:50}, duration 1, on self; engine/src/actions/effect_mechanic_map.rs -> Mechanic::DamageAndCardEffect{opponent:false, ..., duration:1}; dispatched at engine/src/actions/apply_attack_action.rs:722-733 to damage_and_card_effect_attack (3467-3500), which add_effect()s on the attacker's own Active (map 620-628); engine/src/state/played_card.rs:344-346 add_effect (doc comment 340-343)(effect, duration=1) = 'during opponent's next turn'; engine/src/hooks/core.rs:1147-1167 get_reduced_card_effect_modifiers reads CardEffect::ReducedDamage and ReducedDamageFromEx (ex attacker only) on the defending Active, active-to-active hits only; subtracted after Weakness at core.rs:1883-1885; left out of persistent_defender_damage (core.rs:1577-1580)",
+    "in_dustin_files": [],
+    "same_name_other_printing": []
+   },
+   {
+    "name": "Corviknight",
+    "ids": [
+     "B1 175",
+     "B1 246"
+    ],
+    "kind": "attack_self_reduction",
+    "subtype": "Pokémon",
+    "attack": "Iron Wings",
+    "attack_cost": "MMC",
+    "attack_damage": 100,
+    "card": "Metal Stage 2 HP 140 (not the B3a 048 Metal Claw printing)",
+    "effect": "Discard 2 [M] Energy from this Pokémon. During your opponent's next turn, this Pokémon takes -50 damage from attacks.",
+    "engine": "ReducedDamage 50 after discarding 2 [M]",
+    "evidence": "Mechanic::SelfDiscardEnergyAndCardEffect{effect: ReducedDamage 50, duration 1} (effect_mechanic_map.rs:146-153); dispatched at apply_attack_action.rs:636-645 to self_discard_energy_and_card_effect (2909-2921), add_effect on own Active; engine/src/state/played_card.rs:344-346 add_effect (doc comment 340-343)(effect, duration=1) = 'during opponent's next turn'; engine/src/hooks/core.rs:1147-1167 get_reduced_card_effect_modifiers reads CardEffect::ReducedDamage and ReducedDamageFromEx (ex attacker only) on the defending Active, active-to-active hits only; subtracted after Weakness at core.rs:1883-1885; left out of persistent_defender_damage (core.rs:1577-1580)",
+    "in_dustin_files": [],
+    "same_name_other_printing": []
+   },
+   {
+    "name": "Gouging Fire",
+    "ids": [
+     "B3a 054"
+    ],
+    "kind": "attack_self_reduction",
+    "subtype": "Pokémon",
+    "attack": "Scorching Interruption",
+    "attack_cost": "RLC",
+    "attack_damage": 100,
+    "card": "Dragon Basic HP 110",
+    "effect": "Discard 2 Energy from this Pokémon. During your opponent's next turn, this Pokémon takes -30 damage from attacks.",
+    "engine": "ReducedDamage 30 after discarding 2 chosen Energy",
+    "evidence": "Mechanic::SelfDiscardChosenEnergyAndCardEffect{count 2, effect: ReducedDamage 30, duration 1} (effect_mechanic_map.rs:3387-3394); dispatched at apply_attack_action.rs:646-655 to self_discard_chosen_energy_and_card_effect (3706-3723), the effect rides on ChooseAttackEnergyDiscard{defensive_effect}; engine/src/state/played_card.rs:344-346 add_effect (doc comment 340-343)(effect, duration=1) = 'during opponent's next turn'; engine/src/hooks/core.rs:1147-1167 get_reduced_card_effect_modifiers reads CardEffect::ReducedDamage and ReducedDamageFromEx (ex attacker only) on the defending Active, active-to-active hits only; subtracted after Weakness at core.rs:1883-1885; left out of persistent_defender_damage (core.rs:1577-1580)",
+    "in_dustin_files": [],
+    "same_name_other_printing": []
+   },
+   {
+    "name": "Mega Steelix ex",
+    "ids": [
+     "B1a 052",
+     "B1a 080",
+     "B1a 086",
+     "B3 232"
+    ],
+    "kind": "attack_self_reduction",
+    "subtype": "Pokémon",
+    "attack": "Adamantine Rolling",
+    "attack_cost": "MMCC",
+    "attack_damage": 120,
+    "card": "Metal Stage 1 (from Onix) HP 220",
+    "effect": "During your opponent's next turn, this Pokémon takes -20 damage from attacks and has no Weakness.",
+    "engine": "ReducedDamage 20 + NoWeakness",
+    "evidence": "Mechanic::DamageAndMultipleCardEffects{opponent:false, [ReducedDamage 20, NoWeakness], duration 1} (effect_mechanic_map.rs:2456-2466); dispatched at apply_attack_action.rs:1239-1248 to damage_and_multiple_card_effects_attack (5832-5852); engine/src/state/played_card.rs:344-346 add_effect (doc comment 340-343)(effect, duration=1) = 'during opponent's next turn'; engine/src/hooks/core.rs:1147-1167 get_reduced_card_effect_modifiers reads CardEffect::ReducedDamage and ReducedDamageFromEx (ex attacker only) on the defending Active, active-to-active hits only; subtracted after Weakness at core.rs:1883-1885; left out of persistent_defender_damage (core.rs:1577-1580)",
+    "in_dustin_files": [],
+    "same_name_other_printing": []
+   },
+   {
+    "name": "Aegislash",
+    "ids": [
+     "B2 120"
+    ],
+    "kind": "attack_self_reduction",
+    "subtype": "Pokémon",
+    "attack": "Superb Shield",
+    "attack_cost": "MMM",
+    "attack_damage": 80,
+    "card": "Metal Stage 2 HP 140 (not the B1 172 / B1a 102 Cursed Metal printings)",
+    "effect": "During your opponent's next turn, this Pokémon takes -80 damage from attacks from your opponent's Pokémon ex.",
+    "engine": "ReducedDamageFromEx 80 (counts only when the attacker is an ex)",
+    "evidence": "CardEffect::ReducedDamageFromEx{amount:80}, duration 1, on self; engine/src/actions/effect_mechanic_map.rs -> Mechanic::DamageAndCardEffect{opponent:false, ..., duration:1}; dispatched at engine/src/actions/apply_attack_action.rs:722-733 to damage_and_card_effect_attack (3467-3500), which add_effect()s on the attacker's own Active (map 2554-2562); read at core.rs:1163 gated on attacker_is_ex; engine/src/state/played_card.rs:344-346 add_effect (doc comment 340-343)(effect, duration=1) = 'during opponent's next turn'; engine/src/hooks/core.rs:1147-1167 get_reduced_card_effect_modifiers reads CardEffect::ReducedDamage and ReducedDamageFromEx (ex attacker only) on the defending Active, active-to-active hits only; subtracted after Weakness at core.rs:1883-1885; left out of persistent_defender_damage (core.rs:1577-1580)",
+    "in_dustin_files": [],
+    "same_name_other_printing": []
+   },
+   {
+    "name": "Cornerstone Mask Ogerpon",
+    "ids": [
+     "B2 093"
+    ],
+    "kind": "attack_self_reduction",
+    "subtype": "Pokémon",
+    "attack": "Cornerstone Dance",
+    "attack_cost": "FC",
+    "attack_damage": 40,
+    "card": "Fighting Basic HP 80",
+    "effect": "Flip a coin. If heads, during your opponent's next turn, this Pokémon takes -100 damage from attacks.",
+    "engine": "ReducedDamage 100 on heads only (coin_flip: true)",
+    "evidence": "CardEffect::ReducedDamage{amount:100}, duration 1, on self, coin_flip:true -> AttackOutcomes::binary_coin (apply_attack_action.rs:3492-3496); engine/src/actions/effect_mechanic_map.rs -> Mechanic::DamageAndCardEffect{opponent:false, ..., duration:1}; dispatched at engine/src/actions/apply_attack_action.rs:722-733 to damage_and_card_effect_attack (3467-3500), which add_effect()s on the attacker's own Active (map 2604-2612); engine/src/state/played_card.rs:344-346 add_effect (doc comment 340-343)(effect, duration=1) = 'during opponent's next turn'; engine/src/hooks/core.rs:1147-1167 get_reduced_card_effect_modifiers reads CardEffect::ReducedDamage and ReducedDamageFromEx (ex attacker only) on the defending Active, active-to-active hits only; subtracted after Weakness at core.rs:1883-1885; left out of persistent_defender_damage (core.rs:1577-1580)",
+    "in_dustin_files": [],
+    "same_name_other_printing": []
+   }
+  ],
+  "group3_ability_self_reductions": [],
+  "group4_considered": {
+   "tools_and_trainers": [
+    {
+     "name": "Protective Poncho",
+     "ids": [
+      "B2 147",
+      "B2 234"
+     ],
+     "kind": "other",
+     "subtype": "Tool",
+     "effect": "As long as the Pokémon this card is attached to is on your Bench, prevent all damage done to that Pokémon by your opponent's attacks and Abilities.",
+     "engine": "Full prevention (return 0) for a Benched holder hit by the opponent; not a finite cut",
+     "evidence": "engine/src/hooks/core.rs:1707-1715 (modify_damage returns 0 when target_idx != 0 and the holder has Poncho); tools.rs:55-56",
+     "decision": "considered, listed under kt switch 2 at a price of 0 (spec: Bench-hit pricing is a later candidate); NOT a switch-1 relevant card",
+     "reason": "It prevents Bench damage outright instead of reducing an Active hit, and kp's clock prices hits on the Active only; the proposed registration sets it to 0 on both sides.",
+     "in_dustin_files": [
+      "decks/dustin/05-indeedee-stoutland.txt (1 Protective Poncho B2 147)",
+      "decks/brews/brew-06b-pyukumuku-silvally-scyther-grass.txt (1 Protective Poncho B2 147)"
+     ],
+     "same_name_other_printing": []
+    },
+    {
+     "name": "Rocky Helmet",
+     "ids": [
+      "A2 148",
+      "A4b 322",
+      "A4b 323"
+     ],
+     "kind": "other",
+     "subtype": "Tool",
+     "effect": "If the Pokémon this card is attached to is in the Active Spot and is damaged by an attack from your opponent's Pokémon, do 20 damage to the Attacking Pokémon.",
+     "engine": "Damage back to the attacker, not a reduction of the hit",
+     "evidence": "engine/src/hooks/counterattack.rs:13-36 get_counterattack_damage (Rocky Helmet 20 x tool_count at 15-17, plus CardEffect::Counterattack at 19-27, plus AbilityMechanic::CounterattackDamage at 29-33); applied at actions/apply_action_helpers.rs:593-612 handle_attack_retaliation; tools.rs:41-42",
+     "decision": "considered, priced by kt switch 3 (counter damage in the holder's own KO clock); NOT a switch-1 relevant card",
+     "reason": "The kt candidate prices it (switch 3), so it is listed for the carrier census, but it is damage back, not a cut: the holder takes the full hit. The other two inputs of the same hook are listed below it, under 'counterattack_inputs'.",
+     "in_dustin_files": [
+      "decks/dustin/06-mega-blaziken-tournament-list.txt (1 Rocky Helmet A2 148)",
+      "decks/brews/brew-03a-arceus-nihilego-toxapex.txt (1 Rocky Helmet A4b 322)",
+      "decks/brews/brew-06-pyukumuku-silvally-payback.txt (1 Rocky Helmet A2 148)",
+      "decks/brews/brew-06b-pyukumuku-silvally-scyther-grass.txt (1 Rocky Helmet A2 148)"
+     ],
+     "same_name_other_printing": []
+    },
+    {
+     "name": "Poison Barb",
+     "ids": [
+      "A3 146"
+     ],
+     "kind": "other",
+     "subtype": "Tool",
+     "effect": "If the Pokémon this card is attached to is your Active Pokémon and is damaged by an attack from your opponent's Pokémon, the Attacking Pokémon is now Poisoned.",
+     "engine": "Poisons the attacker; no damage arithmetic on the hit",
+     "evidence": "engine/src/hooks/counterattack.rs:117-124 should_poison_attacker; tools.rs:43-44",
+     "decision": "excluded: the review drops it from kt (needs the Special Conditions model, deferred)",
+     "reason": "Not a damage cut; the proposed registration says should_poison_attacker is not called.",
+     "in_dustin_files": [
+      "decks/dustin/10-xatu-oricorio-tr-weezing.txt (2 Poison Barb A3 146)",
+      "decks/brews/brew-03a-arceus-nihilego-toxapex.txt (1 Poison Barb A3 146)"
+     ],
+     "same_name_other_printing": []
+    },
+    {
+     "name": "Clear Veil",
+     "ids": [
+      "B4 149"
+     ],
+     "kind": "other",
+     "subtype": "Tool",
+     "effect": "Prevent all effects of attacks used by your opponent's Pokémon done to the Pokémon this card is attached to. (Existing effects are not removed.)",
+     "engine": "Blocks attack effects (State::prevents_attack_effects), never damage",
+     "evidence": "engine/src/tools.rs:87-91 (doc: resolved in State::prevents_attack_effects)",
+     "decision": "excluded",
+     "reason": "Damage passes through untouched; only the rider effects are stopped.",
+     "in_dustin_files": [],
+     "same_name_other_printing": []
+    },
+    {
+     "name": "Hala",
+     "ids": [
+      "B1 222",
+      "B1 267"
+     ],
+     "kind": "other",
+     "subtype": "Supporter",
+     "effect": "During your opponent's next turn, if your Hariyama or Crabominable would be Knocked Out by damage from an attack, it is not Knocked Out and its remaining HP becomes 10.",
+     "engine": "TurnEffect::SurviveKnockoutForSpecificPokemon{remaining_hp:10, [Hariyama, Crabominable]}, duration 1",
+     "evidence": "engine/src/actions/apply_trainer_action.rs:1699-1710 hala_effect; dispatch 180",
+     "decision": "excluded",
+     "reason": "A knockout-survival turn effect, not a damage reduction; the kt hook reads ReducedDamageForTarget/ForType only.",
+     "in_dustin_files": [],
+     "same_name_other_printing": []
+    }
+   ],
+   "attack_no_weakness_on_self": [
+    {
+     "name": "Steelix",
+     "ids": [
+      "B1a 051",
+      "B3 219"
+     ],
+     "kind": "other",
+     "subtype": "Pokémon",
+     "attack": "Metal Defender",
+     "attack_cost": "MMCC",
+     "attack_damage": 100,
+     "card": "Metal Stage 1 (from Onix) HP 150 (not the A4 122 Heavy Impact printing)",
+     "effect": "During your opponent's next turn, this Pokémon has no Weakness.",
+     "engine": "CardEffect::NoWeakness, duration 1, on self: the Weakness stage (+20, or Bounded Field's x2) is skipped for hits the holder takes on the opponent's next turn; no amount is subtracted",
+     "evidence": "effect_mechanic_map.rs:367-375 (map entry: DamageAndCardEffect{opponent:false, effect: CardEffect::NoWeakness, duration:1, coin_flip:false}); engine/src/actions/effect_mechanic_map.rs -> Mechanic::DamageAndCardEffect{opponent:false, ..., duration:1}; dispatched at engine/src/actions/apply_attack_action.rs:722-733 to damage_and_card_effect_attack (3467-3500), which add_effect()s on the attacker's own Active (engine/src/state/played_card.rs:344-346 add_effect (doc comment 340-343)); read at hooks/core.rs:1468-1484 weakness_application_against (returns WeaknessApplication::None when the receiver holds NoWeakness, else printed_weakness_application); persistent_defender_damage's doc names NoWeakness among the temporary effects it leaves out (core.rs:1577-1578); the same rider on Mega Steelix ex is at effect_mechanic_map.rs:2456-2466 (group 3)",
+     "decision": "considered, EXCLUDED from the switch-1 set: not a ReducedDamage / ReducedDamageFromEx, and the proposed hook temporary_defender_reduction sums finite amounts only, so the kt candidate as drafted does not see it",
+     "reason": "Same attack route and duration as every group-3 card, but it removes the Weakness stage instead of subtracting a fixed amount. Lists-phase note: Steelix is one of Jasmine's two named targets and the engine's scope test is an exact name match (core.rs:1233 names.contains(&pokemon.get_name())), so every card named 'Steelix' (A4 122 Heavy Impact; B1a 051 / B3 219 Metal Defender) is covered by Jasmine in the engine and 'Mega Steelix ex' [B1a 052, B1a 080, B1a 086, B3 232] is not. That is an engine reading, not a rules claim.",
+     "in_dustin_files": [],
+     "same_name_other_printing": []
+    }
+   ],
+   "counterattack_inputs": {
+    "note": "The three inputs of get_counterattack_damage (hooks/counterattack.rs:13-36), which the proposed registration names for switch 3 (kt_spec_review.md lines 175-176). Rocky Helmet is the first (tools_and_trainers); these are the other two. None is a switch-1 card.",
+    "attacks": [
+     {
+      "name": "Turtonator",
+      "ids": [
+       "B1 047"
+      ],
+      "kind": "other",
+      "subtype": "Pokémon",
+      "attack": "Shell Trap",
+      "attack_cost": "RR",
+      "attack_damage": 40,
+      "card": "Fire Basic HP 110 (not the A3 037 / A3 161 Fire Spin or B4 123 Searing Flame printings)",
+      "effect": "During your opponent's next turn, if this Pokémon is damaged by an attack, do 20 damage to the Attacking Pokémon.",
+      "engine": "CardEffect::Counterattack{amount:20}, duration 1, on self: damage back to the attacker, the holder takes the full hit",
+      "evidence": "effect_mechanic_map.rs:525-533; dispatched at apply_attack_action.rs:722-733 (DamageAndCardEffect{opponent:false}) to damage_and_card_effect_attack (3467-3500), add_effect on the attacker's own Active (engine/src/state/played_card.rs:344-346 add_effect (doc comment 340-343)); read at hooks/counterattack.rs:19-27 get_counterattack_damage (sums every CardEffect::Counterattack on the damaged card); applied at actions/apply_action_helpers.rs:593-612 handle_attack_retaliation (attacker.apply_damage(counter_damage) for each damaged Active)",
+      "decision": "considered, priced by kt switch 3 with Rocky Helmet (counter damage in the holder's own side's KO clock; kt_spec_review.md lines 175-176 name 'CardEffect::Counterattack such as Spike Armor'); NOT a switch-1 relevant card",
+      "reason": "Damage back, not a cut.",
+      "in_dustin_files": [],
+      "same_name_other_printing": []
+     },
+     {
+      "name": "Togedemaru",
+      "ids": [
+       "A3b 048",
+       "P-A 090"
+      ],
+      "kind": "other",
+      "subtype": "Pokémon",
+      "attack": "Bristling Spikes",
+      "attack_cost": "MM",
+      "attack_damage": 30,
+      "card": "Metal Basic HP 80 (not the A3 067 Electrosmash or B4a 045 Tumbling Attack printings)",
+      "effect": "During your opponent's next turn, if this Pokémon is damaged by an attack, do 30 damage to the Attacking Pokémon.",
+      "engine": "CardEffect::Counterattack{amount:30}, duration 1, on self: damage back to the attacker, the holder takes the full hit",
+      "evidence": "effect_mechanic_map.rs:534-542; dispatched at apply_attack_action.rs:722-733 (DamageAndCardEffect{opponent:false}) to damage_and_card_effect_attack (3467-3500), add_effect on the attacker's own Active (engine/src/state/played_card.rs:344-346 add_effect (doc comment 340-343)); read at hooks/counterattack.rs:19-27 get_counterattack_damage (sums every CardEffect::Counterattack on the damaged card); applied at actions/apply_action_helpers.rs:593-612 handle_attack_retaliation (attacker.apply_damage(counter_damage) for each damaged Active)",
+      "decision": "considered, priced by kt switch 3 with Rocky Helmet (counter damage in the holder's own side's KO clock; kt_spec_review.md lines 175-176 name 'CardEffect::Counterattack such as Spike Armor'); NOT a switch-1 relevant card",
+      "reason": "Damage back, not a cut.",
+      "in_dustin_files": [],
+      "same_name_other_printing": []
+     },
+     {
+      "name": "Alolan Sandslash",
+      "ids": [
+       "A3 039"
+      ],
+      "kind": "other",
+      "subtype": "Pokémon",
+      "attack": "Spike Armor",
+      "attack_cost": "W",
+      "attack_damage": 20,
+      "card": "Water Stage 1 HP 100",
+      "effect": "During your opponent's next turn, if this Pokémon is damaged by an attack, do 40 damage to the Attacking Pokémon.",
+      "engine": "CardEffect::Counterattack{amount:40}, duration 1, on self: damage back to the attacker, the holder takes the full hit",
+      "evidence": "effect_mechanic_map.rs:543-551; dispatched at apply_attack_action.rs:722-733 (DamageAndCardEffect{opponent:false}) to damage_and_card_effect_attack (3467-3500), add_effect on the attacker's own Active (engine/src/state/played_card.rs:344-346 add_effect (doc comment 340-343)); read at hooks/counterattack.rs:19-27 get_counterattack_damage (sums every CardEffect::Counterattack on the damaged card); applied at actions/apply_action_helpers.rs:593-612 handle_attack_retaliation (attacker.apply_damage(counter_damage) for each damaged Active)",
+      "decision": "considered, priced by kt switch 3 with Rocky Helmet (counter damage in the holder's own side's KO clock; kt_spec_review.md lines 175-176 name 'CardEffect::Counterattack such as Spike Armor'); NOT a switch-1 relevant card",
+      "reason": "Damage back, not a cut: the spec's own example.",
+      "in_dustin_files": [],
+      "same_name_other_printing": []
+     },
+     {
+      "name": "Mega Sableye ex",
+      "ids": [
+       "B3b 041",
+       "B3b 081",
+       "B3b 088"
+      ],
+      "kind": "other",
+      "subtype": "Pokémon",
+      "attack": "Cursed Jewel",
+      "attack_cost": "DC",
+      "attack_damage": 80,
+      "card": "Darkness Basic HP 170",
+      "effect": "During your opponent's next turn, if this Pokémon is damaged by an attack, do 40 damage to the Attacking Pokémon.",
+      "engine": "CardEffect::Counterattack{amount:40}, duration 1, on self: damage back to the attacker, the holder takes the full hit",
+      "evidence": "effect_mechanic_map.rs:543-551; dispatched at apply_attack_action.rs:722-733 (DamageAndCardEffect{opponent:false}) to damage_and_card_effect_attack (3467-3500), add_effect on the attacker's own Active (engine/src/state/played_card.rs:344-346 add_effect (doc comment 340-343)); read at hooks/counterattack.rs:19-27 get_counterattack_damage (sums every CardEffect::Counterattack on the damaged card); applied at actions/apply_action_helpers.rs:593-612 handle_attack_retaliation (attacker.apply_damage(counter_damage) for each damaged Active)",
+      "decision": "considered, priced by kt switch 3 with Rocky Helmet (counter damage in the holder's own side's KO clock; kt_spec_review.md lines 175-176 name 'CardEffect::Counterattack such as Spike Armor'); NOT a switch-1 relevant card",
+      "reason": "Damage back, not a cut: in two of Dustin's brews, so switch 3 touches those two files.",
+      "in_dustin_files": [
+       "decks/brews/brew-07-hoopa-darkrai-sableye.txt (1 Mega Sableye ex B3b 041)",
+       "decks/brews/brew-09-sableye-obstagoon.txt (2 Mega Sableye ex B3b 041)"
+      ],
+      "same_name_other_printing": []
+     },
+     {
+      "name": "Chesnaught",
+      "ids": [
+       "B2 010"
+      ],
+      "kind": "other",
+      "subtype": "Pokémon",
+      "attack": "Needle Lariat",
+      "attack_cost": "GGCC",
+      "attack_damage": 80,
+      "card": "Grass Stage 2 HP 160",
+      "effect": "During your opponent's next turn, if this Pokémon is damaged by an attack, do 80 damage to the Attacking Pokémon.",
+      "engine": "CardEffect::Counterattack{amount:80}, duration 1, on self: damage back to the attacker, the holder takes the full hit",
+      "evidence": "effect_mechanic_map.rs:2536-2544; dispatched at apply_attack_action.rs:722-733 (DamageAndCardEffect{opponent:false}) to damage_and_card_effect_attack (3467-3500), add_effect on the attacker's own Active (engine/src/state/played_card.rs:344-346 add_effect (doc comment 340-343)); read at hooks/counterattack.rs:19-27 get_counterattack_damage (sums every CardEffect::Counterattack on the damaged card); applied at actions/apply_action_helpers.rs:593-612 handle_attack_retaliation (attacker.apply_damage(counter_damage) for each damaged Active)",
+      "decision": "considered, priced by kt switch 3 with Rocky Helmet (counter damage in the holder's own side's KO clock; kt_spec_review.md lines 175-176 name 'CardEffect::Counterattack such as Spike Armor'); NOT a switch-1 relevant card",
+      "reason": "Damage back, not a cut.",
+      "in_dustin_files": [],
+      "same_name_other_printing": []
+     }
+    ],
+    "abilities": [
+     {
+      "name": "Poliwrath",
+      "ids": [
+       "A1 061",
+       "B1 297"
+      ],
+      "kind": "other",
+      "subtype": "Pokémon",
+      "ability": "Counterattack",
+      "card": "Water Stage 2 HP 150 (not Poliwrath ex A4a 042 / A4a 082 / A4a 089, another name)",
+      "effect": "If this Pokémon is in the Active Spot and is damaged by an attack from your opponent's Pokémon, do 20 damage to the Attacking Pokémon.",
+      "engine": "AbilityMechanic::CounterattackDamage{amount:20}: persistent while the Ability is in play and not suppressed; damage back to the attacker",
+      "evidence": "effect_ability_mechanic_map.rs:219-222 (map entry: AbilityMechanic::CounterattackDamage{amount:20}); read at hooks/counterattack.rs:29-33 get_counterattack_damage via get_in_play_ability_mechanic (suppression-aware); applied at actions/apply_action_helpers.rs:593-612 handle_attack_retaliation; passive, never activated (apply_abilities_action.rs:327-328 panics if invoked; move_generation_abilities.rs:229 offers it never)",
+      "decision": "considered, priced by kt switch 3 with Rocky Helmet (kt_spec_review.md lines 175-176 name 'CounterattackDamage abilities; none of the latter in the eight lists'); NOT a switch-1 relevant card",
+      "reason": "Damage back, not a cut; the holder takes the full hit.",
+      "in_dustin_files": [],
+      "same_name_other_printing": []
+     },
+     {
+      "name": "Druddigon",
+      "ids": [
+       "A1a 056"
+      ],
+      "kind": "other",
+      "subtype": "Pokémon",
+      "ability": "Rough Skin",
+      "card": "Dragon Basic HP 100 (not the B1 176 Giga Claw or B2b 057 Clutch printings)",
+      "effect": "If this Pokémon is in the Active Spot and is damaged by an attack from your opponent's Pokémon, do 20 damage to the Attacking Pokémon.",
+      "engine": "AbilityMechanic::CounterattackDamage{amount:20}: persistent while the Ability is in play and not suppressed; damage back to the attacker",
+      "evidence": "effect_ability_mechanic_map.rs:219-222 (map entry: AbilityMechanic::CounterattackDamage{amount:20}); read at hooks/counterattack.rs:29-33 get_counterattack_damage via get_in_play_ability_mechanic (suppression-aware); applied at actions/apply_action_helpers.rs:593-612 handle_attack_retaliation; passive, never activated (apply_abilities_action.rs:327-328 panics if invoked; move_generation_abilities.rs:229 offers it never)",
+      "decision": "considered, priced by kt switch 3 with Rocky Helmet (kt_spec_review.md lines 175-176 name 'CounterattackDamage abilities; none of the latter in the eight lists'); NOT a switch-1 relevant card",
+      "reason": "Damage back, not a cut; the holder takes the full hit.",
+      "in_dustin_files": [],
+      "same_name_other_printing": []
+     },
+     {
+      "name": "Pawmot",
+      "ids": [
+       "A2b 028",
+       "P-A 054"
+      ],
+      "kind": "other",
+      "subtype": "Pokémon",
+      "ability": "Counterattack",
+      "card": "Lightning Stage 2 HP 140 (not the B2a 040 / B2a 121 Thunder Blast or B3a 016 Volt Wave printings)",
+      "effect": "If this Pokémon is in the Active Spot and is damaged by an attack from your opponent's Pokémon, do 20 damage to the Attacking Pokémon.",
+      "engine": "AbilityMechanic::CounterattackDamage{amount:20}: persistent while the Ability is in play and not suppressed; damage back to the attacker",
+      "evidence": "effect_ability_mechanic_map.rs:219-222 (map entry: AbilityMechanic::CounterattackDamage{amount:20}); read at hooks/counterattack.rs:29-33 get_counterattack_damage via get_in_play_ability_mechanic (suppression-aware); applied at actions/apply_action_helpers.rs:593-612 handle_attack_retaliation; passive, never activated (apply_abilities_action.rs:327-328 panics if invoked; move_generation_abilities.rs:229 offers it never)",
+      "decision": "considered, priced by kt switch 3 with Rocky Helmet (kt_spec_review.md lines 175-176 name 'CounterattackDamage abilities; none of the latter in the eight lists'); NOT a switch-1 relevant card",
+      "reason": "Damage back, not a cut; the holder takes the full hit.",
+      "in_dustin_files": [],
+      "same_name_other_printing": []
+     },
+     {
+      "name": "Ferrothorn",
+      "ids": [
+       "A3a 052"
+      ],
+      "kind": "other",
+      "subtype": "Pokémon",
+      "ability": "Steel Spikes",
+      "card": "Metal Stage 1 HP 110 (not the B1 167 Guard Press printing, which is in group 3, nor B2 116 Pummel)",
+      "effect": "If this Pokémon is in the Active Spot and is damaged by an attack from your opponent's Pokémon, do 20 damage to the Attacking Pokémon.",
+      "engine": "AbilityMechanic::CounterattackDamage{amount:20}: persistent while the Ability is in play and not suppressed; damage back to the attacker",
+      "evidence": "effect_ability_mechanic_map.rs:219-222 (map entry: AbilityMechanic::CounterattackDamage{amount:20}); read at hooks/counterattack.rs:29-33 get_counterattack_damage via get_in_play_ability_mechanic (suppression-aware); applied at actions/apply_action_helpers.rs:593-612 handle_attack_retaliation; passive, never activated (apply_abilities_action.rs:327-328 panics if invoked; move_generation_abilities.rs:229 offers it never)",
+      "decision": "considered, priced by kt switch 3 with Rocky Helmet (kt_spec_review.md lines 175-176 name 'CounterattackDamage abilities; none of the latter in the eight lists'); NOT a switch-1 relevant card",
+      "reason": "Damage back, not a cut; the holder takes the full hit.",
+      "in_dustin_files": [],
+      "same_name_other_printing": []
+     },
+     {
+      "name": "Zangoose",
+      "ids": [
+       "A4a 065"
+      ],
+      "kind": "other",
+      "subtype": "Pokémon",
+      "ability": "Counterattack",
+      "card": "Colorless Basic HP 80",
+      "effect": "If this Pokémon is in the Active Spot and is damaged by an attack from your opponent's Pokémon, do 20 damage to the Attacking Pokémon.",
+      "engine": "AbilityMechanic::CounterattackDamage{amount:20}: persistent while the Ability is in play and not suppressed; damage back to the attacker",
+      "evidence": "effect_ability_mechanic_map.rs:219-222 (map entry: AbilityMechanic::CounterattackDamage{amount:20}); read at hooks/counterattack.rs:29-33 get_counterattack_damage via get_in_play_ability_mechanic (suppression-aware); applied at actions/apply_action_helpers.rs:593-612 handle_attack_retaliation; passive, never activated (apply_abilities_action.rs:327-328 panics if invoked; move_generation_abilities.rs:229 offers it never)",
+      "decision": "considered, priced by kt switch 3 with Rocky Helmet (kt_spec_review.md lines 175-176 name 'CounterattackDamage abilities; none of the latter in the eight lists'); NOT a switch-1 relevant card",
+      "reason": "Damage back, not a cut; the holder takes the full hit.",
+      "in_dustin_files": [],
+      "same_name_other_printing": []
+     },
+     {
+      "name": "Iron Jugulis",
+      "ids": [
+       "B3a 046"
+      ],
+      "kind": "other",
+      "subtype": "Pokémon",
+      "ability": "Automated Combat",
+      "card": "Darkness Basic HP 100",
+      "effect": "If this Pokémon is in the Active Spot and is damaged by an attack from your opponent's Pokémon, do 20 damage to the Attacking Pokémon.",
+      "engine": "AbilityMechanic::CounterattackDamage{amount:20}: persistent while the Ability is in play and not suppressed; damage back to the attacker",
+      "evidence": "effect_ability_mechanic_map.rs:219-222 (map entry: AbilityMechanic::CounterattackDamage{amount:20}); read at hooks/counterattack.rs:29-33 get_counterattack_damage via get_in_play_ability_mechanic (suppression-aware); applied at actions/apply_action_helpers.rs:593-612 handle_attack_retaliation; passive, never activated (apply_abilities_action.rs:327-328 panics if invoked; move_generation_abilities.rs:229 offers it never)",
+      "decision": "considered, priced by kt switch 3 with Rocky Helmet (kt_spec_review.md lines 175-176 name 'CounterattackDamage abilities; none of the latter in the eight lists'); NOT a switch-1 relevant card",
+      "reason": "Damage back, not a cut; the holder takes the full hit.",
+      "in_dustin_files": [],
+      "same_name_other_printing": []
+     }
+    ],
+    "not_inputs": [
+     {
+      "mechanic": "AbilityMechanic::DamageOnKnockoutInActive{amount, target: Attacker} (NOT an input of get_counterattack_damage)",
+      "text": "If this Pokémon is in the Active Spot and is Knocked Out by damage from an attack from your opponent's Pokémon, do 50 damage to the Attacking Pokémon.",
+      "evidence": "effect_ability_mechanic_map.rs:195-208 (70 and 50); applied on the holder's knockout at hooks/core.rs:2192-2212, a different path from handle_attack_retaliation; the spec's switch 3 is declared 'through get_counterattack_damage', so these are not priced by kt as drafted",
+      "cards": [
+       [
+        "Pyukumuku",
+        "A3 054 / A3 163 / A4a 097",
+        "Innards Out (50)"
+       ],
+       [
+        "Team Rocket's Electrode",
+        "B4a 020",
+        "Destiny Burst (70)"
+       ]
+      ],
+      "in_dustin_files": [
+       [
+        "Pyukumuku",
+        [
+         "decks/brews/brew-06-pyukumuku-silvally-payback.txt (2 Pyukumuku A3 054)",
+         "decks/brews/brew-06b-pyukumuku-silvally-scyther-grass.txt (2 Pyukumuku A3 054)"
+        ]
+       ]
+      ]
+     }
+    ]
+   },
+   "attack_full_preventions_on_self": [
+    {
+     "mechanic": "CardEffect::PreventDamageIfLessOrEqual{threshold:40}, duration 1, on self",
+     "text": "During your opponent's next turn, prevent all damage done to this Pokémon by attacks if that damage is 40 or less.",
+     "evidence": "effect_mechanic_map.rs:552-560; read at core.rs:1888-1894 (returns 0 when final damage <= threshold)",
+     "cards": [
+      [
+       "Silcoon",
+       "B1 004",
+       "Harden"
+      ],
+      [
+       "Cascoon",
+       "B1 006",
+       "Harden"
+      ]
+     ],
+     "in_dustin_files": []
+    },
+    {
+     "mechanic": "CardEffect::PreventAllDamageAndEffects, duration 1, on self, on heads",
+     "text": "Flip a coin. If heads, during your opponent's next turn, prevent all damage done to this Pokémon by attacks.",
+     "evidence": "effect_mechanic_map.rs:970-978 (coin_flip:true); read at core.rs:1717-1724 (returns 0)",
+     "cards": [
+      [
+       "Chansey",
+       "A4 131",
+       "Scrunch"
+      ],
+      [
+       "Nosepass",
+       "P-A 045",
+       "Iron Defense"
+      ]
+     ],
+     "in_dustin_files": []
+    },
+    {
+     "mechanic": "CardEffect::PreventAllDamageAndEffects, duration 1, on self, on heads",
+     "text": "Flip a coin. If heads, during your opponent's next turn, prevent all damage from—and effects of—attacks done to this Pokémon.",
+     "evidence": "effect_mechanic_map.rs:979-984 (coin_flip:true); read at core.rs:1717-1724",
+     "cards": [
+      [
+       "Dugtrio",
+       "A1 140",
+       "Dig"
+      ],
+      [
+       "Cramorant",
+       "A1a 024",
+       "Dive"
+      ],
+      [
+       "Finneon",
+       "A2 042",
+       "Elegant Swim"
+      ],
+      [
+       "Shinx",
+       "A2 058 / A2 163",
+       "Hide"
+      ],
+      [
+       "Gimmighoul",
+       "A2b 036",
+       "Chest-ouflage"
+      ],
+      [
+       "Revavroom",
+       "A2b 056 / A2b 106",
+       "Spinning Drift"
+      ],
+      [
+       "Mr. Mime",
+       "A3 069",
+       "Barrier Shove"
+      ],
+      [
+       "Carbink",
+       "A3b 042",
+       "Hard Roll"
+      ],
+      [
+       "Magikarp",
+       "A4 044",
+       "Splashing Dodge"
+      ],
+      [
+       "Mantine",
+       "A4 058",
+       "Dive"
+      ],
+      [
+       "Onix",
+       "B1a 038 / B3 211",
+       "Dig"
+      ],
+      [
+       "Sinistea",
+       "B2 074 / B4a 100",
+       "Hide"
+      ],
+      [
+       "Quaxly",
+       "B2a 022 / P-B 033",
+       "Splashing Dodge"
+      ],
+      [
+       "Swadloon",
+       "B3 016",
+       "Protect"
+      ],
+      [
+       "Cyclizar",
+       "B4 128 / B4 177",
+       "Acceleration Drive"
+      ],
+      [
+       "Team Rocket's Kecleon",
+       "B4a 062 / B4a 076",
+       "Hit and Hide"
+      ],
+      [
+       "Charcadet",
+       "P-B 064",
+       "Protect"
+      ],
+      [
+       "Feebas",
+       "P-B 072",
+       "Hide"
+      ]
+     ],
+     "in_dustin_files": []
+    },
+    {
+     "mechanic": "CardEffect::PreventAllDamageAndEffects, duration 1, on self, on heads; tails does nothing",
+     "text": "Flip a coin. If tails, this attack does nothing. If heads, during your opponent's next turn, prevent all damage from—and effects of—attacks done to this Pokémon.",
+     "evidence": "effect_mechanic_map.rs:1126-1130 Mechanic::CoinFlipNoDamageOrDamageAndCardEffect; apply_attack_action.rs:734-743 -> 3502-3523",
+     "cards": [
+      [
+       "Noctowl",
+       "A4 141",
+       "Fly"
+      ],
+      [
+       "Bombirdier",
+       "B2a 071",
+       "Fly"
+      ],
+      [
+       "Altaria",
+       "B3a 052",
+       "Fly"
+      ],
+      [
+       "Unfezant",
+       "B4 139",
+       "Fly"
+      ]
+     ],
+     "in_dustin_files": []
+    },
+    {
+     "mechanic": "CardEffect::PreventDamageFromBasic, duration 1, on self",
+     "text": "Prevent all damage done to this Pokémon by attacks from Basic Pokémon during your opponent's next turn.",
+     "evidence": "effect_mechanic_map.rs:1637-1645; read at core.rs:1726-1734 (returns 0 when the attacker is a Basic)",
+     "cards": [
+      [
+       "Carracosta",
+       "B1 067",
+       "Blocking Shell"
+      ]
+     ],
+     "in_dustin_files": []
+    }
+   ],
+   "ability_full_preventions_on_self": [
+    {
+     "mechanic": "AbilityMechanic::PreventAllDamageAndEffectsOnEvolve{duration:1} -> add_effect(PreventAllDamageAndEffects, 1) on self",
+     "text": "Once during your turn, when you play this Pokémon from your hand to evolve 1 of your Pokémon, you may prevent all damage from—and effects of—attacks from your opponent's Pokémon done to this Pokémon until the end of your opponent's next turn.",
+     "evidence": "effect_ability_mechanic_map.rs:849-853; apply_abilities_action.rs:411-421; offered at hooks/core.rs:241-245",
+     "cards": [
+      [
+       "Samurott",
+       "B4 044 / B4 163",
+       "Stance"
+      ]
+     ],
+     "in_dustin_files": []
+    },
+    {
+     "mechanic": "AbilityMechanic::ProtectSelfNextTurnAfterAttackKnockout -> add_effect(PreventAllDamageAndEffects, 1) on the attacker when its active attack knocks out an opponent's Pokémon",
+     "text": "If your opponent's Pokémon is Knocked Out by damage from this Pokémon's attacks, during your opponent's next turn, prevent all damage from—and effects of—attacks done to this Pokémon.",
+     "evidence": "effect_ability_mechanic_map.rs:279-282; hooks/core.rs:2436-2462 on_attack_knockout",
+     "cards": [
+      [
+       "Garchomp",
+       "B4a 054",
+       "Mach Stealth"
+      ],
+      [
+       "Zoroark",
+       "A4a 050 / P-A 106",
+       "Illusive Trickery"
+      ]
+     ],
+     "in_dustin_files": [
+      [
+       "Garchomp",
+       [
+        "decks/dustin/08-garchomp-toolbox.txt (2 Garchomp B4a 054)"
+       ]
+      ]
+     ]
+    }
+   ],
+   "persistent_ability_reductions": [
+    {
+     "mechanic": "ReduceDamageFromAttacks 10",
+     "text": "This Pokémon takes -10 damage from attacks.",
+     "evidence": "effect_ability_mechanic_map.rs:603-606",
+     "cards": [
+      "Cloyster [A1 067] Shell Armor",
+      "Dwebble [P-B 059] Shell Armor"
+     ],
+     "in_dustin_files": []
+    },
+    {
+     "mechanic": "ReduceDamageFromAttacks 20",
+     "text": "This Pokémon takes -20 damage from attacks.",
+     "evidence": "effect_ability_mechanic_map.rs:614-617",
+     "cards": [
+      "Melmetal [A1 182] Hard Coat",
+      "Regirock [A2 087] Exoskeleton",
+      "Alolan Persian [A3 109] Fur Coat",
+      "Shuckle ex [A4 021 / A4 186 / A4 202 / A4b 023] Solid Shell",
+      "Donphan [A4a 044] Exoskeleton",
+      "Furfrou [B1 206 / B1 207 / B1 208 / B1a 065 / B2 141 / B2b 064 / B3 144 / B3b 061 / B4 142 / B4a 064] Fur Coat"
+     ],
+     "in_dustin_files": []
+    },
+    {
+     "mechanic": "ReduceDamageFromAttacks 30",
+     "text": "This Pokémon takes -30 damage from attacks.",
+     "evidence": "effect_ability_mechanic_map.rs:728-731",
+     "cards": [
+      "Armarouge ex [B2a 020 / B2a 101 / B2a 111 / B3a 105] Armor"
+     ],
+     "in_dustin_files": []
+    },
+    {
+     "mechanic": "ReduceDamageFromTypedAttackers 20 (R/W)",
+     "text": "This Pokémon takes -20 damage from attacks from [R] or [W] Pokémon.",
+     "evidence": "effect_ability_mechanic_map.rs:607-613",
+     "cards": [
+      "Piloswine [A2 032] Thick Fat"
+     ],
+     "in_dustin_files": []
+    },
+    {
+     "mechanic": "ReduceDamageFromTypedAttackers 30 (R/W)",
+     "text": "This Pokémon takes -30 damage from attacks from [R] or [W] Pokémon.",
+     "evidence": "effect_ability_mechanic_map.rs:625-631",
+     "cards": [
+      "Mamoswine [A2 033 / A2 160] Thick Fat",
+      "Azumarill [A4 050] Thick Fat"
+     ],
+     "in_dustin_files": []
+    },
+    {
+     "mechanic": "ReduceDamageFromTypedAttackers 30 (F)",
+     "text": "This Pokémon takes -30 damage from attacks from [F] Pokémon.",
+     "evidence": "effect_ability_mechanic_map.rs:618-624",
+     "cards": [
+      "Staraptor [P-A 047] Defensive Whirlwind"
+     ],
+     "in_dustin_files": []
+    },
+    {
+     "mechanic": "ReduceDamageIfArceusInPlay 30",
+     "text": "If you have Arceus or Arceus ex in play, this Pokémon takes -30 damage from attacks.",
+     "evidence": "effect_ability_mechanic_map.rs:261-264",
+     "cards": [
+      "Raichu [A2a 026 / P-A 044] Resilience Link",
+      "Magnezone [A2a 055] Resilience Link"
+     ],
+     "in_dustin_files": []
+    },
+    {
+     "mechanic": "ReduceDamageAtFullHp 40 (first hit only)",
+     "text": "If this Pokémon has full HP, it takes -40 damage from attacks from your opponent's Pokémon.",
+     "evidence": "effect_ability_mechanic_map.rs:184-187; core.rs:1630-1639",
+     "cards": [
+      "Eiscue [B1 080 / B1 236] Ice Face"
+     ],
+     "in_dustin_files": []
+    },
+    {
+     "mechanic": "UnownGuard 10 (all your Pokémon)",
+     "text": "This Ability works if you have any Unown in play with an Ability other than GUARD. All of your Pokémon take -10 damage from attacks from your opponent's Pokémon.",
+     "evidence": "effect_ability_mechanic_map.rs:563-566",
+     "cards": [
+      "Unown [A4 084] GUARD"
+     ],
+     "in_dustin_files": []
+    },
+    {
+     "mechanic": "CoordinatedUnit -20 (with another Falinks)",
+     "text": "If you have another Falinks in play, this Pokémon's attacks do +20 damage to your opponent's Active Pokémon, and this Pokémon takes -20 damage from attacks from your opponent's Pokémon.",
+     "evidence": "effect_ability_mechanic_map.rs:255-260; core.rs:1357-1363",
+     "cards": [
+      "Falinks [B2 092 / B2 172 / B4 215] Coordinated Unit"
+     ],
+     "in_dustin_files": []
+    },
+    {
+     "mechanic": "ReduceOpponentActiveDamage 20 (attacker-side stage, before Weakness)",
+     "text": "As long as this Pokémon is in the Active Spot, attacks used by your opponent's Active Pokémon do -20 damage.",
+     "evidence": "effect_ability_mechanic_map.rs:32-35; core.rs:764-790, 1741-1753",
+     "cards": [
+      "Luxray [A3a 015] Intimidating Fang"
+     ],
+     "in_dustin_files": []
+    },
+    {
+     "mechanic": "CoinFlipToReduceDamage 100 / 80",
+     "text": "If any damage is done to this Pokémon by attacks, flip a coin. If heads, this Pokémon takes -100 damage from that attack.",
+     "evidence": "effect_ability_mechanic_map.rs:164-171",
+     "cards": [
+      "Bastiodon [A2 114] Guarded Grill (-100)",
+      "Hisuian Goodra [B3b 050] Securely Sheltered (-80)"
+     ],
+     "in_dustin_files": []
+    },
+    {
+     "mechanic": "CoinFlipToPreventDamage",
+     "text": "If any damage is done to this Pokémon by attacks, flip a coin. If heads, prevent that damage.",
+     "evidence": "effect_ability_mechanic_map.rs:160-163",
+     "cards": [
+      "Togekiss [A4 080] Celestial Blessing",
+      "Meowth [B2 124 / B2 204] Carefree Steps"
+     ],
+     "in_dustin_files": []
+    },
+    {
+     "mechanic": "PreventAllDamageFromEx",
+     "text": "Prevent all damage done to this Pokémon by attacks from your opponent's Pokémon ex.",
+     "evidence": "effect_ability_mechanic_map.rs:551-554; core.rs:1686-1695",
+     "cards": [
+      "Oricorio [A3 066 / A3 165 / A4b 146 / A4b 147 / B1 303] Safeguard"
+     ],
+     "in_dustin_files": [
+      [
+       "Oricorio",
+       [
+        "decks/dustin/15-jolteon-oricorio-raticate.txt (1 Oricorio A3 066)"
+       ]
+      ]
+     ]
+    },
+    {
+     "mechanic": "PreventDamageWhileBenched",
+     "text": "As long as this Pokémon is on your Bench, prevent all damage done to this Pokémon by attacks.",
+     "evidence": "effect_ability_mechanic_map.rs:63-66; core.rs:1696-1705",
+     "cards": [
+      "Wartortle [B1a 018] Shell Shield"
+     ],
+     "in_dustin_files": []
+    },
+    {
+     "mechanic": "PreventFirstAttack",
+     "text": "When this Pokémon is first damaged by an attack after coming into play, prevent that damage.",
+     "evidence": "effect_ability_mechanic_map.rs:639-642",
+     "cards": [
+      "Mimikyu ex [B2 073 / B2 186 / B2 199 / B4a 107] Disguise"
+     ],
+     "in_dustin_files": []
+    },
+    {
+     "mechanic": "CoinFlipToSurviveKnockOut (survival, not a cut)",
+     "text": "If this Pokémon would be Knocked Out by damage from an attack, flip a coin. If heads, this Pokémon is not Knocked Out, and its remaining HP becomes 10.",
+     "evidence": "effect_ability_mechanic_map.rs:237-240",
+     "cards": [
+      "Conkeldurr [A3 096] Guts",
+      "Ursaluna [B3b 058] Guts"
+     ],
+     "in_dustin_files": []
+    }
+   ],
+   "attacker_side_cuts_stored_on_opponent": [
+    {
+     "mechanic": "CardEffect::ReducedAttackDamage{20} on the Defending Pokémon, duration 1 (Growl family)",
+     "text": "During your opponent's next turn, attacks used by the Defending Pokémon do -20 damage.",
+     "evidence": "effect_mechanic_map.rs:498-506 (opponent:true); applied as carried_attack_reduction before Weakness at core.rs:1862-1875; kp's threat clock already reads it at players/value_functions.rs:1050",
+     "cards": [
+      [
+       "Cubone",
+       "A1 151 / A1 239 / A3 226 / A4b 194 / A4b 195",
+       "Growl"
+      ],
+      [
+       "Suicune",
+       "A4 059",
+       "Cure Stream"
+      ],
+      [
+       "Togepi",
+       "A4 078 / A4 173",
+       "Charm"
+      ],
+      [
+       "Slowpoke",
+       "B3b 026",
+       "Growl"
+      ],
+      [
+       "Teddiursa",
+       "B3b 056",
+       "Charm"
+      ],
+      [
+       "Pikachu",
+       "B4 049 / P-B 082",
+       "Growl"
+      ],
+      [
+       "Skitty",
+       "B4 134",
+       "Charm"
+      ],
+      [
+       "Eevee",
+       "P-A 030",
+       "Growl"
+      ]
+     ],
+     "in_dustin_files": []
+    },
+    {
+     "mechanic": "CardEffect::ReducedAttackDamage{30} on the Defending Pokémon, duration 1",
+     "text": "During your opponent's next turn, attacks used by the Defending Pokémon do -30 damage.",
+     "evidence": "effect_mechanic_map.rs:507-515; core.rs:1862-1875; value_functions.rs:1050",
+     "cards": [
+      [
+       "Clefable",
+       "A2a 030",
+       "Moonblast"
+      ],
+      [
+       "Bonsly",
+       "B3 078 / B3 168",
+       "Teary Attack"
+      ]
+     ],
+     "in_dustin_files": []
+    },
+    {
+     "mechanic": "CardEffect::CoinFlipToBlockAttack on the Defending Pokémon, until it leaves the Active Spot",
+     "text": "During your opponent's next turn, if the Defending Pokémon tries to use an attack, your opponent flips a coin. If tails, that attack doesn't happen.",
+     "evidence": "effect_mechanic_map.rs:1244-1249; apply_attack_action.rs:6803-6814; value_functions.rs:1051",
+     "cards": [
+      [
+       "Magnezone",
+       "B1a 026",
+       "Mirror Shot"
+      ]
+     ],
+     "in_dustin_files": []
+    }
+   ]
+  }
+ },
+ "summary": {
+  "priced_cards": 33,
+  "priced_printings": 55,
+  "dustin_carriers_switch1": {
+   "Jasmine": [
+    "decks/dustin/07-skarmory-stall.txt (2 Jasmine A4 160)"
+   ],
+   "Cheren": [
+    "decks/dustin/05-indeedee-stoutland.txt (1 Cheren B3 151)"
+   ],
+   "Heavy Helmet": [
+    "decks/dustin/01-muk-glimmora-kingambit-regigigas.txt (1 Heavy Helmet B1 219)",
+    "decks/dustin/03-wailord-indeedee-wall.txt (2 Heavy Helmet B1 219)"
+   ],
+   "Steel Apron": [
+    "decks/dustin/07-skarmory-stall.txt (1 Steel Apron A4 153)"
+   ],
+   "Metal Core Barrier": [
+    "decks/dustin/07-skarmory-stall.txt (2 Metal Core Barrier B2 148)"
+   ],
+   "Skarmory ex": [
+    "decks/dustin/07-skarmory-stall.txt (2 Skarmory ex A4 124)"
+   ],
+   "Archaludon": [
+    "decks/dustin/11-archaludon-haxorus-dragonair.txt (1 Archaludon B4a 056)"
+   ]
+  },
+  "dustin_carriers_group4": {
+   "Protective Poncho": [
+    "decks/dustin/05-indeedee-stoutland.txt (1 Protective Poncho B2 147)",
+    "decks/brews/brew-06b-pyukumuku-silvally-scyther-grass.txt (1 Protective Poncho B2 147)"
+   ],
+   "Rocky Helmet": [
+    "decks/dustin/06-mega-blaziken-tournament-list.txt (1 Rocky Helmet A2 148)",
+    "decks/brews/brew-03a-arceus-nihilego-toxapex.txt (1 Rocky Helmet A4b 322)",
+    "decks/brews/brew-06-pyukumuku-silvally-payback.txt (1 Rocky Helmet A2 148)",
+    "decks/brews/brew-06b-pyukumuku-silvally-scyther-grass.txt (1 Rocky Helmet A2 148)"
+   ],
+   "Poison Barb": [
+    "decks/dustin/10-xatu-oricorio-tr-weezing.txt (2 Poison Barb A3 146)",
+    "decks/brews/brew-03a-arceus-nihilego-toxapex.txt (1 Poison Barb A3 146)"
+   ],
+   "Mega Sableye ex": [
+    "decks/brews/brew-07-hoopa-darkrai-sableye.txt (1 Mega Sableye ex B3b 041)",
+    "decks/brews/brew-09-sableye-obstagoon.txt (2 Mega Sableye ex B3b 041)"
+   ]
+  },
+  "group_printings": {
+   "group1": 9,
+   "group2": 4,
+   "group3": 42
+  },
+  "switch3_counter_cards": 12,
+  "switch3_counter_printings": 19,
+  "dustin_carriers_not_kt_inputs": {
+   "Pyukumuku": [
+    "decks/brews/brew-06-pyukumuku-silvally-payback.txt (2 Pyukumuku A3 054)",
+    "decks/brews/brew-06b-pyukumuku-silvally-scyther-grass.txt (2 Pyukumuku A3 054)"
+   ]
+  }
+ },
+ "settled": "2026-09-26, after cards_skeptic.md; see disputed_points",
+ "lists_phase_notes": [
+  "decks/dustin/10-xatu-oricorio-tr-weezing.txt carries 2 Oricorio B4 078 (Supernatural Feather), not the Safeguard printing; the Safeguard carrier is decks/dustin/15-jolteon-oricorio-raticate.txt (1 Oricorio A3 066).",
+  "decks/dustin/05-indeedee-stoutland.txt carries 2 Stoutland A3a 056 (Guard Dog Visage) beside its 1 Cheren B3 151; Cheren's scope is NamedPokemon[Watchog, Stoutland] matched by exact name (core.rs:1233), so this printing is a Cheren target in the engine.",
+  "Jasmine's scope is NamedPokemon[Steelix, Skarmory ex] by exact name (core.rs:1233): every card named 'Steelix' (A4 122 Heavy Impact; B1a 051 / B3 219 Metal Defender) and 'Skarmory ex' (A4 124 / A4 194 / A4 209 / A4b 252) is covered; 'Mega Steelix ex' is not.",
+  "Mega Sableye ex B3b 041 (Cursed Jewel, a switch-3 counterattack card) is in decks/brews/brew-07-hoopa-darkrai-sableye.txt (1) and decks/brews/brew-09-sableye-obstagoon.txt (2); Pyukumuku A3 054 (Innards Out, not a switch-3 input) is in brew-06 (2) and brew-06b (2)."
+ ],
+ "disputed_points": [
+  {
+   "point": "cards.md line 3 and cards.json sources.decks said 'decks/brews/*.txt (11 files)'.",
+   "checked": "Glob and the deck parser over decks/brews/*.txt: 13 files (brew-01, 02, 03a, 03b, 04, 05, 05b, 06, 06b, 07, 08, 09, 10); build_cards.py's own scan read all 13 (its placements match a fresh scan id for id), so the '11' was a typo in the prose, not a skipped file.",
+   "ruling": "Skeptic upheld. Both files now say 13. No placement changes."
+  },
+  {
+   "point": "cards.md line 11 said group 3 is '25 cards, 46 printings'.",
+   "checked": "Summed the ids in cards.json group 3: 1+2+1+4+2+2+4+1+1+1+2+1+1+1+2+1+1+1+1+3+2+1+4+1+1 = 42; adjudicate_scan.py: 25 cards, 42 printings; cards.json's summary already said 55 = 9 (group 1) + 4 (group 2) + 42 (group 3).",
+   "ruling": "Skeptic upheld. The prose now says 42. Nothing in the set changes."
+  },
+  {
+   "point": "Steelix [B1a 051, B3 219] Metal Defender (CardEffect::NoWeakness) was missing from group 4, while the census said the engine has 'exactly three kinds of such cut' and listed the same rider on Mega Steelix ex.",
+   "checked": "card.py: 'During your opponent's next turn, this Pokémon has no Weakness.' effect_mechanic_map.rs:367-375 maps that text to DamageAndCardEffect{opponent:false, CardEffect::NoWeakness, duration:1} (same route and duration as group 3); core.rs:1468-1484 weakness_application_against returns None under it; core.rs:1578 lists NoWeakness among what persistent_defender_damage leaves out; core.rs:1233 scope by exact name. Database exact-text scan: only Steelix B1a 051 / B3 219 carry the text; the only other 'no Weakness' text is Mega Steelix ex's (group 3). Not in any of the 28 deck files.",
+   "ruling": "Skeptic upheld. Added to group 4 as considered and excluded from switch 1 (not a ReducedDamage, the hook cannot see it), with the Jasmine scope note for the Lists phase; the 'exactly three kinds' sentence now says three kinds of finite cut plus this one Weakness-removing effect. Groups 1 to 3 unchanged; clause (d) unchanged."
+  },
+  {
+   "point": "Group 4 listed Rocky Helmet 'because kt prices it' (switch 3) but not the other two inputs of get_counterattack_damage.",
+   "checked": "counterattack.rs:13-36 sums Rocky Helmet, CardEffect::Counterattack and AbilityMechanic::CounterattackDamage; kt_spec_review.md lines 175-176 declare switch 3 'through get_counterattack_damage (Rocky Helmet, CardEffect::Counterattack such as Spike Armor, and CounterattackDamage abilities)'. effect_mechanic_map.rs:525-551 and 2536-2544 map the four Counterattack texts (20/30/40/80); effect_ability_mechanic_map.rs:219-222 maps the Ability text. card.py and the database exact-text scan give Turtonator B1 047 (20), Togedemaru A3b 048 / P-A 090 (30), Alolan Sandslash A3 039 (40), Mega Sableye ex B3b 041 / 081 / 088 (40), Chesnaught B2 010 (80); Poliwrath A1 061 / B1 297, Druddigon A1a 056, Pawmot A2b 028 / P-A 054, Ferrothorn A3a 052, Zangoose A4a 065, Iron Jugulis B3a 046 (Ability, 20). Deck scan: Mega Sableye ex B3b 041 in brew-07 (1) and brew-09 (2); none of the others. The scan also turned up two knockout-triggered damage-back Abilities (Pyukumuku's Innards Out, Team Rocket's Electrode's Destiny Burst) that go through DamageOnKnockoutInActive (core.rs:2192-2212), not get_counterattack_damage; recorded as not inputs.",
+   "ruling": "Skeptic upheld: the inclusion rule is kept and the eleven cards are added to group 4 under 'counterattack_inputs' with the same decision as Rocky Helmet (kt switch 3, not switch 1). Groups 1 to 3 unchanged; clause (d) unchanged. Note for the spec: switch 3 now visibly touches two of Dustin's brews (Mega Sableye ex)."
+  },
+  {
+   "point": "Minor: played_card.rs add_effect cited as 340-346 (it is 344-346); deck 10's 2 Oricorio B4 078 and deck 05's 2 Stoutland A3a 056 were not flagged.",
+   "checked": "played_card.rs: doc comment 340-343, `pub fn add_effect` 344-346. card.py: Oricorio B4 078 is Supernatural Feather (the Safeguard printings are A3 066 / A3 165 / A4b 146 / A4b 147 / B1 303); Stoutland A3a 056 is Guard Dog Visage. Deck scan confirms both placements.",
+   "ruling": "Skeptic upheld. Every evidence string now cites 344-346 (doc 340-343); the two placements are recorded under lists_phase_notes. No set change."
+  }
+ ]
+}

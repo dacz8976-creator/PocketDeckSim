@@ -1,0 +1,44 @@
+{
+  "key": "c-mega_lucario_ex_lucario",
+  "archetype": "Mega Lucario ex Lucario",
+  "deck_id": "mega-lucario-ex-b3-lucario-a2",
+  "file": "rl/results/kt_carrier_census_2026-09-26/decks/c-mega_lucario_ex_lucario.txt",
+  "purpose": "Representative carrier list for the kt carrier census (Lists phase). Reports only; decides nothing and changes no rule.",
+  "source": "Cowork Limitless pull: rl/results/limitless_skill_model_2026-09-25/raw/6aa22425a4272c53be64ca36_standings.json.gz (development-split event per split.json; decklist field of the entry player=pikamon). decklist_sources.json has no Mega Lucario ex Lucario representative (it covers the six B2e archetypes only), so there is no Cowork representative to compare against.",
+  "player": "pikamon (Pikamon, MX)",
+  "event": "The Breakfast Club Daily #5-$5 + FA (112 players)",
+  "event_id": "6aa22425a4272c53be64ca36",
+  "date": "2026-09-10",
+  "event_start_utc": "2026-09-10T20:20:00.000Z",
+  "placing": 1,
+  "record": "10-2-0",
+  "url": "https://play.limitlesstcg.com/tournament/6aa22425a4272c53be64ca36/player/pikamon/decklist",
+  "census_cards_carried": "Protective Poncho x1 (B2 147). Group 4 of the census card set: the kt draft prices Protective Poncho at 0 on both sides (cards.md, group 4), so it is not a switch-1 (groups 1 to 3) card. The list carries no Rocky Helmet and no group 1 to 3 card.",
+  "archetype_status": "Sept-10 top-30 rank 1 (485 players, decks/classifier/limitless_2026-09-10.json); window rank 1 by development-half match count (2,044 decisive-or-tie records; census_summary.json). Not one of Dustin's decks: no Pokemon of the archetype name (Mega Lucario ex, Lucario) is a card in any decks/dustin or decks/brews file (census dustin_level 'none'; the recount agrees). It is, however, the panel's own lucario deck (decks/screen/opponents/t-lucario.txt has the same deck_name), so its Limitless lucario cell is a mirror and empty.",
+  "selection_rule": "B2e rule: among the archetype's development-half entries that carry at least one census card (carrier_entries.csv), best placing first, larger event as the tiebreaker.",
+  "selection_note": "398 Mega Lucario ex Lucario lists in 58 development events (all 20 cards); 222 carry at least one census card (211 Protective Poncho, 18 Rocky Helmet, 7 both; census_summary.json, recount identical); 0 carry a switch-1 card. Three carrier entries placed 1st: pikamon (112 players, 2026-09-10), frozen (46, Dark League Pop Up, 2026-09-01, 8-2-1) and drakioxp (8, notChaser CUP#2 Equipe Rocket!, 2026-09-05, 6-2-0); pikamon's is the largest event, so it wins. Next by the rule: aldous 2nd of 113 (Plasma Daily #22, 2026-09-01, 8-2-1), lazimus 2nd of 57 (Dark League Pop Up, 2026-08-30, 10-1-0), thomasxavier21 2nd of 48 (2026-09-03, 9-1-0). The largest event in the window, PMPT #44 (378 players, 2026-08-29), had the archetype's best carrier at 3rd (esteban0708, 11-2-0); it would win under a largest-event-first reading, which is not the rule used. Holdout event standings were not opened (split.json lists them; only development ids were read).",
+  "alternatives_considered": [
+    {"player": "frozen (Elite4 Frozen, FR)", "event_id": "6a96b86babb948223750549c", "event": "Dark League Pop Up (46 players)", "date": "2026-09-01", "placing": 1, "record": "8-2-1", "url": "https://play.limitlesstcg.com/tournament/6a96b86babb948223750549c/player/frozen/decklist", "differs_from_pick": "Riolu A2 091 in place of B3 079; 2 Copycat and no Lucky Ice Pop; otherwise the same 20 slots."},
+    {"player": "drakioxp (Drakioxp, BR)", "event_id": "6a9c4f47a4272c53be647ff7", "event": "notChaser CUP#2 Equipe Rocket! (8 players)", "date": "2026-09-05", "placing": 1, "record": "6-2-0", "url": "https://play.limitlesstcg.com/tournament/6a9c4f47a4272c53be647ff7/player/drakioxp/decklist", "differs_from_pick": "2 Hitmontop A4 102 in place of Bonsly and Hitmonlee; 2 Copycat and no Lucky Ice Pop; no Pokémon Center Lady."},
+    {"player": "aldous (Aldous, PL)", "event_id": "6a96069dabb9482237504f7f", "event": "Plasma Daily #22| Team Rocket's Ambitions| FA Card (113 players)", "date": "2026-09-01", "placing": 2, "record": "8-2-1", "url": "https://play.limitlesstcg.com/tournament/6a96069dabb9482237504f7f/player/aldous/decklist", "differs_from_pick": "Riolu A2 091; Hitmontop A4 102 in place of Hitmonlee; 2 Copycat; Small Balloon B3b 064 in place of X Speed; no Pokémon Center Lady."},
+    {"player": "lazimus (Lazimus, US)", "event_id": "6a947113629039f77d8a5c46", "event": "Dark League Pop Up (57 players)", "date": "2026-08-30", "placing": 2, "record": "10-1-0", "url": "https://play.limitlesstcg.com/tournament/6a947113629039f77d8a5c46/player/lazimus/decklist", "differs_from_pick": "2 Hitmontop A4 102 in place of Bonsly and Hitmonlee; Sabrina A1 225 in place of Lucky Ice Pop."},
+    {"player": "esteban0708", "event_id": "6a8c5eb881741245b151d7e3", "event": "PMPT #44 - TEAM ROCKETS AMBITION!!! | $100 USD (378 players)", "date": "2026-08-29", "placing": 3, "record": "11-2-0", "url": "https://play.limitlesstcg.com/tournament/6a8c5eb881741245b151d7e3/player/esteban0708/decklist", "differs_from_pick": "Not pulled in detail (3rd place loses to the 1st places under the rule); listed because it is the largest event in the window."}
+  ],
+  "printings": "All 16 ids copied verbatim from the API decklist (set + zero-padded number) and resolved with python lib/card.py \"<SET> <NUM>\": each reports '1 printings, 1 distinct', so no printing choice was needed. The source's printings are the same ones the panel file decks/screen/opponents/t-lucario.txt uses for the 15 cards the two lists share.",
+  "energy_line": "The API entry has no energy field. All five Pokémon (Riolu, Mega Lucario ex, Lucario, Bonsly, Hitmonlee) are Fighting-type per card.py, so the file's first line is 'Energy: Fighting', the same as t-lucario.txt.",
+  "diff_vs_panel_t-lucario": "vs decks/screen/opponents/t-lucario.txt: -1 Copycat B1 225 (2 to 1), +1 Lucky Ice Pop B2 145; the other 19 cards and the Energy line are identical.",
+  "diff_vs_dustin": "No Dustin file has a Lucario line; not applicable.",
+  "deck_check": {
+    "command": "python lib/deck_check.py files \"rl/results/kt_carrier_census_2026-09-26/decks/c-mega_lucario_ex_lucario.txt\" (from the repo root)",
+    "output": "decks clean (exit 0; no ERROR or WARN)"
+  },
+  "file_format": "UTF-8 without BOM, LF line endings (checked by byte: 359 bytes, 0 CR, 17 LF, no BOM), 16 lines of '<count> <Name> <SET> <NUM>' summing to 20 cards.",
+  "coverage": {
+    "command": "rl/engine-2026-09-25/goldfish --deck rl/results/kt_carrier_census_2026-09-26/decks/c-mega_lucario_ex_lucario.txt --games 0 --panel decks/screen/opponents --coverage rl/results/kt_carrier_census_2026-09-26/coverage_c-mega_lucario_ex_lucario.json (WSL; 0 games played)",
+    "goldfish_sha256": "318c82c897f08a376e836bd23f68d1aa53d8312adc00b04603137a6c86dbe997 (matches rl/engine-2026-09-25/README.md)",
+    "exit_code": 0,
+    "output_file": "rl/results/kt_carrier_census_2026-09-26/coverage_c-mega_lucario_ex_lucario.json"
+  },
+  "holdout_discipline": "Only development-half standings files were opened (the five carrier entries above, all in split.json development_event_ids, asserted before opening). matches.csv holdout rows were used only for the pooled cells in cells_c-mega_lucario_ex_lucario.py, as B2e section 3 did.",
+  "no_engine_games": "No simulator game was played; goldfish ran with --games 0."
+}
