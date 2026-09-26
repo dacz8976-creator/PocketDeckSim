@@ -35,13 +35,13 @@ the ladder and wins with.
 - **Every deck ranking produced before 2026-09-10 is void.** All of them (meta4–meta9, the
   Zoroark work, the Sept 8 eval18 panel) ran on an engine where Asleep/Paralyzed Pokémon could
   still attack and retreat. Don't re-run them; don't cite them.
-- **What the simulator is good for (measured Sept 23).** Against 25,143 real B4a matches, k3 vs k3
-  on rules4 calls the favorite right in 23 of 28 top-deck matchups (15 of 16 clearly one-sided ones).
-  Its typical miss is about 9 points, with some 20–30-point misses: it underrates Altaria and Vespiquen
-  and overrates Sceptile (being checked). It hasn't been shown to rank decks, and brews can't be checked
-  this way; the ladder still judges those. Details:
-  `rl/results/limitless_check_2026-09-23.md`. Card A vs card B in
-  the same shell still needs paired seeds and ≥1,000 games; differences under 5 points are noise.
+- **What the simulator is good for (refreshed Sept 26).**
+  - The yardstick is now **45 scoreboard cells**: the 28 table cells plus Rayquaza's and Altaria/Greninja's 17 (Dustin, Sept 26; `rl/results/gauntlet_runs_2026-09-26/`).
+  - On the 28, kp3 (the confirmed pilot) has a real error of 8.4 and k3 10.8 (scoreboard v2's development half).
+  - On the 17 new cells, both are far off: 22.5 and 20.3. Rayquaza plays at 22% against a real 46%, because kp3 skips its discard-cost attacks.
+  - The target is 5.5. The simulator hasn't been shown to rank decks, and brews can't be checked this way; the ladder still judges those.
+  - Card A vs card B in the same shell still needs paired seeds and ≥1,000 games; differences under 5 points are noise.
+  - History: `rl/results/limitless_check_2026-09-23.md`.
 - **What "competitive" means is read off Limitless**, not simulated. Snapshot and top-30 table:
   `decks/classifier/limitless_2026-09-10.json`. Refresh roughly monthly or when a set drops.
 
@@ -105,7 +105,7 @@ claim files, 1,100+ root files — instead of decks. Four different "current" en
 Sixty sessions on video/OCR that never read a single card. Fixating on one deck (Zoroark) that
 the sim liked and the ladder didn't. Full list with what catches each: `docs/AUDIT_2026-09-10/`.
 
-## Running now, and seed ranges already used (added for this repo, Sept 24; refreshed Sept 25 morning)
+## Running now, and seed ranges already used (added for this repo, Sept 24; refreshed Sept 26 evening)
 
 **The current plan** is "The plan, revised Sept 25 (approved by Dustin)" at the end of `rl/RUN5.md`. It supersedes
 the Sept 24 plan. The full record and every number behind it is section 8 of `docs/REVIEW_2026-09-24_direction.md`;
@@ -121,11 +121,24 @@ the per-candidate table readings are indexed in `rl/results/table_readings_2026-
 - **Earlier:** the deeper-search table (k4–k6 don't help, Sept 24), the option B and kp3 table readings, the
   discard-attack census.
 
-**Running or next** (in the plan's order; refreshed Sept 25 afternoon):
-- **The official engine** is `rl/engine-2026-09-25/` since Sept 25 (built from main at 7fc6ccb; its README).
-- **The A2 floor check** (`decks/screen/floor.py`) is built and reviewed. Next is its Payback pre-use check: brew-06 and brew-06b must read "fail", and the deck 14 control under k3 must read "untrusted". A second session reads it. Until then no floor verdict is used.
-- **kd** (the defender's Weakness and reductions in the clock, amended before any table): the table is running in the cloud. It is read against kp3 on scoreboard v2 under veto rule v2. Its mixed rows are running on the laptop (`rl/results/kd_mixed_rows_2026-09-25/`).
-- **kd3 was read and not adopted.** kp3 was then **confirmed on the frozen holdout** (Sept 25; `rl/results/holdout_kp3_2026-09-25/READING.md`), and the holdout is now spent. kp3 is the confirmed pilot. Later candidates are confirmed only on events after the freeze date.
+**Finished Sept 25–26**
+- **kd3:** read and not adopted.
+- **kp3:** confirmed on the frozen holdout (`rl/results/holdout_kp3_2026-09-25/READING.md`); the holdout is spent. Later candidates are confirmed only on events after the freeze date (after Sept 24).
+- **The A2 floor check** (`decks/screen/floor.py`): passed its Payback pre-use check, read by a second session. It may be used under the A2 decision.
+- **kpr3:** read and "not adopted" on the 28 cells. On the 45 it has the lowest real error, which is provisional under the Sept 26 rule (RUN5).
+- **The gauntlet's first run:** 45 cells, and the variation check (four decks' second lists join).
+- **The blind quiz** (`rl/results/blind_quiz_2026-09-25/`): kp3 matches Dustin at 17 of 33 decisions, k3 at 13.
+- **Recordings and frame checks:** `rl/results/recordings_check_2026-09-25/`.
+- **The laptop's share of the rules/09 fix replays:** 0 table games change.
+
+**Running or next** (refreshed Sept 26 evening):
+- **The official engine** is still `rl/engine-2026-09-25/` (7fc6ccb).
+  - The rules/09 repairs are on the cloud branch `claude/pensive-ptolemy-spwc0b`. The repaired engine is af8489f (engine e935f42); its k3 and kp3 table references ran on Sept 26 and are being read.
+  - Once it is accepted, every candidate is compared against baselines from that same engine.
+- **koa** (the opening-Active fix): registered and built on the repaired engine; its identity runs are in the cloud. The laptop reads it, footprint first.
+- **kpf** (discard-cost attacks and discard-pile Energy): registered (`rl/results/kpf_2026-09-26/REGISTRATION.md`). The cloud builds it, and the laptop reads it on the 45 cells, B2e and the coverage decks.
+- **kt** (Tools and turn effects): registered on the cloud branch (07927e2). Trainer pricing is queued beside it (RUN5 B5).
+- **Deck ranking stays on hold** until the ladder-weighted panel and real-game calibration exist.
 - **Next:** kpr (the cloud, built on kp), and the optional Altaria detector network (the laptop, after its pair checks).
 - The quick screen's ranking stays on hold (Dustin, Sept 25). The hold lifts for the floor check only.
 
