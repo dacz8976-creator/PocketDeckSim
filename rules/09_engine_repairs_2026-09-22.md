@@ -103,6 +103,15 @@ The accepted 225430 segment revealed that a zero-HP attacker was discarded befor
   `a_direct_damage_snipe_on_togekiss_pins_the_engines_current_behaviour_no_coin` (`engine/src/hooks/core.rs`)
   fails when this is fixed. For the other attacks kd still flips the coin, as the card text says, so kd and the
   engine disagree there until the engine is fixed. Fix the engine first; kd follows.
+- **A 0-damage attack that targets the Active uses up Mimikyu ex's Disguise** (laptop's Altaria card check, 4b24b4b,
+  `rl/results/altaria_card_check_2026-09-26/` on main; upheld 3 to 0). Sing, which does no damage, removes Disguise.
+  Not reachable on the table. Fix with an identity replay.
+- **Bad Dreams (Ability damage) is stopped by three "by attacks" protections** (same source; upheld 3 to 0).
+  `PreventAllDamageAndEffects`, `PreventDamageFromBasic` (Darkrai is a Basic) and `PreventDamageIfLessOrEqual` read
+  "damage from attacks" but also stop Darkrai's Bad Dreams. Not reachable on the table. Fix with an identity replay.
+
+## Fixed Sept 26 (cloud branch `claude/pensive-ptolemy-spwc0b`; each its own commit, replays in `rl/results/rules09_fixes_2026-09-26/`)
+
 - **"Discard all Energy from this Pokémon" never puts that Energy in the discard pile** (found Sept 25 in the laptop's
   recordings check, `rl/results/recordings_check_2026-09-25/` on main; confirmed in the code here). The attack effect
   `damage_and_discard_all_energy` (`engine/src/actions/apply_attack_action.rs`) clears the Active's Energy without
@@ -113,6 +122,7 @@ The accepted 225430 segment revealed that a zero-HP attacker was discarded befor
   `discard_energy_credit` and kpr's projection. No deck in `decks/research`, `decks/dustin` or `decks/brews` has a
   combination that reads the pile after one of these attacks. Fixing it changes game states, so it needs an identity
   replay, and it waits until kpr's table is read.
+  **Fixed in a30b5f8 (Sept 26).**
 - **Two "random" Energy effects always take the last-attached Energy** (same source, confirmed in the code). Crawdaunt's
   Unruly Claw ("discard a random Energy from your opponent's Active Pokémon",
   `SimpleAction::DiscardRandomOpponentActiveEnergy`) and the Supporter Psychic ("move a random Energy",
@@ -121,6 +131,7 @@ The accepted 225430 segment revealed that a zero-HP attacker was discarded befor
   cites, was already fixed to pick at random. It matters only when the Pokémon holds more than one Energy type: the
   table decks each use one type; Dustin's two-type decks (08, 11) are exposed to Crawdaunt on the ladder. The fix is a
   chance branch per distinct type held, weighted by count, and needs an identity replay after kpr's table is read.
+  **Fixed in 3102c9e (Sept 26).**
 - **Rare Candy ignores Aerodactyl ex's Primeval Law** (same source, confirmed in the code). "Your opponent can't play
   any Pokémon from their hand to evolve their Active Pokémon" is checked only in `can_evolve_at_position`
   (`engine/src/move_generation/mod.rs`); `can_play_rare_candy` (`move_generation_trainer.rs`) checks Malamar's
@@ -129,6 +140,7 @@ The accepted 225430 segment revealed that a zero-HP attacker was discarded befor
   be used on your Active while the opponent's Aerodactyl ex is in play, as for Evolution Jammer. No deck here
   has Aerodactyl ex; against one, the Rare Candy decks (research: Hydreigon, Blaziken, Suicune; Dustin's 01, 02, 05,
   06; brews 01, 03b, 05, 05b, 09) would get an illegal play. Fix after kpr's table is read.
+  **Fixed in 14745ce (Sept 26).**
 - **Heavy Helmet reads the printed Retreat Cost, not the current one — CONFIRMED in-game 2026-09-25** (Dustin's
   recording `Battle Logs/heavyhelmet_test.MP4`: printed Retreat Cost 3, Peculiar Plaza in play, Helmet attached, a
   40-damage attack did 40; the engine would have made it 20). "If the Pokémon this card is attached to has a Retreat
@@ -138,6 +150,8 @@ The accepted 225430 segment revealed that a zero-HP attacker was discarded befor
   brews 05b and 10 play Plaza. The fix is to read the effective Retreat Cost the engine already computes for retreat
   (`get_retreat_cost_for_player`); it needs an identity replay, after kpr's table is read. Any scorer that prices Heavy
   Helmet (kd did; the kt draft would) follows the engine until then and changes with it.
+  **Fixed in 050cf51 (Sept 26)**, through `get_board_retreat_cost_at`, the board's cost where the holder sits: on the
+  Bench without the modifiers that name the Active (Trap Territory, Sky Support, the typed Bench discounts).
 - **Legendary Pulse draws after Hiking Trail instead of before — CONFIRMED in-game 2026-09-25** (Dustin's
   `Battle Logs/pulse_hikingtrail_order.MP4`). At the end of the Suicune ex player's turn with Hiking Trail in play,
   Legendary Pulse ("At the end of your turn, if this Pokémon is in the Active Spot, draw a card") draws first and Hiking
@@ -149,9 +163,17 @@ The accepted 225430 segment revealed that a zero-HP attacker was discarded befor
   other end-of-turn effect in `on_end_turn` draws. **Table impact:** the Suicune v Blaziken cell (Blaziken's list runs
   Hiking Trail) and Dustin's Hiking Trail decks 06, 10 and 12. Fix: draw Pulse's card at once, before Hiking Trail, in
   `on_end_turn`. It needs an identity replay, after kpr's table is read.
+  **Fixed in 5b75bf9 (Sept 26).**
 - **The A2b 111 printing of Poké Ball can be played with an empty deck** (found by the laptop's Trainer audit,
   2026-09-25; confirmed in the code). Poké Ball "Put a random Basic Pokémon from your deck into your hand" is blocked
   with an empty deck only for P-A 005 (`can_play_poke_ball`, `engine/src/move_generation/move_generation_trainer.rs`);
   A2b 111 is in the always-playable list in the same file. `rules/04` (the "Blocked because it's visibly impossible"
   list) says both are blocked. No deck in `decks/research`, `decks/dustin` or `decks/brews` uses A2b 111. Fix: route
   both printings to `can_play_poke_ball`; identity replay after kpr's table is read.
+  **Fixed in 3c2250f (Sept 26).**
+- **After an end-of-turn or Checkup knockout, the next player drew before the knocked-out player promoted**
+  (laptop's Altaria card check, 4b24b4b; confirmed on footage 07aafa3, `promotion_timing.json`: 4 of 4 recorded
+  knockouts, Poison, Bad Dreams and two Burns, promote before the next turn's banner and draw). The engine advanced the
+  turn (draw, Energy, start-of-turn Abilities) with the promotion frame still below. A FinishPokemonCheckup frame now
+  goes below the promotion, as point denial already did, so the turn advances after it. It reaches table games.
+  **Fixed in 5bab907 (Sept 26).**
