@@ -1,0 +1,116 @@
+45-cell scoreboard: 45 pairs; Limitless development half (v2's 28 + the gauntlet's 17)
+Reading: kpr3 (new) against kp3 (current), 45 common pairings.
+Source: public_pricing_2026-09-25/kp3_500_worst5.jsonl + public_pricing_2026-09-25/kp3_500_rest.jsonl + gauntlet_runs_2026-09-26/new_kp3.jsonl (current) vs /tmp/kpr3_table_e09fb46.jsonl + gauntlet_runs_2026-09-26/kpr3/new_kpr3.jsonl (new), paired by deal
+Limitless cells: /tmp/tmpdiih2o4b.json
+Veto rule: rules v2 (pre-registered Sept 25): a veto counts only when mixed rows on the same deals show the changed pilot's own side got worse beyond their paired noise, and never on a cell whose Limitless band is wider than +/-15; otherwise it is an investigation item
+
+== all cells: 45 pairings
+         kp3: real error 15.3 | reported only: correlation 0.49, average miss 13.6, favorite right 29/45, clear 16/20, beyond chance 17
+              PASS (a) real error <= 5.5: no | (b) cells over by >10 beyond noise: sceptile v vespiquen, rayquaza v lucario, rayquaza v sceptile, rayquaza v vespiquen, altaria_greninja v sceptile | (c) decks off by >6: altaria_greninja, hydreigon, lucario, rayquaza, sceptile
+        kpr3: real error 12.7 | reported only: correlation 0.40, average miss 12.8, favorite right 25/45, clear 16/20, beyond chance 18
+              PASS (a) real error <= 5.5: no | (b) cells over by >10 beyond noise: hydreigon v suicune, sceptile v vespiquen, altaria_greninja v sceptile | (c) decks off by >6: altaria, altaria_greninja, blaziken, hydreigon, sceptile, vespiquen
+  dMSE new - current: -74.6 points^2, 95% interval -141.5 to -9.9 (below 0)
+  real error, current minus new: +2.67 points, 90% interval +0.62 to +3.92 (margin rule: E = 3; 'current' is the cheap bot when comparing variants)
+  cell veto (miss grows > 6): altaria v hydreigon +7.8, altaria v suicune +6.6, blaziken v lucario +10.9, blaziken v weezing +11.7, hydreigon v suicune +9.4, hydreigon v vespiquen +15.8, lucario v suicune +9.2, suicune v vespiquen +6.6, rayquaza v weezing +20.0
+  deck veto (gap grows > 2): altaria +4.6, vespiquen +5.0
+    altaria v hydreigon +7.8: AWAITS mixed rows with kpr3 on altaria and hydreigon only
+    altaria v suicune +6.6: AWAITS mixed rows with kpr3 on altaria and suicune only
+    blaziken v lucario +10.9: AWAITS mixed rows with kpr3 on blaziken and lucario only
+    blaziken v weezing +11.7: never counts: Limitless band ±23.4 is wider than ±15
+    hydreigon v suicune +9.4: never counts: Limitless band ±15.2 is wider than ±15
+    hydreigon v vespiquen +15.8: never counts: Limitless band ±15.3 is wider than ±15
+    lucario v suicune +9.2: AWAITS mixed rows with kpr3 on lucario and suicune only
+    suicune v vespiquen +6.6: AWAITS mixed rows with kpr3 on suicune and vespiquen only
+    rayquaza v weezing +20.0: never counts: Limitless band ±20.2 is wider than ±15
+    deck altaria +4.6: AWAITS mixed rows: 18 of 18 cell sides missing
+    deck vespiquen +5.0: AWAITS mixed rows: 18 of 18 cell sides missing
+  ADOPTION RULE (v2): not decided: dMSE below 0, vetoes await mixed rows (altaria v hydreigon, altaria v suicune, blaziken v lucario, lucario v suicune, suicune v vespiquen, altaria, vespiquen) (held-out-deck veto checked separately)
+
+  Deck averages over these cells (current / new / Limitless; change in miss, + = further from Limitless):
+      altaria:  52.5 /  47.8 /  54.5   +4.6
+     blaziken:  57.9 /  59.5 /  52.3   +1.6
+    hydreigon:  52.2 /  54.1 /  43.9   +1.9
+      lucario:  53.9 /  47.5 /  45.6   -6.5
+     sceptile:  63.0 /  62.0 /  49.0   -1.0
+      suicune:  51.7 /  51.4 /  48.9   -0.4
+    vespiquen:  49.6 /  44.6 /  52.7   +5.0
+      weezing:  51.5 /  44.1 /  48.5   +1.4
+
+== decision set (Altaria v Sceptile quarantined): 44 pairings
+         kp3: real error 15.5 | reported only: correlation 0.49, average miss 13.8, favorite right 28/44, clear 16/20, beyond chance 17
+              PASS (a) real error <= 5.5: no | (b) cells over by >10 beyond noise: sceptile v vespiquen, rayquaza v lucario, rayquaza v sceptile, rayquaza v vespiquen, altaria_greninja v sceptile | (c) decks off by >6: altaria_greninja, hydreigon, lucario, rayquaza, sceptile
+        kpr3: real error 12.8 | reported only: correlation 0.40, average miss 13.0, favorite right 24/44, clear 16/20, beyond chance 18
+              PASS (a) real error <= 5.5: no | (b) cells over by >10 beyond noise: hydreigon v suicune, sceptile v vespiquen, altaria_greninja v sceptile | (c) decks off by >6: altaria, altaria_greninja, blaziken, hydreigon, sceptile, vespiquen
+  dMSE new - current: -76.3 points^2, 95% interval -146.2 to -10.4 (below 0)
+  real error, current minus new: +2.70 points, 90% interval +0.59 to +4.01 (margin rule: E = 3; 'current' is the cheap bot when comparing variants)
+  cell veto (miss grows > 6): altaria v hydreigon +7.8, altaria v suicune +6.6, blaziken v lucario +10.9, blaziken v weezing +11.7, hydreigon v suicune +9.4, hydreigon v vespiquen +15.8, lucario v suicune +9.2, suicune v vespiquen +6.6, rayquaza v weezing +20.0
+  deck veto (gap grows > 2): altaria +5.2, vespiquen +5.0
+    altaria v hydreigon +7.8: AWAITS mixed rows with kpr3 on altaria and hydreigon only
+    altaria v suicune +6.6: AWAITS mixed rows with kpr3 on altaria and suicune only
+    blaziken v lucario +10.9: AWAITS mixed rows with kpr3 on blaziken and lucario only
+    blaziken v weezing +11.7: never counts: Limitless band ±23.4 is wider than ±15
+    hydreigon v suicune +9.4: never counts: Limitless band ±15.2 is wider than ±15
+    hydreigon v vespiquen +15.8: never counts: Limitless band ±15.3 is wider than ±15
+    lucario v suicune +9.2: AWAITS mixed rows with kpr3 on lucario and suicune only
+    suicune v vespiquen +6.6: AWAITS mixed rows with kpr3 on suicune and vespiquen only
+    rayquaza v weezing +20.0: never counts: Limitless band ±20.2 is wider than ±15
+    deck altaria +5.2: AWAITS mixed rows: 16 of 16 cell sides missing
+    deck vespiquen +5.0: AWAITS mixed rows: 18 of 18 cell sides missing
+  ADOPTION RULE (v2): not decided: dMSE below 0, vetoes await mixed rows (altaria v hydreigon, altaria v suicune, blaziken v lucario, lucario v suicune, suicune v vespiquen, altaria, vespiquen) (held-out-deck veto checked separately)
+
+  Deck averages over these cells (current / new / Limitless; change in miss, + = further from Limitless):
+      altaria:  53.7 /  48.5 /  55.7   +5.2
+     blaziken:  57.9 /  59.5 /  52.3   +1.6
+    hydreigon:  52.2 /  54.1 /  43.9   +1.9
+      lucario:  53.9 /  47.5 /  45.6   -6.5
+     sceptile:  63.7 /  62.5 /  48.3   -1.1
+      suicune:  51.7 /  51.4 /  48.9   -0.4
+    vespiquen:  49.6 /  44.6 /  52.7   +5.0
+      weezing:  51.5 /  44.1 /  48.5   +1.4
+
+Per cell (first deck's score): current | new | Limitless ± 95% | change in miss (+ = further)
+    altaria v blaziken    58.6 |  52.6 |  76.5 ± 14.3 | +6.0
+    altaria v hydreigon   47.6 |  39.8 |  54.5 ± 13.0 | +7.8
+    altaria v lucario     62.4 |  58.8 |  72.4 ±  6.9 | +3.6
+    altaria v sceptile    42.8 |  42.8 |  45.4 ±  9.4 | +0.0  (quarantined)
+    altaria v suicune     48.8 |  42.2 |  56.2 ± 12.1 | +6.6
+    altaria v vespiquen   47.4 |  50.4 |  37.6 ±  9.8 | +3.0
+    altaria v weezing     40.4 |  40.4 |  33.0 ± 13.4 | +0.0
+   blaziken v hydreigon   48.0 |  49.6 |  66.7 ± 18.9 | -1.6
+   blaziken v lucario     45.1 |  56.0 |  40.7 ± 12.5 | +10.9
+   blaziken v sceptile    65.1 |  63.0 |  76.1 ± 17.4 | +2.1
+   blaziken v suicune     59.6 |  62.2 |  64.3 ± 20.5 | -2.6
+   blaziken v vespiquen   81.4 |  80.5 |  79.0 ± 14.3 | -0.9
+   blaziken v weezing     48.4 |  60.1 |  41.2 ± 23.4 | +11.7
+  hydreigon v lucario     43.8 |  52.6 |  63.6 ± 12.7 | -8.8
+  hydreigon v sceptile    43.6 |  40.0 |  40.0 ± 16.2 | -3.6
+  hydreigon v suicune     46.4 |  55.8 |  30.0 ± 15.2 | +9.4
+  hydreigon v vespiquen   41.0 |  56.8 |  36.8 ± 15.3 | +15.8
+  hydreigon v weezing     52.8 |  56.8 |  45.8 ± 19.9 | +4.0
+    lucario v sceptile    35.6 |  38.6 |  39.5 ±  9.0 | -3.0
+    lucario v suicune     58.8 |  49.6 |  58.8 ± 10.5 | +9.2
+    lucario v vespiquen   68.2 |  68.8 |  69.6 ±  8.7 | -0.6
+    lucario v weezing     52.8 |  55.8 |  61.5 ± 10.8 | -3.0
+   sceptile v suicune     60.6 |  62.6 |  50.0 ± 13.6 | +2.0
+   sceptile v vespiquen   64.4 |  66.6 |  35.7 ± 12.5 | +2.2
+   sceptile v weezing     70.0 |  69.2 |  68.1 ± 15.2 | -0.8
+    suicune v vespiquen   43.0 |  49.6 |  28.5 ± 10.4 | +6.6
+    suicune v weezing     56.5 |  65.0 |  60.3 ± 15.4 | +1.0
+  vespiquen v weezing     65.9 |  72.7 |  83.7 ± 11.0 | -6.8
+   rayquaza v lucario     25.8 |  59.2 |  73.3 ± 11.4 | -33.4
+   rayquaza v altaria     34.2 |  50.8 |  47.1 ± 10.5 | -9.2
+   rayquaza v sceptile    10.2 |  23.0 |  45.0 ± 13.8 | -12.8
+   rayquaza v vespiquen   20.0 |  44.4 |  61.1 ± 15.9 | -24.4
+   rayquaza v suicune     22.8 |  45.2 |  35.7 ± 17.7 | -3.4
+   rayquaza v hydreigon   22.6 |  44.0 |  35.0 ± 20.9 | -3.4
+   rayquaza v weezing     18.4 |  41.6 |  20.0 ± 20.2 | +20.0
+   rayquaza v blaziken    23.5 |  41.3 |  50.0 ± 34.6 | -17.8
+  altaria_greninja v lucario     52.8 |  59.0 |  68.9 ± 13.5 | -6.2
+  altaria_greninja v altaria     41.6 |  45.6 |  37.5 ± 11.5 | +4.0
+  altaria_greninja v sceptile    31.0 |  33.4 |  66.7 ± 16.1 | -2.4
+  altaria_greninja v vespiquen   54.0 |  54.2 |  61.4 ± 16.1 | -0.2
+  altaria_greninja v suicune     36.8 |  34.8 |  53.9 ± 15.8 | +2.0
+  altaria_greninja v hydreigon   39.2 |  41.4 |  64.7 ± 22.7 | -2.2
+  altaria_greninja v weezing     31.6 |  41.4 |  50.0 ± 24.5 | -9.8
+  altaria_greninja v blaziken    44.5 |  42.1 |  70.6 ± 21.7 | +2.4
+   rayquaza v altaria_greninja  34.2 |  61.6 |  52.8 ± 16.3 | -9.8
