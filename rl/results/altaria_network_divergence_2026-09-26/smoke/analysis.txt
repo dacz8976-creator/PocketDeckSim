@@ -1,0 +1,44 @@
+Check: in all 5 games, decisions.jsonl holds exactly the network's recorded moves (kp3_rows_games.jsonl, row net|kp3), decision for decision.
+5 games, 107 network decisions: same move as kp3 47 (44%), differs only in move order 20 (19%), differs 40 (37%). kp3 chose the same move under all 3 probe seeds at 94% of decisions.
+Positions played out where either player had revealed-card memory (it starts empty in a play-out): 0 of 40.
+Overall: over the 40 differing positions, the network's move scores +0.9 points (95% by position ± 5.8, by game ± 3.8) for Altaria against kp3's move, with kp3 piloting both decks afterwards.
+
+'*' = the 95% interval by position excludes zero (the Lucario study's rule); '(position only)' = not by game. Marked on
+tested rows only (A's pairs and B's headlines), never on the looks inside a headline or the pooled row;
+a tested row under 10 positions is printed but not marked ('too few to mark').
+'total/game' = the row's summed difference per game, in points of Altaria's score: a rough size of what kp3 would
+gain by making the network's move in that kind of position (gains don't simply add).
+
+A. Pairs of move kinds (network move, kp3 move)
+                                                                       positions  net-kp3  95% by position      95% by game total/game
+(smaller groups, pooled; not tested)                                          40     +0.9 (  -4.8,   +6.7) (  -2.8,   +4.7)     +7.50
+  0 pairs listed on their own, 29 pooled.
+
+B. The named habits (fixed before the run)
+                                                                       positions  net-kp3  95% by position      95% by game total/game
+1. Benching a Basic
+  1a network benches a Basic, kp3 doesn't, in play (turn 1 on)                 0
+  1b kp3 benches a Basic, network doesn't, in play (turn 1 on)                12     -9.4 ( -19.4,   +0.7) ( -16.9,   -1.9)    -22.50
+  1c network benches a Basic, kp3 doesn't, at setup (turn 0)                   0
+  1d kp3 benches a Basic, network doesn't, at setup (turn 0)                   0
+2. Stampede without a knockout (sure-knockout rule)
+  2a kp3 Stampedes without a KO, network does something else                   3     +4.2 (  -4.0,  +12.3) (  -6.7,  +15.1)     +2.50  (too few to mark)
+  2b network Stampedes without a KO, kp3 does something else                   0
+3. Sleep: which sleep attack, and who is Active
+  3a network uses a sleep attack, kp3 doesn't                                  8     +7.8 (  -1.4,  +17.0) (  +2.7,  +12.9)    +12.50  (too few to mark)
+  3b kp3 uses a sleep attack, network doesn't                                  0
+  3c the two moves leave different Pokemon Active                             11     +1.1 (  -6.6,   +8.9) (  -6.1,   +8.3)     +2.50
+  3d Darkrai Active after the network's move, not kp3's                        1     +0.0 (     -,      -) (     -,      -)     +0.00  (too few to mark)
+  3e Darkrai Active after kp3's move, not the network's                        1    +25.0 (     -,      -) (     -,      -)     +5.00  (too few to mark)
+4. Energy target
+  4a network energy to the Bench, kp3 to the Active                            0
+  4b network energy to the Active, kp3 to the Bench                            1     +0.0 (     -,      -) (     -,      -)     +0.00  (too few to mark)
+  4c both to the Bench, different Pokemon                                      0
+  4d network energy to the Bench, kp3 no energy                                3     -4.2 ( -12.3,   +4.0) ( -12.3,   +4.0)     -2.50  (too few to mark)
+  4e kp3 energy to the Bench, network no energy                                2     +0.0 (  +0.0,   +0.0) (     -,      -)     +0.00  (too few to mark)
+5. Retreat vs attack
+  5a network retreats, kp3 attacks                                             1    +12.5 (     -,      -) (     -,      -)     +2.50  (too few to mark)
+  5b network attacks, kp3 retreats                                             1    +12.5 (     -,      -) (     -,      -)     +2.50  (too few to mark)
+
+18 rows were tested (0 move-kind pairs listed on their own and 18 named headline rows), so one or two
+of the smaller ones may clear zero by chance. The indented rows under a headline are looks inside it, not separate tests.

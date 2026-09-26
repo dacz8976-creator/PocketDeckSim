@@ -1,0 +1,44 @@
+Check: in all 3 games, decisions.jsonl holds exactly the network's recorded moves (kp3_rows_games.jsonl, row net|kp3), decision for decision.
+3 games, 37 network decisions: same move as kp3 19 (51%), differs only in move order 5 (14%), differs 13 (35%). kp3 chose the same move under all 3 probe seeds at 92% of decisions.
+Positions played out where either player had revealed-card memory (it starts empty in a play-out): 0 of 13.
+Overall: over the 13 differing positions, the network's move scores +15.4 points (95% by position ± 16.9, by game ± 9.5) for Altaria against kp3's move, with kp3 piloting both decks afterwards.
+
+'*' = the 95% interval by position excludes zero (the Lucario study's rule); '(position only)' = not by game. Marked on
+tested rows only (A's pairs and B's headlines), never on the looks inside a headline or the pooled row;
+a tested row under 10 positions is printed but not marked ('too few to mark').
+'total/game' = the row's summed difference per game, in points of Altaria's score: a rough size of what kp3 would
+gain by making the network's move in that kind of position (gains don't simply add).
+
+A. Pairs of move kinds (network move, kp3 move)
+                                                                       positions  net-kp3  95% by position      95% by game total/game
+(smaller groups, pooled; not tested)                                          13    +15.4 (  -1.5,  +32.3) (  +5.9,  +24.9)    +66.67
+  0 pairs listed on their own, 9 pooled.
+
+B. The named habits (fixed before the run)
+                                                                       positions  net-kp3  95% by position      95% by game total/game
+1. Benching a Basic
+  1a network benches a Basic, kp3 doesn't, in play (turn 1 on)                 0
+  1b kp3 benches a Basic, network doesn't, in play (turn 1 on)                 2     +0.0 (  +0.0,   +0.0) (     -,      -)     +0.00  (too few to mark)
+  1c network benches a Basic, kp3 doesn't, at setup (turn 0)                   0
+  1d kp3 benches a Basic, network doesn't, at setup (turn 0)                   1    -37.5 (     -,      -) (     -,      -)    -12.50  (too few to mark)
+2. Stampede without a knockout (sure-knockout rule)
+  2a kp3 Stampedes without a KO, network does something else                   0
+  2b network Stampedes without a KO, kp3 does something else                   0
+3. Sleep: which sleep attack, and who is Active
+  3a network uses a sleep attack, kp3 doesn't                                  3     +0.0 (  +0.0,   +0.0) (  +0.0,   +0.0)     +0.00  (too few to mark)
+  3b kp3 uses a sleep attack, network doesn't                                  0
+  3c the two moves leave different Pokemon Active                              4    +21.9 (  -7.1,  +50.8) ( -17.9,  +61.7)    +29.17  (too few to mark)
+  3d Darkrai Active after the network's move, not kp3's                        0
+  3e Darkrai Active after kp3's move, not the network's                        2    +31.2 ( -30.0,  +92.5) ( -30.0,  +92.5)    +20.83  (too few to mark)
+4. Energy target
+  4a network energy to the Bench, kp3 to the Active                            0
+  4b network energy to the Active, kp3 to the Bench                            0
+  4c both to the Bench, different Pokemon                                      0
+  4d network energy to the Bench, kp3 no energy                                1     +0.0 (     -,      -) (     -,      -)     +0.00  (too few to mark)
+  4e kp3 energy to the Bench, network no energy                                0
+5. Retreat vs attack
+  5a network retreats, kp3 attacks                                             0
+  5b network attacks, kp3 retreats                                             1     +0.0 (     -,      -) (     -,      -)     +0.00  (too few to mark)
+
+18 rows were tested (0 move-kind pairs listed on their own and 18 named headline rows), so one or two
+of the smaller ones may clear zero by chance. The indented rows under a headline are looks inside it, not separate tests.

@@ -1,0 +1,11 @@
+ca84aa7c8925873f1811e425b7bfbc03a967aae97b43ddae9203c7e0acffc4db  net_divergence_kp_7fc6ccb  (/home/dacz8976/engine-b2c-7fc6ccb/net_divergence_kp_7fc6ccb)
+
+source: 7fc6ccb 7fc6ccbcecbfeadf19962be2e11b6c570aa7b88d (main; the official engine's commit) + engine/examples/net_divergence_kp.rs from this folder
+example sha256: dbc62824c5494698a4bd3e36ebe4a5953107807e0d26bff08563671d3445ad29
+official deckgym (rl/engine-2026-09-25/deckgym; not used here): f4d235e596cdd713546c17450fd66bd9d5eefe4baf53e93d66d8bbe1628e1034
+built 2026-09-26T09:14:30Z with cargo 1.93.1 (083ac5135 2025-12-15) (built from a source tarball), rustc 1.93.1 (01f6ddf75 2026-02-11) (built from a source tarball); rebuilt in place (REBUILD=1: tree checked equal to 7fc6ccb, only the example recompiled)
+
+inputs (sha256):
+435a2bebc567ca8357696e400643fdc821cc36ae4765a7a16663fd4413a3bd7f  decks/research/altaria.txt
+46a4820bc788b4fd9ac1d9491e62bf7123c467441e7e30012e42e8a70c91e3f3  decks/research/lucario.txt
+e1113081d12bfb5ccb6fab463ed81d76e6312b1d0b593d1d3cef07f326b7b8b9  rl/results/altaria_network_readout/kp3_rows_games.jsonl

@@ -1,0 +1,4 @@
+2026-09-26 04:15:23 CDT start: binary ca84aa7c8925873f1811e425b7bfbc03a967aae97b43ddae9203c7e0acffc4db, deals 405 to 407, 2 threads, nice 19, 16 cores, load 0.57 0.62 4.37
+sync check: 0.282 s wall, 0.265 s user CPU, 0.033 s system CPU
+divergence (net_divergence_kp 7fc6ccb, probes 3, rollouts 8): 21.729 s wall, 40.906 s user CPU, 0.017 s system CPU; timing: replay and probes 1 s, play-outs 21 s (13 positions x 16 play-outs), threads 2
+2026-09-26 04:15:46 CDT end, load 1.60 0.86 4.35

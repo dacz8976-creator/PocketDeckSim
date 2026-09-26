@@ -1,0 +1,84 @@
+Smoke test of B2c for the Altaria detector network, 2026-09-26 03:58:20 CDT
+Deals 400-404 of the net|kp3 row (outside the study's 0-399), 2 threads, nice 19; plus a replay-only sync
+check of the study's deals 0-9. Nothing of the study's 400 deals is probed or played out here.
+
+$ SMOKE=1 bash run_b2c.sh
+SYNC PASS 5 of 5 games in sync (deals 400 to 404; seeds 18200000400 to 18200000404; every recorded index offered, decision count, winner, points, turn and the per-game attack/bench counts equal); 0 rejected; 0 s
+SYNC PASS 10 of 10 games in sync (deals 0 to 9; seeds 18200000000 to 18200000009; every recorded index offered, decision count, winner, points, turn and the per-game attack/bench counts equal); 0 rejected; 1 s
+5 games (0 rejected, out of sync), 107 network decisions, 40 where kp3's move differs beyond move order, 8 paired play-outs each; average (network move - kp3 move) Altaria score when kp3 plays on: +0.009
+written: /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/altaria_network_divergence_2026-09-26/smoke/decisions.jsonl, net_divergence.txt, analysis.txt, timing.txt
+(exit 0)
+
+--- smoke/timing.txt
+2026-09-26 03:58:20 CDT start: binary 0d7f85b62499719ef1b1fc8891b8fa03eda3357ee98f0daab84c8d9cc15dd111, deals 400 to 404, 2 threads, nice 19, 16 cores, load 0.63 7.20 12.52
+sync check: 0.402 s wall, 0.630 s user CPU, 0.025 s system CPU
+divergence (net_divergence_kp 7fc6ccb, probes 3, rollouts 8): 37.096 s wall, 73.900 s user CPU, 0.033 s system CPU; timing: replay and probes 3 s, play-outs 34 s (40 positions x 16 play-outs), threads 2
+2026-09-26 03:58:58 CDT end, load 1.30 6.55 12.07
+--- smoke/net_divergence.log
+5 games, 0 rejected (out of sync); 107 network decisions, 40 where kp3 differs beyond move order; replay and probes 3 s; playing out
+timing: replay and probes 3 s, play-outs 34 s (40 positions x 16 play-outs), threads 2
+--- smoke/sync_check.log (empty = no deal rejected)
+
+--- extra checks
+== 1. Determinism and batch independence: deal 400 alone, twice (1 thread, then 2), against its lines in the 5-deal run
+1 thread and 2 threads: byte-identical
+deal 400 alone: 21 decisions; in the 5-deal run: 21; identical: True
+
+== 2. The sync check has teeth: three corrupted copies of deal 400's record must each be REJECTED
+deal 400: 21 network decisions; (a) decision 0: 6 -> 0; (b) turns 10 -> 12; (c) bench_made 2 -> 3
+bad_move (exit 1): SYNC FAIL 0 of 1 games in sync (deals 400 to 400; seeds 1820
+   deal 400: REJECTED, out of sync: decision 6: recorded index 8, 8 moves offered here
+bad_turns (exit 1): SYNC FAIL 0 of 1 games in sync (deals 400 to 400; seeds 1820
+   deal 400: REJECTED, out of sync: result 0 [4, 1] turn 10 here, recorded 0 [4, 1] turn 12
+bad_counts (exit 1): SYNC FAIL 0 of 1 games in sync (deals 400 to 400; seeds 1820
+   deal 400: REJECTED, out of sync: counts Habits { turns: 6, attack_turns: 5, attack_made: 5, bench_turns: 5, bench_made: 2 } bench_at [0, 0, 3, 0] here, recorded Habits { turns: 6, attack_turns: 5, attack_made: 5, bench_turns: 5, bench_made: 3 } [0, 0, 3, 0]
+
+== 3. Seeds actually drawn (from the formulas, over the smoke's decisions.jsonl)
+probes 321: 21,200,000,000 to 21,200,400,112; play-out seeds 320 (each used by both moves): 21,150,000,000 to 21,150,400,807
+every played-out position has 8 + 8 play-outs: True
+order-only positions were not played out: True; same-move positions were not played out: True
+
+--- notes
+The extra checks ran from a scratch script (not kept; each check's header above says what it did), on deals 400-404
+only, 2 threads, nice 19. smoke/analysis.txt was regenerated at 04:05 with the final analyze.py (its only change after
+the smoke: an interval that cannot exist, from one position or one game, prints "-" instead of nan).
+[review, Sept 26: the file's timestamp is 04:00:58, not 04:05, and analyze.py was saved again at 04:02:38; re-running
+that analyze.py at 04:10 gave byte-identical output, so the statement holds. smoke/analysis.txt was regenerated again at
+04:18 with the review's analyze.py (the "±" fix and the marking rule); smoke/decisions.jsonl is unchanged. smoke/ was made
+by the pre-review binary 0d7f85b6..., whose source is kept as smoke/net_divergence_kp_pre_review.rs.]
+
+
+===================================================================================================================
+Review smoke, 2026-09-26 04:15:23 CDT, on the rebuilt binary (ca84aa7c8925873f1811e425b7bfbc03a967aae97b43ddae9203c7e0acffc4db;
+example source dbc62824..., REBUILD=1 in /home/dacz8976/engine-b2c-7fc6ccb, 5 s). Deals 405-407 (not the builder's
+400-404, outside the study's 0-399), 2 threads, nice 19, load 0.57; plus a replay-only sync check of study deals 10-19.
+
+$ SMOKE=1 SMOKE_FIRST=405 SMOKE_N=3 SMOKE_OUT=.../smoke_review SYNC_FIRST=10 SYNC_N=10 bash run_b2c.sh
+SYNC PASS 3 of 3 games in sync (deals 405 to 407; seeds 18200000405 to 18200000407; every recorded index offered, decision count, winner, points, turn and the per-game attack/bench counts equal); 0 rejected; 0 s
+SYNC PASS 10 of 10 games in sync (deals 10 to 19; seeds 18200000010 to 18200000019; every recorded index offered, decision count, winner, points, turn and the per-game attack/bench counts equal); 0 rejected; 1 s
+3 games (0 rejected, out of sync), 37 network decisions, 13 where kp3's move differs beyond move order, 8 paired play-outs each; average (network move - kp3 move) Altaria score when kp3 plays on: +0.154
+written: .../smoke_review/decisions.jsonl, net_divergence.txt, analysis.txt, timing.txt
+(exit 0)
+
+--- smoke_review/timing.txt
+2026-09-26 04:15:23 CDT start: binary ca84aa7c8925873f1811e425b7bfbc03a967aae97b43ddae9203c7e0acffc4db, deals 405 to 407, 2 threads, nice 19, 16 cores, load 0.57 0.62 4.37
+sync check: 0.282 s wall, 0.265 s user CPU, 0.033 s system CPU
+divergence (net_divergence_kp 7fc6ccb, probes 3, rollouts 8): 21.729 s wall, 40.906 s user CPU, 0.017 s system CPU; timing: replay and probes 1 s, play-outs 21 s (13 positions x 16 play-outs), threads 2
+2026-09-26 04:15:46 CDT end, load 1.60 0.86 4.35
+
+--- checks on smoke_review/decisions.jsonl (a scratch script, not kept)
+405: 7 decisions, 7 recorded, network moves equal the record; went_first one value (True), Altaria seat 1
+406: 14 decisions, 14 recorded, equal; went_first one value (False), seat 0
+407: 16 decisions, 16 recorded, equal; went_first one value (True), seat 1
+probes 111: 21,200,500,000 to 21,200,700,152; play-out seeds 104 (each used by both moves): 21,150,500,100 to 21,150,701,107
+8 + 8 at every played-out position: True; order-only never played out: True; same-move never played out: True;
+every differing, not-order-only position played out: True; 3 probes at every decision: True
+positions that differ only through the review's new "(active)" marks: 0 of 37
+kp3 agreed with itself at 92%; revealed-card memory at 0 of 13 played-out positions
+analyze.py printed every row (the output is smoke_review/analysis.txt); on 3 games it tests the code, not the network.
+
+--- regression of the rebuild (deals 401 and 403 of the builder's smoke, 2 threads, nice 19; outputs not kept)
+401: 26 decisions; changed fields: went_first at decisions 0-1 (turn 0: False -> True, now equal to the rest of the
+     game) and net_move text at 12 and 16 ("(active)" added); the same 12 positions played out, the same values
+403: 28 decisions; changed fields: net_move/kp3_move text at 5, 9, 17, 26 ("(active)" added; at 17 and 26 both sides,
+     so still the same move); the same 8 positions played out, the same values
