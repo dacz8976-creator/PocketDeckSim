@@ -256,6 +256,22 @@ fn clemonts_backpack_boosts_bench_damage_but_giovanni_does_not() {
     assert_eq!(bench_damage(CardId::A1223Giovanni), 10);
 }
 
+/// rules/09 (laptop's Raticate/Manectric card check, Sept 26): the Backpack's +20 is for attacks used by Magneton or
+/// Heliolisk against the opponent's Pokémon. A Poisoned Heliolisk takes the plain 10 at Checkup the turn it is played.
+#[test]
+fn clemonts_backpack_does_not_add_to_checkup_damage_on_its_own_heliolisk() {
+    let heliolisk = PlayedCard::from_id(CardId::B4061Heliolisk).with_status_condition(StatusCondition::Poisoned);
+    let mut game = get_test_game_with_board(vec![heliolisk], vec![PlayedCard::from_id(CardId::A1001Bulbasaur)]);
+    let trainer = trainer_from_id(CardId::B1a066ClemontsBackpack);
+    let mut state = game.get_state_clone();
+    state.hands[0].push(Card::Trainer(trainer.clone()));
+    game.set_state(state);
+    let before = game.get_state_clone().get_active(0).get_remaining_hp();
+    game.apply_action(&Action { actor: 0, action: SimpleAction::Play { trainer_card: trainer }, is_stack: false });
+    game.apply_action(&Action { actor: 0, action: SimpleAction::EndTurn, is_stack: false });
+    assert_eq!(before - game.get_state_clone().get_active(0).get_remaining_hp(), 10);
+}
+
 #[test]
 fn weakness_precedes_reductions_and_damage_clamps_after_defender_stage() {
     fn damage_taken(base_damage: u32, bounded_field: bool) -> u32 {

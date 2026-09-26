@@ -1030,6 +1030,7 @@ fn get_ability_damage_increase(
 fn get_increased_turn_effect_modifiers(
     state: &State,
     is_active_to_active: bool,
+    attack_on_opponent: bool,
     target_is_ex: bool,
     attacker_is_eevee_evolution: bool,
     attacking_pokemon: &crate::models::PlayedCard,
@@ -1076,7 +1077,10 @@ fn get_increased_turn_effect_modifiers(
                     && pokemon_names.len() == 2
                     && pokemon_names.iter().any(|name| name == "Magneton")
                     && pokemon_names.iter().any(|name| name == "Heliolisk");
-                if (is_active_to_active || is_backpack)
+                // Clemont's Backpack: "attacks used by your Magneton or Heliolisk do +20 damage to your opponent's
+                // Pokémon", Benched ones too, but only an attack's damage to the opponent's Pokémon (rules/09, the
+                // laptop's Raticate/Manectric card check: Checkup damage to its own Heliolisk took +20).
+                if (is_active_to_active || (is_backpack && attack_on_opponent))
                     && pokemon_names
                     .iter()
                     .any(|name| name.as_str() == attacker_name)
@@ -1871,6 +1875,7 @@ pub(crate) fn modify_damage(
     let increased_turn_effect_modifiers = get_increased_turn_effect_modifiers(
         state,
         is_active_to_active,
+        is_from_active_attack && attacking_player != target_player,
         target_is_ex,
         attacker_is_eevee_evolution,
         attacking_pokemon,
