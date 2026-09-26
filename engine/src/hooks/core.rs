@@ -383,15 +383,15 @@ pub(crate) fn on_end_turn(player_ending_turn: usize, state: &mut State) {
     // Check if active Pokémon has an end-of-turn ability
     let active = state.get_active(player_ending_turn);
     if let Some(mechanic) = get_in_play_ability_mechanic(state, active) {
+        // Legendary Pulse draws at once, before Hiking Trail tops the hand up below (rules/09, confirmed in-game
+        // 2026-09-25: Suicune ex's player ends on 3 cards). It used to be queued, which resolved it under the next
+        // player's turn draw, after Hiking Trail.
         if matches!(
             mechanic,
             AbilityMechanic::EndTurnDrawCardIfActive { amount: 1 }
         ) {
             debug!("Legendary Pulse: Drawing a card");
-            state.move_generation_stack.push((
-                player_ending_turn,
-                vec![SimpleAction::DrawCard { amount: 1 }],
-            ));
+            state.maybe_draw_card(player_ending_turn);
         }
         if let AbilityMechanic::EndTurnHealSelfIfActive { amount } = mechanic {
             debug!("Full-Mouth Manner: Healing 20 damage from active");
