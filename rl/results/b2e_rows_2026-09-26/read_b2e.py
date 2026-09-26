@@ -7,7 +7,8 @@ tuning or hold decision is taken from it.
 Refuses to read anything unless
   1. identity_check.txt ends in the IDENTITY PASS line for the binary on identity.txt's first line,
   2. rows_check.txt names that same binary on its first line and carries a ROWS PASS line, and
-  3. the rows check (b2e_checks.check_rows), re-run here on b2e_k3.jsonl and b2e_kp3.jsonl, passes.
+  3. the rows check (b2e_checks.check_rows), re-run here on section 4's four block files b2e_k3_arch,
+     b2e_k3_dustin, b2e_kp3_arch and b2e_kp3_dustin (.jsonl, with their .txt logs), passes.
 A pairing with a RULE finding under a pilot is withheld under that pilot (README section 4: RULE stops the
 reading of that pairing until explained), and so is every panel score that needs it.
 
@@ -34,14 +35,19 @@ Definitions (README section 5):
 The Limitless cells are recomputed from W-L-T-n in limitless_cells.csv and checked against its rounded score and
 band columns; the equal-weight averages are checked against panel_intervals.csv, whose lo/hi are the intervals.
 Writes b2e_tables.md and b2e_summary.json in the folder and prints the tables. b2e_tables.md ends with the rows
-check, the scan logs' own findings sections (so each CHECK is listed with its example games, README section 4),
-deck_check.txt and timing.txt.
+check, the four scan logs' own findings sections, deck_check.txt and timing.txt.
+Also writes READING_draft.md: section 4's READING.md as a DRAFT for a person to finish (the spec citation, the
+binary's sha256, the PASS lines, the same tables, the legality findings per pairing with each code's first example
+in that pairing, taken from the per-game finding_examples, an empty "card that may allow it" block per CHECK code
+and an empty explanation block per RULE code, then identity.txt, deck_check.txt and timing.txt pasted). It is
+rewritten on every run; READING.md itself is never written here.
 """
 import csv
 import json
 import math
 import os
 import sys
+from collections import defaultdict
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 SPEC = os.path.normpath(os.path.join(HERE, "..", "b2e_card_check_2026-09-26"))
@@ -50,7 +56,8 @@ sys.dont_write_bytecode = True  # no __pycache__ in the results folder
 import b2e_checks  # noqa: E402
 
 PILOTS = ("k3", "kp3")
-PANEL = ["lucario", "altaria", "sceptile", "vespiquen", "suicune", "hydreigon", "weezing", "blaziken"]
+BLOCKS = tuple(b2e_checks.BLOCKS)  # ("arch", "dustin"): section 4's block files b2e_<pilot>_<block>
+PANEL =["lucario", "altaria", "sceptile", "vespiquen", "suicune", "hydreigon", "weezing", "blaziken"]
 # (TSV key of the archetype list; Dustin's key is "dustin_" + it), Limitless archetype key, Limitless deck name,
 # "untrusted-prone" per README section 6 (archetype list, Dustin's file).
 DECKS = [
@@ -78,8 +85,13 @@ def lines(path):
         return [l.rstrip("\n") for l in f if l.strip()]
 
 
+def block_file(folder, pilot, block, ext):
+    return os.path.join(folder, f"b2e_{pilot}_{block}.{ext}")
+
+
 def gate(folder):
-    for name in ("identity.txt", "identity_check.txt", "rows_check.txt", "b2e_k3.jsonl", "b2e_kp3.jsonl"):
+    runs = [os.path.basename(block_file(folder, pl, b, ext)) for pl in PILOTS for b in BLOCKS for ext in ("jsonl", "txt")]
+    for name in ["identity.txt", "identity_check.txt", "rows_check.txt"] + runs:
         if not os.path.exists(os.path.join(folder, name)):
             refuse(f"{name} is missing")
     sha = lines(os.path.join(folder, "identity.txt"))[0].split()[0]
@@ -167,9 +179,9 @@ def main():
     tsv = os.path.join(SPEC, "b2e_pairings.tsv")
     rows = b2e_checks.load_tsv(tsv)
     check_layout(rows)
-    files = {pilot: os.path.join(folder, f"b2e_{pilot}.jsonl") for pilot in PILOTS}
+    files = {pilot: {block: block_file(folder, pilot, block, "jsonl") for block in BLOCKS} for pilot in PILOTS}
     check_log = []
-    ok, findings = b2e_checks.check_rows(tsv, BASE, GAMES, files, out=check_log.append)
+    ok, findings, examples = b2e_checks.check_rows(tsv, BASE, GAMES, files, out=check_log.append)
     if not ok:
         refuse("the rows check fails on re-run: " + check_log[-1])
     withheld = {pilot: {p for p, c in findings[pilot].items() if any(k.startswith("RULE") for k in c)}
@@ -178,8 +190,9 @@ def main():
     # Per-deal scores and per-cell statistics.
     score = {pilot: {p: [None] * GAMES for p in rows} for pilot in PILOTS}
     for pilot in PILOTS:
-        for g in b2e_checks.load_games(files[pilot]):
-            score[pilot][g["pairing"]][g["i"]] = g["first_deck_score"]
+        for block in BLOCKS:
+            for g in b2e_checks.load_games(files[pilot][block]):
+                score[pilot][g["pairing"]][g["i"]] = g["first_deck_score"]
     sim = {pilot: {} for pilot in PILOTS}
     for pilot in PILOTS:
         for p in rows:
@@ -210,8 +223,14 @@ def main():
             var += sum((x - m) ** 2 for x in diffs) / len(diffs) / len(diffs)
         return {"pct": 100.0 * sum(means) / len(means), "band": 196.0 * math.sqrt(var) / len(means)}
 
+    def finding_entry(pl, p, code, n):
+        i, seed, text = examples[pl][p].get(code, (None, None, None))
+        return {"games": n, "first_example_deal": i, "first_example_seed": seed, "first_example": text}
+
     summary = {"binary_sha256": sha, "identity": id_line, "rows_check": rows_line, "seed_base": BASE,
                "games_per_pairing": GAMES, "withheld_pairings": {pl: sorted(withheld[pl]) for pl in PILOTS},
+               "findings": {pl: {str(p): {code: finding_entry(pl, p, code, n) for code, n in sorted(c.items())}
+                                 for p, c in sorted(findings[pl].items())} for pl in PILOTS},
                "decks": {}}
     md = []
     out = md.append
@@ -288,6 +307,7 @@ def main():
                           for o, opp in enumerate(PANEL)}
         summary["decks"][key] = entry
 
+    tables_from = len(md)  # the tables, md[tables_from:tables_to], go into READING_draft.md as well
     out("## Panel scores (equal-weight over the eight panel decks)")
     out("")
     out("| Deck | List | k3 % | kp3 % | kp3 - k3 (paired by deal) | Limitless pooled % (interval) | Gap k3 "
@@ -421,30 +441,31 @@ def main():
             f"| {fmt(pv(k['archetype_list_panel']))} | {fmt(pv(q['archetype_list_panel']))} "
             f"| {pm(k['list_difference'], signed=True)} | {pm(q['list_difference'], signed=True)} |")
     out("")
+    tables_to = len(md)
     out("## Rows check and legality findings (b2e_checks.py, re-run by this script)")
     out("")
     out("```")
     md.extend(check_log)
     out("```")
     out("")
-    out("## The scan's own findings sections, with its examples (README section 4: CHECK is listed with its "
-        "example and the card that may allow it; the card is for whoever writes READING.md)")
+    out("## The scan's own findings sections, with its examples (at most four per code per file; each pairing's "
+        "own first example is in READING_draft.md, from the per-game finding_examples)")
     for pilot in PILOTS:
-        out("")
-        out(f"### {pilot} (`b2e_{pilot}.txt`)")
-        out("")
-        out("```")
-        md.extend(findings_section(os.path.join(folder, f"b2e_{pilot}.txt")))
-        out("```")
-    for name in ("deck_check.txt", "timing.txt"):
-        path = os.path.join(folder, name)
-        if os.path.exists(path):
+        for block in BLOCKS:
             out("")
-            out(f"## {name}")
+            out(f"### {pilot}, {block} (`b2e_{pilot}_{block}.txt`)")
             out("")
             out("```")
-            md.extend(lines(path))
+            md.extend(findings_section(block_file(folder, pilot, block, "txt")))
             out("```")
+
+    def pasted(dst, names):
+        for name in names:
+            path = os.path.join(folder, name)
+            if os.path.exists(path):
+                dst.extend(["", f"## {name}", "", "```"] + lines(path) + ["```"])
+
+    pasted(md, ("deck_check.txt", "timing.txt"))
 
     text = "\n".join(md) + "\n"
     with open(os.path.join(folder, "b2e_tables.md"), "w", encoding="utf-8", newline="\n") as f:
@@ -452,8 +473,84 @@ def main():
     with open(os.path.join(folder, "b2e_summary.json"), "w", encoding="utf-8", newline="\n") as f:
         json.dump(summary, f, indent=1, sort_keys=True)
         f.write("\n")
+    with open(os.path.join(folder, "READING_draft.md"), "w", encoding="utf-8", newline="\n") as f:
+        f.write("\n".join(reading_draft(sha, id_line, rows_line, rows, findings, examples, md[tables_from:tables_to],
+                                        lambda dst: pasted(dst, ("identity.txt", "deck_check.txt", "timing.txt"))))
+                + "\n")
     sys.stdout.reconfigure(encoding="utf-8")
     print(text)
+    print("Written: b2e_tables.md, b2e_summary.json and READING_draft.md (a DRAFT: the card and explanation blocks "
+          "marked TO FILL need a person; copy it to READING.md to finish it).")
+
+
+def cell(text):
+    """Text safe inside a Markdown table cell."""
+    return " ".join(str(text).split()).replace("|", "\\|")
+
+
+def reading_draft(sha, id_line, rows_line, rows, findings, examples, tables, paste):
+    """READING_draft.md: section 4's READING.md, generated as far as a program can, for a person to finish."""
+    d = []
+    w = d.append
+    w("# B2e reading: DRAFT for a person to finish")
+    w("")
+    w("> **DRAFT, generated by `read_b2e.py`; not the reading yet.** The numbers, tables and pasted files are "
+      "generated from the run. The blocks marked **TO FILL** need a person: for each CHECK code, the card that may "
+      "allow it (cards are looked up with `python3 lib/card.py`, never from memory), and for each RULE code, the "
+      "explanation (until then that pairing's reading stays withheld). Copy this file to `READING.md` and finish it "
+      "there: `read_b2e.py` rewrites `READING_draft.md` every time it runs and never writes `READING.md`.")
+    w("")
+    w("**Specification:** `../b2e_card_check_2026-09-26/README.md`, section 4 (the run) and section 5 (the reading).")
+    w("")
+    w("## The run")
+    w("")
+    w(f"- Scan binary sha256 `{sha}`: legality_scan at 7fc6ccb plus `legality_scan_pairs.patch` (`identity.txt` is "
+      "pasted at the end, with the official `deckgym`'s sha256).")
+    w(f"- {id_line}")
+    w(f"- {rows_line}")
+    w(f"- 96 pairings x {GAMES} deals, seeds {BASE:,} + 10,000 x pairing + i; k3 on both sides, then kp3 on both "
+      "sides, on the same deals; even i puts the held deck in seat 0.")
+    w("- Files, with section 4's names: `b2e_k3_arch`, `b2e_kp3_arch` (block A, pairings 0-47), `b2e_k3_dustin`, "
+      "`b2e_kp3_dustin` (block B, pairings 48-95), each `.jsonl` (one line per game) and `.txt` (the scan's log); "
+      "`identity.txt`, `timing.txt`, `deck_check.txt`. Where the layout differs from section 4: the folder is "
+      "`rl/results/b2e_rows_2026-09-26/`, not `b2e_runs_<date>/`, and `run_b2e.sh` is three scripts "
+      "(`build_b2e_scan.sh`, `run_b2e_identity.sh`, `run_b2e_rows.sh`).")
+    w("")
+    d.extend(tables)
+    w("## Legality findings per pairing (section 4)")
+    w("")
+    w("RULE (the rules page says the move or state is impossible) stops the reading of that pairing until explained; "
+      "the tables above withhold it. CHECK is listed with its example and the card that may allow it. Each example "
+      "is the scan's own text for the pairing's lowest deal with that code (the per-game `finding_examples`).")
+    by_code = defaultdict(list)
+    for pilot in PILOTS:
+        for p in sorted(findings[pilot]):
+            for code, n in sorted(findings[pilot][p].items()):
+                by_code[code].append((pilot, p, n, examples[pilot][p].get(code)))
+    for kind, todo in (("RULE", "Explanation (TO FILL; the pairing stays withheld until it is explained)"),
+                       ("CHECK", "The card that may allow it (TO FILL; `python3 lib/card.py \"<name or SET NUMBER>\"`)")):
+        codes = sorted(c for c in by_code if c.startswith(kind))
+        w("")
+        w(f"### {kind} findings")
+        w("")
+        if not codes:
+            w(f"None: no {kind} finding in any pairing under either pilot.")
+            continue
+        for code in codes:
+            w(f"#### {code}")
+            w("")
+            w("| Pilot | Pairing | Held deck v panel deck | Games | First example in the pairing (deal, seed: scan text) |")
+            w("|---|---:|---|---:|---|")
+            for pilot, p, n, ex in by_code[code]:
+                example = "(none recorded)" if ex is None else f"deal {ex[0]}, seed {ex[1]}: {ex[2]}"
+                w(f"| {pilot} | {p} | {cell(rows[p]['held_key'])} v {cell(rows[p]['opponent'])} | {n} | {cell(example)} |")
+            w("")
+            w(f"**{todo}:**")
+            w("")
+            w("> _(empty: to be filled by a person)_")
+            w("")
+    paste(d)
+    return d
 
 
 if __name__ == "__main__":

@@ -29,9 +29,11 @@
 //! `b` = opponent) with the table's seat convention: even i = the held deck in seat 0. Deck paths are read
 //! relative to `--root` (default "..", the repo root when the scan runs from engine/ as usual; an absolute path
 //! is used as it is). `--seed-base` replaces 72,000,000 (seed = base + pairing x 10,000 + i); `--pairs` needs
-//! it, and a seed_first column, if the file has one, must equal base + pairing x 10,000. In `--pairs` mode each
-//! `--games-out` line also carries a_file and b_file (the file's paths) and, for a game with findings, their
-//! codes and counts. Without `--pairs` and `--seed-base` the scan runs exactly as before.
+//! it, and a seed_first column, if the file has one, must equal base + pairing x 10,000. `--pairs` refuses
+//! `--games` above 10,000 (one pairing's sub-block); `--seed-base` and `--root` are refused without `--pairs`.
+//! In `--pairs` mode each `--games-out` line also carries a_file and b_file (the file's paths) and, for a game
+//! with findings, their codes and counts (findings) and each code's first example in that game
+//! (finding_examples). Without `--pairs` and `--seed-base` the scan runs exactly as before.
 
 use deckgym::actions::{Action, SimpleAction};
 use deckgym::models::{Card, EnergyType, PlayedCard, TrainerType};
@@ -559,6 +561,10 @@ fn main() {
     if pairs_file.is_some() {
         assert!(arg(&args, "--seed-base").is_some(), "--pairs needs --seed-base (72,000,000 is the table's own block)");
         assert!(arg(&args, "--decks").is_none(), "--pairs names its own deck files; --decks is for the table's 28");
+        assert!(games <= 10_000, "--pairs: a pairing's sub-block holds 10,000 seeds, so --games {games} is too many");
+    } else {
+        assert!(arg(&args, "--seed-base").is_none(), "--seed-base is only for --pairs (the table's base is 72,000,000)");
+        assert!(arg(&args, "--root").is_none(), "--root is only for --pairs");
     }
     let mut games_out = arg(&args, "--games-out")
         .map(|path| std::io::BufWriter::new(std::fs::File::create(path).expect("games-out file")));
@@ -643,6 +649,10 @@ fn main() {
                     line["b_file"] = serde_json::json!(file_b);
                     if !r.findings.count.is_empty() {
                         line["findings"] = serde_json::json!(r.findings.count);
+                        // Each code's first example in this game: the log keeps only four per code for the run.
+                        let first: BTreeMap<&String, &String> =
+                            r.findings.examples.iter().filter_map(|(code, e)| e.first().map(|x| (code, x))).collect();
+                        line["finding_examples"] = serde_json::json!(first);
                     }
                 }
                 writeln!(out, "{line}").expect("write games-out");

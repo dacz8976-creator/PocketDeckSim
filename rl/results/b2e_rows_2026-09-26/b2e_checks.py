@@ -12,7 +12,8 @@ run_b2e_rows.sh; read_b2e.py imports check_rows() and re-runs it before reading 
         once each and not empty, and every new line must equal its reference line BYTE FOR BYTE (so hyper_ray,
         chase_order and the absence of any added key are checked too). With --drop, the listed keys must be present
         in every new line and are removed first; the rest must then equal the reference line exactly (both
-        re-serialized the same way, types included). Exit 1 on any difference.
+        re-serialized the same way, types included). Exit 1 on any difference. A difference is printed with the
+        keys that differ (on one side only, or with different values), per line and counted over all lines.
 
     b2e_checks.py table_tsv <reference jsonl> <seed base> <out tsv>
         Writes a --pairs file that replays the table pairings found in <reference jsonl> (a legality_scan
@@ -20,16 +21,20 @@ run_b2e_rows.sh; read_b2e.py imports check_rows() and re-runs it before reading 
         panel_file = decks/research/<b>.txt, seed_first = base + 10,000 x pairing. Run with --seed-base <base> =
         72,000,000, --pairs mode must then replay the table's own games (run_b2e_identity.sh).
 
-    b2e_checks.py rows <pairings.tsv> <seed base> <games> <k3 jsonl> <kp3 jsonl>
-        The B2e rows: each file holds exactly one game per (pairing, i) for every TSV row and i < games, with
-        every field the specification names (pairing, a, b, i, seed, bot_a, bot_b, first_seat, winner_seat,
-        points, turns, first_deck_score, moves as 16 hex digits, a_file, b_file), seed = seed_first + i =
-        base + 10,000 x pairing + i, first_seat = i % 2 (even i = held deck in seat 0), a/b/a_file/b_file as
-        the TSV row, bot_a = bot_b = the pilot, first_deck_score consistent with winner_seat; k3 and kp3 on the
-        same deals; per-game findings summed equal the .txt log's findings section (the log is the jsonl's name
-        with .txt). Prints findings per pairing and a last line "ROWS PASS ..." or "ROWS FAIL ...". Exit 1 on
-        FAIL. RULE findings do not fail the check (they stop the reading of that pairing; read_b2e.py withholds
-        it) but are listed.
+    b2e_checks.py rows <pairings.tsv> <seed base> <games> <k3 arch> <k3 dustin> <kp3 arch> <kp3 dustin>
+        The B2e rows, in section 4's four block files (b2e_<pilot>_arch.jsonl: block A_archetype, pairings 0-47;
+        b2e_<pilot>_dustin.jsonl: block B_dustin, 48-95). Each block file holds exactly one game per (pairing, i)
+        for every TSV row of its block and i < games, and nothing else; so each pilot's two files hold every TSV
+        row. Every line has every field the specification names (pairing, a, b, i, seed, bot_a, bot_b,
+        first_seat, winner_seat, points, turns, first_deck_score, moves as 16 hex digits, a_file, b_file), seed =
+        seed_first + i = base + 10,000 x pairing + i, first_seat = i % 2 (even i = held deck in seat 0),
+        a/b/a_file/b_file as the TSV row, bot_a = bot_b = the pilot, first_deck_score consistent with
+        winner_seat; a game with findings also names one example per finding code (finding_examples, same codes),
+        a game without has neither key; k3 and kp3 on the same deals; each file's per-game findings summed equal
+        its own .txt log's findings section (the log is the jsonl's name with .txt). Prints findings per pairing,
+        each code with its first example in that pairing, and a last line "ROWS PASS ..." or "ROWS FAIL ...".
+        Exit 1 on FAIL. RULE findings do not fail the check (they stop the reading of that pairing; read_b2e.py
+        withholds it) but are listed.
 """
 import csv
 import json
@@ -38,6 +43,8 @@ import sys
 from collections import Counter, defaultdict
 
 PILOTS = ("k3", "kp3")
+# Section 4's block files: file name part -> the TSV's block column.
+BLOCKS = {"arch": "A_archetype", "dustin": "B_dustin"}
 # Every per-game line must carry these (README section 4: today's fields; a_file/b_file identify the --pairs row).
 FIELDS = ("pairing", "a", "b", "i", "seed", "bot_a", "bot_b", "first_seat", "winner_seat", "points", "turns",
           "first_deck_score", "moves", "a_file", "b_file")
@@ -119,6 +126,12 @@ def _canon(g):
     return json.dumps(g, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
 
 
+def _differing_keys(new, ref):
+    """The keys on one side only and the keys whose values differ (types included), as one sorted list."""
+    return sorted([f"{k} (new only)" for k in set(new) - set(ref)] + [f"{k} (reference only)" for k in set(ref) - set(new)]
+                  + [k for k in set(new) & set(ref) if _canon(new[k]) != _canon(ref[k])])
+
+
 def same(new_path, ref_path, drop=()):
     new, dn = _raw_games(new_path)
     ref, dr = _raw_games(ref_path)
@@ -131,19 +144,25 @@ def same(new_path, ref_path, drop=()):
     if only_new or only_ref:
         problems.append(f"only in new {len(only_new)} {only_new[:3]}; only in reference {len(only_ref)} {only_ref[:3]}")
     bad = []
+    keys_differing = Counter()
     for k in sorted(set(new) & set(ref)):
+        g = new[k][1]
         if drop:
-            g = new[k][1]
             missing = [x for x in drop if x not in g]
             if missing:
                 bad.append((k, f"no {missing} in the new line"))
                 continue
-            if _canon({x: v for x, v in g.items() if x not in drop}) != _canon(ref[k][1]):
-                bad.append((k, "differs"))
-        elif new[k][0] != ref[k][0]:
-            bad.append((k, "differs"))
+            g = {x: v for x, v in g.items() if x not in drop}
+            if _canon(g) == _canon(ref[k][1]):
+                continue
+        elif new[k][0] == ref[k][0]:
+            continue
+        keys = _differing_keys(g, ref[k][1]) or ["(same keys and values; the bytes differ: key order or number format)"]
+        keys_differing.update(keys)
+        bad.append((k, "differs in " + ", ".join(keys)))
     if bad:
-        problems.append(f"{len(bad)} lines differ")
+        problems.append(f"{len(bad)} lines differ; keys differing (lines): "
+                        + (", ".join(f"{x} ({n})" for x, n in sorted(keys_differing.items())) or "none (missing keys)"))
     how = f"without {','.join(drop)}, types included" if drop else "byte for byte"
     print(f"same lines ({how}): {new_path} v {ref_path}: {len(set(new) & set(ref)) - len(bad):,} of "
           f"{len(set(new) | set(ref)):,} games identical; problems: {len(problems)}")
@@ -197,78 +216,117 @@ def log_findings(path):
 
 
 def check_rows(tsv_path, base, games, files, out=print):
-    """files: {pilot: jsonl path}. Returns (ok, findings) with findings[pilot][pairing] = Counter of
-    code -> games affected."""
+    """files: {pilot: {"arch": jsonl path, "dustin": jsonl path}}, section 4's four block files. Returns
+    (ok, findings, examples): findings[pilot][pairing] = Counter of code -> games affected;
+    examples[pilot][pairing][code] = (deal i, seed, the scan's example text), from the pairing's lowest deal
+    with that code."""
     rows = load_tsv(tsv_path)
     problems = []
     if not rows:
         problems.append(f"{tsv_path} lists no pairings")
-    keysets = {}
-    findings = {}
-    for pilot, path in files.items():
-        gs = load_games(path)
+    keysets, findings, examples = {}, {}, {}
+    for pilot, blocks in files.items():
         seen = {}
         per_pairing = defaultdict(Counter)
-        occ_total, games_total = Counter(), Counter()
-        bad = []
-        for g in gs:
-            key = (g.get("pairing"), g.get("i"))
-            absent = [x for x in FIELDS if x not in g]
-            if absent:
-                bad.append(f"pairing {key[0]} deal {key[1]}: no {', '.join(absent)}")
-                continue
-            if not (isinstance(g["moves"], str) and MOVES.fullmatch(g["moves"])):
-                bad.append(f"pairing {key[0]} deal {key[1]}: moves {g['moves']!r} is not a 16-hex-digit hash")
-            if key in seen:
-                bad.append(f"pairing {key[0]} deal {key[1]} twice")
-                continue
-            seen[key] = g["seed"]
-            r = rows.get(g.get("pairing"))
-            if r is None:
-                bad.append(f"pairing {key[0]} not in the TSV")
-                continue
-            p, i = key
-            if not (isinstance(i, int) and 0 <= i < games):
-                bad.append(f"pairing {p}: deal {i} outside 0..{games - 1}")
-            want_seed = int(r["seed_first"]) + i
-            if g["seed"] != want_seed or g["seed"] != base + 10_000 * p + i or g["seed"] > int(r["seed_last"]):
-                bad.append(f"pairing {p} deal {i}: seed {g['seed']}, want {want_seed}")
-            if g["first_seat"] != i % 2:
-                bad.append(f"pairing {p} deal {i}: first_seat {g['first_seat']}")
-            for field, want in (("a", r["held_key"]), ("b", r["opponent"]), ("a_file", r["held_file"]),
-                                ("b_file", r["panel_file"]), ("bot_a", pilot), ("bot_b", pilot)):
-                if g.get(field) != want:
-                    bad.append(f"pairing {p} deal {i}: {field} {g.get(field)!r}, want {want!r}")
-            w = g["winner_seat"]
-            want_score = 0.5 if w == -1 else (1.0 if w == g["first_seat"] else 0.0)
-            if w not in (-1, 0, 1) or g["first_deck_score"] != want_score:
-                bad.append(f"pairing {p} deal {i}: winner_seat {w}, first_deck_score {g['first_deck_score']}")
-            for code, n in g.get("findings", {}).items():
-                per_pairing[p][code] += 1
-                occ_total[code] += n
-                games_total[code] += 1
-        expected = len(rows) * games
-        if len(seen) != expected or len(gs) != expected:
-            bad.append(f"{len(gs):,} lines, {len(seen):,} distinct games; want {expected:,} ({len(rows)} x {games})")
+        first = defaultdict(dict)
+        pilot_bad = []
+        if set(blocks) != set(BLOCKS):
+            pilot_bad.append(f"block files {sorted(blocks)}, want {sorted(BLOCKS)}")
+        for block, path in blocks.items():
+            block_rows = {p for p, r in rows.items() if r.get("block") == BLOCKS.get(block)}
+            if not block_rows:
+                pilot_bad.append(f"{block}: the TSV has no pairings of block {BLOCKS.get(block)}")
+            bad = []
+            try:
+                gs = load_games(path)
+            except OSError as e:
+                gs = []
+                bad.append(f"cannot read: {e}")
+            in_file = set()
+            occ_total, games_total = Counter(), Counter()
+            for g in gs:
+                key = (g.get("pairing"), g.get("i"))
+                absent = [x for x in FIELDS if x not in g]
+                if absent:
+                    bad.append(f"pairing {key[0]} deal {key[1]}: no {', '.join(absent)}")
+                    continue
+                if not (isinstance(g["moves"], str) and MOVES.fullmatch(g["moves"])):
+                    bad.append(f"pairing {key[0]} deal {key[1]}: moves {g['moves']!r} is not a 16-hex-digit hash")
+                if key in seen:
+                    bad.append(f"pairing {key[0]} deal {key[1]} twice")
+                    continue
+                seen[key] = g["seed"]
+                in_file.add(key)
+                r = rows.get(g.get("pairing"))
+                if r is None:
+                    bad.append(f"pairing {key[0]} not in the TSV")
+                    continue
+                p, i = key
+                if p not in block_rows:
+                    bad.append(f"pairing {p} is block {r.get('block')}, not {BLOCKS.get(block)}")
+                if not (isinstance(i, int) and 0 <= i < games):
+                    bad.append(f"pairing {p}: deal {i!r} outside 0..{games - 1}")
+                    continue
+                want_seed = int(r["seed_first"]) + i
+                if g["seed"] != want_seed or g["seed"] != base + 10_000 * p + i or g["seed"] > int(r["seed_last"]):
+                    bad.append(f"pairing {p} deal {i}: seed {g['seed']}, want {want_seed}")
+                if g["first_seat"] != i % 2:
+                    bad.append(f"pairing {p} deal {i}: first_seat {g['first_seat']}")
+                for field, want in (("a", r["held_key"]), ("b", r["opponent"]), ("a_file", r["held_file"]),
+                                    ("b_file", r["panel_file"]), ("bot_a", pilot), ("bot_b", pilot)):
+                    if g.get(field) != want:
+                        bad.append(f"pairing {p} deal {i}: {field} {g.get(field)!r}, want {want!r}")
+                w = g["winner_seat"]
+                want_score = 0.5 if w == -1 else (1.0 if w == g["first_seat"] else 0.0)
+                if w not in (-1, 0, 1) or g["first_deck_score"] != want_score:
+                    bad.append(f"pairing {p} deal {i}: winner_seat {w}, first_deck_score {g['first_deck_score']}")
+                fs, fx = g.get("findings"), g.get("finding_examples")
+                if fs is None:
+                    if fx is not None:
+                        bad.append(f"pairing {p} deal {i}: finding_examples without findings")
+                    continue
+                if not (isinstance(fs, dict) and fs and all(isinstance(n, int) and n > 0 for n in fs.values())):
+                    bad.append(f"pairing {p} deal {i}: findings {fs!r} is not code -> count")
+                    continue
+                if not (isinstance(fx, dict) and set(fx) == set(fs) and all(isinstance(x, str) and x for x in fx.values())):
+                    bad.append(f"pairing {p} deal {i}: finding_examples does not give one example per finding code")
+                    fx = {}
+                for code, n in fs.items():
+                    per_pairing[p][code] += 1
+                    occ_total[code] += n
+                    games_total[code] += 1
+                    if code in fx and (code not in first[p] or i < first[p][code][0]):
+                        first[p][code] = (i, g["seed"], fx[code])
+            expected = len(block_rows) * games
+            if len(in_file) != expected or len(gs) != expected:
+                bad.append(f"{len(gs):,} lines, {len(in_file):,} distinct games; want {expected:,} "
+                           f"({len(block_rows)} pairings of block {BLOCKS.get(block)} x {games})")
+            missing = [(p, i) for p in sorted(block_rows) for i in range(games) if (p, i) not in in_file]
+            if missing:
+                bad.append(f"{len(missing):,} (pairing, deal) of the block missing, first {missing[:3]}")
+            # The file's own log: its findings section must be exactly these games' findings, summed.
+            log = path[:-len(".jsonl")] + ".txt" if path.endswith(".jsonl") else None
+            try:
+                logged = log_findings(log) if log else None
+            except (OSError, ValueError) as e:
+                logged = None
+                bad.append(f"log: {e}")
+            if logged is not None:
+                summed = {c: (occ_total[c], games_total[c]) for c in occ_total}
+                if summed != logged:
+                    bad.append(f"per-game findings {summed} differ from the log's {logged}")
+            out(f"{pilot} {block}: {path}: {len(gs):,} lines, {len(in_file):,} distinct games; problems {len(bad)}")
+            for b in bad[:8]:
+                out(f"   {b}")
+            pilot_bad += [f"{block}: {b}" for b in bad]
         missing = [(p, i) for p in rows for i in range(games) if (p, i) not in seen]
         if missing:
-            bad.append(f"{len(missing):,} (pairing, deal) missing, first {missing[:3]}")
-        log = path[:-len(".jsonl")] + ".txt" if path.endswith(".jsonl") else None
-        try:
-            logged = log_findings(log) if log else None
-        except (OSError, ValueError) as e:
-            logged = None
-            bad.append(f"log: {e}")
-        if logged is not None:
-            summed = {c: (occ_total[c], games_total[c]) for c in occ_total}
-            if summed != logged:
-                bad.append(f"per-game findings {summed} differ from the log's {logged}")
-        out(f"{pilot}: {path}: {len(gs):,} lines, {len(seen):,} distinct games; problems {len(bad)}")
-        for b in bad[:8]:
-            out(f"   {b}")
-        problems += [f"{pilot}: {b}" for b in bad]
+            pilot_bad.append(f"its files together miss {len(missing):,} (pairing, deal), first {missing[:3]}")
+            out(f"{pilot}: its files together miss {len(missing):,} (pairing, deal) of the TSV's {len(rows)} x {games}")
+        problems += [f"{pilot} {b}" for b in pilot_bad]
         keysets[pilot] = seen
         findings[pilot] = per_pairing
+        examples[pilot] = first
     if len(keysets) == 2:
         a, b = (keysets[p] for p in PILOTS if p in keysets)
         if a != b:
@@ -276,25 +334,30 @@ def check_rows(tsv_path, base, games, files, out=print):
             out("   k3 and kp3 are not on the same (pairing, deal, seed) set")
         else:
             out(f"k3 and kp3 on the same {len(a):,} deals (pairing, i, seed)")
+
+    def listed(pilot, p, kind, c):
+        return "; ".join(f"{k}: {n} games (e.g. deal {examples[pilot][p][k][0]}: {examples[pilot][p][k][2][:200]})"
+                         if k in examples[pilot][p] else f"{k}: {n} games (no example)"
+                         for k, n in sorted(c.items()) if k.startswith(kind))
+
     for pilot in files:
         rule = {p: c for p, c in findings[pilot].items() if any(k.startswith("RULE") for k in c)}
         check = {p: c for p, c in findings[pilot].items() if any(k.startswith("CHECK") for k in c)}
         out(f"{pilot} RULE findings: " + ("none" if not rule else f"in {len(rule)} pairings (reading withheld there)"))
         for p in sorted(rule):
-            out(f"   pairing {p} ({rows[p]['held_key']} v {rows[p]['opponent']}): "
-                + "; ".join(f"{k}: {n} games" for k, n in sorted(rule[p].items()) if k.startswith("RULE")))
+            out(f"   pairing {p} ({rows[p]['held_key']} v {rows[p]['opponent']}): " + listed(pilot, p, "RULE", rule[p]))
         out(f"{pilot} CHECK findings: " + ("none" if not check else f"in {len(check)} pairings"))
         for p in sorted(check):
-            out(f"   pairing {p} ({rows[p]['held_key']} v {rows[p]['opponent']}): "
-                + "; ".join(f"{k}: {n} games" for k, n in sorted(check[p].items()) if k.startswith("CHECK")))
+            out(f"   pairing {p} ({rows[p]['held_key']} v {rows[p]['opponent']}): " + listed(pilot, p, "CHECK", check[p]))
     ok = not problems
     n_rule = sum(1 for pilot in files for c in findings[pilot].values() if any(k.startswith("RULE") for k in c))
     if ok:
-        out(f"ROWS PASS: {', '.join(files.values())}: each {len(rows)} pairings x {games} deals as {tsv_path} "
-            f"(seeds, seats, decks, pilots); RULE findings in {n_rule} pilot-pairings")
+        names = ", ".join(path for blocks in files.values() for path in blocks.values())
+        out(f"ROWS PASS: {names}: each pilot's two block files hold its {len(rows)} pairings x {games} deals as "
+            f"{tsv_path} (seeds, seats, decks, pilots, blocks); RULE findings in {n_rule} pilot-pairings")
     else:
         out(f"ROWS FAIL: {len(problems)} problems, first: {problems[0]}")
-    return ok, findings
+    return ok, findings, examples
 
 
 def main():
@@ -313,9 +376,10 @@ def main():
         sys.exit(0 if same(sys.argv[-2], sys.argv[-1], drop) else 1)
     if cmd == "table_tsv" and len(sys.argv) == 5:
         sys.exit(0 if table_tsv(sys.argv[2], int(sys.argv[3]), sys.argv[4]) else 1)
-    if cmd == "rows" and len(sys.argv) == 7:
+    if cmd == "rows" and len(sys.argv) == 9:
         tsv, base, games = sys.argv[2], int(sys.argv[3]), int(sys.argv[4])
-        ok, _ = check_rows(tsv, base, games, {"k3": sys.argv[5], "kp3": sys.argv[6]})
+        files = {"k3": {"arch": sys.argv[5], "dustin": sys.argv[6]}, "kp3": {"arch": sys.argv[7], "dustin": sys.argv[8]}}
+        ok, _, _ = check_rows(tsv, base, games, files)
         sys.exit(0 if ok else 1)
     raise SystemExit(__doc__)
 

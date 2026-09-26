@@ -6,6 +6,9 @@
 # (the six archetype lists), copied from the working copy after checking each equals its committed version; the
 # deck files 7fc6ccb does have (panel, Dustin's, brew-08) must equal the working copy's, or the build stops.
 # Stops loudly if the folder exists, if the patch touches anything else, or if it doesn't apply.
+# Never beside the network training, another build or a game run: idle_or_die (below) refuses to start while the
+# run5-venv python (train_v5.py), cargo, rustc, deckgym or a legality_scan is running, and the build itself is
+# capped at 2 jobs (cargo -j 2) and niced (spec section 4 "Time"; Fable's review M4).
 # Usage (in WSL):  bash build_b2e_scan.sh        Writes identity.txt beside this script.
 set -euo pipefail
 R="/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim"
@@ -16,6 +19,45 @@ F=engine/examples/legality_scan.rs
 TSV=rl/results/b2e_card_check_2026-09-26/b2e_pairings.tsv
 PATCH="$D/legality_scan_pairs.patch"
 die() { echo "BUILD FAILED: $*" >&2; exit 1; }
+
+# --- idle_or_die: identical in build_b2e_scan.sh, run_b2e_identity.sh and run_b2e_rows.sh ---
+# B2e never runs beside the network training, a build or another game run (spec section 4 "Time"), and the
+# operator confirms the queue is idle before starting. This refuses if any of these is running:
+#   - cargo, rustc, deckgym or any legality_scan* program, matched on the process NAME with pgrep -x (the name is
+#     /proc/<pid>/comm, cut to 15 characters, so 'legality_scan.*' also catches legality_scan_b2e_7fc6ccb);
+#   - the run-5 training: a process started as the run5-venv's python (its exact path as argv[0]: train_v5.py,
+#     its workers, the audit and held-out steps), or any python* process with train_v5.py among its arguments.
+# Nothing is matched against whole command lines (no pgrep -f), so this script's own command line, an editor or a
+# grep that mentions these names cannot trigger it. WSL (Linux) processes only; checked once, at the start.
+IDLE_NAMES=(cargo rustc 'deckgym.*' 'legality_scan.*')
+IDLE_VENV="${RUN5_VENV:-$HOME/.cache/pocket-deck-lab/run5-venv}"
+IDLE_TRAINER=train_v5.py
+idle_or_die() {
+  local busy=() name pids pid proc a argv
+  for name in "${IDLE_NAMES[@]}"; do
+    # pgrep exits 1 when nothing matches; any other failure (no pgrep, a bad pattern) must not read as "idle".
+    pids=$(pgrep -x "$name") || [ $? -eq 1 ] || die "pgrep -x '$name' failed, so the laptop can't be checked as idle"
+    for pid in $pids; do busy+=("$pid $(cat "/proc/$pid/comm" 2>/dev/null || echo "$name")"); done
+  done
+  for proc in /proc/[0-9]*; do
+    argv=()
+    { mapfile -t -d '' argv < "$proc/cmdline"; } 2>/dev/null || continue
+    [ "${#argv[@]}" -gt 0 ] || continue
+    case "${argv[0]}" in
+      "$IDLE_VENV/bin/python" | "$IDLE_VENV/bin/python3" | "$IDLE_VENV/bin/python3."*)
+        busy+=("${proc#/proc/} ${argv[0]}"); continue ;;
+    esac
+    case "${argv[0]##*/}" in
+      python*)
+        for a in "${argv[@]:1}"; do
+          if [ "${a##*/}" = "$IDLE_TRAINER" ]; then busy+=("${proc#/proc/} ${argv[0]##*/} ... $a"); break; fi
+        done ;;
+    esac
+  done
+  [ "${#busy[@]}" -eq 0 ] || die "B2e never runs beside the training, a build or a game run; running now (pid, name): ${busy[*]}"
+}
+# --- end idle_or_die ---
+idle_or_die
 
 if [ -e "$B" ]; then die "$B already exists; remove it (rm -rf $B) to build from scratch"; fi
 [ -f "$PATCH" ] || die "no patch at $PATCH"
@@ -58,9 +100,9 @@ git apply --check "$PATCH" || die "the patch does not apply to $C's $F"
 git apply "$PATCH" || die "git apply failed"
 echo "patch applied: $(git apply --numstat "$PATCH" | awk '{print "+"$1" -"$2" "$3}')"
 
-# 4. Build (niced; --locked keeps 7fc6ccb's Cargo.lock exactly).
+# 4. Build (niced, 2 jobs; --locked keeps 7fc6ccb's Cargo.lock exactly).
 cd "$B/engine"
-if ! { time nice -n 10 cargo build --release --locked --example legality_scan ; } > "$B/build.txt" 2>&1; then
+if ! { time nice -n 10 cargo build --release --locked -j 2 --example legality_scan ; } > "$B/build.txt" 2>&1; then
   tail -n 30 "$B/build.txt" >&2
   die "cargo build failed (log: $B/build.txt)"
 fi

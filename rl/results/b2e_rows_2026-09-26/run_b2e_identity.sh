@@ -13,9 +13,15 @@
 #   (b) --PAIRS mode on the same deals: a pairings file listing the same four table pairings with their
 #       decks/research files (b2e_checks.py table_tsv), run with --seed-base 72,000,000, must replay the same games
 #       (compare.py against the table references; and equal to the official scan's lines once a_file and b_file
-#       are removed). This is the code path that plays every B2e game.
-#   (c) --pairs guards: the scan must refuse --pairs without --seed-base, --pairs with --decks, and a seed_first
-#       that doesn't match --seed-base, before playing anything.
+#       are removed). This is the code path that plays every B2e game. The equality relies on the table deals
+#       having no findings (the official logs say "none"): in --pairs mode a game with findings also carries
+#       findings and finding_examples, so such a deal would FAIL here (b2e_checks.py same names the keys), not pass.
+#   (c) --pairs guards: the scan must refuse --pairs without --seed-base, --pairs with --decks, a seed_first that
+#       doesn't match --seed-base, --games above 10,000 with --pairs, and --seed-base or --root without --pairs,
+#       before playing anything.
+# Never beside the network training, a build or another game run: idle_or_die (below) refuses to start while the
+# run5-venv python (train_v5.py), cargo, rustc, deckgym or a legality_scan is running; the scans run niced with
+# RAYON_NUM_THREADS = cores - 2 (spec section 4 "Time"; Fable's review M4).
 # compare.py given the whole 14,000-game reference would print NOT IDENTICAL for any subset ("only in reference"
 # > 0), so each reference is first cut to exactly these 2,000 games per pilot (b2e_checks.py subset, which also
 # checks the pilot fields); compare.py must then say IDENTICAL with 2,000 games in both and none on one side only.
@@ -44,6 +50,52 @@ OFF_k3=("$D/../engine_identity_2026-09-25/k3_500.jsonl")
 OFF_kp3=("$D/../engine_identity_2026-09-25/kp3_500.jsonl")
 XT="$B/identity_pairs.tsv"
 fail() { echo "IDENTITY FAIL: $*" | tee -a "$OUT" >&2; exit 1; }
+die() { echo "IDENTITY NOT RUN: $*" >&2; exit 1; }   # before anything is written (identity_check.txt untouched)
+
+# --- idle_or_die: identical in build_b2e_scan.sh, run_b2e_identity.sh and run_b2e_rows.sh ---
+# B2e never runs beside the network training, a build or another game run (spec section 4 "Time"), and the
+# operator confirms the queue is idle before starting. This refuses if any of these is running:
+#   - cargo, rustc, deckgym or any legality_scan* program, matched on the process NAME with pgrep -x (the name is
+#     /proc/<pid>/comm, cut to 15 characters, so 'legality_scan.*' also catches legality_scan_b2e_7fc6ccb);
+#   - the run-5 training: a process started as the run5-venv's python (its exact path as argv[0]: train_v5.py,
+#     its workers, the audit and held-out steps), or any python* process with train_v5.py among its arguments.
+# Nothing is matched against whole command lines (no pgrep -f), so this script's own command line, an editor or a
+# grep that mentions these names cannot trigger it. WSL (Linux) processes only; checked once, at the start.
+IDLE_NAMES=(cargo rustc 'deckgym.*' 'legality_scan.*')
+IDLE_VENV="${RUN5_VENV:-$HOME/.cache/pocket-deck-lab/run5-venv}"
+IDLE_TRAINER=train_v5.py
+idle_or_die() {
+  local busy=() name pids pid proc a argv
+  for name in "${IDLE_NAMES[@]}"; do
+    # pgrep exits 1 when nothing matches; any other failure (no pgrep, a bad pattern) must not read as "idle".
+    pids=$(pgrep -x "$name") || [ $? -eq 1 ] || die "pgrep -x '$name' failed, so the laptop can't be checked as idle"
+    for pid in $pids; do busy+=("$pid $(cat "/proc/$pid/comm" 2>/dev/null || echo "$name")"); done
+  done
+  for proc in /proc/[0-9]*; do
+    argv=()
+    { mapfile -t -d '' argv < "$proc/cmdline"; } 2>/dev/null || continue
+    [ "${#argv[@]}" -gt 0 ] || continue
+    case "${argv[0]}" in
+      "$IDLE_VENV/bin/python" | "$IDLE_VENV/bin/python3" | "$IDLE_VENV/bin/python3."*)
+        busy+=("${proc#/proc/} ${argv[0]}"); continue ;;
+    esac
+    case "${argv[0]##*/}" in
+      python*)
+        for a in "${argv[@]:1}"; do
+          if [ "${a##*/}" = "$IDLE_TRAINER" ]; then busy+=("${proc#/proc/} ${argv[0]##*/} ... $a"); break; fi
+        done ;;
+    esac
+  done
+  [ "${#busy[@]}" -eq 0 ] || die "B2e never runs beside the training, a build or a game run; running now (pid, name): ${busy[*]}"
+}
+# --- end idle_or_die ---
+idle_or_die
+
+# The scans: niced, all cores but two (at least one: RAYON_NUM_THREADS=0 would mean every core). nproc is asked
+# without the OMP_* variables, which would otherwise cap its answer.
+THREADS=$(( $(env -u OMP_NUM_THREADS -u OMP_THREAD_LIMIT nproc) - 2 ))
+[ "$THREADS" -ge 1 ] || THREADS=1
+scan() { RAYON_NUM_THREADS=$THREADS nice -n 10 "$SCAN" "$@"; }
 
 # compare.py on one replay; $1 label, $2 new file, $3 reference cut.
 compare_ok() {
@@ -59,7 +111,7 @@ compare_ok() {
 # The scan must stop with this message before any game; $1 what, $2 the message, the rest the arguments.
 refuses() {
   local what="$1" msg="$2"; shift 2
-  if nice -n 10 "$SCAN" "$@" > "$B/guard.txt" 2>&1; then fail "the scan accepted $what"; fi
+  if scan "$@" > "$B/guard.txt" 2>&1; then fail "the scan accepted $what"; fi
   grep -qF -e "$msg" "$B/guard.txt" || fail "the scan stopped on $what, but not with \"$msg\" ($B/guard.txt)"
   echo "refused, as it should: $what (\"$msg\")" >> "$OUT"
 }
@@ -69,7 +121,7 @@ refuses() {
 SHA=$(sha256sum "$SCAN" | cut -d' ' -f1)
 [ "$(head -n 1 "$D/identity.txt" | cut -d' ' -f1)" = "$SHA" ] || fail "binary sha256 $SHA is not the one build_b2e_scan.sh recorded in identity.txt"
 echo "identity check of $SCAN, sha256 $SHA, started $(date -u +%FT%TZ)" >> "$OUT"
-echo "pairings $PAIRINGS x $GAMES deals; k3 then kp3; (a) default flags, (b) --pairs mode, (c) --pairs guards" >> "$OUT"
+echo "pairings $PAIRINGS x $GAMES deals; k3 then kp3; (a) default flags, (b) --pairs mode, (c) --pairs guards; $THREADS threads of $(nproc) cores, nice 10" >> "$OUT"
 { echo "reference files (sha256):"; sha256sum "${REF_k3[@]}" "${REF_kp3[@]}" "${OFF_k3[@]}" "${OFF_kp3[@]}" "$COMPARE"; } >> "$OUT"
 
 # The reference cuts, and the --pairs file for (b) and (c).
@@ -88,12 +140,17 @@ cd "$B/engine"
 refuses "--pairs without --seed-base" "--pairs needs --seed-base" --pairs "$XT" --games 1 --bot k3
 refuses "--pairs with --decks" "--pairs names its own deck files" --pairs "$XT" --seed-base "$TABLE_BASE" --decks ../decks/research --games 1 --bot k3
 refuses "a seed_first that doesn't match --seed-base" "seed_first doesn't match --seed-base" --pairs "$XT" --seed-base "$((TABLE_BASE + 1))" --games 1 --bot k3
+# These three fire before any file is read. The --games one gets a pairs file that doesn't exist, the other two
+# one pairing and one deal, so even a missing guard plays at most one game.
+refuses "--games above 10,000 with --pairs" "sub-block holds 10,000 seeds" --pairs "$B/no_such_pairs.tsv" --seed-base "$TABLE_BASE" --games 10001 --bot k3
+refuses "--seed-base without --pairs" "--seed-base is only for --pairs" --seed-base "$TABLE_BASE" --games 1 --pairings 0 --bot k3
+refuses "--root without --pairs" "--root is only for --pairs" --root .. --games 1 --pairings 0 --bot k3
 
 for bot in k3 kp3; do
   { echo; echo "== $bot, (a) default flags"; } >> "$OUT"
   new="$D/identity_$bot.jsonl"
   s=$(date +%s)
-  nice -n 10 "$SCAN" --games "$GAMES" --pairings "$PAIRINGS" --bot "$bot" --games-out "$new" > "$D/identity_$bot.txt" 2>&1 \
+  scan --games "$GAMES" --pairings "$PAIRINGS" --bot "$bot" --games-out "$new" > "$D/identity_$bot.txt" 2>&1 \
     || fail "the $bot replay exited non-zero (log identity_$bot.txt)"
   echo "identity_$bot $(( $(date +%s) - s )) s wall" >> "$D/timing.txt"
   python3 "$CHECKS" subset - "$bot" "$PAIRINGS" "$GAMES" "$new" >> "$OUT" \
@@ -105,7 +162,7 @@ for bot in k3 kp3; do
   { echo; echo "== $bot, (b) --pairs mode, --seed-base $TABLE_BASE"; } >> "$OUT"
   newp="$D/identity_pairs_$bot.jsonl"
   s=$(date +%s)
-  nice -n 10 "$SCAN" --pairs "$XT" --seed-base "$TABLE_BASE" --games "$GAMES" --bot "$bot" --games-out "$newp" \
+  scan --pairs "$XT" --seed-base "$TABLE_BASE" --games "$GAMES" --bot "$bot" --games-out "$newp" \
     > "$D/identity_pairs_$bot.txt" 2>&1 || fail "the $bot --pairs replay exited non-zero (log identity_pairs_$bot.txt)"
   echo "identity_pairs_$bot $(( $(date +%s) - s )) s wall" >> "$D/timing.txt"
   python3 "$CHECKS" subset - "$bot" "$PAIRINGS" "$GAMES" "$newp" >> "$OUT" \
@@ -115,5 +172,5 @@ for bot in k3 kp3; do
     || fail "$bot: --pairs lines differ from the official scan's once a_file and b_file are removed"
 done
 echo >> "$OUT"
-echo "IDENTITY PASS $SHA: table pairings $PAIRINGS x $GAMES deals for k3 and kp3 ($N2 games): default flags identical to the table references on a, b, seed, first_seat, moves, winner_seat, points, turns, first_deck_score and byte for byte to the official 7fc6ccb scan's lines; --pairs mode with --seed-base $TABLE_BASE replays the same $N2 games; --pairs refuses a missing --seed-base, --decks and a mismatched seed_first" >> "$OUT"
+echo "IDENTITY PASS $SHA: table pairings $PAIRINGS x $GAMES deals for k3 and kp3 ($N2 games): default flags identical to the table references on a, b, seed, first_seat, moves, winner_seat, points, turns, first_deck_score and byte for byte to the official 7fc6ccb scan's lines; --pairs mode with --seed-base $TABLE_BASE replays the same $N2 games; --pairs refuses a missing --seed-base, --decks, a mismatched seed_first and --games above 10,000; --seed-base and --root are refused without --pairs" >> "$OUT"
 tail -n 1 "$OUT"
