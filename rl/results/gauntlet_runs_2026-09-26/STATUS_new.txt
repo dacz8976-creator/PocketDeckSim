@@ -1,0 +1,8 @@
+2026-09-26T16:45:08Z START run (a) new decks: rl/results/gauntlet_runs_2026-09-26/tsv/new_decks_run.tsv, 17 pairings x 500, k3 then kp3, seed base 21108000000; not run: { "scizor": "Mega Scizor ex B2b 047's Bullet Slugger (+50 'if this Pokémon moved from your Bench to the Active Spot this turn') is wrong in a way that changes play: after an end-of-turn or Checkup Knock Out on the opponent's turn the engine promotes the new Active only after the next turn has started, so a promoted Mega Scizor ex keeps the per-turn moved_to_active_this_turn flag and hits 150, where Pocket's ruling gives no bonus (state/mod.rs 1205, 1391-1423; apply_action_helpers.rs 963-965; apply_attack_action.rs 4909-4924). Five of the eight panel decks can cause such Knock Outs. Upheld 3 to 0 by the skeptics (decks/gauntlet_2026-09-26/card_check.md). Not run on the pre-repair engine; check it again after the promotion-timing repair."}; pre-repair engine (7fc6ccb); re-run at the repaired engine when it becomes the baseline
+2026-09-26T16:45:08Z gates passed: scan 45ecfda47cf4ccb4d12494f9b1a59954db1c357413f7ab4edabc372327e53b5b; 50 staged inputs unchanged; laptop idle; 14 threads of 16 cores, nice 10
+2026-09-26T16:45:08Z k3 START
+2026-09-26T16:52:27Z k3 DONE in 439 s
+2026-09-26T16:52:27Z kp3 START
+2026-09-26T17:00:53Z kp3 DONE in 506 s
+2026-09-26T17:00:54Z ROWS PASS: 2 run files hold exactly their TSVs' pairings x deals (seeds, seats, decks, pilots); RULE findings in 0 file-pairings
+RUN DONE 2026-09-26T17:00:54Z run (a): new_k3.jsonl and new_kp3.jsonl, 17 pairings x 500 deals each, rows check PASS; next: python3 read_gauntlet.py

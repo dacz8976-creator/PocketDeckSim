@@ -1,0 +1,28 @@
+2026-09-26T17:00:54Z START run (b) variation check: 12 versions, 87 pairings x 500, kp3, on the main lists' own deals; pre-repair engine (7fc6ccb); re-run at the repaired engine when it becomes the baseline
+2026-09-26T17:00:54Z gates passed: scan 45ecfda47cf4ccb4d12494f9b1a59954db1c357413f7ab4edabc372327e53b5b; 50 staged inputs unchanged; laptop idle; 14 threads of 16 cores, nice 10
+2026-09-26T17:00:54Z v-lucario_2 START (seed base 72000000)
+2026-09-26T17:03:22Z v-lucario_2 DONE in 148 s
+2026-09-26T17:03:22Z v-lucario_swap1 START (seed base 72000000)
+2026-09-26T17:05:54Z v-lucario_swap1 DONE in 152 s
+2026-09-26T17:05:54Z v-lucario_swap2 START (seed base 72000000)
+2026-09-26T17:08:12Z v-lucario_swap2 DONE in 138 s
+2026-09-26T17:08:12Z v-suicune_2 START (seed base 72000000)
+2026-09-26T17:11:48Z v-suicune_2 DONE in 216 s
+2026-09-26T17:11:48Z v-suicune_swap1 START (seed base 72000000)
+2026-09-26T17:15:28Z v-suicune_swap1 DONE in 219 s
+2026-09-26T17:15:28Z v-suicune_swap2 START (seed base 72000000)
+2026-09-26T17:18:58Z v-suicune_swap2 DONE in 210 s
+2026-09-26T17:18:58Z v-weezing_2 START (seed base 72000000)
+2026-09-26T17:22:06Z v-weezing_2 DONE in 188 s
+2026-09-26T17:22:06Z v-weezing_swap1 START (seed base 72000000)
+2026-09-26T17:25:02Z v-weezing_swap1 DONE in 176 s
+2026-09-26T17:25:02Z v-weezing_swap2 START (seed base 72000000)
+2026-09-26T17:27:37Z v-weezing_swap2 DONE in 155 s
+2026-09-26T17:27:37Z l-charizardy START (seed base 21106000000)
+2026-09-26T17:31:52Z l-charizardy DONE in 255 s
+2026-09-26T17:31:52Z v-charizardy_swap1 START (seed base 21106000000)
+2026-09-26T17:36:35Z v-charizardy_swap1 DONE in 283 s
+2026-09-26T17:36:35Z v-charizardy_swap2 START (seed base 21106000000)
+2026-09-26T17:40:35Z v-charizardy_swap2 DONE in 240 s
+2026-09-26T17:40:36Z ROWS PASS: 12 run files hold exactly their TSVs' pairings x deals (seeds, seats, decks, pilots); RULE findings in 0 file-pairings
+RUN DONE 2026-09-26T17:40:36Z run (b): 12 versions, 87 pairings x 500 deals, kp3, rows check PASS; next: python3 read_gauntlet.py

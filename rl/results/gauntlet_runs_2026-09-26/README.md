@@ -3,6 +3,38 @@
 **Pre-repair: everything here is on the current official engine (commit 7fc6ccb, `rl/engine-2026-09-25/`), played
 by the B2e scan. Re-run at the repaired engine when it becomes the baseline.**
 
+## Results (Sept 26, read by the laptop session; full tables in `gauntlet_tables_a.md` and `gauntlet_tables_b.md`)
+
+- **(a) The simulator badly understates both new scoreboard decks.**
+  - Rayquaza: 29% against the panel under k3 and 22% under kp3. Limitless: 46% (development half) or 46% (pooled).
+  - Altaria/Greninja: 43% (k3) and 41% (kp3). Limitless: 59% (development half) or 51% (pooled).
+  - Worst cells: Rayquaza v Lucario, 30%/26% against 73% (development half); Rayquaza v Sceptile, 14%/10% against 45%; Altaria/Greninja v Sceptile, 26%/31% against 67%.
+  - On the 17 new cells, the development-half real error is 20.3 (k3) and 22.5 (kp3), against 10.8 and 8.4 on the frozen 28. On all 45 cells both pilots are about 15.
+  - kp3's edge on the 28 cells does not carry over to the new decks.
+- **Why, for Rayquaza: the pilot** (`trace_pilot.py`, `pilot_trace/`; deckgym simulate traces, seeds 21,108,900,000+).
+  - With kp3, Rayquaza declines its discard-cost attacks. Over 200 games v Lucario:
+    - Gouging Fire's Scorching Interruption (100 damage, discard 2) went unused on 77 of 180 turns it was available.
+    - Mega Burst (50 per R/L Energy discarded) went unused on 62 of 159; it was usually 100 damage with 2 Energy.
+    - Almost every decline was "no attack at all".
+  - It also underuses Rainbow Cave: played on 17% of the turns it could be, and its effect used on 33% of the turns it was available.
+    - Dustin (Sept 26): the deck "relies on dragonair's ability to pull discarded energy onto dragons", and Rainbow Cave's ability should be used "as soon as you can to put energy into the discard pile".
+    - kp3 gives Energy in the discard pile no value. The §117 discard-energy credit exists only in the old experimental `g<N>` tier.
+  - Dragon's Blessing itself is used on 91% of the turns it is offered.
+  - The engine side checks out:
+    - Mega Burst sends its Energy to the discard pile through `discard_from_active`.
+    - Rainbow Cave's Energy goes to the pile in Pocket too (footage, `../recordings_check_2026-09-25/video_frame_checks.md` §6).
+  - **kpr3 fixes the attack declines.** A kpr3 Rayquaza against a kp3 Lucario on the same 200 deals:
+    - won 109, against kp3's 43;
+    - used Scorching Interruption on 236 of 241 turns and Mega Burst on 135 of 154.
+    - Rainbow Cave rose only to 28% played and 40% used.
+    - kpr3 on both sides of all 17 new cells is in `kpr3/`.
+- **(b) The variation check: all four decks' second lists join the big gauntlet by the rule** (3 points or more on the opponent average).
+  - Lucario: +4.7, +4.2 and −3.1.
+  - Suicune: +5.8 and +7.3 (the 2nd Giant Cape for Team Rocket's Boss); Mars for Field Blower −0.4.
+  - Weezing: +9.0 and +3.8.
+  - Charizard Y: its second list −6.8.
+  - Caution: moves this large from one Trainer swap probably say as much about how the pilot plays that Trainer as about the deck. Team Rocket's Boss is also one of the blind quiz's topics.
+
 Dustin approved growing the test gauntlet (`../gauntlet_proposal_2026-09-26/README.md`): (a) three new decks against
 the eight panel lists, and (b) the variation check (Proposal B) on the four decks whose lists vary most. On Sept 26 he
 then changed the CPU priority: the laptop also runs part of the cloud's engine-repair replays, which are the critical

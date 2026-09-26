@@ -1,0 +1,1052 @@
+{
+ "b": {
+  "decks": {
+   "charizardy": {
+    "decided_on": [
+     "l-charizardy"
+    ],
+    "second_list_joins_big_gauntlet": true,
+    "versions": {
+     "l-charizardy": {
+      "cells": [
+       {
+        "diff": -3.0,
+        "diff_band": 5.221181156149503,
+        "main_pct": 50.6,
+        "main_ties": 6,
+        "opponent": "lucario",
+        "pairing": 40,
+        "version_pct": 47.599999999999994,
+        "version_ties": 16
+       },
+       {
+        "diff": -7.7,
+        "diff_band": 5.434113197614582,
+        "main_pct": 44.6,
+        "main_ties": 4,
+        "opponent": "altaria",
+        "pairing": 41,
+        "version_pct": 36.9,
+        "version_ties": 11
+       },
+       {
+        "diff": -5.5,
+        "diff_band": 5.021053790025023,
+        "main_pct": 61.3,
+        "main_ties": 3,
+        "opponent": "sceptile",
+        "pairing": 42,
+        "version_pct": 55.800000000000004,
+        "version_ties": 2
+       },
+       {
+        "diff": -8.5,
+        "diff_band": 5.396468153994254,
+        "main_pct": 65.5,
+        "main_ties": 1,
+        "opponent": "vespiquen",
+        "pairing": 43,
+        "version_pct": 56.99999999999999,
+        "version_ties": 2
+       },
+       {
+        "diff": -2.5,
+        "diff_band": 4.60852525326921,
+        "main_pct": 27.6,
+        "main_ties": 12,
+        "opponent": "suicune",
+        "pairing": 44,
+        "version_pct": 25.1,
+        "version_ties": 37
+       },
+       {
+        "diff": -10.4,
+        "diff_band": 5.452591181188844,
+        "main_pct": 46.0,
+        "main_ties": 0,
+        "opponent": "hydreigon",
+        "pairing": 45,
+        "version_pct": 35.6,
+        "version_ties": 2
+       },
+       {
+        "diff": -12.8,
+        "diff_band": 4.730048120521069,
+        "main_pct": 32.0,
+        "main_ties": 4,
+        "opponent": "weezing",
+        "pairing": 46,
+        "version_pct": 19.2,
+        "version_ties": 2
+       },
+       {
+        "diff": -3.5999999999999996,
+        "diff_band": 4.640396997735559,
+        "main_pct": 29.299999999999997,
+        "main_ties": 5,
+        "opponent": "blaziken",
+        "pairing": 47,
+        "version_pct": 25.7,
+        "version_ties": 13
+       }
+      ],
+      "diff": -6.75,
+      "diff_band": 1.7940834347213295,
+      "main_avg": 44.6125,
+      "moves_3": true,
+      "opponents": 8,
+      "version_avg": 37.8625
+     },
+     "v-charizardy_swap1": {
+      "cells": [
+       {
+        "diff": -0.3,
+        "diff_band": 3.633510879938198,
+        "main_pct": 50.6,
+        "main_ties": 6,
+        "opponent": "lucario",
+        "pairing": 40,
+        "version_pct": 50.3,
+        "version_ties": 9
+       },
+       {
+        "diff": 0.3,
+        "diff_band": 3.9090948513836588,
+        "main_pct": 44.6,
+        "main_ties": 4,
+        "opponent": "altaria",
+        "pairing": 41,
+        "version_pct": 44.9,
+        "version_ties": 7
+       },
+       {
+        "diff": -1.0,
+        "diff_band": 3.4644065907528963,
+        "main_pct": 61.3,
+        "main_ties": 3,
+        "opponent": "sceptile",
+        "pairing": 42,
+        "version_pct": 60.3,
+        "version_ties": 3
+       },
+       {
+        "diff": -3.6999999999999997,
+        "diff_band": 3.5546848750799613,
+        "main_pct": 65.5,
+        "main_ties": 1,
+        "opponent": "vespiquen",
+        "pairing": 43,
+        "version_pct": 61.8,
+        "version_ties": 4
+       },
+       {
+        "diff": -1.2,
+        "diff_band": 3.3394430601379934,
+        "main_pct": 27.6,
+        "main_ties": 12,
+        "opponent": "suicune",
+        "pairing": 44,
+        "version_pct": 26.400000000000002,
+        "version_ties": 10
+       },
+       {
+        "diff": -0.7000000000000001,
+        "diff_band": 3.643666813485474,
+        "main_pct": 46.0,
+        "main_ties": 0,
+        "opponent": "hydreigon",
+        "pairing": 45,
+        "version_pct": 45.300000000000004,
+        "version_ties": 1
+       },
+       {
+        "diff": -0.4,
+        "diff_band": 3.509490523633159,
+        "main_pct": 32.0,
+        "main_ties": 4,
+        "opponent": "weezing",
+        "pairing": 46,
+        "version_pct": 31.6,
+        "version_ties": 4
+       },
+       {
+        "diff": -0.4,
+        "diff_band": 3.175520516245832,
+        "main_pct": 29.299999999999997,
+        "main_ties": 5,
+        "opponent": "blaziken",
+        "pairing": 47,
+        "version_pct": 28.9,
+        "version_ties": 7
+       }
+      ],
+      "diff": -0.9249999999999999,
+      "diff_band": 1.2496872330150137,
+      "main_avg": 44.6125,
+      "moves_3": false,
+      "opponents": 8,
+      "version_avg": 43.6875
+     },
+     "v-charizardy_swap2": {
+      "cells": [
+       {
+        "diff": -6.6000000000000005,
+        "diff_band": 4.204683881230808,
+        "main_pct": 50.6,
+        "main_ties": 6,
+        "opponent": "lucario",
+        "pairing": 40,
+        "version_pct": 44.0,
+        "version_ties": 12
+       },
+       {
+        "diff": 3.5999999999999996,
+        "diff_band": 4.7631999617643075,
+        "main_pct": 44.6,
+        "main_ties": 4,
+        "opponent": "altaria",
+        "pairing": 41,
+        "version_pct": 48.199999999999996,
+        "version_ties": 6
+       },
+       {
+        "diff": -1.0999999999999999,
+        "diff_band": 4.328598949513741,
+        "main_pct": 61.3,
+        "main_ties": 3,
+        "opponent": "sceptile",
+        "pairing": 42,
+        "version_pct": 60.199999999999996,
+        "version_ties": 4
+       },
+       {
+        "diff": -4.5,
+        "diff_band": 4.663326326223556,
+        "main_pct": 65.5,
+        "main_ties": 1,
+        "opponent": "vespiquen",
+        "pairing": 43,
+        "version_pct": 61.0,
+        "version_ties": 0
+       },
+       {
+        "diff": 2.0,
+        "diff_band": 4.1117051741190975,
+        "main_pct": 27.6,
+        "main_ties": 12,
+        "opponent": "suicune",
+        "pairing": 44,
+        "version_pct": 29.599999999999998,
+        "version_ties": 8
+       },
+       {
+        "diff": -4.2,
+        "diff_band": 4.7755645095391115,
+        "main_pct": 46.0,
+        "main_ties": 0,
+        "opponent": "hydreigon",
+        "pairing": 45,
+        "version_pct": 41.8,
+        "version_ties": 0
+       },
+       {
+        "diff": -7.8,
+        "diff_band": 4.27073863975052,
+        "main_pct": 32.0,
+        "main_ties": 4,
+        "opponent": "weezing",
+        "pairing": 46,
+        "version_pct": 24.2,
+        "version_ties": 6
+       },
+       {
+        "diff": 3.0,
+        "diff_band": 3.754481517190603,
+        "main_pct": 29.299999999999997,
+        "main_ties": 5,
+        "opponent": "blaziken",
+        "pairing": 47,
+        "version_pct": 32.300000000000004,
+        "version_ties": 9
+       }
+      ],
+      "diff": -1.95,
+      "diff_band": 1.5456506393094125,
+      "main_avg": 44.6125,
+      "moves_3": false,
+      "opponents": 8,
+      "version_avg": 42.6625
+     }
+    }
+   },
+   "lucario": {
+    "decided_on": [
+     "v-lucario_2",
+     "v-lucario_swap1",
+     "v-lucario_swap2"
+    ],
+    "second_list_joins_big_gauntlet": true,
+    "versions": {
+     "v-lucario_2": {
+      "cells": [
+       {
+        "diff": 0.8,
+        "diff_band": 4.001019252905971,
+        "main_pct": 37.6,
+        "main_ties": 0,
+        "opponent": "altaria",
+        "pairing": 2,
+        "version_pct": 38.4,
+        "version_ties": 0
+       },
+       {
+        "diff": 0.5,
+        "diff_band": 4.546296164751618,
+        "main_pct": 54.900000000000006,
+        "main_ties": 1,
+        "opponent": "blaziken",
+        "pairing": 8,
+        "version_pct": 55.400000000000006,
+        "version_ties": 0
+       },
+       {
+        "diff": 4.2,
+        "diff_band": 4.228346506657267,
+        "main_pct": 56.2,
+        "main_ties": 0,
+        "opponent": "hydreigon",
+        "pairing": 13,
+        "version_pct": 60.4,
+        "version_ties": 0
+       },
+       {
+        "diff": 4.3999999999999995,
+        "diff_band": 3.8652562216906965,
+        "main_pct": 35.6,
+        "main_ties": 0,
+        "opponent": "sceptile",
+        "pairing": 18,
+        "version_pct": 40.0,
+        "version_ties": 0
+       },
+       {
+        "diff": 8.799999999999999,
+        "diff_band": 4.2285285738421585,
+        "main_pct": 58.8,
+        "main_ties": 0,
+        "opponent": "suicune",
+        "pairing": 19,
+        "version_pct": 67.60000000000001,
+        "version_ties": 0
+       },
+       {
+        "diff": 3.2,
+        "diff_band": 3.8743279243930115,
+        "main_pct": 68.2,
+        "main_ties": 0,
+        "opponent": "vespiquen",
+        "pairing": 20,
+        "version_pct": 71.39999999999999,
+        "version_ties": 0
+       },
+       {
+        "diff": 11.200000000000001,
+        "diff_band": 4.25755904363287,
+        "main_pct": 52.800000000000004,
+        "main_ties": 0,
+        "opponent": "weezing",
+        "pairing": 21,
+        "version_pct": 64.0,
+        "version_ties": 0
+       }
+      ],
+      "diff": 4.728571428571429,
+      "diff_band": 1.5682680131668327,
+      "main_avg": 52.01428571428572,
+      "moves_3": true,
+      "opponents": 7,
+      "version_avg": 56.74285714285714
+     },
+     "v-lucario_swap1": {
+      "cells": [
+       {
+        "diff": 3.4000000000000004,
+        "diff_band": 3.0501299633928998,
+        "main_pct": 37.6,
+        "main_ties": 0,
+        "opponent": "altaria",
+        "pairing": 2,
+        "version_pct": 41.0,
+        "version_ties": 0
+       },
+       {
+        "diff": 1.7000000000000002,
+        "diff_band": 3.3319999999999994,
+        "main_pct": 54.900000000000006,
+        "main_ties": 1,
+        "opponent": "blaziken",
+        "pairing": 8,
+        "version_pct": 56.599999999999994,
+        "version_ties": 0
+       },
+       {
+        "diff": 3.8,
+        "diff_band": 3.0966215011594302,
+        "main_pct": 56.2,
+        "main_ties": 0,
+        "opponent": "hydreigon",
+        "pairing": 13,
+        "version_pct": 60.0,
+        "version_ties": 0
+       },
+       {
+        "diff": 4.8,
+        "diff_band": 2.6857545731608665,
+        "main_pct": 35.6,
+        "main_ties": 0,
+        "opponent": "sceptile",
+        "pairing": 18,
+        "version_pct": 40.400000000000006,
+        "version_ties": 0
+       },
+       {
+        "diff": 5.4,
+        "diff_band": 2.976550620296987,
+        "main_pct": 58.8,
+        "main_ties": 0,
+        "opponent": "suicune",
+        "pairing": 19,
+        "version_pct": 64.2,
+        "version_ties": 0
+       },
+       {
+        "diff": 3.8,
+        "diff_band": 3.1459511453960056,
+        "main_pct": 68.2,
+        "main_ties": 0,
+        "opponent": "vespiquen",
+        "pairing": 20,
+        "version_pct": 72.0,
+        "version_ties": 0
+       },
+       {
+        "diff": 6.2,
+        "diff_band": 3.489382951004019,
+        "main_pct": 52.800000000000004,
+        "main_ties": 0,
+        "opponent": "weezing",
+        "pairing": 21,
+        "version_pct": 59.0,
+        "version_ties": 0
+       }
+      ],
+      "diff": 4.157142857142857,
+      "diff_band": 1.1792466872961729,
+      "main_avg": 52.01428571428572,
+      "moves_3": true,
+      "opponents": 7,
+      "version_avg": 56.17142857142857
+     },
+     "v-lucario_swap2": {
+      "cells": [
+       {
+        "diff": -2.6,
+        "diff_band": 3.736228630150128,
+        "main_pct": 37.6,
+        "main_ties": 0,
+        "opponent": "altaria",
+        "pairing": 2,
+        "version_pct": 35.0,
+        "version_ties": 0
+       },
+       {
+        "diff": -4.3999999999999995,
+        "diff_band": 3.7847480608050432,
+        "main_pct": 54.900000000000006,
+        "main_ties": 1,
+        "opponent": "blaziken",
+        "pairing": 8,
+        "version_pct": 50.5,
+        "version_ties": 1
+       },
+       {
+        "diff": -4.6,
+        "diff_band": 3.4642288103560657,
+        "main_pct": 56.2,
+        "main_ties": 0,
+        "opponent": "hydreigon",
+        "pairing": 13,
+        "version_pct": 51.6,
+        "version_ties": 0
+       },
+       {
+        "diff": -4.3999999999999995,
+        "diff_band": 3.1153105089435735,
+        "main_pct": 35.6,
+        "main_ties": 0,
+        "opponent": "sceptile",
+        "pairing": 18,
+        "version_pct": 31.2,
+        "version_ties": 0
+       },
+       {
+        "diff": 0.2,
+        "diff_band": 3.163521520207763,
+        "main_pct": 58.8,
+        "main_ties": 0,
+        "opponent": "suicune",
+        "pairing": 19,
+        "version_pct": 59.0,
+        "version_ties": 0
+       },
+       {
+        "diff": -2.6,
+        "diff_band": 3.0561816143875093,
+        "main_pct": 68.2,
+        "main_ties": 0,
+        "opponent": "vespiquen",
+        "pairing": 20,
+        "version_pct": 65.60000000000001,
+        "version_ties": 0
+       },
+       {
+        "diff": -3.1,
+        "diff_band": 2.9565030472734293,
+        "main_pct": 52.800000000000004,
+        "main_ties": 0,
+        "opponent": "weezing",
+        "pairing": 21,
+        "version_pct": 49.7,
+        "version_ties": 1
+       }
+      ],
+      "diff": -3.0714285714285716,
+      "diff_band": 1.262317174603355,
+      "main_avg": 52.01428571428572,
+      "moves_3": true,
+      "opponents": 7,
+      "version_avg": 48.94285714285714
+     }
+    }
+   },
+   "suicune": {
+    "decided_on": [
+     "v-suicune_2",
+     "v-suicune_swap1"
+    ],
+    "second_list_joins_big_gauntlet": true,
+    "versions": {
+     "v-suicune_2": {
+      "cells": [
+       {
+        "diff": 10.0,
+        "diff_band": 4.978903791592268,
+        "main_pct": 51.2,
+        "main_ties": 0,
+        "opponent": "altaria",
+        "pairing": 4,
+        "version_pct": 61.199999999999996,
+        "version_ties": 0
+       },
+       {
+        "diff": 9.700000000000001,
+        "diff_band": 4.742036432911721,
+        "main_pct": 40.400000000000006,
+        "main_ties": 0,
+        "opponent": "blaziken",
+        "pairing": 10,
+        "version_pct": 50.1,
+        "version_ties": 3
+       },
+       {
+        "diff": 5.800000000000001,
+        "diff_band": 5.045228817371842,
+        "main_pct": 53.6,
+        "main_ties": 0,
+        "opponent": "hydreigon",
+        "pairing": 15,
+        "version_pct": 59.4,
+        "version_ties": 0
+       },
+       {
+        "diff": 2.0,
+        "diff_band": 4.435945719782617,
+        "main_pct": 41.199999999999996,
+        "main_ties": 0,
+        "opponent": "lucario",
+        "pairing": 19,
+        "version_pct": 43.2,
+        "version_ties": 0
+       },
+       {
+        "diff": 2.6,
+        "diff_band": 4.519538252967894,
+        "main_pct": 39.4,
+        "main_ties": 0,
+        "opponent": "sceptile",
+        "pairing": 22,
+        "version_pct": 42.0,
+        "version_ties": 0
+       },
+       {
+        "diff": 5.4,
+        "diff_band": 4.893782187244584,
+        "main_pct": 43.0,
+        "main_ties": 0,
+        "opponent": "vespiquen",
+        "pairing": 25,
+        "version_pct": 48.4,
+        "version_ties": 0
+       },
+       {
+        "diff": 5.3,
+        "diff_band": 4.401894622151814,
+        "main_pct": 56.49999999999999,
+        "main_ties": 1,
+        "opponent": "weezing",
+        "pairing": 26,
+        "version_pct": 61.8,
+        "version_ties": 0
+       }
+      ],
+      "diff": 5.828571428571429,
+      "diff_band": 1.7852019100705216,
+      "main_avg": 46.471428571428575,
+      "moves_3": true,
+      "opponents": 7,
+      "version_avg": 52.300000000000004
+     },
+     "v-suicune_swap1": {
+      "cells": [
+       {
+        "diff": 6.2,
+        "diff_band": 4.281900411530905,
+        "main_pct": 51.2,
+        "main_ties": 0,
+        "opponent": "altaria",
+        "pairing": 4,
+        "version_pct": 57.4,
+        "version_ties": 0
+       },
+       {
+        "diff": 12.2,
+        "diff_band": 4.181476533954007,
+        "main_pct": 40.400000000000006,
+        "main_ties": 0,
+        "opponent": "blaziken",
+        "pairing": 10,
+        "version_pct": 52.6,
+        "version_ties": 0
+       },
+       {
+        "diff": 5.6000000000000005,
+        "diff_band": 4.341784544869555,
+        "main_pct": 53.6,
+        "main_ties": 0,
+        "opponent": "hydreigon",
+        "pairing": 15,
+        "version_pct": 59.199999999999996,
+        "version_ties": 0
+       },
+       {
+        "diff": 4.6,
+        "diff_band": 4.225140840047403,
+        "main_pct": 41.199999999999996,
+        "main_ties": 0,
+        "opponent": "lucario",
+        "pairing": 19,
+        "version_pct": 45.800000000000004,
+        "version_ties": 0
+       },
+       {
+        "diff": 4.6,
+        "diff_band": 3.3741655968475963,
+        "main_pct": 39.4,
+        "main_ties": 0,
+        "opponent": "sceptile",
+        "pairing": 22,
+        "version_pct": 44.0,
+        "version_ties": 0
+       },
+       {
+        "diff": 8.799999999999999,
+        "diff_band": 3.9654566805565716,
+        "main_pct": 43.0,
+        "main_ties": 0,
+        "opponent": "vespiquen",
+        "pairing": 25,
+        "version_pct": 51.800000000000004,
+        "version_ties": 0
+       },
+       {
+        "diff": 9.0,
+        "diff_band": 3.893396701564266,
+        "main_pct": 56.49999999999999,
+        "main_ties": 1,
+        "opponent": "weezing",
+        "pairing": 26,
+        "version_pct": 65.5,
+        "version_ties": 1
+       }
+      ],
+      "diff": 7.285714285714286,
+      "diff_band": 1.5305774775651375,
+      "main_avg": 46.471428571428575,
+      "moves_3": true,
+      "opponents": 7,
+      "version_avg": 53.75714285714286
+     },
+     "v-suicune_swap2": {
+      "cells": [
+       {
+        "diff": 0.6,
+        "diff_band": 4.133777240799642,
+        "main_pct": 51.2,
+        "main_ties": 0,
+        "opponent": "altaria",
+        "pairing": 4,
+        "version_pct": 51.800000000000004,
+        "version_ties": 0
+       },
+       {
+        "diff": -1.7000000000000002,
+        "diff_band": 3.7453559155129343,
+        "main_pct": 40.400000000000006,
+        "main_ties": 0,
+        "opponent": "blaziken",
+        "pairing": 10,
+        "version_pct": 38.7,
+        "version_ties": 1
+       },
+       {
+        "diff": -2.4,
+        "diff_band": 4.571196828938543,
+        "main_pct": 53.6,
+        "main_ties": 0,
+        "opponent": "hydreigon",
+        "pairing": 15,
+        "version_pct": 51.2,
+        "version_ties": 0
+       },
+       {
+        "diff": -0.6,
+        "diff_band": 3.4428285150975406,
+        "main_pct": 41.199999999999996,
+        "main_ties": 0,
+        "opponent": "lucario",
+        "pairing": 19,
+        "version_pct": 40.6,
+        "version_ties": 0
+       },
+       {
+        "diff": 0.6,
+        "diff_band": 3.943145297560737,
+        "main_pct": 39.4,
+        "main_ties": 0,
+        "opponent": "sceptile",
+        "pairing": 22,
+        "version_pct": 40.0,
+        "version_ties": 0
+       },
+       {
+        "diff": -1.0,
+        "diff_band": 4.133181241410627,
+        "main_pct": 43.0,
+        "main_ties": 0,
+        "opponent": "vespiquen",
+        "pairing": 25,
+        "version_pct": 42.0,
+        "version_ties": 0
+       },
+       {
+        "diff": 1.5,
+        "diff_band": 3.9461801118233186,
+        "main_pct": 56.49999999999999,
+        "main_ties": 1,
+        "opponent": "weezing",
+        "pairing": 26,
+        "version_pct": 57.99999999999999,
+        "version_ties": 0
+       }
+      ],
+      "diff": -0.42857142857142866,
+      "diff_band": 1.5123210525321216,
+      "main_avg": 46.471428571428575,
+      "moves_3": false,
+      "opponents": 7,
+      "version_avg": 46.042857142857144
+     }
+    }
+   },
+   "weezing": {
+    "decided_on": [
+     "v-weezing_2",
+     "v-weezing_swap1"
+    ],
+    "second_list_joins_big_gauntlet": true,
+    "versions": {
+     "v-weezing_2": {
+      "cells": [
+       {
+        "diff": 10.299999999999999,
+        "diff_band": 4.8049349748175,
+        "main_pct": 59.599999999999994,
+        "main_ties": 4,
+        "opponent": "altaria",
+        "pairing": 6,
+        "version_pct": 69.89999999999999,
+        "version_ties": 1
+       },
+       {
+        "diff": 3.2,
+        "diff_band": 5.168392845092409,
+        "main_pct": 51.6,
+        "main_ties": 2,
+        "opponent": "blaziken",
+        "pairing": 12,
+        "version_pct": 54.800000000000004,
+        "version_ties": 2
+       },
+       {
+        "diff": 25.2,
+        "diff_band": 5.468888566821656,
+        "main_pct": 47.199999999999996,
+        "main_ties": 0,
+        "opponent": "hydreigon",
+        "pairing": 17,
+        "version_pct": 72.39999999999999,
+        "version_ties": 0
+       },
+       {
+        "diff": 5.800000000000001,
+        "diff_band": 5.1658599836563015,
+        "main_pct": 47.199999999999996,
+        "main_ties": 0,
+        "opponent": "lucario",
+        "pairing": 21,
+        "version_pct": 53.0,
+        "version_ties": 0
+       },
+       {
+        "diff": 7.8,
+        "diff_band": 4.837072322107517,
+        "main_pct": 30.0,
+        "main_ties": 0,
+        "opponent": "sceptile",
+        "pairing": 24,
+        "version_pct": 37.8,
+        "version_ties": 0
+       },
+       {
+        "diff": 3.9,
+        "diff_band": 4.92432375630541,
+        "main_pct": 43.5,
+        "main_ties": 1,
+        "opponent": "suicune",
+        "pairing": 26,
+        "version_pct": 47.4,
+        "version_ties": 0
+       },
+       {
+        "diff": 7.000000000000001,
+        "diff_band": 5.161864478052437,
+        "main_pct": 34.1,
+        "main_ties": 5,
+        "opponent": "vespiquen",
+        "pairing": 27,
+        "version_pct": 41.099999999999994,
+        "version_ties": 1
+       }
+      ],
+      "diff": 9.028571428571428,
+      "diff_band": 1.9202764163083554,
+      "main_avg": 44.74285714285714,
+      "moves_3": true,
+      "opponents": 7,
+      "version_avg": 53.771428571428565
+     },
+     "v-weezing_swap1": {
+      "cells": [
+       {
+        "diff": 5.4,
+        "diff_band": 3.607921296281326,
+        "main_pct": 59.599999999999994,
+        "main_ties": 4,
+        "opponent": "altaria",
+        "pairing": 6,
+        "version_pct": 65.0,
+        "version_ties": 4
+       },
+       {
+        "diff": 0.8,
+        "diff_band": 3.29394822999448,
+        "main_pct": 51.6,
+        "main_ties": 2,
+        "opponent": "blaziken",
+        "pairing": 12,
+        "version_pct": 52.400000000000006,
+        "version_ties": 2
+       },
+       {
+        "diff": 7.3999999999999995,
+        "diff_band": 3.929062870211694,
+        "main_pct": 47.199999999999996,
+        "main_ties": 0,
+        "opponent": "hydreigon",
+        "pairing": 17,
+        "version_pct": 54.6,
+        "version_ties": 0
+       },
+       {
+        "diff": 1.2,
+        "diff_band": 3.1373744483019097,
+        "main_pct": 47.199999999999996,
+        "main_ties": 0,
+        "opponent": "lucario",
+        "pairing": 21,
+        "version_pct": 48.4,
+        "version_ties": 0
+       },
+       {
+        "diff": 4.2,
+        "diff_band": 3.3781788787857505,
+        "main_pct": 30.0,
+        "main_ties": 0,
+        "opponent": "sceptile",
+        "pairing": 24,
+        "version_pct": 34.2,
+        "version_ties": 0
+       },
+       {
+        "diff": 5.1,
+        "diff_band": 3.6799124281642777,
+        "main_pct": 43.5,
+        "main_ties": 1,
+        "opponent": "suicune",
+        "pairing": 26,
+        "version_pct": 48.6,
+        "version_ties": 0
+       },
+       {
+        "diff": 2.5,
+        "diff_band": 3.4641288048733854,
+        "main_pct": 34.1,
+        "main_ties": 5,
+        "opponent": "vespiquen",
+        "pairing": 27,
+        "version_pct": 36.6,
+        "version_ties": 0
+       }
+      ],
+      "diff": 3.8000000000000003,
+      "diff_band": 1.3255871312309009,
+      "main_avg": 44.74285714285714,
+      "moves_3": true,
+      "opponents": 7,
+      "version_avg": 48.542857142857144
+     },
+     "v-weezing_swap2": {
+      "cells": [
+       {
+        "diff": 2.1999999999999997,
+        "diff_band": 3.2537367622221183,
+        "main_pct": 59.599999999999994,
+        "main_ties": 4,
+        "opponent": "altaria",
+        "pairing": 6,
+        "version_pct": 61.8,
+        "version_ties": 4
+       },
+       {
+        "diff": 0.3,
+        "diff_band": 3.5908853263302216,
+        "main_pct": 51.6,
+        "main_ties": 2,
+        "opponent": "blaziken",
+        "pairing": 12,
+        "version_pct": 51.9,
+        "version_ties": 3
+       },
+       {
+        "diff": 4.3999999999999995,
+        "diff_band": 3.6183618299812594,
+        "main_pct": 47.199999999999996,
+        "main_ties": 0,
+        "opponent": "hydreigon",
+        "pairing": 17,
+        "version_pct": 51.6,
+        "version_ties": 0
+       },
+       {
+        "diff": 2.8000000000000003,
+        "diff_band": 3.4119658165736264,
+        "main_pct": 47.199999999999996,
+        "main_ties": 0,
+        "opponent": "lucario",
+        "pairing": 21,
+        "version_pct": 50.0,
+        "version_ties": 0
+       },
+       {
+        "diff": 1.0,
+        "diff_band": 3.351455401256777,
+        "main_pct": 30.0,
+        "main_ties": 0,
+        "opponent": "sceptile",
+        "pairing": 24,
+        "version_pct": 31.0,
+        "version_ties": 0
+       },
+       {
+        "diff": -0.2,
+        "diff_band": 3.1268051575027775,
+        "main_pct": 43.5,
+        "main_ties": 1,
+        "opponent": "suicune",
+        "pairing": 26,
+        "version_pct": 43.3,
+        "version_ties": 1
+       },
+       {
+        "diff": -1.6,
+        "diff_band": 3.5396334581473368,
+        "main_pct": 34.1,
+        "main_ties": 5,
+        "opponent": "vespiquen",
+        "pairing": 27,
+        "version_pct": 32.5,
+        "version_ties": 1
+       }
+      ],
+      "diff": 1.2714285714285716,
+      "diff_band": 1.2916804608050907,
+      "main_avg": 44.74285714285714,
+      "moves_3": false,
+      "opponents": 7,
+      "version_avg": 46.01428571428572
+     }
+    }
+   }
+  },
+  "games": 500,
+  "rows_check": [
+   "var_v-lucario_2_kp3.jsonl (kp3, var_v-lucario_2.tsv, base 72,000,000, 500 deals): 3,500 lines; problems 0",
+   "var_v-lucario_swap1_kp3.jsonl (kp3, var_v-lucario_swap1.tsv, base 72,000,000, 500 deals): 3,500 lines; problems 0",
+   "var_v-lucario_swap2_kp3.jsonl (kp3, var_v-lucario_swap2.tsv, base 72,000,000, 500 deals): 3,500 lines; problems 0",
+   "var_v-suicune_2_kp3.jsonl (kp3, var_v-suicune_2.tsv, base 72,000,000, 500 deals): 3,500 lines; problems 0",
+   "var_v-suicune_swap1_kp3.jsonl (kp3, var_v-suicune_swap1.tsv, base 72,000,000, 500 deals): 3,500 lines; problems 0",
+   "var_v-suicune_swap2_kp3.jsonl (kp3, var_v-suicune_swap2.tsv, base 72,000,000, 500 deals): 3,500 lines; problems 0",
+   "var_v-weezing_2_kp3.jsonl (kp3, var_v-weezing_2.tsv, base 72,000,000, 500 deals): 3,500 lines; problems 0",
+   "var_v-weezing_swap1_kp3.jsonl (kp3, var_v-weezing_swap1.tsv, base 72,000,000, 500 deals): 3,500 lines; problems 0",
+   "var_v-weezing_swap2_kp3.jsonl (kp3, var_v-weezing_swap2.tsv, base 72,000,000, 500 deals): 3,500 lines; problems 0",
+   "var_l-charizardy_kp3.jsonl (kp3, var_l-charizardy.tsv, base 21,106,000,000, 500 deals): 4,000 lines; problems 0",
+   "var_v-charizardy_swap1_kp3.jsonl (kp3, var_v-charizardy_swap1.tsv, base 21,106,000,000, 500 deals): 4,000 lines; problems 0",
+   "var_v-charizardy_swap2_kp3.jsonl (kp3, var_v-charizardy_swap2.tsv, base 21,106,000,000, 500 deals): 4,000 lines; problems 0",
+   "ROWS PASS: 12 run files hold exactly their TSVs' pairings x deals (seeds, seats, decks, pilots); RULE findings in 0 file-pairings"
+  ],
+  "rule_points": 3.0
+ },
+ "identity": "GAUNTLET IDENTITY PASS 45ecfda47cf4ccb4d12494f9b1a59954db1c357413f7ab4edabc372327e53b5b: kp3 main lists through the variation TSVs replay the reference games (Lucario 2,18; Suicune 4,25; Weezing 6,27 on the table's deals: compare.py IDENTICAL and the official scan's lines once a_file/b_file are dropped; Charizard Y 40,47 on B2e's deals: byte for byte); smokes: 25 new-deck pairings x 2 deals under k3 and kp3 and 87 variation pairings x 2 deals under kp3, ROWS PASS",
+ "label": "pre-repair (engine 7fc6ccb); re-run at the repaired engine when it becomes the baseline",
+ "test": false
+}

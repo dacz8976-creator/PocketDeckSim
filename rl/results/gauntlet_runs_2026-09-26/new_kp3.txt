@@ -1,0 +1,26 @@
+bot kp3, 500 table deals per pairing, rules checked against RULES_FOR_AGENTS.md (updated 2026-09-22, rules4)
+pairings from /home/dacz8976/engine-b2e-7fc6ccb/rl/results/gauntlet_runs_2026-09-26/tsv/new_decks_run.tsv (17 rows), seed base 21108000000, deck paths relative to ..
+ rayquaza v lucario   first deck  25.8%   distinct games 500 of 500   games with findings: 0
+ rayquaza v altaria   first deck  34.2%   distinct games 500 of 500   games with findings: 0
+ rayquaza v sceptile  first deck  10.2%   distinct games 500 of 500   games with findings: 0
+ rayquaza v vespiquen first deck  20.0%   distinct games 500 of 500   games with findings: 0
+      Chase Order choices: discarded 590 of 822 (Combee 141, Shuckle ex 341, Teal Mask Ogerpon ex 108)
+ rayquaza v suicune   first deck  22.8%   distinct games 500 of 500   games with findings: 0
+ rayquaza v hydreigon first deck  22.6%   distinct games 500 of 500   games with findings: 0
+      Hyper Ray turns: KO-able used 588 passed 13 | not KO-able used 43 passed 256 (14% used)
+ rayquaza v weezing   first deck  18.4%   distinct games 500 of 500   games with findings: 0
+ rayquaza v blaziken  first deck  23.5%   distinct games 500 of 500   games with findings: 0
+altaria_greninja v lucario   first deck  52.8%   distinct games 500 of 500   games with findings: 0
+altaria_greninja v altaria   first deck  41.6%   distinct games 500 of 500   games with findings: 0
+altaria_greninja v sceptile  first deck  31.0%   distinct games 500 of 500   games with findings: 0
+altaria_greninja v vespiquen first deck  54.0%   distinct games 500 of 500   games with findings: 0
+      Chase Order choices: discarded 270 of 489 (Combee 54, Shuckle ex 163, Teal Mask Ogerpon ex 53)
+altaria_greninja v suicune   first deck  36.8%   distinct games 500 of 500   games with findings: 0
+altaria_greninja v hydreigon first deck  39.2%   distinct games 500 of 500   games with findings: 0
+      Hyper Ray turns: KO-able used 389 passed 10 | not KO-able used 1 passed 73 (1% used)
+altaria_greninja v weezing   first deck  31.6%   distinct games 500 of 500   games with findings: 0
+altaria_greninja v blaziken  first deck  44.5%   distinct games 500 of 500   games with findings: 0
+ rayquaza v altaria_greninja first deck  34.2%   distinct games 500 of 500   games with findings: 0
+
+Findings (occurrences / games affected):
+  none
