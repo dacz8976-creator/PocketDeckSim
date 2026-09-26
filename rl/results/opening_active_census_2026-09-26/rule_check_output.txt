@@ -1,0 +1,27 @@
+Rule check: kp3's opening Active in B2c's Altaria records against the census's setup rule
+census.json: rl/results/opening_active_census_2026-09-26/census.json; records: rl/results/altaria_network_divergence_2026-09-26/decisions.jsonl
+
+kp3 order (500 x online + HP / KO points - Retreat; ties to the id sorting last as a string):
+  Igglybuff 530 (A4a 059) > Darkrai 98 (B2b 040) > Swablu 49 (B1 196) > Eevee 49 (B1 184)
+network order (same score with switch A +250 and switch B -250):
+  Igglybuff 530 (A4a 059) > Eevee 299 (B1 184) > Swablu 49 (B1 196) > Darkrai -152 (B2b 040)
+
+opening decisions (games with two or more Place moves offered at the opening): 235 of 400 games
+kp3 opens (seen / predicted over 400 games / binomial z over 400 games): Igglybuff 73 / 81.6 / -1.06, Darkrai 103 / 103.4 / -0.05, Swablu 56 / 45.3 / +1.69, Eevee 3 / 7.4 / -1.62
+network opens: Eevee 120, Igglybuff 61, Swablu 48, Darkrai 6
+openings that differ (network v kp3 probe): 158
+
+kp3 check (a known Basic that outranks kp3's pick is a contradiction):
+  known = the network's placements:                        215 informative games, 0 contradictions []
+  known = the network's placements + kp3's later setup picks: 220 informative games, 0 contradictions []
+
+network fit (the network's opening outranks every known Basic under the network order):
+  the network's placements only: 223 fit, 12 exceptions
+    Eevee opened, Igglybuff known: 11 (games 56, 108, 130, 147, 204, 253, 261, 320, 340, 386, 398)
+    Swablu opened, Eevee known: 1 (games 169)
+  the network's placements and kp3's opening pick: 222 fit, 13 exceptions
+    Eevee opened, Igglybuff known: 12 (games 56, 108, 130, 147, 204, 253, 261, 320, 340, 375, 386, 398)
+    Swablu opened, Eevee known: 1 (games 169)
+  the network's placements and every kp3 setup pick: 220 fit, 15 exceptions
+    Eevee opened, Igglybuff known: 12 (games 56, 108, 130, 147, 204, 253, 261, 320, 340, 375, 386, 398)
+    Swablu opened, Eevee known: 3 (games 138, 169, 180)

@@ -5476,6 +5476,105 @@
     "Igglybuff": 81.6,
     "Swablu": 45.3,
     "Eevee": 7.4
+   },
+   "rule_check": {
+    "script": "rule_check.py (output rule_check_output.txt)",
+    "rule": "500 x online_at_setup + HP / knockout points - Retreat; ties to the id that sorts last as a string (byte order)",
+    "kp3_order": [
+     "Igglybuff",
+     "Darkrai",
+     "Swablu",
+     "Eevee"
+    ],
+    "network_order_A_plus_B": [
+     "Igglybuff",
+     "Eevee",
+     "Swablu",
+     "Darkrai"
+    ],
+    "opening_decisions": 235,
+    "kp3_check": {
+     "known_network_placements": {
+      "informative_games": 215,
+      "contradictions": 0,
+      "contradiction_games": []
+     },
+     "known_network_placements_and_kp3_later_setup_picks": {
+      "informative_games": 220,
+      "contradictions": 0,
+      "contradiction_games": []
+     }
+    },
+    "network_fit": {
+     "the network's placements only": {
+      "fit": 223,
+      "exceptions": {
+       "Eevee opened, Igglybuff known": [
+        56,
+        108,
+        130,
+        147,
+        204,
+        253,
+        261,
+        320,
+        340,
+        386,
+        398
+       ],
+       "Swablu opened, Eevee known": [
+        169
+       ]
+      }
+     },
+     "the network's placements and kp3's opening pick": {
+      "fit": 222,
+      "exceptions": {
+       "Eevee opened, Igglybuff known": [
+        56,
+        108,
+        130,
+        147,
+        204,
+        253,
+        261,
+        320,
+        340,
+        375,
+        386,
+        398
+       ],
+       "Swablu opened, Eevee known": [
+        169
+       ]
+      }
+     },
+     "the network's placements and every kp3 setup pick": {
+      "fit": 220,
+      "exceptions": {
+       "Eevee opened, Igglybuff known": [
+        56,
+        108,
+        130,
+        147,
+        204,
+        253,
+        261,
+        320,
+        340,
+        375,
+        386,
+        398
+       ],
+       "Swablu opened, Eevee known": [
+        138,
+        169,
+        180
+       ]
+      }
+     }
+    },
+    "openings_that_differ": 158
    }
   },
   "lucario (k3 probe, B2c Sept 25)": {

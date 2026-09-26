@@ -2,7 +2,7 @@ Decision this informs: what the B5 candidate "opening Active choice" should flag
 
 # Opening Active census (Sept 26)
 
-Code reading and list arithmetic only. No engine game, no build, no engine seed. The two scripts here are plain Python; the checker used about 3 CPU-minutes while B2e's legality scan was running.
+Code reading and list arithmetic only. No engine game, no build, no engine seed. The scripts here are plain Python (`census.py`, `check_census.py`, and `rule_check.py`, added after Fable's review); the checker used about 3 CPU-minutes while B2e's legality scan was running.
 
 ## In plain words
 
@@ -11,9 +11,10 @@ Code reading and list arithmetic only. No engine game, no build, no engine seed.
   - Otherwise the Basic with the most HP per point it gives up wins, minus a little for its Retreat Cost.
   - It never looks at Abilities (except through the Retreat Cost or HP they change, such as Bombirdier's from the Bench), attack costs, or what the Pokémon evolves into.
   - That is why Darkrai (100 HP) beats Eevee and Swablu (50 HP each) in Altaria. k3, kq3 and kd3 choose exactly the same way.
-  - Checked against the network study's records: this rule fits kp3's choice in all 235 Altaria games, with no contradiction in the 220 where another Basic in the hand is known (215 if kp3's own later setup picks are not counted as known). Predicted counts match: Darkrai 103.4 predicted against 103 seen.
+  - Checked against the network study's records: this rule fits kp3's choice in all 235 Altaria games, with no contradiction in the 220 where another Basic in the hand is known (215 if kp3's own later setup picks are not counted as known). That ordering check is the real test, and it passes (`rule_check.py`, output `rule_check_output.txt`).
+  - The opening counts are looser: Darkrai 103 seen against 103.4 predicted, Igglybuff 73 against 81.6, Swablu 56 against 45.3, Eevee 3 against 7.4. Igglybuff, Swablu and Eevee sit about 1.1 to 1.7 binomial standard deviations off over the 400 games (`rule_check_output.txt`).
 - **The engine already names both properties.** They are mechanic flags, not cards.
-  - "Works only from the Active Spot, and pays on the first turn": exactly one flag, `CanEvolveOnFirstTurnIfActive` (Eevee's Boosted Evolution; its text also covers "the turn you play it", which the opening doesn't need).
+  - Switch A's class: an Ability that works only from the Active Spot and whose payoff is confined to the owner's first turn (or the turn the holder is played); today exactly `AbilityMechanic::CanEvolveOnFirstTurnIfActive`. Active-only Abilities that pay from the first turn onward (Meloetta's, Legendary Pulse, Quick Growth, the Checkup pair) are class C and are left out by design. (That one flag is Eevee's Boosted Evolution; the opening uses only its first-turn half.)
   - "Keeps working from the Bench": 8 Bench-only flags plus 44 flags that act on other Pokémon from anywhere in play. Bad Dreams is `BadDreamsEndOfTurn`, which the engine reads from every Pokémon in play.
 - **Who carries them** (42 lists: the 8 table decks, Dustin's 15, the 13 brews, the 6 B2e lists):
   - The first-turn flag (switch A): Altaria (it would change the opening in 24% of its games) and Dustin's deck 15 (10%). Nothing else.
@@ -37,7 +38,7 @@ Code reading and list arithmetic only. No engine game, no build, no engine seed.
 - **Recommendation in the draft** (`REGISTRATION_DRAFT.md`, not registered):
   - Register switch A alone first, by the reserve route, in the players' code only (tier 2).
   - Run B and the readiness rule as diagnostics, to name the Darkrai half.
-  - The route is Dustin's call, and Fable reviews first.
+  - The route is Dustin's call. Fable's review is done (`../fable_reviews_2026-09-26/opening_active_draft_review.md`) and applied to the draft and this README (section 10). The draft stays unregistered until Dustin's two words: his OK for the reserve route, and whether a panel deck may be the clause (d) carrier.
 
 ## 1. Files
 
@@ -48,6 +49,7 @@ Code reading and list arithmetic only. No engine game, no build, no engine seed.
   - How often each switch changes that opening, and to what.
   - Also: the table footprint, the B2c-based value for Altaria, and the check against the two network studies' records.
 - `check_census.py`: the independent check. Its outputs are `check_census_output.txt` and `check_census.json` (section 7).
+- `rule_check.py`: the ordering check of kp3's opening rule against B2c's records (sections 2 and 5). Its output is `rule_check_output.txt`, and `python rule_check.py --write-census` adds it to `census.json` → `validation` → `altaria (kp3 probe, B2c Sept 26)` → `rule_check`, refusing unless the rest of the file keeps its bytes. `census.py` does not write that block, so re-running `census.py` drops it until `rule_check.py --write-census` is run again.
 - `REGISTRATION_DRAFT.md`: the draft registration.
 
 ## 2. How k3 and kp3 choose the setup Active today
@@ -75,7 +77,7 @@ Code reading and list arithmetic only. No engine game, no build, no engine seed.
   - **The Active's "safety"**: HP ÷ knockout points (1633-1642; points from `models/card.rs` 204-216).
   - The online-count and distance terms have weight 0 in the baseline parameters.
 - **So kp3's opening is**: the Basic with the largest 500 × [all attacks free] + HP ÷ knockout points − Retreat.
-  - Ties go to the Basic with the larger card id.
+  - Ties go to the Basic whose id sorts last as a string (byte order), not the numerically larger id: the moves are sorted by their JSON text, whose first differing bytes are inside the id string, and the last maximum wins.
   - With four or more Basics in hand, the two-move horizon benches the two highest-HP ones left. In the 42 lists here that never reverses this order: the second read's literal search over every deal gives the same opening as the short rule, and `check_census.py`'s sampled literal search agrees within noise. It is not a general law: a Basic outside the hand's three highest-HP Basics loses the HP it keeps off the Bench (for example a non-ex 80 HP Basic against three 150 HP ex, equal Retreat: 80 + 380 against 75 + 450, so the ex opens), so a new list needs the literal search, not the short rule.
   - k3 (`players/mod.rs` 424-432) and kq3/kd3 (514-536) reach the same setup branch before their extra features run (`value_functions.rs` 459 comes before 525-533), so all four open identically.
   - kpr's code is on the cloud branch and was not read.
@@ -90,7 +92,7 @@ Code reading and list arithmetic only. No engine game, no build, no engine seed.
 
   - Eevee and Swablu tie, and Swablu (B1 196) sorts after Eevee (B1 184), so Swablu wins the tie.
   - Nothing in the score sees Boosted Evolution, Bad Dreams, Dark Slumber's 3-Energy cost, or that Swablu and Eevee evolve.
-- **Checked against the records** (`census.json` → `validation`; one opening decision per game with two or more Place moves offered, duplicates included):
+- **Checked against the records** (the counts: `census.json` → `validation`; the ordering check below: `rule_check.py`, its output `rule_check_output.txt` and `census.json` → `validation` → `altaria (kp3 probe, B2c Sept 26)` → `rule_check`; one opening decision per game with two or more Place moves offered, duplicates included):
 
   | probe | opening decisions | Darkrai | Igglybuff | Swablu | Eevee |
   |---|---|---|---|---|---|
@@ -100,7 +102,7 @@ Code reading and list arithmetic only. No engine game, no build, no engine seed.
   |---|---|---|---|---|
   | Lucario, k3 probe | 105 seen, 99.5 predicted | 52 / 53.0 | 39 / 32.0 | 14 / 14.4 |
 
-  - A sharper test, from the Altaria records: take every Basic known to be in the hand (the network's Active, the Basics it benched at setup, kp3's Active).
+  - A sharper test, from the Altaria records (`rule_check.py`): take every Basic known to be in the hand (the network's Active, the Basics it benched at setup, kp3's Active).
     - In none of the 215 informative games does a known Basic outrank kp3's pick under Igglybuff > Darkrai > Swablu > Eevee.
     - Counting also the Basics kp3's probes placed at the later setup decisions of the same games (each is a Basic in that hand), 220 games are informative, still with none.
   - The deal model is exact. It follows `deck.rs` 129-149: five random cards, and a hand with no Basic has one card swapped for a random Basic. Such a hand holds exactly one Basic, so there is no choice.
@@ -111,14 +113,14 @@ Each Ability maps from its printed text to one `AbilityMechanic` value (`actions
 - the activation gate in `can_use_ability_by_mechanic` (`move_generation/move_generation_abilities.rs` 55-288: `is_active`, `!is_active`, `_in_play_index == 0`, `require_active`), for activated Abilities;
 - the hook, for passive ones.
 
-`census.py`'s `VARIANT_CLASS` classifies every mapped variant by where it works. It is keyed on variants and their own fields, never on card names; a new variant stops the script until it is classified. The classes over the 156 map entries, counted as flag settings (a variant whose own fields change its class counts once per setting):
+`census.py`'s `VARIANT_CLASS` classifies every mapped variant by where it works. It is keyed on variants and their own fields, never on card names; a new variant stops the script until it is classified. The classes, counted as flag settings (a variant whose own fields change its class counts once per setting): 130 flag settings over 124 variants (156 map entries), 1 + 26 + 2 + 8 + 44 + 31 + 12 + 4 + 2 in the lists below.
 
 **(a) Works only from the Active Spot**
 - **On the owner's first turn: 1 flag.** `CanEvolveOnFirstTurnIfActive` (`mechanic.rs` 549).
   - Its only effect is the evolution-timing exception in `move_generation/mod.rs` 198-212, which checks `i == 0`, the Active Spot.
-  - Precisely, the text is "during your first turn or the turn you play it", and the engine lifts both rules (`mod.rs` 209-210: the first-turn rule and `played_this_turn`). For the opening only the first-turn half matters, so the class is "Active-only, pays on the first turn", not "useless after it".
+  - Precisely, the text is "during your first turn or the turn you play it", and the engine lifts both rules (`mod.rs` 209-210: the first-turn rule and `played_this_turn`). For the opening only the first-turn half matters. The class is defined by where the payoff is confined (the owner's first turn, or the turn the holder is played; plain words above), not by the Ability being useless after the first turn.
   - It is passive (`move_generation_abilities.rs` 228).
-  - Carried by Eevee B1 184 only. The other Eevee-line flag, `CanEvolveIntoEeveeEvolution`, forbids first-turn evolution and is not this.
+  - Carried by Eevee only (B1 184, P-B 011, P-B 054); in the 42 lists only B1 184 appears. The other Eevee-line flag, `CanEvolveIntoEeveeEvolution`, forbids first-turn evolution and is not this.
 - **At any time: 26 flags.**
   - Activated with an Active gate: `AttachEnergyFromZoneToYourTypedPokemon` (115-117), `ConfuseOpponentActive` and `PoisonOpponentActive` (174-175), `CopyRandomOpponentHandSupporter` (274-280), `SwitchDamagedOpponentBenchToActive` (90-92), `VictreebelFragranceTrap` (64-66), and `HealOneYourPokemon`, `SwitchOutOpponentActiveToBench` and `DrawCardsOncePerTurn` when `require_active: true`.
   - Passive with a printed Active condition: `EndTurnDrawCardIfActive` and `EndTurnHealSelfIfActive` (`hooks/core.rs` 381-399 read only the Active); `RandomEvolutionFromDeck { EndOfOpponentTurnIfActive }` (`apply_action.rs` 585-593); `CheckupDamageToOpponentActive`; `CheckupDamageToAllOpponentPokemon`; `StartTurnRandomPokemonToHand`; `IncreaseAttackCostForOpponentActive`; `ReduceOpponentActiveDamage`; `ElectromagneticWall`; `NoOpponentSupportInActive`; `NoOpponentStadiumInActive`.
@@ -238,7 +240,7 @@ The table below comes from `census.json`.
   - **A+B: +7.2 (± 1.6)**.
   - `census.json` → `b2c_expected_altaria_v_lucario`. B2c measured nothing for other opponents.
 - **The network's own openings.**
-  - 220 of 235 fit the order Igglybuff > Eevee > Swablu > Darkrai, the order A+B produces. The rest: 12 Eevee over Igglybuff (+0.0 ± 12.8, not worth copying) and 3 Swablu openings with an Eevee in the hand (game 169, where the network benched the Eevee; games 138 and 180, where kp3's probe at a later setup decision placed an Eevee the network kept in hand). Counting only the Basics the network placed, as the first draft did, gives 222 and 1.
+  - 220 of 235 fit the order Igglybuff > Eevee > Swablu > Darkrai, the order A+B produces. The rest: 12 Eevee over Igglybuff (+0.0 ± 12.8, not worth copying) and 3 Swablu openings with an Eevee in the hand (game 169, where the network benched the Eevee; games 138 and 180, where kp3's probe at a later setup decision placed an Eevee the network kept in hand). Counting the network's placements and kp3's opening pick, but not kp3's later setup picks, gives 222 and 1. Counting the network's placements alone gives 223 fitting and 12 exceptions (11 Eevee over Igglybuff plus game 169; the twelfth Eevee-over-Igglybuff game, 375, drops out because its Igglybuff is known only from kp3's pick). All three counts, with the games, are in `rule_check_output.txt`.
   - A+B changes 33.5% of Altaria's openings; the network differed from kp3 in 39.5% (158 of 400), or 36.5% without the Igglybuff cases.
 - **Does the Eevee gain run through Boosted Evolution?** (second read, descriptive, from the same records.) Of the network's 120 Eevee openings, its Active Eevee evolved on its own first turn in 72.
   - Where it did: Eevee over Darkrai +33.7 ± 9.9 (33 games), Eevee over Swablu +27.9 ± 9.2 (30).
@@ -267,7 +269,7 @@ The table below comes from `census.json`.
    - **Where:** the setup branch of `value_functions.rs` (459-478), behind new `EvalFeatures` switches. It reads `get_in_play_ability_mechanic` (suppression-aware) for the own Active only.
    - **Switch A:** +250 when the Active's flag is in the first-turn Active-only class and `get_highest_evolutions` finds an evolution in own deck and hand.
    - **Switch B:** −250 when the flag is Bench-only or board-scoped from anywhere.
-   - The classes live in one players-side function: an exhaustive `match` over `AbilityMechanic` with no wildcard arm, so a new variant fails to compile until it is classified. Its test checks every map entry against the printed-condition phrases (section 7).
+   - The classes live in one players-side function: an exhaustive `match` over `AbilityMechanic` with no wildcard arm, so a new variant fails to compile until it is classified. Its test checks every map entry against the printed-condition phrases (section 7; the registered phrases and exceptions are in `REGISTRATION_DRAFT.md` section 4).
    - **What stays untouched:** the engine's setup path (what is offered, the handoff, the setup mask).
    - **Weights:** pre-set, the kq precedent. The predictions above hold for any A weight from 50 to about 460 and any B weight of 50 or more.
      - Checked by re-running the census at 51/51, 51/2000, 480/51, 49/250, 482/250 and 250/49. Only the runs with A at 480 or more, or either weight at 49, change anything, and only in Altaria.
@@ -281,6 +283,7 @@ The table below comes from `census.json`.
    - **What it reproduces:** A+R gives the same Altaria transitions as A+B.
    - **Where it differs from B:** Hydreigon is untouched, and Suicune ex → Chien-Pao ex or Frigibax in 24.2% of Suicune's deals. It also reaches 8 of Dustin's lists and brews that B doesn't touch: decks 01, 02, 03, 11 and 15, and brews 01, 02 and 10 (key R).
    - **Risks:** a broader footprint (17.1%), and it cannot explain Eevee over Swablu (equal cost), so it needs switch A anyway.
+   - **A known weakness of R relative to B** (Fable's review, M6): R moves Suicune ex off the Active in 24.2% of Suicune's deals, for Frigibax or Chien-Pao ex, forgoing Legendary Pulse's end-of-turn draw (it works only from the Active, `hooks/core.rs` 381-399) for the whole game. The class table therefore predicts Suicune's own side down under `kor`. A `kor` Suicune row that is not down is a reason to doubt the class table as a setup rule (`REGISTRATION_DRAFT.md` sections 6 and 8).
    - Its best use: a diagnostic beside B, to name the Darkrai half.
 3. **Engine-side classification or a first-turn lookahead (tier 1 for the engine part, and separate).**
    - **(a)** Move the classes into the engine as `AbilityMechanic` methods (`works_from()`, `first_turn_only()`, `scope()` in `actions/abilities/mechanic.rs`), tested against every map entry, and have option 1 read them.
@@ -317,7 +320,7 @@ Written without calling `census.py`'s code.
   - The six B2e lists were read from `../b2e_card_check_2026-09-26/decks/`.
 - **Retreat reducers.** The census's own scorer applies a Bench retreat reducer whenever it is in the hand. The checker applies it only when benched, and they agree on every list.
 - **The Hydreigon network's openings are unread** (section 5).
-- **An open engine repair touches Bad Dreams:** "Bad Dreams stopped by by-attacks protections" is on the tier 1 repair list (`docs/REVIEW_2026-09-24_direction.md`, section 8, the cloud's paste). It can change what Bad Dreams is worth against some decks, not where it works from, so switch B's class stands; B2c's Darkrai values were measured on the engine as it is.
+- **An open engine repair touches Bad Dreams:** "Bad Dreams stopped by by-attacks protections" is on the tier 1 repair list (`docs/REVIEW_2026-09-24_direction.md`, section 8, the cloud's paste). It can change what Bad Dreams is worth against some decks, not where it works from, so switch B's class stands; B2c's Darkrai values were measured on the engine as it is. The draft now pins its base to one engine commit and says what is regenerated if the table's commit is not 7fc6ccb (`REGISTRATION_DRAFT.md` sections 2 and 4).
 - **Not counted here:** how often Limitless "Mega Altaria ex Espeon" lists carry Eevee B1 184. The reserve route's clause (d) needs it (`REGISTRATION_DRAFT.md`).
   - Partial pointer only: the two archetype variant lists already on file (`decks/variants-2026-09-23/altaria_jlng_pmpt44_2026-08-29.txt`, `altaria_lanora_blockdragon_2026-09-10.txt`) both carry 2 Eevee B1 184. Switch A would change 24.0% and 16.0% of their openings. This is not the development-half count.
 - **Nothing is committed.** Files were written only under this folder.
@@ -329,6 +332,13 @@ A second session re-traced section 2 line by line in the engine source, re-deriv
 - **Corrected here:**
   - `census.json` and `census_output.txt`: Suicune's R and A+R transition "Suicune ex → Frigibax" was 6.6%; it is 14.5%. The list has two Frigibax printings (B2a 034, P-B 037), and `census.py` keyed the transitions by name, so the second printing overwrote the first (8.0% was dropped). `census.py` now sums by name; nothing else in `census.json` changed. `REGISTRATION_DRAFT.md` section 5 is corrected to match.
   - Section 2: the horizon "never reverses" the order only in these 42 lists, not in general.
-  - Sections 2, 3 and 5: 220 games are informative for kp3's rule (0 contradictions either way); Boosted Evolution's exact scope; the network's order fits 220 games, not 222.
+  - Sections 2, 3 and 5: 220 games are informative for kp3's rule (0 contradictions either way); Boosted Evolution's exact scope; the network's order fits 220 games, not 222. (After Fable's review these counts have a script and an output behind them: `rule_check.py`, section 10.)
   - The plain-words summary: the setup score does read Abilities that change a Retreat Cost or HP.
 - **Added:** the ladder panel's two lists (plain words), the Wimpod note (section 3), the first-turn-evolution split of B2c's Eevee openings (section 5), the Altaria variant lists and the Bad Dreams repair item (section 8), and in `REGISTRATION_DRAFT.md` the parse order of `ko` after `koa`/`kob`/`kor` and per-deck caps for the diagnostics.
+
+## 10. Fable's review applied (Sept 26)
+
+Fable reviewed the census and the draft at 3c60d16 (`../fable_reviews_2026-09-26/opening_active_draft_review.md`, with three lens notes beside it). It found the mechanism, the flags and every count right, and the registration not ready. Its items are applied to `REGISTRATION_DRAFT.md` (listed there in section 11) and, where they touch this README, here. No game, no build; nothing committed.
+- **New file (M4):** `rule_check.py` and `rule_check_output.txt`, plus a `rule_check` block in `census.json` → `validation` → `altaria (kp3 probe, B2c Sept 26)`. The script reads the Altaria list's setup-score inputs and weights from `census.json` and B2c's `decisions.jsonl`. It reproduces the review's recount: 235 opening decisions; kp3 opens Darkrai 103, Igglybuff 73, Swablu 56, Eevee 3; 0 contradictions in 215 informative games (220 counting kp3's later setup picks); the network's order fits 220 of 235 (12 Eevee over Igglybuff, 3 Swablu with an Eevee known: games 138, 169, 180); 158 openings differ. Adding the block changed no other byte of `census.json`: with the block removed the file re-serialises to its previous 134,946 bytes exactly, checked by the script and again separately.
+- **This README:** plain words (all four opening counts and the ordering check, L7; switch A's class sentence, M2; the review's status), section 1 (the new script), section 2 (the tie is to the id that sorts last as a string, L2; pointers to the rule check, M4), section 3 (130 flag settings over 124 variants, L9; Boosted Evolution's three printings, L8; the class sentence, M2), section 5 (the "222 and 1" count attributed correctly, L1, and the rule-check pointer), section 6 (R's known weakness on Suicune, M6; the phrase-test pointer), section 8 (the pinned base, H1) and section 9 (the rule-check pointer).
+- **Not applied, as the review withdrew them:** the weight-gate / KQ-KD zeroing "obligation"; the "four-Basic" objection (the draft now says "four or more"); anything about "Fable's ruling".
