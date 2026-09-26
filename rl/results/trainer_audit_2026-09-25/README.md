@@ -91,20 +91,21 @@ Every Trainer card in the 36 decks, 61 in all, was checked in the code: can kp3'
   - When the bot attacks into the opponent's Tools, their effects are priced too, because that happens on the bot's turn.
 - **A search-length cost.** A Tool, and any card that needs a target, uses 2 of the bot's 3 search actions. This makes long turns harder to see.
 
-**For the Tool and turn-effect candidate's two switches:**
+**For the Tool and turn-effect candidate's switches.** Fable's revision, agreed: damage back is its own switch, so a failure can be traced to reductions, retaliation or the per-holder value separately.
 - **Switch 1, temporary reductions and turn effects in the clock:**
   - Jasmine, Cheren, Metal Core Barrier, Heavy Helmet, Steel Apron.
   - kd already has a path for the Tools: `persistent_defender_damage`.
-  - Rocky Helmet and Poison Barb need damage back to the attacker credited the same way.
+- **Switch 3, damage back to the attacker credited in the clock:** Rocky Helmet (in Blaziken) and Poison Barb.
 - **Switch 2, the flat +10 replaced by what each Tool does for its holder:**
   - This is where the waste measured above comes from: Poncho, Small Balloon, Elegant Cape, Heavy Helmet, Metal Core Barrier, Steel Apron on holders they can't help.
   - Field Blower, Guzma and Repel inherit the same +10 from the other side: removing any Tool from the opponent's Active scores +10, whatever it did.
   - Meta decks carrying these Tools: Lucario (Poncho), Altaria (Small Balloon), Blaziken (Rocky Helmet), Hydreigon and Weezing (Deceptive Needle), Suicune (Giant Cape, Inflatable Boat), Sceptile and Vespiquen (Leaf Cape). Field Blower is in six of the eight.
-- **Outside both switches (later candidates):**
+- **Outside the candidate (later candidates):**
   - a Stadium's value over later turns;
   - the opponent's Retreat Cost (Goo-zooka, Peculiar Plaza);
   - Special Conditions on either Active (Pokémon Center Lady, Team Rocket's Master Plan);
-  - Team Rocket's Boss and the hidden hand.
+  - Team Rocket's Boss and the hidden hand;
+  - the search-length cost of targeted cards. If the Tool candidate gains less than the waste above predicts, look here first.
 
 **Side confirmation:** two agents independently confirmed the Rare Candy vs Aerodactyl ex rules bug in the code.
 - The only Primeval Law check is in ordinary evolution (`move_generation/mod.rs` 252-258, 270-282).
