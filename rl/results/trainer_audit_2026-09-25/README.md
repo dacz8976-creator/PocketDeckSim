@@ -68,6 +68,46 @@ Tools that work anywhere, or that belong on the Active, show little or no waste:
   - Will: 10% (brew 01)
   - X Speed: 12% (brew 05)
 
-**Next:**
-- Check each flagged card against the bot's score (`value_functions.rs` and kp3's priced texts): is its effect visible at all? The first list goes to the Tool and turn-effect candidate's card census.
-- A follow-up run on Field Blower targets and Stadium play, per Dustin's note that Pocket's own AI also misjudges Stadiums.
+## What kp3's score can see, card by card (census, same evening)
+
+Every Trainer card in the 36 decks, 61 in all, was checked in the code: can kp3's score see what the card does? Three readers each took a group (Tools, Supporters, Items and Stadiums), and a skeptic for each group tried to refute every row from the code. The skeptics made 25 corrections, all but three about wording; they are kept per card in `census.json`. The three that changed a class: Goo-zooka is partly read, not unread, because Whimsicott ex's Grass Knot in deck 12 reads the raised Retreat Cost in the same turn. Small Balloon and Inflatable Boat pay off on later turns. The table is `census_table.md`.
+
+**In plain words:**
+- **Tools.** Every Tool gets the same +10 when it sits on the bot's Active, whatever it does and whoever holds it (`value_functions.rs` 516, 667-672).
+  - The score actually reads only these: the HP Capes (Giant Cape, and Leaf or Elegant Cape on a holder that qualifies), and the Active's Retreat Cost, for Small Balloon and Inflatable Boat.
+  - Damage cuts and damage back are not read at all: Heavy Helmet, Metal Core Barrier, Rocky Helmet, Poison Barb, and Lucky Egg's draw.
+  - Protective Poncho is read backwards: +10 on the Active, where it does nothing, and nothing on the Bench, where it works.
+- **Anything that happens on the opponent's turn is invisible.** The search stops at the end of the bot's own turn. The score has no term for turn effects, Special Conditions or the opponent's Retreat Cost. So:
+  - Jasmine and Cheren: not read.
+  - Goo-zooka: read only through Grass Knot.
+  - Stadiums: their value on later turns isn't read, for either player.
+- **Team Rocket's Boss is invisible for a different reason.** The search can't see the opponent's hand, and an unknown card is never counted as a Basic.
+- **What pays off inside the bot's own turn is read correctly:**
+  - draws: Professor's Research, Copycat;
+  - gusts: Cyrus, Sabrina;
+  - damage boosts: Red, Korrina, Cynthia;
+  - heals: Erika, Lillie;
+  - Rare Candy, Flame Patch, X Speed and the rest.
+  - When the bot attacks into the opponent's Tools, their effects are priced too, because that happens on the bot's turn.
+- **A search-length cost.** A Tool, and any card that needs a target, uses 2 of the bot's 3 search actions. This makes long turns harder to see.
+
+**For the Tool and turn-effect candidate's two switches:**
+- **Switch 1, temporary reductions and turn effects in the clock:**
+  - Jasmine, Cheren, Metal Core Barrier, Heavy Helmet, Steel Apron.
+  - kd already has a path for the Tools: `persistent_defender_damage`.
+  - Rocky Helmet and Poison Barb need damage back to the attacker credited the same way.
+- **Switch 2, the flat +10 replaced by what each Tool does for its holder:**
+  - This is where the waste measured above comes from: Poncho, Small Balloon, Elegant Cape, Heavy Helmet, Metal Core Barrier, Steel Apron on holders they can't help.
+  - Field Blower, Guzma and Repel inherit the same +10 from the other side: removing any Tool from the opponent's Active scores +10, whatever it did.
+  - Meta decks carrying these Tools: Lucario (Poncho), Altaria (Small Balloon), Blaziken (Rocky Helmet), Hydreigon and Weezing (Deceptive Needle), Suicune (Giant Cape, Inflatable Boat), Sceptile and Vespiquen (Leaf Cape). Field Blower is in six of the eight.
+- **Outside both switches (later candidates):**
+  - a Stadium's value over later turns;
+  - the opponent's Retreat Cost (Goo-zooka, Peculiar Plaza);
+  - Special Conditions on either Active (Pokémon Center Lady, Team Rocket's Master Plan);
+  - Team Rocket's Boss and the hidden hand.
+
+**Side confirmation:** two agents independently confirmed the Rare Candy vs Aerodactyl ex rules bug in the code.
+- The only Primeval Law check is in ordinary evolution (`move_generation/mod.rs` 252-258, 270-282).
+- `can_play_rare_candy` (`move_generation_trainer.rs` 663-685) and `rare_candy_effect` (`apply_trainer_action.rs` 1905-1928) skip it.
+
+**Next:** a follow-up run on Field Blower targets and Stadium play, per Dustin's note that Pocket's own AI also misjudges Stadiums.

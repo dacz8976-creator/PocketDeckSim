@@ -1,0 +1,1219 @@
+{
+ "rows": [
+  {
+   "card": "Giant Cape",
+   "kind": "Tool",
+   "text": "The Pokémon this card is attached to gets +20 HP.",
+   "decks": "brews/brew-01 0.979, brew-02 0.975, brew-03a 0.981, brew-03b 0.973, brew-04 0.894, brew-05 0.969, brew-08 0.918, brew-09 0.897, brew-10 0.792, dustin/02 0.900, research/suicune 0.906 [meta] (per game 0.95-0.99 everywhere)",
+   "score_sees": "priced",
+   "what_the_bot_sees": "As soon as it is attached, the holder's HP goes up by 20. The score at the end of the turn reads that HP in three places: the Pokémon value (remaining HP x (Energy + 1), on any slot), Active safety (HP / KO points, Active only), and the threat clock (the opponent's best estimated hit divided into the HP of the Active and the Benched victims, where one extra turn is worth 100). On top of that it adds the flat +10 when the holder is the Active and takes 1 off for the card leaving the hand. The survival itself happens on the opponent's turn, but the HP stands in for it well. The loss certificate (public_reply.rs) also models Giant Cape HP. It is the only Tool that certificate accepts.",
+   "timing_gap": false,
+   "placement_gap": "The HP counts on any holder, with no type or stage condition (played_card.rs:295). Placement only moves the flat +10 and the Active-safety term toward the Active; the HP x Energy term favours the most-charged holder. There is no holder condition to miss.",
+   "evidence": "engine/src/state/played_card.rs:290-310 (295); engine/src/players/value_functions.rs:1137-1150 (pokemon value), 1633-1642 (active safety), 903-950 (clock reads get_remaining_hp), 516 + 667-672 (flat +10), 510 + 588 (hand -1); engine/src/players/public_reply.rs:604-610, 673-683 (certificate admits only Giant Cape); move gen engine/src/move_generation/move_generation_trainer.rs:79-84, 387-396; apply engine/src/actions/apply_trainer_action.rs:1888-1902, engine/src/actions/apply_action.rs:426, 966-994",
+   "audit_consistent": "Yes: 0.79-0.98 per turn, 0.95-0.99 per game, and no useless copies (audit_tools.tsv: never_worked 0 in all 11 decks), because the HP works on any holder. The lower per-turn rates (brew-10 0.792, brew-08 0.918) are the second copy being offered while the only useful slot already holds one.",
+   "fix_sketch": "none needed for its own effect; only the flat +10 on top is spurious",
+   "skeptic_corrections": [
+    {
+     "card": "Giant Cape",
+     "field": "placement_gap",
+     "was": "Placement only moves the flat +10 and the Active-safety term toward the Active; the HP x Energy term favours the most-charged holder. There is no holder condition to miss.",
+     "should_be": "The threat clock also depends on placement. The Active's HP always counts. A benched holder's HP counts only if the greedy victim loop reaches that Pokemon before the opponent has 3 points. Extra HP on a benched Pokemon ex can also move it earlier in that loop and SHORTEN the clock, at -100 per turn. So the clock pulls toward the Active as well, and a benched Cape can score below zero. The same applies to Leaf Cape and Elegant Cape. Example: the opponent has 0 points, the threat hits for 100, and the Active is a 1-point Pokemon. The Bench holds an ex X at 110 HP (key 55,000) and a 1-point Y at 60 HP (key 60,000). Without the Cape the loop takes Y (1 turn) and then X (2 turns), 3 turns. With the Cape, X has 130 HP (key 65,000) and is taken first (2 turns), which reaches 3 points and stops: 2 turns. That is -100 against +20 x (E+1), so the Cape nets negative for E <= 3.",
+     "evidence": "engine/src/players/value_functions.rs:903-915 (the Active is always the first victim), 919-950 (the bench loop until opp_points >= 3, each victim used once), 924-930 (key = remaining_hp*1000/KO points, or HP alone at 2 points; max_by_key), 518-519 (100 per turn); engine/src/models/card.rs:204-216 (Mega 3, ex 2, else 1)"
+    },
+    {
+     "card": "Giant Cape",
+     "field": "audit_consistent",
+     "was": "The lower per-turn rates (brew-10 0.792, brew-08 0.918) are the second copy being offered while the only useful slot already holds one.",
+     "should_be": "This conflicts with the score. A benched Giant Cape normally scores +20 x (relevant Energy+1) - 1 >= +19 in the Pokemon value term, and Play is offered only while some holder is free. So an already-equipped Active does not explain the turns where the Cape was held. The cause is not established. One candidate is the clock-reorder penalty above; other lines outscoring it within 3 plies is another.",
+     "evidence": "engine/src/players/value_functions.rs:1137-1150 (Bench slots count at factor 1), 510 + 588 (hand -1); engine/src/move_generation/move_generation_trainer.rs:387-396 + engine/src/tools.rs:119-133 (offered only when some holder has a free slot)"
+    }
+   ],
+   "group": "tools"
+  },
+  {
+   "card": "Leaf Cape",
+   "kind": "Tool",
+   "text": "The [G] Pokémon this card is attached to gets +30 HP.",
+   "decks": "dustin/12 0.940, research/sceptile 0.894 [meta], research/vespiquen 0.845 [meta] (per game 0.93-0.96)",
+   "score_sees": "priced",
+   "what_the_bot_sees": "The same as Giant Cape, but the +30 HP exists only when the holder's type is Grass (the engine computes it from the holder). On a Grass holder the score sees it in Pokémon value, Active safety and the threat clock. On a non-Grass holder it sees only the flat +10 if Active, minus 1 for the hand card.",
+   "timing_gap": false,
+   "placement_gap": "Partly. The HP, which is most of the value, depends on the holder being [G] (played_card.rs:296-298). The flat +10 does not, so a Leaf Cape on a non-Grass Active still nets +9. In these three Grass decks no holder was ineligible.",
+   "evidence": "engine/src/state/played_card.rs:296-298; engine/src/players/value_functions.rs:1137-1150, 1633-1642, 903-950, 667-672; rl/results/trainer_audit_2026-09-25/audit_tools.tsv:31,38,41 (never_eligible 0, never_worked 0)",
+   "audit_consistent": "Yes: 0.85-0.94 per turn, 0.93-0.96 per game, and no useless copies (every holder was Grass). Vespiquen's 0.845 per turn comes from its 2 copies.",
+   "fix_sketch": "none needed for the HP; drop or gate the flat +10 so an ineligible holder scores 0",
+   "skeptic_corrections": [],
+   "group": "tools"
+  },
+  {
+   "card": "Elegant Cape",
+   "kind": "Tool",
+   "text": "The Stage 1 Pokémon this card is attached to gets +30 HP.",
+   "decks": "dustin/09 0.901, dustin/13 0.953, dustin/14 0.880 (per game 0.91-0.98)",
+   "score_sees": "partly",
+   "what_the_bot_sees": "On a holder that is Stage 1 right now, the +30 HP is read like Giant Cape (Pokémon value, safety, clock). On a Basic the engine gives 0 HP until it evolves, so the score sees only the flat +10 if the Basic is Active. It never credits the +30 a Basic would get after evolving on a later turn, and it gives the same +10 to a Basic that can never evolve (Comfey). It sees the HP only if the evolution happens inside the same 3-action search line. Per action, a benched Stage 1 is worth 30 x (Energy + 1) - 1, at least 29, so it beats a Basic Active (+9) when one exists. The waste comes from turns with no Stage 1 in play: then the Basic Active wins on the +10 alone.",
+   "timing_gap": true,
+   "placement_gap": "Yes. The HP depends on the holder's current stage (played_card.rs:299-301); the flat +10 does not check stage.",
+   "evidence": "engine/src/state/played_card.rs:299-301; engine/src/players/value_functions.rs:1137-1150, 667-672, 510; rl/results/trainer_audit_2026-09-25/useless_tools.txt:7-9; audit_tools.tsv:29,32,33 (inelig_at_attach 92, 83, 88)",
+   "audit_consistent": "Yes: played in 0.91-0.98 of games, with 32-37% useless. Those are Capes put on Basics that never evolved while wearing it (Comfey, Rattata, Vulpix, Electrike, Helioptile), which is exactly the case where only the +10 counts.",
+   "fix_sketch": "price the Tool only through what it changes for this holder: 0 on a Basic unless an evolution is available, then discounted the way evolution_potential discounts it",
+   "skeptic_corrections": [
+    {
+     "card": "Elegant Cape",
+     "field": "what_the_bot_sees",
+     "was": "Per action, a benched Stage 1 is worth 30 x (Energy + 1) - 1, at least 29, so it beats a Basic Active (+9) when one exists.",
+     "should_be": "29 is not a floor. The clock term can go down when +30 HP moves a benched Stage 1 ex earlier in the clock's greedy victim order. In dustin/09: the Active is Electrike (1 point), the Bench holds Mega Manectric ex at 180 HP (3 points, key 60,000) and a damaged Heliolisk at 65 HP (key 65,000), and the threat hits for 80. Without the Cape: Heliolisk (1 turn) then Manectric (3 turns), 4 turns. With the Cape, Manectric has 210 HP (key 70,000), is taken first and ends the count: 3 turns. That is -100 against at most +89 (Lightning Accelerator LL). Usually the benched Stage 1 does beat the +9 Basic Active, but not always.",
+     "evidence": "engine/src/players/value_functions.rs:919-950, 924-930 (greedy victim key), 1137-1150 (HP x (relevant Energy+1)); engine/src/state/played_card.rs:299-301; lib/card.py: Mega Manectric ex Stage 1 HP 180, Heliolisk B4 061 HP 80"
+    }
+   ],
+   "group": "tools"
+  },
+  {
+   "card": "Rocky Helmet",
+   "kind": "Tool",
+   "text": "If the Pokémon this card is attached to is in the Active Spot and is damaged by an attack from your opponent's Pokémon, do 20 damage to the Attacking Pokémon.",
+   "decks": "brews/brew-03a 0.670, brew-06 0.886, brew-06b 0.673, dustin/06 0.708, research/blaziken 0.716 [meta] (per game 0.87-0.94)",
+   "score_sees": "invisible",
+   "what_the_bot_sees": "The 20 back-damage happens during the opponent's attack, on their turn. kp3 stops searching at the end of its own turn (opponent_ply 0), and the value function has no retaliation term. What it counts is the flat +10 if the Helmet is on the Active and -1 for the hand card, nothing else. The +10 happens to point at the right slot.",
+   "timing_gap": true,
+   "placement_gap": "The only placement term is the flat +10 for the Active, which happens to be where the Helmet works. Nothing depends on the holder's type, HP or stage.",
+   "evidence": "engine/src/hooks/counterattack.rs:13-17; engine/src/actions/apply_action_helpers.rs:595-602 (fires on damaged Actives during the attacker's turn); engine/src/players/mod.rs:502-511 (KP: opponent_ply 0); engine/src/players/expectiminimax_player.rs:773-798, 914-917 (static score at the turn boundary); engine/src/players/value_functions.rs:516, 667-672, 510",
+   "audit_consistent": "Yes. It goes onto the Active (useless_tools.txt: 159 of 161 in Blaziken) and is played in 0.87-0.94 of games. 3-9% useless (the holder was never hit while Active). The lower per-turn rates in brew-03a (0.670) and brew-06b (0.673) come from the deck's other Tool (Giant Cape, Poncho) taking the one Active slot; a Benched Helmet scores -1, so it waits.",
+   "fix_sketch": "credit the counterattack damage (get_counterattack_damage) against the opponent threat's HP in the own-side KO clock while the holder is Active",
+   "skeptic_corrections": [
+    {
+     "card": "Rocky Helmet",
+     "field": "audit_consistent",
+     "was": "3-9% useless (the holder was never hit while Active).",
+     "should_be": "The audit never checks hits. A Helmet counts as useless when the opponent made at least one Attack decision while it was in play but it was never on the Active at any of those decisions (e.g. its holder retreated, or it sat on the Bench). 'Worked' only means it was on the Active when the opponent attacked.",
+     "evidence": "rl/results/trainer_audit_2026-09-25/trainer_audit.py:49-54 (position_ok: Active), 91, 98-104 (window = any opponent Attack decision; worked needs position_ok); detail.py:22; README.md:36"
+    }
+   ],
+   "group": "tools"
+  },
+  {
+   "card": "Poison Barb",
+   "kind": "Tool",
+   "text": "If the Pokémon this card is attached to is your Active Pokémon and is damaged by an attack from your opponent's Pokémon, the Attacking Pokémon is now Poisoned.",
+   "decks": "brews/brew-03a 0.452, dustin/10 0.683 (per game 0.86, 0.92)",
+   "score_sees": "invisible",
+   "what_the_bot_sees": "The attacker gets Poisoned during the opponent's attack, and the Poison damage comes at later checkups. Neither happens inside kp3's search, and the k value function has no Poison term at all. It counts only the flat +10 on the Active and -1 for the hand card.",
+   "timing_gap": true,
+   "placement_gap": "Only the flat +10 for the Active, which matches where Barb works.",
+   "evidence": "engine/src/hooks/counterattack.rs:117-124; engine/src/actions/apply_action_helpers.rs:595-602; engine/src/players/value_functions.rs:882-892 (the only status read, Asleep/Paralyzed, behind the status-clock feature) and 1370-1386 (a Magmar attack estimate), otherwise no Poison term; 516, 667-672",
+   "audit_consistent": "Yes: 0.86-0.92 per game. brew-03a's 0.452 per turn is the third Tool kind in that deck: Giant Cape (0.981) and Rocky Helmet (0.670) usually take the Active first, and a Benched Barb scores -1. dustin/10 runs 2 copies. 8-9% useless.",
+   "fix_sketch": "credit the expected Poison damage to the attacker (per checkup until it leaves) in the own-side KO clock while the holder is Active",
+   "skeptic_corrections": [],
+   "group": "tools"
+  },
+  {
+   "card": "Lucky Egg",
+   "kind": "Tool",
+   "text": "If the Pokémon this card is attached to is Knocked Out by damage from an attack from your opponent's Pokémon, draw cards until you have 5 cards in your hand.",
+   "decks": "brews/brew-04 0.565, dustin/02 0.516 (per game 0.84 both)",
+   "score_sees": "invisible",
+   "what_the_bot_sees": "The draw happens only when the holder is Knocked Out by the opponent's attack, which is never inside the search. Under kp3 the Play is scored like any Tool: +10 if on the Active, -1 for the hand card. This is the one Tool where public pricing matters. Its text has both 'opponent' and 'hand', so k3 left the Play unpriced and scored it as the position before playing it. kp3 lists the text in AUDITED_TEXTS and prices it, which only adds the flat +10. The draw stays invisible either way.",
+   "timing_gap": true,
+   "placement_gap": "Only the flat +10 for the Active. The draw works on any holder. The Active is the likeliest to be KO'd, but the score does not know that; it would give a Benched Egg the same -1 as holding it.",
+   "evidence": "engine/src/hooks/core.rs:2289-2313; engine/src/players/public_pricing_player.rs:57, 98-100, 112-121; engine/src/observation.rs:444-485 (text rule applies to Play of a Tool); engine/src/players/expectiminimax_player.rs:441-453 (unpriced = static score of the position before the action); engine/src/players/value_functions.rs:516, 667-672, 510",
+   "audit_consistent": "Yes: 0.84 per game. The low per-turn rates (0.52-0.57) are in the two decks that also run Giant Cape, which wins the Active slot on HP; a Benched Egg scores -1, so it waits. No useless copies in audit_tools (144-146 worked), because its window is any opponent turn.",
+   "fix_sketch": "credit (5 - hand size) cards x the hand weight when the holder is the clock's next KO victim",
+   "skeptic_corrections": [
+    {
+     "card": "Lucky Egg",
+     "field": "placement_gap",
+     "was": "...it would give a Benched Egg the same -1 as holding it.",
+     "should_be": "Holding the Egg scores 0 because the hand card keeps its +1. A benched Egg scores -1, so the Bench is strictly worse than holding. That is why a second-slot Egg waits, which the row's own audit_consistent says.",
+     "evidence": "engine/src/players/value_functions.rs:45 (hand_size +1.0), 510, 588 (hand counted positively)"
+    }
+   ],
+   "group": "tools"
+  },
+  {
+   "card": "Protective Poncho",
+   "kind": "Tool",
+   "text": "As long as the Pokémon this card is attached to is on your Bench, prevent all damage done to that Pokémon by your opponent's attacks and Abilities.",
+   "decks": "brews/brew-06b 0.782, dustin/05 0.863, research/lucario 0.629 [meta] (per game 0.83-0.95)",
+   "score_sees": "wrongly_priced",
+   "what_the_bot_sees": "The protection works only on the Bench and only against the opponent's attacks and Abilities, on their turn. The value function has no Bench-damage term: the clock treats Benched Pokémon as future Active victims, where Poncho does nothing. So the protection is never counted. The one thing the score counts is the flat +10 for any Tool on the Active, the only spot where Poncho never works. On the Bench it scores -1, on the Active +9, so it always goes on the Active.",
+   "timing_gap": true,
+   "placement_gap": "Yes, inverted. The score depends on position only through the +10 for the Active, while the card works only off the Active (core.rs:1708 requires target_idx != 0).",
+   "evidence": "engine/src/hooks/core.rs:1707-1715; engine/src/hooks/core.rs:1581 (persistent_defender_damage omits Bench-only protections); engine/src/players/value_functions.rs:516, 667-672, 917-950 (Bench victims priced by raw HP), 510; rl/results/trainer_audit_2026-09-25/useless_tools.txt:2-4",
+   "audit_consistent": "Yes, strongly: 492 of 494 attached to the Active, and 72-83% useless (Lucario 108/149, dustin/05 131/176, brew-06b 140/169).",
+   "fix_sketch": "drop the flat +10; price Bench damage prevention against the opponent's Bench-hitting attacks and Abilities (0 while Active)",
+   "skeptic_corrections": [],
+   "group": "tools"
+  },
+  {
+   "card": "Deceptive Needle",
+   "kind": "Tool",
+   "text": "At the end of your turn, if the [D] Pokémon this card is attached to is in the Active Spot, do 10 damage to your opponent's Active Pokémon.",
+   "decks": "brews/brew-07 0.719, brew-09 0.612, dustin/04 0.720, research/hydreigon 0.774 [meta], research/weezing 0.801 [meta] (per game 0.86-0.97)",
+   "score_sees": "partly",
+   "what_the_bot_sees": "The 10 damage is applied in on_end_turn, which the search runs when its line ends the turn: a voluntary EndTurn, or any attack, whose forced end of turn is resolved even with no search depth left. In a line like play Needle, attach it to the Active, then attack or end the turn, the final score shows the opponent's Active 10 HP lower (Pokémon value, their Active safety, the own-side KO clock, and points if it KOs). Lines that run out of depth while still on the bot's own turn miss it. Every later hit (it repeats each turn) is invisible. On a non-[D] Active the engine does nothing, but the score still gives +10.",
+   "timing_gap": true,
+   "placement_gap": "Yes. The damage needs a [D] holder in the Active (core.rs:584-587); the flat +10 has no type check, so a Needle on Happiny nets +9.",
+   "evidence": "engine/src/hooks/core.rs:571, 580-603; engine/src/actions/apply_action_helpers.rs:47-84, 87-112 (the EndTurn forecast runs on_end_turn); engine/src/players/expectiminimax_player.rs:633-657 (forced end turn after an attack costs no ply), 800-905 (depth 0 on own turn = static score), 940-960; engine/src/players/value_functions.rs:1137-1150, 1633-1642, 903-950, 667-672",
+   "audit_consistent": "Yes: 0.86-0.97 per game and 0-8% useless. The only waste is dustin/04's Happiny (24 of 314), the +10-only case. Per-turn rates of 0.61-0.80 are diluted by a second copy (2 copies in 4 of the 5 decks) and by Giant Cape in brew-09.",
+   "fix_sketch": "credit the per-turn chip damage in the own-side KO clock while a qualifying holder is Active, so the repeat hits count",
+   "skeptic_corrections": [],
+   "group": "tools"
+  },
+  {
+   "card": "Heavy Helmet",
+   "kind": "Tool",
+   "text": "If the Pokémon this card is attached to has a Retreat Cost of 3 or more, it takes -20 damage from attacks from your opponent's Pokémon.",
+   "decks": "dustin/01 0.840, dustin/03 0.725 (per game 0.96, 0.99)",
+   "score_sees": "invisible",
+   "what_the_bot_sees": "The -20 applies during the opponent's attack, on their turn. kp3's threat clock divides the holder's raw remaining HP by the threat's estimated damage, with no defender reduction. kd reads Heavy Helmet through persistent_defender_damage, but kp3 runs with EvalFeatures::OFF. So it counts only the flat +10 on the Active and -1 for the hand card.",
+   "timing_gap": true,
+   "placement_gap": "Yes. The effect needs a printed Retreat Cost of 3 or more (core.rs:703-713), but the +10 has no retreat check, so it scores +9 on Glimmora or Indeedee ex exactly as on Wailord.",
+   "evidence": "engine/src/hooks/core.rs:687-713; engine/src/players/value_functions.rs:176-187 + 421-431 (k/kp: EvalFeatures::OFF), 903-915 (clock uses raw HP / max_damage), 216-228 (kd); engine/src/hooks/core.rs:1583-1644 (kd's persistent_defender_damage includes it, line 1614); value_functions.rs:667-672",
+   "audit_consistent": "Yes: 0.96-0.99 per game. About 48% of dustin/01's Helmets and 28% of dustin/03's sat on ineligible holders (Glimmora, Glimmet, Alolan Grimer, Indeedee ex), placed there by the flat bonus alone.",
+   "fix_sketch": "price persistent_defender_damage (kd's path) for the holder in the clock, and give no Tool bonus when the holder's condition fails",
+   "skeptic_corrections": [],
+   "group": "tools"
+  },
+  {
+   "card": "Metal Core Barrier",
+   "kind": "Tool",
+   "text": "If this card is attached to 1 of your Pokémon, discard it at the end of your opponent's turn. The [M] Pokémon this card is attached to takes -50 damage from attacks from your opponent's Pokémon.",
+   "decks": "dustin/07 0.753 (per game 0.92)",
+   "score_sees": "invisible",
+   "what_the_bot_sees": "The -50 applies only during the opponent's attack, and the card discards itself at the end of that turn. No part of kp3's score reads it; kd leaves it out too, as temporary. The bot sees the flat +10 on the Active and -1 for the hand card. It also does not see that the card lasts only one opponent turn.",
+   "timing_gap": true,
+   "placement_gap": "Yes. The effect needs a [M] holder (core.rs:728-733); the +10 has no type check. 47 of 274 went onto Indeedee ex (Psychic).",
+   "evidence": "engine/src/hooks/core.rs:504-519 (self-discard at the end of the opponent's turn), 715-735, 1577-1580 (left out of kd); engine/src/players/value_functions.rs:516, 667-672; rl/results/skarmory_tool_jasmine_2026-09-25/README.md (causal test: with the +10 at 0, play falls from 74.6% to 1.5%)",
+   "audit_consistent": "Yes: 0.92 per game and 17% useless (Indeedee ex). The earlier causal test showed the +10 alone drives its play.",
+   "fix_sketch": "price one-turn damage reductions (this Tool, or turn effects like Jasmine) on the clock's first hit against the holder",
+   "skeptic_corrections": [],
+   "group": "tools"
+  },
+  {
+   "card": "Steel Apron",
+   "kind": "Tool",
+   "text": "The [M] Pokémon this card is attached to takes -10 damage from attacks from your opponent's Pokémon, recovers from all Special Conditions, and can't be affected by any Special Conditions.",
+   "decks": "dustin/07 0.737 (per game 0.95)",
+   "score_sees": "partly",
+   "what_the_bot_sees": "The -10 and the immunity act on the opponent's turn and are invisible (kd would read the -10). The 'recovers' part happens at attach: a [M] holder is cured immediately, so the search sees the consequences within the bot's own turn. A cured Asleep or Paralyzed Active can attack or retreat in the same line, and a cured Poisoned or Burned one skips the checkup damage in lines that reach EndTurn. The value function itself reads no Special Conditions. Plus the flat +10 on the Active and -1 for the hand card.",
+   "timing_gap": true,
+   "placement_gap": "Yes. The cure, the immunity and the -10 all need a [M] holder (apply_action.rs:986-993, state/mod.rs:1151-1158, core.rs:754-761); the +10 does not. 26 of 146 went onto Indeedee ex.",
+   "evidence": "engine/src/actions/apply_action.rs:966-994; engine/src/state/mod.rs:1151-1158; engine/src/hooks/core.rs:737-762, 1614 (kd includes it); engine/src/players/value_functions.rs:176-187, 667-672",
+   "audit_consistent": "Yes: 0.95 per game and 18% useless (Indeedee ex). It shares the one Active slot with the deck's 2 Metal Core Barriers; the earlier Skarmory report found the pick between them comes down to move order.",
+   "fix_sketch": "persistent_defender_damage in the clock (it already covers Steel Apron for kd), with no Tool bonus off a [M] holder",
+   "skeptic_corrections": [
+    {
+     "card": "Steel Apron",
+     "field": "what_the_bot_sees",
+     "was": "The value function itself reads no Special Conditions.",
+     "should_be": "The value function reads them in one place. The damage estimate for ExtraDamagePerOpponentSpecialCondition (Magmar's Derisive Roasting) counts the defending Active's conditions, and the k clock prices the opponent's threat through that estimate against the bot's Active. So when the Apron cures an Active [M] holder, the clock does see a lower threat estimate if the opponent has such an attacker. It is niche, but the statement is not literally true.",
+     "evidence": "engine/src/players/value_functions.rs:788-794 (clock attack_damage via estimated_attack_damage_ex when effect_aware), 1370-1386 (reads the defender Active's Asleep/Burned/Confused/Paralyzed/Poisoned), 176-187 (k: effect_aware true)"
+    }
+   ],
+   "group": "tools"
+  },
+  {
+   "card": "Small Balloon",
+   "kind": "Tool",
+   "text": "The Retreat Cost of the Basic Pokémon this card is attached to is 1 less.",
+   "decks": "dustin/08 0.859, research/altaria 0.839 [meta] (per game 0.95, 0.92)",
+   "score_sees": "partly",
+   "what_the_bot_sees": "The engine lowers the Retreat Cost right away. A retreat later in the same 3-action line costs one Energy less, and the search sees the Energy kept. The final score's Active retreat-cost term (1 point per Energy, Active only, lasting board discounts included) also rises by 1 when the Active is an eligible Basic with Retreat Cost 1 or more. A retreat on a later turn is seen only through that 1-point term. On a Stage 1 or 2, or a Basic that already retreats for free, the score sees just the flat +10.",
+   "timing_gap": true,
+   "placement_gap": "Yes. The discount needs a Basic holder (retreat.rs:144-146), and the retreat term reads only the Active (value_functions.rs:590, 640-664). The flat +10 has no stage check, so Espeon (Stage 1), Igglybuff (Retreat Cost 0), Mega Altaria ex, Garchomp and Gabite got a Balloon for the +10 alone.",
+   "evidence": "engine/src/hooks/retreat.rs:110-116, 144-146; engine/src/players/value_functions.rs:512, 590, 640-664, 667-672; rl/results/trainer_audit_2026-09-25/useless_tools.txt:5, 11; audit_tools.tsv:28, 34",
+   "audit_consistent": "Yes: 0.92-0.95 per game. 26% (dustin/08) and 48% (Altaria) useless on ineligible holders, and 116-118 more never had a retreat window.",
+   "fix_sketch": "no flat bonus; the existing retreat-cost term already prices the eligible case (optionally weighted by the chance of a retreat)",
+   "timing_gap_reader": false,
+   "skeptic_corrections": [
+    {
+     "card": "Small Balloon",
+     "field": "audit_consistent",
+     "was": "26% (dustin/08) and 48% (Altaria) useless on ineligible holders, and 116-118 more never had a retreat window.",
+     "should_be": "The no_window counts (116 and 118) include the ineligible holders; they are not in addition to them. My recount from games.jsonl.gz: dustin/08 has all 42 never-eligible Balloons inside the 116 no-window, leaving 74 eligible Balloons with no window. Altaria has 70 of its 78 never-eligible inside the 118, leaving 48 eligible with no window.",
+     "evidence": "rl/results/trainer_audit_2026-09-25/analyze_audit.py:35-37 (never_eligible and no_window are independent counters, not a partition); trainer_audit.py:94-95 (a Balloon window is the owner's Retreat with the Tool on the Active, whatever the holder); audit_tools.tsv:28,34; recount script in scratch census/overlap.py"
+    },
+    {
+     "card": "Small Balloon",
+     "field": "timing_gap",
+     "was": "false",
+     "should_be": "true (partial). The card's main payoff, a cheaper retreat on a later turn, happens outside the 3-ply own-turn search. The score stands in for it with only the Active retreat-cost term at 1 point per Energy. An Energy actually kept would be worth the holder's remaining HP (and online score) in the same function. The row's own text says a later retreat is seen only through the 1-point term.",
+     "evidence": "engine/src/players/value_functions.rs:47 (active_retreat_cost weight 1.0), 512, 590, 640-664 vs 1137-1150 (HP x (relevant Energy+1)) and 48 (online score 500); engine/src/players/mod.rs:502-511 (opponent_ply 0)"
+    }
+   ],
+   "group": "tools"
+  },
+  {
+   "card": "Inflatable Boat",
+   "kind": "Tool",
+   "text": "The Retreat Cost of the [W] Pokémon this card is attached to is 1 less.",
+   "decks": "research/suicune 0.639 [meta] (per game 0.88)",
+   "score_sees": "partly",
+   "what_the_bot_sees": "The same as Small Balloon, but for a [W] holder: +1 in the Active retreat-cost term, a cheaper retreat if the same line retreats, and the flat +10 on the Active, minus 1 for the hand card. A retreat on a later turn is seen only through the 1-point term.",
+   "timing_gap": true,
+   "placement_gap": "Yes. The discount needs a [W] holder (retreat.rs:136-140) and counts only on the Active; the +10 has no type check. Every holder in Suicune was eligible.",
+   "evidence": "engine/src/hooks/retreat.rs:136-140; engine/src/players/value_functions.rs:590, 640-664, 667-672; rl/results/trainer_audit_2026-09-25/audit_tools.tsv:40 (never_eligible 0, no_window 131 of 175)",
+   "audit_consistent": "Yes: 0.88 per game with no ineligible holders. 131 of 175 never had a retreat window: they were attached for the +10 (plus 1) whether or not a retreat was coming. The 0.639 per turn is because Giant Cape (0.906) competes for the Active slot, and a Benched Boat scores -1.",
+   "fix_sketch": "no flat bonus; keep the retreat-cost term",
+   "timing_gap_reader": false,
+   "skeptic_corrections": [
+    {
+     "card": "Inflatable Boat",
+     "field": "timing_gap",
+     "was": "false",
+     "should_be": "true (partial). Same as Small Balloon: a retreat on a later turn is priced only by the 1-point Active retreat-cost term. The audit also shows most Boats (131 of 175) never met a retreat.",
+     "evidence": "engine/src/players/value_functions.rs:47, 512, 590, 640-664; engine/src/hooks/retreat.rs:136-140; rl/results/trainer_audit_2026-09-25/audit_tools.tsv:40"
+    }
+   ],
+   "group": "tools"
+  },
+  {
+   "card": "Cheren",
+   "kind": "Supporter",
+   "text": "During your opponent's next turn, all of your Watchog and Stoutland take -100 damage from attacks from your opponent's Pokémon ex.",
+   "decks": "dustin/05 0.023",
+   "score_sees": "invisible",
+   "what_the_bot_sees": "Only the card leaving the hand (-1). The effect is a TurnEffect ReducedDamageForTarget that lasts into the opponent's turn. The search stops at the end of the bot's turn, and the value function never reads TurnEffects, so the -100 is never counted. kd's defender pricing would not read it either.",
+   "timing_gap": true,
+   "placement_gap": "",
+   "evidence": "move_generation_trainer.rs:164; apply_trainer_action.rs:178, 1021-1037, 1062-1067; apply_action_helpers.rs:990-991 (Supporter discarded from hand); value_functions.rs:508-523 (no TurnEffect term anywhere in the file); expectiminimax_player.rs:97-108, 773-797, 914-918; hooks/core.rs:1583-1643 (kd reads tools/abilities only)",
+   "audit_consistent": "Yes. 7 plays in 302 free turns. The score sees a lost card and nothing else.",
+   "fix_sketch": "The clock should price the threat's first attack through live defender TurnEffects (ReducedDamageForTarget covering the opponent's next turn), the same way kd prices tools and abilities.",
+   "skeptic_corrections": [],
+   "group": "supporters"
+  },
+  {
+   "card": "Clemont",
+   "kind": "Supporter",
+   "text": "Put 2 random cards from among Magneton, Heliolisk, and Clemont's Backpack from your deck into your hand.",
+   "decks": "dustin/09 0.924",
+   "score_sees": "not_needed",
+   "what_the_bot_sees": "Every possible pair from the bot's own deck is a chance branch. Each card moved from deck to hand is worth +2 (hand +1, deck -1), and Clemont itself costs -1. The remaining 2 plies play out evolving into Heliolisk, or playing Backpack and then attacking.",
+   "timing_gap": false,
+   "placement_gap": "",
+   "evidence": "move_generation_trainer.rs:29-40, 262-264; apply_trainer_action.rs:255, 2366-2372; shared_mutations.rs:137-182; value_functions.rs:510-511, 588-589",
+   "audit_consistent": "Yes, 92%.",
+   "fix_sketch": "none needed",
+   "skeptic_corrections": [],
+   "group": "supporters"
+  },
+  {
+   "card": "Copycat",
+   "kind": "Supporter",
+   "text": "Shuffle your hand into your deck. Draw a card for each card in your opponent's hand.",
+   "decks": "META research/altaria 0.776, blaziken 0.702, hydreigon 0.724, lucario 0.746, sceptile 0.621, suicune 0.577, vespiquen 0.611, weezing 0.746; brews 05b 0.743, 06 0.747, 06b 0.751, 07 0.644, 08 0.495, 09 0.681, 10 0.737; dustin 01 0.770, 02 0.581, 03 0.757, 04 0.724, 05 0.626, 06 0.716, 08 0.647, 09 0.783, 10 0.836, 11 0.860, 12 0.690, 13 0.757, 14 0.667, 15 0.803",
+   "score_sees": "not_needed",
+   "what_the_bot_sees": "Blind k3 would leave this unpriced, because the text mentions the opponent's hand. kp3 lifts that rule for this audited text and prices it from the opponent's public hand count: net score is about -1 + 2 x (opponent's hand - the bot's remaining hand), plus whatever the new cards allow in the 2 remaining plies. The new hand comes from one sampled shuffle of the bot's own deck, not an average. Cards shuffled away count only by number.",
+   "timing_gap": false,
+   "placement_gap": "",
+   "evidence": "public_pricing_player.rs:80; observation.rs:336-345, 478-485, 142-157; move_generation_trainer.rs:239; apply_trainer_action.rs:236, 2176-2197; value_functions.rs:510-511",
+   "audit_consistent": "Yes, 50-86%. It is played when the opponent holds more cards than the bot would keep.",
+   "fix_sketch": "none needed (optionally average the redraw over several deck samples)",
+   "skeptic_corrections": [],
+   "group": "supporters"
+  },
+  {
+   "card": "Cynthia",
+   "kind": "Supporter",
+   "text": "During this turn, attacks used by your Garchomp or Togekiss do +50 damage to your opponent's Active Pokémon.",
+   "decks": "dustin/08 0.243",
+   "score_sees": "not_needed",
+   "what_the_bot_sees": "It adds a this-turn damage bonus. If Garchomp attacks within the remaining 2 plies, the engine applies +50 and the score sees the lower HP, a knockout or the points. With no attack, only -1 is seen, which is right because the bonus expires. The clock's damage estimate does not read the bonus.",
+   "timing_gap": false,
+   "placement_gap": "",
+   "evidence": "move_generation_trainer.rs:108; apply_trainer_action.rs:113, 992-1001; expectiminimax_player.rs:633-657 (an attack's end of turn resolves without using a ply); value_functions.rs:1249-1530 (estimator reads no TurnEffect)",
+   "audit_consistent": "Yes, 24%. It only pays on turns when Garchomp attacks from the Active Spot.",
+   "fix_sketch": "none needed",
+   "skeptic_corrections": [],
+   "group": "supporters"
+  },
+  {
+   "card": "Cyrus",
+   "kind": "Supporter",
+   "text": "Switch in 1 of your opponent's Benched Pokémon that has damage on it to the Active Spot.",
+   "decks": "META research/blaziken 0.671, hydreigon 0.819, lucario 0.731, sceptile 0.767, vespiquen 0.744, weezing 0.795; brews 01 0.614, 02 0.913, 03a 0.792, 04 0.824, 06 0.780, 06b 0.852, 07 0.685, 08 0.854, 09 0.840, 10 0.800; dustin 03 0.906, 04 0.740, 05 0.772, 06 0.753, 07 0.870, 09 0.552, 10 0.787, 13 0.733, 14 0.530, 15 0.636",
+   "score_sees": "not_needed",
+   "what_the_bot_sees": "The bot picks the target as a stack choice, which uses a ply, then can attack the new Active with the last ply; damage and KO points are exact. Without an attack, the score still reads the new opposing Active's online score (x500) and safety, so pulling up an unpowered Pokemon earns credit. The opponent's retreat cost is not read.",
+   "timing_gap": false,
+   "placement_gap": "",
+   "evidence": "move_generation_trainer.rs:124-126, 637-648; apply_trainer_action.rs:146-148, 871-885; expectiminimax_player.rs:940-969; value_functions.rs:512-516, 593-600, 1647-1735",
+   "audit_consistent": "Yes, 53-91%. It is only offered when the opponent has a damaged Benched Pokemon.",
+   "fix_sketch": "none needed (optionally read the opposing Active's retreat cost)",
+   "skeptic_corrections": [
+    {
+     "card": "Cyrus",
+     "field": "what_the_bot_sees",
+     "was": "Without an attack, the score still reads the new opposing Active's online score (x500) and safety, so pulling up an unpowered Pokemon earns credit.",
+     "should_be": "Without an attack, the score reads three things about the new opposing Active: its online score (x500), its safety, and the bot's own win clock (turns to take the remaining points, x100). That clock starts from the opposing Active's remaining HP and KO points, then picks Benched victims safest-first. So pulling up a damaged or 2-point Pokemon usually shortens the bot's clock and earns credit on its own. The opponent's retreat cost is still not read.",
+     "evidence": "value_functions.rs:494-506 (the clock is also computed for the opponent's side), 903-915 (it starts from that side's Active: remaining HP, then KO points), 920-950 (Bench victims taken safest-first until 3 points), 518-519 with 52 (weight 100); only the bot's own retreat cost is read at 512"
+    }
+   ],
+   "group": "supporters"
+  },
+  {
+   "card": "Erika",
+   "kind": "Supporter",
+   "text": "Heal 50 damage from 1 of your [G] Pokémon.",
+   "decks": "META research/sceptile 0.753",
+   "score_sees": "priced",
+   "what_the_bot_sees": "The heal target is a stack choice (1 ply). The restored HP raises the Pokemon term (remaining HP x (relevant Energy + 1)) and the Active's safety (HP / KO points). It also lengthens the opponent's clock (turns to KO the bot's Pokemon, x100).",
+   "timing_gap": false,
+   "placement_gap": "",
+   "evidence": "move_generation_trainer.rs:103-105, 462-472; apply_trainer_action.rs:106-108, 505-507, 784-808; value_functions.rs:1137-1150, 1633-1642, 903-950",
+   "audit_consistent": "Yes, 75%.",
+   "fix_sketch": "none needed",
+   "skeptic_corrections": [],
+   "group": "supporters"
+  },
+  {
+   "card": "Gladion",
+   "kind": "Supporter",
+   "text": "Put 1 random Type: Null or Silvally from your deck into your hand.",
+   "decks": "brew-06 0.795, brew-06b 0.849",
+   "score_sees": "not_needed",
+   "what_the_bot_sees": "The search enumerates the outcomes exactly over the bot's own deck: +2 for the card moved, -1 for Gladion. The remaining plies play out evolving Type: Null into Silvally.",
+   "timing_gap": false,
+   "placement_gap": "",
+   "evidence": "move_generation_trainer.rs:151-153; apply_trainer_action.rs:166-168; shared_mutations.rs:110-115, 137-182; value_functions.rs:510-511",
+   "audit_consistent": "Yes, 80-85%.",
+   "fix_sketch": "none needed",
+   "skeptic_corrections": [],
+   "group": "supporters"
+  },
+  {
+   "card": "Guzma",
+   "kind": "Supporter",
+   "text": "Discard all Pokémon Tool cards attached to each of your opponent's Pokémon.",
+   "decks": "dustin/02 0.458",
+   "score_sees": "partly",
+   "what_the_bot_sees": "The score sees: +10 flat when the opposing Active loses a Tool (whatever the Tool is), +0.1 per card added to the opponent's discard, the HP lost from HP Tools (knockouts resolve at once), and any in-turn effect of a removed Tool on the bot's attack this turn (Rocky Helmet, Heavy Helmet, Poncho). It misses Benched Tools beyond their HP, and Tools that act on the opponent's own turn.",
+   "timing_gap": true,
+   "placement_gap": "",
+   "evidence": "move_generation_trainer.rs:228-230 (always offered); apply_trainer_action.rs:127-129, 651-665; value_functions.rs:50, 516, 523, 601, 621, 667-672",
+   "audit_consistent": "Yes. It is offered every turn with no condition and played mostly when the opposing Active holds a Tool.",
+   "fix_sketch": "Replace the flat Active-Tool bonus with per-Tool pricing of what each Tool does to the clock (HP, damage cut, retreat) on any slot. This is the same fix the Tool rows need.",
+   "skeptic_corrections": [],
+   "group": "supporters"
+  },
+  {
+   "card": "Ilima",
+   "kind": "Supporter",
+   "text": "Put 1 of your [C] Pokémon that has damage on it into your hand.",
+   "decks": "dustin/01 0.179, dustin/02 0.333, dustin/13 0.035, dustin/15 0.131",
+   "score_sees": "partly",
+   "what_the_bot_sees": "Picking the target uses a ply. The score loses that Pokemon's board value (remaining HP x (Energy + 1)), its Energy and Tool (both discarded, plus the Active-Tool bonus), and gains +1 per card returned to hand. If it was the Active, the promotion is searched. The real payoff is that the opponent cannot take that knockout on their turn, and the score sees that only through the static clock. The value of playing it again later is just +1 per card in hand.",
+   "timing_gap": true,
+   "placement_gap": "",
+   "evidence": "move_generation_trainer.rs:160, 444-450; apply_trainer_action.rs:174, 1836-1846; apply_action.rs:1173-1188; value_functions.rs:510, 1137-1150, 903-950",
+   "audit_consistent": "Partly. The low rate matches a score that charges the full board loss and credits the saved knockout only through the clock. The card is also situational.",
+   "fix_sketch": "Price a returned Pokemon at its replay value, and add a points-at-risk term for the knockout it denies.",
+   "skeptic_corrections": [],
+   "group": "supporters"
+  },
+  {
+   "card": "Irida",
+   "kind": "Supporter",
+   "text": "Heal 40 damage from each of your Pokémon that has any [W] Energy attached.",
+   "decks": "dustin/03 0.610",
+   "score_sees": "priced",
+   "what_the_bot_sees": "The heal resolves inline with no choice ply. The restored HP raises the Pokemon term, the Active's safety and the opponent's clock, as for every heal.",
+   "timing_gap": false,
+   "placement_gap": "",
+   "evidence": "move_generation_trainer.rs:110-112, 490-500; apply_trainer_action.rs:115-117, 528-534; value_functions.rs:1137-1150, 1633-1642, 903-950",
+   "audit_consistent": "Yes, 61%.",
+   "fix_sketch": "none needed",
+   "skeptic_corrections": [],
+   "group": "supporters"
+  },
+  {
+   "card": "Iris",
+   "kind": "Supporter",
+   "text": "During this turn, if your opponent's Active Pokémon is Knocked Out by damage from an attack used by your Haxorus, you get 1 more point.",
+   "decks": "dustin/11 0.059",
+   "score_sees": "not_needed",
+   "what_the_bot_sees": "It adds a this-turn flag that knockout handling turns into an extra point. Points are weighted x10,000, so the extra point is seen whenever Haxorus knocks out the Active within the remaining plies.",
+   "timing_gap": false,
+   "placement_gap": "",
+   "evidence": "move_generation_trainer.rs:293; apply_trainer_action.rs:272, 450-454; apply_action_helpers.rs:614-640; value_functions.rs:508",
+   "audit_consistent": "Yes. It pays only on a Haxorus knockout this turn, so a 6% rate is expected.",
+   "fix_sketch": "none needed",
+   "skeptic_corrections": [],
+   "group": "supporters"
+  },
+  {
+   "card": "Jasmine",
+   "kind": "Supporter",
+   "text": "During your opponent's next turn, all of your Steelix and Skarmory ex take -50 damage from attacks from your opponent's Pokémon.",
+   "decks": "dustin/07 0.012",
+   "score_sees": "invisible",
+   "what_the_bot_sees": "Only the card leaving the hand (-1). The -50 is a TurnEffect that lasts into the opponent's turn, which is never searched, and the value function reads no TurnEffects.",
+   "timing_gap": true,
+   "placement_gap": "",
+   "evidence": "move_generation_trainer.rs:163; apply_trainer_action.rs:177, 1021-1037, 1055-1060; value_functions.rs:508-523; expectiminimax_player.rs:97-108, 773-797; rl/results/skarmory_tool_jasmine_2026-09-25/README.md",
+   "audit_consistent": "Yes. 6 plays in 496 free turns.",
+   "fix_sketch": "Same as Cheren: price live defender TurnEffects into the threat's first attack in the clock.",
+   "skeptic_corrections": [],
+   "group": "supporters"
+  },
+  {
+   "card": "Korrina",
+   "kind": "Supporter",
+   "text": "During this turn, attacks used by your [F] Pokémon do +30 damage to your opponent's Active Pokémon ex.",
+   "decks": "META research/lucario 0.338",
+   "score_sees": "not_needed",
+   "what_the_bot_sees": "It adds a this-turn damage bonus. The +30 is exact when a Fighting attacker hits an opposing Active ex within the remaining plies. Otherwise only -1 is seen, which is correct.",
+   "timing_gap": false,
+   "placement_gap": "",
+   "evidence": "move_generation_trainer.rs:305; apply_trainer_action.rs:282, 604-613; expectiminimax_player.rs:633-657",
+   "audit_consistent": "Yes. It needs an ex across the table and a Fighting attack this turn.",
+   "fix_sketch": "none needed",
+   "skeptic_corrections": [],
+   "group": "supporters"
+  },
+  {
+   "card": "Lillie",
+   "kind": "Supporter",
+   "text": "Heal 60 damage from 1 of your Stage 2 Pokémon.",
+   "decks": "dustin/05 0.652",
+   "score_sees": "priced",
+   "what_the_bot_sees": "Picking the target uses a ply. The restored HP raises the Pokemon term, the Active's safety and the opponent's clock.",
+   "timing_gap": false,
+   "placement_gap": "",
+   "evidence": "move_generation_trainer.rs:113-118, 587-597; apply_trainer_action.rs:121-126, 561-576; value_functions.rs:1137-1150, 1633-1642",
+   "audit_consistent": "Yes, 65%.",
+   "fix_sketch": "none needed",
+   "skeptic_corrections": [],
+   "group": "supporters"
+  },
+  {
+   "card": "Lisia",
+   "kind": "Supporter",
+   "text": "Put 2 random Basic Pokémon with 50 HP or less from your deck into your hand.",
+   "decks": "brew-01 0.789, brew-02 0.559, brew-03b 0.512, dustin/02 0.695, dustin/12 0.758, dustin/15 0.667",
+   "score_sees": "not_needed",
+   "what_the_bot_sees": "Every pair of eligible Basics in the bot's own deck is enumerated as a chance branch: +2 per card, -1 for Lisia. Benching them in the remaining plies adds their HP to the Pokemon term and lengthens the opponent's clock.",
+   "timing_gap": false,
+   "placement_gap": "",
+   "evidence": "move_generation_trainer.rs:251-253; apply_trainer_action.rs:246, 2299-2308; shared_mutations.rs:137-182; value_functions.rs:1137-1150, 919-950",
+   "audit_consistent": "Yes, 51-79%.",
+   "fix_sketch": "none needed",
+   "skeptic_corrections": [],
+   "group": "supporters"
+  },
+  {
+   "card": "Mars",
+   "kind": "Supporter",
+   "text": "Your opponent shuffles their hand into their deck and draws a card for each of their remaining points needed to win.",
+   "decks": "META research/weezing 0.477",
+   "score_sees": "partly",
+   "what_the_bot_sees": "Blind k3 would leave this unpriced. kp3 lifts the rule for this audited text and resolves it on the opponent's Unknown cards, so it counts only. The score changes by 2 x (opponent's hand before - cards they draw back) - 1. The actual disruption (which cards they lose, and a weaker next turn) happens on the opponent's turn and is neither searched nor read.",
+   "timing_gap": true,
+   "placement_gap": "",
+   "evidence": "public_pricing_player.rs:93; observation.rs:331-345, 478-485; move_generation_trainer.rs:127-129; apply_trainer_action.rs:149-151, 890-912; value_functions.rs:510-511",
+   "audit_consistent": "Yes, 48%. It is played when the opponent holds more cards than their remaining points.",
+   "fix_sketch": "Either accept the hand-count proxy, or add a term for the opponent's resources on their next turn.",
+   "skeptic_corrections": [],
+   "group": "supporters"
+  },
+  {
+   "card": "Pokémon Center Lady",
+   "kind": "Supporter",
+   "text": "Heal 30 damage from 1 of your Pokémon, and it recovers from all Special Conditions.",
+   "decks": "META research/lucario 0.737, research/suicune 0.851; brews 07 0.752, 08 0.826, 09 0.901, 10 0.753; dustin 03 0.466, 07 0.687, 15 0.881",
+   "score_sees": "partly",
+   "what_the_bot_sees": "The heal is priced like other heals (target choice uses a ply). The cure is seen only within this turn: a cured Paralyzed or Asleep Active can attack or retreat in the remaining plies, a cured Confused attacker skips the confusion coin, and a cured Poison or Burn skips checkup damage only if the searched line ends the turn. The value function reads no Special Condition (the status-clock feature is off in the official build), so a cure's worth on later turns is invisible.",
+   "timing_gap": true,
+   "placement_gap": "",
+   "evidence": "move_generation_trainer.rs:134-136, 572-584; apply_trainer_action.rs:118-120, 536-559; apply_attack_action.rs:124-127; expectiminimax_player.rs:633-657; value_functions.rs:881-892; engine/Cargo.toml:31-38; rl/engine-2026-09-25/README.md:23",
+   "audit_consistent": "Yes, 47-90%. The heal part carries most plays.",
+   "fix_sketch": "Add a status term for each side's Active: checkup damage per turn, and a missed attack for Paralyzed, Asleep or Confused.",
+   "skeptic_corrections": [],
+   "group": "supporters"
+  },
+  {
+   "card": "Professor's Research",
+   "kind": "Supporter",
+   "text": "Draw 2 cards.",
+   "decks": "all 36 decks. META research/altaria 0.935, blaziken 0.906, hydreigon 0.952, lucario 0.945, sceptile 0.949, suicune 0.931, vespiquen 0.881, weezing 0.962; dustin 0.870-0.997; brews 0.936-0.997",
+   "score_sees": "not_needed",
+   "what_the_bot_sees": "+2 per card drawn and -1 for the card played, so +3 net, plus whatever the two cards enable in the remaining 2 plies. The drawn cards are the top of one sampled order of the bot's own deck, fixed once per decision, not an average.",
+   "timing_gap": false,
+   "placement_gap": "",
+   "evidence": "move_generation_trainer.rs:137-139, 550-559; apply_trainer_action.rs:103-105, 1848-1855; observation.rs:142-157; expectiminimax_player.rs:395-397; value_functions.rs:510-511",
+   "audit_consistent": "Yes, 87-99.7%.",
+   "fix_sketch": "none needed (optionally average draws over several deck samples)",
+   "skeptic_corrections": [],
+   "group": "supporters"
+  },
+  {
+   "card": "Psychic",
+   "kind": "Supporter",
+   "text": "You can use this card only if your Pokémon in the Active Spot has the Psychic attack.Choose 1 of your opponent's Benched Pokémon and move a random Energy from it to your opponent's Active Pokémon.",
+   "decks": "dustin/05 0.882",
+   "score_sees": "not_needed",
+   "what_the_bot_sees": "The source choice uses a ply. Then Indeedee ex's Psychic (30 + 30 per Energy on the opposing Active) can use the last ply, and that damage is exact. Without the attack, the score reads the moved Energy as the opposing Active being more online (-500 x the change) and as more estimated damage for the bot's Psychic in the clock.",
+   "timing_gap": false,
+   "placement_gap": "",
+   "evidence": "move_generation_trainer.rs:329, 823-833; apply_trainer_action.rs:312, 2134-2145; effect_mechanic_map.rs:2205-2210; value_functions.rs:1337-1351, 1647-1735",
+   "audit_consistent": "Yes, 88%.",
+   "fix_sketch": "none needed",
+   "skeptic_corrections": [],
+   "group": "supporters"
+  },
+  {
+   "card": "Red",
+   "kind": "Supporter",
+   "text": "During this turn, attacks used by your Pokémon do +20 damage to your opponent's Active Pokémon ex.",
+   "decks": "brew-06 0.234, brew-06b 0.298, dustin/07 0.325",
+   "score_sees": "not_needed",
+   "what_the_bot_sees": "It adds a this-turn damage bonus. The +20 is exact when the bot attacks an opposing Active ex within the remaining plies; otherwise only -1 is seen, which is correct.",
+   "timing_gap": false,
+   "placement_gap": "",
+   "evidence": "move_generation_trainer.rs:224-227; apply_trainer_action.rs:135-137, 1826-1829; expectiminimax_player.rs:633-657",
+   "audit_consistent": "Yes, 23-33%. It needs an ex across the table and an attack this turn.",
+   "fix_sketch": "none needed",
+   "skeptic_corrections": [],
+   "group": "supporters"
+  },
+  {
+   "card": "Sabrina",
+   "kind": "Supporter",
+   "text": "Switch out your opponent's Active Pokémon to the Bench. (Your opponent chooses the new Active Pokémon.)",
+   "decks": "META research/altaria 0.691, hydreigon 0.753, sceptile 0.693, vespiquen 0.672; brew-03a 0.710, brew-08 0.687; dustin 04 0.677, 07 0.789, 13 0.557, 15 0.703",
+   "score_sees": "not_needed",
+   "what_the_bot_sees": "The opponent's choice of new Active is searched as their move inside the bot's turn. The search assumes they pick whatever is worst for the bot, and that choice uses a ply; the bot's last ply can then attack. The score reads the new Active's online score and safety, but not its retreat cost.",
+   "timing_gap": false,
+   "placement_gap": "",
+   "evidence": "move_generation_trainer.rs:120-123, 626-634; apply_trainer_action.rs:138-141, 841-854; expectiminimax_player.rs:970-1020; value_functions.rs:512-516",
+   "audit_consistent": "Yes, 56-79%.",
+   "fix_sketch": "none needed (optionally read the opposing Active's retreat cost)",
+   "skeptic_corrections": [
+    {
+     "card": "Sabrina",
+     "field": "what_the_bot_sees",
+     "was": "The score reads the new Active's online score and safety, but not its retreat cost.",
+     "should_be": "The score reads the new Active's online score, its safety and the bot's win clock (x100, starting from the opposing Active's HP and KO points), but not its retreat cost. The opponent's worst-for-the-bot choice is made against all three.",
+     "evidence": "value_functions.rs:494-506, 903-915, 518-519; expectiminimax_player.rs:970-1020 (the opponent's choice is a min over the same leaf scores)"
+    }
+   ],
+   "group": "supporters"
+  },
+  {
+   "card": "Sightseer",
+   "kind": "Supporter",
+   "text": "Look at the top 4 cards of your deck. Put all Stage 1 Pokémon you find there into your hand. Shuffle the other cards back into your deck.",
+   "decks": "dustin/13 0.780, dustin/14 0.611",
+   "score_sees": "not_needed",
+   "what_the_bot_sees": "Every 4-card subset of the bot's own deck is enumerated exactly, grouped by which Stage 1 cards turn up: +2 per card taken, -1 for Sightseer. Evolving in the remaining plies is visible.",
+   "timing_gap": false,
+   "placement_gap": "",
+   "evidence": "move_generation_trainer.rs:298-300; apply_trainer_action.rs:277, 2380-2389; shared_mutations.rs:433-482",
+   "audit_consistent": "Yes, 61-78%.",
+   "fix_sketch": "none needed",
+   "skeptic_corrections": [],
+   "group": "supporters"
+  },
+  {
+   "card": "Team Rocket's Boss",
+   "kind": "Supporter",
+   "text": "Look at your opponent's hand and put any number of Basic Pokémon you find there onto your opponent's Bench.",
+   "decks": "META research/suicune 0.028; brew-02 0.027",
+   "score_sees": "invisible",
+   "what_the_bot_sees": "kp3 lifts the hidden-hand rule for this audited text, but in the search the opponent's hand is Unknown cards, and an Unknown card is never a Basic. So the only branch is 'bench nothing' and the score is -1. The in-turn payoff in both decks is never seen: more opposing Benched Pokemon for Suicune ex's Crystal Waltz (20 per Benched Pokemon on both sides) or TR Persian's Dangerous Rogue (+40 per opposing Benched Pokemon). The exception is when cards remembered from an earlier reveal fill the hand slots.",
+   "timing_gap": false,
+   "placement_gap": "",
+   "evidence": "public_pricing_player.rs:17-19, 64; observation.rs:56, 110-115, 697-698; move_generation_trainer.rs:342-344; apply_trainer_action.rs:326-328, 333-371; apply_action.rs:1342-1367",
+   "audit_consistent": "Yes. 9 plays in 339 and 325 free turns, likely only when the hand was remembered from an earlier reveal.",
+   "fix_sketch": "Give Unknown opponent-hand cards an expected identity from public information (or a list sample, as the b tier does) so hand-reading effects can find likely Basics.",
+   "skeptic_corrections": [
+    {
+     "card": "Team Rocket's Boss",
+     "field": "audit_consistent (and the last sentence of what_the_bot_sees)",
+     "was": "9 plays in 339 and 325 free turns, likely only when the hand was remembered from an earlier reveal. / The exception is when cards remembered from an earlier reveal fill the hand slots.",
+     "should_be": "The remembered-hand exception exists in the code but cannot explain these plays. Neither research/suicune nor brew-02 has any hand-reveal effect except Boss itself: 1 copy each, and 9 plays in 9 games, so at most one per game. Hand knowledge comes only from reveal events and is cleared whenever the opponent's hand changes other than by a draw. At each play the search saw only Unknown cards, so Boss scored -1 and used 2 of the 3 plies (card plus the one-option 'bench nothing' choice). The plays need another cause. One candidate from the code, not checked against the games: an escape from the certified-loss price (see notes).",
+     "evidence": "observation.rs:110-115 (only remembered cards fill the hand slots), 678-683 (knowledge cleared on any non-draw hand change), 685-701 (set only by reveal events); apply_trainer_action.rs:347-355, 367-369 (the empty choice is always pushed, even with no Basics); expectiminimax_player.rs:940-969 (that choice costs a ply); decks/research/suicune.txt and decks/brews/brew-02-arceus-tandemaus-persian.txt (no reveal cards, checked with lib/card.py); audit_trainers.tsv rows 14 and 295 (games_played 9 = played_turns 9)"
+    }
+   ],
+   "group": "supporters"
+  },
+  {
+   "card": "Team Rocket's Master Plan",
+   "kind": "Supporter",
+   "text": "Your opponent's Active Pokémon is now Confused. Flip a coin. If tails, your Active Pokémon is now also Confused.",
+   "decks": "brew-05 0.218, brew-05b 0.277",
+   "score_sees": "partly",
+   "what_the_bot_sees": "The coin is a chance node and uses no ply. Only this turn is seen: Hatterene's Mental Crush +70 against a Confused Active if the bot attacks in the remaining plies, and, on tails, its own Active's confusion as a 50% failed attack if it attacks. The opponent's confusion during their turn (their attack may fail) and on the bot's next turn is never read: there is no status term, and the clock's estimate for Mental Crush ignores the condition.",
+   "timing_gap": true,
+   "placement_gap": "",
+   "evidence": "move_generation_trainer.rs:336-338; apply_trainer_action.rs:323-325, 373-384; apply_attack_action.rs:124-127, 5616-5637; effect_mechanic_map.rs:3319-3323; value_functions.rs:1528 (falls to fixed), 881-892; engine/Cargo.toml:37-38",
+   "audit_consistent": "Yes. It is played on turns Hatterene can attack; otherwise the score sees a lost card plus a chance of confusing its own Active.",
+   "fix_sketch": "Add a status term to the clock (a Confused threat's next attack fails 50% of the time), and have the estimator price ExtraDamageIfDefenderStatus against the defender's current condition.",
+   "skeptic_corrections": [],
+   "group": "supporters"
+  },
+  {
+   "card": "Team Rocket's Researcher",
+   "kind": "Supporter",
+   "text": "Flip a coin until you get tails. For each heads, put a random Pokémon that has “Team Rocket” in its name from your deck into your hand.",
+   "decks": "dustin/14 0.776",
+   "score_sees": "not_needed",
+   "what_the_bot_sees": "An exact forecast over coin outcomes and which Team Rocket Pokemon come out. Deck 14 has 8 eligible cards in 4 groups, which gives 81 outcomes, under the 4,096 cap; above the cap the play would be unpriced. +2 per card taken, -1 for the card; evolving in the remaining plies is visible.",
+   "timing_gap": false,
+   "placement_gap": "",
+   "evidence": "move_generation_trainer.rs:339-341; apply_trainer_action.rs:52-53, 320-322; team_rockets_researcher.rs:16, 162-181, 238-290; expectiminimax_player.rs:457-472",
+   "audit_consistent": "Yes, 78%.",
+   "fix_sketch": "none needed",
+   "skeptic_corrections": [],
+   "group": "supporters"
+  },
+  {
+   "card": "Wally",
+   "kind": "Supporter",
+   "text": "Take a [C] Energy from your Energy Zone and attach it to 1 of your Stage 2 Pokémon.",
+   "decks": "dustin/08 0.500",
+   "score_sees": "priced",
+   "what_the_bot_sees": "Picking the target uses a ply. The attached Energy raises the Pokemon term (Energy counts only up to the cost of the most expensive attack), the Active's online score and the bot's clock. Energy beyond the most expensive attack's cost counts for nothing.",
+   "timing_gap": false,
+   "placement_gap": "",
+   "evidence": "move_generation_trainer.rs:328, 810-819; apply_trainer_action.rs:311, 2147-2162; value_functions.rs:1137-1150, 1616-1629, 1647-1735",
+   "audit_consistent": "Yes, 50%. There is nothing to gain once Garchomp's attack is paid for.",
+   "fix_sketch": "none needed",
+   "skeptic_corrections": [],
+   "group": "supporters"
+  },
+  {
+   "card": "Will",
+   "kind": "Supporter",
+   "text": "The next time you flip any number of coins for the effect of an attack, Ability, or Trainer card after using this card on this turn, the first coin flip will definitely be heads.",
+   "decks": "brew-01 0.101, brew-04 0.246, dustin/10 0.605",
+   "score_sees": "not_needed",
+   "what_the_bot_sees": "It sets a this-turn flag, and the next attack, Ability or Trainer with coins is forecast with its first flip forced to heads. Will followed by Xatu's Life Drain (heads sets the opposing Active to 10 HP) in the remaining plies is priced exactly. With no coin to follow, only -1 is seen, which is correct.",
+   "timing_gap": false,
+   "placement_gap": "",
+   "evidence": "move_generation_trainer.rs:209-210; apply_trainer_action.rs:224, 757-759; apply_action.rs:605-638; effect_mechanic_map.rs:1099-1100; expectiminimax_player.rs:1605-1645 (tests: Will forces Life Drain heads and costs a ply)",
+   "audit_consistent": "Yes. It is played when a coin attack follows; dustin 10 is built around Xatu, so its rate is highest.",
+   "fix_sketch": "none needed",
+   "skeptic_corrections": [],
+   "group": "supporters"
+  },
+  {
+   "group": "supporters",
+   "card": "(general: GENERAL #7 (heals and gusts))",
+   "skeptic_corrections": [
+    {
+     "card": "GENERAL #7 (heals and gusts)",
+     "field": "opponent side of gusts",
+     "was": "On the opponent's side, the score reads the Active's online score (x500) and safety, so gusting is credited even without an attack.",
+     "should_be": "On the opponent's side, the score reads three things about the Active: its online score (x500), its safety, and the bot's own win clock (x100), which starts from the opposing Active's remaining HP and KO points. Most of a gust's credit without an attack can come from the clock.",
+     "evidence": "value_functions.rs:494-506, 903-915, 920-950, 518-519"
+    }
+   ]
+  },
+  {
+   "group": "supporters",
+   "card": "(general: GENERAL #6 (draws vs searches))",
+   "skeptic_corrections": [
+    {
+     "card": "GENERAL #6 (draws vs searches)",
+     "field": "Copycat's redraw",
+     "was": "Professor's Research and Copycat draw from one sampled order of the bot's own deck, fixed once per decision (observation.rs:142-157; expectiminimax_player.rs:395-397).",
+     "should_be": "Research draws the top of the order sampled once per decision, unless an earlier action in the same line reshuffled the deck (every deck search reshuffles with the search RNG). Copycat is different: it shuffles the hand into the deck with the search RNG inside its own forecast, so each time the node is expanded it draws a fresh random hand. That is still one sample, not an average, but it is not tied to the per-decision order.",
+     "evidence": "apply_trainer_action.rs:2189-2196 (Copycat: append hand, shuffle(false, rng), draw); shared_mutations.rs:177 and 478 (searches reshuffle); apply_trainer_action.rs:1850-1855 (Research: plain top draws)"
+    }
+   ]
+  },
+  {
+   "group": "supporters",
+   "card": "(general: GENERAL #1 (lasting effects))",
+   "skeptic_corrections": [
+    {
+     "card": "GENERAL #1 (lasting effects)",
+     "field": "Special Conditions",
+     "was": "it reads no Special Condition",
+     "should_be": "It reads none in the clock or any other term, except inside the damage estimator: an attack that does extra damage per Special Condition on the defending Active (Magmar's Derisive Roasting) is priced against the Active's current conditions. No card in this group is affected.",
+     "evidence": "value_functions.rs:1370-1386 (ExtraDamagePerOpponentSpecialCondition reads defender.has_status); 881-892 is the only other status read and is behind the off-by-default status-clock feature"
+    }
+   ]
+  },
+  {
+   "card": "Clemont's Backpack",
+   "kind": "Item",
+   "text": "During this turn, attacks used by your Magneton or Heliolisk do +20 damage to your opponent's Pokémon.",
+   "decks": "dustin/09 0.348",
+   "score_sees": "not_needed",
+   "what_the_bot_sees": "Playing it costs 1 point, because a card leaves the hand. It adds +20 for this turn only. If a Heliolisk or Magneton attack comes later in the same 3-action line, the extra 20 shows up as lost HP or a knockout on the opponent's side. With no such attack in the line, the card scores -1. The threat clock never adds the +20, which is correct because the bonus expires this turn.",
+   "timing_gap": false,
+   "placement_gap": "",
+   "evidence": "engine/src/move_generation/move_generation_trainer.rs:261 (always legal); engine/src/actions/apply_trainer_action.rs:254, 2355-2364 (turn effect, duration 0); engine/src/hooks/core.rs:1069-1087 (applied when the attack resolves); engine/src/players/expectiminimax_player.rs:633-657 (an attack's forced end of turn resolves inside the line); engine/src/players/value_functions.rs:510",
+   "audit_consistent": "Yes. It is always legal (583 offered turns) but only useful on turns a Heliolisk attacks, so 34.8% fits.",
+   "fix_sketch": "none needed",
+   "skeptic_corrections": [],
+   "group": "items_stadiums"
+  },
+  {
+   "card": "Field Blower",
+   "kind": "Item",
+   "text": "Discard a Pokémon Tool card from a Pokémon (yours or your opponent's), or discard a Stadium card in play.",
+   "decks": "brews/06 0.513, brews/07 0.387, brews/09 0.316, brews/10 0.219, dustin/05 0.451, dustin/06 0.339, dustin/09 0.305, dustin/13 0.346, research/altaria 0.339 (meta), research/blaziken 0.325 (meta), research/lucario 0.289 (meta), research/suicune 0.279 (meta), research/vespiquen 0.260 (meta), research/weezing 0.314 (meta)",
+   "score_sees": "partly",
+   "what_the_bot_sees": "Playing it costs -1, and a second action picks the target: any Tool on either side, or the Stadium. The score changes by: +10 for taking a Tool off the opponent's Active and -10 for taking one off its own Active, whatever the Tool does (the flat Tool-on-Active bonus); lost HP when the Tool is Giant, Leaf or Elegant Cape; +0.1 for a card added to the opponent's discard; and whatever HP or own-retreat effect a removed Stadium had. It misses what the Tool would have done on the opponent's turn. Damage-reduction Tools (Heavy Helmet, Metal Core Barrier, Steel Apron) and Rocky Helmet or Poison Barb count only if the bot attacks later in the same line. Poncho, Small Balloon or Inflatable Boat on the opponent's side count 0.",
+   "timing_gap": true,
+   "placement_gap": "",
+   "evidence": "engine/src/move_generation/move_generation_trainer.rs:304, 1035-1045; engine/src/actions/apply_trainer_action.rs:281, 578-602; engine/src/actions/apply_action.rs:907-918; engine/src/state/mod.rs:1267-1273; engine/src/players/value_functions.rs:516, 523, 667-672 (flat Tool flag); engine/src/state/played_card.rs:290-309 (HP Tools); value_functions.rs:512 (only own retreat cost); value_functions.rs:1249-1530 (under kp, clock damage has no defender modifiers)",
+   "audit_consistent": "Mostly. It is legal whenever any Tool or Stadium is in play, including when all of them are the bot's own (1035-1045). In that case the score says to hold it. The audit cannot tell which offered turns had an opponent target.",
+   "fix_sketch": "Replace the flat 10 for any Tool on the Active with each Tool's effect priced where it acts: HP, damage reduction through the existing persistent_defender_damage, and retreat cost for both sides.",
+   "skeptic_corrections": [
+    {
+     "card": "Field Blower",
+     "field": "what_the_bot_sees",
+     "was": "lost HP when the Tool is Giant, Leaf or Elegant Cape",
+     "should_be": "The HP Tools are Giant Cape (+20), Leaf Cape (+30, Grass only), Elegant Cape (+30, Stage 1 only) and Ancient Booster Energy Capsule (+40, Ancient Pokémon only; in no audited list). The row also leaves out that when the lost HP leaves damage at or above the new HP, the Pokémon is knocked out right away and the point is scored (x10000), not just the HP.",
+     "evidence": "engine/src/state/played_card.rs:295-304; lib/card.py \"Ancient Booster Energy Capsule\" [B3a 069]: +40 HP; engine/src/actions/apply_action_helpers.rs:1070-1080 (catch-all handle_knockouts after every action; the comment names Field Blower discarding a Giant Cape); engine/src/actions/apply_action.rs:627 (every forecast outcome is wrapped with it)"
+    }
+   ],
+   "group": "items_stadiums"
+  },
+  {
+   "card": "Flame Patch",
+   "kind": "Item",
+   "text": "Attach a [R] Energy from your discard pile to your Active [R] Pokémon.",
+   "decks": "brews/08 0.802, dustin/06 0.838, research/blaziken 0.820 (meta)",
+   "score_sees": "priced",
+   "what_the_bot_sees": "One more Energy lands on the Fire Active straight away. The score reads it through the Active's readiness term (weighted x500), its HP x (Energy+1) value, and possibly a shorter clock for the bot. The card costs -1.",
+   "timing_gap": false,
+   "placement_gap": "",
+   "evidence": "engine/src/move_generation/move_generation_trainer.rs:236-238, 848-865; engine/src/actions/apply_trainer_action.rs:232-234, 2172-2174; engine/src/players/value_functions.rs:513-514, 1137-1150, 1616-1629, 1663-1735",
+   "audit_consistent": "Yes. 80-84%, and it is only legal with a Fire Active and Fire Energy in the discard.",
+   "fix_sketch": "none needed",
+   "skeptic_corrections": [],
+   "group": "items_stadiums"
+  },
+  {
+   "card": "Lucky Ice Pop",
+   "kind": "Item",
+   "text": "Heal 20 damage from your Active Pokémon. If you healed any damage in this way, flip a coin. If heads, put this Lucky Ice Pop into your hand instead of the discard pile.",
+   "decks": "brews/07 0.870, brews/08 0.914, brews/10 0.828, dustin/01 0.947, dustin/03 0.555, dustin/07 0.766, dustin/08 0.859, dustin/11 0.963, research/hydreigon 0.826 (meta)",
+   "score_sees": "priced",
+   "what_the_bot_sees": "It heals 20 on the Active right away. On heads (both branches are searched) the card comes back to hand for +1. The healed HP is read by the Pokémon term (HP x (Energy+1)), the Active safety term, and the opponent's clock against the bot (hits needed to knock it out). Net cost is -1 card, with +0.5 back on average.",
+   "timing_gap": false,
+   "placement_gap": "",
+   "evidence": "engine/src/move_generation/move_generation_trainer.rs:291, 452-459; engine/src/actions/apply_trainer_action.rs:270, 725-755; engine/src/players/value_functions.rs:510, 515, 903-915, 1137-1150, 1633-1642",
+   "audit_consistent": "Yes, 55-96%. Deck 03's 55% has a visible substitute: its two Indeedee ex have Watch Over (heal 20 from your Active once a turn, per lib/card.py), which the search uses for free. Soothing Shore does not explain it: a per-game split of games.jsonl.gz gives 35% in deck 03 games without Soothing Shore and 59% when it played its own.",
+   "fix_sketch": "none needed",
+   "skeptic_corrections": [],
+   "group": "items_stadiums"
+  },
+  {
+   "card": "Poké Ball",
+   "kind": "Item",
+   "text": "Put a random Basic Pokémon from your deck into your hand.",
+   "decks": "brews/01 0.885, 02 0.821, 03a 0.946, 03b 0.971, 04 0.791, 05 0.785, 05b 0.742, 06 0.895, 06b 0.824, 07 0.740, 08 0.375, 09 0.648, 10 0.860; dustin/01 0.648, 02 0.837, 03 0.587, 04 0.896, 05 0.721, 06 0.747, 07 0.524, 08 0.615, 09 0.801, 10 0.888, 11 0.834, 12 0.775, 13 0.648, 14 0.753, 15 0.682; research/altaria 0.848, blaziken 0.742, hydreigon 0.667, lucario 0.723, suicune 0.758, weezing 0.785 (all research = meta)",
+   "score_sees": "not_needed",
+   "what_the_bot_sees": "Each Basic left in the bot's own deck is a branch with its probability; the bot's own deck is known in the search. Moving a card from deck to hand scores +1 net whichever Basic it is: -1 for Poké Ball leaving the hand, +1 for the Basic arriving, +1 for a smaller deck. The Basic's real value shows when a later action in the line benches it and its HP enters the Pokémon term. With no Basic left in the deck, the card scores -1.",
+   "timing_gap": false,
+   "placement_gap": "",
+   "evidence": "engine/src/move_generation/move_generation_trainer.rs:140, 214, 564-570; engine/src/actions/apply_trainer_action.rs:99-101; engine/src/actions/shared_mutations.rs:16-28, 125ff; engine/src/observation.rs:144-158 (own deck known in search); engine/src/players/value_functions.rs:510-511",
+   "audit_consistent": "Yes. Brew 08's 37.5% fits a list with only 2 Basics (2 Entei ex), so its deck often holds none.",
+   "fix_sketch": "none needed",
+   "skeptic_corrections": [],
+   "group": "items_stadiums"
+  },
+  {
+   "card": "Pokémon Flute",
+   "kind": "Item",
+   "text": "Put a Basic Pokémon from your opponent's discard pile onto their Bench.",
+   "decks": "dustin/08 0.010, dustin/14 0.021",
+   "score_sees": "partly",
+   "what_the_bot_sees": "Playing it costs -1, and a second action picks which Basic goes onto the opponent's Bench. The score sees the opponent gaining a Pokémon: its HP adds to their Pokémon term, and against a thin opposing board it makes the bot's own clock longer. It never sees an easy prize: the bot's clock always takes the opponent's tankiest benched Pokémon as the next victim, so a low-HP target never shortens it. A pull-it-Active-and-knock-it-out payoff needs more actions than the 3-action horizon.",
+   "timing_gap": true,
+   "placement_gap": "",
+   "evidence": "engine/src/move_generation/move_generation_trainer.rs:184, 1120-1134; engine/src/actions/apply_trainer_action.rs:202, 1528-1554; engine/src/players/value_functions.rs:509, 920-951 (safest bench victim), 1137-1150; engine/src/players/expectiminimax_player.rs:940-969 (the stack choice costs an action)",
+   "audit_consistent": "Yes. It was legal on 105 and 143 turns but played 1 and 3 times. The score sees only the downside, so legality does not explain the low rate.",
+   "fix_sketch": "Have the attacker's clock pick the cheapest prize it can reach (lowest HP per point), not the tankiest benched Pokémon.",
+   "skeptic_corrections": [],
+   "group": "items_stadiums"
+  },
+  {
+   "card": "Quick-Grow Extract",
+   "kind": "Item",
+   "text": "Choose 1 of your [G] Pokémon in play. Put a random [G] Pokémon from your deck that evolves from that Pokémon onto that Pokémon to evolve it. You can't use this card during your first turn or on a Pokémon that was put into play this turn.",
+   "decks": "dustin/12 0.736, research/sceptile 0.649 (meta)",
+   "score_sees": "priced",
+   "what_the_bot_sees": "Playing it costs -1, and a second action picks a Grass Pokémon. The search branches over every matching Grass evolution in the bot's own deck, with probabilities. The evolution is scored at once: new HP in the Pokémon term, and the bot's clock drops by one evolution step (each step still to take counts as a turn). If no evolution is left in the deck, the card scores -1.",
+   "timing_gap": false,
+   "placement_gap": "",
+   "evidence": "engine/src/move_generation/move_generation_trainer.rs:265-267, 968-988; engine/src/actions/apply_trainer_action.rs:256-258, 2412-2433, 2462-2478; engine/src/actions/apply_action.rs:494-495; engine/src/observation.rs:390-397 (priced because the own deck is known); engine/src/players/value_functions.rs:814-831, 1137-1150",
+   "audit_consistent": "Yes. It is legal with any Grass Pokémon on the board even when no evolution is left in the deck (only 'deck nonempty' is checked), so some of the unplayed turns were turns where it would have done nothing.",
+   "fix_sketch": "none needed",
+   "skeptic_corrections": [
+    {
+     "card": "Quick-Grow Extract",
+     "field": "what_the_bot_sees",
+     "was": "Playing it costs -1, and a second action picks a Grass Pokémon.",
+     "should_be": "Playing it costs -1 and one search action. Picking the Grass Pokémon is free: the search resolves that choice at the same depth and takes the best option, so 2 of the bot's own actions are still left after it (not 1).",
+     "evidence": "engine/src/actions/apply_trainer_action.rs:2415-2431 (the only thing pushed is ChooseRandomEvolutionTarget choices); engine/src/players/expectiminimax_player.rs:663-677, 686-706 (a stack made only of ApplyQueuedAttackDamage/ChooseRandomEvolutionTarget is expanded with the same depth and maximized); engine/src/observation.rs:390-397 (priced, since the own deck is known)"
+    }
+   ],
+   "group": "items_stadiums"
+  },
+  {
+   "card": "Rare Candy",
+   "kind": "Item",
+   "text": "Choose 1 of your Basic Pokémon in play. If you have a Stage 2 card in your hand that evolves from that Pokémon, put that card onto the Basic Pokémon to evolve it, skipping the Stage 1. You can't use this card during your first turn or on a Basic Pokémon that was put into play this turn.",
+   "decks": "brews/01 0.989, 03b 0.976, 05 0.891, 05b 0.959, 09 0.909; dustin/01 0.942, 02 0.945, 05 0.968, 06 0.892; research/blaziken 0.871, hydreigon 0.917, suicune 0.916 (meta)",
+   "score_sees": "priced",
+   "what_the_bot_sees": "Playing it costs -1, and a second action picks the Basic and Stage 2 pair. The Stage 2 is scored at once: more HP in the Pokémon term, and the bot's own clock loses two evolution steps (x100 each), so the play scores very high. There is also a rules gap in the engine: the target list includes the Active even while the opponent has Aerodactyl ex (Primeval Law) in play, so every bot, kp3 included, can Rare Candy its Active there and is paid for it.",
+   "timing_gap": false,
+   "placement_gap": "",
+   "evidence": "engine/src/move_generation/move_generation_trainer.rs:130-133, 663-685 (checks only Malamar's Evolution Jammer); engine/src/actions/apply_trainer_action.rs:155, 1905-1928 (offers in_play_idx 0); engine/src/actions/apply_action.rs:1503-1542 (apply_evolve has no check); engine/src/move_generation/mod.rs:209-213, 251-258, 270-282 (ordinary Evolve does check Primeval Law); engine/src/card_logic/rare_candy.rs:94-110; engine/src/players/value_functions.rs:814-831",
+   "audit_consistent": "Yes, 87-99%. No audited deck or opponent list contains Aerodactyl ex (checked by name and by all five printing ids), so the rules gap did not touch these numbers.",
+   "fix_sketch": "Scoring: none needed. Rules: skip the Active as a Rare Candy target while has_opponent_aerodactyl_ex_primeval_law holds, in both can_play_rare_candy and rare_candy_effect.",
+   "skeptic_corrections": [
+    {
+     "card": "Rare Candy",
+     "field": "what_the_bot_sees",
+     "was": "Playing it costs -1, and a second action picks the Basic and Stage 2 pair.",
+     "should_be": "The cards cost -2: Rare Candy and the Stage 2 both leave the hand. This is tiny next to the Stage 2's HP and the 2 clock steps, so the conclusion stands.",
+     "evidence": "engine/src/actions/apply_action.rs:1533-1538 (apply_evolve with from_deck=false removes the Stage 2 from hand); engine/src/actions/apply_trainer_action.rs:1915-1919; engine/src/players/value_functions.rs:510"
+    }
+   ],
+   "group": "items_stadiums"
+  },
+  {
+   "card": "Repel",
+   "kind": "Item",
+   "text": "Switch out your opponent's Active Basic Pokémon to the Bench. (Your opponent chooses the new Active Pokémon.)",
+   "decks": "brews/07 0.515, brews/08 0.583",
+   "score_sees": "partly",
+   "what_the_bot_sees": "Playing it costs -1. The search takes the opponent's pick of a new Active as the pick worst for the bot, and then one more bot action fits, for example an attack into the new Active. The score sees the new Active: its readiness (the opponent's x500 readiness term, read from the board only), its HP, and anything the bot's attack does to it. It misses the tempo loss. The opponent's threat clock scans every Pokémon in play by missing Energy, Bench and Active alike, so a charged attacker pushed to the Bench still counts as ready. The opponent's retreat cost to bring it back is not in the score at all.",
+   "timing_gap": true,
+   "placement_gap": "",
+   "evidence": "engine/src/move_generation/move_generation_trainer.rs:147, 650-661; engine/src/actions/apply_trainer_action.rs:156, 856-869; engine/src/players/expectiminimax_player.rs:970-1021 (min over the opponent's Activate choice); engine/src/players/value_functions.rs:512-514, 796-838",
+   "audit_consistent": "Yes. 51-58%, and it is only legal when the opponent's Active is a Basic and they have a Bench.",
+   "fix_sketch": "In the threat clock, charge a benched threat its Active's retreat cost (or a turn) before it can attack.",
+   "skeptic_corrections": [
+    {
+     "card": "Repel",
+     "field": "what_the_bot_sees",
+     "was": "The score sees the new Active: its readiness ..., its HP, and anything the bot's attack does to it.",
+     "should_be": "The flat Tool flag also moves with the Active: pushing a Tool-holding Basic to the Bench is +10 for the bot, and a Tool on the new Active is -10, whatever the Tools do. The new Active's HP per KO point (active safety) also replaces the old one's.",
+     "evidence": "engine/src/players/value_functions.rs:515-516, 667-672, 1633-1642"
+    }
+   ],
+   "group": "items_stadiums"
+  },
+  {
+   "card": "Team Rocket's Goo-zooka",
+   "kind": "Item",
+   "text": "Until the end of your opponent's next turn, your opponent's Active Pokémon's Retreat Cost is 1 more.",
+   "decks": "brews/03a 0.033, brews/03b 0.021, dustin/12 0.361, dustin/14 0.042, dustin/15 0.046",
+   "score_sees": "partly",
+   "what_the_bot_sees": "Only -1, for the card leaving the hand. The +1 Retreat Cost sits on the opponent's Active until the end of their next turn. The score reads only the bot's own Active retreat cost; the opponent's is computed but never used. The search also stops before the opponent's turn begins.",
+   "timing_gap": true,
+   "placement_gap": "",
+   "evidence": "engine/src/move_generation/move_generation_trainer.rs:334-338; engine/src/actions/apply_trainer_action.rs:317-319, 421-427; engine/src/hooks/retreat.rs:222-232; engine/src/players/value_functions.rs:512 (the opponent's active_retreat_cost is computed at 590 and unused); engine/src/players/expectiminimax_player.rs:773-798; engine/src/players/mod.rs:502-512 (opponent_ply 0)",
+   "audit_consistent": "Yes. A per-game split of games.jsonl.gz (scratch census/ht_split2.py) gives 0.4-3.3% in games with no Hiking Trail (brews 03a and 03b, decks 14 and 15); 12-23% against t-blaziken, which plays Hiking Trail; and for deck 12, 16% without Hiking Trail, 32% against t-blaziken and 51% in games where it played its own Hiking Trail. Hiking Trail's refill makes any card worth +1 to play (see general findings). Deck 12's 36% is that credit, not Goo-zooka's effect. The remaining 16% in deck 12 is not explained by this check.",
+   "fix_sketch": "Score the opponent's Active retreat cost, which is already computed, or search one public opponent reply.",
+   "score_sees_reader": "invisible",
+   "skeptic_corrections": [
+    {
+     "card": "Team Rocket's Goo-zooka",
+     "field": "score_sees",
+     "was": "invisible",
+     "should_be": "partly. In deck 12, the only audited list that plays it often, Whimsicott ex's Grass Knot does 40 plus 30 for each Energy in the opponent's Active's Retreat Cost. The attack reads that cost when it resolves, Goo-zooka's +1 included, so Goo-zooka followed by Grass Knot in the same line (2 actions, or 3 with an attach) scores +30 damage. The +1 is still invisible otherwise: there is no opponent retreat term, and the clock has no case for this mechanic, so it uses the printed 40.",
+     "evidence": "lib/card.py \"Whimsicott ex\" [B1 016]: Grass Knot 40, 30 more per Energy in the opponent's Active's Retreat Cost; decks/dustin/12-ariados-whimsicott-ogerpon.txt:5 (2 Whimsicott ex B1 016). A census of decks/ finds no other retreat-cost attacker (Tangrowth, Team Rocket's Arbok absent). engine/src/actions/effect_mechanic_map.rs:2212-2217 (ExtraDamagePerRetreatCost 30); engine/src/actions/apply_attack_action.rs:889-891, 4383-4392 (damage = base + get_retreat_cost_for_player(opponent Active) x 30); engine/src/hooks/retreat.rs:222-232 (CardEffect::IncreasedRetreatCost is added to that cost); engine/src/actions/apply_trainer_action.rs:421-427 (Goo-zooka adds IncreasedRetreatCost{1}); engine/src/players/value_functions.rs:1294-1528 (no ExtraDamagePerRetreatCost case, falls to fixed_damage)"
+    },
+    {
+     "card": "Team Rocket's Goo-zooka",
+     "field": "what_the_bot_sees / audit_consistent",
+     "was": "Only -1, for the card leaving the hand ... The remaining 16% in deck 12 is not explained by this check.",
+     "should_be": "-1 for the card, plus +30 damage (lost HP or a knockout on the opponent's side) when Whimsicott ex uses Grass Knot later in the same line. That most likely explains deck 12's 16% in games without Hiking Trail (262 offered, 42 played; ht_split2.py re-run matches the reader's numbers). Decks 03a, 03b, 14 and 15 have no such attacker and stay at 0.4-3.3%.",
+     "evidence": "Same as above, plus a re-run of scratch census/ht_split2.py: deck 12 noHT 0.160, oppHT 0.320, ownHT 0.512; 03b 0.004, 03a 0.010, 14 0.018, 15 0.033"
+    }
+   ],
+   "group": "items_stadiums"
+  },
+  {
+   "card": "X Speed",
+   "kind": "Item",
+   "text": "During this turn, the Retreat Cost of your Active Pokémon is 1 less.",
+   "decks": "brews/02 0.250, 03a 0.239, 04 0.202, 05 0.123, 07 0.185; dustin/04 0.198, dustin/12 0.394; research/lucario 0.191, vespiquen 0.204, weezing 0.221 (meta)",
+   "score_sees": "not_needed",
+   "what_the_bot_sees": "On its own it scores -1. The retreat cost the score reads leaves out this-turn discounts, so X Speed is not counted as lasting. Its value appears only when a Retreat follows in the same 3-action line. The search sees that retreat: one less Energy discarded and the new Active.",
+   "timing_gap": false,
+   "placement_gap": "",
+   "evidence": "engine/src/move_generation/move_generation_trainer.rs:213; engine/src/actions/apply_trainer_action.rs:98, 834-836; engine/src/hooks/retreat.rs:107-116, 148-163; engine/src/players/value_functions.rs:640-664",
+   "audit_consistent": "Yes. It is always legal but only useful on a turn the bot retreats. Deck 12's 39% splits into 57% in games where it played Hiking Trail and 10% in games without it, the same refill credit.",
+   "fix_sketch": "none needed",
+   "skeptic_corrections": [],
+   "group": "items_stadiums"
+  },
+  {
+   "card": "Arcade",
+   "kind": "Stadium",
+   "text": "Once during each player's turn, that player may flip 3 coins. If all of them are heads, that player draws cards until they have 7 cards in their hand.",
+   "decks": "brews/04 0.591",
+   "score_sees": "partly",
+   "what_the_bot_sees": "Playing the Stadium scores -1 and does nothing by itself. A second action, Use Stadium, flips 3 coins: 1 time in 8 it draws to 7 cards, at +2 per card. Neither the bot's uses on later turns nor the opponent's uses on their turns are counted.",
+   "timing_gap": true,
+   "placement_gap": "",
+   "evidence": "engine/src/move_generation/move_generation_trainer.rs:87-92, 398-428; engine/src/actions/apply_trainer_action.rs:89-92; engine/src/actions/apply_action_helpers.rs:975-987; engine/src/move_generation/mod.rs:118-127; engine/src/stadiums.rs:230-235; engine/src/actions/apply_stadium_action.rs:24-46, 62-76; engine/src/players/value_functions.rs:510-511; engine/src/players/expectiminimax_player.rs:773-798",
+   "audit_consistent": "Yes. In the score, playing it is roughly break-even on the turn it is played, which fits 59%.",
+   "fix_sketch": "Price an in-play Stadium's once-a-turn effect as expected value per future turn, for both players.",
+   "skeptic_corrections": [],
+   "group": "items_stadiums"
+  },
+  {
+   "card": "Arena of Antiquity",
+   "kind": "Stadium",
+   "text": "Attacks used by each [F] Pokémon in play (both yours and your opponent's) do +20 damage to the opponent's Active Pokémon ex.",
+   "decks": "research/lucario 0.224 (meta)",
+   "score_sees": "partly",
+   "what_the_bot_sees": "Playing it costs -1, plus whatever replacing the opponent's Stadium changes. The +20 counts only if the bot's own Fighting Pokémon attacks an ex Active later in the same line. Both threat clocks use attack damage without any Stadium bonus, so the +20 on later turns is never counted, neither for the bot nor for the opponent's Fighting attackers hitting the bot's ex (Mega Lucario ex).",
+   "timing_gap": true,
+   "placement_gap": "",
+   "evidence": "engine/src/stadiums.rs:139-158; engine/src/hooks/core.rs:1817-1832; engine/src/players/value_functions.rs:788-794, 1249-1530 (no Stadium term); engine/src/actions/apply_trainer_action.rs:89-92",
+   "audit_consistent": "Yes. It only pays on a turn the bot attacks an ex, which fits 22%.",
+   "fix_sketch": "Add Stadium and board damage modifiers to the clock's damage estimate, for both sides.",
+   "skeptic_corrections": [],
+   "group": "items_stadiums"
+  },
+  {
+   "card": "Fragrant Forest",
+   "kind": "Stadium",
+   "text": "Once during each player's turn, that player may put a random Basic [G] Pokémon from their deck into their hand.",
+   "decks": "research/sceptile 0.585 (meta), research/vespiquen 0.702 (meta)",
+   "score_sees": "partly",
+   "what_the_bot_sees": "Playing it costs -1. A second action, Use Stadium, puts a random Basic Grass Pokémon from the bot's deck into its hand, one branch per card, for +2 (hand +1, deck -1). It scores more if a third action benches that Pokémon. Uses on later turns and the opponent's uses are not counted.",
+   "timing_gap": true,
+   "placement_gap": "",
+   "evidence": "engine/src/stadiums.rs:160-174; engine/src/actions/apply_stadium_action.rs:141-150; engine/src/move_generation/mod.rs:118-127; engine/src/players/value_functions.rs:510-511",
+   "audit_consistent": "Yes. It nets about +1 on the turn it is played when a Basic Grass is left, which fits 58-70%.",
+   "fix_sketch": "Same as Arcade: expected value per future turn for both players.",
+   "skeptic_corrections": [],
+   "group": "items_stadiums"
+  },
+  {
+   "card": "Hiking Trail",
+   "kind": "Stadium",
+   "text": "At the end of each player's turn, that player draws cards until they have 3 cards in their hand.",
+   "decks": "dustin/06 0.556, dustin/10 0.656, dustin/12 0.621, research/blaziken 0.518 (meta)",
+   "score_sees": "partly",
+   "what_the_bot_sees": "Playing it costs -1. If the line ends the bot's turn (an attack, or End Turn within 3 actions), the bot draws up to 3 cards at +2 per card. The search never sees the opponent's refill at the end of their turn, which would cost the bot 2 points per card. While Hiking Trail is in play, any card played when the hand will end under 3 comes back as a draw, so playing any card nets +1 whatever it does.",
+   "timing_gap": true,
+   "placement_gap": "",
+   "evidence": "engine/src/hooks/core.rs:554-567; engine/src/actions/apply_action_helpers.rs:87-117 (on_end_turn runs inside the End Turn outcome); engine/src/players/expectiminimax_player.rs:633-657, 773-798; engine/src/players/value_functions.rs:510-511",
+   "audit_consistent": "Yes. 52-66%, and it is only offered when not already in play.",
+   "fix_sketch": "Apply both players' end-of-turn Stadium effects at the leaf, or price the refill for both sides per turn.",
+   "skeptic_corrections": [
+    {
+     "card": "Hiking Trail",
+     "field": "what_the_bot_sees",
+     "was": "Playing it costs -1. If the line ends the bot's turn ..., the bot draws up to 3 cards at +2 per card. (no other same-line effect mentioned)",
+     "should_be": "There is also this: dustin/06 and research/blaziken run Castform Sunny Form, whose Sunny Scorching burns the opponent's Active only if a Stadium is in play. With Hiking Trail placed earlier in the line and no other Stadium out, the Burn lands, and its 20 checkup damage is scored inside the line, because the attack's forced end of turn runs the checkup.",
+     "evidence": "lib/card.py \"Castform Sunny Form\" [B3 024]: [R] Sunny Scorching 30, Burned if a Stadium is in play; decks/dustin/06-mega-blaziken-tournament-list.txt:5, decks/research/blaziken.txt:5 (B3 024); engine/src/actions/effect_mechanic_map.rs:3247-3251; engine/src/actions/apply_attack_action.rs:1182-1184, 3399-3411; engine/src/actions/apply_action_helpers.rs:87-117, 276-279, 301-303 (burn 20 at checkup, both players); engine/src/players/expectiminimax_player.rs:633-657"
+    }
+   ],
+   "group": "items_stadiums"
+  },
+  {
+   "card": "Mesagoza",
+   "kind": "Stadium",
+   "text": "Once during each player's turn, that player may flip a coin. If heads, that player puts a random Pokémon from their deck into their hand.",
+   "decks": "dustin/01 0.722, dustin/08 0.537",
+   "score_sees": "partly",
+   "what_the_bot_sees": "Playing it costs -1. Use Stadium flips a coin; on heads a random Pokémon from the bot's deck goes to hand (each card is a branch), worth +2 half the time. Uses on later turns and the opponent's uses are not counted.",
+   "timing_gap": true,
+   "placement_gap": "",
+   "evidence": "engine/src/stadiums.rs:89-104; engine/src/actions/apply_stadium_action.rs:116-139; engine/src/move_generation/mod.rs:118-127; engine/src/players/value_functions.rs:510-511",
+   "audit_consistent": "Yes. It is about break-even on the turn it is played, which fits 54-72%.",
+   "fix_sketch": "Same as Arcade: expected value per future turn for both players.",
+   "skeptic_corrections": [],
+   "group": "items_stadiums"
+  },
+  {
+   "card": "Peculiar Plaza",
+   "kind": "Stadium",
+   "text": "The Retreat Cost of each [P] Pokémon in play (both yours and your opponent's) is 2 less.",
+   "decks": "brews/05b 0.913, brews/10 0.540",
+   "score_sees": "partly",
+   "what_the_bot_sees": "Playing it costs -1. It lowers the retreat cost of the bot's own Psychic Active by 2 on the board. The score counts that at 1 point per Energy, plus any retreat it enables in the same line. The opponent's Psychic Pokémon get the same discount, but the score never reads the opponent's retreat cost.",
+   "timing_gap": true,
+   "placement_gap": "",
+   "evidence": "engine/src/stadiums.rs:119-127; engine/src/hooks/retreat.rs:207-213 (part of the board cost, not a this-turn discount); engine/src/players/value_functions.rs:512, 640-664",
+   "audit_consistent": "Yes. It is higher in the Psychic brew 05b (91%) than in brew 10 (54%).",
+   "fix_sketch": "Score the opponent's Active retreat cost too.",
+   "skeptic_corrections": [],
+   "group": "items_stadiums"
+  },
+  {
+   "card": "Rainbow Cave",
+   "kind": "Stadium",
+   "text": "Once during each player's turn, that player may discard the Energy that has been generated in their Energy Zone. If they do, the next Energy is produced.",
+   "decks": "brews/08 0.096, dustin/08 0.067, dustin/11 0.084",
+   "score_sees": "partly",
+   "what_the_bot_sees": "Playing it costs -1. A second action, Use Stadium, swaps this turn's Energy for the previewed next one and puts the old one in the discard Energy pile. The score only gains if a third action attaches the new Energy where its type helps. The k score does not value Energy in the discard pile (that term is off), so fuel for Flame Patch is worth 0, and play + use + Flame Patch + attach takes 4 actions, one more than the horizon. Uses on later turns and the opponent's uses are not counted.",
+   "timing_gap": true,
+   "placement_gap": "",
+   "evidence": "engine/src/stadiums.rs:195-205; engine/src/actions/apply_stadium_action.rs:78-93; engine/src/state/mod.rs:931-940; engine/src/players/value_functions.rs:176-187 (reserve_aware false), 1193-1197, 1204-1223; engine/src/players/expectiminimax_player.rs:940-969",
+   "audit_consistent": "Yes. On most turns it offers nothing the score can see, and in brew 08 (Fire only) the swap always gives the same type, which fits 7-10%.",
+   "fix_sketch": "Price how well the Energy Zone's current type fits, discard Energy that the bot's own recyclers (Items included) can reach, and the Stadium's per-turn option.",
+   "skeptic_corrections": [],
+   "group": "items_stadiums"
+  },
+  {
+   "card": "Soothing Shore",
+   "kind": "Stadium",
+   "text": "At the end of each player's turn, that player heals 20 damage from each of their Pokémon that has any [W] Energy attached.",
+   "decks": "dustin/03 0.234, dustin/13 0.375, research/suicune 0.418 (meta)",
+   "score_sees": "partly",
+   "what_the_bot_sees": "Playing it costs -1. If the line ends the bot's turn, each of its own Pokémon with Water Energy heals 20. That HP counts in the Pokémon term, the safety term and the opponent's clock. The opponent's heal at the end of their turn and the bot's own heals on later turns are not counted.",
+   "timing_gap": true,
+   "placement_gap": "",
+   "evidence": "engine/src/hooks/core.rs:569, 607-616; engine/src/actions/apply_action_helpers.rs:87-117; engine/src/players/expectiminimax_player.rs:773-798",
+   "audit_consistent": "Yes. It scores -1 unless a damaged Pokémon with Water Energy heals this turn, which fits 23-42%.",
+   "fix_sketch": "Apply end-of-turn Stadium effects for both players at the leaf, or price them per turn.",
+   "skeptic_corrections": [],
+   "group": "items_stadiums"
+  },
+  {
+   "card": "Starting Plains",
+   "kind": "Stadium",
+   "text": "Each Basic Pokémon in play (both yours and your opponent's) gets +20 HP.",
+   "decks": "brews/07 0.664, 08 0.558, 09 0.536, 10 0.833; dustin/02 0.461, 04 0.674, 07 0.473",
+   "score_sees": "priced",
+   "what_the_bot_sees": "Playing it costs -1, and every Basic in play on both sides gets +20 HP at once. The HP is read on both sides: Pokémon term, Active safety and both threat clocks. When it is later replaced, Basics whose damage now exceeds their HP are knocked out right away.",
+   "timing_gap": false,
+   "placement_gap": "",
+   "evidence": "engine/src/stadiums.rs:115-117; engine/src/state/played_card.rs:257-267, 290-309; engine/src/state/mod.rs:607-648; engine/src/actions/apply_action_helpers.rs:975-987; engine/src/players/value_functions.rs:903-915, 1137-1150, 1633-1642",
+   "audit_consistent": "Yes. The net depends on how many Basics each side has, which fits 46-83%.",
+   "fix_sketch": "none needed",
+   "skeptic_corrections": [],
+   "group": "items_stadiums"
+  },
+  {
+   "card": "Training Area",
+   "kind": "Stadium",
+   "text": "Attacks used by Stage 1 Pokémon in play (both yours and your opponent's) do +10 damage to the opponent's Active Pokémon.",
+   "decks": "dustin/09 0.342, research/altaria 0.326 (meta)",
+   "score_sees": "partly",
+   "what_the_bot_sees": "Playing it costs -1, plus whatever replacing the opponent's Stadium changes. The +10 counts only if the bot's own Stage 1 attacks the Active later in the same line. Both threat clocks ignore it, so the +10 on later turns, for the bot and for the opponent's Stage 1 attackers, is never counted.",
+   "timing_gap": true,
+   "placement_gap": "",
+   "evidence": "engine/src/stadiums.rs:129-137; engine/src/hooks/core.rs:1817-1832; engine/src/players/value_functions.rs:788-794, 1249-1530",
+   "audit_consistent": "Yes. It only pays on the turn the bot attacks with a Stage 1, which fits 33-34%.",
+   "fix_sketch": "Same as Arena of Antiquity: add Stadium damage modifiers to the clock's damage estimate, for both sides.",
+   "skeptic_corrections": [],
+   "group": "items_stadiums"
+  },
+  {
+   "group": "items_stadiums",
+   "card": "(general: General finding 4 (retreat cost is one-sided))",
+   "skeptic_corrections": [
+    {
+     "card": "General finding 4 (retreat cost is one-sided)",
+     "field": "claim",
+     "was": "That makes Goo-zooka fully invisible, and also hides ... Ariados' Trap Territory in deck 12.",
+     "should_be": "Goo-zooka's +1 and Trap Territory's +1 are invisible as a retreat-cost term and in the clock. In deck 12, though, both reach the score through Whimsicott ex's Grass Knot in any same-line attack, because that attack's damage reads the opponent's Active retreat cost with both increases included.",
+     "evidence": "engine/src/hooks/retreat.rs:222-245 (IncreasedRetreatCost and Trap Territory both inside get_retreat_cost_for_player_internal); engine/src/actions/apply_attack_action.rs:4388-4391"
+    }
+   ]
+  },
+  {
+   "group": "items_stadiums",
+   "card": "(general: General finding 8 (horizon))",
+   "skeptic_corrections": [
+    {
+     "card": "General finding 8 (horizon)",
+     "field": "claim",
+     "was": "Each stack choice costs one of them: Field Blower's target, Rare Candy's pair, Flute's Basic, Quick-Grow's target, retreat Energy, and the opponent's Activate after Repel ... Only an attack's forced end of turn, coin choices and promotions are free (633-657, 663-771).",
+     "should_be": "Quick-Grow Extract's target (ChooseRandomEvolutionTarget) is free, like queued attack-damage targets, so remove it from the costly list. Retreat Energy costs an action only when there is more than one way to pay. With a single way, the Retreat resolves inside its own action. The rest stands: Field Blower's target, Rare Candy's Evolve pair, Flute's Basic and the opponent's Activate each cost one.",
+     "evidence": "engine/src/players/expectiminimax_player.rs:663-677; engine/src/actions/apply_action.rs:1439-1451 (finish_paid_retreat directly when choices.len()==1, else a ChooseRetreatEnergy stack)"
+    }
+   ]
+  },
+  {
+   "group": "items_stadiums",
+   "card": "(general: General finding 7 (Stadiums have no lasting value))",
+   "skeptic_corrections": [
+    {
+     "card": "General finding 7 (Stadiums have no lasting value)",
+     "field": "claim",
+     "was": "The score sees only (a) passive board changes ..., (b) this turn's Use Stadium ..., and (c) the bot's own end-of-turn effect if the line ends the turn.",
+     "should_be": "Add (d): a same-line attack that reads the Stadium. That covers Training Area +10 and Arena of Antiquity +20 (already in their rows) and the 'If a Stadium is in play' attacks, of which Castform Sunny Form's Burn is in the two Hiking Trail Blaziken lists. The conclusion (no value on later turns, for either side) stands.",
+     "evidence": "engine/src/hooks/core.rs:1817-1832; engine/src/actions/apply_attack_action.rs:3399-3411, 4515-4525; decks/dustin/06 and decks/research/blaziken.txt (B3 024)"
+    }
+   ]
+  }
+ ],
+ "general_findings": {
+  "tools": [
+   "Every Tool gets the same flat +10 when it sits on the bot's Active, and every card leaving the hand costs 1. So a Tool on a Tool-free Active nets +9 whatever it does, and on the Bench it nets -1 plus whatever its effect adds. Only the HP Capes add anything on the Bench. Evidence: engine/src/players/value_functions.rs:31, 50, 510, 516, 588, 601, 667-672 (reads has_tool_attached, engine/src/state/played_card.rs:336-338). This fits the audit: all 13 Tools are played in 0.83-0.99 of the games where they could be, and almost all attachments go to the Active (useless_tools.txt, the Active column at attach).",
+   "Effects that happen on the opponent's turn are invisible. kp3 searches no opponent actions (engine/src/players/mod.rs:502-511, opponent_ply 0) and scores the position at the turn boundary (engine/src/players/expectiminimax_player.rs:773-798, 914-917). kp3's value function has no defender damage modifiers either (value_functions.rs:176-187 + 421-431, EvalFeatures::OFF; kd has them at 216-228 via hooks/core.rs:1583-1644). This covers Rocky Helmet, Poison Barb, Heavy Helmet, Metal Core Barrier, the -10 and immunity of Steel Apron, Protective Poncho and Lucky Egg.",
+   "What the score does see of Tools: HP (Giant, Leaf and Elegant Cape through get_effective_total_hp, played_card.rs:290-310, read by the Pokémon value term at value_functions.rs:1137-1150, Active safety at 1633-1642, and the clock at 903-950); the Active's Retreat Cost (Small Balloon and Inflatable Boat, hooks/retreat.rs:136-146 read at value_functions.rs:640-664, Active only, 1 point per Energy); and end-of-own-turn effects when the search line reaches EndTurn or an attack (Deceptive Needle, hooks/core.rs:571, 580-603, run from the EndTurn forecast at actions/apply_action_helpers.rs:47-112).",
+   "The flat +10 never checks the Tool's condition on its holder. The engine gates each effect by holder (hooks/core.rs:584-587, 703-713, 728-733, 754-761; played_card.rs:296-301; hooks/retreat.rs:136-146; the comment at tools.rs:125-128 says the same), but the bonus reads only whether any Tool is attached. So every conditional Tool scores +9 on an ineligible Active. That is exactly the waste in useless_tools.txt: Small Balloon on Espeon, Igglybuff and Mega Altaria ex; Heavy Helmet on Glimmora and Indeedee ex; Elegant Cape on Basics; Metal Core Barrier and Steel Apron on Indeedee ex; Deceptive Needle on Happiny. Protective Poncho is the extreme case: the only slot the score rewards is the one slot where it never works.",
+   "A Tool uses 2 of kp3's 3 search actions. Playing it pushes a separate choice of holder (actions/apply_trainer_action.rs:1888-1902; move_generation/move_generation_trainer.rs:387-396), and choosing the holder spends a ply like any own action (expectiminimax_player.rs:940-960). So only one action fits after the attach. An end-of-turn effect (Needle) is seen only when that action is an attack or EndTurn (an attack's forced end of turn is resolved without a ply, expectiminimax_player.rs:633-657); lines that stop at depth 0 on the bot's own turn are scored statically (800-905).",
+   "Public pricing (the only difference between kp3 and k3) touches exactly one Tool in this group, Lucky Egg. Its text has both 'opponent' and 'hand', so k3's text rule leaves its Play unpriced (observation.rs:444-485) and scores it as the position before playing it (expectiminimax_player.rs:441-453). kp3 audits the text (public_pricing_player.rs:57) and prices it like any Tool, which only adds the flat +10; the draw stays invisible. No other Tool text here mentions the opponent's hand or deck, so for those kp3 plays exactly as k3.",
+   "The only place kp3 looks at the opponent's next attack is the public-reply loss certificate, and it refuses any board with a Tool other than Giant Cape (players/public_reply.rs:604-610, 673-683). It also refuses any search line that contains a Tool play, because only X Speed, Retreat, EndTurn and Attack keep the line eligible (public_reply.rs:233-260). So a defensive Tool never gets credit for surviving a lethal hit. The flip side is bigger: a line that plays any Tool (or attaches Energy, or anything else outside that list) can never be scored as a proven loss. Giant Cape's +20 HP is modeled there, but only for a Cape attached before the current decision.",
+   "The opponent's Tools are seen; the bot's own are not. When kp3 attacks into an opponent's Active holding Heavy Helmet, Metal Core Barrier, Steel Apron or Rocky Helmet, or snipes a Poncho-wearing Benched Pokémon, the damage change and the back-damage happen inside kp3's own turn (hooks/core.rs:1647+ modify_damage, 1707-1715; actions/apply_action_helpers.rs:595-602), so they are priced. The same card is invisible to kp3 when it holds it itself. The difference is purely timing.",
+   "Per-turn play rates understate how often Tools get played. Per game it is 0.83-0.99 for every Tool. Per-turn rates are diluted by second copies and by turns when only Bench slots were free (the Active already had a Tool), where a Tool whose effect the score can't see is worth -1. The lowest per-turn rates are all in decks with 2-3 Tool kinds sharing one Active: brew-03a Poison Barb 0.452 (with Giant Cape and Rocky Helmet), Lucky Egg 0.516-0.565 (with Giant Cape), Suicune's Inflatable Boat 0.639 (with Giant Cape).",
+   "Outside the Tool group, on the relayed report that Rare Candy can't be used on the Active against Aerodactyl ex: the engine does allow it. lib/card.py gives Primeval Law as 'Your opponent can't play any Pokémon from their hand to evolve their Active Pokémon.' The engine enforces that only for ordinary evolution (engine/src/move_generation/mod.rs:252-258, can_evolve_at_position; lookup at 270-282). Rare Candy's legality check (move_generation/move_generation_trainer.rs:663-685) looks only at Malamar's NoEvolutionFromHand (move_generation/mod.rs:263-268). Its resolution (actions/apply_trainer_action.rs:1905-1928) offers every Basic in play, the Active (slot 0) included, with no Primeval Law check. This is an engine rules bug, not a kp3 scoring issue; the repo is read-only here, so it is flagged, not fixed."
+  ],
+  "supporters": [
+   "Every Supporter effect that lasts into the opponent's turn is invisible or only proxied. kp3's search stops at the end of its own turn (opponent_ply 0: expectiminimax_player.rs:97-108, 773-797, 914-918). The value function has no TurnEffect term at all (none appears in value_functions.rs), and it reads no Special Condition: the status-clock code at value_functions.rs:881-892 is behind a feature that is off by default (engine/Cargo.toml:31-38), and the official build uses default features (rl/engine-2026-09-25/README.md:23). Results: Cheren and Jasmine count as a lost card; Master Plan's lasting confusion, Pokemon Center Lady's lasting cure and Mars's disruption are not seen; Guzma misses Tools that act on the opponent's turn.",
+   "Effects that pay off within the bot's own turn are fully priced by the search itself: damage bonuses (Red, Cynthia, Korrina, Clemont's Backpack via Clemont), Iris's extra point, Will's forced heads, gusts (Sabrina, Cyrus), Psychic's Energy move and Wally's attach. The condition is that the payoff fits in the plies left. kp3 gets 3 own actions per decision (players/mod.rs:502-512, max_depth 3; the root gets max_depth-1 at expectiminimax_player.rs:323; each own action costs 1 at :950), and the Supporter uses one of them. None of these cards has a low rate caused by a blind spot: Iris 6%, Cynthia 24%, Red 23-33%, Korrina 34% and Wally 50% are turns where the bonus has nothing to act on.",
+   "Supporters that open a choice (heal target for Erika, Lillie and Pokemon Center Lady; switch target for Cyrus; Psychic's source; Wally's target; Ilima's target; Team Rocket's Boss's selection) spend a second ply on that choice (expectiminimax_player.rs:940-969). Played as the last ply, the choice is still pending when the leaf is scored at depth 0 (:800-906), so the card counts as lost with no effect. For Sabrina, the opponent's choice is also a ply, and the search assumes their worst-for-the-bot pick (:970-1020). Irida, Guzma, Mars, the draws and the deck searches resolve inline and use no extra ply.",
+   "Hand and deck counting is what prices the draw and disruption Supporters: score += (own hand - opponent's hand) x1 + (opponent's deck - own deck) x1 (value_functions.rs:510-511, 588-589). A card drawn is +2, a card played is -1 (the Supporter is discarded from hand at apply_action_helpers.rs:990-991), and each card moved from the opponent's hand to their deck is +2. That makes Professor's Research +3 net and Copycat -1 + 2(n-h), and it is the only thing kp3 counts for Mars. Correction to the earlier note: the value adds +1 per card in the bot's hand. It does not subtract per card held; what it charges is -1 per card played.",
+   "Public pricing matters for exactly three Supporters in the group: Copycat, Mars and Team Rocket's Boss (AUDITED_TEXTS at public_pricing_player.rs:80, 93, 64; lifted at observation.rs:478-485). k3 leaves all three unpriced. Under kp3, Copycat and Mars are priced by public counts, but Team Rocket's Boss still sees nothing, because an Unknown opponent card is never a Basic (apply_trainer_action.rs:340-344). Its in-turn payoff (Suicune ex's Crystal Waltz, TR Persian's Dangerous Rogue) is invisible for lack of information, not because of timing.",
+   "Draws and searches are priced differently. Professor's Research and Copycat draw from one sampled order of the bot's own deck, fixed once per decision (observation.rs:142-157; expectiminimax_player.rs:395-397; the upstream TODO at apply_trainer_action.rs:1848-1849). Deck searches (Lisia, Clemont, Gladion, Sightseer, Team Rocket's Researcher) enumerate every outcome exactly as chance branches (shared_mutations.rs:137-182, 433-482; team_rockets_researcher.rs:238-290; the Researcher is capped at 4,096 outcomes, and deck 14 needs 81).",
+   "Heals are priced through remaining HP: the Pokemon term is HP x (relevant Energy + 1) (value_functions.rs:1137-1150), the Active's safety is HP / KO points (:1633-1642), and the opponent's clock is turns to KO the bot's Pokemon, x100 (:903-950). On the opponent's side, the score reads the Active's online score (x500) and safety, so gusting is credited even without an attack. It never reads the opponent's retreat cost (only the bot's own, :512), so stranding a heavy retreater earns nothing extra.",
+   "No Supporter in the group is priced with the wrong sign. The low-rate ones are either invisible (Jasmine 1.2%, Cheren 2.3%, Team Rocket's Boss 2.7-2.8%) or partly priced (Master Plan 22-28%, Ilima 3.5-33%, Guzma 46%, Mars 48%). Each audited rate fits how much of the effect the score can see.",
+   "OUTSIDE THE SUPPORTER GROUP, but it is the user's message (Rare Candy vs Aerodactyl ex). The engine lets Rare Candy evolve the Active when the opponent has Aerodactyl ex in play. lib/card.py gives Primeval Law as 'Your opponent can't play any Pokémon from their hand to evolve their Active Pokémon.', and Rare Candy puts a Stage 2 card from hand onto the Basic. Ordinary evolution checks this ability (can_evolve_at_position, move_generation/mod.rs:252-258, 270-282, the only user of AbilityMechanic::PreventOpponentActiveEvolution). Rare Candy's check (move_generation_trainer.rs:663-685) looks only at Malamar's Evolution Jammer (is_evolution_from_hand_blocked), and rare_candy_effect (apply_trainer_action.rs:1905-1928) offers an Evolve for every Basic in play, including in_play_idx 0. No test covers Rare Candy with Aerodactyl ex (engine/tests has none). The fix is to drop the in_play_idx 0 targets in rare_candy_effect, and require another target in can_play_rare_candy, whenever the opponent has Primeval Law in play, matching can_evolve_at_position. Nothing was edited, since the repo is read-only for this task."
+  ],
+  "items_stadiums": [
+   "Rules bug from the user's report, confirmed in the code: Rare Candy can evolve the Active while the opponent has Aerodactyl ex (Primeval Law: 'Your opponent can't play any Pokémon from their hand to evolve their Active Pokémon.') in play. Ordinary evolution checks it (engine/src/move_generation/mod.rs:209-213, 251-258, 270-282). Rare Candy does not: can_play_rare_candy checks only Malamar's Evolution Jammer (move_generation_trainer.rs:668-671), rare_candy_effect offers in_play_idx 0 (apply_trainer_action.rs:1905-1928), and apply_evolve checks nothing (apply_action.rs:1503-1542). No test covers it (a search of engine/ for Rare Candy plus Aerodactyl or Primeval finds nothing). No deck under decks/ has Aerodactyl ex, by name or by any of its five printing ids, so the Sept 25 audit is unaffected. Any game against an Aerodactyl ex list is affected, and kp3 scores the illegal play highly (Stage 2 HP plus two evolution steps off its clock, value_functions.rs:814-831). A fix needs both the move generation and the choice list, otherwise the card can still be played with no legal target.",
+   "Public pricing (kp3 vs k3) changes nothing for these 21 cards. None of their texts mentions the opponent's hand or deck, and none is in AUDITED_TEXTS (public_pricing_player.rs:32-95). So the text rule (observation.rs:478-485) never fires for them. The own-hidden-zone rule (observation.rs:486-490) never fires in the bot's own search either, because search_state fills in the bot's own deck (observation.rs:144-158). kp3 plays these cards exactly as k3 does.",
+   "The search stops when the turn passes. kp3 has opponent_ply 0 (players/mod.rs:502-512), and the opponent's hidden hand ends the search at the start of their turn (expectiminimax_player.rs:773-798). So nothing done on or at the end of the opponent's turn is counted: Goo-zooka's +1 retreat; the opponent's own use of Arcade, Mesagoza, Fragrant Forest and Rainbow Cave; the opponent's Hiking Trail refill and Soothing Shore heal; Training Area and Arena of Antiquity bonuses on the opponent's attacks; and the tempo Repel costs the opponent. Effects that leave a lasting board number the score reads do carry over and are priced: HP (Starting Plains, Lucky Ice Pop), attached Energy (Flame Patch), evolutions (Rare Candy, Quick-Grow Extract), the bot's own Active retreat cost on the board (Peculiar Plaza) and the bot's own Active Tool flag.",
+   "Retreat cost is one-sided. The score uses only the bot's own Active retreat cost, at weight 1 (value_functions.rs:512), measured on the board without this-turn discounts (value_functions.rs:640-664, hooks/retreat.rs:107-116). The opponent's retreat cost is computed (value_functions.rs:590) but never used. That makes Goo-zooka fully invisible, and also hides Peculiar Plaza's discount on the opponent's Psychic Pokémon, Field Blower removing an opponent's Balloon or Boat, and Ariados' Trap Territory in deck 12.",
+   "The threat clocks ignore position and damage modifiers. The clock takes the opponent's best threat from every Pokémon they have in play by missing Energy, Bench and Active alike (value_functions.rs:796-838), so a charged attacker sent to the Bench by Repel still counts as ready. Clock damage is the attack's own estimate with no Stadium or turn-effect bonus (value_functions.rs:788-794, 1249-1530, compared with hooks/core.rs:1817-1832). Training Area, Arena of Antiquity and Clemont's Backpack count only when an attack happens inside the same 3-action line. For victims, the clock takes the tankiest benched Pokémon (value_functions.rs:920-931), so a weak target such as a Pokémon Flute Basic never makes a prize look closer.",
+   "Card counting: the score adds +1 for each card in the bot's hand and -1 for each card in its deck (value_functions.rs:510-511). Playing any card costs 1, a card drawn is worth +2, and a card searched out by an Item is +1. An Item whose effect the score can't see is always 1 point worse than holding it, which is why Goo-zooka is played 0.4-3.3% of the time. With Hiking Trail in play and the hand ending under 3, the refill draw (hooks/core.rs:554-567, run inside End Turn at apply_action_helpers.rs:87-117) pays that point back and adds one more, so playing any card nets +1. A per-game split of games.jsonl.gz (scratch census/ht_split2.py) shows it: Goo-zooka 0.4-3.3% with no Hiking Trail, 12-32% against t-blaziken (which plays Hiking Trail), and 51% in deck 12 games where deck 12 played its own. X Speed in deck 12 is 10% without Hiking Trail, 46% against t-blaziken, 57% with its own. The same arithmetic makes discarding a card right before Copycat (priced under kp) worth +1, because the card leaves the hand-plus-deck pool Copycat reshuffles; this is from the code only, not measured.",
+   "Stadiums have no lasting value in the score. Playing a Stadium has no effect of its own (apply_trainer_action.rs:89-92); it only places the card (apply_action_helpers.rs:975-987). value_functions.rs never reads active_stadium, and reads energy_zone only in kq's first_attack_turn (line 1034). The score sees only (a) passive board changes it already reads (HP from Starting Plains, the bot's own retreat cost from Peculiar Plaza), (b) this turn's Use Stadium, which costs a second action (move_generation/mod.rs:118-127), and (c) the bot's own end-of-turn effect if the line ends the turn. Uses on later turns and every benefit to the opponent except HP are invisible. That fits the 7-10% for Rainbow Cave and 22-42% for Arena of Antiquity, Soothing Shore and Training Area.",
+   "Horizon: kp3 searches 3 of its own actions (max_depth 3). Each stack choice costs one of them: Field Blower's target, Rare Candy's pair, Flute's Basic, Quick-Grow's target, retreat Energy, and the opponent's Activate after Repel (expectiminimax_player.rs:940-1021). Only an attack's forced end of turn, coin choices and promotions are free (633-657, 663-771). Two-step Stadiums therefore use 2 of the 3 actions before any follow-up, and the Rainbow Cave line (play, use, Flame Patch, attach) needs 4.",
+   "A flat Tool bonus reaches Field Blower too. Removing any Tool from the opponent's Active is +10 and from the bot's own Active is -10, whatever the Tool does (value_functions.rs:516, 667-672). Under kp, a defensive Tool's effect on later turns is not in the clock, because defender modifiers are kd-only (value_functions.rs:241-244, 847-874)."
+  ]
+ },
+ "skeptic_notes": {
+  "tools": [
+   "The reader covered every Tool in audit_trainers.tsv: 13 cards, all of kind 'Tool', none of kind 'Pokemon Tool'. All 13 card texts match lib/card.py exactly.",
+   "Verified as stated: the flat +10 (value_functions.rs:50, 516, 667-672 via played_card.rs:336-338); HP gating for Giant, Leaf and Elegant Cape (played_card.rs:295-301); Needle's [D]/Active gate (core.rs:580-603), which is visible through the EndTurn forecast (apply_action_helpers.rs:87-116) and the forced post-attack end, which the search resolves before its depth check (expectiminimax_player.rs:633-657 before 800); a Tool play takes 2 plies (apply_trainer_action.rs:1888-1902, expectiminimax_player.rs:940-960); Heavy Helmet, Barrier, Apron and Poncho engine gates; kd-only defender modifiers; the certificate admits only Giant Cape and only X Speed, Retreat, EndTurn and Attack prefixes (public_reply.rs:233-260, 604-610, 673-683).",
+   "Lucky Egg under public pricing is correct. It is in AUDITED_TEXTS (public_pricing_player.rs:57). The second hidden-zone rule (observation.rs:486-490, own zones with 'hand'/'draw') does not fire, because the bot's own deck is a known multiset in search, not Unknown (observation.rs:54-57, 144-157). No other Tool text has 'opponent' together with 'hand' or 'deck'.",
+   "The task preamble says the value function 'subtracts a small amount per card in hand'. That is backwards: it adds +1 per card in hand (value_functions.rs:45, 510, 588). A played card costs 1, and the rows handle this correctly.",
+   "General finding 6 overreaches with 'for those kp3 plays exactly as k3'. kp3 prices those Tool plays exactly as k3 does, but whole games still diverge through other audited texts, e.g. Copycat, which is in every table list (public_pricing_player.rs:371-373).",
+   "General finding 7 can be strengthened: the certificate refuses the whole board, not just the line, when EITHER side holds any Tool other than Giant Cape (public_reply.rs:594-610). An opponent's Rocky Helmet, for example, switches it off for every line.",
+   "The 'Energy' in HP x (Energy+1) is the relevant Energy: Energy toward the lexicographically largest attack cost, not all Energy attached (value_functions.rs:1616-1629).",
+   "In the Elegant Cape audit text, the list of never-evolved Basics leaves out Team Rocket's Drowzee: 19 of the 62 useless Capes in dustin/14 (useless_tools.txt:7, audit_tools.tsv:33).",
+   "A Small Balloon same-line nuance: when a retreat at ply 3 has more than one legal Energy payment, a choice frame is pushed (apply_action.rs:1439-1451), and at depth 0 that position is scored statically before payment and the swap.",
+   "Rare Candy vs Aerodactyl ex (the relayed user report) is confirmed as an engine rules bug. The only check of PreventOpponentActiveEvolution in engine/src is move_generation/mod.rs:279, reached from can_evolve_at_position (252-258), which runs only for ordinary evolution. can_play_rare_candy (move_generation_trainer.rs:663-685), can_rare_candy_evolve (card_logic/rare_candy.rs:94-110) and rare_candy_effect (apply_trainer_action.rs:1905-1928) have no Primeval Law check, so Rare Candy onto the Active is offered for both players against Aerodactyl ex. lib/card.py gives Primeval Law as 'Your opponent can't play any Pokémon from their hand to evolve their Active Pokémon.' The repo is read-only here, so this is flagged, not fixed.",
+   "Scratch files (card lookups and the overlap recount): C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\tools_audit\\census\\ (cards.sh, cards2.sh, cards3.sh, overlap.py, overlap.sh). No simulations were run."
+  ],
+  "supporters": [
+   "All 27 Supporter cards in audit_trainers.tsv are covered by the rows; none is missing.",
+   "The rest held up against the code and card texts (lib/card.py): the 3-ply budget (players/mod.rs:502-512; expectiminimax_player.rs:323 and 950), choice frames costing a ply (940-969), a choice left pending at depth 0 scoring as a lost card (800-906), the hand/deck arithmetic (value_functions.rs:508-511, 588-589; Supporter discarded at apply_action_helpers.rs:991), no TurnEffect term in value_functions.rs, status-clock off in the official build (Cargo.toml default = [], README built with plain cargo build --release), the three audited texts (public_pricing_player.rs:64, 80, 93), Unknown never being a Basic (apply_trainer_action.rs:340-344), exact deck searches (shared_mutations.rs:137-182, 433-482), Researcher at 81 of 4,096 for deck 14 (4 groups of 2), Iris IDs matching deck 11's Haxorus B2b 056, and Wally's Colorless paying only the C of Garchomp B4a 054's WFC.",
+   "Candidate cause for the few plays of Boss (9+9), Jasmine (6) and Cheren (7). This is not verified: games.jsonl.gz keeps per-game counts only. When the opponent has a certified immediate win, a line that only ends the turn, attacks or retreats is scored at the -100,000 loss value (expectiminimax_player.rs:773-797). Any other action (any Trainer except X Speed, or any Energy attach) invalidates the public-reply provenance (public_reply.rs:233-259, advanced at expectiminimax_player.rs:456), and that line falls back to the static score. So a Supporter with no visible effect (-1) beats passing (-100,000) whenever it is one of the few escape moves left. That fits 'a card lost' being played about 1-3% of the time.",
+   "Psychic, as an engine rule: MoveRandomOpponentEnergyToActive moves the source's LAST attached Energy, not a random one (apply_action.rs:928-933, a deliberate simplification noted in the code). Indeedee ex's Psychic damage counts Energy only, so that price is unaffected. The type moved is deterministic, though, in both real play and search. Also, without an attack the moved Energy changes both sides' Pokemon terms and can bring the opponent's threat closer in the clock, not only the online score.",
+   "Guzma wording: the row lists Poncho among in-turn effects, then says it misses Benched Tools beyond their HP. More exact: the search sees a removed Benched Tool's effect only if the bot damages that Pokemon this turn. It never sees what any Tool would have done on the opponent's turn.",
+   "Rare Candy vs Aerodactyl ex (the user's report): confirmed. The only evolution check against Primeval Law is can_evolve_at_position (move_generation/mod.rs:252-258, 270-282), and it is called only for ordinary evolution from hand (mod.rs:211-212). can_play_rare_candy (move_generation_trainer.rs:663-685) checks only first turn, Evolution Jammer and a valid pair. can_rare_candy_evolve takes no State (card_logic/rare_candy.rs:94-110). rare_candy_effect offers every Basic including slot 0 (apply_trainer_action.rs:1905-1928). No test in engine/tests or the mod.rs tests covers Rare Candy with Aerodactyl ex. The other two references to PreventOpponentActiveEvolution (move_generation_abilities.rs:209, apply_abilities_action.rs:271) only mark it passive. The proposed fix is right: filter in_play_idx 0 in rare_candy_effect, and require a non-Active pair in can_play_rare_candy, when has_opponent_aerodactyl_ex_primeval_law holds. Nothing was edited or built.",
+   "Scratch files: C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\tools_audit\\census\\sup_cards.out (card.py lookups), sup_cards.sh, sup_ids.sh."
+  ],
+  "items_stadiums": [
+   "No cards missing. All 21 Item and Stadium cards in rl/results/trainer_audit_2026-09-25/audit_trainers.tsv (94 Item rows, 27 Stadium rows) are covered. Team Rocket's Master Plan is tagged Supporter there. Every deck and play_rate number in the rows matches the TSV.",
+   "Confirmed without change: the Rare Candy / Aerodactyl ex rules gap from the user's report. can_play_rare_candy checks only Evolution Jammer (move_generation_trainer.rs:663-685). rare_candy_effect offers in_play_idx 0 (apply_trainer_action.rs:1905-1928). apply_evolve does no check (apply_action.rs:1503-1542). Ordinary evolution checks Primeval Law (move_generation/mod.rs:209-213, 251-258, 270-282). Rare Candy is the only from-hand evolution path besides ordinary Evolve (the other apply_evolve callers use from_deck=true). No test covers it. No list under decks/ (names or ids, research lists by id) has Aerodactyl ex.",
+   "Re-ran ht_split2.py and ss_split.py (light gz parsing only). Goo-zooka, X Speed and Lucky Ice Pop splits match the reader's figures exactly, e.g. deck 03 Lucky Ice Pop: noSS 0.353, ownSS 0.588.",
+   "Pokémon Flute fix sketch is doubtful. The clock's 'safest bench victim' order (value_functions.rs:920-931) stands for the defender's own choice of promotion. Having the attacker pick the cheapest prize would make the clock optimistic unless the deck can pull a Bench Pokémon into the Active Spot. The row's facts stand.",
+   "A narrow exception to 'the search stops at the turn': certified_public_reply_loss_value (expectiminimax_player.rs:523-556, 773-797) can charge a line a proven immediate opponent win. It fires only when every action in the line is admitted: X Speed, Retreat, End Turn, or a few attack shapes (public_reply.rs:233-260). Any other Item, Stadium, Use Stadium or attach voids it for that line. It never fires with a Stadium in play or with any Tool other than Giant Cape (public_reply.rs:584-610). X Speed is the only Item that keeps it. This changes no row.",
+   "Checked and found correct: the value weights (value_functions.rs:44-55; kp uses public_clock_effect_value_function: value_aware false, so HP x (Energy+1); clock on; effect_aware on), the root depth (max_depth-1 after the candidate, so 3 own actions), the Hiking Trail and Soothing Shore end-of-turn effects inside End Turn, Peculiar Plaza being part of the board retreat cost while X Speed is excluded (hooks/retreat.rs:107-163, 207-213), the Stadium play having no effect of its own (apply_trainer_action.rs:89-92), value_functions never reading active_stadium, and the Clemont's Backpack, Training Area and Arena bonuses applying only at attack time (hooks/core.rs:1069-1087, 1817-1832).",
+   "Small items not raised as corrections: Big Air Balloon is another retreat Tool that counts 0 on the opponent's side (in no audited list). Pokémon Flute also takes a card out of the opponent's discard (-0.1). Removing one of two Tools from a Revavroom leaves the flat flag unchanged.",
+   "Scratch scripts written this pass: census/refute_texts.sh, refute_texts2.sh, refute_texts3.sh, refute_splits.sh, refute_stadium_cards.py/.sh under C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\tools_audit\\census. Repo not modified."
+  ]
+ }
+}
