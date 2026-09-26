@@ -1,0 +1,616 @@
+[
+ {
+  "exam": {
+   "item": "rare_candy",
+   "file": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\aerodactly_ex_rare_candy_test.MP4",
+   "duration_s": 257.775,
+   "answer": "Rare Candy was refused. The video matches what Dustin reported. Dustin (Dacz8976) had Rare Candy and two Haxorus in hand. Card lookup: Haxorus is Stage 2 from Fraxure, and Fraxure is Stage 1 from Axew. His Active Basic Axew had been put on the Bench on turn 6 (about 167-171 s). On turn 8, which is not his first turn, he retreated Druddigon and promoted that Axew (233-238 s). The opponent's Active was Aerodactyl ex with Primeval Law (Active since about 161 s, 100 HP at the time of the attempts). He then tried Rare Candy twice. The first try was at 239.0 s: the card went to a full-size view at about 239.2 s, and at about 239.5-239.6 s a red banner said \"The conditions for using this Item card have not been met\". The banner stayed until at least 241 s. The second try was at about 254.5 s: same full-size view, and the same banner from about 254.8 s to 257 s. Both times the card stayed in hand; the hand-count badge still read 3. No target-choice step came up: after the full-size view closed (about 240.3 s and 255.2 s), none of Dustin's Pokémon were highlighted as a Rare Candy target. Nothing was greyed out beforehand either; the Rare Candy card looked normal in hand. On the Bench question: the video cannot answer it. Neither Benched Basic was a valid target anyway. Druddigon has no matching Stage 2 in hand, and the second Axew was drawn at 228 s and put on the Bench this same turn (229.5-231 s). Rare Candy's own text rules that Axew out. So the Active Axew was the only possible target. From that I infer the refusal came from Primeval Law. The game message is generic and does not name Aerodactyl.",
+   "evidence": [
+    {
+     "time_s": 163.8,
+     "seen": "Banner 'Your turn / Current turn: 6'. Opponent's Active is Aerodactyl ex, 140 HP, Primeval Law text visible. Dustin's Active is Druddigon and his Bench holds only Dragonair. His hand shows Rare Candy, Haxorus, Haxorus and Lucky Ice Pop.",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\rare_candy\\f_163.8.png"
+    },
+    {
+     "time_s": 161,
+     "seen": "The opponent promotes Aerodactyl ex to Active after Dustin gets '+1 point' (156-158 s). Seen on the 1 fps sheet; at 150 s the 140 HP card was on the opponent's Bench.",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\rare_candy\\sheet1s_150.jpg"
+    },
+    {
+     "time_s": 169.5,
+     "seen": "Turn 6: Axew (Basic, HP 70) is being played from hand to the Bench (left slot).",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\rare_candy\\f_169.5.png"
+    },
+    {
+     "time_s": 171,
+     "seen": "Turn 6: Axew is in the left Bench slot, the middle slot is empty, Dragonair is on the right, and the End Turn button is showing. Hand still has Rare Candy, Haxorus, Haxorus and Lucky Ice Pop.",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\rare_candy\\f_171.png"
+    },
+    {
+     "time_s": 226.5,
+     "seen": "Banner 'Your turn / Current turn: 8'. Opponent's Active is Aerodactyl ex at 100 HP; their Bench is Marshadow and Old Amber. Dustin's Bench is Axew (left, 70), an empty middle slot, and Dragonair. Hand: Rare Candy, Haxorus, Haxorus.",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\rare_candy\\f_226.5.png"
+    },
+    {
+     "time_s": 229.5,
+     "seen": "A second Axew, drawn at 228 s, is highlighted in hand. The middle Bench slot is still empty.",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\rare_candy\\f_229.5.png"
+    },
+    {
+     "time_s": 231,
+     "seen": "The second Axew is now in the middle Bench slot (put into play turn 8). Bench: Axew (old), Axew (new), Dragonair.",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\rare_candy\\f_231.png"
+    },
+    {
+     "time_s": 233,
+     "seen": "Druddigon (10 HP left) is enlarged with the retreat button highlighted.",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\rare_candy\\f_233.png"
+    },
+    {
+     "time_s": 235,
+     "seen": "Prompt 'Please choose a Pokémon to switch in'. Axew, Axew and Dragonair on the Bench are all highlighted.",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\rare_candy\\f_235.png"
+    },
+    {
+     "time_s": 237,
+     "seen": "Axew is shown moving up. The left Bench slot, where the turn-6 Axew sat, is empty, and the middle Axew is still on the Bench.",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\rare_candy\\f_237.png"
+    },
+    {
+     "time_s": 238,
+     "seen": "Active is now Axew (70). Bench: Druddigon (10), Axew (70, the one played this turn), Dragonair (80). Opponent's Active is Aerodactyl ex.",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\rare_candy\\f_238.png"
+    },
+    {
+     "time_s": 239,
+     "seen": "Rare Candy is raised and enlarged in hand. Badge '3' (hand count) appears; the hand is Rare Candy, Haxorus, Haxorus. End Turn button shows.",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\rare_candy\\f_239.png"
+    },
+    {
+     "time_s": 239.5,
+     "seen": "10 fps steps: full-size Rare Candy at about 239.2 s; the red message fades in at about 239.5 s and is fully visible by 239.6 s. The full-size view closes at about 240.3 s. The message stays on, and no Pokémon is highlighted as a target.",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\rare_candy\\sheet10fps_239.jpg"
+    },
+    {
+     "time_s": 240,
+     "seen": "Red banner 'The conditions for using this Item card have not been met' over the full-size Rare Candy card, which shows its printed text. Hand count 3.",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\rare_candy\\f_240.png"
+    },
+    {
+     "time_s": 241,
+     "seen": "Banner still up. Board unchanged: Active Axew is still Basic at 70 HP, and Rare Candy is still in hand. No Pokémon has a target highlight; only Dragonair and Rainbow Cave have their usual yellow ability/stadium glow.",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\rare_candy\\f_241.png"
+    },
+    {
+     "time_s": 242.5,
+     "seen": "Dustin enlarges the opponent's Active: Stage 1 Aerodactyl ex, HP 140, Ability Primeval Law, 'Your opponent can't play any Pokémon from their hand to evolve their Active Pokémon.'",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\rare_candy\\f_242.5.png"
+    },
+    {
+     "time_s": 246,
+     "seen": "The Energy Zone button is glowing and all of Dustin's Pokémon are highlighted. This is the Energy target highlight, not Rare Candy (Rare Candy sits in hand, not selected).",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\rare_candy\\f_246.png"
+    },
+    {
+     "time_s": 254.7,
+     "seen": "Second try, 10 fps steps: Rare Candy raised at about 254.5 s and full-size at about 254.7 s. The same red message appears at about 254.8-254.9 s. The view closes at about 255.2 s with the message still up.",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\rare_candy\\sheet10fps_253.6.jpg"
+    },
+    {
+     "time_s": 255.3,
+     "seen": "Red banner 'The conditions for using this Item card have not been met'. Active Axew is still Basic, now with 2 Energy icons and a cyan outline; that outline was already there from about 251.5 s, before Rare Candy was touched. Rare Candy and both Haxorus are still in hand.",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\rare_candy\\f_255.3.png"
+    }
+   ],
+   "confidence": "high",
+   "caveats": [
+    "No touch indicators in the recording, so I cannot tell whether Rare Candy was tapped or dragged. What shows: the card lifts in hand, goes full-size, and the red message appears about 0.3-0.5 s later.",
+    "While Rare Candy is full-size (about 239.2-240.2 s and 254.7-255.1 s) the board is mostly covered, so highlights underneath cannot be seen. Right after it closes, no Pokémon shows a Rare Candy target highlight.",
+    "The message is generic ('The conditions for using this Item card have not been met'). It does not name Primeval Law. Blaming Aerodactyl ex is my inference: the only possible target (the Active Axew, benched turn 6, now turn 8, Haxorus in hand) met every condition printed on Rare Candy.",
+    "The Bench question is not tested. No Benched Basic was a valid Rare Candy target: Druddigon has no matching Stage 2 in hand, and the other Axew was put into play this turn. So the video shows nothing about whether Rare Candy onto a Benched Basic is allowed with Aerodactyl ex in play.",
+    "The Active Axew became Active this turn by switching in after Druddigon's retreat; it was not put into play this turn. Under the card text that should not matter, but this video has no control case, such as the same situation without Aerodactyl ex.",
+    "The cyan outline on the Active Axew around 251.5-257 s is unexplained. It showed up after Dragon's Blessing added a second Energy, so it may mean Axew can attack now (inferred). It was there before Rare Candy was touched, so it is not a Rare Candy target prompt.",
+    "Card facts (Haxorus Stage 2 from Fraxure, Fraxure Stage 1 from Axew, Rare Candy text, Primeval Law text) come from lib/card.py and agree with the card text seen on screen."
+   ],
+   "other_rules_moments": [
+    "About 208-212 s: the opponent plays Giovanni, and the banner 'Attacks do +10 damage to the opponent's Active Pokémon' shows at 211-212 s (from 4 s and 1 s sheets).",
+    "About 214-216 s: Aerodactyl ex uses Land Crush on Druddigon for '90 Damage', taking it from 100 to 10 HP (80 + 10 from Giovanni). Seen on the 1 fps sheet sheet1s_210.jpg.",
+    "About 219-225 s: Rough Skin fires first (219 s), and Aerodactyl ex drops from 140 to 120 (220-221 s). Then Rocky Helmet fires (222 s) and it drops to 100 (223-225 s). So the Ability resolved before the Tool. From 1 fps sheets only, not stepped frame by frame.",
+    "About 233-238 s: Druddigon retreats (cost shown as 2 Colorless). At 228 s it had 2 Fighting Energy icons; after the retreat no Energy icons are visible on it on the Bench (238 s).",
+    "About 246-246.5 s: Dustin touches the Energy Zone and all his Pokémon are highlighted as targets. I cannot tell whether an Energy was attached.",
+    "About 247-250 s: Dragonair's Dragon's Blessing is used from the Bench. The Active Axew has 1 Energy icon at 246 s and 2 at 255.3 s (a Fighting icon added)."
+   ]
+  },
+  "check": {
+   "item": "rare_candy_check",
+   "agrees": true,
+   "disagreements": [
+    "No factual disagreement at any timestamp the first examiner cited. I re-extracted my own frames at 163.8, 169.5, 171, 226.5, 229.5, 231, 235, 236, 237, 238, 239, 240, 241, 255.3 and 257, plus 10 fps steps at 235-238.1, 238.6-240.9 and 253.8-256.1. All of them match its report.",
+    "It missed an earlier moment that bears on the question. At about 72-74 s (opponent's turn 3), the opponent evolved Old Amber into Aerodactyl ex on their Bench while Hitmonchan was their Active. From about 74.4-74.6 s to about 76.8 s the game showed the message 'Can't play Pokémon from the hand to evolve Active Pokémon'. A red no-entry icon appeared on Dustin's side next to the menu button at the same time. That icon stays for the rest of the video, including during both Rare Candy tries (e.g. 241 s, 257 s). So the game showed the Primeval Law effect as active while Aerodactyl ex was still on the Bench. That the icon is the Primeval Law marker is my inference from its timing and the message. Frames: f_72.png, f_74.png (no icon yet), f_75.png (message and icon), s5_71.jpg.",
+    "The report under-states how firmly we know which Axew was Active. Besides the slot tracking, there is an Energy marker. A Metal Energy was attached to the turn-6 Axew in the left Bench slot at about 177-178 s. That Metal icon shows on the left Axew at 229.5, 231 and 235 s, and on the Active Axew at 239 and 241 s. The turn-8 Axew (middle slot) has no Energy at 235, 239, 241 or 257 s. So the Active Axew is certainly the one put down on turn 6, not the one played on turn 8. Frames: f_177.png, f_178.png, crop_bench_235.png, crop_board_239.png.",
+    "Small wording point: the 'red banner' is a white pill-shaped box with red text. The wording is exactly 'The conditions for using this Item card have not been met'.",
+    "A small moment it did not mention: at about 256.5 s (2 fps sheet only, not stepped) Dustin opened the Active Axew's card, which showed 'Expected damage Sharp Fang 40'. At 255.3 s the Axew has Fighting + Metal Energy. Sharp Fang costs Fighting + Metal (card.py), so this supports the examiner's guess that the cyan outline means Axew can attack."
+   ],
+   "own_reading": "The recording shows what Dustin reported: Rare Candy could not be played. The game refused it before any target choice, with the message 'The conditions for using this Item card have not been met'.\n\nDetails (video seconds; frames are in C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\rare_candy_check\\):\n\n- Aerodactyl ex is the opponent's.\n  - Seen: at 72 s (opponent's turn 3) it is shown full size (Stage 1, from Old Amber, Primeval Law text on screen) and goes onto their Bench on top of Old Amber (f_72.png, s5_71.jpg).\n  - Seen: at about 74.6-76.8 s the message 'Can't play Pokémon from the hand to evolve Active Pokémon' appears and a red no-entry icon shows up on Dustin's side (f_75.png). The icon stays to the end of the video.\n  - Seen: it is on the Bench until about 159-161 s. The opponent promotes it after Hitmonchan is knocked out ('+1 point' at 156-158 s; s1_146.jpg).\n  - Seen: it is Active from then on (f_163.8.png). It has 100 HP at the tries (f_226.5.png, f_241.png).\n  - Card lookup: Primeval Law says 'Your opponent can't play any Pokémon from their hand to evolve their Active Pokémon.'\n- Dustin's Active Basic is Axew.\n  - Seen: on turn 6 he drew Axew (167 s, f_167.png) and put it in the left Bench slot at 169.5-171 s (f_169.5.png, f_171.png).\n  - Seen: he attached a Metal Energy to it at 177-178 s (f_177.png, f_178.png).\n  - Turn 8 ('Current turn: 8', 226.5 s) is not his first turn. He went second, and turn 2 was his first.\n  - Seen: at 228 s he drew a second Axew and put it in the middle Bench slot at 229.5-231 s (f_229.5.png, f_231.png).\n  - Seen: at 232-234 s he retreated Druddigon, and 'Please choose a Pokémon to switch in' appeared (f_235.png).\n  - Seen: stepping 235-238.1 s at 10 fps (s10_235.jpg), the left-slot Axew goes up to the Active Spot and Druddigon takes the left slot (f_236.png, f_237.png, f_238.png).\n  - Seen: the Active Axew carries the Metal icon at 239 s; the middle Axew has none (crop_bench_235.png, crop_board_239.png).\n- His hand at the tries holds Rare Candy, Haxorus and Haxorus.\n  - Seen: the hand-count badge reads 3 (f_239.png, f_240.png).\n  - Card lookup: Haxorus is Stage 2 from Fraxure, and Fraxure is Stage 1 from Axew.\n- First try (s10_238.6.jpg).\n  - Seen: Rare Candy looks normal in hand at 238.6-238.9 s, not greyed out. It lifts at 239.0 s and is full size at 239.2 s. The message fades in at 239.5 s and is fully shown at 239.6 s (f_240.png).\n  - Seen: the full-size view closes at about 240.3 s. The message stays up to at least 240.9 s.\n  - Seen: no Pokémon gets a target highlight. The board is unchanged: Axew is still Basic at 70 HP and Rare Candy is still in hand (f_241.png).\n- In between.\n  - Seen: 241.5-244 s, he opens Aerodactyl ex's card (Primeval Law visible).\n  - Seen: 246-246.5 s, he touches the Energy Zone and all his Pokémon light up.\n  - Seen: 247-250 s, Dragon's Blessing is used. By 255.3 s the Active Axew has Fighting + Metal and a cyan outline, which was already there at 253.8 s, before Rare Candy was touched.\n- Second try (s10_253.8.jpg).\n  - Seen: Rare Candy lifts at 254.5 s and is full size at 254.7 s. The message appears at 254.8-254.9 s and the view closes at about 255.2 s.\n  - Seen: the message stays until about 257 s. Rare Candy and both Haxorus are still in hand (f_255.3.png, f_257.png).\n- Could a Benched Basic have been chosen instead? The video does not test this.\n  - Seen: no target list ever appeared.\n  - Inferred: neither Benched Basic was a legal target anyway. Druddigon has no Stage 2 in hand, and the middle Axew was put into play this turn, which Rare Candy's own text rules out. So the turn-6 Active Axew was the only possible target, and the most likely cause of the refusal is Primeval Law.\n  - The message is generic and does not name Aerodactyl ex. There is no control case, such as the same board without Aerodactyl ex.\n- Related side note, not a Rare Candy test.\n  - Seen: at about 102-103.5 s (turn 4) Dustin evolved his Benched Dratini into Dragonair from his hand while Aerodactyl ex sat on the opponent's Bench and the no-entry icon was showing (f_102.png, f_103.5.png). A normal evolution from hand onto a Benched Pokémon was allowed.",
+   "confidence": "high"
+  }
+ },
+ {
+  "exam": {
+   "item": "heavy_helmet",
+   "file": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\heavyhelmet_test.MP4",
+   "answer": "The Helmet's -20 did not apply. Team Rocket's Slowking ex is a Psychic Pokémon with a printed Retreat Cost of 3. It had Heavy Helmet attached and was in the Active Spot while Peculiar Plaza was in play. The game showed its Retreat Cost as 1 Colorless both before and after the attack. The opponent's Stufful, a Colorless Pokémon, used Ram (printed 40). Slowking ex went from 130 to 90 HP, so it took the full 40. Nothing else changed the damage: there was no Weakness (Slowking is weak to Darkness), the opponent played no Trainer that turn, and the Effects list showed only the Plaza effect. So the game checks the Helmet against the Retreat Cost after the stadium's change (1), not the printed cost (3). Setup: at 20-23 s the Helmet goes onto Team Rocket's Slowpoke (80 HP, printed retreat 2), and it stays on through the evolution at about 73-75 s. Plaza is played at about 24-28 s, and the game shows the banner \"Retreat Cost of Psychic-type Pokémon is 2 less\". Plaza stays in play through every later frame checked.",
+   "evidence": [
+    {
+     "time_s": 20,
+     "seen": "Heavy Helmet being attached (card text readable: 'If the Pokémon this card is attached to has a Retreat Cost of 3 or more, it takes -20 damage from attacks from your opponent's Pokémon.'); board behind it shows Stufful 70 vs Team Rocket's Slowpoke 80. In the preceding contact-sheet frame (~20 s) the prompt reads 'Please choose a Pokémon to attach the Pokémon Tool to' with the Helmet dropped on the Active Slowpoke.",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\heavy_helmet\\f_20.0.png"
+    },
+    {
+     "time_s": 28,
+     "seen": "Banner 'Retreat Cost of Psychic-type Pokémon is 2 less'; Peculiar Plaza in the stadium slot; Heavy Helmet icon on Active Team Rocket's Slowpoke (80); star (effect) marker on Slowpoke; turn 1 (Dustin going first).",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\heavy_helmet\\f_28.0.png"
+    },
+    {
+     "time_s": 75,
+     "seen": "Evolution card view: Team Rocket's Slowking ex, Stage 1, HP 130, Psychic, weakness Darkness +20, printed retreat three Colorless symbols. Plaza still in the stadium slot.",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\heavy_helmet\\f_75.0.png"
+    },
+    {
+     "time_s": 84,
+     "seen": "Active Slowking ex 130 HP with Heavy Helmet icon attached and star effect marker; Peculiar Plaza in play; opponent Active Stufful 70 with one Grass energy.",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\heavy_helmet\\f_84.0.png"
+    },
+    {
+     "time_s": 85,
+     "seen": "Slowking ex detail view (turn 3, Dustin's turn): Helmet icon attached; retreat button shows ONE Colorless symbol ('* retreat').",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\heavy_helmet\\f_85.0.png"
+    },
+    {
+     "time_s": 86,
+     "seen": "Effects list opened from Slowking ex: single entry 'Retreat Cost of Psychic-type Pokémon is 2 less' with Peculiar Plaza card; no other effects listed.",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\heavy_helmet\\f_86.0.png"
+    },
+    {
+     "time_s": 88,
+     "seen": "Tapping the attached tool on Slowking ex shows Heavy Helmet (identifies the attached Tool); retreat button behind still shows one Colorless.",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\heavy_helmet\\f_88.0.png"
+    },
+    {
+     "time_s": 98,
+     "seen": "Step sheet at 0.25 s intervals 96.5-103.75 s: End Turn, 'Opponent's turn, Current turn: 4' (~98.25 s), an energy attached to Stufful (~100-101.75 s), then the 'Ram / Stufful' banner (~102.75 s). No Trainer card shown for the opponent during this turn.",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\heavy_helmet\\step_96.5.jpg"
+    },
+    {
+     "time_s": 103.5,
+     "seen": "Attacker card enlarged: Stufful, Basic, HP 70, Colorless type icon, Ram cost two Colorless, damage 40, weakness Fighting +20. 'Ram / Stufful' banner. Plaza still in play; Slowking ex Active.",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\heavy_helmet\\f_103.5.png"
+    },
+    {
+     "time_s": 104.5,
+     "seen": "Damage number '40' on Slowking ex; HP counter still reads 130 (before countdown); Plaza in play; Stufful with two Grass energy.",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\heavy_helmet\\f_104.5.png"
+    },
+    {
+     "time_s": 106,
+     "seen": "Slowking ex HP 90 with Heavy Helmet icon still attached; Plaza in play; 'Current turn: 5' banner fading in. 130 - 90 = 40 damage taken.",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\heavy_helmet\\f_106.0.png"
+    },
+    {
+     "time_s": 113.5,
+     "seen": "Turn 5 detail view of Slowking ex at 90 HP: Helmet icon attached, retreat still shows ONE Colorless; Plaza in play.",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\heavy_helmet\\f_113.5.png"
+    }
+   ],
+   "confidence": "high",
+   "caveats": [
+    "The retreat display was not opened during the opponent's attack turn itself (turn 4). The one-Colorless display is from 85-88 s (turn 3, just before End Turn) and 113.5 s (turn 5, just after). Plaza is visible in the stadium slot in every frame checked in between (95, 103.5, 104.5, 106 s). That the cost was still 1 at the moment of the attack is inferred, not directly seen.",
+    "Stufful's printing: the frame shows a Colorless type, Ram (two Colorless) 40 and Fighting weakness. That matches the A3a 057 / P-A 083 printing in lib/card.py, but the set code on the card is not readable in the frame.",
+    "Seen: 130 before the hit, '40' damage number, 90 after. Inferred: no damage change from anything else. Checks behind that: the opponent played no Trainer on turn 4 (0.25 s steps); Colorless attacker vs Darkness weakness means no Weakness; the Effects list at 86 s showed only Plaza; tapping the tool icon at 88 s showed Heavy Helmet, and only one Tool fits per Pokémon.",
+    "The opponent's Bench Pokémon (Rowlet, Skwovet, Minccino) show only attacks on their cards in the frames. I did not look up their card texts."
+   ],
+   "other_rules_moments": [
+    "~73-75 s: the Tool stayed attached through evolution. Heavy Helmet was put on Team Rocket's Slowpoke at 20-23 s, and after the Slowpoke evolved into Team Rocket's Slowking ex the Helmet icon was still there (84 s).",
+    "Peculiar Plaza shows as a star 'effect' marker on the affected Pokémon, and the Effects list reads 'Retreat Cost of Psychic-type Pokémon is 2 less' (28 s, 86 s). Stars appear on both players' sides; the opponent's Pokémon are not Psychic.",
+    "The in-game retreat button shows the reduced cost: printed 3, shown as 1 Colorless under Plaza (85 s, 113.5 s).",
+    "The in-game Hand Kinesis damage figure updates live with hand size (40 at ~79 s, 60 at 85 s and 113.5 s) and has an up-arrow marker.",
+    "~95-96.5 s: Dustin attached a second Heavy Helmet to the Benched Team Rocket's Slowpoke (80 HP, printed retreat 2). Its tool icon appears by 96.5 s. This one played no part in the damage.",
+    "Turn 1 (~29-30 s): Dustin, going first, played the Supporter Copycat on turn 1.",
+    "At ~107-108 s, turn 5, Dustin played Team Rocket's Goo-zooka ('Until the end of your opponent's next turn, your opponent's Active Pokémon's Retreat Cost is 1 more'), shortly after the attack."
+   ],
+   "duration_s": 118.39
+  },
+  "check": {
+   "item": "heavy_helmet_check",
+   "agrees": true,
+   "disagreements": [
+    "Goo-zooka at ~107-108 s: the first report says Dustin played Team Rocket's Goo-zooka. My frames show he drew it at the start of turn 5 and did not play it. At 107 s his hand is Thieving Machine + Lucky Ice Pop (f_107.png). At 108.2 s Goo-zooka is shown enlarged as the drawn card, with those same 2 cards still below it (f_108.2.png). At 110.5 s the hand is Thieving Machine, Lucky Ice Pop, Goo-zooka (f_110.5.png). Its text is still visible in the hand at 113.5 s and 118.2 s (f_113.5.png, f_118.2.png). This came after the attack, so it does not affect the Helmet conclusion.",
+    "Small addition, not a contradiction: the one-Colorless retreat display also shows at 79 s, before the 85-88 s views the first report cites (turn 3, Hand Kinesis 40, retreat button one symbol; f_79.png). So the game showed a reduced cost of 1 three times: 79, 84-88 and 113.5 s.",
+    "Small addition: the Helmet icon on Slowking ex is hidden during the hit animation, about 103.6-104.4 s, and is back from about 104.6 s (hitcrop_103.6.jpg, and f_104.5.png shows no icon). This is animation only. The icon is still there at 105, 106 and 113.5 s, so the Helmet was not removed.",
+    "Small timing note: at 19.5 s my own frame shows the Helmet still in hand with no attach prompt (f_19.5.png). The Helmet card is enlarged at 21 s (f_21.png), and the icon is on Slowpoke by 27 s (f_27.png). This fits the first report's 20-23 s window give or take a second."
+   ],
+   "own_reading": "All frame files are in C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\heavy_helmet_check\\. Video: 1170x2532 portrait, 118.39 s. Card texts come from lib/card.py. Heavy Helmet B1 219: -20 if the holder's Retreat Cost is 3 or more. Peculiar Plaza B2 155: [P] Retreat Cost 2 less. Team Rocket's Slowking ex B4a 026: Psychic, 130 HP, weak Darkness, retreat 3. Stufful A3a 057 / P-A 083: Colorless, 70 HP, Ram [CC] 40.\n\nSEEN (turn 1, Dustin going first):\n- 21 s: the Heavy Helmet card is enlarged, readable text matches card.py (f_21.png).\n- 25.5 s: the Peculiar Plaza card is enlarged, text \"The Retreat Cost of each [P] Pokémon in play (both yours and your opponent's) is 2 less\" (f_25.5.png).\n- 27 s: Plaza is in the stadium slot and the Helmet icon is on the Active Team Rocket's Slowpoke, 80 HP (f_27.png).\n- 28.5 s: banner \"Retreat Cost of Psychic-type Pokémon is 2 less\", with star markers (f_28.5.png).\n\nSEEN (evolution, turn 3):\n- 73.5 s: evolution animation, Slowpoke to Slowking ex (f_73.5.png).\n- 75 s: the enlarged Slowking ex card shows Stage 1, HP 130, Psychic, weakness Darkness +20, and printed retreat of three Colorless (f_75.png).\n- 84 s: Active Slowking ex at 130 with the Helmet icon, Plaza in the slot, Stufful with 1 Grass energy (f_84.png).\n\nSEEN (displayed Retreat Cost with Plaza in play):\n- 79 s: the retreat button shows ONE Colorless and Hand Kinesis shows 40 (f_79.png).\n- 85.5 s: the Effects list has a single entry, \"Retreat Cost of Psychic-type Pokémon is 2 less\" (Peculiar Plaza); behind it the retreat button shows one symbol (f_85.5.png).\n- 87 s: retreat still shows one Colorless (f_87.png).\n- 88.5 s: tapping the tool shows Heavy Helmet (f_88.5.png).\n- 113.5 s (turn 5, 90 HP): retreat still shows one Colorless, Helmet attached (f_113.5.png).\n\nSEEN (second Helmet): a second Helmet is enlarged around 93-94 s and its icon is on the Benched Slowpoke by 96 s (f_93.png, f_96.png). It has nothing to do with the damage.\n\nSEEN (opponent's turn 4):\n- 97-105 s, step sheet at 0.2 s: End Turn, then \"Opponent's turn / Current turn: 4\" at about 98 s. A Grass energy is attached to Stufful at about 100.4-101.6 s (1 to 2 energy). The Ram/Stufful banner appears at about 102.8 s. No Trainer card is shown (step_97.jpg).\n- Opponent's hand: 2 card backs at 96 s and 99.5 s, then 3 at 102, 104.5, 106 and 107 s. So the opponent drew 1 and played 0 cards from hand this turn, which rules out a damage-boosting Supporter such as Red, where +20 minus the Helmet's 20 would also have given 40 (f_96.png, f_99.5.png, f_102.png, f_106.png).\n- 103.5 s: the attacker's card is shown: Stufful, Basic, HP 70, Colorless, Ram [CC] 40, weakness Fighting +20, retreat 2 (f_103.5.png).\n\nSEEN (the damage):\n- 104.0-104.6 s: a '40' damage number on Slowking ex while the HP still reads 130 (hitcrop_103.6.jpg, f_104.5.png).\n- The HP counts down 130, 110, 100, 90 over about 104.8-105.4 s (hitcrop_103.6.jpg; f_105.png shows 120 mid-count).\n- 106 s: 90 HP, Helmet icon present, Plaza in the slot, 'Current turn: 5' banner (f_106.png).\n- 130 - 90 = 40 damage taken.\n\nOther possible damage changers:\n- Opponent's Bench: Rowlet (Fury Attack), Skwovet (Bite 30), Minccino (Pound 10). All are attack-only printings in card.py, with no abilities.\n- Weakness does not apply: a Colorless attacker against a Darkness weakness.\n- Only one Tool fits per Pokémon, and the attached one is shown to be Heavy Helmet.\n- The only Effects entry was Plaza.\n- On opponent turn 2 (about 45-54 s) the only Trainer I saw was Poké Ball, at about 48 s.\n\nINFERRED: Peculiar Plaza is in the slot in every frame from 27 s to 118 s, including 102, 103.5, 104.5, 105 and 106 s. So the displayed cost was still 1 at the attack. The retreat view itself was not opened on turn 4. With the Helmet active the hit would have been 20. It was 40.\n\nCONCLUSION: the Helmet's -20 did NOT apply. The game checked the Helmet against the Retreat Cost after Plaza's reduction (1), not the printed cost (3).",
+   "confidence": "high"
+  }
+ },
+ {
+  "exam": {
+   "item": "pulse_trail",
+   "file": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\pulse_hikingtrail_order.MP4",
+   "duration_s": 62.045,
+   "answer": "Dustin's report is right. Legendary Pulse went first and Hiking Trail topped up after it, and he ended on 3 cards. On his turn 1 (he went first), Suicune ex was in the Active Spot, a second Suicune ex was on the Bench, and his Hiking Trail was in play. His hand was empty just before he ended the turn. After he tapped End Turn (about 52.25 s), the game showed a \"Legendary Pulse\" Ability banner over the Active Suicune ex (52.75–54.0 s). He then drew 1 card, Poké Ball (54.75–55.5 s), so his hand went from 0 to 1. After that, a separate \"Hiking Trail\" Stadium banner appeared (56.25–57.5 s) while the hand still held only the Poké Ball. Two more cards were drawn one at a time: Cover Fossil (58.75–59.25 s), then Armor Fossil (59.5–60.25 s). The hand showed 3 cards (Poké Ball, Cover Fossil, Armor Fossil) at 60.5 s and still showed 3 when the \"Opponent's turn / Current turn: 2\" banner came up (61.0–61.75 s). Order: Pulse draws 1 (0 to 1), then Hiking Trail draws 2 (1 to 3). Final count: 3.",
+   "evidence": [
+    {
+     "time_s": 18,
+     "seen": "\"Your turn\" / \"Current turn: 1\" banner. This is Dustin's (Dacz8976) first turn; earlier frames show \"Going first\" (about 6 s).",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\pulse_trail\\sheet_16.jpg (frame 2)"
+    },
+    {
+     "time_s": 48,
+     "seen": "Hiking Trail is the only card in hand and is dragged to the Stadium spot. The Hiking Trail card zooms in at 49.5–50.0 s with the text 'At the end of each player's turn, that player draws cards until they have 3 cards in their hand.'",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\pulse_trail\\fine_48.jpg"
+    },
+    {
+     "time_s": 51.75,
+     "seen": "Just before ending the turn: Hiking Trail in Dustin's Stadium spot (left side), Suicune ex 140 HP in the Active Spot (name and 'Legendary Pulse' readable), Suicune ex 140 on the Bench, End Turn button showing, and no cards in Dustin's hand (0). The opponent's Active is Team Rocket's Drowzee.",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\pulse_trail\\f_51.75.png (+ crop_active_51.75.png)"
+    },
+    {
+     "time_s": 52.25,
+     "seen": "The End Turn button is fading (pressed). It is gone at 52.5 s. Hand still empty.",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\pulse_trail\\fine_52.jpg (frames 1-2)"
+    },
+    {
+     "time_s": 53.25,
+     "seen": "'Ability: Legendary Pulse' banner over the Active Suicune ex with sparkle effect (banner visible 52.75–54.0 s). No card drawn yet; hand empty. This is the first end-of-turn event.",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\pulse_trail\\f_53.25.png"
+    },
+    {
+     "time_s": 55,
+     "seen": "Drawn card shown large: Poké Ball (reveal visible 54.75–55.5 s). This is the Pulse draw.",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\pulse_trail\\f_55.0.png"
+    },
+    {
+     "time_s": 55.75,
+     "seen": "Poké Ball goes into the hand. The hand now holds 1 card, and no banner is showing.",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\pulse_trail\\f_55.75.png"
+    },
+    {
+     "time_s": 56.5,
+     "seen": "Green 'Hiking Trail' banner with a glow over the Stadium card (visible 56.25–57.5 s). The hand still holds just the Poké Ball (1 card).",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\pulse_trail\\f_56.5.png"
+    },
+    {
+     "time_s": 59,
+     "seen": "First Hiking Trail draw: Cover Fossil revealed (card coming in at 58.5 s, large at 58.75–59.25 s). Hand below shows Poké Ball.",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\pulse_trail\\f_59.0.png"
+    },
+    {
+     "time_s": 59.75,
+     "seen": "Second Hiking Trail draw: Armor Fossil revealed. Hand below shows Poké Ball and Cover Fossil (2).",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\pulse_trail\\f_59.75.png"
+    },
+    {
+     "time_s": 60.5,
+     "seen": "Hand shows 3 cards: Poké Ball, Cover Fossil, Armor Fossil. No further draws.",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\pulse_trail\\f_60.5.png"
+    },
+    {
+     "time_s": 61.5,
+     "seen": "'Opponent's turn / Current turn: 2' banner. Dustin's hand is still 3 cards (Poké Ball, Cover Fossil, Armor Fossil).",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\pulse_trail\\f_61.5.png (+ crop_hand_61.5.png)"
+    }
+   ],
+   "confidence": "high",
+   "caveats": [
+    "Frames were checked every 0.25 s between 44 and 62 s. Each banner and draw lasts several frames, so the order is clear. Exact start and end times are only accurate to about 0.25 s.",
+    "The video ends at 62.0 s, right when the opponent's turn 2 begins. It does not show the opponent's end of turn or whether Hiking Trail also fires for the opponent.",
+    "Seen: Poké Ball appeared between the Pulse banner and the Hiking Trail banner. Inferred: that card was the Pulse draw. The game does not label which effect drew which card.",
+    "Only Dustin's own effects fire here. The video can't show how the turn player's effects are ordered against the opponent's."
+   ],
+   "other_rules_moments": [
+    "Only one Legendary Pulse banner appeared (52.75–54.0 s), on the Active Suicune ex. The Benched Suicune ex (also with Legendary Pulse) did not fire. This matches the 'if this Pokémon is in the Active Spot' condition (fine_52.jpg, fine_54.jpg).",
+    "A Stadium (Hiking Trail) was played on the first turn of the player going first (about 48–50 s, 'Current turn: 1' at about 18 s) (fine_48.jpg, sheet_16.jpg).",
+    "Poké Ball was played on turn 1 (about 24 s, contact sheet only, not checked frame by frame) (sheet_16.jpg frame 8).",
+    "On turn 1, Fossil Items (Plume Fossil, Dome Fossil, Armor Fossil) were put on the Bench and then discarded from play with the 'Discard' button (about 38 s Plume, about 40 s Dome, about 44.5–45 s Armor). The Armor Fossil discard was checked every 0.25 s in fine_44.jpg; the others come from contact sheet sheet_32.jpg only.",
+    "End Turn was pressed while the hand was empty. Neither end-of-turn effect needed a card in hand to trigger. Hiking Trail counted the card Pulse had just drawn and drew only 2 (1 to 3)."
+   ]
+  },
+  "check": {
+   "item": "pulse_trail_check",
+   "agrees": true,
+   "disagreements": [
+    "Timing only, not substance: at 60.5 s my own frame shows Poké Ball and Cover Fossil settled in the hand, with Armor Fossil still flying in over them (hand_60.5.png). The first examiner said 3 cards were shown at 60.5 s. In my frames all 3 cards are settled by 60.7 s (hand_60.7.png) and are still there at 60.9 s and 61.95 s. The difference is under a quarter second and comes from how the frames were picked. The final count is the same.",
+    "Small timing detail: in my 0.1 s strip the Legendary Pulse banner first shows at about 52.7 s and fades at about 54.1 s (vf_52.3.jpg, vf_54.1.jpg). The first examiner gave 52.75 to 54.0 s. Same event.",
+    "Something the first examiner left out (no conflict): the Poké Ball played at about 24 s got the second Suicune ex. It came into the hand at about 27 to 28 s and went on the Bench at about 29 s, with a zoom showing its Legendary Pulse at about 30 s (sheet_24.jpg, frames 0 to 6). So the Benched Suicune ex was also a Legendary Pulse holder, and it did not fire."
+   ],
+   "own_reading": "I checked independently and agree: Legendary Pulse resolved first and Hiking Trail topped up after it. Dustin ended on 3 cards.\n\nCard texts come from lib/card.py (cards.txt). Suicune ex, Legendary Pulse: \"At the end of your turn, if this Pokémon is in the Active Spot, draw a card.\" Hiking Trail (B2b 069): \"At the end of each player's turn, that player draws cards until they have 3 cards in their hand.\"\n\nThe video is 62.045 s long, portrait 1170x2532. All frames are in C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\pulse_trail_check\\ .\n\nSEEN:\n- About 6 s: \"Going first\" banner (sheet_0.jpg, frame 6).\n- About 18 s: \"Your turn / Current turn: 1\" (sheet_12.jpg, frame 6). So this is Dustin's first turn, and he went first.\n- About 24 s: Poké Ball played. About 27 to 29 s: a second Suicune ex comes to the hand and goes to the Bench (sheet_24.jpg).\n- About 38, 40 and 44 s: Plume, Dome and Armor Fossil are each discarded from play with the Discard button (sheet_36.jpg).\n- 47.0 s: Hiking Trail is the only card in hand (hand_47.0.png).\n- About 48 to 50 s: Hiking Trail is dragged to the Stadium spot and zooms in with its text (sheet_48.jpg; fine_50.jpg frame 0).\n- 51.75 s, just before ending the turn (f_51.75.png, mid_51.75.png, hand_51.75.png):\n  - Hiking Trail is in Dustin's Stadium spot on the left.\n  - The Active is Suicune ex, 140 HP, with the name and \"Legendary Pulse\" readable.\n  - A Suicune ex (140) is on the Bench.\n  - The opponent's Active is Team Rocket's Drowzee (60).\n  - The End Turn button is showing.\n  - Dustin's hand is EMPTY (0 cards).\n- 52.25 s: End Turn shows a tap ripple (f_52.25.png). It fades at 52.4 s and is gone at 52.5 s (vf_52.3.jpg).\n- 52.7 to about 54.1 s: a red \"Ability\" / \"Legendary Pulse\" banner with sparkles over the ACTIVE Suicune ex only. The hand is still empty (vf_52.3.jpg, f_53.25.png, mid_53.25.png, fine_52.jpg, fine_54.jpg frame 0).\n- 54.2 to 54.6 s: no banner, hand empty (vf_54.1.jpg, f_54.25.png).\n- 54.7 s: a card comes in from the deck on the right. 54.75 to 55.5 s: it is shown large as Poké Ball (f_55.0.png, fine_54.jpg).\n- 55.75 s: Poké Ball is in the hand, 1 card total (hand_55.75.png). It stays 1 card, with no banner, from 55.9 to 56.2 s (vf_55.9.jpg).\n- About 56.3 to 57.6 s: a green \"Hiking Trail\" banner with a glow over the Stadium card. The hand is still only Poké Ball (f_56.5.png, mid_56.5.png, fine_56.jpg, vf_57.6.jpg).\n- About 58.0 s: a card starts coming off the deck (vf_57.6.jpg). 58.5 to 59.25 s: Cover Fossil is shown large, and the hand below still shows only Poké Ball (f_59.0.png, fine_58.jpg).\n- 59.5 to 60.5 s: Armor Fossil is shown large, and the hand shows Poké Ball + Cover Fossil (f_59.75.png, fine_58.jpg, fine_60.jpg).\n- 60.5 s: Armor Fossil is still flying into the hand (hand_60.5.png). 60.7 s: the hand holds 3 settled cards, Poké Ball, Cover Fossil and Armor Fossil (hand_60.7.png, hand_60.9.png).\n- About 61.0 to 61.95 s: \"Opponent's turn / Current turn: 2\" banner, and Dustin's hand is still those 3 cards (f_61.5.png, hand_61.95.png, fine_60.jpg). The video ends here.\n\nNothing else appears between the Pulse banner and the Poké Ball draw, or between the Poké Ball draw and the Hiking Trail banner. I checked every 0.1 s at 52.3–53.0, 54.1–54.8, 55.9–56.6 and 57.6–58.5 s. Only one Legendary Pulse banner appeared, and it was over the Active. The Benched Suicune ex did not fire.\n\nINFERRED:\n- Poké Ball was the Pulse draw and the two Fossils were the Hiking Trail draws. This comes from their order relative to the banners; the game does not label which effect drew which card.\n- The order: Pulse took the hand from 0 to 1, then Hiking Trail took it from 1 to 3, so the final count is 3. If Hiking Trail had gone first (0 to 3), Pulse would have ended on 4. The final 3 matches the banner order.\n\nNot shown by this video:\n- The opponent's end of turn.\n- How Dustin's effects would be ordered against the opponent's effects.\n\nRULES_FOR_AGENTS.md line 67 only says end-of-turn effects go turn player's first. It does not order two effects that belong to the same player.",
+   "confidence": "high"
+  }
+ },
+ {
+  "exam": {
+   "item": "unlabeled_2241",
+   "file": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\20260925_224120000_iOS.MP4 (365.7 s, 1170x2532 portrait; phone clock 5:41 to 5:47)",
+   "answer": "This is a full solo battle against the computer. It is not a set-up rules test. The result screen at 364 s reads \"vs. Aerodactyl ex & Marowak ex Deck (Mythical Island)\" and \"Defeat...\". Dustin (Dacz8976) plays the bottom side and went first (\"You are going first\" at 0.5 s).\n\nDustin's deck, from what was seen: Zubat (Venomous Fang), Arceus ex x2, Munchlax, Absol (Leap Over), Crobat x2 (Cunning Link), Rare Candy x2, Lucky Egg, Giant Cape, Poké Ball, Professor's Research, Lisia, Guzma, Copycat, Ilima and Starting Plains.\n\nThe opponent showed Cubone (Growl), Marowak ex, Hitmonchan (Jab), Marshadow (Revenge), Poké Ball, Professor's Research, Sabrina and Giovanni.\n\nAerodactyl ex and Old Amber never came into play. Dustin held both Rare Candy and both Crobat from about turn 9 (and one Rare Candy and a Crobat from turn 7). His benched Zubat had been in play since turn 1, but he never played Rare Candy. He ended turn 11 (312 s) with Guzma, Rare Candy, Crobat, Rare Candy, Crobat in hand.\n\nMy inference, not something the video says: this looks like a failed earlier attempt at the Sept 25 \"Rare Candy vs Aerodactyl ex\" test. The opponent's deck is the Aerodactyl ex deck and his deck carries the Zubat/Rare Candy/Crobat pieces. Because Aerodactyl ex never appeared, it answers nothing about Primeval Law or Rare Candy, so it can neither agree nor disagree with that test. None of these appear anywhere in the video: Hiking Trail, Legendary Pulse, Heavy Helmet, Peculiar Plaza, Ariados, Goo-zooka, Garganacl, Victini, and no tie.\n\nWhat it does show, all matching RULES_FOR_AGENTS.md:\n- A Growl-reduced attack does 0 damage and still poisons.\n- A poisoned Cubone evolving into Marowak ex is cured and keeps its damage.\n- Every damage number fits: base, then attacker boosts, then +20 Weakness.\n- Starting Plains gives +20 to Basics on both sides and not to the Stage 1.\n- Giant Cape stacks with Plains.\n- Lucky Egg draws up to 5 on a knockout.\n- An empty deck only skips draws; there is no loss.\n- An attack that draws (Munchlax's Hungrily Draw) can still be used on an empty deck.\n- Copycat can be played on an empty deck.\n- Lisia can be played when no Basic with 50 HP or less is left in the deck.\n- Revenge's +60 turns on after a knockout.\n\nThe game ended when Marshadow's Revenge knocked out Arceus ex (opponent 2 + 2 points; Dustin 1).",
+   "evidence": [
+    {
+     "time_s": 0.5,
+     "seen": "Setup prompt 'Please put up to 3 Basic Pokémon onto your Bench, then tap Start Battle' and 'You are going first'. Dustin's Active is Zubat (Venomous Fang); the opponent's Active is Cubone.",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\unlabeled_2241\\dense\\d_0.jpg (1 fps, frame k = k s)"
+    },
+    {
+     "time_s": 52,
+     "seen": "Opponent's Cubone uses Growl; at 54-55 a toast 'Attacks do -20 damage' appears on Dustin's Zubat, then 'Your turn, Current turn: 3'.",
+     "frame": "...\\unlabeled_2241\\dense\\d_48.jpg (frame k = 48+k s)"
+    },
+    {
+     "time_s": 62,
+     "seen": "Dustin plays Lisia; toast 'There are no cards in the deck that can be the target of the effect'. The card was allowed to be played anyway.",
+     "frame": "...\\unlabeled_2241\\dense\\d_60.jpg (frame k = 60+k s)"
+    },
+    {
+     "time_s": 74,
+     "seen": "Zubat's Venomous Fang (10) shows a big '0' with a 'Damage' down-arrow label on Cubone. At 76-77 the toast 'Cubone is now Poisoned' appears. At 78 Cubone is at 50 after the Checkup (60-10). Cubone's weakness is Grass, so no Weakness applied.",
+     "frame": "...\\unlabeled_2241\\frames\\f_74.png; ...\\dense\\d_72.jpg"
+    },
+    {
+     "time_s": 85,
+     "seen": "Opponent's turn 4: Cubone evolves into Marowak ex; toast 'Marowak ex recovered from being Poisoned' at 85-87. Marowak ex shows 130 (140 - 10 carried damage).",
+     "frame": "...\\unlabeled_2241\\dense\\d_84.jpg; ...\\frames\\f_85.png"
+    },
+    {
+     "time_s": 97,
+     "seen": "Bonemerang: 1 heads, then 'Weakness 100' on Zubat (50 HP), knocked out. At 99.5 a 'Lucky Egg' label appears. At 101-103 Crobat, Arceus ex and Absol are shown (hand went from 2 cards, Guzma and Rare Candy, to 5). The opponent's '+1 point' shows at ~108; Dustin promotes Munchlax at ~111.",
+     "frame": "...\\unlabeled_2241\\dense\\d_96.jpg; ...\\frames\\f_99.5.png; ...\\sheets\\sheet_04.jpg (3 s per frame from 108)"
+    },
+    {
+     "time_s": 212,
+     "seen": "Bonemerang 1 heads: 'Weakness 100' on Dustin's Arceus ex (140 to 40), then 'Your turn, Current turn: 9'.",
+     "frame": "...\\unlabeled_2241\\dense\\e_210_2.jpg (0.5 s steps from 210)"
+    },
+    {
+     "time_s": 216,
+     "seen": "Dustin's deck pile (red-bordered card back at the right edge) is present at 85 and 200 and gone from 216 on, so it emptied at the turn-9 draw. It briefly reappears at 304 after Copycat and is gone again at 306 and 312.",
+     "frame": "...\\unlabeled_2241\\deck\\deck_strip.png (labelled crops)"
+    },
+    {
+     "time_s": 223.5,
+     "seen": "Starting Plains played: toast 'Basic Pokémon get +20 HP'. Opponent's Marshadow and Hitmonchan go 80 to 100 and Cubone 60 to 80. Dustin's Zubat and Munchlax go 50 to 70, benched Arceus ex 140 to 160, active Arceus ex 40 to 60. Marowak ex (Stage 1) stays at 110.",
+     "frame": "...\\unlabeled_2241\\dense\\e_219_2.jpg (0.5 s steps from 219)"
+    },
+    {
+     "time_s": 225,
+     "seen": "Dustin inspects the opponent's Marshadow: 'Expected damage Revenge 60' against his Arceus ex (40 + 20 Weakness; the +60 condition was not met).",
+     "frame": "...\\unlabeled_2241\\sheets\\sheet_07.jpg (3 s per frame from 216)"
+    },
+    {
+     "time_s": 234,
+     "seen": "Giant Cape attached to the active Arceus ex; toast '+20 HP'; HP shows 80 (140+20 Plains+20 Cape - 100 damage). At 237-239 Arceus ex retreats (cost 2) and Munchlax goes Active. At 245-247 Ilima returns the damaged Arceus ex to hand; at 252 it is re-benched at 160.",
+     "frame": "...\\unlabeled_2241\\dense\\e_236_1.jpg (1 fps from 236); ...\\sheets\\sheet_07.jpg; ...\\sheets\\sheet_08.jpg"
+    },
+    {
+     "time_s": 262.5,
+     "seen": "After Munchlax's Hungrily Draw did 10 (Marowak ex 110 to 100), the toast 'No cards left in deck; unable to draw cards' appears before the 'Opponent's turn, Current turn: 10' banner at 263. The attack could be used with an empty deck. That this toast came from the attack rather than the opponent's draw is my inference from its timing.",
+     "frame": "...\\unlabeled_2241\\frames\\f_262.5.png; ...\\dense\\e_258_2.jpg"
+    },
+    {
+     "time_s": 273,
+     "seen": "Bonemerang 1 heads: 80 on Munchlax (70 HP; Munchlax has no Weakness), knocked out. Opponent '+1 point' (now 2) at ~279.",
+     "frame": "...\\unlabeled_2241\\sheets\\sheet_08.jpg (3 s per frame from 252)"
+    },
+    {
+     "time_s": 289,
+     "seen": "Start of Dustin's turn 11: 'No cards left in deck; unable to draw cards'. The draw is skipped and the game continues.",
+     "frame": "...\\unlabeled_2241\\dense\\e_284_2.jpg (0.5 s steps from 284)"
+    },
+    {
+     "time_s": 299.5,
+     "seen": "Dustin plays Copycat with an empty deck, shown with an indicator of '6'. The hand before was Guzma, Rare Candy, Crobat, Rare Candy, Crobat, Copycat. The deck reappears briefly (304) and afterwards the same 5 cards are back in hand.",
+     "frame": "...\\unlabeled_2241\\frames\\f_299.5.png; ...\\dense\\e_298_2.jpg; ...\\dense\\e_306_2.jpg"
+    },
+    {
+     "time_s": 312,
+     "seen": "Dustin ends turn 11 holding Rare Candy x2 and Crobat x2 (cards glowing). His benched Zubat (70) had been in play since turn 1. Opponent's board: Marowak ex (Active), Marshadow, Hitmonchan, Cubone. There is no Aerodactyl ex or Old Amber anywhere on it.",
+     "frame": "...\\unlabeled_2241\\frames\\f_312.png; ...\\crops\\c_hand312.png"
+    },
+    {
+     "time_s": 318,
+     "seen": "Opponent plays Giovanni; toast 'Attacks do +10 damage to the opponent's Active Pokémon'. Hitmonchan becomes Active and Marowak ex goes to the bench.",
+     "frame": "...\\unlabeled_2241\\dense\\d_312.jpg (1 fps from 312)"
+    },
+    {
+     "time_s": 324.5,
+     "seen": "Hitmonchan's Jab: 'Weakness 60' on Arceus ex (160 to 100) = 30 + 10 Giovanni + 20 Weakness. A red '120' at 325 is the HP bar counting down.",
+     "frame": "...\\unlabeled_2241\\dense\\e_322.5_2.jpg (0.5 s steps from 322.5)"
+    },
+    {
+     "time_s": 334,
+     "seen": "Arceus ex's Ultimate Force: '130' on Hitmonchan (100 HP) = 70 + 3 benched x 20, no Weakness label. Knocked out; Dacz8976 '+1 point!' at 339-340.",
+     "frame": "...\\unlabeled_2241\\dense\\d_324.jpg; ...\\dense\\d_336.jpg"
+    },
+    {
+     "time_s": 349,
+     "seen": "Turn 14: Marshadow's Revenge shows 'Weakness 120' on Arceus ex (100 HP) = 40 + 60 (Hitmonchan knocked out by attack damage last turn) + 20. Knocked out; opponent '+2 points!' at 354-355; 'Defeat' at 356.",
+     "frame": "...\\unlabeled_2241\\dense\\e_346_2.jpg; ...\\dense\\e_352_2.jpg"
+    },
+    {
+     "time_s": 364,
+     "seen": "Result screen: 'vs. Aerodactyl ex & Marowak ex Deck (Mythical Island)', 'Defeat...', Battle Tasks 'Get 12 or more points 3/12'.",
+     "frame": "...\\unlabeled_2241\\frames\\f_364.png"
+    }
+   ],
+   "confidence": "high",
+   "caveats": [
+    "Every '...' path starts with C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\unlabeled_2241. Frame times on contact sheets are start + k/fps and can be off by about 0.25 s.",
+    "Calling this an earlier take of the Rare Candy vs Aerodactyl ex test is my inference from the opponent deck's name and Dustin's deck. The video never shows him trying the test. I did not open aerodactly_ex_rare_candy_test.MP4 to compare.",
+    "It is unconfirmed whether Rare Candy was actually playable at 312 s. The cyan glow on it suggests it was, but he never played it, so nothing was tested.",
+    "My readings of the small number indicator shown when a card is played or opened (6, 8, 9, 10) are guesses: probably hand size, and for Copycat probably the opponent's hand size. Not confirmed.",
+    "Coverage was 3-second contact sheets for the whole video, with 0.5-1 s sheets around every attack, knockout, toast and trainer play. Stretches 108-215 s and 264-283 s were checked only at 3-second steps. Audio was not checked.",
+    "The source of the toast at 262.5 s (Munchlax's attack draw versus the opponent's turn-10 draw) is inferred from timing: it appears before the opponent's-turn banner, and the deck-pile crops show Dustin's deck was already empty from 216 s. The opponent's deck count was never read."
+   ],
+   "other_rules_moments": [
+    "~22 s: Dustin, going first, plays Professor's Research (a Supporter) on turn 1. Allowed.",
+    "~38 s: 'Opponent's turn, Current turn: 2'. The turn counter counts both players' turns.",
+    "~20 s, 126 s, 255 s: toast 'Can't be affected by any Special Conditions' when Arceus ex is placed or given energy (Fabled Luster notice). No effect on play.",
+    "~99-111 s: order after the knockout was Lucky Egg draws (99.5-103), then the opponent's point (~108), then Dustin promotes (~111).",
+    "~144-147 s: Bonemerang flips 0 heads, shown as '0' on Munchlax.",
+    "~189-198 s: opponent's Sabrina; 'Please choose a Pokémon to switch in'. Dustin picks Arceus ex.",
+    "~162 s: Giant Cape shows 'Please choose a Pokémon to attach the Pokémon Tool to', but no HP change follows (apparently cancelled). It is attached later at ~231 s.",
+    "~329-330 s: turn 13 'No cards left in deck; unable to draw cards' again. The deck was empty again after Copycat drew everything back.",
+    "~347 s: Dustin opens the in-game menu (Concede / Settings / Battle Log) during the opponent's turn and closes it. No concession.",
+    "Nothing in the video relates to Hiking Trail, Legendary Pulse, Heavy Helmet, Peculiar Plaza, Ariados, Goo-zooka, Garganacl/Blessed Salt, Victini/Victory Star, or a tie."
+   ]
+  },
+  "check": {
+   "item": "unlabeled_2241_check (20260925_224120000_iOS.MP4, 365.7 s, 1170x2532 portrait, phone clock 5:41 to 5:47)",
+   "agrees": true,
+   "disagreements": [
+    "Rare Candy and Crobat timing is wrong in the first report. Rare Candy #1 was Dustin's turn-1 draw at about 10 s (sheets\\s2_0.jpg, frame at 10 s; frames2\\f_8.png shows the hand just before). The benched Zubat was put down at about 28 s (turn 1, sheets\\s2_24.jpg). Crobat #1 came from the Lucky Egg draw at about 101.5 s (dense2\\d_94_2.jpg). So Rare Candy on Zubat to Crobat was already legal on turn 5: his hand at 118 s is Guzma, Rare Candy, Crobat, Arceus ex, Absol, Ilima (crops\\hand_118.png). Rare Candy #2 was his turn-7 draw at about 152 s (dense2\\d_150_1.jpg), and Crobat #2 came from Professor's Research at about 157-158 s. That means he held both pairs from turn 7, not from 'about turn 9', and one pair from turn 5, not from turn 7.",
+    "At 0.5 s the opponent's Active is still face down (a card back; frames2\\f_0.5.png). Cubone is first shown at about 2 s (sheets\\s2_0.jpg). The opponent has two Cubone: one Active and one on the Bench at 8 s (frames2\\f_8.png).",
+    "The deck list is incomplete. There are 2 Zubat (one knocked out at 97 s and one on the Bench from 28 s; the discard at 300.75 s shows a Zubat) and 2 Professor's Research (both in the discard at 300.75 s, frames2\\f_300.75.png). My draw count comes to exactly 20 cards: Zubat x2, Arceus ex x2, Munchlax, Absol, Crobat x2, Rare Candy x2, Lucky Egg, Giant Cape, Poke Ball, Professor's Research x2, Lisia, Guzma, Copycat, Ilima, Starting Plains. Counting draws (15 after the opening hand) reaches 0 at the turn-9 draw at about 214.5 s, which matches the deck pile vanishing at 216 s.",
+    "The small card-icon number is probably not the opponent's hand size. At 299.5 s it reads 6, and Dustin's own hand then was 6 cards counting Copycat. At 162-176 s it reads 8, which was his hand size while his deck held only 2. But at 38-50 s it reads 11 while his hand was 3 and his deck was 11. So what the number means is unclear, not settled."
+   ],
+   "own_reading": "This is a normal battle against the computer, not a set-up rules test. The result screen at 364 s reads 'vs. Aerodactyl ex & Marowak ex Deck (Mythical Island)' and 'Defeat...' (frames2\\\\f_364.png). That deck-name format points to a solo battle; this is inferred from the format. Dustin (Dacz8976) is on the bottom side and goes first ('You are going first', 0.5 s).\n\nEverything I re-extracted matches the first report's rules readings, apart from the points listed under disagreements:\n- 54 s: Growl toast 'Attacks do -20 damage'.\n- 64-66 s: Lisia is played and discarded, with the toast 'There are no cards in the deck that can be the target of the effect'. By my card count, no Basic with 50 HP or less was left in the deck.\n- 74 s: Venomous Fang shows '0 Damage'.\n- 76-77.5 s: 'Cubone is now Poisoned', then Poison 10 at the Checkup (60 to 50).\n- 83-87 s: Cubone evolves into Marowak ex; toast 'Marowak ex recovered from being Poisoned'; it shows 130.\n- 97 s: 'Weakness 100' on Zubat. Lucky Egg shows at 99-100.5 s and draws Crobat, Arceus ex and Absol at 101.5-103 s. The knocked-out Zubat is still on the board showing 0 HP at 104 s. The opponent's +1 comes at 107-109 s, and Munchlax is promoted at 112 s.\n- 132-135 s: Hungrily Draw does 10 (130 to 120) and draws Professor's Research. 148.5 s: 0 heads, '0' on Munchlax. 180-185 s: Hungrily Draw does 10 again (120 to 110) and draws Starting Plains.\n- 190-200 s: Sabrina; Dustin picks Arceus ex. 211 s: 'Weakness 100' on Arceus ex (140 to 40). 213 s: turn 9.\n- Deck pile: present through 215 s, gone from 216 s, reappears at 303-305 s, gone again from 306 s (deck\\\\right_strip.png).\n- 223.5-224 s: Starting Plains. Basics go +20 on both sides, including the damaged Arceus ex (40 to 60). Marowak ex stays at 110.\n- 226 s: Marshadow 'Expected damage Revenge 60' (frames2\\\\f_226.png).\n- 234 s: Giant Cape, '+20 HP', Arceus ex shows 80.\n- 237-240 s: Arceus ex retreats (cost 2), Munchlax becomes Active. 245-252 s: Ilima returns Arceus ex to hand and it is re-benched at 160.\n- 257-261 s: Hungrily Draw on an empty deck does 10 (110 to 100). The toast 'No cards left in deck; unable to draw cards' appears at 262.5 s, before the 'Opponent's turn 10' banner at 263.1 s (dense2\\\\d_262_10.jpg). The opponent's deck pile is still visible at the left at 262 s (frames2\\\\f_262.png), which supports that the toast is Dustin's.\n- 271-274 s: 1 heads, 80 on Munchlax (70 HP), knocked out; opponent +1 at 278-280 s.\n- 289-291 s: the turn-11 draw is skipped. 294-296 s: Absol benched at 100.\n- 298-299.5 s: Copycat on an empty deck. The deck reappears at 303-305 s. Guzma, Rare Candy, Crobat, Rare Candy and Crobat are drawn back one by one at 306-310.5 s. He ends turn 11 at about 312 s without attacking. Every card in hand except Guzma has the cyan glow at 312 s (crops\\\\hand312_full.png).\n- 316-319 s: Giovanni toast. 319-320 s: Hitmonchan becomes Active.\n- 324.75-325.25 s: 'Weakness 60' on Arceus ex (160 to 100) = 30 + 10 + 20 (dense2\\\\d_323.5_4.jpg).\n- 330 s: turn-13 draw skipped. 335 s: Ultimate Force '130' with no Weakness label, Hitmonchan knocked out; Dacz8976 +1 at 338-340 s.\n- 347 s: the menu (Concede / Settings / Battle Log) is opened and closed.\n- 349 s: 'Weakness 120' from Revenge (frames2\\\\f_349.png). Opponent +2 at 351-354 s; Defeat at 355-356 s.\n\nThe Venomous Fang 0 is on a Pokémon with no Weakness to Darkness (Cubone is weak to Grass), so it does not answer the open question in rules/05 #11. Nothing in the video involves Hiking Trail, Legendary Pulse, Heavy Helmet, Peculiar Plaza, Ariados, Goo-zooka, Garganacl, Victini or a tie. Aerodactyl ex and Old Amber never appear.\n\nComparison with aerodactly_ex_rare_candy_test.MP4 (257.8 s, phone clock 6:22-6:27; I looked at its first minute and last 24 s only):\n- The test uses a different Dustin deck (Druddigon, Axew) against an opponent showing Hitmonchan and Old Amber.\n- At about 240 s and about 256 s the toast 'The conditions for using this Item card have not been met' appears. At about 242 s the opponent's Aerodactyl ex with Primeval Law is shown, and at about 254 s Rare Candy is shown (aero\\\\aero_sheet_end.jpg, frame k at 233.8+2k s).\n- So the 5:41 video is at most a failed earlier attempt: Aerodactyl ex never came out, and it neither agrees nor disagrees with the test.\n- 'Earlier take' remains an inference. It fits the opponent deck's name, the same-looking opponent in the test 40 minutes later, and Dustin never playing Rare Candy or Crobat even though that was legal from turn 5 and Cunning Link would have worked with Arceus ex in play.\n\nAll frame paths are under C:\\\\Users\\\\dacz8\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-dacz8-Projects\\\\1b119d13-736d-4588-ba63-0e9ef1756970\\\\scratchpad\\\\video_checks\\\\unlabeled_2241_check\\\\",
+   "confidence": "high"
+  }
+ },
+ {
+  "exam": {
+   "item": "burn_salt_010316",
+   "file": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260922_010316000_iOS.MP4 (1170x2532 portrait, ~59.94 fps, 414.35 s). Frames and sheets are in C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\burn_salt_010316\\",
+   "answer": "The game uses the same order as the simulator. Turn 15 Checkup (Passimian ex Active, Poisoned + Burned + Confused; Garganacl, Machop, Garganacl on the Bench): 1) Poison: a \"Poison 10\" popup shows at 232.0 and HP goes 70 -> 60 at 232.8. 2) Burn damage: a \"Burned 20\" popup shows at 233.0 and HP goes 60 -> 40 at 234.0. 3) Burn coin: after the 20 damage, a \"Pokémon Checkup — Burned\" banner and coin flip run from 234.4 to 237.0, landing \"Heads!\" at 236.6. At 237.4 the message \"Passimian ex recovered from being Burned\" appears, and HP stays 40. 4) Blessed Salt #1: a banner over the LEFT bench Garganacl shows from 238.8 to 240.0, a green \"10\" at 240.4, and HP goes 40 -> 50 at 241.2. 5) Blessed Salt #2: a banner over the RIGHT bench Garganacl shows from 242.8 to 244.2, a green \"10\" at 244.6, and HP goes 50 -> 60 at 245.4. The Checkup ends at 60/130, and \"Your turn / Current turn: 16\" appears at ~247. Full HP sequence: 70 -> 60 (Poison) -> 40 (Burn) -> coin Heads, Burn cured -> 50 (Salt 1) -> 60 (Salt 2). The two heals show as two separate 10s, one per Garganacl, left before right. Turn 16: a \"Poison 10\" popup at 291.4 takes HP 130 -> 120 at 292.2. Then there is only ONE Blessed Salt banner (left Garganacl, 293.0-294.2), a green \"10\" at 294.6, and HP 120 -> 130 at 295.6. No second Blessed Salt banner shows before \"Opponent's turn / Current turn: 17\" at 296.8. So the review's \"two Blessed Salt heals\" on T16 is not what the footage shows. Only one activation is displayed, since one heal already reached full HP. The final HP (130) is the same. Turn 18: a \"Poison 10\" popup at 354.8 takes HP 120 -> 110 at 355.6. Blessed Salt #1 (left Garganacl, 356.4-357.6) shows a green \"10\" at 358.0, and HP goes 110 -> 120 at 359.0. Blessed Salt #2 (right Garganacl, 360.6-361.8) shows a green \"10\" at 362.2, and HP goes 120 -> 130 at 363.0. \"Opponent's turn / Current turn: 19\" appears at 364.4. In all three Checkups, Poison comes first and every Blessed Salt heal comes after all damage. On T15, Burn's 20 lands before its coin flip, and the cure message comes before the heals.",
+   "evidence": [
+    {
+     "time_s": 230.4,
+     "seen": "Just before the T15 Checkup: Passimian ex HP 70. Weezing ex HP 140 drops to 120 at 231.0 (Rocky Helmet). Bench: Garganacl 150, Machop 70, Garganacl 150.",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\burn_salt_010316\\t15_230.4.jpg"
+    },
+    {
+     "time_s": 232,
+     "seen": "'Poison 10' popup on Passimian from 232.0 to 232.8. HP still shows 70 at 232.0-232.6. HP shows 60 at 232.8.",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\burn_salt_010316\\t15_232.0.jpg"
+    },
+    {
+     "time_s": 232.8,
+     "seen": "Full frame: Passimian HP 60 (red, animating) after Poison. No Burn popup yet. Weezing 120.",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\burn_salt_010316\\f_232.8.png"
+    },
+    {
+     "time_s": 233,
+     "seen": "'Burned 20' popup from 233.0 to 233.8 with HP 60. HP shows 40 at 234.0 and 234.2.",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\burn_salt_010316\\t15_233.6.jpg"
+    },
+    {
+     "time_s": 234.4,
+     "seen": "Top banner 'Pokémon Checkup — Burned' with a coin flip (234.4-236.2). Same sheet: HP 40 at 234.0-234.2, before the banner.",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\burn_salt_010316\\t15_233.6.jpg"
+    },
+    {
+     "time_s": 236.6,
+     "seen": "Coin result 'Head' at 236.4, then 'Heads!' at 236.6-237.0.",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\burn_salt_010316\\t15_235.2.jpg"
+    },
+    {
+     "time_s": 237.4,
+     "seen": "Banner 'Passimian ex recovered from being Burned' from 237.4 to 239.6. HP stays 40 at 237.2-238.4.",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\burn_salt_010316\\t15_236.8.jpg"
+    },
+    {
+     "time_s": 238.8,
+     "seen": "'Ability Blessed Salt' banner at the lower LEFT (left bench Garganacl) from 238.8 to 240.0, board dimmed.",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\burn_salt_010316\\t15_238.4.jpg"
+    },
+    {
+     "time_s": 240.4,
+     "seen": "Green '10' on Passimian from 240.4 to 240.8 with HP 40. HP shows 50 at 241.2.",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\burn_salt_010316\\t15_240.0.jpg"
+    },
+    {
+     "time_s": 243.4,
+     "seen": "Full frame: second 'Ability Blessed Salt' banner above the RIGHT bench Garganacl (banner 242.8-244.2).",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\burn_salt_010316\\f_243.4.png"
+    },
+    {
+     "time_s": 244.6,
+     "seen": "Green '10' from 244.6 to 245.0 with HP 50. HP shows 60 at 245.4 and stays 60 through 246.2. Weezing stays 120 throughout, so the opponent was not healed.",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\burn_salt_010316\\t15_244.8.jpg"
+    },
+    {
+     "time_s": 291.4,
+     "seen": "T16: 'The attack did nothing' banner. 'Poison 10' popup from 291.4 to 292.0 with HP 130. HP shows 120 at 292.2.",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\burn_salt_010316\\t16_292.0.jpg"
+    },
+    {
+     "time_s": 293,
+     "seen": "T16: one 'Ability Blessed Salt' banner at the lower LEFT from 293.0 to 294.2. Green '10' from 294.6 to 295.0 with HP 120.",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\burn_salt_010316\\t16_293.6.jpg"
+    },
+    {
+     "time_s": 295.6,
+     "seen": "T16: HP 120 at 295.2-295.4, then 130 at 295.6. No further Blessed Salt banner from 295.6 to 296.6. Bench: Garganacl 150, Machoke 100, Garganacl 150.",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\burn_salt_010316\\t16_295.2.jpg"
+    },
+    {
+     "time_s": 296.8,
+     "seen": "'Opponent's turn / Current turn: 17' with Passimian at 130. No second Salt banner came before it.",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\burn_salt_010316\\t16_296.8.jpg"
+    },
+    {
+     "time_s": 354.8,
+     "seen": "T18: 'Poison 10' popup from 354.8 to 355.4 with HP 120. HP shows 110 at 355.6.",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\burn_salt_010316\\t18_354.4.jpg"
+    },
+    {
+     "time_s": 356.4,
+     "seen": "T18: 'Ability Blessed Salt' banner at the lower LEFT from 356.4 to 357.6.",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\burn_salt_010316\\t18_356.0.jpg"
+    },
+    {
+     "time_s": 358,
+     "seen": "T18: green '10' from 358.0 to 358.6 with HP 110. HP shows 120 at 359.0.",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\burn_salt_010316\\t18_357.6.jpg"
+    },
+    {
+     "time_s": 360.6,
+     "seen": "T18: second 'Ability Blessed Salt' banner at the lower RIGHT from 360.6 to 361.8.",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\burn_salt_010316\\t18_360.8.jpg"
+    },
+    {
+     "time_s": 362.2,
+     "seen": "T18: green '10' from 362.2 to 362.6 with HP 120. HP shows 130 at 363.0. 'Opponent's turn / Current turn: 19' at 364.4 with HP 130. Weezing stays at 20.",
+     "frame": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\burn_salt_010316\\t18_362.4.jpg"
+    }
+   ],
+   "confidence": "high",
+   "caveats": [
+    "Sheet timestamps come from ffmpeg's fps filter after input seeking, sampled every 0.2 s, so any event could be up to about 0.2 s earlier than listed. The HP counter updates about 0.6-1.0 s after each damage or heal popup, so 'HP changed at t' means the number was first shown at t.",
+    "The 0.2 s sheets are cropped to video rows 330-1780 of 2532, which includes the top banners, both Actives and the Bench HP. Full frames were checked at 232.8 and 243.4, and the other single full frames (f_*.png) are saved but were not all viewed.",
+    "Seen: each Blessed Salt activation shows its own banner, then a green '10' on Passimian, then HP +10. Inferred: the green '10' is the heal amount, based on its color and the HP rise right after it. The footage cannot show whether the game's internal heal is two separate 10s or one combined 20. It only shows two separate 10 animations, left Garganacl before right.",
+    "T16: only one Blessed Salt banner is displayed. Whether the second Garganacl's ability triggered with nothing left to heal (and was not shown) is unclear. After the first heal every one of the player's Pokémon was at full HP (Passimian 130/130, Garganacl 150/150 x2, Machoke 100/100 per lib/card.py HP 100), so the end state matches either way.",
+    "No Poison-KO case happens here, so this footage cannot test whether Blessed Salt rescues a Pokémon that Poison or Burn took to 0 (the R240 heal-rescue question)."
+   ],
+   "other_rules_moments": [
+    "Poison and Burn Checkup damage appear only as popups on the card ('Poison 10', 'Burned 20'), with no top banner. Only the Burn coin gets a top banner, 'Pokémon Checkup — Burned' (234.4-237.0).",
+    "The Burn cure message 'Passimian ex recovered from being Burned' (237.4-239.6) comes before both Blessed Salt heals on T15.",
+    "Confusion has no Checkup step. After the T15 Checkup, Passimian's status icon keeps alternating between Poison (purple) and Confusion (green spiral), e.g. 241.6-246.2.",
+    "Blessed Salt did not heal the opponent's Pokémon. Weezing ex stayed 120 through the T15 Checkup (231.0-246.2) and 20 through the T18 Checkup (354.4-365.4).",
+    "Rocky Helmet: Weezing ex 140 -> 120 at 231.0, after Confusion Gas and before the T15 Checkup.",
+    "T16: the Confusion coin flip lands Tails (~286-289 in sheet_284.jpg), then 'The attack did nothing' at 290-292, then the Checkup.",
+    "T18: Seismic Toss shows a 'Weakness 80' popup at ~353 (sheet_352.jpg), with Weezing 100 -> 20, before the Checkup."
+   ]
+  },
+  "check": {
+   "item": "burn_salt_010316_check",
+   "agrees": true,
+   "disagreements": [
+    "There are no disagreements that change the answer. Every event the first examiner cites shows up in my own frames in the same order and with the same HP values.",
+    "Timing offset only: my times are about 0.09 s later than the examiner's throughout. My labels are each shown frame's own timestamp, while the examiner's appear to be the nominal 0.2 s sampling times. For example, HP 70->60 shows at 232.84 (examiner: 232.8), and at 234.04 the counter reads 50 before settling at 40 at 234.14 (examiner: 40 at 234.0). The order of events is not affected.",
+    "Small correction to the examiner's side notes: on T16 the coin flip at about 284.1-286.7 (Tails at 286.09) belongs to Lucky Ice Pop, as the Lucky Ice Pop text in the top banner shows (s16_01.jpg). The Confusion coin is a separate flip, 'Coin flip - Confused', from 287.29 to 290.09, landing Tails at about 289.3-290.09, followed by 'The attack did nothing' from 290.29 (s16_02.jpg, s16_03.jpg). The examiner's '~286-289' mixes the two flips.",
+    "A detail the examiner's summary leaves out: on T15 the cure message 'Passimian ex recovered from being Burned' (237.49 onward) is still on screen when the first Blessed Salt banner appears. The full frame at 239.50 shows both at once, and the message is gone by 239.89. The cure message still starts before any heal, and the first green 10 comes later, at 240.49."
+   ],
+   "own_reading": "Video: C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260922_010316000_iOS.MP4 (1170x2532 portrait, 414.35 s, about 58.4 fps average).\n\nMy frames are in C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\video_checks\\burn_salt_010316_check\\ :\n- s15_01..08.jpg (T15), s16_01..06.jpg (T16) and s18_01..06.jpg (T18) are 0.2 s contact sheets. Each tile is stamped with the shown frame's own timestamp.\n- fineA_01..02.jpg are 0.1 s sheets of the Active Passimian, 232.54-234.84.\n- f_<t>.png are full frames.\n- I checked the labelling method against a frame decoded from the start of the file at 231.0. It matched (gold_out_231.0.png vs inseek_231.0.png).\n\nT15 Checkup. Passimian ex is Active, Poisoned + Burned + Confused. Bench: Garganacl 150, Machop 70, Garganacl 150.\n- Before the Checkup: Rocky Helmet's 20 pops on Weezing ex from 230.29 to 230.89, and Weezing goes 140 -> 120 at 231.09. Passimian is at 70 (s15_01).\n- Poison: a 'Poison 10' popup shows on Passimian from 232.09 to 232.64 while HP still reads 70. HP reads 60 at 232.84 (fineA_01, s15_02).\n- Burn damage: a 'Burned 20' popup shows from about 233.09-233.14 to 233.84 while HP reads 60. The counter shows 50 at 234.04 and 40 at 234.14 (fineA_01/02, s15_02/03).\n- Burn coin: the screen dims from 234.34, and the 'Pokémon Checkup - Burned' banner and coin run from 234.49 to 237.09. 'Head' shows at 236.49 and 'Heads!' from 236.69 to 237.09 (s15_03/04). HP is 40 at 237.29 (s15_04, f_237.29.png).\n- Cure message: 'Passimian ex recovered from being Burned' shows from 237.49 to about 239.69. HP stays 40.\n- Blessed Salt #1: a flash on the LEFT bench Garganacl at 238.89, and an 'Ability Blessed Salt' banner over it from 238.89 to 240.09 (f_239.50.png shows this banner and the cure message together). A green 10 shows on Passimian from 240.49 to 240.89 with HP 40. HP reads 50 at 241.29 (s15_05/06).\n- Blessed Salt #2: the banner over the RIGHT bench Garganacl shows from 242.89 to about 244.29, with a flash on that card at 243.09 (f_243.50.png). A green 10 shows from 244.69 to 245.09 with HP 50. HP reads 60 at 245.49 (s15_06/07).\n- 'Your turn / Current turn: 16' appears from about 246.69. Weezing stays 120 and Grimer 60 the whole time, and the bench HP never changes.\n- HP sequence: 70 -> 60 (Poison) -> 40 (Burn 20, before its coin) -> Heads, Burn cured, still 40 -> 50 (left Salt) -> 60 (right Salt).\n- This matches the simulator's order: Poison, then Burn 20 and its coin, then the heals.\n\nT16:\n- Lucky Ice Pop's coin lands Tails at about 286.09, and Passimian is at 130 at 286.87.\n- The Confusion coin runs 287.29-290.09 and lands Tails at about 289.3-290.09. 'The attack did nothing' shows from 290.29.\n- Poison: the 'Poison 10' popup shows from 291.49 to 292.09 with HP 130. HP reads 120 at 292.29 (s16_04).\n- ONE Blessed Salt banner, from the LEFT Garganacl, shows from 293.09 to 294.29 (f_293.60.png). A green 10 shows from 294.69 to 295.09 with HP 120. HP reads 130 at 295.69 (s16_05).\n- No second banner appears from 295.69 to 296.69. 'Opponent's turn / Current turn: 17' shows at 296.89, with Passimian at 130 and the bench at Garganacl 150, Machoke 100, Garganacl 150 (s16_06).\n- HP sequence: 130 -> 120 -> 130. Only one activation is shown. Whether the second Garganacl triggered without being shown is unclear.\n\nT18:\n- Seismic Toss shows 'Weakness 80' from 353.09 to 353.69, and Weezing drops 100 -> 20 by 354.09 (s18_01).\n- Poison: the popup shows from 354.89 to 355.49 with HP 120. HP reads 110 at 355.69 (s18_02).\n- Blessed Salt #1 (LEFT Garganacl): banner from 356.49 to 357.70. A green 10 shows from 358.10 to 358.70. HP reads 120 at 359.10 (s18_02/03).\n- Blessed Salt #2 (RIGHT Garganacl): banner from 360.70 to 361.90 (f_360.80.png). A green 10 shows from 362.30 to 362.70. HP reads 130 at 363.10 (s18_04/05).\n- 'Opponent's turn / Current turn: 19' shows at 364.50 with HP 130. Weezing stays at 20 and Muk at 120.\n- HP sequence: 120 -> 110 -> 120 -> 130.\n\nSeen versus inferred:\n- Seen: in all three Checkups, Poison comes first and every heal comes after all damage. On T15 the Burn 20 lands before its coin flip, and the cure message comes before the heals.\n- Inferred: the green '10' is the heal amount, based on its colour and the HP rise that follows it.\n- The footage cannot show whether the game heals internally as two separate 10s or as one combined 20.\n- There is no lethal Poison or Burn case here, so this footage cannot answer the question of Blessed Salt rescuing a Pokémon at 0 HP.",
+   "confidence": "high"
+  }
+ }
+]
