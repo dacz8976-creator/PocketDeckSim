@@ -44,11 +44,15 @@ enum RecoveryTarget {
     Named(&'static [&'static str]),
 }
 
-/// One recovery effect: the Energy it can move (`None` = any type), what it can attach to, whether its holder must be
-/// on the Bench (an Ability's own position condition), and whether the opponent must have a point (Lusamine).
+/// One recovery effect: the Energy it can move (`None` = any type), how many per play (`None` for an Ability, which
+/// works again every turn), whether each must be a different type (Professor Sada), what it can attach to, whether
+/// its holder must be on the Bench (an Ability's own position condition), and whether the opponent must have a point
+/// (Lusamine).
 #[derive(Debug, Clone, Copy, PartialEq)]
 struct Recovery {
     moves: Option<EnergyType>,
+    per_play: Option<usize>,
+    different_types: bool,
     target: RecoveryTarget,
     holder_on_bench: bool,
     needs_opponent_point: bool,
@@ -61,6 +65,8 @@ fn ability_recovery(mechanic: &AbilityMechanic) -> Option<Recovery> {
         // your Active [N] Pokémon."
         AbilityMechanic::AttachEnergyFromDiscardToActiveTypedFromBench { energy_type } => Some(Recovery {
             moves: None,
+            per_play: None,
+            different_types: false,
             target: RecoveryTarget::ActiveOfType(*energy_type),
             holder_on_bench: true,
             needs_opponent_point: false,
@@ -68,6 +74,8 @@ fn ability_recovery(mechanic: &AbilityMechanic) -> Option<Recovery> {
         // Combust: "attach a [R] Energy from your discard pile to this Pokémon."
         AbilityMechanic::AttachEnergyFromDiscardToSelfAndDamage { energy_type, .. } => Some(Recovery {
             moves: Some(*energy_type),
+            per_play: None,
+            different_types: false,
             target: RecoveryTarget::Holder,
             holder_on_bench: false,
             needs_opponent_point: false,
@@ -81,16 +89,18 @@ const PROFESSOR_SADA: &str = "Attach 3 different types of Energy from your disca
 const LUSAMINE: &str = "You can use this card only if your opponent has gotten at least 1 point.Choose 1 of your Ultra Beasts. Attach 2 random Energy from your discard pile to that Pokémon.";
 const VOLKNER: &str = "Choose 1 of your Electivire or Luxray. Attach 2 [L] Energy from your discard pile to that Pokémon.";
 
-/// The recovery effect of a Trainer card (Item, Supporter, Tool or Stadium), keyed on its printed text.
+/// The recovery effect of a Trainer card (Item, Supporter, Tool or Stadium), keyed on its printed text. Each copy moves
+/// what one play moves: Flame Patch one [R]; Professor Sada one Energy of each different type, up to 3 (Dustin,
+/// Sept 26: one type moves one, two types two, three or more types three); Lusamine 2 of any type; Volkner 2 [L].
 fn trainer_recovery(trainer: &TrainerCard) -> Option<Recovery> {
-    let (moves, target, needs_opponent_point) = match trainer.effect.as_str() {
-        FLAME_PATCH => (Some(EnergyType::Fire), RecoveryTarget::ActiveOfType(EnergyType::Fire), false),
-        PROFESSOR_SADA => (None, RecoveryTarget::Ancient, false),
-        LUSAMINE => (None, RecoveryTarget::UltraBeast, true),
-        VOLKNER => (Some(EnergyType::Lightning), RecoveryTarget::Named(&["Electivire", "Luxray"]), false),
+    let (moves, per_play, different_types, target, needs_opponent_point) = match trainer.effect.as_str() {
+        FLAME_PATCH => (Some(EnergyType::Fire), 1, false, RecoveryTarget::ActiveOfType(EnergyType::Fire), false),
+        PROFESSOR_SADA => (None, 3, true, RecoveryTarget::Ancient, false),
+        LUSAMINE => (None, 2, false, RecoveryTarget::UltraBeast, true),
+        VOLKNER => (Some(EnergyType::Lightning), 2, false, RecoveryTarget::Named(&["Electivire", "Luxray"]), false),
         _ => return None,
     };
-    Some(Recovery { moves, target, holder_on_bench: false, needs_opponent_point })
+    Some(Recovery { moves, per_play: Some(per_play), different_types, target, holder_on_bench: false, needs_opponent_point })
 }
 
 /// Whether `card` (in its owner's hand or deck) qualifies as `target`.
@@ -116,19 +126,36 @@ fn in_play_qualifies(state: &State, pokemon: &PlayedCard, target: RecoveryTarget
     }
 }
 
-/// The Energy types `side` can pull back from its discard pile now or later, as far as the evaluator may know:
-/// `None` in the result means any type. `own` is true for the evaluating player's side.
-fn movable_types(state: &State, side: usize, own: bool) -> Vec<Option<EnergyType>> {
+/// Where a recovery source sits, so an Ability's holder isn't counted as its own target (Dragon's Blessing attaches from
+/// the Bench to the Active, never to its holder).
+#[derive(Debug, Clone, Copy, PartialEq)]
+enum Source {
+    /// A Trainer (a Tool, Stadium or card in hand or deck): it has no holder.
+    Trainer,
+    /// An Ability held by the Pokémon in this slot.
+    InPlay(usize),
+    /// An Ability on this card of the own side's remaining cards (index into hand then deck).
+    Remaining(usize),
+}
+
+/// The recovery sources `side` has, as far as the evaluator may know. `own` is true for the evaluating player's side.
+fn recovery_sources(state: &State, side: usize, own: bool) -> Vec<Recovery> {
     let opponent = 1 - side;
     let remaining: Vec<&Card> = if own {
         state.hands[side].iter().chain(state.decks[side].cards.iter()).collect()
     } else {
         Vec::new()
     };
-    let has_target = |recovery: &Recovery, holder_counts: bool| -> bool {
-        holder_counts && recovery.target == RecoveryTarget::Holder
-            || state.enumerate_in_play_pokemon(side).any(|(_, p)| in_play_qualifies(state, p, recovery.target))
-            || remaining.iter().any(|card| card_qualifies(card, recovery.target))
+    // A target other than the source's own holder: in play, or (own side only) among the remaining cards.
+    let has_target = |recovery: &Recovery, source: Source| -> bool {
+        recovery.target == RecoveryTarget::Holder && source != Source::Trainer
+            || state
+                .enumerate_in_play_pokemon(side)
+                .any(|(slot, p)| source != Source::InPlay(slot) && in_play_qualifies(state, p, recovery.target))
+            || remaining
+                .iter()
+                .enumerate()
+                .any(|(i, card)| source != Source::Remaining(i) && card_qualifies(card, recovery.target))
     };
     let usable = |recovery: &Recovery| !recovery.needs_opponent_point || state.points[opponent] >= 1;
     let mut moves = Vec::new();
@@ -137,15 +164,15 @@ fn movable_types(state: &State, side: usize, own: bool) -> Vec<Option<EnergyType
     for (slot, pokemon) in state.enumerate_in_play_pokemon(side) {
         if let Some(recovery) = get_in_play_ability_mechanic(state, pokemon).and_then(ability_recovery) {
             let position_ok = own || !recovery.holder_on_bench || slot != 0;
-            if position_ok && usable(&recovery) && has_target(&recovery, true) {
-                moves.push(recovery.moves);
+            if position_ok && usable(&recovery) && has_target(&recovery, Source::InPlay(slot)) {
+                moves.push(recovery);
             }
         }
         for tool in &pokemon.attached_tools {
             if let Card::Trainer(trainer) = tool {
                 if let Some(recovery) = trainer_recovery(trainer) {
-                    if usable(&recovery) && has_target(&recovery, false) {
-                        moves.push(recovery.moves);
+                    if usable(&recovery) && has_target(&recovery, Source::Trainer) {
+                        moves.push(recovery);
                     }
                 }
             }
@@ -153,38 +180,71 @@ fn movable_types(state: &State, side: usize, own: bool) -> Vec<Option<EnergyType
     }
     if let Some(Card::Trainer(stadium)) = state.active_stadium.as_ref() {
         if let Some(recovery) = trainer_recovery(stadium) {
-            if usable(&recovery) && has_target(&recovery, false) {
-                moves.push(recovery.moves);
+            if usable(&recovery) && has_target(&recovery, Source::Trainer) {
+                moves.push(recovery);
             }
         }
     }
     // The own side's cards not yet discarded: Pokémon with a recovery Ability and recovery Trainers.
-    for card in &remaining {
-        let recovery = match card {
-            Card::Pokemon(_) => get_ability_mechanic(card).and_then(ability_recovery),
-            Card::Trainer(trainer) => trainer_recovery(trainer),
-            _ => None,
+    for (i, card) in remaining.iter().enumerate() {
+        let (recovery, source) = match card {
+            Card::Pokemon(_) => (get_ability_mechanic(card).and_then(ability_recovery), Source::Remaining(i)),
+            Card::Trainer(trainer) => (trainer_recovery(trainer), Source::Trainer),
+            _ => (None, Source::Trainer),
         };
         if let Some(recovery) = recovery {
-            if usable(&recovery) && has_target(&recovery, true) {
-                moves.push(recovery.moves);
+            if usable(&recovery) && has_target(&recovery, source) {
+                moves.push(recovery);
             }
         }
     }
     moves
 }
 
+/// How many Energy of `discard` the `sources` can move back. An Ability works again every turn, so it takes every
+/// Energy of a type it moves; each Trainer copy takes what one play moves, the most specific first (a typed card, then
+/// Professor Sada's different types, taking from the most plentiful types first, then any type).
+fn recoverable(discard: &[EnergyType], sources: &[Recovery]) -> usize {
+    let takes = |moves: Option<EnergyType>, energy: EnergyType| moves.is_none_or(|t| t == energy);
+    let mut left: Vec<EnergyType> = discard.to_vec();
+    let before = left.len();
+    for source in sources.iter().filter(|s| s.per_play.is_none()) {
+        left.retain(|energy| !takes(source.moves, *energy));
+    }
+    let mut once: Vec<&Recovery> = sources.iter().filter(|s| s.per_play.is_some()).collect();
+    once.sort_by_key(|s| (s.moves.is_none(), !s.different_types));
+    for source in once {
+        let limit = source.per_play.unwrap_or(0);
+        if source.different_types {
+            let mut types: Vec<EnergyType> = Vec::new();
+            for energy in &left {
+                if takes(source.moves, *energy) && !types.contains(energy) {
+                    types.push(*energy);
+                }
+            }
+            types.sort_by_key(|t| std::cmp::Reverse(left.iter().filter(|e| *e == t).count()));
+            for energy in types.into_iter().take(limit) {
+                let at = left.iter().position(|e| *e == energy).expect("the type is in the pile");
+                left.remove(at);
+            }
+        } else {
+            for _ in 0..limit {
+                let Some(at) = left.iter().position(|energy| takes(source.moves, *energy)) else { break };
+                left.remove(at);
+            }
+        }
+    }
+    before - left.len()
+}
+
 /// kpf's part F for `side`: K × min(E, CAP), where E counts the Energy in `discard` (the side's discard pile less what
-/// R's projection already used) that an available recovery source can move. `own` is true for the evaluating player.
+/// R's projection already used) that its available recovery sources can move back. `own` is true for the evaluating
+/// player.
 pub(crate) fn fuel_credit(state: &State, side: usize, own: bool, discard: &[EnergyType]) -> f64 {
     if discard.is_empty() {
         return 0.0;
     }
-    let movable = movable_types(state, side, own);
-    let fuel = discard
-        .iter()
-        .filter(|energy| movable.iter().any(|moves| moves.is_none_or(|t| t == **energy)))
-        .count();
+    let fuel = recoverable(discard, &recovery_sources(state, side, own));
     FUEL_CREDIT_PER_ENERGY * fuel.min(FUEL_CREDIT_CAP) as f64
 }
 
@@ -277,7 +337,63 @@ mod tests {
         state.decks[1].cards.push(get_card_by_enum(CardId::B4117Dragonair));
         state.hands[1].push(get_card_by_enum(CardId::B1217FlamePatch));
         assert_eq!(fuel_credit(&state, 1, false, &discard), 0.0, "the opponent's deck and hand are never read");
-        assert_eq!(fuel_credit(&state, 1, true, &discard), 30.0, "the same cards count for their owner");
+        // For their owner the Flame Patch counts (one [R]); the Dragonair in the deck has no other Dragon to attach to.
+        assert_eq!(fuel_credit(&state, 1, true, &discard), 15.0, "the same cards count for their owner");
+    }
+
+    /// Dragon's Blessing can't attach to its own holder (it acts from the Bench on the Active): a Dragonair behind a
+    /// non-Dragon Active, with no other Dragon, gives no credit on either side. The same for a Dragonair in the own
+    /// deck with no other Dragon. A second Dragon anywhere the side may count turns it on.
+    #[test]
+    fn dragons_blessing_needs_a_dragon_other_than_its_holder() {
+        let discard = [FIRE, FIRE];
+        for (side, own) in [(0, true), (1, false)] {
+            let mut state = fresh();
+            board(&mut state, side, &[CardId::A1033Charmander, CardId::B4117Dragonair]);
+            assert_eq!(fuel_credit(&state, side, own, &discard), 0.0, "side {side}: the holder is the only Dragon");
+            state.in_play_pokemon[side][2] = Some(PlayedCard::from_id(CardId::B4120MegaRayquazaEx));
+            assert_eq!(fuel_credit(&state, side, own, &discard), 30.0, "side {side}: another Dragon in play");
+        }
+        let mut state = fresh();
+        board(&mut state, 0, &[CardId::A1033Charmander]);
+        state.decks[0].cards.push(get_card_by_enum(CardId::B4117Dragonair));
+        assert_eq!(fuel_credit(&state, 0, true, &discard), 0.0, "a lone Dragonair in the own deck");
+        state.decks[0].cards.push(get_card_by_enum(CardId::B4120MegaRayquazaEx));
+        assert_eq!(fuel_credit(&state, 0, true, &discard), 30.0, "with a Dragon to attach to in the own deck");
+    }
+
+    /// Each Trainer copy moves what one play moves. Professor Sada: one Energy per different type, up to 3 (Dustin,
+    /// Sept 26), so four [R] give one, and [R][W][L][G] give three; a second Sada adds another [R]. Volkner 2 [L];
+    /// Flame Patch one [R].
+    #[test]
+    fn a_trainer_copy_moves_what_one_play_moves() {
+        const WATER: EnergyType = EnergyType::Water;
+        const LIGHTNING: EnergyType = EnergyType::Lightning;
+        let mut state = fresh();
+        board(&mut state, 0, &[CardId::B3a036KoraidonEx]);
+        state.decks[0].cards.push(get_card_by_enum(CardId::B3a072ProfessorSada));
+        assert_eq!(fuel_credit(&state, 0, true, &[FIRE; 4]), 15.0, "one type: one Energy");
+        assert_eq!(fuel_credit(&state, 0, true, &[FIRE, FIRE, WATER]), 30.0, "two types: two");
+        assert_eq!(fuel_credit(&state, 0, true, &[FIRE, WATER, LIGHTNING, EnergyType::Grass]), 45.0, "three at most");
+        state.decks[0].cards.push(get_card_by_enum(CardId::B3a072ProfessorSada));
+        assert_eq!(fuel_credit(&state, 0, true, &[FIRE; 4]), 30.0, "two Sadas: one [R] each");
+        let mut state = fresh();
+        board(&mut state, 0, &[CardId::A2057Electivire]);
+        state.hands[0].push(get_card_by_enum(CardId::A2153Volkner));
+        assert_eq!(fuel_credit(&state, 0, true, &[LIGHTNING; 3]), 30.0, "Volkner: two [L]");
+        let mut state = fresh();
+        board(&mut state, 0, &[CardId::A1033Charmander]);
+        state.hands[0].push(get_card_by_enum(CardId::B1217FlamePatch));
+        assert_eq!(fuel_credit(&state, 0, true, &[FIRE; 3]), 15.0, "Flame Patch: one [R]");
+    }
+
+    /// A recovery Trainer still in the own deck counts, as in the hand.
+    #[test]
+    fn a_recovery_trainer_in_the_own_deck_counts() {
+        let mut state = fresh();
+        board(&mut state, 0, &[CardId::A1033Charmander]);
+        state.decks[0].cards.push(get_card_by_enum(CardId::B1217FlamePatch));
+        assert_eq!(fuel_credit(&state, 0, true, &[FIRE]), 15.0);
     }
 
     /// Lusamine needs the opponent to have a point; Combust moves [R] onto its holder.

@@ -3972,6 +3972,25 @@ mod kpf_tests {
         assert_eq!(kpg_credit, 45.0);
     }
 
+    /// kpf on the opponent's side, with R on: R reads the opponent's Active at its next attack (NextAttack), and F
+    /// counts the opponent's pile R left; kpg, without R, the whole pile.
+    #[test]
+    fn kpf_counts_the_opponents_pile_after_its_own_projection() {
+        let mut state = rayquaza_board();
+        state.discard_energies[0].clear();
+        state.in_play_pokemon[1][0] = Some(PlayedCard::from_id(CardId::B4120MegaRayquazaEx));
+        state.in_play_pokemon[1][1] = Some(PlayedCard::from_id(CardId::B4117Dragonair));
+        state.discard_energies[1] = vec![EnergyType::Fire; 3];
+        let (projected, left) =
+            projected_active_energy_and_discard(&state, 1, state.get_active(1), Horizon::NextAttack);
+        assert_eq!(projected.iter().filter(|e| **e == EnergyType::Fire).count(), 1, "one Blessing by its next attack");
+        let kpf_credit = public_clock_effect_kpf_value_function(&state, 0) - public_clock_effect_kpr_value_function(&state, 0);
+        let kpg_credit = public_clock_effect_kpg_value_function(&state, 0) - public_clock_effect_value_function(&state, 0);
+        assert_eq!(kpf_credit, -15.0 * left.len() as f64);
+        assert_eq!(kpf_credit, -30.0);
+        assert_eq!(kpg_credit, -45.0);
+    }
+
     /// The opponent's pile counts against the evaluator only through a source visible on its board.
     #[test]
     fn the_opponents_credit_needs_its_visible_source() {
