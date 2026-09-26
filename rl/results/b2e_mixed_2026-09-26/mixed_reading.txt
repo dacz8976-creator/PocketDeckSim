@@ -1,0 +1,29 @@
+Attribution for the B2e Manectric and Raticate archetype pairings (descriptive only).
+Per pairing and pooled per held deck, the held deck's score (first_deck_score; the held deck is the first-named 'a'):
+  own side  = (kp3 held | k3 panel) - (k3 | k3)      what kp3 piloting the held deck adds
+  opponents = (k3 held | kp3 panel) - (k3 | k3)      what kp3 piloting its opponents takes (negative = they got better)
+  both      = (kp3 | kp3) - (k3 | k3)                the B2e table change
+  interaction = both - own - opponents
+Paired by deal (seed); 95% = 1.96 x sd of per-deal differences / sqrt(n); pooled per deck = mean over its 8 cells
+(equal weight), sd combined as sqrt(sum var)/8.
+pairing         held      panel  k3|k3    own (kp3 on held)   opponents (kp3 on panel)             both      interaction
+      0    manectric    lucario   53.4          +3.8 ±  2.9                -0.8 ±  3.3      +1.8 ±  4.1      -1.2 ±  2.4
+      1    manectric    altaria   67.8          +1.2 ±  2.7                -2.2 ±  3.6      -1.0 ±  4.1      +0.0 ±  2.6
+      2    manectric   sceptile   54.4          +3.6 ±  2.8                -0.6 ±  2.4      +1.8 ±  3.3      -1.2 ±  2.2
+      3    manectric  vespiquen   70.4          +1.6 ±  3.1                -5.2 ±  3.9      +0.0 ±  4.3      +3.6 ±  3.4
+      4    manectric    suicune   70.6          +1.8 ±  2.9                -0.4 ±  2.9      +0.8 ±  3.8      -0.6 ±  2.5
+      5    manectric  hydreigon   75.4          +5.0 ±  2.5                -5.8 ±  4.2      -3.0 ±  4.3      -2.2 ±  3.3
+      6    manectric    weezing   54.7          +2.8 ±  3.1                -4.9 ±  4.1      -2.4 ±  4.5      -0.3 ±  3.1
+      7    manectric   blaziken   70.1          +2.1 ±  2.7                -4.9 ±  3.6      -3.1 ±  4.2      -0.3 ±  2.8
+      8     raticate    lucario   44.4         +19.2 ±  4.4                +0.4 ±  3.4     +17.0 ±  4.8      -2.6 ±  3.9
+      9     raticate    altaria   32.8         +14.0 ±  4.7                -4.0 ±  4.5     +10.8 ±  5.5      +0.8 ±  5.1
+     10     raticate   sceptile   23.6         +21.4 ±  4.4                -0.2 ±  2.3     +20.8 ±  4.5      -0.4 ±  3.4
+     11     raticate  vespiquen   33.0         +26.6 ±  5.1                -1.2 ±  4.2     +27.8 ±  5.5      +2.4 ±  5.3
+     12     raticate    suicune   46.2         +24.8 ±  4.4                +0.4 ±  3.0     +25.8 ±  4.7      +0.6 ±  3.5
+     13     raticate  hydreigon   55.2          +9.0 ±  4.2               -16.0 ±  4.1      -2.4 ±  5.0      +4.6 ±  4.8
+     14     raticate    weezing   38.0         +22.6 ±  4.5                -6.4 ±  3.9     +15.2 ±  5.0      -1.0 ±  4.5
+     15     raticate   blaziken   55.8         +20.9 ±  4.4                -4.9 ±  3.7     +16.4 ±  4.9      +0.4 ±  4.5
+
+Pooled per held deck (equal weight over its 8 cells):
+  manectric   own  +2.7 ± 1.0  opp  -3.1 ± 1.3  both  -0.6 ± 1.4  inter  -0.3 ± 1.0
+  raticate    own +19.8 ± 1.6  opp  -4.0 ± 1.3  both +16.4 ± 1.8  inter  +0.6 ± 1.6
