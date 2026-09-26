@@ -266,6 +266,18 @@ pub fn public_clock_effect_kor_value_function(state: &State, myself: usize) -> f
     parametric_value_function_ex6(state, myself, &ValueFunctionParams::baseline(), true, false, true, true, false, EvalFeatures::KOR)
 }
 
+/// The `kpf` tier (players/mod.rs `KPF`, piloted like `kp`; registered Sept 26, `rl/results/kpf_2026-09-26/REGISTRATION.md`):
+/// `kpr`'s evaluator (part R, kpr's projection exactly as built, amendment 5 included) plus part F, the discard-Energy
+/// credit ([`super::fuel_credit::fuel_credit`]).
+pub fn public_clock_effect_kpf_value_function(state: &State, myself: usize) -> f64 {
+    parametric_value_function_ex6(state, myself, &ValueFunctionParams::baseline(), true, false, true, true, false, EvalFeatures::KPF)
+}
+
+/// The `kpg` diagnostic: `k`'s evaluator plus part F only. Never adopted.
+pub fn public_clock_effect_kpg_value_function(state: &State, myself: usize) -> f64 {
+    parametric_value_function_ex6(state, myself, &ValueFunctionParams::baseline(), true, false, true, true, false, EvalFeatures::KPG)
+}
+
 /// Weight of [`best_benched_attacker_online_score`] in `kq`: half the Active online score's 500 in
 /// [`ValueFunctionParams::baseline`]. Pre-set before any A/B and not tuned on the table.
 pub const KQ_BENCH_ATTACKER_WEIGHT: f64 = 250.0;
@@ -289,6 +301,9 @@ struct EvalFeatures {
     opening_first_turn_active: bool,
     opening_bench_working: bool,
     opening_readiness: bool,
+    /// kpf and kpg (part F): the discard-Energy credit for a side that can pull that Energy back
+    /// ([`super::fuel_credit::fuel_credit`]), over the pile R's projection left when R is on.
+    fuel_credit: bool,
 }
 
 impl EvalFeatures {
@@ -300,6 +315,7 @@ impl EvalFeatures {
         opening_first_turn_active: false,
         opening_bench_working: false,
         opening_readiness: false,
+        fuel_credit: false,
     };
     const KQ: EvalFeatures = EvalFeatures {
         next_attack_reduction: true,
@@ -309,6 +325,7 @@ impl EvalFeatures {
         opening_first_turn_active: false,
         opening_bench_working: false,
         opening_readiness: false,
+        fuel_credit: false,
     };
     const KD: EvalFeatures = EvalFeatures {
         next_attack_reduction: false,
@@ -318,6 +335,7 @@ impl EvalFeatures {
         opening_first_turn_active: false,
         opening_bench_working: false,
         opening_readiness: false,
+        fuel_credit: false,
     };
     const KPR: EvalFeatures = EvalFeatures {
         next_attack_reduction: false,
@@ -327,10 +345,15 @@ impl EvalFeatures {
         opening_first_turn_active: false,
         opening_bench_working: false,
         opening_readiness: false,
+        fuel_credit: false,
     };
     const KOA: EvalFeatures = EvalFeatures { opening_first_turn_active: true, ..EvalFeatures::OFF };
     const KOB: EvalFeatures = EvalFeatures { opening_bench_working: true, ..EvalFeatures::OFF };
     const KOR: EvalFeatures = EvalFeatures { opening_readiness: true, ..EvalFeatures::OFF };
+    /// kpf: R (kpr's projection, exactly as kpr uses it) and F. With F off it is [`EvalFeatures::KPR`].
+    const KPF: EvalFeatures = EvalFeatures { fuel_credit: true, ..EvalFeatures::KPR };
+    /// kpg (diagnostic): F only.
+    const KPG: EvalFeatures = EvalFeatures { fuel_credit: true, ..EvalFeatures::OFF };
 
     fn any_opening_switch(&self) -> bool {
         self.opening_first_turn_active || self.opening_bench_working || self.opening_readiness
@@ -620,6 +643,22 @@ fn parametric_value_function_ex6(
             * params.energy_distance_to_online
         + opp.discard_size * params.opponent_discard_size;
     trace!("parametric_value_function: {score} (params: {params:?}, my: {my:?}, opp: {opp:?})");
+    // kpf, kpg: part F, the discard-Energy credit on each side, weighted as the Pokémon value it is part of. Over the
+    // pile R's projection left (each side at its own horizon, as R reads it), or the whole pile with R off, so no
+    // Energy counts twice. The opponent's side reads only its board. Every other tier skips it.
+    let score = if features.fuel_credit {
+        let rest = |side: usize, horizon: Horizon| -> Vec<EnergyType> {
+            match (features.projected_readiness, state.maybe_get_active(side)) {
+                (true, Some(active)) => projected_active_energy_and_discard(state, side, active, horizon).1,
+                _ => state.discard_energies[side].clone(),
+            }
+        };
+        let my_fuel = super::fuel_credit::fuel_credit(state, myself, true, &rest(myself, Horizon::ThroughNextTurn));
+        let opp_fuel = super::fuel_credit::fuel_credit(state, opponent, false, &rest(opponent, Horizon::NextAttack));
+        score + (my_fuel - opp_fuel) * params.pokemon_value
+    } else {
+        score
+    };
     // kq: the best benched attacker's readiness, on both sides as for the Active (the opponent's priced from
     // the board only). Every older tier has weight 0 and skips it, so its score is untouched.
     if features.bench_attacker_weight != 0.0 {
@@ -2177,8 +2216,18 @@ fn end_turn_scored_before_it(state: &State, owner: usize) -> bool {
 /// score's yardstick to a better attack with a lower ratio, only with mixed-type costs; and an observation hides the
 /// opponent's stack, so a paused end of its turn (a point-denial coin at Checkup) reads as its turn running.
 fn projected_active_energy(state: &State, owner: usize, active: &PlayedCard, horizon: Horizon) -> Vec<EnergyType> {
+    projected_active_energy_and_discard(state, owner, active, horizon).0
+}
+
+/// [`projected_active_energy`], and `owner`'s discard-pile Energy it didn't use (kpf's part F counts only that).
+fn projected_active_energy_and_discard(
+    state: &State,
+    owner: usize,
+    active: &PlayedCard,
+    horizon: Horizon,
+) -> (Vec<EnergyType>, Vec<EnergyType>) {
     if state.turn_count == 0 {
-        return Vec::new();
+        return (Vec::new(), state.discard_energies[owner].clone());
     }
     let owner_to_move = state.current_player == owner;
     let running = owner_to_move
@@ -2258,7 +2307,7 @@ fn projected_active_energy(state: &State, owner: usize, active: &PlayedCard, hor
             charged.attached_energy.push(discard.remove(at));
         }
     }
-    charged.attached_energy.split_off(before)
+    (charged.attached_energy.split_off(before), discard)
 }
 
 /// kpr: the index in `discard` of the Energy that, attached to `charged`, leaves its attacks fewest missing Energy
@@ -3861,5 +3910,80 @@ mod kpr_feature_tests {
                 value(suicune(), EnergyType::Water, CardId::A1001Bulbasaur, in_hand)
             );
         }
+    }
+}
+
+#[cfg(test)]
+mod kpf_tests {
+    use super::*;
+    use crate::card_ids::CardId;
+
+    /// A Rayquaza board on the evaluator's turn: Mega Rayquaza ex Active, Dragonair on the Bench (Dragon's Blessing
+    /// unused), three [R] in the discard pile, against a Bulbasaur.
+    fn rayquaza_board() -> State {
+        let mut state = State::default();
+        state.turn_count = 5;
+        state.current_player = 0;
+        state.in_play_pokemon[0][0] = Some(PlayedCard::from_id(CardId::B4120MegaRayquazaEx));
+        state.in_play_pokemon[0][1] = Some(PlayedCard::from_id(CardId::B4117Dragonair));
+        state.in_play_pokemon[1][0] = Some(PlayedCard::from_id(CardId::A1001Bulbasaur));
+        state.discard_energies[0] = vec![EnergyType::Fire; 3];
+        state.decks[0].cards.clear();
+        state.decks[1].cards.clear();
+        state
+    }
+
+    fn value(state: &State, features: EvalFeatures) -> f64 {
+        parametric_value_function_ex6(state, 0, &ValueFunctionParams::baseline(), true, false, true, true, false, features)
+    }
+
+    /// kpf with F off is kpr; with R off it is kpg; with both off it is kp. Checked on the value, both seats.
+    #[test]
+    fn kpf_parts_switch_off_to_kpr_kpg_and_kp() {
+        let mut boards = vec![rayquaza_board()];
+        let mut other = rayquaza_board();
+        other.current_player = 1;
+        other.discard_energies[1] = vec![EnergyType::Grass; 2];
+        boards.push(other);
+        for state in &boards {
+            let f_off = EvalFeatures { fuel_credit: false, ..EvalFeatures::KPF };
+            let r_off = EvalFeatures { projected_readiness: false, ..EvalFeatures::KPF };
+            let both_off = EvalFeatures { fuel_credit: false, projected_readiness: false, ..EvalFeatures::KPF };
+            assert_eq!(value(state, f_off), public_clock_effect_kpr_value_function(state, 0));
+            assert_eq!(value(state, r_off), public_clock_effect_kpg_value_function(state, 0));
+            assert_eq!(value(state, both_off), public_clock_effect_value_function(state, 0));
+        }
+    }
+
+    /// No double count: F counts only the discard-pile Energy R's projection didn't put on the Active. Here R's
+    /// Dragon's Blessing takes [R] from the pile (this turn and next), so kpf's credit is on what is left; kpg, without
+    /// R, credits the whole pile.
+    #[test]
+    fn f_counts_only_what_r_left_in_the_pile() {
+        let state = rayquaza_board();
+        let active = state.get_active(0);
+        let (projected, left) = projected_active_energy_and_discard(&state, 0, active, Horizon::ThroughNextTurn);
+        let from_pile = projected.iter().filter(|e| **e == EnergyType::Fire).count();
+        assert!(from_pile >= 1, "Dragon's Blessing projects [R] from the pile: {projected:?}");
+        assert_eq!(left.len(), 3 - from_pile);
+        let kpf_credit = public_clock_effect_kpf_value_function(&state, 0) - public_clock_effect_kpr_value_function(&state, 0);
+        let kpg_credit = public_clock_effect_kpg_value_function(&state, 0) - public_clock_effect_value_function(&state, 0);
+        assert_eq!(kpf_credit, 15.0 * left.len() as f64);
+        assert_eq!(kpg_credit, 45.0);
+    }
+
+    /// The opponent's pile counts against the evaluator only through a source visible on its board.
+    #[test]
+    fn the_opponents_credit_needs_its_visible_source() {
+        let mut state = rayquaza_board();
+        state.discard_energies[0].clear();
+        state.discard_energies[1] = vec![EnergyType::Fire; 2];
+        let credit = |state: &State| public_clock_effect_kpg_value_function(state, 0) - public_clock_effect_value_function(state, 0);
+        assert_eq!(credit(&state), 0.0, "Bulbasaur alone: no source");
+        state.decks[1].cards.push(crate::database::get_card_by_enum(CardId::B4117Dragonair));
+        assert_eq!(credit(&state), 0.0, "a Dragonair in the opponent's deck is never read");
+        state.in_play_pokemon[1][0] = Some(PlayedCard::from_id(CardId::B4120MegaRayquazaEx));
+        state.in_play_pokemon[1][1] = Some(PlayedCard::from_id(CardId::B4117Dragonair));
+        assert_eq!(credit(&state), -30.0, "a Dragonair on the opponent's Bench: its two [R] count against the evaluator");
     }
 }

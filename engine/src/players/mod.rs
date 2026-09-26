@@ -7,6 +7,7 @@ mod human_player;
 pub mod list_aware_player;
 pub mod public_pricing_player;
 pub mod jev_player;
+mod fuel_credit;
 mod mcts_player;
 mod opening_class;
 mod random_player;
@@ -171,6 +172,12 @@ pub enum PlayerCode {
     /// 'kor<N>': 'kp<N>' with switch R only (-100 at setup per Energy of the Active's cheapest own attack).
     /// Diagnostic, mixed rows only; not registered for adoption.
     KOR { max_depth: usize },
+    /// 'kpf<N>' is 'kp<N>' with kpr's projection (part R, exactly as kpr builds it) and a discard-Energy credit for a
+    /// side that can pull that Energy back (part F), registered Sept 26 (rl/results/kpf_2026-09-26/REGISTRATION.md;
+    /// value_functions::public_clock_effect_kpf_value_function).
+    KPF { max_depth: usize },
+    /// 'kpg<N>': 'kp<N>' with part F only. Diagnostic, never adopted.
+    KPG { max_depth: usize },
 }
 /// Custom parser function enforcing case-insensitivity
 pub fn parse_player_code(s: &str) -> Result<PlayerCode, String> {
@@ -222,6 +229,18 @@ pub fn parse_player_code(s: &str) -> Result<PlayerCode, String> {
         return Err(format!(
             "Invalid player code: {s}. Use 't<number>', e.g. 't3'"
         ));
+    }
+    // 'kpf<N>' and 'kpg<N>' (see PlayerCode::KPF). Before 'kp<N>' and 'k<N>', which would reject them.
+    for (prefix, code) in [
+        ("kpf", (|max_depth| PlayerCode::KPF { max_depth }) as fn(usize) -> PlayerCode),
+        ("kpg", |max_depth| PlayerCode::KPG { max_depth }),
+    ] {
+        if let Some(depth) = lower.strip_prefix(prefix) {
+            if let Ok(max_depth) = depth.parse::<usize>() {
+                return Ok(code(max_depth));
+            }
+            return Err(format!("Invalid player code: {s}. Use '{prefix}<number>', e.g. '{prefix}3'"));
+        }
     }
     // 'kpr<N>' = 'kp<N>' with projected readiness (see PlayerCode::KPR). Before 'kp<N>' and 'k<N>', which
     // would reject it.
@@ -586,10 +605,16 @@ fn get_player(deck: Deck, opponent_deck: &Deck, player: &PlayerCode) -> Box<dyn 
             },
         }),
         // The KP arm with an opening-Active value function in place of k's; nothing else differs.
-        PlayerCode::KOA { max_depth } | PlayerCode::KOB { max_depth } | PlayerCode::KOR { max_depth } => {
+        PlayerCode::KOA { max_depth }
+        | PlayerCode::KOB { max_depth }
+        | PlayerCode::KOR { max_depth }
+        | PlayerCode::KPF { max_depth }
+        | PlayerCode::KPG { max_depth } => {
             let value_function: expectiminimax_player::ValueFunction = match player {
                 PlayerCode::KOA { .. } => Box::new(value_functions::public_clock_effect_koa_value_function),
                 PlayerCode::KOB { .. } => Box::new(value_functions::public_clock_effect_kob_value_function),
+                PlayerCode::KPF { .. } => Box::new(value_functions::public_clock_effect_kpf_value_function),
+                PlayerCode::KPG { .. } => Box::new(value_functions::public_clock_effect_kpg_value_function),
                 _ => Box::new(value_functions::public_clock_effect_kor_value_function),
             };
             Box::new(PublicPricingPlayer {
@@ -726,6 +751,16 @@ mod s42_tier_parse_tests {
         assert!(parse_player_code("koa").is_err());
         assert!(parse_player_code("koax").is_err());
         assert!(parse_player_code("ko3").is_err());
+        // kpf, kpg: parsed before 'kp<N>'; kpr, kp and the §117 'g<N>' are unchanged.
+        assert_eq!(parse_player_code("kpf3").unwrap(), PlayerCode::KPF { max_depth: 3 });
+        assert_eq!(parse_player_code("KPF5").unwrap(), PlayerCode::KPF { max_depth: 5 });
+        assert_eq!(parse_player_code("kpg3").unwrap(), PlayerCode::KPG { max_depth: 3 });
+        assert_eq!(parse_player_code("kpr3").unwrap(), PlayerCode::KPR { max_depth: 3 });
+        assert_eq!(parse_player_code("kp3").unwrap(), PlayerCode::KP { max_depth: 3 });
+        assert_eq!(parse_player_code("g3").unwrap(), PlayerCode::G { max_depth: 3 });
+        assert!(parse_player_code("kpf").is_err());
+        assert!(parse_player_code("kpfx").is_err());
+        assert!(parse_player_code("kpg").is_err());
         // §115: 'd<N>' must parse and must not shadow anything earlier.
         assert_eq!(
             parse_player_code("d3").unwrap(),
