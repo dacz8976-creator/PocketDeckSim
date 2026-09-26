@@ -336,6 +336,20 @@ struct HyperRay {
     noko_passed: u64,
 }
 
+/// The other Energy-discard attacks of the eight lists, counted the same way as Hyper Ray (the discard-attack
+/// census's list, rl/results/discard_attack_census_2026-09-25 on main): (title, damage, whether it may hit any of the
+/// opponent's Pokemon). "KO-able" = the damage is at least the HP left of the opponent's Active, or of any of the
+/// opponent's Pokemon for an attack that may hit any (Diving Icicles). Weakness and damage changes are not counted.
+const DISCARD_ATTACKS: [(&str, u32, bool); 3] =
+    [("Mega Burning", 120, false), ("Terminating Tail", 130, false), ("Diving Icicles", 130, true)];
+
+/// An activated Ability, by title: the owner's turns on which it was on offer, and those on which it was used.
+#[derive(Default, Clone, Copy)]
+struct AbilityTurns {
+    offered: u64,
+    used: u64,
+}
+
 /// Chase Order-style choices (an attack offering "discard one of your Benched Pokemon for more damage",
 /// SimpleAction::DiscardOwnBenchedThenDamage): how often the choice was offered, how often a Pokemon was
 /// discarded, and which.
@@ -361,6 +375,10 @@ struct GameResult {
     turns: u8,
     first_deck_score: f64,
     hyper_ray: HyperRay,
+    /// Mega Burning, Terminating Tail and Diving Icicles, as Hyper Ray.
+    discard_attacks: BTreeMap<String, HyperRay>,
+    /// Every activated Ability, by title.
+    abilities: BTreeMap<String, AbilityTurns>,
     chase_order: ChaseOrder,
     /// Fingerprint of every chosen move in order: distinct games have distinct fingerprints.
     fingerprint: u64,
@@ -383,6 +401,8 @@ fn play_one(decks: &[Deck; 8], pairing: usize, i: u64, bot_a: &str, bot_b: &str)
     let mut turn = Turn::default();
     let mut moves = DefaultHasher::new();
     let mut hyper_turns: BTreeMap<(usize, u8), HyperTurn> = BTreeMap::new();
+    let mut attack_turns: BTreeMap<(String, usize, u8), HyperTurn> = BTreeMap::new();
+    let mut ability_turns: BTreeMap<(String, usize, u8), (bool, bool)> = BTreeMap::new();
     let mut chase_order = ChaseOrder::default();
     let start = game.get_state_clone();
     let start_cards = [card_count(&start, 0), card_count(&start, 1)];
@@ -433,6 +453,36 @@ fn play_one(decks: &[Deck; 8], pairing: usize, i: u64, bot_a: &str, bot_b: &str)
                 record.declined_opp_hp = Some(opp_hp);
             }
         }
+        if before.turn_count > 0 {
+            for (title, _, any_target) in DISCARD_ATTACKS {
+                let is_it = |a: &SimpleAction| matches!(a, SimpleAction::Attack(x) if x.title == title);
+                if actions.iter().any(|a| is_it(&a.action)) {
+                    let hp = if any_target {
+                        before.enumerate_in_play_pokemon(1 - actor).map(|(_, p)| p.get_remaining_hp()).min()
+                    } else {
+                        before.in_play_pokemon[1 - actor][0].as_ref().map(|p| p.get_remaining_hp())
+                    };
+                    let record = attack_turns.entry((title.to_string(), actor, before.turn_count)).or_default();
+                    if is_it(&chosen.action) {
+                        record.used_opp_hp = Some(hp);
+                    } else if matches!(chosen.action, SimpleAction::EndTurn) {
+                        record.declined_opp_hp = Some(hp);
+                    }
+                }
+            }
+            for a in &actions {
+                if let SimpleAction::UseAbility { in_play_idx } = &a.action {
+                    let holder = before.in_play_pokemon[actor][*in_play_idx].as_ref();
+                    if let Some(Card::Pokemon(p)) = holder.map(|x| &x.card) {
+                        if let Some(ability) = &p.ability {
+                            let e = ability_turns.entry((ability.title.clone(), actor, before.turn_count)).or_default();
+                            e.0 = true;
+                            e.1 |= chosen.action == a.action;
+                        }
+                    }
+                }
+            }
+        }
         let after = game.get_state_clone();
         update_turn(&mut turn, &before, &after, chosen.actor, &chosen);
         let state_findings: Vec<(String, String)> = check_state(&after, start_cards, game.is_game_over())
@@ -455,6 +505,23 @@ fn play_one(decks: &[Deck; 8], pairing: usize, i: u64, bot_a: &str, bot_b: &str)
             if ko(hp) { hyper_ray.ko_passed += 1 } else { hyper_ray.noko_passed += 1 }
         }
     }
+    let mut discard_attacks: BTreeMap<String, HyperRay> = BTreeMap::new();
+    for ((title, _, _), record) in &attack_turns {
+        let damage = DISCARD_ATTACKS.iter().find(|(t, _, _)| t == title).map(|(_, d, _)| *d).unwrap_or(0);
+        let ko = |hp: &Option<u32>| hp.is_some_and(|h| h <= damage);
+        let s = discard_attacks.entry(title.clone()).or_default();
+        if let Some(hp) = &record.used_opp_hp {
+            if ko(hp) { s.ko_used += 1 } else { s.noko_used += 1 }
+        } else if let Some(hp) = &record.declined_opp_hp {
+            if ko(hp) { s.ko_passed += 1 } else { s.noko_passed += 1 }
+        }
+    }
+    let mut abilities: BTreeMap<String, AbilityTurns> = BTreeMap::new();
+    for ((title, _, _), (offered, used)) in &ability_turns {
+        let s = abilities.entry(title.clone()).or_default();
+        s.offered += *offered as u64;
+        s.used += *used as u64;
+    }
     GameResult {
         seed,
         first_seat,
@@ -463,6 +530,8 @@ fn play_one(decks: &[Deck; 8], pairing: usize, i: u64, bot_a: &str, bot_b: &str)
         turns: end.turn_count,
         first_deck_score,
         hyper_ray,
+        discard_attacks,
+        abilities,
         chase_order,
         fingerprint: moves.finish(),
         findings,
@@ -521,6 +590,35 @@ fn main() {
                 h.ko_used, h.ko_passed, h.noko_used, h.noko_passed
             );
         }
+        for (title, _, _) in DISCARD_ATTACKS {
+            let h = results.iter().filter_map(|r| r.discard_attacks.get(title)).fold(HyperRay::default(), |mut s, x| {
+                s.ko_used += x.ko_used;
+                s.ko_passed += x.ko_passed;
+                s.noko_used += x.noko_used;
+                s.noko_passed += x.noko_passed;
+                s
+            });
+            if h.ko_used + h.ko_passed + h.noko_used + h.noko_passed > 0 {
+                let pct = 100.0 * h.noko_used as f64 / (h.noko_used + h.noko_passed).max(1) as f64;
+                println!(
+                    "      {title} turns: KO-able used {} passed {} | not KO-able used {} passed {} ({pct:.0}% used)",
+                    h.ko_used, h.ko_passed, h.noko_used, h.noko_passed
+                );
+            }
+        }
+        let mut ability_totals: BTreeMap<String, AbilityTurns> = BTreeMap::new();
+        for r in &results {
+            for (title, t) in &r.abilities {
+                let s = ability_totals.entry(title.clone()).or_default();
+                s.offered += t.offered;
+                s.used += t.used;
+            }
+        }
+        if !ability_totals.is_empty() {
+            let list: Vec<String> =
+                ability_totals.iter().map(|(title, t)| format!("{title} {} of {}", t.used, t.offered)).collect();
+            println!("      Ability turns (used of offered, by the deck that has it): {}", list.join(", "));
+        }
         let chase = results.iter().fold(ChaseOrder::default(), |mut s, r| {
             s.offered += r.chase_order.offered;
             s.discarded += r.chase_order.discarded;
@@ -548,6 +646,18 @@ fn main() {
                 });
                 if h.ko_used + h.ko_passed + h.noko_used + h.noko_passed > 0 {
                     line["hyper_ray"] = serde_json::json!([h.ko_used, h.ko_passed, h.noko_used, h.noko_passed]);
+                }
+                if !r.discard_attacks.is_empty() {
+                    let m: BTreeMap<&String, [u64; 4]> = r
+                        .discard_attacks
+                        .iter()
+                        .map(|(t, h)| (t, [h.ko_used, h.ko_passed, h.noko_used, h.noko_passed]))
+                        .collect();
+                    line["discard_attacks"] = serde_json::json!(m);
+                }
+                if !r.abilities.is_empty() {
+                    let m: BTreeMap<&String, [u64; 2]> = r.abilities.iter().map(|(t, a)| (t, [a.offered, a.used])).collect();
+                    line["abilities"] = serde_json::json!(m);
                 }
                 if r.chase_order.offered > 0 {
                     line["chase_order"] = serde_json::json!({ "offered": r.chase_order.offered,
