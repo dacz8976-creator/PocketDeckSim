@@ -10,7 +10,7 @@ Seeds: the table's deals only, 72,000,000 + pairing × 10,000 + i, i < 100, even
 - **The temporary damage cuts are almost absent.** None of the eight lists has Jasmine, Metal Core Barrier or any "take −X damage during your opponent's next turn" Supporter or Tool. The only one is Frigibax's Stiffen in the Suicune list, used 55 times in 700 Suicune games. So the table can't read that part; its test has to be Dustin's decks 07, 05 and 11.
 - **A lot of the Tool plays do nothing where they go.**
   - Lucario's Protective Poncho goes on the Active 427 times out of 428. It only protects a Benched Pokémon.
-  - A third of Altaria's Small Balloons (160 of 501) go on Espeon or Mega Altaria ex. Neither is a Basic, and the Balloon only helps a Basic.
+  - 45% of Altaria's Small Balloons (225 of 501) go where they do nothing: on Espeon or Mega Altaria ex, which aren't Basics, and on Igglybuff, whose Retreat Cost is already 0. The laptop's Trainer audit (`rl/results/trainer_audit_2026-09-25/` on main, 8,640 kp3 games) finds 48%.
 
 ## The census
 
@@ -20,7 +20,7 @@ kp3 on both sides, the table's first 100 deals of all 28 pairings; each deck pla
 
 | deck | Tool | what it does | turns offered | turns played | on the Active | where it does nothing |
 |---|---|---|---:|---:|---:|---:|
-| Altaria | Small Balloon | Basic: retreat −1 | 567 | 501 (88%) | 496 | 160 on Stage 1 (Espeon, Mega Altaria ex) |
+| Altaria | Small Balloon | Basic: retreat −1 | 567 | 501 (88%) | 496 | 225: Stage 1 (Espeon 93, Mega Altaria ex 67), or retreat already 0 (Igglybuff 65) |
 | Blaziken | Rocky Helmet | 20 back to an attacker that damages the Active holder | 691 | 478 (69%) | 471 | — |
 | Hydreigon | Deceptive Needle | end of turn, [D] Active holder: 10 to the opponent's Active | 1,176 | 937 (80%) | 918 | — |
 | Lucario | Protective Poncho | Benched holder: no damage | 632 | 428 (68%) | 427 | 427 on the Active |
@@ -68,7 +68,7 @@ kp3 on both sides, the table's first 100 deals of all 28 pairings; each deck pla
   - anything the evaluator doesn't model (Rocky Helmet, Deceptive Needle, Lucky Egg, Poison Barb, the Poncho's Bench protection): 0, as asked.
 
 **What (2) would change, from the census.** This is prediction, not measurement:
-- The useless plays stop: 427 Ponchos on the Active, and 160 Small Balloons on Stage 1s, out of 2,800 games.
+- The useless plays stop: 427 Ponchos on the Active, and 225 Small Balloons where they cut nothing, out of 2,800 games.
 - HP Tools keep being played: +20 to +30 HP outweighs the card leaving the hand (−1).
 - Retreat Tools become a tie: +1 on the retreat term against −1 for the card. Move order would decide, so they'd be played about half the time or less.
 - Field Blower is then worth what the removed Tool did for its holder. Against Leaf Cape and Giant Cape it's still worth playing (−20 to −30 HP for them). Against Rocky Helmet, Deceptive Needle or Small Balloon it's worth nothing more than the card, so it wouldn't be played.

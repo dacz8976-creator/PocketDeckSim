@@ -125,8 +125,8 @@ The accepted 225430 segment revealed that a zero-HP attacker was discarded befor
   any Pokémon from their hand to evolve their Active Pokémon" is checked only in `can_evolve_at_position`
   (`engine/src/move_generation/mod.rs`); `can_play_rare_candy` (`move_generation_trainer.rs`) checks Malamar's
   Evolution Jammer but not Primeval Law, though the engine's own comment on Evolution Jammer says the same wording
-  stops Rare Candy. Dustin (2026-09-25, owner testimony, his in-game test pending): "Pretty sure it blocks evolution
-  from Rare Candy or otherwise." So Rare Candy onto the Active should be blocked, as for Evolution Jammer. No deck here
+  stops Rare Candy. **Confirmed in-game by Dustin, 2026-09-25** (video uploading to `Battle Logs`): Rare Candy can't
+  be used on your Active while the opponent's Aerodactyl ex is in play, as for Evolution Jammer. No deck here
   has Aerodactyl ex; against one, the Rare Candy decks (research: Hydreigon, Blaziken, Suicune; Dustin's 01, 02, 05,
   06; brews 01, 03b, 05, 05b, 09) would get an illegal play. Fix after kpr's table is read.
 - **Heavy Helmet reads the printed Retreat Cost, not the current one — CONFIRMED in-game 2026-09-25** (Dustin's
@@ -138,3 +138,20 @@ The accepted 225430 segment revealed that a zero-HP attacker was discarded befor
   brews 05b and 10 play Plaza. The fix is to read the effective Retreat Cost the engine already computes for retreat
   (`get_retreat_cost_for_player`); it needs an identity replay, after kpr's table is read. Any scorer that prices Heavy
   Helmet (kd did; the kt draft would) follows the engine until then and changes with it.
+- **Legendary Pulse draws after Hiking Trail instead of before — CONFIRMED in-game 2026-09-25** (Dustin's
+  `Battle Logs/pulse_hikingtrail_order.MP4`). At the end of the Suicune ex player's turn with Hiking Trail in play,
+  Legendary Pulse ("At the end of your turn, if this Pokémon is in the Active Spot, draw a card") draws first and Hiking
+  Trail then tops the hand up to 3: the player ends on 3 cards. The engine queues Pulse's draw
+  (`on_end_turn`, `engine/src/hooks/core.rs`: a `DrawCard` frame pushed for the ending player) while Hiking Trail draws
+  at once in the same function, and the queued draw resolves only after the Checkup and the turn change (under the
+  next player's own turn draw): the player ends on 4. It is the only end-of-turn draw the engine queues; checked
+  Sept 25: `EndTurnDrawCardIfActive` is Legendary Pulse on all 13 printings of Entei ex, Suicune ex and Raikou ex, and no
+  other end-of-turn effect in `on_end_turn` draws. **Table impact:** the Suicune v Blaziken cell (Blaziken's list runs
+  Hiking Trail) and Dustin's Hiking Trail decks 06, 10 and 12. Fix: draw Pulse's card at once, before Hiking Trail, in
+  `on_end_turn`. It needs an identity replay, after kpr's table is read.
+- **The A2b 111 printing of Poké Ball can be played with an empty deck** (found by the laptop's Trainer audit,
+  2026-09-25; confirmed in the code). Poké Ball "Put a random Basic Pokémon from your deck into your hand" is blocked
+  with an empty deck only for P-A 005 (`can_play_poke_ball`, `engine/src/move_generation/move_generation_trainer.rs`);
+  A2b 111 is in the always-playable list in the same file. `rules/04` (the "Blocked because it's visibly impossible"
+  list) says both are blocked. No deck in `decks/research`, `decks/dustin` or `decks/brews` uses A2b 111. Fix: route
+  both printings to `can_play_poke_ball`; identity replay after kpr's table is read.
