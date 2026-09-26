@@ -17,3 +17,11 @@ replay done: BOTS=kq3:40 kd3:40 kpr3:40 af8489f
 3102c9e_kp3_500 1800 s wall
 5b75bf9 scan sha256 a170d4d0debf0549767df93092a044bd939ccb2c62cdc07b518da1ffa94e32ee
 5b75bf9_k3_500 2014 s wall
+5b75bf9_kp3_500 3059 s wall
+5bab907 scan sha256 e93077493ef5f9792f2aec70e440d684573e12f5dedc38e9428e2e815924a0e0
+5bab907_k3_500 1443 s wall
+5bab907_kp3_500 1715 s wall
+replay done: BOTS=k3:500 kp3:500 07927e2 3102c9e 5b75bf9 5bab907
+3c2250f scan sha256 9ec5743505bcd115a3d9f875e6159c44f3ceec98dd449896f44ea77523ef3d30
+3c2250f stopped: covered by the laptop's replay (main 746ca9a) and by 3102c9e here
+02fe9de scan sha256 48de6f73499808c73e652b4bf786f674cf274d4bbd1dcefcd3ca201781bca15b
