@@ -43,7 +43,8 @@ pub(crate) fn special_condition_blocks_attack_or_retreat(active: &PlayedCard) ->
 /// [`NoRetreatCostTarget::YourActiveNamed`], which need a scan of your board for the granting
 /// Pokémon). Owner-scoped "your" checks use the explicit `player`; ordinary retreat
 /// supplies `state.current_player`, while attacks inspecting the defender supply its owner.
-fn has_no_retreat_cost_ability(state: &State, player: usize, card: &PlayedCard) -> bool {
+/// The board scan applies only when `card` is the Active (`is_active`).
+fn has_no_retreat_cost_ability(state: &State, player: usize, card: &PlayedCard, is_active: bool) -> bool {
     if let Some(AbilityMechanic::NoRetreatCost {
         target: NoRetreatCostTarget::ThisPokemon,
         condition,
@@ -53,9 +54,10 @@ fn has_no_retreat_cost_ability(state: &State, player: usize, card: &PlayedCard) 
             return true;
         }
     }
-    state
-        .enumerate_in_play_pokemon(player)
-        .any(|(_, source)| grants_active_no_retreat_cost(state, player, source, card))
+    is_active
+        && state
+            .enumerate_in_play_pokemon(player)
+            .any(|(_, source)| grants_active_no_retreat_cost(state, player, source, card))
 }
 
 /// True if `source` (one of `player`'s in-play Pokémon) has an ability that removes the Retreat
@@ -101,7 +103,7 @@ pub(crate) fn get_retreat_cost(state: &State, card: &PlayedCard) -> Vec<EnergyTy
 
 /// Resolve the holder's side explicitly when another player inspects its Retreat Cost.
 pub(crate) fn get_retreat_cost_for_player(state: &State, player: usize, card: &PlayedCard) -> Vec<EnergyType> {
-    get_retreat_cost_for_player_internal(state, player, card, true)
+    get_retreat_cost_for_player_internal(state, player, card, true, true)
 }
 
 /// Resolve the Retreat Cost supplied by the board while ignoring discounts that expire at the
@@ -112,7 +114,21 @@ pub(crate) fn get_board_retreat_cost_for_player(
     player: usize,
     card: &PlayedCard,
 ) -> Vec<EnergyType> {
-    get_retreat_cost_for_player_internal(state, player, card, false)
+    get_retreat_cost_for_player_internal(state, player, card, false, true)
+}
+
+/// The Retreat Cost `card` (one of `player`'s Pokémon) has where it sits, for effects that read it: Heavy Helmet
+/// reads the current cost (rules/09, confirmed in-game 2026-09-25). The board's cost for the Active; on the Bench
+/// (`is_active` false) without the modifiers that name the Active Pokémon (Trap Territory, Sky Support, the typed
+/// Bench discounts, the Abilities that free your Active). Discounts that expire at the end of this turn are left
+/// out, as for [`get_board_retreat_cost_for_player`].
+pub(crate) fn get_board_retreat_cost_at(
+    state: &State,
+    player: usize,
+    card: &PlayedCard,
+    is_active: bool,
+) -> Vec<EnergyType> {
+    get_retreat_cost_for_player_internal(state, player, card, false, is_active)
 }
 
 fn get_retreat_cost_for_player_internal(
@@ -120,6 +136,7 @@ fn get_retreat_cost_for_player_internal(
     player: usize,
     card: &PlayedCard,
     include_temporary_turn_discounts: bool,
+    is_active: bool,
 ) -> Vec<EnergyType> {
     if let Card::Pokemon(pokemon_card) = &card.card {
         if matches!(
@@ -129,7 +146,7 @@ fn get_retreat_cost_for_player_internal(
         {
             return vec![];
         }
-        if has_no_retreat_cost_ability(state, player, card) {
+        if has_no_retreat_cost_ability(state, player, card, is_active) {
             return vec![];
         }
         let mut normal_cost = pokemon_card.retreat_cost.clone();
@@ -163,7 +180,7 @@ fn get_retreat_cost_for_player_internal(
         };
 
         // Shaymin's Sky Support: As long as this Pokémon is on your Bench, your Active Basic Pokémon's Retreat Cost is 1 less.
-        if pokemon_card.stage == 0 {
+        if pokemon_card.stage == 0 && is_active {
             // Only affects Basic Pokemon
             let current_player = player;
             for (_idx, benched_pokemon) in state.enumerate_bench_pokemon(current_player) {
@@ -177,7 +194,7 @@ fn get_retreat_cost_for_player_internal(
                 }
             }
         }
-        {
+        if is_active {
             let active_energy_types = state.pokemon_energy_types(card);
             let current_player = player;
             for (_idx, benched_pokemon) in state.enumerate_bench_pokemon(current_player) {
@@ -234,7 +251,7 @@ fn get_retreat_cost_for_player_internal(
         // Ariados Trap Territory: Your opponent's Active Pokémon's Retreat Cost is 1 more.
         // This check needs to look at if the OPPONENT has Ariados in play
         let opponent = (player + 1) % 2;
-        for (_idx, pokemon) in state.enumerate_in_play_pokemon(opponent) {
+        for (_idx, pokemon) in state.enumerate_in_play_pokemon(opponent).filter(|_| is_active) {
             if matches!(
                 get_in_play_ability_mechanic(state, pokemon),
                 Some(AbilityMechanic::IncreaseRetreatCostForOpponentActive { amount: 1 })

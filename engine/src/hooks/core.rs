@@ -15,6 +15,7 @@ use crate::{
     },
     card_ids::CardId,
     effects::{CardEffect, DamageReductionScope, TurnEffect},
+    hooks::retreat::get_board_retreat_cost_at,
     models::{Card, EnergyType, PlayedCard, TrainerCard, TrainerType, BASIC_STAGE},
     stadiums::{
         get_arena_of_antiquity_damage_bonus, get_training_area_damage_bonus,
@@ -696,18 +697,18 @@ fn get_heavy_helmet_reduction(
     let defending_pokemon = &state.in_play_pokemon[target_player][target_idx]
         .as_ref()
         .expect("Defending Pokemon should be there when checking Heavy Helmet");
-    heavy_helmet_reduction(defending_pokemon)
+    heavy_helmet_reduction(state, target_player, defending_pokemon, target_idx == 0)
 }
 
-/// Heavy Helmet on `defending_pokemon`: -20 per Helmet when its printed Retreat Cost is 3 or more.
-fn heavy_helmet_reduction(defending_pokemon: &PlayedCard) -> u32 {
-    if has_tool(defending_pokemon, CardId::B1219HeavyHelmet) {
-        if let Card::Pokemon(pokemon_card) = &defending_pokemon.card {
-            if pokemon_card.retreat_cost.len() >= 3 {
-                debug!("Heavy Helmet: Reducing damage by 20");
-                return 20 * tool_count(defending_pokemon, CardId::B1219HeavyHelmet);
-            }
-        }
+/// Heavy Helmet on `defending_pokemon` (`owner`'s; `is_active` when it is in the Active Spot): -20 per Helmet
+/// when its current Retreat Cost, where it sits, is 3 or more. The current cost, not the printed one (rules/09,
+/// confirmed in-game 2026-09-25: under Peculiar Plaza a printed 3 is 1 and the Helmet cuts nothing).
+fn heavy_helmet_reduction(state: &State, owner: usize, defending_pokemon: &PlayedCard, is_active: bool) -> u32 {
+    if has_tool(defending_pokemon, CardId::B1219HeavyHelmet)
+        && get_board_retreat_cost_at(state, owner, defending_pokemon, is_active).len() >= 3
+    {
+        debug!("Heavy Helmet: Reducing damage by 20");
+        return 20 * tool_count(defending_pokemon, CardId::B1219HeavyHelmet);
     }
     0
 }
@@ -1616,6 +1617,7 @@ pub(crate) fn persistent_defender_damage(
     hit: DefenderHit,
 ) -> (f64, f64) {
     let skip_target_effects = hit == DefenderHit::Active && attack_ignores_opponent_active_effects(context);
+    let heavy_helmet = heavy_helmet_reduction(state, defending_player, defender, hit == DefenderHit::Active);
     let own_ability = get_in_play_ability_mechanic(state, defender);
     let ability_effect = if skip_target_effects {
         None
@@ -1680,7 +1682,7 @@ pub(crate) fn persistent_defender_damage(
             _ => 0,
         };
         let reductions: u64 = [
-            heavy_helmet_reduction(defender),
+            heavy_helmet,
             steel_apron_reduction(state, defender),
             ability,
             get_conditional_ability_damage_reduction(
