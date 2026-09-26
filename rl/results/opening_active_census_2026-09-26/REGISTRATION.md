@@ -1,17 +1,21 @@
-# DRAFT, not registered. B5 candidate "opening Active choice": switch A alone (`koa`), with diagnostics `kob` and `kor`
+# REGISTERED (Sept 26). B5 candidate "opening Active choice": switch A alone (`koa`), with diagnostics `kob` and `kor`
 
-> **Superseded.** Dustin approved this on Sept 26, and it is registered as `REGISTRATION.md` in this folder, with his rulings written in. This file is kept unchanged as the reviewed draft.
-
-**Status.** This draft was written by the laptop session's census (Sept 26) and amended the same day to Fable's call (section 8 of `docs/REVIEW_2026-09-24_direction.md`, 05:30 entry). It was amended again to Fable's review of the version at 3c60d16 (`../fable_reviews_2026-09-26/opening_active_draft_review.md`): every high, medium and low item is applied, the items the review withdrew are not, and section 11 lists each change and where it is. It stays unregistered until Dustin's word; then the cloud or the laptop registers it.
-- It becomes a registration only when the builder copies it into a dated commit, with any amendments and the reason for each, before any game of any code named here.
-- **Fable's call (Sept 26), for Dustin to confirm:**
-  - Switch A alone, code `koa`, is the one candidate. It goes by the reserve route, because its footprint (6.0%) is under the 15% trigger.
-  - The clause (d) carrier archetype is Mega Altaria ex Espeon (top-30 rank 2, not Dustin's). It is one of the eight panel decks, so with it clause (d) is one test, not two (section 7). Whether a panel deck may be the carrier is a ruling for Dustin on the fixed text, not something this registration may assume.
-  - Switches B and R stay diagnostics (`kob` and `kor` mixed rows, side by side). They are not registered for adoption.
-- **Needed before registering:**
-  - Fable's independent review: done (`../fable_reviews_2026-09-26/opening_active_draft_review.md`, three lenses plus an adversarial pass; the lens notes `opening_active_review_code.md`, `_flags.md` and `_plan.md` are beside it). Its items are applied in this version (section 11).
-  - Dustin's OK for the reserve route itself. Section 8 of `docs/REVIEW_2026-09-24_direction.md` still marks it "pending Dustin's OK".
-  - Dustin's panel-deck ruling for clause (d): may one of the eight panel archetypes be the (d) carrier when its lists carry the card? It is recorded as pending and his at `docs/REVIEW_2026-09-24_direction.md` line 160, item (ii). One ruling covers both this candidate and kt. Both branches are written in section 7, before any game.
+**Status: registered on Sept 26 on Dustin's word in the laptop session's chat, before any game or build of any code named here.** The text below is the reviewed draft (`REGISTRATION_DRAFT.md` at d7dbfb2), with Dustin's rulings written in. It becomes the registration in the commit that adds this file. Any later amendment goes in its own dated commit with its reason, before any game it affects.
+- **History:** written by the laptop session's census (Sept 26) and amended to Fable's call (section 8 of `docs/REVIEW_2026-09-24_direction.md`, 05:30 entry). Amended again to Fable's independent review (`../fable_reviews_2026-09-26/opening_active_draft_review.md`): every item applied, withdrawn items not; section 11 lists each.
+- **Dustin's rulings (Sept 26, laptop chat), quoted:**
+  - **The reserve route:** "The small-fix route: yes, approved as sharpened, with the one change I asked for — the gain must show on at least one deck that isn't yours."
+  - **The (d) carrier (direction line 160, (ii)):** "if 335 of 336 real Mega Altaria/Espeon lists run that Eevee, then Altaria is a non-Dustin deck whose real cells are known, so the gain can be checked against Limitless directly rather than only against paired noise. Yes, it counts, and the same ruling covers Suicune for the Tool fix."
+  - **The route is chosen by the measured footprint:** "if the fix reaches Altaria, a table deck, it may not be a 'fix the table can barely see' at all — the 15 percent trigger decides which route applies, and it should be read before the route is chosen, as the rule says."
+  - **"Register the draft."**
+- **What these rulings fix in the text below:**
+  - **The route is not assumed.** The first reading after the build and identity checks is the measured footprint on the table: the share of the 14,000 paired table games in which `koa`'s moves differ from kp3's.
+    - Under 15%: the reserve route (section 7), clauses (a) to (e).
+    - 15% or more: the ordinary adoption rule (section 7's fallback).
+    - Predicted 6.0% (section 5). The route is fixed by that number before any other reading, and not revisited.
+  - **Clause (d) is the "yes" branch:** Mega Altaria ex Espeon is the carrier archetype, with Altaria's own-side gain on its seven `koa`-v-kp3 rows as the test. The "no" branch in section 7 is kept for the record and does not apply.
+  - **Altaria's seven real Limitless cells, before and after, are read beside (d).** Dustin: the gain "can be checked against Limitless directly". They are reported with the prediction that they move toward Limitless, alongside (b)'s τ̂ margin, which already reads Limitless for the whole table. They are not a separate gate.
+  - **Switch A alone (`koa`) is the one candidate.** Switches B and R stay diagnostics (`kob`, `kor`), not registered for adoption.
+- **Who builds:** the cloud session, which owns player code, from this file. The laptop runs the tables, mixed rows and readings.
 - **Where the numbers come from.** Every number below is from `README.md`, `census.json` and `limitless_carriers.md` / `.json` in this folder. No game was played to make any of them.
   - census.py was checked by check_census.py and by a second read the same day. That read (README section 9) corrected the Suicune `kor` transition in section 5.
   - The rule check behind "0 contradictions in 220 informative games" is `rule_check.py`, with its output in `rule_check_output.txt` and in `census.json` → `validation` → `altaria (kp3 probe, B2c Sept 26)` → `rule_check`.
@@ -202,7 +206,14 @@ A goes alone by Fable's call: B is unattributed (B2c can't tell it from R), and 
 
 ## 7. The reading
 
-**Route: the reserve route, for `koa`.** Its predicted footprint is 6.0%, under the 15% trigger. The route applies only if Dustin has approved the reserve route and ruled (direction line 160, (ii)) that a panel archetype may be the (d) carrier; otherwise section 7's fallback applies, with the "no" branch in (d) as written. Section 8 of `docs/REVIEW_2026-09-24_direction.md` still marks the route "pending Dustin's OK". The five clauses are as fixed there (line 130), applied to `koa`:
+**Route: chosen by the measured footprint, read first.** Dustin approved the reserve route (Sept 26) and ruled that a panel archetype whose real lists carry the card may be the (d) carrier.
+- Reading order:
+  1. Build and identity checks (section 4).
+  2. `koa`'s table on the 14,000 table deals.
+  3. **The footprint:** the share of paired games whose moves differ from kp3's. **Under 15% → the reserve route below; 15% or more → the ordinary adoption rule (the fallback at the end of this section).** Predicted 6.0%.
+- The route is fixed by that number before (b) to (e) or any ΔMSE is read, and not revisited.
+
+The five clauses are as fixed in section 8 of `docs/REVIEW_2026-09-24_direction.md` (line 130), applied to `koa`:
 
 - **(a) Footprint under 15%.**
   - Predicted 6.0%, measured on the table (section 5).
@@ -239,7 +250,7 @@ A goes alone by Fable's call: B is unattributed (B2c can't tell it from R), and 
     - The archetype is the table's own Altaria, so both halves of (d) are read on the same rows.
     - **Under this choice (d) is one test, not two.** The clause reduces to the own-side gain on Altaria's seven `koa`-v-kp3 rows. The seven before/after Limitless cells in (b) are the only added evidence, reported, not gated.
     - Those seven rows are also (c)'s Altaria reading, and the Altaria v Lucario row repeats the matchup that produced the hypothesis, on new deals. The fixed text was written for an archetype outside the eight lists ("the table can see the fix through them even though the eight lists cannot"); no non-Dustin list in scope other than Altaria's own and its two variant lists carries the flag.
-  - **Dustin's ruling, once for both candidates: may a panel deck serve as the (d) archetype?** It is recorded as pending and his at direction line 160, (ii).
+  - **Dustin's ruling, once for both candidates, may a panel deck serve as the (d) archetype? YES (Sept 26).** It covers this candidate's Altaria and kt's Suicune. Only the "yes" branch below applies; the "no" branch is kept as it was written before the ruling.
     - The kt carrier census raised the same question for Suicune (kt switch 1; `../kt_carrier_census_2026-09-26/README.md`, section 7). One ruling covers kt's Suicune and this candidate's Altaria.
     - **If he rules yes** (and approves the route): (d) is the one test above, with the variant-list rows below reported beside it.
     - **If he rules no (written now, before any game):** the only top-30 carrier off the panel is Mega Altaria ex Igglybuff (Sept 10 rank 29; window rank 34). It carries the card in 4 of 25 lists (16%), one copy each, with no top-8 finish, and no list was built for it (`limitless_carriers.md`, section 3). No other top-30 archetype carries the card.
@@ -250,13 +261,13 @@ A goes alone by Fable's call: B is unattributed (B2c can't tell it from R), and 
     - **The list and its source.** LaNora's Block Dragon list (Sept 10, 1st of 150): provenance at `rl/results/limitless_check_2026-09-23.md` line 108 and its SHA-256 at line 119. It recurs in 27 Limitless lists and carries 2 Eevee B1 184 with 2 Espeon B3a 020; switch A changes 16.0% of its openings (README section 8).
     - **The pairing.** The variant list takes Altaria's place against each of the eight panel lists. One arm has `koa` on the variant list, the other kp3; kp3 plays the opponent in both. Deals: against the seven non-Altaria lists, the table's seeds for Altaria's pairing with that deck (72,000,000 + pairing × 10,000 + game, game < 500), as the list-refresh variant games did (`limitless_check_2026-09-23.md` line 115). Against the table's own Altaria list, which has no table pairing, a new block above every range in START_HERE's seed table, written into the dated registration commit before any game.
     - **What is read.** The variant's own-side gain (the `koa` arm minus the kp3 arm, same deals), pooled over the eight rows, beyond paired noise; predicted up.
-    - **How it counts: reported beside (d), not a gate.** Under a "yes" ruling (d)'s test stays Altaria's seven rows. Under a "no" ruling the route is closed and these rows are reported with the override or ordinary-rule reading. Fable's plan lens recommended the rows as (d)'s outside-the-table evidence and the flags lens called them optional; this draft runs them under either ruling and reports them.
+    - **How it counts: reported beside (d), not a gate.** Dustin ruled yes, so (d)'s test stays Altaria's seven rows and these variant rows are reported beside it. (Fable's plan lens recommended them as (d)'s outside-the-table evidence and the flags lens called them optional; they are run and reported.)
   - **The closure sentence, verbatim from section 8 (line 130):**
 
     > Stated up front, before any census is read: if the card census finds no Limitless top-30 archetype outside Dustin's decks that carries reduction Tools or turn-effect cards, or finds one with no usable decklist, the route is closed for that candidate and adoption can come only by Dustin's explicit override, recorded as such, as with kp3; the route is not loosened after the census is seen.
 
     - Its card words are kt's. For this candidate the relevant cards are switch A's printings (Eevee B1 184, P-B 011, P-B 054).
-    - If Dustin rules that a panel deck may serve, the count found such an archetype (Mega Altaria ex Espeon, with usable lists in numbers), and the sentence does not close the route.
+    - Dustin ruled that a panel deck may serve (Sept 26). The count found such an archetype (Mega Altaria ex Espeon, with usable lists in numbers), so the sentence does not close the route.
     - If he rules that it may not, the sentence applies as written: the Igglybuff variant's 16% share with no built list does not count (the "no" branch above), so the route is closed for `koa`.
 - **(e) As in section 8:** "On that evidence, adoption for the screen and the table pilot together, so there is only ever one pilot."
 - **One pilot.** `koa` is read against the pilot in force when its table runs. If kt3 has been adopted by then, `koa` is rebuilt on kt3 with kt3's references as the base and this registration is re-issued, not amended. If both pass separately, the combined code gets section 4's identity checks and one table before it becomes the pilot. (kt's switch 1 is pending by the same route on the same kp3 base; direction line 161.)
@@ -266,8 +277,8 @@ A goes alone by Fable's call: B is unattributed (B2c can't tell it from R), and 
   - A proposal for him, not registered here: (b) re-read on the post-freeze cells with the same −1.0 bound, and Altaria's seven post-freeze cells reported against `koa`'s and kp3's tables.
 - **Second reader.** `koa`'s adoption gets a second reader (RUN5: any pilot adopted or played by Dustin gets one). "Tier 2" in section 2 names the code tier; it does not mean "no second read".
 
-**If Dustin does not approve the reserve route,** `koa` is read by the ordinary adoption rule as fixed: paired ΔMSE on the decision set, adopted only if the whole 95% interval is below zero, vetoes under rule v2, no doubling. Predicted outcome: not adopted, because a change confined to six decision cells moves ΔMSE by about −2 to −4 points², inside its noise at 500 or 2,000 deals. Adoption would then be Dustin's override, recorded as such.
-- The same applies if he rules "no" on the panel-deck question, which closes the route for `koa` ((d) above).
+**Fallback: if the measured footprint is 15% or more** (Dustin approved the reserve route, so this is the only way it applies), `koa` is read by the ordinary adoption rule as fixed: paired ΔMSE on the decision set, adopted only if the whole 95% interval is below zero, vetoes under rule v2, no doubling. Predicted outcome: not adopted, because a change confined to six decision cells moves ΔMSE by about −2 to −4 points², inside its noise at 500 or 2,000 deals. Adoption would then be Dustin's override, recorded as such.
+- (A "no" on the panel-deck question would also have led here. Dustin ruled yes, so it does not.)
 - "Undecided" is not an outcome of the adoption rule; the doubling to 2,000 deals belongs to the τ̂ margin rule for variant screens (RUN5; direction line 201), not to adoption.
 
 **Under either route, reported and not decided on:**
@@ -325,7 +336,7 @@ A goes alone by Fable's call: B is unattributed (B2c can't tell it from R), and 
 - `rule_check.py`, `rule_check_output.txt` and `census.json` → `validation` → `altaria (kp3 probe, B2c Sept 26)` → `rule_check`: kp3's opening rule against B2c's records (235 opening decisions; 0 contradictions in 215 informative games, 220 counting kp3's later setup picks; the network's order fits 220 of 235, exceptions listed by game).
 - `../fable_reviews_2026-09-26/opening_active_draft_review.md` and its three lens notes: Fable's review of the 3c60d16 version, applied in this one (section 11).
 - `../engine_identity_2026-09-25/`: the base's reference files (`k3_500.jsonl`, `kp3_500.jsonl`, `identity.txt`).
-- `docs/REVIEW_2026-09-24_direction.md`, section 8, line 160: Dustin's pending rulings, (ii) the panel-deck question.
+- `docs/REVIEW_2026-09-24_direction.md`, section 8, line 160: Dustin's rulings, (ii) the panel-deck question (answered yes, Sept 26, laptop chat; quoted at the top of this file).
 - `limitless_carriers.md` and `limitless_carriers.json` (this folder): the clause (d) carrier count by Altaria variant, every archetype that carries the flag, the independent recount, and Altaria's seven "before" cells.
 - `docs/REVIEW_2026-09-24_direction.md`, section 8, line 130: the reserve route's clauses and the closure sentence.
 - `../kt_carrier_census_2026-09-26/README.md`: the Dustin rule, the ranks and the panel-deck question for Suicune.

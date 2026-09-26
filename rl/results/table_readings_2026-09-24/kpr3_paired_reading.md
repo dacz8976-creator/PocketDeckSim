@@ -1,6 +1,15 @@
 # kpr3 against kp3: paired whole-table reading under veto rule v2 (Sept 26)
 
-**In plain words: kpr3 is not adopted, and kp3 stays the pilot.**
+**In plain words: kpr3 is not adopted, and kp3 stays the pilot. But the fix it was built for worked, and moved the target cell toward real results.**
+- **Did kpr3 do what it was built for? Yes.** In Hydreigon v Lucario, the cell the Hydreigon network study used, Hydreigon now uses Hyper Ray without a knockout on 91% of the turns it can: 117 of 129 on the table, 92% with kpr3 on Hydreigon only.
+  - kp3 does so on 1% (1 of 128), k3 on 3%, and the network on 99%.
+  - The cell moved **+8.8**, from 43.8 to 52.6, toward Limitless (v2 63.6 ± 12.7; the Sept 23 table 54.4 ± 8.0).
+  - **+7.8 ± 4.4** of that comes from Hydreigon's own pilot (kpr3 on Hydreigon, kp3 on Lucario).
+- **The finding (Dustin's question, Sept 26):** the chip is real and good, but in that cell it is worth about **+8**. The Hydreigon network beat kp3 by **+25.2** there (`../hydreigon_network_readout/READING.md`).
+  - So the chip is about a third of the network's edge. The other two-thirds is other habits, not yet named.
+  - The network also benches far less, 66% against 97%. But the Altaria study found its benching gap was a side effect, not a cause, so that is not assumed.
+  - The two figures come from different deals: the network run's 2,000 against the table's 500, both paired against kp3.
+- **So kpr3 fails for a different reason than its target.** The chip works. The failure is that kpr3's readiness term changed the play of every deck and made four of them worse.
 - **What kpr3 was.** kp3 with one change. When it judges how ready the Pokémon in the Active Spot is, it counts the Energy on its way by that Pokémon's next attack: the Energy Zone this turn and next, and Abilities that attach Energy (some of them from the discard pile). It was built for Hydreigon. kp3 treated Hyper Ray, which discards all of Hydreigon's Energy, as crippling, so it almost never used it without a knockout. kpr3 sees next turn's refill.
 - **What happened.** kpr3 does what it was built for. Hydreigon now uses Hyper Ray without a knockout on 90% of the turns it can, against kp3's 21%.
   - But the whole table fits real play clearly worse. The typical miss is 12.2 points, against kp3's 8.6.
@@ -270,6 +279,9 @@ This decision is on scoreboard v2's 27-cell decision set. The cloud's "mean squa
 - **kpr3 is not adopted.** That is the rule's verdict on the metric itself.
   - An override would be of the adoption metric, not of a veto. Fable advises against it, and so does the laptop. The change reaches every deck; it fits worse for seven decks of eight; and head to head it is a slightly weaker pilot.
 - **kp3 stays the pilot** for the screen and the table. It was confirmed on the holdout on Sept 25.
+  - **Dustin, Sept 26 (laptop chat):** "kpr3 not adopted, kp3 stays — fine to record, on one condition." The condition is that the record states, in the same line as the verdict, whether kpr3 chipped and whether the Hydreigon v Lucario cell moved. It did both; see the top of this file.
+- **Opened by that finding, not proposed here:** a narrower change that prices the refill only where an attack discards the Active's Energy (the chip), leaving every other deck's readiness alone. It would be its own registration, with its own footprint census first.
+- **The rest of the Hydreigon network's edge** (about two-thirds in Hydreigon v Lucario) is unexplained. The Altaria method, B2c with kp3 continuing, would name it. It is not run.
 - **The readiness term goes to B3's feature set,** as kd's Weakness term did. B3 is the Texel-style fit:
   - It regresses game outcome on position features, over positions from self-play.
   - It is never fit against the Limitless table.
@@ -290,7 +302,11 @@ This decision is on scoreboard v2's 27-cell decision set. The cloud's "mean squa
   - e09fb46 (23:29) adds tests only.
   - The first table output is d141623 (Sept 26, 00:15). The table was complete at 8f16338 (00:42).
 - **The README that presents the spec and its limits as registered was written after the results.** It names 9a35f54 as "the registered spec" and heads its limits "Known limits (kept as registered)". Exactly one commit touches `rl/results/kpr_2026-09-25/README.md`: aa87fa3 (00:51), after the table was complete. As a document it is post hoc, even where its content was known before.
-- **"Dustin's go-ahead" for amendment 5 (1981bb4) is asserted only.** The laptop searched:
+- **Settled by Dustin, Sept 26 (laptop chat).**
+  - **His go-ahead was for option 2:** projecting readiness into the clock's missing-Energy count as well as the online score. That is **9a35f54**, the registered spec, whose message reads "Dustin's option 2". The record is right there.
+  - **He did not approve 1981bb4** (amendment 5, "each side read over its own horizon", the opponent-side fix recorded before the table). It was reported to him as already recorded, and he took it as the builder's own correction.
+  - So 1981bb4's title ("Dustin's go-ahead") and body ("Dustin chose to fix it before the table"), and the cloud README's line 29, are wrong on this point. **1981bb4 is the builder's fix, not Dustin's go-ahead.** This does not affect the verdict.
+- **Before Dustin's answer, the go-ahead for 1981bb4 was asserted only.** The laptop searched:
   - every commit message on every ref (`git log --all`);
   - the files under `rl/` and `docs/` on the cloud branch and on main (`git grep`);
   - the working tree's `rl/` and `docs/` notes.

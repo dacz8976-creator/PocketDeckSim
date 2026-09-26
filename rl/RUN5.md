@@ -389,6 +389,11 @@ sides with k3 still available; the 0.7.2 wheel and its run identities are untouc
   direction (Dustin, Sept 25): on the holdout alone, the τ̂ margin must be at least half the development half's and its
   own 90% interval must lie above zero; the pooled interval and the sign are reported beside it but cannot confirm on
   their own.
+- **Reserve route for a change the table can barely see** (Dustin, Sept 26: "approved as sharpened").
+  - Its clauses (a) to (e) and the closure sentence are as fixed in section 8 of `docs/REVIEW_2026-09-24_direction.md` (line 130), including that the gain must show on at least one deck that isn't Dustin's.
+  - The route is chosen by the footprint measured on the table, read before anything else; under 15% it applies, otherwise the ordinary adoption rule does.
+  - A panel archetype whose real Limitless lists carry the relevant cards may serve as the non-Dustin deck (Dustin, Sept 26; covers Altaria for `koa` and Suicune for kt).
+  - Registered under it so far: `koa` (`rl/results/opening_active_census_2026-09-26/REGISTRATION.md`).
 - Variants and process: whole table paired by deal, never the five worst cells; τ̂ margin E = 3 with the 90% interval,
   doubling deals to 2,000 when undecided; every experiment names the decision it changes; two review tiers (engine
   rules, the scoreboard tool and any pilot adopted or played by Dustin get a second reader; diagnostics none); one
