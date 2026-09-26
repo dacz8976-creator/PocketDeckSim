@@ -1,0 +1,1163 @@
+{
+ "what": "Code-reading card check of the 17 gauntlet cards not checked before (Sept 26, 2026), official engine 7fc6ccb (engine/src; git diff 7fc6ccb HEAD -- engine/src is empty). Three checkers (one per list), then three independent skeptics on every finding that was not clean, plus a spot-check of the verdicts most likely to change play. Pre-repair; re-check at the repaired engine.",
+ "checkers": {
+  "scizor": [
+   {
+    "row": {
+     "subject": "A2b 055 = Varoom (Metal Basic, 70 HP), 2 copies in g-mega_scizor_revavroom.txt",
+     "card_text": "Varoom [A2b 055] Metal, Basic, HP 70, weak Fire, retreat 1. [M] Headbutt 10.",
+     "verdict": "matches",
+     "findings": [
+      {
+       "clause": "Identity: Metal, Basic, 70 HP, weak Fire, retreat 1, worth 1 point",
+       "engine_does": "Stores exactly these values. Not ex and not Mega, so 1 point. Weakness is a flat +20 from Fire attackers on the Active only.",
+       "evidence": "engine/src/database.rs 16746-16767; models/card.rs 186-216 (is_ex, is_mega, get_knockout_points); hooks/core.rs 1488-1512 (printed_weakness_application, Flat(20) at 1509), 1787-1793 (Weakness only when is_active_to_active). lib/card.py output matches.",
+       "status": "ok"
+      },
+      {
+       "clause": "[M] Headbutt 10, no effect",
+       "engine_does": "Plain 10 damage to the opponent's Active (effect None, so no mechanic lookup). Needs one [M], so the player going first cannot use it on turn 1. Training Area gives nothing (Basic).",
+       "evidence": "database.rs 16756-16761; hooks/core.rs 1817-1832 (Training Area by stage).",
+       "status": "ok"
+      },
+      {
+       "clause": "Base of Revavroom B2b 050 (evolves from 'Varoom')",
+       "engine_does": "Evolution matches by name, so this printing (Headbutt) evolves into Revavroom B2b 050 like the B2b 049 printing. Normal gates: not on either player's first turn, not the turn it was played, once per turn.",
+       "evidence": "database.rs 62595 (evolves_from 'Varoom'); move_generation/mod.rs 195-219.",
+       "status": "ok"
+      }
+     ]
+    }
+   },
+   {
+    "row": {
+     "subject": "B2a 077 = Orthworm (Metal Basic, 100 HP), 1 copy",
+     "card_text": "Orthworm [B2a 077] Metal, Basic, HP 100, weak Fire, retreat 3. [M] Iron Supply 10 — \"Take a [M] Energy from your Energy Zone and attach it to 1 of your Benched Pokémon.\"",
+     "verdict": "matches",
+     "findings": [
+      {
+       "clause": "Identity: Metal, Basic, 100 HP, weak Fire, retreat 3, worth 1 point",
+       "engine_does": "Stores exactly these values.",
+       "evidence": "database.rs 60441-60461; models/card.rs 204-216.",
+       "status": "ok"
+      },
+      {
+       "clause": "Iron Supply: [M], 10 damage",
+       "engine_does": "Maps the exact text to ChargeBench{energies:[Metal], target_benched_type:None}; the 10 damage is dealt to the opponent's Active through active_damage_effect_doutcome, then the attach effect runs.",
+       "evidence": "actions/effect_mechanic_map.rs 2900-2906; apply_attack_action.rs 422-425, 2318-2345; actions/mutations.rs 22-27. No engine test names Iron Supply.",
+       "status": "ok"
+      },
+      {
+       "clause": "Take a [M] Energy from your Energy Zone and attach it to 1 of your Benched Pokémon (who chooses, which targets)",
+       "engine_does": "Pushes one Attach choice per Benched Pokémon of the attacker (any type or stage, never the Active); the attacking player picks. It creates a Metal Energy with is_turn_energy=false, so the turn's Energy Zone attachment is untouched and the Energy is Metal whatever the zone shows. Mandatory once the attack resolves (no Noop), as the text reads.",
+       "evidence": "apply_attack_action.rs 2324-2344; apply_action.rs 783-786, 949-964; state/energy.rs 13-33 (energy_zone.current cleared only when is_turn_energy).",
+       "status": "ok"
+      },
+      {
+       "clause": "Empty Bench: does the attack still work and do 10?",
+       "engine_does": "Yes. With no Benched Pokémon the choice list is empty and the effect returns, but the 10 damage is already part of the outcome. (The comment at 2339 says 'no damage applied'; it is stale, the damage is dealt.) Offered normally with an empty Bench, which fits the card: the attack does something (10 damage).",
+       "evidence": "apply_attack_action.rs 2337-2340; mutations.rs 22-27.",
+       "status": "ok"
+      },
+      {
+       "clause": "Order with knockouts and retaliation",
+       "engine_does": "Damage, then the attach choice, then Rocky Helmet-style retaliation, then knockouts and promotion. Matches the rules order (attack effects before retaliation and Knock Outs).",
+       "evidence": "actions/attack_outcome.rs 134-209.",
+       "status": "ok"
+      }
+     ]
+    }
+   },
+   {
+    "row": {
+     "subject": "B2b 001 = Scyther (Grass Basic, 70 HP), 2 copies",
+     "card_text": "Scyther [B2b 001] Grass, Basic, HP 70, weak Fire, retreat 1. [C] U-turn 10 — \"Switch this Pokémon with 1 of your Benched Pokémon.\"",
+     "verdict": "matches",
+     "findings": [
+      {
+       "clause": "Identity: Grass, Basic, 70 HP, weak Fire, retreat 1, worth 1 point",
+       "engine_does": "Stores exactly these values. Being Grass, it is not a legal target for Metal Transport's 'Active [M] Pokémon' and gets nothing from Metal Core Barrier until it Mega Evolves (the Tool is kept on evolution).",
+       "evidence": "database.rs 61509-61530; move_generation_abilities.rs 324-327; apply_action.rs 1524.",
+       "status": "ok"
+      },
+      {
+       "clause": "U-turn: [C], 10 damage, then switch this Pokémon with 1 of your Benched Pokémon (mandatory, player chooses)",
+       "engine_does": "Maps to SwitchSelfWithBench (optional=false, so no Noop). Deals 10, then pushes one Activate choice per Benched Pokémon for the attacker. The switch runs through apply_activate: Scyther's Special Conditions and attack effects are cleared, and it is not a retreat (has_retreated untouched).",
+       "evidence": "effect_mechanic_map.rs 1724-1727; apply_attack_action.rs 1175, 5802-5829; apply_action.rs 823-830, 1431-1435; apply_action_helpers.rs 939-966.",
+       "status": "ok"
+      },
+      {
+       "clause": "U-turn with an empty Bench",
+       "engine_does": "Still does 10; no switch frame is pushed.",
+       "evidence": "apply_attack_action.rs 5803-5809, 5822-5826.",
+       "status": "ok"
+      },
+      {
+       "clause": "U-turn into Rocky Helmet (Blaziken panel deck)",
+       "engine_does": "The switch resolves before retaliation, and apply_activate remaps the pending retaliation frame, so the 20 lands on Scyther on the Bench. That is the rules order (the attack's effects, then retaliation). The Pokémon switched in gets the 'moved' flag, but the attack ends the turn and the flag is reset before its next turn.",
+       "evidence": "attack_outcome.rs 161-202; apply_action_helpers.rs 942-956; state/mod.rs 1205. Test: actions/bench_switch_target_tests.rs 185-235 (Yanma's U-turn, same text, with a double KO).",
+       "status": "ok"
+      },
+      {
+       "clause": "Evolves into Mega Scizor ex",
+       "engine_does": "By name 'Scyther', with the normal gates (not first turn, not the turn played, once per turn).",
+       "evidence": "database.rs 62530; move_generation/mod.rs 195-219.",
+       "status": "ok"
+      }
+     ]
+    }
+   },
+   {
+    "row": {
+     "subject": "B2b 047 = Mega Scizor ex (Metal Stage 1 from Scyther, 200 HP, Mega ex), 2 copies",
+     "card_text": "Mega Scizor ex [B2b 047] Metal, Stage 1 (from Scyther), HP 200, weak Fire, retreat 2. [MMC] Bullet Slugger 100 — \"If this Pokémon moved from your Bench to the Active Spot this turn, this attack does 50 more damage.\" Mega Evolution ex: 3 points when Knocked Out; Mega Evolving does not end the turn.",
+     "verdict": "deviates_changes_play",
+     "findings": [
+      {
+       "clause": "Identity: Metal, Stage 1 from 'Scyther', 200 HP, weak Fire, retreat 2, Mega ex worth 3 points",
+       "engine_does": "Stores exactly these values; the 'Mega ' prefix gives 3 points and the last word 'ex' makes it an ex for Red and similar effects.",
+       "evidence": "database.rs 62526-62546; models/card.rs 186-216.",
+       "status": "ok"
+      },
+      {
+       "clause": "Mega Evolving does not end the turn; evolution keeps damage, Energy and Tools and clears conditions and attack effects",
+       "engine_does": "apply_evolve builds a fresh PlayedCard carrying damage, Energy, Tools and the cards behind; nothing ends the turn (only an Attack sets end_turn_pending).",
+       "evidence": "apply_action.rs 1503-1542; apply_action_helpers.rs 1082-1088; move_generation/mod.rs 195-219.",
+       "status": "ok"
+      },
+      {
+       "clause": "Bullet Slugger: [MMC] 100, +50 if this Pokémon moved from your Bench to the Active Spot this turn",
+       "engine_does": "Maps to ExtraDamageIfMovedFromBench{50}; reads moved_to_active_this_turn on the attacker's Active and passes 100 or 150 as the attack's base damage into modify_damage, where Training Area (+10, Stage 1) and Red (+20 vs an Active ex) are added before Weakness, then defender reductions.",
+       "evidence": "effect_mechanic_map.rs 1391-1394; apply_attack_action.rs 1117-1118, 4909-4924; hooks/core.rs 1854-1885.",
+       "status": "ok"
+      },
+      {
+       "clause": "Which moves set the flag: own retreat, Metal Transport, switch cards (all during your turn)",
+       "engine_does": "The only place the flag is set is apply_activate, reached by paid Retreat, by Activate (Metal Transport, U-turn, Sabrina/Cyrus/Lyra-style switches) and by Promote. Own retreat and Metal Transport give +50, as the official Scizor ruling says for your own retreat or switch during your turn.",
+       "evidence": "apply_action_helpers.rs 963-965 (only setter); apply_action.rs 823-831, 1431-1468. Tests: tests/mega_scizor_ex_test.rs 29-51 (no move: 100), 53-91 (retreat: 150), 93-135 (Metal Transport from a Benched Revavroom: 150), 137-190 (Lyra: 150). Ruling: rules/04_actions_cards_effects.md 33; rules/_research_notes/detailed_battle_faq.md 76-77.",
+       "status": "ok"
+      },
+      {
+       "clause": "Flag reset each turn",
+       "engine_does": "advance_turn calls end_turn_maintenance for every Pokémon of both players, which clears moved_to_active_this_turn (also cleared at game start). So a move on the opponent's turn never carries into yours, provided it happens before advance_turn.",
+       "evidence": "state/mod.rs 942-950, 1186-1208 (1205); state/played_card.rs 460-474; apply_action_helpers.rs 74.",
+       "status": "ok"
+      },
+      {
+       "clause": "Opponent's switches on their turn (Sabrina: Altaria, Hydreigon, Sceptile, Vespiquen decks; Cyrus: most panel decks) and promotion after the opponent's ATTACK knocks out your Active",
+       "engine_does": "No +50 on your turn: the switch or the Promote frame resolves on the opponent's turn (the stack has priority over EndTurn), and advance_turn then clears the flag. Matches the official ruling (a Pokémon promoted after a Knock Out on the opponent's turn does not count).",
+       "evidence": "move_generation/mod.rs 44-66; apply_action_helpers.rs 1082-1088; state/mod.rs 1205; rules/_research_notes/detailed_battle_faq.md 76-77; rules/02_damage_knockouts_points.md 124.",
+       "status": "ok"
+      },
+      {
+       "clause": "Promotion after a Knock Out at the END of the opponent's turn or at the Pokémon Checkup after it (Burn, Poison, Deceptive Needle, Bad Dreams)",
+       "engine_does": "Gives the +50. The end-of-turn effects, the Checkup and advance_turn run in one mutation; the knockout's Promote frame is inserted at the bottom of the stack and resolves only after advance_turn has cleared the flags (and after the next player's draw). apply_activate then sets moved_to_active_this_turn during YOUR turn, and it survives to your attack: a promoted Mega Scizor ex with [MMC] hits 150 instead of 100 (160 with Training Area, 180 with Red vs an ex). The official ruling says the bonus applies only to a move during your turn and not after a promotion following a Knock Out on the opponent's turn. Dustin's footage shows Pocket asks for the new Active before the next turn starts (Altaria check, deviation 3). Pocket's behaviour for this exact Scizor case has not been observed, but the text, the ruling and the footage all say no bonus. rules/05 #20 and rules/07 line 185 say the engine gets opponent-turn promotion right; they covered only the attack-KO case. Reachable against 5 of the 8 panel decks: Blaziken (Mega Burning Burn; Castform Sunny Scorching Burn whenever any Stadium, including this list's own Training Area, is in play), Weezing (Boiler Smog Poison+Burn; Deceptive Needle 10 at the end of their turn), Hydreigon (Deceptive Needle), Altaria (Bad Dreams 20 at the end of their turn on an Asleep Active), Sceptile (Terminating Tail Poison). It changes damage thresholds, for example 160 vs 110 into a 150-HP Hydreigon with Training Area. Repair note: fixing the known promotion-timing deviation only fixes this if the promotion resolves before end_turn_maintenance, or if Promote no longer sets the flag.",
+       "evidence": "apply_action_helpers.rs 109-116 (on_end_turn then the Checkup phase), 146-166, 326 (handle_knockouts inside the Checkup), 337-339 (advance_turn); state/mod.rs 1391-1423 (Promote frame inserted at the stack bottom), 1205-1206 (flag reset, then draw queued); apply_action.rs 827-830 -> apply_action_helpers.rs 963-965 (Promote sets the flag); apply_attack_action.rs 4914-4919 (read at attack). End-of-turn damage: hooks/core.rs 580-603 (Deceptive Needle), 618-654 (Bad Dreams), both via handle_damage -> handle_knockouts (apply_action_helpers.rs 495-514). Footage: rl/results/altaria_card_check_2026-09-26/README.md 33-43. Ruling: rules/_research_notes/detailed_battle_faq.md 76-77. No engine test covers this path.",
+       "status": "deviation"
+      },
+      {
+       "clause": "Scyther moved to the Active Spot, then Mega Evolved the same turn",
+       "engine_does": "No +50: apply_evolve replaces the PlayedCard with a fresh one (moved_to_active_this_turn=false). This matches the official Scizor ruling ('NOT when Scyther moved up and then evolved into Scizor that turn'), so it is not open. Evolving on the Bench first and then switching in gives +50 in both.",
+       "evidence": "apply_action.rs 1511-1527; hooks/core.rs 90-103; state/played_card.rs 84-117 (100); rules/_research_notes/detailed_battle_faq.md 76-77; rules/04_actions_cards_effects.md 33, 46.",
+       "status": "ok"
+      },
+      {
+       "clause": "Promotion after your own Active is Knocked Out during your own turn (rules/05 #20)",
+       "engine_does": "Would count it as moved (Promote sets the flag during your turn). Open in Pocket. Unreachable in gauntlet games: nothing in this list damages its own Pokémon, the panel decks' damaging Abilities and Tools fire on their own turn or at the end of a turn, and Rocky Helmet fires only after your attack.",
+       "evidence": "rules/05_open_questions.md 68; rules/07_engine_audit_2026-09-22.md 185; apply_action.rs 827-830.",
+       "status": "open"
+      }
+     ]
+    }
+   },
+   {
+    "row": {
+     "subject": "B2b 050 = Revavroom (Metal Stage 1 from Varoom, 110 HP, Ability Metal Transport), 2 copies",
+     "card_text": "Revavroom [B2b 050] Metal, Stage 1 (from Varoom), HP 110, weak Fire, retreat 3. Ability Metal Transport: \"Once during your turn, you may switch your Active [M] Pokémon with 1 of your Benched Pokémon.\" [MC] Outta-Control Dash 60.",
+     "verdict": "matches",
+     "findings": [
+      {
+       "clause": "Identity: Metal, Stage 1 from 'Varoom', 110 HP, weak Fire, retreat 3, 1 point, one Tool slot",
+       "engine_does": "Stores exactly these values. The two-Tool Dual Customization belongs to B4 115 only; this printing keeps one slot.",
+       "evidence": "database.rs 62591-62611; tools.rs 112-117; tests/revavroom_tools_test.rs 149-170.",
+       "status": "ok"
+      },
+      {
+       "clause": "[MC] Outta-Control Dash 60, no effect",
+       "engine_does": "Plain 60; Training Area adds 10 (Stage 1) against the opponent's Active.",
+       "evidence": "database.rs 62599-62606; hooks/core.rs 1817-1832.",
+       "status": "ok"
+      },
+      {
+       "clause": "Metal Transport: only if your Active is a [M] Pokémon, and only with a Benched Pokémon to switch to",
+       "engine_does": "Maps the exact text to SwitchActiveTypedWithBench{Metal}. Offered only when the current Active counts as Metal and the Bench is not empty. So an Active Scyther (Grass) can't be switched out this way; an Active Varoom, Orthworm, Revavroom or Mega Scizor ex can.",
+       "evidence": "effect_ability_mechanic_map.rs 738; move_generation_abilities.rs 97-99, 316-332; state/mod.rs 663-670, 720-722.",
+       "status": "ok"
+      },
+      {
+       "clause": "Once during your turn, per Revavroom; from the Active or the Bench",
+       "engine_does": "ability_used is set on the Revavroom that used it, checked before offering it, and reset every turn. Two Revavroom give two uses. Every in-play Pokémon of the current player is scanned, so an Active or Benched Revavroom can use it. An Active Revavroom that uses it switches itself to the Bench and stays marked as used. A Revavroom that evolved this turn can use it at once, which is right for Abilities.",
+       "evidence": "apply_action_helpers.rs 997-1002, 957; move_generation_abilities.rs 13-23, 321-323; state/played_card.rs 474; test mega_scizor_ex_test.rs 93-135 (Benched Revavroom).",
+       "status": "ok"
+      },
+      {
+       "clause": "Who chooses the Benched Pokémon; 'you may'",
+       "engine_does": "Using the Ability is optional (it is an offered action). Once used, the owner picks any Benched Pokémon of any type; there is no cancel.",
+       "evidence": "apply_abilities_action.rs 79-81, 632-644.",
+       "status": "ok"
+      },
+      {
+       "clause": "Switching removes Special Conditions and attack effects; it is not a retreat and works while Asleep or Paralyzed",
+       "engine_does": "The swap goes through apply_retreat(free) -> apply_activate, which clears conditions and effects on the Pokémon going to the Bench and does not set has_retreated or pay Energy. No status check gates the Ability. This cures Boiler Smog Poison+Burn (Weezing), Blaziken's Burn, Altaria's Sleep, and clears Bonsly's Teary Attack −30 (Lucario deck) from the Pokémon sent to the Bench.",
+       "evidence": "apply_action.rs 823-830, 1431-1435 (has_retreated only in the paid path, 1465); apply_action_helpers.rs 959-961; state/played_card.rs 378-386; rules/04_actions_cards_effects.md 30; RULES_FOR_AGENTS.md 102.",
+       "status": "ok"
+      },
+      {
+       "clause": "Does the Pokémon switched in count as 'moved from your Bench to the Active Spot this turn'?",
+       "engine_does": "Yes: apply_activate sets moved_to_active_this_turn on the incoming Pokémon, so a Benched Mega Scizor ex brought in by Metal Transport gets Bullet Slugger's +50 that turn. This matches the ruling (your own switch during your turn).",
+       "evidence": "apply_action_helpers.rs 963-965; tests/mega_scizor_ex_test.rs 93-135.",
+       "status": "ok"
+      }
+     ]
+    }
+   },
+   {
+    "row": {
+     "subject": "A2b 071 = Red (Supporter), 1 copy",
+     "card_text": "Red [A2b 071] Trainer (Supporter): \"During this turn, attacks used by your Pokémon do +20 damage to your opponent's Active Pokémon ex.\"",
+     "verdict": "matches",
+     "findings": [
+      {
+       "clause": "Supporter: one per turn; playable on the first turn",
+       "engine_does": "Offered through the shared Supporter gate (one per turn, blocked by No-Supporter effects); no first-turn block.",
+       "evidence": "database.rs 17088-17095; move_generation_trainer.rs 224-230, 23-27; hooks/core.rs 657-676.",
+       "status": "ok"
+      },
+      {
+       "clause": "During this turn",
+       "engine_does": "Adds TurnEffect::IncreasedDamageAgainstEx{20} for the current turn number only (duration 0). It is player-wide, not tied to a Pokémon, so it still applies after switching or Metal Transport that turn.",
+       "evidence": "apply_trainer_action.rs 135-137, 1826-1829; state/mod.rs 1063-1086; rules/04_actions_cards_effects.md 122.",
+       "status": "ok"
+      },
+      {
+       "clause": "+20 only by attacks, only to the opponent's ACTIVE Pokémon ex",
+       "engine_does": "Counted only when is_active_to_active (target slot 0, attacker slot 0, attack damage) and the target is an ex (Mega ex included). Benched targets, non-ex targets, Poison/Burn and Ability damage get nothing.",
+       "evidence": "hooks/core.rs 1059-1063, 1737-1738, 1767-1774; models/card.rs 186-194. Test: hooks/core.rs 2618-2672 (no bonus vs non-ex, +20 vs ex).",
+       "status": "ok"
+      },
+      {
+       "clause": "Stacking and order relative to Weakness",
+       "engine_does": "Summed with the other attacker-side boosts (Training Area +10 and the attack's own bonus, such as Bullet Slugger's 150) before Weakness, then defender reductions (such as Shuckle ex's Solid Shell −20 in the Vespiquen deck) after. Example: Bullet Slugger 150 + 20 + 10 = 180, +20 into an ex weak to Metal.",
+       "evidence": "hooks/core.rs 1854-1885.",
+       "status": "ok"
+      },
+      {
+       "clause": "Side of the target (code note)",
+       "engine_does": "is_active_to_active does not check that the target is the opponent's. Unreachable: self-damage recoil is applied directly, not through modify_damage, and nothing in this list attacks its own Active.",
+       "evidence": "hooks/core.rs 1737; apply_attack_action.rs 3143-3148.",
+       "status": "ok"
+      },
+      {
+       "clause": "Playable when it visibly can't work (the opponent's Active is not an ex and nothing this turn can change that)",
+       "engine_does": "Always offered (can_play_trainer). Whether Pocket blocks Red in that case (Dustin's playability rule) is unverified. Playing it only wastes the player's own Supporter, and nothing in this list rewards 'a Supporter played this turn', so no play change.",
+       "evidence": "move_generation_trainer.rs 23-27, 224-230; RULES_FOR_AGENTS.md 70-76.",
+       "status": "open"
+      }
+     ]
+    }
+   },
+   {
+    "row": {
+     "subject": "B2 148 = Metal Core Barrier (Pokémon Tool), 2 copies",
+     "card_text": "Metal Core Barrier [B2 148] Trainer (Pokémon Tool): \"If this card is attached to 1 of your Pokémon, discard it at the end of your opponent's turn.The [M] Pokémon this card is attached to takes -50 damage from attacks from your opponent's Pokémon.\"",
+     "verdict": "deviates_no_play_change",
+     "findings": [
+      {
+       "clause": "Attachable to any of your Pokémon (one Tool each); effect matched by text",
+       "engine_does": "Tools can go on any Pokémon with a free slot; effects are gated where they apply. Tools are matched by effect text, so both printings (B2 148, B2b 117) count. (The database text has no space after 'turn.', which is cosmetic and matches card.py.)",
+       "evidence": "tools.rs 58, 100-110, 119-133; database.rs 56856-56863.",
+       "status": "ok"
+      },
+      {
+       "clause": "−50 only on a [M] holder; non-Metal holder gets nothing",
+       "engine_does": "Reduction is 50 × copies only if the holder counts as Metal. A Scyther holding it gets nothing; once it Mega Evolves the Tool carries over and works.",
+       "evidence": "hooks/core.rs 715-735; apply_action.rs 1524. Test: tests/tools/tool_effect_gating_test.rs 35-56.",
+       "status": "ok"
+      },
+      {
+       "clause": "Only damage from attacks (not Ability damage, not Poison/Burn, not Rocky Helmet-style damage)",
+       "engine_does": "Returns 0 unless is_from_active_attack. The Checkup passes false for Poison and Burn. Rocky Helmet retaliation is applied straight to the attacker without modify_damage. Deceptive Needle (Weezing, Hydreigon), Bad Dreams (Altaria) and Nightmare Aura (Weezing's Darkrai ex) all pass false. So none of them is reduced, which matches the official Mimikyu ex FAQ rule.",
+       "evidence": "hooks/core.rs 720-722; apply_action_helpers.rs 295-303, 593-612; hooks/core.rs 580-603, 618-654; state/energy.rs 149-170; RULES_FOR_AGENTS.md 79-82.",
+       "status": "ok"
+      },
+      {
+       "clause": "Also on the Bench (the text has no Active-only limit)",
+       "engine_does": "No slot check, so Bench snipes from attacks are reduced too: Heatmor Tongue Whip 30 and Hitmonlee Stretch Kick 30 become 0, Grovyle Slicing Snipe 50 becomes 0, Hoopa ex's Bench 20 becomes 0, and Chien-Pao ex's Diving Icicles 130 becomes 80.",
+       "evidence": "hooks/core.rs 715-735 (no target_idx test); attack_outcome.rs 146-155 (attack damage passes true for every target).",
+       "status": "ok"
+      },
+      {
+       "clause": "Order: attack damage -> attacker boosts -> Weakness -> defender reductions, never below 0",
+       "engine_does": "Weakness is added to the boosted pre-Weakness sum, and then Metal Core Barrier and the other reductions are subtracted with saturation. Every Pokémon in this list is weak to Fire: Mega Blaziken ex's Mega Burning 120 +20 −50 = 90 on Mega Scizor ex. Fighting Coach and Arena of Antiquity (Lucario deck) add before Weakness, and the Barrier comes off after.",
+       "evidence": "hooks/core.rs 1854-1885, 1309-1341. Test: tests/rules_repair_damage_opening.rs 172-202 (60 Fire under Bounded Field into Skarmory ex with the Barrier = 70, as in Dustin's game; 10 -> 0; 0 -> 0).",
+       "status": "ok"
+      },
+      {
+       "clause": "Discarded at the end of your opponent's turn (not your own)",
+       "engine_does": "At the end of each player's turn, on_end_turn discards every Metal Core Barrier from the OTHER player's Pokémon. So one attached on your turn survives your turn's end, protects through the opponent's turn and is discarded at its end, whatever the holder's type. This happens before that Checkup, which does not matter since the Barrier never reduces Checkup damage.",
+       "evidence": "hooks/core.rs 381, 504-519. Test: tests/revavroom_tools_test.rs 663-681. Seen in play: rules/_research_notes/R1_battle_observations.md 145.",
+       "status": "ok"
+      },
+      {
+       "clause": "'from attacks from your opponent's Pokémon': attacks by your own side",
+       "engine_does": "The Barrier does not check the attacker's side, unlike Heavy Helmet and Steel Apron. An attack that damages its user's own [M] Pokémon holding the Barrier through the damage-target list would be wrongly reduced. Unreachable here: no card in this list attacks its own side, recoil such as Hoopa ex's Dynamite Punch is applied directly without modify_damage, and no panel deck runs the Barrier.",
+       "evidence": "hooks/core.rs 715-735 compared with 693 (Heavy Helmet) and 743 (Steel Apron); apply_attack_action.rs 3143-3148.",
+       "status": "deviation"
+      }
+     ]
+    }
+   }
+  ],
+  "rayquaza": [
+   {
+    "row": {
+     "subject": "B2b 051 = Dratini (g-dragonair_mega_rayquaza.txt, 2 copies)",
+     "card_text": "Dratini [B2b 051] Dragon, Basic, HP 60, no Weakness, retreat 1. [C] Tail Strike 10 — \"Flip a coin. If heads, this attack does 20 more damage.\"",
+     "verdict": "matches",
+     "findings": [
+      {
+       "clause": "Identity: Dragon, Basic (stage 0, no evolves_from), HP 60, no Weakness, retreat 1, 1 point",
+       "engine_does": "Stores exactly these values. KO points come from the name: no 'Mega ' prefix and no trailing 'ex', so 1 point. lib/card.py prints the same entry.",
+       "evidence": "engine/src/database.rs:62612-62633; engine/src/models/card.rs:186-216; python lib/card.py \"B2b 051\"",
+       "status": "ok"
+      },
+      {
+       "clause": "Cost [C], paid by either Fire or Lightning",
+       "engine_does": "Typed symbols are matched first, then each [C] is covered by any remaining attached Energy, so one Fire or one Lightning pays it. The player going first cannot use it on turn 1 (no Energy); nothing in the deck can pay it then.",
+       "evidence": "engine/src/move_generation/attacks.rs:70-76; engine/src/hooks/core.rs:2099-2135; RULES_FOR_AGENTS.md:38-41",
+       "status": "ok"
+      },
+      {
+       "clause": "Tail Strike 10: flip one coin, heads +20 (30 total), tails 10",
+       "engine_does": "The text maps to CoinFlipExtraDamage{20}; coinflip_extra_damage_attack builds a single-coin 0.5/0.5 split: heads = 10+20, tails = 10. The +20 is part of base damage, so it is added before Weakness (none applies: no panel Pokémon is weak to Dragon).",
+       "evidence": "engine/src/actions/effect_mechanic_map.rs:1013-1016; engine/src/actions/apply_attack_action.rs:581-583, 1891-1896; engine/src/actions/attack_outcome.rs:266-283 (one CoinSeq per branch); engine/src/hooks/core.rs:1854-1880; RULES_FOR_AGENTS.md:115-116. No dedicated test for this text (shared mechanic).",
+       "status": "ok"
+      },
+      {
+       "clause": "Evolution base for Dragonair B4 117",
+       "engine_does": "Dragonair's evolves_from is \"Dratini\"; evolving builds a fresh PlayedCard that keeps damage, Energy and Tools and drops effects and conditions.",
+       "evidence": "engine/src/database.rs:76631; engine/src/actions/apply_action.rs:1503-1527",
+       "status": "ok"
+      }
+     ]
+    }
+   },
+   {
+    "row": {
+     "subject": "B3a 054 = Gouging Fire (2 copies; the list's only Ancient Pokémon)",
+     "card_text": "Gouging Fire [B3a 054] Dragon, Basic, HP 110, no Weakness, retreat 2. [RLC] Scorching Interruption 100 — \"Discard 2 Energy from this Pokémon. During your opponent's next turn, this Pokémon takes -30 damage from attacks.\"",
+     "verdict": "matches",
+     "findings": [
+      {
+       "clause": "Identity: Dragon, Basic, HP 110, no Weakness, retreat 2, 1 point",
+       "engine_does": "Stores exactly these values.",
+       "evidence": "engine/src/database.rs:70466-70486; engine/src/models/card.rs:204-216",
+       "status": "ok"
+      },
+      {
+       "clause": "Ancient: Gouging Fire is an Ancient Pokémon (target of the Capsule and Sada)",
+       "engine_does": "No Ancient field exists in the card data; the engine keeps a hardcoded name list of 11 names that includes \"Gouging Fire\" (exact-name match).",
+       "evidence": "engine/src/hooks/core.rs:31-47; grep of lib/deckgym-database.json finds no Ancient field. Indirect support: the Limitless 1st-place list this deck derives from runs Sada and the Capsule with Gouging Fire as its only possible target (rl/results/kt_carrier_census_2026-09-26/card_check_c-dragonair_mega_rayquaza_ex.md:18).",
+       "status": "ok"
+      },
+      {
+       "clause": "Cost [R][L][C] from a Fire/Lightning mix",
+       "engine_does": "Needs at least one Fire, at least one Lightning and a third Energy of either type. F,F,F or L,L,L cannot attack; F,L alone cannot either.",
+       "evidence": "engine/src/database.rs:70476; engine/src/hooks/core.rs:2108-2135",
+       "status": "ok"
+      },
+      {
+       "clause": "100 damage to the opponent's Active",
+       "engine_does": "Plain 100 through modify_damage: attacker boosts, then Weakness (none possible here), then defender reductions (Shuckle ex Solid Shell -20, Frigibax P-B 037 Stiffen -20), floored at 0.",
+       "evidence": "engine/src/actions/apply_attack_action.rs:3706-3723; engine/src/hooks/core.rs:1854-1885; RULES_FOR_AGENTS.md:54-59",
+       "status": "ok"
+      },
+      {
+       "clause": "Discard 2 Energy from this Pokémon: which ones, who chooses, fewer than 2",
+       "engine_does": "The attacking player chooses among the distinct multisets of 2 attached Energy (F/F/L gives FF or FL). The choice is pushed after damage and resolved before Tool retaliation and Knock Outs. The count is clamped to the attached total, but the [RLC] cost guarantees 3, so the clamp never applies. The discarded Energy goes to the discard pile, where Dragon's Blessing and Sada can reach it.",
+       "evidence": "engine/src/actions/effect_mechanic_map.rs:3387-3394; engine/src/actions/apply_attack_action.rs:646-657, 3714-3722; engine/src/actions/energy_discard_choices.rs:14-36; engine/src/actions/apply_action.rs:834-840; engine/src/state/mod.rs:1336-1357; engine/src/actions/attack_outcome.rs:161-209. Rule: rules/05_open_questions.md:57 (#23, T6 video: 'Please choose 2 Energy' after damage); order: rules/02_damage_knockouts_points.md:98. Tests: engine/tests/rules_repair_energy_choice.rs:20-64; engine/tests/pokemon/energy_discard_combo_attacks_test.rs:169-209.",
+       "status": "ok"
+      },
+      {
+       "clause": "-30 to damage from attacks during the opponent's next turn only",
+       "engine_does": "When the discard choice resolves, it adds CardEffect::ReducedDamage{30} with duration 1 to the attacker. end_turn_maintenance runs on all Pokémon of both players at each turn change: 1 becomes 0 at the end of our turn, and the effect is dropped at the end of the opponent's turn. The reduction is read only for active-to-active attack damage (is_from_active_attack), after Weakness, stacking with other reductions and floored at 0. So it ignores Poison/Burn ticks, Bad Dreams (Darkrai B2b 040), Nightmare Aura (Darkrai ex) and Deceptive Needle (passed is_from_active_attack=false). Opponent attacks that pick our Active as a target (Chien-Pao ex Diving Icicles) still count as active-to-active.",
+       "evidence": "engine/src/actions/apply_action.rs:841-843; engine/src/state/played_card.rs:340-346, 460-469; engine/src/state/mod.rs:942-947, 1205; engine/src/hooks/core.rs:1147-1167, 1328, 1364-1369, 1737, 1881-1885, 596-602; RULES_FOR_AGENTS.md:79-82. Test: engine/tests/pokemon/energy_discard_combo_attacks_test.rs:211-232 (Ember 30 to 0 on the opponent's next turn).",
+       "status": "ok"
+      },
+      {
+       "clause": "Effect ends if the Pokémon goes to the Bench (or evolves)",
+       "engine_does": "apply_activate, used by retreat, promotion, Sabrina and Cyrus, calls clear_status_and_effects on the Pokémon moved to the Bench, so an opposing Sabrina followed by Cyrus returns it without the -30. Gouging Fire is Basic with nothing evolving from it, so the evolve case can't arise.",
+       "evidence": "engine/src/actions/apply_action_helpers.rs:939-961; engine/src/state/played_card.rs:378-386; RULES_FOR_AGENTS.md:69",
+       "status": "ok"
+      },
+      {
+       "clause": "Confused tails: the attack does nothing",
+       "engine_does": "The confusion coin wraps the whole outcome, so tails brings no damage, no discard and no -30.",
+       "evidence": "engine/src/actions/apply_attack_action.rs:124-127; RULES_FOR_AGENTS.md:98",
+       "status": "ok"
+      },
+      {
+       "clause": "Panel interactions",
+       "engine_does": "No panel card removes our Energy, locks the Energy Zone, suppresses Abilities or ignores effects on the Defending Pokémon. Rocky Helmet (t-blaziken) retaliates after the discard choice, as observed in footage. The Capsule makes it 150 HP, so Hydreigon's Hyper Ray 130 and Chien-Pao ex's Diving Icicles 130 leave it alive (100 under the -30).",
+       "evidence": "decks/screen/opponents/t-*.txt texts via lib/deckgym-database.json; rules/02_damage_knockouts_points.md:98",
+       "status": "ok"
+      }
+     ]
+    }
+   },
+   {
+    "row": {
+     "subject": "B4 117 = Dragonair (2 copies)",
+     "card_text": "Dragonair [B4 117] Dragon, Stage 1 (from Dratini), HP 80, no Weakness, retreat 2. Ability Dragon's Blessing: \"Once during your turn, if this Pokémon is on your Bench, you may attach an Energy from your discard pile to your Active [N] Pokémon.\" [CC] Draconic Whip 40.",
+     "verdict": "matches",
+     "findings": [
+      {
+       "clause": "Identity: Dragon, Stage 1 from \"Dratini\", HP 80, no Weakness, retreat 2, 1 point",
+       "engine_does": "Stores exactly these values.",
+       "evidence": "engine/src/database.rs:76627-76647",
+       "status": "ok"
+      },
+      {
+       "clause": "Draconic Whip [CC] 40",
+       "engine_does": "Plain 40, payable by any two Energy. Against t-altaria, Training Area gives +10 because Dragonair is Stage 1 (checked in the Altaria card check).",
+       "evidence": "engine/src/database.rs:76636-76641; engine/src/hooks/core.rs:1817-1832",
+       "status": "ok"
+      },
+      {
+       "clause": "Only while this Pokémon is on your Bench",
+       "engine_does": "The move-generation gate requires in_play_idx != 0.",
+       "evidence": "engine/src/move_generation/move_generation_abilities.rs:61, 265-273",
+       "status": "ok"
+      },
+      {
+       "clause": "Once during your turn, per Dragonair",
+       "engine_does": "UseAbility sets ability_used on that PlayedCard. The flag is reset for every Pokémon at each turn change and is not cleared by switching, so two Dragonair give two uses and one Dragonair gets one use per turn. A Dragonair evolved this turn is a fresh card and can use it at once, as seen on footage.",
+       "evidence": "engine/src/actions/apply_action_helpers.rs:997-1002; engine/src/state/played_card.rs:471-474; engine/src/actions/apply_action.rs:1511; RULES_FOR_AGENTS.md:114; footage rl/results/recordings_check_2026-09-25/second_pass/claims.json:4107-4128 (S180, 015201/015702 T16 and T18)",
+       "status": "ok"
+      },
+      {
+       "clause": "\"you may\": optional",
+       "engine_does": "It is offered as an optional UseAbility move, never forced.",
+       "evidence": "engine/src/move_generation/move_generation_abilities.rs:13-26",
+       "status": "ok"
+      },
+      {
+       "clause": "Target: your Active [N] Pokémon",
+       "engine_does": "Requires the Active to be Dragon type through pokemon_is_type (which respects dual type) and always attaches to slot 0. Every Pokémon in this list is Dragon type, so the gate is always met.",
+       "evidence": "engine/src/move_generation/move_generation_abilities.rs:270-272; engine/src/state/mod.rs:663-670, 720-722; engine/src/actions/apply_abilities_action.rs:397-403",
+       "status": "ok"
+      },
+      {
+       "clause": "An Energy (any type) from your discard pile; who picks; not usable with an empty pile",
+       "engine_does": "Not offered when discard_energies is empty. On use, the player gets one AttachTypedFromDiscard choice per distinct type in the pile. It moves exactly one Energy, is separate from the turn's Zone attach (energy_zone.current is untouched) and does not trigger Zone-only hooks.",
+       "evidence": "engine/src/move_generation/move_generation_abilities.rs:269; engine/src/actions/apply_abilities_action.rs:387-410; engine/src/actions/apply_action.rs:532-536, 1724-1737; engine/src/state/energy.rs:55-74, 87-115; footage S180 (second attach on the same turn as the normal one). Tests: none for gameplay; engine/tests/s117_gtier_test.rs:43-51 is a value-function test.",
+       "status": "ok"
+      },
+      {
+       "clause": "What feeds the discard pile",
+       "engine_does": "Energy discarded by Mega Burst, Scorching Interruption, retreat and Knock Outs all lands in discard_energies. Rainbow Cave's discarded Zone Energy is also pushed into discard_energies. Unattached turn Energy that expires is not: the next rotation overwrites it. Whether either kind of Zone Energy enters the discard pile in Pocket is unverified. rules/01_game_structure.md:73 says only that it is 'discarded', and no footage shows the pile after Rainbow Cave. With 2 Rainbow Cave + 2 Dragonair, the engine lets Rainbow Cave's discarded Energy be reattached by Dragon's Blessing the same turn: up to one extra Energy per turn. If Pocket does not put Zone Energy in the discard pile, the engine overrates this list. This is a Rainbow Cave/Energy Zone question, not a Dragonair clause.",
+       "evidence": "engine/src/actions/apply_stadium_action.rs:84-87; engine/src/state/mod.rs:931-932, 1261, 1332-1357; rules/01_game_structure.md:73; rules/_research_notes/C_rulings.md:40 ('not resolved')",
+       "status": "open"
+      },
+      {
+       "clause": "Panel interactions",
+       "engine_does": "No panel deck has an Ability blocker (Power of Alchemy, Prickly Powder) or an Energy lock. Asleep/Paralyzed on our Active does not block a Bench Ability.",
+       "evidence": "decks/screen/opponents/t-*.txt; engine/src/move_generation/move_generation_abilities.rs:37-39",
+       "status": "ok"
+      }
+     ]
+    }
+   },
+   {
+    "row": {
+     "subject": "B4 120 = Mega Rayquaza ex (1 copy)",
+     "card_text": "Mega Rayquaza ex [B4 120] Dragon, Basic (Stage 0), HP 180, no Weakness, retreat 1. [RL] Mega Burst 50 — \"Discard all [R] and [L] Energy from this Pokémon, and this attack does 50 damage for each Energy you discarded in this way.\" Mega Evolution ex: 3 points when Knocked Out.",
+     "verdict": "matches",
+     "findings": [
+      {
+       "clause": "Identity: Dragon, Basic, HP 180, no Weakness, retreat 1",
+       "engine_does": "Stores exactly these values; stage 0, so it is played straight from hand.",
+       "evidence": "engine/src/database.rs:76707-76727",
+       "status": "ok"
+      },
+      {
+       "clause": "Mega Evolution ex: 3 points when Knocked Out",
+       "engine_does": "is_mega (name starts with 'Mega ') gives 3 points.",
+       "evidence": "engine/src/models/card.rs:196-216; RULES_FOR_AGENTS.md:21-23",
+       "status": "ok"
+      },
+      {
+       "clause": "Not Ancient",
+       "engine_does": "It is not on ANCIENT_POKEMON_NAMES, so Sada can't target it and the Capsule gives it no HP. Rayquaza is not a Paradox Pokémon.",
+       "evidence": "engine/src/hooks/core.rs:31-47",
+       "status": "ok"
+      },
+      {
+       "clause": "Cost [R][L]",
+       "engine_does": "Needs at least one Fire and one Lightning. F,F or L,L cannot attack.",
+       "evidence": "engine/src/database.rs:76717; engine/src/hooks/core.rs:2108-2135",
+       "status": "ok"
+      },
+      {
+       "clause": "Discard ALL [R] and [L] (not other types)",
+       "engine_does": "After damage, it discards every attached Fire and Lightning and nothing else, into discard_energies. The known engine bug where 'discard all Energy' skips the pile (damage_and_discard_all_energy) is a different path and does not touch Mega Burst.",
+       "evidence": "engine/src/actions/effect_mechanic_map.rs:3412-3419; engine/src/actions/apply_attack_action.rs:764-771, 4013-4025; engine/src/state/mod.rs:1332-1357; rl/results/recordings_check_2026-09-25/README.md:62-66. Tests: engine/tests/pokemon/mega_rayquaza_ex_mega_burst_test.rs:17-69 (other types stay attached, discard pile gets 3).",
+       "status": "ok"
+      },
+      {
+       "clause": "Damage = 50 x the number discarded (the printed 50 is not added)",
+       "engine_does": "Base damage = 50 x the count of attached [R]/[L] on the attacker at forecast. That is the same set the post-damage effect discards: no damage hook moves Energy in between (comment at 4035-4038; no panel card does). fixed_damage 50 is ignored. Test: F,F,L gives 150.",
+       "evidence": "engine/src/actions/apply_attack_action.rs:4006-4015; engine/tests/pokemon/mega_rayquaza_ex_mega_burst_test.rs:33-40",
+       "status": "ok"
+      },
+      {
+       "clause": "Ordering with boosts, Weakness and reductions",
+       "engine_does": "Base (50xN), then attacker-side modifiers: Bonsly's Teary Attack -30 carried on our attacker comes before Weakness. Then Weakness, which is by attacker type Dragon, and no panel Pokémon is weak to Dragon. Then defender reductions (Shuckle ex -20, Frigibax Stiffen -20), floored at 0. Opposing boosts against our ex (Korrina +30, Arena of Antiquity +20, Fighting Coach +20) act on attacks into it, not on Mega Burst.",
+       "evidence": "engine/src/hooks/core.rs:1488-1513, 1854-1885; RULES_FOR_AGENTS.md:52-59",
+       "status": "ok"
+      },
+      {
+       "clause": "Confused tails / damage prevented",
+       "engine_does": "Confused tails: nothing happens and nothing is discarded. The self-discard is our own effect, so it still runs when the defender's damage is reduced to 0.",
+       "evidence": "engine/src/actions/apply_attack_action.rs:124-127; engine/src/actions/attack_outcome.rs:143-182",
+       "status": "ok"
+      }
+     ]
+    }
+   },
+   {
+    "row": {
+     "subject": "B3a 069 = Ancient Booster Energy Capsule (Tool, 1 copy)",
+     "card_text": "Ancient Booster Energy Capsule [B3a 069] Trainer (Pokémon Tool): \"The Ancient Pokémon this card is attached to gets +40 HP.\"",
+     "verdict": "matches",
+     "findings": [
+      {
+       "clause": "Tool; one per Pokémon; can be attached to any of your Pokémon, Active or Bench",
+       "engine_does": "It can be attached to any in-play Pokémon with a free Tool slot (capacity 1). The effect, not the attachment, is gated by the holder. That matches Pocket: Elegant Cape was seen attached to a Basic, doing nothing until it evolved. The engine will therefore let a pilot put it on Mega Rayquaza ex or Dragonair for no effect (a piloting matter).",
+       "evidence": "engine/src/database.rs:70805-70815; engine/src/tools.rs:112-133, 152; rules/02_damage_knockouts_points.md:131 (OBSERVED 152812)",
+       "status": "ok"
+      },
+      {
+       "clause": "+40 HP only if the holder is Ancient (here, Gouging Fire: 110 to 150)",
+       "engine_does": "get_effective_total_hp adds 40 x Capsule count only when is_ancient_pokemon(name). Max HP and remaining HP both rise by 40 and damage counters are untouched, as observed for other HP Tools.",
+       "evidence": "engine/src/state/played_card.rs:276-310; engine/src/hooks/core.rs:31-47; rules/02_damage_knockouts_points.md:131. Tests: engine/tests/tools/booster_capsule_test.rs:33-77 (Brute Bonnet 100 to 140; Bulbasaur unchanged).",
+       "status": "ok"
+      },
+      {
+       "clause": "Which Pokémon are Ancient",
+       "engine_does": "A hardcoded exact-name list: Brute Bonnet, Slither Wing, Scream Tail, Flutter Mane ex, Great Tusk, Sandy Shocks, Koraidon ex, Roaring Moon, Walking Wake, Gouging Fire, Raging Bolt. The non-ex 'Flutter Mane' (B3b 035) and 'Koraidon' (B2a 063) in the database are not on it. Whether those printings carry the Ancient label in Pocket is unverified. Neither is in this list or the panel, so no gauntlet game is affected.",
+       "evidence": "engine/src/hooks/core.rs:31-47; lib/deckgym-database.json (names listed by script); rules/_research_notes/E_set_history.md:44, 125-128",
+       "status": "open"
+      },
+      {
+       "clause": "Tool removed (Field Blower) with damage on the Pokémon",
+       "engine_does": "HP is recomputed live, so removal drops max and remaining HP by 40 and keeps the damage. A catch-all knockout check runs after every action: if damage is 110 or more, Gouging Fire is KO'd at once, the opponent scores 1 and we promote. Field Blower is in six of the eight panel decks (altaria, blaziken, lucario, suicune, vespiquen, weezing), not two.",
+       "evidence": "engine/src/actions/apply_trainer_action.rs:586-600; engine/src/actions/apply_action.rs:907-913; engine/src/actions/apply_action_helpers.rs:1063-1080, 711-733; engine/src/state/played_card.rs:281-283; RULES_FOR_AGENTS.md:62-65; decks/screen/opponents/t-*.txt",
+       "status": "ok"
+      },
+      {
+       "clause": "Kept on the Bench, discarded with the Pokémon on KO",
+       "engine_does": "Tools stay through switching. On KO they go to the discard pile with the Pokémon.",
+       "evidence": "engine/src/actions/apply_action_helpers.rs:939-961; engine/src/state/mod.rs:1252-1264",
+       "status": "ok"
+      }
+     ]
+    }
+   },
+   {
+    "row": {
+     "subject": "B3a 072 = Professor Sada (Supporter, 1 copy)",
+     "card_text": "Professor Sada [B3a 072] Trainer (Supporter): \"Attach 3 different types of Energy from your discard pile to your Ancient Pokémon in any way you like.\"",
+     "verdict": "matches",
+     "findings": [
+      {
+       "clause": "Supporter: one per turn; blocked by Supporter locks",
+       "engine_does": "It goes through can_play_support (has_played_support, NoSupportCards, Gengar ex). No panel card locks Supporters. Mega Absol ex (t-hydreigon) can discard it from our hand; Mars (t-weezing) can shuffle it away.",
+       "evidence": "engine/src/move_generation/move_generation_trainer.rs:62-64; engine/src/hooks/core.rs:657-676",
+       "status": "ok"
+      },
+      {
+       "clause": "When it can be played",
+       "engine_does": "Offered only with at least one Ancient Pokémon in play (Active or Bench) and at least one Energy in the discard pile. Both are visible, which matches the 'blocked only when what you can see shows it can't work' rule.",
+       "evidence": "engine/src/move_generation/move_generation_trainer.rs:315-317, 704-720; RULES_FOR_AGENTS.md:70-76; engine/tests/trainers/professor_sada_test.rs:26-80",
+       "status": "ok"
+      },
+      {
+       "clause": "\"3 different types\": one Energy of each chosen type, all types distinct",
+       "engine_does": "It attaches exactly min(3, distinct types in the discard) Energy, one per type, never two of one type. With more than 3 types the player picks which 3. It is mandatory: with 2 types available, both are attached.",
+       "evidence": "engine/src/actions/professor_sada.rs:15-37 (unit tests 65-206); engine/tests/trainers/professor_sada_test.rs:82-176",
+       "status": "ok"
+      },
+      {
+       "clause": "Fewer than 3 types in the discard",
+       "engine_does": "It attaches what exists: 1 or 2. In this list the Zone only makes Fire and Lightning, so Sada can never attach 3. It is always the 1- or 2-type case: at most one Fire plus one Lightning onto Gouging Fire. Whether Pocket allows Sada with fewer than 3 types (and attaches the 2) has not been seen on footage. Indirect support: the Limitless 1st-place Fire/Lightning list this deck copies runs Sada, which would be dead if 3 types were required. If the real game needs 3 types, Sada is a dead card here and the engine overrates it.",
+       "evidence": "engine/src/actions/professor_sada.rs:31; rl/results/kt_carrier_census_2026-09-26/skeptic_c-dragonair_mega_rayquaza_ex.md:30 (Fire, Lightning declarations); decks/gauntlet_2026-09-26/g-dragonair_mega_rayquaza.txt",
+       "status": "open"
+      },
+      {
+       "clause": "\"to your Ancient Pokémon in any way you like\": the player splits the Energy among Ancient Pokémon in play",
+       "engine_does": "Enumerates every assignment of each chosen type to any Ancient slot, Active or Bench (Cartesian product), and pushes them as a choice for the playing player. Only Gouging Fire qualifies here; Mega Rayquaza ex, Dratini and Dragonair are never offered.",
+       "evidence": "engine/src/actions/apply_trainer_action.rs:298-300, 2022-2042; engine/src/actions/professor_sada.rs:39-58; engine/src/actions/apply_action.rs:540, 1754-1761; engine/tests/trainers/professor_sada_test.rs:212-303",
+       "status": "ok"
+      },
+      {
+       "clause": "Attachment side effects",
+       "engine_does": "It takes Energy out of discard_energies and attaches it as non-Zone, non-turn Energy, so the turn's Zone attach is still available and Zone-only triggers don't fire.",
+       "evidence": "engine/src/state/energy.rs:55-74, 87-115",
+       "status": "ok"
+      },
+      {
+       "clause": "Discard-pile supply (same open point as Dragon's Blessing)",
+       "engine_does": "Energy from Scorching Interruption, Mega Burst, retreat, KO and Rainbow Cave all feeds the pile. Rainbow Cave's contribution is unverified in Pocket (see the Dragonair row).",
+       "evidence": "engine/src/actions/apply_stadium_action.rs:84-87; rules/01_game_structure.md:73",
+       "status": "open"
+      }
+     ]
+    }
+   }
+  ],
+  "greninja_riolu": [
+   {
+    "row": {
+     "subject": "A1 087 = Froakie (Basic, Water), in decks/gauntlet_2026-09-26/g-mega_altaria_greninja.txt (2 copies, Energy: Psychic). Code reading of engine/src (7fc6ccb).",
+     "card_text": "Froakie [A1 087] Water, Basic, HP 60, weak Lightning, retreat 1. [C] Flop 10.",
+     "verdict": "matches",
+     "findings": [
+      {
+       "clause": "Identity: Water, Basic, evolves_from none, HP 60, 1 point",
+       "engine_does": "stage 0, evolves_from None, hp 60, energy_type Water, no ability. Worth 1 point (not ex, not Mega).",
+       "evidence": "engine/src/database.rs:2101-2122; lib/deckgym-database.json:2022-2044 (same values); models/card.rs:186-216 (is_ex / is_mega / get_knockout_points)",
+       "status": "ok"
+      },
+      {
+       "clause": "Weakness Lightning (+20 flat, Active only)",
+       "engine_does": "weakness Some(Lightning); Weakness is Flat(20) only when attack is Active-to-Active. No Lightning Pokemon in the eight panel decks, so it never fires there.",
+       "evidence": "database.rs:2117; hooks/core.rs:1455-1466, 1488-1512 (Flat(20) at 1509)",
+       "status": "ok"
+      },
+      {
+       "clause": "Retreat 1; Small Balloon in the list",
+       "engine_does": "retreat_cost [Colorless]; Small Balloon removes 1 for a stage-0 holder, so a Ballooned Froakie retreats free.",
+       "evidence": "database.rs:2118; hooks/retreat.rs:144-146",
+       "status": "ok"
+      },
+      {
+       "clause": "[C] Flop 10, no effect; cost payable with Psychic; first turn",
+       "engine_does": "energy_required [Colorless], fixed_damage 10, effect None -> plain active_damage_doutcome(10). Any Energy pays [C]. No turn gate in attack generation, only the cost check, so the player going first can't Flop on turn 1 (no Energy).",
+       "evidence": "database.rs:2111-2116; actions/apply_attack_action.rs:312-315; move_generation/attacks.rs:70-76; hooks/core.rs:2108-2135 (Colorless matched by any leftover Energy)",
+       "status": "ok"
+      },
+      {
+       "clause": "Evolution: only Rare Candy -> Greninja in this list (no Frogadier)",
+       "engine_does": "Frogadier is not in the list, so ordinary evolution never has a card to play; Rare Candy straight to Greninja is allowed (see the Greninja row). Froakie placed this turn is marked played_this_turn, so neither Rare Candy nor evolution can target it that turn.",
+       "evidence": "actions/apply_action.rs:1090-1098 (to_playable_card(card, true)); card_logic/rare_candy.rs:97-101; state/played_card.rs:471-474 (reset at end of every turn)",
+       "status": "ok"
+      },
+      {
+       "clause": "Panel-deck interactions",
+       "engine_does": "Flop is Water: +20 Weakness against the Fire Actives of t-blaziken (Torchic, Mega Blaziken ex, Heatmor, Castform Sunny Form), through the normal attack path. Nothing on the panel lists reacts to Flop specially beyond ordinary modifiers (Shuckle ex's -20, Rocky Helmet on a damaged Active holder).",
+       "evidence": "hooks/core.rs:1488-1509; hooks/core.rs:794-808 (Solid Shell attack-only reduction); actions/apply_action_helpers.rs:585-612 (Rocky Helmet only on attack damage to the Active)",
+       "status": "ok"
+      }
+     ]
+    }
+   },
+   {
+    "row": {
+     "subject": "A1 089 = Greninja (Stage 2, Water; Ability Water Shuriken; attack Mist Slash), in g-mega_altaria_greninja.txt (2 copies, no Frogadier, 2 Rare Candy A3 144, Energy: Psychic). Code reading of engine/src (7fc6ccb).",
+     "card_text": "Greninja [A1 089] Water, Stage 2 (from Frogadier), HP 120, weak Lightning, retreat 1. Ability Water Shuriken: \"Once during your turn, you may do 20 damage to 1 of your opponent's Pokémon.\" [WC] Mist Slash 60. Rare Candy [A3 144]: \"Choose 1 of your Basic Pokémon in play. If you have a Stage 2 card in your hand that evolves from that Pokémon, put that card onto the Basic Pokémon to evolve it, skipping the Stage 1. You can't use this card during your first turn or on a Basic Pokémon that was put into play this turn.\"",
+     "verdict": "deviates_no_play_change",
+     "findings": [
+      {
+       "clause": "Identity: Water, Stage 2, evolves_from Frogadier, HP 120, Weakness Lightning, Retreat 1, 1 point",
+       "engine_does": "stage 2, evolves_from Some(\"Frogadier\"), hp 120, Water, weakness Lightning, retreat [Colorless]. Not ex, 1 point. Small Balloon does not apply (stage 0 only). No Lightning attacker in the panel decks.",
+       "evidence": "engine/src/database.rs:2145-2171; lib/deckgym-database.json:2068-2093; hooks/retreat.rs:144-146; models/card.rs:204-216",
+       "status": "ok"
+      },
+      {
+       "clause": "Rare Candy Froakie -> Greninja with no Frogadier in the deck (chain lookup by name through the database)",
+       "engine_does": "RARE_CANDY_LOOKUP is built from every card in the database, not the deck: Stage-1 name -> evolves_from (Frogadier -> Froakie, database.rs:2129), then each Stage 2's evolves_from is mapped through it, giving (\"Froakie\",\"Greninja\") = true. can_rare_candy_evolve keys on the in-play Basic's name and the Stage 2's name. Unit tests exercise the same database-wide lookup (Venusaur from Bulbasaur with no Ivysaur on board; Rampardos from Skull Fossil).",
+       "evidence": "card_logic/rare_candy.rs:57-90 (lookup), 94-110 (can_rare_candy_evolve), 193-231 (tests); database.rs:2123-2144 (Frogadier evolves_from Froakie)",
+       "status": "ok"
+      },
+      {
+       "clause": "Rare Candy restrictions: not during your first turn; not on a Basic put into play this turn; choose 1 of your Basics (Active or Bench)",
+       "engine_does": "Move generation refuses Rare Candy when turn_count <= 2 (each player's first turn), under Malamar's Evolution Jammer, or when no (Basic not played this turn, Stage 2 in hand) pair exists. Basics placed from hand (or by Poke Ball then placed) carry played_this_turn = true until the end of the turn, so they are excluded; a Froakie benched by the opponent's Team Rocket's Boss (t-suicune) during their turn is reset at that turn's end and is a legal target on yours, which fits 'put into play this turn'. The effect offers every (in-play Basic, matching Stage 2) pair, Active or Bench, and the player picks. Evolution keeps damage, Energy and Tools, clears conditions and effects, and gives a fresh Greninja (ability_used false), so Water Shuriken is usable the same turn. on_evolve has no trigger for Greninja.",
+       "evidence": "move_generation/move_generation_trainer.rs:663-685; state/mod.rs:1227-1229 (is_users_first_turn); actions/apply_trainer_action.rs:1905-1928; actions/apply_action.rs:1090-1098, 1503-1542; hooks/core.rs:140-153, 266; state/played_card.rs:460-474; state/mod.rs:942-950",
+       "status": "ok"
+      },
+      {
+       "clause": "Rare Candy vs Aerodactyl ex's Primeval Law ('can't play any Pokémon from their hand to evolve their Active Pokémon')",
+       "engine_does": "can_play_rare_candy and rare_candy_effect never check Primeval Law, so Rare Candy onto an Active Froakie is allowed while the opponent has Aerodactyl ex. Ordinary evolution does check it. Already on file (rules/09 commit db187ee 'Rare Candy ignores Primeval Law'; recordings_check_2026-09-25). No Aerodactyl ex in the eight panel decks.",
+       "evidence": "move_generation/move_generation_trainer.rs:663-685 vs move_generation/mod.rs:252-258, 270-282; actions/apply_trainer_action.rs:1905-1928; actions/effect_ability_mechanic_map.rs:682-684",
+       "status": "deviation"
+      },
+      {
+       "clause": "Water Shuriken: once during your turn, per Greninja; optional; usable from the Bench and while Asleep/Paralyzed",
+       "engine_does": "Text maps to DamageOneOpponentPokemon{20}. It is offered whenever that Greninja's ability_used flag is false, with no position or status gate. UseAbility sets ability_used on that PlayedCard (so two Greninja = two uses), and the flag resets for both players at every turn end. It is only generated for the current player's Pokémon, so only during your turn. It is an optional action beside EndTurn.",
+       "evidence": "actions/effect_ability_mechanic_map.rs:395-398; move_generation/move_generation_abilities.rs:13-26, 85; actions/apply_action_helpers.rs:997-1002; state/played_card.rs:471-474; state/mod.rs:942-950; move_generation/mod.rs:68-116",
+       "status": "ok"
+      },
+      {
+       "clause": "Target: 1 of your opponent's Pokémon (Active or Bench); who chooses",
+       "engine_does": "Pushes one ApplyDamage{(20, opponent, idx)} choice per opponent in-play Pokémon (Active and every Benched one), for the Greninja's controller to pick. A Protective-Poncho'd Benched target is still offered and then takes 0 (only wastes the use).",
+       "evidence": "actions/apply_abilities_action.rs:608-630; test engine/tests/s180_e1_fixtures.rs:413-455 (20 lands on a Benched target from a Benched Greninja)",
+       "status": "ok"
+      },
+      {
+       "clause": "Ability damage, not attack damage: no Weakness, no attacker boosts, 'by attacks' reductions don't apply",
+       "engine_does": "ApplyDamage carries is_from_active_attack: false and goes forecast_apply_damage -> handle_damage -> handle_damage_only -> modify_damage. With it false: Weakness is None (so the Fire panel Pokémon weak to Water take a flat 20); ability/board/turn-effect/Stadium boosts are 0 (Training Area, Arena of Antiquity, Fighting Coach, Korrina can't touch it); Teary Attack's carried -30, Intimidating Fang, Heavy Helmet, Metal Core Barrier, Steel Apron, ability reductions such as Shuckle ex's Solid Shell (-20, t-vespiquen) and stored ReducedDamage such as Frigibax P-B 037's Stiffen (t-suicune) are all 0; Disguise, Safeguard and Shell Shield are gated too.",
+       "evidence": "actions/apply_abilities_action.rs:620-624; actions/apply_action.rs:475-479, 704-738; actions/apply_action_helpers.rs:495-551; hooks/core.rs:1686-1705, 1737, 1761-1832, 1862-1880, 1455-1466, 794-808, 1147-1167, 1189-1227, 764-774, 687-700; actions/effect_mechanic_map.rs:603-610 (Stiffen -> ReducedDamage); actions/effect_ability_mechanic_map.rs:615-616 (Solid Shell)",
+       "status": "ok"
+      },
+      {
+       "clause": "Same path as the on-file deviation 2 (altaria check): 'by attacks' protections that wrongly stop Ability damage",
+       "engine_does": "Yes, Water Shuriken reaches modify_damage with is_from_active_attack false, and three checks there are not gated on it: PreventAllDamageAndEffects (core.rs:1717-1724), PreventDamageFromBasic (1726-1734; can never fire for Water Shuriken because the source, Greninja, is a Stage 2) and PreventDamageIfLessOrEqual (1887-1894; Harden-type, 20 <= 40 would be stopped). Sources of these effects: attack texts at effect_mechanic_map.rs:553-556, 971-984, 1126-1130, 1638-1644, Samurott-type on-evolve ability (effect_ability_mechanic_map.rs:852) and ProtectSelfNextTurnAfterAttackKnockout (hooks/core.rs:2446-2462). None of the Pokémon in the eight panel decks (t-*.txt) has any of those texts or abilities (Metapod B3b 002 has Ram, not Harden), so it cannot fire in gauntlet games against the panel.",
+       "evidence": "hooks/core.rs:1717-1734, 1887-1894; panel texts read from lib/deckgym-database.json for all 38 panel Pokémon ids",
+       "status": "deviation"
+      },
+      {
+       "clause": "Guts ('If this Pokémon would be Knocked Out by damage from an attack, flip a coin...') on Water Shuriken damage",
+       "engine_does": "forecast_apply_damage runs guts_would_flip for every ApplyDamage, and guts_would_flip has no is_from_active_attack gate, so a lethal Water Shuriken on a Guts holder (Conkeldurr / Ursaluna) flips a survival coin and on heads leaves it at 10 HP. The text says 'by damage from an attack', so Ability damage should not flip. Not previously on file (the Sept 22 abilities audit marked B30 OK). No Guts holder in the panel decks.",
+       "evidence": "actions/apply_action.rs:710-731, 740-770; actions/apply_action_helpers.rs:462-491; actions/effect_ability_mechanic_map.rs:237-239",
+       "status": "deviation"
+      },
+      {
+       "clause": "Protective Poncho (t-lucario runs B2 147: 'prevent all damage done to that Pokémon by your opponent's attacks and Abilities' on the Bench)",
+       "engine_does": "Poncho check is not gated on attack damage, so a Benched Poncho holder takes 0 from Water Shuriken, as its text says. has_tool compares by effect text, so every printing counts. Active holder is not protected.",
+       "evidence": "hooks/core.rs:1707-1715; tools.rs:100-110; tests engine/tests/tools/protective_poncho_test.rs:60-114, engine/tests/s180_e1_fixtures.rs:443-455",
+       "status": "ok"
+      },
+      {
+       "clause": "No retaliation from Ability damage (Rocky Helmet, t-blaziken; Deceptive Needle is end-of-turn only)",
+       "engine_does": "damaged_actives is filled only for attack damage, so handle_attack_retaliation does nothing after Water Shuriken. Matches Rocky Helmet's 'damaged by an attack'.",
+       "evidence": "actions/apply_action_helpers.rs:512, 585-587, 593-612",
+       "status": "ok"
+      },
+      {
+       "clause": "Knock Outs from Water Shuriken: immediate points, owner promotes if Active, turn continues",
+       "engine_does": "handle_damage calls handle_knockouts right away: points awarded at once, game ends on the 3rd point or when the opponent has no Pokémon left, a Benched KO gives the point with no promotion, an Active KO pushes a Promote frame for the KO'd player (their choice). end_turn_pending is set only by an Attack, so after the promotion the Greninja player keeps acting (Cyrus onto a Shuriken-damaged Benched Pokémon is legal: can_play_cyrus needs a damaged Bench Pokémon). Not affected by the on-file end-of-turn promotion-timing deviation, because this is during your own turn.",
+       "evidence": "actions/apply_action_helpers.rs:495-514, 711-733, 845-868, 876-886, 1082-1088; state/mod.rs:1361-1424; move_generation/move_generation_trainer.rs:637-648; rules/02_damage_knockouts_points.md:127",
+       "status": "ok"
+      },
+      {
+       "clause": "[W][C] Mist Slash 60 with only Psychic Energy",
+       "engine_does": "Never offered. contains_energy must match the [W] with an attached Water Energy; Psychic only fills [C]. The Energy Zone gives only Psychic (Energy: Psychic) and no card in the list or panel converts Energy types (Jungle Totem doubles Grass only). This matches Pocket: the cost can't be paid.",
+       "evidence": "database.rs:2160-2165; move_generation/attacks.rs:70-76; hooks/core.rs:2099-2135; state/played_card.rs:483-509",
+       "status": "ok"
+      },
+      {
+       "clause": "Tests",
+       "engine_does": "Water Shuriken: engine/tests/s180_e1_fixtures.rs:413-455 and engine/tests/tools/protective_poncho_test.rs:60-114 (Bench target, Poncho). No test covers Water Shuriken against a Weakness, against a 'by attacks' reduction, or a Water Shuriken KO. Rare Candy: only the lookup unit tests (card_logic/rare_candy.rs:193-231); no game-level Froakie -> Greninja test.",
+       "evidence": "as listed",
+       "status": "ok"
+      }
+     ]
+    }
+   },
+   {
+    "row": {
+     "subject": "B4 078 = Oricorio (Basic, Psychic; attack Supernatural Feather), in g-mega_altaria_greninja.txt (1 copy; list also runs Hiking Trail B2b 069, which refills the hand to 3 at the end of each turn). Code reading of engine/src (7fc6ccb).",
+     "card_text": "Oricorio [B4 078] Psychic, Basic, HP 80, weak Darkness, retreat 1. [P] Supernatural Feather 50 — \"Discard a card from your hand. If you can't, this attack does nothing.\"",
+     "verdict": "deviates_no_play_change",
+     "findings": [
+      {
+       "clause": "Identity: Psychic, Basic, HP 80, Weakness Darkness (+20), Retreat 1, no Ability, 1 point",
+       "engine_does": "stage 0, hp 80, Psychic, ability None, weakness Darkness, retreat [Colorless]. B4 078 has no Ability, so no ability-derived effect (such as another Oricorio's Safeguard) reaches it, and no engine code is keyed on the name Oricorio or on B4078 (grep outside database.rs: comments and other printings only). Darkness attackers in t-hydreigon and t-weezing (and Darkrai in t-altaria) add +20 to an Active Oricorio; Small Balloon makes its retreat free.",
+       "evidence": "engine/src/database.rs:75652-75676; lib/deckgym-database.json:76642-76664; hooks/core.rs:1488-1509; hooks/retreat.rs:144-146",
+       "status": "ok"
+      },
+      {
+       "clause": "[P] cost, 50 damage, first turn",
+       "engine_does": "energy_required [Psychic], fixed_damage 50; ordinary cost check; no Energy on the first player's turn 1 so no attack then. +20 Weakness vs the t-lucario Fighting line (weak Psychic); Shuckle ex's Solid Shell -20 applies (it's an attack).",
+       "evidence": "database.rs:75662-75669; move_generation/attacks.rs:70-76; hooks/core.rs:794-808",
+       "status": "ok"
+      },
+      {
+       "clause": "'Discard a card from your hand' — who chooses, when",
+       "engine_does": "Text maps to DiscardHandCards{count:1}. With >= 1 card in hand the outcome is 50 to the Active, then a post-damage effect pushes one DiscardOwnCards choice per hand card for the attacker (action.actor) to pick. The discard frame sits above the deferred ResolveAttackRetaliation frame, so the order is damage -> discard -> Rocky Helmet-style retaliation -> Knock Outs, and handle_knockouts waits while retaliation is pending. The discard after damage matches the recorded Soul Shot (same text) in battle 221914.",
+       "evidence": "actions/effect_mechanic_map.rs:225-228; actions/apply_attack_action.rs:966-968, 5081-5102; actions/apply_action.rs:518, 1638-1646; actions/attack_outcome.rs:134-211; actions/apply_action_helpers.rs:659-660; rules/02_damage_knockouts_points.md:105",
+       "status": "ok"
+      },
+      {
+       "clause": "'If you can't, this attack does nothing' (empty hand)",
+       "engine_does": "hands.len() < 1 -> active_damage_doutcome(0): a 0-damage hit on the Active, with no discard. modify_damage returns 0 before any boost or Weakness and no retaliation follows. One corner differs from 'nothing': handle_damage_only runs checkapply_prevent_first_attack before the damage == 0 test, so the 0 hit uses up Mimikyu ex's Disguise (the on-file engine-wide deviation 1, altaria check). There is no Mimikyu ex in the panel decks.",
+       "evidence": "actions/apply_attack_action.rs:5087-5089; hooks/core.rs:1654-1660; actions/apply_action_helpers.rs:553-563; ../altaria_card_check_2026-09-26/README.md deviation 1",
+       "status": "deviation"
+      },
+      {
+       "clause": "Is the attack offered with an empty hand?",
+       "engine_does": "Yes: attack generation checks only conditions, statuses, restrictions and Energy, never hand size, so Supernatural Feather is offered with an empty hand and does nothing. No source says whether Pocket greys it out. Either way, the option is dominated by EndTurn: it ends the turn and does nothing. Hiking Trail in this list refills the hand to 3 at the end of every turn, so an empty hand at attack time is rare.",
+       "evidence": "move_generation/attacks.rs:14-80, 92-107",
+       "status": "open"
+      },
+      {
+       "clause": "Confusion (t-weezing's Confusion Gas) and the discard",
+       "engine_does": "A Confused attacker's tails branch replaces the whole outcome with a no-op, so no damage and no discard. That matches 'the attack does nothing'.",
+       "evidence": "actions/apply_attack_action.rs:110-135, 326-329; actions/attack_outcome.rs:518-532",
+       "status": "ok"
+      },
+      {
+       "clause": "Tests",
+       "engine_does": "No test uses Supernatural Feather or the shared DiscardHandCards{1} mechanic (Soul Shot has the same text). The code path was checked by reading only.",
+       "evidence": "grep of engine/tests for Supernatural Feather, Soul Shot, B4078, DiscardHandCards: no hits",
+       "status": "ok"
+      }
+     ]
+    }
+   },
+   {
+    "row": {
+     "subject": "A2 091 = Riolu (Basic, Fighting; attack Jab), in decks/gauntlet_2026-09-26/v-lucario_2.txt (2 copies, with 2 Mega Lucario ex B3 081 and 1 Lucario A2 092). Code reading of engine/src (7fc6ccb).",
+     "card_text": "Riolu [A2 091] Fighting, Basic, HP 60, weak Psychic, retreat 1. [F] Jab 20.",
+     "verdict": "matches",
+     "findings": [
+      {
+       "clause": "Identity: Fighting, Basic, HP 60, Weakness Psychic (+20), Retreat 1, no Ability, 1 point",
+       "engine_does": "stage 0, evolves_from None, hp 60, Fighting, weakness Psychic, retreat [Colorless], ability None. +20 from Psychic attackers (t-altaria's Mega Altaria ex and Espeon; this deck's Oricorio and Mega Altaria ex) when Active.",
+       "evidence": "engine/src/database.rs:10753-10774; lib/deckgym-database.json:10539-10561; hooks/core.rs:1488-1509",
+       "status": "ok"
+      },
+      {
+       "clause": "Evolution by name: Mega Lucario ex B3 081 and Lucario A2 092 evolve from this printing",
+       "engine_does": "Card::can_evolve_into compares the evolution's evolves_from with the in-play card's name; A2 091's name is \"Riolu\", Lucario A2 092 and Mega Lucario ex B3 081 both have evolves_from Some(\"Riolu\"). So both evolve from A2 091 (and from B3 079, the panel's printing). Normal timing: not the first turn, not the turn Riolu was placed.",
+       "evidence": "models/card.rs:269-272; state/played_card.rs:197-203; hooks/core.rs:125-137; database.rs:10757, 10775-10779 (Lucario), 65847-65851 (Mega Lucario ex); move_generation/mod.rs:195-219",
+       "status": "ok"
+      },
+      {
+       "clause": "[F] Jab 20, no effect; first turn",
+       "engine_does": "energy_required [Fighting], fixed_damage 20, effect None -> plain 20 to the Active. Board boosts in the v-lucario_2 list apply only Active-to-Active: Lucario's Fighting Coach +20, Arena of Antiquity +20 vs an ex Active, Korrina +30 vs an ex Active. Tests: Jab + one Fighting Coach = 40; Goomy's Sticky Membrane blocks Jab at exact cost.",
+       "evidence": "database.rs:10763-10768; actions/apply_attack_action.rs:312-315; hooks/core.rs:1799-1832, 1029-1114; engine/tests/pokemon/lucario_fighting_coach_test.rs:14-48; engine/tests/pokemon/legacy_ability_logic_test.rs:682-693",
+       "status": "ok"
+      },
+      {
+       "clause": "Panel-deck interactions",
+       "engine_does": "Jab is an ordinary attack: Rocky Helmet (t-blaziken) retaliates on an Active holder, Shuckle ex's Solid Shell takes 20 off, and no panel Pokémon is weak to Fighting except Eevee (t-altaria, weak Fighting: +20) and the Team Rocket's Koffing/Weezing ex line (t-weezing, weak Fighting: +20). No clause of Riolu depends on the opponent beyond these standard modifiers.",
+       "evidence": "hooks/core.rs:1488-1509, 794-808; actions/apply_action_helpers.rs:585-612; weaknesses read from lib/deckgym-database.json",
+       "status": "ok"
+      }
+     ]
+    }
+   }
+  ]
+ },
+ "skeptics": {
+  "1": [
+   {
+    "finding": "S1",
+    "verdict": "upheld",
+    "changes_gauntlet_play": "yes",
+    "reasoning": "Every step holds. The flag is PlayedCard.moved_to_active_this_turn. It starts false, and its only setter is apply_activate, which is reached by paid Retreat, by Activate (Metal Transport, U-turn, switch Supporters) and by Promote (apply_action.rs 823-830 -> apply_retreat(is_free=true) -> apply_activate). It is cleared only by PlayedCard::end_turn_maintenance, which State::end_turn_maintenance runs for both players from advance_turn. Bullet Slugger reads it at attack time. Path for an end-of-turn knockout: the EndTurn mutation runs on_end_turn (Bad Dreams, Deceptive Needle -> handle_damage -> handle_knockouts -> trigger_promotion_or_declare_winner). That inserts the Promote frame at index 0, or at the phase floor. The same mutation then runs the Checkup, whose knockouts also insert Promote at the bottom, then advance_turn. advance_turn switches current_player, increments turn_count, runs end_turn_maintenance and PUSHES DrawCard on top. The stack top is last(), so the new turn's draw resolves first and Promote after it. Both happen inside the new turn, and nothing clears the flag again before the attack. So a Benched Mega Scizor ex promoted after a Burn, Poison, Needle or Bad Dreams knockout on the opponent's turn gets +50. A knockout from the opponent's ATTACK is handled right: the stack frame outranks the end_turn_pending EndTurn, so the promotion resolves on the opponent's turn and advance_turn clears the flag. The official ruling is for Scizor A4 123's Gale Thrust, whose condition text is word for word Bullet Slugger's (both checked with card.py). It excludes promotion after a Knock Out on the opponent's turn, and the footage (deviation 3) shows Pocket promotes before the next turn starts. Reachability: Mega Scizor ex is a Stage 1 from Scyther, so it can sit on the Bench (Scyther benched, then evolved there). Benching it is this list's natural Metal Transport line, and the list runs 2. Five panel decks deal end-of-turn or Checkup damage. Blaziken: Mega Burning Burn, plus Castform's Sunny Scorching with any Stadium in play, and t-blaziken runs its own Hiking Trail as well as the Scizor list's Training Area. Weezing: Boiler Smog Poison+Burn, Deceptive Needle. Hydreigon: Deceptive Needle. Altaria: Darkrai's Bad Dreams. Sceptile: Terminating Tail Poison. Lucario, Suicune and Vespiquen deal none. Two limits on how much it matters. First, when a Revavroom with Metal Transport unused and another Metal Pokémon on the Bench are available, the player could get +50 legally by promoting that Pokémon and transporting Scizor in. The deviation gives it free, saves the Transport, and works with no Revavroom at all. Second, the coverage file says the pilot's estimator prices Bullet Slugger at printed damage, so the bot may not choose the promotion for the bonus, but the engine still deals 150. Damage thresholds change (for example 160 vs 110 into a 150 HP Hydreigon with Training Area). Frequency is unknown without game logs (none at action level exist; smoke runs record only outcomes). The repair note is right: fixing deviation 3 fixes this only if Promote resolves before advance_turn's end_turn_maintenance.",
+    "evidence": "state/played_card.rs:39 (field), :100 (init false), :460-474 (cleared at 473); actions/apply_action_helpers.rs:939-966 (apply_activate; setter at 963-965, the only setter per grep); actions/apply_action.rs:823-830 (Activate|Promote -> apply_retreat free), 1431-1435; state/mod.rs:942-950 (end_turn_maintenance), 1186-1208 (advance_turn: maintenance 1205, DrawCard pushed 1206), 1108-1111 (queue_draw_action pushes), 1391-1423 (Promote inserted at phase_floor/0); move_generation/mod.rs:44-66 (stack .last() first, EndTurn only when stack empty); actions/apply_action_helpers.rs:87-117 (on_end_turn then checkup phase in one mutation), 146-166, 286-335 (handle_knockouts at 326), 337-339 (advance_turn), 1082-1088 (end_turn_pending after Attack); hooks/core.rs:381-576 (on_end_turn), 580-603 (Deceptive Needle), 618-654 (Bad Dreams); actions/apply_attack_action.rs:1117-1118, 4909-4924 (Bullet Slugger read); actions/effect_mechanic_map.rs:1391-1394; rules/_research_notes/detailed_battle_faq.md:76-77; rules/04_actions_cards_effects.md:33; rl/results/altaria_card_check_2026-09-26/README.md:33-43; card.py 'B2b 047' and 'Scizor' (Gale Thrust A4 123, same condition text); decks/screen/opponents/t-*.txt; decks/gauntlet_2026-09-26/coverage/coverage_g-mega_scizor_revavroom.json (estimator prices Bullet Slugger at printed damage); tests/mega_scizor_ex_test.rs has no promotion test (tests at 31, 55, 95, 139)."
+   },
+   {
+    "finding": "S2",
+    "verdict": "upheld",
+    "changes_gauntlet_play": "no",
+    "reasoning": "get_metal_core_barrier_reduction takes only the target and is_from_active_attack. It never sees the attacker's side, while Heavy Helmet and Steel Apron return 0 when attacking_player == target_player. For this to matter, the Barrier would have to be on one of the attacker's own Pokémon and an attack would have to damage it through modify_damage with is_from_active_attack true. No card in the Scizor list damages its own side (Headbutt, Iron Supply, U-turn, Bullet Slugger and Outta-Control Dash all hit the opponent). No panel or variant list runs Metal Core Barrier, so an opponent's self-damage can't meet one. Unreachable.",
+    "evidence": "hooks/core.rs:715-735 (no side check), 687-700 (Heavy Helmet side check at 693), 737-745 (Steel Apron side check at 743), 1309-1379 (finite_damage_reductions call at 1337-1341); decks/gauntlet_2026-09-26/g-mega_scizor_revavroom.txt; decks/screen/opponents/t-*.txt and decks/gauntlet_2026-09-26/v-*.txt (no B2 148)."
+   },
+   {
+    "finding": "S3",
+    "verdict": "upheld",
+    "changes_gauntlet_play": "no",
+    "reasoning": "Own-turn promotion: in the engine it would give +50, since Promote sets the flag during your turn. But the Scizor list's own Active can't be Knocked Out during its own turn before it attacks. The list has no self-damage, and no HP Tool or HP Stadium whose removal could KO it; the opponents' Stadiums (Hiking Trail, Fragrant Forest, Arena of Antiquity, Soothing Shore) give no HP. Every opposing damage source fires on the opponent's turn or at the end of a turn, and Rocky Helmet fires only after your attack, which ends the turn. So it is unreachable. Red: can_play_trainer always returns Play for A2b 071 (the 'always can play' arm), with no check that the opponent's Active is an ex. With a non-ex Active and the Supporter slot then spent, nothing this turn can change the Active, so by Dustin's playability rule Pocket might grey it out. That is unverified: no rules source mentions Red's playability. The engine only adds a useless option that wastes the Supporter, and nothing in the list rewards 'Supporter played this turn', so play doesn't change unless the pilot misuses it.",
+    "evidence": "actions/apply_action.rs:827-830; actions/apply_action_helpers.rs:963-965; rules/05_open_questions.md:68 (#20); rules/07_engine_audit_2026-09-22.md:185; move_generation/move_generation_trainer.rs:23-27, 206-230 (Red at 224); hooks/core.rs:1059-1063 (Red +20 only active-to-active vs ex); grep of rules/ for Red: only 04:122, 02:27 (player-wide effect, damage order), none on playability."
+   },
+   {
+    "finding": "G1",
+    "verdict": "upheld",
+    "changes_gauntlet_play": "no",
+    "reasoning": "Water Shuriken pushes ApplyDamage with is_from_active_attack false, which reaches modify_damage. Three checks there ignore that flag: PreventAllDamageAndEffects (1717-1724), PreventDamageFromBasic (1726-1734; it can't fire anyway, since Greninja is a Stage 2) and PreventDamageIfLessOrEqual (1887-1894). I found every source of these effects by grep. Attack texts: effect_mechanic_map.rs 553-556 (<=40), 971-984 and 1126-1130 (prevent all), 1638-1644 (from Basic). Abilities: Samurott's on-evolve ability (effect_ability_mechanic_map.rs 849-852) and ProtectSelfNextTurnAfterAttackKnockout (text at effect_ability_mechanic_map.rs 280, applied at hooks/core.rs 2446-2462). card_effect_from_ability_mechanic derives none of the three. apply_attack_action.rs 7208 and 7234 are unit tests. I read the texts of all 38 panel Pokémon ids and of the Rayquaza list's Pokémon (Greninja's other opponent) with card.py: none has any of these texts or abilities. Frigibax P-B 037's Stiffen is a -20 ReducedDamage, which is correctly limited to active-to-active attacks. Also checked: none of the three new lists creates these effects either, so the on-file deviation 2 (Bad Dreams stopped) is unreachable in their games against t-altaria.",
+    "evidence": "actions/apply_abilities_action.rs:608-630; hooks/core.rs:1647-1734, 1737, 1887-1894, 1147-1167 (ReducedDamage gated by is_active_to_active), 2446-2462; actions/effect_mechanic_map.rs:552-559, 970-984, 1126-1130, 1637-1644; actions/effect_ability_mechanic_map.rs:279-281, 849-853, 993-1011; card.py lookups of every Pokémon id in decks/screen/opponents/t-*.txt and g-dragonair_mega_rayquaza.txt."
+   },
+   {
+    "finding": "G2",
+    "verdict": "upheld",
+    "changes_gauntlet_play": "no",
+    "reasoning": "forecast_apply_damage runs guts_would_flip for every ApplyDamage target. guts_would_flip takes is_from_active_attack but only passes it on to modify_damage; it never gates on it. So Ability damage (Water Shuriken) can trigger the survival coin, although the Guts text says 'by damage from an attack'. The Checkup (handle_damage_only) and on_end_turn (handle_damage) never reach it. The only Guts holders are Conkeldurr A3 096 and Ursaluna B3b 058, and neither is in any gauntlet or panel list. Unreachable.",
+    "evidence": "actions/apply_action.rs:474-479, 704-774 (guts_would_flip at 718); actions/apply_action_helpers.rs:462-491; actions/effect_ability_mechanic_map.rs:237-239; lib/deckgym-database.json:20023, 73837 (the only two Guts texts); deck lists."
+   },
+   {
+    "finding": "G3",
+    "verdict": "upheld",
+    "changes_gauntlet_play": "no",
+    "reasoning": "can_play_rare_candy checks the first turn, Malamar's NoEvolutionFromHand and the evolution pair, but not Primeval Law. Ordinary evolution checks it through can_evolve_at_position. Pocket's refusal is recorded on video: the red 'conditions ... not been met' banner with Aerodactyl ex Active. Already on file. No Aerodactyl ex in any gauntlet or panel list.",
+    "evidence": "move_generation/move_generation_trainer.rs:663-685; move_generation/mod.rs:252-258, 263-268, 270-282; rl/results/recordings_check_2026-09-25/video_frame_checks.json (Rare Candy frames 239-255 s)."
+   },
+   {
+    "finding": "G4",
+    "verdict": "upheld",
+    "changes_gauntlet_play": "no",
+    "reasoning": "With hands.len() < 1, Supernatural Feather returns active_damage_doutcome(0). handle_damage_only calls checkapply_prevent_first_attack before its damage == 0 skip, so a 0 hit uses up Disguise (on-file deviation 1). No Rocky Helmet follows (damaged_actives is filled only after the skip). No Mimikyu ex in any list.",
+    "evidence": "actions/apply_attack_action.rs:5081-5102; actions/apply_action_helpers.rs:553-563, 585-587; hooks/core.rs:1657-1660."
+   },
+   {
+    "finding": "G5",
+    "verdict": "upheld",
+    "changes_gauntlet_play": "no",
+    "reasoning": "generate_attack_actions checks fossil, conditions, CannotAttack, Seal of Antiquity, restrictions, usage conditions (Mesprit only) and Energy, never hand size, so the attack is offered with an empty hand. Whether Pocket greys it out is open. Using it with an empty hand ends the turn for nothing, so for the pilot it is never better than EndTurn. Hiking Trail refills the hand to 3 at the end of each turn, so the case is rare.",
+    "evidence": "move_generation/attacks.rs:14-80, 92-107; hooks/core.rs:554-567 (Hiking Trail)."
+   },
+   {
+    "finding": "G6",
+    "verdict": "upheld",
+    "changes_gauntlet_play": "no",
+    "reasoning": "RARE_CANDY_LOOKUP is built from the whole card database: Stage-1 name -> evolves_from, then each Stage 2's evolves_from is mapped through it. So (Froakie, Greninja) is valid with no Frogadier in the deck. can_rare_candy_evolve also requires stage 2, a Basic in play and not played_this_turn, and can_play_rare_candy blocks turn_count <= 2 (each player's first turn). This is right for Pocket: the printed text needs only a Stage 2 in hand that evolves from that Basic, with no Stage 1 requirement. Recordings show Basic -> Stage 2 directly, including Torchic -> Mega Blaziken ex in battle 234514. Three panel lists built from real ladder lists do the same (t-blaziken with no Combusken, t-hydreigon with no Zweilous, t-suicune with no Arctibax). Not a deviation.",
+    "evidence": "card_logic/rare_candy.rs:57-90, 94-110; move_generation/move_generation_trainer.rs:663-685; state/mod.rs:1227-1229; card.py 'A3 144'; rules/_research_notes/R2_battle_observations.md:73-74; rules/_research_notes/main_session_findings.md:46; RULES_FOR_AGENTS.md:49-51."
+   },
+   {
+    "finding": "R1",
+    "verdict": "upheld",
+    "changes_gauntlet_play": "unknown",
+    "reasoning": "The engine pushes Rainbow Cave's discarded Zone Energy into discard_energies, and a test (rainbow_cave_test.rs 45-78) pins that behaviour. I found no source for where the Energy goes in Pocket. rules/01:76 (the Rainbow Cave line; the checker cited 73, which is the end-of-turn line) says only 'discards the current Energy and produces the next one'. The trainer audit (T27) and recordings claims R92, S39 and S75 checked the zone rotation, not the discard pile. C_rulings Q6 leaves Zone discards unresolved. The engine is also inconsistent with itself: unattached turn Energy that expires simply vanishes (rotate_energy_zone overwrites current), while the Cave's goes to the pile, though rules/01:73 calls both 'discarded'. Size of the effect: in the engine the Cave costs nothing (the current Energy becomes the visible next one) and adds one Energy to the pile. With a Benched Dragonair, that is one extra Energy on the Active [N] each turn, from before any attack, retreat or KO has fed the pile. Example: Mega Rayquaza ex's first Mega Burst can do 150 a turn earlier than 100. It also fuels Sada. A search pilot has every reason to use it whenever a Cave is in play. After the first Mega Burst or Scorching Interruption the pile is usually stocked anyway, so the gain is mostly early game. No action-level logs exist to count uses: the smoke jsonl record outcomes only and the goldfish files are empty. Wider reach than the checker said (see NEW-R1-reach): Flame Patch reads the same pile, so the Charizard Y variant lists and t-blaziken (when a Cave is in play) are affected too.",
+    "evidence": "actions/apply_stadium_action.rs:78-93 (push at 86-87); stadiums.rs:195-205; state/mod.rs:931-940 (expiring Energy overwritten); rules/01_game_structure.md:73, 76; rules/_research_notes/C_rulings.md:33-40; rules/_research_notes/audit_2026-09-22/trainers.md:209; rl/results/recordings_check_2026-09-25/claims.json (R92) and second_pass/claims.json (S39, S75); move_generation/move_generation_abilities.rs:265-273; actions/apply_abilities_action.rs:387-410; move_generation/move_generation_trainer.rs:704-720; rl/results/gauntlet_runs_2026-09-26/identity/smoke_new_kp3.jsonl (outcome-only rows)."
+   },
+   {
+    "finding": "R2",
+    "verdict": "upheld",
+    "changes_gauntlet_play": "unknown",
+    "reasoning": "generate_professor_sada_assignments attaches min(3, distinct types in the discard), one per type. With a Fire/Lightning Zone that is at most 2, onto Gouging Fire, the only Ancient. No Pocket source covers the case with fewer than 3 types; the audit's 'matches' is an engine reading, not Pocket evidence. The strongest indirect evidence favours the engine: the Limitless first-place Fire/Lightning list runs Sada, which would be a dead card if Pocket required 3 types. If Pocket does require 3, Sada is unplayable here and the engine overrates the list slightly (1 copy).",
+    "evidence": "actions/professor_sada.rs:15-37 (n_to_attach at 31); move_generation/move_generation_trainer.rs:704-720; rules/_research_notes/audit_2026-09-22/trainers.md:314; card.py 'B3a 072'."
+   },
+   {
+    "finding": "R3",
+    "verdict": "upheld",
+    "changes_gauntlet_play": "no",
+    "reasoning": "ANCIENT_POKEMON_NAMES is an 11-name exact-match list containing 'Flutter Mane ex' and 'Koraidon ex' but not the non-ex 'Flutter Mane' (B3b 035) or 'Koraidon' (B2a 063). Both non-ex cards exist (card.py). Whether they carry the Ancient label in Pocket is unverified (E_set_history lists no full roster). Neither is in any gauntlet or panel list.",
+    "evidence": "hooks/core.rs:31-47; card.py 'B3b 035', 'B2a 063'; rules/_research_notes/E_set_history.md:44, 125-128."
+   },
+   {
+    "finding": "R4",
+    "verdict": "partly",
+    "changes_gauntlet_play": "unknown",
+    "reasoning": "The engine part is right. can_use_rainbow_cave needs energy_zone.current.is_some(), and the turn attach sets current = None, so UseStadium for the Cave is offered only before the turn's attachment (and not on the first player's turn 1, when there is no Energy). The note does say what the checker says. REVIEW.md line 65 (015702, Turn 16) reads: manual Metal attach 03:45.5-03:46.0, 'uses Rainbow Cave (03:47.4)', then end turn. It is contradicted by the same battle's T4 (Cave 00:25.4, attach 00:47.0) and T12 (Cave, then attach 02:20.5), and by S39 ('happens before and apart from the turn's normal Energy attachment', a different video). S44 only lists T16 as a Cave use. The T16 reading is a single reviewed transcript and could be a tap on the Stadium, not a use. It is unresolved without checking the frames at 015702 ~225-228 s, which I did not do (read-only brief). If Pocket does allow a post-attach use (discarding what, the preview?), the engine lacks an option. The effect on play can't be sized.",
+    "evidence": "stadiums.rs:199-205; state/energy.rs:13-33 (current cleared at 26-28); move_generation/mod.rs:118-127; state/mod.rs:955 (flag reset); OneDrive/Desktop/Battle Logs/Recording_QA/20260908_015702_v7_review/final_packet/REVIEW.md:17, 49, 65; rl/results/recordings_check_2026-09-25/second_pass/claims.json S39 (lines ~982-1000), S44 (~1097-1110)."
+   },
+   {
+    "finding": "NEW-R1-reach",
+    "verdict": "upheld",
+    "changes_gauntlet_play": "unknown",
+    "reasoning": "The R1 open point reaches beyond the Rayquaza games. Flame Patch B1 217 ('Attach a [R] Energy from your discard pile to your Active [R] Pokémon') is offered whenever discard_energies holds a Fire, so the engine's Cave-to-pile Energy fuels it too. v-charizardy_swap1 (2 Rainbow Cave), v-charizardy_swap2 (1) and the base l-charizardy (2) each run 2 Flame Patch, and they play against the panel. Either player may use the Cave in play, so t-blaziken (2 Flame Patch) also gains when facing a Cave, in the Rayquaza v Blaziken and Charizard v Blaziken cells. Whatever Pocket turns out to do, those cells move with it.",
+    "evidence": "move_generation/move_generation_trainer.rs:848-865; move_generation/mod.rs:118-127 (UseStadium for current player); actions/apply_stadium_action.rs:86-87; decks/gauntlet_2026-09-26/v-charizardy_swap1.txt, v-charizardy_swap2.txt; decks/screen/panel_ladder_2026-09-26/l-charizardy.txt; decks/screen/opponents/t-blaziken.txt; rl/results/gauntlet_runs_2026-09-26/tsv/var_v-charizardy_swap1.tsv; card.py 'B1 217'."
+   },
+   {
+    "finding": "SPOT-CHECK (Mega Burst, Dragon's Blessing, Gouging Fire, Metal Transport, Water Shuriken)",
+    "verdict": "upheld",
+    "changes_gauntlet_play": "no",
+    "reasoning": "All the checkers' 'matches' verdicts on these hold. Mega Burst: base = 50 x attached Fire+Lightning counted at forecast; the post-damage effect discards the same set into the pile; the printed 50 is not added. Dragon's Blessing: offered only from the Bench, once per Dragonair per turn, with a non-empty pile and a Dragon Active; one choice per distinct type in the pile, always attached to slot 0. Gouging Fire: the attacker chooses among 2-Energy multisets after damage; ChooseAttackEnergyDiscard discards them and adds ReducedDamage{30} for 1 turn to the Active; that reduction is read only for active-to-active attacks and is cleared when it goes to the Bench. Metal Transport: offered when the Active is Metal and the Bench is not empty; it pushes Activate for every Benched Pokémon, which runs apply_activate and so sets Bullet Slugger's flag (correct: your own switch during your turn). Water Shuriken: one ApplyDamage choice per opposing in-play Pokémon, is_from_active_attack false, so no Weakness (get_weakness_application needs is_active_to_active) and no boosts or 'from attacks' reductions except the three in G1. Only minor slips: rayquaza.json cites rules/01:73 for Rainbow Cave (the Cave line is 76), and scizor.json's Castform note leaves out t-blaziken's own Hiking Trail as a Stadium source.",
+    "evidence": "actions/apply_attack_action.rs:764-771, 4001-4026, 646-657, 3706-3723; actions/effect_mechanic_map.rs:3388-3394, 3414-3419; actions/apply_action.rs:834-843; move_generation/move_generation_abilities.rs:97-99, 265-273, 316-332; actions/apply_abilities_action.rs:387-410, 608-644; hooks/core.rs:1147-1167, 1455-1466, 1737; state/played_card.rs:378-386."
+   }
+  ],
+  "2": [
+   {
+    "finding": "S1",
+    "verdict": "upheld",
+    "changes_gauntlet_play": "yes",
+    "reasoning": "Every step holds. (1) The flag is PlayedCard.moved_to_active_this_turn. Its only non-test setter is apply_activate, reached by Activate, Promote (both through apply_retreat with is_free) and paid retreat. It is cleared only by PlayedCard::end_turn_maintenance, which State::end_turn_maintenance runs for both boards and which advance_turn calls; a fresh PlayedCard (evolution) starts false. (2) Checkup path: forecast_checkup_phase's mutation runs apply_pokemon_checkup -> handle_knockouts -> trigger_promotion_or_declare_winner. With no Checkup frame on the stack, phase_floor and pending_hit_floor are 0, so Promote is inserted at the bottom of the stack. Then finish_turn_after_checkup -> advance_turn runs end_turn_maintenance (flag reset) and pushes DrawCard on top. The stack is read from last(), so the draw resolves first and Promote second, both inside the new turn. The flag set by the promotion therefore survives to that player's attack. (3) End-of-turn path (Deceptive Needle, Bad Dreams): on_end_turn -> handle_damage -> handle_knockouts queues Promote the same way, before the Checkup phase and advance_turn run in the same mutation. The only exceptions are the point-denial (Dusknoir/Glimmora) and end-evolution (Caterpie Quick Growth, checked on the NEXT player's Active) branches; neither applies to a KO of the Scizor side's Active, and no point-denial holder is in any gauntlet list. (4) Bullet Slugger reads the flag at attack time: 100 -> 150. (5) A KO from the opponent's ATTACK is promoted before EndTurn, because the stack short-circuits move generation. That is still the opponent's turn, and advance_turn clears the flag, so there is no bonus, as the checker says. A KO at the Checkup after the Scizor player's OWN turn is promoted during the opponent's turn and cleared: also no bonus. (6) Reachability: Mega Scizor ex is Stage 1 from Scyther and sits on the Bench in the deck's normal line: evolve a benched Scyther, then Metal Transport it in. So it is often the promotion choice. Panel decks that damage the Scizor side's Active at the end of their turn or at the Checkup after it: Blaziken (Mega Burning Burn; Castform Burn with any Stadium), Weezing (Boiler Smog Poison+Burn; 2 Deceptive Needle), Hydreigon (2 Deceptive Needle), Altaria (Darkrai Bad Dreams at the end of Altaria's turn), Sceptile (Terminating Tail Poison). Lucario, Suicune and Vespiquen have none. So 5 of 8, as claimed. (7) Rule: the official Scizor ruling denies the bonus after a promotion following a KO on the opponent's turn. Dustin's footage (on-file deviation 3) shows Pocket promotes before the next turn begins. So Pocket gives no +50, and the engine gives 150/160/180. One nuance the checker also noted: rules/07 line 185 and rules/05 #20 currently say the engine handles opponent-turn promotion right. They considered only attack KOs, and that statement is wrong for end-of-turn and Checkup KOs. No test covers this path (tests/mega_scizor_ex_test.rs has only no-move, retreat, Metal Transport and Lyra cases). How often it happens can't be measured read-only, but it is reachable in 5 of 8 Scizor pairings and moves real KO thresholds (for example 160 vs 110 into a 150-HP Hydreigon with Training Area).",
+    "evidence": "state/played_card.rs:39, 100, 460-474 (473 clears); actions/apply_action_helpers.rs:939-966 (964 sets); actions/apply_action.rs:823-830, 1431-1435; actions/apply_action_helpers.rs:109-116, 146-166, 286-335 (326 handle_knockouts), 337-339; actions/apply_action_helpers.rs:870-886 (promotion queued); state/mod.rs:1361-1425 (1408-1423 insert at phase_floor 0), 1186-1208 (1205 reset, 1206 draw push), 1108-1111 (queue_draw_action pushes on top), 942-950; move_generation/mod.rs:44-66 (last() = top; stack before EndTurn); actions/apply_attack_action.rs:1117-1118, 4909-4924; actions/effect_mechanic_map.rs:1391-1394; hooks/core.rs:575, 580-603, 618-654 (end-of-turn damage via handle_damage); actions/apply_action_helpers.rs:96-108 (point-denial/end-evolution branch); rules/_research_notes/detailed_battle_faq.md:76-77; rules/_research_notes/B_ingame_text.md:18; rules/04_actions_cards_effects.md:33; rules/07_engine_audit_2026-09-22.md:185; rl/results/altaria_card_check_2026-09-26/README.md:33-43; tests/mega_scizor_ex_test.rs:31,55,95,139; card texts via lib/card.py (B2b 047, B1 036, B3 024, B4a 043, B4 148, B2b 040, B3 008)"
+   },
+   {
+    "finding": "S2",
+    "verdict": "upheld",
+    "changes_gauntlet_play": "no",
+    "reasoning": "get_metal_core_barrier_reduction checks is_from_active_attack only. Unlike Heavy Helmet and Steel Apron, it never compares attacking_player with target_player, although the card says 'from attacks from your opponent's Pokémon'. It can't matter in the gauntlet. No attack in the Scizor list damages its own side: Headbutt, Iron Supply, U-turn, Bullet Slugger and Outta-Control Dash all hit the opponent only. No panel or variant list runs Metal Core Barrier, so an opponent's self-damaging attack (Combee, Hoopa ex, Mega Charizard Y ex) never meets one on its own side. Recoil is applied directly anyway.",
+    "evidence": "hooks/core.rs:715-735 vs 687-700 (693) and 737-751 (743); decks/gauntlet_2026-09-26/g-mega_scizor_revavroom.txt; decks/screen/opponents/t-*.txt and decks/gauntlet_2026-09-26/v-*.txt (no Metal Core Barrier); lib/card.py B2 148"
+   },
+   {
+    "finding": "S3",
+    "verdict": "partly",
+    "changes_gauntlet_play": "unknown",
+    "reasoning": "Own-turn promotion (+50 via Promote during your own turn) is real in the code (same apply_activate setter), and I agree it is unreachable for the Scizor list. Nothing KOs the Scizor side's Active during its own turn before it attacks. The panel's damaging Abilities and Tools act on their owner's turn or at end of turn. Rocky Helmet fires after the attack. No Stadium or Tool HP bonus can be lost on the Scizor side, which has no HP Tool, and none of the opponents' Stadiums gives it HP. Red: the code fact is right. A2b 071 goes straight to can_play_trainer with no board check, so it is offered even when no opponent ex is in play. But the checker's 'no play change' reasoning is incomplete. Dumping Red lowers the Scizor player's hand size, and hand size matters here: Hiking Trail (t-blaziken) refills to 3 at the end of each turn, so an empty play buys an extra card, and all eight panel decks run Copycat, which draws one card per card in the Scizor player's hand. So if Pocket blocks Red when it visibly can't work (Dustin's rule), the engine gives the Scizor side a small hand-size edge. Whether Pocket blocks it is unverified. It is also not always 'visibly can't work': the list's Cyrus can bring a damaged benched ex into the Active Spot. Expect a tiny effect at most.",
+    "evidence": "actions/apply_action_helpers.rs:963-965; rules/05_open_questions.md:68; move_generation/move_generation_trainer.rs:23-27, 221-230; hooks/core.rs:554-560 (Hiking Trail); lib/card.py B1 225 (Copycat: 'Draw a card for each card in your opponent's hand'), B2b 069, A2 150; decks/screen/opponents/t-*.txt (Copycat in all 8; Hiking Trail in t-blaziken); RULES_FOR_AGENTS.md:70-76"
+   },
+   {
+    "finding": "G1",
+    "verdict": "upheld",
+    "changes_gauntlet_play": "no",
+    "reasoning": "Water Shuriken pushes ApplyDamage with is_from_active_attack=false, which goes through forecast_apply_damage -> handle_damage -> handle_damage_only -> modify_damage. Three checks there have no is_from_active_attack gate: PreventAllDamageAndEffects, PreventDamageFromBasic (it can never fire on Water Shuriken, whose source Greninja is Stage 2) and PreventDamageIfLessOrEqual. Sources of those effects: the Harden text (threshold 40), the Hide/Dig/Fly-style texts (coin or no coin), the Blocking Shell text, Samurott's on-evolve Ability, and the 'KO'd by this Pokémon's attacks' self-protection Ability. No passive ability maps to any of them (card_effect_from_ability_mechanic). I read every Pokémon in the 8 panel lists (38 ids) with lib/card.py. None has any of those texts or Abilities; the nearest are Frigibax P-B 037 Stiffen and Gouging Fire's -30, which are ReducedDamage, correctly gated to active-to-active. The claim also holds for the Rayquaza list (Dratini, Gouging Fire, Dragonair, Mega Rayquaza ex), the only non-panel opponent the Greninja list faces. Protective Poncho (t-lucario) does stop Water Shuriken on the Bench, which is correct, since its text says 'attacks and Abilities'.",
+    "evidence": "actions/apply_abilities_action.rs:608-630; actions/apply_action.rs:704-737; actions/apply_action_helpers.rs:495-551; hooks/core.rs:1707-1734, 1887-1894; actions/effect_mechanic_map.rs:552-559, 970-982, 1126-1130, 1637-1644; actions/effect_ability_mechanic_map.rs:279-281, 850-853, 993-1011; hooks/core.rs:2440-2462; hooks/core.rs:1147-1167, 794-812; lib/card.py for all t-*.txt Pokémon and B2 147"
+   },
+   {
+    "finding": "G2",
+    "verdict": "upheld",
+    "changes_gauntlet_play": "no",
+    "reasoning": "guts_would_flip checks only raw_damage, the Guts mechanic and lethality, never is_from_active_attack. forecast_apply_damage calls it for every ApplyDamage, including Ability damage such as Water Shuriken (false). The Guts text says 'by damage from an attack'. The only Guts holders in the database are Conkeldurr A3 096 and Ursaluna B3b 058, and neither appears in any gauntlet, panel or variant list. Checkup and end-of-turn damage never call it (they go through handle_damage_only or handle_damage directly).",
+    "evidence": "actions/apply_action_helpers.rs:462-491; actions/apply_action.rs:704-731; actions/effect_ability_mechanic_map.rs:237-239; database.rs:20212-20219, 72922-72929; deck lists"
+   },
+   {
+    "finding": "G3",
+    "verdict": "upheld",
+    "changes_gauntlet_play": "no",
+    "reasoning": "can_play_rare_candy checks only first turn, Evolution Jammer and a valid pair; there is no Primeval Law check. This is already on file. No Aerodactyl ex is in any gauntlet, panel or variant list.",
+    "evidence": "move_generation/move_generation_trainer.rs:663-685; deck lists"
+   },
+   {
+    "finding": "G4",
+    "verdict": "upheld",
+    "changes_gauntlet_play": "no",
+    "reasoning": "With hand.len() < 1, discard_hand_cards_required_attack returns active_damage_doutcome(0). handle_damage_only runs checkapply_prevent_first_attack before the damage==0 skip (on-file deviation 1). No Mimikyu ex (or other PreventFirstAttack holder) is in any gauntlet list, and Hiking Trail in the Greninja list refills the hand to 3 at the end of every turn.",
+    "evidence": "actions/apply_attack_action.rs:5081-5102; actions/apply_action_helpers.rs:430-458, 553-563; actions/effect_mechanic_map.rs:225-228"
+   },
+   {
+    "finding": "G5",
+    "verdict": "upheld",
+    "changes_gauntlet_play": "no",
+    "reasoning": "generate_attack_actions gates on Fossil, status, CannotAttack, seals, restrictions, usage conditions and cost, never on hand size. So Supernatural Feather is offered with an empty hand. The text itself anticipates that case ('If you can't, this attack does nothing'). Choosing it is equivalent to EndTurn in the gauntlet: 0 damage gives no retaliation or damage triggers, and no gauntlet card reads the attack name used.",
+    "evidence": "move_generation/attacks.rs:14-80; actions/apply_attack_action.rs:5087-5089; actions/apply_action_helpers.rs:561-563, 585-587"
+   },
+   {
+    "finding": "G6",
+    "verdict": "upheld",
+    "changes_gauntlet_play": "no",
+    "reasoning": "RARE_CANDY_LOOKUP is built from the whole card database (Frogadier evolves_from Froakie; Greninja evolves_from Frogadier), so the deck needn't hold Frogadier. That matches the card text, which requires only a Stage 2 in hand that evolves from that Basic, and RULES_FOR_AGENTS ('Basic straight to Stage 2'). The restrictions are enforced: stage checks, played_this_turn on the target, is_users_first_turn (turn_count <= 2) and Evolution Jammer. This is correct behaviour, not a deviation.",
+    "evidence": "card_logic/rare_candy.rs:57-110; move_generation/move_generation_trainer.rs:663-685; state/mod.rs:1227-1229; lib/card.py A3 144, A1 087, A1 088, A1 089; RULES_FOR_AGENTS.md:49-51"
+   },
+   {
+    "finding": "R1",
+    "verdict": "upheld",
+    "changes_gauntlet_play": "unknown",
+    "reasoning": "Code: forecast_rainbow_cave_effect pushes energy_zone.current into discard_energies, then rotates. Dragon's Blessing (needs a non-empty discard) and Sada (same) can then reuse it, even the same turn: Rainbow Cave -> attach the new Energy -> Dragon's Blessing puts the discarded one on the Active. Sources: nothing in rules/ says where Rainbow Cave's Energy goes. rules/01 line 76 only restates the card. Line 77 says Energy discarded by retreat, attack costs and KO goes to the pile. Line 73 and C_rulings.md:40 leave the fate of unattached end-of-turn Energy 'not resolved'. The trainers audit (T27) checked only the discard-and-rotate part. The recordings don't settle it: in 20260908_015201/015702, Dragon's Blessing took Metal from the pile on T16 and T18, but by then Metal had reached the pile through Unruly Claw (T5), Duraludon's KO (T7) and a retreat (T14), so the pile's source can't be told apart. Engine inconsistency worth noting: expired unattached turn Energy is NOT put in the discard pile (overwritten at the owner's next rotation), while Rainbow Cave's is. The engine treats the two 'discarded' Zone Energies differently. How often the bot uses it: not measurable read-only (the gauntlet smoke outputs hold no action logs, and running games is off-limits). k3/kp3 use public_clock_effect_value_function with reserve_aware=false, so discard-pile Energy has no standing value (discard_energy_credit is off). The bot uses Rainbow Cave only when the depth-limited search sees a payoff: a better current type (common in this two-type Fire/Lightning list, where Mega Burst needs one of each) or same-turn Dragon's Blessing/Sada fuel. Impact where it matters: early game, before the first Mega Burst or Scorching Interruption fills the pile, Rainbow Cave is the only source that enables Dragon's Blessing. Each such use is +1 Energy on the Active, which is +50 Mega Burst damage. If Pocket does not put this Energy in the discard pile, the engine overrates the Rayquaza list, possibly by a turn of tempo.",
+    "evidence": "actions/apply_stadium_action.rs:78-93 (86-87); state/mod.rs:931-940; state/energy.rs:26-28; move_generation/move_generation_abilities.rs:265-273; move_generation/move_generation_trainer.rs:704-720; players/value_functions.rs:176-186, 1193-1223; players/mod.rs:424-432, 502-512; rules/01_game_structure.md:73, 76, 77; rules/_research_notes/C_rulings.md:40; rules/_research_notes/audit_2026-09-22/trainers.md:209; Battle Logs/Recording_QA/20260908_015702_v7_review/final_packet/REVIEW.md:21, 29, 57, 65, 73; rl/results/gauntlet_runs_2026-09-26/identity/smoke_new_kp3.txt (no action detail)"
+   },
+   {
+    "finding": "R2",
+    "verdict": "upheld",
+    "changes_gauntlet_play": "unknown",
+    "reasoning": "generate_professor_sada_assignments attaches min(3, distinct types in the discard). can_play_professor_sada needs only an Ancient in play and a non-empty discard. In a Fire/Lightning list the discard can only hold Fire and Lightning, so Sada attaches at most one of each, to Gouging Fire. No rules source covers fewer than 3 types. The Sept 22 trainers audit called it a match but cites no Pocket evidence. If Pocket requires 3 types (or blocks the card), Sada is dead here and the engine overrates the list. The Limitless list running Sada is only indirect support.",
+    "evidence": "actions/professor_sada.rs:15-37; move_generation/move_generation_trainer.rs:704-720; actions/apply_trainer_action.rs:2022-2042; rules/_research_notes/audit_2026-09-22/trainers.md:314; lib/card.py B3a 072"
+   },
+   {
+    "finding": "R3",
+    "verdict": "upheld",
+    "changes_gauntlet_play": "no",
+    "reasoning": "ANCIENT_POKEMON_NAMES lists 'Flutter Mane ex' and 'Koraidon ex' but not the non-ex 'Flutter Mane' (B3b 035) or 'Koraidon' (B2a 063). The database JSON has no Ancient field, so Pocket's label for those printings is unverified. Neither is in any gauntlet, panel or variant list. Gouging Fire, the only Ancient here, is on the list.",
+    "evidence": "hooks/core.rs:31-47; lib/deckgym-database.json (no Ancient tag; B3b 035 entry); lib/card.py B3b 035, B2a 063"
+   },
+   {
+    "finding": "R4",
+    "verdict": "upheld",
+    "changes_gauntlet_play": "unknown",
+    "reasoning": "Engine: UseStadium for Rainbow Cave is offered only while energy_zone.current is Some and the Stadium is unused this turn. Attaching the turn's Energy (is_turn_energy) sets current to None, so Rainbow Cave is offered only before the turn's attachment. Used first, it leaves a new current that can still be attached. The review note says what was claimed: final_packet/REVIEW.md line 65 (and COVERAGE.md line 27) has T16's Dragon's Blessing, then the manual Metal attach at about 03:45.5-03:46.0, then Rainbow Cave at 03:47.4, then end of turn. Gemini's draft has the same order (attach 03:45.2, Rainbow Cave 03:47.4). The same review notes Auto was turned on at 00:54 (line 17), so the game's own Auto chose Rainbow Cave after attaching. If the reading is right, Pocket offers it after the attachment. What it does then is unseen: Haxorus ended with 2 Metal, so there was no second attach. It might reroll the next Energy, or do nothing. The engine lacks this option. The other two uses in that battle (T4 at 00:25.4 before the 00:47.0 attach; T12 before the 02:20.5 attach) fit the engine's order. The order was not checked frame by frame (read-only task).",
+    "evidence": "stadiums.rs:195-205; state/energy.rs:13-33 (26-28); move_generation/mod.rs:76-92, 118-127; actions/apply_stadium_action.rs:80-93; state/mod.rs:931-940; Battle Logs/Recording_QA/20260908_015702_v7_review/final_packet/REVIEW.md:17, 49, 65; final_packet/COVERAGE.md:15, 27; final_packet/submission-history/gemini-v7/RESPONSE.md:762, 855"
+   },
+   {
+    "finding": "SPOT-CHECK (Mega Burst, Dragon's Blessing, Gouging Fire, Metal Transport, Water Shuriken)",
+    "verdict": "upheld",
+    "changes_gauntlet_play": "no",
+    "reasoning": "No error found in the checkers' 'matches' verdicts. Mega Burst: damage = 50 x the count of attached Fire/Lightning at forecast, and the post-damage effect discards the same set into discard_energies. The printed 50 is ignored, and only [R]/[L] are touched. Dragon's Blessing: Bench-only (idx != 0), once per Dragonair (ability_used), needs a non-empty discard and a Dragon Active. The player picks the type. It moves exactly one Energy out of the pile and leaves the Zone attach untouched. Gouging Fire: 100 damage, then a player-chosen 2-Energy discard. ReducedDamage{30} with duration 1 is added to the Active, survives the end of its own turn and is dropped at the end of the opponent's. It is read only for active-to-active attack damage, after Weakness. Metal Transport: offered only with a Metal Active and a non-empty Bench, once per Revavroom. It pushes Activate choices -> apply_retreat(free) -> apply_activate, which sets moved_to_active_this_turn (so it enables Bullet Slugger's +50, correct for your own switch). Water Shuriken: one ApplyDamage choice per opponent in-play Pokémon (Active or Bench), is_from_active_attack=false. So is_active_to_active is false: no Weakness, no Training Area, Red or board boosts, no 'from attacks' reductions (Solid Shell, Stiffen, Barrier) and no Rocky Helmet retaliation. Protective Poncho correctly blocks it on the Bench.",
+    "evidence": "actions/effect_mechanic_map.rs:3412-3419; actions/apply_attack_action.rs:764-771, 4001-4026; state/mod.rs:1332-1357; move_generation/move_generation_abilities.rs:61, 265-273, 97-99, 316-332; actions/apply_abilities_action.rs:387-410, 632-644; actions/apply_action.rs:1724-1737, 823-830, 834-844; state/energy.rs:55-74; actions/effect_mechanic_map.rs:3387-3394; actions/apply_attack_action.rs:3706-3723; actions/energy_discard_choices.rs:15-36; hooks/core.rs:1147-1167, 1309-1379, 1455-1466, 1737, 1799-1832; state/played_card.rs:460-474; actions/effect_ability_mechanic_map.rs:396-397, 738; actions/apply_abilities_action.rs:608-630; actions/apply_action_helpers.rs:585-612"
+   }
+  ],
+  "3": [
+   {
+    "finding": "S1",
+    "verdict": "upheld",
+    "changes_gauntlet_play": "yes",
+    "reasoning": "Every step checks out. (1) Flag: PlayedCard.moved_to_active_this_turn. Its only setter is apply_activate. Promote, Activate and a free retreat all reach apply_activate through apply_retreat(is_free=true), and a paid retreat reaches it through finish_paid_retreat. (2) Cleared: PlayedCard::end_turn_maintenance (also cleared at card creation and on evolve), which runs for both players' Pokemon inside State::advance_turn and at game start. (3) Order after an end-of-turn or Checkup KO: forecast_pokemon_checkup builds one mutation that calls on_end_turn (Bad Dreams, Deceptive Needle, delayed damage) and then the checkup phase. The phase applies Poison/Burn, calls handle_knockouts and then finish_turn_after_checkup -> advance_turn. handle_knockouts -> trigger_promotion_or_declare_winner inserts the Promote frame at phase_floor.max(pending_hit_floor). On this path there is no ResolvePokemonCheckup/FinishPokemonCheckup frame and no pending ApplyDamage, so it goes in at index 0, the bottom of the stack. advance_turn then clears the flag, switches current_player and pushes DrawCard on top. move generation serves the stack top first, so the owner draws and then promotes, both in their own new turn. apply_activate sets the flag, and nothing clears it before that player attacks. Bullet Slugger maps to ExtraDamageIfMovedFromBench{50} and reads the flag on the current player's Active. So a Benched Mega Scizor ex promoted after such a KO gets +50. (4) Knock Outs from the opponent's attack are handled correctly. The Promote frame is on the stack while end_turn_pending is set, and generate_possible_actions serves the stack before EndTurn. The promotion therefore resolves on the opponent's turn, and advance_turn clears the flag. (5) Rules: the official Scizor ruling says it does not count after a KO on the opponent's turn and promotion (FAQ 76-77; rules/04:33). The footage behind on-file deviation 3 shows Pocket asks for the new Active before the next turn's banner and draw, so in Pocket the move is not 'this turn'. rules/05 #20 and rules/07:185 call the opponent-turn case right, but they only considered attack KOs, so this is new. (6) Reachability: Scyther evolves on the Bench, and the list's plan is to keep a charged Mega Scizor ex on the Bench for Metal Transport, so a charged Benched Mega Scizor ex is a normal state. Five panel decks can KO at end of turn or at the Checkup after their turn. Blaziken: Mega Burning's Burn, and Castform Sunny Form's Burn when any Stadium is in play (its own Hiking Trail or this list's Training Area). Weezing: Boiler Smog's Poison+Burn, Deceptive Needle. Hydreigon: Deceptive Needle. Altaria: Bad Dreams on an Asleep Active. Sceptile: Terminating Tail's Poison. Lucario, Suicune and Vespiquen have none. The special Checkup path (point denial, or Caterpie's Quick Growth when the next player's Active has it) promotes before advance_turn, but it never arises for the Scizor player's own Checkup KO. (7) Magnitude caveat the checker omitted: in Pocket the player can often still get +50 legitimately. They can promote another Metal Pokemon and use Metal Transport (free with a Revavroom in play, including an Active Revavroom switching itself out), or pay a retreat (Varoom and Scyther retreat 1). So the engine's gain is saving that Ability use or retreat cost, plus the cases where no route exists: Mega Scizor ex is the only Benched Pokemon, or there is no Revavroom and the retreat can't be paid. The checker's '150 instead of 100' is the worst case, not the typical one. It still changes promotion choices and damage thresholds in some games, so it changes play.",
+    "evidence": "engine/src/actions/apply_action_helpers.rs:939-966 (apply_activate; flag set 963-965, the only setter per grep); apply_action.rs:823-830 (Activate|Promote -> apply_retreat free), 1431-1435, 1454-1466; state/played_card.rs:460-474 (reset at 473); state/mod.rs:942-950, 1186-1208 (advance_turn: 1205 end_turn_maintenance, 1206 queue_draw_action); state/mod.rs:1361-1424 (Promote insert 1408-1423); apply_action_helpers.rs:87-117 (on_end_turn then phase, 109-116), 146-167 (checkup, then finish_turn_after_checkup at 163), 286-335 (handle_knockouts at 326), 337-339, 644-887 (promotion 874-886); hooks/core.rs:381-576 (Bad Dreams 415/575, Deceptive Needle 571), 580-603, 618-655; move_generation/mod.rs:44-66; effect_mechanic_map.rs:1391-1394; apply_attack_action.rs:1117-1118, 4909-4924; rules/_research_notes/detailed_battle_faq.md:76-77; rules/04_actions_cards_effects.md:33; rules/05_open_questions.md:68; rules/07_engine_audit_2026-09-22.md:185; rl/results/altaria_card_check_2026-09-26/README.md:33-43; card.py: B1 036, B3 024, B4a 043, B4 148, B2b 040, B3 008, B2b 050, B2b 047; engine/tests/mega_scizor_ex_test.rs has no Checkup-KO case"
+   },
+   {
+    "finding": "S2",
+    "verdict": "upheld",
+    "changes_gauntlet_play": "no",
+    "reasoning": "get_metal_core_barrier_reduction checks only is_from_active_attack and the holder's Metal type. It never compares attacking_player with target_player, while Heavy Helmet and Steel Apron do. This is a real code deviation from 'attacks from your opponent's Pokemon'. It is unreachable in the gauntlet: only the Scizor list runs the Barrier (no panel or variant list does). None of the Scizor list's attacks (Headbutt, Iron Supply, U-turn, Bullet Slugger, Outta-Control Dash) damages its own side. The self-damage in panel decks (Hoopa ex's Dynamite Punch, Combee's Reckless Charge) lands on Pokemon that never hold a Barrier.",
+    "evidence": "engine/src/hooks/core.rs:715-735 (no side check) vs 687-700 (Heavy Helmet, check at 693) and 737-751 (Steel Apron, check at 743); hooks/core.rs:1337-1341 (called from finite_damage_reductions); decks/screen/opponents/t-*.txt and decks/gauntlet_2026-09-26/*.txt (Barrier only in g-mega_scizor_revavroom.txt); card.py B4 103, B4 010"
+   },
+   {
+    "finding": "S3",
+    "verdict": "partly",
+    "changes_gauntlet_play": "unknown",
+    "reasoning": "Own-turn promotion: correct and unreachable. Promote sets the flag during your own turn, and the rule is open (rules/05 #20). The Scizor list has no self-damage and no HP-bonus Tool. No panel Stadium gives HP, and no panel Ability damages on the Scizor player's turn. Rocky Helmet (t-blaziken) KOs the attacker only after its attack, so the promoted Pokemon's flag is cleared before it can attack. Red: correct that it is always offered (A2b071Red is in the 'always can play' arm). But the checker's 'no play change' reasoning is incomplete. Dumping a Red that can't work also shrinks the hand. t-blaziken's Hiking Trail ('that player draws cards until they have 3', which the engine applies to whoever ends the turn) then draws one more card for the Scizor player. And every panel list's Copycat (draw a card for each card in your opponent's hand) draws one fewer. kp3 prices Copycat's draw count. If Pocket blocks Red when it visibly can't work (Dustin's playability rule; no nearby card can make the opponent's Active an ex that turn), the engine gives the pilot an extra hand-size lever. The effect is marginal and unmeasured.",
+    "evidence": "engine/src/actions/apply_action.rs:827-830 -> apply_action_helpers.rs:963-965; rules/05_open_questions.md:68; engine/src/move_generation/move_generation_trainer.rs:23-27, 206-230 (A2b071Red at 224); hooks/core.rs:554-567 (Hiking Trail); card.py B2b 069 and B1 225; decks/screen/opponents/t-blaziken.txt (1 Hiking Trail), Copycat in all eight t-*.txt; RULES_FOR_AGENTS.md:70-76"
+   },
+   {
+    "finding": "G1",
+    "verdict": "upheld",
+    "changes_gauntlet_play": "no",
+    "reasoning": "Water Shuriken maps to DamageOneOpponentPokemon{20} and pushes ApplyDamage choices with is_from_active_attack=false. These go through forecast_apply_damage -> handle_damage -> handle_damage_only -> modify_damage. Three checks in modify_damage ignore is_from_active_attack: PreventAllDamageAndEffects, PreventDamageFromBasic (can't fire for Greninja, a Stage 2) and PreventDamageIfLessOrEqual. By grep, these CardEffects come only from: the Harden text (threshold 40), the two coin 'prevent all damage' texts, the Fly-type text, the Blocking Shell text, Samurott's on-evolve Ability, and the ProtectSelfNextTurnAfterAttackKnockout Ability. I looked up all 38 Pokemon ids in the eight t-*.txt lists with card.py, and none has any of these texts or Abilities (Metapod B3b 002 is Ram 30). No panel Trainer or Tool creates them. The Rayquaza list, the Greninja deck's only non-panel opponent, doesn't either. Frigibax P-B 037's Stiffen and Gouging Fire's -30 are ReducedDamage, correctly skipped for non-attack damage.",
+    "evidence": "engine/src/hooks/core.rs:1717-1724, 1726-1734, 1887-1894; sources: effect_mechanic_map.rs:552-560, 970-984, 1126-1130, 1637-1645; effect_ability_mechanic_map.rs:279-282, 849-853; hooks/core.rs:2446-2462; apply_abilities_action.rs:411-419; Water Shuriken path: effect_ability_mechanic_map.rs:395-398, apply_abilities_action.rs:65, 608-630, apply_action.rs:475-479, 704-738; ReducedDamage: effect_mechanic_map.rs:602-610, 3387-3394, hooks/core.rs:1147-1167; card.py for B1 196, B1 102, B1 184, B3a 020, B2b 040, A4a 059, B1 033, B1 036, B1 044, B3 024, B1 155, B1 157, B3 115, B1 151, B3 079, B3 081, A2 092, B3 078, A1 154, B3b 001-003, B3 005, B3 006, B3 008, B2a 034, P-B 037, B2a 036, A4a 020, B2a 037, B4 010, B4 011, A4 021, B2 017, B4 103, B4a 042, B4a 043, A2 110"
+   },
+   {
+    "finding": "G2",
+    "verdict": "upheld",
+    "changes_gauntlet_play": "no",
+    "reasoning": "forecast_apply_damage runs guts_would_flip for every ApplyDamage target. guts_would_flip checks the holder's Ability and whether the modified damage is lethal, but never is_from_active_attack. So lethal Ability damage (Water Shuriken, 20) on a Guts holder flips a survival coin, although the text says 'by damage from an attack'. Checkup Poison/Burn, Bad Dreams and Deceptive Needle call handle_damage directly, so they don't flip. The database has exactly two Guts holders, Conkeldurr A3 096 and Ursaluna B3b 058, and neither is in any gauntlet list.",
+    "evidence": "engine/src/actions/apply_action_helpers.rs:462-491; apply_action.rs:704-774; effect_ability_mechanic_map.rs:237-240; lib/deckgym-database.json (only A3 096 and B3b 058 carry the Guts text); decks/screen/opponents/t-*.txt, decks/gauntlet_2026-09-26/*.txt"
+   },
+   {
+    "finding": "G3",
+    "verdict": "upheld",
+    "changes_gauntlet_play": "no",
+    "reasoning": "can_play_rare_candy checks the first turn, Evolution Jammer and a valid pair. rare_candy_effect offers every pair. Neither calls can_evolve_at_position or has_opponent_aerodactyl_ex_primeval_law, which ordinary evolution does. No Aerodactyl ex is in any gauntlet list.",
+    "evidence": "engine/src/move_generation/move_generation_trainer.rs:663-685; actions/apply_trainer_action.rs:1905-1928; move_generation/mod.rs:209-213, 252-282"
+   },
+   {
+    "finding": "G4",
+    "verdict": "upheld",
+    "changes_gauntlet_play": "no",
+    "reasoning": "With an empty hand, discard_hand_cards_required_attack returns active_damage_doutcome(0). handle_damage_only runs checkapply_prevent_first_attack (gated only on is_from_active_attack) before its damage==0 skip, so a 0 hit spends Disguise. This is on-file deviation 1. No Mimikyu ex is in any list the Greninja deck faces (panel or Rayquaza).",
+    "evidence": "engine/src/actions/apply_attack_action.rs:5081-5089; apply_action_helpers.rs:430-458, 553-563; rl/results/altaria_card_check_2026-09-26/README.md:25-27"
+   },
+   {
+    "finding": "G5",
+    "verdict": "upheld",
+    "changes_gauntlet_play": "no",
+    "reasoning": "generate_attack_actions checks conditions, statuses, restrictions, usage conditions and Energy, never hand size, so Supernatural Feather is offered with an empty hand. The rule is open. In the engine it does exactly what EndTurn does (ends the turn, 0 damage, no retaliation), and Mimikyu ex is absent, so it can't change a gauntlet result.",
+    "evidence": "engine/src/move_generation/attacks.rs:14-80, 92-107"
+   },
+   {
+    "finding": "G6",
+    "verdict": "upheld",
+    "changes_gauntlet_play": "no",
+    "reasoning": "The engine is right. RARE_CANDY_LOOKUP is built from the whole database, mapping Stage 1 name -> Basic and then Stage 2 -> Basic, so (Froakie, Greninja) is valid with no Frogadier in the deck. Rare Candy's text requires only the Stage 2 in hand. Pocket evidence: three panel lists run Rare Candy with no Stage 1 (t-blaziken without Combusken, t-hydreigon without Zweilous, t-suicune without Arctibax). Footage shows Rare Candy taking Torchic straight to Mega Blaziken ex and Lillipup straight to Stoutland. Restrictions are enforced: is_users_first_turn (turn_count <= 2, each player's first turn), played_this_turn (set on placement, reset every turn), Basic stage only, and Evolution Jammer.",
+    "evidence": "engine/src/card_logic/rare_candy.rs:57-110; move_generation/move_generation_trainer.rs:663-685; state/mod.rs:1227-1229; state/played_card.rs:471-474; rules/04_actions_cards_effects.md:41; rules/_research_notes/main_session_findings.md:46; rules/_research_notes/R2_battle_observations.md:73-74; card.py A3 144"
+   },
+   {
+    "finding": "R1",
+    "verdict": "upheld",
+    "changes_gauntlet_play": "unknown",
+    "reasoning": "The code does what the checker says. forecast_rainbow_cave_effect pushes energy_zone.current into discard_energies and rotates the zone. By contrast, unattached turn Energy is simply overwritten at the next rotation and never enters the pile. rules/01:73 says it 'is discarded', so the engine treats the two kinds of Zone Energy inconsistently. No rules source says where Rainbow Cave's Energy goes: not rules/01:73, 76 or 77, not C_rulings.md:40, R2_battle_observations.md:45 or audit trainers.md:209, and not the 015702 review. Indirect evidence favours the engine. A real tournament mono-Fire list (amilaz's 5th-place Entei ex) runs 2 Rainbow Cave with 2 Flame Patch, and in mono-Fire the reroll alone is worthless. The Limitless Dragonair/Mega Rayquaza list and Dustin's Archaludon-Haxorus deck both pair Rainbow Cave with Dragonair. The checkers missed that R1 reaches beyond Rayquaza. v-charizardy_swap1 (2 Rainbow Cave) and swap2 (1) run 2 Flame Patch, and the identity reader shows swap1's '2nd Rainbow Cave' cell at +12.5 +/- 17.3. Any Rainbow Cave in play can also be used by t-blaziken (2 Flame Patch), since the text says 'each player'. Frequency: the engine offers UseStadium whenever Rainbow Cave is in play, unused this turn, and the turn's Energy is still unattached. For the Rayquaza pilot it is free: it swaps the current type for the known preview and puts one Fire or Lightning in the pile. A Benched Dragonair can put that on the Active the same turn (+50 per Energy for Mega Burst). I found no logged count of how often k3/kp3 use it; gauntlet_runs_2026-09-26 has only cell tables. If Pocket does not put Zone Energy in the pile, this overrates the Rayquaza list and the Charizard Y variants by up to one Energy per turn. If it does (as the tournament lists suggest), the engine is right.",
+    "evidence": "engine/src/actions/apply_stadium_action.rs:78-93; stadiums.rs:201-205; state/mod.rs:931-940; actions/apply_abilities_action.rs:387-410; move_generation/move_generation_abilities.rs:265-273; rules/01_game_structure.md:73, 76, 77; rules/_research_notes/C_rulings.md:40; rules/_research_notes/R2_battle_observations.md:45; rules/_research_notes/audit_2026-09-22/trainers.md:209; decks/screen/results.md:30; decks/brews/brew-08-entei-rainbow-cave.txt; decks/gauntlet_2026-09-26/v-charizardy_swap1.txt, v-charizardy_swap2.txt; decks/screen/opponents/t-blaziken.txt; rl/results/gauntlet_runs_2026-09-26/identity/reader_test.md:174; rl/results/kt_carrier_census_2026-09-26/skeptic_c-dragonair_mega_rayquaza_ex.md:78-81"
+   },
+   {
+    "finding": "R2",
+    "verdict": "upheld",
+    "changes_gauntlet_play": "unknown",
+    "reasoning": "generate_professor_sada_assignments attaches min(3, distinct types in the discard), one of each type, and move generation needs only an Ancient in play and a non-empty Energy pile. With Fire+Lightning the most it can attach is 2. No rules source settles whether Pocket requires 3 types; the 09-22 audit only checked the engine against its own reading. The Limitless 1st-place list running Sada in a two-type deck suggests Pocket allows the partial attach. If Pocket needs 3 types, Sada is dead in this list and the engine overrates it once per game by up to 2 Energy on Gouging Fire.",
+    "evidence": "engine/src/actions/professor_sada.rs:15-37 (min at 31); move_generation/move_generation_trainer.rs:704-720; rules/_research_notes/audit_2026-09-22/trainers.md:314; card.py B3a 072"
+   },
+   {
+    "finding": "R3",
+    "verdict": "upheld",
+    "changes_gauntlet_play": "no",
+    "reasoning": "ANCIENT_POKEMON_NAMES is an exact-name list containing 'Flutter Mane ex' and 'Koraidon ex' but not the non-ex 'Flutter Mane' (B3b 035) or 'Koraidon' (B2a 063). Both are in the database. Whether they carry the Ancient label is unverified (the E_set_history notes are community-grade). Neither is in any gauntlet list.",
+    "evidence": "engine/src/hooks/core.rs:31-47; lib/deckgym-database.json names; rules/_research_notes/E_set_history.md:123-129"
+   },
+   {
+    "finding": "R4",
+    "verdict": "upheld",
+    "changes_gauntlet_play": "unknown",
+    "reasoning": "Engine: can_use_rainbow_cave requires Rainbow Cave in play, has_used_stadium false, and energy_zone[player].current.is_some(). attach_energy_from_zone sets current=None after the turn's attachment, so UseStadium is offered only before that attachment (and never on the going-first player's turn 1). The note: REVIEW.md:65 (turn 16) says Dragon's Blessing attached Metal from the discard at 03:41.5-03:45.0, then 'The player then manually attaches a second Metal Energy (about 03:45.500-03:46.000), uses Rainbow Cave (03:47.400), and ends the turn.' COVERAGE.md:27 and Gemini's RESPONSE.md:762/855 agree ('Metal Energy attached to Haxorus (03:45.200)... Rainbow Cave (03:47.400)'). Caveats: this is one reviewer reading. Gemini saw one attachment that the final pass split into Dragon's Blessing plus a manual attach. verification_frames has no turn-16 frame, so the order was not frame-checked. If Pocket does allow it after the attachment, what it discards (perhaps the next-turn preview) is unknown, and the engine lacks that option. That would matter a little for the two-type Rayquaza list (fixing next turn's type, feeding the pile).",
+    "evidence": "engine/src/stadiums.rs:201-205; state/energy.rs:13-33 (current cleared at 26-28); move_generation/mod.rs:119-127; actions/apply_stadium_action.rs:80-92; C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20260908_015702_v7_review/final_packet/REVIEW.md:65, final_packet/COVERAGE.md:27, final_packet/submission-history/gemini-v7/RESPONSE.md:762, 855; verification_frames/ (turn12-15 frames only)"
+   },
+   {
+    "finding": "SPOT-CHECK (Mega Burst, Dragon's Blessing, Gouging Fire, Metal Transport, Water Shuriken)",
+    "verdict": "upheld",
+    "changes_gauntlet_play": "no",
+    "reasoning": "No error found in the checkers' 'matches' verdicts. Mega Burst: base = 50 x the attached Fire+Lightning count at forecast, printed 50 not added, and the post-damage effect discards the same set to discard_energies. Dragon's Blessing: offered only if not ability_used, not Active, the pile is non-empty and the Active is Dragon (pokemon_is_type). It offers one AttachTypedFromDiscard per distinct type onto slot 0 and moves one Energy. Gouging Fire: after damage, the player picks among distinct 2-Energy multisets. ChooseAttackEnergyDiscard discards them to the pile and adds ReducedDamage{30} for 1 turn, which is read only when is_active_to_active and dropped at the end of the opponent's turn. Metal Transport: gated on an Active Metal Pokemon and a non-empty Bench. It pushes Activate choices that go through apply_retreat(free) -> apply_activate, so it sets moved_to_active_this_turn (Bullet Slugger +50, tests/mega_scizor_ex_test.rs:93-135). Water Shuriken: one ApplyDamage per opponent in-play Pokemon (Active and Bench), is_from_active_attack=false, so there is no Weakness (get_weakness_application returns None unless is_active_to_active), no attacker boosts, no attack-only reductions, and Poncho still applies.",
+    "evidence": "engine/src/actions/effect_mechanic_map.rs:3387-3394, 3412-3419; apply_attack_action.rs:646-657, 764-771, 3706-3723, 4001-4026; actions/energy_discard_choices.rs:14-36; apply_action.rs:834-843, 1724-1737; hooks/core.rs:1147-1167, 1455-1466, 1707-1715, 1737; move_generation/move_generation_abilities.rs:97-99, 265-273, 316-332; effect_ability_mechanic_map.rs:395-398, 844-848; apply_abilities_action.rs:387-410, 608-644; state/played_card.rs:344-353, 460-474"
+   }
+  ]
+ }
+}

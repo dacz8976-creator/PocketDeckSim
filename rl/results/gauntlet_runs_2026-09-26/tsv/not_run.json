@@ -1,0 +1,3 @@
+{
+ "scizor": "Mega Scizor ex B2b 047's Bullet Slugger (+50 'if this Pokémon moved from your Bench to the Active Spot this turn') is wrong in a way that changes play: after an end-of-turn or Checkup Knock Out on the opponent's turn the engine promotes the new Active only after the next turn has started, so a promoted Mega Scizor ex keeps the per-turn moved_to_active_this_turn flag and hits 150, where Pocket's ruling gives no bonus (state/mod.rs 1205, 1391-1423; apply_action_helpers.rs 963-965; apply_attack_action.rs 4909-4924). Five of the eight panel decks can cause such Knock Outs. Upheld 3 to 0 by the skeptics (decks/gauntlet_2026-09-26/card_check.md). Not run on the pre-repair engine; check it again after the promotion-timing repair."
+}

@@ -1,0 +1,69 @@
+gauntlet identity and smokes, 2026-09-26T15:08:19Z; scan /home/dacz8976/engine-b2e-7fc6ccb/legality_scan_b2e_7fc6ccb sha256 45ecfda47cf4ccb4d12494f9b1a59954db1c357413f7ab4edabc372327e53b5b
+priority: nice -n 19, RAYON_NUM_THREADS=2, no idle refusal (the laptop was running the engine-repair replays)
+pre-repair engine (7fc6ccb); re-run at the repaired engine when it becomes the baseline
+inputs: 49 staged files equal inputs_sha256.txt and the working copy
+== lucario, main list, pairings 2,18 x 20 deals, kp3, --seed-base 72000000
+   7 s wall
+subset of /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/public_pricing_2026-09-25/kp3_500_worst5.jsonl, /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/public_pricing_2026-09-25/kp3_500_rest.jsonl: 40 games (pairings [2, 18], deals < 20, bot kp3); problems: 0
+new: /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/gauntlet_runs_2026-09-26/identity/id_lucario_kp3.jsonl (40 games); reference: /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/gauntlet_runs_2026-09-26/identity/ref_lucario_kp3.jsonl (40 games)
+games in both: 40; identical on a, b, seed, first_seat, moves, winner_seat, points, turns, first_deck_score: 40 of 40
+only in new: 0; only in reference: 0
+RESULT: IDENTICAL
+subset of /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/engine_identity_2026-09-25/kp3_500.jsonl: 40 games (pairings [2, 18], deals < 20, bot kp3); problems: 0
+same lines (without a_file,b_file, types included): /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/gauntlet_runs_2026-09-26/identity/id_lucario_kp3.jsonl v /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/gauntlet_runs_2026-09-26/identity/off_lucario_kp3.jsonl: 40 of 40 games identical; problems: 0
+== suicune, main list, pairings 4,25 x 20 deals, kp3, --seed-base 72000000
+   15 s wall
+subset of /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/public_pricing_2026-09-25/kp3_500_worst5.jsonl, /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/public_pricing_2026-09-25/kp3_500_rest.jsonl: 40 games (pairings [4, 25], deals < 20, bot kp3); problems: 0
+new: /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/gauntlet_runs_2026-09-26/identity/id_suicune_kp3.jsonl (40 games); reference: /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/gauntlet_runs_2026-09-26/identity/ref_suicune_kp3.jsonl (40 games)
+games in both: 40; identical on a, b, seed, first_seat, moves, winner_seat, points, turns, first_deck_score: 40 of 40
+only in new: 0; only in reference: 0
+RESULT: IDENTICAL
+subset of /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/engine_identity_2026-09-25/kp3_500.jsonl: 40 games (pairings [4, 25], deals < 20, bot kp3); problems: 0
+same lines (without a_file,b_file, types included): /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/gauntlet_runs_2026-09-26/identity/id_suicune_kp3.jsonl v /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/gauntlet_runs_2026-09-26/identity/off_suicune_kp3.jsonl: 40 of 40 games identical; problems: 0
+== weezing, main list, pairings 6,27 x 20 deals, kp3, --seed-base 72000000
+   11 s wall
+subset of /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/public_pricing_2026-09-25/kp3_500_worst5.jsonl, /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/public_pricing_2026-09-25/kp3_500_rest.jsonl: 40 games (pairings [6, 27], deals < 20, bot kp3); problems: 0
+new: /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/gauntlet_runs_2026-09-26/identity/id_weezing_kp3.jsonl (40 games); reference: /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/gauntlet_runs_2026-09-26/identity/ref_weezing_kp3.jsonl (40 games)
+games in both: 40; identical on a, b, seed, first_seat, moves, winner_seat, points, turns, first_deck_score: 40 of 40
+only in new: 0; only in reference: 0
+RESULT: IDENTICAL
+subset of /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/engine_identity_2026-09-25/kp3_500.jsonl: 40 games (pairings [6, 27], deals < 20, bot kp3); problems: 0
+same lines (without a_file,b_file, types included): /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/gauntlet_runs_2026-09-26/identity/id_weezing_kp3.jsonl v /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/gauntlet_runs_2026-09-26/identity/off_weezing_kp3.jsonl: 40 of 40 games identical; problems: 0
+== charizardy, main list, pairings 40,47 x 20 deals, kp3, --seed-base 21106000000
+   7 s wall
+subset of /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/b2e_rows_2026-09-26/b2e_kp3_arch.jsonl: 40 games (pairings [40, 47], deals < 20, bot kp3); problems: 0
+new: /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/gauntlet_runs_2026-09-26/identity/id_charizardy_kp3.jsonl (40 games); reference: /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/gauntlet_runs_2026-09-26/identity/ref_charizardy_kp3.jsonl (40 games)
+games in both: 40; identical on a, b, seed, first_seat, moves, winner_seat, points, turns, first_deck_score: 40 of 40
+only in new: 0; only in reference: 0
+RESULT: IDENTICAL
+same lines (byte for byte): /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/gauntlet_runs_2026-09-26/identity/id_charizardy_kp3.jsonl v /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/gauntlet_runs_2026-09-26/identity/ref_charizardy_kp3.jsonl: 40 of 40 games identical; problems: 0
+== smoke (a) new_decks.tsv x 2 deals, k3: 13 s wall
+== smoke (a) new_decks.tsv x 2 deals, kp3: 12 s wall
+== smoke (b) var_l-charizardy.tsv x 2 deals, kp3: 4 s wall
+== smoke (b) var_v-charizardy_swap1.tsv x 2 deals, kp3: 5 s wall
+== smoke (b) var_v-charizardy_swap2.tsv x 2 deals, kp3: 4 s wall
+== smoke (b) var_v-lucario_2.tsv x 2 deals, kp3: 3 s wall
+== smoke (b) var_v-lucario_swap1.tsv x 2 deals, kp3: 4 s wall
+== smoke (b) var_v-lucario_swap2.tsv x 2 deals, kp3: 2 s wall
+== smoke (b) var_v-suicune_2.tsv x 2 deals, kp3: 4 s wall
+== smoke (b) var_v-suicune_swap1.tsv x 2 deals, kp3: 4 s wall
+== smoke (b) var_v-suicune_swap2.tsv x 2 deals, kp3: 4 s wall
+== smoke (b) var_v-weezing_2.tsv x 2 deals, kp3: 4 s wall
+== smoke (b) var_v-weezing_swap1.tsv x 2 deals, kp3: 3 s wall
+== smoke (b) var_v-weezing_swap2.tsv x 2 deals, kp3: 3 s wall
+smoke_new_k3.jsonl (k3, new_decks.tsv, base 21,108,000,000, 2 deals): 50 lines; problems 0
+smoke_new_kp3.jsonl (kp3, new_decks.tsv, base 21,108,000,000, 2 deals): 50 lines; problems 0
+smoke_var_l-charizardy_kp3.jsonl (kp3, var_l-charizardy.tsv, base 21,106,000,000, 2 deals): 16 lines; problems 0
+smoke_var_v-charizardy_swap1_kp3.jsonl (kp3, var_v-charizardy_swap1.tsv, base 21,106,000,000, 2 deals): 16 lines; problems 0
+smoke_var_v-charizardy_swap2_kp3.jsonl (kp3, var_v-charizardy_swap2.tsv, base 21,106,000,000, 2 deals): 16 lines; problems 0
+smoke_var_v-lucario_2_kp3.jsonl (kp3, var_v-lucario_2.tsv, base 72,000,000, 2 deals): 14 lines; problems 0
+smoke_var_v-lucario_swap1_kp3.jsonl (kp3, var_v-lucario_swap1.tsv, base 72,000,000, 2 deals): 14 lines; problems 0
+smoke_var_v-lucario_swap2_kp3.jsonl (kp3, var_v-lucario_swap2.tsv, base 72,000,000, 2 deals): 14 lines; problems 0
+smoke_var_v-suicune_2_kp3.jsonl (kp3, var_v-suicune_2.tsv, base 72,000,000, 2 deals): 14 lines; problems 0
+smoke_var_v-suicune_swap1_kp3.jsonl (kp3, var_v-suicune_swap1.tsv, base 72,000,000, 2 deals): 14 lines; problems 0
+smoke_var_v-suicune_swap2_kp3.jsonl (kp3, var_v-suicune_swap2.tsv, base 72,000,000, 2 deals): 14 lines; problems 0
+smoke_var_v-weezing_2_kp3.jsonl (kp3, var_v-weezing_2.tsv, base 72,000,000, 2 deals): 14 lines; problems 0
+smoke_var_v-weezing_swap1_kp3.jsonl (kp3, var_v-weezing_swap1.tsv, base 72,000,000, 2 deals): 14 lines; problems 0
+smoke_var_v-weezing_swap2_kp3.jsonl (kp3, var_v-weezing_swap2.tsv, base 72,000,000, 2 deals): 14 lines; problems 0
+ROWS PASS: 14 run files hold exactly their TSVs' pairings x deals (seeds, seats, decks, pilots); RULE findings in 0 file-pairings
+GAUNTLET IDENTITY PASS 45ecfda47cf4ccb4d12494f9b1a59954db1c357413f7ab4edabc372327e53b5b: kp3 main lists through the variation TSVs replay the reference games (Lucario 2,18; Suicune 4,25; Weezing 6,27 on the table's deals: compare.py IDENTICAL and the official scan's lines once a_file/b_file are dropped; Charizard Y 40,47 on B2e's deals: byte for byte); smokes: 25 new-deck pairings x 2 deals under k3 and kp3 and 87 variation pairings x 2 deals under kp3, ROWS PASS
