@@ -73,3 +73,31 @@ On Sept 25 Dustin allowed looking at the videos themselves when specifics matter
   - Blessed Salt heals only its owner's Pokémon.
   - Checkup damage shows as popups; only the Burn coin gets a banner.
 - **Still open:** whether Blessed Salt can save a Pokémon that Poison or Burn takes to 0. No footage has that case (shot list item "Blessed Salt when Poison takes a Pokémon to 0").
+
+## 6. Rainbow Cave's discarded Energy goes to the discard pile (added Sept 26; the engine is right)
+`Battle Logs/Reviewed/20260908_015702000_iOS.MP4` (Dustin's deck 11, Archaludon/Haxorus/Dragonair, Fighting and Metal). This answers the gauntlet card check's questions R1 and R4 (`decks/gauntlet_2026-09-26/card_check.md`). The laptop session read it, and an independent agent re-extracted its own frames (0.25 s steps, 03:39.9-04:22.8) and tried to refute it. Both readings held.
+- **The counter.** Dragonair's Dragon's Blessing picker ("Please choose an Energy") shows the discard pile's Energy by type.
+  - **Turn 16:** Fighting 5, Metal 3 at 03:43.7-03:43.9. A Metal is picked, leaving 2.
+  - **Turn 18:** Fighting 5, Metal 4 at 04:18.5-04:18.8.
+  - All digits are clearly readable in both pickers.
+- **Between the pickers:**
+  - Turn 16:
+    - The Blessing Metal lands on Haxorus (03:45.2-03:45.4).
+    - With the Energy Zone showing current Metal and next Metal, the "Rainbow Cave" banner runs 03:46.4-03:47.4, the current Metal is discarded, and the next Metal moves up. "Next Energy generated" shows Fighting at 03:49.2-03:49.7.
+    - The zone's Metal is then attached to Haxorus (03:50.2-03:51.0), leaving 2 Metal.
+  - Turn 17:
+    - Crawdaunt's Unruly Claw removes one Metal (03:58.2-03:58.5), so Haxorus goes from 2 Metal to 1.
+    - Team Rocket Grunt's first flip is tails, so it removes nothing.
+    - Icicle does 20 damage. Nothing else touches Energy.
+- **So:** the pile goes from 2 Metal, +1 from Rainbow Cave, +1 from Unruly Claw, to 4. If Rainbow Cave's Energy vanished, it would be 3, and nothing else between the pickers could add a Metal.
+  - The Energy that Rainbow Cave throws away goes to the discard pile, as the engine does it (`actions/apply_stadium_action.rs` 84-87).
+  - So Dragon's Blessing, Flame Patch and the like can reuse it. This does not flatter Rayquaza or Charizard Y.
+- **R4 (Rainbow Cave after the turn's attachment):** not shown.
+  - On turn 16, Rainbow Cave came before the only attachment from the zone.
+  - The written review's "manual attach at 03:45.5-03:46, then Rainbow Cave" misread the Blessing Metal as that attachment.
+  - On turns 4 (00:23-00:28) and 12 (02:16-02:20), Rainbow Cave also came before the attachment.
+  - The engine's before-the-attachment offer is not contradicted by any footage seen so far, and not confirmed either.
+- **Also seen:** Rainbow Cave discards the current Energy, and the queued one becomes current, even when both are Metal. This matches the Sept 25 second-pass claim.
+- **Caveat:** the discard itself is never shown arriving in the pile. It is inferred from the two counts.
+  - The written review's Energy history for the earlier turns doesn't add up under either reading. It is off by one Energy under this one, and by two or more if the Energy vanished. So the review probably miscounts one Energy somewhere before turn 16.
+  - The turn 16-18 check depends only on the frames between the two pickers.

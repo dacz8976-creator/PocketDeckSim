@@ -17,7 +17,10 @@
     often still earn the 50 by switching Mega Scizor ex in with Revavroom's ability. It still changes games.
   - **So the Scizor list is not run** (the task's rule), and it was only a coverage row anyway.
 - **The Rayquaza and Altaria/Greninja lists and all 12 variation lists run.** Their cards all check out.
-- **One open question could flatter Rayquaza.**
+- **Answered from footage, Sept 26 (laptop session plus an independent re-check):** Rainbow Cave's discarded Energy goes to the discard pile in Pocket, as it does in the engine. So the question below does not flatter Rayquaza.
+  - Evidence: Dragon's Blessing's picker counts on turns 16 and 18 of battle 015702 (`rl/results/recordings_check_2026-09-25/video_frame_checks.md` §6).
+  - R4 (using Rainbow Cave after the turn's attachment) is not shown there. The review note that suggested it misread the Blessing Metal as that attachment.
+- **The open question as first written (now answered above):**
   - In the engine, the Energy that Rainbow Cave throws away goes to the discard pile, and Dragonair's ability can
     then put it on Mega Rayquaza ex the same turn: about one extra Energy per turn, which is +50 on Mega Burst.
   - Nobody has checked where that Energy goes in Pocket. One look in the game settles it: use Rainbow Cave, then
@@ -159,7 +162,7 @@ different printing from the checked Riolu B3 079.
 
 ## Open questions for Dustin (one in-game look each)
 
-- **R1: where Rainbow Cave's Energy goes.** Use Rainbow Cave, then check the discard pile's Energy count. This
+- **R1: answered from footage on Sept 26. It goes to the discard pile, as in the engine** (`video_frame_checks.md` §6). The original question: use Rainbow Cave, then check the discard pile's Energy count. This
   affects how far Rayquaza's (and Charizard Y's) results can be trusted.
 - **R4: whether Rainbow Cave can be used after the turn's Energy is attached.** One review note says yes (battle
   015702, turn 16, around 225-228 s). A frame check would settle it.

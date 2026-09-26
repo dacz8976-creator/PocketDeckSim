@@ -33,7 +33,7 @@ the replays. Deck files: `decks/gauntlet_2026-09-26/` (with its own README and `
 - **The accuracy scoreboard is the 45 cells.** Gauntlet decks past about 10 to 11 are for brew realism and coverage,
   not an accuracy claim.
 - **Two cautions for reading (a) later.**
-  - **Rayquaza.** One rule is unknown and could flatter it. In the engine, the Energy that Rainbow Cave throws away goes
+  - **Rayquaza: answered Sept 26, no flattery.** Footage shows Rainbow Cave's Energy goes to the discard pile in Pocket too (`../recordings_check_2026-09-25/video_frame_checks.md` §6). The caution as first written: one rule is unknown and could flatter it. In the engine, the Energy that Rainbow Cave throws away goes
     to the discard pile, where Dragonair's ability can put it back on Rayquaza in the same turn. Nobody has checked
     what Pocket does. One look in the game would settle it: use Rainbow Cave, then check your discard pile.
   - **Altaria/Greninja.** Its real record differs a lot between the two halves of the Limitless data: 59.2% in the
