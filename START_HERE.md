@@ -155,3 +155,4 @@ its seed-overlap check; the rest was added since.
 | 96,092,200 – 96,092,201 | Astra's add-on/CLI parity check |
 | 97,000,000 – 97,999,999 | crossplay |
 | 22,000,000,000 – 22,599,999,999 | Claude Code, Sept 25 overnight list: kp3 equivalence test (22.0B), brew card-draw model (22.1B, Python), brew goldfish (22.2B), Lucario network games (22.3B), their rollouts (22.4B) and k3 probes (22.5B) |
+| 22,600,000,000 – 22,699,999,999 | Claude Code, kt's Dustin-deck A/B (registered Sept 26 in `rl/results/kt_2026-09-26/README.md`; 1,920 games per arm; no game played yet) |

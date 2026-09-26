@@ -47,6 +47,8 @@ kp3 on both sides, the table's first 100 deals of all 28 pairings; each deck pla
 
 ## Draft spec: `kt<N>` (revised Sept 26 with the laptop's per-card table; not registered, nothing built)
 
+**Superseded (Sept 26).** kt's registration is `../kt_2026-09-26/README.md`: Fable's registration text from its review of this draft, with the cloud's amendments. This draft and the testing section below are kept only as the record Fable reviewed. The census above still stands.
+
 The laptop's per-card census (`rl/results/trainer_audit_2026-09-25/census_table.md` on main, 61 Trainer cards, each re-checked by a skeptic) says for each card what kp3's score reads. The laptop and Fable suggested three switches, so that a failure can be traced to one part. This draft follows them.
 
 **Base.** `kt<N>` = `kp<N>` (k's blind search, PublicPricingPlayer with its audited texts) with three evaluator switches, each its own `EvalFeatures` flag, all three on in `kt`. It is built on kp, not kd or kpr; kq's, kd's and kpr's features are off.
