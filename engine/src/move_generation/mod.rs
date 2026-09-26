@@ -248,8 +248,9 @@ fn generate_discard_fossil_actions(state: &State, actions: &mut Vec<SimpleAction
         });
 }
 
-/// Checks if evolution is allowed at the given position, considering ability restrictions
-fn can_evolve_at_position(state: &State, player: usize, position: usize) -> bool {
+/// Checks if evolution is allowed at the given position, considering ability restrictions. Rare Candy
+/// uses it too: Primeval Law and Evolution Jammer stop any Pokémon played from hand to evolve.
+pub(crate) fn can_evolve_at_position(state: &State, player: usize, position: usize) -> bool {
     // Aerodactyl Ex's Primeval Law blocks evolution of opponent's active Pokemon
     if position == 0 && has_opponent_aerodactyl_ex_primeval_law(state, player) {
         return false;
@@ -447,5 +448,49 @@ mod tests {
             has_bench_evolve,
             "Aerodactyl ex's Primeval Law should NOT block bench Pokemon evolution"
         );
+    }
+
+    /// rules/09 (confirmed in-game 2026-09-25): Rare Candy plays a Pokémon from hand to evolve, so Primeval Law
+    /// stops it on the Active as it stops ordinary evolution there; the Bench stays open.
+    #[test]
+    fn primeval_law_stops_rare_candy_on_the_active_only() {
+        use crate::actions::{forecast_action, Action};
+        use rand::SeedableRng;
+        let mut state = State::default();
+        state.turn_count = 3;
+        state.current_player = 1;
+        let aerodactyl_ex = get_card_by_enum(CardId::A1a046AerodactylEx);
+        state.in_play_pokemon[0][0] = Some(to_playable_card(&aerodactyl_ex, false));
+        let bulbasaur = get_card_by_enum(CardId::A1001Bulbasaur);
+        state.in_play_pokemon[1][0] = Some(to_playable_card(&bulbasaur, false));
+        let rare_candy = get_card_by_enum(CardId::A3144RareCandy);
+        state.hands[1] = vec![rare_candy.clone(), get_card_by_enum(CardId::A1003Venusaur)];
+        let candy_offered = |state: &State| {
+            generate_hand_actions(state).iter().any(
+                |action| matches!(action, SimpleAction::Play { trainer_card } if trainer_card.id == "A3 144"),
+            )
+        };
+        assert!(!candy_offered(&state), "the only Basic is the Active, which Primeval Law protects");
+
+        state.in_play_pokemon[1][1] = Some(to_playable_card(&bulbasaur, false));
+        assert!(candy_offered(&state), "a Benched Bulbasaur can still take Rare Candy");
+        let play = Action {
+            actor: 1,
+            action: SimpleAction::Play { trainer_card: rare_candy.as_trainer() },
+            is_stack: false,
+        };
+        let (_, mut mutations) = forecast_action(&state, &play).into_branches();
+        let mut after = state.clone();
+        mutations.remove(0)(&mut rand::rngs::StdRng::seed_from_u64(20_000_000_002), &mut after, &play);
+        let (_, targets) = after.move_generation_stack.last().expect("Rare Candy asks for a target");
+        assert!(!targets.is_empty());
+        assert!(
+            targets.iter().all(|t| matches!(t, SimpleAction::Evolve { in_play_idx: 1, .. })),
+            "only the Benched Bulbasaur is offered: {targets:?}"
+        );
+
+        state.in_play_pokemon[0][0] = Some(to_playable_card(&bulbasaur, false));
+        state.in_play_pokemon[1][1] = None;
+        assert!(candy_offered(&state), "without Aerodactyl ex the Active is a legal target again");
     }
 }

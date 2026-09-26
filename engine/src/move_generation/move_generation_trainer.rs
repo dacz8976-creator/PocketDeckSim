@@ -665,17 +665,15 @@ fn can_play_rare_candy(state: &State, trainer_card: &TrainerCard) -> Option<Vec<
         return cannot_play_trainer();
     }
 
-    // Malamar's Evolution Jammer also stops Rare Candy: it plays a Pokémon from hand to evolve.
-    if super::is_evolution_from_hand_blocked(state) {
-        return cannot_play_trainer();
-    }
-
     let player = state.current_player;
     let hand = &state.hands[player];
 
-    // Check if there's at least 1 basic pokemon in field with a corresponding stage2-rare-candy-evolvable in hand
+    // Check if there's at least 1 basic pokemon in field with a corresponding stage2-rare-candy-evolvable in hand.
+    // Rare Candy plays a Pokémon from hand to evolve, so Malamar's Evolution Jammer stops it everywhere and
+    // Aerodactyl ex's Primeval Law stops it on the Active (rules/09, confirmed in-game 2026-09-25).
     let has_valid_evolution_pair = state
         .enumerate_in_play_pokemon(player)
+        .filter(|(in_play_idx, _)| super::can_evolve_at_position(state, player, *in_play_idx))
         .any(|(_, in_play)| hand.iter().any(|card| can_rare_candy_evolve(card, in_play)));
     if has_valid_evolution_pair {
         can_play_trainer(state, trainer_card)
