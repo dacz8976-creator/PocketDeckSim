@@ -1,0 +1,185 @@
+--- a/engine/examples/legality_scan.rs
++++ b/engine/examples/legality_scan.rs
+@@ -18,6 +18,20 @@
+ //!
+ //! Findings come in two kinds. "RULE" means the rules page says the move or state is impossible. "CHECK" means
+ //! it is unusual and needs a look (a card effect may allow it).
++//!
++//! Other pairings (B2e, rl/results/b2e_card_check_2026-09-26/README.md section 4):
++//!
++//!   legality_scan --pairs <pairings.tsv> --seed-base 21106000000 --games 500 [--root ..] [--pairings 0,48]
++//!
++//! `--pairs` plays exactly the rows of a tab-separated file whose header names at least pairing, held_key,
++//! held_file, opponent and panel_file, instead of the 28 table pairings (`--decks` is then refused). Each row
++//! plays held_file (the first-named deck, output `a` = held_key) against panel_file (the second-named deck,
++//! `b` = opponent) with the table's seat convention: even i = the held deck in seat 0. Deck paths are read
++//! relative to `--root` (default "..", the repo root when the scan runs from engine/ as usual; an absolute path
++//! is used as it is). `--seed-base` replaces 72,000,000 (seed = base + pairing x 10,000 + i); `--pairs` needs
++//! it, and a seed_first column, if the file has one, must equal base + pairing x 10,000. In `--pairs` mode each
++//! `--games-out` line also carries a_file and b_file (the file's paths) and, for a game with findings, their
++//! codes and counts. Without `--pairs` and `--seed-base` the scan runs exactly as before.
+ 
+ use deckgym::actions::{Action, SimpleAction};
+ use deckgym::models::{Card, EnergyType, PlayedCard, TrainerType};
+@@ -367,15 +381,30 @@
+     findings: Findings,
+ }
+ 
+-fn play_one(decks: &[Deck; 8], pairing: usize, i: u64, bot_a: &str, bot_b: &str) -> GameResult {
+-    let pairs: Vec<(usize, usize)> = (0..8).flat_map(|a| (a + 1..8).map(move |b| (a, b))).collect();
+-    let (a, b) = pairs[pairing];
+-    let seed = SEED_BASE + pairing as u64 * 10_000 + i;
++/// The decks a run can play, by index, with the names its output uses, and its seed base. The table run holds
++/// the eight NAMES decks and SEED_BASE; a `--pairs` run holds two decks per row of the pairings file.
++struct Lineup {
++    decks: Vec<Deck>,
++    names: Vec<String>,
++    seed_base: u64,
++}
++
++/// One pairing: its number (which fixes its seeds), the Lineup indexes of its first- and second-named decks,
++/// and, for a `--pairs` row, the two deck paths as the pairings file gives them.
++struct Row {
++    pairing: usize,
++    a: usize,
++    b: usize,
++    files: Option<(String, String)>,
++}
++
++fn play_one(lineup: &Lineup, pairing: usize, (a, b): (usize, usize), i: u64, bot_a: &str, bot_b: &str) -> GameResult {
++    let seed = lineup.seed_base + pairing as u64 * 10_000 + i;
+     let first_seat = if i % 2 == 0 { 0 } else { 1 };
+     let (d0, d1) = if first_seat == 0 { (a, b) } else { (b, a) };
+     let (code_a, code_b) = (parse_player_code(bot_a).unwrap(), parse_player_code(bot_b).unwrap());
+     let codes = if first_seat == 0 { vec![code_a, code_b] } else { vec![code_b, code_a] };
+-    let players = create_players(decks[d0].clone(), decks[d1].clone(), codes);
++    let players = create_players(lineup.decks[d0].clone(), lineup.decks[d1].clone(), codes);
+     let mut game = Game::new(players, seed);
+ 
+     let mut findings = Findings::default();
+@@ -396,7 +425,7 @@
+                 if e.len() < EXAMPLES_KEPT {
+                     e.push(format!(
+                         "{} v {}, seed {seed}, turn {}: {}",
+-                        NAMES[d0], NAMES[d1], state.turn_count, detail.chars().take(160).collect::<String>()
++                        lineup.names[d0], lineup.names[d1], state.turn_count, detail.chars().take(160).collect::<String>()
+                     ));
+                 }
+             }
+@@ -473,6 +502,43 @@
+     args.iter().position(|a| a == flag).and_then(|i| args.get(i + 1)).cloned()
+ }
+ 
++/// Reads a `--pairs` file (see the header): two decks per row, held first, in the file's row order.
++fn read_pairs(path: &str, root: &str, seed_base: u64) -> (Lineup, Vec<Row>) {
++    let text = std::fs::read_to_string(path).unwrap_or_else(|e| panic!("pairs file {path}: {e}"));
++    let mut lines = text.trim_start_matches('\u{feff}').lines().filter(|l| !l.trim().is_empty());
++    let header: Vec<&str> = lines.next().expect("pairs file header").split('\t').map(str::trim).collect();
++    let col = |name: &str| header.iter().position(|h| *h == name);
++    let need = |name: &str| col(name).unwrap_or_else(|| panic!("pairs file {path} has no {name} column"));
++    let (c_pairing, c_held_key, c_held_file) = (need("pairing"), need("held_key"), need("held_file"));
++    let (c_opponent, c_panel_file, c_seed_first) = (need("opponent"), need("panel_file"), col("seed_first"));
++    let load = |file: &str| {
++        let full = std::path::Path::new(root).join(file);
++        let full = full.to_str().expect("deck path");
++        Deck::from_file(full).unwrap_or_else(|e| panic!("deck file {full}: {e}"))
++    };
++    let mut lineup = Lineup { decks: Vec::new(), names: Vec::new(), seed_base };
++    let mut rows = Vec::new();
++    let mut listed = HashSet::new();
++    for line in lines {
++        let f: Vec<&str> = line.split('\t').map(str::trim).collect();
++        assert!(f.len() >= header.len(), "pairs file {path}: short row {line:?}");
++        let pairing = f[c_pairing].parse::<usize>().unwrap_or_else(|e| panic!("pairs file {path}: pairing {:?}: {e}", f[c_pairing]));
++        assert!(listed.insert(pairing), "pairs file {path}: pairing {pairing} listed twice");
++        if let Some(c) = c_seed_first {
++            let want = seed_base + pairing as u64 * 10_000;
++            assert_eq!(f[c].parse::<u64>().ok(), Some(want), "pairing {pairing}: seed_first doesn't match --seed-base {seed_base}");
++        }
++        let a = lineup.decks.len();
++        lineup.decks.push(load(f[c_held_file]));
++        lineup.names.push(f[c_held_key].to_string());
++        lineup.decks.push(load(f[c_panel_file]));
++        lineup.names.push(f[c_opponent].to_string());
++        rows.push(Row { pairing, a, b: a + 1, files: Some((f[c_held_file].to_string(), f[c_panel_file].to_string())) });
++    }
++    assert!(!rows.is_empty(), "pairs file {path} lists no pairings");
++    (lineup, rows)
++}
++
+ fn main() {
+     let args: Vec<String> = std::env::args().collect();
+     let dir = arg(&args, "--decks").unwrap_or_else(|| "../decks/research".into());
+@@ -487,25 +553,44 @@
+         // The jev bot calls a paid outside service; no scan or table run may use it (Dustin, Sept 24).
+         assert!(!code.eq_ignore_ascii_case("jev"), "the jev bot calls a paid API and is not allowed here");
+     }
++    let pairs_file = arg(&args, "--pairs");
++    let seed_base: u64 = arg(&args, "--seed-base").map(|x| x.parse().unwrap()).unwrap_or(SEED_BASE);
++    let root = arg(&args, "--root").unwrap_or_else(|| "..".into());
++    if pairs_file.is_some() {
++        assert!(arg(&args, "--seed-base").is_some(), "--pairs needs --seed-base (72,000,000 is the table's own block)");
++        assert!(arg(&args, "--decks").is_none(), "--pairs names its own deck files; --decks is for the table's 28");
++    }
+     let mut games_out = arg(&args, "--games-out")
+         .map(|path| std::io::BufWriter::new(std::fs::File::create(path).expect("games-out file")));
+-    let decks: [Deck; 8] = NAMES.map(|n| Deck::from_file(&format!("{dir}/{n}.txt")).expect("deck file"));
+-    let pairs: Vec<(usize, usize)> = (0..8).flat_map(|a| (a + 1..8).map(move |b| (a, b))).collect();
++    let (lineup, rows) = match &pairs_file {
++        None => {
++            let decks: Vec<Deck> = NAMES.iter().map(|n| Deck::from_file(&format!("{dir}/{n}.txt")).expect("deck file")).collect();
++            let pairs: Vec<(usize, usize)> = (0..8).flat_map(|a| (a + 1..8).map(move |b| (a, b))).collect();
++            let rows: Vec<Row> = pairs.into_iter().enumerate().map(|(pairing, (a, b))| Row { pairing, a, b, files: None }).collect();
++            (Lineup { decks, names: NAMES.iter().map(|n| n.to_string()).collect(), seed_base }, rows)
++        }
++        Some(path) => read_pairs(path, &root, seed_base),
++    };
+ 
+     let bots = if bot_a == bot_b { format!("bot {bot_a}") } else { format!("bot {bot_a} (first-named deck) v {bot_b} (second)") };
+     println!("{bots}, {games} table deals per pairing, rules checked against {RULES_SOURCE}");
++    if let Some(path) = &pairs_file {
++        println!("pairings from {path} ({} rows), seed base {seed_base}, deck paths relative to {root}", rows.len());
++    }
+     let mut all = Findings::default();
+-    for (p, (a, b)) in pairs.iter().enumerate() {
++    for row in &rows {
++        let (p, a, b) = (row.pairing, row.a, row.b);
+         if only.as_ref().is_some_and(|o| !o.contains(&p)) {
+             continue;
+         }
+-        let results: Vec<GameResult> = (0..games).into_par_iter().map(|i| play_one(&decks, p, i, &bot_a, &bot_b)).collect();
++        let results: Vec<GameResult> =
++            (0..games).into_par_iter().map(|i| play_one(&lineup, p, (a, b), i, &bot_a, &bot_b)).collect();
+         let score: f64 = results.iter().map(|r| r.first_deck_score).sum::<f64>() / games as f64;
+         let flagged = results.iter().filter(|r| !r.findings.count.is_empty()).count();
+         let distinct = results.iter().map(|r| r.fingerprint).collect::<HashSet<_>>().len();
+         println!(
+             "{:>9} v {:<9} first deck {:5.1}%   distinct games {distinct} of {games}   games with findings: {flagged}",
+-            NAMES[*a], NAMES[*b], 100.0 * score
++            lineup.names[a], lineup.names[b], 100.0 * score
+         );
+         let h = results.iter().fold(HyperRay::default(), |mut s, r| {
+             s.ko_used += r.hyper_ray.ko_used;
+@@ -541,7 +626,7 @@
+             for (i, r) in results.iter().enumerate() {
+                 let h = r.hyper_ray;
+                 let mut line = serde_json::json!({
+-                    "pairing": p, "a": NAMES[*a], "b": NAMES[*b], "i": i, "seed": r.seed,
++                    "pairing": p, "a": lineup.names[a], "b": lineup.names[b], "i": i, "seed": r.seed,
+                     "bot_a": bot_a, "bot_b": bot_b, "first_seat": r.first_seat,
+                     "winner_seat": r.winner_seat, "points": r.points, "turns": r.turns,
+                     "first_deck_score": r.first_deck_score, "moves": format!("{:016x}", r.fingerprint),
+@@ -553,6 +638,13 @@
+                     line["chase_order"] = serde_json::json!({ "offered": r.chase_order.offered,
+                         "discarded": r.chase_order.discarded, "names": r.chase_order.names });
+                 }
++                if let Some((file_a, file_b)) = &row.files {
++                    line["a_file"] = serde_json::json!(file_a);
++                    line["b_file"] = serde_json::json!(file_b);
++                    if !r.findings.count.is_empty() {
++                        line["findings"] = serde_json::json!(r.findings.count);
++                    }
++                }
+                 writeln!(out, "{line}").expect("write games-out");
+             }
+             out.flush().expect("flush games-out");
