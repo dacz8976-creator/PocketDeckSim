@@ -380,8 +380,15 @@ struct GameResult {
     /// Every activated Ability, by title.
     abilities: BTreeMap<String, AbilityTurns>,
     chase_order: ChaseOrder,
+    /// Each deck's opening Active (card id), [first-named deck, second], read when turn 1 begins (koa's registration:
+    /// the table files carry the openings so the transitions can be read without replays).
+    openings: [String; 2],
     /// Fingerprint of every chosen move in order: distinct games have distinct fingerprints.
     fingerprint: u64,
+    /// Fingerprint of the choices only (moves picked from two or more legal options), in order. Forced steps an engine
+    /// repair adds or removes (a queued draw, a Checkup finish) change `fingerprint` but not this, so games whose play
+    /// is unchanged keep it.
+    decisions: u64,
     findings: Findings,
 }
 
@@ -400,10 +407,12 @@ fn play_one(decks: &[Deck; 8], pairing: usize, i: u64, bot_a: &str, bot_b: &str)
     let mut seen: BTreeMap<String, bool> = BTreeMap::new();
     let mut turn = Turn::default();
     let mut moves = DefaultHasher::new();
+    let mut decisions = DefaultHasher::new();
     let mut hyper_turns: BTreeMap<(usize, u8), HyperTurn> = BTreeMap::new();
     let mut attack_turns: BTreeMap<(String, usize, u8), HyperTurn> = BTreeMap::new();
     let mut ability_turns: BTreeMap<(String, usize, u8), (bool, bool)> = BTreeMap::new();
     let mut chase_order = ChaseOrder::default();
+    let mut openings: Option<[String; 2]> = None;
     let start = game.get_state_clone();
     let start_cards = [card_count(&start, 0), card_count(&start, 1)];
     let mut record = |findings: &mut Findings, list: Vec<(String, String)>, state: &State| {
@@ -425,6 +434,11 @@ fn play_one(decks: &[Deck; 8], pairing: usize, i: u64, bot_a: &str, bot_b: &str)
 
     while !game.is_game_over() {
         let before = game.get_state_clone();
+        if openings.is_none() && before.turn_count >= 1 {
+            let id = |seat: usize| before.maybe_get_active(seat).map_or(String::new(), |p| p.card.get_id());
+            let (first_named, second) = if first_seat == 0 { (0, 1) } else { (1, 0) };
+            openings = Some([id(first_named), id(second)]);
+        }
         if before.turn_count != turn.number {
             turn = Turn { number: before.turn_count, owner: before.current_player, ..Default::default() };
         }
@@ -433,6 +447,9 @@ fn play_one(decks: &[Deck; 8], pairing: usize, i: u64, bot_a: &str, bot_b: &str)
         record(&mut findings, offered, &before);
         let chosen = game.play_tick();
         format!("{:?}", chosen).hash(&mut moves);
+        if actions.len() > 1 {
+            format!("{:?}", chosen).hash(&mut decisions);
+        }
         if actions.iter().any(|a| matches!(a.action, SimpleAction::DiscardOwnBenchedThenDamage { .. })) {
             chase_order.offered += 1;
             if let SimpleAction::DiscardOwnBenchedThenDamage { in_play_idxs, .. } = &chosen.action {
@@ -533,7 +550,9 @@ fn play_one(decks: &[Deck; 8], pairing: usize, i: u64, bot_a: &str, bot_b: &str)
         discard_attacks,
         abilities,
         chase_order,
+        openings: openings.unwrap_or_default(),
         fingerprint: moves.finish(),
+        decisions: decisions.finish(),
         findings,
     }
 }
@@ -643,6 +662,7 @@ fn main() {
                     "bot_a": bot_a, "bot_b": bot_b, "first_seat": r.first_seat,
                     "winner_seat": r.winner_seat, "points": r.points, "turns": r.turns,
                     "first_deck_score": r.first_deck_score, "moves": format!("{:016x}", r.fingerprint),
+                    "openings": r.openings, "decisions": format!("{:016x}", r.decisions),
                 });
                 if h.ko_used + h.ko_passed + h.noko_used + h.noko_passed > 0 {
                     line["hyper_ray"] = serde_json::json!([h.ko_used, h.ko_passed, h.noko_used, h.noko_passed]);
