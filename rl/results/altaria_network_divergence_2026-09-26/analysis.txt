@@ -1,0 +1,194 @@
+Check: in all 400 games, decisions.jsonl holds exactly the network's recorded moves (kp3_rows_games.jsonl, row net|kp3), decision for decision.
+400 games, 7339 network decisions: same move as kp3 3400 (46%), differs only in move order 914 (12%), differs 3025 (41%). kp3 chose the same move under all 3 probe seeds at 90% of decisions.
+Positions played out where either player had revealed-card memory (it starts empty in a play-out): 0 of 3025.
+Overall: over the 3025 differing positions, the network's move scores +1.7 points (95% by position ± 0.9, by game ± 0.8) for Altaria against kp3's move, with kp3 piloting both decks afterwards.
+
+'*' = the 95% interval by position excludes zero (the Lucario study's rule); '(position only)' = not by game. Marked on
+tested rows only (A's pairs and B's headlines), never on the looks inside a headline or the pooled row;
+a tested row under 10 positions is printed but not marked ('too few to mark').
+'total/game' = the row's summed difference per game, in points of Altaria's score: a rough size of what kp3 would
+gain by making the network's move in that kind of position (gains don't simply add).
+
+A. Pairs of move kinds (network move, kp3 move)
+                                                                       positions  net-kp3  95% by position      95% by game total/game
+place / place                                                                279     +9.9 (  +6.6,  +13.3) (  +6.6,  +13.3)     +6.94  *
+play supporter / play supporter                                               88     +6.2 (  -0.5,  +13.0) (  -0.6,  +13.1)     +1.38
+attack / play supporter                                                      130     +3.8 (  -2.4,   +9.9) (  -1.8,   +9.3)     +1.22
+energy to bench / energy to bench                                             68     +5.5 (  +0.4,  +10.6) (  +0.4,  +10.6)     +0.94  *
+end turn / retreat                                                            43     +7.3 (  -1.3,  +15.8) (  -1.1,  +15.6)     +0.78
+energy to bench / retreat                                                     70     +4.3 (  -2.0,  +10.6) (  -1.9,  +10.4)     +0.75
+promote / promote                                                             71     +4.0 (  -3.0,  +11.1) (  -3.1,  +11.2)     +0.72
+retreat / place                                                               22     +9.7 (  -3.4,  +22.7) (  -3.5,  +22.9)     +0.53
+attack / retreat                                                             102     +1.8 (  -4.7,   +8.4) (  -4.6,   +8.3)     +0.47
+energy to bench / play item                                                   28     +5.4 (  -1.2,  +12.0) (  -1.4,  +12.1)     +0.38
+energy to active / place                                                     154     +0.8 (  -2.3,   +3.9) (  -2.3,   +3.9)     +0.31
+energy to bench / play supporter                                              47     +2.7 (  -3.5,   +8.8) (  -4.1,   +9.4)     +0.31
+energy to active / retreat                                                    30     +4.2 ( -12.2,  +20.5) ( -12.0,  +20.3)     +0.31
+place / play supporter                                                        47     +2.1 (  -1.8,   +6.0) (  -1.9,   +6.1)     +0.25
+play supporter / energy to active                                             21     +4.8 (  -4.6,  +14.1) (  -4.6,  +14.1)     +0.25
+place / retreat                                                               31     +3.2 (  -2.6,   +9.0) (  -2.6,   +9.1)     +0.25
+energy to bench / place                                                       73     +0.7 (  -4.7,   +6.0) (  -4.7,   +6.0)     +0.12
+play item / play supporter                                                    25     +1.0 (  -8.4,  +10.4) (  -9.0,  +11.0)     +0.06
+play item / place                                                             36     +0.3 (  -2.8,   +3.5) (  -2.8,   +3.5)     +0.03
+play supporter / retreat                                                      38     +0.3 (  -6.4,   +7.1) (  -6.4,   +7.1)     +0.03
+end turn / place                                                             150     +0.0 (  -3.5,   +3.5) (  -3.5,   +3.5)     +0.00
+evolve (bench) / retreat                                                      34     +0.0 (  -1.0,   +1.0) (  -1.0,   +1.0)     +0.00
+play supporter / place                                                        83     -0.2 (  -4.8,   +4.5) (  -4.7,   +4.4)     -0.03
+energy to active / play supporter                                             69     -0.2 (  -6.1,   +5.8) (  -6.4,   +6.1)     -0.03
+energy to active / evolve (bench)                                             23     -0.5 (  -5.8,   +4.7) (  -5.5,   +4.4)     -0.03
+energy to active / play item                                                  44     -0.3 (  -2.3,   +1.7) (  -2.3,   +1.7)     -0.03
+attack / evolve (bench)                                                       25     -1.5 ( -11.9,   +8.9) ( -11.9,   +8.9)     -0.09
+evolve (bench) / place                                                        27     -1.4 (  -4.1,   +1.3) (  -4.1,   +1.3)     -0.09
+attack (knocks out) / place                                                   28     -2.7 (  -9.6,   +4.3) (  -9.6,   +4.3)     -0.19
+attack / play tool                                                            61     -1.4 (  -6.8,   +3.9) (  -7.0,   +4.2)     -0.22
+end turn / play tool                                                          22     -4.0 ( -13.6,   +5.6) ( -14.2,   +6.3)     -0.22
+attack / play stadium                                                         26     -3.4 (  -9.8,   +3.1) (  -9.8,   +3.1)     -0.22
+play supporter / play item                                                    25     -4.0 ( -17.4,   +9.4) ( -17.3,   +9.3)     -0.25
+attack / place                                                               198     -0.6 (  -2.9,   +1.8) (  -3.0,   +1.8)     -0.28
+attack / play item                                                            90     -2.5 (  -7.6,   +2.6) (  -7.8,   +2.8)     -0.56
+attack / energy to bench                                                      33     -7.2 ( -12.1,   -2.3) ( -12.3,   -2.1)     -0.59  *
+energy to active / energy to bench                                            28     -8.9 ( -22.8,   +4.9) ( -22.8,   +4.9)     -0.62
+end turn / play item                                                          33    -10.6 ( -19.4,   -1.8) ( -19.9,   -1.4)     -0.88  *
+end turn / play supporter                                                     39     -9.3 ( -16.9,   -1.7) ( -16.4,   -2.2)     -0.91  *
+energy to bench / energy to active                                            33    -12.1 ( -26.6,   +2.4) ( -26.6,   +2.4)     -1.00
+(smaller groups, pooled; not tested)                                         551     +2.1 (  +0.1,   +4.1) (  +0.2,   +4.0)     +2.88
+  40 pairs listed on their own, 93 pooled.
+
+B. The named habits (fixed before the run)
+                                                                       positions  net-kp3  95% by position      95% by game total/game
+1. Benching a Basic
+  1a network benches a Basic, kp3 doesn't, in play (turn 1 on)               132     +2.1 (  -0.6,   +4.8) (  -0.6,   +4.8)     +0.69
+       network benches Eevee; kp3: play Sabrina                               12     +1.0 (  -4.6,   +6.6) (  -4.6,   +6.6)     +0.03
+       other                                                                 120     +2.2 (  -0.8,   +5.1) (  -0.7,   +5.1)     +0.66
+  1b kp3 benches a Basic, network doesn't, in play (turn 1 on)               753     +0.3 (  -1.1,   +1.7) (  -1.0,   +1.5)     +0.53
+       kp3 benches Darkrai; network: end turn                                 31     +7.3 (  -4.4,  +18.9) (  -3.6,  +18.1)     +0.56
+       kp3 benches Swablu; network: end turn                                  31     -3.6 (  -8.7,   +1.5) (  -8.8,   +1.5)     -0.28
+       kp3 benches Swablu; network: energy to active Espeon                   23     -0.5 (  -1.6,   +0.5) (  -1.6,   +0.5)     -0.03
+       kp3 benches Darkrai; network: energy to active Mega Altaria ex         23     -3.3 ( -12.1,   +5.6) ( -12.2,   +5.6)     -0.19
+       kp3 benches Eevee; network: end turn                                   20     -9.4 ( -18.8,   +0.0) ( -19.0,   +0.2)     -0.47
+       kp3 benches Darkrai; network: play Copycat                             20     -7.5 ( -15.9,   +0.9) ( -15.7,   +0.7)     -0.38
+       kp3 benches Darkrai; network: attack Hypnoblast                        20     -1.2 ( -10.8,   +8.3) ( -10.7,   +8.2)     -0.06
+       kp3 benches Swablu; network: energy to active Mega Altaria ex          19     +5.3 ( -12.9,  +23.5) ( -13.0,  +23.5)     +0.25
+       kp3 benches Swablu; network: attack Hypnoblast                         18     -2.8 (  -5.9,   +0.4) (  -5.9,   +0.3)     -0.12
+       kp3 benches Swablu; network: attack Sleepy Lullaby                     18     +6.2 (  -1.5,  +14.0) (  -1.6,  +14.1)     +0.28
+       kp3 benches Swablu; network: play Copycat                              17     +2.9 (  -7.0,  +12.9) (  -7.0,  +12.9)     +0.12
+       kp3 benches Eevee; network: attack Hypnoblast                          15     +0.8 (  -2.1,   +3.7) (  -2.1,   +3.7)     +0.03
+       kp3 benches Darkrai; network: attack Mega Harmony (sure KO)            15    -10.0 ( -21.3,   +1.3) ( -20.2,   +0.2)     -0.38
+       kp3 benches Swablu; network: attack Mega Harmony (sure KO)             14    -11.6 ( -27.5,   +4.3) ( -26.9,   +3.7)     -0.41
+       kp3 benches Darkrai; network: attack Sing                              14     +4.5 ( -10.6,  +19.6) ( -10.7,  +19.6)     +0.16
+       kp3 benches Darkrai; network: energy to active Espeon                  14     +0.0 (  +0.0,   +0.0) (  +0.0,   +0.0)     +0.00
+       kp3 benches Eevee; network: play Copycat                               13     -1.0 ( -14.4,  +12.5) ( -14.4,  +12.5)     -0.03
+       kp3 benches Darkrai; network: evolve Eevee into Espeon                 13     +0.0 (  +0.0,   +0.0) (  +0.0,   +0.0)     +0.00
+       kp3 benches Eevee; network: energy to active Espeon                    13     +1.0 (  -0.9,   +2.8) (  -0.9,   +2.8)     +0.03
+       kp3 benches Darkrai; network: evolve Swablu into Mega Altaria ex        12     +0.0 (  +0.0,   +0.0) (  +0.0,   +0.0)     +0.00
+       kp3 benches Eevee; network: attack Sleepy Lullaby                      12     +0.0 (  -5.2,   +5.2) (  -5.3,   +5.3)     +0.00
+       kp3 benches Eevee; network: energy to active Mega Altaria ex           12     +6.2 (  -2.0,  +14.5) (  -2.0,  +14.5)     +0.19
+       kp3 benches Darkrai; network: attack Mega Harmony                      11     +0.0 (  +0.0,   +0.0) (  +0.0,   +0.0)     +0.00
+       kp3 benches Darkrai; network: energy to bench Swablu                   11     +1.1 ( -18.3,  +20.5) ( -18.3,  +20.5)     +0.03
+       kp3 benches Eevee; network: attack Sing                                11     +5.7 (  +0.6,  +10.8) (  -0.3,  +11.6)     +0.16
+       kp3 benches Swablu; network: attack Sing                               10     -5.0 ( -14.1,   +4.1) ( -14.6,   +4.6)     -0.12
+       kp3 benches Darkrai; network: play Poké Ball                           10     -2.5 ( -10.5,   +5.5) ( -10.5,   +5.5)     -0.06
+       kp3 benches Eevee; network: energy to bench Swablu                     10    +10.0 (  -9.9,  +29.9) (  -9.9,  +29.9)     +0.25
+       kp3 benches Darkrai; network: energy to bench Mega Altaria ex          10     +1.2 ( -11.6,  +14.1) ( -11.7,  +14.2)     +0.03
+       kp3 benches Eevee; network: attack Mega Harmony (sure KO)              10     +0.0 (  +0.0,   +0.0) (  +0.0,   +0.0)     +0.00
+       other                                                                 283     +1.4 (  -0.7,   +3.4) (  -0.8,   +3.5)     +0.97
+  1c network benches a Basic, kp3 doesn't, at setup (turn 0)                   0
+  1d kp3 benches a Basic, network doesn't, at setup (turn 0)                  63     +1.0 (  -3.4,   +5.4) (  -3.4,   +5.4)     +0.16
+       kp3 benches Swablu; network: end turn                                  37     -1.0 (  -7.0,   +4.9) (  -7.0,   +4.9)     -0.09
+       kp3 benches Eevee; network: end turn                                   14     +5.4 (  -1.8,  +12.5) (  -1.8,  +12.5)     +0.19
+       kp3 benches Darkrai; network: end turn                                 11     +2.3 ( -10.4,  +15.0) ( -10.4,  +15.0)     +0.06
+       other                                                                   1     +0.0 (     -,      -) (     -,      -)     +0.00
+2. Stampede without a knockout (sure-knockout rule)
+  2a kp3 Stampedes without a KO, network does something else                  17     -0.7 ( -11.5,  +10.1) ( -11.2,   +9.7)     -0.03
+  2b network Stampedes without a KO, kp3 does something else                   6     +0.0 (  +0.0,   +0.0) (  +0.0,   +0.0)     +0.00  (too few to mark)
+3. Sleep: which sleep attack, and who is Active
+  3a network uses a sleep attack, kp3 doesn't                                619     -0.0 (  -2.1,   +2.0) (  -2.0,   +1.9)     -0.06
+       network Hypnoblast (Espeon); kp3: play Poké Ball                       37     -2.4 ( -13.4,   +8.7) ( -11.9,   +7.2)     -0.22
+       network Hypnoblast (Espeon); kp3: play Copycat                         30    -10.0 ( -20.2,   +0.2) ( -19.4,   -0.6)     -0.75
+       network Hypnoblast (Espeon); kp3: play Small Balloon                   28     +4.0 (  -1.5,   +9.5) (  -1.5,   +9.6)     +0.28
+       network Hypnoblast (Espeon); kp3: bench Swablu                         26     -1.4 (  -4.6,   +1.7) (  -4.8,   +1.9)     -0.09
+       network Hypnoblast (Espeon); kp3: bench Darkrai                        25     +1.5 (  -6.9,   +9.9) (  -7.0,  +10.0)     +0.09
+       network Hypnoblast (Espeon); kp3: bench Eevee                          23     +0.0 (  -2.2,   +2.2) (  -2.2,   +2.2)     +0.00
+       network Sleepy Lullaby (Igglybuff); kp3: play Small Balloon            21     -3.6 ( -13.2,   +6.0) ( -12.6,   +5.4)     -0.19
+       network Hypnoblast (Espeon); kp3: play Sabrina                         21    +38.1 ( +21.6,  +54.6) ( +20.8,  +55.4)     +2.00
+       network Hypnoblast (Espeon); kp3: play Training Area                   19     -0.7 (  -6.7,   +5.4) (  -6.7,   +5.4)     -0.03
+       network Sleepy Lullaby (Igglybuff); kp3: bench Swablu                  18     +6.2 (  -1.5,  +14.0) (  -1.6,  +14.1)     +0.28
+       network Hypnoblast (Espeon); kp3: play Professor's Research            18     -2.1 (  -5.1,   +0.9) (  -4.9,   +0.7)     -0.09
+       network Sleepy Lullaby (Igglybuff); kp3: retreat to Eevee              16     -1.6 ( -12.5,   +9.4) ( -12.5,   +9.4)     -0.06
+       network Sing (Swablu); kp3: play Poké Ball                             16     -4.7 ( -22.3,  +12.9) ( -22.2,  +12.8)     -0.19
+       network Sleepy Lullaby (Igglybuff); kp3: energy to bench Darkrai        16     -9.4 ( -17.9,   -0.9) ( -18.1,   -0.6)     -0.38
+       network Sing (Swablu); kp3: bench Darkrai                              14     +4.5 ( -10.6,  +19.6) ( -10.7,  +19.6)     +0.16
+       network Sing (Swablu); kp3: retreat to Igglybuff                       13     -6.7 ( -17.0,   +3.5) ( -12.4,   -1.1)     -0.22
+       network Sing (Swablu); kp3: play Small Balloon                         13     -8.7 ( -23.2,   +5.9) ( -23.2,   +5.9)     -0.28
+       network Sing (Swablu); kp3: retreat to Eevee                           13     -4.8 ( -23.7,  +14.1) ( -23.7,  +14.1)     -0.16
+       network Hypnoblast (Espeon); kp3: energy to bench Darkrai              13     -1.9 (  -5.7,   +1.8) (  -5.7,   +1.8)     -0.06
+       network Sleepy Lullaby (Igglybuff); kp3: play Poké Ball                12     -3.1 ( -13.6,   +7.4) ( -14.8,   +8.6)     -0.09
+       network Sleepy Lullaby (Igglybuff); kp3: bench Eevee                   12     +0.0 (  -5.2,   +5.2) (  -5.3,   +5.3)     +0.00
+       network Sleepy Lullaby (Igglybuff); kp3: play Copycat                  12    -10.4 ( -26.9,   +6.1) ( -26.9,   +6.1)     -0.31
+       network Sleepy Lullaby (Igglybuff); kp3: retreat to Swablu             11     -3.4 ( -20.9,  +14.1) ( -25.2,  +18.4)     -0.09
+       network Sing (Swablu); kp3: bench Eevee                                11     +5.7 (  +0.6,  +10.8) (  -0.3,  +11.6)     +0.16
+       network Sing (Swablu); kp3: bench Swablu                               10     -5.0 ( -14.1,   +4.1) ( -14.6,   +4.6)     -0.12
+       network Hypnoblast (Espeon); kp3: bench Igglybuff                      10     -3.8 ( -11.1,   +3.6) ( -11.4,   +3.9)     -0.09
+       other                                                                 161     +1.0 (  -3.9,   +5.9) (  -3.7,   +5.7)     +0.41
+  3b kp3 uses a sleep attack, network doesn't                                 12     -5.2 ( -12.3,   +1.8) ( -13.1,   +2.7)     -0.16
+  3c the two moves leave different Pokemon Active                            767     +6.6 (  +4.4,   +8.7) (  +4.4,   +8.7)    +12.56  *
+       (3d or 3e)                                                            202    +13.7 (  +9.4,  +17.9) (  +9.4,  +17.9)     +6.91
+       Active after: network Igglybuff, kp3 Eevee                             86     +1.9 (  -2.2,   +6.0) (  -2.2,   +6.0)     +0.41
+       Active after: network Eevee, kp3 Swablu                                69    +15.6 (  +8.3,  +22.8) (  +8.2,  +23.0)     +2.69
+       Active after: network Swablu, kp3 Eevee                                62     -4.6 ( -11.1,   +1.8) ( -11.1,   +1.9)     -0.72
+       Active after: network Swablu, kp3 Mega Altaria ex                      51    +11.8 (  +2.4,  +21.1) (  +3.1,  +20.4)     +1.50
+       Active after: network Swablu, kp3 Igglybuff                            34     -1.5 (  -8.8,   +5.9) (  -8.3,   +5.4)     -0.12
+       Active after: network Espeon, kp3 Mega Altaria ex                      33     +4.2 (  -7.7,  +16.0) (  -8.8,  +17.1)     +0.34
+       Active after: network Swablu, kp3 Espeon                               29     +3.0 (  -8.9,  +15.0) (  -8.2,  +14.3)     +0.22
+       Active after: network Igglybuff, kp3 Swablu                            28     +2.7 (  -6.9,  +12.3) (  -7.6,  +12.9)     +0.19
+       Active after: network Igglybuff, kp3 Mega Altaria ex                   26    +12.0 (  -3.6,  +27.7) (  -6.5,  +30.6)     +0.78
+       Active after: network Igglybuff, kp3 Espeon                            26     +2.4 (  -7.4,  +12.2) (  -7.2,  +12.0)     +0.16
+       Active after: network Mega Altaria ex, kp3 Swablu                      18     -1.4 (  -6.6,   +3.8) (  -7.7,   +4.9)     -0.06
+       Active after: network Eevee, kp3 Igglybuff                             17     -4.4 ( -19.8,  +11.0) ( -19.8,  +11.0)     -0.19
+       Active after: network Espeon, kp3 Eevee                                17     +5.9 (  -1.7,  +13.5) (  -1.7,  +13.5)     +0.25
+       Active after: network Eevee, kp3 Mega Altaria ex                       16    +23.4 (  +5.8,  +41.0) (  +5.8,  +41.0)     +0.94
+       Active after: network Mega Altaria ex, kp3 Espeon                      15     +5.0 (  -8.9,  +18.9) (  -9.2,  +19.2)     +0.19
+       other                                                                  38     -9.5 ( -18.7,   -0.4) ( -18.9,   -0.2)     -0.91
+  3d Darkrai Active after the network's move, not kp3's                       52     -5.0 ( -13.9,   +3.8) ( -12.6,   +2.5)     -0.66
+       kp3: retreat to Igglybuff                                              12     -3.1 ( -18.2,  +12.0) ( -18.6,  +12.3)     -0.09
+       other                                                                  40     -5.6 ( -16.3,   +5.0) ( -14.5,   +3.3)     -0.56
+  3e Darkrai Active after kp3's move, not the network's                      150    +20.2 ( +15.8,  +24.6) ( +15.7,  +24.6)     +7.56  *
+       network: place Eevee (active)                                          56    +27.0 ( +19.2,  +34.9) ( +19.2,  +34.9)     +3.78
+       network: place Swablu (active)                                         41    +18.6 ( +10.6,  +26.6) ( +10.6,  +26.6)     +1.91
+       network: end turn                                                      11    +17.0 (  +7.0,  +27.1) (  +7.7,  +26.4)     +0.47
+       other                                                                  42    +13.4 (  +5.4,  +21.4) (  +5.1,  +21.6)     +1.41
+4. Energy target
+  4a network energy to the Bench, kp3 to the Active                           33    -12.1 ( -26.6,   +2.4) ( -26.6,   +2.4)     -1.00
+       network to Swablu; kp3 to Swablu                                       14    -13.4 ( -33.0,   +6.2) ( -33.0,   +6.2)     -0.47
+       other                                                                  19    -11.2 ( -32.3,   +9.9) ( -32.3,   +9.9)     -0.53
+  4b network energy to the Active, kp3 to the Bench                           28     -8.9 ( -22.8,   +4.9) ( -22.8,   +4.9)     -0.62
+  4c both to the Bench, different Pokemon                                     68     +5.5 (  +0.4,  +10.6) (  +0.4,  +10.6)     +0.94  *
+       network to Swablu; kp3 to Darkrai                                      42     +7.7 (  +1.0,  +14.5) (  +1.1,  +14.4)     +0.81
+       other                                                                  26     +1.9 (  -5.6,   +9.5) (  -5.4,   +9.3)     +0.12
+  4d network energy to the Bench, kp3 no energy                              243     +2.4 (  -0.6,   +5.4) (  -0.6,   +5.4)     +1.44
+       kp3: bench Darkrai                                                     29     +0.9 ( -10.1,  +11.8) ( -10.1,  +11.8)     +0.06
+       kp3: play Poké Ball                                                    27     +5.6 (  -1.3,  +12.4) (  -1.4,  +12.5)     +0.38
+       kp3: retreat to Eevee                                                  24     +4.7 (  -5.6,  +15.0) (  -5.6,  +15.0)     +0.28
+       kp3: play Copycat                                                      22     +0.6 (  -8.8,   +9.9) (  -8.8,   +9.9)     +0.03
+       kp3: bench Swablu                                                      20     -1.9 (  -7.0,   +3.2) (  -7.0,   +3.3)     -0.09
+       kp3: bench Eevee                                                       20     +4.4 (  -5.7,  +14.5) (  -5.3,  +14.0)     +0.22
+       kp3: play Sabrina                                                      19     +5.9 (  -4.9,  +16.7) (  -6.7,  +18.5)     +0.28
+       kp3: retreat to Espeon                                                 18    +19.4 (  +6.3,  +32.6) (  +8.6,  +30.2)     +0.88
+       kp3: retreat to Mega Altaria ex                                        12    -13.5 ( -32.0,   +4.9) ( -31.0,   +3.9)     -0.41
+       other                                                                  52     -1.4 (  -6.9,   +4.0) (  -6.9,   +4.0)     -0.19
+  4e kp3 energy to the Bench, network no energy                               81     +2.8 (  -3.4,   +9.0) (  -3.4,   +8.9)     +0.56
+       network: attack Sleepy Lullaby                                         17     -8.8 ( -16.9,   -0.8) ( -17.2,   -0.5)     -0.38
+       network: play Copycat                                                  14     +8.9 (  -2.7,  +20.5) (  -3.1,  +20.9)     +0.31
+       network: attack Hypnoblast                                             14     -2.7 (  -6.5,   +1.1) (  -6.5,   +1.1)     -0.09
+       other                                                                  36     +8.0 (  -4.3,  +20.3) (  -4.2,  +20.2)     +0.72
+5. Retreat vs attack
+  5a network retreats, kp3 attacks                                            14     +0.0 ( -12.0,  +12.0) ( -12.1,  +12.1)     +0.00
+  5b network attacks, kp3 retreats                                           107     +1.5 (  -4.8,   +7.8) (  -4.8,   +7.8)     +0.41
+       network attack Sleepy Lullaby; kp3 to Eevee                            16     -1.6 ( -12.5,   +9.4) ( -12.5,   +9.4)     -0.06
+       network attack Sing; kp3 to Igglybuff                                  13     -6.7 ( -17.0,   +3.5) ( -12.4,   -1.1)     -0.22
+       network attack Sing; kp3 to Eevee                                      13     -4.8 ( -23.7,  +14.1) ( -23.7,  +14.1)     -0.16
+       network attack Sleepy Lullaby; kp3 to Swablu                           10     -1.2 ( -20.0,  +17.5) ( -22.5,  +20.0)     -0.03
+       other                                                                  55     +6.4 (  -3.8,  +16.5) (  -3.8,  +16.6)     +0.88
+
+58 rows were tested (40 move-kind pairs listed on their own and 18 named headline rows), so one or two
+of the smaller ones may clear zero by chance. The indented rows under a headline are looks inside it, not separate tests.
