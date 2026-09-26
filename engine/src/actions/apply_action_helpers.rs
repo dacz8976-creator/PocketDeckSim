@@ -568,13 +568,18 @@ pub(crate) fn handle_damage_only(
 
     // Handle each target individually
     for (damage, target_player, target_pokemon_idx) in modified_targets {
+        // A hit that does no damage (Sing, or damage cut to 0) doesn't damage the Pokémon, so it can't use up
+        // Disguise's "first damaged by an attack" (rules/09, laptop's Altaria card check).
+        if damage == 0 {
+            continue;
+        }
         let applied = checkapply_prevent_first_attack(
             state,
             target_player,
             target_pokemon_idx,
             is_from_active_attack,
         );
-        if applied || damage == 0 {
+        if applied {
             continue;
         }
 

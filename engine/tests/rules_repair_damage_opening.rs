@@ -138,6 +138,28 @@ fn helmet_hit(player0: Vec<PlayedCard>, player1: Vec<PlayedCard>, plaza: bool, t
     before - game.get_state_clone().in_play_pokemon[0][target_idx].as_ref().unwrap().get_remaining_hp()
 }
 
+/// rules/09 (laptop's Altaria card check, Sept 26): Disguise prevents the first attack that damages Mimikyu ex. Sing
+/// does no damage, so it leaves Disguise in place for the next hit.
+#[test]
+fn sing_does_not_use_up_disguise() {
+    let mut game = get_test_game_with_board(
+        vec![PlayedCard::from_id(CardId::B1196Swablu).with_energy(vec![EnergyType::Colorless])],
+        vec![PlayedCard::from_id(CardId::B2073MimikyuEx)],
+    );
+    game.apply_action(&Action { actor: 0, action: attack_action(CardId::B1196Swablu, 0), is_stack: false });
+    let state = game.get_state_clone();
+    assert!(state.get_active(1).is_asleep(), "Sing still puts it to sleep");
+    assert!(!state.get_active(1).prevent_first_attack_damage_used, "no damage was done, so Disguise is unused");
+    game.apply_action(&Action {
+        actor: 0,
+        action: SimpleAction::ApplyDamage { attacking_ref: (0, 0), targets: vec![(30, 1, 0)], is_from_active_attack: true },
+        is_stack: false,
+    });
+    let state = game.get_state_clone();
+    assert_eq!(state.get_active(1).get_remaining_hp(), 120, "the first damaging hit is the one Disguise prevents");
+    assert!(state.get_active(1).prevent_first_attack_damage_used);
+}
+
 /// rules/09 (laptop recordings check, 2026-09-25): "Discard all Energy from this Pokémon" puts the Energy in the
 /// discard pile, where Volkner, Flame Patch, Dragon's Blessing and the rest read it.
 #[test]
