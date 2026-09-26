@@ -1,6 +1,6 @@
 # REGISTERED (Sept 26 evening, before any kpf code or game): kpf
 
-**Registered after its one review (`REVIEW.md`; every fix applied).** Dustin: "Write the spec. Register before building, one review, then the 45 cells, as the plan says." One question is left to him, with both answers pre-specified: whether R includes kpr's amendment 5 (1981bb4), section 2. Dustin approved the direction on Sept 26 ("Agree with the recommendation, with two
+**Registered after its one review (`REVIEW.md`; every fix applied).** Dustin: "Write the spec. Register before building, one review, then the 45 cells, as the plan says." The one question left to him, whether R includes kpr's amendment 5 (1981bb4), was settled the same evening: included, covered by option 2 (section 2). Dustin approved the direction on Sept 26 ("Agree with the recommendation, with two
 conditions on the spec"). His two conditions are sections 3 and 4. Nothing here is built.
 
 ## 1. In plain words
@@ -25,7 +25,12 @@ conditions on the spec"). His two conditions are sections 3 and 4. Nothing here 
 
 - **R, projected readiness:** kpr's `projected_active_energy`, exactly as built at e09fb46, used where kpr uses it (the Active's online score and the clock's missing-Energy count, both sides, with kpr's horizons).
   - That includes all of kpr's amendments as built, including amendment 5 (1981bb4, the opponent-side horizon fix).
-  - Dustin did not approve 1981bb4 when it was made (`../table_readings_2026-09-24/kpr3_paired_reading.md` §8). **This registration asks him to approve it now, as part of kpf.** If he doesn't, R is built without it and that is the only change.
+  - Dustin did not approve 1981bb4 when it was made (`../table_readings_2026-09-24/kpr3_paired_reading.md` §8).
+  - **Settled Sept 26 evening: included, covered by option 2.** Dustin approved it on one check, "what 1981bb4 changes, in one sentence". The laptop session read the commit:
+    - It changes only when each side's projection is read. The evaluating player's own Active is read through its next turn; the opponent's Active at its very next attack, from the Zone Energy of the turn actually in progress. This stops the opponent's Energy Abilities being counted twice across the turn boundary (the Suicune/Baxcalibur clock stepping from 10 to 2 in the commit's example).
+    - It adds no source and no parameter: same public sources, and k, kp, kq and kd unchanged (1981bb4's message).
+  - Dustin: "If it's what its name suggests — the opponent-side projection reading the right Energy Zone for the side to move … then it's inside option 2 as I approved it … my approval covers it. Record it that way and it's settled."
+  - He also gave the reason for including it: the kpr3 evidence behind kpf (Rayquaza 22 → 44, the 45-cell 12.7) came from the build that contains it.
 - **F, the fuel credit** (section 4).
 
 Diagnostic codes, never adopted:
