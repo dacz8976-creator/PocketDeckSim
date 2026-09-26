@@ -166,6 +166,24 @@ Dustin's decisions, in the order they block things:
 7. **The cloud's paste:** the kpr questions, the kt fixes, the repair list (Legendary Pulse and Hiking Trail, Heavy Helmet's current Retreat Cost, Rare Candy under Primeval Law, Disguise against 0-damage attacks, Bad Dreams stopped by by-attacks protections, and the promotion-after-end-of-turn-knockout timing, which reaches table games), and the B4b procedure; all pointers are on main.
 8. **Which A1 harness build to keep; the quiz; ladder games** (unchanged from Sept 25).
 
+### Dustin's rulings, Sept 26 morning (laptop session's chat; recorded by the laptop session, f5e1669)
+
+- **(iii) The reserve route: approved.** "The small-fix route: yes, approved as sharpened, with the one change I asked for — the gain must show on at least one deck that isn't yours." The "pending Dustin's OK" on the Skarmory bullet's route is closed. RUN5's rules now carry it.
+  - He added that the route is chosen by the footprint measured on the table, read before anything else: "the 15 percent trigger decides which route applies, and it should be read before the route is chosen, as the rule says."
+- **(ii) A panel archetype as the (d) deck: yes.** "Altaria is a non-Dustin deck whose real cells are known, so the gain can be checked against Limitless directly rather than only against paired noise. Yes, it counts, and the same ruling covers Suicune for the Tool fix."
+- **(i) Dragonair Mega Rayquaza ex as "his deck":** not answered yet.
+- **koa: registered.** "Register the draft." `rl/results/opening_active_census_2026-09-26/REGISTRATION.md`, from the reviewed draft d7dbfb2.
+  - The route is fixed by koa's measured table footprint: predicted 6.0%; under 15% the reserve route, else the ordinary rule.
+  - Altaria's seven real cells are read before and after beside (d).
+  - The cloud builds koa; the laptop runs its table, mixed rows and reading.
+- **kpr3: not adopted, kp3 stays.** This is recorded on Dustin's condition that the verdict line carry the census result, and it does (`rl/results/table_readings_2026-09-24/kpr3_paired_reading.md`, top):
+  - kpr3 did chip: Hyper Ray without a knockout in Hydreigon v Lucario went from 1% to 91% (k3 3%, network 99%).
+  - The cell moved +8.8 toward Limitless; +7.8 ± 4.4 of that is Hydreigon's own pilot, about a third of the network's +25.2 there.
+  - The chip is real and good. The rest of the network's Hydreigon edge is unnamed, and kpr3 fails through its effect on the other decks.
+- **kpr provenance:** Dustin's go-ahead was for option 2 (the clock too), which is 9a35f54 ("Dustin's option 2"). He did not approve 1981bb4 (amendment 5, the opponent-side horizon fix): it was reported to him as already recorded, and he took it as the builder's own correction. 1981bb4's message and the cloud README's line 29 are wrong on this point.
+- **Seed table:** approved as hygiene. START_HERE now lists 21,102,000,000 to 21,107,199,999 (this session's blocks, Sept 25-26) and 21,110,000,000 to 21,200,799,999 (Altaria B2c).
+- **Still his:** kt's registration (item 2), the ladder panel and A3 (item 5), B4b's questions (item 6), the A1 build, the quiz and ladder games (item 8), and ruling (i).
+
 ### Objective for this month
 
 The bot's job is to decide which brew gets Dustin's scarce ladder games and to improve a list before he plays it. The Limitless table is the regression test for pilot quality, with the rules below, not the objective. Two tracks run side by side; Track A is the higher value per hour.
