@@ -30,10 +30,17 @@
    - `modify_damage` applies them without checking `is_from_active_attack` (`hooks/core.rs` 1717-1734, 1887-1894).
    - Every card text behind them says "by attacks", and the rules docs (from the official Mimikyu ex FAQ) say Ability damage is not attack damage.
    - The one-turn protections are still active when Bad Dreams resolves at the end of the next turn.
-3. **Likely deviation, unverified in Pocket:** when an end-of-turn effect or the Checkup knocks out an Active (Bad Dreams, Poison, Burn, Deceptive Needle), the engine lets the next player draw and see that turn's Energy before choosing the replacement.
-   - The code: `trigger_promotion_or_declare_winner` puts the Promote frame under the next turn's DrawCard (`state/mod.rs` 1401-1423, 1206-1207).
-   - The engine's own repair note aimed for "promotion without starting the next turn early".
-   - If Pocket asks for the promotion first, the engine gives the promoting player extra information. That slightly favours opponents of Bad Dreams, Poison and Burn decks, Altaria included, though the size is unknown. A footage check is queued, to see which comes first in a recorded end-of-turn knockout.
+3. **Confirmed on footage the same night: after an end-of-turn or Checkup knockout, Pocket asks for the new Active BEFORE the next turn starts and before its draw. The engine does it after.**
+   - **The engine:** `trigger_promotion_or_declare_winner` puts the Promote frame under the next turn's DrawCard (`state/mod.rs` 1401-1423, 1206-1207). So the next player draws and sees that turn's Energy before choosing the replacement. The engine's own repair note aimed for "promotion without starting the next turn early".
+   - **The footage:** four recorded end-of-turn knockouts (`promotion_timing.json`), each read frame by frame and independently re-checked (4 of 4 agree). In all four the knocked-out player moved next.
+     - `20260908_004344` (Poison at the Checkup; Dustin's own draw is visible): "Please choose a Pokémon to switch in" at 208.7 s, Raticate ex in the Active Spot at 211.3 s, "Your turn / Current turn: 7" at 212.7 s, the draw at 214.3 s.
+     - `20260908_190933` (Bad Dreams): promotion done 166.0-166.5 s, turn banner 166.7 s, the opponent's face-down draw 168.3 s.
+     - `20260908_232955` (Burn): Mega Diancie ex settled 151.5 s, banner 151.6 s, draw 153.1 s.
+     - `20260908_234514` (Burn): promotion 180.0-181.7 s, banner 182.8 s, draw 184.3 s.
+     - Two other candidates ended the game, so there was no promotion.
+     - Caveat: this is the order the phone shows; the server could in principle resolve it differently. It holds in all four cases, whether the promotion is Dustin's or the opponent's.
+   - **Effect:** the engine gives the promoting player extra information (their draw and that turn's Energy) before they choose. That slightly favours opponents of Bad Dreams, Poison, Burn and Deceptive Needle decks: Altaria, Weezing, Hydreigon and Blaziken among the table decks.
+   - **Unlike deviations 1 and 2, this one reaches table games** (Fable's note, Sept 26): any end-of-turn or Checkup knockout that leaves a choice of replacement. So its repair must have the identity replay read for which games change, not assumed unchanged. It goes to the cloud's repair list via Dustin.
 
 **Open, ambiguous in Pocket, left as they are:**
 - Copycat when the opponent holds 0 cards, or when it is your only card and your deck is empty: the engine allows both.
