@@ -27,7 +27,21 @@ by the B2e scan. Re-run at the repaired engine when it becomes the baseline.**
     - won 109, against kp3's 43;
     - used Scorching Interruption on 236 of 241 turns and Mega Burst on 135 of 154.
     - Rainbow Cave rose only to 28% played and 40% used.
-    - kpr3 on both sides of all 17 new cells is in `kpr3/`.
+    - kpr3 on both sides of all 17 new cells: `kpr3/` (`run_kpr3_new.sh`, `read_kpr3.py`, `kpr3_reading.txt`).
+      - Build: e09fb46 + the pairs patch. Its kp3 replays the gauntlet's kp3 on 40 of 40 check games.
+- **kpr3 on the 45-cell scoreboard** (descriptive; not a registered reading; kpr3's verdict on the 28 cells stands until Dustin says otherwise).
+
+  | Pilot | Frozen 28 (dev) | New 17 (dev) | All 45 (dev) | All 45 (pooled) | Favourite right (45, dev) |
+  |---|---:|---:|---:|---:|---:|
+  | k3 | 10.8 | 20.3 | 15.1 | 13.3 | 31 |
+  | kp3 | 8.4 | 22.5 | 15.3 | 13.7 | 29 |
+  | kpr3 | 11.9 | 13.8 | 12.7 | 10.6 | 25 |
+
+  - Real error (score.py's τ̂) on the Limitless development half; pooled beside.
+  - Rayquaza's panel average: 29.2 (k3), 22.2 (kp3), 43.7 (kpr3), against 45.9 real. Rayquaza v Lucario: 30 / 26 / 59, against 73.
+  - Altaria/Greninja barely moves: 43.2 / 41.4 / 44.0, against 59.2. Its gap is something else, not yet looked at.
+  - kpr3 is closest to real results over the 45 cells, but it is worse on the frozen 28 (the Hydreigon overshoot found on Sept 26) and picks the favourite less often.
+  - Neither pilot is near the 5.5 target. The discard-attack fix is right for decks built on such attacks; its effect on the other decks is what failed it on the 28.
 - **(b) The variation check: all four decks' second lists join the big gauntlet by the rule** (3 points or more on the opponent average).
   - Lucario: +4.7, +4.2 and −3.1.
   - Suicune: +5.8 and +7.3 (the 2nd Giant Cape for Team Rocket's Boss); Mars for Field Blower −0.4.

@@ -1,0 +1,31 @@
+kpr3 beside k3 and kp3 on the 45-cell scoreboard (pre-repair; descriptive). Real error = score.py's tau.
+Limitless half pilot |         frozen 28 |            new 17 |            all 45 | fav right (45)
+development    k3    |  10.8 / miss 10.3 |  20.3 / miss 19.3 |  15.1 / miss 13.7 | 31/45
+development    kp3   |   8.4 / miss  9.0 |  22.5 / miss 21.1 |  15.3 / miss 13.6 | 29/45
+development    kpr3  |  11.9 / miss 11.5 |  13.8 / miss 14.8 |  12.7 / miss 12.8 | 25/45
+pooled         k3    |  11.5 / miss  9.7 |  15.9 / miss 15.1 |  13.3 / miss 11.8 | 34/45
+pooled         kp3   |   9.2 / miss  8.1 |  18.9 / miss 18.0 |  13.7 / miss 11.9 | 30/45
+pooled         kpr3  |  12.2 / miss 10.4 |   7.2 / miss  8.6 |  10.6 / miss  9.7 | 26/45
+
+New decks, panel average (8 cells; equal weight) and Limitless (development / pooled):
+  rayquaza          k3 29.2  kp3 22.2  kpr3 43.7  | Limitless 45.9 / 46.3
+  altaria_greninja  k3 43.2  kp3 41.4  kpr3 44.0  | Limitless 59.2 / 51.0
+
+New cells (deck a's score %): k3 / kp3 / kpr3 | Limitless dev (n) / pooled (n)
+  rayquaza         v lucario           30.0  25.8  59.2 |  73.3 (58) /  63.7 (120)
+  rayquaza         v altaria           39.6  34.2  50.8 |  47.1 (86) /  49.7 (173)
+  rayquaza         v sceptile          14.0  10.2  23.0 |  45.0 (50) /  43.1 (94)
+  rayquaza         v vespiquen         25.2  20.0  44.4 |  61.1 (36) /  53.9 (64)
+  rayquaza         v suicune           22.4  22.8  45.2 |  35.7 (28) /  40.7 (54)
+  rayquaza         v hydreigon         46.0  22.6  44.0 |  35.0 (20) /  40.0 (50)
+  rayquaza         v weezing           25.6  18.4  41.6 |  20.0 (15) /  35.7 (28)
+  rayquaza         v blaziken          30.7  23.5  41.3 |  50.0 (8) /  43.5 (23)
+  altaria_greninja v lucario           54.0  52.8  59.0 |  68.9 (45) /  63.3 (90)
+  altaria_greninja v altaria           45.6  41.6  45.6 |  37.5 (68) /  39.7 (117)
+  altaria_greninja v sceptile          25.8  31.0  33.4 |  66.7 (33) /  50.8 (64)
+  altaria_greninja v vespiquen         49.6  54.0  54.2 |  61.4 (35) /  45.8 (60)
+  altaria_greninja v suicune           33.6  36.8  34.8 |  53.9 (38) /  43.4 (61)
+  altaria_greninja v hydreigon         58.8  39.2  41.4 |  64.7 (17) /  53.7 (41)
+  altaria_greninja v weezing           33.2  31.6  41.4 |  50.0 (16) /  50.0 (28)
+  altaria_greninja v blaziken          44.8  44.5  42.1 |  70.6 (17) /  61.1 (27)
+  rayquaza         v altaria_greninja  36.2  34.2  61.6 |  52.8 (36) /  51.6 (62)
