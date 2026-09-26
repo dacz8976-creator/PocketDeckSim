@@ -1,4 +1,6 @@
-Decision this informs: whether kpr (each Active priced as it will stand at its next attack, in the Active score and the threat clock) goes into the pilot on top of kp3, read against kp3 by rule v2. kpr does what it was built for: Hydreigon uses Hyper Ray without a knockout on 90% of the turns it can, against kp3's 21%. But on its own table the fit to Limitless gets worse: mean squared miss 176.1 against kp3's 112.2 (and k3's 159.3), and Hydreigon, already over-rated, gains the most (+5.8 ± 1.9). Engine commit e09fb46 for the kpr3 table (legality_scan SHA-256 `c41b23e0208506c7bf7056db710413f8699b421ad2f9813d4af81aae35eb1aa5`; every later branch commit up to this README has the same `engine/`). k3 and kp3 replayed the whole table unchanged at 53638a7 (14,000 of 14,000 each), kq3 too (14,000 of 14,000; kd3 1,120 of 1,120 on the first 40 deals), and k3, kp3 and kq3 again on the first 40 deals at the table's own build (1,120 of 1,120 each).
+Decision this informs: whether kpr (each Active priced as it will stand at its next attack, in the Active score and the threat clock) goes into the pilot on top of kp3. **Decided: not adopted; kp3 stays the pilot** (the laptop's rule-v2 reading, main 055f6f0, `rl/results/table_readings_2026-09-24/kpr3_paired_reading.md`, which supersedes this file's fit figures: on scoreboard v2's 27-cell decision set kp3 131.7 → kpr3 206.4, ΔMSE +74.7, 95% +28.4 to +123.1, whole interval above zero, so "do not adopt" on the metric before any veto; real-error margin −3.60, 90% −4.37 to −1.45). kpr does what it was built for: Hydreigon uses Hyper Ray without a knockout on 90% of the turns it can, against kp3's 21%. But the change reaches every deck: 13,117 of the 14,000 paired games (93.7%) play differently from kp3's and 4,052 (28.9%) change result. Engine commit e09fb46 for the kpr3 table (legality_scan SHA-256 `c41b23e0208506c7bf7056db710413f8699b421ad2f9813d4af81aae35eb1aa5`; no later branch commit up to aa87fa3 touches `engine/`). Identity: k3, kp3 and kq3 replayed the whole table unchanged at 53638a7, one amendment before the table (14,000 of 14,000 each; kd3 1,120 of 1,120 on the first 40 deals); the table's own build is covered by 1,120 games per bot (k3, kp3, kq3 on the first 40 deals of every pairing, all identical) plus a kpr-only diff (14c7d9b, reachable only through kpr's flag).
+
+Corrections of Sept 26, from Fable's review (`rl/results/fable_reviews_2026-09-26/kpr_readout_review.md` on main) and the laptop's reading, are marked "(Sept 26)" below; the original sentences they replace are in the history of this file (aa87fa3).
 
 Seeds: the table's deals only. 72,000,000 + pairing × 10,000 + i, i < 500, even i = first-named deck in seat 0.
 
@@ -26,8 +28,8 @@ Seeds: the table's deals only. 72,000,000 + pairing × 10,000 + i, i < 500, even
 **The spec and its amendments,** all registered before any kpr table, each with its reason in the commit message:
 - 9a35f54: the registered spec (Dustin's option 2: the clock too, not only the score).
 - 0adfeb7: two reviews' fixes: timing through the next turn on the owner's turn, min of the clocks, projected damage, the discard pile taken once, Dragon's Blessing's choice, the self-knockout guard.
-- 1981bb4: each side over its own horizon (the opponent at its next attack). Dustin's go-ahead after the second read found a turn-start step against the searcher of up to about 800 in the Suicune rows.
-- 14c7d9b: the own reading counts the turn as over where the search scores the EndTurn before it (the Caterpie case), from the adversarial review.
+- 1981bb4: each side over its own horizon (the opponent at its next attack), after the second read found a turn-start step against the searcher of up to about 800 in the Suicune rows. (Sept 26, the record of "Dustin's go-ahead", Fable's question 4.) The go-ahead was given in this cloud session's chat, which is not in the repo; this is the cloud's record of it. After 0adfeb7 was pushed (21:13 UTC Sept 25) and before 1981bb4 was written (21:50), the cloud asked, as a multiple-choice question: "kpr's spec now has five changes from the reviews: the four I listed before, plus this fix for the opponent's side. Can I make the fix, rerun the checks (tests, mutation checks, a replay proving the other bots are unchanged, and a quick adversarial review), and then run the kpr table?" Dustin chose "Fix it, then table (Recommended)". The laptop session then relayed the same instruction via Dustin ("Fix it, then table. Record the opponent-side fix and its reason in the spec before any table, rerun the tests, mutation checks, the k3/kp3/kq3 replay and the adversarial review, then run the 28-matchup kpr table."), which reached the cloud after 1981bb4 had been pushed.
+- 14c7d9b: the own reading counts the turn as over where the search scores the EndTurn before it (the Caterpie case), from the adversarial review. (Sept 26) It had no review of its own: the adversarial review's skeptics read it at HEAD while checking the finding it fixed, and its guard is one test plus four mutations (all caught at e09fb46), not a separate read.
 - 53638a7, e09fb46: tests only.
 
 ## How it was checked before the table
@@ -41,7 +43,7 @@ Seeds: the table's deals only. 72,000,000 + pairing × 10,000 + i, i < 500, even
 
 `kpr3_500.{txt,jsonl}`: all 28 pairings × 500 table deals, one line per game. No rule findings.
 
-**Against Limitless, over 28 cells:**
+**Against Limitless: the Sept 23 table, pooled over all 28 cells including the quarantined Altaria v Sceptile** (`analyze_tables.py` reads `limitless_check_2026-09-23.md`). (Sept 26) This is not the plan's decision table; the laptop's reading on scoreboard v2's 27-cell decision set supersedes it (kp3 131.7, kpr3 206.4, k3 177.5; real error 8.6 to 12.2 points).
 
 | bot | mean abs(miss) | mean squared miss |
 |---|---:|---:|
@@ -78,7 +80,9 @@ Seeds: the table's deals only. 72,000,000 + pairing × 10,000 + i, i < 500, even
 - Altaria v Suicune −6.6 (−11.7, −1.5)
 - Altaria v Blaziken −6.0 (−11.0, −1.0)
 
-Every cell, against k3 and kp3: `../per_game_table_2026-09-25/analyze_tables.py --base <k3_500 or kp3_500_*> --other kpr3_500.jsonl`. Deck averages: `deck_averages.py` (and `--paired`).
+Every cell, against k3 and kp3: `../per_game_table_2026-09-25/analyze_tables.py --base <base file> --other kpr3_500.jsonl`, where the base is `../per_game_table_2026-09-25/k3_500.jsonl`, or for kp3 one file made by joining its two parts (`cat ../public_pricing_2026-09-25/kp3_500_worst5.jsonl ../public_pricing_2026-09-25/kp3_500_rest.jsonl > kp3_500_all.jsonl`); (Sept 26) as first written the command couldn't run for kp3, whose table is two files. Deck averages: `deck_averages.py` (and `--paired`).
+
+**The footprint (Sept 26; the plan registers a candidate with it, and the reserve route keys on 15%).** kpr3's moves differ from kp3's in 13,117 of the 14,000 paired games (93.7%); 883 are identical (kp3 and k3 share 1,242). 4,052 games (28.9%) change result. Least-changed cell Blaziken v Sceptile (413 of 500 differ), most Altaria v Vespiquen and Vespiquen v Weezing (492 of 500). With kpr3 on one deck only (the laptop's mixed rows) it changes 65% (Sceptile) to 89% (Altaria) of that deck's games. **The discard-attack census's prediction, that a projected-readiness term would "mainly change Hydreigon", is recorded as missed.** 9a35f54's general warning ("it moves more than the discard decks") was right; the census was not. The reserve route is closed for kpr (footprint, no-harm bound and own-side conditions all fail).
 
 **Hyper Ray without a knockout** (turns where it was on offer and wouldn't knock out; used, of those turns):
 
@@ -93,21 +97,30 @@ Every cell, against k3 and kp3: `../per_game_table_2026-09-25/analyze_tables.py 
 | Weezing | 33% (103 of 315) | 34% (78 of 231) | 95% (279 of 295) |
 | all | 20% | 21% | 90% |
 
-For reference, the census reading puts the network at 99% and the see-everything searched bots at 82–84%. Knockout turns are used as before (kpr3 passes 38 of 2,434, kp3 88 of 2,334).
+For reference, the census reading puts the network at 99% and the see-everything searched bots at 82–84%. (Sept 26) Knockout turns are used as before pooled (kpr3 passes 38 of 2,434, kp3 88 of 2,334), but not in Hydreigon v Vespiquen, the cell that moved most: there kp3 passed 79 of 353 knockout-able turns (22.4%) and kpr3 35 of 352 (9.9%); every other Hydreigon cell passed 0 to 4 under both. So that cell's +15.8 mixes two Hyper Ray changes with whatever Vespiquen's side did.
+
+**Other behaviour that moved (Sept 26):** Vespiquen's Chase Order choices went from 3,510 to 3,762 and the discard rate from 67.5% to 73.6% (higher in six of seven cells; Combee discards 460 to 588). Counters for Mega Burning, Terminating Tail, Diving Icicles and the attach Abilities (Roar in Unison, Ice Maker) did not exist at this table; they were added to `legality_scan` on Sept 26 (a03f491) and their kp3 and kpr3 figures, from a full identity replay, are in `../kpr_counters_2026-09-26/`.
 
 What this shows, plainly:
 
 - **kpr fixes the play it was built for.** Hydreigon now chips with Hyper Ray, the way the network and the searched bots do, where kp3 almost never did.
-- **On this table that moves Hydreigon further from Limitless.** It was already over-rated under kp3 (47.4 against 42.6); kpr3 puts it at 53.2. The discard-attack census predicted exactly this before kpr was registered, and the reading set then with Fable applies: a change that is right by the rules and moves a deck away from reality points at blind spots on the other side of its matchups (or the population), not at undoing the change.
-- **The change is broader than Hyper Ray,** as the registration warned: counting the turn's attach and next turn's Energy moves every deck.
-  - Blaziken gains too (+4.3, past Limitless).
+- **Hydreigon ends further above Limitless** (47.4 against 42.6 under kp3; 53.2 under kpr3). (Sept 26) But that is not the explanation of the worse fit, and the story as first written here (chip, so Hydreigon lifts, so the fit is worse) was asserted, not shown:
+  - Hydreigon's seven cells carry 42% of the rise in mean squared miss; the other 21 cells carry 58%, Suicune's as much as Hydreigon's.
+  - Across Hydreigon's cells, the rise in chipping has no relation to the score change (r = −0.24; v Sceptile 6% to 97% and −3.6).
+  - The laptop's mixed rows attribute the table: kpr3 pilots Hydreigon better (+3.8 ± 1.7 on its own side) but Altaria, Lucario, Vespiquen and Weezing worse on theirs; Blaziken and Suicune gain because their opponents are piloted worse.
+  - "A change that is right by the rules" is not earned for kpr as built: the change is much broader than the chip.
+- **The change is broader than Hyper Ray:** counting the turn's attach and next turn's Energy moves every deck (the footprint above).
+  - Blaziken gains too (+4.3). (Sept 26) On the Sept 23 cells that is no change in its gap (2.1 to 2.2); on v2 it is a deck veto (+3.6).
   - Vespiquen and Altaria lose ground and move further under Limitless.
   - Weezing drops past it (44.7 to 40.0, against 42.7).
-  - Lucario and Suicune move toward Limitless.
-- **The overall fit is the worst of the five bots** (mean squared miss 176.1). The deck-gap vetoes may fire: Vespiquen (42.9 against 56.5) and Hydreigon (53.2 against 42.6).
+  - Lucario moves toward Limitless. (Sept 26) Suicune does only as a deck average on the Sept 23 cells, and moves away on v2: four of its cells' misses grew by 6 or more (Altaria v Suicune, Lucario v Suicune, Hydreigon v Suicune, Suicune v Vespiquen), offset by others.
+- **The overall fit is the worst of the five bots.** (Sept 26) The vetoes, for the record only (the metric decides first): on v2, five deck vetoes (Hydreigon +5.8, Blaziken +3.6, Altaria +3.5, Vespiquen +2.9, Weezing +2.8) and eight cells whose miss grows by more than 6, three of them band-excluded (Blaziken v Weezing, Hydreigon v Suicune, Hydreigon v Vespiquen). With the mixed rows, four cells and four decks count; Hydreigon's deck veto does not, because kpr3 pilots Hydreigon better. Altaria also trips on the Sept 23 cells (gap 4.3 to 7.3), which the first version of this list left out.
 - The laptop's adoption rule and its mixed rows decide. This file only reports.
 
-## Known limits (kept as registered)
+## Known limits
+
+(Sept 26) This README was first committed after the table (aa87fa3), so this list is post hoc as a document. Its content was known before the table: the first two items were findings of the adversarial review of 1981bb4 (`review_1981bb4_workflow_output.json`, committed in df46e0a before the first table game), the rest were in the commit messages of 9a35f54, 0adfeb7, 1981bb4 and 14c7d9b. e09fb46's message says two limits were "written into the kpr README"; no README existed then.
+
 
 - **An end-of-turn knockout leaves the promotion pending at the leaf** (review finding). When the searcher's end of turn (Deceptive Needle, poison, burn, Bad Dreams) knocks the opponent's Active out, the search scores the leaf with the replacement not yet promoted, so the opponent reads "no Active"; on a line where an attack takes the knockout, the replacement is promoted and projected. k has the same leaf, but there an unpowered replacement reads about 0 anyway; kpr widens the gap by up to 500 × the replacement's projected readiness plus 100 per clock turn, in favour of letting the end of turn take the knockout. Five of the eight lists do end-of-turn damage.
 - **The self-knockout guard reads the HP now**, not after end-of-turn damage that lands before the owner's next attack (Checkup burn or poison, Bad Dreams, Deceptive Needle). A Roar in Unison priced now can become one that would knock the holder out by then.
