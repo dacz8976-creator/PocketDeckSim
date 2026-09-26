@@ -6,6 +6,37 @@ Seeds: kt's table on the table's deals only (72,000,000 + pairing × 10,000 + i,
 
 **Source.** Fable's proposed registration text (`rl/results/fable_reviews_2026-09-26/kt_spec_review.md` on main, "The registration text Fable proposes the cloud commit"), taken as written except where marked **[amended]** or **[filled]** below, with the reason beside each; the laptop's answers of Sept 26 (A/B size, opponent seat, Jasmine's denominator, seed block, kp3 regenerated after the rules/09 fixes); and the laptop's carrier census for clause (d) (`rl/results/kt_carrier_census_2026-09-26/README.md` on main). The earlier draft (`../tool_turn_effect_census_2026-09-25/README.md`, c002d2f) is superseded; its census stands. Any change after this commit is a dated amendment before any kt game, and a spec change after any reading is a new code.
 
+## Amendment 1 (Sept 26, before any kt code or game): Dustin's rulings
+
+Dustin's rulings of Sept 26 morning, recorded by the laptop in section 8 of `docs/REVIEW_2026-09-24_direction.md` (main, 0d424cf and c7999ef), applied here. Where this section and the text below differ, this section holds.
+
+- **The reserve route is approved** ("the gain must show on at least one deck that isn't yours"). **Each code's route is fixed by its measured footprint, read before anything else:**
+  - under 15%, the reserve route;
+  - 15% or more, the ordinary adoption rule.
+
+  This applies to kt3 and kta3 alike. The expectations below (kt3 over 15%, kta3 under 5%) are predictions, not route choices.
+- **(i) Dragonair Mega Rayquaza ex is not Dustin's deck.** "His decks" means only the files he gave the project. So reading 2 of the carrier section below holds.
+- **(ii) A panel archetype may serve as the (d) deck.** "The same ruling covers Suicune for the Tool fix."
+- **Both carriers are self-cutting attacks,** not Tools or Supporter effects: Gouging Fire's Scorching Interruption and Frigibax's Stiffen. The census's section-1 wording question (do these count as "the relevant cards"?) is therefore treated as answered yes by these two rulings, as the laptop records it. It was not asked as a separate question.
+- **Clause (d), fixed now as one test, so there are not two chances to pass:**
+  - **The test:** kta3's own-side gain beyond paired noise on the Dragonair Mega Rayquaza ex list (`rl/results/kt_carrier_census_2026-09-26/decks/c-dragonair_mega_rayquaza_ex.txt`), pooled over its eight rows against the panel lists.
+    - One arm has kta3 on the Rayquaza list, the other kp3; kp3 plays the panel list in both.
+    - 8 × 500 deals per arm (8,000 games), on the new seed block below.
+  - Rayquaza carries the card in 135 of its 143 lists, 132 of them with two copies. The panel's Suicune list carries one Stiffen card.
+  - **Reported beside it, not a second test:** Suicune's own side on its seven kta3-v-kp3 mixed rows (the same rows (c) reads). Also the Rayquaza archetype's Limitless cells before and after (pooled 46.3 ± 4.8).
+  - **For Dustin or the laptop to confirm before any kta game:** Rayquaza as the one test, with Suicune reported. Ruling (ii) also allows Suicune as the test; choosing it, or pooling both, is a further dated amendment, and only before any kta game.
+- **Seeds for the Rayquaza rows:** 22,700,000,000 + panel index × 10,000 + i, i < 500. Even i puts the Rayquaza list in seat 0. The panel lists are the eight table lists in `decks/research` (card for card the panel's `decks/screen/opponents/t-*.txt`); panel index is the list's position in sorted order (altaria 0 to weezing 7). The block 22,700,000,000 – 22,700,079,999 is written into START_HERE's seed table in this commit.
+- **The broader test group** Dustin approved for engine and pilot changes (the gauntlet: the table decks, the six held-out archetypes against them, and additions for missing Energy types): kt takes the parts Dustin approves by a further dated amendment, before the table they belong to, as koa did (its amendment 1).
+- **Still Dustin's:** section 8 lists kt's registration as his decision (item 2: Fable's text as the base, switch 1 as its own code, and the Hydreigon deck-gap veto as switch 2's expected readout). This file is the text he is asked to approve. The engine fixes come first either way.
+- **Engine repairs now in the order section (step 1):** the laptop's repair list of Sept 26 adds five more:
+  - Mimikyu ex's Disguise used up by a 0-damage attack;
+  - Bad Dreams stopped by three "by attacks" protections;
+  - Clemont's Backpack's +20 on non-attack damage and on its owner's Pokémon;
+  - Roar in Unison offered under Binding Snow's lock;
+  - Clemont's search passing the 10-card hand.
+
+  Each is its own commit with a full k3 and kp3 replay. kp3's reference table is regenerated after the last of them (`../rules09_fixes_2026-09-26/`).
+
 ## BASE AND CODES
 
 - kt<N> = kp<N> (k's blind search, PublicPricingPlayer with the 62 audited texts) with three EvalFeatures flags, all on. kq's, kd's and kpr's features off. Built on the pilot the kpr reading leaves: **kp3** (the laptop's rule-v2 reading, main 055f6f0, did not adopt kpr3). If that changes, this registration is re-issued, not amended.

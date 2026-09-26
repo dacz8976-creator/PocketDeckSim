@@ -156,3 +156,4 @@ its seed-overlap check; the rest was added since.
 | 97,000,000 – 97,999,999 | crossplay |
 | 22,000,000,000 – 22,599,999,999 | Claude Code, Sept 25 overnight list: kp3 equivalence test (22.0B), brew card-draw model (22.1B, Python), brew goldfish (22.2B), Lucario network games (22.3B), their rollouts (22.4B) and k3 probes (22.5B) |
 | 22,600,000,000 – 22,699,999,999 | Claude Code, kt's Dustin-deck A/B (registered Sept 26 in `rl/results/kt_2026-09-26/README.md`; 1,920 games per arm; no game played yet) |
+| 22,700,000,000 – 22,700,079,999 | Claude Code, kt's clause (d) rows: the Dragonair Mega Rayquaza ex list against the eight panel lists (kt amendment 1, Sept 26; 22.7B + panel index × 10,000 + i, i < 500; no game played yet) |
