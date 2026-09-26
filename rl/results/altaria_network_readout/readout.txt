@@ -1,0 +1,134 @@
+Altaria network run readout — diag-altaria-lucario   (2026-09-26 03:07)
+
+Confirmed checkpoints (state.json verdict picks, recorded by finish() in train_v5.py): altaria ckpt_1800k_avg (+20.7 over k3), lucario ckpt_1600k_avg (+12.4 over k3).
+  REPORT.txt names the same ones as 'used for the verdict': altaria yes, lucario yes
+  Weights: ckpt_1800k_avg_altaria.npz ec40355a1833, ckpt_1600k_avg_lucario.npz 39facc35aebf. Add-on 0fee43ceaf9c (the run's own)
+
+Preset: altaria (PRESET_READING.md in the run folder). Limitless: Altaria v Lucario 71.9 ± 4.9.
+Audited (decks/research/altaria.txt; card texts from lib/card.py's database, ids read by the engine from the deck file):
+  attacks: Mega Harmony (Mega Altaria ex), Hypnoblast (Espeon), Dark Slumber (Darkrai), Sing (Swablu), Sleepy Lullaby (Igglybuff), Stampede (Eevee).
+  abilities: Boosted Evolution (Eevee; evolve-early), Bad Dreams (Darkrai; asleep-turns).
+  attacks that put the opponent's Active to sleep: Dark Slumber, Hypnoblast, Sing, Sleepy Lullaby. Bench size counted when Mega Harmony is used.
+  every attack and ability in the list is audited: yes.
+  'Would knock out' rule: engine.
+
+Deals: the run's own confirmation deals, 2,000 of them: seed 18,200,000,000 + i for i = 0 to 1999 (settings 'confirm' base), altaria in seat 0 on even i and seat 1 on odd i, as in the bars; the engine's coin decides who goes first.
+  No new seeds. Reusing this block is deliberate: it is reserved for this run's evaluation, and it makes the
+  four rows below paired. Network v network starts from the same deal as the bar; later draws can differ
+  once the play differs.
+
+1. Altaria's result on those deals (row = who pilots each side). 'change' = won % minus k3 v k3's on the same
+   deals, with a paired 95% interval (1.96 x standard deviation of the per-deal difference / sqrt n).
+   'won only' = deals Altaria won here and not in k3 v k3 / the reverse. Score counts a draw as half (Limitless's way).
+
+  condition                                  n   won %  draws  score %    change         won only here / in bar
+  k3 Altaria v k3 Lucario (the bars)      2000    55.3      0     55.3      +0.0 ±0.0          0 / 0    
+  network Altaria v k3 Lucario            2000    76.0      0     76.0     +20.7 ±2.6        590 / 176  
+  k3 Altaria v network Lucario            2000    42.9      0     42.9     -12.4 ±2.6        230 / 478  
+  network v network (new)                 2000    68.4      0     68.4     +13.1 ±2.8        549 / 287  
+  Check: the run's own confirmed margin for Altaria is +20.7; this table's +20.7 (same); bars 55.3% in state.json.
+
+2. The audit (PRESET_READING item 3, descriptive): the Altaria network's play, per turn of its own where the
+   move was on offer. Attacks: used / passed (use %); passed = the turn ended with EndTurn while it was on
+   offer (classified there); 'other' = offered earlier in the turn, not when it ended.
+   'KOs' = a sure knockout, the knockout audit's definition (audit_v5.py): in each of 4 copies of the true
+   game under different chance seeds, the move gains the pilot at least one point (analysis only; the game
+   itself is untouched). Every damage change and end-of-turn effect counts (for Altaria: Mega Harmony's
+   bench bonus, Weakness, Training Area, Bad Dreams), which the printed damage leaves out. This rule is primary.
+   Under each row, 'fixed rule (printed damage), same turns' splits the same turns by the Hydreigon readout's rule
+   (Lucario's Active had no more HP left than the attack's printed damage), so that table stays comparable.
+   The two rules are not interchangeable: the fixed rule ignores Mega Harmony's bench bonus, Weakness, Training Area and Bad Dreams.
+   k3's and kp3's own counts on the same deals: k3_counts.py (--bot k3, --bot kp3); the network against kp3's
+   Lucario: kp3_rows.py. Every script prints these same lines, so the columns line up.
+
+  Mega Harmony (Mega Altaria ex)                     KOs: used / passed    doesn't KO: used / passed   other
+    network Altaria v k3 Lucario (replayed)         1092 / 3    (100%)       308 / 3    (99%)      127
+      fixed rule (printed damage), same turns        241 / 3    (99%)       1159 / 3    (100%)     127
+    network v network (live)                         960 / 8    (99%)        344 / 3    (99%)      212
+      fixed rule (printed damage), same turns        245 / 4    (98%)       1059 / 7    (99%)      212
+  Hypnoblast (Espeon)                                KOs: used / passed    doesn't KO: used / passed   other
+    network Altaria v k3 Lucario (replayed)          967 / 8    (99%)       1677 / 6    (100%)      86
+      fixed rule (printed damage), same turns        640 / 11   (98%)       2004 / 3    (100%)      86
+    network v network (live)                        1109 / 15   (99%)       1442 / 14   (99%)      117
+      fixed rule (printed damage), same turns        643 / 18   (97%)       1908 / 11   (99%)      117
+  Dark Slumber (Darkrai)                             KOs: used / passed    doesn't KO: used / passed   other
+    network Altaria v k3 Lucario (replayed)            7 / 5    (58%)        108 / 5    (96%)       13
+      fixed rule (printed damage), same turns         11 / 6    (65%)        104 / 4    (96%)       13
+    network v network (live)                          40 / 2    (95%)        154 / 1    (99%)        8
+      fixed rule (printed damage), same turns         51 / 2    (96%)        143 / 1    (99%)        8
+  Sing (Swablu)                                      KOs: used / passed    doesn't KO: used / passed   other
+    network Altaria v k3 Lucario (replayed)            0 / 0    (—)          812 / 43   (95%)      639
+      fixed rule (printed damage), same turns          0 / 0    (—)          812 / 43   (95%)      639
+    network v network (live)                           0 / 0    (—)          946 / 54   (95%)      658
+      fixed rule (printed damage), same turns          0 / 0    (—)          946 / 54   (95%)      658
+  Sleepy Lullaby (Igglybuff)                         KOs: used / passed    doesn't KO: used / passed   other
+    network Altaria v k3 Lucario (replayed)           48 / 0    (100%)      1360 / 35   (97%)      325
+      fixed rule (printed damage), same turns         51 / 0    (100%)      1357 / 35   (97%)      325
+    network v network (live)                         101 / 3    (97%)       1631 / 36   (98%)      365
+      fixed rule (printed damage), same turns        106 / 3    (97%)       1626 / 36   (98%)      365
+  Stampede (Eevee)                                   KOs: used / passed    doesn't KO: used / passed   other
+    network Altaria v k3 Lucario (replayed)            9 / 0    (100%)        47 / 80   (37%)      216
+      fixed rule (printed damage), same turns          9 / 0    (100%)        47 / 80   (37%)      216
+    network v network (live)                           6 / 0    (100%)        37 / 139  (21%)      226
+      fixed rule (printed damage), same turns          6 / 0    (100%)        37 / 139  (21%)      226
+  Boosted Evolution (Eevee): turns the Active Eevee could evolve only because of it (the player's first turn, or the turn it was played) / turns it evolved then (use %)
+    network Altaria v k3 Lucario (replayed)          690 / 664   (96%)
+    network v network (live)                         706 / 677   (96%)
+  Bad Dreams (Darkrai) is automatic; counted as Asleep turns created: turns ending with Dark Slumber / Hypnoblast / Sing / Sleepy Lullaby used without a knockout,
+  per 100 of the pilot's turns with a choice (setup excluded), and how many of those turns had a Darkrai in play (and their share; Bad Dreams needs a Darkrai in play)
+    network Altaria v k3 Lucario (replayed)         3957 of 10271 (38.5 per 100)   with Darkrai in play 3412 of 3957 (86%)
+    network v network (live)                        4173 of 10916 (38.2 per 100)   with Darkrai in play 3630 of 4173 (87%)
+    Limits: a count of sleep attacks used, not of damage dealt. Not tracked: waking at the Checkup, and the Bad Dreams hits that
+    actually landed. A sleep attack on an Active that was already Asleep also counts.
+  Bench size when Mega Harmony was used (Benched Pokemon at that moment: 0 / 1 / 2 / 3; mean)
+    network Altaria v k3 Lucario (replayed)         26 /  258 /  729 /  387   (mean 2.06 of 1400)
+    network v network (live)                         6 /  180 /  644 /  474   (mean 2.22 of 1304)
+  Attacking and benching on offered turns (setup excluded; audit_v5.py's definitions): of the turns where an
+  attack / a Basic to the Bench was on offer, the share where one was made
+    network Altaria v k3 Lucario (replayed)        attacked  6435 of 6736  (96%)   benched  3973 of 5957  (67%)
+    network v network (live)                       attacked  6770 of 7168  (94%)   benched  3958 of 6009  (66%)
+  Replays: 2,000 of 2,000 Altaria confirmation games replayed exactly (winner and turns); the Altaria network re-chose the recorded move at 35,909 of 35,909 decisions, the Lucario network at 932 of 932 (first 50 of its confirmation games). All equal = the right weights were loaded.
+
+3. The knockout audit (PRESET_READING item 3; audit_v5.py, written by the run's report steps). 'bot' = the
+   network piloting the first deck, 'k3' = k3 piloting it on the same seeds (the bars).
+   STATED DEVIATION from PRESET_READING item 3, which asks for the audit "network against kp3": the knockout
+   audit shown here is the run's own, the network against k3. Reason: a knockout audit of net|kp3 would be new
+   code. The decisive D (net|kp3 win % minus kp3|kp3 win %, kp3_rows.py) is unaffected, and the attack and bench
+   counts for net|kp3 are live in kp3_rows.py's audit block. A knockout audit against kp3, if ever needed for a
+   decision, is a later registered addition.
+
+  The altaria network's ckpt_1800k_avg (v5_diag-altaria-lucario_altaria_ckpt_1800k_avg.json; complete; weights the same as this readout's):
+    matchup               who    turns  sure win missed  sure KO missed  attacked  benched  giveaways          checkup deaths
+    altaria vs lucario    bot    11468        0 of 1074       50 of 2175        96%      67%        0.0           0.0 / 0.0 / 0.0
+    altaria vs lucario    k3     12312        0 of 733        45 of 1831        98%      89%        0.0                 0.0 / 0.0
+    lucario vs altaria    k3     10642        0 of 889        15 of 2841        99%      94%        0.0                 3.0 / 0.0
+  The lucario network's ckpt_1600k_avg (v5_diag-altaria-lucario_lucario_ckpt_1600k_avg.json; complete; weights the same as this readout's):
+    matchup               who    turns  sure win missed  sure KO missed  attacked  benched  giveaways          checkup deaths
+    altaria vs lucario    k3     12312        0 of 733        45 of 1831        98%      89%        0.0                 0.0 / 0.0
+    lucario vs altaria    bot    10904        0 of 1140       82 of 3230        83%      70%        0.0           8.5 / 0.0 / 0.0
+    lucario vs altaria    k3     10642        0 of 889        15 of 2841        99%      94%        0.0                 3.0 / 0.0
+  Check: section 2's attacking/benching counts for network Altaria v k3 Lucario (6736, 6435, 5957, 3973) equal the audit's (6736, 6435, 5957, 3973) (turns offered, made; attack then bench).
+
+4. READING (PRESET_READING.md, fixed before training; applied as written, no new thresholds)
+  Identity gates (PRESET 'Before anything is read'): the recorded confirmation games replayed exactly: yes; the network re-chose every recorded move: yes.
+  The pair checks passed before training (PRESET; rl/results/altaria_pair_checks_2026-09-25/). This readout
+  does not run them.
+  Transparency (what was seen before this readout ran): the dry run replayed 200 Altaria k3 v k3 bar rows (fixed
+  before training) as an identity precheck; the reviewer glimpsed STATUS.txt's header (games played, bars 55/45,
+  draw gate) with no checkpoint margins. Also: while checking progress at 23:11 CDT on Sept 25, the laptop
+  session's own grep of STATUS.txt showed the live-evaluation margin lines for checkpoints 1000k-1400k. This was
+  after every definition had been fixed and approved, and nothing in the scripts was changed because of it.
+  Item 1, the run's own RUN5 line: the Altaria network's confirmed margin over k3 is +20.7 points on 2,000 paired bar deals (state.json; its paired 95% interval is in table 1). +10 or more counts as a gain: yes.
+  Item 2, the decisive comparison D = (network v kp3) - (kp3 v kp3): kp3_rows.py, on the diagnostic add-on.
+  Item 3, the audit: sections 2 and 3 above, with k3_counts.py's k3 and kp3 counts and kp3_rows.py's network
+  v kp3 counts beside them (descriptive; the knockout audit is against k3, the deviation stated in section 3).
+  Network v network against Limitless (Altaria 71.9 ± 4.9, results/limitless_check_2026-09-23.md), scores
+  with draws as half:
+    k3 v k3 55.3 (off by 16.6); network v network 68.4 (off by 3.5): moved toward Limitless; inside Limitless's 95% range.
+    One side only: network Altaria v k3 Lucario 76.0 (off by 4.1); k3 Altaria v network Lucario 42.9 (off by 29.0).
+    Beside it, the Lucario network's own flaws (knockout audit, v5_diag-altaria-lucario_lucario_ckpt_1600k_avg.json): it missed 82 of 3,230 sure knockouts
+    (k3 piloting Lucario on the bars: 15 of 2,841) and 0 of 1,140 sure wins (k3: 0 of 889); attacked 83% (k3 99%), benched 70% (k3 94%).
+    A Lucario network that misses more than k3 flatters Altaria in the network v network row.
+  Item 4: no follow-up training, whatever this shows.
+
+Took 111 s with 8 workers. Games played here: 2,000 network v network, 2,050 confirmation replays.

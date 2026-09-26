@@ -1,0 +1,76 @@
+Run 5 trainer (one network per deck, encoding v2.2) — diag-altaria-lucario   (updated 2026-09-26 01:35)
+Networks: altaria, lucario · each pilots only its own deck · the 1 pairing between them, evenly
+State: FINISHED — safety cap of 2,000,000 games reached at 2,000,000 games; best confirmed checkpoint per network altaria ckpt_1800k_avg (+20.7), lucario ckpt_1600k_avg (+12.4). The report steps (audit, REPORT.txt) run next, automatically
+
+The bars: k3's own win rate piloting the row deck against k3 piloting the column deck
+(2,000 games per pairing, on the confirmation seeds):
+             altaria  lucario
+  altaria          —      55%
+  lucario        45%        —
+
+Games played: 2,000,000 (safety cap 2,000,000) · 8.6 h of training + 0.5 h of evaluation · 74 games/sec lately
+Trainer: each recorded move trained on 2.0 times lately (2.0 overall); target 2. Under 1 means the trainer is falling behind (try fewer workers).
+Turn-limit draws in training, last 20,000 games: 0.1% (started at 3%). Tiebreak shaping: off.
+Draw gate at 250,000 games: passed (0.3%; needed under 10% and below the start)
+Training games vs earlier checkpoints: the current networks won 64% of 400,557
+
+Checkpoints. Each network's margin = its win rate minus k3's own result in the same matchup,
+averaged over its 1 matchup (1,000 games each, seeds the confirmation never uses).
+'vs previous' = of the games this checkpoint and the one before it decided differently, the share this one
+won (50% = no change). 'vs random' = against uniformly random moves.
+
+  checkpoint                 altaria               lucario
+                 margin  prev random   margin  prev random
+  ckpt_100k        -4.9    50%   98%     -1.7    50%   96%
+  ckpt_200k        +3.7    62%   98%     +3.8    59%   98%
+  ckpt_400k        +3.2    49%  100%     +3.6    50%   98%
+  ckpt_600k        +8.6    58%  100%     +3.8    50%   98%
+  ckpt_800k        +5.1    45%  100%     +5.9    53%  100%
+  ckpt_1000k      +12.8    62%  100%     +5.7    50%   98%
+  ckpt_1200k      +14.3    52%  100%     +4.9    49%   98%
+  ckpt_1400k      +13.7    49%  100%     +5.4    51%   99%
+  ckpt_1600k      +13.2    49%  100%     +7.9    54%   99%
+  ckpt_1800k      +11.7    47%  100%     +6.5    48%   98%
+  ckpt_2000k      +15.8    57%  100%     +5.4    48%   98%
+
+Averaged copy (run 5): updated every time a network's live weights are published, avg = decay x avg + (1 - decay) x live, decay = 0.5 ** (games since that network's last update / 100,000), a half-life of about 100,000 games. It never plays training games, is never a past opponent and is never trained; level-off and stopping read the live networks only. Same seeds and seats as the live evaluation.
+
+  checkpoint  altaria live / avg (avg vs random)lucario live / avg (avg vs random)
+  ckpt_100k                  -4.9   -24.3 ( 91%)               -1.7   -19.1 ( 93%)
+  ckpt_200k                  +3.7    -5.5 (100%)               +3.8    -4.0 ( 98%)
+  ckpt_400k                  +3.2    +9.1 (100%)               +3.6    +5.1 ( 99%)
+  ckpt_600k                  +8.6   +13.9 (100%)               +3.8    +9.5 ( 99%)
+  ckpt_800k                  +5.1   +14.6 (100%)               +5.9    +9.1 ( 99%)
+  ckpt_1000k                +12.8   +13.9 (100%)               +5.7   +10.8 (100%)
+  ckpt_1200k                +14.3   +17.1 (100%)               +4.9   +11.2 ( 98%)
+  ckpt_1400k                +13.7   +20.1 (100%)               +5.4   +11.9 ( 98%)
+  ckpt_1600k                +13.2   +18.2 (100%)               +7.9   +12.3 ( 98%)
+  ckpt_1800k                +11.7   +19.6 (100%)               +6.5   +11.2 (100%)
+  ckpt_2000k                +15.8   +19.5 (100%)               +5.4   +13.0 ( 99%)
+
+Margin by matchup at ckpt_2000k (points; row = the deck's own network, column = k3's deck):
+             altaria  lucario
+  altaria          —      +16
+  lucario         +5        —
+Best checkpoint per network: altaria ckpt_2000k (+15.8), lucario ckpt_1600k (+7.9)
+Leveled off (per network) = 3 checkpoints in a row within 3 points of each other, with the newest winning no more than 55% of the games it and the one before it decided differently. It is re-read at every checkpoint and is not sticky: here it is shown for information only; this run does not stop on it and ends at its 2,000,000-game budget.
+Leveled off, by checkpoint: ckpt_100k none; ckpt_200k none; ckpt_400k none; ckpt_600k lucario; ckpt_800k lucario; ckpt_1000k lucario; ckpt_1200k lucario; ckpt_1400k altaria, lucario; ckpt_1600k altaria, lucario; ckpt_1800k altaria, lucario; ckpt_2000k lucario
+
+Confirmation of altaria's ckpt_1400k_avg (paired with the bars): margin +19.4 points over its 1 matchup; lowest altaria vs lucario +19.4.
+    altaria vs lucario      +19.4
+
+Confirmation of altaria's ckpt_1800k_avg (paired with the bars): margin +20.7 points over its 1 matchup; lowest altaria vs lucario +20.7.
+    altaria vs lucario      +20.7
+
+Confirmation of lucario's ckpt_2000k_avg (paired with the bars): margin +11.8 points over its 1 matchup; lowest lucario vs altaria +11.8.
+    lucario vs altaria      +11.8
+
+Confirmation of lucario's ckpt_1600k_avg (paired with the bars): margin +12.4 points over its 1 matchup; lowest lucario vs altaria +12.4.
+    lucario vs altaria      +12.4
+
+Best confirmed checkpoint per network (live or averaged): altaria ckpt_1800k_avg, lucario ckpt_1600k_avg. No pass/fail rule in code; the decision is read from REPORT.txt.
+
+Flags:
+  - tiebreak shaping switched off at 200,000 games (turn-limit draws under 5% at two checks in a row)
+
+The full report: REPORT.txt (verdict, confirmations, audit and held-out test).

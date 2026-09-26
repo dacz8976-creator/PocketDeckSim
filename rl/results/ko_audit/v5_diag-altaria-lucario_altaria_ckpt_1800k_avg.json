@@ -1,0 +1,100 @@
+{
+ "summary": "Knockout audit (run 4) \u2014 diag-altaria-lucario, the altaria network's ckpt_1800k_avg: 2,000 confirmation games and 2,000 bar games replayed; replay problems: 0\n\nPer matchup: the network piloting the first deck (bot) vs k3 piloting the same deck on the same seeds (k3).\n'attacked' / 'benched' = of the turns where that move was on offer, the share where it was made. Setup (turn 0) is excluded from both, as the run 2/run 3 benching benchmark excludes it. (k3 attacks 99% and benches 97%. Run 3's shared network: attacked 68%, benched 54%. Run 2's Blaziken specialist, the like-for-like bar for the pilot: benched 63%.)\nGiveaways and checkup deaths are rates per 1,000 player-turns. Checkup deaths: loose / strict (a retreat was offered that turn) / strict and still winnable (network only).\n\n  matchup               who    turns  sure win missed  sure KO missed  attacked  benched  giveaways          checkup deaths\n  altaria vs lucario    bot    11468        0 of 1074       50 of 2175        96%      67%        0.0           0.0 / 0.0 / 0.0\n  altaria vs lucario    k3     12312        0 of 733        45 of 1831        98%      89%        0.0                 0.0 / 0.0\n  lucario vs altaria    k3     10642        0 of 889        15 of 2841        99%      94%        0.0                 3.0 / 0.0",
+ "stats": {
+  "bot|altaria>lucario": {
+   "turns": 11468,
+   "win_turns": 1074,
+   "win_missed": 0,
+   "ko_turns": 2175,
+   "ko_missed": 50,
+   "give_attack": 0,
+   "checkup_loose": 0,
+   "checkup_strict": 0,
+   "checkup_strict_winnable": 0,
+   "attack_turns": 6736,
+   "attack_made": 6435,
+   "bench_turns": 5957,
+   "bench_made": 3973
+  },
+  "k3opp|altaria>lucario": {
+   "turns": 9525,
+   "win_turns": 472,
+   "win_missed": 0,
+   "ko_turns": 2218,
+   "ko_missed": 7,
+   "give_attack": 0,
+   "checkup_loose": 61,
+   "checkup_strict": 0,
+   "checkup_strict_winnable": 0,
+   "attack_turns": 5984,
+   "attack_made": 5943,
+   "bench_turns": 3125,
+   "bench_made": 2952
+  },
+  "k3|altaria>lucario": {
+   "turns": 12312,
+   "win_turns": 733,
+   "win_missed": 0,
+   "ko_turns": 1831,
+   "ko_missed": 45,
+   "give_attack": 0,
+   "checkup_loose": 0,
+   "checkup_strict": 0,
+   "checkup_strict_winnable": 0,
+   "attack_turns": 6533,
+   "attack_made": 6374,
+   "bench_turns": 5184,
+   "bench_made": 4618
+  },
+  "k3|lucario>altaria": {
+   "turns": 10642,
+   "win_turns": 889,
+   "win_missed": 0,
+   "ko_turns": 2841,
+   "ko_missed": 15,
+   "give_attack": 0,
+   "checkup_loose": 32,
+   "checkup_strict": 0,
+   "checkup_strict_winnable": 0,
+   "attack_turns": 7108,
+   "attack_made": 7061,
+   "bench_turns": 3378,
+   "bench_made": 3181
+  }
+ },
+ "replay_problems": 0,
+ "complete": true,
+ "failed_replays": [],
+ "inputs": {
+  "step": "audit",
+  "checkpoint": "ckpt_1800k_avg",
+  "checkpoint sha256": {
+   "altaria": "ec40355a1833b465c8fe52a1832258a8907943d4eada0868914c18feeb6a0d45"
+  },
+  "decks": {
+   "altaria": "435a2bebc567ca8357696e400643fdc821cc36ae4765a7a16663fd4413a3bd7f",
+   "lucario": "46a4820bc788b4fd9ac1d9491e62bf7123c467441e7e30012e42e8a70c91e3f3"
+  },
+  "settings": {
+   "pool": {
+    "altaria": "decks/research/altaria.txt",
+    "lucario": "decks/research/lucario.txt"
+   },
+   "features": "v2.2",
+   "checkup_report": {
+    "winnable_q": -0.5
+   }
+  },
+  "code": {
+   "audit_v5.py": "6f92178366d0f575e91619625f14168148af556cf95a69e63b0c2c3ee32063d2",
+   "model.py": "5bd3c6585b086d5d435635c1a022e80f3caf6e8bc644004a6a5d66ac64886f46",
+   "pdl_env.py": "34ba9661843d6f71d6fc656622b810d7276f64ff9fde87099cb37e80a080f49c",
+   "train_v5.py": "844a046ccefddf350373443a6a115177207fa6db497ec5b6a4c353102ad26780"
+  },
+  "add-on": "0fee43ceaf9cf6bc15ed2319bb08c100397621a60703880cf26ace8f044a9101",
+  "records sha256": "00d128ce170191ccce619125ac7c28f0de62401bbefb054798578d183db1b2c9",
+  "deck": "altaria",
+  "K": 4
+ },
+ "winnable_q": -0.5
+}
