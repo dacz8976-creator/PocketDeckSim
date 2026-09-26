@@ -103,14 +103,7 @@ The accepted 225430 segment revealed that a zero-HP attacker was discarded befor
   `a_direct_damage_snipe_on_togekiss_pins_the_engines_current_behaviour_no_coin` (`engine/src/hooks/core.rs`)
   fails when this is fixed. For the other attacks kd still flips the coin, as the card text says, so kd and the
   engine disagree there until the engine is fixed. Fix the engine first; kd follows.
-- **A 0-damage attack that targets the Active uses up Mimikyu ex's Disguise** (laptop's Altaria card check, 4b24b4b,
-  `rl/results/altaria_card_check_2026-09-26/` on main; upheld 3 to 0). Sing, which does no damage, removes Disguise.
-  Not reachable on the table. Fix with an identity replay.
-- **Bad Dreams (Ability damage) is stopped by three "by attacks" protections** (same source; upheld 3 to 0).
-  `PreventAllDamageAndEffects`, `PreventDamageFromBasic` (Darkrai is a Basic) and `PreventDamageIfLessOrEqual` read
-  "damage from attacks" but also stop Darkrai's Bad Dreams. Not reachable on the table. Fix with an identity replay.
-
-## Fixed Sept 26 (cloud branch `claude/pensive-ptolemy-spwc0b`; each its own commit, replays in `rl/results/rules09_fixes_2026-09-26/`)
+## Fixed Sept 26 (cloud branch `claude/pensive-ptolemy-spwc0b`; each its own commit, replays in `rl/results/rules09_fixes_2026-09-26/`; the laptop's repair list items 1 to 10)
 
 - **"Discard all Energy from this Pokémon" never puts that Energy in the discard pile** (found Sept 25 in the laptop's
   recordings check, `rl/results/recordings_check_2026-09-25/` on main; confirmed in the code here). The attack effect
@@ -177,3 +170,20 @@ The accepted 225430 segment revealed that a zero-HP attacker was discarded befor
   turn (draw, Energy, start-of-turn Abilities) with the promotion frame still below. A FinishPokemonCheckup frame now
   goes below the promotion, as point denial already did, so the turn advances after it. It reaches table games.
   **Fixed in 5bab907 (Sept 26).**
+- **A 0-damage attack that targets the Active used up Mimikyu ex's Disguise** (laptop's Altaria card check, 4b24b4b;
+  upheld 3 to 0). Sing does no damage, so it doesn't "first damage" the Pokémon. The zero-damage skip now comes
+  before the Disguise check in `handle_damage`. **Fixed in 02fe9de (Sept 26).**
+- **Bad Dreams (Ability damage) was stopped by three "by attacks" protections** (same source; upheld 3 to 0): Hide
+  (`PreventAllDamageAndEffects`), Blocking Shell (`PreventDamageFromBasic`) and Harden (`PreventDamageIfLessOrEqual`).
+  They now gate on `is_from_active_attack`, as Safeguard and Shell Shield do. **Fixed in 53cba79 (Sept 26).**
+- **Clemont's Backpack's +20 applied to non-attack damage and to its owner's Pokémon** (laptop's Raticate/Manectric
+  card check, `rl/results/raticate_manectric_card_check_2026-09-26/`; upheld 3 to 0): a Poisoned or Burned Heliolisk
+  took +20 at Checkup. "Attacks used by your Magneton or Heliolisk do +20 damage to your opponent's Pokémon": the
+  bonus now needs an attack's damage to the opponent's Pokémon (Benched ones still count). **Fixed in 213c090
+  (Sept 26).**
+- **Roar in Unison was offered under Binding Snow's lock** (same source). Using it attached nothing and spent the
+  Ability; Ice Maker was already gated. The three Abilities that only attach from the Zone to their holder now need
+  `can_attach_energy_from_zone` for their spot. **Fixed in 4407c55 (Sept 26).**
+- **Clemont from a 10-card hand reached 11 cards** (same source): searches had no hand cap. The multi-card Trainer
+  search (Clemont, Serena, Cabbie, Juliana) now puts only as many of its random cards into the hand as fit, chosen at
+  random; the rest stay in the deck, as for a draw past 10. **Fixed in e935f42 (Sept 26).**
