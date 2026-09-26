@@ -1,0 +1,84 @@
+﻿=== the two 'limits' e09fb46 says were 'written into the kpr README': present in the review JSON (df46e0a, pre-table)? ===
+  'promotion': 12 hits
+  'pending': 17 hits
+  'self-knockout': 5 hits
+  'remaining_hp': 16 hits
+  'HP now': 2 hits
+  'Bad Dreams': 13 hits
+  'Deceptive Needle': 13 hits
+  'burn': 34 hits
+
+=== any file on the branch at e09fb46 (pre-table) that records the kpr spec or its limits, outside commit messages? ===
+e09fb46:rl/addon-0.7.2/deckgym
+e09fb46:rl/checkpoints/run5-stage1-weezing-lucario/ckpt_1800k_avg_lucario.npz
+e09fb46:rl/checkpoints/run5-step0-blaziken-lucario/ckpt_300k_lucario.npz
+e09fb46:rl/results/cloud_raw_2026-09-23_24/cloud_workspace_2026-09-23_24.zip
+e09fb46:rl/results/kpr_2026-09-25/mutate.py
+e09fb46:rl/results/kpr_2026-09-25/mutation_results_0adfeb7.txt
+e09fb46:rl/results/kpr_2026-09-25/mutation_results_1981bb4.txt
+e09fb46:rl/results/kpr_2026-09-25/run_identity.sh
+e09fb46:rl/results/tool_turn_effect_census_2026-09-25/README.md
+e09fb46:rules/05_open_questions.md
+e09fb46:rules/09_engine_repairs_2026-09-22.md
+--- lines in rl/ and docs/ at e09fb46 mentioning kpr (first 30) ---
+Binary file e09fb46:rl/checkpoints/run5-stage1-weezing-lucario/ckpt_1800k_avg_lucario.npz matches
+Binary file e09fb46:rl/checkpoints/run5-step0-blaziken-lucario/ckpt_300k_lucario.npz matches
+Binary file e09fb46:rl/results/cloud_raw_2026-09-23_24/cloud_workspace_2026-09-23_24.zip matches
+e09fb46:rl/results/tool_turn_effect_census_2026-09-25/README.md:1:Decision this informs: whether the next candidate after kpr (the Tool / turn-effect blind spot, Dustin-approved) can be read on the Li
+e09fb46:rl/results/tool_turn_effect_census_2026-09-25/README.md:50:**Base.** `kt<N>` = `kp<N>` (k's blind search, PublicPricingPlayer with its audited texts) plus two evaluator changes. It is built on
+
+=== the kd README at e09fb46: what does it say kpr's registration should carry? ===
+
+=== RUN5.md on the branch: does it carry the Sept 25 plan? ===
+234:   API, with future events reserved for confirmation; and a top-finishing-players-only version. If the
+branch RUN5 last commit: 4ea7601 2026-09-24 21:59:24 +0000
+main   RUN5 last commit: c637259 2026-09-25 14:56:47 -0500
+
+=== when did the table start? first partial commit d141623: lines in kpr3_500.jsonl ===
+d141623: 3500 lines at 2026-09-26 00:15:19
+f6e8bca: 4000 lines at 00:16:30
+c002d2f: 5000 lines at 00:18:10
+8f16338: 14000 lines at 00:42:52
+
+=== run_kpr3_table.sh history (was it fixed before the table?) ===
+65a0d17 2026-09-25 23:30:46 +0000 kpr: the table's run script (kpr3 on 28 x 500 table deals, then k3/kp3/kq3 on 40 deals
+
+=== deck_averages.py history (fixed before the table?) ===
+1152307 2026-09-26 00:05:05 +0000 kpr: deck averages and paired deck changes script (kpr3 against kp3, with k3, kq3, kd3
+
+=== kd3 and kq3 fit on the Sept 23 table (README lines 50-51) ===
+  kd3: cells 28, mean |miss| 8.59, mean squared miss 124.5
+  kq3: cells 28, mean |miss| 9.44, mean squared miss 147.3
+
+=== hidden_continuation_reason: what does it read? (observation.rs at e09fb46) ===
+351:pub fn hidden_continuation_reason(state: &State, action: &Action) -> Option<&'static str> {
+352-    hidden_continuation_reason_in(state, action, PUBLIC_PRICING.with(Cell::get))
+353-}
+354-
+355-/// The historical rule whatever the thread's pricing mode (the public-reply certificate uses it).
+356-pub(crate) fn hidden_continuation_reason_strict(state: &State, action: &Action) -> Option<&'static str> {
+357-    hidden_continuation_reason_in(state, action, false)
+358-}
+359-
+360-fn hidden_continuation_reason_in(
+361-    state: &State,
+362-    action: &Action,
+363-    public_pricing: bool,
+364-) -> Option<&'static str> {
+365-    if state.setup_opponent_hidden && matches!(action.action, SimpleAction::EndTurn) {
+366-        return Some("setup handoff or reveal requires the concealed opponent board");
+367-    }
+368-    // EndTurn bundles Checkup with automatic abilities at the next turn's start.
+369-    // Unknown deck slots must not be mistaken for "no eligible Pokemon" by those
+370-    // searches. Conservatively leave the bundled action unpriced until its phases
+371-    // can be forecast separately; known deck identities remain forecastable. Use the
+372-    // printed mechanic: suppression may disappear during Checkup when its source is KO'd.
+373-    if matches!(action.action, SimpleAction::EndTurn | SimpleAction::ResolvePokemonCheckup
+374-        | SimpleAction::FinishPokemonCheckup) && state.turn_count > 0 {
+375-        use crate::actions::abilities::{AbilityMechanic, RandomEvolutionTrigger};
+376-        let next = 1 - state.current_player;
+377-        if state.decks[next].cards.contains(&Card::Unknown) {
+378-            let mechanic = state.maybe_get_active(next)
+379-                .and_then(|pokemon| crate::actions::get_ability_mechanic(&pokemon.card));
+380-            if matches!(mechanic,
+381-                Some(AbilityMechanic::StartTurnRandomPokemonToHand { .. })

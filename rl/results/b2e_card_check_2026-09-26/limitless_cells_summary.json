@@ -1,0 +1,1905 @@
+{
+ "window": {
+  "start_date_utc": "2026-08-26",
+  "end_date_utc": "2026-09-24",
+  "first_event_start": "2026-08-26T10:35:00.000Z",
+  "last_event_start": "2026-09-24T17:00:00.000Z",
+  "events_development": 63,
+  "events_holdout": 63,
+  "events_total": 126
+ },
+ "records_total": 30216,
+ "result_status_counts": {
+  "decisive": 26277,
+  "bye_or_automatic_loss": 2010,
+  "tie": 866,
+  "double_loss": 1063
+ },
+ "mode_counts": {
+  "BO1": 20037,
+  "BO3": 10177,
+  "BO5": 2
+ },
+ "bo5_records_touching_held": 0,
+ "tie_treatment": "tie -> 0.5 point (counted in T and n); double_loss -> excluded from W-L-T and n (reported in DL, alternate score_incl_dl treats it as a tie); bye_or_automatic_loss -> no opponent side, never forms an A-vs-B pair; mirrors excluded; every record (BO1 and BO3) is one unit",
+ "archetypes": {
+  "manectric_heliolisk": {
+   "deck_name": "Mega Manectric ex Heliolisk",
+   "development": {
+    "equal_weight_avg_pct": 48.0,
+    "opponents_with_data": 8,
+    "panel_pooled": {
+     "W": 104,
+     "L": 115,
+     "T": 11,
+     "DL": 9,
+     "n": 230,
+     "n_bo1": 147,
+     "score_pct": 47.6
+    },
+    "thinnest_cell_n": 12,
+    "records_in_window": 651,
+    "records_labeled": 646,
+    "records_unlabeled": 5,
+    "records_scored": 602,
+    "records_double_loss": 26,
+    "records_bye": 23,
+    "cells": {
+     "lucario": {
+      "W": 14,
+      "L": 21,
+      "T": 1,
+      "DL": 2,
+      "n": 36,
+      "n_bo1": 23,
+      "score_pct": 40.3,
+      "band95_pts": 16.0
+     },
+     "altaria": {
+      "W": 26,
+      "L": 22,
+      "T": 3,
+      "DL": 2,
+      "n": 51,
+      "n_bo1": 34,
+      "score_pct": 53.9,
+      "band95_pts": 13.7
+     },
+     "sceptile": {
+      "W": 13,
+      "L": 23,
+      "T": 2,
+      "DL": 2,
+      "n": 38,
+      "n_bo1": 20,
+      "score_pct": 36.8,
+      "band95_pts": 15.3
+     },
+     "vespiquen": {
+      "W": 12,
+      "L": 17,
+      "T": 1,
+      "DL": 0,
+      "n": 30,
+      "n_bo1": 16,
+      "score_pct": 41.7,
+      "band95_pts": 17.6
+     },
+     "suicune": {
+      "W": 17,
+      "L": 9,
+      "T": 2,
+      "DL": 0,
+      "n": 28,
+      "n_bo1": 19,
+      "score_pct": 64.3,
+      "band95_pts": 17.7
+     },
+     "hydreigon": {
+      "W": 8,
+      "L": 12,
+      "T": 0,
+      "DL": 2,
+      "n": 20,
+      "n_bo1": 12,
+      "score_pct": 40.0,
+      "band95_pts": 21.5
+     },
+     "weezing": {
+      "W": 4,
+      "L": 8,
+      "T": 0,
+      "DL": 1,
+      "n": 12,
+      "n_bo1": 11,
+      "score_pct": 33.3,
+      "band95_pts": 26.7
+     },
+     "blaziken": {
+      "W": 10,
+      "L": 3,
+      "T": 2,
+      "DL": 0,
+      "n": 15,
+      "n_bo1": 12,
+      "score_pct": 73.3,
+      "band95_pts": 22.4
+     }
+    }
+   },
+   "deck_ids_and_labels": {
+    "mega-manectric-ex-b2b-heliolisk-b1a [(no label)]": 7,
+    "mega-manectric-ex-b2b-heliolisk-b4 [manectric_heliolisk]": 1318
+   },
+   "holdout": {
+    "equal_weight_avg_pct": 50.3,
+    "opponents_with_data": 8,
+    "panel_pooled": {
+     "W": 130,
+     "L": 131,
+     "T": 13,
+     "DL": 7,
+     "n": 274,
+     "n_bo1": 146,
+     "score_pct": 49.8
+    },
+    "thinnest_cell_n": 8,
+    "records_in_window": 674,
+    "records_labeled": 672,
+    "records_unlabeled": 2,
+    "records_scored": 617,
+    "records_double_loss": 25,
+    "records_bye": 32,
+    "cells": {
+     "lucario": {
+      "W": 21,
+      "L": 34,
+      "T": 2,
+      "DL": 3,
+      "n": 57,
+      "n_bo1": 30,
+      "score_pct": 38.6,
+      "band95_pts": 12.6
+     },
+     "altaria": {
+      "W": 29,
+      "L": 26,
+      "T": 4,
+      "DL": 4,
+      "n": 59,
+      "n_bo1": 26,
+      "score_pct": 52.5,
+      "band95_pts": 12.7
+     },
+     "sceptile": {
+      "W": 16,
+      "L": 22,
+      "T": 1,
+      "DL": 0,
+      "n": 39,
+      "n_bo1": 25,
+      "score_pct": 42.3,
+      "band95_pts": 15.5
+     },
+     "vespiquen": {
+      "W": 23,
+      "L": 15,
+      "T": 1,
+      "DL": 0,
+      "n": 39,
+      "n_bo1": 22,
+      "score_pct": 60.3,
+      "band95_pts": 15.4
+     },
+     "suicune": {
+      "W": 10,
+      "L": 5,
+      "T": 4,
+      "DL": 0,
+      "n": 19,
+      "n_bo1": 7,
+      "score_pct": 63.2,
+      "band95_pts": 21.7
+     },
+     "hydreigon": {
+      "W": 16,
+      "L": 15,
+      "T": 0,
+      "DL": 0,
+      "n": 31,
+      "n_bo1": 19,
+      "score_pct": 51.6,
+      "band95_pts": 17.6
+     },
+     "weezing": {
+      "W": 3,
+      "L": 5,
+      "T": 0,
+      "DL": 0,
+      "n": 8,
+      "n_bo1": 6,
+      "score_pct": 37.5,
+      "band95_pts": 33.5
+     },
+     "blaziken": {
+      "W": 12,
+      "L": 9,
+      "T": 1,
+      "DL": 0,
+      "n": 22,
+      "n_bo1": 11,
+      "score_pct": 56.8,
+      "band95_pts": 20.7
+     }
+    }
+   },
+   "pooled": {
+    "equal_weight_avg_pct": 49.2,
+    "opponents_with_data": 8,
+    "panel_pooled": {
+     "W": 234,
+     "L": 246,
+     "T": 24,
+     "DL": 16,
+     "n": 504,
+     "n_bo1": 293,
+     "score_pct": 48.8
+    },
+    "thinnest_cell_n": 20,
+    "records_in_window": 1325,
+    "records_labeled": 1318,
+    "records_unlabeled": 7,
+    "records_scored": 1219,
+    "records_double_loss": 51,
+    "records_bye": 55,
+    "cells": {
+     "lucario": {
+      "W": 35,
+      "L": 55,
+      "T": 3,
+      "DL": 5,
+      "n": 93,
+      "n_bo1": 53,
+      "score_pct": 39.2,
+      "band95_pts": 9.9
+     },
+     "altaria": {
+      "W": 55,
+      "L": 48,
+      "T": 7,
+      "DL": 6,
+      "n": 110,
+      "n_bo1": 60,
+      "score_pct": 53.2,
+      "band95_pts": 9.3
+     },
+     "sceptile": {
+      "W": 29,
+      "L": 45,
+      "T": 3,
+      "DL": 2,
+      "n": 77,
+      "n_bo1": 45,
+      "score_pct": 39.6,
+      "band95_pts": 10.9
+     },
+     "vespiquen": {
+      "W": 35,
+      "L": 32,
+      "T": 2,
+      "DL": 0,
+      "n": 69,
+      "n_bo1": 38,
+      "score_pct": 52.2,
+      "band95_pts": 11.8
+     },
+     "suicune": {
+      "W": 27,
+      "L": 14,
+      "T": 6,
+      "DL": 0,
+      "n": 47,
+      "n_bo1": 26,
+      "score_pct": 63.8,
+      "band95_pts": 13.7
+     },
+     "hydreigon": {
+      "W": 24,
+      "L": 27,
+      "T": 0,
+      "DL": 2,
+      "n": 51,
+      "n_bo1": 31,
+      "score_pct": 47.1,
+      "band95_pts": 13.7
+     },
+     "weezing": {
+      "W": 7,
+      "L": 13,
+      "T": 0,
+      "DL": 1,
+      "n": 20,
+      "n_bo1": 17,
+      "score_pct": 35.0,
+      "band95_pts": 20.9
+     },
+     "blaziken": {
+      "W": 22,
+      "L": 12,
+      "T": 3,
+      "DL": 0,
+      "n": 37,
+      "n_bo1": 23,
+      "score_pct": 63.5,
+      "band95_pts": 15.5
+     }
+    }
+   }
+  },
+  "raticate_ninetales": {
+   "deck_name": "Team Rocket's Raticate ex Alolan Ninetales ex",
+   "development": {
+    "equal_weight_avg_pct": 44.8,
+    "opponents_with_data": 8,
+    "panel_pooled": {
+     "W": 49,
+     "L": 62,
+     "T": 2,
+     "DL": 5,
+     "n": 113,
+     "n_bo1": 83,
+     "score_pct": 44.2
+    },
+    "thinnest_cell_n": 7,
+    "records_in_window": 279,
+    "records_labeled": 279,
+    "records_unlabeled": 0,
+    "records_scored": 258,
+    "records_double_loss": 11,
+    "records_bye": 10,
+    "cells": {
+     "lucario": {
+      "W": 12,
+      "L": 13,
+      "T": 0,
+      "DL": 1,
+      "n": 25,
+      "n_bo1": 22,
+      "score_pct": 48.0,
+      "band95_pts": 19.6
+     },
+     "altaria": {
+      "W": 1,
+      "L": 9,
+      "T": 0,
+      "DL": 1,
+      "n": 10,
+      "n_bo1": 4,
+      "score_pct": 10.0,
+      "band95_pts": 18.6
+     },
+     "sceptile": {
+      "W": 8,
+      "L": 7,
+      "T": 1,
+      "DL": 1,
+      "n": 16,
+      "n_bo1": 14,
+      "score_pct": 53.1,
+      "band95_pts": 24.5
+     },
+     "vespiquen": {
+      "W": 6,
+      "L": 8,
+      "T": 0,
+      "DL": 1,
+      "n": 14,
+      "n_bo1": 8,
+      "score_pct": 42.9,
+      "band95_pts": 25.9
+     },
+     "suicune": {
+      "W": 8,
+      "L": 11,
+      "T": 0,
+      "DL": 1,
+      "n": 19,
+      "n_bo1": 12,
+      "score_pct": 42.1,
+      "band95_pts": 22.2
+     },
+     "hydreigon": {
+      "W": 3,
+      "L": 4,
+      "T": 0,
+      "DL": 0,
+      "n": 7,
+      "n_bo1": 4,
+      "score_pct": 42.9,
+      "band95_pts": 36.7
+     },
+     "weezing": {
+      "W": 4,
+      "L": 9,
+      "T": 1,
+      "DL": 0,
+      "n": 14,
+      "n_bo1": 13,
+      "score_pct": 32.1,
+      "band95_pts": 24.5
+     },
+     "blaziken": {
+      "W": 7,
+      "L": 1,
+      "T": 0,
+      "DL": 0,
+      "n": 8,
+      "n_bo1": 6,
+      "score_pct": 87.5,
+      "band95_pts": 22.9
+     }
+    }
+   },
+   "deck_ids_and_labels": {
+    "team-rockets-raticate-ex-b4a-alolan-ninetales-ex-b2 [raticate_ninetales]": 637
+   },
+   "holdout": {
+    "equal_weight_avg_pct": 37.2,
+    "opponents_with_data": 8,
+    "panel_pooled": {
+     "W": 51,
+     "L": 91,
+     "T": 2,
+     "DL": 7,
+     "n": 144,
+     "n_bo1": 106,
+     "score_pct": 36.1
+    },
+    "thinnest_cell_n": 10,
+    "records_in_window": 358,
+    "records_labeled": 358,
+    "records_unlabeled": 0,
+    "records_scored": 329,
+    "records_double_loss": 19,
+    "records_bye": 10,
+    "cells": {
+     "lucario": {
+      "W": 10,
+      "L": 19,
+      "T": 0,
+      "DL": 0,
+      "n": 29,
+      "n_bo1": 22,
+      "score_pct": 34.5,
+      "band95_pts": 17.3
+     },
+     "altaria": {
+      "W": 2,
+      "L": 20,
+      "T": 0,
+      "DL": 0,
+      "n": 22,
+      "n_bo1": 15,
+      "score_pct": 9.1,
+      "band95_pts": 12.0
+     },
+     "sceptile": {
+      "W": 1,
+      "L": 12,
+      "T": 0,
+      "DL": 1,
+      "n": 13,
+      "n_bo1": 13,
+      "score_pct": 7.7,
+      "band95_pts": 14.5
+     },
+     "vespiquen": {
+      "W": 13,
+      "L": 13,
+      "T": 1,
+      "DL": 1,
+      "n": 27,
+      "n_bo1": 18,
+      "score_pct": 50.0,
+      "band95_pts": 18.9
+     },
+     "suicune": {
+      "W": 8,
+      "L": 6,
+      "T": 1,
+      "DL": 2,
+      "n": 15,
+      "n_bo1": 11,
+      "score_pct": 56.7,
+      "band95_pts": 25.1
+     },
+     "hydreigon": {
+      "W": 6,
+      "L": 5,
+      "T": 0,
+      "DL": 2,
+      "n": 11,
+      "n_bo1": 8,
+      "score_pct": 54.5,
+      "band95_pts": 29.4
+     },
+     "weezing": {
+      "W": 6,
+      "L": 11,
+      "T": 0,
+      "DL": 1,
+      "n": 17,
+      "n_bo1": 11,
+      "score_pct": 35.3,
+      "band95_pts": 22.7
+     },
+     "blaziken": {
+      "W": 5,
+      "L": 5,
+      "T": 0,
+      "DL": 0,
+      "n": 10,
+      "n_bo1": 8,
+      "score_pct": 50.0,
+      "band95_pts": 31.0
+     }
+    }
+   },
+   "pooled": {
+    "equal_weight_avg_pct": 41.2,
+    "opponents_with_data": 8,
+    "panel_pooled": {
+     "W": 100,
+     "L": 153,
+     "T": 4,
+     "DL": 12,
+     "n": 257,
+     "n_bo1": 189,
+     "score_pct": 39.7
+    },
+    "thinnest_cell_n": 18,
+    "records_in_window": 637,
+    "records_labeled": 637,
+    "records_unlabeled": 0,
+    "records_scored": 587,
+    "records_double_loss": 30,
+    "records_bye": 20,
+    "cells": {
+     "lucario": {
+      "W": 22,
+      "L": 32,
+      "T": 0,
+      "DL": 1,
+      "n": 54,
+      "n_bo1": 44,
+      "score_pct": 40.7,
+      "band95_pts": 13.1
+     },
+     "altaria": {
+      "W": 3,
+      "L": 29,
+      "T": 0,
+      "DL": 1,
+      "n": 32,
+      "n_bo1": 19,
+      "score_pct": 9.4,
+      "band95_pts": 10.1
+     },
+     "sceptile": {
+      "W": 9,
+      "L": 19,
+      "T": 1,
+      "DL": 2,
+      "n": 29,
+      "n_bo1": 27,
+      "score_pct": 32.8,
+      "band95_pts": 17.1
+     },
+     "vespiquen": {
+      "W": 19,
+      "L": 21,
+      "T": 1,
+      "DL": 2,
+      "n": 41,
+      "n_bo1": 26,
+      "score_pct": 47.6,
+      "band95_pts": 15.3
+     },
+     "suicune": {
+      "W": 16,
+      "L": 17,
+      "T": 1,
+      "DL": 3,
+      "n": 34,
+      "n_bo1": 23,
+      "score_pct": 48.5,
+      "band95_pts": 16.8
+     },
+     "hydreigon": {
+      "W": 9,
+      "L": 9,
+      "T": 0,
+      "DL": 2,
+      "n": 18,
+      "n_bo1": 12,
+      "score_pct": 50.0,
+      "band95_pts": 23.1
+     },
+     "weezing": {
+      "W": 10,
+      "L": 20,
+      "T": 1,
+      "DL": 1,
+      "n": 31,
+      "n_bo1": 24,
+      "score_pct": 33.9,
+      "band95_pts": 16.7
+     },
+     "blaziken": {
+      "W": 12,
+      "L": 6,
+      "T": 0,
+      "DL": 0,
+      "n": 18,
+      "n_bo1": 14,
+      "score_pct": 66.7,
+      "band95_pts": 21.8
+     }
+    }
+   }
+  },
+  "hoopa_absol": {
+   "deck_name": "Hoopa ex Mega Absol ex",
+   "development": {
+    "equal_weight_avg_pct": 51.6,
+    "opponents_with_data": 8,
+    "panel_pooled": {
+     "W": 153,
+     "L": 136,
+     "T": 14,
+     "DL": 10,
+     "n": 303,
+     "n_bo1": 209,
+     "score_pct": 52.8
+    },
+    "thinnest_cell_n": 12,
+    "records_in_window": 764,
+    "records_labeled": 764,
+    "records_unlabeled": 0,
+    "records_scored": 716,
+    "records_double_loss": 18,
+    "records_bye": 30,
+    "cells": {
+     "lucario": {
+      "W": 29,
+      "L": 30,
+      "T": 1,
+      "DL": 2,
+      "n": 60,
+      "n_bo1": 41,
+      "score_pct": 49.2,
+      "band95_pts": 12.6
+     },
+     "altaria": {
+      "W": 54,
+      "L": 21,
+      "T": 6,
+      "DL": 3,
+      "n": 81,
+      "n_bo1": 61,
+      "score_pct": 70.4,
+      "band95_pts": 9.9
+     },
+     "sceptile": {
+      "W": 18,
+      "L": 27,
+      "T": 2,
+      "DL": 1,
+      "n": 47,
+      "n_bo1": 33,
+      "score_pct": 40.4,
+      "band95_pts": 14.0
+     },
+     "vespiquen": {
+      "W": 5,
+      "L": 20,
+      "T": 3,
+      "DL": 0,
+      "n": 28,
+      "n_bo1": 17,
+      "score_pct": 23.2,
+      "band95_pts": 15.6
+     },
+     "suicune": {
+      "W": 14,
+      "L": 15,
+      "T": 1,
+      "DL": 1,
+      "n": 30,
+      "n_bo1": 19,
+      "score_pct": 48.3,
+      "band95_pts": 17.9
+     },
+     "hydreigon": {
+      "W": 17,
+      "L": 9,
+      "T": 0,
+      "DL": 2,
+      "n": 26,
+      "n_bo1": 17,
+      "score_pct": 65.4,
+      "band95_pts": 18.3
+     },
+     "weezing": {
+      "W": 7,
+      "L": 12,
+      "T": 0,
+      "DL": 1,
+      "n": 19,
+      "n_bo1": 13,
+      "score_pct": 36.8,
+      "band95_pts": 21.7
+     },
+     "blaziken": {
+      "W": 9,
+      "L": 2,
+      "T": 1,
+      "DL": 0,
+      "n": 12,
+      "n_bo1": 8,
+      "score_pct": 79.2,
+      "band95_pts": 23.0
+     }
+    }
+   },
+   "deck_ids_and_labels": {
+    "hoopa-ex-b4-mega-absol-ex-b1 [hoopa_absol]": 1377
+   },
+   "holdout": {
+    "equal_weight_avg_pct": 47.6,
+    "opponents_with_data": 8,
+    "panel_pooled": {
+     "W": 105,
+     "L": 107,
+     "T": 6,
+     "DL": 3,
+     "n": 218,
+     "n_bo1": 108,
+     "score_pct": 49.5
+    },
+    "thinnest_cell_n": 12,
+    "records_in_window": 613,
+    "records_labeled": 613,
+    "records_unlabeled": 0,
+    "records_scored": 574,
+    "records_double_loss": 15,
+    "records_bye": 24,
+    "cells": {
+     "lucario": {
+      "W": 12,
+      "L": 23,
+      "T": 0,
+      "DL": 1,
+      "n": 35,
+      "n_bo1": 17,
+      "score_pct": 34.3,
+      "band95_pts": 15.7
+     },
+     "altaria": {
+      "W": 41,
+      "L": 14,
+      "T": 4,
+      "DL": 0,
+      "n": 59,
+      "n_bo1": 23,
+      "score_pct": 72.9,
+      "band95_pts": 11.3
+     },
+     "sceptile": {
+      "W": 6,
+      "L": 23,
+      "T": 1,
+      "DL": 1,
+      "n": 30,
+      "n_bo1": 17,
+      "score_pct": 21.7,
+      "band95_pts": 14.7
+     },
+     "vespiquen": {
+      "W": 7,
+      "L": 18,
+      "T": 0,
+      "DL": 1,
+      "n": 25,
+      "n_bo1": 12,
+      "score_pct": 28.0,
+      "band95_pts": 17.6
+     },
+     "suicune": {
+      "W": 11,
+      "L": 10,
+      "T": 0,
+      "DL": 0,
+      "n": 21,
+      "n_bo1": 11,
+      "score_pct": 52.4,
+      "band95_pts": 21.4
+     },
+     "hydreigon": {
+      "W": 15,
+      "L": 6,
+      "T": 1,
+      "DL": 0,
+      "n": 22,
+      "n_bo1": 10,
+      "score_pct": 70.5,
+      "band95_pts": 19.1
+     },
+     "weezing": {
+      "W": 6,
+      "L": 8,
+      "T": 0,
+      "DL": 0,
+      "n": 14,
+      "n_bo1": 11,
+      "score_pct": 42.9,
+      "band95_pts": 25.9
+     },
+     "blaziken": {
+      "W": 7,
+      "L": 5,
+      "T": 0,
+      "DL": 0,
+      "n": 12,
+      "n_bo1": 7,
+      "score_pct": 58.3,
+      "band95_pts": 27.9
+     }
+    }
+   },
+   "pooled": {
+    "equal_weight_avg_pct": 49.9,
+    "opponents_with_data": 8,
+    "panel_pooled": {
+     "W": 258,
+     "L": 243,
+     "T": 20,
+     "DL": 13,
+     "n": 521,
+     "n_bo1": 317,
+     "score_pct": 51.4
+    },
+    "thinnest_cell_n": 24,
+    "records_in_window": 1377,
+    "records_labeled": 1377,
+    "records_unlabeled": 0,
+    "records_scored": 1290,
+    "records_double_loss": 33,
+    "records_bye": 54,
+    "cells": {
+     "lucario": {
+      "W": 41,
+      "L": 53,
+      "T": 1,
+      "DL": 3,
+      "n": 95,
+      "n_bo1": 58,
+      "score_pct": 43.7,
+      "band95_pts": 10.0
+     },
+     "altaria": {
+      "W": 95,
+      "L": 35,
+      "T": 10,
+      "DL": 3,
+      "n": 140,
+      "n_bo1": 84,
+      "score_pct": 71.4,
+      "band95_pts": 7.5
+     },
+     "sceptile": {
+      "W": 24,
+      "L": 50,
+      "T": 3,
+      "DL": 2,
+      "n": 77,
+      "n_bo1": 50,
+      "score_pct": 33.1,
+      "band95_pts": 10.5
+     },
+     "vespiquen": {
+      "W": 12,
+      "L": 38,
+      "T": 3,
+      "DL": 1,
+      "n": 53,
+      "n_bo1": 29,
+      "score_pct": 25.5,
+      "band95_pts": 11.7
+     },
+     "suicune": {
+      "W": 25,
+      "L": 25,
+      "T": 1,
+      "DL": 1,
+      "n": 51,
+      "n_bo1": 30,
+      "score_pct": 50.0,
+      "band95_pts": 13.7
+     },
+     "hydreigon": {
+      "W": 32,
+      "L": 15,
+      "T": 1,
+      "DL": 2,
+      "n": 48,
+      "n_bo1": 27,
+      "score_pct": 67.7,
+      "band95_pts": 13.2
+     },
+     "weezing": {
+      "W": 13,
+      "L": 20,
+      "T": 0,
+      "DL": 1,
+      "n": 33,
+      "n_bo1": 24,
+      "score_pct": 39.4,
+      "band95_pts": 16.7
+     },
+     "blaziken": {
+      "W": 16,
+      "L": 7,
+      "T": 1,
+      "DL": 0,
+      "n": 24,
+      "n_bo1": 15,
+      "score_pct": 68.8,
+      "band95_pts": 18.5
+     }
+    }
+   }
+  },
+  "garchomp": {
+   "deck_name": "Garchomp",
+   "development": {
+    "equal_weight_avg_pct": 36.9,
+    "opponents_with_data": 8,
+    "panel_pooled": {
+     "W": 24,
+     "L": 43,
+     "T": 3,
+     "DL": 2,
+     "n": 70,
+     "n_bo1": 53,
+     "score_pct": 36.4
+    },
+    "thinnest_cell_n": 2,
+    "records_in_window": 185,
+    "records_labeled": 169,
+    "records_unlabeled": 16,
+    "records_scored": 162,
+    "records_double_loss": 15,
+    "records_bye": 8,
+    "cells": {
+     "lucario": {
+      "W": 9,
+      "L": 9,
+      "T": 2,
+      "DL": 1,
+      "n": 20,
+      "n_bo1": 16,
+      "score_pct": 50.0,
+      "band95_pts": 21.9
+     },
+     "altaria": {
+      "W": 4,
+      "L": 7,
+      "T": 0,
+      "DL": 0,
+      "n": 11,
+      "n_bo1": 10,
+      "score_pct": 36.4,
+      "band95_pts": 28.4
+     },
+     "sceptile": {
+      "W": 3,
+      "L": 3,
+      "T": 0,
+      "DL": 0,
+      "n": 6,
+      "n_bo1": 6,
+      "score_pct": 50.0,
+      "band95_pts": 40.0
+     },
+     "vespiquen": {
+      "W": 2,
+      "L": 3,
+      "T": 0,
+      "DL": 0,
+      "n": 5,
+      "n_bo1": 4,
+      "score_pct": 40.0,
+      "band95_pts": 42.9
+     },
+     "suicune": {
+      "W": 2,
+      "L": 7,
+      "T": 0,
+      "DL": 1,
+      "n": 9,
+      "n_bo1": 6,
+      "score_pct": 22.2,
+      "band95_pts": 27.2
+     },
+     "hydreigon": {
+      "W": 2,
+      "L": 4,
+      "T": 0,
+      "DL": 0,
+      "n": 6,
+      "n_bo1": 4,
+      "score_pct": 33.3,
+      "band95_pts": 37.7
+     },
+     "weezing": {
+      "W": 1,
+      "L": 9,
+      "T": 1,
+      "DL": 0,
+      "n": 11,
+      "n_bo1": 6,
+      "score_pct": 13.6,
+      "band95_pts": 20.3
+     },
+     "blaziken": {
+      "W": 1,
+      "L": 1,
+      "T": 0,
+      "DL": 0,
+      "n": 2,
+      "n_bo1": 1,
+      "score_pct": 50.0,
+      "band95_pts": 69.3
+     }
+    }
+   },
+   "deck_ids_and_labels": {
+    "garchomp-a2 [(no label)]": 24,
+    "garchomp-b4a [garchomp]": 359
+   },
+   "holdout": {
+    "equal_weight_avg_pct": 32.9,
+    "opponents_with_data": 8,
+    "panel_pooled": {
+     "W": 25,
+     "L": 49,
+     "T": 2,
+     "DL": 1,
+     "n": 76,
+     "n_bo1": 60,
+     "score_pct": 34.2
+    },
+    "thinnest_cell_n": 5,
+    "records_in_window": 198,
+    "records_labeled": 190,
+    "records_unlabeled": 8,
+    "records_scored": 191,
+    "records_double_loss": 4,
+    "records_bye": 3,
+    "cells": {
+     "lucario": {
+      "W": 4,
+      "L": 9,
+      "T": 2,
+      "DL": 0,
+      "n": 15,
+      "n_bo1": 13,
+      "score_pct": 33.3,
+      "band95_pts": 23.9
+     },
+     "altaria": {
+      "W": 5,
+      "L": 2,
+      "T": 0,
+      "DL": 0,
+      "n": 7,
+      "n_bo1": 6,
+      "score_pct": 71.4,
+      "band95_pts": 33.5
+     },
+     "sceptile": {
+      "W": 2,
+      "L": 7,
+      "T": 0,
+      "DL": 0,
+      "n": 9,
+      "n_bo1": 7,
+      "score_pct": 22.2,
+      "band95_pts": 27.2
+     },
+     "vespiquen": {
+      "W": 6,
+      "L": 7,
+      "T": 0,
+      "DL": 1,
+      "n": 13,
+      "n_bo1": 11,
+      "score_pct": 46.2,
+      "band95_pts": 27.1
+     },
+     "suicune": {
+      "W": 5,
+      "L": 7,
+      "T": 0,
+      "DL": 0,
+      "n": 12,
+      "n_bo1": 8,
+      "score_pct": 41.7,
+      "band95_pts": 27.9
+     },
+     "hydreigon": {
+      "W": 2,
+      "L": 5,
+      "T": 0,
+      "DL": 0,
+      "n": 7,
+      "n_bo1": 4,
+      "score_pct": 28.6,
+      "band95_pts": 33.5
+     },
+     "weezing": {
+      "W": 1,
+      "L": 4,
+      "T": 0,
+      "DL": 0,
+      "n": 5,
+      "n_bo1": 4,
+      "score_pct": 20.0,
+      "band95_pts": 35.1
+     },
+     "blaziken": {
+      "W": 0,
+      "L": 8,
+      "T": 0,
+      "DL": 0,
+      "n": 8,
+      "n_bo1": 7,
+      "score_pct": 0.0,
+      "band95_pts": 0.0
+     }
+    }
+   },
+   "pooled": {
+    "equal_weight_avg_pct": 32.5,
+    "opponents_with_data": 8,
+    "panel_pooled": {
+     "W": 49,
+     "L": 92,
+     "T": 5,
+     "DL": 3,
+     "n": 146,
+     "n_bo1": 113,
+     "score_pct": 35.3
+    },
+    "thinnest_cell_n": 10,
+    "records_in_window": 383,
+    "records_labeled": 359,
+    "records_unlabeled": 24,
+    "records_scored": 353,
+    "records_double_loss": 19,
+    "records_bye": 11,
+    "cells": {
+     "lucario": {
+      "W": 13,
+      "L": 18,
+      "T": 4,
+      "DL": 1,
+      "n": 35,
+      "n_bo1": 29,
+      "score_pct": 42.9,
+      "band95_pts": 16.4
+     },
+     "altaria": {
+      "W": 9,
+      "L": 9,
+      "T": 0,
+      "DL": 0,
+      "n": 18,
+      "n_bo1": 16,
+      "score_pct": 50.0,
+      "band95_pts": 23.1
+     },
+     "sceptile": {
+      "W": 5,
+      "L": 10,
+      "T": 0,
+      "DL": 0,
+      "n": 15,
+      "n_bo1": 13,
+      "score_pct": 33.3,
+      "band95_pts": 23.9
+     },
+     "vespiquen": {
+      "W": 8,
+      "L": 10,
+      "T": 0,
+      "DL": 1,
+      "n": 18,
+      "n_bo1": 15,
+      "score_pct": 44.4,
+      "band95_pts": 23.0
+     },
+     "suicune": {
+      "W": 7,
+      "L": 14,
+      "T": 0,
+      "DL": 1,
+      "n": 21,
+      "n_bo1": 14,
+      "score_pct": 33.3,
+      "band95_pts": 20.2
+     },
+     "hydreigon": {
+      "W": 4,
+      "L": 9,
+      "T": 0,
+      "DL": 0,
+      "n": 13,
+      "n_bo1": 8,
+      "score_pct": 30.8,
+      "band95_pts": 25.1
+     },
+     "weezing": {
+      "W": 2,
+      "L": 13,
+      "T": 1,
+      "DL": 0,
+      "n": 16,
+      "n_bo1": 10,
+      "score_pct": 15.6,
+      "band95_pts": 17.8
+     },
+     "blaziken": {
+      "W": 1,
+      "L": 9,
+      "T": 0,
+      "DL": 0,
+      "n": 10,
+      "n_bo1": 8,
+      "score_pct": 10.0,
+      "band95_pts": 18.6
+     }
+    }
+   }
+  },
+  "whimsicott_ariados": {
+   "deck_name": "Whimsicott ex Ariados",
+   "development": {
+    "equal_weight_avg_pct": 45.1,
+    "opponents_with_data": 7,
+    "panel_pooled": {
+     "W": 15,
+     "L": 19,
+     "T": 0,
+     "DL": 2,
+     "n": 34,
+     "n_bo1": 18,
+     "score_pct": 44.1
+    },
+    "thinnest_cell_n": 0,
+    "records_in_window": 95,
+    "records_labeled": 95,
+    "records_unlabeled": 0,
+    "records_scored": 87,
+    "records_double_loss": 3,
+    "records_bye": 5,
+    "cells": {
+     "lucario": {
+      "W": 5,
+      "L": 3,
+      "T": 0,
+      "DL": 0,
+      "n": 8,
+      "n_bo1": 3,
+      "score_pct": 62.5,
+      "band95_pts": 33.5
+     },
+     "altaria": {
+      "W": 1,
+      "L": 0,
+      "T": 0,
+      "DL": 2,
+      "n": 1,
+      "n_bo1": 0,
+      "score_pct": 100.0,
+      "band95_pts": 0.0
+     },
+     "sceptile": {
+      "W": 0,
+      "L": 2,
+      "T": 0,
+      "DL": 0,
+      "n": 2,
+      "n_bo1": 0,
+      "score_pct": 0.0,
+      "band95_pts": 0.0
+     },
+     "vespiquen": {
+      "W": 3,
+      "L": 4,
+      "T": 0,
+      "DL": 0,
+      "n": 7,
+      "n_bo1": 4,
+      "score_pct": 42.9,
+      "band95_pts": 36.7
+     },
+     "suicune": {
+      "W": 3,
+      "L": 3,
+      "T": 0,
+      "DL": 0,
+      "n": 6,
+      "n_bo1": 4,
+      "score_pct": 50.0,
+      "band95_pts": 40.0
+     },
+     "hydreigon": {
+      "W": 2,
+      "L": 3,
+      "T": 0,
+      "DL": 0,
+      "n": 5,
+      "n_bo1": 4,
+      "score_pct": 40.0,
+      "band95_pts": 42.9
+     },
+     "weezing": {
+      "W": 1,
+      "L": 4,
+      "T": 0,
+      "DL": 0,
+      "n": 5,
+      "n_bo1": 3,
+      "score_pct": 20.0,
+      "band95_pts": 35.1
+     },
+     "blaziken": {
+      "W": 0,
+      "L": 0,
+      "T": 0,
+      "DL": 0,
+      "n": 0,
+      "n_bo1": 0,
+      "score_pct": null,
+      "band95_pts": null
+     }
+    }
+   },
+   "deck_ids_and_labels": {
+    "whimsicott-ex-b1-ariados-b1a [whimsicott_ariados]": 204
+   },
+   "holdout": {
+    "equal_weight_avg_pct": 37.0,
+    "opponents_with_data": 8,
+    "panel_pooled": {
+     "W": 8,
+     "L": 18,
+     "T": 0,
+     "DL": 3,
+     "n": 26,
+     "n_bo1": 20,
+     "score_pct": 30.8
+    },
+    "thinnest_cell_n": 1,
+    "records_in_window": 109,
+    "records_labeled": 109,
+    "records_unlabeled": 0,
+    "records_scored": 95,
+    "records_double_loss": 11,
+    "records_bye": 3,
+    "cells": {
+     "lucario": {
+      "W": 1,
+      "L": 7,
+      "T": 0,
+      "DL": 1,
+      "n": 8,
+      "n_bo1": 6,
+      "score_pct": 12.5,
+      "band95_pts": 22.9
+     },
+     "altaria": {
+      "W": 0,
+      "L": 3,
+      "T": 0,
+      "DL": 0,
+      "n": 3,
+      "n_bo1": 3,
+      "score_pct": 0.0,
+      "band95_pts": 0.0
+     },
+     "sceptile": {
+      "W": 1,
+      "L": 2,
+      "T": 0,
+      "DL": 1,
+      "n": 3,
+      "n_bo1": 3,
+      "score_pct": 33.3,
+      "band95_pts": 53.3
+     },
+     "vespiquen": {
+      "W": 2,
+      "L": 2,
+      "T": 0,
+      "DL": 0,
+      "n": 4,
+      "n_bo1": 4,
+      "score_pct": 50.0,
+      "band95_pts": 49.0
+     },
+     "suicune": {
+      "W": 2,
+      "L": 1,
+      "T": 0,
+      "DL": 1,
+      "n": 3,
+      "n_bo1": 3,
+      "score_pct": 66.7,
+      "band95_pts": 53.3
+     },
+     "hydreigon": {
+      "W": 1,
+      "L": 0,
+      "T": 0,
+      "DL": 0,
+      "n": 1,
+      "n_bo1": 0,
+      "score_pct": 100.0,
+      "band95_pts": 0.0
+     },
+     "weezing": {
+      "W": 1,
+      "L": 2,
+      "T": 0,
+      "DL": 0,
+      "n": 3,
+      "n_bo1": 1,
+      "score_pct": 33.3,
+      "band95_pts": 53.3
+     },
+     "blaziken": {
+      "W": 0,
+      "L": 1,
+      "T": 0,
+      "DL": 0,
+      "n": 1,
+      "n_bo1": 0,
+      "score_pct": 0.0,
+      "band95_pts": 0.0
+     }
+    }
+   },
+   "pooled": {
+    "equal_weight_avg_pct": 32.3,
+    "opponents_with_data": 8,
+    "panel_pooled": {
+     "W": 23,
+     "L": 37,
+     "T": 0,
+     "DL": 5,
+     "n": 60,
+     "n_bo1": 38,
+     "score_pct": 38.3
+    },
+    "thinnest_cell_n": 1,
+    "records_in_window": 204,
+    "records_labeled": 204,
+    "records_unlabeled": 0,
+    "records_scored": 182,
+    "records_double_loss": 14,
+    "records_bye": 8,
+    "cells": {
+     "lucario": {
+      "W": 6,
+      "L": 10,
+      "T": 0,
+      "DL": 1,
+      "n": 16,
+      "n_bo1": 9,
+      "score_pct": 37.5,
+      "band95_pts": 23.7
+     },
+     "altaria": {
+      "W": 1,
+      "L": 3,
+      "T": 0,
+      "DL": 2,
+      "n": 4,
+      "n_bo1": 3,
+      "score_pct": 25.0,
+      "band95_pts": 42.4
+     },
+     "sceptile": {
+      "W": 1,
+      "L": 4,
+      "T": 0,
+      "DL": 1,
+      "n": 5,
+      "n_bo1": 3,
+      "score_pct": 20.0,
+      "band95_pts": 35.1
+     },
+     "vespiquen": {
+      "W": 5,
+      "L": 6,
+      "T": 0,
+      "DL": 0,
+      "n": 11,
+      "n_bo1": 8,
+      "score_pct": 45.5,
+      "band95_pts": 29.4
+     },
+     "suicune": {
+      "W": 5,
+      "L": 4,
+      "T": 0,
+      "DL": 1,
+      "n": 9,
+      "n_bo1": 7,
+      "score_pct": 55.6,
+      "band95_pts": 32.5
+     },
+     "hydreigon": {
+      "W": 3,
+      "L": 3,
+      "T": 0,
+      "DL": 0,
+      "n": 6,
+      "n_bo1": 4,
+      "score_pct": 50.0,
+      "band95_pts": 40.0
+     },
+     "weezing": {
+      "W": 2,
+      "L": 6,
+      "T": 0,
+      "DL": 0,
+      "n": 8,
+      "n_bo1": 4,
+      "score_pct": 25.0,
+      "band95_pts": 30.0
+     },
+     "blaziken": {
+      "W": 0,
+      "L": 1,
+      "T": 0,
+      "DL": 0,
+      "n": 1,
+      "n_bo1": 0,
+      "score_pct": 0.0,
+      "band95_pts": 0.0
+     }
+    }
+   }
+  },
+  "charizardy_entei": {
+   "deck_name": "Mega Charizard Y ex Entei ex",
+   "development": {
+    "equal_weight_avg_pct": 48.4,
+    "opponents_with_data": 8,
+    "panel_pooled": {
+     "W": 113,
+     "L": 102,
+     "T": 4,
+     "DL": 2,
+     "n": 219,
+     "n_bo1": 177,
+     "score_pct": 52.5
+    },
+    "thinnest_cell_n": 11,
+    "records_in_window": 638,
+    "records_labeled": 638,
+    "records_unlabeled": 0,
+    "records_scored": 612,
+    "records_double_loss": 11,
+    "records_bye": 15,
+    "cells": {
+     "lucario": {
+      "W": 34,
+      "L": 13,
+      "T": 0,
+      "DL": 0,
+      "n": 47,
+      "n_bo1": 41,
+      "score_pct": 72.3,
+      "band95_pts": 12.8
+     },
+     "altaria": {
+      "W": 21,
+      "L": 32,
+      "T": 1,
+      "DL": 0,
+      "n": 54,
+      "n_bo1": 38,
+      "score_pct": 39.8,
+      "band95_pts": 13.1
+     },
+     "sceptile": {
+      "W": 23,
+      "L": 8,
+      "T": 0,
+      "DL": 1,
+      "n": 31,
+      "n_bo1": 25,
+      "score_pct": 74.2,
+      "band95_pts": 15.4
+     },
+     "vespiquen": {
+      "W": 12,
+      "L": 10,
+      "T": 1,
+      "DL": 0,
+      "n": 23,
+      "n_bo1": 20,
+      "score_pct": 54.3,
+      "band95_pts": 20.4
+     },
+     "suicune": {
+      "W": 3,
+      "L": 12,
+      "T": 0,
+      "DL": 0,
+      "n": 15,
+      "n_bo1": 12,
+      "score_pct": 20.0,
+      "band95_pts": 20.2
+     },
+     "hydreigon": {
+      "W": 10,
+      "L": 13,
+      "T": 1,
+      "DL": 1,
+      "n": 24,
+      "n_bo1": 20,
+      "score_pct": 43.8,
+      "band95_pts": 19.8
+     },
+     "weezing": {
+      "W": 6,
+      "L": 7,
+      "T": 1,
+      "DL": 0,
+      "n": 14,
+      "n_bo1": 12,
+      "score_pct": 46.4,
+      "band95_pts": 26.1
+     },
+     "blaziken": {
+      "W": 4,
+      "L": 7,
+      "T": 0,
+      "DL": 0,
+      "n": 11,
+      "n_bo1": 9,
+      "score_pct": 36.4,
+      "band95_pts": 28.4
+     }
+    }
+   },
+   "deck_ids_and_labels": {
+    "mega-charizard-y-ex-b1a-entei-ex-a4a [charizardy_entei]": 1229
+   },
+   "holdout": {
+    "equal_weight_avg_pct": 50.1,
+    "opponents_with_data": 8,
+    "panel_pooled": {
+     "W": 113,
+     "L": 101,
+     "T": 12,
+     "DL": 4,
+     "n": 226,
+     "n_bo1": 134,
+     "score_pct": 52.7
+    },
+    "thinnest_cell_n": 13,
+    "records_in_window": 591,
+    "records_labeled": 591,
+    "records_unlabeled": 0,
+    "records_scored": 560,
+    "records_double_loss": 14,
+    "records_bye": 17,
+    "cells": {
+     "lucario": {
+      "W": 26,
+      "L": 16,
+      "T": 4,
+      "DL": 0,
+      "n": 46,
+      "n_bo1": 27,
+      "score_pct": 60.9,
+      "band95_pts": 14.1
+     },
+     "altaria": {
+      "W": 20,
+      "L": 28,
+      "T": 1,
+      "DL": 2,
+      "n": 49,
+      "n_bo1": 26,
+      "score_pct": 41.8,
+      "band95_pts": 13.8
+     },
+     "sceptile": {
+      "W": 22,
+      "L": 8,
+      "T": 1,
+      "DL": 1,
+      "n": 31,
+      "n_bo1": 19,
+      "score_pct": 72.6,
+      "band95_pts": 15.7
+     },
+     "vespiquen": {
+      "W": 22,
+      "L": 10,
+      "T": 1,
+      "DL": 1,
+      "n": 33,
+      "n_bo1": 20,
+      "score_pct": 68.2,
+      "band95_pts": 15.9
+     },
+     "suicune": {
+      "W": 2,
+      "L": 15,
+      "T": 1,
+      "DL": 0,
+      "n": 18,
+      "n_bo1": 12,
+      "score_pct": 13.9,
+      "band95_pts": 16.0
+     },
+     "hydreigon": {
+      "W": 9,
+      "L": 8,
+      "T": 2,
+      "DL": 0,
+      "n": 19,
+      "n_bo1": 9,
+      "score_pct": 52.6,
+      "band95_pts": 22.5
+     },
+     "weezing": {
+      "W": 7,
+      "L": 4,
+      "T": 2,
+      "DL": 0,
+      "n": 13,
+      "n_bo1": 10,
+      "score_pct": 61.5,
+      "band95_pts": 26.4
+     },
+     "blaziken": {
+      "W": 5,
+      "L": 12,
+      "T": 0,
+      "DL": 0,
+      "n": 17,
+      "n_bo1": 11,
+      "score_pct": 29.4,
+      "band95_pts": 21.7
+     }
+    }
+   },
+   "pooled": {
+    "equal_weight_avg_pct": 49.2,
+    "opponents_with_data": 8,
+    "panel_pooled": {
+     "W": 226,
+     "L": 203,
+     "T": 16,
+     "DL": 6,
+     "n": 445,
+     "n_bo1": 311,
+     "score_pct": 52.6
+    },
+    "thinnest_cell_n": 27,
+    "records_in_window": 1229,
+    "records_labeled": 1229,
+    "records_unlabeled": 0,
+    "records_scored": 1172,
+    "records_double_loss": 25,
+    "records_bye": 32,
+    "cells": {
+     "lucario": {
+      "W": 60,
+      "L": 29,
+      "T": 4,
+      "DL": 0,
+      "n": 93,
+      "n_bo1": 68,
+      "score_pct": 66.7,
+      "band95_pts": 9.6
+     },
+     "altaria": {
+      "W": 41,
+      "L": 60,
+      "T": 2,
+      "DL": 2,
+      "n": 103,
+      "n_bo1": 64,
+      "score_pct": 40.8,
+      "band95_pts": 9.5
+     },
+     "sceptile": {
+      "W": 45,
+      "L": 16,
+      "T": 1,
+      "DL": 2,
+      "n": 62,
+      "n_bo1": 44,
+      "score_pct": 73.4,
+      "band95_pts": 11.0
+     },
+     "vespiquen": {
+      "W": 34,
+      "L": 20,
+      "T": 2,
+      "DL": 1,
+      "n": 56,
+      "n_bo1": 40,
+      "score_pct": 62.5,
+      "band95_pts": 12.7
+     },
+     "suicune": {
+      "W": 5,
+      "L": 27,
+      "T": 1,
+      "DL": 0,
+      "n": 33,
+      "n_bo1": 24,
+      "score_pct": 16.7,
+      "band95_pts": 12.7
+     },
+     "hydreigon": {
+      "W": 19,
+      "L": 21,
+      "T": 3,
+      "DL": 1,
+      "n": 43,
+      "n_bo1": 29,
+      "score_pct": 47.7,
+      "band95_pts": 14.9
+     },
+     "weezing": {
+      "W": 13,
+      "L": 11,
+      "T": 3,
+      "DL": 0,
+      "n": 27,
+      "n_bo1": 22,
+      "score_pct": 53.7,
+      "band95_pts": 18.8
+     },
+     "blaziken": {
+      "W": 9,
+      "L": 19,
+      "T": 0,
+      "DL": 0,
+      "n": 28,
+      "n_bo1": 20,
+      "score_pct": 32.1,
+      "band95_pts": 17.3
+     }
+    }
+   }
+  }
+ },
+ "crosscheck_vs_held_archetype_records_dev": {
+  "cells_compared": 48,
+  "mismatches_by_deck_name": 7
+ }
+}

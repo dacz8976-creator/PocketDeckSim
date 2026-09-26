@@ -1,0 +1,117 @@
+kp3 table: public_pricing_2026-09-25\kp3_500_worst5.jsonl + public_pricing_2026-09-25\kp3_500_rest.jsonl: 14,000 games; identical to engine_identity_2026-09-25/kp3_500.jsonl on a, b, seed, first_seat, moves, winner_seat, points, turns, first_deck_score: 14,000 of 14,000 (14,000 there)
+kpr3 table: C:\Users\dacz8\AppData\Local\Temp\claude\C--Users-dacz8-Projects\75cb92d0-6f2d-44b8-a636-513a8f7ee71a\scratchpad\reviews\branch\kpr3_500.jsonl: 14,000 games
+k3 table: per_game_table_2026-09-25\k3_500.jsonl: 14,000 games
+kpr3 file bots: [('kpr3', 'kpr3')]
+pairings in all three files: 28; deals per pairing: 500-500; seeds agree on every deal (paired by deal)
+
+== Sept 23 table (deep_table.py, the cloud's cells); all 28 cells
+  bot   mean |miss|  mean sq miss real error
+  k3           9.66         159.5       11.5
+  kp3          7.91         112.4        9.2
+  kpr3        10.29         176.5       12.2
+  dMSE kpr3 - kp3: +64.1 points^2, 95% +30.1 to +98.6 (not below 0)
+  real error, kp3 minus kpr3: -3.00 points, 90% -3.85 to -1.52 (margin rule E = 3)
+  cell veto candidates (miss grows > 6): altaria v hydreigon +7.8, altaria v suicune +6.6, blaziken v lucario +10.9, blaziken v weezing +10.6, hydreigon v suicune +9.4, hydreigon v vespiquen +15.8, lucario v suicune +8.7, suicune v vespiquen +6.6
+  deck veto candidates (gap grows > 2): altaria +3.0, hydreigon +5.8, vespiquen +2.9
+  Deck averages: deck       Limitless     k3    kp3   kpr3  kpr3-kp3 (paired, pooled deals) gap change
+                 altaria         54.0   46.6   49.7   46.7     -3.0 ± 1.9 (3,500 deals)       +3.0
+                 blaziken        57.7   56.4   55.6   59.8     +4.3 ± 1.7 (3,500 deals)       +0.1
+                 hydreigon       42.5   34.6   47.4   53.2     +5.8 ± 1.9 (3,500 deals)       +5.8
+                 lucario         50.2   52.5   52.0   49.3     -2.7 ± 1.8 (3,500 deals)       -1.0
+                 sceptile        48.2   62.1   58.3   59.1     +0.9 ± 1.6 (3,500 deals)       +0.9
+                 suicune         48.2   52.9   46.5   48.9     +2.4 ± 1.8 (3,500 deals)       -1.1
+                 vespiquen       56.5   48.1   45.8   42.9     -2.9 ± 1.8 (3,500 deals)       +2.9
+                 weezing         42.7   46.6   44.7   40.0     -4.7 ± 1.7 (3,500 deals)       +0.6
+
+== Sept 23 table (deep_table.py, the cloud's cells); decision set, 27 cells (Altaria v Sceptile quarantined)
+  bot   mean |miss|  mean sq miss real error
+  k3           9.60         160.6       11.5
+  kp3          7.97         115.1        9.3
+  kpr3        10.44         181.6       12.4
+  dMSE kpr3 - kp3: +66.5 points^2, 95% +31.3 to +102.6 (not below 0)
+  real error, kp3 minus kpr3: -3.07 points, 90% -3.89 to -1.56 (margin rule E = 3)
+  cell veto candidates (miss grows > 6): altaria v hydreigon +7.8, altaria v suicune +6.6, blaziken v lucario +10.9, blaziken v weezing +10.6, hydreigon v suicune +9.4, hydreigon v vespiquen +15.8, lucario v suicune +8.7, suicune v vespiquen +6.6
+  deck veto candidates (gap grows > 2): altaria +3.5, hydreigon +5.8, vespiquen +2.9
+  Deck averages: deck       Limitless     k3    kp3   kpr3  kpr3-kp3 (paired, pooled deals) gap change
+                 altaria         54.8   48.1   50.9   47.4     -3.5 ± 2.0 (3,000 deals)       +3.5
+                 blaziken        57.7   56.4   55.6   59.8     +4.3 ± 1.7 (3,500 deals)       +0.1
+                 hydreigon       42.5   34.6   47.4   53.2     +5.8 ± 1.9 (3,500 deals)       +5.8
+                 lucario         50.2   52.5   52.0   49.3     -2.7 ± 1.8 (3,500 deals)       -1.0
+                 sceptile        47.7   62.1   58.5   59.5     +1.0 ± 1.7 (3,000 deals)       +1.0
+                 suicune         48.2   52.9   46.5   48.9     +2.4 ± 1.8 (3,500 deals)       -1.1
+                 vespiquen       56.5   48.1   45.8   42.9     -2.9 ± 1.8 (3,500 deals)       +2.9
+                 weezing         42.7   46.6   44.7   40.0     -4.7 ± 1.7 (3,500 deals)       +0.6
+
+== scoreboard v2, development half (limitless_v2_dev.json); all 28 cells
+  bot   mean |miss|  mean sq miss real error
+  k3          10.29         173.2       10.8
+  kp3          9.02         127.2        8.4
+  kpr3        11.53         199.3       11.9
+  dMSE kpr3 - kp3: +72.1 points^2, 95% +26.2 to +119.0 (not below 0)
+  real error, kp3 minus kpr3: -3.55 points, 90% -4.28 to -1.38 (margin rule E = 3)
+  cell veto candidates (miss grows > 6): altaria v hydreigon +7.8, altaria v suicune +6.6, blaziken v lucario +10.9, blaziken v weezing +11.7 [band > 15: never counts], hydreigon v suicune +9.4 [band > 15: never counts], hydreigon v vespiquen +15.8 [band > 15: never counts], lucario v suicune +9.2, suicune v vespiquen +6.6
+  deck veto candidates (gap grows > 2): altaria +3.0, blaziken +3.6, hydreigon +5.8, vespiquen +2.9, weezing +2.8
+  Deck averages: deck       Limitless     k3    kp3   kpr3  kpr3-kp3 (paired, pooled deals) gap change
+                 altaria         53.6   46.6   49.7   46.7     -3.0 ± 1.9 (3,500 deals)       +3.0
+                 blaziken        55.9   56.4   55.6   59.8     +4.3 ± 1.7 (3,500 deals)       +3.6
+                 hydreigon       42.2   34.6   47.4   53.2     +5.8 ± 1.9 (3,500 deals)       +5.8
+                 lucario         50.4   52.5   52.0   49.3     -2.7 ± 1.8 (3,500 deals)       -0.6
+                 sceptile        50.4   62.1   58.3   59.1     +0.9 ± 1.6 (3,500 deals)       +0.9
+                 suicune         47.1   52.9   46.5   48.9     +2.4 ± 1.8 (3,500 deals)       +1.2
+                 vespiquen       56.6   48.1   45.8   42.9     -2.9 ± 1.8 (3,500 deals)       +2.9
+                 weezing         43.8   46.6   44.7   40.0     -4.7 ± 1.7 (3,500 deals)       +2.8
+
+== scoreboard v2, development half (limitless_v2_dev.json); decision set, 27 cells (Altaria v Sceptile quarantined)
+  bot   mean |miss|  mean sq miss real error
+  k3          10.39         177.5       10.9
+  kp3          9.26         131.7        8.6
+  kpr3        11.86         206.4       12.2
+  dMSE kpr3 - kp3: +74.7 points^2, 95% +27.4 to +122.7 (not below 0)
+  real error, kp3 minus kpr3: -3.60 points, 90% -4.33 to -1.44 (margin rule E = 3)
+  cell veto candidates (miss grows > 6): altaria v hydreigon +7.8, altaria v suicune +6.6, blaziken v lucario +10.9, blaziken v weezing +11.7 [band > 15: never counts], hydreigon v suicune +9.4 [band > 15: never counts], hydreigon v vespiquen +15.8 [band > 15: never counts], lucario v suicune +9.2, suicune v vespiquen +6.6
+  deck veto candidates (gap grows > 2): altaria +3.5, blaziken +3.6, hydreigon +5.8, vespiquen +2.9, weezing +2.8
+  Deck averages: deck       Limitless     k3    kp3   kpr3  kpr3-kp3 (paired, pooled deals) gap change
+                 altaria         55.0   48.1   50.9   47.4     -3.5 ± 2.0 (3,000 deals)       +3.5
+                 blaziken        55.9   56.4   55.6   59.8     +4.3 ± 1.7 (3,500 deals)       +3.6
+                 hydreigon       42.2   34.6   47.4   53.2     +5.8 ± 1.9 (3,500 deals)       +5.8
+                 lucario         50.4   52.5   52.0   49.3     -2.7 ± 1.8 (3,500 deals)       -0.6
+                 sceptile        49.7   62.1   58.5   59.5     +1.0 ± 1.7 (3,000 deals)       +1.0
+                 suicune         47.1   52.9   46.5   48.9     +2.4 ± 1.8 (3,500 deals)       +1.2
+                 vespiquen       56.6   48.1   45.8   42.9     -2.9 ± 1.8 (3,500 deals)       +2.9
+                 weezing         43.8   46.6   44.7   40.0     -4.7 ± 1.7 (3,500 deals)       +2.8
+
+Per cell (first-named deck's score, %): k3 | kp3 | kpr3 | kpr3-kp3 paired (95%) | Sept 23 L ± band | miss change | v2 L ± band | miss change
+    altaria v blaziken    56.0 |  58.6 |  52.6 |  -6.0 (-11.0, -1.0) |  74.2 ±  8.8 |  +6.0 |  76.5 ± 14.3 |  +6.0
+    altaria v hydreigon   57.8 |  47.6 |  39.8 |  -7.8 (-12.9, -2.7) |  57.0 ±  8.4 |  +7.8 |  54.5 ± 13.0 |  +7.8
+    altaria v lucario     56.6 |  62.4 |  58.8 |  -3.6 (-8.3, +1.1) |  71.9 ±  4.9 |  +3.6 |  72.4 ±  6.9 |  +3.6
+    altaria v sceptile    37.8 |  42.8 |  42.8 |  +0.0 (-4.6, +4.6) |  49.1 ±  6.6 |  +0.0 |  45.4 ±  9.4 |  +0.0  (quarantined)
+    altaria v suicune     39.2 |  48.8 |  42.2 |  -6.6 (-11.7, -1.5) |  52.3 ±  8.0 |  +6.6 |  56.2 ± 12.1 |  +6.6
+    altaria v vespiquen   42.6 |  47.4 |  50.4 |  +3.0 (-2.0, +8.0) |  38.8 ±  6.8 |  +3.0 |  37.6 ±  9.8 |  +3.0
+    altaria v weezing     36.5 |  40.4 |  40.4 |  +0.0 (-4.7, +4.7) |  34.8 ±  9.2 |  +0.0 |  33.0 ± 13.4 |  +0.0
+   blaziken v hydreigon   64.5 |  48.0 |  49.6 |  +1.6 (-3.3, +6.5) |  59.0 ± 12.3 |  -1.6 |  66.7 ± 18.9 |  -1.6
+   blaziken v lucario     46.5 |  45.1 |  56.0 | +10.9 (+5.8, +16.0) |  44.8 ±  8.1 | +10.9 |  40.7 ± 12.5 | +10.9
+   blaziken v sceptile    59.6 |  65.1 |  63.0 |  -2.1 (-6.1, +1.9) |  82.8 ±  9.0 |  +2.1 |  76.1 ± 17.4 |  +2.1
+   blaziken v suicune     53.0 |  59.6 |  62.2 |  +2.6 (-1.8, +7.0) |  60.8 ± 12.4 |  +0.1 |  64.3 ± 20.5 |  -2.6
+   blaziken v vespiquen   79.5 |  81.4 |  80.5 |  -0.9 (-5.0, +3.2) |  81.4 ± 12.9 |  +0.9 |  79.0 ± 14.3 |  -0.9
+   blaziken v weezing     47.9 |  48.4 |  60.1 | +11.7 (+7.6, +15.8) |  49.0 ± 14.1 | +10.6 |  41.2 ± 23.4 | +11.7
+  hydreigon v lucario     30.6 |  43.8 |  52.6 |  +8.8 (+4.0, +13.6) |  54.4 ±  8.0 |  -8.8 |  63.6 ± 12.7 |  -8.8
+  hydreigon v sceptile    27.8 |  43.6 |  40.0 |  -3.6 (-8.0, +0.8) |  39.4 ± 10.7 |  -3.6 |  40.0 ± 16.2 |  -3.6
+  hydreigon v suicune     38.8 |  46.4 |  55.8 |  +9.4 (+4.4, +14.4) |  34.7 ± 11.8 |  +9.4 |  30.0 ± 15.2 |  +9.4
+  hydreigon v vespiquen   30.8 |  41.0 |  56.8 | +15.8 (+10.2, +21.4) |  38.4 ±  9.8 | +15.8 |  36.8 ± 15.3 | +15.8
+  hydreigon v weezing     36.8 |  52.8 |  56.8 |  +4.0 (-1.0, +9.0) |  47.1 ± 13.7 |  +4.0 |  45.8 ± 19.9 |  +4.0
+    lucario v sceptile    33.6 |  35.6 |  38.6 |  +3.0 (-1.2, +7.2) |  37.9 ±  6.3 |  -1.6 |  39.5 ±  9.0 |  -3.0
+    lucario v suicune     53.0 |  58.8 |  49.6 |  -9.2 (-13.8, -4.6) |  58.5 ±  7.7 |  +8.7 |  58.8 ± 10.5 |  +9.2
+    lucario v vespiquen   64.2 |  68.2 |  68.8 |  +0.6 (-3.9, +5.1) |  69.3 ±  6.4 |  -0.6 |  69.6 ±  8.7 |  -0.6
+    lucario v weezing     50.4 |  52.8 |  55.8 |  +3.0 (-1.6, +7.6) |  56.6 ±  8.3 |  -3.0 |  61.5 ± 10.8 |  -3.0
+   sceptile v suicune     56.6 |  60.6 |  62.6 |  +2.0 (-1.9, +5.9) |  47.2 ±  9.5 |  +2.0 |  50.0 ± 13.6 |  +2.0
+   sceptile v vespiquen   66.6 |  64.4 |  66.6 |  +2.2 (-2.4, +6.8) |  33.1 ±  8.2 |  +2.2 |  35.7 ± 12.5 |  +2.2
+   sceptile v weezing     70.4 |  70.0 |  69.2 |  -0.8 (-4.7, +3.1) |  66.2 ± 10.4 |  -0.8 |  68.1 ± 15.2 |  -0.8
+    suicune v vespiquen   50.4 |  43.0 |  49.6 |  +6.6 (+1.5, +11.7) |  27.0 ±  7.7 |  +6.6 |  28.5 ± 10.4 |  +6.6
+    suicune v weezing     60.8 |  56.5 |  65.0 |  +8.5 (+4.1, +12.9) |  64.2 ± 10.4 |  -6.9 |  60.3 ± 15.4 |  +1.0
+  vespiquen v weezing     70.9 |  65.9 |  72.7 |  +6.8 (+2.1, +11.5) |  83.5 ±  7.9 |  -6.8 |  83.7 ± 11.0 |  -6.8
+
+Summary (mean squared miss kp3 -> kpr3; real error kp3 -> kpr3; dMSE 95%; tau margin 90%):
+  Sept 23 table (deep_table.py, the cloud's cells); all 28 cells: MSE 112.4 -> 176.5 (k3 159.5); tau 9.2 -> 12.2; dMSE +64.1 (+30.1, +98.6); margin -3.00 (-3.85, -1.52)
+  Sept 23 table (deep_table.py, the cloud's cells); decision set, 27 cells (Altaria v Sceptile quarantined): MSE 115.1 -> 181.6 (k3 160.6); tau 9.3 -> 12.4; dMSE +66.5 (+31.3, +102.6); margin -3.07 (-3.89, -1.56)
+  scoreboard v2, development half (limitless_v2_dev.json); all 28 cells: MSE 127.2 -> 199.3 (k3 173.2); tau 8.4 -> 11.9; dMSE +72.1 (+26.2, +119.0); margin -3.55 (-4.28, -1.38)
+  scoreboard v2, development half (limitless_v2_dev.json); decision set, 27 cells (Altaria v Sceptile quarantined): MSE 131.7 -> 206.4 (k3 177.5); tau 8.6 -> 12.2; dMSE +74.7 (+27.4, +122.7); margin -3.60 (-4.33, -1.44)

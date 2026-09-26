@@ -1,0 +1,521 @@
+﻿=== branch head ===
+aa87fa3f7493c5b8a3223e3d8a5d23159460cbe9 2026-09-26 00:51:23 +0000 kpr3 table readout (engine e09fb46): Hyper Ray without a knockout 21% to 90%; fit to Limitless worse (mean squared miss 176.1 against kp3's 112.2), Hydreigon +5.8 +/- 1.9 further above Limitless as the census predicted; k3, kp3, kq3 identical at the table's build (1,120 of 1,120 each). For the laptop's rule-v2 read and mixed rows.
+
+=== the kpr commits, with author dates (iso) ===
+b356ff8 2026-09-25 06:01:01 -0500 (committer 2026-09-25 06:01:01 -0500) Discard-attack census: k3 declines only Hyper Ray's chip; kd rebased onto kp; seed blocks recorded
+9a35f54 2026-09-25 20:30:43 +0000 (committer 2026-09-25 20:30:43 +0000) kpr<N>: kp plus projected readiness for the Active, in the online score and the clock (spec registered before any kpr table)
+0adfeb7 2026-09-25 21:13:32 +0000 (committer 2026-09-25 21:13:32 +0000) kpr<N>: the reviewers' fixes, registered as amendments to the kpr spec before any kpr table
+1981bb4 2026-09-25 21:50:05 +0000 (committer 2026-09-25 21:50:05 +0000) kpr<N>: each side read over its own horizon (amendment 5, registered before any kpr table, Dustin's go-ahead)
+53638a7 2026-09-25 22:13:54 +0000 (committer 2026-09-25 22:13:54 +0000) kpr tests: two branches the mutation run showed untested (tests only; the bot's code is 1981bb4's)
+14c7d9b 2026-09-25 22:22:32 +0000 (committer 2026-09-25 22:22:32 +0000) kpr<N>: where the search scores EndTurn on the state before it, the own reading counts the turn as over (amendment 6, from the adversarial review, before any kpr table)
+e09fb46 2026-09-25 23:29:41 +0000 (committer 2026-09-25 23:29:41 +0000) kpr tests from the adversarial review (tests only; the bot's code is 14c7d9b's)
+c002d2f 2026-09-26 00:18:10 +0000 (committer 2026-09-26 00:18:10 +0000) kt draft spec revised with the laptop's per-card table: three switches (temporary cuts and reduction Tools in the clock; the flat Tool +10 replaced per Tool; damage back to the attacker), each its own flag with a diagnostic code; later items and the search-length check listed. Not registered, nothing built. kpr3 table partial output.
+aa87fa3 2026-09-26 00:51:23 +0000 (committer 2026-09-26 00:51:23 +0000) kpr3 table readout (engine e09fb46): Hyper Ray without a knockout 21% to 90%; fit to Limitless worse (mean squared miss 176.1 against kp3's 112.2), Hydreigon +5.8 +/- 1.9 further above Limitless as the census predicted; k3, kp3, kq3 identical at the table's build (1,120 of 1,120 each). For the laptop's rule-v2 read and mixed rows.
+
+=== is each commit on the branch? (merge-base --is-ancestor) ===
+b356ff8 NOT on branch
+9a35f54 on branch
+0adfeb7 on branch
+1981bb4 on branch
+53638a7 on branch
+14c7d9b on branch
+e09fb46 on branch
+c002d2f on branch
+
+=== commits on the branch from 9a35f54 to head, oldest first, with engine/ file counts ===
+9a35f54 2026-09-25 20:30:43  engine files: 2 :: +0000 kpr<N>: kp plus projected readiness for the Active, in the online score and the clock (spec registered before any kpr table)
+7fd2f8c 2026-09-25 20:33:04  engine files: 0 :: +0000 kd: mutation checks on the table's code, 49 of 49 caught; kpr identity replay script
+87ad729 2026-09-25 20:33:48  engine files: 0 :: +0000 kpr identity replay at 9a35f54 in progress (partial raw output)
+21c7732 2026-09-25 20:39:24  engine files: 0 :: +0000 kpr identity replay at 9a35f54 in progress (partial raw output)
+d3d18cd 2026-09-25 20:39:37  engine files: 0 :: +0000 kpr identity replay at 9a35f54 in progress (partial raw output)
+cc1f08b 2026-09-25 20:51:28  engine files: 0 :: +0000 kpr identity replay at 9a35f54 stopped at 10,000 of 14,000 k3 games, all identical; the reviewers' fixes change the code, so identity is rerun at the final kpr commit
+0adfeb7 2026-09-25 21:13:32  engine files: 4 :: +0000 kpr<N>: the reviewers' fixes, registered as amendments to the kpr spec before any kpr table
+c2ac0b4 2026-09-25 21:18:07  engine files: 0 :: +0000 kpr: mutation-check script for 0adfeb7 (41 mutations of the kpr code; results follow)
+f2dab6e 2026-09-25 21:20:17  engine files: 0 :: +0000 kpr mutation checks at 0adfeb7 in progress (partial results)
+7eaf0e5 2026-09-25 21:32:55  engine files: 0 :: +0000 kpr mutation checks at 0adfeb7 in progress (7 of 41, all caught)
+1511208 2026-09-25 21:34:33  engine files: 0 :: +0000 kpr mutation checks at 0adfeb7: stopped at 8 of 41, all caught; the second read found a timing step on the opponent's side, so the code changes again and the checks rerun at the final commit
+1981bb4 2026-09-25 21:50:05  engine files: 1 :: +0000 kpr<N>: each side read over its own horizon (amendment 5, registered before any kpr table, Dustin's go-ahead)
+34c1917 2026-09-25 21:50:05  engine files: 0 :: +0000 kpr: mutation list for the horizon commit (54 mutations, including the per-side horizon and the review's survivors)
+0fd4afc 2026-09-25 21:51:26  engine files: 0 :: +0000 kpr mutation checks at 1981bb4 in progress (partial results)
+db187ee 2026-09-25 21:52:56  engine files: 0 :: +0000 rules/09: three engine deviations from the laptop's recordings check (discard-all-Energy skips the pile; two 'random' Energy picks take the last; Rare Candy ignores Primeval Law), fixes after kpr's table is read; kd README: the tier-1 read's two limits; kpr mutation checks in progress
+f189b97 2026-09-25 22:00:51  engine files: 0 :: +0000 Tool / turn-effect census: the counting tool (built only in a scratch copy of engine/, which stays unchanged) and partial output; kp3 on the table's first 100 deals per pairing
+53638a7 2026-09-25 22:13:54  engine files: 1 :: +0000 kpr tests: two branches the mutation run showed untested (tests only; the bot's code is 1981bb4's)
+4558464 2026-09-25 22:13:54  engine files: 0 :: +0000 kpr mutation checks at 1981bb4: 53 of 54 caught, the 54th equivalent with today's cards
+9030e54 2026-09-25 22:15:56  engine files: 0 :: +0000 Tool census output (kp3, 100 table deals x 28 pairings); kpr identity script: kq3 on the full table too, as the laptop asked
+3ac9bdd 2026-09-25 22:18:18  engine files: 0 :: +0000 Tool / turn-effect census and draft kt spec (not registered, nothing built): the flat Tool bonus is visible on the table in every deck; the temporary damage cuts are not (Stiffen only), so part (1)'s test is Dustin's decks 07, 05 and 11; three open choices for Dustin and the laptop
+14c7d9b 2026-09-25 22:22:32  engine files: 1 :: +0000 kpr<N>: where the search scores EndTurn on the state before it, the own reading counts the turn as over (amendment 6, from the adversarial review, before any kpr table)
+cda9182 2026-09-25 22:22:32  engine files: 0 :: +0000 kpr identity replay at 53638a7 in progress (partial raw output)
+8395e12 2026-09-25 22:40:46  engine files: 0 :: +0000 rules 04/05/09: Dustin's answers of Sept 25 (Tools go on any Pokemon, no effect if unmet; both reaching 3 is a Tie; Regigigas under Muk; Toxapex + Nihilego tested; Heavy Helmet reads the current Retreat Cost and Rare Candy is blocked by Primeval Law, by testimony, tests pending, engine bugs on 09; Hiking Trail v Legendary Pulse order in conflict, pending his check). No engine fix before kpr's table is read. kt draft notes Heavy Helmet follows the engine. kpr identity replay partial output.
+48518ce 2026-09-25 23:09:25  engine files: 0 :: +0000 rules: Heavy Helmet confirmed in-game (Dustin's heavyhelmet_test.MP4: printed Retreat Cost 3, Peculiar Plaza, a 40-damage attack did 40). It reads the current Retreat Cost; the engine's printed-cost read is a confirmed bug on rules/09, to fix after kpr's table with the identity replay
+1242a56 2026-09-25 23:09:25  engine files: 0 :: +0000 kpr identity replay in progress (partial raw output)
+e09fb46 2026-09-25 23:29:41  engine files: 1 :: +0000 kpr tests from the adversarial review (tests only; the bot's code is 14c7d9b's)
+fa7dc33 2026-09-25 23:30:01  engine files: 0 :: +0000 kpr mutation list for e09fb46 (64: amendment 6's clauses and the review's surviving mutations added)
+df46e0a 2026-09-25 23:30:17  engine files: 0 :: +0000 kpr: the adversarial review's raw output (1981bb4; 36 agents, 8 of 10 findings upheld, 2 from the critic); identity replay partial output
+65a0d17 2026-09-25 23:30:46  engine files: 0 :: +0000 kpr: the table's run script (kpr3 on 28 x 500 table deals, then k3/kp3/kq3 on 40 deals with the same build)
+580e004 2026-09-25 23:44:16  engine files: 0 :: +0000 kpr mutation checks at e09fb46 (the table's code): 63 of 64 caught, the 64th equivalent with today's cards; identity replay partial output
+b9a7a21 2026-09-26 00:04:39  engine files: 0 :: +0000 kpr identity replay at 53638a7 complete: k3, kp3 and kq3 14,000 of 14,000 each, kd3 1,120 of 1,120, all identical to their tables; full suite at e09fb46: 1,919 passed, 0 failed
+1152307 2026-09-26 00:05:05  engine files: 0 :: +0000 kpr: deck averages and paired deck changes script (kpr3 against kp3, with k3, kq3, kd3 and Limitless)
+d141623 2026-09-26 00:15:19  engine files: 0 :: +0000 kpr3 table at e09fb46 in progress (partial raw output)
+f6e8bca 2026-09-26 00:16:30  engine files: 0 :: +0000 rules 05/09: Hiking Trail v Legendary Pulse confirmed in-game (Pulse first, ends on 3; engine ends on 4, the only queued end-of-turn draw); Rare Candy blocked by Primeval Law confirmed in-game; Poke Ball A2b 111 playable with an empty deck (new, from the laptop's Trainer audit). Fixes after kpr's table is read, each with the identity replay. Census: Small Balloon on Igglybuff (Retreat 0) also does nothing, 225 of 501. kpr3 table partial output.
+c002d2f 2026-09-26 00:18:10  engine files: 0 :: +0000 kt draft spec revised with the laptop's per-card table: three switches (temporary cuts and reduction Tools in the clock; the flat Tool +10 replaced per Tool; damage back to the attacker), each its own flag with a diagnostic code; later items and the search-length check listed. Not registered, nothing built. kpr3 table partial output.
+8f16338 2026-09-26 00:42:52  engine files: 0 :: +0000 kpr3 table at e09fb46: 28 pairings x 500 table deals, no rule findings (raw output); identity subset at the same build running
+aa87fa3 2026-09-26 00:51:23  engine files: 0 :: +0000 kpr3 table readout (engine e09fb46): Hyper Ray without a knockout 21% to 90%; fit to Limitless worse (mean squared miss 176.1 against kp3's 112.2), Hydreigon +5.8 +/- 1.9 further above Limitless as the census predicted; k3, kp3, kq3 identical at the table's build (1,120 of 1,120 each). For the laptop's rule-v2 read and mixed rows.
+
+=== diff --stat 53638a7..e09fb46 (everything) ===
+ engine/src/players/value_functions.rs              |   106 +-
+ rl/results/kpr_2026-09-25/identity_k3_500.jsonl    | 14000 +++++++++++++++++++
+ rl/results/kpr_2026-09-25/identity_k3_500.txt      |    46 +
+ rl/results/kpr_2026-09-25/identity_kp3_500.jsonl   | 12500 +++++++++++++++++
+ rl/results/kpr_2026-09-25/identity_kp3_500.txt     |    38 +
+ .../kpr_2026-09-25/mutation_results_1981bb4.txt    |    64 +
+ rl/results/kpr_2026-09-25/run_identity.sh          |     6 +-
+ rl/results/kpr_2026-09-25/timing.txt               |     1 +
+ .../tool_turn_effect_census_2026-09-25/README.md   |    98 +
+ .../kp3_census.log                                 |    23 +
+ .../kp3_census.txt                                 |    18 +
+ .../kp3_census_games.jsonl                         |  2417 +++-
+ .../tool_turn_effect_census_2026-09-25/timing.txt  |     1 +
+ rules/04_actions_cards_effects.md                  |     6 +-
+ rules/05_open_questions.md                         |    11 +-
+ rules/08_tests_to_record.md                        |     2 +-
+ rules/09_engine_repairs_2026-09-22.md              |    15 +-
+ 17 files changed, 29331 insertions(+), 21 deletions(-)
+
+=== diff --stat 1981bb4..e09fb46 -- engine/ ===
+ engine/src/players/value_functions.rs | 116 +++++++++++++++++++++++++++++++---
+ 1 file changed, 108 insertions(+), 8 deletions(-)
+
+=== diff 53638a7..e09fb46 -- engine/src (saved to branch/diff_53638a7_e09fb46_engine_src.patch) ===
+176 /mnt/c/Users/dacz8/AppData/Local/Temp/claude/C--Users-dacz8-Projects/75cb92d0-6f2d-44b8-a636-513a8f7ee71a/scratchpad/reviews/branch/diff_53638a7_e09fb46_engine_src.patch
+
+=== diff 53638a7..e09fb46 -- engine/src, hunks outside #[cfg(test)] regions: function names touched ===
+@@ -7,7 +7,7 @@ use log::trace;
+@@ -2074,10 +2074,20 @@ fn owner_turn_is_over(state: &State, owner: usize) -> bool {
+@@ -2117,7 +2127,9 @@ fn projected_active_energy(state: &State, owner: usize, active: &PlayedCard, hor
+@@ -3374,6 +3386,7 @@ mod kpr_feature_tests {
+@@ -3387,6 +3400,22 @@ mod kpr_feature_tests {
+@@ -3427,11 +3456,43 @@ mod kpr_feature_tests {
+@@ -3479,6 +3540,35 @@ mod kpr_feature_tests {
+@@ -3690,13 +3780,13 @@ mod kpr_feature_tests {
+
+=== diff --stat 858b6fe..e09fb46 -- engine/ (kp3 table build to kpr table build) ===
+ engine/Cargo.toml                           |    2 +
+ engine/examples/goldfish.rs                 |  285 ++++
+ engine/examples/legality_scan.rs            |   42 +
+ engine/examples/net_divergence.rs           |  283 ++++
+ engine/examples/unpriced_census.rs          |  257 +++
+ engine/src/hooks/core.rs                    |  521 +++++-
+ engine/src/hooks/mod.rs                     |    2 +
+ engine/src/observation.rs                   |    8 +-
+ engine/src/players/mod.rs                   |   90 +
+ engine/src/players/public_pricing_player.rs |  361 +++-
+ engine/src/players/value_functions.rs       | 2442 ++++++++++++++++++++++++++-
+ engine/src/state/mod.rs                     |    5 +
+ 12 files changed, 4209 insertions(+), 89 deletions(-)
+
+=== diff --stat 858b6fe..e09fb46 -- engine/src excluding players/ ===
+ engine/src/hooks/core.rs  | 521 +++++++++++++++++++++++++++++++++++++++++++++-
+ engine/src/hooks/mod.rs   |   2 +
+ engine/src/observation.rs |   8 +-
+ engine/src/state/mod.rs   |   5 +
+ 4 files changed, 529 insertions(+), 7 deletions(-)
+
+=== README history: every commit touching rl/results/kpr_2026-09-25/README.md ===
+aa87fa3 2026-09-26 00:51:23 +0000 kpr3 table readout (engine e09fb46): Hyper Ray without a knockout 21% to 90%; fit to Limitless worse (mean squared miss 176.1 against kp3's 112.2), Hydreigon +5.8 +/- 1.9 further above Limitless as the census predicted; k3, kp3, kq3 identical at the table's build (1,120 of 1,120 each). For the laptop's rule-v2 read and mixed rows.
+
+=== README at 9a35f54 (registration) saved ===
+no README at 9a35f54
+no README at 0adfeb7
+no README at 1981bb4
+no README at 14c7d9b
+no README at 53638a7
+no README at e09fb46
+no README at c002d2f
+
+=== 'footprint' / 'census' lines in the registration README (9a35f54) ===
+
+=== commit messages in full: 9a35f54 0adfeb7 1981bb4 14c7d9b 53638a7 e09fb46 ===
+--- 9a35f54 ---
+kpr<N>: kp plus projected readiness for the Active, in the online score and the clock (spec registered before any kpr table)
+
+Spec, registered here before any kpr table (Dustin's option 2; not tuned). The source is docs/REVIEW_2026-09-24_direction.md on
+main ("Proposed B5 fix for the Hyper Ray blind spot") and the discard-attack census.
+
+1. Base and code. kpr<N> = kp<N> (k's blind search, PublicPricingPlayer with the 62 audited texts) with one evaluator
+   change. Player code "kpr<N>", parsed before "kp<N>". Value function public_clock_effect_kpr_value_function
+   (EvalFeatures::KPR). kq's and kd's features are off.
+
+2. The change. Wherever k reads how ready the Active is, kpr reads the Active as it will stand at its next attack
+   (at_next_attack): a copy with projected_active_energy attached. Two places, both sides, public information only:
+   (a) k's Active online score (weight 500): the same formula (yardstick attack, damage estimate, ratio), taken on
+       that copy;
+   (b) the damage-aware threat clock's missing-Energy count, for the Active's candidate attacks (its own and its
+       evolution forms'). The damage estimate and everything else in the clock are unchanged.
+
+3. When is the next attack? This turn if the owner is to move and hasn't attacked, else the owner's next turn.
+
+4. The Energy counted, from public sources the owner controls (projected_active_energy):
+   - The turn's attach from the Energy Zone, of the visible type: `current` this turn if still unused, `next` for the
+     next turn. None if the Zone shows no type, or if a NoEnergyFromZoneToActive turn effect covers that turn
+     (State::get_turn_effects, added).
+   - Abilities that attach Energy to the Active, each once, keyed on mechanic. An Ability already used this turn counts
+     only for the next turn. The mechanics:
+     - AttachEnergyFromZoneToActiveTypedPokemon (Ice Maker), to an Active of its type;
+     - AttachEnergyFromZoneToYourTypedPokemon, AttachEnergyFromZoneToSelf and AttachEnergyFromZoneToSelfAndDamage
+       (Roar in Unison), when the Active holds them (the typed one only if the Active is of its type);
+     - AttachEnergyFromDiscardToSelfAndDamage (Combust), when the Active holds it and that Energy is in the discard
+       pile;
+     - AttachEnergyFromDiscardToActiveTypedFromBench (Dragon's Blessing), from the Bench to an Active of its type, with
+       an Energy of the Active's type from the discard pile if there is one, else the first there.
+     The Zone Abilities are blocked with the turn's attach.
+   - Not counted:
+     - AttachEnergyFromZoneToSelfAndEndTurn (no attack follows it);
+     - one-off Abilities (on evolving, end of the first turn);
+     - anything feeding the Bench;
+     - Roar in Unison's 30 self-damage.
+
+5. Active only. Benched Pokemon keep current readiness, so the turn's single attach is counted once, and only for the
+   Active. The online-count and Energy-distance terms are unchanged.
+
+6. Why the clock too (option 2 over option 1), written down as Dustin asked. In the clean position the spec was built
+   for (Hydreigon with [D][D][D] v Suicune ex, 140 HP, no knockout; Bulbasaur benched; a [D] showing next), the
+   Active score alone gives back the 500 of readiness. But the clock still counts three turns of missing Energy, so
+   the owner's win goes from 3 turns to 5 (-200), and the Active-score-only version declines Hyper Ray just as kp does
+   (686 to end the turn against 491 to attack). A candidate whose table can't measure the thing it was built for isn't
+   worth the laptop time. With the clock projected too, the owner's win after Hyper Ray is 2 turns against 3, and
+   kpr3 chips; the get_player test pins it.
+
+7. Footprint (census, rl/results/discard_attack_census_2026-09-25 on main):
+   - Energy-discard attacks: Hyper Ray (Hydreigon, all of [D][D][D]); Mega Burning (Mega Blaziken ex, one [R] of two;
+     also Dustin's 06); Terminating Tail (Mega Sceptile ex, one [G] of two); Diving Icicles (Chien-Pao ex in the
+     Suicune list, all [W]).
+   - Energy sources beyond the turn's attach: Roar in Unison (Hydreigon), Ice Maker (Baxcalibur, Suicune list),
+     Dragon's Blessing (Dragonair, Dustin's 11).
+   - k3 declines only Hyper Ray's chip (19% use without a knockout), against 92% for Mega Burning and 95% for
+     Terminating Tail.
+   Broader, and stated here so the table isn't misread: because the turn's attach is projected, every Active one
+   attach short now reads as ready in both places, on both sides, in every deck. That's faithful to Pocket (a Pokemon
+   can attach and attack in the same turn), and it moves more than the discard decks.
+
+k, kp, kq and kd: the flag is false for them, so their Active score and clock take the old path. The only shared
+change is a `charged` reference that equals the Active when the flag is off. Proof by replay follows.
+
+Tests (full suite 1,905 passed, 0 failed):
+- players::value_functions::kpr_feature_tests (10):
+  - Hydreigon emptied by Hyper Ray is ready again next turn (0 to 1; 2 of 3 with no Zone type);
+  - Zweilous gets the turn's attach only;
+  - the turn's attach counts once (this turn v after attaching v after attacking);
+  - an Ability used this turn counts only next turn;
+  - Ice Maker feeds an Active of its type only;
+  - Combust and Dragon's Blessing need the Energy in the discard pile;
+  - a NoEnergyFromZoneToActive turn effect blocks the projection;
+  - the kpr evaluator against k's (+800, then +450, with the opponent's side);
+  - the clock projects the Active only (4 to 1; a benched Hydreigon unchanged);
+  - no hidden card read.
+- players::public_pricing_player (1): kpr3 through get_player chips with Hyper Ray where kp3 declines. It fails if
+  the KPR arm stops using the kpr value function.
+- players::mod parse tests: kpr3, KPR5, kpr/kprx rejected, kp3 unchanged.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01GTc5JmLRL3Wvk2SXr1rNe3
+
+--- 0adfeb7 ---
+kpr<N>: the reviewers' fixes, registered as amendments to the kpr spec before any kpr table
+
+Two reviews of 9a35f54 (rules fidelity; identity, hidden information and tests) found no blocker. They found a timing
+gap in the spec, two ways the clock could misread, a double count and a dead branch in Dragon's Blessing, and tests
+that couldn't fail. The spec's intent is unchanged: the Active is priced as it will stand at its next attack. These
+amend how that is computed, each with its reason, before any kpr table is run.
+
+Amendments to the spec (9a35f54's numbering):
+
+3. When is the next attack? (was: this turn if the owner is to move and hasn't attacked, else next turn)
+   Now: while the owner's turn can still bring Energy or an attack, this turn's unused sources count and so do next
+   turn's; once it can't, next turn's only. For any one attack this is the same as the reviewer's fix, "this turn if
+   this turn's sources pay for it, else next turn with both".
+   - Reason: under the old rule the same board scored differently mid-turn and after the turn ended, on the owner's
+     side. Example: Mega Sceptile ex holding [G], this turn's attach made, [G] next: mid-turn 1 of 2, after EndTurn
+     2 of 2 and a turn faster. That is +350 for ending the turn inside the search (which runs without a consistent
+     horizon) over continuing to develop. k has no such step. Now both read 2 of 2. A source left unused at the end
+     of the turn is still lost, which is right.
+   - "The turn is over" (owner_turn_is_over) now also covers the states that are really past the turn: a pending
+     end, an attack used, a forced EndTurn on the stack (Giratina ex's Ability, the Supporter that attaches and ends
+     the turn), a deferred or paused Checkup, and an end-of-turn evolution. Before, a deferred Checkup (every EndTurn
+     against an Active Caterpie, in the Sceptile list) read as "this turn".
+   - Next turn is turn_count + 2 while the owner is to move, else turn_count + 1, as before. Nothing is projected
+     during setup (turn 0).
+   - What is left: any "next attack" horizon has a step somewhere. Now it is at the start of the owner's turn, where
+     the horizon gains the owner's following turn. In the searching player's own search, that is the opponent's turn
+     start right after the searcher's EndTurn; the opponent's next Zone type is unknown there, so only its Abilities
+     count a second time, and only where one round doesn't pay its attack. In the yardstick decks that is the Suicune
+     list's Chien-Pao ex emptied by Diving Icicles with one Baxcalibur in play: 2 of 3 before its turn, 3 of 3 after
+     (its real next attack is two turns off either way). Hydreigon's Roar plus the turn's [D] already pays Hyper Ray.
+     The old step was on the searcher's own side at its EndTurn, for every deck.
+
+2(b). The clock. (was: the Active's missing Energy projected; damage unchanged)
+   Now: the clock takes the faster of the clock with and without the projection, and for the Active it projects the
+   damage estimate as well as the missing Energy (its own attacks and its evolution forms').
+   - Reason for the minimum: projecting only the Active can make the owner's win slower. The threat is picked by
+     fewest missing Energy, so a weak Active one attach short displaced a stronger benched attacker also one short.
+     Example: Deino (Headbutt 20) Active and Mega Absol ex (80) benched with [D], [D] next, v Suicune ex: k 3 turns,
+     the projection alone 7. Extra Energy must never slow a clock.
+   - Reason for the damage: "as it will stand at its next attack" includes damage that depends on Energy. Mega
+     Lucario ex with [F][F] and [F] next does 140 at its next attack, not 90: 1 hit on Suicune ex, not 2. The Active
+     score already estimated on the projected copy, so the two now agree.
+
+4. The sources.
+   - Discard-pile sources take each discarded Energy once (a local copy of the discard pile). Reason: two Dragonair
+     each took the same single discarded Energy (Dustin's 11 runs two).
+   - Dragon's Blessing takes the discarded type that leaves the Active's attacks fewest missing Energy (the lowest for
+     any one attack, then the total), ties to the one discarded first, after the turn's other sources. Reason: the
+     old rule preferred the Active's own type, which never matches (a Dragon Active; there is no Dragon Energy), so it
+     always took the oldest discard. Haxorus holding [M], discard [M, F], [M] next: now [F], ready.
+   - An Ability that damages its holder (Roar in Unison 30, Combust 20) isn't counted once the damage it and earlier
+     ones do would knock the Active out. Reason: an attach that knocks the Active out can't lead to its attack.
+   - Known limits, written down, no yardstick deck affected: an attach that puts the Active to sleep (Snoozing Habit,
+     Comatose, Stellar Cradle) still counts; Energy moved from the Bench isn't counted; and a `next` drawn inside the
+     search (Rainbow Cave, or a search crossing into the owner's next turn) is a guess, which matters only for decks
+     with two Energy types (Dustin's 08 and 11), fix before kpr pilots one.
+
+Everything else in the spec stands: kp plus this one evaluator change, both sides, public information only, the
+Active only, not tuned.
+
+k, kp, kq and kd: still on the old path. With the flag off the clock is the same scan (now
+turns_until_opponent_wins_scan, called once with false) and `charged` is the Active itself. A full replay follows.
+
+Tests (19 kpr feature tests, up from 10, plus 2 through get_player):
+- New: the same board mid-turn and after the turn; each "turn is over" marker, and the opponent's leftover `current`;
+  nothing in setup; the knock-out guard for Roar (single and cumulative) and Combust; Dragon's Blessing takes each
+  discard once, picks the missing type, only from the Bench, only to a Dragon; Forest Breath and Volt Charge only
+  from the Active; Ice Maker blocked by the turn effect; the block on this turn and on next turn with the owner to
+  move; the clock never slower for the projection; the clock's damage projected (Mega Lucario ex); evolution forms
+  projected (Koffing with Weezing in hand); kpr3 through get_player prices Darkness Claw (the pricing wrapper).
+- Strengthened, per the review: the Bonsly board now has a Zweilous with one [D] behind it, which the clock would
+  count if the Bench were projected; the hidden-card test swaps an Ivysaur behind a Bulbasaur holding a [G], and a
+  Baxcalibur behind a Suicune ex, so a leak would change the value.
+- Changed, for the amended timing: an Ability used this turn now asserts both halves (2 of 3 next turn); the kpr
+  evaluator against k is +450, then +100 (the opponent to move counts its next turn's [G] too).
+- Docs brought up to date (players/mod.rs, the kpr value function, EvalFeatures, the test module, State's turn
+  effect getters).
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01GTc5JmLRL3Wvk2SXr1rNe3
+
+--- 1981bb4 ---
+kpr<N>: each side read over its own horizon (amendment 5, registered before any kpr table, Dustin's go-ahead)
+
+A second read of 0adfeb7 found that amendment 3 (count this turn's unused sources and next turn's while the owner's
+turn runs) moved the turn-boundary step from the searcher's side to the opponent's, and made it bigger than
+0adfeb7's message said. Dustin chose to fix it before the table.
+
+The finding. kp's blind search (consistent_horizon false) scores every line that ends the searcher's turn, attacks
+included, at the start of the opponent's turn; lines cut at depth mid-turn are scored mid-turn. At the opponent's
+turn start, 0adfeb7 read the opponent's Active through its next turn too, so its Energy Abilities counted twice.
+- Suicune list, measured on the evaluator: player 1's Chien-Pao ex with no Energy and a benched Baxcalibur, [W]
+  next, against Mega Lucario ex. Before the rotation, [W] and Ice Maker's [W] pay Icicle (20): clock 10. After, a
+  second Ice Maker pays Diving Icicles (130): clock 2. kpr's value for the searcher drops about 800 on every line that
+  ends its turn, k's doesn't move. The same for Baxcalibur as the Active with no [W] (a 267 step), and for Chien-Pao
+  ex with no Energy for any reason (promoted, pulled up by Sabrina or Cyrus).
+- 0adfeb7's "What is left" paragraph put this at 2 of 3 to 3 of 3 in the score. The score's yardstick had already
+  moved to Icicle, so the step is in the clock, and it's larger. That paragraph is wrong; this replaces it.
+
+Amendment 5 (spec item 3, "when is the next attack?"), per side:
+- The evaluating player's own Active: through its next turn (0adfeb7's rule). While its turn runs, this turn's
+  unused sources and next turn's; otherwise next turn's. For the missing Energy of any one attack this equals "this
+  turn if this turn's sources pay it, else next turn with both". (0adfeb7 said "for any one attack"; it holds for
+  missing Energy, not for Energy-dependent damage: Mega Lucario ex holding [F] with this turn's [F] unused and [F] next
+  is priced at 140, where an attack this turn would do 90. The clock doesn't model whose turn it is, so this stands.)
+- The opponent's Active: at its very next attack (9a35f54's rule, with 0adfeb7's "turn is over" markers). While its
+  turn runs, this turn's sources only; otherwise next turn's.
+- Reason: each reading steps once per cycle, somewhere. The own reading steps at the start of the owner's turn and the
+  opponent's at the end of its turn, and the searcher's search runs from its own turn to the start of the opponent's
+  (kp's blind search goes no further). So neither reading steps inside the search. At the opponent's rotation its
+  `next` becomes `current`: same Energy before and after. The +350 step 0adfeb7 removed stays removed.
+- In code: enum Horizon { ThroughNextTurn, NextAttack }. parametric_value_function_ex6 passes ThroughNextTurn for the
+  evaluator's Active score and for its own threat in the opponent's clock, and NextAttack for the opponent's Active
+  score and for the opponent's threat in the evaluator's clock. Everything else in 0adfeb7 stands.
+
+Known limits added to the docs (from the same read; no yardstick deck is affected unless named):
+- An estimate that reads the Active from the board (Energized Leaves' combined count, Teal Mask Ogerpon ex in the
+  Vespiquen list) doesn't see the projected Energy.
+- Extra Energy can move the online score's yardstick to a better attack with a lower ratio, only with mixed-type
+  costs (Dustin's 08 and 11, not the table).
+- An observation hides the opponent's stack, so a paused end of its turn (a point-denial coin at Checkup) reads as its
+  turn running. Between Kiawe and its attach choice the turn reads as over.
+- Correction to 0adfeb7's message: 18 kpr feature tests there, not 19 (20 with the two through get_player).
+
+k, kp, kq and kd: unchanged path. The clock and the Active score take Option<Horizon>, None for them; the kq and kd
+test helpers pass None. A full replay follows at this commit.
+
+Tests: 20 kpr feature tests and 2 through get_player (22).
+- New: the opponent's Active at its very next attack (this turn's sources only while its turn runs; both readings
+  agree once it's over or on the other side's turn); the second review's Suicune board, where the opponent's clock is
+  10 before and after its turn start (2 if it were read through its next turn), and kpr's difference from k is the
+  same on both sides of the boundary.
+- Added, for mutations the review showed would survive: Combust over two turns (each discarded [R] once, the 20s add
+  up); Forest Breath and Volt Charge blocked by the turn effect; Dragon's Blessing ties go to the first discarded, and
+  the total decides when the lowest ties (Ultra Necrozma ex); the evolution form's damage projected (Electabuzz
+  holding [L][L][L] with Electivire in hand: 120 with the fourth [L]); a turn-end marker under another choice (Kiawe's
+  [EndTurn] under its attach choice, a paused Checkup under a promotion).
+- Changed: the kpr evaluator against k is +800, then +450 (the opponent to move is read at its next attack, this
+  turn), as at 9a35f54.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01GTc5JmLRL3Wvk2SXr1rNe3
+
+--- 14c7d9b ---
+kpr<N>: where the search scores EndTurn on the state before it, the own reading counts the turn as over (amendment 6, from the adversarial review, before any kpr table)
+
+Found by two of the review's five lenses independently (horizon continuity; hidden information), and confirmed in
+the code here.
+
+The finding. When the search can't see an action's continuation it scores the state before the action
+(expectiminimax_player.rs, `observation::hidden_continuation_reason`). For EndTurn that happens when the opponent's
+Active has an automatic start-of-turn search of its unknown deck: Caterpie's Quick Growth in the Sceptile list, or a
+`StartTurnRandomPokemonToHand` Ability. There the "EndTurn" leaf is the pre-EndTurn state, where the turn still
+reads as running, so the evaluator's own reading (Horizon::ThroughNextTurn) credits this turn's unused Zone Energy
+and Abilities on a line that ends the turn without them. "EndTurn" and "attach, then EndTurn" then read alike, and the
+250 the unused attach really costs is never charged (Riolu with Mega Lucario ex in deck against Caterpie: both 1.0,
+where k gives the attach +250). It affects the Sceptile rows whenever Caterpie is the Active.
+
+Amendment 6 (spec item 3). For the own reading only, the turn also counts as over wherever the search would score
+the owner's EndTurn on the state before it (`end_turn_scored_before_it`: `hidden_continuation_reason` for that
+EndTurn is set). It applies to every leaf of such a position, mid-turn cutoffs included, so the leaves still read alike
+and the +350 step 0adfeb7 removed doesn't come back: in these positions the own reading is k's for this turn's
+sources (counted only once used) plus next turn's. The opponent's reading (NextAttack) is unchanged: the searcher's
+search never scores the opponent's EndTurn.
+
+k, kp, kq and kd: unchanged (the code is inside projected_active_energy, which only kpr calls). The full replay of
+k3, kp3, kq3 (and kd3's first 40 deals) runs at 53638a7; the bot code since differs only inside kpr, and a subset
+replay at the table's commit will show it.
+
+Test: where_the_search_scores_end_turn_before_it_the_own_turn_counts_as_over (Zweilous against an Active Caterpie:
+2 of 2 with the opponent's deck known, 1 of 2 with it unknown; the opponent-side reading unchanged).
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01GTc5JmLRL3Wvk2SXr1rNe3
+
+--- 53638a7 ---
+kpr tests: two branches the mutation run showed untested (tests only; the bot's code is 1981bb4's)
+
+- The evaluator's own Active read through its next turn, at the value function: player 0 mid-turn with Zweilous
+  holding [D], this turn's attach made, [D] next, is +350 over k (the step 0adfeb7 removed). Reading it only to its
+  next attack gives 0; the mutation 'own Active read at its next attack' now fails.
+- Combust feeds only its holder: a benched Flareon ex adds nothing to a Charmander Active ('Combust from the Bench').
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01GTc5JmLRL3Wvk2SXr1rNe3
+
+--- e09fb46 ---
+kpr tests from the adversarial review (tests only; the bot's code is 14c7d9b's)
+
+The review of 1981bb4 (5 lenses, 3 skeptics per finding, then a completeness critic; 36 agents) upheld 8 findings and
+the critic 2. None calls for a code change beyond amendment 6 (14c7d9b, the Caterpie EndTurn). Two are limits,
+written into the kpr README. The rest are test gaps, closed here:
+- Roar in Unison feeds only its holder (a benched Hydreigon gives a Mega Absol ex Active nothing).
+- Ice Maker from the Active (Baxcalibur feeds itself, 2 of 3), from each of two Baxcalibur (Chien-Pao ex reaches
+  Diving Icicles: clock 11 to 2 against Mega Lucario ex), and a used Ice Maker read on its holder.
+- Amendment 6's negative control: an unknown opponent deck behind an ordinary Active leaves the turn running.
+- Turns 1 and 2 are projected (only turn 0 is not).
+- The real turn-start leaf: the opponent's draw on the stack, with a board that needs this turn's Zone (Mega Absol ex,
+  1 of 2 before and after).
+- The hidden-card test reads this turn's Zone for the opponent to move (its comment was stale since amendment 5).
+25 kpr tests (23 feature, 2 through get_player).
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01GTc5JmLRL3Wvk2SXr1rNe3
+
+
+=== files in rl/results/kpr_2026-09-25/ on the branch, with sizes ===
+100644 blob a193ede3c0215b29c01b2e04f4e73ec45d9b606e   11614	rl/results/kpr_2026-09-25/README.md
+100644 blob 866bbffeaaab191e30f9df85186bc3b218db0e50    3570	rl/results/kpr_2026-09-25/deck_averages.py
+100644 blob a5dc9c3e482ec55a93b9655a3f1b292b7ebbe595 2999663	rl/results/kpr_2026-09-25/identity_k3_500.jsonl
+100644 blob 7f7dcdc4401da92fc960f11dafb67be51c76875f    4116	rl/results/kpr_2026-09-25/identity_k3_500.txt
+100644 blob d98adaee9786594767b2c30411ea04eacfea7d40 2109432	rl/results/kpr_2026-09-25/identity_k3_9a35f54_partial.jsonl
+100644 blob 554592bc63d421e2792e72a8e8d215abf2aab90d    2916	rl/results/kpr_2026-09-25/identity_k3_9a35f54_partial.txt
+100644 blob b021122d4fb9f04aa71c606756c5f964f6721bb5  239636	rl/results/kpr_2026-09-25/identity_kd3_40.jsonl
+100644 blob 4200d7b03412090985a43c3ec001ac7516adf27c    4000	rl/results/kpr_2026-09-25/identity_kd3_40.txt
+100644 blob 684cf4c1351a5783a869794397df3beea5fa598f 3021206	rl/results/kpr_2026-09-25/identity_kp3_500.jsonl
+100644 blob cf206e4bc120bab8a9531119616c3ccc0400d056    4113	rl/results/kpr_2026-09-25/identity_kp3_500.txt
+100644 blob aad1a33a27f819e5357253585f8a39041d981251 3007925	rl/results/kpr_2026-09-25/identity_kq3_500.jsonl
+100644 blob 3d28d9f197c257d1b113973b5adb69da54ad3e0f    4111	rl/results/kpr_2026-09-25/identity_kq3_500.txt
+100644 blob 7a33bda16b26a7d0662612a5dbd558307cfcd09d 3067247	rl/results/kpr_2026-09-25/kpr3_500.jsonl
+100644 blob e3928cd514b79e024da99ff8f54f5e0e181b4a55    4120	rl/results/kpr_2026-09-25/kpr3_500.txt
+100644 blob 09cc1fbe5744bc856358ad6565422c891a94584f   16319	rl/results/kpr_2026-09-25/mutate.py
+100644 blob 008a31e6a1c3f202db7ecc60c226b223f46defbf    1133	rl/results/kpr_2026-09-25/mutation_results_0adfeb7.txt
+100644 blob 738403b8de8e136b10000718857e566f8daaafd4    8392	rl/results/kpr_2026-09-25/mutation_results_1981bb4.txt
+100644 blob 7e3079faaa4ca03787162d3e1acc00a2c1274364    9760	rl/results/kpr_2026-09-25/mutation_results_e09fb46.txt
+100644 blob ff52ee31e4d17a4a05b1cc0e4bc2c67d7d8ec233  156783	rl/results/kpr_2026-09-25/review_1981bb4_workflow_output.json
+100755 blob 32a027b6a160cfe8a1b61548dff1d0b5a3551e18     951	rl/results/kpr_2026-09-25/run_identity.sh
+100755 blob ee7eedacb6099523e5813457b79985a2dda57a23    1138	rl/results/kpr_2026-09-25/run_kpr3_table.sh
+100644 blob 37f8c2e1d0cb9bab8304e10934ff44fa9bfc3c9d  238691	rl/results/kpr_2026-09-25/table_commit_identity_k3_40.jsonl
+100644 blob bf3d5b2590d006aec0b49c74f026761a5e2ebe4e    4001	rl/results/kpr_2026-09-25/table_commit_identity_k3_40.txt
+100644 blob f6bfb11155932290e6a225f28ce8ee1345df53cc  241702	rl/results/kpr_2026-09-25/table_commit_identity_kp3_40.jsonl
+100644 blob 727a1d457e641799f1e219572024e7ec93d3f283    3999	rl/results/kpr_2026-09-25/table_commit_identity_kp3_40.txt
+100644 blob 2ccd2737612ec654cef95f0952825aa9d466b74c  239792	rl/results/kpr_2026-09-25/table_commit_identity_kq3_40.jsonl
+100644 blob 0094698054755d63d181f88ef86ec832f4f08e5b    3997	rl/results/kpr_2026-09-25/table_commit_identity_kq3_40.txt
+100644 blob c63ea80c36178b6dced58670e375c9368a8da442     283	rl/results/kpr_2026-09-25/timing.txt
+
+=== which commit added each kpr result file (first appearance) ===
+kpr3_500.jsonl: d141623 2026-09-26 00:15:19 +0000 ... last 8f16338 2026-09-26 00:42:52 +0000
+kpr3_500.txt: d141623 2026-09-26 00:15:19 +0000 ... last 8f16338 2026-09-26 00:42:52 +0000
+table_commit_identity_k3_40.jsonl: 8f16338 2026-09-26 00:42:52 +0000 ... last aa87fa3 2026-09-26 00:51:23 +0000
+table_commit_identity_kp3_40.jsonl: aa87fa3 2026-09-26 00:51:23 +0000 ... last aa87fa3 2026-09-26 00:51:23 +0000
+table_commit_identity_kq3_40.jsonl: aa87fa3 2026-09-26 00:51:23 +0000 ... last aa87fa3 2026-09-26 00:51:23 +0000
+identity_k3_500.jsonl: 87ad729 2026-09-25 20:33:48 +0000 ... last 1242a56 2026-09-25 23:09:25 +0000
+identity_kp3_500.jsonl: 1242a56 2026-09-25 23:09:25 +0000 ... last df46e0a 2026-09-25 23:30:17 +0000
+identity_kq3_500.jsonl: df46e0a 2026-09-25 23:30:17 +0000 ... last b9a7a21 2026-09-26 00:04:39 +0000
+identity_kd3_40.jsonl: b9a7a21 2026-09-26 00:04:39 +0000 ... last b9a7a21 2026-09-26 00:04:39 +0000
+identity_k3_9a35f54_partial.jsonl: cc1f08b 2026-09-25 20:51:28 +0000 ... last cc1f08b 2026-09-25 20:51:28 +0000
+timing.txt: 1242a56 2026-09-25 23:09:25 +0000 ... last aa87fa3 2026-09-26 00:51:23 +0000
+mutation_results_e09fb46.txt: df46e0a 2026-09-25 23:30:17 +0000 ... last 580e004 2026-09-25 23:44:16 +0000
+review_1981bb4_workflow_output.json: df46e0a 2026-09-25 23:30:17 +0000 ... last df46e0a 2026-09-25 23:30:17 +0000
+
+=== c002d2f partial kpr3_500.jsonl vs final: first 1000 lines identical? ===
+IDENTICAL (5000 lines)
+
+=== copy reference tables and the table-commit identity files for fingerprint checks ===
+copied rl/results/per_game_table_2026-09-25/k3_500.jsonl -> ref/k3_500.jsonl (14000 lines)
+copied rl/results/public_pricing_2026-09-25/kp3_500_worst5.jsonl -> ref/kp3_500_worst5.jsonl (2500 lines)
+copied rl/results/public_pricing_2026-09-25/kp3_500_rest.jsonl -> ref/kp3_500_rest.jsonl (11500 lines)
+copied rl/results/kq_2026-09-25/kq3_500.jsonl -> ref/kq3_500.jsonl (14000 lines)
+copied rl/results/kd_2026-09-25/kd3_500.jsonl -> ref/kd3_500.jsonl (14000 lines)
+copied rl/results/kpr_2026-09-25/table_commit_identity_k3_40.jsonl -> ref/table_commit_identity_k3_40.jsonl (1120 lines)
+copied rl/results/kpr_2026-09-25/table_commit_identity_kp3_40.jsonl -> ref/table_commit_identity_kp3_40.jsonl (1120 lines)
+copied rl/results/kpr_2026-09-25/table_commit_identity_kq3_40.jsonl -> ref/table_commit_identity_kq3_40.jsonl (1120 lines)
+copied rl/results/kpr_2026-09-25/table_commit_identity_k3_40.txt -> ref/table_commit_identity_k3_40.txt (46 lines)
+copied rl/results/kpr_2026-09-25/table_commit_identity_kp3_40.txt -> ref/table_commit_identity_kp3_40.txt (46 lines)
+copied rl/results/kpr_2026-09-25/table_commit_identity_kq3_40.txt -> ref/table_commit_identity_kq3_40.txt (46 lines)
+copied rl/results/kpr_2026-09-25/identity_k3_500.jsonl -> ref/identity_k3_500.jsonl (14000 lines)
+copied rl/results/kpr_2026-09-25/identity_kq3_500.jsonl -> ref/identity_kq3_500.jsonl (14000 lines)
+copied rl/results/kpr_2026-09-25/identity_kd3_40.jsonl -> ref/identity_kd3_40.jsonl (1120 lines)
+copied rl/results/kpr_2026-09-25/identity_k3_9a35f54_partial.jsonl -> ref/identity_k3_9a35f54_partial.jsonl (10000 lines)
+copied rl/results/limitless_check_2026-09-23.md -> ref/limitless_check_2026-09-23.md (157 lines)
+MISSING on branch: rl/results/discard_attack_census_2026-09-25/README.md
+
+=== branch dirs mentioning footprint / census (rl/results) ===
+rl/results/tool_turn_effect_census_2026-09-25
+rl/results/unpriced_census_2026-09-25
+
+=== grep 'footprint' on the branch (rl/ and docs/) ===
+
+=== main (local HEAD) vs branch: merge-base and scoreboard v2 location ===
+main
+8845ac6 2026-09-26 00:06:36 -0500 kpr3 mixed rows: build and run scripts, fixed before the laptop reads the kpr3 table
+2cb64e910091143c7b937cb571468316ee0cee4b
+rl/results/holdout_kp3_2026-09-25
+rl/results/scoreboard_v2_2026-09-25
+rl/results/table_readings_2026-09-24
+100644 blob f6e738d4affc6cecf84923fad46df1e22253f806    4343	rl/results/scoreboard_v2_2026-09-25/README.md
+100644 blob 56741ebdf9b00c74d2587bfcec0af2303ca28ee2    5138	rl/results/scoreboard_v2_2026-09-25/b3n1_vs_k3_v2.txt
+100644 blob 42754d1c633e44c977d72ed75779b7915bc696a9    5539	rl/results/scoreboard_v2_2026-09-25/build_v2.py
+100644 blob 29909d6c2293c6999d4d115b36338c5d90d3250a    3717	rl/results/scoreboard_v2_2026-09-25/cells_v2.txt
+100644 blob 76614f798f6504481335145ce8ac45e700a609d7    5189	rl/results/scoreboard_v2_2026-09-25/kp3_vs_k3_v2.txt
+100644 blob dde37bf1b45ac48a5ba6afa11561fd0eaa988539    5429	rl/results/scoreboard_v2_2026-09-25/kq3_vs_k3_v2.txt
+100644 blob 1cb3d6dfc6883e2ca21246c2571dad4e63a7cd59    5082	rl/results/scoreboard_v2_2026-09-25/kq3_vs_kp3_v2.txt
+100644 blob fbb0559143a3e68a1a9d78b7006063b2cc60a89d    1616	rl/results/scoreboard_v2_2026-09-25/limitless_v2_dev.json
+100644 blob 6b2c64384fa6bdcbb6795383961cc97ac3c9374c   43133	rl/results/scoreboard_v2_2026-09-25/limitless_v2_dev_events.json
+
+=== is scoreboard v2 on the branch? ===
+
+=== local main: score.py location ===

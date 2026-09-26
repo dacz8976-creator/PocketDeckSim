@@ -1,0 +1,27 @@
+{
+  "key": "charizardy_entei",
+  "archetype": "Mega Charizard Y ex Entei ex",
+  "deck_id": "mega-charizard-y-ex-b1a-entei-ex-a4a",
+  "file": "rl/results/b2e_card_check_2026-09-26/decks/h-charizardy_entei.txt",
+  "source": "Cowork Limitless pull: rl/results/limitless_skill_model_2026-09-25/raw/6a9f6899a4272c53be64a894_standings.json.gz (decklist field of player sinorci200). Not the decklist_sources.json representative (ibfasting, 6th of 97), which is the most frequent exact list but not the best-placed one.",
+  "player": "sinorci200 (FGR || Sinorci200, IT)",
+  "event": "Umbreon99's Team Rocket's Bash: $10 USD (172 players)",
+  "event_id": "6a9f6899a4272c53be64a894",
+  "date": "2026-09-08",
+  "placing": 3,
+  "record": "8-2-1",
+  "url": "https://play.limitlesstcg.com/tournament/6a9f6899a4272c53be64a894/player/sinorci200/decklist",
+  "selection_note": "Best placing in the largest event among the 13 top-8 entries of this deck id in the 63 development events of the Aug 26 - Sep 24, 2026 window (106 entries of the deck id in all, development only). 3rd of 172 is the best placing outright and the second-largest event; the largest (219 players, Umbreon99's Aura Sphere #4, 2026-09-11) had the archetype at 7th (genessiss). Holdout event standings were not opened, following split.json and the cells.py note that decklist selection used the development half only. Scan script: scratchpad/b2e/scan_charizardy.py.",
+  "printings": "All 13 ids copied verbatim from the API decklist and confirmed with python lib/card.py. Two names have several distinct texts and the source picks one: Charmander B2b 007 (Flame Tail 30, HP 70; the others are A1 033 Ember, A2b 008 Combustion, B1a 011 Bite) and Charmeleon B2b 008 (Ignition + Slash 40; B1a 012 is Ignition + Steady Firebreathing, A1 034 and A2b 009 differ). Mega Charizard Y ex (B1a 014/077/087, B4a 105), Entei ex (A4a 010/079/087, B2a 126, P-A 110), Professor's Research (A4b 373, P-A 007), Copycat (B1 225/270), Wally (B4 153/193), Pokemon Center Lady (A2b 070/089), Flame Patch (B1 217/331), Poke Ball (A2b 111, P-A 005) and Giant Cape (A2 147, A4b 320/321) each have one distinct text; the source's printing is used and matches what the panel files use where a panel file has the card. Lucky Ice Pop B2 145 and Rainbow Cave B4 155 have one printing.",
+  "deck_check": {
+    "as_written_in_task": "python lib/deck_check.py <path> -> exit 1: unknown mode '<path>': use pool <dir>, files <deck.txt>..., lists <file.jsonl> or selftest (the CLI needs a mode word)",
+    "files_mode": "python lib/deck_check.py files <path> -> 'decks clean', exit 0, no ERROR or WARN"
+  },
+  "smoke": {
+    "script": "scratchpad/b2e/smoke_charizardy_entei.sh (wsl -e bash), rl/engine-2026-09-25/deckgym simulate --num 2 --players k3,k3 --seed 21106999000 --seed-stream vs decks/screen/opponents/t-lucario.txt",
+    "ran": true,
+    "exit_code": 0,
+    "output": "Ran 2 simulations in 433ms (216ms per game); average 6.50 turns and 46.50 plys per game, 3.23 degrees per ply; Player 0 (h-charizardy_entei) won 1 (50.00%), Player 1 (t-lucario) won 1 (50.00%), draws 0. Banner: integrity candidate 0.1.0-pdl.rules4: closed-list observations; unknown opponent continuations are UNPRICED."
+  },
+  "diff_vs_dustin_brew-08-entei-rainbow-cave": "Added +2 Charmander B2b 007, +2 Charmeleon B2b 008, +1 Mega Charizard Y ex B1a 014, +1 Wally B4 153, +1 Poke Ball P-A 005 (1->2); removed -1 Sabrina A1 225, -1 Cyrus A2 150, -1 Lucky Ice Pop B2 145 (2->1), -1 Repel A3a 064, -1 Giant Cape A2 147 (2->1), -1 Rainbow Cave B4 155 (2->1), -1 Starting Plains B2 154; 13 of 20 cards shared. Dustin's brew has no Charizard line at all (Entei ex is its only Pokemon), so the archetype name fits it loosely."
+}

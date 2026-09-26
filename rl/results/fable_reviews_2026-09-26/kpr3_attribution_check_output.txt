@@ -1,0 +1,100 @@
+﻿=== A. integrity of kpr3_500.jsonl ===
+games: 14000 pairings: 28 deals per pairing: [500]
+seed formula violations: 0 | bot fields not kpr3/kpr3: 0 | first_seat != i%2: 0
+sample i=0: {'a': 'altaria', 'b': 'blaziken', 'first_seat': 0, 'seed': 72000000, 'winner_seat': 1, 'first_deck_score': 0.0}
+sample i=1: {'a': 'altaria', 'b': 'blaziken', 'first_seat': 1, 'seed': 72000001, 'winner_seat': 0, 'first_deck_score': 0.0}
+pairing -> decks same as kp3 table: True
+
+=== B. identity claims ===
+identity_kp3_500 (53638a7) vs kp3 table (858b6fe): 14000 of 14000 same moves; 14000 of 14000 same on all fields
+identity_kq3_500 (53638a7) vs kq3 table: 14000 of 14000 same moves; 14000 of 14000 same on all fields
+table_commit_identity_k3_40 (e09fb46) vs k3 table: 1120 of 1120 same moves; 1120 of 1120 same on all fields
+table_commit_identity_kp3_40 (e09fb46) vs kp3 table: 1120 of 1120 same moves; 1120 of 1120 same on all fields
+table_commit_identity_kq3_40 (e09fb46) vs kq3 table: 1120 of 1120 same moves; 1120 of 1120 same on all fields
+partial kpr3 at c002d2f (5,000) vs head kpr3_500: 5000 of 5000 same moves; 5000 of 5000 same on all fields
+partial pairings: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+=== C. fit to Limitless (28 cells), recomputed ===
+k3    mean|miss| 9.66  MSE 159.3
+kp3   mean|miss| 7.91  MSE 112.2
+kq3   mean|miss| 9.44  MSE 147.3
+kd3   mean|miss| 8.59  MSE 124.5
+kpr3  mean|miss| 10.28  MSE 176.1
+
+=== D/E. per cell: kpr3 - kp3 paired, footprint, contribution to the MSE change ===
+cell                        kp3   kpr3         change (95%)    Lim  band  miss kp3 miss kpr3  dMSE/28  differ turns kp3 turns kpr3  dturns
+ 0   altaria v blaziken    58.6   52.6    -6.0 (-11.0, -1.0)   74.2   8.8     -15.6     -21.6     +8.0     468      9.50       9.70   +0.20
+ 1   altaria v hydreigon   47.6   39.8    -7.8 (-12.9, -2.7)   57.0   8.4      -9.4     -17.2     +7.4     487     10.02      10.17   +0.15
+ 2   altaria v lucario     62.4   58.8    -3.6 ( -8.3, +1.1)   71.9   4.9      -9.5     -13.1     +2.9     457      8.97       8.86   -0.11
+ 3   altaria v sceptile    42.8   42.8    +0.0 ( -4.6, +4.6)   49.1   6.6      -6.3      -6.3     +0.0     469     10.04       9.97   -0.07
+ 4   altaria v suicune     48.8   42.2    -6.6 (-11.7, -1.5)   52.3   8.0      -3.5     -10.1     +3.2     486     10.23      10.08   -0.14
+ 5   altaria v vespiquen   47.4   50.4    +3.0 ( -2.0, +8.0)   38.8   6.8      +8.6     +11.6     +2.2     492     10.48      10.42   -0.06
+ 6   altaria v weezing     40.4   40.4    +0.0 ( -4.7, +4.7)   34.8   9.2      +5.6      +5.6     +0.0     483     10.12      10.12   +0.00
+ 7  blaziken v hydreigon   48.0   49.6    +1.6 ( -3.3, +6.5)   59.0  12.3     -11.0      -9.4     -1.2     462      9.29       9.51   +0.23
+ 8  blaziken v lucario     45.1   56.0   +10.9 ( +5.8,+16.0)   44.8   8.1      +0.3     +11.2     +4.5     474      9.20       9.04   -0.16
+ 9  blaziken v sceptile    65.1   63.0    -2.1 ( -6.1, +1.9)   82.8   9.0     -17.7     -19.8     +2.8     413      8.70       8.79   +0.09
+10  blaziken v suicune     59.6   62.2    +2.6 ( -1.8, +7.0)   60.8  12.4      -1.2      +1.4     +0.0     467      8.26       8.29   +0.03
+11  blaziken v vespiquen   81.4   80.5    -0.9 ( -5.0, +3.2)   81.4  12.9      +0.0      -0.9     +0.0     476      9.16       9.08   -0.08
+12  blaziken v weezing     48.4   60.1   +11.7 ( +7.6,+15.8)   49.0  14.1      -0.6     +11.1     +4.4     468      8.90       8.70   -0.20
+13 hydreigon v lucario     43.8   52.6    +8.8 ( +4.0,+13.6)   54.4   8.0     -10.6      -1.8     -3.9     469      9.51       9.05   -0.46
+14 hydreigon v sceptile    43.6   40.0    -3.6 ( -8.0, +0.8)   39.4  10.7      +4.2      +0.6     -0.6     438      9.64       9.59   -0.05
+15 hydreigon v suicune     46.4   55.8    +9.4 ( +4.4,+14.4)   34.7  11.8     +11.7     +21.1    +11.0     474     10.30      10.38   +0.08
+16 hydreigon v vespiquen   41.0   56.8   +15.8 (+10.2,+21.4)   38.4   9.8      +2.6     +18.4    +11.8     478     10.37      10.26   -0.11
+17 hydreigon v weezing     52.8   56.8    +4.0 ( -1.0, +9.0)   47.1  13.7      +5.7      +9.7     +2.2     481      9.72       9.96   +0.24
+18   lucario v sceptile    35.6   38.6    +3.0 ( -1.2, +7.2)   37.9   6.3      -2.3      +0.7     -0.2     451      9.66       9.20   -0.45
+19   lucario v suicune     58.8   49.6    -9.2 (-13.8, -4.6)   58.5   7.7      +0.3      -8.9     +2.8     468      9.20       8.99   -0.21
+20   lucario v vespiquen   68.2   68.8    +0.6 ( -3.9, +5.1)   69.3   6.4      -1.1      -0.5     -0.0     468      9.18       9.32   +0.15
+21   lucario v weezing     52.8   55.8    +3.0 ( -1.6, +7.6)   56.6   8.3      -3.8      -0.8     -0.5     446      8.49       8.43   -0.07
+22  sceptile v suicune     60.6   62.6    +2.0 ( -1.9, +5.9)   47.2   9.5     +13.4     +15.4     +2.1     464     11.68      11.64   -0.03
+23  sceptile v vespiquen   64.4   66.6    +2.2 ( -2.4, +6.8)   33.1   8.2     +31.3     +33.5     +5.1     481     10.84      10.83   -0.01
+24  sceptile v weezing     70.0   69.2    -0.8 ( -4.7, +3.1)   66.2  10.4      +3.8      +3.0     -0.2     445      9.20       9.29   +0.09
+25   suicune v vespiquen   43.0   49.6    +6.6 ( +1.5,+11.7)   27.0   7.7     +16.0     +22.6     +9.1     486     10.67      10.55   -0.13
+26   suicune v weezing     56.5   65.0    +8.5 ( +4.1,+12.9)   64.2  10.4      -7.7      +0.8     -2.1     474     10.45      10.59   +0.14
+27 vespiquen v weezing     65.9   72.7    +6.8 ( +2.1,+11.5)   83.5   7.9     -17.6     -10.8     -6.9     492     10.09       9.85   -0.24
+
+MSE change kpr3 - kp3 = +64.0; from the 7 Hydreigon cells +26.8; from the other 21 cells +37.2
+largest |dMSE| contributions: hydreigon v vespiquen +11.8; hydreigon v suicune +11.0; suicune v vespiquen +9.1; altaria v blaziken +8.0; altaria v hydreigon +7.4; vespiquen v weezing -6.9; sceptile v vespiquen +5.1; blaziken v lucario +4.5
+footprint: games whose move fingerprint differs from kp3's: 13117 of 14000 = 93.7%
+cells with |change| beyond its 95% range: 12 of 28
+cells where the miss grew by more than 6: ['altaria v hydreigon (-9.4 -> -17.2)', 'altaria v suicune (-3.5 -> -10.1)', 'blaziken v lucario (+0.3 -> +11.2)', 'blaziken v weezing (-0.6 -> +11.1)', 'hydreigon v suicune (+11.7 -> +21.1)', 'hydreigon v vespiquen (+2.6 -> +18.4)', 'lucario v suicune (+0.3 -> -8.9)', 'suicune v vespiquen (+16.0 -> +22.6)']
+Limitless bands over 15: []
+
+=== F. Hydreigon: score change per cell vs Hyper Ray rate change (from the .txt files) ===
+opponent    Hyd kp3 Hyd kpr3           change  nonKO use kp3  nonKO use kpr3  KO pass kp3  KO pass kpr3
+altaria        52.4     60.2   +7.8 ±  5.1       5% (3/64)     88% (71/81)     0.2% (1/402)    0.5% (2/411)
+blaziken       52.0     50.4   -1.6 ±  4.9       1% (1/98)     68% (65/96)     1.2% (4/331)    0.0% (0/410)
+lucario        43.8     52.6   +8.8 ±  4.8       1% (1/128)     91% (117/129)     1.3% (4/304)    0.0% (0/330)
+sceptile       43.6     40.0   -3.6 ±  4.4       6% (4/70)     97% (71/73)     0.0% (0/408)    0.0% (0/446)
+suicune        46.4     55.8   +9.4 ±  5.0      40% (101/252)     95% (322/338)     0.0% (0/300)    0.0% (0/267)
+vespiquen      41.0     56.8  +15.8 ±  5.6      15% (29/193)     84% (180/215)    22.4% (79/353)    9.9% (35/352)
+weezing        52.8     56.8   +4.0 ±  5.0      34% (78/231)     95% (279/295)     0.0% (0/236)    0.5% (1/218)
+correlation over the 7 cells between the non-KO use change (points) and Hydreigon's score change: r = -0.24
+KO-able Hyper Ray passed: kp3 88 of 2334, kpr3 38 of 2434
+
+=== G. what else moved: game length, seat, points, by deck ===
+deck          kp3   kpr3     change (95%) | seat0 kp3 seat0 kpr3 | seat1 kp3 seat1 kpr3 | turns kp3 turns kpr3
+altaria      49.7   46.7   -3.0 ±  1.9 |      50.9       47.7 |      48.5       45.7 |      9.91       9.90
+blaziken     55.6   59.8   +4.3 ±  1.7 |      54.7       60.1 |      56.5       59.6 |      9.00       9.02
+hydreigon    47.4   53.2   +5.8 ±  1.9 |      48.7       54.3 |      46.1       52.2 |      9.83       9.85
+lucario      52.0   49.3   -2.7 ±  1.8 |      52.2       48.8 |      51.9       49.9 |      9.17       8.98
+sceptile     58.3   59.1   +0.9 ±  1.6 |      57.1       57.9 |      59.5       60.4 |      9.97       9.90
+suicune      46.5   48.9   +2.4 ±  1.8 |      46.2       49.4 |      46.7       48.4 |     10.11      10.08
+vespiquen    45.8   42.9   -2.9 ±  1.8 |      45.4       42.2 |      46.1       43.5 |     10.11      10.04
+weezing      44.7   40.0   -4.7 ±  1.7 |      44.8       40.1 |      44.7       39.9 |      9.57       9.56
+
+seat-0 deck's score over all games: kp3 50.0, kpr3 50.1, k3 50.2
+mean turns: kp3 9.71, kpr3 9.67, k3 9.89
+ties: kp3 16, kpr3 13
+mean winner points / loser points: kp3 3.41 / 1.04, kpr3 3.41 / 0.99
+turn histogram (kp3 -> kpr3) for turns <= 12: 1: 17->15, 2: 106->100, 3: 253->225, 4: 154->137, 5: 290->255, 6: 618->628, 7: 1027->1151, 8: 1897->1892, 9: 2152->2375, 10: 2234->2113, 11: 1897->1956, 12: 1398->1359
+games of 20+ turns: kp3 7 kpr3 17
+
+=== H. deck-average table as the README prints it (recomputed) ===
+altaria    Lim  54.0  k3  46.6  kp3  49.7  kpr3  46.7  gap kp3  -4.3  gap kpr3  -7.3
+blaziken   Lim  57.7  k3  56.4  kp3  55.6  kpr3  59.8  gap kp3  -2.1  gap kpr3  +2.2
+hydreigon  Lim  42.6  k3  34.6  kp3  47.4  kpr3  53.2  gap kp3  +4.9  gap kpr3 +10.7
+lucario    Lim  50.2  k3  52.5  kp3  52.0  kpr3  49.3  gap kp3  +1.8  gap kpr3  -0.8
+sceptile   Lim  48.2  k3  62.1  kp3  58.3  kpr3  59.1  gap kp3 +10.1  gap kpr3 +11.0
+suicune    Lim  48.2  k3  52.9  kp3  46.5  kpr3  48.9  gap kp3  -1.8  gap kpr3  +0.6
+vespiquen  Lim  56.5  k3  48.1  kp3  45.8  kpr3  42.9  gap kp3 -10.7  gap kpr3 -13.6
+weezing    Lim  42.7  k3  46.6  kp3  44.7  kpr3  40.0  gap kp3  +2.1  gap kpr3  -2.7

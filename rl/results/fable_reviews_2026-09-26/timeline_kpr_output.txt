@@ -1,0 +1,306 @@
+=== commits touching rl/results/kpr_2026-09-25 or engine/src/players (author date, committer date) ===
+aa87fa3  a:2026-09-26 00:51:23 +0000  c:2026-09-26 00:51:23 +0000  kpr3 table readout (engine e09fb46): Hyper Ray without a knockout 21% to 90%; fit to Limitless worse (mean squared miss 176.1 against kp3's 112.2), Hydreigon +5.8 +/- 1.9 further above Limitless as the census predicted; k3, kp3, kq3 identical at the table's build (1,120 of 1,120 each). For the laptop's rule-v2 read and mixed rows.
+8f16338  a:2026-09-26 00:42:52 +0000  c:2026-09-26 00:42:52 +0000  kpr3 table at e09fb46: 28 pairings x 500 table deals, no rule findings (raw output); identity subset at the same build running
+c002d2f  a:2026-09-26 00:18:10 +0000  c:2026-09-26 00:18:10 +0000  kt draft spec revised with the laptop's per-card table: three switches (temporary cuts and reduction Tools in the clock; the flat Tool +10 replaced per Tool; damage back to the attacker), each its own flag with a diagnostic code; later items and the search-length check listed. Not registered, nothing built. kpr3 table partial output.
+f6e8bca  a:2026-09-26 00:16:30 +0000  c:2026-09-26 00:16:30 +0000  rules 05/09: Hiking Trail v Legendary Pulse confirmed in-game (Pulse first, ends on 3; engine ends on 4, the only queued end-of-turn draw); Rare Candy blocked by Primeval Law confirmed in-game; Poke Ball A2b 111 playable with an empty deck (new, from the laptop's Trainer audit). Fixes after kpr's table is read, each with the identity replay. Census: Small Balloon on Igglybuff (Retreat 0) also does nothing, 225 of 501. kpr3 table partial output.
+d141623  a:2026-09-26 00:15:19 +0000  c:2026-09-26 00:15:19 +0000  kpr3 table at e09fb46 in progress (partial raw output)
+1152307  a:2026-09-26 00:05:05 +0000  c:2026-09-26 00:05:05 +0000  kpr: deck averages and paired deck changes script (kpr3 against kp3, with k3, kq3, kd3 and Limitless)
+b9a7a21  a:2026-09-26 00:04:39 +0000  c:2026-09-26 00:04:39 +0000  kpr identity replay at 53638a7 complete: k3, kp3 and kq3 14,000 of 14,000 each, kd3 1,120 of 1,120, all identical to their tables; full suite at e09fb46: 1,919 passed, 0 failed
+580e004  a:2026-09-25 23:44:16 +0000  c:2026-09-25 23:44:16 +0000  kpr mutation checks at e09fb46 (the table's code): 63 of 64 caught, the 64th equivalent with today's cards; identity replay partial output
+65a0d17  a:2026-09-25 23:30:46 +0000  c:2026-09-25 23:30:46 +0000  kpr: the table's run script (kpr3 on 28 x 500 table deals, then k3/kp3/kq3 on 40 deals with the same build)
+df46e0a  a:2026-09-25 23:30:17 +0000  c:2026-09-25 23:30:17 +0000  kpr: the adversarial review's raw output (1981bb4; 36 agents, 8 of 10 findings upheld, 2 from the critic); identity replay partial output
+fa7dc33  a:2026-09-25 23:30:01 +0000  c:2026-09-25 23:30:01 +0000  kpr mutation list for e09fb46 (64: amendment 6's clauses and the review's surviving mutations added)
+e09fb46  a:2026-09-25 23:29:41 +0000  c:2026-09-25 23:29:41 +0000  kpr tests from the adversarial review (tests only; the bot's code is 14c7d9b's)
+1242a56  a:2026-09-25 23:09:25 +0000  c:2026-09-25 23:09:25 +0000  kpr identity replay in progress (partial raw output)
+8395e12  a:2026-09-25 22:40:46 +0000  c:2026-09-25 22:40:46 +0000  rules 04/05/09: Dustin's answers of Sept 25 (Tools go on any Pokemon, no effect if unmet; both reaching 3 is a Tie; Regigigas under Muk; Toxapex + Nihilego tested; Heavy Helmet reads the current Retreat Cost and Rare Candy is blocked by Primeval Law, by testimony, tests pending, engine bugs on 09; Hiking Trail v Legendary Pulse order in conflict, pending his check). No engine fix before kpr's table is read. kt draft notes Heavy Helmet follows the engine. kpr identity replay partial output.
+cda9182  a:2026-09-25 22:22:32 +0000  c:2026-09-25 22:22:32 +0000  kpr identity replay at 53638a7 in progress (partial raw output)
+14c7d9b  a:2026-09-25 22:22:32 +0000  c:2026-09-25 22:22:32 +0000  kpr<N>: where the search scores EndTurn on the state before it, the own reading counts the turn as over (amendment 6, from the adversarial review, before any kpr table)
+9030e54  a:2026-09-25 22:15:56 +0000  c:2026-09-25 22:15:56 +0000  Tool census output (kp3, 100 table deals x 28 pairings); kpr identity script: kq3 on the full table too, as the laptop asked
+4558464  a:2026-09-25 22:13:54 +0000  c:2026-09-25 22:13:54 +0000  kpr mutation checks at 1981bb4: 53 of 54 caught, the 54th equivalent with today's cards
+53638a7  a:2026-09-25 22:13:54 +0000  c:2026-09-25 22:13:54 +0000  kpr tests: two branches the mutation run showed untested (tests only; the bot's code is 1981bb4's)
+db187ee  a:2026-09-25 21:52:56 +0000  c:2026-09-25 21:52:56 +0000  rules/09: three engine deviations from the laptop's recordings check (discard-all-Energy skips the pile; two 'random' Energy picks take the last; Rare Candy ignores Primeval Law), fixes after kpr's table is read; kd README: the tier-1 read's two limits; kpr mutation checks in progress
+0fd4afc  a:2026-09-25 21:51:26 +0000  c:2026-09-25 21:51:26 +0000  kpr mutation checks at 1981bb4 in progress (partial results)
+34c1917  a:2026-09-25 21:50:05 +0000  c:2026-09-25 21:50:05 +0000  kpr: mutation list for the horizon commit (54 mutations, including the per-side horizon and the review's survivors)
+1981bb4  a:2026-09-25 21:50:05 +0000  c:2026-09-25 21:50:05 +0000  kpr<N>: each side read over its own horizon (amendment 5, registered before any kpr table, Dustin's go-ahead)
+1511208  a:2026-09-25 21:34:33 +0000  c:2026-09-25 21:34:33 +0000  kpr mutation checks at 0adfeb7: stopped at 8 of 41, all caught; the second read found a timing step on the opponent's side, so the code changes again and the checks rerun at the final commit
+7eaf0e5  a:2026-09-25 21:32:55 +0000  c:2026-09-25 21:32:55 +0000  kpr mutation checks at 0adfeb7 in progress (7 of 41, all caught)
+f2dab6e  a:2026-09-25 21:20:17 +0000  c:2026-09-25 21:20:17 +0000  kpr mutation checks at 0adfeb7 in progress (partial results)
+c2ac0b4  a:2026-09-25 21:18:07 +0000  c:2026-09-25 21:18:07 +0000  kpr: mutation-check script for 0adfeb7 (41 mutations of the kpr code; results follow)
+0adfeb7  a:2026-09-25 21:13:32 +0000  c:2026-09-25 21:13:32 +0000  kpr<N>: the reviewers' fixes, registered as amendments to the kpr spec before any kpr table
+cc1f08b  a:2026-09-25 20:51:28 +0000  c:2026-09-25 20:51:28 +0000  kpr identity replay at 9a35f54 stopped at 10,000 of 14,000 k3 games, all identical; the reviewers' fixes change the code, so identity is rerun at the final kpr commit
+d3d18cd  a:2026-09-25 20:39:37 +0000  c:2026-09-25 20:39:37 +0000  kpr identity replay at 9a35f54 in progress (partial raw output)
+21c7732  a:2026-09-25 20:39:24 +0000  c:2026-09-25 20:39:24 +0000  kpr identity replay at 9a35f54 in progress (partial raw output)
+87ad729  a:2026-09-25 20:33:48 +0000  c:2026-09-25 20:33:48 +0000  kpr identity replay at 9a35f54 in progress (partial raw output)
+7fd2f8c  a:2026-09-25 20:33:04 +0000  c:2026-09-25 20:33:04 +0000  kd: mutation checks on the table's code, 49 of 49 caught; kpr identity replay script
+9a35f54  a:2026-09-25 20:30:43 +0000  c:2026-09-25 20:30:43 +0000  kpr<N>: kp plus projected readiness for the Active, in the online score and the clock (spec registered before any kpr table)
+f9c0e52  a:2026-09-25 20:11:25 +0000  c:2026-09-25 20:11:25 +0000  kpr WIP (not registered, no table): projected readiness in the Active online score; paused for Dustin's call on the clock
+0c0e7f9  a:2026-09-25 18:11:36 +0000  c:2026-09-25 18:11:36 +0000  kd: two clock tests for mutations the 5ae7490 run left alive (the threat's own text reaching the clock; Disguise not read as 'can't damage')
+8004222  a:2026-09-25 17:41:31 +0000  c:2026-09-25 17:41:31 +0000  kd: third-review fixes (Bench spill off the Active, the Ability bonus, no coin for direct damage as in the engine)
+5ae7490  a:2026-09-25 16:23:35 +0000  c:2026-09-25 16:23:35 +0000  kd: second-review fixes (reach, defender bonuses, the defender's best promotion order), before any kd table
+a8c1eae  a:2026-09-25 16:03:34 +0000  c:2026-09-25 16:03:34 +0000  kd WIP (not tested, not reviewed; paused for Dustin's call on the Guarded Grill / Bounded Field order): second-review fixes in progress
+97ca8f4  a:2026-09-25 15:33:38 +0000  c:2026-09-25 15:33:38 +0000  kd: amended spec (Dustin's option 3, before any kd table): fallback attacker, and victims in promotion order by kd's turns
+
+=== every commit from 9a35f54 to head, with dates ===
+aa87fa3  a:2026-09-26 00:51:23 +0000  c:2026-09-26 00:51:23 +0000  kpr3 table readout (engine e09fb46): Hyper Ray without a knockout 21% to 90%; fit to Limitless worse (mean squared miss 176.1 against kp3's 112.2), Hydreigon +5.8 +/- 1.9 further above Limitless as the census predicted; k3, kp3, kq3 identical at the table's build (1,120 of 1,120 each). For the laptop's rule-v2 read and mixed rows.
+8f16338  a:2026-09-26 00:42:52 +0000  c:2026-09-26 00:42:52 +0000  kpr3 table at e09fb46: 28 pairings x 500 table deals, no rule findings (raw output); identity subset at the same build running
+c002d2f  a:2026-09-26 00:18:10 +0000  c:2026-09-26 00:18:10 +0000  kt draft spec revised with the laptop's per-card table: three switches (temporary cuts and reduction Tools in the clock; the flat Tool +10 replaced per Tool; damage back to the attacker), each its own flag with a diagnostic code; later items and the search-length check listed. Not registered, nothing built. kpr3 table partial output.
+f6e8bca  a:2026-09-26 00:16:30 +0000  c:2026-09-26 00:16:30 +0000  rules 05/09: Hiking Trail v Legendary Pulse confirmed in-game (Pulse first, ends on 3; engine ends on 4, the only queued end-of-turn draw); Rare Candy blocked by Primeval Law confirmed in-game; Poke Ball A2b 111 playable with an empty deck (new, from the laptop's Trainer audit). Fixes after kpr's table is read, each with the identity replay. Census: Small Balloon on Igglybuff (Retreat 0) also does nothing, 225 of 501. kpr3 table partial output.
+d141623  a:2026-09-26 00:15:19 +0000  c:2026-09-26 00:15:19 +0000  kpr3 table at e09fb46 in progress (partial raw output)
+1152307  a:2026-09-26 00:05:05 +0000  c:2026-09-26 00:05:05 +0000  kpr: deck averages and paired deck changes script (kpr3 against kp3, with k3, kq3, kd3 and Limitless)
+b9a7a21  a:2026-09-26 00:04:39 +0000  c:2026-09-26 00:04:39 +0000  kpr identity replay at 53638a7 complete: k3, kp3 and kq3 14,000 of 14,000 each, kd3 1,120 of 1,120, all identical to their tables; full suite at e09fb46: 1,919 passed, 0 failed
+580e004  a:2026-09-25 23:44:16 +0000  c:2026-09-25 23:44:16 +0000  kpr mutation checks at e09fb46 (the table's code): 63 of 64 caught, the 64th equivalent with today's cards; identity replay partial output
+65a0d17  a:2026-09-25 23:30:46 +0000  c:2026-09-25 23:30:46 +0000  kpr: the table's run script (kpr3 on 28 x 500 table deals, then k3/kp3/kq3 on 40 deals with the same build)
+df46e0a  a:2026-09-25 23:30:17 +0000  c:2026-09-25 23:30:17 +0000  kpr: the adversarial review's raw output (1981bb4; 36 agents, 8 of 10 findings upheld, 2 from the critic); identity replay partial output
+fa7dc33  a:2026-09-25 23:30:01 +0000  c:2026-09-25 23:30:01 +0000  kpr mutation list for e09fb46 (64: amendment 6's clauses and the review's surviving mutations added)
+e09fb46  a:2026-09-25 23:29:41 +0000  c:2026-09-25 23:29:41 +0000  kpr tests from the adversarial review (tests only; the bot's code is 14c7d9b's)
+1242a56  a:2026-09-25 23:09:25 +0000  c:2026-09-25 23:09:25 +0000  kpr identity replay in progress (partial raw output)
+48518ce  a:2026-09-25 23:09:25 +0000  c:2026-09-25 23:09:25 +0000  rules: Heavy Helmet confirmed in-game (Dustin's heavyhelmet_test.MP4: printed Retreat Cost 3, Peculiar Plaza, a 40-damage attack did 40). It reads the current Retreat Cost; the engine's printed-cost read is a confirmed bug on rules/09, to fix after kpr's table with the identity replay
+8395e12  a:2026-09-25 22:40:46 +0000  c:2026-09-25 22:40:46 +0000  rules 04/05/09: Dustin's answers of Sept 25 (Tools go on any Pokemon, no effect if unmet; both reaching 3 is a Tie; Regigigas under Muk; Toxapex + Nihilego tested; Heavy Helmet reads the current Retreat Cost and Rare Candy is blocked by Primeval Law, by testimony, tests pending, engine bugs on 09; Hiking Trail v Legendary Pulse order in conflict, pending his check). No engine fix before kpr's table is read. kt draft notes Heavy Helmet follows the engine. kpr identity replay partial output.
+cda9182  a:2026-09-25 22:22:32 +0000  c:2026-09-25 22:22:32 +0000  kpr identity replay at 53638a7 in progress (partial raw output)
+14c7d9b  a:2026-09-25 22:22:32 +0000  c:2026-09-25 22:22:32 +0000  kpr<N>: where the search scores EndTurn on the state before it, the own reading counts the turn as over (amendment 6, from the adversarial review, before any kpr table)
+3ac9bdd  a:2026-09-25 22:18:18 +0000  c:2026-09-25 22:18:18 +0000  Tool / turn-effect census and draft kt spec (not registered, nothing built): the flat Tool bonus is visible on the table in every deck; the temporary damage cuts are not (Stiffen only), so part (1)'s test is Dustin's decks 07, 05 and 11; three open choices for Dustin and the laptop
+9030e54  a:2026-09-25 22:15:56 +0000  c:2026-09-25 22:15:56 +0000  Tool census output (kp3, 100 table deals x 28 pairings); kpr identity script: kq3 on the full table too, as the laptop asked
+4558464  a:2026-09-25 22:13:54 +0000  c:2026-09-25 22:13:54 +0000  kpr mutation checks at 1981bb4: 53 of 54 caught, the 54th equivalent with today's cards
+53638a7  a:2026-09-25 22:13:54 +0000  c:2026-09-25 22:13:54 +0000  kpr tests: two branches the mutation run showed untested (tests only; the bot's code is 1981bb4's)
+f189b97  a:2026-09-25 22:00:51 +0000  c:2026-09-25 22:00:51 +0000  Tool / turn-effect census: the counting tool (built only in a scratch copy of engine/, which stays unchanged) and partial output; kp3 on the table's first 100 deals per pairing
+db187ee  a:2026-09-25 21:52:56 +0000  c:2026-09-25 21:52:56 +0000  rules/09: three engine deviations from the laptop's recordings check (discard-all-Energy skips the pile; two 'random' Energy picks take the last; Rare Candy ignores Primeval Law), fixes after kpr's table is read; kd README: the tier-1 read's two limits; kpr mutation checks in progress
+0fd4afc  a:2026-09-25 21:51:26 +0000  c:2026-09-25 21:51:26 +0000  kpr mutation checks at 1981bb4 in progress (partial results)
+34c1917  a:2026-09-25 21:50:05 +0000  c:2026-09-25 21:50:05 +0000  kpr: mutation list for the horizon commit (54 mutations, including the per-side horizon and the review's survivors)
+1981bb4  a:2026-09-25 21:50:05 +0000  c:2026-09-25 21:50:05 +0000  kpr<N>: each side read over its own horizon (amendment 5, registered before any kpr table, Dustin's go-ahead)
+1511208  a:2026-09-25 21:34:33 +0000  c:2026-09-25 21:34:33 +0000  kpr mutation checks at 0adfeb7: stopped at 8 of 41, all caught; the second read found a timing step on the opponent's side, so the code changes again and the checks rerun at the final commit
+7eaf0e5  a:2026-09-25 21:32:55 +0000  c:2026-09-25 21:32:55 +0000  kpr mutation checks at 0adfeb7 in progress (7 of 41, all caught)
+f2dab6e  a:2026-09-25 21:20:17 +0000  c:2026-09-25 21:20:17 +0000  kpr mutation checks at 0adfeb7 in progress (partial results)
+c2ac0b4  a:2026-09-25 21:18:07 +0000  c:2026-09-25 21:18:07 +0000  kpr: mutation-check script for 0adfeb7 (41 mutations of the kpr code; results follow)
+0adfeb7  a:2026-09-25 21:13:32 +0000  c:2026-09-25 21:13:32 +0000  kpr<N>: the reviewers' fixes, registered as amendments to the kpr spec before any kpr table
+cc1f08b  a:2026-09-25 20:51:28 +0000  c:2026-09-25 20:51:28 +0000  kpr identity replay at 9a35f54 stopped at 10,000 of 14,000 k3 games, all identical; the reviewers' fixes change the code, so identity is rerun at the final kpr commit
+d3d18cd  a:2026-09-25 20:39:37 +0000  c:2026-09-25 20:39:37 +0000  kpr identity replay at 9a35f54 in progress (partial raw output)
+21c7732  a:2026-09-25 20:39:24 +0000  c:2026-09-25 20:39:24 +0000  kpr identity replay at 9a35f54 in progress (partial raw output)
+87ad729  a:2026-09-25 20:33:48 +0000  c:2026-09-25 20:33:48 +0000  kpr identity replay at 9a35f54 in progress (partial raw output)
+7fd2f8c  a:2026-09-25 20:33:04 +0000  c:2026-09-25 20:33:04 +0000  kd: mutation checks on the table's code, 49 of 49 caught; kpr identity replay script
+9a35f54  a:2026-09-25 20:30:43 +0000  c:2026-09-25 20:30:43 +0000  kpr<N>: kp plus projected readiness for the Active, in the online score and the clock (spec registered before any kpr table)
+
+=== which commits changed kpr3_500.jsonl and README.md, with line counts of kpr3_500.jsonl at each ===
+8f16338 2026-09-26 00:42:52 +0000 kpr3_500.jsonl lines=14000
+c002d2f 2026-09-26 00:18:10 +0000 kpr3_500.jsonl lines=5000
+f6e8bca 2026-09-26 00:16:30 +0000 kpr3_500.jsonl lines=4000
+d141623 2026-09-26 00:15:19 +0000 kpr3_500.jsonl lines=3500
+
+=== engine/ tree hash per commit from 9a35f54 to head (same engine claim) ===
+aa87fa3 942491391a3d870f0043c52c0ea26f62930c6cc1 kpr3 table readout (engine e09fb46): Hyper Ray without a kno
+8f16338 942491391a3d870f0043c52c0ea26f62930c6cc1 kpr3 table at e09fb46: 28 pairings x 500 table deals, no rul
+c002d2f 942491391a3d870f0043c52c0ea26f62930c6cc1 kt draft spec revised with the laptop's per-card table: thre
+f6e8bca 942491391a3d870f0043c52c0ea26f62930c6cc1 rules 05/09: Hiking Trail v Legendary Pulse confirmed in-gam
+d141623 942491391a3d870f0043c52c0ea26f62930c6cc1 kpr3 table at e09fb46 in progress (partial raw output)
+1152307 942491391a3d870f0043c52c0ea26f62930c6cc1 kpr: deck averages and paired deck changes script (kpr3 agai
+b9a7a21 942491391a3d870f0043c52c0ea26f62930c6cc1 kpr identity replay at 53638a7 complete: k3, kp3 and kq3 14,
+580e004 942491391a3d870f0043c52c0ea26f62930c6cc1 kpr mutation checks at e09fb46 (the table's code): 63 of 64 
+65a0d17 942491391a3d870f0043c52c0ea26f62930c6cc1 kpr: the table's run script (kpr3 on 28 x 500 table deals, t
+df46e0a 942491391a3d870f0043c52c0ea26f62930c6cc1 kpr: the adversarial review's raw output (1981bb4; 36 agents
+fa7dc33 942491391a3d870f0043c52c0ea26f62930c6cc1 kpr mutation list for e09fb46 (64: amendment 6's clauses and
+e09fb46 942491391a3d870f0043c52c0ea26f62930c6cc1 kpr tests from the adversarial review (tests only; the bot's
+1242a56 ab86576ee6921c86eecca9cd244d3c106b711436 kpr identity replay in progress (partial raw output)
+48518ce ab86576ee6921c86eecca9cd244d3c106b711436 rules: Heavy Helmet confirmed in-game (Dustin's heavyhelmet_
+8395e12 ab86576ee6921c86eecca9cd244d3c106b711436 rules 04/05/09: Dustin's answers of Sept 25 (Tools go on any
+cda9182 ab86576ee6921c86eecca9cd244d3c106b711436 kpr identity replay at 53638a7 in progress (partial raw outp
+14c7d9b ab86576ee6921c86eecca9cd244d3c106b711436 kpr<N>: where the search scores EndTurn on the state before 
+3ac9bdd 33acb9703d645f7a5272ee432b3fb477d0051b83 Tool / turn-effect census and draft kt spec (not registered,
+9030e54 33acb9703d645f7a5272ee432b3fb477d0051b83 Tool census output (kp3, 100 table deals x 28 pairings); kpr
+4558464 33acb9703d645f7a5272ee432b3fb477d0051b83 kpr mutation checks at 1981bb4: 53 of 54 caught, the 54th eq
+53638a7 33acb9703d645f7a5272ee432b3fb477d0051b83 kpr tests: two branches the mutation run showed untested (te
+f189b97 336a05e447288ff154b2c78caf2e4aeadd3072c4 Tool / turn-effect census: the counting tool (built only in 
+db187ee 336a05e447288ff154b2c78caf2e4aeadd3072c4 rules/09: three engine deviations from the laptop's recordin
+0fd4afc 336a05e447288ff154b2c78caf2e4aeadd3072c4 kpr mutation checks at 1981bb4 in progress (partial results)
+34c1917 336a05e447288ff154b2c78caf2e4aeadd3072c4 kpr: mutation list for the horizon commit (54 mutations, inc
+1981bb4 336a05e447288ff154b2c78caf2e4aeadd3072c4 kpr<N>: each side read over its own horizon (amendment 5, re
+1511208 b1d9b1a69ee161e941b12d52d2a49c56dcb71394 kpr mutation checks at 0adfeb7: stopped at 8 of 41, all caug
+7eaf0e5 b1d9b1a69ee161e941b12d52d2a49c56dcb71394 kpr mutation checks at 0adfeb7 in progress (7 of 41, all cau
+f2dab6e b1d9b1a69ee161e941b12d52d2a49c56dcb71394 kpr mutation checks at 0adfeb7 in progress (partial results)
+c2ac0b4 b1d9b1a69ee161e941b12d52d2a49c56dcb71394 kpr: mutation-check script for 0adfeb7 (41 mutations of the 
+0adfeb7 b1d9b1a69ee161e941b12d52d2a49c56dcb71394 kpr<N>: the reviewers' fixes, registered as amendments to th
+cc1f08b c3626406774aaaf8f568118613f31d2d80361715 kpr identity replay at 9a35f54 stopped at 10,000 of 14,000 k
+d3d18cd c3626406774aaaf8f568118613f31d2d80361715 kpr identity replay at 9a35f54 in progress (partial raw outp
+21c7732 c3626406774aaaf8f568118613f31d2d80361715 kpr identity replay at 9a35f54 in progress (partial raw outp
+87ad729 c3626406774aaaf8f568118613f31d2d80361715 kpr identity replay at 9a35f54 in progress (partial raw outp
+7fd2f8c c3626406774aaaf8f568118613f31d2d80361715 kd: mutation checks on the table's code, 49 of 49 caught; kp
+9a35f54 c3626406774aaaf8f568118613f31d2d80361715 kpr<N>: kp plus projected readiness for the Active, in the o
+
+=== does the partial kpr3_500.jsonl at c002d2f equal the head file's same (pairing,i) records? ===
+partial lines: 5000
+
+=== kp3 table on branch: copy worst5 + rest for baseline identity check ===
+   2500 /mnt/c/Users/dacz8/AppData/Local/Temp/claude/C--Users-dacz8-Projects/75cb92d0-6f2d-44b8-a636-513a8f7ee71a/scratchpad/reviews/branch/kp3_500_worst5.jsonl
+  11500 /mnt/c/Users/dacz8/AppData/Local/Temp/claude/C--Users-dacz8-Projects/75cb92d0-6f2d-44b8-a636-513a8f7ee71a/scratchpad/reviews/branch/kp3_500_rest.jsonl
+  14000 /mnt/c/Users/dacz8/AppData/Local/Temp/claude/C--Users-dacz8-Projects/75cb92d0-6f2d-44b8-a636-513a8f7ee71a/scratchpad/reviews/branch/k3_500.jsonl
+  28000 total
+
+=== limitless check md on branch -> copy ===
+copied limitless (157 lines)
+
+=== table_commit_identity files on branch? ===
+100644 blob a5dc9c3e482ec55a93b9655a3f1b292b7ebbe595 2999663	rl/results/kpr_2026-09-25/identity_k3_500.jsonl
+100644 blob 7f7dcdc4401da92fc960f11dafb67be51c76875f    4116	rl/results/kpr_2026-09-25/identity_k3_500.txt
+100644 blob d98adaee9786594767b2c30411ea04eacfea7d40 2109432	rl/results/kpr_2026-09-25/identity_k3_9a35f54_partial.jsonl
+100644 blob 554592bc63d421e2792e72a8e8d215abf2aab90d    2916	rl/results/kpr_2026-09-25/identity_k3_9a35f54_partial.txt
+100644 blob b021122d4fb9f04aa71c606756c5f964f6721bb5  239636	rl/results/kpr_2026-09-25/identity_kd3_40.jsonl
+100644 blob 4200d7b03412090985a43c3ec001ac7516adf27c    4000	rl/results/kpr_2026-09-25/identity_kd3_40.txt
+100644 blob 684cf4c1351a5783a869794397df3beea5fa598f 3021206	rl/results/kpr_2026-09-25/identity_kp3_500.jsonl
+100644 blob cf206e4bc120bab8a9531119616c3ccc0400d056    4113	rl/results/kpr_2026-09-25/identity_kp3_500.txt
+100644 blob aad1a33a27f819e5357253585f8a39041d981251 3007925	rl/results/kpr_2026-09-25/identity_kq3_500.jsonl
+100644 blob 3d28d9f197c257d1b113973b5adb69da54ad3e0f    4111	rl/results/kpr_2026-09-25/identity_kq3_500.txt
+100644 blob 09cc1fbe5744bc856358ad6565422c891a94584f   16319	rl/results/kpr_2026-09-25/mutate.py
+100644 blob ff52ee31e4d17a4a05b1cc0e4bc2c67d7d8ec233  156783	rl/results/kpr_2026-09-25/review_1981bb4_workflow_output.json
+100755 blob 32a027b6a160cfe8a1b61548dff1d0b5a3551e18     951	rl/results/kpr_2026-09-25/run_identity.sh
+100644 blob 37f8c2e1d0cb9bab8304e10934ff44fa9bfc3c9d  238691	rl/results/kpr_2026-09-25/table_commit_identity_k3_40.jsonl
+100644 blob bf3d5b2590d006aec0b49c74f026761a5e2ebe4e    4001	rl/results/kpr_2026-09-25/table_commit_identity_k3_40.txt
+100644 blob f6bfb11155932290e6a225f28ce8ee1345df53cc  241702	rl/results/kpr_2026-09-25/table_commit_identity_kp3_40.jsonl
+100644 blob 727a1d457e641799f1e219572024e7ec93d3f283    3999	rl/results/kpr_2026-09-25/table_commit_identity_kp3_40.txt
+100644 blob 2ccd2737612ec654cef95f0952825aa9d466b74c  239792	rl/results/kpr_2026-09-25/table_commit_identity_kq3_40.jsonl
+100644 blob 0094698054755d63d181f88ef86ec832f4f08e5b    3997	rl/results/kpr_2026-09-25/table_commit_identity_kq3_40.txt
+
+=== kpr README history: which commits touched it ===
+aa87fa3 2026-09-26 00:51:23 +0000 kpr3 table readout (engine e09fb46): Hyper Ray without a knockout 21% to 90%; fit to Limitless worse (mean squared miss 176.1 against kp3's 112.2), Hydreigon +5.8 +/- 1.9 further above Limitless as the census predicted; k3, kp3, kq3 identical at the table's build (1,120 of 1,120 each). For the laptop's rule-v2 read and mixed rows.
+
+=== diff of README between c002d2f and head (only the table section) ===
+diff --git a/rl/results/kpr_2026-09-25/README.md b/rl/results/kpr_2026-09-25/README.md
+new file mode 100644
+index 0000000..a193ede
+--- /dev/null
++++ b/rl/results/kpr_2026-09-25/README.md
+@@ -0,0 +1,126 @@
++Decision this informs: whether kpr (each Active priced as it will stand at its next attack, in the Active score and the threat clock) goes into the pilot on top of kp3, read against kp3 by rule v2. kpr does what it was built for: Hydreigon uses Hyper Ray without a knockout on 90% of the turns it can, against kp3's 21%. But on its own table the fit to Limitless gets worse: mean squared miss 176.1 against kp3's 112.2 (and k3's 159.3), and Hydreigon, already over-rated, gains the most (+5.8 ± 1.9). Engine commit e09fb46 for the kpr3 table (legality_scan SHA-256 `c41b23e0208506c7bf7056db710413f8699b421ad2f9813d4af81aae35eb1aa5`; every later branch commit up to this README has the same `engine/`). k3 and kp3 replayed the whole table unchanged at 53638a7 (14,000 of 14,000 each), kq3 too (14,000 of 14,000; kd3 1,120 of 1,120 on the first 40 deals), and k3, kp3 and kq3 again on the first 40 deals at the table's own build (1,120 of 1,120 each).
++
++Seeds: the table's deals only. 72,000,000 + pairing × 10,000 + i, i < 500, even i = first-named deck in seat 0.
++
++# kpr3: kp3 plus projected readiness for the Active (Sept 25)
++
++## What kpr is
++
++`kpr<N>` = `kp<N>` (k's blind search, PublicPricingPlayer with the 62 audited texts) with one evaluator change, on both sides. kq's and kd's features are off.
++
++- **The change.** Wherever k reads how ready an Active is, kpr reads a copy of the Active with the Energy its owner's public sources will have given it by then (`projected_active_energy`):
++  - the Active online score (weight 500);
++  - the damage-aware threat clock, for the Active's missing Energy and its damage estimate, its own attacks and its evolution forms'. The clock takes the faster of the clock with and without the projection.
++- **The sources:**
++  - the turn's attach from the Energy Zone, of the visible type;
++  - Abilities that attach Energy to the Active (Ice Maker, Roar in Unison, Forest Breath, Volt Charge, Combust, Dragon's Blessing), keyed on mechanic;
++  - each discarded Energy taken once;
++  - none that would knock the Active out;
++  - none on a turn when a turn effect blocks Zone attaches to the Active.
++- **When.** Each side is read so that its value doesn't step inside the searcher's own search, which runs from its turn to the start of the opponent's:
++  - the searcher's own Active by its next turn at the latest (this turn's unused sources and next turn's while its turn runs; otherwise next turn's);
++  - the opponent's Active at its very next attack.
++  "Turn over" covers an attack used, a pending or forced end, a deferred or paused Checkup, an end-of-turn evolution, and, for the own reading, positions where the search scores the EndTurn on the state before it (an Active Caterpie against an unknown deck).
++- **Why.** Hyper Ray (Hydreigon) empties the attacker. k counts that as a lost Active and three turns of missing Energy, and declines to chip with it (19% without a knockout in the census). Next turn's [D] plus Roar in Unison refill it; kpr sees that and chips (the get_player test pins it).
++
++**The spec and its amendments,** all registered before any kpr table, each with its reason in the commit message:
++- 9a35f54: the registered spec (Dustin's option 2: the clock too, not only the score).
++- 0adfeb7: two reviews' fixes: timing through the next turn on the owner's turn, min of the clocks, projected damage, the discard pile taken once, Dragon's Blessing's choice, the self-knockout guard.
++- 1981bb4: each side over its own horizon (the opponent at its next attack). Dustin's go-ahead after the second read found a turn-start step against the searcher of up to about 800 in the Suicune rows.
++- 14c7d9b: the own reading counts the turn as over where the search scores the EndTurn before it (the Caterpie case), from the adversarial review.
++- 53638a7, e09fb46: tests only.
++
++## How it was checked before the table
++
++- **Reviews:** two independent reviews of 9a35f54 (rules fidelity; identity, hidden information, tests); a second read of 0adfeb7; an adversarial review of 1981bb4 (five lenses, three skeptics per finding, a completeness critic; 36 agents; 8 of 10 findings upheld, 2 from the critic). Everything upheld was fixed, tested or written down below as a limit. Raw output: `review_1981bb4_workflow_output.json`.
++- **Tests:** 25 kpr tests (23 feature tests, 2 through get_player); the full suite passes at e09fb46: 1,919 passed, 0 failed.
++- **Mutations:** 63 of 64 mutations of the kpr code are caught at e09fb46 (`mutation_results_e09fb46.txt`). The one survivor, the tie-break key of Dragon's Blessing's choice, is equivalent on every card in the database. Earlier rounds: 53 of 54 at 1981bb4, 8 of 41 at 0adfeb7 before it was stopped for the next amendment.
++- **Identity:** k3, kp3 and kq3 replay the whole table exactly at 53638a7, 14,000 of 14,000 games each, and kd3 its first 40 deals (1,120 of 1,120). The bot code after 53638a7 changed only inside kpr (14c7d9b), and at the table's own build k3, kp3 and kq3 replay the first 40 deals of every pairing exactly (1,120 of 1,120 each).
++
++## The table
++
++`kpr3_500.{txt,jsonl}`: all 28 pairings × 500 table deals, one line per game. No rule findings.
++
++**Against Limitless, over 28 cells:**
++
++| bot | mean abs(miss) | mean squared miss |
++|---|---:|---:|
++| k3 | 9.66 | 159.3 |
++| kp3 | 7.91 | 112.2 |
++| kq3 | 9.44 | 147.3 |
++| kd3 | 8.59 | 124.5 |
++| kpr3 | 10.28 | 176.1 |
++
++**Deck averages over their seven opponents**, and each deck's change against kp3 on the same deals (95% range):
++
++| deck | Limitless | k3 | kp3 | kpr3 | kpr3 − kp3 |
++|---|---:|---:|---:|---:|---:|
++| Altaria | 54.0 | 46.6 | 49.7 | 46.7 | −3.0 ± 1.9 |
++| Blaziken | 57.7 | 56.4 | 55.6 | 59.8 | +4.3 ± 1.7 |
++| Hydreigon | 42.6 | 34.6 | 47.4 | 53.2 | +5.8 ± 1.9 |
++| Lucario | 50.2 | 52.5 | 52.0 | 49.3 | −2.7 ± 1.8 |
++| Sceptile | 48.2 | 62.1 | 58.3 | 59.1 | +0.9 ± 1.6 |
++| Suicune | 48.2 | 52.9 | 46.5 | 48.9 | +2.4 ± 1.8 |
++| Vespiquen | 56.5 | 48.1 | 45.8 | 42.9 | −2.9 ± 1.8 |
++| Weezing | 42.7 | 46.6 | 44.7 | 40.0 | −4.7 ± 1.7 |
++
++**Cells that changed most against kp3** (paired on the same deals, 95% range; the first-named deck's score):
++- Hydreigon v Vespiquen +15.8 (+10.2, +21.4)
++- Blaziken v Weezing +11.7 (+7.6, +15.8)
++- Blaziken v Lucario +10.9 (+5.8, +16.0)
++- Hydreigon v Suicune +9.4 (+4.4, +14.4)
++- Lucario v Suicune −9.2 (−13.8, −4.6)
++- Hydreigon v Lucario +8.8 (+4.0, +13.6)
++- Suicune v Weezing +8.5 (+4.1, +12.9)
++- Altaria v Hydreigon −7.8 (−12.9, −2.7)
++- Vespiquen v Weezing +6.8 (+2.1, +11.5)
++- Suicune v Vespiquen +6.6 (+1.5, +11.7)
++- Altaria v Suicune −6.6 (−11.7, −1.5)
++- Altaria v Blaziken −6.0 (−11.0, −1.0)
++
++Every cell, against k3 and kp3: `../per_game_table_2026-09-25/analyze_tables.py --base <k3_500 or kp3_500_*> --other kpr3_500.jsonl`. Deck averages: `deck_averages.py` (and `--paired`).
++
++**Hyper Ray without a knockout** (turns where it was on offer and wouldn't knock out; used, of those turns):
++
++| Hydreigon v | k3 | kp3 | kpr3 |
++|---|---:|---:|---:|
++| Altaria | 3% (4 of 135) | 5% (3 of 64) | 88% (71 of 81) |
++| Blaziken | 1% (2 of 152) | 1% (1 of 98) | 68% (65 of 96) |
++| Lucario | 3% (8 of 233) | 1% (1 of 128) | 91% (117 of 129) |
++| Sceptile | 3% (4 of 131) | 6% (4 of 70) | 97% (71 of 73) |
++| Suicune | 35% (203 of 578) | 40% (101 of 252) | 95% (322 of 338) |
++| Vespiquen | 14% (33 of 242) | 15% (29 of 193) | 84% (180 of 215) |
++| Weezing | 33% (103 of 315) | 34% (78 of 231) | 95% (279 of 295) |
++| all | 20% | 21% | 90% |
++
++For reference, the census reading puts the network at 99% and the see-everything searched bots at 82–84%. Knockout turns are used as before (kpr3 passes 38 of 2,434, kp3 88 of 2,334).
++
++What this shows, plainly:
++
++- **kpr fixes the play it was built for.** Hydreigon now chips with Hyper Ray, the way the network and the searched bots do, where kp3 almost never did.
++- **On this table that moves Hydreigon further from Limitless.** It was already over-rated under kp3 (47.4 against 42.6); kpr3 puts it at 53.2. The discard-attack census predicted exactly this before kpr was registered, and the reading set then with Fable applies: a change that is right by the rules and moves a deck away from reality points at blind spots on the other side of its matchups (or the population), not at undoing the change.
++- **The change is broader than Hyper Ray,** as the registration warned: counting the turn's attach and next turn's Energy moves every deck.
++  - Blaziken gains too (+4.3, past Limitless).
++  - Vespiquen and Altaria lose ground and move further under Limitless.
++  - Weezing drops past it (44.7 to 40.0, against 42.7).
++  - Lucario and Suicune move toward Limitless.
++- **The overall fit is the worst of the five bots** (mean squared miss 176.1). The deck-gap vetoes may fire: Vespiquen (42.9 against 56.5) and Hydreigon (53.2 against 42.6).
++- The laptop's adoption rule and its mixed rows decide. This file only reports.
++
++## Known limits (kept as registered)
++
++- **An end-of-turn knockout leaves the promotion pending at the leaf** (review finding). When the searcher's end of turn (Deceptive Needle, poison, burn, Bad Dreams) knocks the opponent's Active out, the search scores the leaf with the replacement not yet promoted, so the opponent reads "no Active"; on a line where an attack takes the knockout, the replacement is promoted and projected. k has the same leaf, but there an unpowered replacement reads about 0 anyway; kpr widens the gap by up to 500 × the replacement's projected readiness plus 100 per clock turn, in favour of letting the end of turn take the knockout. Five of the eight lists do end-of-turn damage.
++- **The self-knockout guard reads the HP now**, not after end-of-turn damage that lands before the owner's next attack (Checkup burn or poison, Bad Dreams, Deceptive Needle). A Roar in Unison priced now can become one that would knock the holder out by then.
++- **Energy-dependent damage is projected in the clock, not "this turn if it pays"**: Mega Lucario ex holding [F] with this turn's [F] unused and [F] next is priced at 140, where an attack this turn does 90. The clock doesn't model whose turn it is.
++- **Not counted:** an attach that puts the Active to sleep (Snoozing Habit, Comatose, Stellar Cradle); Energy moved from the Bench; an estimate that reads the Active from the board (Energized Leaves' combined count).
++- **Two-type decks:** a `next` drawn inside the search (Rainbow Cave, or a search crossing into the searcher's next turn) is a guess, and extra Energy can move the online score's yardstick to a better attack with a lower ratio with mixed-type costs. The eight table decks each use one type; Dustin's 08 and 11 use two.
++- **Observations hide the opponent's stack**, so a paused end of its turn (a point-denial coin at Checkup) reads as its turn running. Between Kiawe and its attach choice the turn reads as over.
++- **The engine's own deviations it reads through:** discard-all-Energy attacks (Hyper Ray) don't put the Energy in the discard pile, so Combust and Dragon's Blessing see less there than the rules would give (rules/09; no table deck pairs them).
++
++## Files
++
++- `kpr3_500.{txt,jsonl}`: the kpr3 table. `run_kpr3_table.sh`: its command, plus the identity subset at the same build (`table_commit_identity_{k3,kp3,kq3}_40.*`).
++- `identity_{k3,kp3,kq3}_500.*`, `identity_kd3_40.*`: the full replay at 53638a7. `run_identity.sh`: its command. `identity_k3_9a35f54_partial.*`: the first, stopped replay.
++- `mutate.py`, `mutation_results_{0adfeb7,1981bb4,e09fb46}.txt`: the mutation checks.
++- `review_1981bb4_workflow_output.json`: the adversarial review.
++- `timing.txt`: wall times.
+
+=== legality_scan: where does it print Hyper Ray turns / KO-able (engine source) ===
+
+=== legality_scan parallelism: threads / rayon / par_iter in the scan binary ===
+origin/claude/pensive-ptolemy-spwc0b:engine/src/bin/card_test.rs:199:                num_threads: None,
+100644 blob e8d89133590a01d26d3154564417449bb44142b9	engine/src/bin/card_enum_generator.rs
+100644 blob b1a5a478c2ce0319f24bf0fe81d0e4e3d5328590	engine/src/bin/card_status.rs
+100644 blob be72abdf5cea370a5ed8c5387cdb9d99ca8e752d	engine/src/bin/card_test.rs
+100644 blob 9743c16da6aa043a2529c914ea4efdf06288c3d2	engine/src/bin/search.rs
+100644 blob 0dbb4839656f0ca4ede86986c382290aad890559	engine/src/bin/temp_deck_generator.rs
+100644 blob 836fd542e4c8c2bdb68538c2d7a5a6bcf53e7167	engine/src/bin/tui.rs

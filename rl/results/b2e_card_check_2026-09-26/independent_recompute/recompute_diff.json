@@ -1,0 +1,149 @@
+{
+  "matches_rows": 30216,
+  "result_status_counts": {
+    "decisive": 26277,
+    "bye_or_automatic_loss": 2010,
+    "tie": 866,
+    "double_loss": 1063
+  },
+  "skipped": {
+    "bye": 2010
+  },
+  "unlabeled_same_name_variants_used": {
+    "Garchomp | garchomp-a2 | label=''": 8,
+    "Mega Manectric ex Heliolisk | mega-manectric-ex-b2b-heliolisk-b1a | label=''": 3
+  },
+  "held_archetype_records_verification": {
+    "by_label": {
+      "match": 48,
+      "of": 48,
+      "diff": []
+    },
+    "by_deck_name": {
+      "match": 41,
+      "of": 48,
+      "diff": [
+        {
+          "archetype": "manectric_heliolisk",
+          "opponent": "sceptile",
+          "scoreboard": [
+            13,
+            22,
+            2,
+            37
+          ],
+          "mine": [
+            13,
+            23,
+            2,
+            38
+          ]
+        },
+        {
+          "archetype": "manectric_heliolisk",
+          "opponent": "vespiquen",
+          "scoreboard": [
+            11,
+            17,
+            1,
+            29
+          ],
+          "mine": [
+            12,
+            17,
+            1,
+            30
+          ]
+        },
+        {
+          "archetype": "garchomp",
+          "opponent": "lucario",
+          "scoreboard": [
+            9,
+            8,
+            1,
+            18
+          ],
+          "mine": [
+            9,
+            9,
+            2,
+            20
+          ]
+        },
+        {
+          "archetype": "garchomp",
+          "opponent": "altaria",
+          "scoreboard": [
+            2,
+            7,
+            0,
+            9
+          ],
+          "mine": [
+            4,
+            7,
+            0,
+            11
+          ]
+        },
+        {
+          "archetype": "garchomp",
+          "opponent": "vespiquen",
+          "scoreboard": [
+            2,
+            2,
+            0,
+            4
+          ],
+          "mine": [
+            2,
+            3,
+            0,
+            5
+          ]
+        },
+        {
+          "archetype": "garchomp",
+          "opponent": "suicune",
+          "scoreboard": [
+            1,
+            7,
+            0,
+            8
+          ],
+          "mine": [
+            2,
+            7,
+            0,
+            9
+          ]
+        },
+        {
+          "archetype": "garchomp",
+          "opponent": "weezing",
+          "scoreboard": [
+            1,
+            8,
+            1,
+            10
+          ],
+          "mine": [
+            1,
+            9,
+            1,
+            11
+          ]
+        }
+      ]
+    }
+  },
+  "rows_compared": 180,
+  "value_cells_compared": 3600,
+  "differences": [],
+  "agree": true,
+  "outputs": {
+    "recomputed_csv": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\75cb92d0-6f2d-44b8-a636-513a8f7ee71a\\scratchpad\\b2e\\recomputed_cells.csv",
+    "diff_json": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\75cb92d0-6f2d-44b8-a636-513a8f7ee71a\\scratchpad\\b2e\\recompute_diff.json"
+  }
+}

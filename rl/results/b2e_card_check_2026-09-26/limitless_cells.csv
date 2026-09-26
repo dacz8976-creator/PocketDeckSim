@@ -1,0 +1,181 @@
+dataset,archetype,deck_name,opponent,opponent_deck_name,W,L,T,DL,n,score_pct,band95_pts,lo_pct,hi_pct,W_bo1,L_bo1,T_bo1,DL_bo1,n_bo1,score_bo1_pct,band95_bo1_pts,n_incl_dl,score_incl_dl_pct
+development,manectric_heliolisk,Mega Manectric ex Heliolisk,lucario,Mega Lucario ex Lucario,14,21,1,2,36,40.3,16.0,24.3,56.3,11,12,0,2,23,47.8,20.4,38,40.8
+development,manectric_heliolisk,Mega Manectric ex Heliolisk,altaria,Mega Altaria ex Espeon,26,22,3,2,51,53.9,13.7,40.2,67.6,17,15,2,2,34,52.9,16.8,53,53.8
+development,manectric_heliolisk,Mega Manectric ex Heliolisk,sceptile,Butterfree Mega Sceptile ex,13,23,2,2,38,36.8,15.3,21.5,52.2,3,15,2,2,20,20.0,17.5,40,37.5
+development,manectric_heliolisk,Mega Manectric ex Heliolisk,vespiquen,Vespiquen ex Shuckle ex,12,17,1,0,30,41.7,17.6,24.0,59.3,7,8,1,0,16,46.9,24.5,30,41.7
+development,manectric_heliolisk,Mega Manectric ex Heliolisk,suicune,Suicune ex Baxcalibur,17,9,2,0,28,64.3,17.7,46.5,82.0,11,7,1,0,19,60.5,22.0,28,64.3
+development,manectric_heliolisk,Mega Manectric ex Heliolisk,hydreigon,Hydreigon Mega Absol ex,8,12,0,2,20,40.0,21.5,18.5,61.5,6,6,0,2,12,50.0,28.3,22,40.9
+development,manectric_heliolisk,Mega Manectric ex Heliolisk,weezing,Team Rocket's Weezing ex Hoopa ex,4,8,0,1,12,33.3,26.7,6.7,60.0,3,8,0,1,11,27.3,26.3,13,34.6
+development,manectric_heliolisk,Mega Manectric ex Heliolisk,blaziken,Mega Blaziken ex,10,3,2,0,15,73.3,22.4,51.0,95.7,9,2,1,0,12,79.2,23.0,15,73.3
+development,manectric_heliolisk,Mega Manectric ex Heliolisk,panel_equal_weight,8 of 8 opponents with n>0,104,115,11,9,230,48.0,,,,67,73,7,9,147,,,239,
+development,manectric_heliolisk,Mega Manectric ex Heliolisk,panel_pooled,all panel matches pooled (match-weighted),104,115,11,9,230,47.6,6.5,41.2,54.1,67,73,7,9,147,48.0,8.1,239,47.7
+development,raticate_ninetales,Team Rocket's Raticate ex Alolan Ninetales ex,lucario,Mega Lucario ex Lucario,12,13,0,1,25,48.0,19.6,28.4,67.6,10,12,0,0,22,45.5,20.8,26,48.1
+development,raticate_ninetales,Team Rocket's Raticate ex Alolan Ninetales ex,altaria,Mega Altaria ex Espeon,1,9,0,1,10,10.0,18.6,0.0,28.6,0,4,0,1,4,0.0,0.0,11,13.6
+development,raticate_ninetales,Team Rocket's Raticate ex Alolan Ninetales ex,sceptile,Butterfree Mega Sceptile ex,8,7,1,1,16,53.1,24.5,28.7,77.6,6,7,1,1,14,46.4,26.1,17,52.9
+development,raticate_ninetales,Team Rocket's Raticate ex Alolan Ninetales ex,vespiquen,Vespiquen ex Shuckle ex,6,8,0,1,14,42.9,25.9,16.9,68.8,3,5,0,1,8,37.5,33.5,15,43.3
+development,raticate_ninetales,Team Rocket's Raticate ex Alolan Ninetales ex,suicune,Suicune ex Baxcalibur,8,11,0,1,19,42.1,22.2,19.9,64.3,6,6,0,1,12,50.0,28.3,20,42.5
+development,raticate_ninetales,Team Rocket's Raticate ex Alolan Ninetales ex,hydreigon,Hydreigon Mega Absol ex,3,4,0,0,7,42.9,36.7,6.2,79.5,2,2,0,0,4,50.0,49.0,7,42.9
+development,raticate_ninetales,Team Rocket's Raticate ex Alolan Ninetales ex,weezing,Team Rocket's Weezing ex Hoopa ex,4,9,1,0,14,32.1,24.5,7.7,56.6,3,9,1,0,13,26.9,24.1,14,32.1
+development,raticate_ninetales,Team Rocket's Raticate ex Alolan Ninetales ex,blaziken,Mega Blaziken ex,7,1,0,0,8,87.5,22.9,64.6,100.0,5,1,0,0,6,83.3,29.8,8,87.5
+development,raticate_ninetales,Team Rocket's Raticate ex Alolan Ninetales ex,panel_equal_weight,8 of 8 opponents with n>0,49,62,2,5,113,44.8,,,,35,46,2,4,83,,,118,
+development,raticate_ninetales,Team Rocket's Raticate ex Alolan Ninetales ex,panel_pooled,all panel matches pooled (match-weighted),49,62,2,5,113,44.2,9.2,35.1,53.4,35,46,2,4,83,43.4,10.7,118,44.5
+development,hoopa_absol,Hoopa ex Mega Absol ex,lucario,Mega Lucario ex Lucario,29,30,1,2,60,49.2,12.6,36.5,61.8,20,20,1,2,41,50.0,15.3,62,49.2
+development,hoopa_absol,Hoopa ex Mega Absol ex,altaria,Mega Altaria ex Espeon,54,21,6,3,81,70.4,9.9,60.4,80.3,37,18,6,3,61,65.6,11.9,84,69.6
+development,hoopa_absol,Hoopa ex Mega Absol ex,sceptile,Butterfree Mega Sceptile ex,18,27,2,1,47,40.4,14.0,26.4,54.5,15,16,2,1,33,48.5,17.1,48,40.6
+development,hoopa_absol,Hoopa ex Mega Absol ex,vespiquen,Vespiquen ex Shuckle ex,5,20,3,0,28,23.2,15.6,7.6,38.9,3,12,2,0,17,23.5,20.2,28,23.2
+development,hoopa_absol,Hoopa ex Mega Absol ex,suicune,Suicune ex Baxcalibur,14,15,1,1,30,48.3,17.9,30.5,66.2,9,9,1,1,19,50.0,22.5,31,48.4
+development,hoopa_absol,Hoopa ex Mega Absol ex,hydreigon,Hydreigon Mega Absol ex,17,9,0,2,26,65.4,18.3,47.1,83.7,10,7,0,2,17,58.8,23.4,28,64.3
+development,hoopa_absol,Hoopa ex Mega Absol ex,weezing,Team Rocket's Weezing ex Hoopa ex,7,12,0,1,19,36.8,21.7,15.2,58.5,5,8,0,1,13,38.5,26.4,20,37.5
+development,hoopa_absol,Hoopa ex Mega Absol ex,blaziken,Mega Blaziken ex,9,2,1,0,12,79.2,23.0,56.2,100.0,5,2,1,0,8,68.8,32.1,12,79.2
+development,hoopa_absol,Hoopa ex Mega Absol ex,panel_equal_weight,8 of 8 opponents with n>0,153,136,14,10,303,51.6,,,,104,92,13,10,209,,,313,
+development,hoopa_absol,Hoopa ex Mega Absol ex,panel_pooled,all panel matches pooled (match-weighted),153,136,14,10,303,52.8,5.6,47.2,58.4,104,92,13,10,209,52.9,6.8,313,52.7
+development,garchomp,Garchomp,lucario,Mega Lucario ex Lucario,9,9,2,1,20,50.0,21.9,28.1,71.9,8,6,2,1,16,56.2,24.3,21,50.0
+development,garchomp,Garchomp,altaria,Mega Altaria ex Espeon,4,7,0,0,11,36.4,28.4,7.9,64.8,3,7,0,0,10,30.0,28.4,11,36.4
+development,garchomp,Garchomp,sceptile,Butterfree Mega Sceptile ex,3,3,0,0,6,50.0,40.0,10.0,90.0,3,3,0,0,6,50.0,40.0,6,50.0
+development,garchomp,Garchomp,vespiquen,Vespiquen ex Shuckle ex,2,3,0,0,5,40.0,42.9,0.0,82.9,2,2,0,0,4,50.0,49.0,5,40.0
+development,garchomp,Garchomp,suicune,Suicune ex Baxcalibur,2,7,0,1,9,22.2,27.2,0.0,49.4,2,4,0,1,6,33.3,37.7,10,25.0
+development,garchomp,Garchomp,hydreigon,Hydreigon Mega Absol ex,2,4,0,0,6,33.3,37.7,0.0,71.1,1,3,0,0,4,25.0,42.4,6,33.3
+development,garchomp,Garchomp,weezing,Team Rocket's Weezing ex Hoopa ex,1,9,1,0,11,13.6,20.3,0.0,33.9,1,4,1,0,6,25.0,34.6,11,13.6
+development,garchomp,Garchomp,blaziken,Mega Blaziken ex,1,1,0,0,2,50.0,69.3,0.0,100.0,0,1,0,0,1,0.0,0.0,2,50.0
+development,garchomp,Garchomp,panel_equal_weight,8 of 8 opponents with n>0,24,43,3,2,70,36.9,,,,20,30,3,2,53,,,72,
+development,garchomp,Garchomp,panel_pooled,all panel matches pooled (match-weighted),24,43,3,2,70,36.4,11.3,25.2,47.7,20,30,3,2,53,40.6,13.2,72,36.8
+development,whimsicott_ariados,Whimsicott ex Ariados,lucario,Mega Lucario ex Lucario,5,3,0,0,8,62.5,33.5,29.0,96.0,2,1,0,0,3,66.7,53.3,8,62.5
+development,whimsicott_ariados,Whimsicott ex Ariados,altaria,Mega Altaria ex Espeon,1,0,0,2,1,100.0,0.0,100.0,100.0,0,0,0,2,0,,,3,66.7
+development,whimsicott_ariados,Whimsicott ex Ariados,sceptile,Butterfree Mega Sceptile ex,0,2,0,0,2,0.0,0.0,0.0,0.0,0,0,0,0,0,,,2,0.0
+development,whimsicott_ariados,Whimsicott ex Ariados,vespiquen,Vespiquen ex Shuckle ex,3,4,0,0,7,42.9,36.7,6.2,79.5,1,3,0,0,4,25.0,42.4,7,42.9
+development,whimsicott_ariados,Whimsicott ex Ariados,suicune,Suicune ex Baxcalibur,3,3,0,0,6,50.0,40.0,10.0,90.0,2,2,0,0,4,50.0,49.0,6,50.0
+development,whimsicott_ariados,Whimsicott ex Ariados,hydreigon,Hydreigon Mega Absol ex,2,3,0,0,5,40.0,42.9,0.0,82.9,2,2,0,0,4,50.0,49.0,5,40.0
+development,whimsicott_ariados,Whimsicott ex Ariados,weezing,Team Rocket's Weezing ex Hoopa ex,1,4,0,0,5,20.0,35.1,0.0,55.1,0,3,0,0,3,0.0,0.0,5,20.0
+development,whimsicott_ariados,Whimsicott ex Ariados,blaziken,Mega Blaziken ex,0,0,0,0,0,,,,,0,0,0,0,0,,,0,
+development,whimsicott_ariados,Whimsicott ex Ariados,panel_equal_weight,7 of 8 opponents with n>0,15,19,0,2,34,45.1,,,,7,11,0,2,18,,,36,
+development,whimsicott_ariados,Whimsicott ex Ariados,panel_pooled,all panel matches pooled (match-weighted),15,19,0,2,34,44.1,16.7,27.4,60.8,7,11,0,2,18,38.9,22.5,36,44.4
+development,charizardy_entei,Mega Charizard Y ex Entei ex,lucario,Mega Lucario ex Lucario,34,13,0,0,47,72.3,12.8,59.6,85.1,29,12,0,0,41,70.7,13.9,47,72.3
+development,charizardy_entei,Mega Charizard Y ex Entei ex,altaria,Mega Altaria ex Espeon,21,32,1,0,54,39.8,13.1,26.8,52.9,16,21,1,0,38,43.4,15.8,54,39.8
+development,charizardy_entei,Mega Charizard Y ex Entei ex,sceptile,Butterfree Mega Sceptile ex,23,8,0,1,31,74.2,15.4,58.8,89.6,18,7,0,1,25,72.0,17.6,32,73.4
+development,charizardy_entei,Mega Charizard Y ex Entei ex,vespiquen,Vespiquen ex Shuckle ex,12,10,1,0,23,54.3,20.4,34.0,74.7,12,7,1,0,20,62.5,21.2,23,54.3
+development,charizardy_entei,Mega Charizard Y ex Entei ex,suicune,Suicune ex Baxcalibur,3,12,0,0,15,20.0,20.2,0.0,40.2,3,9,0,0,12,25.0,24.5,15,20.0
+development,charizardy_entei,Mega Charizard Y ex Entei ex,hydreigon,Hydreigon Mega Absol ex,10,13,1,1,24,43.8,19.8,23.9,63.6,7,12,1,1,20,37.5,21.2,25,44.0
+development,charizardy_entei,Mega Charizard Y ex Entei ex,weezing,Team Rocket's Weezing ex Hoopa ex,6,7,1,0,14,46.4,26.1,20.3,72.6,6,5,1,0,12,54.2,28.2,14,46.4
+development,charizardy_entei,Mega Charizard Y ex Entei ex,blaziken,Mega Blaziken ex,4,7,0,0,11,36.4,28.4,7.9,64.8,4,5,0,0,9,44.4,32.5,11,36.4
+development,charizardy_entei,Mega Charizard Y ex Entei ex,panel_equal_weight,8 of 8 opponents with n>0,113,102,4,2,219,48.4,,,,95,78,4,2,177,,,221,
+development,charizardy_entei,Mega Charizard Y ex Entei ex,panel_pooled,all panel matches pooled (match-weighted),113,102,4,2,219,52.5,6.6,45.9,59.1,95,78,4,2,177,54.8,7.3,221,52.5
+holdout,manectric_heliolisk,Mega Manectric ex Heliolisk,lucario,Mega Lucario ex Lucario,21,34,2,3,57,38.6,12.6,26.0,51.2,11,18,1,2,30,38.3,17.4,60,39.2
+holdout,manectric_heliolisk,Mega Manectric ex Heliolisk,altaria,Mega Altaria ex Espeon,29,26,4,4,59,52.5,12.7,39.8,65.3,11,14,1,3,26,44.2,19.1,63,52.4
+holdout,manectric_heliolisk,Mega Manectric ex Heliolisk,sceptile,Butterfree Mega Sceptile ex,16,22,1,0,39,42.3,15.5,26.8,57.8,10,15,0,0,25,40.0,19.2,39,42.3
+holdout,manectric_heliolisk,Mega Manectric ex Heliolisk,vespiquen,Vespiquen ex Shuckle ex,23,15,1,0,39,60.3,15.4,44.9,75.6,12,10,0,0,22,54.5,20.8,39,60.3
+holdout,manectric_heliolisk,Mega Manectric ex Heliolisk,suicune,Suicune ex Baxcalibur,10,5,4,0,19,63.2,21.7,41.5,84.8,4,2,1,0,7,64.3,35.5,19,63.2
+holdout,manectric_heliolisk,Mega Manectric ex Heliolisk,hydreigon,Hydreigon Mega Absol ex,16,15,0,0,31,51.6,17.6,34.0,69.2,9,10,0,0,19,47.4,22.5,31,51.6
+holdout,manectric_heliolisk,Mega Manectric ex Heliolisk,weezing,Team Rocket's Weezing ex Hoopa ex,3,5,0,0,8,37.5,33.5,4.0,71.0,2,4,0,0,6,33.3,37.7,8,37.5
+holdout,manectric_heliolisk,Mega Manectric ex Heliolisk,blaziken,Mega Blaziken ex,12,9,1,0,22,56.8,20.7,36.1,77.5,5,5,1,0,11,50.0,29.5,22,56.8
+holdout,manectric_heliolisk,Mega Manectric ex Heliolisk,panel_equal_weight,8 of 8 opponents with n>0,130,131,13,7,274,50.3,,,,64,78,4,5,146,,,281,
+holdout,manectric_heliolisk,Mega Manectric ex Heliolisk,panel_pooled,all panel matches pooled (match-weighted),130,131,13,7,274,49.8,5.9,43.9,55.7,64,78,4,5,146,45.2,8.1,281,49.8
+holdout,raticate_ninetales,Team Rocket's Raticate ex Alolan Ninetales ex,lucario,Mega Lucario ex Lucario,10,19,0,0,29,34.5,17.3,17.2,51.8,7,15,0,0,22,31.8,19.5,29,34.5
+holdout,raticate_ninetales,Team Rocket's Raticate ex Alolan Ninetales ex,altaria,Mega Altaria ex Espeon,2,20,0,0,22,9.1,12.0,0.0,21.1,1,14,0,0,15,6.7,12.6,22,9.1
+holdout,raticate_ninetales,Team Rocket's Raticate ex Alolan Ninetales ex,sceptile,Butterfree Mega Sceptile ex,1,12,0,1,13,7.7,14.5,0.0,22.2,1,12,0,1,13,7.7,14.5,14,10.7
+holdout,raticate_ninetales,Team Rocket's Raticate ex Alolan Ninetales ex,vespiquen,Vespiquen ex Shuckle ex,13,13,1,1,27,50.0,18.9,31.1,68.9,8,9,1,1,18,47.2,23.1,28,50.0
+holdout,raticate_ninetales,Team Rocket's Raticate ex Alolan Ninetales ex,suicune,Suicune ex Baxcalibur,8,6,1,2,15,56.7,25.1,31.6,81.7,7,3,1,1,11,68.2,27.5,17,55.9
+holdout,raticate_ninetales,Team Rocket's Raticate ex Alolan Ninetales ex,hydreigon,Hydreigon Mega Absol ex,6,5,0,2,11,54.5,29.4,25.1,84.0,5,3,0,0,8,62.5,33.5,13,53.8
+holdout,raticate_ninetales,Team Rocket's Raticate ex Alolan Ninetales ex,weezing,Team Rocket's Weezing ex Hoopa ex,6,11,0,1,17,35.3,22.7,12.6,58.0,4,7,0,1,11,36.4,28.4,18,36.1
+holdout,raticate_ninetales,Team Rocket's Raticate ex Alolan Ninetales ex,blaziken,Mega Blaziken ex,5,5,0,0,10,50.0,31.0,19.0,81.0,4,4,0,0,8,50.0,34.6,10,50.0
+holdout,raticate_ninetales,Team Rocket's Raticate ex Alolan Ninetales ex,panel_equal_weight,8 of 8 opponents with n>0,51,91,2,7,144,37.2,,,,37,67,2,4,106,,,151,
+holdout,raticate_ninetales,Team Rocket's Raticate ex Alolan Ninetales ex,panel_pooled,all panel matches pooled (match-weighted),51,91,2,7,144,36.1,7.8,28.3,44.0,37,67,2,4,106,35.8,9.1,151,36.8
+holdout,hoopa_absol,Hoopa ex Mega Absol ex,lucario,Mega Lucario ex Lucario,12,23,0,1,35,34.3,15.7,18.6,50.0,5,12,0,0,17,29.4,21.7,36,34.7
+holdout,hoopa_absol,Hoopa ex Mega Absol ex,altaria,Mega Altaria ex Espeon,41,14,4,0,59,72.9,11.3,61.5,84.2,11,8,4,0,23,56.5,20.3,59,72.9
+holdout,hoopa_absol,Hoopa ex Mega Absol ex,sceptile,Butterfree Mega Sceptile ex,6,23,1,1,30,21.7,14.7,6.9,36.4,4,12,1,1,17,26.5,21.0,31,22.6
+holdout,hoopa_absol,Hoopa ex Mega Absol ex,vespiquen,Vespiquen ex Shuckle ex,7,18,0,1,25,28.0,17.6,10.4,45.6,2,10,0,0,12,16.7,21.1,26,28.8
+holdout,hoopa_absol,Hoopa ex Mega Absol ex,suicune,Suicune ex Baxcalibur,11,10,0,0,21,52.4,21.4,31.0,73.7,5,6,0,0,11,45.5,29.4,21,52.4
+holdout,hoopa_absol,Hoopa ex Mega Absol ex,hydreigon,Hydreigon Mega Absol ex,15,6,1,0,22,70.5,19.1,51.4,89.5,5,4,1,0,10,55.0,30.8,22,70.5
+holdout,hoopa_absol,Hoopa ex Mega Absol ex,weezing,Team Rocket's Weezing ex Hoopa ex,6,8,0,0,14,42.9,25.9,16.9,68.8,4,7,0,0,11,36.4,28.4,14,42.9
+holdout,hoopa_absol,Hoopa ex Mega Absol ex,blaziken,Mega Blaziken ex,7,5,0,0,12,58.3,27.9,30.4,86.2,3,4,0,0,7,42.9,36.7,12,58.3
+holdout,hoopa_absol,Hoopa ex Mega Absol ex,panel_equal_weight,8 of 8 opponents with n>0,105,107,6,3,218,47.6,,,,39,63,6,1,108,,,221,
+holdout,hoopa_absol,Hoopa ex Mega Absol ex,panel_pooled,all panel matches pooled (match-weighted),105,107,6,3,218,49.5,6.6,42.9,56.2,39,63,6,1,108,38.9,9.2,221,49.5
+holdout,garchomp,Garchomp,lucario,Mega Lucario ex Lucario,4,9,2,0,15,33.3,23.9,9.5,57.2,3,8,2,0,13,30.8,25.1,15,33.3
+holdout,garchomp,Garchomp,altaria,Mega Altaria ex Espeon,5,2,0,0,7,71.4,33.5,38.0,100.0,4,2,0,0,6,66.7,37.7,7,71.4
+holdout,garchomp,Garchomp,sceptile,Butterfree Mega Sceptile ex,2,7,0,0,9,22.2,27.2,0.0,49.4,2,5,0,0,7,28.6,33.5,9,22.2
+holdout,garchomp,Garchomp,vespiquen,Vespiquen ex Shuckle ex,6,7,0,1,13,46.2,27.1,19.1,73.3,5,6,0,1,11,45.5,29.4,14,46.4
+holdout,garchomp,Garchomp,suicune,Suicune ex Baxcalibur,5,7,0,0,12,41.7,27.9,13.8,69.6,4,4,0,0,8,50.0,34.6,12,41.7
+holdout,garchomp,Garchomp,hydreigon,Hydreigon Mega Absol ex,2,5,0,0,7,28.6,33.5,0.0,62.0,1,3,0,0,4,25.0,42.4,7,28.6
+holdout,garchomp,Garchomp,weezing,Team Rocket's Weezing ex Hoopa ex,1,4,0,0,5,20.0,35.1,0.0,55.1,1,3,0,0,4,25.0,42.4,5,20.0
+holdout,garchomp,Garchomp,blaziken,Mega Blaziken ex,0,8,0,0,8,0.0,0.0,0.0,0.0,0,7,0,0,7,0.0,0.0,8,0.0
+holdout,garchomp,Garchomp,panel_equal_weight,8 of 8 opponents with n>0,25,49,2,1,76,32.9,,,,20,38,2,1,60,,,77,
+holdout,garchomp,Garchomp,panel_pooled,all panel matches pooled (match-weighted),25,49,2,1,76,34.2,10.7,23.5,44.9,20,38,2,1,60,35.0,12.1,77,34.4
+holdout,whimsicott_ariados,Whimsicott ex Ariados,lucario,Mega Lucario ex Lucario,1,7,0,1,8,12.5,22.9,0.0,35.4,1,5,0,1,6,16.7,29.8,9,16.7
+holdout,whimsicott_ariados,Whimsicott ex Ariados,altaria,Mega Altaria ex Espeon,0,3,0,0,3,0.0,0.0,0.0,0.0,0,3,0,0,3,0.0,0.0,3,0.0
+holdout,whimsicott_ariados,Whimsicott ex Ariados,sceptile,Butterfree Mega Sceptile ex,1,2,0,1,3,33.3,53.3,0.0,86.7,1,2,0,1,3,33.3,53.3,4,37.5
+holdout,whimsicott_ariados,Whimsicott ex Ariados,vespiquen,Vespiquen ex Shuckle ex,2,2,0,0,4,50.0,49.0,1.0,99.0,2,2,0,0,4,50.0,49.0,4,50.0
+holdout,whimsicott_ariados,Whimsicott ex Ariados,suicune,Suicune ex Baxcalibur,2,1,0,1,3,66.7,53.3,13.3,100.0,2,1,0,0,3,66.7,53.3,4,62.5
+holdout,whimsicott_ariados,Whimsicott ex Ariados,hydreigon,Hydreigon Mega Absol ex,1,0,0,0,1,100.0,0.0,100.0,100.0,0,0,0,0,0,,,1,100.0
+holdout,whimsicott_ariados,Whimsicott ex Ariados,weezing,Team Rocket's Weezing ex Hoopa ex,1,2,0,0,3,33.3,53.3,0.0,86.7,0,1,0,0,1,0.0,0.0,3,33.3
+holdout,whimsicott_ariados,Whimsicott ex Ariados,blaziken,Mega Blaziken ex,0,1,0,0,1,0.0,0.0,0.0,0.0,0,0,0,0,0,,,1,0.0
+holdout,whimsicott_ariados,Whimsicott ex Ariados,panel_equal_weight,8 of 8 opponents with n>0,8,18,0,3,26,37.0,,,,6,14,0,2,20,,,29,
+holdout,whimsicott_ariados,Whimsicott ex Ariados,panel_pooled,all panel matches pooled (match-weighted),8,18,0,3,26,30.8,17.7,13.0,48.5,6,14,0,2,20,30.0,20.1,29,32.8
+holdout,charizardy_entei,Mega Charizard Y ex Entei ex,lucario,Mega Lucario ex Lucario,26,16,4,0,46,60.9,14.1,46.8,75.0,15,10,2,0,27,59.3,18.5,46,60.9
+holdout,charizardy_entei,Mega Charizard Y ex Entei ex,altaria,Mega Altaria ex Espeon,20,28,1,2,49,41.8,13.8,28.0,55.6,12,13,1,2,26,48.1,19.2,51,42.2
+holdout,charizardy_entei,Mega Charizard Y ex Entei ex,sceptile,Butterfree Mega Sceptile ex,22,8,1,1,31,72.6,15.7,56.9,88.3,13,5,1,1,19,71.1,20.4,32,71.9
+holdout,charizardy_entei,Mega Charizard Y ex Entei ex,vespiquen,Vespiquen ex Shuckle ex,22,10,1,1,33,68.2,15.9,52.3,84.1,14,5,1,1,20,72.5,19.6,34,67.6
+holdout,charizardy_entei,Mega Charizard Y ex Entei ex,suicune,Suicune ex Baxcalibur,2,15,1,0,18,13.9,16.0,0.0,29.9,2,9,1,0,12,20.8,23.0,18,13.9
+holdout,charizardy_entei,Mega Charizard Y ex Entei ex,hydreigon,Hydreigon Mega Absol ex,9,8,2,0,19,52.6,22.5,30.2,75.1,5,3,1,0,9,61.1,31.8,19,52.6
+holdout,charizardy_entei,Mega Charizard Y ex Entei ex,weezing,Team Rocket's Weezing ex Hoopa ex,7,4,2,0,13,61.5,26.4,35.1,88.0,6,3,1,0,10,65.0,29.6,13,61.5
+holdout,charizardy_entei,Mega Charizard Y ex Entei ex,blaziken,Mega Blaziken ex,5,12,0,0,17,29.4,21.7,7.8,51.1,2,9,0,0,11,18.2,22.8,17,29.4
+holdout,charizardy_entei,Mega Charizard Y ex Entei ex,panel_equal_weight,8 of 8 opponents with n>0,113,101,12,4,226,50.1,,,,69,57,8,4,134,,,230,
+holdout,charizardy_entei,Mega Charizard Y ex Entei ex,panel_pooled,all panel matches pooled (match-weighted),113,101,12,4,226,52.7,6.5,46.1,59.2,69,57,8,4,134,54.5,8.4,230,52.6
+pooled,manectric_heliolisk,Mega Manectric ex Heliolisk,lucario,Mega Lucario ex Lucario,35,55,3,5,93,39.2,9.9,29.3,49.2,22,30,1,4,53,42.5,13.3,98,39.8
+pooled,manectric_heliolisk,Mega Manectric ex Heliolisk,altaria,Mega Altaria ex Espeon,55,48,7,6,110,53.2,9.3,43.9,62.5,28,29,3,5,60,49.2,12.6,116,53.0
+pooled,manectric_heliolisk,Mega Manectric ex Heliolisk,sceptile,Butterfree Mega Sceptile ex,29,45,3,2,77,39.6,10.9,28.7,50.5,13,30,2,2,45,31.1,13.5,79,39.9
+pooled,manectric_heliolisk,Mega Manectric ex Heliolisk,vespiquen,Vespiquen ex Shuckle ex,35,32,2,0,69,52.2,11.8,40.4,64.0,19,18,1,0,38,51.3,15.9,69,52.2
+pooled,manectric_heliolisk,Mega Manectric ex Heliolisk,suicune,Suicune ex Baxcalibur,27,14,6,0,47,63.8,13.7,50.1,77.6,15,9,2,0,26,61.5,18.7,47,63.8
+pooled,manectric_heliolisk,Mega Manectric ex Heliolisk,hydreigon,Hydreigon Mega Absol ex,24,27,0,2,51,47.1,13.7,33.4,60.8,15,16,0,2,31,48.4,17.6,53,47.2
+pooled,manectric_heliolisk,Mega Manectric ex Heliolisk,weezing,Team Rocket's Weezing ex Hoopa ex,7,13,0,1,20,35.0,20.9,14.1,55.9,5,12,0,1,17,29.4,21.7,21,35.7
+pooled,manectric_heliolisk,Mega Manectric ex Heliolisk,blaziken,Mega Blaziken ex,22,12,3,0,37,63.5,15.5,48.0,79.0,14,7,2,0,23,65.2,19.5,37,63.5
+pooled,manectric_heliolisk,Mega Manectric ex Heliolisk,panel_equal_weight,8 of 8 opponents with n>0,234,246,24,16,504,49.2,,,,131,151,11,14,293,,,520,
+pooled,manectric_heliolisk,Mega Manectric ex Heliolisk,panel_pooled,all panel matches pooled (match-weighted),234,246,24,16,504,48.8,4.4,44.4,53.2,131,151,11,14,293,46.6,5.7,520,48.8
+pooled,raticate_ninetales,Team Rocket's Raticate ex Alolan Ninetales ex,lucario,Mega Lucario ex Lucario,22,32,0,1,54,40.7,13.1,27.6,53.8,17,27,0,0,44,38.6,14.4,55,40.9
+pooled,raticate_ninetales,Team Rocket's Raticate ex Alolan Ninetales ex,altaria,Mega Altaria ex Espeon,3,29,0,1,32,9.4,10.1,0.0,19.5,1,18,0,1,19,5.3,10.0,33,10.6
+pooled,raticate_ninetales,Team Rocket's Raticate ex Alolan Ninetales ex,sceptile,Butterfree Mega Sceptile ex,9,19,1,2,29,32.8,17.1,15.7,49.8,7,19,1,2,27,27.8,16.9,31,33.9
+pooled,raticate_ninetales,Team Rocket's Raticate ex Alolan Ninetales ex,vespiquen,Vespiquen ex Shuckle ex,19,21,1,2,41,47.6,15.3,32.3,62.8,11,14,1,2,26,44.2,19.1,43,47.7
+pooled,raticate_ninetales,Team Rocket's Raticate ex Alolan Ninetales ex,suicune,Suicune ex Baxcalibur,16,17,1,3,34,48.5,16.8,31.7,65.3,13,9,1,2,23,58.7,20.1,37,48.6
+pooled,raticate_ninetales,Team Rocket's Raticate ex Alolan Ninetales ex,hydreigon,Hydreigon Mega Absol ex,9,9,0,2,18,50.0,23.1,26.9,73.1,7,5,0,0,12,58.3,27.9,20,50.0
+pooled,raticate_ninetales,Team Rocket's Raticate ex Alolan Ninetales ex,weezing,Team Rocket's Weezing ex Hoopa ex,10,20,1,1,31,33.9,16.7,17.2,50.5,7,16,1,1,24,31.2,18.5,32,34.4
+pooled,raticate_ninetales,Team Rocket's Raticate ex Alolan Ninetales ex,blaziken,Mega Blaziken ex,12,6,0,0,18,66.7,21.8,44.9,88.4,9,5,0,0,14,64.3,25.1,18,66.7
+pooled,raticate_ninetales,Team Rocket's Raticate ex Alolan Ninetales ex,panel_equal_weight,8 of 8 opponents with n>0,100,153,4,12,257,41.2,,,,72,113,4,8,189,,,269,
+pooled,raticate_ninetales,Team Rocket's Raticate ex Alolan Ninetales ex,panel_pooled,all panel matches pooled (match-weighted),100,153,4,12,257,39.7,6.0,33.7,45.7,72,113,4,8,189,39.2,7.0,269,40.1
+pooled,hoopa_absol,Hoopa ex Mega Absol ex,lucario,Mega Lucario ex Lucario,41,53,1,3,95,43.7,10.0,33.7,53.7,25,32,1,2,58,44.0,12.8,98,43.9
+pooled,hoopa_absol,Hoopa ex Mega Absol ex,altaria,Mega Altaria ex Espeon,95,35,10,3,140,71.4,7.5,63.9,78.9,48,26,10,3,84,63.1,10.3,143,71.0
+pooled,hoopa_absol,Hoopa ex Mega Absol ex,sceptile,Butterfree Mega Sceptile ex,24,50,3,2,77,33.1,10.5,22.6,43.6,19,28,3,2,50,41.0,13.6,79,33.5
+pooled,hoopa_absol,Hoopa ex Mega Absol ex,vespiquen,Vespiquen ex Shuckle ex,12,38,3,1,53,25.5,11.7,13.7,37.2,5,22,2,0,29,20.7,14.7,54,25.9
+pooled,hoopa_absol,Hoopa ex Mega Absol ex,suicune,Suicune ex Baxcalibur,25,25,1,1,51,50.0,13.7,36.3,63.7,14,15,1,1,30,48.3,17.9,52,50.0
+pooled,hoopa_absol,Hoopa ex Mega Absol ex,hydreigon,Hydreigon Mega Absol ex,32,15,1,2,48,67.7,13.2,54.5,80.9,15,11,1,2,27,57.4,18.7,50,67.0
+pooled,hoopa_absol,Hoopa ex Mega Absol ex,weezing,Team Rocket's Weezing ex Hoopa ex,13,20,0,1,33,39.4,16.7,22.7,56.1,9,15,0,1,24,37.5,19.4,34,39.7
+pooled,hoopa_absol,Hoopa ex Mega Absol ex,blaziken,Mega Blaziken ex,16,7,1,0,24,68.8,18.5,50.2,87.3,8,6,1,0,15,56.7,25.1,24,68.8
+pooled,hoopa_absol,Hoopa ex Mega Absol ex,panel_equal_weight,8 of 8 opponents with n>0,258,243,20,13,521,49.9,,,,143,155,19,11,317,,,534,
+pooled,hoopa_absol,Hoopa ex Mega Absol ex,panel_pooled,all panel matches pooled (match-weighted),258,243,20,13,521,51.4,4.3,47.1,55.7,143,155,19,11,317,48.1,5.5,534,51.4
+pooled,garchomp,Garchomp,lucario,Mega Lucario ex Lucario,13,18,4,1,35,42.9,16.4,26.5,59.3,11,14,4,1,29,44.8,18.1,36,43.1
+pooled,garchomp,Garchomp,altaria,Mega Altaria ex Espeon,9,9,0,0,18,50.0,23.1,26.9,73.1,7,9,0,0,16,43.8,24.3,18,50.0
+pooled,garchomp,Garchomp,sceptile,Butterfree Mega Sceptile ex,5,10,0,0,15,33.3,23.9,9.5,57.2,5,8,0,0,13,38.5,26.4,15,33.3
+pooled,garchomp,Garchomp,vespiquen,Vespiquen ex Shuckle ex,8,10,0,1,18,44.4,23.0,21.5,67.4,7,8,0,1,15,46.7,25.2,19,44.7
+pooled,garchomp,Garchomp,suicune,Suicune ex Baxcalibur,7,14,0,1,21,33.3,20.2,13.2,53.5,6,8,0,1,14,42.9,25.9,22,34.1
+pooled,garchomp,Garchomp,hydreigon,Hydreigon Mega Absol ex,4,9,0,0,13,30.8,25.1,5.7,55.9,2,6,0,0,8,25.0,30.0,13,30.8
+pooled,garchomp,Garchomp,weezing,Team Rocket's Weezing ex Hoopa ex,2,13,1,0,16,15.6,17.8,0.0,33.4,2,7,1,0,10,25.0,26.8,16,15.6
+pooled,garchomp,Garchomp,blaziken,Mega Blaziken ex,1,9,0,0,10,10.0,18.6,0.0,28.6,0,8,0,0,8,0.0,0.0,10,10.0
+pooled,garchomp,Garchomp,panel_equal_weight,8 of 8 opponents with n>0,49,92,5,3,146,32.5,,,,40,68,5,3,113,,,149,
+pooled,garchomp,Garchomp,panel_pooled,all panel matches pooled (match-weighted),49,92,5,3,146,35.3,7.8,27.5,43.0,40,68,5,3,113,37.6,8.9,149,35.6
+pooled,whimsicott_ariados,Whimsicott ex Ariados,lucario,Mega Lucario ex Lucario,6,10,0,1,16,37.5,23.7,13.8,61.2,3,6,0,1,9,33.3,30.8,17,38.2
+pooled,whimsicott_ariados,Whimsicott ex Ariados,altaria,Mega Altaria ex Espeon,1,3,0,2,4,25.0,42.4,0.0,67.4,0,3,0,2,3,0.0,0.0,6,33.3
+pooled,whimsicott_ariados,Whimsicott ex Ariados,sceptile,Butterfree Mega Sceptile ex,1,4,0,1,5,20.0,35.1,0.0,55.1,1,2,0,1,3,33.3,53.3,6,25.0
+pooled,whimsicott_ariados,Whimsicott ex Ariados,vespiquen,Vespiquen ex Shuckle ex,5,6,0,0,11,45.5,29.4,16.0,74.9,3,5,0,0,8,37.5,33.5,11,45.5
+pooled,whimsicott_ariados,Whimsicott ex Ariados,suicune,Suicune ex Baxcalibur,5,4,0,1,9,55.6,32.5,23.1,88.0,4,3,0,0,7,57.1,36.7,10,55.0
+pooled,whimsicott_ariados,Whimsicott ex Ariados,hydreigon,Hydreigon Mega Absol ex,3,3,0,0,6,50.0,40.0,10.0,90.0,2,2,0,0,4,50.0,49.0,6,50.0
+pooled,whimsicott_ariados,Whimsicott ex Ariados,weezing,Team Rocket's Weezing ex Hoopa ex,2,6,0,0,8,25.0,30.0,0.0,55.0,0,4,0,0,4,0.0,0.0,8,25.0
+pooled,whimsicott_ariados,Whimsicott ex Ariados,blaziken,Mega Blaziken ex,0,1,0,0,1,0.0,0.0,0.0,0.0,0,0,0,0,0,,,1,0.0
+pooled,whimsicott_ariados,Whimsicott ex Ariados,panel_equal_weight,8 of 8 opponents with n>0,23,37,0,5,60,32.3,,,,13,25,0,4,38,,,65,
+pooled,whimsicott_ariados,Whimsicott ex Ariados,panel_pooled,all panel matches pooled (match-weighted),23,37,0,5,60,38.3,12.3,26.0,50.6,13,25,0,4,38,34.2,15.1,65,39.2
+pooled,charizardy_entei,Mega Charizard Y ex Entei ex,lucario,Mega Lucario ex Lucario,60,29,4,0,93,66.7,9.6,57.1,76.2,44,22,2,0,68,66.2,11.2,93,66.7
+pooled,charizardy_entei,Mega Charizard Y ex Entei ex,altaria,Mega Altaria ex Espeon,41,60,2,2,103,40.8,9.5,31.3,50.3,28,34,2,2,64,45.3,12.2,105,41.0
+pooled,charizardy_entei,Mega Charizard Y ex Entei ex,sceptile,Butterfree Mega Sceptile ex,45,16,1,2,62,73.4,11.0,62.4,84.4,31,12,1,2,44,71.6,13.3,64,72.7
+pooled,charizardy_entei,Mega Charizard Y ex Entei ex,vespiquen,Vespiquen ex Shuckle ex,34,20,2,1,56,62.5,12.7,49.8,75.2,26,12,2,1,40,67.5,14.5,57,62.3
+pooled,charizardy_entei,Mega Charizard Y ex Entei ex,suicune,Suicune ex Baxcalibur,5,27,1,0,33,16.7,12.7,4.0,29.4,5,18,1,0,24,22.9,16.8,33,16.7
+pooled,charizardy_entei,Mega Charizard Y ex Entei ex,hydreigon,Hydreigon Mega Absol ex,19,21,3,1,43,47.7,14.9,32.7,62.6,12,15,2,1,29,44.8,18.1,44,47.7
+pooled,charizardy_entei,Mega Charizard Y ex Entei ex,weezing,Team Rocket's Weezing ex Hoopa ex,13,11,3,0,27,53.7,18.8,34.9,72.5,12,8,2,0,22,59.1,20.5,27,53.7
+pooled,charizardy_entei,Mega Charizard Y ex Entei ex,blaziken,Mega Blaziken ex,9,19,0,0,28,32.1,17.3,14.8,49.4,6,14,0,0,20,30.0,20.1,28,32.1
+pooled,charizardy_entei,Mega Charizard Y ex Entei ex,panel_equal_weight,8 of 8 opponents with n>0,226,203,16,6,445,49.2,,,,164,135,12,6,311,,,451,
+pooled,charizardy_entei,Mega Charizard Y ex Entei ex,panel_pooled,all panel matches pooled (match-weighted),226,203,16,6,445,52.6,4.6,47.9,57.2,164,135,12,6,311,54.7,5.5,451,52.5

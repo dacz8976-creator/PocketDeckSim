@@ -1,0 +1,128 @@
+﻿=== structure of kpr3_500.jsonl ===
+  games 14000, pairings 28 (0..27), i range 0..499
+  bot pairs: {('kpr3', 'kpr3')}
+  seed formula violations: 0; first_seat != i%2: 0
+  cells: 28
+
+=== identity replays, by every field including the move fingerprint ===
+  (full replay at 53638a7, bot code = 1981bb4's)
+  kp3 identity_kp3_500 vs kp3 table: 14000 identical of 14000 (0 differ, 0 not in reference)
+  k3  identity_k3_500 vs k3 table: 14000 identical of 14000 (0 differ, 0 not in reference)
+  kq3 identity_kq3_500 vs kq3 table: 14000 identical of 14000 (0 differ, 0 not in reference)
+  kd3 identity_kd3_40 vs kd3 table: 1120 identical of 1120 (0 differ, 0 not in reference)
+  (subset at the table's own build e09fb46, bot code = 14c7d9b's)
+    k3: 1120 games, i max 39, pairings 28
+  k3 table_commit_identity_k3_40 vs k3 table: 1120 identical of 1120 (0 differ, 0 not in reference)
+    kp3: 1120 games, i max 39, pairings 28
+  kp3 table_commit_identity_kp3_40 vs kp3 table: 1120 identical of 1120 (0 differ, 0 not in reference)
+    kq3: 1120 games, i max 39, pairings 28
+  kq3 table_commit_identity_kq3_40 vs kq3 table: 1120 identical of 1120 (0 differ, 0 not in reference)
+  k3 identity_k3_9a35f54_partial vs k3 table: 10000 identical of 10000 (0 differ, 0 not in reference)
+  kd3 coverage at the table's build: none (kd3 subset only at 53638a7); games covered at e09fb46 per bot = 1120 of 14000 = 8.0%
+
+=== footprint: kpr3 v kpr3 against kp3 v kp3 on the same deals ===
+  games whose move fingerprint differs: 13117 of 14000 = 93.7%
+  least-changed cell ('blaziken', 'sceptile'): 413 of 500; most-changed ('altaria', 'vespiquen'): 492 of 500
+  games whose result differs: 4052 of 14000 = 28.9%
+  for scale: kd3 differs from kp3 in 69.1% of games, kq3 in 82.8%
+
+=== Limitless cells ===
+  Sept 23 table: 28 cells parsed
+  v2: 28 cells, matches 1608
+  Sept 23, 28 cells:
+    k3    mean |miss| 9.66  mean squared miss 159.3
+    kp3   mean |miss| 7.91  mean squared miss 112.2
+    kpr3  mean |miss| 10.28  mean squared miss 176.1
+  Sept 23, 27-cell decision set:
+    k3    mean |miss| 9.60  mean squared miss 160.5
+    kp3   mean |miss| 7.97  mean squared miss 114.9
+    kpr3  mean |miss| 10.43  mean squared miss 181.2
+  v2, 28 cells:
+    k3    mean |miss| 10.29  mean squared miss 173.2
+    kp3   mean |miss| 9.02  mean squared miss 127.2
+    kpr3  mean |miss| 11.53  mean squared miss 199.3
+  v2, 27-cell decision set:
+    k3    mean |miss| 10.39  mean squared miss 177.5
+    kp3   mean |miss| 9.26  mean squared miss 131.7
+    kpr3  mean |miss| 11.86  mean squared miss 206.4
+
+=== per-cell: kp3, kpr3, change, Limitless Sept 23 / v2, miss growth (veto candidates: > 6), v2 band ===
+  cell                        kp3   kpr3    chg     L23  m23kp3  m23kpr  grow23 |    Lv2  mv2kp3  mv2kpr  growv2 bandv2    n
+  altaria v blaziken         58.6   52.6   -6.0    74.2   -15.6   -21.6    +6.0 |   76.5   -17.9   -23.9    +6.0   14.3   34
+  altaria v hydreigon        47.6   39.8   -7.8    57.0    -9.4   -17.2    +7.8 |   54.5    -6.9   -14.7    +7.8   13.0   56 VETO23 VETOv2
+  altaria v lucario          62.4   58.8   -3.6    71.9    -9.5   -13.1    +3.6 |   72.4   -10.0   -13.6    +3.6    6.9  161
+  altaria v sceptile         42.8   42.8   +0.0    49.1    -6.3    -6.3    +0.0 |   45.4    -2.6    -2.6    +0.0    9.4  108 quarantined
+  altaria v suicune          48.8   42.2   -6.6    52.3    -3.5   -10.1    +6.6 |   56.2    -7.4   -14.0    +6.6   12.1   65 VETO23 VETOv2
+  altaria v vespiquen        47.4   50.4   +3.0    38.8    +8.6   +11.6    +3.0 |   37.6    +9.8   +12.8    +3.0    9.8   93
+  altaria v weezing          40.4   40.4   +0.0    34.8    +5.6    +5.6    +0.0 |   33.0    +7.4    +7.4    +0.0   13.4   47
+  blaziken v hydreigon       48.0   49.6   +1.6    59.0   -11.0    -9.4    -1.6 |   66.7   -18.7   -17.1    -1.6   18.9   24
+  blaziken v lucario         45.1   56.0  +10.9    44.8    +0.3   +11.2   +10.9 |   40.7    +4.4   +15.3   +10.9   12.5   59 VETO23 VETOv2
+  blaziken v sceptile        65.1   63.0   -2.1    82.8   -17.7   -19.8    +2.1 |   76.1   -11.0   -13.1    +2.1   17.4   23
+  blaziken v suicune         59.6   62.2   +2.6    60.8    -1.2    +1.4    +0.2 |   64.3    -4.7    -2.1    -2.6   20.5   21
+  blaziken v vespiquen       81.4   80.5   -0.9    81.4    +0.0    -0.9    +0.9 |   79.0    +2.4    +1.5    -0.9   14.3   31
+  blaziken v weezing         48.4   60.1  +11.7    49.0    -0.6   +11.1   +10.5 |   41.2    +7.2   +18.9   +11.7   23.4   17 VETO23 VETOv2(band>15, excluded)
+  hydreigon v lucario        43.8   52.6   +8.8    54.4   -10.6    -1.8    -8.8 |   63.6   -19.8   -11.0    -8.8   12.7   55
+  hydreigon v sceptile       43.6   40.0   -3.6    39.4    +4.2    +0.6    -3.6 |   40.0    +3.6    +0.0    -3.6   16.2   35
+  hydreigon v suicune        46.4   55.8   +9.4    34.7   +11.7   +21.1    +9.4 |   30.0   +16.4   +25.8    +9.4   15.2   35 VETO23 VETOv2(band>15, excluded)
+  hydreigon v vespiquen      41.0   56.8  +15.8    38.4    +2.6   +18.4   +15.8 |   36.8    +4.2   +20.0   +15.8   15.3   38 VETO23 VETOv2(band>15, excluded)
+  hydreigon v weezing        52.8   56.8   +4.0    47.1    +5.7    +9.7    +4.0 |   45.8    +7.0   +11.0    +4.0   19.9   24
+  lucario v sceptile         35.6   38.6   +3.0    37.9    -2.3    +0.7    -1.6 |   39.5    -3.9    -0.9    -3.0    9.0  114
+  lucario v suicune          58.8   49.6   -9.2    58.5    +0.3    -8.9    +8.6 |   58.8    -0.0    -9.2    +9.2   10.5   85 VETO23 VETOv2
+  lucario v vespiquen        68.2   68.8   +0.6    69.3    -1.1    -0.5    -0.6 |   69.6    -1.4    -0.8    -0.6    8.7  107
+  lucario v weezing          52.8   55.8   +3.0    56.6    -3.8    -0.8    -3.0 |   61.5    -8.7    -5.7    -3.0   10.8   78
+  sceptile v suicune         60.6   62.6   +2.0    47.2   +13.4   +15.4    +2.0 |   50.0   +10.6   +12.6    +2.0   13.6   52
+  sceptile v vespiquen       64.4   66.6   +2.2    33.1   +31.3   +33.5    +2.2 |   35.7   +28.7   +30.9    +2.2   12.5   56
+  sceptile v weezing         70.0   69.2   -0.8    66.2    +3.8    +3.0    -0.8 |   68.1    +1.9    +1.1    -0.8   15.2   36
+  suicune v vespiquen        43.0   49.6   +6.6    27.0   +16.0   +22.6    +6.6 |   28.5   +14.5   +21.1    +6.6   10.4   72 VETO23 VETOv2
+  suicune v weezing          56.5   65.0   +8.5    64.2    -7.7    +0.8    -6.9 |   60.3    -3.8    +4.7    +1.0   15.4   39
+  vespiquen v weezing        65.9   72.7   +6.8    83.5   -17.6   -10.8    -6.8 |   83.7   -17.8   -11.0    -6.8   11.0   43
+
+=== deck averages and deck-gap growth (veto candidates: > 2) ===
+  Sept 23, 28 cells:
+    altaria    L  54.0  kp3  49.7 (gap  -4.3)  kpr3  46.7 (gap  -7.3)  growth  +3.0  VETO CANDIDATE
+    blaziken   L  57.7  kp3  55.6 (gap  -2.1)  kpr3  59.8 (gap  +2.2)  growth  +0.1
+    hydreigon  L  42.6  kp3  47.4 (gap  +4.9)  kpr3  53.2 (gap +10.7)  growth  +5.8  VETO CANDIDATE
+    lucario    L  50.2  kp3  52.0 (gap  +1.8)  kpr3  49.3 (gap  -0.8)  growth  -1.0
+    sceptile   L  48.2  kp3  58.3 (gap +10.1)  kpr3  59.1 (gap +11.0)  growth  +0.9
+    suicune    L  48.2  kp3  46.5 (gap  -1.8)  kpr3  48.9 (gap  +0.6)  growth  -1.1
+    vespiquen  L  56.5  kp3  45.8 (gap -10.7)  kpr3  42.9 (gap -13.6)  growth  +2.9  VETO CANDIDATE
+    weezing    L  42.7  kp3  44.7 (gap  +2.1)  kpr3  40.0 (gap  -2.7)  growth  +0.6
+  v2, 27 cells:
+    altaria    L  55.0  kp3  50.9 (gap  -4.1)  kpr3  47.4 (gap  -7.6)  growth  +3.5  VETO CANDIDATE
+    blaziken   L  55.9  kp3  55.6 (gap  -0.4)  kpr3  59.8 (gap  +3.9)  growth  +3.6  VETO CANDIDATE
+    hydreigon  L  42.2  kp3  47.4 (gap  +5.3)  kpr3  53.2 (gap +11.1)  growth  +5.8  VETO CANDIDATE
+    lucario    L  50.4  kp3  52.0 (gap  +1.6)  kpr3  49.3 (gap  -1.1)  growth  -0.6
+    sceptile   L  49.7  kp3  58.5 (gap  +8.7)  kpr3  59.5 (gap  +9.8)  growth  +1.0
+    suicune    L  47.1  kp3  46.5 (gap  -0.6)  kpr3  48.9 (gap  +1.8)  growth  +1.2
+    vespiquen  L  56.6  kp3  45.8 (gap -10.8)  kpr3  42.9 (gap -13.8)  growth  +2.9  VETO CANDIDATE
+    weezing    L  43.8  kp3  44.7 (gap  +1.0)  kpr3  40.0 (gap  -3.8)  growth  +2.8  VETO CANDIDATE
+
+=== paired per-deck change kpr3 - kp3 (pooled over the deck's 7 cells, 95%) ===
+  altaria    -3.0 ± 1.9  (n 3500)
+  blaziken   +4.3 ± 1.7  (n 3500)
+  hydreigon  +5.8 ± 1.9  (n 3500)
+  lucario    -2.7 ± 1.8  (n 3500)
+  sceptile   +0.9 ± 1.6  (n 3500)
+  suicune    +2.4 ± 1.8  (n 3500)
+  vespiquen  -2.9 ± 1.8  (n 3500)
+  weezing    -4.7 ± 1.7  (n 3500)
+
+=== paired dMSE bootstrap, kpr3 - kp3 (deals resampled within each cell, paired; Limitless redrawn Binomial(n, L)) ===
+  v2, 27-cell decision set: dMSE +74.7, 95% (+27.9, +123.2) -> NOT below zero
+  Sept 23, 27 cells: dMSE +66.3, 95% (+31.3, +101.1) -> NOT below zero
+
+=== real error tau-hat on v2 (27 cells): sqrt(mean[(S-L)^2 - SE_L^2 - SE_S^2]) ===
+  k3    tau-hat 10.93
+  kp3   tau-hat 8.57
+  kpr3  tau-hat 12.18
+
+=== flags summary ===
+  altaria v hydreigon: VETO23 VETOv2
+  altaria v sceptile: quarantined
+  altaria v suicune: VETO23 VETOv2
+  blaziken v lucario: VETO23 VETOv2
+  blaziken v weezing: VETO23 VETOv2(band>15, excluded)
+  hydreigon v suicune: VETO23 VETOv2(band>15, excluded)
+  hydreigon v vespiquen: VETO23 VETOv2(band>15, excluded)
+  lucario v suicune: VETO23 VETOv2
+  suicune v vespiquen: VETO23 VETOv2
