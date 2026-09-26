@@ -111,4 +111,38 @@ Every Trainer card in the 36 decks, 61 in all, was checked in the code: can kp3'
 - The only Primeval Law check is in ordinary evolution (`move_generation/mod.rs` 252-258, 270-282).
 - `can_play_rare_candy` (`move_generation_trainer.rs` 663-685) and `rare_candy_effect` (`apply_trainer_action.rs` 1905-1928) skip it.
 
-**Next:** a follow-up run on Field Blower targets and Stadium play, per Dustin's note that Pocket's own AI also misjudges Stadiums.
+## Field Blower and Stadiums (follow-up run, same evening, `blower_stadium/`)
+
+Dustin noted that Pocket's own AI refuses helpful Stadiums and uses Field Blower on helpful Stadiums that aren't helping the opponent. This run checks kp3 on both counts.
+- **Games:** every deck with Field Blower or a Stadium (27 decks), kp3 on both sides against the 8 screen lists, 15 games per opponent per seat: 6,480 games.
+- **Seeds:** 21,105,000,000 + 10,000 × deck index + 1,000 × opponent index (+500 for seat 1).
+- **Files:**
+  - `blower_stadium.py` (the run) and `blower_stadium_read.py` (the summary, `summary.txt`).
+  - `games.jsonl.gz` (sha256 of the unzipped file 4edfaad9…c216214) and `plan.json`.
+
+**Field Blower: kp3 does not make Pocket's mistake.**
+- 1,410 of 1,491 plays (95%) removed an opponent's Tool, and 17 an opponent's Stadium.
+- It removed its own Stadium 43 times, 32 of them Starting Plains. Starting Plains gives +20 HP to both players' Basics, so removing it can be right.
+- It removed its own Tool 21 times.
+- The flat +10 does show:
+  - it aims at the Active's Tool (1,174 of 1,410 opponent Tools removed were on the Active);
+  - it removed a Protective Poncho from the opponent's Active 91 times, where the Poncho was doing nothing (the other bot's misplay, answered by a second one).
+- Field Blower is played on 41-57% of the turns an opponent target is there. The census says only HP loss and the flat +10 are read, so that rate can't be judged right or wrong from here.
+
+**Stadiums: kp3 holds back, as the census predicts** (no value on later turns, for either player). Play rate on turns a Stadium could be played with none in play:
+- **Played readily:**
+  - Peculiar Plaza 97% (brew 05b)
+  - Fragrant Forest 77-88% (Sceptile, Vespiquen)
+  - Arcade 72%
+  - Mesagoza 66-77%
+- **Played about half the time:** Hiking Trail 58-68%, Starting Plains 42-87%.
+- **Rarely played:**
+  - Soothing Shore 20% (deck 03), 36% (deck 13), 43% (Suicune)
+  - Training Area 26% (Altaria), 30% (deck 09)
+  - Arena of Antiquity 22% (Lucario)
+  - **Rainbow Cave 4.5-7%** (brew 08, decks 08 and 11)
+- **Once in play,** Rainbow Cave's effect is used on only 13-28% of the turns it's offered. Brew 08 is built around Rainbow Cave, and the bot barely uses it, so brew 08's simulated results likely understate it.
+- **Training Area and Arena of Antiquity are seen only when an attack in the same turn uses them.** So they are played when the bot is about to attack with a qualifying Pokémon, not to set up. That is the "same-line" case in the census.
+- Replacing an opponent's Stadium happens at similar or somewhat lower rates. The exception is Fragrant Forest: 77-88% on an empty field, but only 17-31% over an opponent's Stadium.
+
+Nothing here changes the candidate's switches. Stadium value over later turns stays on the later-candidates list, now with numbers. Rainbow Cave (brew 08) and Soothing Shore (deck 03) are the brews and decks it matters most for.
