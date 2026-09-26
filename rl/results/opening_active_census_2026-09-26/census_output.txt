@@ -1,0 +1,162 @@
+﻿decks/research/altaria.txt: choice 0.539; kp3 opens {'Darkrai B2b 040': 0.2402, 'Igglybuff A4a 059': 0.2039, 'Swablu B1 196': 0.0947}; A 0.240 B 0.240 AB 0.335
+     Eevee B1 184 x2: CanEvolveOnFirstTurnIfActive (active, first turn, self)
+     Darkrai B2b 040 x2: BadDreamsEndOfTurn (anywhere, board)
+      A {'Darkrai -> Eevee': 0.1454, 'Swablu -> Eevee': 0.0947}
+      B {'Darkrai -> Swablu': 0.1454, 'Darkrai -> Eevee': 0.0947}
+      AB {'Darkrai -> Eevee': 0.1454, 'Darkrai -> Swablu': 0.0947, 'Swablu -> Eevee': 0.0947}
+      R {'Darkrai -> Swablu': 0.1454, 'Darkrai -> Eevee': 0.0947}
+      AR {'Darkrai -> Eevee': 0.1454, 'Darkrai -> Swablu': 0.0947, 'Swablu -> Eevee': 0.0947}
+decks/research/blaziken.txt: choice 0.213; kp3 opens {'Heatmor B1 044': 0.1326, 'Castform Sunny Form B3 024': 0.08}; A 0.000 B 0.000 AB 0.000
+decks/research/hydreigon.txt: choice 0.213; kp3 opens {'Bombirdier B3 115': 0.1326, 'Deino B1 155': 0.08}; A 0.000 B 0.133 AB 0.133
+     Bombirdier B3 115 x1: ReduceRetreatCostOfYourActiveTypedFromBench (bench, board)
+      B {'Bombirdier -> Deino': 0.0965, 'Bombirdier -> Mega Absol ex': 0.0361}
+      AB {'Bombirdier -> Deino': 0.0965, 'Bombirdier -> Mega Absol ex': 0.0361}
+decks/research/lucario.txt: choice 0.213; kp3 opens {'Bonsly B3 078': 0.1326, 'Hitmonlee A1 154': 0.08}; A 0.000 B 0.000 AB 0.000
+decks/research/sceptile.txt: choice 0.097; kp3 opens {'Treecko B3 005': 0.0965}; A 0.000 B 0.000 AB 0.000
+     Caterpie B3b 001 x2: RandomEvolutionFromDeck (active, self)
+      C {'Treecko -> Caterpie': 0.0965}
+decks/research/suicune.txt: choice 0.337; kp3 opens {'Suicune ex A4a 020': 0.2419, 'Chien-Pao ex B2a 037': 0.0655, 'Frigibax P-B 037': 0.0293}; A 0.000 B 0.000 AB 0.000
+     Suicune ex A4a 020 x2: EndTurnDrawCardIfActive (active, board)
+      R {'Suicune ex -> Frigibax': 0.1454, 'Suicune ex -> Chien-Pao ex': 0.0965}
+      AR {'Suicune ex -> Frigibax': 0.1454, 'Suicune ex -> Chien-Pao ex': 0.0965}
+decks/research/vespiquen.txt: choice 0.307; kp3 opens {'Teal Mask Ogerpon ex B2 017': 0.162, 'Shuckle ex A4 021': 0.1454}; A 0.000 B 0.162 AB 0.162
+     Shuckle ex A4 021 x2: ReduceDamageFromAttacks (anywhere, self)
+     Teal Mask Ogerpon ex B2 017 x1: SoothingWind (anywhere, board)
+      B {'Teal Mask Ogerpon ex -> Shuckle ex': 0.0965, 'Teal Mask Ogerpon ex -> Combee': 0.0655}
+      AB {'Teal Mask Ogerpon ex -> Shuckle ex': 0.0965, 'Teal Mask Ogerpon ex -> Combee': 0.0655}
+      R {'Teal Mask Ogerpon ex -> Shuckle ex': 0.0965, 'Teal Mask Ogerpon ex -> Combee': 0.0655}
+      AR {'Teal Mask Ogerpon ex -> Shuckle ex': 0.0965, 'Teal Mask Ogerpon ex -> Combee': 0.0655}
+decks/research/weezing.txt: choice 0.307; kp3 opens {'Hoopa ex B4 103': 0.2419, 'Darkrai ex A2 110': 0.0655}; A 0.000 B 0.066 AB 0.066
+     Darkrai ex A2 110 x1: DamageOpponentActiveOnZoneAttachToSelf (anywhere, board)
+      B {"Darkrai ex -> Team Rocket's Koffing": 0.0655}
+      AB {"Darkrai ex -> Team Rocket's Koffing": 0.0655}
+      R {"Darkrai ex -> Team Rocket's Koffing": 0.0655}
+      AR {"Darkrai ex -> Team Rocket's Koffing": 0.0655}
+decks/dustin/01-muk-glimmora-kingambit-regigigas.txt: choice 0.337; kp3 opens {'Regigigas B3 134': 0.162, 'Alolan Grimer B2 096': 0.1093, 'Glimmet B3a 044': 0.0655}; A 0.000 B 0.000 AB 0.000
+     Regigigas B3 134 x1: CannotAttackWithoutBenchedNames (active, self)
+      D {'Regigigas -> Glimmet': 0.08, 'Regigigas -> Alolan Grimer': 0.0526, 'Regigigas -> Pawniard': 0.0293}
+      R {'Regigigas -> Glimmet': 0.0965, 'Alolan Grimer -> Glimmet': 0.08, 'Regigigas -> Pawniard': 0.0361, 'Regigigas -> Alolan Grimer': 0.0293, 'Alolan Grimer -> Pawniard': 0.0293}
+      AR {'Regigigas -> Glimmet': 0.0965, 'Alolan Grimer -> Glimmet': 0.08, 'Regigigas -> Pawniard': 0.0361, 'Regigigas -> Alolan Grimer': 0.0293, 'Alolan Grimer -> Pawniard': 0.0293}
+decks/dustin/02-arceus-crobat.txt: choice 0.436; kp3 opens {'Munchlax B3b 054': 0.1854, 'Absol A4 120': 0.1328, 'Arceus ex A2a 071': 0.1183}; A 0.000 B 0.000 AB 0.000
+     Arceus ex A2a 071 x2: ImmuneToStatusConditions (anywhere, self)
+      R {'Arceus ex -> Zubat': 0.1183}
+      AR {'Arceus ex -> Zubat': 0.1183}
+decks/dustin/03-wailord-indeedee-wall.txt: choice 0.176; kp3 opens {'Wailmer B4 036': 0.1765}; A 0.000 B 0.000 AB 0.000
+     Indeedee ex B1 121 x2: HealActiveYourPokemon (anywhere, board)
+      R {'Wailmer -> Indeedee ex': 0.1765}
+      AR {'Wailmer -> Indeedee ex': 0.1765}
+decks/dustin/04-absol-hoopa-darkrai.txt: choice 0.557; kp3 opens {'Hoopa ex B4 103': 0.2402, 'Happiny B4a 063': 0.2039, 'Absol B4 100': 0.0947, 'Bombirdier B3 115': 0.0184}; A 0.000 B 0.000 AB 0.000
+     Darkrai ex A2 110 x1: DamageOpponentActiveOnZoneAttachToSelf (anywhere, board)
+     Bombirdier B3 115 x1: ReduceRetreatCostOfYourActiveTypedFromBench (bench, board)
+decks/dustin/05-indeedee-stoutland.txt: choice 0.176; kp3 opens {'Indeedee ex B1 121': 0.1765}; A 0.000 B 0.176 AB 0.176
+     Indeedee ex B1 121 x2: HealActiveYourPokemon (anywhere, board)
+      B {'Indeedee ex -> Lillipup': 0.1765}
+      AB {'Indeedee ex -> Lillipup': 0.1765}
+      R {'Indeedee ex -> Lillipup': 0.1765}
+      AR {'Indeedee ex -> Lillipup': 0.1765}
+decks/dustin/06-mega-blaziken-tournament-list.txt: choice 0.213; kp3 opens {'Heatmor B1 044': 0.1326, 'Castform Sunny Form B3 024': 0.08}; A 0.000 B 0.000 AB 0.000
+decks/dustin/07-skarmory-stall.txt: choice 0.097; kp3 opens {'Skarmory ex A4 124': 0.0965}; A 0.000 B 0.000 AB 0.000
+     Indeedee ex B1 121 x1: HealActiveYourPokemon (anywhere, board)
+decks/dustin/08-garchomp-toolbox.txt: choice 0.213; kp3 opens {'Munchlax B3b 054': 0.1326, 'Celebi B3 004': 0.08}; A 0.000 B 0.080 AB 0.080
+     Celebi B3 004 x1: TimeRecall (anywhere, board)
+      B {'Celebi -> Gible': 0.08}
+      AB {'Celebi -> Gible': 0.08}
+      R {'Celebi -> Gible': 0.08}
+      AR {'Celebi -> Gible': 0.08}
+decks/dustin/09-mega-manectric-heliolisk.txt: choice 0.176; kp3 opens {'Electrike B2b 026': 0.1765}; A 0.000 B 0.000 AB 0.000
+decks/dustin/10-xatu-oricorio-tr-weezing.txt: choice 0.307; kp3 opens {'Oricorio B4 078': 0.2419, "Team Rocket's Koffing B4a 042": 0.0655}; A 0.000 B 0.000 AB 0.000
+decks/dustin/11-archaludon-haxorus-dragonair.txt: choice 0.307; kp3 opens {'Duraludon B4a 055': 0.162, 'Axew B2b 054': 0.1454}; A 0.000 B 0.000 AB 0.000
+      R {'Axew -> Dratini': 0.1454, 'Duraludon -> Dratini': 0.0965}
+      AR {'Axew -> Dratini': 0.1454, 'Duraludon -> Dratini': 0.0965}
+decks/dustin/12-ariados-whimsicott-ogerpon.txt: choice 0.307; kp3 opens {'Teal Mask Ogerpon ex B2 017': 0.162, 'Spinarak B1a 005': 0.1454}; A 0.000 B 0.162 AB 0.162
+     Teal Mask Ogerpon ex B2 017 x1: SoothingWind (anywhere, board)
+      B {'Teal Mask Ogerpon ex -> Spinarak': 0.0965, 'Teal Mask Ogerpon ex -> Cottonee': 0.0655}
+      AB {'Teal Mask Ogerpon ex -> Spinarak': 0.0965, 'Teal Mask Ogerpon ex -> Cottonee': 0.0655}
+      R {'Teal Mask Ogerpon ex -> Spinarak': 0.0965, 'Teal Mask Ogerpon ex -> Cottonee': 0.0655}
+      AR {'Teal Mask Ogerpon ex -> Spinarak': 0.0965, 'Teal Mask Ogerpon ex -> Cottonee': 0.0655}
+decks/dustin/13-a-ninetales-raticate.txt: choice 0.176; kp3 opens {'Alolan Vulpix B2 028': 0.1765}; A 0.000 B 0.000 AB 0.000
+decks/dustin/14-comfey-raticate-hypno.txt: choice 0.307; kp3 opens {'Comfey A3 080': 0.162, "Team Rocket's Drowzee B4a 027": 0.1454}; A 0.000 B 0.162 AB 0.162
+     Comfey A3 080 x1: SoothingWind (anywhere, board)
+      B {"Comfey -> Team Rocket's Drowzee": 0.0965, "Comfey -> Team Rocket's Rattata": 0.0655}
+      AB {"Comfey -> Team Rocket's Drowzee": 0.0965, "Comfey -> Team Rocket's Rattata": 0.0655}
+      R {"Team Rocket's Drowzee -> Team Rocket's Rattata": 0.1454, "Comfey -> Team Rocket's Rattata": 0.0965}
+      AR {"Team Rocket's Drowzee -> Team Rocket's Rattata": 0.1454, "Comfey -> Team Rocket's Rattata": 0.0965}
+decks/dustin/15-jolteon-oricorio-raticate.txt: choice 0.307; kp3 opens {'Oricorio A3 066': 0.162, 'Eevee B1 184': 0.1454}; A 0.097 B 0.000 AB 0.097
+     Eevee B1 184 x2: CanEvolveOnFirstTurnIfActive (active, first turn, self)
+     Oricorio A3 066 x1: PreventAllDamageFromEx (anywhere, self)
+      A {'Oricorio -> Eevee': 0.0965}
+      AB {'Oricorio -> Eevee': 0.0965}
+      R {'Oricorio -> Eevee': 0.0965, "Oricorio -> Team Rocket's Rattata": 0.0655}
+      AR {'Oricorio -> Eevee': 0.0965, "Oricorio -> Team Rocket's Rattata": 0.0655}
+decks/brews/brew-01-arceus-crobat-xatu.txt: choice 0.413; kp3 opens {'Arceus ex A2a 071': 0.2948, 'Natu A4 081': 0.1183}; A 0.000 B 0.000 AB 0.000
+     Arceus ex A2a 071 x2: ImmuneToStatusConditions (anywhere, self)
+      R {'Arceus ex -> Natu': 0.1765, 'Arceus ex -> Zubat': 0.1183}
+      AR {'Arceus ex -> Natu': 0.1765, 'Arceus ex -> Zubat': 0.1183}
+decks/brews/brew-02-arceus-tandemaus-persian.txt: choice 0.413; kp3 opens {'Arceus ex A2a 071': 0.2948, "Team Rocket's Meowth B4a 060": 0.1183}; A 0.000 B 0.000 AB 0.000
+     Arceus ex A2a 071 x2: ImmuneToStatusConditions (anywhere, self)
+      R {"Arceus ex -> Team Rocket's Meowth": 0.1765, 'Arceus ex -> Tandemaus': 0.1183}
+      AR {"Arceus ex -> Team Rocket's Meowth": 0.1765, 'Arceus ex -> Tandemaus': 0.1183}
+decks/brews/brew-03a-arceus-nihilego-toxapex.txt: choice 0.413; kp3 opens {'Nihilego A3a 042': 0.2948, 'Arceus ex A2a 071': 0.1183}; A 0.000 B 0.295 AB 0.295
+     Arceus ex A2a 071 x2: ImmuneToStatusConditions (anywhere, self)
+     Nihilego A3a 042 x2: IncreasePoisonDamage (anywhere, board)
+      B {'Nihilego -> Arceus ex': 0.1765, 'Nihilego -> Mareanie': 0.1183}
+      AB {'Nihilego -> Arceus ex': 0.1765, 'Nihilego -> Mareanie': 0.1183}
+      R {'Arceus ex -> Mareanie': 0.1183}
+      AR {'Arceus ex -> Mareanie': 0.1183}
+decks/brews/brew-03b-arceus-crobat-nihilego-toxapex.txt: choice 0.539; kp3 opens {'Arceus ex A2a 071': 0.2402, 'Nihilego A3a 042': 0.2039, 'Mareanie B3b 046': 0.0947}; A 0.000 B 0.204 AB 0.204
+     Arceus ex A2a 071 x2: ImmuneToStatusConditions (anywhere, self)
+     Nihilego A3a 042 x1: IncreasePoisonDamage (anywhere, board)
+      B {'Nihilego -> Arceus ex': 0.0965, 'Nihilego -> Mareanie': 0.0655, 'Nihilego -> Zubat': 0.0419}
+      AB {'Nihilego -> Arceus ex': 0.0965, 'Nihilego -> Mareanie': 0.0655, 'Nihilego -> Zubat': 0.0419}
+      R {'Arceus ex -> Zubat': 0.1454, 'Nihilego -> Zubat': 0.0965, 'Mareanie -> Zubat': 0.0947, 'Arceus ex -> Mareanie': 0.0947}
+      AR {'Arceus ex -> Zubat': 0.1454, 'Nihilego -> Zubat': 0.0965, 'Mareanie -> Zubat': 0.0947, 'Arceus ex -> Mareanie': 0.0947}
+decks/brews/brew-04-xatu-slowking.txt: choice 0.307; kp3 opens {"Team Rocket's Slowpoke B4a 025": 0.2419, "Team Rocket's Koffing B4a 042": 0.0655}; A 0.000 B 0.000 AB 0.000
+decks/brews/brew-05-meowstic-hatterene-confusion.txt: choice 0.176; kp3 opens {'Hatenna B3 069': 0.1765}; A 0.000 B 0.000 AB 0.000
+decks/brews/brew-05b-meowstic-hatterene-comfey.txt: choice 0.307; kp3 opens {'Comfey A3 080': 0.162, 'Hatenna B3 069': 0.1454}; A 0.000 B 0.162 AB 0.162
+     Comfey A3 080 x1: SoothingWind (anywhere, board)
+      B {'Comfey -> Hatenna': 0.0965, 'Comfey -> Espurr': 0.0655}
+      AB {'Comfey -> Hatenna': 0.0965, 'Comfey -> Espurr': 0.0655}
+      R {'Comfey -> Hatenna': 0.0965, 'Comfey -> Espurr': 0.0655}
+      AR {'Comfey -> Hatenna': 0.0965, 'Comfey -> Espurr': 0.0655}
+decks/brews/brew-06-pyukumuku-silvally-payback.txt: choice 0.539; kp3 opens {"Team Rocket's Mewtwo B4a 030": 0.3367, 'Type: Null A3a 060': 0.1602, 'Comfey A3 080': 0.0419}; A 0.000 B 0.042 AB 0.042
+     Pyukumuku A3 054 x2: DamageOnKnockoutInActive (active, board)
+     Comfey A3 080 x1: SoothingWind (anywhere, board)
+      B {'Comfey -> Pyukumuku': 0.0419}
+      AB {'Comfey -> Pyukumuku': 0.0419}
+      C {"Team Rocket's Mewtwo -> Pyukumuku": 0.1765, 'Type: Null -> Pyukumuku': 0.1183, 'Comfey -> Pyukumuku': 0.0419}
+      R {"Team Rocket's Mewtwo -> Type: Null": 0.1765, "Team Rocket's Mewtwo -> Pyukumuku": 0.1183, "Team Rocket's Mewtwo -> Comfey": 0.0419, 'Comfey -> Pyukumuku': 0.0419}
+      AR {"Team Rocket's Mewtwo -> Type: Null": 0.1765, "Team Rocket's Mewtwo -> Pyukumuku": 0.1183, "Team Rocket's Mewtwo -> Comfey": 0.0419, 'Comfey -> Pyukumuku': 0.0419}
+decks/brews/brew-06b-pyukumuku-silvally-scyther-grass.txt: choice 0.539; kp3 opens {'Type: Null A3a 060': 0.3367, 'Teal Mask Ogerpon ex B2 017': 0.1074, "Team Rocket's Scyther P-B 088": 0.0947}; A 0.000 B 0.107 AB 0.107
+     Pyukumuku A3 054 x2: DamageOnKnockoutInActive (active, board)
+     Teal Mask Ogerpon ex B2 017 x1: SoothingWind (anywhere, board)
+      B {"Teal Mask Ogerpon ex -> Team Rocket's Scyther": 0.0655, 'Teal Mask Ogerpon ex -> Pyukumuku': 0.0419}
+      AB {"Teal Mask Ogerpon ex -> Team Rocket's Scyther": 0.0655, 'Teal Mask Ogerpon ex -> Pyukumuku': 0.0419}
+      C {'Type: Null -> Pyukumuku': 0.1765, "Team Rocket's Scyther -> Pyukumuku": 0.0947, 'Teal Mask Ogerpon ex -> Pyukumuku': 0.0655}
+      R {"Team Rocket's Scyther -> Pyukumuku": 0.0947, 'Teal Mask Ogerpon ex -> Pyukumuku': 0.0655}
+      AR {"Team Rocket's Scyther -> Pyukumuku": 0.0947, 'Teal Mask Ogerpon ex -> Pyukumuku': 0.0655}
+decks/brews/brew-07-hoopa-darkrai-sableye.txt: choice 0.213; kp3 opens {'Hoopa ex B4 103': 0.1765, 'Darkrai ex A2 110': 0.0361}; A 0.000 B 0.036 AB 0.036
+     Darkrai ex A2 110 x1: DamageOpponentActiveOnZoneAttachToSelf (anywhere, board)
+      B {'Darkrai ex -> Mega Sableye ex': 0.0361}
+      AB {'Darkrai ex -> Mega Sableye ex': 0.0361}
+      R {'Darkrai ex -> Mega Sableye ex': 0.0361}
+      AR {'Darkrai ex -> Mega Sableye ex': 0.0361}
+decks/brews/brew-08-entei-rainbow-cave.txt: choice 0.000; kp3 opens {}; A 0.000 B 0.000 AB 0.000
+     Entei ex A4a 010 x2: EndTurnDrawCardIfActive (active, board)
+decks/brews/brew-09-sableye-obstagoon.txt: choice 0.176; kp3 opens {'Galarian Zigzagoon B4 095': 0.1765}; A 0.000 B 0.000 AB 0.000
+decks/brews/brew-10-diancie-giratina.txt: choice 0.413; kp3 opens {'Giratina ex A2b 035': 0.2948, 'Mega Diancie ex B3b 032': 0.1183}; A 0.000 B 0.000 AB 0.000
+     Giratina ex A2b 035 x2: AttachEnergyFromZoneToSelfAndEndTurn (anywhere, self)
+      R {'Giratina ex -> Carbink': 0.1765, 'Mega Diancie ex -> Carbink': 0.1183, 'Giratina ex -> Mega Diancie ex': 0.1183}
+      AR {'Giratina ex -> Carbink': 0.1765, 'Mega Diancie ex -> Carbink': 0.1183, 'Giratina ex -> Mega Diancie ex': 0.1183}
+rl/results/b2e_card_check_2026-09-26/decks/h-charizardy_entei.txt: choice 0.176; kp3 opens {'Charmander B2b 007': 0.1765}; A 0.000 B 0.000 AB 0.000
+     Entei ex A4a 010 x2: EndTurnDrawCardIfActive (active, board)
+      C {'Charmander -> Entei ex': 0.1765}
+rl/results/b2e_card_check_2026-09-26/decks/h-garchomp.txt: choice 0.366; kp3 opens {'Happiny B4a 063': 0.162, 'Mantyke A4a 023': 0.1093, 'Cleffa A4 077': 0.0655, 'Gible B4a 052': 0.0293}; A 0.000 B 0.000 AB 0.000
+rl/results/b2e_card_check_2026-09-26/decks/h-hoopa_absol.txt: choice 0.213; kp3 opens {'Hoopa ex B4 103': 0.1765, 'Darkrai ex A2 110': 0.0361}; A 0.000 B 0.036 AB 0.036
+     Darkrai ex A2 110 x1: DamageOpponentActiveOnZoneAttachToSelf (anywhere, board)
+      B {'Darkrai ex -> Mega Absol ex': 0.0361}
+      AB {'Darkrai ex -> Mega Absol ex': 0.0361}
+      R {'Darkrai ex -> Mega Absol ex': 0.0361}
+      AR {'Darkrai ex -> Mega Absol ex': 0.0361}
+rl/results/b2e_card_check_2026-09-26/decks/h-manectric.txt: choice 0.097; kp3 opens {'Electrike B2b 026': 0.0965}; A 0.000 B 0.000 AB 0.000
+rl/results/b2e_card_check_2026-09-26/decks/h-raticate.txt: choice 0.176; kp3 opens {'Alolan Vulpix A3 040': 0.1765}; A 0.000 B 0.000 AB 0.000
+rl/results/b2e_card_check_2026-09-26/decks/h-whimsicott.txt: choice 0.307; kp3 opens {'Pheromosa A3a 007': 0.162, 'Spinarak B1a 005': 0.1454}; A 0.000 B 0.000 AB 0.000

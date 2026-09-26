@@ -1,0 +1,5497 @@
+{
+ "generated": "census.py, Sept 26 2026",
+ "weights": {
+  "switch_a": 250.0,
+  "switch_b": 250.0
+ },
+ "engine_map_entries": 156,
+ "lists": [
+  {
+   "list": "decks/research/altaria.txt",
+   "group": "table",
+   "energy": "Psychic",
+   "cards": 20,
+   "basics": [
+    {
+     "id": "B1 196",
+     "name": "Swablu",
+     "count": 2,
+     "type": "Colorless",
+     "hp": 50,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Lightning",
+     "attacks": [
+      "[1] Sing 0"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": "Mega Altaria ex",
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "B1 184",
+     "name": "Eevee",
+     "count": 2,
+     "type": "Colorless",
+     "hp": 50,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Fighting",
+     "attacks": [
+      "[1] Stampede 10"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": "Espeon",
+     "online_at_setup": 0.0,
+     "ability": "Boosted Evolution",
+     "ability_text": "As long as this Pokémon is in the Active Spot, it can evolve during your first turn or the turn you play it.",
+     "mechanic": {
+      "variant": "CanEvolveOnFirstTurnIfActive",
+      "fields": "AbilityMechanic::CanEvolveOnFirstTurnIfActive, ",
+      "map_line": 36,
+      "pos": "active",
+      "first_turn": true,
+      "scope": "self",
+      "drawback": false,
+      "activated": false,
+      "gate_position": null,
+      "gate_line": 228
+     },
+     "switch_a": true,
+     "switch_b": false
+    },
+    {
+     "id": "B2b 040",
+     "name": "Darkrai",
+     "count": 2,
+     "type": "Darkness",
+     "hp": 100,
+     "retreat": 2,
+     "ko_points": 1,
+     "weakness": "Grass",
+     "attacks": [
+      "[3] Dark Slumber 40"
+     ],
+     "cheapest_attack_cost": 3,
+     "evolves_in_list_to": null,
+     "online_at_setup": 0.0,
+     "ability": "Bad Dreams",
+     "ability_text": "At the end of each turn, if your opponent's Active Pokémon is Asleep, do 20 damage to that Pokémon.",
+     "mechanic": {
+      "variant": "BadDreamsEndOfTurn",
+      "fields": "AbilityMechanic::BadDreamsEndOfTurn { amount: 20 }, ",
+      "map_line": 734,
+      "pos": "anywhere",
+      "first_turn": false,
+      "scope": "board",
+      "drawback": false,
+      "activated": false,
+      "gate_position": null,
+      "gate_line": 169
+     },
+     "switch_a": false,
+     "switch_b": true
+    },
+    {
+     "id": "A4a 059",
+     "name": "Igglybuff",
+     "count": 1,
+     "type": "Colorless",
+     "hp": 30,
+     "retreat": 0,
+     "ko_points": 1,
+     "weakness": null,
+     "attacks": [
+      "[0] Sleepy Lullaby 10"
+     ],
+     "cheapest_attack_cost": 0,
+     "evolves_in_list_to": null,
+     "online_at_setup": 1.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    }
+   ],
+   "p_no_basic_hand_repaired": 0.083,
+   "p_opening_choice": 0.5388,
+   "p_opening_choice_distinct_names": 0.5388,
+   "p_two_plus_basic_cards": 0.5942,
+   "kp3_opens": {
+    "Darkrai B2b 040": 0.3746,
+    "Igglybuff A4a 059": 0.2619,
+    "Swablu B1 196": 0.2291,
+    "Eevee B1 184": 0.1344
+   },
+   "kp3_opens_with_choice": {
+    "Darkrai B2b 040": 0.2402,
+    "Igglybuff A4a 059": 0.2039,
+    "Swablu B1 196": 0.0947
+   },
+   "kp3_opens_two_plus_basic_cards": {
+    "Darkrai B2b 040": 0.2586,
+    "Igglybuff A4a 059": 0.2039,
+    "Swablu B1 196": 0.1132,
+    "Eevee B1 184": 0.0184
+   },
+   "carries_switch_a": [
+    "Eevee B1 184"
+   ],
+   "carries_switch_b": [
+    "Darkrai B2b 040"
+   ],
+   "p_opening_changes": {
+    "A": 0.2402,
+    "B": 0.2402,
+    "AB": 0.3349,
+    "C": 0.0,
+    "D": 0.0,
+    "R": 0.2402,
+    "AR": 0.3349
+   },
+   "opening_transitions": {
+    "A": {
+     "Darkrai -> Eevee": 0.1454,
+     "Swablu -> Eevee": 0.0947
+    },
+    "B": {
+     "Darkrai -> Swablu": 0.1454,
+     "Darkrai -> Eevee": 0.0947
+    },
+    "AB": {
+     "Darkrai -> Eevee": 0.1454,
+     "Darkrai -> Swablu": 0.0947,
+     "Swablu -> Eevee": 0.0947
+    },
+    "C": {},
+    "D": {},
+    "R": {
+     "Darkrai -> Swablu": 0.1454,
+     "Darkrai -> Eevee": 0.0947
+    },
+    "AR": {
+     "Darkrai -> Eevee": 0.1454,
+     "Darkrai -> Swablu": 0.0947,
+     "Swablu -> Eevee": 0.0947
+    }
+   }
+  },
+  {
+   "list": "decks/research/blaziken.txt",
+   "group": "table",
+   "energy": "Fire",
+   "cards": 20,
+   "basics": [
+    {
+     "id": "B1 033",
+     "name": "Torchic",
+     "count": 2,
+     "type": "Fire",
+     "hp": 60,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Water",
+     "attacks": [
+      "[1] Peck 20"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": "Mega Blaziken ex",
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "B1 044",
+     "name": "Heatmor",
+     "count": 1,
+     "type": "Fire",
+     "hp": 80,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Water",
+     "attacks": [
+      "[1] Tongue Whip 0"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": null,
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "B3 024",
+     "name": "Castform Sunny Form",
+     "count": 1,
+     "type": "Fire",
+     "hp": 70,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Water",
+     "attacks": [
+      "[1] Sunny Scorching 30"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": null,
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    }
+   ],
+   "p_no_basic_hand_repaired": 0.2817,
+   "p_opening_choice": 0.2126,
+   "p_opening_choice_distinct_names": 0.2126,
+   "p_two_plus_basic_cards": 0.2487,
+   "kp3_opens": {
+    "Torchic B1 033": 0.4118,
+    "Heatmor B1 044": 0.3204,
+    "Castform Sunny Form B3 024": 0.2678
+   },
+   "kp3_opens_with_choice": {
+    "Heatmor B1 044": 0.1326,
+    "Castform Sunny Form B3 024": 0.08
+   },
+   "kp3_opens_two_plus_basic_cards": {
+    "Heatmor B1 044": 0.1326,
+    "Castform Sunny Form B3 024": 0.08,
+    "Torchic B1 033": 0.0361
+   },
+   "carries_switch_a": [],
+   "carries_switch_b": [],
+   "p_opening_changes": {
+    "A": 0.0,
+    "B": 0.0,
+    "AB": 0.0,
+    "C": 0.0,
+    "D": 0.0,
+    "R": 0.0,
+    "AR": 0.0
+   },
+   "opening_transitions": {
+    "A": {},
+    "B": {},
+    "AB": {},
+    "C": {},
+    "D": {},
+    "R": {},
+    "AR": {}
+   }
+  },
+  {
+   "list": "decks/research/hydreigon.txt",
+   "group": "table",
+   "energy": "Darkness",
+   "cards": 20,
+   "basics": [
+    {
+     "id": "B1 155",
+     "name": "Deino",
+     "count": 2,
+     "type": "Darkness",
+     "hp": 60,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Grass",
+     "attacks": [
+      "[1] Headbutt 20"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": "Hydreigon",
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "B3 115",
+     "name": "Bombirdier",
+     "count": 1,
+     "type": "Darkness",
+     "hp": 70,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Lightning",
+     "attacks": [
+      "[1] Dark Cutter 30"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": null,
+     "online_at_setup": 0.0,
+     "ability": "Villainous Delivery",
+     "ability_text": "As long as this Pokémon is on your Bench, your Active [D] Pokémon's Retreat Cost is 1 less.",
+     "mechanic": {
+      "variant": "ReduceRetreatCostOfYourActiveTypedFromBench",
+      "fields": "AbilityMechanic::ReduceRetreatCostOfYourActiveTypedFromBench { energy_type: EnergyType::Darkness, amount: 1, }, ",
+      "map_line": 771,
+      "pos": "bench",
+      "first_turn": false,
+      "scope": "board",
+      "drawback": false,
+      "activated": false,
+      "gate_position": null,
+      "gate_line": 211
+     },
+     "switch_a": false,
+     "switch_b": true
+    },
+    {
+     "id": "B1 151",
+     "name": "Mega Absol ex",
+     "count": 1,
+     "type": "Darkness",
+     "hp": 170,
+     "retreat": 1,
+     "ko_points": 3,
+     "weakness": "Grass",
+     "attacks": [
+      "[2] Darkness Claw 80"
+     ],
+     "cheapest_attack_cost": 2,
+     "evolves_in_list_to": null,
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    }
+   ],
+   "p_no_basic_hand_repaired": 0.2817,
+   "p_opening_choice": 0.2126,
+   "p_opening_choice_distinct_names": 0.2126,
+   "p_two_plus_basic_cards": 0.2487,
+   "kp3_opens": {
+    "Deino B1 155": 0.4917,
+    "Bombirdier B3 115": 0.3204,
+    "Mega Absol ex B1 151": 0.1878
+   },
+   "kp3_opens_with_choice": {
+    "Bombirdier B3 115": 0.1326,
+    "Deino B1 155": 0.08
+   },
+   "kp3_opens_two_plus_basic_cards": {
+    "Bombirdier B3 115": 0.1326,
+    "Deino B1 155": 0.1161
+   },
+   "carries_switch_a": [],
+   "carries_switch_b": [
+    "Bombirdier B3 115"
+   ],
+   "p_opening_changes": {
+    "A": 0.0,
+    "B": 0.1326,
+    "AB": 0.1326,
+    "C": 0.0,
+    "D": 0.0,
+    "R": 0.0,
+    "AR": 0.0
+   },
+   "opening_transitions": {
+    "A": {},
+    "B": {
+     "Bombirdier -> Deino": 0.0965,
+     "Bombirdier -> Mega Absol ex": 0.0361
+    },
+    "AB": {
+     "Bombirdier -> Deino": 0.0965,
+     "Bombirdier -> Mega Absol ex": 0.0361
+    },
+    "C": {},
+    "D": {},
+    "R": {},
+    "AR": {}
+   }
+  },
+  {
+   "list": "decks/research/lucario.txt",
+   "group": "table",
+   "energy": "Fighting",
+   "cards": 20,
+   "basics": [
+    {
+     "id": "B3 079",
+     "name": "Riolu",
+     "count": 2,
+     "type": "Fighting",
+     "hp": 60,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Psychic",
+     "attacks": [
+      "[1] Fighting Fist 10"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": "Mega Lucario ex",
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "B3 078",
+     "name": "Bonsly",
+     "count": 1,
+     "type": "Fighting",
+     "hp": 30,
+     "retreat": 0,
+     "ko_points": 1,
+     "weakness": null,
+     "attacks": [
+      "[0] Teary Attack 10"
+     ],
+     "cheapest_attack_cost": 0,
+     "evolves_in_list_to": null,
+     "online_at_setup": 1.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "A1 154",
+     "name": "Hitmonlee",
+     "count": 1,
+     "type": "Fighting",
+     "hp": 80,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Psychic",
+     "attacks": [
+      "[1] Stretch Kick 0"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": null,
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    }
+   ],
+   "p_no_basic_hand_repaired": 0.2817,
+   "p_opening_choice": 0.2126,
+   "p_opening_choice_distinct_names": 0.2126,
+   "p_two_plus_basic_cards": 0.2487,
+   "kp3_opens": {
+    "Riolu B3 079": 0.4118,
+    "Bonsly B3 078": 0.3204,
+    "Hitmonlee A1 154": 0.2678
+   },
+   "kp3_opens_with_choice": {
+    "Bonsly B3 078": 0.1326,
+    "Hitmonlee A1 154": 0.08
+   },
+   "kp3_opens_two_plus_basic_cards": {
+    "Bonsly B3 078": 0.1326,
+    "Hitmonlee A1 154": 0.08,
+    "Riolu B3 079": 0.0361
+   },
+   "carries_switch_a": [],
+   "carries_switch_b": [],
+   "p_opening_changes": {
+    "A": 0.0,
+    "B": 0.0,
+    "AB": 0.0,
+    "C": 0.0,
+    "D": 0.0,
+    "R": 0.0,
+    "AR": 0.0
+   },
+   "opening_transitions": {
+    "A": {},
+    "B": {},
+    "AB": {},
+    "C": {},
+    "D": {},
+    "R": {},
+    "AR": {}
+   }
+  },
+  {
+   "list": "decks/research/sceptile.txt",
+   "group": "table",
+   "energy": "Grass",
+   "cards": 20,
+   "basics": [
+    {
+     "id": "B3b 001",
+     "name": "Caterpie",
+     "count": 2,
+     "type": "Grass",
+     "hp": 40,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Fire",
+     "attacks": [
+      "[1] Hook 10"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": "Butterfree",
+     "online_at_setup": 0.0,
+     "ability": "Quick Growth",
+     "ability_text": "At the end of your opponent's turn, if this Pokémon is in the Active Spot, put a random card from your deck that evolves from this Pokémon onto this Pokémon to evolve it.",
+     "mechanic": {
+      "variant": "RandomEvolutionFromDeck",
+      "fields": "AbilityMechanic::RandomEvolutionFromDeck { trigger: RandomEvolutionTrigger::EndOfOpponentTurnIfActive, }, ",
+      "map_line": 818,
+      "pos": "active",
+      "first_turn": false,
+      "scope": "self",
+      "drawback": false,
+      "activated": false,
+      "gate_position": null,
+      "gate_line": 286
+     },
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "B3 005",
+     "name": "Treecko",
+     "count": 1,
+     "type": "Grass",
+     "hp": 60,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Fire",
+     "attacks": [
+      "[1] Pound 20"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": "Mega Sceptile ex",
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    }
+   ],
+   "p_no_basic_hand_repaired": 0.3991,
+   "p_opening_choice": 0.0965,
+   "p_opening_choice_distinct_names": 0.0965,
+   "p_two_plus_basic_cards": 0.1404,
+   "kp3_opens": {
+    "Caterpie B3b 001": 0.617,
+    "Treecko B3 005": 0.383
+   },
+   "kp3_opens_with_choice": {
+    "Treecko B3 005": 0.0965
+   },
+   "kp3_opens_two_plus_basic_cards": {
+    "Treecko B3 005": 0.0965,
+    "Caterpie B3b 001": 0.0439
+   },
+   "carries_switch_a": [],
+   "carries_switch_b": [],
+   "p_opening_changes": {
+    "A": 0.0,
+    "B": 0.0,
+    "AB": 0.0,
+    "C": 0.0965,
+    "D": 0.0,
+    "R": 0.0,
+    "AR": 0.0
+   },
+   "opening_transitions": {
+    "A": {},
+    "B": {},
+    "AB": {},
+    "C": {
+     "Treecko -> Caterpie": 0.0965
+    },
+    "D": {},
+    "R": {},
+    "AR": {}
+   }
+  },
+  {
+   "list": "decks/research/suicune.txt",
+   "group": "table",
+   "energy": "Water",
+   "cards": 20,
+   "basics": [
+    {
+     "id": "B2a 034",
+     "name": "Frigibax",
+     "count": 1,
+     "type": "Water",
+     "hp": 60,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Metal",
+     "attacks": [
+      "[1] Chilly 20"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": "Baxcalibur",
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "P-B 037",
+     "name": "Frigibax",
+     "count": 1,
+     "type": "Water",
+     "hp": 60,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Metal",
+     "attacks": [
+      "[1] Stiffen 0"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": "Baxcalibur",
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "A4a 020",
+     "name": "Suicune ex",
+     "count": 2,
+     "type": "Water",
+     "hp": 140,
+     "retreat": 2,
+     "ko_points": 2,
+     "weakness": "Lightning",
+     "attacks": [
+      "[2] Crystal Waltz 20"
+     ],
+     "cheapest_attack_cost": 2,
+     "evolves_in_list_to": null,
+     "online_at_setup": 0.0,
+     "ability": "Legendary Pulse",
+     "ability_text": "At the end of your turn, if this Pokémon is in the Active Spot, draw a card.",
+     "mechanic": {
+      "variant": "EndTurnDrawCardIfActive",
+      "fields": "AbilityMechanic::EndTurnDrawCardIfActive { amount: 1 }, ",
+      "map_line": 93,
+      "pos": "active",
+      "first_turn": false,
+      "scope": "board",
+      "drawback": false,
+      "activated": false,
+      "gate_position": null,
+      "gate_line": 239
+     },
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "B2a 037",
+     "name": "Chien-Pao ex",
+     "count": 1,
+     "type": "Water",
+     "hp": 130,
+     "retreat": 1,
+     "ko_points": 2,
+     "weakness": "Metal",
+     "attacks": [
+      "[1] Icicle 20",
+      "[3] Diving Icicles 0"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": null,
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    }
+   ],
+   "p_no_basic_hand_repaired": 0.1937,
+   "p_opening_choice": 0.3368,
+   "p_opening_choice_distinct_names": 0.3074,
+   "p_two_plus_basic_cards": 0.3661,
+   "kp3_opens": {
+    "Suicune ex A4a 020": 0.5248,
+    "Chien-Pao ex B2a 037": 0.1922,
+    "Frigibax P-B 037": 0.1561,
+    "Frigibax B2a 034": 0.1268
+   },
+   "kp3_opens_with_choice": {
+    "Suicune ex A4a 020": 0.2419,
+    "Chien-Pao ex B2a 037": 0.0655,
+    "Frigibax P-B 037": 0.0293
+   },
+   "kp3_opens_two_plus_basic_cards": {
+    "Suicune ex A4a 020": 0.2713,
+    "Chien-Pao ex B2a 037": 0.0655,
+    "Frigibax P-B 037": 0.0293
+   },
+   "carries_switch_a": [],
+   "carries_switch_b": [],
+   "p_opening_changes": {
+    "A": 0.0,
+    "B": 0.0,
+    "AB": 0.0,
+    "C": 0.0,
+    "D": 0.0,
+    "R": 0.2419,
+    "AR": 0.2419
+   },
+   "opening_transitions": {
+    "A": {},
+    "B": {},
+    "AB": {},
+    "C": {},
+    "D": {},
+    "R": {
+     "Suicune ex -> Frigibax": 0.1454,
+     "Suicune ex -> Chien-Pao ex": 0.0965
+    },
+    "AR": {
+     "Suicune ex -> Frigibax": 0.1454,
+     "Suicune ex -> Chien-Pao ex": 0.0965
+    }
+   }
+  },
+  {
+   "list": "decks/research/vespiquen.txt",
+   "group": "table",
+   "energy": "Grass",
+   "cards": 20,
+   "basics": [
+    {
+     "id": "B4 010",
+     "name": "Combee",
+     "count": 2,
+     "type": "Grass",
+     "hp": 50,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Fire",
+     "attacks": [
+      "[1] Reckless Charge 30"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": "Vespiquen ex",
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "A4 021",
+     "name": "Shuckle ex",
+     "count": 2,
+     "type": "Grass",
+     "hp": 120,
+     "retreat": 1,
+     "ko_points": 2,
+     "weakness": "Fire",
+     "attacks": [
+      "[1] Triple Slap 20"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": null,
+     "online_at_setup": 0.0,
+     "ability": "Solid Shell",
+     "ability_text": "This Pokémon takes -20 damage from attacks.",
+     "mechanic": {
+      "variant": "ReduceDamageFromAttacks",
+      "fields": "AbilityMechanic::ReduceDamageFromAttacks { amount: 20 }, ",
+      "map_line": 614,
+      "pos": "anywhere",
+      "first_turn": false,
+      "scope": "self",
+      "drawback": false,
+      "activated": false,
+      "gate_position": null,
+      "gate_line": 125
+     },
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "B2 017",
+     "name": "Teal Mask Ogerpon ex",
+     "count": 1,
+     "type": "Grass",
+     "hp": 130,
+     "retreat": 1,
+     "ko_points": 2,
+     "weakness": "Fire",
+     "attacks": [
+      "[2] Energized Leaves 60"
+     ],
+     "cheapest_attack_cost": 2,
+     "evolves_in_list_to": null,
+     "online_at_setup": 0.0,
+     "ability": "Soothing Wind",
+     "ability_text": "Each of your Pokémon that has any Energy attached recovers from all Special Conditions and can't be affected by any Special Conditions.",
+     "mechanic": {
+      "variant": "SoothingWind",
+      "fields": "AbilityMechanic::SoothingWind { energy_type: None }, ",
+      "map_line": 136,
+      "pos": "anywhere",
+      "first_turn": false,
+      "scope": "board",
+      "drawback": false,
+      "activated": false,
+      "gate_position": null,
+      "gate_line": 205
+     },
+     "switch_a": false,
+     "switch_b": true
+    }
+   ],
+   "p_no_basic_hand_repaired": 0.1937,
+   "p_opening_choice": 0.3074,
+   "p_opening_choice_distinct_names": 0.3074,
+   "p_two_plus_basic_cards": 0.3661,
+   "kp3_opens": {
+    "Shuckle ex A4 021": 0.4284,
+    "Teal Mask Ogerpon ex B2 017": 0.2887,
+    "Combee B4 010": 0.2829
+   },
+   "kp3_opens_with_choice": {
+    "Teal Mask Ogerpon ex B2 017": 0.162,
+    "Shuckle ex A4 021": 0.1454
+   },
+   "kp3_opens_two_plus_basic_cards": {
+    "Shuckle ex A4 021": 0.1748,
+    "Teal Mask Ogerpon ex B2 017": 0.162,
+    "Combee B4 010": 0.0293
+   },
+   "carries_switch_a": [],
+   "carries_switch_b": [
+    "Teal Mask Ogerpon ex B2 017"
+   ],
+   "p_opening_changes": {
+    "A": 0.0,
+    "B": 0.162,
+    "AB": 0.162,
+    "C": 0.0,
+    "D": 0.0,
+    "R": 0.162,
+    "AR": 0.162
+   },
+   "opening_transitions": {
+    "A": {},
+    "B": {
+     "Teal Mask Ogerpon ex -> Shuckle ex": 0.0965,
+     "Teal Mask Ogerpon ex -> Combee": 0.0655
+    },
+    "AB": {
+     "Teal Mask Ogerpon ex -> Shuckle ex": 0.0965,
+     "Teal Mask Ogerpon ex -> Combee": 0.0655
+    },
+    "C": {},
+    "D": {},
+    "R": {
+     "Teal Mask Ogerpon ex -> Shuckle ex": 0.0965,
+     "Teal Mask Ogerpon ex -> Combee": 0.0655
+    },
+    "AR": {
+     "Teal Mask Ogerpon ex -> Shuckle ex": 0.0965,
+     "Teal Mask Ogerpon ex -> Combee": 0.0655
+    }
+   }
+  },
+  {
+   "list": "decks/research/weezing.txt",
+   "group": "table",
+   "energy": "Darkness",
+   "cards": 20,
+   "basics": [
+    {
+     "id": "B4 103",
+     "name": "Hoopa ex",
+     "count": 2,
+     "type": "Darkness",
+     "hp": 150,
+     "retreat": 2,
+     "ko_points": 2,
+     "weakness": "Grass",
+     "attacks": [
+      "[1] Shadow Bullet 30",
+      "[3] Dynamite Punch 100"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": null,
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "B4a 042",
+     "name": "Team Rocket's Koffing",
+     "count": 2,
+     "type": "Darkness",
+     "hp": 60,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Fighting",
+     "attacks": [
+      "[1] Reverse Thrust 10"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": "Team Rocket's Weezing ex",
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "A2 110",
+     "name": "Darkrai ex",
+     "count": 1,
+     "type": "Darkness",
+     "hp": 140,
+     "retreat": 2,
+     "ko_points": 2,
+     "weakness": "Grass",
+     "attacks": [
+      "[3] Dark Prism 80"
+     ],
+     "cheapest_attack_cost": 3,
+     "evolves_in_list_to": null,
+     "online_at_setup": 0.0,
+     "ability": "Nightmare Aura",
+     "ability_text": "Whenever you attach a [D] Energy from your Energy Zone to this Pokémon, do 20 damage to your opponent's Active Pokémon.",
+     "mechanic": {
+      "variant": "DamageOpponentActiveOnZoneAttachToSelf",
+      "fields": "AbilityMechanic::DamageOpponentActiveOnZoneAttachToSelf { energy_type: EnergyType::Darkness, amount: 20, only_turn_energy: true, }, ",
+      "map_line": 643,
+      "pos": "anywhere",
+      "first_turn": false,
+      "scope": "board",
+      "drawback": false,
+      "activated": false,
+      "gate_position": null,
+      "gate_line": 121
+     },
+     "switch_a": false,
+     "switch_b": true
+    }
+   ],
+   "p_no_basic_hand_repaired": 0.1937,
+   "p_opening_choice": 0.3074,
+   "p_opening_choice_distinct_names": 0.3074,
+   "p_two_plus_basic_cards": 0.3661,
+   "kp3_opens": {
+    "Hoopa ex B4 103": 0.5248,
+    "Team Rocket's Koffing B4a 042": 0.2829,
+    "Darkrai ex A2 110": 0.1922
+   },
+   "kp3_opens_with_choice": {
+    "Hoopa ex B4 103": 0.2419,
+    "Darkrai ex A2 110": 0.0655
+   },
+   "kp3_opens_two_plus_basic_cards": {
+    "Hoopa ex B4 103": 0.2713,
+    "Darkrai ex A2 110": 0.0655,
+    "Team Rocket's Koffing B4a 042": 0.0293
+   },
+   "carries_switch_a": [],
+   "carries_switch_b": [
+    "Darkrai ex A2 110"
+   ],
+   "p_opening_changes": {
+    "A": 0.0,
+    "B": 0.0655,
+    "AB": 0.0655,
+    "C": 0.0,
+    "D": 0.0,
+    "R": 0.0655,
+    "AR": 0.0655
+   },
+   "opening_transitions": {
+    "A": {},
+    "B": {
+     "Darkrai ex -> Team Rocket's Koffing": 0.0655
+    },
+    "AB": {
+     "Darkrai ex -> Team Rocket's Koffing": 0.0655
+    },
+    "C": {},
+    "D": {},
+    "R": {
+     "Darkrai ex -> Team Rocket's Koffing": 0.0655
+    },
+    "AR": {
+     "Darkrai ex -> Team Rocket's Koffing": 0.0655
+    }
+   }
+  },
+  {
+   "list": "decks/dustin/01-muk-glimmora-kingambit-regigigas.txt",
+   "group": "dustin",
+   "energy": "Darkness",
+   "cards": 20,
+   "basics": [
+    {
+     "id": "B2 096",
+     "name": "Alolan Grimer",
+     "count": 1,
+     "type": "Darkness",
+     "hp": 80,
+     "retreat": 2,
+     "ko_points": 1,
+     "weakness": "Fighting",
+     "attacks": [
+      "[2] Pound 20"
+     ],
+     "cheapest_attack_cost": 2,
+     "evolves_in_list_to": "Alolan Muk",
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "B3a 044",
+     "name": "Glimmet",
+     "count": 2,
+     "type": "Darkness",
+     "hp": 60,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Fighting",
+     "attacks": [
+      "[1] Hang Down 20"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": "Glimmora",
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "B3a 041",
+     "name": "Pawniard",
+     "count": 1,
+     "type": "Darkness",
+     "hp": 50,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Grass",
+     "attacks": [
+      "[1] Slash 30"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": "Kingambit",
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "B3 134",
+     "name": "Regigigas",
+     "count": 1,
+     "type": "Colorless",
+     "hp": 150,
+     "retreat": 4,
+     "ko_points": 1,
+     "weakness": "Fighting",
+     "attacks": [
+      "[3] Giga Turbo 100"
+     ],
+     "cheapest_attack_cost": 3,
+     "evolves_in_list_to": null,
+     "online_at_setup": 0.0,
+     "ability": "Seal of Antiquity",
+     "ability_text": "If you don't have Regirock, Regice, and Registeel on your Bench, this Pokémon can't attack.",
+     "mechanic": {
+      "variant": "CannotAttackWithoutBenchedNames",
+      "fields": "AbilityMechanic::CannotAttackWithoutBenchedNames { required_bench_names: REGI_TRIO_NAMES, }, ",
+      "map_line": 782,
+      "pos": "active",
+      "first_turn": false,
+      "scope": "self",
+      "drawback": true,
+      "activated": false,
+      "gate_position": null,
+      "gate_line": 248
+     },
+     "switch_a": false,
+     "switch_b": false
+    }
+   ],
+   "p_no_basic_hand_repaired": 0.1937,
+   "p_opening_choice": 0.3368,
+   "p_opening_choice_distinct_names": 0.3368,
+   "p_two_plus_basic_cards": 0.3661,
+   "kp3_opens": {
+    "Glimmet B3a 044": 0.3484,
+    "Regigigas B3 134": 0.2887,
+    "Alolan Grimer B2 096": 0.2361,
+    "Pawniard B3a 041": 0.1268
+   },
+   "kp3_opens_with_choice": {
+    "Regigigas B3 134": 0.162,
+    "Alolan Grimer B2 096": 0.1093,
+    "Glimmet B3a 044": 0.0655
+   },
+   "kp3_opens_two_plus_basic_cards": {
+    "Regigigas B3 134": 0.162,
+    "Alolan Grimer B2 096": 0.1093,
+    "Glimmet B3a 044": 0.0948
+   },
+   "carries_switch_a": [],
+   "carries_switch_b": [],
+   "p_opening_changes": {
+    "A": 0.0,
+    "B": 0.0,
+    "AB": 0.0,
+    "C": 0.0,
+    "D": 0.162,
+    "R": 0.2713,
+    "AR": 0.2713
+   },
+   "opening_transitions": {
+    "A": {},
+    "B": {},
+    "AB": {},
+    "C": {},
+    "D": {
+     "Regigigas -> Glimmet": 0.08,
+     "Regigigas -> Alolan Grimer": 0.0526,
+     "Regigigas -> Pawniard": 0.0293
+    },
+    "R": {
+     "Regigigas -> Glimmet": 0.0965,
+     "Alolan Grimer -> Glimmet": 0.08,
+     "Regigigas -> Pawniard": 0.0361,
+     "Regigigas -> Alolan Grimer": 0.0293,
+     "Alolan Grimer -> Pawniard": 0.0293
+    },
+    "AR": {
+     "Regigigas -> Glimmet": 0.0965,
+     "Alolan Grimer -> Glimmet": 0.08,
+     "Regigigas -> Pawniard": 0.0361,
+     "Regigigas -> Alolan Grimer": 0.0293,
+     "Alolan Grimer -> Pawniard": 0.0293
+    }
+   }
+  },
+  {
+   "list": "decks/dustin/02-arceus-crobat.txt",
+   "group": "dustin",
+   "energy": "Darkness",
+   "cards": 20,
+   "basics": [
+    {
+     "id": "A4 120",
+     "name": "Absol",
+     "count": 1,
+     "type": "Darkness",
+     "hp": 80,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Grass",
+     "attacks": [
+      "[1] Leap Over 0"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": null,
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "A2a 071",
+     "name": "Arceus ex",
+     "count": 2,
+     "type": "Colorless",
+     "hp": 140,
+     "retreat": 2,
+     "ko_points": 2,
+     "weakness": "Fighting",
+     "attacks": [
+      "[3] Ultimate Force 70"
+     ],
+     "cheapest_attack_cost": 3,
+     "evolves_in_list_to": null,
+     "online_at_setup": 0.0,
+     "ability": "Fabled Luster",
+     "ability_text": "This Pokémon can't be affected by any Special Conditions.",
+     "mechanic": {
+      "variant": "ImmuneToStatusConditions",
+      "fields": "AbilityMechanic::ImmuneToStatusConditions { status: None }, ",
+      "map_line": 577,
+      "pos": "anywhere",
+      "first_turn": false,
+      "scope": "self",
+      "drawback": false,
+      "activated": false,
+      "gate_position": null,
+      "gate_line": 204
+     },
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "B3b 054",
+     "name": "Munchlax",
+     "count": 1,
+     "type": "Colorless",
+     "hp": 50,
+     "retreat": 2,
+     "ko_points": 1,
+     "weakness": null,
+     "attacks": [
+      "[0] Hungrily Draw 10"
+     ],
+     "cheapest_attack_cost": 0,
+     "evolves_in_list_to": null,
+     "online_at_setup": 1.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "A4 107",
+     "name": "Zubat",
+     "count": 2,
+     "type": "Darkness",
+     "hp": 50,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Fighting",
+     "attacks": [
+      "[1] Venomous Fang 10"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": "Crobat",
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    }
+   ],
+   "p_no_basic_hand_repaired": 0.1291,
+   "p_opening_choice": 0.4365,
+   "p_opening_choice_distinct_names": 0.4365,
+   "p_two_plus_basic_cards": 0.4835,
+   "kp3_opens": {
+    "Arceus ex A2a 071": 0.3139,
+    "Munchlax B3b 054": 0.2715,
+    "Absol A4 120": 0.2189,
+    "Zubat A4 107": 0.1956
+   },
+   "kp3_opens_with_choice": {
+    "Munchlax B3b 054": 0.1854,
+    "Absol A4 120": 0.1328,
+    "Arceus ex A2a 071": 0.1183
+   },
+   "kp3_opens_two_plus_basic_cards": {
+    "Munchlax B3b 054": 0.1854,
+    "Arceus ex A2a 071": 0.1418,
+    "Absol A4 120": 0.1328,
+    "Zubat A4 107": 0.0235
+   },
+   "carries_switch_a": [],
+   "carries_switch_b": [],
+   "p_opening_changes": {
+    "A": 0.0,
+    "B": 0.0,
+    "AB": 0.0,
+    "C": 0.0,
+    "D": 0.0,
+    "R": 0.1183,
+    "AR": 0.1183
+   },
+   "opening_transitions": {
+    "A": {},
+    "B": {},
+    "AB": {},
+    "C": {},
+    "D": {},
+    "R": {
+     "Arceus ex -> Zubat": 0.1183
+    },
+    "AR": {
+     "Arceus ex -> Zubat": 0.1183
+    }
+   }
+  },
+  {
+   "list": "decks/dustin/03-wailord-indeedee-wall.txt",
+   "group": "dustin",
+   "energy": "Water",
+   "cards": 20,
+   "basics": [
+    {
+     "id": "B4 036",
+     "name": "Wailmer",
+     "count": 2,
+     "type": "Water",
+     "hp": 100,
+     "retreat": 3,
+     "ko_points": 1,
+     "weakness": "Lightning",
+     "attacks": [
+      "[3] Wave Splash 60"
+     ],
+     "cheapest_attack_cost": 3,
+     "evolves_in_list_to": "Wailord",
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "B1 121",
+     "name": "Indeedee ex",
+     "count": 2,
+     "type": "Psychic",
+     "hp": 130,
+     "retreat": 1,
+     "ko_points": 2,
+     "weakness": "Darkness",
+     "attacks": [
+      "[2] Psychic 30"
+     ],
+     "cheapest_attack_cost": 2,
+     "evolves_in_list_to": null,
+     "online_at_setup": 0.0,
+     "ability": "Watch Over",
+     "ability_text": "Once during your turn, you may heal 20 damage from your Active Pokémon.",
+     "mechanic": {
+      "variant": "HealActiveYourPokemon",
+      "fields": "AbilityMechanic::HealActiveYourPokemon { amount: 20 }, ",
+      "map_line": 429,
+      "pos": "anywhere",
+      "first_turn": false,
+      "scope": "board",
+      "drawback": false,
+      "activated": true,
+      "gate_position": "anywhere",
+      "gate_line": 189
+     },
+     "switch_a": false,
+     "switch_b": true
+    }
+   ],
+   "p_no_basic_hand_repaired": 0.2817,
+   "p_opening_choice": 0.1765,
+   "p_opening_choice_distinct_names": 0.1765,
+   "p_two_plus_basic_cards": 0.2487,
+   "kp3_opens": {
+    "Wailmer B4 036": 0.5882,
+    "Indeedee ex B1 121": 0.4118
+   },
+   "kp3_opens_with_choice": {
+    "Wailmer B4 036": 0.1765
+   },
+   "kp3_opens_two_plus_basic_cards": {
+    "Wailmer B4 036": 0.2126,
+    "Indeedee ex B1 121": 0.0361
+   },
+   "carries_switch_a": [],
+   "carries_switch_b": [
+    "Indeedee ex B1 121"
+   ],
+   "p_opening_changes": {
+    "A": 0.0,
+    "B": 0.0,
+    "AB": 0.0,
+    "C": 0.0,
+    "D": 0.0,
+    "R": 0.1765,
+    "AR": 0.1765
+   },
+   "opening_transitions": {
+    "A": {},
+    "B": {},
+    "AB": {},
+    "C": {},
+    "D": {},
+    "R": {
+     "Wailmer -> Indeedee ex": 0.1765
+    },
+    "AR": {
+     "Wailmer -> Indeedee ex": 0.1765
+    }
+   }
+  },
+  {
+   "list": "decks/dustin/04-absol-hoopa-darkrai.txt",
+   "group": "dustin",
+   "energy": "Darkness",
+   "cards": 20,
+   "basics": [
+    {
+     "id": "B4 100",
+     "name": "Absol",
+     "count": 2,
+     "type": "Darkness",
+     "hp": 70,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Grass",
+     "attacks": [
+      "[1] Enhanced Blade 20"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": null,
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "A2 110",
+     "name": "Darkrai ex",
+     "count": 1,
+     "type": "Darkness",
+     "hp": 140,
+     "retreat": 2,
+     "ko_points": 2,
+     "weakness": "Grass",
+     "attacks": [
+      "[3] Dark Prism 80"
+     ],
+     "cheapest_attack_cost": 3,
+     "evolves_in_list_to": null,
+     "online_at_setup": 0.0,
+     "ability": "Nightmare Aura",
+     "ability_text": "Whenever you attach a [D] Energy from your Energy Zone to this Pokémon, do 20 damage to your opponent's Active Pokémon.",
+     "mechanic": {
+      "variant": "DamageOpponentActiveOnZoneAttachToSelf",
+      "fields": "AbilityMechanic::DamageOpponentActiveOnZoneAttachToSelf { energy_type: EnergyType::Darkness, amount: 20, only_turn_energy: true, }, ",
+      "map_line": 643,
+      "pos": "anywhere",
+      "first_turn": false,
+      "scope": "board",
+      "drawback": false,
+      "activated": false,
+      "gate_position": null,
+      "gate_line": 121
+     },
+     "switch_a": false,
+     "switch_b": true
+    },
+    {
+     "id": "B4 103",
+     "name": "Hoopa ex",
+     "count": 2,
+     "type": "Darkness",
+     "hp": 150,
+     "retreat": 2,
+     "ko_points": 2,
+     "weakness": "Grass",
+     "attacks": [
+      "[1] Shadow Bullet 30",
+      "[3] Dynamite Punch 100"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": null,
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "B3 115",
+     "name": "Bombirdier",
+     "count": 1,
+     "type": "Darkness",
+     "hp": 70,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Lightning",
+     "attacks": [
+      "[1] Dark Cutter 30"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": null,
+     "online_at_setup": 0.0,
+     "ability": "Villainous Delivery",
+     "ability_text": "As long as this Pokémon is on your Bench, your Active [D] Pokémon's Retreat Cost is 1 less.",
+     "mechanic": {
+      "variant": "ReduceRetreatCostOfYourActiveTypedFromBench",
+      "fields": "AbilityMechanic::ReduceRetreatCostOfYourActiveTypedFromBench { energy_type: EnergyType::Darkness, amount: 1, }, ",
+      "map_line": 771,
+      "pos": "bench",
+      "first_turn": false,
+      "scope": "board",
+      "drawback": false,
+      "activated": false,
+      "gate_position": null,
+      "gate_line": 211
+     },
+     "switch_a": false,
+     "switch_b": true
+    },
+    {
+     "id": "B4a 063",
+     "name": "Happiny",
+     "count": 1,
+     "type": "Colorless",
+     "hp": 30,
+     "retreat": 0,
+     "ko_points": 1,
+     "weakness": null,
+     "attacks": [
+      "[0] Chubby Cheer 10"
+     ],
+     "cheapest_attack_cost": 0,
+     "evolves_in_list_to": null,
+     "online_at_setup": 1.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    }
+   ],
+   "p_no_basic_hand_repaired": 0.083,
+   "p_opening_choice": 0.5573,
+   "p_opening_choice_distinct_names": 0.5573,
+   "p_two_plus_basic_cards": 0.5942,
+   "kp3_opens": {
+    "Hoopa ex B4 103": 0.3746,
+    "Happiny B4a 063": 0.2619,
+    "Absol B4 100": 0.2291,
+    "Bombirdier B3 115": 0.0764,
+    "Darkrai ex A2 110": 0.058
+   },
+   "kp3_opens_with_choice": {
+    "Hoopa ex B4 103": 0.2402,
+    "Happiny B4a 063": 0.2039,
+    "Absol B4 100": 0.0947,
+    "Bombirdier B3 115": 0.0184
+   },
+   "kp3_opens_two_plus_basic_cards": {
+    "Hoopa ex B4 103": 0.2586,
+    "Happiny B4a 063": 0.2039,
+    "Absol B4 100": 0.1132,
+    "Bombirdier B3 115": 0.0184
+   },
+   "carries_switch_a": [],
+   "carries_switch_b": [
+    "Bombirdier B3 115",
+    "Darkrai ex A2 110"
+   ],
+   "p_opening_changes": {
+    "A": 0.0,
+    "B": 0.0,
+    "AB": 0.0,
+    "C": 0.0,
+    "D": 0.0,
+    "R": 0.0,
+    "AR": 0.0
+   },
+   "opening_transitions": {
+    "A": {},
+    "B": {},
+    "AB": {},
+    "C": {},
+    "D": {},
+    "R": {},
+    "AR": {}
+   }
+  },
+  {
+   "list": "decks/dustin/05-indeedee-stoutland.txt",
+   "group": "dustin",
+   "energy": "Psychic",
+   "cards": 20,
+   "basics": [
+    {
+     "id": "B1 121",
+     "name": "Indeedee ex",
+     "count": 2,
+     "type": "Psychic",
+     "hp": 130,
+     "retreat": 1,
+     "ko_points": 2,
+     "weakness": "Darkness",
+     "attacks": [
+      "[2] Psychic 30"
+     ],
+     "cheapest_attack_cost": 2,
+     "evolves_in_list_to": null,
+     "online_at_setup": 0.0,
+     "ability": "Watch Over",
+     "ability_text": "Once during your turn, you may heal 20 damage from your Active Pokémon.",
+     "mechanic": {
+      "variant": "HealActiveYourPokemon",
+      "fields": "AbilityMechanic::HealActiveYourPokemon { amount: 20 }, ",
+      "map_line": 429,
+      "pos": "anywhere",
+      "first_turn": false,
+      "scope": "board",
+      "drawback": false,
+      "activated": true,
+      "gate_position": "anywhere",
+      "gate_line": 189
+     },
+     "switch_a": false,
+     "switch_b": true
+    },
+    {
+     "id": "A3a 054",
+     "name": "Lillipup",
+     "count": 2,
+     "type": "Colorless",
+     "hp": 60,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Fighting",
+     "attacks": [
+      "[1] Tackle 20"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": "Stoutland",
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    }
+   ],
+   "p_no_basic_hand_repaired": 0.2817,
+   "p_opening_choice": 0.1765,
+   "p_opening_choice_distinct_names": 0.1765,
+   "p_two_plus_basic_cards": 0.2487,
+   "kp3_opens": {
+    "Indeedee ex B1 121": 0.5882,
+    "Lillipup A3a 054": 0.4118
+   },
+   "kp3_opens_with_choice": {
+    "Indeedee ex B1 121": 0.1765
+   },
+   "kp3_opens_two_plus_basic_cards": {
+    "Indeedee ex B1 121": 0.2126,
+    "Lillipup A3a 054": 0.0361
+   },
+   "carries_switch_a": [],
+   "carries_switch_b": [
+    "Indeedee ex B1 121"
+   ],
+   "p_opening_changes": {
+    "A": 0.0,
+    "B": 0.1765,
+    "AB": 0.1765,
+    "C": 0.0,
+    "D": 0.0,
+    "R": 0.1765,
+    "AR": 0.1765
+   },
+   "opening_transitions": {
+    "A": {},
+    "B": {
+     "Indeedee ex -> Lillipup": 0.1765
+    },
+    "AB": {
+     "Indeedee ex -> Lillipup": 0.1765
+    },
+    "C": {},
+    "D": {},
+    "R": {
+     "Indeedee ex -> Lillipup": 0.1765
+    },
+    "AR": {
+     "Indeedee ex -> Lillipup": 0.1765
+    }
+   }
+  },
+  {
+   "list": "decks/dustin/06-mega-blaziken-tournament-list.txt",
+   "group": "dustin",
+   "energy": "Fire",
+   "cards": 20,
+   "basics": [
+    {
+     "id": "B1 033",
+     "name": "Torchic",
+     "count": 2,
+     "type": "Fire",
+     "hp": 60,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Water",
+     "attacks": [
+      "[1] Peck 20"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": "Mega Blaziken ex",
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "B1 044",
+     "name": "Heatmor",
+     "count": 1,
+     "type": "Fire",
+     "hp": 80,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Water",
+     "attacks": [
+      "[1] Tongue Whip 0"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": null,
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "B3 024",
+     "name": "Castform Sunny Form",
+     "count": 1,
+     "type": "Fire",
+     "hp": 70,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Water",
+     "attacks": [
+      "[1] Sunny Scorching 30"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": null,
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    }
+   ],
+   "p_no_basic_hand_repaired": 0.2817,
+   "p_opening_choice": 0.2126,
+   "p_opening_choice_distinct_names": 0.2126,
+   "p_two_plus_basic_cards": 0.2487,
+   "kp3_opens": {
+    "Torchic B1 033": 0.4118,
+    "Heatmor B1 044": 0.3204,
+    "Castform Sunny Form B3 024": 0.2678
+   },
+   "kp3_opens_with_choice": {
+    "Heatmor B1 044": 0.1326,
+    "Castform Sunny Form B3 024": 0.08
+   },
+   "kp3_opens_two_plus_basic_cards": {
+    "Heatmor B1 044": 0.1326,
+    "Castform Sunny Form B3 024": 0.08,
+    "Torchic B1 033": 0.0361
+   },
+   "carries_switch_a": [],
+   "carries_switch_b": [],
+   "p_opening_changes": {
+    "A": 0.0,
+    "B": 0.0,
+    "AB": 0.0,
+    "C": 0.0,
+    "D": 0.0,
+    "R": 0.0,
+    "AR": 0.0
+   },
+   "opening_transitions": {
+    "A": {},
+    "B": {},
+    "AB": {},
+    "C": {},
+    "D": {},
+    "R": {},
+    "AR": {}
+   }
+  },
+  {
+   "list": "decks/dustin/07-skarmory-stall.txt",
+   "group": "dustin",
+   "energy": "Metal",
+   "cards": 20,
+   "basics": [
+    {
+     "id": "A4 124",
+     "name": "Skarmory ex",
+     "count": 2,
+     "type": "Metal",
+     "hp": 140,
+     "retreat": 2,
+     "ko_points": 2,
+     "weakness": "Fire",
+     "attacks": [
+      "[2] Steel Wing 70"
+     ],
+     "cheapest_attack_cost": 2,
+     "evolves_in_list_to": null,
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "B1 121",
+     "name": "Indeedee ex",
+     "count": 1,
+     "type": "Psychic",
+     "hp": 130,
+     "retreat": 1,
+     "ko_points": 2,
+     "weakness": "Darkness",
+     "attacks": [
+      "[2] Psychic 30"
+     ],
+     "cheapest_attack_cost": 2,
+     "evolves_in_list_to": null,
+     "online_at_setup": 0.0,
+     "ability": "Watch Over",
+     "ability_text": "Once during your turn, you may heal 20 damage from your Active Pokémon.",
+     "mechanic": {
+      "variant": "HealActiveYourPokemon",
+      "fields": "AbilityMechanic::HealActiveYourPokemon { amount: 20 }, ",
+      "map_line": 429,
+      "pos": "anywhere",
+      "first_turn": false,
+      "scope": "board",
+      "drawback": false,
+      "activated": true,
+      "gate_position": "anywhere",
+      "gate_line": 189
+     },
+     "switch_a": false,
+     "switch_b": true
+    }
+   ],
+   "p_no_basic_hand_repaired": 0.3991,
+   "p_opening_choice": 0.0965,
+   "p_opening_choice_distinct_names": 0.0965,
+   "p_two_plus_basic_cards": 0.1404,
+   "kp3_opens": {
+    "Skarmory ex A4 124": 0.7135,
+    "Indeedee ex B1 121": 0.2865
+   },
+   "kp3_opens_with_choice": {
+    "Skarmory ex A4 124": 0.0965
+   },
+   "kp3_opens_two_plus_basic_cards": {
+    "Skarmory ex A4 124": 0.1404
+   },
+   "carries_switch_a": [],
+   "carries_switch_b": [
+    "Indeedee ex B1 121"
+   ],
+   "p_opening_changes": {
+    "A": 0.0,
+    "B": 0.0,
+    "AB": 0.0,
+    "C": 0.0,
+    "D": 0.0,
+    "R": 0.0,
+    "AR": 0.0
+   },
+   "opening_transitions": {
+    "A": {},
+    "B": {},
+    "AB": {},
+    "C": {},
+    "D": {},
+    "R": {},
+    "AR": {}
+   }
+  },
+  {
+   "list": "decks/dustin/08-garchomp-toolbox.txt",
+   "group": "dustin",
+   "energy": "Water, Fighting",
+   "cards": 20,
+   "basics": [
+    {
+     "id": "B3 004",
+     "name": "Celebi",
+     "count": 1,
+     "type": "Grass",
+     "hp": 70,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Fire",
+     "attacks": [
+      "[2] Smack 30"
+     ],
+     "cheapest_attack_cost": 2,
+     "evolves_in_list_to": null,
+     "online_at_setup": 0.0,
+     "ability": "Time Recall",
+     "ability_text": "Each of your evolved Pokémon can use any attack from its previous Evolutions. (You still need the necessary Energy to use each attack.)",
+     "mechanic": {
+      "variant": "TimeRecall",
+      "fields": "AbilityMechanic::TimeRecall, ",
+      "map_line": 24,
+      "pos": "anywhere",
+      "first_turn": false,
+      "scope": "board",
+      "drawback": false,
+      "activated": false,
+      "gate_position": null,
+      "gate_line": 285
+     },
+     "switch_a": false,
+     "switch_b": true
+    },
+    {
+     "id": "A2 121",
+     "name": "Gible",
+     "count": 2,
+     "type": "Dragon",
+     "hp": 60,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": null,
+     "attacks": [
+      "[1] Gnaw 20"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": "Garchomp",
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "B3b 054",
+     "name": "Munchlax",
+     "count": 1,
+     "type": "Colorless",
+     "hp": 50,
+     "retreat": 2,
+     "ko_points": 1,
+     "weakness": null,
+     "attacks": [
+      "[0] Hungrily Draw 10"
+     ],
+     "cheapest_attack_cost": 0,
+     "evolves_in_list_to": null,
+     "online_at_setup": 1.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    }
+   ],
+   "p_no_basic_hand_repaired": 0.2817,
+   "p_opening_choice": 0.2126,
+   "p_opening_choice_distinct_names": 0.2126,
+   "p_two_plus_basic_cards": 0.2487,
+   "kp3_opens": {
+    "Gible A2 121": 0.4118,
+    "Munchlax B3b 054": 0.3204,
+    "Celebi B3 004": 0.2678
+   },
+   "kp3_opens_with_choice": {
+    "Munchlax B3b 054": 0.1326,
+    "Celebi B3 004": 0.08
+   },
+   "kp3_opens_two_plus_basic_cards": {
+    "Munchlax B3b 054": 0.1326,
+    "Celebi B3 004": 0.08,
+    "Gible A2 121": 0.0361
+   },
+   "carries_switch_a": [],
+   "carries_switch_b": [
+    "Celebi B3 004"
+   ],
+   "p_opening_changes": {
+    "A": 0.0,
+    "B": 0.08,
+    "AB": 0.08,
+    "C": 0.0,
+    "D": 0.0,
+    "R": 0.08,
+    "AR": 0.08
+   },
+   "opening_transitions": {
+    "A": {},
+    "B": {
+     "Celebi -> Gible": 0.08
+    },
+    "AB": {
+     "Celebi -> Gible": 0.08
+    },
+    "C": {},
+    "D": {},
+    "R": {
+     "Celebi -> Gible": 0.08
+    },
+    "AR": {
+     "Celebi -> Gible": 0.08
+    }
+   }
+  },
+  {
+   "list": "decks/dustin/09-mega-manectric-heliolisk.txt",
+   "group": "dustin",
+   "energy": "Lightning",
+   "cards": 20,
+   "basics": [
+    {
+     "id": "B1a 028",
+     "name": "Helioptile",
+     "count": 2,
+     "type": "Lightning",
+     "hp": 60,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Fighting",
+     "attacks": [
+      "[1] Thunder Shock 10"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": "Heliolisk",
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "B2b 026",
+     "name": "Electrike",
+     "count": 2,
+     "type": "Lightning",
+     "hp": 60,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Fighting",
+     "attacks": [
+      "[1] Quick Attack 10"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": "Mega Manectric ex",
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    }
+   ],
+   "p_no_basic_hand_repaired": 0.2817,
+   "p_opening_choice": 0.1765,
+   "p_opening_choice_distinct_names": 0.1765,
+   "p_two_plus_basic_cards": 0.2487,
+   "kp3_opens": {
+    "Electrike B2b 026": 0.5882,
+    "Helioptile B1a 028": 0.4118
+   },
+   "kp3_opens_with_choice": {
+    "Electrike B2b 026": 0.1765
+   },
+   "kp3_opens_two_plus_basic_cards": {
+    "Electrike B2b 026": 0.2126,
+    "Helioptile B1a 028": 0.0361
+   },
+   "carries_switch_a": [],
+   "carries_switch_b": [],
+   "p_opening_changes": {
+    "A": 0.0,
+    "B": 0.0,
+    "AB": 0.0,
+    "C": 0.0,
+    "D": 0.0,
+    "R": 0.0,
+    "AR": 0.0
+   },
+   "opening_transitions": {
+    "A": {},
+    "B": {},
+    "AB": {},
+    "C": {},
+    "D": {},
+    "R": {},
+    "AR": {}
+   }
+  },
+  {
+   "list": "decks/dustin/10-xatu-oricorio-tr-weezing.txt",
+   "group": "dustin",
+   "energy": "Psychic",
+   "cards": 20,
+   "basics": [
+    {
+     "id": "B1 097",
+     "name": "Natu",
+     "count": 2,
+     "type": "Psychic",
+     "hp": 60,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Darkness",
+     "attacks": [
+      "[1] Peck 10"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": "Xatu",
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "B4 078",
+     "name": "Oricorio",
+     "count": 2,
+     "type": "Psychic",
+     "hp": 80,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Darkness",
+     "attacks": [
+      "[1] Supernatural Feather 50"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": null,
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "B4a 042",
+     "name": "Team Rocket's Koffing",
+     "count": 1,
+     "type": "Darkness",
+     "hp": 60,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Fighting",
+     "attacks": [
+      "[1] Reverse Thrust 10"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": "Team Rocket's Weezing ex",
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    }
+   ],
+   "p_no_basic_hand_repaired": 0.1937,
+   "p_opening_choice": 0.3074,
+   "p_opening_choice_distinct_names": 0.3074,
+   "p_two_plus_basic_cards": 0.3661,
+   "kp3_opens": {
+    "Oricorio B4 078": 0.5248,
+    "Natu B1 097": 0.2829,
+    "Team Rocket's Koffing B4a 042": 0.1922
+   },
+   "kp3_opens_with_choice": {
+    "Oricorio B4 078": 0.2419,
+    "Team Rocket's Koffing B4a 042": 0.0655
+   },
+   "kp3_opens_two_plus_basic_cards": {
+    "Oricorio B4 078": 0.2713,
+    "Team Rocket's Koffing B4a 042": 0.0655,
+    "Natu B1 097": 0.0293
+   },
+   "carries_switch_a": [],
+   "carries_switch_b": [],
+   "p_opening_changes": {
+    "A": 0.0,
+    "B": 0.0,
+    "AB": 0.0,
+    "C": 0.0,
+    "D": 0.0,
+    "R": 0.0,
+    "AR": 0.0
+   },
+   "opening_transitions": {
+    "A": {},
+    "B": {},
+    "AB": {},
+    "C": {},
+    "D": {},
+    "R": {},
+    "AR": {}
+   }
+  },
+  {
+   "list": "decks/dustin/11-archaludon-haxorus-dragonair.txt",
+   "group": "dustin",
+   "energy": "Fighting, Metal",
+   "cards": 20,
+   "basics": [
+    {
+     "id": "B4a 055",
+     "name": "Duraludon",
+     "count": 1,
+     "type": "Dragon",
+     "hp": 100,
+     "retreat": 2,
+     "ko_points": 1,
+     "weakness": null,
+     "attacks": [
+      "[2] Power Beam 50"
+     ],
+     "cheapest_attack_cost": 2,
+     "evolves_in_list_to": "Archaludon",
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "B2b 054",
+     "name": "Axew",
+     "count": 2,
+     "type": "Dragon",
+     "hp": 70,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": null,
+     "attacks": [
+      "[2] Sharp Fang 40"
+     ],
+     "cheapest_attack_cost": 2,
+     "evolves_in_list_to": "Haxorus",
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "B4 116",
+     "name": "Dratini",
+     "count": 2,
+     "type": "Dragon",
+     "hp": 60,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": null,
+     "attacks": [
+      "[1] Slam 20"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": "Dragonair",
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    }
+   ],
+   "p_no_basic_hand_repaired": 0.1937,
+   "p_opening_choice": 0.3074,
+   "p_opening_choice_distinct_names": 0.3074,
+   "p_two_plus_basic_cards": 0.3661,
+   "kp3_opens": {
+    "Axew B2b 054": 0.4284,
+    "Duraludon B4a 055": 0.2887,
+    "Dratini B4 116": 0.2829
+   },
+   "kp3_opens_with_choice": {
+    "Duraludon B4a 055": 0.162,
+    "Axew B2b 054": 0.1454
+   },
+   "kp3_opens_two_plus_basic_cards": {
+    "Axew B2b 054": 0.1748,
+    "Duraludon B4a 055": 0.162,
+    "Dratini B4 116": 0.0293
+   },
+   "carries_switch_a": [],
+   "carries_switch_b": [],
+   "p_opening_changes": {
+    "A": 0.0,
+    "B": 0.0,
+    "AB": 0.0,
+    "C": 0.0,
+    "D": 0.0,
+    "R": 0.2419,
+    "AR": 0.2419
+   },
+   "opening_transitions": {
+    "A": {},
+    "B": {},
+    "AB": {},
+    "C": {},
+    "D": {},
+    "R": {
+     "Axew -> Dratini": 0.1454,
+     "Duraludon -> Dratini": 0.0965
+    },
+    "AR": {
+     "Axew -> Dratini": 0.1454,
+     "Duraludon -> Dratini": 0.0965
+    }
+   }
+  },
+  {
+   "list": "decks/dustin/12-ariados-whimsicott-ogerpon.txt",
+   "group": "dustin",
+   "energy": "Grass",
+   "cards": 20,
+   "basics": [
+    {
+     "id": "B1a 005",
+     "name": "Spinarak",
+     "count": 2,
+     "type": "Grass",
+     "hp": 50,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Fire",
+     "attacks": [
+      "[1] Sting 20"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": "Ariados",
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "B1 015",
+     "name": "Cottonee",
+     "count": 2,
+     "type": "Grass",
+     "hp": 50,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Fire",
+     "attacks": [
+      "[1] Razor Leaf 20"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": "Whimsicott ex",
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "B2 017",
+     "name": "Teal Mask Ogerpon ex",
+     "count": 1,
+     "type": "Grass",
+     "hp": 130,
+     "retreat": 1,
+     "ko_points": 2,
+     "weakness": "Fire",
+     "attacks": [
+      "[2] Energized Leaves 60"
+     ],
+     "cheapest_attack_cost": 2,
+     "evolves_in_list_to": null,
+     "online_at_setup": 0.0,
+     "ability": "Soothing Wind",
+     "ability_text": "Each of your Pokémon that has any Energy attached recovers from all Special Conditions and can't be affected by any Special Conditions.",
+     "mechanic": {
+      "variant": "SoothingWind",
+      "fields": "AbilityMechanic::SoothingWind { energy_type: None }, ",
+      "map_line": 136,
+      "pos": "anywhere",
+      "first_turn": false,
+      "scope": "board",
+      "drawback": false,
+      "activated": false,
+      "gate_position": null,
+      "gate_line": 205
+     },
+     "switch_a": false,
+     "switch_b": true
+    }
+   ],
+   "p_no_basic_hand_repaired": 0.1937,
+   "p_opening_choice": 0.3074,
+   "p_opening_choice_distinct_names": 0.3074,
+   "p_two_plus_basic_cards": 0.3661,
+   "kp3_opens": {
+    "Spinarak B1a 005": 0.4284,
+    "Teal Mask Ogerpon ex B2 017": 0.2887,
+    "Cottonee B1 015": 0.2829
+   },
+   "kp3_opens_with_choice": {
+    "Teal Mask Ogerpon ex B2 017": 0.162,
+    "Spinarak B1a 005": 0.1454
+   },
+   "kp3_opens_two_plus_basic_cards": {
+    "Spinarak B1a 005": 0.1748,
+    "Teal Mask Ogerpon ex B2 017": 0.162,
+    "Cottonee B1 015": 0.0293
+   },
+   "carries_switch_a": [],
+   "carries_switch_b": [
+    "Teal Mask Ogerpon ex B2 017"
+   ],
+   "p_opening_changes": {
+    "A": 0.0,
+    "B": 0.162,
+    "AB": 0.162,
+    "C": 0.0,
+    "D": 0.0,
+    "R": 0.162,
+    "AR": 0.162
+   },
+   "opening_transitions": {
+    "A": {},
+    "B": {
+     "Teal Mask Ogerpon ex -> Spinarak": 0.0965,
+     "Teal Mask Ogerpon ex -> Cottonee": 0.0655
+    },
+    "AB": {
+     "Teal Mask Ogerpon ex -> Spinarak": 0.0965,
+     "Teal Mask Ogerpon ex -> Cottonee": 0.0655
+    },
+    "C": {},
+    "D": {},
+    "R": {
+     "Teal Mask Ogerpon ex -> Spinarak": 0.0965,
+     "Teal Mask Ogerpon ex -> Cottonee": 0.0655
+    },
+    "AR": {
+     "Teal Mask Ogerpon ex -> Spinarak": 0.0965,
+     "Teal Mask Ogerpon ex -> Cottonee": 0.0655
+    }
+   }
+  },
+  {
+   "list": "decks/dustin/13-a-ninetales-raticate.txt",
+   "group": "dustin",
+   "energy": "Water",
+   "cards": 20,
+   "basics": [
+    {
+     "id": "B2 028",
+     "name": "Alolan Vulpix",
+     "count": 2,
+     "type": "Water",
+     "hp": 60,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Metal",
+     "attacks": [
+      "[1] Gnaw 20"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": "Alolan Ninetales ex",
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "B4a 058",
+     "name": "Team Rocket's Rattata",
+     "count": 2,
+     "type": "Colorless",
+     "hp": 40,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Fighting",
+     "attacks": [
+      "[1] Ambush 20"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": "Team Rocket's Raticate ex",
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    }
+   ],
+   "p_no_basic_hand_repaired": 0.2817,
+   "p_opening_choice": 0.1765,
+   "p_opening_choice_distinct_names": 0.1765,
+   "p_two_plus_basic_cards": 0.2487,
+   "kp3_opens": {
+    "Alolan Vulpix B2 028": 0.5882,
+    "Team Rocket's Rattata B4a 058": 0.4118
+   },
+   "kp3_opens_with_choice": {
+    "Alolan Vulpix B2 028": 0.1765
+   },
+   "kp3_opens_two_plus_basic_cards": {
+    "Alolan Vulpix B2 028": 0.2126,
+    "Team Rocket's Rattata B4a 058": 0.0361
+   },
+   "carries_switch_a": [],
+   "carries_switch_b": [],
+   "p_opening_changes": {
+    "A": 0.0,
+    "B": 0.0,
+    "AB": 0.0,
+    "C": 0.0,
+    "D": 0.0,
+    "R": 0.0,
+    "AR": 0.0
+   },
+   "opening_transitions": {
+    "A": {},
+    "B": {},
+    "AB": {},
+    "C": {},
+    "D": {},
+    "R": {},
+    "AR": {}
+   }
+  },
+  {
+   "list": "decks/dustin/14-comfey-raticate-hypno.txt",
+   "group": "dustin",
+   "energy": "Psychic",
+   "cards": 20,
+   "basics": [
+    {
+     "id": "A3 080",
+     "name": "Comfey",
+     "count": 1,
+     "type": "Psychic",
+     "hp": 70,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Metal",
+     "attacks": [
+      "[2] Spinning Attack 30"
+     ],
+     "cheapest_attack_cost": 2,
+     "evolves_in_list_to": null,
+     "online_at_setup": 0.0,
+     "ability": "Flower Shield",
+     "ability_text": "Each of your Pokémon that has any [P] Energy attached recovers from all Special Conditions and can't be affected by any Special Conditions.",
+     "mechanic": {
+      "variant": "SoothingWind",
+      "fields": "AbilityMechanic::SoothingWind { energy_type: Some(EnergyType::Psychic), }, ",
+      "map_line": 140,
+      "pos": "anywhere",
+      "first_turn": false,
+      "scope": "board",
+      "drawback": false,
+      "activated": false,
+      "gate_position": null,
+      "gate_line": 205
+     },
+     "switch_a": false,
+     "switch_b": true
+    },
+    {
+     "id": "B4a 058",
+     "name": "Team Rocket's Rattata",
+     "count": 2,
+     "type": "Colorless",
+     "hp": 40,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Fighting",
+     "attacks": [
+      "[1] Ambush 20"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": "Team Rocket's Raticate ex",
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "B4a 027",
+     "name": "Team Rocket's Drowzee",
+     "count": 2,
+     "type": "Psychic",
+     "hp": 60,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Darkness",
+     "attacks": [
+      "[2] Mumble 40"
+     ],
+     "cheapest_attack_cost": 2,
+     "evolves_in_list_to": "Team Rocket's Hypno",
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    }
+   ],
+   "p_no_basic_hand_repaired": 0.1937,
+   "p_opening_choice": 0.3074,
+   "p_opening_choice_distinct_names": 0.3074,
+   "p_two_plus_basic_cards": 0.3661,
+   "kp3_opens": {
+    "Team Rocket's Drowzee B4a 027": 0.4284,
+    "Comfey A3 080": 0.2887,
+    "Team Rocket's Rattata B4a 058": 0.2829
+   },
+   "kp3_opens_with_choice": {
+    "Comfey A3 080": 0.162,
+    "Team Rocket's Drowzee B4a 027": 0.1454
+   },
+   "kp3_opens_two_plus_basic_cards": {
+    "Team Rocket's Drowzee B4a 027": 0.1748,
+    "Comfey A3 080": 0.162,
+    "Team Rocket's Rattata B4a 058": 0.0293
+   },
+   "carries_switch_a": [],
+   "carries_switch_b": [
+    "Comfey A3 080"
+   ],
+   "p_opening_changes": {
+    "A": 0.0,
+    "B": 0.162,
+    "AB": 0.162,
+    "C": 0.0,
+    "D": 0.0,
+    "R": 0.2419,
+    "AR": 0.2419
+   },
+   "opening_transitions": {
+    "A": {},
+    "B": {
+     "Comfey -> Team Rocket's Drowzee": 0.0965,
+     "Comfey -> Team Rocket's Rattata": 0.0655
+    },
+    "AB": {
+     "Comfey -> Team Rocket's Drowzee": 0.0965,
+     "Comfey -> Team Rocket's Rattata": 0.0655
+    },
+    "C": {},
+    "D": {},
+    "R": {
+     "Team Rocket's Drowzee -> Team Rocket's Rattata": 0.1454,
+     "Comfey -> Team Rocket's Rattata": 0.0965
+    },
+    "AR": {
+     "Team Rocket's Drowzee -> Team Rocket's Rattata": 0.1454,
+     "Comfey -> Team Rocket's Rattata": 0.0965
+    }
+   }
+  },
+  {
+   "list": "decks/dustin/15-jolteon-oricorio-raticate.txt",
+   "group": "dustin",
+   "energy": "Lightning",
+   "cards": 20,
+   "basics": [
+    {
+     "id": "B1 184",
+     "name": "Eevee",
+     "count": 2,
+     "type": "Colorless",
+     "hp": 50,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Fighting",
+     "attacks": [
+      "[1] Stampede 10"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": "Jolteon ex",
+     "online_at_setup": 0.0,
+     "ability": "Boosted Evolution",
+     "ability_text": "As long as this Pokémon is in the Active Spot, it can evolve during your first turn or the turn you play it.",
+     "mechanic": {
+      "variant": "CanEvolveOnFirstTurnIfActive",
+      "fields": "AbilityMechanic::CanEvolveOnFirstTurnIfActive, ",
+      "map_line": 36,
+      "pos": "active",
+      "first_turn": true,
+      "scope": "self",
+      "drawback": false,
+      "activated": false,
+      "gate_position": null,
+      "gate_line": 228
+     },
+     "switch_a": true,
+     "switch_b": false
+    },
+    {
+     "id": "A3 066",
+     "name": "Oricorio",
+     "count": 1,
+     "type": "Lightning",
+     "hp": 70,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Fighting",
+     "attacks": [
+      "[2] Zzzap 50"
+     ],
+     "cheapest_attack_cost": 2,
+     "evolves_in_list_to": null,
+     "online_at_setup": 0.0,
+     "ability": "Safeguard",
+     "ability_text": "Prevent all damage done to this Pokémon by attacks from your opponent's Pokémon ex.",
+     "mechanic": {
+      "variant": "PreventAllDamageFromEx",
+      "fields": "AbilityMechanic::PreventAllDamageFromEx, ",
+      "map_line": 551,
+      "pos": "anywhere",
+      "first_turn": false,
+      "scope": "self",
+      "drawback": false,
+      "activated": false,
+      "gate_position": null,
+      "gate_line": 214
+     },
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "B4a 058",
+     "name": "Team Rocket's Rattata",
+     "count": 2,
+     "type": "Colorless",
+     "hp": 40,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Fighting",
+     "attacks": [
+      "[1] Ambush 20"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": "Team Rocket's Raticate ex",
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    }
+   ],
+   "p_no_basic_hand_repaired": 0.1937,
+   "p_opening_choice": 0.3074,
+   "p_opening_choice_distinct_names": 0.3074,
+   "p_two_plus_basic_cards": 0.3661,
+   "kp3_opens": {
+    "Eevee B1 184": 0.4284,
+    "Oricorio A3 066": 0.2887,
+    "Team Rocket's Rattata B4a 058": 0.2829
+   },
+   "kp3_opens_with_choice": {
+    "Oricorio A3 066": 0.162,
+    "Eevee B1 184": 0.1454
+   },
+   "kp3_opens_two_plus_basic_cards": {
+    "Eevee B1 184": 0.1748,
+    "Oricorio A3 066": 0.162,
+    "Team Rocket's Rattata B4a 058": 0.0293
+   },
+   "carries_switch_a": [
+    "Eevee B1 184"
+   ],
+   "carries_switch_b": [],
+   "p_opening_changes": {
+    "A": 0.0965,
+    "B": 0.0,
+    "AB": 0.0965,
+    "C": 0.0,
+    "D": 0.0,
+    "R": 0.162,
+    "AR": 0.162
+   },
+   "opening_transitions": {
+    "A": {
+     "Oricorio -> Eevee": 0.0965
+    },
+    "B": {},
+    "AB": {
+     "Oricorio -> Eevee": 0.0965
+    },
+    "C": {},
+    "D": {},
+    "R": {
+     "Oricorio -> Eevee": 0.0965,
+     "Oricorio -> Team Rocket's Rattata": 0.0655
+    },
+    "AR": {
+     "Oricorio -> Eevee": 0.0965,
+     "Oricorio -> Team Rocket's Rattata": 0.0655
+    }
+   }
+  },
+  {
+   "list": "decks/brews/brew-01-arceus-crobat-xatu.txt",
+   "group": "brew",
+   "energy": "Psychic",
+   "cards": 20,
+   "basics": [
+    {
+     "id": "A2a 071",
+     "name": "Arceus ex",
+     "count": 2,
+     "type": "Colorless",
+     "hp": 140,
+     "retreat": 2,
+     "ko_points": 2,
+     "weakness": "Fighting",
+     "attacks": [
+      "[3] Ultimate Force 70"
+     ],
+     "cheapest_attack_cost": 3,
+     "evolves_in_list_to": null,
+     "online_at_setup": 0.0,
+     "ability": "Fabled Luster",
+     "ability_text": "This Pokémon can't be affected by any Special Conditions.",
+     "mechanic": {
+      "variant": "ImmuneToStatusConditions",
+      "fields": "AbilityMechanic::ImmuneToStatusConditions { status: None }, ",
+      "map_line": 577,
+      "pos": "anywhere",
+      "first_turn": false,
+      "scope": "self",
+      "drawback": false,
+      "activated": false,
+      "gate_position": null,
+      "gate_line": 204
+     },
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "A1 172",
+     "name": "Zubat",
+     "count": 2,
+     "type": "Darkness",
+     "hp": 50,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Fighting",
+     "attacks": [
+      "[1] Glide 10"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": "Crobat",
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "A4 081",
+     "name": "Natu",
+     "count": 2,
+     "type": "Psychic",
+     "hp": 50,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Darkness",
+     "attacks": [
+      "[1] Peck 20"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": "Xatu",
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    }
+   ],
+   "p_no_basic_hand_repaired": 0.1291,
+   "p_opening_choice": 0.4131,
+   "p_opening_choice_distinct_names": 0.4131,
+   "p_two_plus_basic_cards": 0.4835,
+   "kp3_opens": {
+    "Arceus ex A2a 071": 0.4904,
+    "Natu A4 081": 0.3139,
+    "Zubat A1 172": 0.1956
+   },
+   "kp3_opens_with_choice": {
+    "Arceus ex A2a 071": 0.2948,
+    "Natu A4 081": 0.1183
+   },
+   "kp3_opens_two_plus_basic_cards": {
+    "Arceus ex A2a 071": 0.3182,
+    "Natu A4 081": 0.1418,
+    "Zubat A1 172": 0.0235
+   },
+   "carries_switch_a": [],
+   "carries_switch_b": [],
+   "p_opening_changes": {
+    "A": 0.0,
+    "B": 0.0,
+    "AB": 0.0,
+    "C": 0.0,
+    "D": 0.0,
+    "R": 0.2948,
+    "AR": 0.2948
+   },
+   "opening_transitions": {
+    "A": {},
+    "B": {},
+    "AB": {},
+    "C": {},
+    "D": {},
+    "R": {
+     "Arceus ex -> Natu": 0.1765,
+     "Arceus ex -> Zubat": 0.1183
+    },
+    "AR": {
+     "Arceus ex -> Natu": 0.1765,
+     "Arceus ex -> Zubat": 0.1183
+    }
+   }
+  },
+  {
+   "list": "decks/brews/brew-02-arceus-tandemaus-persian.txt",
+   "group": "brew",
+   "energy": "Darkness",
+   "cards": 20,
+   "basics": [
+    {
+     "id": "A2a 071",
+     "name": "Arceus ex",
+     "count": 2,
+     "type": "Colorless",
+     "hp": 140,
+     "retreat": 2,
+     "ko_points": 2,
+     "weakness": "Fighting",
+     "attacks": [
+      "[3] Ultimate Force 70"
+     ],
+     "cheapest_attack_cost": 3,
+     "evolves_in_list_to": null,
+     "online_at_setup": 0.0,
+     "ability": "Fabled Luster",
+     "ability_text": "This Pokémon can't be affected by any Special Conditions.",
+     "mechanic": {
+      "variant": "ImmuneToStatusConditions",
+      "fields": "AbilityMechanic::ImmuneToStatusConditions { status: None }, ",
+      "map_line": 577,
+      "pos": "anywhere",
+      "first_turn": false,
+      "scope": "self",
+      "drawback": false,
+      "activated": false,
+      "gate_position": null,
+      "gate_line": 204
+     },
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "B2 142",
+     "name": "Tandemaus",
+     "count": 2,
+     "type": "Colorless",
+     "hp": 40,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Fighting",
+     "attacks": [
+      "[1] Flock 0"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": "Maushold",
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "B4a 060",
+     "name": "Team Rocket's Meowth",
+     "count": 2,
+     "type": "Colorless",
+     "hp": 50,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Fighting",
+     "attacks": [
+      "[1] Scratch 30"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": "Team Rocket's Persian",
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    }
+   ],
+   "p_no_basic_hand_repaired": 0.1291,
+   "p_opening_choice": 0.4131,
+   "p_opening_choice_distinct_names": 0.4131,
+   "p_two_plus_basic_cards": 0.4835,
+   "kp3_opens": {
+    "Arceus ex A2a 071": 0.4904,
+    "Team Rocket's Meowth B4a 060": 0.3139,
+    "Tandemaus B2 142": 0.1956
+   },
+   "kp3_opens_with_choice": {
+    "Arceus ex A2a 071": 0.2948,
+    "Team Rocket's Meowth B4a 060": 0.1183
+   },
+   "kp3_opens_two_plus_basic_cards": {
+    "Arceus ex A2a 071": 0.3182,
+    "Team Rocket's Meowth B4a 060": 0.1418,
+    "Tandemaus B2 142": 0.0235
+   },
+   "carries_switch_a": [],
+   "carries_switch_b": [],
+   "p_opening_changes": {
+    "A": 0.0,
+    "B": 0.0,
+    "AB": 0.0,
+    "C": 0.0,
+    "D": 0.0,
+    "R": 0.2948,
+    "AR": 0.2948
+   },
+   "opening_transitions": {
+    "A": {},
+    "B": {},
+    "AB": {},
+    "C": {},
+    "D": {},
+    "R": {
+     "Arceus ex -> Team Rocket's Meowth": 0.1765,
+     "Arceus ex -> Tandemaus": 0.1183
+    },
+    "AR": {
+     "Arceus ex -> Team Rocket's Meowth": 0.1765,
+     "Arceus ex -> Tandemaus": 0.1183
+    }
+   }
+  },
+  {
+   "list": "decks/brews/brew-03a-arceus-nihilego-toxapex.txt",
+   "group": "brew",
+   "energy": "Darkness",
+   "cards": 20,
+   "basics": [
+    {
+     "id": "A2a 071",
+     "name": "Arceus ex",
+     "count": 2,
+     "type": "Colorless",
+     "hp": 140,
+     "retreat": 2,
+     "ko_points": 2,
+     "weakness": "Fighting",
+     "attacks": [
+      "[3] Ultimate Force 70"
+     ],
+     "cheapest_attack_cost": 3,
+     "evolves_in_list_to": null,
+     "online_at_setup": 0.0,
+     "ability": "Fabled Luster",
+     "ability_text": "This Pokémon can't be affected by any Special Conditions.",
+     "mechanic": {
+      "variant": "ImmuneToStatusConditions",
+      "fields": "AbilityMechanic::ImmuneToStatusConditions { status: None }, ",
+      "map_line": 577,
+      "pos": "anywhere",
+      "first_turn": false,
+      "scope": "self",
+      "drawback": false,
+      "activated": false,
+      "gate_position": null,
+      "gate_line": 204
+     },
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "A3a 042",
+     "name": "Nihilego",
+     "count": 2,
+     "type": "Darkness",
+     "hp": 70,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Fighting",
+     "attacks": [
+      "[2] New Wave 30"
+     ],
+     "cheapest_attack_cost": 2,
+     "evolves_in_list_to": null,
+     "online_at_setup": 0.0,
+     "ability": "More Poison",
+     "ability_text": "Your opponent's Active Pokémon takes +10 damage from being Poisoned.",
+     "mechanic": {
+      "variant": "IncreasePoisonDamage",
+      "fields": "AbilityMechanic::IncreasePoisonDamage { amount: 10 }, ",
+      "map_line": 686,
+      "pos": "anywhere",
+      "first_turn": false,
+      "scope": "board",
+      "drawback": false,
+      "activated": false,
+      "gate_position": null,
+      "gate_line": 216
+     },
+     "switch_a": false,
+     "switch_b": true
+    },
+    {
+     "id": "B3b 046",
+     "name": "Mareanie",
+     "count": 2,
+     "type": "Darkness",
+     "hp": 60,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Fighting",
+     "attacks": [
+      "[2] Venoshock 20"
+     ],
+     "cheapest_attack_cost": 2,
+     "evolves_in_list_to": "Toxapex",
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    }
+   ],
+   "p_no_basic_hand_repaired": 0.1291,
+   "p_opening_choice": 0.4131,
+   "p_opening_choice_distinct_names": 0.4131,
+   "p_two_plus_basic_cards": 0.4835,
+   "kp3_opens": {
+    "Nihilego A3a 042": 0.4904,
+    "Arceus ex A2a 071": 0.3139,
+    "Mareanie B3b 046": 0.1956
+   },
+   "kp3_opens_with_choice": {
+    "Nihilego A3a 042": 0.2948,
+    "Arceus ex A2a 071": 0.1183
+   },
+   "kp3_opens_two_plus_basic_cards": {
+    "Nihilego A3a 042": 0.3182,
+    "Arceus ex A2a 071": 0.1418,
+    "Mareanie B3b 046": 0.0235
+   },
+   "carries_switch_a": [],
+   "carries_switch_b": [
+    "Nihilego A3a 042"
+   ],
+   "p_opening_changes": {
+    "A": 0.0,
+    "B": 0.2948,
+    "AB": 0.2948,
+    "C": 0.0,
+    "D": 0.0,
+    "R": 0.1183,
+    "AR": 0.1183
+   },
+   "opening_transitions": {
+    "A": {},
+    "B": {
+     "Nihilego -> Arceus ex": 0.1765,
+     "Nihilego -> Mareanie": 0.1183
+    },
+    "AB": {
+     "Nihilego -> Arceus ex": 0.1765,
+     "Nihilego -> Mareanie": 0.1183
+    },
+    "C": {},
+    "D": {},
+    "R": {
+     "Arceus ex -> Mareanie": 0.1183
+    },
+    "AR": {
+     "Arceus ex -> Mareanie": 0.1183
+    }
+   }
+  },
+  {
+   "list": "decks/brews/brew-03b-arceus-crobat-nihilego-toxapex.txt",
+   "group": "brew",
+   "energy": "Darkness",
+   "cards": 20,
+   "basics": [
+    {
+     "id": "A2a 071",
+     "name": "Arceus ex",
+     "count": 2,
+     "type": "Colorless",
+     "hp": 140,
+     "retreat": 2,
+     "ko_points": 2,
+     "weakness": "Fighting",
+     "attacks": [
+      "[3] Ultimate Force 70"
+     ],
+     "cheapest_attack_cost": 3,
+     "evolves_in_list_to": null,
+     "online_at_setup": 0.0,
+     "ability": "Fabled Luster",
+     "ability_text": "This Pokémon can't be affected by any Special Conditions.",
+     "mechanic": {
+      "variant": "ImmuneToStatusConditions",
+      "fields": "AbilityMechanic::ImmuneToStatusConditions { status: None }, ",
+      "map_line": 577,
+      "pos": "anywhere",
+      "first_turn": false,
+      "scope": "self",
+      "drawback": false,
+      "activated": false,
+      "gate_position": null,
+      "gate_line": 204
+     },
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "A4 107",
+     "name": "Zubat",
+     "count": 2,
+     "type": "Darkness",
+     "hp": 50,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Fighting",
+     "attacks": [
+      "[1] Venomous Fang 10"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": "Crobat",
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "A3a 042",
+     "name": "Nihilego",
+     "count": 1,
+     "type": "Darkness",
+     "hp": 70,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Fighting",
+     "attacks": [
+      "[2] New Wave 30"
+     ],
+     "cheapest_attack_cost": 2,
+     "evolves_in_list_to": null,
+     "online_at_setup": 0.0,
+     "ability": "More Poison",
+     "ability_text": "Your opponent's Active Pokémon takes +10 damage from being Poisoned.",
+     "mechanic": {
+      "variant": "IncreasePoisonDamage",
+      "fields": "AbilityMechanic::IncreasePoisonDamage { amount: 10 }, ",
+      "map_line": 686,
+      "pos": "anywhere",
+      "first_turn": false,
+      "scope": "board",
+      "drawback": false,
+      "activated": false,
+      "gate_position": null,
+      "gate_line": 216
+     },
+     "switch_a": false,
+     "switch_b": true
+    },
+    {
+     "id": "B3b 046",
+     "name": "Mareanie",
+     "count": 2,
+     "type": "Darkness",
+     "hp": 60,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Fighting",
+     "attacks": [
+      "[2] Venoshock 20"
+     ],
+     "cheapest_attack_cost": 2,
+     "evolves_in_list_to": "Toxapex",
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    }
+   ],
+   "p_no_basic_hand_repaired": 0.083,
+   "p_opening_choice": 0.5388,
+   "p_opening_choice_distinct_names": 0.5388,
+   "p_two_plus_basic_cards": 0.5942,
+   "kp3_opens": {
+    "Arceus ex A2a 071": 0.3746,
+    "Nihilego A3a 042": 0.2619,
+    "Mareanie B3b 046": 0.2291,
+    "Zubat A4 107": 0.1344
+   },
+   "kp3_opens_with_choice": {
+    "Arceus ex A2a 071": 0.2402,
+    "Nihilego A3a 042": 0.2039,
+    "Mareanie B3b 046": 0.0947
+   },
+   "kp3_opens_two_plus_basic_cards": {
+    "Arceus ex A2a 071": 0.2586,
+    "Nihilego A3a 042": 0.2039,
+    "Mareanie B3b 046": 0.1132,
+    "Zubat A4 107": 0.0184
+   },
+   "carries_switch_a": [],
+   "carries_switch_b": [
+    "Nihilego A3a 042"
+   ],
+   "p_opening_changes": {
+    "A": 0.0,
+    "B": 0.2039,
+    "AB": 0.2039,
+    "C": 0.0,
+    "D": 0.0,
+    "R": 0.4314,
+    "AR": 0.4314
+   },
+   "opening_transitions": {
+    "A": {},
+    "B": {
+     "Nihilego -> Arceus ex": 0.0965,
+     "Nihilego -> Mareanie": 0.0655,
+     "Nihilego -> Zubat": 0.0419
+    },
+    "AB": {
+     "Nihilego -> Arceus ex": 0.0965,
+     "Nihilego -> Mareanie": 0.0655,
+     "Nihilego -> Zubat": 0.0419
+    },
+    "C": {},
+    "D": {},
+    "R": {
+     "Arceus ex -> Zubat": 0.1454,
+     "Nihilego -> Zubat": 0.0965,
+     "Mareanie -> Zubat": 0.0947,
+     "Arceus ex -> Mareanie": 0.0947
+    },
+    "AR": {
+     "Arceus ex -> Zubat": 0.1454,
+     "Nihilego -> Zubat": 0.0965,
+     "Mareanie -> Zubat": 0.0947,
+     "Arceus ex -> Mareanie": 0.0947
+    }
+   }
+  },
+  {
+   "list": "decks/brews/brew-04-xatu-slowking.txt",
+   "group": "brew",
+   "energy": "Psychic",
+   "cards": 20,
+   "basics": [
+    {
+     "id": "B1 097",
+     "name": "Natu",
+     "count": 2,
+     "type": "Psychic",
+     "hp": 60,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Darkness",
+     "attacks": [
+      "[1] Peck 10"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": "Xatu",
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "B4a 025",
+     "name": "Team Rocket's Slowpoke",
+     "count": 2,
+     "type": "Psychic",
+     "hp": 80,
+     "retreat": 2,
+     "ko_points": 1,
+     "weakness": "Darkness",
+     "attacks": [
+      "[1] Scavenge 0"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": "Team Rocket's Slowking ex",
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "B4a 042",
+     "name": "Team Rocket's Koffing",
+     "count": 1,
+     "type": "Darkness",
+     "hp": 60,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Fighting",
+     "attacks": [
+      "[1] Reverse Thrust 10"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": "Team Rocket's Weezing ex",
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    }
+   ],
+   "p_no_basic_hand_repaired": 0.1937,
+   "p_opening_choice": 0.3074,
+   "p_opening_choice_distinct_names": 0.3074,
+   "p_two_plus_basic_cards": 0.3661,
+   "kp3_opens": {
+    "Team Rocket's Slowpoke B4a 025": 0.5248,
+    "Natu B1 097": 0.2829,
+    "Team Rocket's Koffing B4a 042": 0.1922
+   },
+   "kp3_opens_with_choice": {
+    "Team Rocket's Slowpoke B4a 025": 0.2419,
+    "Team Rocket's Koffing B4a 042": 0.0655
+   },
+   "kp3_opens_two_plus_basic_cards": {
+    "Team Rocket's Slowpoke B4a 025": 0.2713,
+    "Team Rocket's Koffing B4a 042": 0.0655,
+    "Natu B1 097": 0.0293
+   },
+   "carries_switch_a": [],
+   "carries_switch_b": [],
+   "p_opening_changes": {
+    "A": 0.0,
+    "B": 0.0,
+    "AB": 0.0,
+    "C": 0.0,
+    "D": 0.0,
+    "R": 0.0,
+    "AR": 0.0
+   },
+   "opening_transitions": {
+    "A": {},
+    "B": {},
+    "AB": {},
+    "C": {},
+    "D": {},
+    "R": {},
+    "AR": {}
+   }
+  },
+  {
+   "list": "decks/brews/brew-05-meowstic-hatterene-confusion.txt",
+   "group": "brew",
+   "energy": "Psychic",
+   "cards": 20,
+   "basics": [
+    {
+     "id": "B3 065",
+     "name": "Espurr",
+     "count": 2,
+     "type": "Psychic",
+     "hp": 60,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Darkness",
+     "attacks": [
+      "[1] Mumble 20"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": "Meowstic",
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "B3 069",
+     "name": "Hatenna",
+     "count": 2,
+     "type": "Psychic",
+     "hp": 60,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Darkness",
+     "attacks": [
+      "[1] Stampede 10"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": "Hatterene",
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    }
+   ],
+   "p_no_basic_hand_repaired": 0.2817,
+   "p_opening_choice": 0.1765,
+   "p_opening_choice_distinct_names": 0.1765,
+   "p_two_plus_basic_cards": 0.2487,
+   "kp3_opens": {
+    "Hatenna B3 069": 0.5882,
+    "Espurr B3 065": 0.4118
+   },
+   "kp3_opens_with_choice": {
+    "Hatenna B3 069": 0.1765
+   },
+   "kp3_opens_two_plus_basic_cards": {
+    "Hatenna B3 069": 0.2126,
+    "Espurr B3 065": 0.0361
+   },
+   "carries_switch_a": [],
+   "carries_switch_b": [],
+   "p_opening_changes": {
+    "A": 0.0,
+    "B": 0.0,
+    "AB": 0.0,
+    "C": 0.0,
+    "D": 0.0,
+    "R": 0.0,
+    "AR": 0.0
+   },
+   "opening_transitions": {
+    "A": {},
+    "B": {},
+    "AB": {},
+    "C": {},
+    "D": {},
+    "R": {},
+    "AR": {}
+   }
+  },
+  {
+   "list": "decks/brews/brew-05b-meowstic-hatterene-comfey.txt",
+   "group": "brew",
+   "energy": "Psychic",
+   "cards": 20,
+   "basics": [
+    {
+     "id": "B3 065",
+     "name": "Espurr",
+     "count": 2,
+     "type": "Psychic",
+     "hp": 60,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Darkness",
+     "attacks": [
+      "[1] Mumble 20"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": "Meowstic",
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "B3 069",
+     "name": "Hatenna",
+     "count": 2,
+     "type": "Psychic",
+     "hp": 60,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Darkness",
+     "attacks": [
+      "[1] Stampede 10"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": "Hatterene",
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "A3 080",
+     "name": "Comfey",
+     "count": 1,
+     "type": "Psychic",
+     "hp": 70,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Metal",
+     "attacks": [
+      "[2] Spinning Attack 30"
+     ],
+     "cheapest_attack_cost": 2,
+     "evolves_in_list_to": null,
+     "online_at_setup": 0.0,
+     "ability": "Flower Shield",
+     "ability_text": "Each of your Pokémon that has any [P] Energy attached recovers from all Special Conditions and can't be affected by any Special Conditions.",
+     "mechanic": {
+      "variant": "SoothingWind",
+      "fields": "AbilityMechanic::SoothingWind { energy_type: Some(EnergyType::Psychic), }, ",
+      "map_line": 140,
+      "pos": "anywhere",
+      "first_turn": false,
+      "scope": "board",
+      "drawback": false,
+      "activated": false,
+      "gate_position": null,
+      "gate_line": 205
+     },
+     "switch_a": false,
+     "switch_b": true
+    }
+   ],
+   "p_no_basic_hand_repaired": 0.1937,
+   "p_opening_choice": 0.3074,
+   "p_opening_choice_distinct_names": 0.3074,
+   "p_two_plus_basic_cards": 0.3661,
+   "kp3_opens": {
+    "Hatenna B3 069": 0.4284,
+    "Comfey A3 080": 0.2887,
+    "Espurr B3 065": 0.2829
+   },
+   "kp3_opens_with_choice": {
+    "Comfey A3 080": 0.162,
+    "Hatenna B3 069": 0.1454
+   },
+   "kp3_opens_two_plus_basic_cards": {
+    "Hatenna B3 069": 0.1748,
+    "Comfey A3 080": 0.162,
+    "Espurr B3 065": 0.0293
+   },
+   "carries_switch_a": [],
+   "carries_switch_b": [
+    "Comfey A3 080"
+   ],
+   "p_opening_changes": {
+    "A": 0.0,
+    "B": 0.162,
+    "AB": 0.162,
+    "C": 0.0,
+    "D": 0.0,
+    "R": 0.162,
+    "AR": 0.162
+   },
+   "opening_transitions": {
+    "A": {},
+    "B": {
+     "Comfey -> Hatenna": 0.0965,
+     "Comfey -> Espurr": 0.0655
+    },
+    "AB": {
+     "Comfey -> Hatenna": 0.0965,
+     "Comfey -> Espurr": 0.0655
+    },
+    "C": {},
+    "D": {},
+    "R": {
+     "Comfey -> Hatenna": 0.0965,
+     "Comfey -> Espurr": 0.0655
+    },
+    "AR": {
+     "Comfey -> Hatenna": 0.0965,
+     "Comfey -> Espurr": 0.0655
+    }
+   }
+  },
+  {
+   "list": "decks/brews/brew-06-pyukumuku-silvally-payback.txt",
+   "group": "brew",
+   "energy": "Psychic",
+   "cards": 20,
+   "basics": [
+    {
+     "id": "A3 054",
+     "name": "Pyukumuku",
+     "count": 2,
+     "type": "Water",
+     "hp": 60,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Lightning",
+     "attacks": [
+      "[1] Sprinkle Water 20"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": null,
+     "online_at_setup": 0.0,
+     "ability": "Innards Out",
+     "ability_text": "If this Pokémon is in the Active Spot and is Knocked Out by damage from an attack from your opponent's Pokémon, do 50 damage to the Attacking Pokémon.",
+     "mechanic": {
+      "variant": "DamageOnKnockoutInActive",
+      "fields": "AbilityMechanic::DamageOnKnockoutInActive { amount: 50, target: KnockoutDamageTarget::Attacker, }, ",
+      "map_line": 202,
+      "pos": "active",
+      "first_turn": false,
+      "scope": "board",
+      "drawback": false,
+      "activated": false,
+      "gate_position": null,
+      "gate_line": 165
+     },
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "A3a 060",
+     "name": "Type: Null",
+     "count": 2,
+     "type": "Colorless",
+     "hp": 80,
+     "retreat": 2,
+     "ko_points": 1,
+     "weakness": "Fighting",
+     "attacks": [
+      "[1] Quick Blow 20"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": "Silvally",
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "B4a 030",
+     "name": "Team Rocket's Mewtwo",
+     "count": 2,
+     "type": "Psychic",
+     "hp": 100,
+     "retreat": 2,
+     "ko_points": 1,
+     "weakness": "Darkness",
+     "attacks": [
+      "[3] Psychic Explosion 130"
+     ],
+     "cheapest_attack_cost": 3,
+     "evolves_in_list_to": null,
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "A3 080",
+     "name": "Comfey",
+     "count": 1,
+     "type": "Psychic",
+     "hp": 70,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Metal",
+     "attacks": [
+      "[2] Spinning Attack 30"
+     ],
+     "cheapest_attack_cost": 2,
+     "evolves_in_list_to": null,
+     "online_at_setup": 0.0,
+     "ability": "Flower Shield",
+     "ability_text": "Each of your Pokémon that has any [P] Energy attached recovers from all Special Conditions and can't be affected by any Special Conditions.",
+     "mechanic": {
+      "variant": "SoothingWind",
+      "fields": "AbilityMechanic::SoothingWind { energy_type: Some(EnergyType::Psychic), }, ",
+      "map_line": 140,
+      "pos": "anywhere",
+      "first_turn": false,
+      "scope": "board",
+      "drawback": false,
+      "activated": false,
+      "gate_position": null,
+      "gate_line": 205
+     },
+     "switch_a": false,
+     "switch_b": true
+    }
+   ],
+   "p_no_basic_hand_repaired": 0.083,
+   "p_opening_choice": 0.5388,
+   "p_opening_choice_distinct_names": 0.5388,
+   "p_two_plus_basic_cards": 0.5942,
+   "kp3_opens": {
+    "Team Rocket's Mewtwo B4a 030": 0.4711,
+    "Type: Null A3a 060": 0.2946,
+    "Pyukumuku A3 054": 0.1344,
+    "Comfey A3 080": 0.0999
+   },
+   "kp3_opens_with_choice": {
+    "Team Rocket's Mewtwo B4a 030": 0.3367,
+    "Type: Null A3a 060": 0.1602,
+    "Comfey A3 080": 0.0419
+   },
+   "kp3_opens_two_plus_basic_cards": {
+    "Team Rocket's Mewtwo B4a 030": 0.3551,
+    "Type: Null A3a 060": 0.1787,
+    "Comfey A3 080": 0.0419,
+    "Pyukumuku A3 054": 0.0184
+   },
+   "carries_switch_a": [],
+   "carries_switch_b": [
+    "Comfey A3 080"
+   ],
+   "p_opening_changes": {
+    "A": 0.0,
+    "B": 0.0419,
+    "AB": 0.0419,
+    "C": 0.3367,
+    "D": 0.0,
+    "R": 0.3786,
+    "AR": 0.3786
+   },
+   "opening_transitions": {
+    "A": {},
+    "B": {
+     "Comfey -> Pyukumuku": 0.0419
+    },
+    "AB": {
+     "Comfey -> Pyukumuku": 0.0419
+    },
+    "C": {
+     "Team Rocket's Mewtwo -> Pyukumuku": 0.1765,
+     "Type: Null -> Pyukumuku": 0.1183,
+     "Comfey -> Pyukumuku": 0.0419
+    },
+    "D": {},
+    "R": {
+     "Team Rocket's Mewtwo -> Type: Null": 0.1765,
+     "Team Rocket's Mewtwo -> Pyukumuku": 0.1183,
+     "Team Rocket's Mewtwo -> Comfey": 0.0419,
+     "Comfey -> Pyukumuku": 0.0419
+    },
+    "AR": {
+     "Team Rocket's Mewtwo -> Type: Null": 0.1765,
+     "Team Rocket's Mewtwo -> Pyukumuku": 0.1183,
+     "Team Rocket's Mewtwo -> Comfey": 0.0419,
+     "Comfey -> Pyukumuku": 0.0419
+    }
+   }
+  },
+  {
+   "list": "decks/brews/brew-06b-pyukumuku-silvally-scyther-grass.txt",
+   "group": "brew",
+   "energy": "Grass",
+   "cards": 20,
+   "basics": [
+    {
+     "id": "A3 054",
+     "name": "Pyukumuku",
+     "count": 2,
+     "type": "Water",
+     "hp": 60,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Lightning",
+     "attacks": [
+      "[1] Sprinkle Water 20"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": null,
+     "online_at_setup": 0.0,
+     "ability": "Innards Out",
+     "ability_text": "If this Pokémon is in the Active Spot and is Knocked Out by damage from an attack from your opponent's Pokémon, do 50 damage to the Attacking Pokémon.",
+     "mechanic": {
+      "variant": "DamageOnKnockoutInActive",
+      "fields": "AbilityMechanic::DamageOnKnockoutInActive { amount: 50, target: KnockoutDamageTarget::Attacker, }, ",
+      "map_line": 202,
+      "pos": "active",
+      "first_turn": false,
+      "scope": "board",
+      "drawback": false,
+      "activated": false,
+      "gate_position": null,
+      "gate_line": 165
+     },
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "A3a 060",
+     "name": "Type: Null",
+     "count": 2,
+     "type": "Colorless",
+     "hp": 80,
+     "retreat": 2,
+     "ko_points": 1,
+     "weakness": "Fighting",
+     "attacks": [
+      "[1] Quick Blow 20"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": "Silvally",
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "P-B 088",
+     "name": "Team Rocket's Scyther",
+     "count": 2,
+     "type": "Grass",
+     "hp": 60,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Fire",
+     "attacks": [
+      "[2] Second Strike 20"
+     ],
+     "cheapest_attack_cost": 2,
+     "evolves_in_list_to": null,
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "B2 017",
+     "name": "Teal Mask Ogerpon ex",
+     "count": 1,
+     "type": "Grass",
+     "hp": 130,
+     "retreat": 1,
+     "ko_points": 2,
+     "weakness": "Fire",
+     "attacks": [
+      "[2] Energized Leaves 60"
+     ],
+     "cheapest_attack_cost": 2,
+     "evolves_in_list_to": null,
+     "online_at_setup": 0.0,
+     "ability": "Soothing Wind",
+     "ability_text": "Each of your Pokémon that has any Energy attached recovers from all Special Conditions and can't be affected by any Special Conditions.",
+     "mechanic": {
+      "variant": "SoothingWind",
+      "fields": "AbilityMechanic::SoothingWind { energy_type: None }, ",
+      "map_line": 136,
+      "pos": "anywhere",
+      "first_turn": false,
+      "scope": "board",
+      "drawback": false,
+      "activated": false,
+      "gate_position": null,
+      "gate_line": 205
+     },
+     "switch_a": false,
+     "switch_b": true
+    }
+   ],
+   "p_no_basic_hand_repaired": 0.083,
+   "p_opening_choice": 0.5388,
+   "p_opening_choice_distinct_names": 0.5388,
+   "p_two_plus_basic_cards": 0.5942,
+   "kp3_opens": {
+    "Type: Null A3a 060": 0.4711,
+    "Team Rocket's Scyther P-B 088": 0.2291,
+    "Teal Mask Ogerpon ex B2 017": 0.1654,
+    "Pyukumuku A3 054": 0.1344
+   },
+   "kp3_opens_with_choice": {
+    "Type: Null A3a 060": 0.3367,
+    "Teal Mask Ogerpon ex B2 017": 0.1074,
+    "Team Rocket's Scyther P-B 088": 0.0947
+   },
+   "kp3_opens_two_plus_basic_cards": {
+    "Type: Null A3a 060": 0.3551,
+    "Team Rocket's Scyther P-B 088": 0.1132,
+    "Teal Mask Ogerpon ex B2 017": 0.1074,
+    "Pyukumuku A3 054": 0.0184
+   },
+   "carries_switch_a": [],
+   "carries_switch_b": [
+    "Teal Mask Ogerpon ex B2 017"
+   ],
+   "p_opening_changes": {
+    "A": 0.0,
+    "B": 0.1074,
+    "AB": 0.1074,
+    "C": 0.3367,
+    "D": 0.0,
+    "R": 0.1602,
+    "AR": 0.1602
+   },
+   "opening_transitions": {
+    "A": {},
+    "B": {
+     "Teal Mask Ogerpon ex -> Team Rocket's Scyther": 0.0655,
+     "Teal Mask Ogerpon ex -> Pyukumuku": 0.0419
+    },
+    "AB": {
+     "Teal Mask Ogerpon ex -> Team Rocket's Scyther": 0.0655,
+     "Teal Mask Ogerpon ex -> Pyukumuku": 0.0419
+    },
+    "C": {
+     "Type: Null -> Pyukumuku": 0.1765,
+     "Team Rocket's Scyther -> Pyukumuku": 0.0947,
+     "Teal Mask Ogerpon ex -> Pyukumuku": 0.0655
+    },
+    "D": {},
+    "R": {
+     "Team Rocket's Scyther -> Pyukumuku": 0.0947,
+     "Teal Mask Ogerpon ex -> Pyukumuku": 0.0655
+    },
+    "AR": {
+     "Team Rocket's Scyther -> Pyukumuku": 0.0947,
+     "Teal Mask Ogerpon ex -> Pyukumuku": 0.0655
+    }
+   }
+  },
+  {
+   "list": "decks/brews/brew-07-hoopa-darkrai-sableye.txt",
+   "group": "brew",
+   "energy": "Darkness",
+   "cards": 20,
+   "basics": [
+    {
+     "id": "B4 103",
+     "name": "Hoopa ex",
+     "count": 2,
+     "type": "Darkness",
+     "hp": 150,
+     "retreat": 2,
+     "ko_points": 2,
+     "weakness": "Grass",
+     "attacks": [
+      "[1] Shadow Bullet 30",
+      "[3] Dynamite Punch 100"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": null,
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "A2 110",
+     "name": "Darkrai ex",
+     "count": 1,
+     "type": "Darkness",
+     "hp": 140,
+     "retreat": 2,
+     "ko_points": 2,
+     "weakness": "Grass",
+     "attacks": [
+      "[3] Dark Prism 80"
+     ],
+     "cheapest_attack_cost": 3,
+     "evolves_in_list_to": null,
+     "online_at_setup": 0.0,
+     "ability": "Nightmare Aura",
+     "ability_text": "Whenever you attach a [D] Energy from your Energy Zone to this Pokémon, do 20 damage to your opponent's Active Pokémon.",
+     "mechanic": {
+      "variant": "DamageOpponentActiveOnZoneAttachToSelf",
+      "fields": "AbilityMechanic::DamageOpponentActiveOnZoneAttachToSelf { energy_type: EnergyType::Darkness, amount: 20, only_turn_energy: true, }, ",
+      "map_line": 643,
+      "pos": "anywhere",
+      "first_turn": false,
+      "scope": "board",
+      "drawback": false,
+      "activated": false,
+      "gate_position": null,
+      "gate_line": 121
+     },
+     "switch_a": false,
+     "switch_b": true
+    },
+    {
+     "id": "B3b 041",
+     "name": "Mega Sableye ex",
+     "count": 1,
+     "type": "Darkness",
+     "hp": 170,
+     "retreat": 1,
+     "ko_points": 3,
+     "weakness": "Grass",
+     "attacks": [
+      "[2] Cursed Jewel 80"
+     ],
+     "cheapest_attack_cost": 2,
+     "evolves_in_list_to": null,
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    }
+   ],
+   "p_no_basic_hand_repaired": 0.2817,
+   "p_opening_choice": 0.2126,
+   "p_opening_choice_distinct_names": 0.2126,
+   "p_two_plus_basic_cards": 0.2487,
+   "kp3_opens": {
+    "Hoopa ex B4 103": 0.5882,
+    "Darkrai ex A2 110": 0.2239,
+    "Mega Sableye ex B3b 041": 0.1878
+   },
+   "kp3_opens_with_choice": {
+    "Hoopa ex B4 103": 0.1765,
+    "Darkrai ex A2 110": 0.0361
+   },
+   "kp3_opens_two_plus_basic_cards": {
+    "Hoopa ex B4 103": 0.2126,
+    "Darkrai ex A2 110": 0.0361
+   },
+   "carries_switch_a": [],
+   "carries_switch_b": [
+    "Darkrai ex A2 110"
+   ],
+   "p_opening_changes": {
+    "A": 0.0,
+    "B": 0.0361,
+    "AB": 0.0361,
+    "C": 0.0,
+    "D": 0.0,
+    "R": 0.0361,
+    "AR": 0.0361
+   },
+   "opening_transitions": {
+    "A": {},
+    "B": {
+     "Darkrai ex -> Mega Sableye ex": 0.0361
+    },
+    "AB": {
+     "Darkrai ex -> Mega Sableye ex": 0.0361
+    },
+    "C": {},
+    "D": {},
+    "R": {
+     "Darkrai ex -> Mega Sableye ex": 0.0361
+    },
+    "AR": {
+     "Darkrai ex -> Mega Sableye ex": 0.0361
+    }
+   }
+  },
+  {
+   "list": "decks/brews/brew-08-entei-rainbow-cave.txt",
+   "group": "brew",
+   "energy": "Fire",
+   "cards": 20,
+   "basics": [
+    {
+     "id": "A4a 010",
+     "name": "Entei ex",
+     "count": 2,
+     "type": "Fire",
+     "hp": 140,
+     "retreat": 2,
+     "ko_points": 2,
+     "weakness": "Water",
+     "attacks": [
+      "[2] Blazing Beatdown 60"
+     ],
+     "cheapest_attack_cost": 2,
+     "evolves_in_list_to": null,
+     "online_at_setup": 0.0,
+     "ability": "Legendary Pulse",
+     "ability_text": "At the end of your turn, if this Pokémon is in the Active Spot, draw a card.",
+     "mechanic": {
+      "variant": "EndTurnDrawCardIfActive",
+      "fields": "AbilityMechanic::EndTurnDrawCardIfActive { amount: 1 }, ",
+      "map_line": 93,
+      "pos": "active",
+      "first_turn": false,
+      "scope": "board",
+      "drawback": false,
+      "activated": false,
+      "gate_position": null,
+      "gate_line": 239
+     },
+     "switch_a": false,
+     "switch_b": false
+    }
+   ],
+   "p_no_basic_hand_repaired": 0.5526,
+   "p_opening_choice": 0.0,
+   "p_opening_choice_distinct_names": 0.0,
+   "p_two_plus_basic_cards": 0.0526,
+   "kp3_opens": {
+    "Entei ex A4a 010": 1.0
+   },
+   "kp3_opens_with_choice": {},
+   "kp3_opens_two_plus_basic_cards": {
+    "Entei ex A4a 010": 0.0526
+   },
+   "carries_switch_a": [],
+   "carries_switch_b": [],
+   "p_opening_changes": {
+    "A": 0.0,
+    "B": 0.0,
+    "AB": 0.0,
+    "C": 0.0,
+    "D": 0.0,
+    "R": 0.0,
+    "AR": 0.0
+   },
+   "opening_transitions": {
+    "A": {},
+    "B": {},
+    "AB": {},
+    "C": {},
+    "D": {},
+    "R": {},
+    "AR": {}
+   }
+  },
+  {
+   "list": "decks/brews/brew-09-sableye-obstagoon.txt",
+   "group": "brew",
+   "energy": "Darkness",
+   "cards": 20,
+   "basics": [
+    {
+     "id": "B3b 041",
+     "name": "Mega Sableye ex",
+     "count": 2,
+     "type": "Darkness",
+     "hp": 170,
+     "retreat": 1,
+     "ko_points": 3,
+     "weakness": "Grass",
+     "attacks": [
+      "[2] Cursed Jewel 80"
+     ],
+     "cheapest_attack_cost": 2,
+     "evolves_in_list_to": null,
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "B4 095",
+     "name": "Galarian Zigzagoon",
+     "count": 2,
+     "type": "Darkness",
+     "hp": 70,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Grass",
+     "attacks": [
+      "[1] Tackle 10"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": "Galarian Obstagoon",
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    }
+   ],
+   "p_no_basic_hand_repaired": 0.2817,
+   "p_opening_choice": 0.1765,
+   "p_opening_choice_distinct_names": 0.1765,
+   "p_two_plus_basic_cards": 0.2487,
+   "kp3_opens": {
+    "Galarian Zigzagoon B4 095": 0.5882,
+    "Mega Sableye ex B3b 041": 0.4118
+   },
+   "kp3_opens_with_choice": {
+    "Galarian Zigzagoon B4 095": 0.1765
+   },
+   "kp3_opens_two_plus_basic_cards": {
+    "Galarian Zigzagoon B4 095": 0.2126,
+    "Mega Sableye ex B3b 041": 0.0361
+   },
+   "carries_switch_a": [],
+   "carries_switch_b": [],
+   "p_opening_changes": {
+    "A": 0.0,
+    "B": 0.0,
+    "AB": 0.0,
+    "C": 0.0,
+    "D": 0.0,
+    "R": 0.0,
+    "AR": 0.0
+   },
+   "opening_transitions": {
+    "A": {},
+    "B": {},
+    "AB": {},
+    "C": {},
+    "D": {},
+    "R": {},
+    "AR": {}
+   }
+  },
+  {
+   "list": "decks/brews/brew-10-diancie-giratina.txt",
+   "group": "brew",
+   "energy": "Psychic",
+   "cards": 20,
+   "basics": [
+    {
+     "id": "B3b 032",
+     "name": "Mega Diancie ex",
+     "count": 2,
+     "type": "Psychic",
+     "hp": 170,
+     "retreat": 1,
+     "ko_points": 3,
+     "weakness": "Metal",
+     "attacks": [
+      "[3] Brilliant Storm 40"
+     ],
+     "cheapest_attack_cost": 3,
+     "evolves_in_list_to": null,
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "A2b 035",
+     "name": "Giratina ex",
+     "count": 2,
+     "type": "Psychic",
+     "hp": 150,
+     "retreat": 2,
+     "ko_points": 2,
+     "weakness": "Darkness",
+     "attacks": [
+      "[4] Chaotic Impact 130"
+     ],
+     "cheapest_attack_cost": 4,
+     "evolves_in_list_to": null,
+     "online_at_setup": 0.0,
+     "ability": "Broken-Space Bellow",
+     "ability_text": "Once during your turn, you may take a [P] Energy from your Energy Zone and attach it to this Pokémon. If you use this Ability, your turn ends.",
+     "mechanic": {
+      "variant": "AttachEnergyFromZoneToSelfAndEndTurn",
+      "fields": "AbilityMechanic::AttachEnergyFromZoneToSelfAndEndTurn { energy_type: EnergyType::Psychic, }, ",
+      "map_line": 530,
+      "pos": "anywhere",
+      "first_turn": false,
+      "scope": "self",
+      "drawback": false,
+      "activated": true,
+      "gate_position": "anywhere",
+      "gate_line": 119
+     },
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "B3b 031",
+     "name": "Carbink",
+     "count": 2,
+     "type": "Psychic",
+     "hp": 50,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Metal",
+     "attacks": [
+      "[1] Glittering Gift 0"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": null,
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    }
+   ],
+   "p_no_basic_hand_repaired": 0.1291,
+   "p_opening_choice": 0.4131,
+   "p_opening_choice_distinct_names": 0.4131,
+   "p_two_plus_basic_cards": 0.4835,
+   "kp3_opens": {
+    "Giratina ex A2b 035": 0.4904,
+    "Mega Diancie ex B3b 032": 0.3139,
+    "Carbink B3b 031": 0.1956
+   },
+   "kp3_opens_with_choice": {
+    "Giratina ex A2b 035": 0.2948,
+    "Mega Diancie ex B3b 032": 0.1183
+   },
+   "kp3_opens_two_plus_basic_cards": {
+    "Giratina ex A2b 035": 0.3182,
+    "Mega Diancie ex B3b 032": 0.1418,
+    "Carbink B3b 031": 0.0235
+   },
+   "carries_switch_a": [],
+   "carries_switch_b": [],
+   "p_opening_changes": {
+    "A": 0.0,
+    "B": 0.0,
+    "AB": 0.0,
+    "C": 0.0,
+    "D": 0.0,
+    "R": 0.4131,
+    "AR": 0.4131
+   },
+   "opening_transitions": {
+    "A": {},
+    "B": {},
+    "AB": {},
+    "C": {},
+    "D": {},
+    "R": {
+     "Giratina ex -> Carbink": 0.1765,
+     "Mega Diancie ex -> Carbink": 0.1183,
+     "Giratina ex -> Mega Diancie ex": 0.1183
+    },
+    "AR": {
+     "Giratina ex -> Carbink": 0.1765,
+     "Mega Diancie ex -> Carbink": 0.1183,
+     "Giratina ex -> Mega Diancie ex": 0.1183
+    }
+   }
+  },
+  {
+   "list": "rl/results/b2e_card_check_2026-09-26/decks/h-charizardy_entei.txt",
+   "group": "b2e",
+   "energy": "Fire",
+   "cards": 20,
+   "basics": [
+    {
+     "id": "B2b 007",
+     "name": "Charmander",
+     "count": 2,
+     "type": "Fire",
+     "hp": 70,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Water",
+     "attacks": [
+      "[2] Flame Tail 30"
+     ],
+     "cheapest_attack_cost": 2,
+     "evolves_in_list_to": "Mega Charizard Y ex",
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "A4a 010",
+     "name": "Entei ex",
+     "count": 2,
+     "type": "Fire",
+     "hp": 140,
+     "retreat": 2,
+     "ko_points": 2,
+     "weakness": "Water",
+     "attacks": [
+      "[2] Blazing Beatdown 60"
+     ],
+     "cheapest_attack_cost": 2,
+     "evolves_in_list_to": null,
+     "online_at_setup": 0.0,
+     "ability": "Legendary Pulse",
+     "ability_text": "At the end of your turn, if this Pokémon is in the Active Spot, draw a card.",
+     "mechanic": {
+      "variant": "EndTurnDrawCardIfActive",
+      "fields": "AbilityMechanic::EndTurnDrawCardIfActive { amount: 1 }, ",
+      "map_line": 93,
+      "pos": "active",
+      "first_turn": false,
+      "scope": "board",
+      "drawback": false,
+      "activated": false,
+      "gate_position": null,
+      "gate_line": 239
+     },
+     "switch_a": false,
+     "switch_b": false
+    }
+   ],
+   "p_no_basic_hand_repaired": 0.2817,
+   "p_opening_choice": 0.1765,
+   "p_opening_choice_distinct_names": 0.1765,
+   "p_two_plus_basic_cards": 0.2487,
+   "kp3_opens": {
+    "Charmander B2b 007": 0.5882,
+    "Entei ex A4a 010": 0.4118
+   },
+   "kp3_opens_with_choice": {
+    "Charmander B2b 007": 0.1765
+   },
+   "kp3_opens_two_plus_basic_cards": {
+    "Charmander B2b 007": 0.2126,
+    "Entei ex A4a 010": 0.0361
+   },
+   "carries_switch_a": [],
+   "carries_switch_b": [],
+   "p_opening_changes": {
+    "A": 0.0,
+    "B": 0.0,
+    "AB": 0.0,
+    "C": 0.1765,
+    "D": 0.0,
+    "R": 0.0,
+    "AR": 0.0
+   },
+   "opening_transitions": {
+    "A": {},
+    "B": {},
+    "AB": {},
+    "C": {
+     "Charmander -> Entei ex": 0.1765
+    },
+    "D": {},
+    "R": {},
+    "AR": {}
+   }
+  },
+  {
+   "list": "rl/results/b2e_card_check_2026-09-26/decks/h-garchomp.txt",
+   "group": "b2e",
+   "energy": "Water, Fighting",
+   "cards": 20,
+   "basics": [
+    {
+     "id": "A2 121",
+     "name": "Gible",
+     "count": 1,
+     "type": "Dragon",
+     "hp": 60,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": null,
+     "attacks": [
+      "[1] Gnaw 20"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": "Garchomp",
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "B4a 052",
+     "name": "Gible",
+     "count": 1,
+     "type": "Dragon",
+     "hp": 60,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": null,
+     "attacks": [
+      "[1] Take Down 30"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": "Garchomp",
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "B4a 063",
+     "name": "Happiny",
+     "count": 1,
+     "type": "Colorless",
+     "hp": 30,
+     "retreat": 0,
+     "ko_points": 1,
+     "weakness": null,
+     "attacks": [
+      "[0] Chubby Cheer 10"
+     ],
+     "cheapest_attack_cost": 0,
+     "evolves_in_list_to": null,
+     "online_at_setup": 1.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "A4a 023",
+     "name": "Mantyke",
+     "count": 1,
+     "type": "Water",
+     "hp": 30,
+     "retreat": 0,
+     "ko_points": 1,
+     "weakness": null,
+     "attacks": [
+      "[0] Splashy Toss 0"
+     ],
+     "cheapest_attack_cost": 0,
+     "evolves_in_list_to": null,
+     "online_at_setup": 1.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "A4 077",
+     "name": "Cleffa",
+     "count": 1,
+     "type": "Psychic",
+     "hp": 30,
+     "retreat": 0,
+     "ko_points": 1,
+     "weakness": null,
+     "attacks": [
+      "[0] Twinkly Call 0"
+     ],
+     "cheapest_attack_cost": 0,
+     "evolves_in_list_to": null,
+     "online_at_setup": 1.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    }
+   ],
+   "p_no_basic_hand_repaired": 0.1937,
+   "p_opening_choice": 0.3661,
+   "p_opening_choice_distinct_names": 0.3368,
+   "p_two_plus_basic_cards": 0.3661,
+   "kp3_opens": {
+    "Happiny B4a 063": 0.2887,
+    "Mantyke A4a 023": 0.2361,
+    "Cleffa A4 077": 0.1922,
+    "Gible B4a 052": 0.1561,
+    "Gible A2 121": 0.1268
+   },
+   "kp3_opens_with_choice": {
+    "Happiny B4a 063": 0.162,
+    "Mantyke A4a 023": 0.1093,
+    "Cleffa A4 077": 0.0655,
+    "Gible B4a 052": 0.0293
+   },
+   "kp3_opens_two_plus_basic_cards": {
+    "Happiny B4a 063": 0.162,
+    "Mantyke A4a 023": 0.1093,
+    "Cleffa A4 077": 0.0655,
+    "Gible B4a 052": 0.0293
+   },
+   "carries_switch_a": [],
+   "carries_switch_b": [],
+   "p_opening_changes": {
+    "A": 0.0,
+    "B": 0.0,
+    "AB": 0.0,
+    "C": 0.0,
+    "D": 0.0,
+    "R": 0.0,
+    "AR": 0.0
+   },
+   "opening_transitions": {
+    "A": {},
+    "B": {},
+    "AB": {},
+    "C": {},
+    "D": {},
+    "R": {},
+    "AR": {}
+   }
+  },
+  {
+   "list": "rl/results/b2e_card_check_2026-09-26/decks/h-hoopa_absol.txt",
+   "group": "b2e",
+   "energy": "Darkness",
+   "cards": 20,
+   "basics": [
+    {
+     "id": "B4 103",
+     "name": "Hoopa ex",
+     "count": 2,
+     "type": "Darkness",
+     "hp": 150,
+     "retreat": 2,
+     "ko_points": 2,
+     "weakness": "Grass",
+     "attacks": [
+      "[1] Shadow Bullet 30",
+      "[3] Dynamite Punch 100"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": null,
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "B1 151",
+     "name": "Mega Absol ex",
+     "count": 1,
+     "type": "Darkness",
+     "hp": 170,
+     "retreat": 1,
+     "ko_points": 3,
+     "weakness": "Grass",
+     "attacks": [
+      "[2] Darkness Claw 80"
+     ],
+     "cheapest_attack_cost": 2,
+     "evolves_in_list_to": null,
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "A2 110",
+     "name": "Darkrai ex",
+     "count": 1,
+     "type": "Darkness",
+     "hp": 140,
+     "retreat": 2,
+     "ko_points": 2,
+     "weakness": "Grass",
+     "attacks": [
+      "[3] Dark Prism 80"
+     ],
+     "cheapest_attack_cost": 3,
+     "evolves_in_list_to": null,
+     "online_at_setup": 0.0,
+     "ability": "Nightmare Aura",
+     "ability_text": "Whenever you attach a [D] Energy from your Energy Zone to this Pokémon, do 20 damage to your opponent's Active Pokémon.",
+     "mechanic": {
+      "variant": "DamageOpponentActiveOnZoneAttachToSelf",
+      "fields": "AbilityMechanic::DamageOpponentActiveOnZoneAttachToSelf { energy_type: EnergyType::Darkness, amount: 20, only_turn_energy: true, }, ",
+      "map_line": 643,
+      "pos": "anywhere",
+      "first_turn": false,
+      "scope": "board",
+      "drawback": false,
+      "activated": false,
+      "gate_position": null,
+      "gate_line": 121
+     },
+     "switch_a": false,
+     "switch_b": true
+    }
+   ],
+   "p_no_basic_hand_repaired": 0.2817,
+   "p_opening_choice": 0.2126,
+   "p_opening_choice_distinct_names": 0.2126,
+   "p_two_plus_basic_cards": 0.2487,
+   "kp3_opens": {
+    "Hoopa ex B4 103": 0.5882,
+    "Darkrai ex A2 110": 0.2239,
+    "Mega Absol ex B1 151": 0.1878
+   },
+   "kp3_opens_with_choice": {
+    "Hoopa ex B4 103": 0.1765,
+    "Darkrai ex A2 110": 0.0361
+   },
+   "kp3_opens_two_plus_basic_cards": {
+    "Hoopa ex B4 103": 0.2126,
+    "Darkrai ex A2 110": 0.0361
+   },
+   "carries_switch_a": [],
+   "carries_switch_b": [
+    "Darkrai ex A2 110"
+   ],
+   "p_opening_changes": {
+    "A": 0.0,
+    "B": 0.0361,
+    "AB": 0.0361,
+    "C": 0.0,
+    "D": 0.0,
+    "R": 0.0361,
+    "AR": 0.0361
+   },
+   "opening_transitions": {
+    "A": {},
+    "B": {
+     "Darkrai ex -> Mega Absol ex": 0.0361
+    },
+    "AB": {
+     "Darkrai ex -> Mega Absol ex": 0.0361
+    },
+    "C": {},
+    "D": {},
+    "R": {
+     "Darkrai ex -> Mega Absol ex": 0.0361
+    },
+    "AR": {
+     "Darkrai ex -> Mega Absol ex": 0.0361
+    }
+   }
+  },
+  {
+   "list": "rl/results/b2e_card_check_2026-09-26/decks/h-manectric.txt",
+   "group": "b2e",
+   "energy": "Lightning",
+   "cards": 20,
+   "basics": [
+    {
+     "id": "B1a 028",
+     "name": "Helioptile",
+     "count": 2,
+     "type": "Lightning",
+     "hp": 60,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Fighting",
+     "attacks": [
+      "[1] Thunder Shock 10"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": "Heliolisk",
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "B2b 026",
+     "name": "Electrike",
+     "count": 1,
+     "type": "Lightning",
+     "hp": 60,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Fighting",
+     "attacks": [
+      "[1] Quick Attack 10"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": "Mega Manectric ex",
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    }
+   ],
+   "p_no_basic_hand_repaired": 0.3991,
+   "p_opening_choice": 0.0965,
+   "p_opening_choice_distinct_names": 0.0965,
+   "p_two_plus_basic_cards": 0.1404,
+   "kp3_opens": {
+    "Helioptile B1a 028": 0.617,
+    "Electrike B2b 026": 0.383
+   },
+   "kp3_opens_with_choice": {
+    "Electrike B2b 026": 0.0965
+   },
+   "kp3_opens_two_plus_basic_cards": {
+    "Electrike B2b 026": 0.0965,
+    "Helioptile B1a 028": 0.0439
+   },
+   "carries_switch_a": [],
+   "carries_switch_b": [],
+   "p_opening_changes": {
+    "A": 0.0,
+    "B": 0.0,
+    "AB": 0.0,
+    "C": 0.0,
+    "D": 0.0,
+    "R": 0.0,
+    "AR": 0.0
+   },
+   "opening_transitions": {
+    "A": {},
+    "B": {},
+    "AB": {},
+    "C": {},
+    "D": {},
+    "R": {},
+    "AR": {}
+   }
+  },
+  {
+   "list": "rl/results/b2e_card_check_2026-09-26/decks/h-raticate.txt",
+   "group": "b2e",
+   "energy": "Water",
+   "cards": 20,
+   "basics": [
+    {
+     "id": "A3 040",
+     "name": "Alolan Vulpix",
+     "count": 2,
+     "type": "Water",
+     "hp": 60,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Metal",
+     "attacks": [
+      "[1] Call Forth Cold 0"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": "Alolan Ninetales ex",
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "B4a 058",
+     "name": "Team Rocket's Rattata",
+     "count": 2,
+     "type": "Colorless",
+     "hp": 40,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Fighting",
+     "attacks": [
+      "[1] Ambush 20"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": "Team Rocket's Raticate ex",
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    }
+   ],
+   "p_no_basic_hand_repaired": 0.2817,
+   "p_opening_choice": 0.1765,
+   "p_opening_choice_distinct_names": 0.1765,
+   "p_two_plus_basic_cards": 0.2487,
+   "kp3_opens": {
+    "Alolan Vulpix A3 040": 0.5882,
+    "Team Rocket's Rattata B4a 058": 0.4118
+   },
+   "kp3_opens_with_choice": {
+    "Alolan Vulpix A3 040": 0.1765
+   },
+   "kp3_opens_two_plus_basic_cards": {
+    "Alolan Vulpix A3 040": 0.2126,
+    "Team Rocket's Rattata B4a 058": 0.0361
+   },
+   "carries_switch_a": [],
+   "carries_switch_b": [],
+   "p_opening_changes": {
+    "A": 0.0,
+    "B": 0.0,
+    "AB": 0.0,
+    "C": 0.0,
+    "D": 0.0,
+    "R": 0.0,
+    "AR": 0.0
+   },
+   "opening_transitions": {
+    "A": {},
+    "B": {},
+    "AB": {},
+    "C": {},
+    "D": {},
+    "R": {},
+    "AR": {}
+   }
+  },
+  {
+   "list": "rl/results/b2e_card_check_2026-09-26/decks/h-whimsicott.txt",
+   "group": "b2e",
+   "energy": "Grass",
+   "cards": 20,
+   "basics": [
+    {
+     "id": "B1 015",
+     "name": "Cottonee",
+     "count": 2,
+     "type": "Grass",
+     "hp": 50,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Fire",
+     "attacks": [
+      "[1] Razor Leaf 20"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": "Whimsicott ex",
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "B1a 005",
+     "name": "Spinarak",
+     "count": 2,
+     "type": "Grass",
+     "hp": 50,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Fire",
+     "attacks": [
+      "[1] Sting 20"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": "Ariados",
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    },
+    {
+     "id": "A3a 007",
+     "name": "Pheromosa",
+     "count": 1,
+     "type": "Grass",
+     "hp": 70,
+     "retreat": 1,
+     "ko_points": 1,
+     "weakness": "Fire",
+     "attacks": [
+      "[1] Jump Blues 20"
+     ],
+     "cheapest_attack_cost": 1,
+     "evolves_in_list_to": null,
+     "online_at_setup": 0.0,
+     "ability": null,
+     "ability_text": null,
+     "mechanic": null,
+     "switch_a": false,
+     "switch_b": false
+    }
+   ],
+   "p_no_basic_hand_repaired": 0.1937,
+   "p_opening_choice": 0.3074,
+   "p_opening_choice_distinct_names": 0.3074,
+   "p_two_plus_basic_cards": 0.3661,
+   "kp3_opens": {
+    "Spinarak B1a 005": 0.4284,
+    "Pheromosa A3a 007": 0.2887,
+    "Cottonee B1 015": 0.2829
+   },
+   "kp3_opens_with_choice": {
+    "Pheromosa A3a 007": 0.162,
+    "Spinarak B1a 005": 0.1454
+   },
+   "kp3_opens_two_plus_basic_cards": {
+    "Spinarak B1a 005": 0.1748,
+    "Pheromosa A3a 007": 0.162,
+    "Cottonee B1 015": 0.0293
+   },
+   "carries_switch_a": [],
+   "carries_switch_b": [],
+   "p_opening_changes": {
+    "A": 0.0,
+    "B": 0.0,
+    "AB": 0.0,
+    "C": 0.0,
+    "D": 0.0,
+    "R": 0.0,
+    "AR": 0.0
+   },
+   "opening_transitions": {
+    "A": {},
+    "B": {},
+    "AB": {},
+    "C": {},
+    "D": {},
+    "R": {},
+    "AR": {}
+   }
+  }
+ ],
+ "table_footprint": {
+  "A": {
+   "mean_over_28_pairings": 0.06,
+   "per_pairing": {
+    "altaria v blaziken": 0.2402,
+    "altaria v hydreigon": 0.2402,
+    "altaria v lucario": 0.2402,
+    "altaria v sceptile": 0.2402,
+    "altaria v suicune": 0.2402,
+    "altaria v vespiquen": 0.2402,
+    "altaria v weezing": 0.2402,
+    "blaziken v hydreigon": 0.0,
+    "blaziken v lucario": 0.0,
+    "blaziken v sceptile": 0.0,
+    "blaziken v suicune": 0.0,
+    "blaziken v vespiquen": 0.0,
+    "blaziken v weezing": 0.0,
+    "hydreigon v lucario": 0.0,
+    "hydreigon v sceptile": 0.0,
+    "hydreigon v suicune": 0.0,
+    "hydreigon v vespiquen": 0.0,
+    "hydreigon v weezing": 0.0,
+    "lucario v sceptile": 0.0,
+    "lucario v suicune": 0.0,
+    "lucario v vespiquen": 0.0,
+    "lucario v weezing": 0.0,
+    "sceptile v suicune": 0.0,
+    "sceptile v vespiquen": 0.0,
+    "sceptile v weezing": 0.0,
+    "suicune v vespiquen": 0.0,
+    "suicune v weezing": 0.0,
+    "vespiquen v weezing": 0.0
+   }
+  },
+  "B": {
+   "mean_over_28_pairings": 0.1455,
+   "per_pairing": {
+    "altaria v blaziken": 0.2402,
+    "altaria v hydreigon": 0.3409,
+    "altaria v lucario": 0.2402,
+    "altaria v sceptile": 0.2402,
+    "altaria v suicune": 0.2402,
+    "altaria v vespiquen": 0.3633,
+    "altaria v weezing": 0.29,
+    "blaziken v hydreigon": 0.1326,
+    "blaziken v lucario": 0.0,
+    "blaziken v sceptile": 0.0,
+    "blaziken v suicune": 0.0,
+    "blaziken v vespiquen": 0.162,
+    "blaziken v weezing": 0.0655,
+    "hydreigon v lucario": 0.1326,
+    "hydreigon v sceptile": 0.1326,
+    "hydreigon v suicune": 0.1326,
+    "hydreigon v vespiquen": 0.2731,
+    "hydreigon v weezing": 0.1894,
+    "lucario v sceptile": 0.0,
+    "lucario v suicune": 0.0,
+    "lucario v vespiquen": 0.162,
+    "lucario v weezing": 0.0655,
+    "sceptile v suicune": 0.0,
+    "sceptile v vespiquen": 0.162,
+    "sceptile v weezing": 0.0655,
+    "suicune v vespiquen": 0.162,
+    "suicune v weezing": 0.0655,
+    "vespiquen v weezing": 0.2169
+   }
+  },
+  "AB": {
+   "mean_over_28_pairings": 0.168,
+   "per_pairing": {
+    "altaria v blaziken": 0.3349,
+    "altaria v hydreigon": 0.4231,
+    "altaria v lucario": 0.3349,
+    "altaria v sceptile": 0.3349,
+    "altaria v suicune": 0.3349,
+    "altaria v vespiquen": 0.4426,
+    "altaria v weezing": 0.3785,
+    "blaziken v hydreigon": 0.1326,
+    "blaziken v lucario": 0.0,
+    "blaziken v sceptile": 0.0,
+    "blaziken v suicune": 0.0,
+    "blaziken v vespiquen": 0.162,
+    "blaziken v weezing": 0.0655,
+    "hydreigon v lucario": 0.1326,
+    "hydreigon v sceptile": 0.1326,
+    "hydreigon v suicune": 0.1326,
+    "hydreigon v vespiquen": 0.2731,
+    "hydreigon v weezing": 0.1894,
+    "lucario v sceptile": 0.0,
+    "lucario v suicune": 0.0,
+    "lucario v vespiquen": 0.162,
+    "lucario v weezing": 0.0655,
+    "sceptile v suicune": 0.0,
+    "sceptile v vespiquen": 0.162,
+    "sceptile v weezing": 0.0655,
+    "suicune v vespiquen": 0.162,
+    "suicune v weezing": 0.0655,
+    "vespiquen v weezing": 0.2169
+   }
+  },
+  "C": {
+   "mean_over_28_pairings": 0.0241,
+   "per_pairing": {
+    "altaria v blaziken": 0.0,
+    "altaria v hydreigon": 0.0,
+    "altaria v lucario": 0.0,
+    "altaria v sceptile": 0.0965,
+    "altaria v suicune": 0.0,
+    "altaria v vespiquen": 0.0,
+    "altaria v weezing": 0.0,
+    "blaziken v hydreigon": 0.0,
+    "blaziken v lucario": 0.0,
+    "blaziken v sceptile": 0.0965,
+    "blaziken v suicune": 0.0,
+    "blaziken v vespiquen": 0.0,
+    "blaziken v weezing": 0.0,
+    "hydreigon v lucario": 0.0,
+    "hydreigon v sceptile": 0.0965,
+    "hydreigon v suicune": 0.0,
+    "hydreigon v vespiquen": 0.0,
+    "hydreigon v weezing": 0.0,
+    "lucario v sceptile": 0.0965,
+    "lucario v suicune": 0.0,
+    "lucario v vespiquen": 0.0,
+    "lucario v weezing": 0.0,
+    "sceptile v suicune": 0.0965,
+    "sceptile v vespiquen": 0.0965,
+    "sceptile v weezing": 0.0965,
+    "suicune v vespiquen": 0.0,
+    "suicune v weezing": 0.0,
+    "vespiquen v weezing": 0.0
+   }
+  },
+  "D": {
+   "mean_over_28_pairings": 0.0,
+   "per_pairing": {
+    "altaria v blaziken": 0.0,
+    "altaria v hydreigon": 0.0,
+    "altaria v lucario": 0.0,
+    "altaria v sceptile": 0.0,
+    "altaria v suicune": 0.0,
+    "altaria v vespiquen": 0.0,
+    "altaria v weezing": 0.0,
+    "blaziken v hydreigon": 0.0,
+    "blaziken v lucario": 0.0,
+    "blaziken v sceptile": 0.0,
+    "blaziken v suicune": 0.0,
+    "blaziken v vespiquen": 0.0,
+    "blaziken v weezing": 0.0,
+    "hydreigon v lucario": 0.0,
+    "hydreigon v sceptile": 0.0,
+    "hydreigon v suicune": 0.0,
+    "hydreigon v vespiquen": 0.0,
+    "hydreigon v weezing": 0.0,
+    "lucario v sceptile": 0.0,
+    "lucario v suicune": 0.0,
+    "lucario v vespiquen": 0.0,
+    "lucario v weezing": 0.0,
+    "sceptile v suicune": 0.0,
+    "sceptile v vespiquen": 0.0,
+    "sceptile v weezing": 0.0,
+    "suicune v vespiquen": 0.0,
+    "suicune v weezing": 0.0,
+    "vespiquen v weezing": 0.0
+   }
+  },
+  "R": {
+   "mean_over_28_pairings": 0.171,
+   "per_pairing": {
+    "altaria v blaziken": 0.2402,
+    "altaria v hydreigon": 0.2402,
+    "altaria v lucario": 0.2402,
+    "altaria v sceptile": 0.2402,
+    "altaria v suicune": 0.424,
+    "altaria v vespiquen": 0.3633,
+    "altaria v weezing": 0.29,
+    "blaziken v hydreigon": 0.0,
+    "blaziken v lucario": 0.0,
+    "blaziken v sceptile": 0.0,
+    "blaziken v suicune": 0.2419,
+    "blaziken v vespiquen": 0.162,
+    "blaziken v weezing": 0.0655,
+    "hydreigon v lucario": 0.0,
+    "hydreigon v sceptile": 0.0,
+    "hydreigon v suicune": 0.2419,
+    "hydreigon v vespiquen": 0.162,
+    "hydreigon v weezing": 0.0655,
+    "lucario v sceptile": 0.0,
+    "lucario v suicune": 0.2419,
+    "lucario v vespiquen": 0.162,
+    "lucario v weezing": 0.0655,
+    "sceptile v suicune": 0.2419,
+    "sceptile v vespiquen": 0.162,
+    "sceptile v weezing": 0.0655,
+    "suicune v vespiquen": 0.3647,
+    "suicune v weezing": 0.2916,
+    "vespiquen v weezing": 0.2169
+   }
+  },
+  "AR": {
+   "mean_over_28_pairings": 0.1931,
+   "per_pairing": {
+    "altaria v blaziken": 0.3349,
+    "altaria v hydreigon": 0.3349,
+    "altaria v lucario": 0.3349,
+    "altaria v sceptile": 0.3349,
+    "altaria v suicune": 0.4958,
+    "altaria v vespiquen": 0.4426,
+    "altaria v weezing": 0.3785,
+    "blaziken v hydreigon": 0.0,
+    "blaziken v lucario": 0.0,
+    "blaziken v sceptile": 0.0,
+    "blaziken v suicune": 0.2419,
+    "blaziken v vespiquen": 0.162,
+    "blaziken v weezing": 0.0655,
+    "hydreigon v lucario": 0.0,
+    "hydreigon v sceptile": 0.0,
+    "hydreigon v suicune": 0.2419,
+    "hydreigon v vespiquen": 0.162,
+    "hydreigon v weezing": 0.0655,
+    "lucario v sceptile": 0.0,
+    "lucario v suicune": 0.2419,
+    "lucario v vespiquen": 0.162,
+    "lucario v weezing": 0.0655,
+    "sceptile v suicune": 0.2419,
+    "sceptile v vespiquen": 0.162,
+    "sceptile v weezing": 0.0655,
+    "suicune v vespiquen": 0.3647,
+    "suicune v weezing": 0.2916,
+    "vespiquen v weezing": 0.2169
+   }
+  }
+ },
+ "b2c_expected_altaria_v_lucario": {
+  "A": {
+   "points_per_altaria_game": 5.5,
+   "approx_95_half_width": 1.4
+  },
+  "B": {
+   "points_per_altaria_game": 5.3,
+   "approx_95_half_width": 1.4
+  },
+  "AB": {
+   "points_per_altaria_game": 7.2,
+   "approx_95_half_width": 1.6
+  }
+ },
+ "validation": {
+  "altaria (kp3 probe, B2c Sept 26)": {
+   "games": 400,
+   "opening_decisions_observed": 235,
+   "opening_decisions_expected": 237.7,
+   "probe_opens_observed": {
+    "Darkrai": 103,
+    "Igglybuff": 73,
+    "Swablu": 56,
+    "Eevee": 3
+   },
+   "probe_opens_expected": {
+    "Darkrai": 103.4,
+    "Igglybuff": 81.6,
+    "Swablu": 45.3,
+    "Eevee": 7.4
+   }
+  },
+  "lucario (k3 probe, B2c Sept 25)": {
+   "games": 400,
+   "opening_decisions_observed": 105,
+   "opening_decisions_expected": 99.5,
+   "probe_opens_observed": {
+    "Bonsly": 52,
+    "Hitmonlee": 39,
+    "Riolu": 14
+   },
+   "probe_opens_expected": {
+    "Bonsly": 53.0,
+    "Hitmonlee": 32.0,
+    "Riolu": 14.4
+   }
+  }
+ }
+}
