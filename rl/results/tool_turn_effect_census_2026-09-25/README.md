@@ -1,4 +1,4 @@
-Decision this informs: whether the next candidate after kpr (the Tool / turn-effect blind spot, Dustin-approved) can be read on the Limitless table, and what its spec should be; nothing is built until kpr's table is read. Census engine: 1981bb4 (kp3's code path, unchanged since the table; the counting tool was built in a scratch copy, and the repo's engine/ is untouched).
+Decision this informs: whether the next candidate after kpr (the Tool / turn-effect blind spot, Dustin-approved) can be read on the Limitless table, and what its spec should be (revised Sept 26 with the laptop's per-card table and three switches); nothing is built until kpr's table is read. Census engine: 1981bb4 (kp3's code path, unchanged since the table; the counting tool was built in a scratch copy, and the repo's engine/ is untouched).
 
 Seeds: the table's deals only, 72,000,000 + pairing × 10,000 + i, i < 100, even i = the first-named deck in seat 0. The 2,800 census games are kp3's own table games: 2,800 of 2,800 move fingerprints equal `../public_pricing_2026-09-25/kp3_500_*.jsonl`.
 
@@ -45,52 +45,76 @@ kp3 on both sides, the table's first 100 deals of all 28 pairings; each deck pla
 - Permanent reduction Tools: Steel Apron (07), Heavy Helmet (01, 03).
 - Other Tools: Lucky Egg, Giant Cape (02); Deceptive Needle (04); Protective Poncho (05); Rocky Helmet (06); Small Balloon (08); Elegant Cape (09, 13, 14); Poison Barb (10); Leaf Cape (12).
 
-## Draft spec: `kt<N>` (for the laptop and Dustin; not registered, nothing built)
+## Draft spec: `kt<N>` (revised Sept 26 with the laptop's per-card table; not registered, nothing built)
 
-**Base.** `kt<N>` = `kp<N>` (k's blind search, PublicPricingPlayer with its audited texts) plus two evaluator changes. It is built on kp, not kd or kpr. kq's, kd's and kpr's features are off. The player code is "kt<N>", parsed before "k<N>". k3, kp3 and kq3 must replay the table unchanged, proven by replay before any kt table.
+The laptop's per-card census (`rl/results/trainer_audit_2026-09-25/census_table.md` on main, 61 Trainer cards, each re-checked by a skeptic) says for each card what kp3's score reads. The laptop and Fable suggested three switches, so that a failure can be traced to one part. This draft follows them.
 
-**(1) The defender's temporary damage cuts, in the threat clock, for the attacker's next attack.**
-- **Which cuts.** Every cut that will be in force on the victim during the threatening side's next attack, from public state only, keyed on the effect type, never on card names:
-  - turn effects on that turn: `ReducedDamageForTarget`, if its scope covers the victim and its "only from ex" condition holds for the threat (Jasmine, Blue, Cheren, Beast Wall); and `ReducedDamageForType`;
+**Base.** `kt<N>` = `kp<N>` (k's blind search, PublicPricingPlayer with its audited texts) with three evaluator switches, each its own `EvalFeatures` flag, all three on in `kt`. It is built on kp, not kd or kpr; kq's, kd's and kpr's features are off.
+- For tracing, each switch also gets a diagnostic code with only that switch on. Names are fixed at registration, parsed before "kt" and "k".
+- k3, kp3 and kq3 must replay the table unchanged, proven by replay before any kt table.
+- Nothing is built until kpr's table is read. The engine fixes queued on rules/09 go in first, each with its replay.
+
+**Switch 1: the defender's temporary damage cuts and reduction Tools, in the threat clock.**
+- **Which cuts.** Every cut in force on the victim during the threatening side's next attack, from public state only, keyed on the effect type, never on card names:
+  - turn effects registered for that turn: `ReducedDamageForTarget`, when its scope covers the victim and its "only from ex" condition holds for the threat (Jasmine, Cheren, Blue, Beast Wall); `ReducedDamageForType`;
   - the victim's own effects still live then: `CardEffect::ReducedDamage`, and `ReducedDamageFromEx` against an ex threat (Stiffen, Steel Wing, Protect Charge; Superb Shield);
-  - reduction Tools on the victim that apply to it: Metal Core Barrier (−50, [M] holder, gone after that turn), Steel Apron (−10, [M]), Heavy Helmet (−20, retreat cost 3 or more). Heavy Helmet follows the engine, which reads the printed Retreat Cost. Dustin says the game reads the current one (Sept 25, test pending; on rules/09's open list). As with kd's coin rule, the scorer mirrors the engine, and a test pins it so it changes when the engine is fixed.
-- **Which hits.** Only the first hit on the Active, which is the attacker's next attack. Later hits keep k's arithmetic. The first-hit arithmetic already exists: `ko_turns_after_first_attack(hp, first, max_damage)`, with `first = max(0, damage − cuts)`, summed as the engine sums them.
-- **Timing.** "The attacker's next attack" is this turn if the attacker is to move and its turn is running, otherwise its next turn. The turn effects are read for that turn, and a card effect counts only if it is still live then. This is kq's first-attack timing, on the defender's side.
-- **Both sides.** The evaluator's own Active as the victim in the opponent's clock, and the opponent's Active in its own.
-- **Not included:** anything on the attacker's side (Teary Attack's −30 on the Defending Pokémon is kq's feature); permanent Ability cuts (kd's); and the Weakness order (kp's clock has no Weakness).
+  - reduction Tools on the victim, through the Tool stages kd's `persistent_defender_damage` already runs: Metal Core Barrier (−50 for an [M] holder), Steel Apron (−10, [M]), Heavy Helmet (−20 at Retreat Cost 3 or more). kd's other stages (Weakness, Ability cuts) are not taken over.
+- **Which hits.**
+  - Temporary cuts (turn effects, the victim's own effects, Metal Core Barrier, which is discarded after that turn) count on the first hit only, the attacker's next attack: `ko_turns_after_first_attack(hp, max(0, damage − cuts), max_damage)`.
+  - Steel Apron and Heavy Helmet stay attached, so they count on every hit against their holder.
+- **Heavy Helmet reads the current Retreat Cost**, as the game does (confirmed in `heavyhelmet_test.MP4`). The engine's printed-cost read is on rules/09 and is fixed before kt is built, so kt uses the engine's own function. If kt were built first, it would mirror the engine, with a test that fails when the engine changes.
+- **Timing.** kq's first-attack timing, from the defender's side: the attacker's next attack is this turn if the attacker is to move and its turn is running, otherwise its next turn. Turn effects are read for that turn; a card effect counts only if still live then.
+- **Both sides.**
+- **Where the table sees it.** Only Frigibax's Stiffen (Suicune list, 55 uses in 700 games), plus Heavy Helmet and Steel Apron if they appear. Its test is Dustin's decks (below).
 
-**(2) The flat Tool bonus replaced by what the Tool does for its holder.**
-- **Now.** kp adds 10 when the Active holds any Tool, and subtracts 10 when the opponent's does (`active_has_tool`, weight 10). That flat 10 is why kp3 plays the Poncho on its Active and Small Balloon on a Stage 1, and why it Field Blowers the opponent's Active Tool. The game allows those plays (Dustin, Sept 25: any Tool may go on any Pokémon, and an unmet condition just means no effect), so they are bot mistakes, not engine bugs.
-- **Proposed.** Drop the flat term (weight 0 in `kt`). A Tool is then worth what it does, through the terms that already measure each effect:
-  - HP Tools (Giant Cape, Leaf Cape, Elegant Cape): the remaining HP. It is already in the board value, the Active's safety and the clock, so a Giant Cape is already worth about +20 before the flat 10;
-  - retreat Tools (Small Balloon, Inflatable Boat): the Active's retreat cost term, only where they apply;
-  - damage-cut Tools (Metal Core Barrier, Steel Apron, Heavy Helmet): through (1);
-  - anything the evaluator doesn't model (Rocky Helmet, Deceptive Needle, Lucky Egg, Poison Barb, the Poncho's Bench protection): 0, as asked.
+**Switch 2: the flat +10 for a Tool on the Active, replaced by what each Tool does for its holder.**
+- **Now.** kp adds 10 when the Active holds any Tool and subtracts 10 when the opponent's does (`active_has_tool`, weight 10), whatever the Tool does. All the measured waste comes from here:
+  - Protective Poncho: rewarded on the Active, where it does nothing, and not credited on the Bench, where it works. 492 of 494 went on the Active in the laptop's audit; 427 of 428 here;
+  - Small Balloon where it cuts nothing (45–48%);
+  - Elegant Cape, Heavy Helmet, Metal Core Barrier and Steel Apron on holders that can't use them.
+  Field Blower, Guzma and Repel inherit the same +10 from the opponent's side.
+- **Proposed.** The flat term goes (weight 0 in `kt`). Each Tool counts through what it changes for its holder where it sits:
 
-**What (2) would change, from the census.** This is prediction, not measurement:
-- The useless plays stop: 427 Ponchos on the Active, and 225 Small Balloons where they cut nothing, out of 2,800 games.
-- HP Tools keep being played: +20 to +30 HP outweighs the card leaving the hand (−1).
-- Retreat Tools become a tie: +1 on the retreat term against −1 for the card. Move order would decide, so they'd be played about half the time or less.
-- Field Blower is then worth what the removed Tool did for its holder. Against Leaf Cape and Giant Cape it's still worth playing (−20 to −30 HP for them). Against Rocky Helmet, Deceptive Needle or Small Balloon it's worth nothing more than the card, so it wouldn't be played.
-- **Rocky Helmet and Deceptive Needle would stop being played entirely** (478 + 937 + 847 plays; Blaziken, Hydreigon and Weezing). "0 when the effect isn't modelled" values real effects at nothing: 20 back per hit, and 10 a turn to the opponent's Active.
+  | Tool | what it's worth |
+  |---|---|
+  | HP Tools (Giant Cape, Leaf Cape) | the HP, already in the board value, the Active's safety and the clock; nothing more. An ineligible holder gets nothing, since the HP isn't added (`get_effective_total_hp` gates it). |
+  | Elegant Cape | its +30 HP counts on a Stage 1. On a Basic it is worth nothing unless an evolution is available in the owner's deck or hand, and then the HP is discounted as `evolution_potential` discounts it. |
+  | Retreat Tools (Small Balloon, Inflatable Boat) | the Active's retreat-cost term, which already prices the eligible case. Nothing on a holder it can't help. |
+  | Damage-cut Tools (Metal Core Barrier, Steel Apron, Heavy Helmet) | through switch 1, on a holder that qualifies. |
+  | Protective Poncho | on the Bench, the damage it prevents from the opponent's Bench-hitting attacks and Abilities on its next turn, up to the holder's HP. Nothing while Active. |
+  | Rocky Helmet, Poison Barb | switch 3. |
+  | Deceptive Needle | already partly read: its first 10 lands inside EndTurn, which the search plays out. Crediting the repeat chips is left for later. |
+  | Lucky Egg | not read; nothing. Only Dustin's deck 02 runs it. |
 
-## Open choices before registration (Dustin's and the laptop's)
+- **Symmetric.** The same values for the opponent's Tools. Field Blower, Guzma and Repel then gain exactly what removing or moving the Tool changes.
 
-1. **Tools whose effect isn't modelled.** Recommendation: (b), so the table measures what kt models and not what it can't see.
-   - **(a) 0, as written.** kt stops playing Rocky Helmet and Deceptive Needle. That will likely read as those three decks getting weaker, for a reason outside the spec.
-   - **(b) Keep kp's +10 only for Tools whose effect the evaluator doesn't model.** Rocky Helmet and Deceptive Needle play as now. Tools that do nothing for their holder where they sit (the Poncho on the Active, Small Balloon on a non-Basic, Leaf Cape on a non-[G], a cut Tool on the wrong type) get 0.
-   - **(c) Model them.** End-of-turn damage to the opponent's Active in the clock, retaliation damage to the attacker. This widens the candidate, and would be a later step.
-2. **Permanent reduction Tools (Steel Apron, Heavy Helmet) on every hit, or only the next attack?** The request says the next attack, which is narrower and consistent with the temporary cuts. Pricing every hit is kd's approach, which wasn't adopted.
-3. **HP Tools.** Should they get anything beyond the HP already counted? Proposed: nothing, since the HP is already in three terms. The alternative, the HP again as a Tool value, counts it twice.
+**Switch 3: damage back to the attacker, in the clock.**
+- **Rocky Helmet** (Blaziken list): while the holder is Active, each hit the opponent's threat lands on it costs the threat 20 (`get_counterattack_damage`). This is counted against the threat's HP in the holder's own side's KO clock.
+- **Poison Barb:** the expected Poison damage to the attacker, per Checkup until it leaves the Active, in the same clock.
+- Kept separate from switch 2 so a change in Blaziken's row can be read on its own.
+
+**What the switches would change, from the census.** Prediction, not measurement:
+- Switch 2 stops the waste: 427 Ponchos on the Active and 225 Small Balloons that cut nothing, in 2,800 games; Barrier, Apron and Elegant Cape misplacements in Dustin's decks.
+- HP Tools keep being played (+20 to +30 HP against −1 for the card).
+- Retreat Tools on an eligible Active become roughly a tie (+1 retreat term against −1 for the card), so they'd be played less.
+- Field Blower is played only where the removed Tool did something for its holder.
+- Deceptive Needle keeps about its current value (its first chip, roughly the old +10).
+- Rocky Helmet keeps being played only if switch 3's credit covers the card.
+
+**Not in this candidate, for later** (the laptop's list):
+- a Stadium's value over later turns;
+- the opponent's Retreat Cost (Goo-zooka, Peculiar Plaza);
+- Special Conditions;
+- Team Rocket's Boss against the hidden hand;
+- the search-length cost: a Tool, or any card that needs a target, uses 2 of kp3's 3 own-turn actions. If kt gains less than the audit's waste predicts, check this first.
 
 ## How kt would be tested
 
-- **Part (2) is visible on the table.** The 28-matchup table against kp3 under rule v2, as for every candidate. The laptop's mixed rows would separate each deck's own Tools from its opponents'.
-- **Part (1) is not.** The table has 55 Stiffens in 700 Suicune games. Its test is Dustin's decks:
-  - 07 (Jasmine, Metal Core Barrier, Steel Wing), plus 05 (Cheren) and 11 (Protect Charge), and the held-out decks the laptop names;
-  - a paired A/B of kt3 against kp3 piloting the deck, against the floor panel, on new seeds from 22,000,000,000;
-  - the Skarmory check's measure: deck 07's win rate, and Jasmine's play rate on turns it's playable.
-  The laptop's causal test with Jasmine given kp's +10 (82% played, +5.7 points) is the size to compare with. kt prices Jasmine by the turns it saves, not by a flat 10, so the size may differ either way.
+- **Switches 2 and 3 are visible on the table.** Every one of the eight lists runs a Tool, Field Blower is in six, and Rocky Helmet is in Blaziken. Read the 28-matchup table against kp3 under rule v2, and the laptop's mixed rows, with the single-switch codes to trace any change to its part.
+- **Switch 1 is not.** Its test is Dustin's decks: 07 (Jasmine, Metal Core Barrier, Steel Apron, Steel Wing), 05 (Cheren), 11 (Protect Charge), 01 and 03 (Heavy Helmet), and the held-out decks the laptop names.
+  - A paired A/B of kt3 against kp3 piloting the deck, against the floor panel, on new seeds from 22,000,000,000.
+  - The Skarmory check's measures: deck 07's win rate, and Jasmine's play rate on turns it's playable (1.2% under kp3).
+  - The laptop's causal test with Jasmine given kp's +10 (82% played, +5.7 points) is the size to compare with. kt prices Jasmine by the turns it saves, not by a flat 10, so the size may differ either way.
 
 ## Files
 
