@@ -1,0 +1,36 @@
+{
+  "file": "l-sharpedo.txt",
+  "archetype": "Mega Sharpedo ex Gyarados",
+  "limitless_deck_id": "mega-sharpedo-ex-b4-gyarados-a4",
+  "limitless_top30_rank": 24,
+  "limitless_share_2026-09-10": "42 players, 0.74%",
+  "ladder_games_vs_it": [
+    {"deck": "brew-04", "opp": "Mega Sharpedo ex / Gyarados", "result": "W", "source": "artifact GHSfGSCzNiWNj8SFPXV3R1 logs/brew-04"},
+    {"deck": "brew-05", "opp": "magikarp/carvanha", "result": "W", "source": "artifact GHSfGSCzNiWNj8SFPXV3R1 logs/brew-05 (Magikarp/Carvanha read as this archetype)"}
+  ],
+  "selection_rule": "best placing, then largest event, Aug 26 - Sep 24 2026, from the cached Limitless standings (rl/results/limitless_skill_model_2026-09-25/raw/<event>_standings.json.gz); 81 player-events of this deck id were found, one 1st place.",
+  "source": {
+    "player": "nandosgude",
+    "player_display": "PGX | Nandosgude",
+    "event": "Trinity Tournament 3 (PTCGP)",
+    "event_id": "6aa17016a4272c53be64bb41",
+    "date": "2026-09-12T01:00:00.000Z",
+    "players": 27,
+    "placing": 1,
+    "record": "5-0-0",
+    "split_in_skill_model": "holdout",
+    "url": "https://play.limitlesstcg.com/tournament/6aa17016a4272c53be64bb41/player/nandosgude/decklist",
+    "local_file": "rl/results/limitless_skill_model_2026-09-25/raw/6aa17016a4272c53be64bb41_standings.json.gz",
+    "energy_field_in_api": null,
+    "energy_note": "API record lists no energy; the identical 20 cards at 2nd place (hectordf, same event series) list Water, and every Pokemon in the list is Water."
+  },
+  "same_exact_list_also": [
+    {"player": "hectordf", "event": "OTS Pokemon TCG Pocket Arena Pop Up | GBP5 PRIZE", "event_id": "6aa1c5d9a4272c53be64c23c", "date": "2026-09-09T22:30:00.000Z", "players": 27, "placing": 2},
+    {"player": "victorssito", "event": "OTS Pokemon TCG Pocket Arena Pop Up | GBP5 PRIZE", "event_id": "6aa1c5d9a4272c53be64c23c", "date": "2026-09-09T22:30:00.000Z", "players": 27, "placing": 7}
+  ],
+  "best_development_split_alternative": {
+    "player": "shmo", "event": "THE BREAKFAST CLUB KELP CLASSIC #9 - $5", "event_id": "6aa1e900a4272c53be64c5ce", "date": "2026-09-10T03:20:00.000Z", "players": 64, "placing": 3,
+    "difference": "2 Wallace / 1 Lisia / 1 Irida A2a 072 and no Soothing Shore, instead of 2 Lisia / 1 Wallace / Soothing Shore"
+  },
+  "card_resolution": "all 13 ids resolved to exactly one printing each with python lib/card.py on 2026-09-26"
+}
