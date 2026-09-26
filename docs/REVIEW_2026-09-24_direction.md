@@ -198,7 +198,7 @@ Dustin's decisions, in the order they block things:
         - **Condition two:** "keep the discard-Energy value list-free". The own side may use its own list. The opponent's discard Energy counts only when a recovery source is visible on their board.
         - **Development data:** the 17 new cells were used to diagnose and design, so they are development data. Their holdout is post-freeze events.
         - **The next blind-spot class:** Trainer pricing, shown by the variation check (Team Rocket's Boss especially), goes on the list beside the Tool fix.
-        - "Write the spec. Register before building, one review, then the 45 cells, as the plan says." Draft: `rl/results/kpf_2026-09-26/REGISTRATION_DRAFT.md`.
+        - "Write the spec. Register before building, one review, then the 45 cells, as the plan says." Registered after one review: `rl/results/kpf_2026-09-26/REGISTRATION.md` (221b58d).
     - **The rules/09 fix replays are split onto the laptop** (Dustin: "Seven hours to one and a half is worth the one message"). Games are fixed by their seeds, and cloud-laptop reproduction held on the 28 cells, so replays from either machine are comparable if each carries its build hash. The laptop runs 3c2250f, 14745ce, 050cf51 and a30b5f8 (`rl/results/rules09_fixes_2026-09-26/run_replay_laptop.sh`, `timing_laptop.txt`). The cloud keeps 5bab907, 5b75bf9 and 3102c9e.
   - So the reserve route's (d) is open for kt's switch 1 with Dragonair Mega Rayquaza ex (135 of 143 development lists carry Gouging Fire; `rl/results/kt_carrier_census_2026-09-26/README.md`), as well as with Suicune under ruling (ii).
 - **koa: registered.** "Register the draft." `rl/results/opening_active_census_2026-09-26/REGISTRATION.md`, from the reviewed draft d7dbfb2.
