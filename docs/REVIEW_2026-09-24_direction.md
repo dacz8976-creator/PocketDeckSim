@@ -173,6 +173,9 @@ Dustin's decisions, in the order they block things:
 - **(ii) A panel archetype as the (d) deck: yes.** "Altaria is a non-Dustin deck whose real cells are known, so the gain can be checked against Limitless directly rather than only against paired noise. Yes, it counts, and the same ruling covers Suicune for the Tool fix."
 - **(i) Dragonair Mega Rayquaza ex is not his deck.** Dustin: "Yes mega rayquaza is in none of the decks I gave you, dragonair is in one, but mega rayquaza is unique fire and lightning and I think the one I gave you with dragonair is fighting and metal energy". Checked: deck 11's file reads "Energy: Fighting, Metal".
   - The rule going forward: **"his decks" means only the files he gave the project** (`decks/dustin/` and the brews built with him). A Limitless archetype that shares some Pokémon with one of them is still a non-Dustin deck.
+  - **Dustin's follow-up:** "if my deck matches a limitless deck, that doesn't mean you shouldn't test it. This argues for a broader test group after repairs, not restriction."
+    - Nothing is excluded from testing because it matches his decks. Clause (d) asks only that the gain also show on a real Limitless list, not on his own files alone.
+    - A broader standard test group after the engine repairs is proposed to him in the chat.
   - So the reserve route's (d) is open for kt's switch 1 with Dragonair Mega Rayquaza ex (135 of 143 development lists carry Gouging Fire; `rl/results/kt_carrier_census_2026-09-26/README.md`), as well as with Suicune under ruling (ii).
 - **koa: registered.** "Register the draft." `rl/results/opening_active_census_2026-09-26/REGISTRATION.md`, from the reviewed draft d7dbfb2.
   - The route is fixed by koa's measured table footprint: predicted 6.0%; under 15% the reserve route, else the ordinary rule.

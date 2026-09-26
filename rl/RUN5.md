@@ -393,7 +393,10 @@ sides with k3 still available; the 0.7.2 wheel and its run identities are untouc
   - Its clauses (a) to (e) and the closure sentence are as fixed in section 8 of `docs/REVIEW_2026-09-24_direction.md` (line 130), including that the gain must show on at least one deck that isn't Dustin's.
   - The route is chosen by the footprint measured on the table, read before anything else; under 15% it applies, otherwise the ordinary adoption rule does.
   - A panel archetype whose real Limitless lists carry the relevant cards may serve as the non-Dustin deck (Dustin, Sept 26; covers Altaria for `koa` and Suicune for kt).
-  - "Dustin's decks" means only the files he gave the project (`decks/dustin/` and the brews built with him). A Limitless archetype that shares some Pokémon with one of them is still a non-Dustin deck (Dustin, Sept 26; so Dragonair Mega Rayquaza ex can serve for kt's switch 1).
+  - **Nothing is excluded from testing because it matches Dustin's decks** (Dustin, Sept 26: "if my deck matches a limitless deck, that doesn't mean you shouldn't test it. This argues for a broader test group after repairs, not restriction.").
+    - Clause (d) asks only that the gain also show on a real Limitless list with known results, not on his own files alone.
+    - An archetype he also plays still qualifies. "His decks" means the files he gave the project (`decks/dustin/` and the brews built with him).
+    - So Dragonair Mega Rayquaza ex can serve for kt's switch 1, and his own files and the held-out archetypes that match them (B2e) are tested and reported too.
   - Registered under it so far: `koa` (`rl/results/opening_active_census_2026-09-26/REGISTRATION.md`).
 - Variants and process: whole table paired by deal, never the five worst cells; τ̂ margin E = 3 with the 90% interval,
   doubling deals to 2,000 when undecided; every experiment names the decision it changes; two review tiers (engine
