@@ -413,6 +413,14 @@ sides with k3 still available; the 0.7.2 wheel and its run identities are untouc
   - A no-harm fix can't show a gain of fixed size by design.
   - Its confirmation is a re-check of no harm on post-freeze Limitless events (after Sept 24): the τ̂ margin's 90% lower bound at −1.0 or above, and no veto, with the fix's own real cells reported.
   - Until then it is the working pilot, "unconfirmed".
+- **When post-freeze data is read** (Dustin, Sept 27; standing rule; the pull is in `results/postfreeze_2026-09-27/`).
+  - **Trigger:** read once, when the post-freeze pull reaches half the development half: 804 matches on the 28 panel cells and 303 on the 17 new cells. That is the smallest size at which the confirmation rule has meaningful power. Until then, re-pull and count sizes only, never results.
+  - **The Mega Garchomp ex clause:** if its release (mid or late October) comes first, read at the last pull before it, with the size printed beside the result. That is a confirmation on the B4a meta, which the pilots were built against.
+  - **One pull, every pending check.** Every check waiting on post-freeze data is read at the same pull. The list is pre-registered in the pull's folder before the data is opened. The data is looked at once, for everything, never once per candidate.
+  - **Rolling freeze.** Once read, that pull becomes development data like everything before it. The next confirmation waits for events after its date. The post-Garchomp meta becomes the next confirmation set that way, once the table decks are refreshed for it.
+  - **How a result reads:**
+    - At this size the pass criterion is unchanged: direction, plus at least half the development margin, with the interval not crossing a loss (its own 90% interval above zero; for a no-harm re-check, the lower bound at −1.0 or above and no veto).
+    - A failure reads **"not confirmed at this size"**, never "no better", as for the first holdout, and more strongly here.
 - **The frame a candidate is read in** (Dustin, Sept 27).
   - A candidate's adoption verdict is read on the cells it was registered on. Changing the frame after the result is what the rules exist to prevent.
   - An "adopted" must also survive the coverage cells it touches: there they count for no harm only. A veto blocks the takeover; a gain is reported, not credited.
