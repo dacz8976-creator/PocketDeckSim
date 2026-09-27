@@ -408,6 +408,28 @@ sides with k3 still available; the 0.7.2 wheel and its run identities are untouc
     - The other 24 first split at a turn where a Checkup Knock Out was within the bots' reach: 22 plainly, 2 through an attack plus Burn. All were in the cells where its on-board changes are.
     - Its code runs only when a promotion is pending after the Checkup. So it passed.
   - **Baselines move with the engine.** k3 and kp3 on all 45 scoreboard cells at the new engine become the frozen table. Earlier tables stay as history with their hashes. Every reading uses baselines from the same engine as the candidate, with no exceptions.
+- **Confirming a reserve-route (no-harm) fix** (Dustin, Sept 27; standing rule, not decided per candidate).
+  - A no-harm fix can't show a gain of fixed size by design.
+  - Its confirmation is a re-check of no harm on post-freeze Limitless events (after Sept 24): the τ̂ margin's 90% lower bound at −1.0 or above, and no veto, with the fix's own real cells reported.
+  - Until then it is the working pilot, "unconfirmed".
+- **The frame a candidate is read in** (Dustin, Sept 27).
+  - A candidate's adoption verdict is read on the cells it was registered on. Changing the frame after the result is what the rules exist to prevent.
+  - An "adopted" must also survive the coverage cells it touches: there they count for no harm only. A veto blocks the takeover; a gain is reported, not credited.
+  - Every candidate registered from Sept 27 is registered on the 45 cells, so the split doesn't recur. (koa: the 28 table cells for the verdict; its two new cells, where the panel's Altaria is the opponent, for no harm.)
+- **Composing candidates into one pilot** (Dustin, Sept 27: "two pilots is the drift risk").
+  - Candidates that pass separately and touch different things are combined into one pilot through a **composition check**, not a new candidate:
+    - the combined code's identity checks;
+    - one table on the 45 cells;
+    - no veto;
+    - accuracy no worse than the better component alone.
+  - Each component keeps its own verdict and evidence, and the combined pilot inherits both.
+  - First case: kp3 + koa's opening (switch A) + kpg's discard credit, run once kpg's held-out check is in.
+- **Open causes** (cells whose remaining error has no named cause; each fix's reading adds to this list):
+  - **Sceptile v Vespiquen:** sim about 66, real about 33.
+  - **Altaria v Vespiquen and Altaria v Weezing:** koa's correct opening fix lifts Altaria past their real cells (52.0 v 37.6 and 40.3 v 33.0), so their remaining error has one less explanation (Dustin, Sept 27).
+  - **Hydreigon's overshoot** under kpr/kpf.
+  - **Altaria/Greninja's gap** (41-44 v 51-59).
+  - **The Rayquaza v Lucario remainder:** 55 under kpf against a real 64-73.
 - **A "not adopted" is provisional until the coverage decks are read** (Dustin, Sept 26 evening, registered as a rule).
   - It has happened twice:
     - kp3 was vetoed, then found to be the fix.

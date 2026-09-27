@@ -66,7 +66,19 @@ The official engine is main-83e17ae. The registration is `../../opening_active_c
   - koa3 at the official build replays the cloud's koa3 at 9af40c8, 1,120 of 1,120.
 - **Development data:** Altaria v Lucario is the B2c cell that produced koa's hypothesis. It is re-read here on new deals.
 
-## koa and kpg
+## Dustin's rulings (Sept 27, after this reading)
+
+1. **Combine them:** "One pilot, kp3 plus koa's opening plus kpg's discard credit."
+   - It is a composition check of two components already read, not a new candidate: the combined code's identity checks and one table, showing no veto and accuracy no worse than the better component alone. Each component keeps its own verdict, and the combined pilot inherits both.
+   - It runs once kpg's held-out check is in.
+2. **"Twenty-eight for the verdict, forty-five for no-harm."**
+   - koa's adoption verdict stands on the 28 cells it was registered on.
+   - Its two new cells (Rayquaza v Altaria, Altaria/Greninja v Altaria) count for no harm only: a veto in either blocks the takeover, and a gain is reported, not credited.
+   - From Sept 27 every candidate is registered on 45 cells.
+3. **Confirmation:** re-checking no harm on post-Sept-24 events is the standing rule for reserve-route fixes (RUN5 "Rules").
+4. **For the record:** "Altaria's scores all rising pushes Vespiquen and Weezing past their real cells. That isn't koa's fault — the fix is correct about the opening — but it means those two cells' remaining error now has one less explanation available." They are on RUN5's open-causes list beside Sceptile v Vespiquen.
+
+## koa and kpg (the question as it stood before the ruling)
 
 - **The conflict:** koa's "both pass separately" sentence names only kt, and kpg's registration says kpg becomes the pilot once confirmed without mentioning koa. The two texts conflict if both pass.
 - **What koa's own "one pilot" principle implies:** the combined code (kp3, plus koa's switch A, plus kpg's discard credit) gets section 4's identity checks and one table before it becomes the pilot.
