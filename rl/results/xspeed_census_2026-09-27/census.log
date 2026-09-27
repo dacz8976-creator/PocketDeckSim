@@ -1,0 +1,40 @@
+research/lucario: 240 games, X Speed turns 55, retreated after 43, no retreat 12 (retreat still offered 5; attacked 10)
+research/vespiquen: 240 games, X Speed turns 160, retreated after 135, no retreat 25 (retreat still offered 18; attacked 15)
+research/weezing: 240 games, X Speed turns 84, retreated after 63, no retreat 21 (retreat still offered 16; attacked 17)
+dustin/04-absol-hoopa-darkrai: 240 games, X Speed turns 82, retreated after 63, no retreat 19 (retreat still offered 11; attacked 14)
+dustin/12-ariados-whimsicott-ogerpon: 240 games, X Speed turns 143, retreated after 68, no retreat 75 (retreat still offered 62; attacked 60)
+brews/brew-02-arceus-tandemaus-persian: 240 games, X Speed turns 74, retreated after 70, no retreat 4 (retreat still offered 4; attacked 3)
+brews/brew-03a-arceus-nihilego-toxapex: 240 games, X Speed turns 87, retreated after 76, no retreat 11 (retreat still offered 8; attacked 3)
+brews/brew-04-xatu-slowking: 240 games, X Speed turns 113, retreated after 78, no retreat 35 (retreat still offered 21; attacked 24)
+brews/brew-05-meowstic-hatterene-confusion: 240 games, X Speed turns 55, retreated after 49, no retreat 6 (retreat still offered 4; attacked 6)
+brews/brew-07-hoopa-darkrai-sableye: 240 games, X Speed turns 91, retreated after 78, no retreat 13 (retreat still offered 7; attacked 7)
+ALL: 2400 games, X Speed turns 944, retreated after 723, no retreat 221 (retreat still offered 156; attacked 159)
+
+first examples of X Speed without a retreat (the turn's moves):
+research/lucario v t-lucario seed 22800003000 game 12fb0cd7-36e7-45b0-bd73-cd250b3e3e60 turn 1: DrawCard > Play X Speed > Play Copycat > EndTurn
+research/lucario v t-lucario seed 22800003000 game 41484dad-2f5f-40a1-b203-a641ada145f8 turn 1: DrawCard > Play X Speed > Play Copycat > Play Protective Poncho > AttachTool > EndTurn
+research/lucario v t-blaziken seed 22800001000 game 177b0db8-ffbd-4e86-b9b9-7e9ee6c75419 turn 4: DrawCard > Evolve > Evolve > Play Copycat > Attach > Play Protective Poncho > AttachTool > Play X Speed > Attack > EndTurn
+research/lucario v t-blaziken seed 22800001000 game 72d5c3f5-d413-4b78-8741-6750ae2ec900 turn 6: DrawCard > Play Korrina > Attach > Play Protective Poncho > AttachTool > Play X Speed > Attack > EndTurn
+research/lucario v t-blaziken seed 22800001000 game 83769eec-19cb-4188-a4eb-c9018de386f9 turn 7: DrawCard > Attach > Play Protective Poncho > AttachTool > Play X Speed > Play Copycat > Play Arena of Antiquity > Attack > EndTurn
+research/lucario v t-blaziken seed 22800001000 game d5180d58-c14c-450d-8f9d-ba00e2148cc1 turn 4: DrawCard > Evolve > Evolve > Play X Speed > Play Korrina > Attach > Attack > EndTurn
+research/lucario v t-blaziken seed 22800001500 game 81928ea7-520a-44d7-b595-119fea56d8e5 turn 2: DrawCard > Place > Play Poké Ball > Retreat > Place > Attach > Play X Speed > Attack > ApplyDamage > ResolveAttackRetaliation > EndTurn
+research/lucario v t-blaziken seed 22800001500 game b9edc0f1-fd02-4931-828f-507252c42d9e turn 7: DrawCard > Retreat > Attach > Play Copycat > Play X Speed > Place > Attack > EndTurn
+research/lucario v t-altaria seed 22800000500 game 236f72b3-b2d0-414b-a2da-a920fbf813c5 turn 5: DrawCard > Attach > Play X Speed > Play Copycat > Attack > EndTurn
+research/lucario v t-altaria seed 22800000500 game 7f9bb534-ac51-49e8-be96-a5f6ef8a8d4a turn 6: DrawCard > Evolve > Attach > Play X Speed > Play Copycat > Attack > EndTurn
+research/lucario v t-suicune seed 22800005500 game a5d3733f-9aba-48b5-aaa8-b8c67fdc83a4 turn 3: DrawCard > Attach > Play X Speed > Attack > ApplyDamage > ResolveAttackRetaliation > EndTurn
+research/vespiquen v t-blaziken seed 22800011500 game 70c7bd81-970a-49e4-92b1-95a93b9604b0 turn 5: DrawCard > Attach > Play Copycat > Play X Speed > Place > Attack > EndTurn
+research/vespiquen v t-blaziken seed 22800011500 game 8657e870-e588-4767-ad20-60de050e7fce turn 9: DrawCard > Place > Attach > Play X Speed > Play X Speed > Attack > EndTurn
+research/lucario v t-vespiquen seed 22800006500 game 34e9207c-e97e-4b82-9730-c2444bfeccf6 turn 6: DrawCard > Evolve > Attach > Play X Speed > Play Copycat > Place > Attack > EndTurn
+research/vespiquen v t-blaziken seed 22800011000 game 152876f2-3b45-47b2-86fd-ae9c2ab848ee turn 7: DrawCard > Attach > Retreat > Play Copycat > Play X Speed > Place > Attack > EndTurn
+research/vespiquen v t-blaziken seed 22800011000 game 3b2c3f5b-033e-4603-8bf5-66c85528b3e0 turn 1: DrawCard > Play X Speed > Play X Speed > Play Copycat > Play Fragrant Forest > Place > UseStadium > Play Leaf Cape > AttachTool > Place > EndTurn
+research/vespiquen v t-blaziken seed 22800011000 game 5cfeecc0-7173-4730-833d-303cab44ac35 turn 7: DrawCard > Play X Speed > Play Leaf Cape > AttachTool > Attach > Play Copycat > Play Fragrant Forest > UseStadium > Place > Attack > EndTurn
+research/vespiquen v t-blaziken seed 22800011000 game a5a29942-ef07-45ac-be75-ed7a8b311c25 turn 5: DrawCard > Retreat > Play Copycat > Evolve > Play X Speed > Attach > Attack > EndTurn
+research/vespiquen v t-altaria seed 22800010000 game 63a7b6ac-35a3-4246-992d-47e27b39f82c turn 7: DrawCard > Place > Play Fragrant Forest > Play X Speed > Play Copycat > Attach > UseStadium > EndTurn
+research/vespiquen v t-altaria seed 22800010000 game 6764976c-e38d-422b-b705-ccc088b7e6bd turn 1: DrawCard > Play X Speed > Play Copycat > Place > Place > EndTurn
+research/vespiquen v t-altaria seed 22800010000 game a2391fc3-c36b-40c9-ad2b-b93df277e28d turn 2: DrawCard > Play Leaf Cape > AttachTool > Play X Speed > Play Copycat > Attach > EndTurn
+research/vespiquen v t-altaria seed 22800010000 game f3696631-f7b9-41fe-906f-84c59cb7c2a8 turn 4: DrawCard > Evolve > Attach > Play X Speed > Play Copycat > UseStadium > Attack > EndTurn
+research/vespiquen v t-altaria seed 22800010500 game 4ff4544b-4ac4-45f9-9f11-b2a8dfa4c152 turn 4: DrawCard > Evolve > Attach > Play Leaf Cape > AttachTool > Play X Speed > Play Copycat > Place > Attack > ApplyDamage > ResolveAttackRetaliation > EndTurn
+research/vespiquen v t-altaria seed 22800010500 game 674fafac-faaa-474c-af75-0ba23975e3ca turn 8: DrawCard > Play Sabrina > Play X Speed > Play Field Blower > DiscardActiveStadium > Attach > EndTurn
+research/vespiquen v t-hydreigon seed 22800012000 game 0b253ace-ebde-44b9-a347-7466c2ddae59 turn 10: DrawCard > Attach > Play X Speed > Play Copycat > Play Leaf Cape > AttachTool > UseStadium > Attack > EndTurn
+
+2026-09-27 21:47:16 XSPEED CENSUS DONE

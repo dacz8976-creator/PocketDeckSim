@@ -372,7 +372,8 @@ sides with k3 still available; the 0.7.2 wheel and its run identities are untouc
    games with the sequential stopping rule, the bot on the archetype's list and never his exact list; B5 blind-spot
    fixes under the card-agnostic rule, each with a paired A/B and the sentinels (queued classes, Sept 26: Tools and
    turn effects (`kt`); Trainer pricing, shown early by the gauntlet's variation check, where one swapped Trainer moved a
-   deck 4 to 7 points on average, Team Rocket's Boss especially; discard-cost attacks and discard-pile Energy (`kpf`)); B6 done (skill explains under 0.6 of
+   deck 4 to 7 points on average, Team Rocket's Boss especially (also X Speed played with no retreat after it, 23% of
+   its turns and 52% in Dustin's deck 12, `results/xspeed_census_2026-09-27/`); discard-cost attacks and discard-pile Energy (`kpf`)); B6 done (skill explains under 0.6 of
    any gap; Sceptile v Vespiquen out of quarantine as drift-sensitive, Altaria v Sceptile in); B7 not now, gated by
    the cloud transfer probe or three card-patch entries in B5's log.
 4. Not doing: policy networks trained on who won as the pilot (one network per mispiloted deck as a blind-spot
