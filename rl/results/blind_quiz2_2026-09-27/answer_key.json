@@ -1,0 +1,584 @@
+{
+ "Q01": {
+  "seed": 72130094,
+  "deck": "lucario",
+  "config": "second",
+  "pairing": 13,
+  "deal_i": 94,
+  "seat": 1,
+  "seats": {
+   "0": "hydreigon",
+   "1": "lucario"
+  },
+  "players_baseline": "kp3,kp3",
+  "players_kpf": "kp3,kpf3",
+  "your_deck": "Lucario",
+  "opponent_deck": "Hydreigon",
+  "turn": 3,
+  "ply_index": 15,
+  "kp3_keys": [
+   "4",
+   "5"
+  ],
+  "kpf_keys": [
+   "8"
+  ],
+  "kp3_option_text": "Evolve Riolu (Bench 3) into Mega Lucario ex",
+  "kpf_option_text": "Retreat Bonsly (Active) and switch in Riolu (Bench 3); costs 0 Energy",
+  "kp3_turn": "You: Evolved Riolu (Bench 3) into Mega Lucario ex | You: Played Professor's Research (Supporter) | You: Attached Fighting Energy to Mega Lucario ex (Bench 3) | You: Bonsly attacked with Teary Attack (10) → did 10 damage to opponent's Mega Absol ex (Active)",
+  "kpf_turn": "You: Retreated Bonsly (Active), switching in Riolu (Bench 3) | You: Played Professor's Research (Supporter) | You: Evolved Riolu (Active) into Mega Lucario ex | You: Attached Fighting Energy to Mega Lucario ex (Active) | You: Ended the turn without attacking",
+  "kp3_result": "win",
+  "kpf_result": "loss",
+  "kp3_final_points": {
+   "you": 4,
+   "opponent": 1
+  },
+  "kpf_final_points": {
+   "you": 1,
+   "opponent": 4
+  },
+  "kp3_final_turn": 9,
+  "kpf_final_turn": 12,
+  "results_differ": true,
+  "selected_kind": "worse",
+  "first_moves": {
+   "kp3": "Evolve",
+   "kpf": "Retreat"
+  },
+  "decision": [
+   "Where Mega Lucario ex evolves: on the Bench, Bonsly stays in front and attacks with Teary Attack (kp3); or retreat Bonsly for free and evolve in the Active Spot, no attack (kpf). Both play Professor's Research and attach F to the Mega. Each bot's first tap (evolve on the Bench / retreat) points to its plan; any other first tap, grade the plan."
+  ],
+  "diagnosis": {
+   "heading": "Lucario v Hydreigon (a worse game).",
+   "board": "Bonsly 30 HP in front with no Energy; Riolu 60 on the Bench; Mega Lucario ex in hand; Fighting Zone Energy now and next turn. Both bots also play Professor's Research.",
+   "opponent": "Mega Absol ex 160 HP with one [D] in front; Deino on the Bench.",
+   "choice_1_kp3": "evolve Mega Lucario ex on the Bench, attach F to it, Teary Attack.",
+   "choice_2_kpf": "retreat Bonsly for free, evolve Mega Lucario ex in the Active Spot, attach there, no attack.",
+   "decides": "*Decides fix B.* If he picks 1, the clock's slot-only credit is the error. If he picks 2, moving the Mega up is right and the Lucario harm lies elsewhere."
+  }
+ },
+ "Q02": {
+  "seed": 72190009,
+  "deck": "lucario",
+  "config": "first",
+  "pairing": 19,
+  "deal_i": 9,
+  "seat": 1,
+  "seats": {
+   "0": "suicune",
+   "1": "lucario"
+  },
+  "players_baseline": "kp3,kp3",
+  "players_kpf": "kp3,kpf3",
+  "your_deck": "Lucario",
+  "opponent_deck": "Suicune",
+  "turn": 4,
+  "ply_index": 28,
+  "kp3_keys": [
+   "8"
+  ],
+  "kpf_keys": [
+   "10"
+  ],
+  "kp3_option_text": "Play Professor's Research (Supporter): Draw 2 cards.",
+  "kpf_option_text": "Retreat Hitmonlee (Active) and switch in Riolu (Bench 3); costs 1 Energy",
+  "kp3_turn": "You: Played Professor's Research (Supporter) | You: Put Riolu on Bench 1 | You: Evolved Riolu (Bench 3) into Mega Lucario ex | You: Attached Fighting Energy to Mega Lucario ex (Bench 3) | You: Hitmonlee attacked with Stretch Kick → did 30 damage to opponent's Frigibax (Bench 3)",
+  "kpf_turn": "You: Retreated Hitmonlee (Active), switching in Riolu (Bench 3) | You: Played Professor's Research (Supporter) | You: Put Riolu on Bench 1 | You: Evolved Riolu (Active) into Mega Lucario ex | You: Attached Fighting Energy to Mega Lucario ex (Active) | You: Ended the turn without attacking",
+  "kp3_result": "win",
+  "kpf_result": "loss",
+  "kp3_final_points": {
+   "you": 3,
+   "opponent": 1
+  },
+  "kpf_final_points": {
+   "you": 0,
+   "opponent": 3
+  },
+  "kp3_final_turn": 10,
+  "kpf_final_turn": 7,
+  "results_differ": true,
+  "selected_kind": "worse",
+  "first_moves": {
+   "kp3": "Play Professor's Research",
+   "kpf": "Retreat"
+  },
+  "decision": [
+   "Pay Hitmonlee's retreat (its F) into Riolu and evolve Mega Lucario ex in the Active Spot, no attack (kpf); or evolve on the Bench, attach F to the Benched Mega and attack with Hitmonlee's Stretch Kick (kp3).",
+   "Both play Professor's Research and bench the second Riolu. kp3 taps Research first, so a first tap of Research says nothing on its own: grade the plan (retreat or not)."
+  ],
+  "diagnosis": {
+   "heading": "Lucario v Suicune (worse).",
+   "board": "Hitmonlee 80 HP with one F in front; Bonsly and Riolu on the Bench; Mega Lucario ex available; Zone F.",
+   "opponent": "Baxcalibur 140 with [WW] in front; Suicune ex and Frigibax on the Bench.",
+   "choice_1_kp3": "Professor's Research, evolve on the Bench, attach F to the benched Mega, Stretch Kick.",
+   "choice_2_kpf": "pay Hitmonlee's retreat, Mega Lucario ex in front with one F, no attack.",
+   "decides": "*Decides fix B when the wall's retreat has to be paid, and bears on Dustin's gate*, which would strip Hitmonlee's credit here. In kpf's game the Mega had taken 90 by its next turn."
+  }
+ },
+ "Q03": {
+  "seed": 72080079,
+  "deck": "lucario",
+  "config": "second",
+  "pairing": 8,
+  "deal_i": 79,
+  "seat": 0,
+  "seats": {
+   "0": "lucario",
+   "1": "blaziken"
+  },
+  "players_baseline": "kp3,kp3",
+  "players_kpf": "kpf3,kp3",
+  "your_deck": "Lucario",
+  "opponent_deck": "Blaziken",
+  "turn": 2,
+  "ply_index": 13,
+  "kp3_keys": [
+   "2"
+  ],
+  "kpf_keys": [
+   "6"
+  ],
+  "kp3_option_text": "Attach Fighting Energy to Riolu (Bench 3)",
+  "kpf_option_text": "Retreat Bonsly (Active) and switch in Riolu (Bench 3); costs 0 Energy",
+  "kp3_turn": "You: Attached Fighting Energy to Riolu (Bench 3) | You: Played Copycat (Supporter) | You: Put Riolu on Bench 2 | You: Bonsly attacked with Teary Attack (10) → did 10 damage to opponent's Heatmor (Active); Rocky Helmet did 20 damage to Bonsly (Active)",
+  "kpf_turn": "You: Retreated Bonsly (Active), switching in Riolu (Bench 3) | You: Attached Fighting Energy to Riolu (Active) | You: Riolu attacked with Fighting Fist (10+) → did 10 damage to opponent's Heatmor (Active); Rocky Helmet did 20 damage to Riolu (Active)",
+  "kp3_result": "win",
+  "kpf_result": "loss",
+  "kp3_final_points": {
+   "you": 3,
+   "opponent": 2
+  },
+  "kpf_final_points": {
+   "you": 2,
+   "opponent": 5
+  },
+  "kp3_final_turn": 10,
+  "kpf_final_turn": 15,
+  "results_differ": true,
+  "selected_kind": "worse",
+  "first_moves": {
+   "kp3": "Attach",
+   "kpf": "Retreat"
+  },
+  "decision": [
+   "Retreat Bonsly into the Benched Riolu, attach F and attack with Fighting Fist (kpf); or attach F to the Benched Riolu, Copycat, bench a second Riolu and attack with Bonsly's Teary Attack (kp3).",
+   "Bonsly's retreat is free, so attaching F to the Benched Riolu (kp3's first tap) and then retreating is kpf's plan in another order: grade the plan (who attacks)."
+  ],
+  "diagnosis": {
+   "heading": "Lucario v Blaziken (worse).",
+   "board": "Bonsly in front; Riolu on the Bench; Zone F.",
+   "opponent": "Heatmor 80 HP with no Energy; Castform Sunny Form on the Bench.",
+   "choice_1_kp3": "attach F to the benched Riolu, Copycat, bench a second Riolu, Teary Attack.",
+   "choice_2_kpf": "retreat into Riolu, attach F, Fighting Fist for 10.",
+   "decides": "*Decides fix A* (a bare Basic put in front). The clock is not the driver here."
+  }
+ },
+ "Q04": {
+  "seed": 72050131,
+  "deck": "altaria",
+  "config": "first",
+  "pairing": 5,
+  "deal_i": 131,
+  "seat": 1,
+  "seats": {
+   "0": "vespiquen",
+   "1": "altaria"
+  },
+  "players_baseline": "kp3,kp3",
+  "players_kpf": "kp3,kpf3",
+  "your_deck": "Altaria",
+  "opponent_deck": "Vespiquen",
+  "turn": 2,
+  "ply_index": 15,
+  "kp3_keys": [
+   "5",
+   "6"
+  ],
+  "kpf_keys": [
+   "8"
+  ],
+  "kp3_option_text": "Put Swablu onto your Bench",
+  "kpf_option_text": "Retreat Igglybuff (Active) and switch in Swablu (Bench 3); costs 0 Energy",
+  "kp3_turn": "You: Put Swablu on Bench 2 | You: Attached Psychic Energy to Swablu (Bench 3) | You: Igglybuff attacked with Sleepy Lullaby (10) → did no damage; opponent's Shuckle ex (Active) is now Asleep",
+  "kpf_turn": "You: Retreated Igglybuff (Active), switching in Swablu (Bench 3) | You: Put Swablu on Bench 2 | You: Attached Psychic Energy to Swablu (Active) | You: Swablu attacked with Sing → opponent's Shuckle ex (Active) is now Asleep",
+  "kp3_result": "win",
+  "kpf_result": "loss",
+  "kp3_final_points": {
+   "you": 4,
+   "opponent": 0
+  },
+  "kpf_final_points": {
+   "you": 2,
+   "opponent": 3
+  },
+  "kp3_final_turn": 8,
+  "kpf_final_turn": 15,
+  "results_differ": true,
+  "selected_kind": "worse",
+  "first_moves": {
+   "kp3": "Place",
+   "kpf": "Retreat"
+  },
+  "decision": [
+   "Retreat Igglybuff into the Benched Swablu, attach P to it and Sing (kpf); or keep Igglybuff in front, attach P to a Benched Swablu and attack with Sleepy Lullaby (kp3).",
+   "Both bench the second Swablu (kp3 first, kpf after retreating): a first tap of benching Swablu needs the plan."
+  ],
+  "diagnosis": {
+   "heading": "Altaria v Vespiquen (worse).",
+   "board": "after Professor's Research, Igglybuff 30 HP in front; two Swablu in hand or on the Bench; no Energy anywhere.",
+   "opponent": "Shuckle ex 120 in front; Combee, Shuckle ex and Combee on the Bench.",
+   "choice_1_kp3": "bench both Swablu, attach P to a benched Swablu, Sleepy Lullaby.",
+   "choice_2_kpf": "retreat Igglybuff into Swablu, attach P to it, Sing.",
+   "decides": "*Decides fix A for Altaria* (the Swablu slice, 15/3)."
+  }
+ },
+ "Q05": {
+  "seed": 72160098,
+  "deck": "vespiquen",
+  "config": "second",
+  "pairing": 16,
+  "deal_i": 98,
+  "seat": 1,
+  "seats": {
+   "0": "hydreigon",
+   "1": "vespiquen"
+  },
+  "players_baseline": "kp3,kp3",
+  "players_kpf": "kp3,kpf3",
+  "your_deck": "Vespiquen",
+  "opponent_deck": "Hydreigon",
+  "turn": 2,
+  "ply_index": 13,
+  "kp3_keys": [
+   "2"
+  ],
+  "kpf_keys": [
+   "4",
+   "5"
+  ],
+  "kp3_option_text": "Play Leaf Cape (Pokémon Tool), then choose which of your Pokémon to attach it to: The Grass Pokémon this card is attached to gets +30 HP.",
+  "kpf_option_text": "Play Fragrant Forest (Stadium): Once during each player's turn, that player may put a random Basic Grass Pokémon from their deck into their hand.",
+  "kp3_turn": "You: Played Leaf Cape (Pokémon Tool) → attached Leaf Cape to Combee (Active) | You: Played Fragrant Forest (Stadium) | You: Used the Stadium Fragrant Forest | You: Put Shuckle ex on Bench 3 | You: Played X Speed (Item) | You: Retreated Combee (Active), switching in Shuckle ex (Bench 3) | You: Attached Grass Energy to Shuckle ex (Active) | You: Played Field Blower (Item) → discarded Deceptive Needle from opponent's Mega Absol ex (Active) | You: Shuckle ex attacked with Triple Slap (20×) → did no damage",
+  "kpf_turn": "You: Played Fragrant Forest (Stadium) | You: Used the Stadium Fragrant Forest | You: Put Shuckle ex on Bench 3 | You: Attached Grass Energy to Combee (Active) | You: Played Leaf Cape (Pokémon Tool) → attached Leaf Cape to Combee (Active) | You: Played Field Blower (Item) → discarded Deceptive Needle from opponent's Mega Absol ex (Active) | You: Combee attacked with Reckless Charge (30) → did 50 damage to opponent's Mega Absol ex (Active); Combee (Active) took 10 damage",
+  "kp3_result": "win",
+  "kpf_result": "loss",
+  "kp3_final_points": {
+   "you": 5,
+   "opponent": 2
+  },
+  "kpf_final_points": {
+   "you": 1,
+   "opponent": 4
+  },
+  "kp3_final_turn": 16,
+  "kpf_final_turn": 9,
+  "results_differ": true,
+  "selected_kind": "worse",
+  "first_moves": {
+   "kp3": "Play Leaf Cape",
+   "kpf": "Play Fragrant Forest"
+  },
+  "decision": [
+   "Who attacks this turn: Shuckle ex, after X Speed and a retreat, with the G on it and Triple Slap (kp3); or Combee with the G on it and Reckless Charge, Shuckle ex staying on the Bench (kpf).",
+   "Both play Leaf Cape on Combee, Fragrant Forest (and use it) and Field Blower on the Deceptive Needle; the first taps (Leaf Cape vs Fragrant Forest) differ only in order, so grade the plan.",
+   "Shuckle ex is not in the hand at this decision: in both games it came from Fragrant Forest's random pick (Basic Grass left in the deck: Combee, Shuckle ex x2, Teal Mask Ogerpon ex). A plan that depends on that pick is fine."
+  ],
+  "diagnosis": {
+   "heading": "Vespiquen v Hydreigon (worse).",
+   "board": "Combee 40 HP in front; nothing on the Bench; Zone G; hand of five: Shuckle ex, X Speed, Leaf Cape, Fragrant Forest, Field Blower.",
+   "opponent": "Mega Absol ex 170 with two Deino on the Bench.",
+   "choice_1_kp3": "bench Shuckle ex, Leaf Cape on Combee, X Speed, retreat into Shuckle ex, attach to it, Triple Slap.",
+   "choice_2_kpf": "attach G to Combee, Leaf Cape on Combee, Reckless Charge; Shuckle ex stays on the Bench.",
+   "decides": "*Decides fix A for Vespiquen*, inside its only significant excess (37/14)."
+  }
+ },
+ "Q06": {
+  "seed": 72200103,
+  "deck": "vespiquen",
+  "config": "second",
+  "pairing": 20,
+  "deal_i": 103,
+  "seat": 0,
+  "seats": {
+   "0": "vespiquen",
+   "1": "lucario"
+  },
+  "players_baseline": "kp3,kp3",
+  "players_kpf": "kpf3,kp3",
+  "your_deck": "Vespiquen",
+  "opponent_deck": "Lucario",
+  "turn": 4,
+  "ply_index": 25,
+  "kp3_keys": [
+   "5"
+  ],
+  "kpf_keys": [
+   "9"
+  ],
+  "kp3_option_text": "Evolve Combee (Bench 3) into Vespiquen ex",
+  "kpf_option_text": "Retreat Shuckle ex (Active) and switch in Combee (Bench 3); costs 1 Energy",
+  "kp3_turn": "You: Evolved Combee (Bench 3) into Vespiquen ex | You: Attached Grass Energy to Vespiquen ex (Bench 3) | You: Used the Stadium Fragrant Forest | You: Put Teal Mask Ogerpon ex on Bench 2 | You: Shuckle ex attacked with Triple Slap (20×) → did 40 damage to opponent's Mega Lucario ex (Active)",
+  "kpf_turn": "You: Retreated Shuckle ex (Active), switching in Combee (Bench 3) | You: Evolved Combee (Active) into Vespiquen ex | You: Attached Grass Energy to Vespiquen ex (Active) | You: Used the Stadium Fragrant Forest | You: Put Teal Mask Ogerpon ex on Bench 2 | You: Ended the turn without attacking",
+  "kp3_result": "win",
+  "kpf_result": "loss",
+  "kp3_final_points": {
+   "you": 4,
+   "opponent": 2
+  },
+  "kpf_final_points": {
+   "you": 0,
+   "opponent": 4
+  },
+  "kp3_final_turn": 8,
+  "kpf_final_turn": 9,
+  "results_differ": true,
+  "selected_kind": "worse",
+  "first_moves": {
+   "kp3": "Evolve",
+   "kpf": "Retreat"
+  },
+  "decision": [
+   "Evolve Combee into Vespiquen ex on the Bench, attach G to it and attack with Shuckle ex's Triple Slap (kp3); or retreat Shuckle ex (discarding its G) into Combee, evolve and attach in the Active Spot, no attack (kpf). Both then use Fragrant Forest and bench Teal Mask Ogerpon ex.",
+   "Evolving on the Bench first (kp3's first tap) and then retreating into Vespiquen ex is kpf's plan in another order: grade the plan (who ends the turn Active, and whether Shuckle ex attacks)."
+  ],
+  "diagnosis": {
+   "heading": "Vespiquen v Lucario (worse).",
+   "board": "Shuckle ex 120 with [G] in front; Combee on the Bench; Vespiquen ex in hand; Zone G.",
+   "opponent": "Mega Lucario ex 170 with [F] in front; Riolu and Hitmonlee on the Bench.",
+   "choice_1_kp3": "evolve Combee on the Bench, attach to it, Triple Slap.",
+   "choice_2_kpf": "retreat Shuckle ex (discarding its G) into Combee, evolve in the Active Spot, attach there, no attack.",
+   "decides": "*Decides fix B for Vespiquen.* Is moving Vespiquen ex up a turn early ever right here?"
+  }
+ },
+ "Q07": {
+  "seed": 72000056,
+  "deck": "altaria",
+  "config": "first",
+  "pairing": 0,
+  "deal_i": 56,
+  "seat": 0,
+  "seats": {
+   "0": "altaria",
+   "1": "blaziken"
+  },
+  "players_baseline": "kp3,kp3",
+  "players_kpf": "kpf3,kp3",
+  "your_deck": "Altaria",
+  "opponent_deck": "Blaziken",
+  "turn": 4,
+  "ply_index": 27,
+  "kp3_keys": [
+   "4"
+  ],
+  "kpf_keys": [
+   "9"
+  ],
+  "kp3_option_text": "Attach Psychic Energy to Darkrai (Bench 3)",
+  "kpf_option_text": "Retreat Igglybuff (Active) and switch in Darkrai (Bench 3); costs 0 Energy",
+  "kp3_turn": "You: Attached Psychic Energy to Darkrai (Bench 3) | You: Igglybuff attacked with Sleepy Lullaby (10) → did 10 damage to opponent's Torchic (Active); opponent's Torchic (Active) is now Asleep | End of turn: Opponent's Torchic (Active) took 40 damage (Darkrai's Bad Dreams 20 + Darkrai's Bad Dreams 20)",
+  "kpf_turn": "You: Retreated Igglybuff (Active), switching in Darkrai (Bench 3) | You: Attached Psychic Energy to Darkrai (Active) | You: Ended the turn without attacking",
+  "kp3_result": "win",
+  "kpf_result": "loss",
+  "kp3_final_points": {
+   "you": 3,
+   "opponent": 0
+  },
+  "kpf_final_points": {
+   "you": 2,
+   "opponent": 4
+  },
+  "kp3_final_turn": 8,
+  "kpf_final_turn": 11,
+  "results_differ": true,
+  "selected_kind": "worse",
+  "first_moves": {
+   "kp3": "Attach",
+   "kpf": "Retreat"
+  },
+  "decision": [
+   "Keep Igglybuff in front: attach P to the Benched Darkrai that has P and attack with Sleepy Lullaby (kp3); or retreat Igglybuff (free) into that Darkrai, attach there, no attack (kpf).",
+   "Igglybuff's retreat is free, so attaching to Bench 3's Darkrai first and then retreating is kpf's plan in another order: a first tap of that attach needs the plan."
+  ],
+  "diagnosis": {
+   "heading": "Altaria v Blaziken (worse; Altaria has 1 point).",
+   "board": "after Copycat, Igglybuff 30 HP in front; on the Bench, Darkrai 100 with no Energy, Swablu 50, and Darkrai 100 with P; Zone P.",
+   "opponent": "Torchic 60 HP with no Energy in front; Mega Blaziken ex 210 on the Bench.",
+   "choice_1_kp3": "attach to the benched Darkrai that has P (now PP), Sleepy Lullaby.",
+   "choice_2_kpf": "retreat Igglybuff into that Darkrai, attach (PP), no attack.",
+   "decides": "*Decides fix B for Altaria, and is Dustin's own scenario.* kp3 moved Darkrai up the next turn anyway, and its Lullaby plus Bad Dreams took Torchic a turn earlier."
+  }
+ },
+ "Q08": {
+  "seed": 72010118,
+  "deck": "altaria",
+  "config": "first",
+  "pairing": 1,
+  "deal_i": 118,
+  "seat": 0,
+  "seats": {
+   "0": "altaria",
+   "1": "hydreigon"
+  },
+  "players_baseline": "kp3,kp3",
+  "players_kpf": "kpf3,kp3",
+  "your_deck": "Altaria",
+  "opponent_deck": "Hydreigon",
+  "turn": 3,
+  "ply_index": 17,
+  "kp3_keys": [
+   "2"
+  ],
+  "kpf_keys": [
+   "1"
+  ],
+  "kp3_option_text": "Attach Psychic Energy to Swablu (Bench 2)",
+  "kpf_option_text": "Attach Psychic Energy to Darkrai (Active)",
+  "kp3_turn": "You: Attached Psychic Energy to Swablu (Bench 2) | You: Ended the turn without attacking",
+  "kpf_turn": "You: Attached Psychic Energy to Darkrai (Active) | You: Ended the turn without attacking",
+  "kp3_result": "win",
+  "kpf_result": "loss",
+  "kp3_final_points": {
+   "you": 3,
+   "opponent": 2
+  },
+  "kpf_final_points": {
+   "you": 1,
+   "opponent": 3
+  },
+  "kp3_final_turn": 15,
+  "kpf_final_turn": 10,
+  "results_differ": true,
+  "selected_kind": "worse",
+  "first_moves": {
+   "kp3": "Attach",
+   "kpf": "Attach"
+  },
+  "decision": [
+   "Energy: the Benched Swablu (kp3) or the Active Darkrai (kpf); both end the turn. Each bot's first tap is its whole plan; any other first tap, grade the plan."
+  ],
+  "diagnosis": {
+   "heading": "Altaria v Hydreigon (worse).",
+   "board": "Darkrai 80 HP with no Energy in front; Swablu 50 and Darkrai 100 on the Bench, neither with Energy; Zone P.",
+   "opponent": "Deino 60 HP with [D] in front; another Deino on the Bench.",
+   "choice_1_kp3": "attach to the benched Swablu (towards Mega Altaria ex).",
+   "choice_2_kpf": "attach to the Active Darkrai (towards Dark Slumber).",
+   "decides": "*Tests Dustin's hypothesis in its pure form*, which is balanced in the data (17/14). If he calls choice 2 a clear mistake, the balanced count means the evaluator gets this spot wrong under both bots."
+  }
+ },
+ "Q09": {
+  "seed": 72020118,
+  "deck": "lucario",
+  "config": "second",
+  "pairing": 2,
+  "deal_i": 118,
+  "seat": 1,
+  "seats": {
+   "0": "altaria",
+   "1": "lucario"
+  },
+  "players_baseline": "kp3,kp3",
+  "players_kpf": "kp3,kpf3",
+  "your_deck": "Lucario",
+  "opponent_deck": "Altaria",
+  "turn": 2,
+  "ply_index": 16,
+  "kp3_keys": [
+   "4"
+  ],
+  "kpf_keys": [
+   "1"
+  ],
+  "kp3_option_text": "Play Protective Poncho (Pokémon Tool), then choose which of your Pokémon to attach it to: As long as the Pokémon this card is attached to is on your Bench, prevent all damage done to that Pokémon by your opponent's attacks and Abilities.",
+  "kpf_option_text": "Attach Fighting Energy to Riolu (Active)",
+  "kp3_turn": "You: Played Protective Poncho (Pokémon Tool) → attached Protective Poncho to Riolu (Active) | You: Attached Fighting Energy to Hitmonlee (Bench 2) | You: Ended the turn without attacking",
+  "kpf_turn": "You: Attached Fighting Energy to Riolu (Active) | You: Retreated Riolu (Active), switching in Hitmonlee (Bench 2) | You: Played Protective Poncho (Pokémon Tool) → attached Protective Poncho to Hitmonlee (Active) | You: Ended the turn without attacking",
+  "kp3_result": "loss",
+  "kpf_result": "win",
+  "kp3_final_points": {
+   "you": 1,
+   "opponent": 3
+  },
+  "kpf_final_points": {
+   "you": 3,
+   "opponent": 2
+  },
+  "kp3_final_turn": 9,
+  "kpf_final_turn": 10,
+  "results_differ": true,
+  "selected_kind": "better",
+  "first_moves": {
+   "kp3": "Play Protective Poncho",
+   "kpf": "Attach"
+  },
+  "decision": [
+   "Energy: the Benched Hitmonlee, Riolu staying in front (kp3); or Riolu, then retreat Riolu into Hitmonlee paying with that F (kpf).",
+   "Protective Poncho: on the Active Riolu (kp3, its first tap) or on Hitmonlee after the retreat (kpf). A first tap of Poncho needs the plan (where it goes, where the F goes)."
+  ],
+  "diagnosis": {
+   "heading": "Lucario v Altaria (a better game; the helpful side).",
+   "board": "Riolu 60 with no Energy in front; Hitmonlee 80 and Riolu on the Bench; Zone F.",
+   "opponent": "Swablu in front; Eevee and Darkrai on the Bench.",
+   "choice_1_kp3": "attach F to the benched Hitmonlee and keep Riolu in front.",
+   "choice_2_kpf": "attach F to Riolu, then retreat Riolu behind Hitmonlee, paying with that F.",
+   "decides": "*Checks what the fix must keep.* The fix predicts choice 2 becomes more likely. If Dustin prefers choice 1, the helpful pattern is luck."
+  }
+ },
+ "Q10": {
+  "seed": 72050138,
+  "deck": "vespiquen",
+  "config": "second",
+  "pairing": 5,
+  "deal_i": 138,
+  "seat": 1,
+  "seats": {
+   "0": "altaria",
+   "1": "vespiquen"
+  },
+  "players_baseline": "kp3,kp3",
+  "players_kpf": "kp3,kpf3",
+  "your_deck": "Vespiquen",
+  "opponent_deck": "Altaria",
+  "turn": 3,
+  "ply_index": 26,
+  "kp3_keys": [
+   "6",
+   "8"
+  ],
+  "kpf_keys": [
+   "7"
+  ],
+  "kp3_option_text": "Retreat Teal Mask Ogerpon ex (Active) and switch in a Benched Shuckle ex (Bench 1 or 3); costs 0 Energy (X Speed)",
+  "kpf_option_text": "Retreat Teal Mask Ogerpon ex (Active) and switch in Vespiquen ex (Bench 2); costs 0 Energy (X Speed)",
+  "kp3_turn": "You: Retreated Teal Mask Ogerpon ex (Active), switching in Shuckle ex (Bench 3) | You: Attached Grass Energy to Shuckle ex (Active) | You: Used the Stadium Fragrant Forest | You: Shuckle ex attacked with Triple Slap (20×) → did no damage",
+  "kpf_turn": "You: Retreated Teal Mask Ogerpon ex (Active), switching in Vespiquen ex (Bench 2) | You: Attached Grass Energy to Vespiquen ex (Active) | You: Used the Stadium Fragrant Forest | You: Ended the turn without attacking",
+  "kp3_result": "win",
+  "kpf_result": "loss",
+  "kp3_final_points": {
+   "you": 4,
+   "opponent": 2
+  },
+  "kpf_final_points": {
+   "you": 1,
+   "opponent": 4
+  },
+  "kp3_final_turn": 13,
+  "kpf_final_turn": 10,
+  "results_differ": true,
+  "selected_kind": "worse",
+  "first_moves": {
+   "kp3": "Retreat",
+   "kpf": "Retreat"
+  },
+  "decision": [
+   "Retreat Teal Mask Ogerpon ex into a Shuckle ex, attach G and attack with Triple Slap (kp3); or into Vespiquen ex, attach G, no attack (kpf). Each bot's first tap (the retreat) points to its plan; a first tap of attaching G, grade the plan (who goes Active)."
+  ],
+  "diagnosis": {
+   "heading": "Vespiquen v Altaria (a worse game, from the pattern that leans helpful).",
+   "board": "Teal Mask Ogerpon ex 160 HP with no Energy in front; X Speed already played; on the Bench, Shuckle ex 120, Vespiquen ex 170 and Shuckle ex 120; no Energy anywhere; hand empty.",
+   "opponent": "Darkrai 100 in front; Swablu 50 with P on the Bench.",
+   "choice_1_kp3": "retreat into Shuckle ex, attach, Triple Slap.",
+   "choice_2_kpf": "retreat into Vespiquen ex, attach, no attack.",
+   "decides": "*Checks R's tempo credit*, which the fix keeps. If Dustin picks choice 1, the tempo trade is not worth keeping either."
+  }
+ }
+}
