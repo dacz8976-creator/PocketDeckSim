@@ -82,3 +82,24 @@ Each constructed board states its timing: mid-turn (the side to move, its turn r
 | Parser | | kph3, KPH5, kpha3, kphb3 parse; kph, kphx, kpha, kphc3 rejected; kpf3, kpg3, kpr3, kp3 unchanged |
 
 **Full suite:** 1,974 passed, 0 failed (10 new tests, and the B case added to kpr's test).
+
+## Identity (REGISTRATION.md section 4)
+
+**Every check passes** (`run_identity.sh`, `identity.py`, `identity_check.txt`). All runs are at 7e7d864, on 40 deals of all 28 pairings, a superset of the registered 2 × 40. A game is equal when its moves, choices, openings and result all are.
+
+| check | reference | result |
+|---|---|---|
+| kp3 | `../rules09_fixes_2026-09-26/af8489f_kp3_500.jsonl`, first 40 deals | 1,120 of 1,120; clean |
+| k3 | `af8489f_k3_500.jsonl`, first 40 deals | 1,120 of 1,120; clean |
+| kpg3 (kph with R off) | the official `../kpf_2026-09-26/reading/table_kpg3.jsonl`, first 40 deals | 1,120 of 1,120; clean |
+| kpf3 (kph with A and B off) | the official `table_kpf3.jsonl`, first 40 deals | 1,120 of 1,120; clean |
+| kph3, kpha3, kphb3 smokes | — | 1,120 games each; clean |
+
+- **The switch identities.** kpf3 is kph's preset with A and B off, and kpg3 its value with R off (tests above). So the kpf3 and kpg3 rows are also the switch identities in games.
+- **Composed-base identities** (kph with R′ off = the composed pilot, and with A and B off = composed + R) belong to R′ on kog. That preset isn't built yet (see Base above).
+- The smokes' changed games aren't counted here. The laptop reads the footprint first.
+
+## Files
+
+- `run_identity.sh`, `identity.py`, `identity_check.txt`, `timing.txt`, `tests.txt`.
+- The raw outputs: `7e7d864_{kp3,k3,kpg3,kpf3,kph3,kpha3,kphb3}_40.{jsonl,txt}`.
