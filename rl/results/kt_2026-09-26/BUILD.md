@@ -106,3 +106,9 @@ The last full replay is the official engine's (main 83e17ae; k3 and kp3 14,000 o
 | `players/mod.rs` | the four codes, their parser branch, their player arm, parser tests | kt codes only |
 | `players/value_functions.rs` | the presets and four value functions; kt's clock, `kt_clocks`, `counter_cut`; the switch 2 weight; tests | kt codes only |
 | | `threat_candidates`, `status_clock_turns`, `owner_next_turn`, `first_attack_turn_number`; `extract_features`' optional clock | every bot (identity) |
+
+## Identity at the build (registration step 3)
+
+**kq3's reference.** No kq3 table existed at the official engine (the Sept 26 replays ran kq3 on 40 deals only), so the official program (`rl/engine-2026-09-27/legality_scan`, e6ab9a9d) played kq3's 14,000 table games first (`identity/official_kq3_500.jsonl`).
+- Its first 40 deals equal the Sept 26 kq3 reference (`../rules09_fixes_2026-09-26/af8489f_kq3_40.jsonl`) in moves and choices, 840 of 840 in pairings 0-20.
+- **Pairings 21-27 were lost and re-run.** The run's output for them went to a deleted file: while it ran, a `git stash` (to rebuild the scan without the review's tests) swapped the file under it. Each game is fixed by its seed, so the official program played pairings 21-27 again with `--pairings 21,...,27`, and the two parts are joined. The first part's `.txt` summary stops at pairing 20; the second part has its own.
