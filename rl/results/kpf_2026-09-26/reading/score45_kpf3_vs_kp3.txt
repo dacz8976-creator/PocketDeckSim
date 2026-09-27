@@ -1,0 +1,172 @@
+45-cell scoreboard: 45 pairs; Limitless development half (v2's 28 + the gauntlet's 17)
+Reading: kpf3 (new) against kp3 (current), 45 common pairings.
+Source: table_kp3.jsonl + new17_kp3.jsonl (current) vs table_kpf3.jsonl + new17_kpf3.jsonl (new), paired by deal
+Limitless cells: /tmp/tmpe7f8uwey.json
+Veto rule: rules v2 (pre-registered Sept 25): a veto counts only when mixed rows on the same deals show the changed pilot's own side got worse beyond their paired noise, and never on a cell whose Limitless band is wider than +/-15; otherwise it is an investigation item
+Mixed rows: mixed_table_kpf3_first.jsonl + mixed_table_kpf3_second.jsonl + mixed_new17_kpf3_first.jsonl + mixed_new17_kpf3_second.jsonl (22500 games with kpf3 on the first-named deck only, 22500 on the second-named only)
+
+== all cells: 45 pairings
+         kp3: real error 15.5 | reported only: correlation 0.48, average miss 13.6, favorite right 28/45, clear 15/20, beyond chance 17
+              PASS (a) real error <= 5.5: no | (b) cells over by >10 beyond noise: sceptile v vespiquen, rayquaza v lucario, rayquaza v sceptile, rayquaza v vespiquen, altaria_greninja v sceptile | (c) decks off by >6: altaria_greninja, hydreigon, lucario, rayquaza, sceptile
+        kpf3: real error 12.5 | reported only: correlation 0.42, average miss 12.8, favorite right 26/45, clear 17/20, beyond chance 15
+              PASS (a) real error <= 5.5: no | (b) cells over by >10 beyond noise: hydreigon v suicune, sceptile v vespiquen, altaria_greninja v sceptile | (c) decks off by >6: altaria, altaria_greninja, blaziken, hydreigon, sceptile, vespiquen
+  dMSE new - current: -84.2 points^2, 95% interval -149.9 to -21.3 (below 0)
+  real error, current minus new: +3.01 points, 90% interval +0.98 to +4.20 (margin rule: E = 3; 'current' is the cheap bot when comparing variants)
+  cell veto (miss grows > 6): altaria v suicune +6.6, blaziken v lucario +10.7, blaziken v weezing +11.5, hydreigon v suicune +10.8, hydreigon v vespiquen +15.6, lucario v suicune +8.6, rayquaza v weezing +19.8
+  deck veto (gap grows > 2): altaria +4.1, hydreigon +2.0, vespiquen +4.8
+    altaria v suicune +6.6: COUNTS: kpf3 pilots altaria worse (altaria's side -7.8 ± 4.8; suicune's side +2.0 ± 3.5)
+    blaziken v lucario +10.7: COUNTS: kpf3 pilots lucario worse (blaziken's side +1.9 ± 4.4; lucario's side -11.4 ± 4.6)
+    blaziken v weezing +11.5: never counts: Limitless band ±23.4 is wider than ±15
+    hydreigon v suicune +10.8: never counts: Limitless band ±15.2 is wider than ±15
+    hydreigon v vespiquen +15.6: never counts: Limitless band ±15.3 is wider than ±15
+    lucario v suicune +8.6: COUNTS: kpf3 pilots lucario worse (lucario's side -9.8 ± 4.3; suicune's side -1.0 ± 3.3)
+    rayquaza v weezing +19.8: never counts: Limitless band ±20.2 is wider than ±15
+    deck altaria +4.1: COUNTS: kpf3 pilots altaria's own side worse (altaria's own side -1.8 ± 1.5 (4,500 deals); its opponents' side +2.0 ± 1.3 (4,500 deals))
+    deck hydreigon +2.0: investigation item: neither side worse (hydreigon's own side +3.8 ± 1.5 (4,500 deals); its opponents' side +3.1 ± 1.4 (4,500 deals))
+    deck vespiquen +4.8: COUNTS: kpf3 pilots vespiquen's own side worse (vespiquen's own side -1.9 ± 1.4 (4,500 deals); its opponents' side +2.3 ± 1.5 (4,500 deals))
+  ADOPTION RULE (v2): do not adopt (vetoes that count: altaria v suicune, blaziken v lucario, lucario v suicune, altaria, vespiquen) (held-out-deck veto checked separately)
+
+  Deck averages over these cells (current / new / Limitless; change in miss, + = further from Limitless):
+      altaria:  52.0 /  47.9 /  54.5   +4.1
+     blaziken:  57.9 /  58.8 /  52.3   +0.9
+    hydreigon:  51.6 /  53.7 /  43.9   +2.0
+      lucario:  53.4 /  46.8 /  45.6   -6.6
+     sceptile:  63.2 /  62.2 /  49.0   -0.9
+      suicune:  51.8 /  50.9 /  48.9   -0.9
+    vespiquen:  49.3 /  44.5 /  52.7   +4.8
+      weezing:  53.1 /  46.3 /  48.5   -2.4
+
+== decision set (Altaria v Sceptile quarantined): 44 pairings
+         kp3: real error 15.7 | reported only: correlation 0.49, average miss 13.9, favorite right 27/44, clear 15/20, beyond chance 17
+              PASS (a) real error <= 5.5: no | (b) cells over by >10 beyond noise: sceptile v vespiquen, rayquaza v lucario, rayquaza v sceptile, rayquaza v vespiquen, altaria_greninja v sceptile | (c) decks off by >6: altaria_greninja, hydreigon, lucario, rayquaza, sceptile
+        kpf3: real error 12.7 | reported only: correlation 0.42, average miss 13.0, favorite right 25/44, clear 17/20, beyond chance 15
+              PASS (a) real error <= 5.5: no | (b) cells over by >10 beyond noise: hydreigon v suicune, sceptile v vespiquen, altaria_greninja v sceptile | (c) decks off by >6: altaria, altaria_greninja, blaziken, hydreigon, sceptile, vespiquen
+  dMSE new - current: -86.1 points^2, 95% interval -152.2 to -21.4 (below 0)
+  real error, current minus new: +3.05 points, 90% interval +0.94 to +4.25 (margin rule: E = 3; 'current' is the cheap bot when comparing variants)
+  cell veto (miss grows > 6): altaria v suicune +6.6, blaziken v lucario +10.7, blaziken v weezing +11.5, hydreigon v suicune +10.8, hydreigon v vespiquen +15.6, lucario v suicune +8.6, rayquaza v weezing +19.8
+  deck veto (gap grows > 2): altaria +4.5, hydreigon +2.0, vespiquen +4.8
+    altaria v suicune +6.6: COUNTS: kpf3 pilots altaria worse (altaria's side -7.8 ± 4.8; suicune's side +2.0 ± 3.5)
+    blaziken v lucario +10.7: COUNTS: kpf3 pilots lucario worse (blaziken's side +1.9 ± 4.4; lucario's side -11.4 ± 4.6)
+    blaziken v weezing +11.5: never counts: Limitless band ±23.4 is wider than ±15
+    hydreigon v suicune +10.8: never counts: Limitless band ±15.2 is wider than ±15
+    hydreigon v vespiquen +15.6: never counts: Limitless band ±15.3 is wider than ±15
+    lucario v suicune +8.6: COUNTS: kpf3 pilots lucario worse (lucario's side -9.8 ± 4.3; suicune's side -1.0 ± 3.3)
+    rayquaza v weezing +19.8: never counts: Limitless band ±20.2 is wider than ±15
+    deck altaria +4.5: COUNTS: kpf3 pilots altaria's own side worse (altaria's own side -2.5 ± 1.6 (4,000 deals); its opponents' side +2.3 ± 1.5 (4,000 deals))
+    deck hydreigon +2.0: investigation item: neither side worse (hydreigon's own side +3.8 ± 1.5 (4,500 deals); its opponents' side +3.1 ± 1.4 (4,500 deals))
+    deck vespiquen +4.8: COUNTS: kpf3 pilots vespiquen's own side worse (vespiquen's own side -1.9 ± 1.4 (4,500 deals); its opponents' side +2.3 ± 1.5 (4,500 deals))
+  ADOPTION RULE (v2): do not adopt (vetoes that count: altaria v suicune, blaziken v lucario, lucario v suicune, altaria, vespiquen) (held-out-deck veto checked separately)
+
+  Deck averages over these cells (current / new / Limitless; change in miss, + = further from Limitless):
+      altaria:  53.0 /  48.5 /  55.7   +4.5
+     blaziken:  57.9 /  58.8 /  52.3   +0.9
+    hydreigon:  51.6 /  53.7 /  43.9   +2.0
+      lucario:  53.4 /  46.8 /  45.6   -6.6
+     sceptile:  64.0 /  62.9 /  48.3   -1.1
+      suicune:  51.8 /  50.9 /  48.9   -0.9
+    vespiquen:  49.3 /  44.5 /  52.7   +4.8
+      weezing:  53.1 /  46.3 /  48.5   -2.4
+
+Per cell (first deck's score): current | new | Limitless ± 95% | change in miss (+ = further)
+    altaria v blaziken    58.0 |  54.9 |  76.5 ± 14.3 | +3.1
+    altaria v hydreigon   47.2 |  41.6 |  54.5 ± 13.0 | +5.6
+    altaria v lucario     62.0 |  59.2 |  72.4 ±  6.9 | +2.8
+    altaria v sceptile    43.6 |  43.2 |  45.4 ±  9.4 | +0.4  (quarantined)
+    altaria v suicune     48.4 |  41.8 |  56.2 ± 12.1 | +6.6
+    altaria v vespiquen   47.4 |  49.4 |  37.6 ±  9.8 | +2.0
+    altaria v weezing     37.6 |  38.3 |  33.0 ± 13.4 | +0.7
+   blaziken v hydreigon   48.2 |  49.0 |  66.7 ± 18.9 | -0.8
+   blaziken v lucario     45.3 |  56.0 |  40.7 ± 12.5 | +10.7
+   blaziken v sceptile    64.6 |  61.6 |  76.1 ± 17.4 | +3.0
+   blaziken v suicune     61.0 |  61.2 |  64.3 ± 20.5 | -0.2
+   blaziken v vespiquen   81.0 |  81.1 |  79.0 ± 14.3 | +0.1
+   blaziken v weezing     46.5 |  58.0 |  41.2 ± 23.4 | +11.5
+  hydreigon v lucario     43.6 |  52.6 |  63.6 ± 12.7 | -9.0
+  hydreigon v sceptile    43.2 |  40.0 |  40.0 ± 16.2 | -3.2
+  hydreigon v suicune     45.0 |  55.8 |  30.0 ± 15.2 | +10.8
+  hydreigon v vespiquen   41.0 |  56.6 |  36.8 ± 15.3 | +15.6
+  hydreigon v weezing     50.6 |  54.7 |  45.8 ± 19.9 | +4.1
+    lucario v sceptile    35.6 |  38.6 |  39.5 ±  9.0 | -3.0
+    lucario v suicune     58.0 |  49.4 |  58.8 ± 10.5 | +8.6
+    lucario v vespiquen   68.2 |  68.8 |  69.6 ±  8.7 | -0.6
+    lucario v weezing     48.6 |  52.8 |  61.5 ± 10.8 | -4.2
+   sceptile v suicune     62.8 |  65.6 |  50.0 ± 13.6 | +2.8
+   sceptile v vespiquen   64.2 |  66.4 |  35.7 ± 12.5 | +2.2
+   sceptile v weezing     69.6 |  69.8 |  68.1 ± 15.2 | +0.2
+    suicune v vespiquen   46.0 |  49.6 |  28.5 ± 10.4 | +3.6
+    suicune v weezing     55.2 |  61.9 |  60.3 ± 15.4 | -3.4
+  vespiquen v weezing     65.6 |  72.3 |  83.7 ± 11.0 | -6.7
+   rayquaza v lucario     25.8 |  61.4 |  73.3 ± 11.4 | -35.6
+   rayquaza v altaria     35.4 |  52.8 |  47.1 ± 10.5 | -6.0
+   rayquaza v sceptile    10.2 |  25.0 |  45.0 ± 13.8 | -14.8
+   rayquaza v vespiquen   20.0 |  46.0 |  61.1 ± 15.9 | -26.0
+   rayquaza v suicune     22.6 |  46.8 |  35.7 ± 17.7 | -2.0
+   rayquaza v hydreigon   23.8 |  44.6 |  35.0 ± 20.9 | -1.6
+   rayquaza v weezing     19.8 |  40.0 |  20.0 ± 20.2 | +19.8
+   rayquaza v blaziken    23.3 |  39.6 |  50.0 ± 34.6 | -16.3
+  altaria_greninja v lucario     52.8 |  59.0 |  68.9 ± 13.5 | -6.2
+  altaria_greninja v altaria     41.2 |  44.6 |  37.5 ± 11.5 | +3.4
+  altaria_greninja v sceptile    31.0 |  33.4 |  66.7 ± 16.1 | -2.4
+  altaria_greninja v vespiquen   54.0 |  54.2 |  61.4 ± 16.1 | -0.2
+  altaria_greninja v suicune     37.4 |  33.2 |  53.9 ± 15.8 | +4.2
+  altaria_greninja v hydreigon   39.4 |  41.4 |  64.7 ± 22.7 | -2.0
+  altaria_greninja v weezing     28.6 |  35.2 |  50.0 ± 24.5 | -6.6
+  altaria_greninja v blaziken    43.9 |  43.3 |  70.6 ± 21.7 | +0.6
+   rayquaza v altaria_greninja  34.2 |  61.0 |  52.8 ± 16.3 | -10.4
+
+Mixed rows: each deck's own score change with kpf3 on that deck only, against kp3 on both sides, same deals (95% range from per-deal differences)
+    altaria v blaziken   altaria  -4.6 ± 4.8 (500); blaziken  -1.0 ± 3.8 (500)
+    altaria v hydreigon  altaria  +0.6 ± 4.7 (500); hydreigon  +3.8 ± 4.0 (500)
+    altaria v lucario    altaria  -6.0 ± 4.0 (500); lucario  +0.0 ± 4.3 (500)
+    altaria v sceptile   altaria  +3.8 ± 4.4 (500); sceptile  -1.0 ± 3.3 (500)
+    altaria v suicune    altaria  -7.8 ± 4.8 (500); suicune  +2.0 ± 3.5 (500)
+    altaria v vespiquen  altaria  +1.2 ± 4.5 (500); vespiquen  -3.6 ± 4.1 (500)
+    altaria v weezing    altaria  +0.7 ± 4.5 (500); weezing  -0.2 ± 3.7 (500)
+   blaziken v hydreigon  blaziken  +1.6 ± 3.7 (500); hydreigon  +1.2 ± 4.4 (500)
+   blaziken v lucario    blaziken  +1.9 ± 4.4 (500); lucario -11.4 ± 4.6 (500)
+   blaziken v sceptile   blaziken  -0.6 ± 3.8 (500); sceptile  +1.9 ± 2.7 (500)
+   blaziken v suicune    blaziken  +0.4 ± 3.9 (500); suicune  +1.0 ± 3.1 (500)
+   blaziken v vespiquen  blaziken  -1.1 ± 3.3 (500); vespiquen  +0.0 ± 3.6 (500)
+   blaziken v weezing    blaziken  +3.9 ± 3.8 (500); weezing -10.0 ± 3.9 (500)
+  hydreigon v lucario    hydreigon  +8.0 ± 4.4 (500); lucario  +2.2 ± 4.1 (500)
+  hydreigon v sceptile   hydreigon  -1.8 ± 4.1 (500); sceptile  +0.4 ± 2.8 (500)
+  hydreigon v suicune    hydreigon  +9.0 ± 4.6 (500); suicune  -2.8 ± 3.9 (500)
+  hydreigon v vespiquen  hydreigon +10.0 ± 5.0 (500); vespiquen  -1.2 ± 5.0 (500)
+  hydreigon v weezing    hydreigon  -0.9 ± 4.7 (500); weezing  -4.8 ± 4.3 (500)
+    lucario v sceptile   lucario  +1.0 ± 4.2 (500); sceptile  -1.6 ± 2.8 (500)
+    lucario v suicune    lucario  -9.8 ± 4.3 (500); suicune  -1.0 ± 3.3 (500)
+    lucario v vespiquen  lucario  -5.0 ± 4.3 (500); vespiquen  -3.4 ± 3.6 (500)
+    lucario v weezing    lucario  -2.8 ± 4.0 (500); weezing  -6.5 ± 3.6 (500)
+   sceptile v suicune    sceptile  -0.4 ± 3.1 (500); suicune  -1.2 ± 3.3 (500)
+   sceptile v vespiquen  sceptile  +1.8 ± 3.7 (500); vespiquen  -4.0 ± 4.2 (500)
+   sceptile v weezing    sceptile  +0.2 ± 2.8 (500); weezing  +1.6 ± 3.2 (500)
+    suicune v vespiquen  suicune  -0.8 ± 4.2 (500); vespiquen  -4.8 ± 4.9 (500)
+    suicune v weezing    suicune  +0.3 ± 3.7 (500); weezing -10.8 ± 4.0 (500)
+  vespiquen v weezing    vespiquen  +1.5 ± 4.5 (500); weezing -10.6 ± 4.3 (500)
+   rayquaza v lucario    rayquaza +27.8 ± 5.1 (500); lucario  -1.6 ± 4.0 (500)
+   rayquaza v altaria    rayquaza +15.0 ± 5.1 (500); altaria  +0.0 ± 5.0 (500)
+   rayquaza v sceptile   rayquaza +15.2 ± 4.2 (500); sceptile  -1.8 ± 2.7 (500)
+   rayquaza v vespiquen  rayquaza +28.0 ± 5.4 (500); vespiquen  +1.4 ± 3.6 (500)
+   rayquaza v suicune    rayquaza +21.2 ± 5.3 (500); suicune  +0.0 ± 3.5 (500)
+   rayquaza v hydreigon  rayquaza +22.4 ± 5.3 (500); hydreigon  +2.0 ± 4.1 (500)
+   rayquaza v weezing    rayquaza +11.0 ± 4.5 (500); weezing  -1.6 ± 3.6 (500)
+   rayquaza v blaziken   rayquaza +18.9 ± 4.8 (500); blaziken  +0.9 ± 3.6 (500)
+  altaria_greninja v lucario    altaria_greninja  +2.2 ± 4.1 (500); lucario  -5.2 ± 3.9 (500)
+  altaria_greninja v altaria    altaria_greninja  +2.6 ± 4.5 (500); altaria  -4.0 ± 4.5 (500)
+  altaria_greninja v sceptile   altaria_greninja  +3.6 ± 3.8 (500); sceptile  +1.2 ± 2.5 (500)
+  altaria_greninja v vespiquen  altaria_greninja  -2.8 ± 4.3 (500); vespiquen  -3.0 ± 3.8 (500)
+  altaria_greninja v suicune    altaria_greninja  -2.2 ± 4.7 (500); suicune  -3.4 ± 3.1 (500)
+  altaria_greninja v hydreigon  altaria_greninja  +9.6 ± 4.6 (500); hydreigon  +3.2 ± 4.2 (500)
+  altaria_greninja v weezing    altaria_greninja  +1.6 ± 3.8 (500); weezing  -7.1 ± 3.5 (500)
+  altaria_greninja v blaziken   altaria_greninja  -2.3 ± 4.5 (500); blaziken  -1.6 ± 4.0 (500)
+   rayquaza v altaria_greninja rayquaza +21.8 ± 5.1 (500); altaria_greninja  -6.4 ± 4.3 (500)
+
+Mixed rows by deck, decision set (reported only; the vetoes above use them only when a veto fires): the deck's own side with kpf3 on it only, and its opponents' own side with kpf3 on them only, pooled over the deck's cells (mean of cell changes, 95% range)
+    altaria: own side  -2.5 ± 1.6 (worse beyond noise); its opponents' side  +2.3 ± 1.5 (8 cells)
+   blaziken: own side  +0.5 ± 1.3; its opponents' side  -0.6 ± 1.4 (9 cells)
+  hydreigon: own side  +3.8 ± 1.5; its opponents' side  +3.1 ± 1.4 (9 cells)
+    lucario: own side  -3.6 ± 1.4 (worse beyond noise); its opponents' side  +2.4 ± 1.3 (9 cells)
+   sceptile: own side  +0.2 ± 1.0; its opponents' side  +1.7 ± 1.4 (8 cells)
+    suicune: own side  -0.7 ± 1.2; its opponents' side  -0.6 ± 1.5 (9 cells)
+  vespiquen: own side  -1.9 ± 1.4 (worse beyond noise); its opponents' side  +2.3 ± 1.5 (9 cells)
+    weezing: own side  -5.6 ± 1.3 (worse beyond noise); its opponents' side  +1.7 ± 1.4 (9 cells)

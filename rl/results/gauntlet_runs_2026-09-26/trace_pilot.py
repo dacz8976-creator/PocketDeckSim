@@ -67,6 +67,9 @@ def main():
     # decision where each attack was offered
     turn_off, turn_used, turn_instead, declined_energy = Counter(), Counter(), defaultdict(Counter), defaultdict(Counter)
     move_off, move_used = Counter(), Counter()
+    # hoarding check (kpf registration section 9): Energy left in seat 0's discard pile at the end, its retreats, and
+    # its recovery moves (Dragon's Blessing, Professor Sada, Flame Patch)
+    end_discard, retreats, recoveries = [], 0, 0
     wins = turns = 0; first_slot_keys = None
     try:
         out = subprocess.run([engine, "simulate", "--num", str(a.games), "--players", players,
@@ -79,8 +82,15 @@ def main():
         for r in results:
             wins += r["outcome"] == {"Win": 0}; turns += r["final_turn"]
             per_turn = defaultdict(lambda: {"off": {}, "used": None})
+            last_state = None
             for f in sorted(glob.glob(os.path.join(tmp, "data", r["game_id"], "ply_*.json"))):
                 p = json.load(open(f))
+                last_state = p["state"]
+                if p["actor"] == 0:
+                    k0, v0 = body(p["chosen_action"])
+                    retreats += k0 == "Retreat"
+                    lab0 = label(k0, v0, p["state"], 0)
+                    recoveries += lab0 in ("ability:Dragonair", "play:Professor Sada", "play:Flame Patch")
                 if p["actor"] != 0 or p["state"]["current_player"] != 0:
                     continue
                 st = p["state"]
@@ -112,6 +122,8 @@ def main():
                 if kind == "Attack":
                     e = energy_of(st["in_play_pokemon"][0][0])
                     attack_energy[lab][len(e) if isinstance(e, list) else str(e)[:40]] += 1
+            if last_state is not None and "discard_energies" in last_state:
+                end_discard.append(len(last_state["discard_energies"][0]))
             for pt in per_turn.values():
                 for lab3 in pt.get("moff", ()):
                     move_off[lab3] += 1
@@ -138,6 +150,9 @@ def main():
     for lab in sorted(turn_off, key=lambda k: -turn_off[k]):
         print(f"  {lab[:50]:50} turns offered {turn_off[lab]:4}, used {turn_used[lab]:4}; instead "
               f"{dict(turn_instead[lab].most_common(4))}; Energy when declined {dict(sorted(declined_energy[lab].items()))}")
+    if end_discard:
+        print(f"hoarding check: seat 0's discard-pile Energy at the end {sum(end_discard) / len(end_discard):.2f} per game; "
+              f"retreats {retreats / a.games:.2f} per game; recovery moves {recoveries / a.games:.2f} per game")
     print("per own turn: ability / Stadium use / Trainer offered at some decision -> used that turn")
     for lab in sorted(move_off, key=lambda k: -move_off[k]):
         print(f"  {lab[:50]:50} turns offered {move_off[lab]:4}, used {move_used[lab]:4} ({100 * move_used[lab] / move_off[lab]:.0f}%)")

@@ -18,10 +18,12 @@ the ladder and wins with.
 
 - **The engine is `0.1.0-pdl.rules4`** (September 22). It retains the earlier rules repairs,
   player-selected Energy discards and corrected Cubone/Clefable/Bonsly effects, and fixes the
-  T2 last-Pokemon/third-point result to a tie. **Since Sept 25 the official executable is `rl/engine-2026-09-25/deckgym`**
-  (with `legality_scan` beside it), built from main at 7fc6ccb: the same rules4 rules, plus the kp, kd and kq players.
-  It replaced the rules4 program `rl/addon-0.7.2/deckgym` (copied from Pocket Deck Lab on Sept 24, hash unchanged,
-  still kept) after k3 and kp3 replayed all 14,000 table games move for move (`rl/engine-2026-09-25/README.md`).
+  T2 last-Pokemon/third-point result to a tie. **Since Sept 27 the official executable is `rl/engine-2026-09-27/deckgym`**
+  (with `legality_scan` and `goldfish` beside it), built from main at 83e17ae. It is the repaired engine: rules4 plus the
+  ten rules/09 repairs of Sept 26, of which only Legendary Pulse and end-of-turn promotion change table games. It was
+  switched in on Dustin's go after the repair replays, the mechanic check (`rl/results/engine_switch_2026-09-26/`) and an
+  identity replay (`rl/engine-2026-09-27/README.md`). The Sept 25 program (`rl/engine-2026-09-25/`, 7fc6ccb) and the
+  rules4 program `rl/addon-0.7.2/deckgym` are kept as history.
   `project_manifest.json` names it; `current_engine.py` and the screen resolve to it.
   Verification: 1,826 engine tests, 44 accepted-review segments and four k3 smoke games.
   See the [rules4 repair and evidence limits](rl/addon-0.7.2/rules4-repair-README.md)
@@ -131,10 +133,9 @@ the per-candidate table readings are indexed in `rl/results/table_readings_2026-
 - **Recordings and frame checks:** `rl/results/recordings_check_2026-09-25/`.
 - **The laptop's share of the rules/09 fix replays:** 0 table games change.
 
-**Running or next** (refreshed Sept 26 evening):
-- **The official engine** is still `rl/engine-2026-09-25/` (7fc6ccb).
-  - The rules/09 repairs are on the cloud branch `claude/pensive-ptolemy-spwc0b`. The repaired engine is af8489f (engine e935f42); its k3 and kp3 table references ran on Sept 26 and are being read.
-  - Once it is accepted, every candidate is compared against baselines from that same engine.
+**Running or next** (refreshed Sept 27):
+- **The official engine is the repaired one** (`rl/engine-2026-09-27/`, main-83e17ae), and the frozen table is scoreboard v3 (`rl/results/scoreboard_v3_2026-09-27/`). Every candidate is compared against baselines from the same engine.
+- **kpf was read on Sept 27** (`rl/results/kpf_2026-09-26/reading/READING.md`). Real error 12.5 against kp3's 15.5 on the 45 cells, but vetoes count, so "not adopted, provisional". F alone (kpg3) passes the rule with no veto. The next step is Dustin's.
 - **koa** (the opening-Active fix): registered and built on the repaired engine; its identity runs are in the cloud. The laptop reads it, footprint first.
 - **kpf** (discard-cost attacks and discard-pile Energy): registered (`rl/results/kpf_2026-09-26/REGISTRATION.md`). The cloud builds it, and the laptop reads it on the 45 cells, B2e and the coverage decks.
 - **kt** (Tools and turn effects): registered on the cloud branch (07927e2). Trainer pricing is queued beside it (RUN5 B5).
