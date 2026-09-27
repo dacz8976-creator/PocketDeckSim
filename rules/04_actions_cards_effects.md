@@ -112,6 +112,12 @@ Grades as in `01_game_structure.md`. Sources in `06_sources.md`. Card text quote
 | **Stadiums affect both players.** Starting Plains gave +20 HP to Basics on both sides; Training Area boosted the opponent's Stage 1 too. | [IN-GAME TEXT] + [OBSERVED ×5] |
 | "Once during each player's turn, that player may…" Stadiums (Mesagoza, Kid's Room, Rainbow Cave) can be used by either player on their own turn. | card text + [OBSERVED] |
 | Which discard pile a replaced Stadium goes to | [INFERRED] its owner's (paper-TCG rule); not observed |
+| **Rainbow Cave can't be used after the turn's Energy is attached.** Its effect discards the current Zone Energy, so once that has been attached there is nothing to discard. The engine offers it only before the attachment. The discarded Energy goes to the discard pile (battle 015702, turns 16-18; `rl/results/recordings_check_2026-09-25/video_frame_checks.md` §6). | [DUSTIN 2026-09-27, video to follow] + [OBSERVED] 015702 |
+
+### Trainer rulings confirmed by Dustin
+| Rule | Grade |
+|---|---|
+| **Professor Sada attaches one Energy of each different type in the discard pile, up to 3, to your Ancient Pokémon.** One type in the pile → 1 Energy; two types → 2 (one of each); three → 3; four or more types → 3 (never two of one type). Playable whenever an Ancient Pokémon is in play and the pile holds any Energy. The engine matches, including the fewer-than-3-types case (`_research_notes/audit_2026-09-22/trainers.md` T146). Dustin has answered this several times in other places, so don't ask it again. | [DUSTIN 2026-09-27, video to follow] |
 
 ### Fossils
 - Item cards. "Play this card as if it were a 40-HP Basic [C] Pokémon. At any time during your turn, you may discard this card from play. This card can't retreat." [card text]
