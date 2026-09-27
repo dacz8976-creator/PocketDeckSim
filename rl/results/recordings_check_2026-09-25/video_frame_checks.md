@@ -74,6 +74,31 @@ On Sept 25 Dustin allowed looking at the videos themselves when specifics matter
   - Checkup damage shows as popups; only the Burn coin gets a banner.
 - **Still open:** whether Blessed Salt can save a Pokémon that Poison or Burn takes to 0. No footage has that case (shot list item "Blessed Salt when Poison takes a Pokémon to 0").
 
+## 7. Rainbow Cave can't be used after the turn's Energy is attached (Sept 27; the engine is right)
+`Battle Logs/Reviewed/20260927_170847000_iOS.MP4` (406 s), Dustin's proof video (one match against the AI). A locator, a checker and an independent verifier each extracted their own frames. Both readings agree with Dustin and with the engine.
+- **Turn 2 (the test):**
+  - Rainbow Cave is played at about 41-43 s.
+  - At 67.1 s the glowing Stadium is tapped and the prompt "Use the effect of Rainbow Cave?" appears. It is dismissed without use: no banner, and the Zone is unchanged at 68.75 s.
+  - At 69-70.5 s the Zone's Water is attached to the active Rattata, which empties the Zone (only the Fire "next" icon is left). The Stadium's glow goes off and stays off for the rest of the turn.
+  - At 70.6 s the Stadium is tapped again: the same press animation as at 67.1 s; no finger shows in a screen recording.
+  - At 71.0-73.0 s the red message "The conditions for using the effect of this Stadium card have not been met" appears. It is the only time this message appears in the video (a 2 fps scan of the whole video).
+- **Contrast:** all 7 other prompts (116.5, 171.0, 177.5, 217.5, 250.0, 297.5 and 348.0 s) come while the Zone still holds an Energy not yet attached, and every accepted use works.
+  - Each works the same way: banner, the current Energy bursts, the next Energy becomes current, and "Next Energy generated" shows a new next.
+  - On turn 6 a declined prompt (171-173 s) did not use up the turn's use: accepted again at 177.5 s.
+- **Caveat:** one after-attach attempt, on one client version.
+
+## 8. Professor Sada: one Energy of each type in the discard pile, up to 3 (Sept 27; the engine is right)
+Same video, same three agents. Both readings agree with Dustin's rule (`rules/04`).
+- **First Sada (turn 4, 122-127.5 s), with two types.** Walking Wake is the only Ancient Pokémon in play. Worked out from events: the discard holds exactly Fire 1 (Rainbow Cave at 119 s) and Water 1 (the KO'd Rattata's, 102 s), since the only other Energy Dustin had generated was still in his Zone.
+  - Sada attaches automatically, with no picker (one possible target), and exactly 2 Energy land: one Fire, one Water (127.5-129 s).
+  - So Sada is playable with fewer than 3 types.
+- **Second Sada (turn 14, 352-366 s), with duplicates.** The discard held about Fire 4, Water 2, Lightning 3: the 273.5 s view showed Fire 3, Water 1, Lightning 1, plus the later discards.
+  - The picker "Please attach 3 Energy to Ancient Pokemon in any way you like" offered exactly three: one Fire, one Water, one Lightning, none twice.
+  - Lightning and Water went to Raging Bolt ex, Fire to the benched Walking Wake.
+  - The 378 s discard view shows Fire 3, Water 1, Lightning 2: exactly one of each removed.
+- **Not shown:** the 1-type case (→ 1) and the 4+-type case (→ 3). They are neither shown nor contradicted.
+- **Caveat:** the pile's contents before each Sada are worked out from events and the two on-screen views, not from a view opened just before either play.
+
 ## 6. Rainbow Cave's discarded Energy goes to the discard pile (added Sept 26; the engine is right)
 `Battle Logs/Reviewed/20260908_015702000_iOS.MP4` (Dustin's deck 11, Archaludon/Haxorus/Dragonair, Fighting and Metal). This answers the gauntlet card check's questions R1 and R4 (`decks/gauntlet_2026-09-26/card_check.md`). The laptop session read it, and an independent agent re-extracted its own frames (0.25 s steps, 03:39.9-04:22.8) and tried to refute it. Both readings held.
 - **The counter.** Dragonair's Dragon's Blessing picker ("Please choose an Energy") shows the discard pile's Energy by type.
