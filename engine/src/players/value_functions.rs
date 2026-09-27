@@ -4426,6 +4426,65 @@ mod kt_tests {
         assert_eq!(clocks(&state), (2.0, 3.0));
     }
 
+    #[test]
+    fn with_no_active_the_first_benched_victim_takes_the_first_hit() {
+        // Player 0's Active was knocked out (promotion pending): the benched Snorlax at 100 HP is the clock's first
+        // victim, so Blue's kind of cut (turns 5 and 6) goes on its first hit: 3 hits where kp counts 2.
+        let mut state = board(vec![mon(CardId::B3b055Snorlax)], vec![mewtwo()]);
+        state.in_play_pokemon[0] = [None, Some(mon(CardId::B3b055Snorlax).with_remaining_hp(100)), None, None];
+        state.add_turn_effect(
+            TurnEffect::ReducedDamageForTarget {
+                amount: 20,
+                player: 0,
+                scope: DamageReductionScope::AllPokemon,
+                only_from_ex: false,
+            },
+            1,
+        );
+        assert_eq!(clocks(&state), (2.0, 3.0));
+    }
+
+    #[test]
+    fn an_evolved_threat_is_judged_as_the_form_it_attacks_as() {
+        // Player 1's Swablu has no damaging attack; its threat is Mega Altaria ex from its deck (Mega Harmony 40, one
+        // evolution step: first hit on turn 6). A cut only against an ex, live on turns 5 and 6, applies because the
+        // form is an ex: Snorlax at 80 HP takes 20 then 40s, 3 hits where kp counts 2 (each after the 1 step).
+        let only_ex = TurnEffect::ReducedDamageForTarget {
+            amount: 20,
+            player: 0,
+            scope: DamageReductionScope::AllPokemon,
+            only_from_ex: true,
+        };
+        let mut state = board(
+            vec![mon(CardId::B3b055Snorlax).with_remaining_hp(80)],
+            vec![with(CardId::B1196Swablu, EnergyType::Psychic, 2)],
+        );
+        state.decks[1].cards.push(get_card_by_enum(CardId::B1102MegaAltariaEx));
+        state.add_turn_effect(only_ex, 1);
+        let kp = turns_until_opponent_wins_scan(&state, 0, true, true, false, true, false, false, None);
+        let kt = kt_clock(&state, 0, true, true, false, true, true).total(0.0);
+        assert_eq!((kp, kt), (3.0, 4.0));
+    }
+
+    #[test]
+    fn an_attack_that_ignores_the_defenders_effects_gets_no_cut_in_the_clock() {
+        // Skarmory (80 HP) with the Barrier and Blue's kind of cut. Pidgey's Peck (30) is cut to 0 on its first hit:
+        // 4 hits where kp counts 3. Sawk's Brick Break (30) ignores effects on the opponent's Active: 3, as kp.
+        let skarmory = || mon(CardId::A2111Skarmory).with_tool(tool(CardId::B2148MetalCoreBarrier));
+        let blue = TurnEffect::ReducedDamageForTarget {
+            amount: 20,
+            player: 0,
+            scope: DamageReductionScope::AllPokemon,
+            only_from_ex: false,
+        };
+        let mut state = board(vec![skarmory()], vec![with(CardId::B1180Pidgey, EnergyType::Colorless, 2)]);
+        state.add_turn_effect(blue.clone(), 1);
+        assert_eq!(clocks(&state), (3.0, 4.0));
+        let mut state = board(vec![skarmory()], vec![with(CardId::B3086Sawk, EnergyType::Fighting, 1)]);
+        state.add_turn_effect(blue, 1);
+        assert_eq!(clocks(&state), (3.0, 3.0));
+    }
+
     /// (turns until player 0's opponent wins, turns until player 0 wins) under `features`, player 0 evaluating.
     fn pair(state: &State, features: EvalFeatures) -> (f64, f64) {
         kt_clocks(state, 0, true, true, false, features)
@@ -4447,6 +4506,12 @@ mod kt_tests {
         state.current_player = 1;
         let (mine, theirs) = (kt_clock(&state, 0, false, true, false, true, false), kt_clock(&state, 1, true, true, false, true, false));
         assert_eq!(counter_cut(&state, &theirs, &mine, 0), 60.0);
+        // The opponent to move but its attack already made (its turn is ending): our turn comes first, 40 as above.
+        let mut state = board(vec![snorlax.clone()], vec![mewtwo()]);
+        state.current_player = 1;
+        state.end_turn_pending = true;
+        let (mine, theirs) = (kt_clock(&state, 0, false, true, false, true, false), kt_clock(&state, 1, true, true, false, true, false));
+        assert_eq!(counter_cut(&state, &theirs, &mine, 0), 40.0);
         // The cap: a Snorlax at 50 HP falls to the first hit, which still fires the Helmet once.
         let weak = with(CardId::B3b055Snorlax, EnergyType::Colorless, 3)
             .with_tool(tool(CardId::A2148RockyHelmet))
