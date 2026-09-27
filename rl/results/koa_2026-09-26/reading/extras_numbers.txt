@@ -1,0 +1,68 @@
+1. The 17 new cells, koa3 v kp3, same deals (8500 games):
+   altaria_greninja v altaria: 128 games differ; altaria_greninja score 41.2 -> 39.4
+   altaria_greninja v blaziken: identical
+   altaria_greninja v hydreigon: identical
+   altaria_greninja v lucario: identical
+   altaria_greninja v sceptile: identical
+   altaria_greninja v suicune: identical
+   altaria_greninja v vespiquen: identical
+   altaria_greninja v weezing: identical
+   rayquaza v altaria: 126 games differ; rayquaza score 35.4 -> 34.4
+   rayquaza v altaria_greninja: identical
+   rayquaza v blaziken: identical
+   rayquaza v hydreigon: identical
+   rayquaza v lucario: identical
+   rayquaza v sceptile: identical
+   rayquaza v suicune: identical
+   rayquaza v vespiquen: identical
+   rayquaza v weezing: identical
+   score45.py, rules v2 (full output: score45_koa3_vs_kp3.txt):
+     kp3: real error 15.5 | reported only: correlation 0.48, average miss 13.6, favorite right 28/45, clear 15/20, beyond chance 17
+     koa3: real error 15.5 | reported only: correlation 0.48, average miss 13.6, favorite right 28/45, clear 14/20, beyond chance 18
+     dMSE new - current: +0.4 points^2, 95% interval -5.3 to +6.4 (not below 0)
+     real error, current minus new: -0.01 points, 90% interval -0.15 to +0.12 (margin rule: E = 3; 'current' is the cheap bot when comparing variants)
+     cell veto (miss grows > 6): none
+     deck veto (gap grows > 2): none
+     ADOPTION RULE (v2): do not adopt (dMSE interval not below 0) (held-out-deck veto checked separately)
+     kp3: real error 15.7 | reported only: correlation 0.49, average miss 13.9, favorite right 27/44, clear 15/20, beyond chance 17
+     koa3: real error 15.7 | reported only: correlation 0.48, average miss 13.8, favorite right 27/44, clear 14/20, beyond chance 18
+     dMSE new - current: +0.3 points^2, 95% interval -5.0 to +6.1 (not below 0)
+     real error, current minus new: -0.01 points, 90% interval -0.15 to +0.12 (margin rule: E = 3; 'current' is the cheap bot when comparing variants)
+     cell veto (miss grows > 6): none
+     deck veto (gap grows > 2): none
+     ADOPTION RULE (v2): do not adopt (dMSE interval not below 0) (held-out-deck veto checked separately)
+2. Dustin's B2e files (pairings 48-95, 24000 games), koa3 v kp3, reported only:
+   dustin_charizardy_entei: 43.7 -> 43.4 over 4000 games (110 changed); v Altaria 36.4 -> 33.6
+   dustin_garchomp: 26.4 -> 25.7 over 4000 games (114 changed); v Altaria 41.8 -> 35.8
+   dustin_hoopa_absol: 33.5 -> 33.1 over 4000 games (120 changed); v Altaria 59.8 -> 57.2
+   dustin_manectric: 59.8 -> 59.0 over 4000 games (127 changed); v Altaria 66.2 -> 60.0
+   dustin_raticate: 55.9 -> 55.4 over 4000 games (122 changed); v Altaria 36.6 -> 33.0
+   dustin_whimsicott: 30.1 -> 29.7 over 4000 games (115 changed); v Altaria 43.0 -> 39.6
+3. Variant list (LaNora's Altaria), koa3 minus kp3 on its own side, pooled over 8 rows (4000 deals): +3.67 +/- 0.82 (up beyond noise)
+   altaria_lanora v blaziken: +4.80 +/- 2.18 (81 games changed)
+   altaria_lanora v hydreigon: +2.00 +/- 2.41 (86 games changed)
+   altaria_lanora v lucario: +3.80 +/- 2.23 (83 games changed)
+   altaria_lanora v sceptile: +5.00 +/- 2.28 (82 games changed)
+   altaria_lanora v suicune: +4.60 +/- 2.35 (82 games changed)
+   altaria_lanora v vespiquen: +3.20 +/- 2.27 (72 games changed)
+   altaria_lanora v weezing: +3.60 +/- 2.40 (82 games changed)
+   altaria_lanora v altaria: +2.40 +/- 2.34 (78 games changed)
+4. Diagnostics, the deck's own side (diagnostic on the deck, kp3 on the other) v kp3's table games, same deals:
+   kob3 on hydreigon: -0.23 +/- 0.46 pooled over 7 rows (within noise)
+      v altaria -0.60 +/- 1.04; v blaziken -0.40 +/- 1.11; v lucario +0.20 +/- 1.41; v sceptile +0.40 +/- 0.78; v suicune -0.60 +/- 1.18; v vespiquen -0.20 +/- 0.88; v weezing -0.40 +/- 1.75
+      identity where kob3 sits on an untouched deck: 2000 of 2000 games equal kp3's
+   kob3 on vespiquen: +0.39 +/- 0.74 pooled over 7 rows (within noise)
+      v altaria -0.80 +/- 2.00; v blaziken +0.20 +/- 1.41; v hydreigon +0.60 +/- 2.11; v lucario -1.80 +/- 1.96; v sceptile +1.80 +/- 2.03; v suicune +0.60 +/- 2.04; v weezing +2.10 +/- 2.11
+      identity where kob3 sits on an untouched deck: 2000 of 2000 games equal kp3's
+   kob3 on weezing: +0.44 +/- 0.46 pooled over 7 rows (within noise)
+      v altaria -0.60 +/- 0.88; v blaziken +1.70 +/- 1.42; v hydreigon +1.00 +/- 1.17; v lucario -0.20 +/- 1.30; v sceptile +0.80 +/- 1.24; v suicune +0.40 +/- 1.24; v vespiquen +0.00 +/- 1.11
+      identity where kob3 sits on an untouched deck: 2000 of 2000 games equal kp3's
+   kor3 on suicune: -3.33 +/- 0.92 pooled over 7 rows (down beyond noise)
+      v altaria -0.60 +/- 2.45; v blaziken -2.90 +/- 2.35; v hydreigon -3.60 +/- 2.33; v lucario -3.60 +/- 2.52; v sceptile -3.60 +/- 2.33; v vespiquen -5.00 +/- 2.60; v weezing -4.00 +/- 2.39
+      identity where kor3 sits on an untouched deck: 2000 of 2000 games equal kp3's
+   kor3 on vespiquen: +0.39 +/- 0.74 pooled over 7 rows (within noise)
+      v altaria -0.80 +/- 2.00; v blaziken +0.20 +/- 1.41; v hydreigon +0.60 +/- 2.11; v lucario -1.80 +/- 1.96; v sceptile +1.80 +/- 2.03; v suicune +0.60 +/- 2.04; v weezing +2.10 +/- 2.11
+      identity where kor3 sits on an untouched deck: 2000 of 2000 games equal kp3's
+   kor3 on weezing: +0.44 +/- 0.46 pooled over 7 rows (within noise)
+      v altaria -0.60 +/- 0.88; v blaziken +1.70 +/- 1.42; v hydreigon +1.00 +/- 1.17; v lucario -0.20 +/- 1.30; v sceptile +0.80 +/- 1.24; v suicune +0.40 +/- 1.24; v vespiquen +0.00 +/- 1.11
+      identity where kor3 sits on an untouched deck: 2000 of 2000 games equal kp3's
