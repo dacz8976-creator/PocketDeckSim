@@ -1,4 +1,4 @@
-Decision this informs: the composition check for the one pilot Dustin ruled on Sept 27 (kp3 + koa's opening + kpg's discard credit; `rl/RUN5.md` "Rules", composing candidates). The laptop runs the composition table on the 45 cells with its mixed rows; this note records the build it reads and the identity checks that make the composition. Build commit BUILD_COMMIT, scan sha256 SCAN_SHA.
+Decision this informs: the composition check for the one pilot Dustin ruled on Sept 27 (kp3 + koa's opening + kpg's discard credit; `rl/RUN5.md` "Rules", composing candidates). The laptop runs the composition table on the 45 cells with its mixed rows; this note records the build it reads and the identity checks that make the composition. Build commit a823b6d (`cargo build --release --example legality_scan`; the `--pairs` option is in it), scan sha256 1fbf36060fbd88e9166ced52364df7cdd556fb10644a82ae001fcf1cfdb1716c.
 
 Seeds: the table's deals only (72,000,000 + pairing × 10,000 + i, even i = first-named deck in seat 0).
 
@@ -19,3 +19,9 @@ Seeds: the table's deals only (72,000,000 + pairing × 10,000 + i, even i = firs
 - **Switch A** acts in Altaria's games: koa's reading measured a 6.06% footprint, all through Altaria's opening.
 - **F** needs a recovery source. Of the eight table lists only Blaziken's carries one (2 Flame Patch B1 217). The opponent's side counts only a source visible in play, and Flame Patch is a Trainer, so F acts only on Blaziken's own side, in Blaziken's 7 pairings.
 - **Both** can act only in Altaria v Blaziken.
+
+## Tests
+
+- `kog_tests::kog_is_koa_in_setup_and_kpg_after_it`: the flags (switch A and F on, everything else off), and on every position of 12 random games (Altaria v Blaziken, Blaziken v Suicune, Altaria v Lucario), from each player's own view, kog's value equals koa's where the opponent's setup is masked and kpg's everywhere else.
+- The parser tests above.
+- **Full suite:** 1,964 passed, 0 failed.
