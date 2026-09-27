@@ -1,0 +1,12 @@
+table cells without a Limitless cell: []
+all 28: tau kp3 8.702, koa3 8.710, margin (kp3 - koa3) -0.009; dMSE +0.15
+   largest cell miss growth: (('altaria', 'vespiquen'), 4.600000000000004) -> none > 6
+   deck gap growth: {'altaria': -2.84, 'blaziken': 0.17, 'hydreigon': -0.37, 'lucario': -0.29, 'sceptile': -0.63, 'suicune': 0.34, 'vespiquen': 0.66, 'weezing': -0.39} -> none > 2
+   own bootstrap of the tau margin (2000 reps, ties counted half in the table scores; Limitless W/L/T drawn as a binomial on the score): 90% -0.32 to +0.32
+decision 27: tau kp3 8.913, koa3 8.914, margin (kp3 - koa3) -0.001; dMSE +0.02
+   largest cell miss growth: (('altaria', 'vespiquen'), 4.600000000000004) -> none > 6
+   deck gap growth: {'altaria': -2.58, 'blaziken': 0.17, 'hydreigon': -0.37, 'lucario': -0.29, 'sceptile': 0.0, 'suicune': 0.34, 'vespiquen': 0.66, 'weezing': -0.39} -> none > 2
+   own bootstrap of the tau margin (2000 reps, ties counted half in the table scores; Limitless W/L/T drawn as a binomial on the score): 90% -0.28 to +0.31
+kob3 on Altaria's opponents: differing games by opponent {'hydreigon': 66, 'vespiquen': 89, 'weezing': 25}; with the opponent's opening changed {'hydreigon': 66, 'vespiquen': 89, 'weezing': 25}; leaks 0; identity decks touched: []
+kor3 on Altaria's opponents: differing games by opponent {'suicune': 115, 'vespiquen': 89, 'weezing': 25}; with the opponent's opening changed {'suicune': 115, 'vespiquen': 89, 'weezing': 25}; leaks 0; identity decks touched: []
+exit 0

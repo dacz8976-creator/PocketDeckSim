@@ -1,0 +1,52 @@
+== table
+n 14000 14000 pairings in PAIRS order match file a/b: True
+seeds equal: 14000 first_seat equal: 14000
+seed formula 72e6+p*1e4+i: True
+bots koa file: Counter({('koa3', 'koa3'): 14000})
+kpf kp3 == pin (official build) kp3 on moves/decisions/points/winner: 14000
+openings field present in all koa table games: True
+moves differ 848 decisions differ 848 first-deck opening changed 848 second-deck opening changed 0
+moves-differ set == decisions-differ set: True
+leak (moves differ, both openings same): 0 ; on decisions: 0
+opening changed but moves same: 0
+Altaria openings changed: 848 of 3500 = 24.23% (range 22.6-25.4)
+   B2b 040 -> B1 184: 519 = 14.83% of Altaria's openings
+   B1 196 -> B1 184: 329 = 9.40% of Altaria's openings
+changed games outside Altaria pairings: 0
+footprint 6.06% (sampling 95% about 5.66-6.45); registered 6.0% range 790-890 games -> 848
+== mixed rows
+first n 3500 pairings [0, 1, 2, 3, 4, 5, 6] bots Counter({('koa3', 'kp3'): 3500})
+   seeds == table seeds: True
+   differ from kp3 table: 848; leak 0; opening changes deck a 848, deck b 0
+   Altaria opening changes in mixed-first equal those in koa's table (same deals): True
+     altaria v blaziken: +1.20 +/- 2.15 (95%)  lo -0.95
+     altaria v hydreigon: +2.60 +/- 2.62 (95%)  lo -0.02
+     altaria v lucario: +2.00 +/- 2.54 (95%)  lo -0.54
+     altaria v sceptile: +4.40 +/- 2.63 (95%)  lo +1.77
+     altaria v suicune: +2.40 +/- 2.71 (95%)  lo -0.31
+     altaria v vespiquen: +4.60 +/- 2.88 (95%)  lo +1.72
+     altaria v weezing: +2.70 +/- 2.69 (95%)  lo +0.01
+   pooled mean of 7 rows +2.843, 95% +/- 0.987, 90% +/- 0.828; z 5.65
+   pooled over 3500 deals +2.843 +/- 0.987
+   Altaria v Lucario row: +2.00 +/- 2.54; below zero beyond noise? False
+second n 3500 pairings [0, 1, 2, 3, 4, 5, 6] bots Counter({('kp3', 'koa3'): 3500})
+   seeds == table seeds: True
+   differ from kp3 table: 0; leak 0; opening changes deck a 0, deck b 0
+== diagnostics kob3/kor3 Altaria rows
+kob3_first == kor3_first moves: 3500 of 3500
+kob3 Altaria transitions: {('B2b 040', 'B1 184'): 333, ('B2b 040', 'B1 196'): 519} share 0.24342857142857144
+kob3 on the opponent v kp3 Altaria (n, games differ, opponent opening changed): {'blaziken': [500, 0, 0], 'hydreigon': [500, 66, 66], 'lucario': [500, 0, 0], 'sceptile': [500, 0, 0], 'suicune': [500, 0, 0], 'vespiquen': [500, 89, 89], 'weezing': [500, 25, 25]}
+kor3 on the opponent v kp3 Altaria (n, games differ, opponent opening changed): {'blaziken': [500, 0, 0], 'hydreigon': [500, 0, 0], 'lucario': [500, 0, 0], 'sceptile': [500, 0, 0], 'suicune': [500, 115, 115], 'vespiquen': [500, 89, 89], 'weezing': [500, 25, 25]}
+== B2e
+koa b2e n 24000 pairings 0 - 47 ; kp3 b2e n 48000 pairings 0 - 95
+seeds equal on 0-47: True ; seed == tsv seed_first + i: True
+old B2e kp3 rows (7fc6ccb) n 24000 seeds equal to kpf b2e: True
+kp3 B2e games changed by the engine switch (0-47): 10093
+B2e games differing by (held, opponent): {('manectric', 'altaria'): 120, ('raticate', 'altaria'): 122, ('hoopa_absol', 'altaria'): 100, ('garchomp', 'altaria'): 123, ('whimsicott', 'altaria'): 117, ('charizardy_entei', 'altaria'): 113}
+B2e leak (differ with both openings same): 0 ; held deck opening changes: 0
+  charizardy_entei (charizardy_entei): cells with Limitless 8/8; all-8: 44.0->43.4 further +0.66; matched: 44.0->43.4 L 49.2 further +0.66; Altaria cell 44.0->38.7
+  garchomp (garchomp): cells with Limitless 8/8; all-8: 21.2->21.0 further +0.18; matched: 21.2->21.0 L 32.5 further +0.18; Altaria cell 26.8->25.4
+  hoopa_absol (hoopa_absol): cells with Limitless 8/8; all-8: 57.2->57.0 further -0.15; matched: 57.2->57.0 L 50.0 further -0.15; Altaria cell 73.0->71.8
+  manectric (manectric_heliolisk): cells with Limitless 8/8; all-8: 63.9->63.0 further -0.92; matched: 63.9->63.0 L 49.2 further -0.92; Altaria cell 67.8->60.4
+  raticate (raticate_ninetales): cells with Limitless 8/8; all-8: 57.6->57.1 further -0.50; matched: 57.6->57.1 L 41.2 further -0.50; Altaria cell 42.6->38.6
+  whimsicott (whimsicott_ariados): cells with Limitless 8/8; all-8: 36.3->35.5 further -0.75; matched: 36.3->35.5 L 32.3 further -0.75; Altaria cell 33.4->27.4
