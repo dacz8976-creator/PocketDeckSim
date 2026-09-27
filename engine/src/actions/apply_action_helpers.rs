@@ -135,7 +135,9 @@ pub(crate) fn forecast_checkup_phase(state: &State) -> (Probabilities, Mutations
         if !preview_after_checkup.is_game_over() {
             apply_pokemon_checkup(&mut preview_after_checkup, &checkup_targets, &outcome);
         }
-        let (start_probs, start_mutations) = if pending_point_denial(&preview_after_checkup) {
+        let (start_probs, start_mutations) = if pending_point_denial(&preview_after_checkup)
+            || lowest_promotion_frame(&preview_after_checkup).is_some()
+        {
             (vec![1.0], vec![noop_mutation()])
         } else {
             start_turn_ability_outcomes(&preview_after_checkup, next_player)
@@ -160,6 +162,14 @@ pub(crate) fn forecast_checkup_phase(state: &State) -> (Probabilities, Mutations
                 if state.is_game_over() {
                     return;
                 }
+                // A player whose Active was Knocked Out at the end of the turn or in Checkup promotes before the
+                // next turn begins: before its draw, its Energy and its start-of-turn Abilities (rules/09; footage
+                // 07aafa3, 4 of 4 recorded knockouts). The turn finishes below the promotion frames.
+                if let Some(floor) = lowest_promotion_frame(state) {
+                    state.move_generation_stack.insert(floor,
+                        (state.current_player, vec![SimpleAction::FinishPokemonCheckup]));
+                    return;
+                }
                 finish_turn_after_checkup(state, rng);
                 if !state.is_game_over() {
                     start_mutation(rng, state, action);
@@ -180,6 +190,12 @@ pub(crate) fn forecast_finish_checkup(state: &State) -> (Probabilities, Mutation
         })
     }).collect();
     (probabilities, mutations)
+}
+
+/// The lowest frame on the stack that promotes a new Active Pokémon, if any.
+fn lowest_promotion_frame(state: &State) -> Option<usize> {
+    state.move_generation_stack.iter().position(|(_, choices)|
+        choices.iter().any(|action| matches!(action, SimpleAction::Promote { .. })))
 }
 
 fn pending_point_denial(state: &State) -> bool {
@@ -552,13 +568,18 @@ pub(crate) fn handle_damage_only(
 
     // Handle each target individually
     for (damage, target_player, target_pokemon_idx) in modified_targets {
+        // A hit that does no damage (Sing, or damage cut to 0) doesn't damage the Pokémon, so it can't use up
+        // Disguise's "first damaged by an attack" (rules/09, laptop's Altaria card check).
+        if damage == 0 {
+            continue;
+        }
         let applied = checkapply_prevent_first_attack(
             state,
             target_player,
             target_pokemon_idx,
             is_from_active_attack,
         );
-        if applied || damage == 0 {
+        if applied {
             continue;
         }
 

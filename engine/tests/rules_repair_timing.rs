@@ -102,6 +102,52 @@ fn both_checkup_knockouts_score_before_winner_in_both_seats() {
     }
 }
 
+/// rules/09 (footage 07aafa3: 4 of 4 recorded end-of-turn or Checkup knockouts): the knocked-out player promotes
+/// before the next turn begins, so before the next player's draw and Energy. Both seats; a Checkup knockout of
+/// either Active and a Bad Dreams knockout at the end of the turn.
+#[test]
+fn end_of_turn_and_checkup_knockouts_promote_before_the_next_turn_in_both_seats() {
+    let poisoned = || {
+        p(CardId::A1001Bulbasaur)
+            .with_remaining_hp(10)
+            .with_status_condition(StatusCondition::Poisoned)
+    };
+    let asleep = || {
+        p(CardId::A1005Caterpie)
+            .with_remaining_hp(10)
+            .with_status_condition(StatusCondition::Asleep)
+    };
+    for actor in 0..2 {
+        let next = 1 - actor;
+        // (whose Active is knocked out, the ender's board, the next player's board)
+        let cases = [
+            (next, vec![p(CardId::A1211Snorlax)], vec![poisoned(), p(CardId::A1033Charmander)]),
+            (actor, vec![poisoned(), p(CardId::A1033Charmander)], vec![p(CardId::A1211Snorlax)]),
+            (next, vec![p(CardId::B2b040Darkrai)], vec![asleep(), p(CardId::A1033Charmander)]),
+        ];
+        for (knocked_out, ender, next_board) in cases {
+            let boards = if actor == 0 { (ender, next_board) } else { (next_board, ender) };
+            let mut game = game(actor, boards.0, boards.1);
+            let next_hand = game.get_state_clone().hands[next].len();
+            act(&mut game, actor, SimpleAction::EndTurn);
+
+            let state = game.get_state_clone();
+            assert!(state.in_play_pokemon[knocked_out][0].is_none());
+            assert_eq!((state.current_player, state.turn_count), (actor, 3), "the next turn has not begun");
+            assert_eq!(state.hands[next].len(), next_hand, "no draw before the promotion");
+            let (promoter, choices) = state.move_generation_stack.last().expect("a promotion is pending");
+            assert_eq!(*promoter, knocked_out);
+            assert!(choices.iter().all(|c| matches!(c, SimpleAction::Promote { .. })), "{choices:?}");
+
+            finish_forced(&mut game);
+            let state = game.get_state_clone();
+            assert_eq!(state.get_active(knocked_out).get_name(), "Charmander");
+            assert_eq!((state.current_player, state.turn_count), (next, 4));
+            assert_eq!(state.hands[next].len(), next_hand + 1, "the next player draws after the promotion");
+        }
+    }
+}
+
 #[test]
 fn prickly_powder_disables_rough_skin_before_retaliation_but_not_tool() {
     for helmet in [false, true] {
@@ -249,6 +295,9 @@ fn suppressed_point_denial_does_not_flip() {
     );
     act(&mut game, 0, SimpleAction::EndTurn);
     assert_eq!(game.get_state_clone().points, [0, 1]);
+    // Glimmet is promoted before the next turn begins (rules/09 promotion timing), then the turn advances.
+    assert_eq!(game.get_state_clone().turn_count, 3);
+    finish_forced(&mut game);
     assert_eq!(game.get_state_clone().turn_count, 4);
 }
 

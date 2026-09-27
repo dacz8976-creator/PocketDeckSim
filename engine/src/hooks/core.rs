@@ -9,12 +9,13 @@ use crate::{
             AbilityMechanic, AttackCostReductionScope, DiscardSearchKind, DiscardSelection,
             KnockoutDamageTarget, ARCEUS_NAMES,
         },
-        card_effect_from_ability_mechanic, get_ability_mechanic, get_entering_play_ability_mechanic,
-        get_in_play_ability_mechanic, handle_damage_only, has_any_in_play_ability,
-        has_in_play_ability_mechanic, SimpleAction,
+        attacks::Mechanic, card_effect_from_ability_mechanic, get_ability_mechanic,
+        get_entering_play_ability_mechanic, get_in_play_ability_mechanic, handle_damage_only,
+        has_any_in_play_ability, has_in_play_ability_mechanic, SimpleAction, EFFECT_MECHANIC_MAP,
     },
     card_ids::CardId,
     effects::{CardEffect, DamageReductionScope, TurnEffect},
+    hooks::retreat::get_board_retreat_cost_at,
     models::{Card, EnergyType, PlayedCard, TrainerCard, TrainerType, BASIC_STAGE},
     stadiums::{
         get_arena_of_antiquity_damage_bonus, get_training_area_damage_bonus,
@@ -382,15 +383,15 @@ pub(crate) fn on_end_turn(player_ending_turn: usize, state: &mut State) {
     // Check if active Pokémon has an end-of-turn ability
     let active = state.get_active(player_ending_turn);
     if let Some(mechanic) = get_in_play_ability_mechanic(state, active) {
+        // Legendary Pulse draws at once, before Hiking Trail tops the hand up below (rules/09, confirmed in-game
+        // 2026-09-25: Suicune ex's player ends on 3 cards). It used to be queued, which resolved it under the next
+        // player's turn draw, after Hiking Trail.
         if matches!(
             mechanic,
             AbilityMechanic::EndTurnDrawCardIfActive { amount: 1 }
         ) {
             debug!("Legendary Pulse: Drawing a card");
-            state.move_generation_stack.push((
-                player_ending_turn,
-                vec![SimpleAction::DrawCard { amount: 1 }],
-            ));
+            state.maybe_draw_card(player_ending_turn);
         }
         if let AbilityMechanic::EndTurnHealSelfIfActive { amount } = mechanic {
             debug!("Full-Mouth Manner: Healing 20 damage from active");
@@ -696,18 +697,18 @@ fn get_heavy_helmet_reduction(
     let defending_pokemon = &state.in_play_pokemon[target_player][target_idx]
         .as_ref()
         .expect("Defending Pokemon should be there when checking Heavy Helmet");
-    heavy_helmet_reduction(defending_pokemon)
+    heavy_helmet_reduction(state, target_player, defending_pokemon, target_idx == 0)
 }
 
-/// Heavy Helmet on `defending_pokemon`: -20 per Helmet when its printed Retreat Cost is 3 or more.
-fn heavy_helmet_reduction(defending_pokemon: &PlayedCard) -> u32 {
-    if has_tool(defending_pokemon, CardId::B1219HeavyHelmet) {
-        if let Card::Pokemon(pokemon_card) = &defending_pokemon.card {
-            if pokemon_card.retreat_cost.len() >= 3 {
-                debug!("Heavy Helmet: Reducing damage by 20");
-                return 20 * tool_count(defending_pokemon, CardId::B1219HeavyHelmet);
-            }
-        }
+/// Heavy Helmet on `defending_pokemon` (`owner`'s; `is_active` when it is in the Active Spot): -20 per Helmet
+/// when its current Retreat Cost, where it sits, is 3 or more. The current cost, not the printed one (rules/09,
+/// confirmed in-game 2026-09-25: under Peculiar Plaza a printed 3 is 1 and the Helmet cuts nothing).
+fn heavy_helmet_reduction(state: &State, owner: usize, defending_pokemon: &PlayedCard, is_active: bool) -> u32 {
+    if has_tool(defending_pokemon, CardId::B1219HeavyHelmet)
+        && get_board_retreat_cost_at(state, owner, defending_pokemon, is_active).len() >= 3
+    {
+        debug!("Heavy Helmet: Reducing damage by 20");
+        return 20 * tool_count(defending_pokemon, CardId::B1219HeavyHelmet);
     }
     0
 }
@@ -1029,6 +1030,7 @@ fn get_ability_damage_increase(
 fn get_increased_turn_effect_modifiers(
     state: &State,
     is_active_to_active: bool,
+    attack_on_opponent: bool,
     target_is_ex: bool,
     attacker_is_eevee_evolution: bool,
     attacking_pokemon: &crate::models::PlayedCard,
@@ -1075,7 +1077,10 @@ fn get_increased_turn_effect_modifiers(
                     && pokemon_names.len() == 2
                     && pokemon_names.iter().any(|name| name == "Magneton")
                     && pokemon_names.iter().any(|name| name == "Heliolisk");
-                if (is_active_to_active || is_backpack)
+                // Clemont's Backpack: "attacks used by your Magneton or Heliolisk do +20 damage to your opponent's
+                // Pokémon", Benched ones too, but only an attack's damage to the opponent's Pokémon (rules/09, the
+                // laptop's Raticate/Manectric card check: Checkup damage to its own Heliolisk took +20).
+                if (is_active_to_active || (is_backpack && attack_on_opponent))
                     && pokemon_names
                     .iter()
                     .any(|name| name.as_str() == attacker_name)
@@ -1559,27 +1564,52 @@ pub(crate) fn get_extra_random_spread_hits(state: &State, attack_name: &str) -> 
         .sum()
 }
 
+/// How kd's clock counts a hit on a victim (see [`persistent_defender_damage`]).
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub(crate) enum DefenderHit {
+    /// An attack that can hit the Active, on the victim as the Active (the clock promotes each victim in turn).
+    Active,
+    /// An attack that can only damage the Bench, on a victim that is on the Bench: as the engine prices Bench
+    /// damage (no Weakness; Protective Poncho and Shell Shield prevent it; Intimidating Fang comes from the
+    /// defender's current Active).
+    Benched,
+}
+
 /// The damage `attacker` does with `base_damage` to `defender` through the defender's persistent public modifiers,
-/// both taken as Active and the attack as one from the Active Spot. For the kd value function's clock, which asks
-/// how fast a threat knocks each victim out in turn. Returns `(first, later)`: the first hit, and every hit once
-/// the defender is damaged (they differ only for `ReduceDamageAtFullHp`).
+/// the attacker taken as Active and `context` its attack's name and text, the hit counted as `hit` says. For the kd
+/// value function's clock, which asks how fast a threat knocks each victim out in turn.
+///
+/// Returns `(first, later)`: the expected damage of the threat's first hit on this defender, and of every hit after
+/// it. They differ for Disguise (`PreventFirstAttack`, while unused: the first hit does 0) and Ice Face
+/// (`ReduceDamageAtFullHp`: only while undamaged, so the first hit only, or every hit if the first does 0).
+/// Expected, because two Abilities flip a coin: `CoinFlipToPreventIncomingDamage` and
+/// `CoinFlipToReduceIncomingDamage` (heads: the damage before modifiers is cut, as `apply_attack_action` does). As in
+/// the engine, the coin isn't flipped for the direct-damage attacks (`DirectDamage`, `DirectDamageAndSelfCardEffect`,
+/// `DirectDamageIfDamaged`): their damage lands through a queued choice the coin never sees. Both orders are known
+/// engine bugs (rules/09, "Open engine bugs"); kd follows the engine, and tests pin both.
 ///
 /// It runs `modify_damage`'s own stages, in its order, restricted to what stays on the board:
 /// - `base_damage == 0` does nothing;
-/// - prevention: `PreventAllDamageFromEx` (Safeguard) from the defender's Ability, against an attacker ex;
-/// - before Weakness: `ReduceOpponentActiveDamage` (Intimidating Fang) from the defender's Ability;
-/// - Weakness: the printed rule, +20 or Bounded Field's x2 (`printed_weakness_application`);
+/// - the attack's text: "isn't affected by Weakness" drops Weakness, and "isn't affected by any effects on your
+///   opponent's Active Pokemon" drops every defender stage below on the Active, as `skip_target_effects` does, and
+///   the coin flip (Disguise still applies, as in `handle_damage_only`);
+/// - prevention: `PreventAllDamageFromEx` (Safeguard) from the defender's Ability, against an attacker ex; and on
+///   the Bench, Protective Poncho and `PreventDamageWhileBenched` (Shell Shield);
+/// - before Weakness: `ReduceOpponentActiveDamage` (Intimidating Fang) from the Ability of the defending side's
+///   Active: the defender's own when it is the Active, the current Active's for a Benched hit;
+/// - Weakness: the printed rule, +20 or Bounded Field's x2 (`printed_weakness_application`), on the Active only;
 /// - after Weakness, every finite reduction that isn't temporary: the Tools Heavy Helmet and Steel Apron;
 ///   `ReduceDamageFromAttacks` from the defender's Ability (Solid Shell, Shell Armor, ...); the conditional
-///   Abilities `ReduceDamageFromTypedAttackers`, `ReduceDamageIfArceusInPlay`, `ReduceDamageAtFullHp` (first hit
-///   only) and `UnownGuard`; and `CoordinatedUnit`.
+///   Abilities `ReduceDamageFromTypedAttackers`, `ReduceDamageIfArceusInPlay`, `ReduceDamageAtFullHp` and
+///   `UnownGuard` (a teammate's Ability); and `CoordinatedUnit`. Board conditions are read on today's board.
 ///
 /// Left out, because they don't last or aren't the defender's: effects stored on the defender by attacks
-/// (`ReducedDamage`, `NoWeakness`, `PreventDamageFromBasic`, `PreventAllDamageAndEffects`,
-/// `PreventDamageIfLessOrEqual`, coin-flip protections, a stored `ReduceDamageFromAttacks`), Metal Core Barrier
-/// (it discards itself at the end of the opponent's turn), turn effects, vulnerability, the attacker's bonuses and
-/// carried reductions, and the Bench-only protections (the defender is taken as Active). Abilities are read through
+/// (`ReducedDamage`, `ReducedDamageFromEx`, `NoWeakness`, `PreventDamageFromBasic`, `PreventAllDamageAndEffects`,
+/// `PreventDamageIfLessOrEqual`, a stored `ReduceDamageFromAttacks`); Metal Core Barrier (it discards itself at the
+/// end of the opponent's turn); turn effects; vulnerability; the attacker's bonuses and carried reductions; and
+/// Guts (`CoinFlipToSurviveKnockOut`, which saves a knockout rather than cutting damage). Abilities are read through
 /// the engine's suppression-aware lookup.
+#[allow(clippy::too_many_arguments)]
 pub(crate) fn persistent_defender_damage(
     state: &State,
     attacking_player: usize,
@@ -1587,60 +1617,134 @@ pub(crate) fn persistent_defender_damage(
     defending_player: usize,
     defender: &PlayedCard,
     base_damage: u32,
-) -> (u32, u32) {
-    if base_damage == 0 {
-        return (0, 0);
+    context: DamageModifierContext<'_>,
+    hit: DefenderHit,
+) -> (f64, f64) {
+    let skip_target_effects = hit == DefenderHit::Active && attack_ignores_opponent_active_effects(context);
+    let heavy_helmet = heavy_helmet_reduction(state, defending_player, defender, hit == DefenderHit::Active);
+    let own_ability = get_in_play_ability_mechanic(state, defender);
+    let ability_effect = if skip_target_effects {
+        None
+    } else {
+        own_ability.and_then(card_effect_from_ability_mechanic)
+    };
+    if hit == DefenderHit::Benched
+        && (matches!(ability_effect, Some(CardEffect::PreventDamageWhileBenched))
+            || (attacking_player != defending_player && has_tool(defender, CardId::B2147ProtectivePoncho)))
+    {
+        return (0.0, 0.0);
     }
-    let ability_effect =
-        get_in_play_ability_mechanic(state, defender).and_then(card_effect_from_ability_mechanic);
-    if matches!(ability_effect, Some(CardEffect::PreventAllDamageFromEx)) && attacker.card.is_ex() {
-        return (0, 0);
-    }
-    let intimidating_fang = match ability_effect {
-        Some(CardEffect::ReduceOpponentActiveDamage { amount }) => amount,
-        _ => 0,
+    // Intimidating Fang works from the defending side's Active Spot.
+    let fang_holder_effect = if hit == DefenderHit::Benched {
+        state
+            .maybe_get_active(defending_player)
+            .and_then(|active| get_in_play_ability_mechanic(state, active))
+            .and_then(card_effect_from_ability_mechanic)
+    } else {
+        ability_effect.clone()
     };
-    let pre_weakness = base_damage.saturating_sub(intimidating_fang);
-    let after_weakness = match printed_weakness_application(state, defender, attacker) {
-        WeaknessApplication::None => pre_weakness,
-        WeaknessApplication::Flat(amount) => pre_weakness + amount,
-        WeaknessApplication::Double => pre_weakness * 2,
-    };
-    let ability = match ability_effect {
-        Some(CardEffect::ReduceDamageFromAttacks { amount }) => amount,
-        _ => 0,
-    };
-    let reductions: u64 = [
-        heavy_helmet_reduction(defender),
-        steel_apron_reduction(state, defender),
-        ability,
-        get_conditional_ability_damage_reduction(
-            state,
-            attacking_player,
-            attacker,
-            defending_player,
-            defender,
-            true,
-        ),
-        get_coordinated_unit_reduction(state, attacking_player, defending_player, defender, true),
-    ]
-    .into_iter()
-    .map(u64::from)
-    .sum();
-    // Ice Face protects only while undamaged, so it counts for the first hit and not after it.
-    let full_hp_only = match get_in_play_ability_mechanic(state, defender) {
-        Some(AbilityMechanic::ReduceDamageAtFullHp { amount })
-            if attacking_player != defending_player
-                && defender.get_remaining_hp() == defender.get_effective_total_hp() =>
-        {
-            u64::from(*amount)
+    let weakness_applies = hit == DefenderHit::Active && !attack_effect_ignores_weakness(context);
+    let engine_flips_coin = !context
+        .attack_effect
+        .and_then(|effect| EFFECT_MECHANIC_MAP.get(effect))
+        .is_some_and(|mechanic| {
+            matches!(
+                mechanic,
+                Mechanic::DirectDamage { .. }
+                    | Mechanic::DirectDamageAndSelfCardEffect { .. }
+                    | Mechanic::DirectDamageIfDamaged { .. }
+            )
+        });
+    // One hit of `base` raw damage: (first, later) as above, before coins and Disguise.
+    let hit = |base: u32| -> (u32, u32) {
+        if base == 0 {
+            return (0, 0);
         }
-        _ => 0,
+        if matches!(ability_effect, Some(CardEffect::PreventAllDamageFromEx)) && attacker.card.is_ex() {
+            return (0, 0);
+        }
+        let intimidating_fang = match fang_holder_effect {
+            Some(CardEffect::ReduceOpponentActiveDamage { amount }) => amount,
+            _ => 0,
+        };
+        let pre_weakness = base.saturating_sub(intimidating_fang);
+        let weakness = if weakness_applies {
+            printed_weakness_application(state, defender, attacker)
+        } else {
+            WeaknessApplication::None
+        };
+        let after_weakness = match weakness {
+            WeaknessApplication::None => pre_weakness,
+            WeaknessApplication::Flat(amount) => pre_weakness + amount,
+            WeaknessApplication::Double => pre_weakness * 2,
+        };
+        if skip_target_effects {
+            return (after_weakness, after_weakness);
+        }
+        let ability = match ability_effect {
+            Some(CardEffect::ReduceDamageFromAttacks { amount }) => amount,
+            _ => 0,
+        };
+        let reductions: u64 = [
+            heavy_helmet,
+            steel_apron_reduction(state, defender),
+            ability,
+            get_conditional_ability_damage_reduction(
+                state,
+                attacking_player,
+                attacker,
+                defending_player,
+                defender,
+                true,
+            ),
+            get_coordinated_unit_reduction(state, attacking_player, defending_player, defender, true),
+        ]
+        .into_iter()
+        .map(u64::from)
+        .sum();
+        // Ice Face protects only while undamaged: the first hit, and every hit if that one does nothing.
+        let full_hp_only = match own_ability {
+            Some(AbilityMechanic::ReduceDamageAtFullHp { amount })
+                if attacking_player != defending_player
+                    && defender.get_remaining_hp() == defender.get_effective_total_hp() =>
+            {
+                u64::from(*amount)
+            }
+            _ => 0,
+        };
+        let after = |reductions: u64| {
+            u32::try_from(u64::from(after_weakness).saturating_sub(reductions)).unwrap_or(u32::MAX)
+        };
+        let first = after(reductions);
+        let later = if first == 0 { 0 } else { after(reductions.saturating_sub(full_hp_only)) };
+        (first, later)
     };
-    let after = |reductions: u64| {
-        u32::try_from(u64::from(after_weakness).saturating_sub(reductions)).unwrap_or(u32::MAX)
+    let (first, later) = match ability_effect {
+        Some(CardEffect::CoinFlipToPreventIncomingDamage) if engine_flips_coin => {
+            let (first, later) = hit(base_damage);
+            (0.5 * first as f64, 0.5 * later as f64)
+        }
+        Some(CardEffect::CoinFlipToReduceIncomingDamage { amount }) if engine_flips_coin => {
+            let (tails_first, tails_later) = hit(base_damage);
+            let (heads_first, heads_later) = hit(base_damage.saturating_sub(amount));
+            (
+                0.5 * (tails_first + heads_first) as f64,
+                0.5 * (tails_later + heads_later) as f64,
+            )
+        }
+        _ => {
+            let (first, later) = hit(base_damage);
+            (first as f64, later as f64)
+        }
     };
-    (after(reductions), after(reductions - full_hp_only))
+    // Disguise: the first attack that damages it after it comes into play is prevented, whatever the attack's text.
+    if base_damage > 0
+        && own_ability == Some(&AbilityMechanic::PreventFirstAttack)
+        && !defender.prevent_first_attack_damage_used
+    {
+        return (0.0, later);
+    }
+    (first, later)
 }
 
 // TODO: Confirm is_from_attack and goes to enemy active
@@ -1714,17 +1818,21 @@ pub(crate) fn modify_damage(
         return 0;
     }
 
+    // The three protections below cover damage "by attacks" only, as Safeguard and Shell Shield above do: an
+    // Ability's damage (Bad Dreams) goes through them (rules/09, laptop's Altaria card check).
     // Check for PreventAllDamageAndEffects (Shinx's Hide)
-    if target_effects
-        .iter()
-        .any(|effect| matches!(effect, CardEffect::PreventAllDamageAndEffects))
+    if is_from_active_attack
+        && target_effects
+            .iter()
+            .any(|effect| matches!(effect, CardEffect::PreventAllDamageAndEffects))
     {
         debug!("PreventAllDamageAndEffects: Preventing all damage and effects");
         return 0;
     }
 
     // Check for PreventDamageFromBasic (Carracosta's Blocking Shell)
-    if attacking_pokemon.card.is_basic()
+    if is_from_active_attack
+        && attacking_pokemon.card.is_basic()
         && target_effects
             .iter()
             .any(|effect| matches!(effect, CardEffect::PreventDamageFromBasic))
@@ -1767,6 +1875,7 @@ pub(crate) fn modify_damage(
     let increased_turn_effect_modifiers = get_increased_turn_effect_modifiers(
         state,
         is_active_to_active,
+        is_from_active_attack && attacking_player != target_player,
         target_is_ex,
         attacker_is_eevee_evolution,
         attacking_pokemon,
@@ -1885,9 +1994,10 @@ pub(crate) fn modify_damage(
         .saturating_sub(reductions.total_u32_saturating());
 
     // Threshold-based prevention (e.g. Cascoon's Harden): prevent all damage if it is low enough.
-    let prevented_by_threshold = target_effects
-        .iter()
-        .any(|effect| matches!(effect, CardEffect::PreventDamageIfLessOrEqual { threshold } if final_damage <= *threshold));
+    let prevented_by_threshold = is_from_active_attack
+        && target_effects
+            .iter()
+            .any(|effect| matches!(effect, CardEffect::PreventDamageIfLessOrEqual { threshold } if final_damage <= *threshold));
     if prevented_by_threshold {
         debug!("PreventDamageIfLessOrEqual: Preventing {final_damage} damage");
         return 0;
@@ -2830,71 +2940,284 @@ mod persistent_defender_damage_tests {
     //! persistent modifiers are in play, and different exactly where a temporary one is left out.
     use super::*;
     use crate::database::get_card_by_enum;
+    use rand::{rngs::StdRng, SeedableRng};
 
     fn mon(id: CardId) -> PlayedCard {
         PlayedCard::from_id(id)
     }
 
-    /// `persistent_defender_damage` of player 1's Active (the attacker) on player 0's Active, and what
-    /// `modify_damage` does to it on the same board.
-    fn both(defender: PlayedCard, attacker: PlayedCard, base: u32) -> ((u32, u32), u32) {
+    fn duel(defender: Vec<PlayedCard>, attacker: Vec<PlayedCard>) -> State {
         let mut state = State::default();
-        state.set_board(vec![defender], vec![attacker]);
-        let (attacker, defender) = (state.get_active(1), state.get_active(0));
+        state.set_board(defender, attacker);
+        state
+    }
+
+    /// `persistent_defender_damage` of player 1's Active on player 0's Pokemon in `target` (the Active unless the
+    /// attack only hits the Bench), and what `modify_damage` does to it on the same board, for an attack with
+    /// `effect`.
+    fn both_on(state: &State, base: u32, effect: Option<&str>, target: usize) -> ((f64, f64), f64) {
+        let context = DamageModifierContext { attack_name: None, attack_effect: effect };
+        let attacker = state.get_active(1);
+        let defender = state.in_play_pokemon[0][target].as_ref().unwrap();
         (
-            persistent_defender_damage(&state, 1, attacker, 0, defender, base),
-            modify_damage(&state, (1, 0), (base, 0, 0), true, DamageModifierContext::default()),
+            persistent_defender_damage(state, 1, attacker, 0, defender, base, context, hit(target)),
+            modify_damage(state, (1, 0), (base, 0, target), true, context) as f64,
         )
+    }
+
+    /// An attack on the Active hits it as the Active; one on the Bench is Bench damage.
+    fn hit(target: usize) -> DefenderHit {
+        if target == 0 {
+            DefenderHit::Active
+        } else {
+            DefenderHit::Benched
+        }
+    }
+
+    fn both(defender: PlayedCard, attacker: PlayedCard, base: u32) -> ((f64, f64), f64) {
+        both_on(&duel(vec![defender], vec![attacker]), base, None, 0)
     }
 
     #[test]
     fn weakness_adds_20_when_weak_and_nothing_when_not() {
         // Riolu is weak to Psychic: Mewtwo ex's 50 does 70.
-        assert_eq!(both(mon(CardId::B3079Riolu), mon(CardId::A1129MewtwoEx), 50), ((70, 70), 70));
+        assert_eq!(both(mon(CardId::B3079Riolu), mon(CardId::A1129MewtwoEx), 50), ((70.0, 70.0), 70.0));
         // Treecko is weak to Fire, not Psychic.
-        assert_eq!(both(mon(CardId::B3005Treecko), mon(CardId::A1129MewtwoEx), 50), ((50, 50), 50));
+        assert_eq!(both(mon(CardId::B3005Treecko), mon(CardId::A1129MewtwoEx), 50), ((50.0, 50.0), 50.0));
         // A Colorless attacker hits no Weakness.
-        assert_eq!(both(mon(CardId::B3079Riolu), mon(CardId::B1180Pidgey), 30), ((30, 30), 30));
+        assert_eq!(both(mon(CardId::B3079Riolu), mon(CardId::B1180Pidgey), 30), ((30.0, 30.0), 30.0));
         // Bonsly has no Weakness.
-        assert_eq!(both(mon(CardId::B3078Bonsly), mon(CardId::A1129MewtwoEx), 50), ((50, 50), 50));
+        assert_eq!(both(mon(CardId::B3078Bonsly), mon(CardId::A1129MewtwoEx), 50), ((50.0, 50.0), 50.0));
         // 0 stays 0, Weakness or not.
-        assert_eq!(both(mon(CardId::B3079Riolu), mon(CardId::A1129MewtwoEx), 0), ((0, 0), 0));
+        assert_eq!(both(mon(CardId::B3079Riolu), mon(CardId::A1129MewtwoEx), 0), ((0.0, 0.0), 0.0));
+        // Double Type: Single Strike Urshifu is [F] and [D]; Espeon is weak to Darkness.
+        assert_eq!(both(mon(CardId::B3a020Espeon), mon(CardId::B3113SingleStrikeUrshifu), 110), ((130.0, 130.0), 130.0));
+    }
+
+    #[test]
+    fn bounded_field_doubles_except_for_a_mega_ex() {
+        let bounded = |attacker: CardId| {
+            let mut state = duel(vec![mon(CardId::B3079Riolu)], vec![mon(attacker)]);
+            state.active_stadium = Some(get_card_by_enum(CardId::B3155BoundedField));
+            both_on(&state, 50, None, 0)
+        };
+        assert_eq!(bounded(CardId::A1129MewtwoEx), ((100.0, 100.0), 100.0));
+        // Mega Altaria ex is Psychic too, but a Mega ex: the usual +20.
+        assert_eq!(bounded(CardId::B1102MegaAltariaEx), ((70.0, 70.0), 70.0));
     }
 
     #[test]
     fn solid_shell_takes_20_off_and_can_take_it_to_0() {
         let shuckle = || mon(CardId::A4021ShuckleEx);
-        assert_eq!(both(shuckle(), mon(CardId::A1001Bulbasaur), 40), ((20, 20), 20));
-        assert_eq!(both(shuckle(), mon(CardId::A1008Weedle), 20), ((0, 0), 0));
+        assert_eq!(both(shuckle(), mon(CardId::A1001Bulbasaur), 40), ((20.0, 20.0), 20.0));
+        assert_eq!(both(shuckle(), mon(CardId::A1008Weedle), 20), ((0.0, 0.0), 0.0));
     }
 
     #[test]
     fn persistent_tools_count() {
         // Heavy Helmet on a Retreat Cost 3 Pokemon: -20.
         let snorlax = mon(CardId::B3b055Snorlax).with_tool(get_card_by_enum(CardId::B1219HeavyHelmet));
-        assert_eq!(both(snorlax, mon(CardId::A1001Bulbasaur), 40), ((20, 20), 20));
+        assert_eq!(both(snorlax, mon(CardId::A1001Bulbasaur), 40), ((20.0, 20.0), 20.0));
         // Steel Apron on a Metal Pokemon: -10.
         let skarmory = mon(CardId::A2111Skarmory).with_tool(get_card_by_enum(CardId::A4153SteelApron));
-        assert_eq!(both(skarmory, mon(CardId::A1001Bulbasaur), 40), ((30, 30), 30));
+        assert_eq!(both(skarmory, mon(CardId::A1001Bulbasaur), 40), ((30.0, 30.0), 30.0));
     }
 
     #[test]
     fn safeguard_prevents_damage_from_an_ex_only() {
-        assert_eq!(both(mon(CardId::A3066Oricorio), mon(CardId::A1129MewtwoEx), 50), ((0, 0), 0));
-        assert_eq!(both(mon(CardId::A3066Oricorio), mon(CardId::B1180Pidgey), 30), ((30, 30), 30));
+        assert_eq!(both(mon(CardId::A3066Oricorio), mon(CardId::A1129MewtwoEx), 50), ((0.0, 0.0), 0.0));
+        assert_eq!(both(mon(CardId::A3066Oricorio), mon(CardId::B1180Pidgey), 30), ((30.0, 30.0), 30.0));
+        // A Mega evolution is an ex.
+        assert_eq!(both(mon(CardId::A3066Oricorio), mon(CardId::B1102MegaAltariaEx), 40), ((0.0, 0.0), 0.0));
     }
 
     #[test]
     fn intimidating_fang_comes_off_before_weakness() {
         // Luxray is weak to Fighting: 10 - 20 floors at 0 before Weakness adds 20.
-        assert_eq!(both(mon(CardId::A3a015Luxray), mon(CardId::B3079Riolu), 10), ((20, 20), 20));
+        assert_eq!(both(mon(CardId::A3a015Luxray), mon(CardId::B3079Riolu), 10), ((20.0, 20.0), 20.0));
+    }
+
+    #[test]
+    fn conditional_abilities_count_on_todays_board() {
+        // Thick Fat-style typed reduction: Piloswine takes -20 from [R] or [W] attackers only.
+        assert_eq!(both(mon(CardId::A2032Piloswine), mon(CardId::A1033Charmander), 40), ((20.0, 20.0), 20.0));
+        assert_eq!(both(mon(CardId::A2032Piloswine), mon(CardId::A1001Bulbasaur), 40), ((40.0, 40.0), 40.0));
+        // Resilience Link: Raichu takes -30 while its owner has Arceus in play.
+        let raichu = |bench: Vec<PlayedCard>| {
+            let mut mine = vec![mon(CardId::A2a026Raichu)];
+            mine.extend(bench);
+            both_on(&duel(mine, vec![mon(CardId::A1001Bulbasaur)]), 60, None, 0)
+        };
+        assert_eq!(raichu(vec![mon(CardId::A2a071ArceusEx)]), ((30.0, 30.0), 30.0));
+        assert_eq!(raichu(vec![]), ((60.0, 60.0), 60.0));
+        // Coordinated Unit: Falinks takes -20 with another Falinks in play.
+        let falinks = |pair: bool| {
+            let mine = if pair { vec![mon(CardId::B2092Falinks), mon(CardId::B2092Falinks)] } else { vec![mon(CardId::B2092Falinks)] };
+            both_on(&duel(mine, vec![mon(CardId::A1001Bulbasaur)]), 40, None, 0)
+        };
+        assert_eq!(falinks(true), ((20.0, 20.0), 20.0));
+        assert_eq!(falinks(false), ((40.0, 40.0), 40.0));
+        // GUARD (a teammate's Ability): -10 for every Pokemon while a non-GUARD Unown is in play.
+        let guarded = |check: bool| {
+            let mut mine = vec![mon(CardId::B3005Treecko), mon(CardId::A4084Unown)];
+            if check {
+                mine.push(mon(CardId::A2a034Unown));
+            }
+            both_on(&duel(mine, vec![mon(CardId::A1001Bulbasaur)]), 40, None, 0)
+        };
+        assert_eq!(guarded(true), ((30.0, 30.0), 30.0));
+        assert_eq!(guarded(false), ((40.0, 40.0), 40.0));
     }
 
     #[test]
     fn ice_face_counts_for_the_first_hit_only() {
-        assert_eq!(both(mon(CardId::B1080Eiscue), mon(CardId::A1001Bulbasaur), 60), ((20, 60), 20));
+        assert_eq!(both(mon(CardId::B1080Eiscue), mon(CardId::A1001Bulbasaur), 60), ((20.0, 60.0), 20.0));
         let damaged = mon(CardId::B1080Eiscue).with_remaining_hp(70);
-        assert_eq!(both(damaged, mon(CardId::A1001Bulbasaur), 60), ((60, 60), 60));
+        assert_eq!(both(damaged, mon(CardId::A1001Bulbasaur), 60), ((60.0, 60.0), 60.0));
+        // A first hit that Ice Face absorbs leaves it at full HP, so every hit is absorbed.
+        assert_eq!(both(mon(CardId::B1080Eiscue), mon(CardId::A1001Bulbasaur), 40), ((0.0, 0.0), 0.0));
+    }
+
+    #[test]
+    fn disguise_prevents_the_first_hit_until_used() {
+        assert_eq!(both(mon(CardId::B2073MimikyuEx), mon(CardId::A1001Bulbasaur), 40).0, (0.0, 40.0));
+        let mut used = mon(CardId::B2073MimikyuEx);
+        used.prevent_first_attack_damage_used = true;
+        assert_eq!(both(used, mon(CardId::A1001Bulbasaur), 40), ((40.0, 40.0), 40.0));
+        // The engine applies Disguise in handle_damage_only: two 40-damage attacks take 0, then 40.
+        let mut state = duel(vec![mon(CardId::B2073MimikyuEx)], vec![mon(CardId::A1001Bulbasaur)]);
+        let hp = |state: &State| state.get_active(0).get_remaining_hp();
+        let full = hp(&state);
+        handle_damage_only(&mut state, (1, 0), &[(40, 0, 0)], true, DamageModifierContext::default());
+        assert_eq!(full - hp(&state), 0);
+        handle_damage_only(&mut state, (1, 0), &[(40, 0, 0)], true, DamageModifierContext::default());
+        assert_eq!(full - hp(&state), 40);
+    }
+
+    #[test]
+    fn coin_flip_abilities_are_priced_in_expectation() {
+        // Celestial Blessing: heads prevents the damage.
+        assert_eq!(both(mon(CardId::A4080Togekiss), mon(CardId::A1001Bulbasaur), 40).0, (20.0, 20.0));
+        // Guarded Grill: heads takes -100 from the damage before modifiers (Bastiodon is weak to Fire).
+        assert_eq!(both(mon(CardId::A2114Bastiodon), mon(CardId::A1033Charmander), 40).0, (30.0, 30.0));
+    }
+
+    /// PINS THE ENGINE'S CURRENT ORDER, which is a known engine bug (rules/09, "Open engine bugs"): the engine takes
+    /// Guarded Grill's -100 off the raw damage, before Weakness; by the rules (rules/02, step 4) it comes after.
+    /// kd prices what the engine does, so the bot's clock agrees with the engine it plays in. When the engine is
+    /// fixed, this fails on purpose: then make the matching one-line change in `persistent_defender_damage` (take
+    /// the heads reduction off the damage after the rest of the pipeline, not off `base_damage`).
+    #[test]
+    fn guarded_grill_under_bounded_field_pins_the_engines_current_order_coin_cut_before_weakness() {
+        // Charmeleon's Fire Claws (60) into Bastiodon (160 HP, weak to Fire) under Bounded Field. The engine today:
+        // tails 60 x2 = 120, heads 60 - 100 = 0, so 60 on average. By the rules: tails 120, heads 120 - 100 = 20: 70.
+        let charmeleon = mon(CardId::A1034Charmeleon).with_energy(vec![EnergyType::Fire; 3]);
+        let mut state = duel(vec![mon(CardId::A2114Bastiodon)], vec![charmeleon]);
+        state.active_stadium = Some(get_card_by_enum(CardId::B3155BoundedField));
+        state.current_player = 1;
+        state.turn_count = 5;
+        let fire_claws = state
+            .generate_possible_actions()
+            .1
+            .into_iter()
+            .find(|action| matches!(&action.action, SimpleAction::Attack(attack) if attack.title == "Fire Claws"))
+            .expect("Fire Claws is playable");
+        let (probabilities, mutations) = crate::actions::forecast_action(&state, &fire_claws).into_branches();
+        let engine: f64 = probabilities
+            .iter()
+            .zip(mutations)
+            .map(|(probability, mutate)| {
+                let mut branch = state.clone();
+                mutate(&mut StdRng::seed_from_u64(20_000_000_001), &mut branch, &fire_claws);
+                probability * (160 - branch.get_active(0).get_remaining_hp()) as f64
+            })
+            .sum();
+        assert_eq!(engine, 60.0, "the engine's Guarded Grill order changed: see this test's doc comment");
+        assert_eq!(both_on(&state, 60, None, 0).0, (engine, engine));
+    }
+
+    /// PINS THE ENGINE'S CURRENT BEHAVIOUR, a known engine bug (rules/09, "Open engine bugs"): a direct-damage
+    /// attack's damage lands through a queued choice, and the defender's coin-flip Ability never flips for it.
+    /// kd follows the engine. When the engine is fixed this fails on purpose: then drop the direct-damage exception
+    /// (`engine_flips_coin`) in `persistent_defender_damage`.
+    #[test]
+    fn a_direct_damage_snipe_on_togekiss_pins_the_engines_current_behaviour_no_coin() {
+        // Heatmor's Tongue Whip (30 to a Benched Pokemon) on a benched Togekiss (Celestial Blessing: heads prevents).
+        let heatmor = mon(CardId::B1044Heatmor).with_energy(vec![EnergyType::Fire]);
+        let mut state = duel(vec![mon(CardId::A1001Bulbasaur), mon(CardId::A4080Togekiss)], vec![heatmor]);
+        state.current_player = 1;
+        state.turn_count = 5;
+        let tongue_whip = state
+            .generate_possible_actions()
+            .1
+            .into_iter()
+            .find(|action| matches!(&action.action, SimpleAction::Attack(attack) if attack.title == "Tongue Whip"))
+            .expect("Tongue Whip is playable");
+        let effect = match &tongue_whip.action {
+            SimpleAction::Attack(attack) => attack.effect.clone(),
+            _ => None,
+        };
+        let mut rng = StdRng::seed_from_u64(20_000_000_002);
+        let (probabilities, mutations) = crate::actions::forecast_action(&state, &tongue_whip).into_branches();
+        let mut engine = 0.0;
+        for (probability, mutate) in probabilities.iter().zip(mutations) {
+            let mut branch = state.clone();
+            mutate(&mut rng, &mut branch, &tongue_whip);
+            let snipe = branch
+                .generate_possible_actions()
+                .1
+                .into_iter()
+                .find(|action| matches!(&action.action, SimpleAction::ApplyDamage { targets, .. } if targets[0].2 == 1))
+                .expect("the snipe at Togekiss is offered");
+            let (snipe_probabilities, snipe_mutations) =
+                crate::actions::forecast_action(&branch, &snipe).into_branches();
+            for (snipe_probability, mutate) in snipe_probabilities.iter().zip(snipe_mutations) {
+                let mut after = branch.clone();
+                mutate(&mut rng, &mut after, &snipe);
+                let togekiss = after.in_play_pokemon[0][1].as_ref().expect("Togekiss survives 30");
+                engine += probability * snipe_probability * (140 - togekiss.get_remaining_hp()) as f64;
+            }
+        }
+        assert_eq!(engine, 30.0, "the engine now flips Celestial Blessing for direct damage: see this test's doc comment");
+        assert_eq!(both_on(&state, 30, effect.as_deref(), 1).0, (engine, engine));
+    }
+
+    #[test]
+    fn the_attacks_own_text_is_honoured() {
+        // Quick Straight isn't affected by Weakness: Luxray (weak to Fighting) takes 50 - 20 (Fang).
+        let straight = "This attack's damage isn't affected by Weakness.";
+        let state = duel(vec![mon(CardId::A3a015Luxray)], vec![mon(CardId::B1124HitmonchanEx)]);
+        assert_eq!(both_on(&state, 50, Some(straight), 0), ((30.0, 30.0), 30.0));
+        // Chakra Fist ignores effects on the opponent's Active: Safeguard is bypassed, Weakness isn't.
+        let chakra = "If this Pokémon has any [P] Energy attached, this attack does 40 more damage. This attack's damage isn't affected by any effects on your opponent's Active Pokémon.";
+        let state = duel(vec![mon(CardId::A3066Oricorio)], vec![mon(CardId::PB029MegaMedichamEx)]);
+        assert_eq!(both_on(&state, 100, Some(chakra), 0), ((120.0, 120.0), 120.0));
+        // Swift ignores both: Solid Shell and the coin flip are bypassed.
+        let swift = "This attack's damage isn't affected by Weakness or by any effects on your opponent's Active Pokémon.";
+        let state = duel(vec![mon(CardId::A4021ShuckleEx)], vec![mon(CardId::B4032Staryu)]);
+        assert_eq!(both_on(&state, 20, Some(swift), 0), ((20.0, 20.0), 20.0));
+        let state = duel(vec![mon(CardId::A4080Togekiss)], vec![mon(CardId::B4032Staryu)]);
+        assert_eq!(both_on(&state, 20, Some(swift), 0).0, (20.0, 20.0));
+    }
+
+    #[test]
+    fn bench_damage_is_priced_as_the_engine_prices_it() {
+        let heatmor = || vec![mon(CardId::B1044Heatmor)];
+        // Heatmor's Tongue Whip (30 to a Benched Pokemon) on a benched Vespiquen ex, weak to Fire: 30, not 50.
+        let state = duel(vec![mon(CardId::A1001Bulbasaur), mon(CardId::B4011VespiquenEx)], heatmor());
+        assert_eq!(both_on(&state, 30, None, 1), ((30.0, 30.0), 30.0));
+        // Protective Poncho and Shell Shield prevent Bench damage.
+        let poncho = mon(CardId::B4011VespiquenEx).with_tool(get_card_by_enum(CardId::B2147ProtectivePoncho));
+        let state = duel(vec![mon(CardId::A1001Bulbasaur), poncho], heatmor());
+        assert_eq!(both_on(&state, 30, None, 1), ((0.0, 0.0), 0.0));
+        let state = duel(vec![mon(CardId::A1001Bulbasaur), mon(CardId::B1a018Wartortle)], heatmor());
+        assert_eq!(both_on(&state, 30, None, 1), ((0.0, 0.0), 0.0));
+        // Intimidating Fang works from the Active Spot: a benched Luxray's does nothing, an Active Luxray's cuts the
+        // damage to a benched Pokemon.
+        let state = duel(vec![mon(CardId::A1001Bulbasaur), mon(CardId::A3a015Luxray)], heatmor());
+        assert_eq!(both_on(&state, 30, None, 1), ((30.0, 30.0), 30.0));
+        let state = duel(vec![mon(CardId::A3a015Luxray), mon(CardId::B4011VespiquenEx)], heatmor());
+        assert_eq!(both_on(&state, 30, None, 1), ((10.0, 10.0), 10.0));
     }
 
     #[test]
@@ -2903,14 +3226,14 @@ mod persistent_defender_damage_tests {
         let mut riolu = mon(CardId::B3079Riolu);
         riolu.add_effect(CardEffect::NoWeakness, 1);
         riolu.add_effect(CardEffect::ReducedDamage { amount: 20 }, 1);
-        assert_eq!(both(riolu, mon(CardId::A1129MewtwoEx), 50), ((70, 70), 30));
+        assert_eq!(both(riolu, mon(CardId::A1129MewtwoEx), 50), ((70.0, 70.0), 30.0));
         // A stored ReduceDamageFromAttacks (an attack's, not an Ability's) is left out too.
         let mut treecko = mon(CardId::B3005Treecko);
         treecko.add_effect(CardEffect::ReduceDamageFromAttacks { amount: 20 }, 1);
-        assert_eq!(both(treecko, mon(CardId::A1129MewtwoEx), 50), ((50, 50), 30));
+        assert_eq!(both(treecko, mon(CardId::A1129MewtwoEx), 50), ((50.0, 50.0), 30.0));
         // Metal Core Barrier discards itself at the end of the opponent's turn.
         let skarmory =
             mon(CardId::A2111Skarmory).with_tool(get_card_by_enum(CardId::B2148MetalCoreBarrier));
-        assert_eq!(both(skarmory, mon(CardId::A1001Bulbasaur), 40), ((40, 40), 0));
+        assert_eq!(both(skarmory, mon(CardId::A1001Bulbasaur), 40), ((40.0, 40.0), 0.0));
     }
 }

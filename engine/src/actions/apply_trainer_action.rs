@@ -27,7 +27,7 @@ use crate::{
     effects::{DamageReductionScope, TurnEffect},
     hooks::{can_evolve_into, get_stage, is_ancient_pokemon, is_future_pokemon, is_ultra_beast},
     models::{Card, EnergyType, StatusCondition, TrainerCard, TrainerType},
-    move_generation::trainer_move_generation_implementation,
+    move_generation::{can_evolve_at_position, trainer_move_generation_implementation},
     tools::{enumerate_tool_choices, is_tool_card, is_tool_effect_implemented},
     State,
 };
@@ -1906,9 +1906,10 @@ fn rare_candy_effect(_: &mut StdRng, state: &mut State, action: &Action) {
     let player = action.actor;
     let hand = &state.hands[player];
 
-    // Flat-map basic in play with valid stage 2 in hand pairs
+    // Flat-map basic in play with valid stage 2 in hand pairs, where evolving from hand is allowed
     let possible_candy_evolutions: Vec<SimpleAction> = state
         .enumerate_in_play_pokemon(player)
+        .filter(|(in_play_idx, _)| can_evolve_at_position(state, player, *in_play_idx))
         .flat_map(|(in_play_idx, in_play)| {
             hand.iter()
                 .filter(|card| can_rare_candy_evolve(card, in_play))

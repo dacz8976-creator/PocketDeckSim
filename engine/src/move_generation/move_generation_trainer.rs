@@ -137,7 +137,7 @@ pub fn trainer_move_generation_implementation(
         CardId::PA007ProfessorsResearch | CardId::A4b373ProfessorsResearch => {
             can_play_professors_research(state, trainer_card)
         }
-        CardId::PA005PokeBall => can_play_poke_ball(state, trainer_card),
+        CardId::PA005PokeBall | CardId::A2b111PokeBall => can_play_poke_ball(state, trainer_card),
         CardId::A2154Dawn | CardId::A2194Dawn | CardId::A4b342Dawn | CardId::A4b343Dawn => {
             can_play_dawn(state, trainer_card)
         }
@@ -211,7 +211,6 @@ pub fn trainer_move_generation_implementation(
         | CardId::A4b336Silver
         | CardId::A4b337Silver
         | CardId::PA002XSpeed
-        | CardId::A2b111PokeBall
         | CardId::PA006RedCard
         | CardId::A1223Giovanni
         | CardId::A1270Giovanni
@@ -558,9 +557,10 @@ fn can_play_professors_research(
     }
 }
 
-/// F018 (§189/§193): Poké Ball P-A 005 may search a nonempty hidden deck even when
-/// the search finds no Basic Pokémon, but an empty deck is public state and offers
-/// no legal search. This arm is deliberately limited to the measured print.
+/// F018 (§189/§193): Poké Ball may search a nonempty hidden deck even when the search
+/// finds no Basic Pokémon, but an empty deck is public state and offers no legal search.
+/// Both printings (P-A 005 and A2b 111) have the same text; A2b 111 was left always playable
+/// until the Trainer audit of 2026-09-25 (rules/04's "visibly impossible" list blocks both).
 fn can_play_poke_ball(state: &State, trainer_card: &TrainerCard) -> Option<Vec<SimpleAction>> {
     if state.decks[state.current_player].cards.is_empty() {
         cannot_play_trainer()
@@ -665,17 +665,15 @@ fn can_play_rare_candy(state: &State, trainer_card: &TrainerCard) -> Option<Vec<
         return cannot_play_trainer();
     }
 
-    // Malamar's Evolution Jammer also stops Rare Candy: it plays a Pokémon from hand to evolve.
-    if super::is_evolution_from_hand_blocked(state) {
-        return cannot_play_trainer();
-    }
-
     let player = state.current_player;
     let hand = &state.hands[player];
 
-    // Check if there's at least 1 basic pokemon in field with a corresponding stage2-rare-candy-evolvable in hand
+    // Check if there's at least 1 basic pokemon in field with a corresponding stage2-rare-candy-evolvable in hand.
+    // Rare Candy plays a Pokémon from hand to evolve, so Malamar's Evolution Jammer stops it everywhere and
+    // Aerodactyl ex's Primeval Law stops it on the Active (rules/09, confirmed in-game 2026-09-25).
     let has_valid_evolution_pair = state
         .enumerate_in_play_pokemon(player)
+        .filter(|(in_play_idx, _)| super::can_evolve_at_position(state, player, *in_play_idx))
         .any(|(_, in_play)| hand.iter().any(|card| can_rare_candy_evolve(card, in_play)));
     if has_valid_evolution_pair {
         can_play_trainer(state, trainer_card)

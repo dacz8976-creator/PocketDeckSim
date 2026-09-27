@@ -4,6 +4,7 @@
 use deckgym::{
     actions::{Action, SimpleAction},
     card_ids::CardId,
+    effects::CardEffect,
     models::{PlayedCard, StatusCondition},
     test_support::{get_initialized_game, get_test_game_with_board},
 };
@@ -193,4 +194,28 @@ fn test_bad_dreams_owner_active_can_be_koed_earlier_in_same_checkup() {
         action: SimpleAction::EndTurn,
         is_stack: false,
     });
+}
+
+/// rules/09 (laptop's Altaria card check, Sept 26): Hide, Blocking Shell and Harden prevent damage "by attacks".
+/// Bad Dreams is an Ability's damage, so it goes through all three.
+#[test]
+fn test_bad_dreams_goes_through_protections_that_cover_attacks_only() {
+    for effect in [
+        CardEffect::PreventAllDamageAndEffects,
+        CardEffect::PreventDamageFromBasic,
+        CardEffect::PreventDamageIfLessOrEqual { threshold: 40 },
+    ] {
+        let mut sleeper = PlayedCard::from_id(CardId::A1033Charmander);
+        sleeper.add_effect(effect.clone(), 1);
+        let mut game = get_test_game_with_board(vec![PlayedCard::from_id(CardId::B2b040Darkrai)], vec![sleeper]);
+        let mut state = game.get_state_clone();
+        state.apply_status_condition(1, 0, StatusCondition::Asleep);
+        game.set_state(state);
+        game.apply_action(&Action {
+            actor: 0,
+            action: SimpleAction::EndTurn,
+            is_stack: false,
+        });
+        assert_eq!(game.get_state_clone().get_active(1).get_remaining_hp(), 40, "Bad Dreams hits through {effect:?}");
+    }
 }

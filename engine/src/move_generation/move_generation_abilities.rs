@@ -115,9 +115,13 @@ fn can_use_ability_by_mechanic(
         AbilityMechanic::AttachEnergyFromZoneToYourTypedPokemon { .. } => {
             is_active && !card.ability_used
         }
-        AbilityMechanic::AttachEnergyFromZoneToSelf { .. } => !card.ability_used,
-        AbilityMechanic::AttachEnergyFromZoneToSelfAndEndTurn { .. } => !card.ability_used,
-        AbilityMechanic::AttachEnergyFromZoneToSelfAndDamage { .. } => !card.ability_used,
+        // Abilities that only attach from the Zone to their holder do nothing on an Active under a lock like Binding
+        // Snow's, so they aren't offered there, as Ice Maker isn't (rules/09, laptop's Raticate/Manectric check).
+        AbilityMechanic::AttachEnergyFromZoneToSelf { .. }
+        | AbilityMechanic::AttachEnergyFromZoneToSelfAndEndTurn { .. }
+        | AbilityMechanic::AttachEnergyFromZoneToSelfAndDamage { .. } => {
+            !card.ability_used && state.can_attach_energy_from_zone(_in_play_index)
+        }
         AbilityMechanic::DamageOpponentActiveOnZoneAttachToSelf { .. } => false,
         AbilityMechanic::AttachEnergyFromDiscardToSelfAndDamage { energy_type, .. } => {
             !card.ability_used && state.discard_energies[state.current_player].contains(energy_type)
@@ -526,4 +530,31 @@ fn can_use_heal_one_your_pokemon(
         && state
             .enumerate_in_play_pokemon(state.current_player)
             .any(|(_, pokemon)| pokemon.is_damaged())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::{card_ids::CardId, effects::TurnEffect};
+
+    /// rules/09 (laptop's Raticate/Manectric card check, Sept 26): under Binding Snow's lock ("they can't take any
+    /// Energy from their Energy Zone to attach to their Active Pokémon") an Active Hydreigon's Roar in Unison would
+    /// only spend the Ability, so it isn't offered; a Benched Hydreigon's still is.
+    #[test]
+    fn roar_in_unison_is_not_offered_on_an_active_under_the_zone_lock() {
+        let roar = |state: &State, idx: usize| {
+            generate_ability_actions(state)
+                .iter()
+                .any(|action| matches!(action, SimpleAction::UseAbility { in_play_idx } if *in_play_idx == idx))
+        };
+        let mut state = State::default();
+        state.turn_count = 5;
+        state.in_play_pokemon[0][0] = Some(PlayedCard::from_id(CardId::B1157Hydreigon));
+        state.in_play_pokemon[0][1] = Some(PlayedCard::from_id(CardId::B1157Hydreigon));
+        state.in_play_pokemon[1][0] = Some(PlayedCard::from_id(CardId::A1001Bulbasaur));
+        assert!(roar(&state, 0) && roar(&state, 1));
+        state.add_turn_effect(TurnEffect::NoEnergyFromZoneToActive, 0);
+        assert!(!roar(&state, 0), "the lock makes the Active's Roar in Unison do nothing");
+        assert!(roar(&state, 1), "the lock covers the Active only");
+    }
 }

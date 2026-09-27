@@ -81,6 +81,8 @@ fn checkup_points_are_banked_for_the_outgoing_turn_owner() {
     );
 
     end_turn(&mut game, 0);
+    // The knocked-out player promotes before the turn advances (rules/09 promotion timing).
+    game.play_until_stable();
 
     let state = game.get_state_clone();
     assert_eq!(state.points[0], 1);
@@ -107,6 +109,8 @@ fn points_received_during_opponents_turn_do_not_replace_own_turn_history() {
     game.set_state(state);
 
     end_turn(&mut game, 0);
+    // The knocked-out player promotes before the turn advances (rules/09 promotion timing).
+    game.play_until_stable();
 
     let state = game.get_state_clone();
     assert_eq!(state.points[1], 1);

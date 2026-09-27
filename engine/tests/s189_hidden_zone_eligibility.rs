@@ -129,6 +129,25 @@ fn p3_poke_ball_empty_deck_is_not_offered() {
     );
 }
 
+/// rules/09 (Trainer audit, 2026-09-25): the A2b 111 printing has the same text and the same rule.
+#[test]
+fn p4_poke_ball_a2b_111_follows_the_same_empty_deck_rule() {
+    let mut game = base_game();
+    let mut state = game.get_state_clone();
+    state.hands[0] = vec![get_card_by_enum(CardId::A2b111PokeBall)];
+    state.decks[0].cards.clear();
+    game.set_state(state);
+    assert!(
+        !offered_play_ids(&game).iter().any(|id| id == "A2b 111"),
+        "a visibly empty deck makes the A2b 111 Poké Ball unplayable too"
+    );
+
+    let mut state = game.get_state_clone();
+    state.decks[0].cards = vec![get_card_by_enum(CardId::PA001Potion)];
+    game.set_state(state);
+    assert!(offered_play(&game, "A2b 111").is_some(), "a nonempty deck still allows it");
+}
+
 #[test]
 fn c1_copycat_is_offered_when_opponent_hand_is_empty() {
     let mut game = base_game();

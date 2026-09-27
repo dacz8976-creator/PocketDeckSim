@@ -18,6 +18,22 @@
 //!
 //! Findings come in two kinds. "RULE" means the rules page says the move or state is impossible. "CHECK" means
 //! it is unusual and needs a look (a card effect may allow it).
+//!
+//! Other pairings (B2e, rl/results/b2e_card_check_2026-09-26/README.md section 4):
+//!
+//!   legality_scan --pairs <pairings.tsv> --seed-base 21106000000 --games 500 [--root ..] [--pairings 0,48]
+//!
+//! `--pairs` plays exactly the rows of a tab-separated file whose header names at least pairing, held_key,
+//! held_file, opponent and panel_file, instead of the 28 table pairings (`--decks` is then refused). Each row
+//! plays held_file (the first-named deck, output `a` = held_key) against panel_file (the second-named deck,
+//! `b` = opponent) with the table's seat convention: even i = the held deck in seat 0. Deck paths are read
+//! relative to `--root` (default "..", the repo root when the scan runs from engine/ as usual; an absolute path
+//! is used as it is). `--seed-base` replaces 72,000,000 (seed = base + pairing x 10,000 + i); `--pairs` needs
+//! it, and a seed_first column, if the file has one, must equal base + pairing x 10,000. `--pairs` refuses
+//! `--games` above 10,000 (one pairing's sub-block); `--seed-base` and `--root` are refused without `--pairs`.
+//! In `--pairs` mode each `--games-out` line also carries a_file and b_file (the file's paths) and, for a game
+//! with findings, their codes and counts (findings) and each code's first example in that game
+//! (finding_examples). Without `--pairs` and `--seed-base` the scan runs exactly as before.
 
 use deckgym::actions::{Action, SimpleAction};
 use deckgym::models::{Card, EnergyType, PlayedCard, TrainerType};
@@ -336,6 +352,20 @@ struct HyperRay {
     noko_passed: u64,
 }
 
+/// The other Energy-discard attacks of the eight lists, counted the same way as Hyper Ray (the discard-attack
+/// census's list, rl/results/discard_attack_census_2026-09-25 on main): (title, damage, whether it may hit any of the
+/// opponent's Pokemon). "KO-able" = the damage is at least the HP left of the opponent's Active, or of any of the
+/// opponent's Pokemon for an attack that may hit any (Diving Icicles). Weakness and damage changes are not counted.
+const DISCARD_ATTACKS: [(&str, u32, bool); 3] =
+    [("Mega Burning", 120, false), ("Terminating Tail", 130, false), ("Diving Icicles", 130, true)];
+
+/// An activated Ability, by title: the owner's turns on which it was on offer, and those on which it was used.
+#[derive(Default, Clone, Copy)]
+struct AbilityTurns {
+    offered: u64,
+    used: u64,
+}
+
 /// Chase Order-style choices (an attack offering "discard one of your Benched Pokemon for more damage",
 /// SimpleAction::DiscardOwnBenchedThenDamage): how often the choice was offered, how often a Pokemon was
 /// discarded, and which.
@@ -361,29 +391,59 @@ struct GameResult {
     turns: u8,
     first_deck_score: f64,
     hyper_ray: HyperRay,
+    /// Mega Burning, Terminating Tail and Diving Icicles, as Hyper Ray.
+    discard_attacks: BTreeMap<String, HyperRay>,
+    /// Every activated Ability, by title.
+    abilities: BTreeMap<String, AbilityTurns>,
     chase_order: ChaseOrder,
+    /// Each deck's opening Active (card id), [first-named deck, second], read when turn 1 begins (koa's registration:
+    /// the table files carry the openings so the transitions can be read without replays).
+    openings: [String; 2],
     /// Fingerprint of every chosen move in order: distinct games have distinct fingerprints.
     fingerprint: u64,
+    /// Fingerprint of the choices only (moves picked from two or more legal options), in order. Forced steps an engine
+    /// repair adds or removes (a queued draw, a Checkup finish) change `fingerprint` but not this, so games whose play
+    /// is unchanged keep it.
+    decisions: u64,
     findings: Findings,
 }
 
-fn play_one(decks: &[Deck; 8], pairing: usize, i: u64, bot_a: &str, bot_b: &str) -> GameResult {
-    let pairs: Vec<(usize, usize)> = (0..8).flat_map(|a| (a + 1..8).map(move |b| (a, b))).collect();
-    let (a, b) = pairs[pairing];
-    let seed = SEED_BASE + pairing as u64 * 10_000 + i;
+/// The decks a run can play, by index, with the names its output uses, and its seed base. The table run holds
+/// the eight NAMES decks and SEED_BASE; a `--pairs` run holds two decks per row of the pairings file.
+struct Lineup {
+    decks: Vec<Deck>,
+    names: Vec<String>,
+    seed_base: u64,
+}
+
+/// One pairing: its number (which fixes its seeds), the Lineup indexes of its first- and second-named decks,
+/// and, for a `--pairs` row, the two deck paths as the pairings file gives them.
+struct Row {
+    pairing: usize,
+    a: usize,
+    b: usize,
+    files: Option<(String, String)>,
+}
+
+fn play_one(lineup: &Lineup, pairing: usize, (a, b): (usize, usize), i: u64, bot_a: &str, bot_b: &str) -> GameResult {
+    let seed = lineup.seed_base + pairing as u64 * 10_000 + i;
     let first_seat = if i % 2 == 0 { 0 } else { 1 };
     let (d0, d1) = if first_seat == 0 { (a, b) } else { (b, a) };
     let (code_a, code_b) = (parse_player_code(bot_a).unwrap(), parse_player_code(bot_b).unwrap());
     let codes = if first_seat == 0 { vec![code_a, code_b] } else { vec![code_b, code_a] };
-    let players = create_players(decks[d0].clone(), decks[d1].clone(), codes);
+    let players = create_players(lineup.decks[d0].clone(), lineup.decks[d1].clone(), codes);
     let mut game = Game::new(players, seed);
 
     let mut findings = Findings::default();
     let mut seen: BTreeMap<String, bool> = BTreeMap::new();
     let mut turn = Turn::default();
     let mut moves = DefaultHasher::new();
+    let mut decisions = DefaultHasher::new();
     let mut hyper_turns: BTreeMap<(usize, u8), HyperTurn> = BTreeMap::new();
+    let mut attack_turns: BTreeMap<(String, usize, u8), HyperTurn> = BTreeMap::new();
+    let mut ability_turns: BTreeMap<(String, usize, u8), (bool, bool)> = BTreeMap::new();
     let mut chase_order = ChaseOrder::default();
+    let mut openings: Option<[String; 2]> = None;
     let start = game.get_state_clone();
     let start_cards = [card_count(&start, 0), card_count(&start, 1)];
     let mut record = |findings: &mut Findings, list: Vec<(String, String)>, state: &State| {
@@ -396,7 +456,7 @@ fn play_one(decks: &[Deck; 8], pairing: usize, i: u64, bot_a: &str, bot_b: &str)
                 if e.len() < EXAMPLES_KEPT {
                     e.push(format!(
                         "{} v {}, seed {seed}, turn {}: {}",
-                        NAMES[d0], NAMES[d1], state.turn_count, detail.chars().take(160).collect::<String>()
+                        lineup.names[d0], lineup.names[d1], state.turn_count, detail.chars().take(160).collect::<String>()
                     ));
                 }
             }
@@ -405,6 +465,11 @@ fn play_one(decks: &[Deck; 8], pairing: usize, i: u64, bot_a: &str, bot_b: &str)
 
     while !game.is_game_over() {
         let before = game.get_state_clone();
+        if openings.is_none() && before.turn_count >= 1 {
+            let id = |seat: usize| before.maybe_get_active(seat).map_or(String::new(), |p| p.card.get_id());
+            let (first_named, second) = if first_seat == 0 { (0, 1) } else { (1, 0) };
+            openings = Some([id(first_named), id(second)]);
+        }
         if before.turn_count != turn.number {
             turn = Turn { number: before.turn_count, owner: before.current_player, ..Default::default() };
         }
@@ -413,6 +478,9 @@ fn play_one(decks: &[Deck; 8], pairing: usize, i: u64, bot_a: &str, bot_b: &str)
         record(&mut findings, offered, &before);
         let chosen = game.play_tick();
         format!("{:?}", chosen).hash(&mut moves);
+        if actions.len() > 1 {
+            format!("{:?}", chosen).hash(&mut decisions);
+        }
         if actions.iter().any(|a| matches!(a.action, SimpleAction::DiscardOwnBenchedThenDamage { .. })) {
             chase_order.offered += 1;
             if let SimpleAction::DiscardOwnBenchedThenDamage { in_play_idxs, .. } = &chosen.action {
@@ -431,6 +499,36 @@ fn play_one(decks: &[Deck; 8], pairing: usize, i: u64, bot_a: &str, bot_b: &str)
                 record.used_opp_hp = Some(opp_hp);
             } else if matches!(chosen.action, SimpleAction::EndTurn) {
                 record.declined_opp_hp = Some(opp_hp);
+            }
+        }
+        if before.turn_count > 0 {
+            for (title, _, any_target) in DISCARD_ATTACKS {
+                let is_it = |a: &SimpleAction| matches!(a, SimpleAction::Attack(x) if x.title == title);
+                if actions.iter().any(|a| is_it(&a.action)) {
+                    let hp = if any_target {
+                        before.enumerate_in_play_pokemon(1 - actor).map(|(_, p)| p.get_remaining_hp()).min()
+                    } else {
+                        before.in_play_pokemon[1 - actor][0].as_ref().map(|p| p.get_remaining_hp())
+                    };
+                    let record = attack_turns.entry((title.to_string(), actor, before.turn_count)).or_default();
+                    if is_it(&chosen.action) {
+                        record.used_opp_hp = Some(hp);
+                    } else if matches!(chosen.action, SimpleAction::EndTurn) {
+                        record.declined_opp_hp = Some(hp);
+                    }
+                }
+            }
+            for a in &actions {
+                if let SimpleAction::UseAbility { in_play_idx } = &a.action {
+                    let holder = before.in_play_pokemon[actor][*in_play_idx].as_ref();
+                    if let Some(Card::Pokemon(p)) = holder.map(|x| &x.card) {
+                        if let Some(ability) = &p.ability {
+                            let e = ability_turns.entry((ability.title.clone(), actor, before.turn_count)).or_default();
+                            e.0 = true;
+                            e.1 |= chosen.action == a.action;
+                        }
+                    }
+                }
             }
         }
         let after = game.get_state_clone();
@@ -455,6 +553,23 @@ fn play_one(decks: &[Deck; 8], pairing: usize, i: u64, bot_a: &str, bot_b: &str)
             if ko(hp) { hyper_ray.ko_passed += 1 } else { hyper_ray.noko_passed += 1 }
         }
     }
+    let mut discard_attacks: BTreeMap<String, HyperRay> = BTreeMap::new();
+    for ((title, _, _), record) in &attack_turns {
+        let damage = DISCARD_ATTACKS.iter().find(|(t, _, _)| t == title).map(|(_, d, _)| *d).unwrap_or(0);
+        let ko = |hp: &Option<u32>| hp.is_some_and(|h| h <= damage);
+        let s = discard_attacks.entry(title.clone()).or_default();
+        if let Some(hp) = &record.used_opp_hp {
+            if ko(hp) { s.ko_used += 1 } else { s.noko_used += 1 }
+        } else if let Some(hp) = &record.declined_opp_hp {
+            if ko(hp) { s.ko_passed += 1 } else { s.noko_passed += 1 }
+        }
+    }
+    let mut abilities: BTreeMap<String, AbilityTurns> = BTreeMap::new();
+    for ((title, _, _), (offered, used)) in &ability_turns {
+        let s = abilities.entry(title.clone()).or_default();
+        s.offered += *offered as u64;
+        s.used += *used as u64;
+    }
     GameResult {
         seed,
         first_seat,
@@ -463,14 +578,55 @@ fn play_one(decks: &[Deck; 8], pairing: usize, i: u64, bot_a: &str, bot_b: &str)
         turns: end.turn_count,
         first_deck_score,
         hyper_ray,
+        discard_attacks,
+        abilities,
         chase_order,
+        openings: openings.unwrap_or_default(),
         fingerprint: moves.finish(),
+        decisions: decisions.finish(),
         findings,
     }
 }
 
 fn arg(args: &[String], flag: &str) -> Option<String> {
     args.iter().position(|a| a == flag).and_then(|i| args.get(i + 1)).cloned()
+}
+
+/// Reads a `--pairs` file (see the header): two decks per row, held first, in the file's row order.
+fn read_pairs(path: &str, root: &str, seed_base: u64) -> (Lineup, Vec<Row>) {
+    let text = std::fs::read_to_string(path).unwrap_or_else(|e| panic!("pairs file {path}: {e}"));
+    let mut lines = text.trim_start_matches('\u{feff}').lines().filter(|l| !l.trim().is_empty());
+    let header: Vec<&str> = lines.next().expect("pairs file header").split('\t').map(str::trim).collect();
+    let col = |name: &str| header.iter().position(|h| *h == name);
+    let need = |name: &str| col(name).unwrap_or_else(|| panic!("pairs file {path} has no {name} column"));
+    let (c_pairing, c_held_key, c_held_file) = (need("pairing"), need("held_key"), need("held_file"));
+    let (c_opponent, c_panel_file, c_seed_first) = (need("opponent"), need("panel_file"), col("seed_first"));
+    let load = |file: &str| {
+        let full = std::path::Path::new(root).join(file);
+        let full = full.to_str().expect("deck path");
+        Deck::from_file(full).unwrap_or_else(|e| panic!("deck file {full}: {e}"))
+    };
+    let mut lineup = Lineup { decks: Vec::new(), names: Vec::new(), seed_base };
+    let mut rows = Vec::new();
+    let mut listed = HashSet::new();
+    for line in lines {
+        let f: Vec<&str> = line.split('\t').map(str::trim).collect();
+        assert!(f.len() >= header.len(), "pairs file {path}: short row {line:?}");
+        let pairing = f[c_pairing].parse::<usize>().unwrap_or_else(|e| panic!("pairs file {path}: pairing {:?}: {e}", f[c_pairing]));
+        assert!(listed.insert(pairing), "pairs file {path}: pairing {pairing} listed twice");
+        if let Some(c) = c_seed_first {
+            let want = seed_base + pairing as u64 * 10_000;
+            assert_eq!(f[c].parse::<u64>().ok(), Some(want), "pairing {pairing}: seed_first doesn't match --seed-base {seed_base}");
+        }
+        let a = lineup.decks.len();
+        lineup.decks.push(load(f[c_held_file]));
+        lineup.names.push(f[c_held_key].to_string());
+        lineup.decks.push(load(f[c_panel_file]));
+        lineup.names.push(f[c_opponent].to_string());
+        rows.push(Row { pairing, a, b: a + 1, files: Some((f[c_held_file].to_string(), f[c_panel_file].to_string())) });
+    }
+    assert!(!rows.is_empty(), "pairs file {path} lists no pairings");
+    (lineup, rows)
 }
 
 fn main() {
@@ -487,25 +643,48 @@ fn main() {
         // The jev bot calls a paid outside service; no scan or table run may use it (Dustin, Sept 24).
         assert!(!code.eq_ignore_ascii_case("jev"), "the jev bot calls a paid API and is not allowed here");
     }
+    let pairs_file = arg(&args, "--pairs");
+    let seed_base: u64 = arg(&args, "--seed-base").map(|x| x.parse().unwrap()).unwrap_or(SEED_BASE);
+    let root = arg(&args, "--root").unwrap_or_else(|| "..".into());
+    if pairs_file.is_some() {
+        assert!(arg(&args, "--seed-base").is_some(), "--pairs needs --seed-base (72,000,000 is the table's own block)");
+        assert!(arg(&args, "--decks").is_none(), "--pairs names its own deck files; --decks is for the table's 28");
+        assert!(games <= 10_000, "--pairs: a pairing's sub-block holds 10,000 seeds, so --games {games} is too many");
+    } else {
+        assert!(arg(&args, "--seed-base").is_none(), "--seed-base is only for --pairs (the table's base is 72,000,000)");
+        assert!(arg(&args, "--root").is_none(), "--root is only for --pairs");
+    }
     let mut games_out = arg(&args, "--games-out")
         .map(|path| std::io::BufWriter::new(std::fs::File::create(path).expect("games-out file")));
-    let decks: [Deck; 8] = NAMES.map(|n| Deck::from_file(&format!("{dir}/{n}.txt")).expect("deck file"));
-    let pairs: Vec<(usize, usize)> = (0..8).flat_map(|a| (a + 1..8).map(move |b| (a, b))).collect();
+    let (lineup, rows) = match &pairs_file {
+        None => {
+            let decks: Vec<Deck> = NAMES.iter().map(|n| Deck::from_file(&format!("{dir}/{n}.txt")).expect("deck file")).collect();
+            let pairs: Vec<(usize, usize)> = (0..8).flat_map(|a| (a + 1..8).map(move |b| (a, b))).collect();
+            let rows: Vec<Row> = pairs.into_iter().enumerate().map(|(pairing, (a, b))| Row { pairing, a, b, files: None }).collect();
+            (Lineup { decks, names: NAMES.iter().map(|n| n.to_string()).collect(), seed_base }, rows)
+        }
+        Some(path) => read_pairs(path, &root, seed_base),
+    };
 
     let bots = if bot_a == bot_b { format!("bot {bot_a}") } else { format!("bot {bot_a} (first-named deck) v {bot_b} (second)") };
     println!("{bots}, {games} table deals per pairing, rules checked against {RULES_SOURCE}");
+    if let Some(path) = &pairs_file {
+        println!("pairings from {path} ({} rows), seed base {seed_base}, deck paths relative to {root}", rows.len());
+    }
     let mut all = Findings::default();
-    for (p, (a, b)) in pairs.iter().enumerate() {
+    for row in &rows {
+        let (p, a, b) = (row.pairing, row.a, row.b);
         if only.as_ref().is_some_and(|o| !o.contains(&p)) {
             continue;
         }
-        let results: Vec<GameResult> = (0..games).into_par_iter().map(|i| play_one(&decks, p, i, &bot_a, &bot_b)).collect();
+        let results: Vec<GameResult> =
+            (0..games).into_par_iter().map(|i| play_one(&lineup, p, (a, b), i, &bot_a, &bot_b)).collect();
         let score: f64 = results.iter().map(|r| r.first_deck_score).sum::<f64>() / games as f64;
         let flagged = results.iter().filter(|r| !r.findings.count.is_empty()).count();
         let distinct = results.iter().map(|r| r.fingerprint).collect::<HashSet<_>>().len();
         println!(
             "{:>9} v {:<9} first deck {:5.1}%   distinct games {distinct} of {games}   games with findings: {flagged}",
-            NAMES[*a], NAMES[*b], 100.0 * score
+            lineup.names[a], lineup.names[b], 100.0 * score
         );
         let h = results.iter().fold(HyperRay::default(), |mut s, r| {
             s.ko_used += r.hyper_ray.ko_used;
@@ -520,6 +699,35 @@ fn main() {
                 "      Hyper Ray turns: KO-able used {} passed {} | not KO-able used {} passed {} ({pct:.0}% used)",
                 h.ko_used, h.ko_passed, h.noko_used, h.noko_passed
             );
+        }
+        for (title, _, _) in DISCARD_ATTACKS {
+            let h = results.iter().filter_map(|r| r.discard_attacks.get(title)).fold(HyperRay::default(), |mut s, x| {
+                s.ko_used += x.ko_used;
+                s.ko_passed += x.ko_passed;
+                s.noko_used += x.noko_used;
+                s.noko_passed += x.noko_passed;
+                s
+            });
+            if h.ko_used + h.ko_passed + h.noko_used + h.noko_passed > 0 {
+                let pct = 100.0 * h.noko_used as f64 / (h.noko_used + h.noko_passed).max(1) as f64;
+                println!(
+                    "      {title} turns: KO-able used {} passed {} | not KO-able used {} passed {} ({pct:.0}% used)",
+                    h.ko_used, h.ko_passed, h.noko_used, h.noko_passed
+                );
+            }
+        }
+        let mut ability_totals: BTreeMap<String, AbilityTurns> = BTreeMap::new();
+        for r in &results {
+            for (title, t) in &r.abilities {
+                let s = ability_totals.entry(title.clone()).or_default();
+                s.offered += t.offered;
+                s.used += t.used;
+            }
+        }
+        if !ability_totals.is_empty() {
+            let list: Vec<String> =
+                ability_totals.iter().map(|(title, t)| format!("{title} {} of {}", t.used, t.offered)).collect();
+            println!("      Ability turns (used of offered, by the deck that has it): {}", list.join(", "));
         }
         let chase = results.iter().fold(ChaseOrder::default(), |mut s, r| {
             s.offered += r.chase_order.offered;
@@ -541,17 +749,41 @@ fn main() {
             for (i, r) in results.iter().enumerate() {
                 let h = r.hyper_ray;
                 let mut line = serde_json::json!({
-                    "pairing": p, "a": NAMES[*a], "b": NAMES[*b], "i": i, "seed": r.seed,
+                    "pairing": p, "a": lineup.names[a], "b": lineup.names[b], "i": i, "seed": r.seed,
                     "bot_a": bot_a, "bot_b": bot_b, "first_seat": r.first_seat,
                     "winner_seat": r.winner_seat, "points": r.points, "turns": r.turns,
                     "first_deck_score": r.first_deck_score, "moves": format!("{:016x}", r.fingerprint),
+                    "openings": r.openings, "decisions": format!("{:016x}", r.decisions),
                 });
                 if h.ko_used + h.ko_passed + h.noko_used + h.noko_passed > 0 {
                     line["hyper_ray"] = serde_json::json!([h.ko_used, h.ko_passed, h.noko_used, h.noko_passed]);
                 }
+                if !r.discard_attacks.is_empty() {
+                    let m: BTreeMap<&String, [u64; 4]> = r
+                        .discard_attacks
+                        .iter()
+                        .map(|(t, h)| (t, [h.ko_used, h.ko_passed, h.noko_used, h.noko_passed]))
+                        .collect();
+                    line["discard_attacks"] = serde_json::json!(m);
+                }
+                if !r.abilities.is_empty() {
+                    let m: BTreeMap<&String, [u64; 2]> = r.abilities.iter().map(|(t, a)| (t, [a.offered, a.used])).collect();
+                    line["abilities"] = serde_json::json!(m);
+                }
                 if r.chase_order.offered > 0 {
                     line["chase_order"] = serde_json::json!({ "offered": r.chase_order.offered,
                         "discarded": r.chase_order.discarded, "names": r.chase_order.names });
+                }
+                if let Some((file_a, file_b)) = &row.files {
+                    line["a_file"] = serde_json::json!(file_a);
+                    line["b_file"] = serde_json::json!(file_b);
+                    if !r.findings.count.is_empty() {
+                        line["findings"] = serde_json::json!(r.findings.count);
+                        // Each code's first example in this game: the log keeps only four per code for the run.
+                        let first: BTreeMap<&String, &String> =
+                            r.findings.examples.iter().filter_map(|(code, e)| e.first().map(|x| (code, x))).collect();
+                        line["finding_examples"] = serde_json::json!(first);
+                    }
                 }
                 writeln!(out, "{line}").expect("write games-out");
             }

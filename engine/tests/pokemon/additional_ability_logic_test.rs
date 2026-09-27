@@ -217,6 +217,31 @@ fn test_entei_ex_legendary_pulse_draws_at_end_of_turn() {
     assert_eq!(state.hands[0][0].get_name(), "Bulbasaur");
 }
 
+/// rules/09 (confirmed in-game 2026-09-25, `pulse_hikingtrail_order.MP4`): Legendary Pulse draws first and Hiking
+/// Trail then tops the hand up to 3, so the Suicune ex player ends the turn on 3 cards, not 4.
+#[test]
+fn test_legendary_pulse_draws_before_hiking_trail_tops_up() {
+    let mut game = get_test_game_with_board(
+        vec![PlayedCard::from_id(CardId::A4a020SuicuneEx)],
+        vec![PlayedCard::from_id(CardId::A1001Bulbasaur)],
+    );
+    let mut state = game.get_state_clone();
+    state.hands[0].clear();
+    state.decks[0].cards = vec![get_card_by_enum(CardId::A1001Bulbasaur); 6];
+    state.active_stadium = Some(get_card_by_enum(CardId::B2b069HikingTrail));
+    game.set_state(state);
+
+    game.apply_action(&Action {
+        actor: 0,
+        action: SimpleAction::EndTurn,
+        is_stack: false,
+    });
+    game.play_until_stable();
+    let state = game.get_state_clone();
+    assert_eq!(state.hands[0].len(), 3, "Pulse draws 1, then Hiking Trail draws 2");
+    assert_eq!(state.decks[0].cards.len(), 3);
+}
+
 #[test]
 fn test_aegislash_cursed_metal_boosts_psychic_attack_damage() {
     let mut game = get_test_game_with_board(

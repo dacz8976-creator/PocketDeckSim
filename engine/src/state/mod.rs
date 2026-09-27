@@ -1077,6 +1077,11 @@ impl State {
         }
     }
 
+    /// The turn effects registered for `turn` (kpr looks ahead to the owner's next attack turn).
+    pub(crate) fn get_turn_effects(&self, turn: u8) -> Vec<TurnEffect> {
+        self.turn_effects.get(&turn).cloned().unwrap_or_default()
+    }
+
     /// Retrieves all effects scheduled for the current turn
     pub(crate) fn get_current_turn_effects(&self) -> Vec<TurnEffect> {
         self.turn_effects

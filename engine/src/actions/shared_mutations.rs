@@ -1,4 +1,5 @@
 use log::debug;
+use rand::seq::SliceRandom;
 use std::cmp::min;
 
 use crate::{
@@ -169,6 +170,15 @@ where
 
     for combo in draw_combinations {
         outcomes.push(Box::new(move |rng, state, _action| {
+            // The hand holds 10 cards: as with a draw, the cards that don't fit stay in the deck. Which of the
+            // random cards fit is random too (rules/09, laptop's Raticate/Manectric check: Clemont from a 10-card
+            // hand reached 11).
+            let room = 10usize.saturating_sub(state.hands[acting_player].len());
+            let mut combo = combo.clone();
+            if combo.len() > room {
+                combo.shuffle(rng);
+                combo.truncate(room);
+            }
             // Transfer each Pokemon from the combination to hand
             for pokemon in &combo {
                 state.transfer_card_from_deck_to_hand(acting_player, pokemon);

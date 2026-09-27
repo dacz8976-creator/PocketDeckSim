@@ -7,7 +7,9 @@ mod human_player;
 pub mod list_aware_player;
 pub mod public_pricing_player;
 pub mod jev_player;
+mod fuel_credit;
 mod mcts_player;
+mod opening_class;
 mod random_player;
 pub mod s42_probe;
 mod value_function_player;
@@ -155,6 +157,27 @@ pub enum PlayerCode {
     /// 'kd<N>' is 'kp<N>' with the damage-aware clock pricing the threat's damage to each victim through the
     /// victim's Weakness and persistent damage reductions (value_functions::public_clock_effect_kd_value_function).
     KD { max_depth: usize },
+    /// 'kpr<N>' is 'kp<N>' with each side's Active priced as it will stand at its next attack, with the Energy its
+    /// owner's public sources will have given it by then: in the Active online score, and in the damage-aware clock
+    /// (the faster of the clock with and without the projection) (value_functions::public_clock_effect_kpr_value_function).
+    KPR { max_depth: usize },
+    /// 'koa<N>' is 'kp<N>' with switch A of the opening-Active candidate (registered Sept 26,
+    /// rl/results/opening_active_census_2026-09-26/REGISTRATION.md): at setup, +250 for an Active whose Ability works
+    /// only from the Active Spot with its payoff confined to the owner's first turn, when its evolution is in the
+    /// owner's deck or hand (value_functions::public_clock_effect_koa_value_function). The adoption candidate.
+    KOA { max_depth: usize },
+    /// 'kob<N>': 'kp<N>' with switch B only (-250 at setup for a Bench-working Active Ability). Diagnostic, mixed rows
+    /// only; not registered for adoption.
+    KOB { max_depth: usize },
+    /// 'kor<N>': 'kp<N>' with switch R only (-100 at setup per Energy of the Active's cheapest own attack).
+    /// Diagnostic, mixed rows only; not registered for adoption.
+    KOR { max_depth: usize },
+    /// 'kpf<N>' is 'kp<N>' with kpr's projection (part R, exactly as kpr builds it) and a discard-Energy credit for a
+    /// side that can pull that Energy back (part F), registered Sept 26 (rl/results/kpf_2026-09-26/REGISTRATION.md;
+    /// value_functions::public_clock_effect_kpf_value_function).
+    KPF { max_depth: usize },
+    /// 'kpg<N>': 'kp<N>' with part F only. Diagnostic, never adopted.
+    KPG { max_depth: usize },
 }
 /// Custom parser function enforcing case-insensitivity
 pub fn parse_player_code(s: &str) -> Result<PlayerCode, String> {
@@ -207,6 +230,26 @@ pub fn parse_player_code(s: &str) -> Result<PlayerCode, String> {
             "Invalid player code: {s}. Use 't<number>', e.g. 't3'"
         ));
     }
+    // 'kpf<N>' and 'kpg<N>' (see PlayerCode::KPF). Before 'kp<N>' and 'k<N>', which would reject them.
+    for (prefix, code) in [
+        ("kpf", (|max_depth| PlayerCode::KPF { max_depth }) as fn(usize) -> PlayerCode),
+        ("kpg", |max_depth| PlayerCode::KPG { max_depth }),
+    ] {
+        if let Some(depth) = lower.strip_prefix(prefix) {
+            if let Ok(max_depth) = depth.parse::<usize>() {
+                return Ok(code(max_depth));
+            }
+            return Err(format!("Invalid player code: {s}. Use '{prefix}<number>', e.g. '{prefix}3'"));
+        }
+    }
+    // 'kpr<N>' = 'kp<N>' with projected readiness (see PlayerCode::KPR). Before 'kp<N>' and 'k<N>', which
+    // would reject it.
+    if let Some(depth) = lower.strip_prefix("kpr") {
+        if let Ok(max_depth) = depth.parse::<usize>() {
+            return Ok(PlayerCode::KPR { max_depth });
+        }
+        return Err(format!("Invalid player code: {s}. Use 'kpr<number>', e.g. 'kpr3'"));
+    }
     // B1'. 'kp<N>' = 'k<N>' with public pricing (see PlayerCode::KP). Before 'k<N>', which would
     // reject it.
     if let Some(depth) = lower.strip_prefix("kp") {
@@ -222,6 +265,21 @@ pub fn parse_player_code(s: &str) -> Result<PlayerCode, String> {
             return Ok(PlayerCode::KQ { max_depth });
         }
         return Err(format!("Invalid player code: {s}. Use 'kq<number>', e.g. 'kq3'"));
+    }
+    // 'koa<N>', 'kob<N>', 'kor<N>': the opening-Active switches (see PlayerCode::KOA). Before 'k<N>', which would
+    // reject them. There is no bare 'ko' code; if one is ever added, parse these three before it.
+    let opening_codes: [(&str, fn(usize) -> PlayerCode); 3] = [
+        ("koa", |max_depth| PlayerCode::KOA { max_depth }),
+        ("kob", |max_depth| PlayerCode::KOB { max_depth }),
+        ("kor", |max_depth| PlayerCode::KOR { max_depth }),
+    ];
+    for (prefix, code) in opening_codes {
+        if let Some(depth) = lower.strip_prefix(prefix) {
+            if let Ok(max_depth) = depth.parse::<usize>() {
+                return Ok(code(max_depth));
+            }
+            return Err(format!("Invalid player code: {s}. Use '{prefix}<number>', e.g. '{prefix}3'"));
+        }
     }
     // 'kd<N>' = 'kp<N>' with the kd clock (see PlayerCode::KD). Before 'k<N>', which would reject it.
     if let Some(depth) = lower.strip_prefix("kd") {
@@ -534,6 +592,43 @@ fn get_player(deck: Deck, opponent_deck: &Deck, player: &PlayerCode) -> Box<dyn 
                 soft_opponent: false,
             },
         }),
+        // The KP arm with the kpr value function in place of k's; nothing else differs.
+        PlayerCode::KPR { max_depth } => Box::new(PublicPricingPlayer {
+            search: ExpectiMiniMaxPlayer {
+                deck,
+                max_depth: *max_depth,
+                write_debug_trees: false,
+                value_function: Box::new(value_functions::public_clock_effect_kpr_value_function),
+                opponent_ply: 0,
+                consistent_horizon: false,
+                soft_opponent: false,
+            },
+        }),
+        // The KP arm with an opening-Active value function in place of k's; nothing else differs.
+        PlayerCode::KOA { max_depth }
+        | PlayerCode::KOB { max_depth }
+        | PlayerCode::KOR { max_depth }
+        | PlayerCode::KPF { max_depth }
+        | PlayerCode::KPG { max_depth } => {
+            let value_function: expectiminimax_player::ValueFunction = match player {
+                PlayerCode::KOA { .. } => Box::new(value_functions::public_clock_effect_koa_value_function),
+                PlayerCode::KOB { .. } => Box::new(value_functions::public_clock_effect_kob_value_function),
+                PlayerCode::KPF { .. } => Box::new(value_functions::public_clock_effect_kpf_value_function),
+                PlayerCode::KPG { .. } => Box::new(value_functions::public_clock_effect_kpg_value_function),
+                _ => Box::new(value_functions::public_clock_effect_kor_value_function),
+            };
+            Box::new(PublicPricingPlayer {
+                search: ExpectiMiniMaxPlayer {
+                    deck,
+                    max_depth: *max_depth,
+                    write_debug_trees: false,
+                    value_function,
+                    opponent_ply: 0,
+                    consistent_horizon: false,
+                    soft_opponent: false,
+                },
+            })
+        }
     }
 }
 
@@ -640,6 +735,32 @@ mod s42_tier_parse_tests {
         assert_eq!(parse_player_code("k3").unwrap(), PlayerCode::K { max_depth: 3 });
         assert!(parse_player_code("kd").is_err());
         assert!(parse_player_code("kdx").is_err());
+        // kpr: 'kpr<N>', and 'kp<N>' is unchanged.
+        assert_eq!(parse_player_code("kpr3").unwrap(), PlayerCode::KPR { max_depth: 3 });
+        assert_eq!(parse_player_code("KPR5").unwrap(), PlayerCode::KPR { max_depth: 5 });
+        assert_eq!(parse_player_code("kp3").unwrap(), PlayerCode::KP { max_depth: 3 });
+        assert!(parse_player_code("kpr").is_err());
+        assert!(parse_player_code("kprx").is_err());
+        // koa, kob, kor: parsed before 'k<N>'; 'kp<N>' and 'k<N>' are unchanged.
+        assert_eq!(parse_player_code("koa3").unwrap(), PlayerCode::KOA { max_depth: 3 });
+        assert_eq!(parse_player_code("KOA5").unwrap(), PlayerCode::KOA { max_depth: 5 });
+        assert_eq!(parse_player_code("kob3").unwrap(), PlayerCode::KOB { max_depth: 3 });
+        assert_eq!(parse_player_code("kor3").unwrap(), PlayerCode::KOR { max_depth: 3 });
+        assert_eq!(parse_player_code("kp3").unwrap(), PlayerCode::KP { max_depth: 3 });
+        assert_eq!(parse_player_code("k3").unwrap(), PlayerCode::K { max_depth: 3 });
+        assert!(parse_player_code("koa").is_err());
+        assert!(parse_player_code("koax").is_err());
+        assert!(parse_player_code("ko3").is_err());
+        // kpf, kpg: parsed before 'kp<N>'; kpr, kp and the §117 'g<N>' are unchanged.
+        assert_eq!(parse_player_code("kpf3").unwrap(), PlayerCode::KPF { max_depth: 3 });
+        assert_eq!(parse_player_code("KPF5").unwrap(), PlayerCode::KPF { max_depth: 5 });
+        assert_eq!(parse_player_code("kpg3").unwrap(), PlayerCode::KPG { max_depth: 3 });
+        assert_eq!(parse_player_code("kpr3").unwrap(), PlayerCode::KPR { max_depth: 3 });
+        assert_eq!(parse_player_code("kp3").unwrap(), PlayerCode::KP { max_depth: 3 });
+        assert_eq!(parse_player_code("g3").unwrap(), PlayerCode::G { max_depth: 3 });
+        assert!(parse_player_code("kpf").is_err());
+        assert!(parse_player_code("kpfx").is_err());
+        assert!(parse_player_code("kpg").is_err());
         // §115: 'd<N>' must parse and must not shadow anything earlier.
         assert_eq!(
             parse_player_code("d3").unwrap(),
