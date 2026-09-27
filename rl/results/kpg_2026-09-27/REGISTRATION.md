@@ -50,6 +50,7 @@ Dustin, Sept 27: "kpg: yes, register it as a candidate. F alone takes real error
 - **What it needs:** size as well as direction. On the post-freeze events alone, kpg's τ̂ margin over kp3 must be at least half its development margin (+1.47, so at least +0.74), with its own 90% interval above zero. The pooled figure and the sign are reported beside it.
 - **Data:** a pull of post-freeze Limitless events by the same method and parsing as scoreboard v2's development half, over the 45 cells. There are few events so far, so confirmation waits until they are enough to fill the cells. When to pull is Dustin's call.
 - **If it confirms:** kpg becomes the pilot for the table and the screen together (the reserve route's (e): one pilot). kpf is then read as "R on top of kpg".
+- **Dustin's ruling, Sept 27: combine with koa.** The target is one pilot, kp3 + koa's opening (switch A) + kpg's discard credit. It is reached by a composition check of the two components, once kpg's held-out check is in (RUN5 "Composing candidates into one pilot"). Each component keeps its own verdict and evidence.
 
 ## 6. What would refute it
 

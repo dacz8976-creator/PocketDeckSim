@@ -1,0 +1,28 @@
+ M rl/results/koa_2026-09-26/reading/read_koa.py
+?? rl/results/koa_2026-09-26/reading/READING_numbers.txt
+?? rl/results/koa_2026-09-26/reading/STATUS.txt
+?? rl/results/koa_2026-09-26/reading/b2e_koa3.jsonl
+?? rl/results/koa_2026-09-26/reading/b2e_koa3.txt
+?? rl/results/koa_2026-09-26/reading/diag.log
+?? rl/results/koa_2026-09-26/reading/mixed_koa3_first.jsonl
+?? rl/results/koa_2026-09-26/reading/mixed_koa3_first.txt
+?? rl/results/koa_2026-09-26/reading/mixed_koa3_second.jsonl
+?? rl/results/koa_2026-09-26/reading/mixed_koa3_second.txt
+?? rl/results/koa_2026-09-26/reading/mixed_kob3_first.jsonl
+?? rl/results/koa_2026-09-26/reading/mixed_kob3_first.txt
+?? rl/results/koa_2026-09-26/reading/mixed_kob3_second.jsonl
+?? rl/results/koa_2026-09-26/reading/mixed_kob3_second.txt
+?? rl/results/koa_2026-09-26/reading/mixed_kor3_first.jsonl
+?? rl/results/koa_2026-09-26/reading/mixed_kor3_first.txt
+?? rl/results/koa_2026-09-26/reading/mixed_kor3_second.jsonl
+?? rl/results/koa_2026-09-26/reading/mixed_kor3_second.txt
+?? rl/results/koa_2026-09-26/reading/run.log
+?? rl/results/koa_2026-09-26/reading/run_diagnostic_rows.sh
+?? rl/results/koa_2026-09-26/reading/score28_koa3_vs_kp3.txt
+?? rl/results/koa_2026-09-26/reading/second_read_scratch/
+---- last commits
+4e48fb1 2026-09-27 10:19:00 -0500 The repaired engine is official (Dustin, Sept 27): rl/engine-2026-09-27 (main-83e17ae; deckgym 27626eb5, legality_scan e6ab9a9d, goldfish f851058e); identity k3 and kp3 14,000 of 14,000 against the repaired references and kpf's runs; manifest, CLAUDE.md, START_HERE point at it; frozen table = scoreboard v3 (45 cells, k3 15.3 / kp3 15.5 dev); kpf read: real error 12.5 v kp3 15.5, dMSE -84.2 [-149.9, -21.3], vetoes count (not adopted, provisional), held-out closer 5 of 6, kpg3 (F alone) passes with no veto
+---- HEAD
+8e6375b 2026-09-27 10:35:35 -0500 koa footprint, read first (registration section 7): 848 of 14,000 table games differ from kp3 = 6.06% (predicted 6.0%), all in Altaria pairings; route fixed: RESERVE; koa3 at the official build replays the cloud 9af40c8 identity 1,120/1,120
+01f7847 2026-09-27 10:28:53 -0500 kpg registered as a pilot candidate (Dustin, Sept 27), before its held-out games: kp + the list-free discard-Energy credit alone; the 45-cell reading (15.5 -> 14.0, no veto) disclosed as development evidence; held-out B2e check and post-Sept-24 confirmation decide
+4baf1c6 2026-09-27 10:19:58 -0500 kpf traces and hoarding check: R makes Rayquaza attack (Mega Burst 141/155 v kp3 97/159), F makes it use Rainbow Cave (50%/57% v 17%/33%); retreats flat, recoveries up: no hoarding; Rayquaza v Lucario 110/200 v real 64-73%

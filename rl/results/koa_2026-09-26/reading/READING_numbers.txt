@@ -1,0 +1,50 @@
+0. koa3 at the official build v the cloud's koa3 at 9af40c8: 1120 of 1120 games equal on ['moves', 'winner_seat', 'points', 'seed']
+1. footprint: 848 of 14000 table games differ from kp3 = 6.1% (predicted 6.0%); route: RESERVE (under 15%)
+   per pairing with any difference: altaria v blaziken 109, altaria v hydreigon 124, altaria v lucario 123, altaria v sceptile 131, altaria v suicune 116, altaria v vespiquen 122, altaria v weezing 123
+   pairings without Altaria that differ: 0 (registration section 4: they are identities)
+   LEAK TEST (section 8): changed games with both openings unchanged: 0 -> none
+   Altaria's opening transitions in changed games (kp3 -> koa3): B2b 040->B1 184 519, B1 196->B1 184 329
+2. (b) score.py, 28 table cells, rules v2 (full output: score28_koa3_vs_kp3.txt):
+   kp3: real error  8.7 | reported only: correlation 0.70, average miss 9.1, favorite right 20/28, clear 12/15, beyond chance 7
+   koa3: real error  8.7 | reported only: correlation 0.70, average miss 9.1, favorite right 20/28, clear 11/15, beyond chance 8
+   dMSE new - current: +0.2 points^2, 95% interval -8.6 to +8.8 (not below 0) [Limitless side binomial]
+   dMSE, Limitless side resampled by event: 95% interval -8.6 to +8.4 (not below 0; 0 of 4000 event draws redrawn because a cell had no match)
+   real error, current minus new: -0.01 points, 90% interval -0.32 to +0.31 (margin rule: E = 3; 'current' is the cheap bot when comparing variants)
+   cell veto (miss grows > 6): none
+   deck veto (gap grows > 2): none
+   ADOPTION RULE (v2): do not adopt (dMSE interval not below 0) (held-out-deck veto checked separately)
+   kp3: real error  8.9 | reported only: correlation 0.70, average miss 9.4, favorite right 19/27, clear 12/15, beyond chance 7
+   koa3: real error  8.9 | reported only: correlation 0.69, average miss 9.3, favorite right 19/27, clear 11/15, beyond chance 8
+   dMSE new - current: +0.0 points^2, 95% interval -8.6 to +8.4 (not below 0) [Limitless side binomial]
+   dMSE, Limitless side resampled by event: 95% interval -8.6 to +8.1 (not below 0; 0 of 4000 event draws redrawn because a cell had no match)
+   real error, current minus new: -0.00 points, 90% interval -0.31 to +0.30 (margin rule: E = 3; 'current' is the cheap bot when comparing variants)
+   cell veto (miss grows > 6): none
+   deck veto (gap grows > 2): none
+   ADOPTION RULE (v2): do not adopt (dMSE interval not below 0) (held-out-deck veto checked separately)
+   Altaria's seven Limitless cells, before (kp3) and after (koa3), v2 development half:
+     altaria v blaziken: kp3 58.0 -> koa3 59.2; Limitless 76.5 (n 34)
+     altaria v hydreigon: kp3 47.2 -> koa3 49.8; Limitless 54.5 (n 56)
+     altaria v lucario: kp3 62.0 -> koa3 64.0; Limitless 72.4 (n 161)
+     altaria v sceptile: kp3 43.6 -> koa3 48.0; Limitless 45.4 (n 108)
+     altaria v suicune: kp3 48.4 -> koa3 50.8; Limitless 56.2 (n 65)
+     altaria v vespiquen: kp3 47.4 -> koa3 52.0; Limitless 37.6 (n 93)
+     altaria v weezing: kp3 37.6 -> koa3 40.3; Limitless 33.0 (n 47)
+3. (c) Altaria's own side (koa on Altaria, 7 rows, 3500 deals): +2.84 +/- 0.99 points (NOT worse beyond noise)
+   opponents' rows (koa on the opponent): change +0.00 +/- 0.00; games identical to kp3's: 3500 of 3500
+4. (d) Altaria's own side above zero beyond paired noise: YES (+2.84 +/- 0.99)
+     altaria v blaziken: +1.20 +/- 2.15
+     altaria v hydreigon: +2.60 +/- 2.62
+     altaria v lucario: +2.00 +/- 2.54   (refutation check: predicted +5.5)
+     altaria v sceptile: +4.40 +/- 2.63
+     altaria v suicune: +2.40 +/- 2.71
+     altaria v vespiquen: +4.60 +/- 2.88
+     altaria v weezing: +2.70 +/- 2.69
+5. held-out (B2e archetypes, Limitless pooled):
+     charizardy_entei: kp3 44.0 -> koa3 43.4; L 49.2; further by +0.7
+     garchomp: kp3 21.2 -> koa3 21.0; L 32.5; further by +0.2
+     hoopa_absol: kp3 57.2 -> koa3 57.0; L 50.0; further by -0.1
+     manectric: kp3 63.9 -> koa3 63.0; L 49.2; further by -0.9
+     raticate: kp3 57.6 -> koa3 57.1; L 41.2; further by -0.5
+     whimsicott: kp3 36.3 -> koa3 35.5; L 32.3; further by -0.8
+6. diagnostic kob3: Altaria's own side +1.29 +/- 0.98 (3500 deals)
+6. diagnostic kor3: Altaria's own side +1.29 +/- 0.98 (3500 deals)

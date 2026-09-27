@@ -40,6 +40,13 @@ questions #19–#28 came from the full engine audit (`07_engine_audit_2026-09-22
 
 ## Medium impact
 
+**Blessed Salt when Poison or Burn takes a Pokémon to 0 at Checkup — OPEN (added 2026-09-27). The engine and Dustin disagree.**
+- **The engine:** knockouts are checked only after every Checkup effect has finished (`actions/apply_action_helpers.rs` 340-342, with a comment saying so). Blessed Salt's 10 therefore heals first, and a Pokémon taken to exactly 0 by Poison survives at 10.
+- **Dustin (2026-09-27), "pretty sure":** "Once you reach 0 hp you are knocked out and salt would heal after knock out. Unless the heal happens before the poison."
+- **Footage:** the Sept 25 frame check (`rl/results/recordings_check_2026-09-25/video_frame_checks.md` §5) saw the order Poison, Burn and its coin, then each Garganacl's heal, but never a Pokémon at 0.
+- **Reach:** only decks with Garganacl's Blessed Salt; no table deck has it.
+- **Status:** repair only on a real-game disagreement (footage of a Poisoned or Burned Pokémon reaching 0 with Blessed Salt in play), with a failing test first. Shot list item "Blessed Salt when Poison takes a Pokémon to 0".
+
 **6. Opening hand: how the other four cards are drawn — SETTLED 2026-09-22 [COMMUNITY-TESTED + OBSERVED T1]; the `unified1` engine does it wrong.**
 - Settled before: at least one Basic is guaranteed, every time (Dustin: a deck with a single Basic always opens with it).
 - New: two independent statistical studies on real games. machapin (Qiita, 2,000 automated games, v1.2.5) tested (1) "one Basic first, then 4 random", (2) "redeal until a Basic appears", (3) "deal 5; if no Basic, swap one card for a Basic". Model 3 fits both test decks (p = 0.18 and 0.91). Models 1 and 2 are rejected; Model 1 at p ≈ 10⁻³⁰ (2-Basic deck: both Basics 6.2% observed vs 21.1% under Model 1). Davoi (Qiita, 120 games) saw 8%, also ruling out Model 1.

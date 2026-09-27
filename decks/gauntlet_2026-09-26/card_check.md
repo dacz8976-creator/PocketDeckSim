@@ -164,6 +164,7 @@ different printing from the checked Riolu B3 079.
 
 - **R1: answered from footage on Sept 26. It goes to the discard pile, as in the engine** (`video_frame_checks.md` §6). The original question: use Rainbow Cave, then check the discard pile's Energy count. This
   affects how far Rayquaza's (and Charizard Y's) results can be trusted.
-- **R4: whether Rainbow Cave can be used after the turn's Energy is attached.** One review note says yes (battle
+- **R4: answered by Dustin on Sept 27. No, it can't be used after the turn's Energy is attached, which matches the engine** (video to follow). The original question: whether Rainbow Cave can be used after the turn's Energy is attached.
+- **R2: answered by Dustin on Sept 27. Yes, Sada is playable with fewer than 3 types in the pile:** one Energy of each type, up to 3 (`rules/04`), as the engine does. The question as first written follows. One review note says yes (battle
   015702, turn 16, around 225-228 s). A frame check would settle it.
 - **R2: whether Professor Sada can be played with fewer than 3 Energy types in the discard pile.**

@@ -1,0 +1,17 @@
+8e6375b 2026-09-27 10:35:35 -0500 koa footprint, read first (registration section 7): 848 of 14,000 table games differ from kp3 = 6.06% (predicted 6.0%), all in Altaria pairings; route fixed: RESERVE; koa3 at the official build replays the cloud 9af40c8 identity 1,120/1,120
+---- 8e6375b
+8e6375b 2026-09-27 10:35:35 -0500 koa footprint, read first (registration section 7): 848 of 14,000 table games differ from kp3 = 6.06% (predicted 6.0%), all in Altaria pairings; route fixed: RESERVE; koa3 at the official build replays the cloud 9af40c8 identity 1,120/1,120
+
+ rl/results/koa_2026-09-26/reading/footprint.py     |    26 +
+ rl/results/koa_2026-09-26/reading/footprint.txt    |     5 +
+ rl/results/koa_2026-09-26/reading/read_koa.py      |   133 +
+ .../koa_2026-09-26/reading/run_koa_reading.sh      |    36 +
+ rl/results/koa_2026-09-26/reading/table_koa3.jsonl | 14000 +++++++++++++++++++
+ rl/results/koa_2026-09-26/reading/table_koa3.txt   |    85 +
+ 6 files changed, 14285 insertions(+)
+---- files added per commit
+footprint.txt: 8e6375b 2026-09-27 10:35:35 -0500
+READING_numbers.txt: 
+score28_koa3_vs_kp3.txt: 
+mixed_koa3_first.jsonl: 
+b2e_koa3.jsonl: 

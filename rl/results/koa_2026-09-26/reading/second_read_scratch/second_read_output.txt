@@ -1,0 +1,106 @@
+files: table_koa3 14000 games; kpf table_kp3 14000 games
+bots in table_koa3: Counter({('koa3', 'koa3'): 14000})
+bots in table_kp3: Counter({('kp3', 'kp3'): 14000})
+keys identical: True | pairings [0, 1, 2] ... 27 | i range 0 499
+seed mismatches (vs kp3 file or vs 72,000,000 + p*10,000 + i): 0
+first_seat mismatches (vs kp3, vs even-i = seat 0): 0
+
+== 0a. kp3 reference check: kpf table_kp3 v other kp3 files at the repaired engine
+   kpf table_kp3 v koa build 9af40c8 identity_kp3_500: 14000 common; all fields equal 14000; per field {'moves': 14000, 'decisions': 14000, 'winner_seat': 14000, 'points': 14000, 'openings': 14000, 'seed': 14000}
+   kpf table_kp3 v official 83e17ae pin_identity_kp3_500: 14000 common; all fields equal 14000; per field {'moves': 14000, 'decisions': 14000, 'winner_seat': 14000, 'points': 14000, 'openings': 14000, 'seed': 14000}
+
+== 1. koa3 at the official build (table_koa3) v the cloud's identity_koa3_40 (9af40c8)
+   identity_koa3_40: 1120 games; pairings 28; i < 40; bots Counter({('koa3', 'koa3'): 1120})
+   common 1120; all fields equal in 1120; per field {'moves': 1120, 'decisions': 1120, 'winner_seat': 1120, 'points': 1120, 'first_deck_score': 1120, 'openings': 1120, 'seed': 1120, 'first_seat': 1120, 'a': 1120, 'b': 1120}
+   identity keys missing from table_koa3: 0
+
+== 2. footprint: table_koa3 v table_kp3, same deals
+   moves differ: 848 of 14000 = 6.057%
+   decisions differ: 848; any play/result field differs: 848; winner/points differ: 647; deck-a score differs: 314
+   15% trigger = 2100 games -> route: RESERVE
+   by pairing (changed / 500):
+      0 altaria v blaziken       109
+      1 altaria v hydreigon      124
+      2 altaria v lucario        123
+      3 altaria v sceptile       131
+      4 altaria v suicune        116
+      5 altaria v vespiquen      122
+      6 altaria v weezing        123
+   non-Altaria pairings with any moves difference: []
+   Altaria pairings: [0, 1, 2, 3, 4, 5, 6]; Altaria is deck a in all: True
+
+== 3. leak test (section 8) and opening transitions
+   games with an opening changed: 848
+   games that differ in any field with both openings unchanged (LEAK): 0 []
+   games with an opening changed but identical moves hash (should be 0): 0
+   decks whose opening changed: {'altaria': 848}
+     altaria: B2b 040 -> B1 184: 519 (14.83% of Altaria's 3,500 games)
+     altaria: B1 196 -> B1 184: 329 (9.40% of Altaria's 3,500 games)
+   Altaria's changed-opening share: 848 / 3500 = 24.23% (registered range 22.6 to 25.4) -> inside
+   Altaria openings under kp3 (3500): Counter({'B2b 040': 1307, 'A4a 059': 899, 'B1 196': 802, 'B1 184': 492})
+   Altaria openings under koa3 (3500): Counter({'B1 184': 1340, 'A4a 059': 899, 'B2b 040': 788, 'B1 196': 473})
+   changed-opening games with a changed deck-a score: 314
+
+== table cells (deck a's score, %), kp3 -> koa3, Altaria's pairings
+     altaria v blaziken       kp3 58.0 -> koa3 59.2 (n 500/500); change +1.2
+     altaria v hydreigon      kp3 47.2 -> koa3 49.8 (n 500/500); change +2.6
+     altaria v lucario        kp3 62.0 -> koa3 64.0 (n 500/500); change +2.0
+     altaria v sceptile       kp3 43.6 -> koa3 48.0 (n 500/500); change +4.4
+     altaria v suicune        kp3 48.4 -> koa3 50.8 (n 500/500); change +2.4
+     altaria v vespiquen      kp3 47.4 -> koa3 52.0 (n 500/500); change +4.6
+     altaria v weezing        kp3 37.6 -> koa3 40.3 (n 500/500); change +2.7
+   non-Altaria cells whose score moved: []
+
+== 4. mixed rows
+   mixed_koa3_first: 3500 games, bots Counter({('koa3', 'kp3'): 3500}), pairings [0, 1, 2, 3, 4, 5, 6]
+   mixed_koa3_second: 3500 games, bots Counter({('kp3', 'koa3'): 3500}), pairings [0, 1, 2, 3, 4, 5, 6]
+   first: seeds differing from kp3's table on the same key: 0; keys missing from kp3 table: 0
+   second: seeds differing from kp3's table on the same key: 0; keys missing from kp3 table: 0
+   opponents' rows (koa3 on the opponent): 3500 games; identical to kp3's table on every play/result field: 3500; per field {'moves': 3500, 'decisions': 3500, 'winner_seat': 3500, 'points': 3500, 'first_deck_score': 3500, 'openings': 3500, 'seed': 3500, 'first_seat': 3500}
+   opponents' own-side change per cell: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+   mixed first: openings changed 848; games differing from kp3 848; differ with openings unchanged (leak) 0; opponent's opening changed 0
+   mixed first v table_koa3 (koa3 on both sides) on pairings 0-6: 3500 common; all equal 3500; per field {'moves': 3500, 'decisions': 3500, 'winner_seat': 3500, 'points': 3500, 'first_deck_score': 3500, 'openings': 3500, 'seed': 3500}
+   Altaria's own side: mixed_koa3_first minus kp3's table, same deals (points per game)
+     altaria v blaziken       +1.20 +/- 2.15 (n 500; ddof0 +/- 2.14; nonzero deals 30; wins gained 18, lost 12)
+     altaria v hydreigon      +2.60 +/- 2.62 (n 500; ddof0 +/- 2.62; nonzero deals 45; wins gained 29, lost 16)
+     altaria v lucario        +2.00 +/- 2.54 (n 500; ddof0 +/- 2.53; nonzero deals 42; wins gained 26, lost 16)
+     altaria v sceptile       +4.40 +/- 2.63 (n 500; ddof0 +/- 2.63; nonzero deals 46; wins gained 34, lost 12)
+     altaria v suicune        +2.40 +/- 2.71 (n 500; ddof0 +/- 2.71; nonzero deals 48; wins gained 30, lost 18)
+     altaria v vespiquen      +4.60 +/- 2.88 (n 500; ddof0 +/- 2.88; nonzero deals 55; wins gained 39, lost 16)
+     altaria v weezing        +2.70 +/- 2.69 (n 500; ddof0 +/- 2.68; nonzero deals 48; wins gained 31, lost 17)
+   POOLED (stratified mean of 7 cell means): +2.843 +/- 0.987 -> lower bound +1.856; above zero beyond noise
+   (unstratified check: +2.843 +/- 0.987 over 3500 deals)
+   decision set (6 cells, Sceptile quarantined): +2.583 +/- 1.064
+
+== diagnostics (reported only; not part of koa's decision)
+   kob3 Altaria own side pooled: +1.286 +/- 0.982
+   kob3 second (on Altaria's opponents): 3500 games, identical to kp3's table 3320 (per field {'moves': 3320, 'decisions': 3320, 'winner_seat': 3462, 'points': 3417, 'openings': 3320})
+   kob3 Altaria transitions: {('B2b 040', 'B1 184'): 333, ('B2b 040', 'B1 196'): 519}
+   kor3 Altaria own side pooled: +1.286 +/- 0.982
+   kor3 second (on Altaria's opponents): 3500 games, identical to kp3's table 3271 (per field {'moves': 3271, 'decisions': 3271, 'winner_seat': 3430, 'points': 3355, 'openings': 3271})
+   kor3 Altaria transitions: {('B2b 040', 'B1 184'): 333, ('B2b 040', 'B1 196'): 519}
+   kob3_first v kor3_first: 3500 common; identical 3500 (per field {'moves': 3500, 'decisions': 3500, 'winner_seat': 3500, 'points': 3500, 'openings': 3500})
+
+== 6. held-out check, B2e pairings 0-47
+   b2e_koa3: 24000 games, pairings 0-47, bots Counter({('koa3', 'koa3'): 24000})
+   b2e_kp3 (kpf reading): 48000 games, pairings 0-95, bots Counter({('kp3', 'kp3'): 48000})
+   koa3 keys 0-47: 24000; present in kp3 file: 24000
+   seed mismatches (vs kp3, vs tsv seed_first + i): 0
+   deck-name mismatches with the tsv: 0
+   B2e games differing from kp3: 695; openings changed 695; differ with openings unchanged (leak) 0
+   B2e opening changes by side: held deck 0, panel deck 695; by opponent {'altaria': 695}
+   B2e changed pairings' opponents: {'altaria': 695}
+   Limitless archetypes: ['charizardy_entei', 'garchomp', 'hoopa_absol', 'manectric_heliolisk', 'raticate_ninetales', 'whimsicott_ariados']
+     charizardy_entei   (charizardy_entei; 8 opponents, 8 pooled cells with n>0) kp3 44.02 -> koa3 43.36 (change -0.66); L pooled 49.20 (dev 48.40); further by +0.66 -> no veto
+        per-opponent change: altaria -5.3, blaziken +0.0, hydreigon +0.0, lucario +0.0, sceptile +0.0, suicune +0.0, vespiquen +0.0, weezing +0.0
+     garchomp           (garchomp; 8 opponents, 8 pooled cells with n>0) kp3 21.16 -> koa3 20.99 (change -0.18); L pooled 32.54 (dev 36.94); further by +0.18 -> no veto
+        per-opponent change: altaria -1.4, blaziken +0.0, hydreigon +0.0, lucario +0.0, sceptile +0.0, suicune +0.0, vespiquen +0.0, weezing +0.0
+     hoopa_absol        (hoopa_absol; 8 opponents, 8 pooled cells with n>0) kp3 57.16 -> koa3 57.01 (change -0.15); L pooled 49.95 (dev 51.61); further by -0.15 -> no veto
+        per-opponent change: altaria -1.2, blaziken +0.0, hydreigon +0.0, lucario +0.0, sceptile +0.0, suicune +0.0, vespiquen +0.0, weezing +0.0
+     manectric          (manectric_heliolisk; 8 opponents, 8 pooled cells with n>0) kp3 63.94 -> koa3 63.01 (change -0.92); L pooled 49.20 (dev 47.95); further by -0.92 -> no veto
+        per-opponent change: altaria -7.4, blaziken +0.0, hydreigon +0.0, lucario +0.0, sceptile +0.0, suicune +0.0, vespiquen +0.0, weezing +0.0
+     raticate           (raticate_ninetales; 8 opponents, 8 pooled cells with n>0) kp3 57.58 -> koa3 57.08 (change -0.50); L pooled 41.20 (dev 44.83); further by -0.50 -> no veto
+        per-opponent change: altaria -4.0, blaziken +0.0, hydreigon +0.0, lucario +0.0, sceptile +0.0, suicune +0.0, vespiquen +0.0, weezing +0.0
+     whimsicott         (whimsicott_ariados; 8 opponents, 8 pooled cells with n>0) kp3 36.30 -> koa3 35.55 (change -0.75); L pooled 32.33 (dev 45.06); further by -0.75 -> no veto
+        per-opponent change: altaria -6.0, blaziken +0.0, hydreigon +0.0, lucario +0.0, sceptile +0.0, suicune +0.0, vespiquen +0.0, weezing +0.0
+second_read exit 0

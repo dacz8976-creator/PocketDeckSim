@@ -307,6 +307,16 @@ The five clauses are as fixed in section 8 of `docs/REVIEW_2026-09-24_direction.
 - Neither is an adoption candidate under this registration. Any later B or R candidate is a new registration.
 - **The accepted cost of not bundling B.** `koa` leaves the {Darkrai, Swablu} hands opening Darkrai, unchanged: 14.5% of Altaria's deals, where B2c measured Swablu over Darkrai at +18.6 ± 8.0 over 41 games, about +2.7 per Altaria-v-Lucario game.
 
+### Amendment 2 (Sept 27, laptop session; before any game of the variant-list check)
+
+- **The missing seed block.** Section 7 (d) promised a new block for the variant-list row against the table's own Altaria list, "written into the dated registration commit before any game". It was never written.
+  - It is **21,109,000,000 + i, i < 500**: LaNora's list in seat 0 on even i, the table's Altaria list in seat 1, the reverse on odd i, as the table deals seats.
+  - It is recorded in START_HERE's seed table in the same commit.
+  - This only supplies a number the registration promised. The row stays "reported beside (d), not a gate".
+- **Found by the second reader (Sept 27):** the other 7 rows use the table's seeds for Altaria's pairings (72,000,000 + pairing × 10,000 + i, pairings 0-6, the variant list in the first-named deck's seat). They could have run without this amendment, and they run with it now.
+- **Also reported beside, per amendment 1 and the second reader:** koa3 on B2e's pairings 48-95 (Dustin's files) and on the 17 new scoreboard cells (pairings 8-24 of the gauntlet's new_decks.tsv; koa changes the two where the panel's Altaria is the opponent).
+  - These add no gate. The registered test stays the 28 table cells unless Dustin rules otherwise.
+
 ## 8. What would refute it
 
 - **A leak.** Any identity in section 4 fails, including a changed game with both openings unchanged. Stop, and fix before reading anything.
