@@ -112,3 +112,31 @@ The last full replay is the official engine's (main 83e17ae; k3 and kp3 14,000 o
 **kq3's reference.** No kq3 table existed at the official engine (the Sept 26 replays ran kq3 on 40 deals only), so the official program (`rl/engine-2026-09-27/legality_scan`, e6ab9a9d) played kq3's 14,000 table games first (`identity/official_kq3_500.jsonl`).
 - It ran clean (no rule findings). Its first 40 deals equal the Sept 26 kq3 reference (`../rules09_fixes_2026-09-26/af8489f_kq3_40.jsonl`) in moves and choices, 1,120 of 1,120 (840 in pairings 0-20, 280 in 21-27).
 - **Pairings 21-27 were lost and re-run.** The run's output for them went to a deleted file: while it ran, a `git stash` (to rebuild the scan without the review's tests) swapped the file under it. Each game is fixed by its seed, so the official program played pairings 21-27 again with `--pairings 21,...,27`, and the two parts are joined. The first part's `.txt` summary stops at pairing 20; the second part has its own.
+
+**The identity checks** (`identity/run_identity.sh`, `identity/compare.py`, `identity/identity_check.txt`), all at 43cef0b (scan d63f66b4…), on the table's deals. **Every check passes.**
+
+| check | result |
+|---|---|
+| k3, all 500 deals, vs `af8489f_k3_500` | equal in moves, choices, openings and results: 14,000 of 14,000; clean |
+| kp3, all 500 deals, vs `af8489f_kp3_500` | 14,000 of 14,000; clean |
+| kq3, all 500 deals, vs the official program's `official_kq3_500` | 14,000 of 14,000; clean |
+| kd3, 40 deals, vs `af8489f_kd3_40` | 1,120 of 1,120; clean |
+| kpr3, 40 deals, vs `af8489f_kpr3_40` | 1,120 of 1,120; clean |
+| kp3, 40 deals (the timing run), vs `af8489f_kp3_500` | 1,120 of 1,120; clean |
+
+**Timing** (registration step 4): kt3's 40-deal run took 221 s against kp3's 210 s on the same quiet machine, 1.05×, inside the 1.25× budget. The Tool checks stay as they are.
+
+**Smokes** (40 deals, all 28 pairings; every run clean). Games whose choices differ from kp3's on the same deals. This is a preview only; the footprint is measured on the tables and read first.
+
+| code | choices differ from kp3 | where |
+|---|---|---|
+| kt3 | 736 of 1,120 (65.7%) | every cell |
+| kta3 (switch 1) | 16 (1.4%) | only Suicune's cells (Stiffen), as registered |
+| ktb3 (switch 2) | 747 (66.7%) | every cell |
+| ktc3 (switch 3) | 98 (8.8%) | only Blaziken's cells (Rocky Helmet), as registered |
+
+No kt table game has been played. The tables wait for Dustin's word, which also depends on which pilot kt is read against: the registration is re-issued if the pilot changes from kp3.
+
+## Files
+
+- `identity/`: `run_identity.sh`, `compare.py`, `identity_check.txt`, `timing.txt`; the raw outputs `43cef0b_{k3,kp3,kq3}_500`, `43cef0b_{kp3,kt3,kta3,ktb3,ktc3,kd3,kpr3}_40` and `official_kq3_500` (with its pairings 21-27 summary).
