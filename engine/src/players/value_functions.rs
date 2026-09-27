@@ -279,6 +279,24 @@ pub fn public_clock_effect_kpg_value_function(state: &State, myself: usize) -> f
     parametric_value_function_ex6(state, myself, &ValueFunctionParams::baseline(), true, false, true, true, false, EvalFeatures::KPG)
 }
 
+/// The `kph` tier (players/mod.rs `KPH`, piloted like `kp`; registered Sept 27, `rl/results/kph_2026-09-27/REGISTRATION.md`):
+/// kpg + R', kpf's projection with its two diagnosed faults fixed: A, each evolution step still to take counts as one
+/// missing Energy in the projected readiness; B, the clock may give the Zone Energy to a benched Pokemon that can reach
+/// the Active Spot by the retreat rule.
+pub fn public_clock_effect_kph_value_function(state: &State, myself: usize) -> f64 {
+    parametric_value_function_ex6(state, myself, &ValueFunctionParams::baseline(), true, false, true, true, false, EvalFeatures::KPH)
+}
+
+/// The `kpha` diagnostic: kpf + fix A only.
+pub fn public_clock_effect_kpha_value_function(state: &State, myself: usize) -> f64 {
+    parametric_value_function_ex6(state, myself, &ValueFunctionParams::baseline(), true, false, true, true, false, EvalFeatures::KPHA)
+}
+
+/// The `kphb` diagnostic: kpf + fix B only.
+pub fn public_clock_effect_kphb_value_function(state: &State, myself: usize) -> f64 {
+    parametric_value_function_ex6(state, myself, &ValueFunctionParams::baseline(), true, false, true, true, false, EvalFeatures::KPHB)
+}
+
 /// The `kog` pilot (players/mod.rs `KOG`, piloted like `kp`): `k`'s evaluator with koa's switch A (the opening-Active
 /// term, read only in the setup evaluation) and kpg's part F (the discard-Energy credit, read only after setup), each
 /// exactly as in its own code. The composition of two separately read candidates (Dustin, Sept 27), not a new one.
@@ -344,6 +362,12 @@ struct EvalFeatures {
     /// kt switch 3 (kt, ktc): damage back to the attacker (Rocky Helmet, `Counterattack`, `CounterattackDamage`) in
     /// the holder's own side's clock ([`kt_clocks`]).
     counter_damage: bool,
+    /// kph fix A (kph, kpha): with R on, the projected readiness counts each evolution step still to take as one
+    /// missing Energy ([`evolution_aware_online_score`]).
+    evolution_steps: bool,
+    /// kph fix B (kph, kphb): with R on, the clock may also give the side's Zone Energy to a benched Pokemon that can
+    /// reach the Active Spot by the retreat rule ([`calculate_turns_until_opponent_wins_projected`]).
+    zone_to_bench: bool,
 }
 
 impl EvalFeatures {
@@ -359,6 +383,8 @@ impl EvalFeatures {
         defender_cuts: false,
         tool_by_holder: false,
         counter_damage: false,
+        evolution_steps: false,
+        zone_to_bench: false,
     };
     const KQ: EvalFeatures = EvalFeatures {
         next_attack_reduction: true,
@@ -372,6 +398,8 @@ impl EvalFeatures {
         defender_cuts: false,
         tool_by_holder: false,
         counter_damage: false,
+        evolution_steps: false,
+        zone_to_bench: false,
     };
     const KD: EvalFeatures = EvalFeatures {
         next_attack_reduction: false,
@@ -385,6 +413,8 @@ impl EvalFeatures {
         defender_cuts: false,
         tool_by_holder: false,
         counter_damage: false,
+        evolution_steps: false,
+        zone_to_bench: false,
     };
     const KPR: EvalFeatures = EvalFeatures {
         next_attack_reduction: false,
@@ -398,6 +428,8 @@ impl EvalFeatures {
         defender_cuts: false,
         tool_by_holder: false,
         counter_damage: false,
+        evolution_steps: false,
+        zone_to_bench: false,
     };
     const KOA: EvalFeatures = EvalFeatures { opening_first_turn_active: true, ..EvalFeatures::OFF };
     const KOB: EvalFeatures = EvalFeatures { opening_bench_working: true, ..EvalFeatures::OFF };
@@ -406,6 +438,13 @@ impl EvalFeatures {
     const KPF: EvalFeatures = EvalFeatures { fuel_credit: true, ..EvalFeatures::KPR };
     /// kpg (diagnostic): F only.
     const KPG: EvalFeatures = EvalFeatures { fuel_credit: true, ..EvalFeatures::OFF };
+    /// kph: kpg + R' (`rl/results/kph_2026-09-27/REGISTRATION.md`): kpf's parts R and F with fixes A and B. With A and
+    /// B off it is [`EvalFeatures::KPF`]; with R off it is kpg (A and B act only on R's projection).
+    const KPH: EvalFeatures = EvalFeatures { evolution_steps: true, zone_to_bench: true, ..EvalFeatures::KPF };
+    /// kpha (diagnostic): kpf + fix A only.
+    const KPHA: EvalFeatures = EvalFeatures { evolution_steps: true, ..EvalFeatures::KPF };
+    /// kphb (diagnostic): kpf + fix B only.
+    const KPHB: EvalFeatures = EvalFeatures { zone_to_bench: true, ..EvalFeatures::KPF };
     /// kog: koa's switch A and kpg's F together, each exactly as in its own code (Dustin, Sept 27: one pilot by a
     /// composition check, RUN5 "Rules").
     const KOG: EvalFeatures = EvalFeatures { opening_first_turn_active: true, fuel_credit: true, ..EvalFeatures::OFF };
@@ -637,13 +676,14 @@ fn parametric_value_function_ex6(
             + state.hands[myself].len() as f64 * params.hand_size
             - state.decks[myself].cards.len() as f64 * params.deck_size
             - get_active_retreat_cost(state, myself, public_eval) as f64 * params.active_retreat_cost
-            + calculate_active_pokemon_online_score(
+            + calculate_active_pokemon_online_score_ex(
                 state,
                 myself,
                 false,
                 false,
                 false,
                 features.projected_readiness.then_some(Horizon::ThroughNextTurn),
+                features.evolution_steps,
             ) * params.active_pokemon_online_score
             + calculate_active_safety(state, myself) * params.active_safety
             + online * params.online_pokemon_count
@@ -682,6 +722,8 @@ fn parametric_value_function_ex6(
             features.projected_readiness.then_some(Horizon::ThroughNextTurn),
             features.projected_readiness.then_some(Horizon::NextAttack),
             kt_clocks.map(|(mine, _)| mine),
+            features.evolution_steps,
+            features.zone_to_bench,
         ),
         extract_features(
             state,
@@ -698,6 +740,8 @@ fn parametric_value_function_ex6(
             features.projected_readiness.then_some(Horizon::NextAttack),
             features.projected_readiness.then_some(Horizon::ThroughNextTurn),
             kt_clocks.map(|(_, theirs)| theirs),
+            features.evolution_steps,
+            features.zone_to_bench,
         ),
     );
     // kt, ktb (switch 2): no flat term for a Tool on the Active.
@@ -787,6 +831,8 @@ fn extract_features(
     own_projection: Option<Horizon>,
     threat_projection: Option<Horizon>,
     clock: Option<f64>,
+    evolution_steps: bool,
+    zone_to_bench: bool,
 ) -> Features {
     let points = state.points[player] as f64;
     let pokemon_value = if value_aware {
@@ -806,13 +852,14 @@ fn extract_features(
     let active_retreat_cost = get_active_retreat_cost(state, player, public_evaluation) as f64;
     let (online_pokemon_count, energy_distance_to_online) =
         calculate_online_metrics(state, player, active_factor);
-    let active_pokemon_online_score = calculate_active_pokemon_online_score(
+    let active_pokemon_online_score = calculate_active_pokemon_online_score_ex(
         state,
         player,
         public_only,
         effect_aware,
         reserve_aware,
         own_projection,
+        evolution_steps,
     );
     let active_safety = calculate_active_safety(state, player);
     let active_has_tool = get_active_has_tool(state, player);
@@ -825,7 +872,7 @@ fn extract_features(
     let turns_until_opponent_wins = if let Some(turns) = clock {
         turns
     } else if clock_aware {
-        calculate_turns_until_opponent_wins_damage_aware(
+        calculate_turns_until_opponent_wins_projected(
             state,
             player,
             public_only,
@@ -835,6 +882,7 @@ fn extract_features(
             next_attack_reduction,
             defender_modifiers,
             threat_projection,
+            zone_to_bench,
         )
     } else {
         calculate_turns_until_opponent_wins(state, player, public_evaluation)
@@ -996,6 +1044,8 @@ fn calculate_turns_until_opponent_wins(
 /// projected ([`at_next_attack`]) and without. Projecting only the Active can otherwise make the win slower: a weak
 /// Active one attach short would displace a stronger benched attacker as the threat.
 #[allow(clippy::too_many_arguments)]
+// The kpr/kpf readings through kph's versions with its fixes off; the tests call them directly.
+#[cfg_attr(not(test), allow(dead_code))]
 fn calculate_turns_until_opponent_wins_damage_aware(
     state: &State,
     player: usize,
@@ -1007,8 +1057,39 @@ fn calculate_turns_until_opponent_wins_damage_aware(
     defender_modifiers: bool,
     projected_readiness: Option<Horizon>,
 ) -> f64 {
-    let clock = |projected| {
-        turns_until_opponent_wins_scan(
+    calculate_turns_until_opponent_wins_projected(
+        state,
+        player,
+        read_scanned_zones,
+        effect_aware,
+        reserve_aware,
+        consume_bench,
+        next_attack_reduction,
+        defender_modifiers,
+        projected_readiness,
+        false,
+    )
+}
+
+/// [`calculate_turns_until_opponent_wins_damage_aware`] with kph's fix B (`zone_to_bench`): with a horizon, the clock
+/// is also the smallest over the threatening side's benched Pokemon s of the clock with s given the side's Zone Energy
+/// only ([`projected_zone_energy`]), when the side's Active can retreat into s ([`bench_can_reach_active`]). So it is
+/// never slower than kpr's, and equal to it with an empty Bench.
+#[allow(clippy::too_many_arguments)]
+fn calculate_turns_until_opponent_wins_projected(
+    state: &State,
+    player: usize,
+    read_scanned_zones: bool,
+    effect_aware: bool,
+    reserve_aware: bool,
+    consume_bench: bool,
+    next_attack_reduction: bool,
+    defender_modifiers: bool,
+    projected_readiness: Option<Horizon>,
+    zone_to_bench: bool,
+) -> f64 {
+    let clock = |projection| {
+        turns_until_opponent_wins_scan_projected(
             state,
             player,
             read_scanned_zones,
@@ -1017,11 +1098,21 @@ fn calculate_turns_until_opponent_wins_damage_aware(
             consume_bench,
             next_attack_reduction,
             defender_modifiers,
-            projected,
+            projection,
         )
     };
     match projected_readiness {
-        Some(horizon) => clock(None).min(clock(Some(horizon))),
+        Some(horizon) => {
+            let kpr = clock(None).min(clock(Some(Projection::active(horizon))));
+            let owner = (player + 1) % 2;
+            if !zone_to_bench || !bench_can_reach_active(state, owner, horizon) {
+                return kpr;
+            }
+            state
+                .enumerate_bench_pokemon(owner)
+                .map(|(slot, _)| Projection { horizon, slot, zone_only: true })
+                .fold(kpr, |best, projection| best.min(clock(Some(projection))))
+        }
         None => clock(None),
     }
 }
@@ -1029,6 +1120,8 @@ fn calculate_turns_until_opponent_wins_damage_aware(
 /// The body of [`calculate_turns_until_opponent_wins_damage_aware`], with the threatening Active projected over
 /// `projected_readiness`'s horizon when it is set.
 #[allow(clippy::too_many_arguments)]
+// The kpr/kpf readings through kph's versions with its fixes off; the tests call them directly.
+#[cfg_attr(not(test), allow(dead_code))]
 fn turns_until_opponent_wins_scan(
     state: &State,
     player: usize,
@@ -1039,6 +1132,32 @@ fn turns_until_opponent_wins_scan(
     next_attack_reduction: bool,
     defender_modifiers: bool,
     projected_readiness: Option<Horizon>,
+) -> f64 {
+    turns_until_opponent_wins_scan_projected(
+        state,
+        player,
+        read_scanned_zones,
+        effect_aware,
+        reserve_aware,
+        consume_bench,
+        next_attack_reduction,
+        defender_modifiers,
+        projected_readiness.map(Projection::active),
+    )
+}
+
+/// [`turns_until_opponent_wins_scan`] with the threatening side's Pokemon in `projection`'s slot projected.
+#[allow(clippy::too_many_arguments)]
+fn turns_until_opponent_wins_scan_projected(
+    state: &State,
+    player: usize,
+    read_scanned_zones: bool,
+    effect_aware: bool,
+    reserve_aware: bool,
+    consume_bench: bool,
+    next_attack_reduction: bool,
+    defender_modifiers: bool,
+    projection: Option<Projection>,
 ) -> f64 {
     let opponent = (player + 1) % 2;
 
@@ -1055,7 +1174,7 @@ fn turns_until_opponent_wins_scan(
 
     // Every attack the owner could threaten with, in scan order. The threat is the first with the fewest missing
     // Energy, then the most damage (the same pick as the historical per-slot scan, flattened).
-    let candidates = threat_candidates(state, opponent, read_scanned_zones, projected_readiness, &attack_damage);
+    let candidates = threat_candidates(state, opponent, read_scanned_zones, projection, &attack_damage);
     let Some(threat) = candidates.iter().min_by_key(|c| (c.missing, u32::MAX - c.damage)) else {
         return 30.0; // No pokemon can deal damage, now or via any available evolution
     };
@@ -1130,23 +1249,30 @@ fn turns_until_opponent_wins_scan(
 
 /// Every attack `owner` could threaten with, in scan order: each in-play Pokemon's damaging attacks, then (with
 /// `read_scanned_zones`) those of its highest evolutions in `owner`'s deck or hand, one missing Energy per step.
-/// `projected_readiness` (kpr) counts the Active as it will stand at its next attack. The damage-aware clock's threat
-/// is the first with the fewest missing Energy, then the most damage. kp's clock and kt's read the same list.
+/// `projection` counts one Pokemon as it will stand at its next attack: kpr's Active ([`at_next_attack`]), or kph's
+/// benched Pokemon with the Zone Energy only. The damage-aware clock's threat is the first with the fewest missing
+/// Energy, then the most damage. kp's clock and kt's read the same list.
 fn threat_candidates(
     state: &State,
     owner: usize,
     read_scanned_zones: bool,
-    projected_readiness: Option<Horizon>,
+    projection: Option<Projection>,
     attack_damage: &dyn Fn(&Attack, &PlayedCard) -> u32,
 ) -> Vec<ThreatCandidate> {
     let mut candidates: Vec<ThreatCandidate> = Vec::new();
     for (slot, pokemon) in state.enumerate_in_play_pokemon(owner) {
         // kpr: the Active's missing Energy and damage are counted as it will stand at its next attack
-        // ([`at_next_attack`]).
+        // ([`at_next_attack`]); kph's fix B: a benched Pokemon's with the Zone Energy ([`projected_zone_energy`]).
         let projected;
-        let charged: &PlayedCard = match projected_readiness {
-            Some(horizon) if slot == 0 => {
-                projected = at_next_attack(state, owner, pokemon, horizon);
+        let charged: &PlayedCard = match projection {
+            Some(p) if slot == p.slot && p.zone_only => {
+                let mut zone_fed = pokemon.clone();
+                zone_fed.attached_energy.extend(projected_zone_energy(state, owner, p.horizon));
+                projected = zone_fed;
+                &projected
+            }
+            Some(p) if slot == p.slot => {
+                projected = at_next_attack(state, owner, pokemon, p.horizon);
                 &projected
             }
             _ => pokemon,
@@ -2411,6 +2537,8 @@ fn calculate_active_safety(state: &State, player: usize) -> f64 {
 /// of its highest evolution available in deck+hand
 /// With `projected` (kpr), the score is taken on the Active as it will stand over that [`Horizon`]: its attached
 /// Energy plus [`projected_active_energy`]. The formula is otherwise unchanged.
+// The kpr/kpf readings through kph's versions with its fixes off; the tests call them directly.
+#[cfg_attr(not(test), allow(dead_code))]
 fn calculate_active_pokemon_online_score(
     state: &State,
     player: usize,
@@ -2419,14 +2547,89 @@ fn calculate_active_pokemon_online_score(
     reserve_aware: bool,
     projected: Option<Horizon>,
 ) -> f64 {
+    calculate_active_pokemon_online_score_ex(state, player, public_only, effect_aware, reserve_aware, projected, false)
+}
+
+/// [`calculate_active_pokemon_online_score`] with kph's fix A (`evolution_steps`) in the projected branch
+/// ([`evolution_aware_online_score`]). Without a projection A changes nothing.
+fn calculate_active_pokemon_online_score_ex(
+    state: &State,
+    player: usize,
+    public_only: bool,
+    effect_aware: bool,
+    reserve_aware: bool,
+    projected: Option<Horizon>,
+    evolution_steps: bool,
+) -> f64 {
     let Some(active_pokemon) = state.maybe_get_active(player) else {
         return 0.0;
     };
     if let Some(horizon) = projected {
         let charged = at_next_attack(state, player, active_pokemon, horizon);
+        if evolution_steps {
+            return evolution_aware_online_score(
+                state,
+                player,
+                active_pokemon,
+                &charged,
+                public_only,
+                effect_aware,
+                reserve_aware,
+            );
+        }
         return pokemon_online_score(state, player, &charged, public_only, effect_aware, reserve_aware);
     }
     pokemon_online_score(state, player, active_pokemon, public_only, effect_aware, reserve_aware)
+}
+
+/// kph's fix A: the projected readiness with each evolution step still to take counted as one missing Energy, the
+/// clock's own rule (a step is a turn, the unit of missing Energy). `charged` is the Active as R projects it.
+/// - `target` is the card [`pokemon_online_score`] measures against (the highest evolution in the owner's deck and
+///   hand, or the card itself; on the opponent's side the card itself, so A never changes its reading), and
+///   steps = target stage - the Active's stage (saturating).
+/// - An attack costing nothing reads 1.0, as [`pokemon_online_score`] does.
+/// - steps = 0: R's projected reading exactly.
+/// - steps > 0: clamp((total - missing - steps) / total, 0, 1) on the projected Active, but never below the
+///   unprojected reading (kp's).
+fn evolution_aware_online_score(
+    state: &State,
+    player: usize,
+    active: &PlayedCard,
+    charged: &PlayedCard,
+    public_only: bool,
+    effect_aware: bool,
+    reserve_aware: bool,
+) -> f64 {
+    let (target_stage, total, missing) =
+        online_yardstick(state, player, charged, public_only, effect_aware, reserve_aware);
+    if total == 0 {
+        return 1.0;
+    }
+    let steps = match &active.card {
+        Card::Pokemon(current) => target_stage.saturating_sub(current.stage),
+        _ => 0,
+    };
+    if steps == 0 {
+        return pokemon_online_score(state, player, charged, public_only, effect_aware, reserve_aware);
+    }
+    let projected = ((total as f64 - missing as f64 - steps as f64) / total as f64).clamp(0.0, 1.0);
+    projected.max(pokemon_online_score(state, player, active, public_only, effect_aware, reserve_aware))
+}
+
+/// Which of the threatening side's Pokemon the clock projects, and how: kpr's projection of the Active
+/// ([`Projection::active`]: [`at_next_attack`]), or kph's fix B, a benched `slot` given the Zone Energy only
+/// ([`projected_zone_energy`]).
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+struct Projection {
+    horizon: Horizon,
+    slot: usize,
+    zone_only: bool,
+}
+
+impl Projection {
+    fn active(horizon: Horizon) -> Projection {
+        Projection { horizon, slot: 0, zone_only: false }
+    }
 }
 
 /// kpr: how far ahead an Active is projected. Each side is read so that its value doesn't step inside the
@@ -2532,17 +2735,7 @@ fn projected_active_energy_and_discard(
     if state.turn_count == 0 {
         return (Vec::new(), state.discard_energies[owner].clone());
     }
-    let owner_to_move = state.current_player == owner;
-    let running = owner_to_move
-        && !owner_turn_is_over(state, owner)
-        && !(horizon == Horizon::ThroughNextTurn && end_turn_scored_before_it(state, owner));
-    let mut turns: Vec<(u8, bool)> = Vec::with_capacity(2);
-    if running {
-        turns.push((state.turn_count, true));
-    }
-    if !running || horizon == Horizon::ThroughNextTurn {
-        turns.push((state.turn_count + if owner_to_move { 2 } else { 1 }, false));
-    }
+    let turns = projection_turns(state, owner, horizon);
 
     let mut charged = active.clone();
     let before = charged.attached_energy.len();
@@ -2613,6 +2806,66 @@ fn projected_active_energy_and_discard(
     (charged.attached_energy.split_off(before), discard)
 }
 
+/// kpr: the turns [`projected_active_energy`] reads for `owner` over `horizon`, each with whether it is the current
+/// turn: this turn while `owner`'s turn is running (and, for [`Horizon::ThroughNextTurn`], next turn too), else next
+/// turn only. Not for setup (turn 0), which projects nothing.
+fn projection_turns(state: &State, owner: usize, horizon: Horizon) -> Vec<(u8, bool)> {
+    let owner_to_move = state.current_player == owner;
+    let running = owner_to_move
+        && !owner_turn_is_over(state, owner)
+        && !(horizon == Horizon::ThroughNextTurn && end_turn_scored_before_it(state, owner));
+    let mut turns: Vec<(u8, bool)> = Vec::with_capacity(2);
+    if running {
+        turns.push((state.turn_count, true));
+    }
+    if !running || horizon == Horizon::ThroughNextTurn {
+        turns.push((state.turn_count + if owner_to_move { 2 } else { 1 }, false));
+    }
+    turns
+}
+
+/// kph's fix B: the Energy a benched Pokemon of `owner`'s gets over `horizon`: exactly the Zone terms of
+/// [`projected_active_energy`]'s turns (this turn's `current` if still unused, next turn's `next`), with the same
+/// running test. No `NoEnergyFromZoneToActive` check (it blocks only the Active), no Ability and no discard-pile
+/// Energy. Nothing during setup (turn 0).
+fn projected_zone_energy(state: &State, owner: usize, horizon: Horizon) -> Vec<EnergyType> {
+    if state.turn_count == 0 {
+        return Vec::new();
+    }
+    projection_turns(state, owner, horizon)
+        .into_iter()
+        .filter_map(|(_, this_turn)| {
+            if this_turn {
+                state.energy_zone[owner].current
+            } else {
+                state.energy_zone[owner].next
+            }
+        })
+        .collect()
+}
+
+/// kph's fix B: whether `owner`'s benched Pokemon can be in the Active Spot for its next attack over `horizon`, by the
+/// game's retreat rule, read from the board (no Switch or X Speed in hand is assumed, so both sides are read alike):
+/// - payment: the Active's board Retreat Cost (`get_board_retreat_cost_for_player`: without this turn's discounts such
+///   as X Speed or Leaf) is at most the Energy attached to it (Retreat Costs are Colorless);
+/// - not blocked: kq's retreat block (Asleep or Paralyzed, `NoRetreat`, a Fossil);
+/// - when the attack is this turn (the turn list holds this turn only: `owner`'s turn is running and the horizon is
+///   [`Horizon::NextAttack`]), no retreat already made this turn. For [`Horizon::ThroughNextTurn`] the attack can be
+///   next turn, after a retreat then.
+/// With no Active, the next one is promoted, so any benched Pokemon can be it.
+fn bench_can_reach_active(state: &State, owner: usize, horizon: Horizon) -> bool {
+    let Some(active) = state.maybe_get_active(owner) else {
+        return true;
+    };
+    let cost = crate::hooks::get_board_retreat_cost_for_player(state, owner, active).len();
+    let blocked = special_condition_blocks_attack_or_retreat(active)
+        || active.get_active_effects().contains(&CardEffect::NoRetreat)
+        || active.is_fossil();
+    let turns = projection_turns(state, owner, horizon);
+    let attack_this_turn = !turns.is_empty() && turns.iter().all(|(_, this_turn)| *this_turn);
+    cost <= active.attached_energy.len() && !blocked && !(attack_this_turn && state.has_retreated)
+}
+
 /// kpr: the index in `discard` of the Energy that, attached to `charged`, leaves its attacks fewest missing Energy
 /// (the lowest for any one attack, then the total), ties to the first; `None` if `discard` is empty.
 fn best_discard_energy_for(state: &State, owner: usize, charged: &PlayedCard, discard: &[EnergyType]) -> Option<usize> {
@@ -2648,6 +2901,29 @@ fn pokemon_online_score(
     effect_aware: bool,
     reserve_aware: bool,
 ) -> f64 {
+    let (_, total, missing) = online_yardstick(state, player, active_pokemon, public_only, effect_aware, reserve_aware);
+    if total == 0 {
+        return 1.0; // No attack requirements, fully online
+    }
+    // Calculate how much energy we have vs need
+    let total_needed = total as f64;
+    let have = total_needed - missing as f64;
+
+    // Return ratio (0.0 to 1.0)
+    (have / total_needed).clamp(0.0, 1.0)
+}
+
+/// [`pokemon_online_score`]'s parts: the stage of the card it measures against (the highest evolution of
+/// `active_pokemon` in `player`'s deck and hand, or the card itself), and its yardstick attack's cost and missing
+/// Energy (0 and 0 when that card has no attack cost).
+fn online_yardstick(
+    state: &State,
+    player: usize,
+    active_pokemon: &PlayedCard,
+    public_only: bool,
+    effect_aware: bool,
+    reserve_aware: bool,
+) -> (u8, usize, usize) {
     // Get all cards available in deck + hand.
     //
     // §40: these are HIDDEN zones. When scoring an opponent we must not look in them, so
@@ -2701,17 +2977,15 @@ fn pokemon_online_score(
             .unwrap_or_default()
     };
 
+    let stage = match target_card {
+        Card::Pokemon(pokemon) => pokemon.stage,
+        _ => 0,
+    };
     if yardstick_cost.is_empty() {
-        return 1.0; // No attack requirements, fully online
+        return (stage, 0, 0);
     }
-
-    // Calculate how much energy we have vs need
     let missing = energy_missing(active_pokemon, &yardstick_cost, state, player);
-    let total_needed = yardstick_cost.len() as f64;
-    let have = total_needed - missing.len() as f64;
-
-    // Return ratio (0.0 to 1.0)
-    (have / total_needed).clamp(0.0, 1.0)
+    (stage, yardstick_cost.len(), missing.len())
 }
 
 /// kq (B5): the best benched attacker's readiness: the highest [`pokemon_online_score`] (`k`'s Active online score,
@@ -4158,6 +4432,33 @@ mod kpr_feature_tests {
             Some(Horizon::ThroughNextTurn),
         );
         assert_eq!(projected_only, 7.0);
+        // kph's fix B takes a further minimum, so it is never slower either. Deino holds nothing to pay its Retreat
+        // Cost of 1, so its benched Absol isn't credited: 3, as kpr.
+        let kph_clock = |state: &State| {
+            calculate_turns_until_opponent_wins_projected(
+                state,
+                1,
+                true,
+                true,
+                false,
+                true,
+                false,
+                false,
+                Some(Horizon::ThroughNextTurn),
+                true,
+            )
+        };
+        assert_eq!(kph_clock(&state), 3.0);
+        // Deino holding a [D] is ready itself (Headbutt, 20: 7 hits for kpr, whose projection is the Active's), and can
+        // retreat into Absol, which B gives next turn's [D]: ready, and 2 hits of 80 on Suicune ex.
+        let state = against_suicune(
+            vec![with(CardId::B1155Deino, EnergyType::Darkness, 1), with(CardId::B1151MegaAbsolEx, EnergyType::Darkness, 1)],
+            Some(EnergyType::Darkness),
+        );
+        assert_eq!((clocks(&state).1, kph_clock(&state)), (7.0, 2.0));
+        // With an empty Bench, B has no one to feed: kpr's clock.
+        let state = against_suicune(vec![with(CardId::B1155Deino, EnergyType::Darkness, 1)], Some(EnergyType::Darkness));
+        assert_eq!(kph_clock(&state), clocks(&state).1);
     }
 
     #[test]
@@ -4692,5 +4993,325 @@ mod kog_tests {
             }
         }
         assert!(setup > 0 && play > 500, "{setup} setup and {play} play evaluations");
+    }
+}
+
+#[cfg(test)]
+mod kph_tests {
+    //! kph (`rl/results/kph_2026-09-27/REGISTRATION.md`, section 4): fix A in the projected readiness and fix B in the
+    //! clock, on built boards (each states its timing), and their rules on played positions.
+    use super::*;
+    use crate::card_ids::CardId;
+    use crate::database::get_card_by_enum;
+    use crate::hooks::get_board_retreat_cost_for_player;
+    use crate::players::RandomPlayer;
+    use crate::{Deck, Game};
+
+    fn mon(id: CardId) -> PlayedCard {
+        PlayedCard::from_id(id)
+    }
+
+    fn with(id: CardId, energy: EnergyType, count: usize) -> PlayedCard {
+        mon(id).with_energy(vec![energy; count])
+    }
+
+    /// The leaf after player 0's EndTurn: player 1 to move on turn 6 with its turn running. Player 0 has `mine` and
+    /// its Zone shows `current` and `next`; player 1 has `theirs`.
+    fn after_end_turn(mine: Vec<PlayedCard>, theirs: Vec<PlayedCard>, current: Option<EnergyType>, next: Option<EnergyType>) -> State {
+        let mut state = State::default();
+        state.set_board(mine, theirs);
+        state.turn_count = 6;
+        state.current_player = 1;
+        state.energy_zone[0].current = current;
+        state.energy_zone[0].next = next;
+        state
+    }
+
+    /// Mid-turn: as [`after_end_turn`], but player 0 is to move on turn 5 with its turn running.
+    fn mid_turn(mine: Vec<PlayedCard>, theirs: Vec<PlayedCard>, current: Option<EnergyType>, next: Option<EnergyType>) -> State {
+        let mut state = after_end_turn(mine, theirs, current, next);
+        state.turn_count = 5;
+        state.current_player = 0;
+        state
+    }
+
+    fn bulbasaur() -> Vec<PlayedCard> {
+        vec![mon(CardId::A1001Bulbasaur)]
+    }
+
+    /// Player 0's Active readiness, player 0 evaluating: (unprojected, R, A).
+    fn readiness(state: &State) -> (f64, f64, f64) {
+        let score = |projected, a| calculate_active_pokemon_online_score_ex(state, 0, false, true, false, projected, a);
+        (score(None, false), score(Some(Horizon::ThroughNextTurn), false), score(Some(Horizon::ThroughNextTurn), true))
+    }
+
+    /// Turns until player 0 beats player 1 (player 0, evaluating, is the threat, read through its next turn):
+    /// (kpr's clock, kph's with fix B).
+    fn clocks(state: &State) -> (f64, f64) {
+        let clock = |b| {
+            calculate_turns_until_opponent_wins_projected(
+                state,
+                1,
+                true,
+                true,
+                false,
+                true,
+                false,
+                false,
+                Some(Horizon::ThroughNextTurn),
+                b,
+            )
+        };
+        (clock(false), clock(true))
+    }
+
+    #[test]
+    fn a_swablu_one_step_from_mega_altaria_ex_reads_half() {
+        // Mid-turn. Swablu holding a [P], [P] in this turn's Zone; Mega Altaria ex (Mega Harmony [P][P]) is the deck's
+        // only evolution. R: [P][P] of 2, 1.0. A: (2 - 0 - 1 step) / 2 = 0.5, and the unprojected reading is 0.5 too.
+        let mut state = mid_turn(vec![with(CardId::B1196Swablu, EnergyType::Psychic, 1)], bulbasaur(), Some(EnergyType::Psychic), None);
+        state.decks[0].cards = vec![get_card_by_enum(CardId::B1102MegaAltariaEx)];
+        assert_eq!(readiness(&state), (0.5, 1.0, 0.5));
+    }
+
+    #[test]
+    fn a_bare_riolu_reads_its_evolution_step_as_a_missing_energy() {
+        // Riolu with nothing; Mega Lucario ex (Fighting Pulse [F][F]) is the deck's only evolution; [F] in the Zone now
+        // and next. The yardstick is [F][F], as the registration's expected values assume.
+        let riolu = || vec![mon(CardId::B3079Riolu)];
+        let deck = || vec![get_card_by_enum(CardId::B3081MegaLucarioEx)];
+        // After EndTurn: next turn's [F] only. R: 1 of 2, 0.5. A: (2 - 1 - 1) / 2 = 0.
+        let mut state = after_end_turn(riolu(), bulbasaur(), Some(EnergyType::Fighting), Some(EnergyType::Fighting));
+        state.decks[0].cards = deck();
+        assert_eq!(readiness(&state), (0.0, 0.5, 0.0));
+        // Mid-turn: this turn's and next turn's. R: 1.0. A: (2 - 0 - 1) / 2 = 0.5.
+        let mut state = mid_turn(riolu(), bulbasaur(), Some(EnergyType::Fighting), Some(EnergyType::Fighting));
+        state.decks[0].cards = deck();
+        assert_eq!(readiness(&state), (0.0, 1.0, 0.5));
+    }
+
+    #[test]
+    fn b_gives_an_opponents_benched_pokemon_one_zone_energy_at_the_usual_leaf() {
+        // The usual leaf (player 1 to move, its turn running). Player 1's Bonsly (Retreat Cost 0) in front, a Bulbasaur
+        // (Vine Whip [G][C], 40) benched holding a [G], [G] in its Zone now. Its next attack is this turn: the Active
+        // gets this turn's [G] only, and so does the benched Bulbasaur.
+        let mut state = after_end_turn(
+            vec![mon(CardId::B3b055Snorlax)],
+            vec![mon(CardId::B3078Bonsly), with(CardId::A1001Bulbasaur, EnergyType::Grass, 1)],
+            None,
+            None,
+        );
+        state.energy_zone[1].current = Some(EnergyType::Grass);
+        state.energy_zone[1].next = Some(EnergyType::Grass);
+        let bonsly = state.get_active(1).clone();
+        assert_eq!(projected_active_energy(&state, 1, &bonsly, Horizon::NextAttack), vec![EnergyType::Grass]);
+        assert_eq!(projected_zone_energy(&state, 1, Horizon::NextAttack), vec![EnergyType::Grass]);
+        assert!(bench_can_reach_active(&state, 1, Horizon::NextAttack));
+        // Player 0's clock (the opponent's threats on Snorlax, 130 HP): kpr's threat is Bonsly (10, 13 hits); B makes the
+        // Bulbasaur ready this turn, 4 hits of 40.
+        let opponents_clock = |state: &State, b| {
+            calculate_turns_until_opponent_wins_projected(state, 0, false, true, false, true, false, false, Some(Horizon::NextAttack), b)
+        };
+        assert_eq!((opponents_clock(&state, false), opponents_clock(&state, true)), (13.0, 4.0));
+        // Its attack is this turn, so a retreat already made this turn rules the Bulbasaur out.
+        state.has_retreated = true;
+        assert!(!bench_can_reach_active(&state, 1, Horizon::NextAttack));
+        assert_eq!(opponents_clock(&state, true), 13.0);
+    }
+
+    #[test]
+    fn q01_keeping_bonsly_in_front_reads_the_same_clock_as_the_swap() {
+        // Dustin's Q01, both lines at the leaf after EndTurn: Bonsly (Retreat Cost 0) and Mega Lucario ex holding an [F],
+        // [F] in the Zone next turn, against a Bulbasaur (70 HP). Swap: Mega Lucario ex in front, ready next turn,
+        // 1 hit. Keep: kpr credits next turn's [F] to Bonsly only, so its threat stays Bonsly (10, 7 hits); B gives it
+        // to the benched Mega Lucario ex, and the two lines read the same.
+        let lucario = || with(CardId::B3081MegaLucarioEx, EnergyType::Fighting, 1);
+        let keep = after_end_turn(vec![mon(CardId::B3078Bonsly), lucario()], bulbasaur(), None, Some(EnergyType::Fighting));
+        let swap = after_end_turn(vec![lucario(), mon(CardId::B3078Bonsly)], bulbasaur(), None, Some(EnergyType::Fighting));
+        assert_eq!((clocks(&keep), clocks(&swap)), ((7.0, 1.0), (1.0, 1.0)));
+    }
+
+    #[test]
+    fn q10_a_benched_vespiquen_ex_behind_a_shuckle_ex_that_cant_pay_its_retreat_is_not_credited() {
+        // Dustin's Q10, the bench-feed alternative, mid-turn: Shuckle ex in front, Vespiquen ex (Chase Order [G][G])
+        // benched with a [G], [G] in the Zone now and next, X Speed played this turn and a retreat already made.
+        let q10 = |shuckle_energy: usize| {
+            let mut state = mid_turn(
+                vec![with(CardId::A4021ShuckleEx, EnergyType::Grass, shuckle_energy), with(CardId::B4011VespiquenEx, EnergyType::Grass, 1)],
+                bulbasaur(),
+                Some(EnergyType::Grass),
+                Some(EnergyType::Grass),
+            );
+            state.add_turn_effect(TurnEffect::ReducedRetreatCost { amount: 1 }, 0);
+            state.has_retreated = true;
+            state
+        };
+        // Shuckle ex with nothing: X Speed makes this turn's cost 0, but its board cost is 1, unpaid. Not credited.
+        let state = q10(0);
+        let shuckle = state.get_active(0);
+        assert_eq!(get_retreat_cost_for_player(&state, 0, shuckle).len(), 0);
+        assert_eq!(get_board_retreat_cost_for_player(&state, 0, shuckle).len(), 1);
+        assert!(!bench_can_reach_active(&state, 0, Horizon::ThroughNextTurn));
+        assert_eq!(clocks(&state).0, clocks(&state).1);
+        // The positive control: Shuckle ex holding a [G] pays its board cost, and Vespiquen ex can be in front for
+        // next turn's attack (a retreat then isn't ruled out by this turn's). Credited: Chase Order ready, 1 hit.
+        let state = q10(1);
+        assert!(bench_can_reach_active(&state, 0, Horizon::ThroughNextTurn));
+        let (kpr, kph) = clocks(&state);
+        assert!(kph < kpr, "kpr {kpr}, kph {kph}");
+        assert_eq!(kph, 1.0);
+    }
+
+    #[test]
+    fn b_gives_zone_energy_only_so_f_counts_nothing_twice() {
+        // Mid-turn, player 0: Bonsly (Retreat Cost 0) in front, Charmander (Ember [R], 30) benched with nothing, two [R]
+        // in the discard pile and a Flame Patch in hand, so F is live. B's projection holds only the Zone's Energy.
+        let board = |zone: Option<EnergyType>| {
+            let mut state = mid_turn(vec![mon(CardId::B3078Bonsly), mon(CardId::A1033Charmander)], bulbasaur(), zone, None);
+            state.discard_energies[0] = vec![EnergyType::Fire, EnergyType::Fire];
+            state.hands[0].push(get_card_by_enum(CardId::B1217FlamePatch));
+            state
+        };
+        let state = board(None);
+        assert!(super::super::fuel_credit::fuel_credit(&state, 0, true, &state.discard_energies[0]) > 0.0);
+        // Nothing in the Zone: B gives nothing (never the discard pile's [R]), so kphb scores exactly as kpf.
+        assert_eq!(projected_zone_energy(&state, 0, Horizon::ThroughNextTurn), vec![]);
+        assert_eq!(public_clock_effect_kphb_value_function(&state, 0), public_clock_effect_kpf_value_function(&state, 0));
+        // [R] in this turn's Zone: exactly that one [R], and the discard pile F reads is untouched.
+        let state = board(Some(EnergyType::Fire));
+        assert_eq!(projected_zone_energy(&state, 0, Horizon::ThroughNextTurn), vec![EnergyType::Fire]);
+        let bonsly = state.get_active(0).clone();
+        assert_eq!(
+            projected_active_energy_and_discard(&state, 0, &bonsly, Horizon::ThroughNextTurn).1,
+            vec![EnergyType::Fire, EnergyType::Fire]
+        );
+    }
+
+    #[test]
+    fn kph_reads_no_hidden_card() {
+        // Player 1's side is read from its board. Its Swablu holds a [P]; a Mega Altaria ex hidden in its hand or deck
+        // must not change the value (A reads the opponent's card as it is, steps 0), nor may a hidden Ivysaur behind
+        // its Bulbasaur, benched where B reads it.
+        let value = |hidden: CardId, in_hand: bool| {
+            let mut state = after_end_turn(
+                vec![mon(CardId::B3b055Snorlax)],
+                vec![with(CardId::B1196Swablu, EnergyType::Psychic, 1), with(CardId::A1001Bulbasaur, EnergyType::Grass, 1)],
+                None,
+                None,
+            );
+            state.energy_zone[1].current = Some(EnergyType::Psychic);
+            let card = get_card_by_enum(hidden);
+            if in_hand {
+                state.hands[1].push(card);
+            } else {
+                state.decks[1].cards.push(card);
+            }
+            public_clock_effect_kph_value_function(&state, 0)
+        };
+        for in_hand in [false, true] {
+            assert_eq!(value(CardId::B1102MegaAltariaEx, in_hand), value(CardId::A1053Squirtle, in_hand));
+            assert_eq!(value(CardId::A1002Ivysaur, in_hand), value(CardId::A1053Squirtle, in_hand));
+        }
+    }
+
+    #[test]
+    fn the_switches_fall_back_to_kpf_and_kpg() {
+        // kph with A and B off is kpf's preset; A and B act only on R's projection, so with R off it is kpg.
+        let off = EvalFeatures { evolution_steps: false, zone_to_bench: false, ..EvalFeatures::KPH };
+        assert_eq!(format!("{off:?}"), format!("{:?}", EvalFeatures::KPF));
+        assert_eq!(
+            format!("{:?}", EvalFeatures { evolution_steps: false, ..EvalFeatures::KPH }),
+            format!("{:?}", EvalFeatures::KPHB)
+        );
+        assert_eq!(
+            format!("{:?}", EvalFeatures { zone_to_bench: false, ..EvalFeatures::KPH }),
+            format!("{:?}", EvalFeatures::KPHA)
+        );
+        let r_off = EvalFeatures { projected_readiness: false, ..EvalFeatures::KPH };
+        let value = |state: &State, me: usize, f: EvalFeatures| {
+            parametric_value_function_ex6(state, me, &ValueFunctionParams::baseline(), true, false, true, true, false, f)
+        };
+        let mut n = 0;
+        for_played_positions(|state| {
+            for me in 0..2 {
+                assert_eq!(value(state, me, r_off), public_clock_effect_kpg_value_function(state, me));
+                n += 1;
+            }
+        });
+        assert!(n > 1000, "{n} evaluations");
+    }
+
+    /// Every position of 12 random games of the table lists (Altaria v Lucario, Vespiquen v Hydreigon, Lucario v
+    /// Vespiquen, Blaziken v Suicune), past setup.
+    fn for_played_positions(mut check: impl FnMut(&State)) {
+        let deck = |name: &str| Deck::from_file(&format!("../decks/research/{name}.txt")).unwrap();
+        for (a, b) in [("altaria", "lucario"), ("vespiquen", "hydreigon"), ("lucario", "vespiquen"), ("blaziken", "suicune")] {
+            for seed in 0..3u64 {
+                let players: Vec<Box<dyn crate::players::Player>> =
+                    vec![Box::new(RandomPlayer { deck: deck(a) }), Box::new(RandomPlayer { deck: deck(b) })];
+                let mut game = Game::new(players, 20_000_000_200 + seed);
+                let mut ticks = 0;
+                while !game.is_game_over() && ticks < 400 {
+                    game.play_tick();
+                    ticks += 1;
+                    let state = game.get_state_clone();
+                    if state.turn_count > 0 && state.winner.is_none() {
+                        check(&state);
+                    }
+                }
+            }
+        }
+    }
+
+    #[test]
+    fn on_played_positions_a_is_r_without_a_step_and_never_below_the_unprojected_reading_with_one() {
+        let (mut same, mut stepped) = (0, 0);
+        for_played_positions(|state| {
+            for player in 0..2 {
+                let Some(active) = state.maybe_get_active(player) else { continue };
+                for public_only in [false, true] {
+                    for horizon in [Horizon::ThroughNextTurn, Horizon::NextAttack] {
+                        let charged = at_next_attack(state, player, active, horizon);
+                        let (target_stage, total, _) = online_yardstick(state, player, &charged, public_only, true, false);
+                        let Card::Pokemon(current) = &active.card else { continue };
+                        let score = |projected, a| {
+                            calculate_active_pokemon_online_score_ex(state, player, public_only, true, false, projected, a)
+                        };
+                        let (a, r, u) = (score(Some(horizon), true), score(Some(horizon), false), score(None, false));
+                        if total == 0 || target_stage <= current.stage {
+                            assert_eq!(a, r);
+                            same += 1;
+                        } else {
+                            assert!(a >= u, "A {a} below the unprojected {u}");
+                            stepped += 1;
+                        }
+                    }
+                }
+            }
+        });
+        assert!(same > 500 && stepped > 50, "{same} without a step, {stepped} with one");
+    }
+
+    #[test]
+    fn on_played_positions_b_is_never_slower_than_r_and_equals_it_with_an_empty_bench() {
+        let (mut faster, mut empty) = (0, 0);
+        for_played_positions(|state| {
+            for victim in 0..2 {
+                for (zones, horizon) in [(false, Horizon::NextAttack), (true, Horizon::ThroughNextTurn)] {
+                    let clock = |b| {
+                        calculate_turns_until_opponent_wins_projected(state, victim, zones, true, false, true, false, false, Some(horizon), b)
+                    };
+                    let (r, b) = (clock(false), clock(true));
+                    assert!(b <= r, "B {b} slower than R {r}");
+                    if state.enumerate_bench_pokemon(1 - victim).next().is_none() {
+                        assert_eq!(b, r);
+                        empty += 1;
+                    } else if b < r {
+                        faster += 1;
+                    }
+                }
+            }
+        });
+        assert!(faster > 10 && empty > 10, "{faster} faster, {empty} with an empty Bench");
     }
 }
