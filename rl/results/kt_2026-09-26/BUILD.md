@@ -1,4 +1,4 @@
-Decision this informs: kt's tables (kt3, then kta3, ktb3 and ktc3, on the table's deals) and their reading by the laptop under rule v2 and the reserve route (README "FOOTPRINT AND ROUTES"). This note records the build they run on. Build commit 92c4563 (code ed81c8b, then 92c4563 restoring two files' Windows line endings; the program is byte-identical): the official engine (main 83e17ae) plus kt's code. The scan at 92c4563 has sha256 5a7ef6554064cbb0a03818478d89cf7455c88d6fa935d663b012dc69a460926f.
+Decision this informs: kt's tables (kt3, then kta3, ktb3 and ktc3, on the table's deals) and their reading by the laptop under rule v2 and the reserve route (README "FOOTPRINT AND ROUTES"). This note records the build they run on. Build commit 43cef0b: the official engine (main 83e17ae) plus kt's code (ed81c8b; 92c4563 restores two files' Windows line endings; 43cef0b adds the review's tests). The scan at 43cef0b has sha256 d63f66b47bf76aed8ec38f93511cb0b339deca770d8e20528aa6c70b391de21f.
 
 Seeds: the identity checks use the table's deals only (72,000,000 + pairing × 10,000 + i, even i = first-named deck in seat 0).
 
@@ -52,6 +52,19 @@ The laptop asked whether kt's Tool valuation covers Protective Poncho. **It does
   - Poison Barb is not in this candidate.
 - **Parser** (`players/mod.rs`): `kta`, `ktb` and `ktc` before `kt`, and all four before `k`. No existing code starts with "kt": before the change, "kt3" fell into k's branch and was rejected. `kt13` is depth 13; `kt1a`, `kt`, `kta` and `ktd3` are rejected.
 
+## Choices the registration left to the build
+
+Each is the plainest reading, stated so the reading can judge it. None adds a parameter.
+- **"Never."** A victim that no hit after the first can damage (a Heavy Helmet against a 20) makes the clock 30, kp's own "no Pokémon can deal damage" number. kp doesn't cap finite clocks at 30, so neither does kt: a finite clock over 30 can outrank "never", in kp's clock as in kt's. Games end in a tie after turn 30. The review found one case (three Snorlax with Heavy Helmet against Pidgey is 39); no table list carries Heavy Helmet.
+- **f for a threat one Energy short.** kp's clock counts each missing Energy as a turn before the first hit; kq's arithmetic, which the registration names ("first_attack_turn is extended ... to any slot"), lets an Energy attached on the threat's turn be used the same turn, as Pocket allows. kt follows kq's: a threat 1 Energy short with this turn's Energy still in the Zone meets a cut live on its next turn.
+- **The first hit** is the clock's first victim's: the Active, or the first benched victim when there is no Active.
+- **An attack whose text ignores effects on the opponent's Active** (Sawk's Brick Break, Morgrem's False Surrender) gets no temporary or permanent cut, as in `modify_damage` and `persistent_defender_damage`.
+- **The threat's form.** Only-from-ex conditions read the form the clock's threat attacks as (kd's `kd_attacker`). Forms are read only for the evaluating player's own threats, so nothing of the opponent's hand or deck is read.
+- **Switch 3's s** is "T's owner is to move and can still attack this turn", the same test kq's timing uses. The cut is 0 when either hit count is infinite (switch 1's "never"), and k is floored at 0.
+- **Switch 3 counts c on every one of the k hits**, as registered. Two cases where the engine does less, neither in the table lists: Spike Armor's `Counterattack` lasts one opponent turn; and a hit cut to 0 fires no Rocky Helmet ("if ... damaged").
+- **The `status-clock` diagnostic build** (not the official one) adds its Sleep and Paralysis delay to the clock but not to f.
+- **Speed.** A Pokémon with no Tool attached skips the Tool checks. Otherwise the Tool checks are the engine's own (`has_tool`, `tool_count`); timing.txt decides whether they must be rewritten before the table (registration step 4).
+
 ## Engine code shared with other bots
 
 Each change below runs for every bot, so the identity replays check it:
@@ -78,7 +91,8 @@ Each change below runs for every bot, so the identity replays check it:
   - the presets: each code sets its switches only, and no other preset sets them.
 - **Against kp on played positions.** 12 random games over four pairings of the table lists: at every position, kt's clock with switch 1 off equals kp's clock exactly, for both sides and both zone permissions; and wherever nothing kt reads is on the board (no Tool, no cut effect, no counter-damage), kt, kta, ktb and ktc equal kp's value exactly.
 - **The parser**: kta3, ktb3, ktc3, kt3, KT3 and kt13 parse; kt1a, kt, kta and ktd3 are rejected; t3, k3, kq3, kd3, kpr3 and kpf3 are unchanged.
-- **Full suite:** 1,960 passed, 0 failed (13 new). Clippy reports nothing in the new code.
+- **From the review (43cef0b):** with no Active, the first benched victim takes the cut; an evolved threat is judged as the form it attacks as (an only-from-ex cut applies to Mega Altaria ex, not to its Swablu); an attack that ignores effects on the opponent's Active gets no cut in the clock (Sawk's Brick Break); switch 3's s is 0 when the threat's owner has already attacked this turn.
+- **Full suite:** 1,963 passed, 0 failed (16 new). Clippy reports nothing in the new code.
 
 ## Everything after the last full replay (the kt-only diff)
 

@@ -8,14 +8,15 @@
 # - kt3, kta3, ktb3 and ktc3 over the first 40 deals are smokes (clean runs), with kp3 on the same 40 deals run
 #   between them for timing (kt3 within 1.25x of kp3).
 # Waits for official_kq3_500 to finish so the timings share a quiet machine. compare.py reads the outputs.
-# Usage: run_identity.sh <legality_scan built at the kt build commit> <label>
+# OUT (default: this folder) takes the outputs while they run; they are copied here when complete.
+# Usage: [OUT=<dir>] run_identity.sh <legality_scan built at the kt build commit> <label>
 set -euo pipefail
-SCAN=$1; L=$2; D=$(cd "$(dirname "$0")" && pwd); cd "$D/../../../../engine"
+SCAN=$1; L=$2; D=$(cd "$(dirname "$0")" && pwd); O=${OUT:-$D}; cd "$D/../../../../engine"
 until grep -q '^official_kq3_500' "$D/timing.txt" 2>/dev/null; do sleep 60; done
-echo "$L scan sha256 $(sha256sum "$SCAN" | cut -c1-64)" >> "$D/timing.txt"
+echo "$L scan sha256 $(sha256sum "$SCAN" | cut -c1-64)" >> "$O/timing.txt"
 run() { local bot=$1 n=$2 s; s=$(date +%s)
-  "$SCAN" --decks ../decks/research --games "$n" --bot "$bot" --games-out "$D/${L}_${bot}_${n}.jsonl" > "$D/${L}_${bot}_${n}.txt" 2>&1
-  echo "${L}_${bot}_${n} $(( $(date +%s) - s )) s wall" >> "$D/timing.txt"; }
+  "$SCAN" --decks ../decks/research --games "$n" --bot "$bot" --games-out "$O/${L}_${bot}_${n}.jsonl" > "$O/${L}_${bot}_${n}.txt" 2>&1
+  echo "${L}_${bot}_${n} $(( $(date +%s) - s )) s wall" >> "$O/timing.txt"; }
 for bot in kp3 kt3 kta3 ktb3 ktc3 kd3 kpr3; do run "$bot" 40; done
 for bot in k3 kp3 kq3; do run "$bot" 500; done
-echo "$L identity done" >> "$D/timing.txt"
+echo "$L identity done" >> "$O/timing.txt"
