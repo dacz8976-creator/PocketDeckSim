@@ -26,7 +26,7 @@ Seeds: the table's deals only, 72,000,000 + pairing × 10,000 + i, i < 500 (i < 
 | 3102c9e | the random Energy pick (and the four above, cumulative) | 0 / 0 / 0 | 0 / 0 / 0 |
 | 5b75bf9 | Legendary Pulse before Hiking Trail | 3,124 / 1,261 / 434 | 3,197 / 758 / 244 |
 | 5bab907 | promotion before the next turn after an end-of-turn or Checkup knockout | 3,649 / 1,421 / 520 | 3,812 / 1,590 / 620 |
-| 02fe9de, 53cba79, 213c090, 4407c55, e935f42 | Disguise; Bad Dreams v protections; Clemont's Backpack; Zone-to-self Abilities under the lock; Clemont's hand cap | cumulative (5bab907 → af8489f): 0 / 0 / 0; per commit: running | cumulative: 0 / 0 / 0; per commit: running |
+| 02fe9de, 53cba79, 213c090, 4407c55, e935f42 | Disguise; Bad Dreams v protections; Clemont's Backpack; Zone-to-self Abilities under the lock; Clemont's hand cap | 0 each, commit to commit (moves); cumulative 5bab907 → af8489f: 0 / 0 / 0 | 0 each (moves); cumulative: 0 / 0 / 0 |
 | af8489f (e935f42) | all ten, against the Sept 25 tables | 6,167 records, 940 results | 6,367 records, 855 results |
 
 ### Legendary Pulse (5b75bf9), per cell: records / choices / results
