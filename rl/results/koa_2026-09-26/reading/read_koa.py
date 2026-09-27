@@ -45,6 +45,17 @@ print(f"1. footprint: {len(diff)} of {len(kp3)} table games differ from kp3 = {f
 print("   per pairing with any difference: " + ", ".join(f"{PAIRS[p][0]} v {PAIRS[p][1]} {n}" for p, n in sorted(by_p.items())))
 outside = [p for p in by_p if p not in ALT]
 print(f"   pairings without Altaria that differ: {len(outside)} (registration section 4: they are identities)")
+# Section 8's leak test: a changed game with both openings unchanged refutes koa (stop before reading anything else).
+leaks = [k for k in diff if koa[k]["openings"] == kp3[k]["openings"]]
+print(f"   LEAK TEST (section 8): changed games with both openings unchanged: {len(leaks)}"
+      + (f" -> REFUTED, e.g. {leaks[:5]}" if leaks else " -> none"))
+trans = defaultdict(int)
+for k in diff:
+    # "openings" lists the first-named deck's opening Active, then the second's (by deck, not by seat); Altaria is the
+    # first-named deck in all its pairings.
+    trans[(kp3[k]["openings"][0], koa[k]["openings"][0])] += 1
+print("   Altaria's opening transitions in changed games (kp3 -> koa3): " +
+      ", ".join(f"{a}->{b} {n}" for (a, b), n in sorted(trans.items(), key=lambda x: -x[1])))
 # 2. (b) score.py on the 28 cells, rules v2, with the mixed rows
 mix = [os.path.join(HERE, f"mixed_koa3_{s}.jsonl") for s in ("first", "second")]
 cmd = [sys.executable, os.path.join(RES, "table_readings_2026-09-24", "score.py"), "--rules", "v2",
@@ -114,9 +125,13 @@ def panel(path):
     return out
 
 
-a5, b5 = panel(os.path.join(KPF, "b2e_kp3.jsonl")), panel(os.path.join(HERE, "b2e_koa3.jsonl"))
+if not os.path.exists(os.path.join(HERE, "b2e_koa3.jsonl")):
+    print("5. held-out: b2e_koa3.jsonl not in yet")
+    a5 = {}
+else:
+    a5, b5 = panel(os.path.join(KPF, "b2e_kp3.jsonl")), panel(os.path.join(HERE, "b2e_koa3.jsonl"))
+    print("5. held-out (B2e archetypes, Limitless pooled):")
 names = sorted({k for k, _ in lim["pooled"]})
-print("5. held-out (B2e archetypes, Limitless pooled):")
 for k in sorted(a5):
     arch = next((n for n in names if n == k), None) or next((n for n in names if n.startswith(k)), None)
     cells = [o for o in a5[k] if (arch, o) in lim["pooled"]]
