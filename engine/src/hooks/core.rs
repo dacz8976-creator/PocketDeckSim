@@ -725,7 +725,11 @@ fn get_metal_core_barrier_reduction(
     let defending_pokemon = &state.in_play_pokemon[target_player][target_idx]
         .as_ref()
         .expect("Defending Pokemon should be there when checking Metal Core Barrier");
-    // Metal Core Barrier: "The [M] Pokémon this card is attached to takes -50 damage..."
+    metal_core_barrier_reduction(state, defending_pokemon)
+}
+
+/// Metal Core Barrier on `defending_pokemon`: "The [M] Pokémon this card is attached to takes -50 damage..."
+fn metal_core_barrier_reduction(state: &State, defending_pokemon: &PlayedCard) -> u32 {
     if has_tool(defending_pokemon, CardId::B2148MetalCoreBarrier)
         && state.pokemon_is_type(defending_pokemon, EnergyType::Metal)
     {
@@ -1191,8 +1195,12 @@ fn get_increased_vulnerability_modifiers(
         .sum::<u32>()
 }
 
+/// The turn effects registered for `turn` that cut the damage `attacking_pokemon`'s attack does to `target_pokemon`.
+/// `modify_damage` reads the current turn; kt's clock reads the threat's first attack turn
+/// ([`temporary_defender_reduction`]).
 fn get_turn_effect_damage_reduction(
     state: &State,
+    turn: u8,
     target_player: usize,
     target_pokemon: &crate::models::PlayedCard,
     attacking_player: usize,
@@ -1205,7 +1213,7 @@ fn get_turn_effect_damage_reduction(
     let target_energy_types = state.pokemon_energy_types(target_pokemon);
     let attacker_is_ex = attacking_pokemon.card.is_ex();
     state
-        .get_current_turn_effects()
+        .get_turn_effects(turn)
         .iter()
         .filter_map(|effect| match effect {
             TurnEffect::ReducedDamageForType {
@@ -1374,6 +1382,7 @@ fn finite_damage_reductions(
         ),
         turn_effect: get_turn_effect_damage_reduction(
             state,
+            state.turn_count,
             target_player,
             receiving_pokemon,
             attacking_player,
@@ -1745,6 +1754,68 @@ pub(crate) fn persistent_defender_damage(
         return (0.0, later);
     }
     (first, later)
+}
+
+/// kt's switch 1 (`rl/results/kt_2026-09-26/README.md`): the defender's temporary damage cuts still live on `turn`,
+/// for `attacker`'s attack (`context`) on `victim` (`victim_owner`'s). The attack is made from the Active Spot onto
+/// the victim as the Active, as kp's clock counts every hit. It sums the stages of `modify_damage` that don't last:
+/// - the turn effects registered for `turn` (Jasmine, Cheren, Blue: `ReducedDamageForTarget`,
+///   `ReducedDamageForType`), with their scope and only-from-ex conditions (`get_turn_effect_damage_reduction`);
+/// - the victim's own `ReducedDamage` and `ReducedDamageFromEx` card effects (Stiffen, Steel Wing) still live on
+///   `turn`: an effect with `d` turns left is live through the current turn + `d` (`PlayedCard::end_turn_maintenance`);
+/// - Metal Core Barrier, only when `turn` is the holder's opponent's next turn: the engine discards it at the end of
+///   that turn whether or not it was hit (`on_end_turn`).
+///
+/// An attack whose text ignores effects on the opponent's Active gets none of them, as in `modify_damage`. For
+/// `turn` the current turn, it is what `modify_damage` subtracts at those stages (pinned by a test). Weakness isn't
+/// applied: the clock's damage is its unweakened estimate.
+pub(crate) fn temporary_defender_reduction(
+    state: &State,
+    victim_owner: usize,
+    victim: &PlayedCard,
+    attacker: &PlayedCard,
+    context: DamageModifierContext<'_>,
+    turn: u32,
+) -> u32 {
+    if attack_ignores_opponent_active_effects(context) {
+        return 0;
+    }
+    let now = state.turn_count as u32;
+    let turn_effects = u8::try_from(turn).map_or(0, |turn| {
+        get_turn_effect_damage_reduction(state, turn, victim_owner, victim, 1 - victim_owner, attacker, true)
+    });
+    let card_effects: u32 = victim
+        .get_effects()
+        .iter()
+        .filter(|(_, turns_left)| turn <= now + *turns_left as u32)
+        .map(|(effect, _)| match effect {
+            CardEffect::ReducedDamage { amount } => *amount,
+            CardEffect::ReducedDamageFromEx { amount } if attacker.card.is_ex() => *amount,
+            _ => 0,
+        })
+        .sum();
+    let barrier_turn = if state.current_player == victim_owner { now + 1 } else { now };
+    let barrier = if turn == barrier_turn && victim.has_tool_attached() {
+        metal_core_barrier_reduction(state, victim)
+    } else {
+        0
+    };
+    turn_effects + card_effects + barrier
+}
+
+/// kt's switch 1: the defender's lasting damage-cut Tools, Heavy Helmet and Steel Apron, as
+/// `persistent_defender_damage` computes them for an opponent's attack (`context`) on `victim` (`victim_owner`'s) as
+/// the Active; 0 for an attack whose text ignores effects on the opponent's Active.
+pub(crate) fn permanent_tool_reduction(
+    state: &State,
+    victim_owner: usize,
+    victim: &PlayedCard,
+    context: DamageModifierContext<'_>,
+) -> u32 {
+    if !victim.has_tool_attached() || attack_ignores_opponent_active_effects(context) {
+        return 0;
+    }
+    heavy_helmet_reduction(state, victim_owner, victim, true) + steel_apron_reduction(state, victim)
 }
 
 // TODO: Confirm is_from_attack and goes to enemy active
@@ -3235,5 +3306,173 @@ mod persistent_defender_damage_tests {
         let skarmory =
             mon(CardId::A2111Skarmory).with_tool(get_card_by_enum(CardId::B2148MetalCoreBarrier));
         assert_eq!(both(skarmory, mon(CardId::A1001Bulbasaur), 40), ((40.0, 40.0), 0.0));
+    }
+}
+
+#[cfg(test)]
+mod temporary_defender_reduction_tests {
+    //! kt's switch 1 hooks. For the current turn, `temporary_defender_reduction` is what `modify_damage` subtracts
+    //! at its temporary stages; for a later turn it keeps only what is still live then.
+    use super::*;
+    use crate::database::get_card_by_enum;
+
+    fn mon(id: CardId) -> PlayedCard {
+        PlayedCard::from_id(id)
+    }
+
+    /// Player 0 defends with `defender` as its Active; player 1 attacks with `attacker` and is to move.
+    fn duel(defender: PlayedCard, attacker: PlayedCard) -> State {
+        let mut state = State::default();
+        state.set_board(vec![defender], vec![attacker]);
+        state.turn_count = 5;
+        state.current_player = 1;
+        state
+    }
+
+    const PLAIN: DamageModifierContext<'static> = DamageModifierContext { attack_name: None, attack_effect: None };
+
+    fn temporary_on(state: &State, turn: u32) -> u32 {
+        temporary_defender_reduction(state, 0, state.get_active(0), state.get_active(1), PLAIN, turn)
+    }
+
+    /// The hook for the current turn, `modify_damage`'s own temporary stages, and what `modify_damage` takes off
+    /// `base` in all (no Weakness and no other modifier on these boards).
+    fn pinned(state: &State, base: u32) -> (u32, u32, u32) {
+        let stages = finite_damage_reductions(state, (1, 0), (0, 0), true, false);
+        (
+            temporary_on(state, state.turn_count as u32),
+            stages.card_effect + stages.turn_effect + stages.metal_core_barrier,
+            base - modify_damage(state, (1, 0), (base, 0, 0), true, PLAIN),
+        )
+    }
+
+    fn blue(state: &mut State, only_from_ex: bool, scope: DamageReductionScope) {
+        state.add_turn_effect(
+            TurnEffect::ReducedDamageForTarget { amount: 20, player: 0, scope, only_from_ex },
+            1,
+        );
+    }
+
+    #[test]
+    fn for_the_current_turn_it_is_what_modify_damage_subtracts() {
+        // Nothing temporary: 0.
+        let state = duel(mon(CardId::A1001Bulbasaur), mon(CardId::B1180Pidgey));
+        assert_eq!(pinned(&state, 30), (0, 0, 0));
+        // A ReducedDamage card effect on the defender (Stiffen's kind).
+        let mut bulbasaur = mon(CardId::A1001Bulbasaur);
+        bulbasaur.add_effect(CardEffect::ReducedDamage { amount: 20 }, 1);
+        assert_eq!(pinned(&duel(bulbasaur.clone(), mon(CardId::B1180Pidgey)), 30), (20, 20, 20));
+        // ReducedDamageFromEx: against an ex only.
+        let mut shielded = mon(CardId::A1001Bulbasaur);
+        shielded.add_effect(CardEffect::ReducedDamageFromEx { amount: 30 }, 1);
+        assert_eq!(pinned(&duel(shielded.clone(), mon(CardId::A1129MewtwoEx)), 50), (30, 30, 30));
+        assert_eq!(pinned(&duel(shielded, mon(CardId::B1180Pidgey)), 30), (0, 0, 0));
+        // A turn effect on all the defender's Pokemon (Blue), and one only against an ex.
+        let mut state = duel(mon(CardId::A1001Bulbasaur), mon(CardId::B1180Pidgey));
+        blue(&mut state, false, DamageReductionScope::AllPokemon);
+        assert_eq!(pinned(&state, 30), (20, 20, 20));
+        let mut state = duel(mon(CardId::A1001Bulbasaur), mon(CardId::B1180Pidgey));
+        blue(&mut state, true, DamageReductionScope::AllPokemon);
+        assert_eq!(pinned(&state, 30), (0, 0, 0));
+        let mut state = duel(mon(CardId::A1001Bulbasaur), mon(CardId::A1129MewtwoEx));
+        blue(&mut state, true, DamageReductionScope::AllPokemon);
+        assert_eq!(pinned(&state, 50), (20, 20, 20));
+        // A named scope (Jasmine's kind) covers only the names it lists.
+        let skarmory_only = || DamageReductionScope::NamedPokemon(vec!["Skarmory".to_string()]);
+        let mut state = duel(mon(CardId::A2111Skarmory), mon(CardId::B1180Pidgey));
+        blue(&mut state, false, skarmory_only());
+        assert_eq!(pinned(&state, 30), (20, 20, 20));
+        let mut state = duel(mon(CardId::A1001Bulbasaur), mon(CardId::B1180Pidgey));
+        blue(&mut state, false, skarmory_only());
+        assert_eq!(pinned(&state, 30), (0, 0, 0));
+        // A turn effect for one type of the defender's.
+        let metal = TurnEffect::ReducedDamageForType { amount: 10, energy_type: EnergyType::Metal, player: 0 };
+        let mut state = duel(mon(CardId::A2111Skarmory), mon(CardId::B1180Pidgey));
+        state.add_turn_effect(metal.clone(), 1);
+        assert_eq!(pinned(&state, 30), (10, 10, 10));
+        let mut state = duel(mon(CardId::A1001Bulbasaur), mon(CardId::B1180Pidgey));
+        state.add_turn_effect(metal, 1);
+        assert_eq!(pinned(&state, 30), (0, 0, 0));
+        // Metal Core Barrier, on a [M] holder only.
+        let barrier = || get_card_by_enum(CardId::B2148MetalCoreBarrier);
+        let state = duel(mon(CardId::A2111Skarmory).with_tool(barrier()), mon(CardId::B1180Pidgey));
+        assert_eq!(pinned(&state, 60), (50, 50, 50));
+        let state = duel(mon(CardId::A1001Bulbasaur).with_tool(barrier()), mon(CardId::B1180Pidgey));
+        assert_eq!(pinned(&state, 30), (0, 0, 0));
+        // Everything at once adds up, floored at 0 in modify_damage only.
+        let mut skarmory = mon(CardId::A2111Skarmory).with_tool(barrier());
+        skarmory.add_effect(CardEffect::ReducedDamage { amount: 20 }, 1);
+        let mut state = duel(skarmory, mon(CardId::B1180Pidgey));
+        blue(&mut state, false, DamageReductionScope::AllPokemon);
+        assert_eq!(pinned(&state, 100), (90, 90, 90));
+    }
+
+    #[test]
+    fn a_later_turn_keeps_only_what_is_still_live() {
+        // A card effect with 1 turn left is live this turn and the next, not after.
+        let mut bulbasaur = mon(CardId::A1001Bulbasaur);
+        bulbasaur.add_effect(CardEffect::ReducedDamage { amount: 20 }, 1);
+        let state = duel(bulbasaur, mon(CardId::B1180Pidgey));
+        assert_eq!((temporary_on(&state, 5), temporary_on(&state, 6), temporary_on(&state, 7)), (20, 20, 0));
+        // A turn effect registered for this turn and the next (Blue, Jasmine, Cheren).
+        let mut state = duel(mon(CardId::A1001Bulbasaur), mon(CardId::B1180Pidgey));
+        blue(&mut state, false, DamageReductionScope::AllPokemon);
+        assert_eq!((temporary_on(&state, 5), temporary_on(&state, 6), temporary_on(&state, 7)), (20, 20, 0));
+        // Metal Core Barrier: the holder's opponent's next turn only. The attacker to move: this turn.
+        let barrier_state = |to_move: usize| {
+            let mut state = duel(
+                mon(CardId::A2111Skarmory).with_tool(get_card_by_enum(CardId::B2148MetalCoreBarrier)),
+                mon(CardId::B1180Pidgey),
+            );
+            state.current_player = to_move;
+            state
+        };
+        let state = barrier_state(1);
+        assert_eq!((temporary_on(&state, 5), temporary_on(&state, 6), temporary_on(&state, 7)), (50, 0, 0));
+        // The holder to move: the opponent's turn after this one.
+        let state = barrier_state(0);
+        assert_eq!((temporary_on(&state, 5), temporary_on(&state, 6), temporary_on(&state, 7)), (0, 50, 0));
+        // A turn past the u8 turn counter reads no turn effect and no card effect.
+        assert_eq!(temporary_on(&state, 400), 0);
+    }
+
+    #[test]
+    fn an_attack_that_ignores_the_defenders_effects_gets_no_cut() {
+        let ignores = DamageModifierContext {
+            attack_name: None,
+            attack_effect: Some(DAMAGE_UNAFFECTED_BY_OPPONENT_ACTIVE_EFFECTS_EFFECT),
+        };
+        let mut skarmory = mon(CardId::A2111Skarmory).with_tool(get_card_by_enum(CardId::B2148MetalCoreBarrier));
+        skarmory.add_effect(CardEffect::ReducedDamage { amount: 20 }, 1);
+        let mut state = duel(skarmory, mon(CardId::B1180Pidgey));
+        blue(&mut state, false, DamageReductionScope::AllPokemon);
+        assert_eq!(temporary_defender_reduction(&state, 0, state.get_active(0), state.get_active(1), ignores, 5), 0);
+        assert_eq!(modify_damage(&state, (1, 0), (100, 0, 0), true, ignores), 100);
+        let apron = mon(CardId::A2111Skarmory).with_tool(get_card_by_enum(CardId::A4153SteelApron));
+        let state = duel(apron, mon(CardId::B1180Pidgey));
+        assert_eq!(permanent_tool_reduction(&state, 0, state.get_active(0), ignores), 0);
+        assert_eq!(permanent_tool_reduction(&state, 0, state.get_active(0), PLAIN), 10);
+    }
+
+    #[test]
+    fn the_lasting_tools_are_what_persistent_defender_damage_takes_off() {
+        let lasting = |defender: PlayedCard, base: u32| {
+            let state = duel(defender, mon(CardId::A1001Bulbasaur));
+            let (defender, attacker) = (state.get_active(0), state.get_active(1));
+            let (first, _) = persistent_defender_damage(&state, 1, attacker, 0, defender, base, PLAIN, DefenderHit::Active);
+            (permanent_tool_reduction(&state, 0, defender, PLAIN), base - first as u32)
+        };
+        // Heavy Helmet on a Retreat Cost 3 Pokemon: 20; on a Retreat Cost 1 Pokemon: 0.
+        let helmet = || get_card_by_enum(CardId::B1219HeavyHelmet);
+        assert_eq!(lasting(mon(CardId::B3b055Snorlax).with_tool(helmet()), 40), (20, 20));
+        assert_eq!(lasting(mon(CardId::A2111Skarmory).with_tool(helmet()), 40), (0, 0));
+        // Steel Apron on a Metal Pokemon: 10; on a Grass one: 0.
+        let apron = || get_card_by_enum(CardId::A4153SteelApron);
+        assert_eq!(lasting(mon(CardId::A2111Skarmory).with_tool(apron()), 40), (10, 10));
+        assert_eq!(lasting(mon(CardId::B3b055Snorlax).with_tool(apron()), 40), (0, 0));
+        // Metal Core Barrier is temporary, not lasting; no Tool is 0.
+        let barrier = get_card_by_enum(CardId::B2148MetalCoreBarrier);
+        assert_eq!(lasting(mon(CardId::A2111Skarmory).with_tool(barrier), 40), (0, 0));
+        assert_eq!(lasting(mon(CardId::A2111Skarmory), 40), (0, 0));
     }
 }
