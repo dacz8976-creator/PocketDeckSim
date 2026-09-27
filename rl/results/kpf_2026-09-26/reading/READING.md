@@ -18,6 +18,18 @@
   - **R alone (kpr3)** is almost the same as kpf: real error 12.5, ΔMSE −84.7, with the same vetoes firing (its mixed rows weren't run).
   - **F alone (kpg3)**, the discard-Energy credit, is a clean improvement: real error 15.5 → 14.0, ΔMSE −43.2 (−62.2 to −26.5), and **no veto fires**. By the rule it reads "adopt", pending the held-out check, which wasn't run for kpg3.
   - But the registration made kpg a diagnostic, never adopted. Whether to register it as a candidate is Dustin's call.
+- **Traces and the hoarding check** (registration sections 6 and 9; 200 Rayquaza v Lucario deals with kp3 on Lucario, on the official build).
+
+  | Rayquaza's pilot | wins / 200 | Scorching Interruption used | Mega Burst used | Rainbow Cave played / effect used | discard Energy at end | retreats / game | recoveries / game |
+  |---|---:|---:|---:|---:|---:|---:|---:|
+  | kp3 | 43 | 103/180 | 97/159 | 17% / 33% | 3.3 | 0.85 | 2.1 |
+  | kpr3 | 109 | 236/241 | 135/154 | 28% / 40% | 3.7 | 0.84 | 2.5 |
+  | kpg3 | 59 | 150/223 | 105/171 | 50% / 60% | 4.6 | 0.79 | 2.4 |
+  | kpf3 | 110 | 254/262 | 141/155 | 50% / 57% | 4.7 | 0.85 | 2.6 |
+
+  - R is what makes Rayquaza attack. F is what makes it use Rainbow Cave: about half the time, as Dustin plays it, against a third.
+  - **No sign of hoarding.** Retreats are flat and recoveries rise with the Energy in the pile. The attacks that discard are used more, not less.
+  - Rayquaza v Lucario is still short of real play: 55% against 64-73%.
 - **Open causes, as registered:** Hydreigon's overshoot, and now the three vetoed cells. Altaria/Greninja's gap is still undiagnosed.
 
 ## Files
