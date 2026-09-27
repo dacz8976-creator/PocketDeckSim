@@ -391,6 +391,23 @@ sides with k3 still available; the 0.7.2 wheel and its run identities are untouc
   direction (Dustin, Sept 25): on the holdout alone, the τ̂ margin must be at least half the development half's and its
   own 90% interval must lie above zero; the pooled interval and the sign are reported beside it but cannot confirm on
   their own.
+- **Engine repairs: the switch procedure and the "reaches the mechanic" rule** (Dustin, Sept 26-27; worked example in `results/engine_switch_2026-09-26/`).
+  - **Replays:** replay every repair on the table (k3 and kp3, 14,000 games each), and list the games each one changes.
+  - **The mechanic check:** a repaired engine becomes official only if every changed game reaches that repair's mechanic.
+    - A game reaches it either on the board, or **in the bot's lookahead**: inside a line the bot's search examined, where the changed outcome changed its choice.
+    - "In lookahead" counts only with both halves present:
+      1. a code path gated on the mechanic's condition, so the fix cannot run otherwise;
+      2. a trace showing that condition reachable within the bot's search depth at the game's first divergence.
+    - A fix without a gate, or a divergence with no reachable condition, fails. That engine waits.
+  - **The standing template for every repair:**
+    - the gate, read in the code;
+    - watch-only instrumentation counting the mechanic per game, checked to change no play;
+    - a move-by-move trace of each changed game without an on-board firing, to its first divergence.
+  - **Worked example (Sept 26-27), the promotion fix (5bab907):**
+    - 7,437 of its 7,461 changed games had an on-board end-of-turn or Checkup Knock Out.
+    - The other 24 first split at a turn where a Checkup Knock Out was within the bots' reach: 22 plainly, 2 through an attack plus Burn. All were in the cells where its on-board changes are.
+    - Its code runs only when a promotion is pending after the Checkup. So it passed.
+  - **Baselines move with the engine.** k3 and kp3 on all 45 scoreboard cells at the new engine become the frozen table. Earlier tables stay as history with their hashes. Every reading uses baselines from the same engine as the candidate, with no exceptions.
 - **A "not adopted" is provisional until the coverage decks are read** (Dustin, Sept 26 evening, registered as a rule).
   - It has happened twice:
     - kp3 was vetoed, then found to be the fix.

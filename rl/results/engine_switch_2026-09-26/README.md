@@ -15,7 +15,13 @@ Dustin approved making the repaired engine official, on one condition: "for each
     - **22 plainly:** a Poisoned, Burned or Asleep Active at 10-30 HP, or a 30-HP Active facing the Poison deck (Hoopa ex / Weezing ex / Deceptive Needle) or Altaria's Bad Dreams.
     - **2 less plainly** (Grovyle 60 v Blaziken's deck; Darkrai ex 90 v Castform 70): it needs an attack plus Burn in the same turn.
   - All 24 are in the Weezing, Altaria (Bad Dreams) and Blaziken (Burn) cells, like the fix's other changes.
-  - So the 24 are the same fix acting inside the bots' lookahead, not a different rule. Whether that meets "reaches the mechanic" is Dustin's call; the evidence is here.
+  - So the 24 are the same fix acting inside the bots' lookahead, not a different rule.
+- **Dustin's ruling (Sept 27): it counts. The rule is restated** (RUN5 "Rules", "Engine repairs").
+  - "The second is the engine's rule reaching the game through the bot's imagination, and it's the same fix, not a different one. Excluding it would mean no rule fix that a bot can anticipate could ever pass the check, which is backwards."
+  - The guard: "'in lookahead' counts only when both halves are present — a code path gated on the mechanic's condition, and a trace showing the condition reachable within the bot's search depth at the first divergence."
+  - These 24 are the worked example.
+  - The check (gate in the code, instrumentation, trace to the first divergence) is the standing template for every future repair.
+  - **So the repaired engine passes and becomes official.**
 
 ## Files
 
