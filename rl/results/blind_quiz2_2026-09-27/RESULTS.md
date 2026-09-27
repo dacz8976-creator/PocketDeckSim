@@ -88,6 +88,14 @@ How the close calls were settled (both graders agreed on each):
    - **Q07 note on the opponent.** The opponent (kp3 in both games) attached Fire to an Asleep Heatmor that Bad Dreams then knocked out at the end of the turn. The bot may not foresee end-of-turn Bad Dreams damage when it picks where to attach. Worth a quick check; it is not part of this diagnosis.
 5. **Page note.** In Q02 he asked "Who did hitmonlee hit last turn?". The log line reads "Hitmonlee attacked with Stretch Kick" with no result, because the opponent had no Benched Pokémon then. Future quiz pages should say it did nothing.
 
+## 4a. Dustin's answers to the follow-ups (Sept 27)
+
+1. **Q08: yes, the Active Darkrai.** "That deck works with darkrai on the bench, I'm trying to get him to the bench asap."
+   - Darkrai B2b 040's Bad Dreams works from anywhere, while Dark Slumber costs [CCC] and its Retreat Cost is 2 (`lib/card.py`). So the P on the Active Darkrai is retreat fuel.
+   - That is the missing mechanism of section 3 (Energy on the Active as retreat fuel). It also backs koa's part B idea: Altaria shouldn't have Darkrai in front (`../koa_2026-09-26/reading/READING.md`, diagnostics).
+2. **Q09: the hide wastes an Energy.** "You are basically wasting an energy to put it on the active riolu, retreat and promote hitmonlee who can't attack. Next turn, that's what I would do."
+   - So kpf's "helpful" Lucario hide (15/30 in the diagnosis) is the right idea a turn too early. kph dropping it is expected, not an overshoot.
+
 ## 4. Follow-up questions (only two needed)
 
 1. **Q08 (confirmation):** When you wrote "attach energy to darkrai", did you mean the Active Darkrai (80 HP), so it could retreat into Igglybuff next turn?
