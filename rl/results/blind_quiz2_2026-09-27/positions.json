@@ -1,0 +1,4102 @@
+[
+ {
+  "id": "Q01",
+  "order": 1,
+  "matchup": {
+   "you": "Lucario"
+  },
+  "turn": 3,
+  "you_went_first": true,
+  "situation": "Your turn (your 2nd turn; turn 3 of the game).",
+  "points": {
+   "you": 0,
+   "opponent": 0
+  },
+  "you": {
+   "active": {
+    "name": "Bonsly",
+    "stage": 0,
+    "type": "Fighting",
+    "hp": 30,
+    "max_hp": 30,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": null,
+    "attacks": [
+     {
+      "name": "Teary Attack",
+      "cost": [],
+      "damage": "10",
+      "text": "During your opponent's next turn, attacks used by the Defending Pokémon do -30 damage."
+     }
+    ],
+    "weakness": null,
+    "retreat": 0,
+    "retreat_now": 0,
+    "retreat_note": null,
+    "ko_points": 1,
+    "notes": []
+   },
+   "bench": [
+    null,
+    null,
+    {
+     "name": "Riolu",
+     "stage": 0,
+     "type": "Fighting",
+     "hp": 60,
+     "max_hp": 60,
+     "energy": [],
+     "tools": [],
+     "conditions": [],
+     "ability": null,
+     "attacks": [
+      {
+       "name": "Fighting Fist",
+       "cost": [
+        "Fighting"
+       ],
+       "damage": "10+",
+       "text": "If your opponent's Active Pokémon is a Pokémon ex, this attack does 30 more damage."
+      }
+     ],
+     "weakness": "Psychic",
+     "retreat": 1,
+     "retreat_now": 1,
+     "retreat_note": null,
+     "ko_points": 1,
+     "notes": []
+    }
+   ],
+   "deck_count": 12,
+   "discard": [
+    "Poké Ball"
+   ],
+   "discard_energy": [],
+   "energy_zone": {
+    "this_turn": "Fighting",
+    "next": "Fighting",
+    "lines": [
+     "This turn: Fighting",
+     "Next: Fighting"
+    ]
+   },
+   "hand": [
+    {
+     "name": "Mega Lucario ex",
+     "kind": "Stage 1 Pokémon",
+     "text": "Stage 1 Pokémon, HP 190, Fighting type, evolves from Riolu. Gives 3 points when Knocked Out. Attack Fighting Pulse [Fighting Fighting] 90+: If this Pokémon has at least 1 extra Fighting Energy attached, this attack does 50 more damage. Weakness: Psychic. Retreat: 1."
+    },
+    {
+     "name": "Mega Lucario ex",
+     "kind": "Stage 1 Pokémon",
+     "text": "Stage 1 Pokémon, HP 190, Fighting type, evolves from Riolu. Gives 3 points when Knocked Out. Attack Fighting Pulse [Fighting Fighting] 90+: If this Pokémon has at least 1 extra Fighting Energy attached, this attack does 50 more damage. Weakness: Psychic. Retreat: 1."
+    },
+    {
+     "name": "Pokémon Center Lady",
+     "kind": "Supporter",
+     "text": "Heal 30 damage from 1 of your Pokémon, and it recovers from all Special Conditions."
+    },
+    {
+     "name": "Professor's Research",
+     "kind": "Supporter",
+     "text": "Draw 2 cards."
+    },
+    {
+     "name": "X Speed",
+     "kind": "Item",
+     "text": "During this turn, the Retreat Cost of your Active Pokémon is 1 less."
+    }
+   ],
+   "decklist": [
+    {
+     "name": "Bonsly",
+     "kind": "Basic Pokémon",
+     "text": "Basic Pokémon, HP 30, Fighting type. Attack Teary Attack [no Energy] 10: During your opponent's next turn, attacks used by the Defending Pokémon do -30 damage. Weakness: none. Retreat: 0.",
+     "count": 1,
+     "left": 0
+    },
+    {
+     "name": "Hitmonlee",
+     "kind": "Basic Pokémon",
+     "text": "Basic Pokémon, HP 80, Fighting type. Attack Stretch Kick [Fighting]: This attack does 30 damage to 1 of your opponent's Benched Pokémon. Weakness: Psychic. Retreat: 1.",
+     "count": 1,
+     "left": 1
+    },
+    {
+     "name": "Riolu",
+     "kind": "Basic Pokémon",
+     "text": "Basic Pokémon, HP 60, Fighting type. Attack Fighting Fist [Fighting] 10+: If your opponent's Active Pokémon is a Pokémon ex, this attack does 30 more damage. Weakness: Psychic. Retreat: 1.",
+     "count": 2,
+     "left": 1
+    },
+    {
+     "name": "Lucario",
+     "kind": "Stage 1 Pokémon",
+     "text": "Stage 1 Pokémon, HP 100, Fighting type, evolves from Riolu. Ability Fighting Coach: Attacks used by your Fighting Pokémon do +20 damage to your opponent's Active Pokémon. Attack Submarine Blow [Fighting Fighting] 40. Weakness: Psychic. Retreat: 2.",
+     "count": 1,
+     "left": 1
+    },
+    {
+     "name": "Mega Lucario ex",
+     "kind": "Stage 1 Pokémon",
+     "text": "Stage 1 Pokémon, HP 190, Fighting type, evolves from Riolu. Gives 3 points when Knocked Out. Attack Fighting Pulse [Fighting Fighting] 90+: If this Pokémon has at least 1 extra Fighting Energy attached, this attack does 50 more damage. Weakness: Psychic. Retreat: 1.",
+     "count": 2,
+     "left": 0
+    },
+    {
+     "name": "Copycat",
+     "kind": "Supporter",
+     "text": "Shuffle your hand into your deck. Draw a card for each card in your opponent's hand.",
+     "count": 2,
+     "left": 2
+    },
+    {
+     "name": "Cyrus",
+     "kind": "Supporter",
+     "text": "Switch in 1 of your opponent's Benched Pokémon that has damage on it to the Active Spot.",
+     "count": 1,
+     "left": 1
+    },
+    {
+     "name": "Korrina",
+     "kind": "Supporter",
+     "text": "During this turn, attacks used by your Fighting Pokémon do +30 damage to your opponent's Active Pokémon ex.",
+     "count": 1,
+     "left": 1
+    },
+    {
+     "name": "Pokémon Center Lady",
+     "kind": "Supporter",
+     "text": "Heal 30 damage from 1 of your Pokémon, and it recovers from all Special Conditions.",
+     "count": 1,
+     "left": 0
+    },
+    {
+     "name": "Professor's Research",
+     "kind": "Supporter",
+     "text": "Draw 2 cards.",
+     "count": 2,
+     "left": 1
+    },
+    {
+     "name": "Field Blower",
+     "kind": "Item",
+     "text": "Discard a Pokémon Tool card from a Pokémon (yours or your opponent's), or discard a Stadium card in play.",
+     "count": 1,
+     "left": 1
+    },
+    {
+     "name": "Poké Ball",
+     "kind": "Item",
+     "text": "Put a random Basic Pokémon from your deck into your hand.",
+     "count": 2,
+     "left": 1
+    },
+    {
+     "name": "X Speed",
+     "kind": "Item",
+     "text": "During this turn, the Retreat Cost of your Active Pokémon is 1 less.",
+     "count": 1,
+     "left": 0
+    },
+    {
+     "name": "Protective Poncho",
+     "kind": "Pokémon Tool",
+     "text": "As long as the Pokémon this card is attached to is on your Bench, prevent all damage done to that Pokémon by your opponent's attacks and Abilities.",
+     "count": 1,
+     "left": 1
+    },
+    {
+     "name": "Arena of Antiquity",
+     "kind": "Stadium",
+     "text": "Attacks used by each Fighting Pokémon in play (both yours and your opponent's) do +20 damage to the opponent's Active Pokémon ex.",
+     "count": 1,
+     "left": 1
+    }
+   ],
+   "energy_types": [
+    "Fighting"
+   ],
+   "supporter_played_this_turn": false,
+   "retreated_this_turn": false
+  },
+  "opponent": {
+   "active": {
+    "name": "Mega Absol ex",
+    "stage": 0,
+    "type": "Darkness",
+    "hp": 160,
+    "max_hp": 170,
+    "energy": [
+     "Darkness"
+    ],
+    "tools": [],
+    "conditions": [],
+    "ability": null,
+    "attacks": [
+     {
+      "name": "Darkness Claw",
+      "cost": [
+       "Darkness",
+       "Darkness"
+      ],
+      "damage": "80",
+      "text": "Your opponent reveals their hand. Choose a Supporter card you find there and discard it."
+     }
+    ],
+    "weakness": "Grass",
+    "retreat": 1,
+    "retreat_now": 1,
+    "retreat_note": null,
+    "ko_points": 3,
+    "notes": []
+   },
+   "bench": [
+    null,
+    null,
+    {
+     "name": "Deino",
+     "stage": 0,
+     "type": "Darkness",
+     "hp": 60,
+     "max_hp": 60,
+     "energy": [],
+     "tools": [],
+     "conditions": [],
+     "ability": null,
+     "attacks": [
+      {
+       "name": "Headbutt",
+       "cost": [
+        "Darkness"
+       ],
+       "damage": "20",
+       "text": ""
+      }
+     ],
+     "weakness": "Grass",
+     "retreat": 1,
+     "retreat_now": 1,
+     "retreat_note": null,
+     "ko_points": 1,
+     "notes": []
+    }
+   ],
+   "deck_count": 13,
+   "discard": [
+    "Poké Ball"
+   ],
+   "discard_energy": [],
+   "energy_zone": {
+    "next": "Darkness",
+    "lines": [
+     "Next: Darkness"
+    ]
+   },
+   "hand_count": 4
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "this_turn_so_far": [],
+  "log": [
+   {
+    "turn": 0,
+    "who": "setup",
+    "header": "Setup",
+    "lines": [
+     "You: started with Bonsly (Active)",
+     "Opponent: started with Mega Absol ex (Active)"
+    ]
+   },
+   {
+    "turn": 1,
+    "who": "you",
+    "header": "Turn 1 - You",
+    "lines": [
+     "You: Played Poké Ball (Item)",
+     "You: Put Riolu on Bench 3",
+     "You: Bonsly attacked with Teary Attack (10) → did 10 damage to opponent's Mega Absol ex (Active)"
+    ]
+   },
+   {
+    "turn": 2,
+    "who": "opponent",
+    "header": "Turn 2 - Opponent",
+    "lines": [
+     "Opponent: Played Poké Ball (Item)",
+     "Opponent: Put Deino on Bench 3",
+     "Opponent: Attached Darkness Energy to Mega Absol ex (Active)",
+     "Opponent: Ended the turn without attacking"
+    ]
+   }
+  ],
+  "options": [
+   {
+    "key": "3",
+    "group": "Attack",
+    "text": "Attack with Teary Attack (10 damage): During your opponent's next turn, attacks used by the Defending Pokémon do -30 damage."
+   },
+   {
+    "key": "7",
+    "group": "Trainers",
+    "text": "Play Professor's Research (Supporter): Draw 2 cards."
+   },
+   {
+    "key": "6",
+    "group": "Trainers",
+    "text": "Play X Speed (Item): During this turn, the Retreat Cost of your Active Pokémon is 1 less."
+   },
+   {
+    "key": "1",
+    "group": "Energy",
+    "text": "Attach Fighting Energy to Bonsly (Active)"
+   },
+   {
+    "key": "2",
+    "group": "Energy",
+    "text": "Attach Fighting Energy to Riolu (Bench 3)"
+   },
+   {
+    "key": "4",
+    "group": "Pokémon",
+    "text": "Evolve Riolu (Bench 3) into Mega Lucario ex"
+   },
+   {
+    "key": "8",
+    "group": "Retreat",
+    "text": "Retreat Bonsly (Active) and switch in Riolu (Bench 3); costs 0 Energy"
+   },
+   {
+    "key": "0",
+    "group": "End turn",
+    "text": "End your turn without attacking"
+   }
+  ],
+  "cant_play": [
+   "Pokémon Center Lady: none of your Pokémon has damage or a Special Condition"
+  ]
+ },
+ {
+  "id": "Q02",
+  "order": 2,
+  "matchup": {
+   "you": "Lucario"
+  },
+  "turn": 4,
+  "you_went_first": false,
+  "situation": "Your turn (your 2nd turn; turn 4 of the game).",
+  "points": {
+   "you": 0,
+   "opponent": 0
+  },
+  "you": {
+   "active": {
+    "name": "Hitmonlee",
+    "stage": 0,
+    "type": "Fighting",
+    "hp": 80,
+    "max_hp": 80,
+    "energy": [
+     "Fighting"
+    ],
+    "tools": [],
+    "conditions": [],
+    "ability": null,
+    "attacks": [
+     {
+      "name": "Stretch Kick",
+      "cost": [
+       "Fighting"
+      ],
+      "damage": null,
+      "text": "This attack does 30 damage to 1 of your opponent's Benched Pokémon."
+     }
+    ],
+    "weakness": "Psychic",
+    "retreat": 1,
+    "retreat_now": 1,
+    "retreat_note": null,
+    "ko_points": 1,
+    "notes": []
+   },
+   "bench": [
+    null,
+    {
+     "name": "Bonsly",
+     "stage": 0,
+     "type": "Fighting",
+     "hp": 30,
+     "max_hp": 30,
+     "energy": [],
+     "tools": [],
+     "conditions": [],
+     "ability": null,
+     "attacks": [
+      {
+       "name": "Teary Attack",
+       "cost": [],
+       "damage": "10",
+       "text": "During your opponent's next turn, attacks used by the Defending Pokémon do -30 damage."
+      }
+     ],
+     "weakness": null,
+     "retreat": 0,
+     "retreat_now": 0,
+     "retreat_note": null,
+     "ko_points": 1,
+     "notes": []
+    },
+    {
+     "name": "Riolu",
+     "stage": 0,
+     "type": "Fighting",
+     "hp": 60,
+     "max_hp": 60,
+     "energy": [],
+     "tools": [],
+     "conditions": [],
+     "ability": null,
+     "attacks": [
+      {
+       "name": "Fighting Fist",
+       "cost": [
+        "Fighting"
+       ],
+       "damage": "10+",
+       "text": "If your opponent's Active Pokémon is a Pokémon ex, this attack does 30 more damage."
+      }
+     ],
+     "weakness": "Psychic",
+     "retreat": 1,
+     "retreat_now": 1,
+     "retreat_note": null,
+     "ko_points": 1,
+     "notes": []
+    }
+   ],
+   "deck_count": 8,
+   "discard": [
+    "X Speed",
+    "Copycat",
+    "Poké Ball",
+    "Poké Ball"
+   ],
+   "discard_energy": [],
+   "energy_zone": {
+    "this_turn": "Fighting",
+    "next": "Fighting",
+    "lines": [
+     "This turn: Fighting",
+     "Next: Fighting"
+    ]
+   },
+   "hand": [
+    {
+     "name": "Lucario",
+     "kind": "Stage 1 Pokémon",
+     "text": "Stage 1 Pokémon, HP 100, Fighting type, evolves from Riolu. Ability Fighting Coach: Attacks used by your Fighting Pokémon do +20 damage to your opponent's Active Pokémon. Attack Submarine Blow [Fighting Fighting] 40. Weakness: Psychic. Retreat: 2."
+    },
+    {
+     "name": "Mega Lucario ex",
+     "kind": "Stage 1 Pokémon",
+     "text": "Stage 1 Pokémon, HP 190, Fighting type, evolves from Riolu. Gives 3 points when Knocked Out. Attack Fighting Pulse [Fighting Fighting] 90+: If this Pokémon has at least 1 extra Fighting Energy attached, this attack does 50 more damage. Weakness: Psychic. Retreat: 1."
+    },
+    {
+     "name": "Cyrus",
+     "kind": "Supporter",
+     "text": "Switch in 1 of your opponent's Benched Pokémon that has damage on it to the Active Spot."
+    },
+    {
+     "name": "Korrina",
+     "kind": "Supporter",
+     "text": "During this turn, attacks used by your Fighting Pokémon do +30 damage to your opponent's Active Pokémon ex."
+    },
+    {
+     "name": "Professor's Research",
+     "kind": "Supporter",
+     "text": "Draw 2 cards."
+    }
+   ],
+   "decklist": [
+    {
+     "name": "Bonsly",
+     "kind": "Basic Pokémon",
+     "text": "Basic Pokémon, HP 30, Fighting type. Attack Teary Attack [no Energy] 10: During your opponent's next turn, attacks used by the Defending Pokémon do -30 damage. Weakness: none. Retreat: 0.",
+     "count": 1,
+     "left": 0
+    },
+    {
+     "name": "Hitmonlee",
+     "kind": "Basic Pokémon",
+     "text": "Basic Pokémon, HP 80, Fighting type. Attack Stretch Kick [Fighting]: This attack does 30 damage to 1 of your opponent's Benched Pokémon. Weakness: Psychic. Retreat: 1.",
+     "count": 1,
+     "left": 0
+    },
+    {
+     "name": "Riolu",
+     "kind": "Basic Pokémon",
+     "text": "Basic Pokémon, HP 60, Fighting type. Attack Fighting Fist [Fighting] 10+: If your opponent's Active Pokémon is a Pokémon ex, this attack does 30 more damage. Weakness: Psychic. Retreat: 1.",
+     "count": 2,
+     "left": 1
+    },
+    {
+     "name": "Lucario",
+     "kind": "Stage 1 Pokémon",
+     "text": "Stage 1 Pokémon, HP 100, Fighting type, evolves from Riolu. Ability Fighting Coach: Attacks used by your Fighting Pokémon do +20 damage to your opponent's Active Pokémon. Attack Submarine Blow [Fighting Fighting] 40. Weakness: Psychic. Retreat: 2.",
+     "count": 1,
+     "left": 0
+    },
+    {
+     "name": "Mega Lucario ex",
+     "kind": "Stage 1 Pokémon",
+     "text": "Stage 1 Pokémon, HP 190, Fighting type, evolves from Riolu. Gives 3 points when Knocked Out. Attack Fighting Pulse [Fighting Fighting] 90+: If this Pokémon has at least 1 extra Fighting Energy attached, this attack does 50 more damage. Weakness: Psychic. Retreat: 1.",
+     "count": 2,
+     "left": 1
+    },
+    {
+     "name": "Copycat",
+     "kind": "Supporter",
+     "text": "Shuffle your hand into your deck. Draw a card for each card in your opponent's hand.",
+     "count": 2,
+     "left": 1
+    },
+    {
+     "name": "Cyrus",
+     "kind": "Supporter",
+     "text": "Switch in 1 of your opponent's Benched Pokémon that has damage on it to the Active Spot.",
+     "count": 1,
+     "left": 0
+    },
+    {
+     "name": "Korrina",
+     "kind": "Supporter",
+     "text": "During this turn, attacks used by your Fighting Pokémon do +30 damage to your opponent's Active Pokémon ex.",
+     "count": 1,
+     "left": 0
+    },
+    {
+     "name": "Pokémon Center Lady",
+     "kind": "Supporter",
+     "text": "Heal 30 damage from 1 of your Pokémon, and it recovers from all Special Conditions.",
+     "count": 1,
+     "left": 1
+    },
+    {
+     "name": "Professor's Research",
+     "kind": "Supporter",
+     "text": "Draw 2 cards.",
+     "count": 2,
+     "left": 1
+    },
+    {
+     "name": "Field Blower",
+     "kind": "Item",
+     "text": "Discard a Pokémon Tool card from a Pokémon (yours or your opponent's), or discard a Stadium card in play.",
+     "count": 1,
+     "left": 1
+    },
+    {
+     "name": "Poké Ball",
+     "kind": "Item",
+     "text": "Put a random Basic Pokémon from your deck into your hand.",
+     "count": 2,
+     "left": 0
+    },
+    {
+     "name": "X Speed",
+     "kind": "Item",
+     "text": "During this turn, the Retreat Cost of your Active Pokémon is 1 less.",
+     "count": 1,
+     "left": 0
+    },
+    {
+     "name": "Protective Poncho",
+     "kind": "Pokémon Tool",
+     "text": "As long as the Pokémon this card is attached to is on your Bench, prevent all damage done to that Pokémon by your opponent's attacks and Abilities.",
+     "count": 1,
+     "left": 1
+    },
+    {
+     "name": "Arena of Antiquity",
+     "kind": "Stadium",
+     "text": "Attacks used by each Fighting Pokémon in play (both yours and your opponent's) do +20 damage to the opponent's Active Pokémon ex.",
+     "count": 1,
+     "left": 1
+    }
+   ],
+   "energy_types": [
+    "Fighting"
+   ],
+   "supporter_played_this_turn": false,
+   "retreated_this_turn": false
+  },
+  "opponent": {
+   "active": {
+    "name": "Baxcalibur",
+    "stage": 2,
+    "type": "Water",
+    "hp": 140,
+    "max_hp": 140,
+    "energy": [
+     "Water",
+     "Water"
+    ],
+    "tools": [],
+    "conditions": [],
+    "ability": {
+     "name": "Ice Maker",
+     "text": "Once during your turn, you may take a Water Energy from your Energy Zone and attach it to the Water Pokémon in the Active Spot.",
+     "used_this_turn": false
+    },
+    "attacks": [
+     {
+      "name": "Buster Tail",
+      "cost": [
+       "Water",
+       "Water",
+       "Water"
+      ],
+      "damage": "90",
+      "text": ""
+     }
+    ],
+    "weakness": "Metal",
+    "retreat": 3,
+    "retreat_now": 3,
+    "retreat_note": null,
+    "ko_points": 1,
+    "notes": []
+   },
+   "bench": [
+    null,
+    {
+     "name": "Suicune ex",
+     "stage": 0,
+     "type": "Water",
+     "hp": 140,
+     "max_hp": 140,
+     "energy": [],
+     "tools": [],
+     "conditions": [],
+     "ability": {
+      "name": "Legendary Pulse",
+      "text": "At the end of your turn, if this Pokémon is in the Active Spot, draw a card.",
+      "used_this_turn": false
+     },
+     "attacks": [
+      {
+       "name": "Crystal Waltz",
+       "cost": [
+        "Water",
+        "Water"
+       ],
+       "damage": "20×",
+       "text": "This attack does 20 damage for each Benched Pokémon (both yours and your opponent's)."
+      }
+     ],
+     "weakness": "Lightning",
+     "retreat": 2,
+     "retreat_now": 2,
+     "retreat_note": null,
+     "ko_points": 2,
+     "notes": []
+    },
+    {
+     "name": "Frigibax",
+     "stage": 0,
+     "type": "Water",
+     "hp": 60,
+     "max_hp": 60,
+     "energy": [],
+     "tools": [],
+     "conditions": [],
+     "ability": null,
+     "attacks": [
+      {
+       "name": "Stiffen",
+       "cost": [
+        "Water"
+       ],
+       "damage": null,
+       "text": "During your opponent's next turn, this Pokémon takes -20 damage from attacks."
+      }
+     ],
+     "weakness": "Metal",
+     "retreat": 1,
+     "retreat_now": 1,
+     "retreat_note": null,
+     "ko_points": 1,
+     "notes": []
+    }
+   ],
+   "deck_count": 8,
+   "discard": [
+    "Professor's Research",
+    "Rare Candy",
+    "Professor's Research",
+    "Poké Ball"
+   ],
+   "discard_energy": [],
+   "energy_zone": {
+    "next": "Water",
+    "lines": [
+     "Next: Water"
+    ]
+   },
+   "hand_count": 4
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "this_turn_so_far": [],
+  "log": [
+   {
+    "turn": 0,
+    "who": "setup",
+    "header": "Setup",
+    "lines": [
+     "Opponent: started with Frigibax (Active)",
+     "You: started with Hitmonlee (Active)"
+    ]
+   },
+   {
+    "turn": 1,
+    "who": "opponent",
+    "header": "Turn 1 - Opponent",
+    "lines": [
+     "Opponent: Played Professor's Research (Supporter)",
+     "Opponent: Ended the turn without attacking"
+    ]
+   },
+   {
+    "turn": 2,
+    "who": "you",
+    "header": "Turn 2 - You",
+    "lines": [
+     "You: Attached Fighting Energy to Hitmonlee (Active)",
+     "You: Played X Speed (Item)",
+     "You: Played Copycat (Supporter)",
+     "You: Played Poké Ball (Item)",
+     "You: Played Poké Ball (Item)",
+     "You: Put Riolu on Bench 3",
+     "You: Put Bonsly on Bench 2",
+     "You: Hitmonlee attacked with Stretch Kick"
+    ]
+   },
+   {
+    "turn": 3,
+    "who": "opponent",
+    "header": "Turn 3 - Opponent",
+    "lines": [
+     "Opponent: Played Rare Candy (Item) → evolved Frigibax (Active) into Baxcalibur (skipping Arctibax)",
+     "Opponent: Used Baxcalibur's Ability Ice Maker (Active)",
+     "Opponent: Played Professor's Research (Supporter)",
+     "Opponent: Played Poké Ball (Item)",
+     "Opponent: Put Frigibax on Bench 3",
+     "Opponent: Put Suicune ex on Bench 2",
+     "Opponent: Attached Water Energy to Baxcalibur (Active)",
+     "Opponent: Ended the turn without attacking"
+    ]
+   }
+  ],
+  "options": [
+   {
+    "key": "4",
+    "group": "Attack",
+    "text": "Attack with Stretch Kick: This attack does 30 damage to 1 of your opponent's Benched Pokémon."
+   },
+   {
+    "key": "7",
+    "group": "Trainers",
+    "text": "Play Korrina (Supporter): During this turn, attacks used by your Fighting Pokémon do +30 damage to your opponent's Active Pokémon ex."
+   },
+   {
+    "key": "8",
+    "group": "Trainers",
+    "text": "Play Professor's Research (Supporter): Draw 2 cards."
+   },
+   {
+    "key": "1",
+    "group": "Energy",
+    "text": "Attach Fighting Energy to Hitmonlee (Active)"
+   },
+   {
+    "key": "2",
+    "group": "Energy",
+    "text": "Attach Fighting Energy to Bonsly (Bench 2)"
+   },
+   {
+    "key": "3",
+    "group": "Energy",
+    "text": "Attach Fighting Energy to Riolu (Bench 3)"
+   },
+   {
+    "key": "5",
+    "group": "Pokémon",
+    "text": "Evolve Riolu (Bench 3) into Lucario"
+   },
+   {
+    "key": "6",
+    "group": "Pokémon",
+    "text": "Evolve Riolu (Bench 3) into Mega Lucario ex"
+   },
+   {
+    "key": "9",
+    "group": "Retreat",
+    "text": "Retreat Hitmonlee (Active) and switch in Bonsly (Bench 2); costs 1 Energy"
+   },
+   {
+    "key": "10",
+    "group": "Retreat",
+    "text": "Retreat Hitmonlee (Active) and switch in Riolu (Bench 3); costs 1 Energy"
+   },
+   {
+    "key": "0",
+    "group": "End turn",
+    "text": "End your turn without attacking"
+   }
+  ],
+  "cant_play": [
+   "Cyrus: none of your opponent's Benched Pokémon has damage on it"
+  ]
+ },
+ {
+  "id": "Q03",
+  "order": 3,
+  "matchup": {
+   "you": "Lucario"
+  },
+  "turn": 2,
+  "you_went_first": false,
+  "situation": "Your turn (your 1st turn; turn 2 of the game).",
+  "points": {
+   "you": 0,
+   "opponent": 0
+  },
+  "you": {
+   "active": {
+    "name": "Bonsly",
+    "stage": 0,
+    "type": "Fighting",
+    "hp": 30,
+    "max_hp": 30,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": null,
+    "attacks": [
+     {
+      "name": "Teary Attack",
+      "cost": [],
+      "damage": "10",
+      "text": "During your opponent's next turn, attacks used by the Defending Pokémon do -30 damage."
+     }
+    ],
+    "weakness": null,
+    "retreat": 0,
+    "retreat_now": 0,
+    "retreat_note": null,
+    "ko_points": 1,
+    "notes": []
+   },
+   "bench": [
+    null,
+    null,
+    {
+     "name": "Riolu",
+     "stage": 0,
+     "type": "Fighting",
+     "hp": 60,
+     "max_hp": 60,
+     "energy": [],
+     "tools": [],
+     "conditions": [],
+     "ability": null,
+     "attacks": [
+      {
+       "name": "Fighting Fist",
+       "cost": [
+        "Fighting"
+       ],
+       "damage": "10+",
+       "text": "If your opponent's Active Pokémon is a Pokémon ex, this attack does 30 more damage."
+      }
+     ],
+     "weakness": "Psychic",
+     "retreat": 1,
+     "retreat_now": 1,
+     "retreat_note": null,
+     "ko_points": 1,
+     "notes": [
+      "Put into play this turn"
+     ]
+    }
+   ],
+   "deck_count": 13,
+   "discard": [
+    "Poké Ball"
+   ],
+   "discard_energy": [],
+   "energy_zone": {
+    "this_turn": "Fighting",
+    "next": "Fighting",
+    "lines": [
+     "This turn: Fighting",
+     "Next: Fighting"
+    ]
+   },
+   "hand": [
+    {
+     "name": "Lucario",
+     "kind": "Stage 1 Pokémon",
+     "text": "Stage 1 Pokémon, HP 100, Fighting type, evolves from Riolu. Ability Fighting Coach: Attacks used by your Fighting Pokémon do +20 damage to your opponent's Active Pokémon. Attack Submarine Blow [Fighting Fighting] 40. Weakness: Psychic. Retreat: 2."
+    },
+    {
+     "name": "Copycat",
+     "kind": "Supporter",
+     "text": "Shuffle your hand into your deck. Draw a card for each card in your opponent's hand."
+    },
+    {
+     "name": "Pokémon Center Lady",
+     "kind": "Supporter",
+     "text": "Heal 30 damage from 1 of your Pokémon, and it recovers from all Special Conditions."
+    },
+    {
+     "name": "Arena of Antiquity",
+     "kind": "Stadium",
+     "text": "Attacks used by each Fighting Pokémon in play (both yours and your opponent's) do +20 damage to the opponent's Active Pokémon ex."
+    }
+   ],
+   "decklist": [
+    {
+     "name": "Bonsly",
+     "kind": "Basic Pokémon",
+     "text": "Basic Pokémon, HP 30, Fighting type. Attack Teary Attack [no Energy] 10: During your opponent's next turn, attacks used by the Defending Pokémon do -30 damage. Weakness: none. Retreat: 0.",
+     "count": 1,
+     "left": 0
+    },
+    {
+     "name": "Hitmonlee",
+     "kind": "Basic Pokémon",
+     "text": "Basic Pokémon, HP 80, Fighting type. Attack Stretch Kick [Fighting]: This attack does 30 damage to 1 of your opponent's Benched Pokémon. Weakness: Psychic. Retreat: 1.",
+     "count": 1,
+     "left": 1
+    },
+    {
+     "name": "Riolu",
+     "kind": "Basic Pokémon",
+     "text": "Basic Pokémon, HP 60, Fighting type. Attack Fighting Fist [Fighting] 10+: If your opponent's Active Pokémon is a Pokémon ex, this attack does 30 more damage. Weakness: Psychic. Retreat: 1.",
+     "count": 2,
+     "left": 1
+    },
+    {
+     "name": "Lucario",
+     "kind": "Stage 1 Pokémon",
+     "text": "Stage 1 Pokémon, HP 100, Fighting type, evolves from Riolu. Ability Fighting Coach: Attacks used by your Fighting Pokémon do +20 damage to your opponent's Active Pokémon. Attack Submarine Blow [Fighting Fighting] 40. Weakness: Psychic. Retreat: 2.",
+     "count": 1,
+     "left": 0
+    },
+    {
+     "name": "Mega Lucario ex",
+     "kind": "Stage 1 Pokémon",
+     "text": "Stage 1 Pokémon, HP 190, Fighting type, evolves from Riolu. Gives 3 points when Knocked Out. Attack Fighting Pulse [Fighting Fighting] 90+: If this Pokémon has at least 1 extra Fighting Energy attached, this attack does 50 more damage. Weakness: Psychic. Retreat: 1.",
+     "count": 2,
+     "left": 2
+    },
+    {
+     "name": "Copycat",
+     "kind": "Supporter",
+     "text": "Shuffle your hand into your deck. Draw a card for each card in your opponent's hand.",
+     "count": 2,
+     "left": 1
+    },
+    {
+     "name": "Cyrus",
+     "kind": "Supporter",
+     "text": "Switch in 1 of your opponent's Benched Pokémon that has damage on it to the Active Spot.",
+     "count": 1,
+     "left": 1
+    },
+    {
+     "name": "Korrina",
+     "kind": "Supporter",
+     "text": "During this turn, attacks used by your Fighting Pokémon do +30 damage to your opponent's Active Pokémon ex.",
+     "count": 1,
+     "left": 1
+    },
+    {
+     "name": "Pokémon Center Lady",
+     "kind": "Supporter",
+     "text": "Heal 30 damage from 1 of your Pokémon, and it recovers from all Special Conditions.",
+     "count": 1,
+     "left": 0
+    },
+    {
+     "name": "Professor's Research",
+     "kind": "Supporter",
+     "text": "Draw 2 cards.",
+     "count": 2,
+     "left": 2
+    },
+    {
+     "name": "Field Blower",
+     "kind": "Item",
+     "text": "Discard a Pokémon Tool card from a Pokémon (yours or your opponent's), or discard a Stadium card in play.",
+     "count": 1,
+     "left": 1
+    },
+    {
+     "name": "Poké Ball",
+     "kind": "Item",
+     "text": "Put a random Basic Pokémon from your deck into your hand.",
+     "count": 2,
+     "left": 1
+    },
+    {
+     "name": "X Speed",
+     "kind": "Item",
+     "text": "During this turn, the Retreat Cost of your Active Pokémon is 1 less.",
+     "count": 1,
+     "left": 1
+    },
+    {
+     "name": "Protective Poncho",
+     "kind": "Pokémon Tool",
+     "text": "As long as the Pokémon this card is attached to is on your Bench, prevent all damage done to that Pokémon by your opponent's attacks and Abilities.",
+     "count": 1,
+     "left": 1
+    },
+    {
+     "name": "Arena of Antiquity",
+     "kind": "Stadium",
+     "text": "Attacks used by each Fighting Pokémon in play (both yours and your opponent's) do +20 damage to the opponent's Active Pokémon ex.",
+     "count": 1,
+     "left": 0
+    }
+   ],
+   "energy_types": [
+    "Fighting"
+   ],
+   "supporter_played_this_turn": false,
+   "retreated_this_turn": false
+  },
+  "opponent": {
+   "active": {
+    "name": "Heatmor",
+    "stage": 0,
+    "type": "Fire",
+    "hp": 80,
+    "max_hp": 80,
+    "energy": [],
+    "tools": [
+     {
+      "name": "Rocky Helmet",
+      "text": "If the Pokémon this card is attached to is in the Active Spot and is damaged by an attack from your opponent's Pokémon, do 20 damage to the Attacking Pokémon."
+     }
+    ],
+    "conditions": [],
+    "ability": null,
+    "attacks": [
+     {
+      "name": "Tongue Whip",
+      "cost": [
+       "Fire"
+      ],
+      "damage": null,
+      "text": "This attack does 30 damage to 1 of your opponent's Benched Pokémon."
+     }
+    ],
+    "weakness": "Water",
+    "retreat": 1,
+    "retreat_now": 1,
+    "retreat_note": null,
+    "ko_points": 1,
+    "notes": []
+   },
+   "bench": [
+    null,
+    null,
+    {
+     "name": "Castform Sunny Form",
+     "stage": 0,
+     "type": "Fire",
+     "hp": 70,
+     "max_hp": 70,
+     "energy": [],
+     "tools": [],
+     "conditions": [],
+     "ability": null,
+     "attacks": [
+      {
+       "name": "Sunny Scorching",
+       "cost": [
+        "Fire"
+       ],
+       "damage": "30",
+       "text": "If a Stadium is in play, your opponent's Active Pokémon is now Burned."
+      }
+     ],
+     "weakness": "Water",
+     "retreat": 1,
+     "retreat_now": 1,
+     "retreat_note": null,
+     "ko_points": 1,
+     "notes": []
+    }
+   ],
+   "deck_count": 14,
+   "discard": [
+    "Copycat"
+   ],
+   "discard_energy": [],
+   "energy_zone": {
+    "next": "Fire",
+    "lines": [
+     "Next: Fire"
+    ]
+   },
+   "hand_count": 2
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "this_turn_so_far": [
+   "You: Played Poké Ball (Item)",
+   "You: Put Riolu on Bench 3"
+  ],
+  "log": [
+   {
+    "turn": 0,
+    "who": "setup",
+    "header": "Setup",
+    "lines": [
+     "Opponent: started with Heatmor (Active)",
+     "You: started with Bonsly (Active)"
+    ]
+   },
+   {
+    "turn": 1,
+    "who": "opponent",
+    "header": "Turn 1 - Opponent",
+    "lines": [
+     "Opponent: Played Copycat (Supporter)",
+     "Opponent: Played Rocky Helmet (Pokémon Tool) → attached Rocky Helmet to Heatmor (Active)",
+     "Opponent: Put Castform Sunny Form on Bench 3",
+     "Opponent: Ended the turn without attacking"
+    ]
+   }
+  ],
+  "options": [
+   {
+    "key": "3",
+    "group": "Attack",
+    "text": "Attack with Teary Attack (10 damage): During your opponent's next turn, attacks used by the Defending Pokémon do -30 damage."
+   },
+   {
+    "key": "4",
+    "group": "Trainers",
+    "text": "Play Copycat (Supporter): Shuffle your hand into your deck. Draw a card for each card in your opponent's hand. (your opponent has 2 cards in hand, so you'd draw 2)"
+   },
+   {
+    "key": "5",
+    "group": "Trainers",
+    "text": "Play Arena of Antiquity (Stadium): Attacks used by each Fighting Pokémon in play (both yours and your opponent's) do +20 damage to the opponent's Active Pokémon ex."
+   },
+   {
+    "key": "1",
+    "group": "Energy",
+    "text": "Attach Fighting Energy to Bonsly (Active)"
+   },
+   {
+    "key": "2",
+    "group": "Energy",
+    "text": "Attach Fighting Energy to Riolu (Bench 3)"
+   },
+   {
+    "key": "6",
+    "group": "Retreat",
+    "text": "Retreat Bonsly (Active) and switch in Riolu (Bench 3); costs 0 Energy"
+   },
+   {
+    "key": "0",
+    "group": "End turn",
+    "text": "End your turn without attacking"
+   }
+  ],
+  "cant_play": [
+   "Lucario: you can't evolve Pokémon during your first turn",
+   "Pokémon Center Lady: none of your Pokémon has damage or a Special Condition"
+  ]
+ },
+ {
+  "id": "Q04",
+  "order": 4,
+  "matchup": {
+   "you": "Altaria"
+  },
+  "turn": 2,
+  "you_went_first": false,
+  "situation": "Your turn (your 1st turn; turn 2 of the game).",
+  "points": {
+   "you": 0,
+   "opponent": 0
+  },
+  "you": {
+   "active": {
+    "name": "Igglybuff",
+    "stage": 0,
+    "type": "Colorless",
+    "hp": 30,
+    "max_hp": 30,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": null,
+    "attacks": [
+     {
+      "name": "Sleepy Lullaby",
+      "cost": [],
+      "damage": "10",
+      "text": "Your opponent's Active Pokémon is now Asleep."
+     }
+    ],
+    "weakness": null,
+    "retreat": 0,
+    "retreat_now": 0,
+    "retreat_note": null,
+    "ko_points": 1,
+    "notes": []
+   },
+   "bench": [
+    null,
+    null,
+    {
+     "name": "Swablu",
+     "stage": 0,
+     "type": "Colorless",
+     "hp": 50,
+     "max_hp": 50,
+     "energy": [],
+     "tools": [],
+     "conditions": [],
+     "ability": null,
+     "attacks": [
+      {
+       "name": "Sing",
+       "cost": [
+        "Colorless"
+       ],
+       "damage": null,
+       "text": "Your opponent's Active Pokémon is now Asleep."
+      }
+     ],
+     "weakness": "Lightning",
+     "retreat": 1,
+     "retreat_now": 1,
+     "retreat_note": null,
+     "ko_points": 1,
+     "notes": [
+      "Put into play this turn"
+     ]
+    }
+   ],
+   "deck_count": 12,
+   "discard": [
+    "Professor's Research"
+   ],
+   "discard_energy": [],
+   "energy_zone": {
+    "this_turn": "Psychic",
+    "next": "Psychic",
+    "lines": [
+     "This turn: Psychic",
+     "Next: Psychic"
+    ]
+   },
+   "hand": [
+    {
+     "name": "Swablu",
+     "kind": "Basic Pokémon",
+     "text": "Basic Pokémon, HP 50, Colorless type. Attack Sing [Colorless]: Your opponent's Active Pokémon is now Asleep. Weakness: Lightning. Retreat: 1."
+    },
+    {
+     "name": "Espeon",
+     "kind": "Stage 1 Pokémon",
+     "text": "Stage 1 Pokémon, HP 90, Psychic type, evolves from Eevee. Attack Hypnoblast [Psychic] 40: Your opponent's Active Pokémon is now Asleep. Weakness: Darkness. Retreat: 1."
+    },
+    {
+     "name": "Espeon",
+     "kind": "Stage 1 Pokémon",
+     "text": "Stage 1 Pokémon, HP 90, Psychic type, evolves from Eevee. Attack Hypnoblast [Psychic] 40: Your opponent's Active Pokémon is now Asleep. Weakness: Darkness. Retreat: 1."
+    },
+    {
+     "name": "Professor's Research",
+     "kind": "Supporter",
+     "text": "Draw 2 cards."
+    },
+    {
+     "name": "Training Area",
+     "kind": "Stadium",
+     "text": "Attacks used by Stage 1 Pokémon in play (both yours and your opponent's) do +10 damage to the opponent's Active Pokémon."
+    }
+   ],
+   "decklist": [
+    {
+     "name": "Darkrai",
+     "kind": "Basic Pokémon",
+     "text": "Basic Pokémon, HP 100, Darkness type. Ability Bad Dreams: At the end of each turn, if your opponent's Active Pokémon is Asleep, do 20 damage to that Pokémon. Attack Dark Slumber [Colorless Colorless Colorless] 40: Your opponent's Active Pokémon is now Asleep. Weakness: Grass. Retreat: 2.",
+     "count": 2,
+     "left": 2
+    },
+    {
+     "name": "Eevee",
+     "kind": "Basic Pokémon",
+     "text": "Basic Pokémon, HP 50, Colorless type. Ability Boosted Evolution: As long as this Pokémon is in the Active Spot, it can evolve during your first turn or the turn you play it. Attack Stampede [Colorless] 10. Weakness: Fighting. Retreat: 1.",
+     "count": 2,
+     "left": 2
+    },
+    {
+     "name": "Igglybuff",
+     "kind": "Basic Pokémon",
+     "text": "Basic Pokémon, HP 30, Colorless type. Attack Sleepy Lullaby [no Energy] 10: Your opponent's Active Pokémon is now Asleep. Weakness: none. Retreat: 0.",
+     "count": 1,
+     "left": 0
+    },
+    {
+     "name": "Swablu",
+     "kind": "Basic Pokémon",
+     "text": "Basic Pokémon, HP 50, Colorless type. Attack Sing [Colorless]: Your opponent's Active Pokémon is now Asleep. Weakness: Lightning. Retreat: 1.",
+     "count": 2,
+     "left": 0
+    },
+    {
+     "name": "Espeon",
+     "kind": "Stage 1 Pokémon",
+     "text": "Stage 1 Pokémon, HP 90, Psychic type, evolves from Eevee. Attack Hypnoblast [Psychic] 40: Your opponent's Active Pokémon is now Asleep. Weakness: Darkness. Retreat: 1.",
+     "count": 2,
+     "left": 0
+    },
+    {
+     "name": "Mega Altaria ex",
+     "kind": "Stage 1 Pokémon",
+     "text": "Stage 1 Pokémon, HP 190, Psychic type, evolves from Swablu. Gives 3 points when Knocked Out. Attack Mega Harmony [Psychic Psychic] 40+: This attack does 30 more damage for each of your Benched Pokémon. Weakness: Metal. Retreat: 1.",
+     "count": 1,
+     "left": 1
+    },
+    {
+     "name": "Copycat",
+     "kind": "Supporter",
+     "text": "Shuffle your hand into your deck. Draw a card for each card in your opponent's hand.",
+     "count": 2,
+     "left": 2
+    },
+    {
+     "name": "Professor's Research",
+     "kind": "Supporter",
+     "text": "Draw 2 cards.",
+     "count": 2,
+     "left": 0
+    },
+    {
+     "name": "Sabrina",
+     "kind": "Supporter",
+     "text": "Switch out your opponent's Active Pokémon to the Bench. (Your opponent chooses the new Active Pokémon.)",
+     "count": 1,
+     "left": 1
+    },
+    {
+     "name": "Field Blower",
+     "kind": "Item",
+     "text": "Discard a Pokémon Tool card from a Pokémon (yours or your opponent's), or discard a Stadium card in play.",
+     "count": 1,
+     "left": 1
+    },
+    {
+     "name": "Poké Ball",
+     "kind": "Item",
+     "text": "Put a random Basic Pokémon from your deck into your hand.",
+     "count": 2,
+     "left": 2
+    },
+    {
+     "name": "Small Balloon",
+     "kind": "Pokémon Tool",
+     "text": "The Retreat Cost of the Basic Pokémon this card is attached to is 1 less.",
+     "count": 1,
+     "left": 1
+    },
+    {
+     "name": "Training Area",
+     "kind": "Stadium",
+     "text": "Attacks used by Stage 1 Pokémon in play (both yours and your opponent's) do +10 damage to the opponent's Active Pokémon.",
+     "count": 1,
+     "left": 0
+    }
+   ],
+   "energy_types": [
+    "Psychic"
+   ],
+   "supporter_played_this_turn": true,
+   "retreated_this_turn": false
+  },
+  "opponent": {
+   "active": {
+    "name": "Shuckle ex",
+    "stage": 0,
+    "type": "Grass",
+    "hp": 120,
+    "max_hp": 120,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": {
+     "name": "Solid Shell",
+     "text": "This Pokémon takes -20 damage from attacks.",
+     "used_this_turn": false
+    },
+    "attacks": [
+     {
+      "name": "Triple Slap",
+      "cost": [
+       "Grass"
+      ],
+      "damage": "20×",
+      "text": "Flip 3 coins. This attack does 20 damage for each heads."
+     }
+    ],
+    "weakness": "Fire",
+    "retreat": 1,
+    "retreat_now": 1,
+    "retreat_note": null,
+    "ko_points": 2,
+    "notes": []
+   },
+   "bench": [
+    {
+     "name": "Combee",
+     "stage": 0,
+     "type": "Grass",
+     "hp": 50,
+     "max_hp": 50,
+     "energy": [],
+     "tools": [],
+     "conditions": [],
+     "ability": null,
+     "attacks": [
+      {
+       "name": "Reckless Charge",
+       "cost": [
+        "Grass"
+       ],
+       "damage": "30",
+       "text": "This Pokémon also does 10 damage to itself."
+      }
+     ],
+     "weakness": "Fire",
+     "retreat": 1,
+     "retreat_now": 1,
+     "retreat_note": null,
+     "ko_points": 1,
+     "notes": []
+    },
+    {
+     "name": "Shuckle ex",
+     "stage": 0,
+     "type": "Grass",
+     "hp": 120,
+     "max_hp": 120,
+     "energy": [],
+     "tools": [],
+     "conditions": [],
+     "ability": {
+      "name": "Solid Shell",
+      "text": "This Pokémon takes -20 damage from attacks.",
+      "used_this_turn": false
+     },
+     "attacks": [
+      {
+       "name": "Triple Slap",
+       "cost": [
+        "Grass"
+       ],
+       "damage": "20×",
+       "text": "Flip 3 coins. This attack does 20 damage for each heads."
+      }
+     ],
+     "weakness": "Fire",
+     "retreat": 1,
+     "retreat_now": 1,
+     "retreat_note": null,
+     "ko_points": 2,
+     "notes": []
+    },
+    {
+     "name": "Combee",
+     "stage": 0,
+     "type": "Grass",
+     "hp": 50,
+     "max_hp": 50,
+     "energy": [],
+     "tools": [],
+     "conditions": [],
+     "ability": null,
+     "attacks": [
+      {
+       "name": "Reckless Charge",
+       "cost": [
+        "Grass"
+       ],
+       "damage": "30",
+       "text": "This Pokémon also does 10 damage to itself."
+      }
+     ],
+     "weakness": "Fire",
+     "retreat": 1,
+     "retreat_now": 1,
+     "retreat_note": null,
+     "ko_points": 1,
+     "notes": []
+    }
+   ],
+   "deck_count": 11,
+   "discard": [
+    "Copycat"
+   ],
+   "discard_energy": [],
+   "energy_zone": {
+    "next": "Grass",
+    "lines": [
+     "Next: Grass"
+    ]
+   },
+   "hand_count": 3
+  },
+  "stadium": {
+   "name": "Fragrant Forest",
+   "text": "Once during each player's turn, that player may put a random Basic Grass Pokémon from their deck into their hand.",
+   "played_by": "opponent"
+  },
+  "turn_effects": [],
+  "this_turn_so_far": [
+   "You: Played Professor's Research (Supporter)",
+   "You: Put Swablu on Bench 3"
+  ],
+  "log": [
+   {
+    "turn": 0,
+    "who": "setup",
+    "header": "Setup",
+    "lines": [
+     "Opponent: started with Shuckle ex (Active), Combee (Bench 3)",
+     "You: started with Igglybuff (Active)"
+    ]
+   },
+   {
+    "turn": 1,
+    "who": "opponent",
+    "header": "Turn 1 - Opponent",
+    "lines": [
+     "Opponent: Played Fragrant Forest (Stadium)",
+     "Opponent: Played Copycat (Supporter)",
+     "Opponent: Put Shuckle ex on Bench 2",
+     "Opponent: Used the Stadium Fragrant Forest",
+     "Opponent: Put Combee on Bench 1",
+     "Opponent: Ended the turn without attacking"
+    ]
+   }
+  ],
+  "options": [
+   {
+    "key": "4",
+    "group": "Attack",
+    "text": "Attack with Sleepy Lullaby (10 damage): Your opponent's Active Pokémon is now Asleep."
+   },
+   {
+    "key": "7",
+    "group": "Trainers",
+    "text": "Play Training Area (Stadium): Attacks used by Stage 1 Pokémon in play (both yours and your opponent's) do +10 damage to the opponent's Active Pokémon."
+   },
+   {
+    "key": "1",
+    "group": "Stadium",
+    "text": "Use the Stadium Fragrant Forest: Once during each player's turn, that player may put a random Basic Grass Pokémon from their deck into their hand."
+   },
+   {
+    "key": "2",
+    "group": "Energy",
+    "text": "Attach Psychic Energy to Igglybuff (Active)"
+   },
+   {
+    "key": "3",
+    "group": "Energy",
+    "text": "Attach Psychic Energy to Swablu (Bench 3)"
+   },
+   {
+    "key": "5",
+    "group": "Pokémon",
+    "text": "Put Swablu onto your Bench"
+   },
+   {
+    "key": "8",
+    "group": "Retreat",
+    "text": "Retreat Igglybuff (Active) and switch in Swablu (Bench 3); costs 0 Energy"
+   },
+   {
+    "key": "0",
+    "group": "End turn",
+    "text": "End your turn without attacking"
+   }
+  ],
+  "cant_play": [
+   "Espeon (x2): no Eevee in play",
+   "Professor's Research: you already played a Supporter this turn"
+  ]
+ },
+ {
+  "id": "Q05",
+  "order": 5,
+  "matchup": {
+   "you": "Vespiquen"
+  },
+  "turn": 2,
+  "you_went_first": false,
+  "situation": "Your turn (your 1st turn; turn 2 of the game).",
+  "points": {
+   "you": 0,
+   "opponent": 0
+  },
+  "you": {
+   "active": {
+    "name": "Combee",
+    "stage": 0,
+    "type": "Grass",
+    "hp": 40,
+    "max_hp": 50,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": null,
+    "attacks": [
+     {
+      "name": "Reckless Charge",
+      "cost": [
+       "Grass"
+      ],
+      "damage": "30",
+      "text": "This Pokémon also does 10 damage to itself."
+     }
+    ],
+    "weakness": "Fire",
+    "retreat": 1,
+    "retreat_now": 1,
+    "retreat_note": null,
+    "ko_points": 1,
+    "notes": []
+   },
+   "bench": [
+    null,
+    null,
+    null
+   ],
+   "deck_count": 14,
+   "discard": [],
+   "discard_energy": [],
+   "energy_zone": {
+    "this_turn": "Grass",
+    "next": "Grass",
+    "lines": [
+     "This turn: Grass",
+     "Next: Grass"
+    ]
+   },
+   "hand": [
+    {
+     "name": "Field Blower",
+     "kind": "Item",
+     "text": "Discard a Pokémon Tool card from a Pokémon (yours or your opponent's), or discard a Stadium card in play."
+    },
+    {
+     "name": "X Speed",
+     "kind": "Item",
+     "text": "During this turn, the Retreat Cost of your Active Pokémon is 1 less."
+    },
+    {
+     "name": "Leaf Cape",
+     "kind": "Pokémon Tool",
+     "text": "The Grass Pokémon this card is attached to gets +30 HP."
+    },
+    {
+     "name": "Fragrant Forest",
+     "kind": "Stadium",
+     "text": "Once during each player's turn, that player may put a random Basic Grass Pokémon from their deck into their hand."
+    },
+    {
+     "name": "Fragrant Forest",
+     "kind": "Stadium",
+     "text": "Once during each player's turn, that player may put a random Basic Grass Pokémon from their deck into their hand."
+    }
+   ],
+   "decklist": [
+    {
+     "name": "Combee",
+     "kind": "Basic Pokémon",
+     "text": "Basic Pokémon, HP 50, Grass type. Attack Reckless Charge [Grass] 30: This Pokémon also does 10 damage to itself. Weakness: Fire. Retreat: 1.",
+     "count": 2,
+     "left": 1
+    },
+    {
+     "name": "Shuckle ex",
+     "kind": "Basic Pokémon",
+     "text": "Basic Pokémon, HP 120, Grass type. Gives 2 points when Knocked Out. Ability Solid Shell: This Pokémon takes -20 damage from attacks. Attack Triple Slap [Grass] 20×: Flip 3 coins. This attack does 20 damage for each heads. Weakness: Fire. Retreat: 1.",
+     "count": 2,
+     "left": 2
+    },
+    {
+     "name": "Teal Mask Ogerpon ex",
+     "kind": "Basic Pokémon",
+     "text": "Basic Pokémon, HP 130, Grass type. Gives 2 points when Knocked Out. Ability Soothing Wind: Each of your Pokémon that has any Energy attached recovers from all Special Conditions and can't be affected by any Special Conditions. Attack Energized Leaves [Grass Grass] 60+: If the amount of Energy attached to both Active Pokémon is 5 or more, this attack does 60 more damage. Weakness: Fire. Retreat: 1.",
+     "count": 1,
+     "left": 1
+    },
+    {
+     "name": "Vespiquen ex",
+     "kind": "Stage 1 Pokémon",
+     "text": "Stage 1 Pokémon, HP 140, Grass type, evolves from Combee. Gives 2 points when Knocked Out. Attack Chase Order [Grass Grass] 70+: You may discard 1 of your Benched Basic Grass Pokémon. If you do, this attack does 70 more damage. Weakness: Fire. Retreat: 2.",
+     "count": 2,
+     "left": 2
+    },
+    {
+     "name": "Copycat",
+     "kind": "Supporter",
+     "text": "Shuffle your hand into your deck. Draw a card for each card in your opponent's hand.",
+     "count": 2,
+     "left": 2
+    },
+    {
+     "name": "Cyrus",
+     "kind": "Supporter",
+     "text": "Switch in 1 of your opponent's Benched Pokémon that has damage on it to the Active Spot.",
+     "count": 1,
+     "left": 1
+    },
+    {
+     "name": "Professor's Research",
+     "kind": "Supporter",
+     "text": "Draw 2 cards.",
+     "count": 2,
+     "left": 2
+    },
+    {
+     "name": "Sabrina",
+     "kind": "Supporter",
+     "text": "Switch out your opponent's Active Pokémon to the Bench. (Your opponent chooses the new Active Pokémon.)",
+     "count": 1,
+     "left": 1
+    },
+    {
+     "name": "Field Blower",
+     "kind": "Item",
+     "text": "Discard a Pokémon Tool card from a Pokémon (yours or your opponent's), or discard a Stadium card in play.",
+     "count": 1,
+     "left": 0
+    },
+    {
+     "name": "X Speed",
+     "kind": "Item",
+     "text": "During this turn, the Retreat Cost of your Active Pokémon is 1 less.",
+     "count": 2,
+     "left": 1
+    },
+    {
+     "name": "Leaf Cape",
+     "kind": "Pokémon Tool",
+     "text": "The Grass Pokémon this card is attached to gets +30 HP.",
+     "count": 2,
+     "left": 1
+    },
+    {
+     "name": "Fragrant Forest",
+     "kind": "Stadium",
+     "text": "Once during each player's turn, that player may put a random Basic Grass Pokémon from their deck into their hand.",
+     "count": 2,
+     "left": 0
+    }
+   ],
+   "energy_types": [
+    "Grass"
+   ],
+   "supporter_played_this_turn": false,
+   "retreated_this_turn": false
+  },
+  "opponent": {
+   "active": {
+    "name": "Mega Absol ex",
+    "stage": 0,
+    "type": "Darkness",
+    "hp": 170,
+    "max_hp": 170,
+    "energy": [],
+    "tools": [
+     {
+      "name": "Deceptive Needle",
+      "text": "At the end of your turn, if the Darkness Pokémon this card is attached to is in the Active Spot, do 10 damage to your opponent's Active Pokémon."
+     }
+    ],
+    "conditions": [],
+    "ability": null,
+    "attacks": [
+     {
+      "name": "Darkness Claw",
+      "cost": [
+       "Darkness",
+       "Darkness"
+      ],
+      "damage": "80",
+      "text": "Your opponent reveals their hand. Choose a Supporter card you find there and discard it."
+     }
+    ],
+    "weakness": "Grass",
+    "retreat": 1,
+    "retreat_now": 1,
+    "retreat_note": null,
+    "ko_points": 3,
+    "notes": []
+   },
+   "bench": [
+    {
+     "name": "Deino",
+     "stage": 0,
+     "type": "Darkness",
+     "hp": 60,
+     "max_hp": 60,
+     "energy": [],
+     "tools": [],
+     "conditions": [],
+     "ability": null,
+     "attacks": [
+      {
+       "name": "Headbutt",
+       "cost": [
+        "Darkness"
+       ],
+       "damage": "20",
+       "text": ""
+      }
+     ],
+     "weakness": "Grass",
+     "retreat": 1,
+     "retreat_now": 1,
+     "retreat_note": null,
+     "ko_points": 1,
+     "notes": []
+    },
+    null,
+    {
+     "name": "Deino",
+     "stage": 0,
+     "type": "Darkness",
+     "hp": 60,
+     "max_hp": 60,
+     "energy": [],
+     "tools": [],
+     "conditions": [],
+     "ability": null,
+     "attacks": [
+      {
+       "name": "Headbutt",
+       "cost": [
+        "Darkness"
+       ],
+       "damage": "20",
+       "text": ""
+      }
+     ],
+     "weakness": "Grass",
+     "retreat": 1,
+     "retreat_now": 1,
+     "retreat_note": null,
+     "ko_points": 1,
+     "notes": []
+    }
+   ],
+   "deck_count": 11,
+   "discard": [
+    "Poké Ball",
+    "Copycat"
+   ],
+   "discard_energy": [],
+   "energy_zone": {
+    "next": "Darkness",
+    "lines": [
+     "Next: Darkness"
+    ]
+   },
+   "hand_count": 3
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "this_turn_so_far": [],
+  "log": [
+   {
+    "turn": 0,
+    "who": "setup",
+    "header": "Setup",
+    "lines": [
+     "Opponent: started with Mega Absol ex (Active)",
+     "You: started with Combee (Active)"
+    ]
+   },
+   {
+    "turn": 1,
+    "who": "opponent",
+    "header": "Turn 1 - Opponent",
+    "lines": [
+     "Opponent: Played Poké Ball (Item)",
+     "Opponent: Put Deino on Bench 1",
+     "Opponent: Played Deceptive Needle (Pokémon Tool) → attached Deceptive Needle to Mega Absol ex (Active)",
+     "Opponent: Played Copycat (Supporter)",
+     "Opponent: Put Deino on Bench 3",
+     "Opponent: Ended the turn without attacking",
+     "End of turn: Your Combee (Active) took 10 damage (Deceptive Needle)"
+    ]
+   }
+  ],
+  "options": [
+   {
+    "key": "3",
+    "group": "Trainers",
+    "text": "Play Field Blower (Item): Discard a Pokémon Tool card from a Pokémon (yours or your opponent's), or discard a Stadium card in play."
+   },
+   {
+    "key": "6",
+    "group": "Trainers",
+    "text": "Play X Speed (Item): During this turn, the Retreat Cost of your Active Pokémon is 1 less."
+   },
+   {
+    "key": "2",
+    "group": "Trainers",
+    "text": "Play Leaf Cape (Pokémon Tool), then choose which of your Pokémon to attach it to: The Grass Pokémon this card is attached to gets +30 HP."
+   },
+   {
+    "key": "4",
+    "group": "Trainers",
+    "text": "Play Fragrant Forest (Stadium): Once during each player's turn, that player may put a random Basic Grass Pokémon from their deck into their hand."
+   },
+   {
+    "key": "1",
+    "group": "Energy",
+    "text": "Attach Grass Energy to Combee (Active)"
+   },
+   {
+    "key": "0",
+    "group": "End turn",
+    "text": "End your turn without attacking"
+   }
+  ],
+  "cant_play": []
+ },
+ {
+  "id": "Q06",
+  "order": 6,
+  "matchup": {
+   "you": "Vespiquen"
+  },
+  "turn": 4,
+  "you_went_first": false,
+  "situation": "Your turn (your 2nd turn; turn 4 of the game).",
+  "points": {
+   "you": 0,
+   "opponent": 0
+  },
+  "you": {
+   "active": {
+    "name": "Shuckle ex",
+    "stage": 0,
+    "type": "Grass",
+    "hp": 120,
+    "max_hp": 120,
+    "energy": [
+     "Grass"
+    ],
+    "tools": [],
+    "conditions": [],
+    "ability": {
+     "name": "Solid Shell",
+     "text": "This Pokémon takes -20 damage from attacks.",
+     "used_this_turn": false
+    },
+    "attacks": [
+     {
+      "name": "Triple Slap",
+      "cost": [
+       "Grass"
+      ],
+      "damage": "20×",
+      "text": "Flip 3 coins. This attack does 20 damage for each heads."
+     }
+    ],
+    "weakness": "Fire",
+    "retreat": 1,
+    "retreat_now": 1,
+    "retreat_note": null,
+    "ko_points": 2,
+    "notes": []
+   },
+   "bench": [
+    null,
+    null,
+    {
+     "name": "Combee",
+     "stage": 0,
+     "type": "Grass",
+     "hp": 50,
+     "max_hp": 50,
+     "energy": [],
+     "tools": [],
+     "conditions": [],
+     "ability": null,
+     "attacks": [
+      {
+       "name": "Reckless Charge",
+       "cost": [
+        "Grass"
+       ],
+       "damage": "30",
+       "text": "This Pokémon also does 10 damage to itself."
+      }
+     ],
+     "weakness": "Fire",
+     "retreat": 1,
+     "retreat_now": 1,
+     "retreat_note": null,
+     "ko_points": 1,
+     "notes": []
+    }
+   ],
+   "deck_count": 12,
+   "discard": [],
+   "discard_energy": [],
+   "energy_zone": {
+    "this_turn": "Grass",
+    "next": "Grass",
+    "lines": [
+     "This turn: Grass",
+     "Next: Grass"
+    ]
+   },
+   "hand": [
+    {
+     "name": "Vespiquen ex",
+     "kind": "Stage 1 Pokémon",
+     "text": "Stage 1 Pokémon, HP 140, Grass type, evolves from Combee. Gives 2 points when Knocked Out. Attack Chase Order [Grass Grass] 70+: You may discard 1 of your Benched Basic Grass Pokémon. If you do, this attack does 70 more damage. Weakness: Fire. Retreat: 2."
+    },
+    {
+     "name": "Sabrina",
+     "kind": "Supporter",
+     "text": "Switch out your opponent's Active Pokémon to the Bench. (Your opponent chooses the new Active Pokémon.)"
+    },
+    {
+     "name": "X Speed",
+     "kind": "Item",
+     "text": "During this turn, the Retreat Cost of your Active Pokémon is 1 less."
+    },
+    {
+     "name": "X Speed",
+     "kind": "Item",
+     "text": "During this turn, the Retreat Cost of your Active Pokémon is 1 less."
+    },
+    {
+     "name": "Fragrant Forest",
+     "kind": "Stadium",
+     "text": "Once during each player's turn, that player may put a random Basic Grass Pokémon from their deck into their hand."
+    }
+   ],
+   "decklist": [
+    {
+     "name": "Combee",
+     "kind": "Basic Pokémon",
+     "text": "Basic Pokémon, HP 50, Grass type. Attack Reckless Charge [Grass] 30: This Pokémon also does 10 damage to itself. Weakness: Fire. Retreat: 1.",
+     "count": 2,
+     "left": 1
+    },
+    {
+     "name": "Shuckle ex",
+     "kind": "Basic Pokémon",
+     "text": "Basic Pokémon, HP 120, Grass type. Gives 2 points when Knocked Out. Ability Solid Shell: This Pokémon takes -20 damage from attacks. Attack Triple Slap [Grass] 20×: Flip 3 coins. This attack does 20 damage for each heads. Weakness: Fire. Retreat: 1.",
+     "count": 2,
+     "left": 1
+    },
+    {
+     "name": "Teal Mask Ogerpon ex",
+     "kind": "Basic Pokémon",
+     "text": "Basic Pokémon, HP 130, Grass type. Gives 2 points when Knocked Out. Ability Soothing Wind: Each of your Pokémon that has any Energy attached recovers from all Special Conditions and can't be affected by any Special Conditions. Attack Energized Leaves [Grass Grass] 60+: If the amount of Energy attached to both Active Pokémon is 5 or more, this attack does 60 more damage. Weakness: Fire. Retreat: 1.",
+     "count": 1,
+     "left": 1
+    },
+    {
+     "name": "Vespiquen ex",
+     "kind": "Stage 1 Pokémon",
+     "text": "Stage 1 Pokémon, HP 140, Grass type, evolves from Combee. Gives 2 points when Knocked Out. Attack Chase Order [Grass Grass] 70+: You may discard 1 of your Benched Basic Grass Pokémon. If you do, this attack does 70 more damage. Weakness: Fire. Retreat: 2.",
+     "count": 2,
+     "left": 1
+    },
+    {
+     "name": "Copycat",
+     "kind": "Supporter",
+     "text": "Shuffle your hand into your deck. Draw a card for each card in your opponent's hand.",
+     "count": 2,
+     "left": 2
+    },
+    {
+     "name": "Cyrus",
+     "kind": "Supporter",
+     "text": "Switch in 1 of your opponent's Benched Pokémon that has damage on it to the Active Spot.",
+     "count": 1,
+     "left": 1
+    },
+    {
+     "name": "Professor's Research",
+     "kind": "Supporter",
+     "text": "Draw 2 cards.",
+     "count": 2,
+     "left": 2
+    },
+    {
+     "name": "Sabrina",
+     "kind": "Supporter",
+     "text": "Switch out your opponent's Active Pokémon to the Bench. (Your opponent chooses the new Active Pokémon.)",
+     "count": 1,
+     "left": 0
+    },
+    {
+     "name": "Field Blower",
+     "kind": "Item",
+     "text": "Discard a Pokémon Tool card from a Pokémon (yours or your opponent's), or discard a Stadium card in play.",
+     "count": 1,
+     "left": 1
+    },
+    {
+     "name": "X Speed",
+     "kind": "Item",
+     "text": "During this turn, the Retreat Cost of your Active Pokémon is 1 less.",
+     "count": 2,
+     "left": 0
+    },
+    {
+     "name": "Leaf Cape",
+     "kind": "Pokémon Tool",
+     "text": "The Grass Pokémon this card is attached to gets +30 HP.",
+     "count": 2,
+     "left": 2
+    },
+    {
+     "name": "Fragrant Forest",
+     "kind": "Stadium",
+     "text": "Once during each player's turn, that player may put a random Basic Grass Pokémon from their deck into their hand.",
+     "count": 2,
+     "left": 0
+    }
+   ],
+   "energy_types": [
+    "Grass"
+   ],
+   "supporter_played_this_turn": false,
+   "retreated_this_turn": false
+  },
+  "opponent": {
+   "active": {
+    "name": "Mega Lucario ex",
+    "stage": 1,
+    "type": "Fighting",
+    "hp": 170,
+    "max_hp": 190,
+    "energy": [
+     "Fighting"
+    ],
+    "tools": [],
+    "conditions": [],
+    "ability": null,
+    "attacks": [
+     {
+      "name": "Fighting Pulse",
+      "cost": [
+       "Fighting",
+       "Fighting"
+      ],
+      "damage": "90+",
+      "text": "If this Pokémon has at least 1 extra Fighting Energy attached, this attack does 50 more damage."
+     }
+    ],
+    "weakness": "Psychic",
+    "retreat": 1,
+    "retreat_now": 1,
+    "retreat_note": null,
+    "ko_points": 3,
+    "notes": []
+   },
+   "bench": [
+    null,
+    {
+     "name": "Riolu",
+     "stage": 0,
+     "type": "Fighting",
+     "hp": 60,
+     "max_hp": 60,
+     "energy": [],
+     "tools": [],
+     "conditions": [],
+     "ability": null,
+     "attacks": [
+      {
+       "name": "Fighting Fist",
+       "cost": [
+        "Fighting"
+       ],
+       "damage": "10+",
+       "text": "If your opponent's Active Pokémon is a Pokémon ex, this attack does 30 more damage."
+      }
+     ],
+     "weakness": "Psychic",
+     "retreat": 1,
+     "retreat_now": 1,
+     "retreat_note": null,
+     "ko_points": 1,
+     "notes": []
+    },
+    {
+     "name": "Hitmonlee",
+     "stage": 0,
+     "type": "Fighting",
+     "hp": 80,
+     "max_hp": 80,
+     "energy": [],
+     "tools": [],
+     "conditions": [],
+     "ability": null,
+     "attacks": [
+      {
+       "name": "Stretch Kick",
+       "cost": [
+        "Fighting"
+       ],
+       "damage": null,
+       "text": "This attack does 30 damage to 1 of your opponent's Benched Pokémon."
+      }
+     ],
+     "weakness": "Psychic",
+     "retreat": 1,
+     "retreat_now": 1,
+     "retreat_note": null,
+     "ko_points": 1,
+     "notes": []
+    }
+   ],
+   "deck_count": 7,
+   "discard": [
+    "Professor's Research",
+    "Poké Ball",
+    "Professor's Research",
+    "Poké Ball"
+   ],
+   "discard_energy": [],
+   "energy_zone": {
+    "next": "Fighting",
+    "lines": [
+     "Next: Fighting"
+    ]
+   },
+   "hand_count": 5
+  },
+  "stadium": {
+   "name": "Fragrant Forest",
+   "text": "Once during each player's turn, that player may put a random Basic Grass Pokémon from their deck into their hand.",
+   "played_by": "you"
+  },
+  "turn_effects": [],
+  "this_turn_so_far": [],
+  "log": [
+   {
+    "turn": 0,
+    "who": "setup",
+    "header": "Setup",
+    "lines": [
+     "Opponent: started with Riolu (Active)",
+     "You: started with Shuckle ex (Active)"
+    ]
+   },
+   {
+    "turn": 1,
+    "who": "opponent",
+    "header": "Turn 1 - Opponent",
+    "lines": [
+     "Opponent: Played Professor's Research (Supporter)",
+     "Opponent: Played Poké Ball (Item)",
+     "Opponent: Put Hitmonlee on Bench 3",
+     "Opponent: Ended the turn without attacking"
+    ]
+   },
+   {
+    "turn": 2,
+    "who": "you",
+    "header": "Turn 2 - You",
+    "lines": [
+     "You: Attached Grass Energy to Shuckle ex (Active)",
+     "You: Played Fragrant Forest (Stadium)",
+     "You: Used the Stadium Fragrant Forest",
+     "You: Put Combee on Bench 3",
+     "You: Shuckle ex attacked with Triple Slap (20×) → did 20 damage to opponent's Riolu (Active)"
+    ]
+   },
+   {
+    "turn": 3,
+    "who": "opponent",
+    "header": "Turn 3 - Opponent",
+    "lines": [
+     "Opponent: Played Professor's Research (Supporter)",
+     "Opponent: Played Poké Ball (Item)",
+     "Opponent: Put Riolu on Bench 2",
+     "Opponent: Evolved Riolu (Active) into Mega Lucario ex",
+     "Opponent: Attached Fighting Energy to Mega Lucario ex (Active)",
+     "Opponent: Used the Stadium Fragrant Forest",
+     "Opponent: Ended the turn without attacking"
+    ]
+   }
+  ],
+  "options": [
+   {
+    "key": "4",
+    "group": "Attack",
+    "text": "Attack with Triple Slap (20× damage): Flip 3 coins. This attack does 20 damage for each heads."
+   },
+   {
+    "key": "6",
+    "group": "Trainers",
+    "text": "Play Sabrina (Supporter): Switch out your opponent's Active Pokémon to the Bench. (Your opponent chooses the new Active Pokémon.)"
+   },
+   {
+    "key": "7",
+    "group": "Trainers",
+    "text": "Play X Speed (Item): During this turn, the Retreat Cost of your Active Pokémon is 1 less."
+   },
+   {
+    "key": "1",
+    "group": "Stadium",
+    "text": "Use the Stadium Fragrant Forest: Once during each player's turn, that player may put a random Basic Grass Pokémon from their deck into their hand."
+   },
+   {
+    "key": "2",
+    "group": "Energy",
+    "text": "Attach Grass Energy to Shuckle ex (Active)"
+   },
+   {
+    "key": "3",
+    "group": "Energy",
+    "text": "Attach Grass Energy to Combee (Bench 3)"
+   },
+   {
+    "key": "5",
+    "group": "Pokémon",
+    "text": "Evolve Combee (Bench 3) into Vespiquen ex"
+   },
+   {
+    "key": "9",
+    "group": "Retreat",
+    "text": "Retreat Shuckle ex (Active) and switch in Combee (Bench 3); costs 1 Energy"
+   },
+   {
+    "key": "0",
+    "group": "End turn",
+    "text": "End your turn without attacking"
+   }
+  ],
+  "cant_play": [
+   "Fragrant Forest: Fragrant Forest is already in play"
+  ]
+ },
+ {
+  "id": "Q07",
+  "order": 7,
+  "matchup": {
+   "you": "Altaria"
+  },
+  "turn": 4,
+  "you_went_first": false,
+  "situation": "Your turn (your 2nd turn; turn 4 of the game).",
+  "points": {
+   "you": 1,
+   "opponent": 0
+  },
+  "you": {
+   "active": {
+    "name": "Igglybuff",
+    "stage": 0,
+    "type": "Colorless",
+    "hp": 30,
+    "max_hp": 30,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": null,
+    "attacks": [
+     {
+      "name": "Sleepy Lullaby",
+      "cost": [],
+      "damage": "10",
+      "text": "Your opponent's Active Pokémon is now Asleep."
+     }
+    ],
+    "weakness": null,
+    "retreat": 0,
+    "retreat_now": 0,
+    "retreat_note": null,
+    "ko_points": 1,
+    "notes": []
+   },
+   "bench": [
+    {
+     "name": "Darkrai",
+     "stage": 0,
+     "type": "Darkness",
+     "hp": 100,
+     "max_hp": 100,
+     "energy": [],
+     "tools": [],
+     "conditions": [],
+     "ability": {
+      "name": "Bad Dreams",
+      "text": "At the end of each turn, if your opponent's Active Pokémon is Asleep, do 20 damage to that Pokémon.",
+      "used_this_turn": false
+     },
+     "attacks": [
+      {
+       "name": "Dark Slumber",
+       "cost": [
+        "Colorless",
+        "Colorless",
+        "Colorless"
+       ],
+       "damage": "40",
+       "text": "Your opponent's Active Pokémon is now Asleep."
+      }
+     ],
+     "weakness": "Grass",
+     "retreat": 2,
+     "retreat_now": 2,
+     "retreat_note": null,
+     "ko_points": 1,
+     "notes": []
+    },
+    {
+     "name": "Swablu",
+     "stage": 0,
+     "type": "Colorless",
+     "hp": 50,
+     "max_hp": 50,
+     "energy": [],
+     "tools": [],
+     "conditions": [],
+     "ability": null,
+     "attacks": [
+      {
+       "name": "Sing",
+       "cost": [
+        "Colorless"
+       ],
+       "damage": null,
+       "text": "Your opponent's Active Pokémon is now Asleep."
+      }
+     ],
+     "weakness": "Lightning",
+     "retreat": 1,
+     "retreat_now": 1,
+     "retreat_note": null,
+     "ko_points": 1,
+     "notes": []
+    },
+    {
+     "name": "Darkrai",
+     "stage": 0,
+     "type": "Darkness",
+     "hp": 100,
+     "max_hp": 100,
+     "energy": [
+      "Psychic"
+     ],
+     "tools": [],
+     "conditions": [],
+     "ability": {
+      "name": "Bad Dreams",
+      "text": "At the end of each turn, if your opponent's Active Pokémon is Asleep, do 20 damage to that Pokémon.",
+      "used_this_turn": false
+     },
+     "attacks": [
+      {
+       "name": "Dark Slumber",
+       "cost": [
+        "Colorless",
+        "Colorless",
+        "Colorless"
+       ],
+       "damage": "40",
+       "text": "Your opponent's Active Pokémon is now Asleep."
+      }
+     ],
+     "weakness": "Grass",
+     "retreat": 2,
+     "retreat_now": 2,
+     "retreat_note": null,
+     "ko_points": 1,
+     "notes": []
+    }
+   ],
+   "deck_count": 11,
+   "discard": [
+    "Poké Ball",
+    "Copycat"
+   ],
+   "discard_energy": [],
+   "energy_zone": {
+    "this_turn": "Psychic",
+    "next": "Psychic",
+    "lines": [
+     "This turn: Psychic",
+     "Next: Psychic"
+    ]
+   },
+   "hand": [
+    {
+     "name": "Eevee",
+     "kind": "Basic Pokémon",
+     "text": "Basic Pokémon, HP 50, Colorless type. Ability Boosted Evolution: As long as this Pokémon is in the Active Spot, it can evolve during your first turn or the turn you play it. Attack Stampede [Colorless] 10. Weakness: Fighting. Retreat: 1."
+    },
+    {
+     "name": "Professor's Research",
+     "kind": "Supporter",
+     "text": "Draw 2 cards."
+    },
+    {
+     "name": "Training Area",
+     "kind": "Stadium",
+     "text": "Attacks used by Stage 1 Pokémon in play (both yours and your opponent's) do +10 damage to the opponent's Active Pokémon."
+    }
+   ],
+   "decklist": [
+    {
+     "name": "Darkrai",
+     "kind": "Basic Pokémon",
+     "text": "Basic Pokémon, HP 100, Darkness type. Ability Bad Dreams: At the end of each turn, if your opponent's Active Pokémon is Asleep, do 20 damage to that Pokémon. Attack Dark Slumber [Colorless Colorless Colorless] 40: Your opponent's Active Pokémon is now Asleep. Weakness: Grass. Retreat: 2.",
+     "count": 2,
+     "left": 0
+    },
+    {
+     "name": "Eevee",
+     "kind": "Basic Pokémon",
+     "text": "Basic Pokémon, HP 50, Colorless type. Ability Boosted Evolution: As long as this Pokémon is in the Active Spot, it can evolve during your first turn or the turn you play it. Attack Stampede [Colorless] 10. Weakness: Fighting. Retreat: 1.",
+     "count": 2,
+     "left": 1
+    },
+    {
+     "name": "Igglybuff",
+     "kind": "Basic Pokémon",
+     "text": "Basic Pokémon, HP 30, Colorless type. Attack Sleepy Lullaby [no Energy] 10: Your opponent's Active Pokémon is now Asleep. Weakness: none. Retreat: 0.",
+     "count": 1,
+     "left": 0
+    },
+    {
+     "name": "Swablu",
+     "kind": "Basic Pokémon",
+     "text": "Basic Pokémon, HP 50, Colorless type. Attack Sing [Colorless]: Your opponent's Active Pokémon is now Asleep. Weakness: Lightning. Retreat: 1.",
+     "count": 2,
+     "left": 1
+    },
+    {
+     "name": "Espeon",
+     "kind": "Stage 1 Pokémon",
+     "text": "Stage 1 Pokémon, HP 90, Psychic type, evolves from Eevee. Attack Hypnoblast [Psychic] 40: Your opponent's Active Pokémon is now Asleep. Weakness: Darkness. Retreat: 1.",
+     "count": 2,
+     "left": 2
+    },
+    {
+     "name": "Mega Altaria ex",
+     "kind": "Stage 1 Pokémon",
+     "text": "Stage 1 Pokémon, HP 190, Psychic type, evolves from Swablu. Gives 3 points when Knocked Out. Attack Mega Harmony [Psychic Psychic] 40+: This attack does 30 more damage for each of your Benched Pokémon. Weakness: Metal. Retreat: 1.",
+     "count": 1,
+     "left": 1
+    },
+    {
+     "name": "Copycat",
+     "kind": "Supporter",
+     "text": "Shuffle your hand into your deck. Draw a card for each card in your opponent's hand.",
+     "count": 2,
+     "left": 1
+    },
+    {
+     "name": "Professor's Research",
+     "kind": "Supporter",
+     "text": "Draw 2 cards.",
+     "count": 2,
+     "left": 1
+    },
+    {
+     "name": "Sabrina",
+     "kind": "Supporter",
+     "text": "Switch out your opponent's Active Pokémon to the Bench. (Your opponent chooses the new Active Pokémon.)",
+     "count": 1,
+     "left": 1
+    },
+    {
+     "name": "Field Blower",
+     "kind": "Item",
+     "text": "Discard a Pokémon Tool card from a Pokémon (yours or your opponent's), or discard a Stadium card in play.",
+     "count": 1,
+     "left": 1
+    },
+    {
+     "name": "Poké Ball",
+     "kind": "Item",
+     "text": "Put a random Basic Pokémon from your deck into your hand.",
+     "count": 2,
+     "left": 1
+    },
+    {
+     "name": "Small Balloon",
+     "kind": "Pokémon Tool",
+     "text": "The Retreat Cost of the Basic Pokémon this card is attached to is 1 less.",
+     "count": 1,
+     "left": 1
+    },
+    {
+     "name": "Training Area",
+     "kind": "Stadium",
+     "text": "Attacks used by Stage 1 Pokémon in play (both yours and your opponent's) do +10 damage to the opponent's Active Pokémon.",
+     "count": 1,
+     "left": 0
+    }
+   ],
+   "energy_types": [
+    "Psychic"
+   ],
+   "supporter_played_this_turn": true,
+   "retreated_this_turn": false
+  },
+  "opponent": {
+   "active": {
+    "name": "Torchic",
+    "stage": 0,
+    "type": "Fire",
+    "hp": 60,
+    "max_hp": 60,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": null,
+    "attacks": [
+     {
+      "name": "Peck",
+      "cost": [
+       "Fire"
+      ],
+      "damage": "20",
+      "text": ""
+     }
+    ],
+    "weakness": "Water",
+    "retreat": 1,
+    "retreat_now": 1,
+    "retreat_note": null,
+    "ko_points": 1,
+    "notes": []
+   },
+   "bench": [
+    null,
+    null,
+    {
+     "name": "Mega Blaziken ex",
+     "stage": 2,
+     "type": "Fire",
+     "hp": 210,
+     "max_hp": 210,
+     "energy": [],
+     "tools": [],
+     "conditions": [],
+     "ability": null,
+     "attacks": [
+      {
+       "name": "Mega Burning",
+       "cost": [
+        "Fire",
+        "Fire"
+       ],
+       "damage": "120",
+       "text": "Discard a Fire Energy from this Pokémon. Your opponent's Active Pokémon is now Burned."
+      }
+     ],
+     "weakness": "Water",
+     "retreat": 1,
+     "retreat_now": 1,
+     "retreat_note": null,
+     "ko_points": 3,
+     "notes": []
+    }
+   ],
+   "deck_count": 10,
+   "discard": [
+    "Professor's Research",
+    "Poké Ball",
+    "Rare Candy",
+    "Heatmor"
+   ],
+   "discard_energy": [
+    "Fire"
+   ],
+   "energy_zone": {
+    "next": "Fire",
+    "lines": [
+     "Next: Fire"
+    ]
+   },
+   "hand_count": 3
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "this_turn_so_far": [
+   "You: Played Copycat (Supporter)"
+  ],
+  "log": [
+   {
+    "turn": 0,
+    "who": "setup",
+    "header": "Setup",
+    "lines": [
+     "Opponent: started with Heatmor (Active), Torchic (Bench 3)",
+     "You: started with Igglybuff (Active), Darkrai (Bench 3), Swablu (Bench 2)"
+    ]
+   },
+   {
+    "turn": 1,
+    "who": "opponent",
+    "header": "Turn 1 - Opponent",
+    "lines": [
+     "Opponent: Played Professor's Research (Supporter)",
+     "Opponent: Played Poké Ball (Item)",
+     "Opponent: Put Torchic on Bench 2",
+     "Opponent: Ended the turn without attacking"
+    ]
+   },
+   {
+    "turn": 2,
+    "who": "you",
+    "header": "Turn 2 - You",
+    "lines": [
+     "You: Played Poké Ball (Item)",
+     "You: Put Darkrai on Bench 1",
+     "You: Attached Psychic Energy to Darkrai (Bench 3)",
+     "You: Igglybuff attacked with Sleepy Lullaby (10) → did 10 damage to opponent's Heatmor (Active); opponent's Heatmor (Active) is now Asleep",
+     "End of turn: Opponent's Heatmor (Active) took 40 damage (Darkrai's Bad Dreams 20 + Darkrai's Bad Dreams 20)"
+    ]
+   },
+   {
+    "turn": 3,
+    "who": "opponent",
+    "header": "Turn 3 - Opponent",
+    "lines": [
+     "Opponent: Played Rare Candy (Item) → evolved Torchic (Bench 3) into Mega Blaziken ex (skipping Combusken)",
+     "Opponent: Attached Fire Energy to Heatmor (Active)",
+     "Opponent: Ended the turn without attacking",
+     "End of turn: Opponent's Heatmor (Active) was Knocked Out by Darkrai's Bad Dreams and Darkrai's Bad Dreams (you +1 point; score: you 1, opponent 0)",
+     "Opponent: Moved Torchic (Bench 2) into the Active Spot as the new Active Pokémon"
+    ]
+   }
+  ],
+  "options": [
+   {
+    "key": "5",
+    "group": "Attack",
+    "text": "Attack with Sleepy Lullaby (10 damage): Your opponent's Active Pokémon is now Asleep."
+   },
+   {
+    "key": "6",
+    "group": "Trainers",
+    "text": "Play Training Area (Stadium): Attacks used by Stage 1 Pokémon in play (both yours and your opponent's) do +10 damage to the opponent's Active Pokémon."
+   },
+   {
+    "key": "1",
+    "group": "Energy",
+    "text": "Attach Psychic Energy to Igglybuff (Active)"
+   },
+   {
+    "key": "2",
+    "group": "Energy",
+    "text": "Attach Psychic Energy to Darkrai (Bench 1)"
+   },
+   {
+    "key": "3",
+    "group": "Energy",
+    "text": "Attach Psychic Energy to Swablu (Bench 2)"
+   },
+   {
+    "key": "4",
+    "group": "Energy",
+    "text": "Attach Psychic Energy to Darkrai (Bench 3)"
+   },
+   {
+    "key": "7",
+    "group": "Retreat",
+    "text": "Retreat Igglybuff (Active) and switch in Darkrai (Bench 1); costs 0 Energy"
+   },
+   {
+    "key": "8",
+    "group": "Retreat",
+    "text": "Retreat Igglybuff (Active) and switch in Swablu (Bench 2); costs 0 Energy"
+   },
+   {
+    "key": "9",
+    "group": "Retreat",
+    "text": "Retreat Igglybuff (Active) and switch in Darkrai (Bench 3); costs 0 Energy"
+   },
+   {
+    "key": "0",
+    "group": "End turn",
+    "text": "End your turn without attacking"
+   }
+  ],
+  "cant_play": [
+   "Eevee: your Bench is full",
+   "Professor's Research: you already played a Supporter this turn"
+  ]
+ },
+ {
+  "id": "Q08",
+  "order": 8,
+  "matchup": {
+   "you": "Altaria"
+  },
+  "turn": 3,
+  "you_went_first": true,
+  "situation": "Your turn (your 2nd turn; turn 3 of the game).",
+  "points": {
+   "you": 0,
+   "opponent": 0
+  },
+  "you": {
+   "active": {
+    "name": "Darkrai",
+    "stage": 0,
+    "type": "Darkness",
+    "hp": 80,
+    "max_hp": 100,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": {
+     "name": "Bad Dreams",
+     "text": "At the end of each turn, if your opponent's Active Pokémon is Asleep, do 20 damage to that Pokémon.",
+     "used_this_turn": false
+    },
+    "attacks": [
+     {
+      "name": "Dark Slumber",
+      "cost": [
+       "Colorless",
+       "Colorless",
+       "Colorless"
+      ],
+      "damage": "40",
+      "text": "Your opponent's Active Pokémon is now Asleep."
+     }
+    ],
+    "weakness": "Grass",
+    "retreat": 2,
+    "retreat_now": 2,
+    "retreat_note": null,
+    "ko_points": 1,
+    "notes": []
+   },
+   "bench": [
+    null,
+    {
+     "name": "Swablu",
+     "stage": 0,
+     "type": "Colorless",
+     "hp": 50,
+     "max_hp": 50,
+     "energy": [],
+     "tools": [],
+     "conditions": [],
+     "ability": null,
+     "attacks": [
+      {
+       "name": "Sing",
+       "cost": [
+        "Colorless"
+       ],
+       "damage": null,
+       "text": "Your opponent's Active Pokémon is now Asleep."
+      }
+     ],
+     "weakness": "Lightning",
+     "retreat": 1,
+     "retreat_now": 1,
+     "retreat_note": null,
+     "ko_points": 1,
+     "notes": []
+    },
+    {
+     "name": "Darkrai",
+     "stage": 0,
+     "type": "Darkness",
+     "hp": 100,
+     "max_hp": 100,
+     "energy": [],
+     "tools": [],
+     "conditions": [],
+     "ability": {
+      "name": "Bad Dreams",
+      "text": "At the end of each turn, if your opponent's Active Pokémon is Asleep, do 20 damage to that Pokémon.",
+      "used_this_turn": false
+     },
+     "attacks": [
+      {
+       "name": "Dark Slumber",
+       "cost": [
+        "Colorless",
+        "Colorless",
+        "Colorless"
+       ],
+       "damage": "40",
+       "text": "Your opponent's Active Pokémon is now Asleep."
+      }
+     ],
+     "weakness": "Grass",
+     "retreat": 2,
+     "retreat_now": 2,
+     "retreat_note": null,
+     "ko_points": 1,
+     "notes": []
+    }
+   ],
+   "deck_count": 11,
+   "discard": [
+    "Poké Ball",
+    "Poké Ball"
+   ],
+   "discard_energy": [],
+   "energy_zone": {
+    "this_turn": "Psychic",
+    "next": "Psychic",
+    "lines": [
+     "This turn: Psychic",
+     "Next: Psychic"
+    ]
+   },
+   "hand": [
+    {
+     "name": "Igglybuff",
+     "kind": "Basic Pokémon",
+     "text": "Basic Pokémon, HP 30, Colorless type. Attack Sleepy Lullaby [no Energy] 10: Your opponent's Active Pokémon is now Asleep. Weakness: none. Retreat: 0."
+    },
+    {
+     "name": "Espeon",
+     "kind": "Stage 1 Pokémon",
+     "text": "Stage 1 Pokémon, HP 90, Psychic type, evolves from Eevee. Attack Hypnoblast [Psychic] 40: Your opponent's Active Pokémon is now Asleep. Weakness: Darkness. Retreat: 1."
+    },
+    {
+     "name": "Espeon",
+     "kind": "Stage 1 Pokémon",
+     "text": "Stage 1 Pokémon, HP 90, Psychic type, evolves from Eevee. Attack Hypnoblast [Psychic] 40: Your opponent's Active Pokémon is now Asleep. Weakness: Darkness. Retreat: 1."
+    },
+    {
+     "name": "Training Area",
+     "kind": "Stadium",
+     "text": "Attacks used by Stage 1 Pokémon in play (both yours and your opponent's) do +10 damage to the opponent's Active Pokémon."
+    }
+   ],
+   "decklist": [
+    {
+     "name": "Darkrai",
+     "kind": "Basic Pokémon",
+     "text": "Basic Pokémon, HP 100, Darkness type. Ability Bad Dreams: At the end of each turn, if your opponent's Active Pokémon is Asleep, do 20 damage to that Pokémon. Attack Dark Slumber [Colorless Colorless Colorless] 40: Your opponent's Active Pokémon is now Asleep. Weakness: Grass. Retreat: 2.",
+     "count": 2,
+     "left": 0
+    },
+    {
+     "name": "Eevee",
+     "kind": "Basic Pokémon",
+     "text": "Basic Pokémon, HP 50, Colorless type. Ability Boosted Evolution: As long as this Pokémon is in the Active Spot, it can evolve during your first turn or the turn you play it. Attack Stampede [Colorless] 10. Weakness: Fighting. Retreat: 1.",
+     "count": 2,
+     "left": 2
+    },
+    {
+     "name": "Igglybuff",
+     "kind": "Basic Pokémon",
+     "text": "Basic Pokémon, HP 30, Colorless type. Attack Sleepy Lullaby [no Energy] 10: Your opponent's Active Pokémon is now Asleep. Weakness: none. Retreat: 0.",
+     "count": 1,
+     "left": 0
+    },
+    {
+     "name": "Swablu",
+     "kind": "Basic Pokémon",
+     "text": "Basic Pokémon, HP 50, Colorless type. Attack Sing [Colorless]: Your opponent's Active Pokémon is now Asleep. Weakness: Lightning. Retreat: 1.",
+     "count": 2,
+     "left": 1
+    },
+    {
+     "name": "Espeon",
+     "kind": "Stage 1 Pokémon",
+     "text": "Stage 1 Pokémon, HP 90, Psychic type, evolves from Eevee. Attack Hypnoblast [Psychic] 40: Your opponent's Active Pokémon is now Asleep. Weakness: Darkness. Retreat: 1.",
+     "count": 2,
+     "left": 0
+    },
+    {
+     "name": "Mega Altaria ex",
+     "kind": "Stage 1 Pokémon",
+     "text": "Stage 1 Pokémon, HP 190, Psychic type, evolves from Swablu. Gives 3 points when Knocked Out. Attack Mega Harmony [Psychic Psychic] 40+: This attack does 30 more damage for each of your Benched Pokémon. Weakness: Metal. Retreat: 1.",
+     "count": 1,
+     "left": 1
+    },
+    {
+     "name": "Copycat",
+     "kind": "Supporter",
+     "text": "Shuffle your hand into your deck. Draw a card for each card in your opponent's hand.",
+     "count": 2,
+     "left": 2
+    },
+    {
+     "name": "Professor's Research",
+     "kind": "Supporter",
+     "text": "Draw 2 cards.",
+     "count": 2,
+     "left": 2
+    },
+    {
+     "name": "Sabrina",
+     "kind": "Supporter",
+     "text": "Switch out your opponent's Active Pokémon to the Bench. (Your opponent chooses the new Active Pokémon.)",
+     "count": 1,
+     "left": 1
+    },
+    {
+     "name": "Field Blower",
+     "kind": "Item",
+     "text": "Discard a Pokémon Tool card from a Pokémon (yours or your opponent's), or discard a Stadium card in play.",
+     "count": 1,
+     "left": 1
+    },
+    {
+     "name": "Poké Ball",
+     "kind": "Item",
+     "text": "Put a random Basic Pokémon from your deck into your hand.",
+     "count": 2,
+     "left": 0
+    },
+    {
+     "name": "Small Balloon",
+     "kind": "Pokémon Tool",
+     "text": "The Retreat Cost of the Basic Pokémon this card is attached to is 1 less.",
+     "count": 1,
+     "left": 1
+    },
+    {
+     "name": "Training Area",
+     "kind": "Stadium",
+     "text": "Attacks used by Stage 1 Pokémon in play (both yours and your opponent's) do +10 damage to the opponent's Active Pokémon.",
+     "count": 1,
+     "left": 0
+    }
+   ],
+   "energy_types": [
+    "Psychic"
+   ],
+   "supporter_played_this_turn": false,
+   "retreated_this_turn": false
+  },
+  "opponent": {
+   "active": {
+    "name": "Deino",
+    "stage": 0,
+    "type": "Darkness",
+    "hp": 60,
+    "max_hp": 60,
+    "energy": [
+     "Darkness"
+    ],
+    "tools": [],
+    "conditions": [],
+    "ability": null,
+    "attacks": [
+     {
+      "name": "Headbutt",
+      "cost": [
+       "Darkness"
+      ],
+      "damage": "20",
+      "text": ""
+     }
+    ],
+    "weakness": "Grass",
+    "retreat": 1,
+    "retreat_now": 1,
+    "retreat_note": null,
+    "ko_points": 1,
+    "notes": []
+   },
+   "bench": [
+    null,
+    null,
+    {
+     "name": "Deino",
+     "stage": 0,
+     "type": "Darkness",
+     "hp": 60,
+     "max_hp": 60,
+     "energy": [],
+     "tools": [],
+     "conditions": [],
+     "ability": null,
+     "attacks": [
+      {
+       "name": "Headbutt",
+       "cost": [
+        "Darkness"
+       ],
+       "damage": "20",
+       "text": ""
+      }
+     ],
+     "weakness": "Grass",
+     "retreat": 1,
+     "retreat_now": 1,
+     "retreat_note": null,
+     "ko_points": 1,
+     "notes": []
+    }
+   ],
+   "deck_count": 13,
+   "discard": [
+    "Poké Ball"
+   ],
+   "discard_energy": [],
+   "energy_zone": {
+    "next": "Darkness",
+    "lines": [
+     "Next: Darkness"
+    ]
+   },
+   "hand_count": 4
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "this_turn_so_far": [],
+  "log": [
+   {
+    "turn": 0,
+    "who": "setup",
+    "header": "Setup",
+    "lines": [
+     "You: started with Darkrai (Active)",
+     "Opponent: started with Deino (Active)"
+    ]
+   },
+   {
+    "turn": 1,
+    "who": "you",
+    "header": "Turn 1 - You",
+    "lines": [
+     "You: Played Poké Ball (Item)",
+     "You: Played Poké Ball (Item)",
+     "You: Put Darkrai on Bench 3",
+     "You: Put Swablu on Bench 2",
+     "You: Ended the turn without attacking"
+    ]
+   },
+   {
+    "turn": 2,
+    "who": "opponent",
+    "header": "Turn 2 - Opponent",
+    "lines": [
+     "Opponent: Played Poké Ball (Item)",
+     "Opponent: Put Deino on Bench 3",
+     "Opponent: Attached Darkness Energy to Deino (Active)",
+     "Opponent: Deino attacked with Headbutt (20) → did 20 damage to your Darkrai (Active)"
+    ]
+   }
+  ],
+  "options": [
+   {
+    "key": "5",
+    "group": "Trainers",
+    "text": "Play Training Area (Stadium): Attacks used by Stage 1 Pokémon in play (both yours and your opponent's) do +10 damage to the opponent's Active Pokémon."
+   },
+   {
+    "key": "1",
+    "group": "Energy",
+    "text": "Attach Psychic Energy to Darkrai (Active)"
+   },
+   {
+    "key": "2",
+    "group": "Energy",
+    "text": "Attach Psychic Energy to Swablu (Bench 2)"
+   },
+   {
+    "key": "3",
+    "group": "Energy",
+    "text": "Attach Psychic Energy to Darkrai (Bench 3)"
+   },
+   {
+    "key": "4",
+    "group": "Pokémon",
+    "text": "Put Igglybuff onto your Bench (Bench 1)"
+   },
+   {
+    "key": "0",
+    "group": "End turn",
+    "text": "End your turn without attacking"
+   }
+  ],
+  "cant_play": [
+   "Espeon (x2): no Eevee in play"
+  ]
+ },
+ {
+  "id": "Q09",
+  "order": 9,
+  "matchup": {
+   "you": "Lucario"
+  },
+  "turn": 2,
+  "you_went_first": false,
+  "situation": "Your turn (your 1st turn; turn 2 of the game).",
+  "points": {
+   "you": 0,
+   "opponent": 0
+  },
+  "you": {
+   "active": {
+    "name": "Riolu",
+    "stage": 0,
+    "type": "Fighting",
+    "hp": 60,
+    "max_hp": 60,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": null,
+    "attacks": [
+     {
+      "name": "Fighting Fist",
+      "cost": [
+       "Fighting"
+      ],
+      "damage": "10+",
+      "text": "If your opponent's Active Pokémon is a Pokémon ex, this attack does 30 more damage."
+     }
+    ],
+    "weakness": "Psychic",
+    "retreat": 1,
+    "retreat_now": 1,
+    "retreat_note": null,
+    "ko_points": 1,
+    "notes": []
+   },
+   "bench": [
+    null,
+    {
+     "name": "Hitmonlee",
+     "stage": 0,
+     "type": "Fighting",
+     "hp": 80,
+     "max_hp": 80,
+     "energy": [],
+     "tools": [],
+     "conditions": [],
+     "ability": null,
+     "attacks": [
+      {
+       "name": "Stretch Kick",
+       "cost": [
+        "Fighting"
+       ],
+       "damage": null,
+       "text": "This attack does 30 damage to 1 of your opponent's Benched Pokémon."
+      }
+     ],
+     "weakness": "Psychic",
+     "retreat": 1,
+     "retreat_now": 1,
+     "retreat_note": null,
+     "ko_points": 1,
+     "notes": [
+      "Put into play this turn"
+     ]
+    },
+    {
+     "name": "Riolu",
+     "stage": 0,
+     "type": "Fighting",
+     "hp": 60,
+     "max_hp": 60,
+     "energy": [],
+     "tools": [],
+     "conditions": [],
+     "ability": null,
+     "attacks": [
+      {
+       "name": "Fighting Fist",
+       "cost": [
+        "Fighting"
+       ],
+       "damage": "10+",
+       "text": "If your opponent's Active Pokémon is a Pokémon ex, this attack does 30 more damage."
+      }
+     ],
+     "weakness": "Psychic",
+     "retreat": 1,
+     "retreat_now": 1,
+     "retreat_note": null,
+     "ko_points": 1,
+     "notes": [
+      "Put into play this turn"
+     ]
+    }
+   ],
+   "deck_count": 13,
+   "discard": [
+    "Copycat",
+    "Poké Ball"
+   ],
+   "discard_energy": [],
+   "energy_zone": {
+    "this_turn": "Fighting",
+    "next": "Fighting",
+    "lines": [
+     "This turn: Fighting",
+     "Next: Fighting"
+    ]
+   },
+   "hand": [
+    {
+     "name": "Mega Lucario ex",
+     "kind": "Stage 1 Pokémon",
+     "text": "Stage 1 Pokémon, HP 190, Fighting type, evolves from Riolu. Gives 3 points when Knocked Out. Attack Fighting Pulse [Fighting Fighting] 90+: If this Pokémon has at least 1 extra Fighting Energy attached, this attack does 50 more damage. Weakness: Psychic. Retreat: 1."
+    },
+    {
+     "name": "Protective Poncho",
+     "kind": "Pokémon Tool",
+     "text": "As long as the Pokémon this card is attached to is on your Bench, prevent all damage done to that Pokémon by your opponent's attacks and Abilities."
+    }
+   ],
+   "decklist": [
+    {
+     "name": "Bonsly",
+     "kind": "Basic Pokémon",
+     "text": "Basic Pokémon, HP 30, Fighting type. Attack Teary Attack [no Energy] 10: During your opponent's next turn, attacks used by the Defending Pokémon do -30 damage. Weakness: none. Retreat: 0.",
+     "count": 1,
+     "left": 1
+    },
+    {
+     "name": "Hitmonlee",
+     "kind": "Basic Pokémon",
+     "text": "Basic Pokémon, HP 80, Fighting type. Attack Stretch Kick [Fighting]: This attack does 30 damage to 1 of your opponent's Benched Pokémon. Weakness: Psychic. Retreat: 1.",
+     "count": 1,
+     "left": 0
+    },
+    {
+     "name": "Riolu",
+     "kind": "Basic Pokémon",
+     "text": "Basic Pokémon, HP 60, Fighting type. Attack Fighting Fist [Fighting] 10+: If your opponent's Active Pokémon is a Pokémon ex, this attack does 30 more damage. Weakness: Psychic. Retreat: 1.",
+     "count": 2,
+     "left": 0
+    },
+    {
+     "name": "Lucario",
+     "kind": "Stage 1 Pokémon",
+     "text": "Stage 1 Pokémon, HP 100, Fighting type, evolves from Riolu. Ability Fighting Coach: Attacks used by your Fighting Pokémon do +20 damage to your opponent's Active Pokémon. Attack Submarine Blow [Fighting Fighting] 40. Weakness: Psychic. Retreat: 2.",
+     "count": 1,
+     "left": 1
+    },
+    {
+     "name": "Mega Lucario ex",
+     "kind": "Stage 1 Pokémon",
+     "text": "Stage 1 Pokémon, HP 190, Fighting type, evolves from Riolu. Gives 3 points when Knocked Out. Attack Fighting Pulse [Fighting Fighting] 90+: If this Pokémon has at least 1 extra Fighting Energy attached, this attack does 50 more damage. Weakness: Psychic. Retreat: 1.",
+     "count": 2,
+     "left": 1
+    },
+    {
+     "name": "Copycat",
+     "kind": "Supporter",
+     "text": "Shuffle your hand into your deck. Draw a card for each card in your opponent's hand.",
+     "count": 2,
+     "left": 1
+    },
+    {
+     "name": "Cyrus",
+     "kind": "Supporter",
+     "text": "Switch in 1 of your opponent's Benched Pokémon that has damage on it to the Active Spot.",
+     "count": 1,
+     "left": 1
+    },
+    {
+     "name": "Korrina",
+     "kind": "Supporter",
+     "text": "During this turn, attacks used by your Fighting Pokémon do +30 damage to your opponent's Active Pokémon ex.",
+     "count": 1,
+     "left": 1
+    },
+    {
+     "name": "Pokémon Center Lady",
+     "kind": "Supporter",
+     "text": "Heal 30 damage from 1 of your Pokémon, and it recovers from all Special Conditions.",
+     "count": 1,
+     "left": 1
+    },
+    {
+     "name": "Professor's Research",
+     "kind": "Supporter",
+     "text": "Draw 2 cards.",
+     "count": 2,
+     "left": 2
+    },
+    {
+     "name": "Field Blower",
+     "kind": "Item",
+     "text": "Discard a Pokémon Tool card from a Pokémon (yours or your opponent's), or discard a Stadium card in play.",
+     "count": 1,
+     "left": 1
+    },
+    {
+     "name": "Poké Ball",
+     "kind": "Item",
+     "text": "Put a random Basic Pokémon from your deck into your hand.",
+     "count": 2,
+     "left": 1
+    },
+    {
+     "name": "X Speed",
+     "kind": "Item",
+     "text": "During this turn, the Retreat Cost of your Active Pokémon is 1 less.",
+     "count": 1,
+     "left": 1
+    },
+    {
+     "name": "Protective Poncho",
+     "kind": "Pokémon Tool",
+     "text": "As long as the Pokémon this card is attached to is on your Bench, prevent all damage done to that Pokémon by your opponent's attacks and Abilities.",
+     "count": 1,
+     "left": 0
+    },
+    {
+     "name": "Arena of Antiquity",
+     "kind": "Stadium",
+     "text": "Attacks used by each Fighting Pokémon in play (both yours and your opponent's) do +20 damage to the opponent's Active Pokémon ex.",
+     "count": 1,
+     "left": 1
+    }
+   ],
+   "energy_types": [
+    "Fighting"
+   ],
+   "supporter_played_this_turn": true,
+   "retreated_this_turn": false
+  },
+  "opponent": {
+   "active": {
+    "name": "Swablu",
+    "stage": 0,
+    "type": "Colorless",
+    "hp": 50,
+    "max_hp": 50,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": null,
+    "attacks": [
+     {
+      "name": "Sing",
+      "cost": [
+       "Colorless"
+      ],
+      "damage": null,
+      "text": "Your opponent's Active Pokémon is now Asleep."
+     }
+    ],
+    "weakness": "Lightning",
+    "retreat": 1,
+    "retreat_now": 1,
+    "retreat_note": null,
+    "ko_points": 1,
+    "notes": []
+   },
+   "bench": [
+    null,
+    {
+     "name": "Eevee",
+     "stage": 0,
+     "type": "Colorless",
+     "hp": 50,
+     "max_hp": 50,
+     "energy": [],
+     "tools": [],
+     "conditions": [],
+     "ability": {
+      "name": "Boosted Evolution",
+      "text": "As long as this Pokémon is in the Active Spot, it can evolve during your first turn or the turn you play it.",
+      "used_this_turn": false
+     },
+     "attacks": [
+      {
+       "name": "Stampede",
+       "cost": [
+        "Colorless"
+       ],
+       "damage": "10",
+       "text": ""
+      }
+     ],
+     "weakness": "Fighting",
+     "retreat": 1,
+     "retreat_now": 1,
+     "retreat_note": null,
+     "ko_points": 1,
+     "notes": []
+    },
+    {
+     "name": "Darkrai",
+     "stage": 0,
+     "type": "Darkness",
+     "hp": 100,
+     "max_hp": 100,
+     "energy": [],
+     "tools": [],
+     "conditions": [],
+     "ability": {
+      "name": "Bad Dreams",
+      "text": "At the end of each turn, if your opponent's Active Pokémon is Asleep, do 20 damage to that Pokémon.",
+      "used_this_turn": false
+     },
+     "attacks": [
+      {
+       "name": "Dark Slumber",
+       "cost": [
+        "Colorless",
+        "Colorless",
+        "Colorless"
+       ],
+       "damage": "40",
+       "text": "Your opponent's Active Pokémon is now Asleep."
+      }
+     ],
+     "weakness": "Grass",
+     "retreat": 2,
+     "retreat_now": 2,
+     "retreat_note": null,
+     "ko_points": 1,
+     "notes": []
+    }
+   ],
+   "deck_count": 10,
+   "discard": [
+    "Professor's Research",
+    "Poké Ball",
+    "Poké Ball"
+   ],
+   "discard_energy": [],
+   "energy_zone": {
+    "next": "Psychic",
+    "lines": [
+     "Next: Psychic"
+    ]
+   },
+   "hand_count": 4
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "this_turn_so_far": [
+   "You: Played Copycat (Supporter)",
+   "You: Played Poké Ball (Item)",
+   "You: Put Riolu on Bench 3",
+   "You: Put Hitmonlee on Bench 2"
+  ],
+  "log": [
+   {
+    "turn": 0,
+    "who": "setup",
+    "header": "Setup",
+    "lines": [
+     "Opponent: started with Swablu (Active)",
+     "You: started with Riolu (Active)"
+    ]
+   },
+   {
+    "turn": 1,
+    "who": "opponent",
+    "header": "Turn 1 - Opponent",
+    "lines": [
+     "Opponent: Played Professor's Research (Supporter)",
+     "Opponent: Played Poké Ball (Item)",
+     "Opponent: Played Poké Ball (Item)",
+     "Opponent: Put Darkrai on Bench 3",
+     "Opponent: Put Eevee on Bench 2",
+     "Opponent: Ended the turn without attacking"
+    ]
+   }
+  ],
+  "options": [
+   {
+    "key": "4",
+    "group": "Trainers",
+    "text": "Play Protective Poncho (Pokémon Tool), then choose which of your Pokémon to attach it to: As long as the Pokémon this card is attached to is on your Bench, prevent all damage done to that Pokémon by your opponent's attacks and Abilities."
+   },
+   {
+    "key": "1",
+    "group": "Energy",
+    "text": "Attach Fighting Energy to Riolu (Active)"
+   },
+   {
+    "key": "2",
+    "group": "Energy",
+    "text": "Attach Fighting Energy to Hitmonlee (Bench 2)"
+   },
+   {
+    "key": "3",
+    "group": "Energy",
+    "text": "Attach Fighting Energy to Riolu (Bench 3)"
+   },
+   {
+    "key": "0",
+    "group": "End turn",
+    "text": "End your turn without attacking"
+   }
+  ],
+  "cant_play": [
+   "Mega Lucario ex: you can't evolve Pokémon during your first turn"
+  ]
+ },
+ {
+  "id": "Q10",
+  "order": 10,
+  "matchup": {
+   "you": "Vespiquen"
+  },
+  "turn": 3,
+  "you_went_first": true,
+  "situation": "Your turn (your 2nd turn; turn 3 of the game).",
+  "points": {
+   "you": 0,
+   "opponent": 0
+  },
+  "you": {
+   "active": {
+    "name": "Teal Mask Ogerpon ex",
+    "stage": 0,
+    "type": "Grass",
+    "hp": 160,
+    "max_hp": 160,
+    "energy": [],
+    "tools": [
+     {
+      "name": "Leaf Cape",
+      "text": "The Grass Pokémon this card is attached to gets +30 HP."
+     }
+    ],
+    "conditions": [],
+    "ability": {
+     "name": "Soothing Wind",
+     "text": "Each of your Pokémon that has any Energy attached recovers from all Special Conditions and can't be affected by any Special Conditions.",
+     "used_this_turn": false
+    },
+    "attacks": [
+     {
+      "name": "Energized Leaves",
+      "cost": [
+       "Grass",
+       "Grass"
+      ],
+      "damage": "60+",
+      "text": "If the amount of Energy attached to both Active Pokémon is 5 or more, this attack does 60 more damage."
+     }
+    ],
+    "weakness": "Fire",
+    "retreat": 1,
+    "retreat_now": 0,
+    "retreat_note": "X Speed",
+    "ko_points": 2,
+    "notes": []
+   },
+   "bench": [
+    {
+     "name": "Shuckle ex",
+     "stage": 0,
+     "type": "Grass",
+     "hp": 120,
+     "max_hp": 120,
+     "energy": [],
+     "tools": [],
+     "conditions": [],
+     "ability": {
+      "name": "Solid Shell",
+      "text": "This Pokémon takes -20 damage from attacks.",
+      "used_this_turn": false
+     },
+     "attacks": [
+      {
+       "name": "Triple Slap",
+       "cost": [
+        "Grass"
+       ],
+       "damage": "20×",
+       "text": "Flip 3 coins. This attack does 20 damage for each heads."
+      }
+     ],
+     "weakness": "Fire",
+     "retreat": 1,
+     "retreat_now": 1,
+     "retreat_note": null,
+     "ko_points": 2,
+     "notes": []
+    },
+    {
+     "name": "Vespiquen ex",
+     "stage": 1,
+     "type": "Grass",
+     "hp": 170,
+     "max_hp": 170,
+     "energy": [],
+     "tools": [
+      {
+       "name": "Leaf Cape",
+       "text": "The Grass Pokémon this card is attached to gets +30 HP."
+      }
+     ],
+     "conditions": [],
+     "ability": null,
+     "attacks": [
+      {
+       "name": "Chase Order",
+       "cost": [
+        "Grass",
+        "Grass"
+       ],
+       "damage": "70+",
+       "text": "You may discard 1 of your Benched Basic Grass Pokémon. If you do, this attack does 70 more damage."
+      }
+     ],
+     "weakness": "Fire",
+     "retreat": 2,
+     "retreat_now": 2,
+     "retreat_note": null,
+     "ko_points": 2,
+     "notes": [
+      "Evolved this turn"
+     ]
+    },
+    {
+     "name": "Shuckle ex",
+     "stage": 0,
+     "type": "Grass",
+     "hp": 120,
+     "max_hp": 120,
+     "energy": [],
+     "tools": [],
+     "conditions": [],
+     "ability": {
+      "name": "Solid Shell",
+      "text": "This Pokémon takes -20 damage from attacks.",
+      "used_this_turn": false
+     },
+     "attacks": [
+      {
+       "name": "Triple Slap",
+       "cost": [
+        "Grass"
+       ],
+       "damage": "20×",
+       "text": "Flip 3 coins. This attack does 20 damage for each heads."
+      }
+     ],
+     "weakness": "Fire",
+     "retreat": 1,
+     "retreat_now": 1,
+     "retreat_note": null,
+     "ko_points": 2,
+     "notes": []
+    }
+   ],
+   "deck_count": 9,
+   "discard": [
+    "Copycat",
+    "Professor's Research",
+    "X Speed"
+   ],
+   "discard_energy": [],
+   "energy_zone": {
+    "this_turn": "Grass",
+    "next": "Grass",
+    "lines": [
+     "This turn: Grass",
+     "Next: Grass"
+    ]
+   },
+   "hand": [],
+   "decklist": [
+    {
+     "name": "Combee",
+     "kind": "Basic Pokémon",
+     "text": "Basic Pokémon, HP 50, Grass type. Attack Reckless Charge [Grass] 30: This Pokémon also does 10 damage to itself. Weakness: Fire. Retreat: 1.",
+     "count": 2,
+     "left": 1
+    },
+    {
+     "name": "Shuckle ex",
+     "kind": "Basic Pokémon",
+     "text": "Basic Pokémon, HP 120, Grass type. Gives 2 points when Knocked Out. Ability Solid Shell: This Pokémon takes -20 damage from attacks. Attack Triple Slap [Grass] 20×: Flip 3 coins. This attack does 20 damage for each heads. Weakness: Fire. Retreat: 1.",
+     "count": 2,
+     "left": 0
+    },
+    {
+     "name": "Teal Mask Ogerpon ex",
+     "kind": "Basic Pokémon",
+     "text": "Basic Pokémon, HP 130, Grass type. Gives 2 points when Knocked Out. Ability Soothing Wind: Each of your Pokémon that has any Energy attached recovers from all Special Conditions and can't be affected by any Special Conditions. Attack Energized Leaves [Grass Grass] 60+: If the amount of Energy attached to both Active Pokémon is 5 or more, this attack does 60 more damage. Weakness: Fire. Retreat: 1.",
+     "count": 1,
+     "left": 0
+    },
+    {
+     "name": "Vespiquen ex",
+     "kind": "Stage 1 Pokémon",
+     "text": "Stage 1 Pokémon, HP 140, Grass type, evolves from Combee. Gives 2 points when Knocked Out. Attack Chase Order [Grass Grass] 70+: You may discard 1 of your Benched Basic Grass Pokémon. If you do, this attack does 70 more damage. Weakness: Fire. Retreat: 2.",
+     "count": 2,
+     "left": 1
+    },
+    {
+     "name": "Copycat",
+     "kind": "Supporter",
+     "text": "Shuffle your hand into your deck. Draw a card for each card in your opponent's hand.",
+     "count": 2,
+     "left": 1
+    },
+    {
+     "name": "Cyrus",
+     "kind": "Supporter",
+     "text": "Switch in 1 of your opponent's Benched Pokémon that has damage on it to the Active Spot.",
+     "count": 1,
+     "left": 1
+    },
+    {
+     "name": "Professor's Research",
+     "kind": "Supporter",
+     "text": "Draw 2 cards.",
+     "count": 2,
+     "left": 1
+    },
+    {
+     "name": "Sabrina",
+     "kind": "Supporter",
+     "text": "Switch out your opponent's Active Pokémon to the Bench. (Your opponent chooses the new Active Pokémon.)",
+     "count": 1,
+     "left": 1
+    },
+    {
+     "name": "Field Blower",
+     "kind": "Item",
+     "text": "Discard a Pokémon Tool card from a Pokémon (yours or your opponent's), or discard a Stadium card in play.",
+     "count": 1,
+     "left": 1
+    },
+    {
+     "name": "X Speed",
+     "kind": "Item",
+     "text": "During this turn, the Retreat Cost of your Active Pokémon is 1 less.",
+     "count": 2,
+     "left": 1
+    },
+    {
+     "name": "Leaf Cape",
+     "kind": "Pokémon Tool",
+     "text": "The Grass Pokémon this card is attached to gets +30 HP.",
+     "count": 2,
+     "left": 0
+    },
+    {
+     "name": "Fragrant Forest",
+     "kind": "Stadium",
+     "text": "Once during each player's turn, that player may put a random Basic Grass Pokémon from their deck into their hand.",
+     "count": 2,
+     "left": 1
+    }
+   ],
+   "energy_types": [
+    "Grass"
+   ],
+   "supporter_played_this_turn": true,
+   "retreated_this_turn": false
+  },
+  "opponent": {
+   "active": {
+    "name": "Darkrai",
+    "stage": 0,
+    "type": "Darkness",
+    "hp": 100,
+    "max_hp": 100,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": {
+     "name": "Bad Dreams",
+     "text": "At the end of each turn, if your opponent's Active Pokémon is Asleep, do 20 damage to that Pokémon.",
+     "used_this_turn": false
+    },
+    "attacks": [
+     {
+      "name": "Dark Slumber",
+      "cost": [
+       "Colorless",
+       "Colorless",
+       "Colorless"
+      ],
+      "damage": "40",
+      "text": "Your opponent's Active Pokémon is now Asleep."
+     }
+    ],
+    "weakness": "Grass",
+    "retreat": 2,
+    "retreat_now": 2,
+    "retreat_note": null,
+    "ko_points": 1,
+    "notes": []
+   },
+   "bench": [
+    null,
+    null,
+    {
+     "name": "Swablu",
+     "stage": 0,
+     "type": "Colorless",
+     "hp": 50,
+     "max_hp": 50,
+     "energy": [
+      "Psychic"
+     ],
+     "tools": [],
+     "conditions": [],
+     "ability": null,
+     "attacks": [
+      {
+       "name": "Sing",
+       "cost": [
+        "Colorless"
+       ],
+       "damage": null,
+       "text": "Your opponent's Active Pokémon is now Asleep."
+      }
+     ],
+     "weakness": "Lightning",
+     "retreat": 1,
+     "retreat_now": 1,
+     "retreat_note": null,
+     "ko_points": 1,
+     "notes": []
+    }
+   ],
+   "deck_count": 16,
+   "discard": [
+    "Copycat"
+   ],
+   "discard_energy": [],
+   "energy_zone": {
+    "next": "Psychic",
+    "lines": [
+     "Next: Psychic"
+    ]
+   },
+   "hand_count": 1
+  },
+  "stadium": {
+   "name": "Fragrant Forest",
+   "text": "Once during each player's turn, that player may put a random Basic Grass Pokémon from their deck into their hand.",
+   "played_by": "you"
+  },
+  "turn_effects": [
+   "During this turn, the Retreat Cost of your Active Pokémon is 1 less (X Speed)"
+  ],
+  "this_turn_so_far": [
+   "You: Played Professor's Research (Supporter)",
+   "You: Evolved Combee (Bench 2) into Vespiquen ex",
+   "You: Played Leaf Cape (Pokémon Tool) → attached Leaf Cape to Vespiquen ex (Bench 2)",
+   "You: Played Leaf Cape (Pokémon Tool) → attached Leaf Cape to Teal Mask Ogerpon ex (Active)",
+   "You: Played X Speed (Item)"
+  ],
+  "log": [
+   {
+    "turn": 0,
+    "who": "setup",
+    "header": "Setup",
+    "lines": [
+     "You: started with Teal Mask Ogerpon ex (Active), Shuckle ex (Bench 3)",
+     "Opponent: started with Darkrai (Active)"
+    ]
+   },
+   {
+    "turn": 1,
+    "who": "you",
+    "header": "Turn 1 - You",
+    "lines": [
+     "You: Played Copycat (Supporter)",
+     "You: Played Fragrant Forest (Stadium)",
+     "You: Put Combee on Bench 2",
+     "You: Used the Stadium Fragrant Forest",
+     "You: Put Shuckle ex on Bench 1",
+     "You: Ended the turn without attacking"
+    ]
+   },
+   {
+    "turn": 2,
+    "who": "opponent",
+    "header": "Turn 2 - Opponent",
+    "lines": [
+     "Opponent: Played Copycat (Supporter)",
+     "Opponent: Put Swablu on Bench 3",
+     "Opponent: Attached Psychic Energy to Swablu (Bench 3)",
+     "Opponent: Used the Stadium Fragrant Forest",
+     "Opponent: Ended the turn without attacking"
+    ]
+   }
+  ],
+  "options": [
+   {
+    "key": "1",
+    "group": "Stadium",
+    "text": "Use the Stadium Fragrant Forest: Once during each player's turn, that player may put a random Basic Grass Pokémon from their deck into their hand."
+   },
+   {
+    "key": "2",
+    "group": "Energy",
+    "text": "Attach Grass Energy to Teal Mask Ogerpon ex (Active)"
+   },
+   {
+    "key": "3",
+    "group": "Energy",
+    "text": "Attach Grass Energy to a Benched Shuckle ex (Bench 1 or 3)"
+   },
+   {
+    "key": "4",
+    "group": "Energy",
+    "text": "Attach Grass Energy to Vespiquen ex (Bench 2)"
+   },
+   {
+    "key": "6",
+    "group": "Retreat",
+    "text": "Retreat Teal Mask Ogerpon ex (Active) and switch in a Benched Shuckle ex (Bench 1 or 3); costs 0 Energy (X Speed)"
+   },
+   {
+    "key": "7",
+    "group": "Retreat",
+    "text": "Retreat Teal Mask Ogerpon ex (Active) and switch in Vespiquen ex (Bench 2); costs 0 Energy (X Speed)"
+   },
+   {
+    "key": "0",
+    "group": "End turn",
+    "text": "End your turn without attacking"
+   }
+  ],
+  "cant_play": []
+ }
+]

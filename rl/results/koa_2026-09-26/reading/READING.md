@@ -87,14 +87,21 @@ The official engine is main-83e17ae. The registration is `../../opening_active_c
   - (ii) the order.
 - If koa becomes the working pilot first, later candidates need koa3 baselines on all 45 cells.
 
-## Still to be reported beside (queued; they don't change the verdict)
+## Reported beside (Sept 27, after the verdict and the rulings; `extras_numbers.txt`, from `read_koa_extras.py`)
 
-- **koa3 on the 17 new cells:** `new17_koa3`.
-- **koa3 on Dustin's six B2e files:** pairings 48-95, `b2e_dustin_koa3` (amendment 1).
-- **The variant-list check (section 7 (d)):** LaNora's list against the table's 7 other lists on the table's Altaria seeds (`variant_{koa3,kp3}`), and against the table's own Altaria list on amendment 2's block (`variant_self_*`).
-- **Diagnostics (attribution only):**
-  - kob's and kor's discriminating rows: kob on Hydreigon, Vespiquen and Weezing; kor on Suicune, Vespiquen and Weezing.
-  - Their Altaria rows are the same 3,500 games for both codes (+1.29 ± 0.98). koa minus kob on Altaria is +1.56 ± 0.95, against the prediction "equal within noise". That is a diagnostic finding only.
-  - The identity-deck checks for kob and kor cover 4 of 7 pairings each so far.
-  - In the diagnostic files, "_first" means the first-named deck, so each file is mapped by pairing.
+All at the official engine, each against kp3 on the same deals.
+
+- **The 17 new cells: no harm, so the takeover is not blocked** (Dustin's "forty-five for no-harm").
+  - Only koa's two cells change (128 and 126 games); the other 15 are identical, 7,500 of 7,500 games.
+  - Rayquaza v Altaria 35.4 → 34.4 (real 47.1 ± 10.5; miss +1.0). Altaria/Greninja v Altaria 41.2 → 39.4 (real 37.5 ± 11.5; miss −1.8). Neither is near the 6-point cell veto.
+  - The 45-cell view (`score45_koa3_vs_kp3.txt`): real error 15.5 for both; margin −0.01, 90% interval −0.15 to +0.12 (limit −1.0); no cell or deck veto.
+- **Dustin's six B2e files** (pairings 48-95, reported only): every file's overall score moves by under 1 point (110-127 games changed of 4,000 each). Each file does 2.6 to 6.2 points worse against Altaria, the expected side effect of a better Altaria opening.
+- **The variant-list check (section 7 (d)): up, as predicted.** LaNora's Altaria list gains **+3.67 ± 0.82** on its own side, pooled over its 8 rows. All 8 rows are positive, +2.0 to +5.0 each, including against the table's own Altaria list (+2.4 ± 2.3, amendment 2's block). The fix's gain carries to a second real Altaria list.
+- **Diagnostics (attribution only; kob and kor stay unregistered):**
+  - **Suicune under kor: −3.33 ± 0.92, down beyond noise, as section 6 predicted** (Suicune ex moved off the Active forgoes Legendary Pulse). All seven rows are negative. By the registration's own wording (section 7) this "names the Darkrai half". Plainly, it shows R's setup-readiness rule costs a deck whose Active only works in front, as the class table said. The class table isn't put in doubt.
+  - **Hydreigon under kob: −0.23 ± 0.46, flat.** Section 6 predicted up (Deino opening instead of Bombirdier); the cap was about ±2.0. The Bench-only half of B shows nothing measurable.
+  - **Vespiquen and Weezing** (no direction predicted): +0.39 ± 0.74 and +0.44 ± 0.46, within noise, and the same under kob and kor, which make the same changes on those decks.
+  - **Identity decks: complete.** Wherever kob or kor sits on a deck its switch doesn't touch, every game equals kp3's (6,000 of 6,000 for each code).
+  - Earlier: their Altaria rows are the same 3,500 games for both codes (+1.29 ± 0.98). koa minus kob on Altaria is +1.56 ± 0.95, against the prediction "equal within noise". That is a diagnostic finding only.
+  - Nothing more is registered. Any later B or R candidate is a new registration (section 7).
 - **For information** (the second reader): the engine switch changed 10,093 of kp3's 24,000 B2e archetype games, including 3,767 of 4,000 in Charizard Y/Entei, where Legendary Pulse fires. B2e has no mechanic check; RUN5 requires one on the table only. Both sides here are on the same engine.
