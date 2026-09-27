@@ -95,6 +95,9 @@ How the close calls were settled (both graders agreed on each):
    - That is the missing mechanism of section 3 (Energy on the Active as retreat fuel). It also backs koa's part B idea: Altaria shouldn't have Darkrai in front (`../koa_2026-09-26/reading/READING.md`, diagnostics).
 2. **Q09: the hide wastes an Energy.** "You are basically wasting an energy to put it on the active riolu, retreat and promote hitmonlee who can't attack. Next turn, that's what I would do."
    - So kpf's "helpful" Lucario hide (15/30 in the diagnosis) is the right idea a turn too early. kph dropping it is expected, not an overshoot.
+   - **His qualification:** "If it was mega lucario that was getting hit, hiding is worthwhile because mega is 3 points and the game. You just need one riolu to survive and evolve to mega lucario and you already have one on the bench riolu."
+   - The rule, in his terms: protect a piece in proportion to the points at risk and to whether it is the only copy of the win condition. A Mega (3 points, the game) is worth an Energy to hide. A Riolu with a second Riolu on the Bench is expendable.
+   - This matches his Q01 note ("I only lose if they KO mega lucario") and section 3.2.
 
 ## 4. Follow-up questions (only two needed)
 
