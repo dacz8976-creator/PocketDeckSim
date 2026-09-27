@@ -1,0 +1,298 @@
+﻿--- seed 72000035 BETTER vs blaziken deal 35 div t5 (own turn True, t0=5) final kp3 [1, 1] kpf [2, 1]
+   own: ZSome(Psychic)/Some(Psychic) D0 H5 P0 | Darkrai 100hp E[P] | Darkrai 100hp E[], Mega Altaria ex 160hp E[]   slots ['Darkrai', None, 'Darkrai', 'Mega Altaria ex']
+   opp: ZNone/Some(Fire) D1 H2 P0 | Mega Blaziken ex 210hp E[F] | Heatmor 80hp E[]
+   kp3: ATTACH->BENCH(Mega Altaria ex,zone) | turn: OTHER DrawCard PLAY Professor's Research PLAY Small Balloon TOOL(Small Balloon->Darkrai) ATTACH->BENCH(Mega Altaria ex,zone) END
+   kpf: RETREAT(Darkrai->Mega Altaria ex)   | turn: OTHER DrawCard PLAY Professor's Research PLAY Small Balloon TOOL(Small Balloon->Darkrai) RETREAT(Darkrai->Mega Altaria ex) PLACE(Igglybuff) ATTACH->ACTIVE(Mega Altaria ex,zone) END
+   t0+2: kp3 zone=A:Mega Altaria ex atk=Mega Harmony@Mega Altaria ex ret=[] ev=[] | kpf zone=A:Mega Altaria ex atk=Mega Harmony@Mega Altaria ex ret=[] ev=[]
+          kp3 board ZSome(Psychic)/Some(Psychic) D1 H5 P0 | Mega Altaria ex 160hp E[P] | Darkrai 100hp E[]
+          kpf board ZSome(Psychic)/Some(Psychic) D1 H4 P0 | Mega Altaria ex 160hp E[P] | Darkrai 100hp E[], Darkrai 100hp E[]
+   t0+4: kp3 zone=B:Darkrai atk=Mega Harmony@Mega Altaria ex ret=[] ev=[] | kpf zone=B:Darkrai atk=Mega Harmony@Mega Altaria ex ret=[] ev=[]
+          kp3 board ZSome(Psychic)/Some(Psychic) D1 H4 P1 | Mega Altaria ex 20hp E[PP] | Darkrai 100hp E[], Igglybuff 30hp E[]
+          kpf board ZSome(Psychic)/Some(Psychic) D1 H3 P1 | Mega Altaria ex 160hp E[PP] | Swablu 50hp E[], Darkrai 100hp E[], Darkrai 100hp E[]
+--- seed 72000112 BETTER vs blaziken deal 112 div t4 (own turn True, t0=4) final kp3 [1, 2] kpf [2, 2]
+   own: ZSome(Psychic)/Some(Psychic) D0 H4 P0 | Darkrai 80hp E[P] | Swablu 50hp E[], Darkrai 100hp E[]   slots ['Darkrai', None, 'Swablu', 'Darkrai']
+   opp: ZNone/Some(Fire) D0 H2 P0 | Torchic 60hp E[F] | Heatmor 80hp E[], Torchic 60hp E[]
+   kp3: PLAY Field Blower                   | turn: OTHER DrawCard PLAY Training Area PLAY Professor's Research PLAY Field Blower OTHER DiscardToolFromPokemon ATTACH->BENCH(Swablu,zone) END
+   kpf: PLACE(Igglybuff)                    | turn: OTHER DrawCard PLAY Training Area PLAY Professor's Research PLACE(Igglybuff) PLAY Field Blower OTHER DiscardToolFromPokemon ATTACH->ACTIVE(Darkrai,zone) END
+   t0+2: kp3 zone=B:Swablu atk=None ret=[] ev=[] | kpf zone=A:Darkrai atk=Dark Slumber@Darkrai ret=[] ev=['EVOLVE(Mega Altaria ex@B)']
+          kp3 board ZSome(Psychic)/Some(Psychic) D0 H3 P0 | Darkrai 80hp E[P] | Swablu 20hp E[P], Darkrai 100hp E[]
+          kpf board ZSome(Psychic)/Some(Psychic) D0 H2 P0 | Darkrai 80hp E[PP] | Swablu 50hp E[], Darkrai 100hp E[]
+   t0+4: kp3 zone=A:Darkrai atk=None ret=[] ev=['EVOLVE(Espeon@B)'] | kpf zone=B:Mega Altaria ex atk=Dark Slumber@Darkrai ret=[] ev=[]
+          kp3 board ZSome(Psychic)/Some(Psychic) D2 H2 P0 | Darkrai 80hp E[P] | Eevee 50hp E[], Darkrai 100hp E[]
+          kpf board ZSome(Psychic)/Some(Psychic) D0 H1 P1 | Darkrai 30hp BRN E[PPP] | Swablu 50hp E[], Mega Altaria ex 190hp E[], Darkrai 100hp E[]
+--- seed 72000127 BETTER vs blaziken deal 127 div t4 (own turn True, t0=4) final kp3 [1, 2] kpf [2, 2]
+   own: ZSome(Psychic)/Some(Psychic) D0 H2 P0 | Darkrai 80hp E[P] | Swablu 50hp E[], Swablu 50hp E[], Darkrai 100hp E[]   slots ['Darkrai', 'Swablu', 'Swablu', 'Darkrai']
+   opp: ZNone/Some(Fire) D0 H3 P0 | Torchic 60hp E[F] | Torchic 60hp E[], Heatmor 80hp E[]
+   kp3: ATTACH->BENCH(Swablu,zone)          | turn: OTHER DrawCard PLAY Copycat PLACE(Swablu) ATTACH->BENCH(Swablu,zone) END
+   kpf: ATTACH->ACTIVE(Darkrai,zone)        | turn: OTHER DrawCard PLAY Copycat PLACE(Swablu) ATTACH->ACTIVE(Darkrai,zone) END
+   t0+2: kp3 zone=B:Swablu atk=None ret=[] ev=[] | kpf zone=A:Darkrai atk=Dark Slumber@Darkrai ret=[] ev=[]
+          kp3 board ZSome(Psychic)/Some(Psychic) D0 H2 P0 | Darkrai 80hp E[P] | Swablu 50hp E[], Swablu 50hp E[P], Darkrai 70hp E[]
+          kpf board ZSome(Psychic)/Some(Psychic) D0 H2 P0 | Darkrai 80hp E[PP] | Swablu 50hp E[], Swablu 50hp E[], Darkrai 70hp E[]
+   t0+4: kp3 zone=A:Darkrai atk=None ret=[] ev=[] | kpf zone=A:Darkrai atk=None ret=[] ev=[]
+          kp3 board ZSome(Psychic)/Some(Psychic) D0 H2 P0 | Darkrai 70hp E[] | Swablu 50hp E[], Swablu 50hp E[PP], Darkrai 50hp E[P]
+          kpf board ZSome(Psychic)/Some(Psychic) D0 H3 P1 | Darkrai 50hp E[] | Swablu 50hp E[], Swablu 50hp E[], Darkrai 80hp E[PPP]
+--- seed 72000133 BETTER vs blaziken deal 133 div t3 (own turn True, t0=3) final kp3 [2, 2] kpf [1, 1]
+   own: ZSome(Psychic)/Some(Psychic) D0 H4 P0 | Igglybuff 10hp E[] | Darkrai 100hp E[], Darkrai 100hp E[], Swablu 50hp E[]   slots ['Igglybuff', 'Darkrai', 'Darkrai', 'Swablu']
+   opp: ZNone/Some(Fire) D0 H3 P0 | Torchic 10hp E[F] | Heatmor 80hp E[]
+   kp3: PLAY Poké Ball                      | turn: OTHER DrawCard PLAY Poké Ball ATTACH->BENCH(Darkrai,zone) PLAY Training Area PLAY Copycat ATTACK Sleepy Lullaby END
+   kpf: RETREAT(Igglybuff->Swablu)          | turn: OTHER DrawCard RETREAT(Igglybuff->Swablu) PLAY Poké Ball ATTACH->ACTIVE(Swablu,zone) PLAY Training Area PLAY Copycat ATTACK Sing END OTHER FinishPokemonCheckup
+   t0+2: kp3 zone=B:Darkrai atk=Sleepy Lullaby@Igglybuff ret=[] ev=[] | kpf zone=B:Darkrai atk=Sing@Swablu ret=[] ev=[]
+          kp3 board ZSome(Psychic)/Some(Psychic) D0 H3 P1 | Igglybuff 10hp E[] | Darkrai 100hp E[], Darkrai 70hp E[P], Swablu 50hp E[]
+          kpf board ZSome(Psychic)/Some(Psychic) D0 H3 P1 | Swablu 50hp E[P] | Darkrai 100hp E[], Darkrai 100hp E[]
+   t0+4: kp3 zone=A:Darkrai atk=None ret=[] ev=[] | kpf zone=None atk=Sing@Swablu ret=[] ev=[]
+          kp3 board ZSome(Psychic)/Some(Psychic) D0 H4 P1 | Darkrai 100hp E[P] | Darkrai 70hp E[P], Swablu 50hp E[]
+          kpf board ZSome(Psychic)/Some(Psychic) D0 H3 P1 | Swablu 50hp E[P] | Darkrai 100hp E[], Darkrai 70hp E[P], Swablu 50hp E[]
+--- seed 72000227 BETTER vs blaziken deal 227 div t4 (own turn False, t0=5) final kp3 [1, 2] kpf [2, 2]
+   own: ZNone/Some(Psychic) D1 H3 P0 | - | Darkrai 100hp E[], Darkrai 100hp E[], Swablu 50hp E[]   slots [None, 'Darkrai', 'Darkrai', 'Swablu']
+   opp: ZNone/Some(Fire) D0 H1 P1 | Castform Sunny Form 30hp E[F] | Heatmor 80hp E[F], Torchic 60hp E[], Torchic 60hp E[]
+   kp3: PROMOTE(Darkrai)                    | turn: OTHER DrawCard PLAY Training Area ATTACH->BENCH(Darkrai,zone) END
+   kpf: PROMOTE(Swablu)                     | turn: OTHER DrawCard ATTACH->ACTIVE(Swablu,zone) PLAY Copycat PLACE(Eevee) ATTACK Sing END OTHER FinishPokemonCheckup
+   t0+2: kp3 zone=A:Darkrai atk=None ret=['RETREAT(Darkrai->Darkrai)'] ev=[] | kpf zone=B:Darkrai atk=Sing@Swablu ret=[] ev=[]
+          kp3 board ZSome(Psychic)/Some(Psychic) D1 H3 P0 | Darkrai 50hp E[] | Darkrai 100hp E[P], Swablu 50hp E[]
+          kpf board ZSome(Psychic)/Some(Psychic) D1 H0 P1 | Swablu 50hp E[P] | Darkrai 100hp E[], Darkrai 100hp E[], Eevee 20hp E[]
+   t0+4: kp3 zone=A:Darkrai atk=None ret=[] ev=[] | kpf zone=B:Darkrai atk=None ret=[] ev=[]
+          kp3 board ZSome(Psychic)/Some(Psychic) D2 H2 P0 | Darkrai 100hp E[P] | Swablu 50hp E[]
+          kpf board ZSome(Psychic)/Some(Psychic) D1 H1 P2 | Eevee 20hp E[] | Darkrai 100hp E[], Darkrai 100hp E[P], Swablu 50hp E[P]
+--- seed 72010095 BETTER vs hydreigon deal 95 div t3 (own turn True, t0=3) final kp3 [1, 2] kpf [2, 2]
+   own: ZSome(Psychic)/Some(Psychic) D0 H3 P0 | Igglybuff 20hp E[] | Darkrai 100hp E[], Eevee 50hp E[], Swablu 50hp E[]   slots ['Igglybuff', 'Darkrai', 'Eevee', 'Swablu']
+   opp: ZNone/Some(Darkness) D0 H2 P0 | Bombirdier 20hp E[D] | Mega Absol ex 170hp E[], Deino 60hp E[]
+   kp3: ATTACH->BENCH(Darkrai,zone)         | turn: OTHER DrawCard ATTACH->BENCH(Darkrai,zone) ATTACK Sleepy Lullaby END OTHER FinishPokemonCheckup
+   kpf: RETREAT(Igglybuff->Swablu)          | turn: OTHER DrawCard RETREAT(Igglybuff->Swablu) ATTACH->ACTIVE(Swablu,zone) ATTACK Sing END OTHER FinishPokemonCheckup
+   t0+2: kp3 zone=A:Darkrai atk=None ret=[] ev=[] | kpf zone=B:Darkrai atk=Sleepy Lullaby@Igglybuff ret=['RETREAT(Swablu->Igglybuff)'] ev=[]
+          kp3 board ZSome(Psychic)/Some(Psychic) D0 H3 P1 | Darkrai 90hp E[P] | Eevee 50hp E[], Swablu 50hp E[]
+          kpf board ZSome(Psychic)/Some(Psychic) D0 H3 P1 | Swablu 40hp E[P] | Darkrai 100hp E[], Eevee 50hp E[], Igglybuff 20hp E[]
+   t0+4: kp3 zone=B:Mega Altaria ex atk=None ret=[] ev=['EVOLVE(Mega Altaria ex@B)'] | kpf zone=A:Mega Altaria ex atk=None ret=[] ev=['EVOLVE(Mega Altaria ex@A)']
+          kp3 board ZSome(Psychic)/Some(Psychic) D2 H1 P1 | Eevee 40hp E[] | Darkrai 100hp E[], Swablu 50hp E[]
+          kpf board ZSome(Psychic)/Some(Psychic) D1 H2 P1 | Swablu 40hp E[] | Darkrai 100hp E[P], Eevee 50hp E[]
+--- seed 72010097 BETTER vs hydreigon deal 97 div t2 (own turn True, t0=2) final kp3 [2, 0] kpf [0, 1]
+   own: ZSome(Psychic)/Some(Psychic) D0 H5 P0 | Darkrai 100hp E[] | Darkrai 100hp E[]   slots ['Darkrai', None, None, 'Darkrai']
+   opp: ZNone/Some(Darkness) D0 H5 P0 | Mega Absol ex 170hp E[] | 
+   kp3: PLACE(Swablu)                       | turn: OTHER DrawCard PLAY Professor's Research PLACE(Swablu) PLAY Small Balloon TOOL(Small Balloon->Darkrai) ATTACH->BENCH(Swablu,zone) END
+   kpf: PLAY Small Balloon                  | turn: OTHER DrawCard PLAY Professor's Research PLAY Small Balloon TOOL(Small Balloon->Darkrai) PLACE(Swablu) ATTACH->ACTIVE(Darkrai,zone) END
+   t0+2: kp3 zone=B:Mega Altaria ex atk=None ret=[] ev=['EVOLVE(Mega Altaria ex@B)'] | kpf zone=B:Mega Altaria ex atk=None ret=[] ev=['EVOLVE(Mega Altaria ex@B)']
+          kp3 board ZSome(Psychic)/Some(Psychic) D0 H3 P0 | Darkrai 100hp E[] | Swablu 50hp E[P], Darkrai 100hp E[]
+          kpf board ZSome(Psychic)/Some(Psychic) D0 H3 P0 | Darkrai 100hp E[P] | Swablu 50hp E[], Darkrai 100hp E[]
+   t0+4: kp3 zone=A:Darkrai atk=Mega Harmony@Mega Altaria ex ret=['RETREAT(Darkrai->Mega Altaria ex)'] ev=[] | kpf zone=A:Mega Altaria ex atk=Mega Harmony@Mega Altaria ex ret=['RETREAT(Darkrai->Mega Altaria ex)'] ev=[]
+          kp3 board ZSome(Psychic)/Some(Psychic) D0 H3 P0 | Darkrai 100hp E[] | Swablu 50hp E[], Mega Altaria ex 190hp E[PP], Darkrai 100hp E[]
+          kpf board ZSome(Psychic)/Some(Psychic) D0 H2 P0 | Darkrai 20hp E[P] | Swablu 50hp E[], Mega Altaria ex 190hp E[P], Darkrai 100hp E[]
+--- seed 72010115 BETTER vs hydreigon deal 115 div t4 (own turn True, t0=4) final kp3 [1, 2] kpf [1, 1]
+   own: ZSome(Psychic)/Some(Psychic) D0 H3 P0 | Igglybuff 10hp E[] | Swablu 50hp E[], Eevee 50hp E[], Darkrai 100hp E[P]   slots ['Igglybuff', 'Swablu', 'Eevee', 'Darkrai']
+   opp: ZNone/Some(Darkness) D0 H3 P0 | Mega Absol ex 140hp E[D] | Deino 60hp E[], Bombirdier 70hp E[]
+   kp3: ATTACH->BENCH(Eevee,zone)           | turn: OTHER DrawCard ATTACH->BENCH(Eevee,zone) EVOLVE(Mega Altaria ex@B) PLAY Copycat PLAY Poké Ball ATTACK Sleepy Lullaby END
+   kpf: RETREAT(Igglybuff->Swablu)          | turn: OTHER DrawCard RETREAT(Igglybuff->Swablu) EVOLVE(Mega Altaria ex@A) ATTACH->ACTIVE(Mega Altaria ex,zone) PLAY Copycat PLAY Poké Ball END
+   t0+2: kp3 zone=B:Mega Altaria ex atk=None ret=['RETREAT(Eevee->Darkrai)'] ev=[] | kpf zone=A:Mega Altaria ex atk=Mega Harmony@Mega Altaria ex ret=[] ev=['EVOLVE(Espeon@B)']
+          kp3 board ZSome(Psychic)/Some(Psychic) D0 H3 P0 | Eevee 40hp E[P] | Mega Altaria ex 190hp E[], Darkrai 100hp E[P]
+          kpf board ZSome(Psychic)/Some(Psychic) D0 H3 P0 | Mega Altaria ex 180hp E[P] | Igglybuff 10hp E[], Eevee 50hp E[], Darkrai 100hp E[P]
+   t0+4: kp3 zone=A:Mega Altaria ex atk=Mega Harmony@Mega Altaria ex ret=[] ev=['EVOLVE(Espeon@B)'] | kpf zone=A:Espeon atk=Hypnoblast@Espeon ret=['RETREAT(Mega Altaria ex->Espeon)'] ev=[]
+          kp3 board ZSome(Psychic)/Some(Psychic) D2 H2 P0 | Mega Altaria ex 190hp E[P] | Darkrai 100hp E[], Eevee 40hp E[]
+          kpf board ZSome(Psychic)/Some(Psychic) D0 H0 P1 | Mega Altaria ex 90hp E[PP] | Igglybuff 10hp E[], Espeon 90hp E[], Darkrai 100hp E[P]
+--- seed 72020038 BETTER vs lucario deal 38 div t3 (own turn True, t0=3) final kp3 [2, 2] kpf [2, 1]
+   own: ZSome(Psychic)/Some(Psychic) D0 H2 P0 | Mega Altaria ex 190hp E[] | Swablu 50hp E[], Igglybuff 30hp E[], Espeon 90hp E[]   slots ['Mega Altaria ex', 'Swablu', 'Igglybuff', 'Espeon']
+   opp: ZNone/Some(Fighting) D0 H4 P0 | Riolu 60hp E[] | Hitmonlee 80hp E[F], Riolu 60hp E[]
+   kp3: ATTACH->BENCH(Espeon,zone)          | turn: OTHER DrawCard EVOLVE(Espeon@B) PLAY Professor's Research PLACE(Swablu) EVOLVE(Mega Altaria ex@A) ATTACH->BENCH(Espeon,zone) END
+   kpf: ATTACH->ACTIVE(Mega Altaria ex,zone) | turn: OTHER DrawCard EVOLVE(Espeon@B) PLAY Professor's Research PLACE(Swablu) EVOLVE(Mega Altaria ex@A) ATTACH->ACTIVE(Mega Altaria ex,zone) END
+   t0+2: kp3 zone=A:Mega Altaria ex atk=Hypnoblast@Espeon ret=['RETREAT(Mega Altaria ex->Espeon)'] ev=[] | kpf zone=A:Mega Altaria ex atk=Mega Harmony@Mega Altaria ex ret=[] ev=[]
+          kp3 board ZSome(Psychic)/Some(Psychic) D0 H2 P0 | Mega Altaria ex 190hp E[] | Swablu 50hp E[], Espeon 90hp E[P]
+          kpf board ZSome(Psychic)/Some(Psychic) D0 H2 P0 | Mega Altaria ex 190hp E[P] | Swablu 50hp E[], Espeon 90hp E[]
+   t0+4: kp3 zone=B:Mega Altaria ex atk=Hypnoblast@Espeon ret=[] ev=[] | kpf zone=B:Darkrai atk=Mega Harmony@Mega Altaria ex ret=[] ev=[]
+          kp3 board ZSome(Psychic)/Some(Psychic) D1 H2 P1 | Espeon 90hp E[P] | Swablu 50hp E[], Mega Altaria ex 160hp E[]
+          kpf board ZSome(Psychic)/Some(Psychic) D0 H3 P1 | Mega Altaria ex 130hp E[PP] | Swablu 50hp E[], Espeon 90hp E[]
+--- seed 72020051 BETTER vs lucario deal 51 div t3 (own turn True, t0=3) final kp3 [1, 2] kpf [2, 1]
+   own: ZSome(Psychic)/Some(Psychic) D0 H4 P0 | Darkrai 100hp E[] | Swablu 50hp E[], Eevee 50hp E[], Eevee 50hp E[]   slots ['Darkrai', 'Swablu', 'Eevee', 'Eevee']
+   opp: ZNone/Some(Fighting) D0 H4 P0 | Riolu 60hp E[] | Hitmonlee 80hp E[F]
+   kp3: ATTACH->BENCH(Swablu,zone)          | turn: OTHER DrawCard ATTACH->BENCH(Swablu,zone) EVOLVE(Espeon@B) PLAY Copycat PLAY Small Balloon TOOL(Small Balloon->Darkrai) PLAY Poké Ball EVOLVE(Espeon@B) END
+   kpf: EVOLVE(Espeon@B)                    | turn: OTHER DrawCard EVOLVE(Espeon@B) ATTACH->ACTIVE(Darkrai,zone) PLAY Copycat PLAY Small Balloon TOOL(Small Balloon->Darkrai) RETREAT(Darkrai->Eevee) PLAY Poké Ball EVOLVE(Espeon@A) END
+   t0+2: kp3 zone=A:Darkrai atk=None ret=[] ev=[] | kpf zone=A:Espeon atk=Hypnoblast@Espeon ret=[] ev=[]
+          kp3 board ZSome(Psychic)/Some(Psychic) D0 H2 P0 | Darkrai 90hp E[] | Swablu 50hp E[P], Espeon 90hp E[], Espeon 90hp E[]
+          kpf board ZSome(Psychic)/Some(Psychic) D1 H2 P0 | Espeon 90hp E[] | Swablu 50hp E[], Espeon 90hp E[], Darkrai 70hp E[]
+   t0+4: kp3 zone=A:Espeon atk=Hypnoblast@Espeon ret=['RETREAT(Darkrai->Espeon)'] ev=[] | kpf zone=B:Espeon atk=Hypnoblast@Espeon ret=[] ev=[]
+          kp3 board ZSome(Psychic)/Some(Psychic) D0 H3 P0 | Darkrai 90hp E[P] | Swablu 50hp E[P], Espeon 90hp E[], Espeon 60hp E[]
+          kpf board ZSome(Psychic)/Some(Psychic) D1 H3 P1 | Espeon 80hp E[P] | Swablu 50hp E[], Espeon 90hp E[], Darkrai 70hp E[]
+--- seed 72020097 BETTER vs lucario deal 97 div t4 (own turn True, t0=4) final kp3 [2, 1] kpf [2, 2]
+   own: ZSome(Psychic)/Some(Psychic) D0 H3 P0 | Igglybuff 30hp E[] | Darkrai 100hp E[P], Swablu 50hp E[], Swablu 50hp E[]   slots ['Igglybuff', 'Darkrai', 'Swablu', 'Swablu']
+   opp: ZNone/Some(Fighting) D1 H3 P0 | Hitmonlee 80hp E[] | Mega Lucario ex 190hp E[]
+   kp3: PLAY Professor's Research           | turn: OTHER DrawCard PLAY Professor's Research PLAY Poké Ball ATTACH->BENCH(Darkrai,zone) ATTACK Sleepy Lullaby END
+   kpf: RETREAT(Igglybuff->Darkrai)         | turn: OTHER DrawCard RETREAT(Igglybuff->Darkrai) PLAY Professor's Research PLAY Poké Ball ATTACH->ACTIVE(Darkrai,zone) END
+   t0+2: kp3 zone=A:Darkrai atk=Dark Slumber@Darkrai ret=['RETREAT(Igglybuff->Darkrai)'] ev=[] | kpf zone=A:Darkrai atk=Dark Slumber@Darkrai ret=[] ev=[]
+          kp3 board ZSome(Psychic)/Some(Psychic) D0 H4 P0 | Igglybuff 30hp E[] | Darkrai 70hp E[PP], Swablu 50hp E[], Swablu 50hp E[]
+          kpf board ZSome(Psychic)/Some(Psychic) D0 H4 P0 | Darkrai 100hp E[PP] | Swablu 50hp E[], Swablu 50hp E[]
+   t0+4: kp3 zone=B:Swablu atk=Dark Slumber@Darkrai ret=[] ev=[] | kpf zone=B:Darkrai atk=Dark Slumber@Darkrai ret=[] ev=[]
+          kp3 board ZSome(Psychic)/Some(Psychic) D0 H6 P1 | Darkrai 70hp E[PPP] | Igglybuff 30hp E[], Swablu 50hp E[], Swablu 50hp E[]
+          kpf board ZSome(Psychic)/Some(Psychic) D0 H5 P1 | Darkrai 100hp E[PPP] | Darkrai 100hp E[], Swablu 50hp E[], Swablu 50hp E[]
+--- seed 72020187 BETTER vs lucario deal 187 div t2 (own turn True, t0=2) final kp3 [2, 2] kpf [0, 1]
+   own: ZSome(Psychic)/Some(Psychic) D0 H4 P0 | Igglybuff 30hp E[] | Eevee 50hp E[]   slots ['Igglybuff', None, None, 'Eevee']
+   opp: ZNone/Some(Fighting) D0 H3 P0 | Riolu 60hp E[] | Hitmonlee 80hp E[], Riolu 60hp E[]
+   kp3: PLAY Copycat                        | turn: OTHER DrawCard PLAY Copycat PLACE(Darkrai) PLACE(Eevee) ATTACH->BENCH(Darkrai,zone) ATTACK Sleepy Lullaby END
+   kpf: RETREAT(Igglybuff->Eevee)           | turn: OTHER DrawCard RETREAT(Igglybuff->Eevee) PLAY Professor's Research PLACE(Swablu) ATTACH->ACTIVE(Eevee,zone) PLAY Small Balloon TOOL(Small Balloon->Eevee) ATTACK Stampede END
+   t0+2: kp3 zone=B:Darkrai atk=Sleepy Lullaby@Igglybuff ret=[] ev=[] | kpf zone=B:Swablu atk=Sleepy Lullaby@Igglybuff ret=['RETREAT(Eevee->Igglybuff)'] ev=[]
+          kp3 board ZSome(Psychic)/Some(Psychic) D0 H1 P0 | Igglybuff 30hp E[] | Eevee 50hp E[], Darkrai 100hp E[P], Eevee 50hp E[]
+          kpf board ZSome(Psychic)/Some(Psychic) D0 H3 P0 | Eevee 50hp E[P] | Swablu 50hp E[], Igglybuff 30hp E[]
+   t0+4: kp3 zone=A:Darkrai atk=Dark Slumber@Darkrai ret=['RETREAT(Igglybuff->Darkrai)'] ev=[] | kpf zone=B:Mega Altaria ex atk=Stampede@Eevee ret=['RETREAT(Igglybuff->Eevee)'] ev=['EVOLVE(Mega Altaria ex@B)']
+          kp3 board ZSome(Psychic)/Some(Psychic) D0 H2 P1 | Igglybuff 30hp E[] | Eevee 50hp E[], Darkrai 70hp E[PP], Eevee 50hp E[]
+          kpf board ZSome(Psychic)/Some(Psychic) D0 H0 P0 | Igglybuff 30hp E[] | Swablu 50hp E[], Swablu 50hp E[P], Eevee 50hp E[P]
+--- seed 72020207 BETTER vs lucario deal 207 div t3 (own turn True, t0=3) final kp3 [1, 1] kpf [2, 2]
+   own: ZSome(Psychic)/Some(Psychic) D0 H5 P0 | Darkrai 100hp E[] | Swablu 50hp E[], Darkrai 70hp E[]   slots ['Darkrai', None, 'Swablu', 'Darkrai']
+   opp: ZNone/Some(Fighting) D0 H4 P0 | Hitmonlee 80hp E[F] | Riolu 60hp E[]
+   kp3: ATTACH->BENCH(Swablu,zone)          | turn: OTHER DrawCard ATTACH->BENCH(Swablu,zone) PLAY Copycat PLACE(Swablu) EVOLVE(Mega Altaria ex@B) END
+   kpf: PLACE(Eevee)                        | turn: OTHER DrawCard PLACE(Eevee) PLAY Copycat PLAY Small Balloon TOOL(Small Balloon->Darkrai) ATTACH->ACTIVE(Darkrai,zone) END
+   t0+2: kp3 zone=B:Mega Altaria ex atk=None ret=[] ev=[] | kpf zone=A:Swablu atk=Sing@Swablu ret=['RETREAT(Darkrai->Swablu)'] ev=[]
+          kp3 board ZSome(Psychic)/Some(Psychic) D0 H2 P0 | Darkrai 100hp E[] | Swablu 50hp E[], Mega Altaria ex 190hp E[P], Darkrai 70hp E[]
+          kpf board ZSome(Psychic)/Some(Psychic) D0 H3 P0 | Darkrai 90hp E[P] | Eevee 50hp E[], Swablu 50hp E[], Darkrai 70hp E[]
+   t0+4: kp3 zone=B:Darkrai atk=Mega Harmony@Mega Altaria ex ret=[] ev=[] | kpf zone=A:Espeon atk=Hypnoblast@Espeon ret=['RETREAT(Swablu->Espeon)'] ev=['EVOLVE(Espeon@B)']
+          kp3 board ZSome(Psychic)/Some(Psychic) D0 H4 P0 | Mega Altaria ex 190hp E[PP] | Swablu 50hp E[], Darkrai 70hp E[]
+          kpf board ZSome(Psychic)/Some(Psychic) D1 H4 P1 | Swablu 50hp E[P] | Eevee 50hp E[], Darkrai 90hp E[], Darkrai 40hp E[]
+--- seed 72030003 BETTER vs sceptile deal 3 div t2 (own turn False, t0=3) final kp3 [0, 2] kpf [2, 2]
+   own: ZNone/Some(Psychic) D0 H3 P0 | - | Eevee 50hp E[], Swablu 50hp E[]   slots [None, None, 'Eevee', 'Swablu']
+   opp: ZNone/Some(Grass) D0 H4 P1 | Metapod 70hp E[G] | Treecko 60hp E[], Caterpie 40hp E[]
+   kp3: PROMOTE(Eevee)                      | turn: OTHER DrawCard PLACE(Darkrai) RETREAT(Eevee->Darkrai) EVOLVE(Mega Altaria ex@B) ATTACH->BENCH(Mega Altaria ex,zone) OTHER UseStadium END
+   kpf: PROMOTE(Swablu)                     | turn: OTHER DrawCard PLACE(Darkrai) EVOLVE(Mega Altaria ex@A) ATTACH->ACTIVE(Mega Altaria ex,zone) OTHER UseStadium END
+   t0+2: kp3 zone=B:Mega Altaria ex atk=None ret=[] ev=[] | kpf zone=A:Mega Altaria ex atk=Mega Harmony@Mega Altaria ex ret=[] ev=[]
+          kp3 board ZSome(Psychic)/Some(Psychic) D0 H2 P0 | Darkrai 20hp E[] | Eevee 50hp E[], Mega Altaria ex 190hp E[P]
+          kpf board ZSome(Psychic)/Some(Psychic) D0 H2 P0 | Mega Altaria ex 130hp E[P] | Eevee 50hp E[], Darkrai 100hp E[]
+   t0+4: kp3 zone=A:Darkrai atk=None ret=[] ev=[] | kpf zone=B:Darkrai atk=Mega Harmony@Mega Altaria ex ret=[] ev=[]
+          kp3 board ZSome(Psychic)/Some(Psychic) D0 H2 P0 | Darkrai 20hp E[] | Swablu 50hp E[], Mega Altaria ex 190hp E[PP]
+          kpf board ZSome(Psychic)/Some(Psychic) D0 H2 P1 | Mega Altaria ex 130hp E[PP] | Swablu 50hp E[], Darkrai 100hp E[]
+--- seed 72030143 BETTER vs sceptile deal 143 div t4 (own turn False, t0=5) final kp3 [0, 2] kpf [2, 2]
+   own: ZNone/Some(Psychic) D1 H3 P0 | - | Swablu 50hp E[], Darkrai 100hp E[], Darkrai 100hp E[]   slots [None, 'Swablu', 'Darkrai', 'Darkrai']
+   opp: ZNone/Some(Grass) D0 H2 P1 | Butterfree 140hp E[G] | Grovyle 80hp E[G]
+   kp3: PROMOTE(Darkrai)                    | turn: OTHER DrawCard PLACE(Swablu) PLAY Professor's Research EVOLVE(Mega Altaria ex@B) ATTACH->BENCH(Mega Altaria ex,zone) END
+   kpf: PROMOTE(Swablu)                     | turn: OTHER DrawCard PLACE(Swablu) PLAY Professor's Research EVOLVE(Mega Altaria ex@A) ATTACH->ACTIVE(Mega Altaria ex,zone) END
+   t0+2: kp3 zone=B:Mega Altaria ex atk=None ret=[] ev=[] | kpf zone=A:Mega Altaria ex atk=Mega Harmony@Mega Altaria ex ret=[] ev=[]
+          kp3 board ZSome(Psychic)/Some(Psychic) D1 H3 P0 | Darkrai 100hp E[] | Mega Altaria ex 190hp E[P], Darkrai 100hp E[]
+          kpf board ZSome(Psychic)/Some(Psychic) D1 H3 P0 | Mega Altaria ex 190hp E[P] | Darkrai 100hp E[], Darkrai 100hp E[]
+   t0+4: kp3 zone=None atk=None ret=[] ev=[] | kpf zone=B:Darkrai atk=Mega Harmony@Mega Altaria ex ret=[] ev=['EVOLVE(Espeon@B)']
+          kp3 board None
+          kpf board ZSome(Psychic)/Some(Psychic) D1 H2 P1 | Mega Altaria ex 130hp E[PP] | Eevee 50hp E[], Darkrai 100hp E[], Darkrai 100hp E[]
+--- seed 72040141 BETTER vs suicune deal 141 div t2 (own turn True, t0=2) final kp3 [0, 2] kpf [2, 1]
+   own: ZSome(Psychic)/Some(Psychic) D0 H4 P0 | Darkrai 100hp E[] | Swablu 50hp E[]   slots ['Darkrai', None, None, 'Swablu']
+   opp: ZNone/Some(Water) D0 H5 P0 | Suicune ex 140hp E[] | Frigibax 60hp E[]
+   kp3: PLACE(Darkrai)                      | turn: OTHER DrawCard PLACE(Darkrai) ATTACH->BENCH(Swablu,zone) PLAY Copycat PLAY Poké Ball PLAY Field Blower OTHER DiscardToolFromPokemon END
+   kpf: PLACE(Darkrai)                      | turn: OTHER DrawCard PLACE(Darkrai) PLAY Professor's Research PLAY Small Balloon TOOL(Small Balloon->Darkrai) ATTACH->ACTIVE(Darkrai,zone) END
+   t0+2: kp3 zone=B:Darkrai atk=Sing@Swablu ret=[] ev=[] | kpf zone=B:Mega Altaria ex atk=None ret=['RETREAT(Darkrai->Eevee)'] ev=['EVOLVE(Espeon@A)', 'EVOLVE(Mega Altaria ex@B)']
+          kp3 board ZSome(Psychic)/Some(Psychic) D0 H4 P0 | Swablu 50hp E[P] | Darkrai 100hp E[]
+          kpf board ZSome(Psychic)/Some(Psychic) D0 H3 P0 | Darkrai 100hp E[P] | Darkrai 100hp E[], Swablu 50hp E[]
+   t0+4: kp3 zone=B:Swablu atk=None ret=[] ev=[] | kpf zone=A:Mega Altaria ex atk=Mega Harmony@Mega Altaria ex ret=[] ev=[]
+          kp3 board ZSome(Psychic)/Some(Psychic) D1 H5 P0 | Darkrai 100hp E[P] | 
+          kpf board ZSome(Psychic)/Some(Psychic) D1 H2 P0 | Mega Altaria ex 190hp E[P] | Darkrai 100hp E[], Darkrai 100hp E[]
+--- seed 72040147 BETTER vs suicune deal 147 div t3 (own turn True, t0=3) final kp3 [2, 0] kpf [2, 0]
+   own: ZSome(Psychic)/Some(Psychic) D0 H4 P0 | Igglybuff 30hp E[] | Darkrai 100hp E[], Swablu 50hp E[]   slots ['Igglybuff', None, 'Darkrai', 'Swablu']
+   opp: ZNone/Some(Water) D1 H4 P0 | Suicune ex 140hp E[] | Suicune ex 140hp E[], Frigibax 30hp E[], Chien-Pao ex 130hp E[]
+   kp3: EVOLVE(Mega Altaria ex@B)           | turn: OTHER DrawCard EVOLVE(Mega Altaria ex@B) ATTACH->BENCH(Mega Altaria ex,zone) ATTACK Sleepy Lullaby END
+   kpf: RETREAT(Igglybuff->Swablu)          | turn: OTHER DrawCard RETREAT(Igglybuff->Swablu) EVOLVE(Mega Altaria ex@A) ATTACH->ACTIVE(Mega Altaria ex,zone) END
+   t0+2: kp3 zone=B:Mega Altaria ex atk=Mega Harmony@Mega Altaria ex ret=['RETREAT(Igglybuff->Mega Altaria ex)'] ev=[] | kpf zone=A:Mega Altaria ex atk=Mega Harmony@Mega Altaria ex ret=[] ev=[]
+          kp3 board ZSome(Psychic)/Some(Psychic) D0 H3 P0 | Igglybuff 30hp E[] | Darkrai 100hp E[], Mega Altaria ex 190hp E[P]
+          kpf board ZSome(Psychic)/Some(Psychic) D0 H3 P0 | Mega Altaria ex 190hp E[P] | Darkrai 100hp E[], Igglybuff 30hp E[]
+   t0+4: kp3 zone=B:Darkrai atk=Mega Harmony@Mega Altaria ex ret=[] ev=['EVOLVE(Espeon@B)'] | kpf zone=None atk=Mega Harmony@Mega Altaria ex ret=[] ev=[]
+          kp3 board ZSome(Psychic)/Some(Psychic) D0 H1 P2 | Mega Altaria ex 90hp E[PP] | Eevee 50hp E[], Darkrai 100hp E[], Igglybuff 30hp E[]
+          kpf board ZSome(Psychic)/Some(Psychic) D0 H2 P2 | Mega Altaria ex 90hp E[PP] | Eevee 50hp E[], Darkrai 100hp E[], Igglybuff 30hp E[]
+--- seed 72040231 BETTER vs suicune deal 231 div t2 (own turn True, t0=2) final kp3 [0, 2] kpf [2, 1]
+   own: ZSome(Psychic)/Some(Psychic) D0 H2 P0 | Darkrai 100hp E[] | Swablu 50hp E[]   slots ['Darkrai', None, None, 'Swablu']
+   opp: ZNone/Some(Water) D0 H2 P0 | Frigibax 60hp E[] | Chien-Pao ex 130hp E[]
+   kp3: ATTACH->BENCH(Swablu,zone)          | turn: OTHER DrawCard PLAY Copycat PLAY Poké Ball ATTACH->BENCH(Swablu,zone) END
+   kpf: PLACE(Eevee)                        | turn: OTHER DrawCard PLAY Copycat PLAY Poké Ball PLACE(Eevee) ATTACH->ACTIVE(Darkrai,zone) END
+   t0+2: kp3 zone=A:Darkrai atk=None ret=[] ev=[] | kpf zone=A:Darkrai atk=None ret=[] ev=['EVOLVE(Espeon@B)']
+          kp3 board ZSome(Psychic)/Some(Psychic) D0 H2 P0 | Darkrai 100hp E[] | Swablu 50hp E[P]
+          kpf board ZSome(Psychic)/Some(Psychic) D0 H1 P0 | Darkrai 100hp E[P] | Eevee 50hp E[], Swablu 50hp E[]
+   t0+4: kp3 zone=B:Swablu atk=None ret=[] ev=[] | kpf zone=A:Darkrai atk=Dark Slumber@Darkrai ret=[] ev=[]
+          kp3 board ZSome(Psychic)/Some(Psychic) D0 H3 P0 | Darkrai 100hp E[P] | Swablu 50hp E[P]
+          kpf board ZSome(Psychic)/Some(Psychic) D0 H1 P0 | Darkrai 100hp E[PP] | Espeon 90hp E[], Swablu 50hp E[]
+--- seed 72050029 BETTER vs vespiquen deal 29 div t2 (own turn True, t0=2) final kp3 [0, 2] kpf [2, 2]
+   own: ZSome(Psychic)/Some(Psychic) D0 H4 P0 | Darkrai 100hp E[] | Eevee 50hp E[]   slots ['Darkrai', None, None, 'Eevee']
+   opp: ZNone/Some(Grass) D0 H3 P0 | Shuckle ex 150hp E[] | Combee 50hp E[], Teal Mask Ogerpon ex 130hp E[]
+   kp3: ATTACH->BENCH(Eevee,zone)           | turn: OTHER DrawCard ATTACH->BENCH(Eevee,zone) PLAY Copycat PLAY Poké Ball PLACE(Darkrai) PLACE(Swablu) OTHER UseStadium END
+   kpf: PLAY Professor's Research           | turn: OTHER DrawCard PLAY Professor's Research PLAY Poké Ball PLACE(Swablu) ATTACH->ACTIVE(Darkrai,zone) OTHER UseStadium END
+   t0+2: kp3 zone=A:Darkrai atk=None ret=[] ev=[] | kpf zone=B:Mega Altaria ex atk=None ret=[] ev=['EVOLVE(Espeon@B)', 'EVOLVE(Mega Altaria ex@B)']
+          kp3 board ZSome(Psychic)/Some(Psychic) D0 H1 P0 | Darkrai 60hp E[] | Swablu 50hp E[], Darkrai 100hp E[], Eevee 50hp E[P]
+          kpf board ZSome(Psychic)/Some(Psychic) D0 H4 P0 | Darkrai 20hp E[P] | Swablu 50hp E[], Eevee 50hp E[]
+   t0+4: kp3 zone=A:Darkrai atk=Stampede@Eevee ret=['RETREAT(Darkrai->Eevee)'] ev=[] | kpf zone=B:Mega Altaria ex atk=None ret=[] ev=[]
+          kp3 board ZSome(Psychic)/Some(Psychic) D0 H2 P0 | Darkrai 20hp E[P] | Swablu 50hp E[], Darkrai 100hp E[], Eevee 50hp E[P]
+          kpf board ZSome(Psychic)/Some(Psychic) D1 H3 P0 | Espeon 90hp E[] | Swablu 50hp E[], Mega Altaria ex 190hp E[P]
+--- seed 72050090 BETTER vs vespiquen deal 90 div t3 (own turn True, t0=3) final kp3 [0, 2] kpf [2, 2]
+   own: ZSome(Psychic)/Some(Psychic) D0 H4 P0 | Darkrai 100hp E[] | Swablu 50hp E[], Darkrai 100hp E[]   slots ['Darkrai', None, 'Swablu', 'Darkrai']
+   opp: ZNone/Some(Grass) D0 H2 P0 | Teal Mask Ogerpon ex 130hp E[G] | Combee 50hp E[]
+   kp3: ATTACH->BENCH(Swablu,zone)          | turn: OTHER DrawCard PLAY Poké Ball ATTACH->BENCH(Swablu,zone) END
+   kpf: PLACE(Eevee)                        | turn: OTHER DrawCard PLAY Poké Ball PLACE(Eevee) ATTACH->ACTIVE(Darkrai,zone) END
+   t0+2: kp3 zone=A:Darkrai atk=None ret=[] ev=[] | kpf zone=B:Mega Altaria ex atk=None ret=[] ev=['EVOLVE(Mega Altaria ex@B)']
+          kp3 board ZSome(Psychic)/Some(Psychic) D0 H4 P0 | Darkrai 20hp E[] | Swablu 50hp E[P], Darkrai 100hp E[]
+          kpf board ZSome(Psychic)/Some(Psychic) D0 H3 P0 | Darkrai 20hp E[P] | Eevee 50hp E[], Swablu 50hp E[], Darkrai 100hp E[]
+   t0+4: kp3 zone=A:Swablu atk=Sing@Swablu ret=[] ev=[] | kpf zone=B:Mega Altaria ex atk=None ret=[] ev=[]
+          kp3 board ZSome(Psychic)/Some(Psychic) D1 H4 P0 | Swablu 50hp E[P] | Swablu 50hp E[], Darkrai 100hp E[]
+          kpf board ZSome(Psychic)/Some(Psychic) D1 H4 P0 | Eevee 50hp E[] | Mega Altaria ex 190hp E[P], Darkrai 100hp E[]
+--- seed 72050138 BETTER vs vespiquen deal 138 div t2 (own turn True, t0=2) final kp3 [2, 1] kpf [2, 1]
+   own: ZSome(Psychic)/Some(Psychic) D0 H1 P0 | Darkrai 100hp E[] | Swablu 50hp E[]   slots ['Darkrai', None, None, 'Swablu']
+   opp: ZNone/Some(Grass) D0 H2 P0 | Teal Mask Ogerpon ex 130hp E[] | Shuckle ex 120hp E[], Combee 50hp E[], Shuckle ex 120hp E[]
+   kp3: ATTACH->BENCH(Swablu,zone)          | turn: OTHER DrawCard PLAY Copycat PLACE(Swablu) ATTACH->BENCH(Swablu,zone) OTHER UseStadium END
+   kpf: ATTACH->ACTIVE(Darkrai,zone)        | turn: OTHER DrawCard PLAY Copycat PLACE(Swablu) ATTACH->ACTIVE(Darkrai,zone) OTHER UseStadium END
+   t0+2: kp3 zone=B:Mega Altaria ex atk=None ret=[] ev=['EVOLVE(Mega Altaria ex@B)'] | kpf zone=B:Mega Altaria ex atk=None ret=[] ev=['EVOLVE(Mega Altaria ex@B)']
+          kp3 board ZSome(Psychic)/Some(Psychic) D0 H1 P0 | Darkrai 100hp E[] | Swablu 50hp E[P]
+          kpf board ZSome(Psychic)/Some(Psychic) D0 H1 P0 | Darkrai 100hp E[P] | Swablu 50hp E[]
+   t0+4: kp3 zone=A:Darkrai atk=None ret=[] ev=[] | kpf zone=B:Mega Altaria ex atk=None ret=[] ev=[]
+          kp3 board ZSome(Psychic)/Some(Psychic) D0 H0 P0 | Darkrai 20hp E[] | Igglybuff 30hp E[], Mega Altaria ex 190hp E[PP]
+          kpf board ZSome(Psychic)/Some(Psychic) D0 H1 P0 | Darkrai 20hp E[P] | Mega Altaria ex 190hp E[P]
+--- seed 72060047 BETTER vs weezing deal 47 div t3 (own turn True, t0=3) final kp3 [1, 2] kpf [2, 1]
+   own: ZSome(Psychic)/Some(Psychic) D0 H3 P0 | Darkrai 60hp E[] | Swablu 50hp E[], Swablu 30hp E[]   slots ['Darkrai', None, 'Swablu', 'Swablu']
+   opp: ZNone/Some(Darkness) D0 H2 P0 | Hoopa ex 150hp E[D] | 
+   kp3: ATTACH->BENCH(Swablu,zone)          | turn: OTHER DrawCard PLAY Field Blower OTHER DiscardToolFromPokemon ATTACH->BENCH(Swablu,zone) END
+   kpf: ATTACH->ACTIVE(Darkrai,zone)        | turn: OTHER DrawCard PLAY Field Blower OTHER DiscardToolFromPokemon ATTACH->ACTIVE(Darkrai,zone) END
+   t0+2: kp3 zone=A:Espeon atk=Hypnoblast@Espeon ret=['RETREAT(Swablu->Eevee)'] ev=['EVOLVE(Espeon@A)'] | kpf zone=A:Swablu atk=Sing@Swablu ret=[] ev=[]
+          kp3 board ZSome(Psychic)/Some(Psychic) D0 H3 P0 | Swablu 40hp E[P] | Darkrai 40hp E[]
+          kpf board ZSome(Psychic)/Some(Psychic) D0 H3 P0 | Swablu 40hp E[] | Darkrai 40hp E[P]
+   t0+4: kp3 zone=B:Darkrai atk=Hypnoblast@Espeon ret=[] ev=[] | kpf zone=A:Espeon atk=Hypnoblast@Espeon ret=['RETREAT(Swablu->Espeon)'] ev=['EVOLVE(Espeon@B)']
+          kp3 board ZSome(Psychic)/Some(Psychic) D1 H2 P0 | Espeon 80hp E[P] | Swablu 40hp E[], Darkrai 40hp E[]
+          kpf board ZSome(Psychic)/Some(Psychic) D0 H3 P0 | Swablu 30hp E[P] | Eevee 50hp E[], Darkrai 40hp E[P]
+--- seed 72060056 BETTER vs weezing deal 56 div t3 (own turn True, t0=3) final kp3 [0, 1] kpf [2, 2]
+   own: ZSome(Psychic)/Some(Psychic) D0 H5 P0 | Darkrai 70hp E[] | Swablu 50hp E[], Swablu 30hp E[]   slots ['Darkrai', None, 'Swablu', 'Swablu']
+   opp: ZNone/Some(Darkness) D0 H2 P0 | Hoopa ex 150hp E[D] | Team Rocket's Koffing 60hp E[], Team Rocket's Koffing 60hp E[], Darkrai ex 140hp E[]
+   kp3: ATTACH->BENCH(Swablu,zone)          | turn: OTHER DrawCard PLAY Professor's Research ATTACH->BENCH(Swablu,zone) END
+   kpf: ATTACH->ACTIVE(Darkrai,zone)        | turn: OTHER DrawCard PLAY Professor's Research ATTACH->ACTIVE(Darkrai,zone) PLACE(Eevee) RETREAT(Darkrai->Eevee) EVOLVE(Espeon@A) END
+   t0+2: kp3 zone=A:Swablu atk=Sing@Swablu ret=[] ev=[] | kpf zone=A:Swablu atk=Sing@Swablu ret=[] ev=[]
+          kp3 board ZSome(Psychic)/Some(Psychic) D0 H5 P0 | Swablu 50hp E[P] | Darkrai 50hp E[]
+          kpf board ZSome(Psychic)/Some(Psychic) D1 H3 P0 | Swablu 50hp E[] | Darkrai 50hp E[], Espeon 90hp E[]
+   t0+4: kp3 zone=A:Darkrai atk=Sing@Swablu ret=['RETREAT(Darkrai->Swablu)'] ev=['EVOLVE(Espeon@B)'] | kpf zone=A:Darkrai atk=None ret=['RETREAT(Darkrai->Espeon)'] ev=['EVOLVE(Mega Altaria ex@B)']
+          kp3 board ZSome(Psychic)/Some(Psychic) D0 H5 P0 | Darkrai 20hp E[] | Eevee 50hp E[], Eevee 50hp E[], Swablu 50hp E[PP]
+          kpf board ZSome(Psychic)/Some(Psychic) D1 H4 P0 | Darkrai 40hp E[] | Swablu 50hp E[P], Eevee 50hp E[], Espeon 90hp E[]
+--- seed 72060062 BETTER vs weezing deal 62 div t5 (own turn False, t0=6) final kp3 [0, 2] kpf [2, 2]
+   own: ZNone/Some(Psychic) D2 H1 P0 | - | Eevee 50hp E[], Swablu 50hp E[], Darkrai 60hp E[]   slots [None, 'Eevee', 'Swablu', 'Darkrai']
+   opp: ZNone/Some(Darkness) D1 H3 P1 | Hoopa ex 150hp E[D] | Darkrai ex 140hp E[], Hoopa ex 90hp E[]
+   kp3: PROMOTE(Eevee)                      | turn: OTHER DrawCard PLAY Poké Ball PLACE(Darkrai) EVOLVE(Mega Altaria ex@B) ATTACH->BENCH(Mega Altaria ex,zone) END
+   kpf: PROMOTE(Swablu)                     | turn: OTHER DrawCard PLAY Poké Ball PLACE(Darkrai) EVOLVE(Mega Altaria ex@A) ATTACH->ACTIVE(Mega Altaria ex,zone) END
+   t0+2: kp3 zone=A:Mega Altaria ex atk=Mega Harmony@Mega Altaria ex ret=[] ev=[] | kpf zone=B:Mega Altaria ex atk=None ret=[] ev=[]
+          kp3 board ZSome(Psychic)/Some(Psychic) D2 H0 P0 | Mega Altaria ex 170hp E[P] | Darkrai 100hp E[], Darkrai 60hp E[]
+          kpf board ZSome(Psychic)/Some(Psychic) D2 H0 P0 | Darkrai 30hp E[] | Eevee 50hp E[], Darkrai 100hp E[], Mega Altaria ex 150hp E[P]
+   t0+4: kp3 zone=A:Darkrai atk=None ret=[] ev=[] | kpf zone=B:Darkrai atk=Mega Harmony@Mega Altaria ex ret=[] ev=[]
+          kp3 board ZSome(Psychic)/Some(Psychic) D2 H0 P0 | Darkrai 10hp E[] | Darkrai 100hp E[], Mega Altaria ex 150hp E[PP]
+          kpf board ZSome(Psychic)/Some(Psychic) D2 H1 P0 | Mega Altaria ex 120hp E[PP] | Eevee 50hp E[], Darkrai 100hp E[]
+--- seed 72060065 BETTER vs weezing deal 65 div t2 (own turn True, t0=2) final kp3 [0, 2] kpf [2, 2]
+   own: ZSome(Psychic)/Some(Psychic) D0 H3 P0 | Darkrai 100hp E[] | Swablu 50hp E[], Darkrai 100hp E[]   slots ['Darkrai', None, 'Swablu', 'Darkrai']
+   opp: ZNone/Some(Darkness) D0 H3 P0 | Team Rocket's Koffing 60hp E[] | Hoopa ex 150hp E[], Team Rocket's Koffing 60hp E[]
+   kp3: PLAY Poké Ball                      | turn: OTHER DrawCard PLAY Poké Ball ATTACH->BENCH(Swablu,zone) PLAY Copycat PLAY Poké Ball PLACE(Swablu) END
+   kpf: PLAY Copycat                        | turn: OTHER DrawCard PLAY Copycat PLAY Poké Ball PLAY Poké Ball PLACE(Swablu) ATTACH->ACTIVE(Darkrai,zone) END
+   t0+2: kp3 zone=A:Darkrai atk=None ret=[] ev=[] | kpf zone=B:Mega Altaria ex atk=None ret=[] ev=['EVOLVE(Mega Altaria ex@B)']
+          kp3 board ZSome(Psychic)/Some(Psychic) D0 H2 P0 | Darkrai 70hp PSN BRN E[] | Swablu 50hp E[], Swablu 50hp E[P], Darkrai 100hp E[]
+          kpf board ZSome(Psychic)/Some(Psychic) D0 H2 P0 | Darkrai 70hp PSN BRN E[P] | Swablu 50hp E[], Swablu 50hp E[], Darkrai 100hp E[]
+   t0+4: kp3 zone=A:Swablu atk=Sing@Swablu ret=[] ev=[] | kpf zone=B:Mega Altaria ex atk=None ret=[] ev=[]
+          kp3 board ZSome(Psychic)/Some(Psychic) D1 H3 P0 | Swablu 40hp E[P] | Swablu 50hp E[], Darkrai 100hp E[]
+          kpf board ZSome(Psychic)/Some(Psychic) D1 H3 P0 | Swablu 40hp E[] | Mega Altaria ex 190hp E[P], Darkrai 100hp E[]
+--- seed 72060126 BETTER vs weezing deal 126 div t3 (own turn False, t0=4) final kp3 [2, 2] kpf [2, 1]
+   own: ZNone/Some(Psychic) D0 H1 P0 | - | Eevee 50hp E[], Swablu 50hp E[], Darkrai 80hp E[P]   slots [None, 'Eevee', 'Swablu', 'Darkrai']
+   opp: ZNone/Some(Darkness) D0 H0 P1 | Hoopa ex 120hp E[D] | Team Rocket's Koffing 60hp E[], Darkrai ex 140hp E[]
+   kp3: PROMOTE(Darkrai)                    | turn: OTHER DrawCard EVOLVE(Mega Altaria ex@B) PLAY Sabrina ATTACH->BENCH(Mega Altaria ex,zone) END
+   kpf: PROMOTE(Swablu)                     | turn: OTHER DrawCard EVOLVE(Mega Altaria ex@A) PLAY Sabrina ATTACH->ACTIVE(Mega Altaria ex,zone) END
+   t0+2: kp3 zone=B:Mega Altaria ex atk=None ret=[] ev=['EVOLVE(Espeon@B)'] | kpf zone=A:Mega Altaria ex atk=Mega Harmony@Mega Altaria ex ret=[] ev=['EVOLVE(Espeon@B)']
+          kp3 board ZSome(Psychic)/Some(Psychic) D0 H0 P0 | Darkrai 10hp E[P] | Eevee 50hp E[], Mega Altaria ex 170hp E[P]
+          kpf board ZSome(Psychic)/Some(Psychic) D0 H0 P0 | Mega Altaria ex 120hp E[P] | Eevee 50hp E[], Darkrai 60hp E[P]
+   t0+4: kp3 zone=B:Espeon atk=Mega Harmony@Mega Altaria ex ret=[] ev=[] | kpf zone=B:Espeon atk=Mega Harmony@Mega Altaria ex ret=[] ev=[]
+          kp3 board ZSome(Psychic)/Some(Psychic) D1 H0 P0 | Mega Altaria ex 130hp E[PP] | Espeon 90hp E[], Swablu 30hp E[]
+          kpf board ZSome(Psychic)/Some(Psychic) D0 H0 P2 | Mega Altaria ex 100hp E[PP] | Espeon 90hp E[], Swablu 50hp E[], Darkrai 60hp E[P]
+--- seed 72060141 BETTER vs weezing deal 141 div t2 (own turn False, t0=3) final kp3 [2, 2] kpf [2, 2]
+   own: ZNone/Some(Psychic) D0 H2 P0 | - | Darkrai 80hp E[], Swablu 50hp E[]   slots [None, None, 'Darkrai', 'Swablu']
+   opp: ZNone/Some(Darkness) D0 H1 P1 | Hoopa ex 120hp E[D] | Team Rocket's Koffing 60hp E[], Darkrai ex 140hp E[], Hoopa ex 150hp E[]
+   kp3: PROMOTE(Darkrai)                    | turn: OTHER DrawCard PLAY Sabrina PLACE(Darkrai) ATTACH->BENCH(Swablu,zone) END
+   kpf: PROMOTE(Swablu)                     | turn: OTHER DrawCard PLACE(Darkrai) PLAY Professor's Research PLACE(Eevee) ATTACH->ACTIVE(Swablu,zone) ATTACK Sing END
+   t0+2: kp3 zone=B:Mega Altaria ex atk=None ret=[] ev=['EVOLVE(Mega Altaria ex@B)'] | kpf zone=B:Darkrai atk=None ret=[] ev=['EVOLVE(Espeon@A)']
+          kp3 board ZSome(Psychic)/Some(Psychic) D0 H1 P0 | Darkrai 10hp PSN BRN E[] | Darkrai 100hp E[], Swablu 30hp E[P]
+          kpf board ZSome(Psychic)/Some(Psychic) D1 H2 P0 | Eevee 50hp E[] | Darkrai 80hp E[], Darkrai 100hp E[]
+   t0+4: kp3 zone=B:Espeon atk=Mega Harmony@Mega Altaria ex ret=[] ev=['EVOLVE(Espeon@B)'] | kpf zone=A:Espeon atk=Hypnoblast@Espeon ret=[] ev=[]
+          kp3 board ZSome(Psychic)/Some(Psychic) D0 H1 P0 | Mega Altaria ex 110hp E[PP] | Eevee 50hp E[], Darkrai 80hp E[]
+          kpf board ZSome(Psychic)/Some(Psychic) D1 H2 P2 | Espeon 70hp E[] | Darkrai 80hp E[], Darkrai 100hp E[P]
+shown 27

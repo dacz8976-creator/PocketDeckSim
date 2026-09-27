@@ -1,0 +1,980 @@
+﻿--- 72050006 t5 v altaria (i=6, change +1.0)  first: EVOLVE Vespiquen ex@2 -> RETREAT->2
+   own: ZSome(Grass)/Some(Grass) D0 H5 P0 | Shuckle ex 10hp E[G] | Combee 50hp E[], Shuckle ex 120hp E[]
+   opp: ZNone/Some(Psychic) D0 H0 P0 | Mega Altaria ex 150hp E[PP] | Igglybuff 30hp E[], Darkrai 100hp E[]
+   kp3: EVOLVE Vespiquen ex@2 ; RETREAT->3 ; ATTACH@0 ; PLAY Sabrina ; ATTACK Triple Slap ; END   | zone A:Shuckle ex atk Triple Slap ret [['Shuckle ex', 'Shuckle ex']]
+   kpf: RETREAT->2 ; EVOLVE Vespiquen ex@0 ; ATTACH@0 ; END   | zone A:Vespiquen ex atk None ret [['Shuckle ex', 'Combee']]
+   end kp3: ZNone/Some(Grass) H3 P0 | Shuckle ex 120 [G] | Vespiquen ex 140 [], Shuckle ex 10 []
+   end kpf: ZNone/Some(Grass) H4 P0 | Vespiquen ex 140 [G] | Shuckle ex 10 [], Shuckle ex 120 []
+--- 72050013 t1 v altaria (i=13, change +1.0)  first: PLAY P-A 002 X Speed -> PLACE Combee@1
+   own: ZNone/Some(Grass) D0 H3 P0 | Shuckle ex 120hp E[] | Teal Mask Ogerpon ex 130hp E[], Shuckle ex 120hp E[]
+   opp: ZNone/Some(Psychic) D0 H3 P0 | Darkrai 100hp E[] | Swablu 50hp E[]
+   kp3: PLAY P-A 002 X Speed ; RETREAT->2 ; PLACE Combee@1 ; OTHER UseStadium ; END   | zone None atk None ret [['Shuckle ex', 'Teal Mask Ogerpon ex']]
+   kpf: PLACE Combee@1 ; OTHER UseStadium ; END   | zone None atk None ret []
+   end kp3: ZNone/Some(Grass) H2 P0 | Teal Mask Ogerpon ex 130 [] | Combee 50 [], Shuckle ex 120 [], Shuckle ex 120 []
+   end kpf: ZNone/Some(Grass) H3 P0 | Shuckle ex 120 [] | Combee 50 [], Teal Mask Ogerpon ex 130 [], Shuckle ex 120 []
+--- 72050017 t2 v altaria (i=17, change +1.0)  first: PLAY P-A 002 X Speed -> PLAY Leaf Cape
+   own: ZSome(Grass)/Some(Grass) D0 H5 P0 | Combee 50hp E[] | Shuckle ex 120hp E[]
+   opp: ZNone/Some(Psychic) D0 H1 P0 | Espeon 90hp E[] | Eevee 50hp E[], Darkrai 100hp E[]
+   kp3: PLAY P-A 002 X Speed ; RETREAT->3 ; PLAY Leaf Cape ; TOOL Leaf Cape@0 ; ATTACH@0 ; PLAY Fragrant Forest ; OTHER UseStadium ; PLACE Shuckle ex@2 ; ATTACK Triple Slap ; END   | zone A:Shuckle ex atk Triple Slap ret [['Combee', 'Shuckle ex']]
+   kpf: PLAY Leaf Cape ; TOOL Leaf Cape@0 ; ATTACH@0 ; PLAY Fragrant Forest ; OTHER UseStadium ; PLACE Shuckle ex@2 ; ATTACK Reckless Charge ; END   | zone A:Combee atk Reckless Charge ret []
+   end kp3: ZNone/Some(Grass) H2 P0 | Shuckle ex 150 [G] | Shuckle ex 120 [], Combee 50 []
+   end kpf: ZNone/Some(Grass) H3 P0 | Combee 70 [G] | Shuckle ex 120 [], Shuckle ex 120 []
+--- 72050022 t1 v altaria (i=22, change +1.0)  first: PLACE Teal Mask Ogerpon ex@3 -> PLAY P-A 002 X Speed
+   own: ZNone/Some(Grass) D0 H5 P0 | Combee 80hp E[] | 
+   opp: ZNone/Some(Psychic) D0 H1 P0 | Igglybuff 30hp E[] | Eevee 50hp E[], Eevee 50hp E[], Darkrai 100hp E[]
+   kp3: PLACE Teal Mask Ogerpon ex@3 ; END   | zone None atk None ret []
+   kpf: PLAY P-A 002 X Speed ; PLACE Teal Mask Ogerpon ex@3 ; RETREAT->3 ; END   | zone None atk None ret [['Combee', 'Teal Mask Ogerpon ex']]
+   end kp3: ZNone/Some(Grass) H4 P0 | Combee 80 [] | Teal Mask Ogerpon ex 130 []
+   end kpf: ZNone/Some(Grass) H3 P0 | Teal Mask Ogerpon ex 130 [] | Combee 80 []
+--- 72050044 t1 v altaria (i=44, change +1.0)  first: RETREAT->3 -> END
+   own: ZNone/Some(Grass) D0 H2 P0 | Shuckle ex 120hp E[] | Teal Mask Ogerpon ex 130hp E[]
+   opp: ZNone/Some(Psychic) D0 H3 P0 | Igglybuff 30hp E[] | Darkrai 100hp E[]
+   kp3: RETREAT->3 ; END   | zone None atk None ret [['Shuckle ex', 'Teal Mask Ogerpon ex']]
+   kpf: END   | zone None atk None ret []
+   end kp3: ZNone/Some(Grass) H2 P0 | Teal Mask Ogerpon ex 130 [] | Shuckle ex 120 []
+   end kpf: ZNone/Some(Grass) H2 P0 | Shuckle ex 120 [] | Teal Mask Ogerpon ex 130 []
+--- 72050051 t2 v altaria (i=51, change +1.0)  first: ATTACH@0 -> PLAY Fragrant Forest
+   own: ZSome(Grass)/Some(Grass) D0 H5 P0 | Combee 50hp E[] | Combee 50hp E[]
+   opp: ZNone/Some(Psychic) D0 H3 P0 | Darkrai 100hp E[] | Swablu 50hp E[]
+   kp3: ATTACH@0 ; PLAY Leaf Cape ; TOOL Leaf Cape@0 ; PLAY Fragrant Forest ; OTHER UseStadium ; PLACE Teal Mask Ogerpon ex@2 ; PLAY Field Blower ; OTHER DiscardToolFromPokemon ; ATTACK Reckless Charge ; END   | zone A:Combee atk Reckless Charge ret []
+   kpf: PLAY Fragrant Forest ; OTHER UseStadium ; PLAY Leaf Cape ; TOOL Leaf Cape@3 ; PLACE Teal Mask Ogerpon ex@2 ; ATTACH@0 ; PLAY Field Blower ; OTHER DiscardToolFromPokemon ; ATTACK Reckless Charge ; END   | zone A:Combee atk Reckless Charge ret []
+   end kp3: ZNone/Some(Grass) H2 P0 | Combee 70 [G] | Teal Mask Ogerpon ex 130 [], Combee 50 []
+   end kpf: ZNone/Some(Grass) H2 P0 | Combee 40 [G] | Teal Mask Ogerpon ex 130 [], Combee 80 []
+--- 72050052 t3 v altaria (i=52, change +1.0)  first: ATTACH@0 -> PLAY P-A 002 X Speed
+   own: ZSome(Grass)/Some(Grass) D0 H2 P0 | Shuckle ex 150hp E[] | Shuckle ex 120hp E[], Teal Mask Ogerpon ex 130hp E[]
+   opp: ZNone/Some(Psychic) D0 H4 P0 | Darkrai 100hp E[] | Swablu 50hp E[], Swablu 50hp E[P]
+   kp3: ATTACH@0 ; OTHER UseStadium ; PLACE Combee@1 ; ATTACK Triple Slap ; END   | zone A:Shuckle ex atk Triple Slap ret []
+   kpf: PLAY P-A 002 X Speed ; RETREAT->3 ; ATTACH@0 ; OTHER UseStadium ; PLACE Combee@1 ; END   | zone A:Teal Mask Ogerpon ex atk None ret [['Shuckle ex', 'Teal Mask Ogerpon ex']]
+   end kp3: ZNone/Some(Grass) H2 P0 | Shuckle ex 150 [G] | Combee 50 [], Shuckle ex 120 [], Teal Mask Ogerpon ex 130 []
+   end kpf: ZNone/Some(Grass) H1 P0 | Teal Mask Ogerpon ex 130 [G] | Combee 50 [], Shuckle ex 120 [], Shuckle ex 150 []
+--- 72050064 t1 v altaria (i=64, change +1.0)  first: PLACE Shuckle ex@3 -> PLAY P-A 002 X Speed
+   own: ZNone/Some(Grass) D0 H4 P0 | Combee 80hp E[] | 
+   opp: ZNone/Some(Psychic) D0 H2 P0 | Darkrai 100hp E[] | Eevee 50hp E[], Darkrai 100hp E[]
+   kp3: PLACE Shuckle ex@3 ; END   | zone None atk None ret []
+   kpf: PLAY P-A 002 X Speed ; PLACE Shuckle ex@3 ; RETREAT->3 ; END   | zone None atk None ret [['Combee', 'Shuckle ex']]
+   end kp3: ZNone/Some(Grass) H3 P0 | Combee 80 [] | Shuckle ex 120 []
+   end kpf: ZNone/Some(Grass) H2 P0 | Shuckle ex 120 [] | Combee 80 []
+--- 72050071 t1 v altaria (i=71, change +1.0)  first: TOOL Leaf Cape@3 -> TOOL Leaf Cape@0
+   own: ZNone/Some(Grass) D0 H4 P0 | Shuckle ex 120hp E[] | Combee 50hp E[]
+   opp: ZNone/Some(Psychic) D0 H4 P0 | Eevee 50hp E[] | 
+   kp3: TOOL Leaf Cape@3 ; PLAY P-A 002 X Speed ; RETREAT->3 ; END   | zone None atk None ret [['Shuckle ex', 'Combee']]
+   kpf: TOOL Leaf Cape@0 ; END   | zone None atk None ret []
+   end kp3: ZNone/Some(Grass) H3 P0 | Combee 80 [] | Shuckle ex 120 []
+   end kpf: ZNone/Some(Grass) H4 P0 | Shuckle ex 150 [] | Combee 50 []
+--- 72050079 t3 v altaria (i=79, change +1.0)  first: ATTACH@0 -> PLAY Sabrina
+   own: ZSome(Grass)/Some(Grass) D0 H5 P0 | Shuckle ex 150hp E[] | Teal Mask Ogerpon ex 130hp E[]
+   opp: ZNone/Some(Psychic) D0 H2 P0 | Darkrai 100hp E[P] | Swablu 50hp E[], Eevee 50hp E[], Darkrai 100hp E[]
+   kp3: ATTACH@0 ; PLAY Sabrina ; OTHER UseStadium ; PLACE Combee@2 ; ATTACK Triple Slap ; END   | zone A:Shuckle ex atk Triple Slap ret []
+   kpf: PLAY Sabrina ; ATTACH@3 ; OTHER UseStadium ; PLACE Combee@2 ; END   | zone B:Teal Mask Ogerpon ex atk None ret []
+   end kp3: ZNone/Some(Grass) H4 P0 | Shuckle ex 150 [G] | Combee 50 [], Teal Mask Ogerpon ex 130 []
+   end kpf: ZNone/Some(Grass) H4 P0 | Shuckle ex 150 [] | Combee 50 [], Teal Mask Ogerpon ex 130 [G]
+--- 72050130 t3 v altaria (i=130, change +1.0)  first: PLAY P-A 002 X Speed -> ATTACH@0
+   own: ZSome(Grass)/Some(Grass) D0 H4 P0 | Teal Mask Ogerpon ex 110hp E[] | Shuckle ex 120hp E[], Shuckle ex 120hp E[], Combee 50hp E[]
+   opp: ZNone/Some(Psychic) D0 H3 P0 | Espeon 90hp E[P] | Igglybuff 30hp E[]
+   kp3: PLAY P-A 002 X Speed ; RETREAT->2 ; ATTACH@0 ; ATTACK Triple Slap ; END   | zone A:Shuckle ex atk Triple Slap ret [['Teal Mask Ogerpon ex', 'Shuckle ex']]
+   kpf: ATTACH@0 ; END   | zone A:Teal Mask Ogerpon ex atk None ret []
+   end kp3: ZNone/Some(Grass) H3 P0 | Shuckle ex 120 [G] | Shuckle ex 120 [], Teal Mask Ogerpon ex 110 [], Combee 50 []
+   end kpf: ZNone/Some(Grass) H4 P0 | Teal Mask Ogerpon ex 110 [G] | Shuckle ex 120 [], Shuckle ex 120 [], Combee 50 []
+--- 72050131 t3 v altaria (i=131, change +1.0)  first: TOOL Leaf Cape@0 -> TOOL Leaf Cape@3
+   own: ZSome(Grass)/Some(Grass) D0 H3 P0 | Shuckle ex 120hp SLP E[] | Combee 50hp E[], Shuckle ex 120hp E[], Combee 50hp E[]
+   opp: ZNone/Some(Psychic) D0 H4 P0 | Igglybuff 30hp E[] | Swablu 50hp E[], Swablu 50hp E[P]
+   kp3: TOOL Leaf Cape@0 ; EVOLVE Vespiquen ex@3 ; EVOLVE Vespiquen ex@1 ; ATTACH@0 ; OTHER UseStadium ; END   | zone A:Shuckle ex atk None ret []
+   kpf: TOOL Leaf Cape@3 ; EVOLVE Vespiquen ex@3 ; EVOLVE Vespiquen ex@1 ; ATTACH@3 ; OTHER UseStadium ; END   | zone B:Vespiquen ex atk None ret []
+   end kp3: ZNone/Some(Grass) H2 P0 | Shuckle ex 150 SLP [G] | Vespiquen ex 140 [], Shuckle ex 120 [], Vespiquen ex 140 []
+   end kpf: ZNone/Some(Grass) H2 P0 | Shuckle ex 120 SLP [] | Vespiquen ex 140 [], Shuckle ex 120 [], Vespiquen ex 170 [G]
+--- 72050136 t1 v altaria (i=136, change +1.0)  first: PLAY Sabrina -> PLAY P-A 007 Professor's Research
+   own: ZNone/Some(Grass) D0 H5 P0 | Combee 50hp E[] | 
+   opp: ZNone/Some(Psychic) D0 H3 P0 | Igglybuff 30hp E[] | Darkrai 100hp E[]
+   kp3: PLAY Sabrina ; PLAY Leaf Cape ; TOOL Leaf Cape@0 ; END   | zone None atk None ret []
+   kpf: PLAY P-A 007 Professor's Research ; PLAY Leaf Cape ; TOOL Leaf Cape@0 ; PLAY P-A 002 X Speed ; PLACE Teal Mask Ogerpon ex@3 ; RETREAT->3 ; END   | zone None atk None ret [['Combee', 'Teal Mask Ogerpon ex']]
+   end kp3: ZNone/Some(Grass) H3 P0 | Combee 80 [] | 
+   end kpf: ZNone/Some(Grass) H3 P0 | Teal Mask Ogerpon ex 130 [] | Combee 80 []
+--- 72050151 t6 v altaria (i=151, change +1.0)  first: PLAY P-A 007 Professor's Research -> PLAY P-A 002 X Speed
+   own: ZSome(Grass)/Some(Grass) D1 H4 P1 | Shuckle ex 120hp E[G] | Shuckle ex 100hp E[], Combee 50hp E[], Vespiquen ex 140hp E[]
+   opp: ZNone/Some(Psychic) D1 H1 P0 | Darkrai 100hp E[] | Mega Altaria ex 170hp E[P], Eevee 50hp E[], Eevee 50hp E[]
+   kp3: PLAY P-A 007 Professor's Research ; ATTACH@3 ; PLAY Field Blower ; OTHER DiscardToolFromPokemon ; ATTACK Triple Slap ; END   | zone B:Vespiquen ex atk Triple Slap ret []
+   kpf: PLAY P-A 002 X Speed ; RETREAT->3 ; PLAY P-A 007 Professor's Research ; PLAY Field Blower ; OTHER DiscardToolFromPokemon ; ATTACH@0 ; OTHER UseStadium ; END   | zone A:Vespiquen ex atk None ret [['Shuckle ex', 'Vespiquen ex']]
+   end kp3: ZNone/Some(Grass) H4 P1 | Shuckle ex 120 [G] | Shuckle ex 100 [], Combee 50 [], Vespiquen ex 140 [G]
+   end kpf: ZNone/Some(Grass) H3 P1 | Vespiquen ex 140 [G] | Shuckle ex 100 [], Combee 50 [], Shuckle ex 120 [G]
+--- 72050166 t3 v altaria (i=166, change +1.0)  first: EVOLVE Vespiquen ex@3 -> OTHER UseStadium
+   own: ZSome(Grass)/Some(Grass) D0 H4 P0 | Shuckle ex 150hp E[] | Shuckle ex 120hp E[], Combee 50hp E[]
+   opp: ZNone/Some(Psychic) D0 H2 P0 | Darkrai 100hp E[P] | Swablu 50hp E[], Darkrai 100hp E[]
+   kp3: EVOLVE Vespiquen ex@3 ; ATTACH@0 ; PLAY Sabrina ; OTHER UseStadium ; PLACE Teal Mask Ogerpon ex@1 ; ATTACK Triple Slap ; END   | zone A:Shuckle ex atk Triple Slap ret []
+   kpf: OTHER UseStadium ; PLACE Teal Mask Ogerpon ex@1 ; EVOLVE Vespiquen ex@3 ; PLAY P-A 002 X Speed ; RETREAT->3 ; ATTACH@0 ; END   | zone A:Vespiquen ex atk None ret [['Shuckle ex', 'Vespiquen ex']]
+   end kp3: ZNone/Some(Grass) H2 P0 | Shuckle ex 150 [G] | Teal Mask Ogerpon ex 130 [], Shuckle ex 120 [], Vespiquen ex 140 []
+   end kpf: ZNone/Some(Grass) H2 P0 | Vespiquen ex 140 [G] | Teal Mask Ogerpon ex 130 [], Shuckle ex 120 [], Shuckle ex 150 []
+--- 72050168 t5 v altaria (i=168, change +1.0)  first: PROMOTE@3 -> PROMOTE@2
+   own: ZNone/Some(Grass) D2 H4 P1 | - | Combee 50hp E[], Shuckle ex 120hp E[]
+   opp: ZNone/Some(Psychic) D1 H3 P1 | Espeon 90hp E[P] | Swablu 50hp E[], Darkrai 100hp E[], Swablu 50hp E[]
+   kp3: PROMOTE@3   | zone None atk None ret []
+   kpf: PROMOTE@2   | zone None atk None ret []
+   end kp3: ZNone/Some(Grass) H4 P1 | Shuckle ex 120 [] | Combee 50 []
+   end kpf: ZNone/Some(Grass) H4 P1 | Combee 50 [] | Shuckle ex 120 []
+--- 72050176 t1 v altaria (i=176, change +1.0)  first: PLAY Leaf Cape -> PLAY P-A 002 X Speed
+   own: ZNone/Some(Grass) D0 H5 P0 | Teal Mask Ogerpon ex 130hp E[] | 
+   opp: ZNone/Some(Psychic) D0 H4 P0 | Swablu 50hp E[] | 
+   kp3: PLAY Leaf Cape ; TOOL Leaf Cape@0 ; PLACE Shuckle ex@3 ; END   | zone None atk None ret []
+   kpf: PLAY P-A 002 X Speed ; PLACE Shuckle ex@3 ; RETREAT->3 ; PLAY Leaf Cape ; TOOL Leaf Cape@0 ; END   | zone None atk None ret [['Teal Mask Ogerpon ex', 'Shuckle ex']]
+   end kp3: ZNone/Some(Grass) H3 P0 | Teal Mask Ogerpon ex 160 [] | Shuckle ex 120 []
+   end kpf: ZNone/Some(Grass) H2 P0 | Shuckle ex 150 [] | Teal Mask Ogerpon ex 130 []
+--- 72050212 t1 v altaria (i=212, change +1.0)  first: PLAY P-A 007 Professor's Research -> PLAY P-A 002 X Speed
+   own: ZNone/Some(Grass) D0 H4 P0 | Combee 80hp E[] | 
+   opp: ZNone/Some(Psychic) D0 H3 P0 | Igglybuff 30hp E[] | Eevee 50hp E[]
+   kp3: PLAY P-A 007 Professor's Research ; PLACE Shuckle ex@3 ; PLACE Combee@2 ; PLAY Leaf Cape ; TOOL Leaf Cape@2 ; END   | zone None atk None ret []
+   kpf: PLAY P-A 002 X Speed ; PLAY P-A 007 Professor's Research ; PLACE Combee@3 ; PLAY Leaf Cape ; TOOL Leaf Cape@3 ; RETREAT->3 ; PLACE Shuckle ex@2 ; END   | zone None atk None ret [['Combee', 'Combee']]
+   end kp3: ZNone/Some(Grass) H2 P0 | Combee 80 [] | Combee 80 [], Shuckle ex 120 []
+   end kpf: ZNone/Some(Grass) H1 P0 | Combee 80 [] | Shuckle ex 120 [], Combee 80 []
+--- 72050214 t7 v altaria (i=214, change +1.0)  first: PLAY Sabrina -> ATTACK Energized Leaves
+   own: ZNone/Some(Grass) D1 H3 P0 | Teal Mask Ogerpon ex 160hp E[GG] | Vespiquen ex 140hp E[], Combee 50hp E[]
+   opp: ZNone/Some(Psychic) D0 H1 P2 | Mega Altaria ex 170hp E[PP] | Darkrai 100hp E[], Darkrai 100hp E[], Swablu 50hp E[P]
+   kp3: PLAY Sabrina ; ATTACK Energized Leaves ; END   | zone A:Teal Mask Ogerpon ex atk Energized Leaves ret []
+   kpf: ATTACK Energized Leaves ; END   | zone A:Teal Mask Ogerpon ex atk Energized Leaves ret []
+   end kp3: ZNone/Some(Grass) H2 P1 | Teal Mask Ogerpon ex 160 [GG] | Vespiquen ex 140 [], Combee 50 []
+   end kpf: ZNone/Some(Grass) H3 P0 | Teal Mask Ogerpon ex 160 [GG] | Vespiquen ex 140 [], Combee 50 []
+--- 72050229 t3 v altaria (i=229, change +1.0)  first: PROMOTE@2 -> PROMOTE@3
+   own: ZNone/Some(Grass) D1 H2 P0 | - | Combee 80hp E[], Shuckle ex 120hp E[]
+   opp: ZNone/Some(Psychic) D0 H1 P1 | Swablu 20hp E[P] | Darkrai 100hp E[], Darkrai 100hp E[], Espeon 90hp E[]
+   kp3: PROMOTE@2   | zone None atk None ret []
+   kpf: PROMOTE@3   | zone None atk None ret []
+   end kp3: ZNone/Some(Grass) H2 P0 | Combee 80 [] | Shuckle ex 120 []
+   end kpf: ZNone/Some(Grass) H2 P0 | Shuckle ex 120 [] | Combee 80 []
+--- 72110012 t1 v blaziken (i=12, change +1.0)  first: PLAY Fragrant Forest -> PLAY P-A 002 X Speed
+   own: ZNone/Some(Grass) D0 H6 P0 | Combee 50hp E[] | 
+   opp: ZNone/Some(Fire) D0 H3 P0 | Heatmor 80hp E[] | Torchic 60hp E[]
+   kp3: PLAY Fragrant Forest ; PLACE Shuckle ex@3 ; OTHER UseStadium ; PLAY P-A 002 X Speed ; RETREAT->3 ; PLACE Shuckle ex@2 ; END   | zone None atk None ret [['Combee', 'Shuckle ex']]
+   kpf: PLAY P-A 002 X Speed ; PLACE Shuckle ex@3 ; RETREAT->3 ; PLAY Fragrant Forest ; OTHER UseStadium ; PLACE Shuckle ex@2 ; END   | zone None atk None ret [['Combee', 'Shuckle ex']]
+   end kp3: ZNone/Some(Grass) H3 P0 | Shuckle ex 120 [] | Shuckle ex 120 [], Combee 50 []
+   end kpf: ZNone/Some(Grass) H3 P0 | Shuckle ex 120 [] | Shuckle ex 120 [], Combee 50 []
+--- 72110013 t1 v blaziken (i=13, change +1.0)  first: PLAY Leaf Cape -> PLAY P-A 002 X Speed
+   own: ZNone/Some(Grass) D0 H6 P0 | Combee 50hp E[] | 
+   opp: ZNone/Some(Fire) D0 H4 P0 | Castform Sunny Form 70hp E[] | 
+   kp3: PLAY Leaf Cape ; TOOL Leaf Cape@0 ; PLAY Fragrant Forest ; PLACE Shuckle ex@3 ; OTHER UseStadium ; PLAY P-A 002 X Speed ; PLACE Combee@2 ; RETREAT->2 ; END   | zone None atk None ret [['Combee', 'Combee']]
+   kpf: PLAY P-A 002 X Speed ; PLACE Shuckle ex@3 ; RETREAT->3 ; PLAY Fragrant Forest ; OTHER UseStadium ; PLAY Leaf Cape ; TOOL Leaf Cape@0 ; PLACE Combee@2 ; END   | zone None atk None ret [['Combee', 'Shuckle ex']]
+   end kp3: ZNone/Some(Grass) H2 P0 | Combee 50 [] | Combee 80 [], Shuckle ex 120 []
+   end kpf: ZNone/Some(Grass) H2 P0 | Shuckle ex 150 [] | Combee 50 [], Combee 50 []
+--- 72110019 t1 v blaziken (i=19, change +1.0)  first: PLAY P-A 002 X Speed -> END
+   own: ZNone/Some(Grass) D0 H3 P0 | Shuckle ex 150hp E[] | Combee 80hp E[]
+   opp: ZNone/Some(Fire) D0 H4 P0 | Castform Sunny Form 70hp E[] | 
+   kp3: PLAY P-A 002 X Speed ; RETREAT->3 ; END   | zone None atk None ret [['Shuckle ex', 'Combee']]
+   kpf: END   | zone None atk None ret []
+   end kp3: ZNone/Some(Grass) H2 P0 | Combee 80 [] | Shuckle ex 150 []
+   end kpf: ZNone/Some(Grass) H3 P0 | Shuckle ex 150 [] | Combee 80 []
+--- 72110054 t2 v blaziken (i=54, change +1.0)  first: PLAY Leaf Cape -> PLAY Fragrant Forest
+   own: ZSome(Grass)/Some(Grass) D0 H5 P0 | Shuckle ex 120hp E[] | 
+   opp: ZNone/Some(Fire) D0 H3 P0 | Castform Sunny Form 70hp E[] | 
+   kp3: PLAY Leaf Cape ; TOOL Leaf Cape@0 ; PLAY P-A 007 Professor's Research ; PLACE Shuckle ex@3 ; ATTACH@0 ; PLAY Fragrant Forest ; OTHER UseStadium ; PLACE Combee@2 ; ATTACK Triple Slap ; END   | zone A:Shuckle ex atk Triple Slap ret []
+   kpf: PLAY Fragrant Forest ; OTHER UseStadium ; PLACE Combee@3 ; PLAY Leaf Cape ; TOOL Leaf Cape@0 ; PLAY P-A 007 Professor's Research ; ATTACH@0 ; PLAY Leaf Cape ; TOOL Leaf Cape@3 ; ATTACK Triple Slap ; END   | zone A:Shuckle ex atk Triple Slap ret []
+   end kp3: ZNone/Some(Grass) H3 P0 | Shuckle ex 150 [G] | Combee 50 [], Shuckle ex 120 []
+   end kpf: ZNone/Some(Grass) H3 P0 | Shuckle ex 150 [G] | Combee 80 []
+--- 72110056 t6 v blaziken (i=56, change +1.0)  first: PLAY Copycat -> RETREAT->1
+   own: ZSome(Grass)/Some(Grass) D0 H4 P0 | Shuckle ex 50hp BRN E[G] | Combee 50hp E[], Shuckle ex 120hp E[G], Combee 50hp E[]
+   opp: ZNone/Some(Fire) D1 H3 P0 | Castform Sunny Form 70hp E[F] | Heatmor 60hp E[], Mega Blaziken ex 210hp E[]
+   kp3: PLAY Copycat ; RETREAT->2 ; EVOLVE Vespiquen ex@3 ; PLAY Leaf Cape ; TOOL Leaf Cape@0 ; ATTACH@3 ; ATTACK Triple Slap ; END   | zone B:Vespiquen ex atk Triple Slap ret [['Shuckle ex', 'Shuckle ex']]
+   kpf: RETREAT->1 ; ATTACH@0 ; PLAY Copycat ; PLAY Leaf Cape ; TOOL Leaf Cape@0 ; EVOLVE Vespiquen ex@0 ; OTHER UseStadium ; END   | zone A:Combee atk None ret [['Shuckle ex', 'Combee']]
+   end kp3: ZNone/Some(Grass) H1 P0 | Shuckle ex 150 [G] | Combee 50 [], Shuckle ex 50 [], Vespiquen ex 140 [G]
+   end kpf: ZNone/Some(Grass) H1 P0 | Vespiquen ex 170 [G] | Shuckle ex 50 [], Shuckle ex 120 [G], Combee 50 []
+--- 72110072 t3 v blaziken (i=72, change +1.0)  first: ATTACH@0 -> ATTACH@3
+   own: ZSome(Grass)/Some(Grass) D0 H2 P0 | Shuckle ex 70hp E[] | Vespiquen ex 140hp E[]
+   opp: ZNone/Some(Fire) D0 H3 P0 | Castform Sunny Form 70hp E[F] | Heatmor 80hp E[], Torchic 60hp E[]
+   kp3: ATTACH@0 ; ATTACK Triple Slap ; END   | zone A:Shuckle ex atk Triple Slap ret []
+   kpf: ATTACH@3 ; PLAY Fragrant Forest ; OTHER UseStadium ; PLACE Shuckle ex@2 ; END   | zone B:Vespiquen ex atk None ret []
+   end kp3: ZNone/Some(Grass) H2 P0 | Shuckle ex 70 [G] | Vespiquen ex 140 []
+   end kpf: ZNone/Some(Grass) H1 P0 | Shuckle ex 70 [] | Shuckle ex 120 [], Vespiquen ex 140 [G]
+--- 72110083 t6 v blaziken (i=83, change +1.0)  first: PLAY Sabrina -> RETREAT->3
+   own: ZSome(Grass)/Some(Grass) D1 H3 P1 | Combee 70hp E[G] | Shuckle ex 120hp E[], Shuckle ex 100hp E[], Vespiquen ex 110hp E[]
+   opp: ZNone/Some(Fire) D1 H5 P0 | Heatmor 80hp E[F] | Castform Sunny Form 70hp E[]
+   kp3: PLAY Sabrina ; RETREAT->1 ; ATTACH@0 ; ATTACK Triple Slap ; END   | zone A:Shuckle ex atk Triple Slap ret [['Combee', 'Shuckle ex']]
+   kpf: RETREAT->3 ; PLAY Sabrina ; ATTACH@0 ; OTHER UseStadium ; END   | zone A:Vespiquen ex atk None ret [['Combee', 'Vespiquen ex']]
+   end kp3: ZNone/Some(Grass) H2 P1 | Shuckle ex 120 [G] | Combee 70 [], Shuckle ex 100 [], Vespiquen ex 110 []
+   end kpf: ZNone/Some(Grass) H2 P1 | Vespiquen ex 110 [G] | Shuckle ex 120 [], Shuckle ex 100 [], Combee 70 []
+--- 72110099 t2 v blaziken (i=99, change +1.0)  first: PLAY P-A 002 X Speed -> ATTACH@0
+   own: ZSome(Grass)/Some(Grass) D0 H2 P0 | Teal Mask Ogerpon ex 160hp E[] | Shuckle ex 120hp E[], Combee 50hp E[], Combee 50hp E[]
+   opp: ZNone/Some(Fire) D0 H5 P0 | Torchic 60hp E[] | 
+   kp3: PLAY P-A 002 X Speed ; RETREAT->1 ; ATTACH@0 ; ATTACK Triple Slap ; END   | zone A:Shuckle ex atk Triple Slap ret [['Teal Mask Ogerpon ex', 'Shuckle ex']]
+   kpf: ATTACH@0 ; END   | zone A:Teal Mask Ogerpon ex atk None ret []
+   end kp3: ZNone/Some(Grass) H1 P0 | Shuckle ex 120 [G] | Teal Mask Ogerpon ex 160 [], Combee 50 [], Combee 50 []
+   end kpf: ZNone/Some(Grass) H2 P0 | Teal Mask Ogerpon ex 160 [G] | Shuckle ex 120 [], Combee 50 [], Combee 50 []
+--- 72110101 t6 v blaziken (i=101, change +1.0)  first: PLAY Copycat -> RETREAT->1
+   own: ZSome(Grass)/Some(Grass) D0 H3 P1 | Shuckle ex 120hp E[G] | Combee 50hp E[], Teal Mask Ogerpon ex 130hp E[], Shuckle ex 120hp E[G]
+   opp: ZNone/Some(Fire) D0 H4 P1 | Heatmor 80hp E[F] | Torchic 20hp E[F]
+   kp3: PLAY Copycat ; EVOLVE Vespiquen ex@1 ; PLAY Leaf Cape ; TOOL Leaf Cape@0 ; ATTACH@1 ; PLAY Leaf Cape ; TOOL Leaf Cape@3 ; ATTACK Triple Slap ; END   | zone B:Vespiquen ex atk Triple Slap ret []
+   kpf: RETREAT->1 ; PLAY Copycat ; PLAY Leaf Cape ; TOOL Leaf Cape@0 ; ATTACH@0 ; PLAY Leaf Cape ; TOOL Leaf Cape@2 ; ATTACK Reckless Charge ; END   | zone A:Combee atk Reckless Charge ret [['Shuckle ex', 'Combee']]
+   end kp3: ZNone/Some(Grass) H1 P1 | Shuckle ex 150 [G] | Vespiquen ex 140 [G], Teal Mask Ogerpon ex 130 [], Shuckle ex 150 [G]
+   end kpf: ZNone/Some(Grass) H2 P1 | Combee 70 [G] | Shuckle ex 120 [], Teal Mask Ogerpon ex 160 [], Shuckle ex 120 [G]
+--- 72110114 t1 v blaziken (i=114, change +1.0)  first: PLACE Combee@3 -> PLAY P-A 002 X Speed
+   own: ZNone/Some(Grass) D0 H6 P0 | Combee 50hp E[] | 
+   opp: ZNone/Some(Fire) D0 H4 P0 | Heatmor 80hp E[] | 
+   kp3: PLACE Combee@3 ; PLAY P-A 002 X Speed ; PLACE Shuckle ex@2 ; RETREAT->2 ; END   | zone None atk None ret [['Combee', 'Shuckle ex']]
+   kpf: PLAY P-A 002 X Speed ; PLACE Combee@3 ; PLACE Shuckle ex@2 ; RETREAT->2 ; END   | zone None atk None ret [['Combee', 'Shuckle ex']]
+   end kp3: ZNone/Some(Grass) H3 P0 | Shuckle ex 120 [] | Combee 50 [], Combee 50 []
+   end kpf: ZNone/Some(Grass) H3 P0 | Shuckle ex 120 [] | Combee 50 [], Combee 50 []
+--- 72110119 t2 v blaziken (i=119, change +1.0)  first: TOOL Leaf Cape@0 -> TOOL Leaf Cape@3
+   own: ZSome(Grass)/Some(Grass) D0 H4 P0 | Shuckle ex 120hp E[] | Teal Mask Ogerpon ex 130hp E[]
+   opp: ZNone/Some(Fire) D0 H3 P0 | Heatmor 80hp E[] | Torchic 60hp E[], Torchic 60hp E[]
+   kp3: TOOL Leaf Cape@0 ; ATTACH@0 ; PLAY Fragrant Forest ; OTHER UseStadium ; PLACE Combee@2 ; ATTACK Triple Slap ; END   | zone A:Shuckle ex atk Triple Slap ret []
+   kpf: TOOL Leaf Cape@3 ; PLAY Fragrant Forest ; ATTACH@3 ; OTHER UseStadium ; PLACE Combee@2 ; END   | zone B:Teal Mask Ogerpon ex atk None ret []
+   end kp3: ZNone/Some(Grass) H3 P0 | Shuckle ex 150 [G] | Combee 50 [], Teal Mask Ogerpon ex 130 []
+   end kpf: ZNone/Some(Grass) H3 P0 | Shuckle ex 120 [] | Combee 50 [], Teal Mask Ogerpon ex 160 [G]
+--- 72110133 t2 v blaziken (i=133, change +1.0)  first: PLAY P-A 002 X Speed -> PLAY Fragrant Forest
+   own: ZSome(Grass)/Some(Grass) D0 H4 P0 | Combee 50hp E[] | Shuckle ex 120hp E[]
+   opp: ZNone/Some(Fire) D0 H3 P0 | Torchic 60hp E[] | Castform Sunny Form 70hp E[], Torchic 60hp E[]
+   kp3: PLAY P-A 002 X Speed ; RETREAT->3 ; ATTACH@0 ; PLAY Fragrant Forest ; OTHER UseStadium ; PLACE Shuckle ex@2 ; ATTACK Triple Slap ; END   | zone A:Shuckle ex atk Triple Slap ret [['Combee', 'Shuckle ex']]
+   kpf: PLAY Fragrant Forest ; OTHER UseStadium ; PLACE Shuckle ex@2 ; PLAY P-A 002 X Speed ; RETREAT->3 ; ATTACH@0 ; ATTACK Triple Slap ; END   | zone A:Shuckle ex atk Triple Slap ret [['Combee', 'Shuckle ex']]
+   end kp3: ZNone/Some(Grass) H2 P0 | Shuckle ex 100 [G] | Shuckle ex 120 [], Combee 50 []
+   end kpf: ZNone/Some(Grass) H2 P0 | Shuckle ex 100 [G] | Shuckle ex 120 [], Combee 50 []
+--- 72110142 t5 v blaziken (i=142, change +1.0)  first: PLAY Sabrina -> PLAY Copycat
+   own: ZSome(Grass)/Some(Grass) D0 H5 P0 | Shuckle ex 90hp E[G] | Combee 50hp E[], Teal Mask Ogerpon ex 100hp E[], Shuckle ex 120hp E[]
+   opp: ZNone/Some(Fire) D0 H3 P0 | Castform Sunny Form 70hp E[F] | Torchic 60hp E[], Heatmor 80hp E[], Torchic 60hp E[F]
+   kp3: PLAY Sabrina ; RETREAT->3 ; ATTACH@0 ; OTHER UseStadium ; ATTACK Triple Slap ; END   | zone A:Shuckle ex atk Triple Slap ret [['Shuckle ex', 'Shuckle ex']]
+   kpf: PLAY Copycat ; PLAY P-A 002 X Speed ; RETREAT->2 ; ATTACH@0 ; OTHER UseStadium ; END   | zone A:Teal Mask Ogerpon ex atk None ret [['Shuckle ex', 'Teal Mask Ogerpon ex']]
+   end kp3: ZNone/Some(Grass) H5 P0 | Shuckle ex 120 [G] | Combee 50 [], Teal Mask Ogerpon ex 100 [], Shuckle ex 90 []
+   end kpf: ZNone/Some(Grass) H2 P0 | Teal Mask Ogerpon ex 100 [G] | Combee 50 [], Shuckle ex 90 [G], Shuckle ex 120 []
+--- 72110198 t3 v blaziken (i=198, change +1.0)  first: ATTACH@0 -> PLAY Copycat
+   own: ZSome(Grass)/Some(Grass) D0 H4 P0 | Shuckle ex 90hp E[] | Vespiquen ex 140hp E[]
+   opp: ZNone/Some(Fire) D0 H1 P0 | Castform Sunny Form 70hp E[F] | Torchic 60hp E[], Torchic 60hp E[]
+   kp3: ATTACH@0 ; PLAY Field Blower ; OTHER DiscardToolFromPokemon ; ATTACK Triple Slap ; END   | zone A:Shuckle ex atk Triple Slap ret []
+   kpf: PLAY Copycat ; PLAY Fragrant Forest ; ATTACH@3 ; OTHER UseStadium ; PLACE Shuckle ex@2 ; END   | zone B:Vespiquen ex atk None ret []
+   end kp3: ZNone/Some(Grass) H3 P0 | Shuckle ex 90 [G] | Vespiquen ex 140 []
+   end kpf: ZNone/Some(Grass) H0 P0 | Shuckle ex 90 [] | Shuckle ex 120 [], Vespiquen ex 140 [G]
+--- 72110199 t3 v blaziken (i=199, change +1.0)  first: PLAY Sabrina -> ATTACH@0
+   own: ZSome(Grass)/Some(Grass) D0 H3 P0 | Teal Mask Ogerpon ex 110hp E[] | 
+   opp: ZNone/Some(Fire) D0 H1 P0 | Castform Sunny Form 70hp E[F] | Torchic 60hp E[], Heatmor 80hp E[], Torchic 60hp E[]
+   kp3: PLAY Sabrina ; ATTACH@0 ; END   | zone A:Teal Mask Ogerpon ex atk None ret []
+   kpf: ATTACH@0 ; END   | zone A:Teal Mask Ogerpon ex atk None ret []
+   end kp3: ZNone/Some(Grass) H2 P0 | Teal Mask Ogerpon ex 110 [G] | 
+   end kpf: ZNone/Some(Grass) H3 P0 | Teal Mask Ogerpon ex 110 [G] | 
+--- 72110203 t10 v blaziken (i=203, change +1.0)  first: PLAY Sabrina -> ATTACH@0
+   own: ZSome(Grass)/Some(Grass) D2 H4 P1 | Vespiquen ex 170hp E[G] | Teal Mask Ogerpon ex 130hp E[], Shuckle ex 60hp E[G]
+   opp: ZNone/Some(Fire) D1 H2 P2 | Mega Blaziken ex 190hp E[FF] | Castform Sunny Form 70hp E[]
+   kp3: PLAY Sabrina ; ATTACH@0 ; PLACE Combee@3 ; ATTACK Chase Order ; OTHER ApplyDamage ; OTHER ResolveAttackRetaliation ; END   | zone A:Vespiquen ex atk Chase Order ret []
+   kpf: ATTACH@0 ; ATTACK Chase Order ; OTHER DiscardOwnBenchedThenDamage ; OTHER ApplyDamage ; OTHER ResolveAttackRetaliation ; END   | zone A:Vespiquen ex atk Chase Order ret []
+   end kp3: ZNone/Some(Grass) H2 P2 | Vespiquen ex 170 [GG] | Teal Mask Ogerpon ex 130 [], Shuckle ex 60 [G], Combee 50 []
+   end kpf: ZNone/Some(Grass) H4 P1 | Vespiquen ex 170 [GG] | Teal Mask Ogerpon ex 130 []
+--- 72110212 t1 v blaziken (i=212, change +0.5)  first: RETREAT->1 -> PLAY Leaf Cape
+   own: ZNone/Some(Grass) D0 H4 P0 | Shuckle ex 150hp E[] | Combee 50hp E[]
+   opp: ZNone/Some(Fire) D0 H4 P0 | Castform Sunny Form 70hp E[] | 
+   kp3: RETREAT->1 ; PLAY Leaf Cape ; TOOL Leaf Cape@0 ; END   | zone None atk None ret [['Shuckle ex', 'Combee']]
+   kpf: PLAY Leaf Cape ; TOOL Leaf Cape@1 ; END   | zone None atk None ret []
+   end kp3: ZNone/Some(Grass) H3 P0 | Combee 80 [] | Shuckle ex 150 []
+   end kpf: ZNone/Some(Grass) H3 P0 | Shuckle ex 150 [] | Combee 80 []
+--- 72110228 t3 v blaziken (i=228, change +1.0)  first: EVOLVE Vespiquen ex@3 -> PLACE Combee@2
+   own: ZSome(Grass)/Some(Grass) D0 H6 P0 | Shuckle ex 90hp E[] | Combee 50hp E[]
+   opp: ZNone/Some(Fire) D0 H4 P0 | Castform Sunny Form 70hp E[F] | Heatmor 80hp E[], Torchic 60hp E[]
+   kp3: EVOLVE Vespiquen ex@3 ; PLAY Sabrina ; PLACE Combee@2 ; ATTACH@0 ; ATTACK Triple Slap ; END   | zone A:Shuckle ex atk Triple Slap ret []
+   kpf: PLACE Combee@2 ; EVOLVE Vespiquen ex@3 ; PLAY P-A 002 X Speed ; RETREAT->3 ; ATTACH@0 ; END   | zone A:Vespiquen ex atk None ret [['Shuckle ex', 'Vespiquen ex']]
+   end kp3: ZNone/Some(Grass) H3 P0 | Shuckle ex 90 [G] | Combee 50 [], Vespiquen ex 140 []
+   end kpf: ZNone/Some(Grass) H3 P0 | Vespiquen ex 140 [G] | Combee 50 [], Shuckle ex 90 []
+--- 72110241 t4 v blaziken (i=241, change +1.0)  first: PLAY Sabrina -> EVOLVE Vespiquen ex@3
+   own: ZSome(Grass)/Some(Grass) D0 H4 P0 | Teal Mask Ogerpon ex 80hp E[G] | Shuckle ex 120hp E[], Combee 50hp E[]
+   opp: ZNone/Some(Fire) D0 H6 P0 | Castform Sunny Form 70hp E[F] | Heatmor 80hp E[]
+   kp3: PLAY Sabrina ; EVOLVE Vespiquen ex@3 ; ATTACH@0 ; OTHER UseStadium ; PLACE Combee@1 ; ATTACK Energized Leaves ; END   | zone A:Teal Mask Ogerpon ex atk Energized Leaves ret []
+   kpf: EVOLVE Vespiquen ex@3 ; PLAY Copycat ; ATTACH@0 ; PLAY Leaf Cape ; TOOL Leaf Cape@0 ; PLAY Leaf Cape ; TOOL Leaf Cape@3 ; OTHER UseStadium ; PLACE Shuckle ex@1 ; ATTACK Energized Leaves ; END   | zone A:Teal Mask Ogerpon ex atk Energized Leaves ret []
+   end kp3: ZNone/Some(Grass) H2 P0 | Teal Mask Ogerpon ex 80 [GG] | Combee 50 [], Shuckle ex 120 [], Vespiquen ex 140 []
+   end kpf: ZNone/Some(Grass) H4 P0 | Teal Mask Ogerpon ex 110 [GG] | Shuckle ex 120 [], Shuckle ex 120 [], Vespiquen ex 170 []
+--- 72110244 t4 v blaziken (i=244, change +1.0)  first: ATTACH@0 -> PLAY P-A 002 X Speed
+   own: ZSome(Grass)/Some(Grass) D0 H4 P0 | Teal Mask Ogerpon ex 130hp E[G] | Shuckle ex 120hp E[], Vespiquen ex 140hp E[], Vespiquen ex 140hp E[]
+   opp: ZNone/Some(Fire) D0 H2 P0 | Heatmor 80hp E[] | Castform Sunny Form 70hp E[], Mega Blaziken ex 210hp E[F]
+   kp3: ATTACH@0 ; ATTACK Energized Leaves ; END   | zone A:Teal Mask Ogerpon ex atk Energized Leaves ret []
+   kpf: PLAY P-A 002 X Speed ; RETREAT->3 ; ATTACH@0 ; END   | zone A:Vespiquen ex atk None ret [['Teal Mask Ogerpon ex', 'Vespiquen ex']]
+   end kp3: ZNone/Some(Grass) H4 P0 | Teal Mask Ogerpon ex 110 [GG] | Shuckle ex 120 [], Vespiquen ex 140 [], Vespiquen ex 140 []
+   end kpf: ZNone/Some(Grass) H3 P0 | Vespiquen ex 140 [G] | Shuckle ex 120 [], Vespiquen ex 140 [], Teal Mask Ogerpon ex 130 [G]
+--- 72160002 t8 v hydreigon (i=2, change +1.0)  first: PLAY Sabrina -> RETREAT->2
+   own: ZSome(Grass)/Some(Grass) D1 H7 P1 | Shuckle ex 100hp E[G] | Teal Mask Ogerpon ex 130hp E[G], Shuckle ex 120hp E[]
+   opp: ZNone/Some(Darkness) D3 H5 P1 | Bombirdier 70hp E[D] | Mega Absol ex 170hp E[D], Deino 60hp E[]
+   kp3: PLAY Sabrina ; RETREAT->2 ; PLACE Combee@1 ; ATTACH@0 ; ATTACK Energized Leaves ; END   | zone A:Teal Mask Ogerpon ex atk Energized Leaves ret [['Shuckle ex', 'Teal Mask Ogerpon ex']]
+   kpf: RETREAT->2 ; PLACE Combee@1 ; ATTACH@0 ; PLAY P-A 002 X Speed ; PLAY Copycat ; PLAY Leaf Cape ; TOOL Leaf Cape@0 ; ATTACK Energized Leaves ; END   | zone A:Teal Mask Ogerpon ex atk Energized Leaves ret [['Shuckle ex', 'Teal Mask Ogerpon ex']]
+   end kp3: ZNone/Some(Grass) H5 P1 | Teal Mask Ogerpon ex 130 [GG] | Combee 50 [], Shuckle ex 100 [], Shuckle ex 120 []
+   end kpf: ZNone/Some(Grass) H4 P1 | Teal Mask Ogerpon ex 160 [GG] | Combee 50 [], Shuckle ex 100 [], Shuckle ex 120 []
+--- 72160007 t3 v hydreigon (i=7, change +1.0)  first: ATTACH@0 -> ATTACH@2
+   own: ZSome(Grass)/Some(Grass) D0 H2 P0 | Shuckle ex 150hp E[] | Teal Mask Ogerpon ex 130hp E[], Vespiquen ex 140hp E[], Shuckle ex 120hp E[]
+   opp: ZNone/Some(Darkness) D0 H4 P0 | Bombirdier 70hp E[] | Deino 60hp E[], Mega Absol ex 170hp E[D]
+   kp3: ATTACH@0 ; ATTACK Triple Slap ; END   | zone A:Shuckle ex atk Triple Slap ret []
+   kpf: ATTACH@2 ; OTHER UseStadium ; END   | zone B:Vespiquen ex atk None ret []
+   end kp3: ZNone/Some(Grass) H2 P0 | Shuckle ex 150 [G] | Teal Mask Ogerpon ex 130 [], Vespiquen ex 140 [], Shuckle ex 120 []
+   end kpf: ZNone/Some(Grass) H2 P0 | Shuckle ex 150 [] | Teal Mask Ogerpon ex 130 [], Vespiquen ex 140 [G], Shuckle ex 120 []
+--- 72160011 t2 v hydreigon (i=11, change +1.0)  first: PLAY P-A 007 Professor's Research -> PLAY Copycat
+   own: ZSome(Grass)/Some(Grass) D0 H5 P0 | Combee 40hp E[] | 
+   opp: ZNone/Some(Darkness) D0 H3 P0 | Deino 60hp E[] | Bombirdier 70hp E[]
+   kp3: PLAY P-A 007 Professor's Research ; PLAY Leaf Cape ; TOOL Leaf Cape@0 ; PLAY Fragrant Forest ; ATTACH@0 ; OTHER UseStadium ; PLACE Combee@3 ; ATTACK Reckless Charge ; END   | zone A:Combee atk Reckless Charge ret []
+   kpf: PLAY Copycat ; PLAY Leaf Cape ; TOOL Leaf Cape@0 ; PLACE Shuckle ex@3 ; ATTACH@0 ; ATTACK Reckless Charge ; END   | zone A:Combee atk Reckless Charge ret []
+   end kp3: ZNone/Some(Grass) H4 P0 | Combee 60 [G] | Combee 50 []
+   end kpf: ZNone/Some(Grass) H1 P0 | Combee 60 [G] | Shuckle ex 120 []
+--- 72160013 t3 v hydreigon (i=13, change +1.0)  first: PLAY Sabrina -> ATTACH@0
+   own: ZSome(Grass)/Some(Grass) D0 H5 P0 | Vespiquen ex 110hp E[] | Combee 50hp E[]
+   opp: ZNone/Some(Darkness) D0 H3 P0 | Deino 60hp E[D] | Deino 60hp E[]
+   kp3: PLAY Sabrina ; ATTACH@0 ; OTHER UseStadium ; PLACE Shuckle ex@2 ; END   | zone A:Vespiquen ex atk None ret []
+   kpf: ATTACH@0 ; PLAY Copycat ; PLACE Shuckle ex@2 ; PLAY Leaf Cape ; TOOL Leaf Cape@0 ; OTHER UseStadium ; PLACE Teal Mask Ogerpon ex@1 ; END   | zone A:Vespiquen ex atk None ret []
+   end kp3: ZNone/Some(Grass) H4 P0 | Vespiquen ex 110 [G] | Shuckle ex 120 [], Combee 50 []
+   end kpf: ZNone/Some(Grass) H1 P0 | Vespiquen ex 140 [G] | Teal Mask Ogerpon ex 130 [], Shuckle ex 120 [], Combee 50 []
+--- 72160015 t1 v hydreigon (i=15, change +1.0)  first: END -> PLAY P-A 002 X Speed
+   own: ZNone/Some(Grass) D0 H4 P0 | Teal Mask Ogerpon ex 130hp E[] | Shuckle ex 120hp E[], Combee 50hp E[]
+   opp: ZNone/Some(Darkness) D0 H4 P0 | Bombirdier 70hp E[] | 
+   kp3: END   | zone None atk None ret []
+   kpf: PLAY P-A 002 X Speed ; RETREAT->2 ; END   | zone None atk None ret [['Teal Mask Ogerpon ex', 'Shuckle ex']]
+   end kp3: ZNone/Some(Grass) H4 P0 | Teal Mask Ogerpon ex 130 [] | Shuckle ex 120 [], Combee 50 []
+   end kpf: ZNone/Some(Grass) H3 P0 | Shuckle ex 120 [] | Teal Mask Ogerpon ex 130 [], Combee 50 []
+--- 72160024 t4 v hydreigon (i=24, change +1.0)  first: ATTACH@0 -> PLAY Copycat
+   own: ZSome(Grass)/Some(Grass) D0 H3 P0 | Shuckle ex 110hp E[] | Vespiquen ex 140hp E[], Shuckle ex 150hp E[G]
+   opp: ZNone/Some(Darkness) D0 H4 P0 | Bombirdier 70hp E[D] | Deino 60hp E[], Deino 60hp E[]
+   kp3: ATTACH@0 ; OTHER UseStadium ; RETREAT->3 ; PLAY P-A 007 Professor's Research ; PLACE Combee@1 ; ATTACK Triple Slap ; END   | zone A:Shuckle ex atk Triple Slap ret [['Shuckle ex', 'Shuckle ex']]
+   kpf: PLAY Copycat ; PLACE Combee@1 ; ATTACH@0 ; RETREAT->3 ; OTHER UseStadium ; ATTACK Triple Slap ; END   | zone A:Shuckle ex atk Triple Slap ret [['Shuckle ex', 'Shuckle ex']]
+   end kp3: ZNone/Some(Grass) H4 P0 | Shuckle ex 150 [G] | Combee 50 [], Vespiquen ex 140 [], Shuckle ex 110 []
+   end kpf: ZNone/Some(Grass) H4 P0 | Shuckle ex 150 [G] | Combee 50 [], Vespiquen ex 140 [], Shuckle ex 110 []
+--- 72160029 t1 v hydreigon (i=29, change +1.0)  first: PLAY Sabrina -> PLAY P-A 007 Professor's Research
+   own: ZNone/Some(Grass) D0 H5 P0 | Shuckle ex 120hp E[] | 
+   opp: ZNone/Some(Darkness) D0 H3 P0 | Deino 60hp E[] | Mega Absol ex 170hp E[]
+   kp3: PLAY Sabrina ; PLACE Teal Mask Ogerpon ex@3 ; END   | zone None atk None ret []
+   kpf: PLAY P-A 007 Professor's Research ; PLACE Combee@3 ; PLACE Teal Mask Ogerpon ex@2 ; END   | zone None atk None ret []
+   end kp3: ZNone/Some(Grass) H3 P0 | Shuckle ex 120 [] | Teal Mask Ogerpon ex 130 []
+   end kpf: ZNone/Some(Grass) H4 P0 | Shuckle ex 120 [] | Teal Mask Ogerpon ex 130 [], Combee 50 []
+--- 72160030 t4 v hydreigon (i=30, change +1.0)  first: ATTACH@0 -> ATTACH@3
+   own: ZSome(Grass)/Some(Grass) D0 H4 P0 | Shuckle ex 120hp E[] | Combee 50hp E[], Teal Mask Ogerpon ex 130hp E[G]
+   opp: ZNone/Some(Darkness) D0 H5 P0 | Mega Absol ex 170hp E[D] | Deino 60hp E[]
+   kp3: ATTACH@0 ; PLAY Sabrina ; OTHER UseStadium ; PLACE Combee@1 ; ATTACK Triple Slap ; END   | zone A:Shuckle ex atk Triple Slap ret []
+   kpf: ATTACH@3 ; OTHER UseStadium ; PLACE Combee@1 ; END   | zone B:Teal Mask Ogerpon ex atk None ret []
+   end kp3: ZNone/Some(Grass) H3 P0 | Shuckle ex 120 [G] | Combee 50 [], Combee 50 [], Teal Mask Ogerpon ex 130 [G]
+   end kpf: ZNone/Some(Grass) H4 P0 | Shuckle ex 120 [] | Combee 50 [], Combee 50 [], Teal Mask Ogerpon ex 130 [GG]
+--- 72160033 t5 v hydreigon (i=33, change +1.0)  first: EVOLVE Vespiquen ex@2 -> RETREAT->2
+   own: ZSome(Grass)/Some(Grass) D0 H3 P0 | Teal Mask Ogerpon ex 50hp E[G] | Combee 50hp E[], Shuckle ex 150hp E[]
+   opp: ZNone/Some(Darkness) D0 H2 P0 | Bombirdier 70hp E[D] | Deino 60hp E[D]
+   kp3: EVOLVE Vespiquen ex@2 ; RETREAT->3 ; ATTACH@0 ; OTHER UseStadium ; PLACE Shuckle ex@1 ; ATTACK Triple Slap ; END   | zone A:Shuckle ex atk Triple Slap ret [['Teal Mask Ogerpon ex', 'Shuckle ex']]
+   kpf: RETREAT->2 ; EVOLVE Vespiquen ex@0 ; ATTACH@0 ; OTHER UseStadium ; PLACE Shuckle ex@1 ; END   | zone A:Vespiquen ex atk None ret [['Teal Mask Ogerpon ex', 'Combee']]
+   end kp3: ZNone/Some(Grass) H2 P0 | Shuckle ex 150 [G] | Shuckle ex 120 [], Vespiquen ex 140 [], Teal Mask Ogerpon ex 50 []
+   end kpf: ZNone/Some(Grass) H2 P0 | Vespiquen ex 140 [G] | Shuckle ex 120 [], Teal Mask Ogerpon ex 50 [], Shuckle ex 150 []
+--- 72160050 t3 v hydreigon (i=50, change +1.0)  first: PLAY P-A 007 Professor's Research -> PLAY P-A 002 X Speed
+   own: ZSome(Grass)/Some(Grass) D0 H3 P0 | Shuckle ex 120hp E[] | Teal Mask Ogerpon ex 130hp E[], Shuckle ex 120hp E[], Vespiquen ex 140hp E[]
+   opp: ZNone/Some(Darkness) D0 H3 P0 | Mega Absol ex 170hp E[D] | Deino 60hp E[], Deino 60hp E[]
+   kp3: PLAY P-A 007 Professor's Research ; ATTACH@0 ; PLAY Leaf Cape ; TOOL Leaf Cape@3 ; OTHER UseStadium ; ATTACK Triple Slap ; END   | zone A:Shuckle ex atk Triple Slap ret []
+   kpf: PLAY P-A 002 X Speed ; RETREAT->3 ; PLAY P-A 007 Professor's Research ; PLAY Leaf Cape ; TOOL Leaf Cape@0 ; ATTACH@0 ; OTHER UseStadium ; END   | zone A:Vespiquen ex atk None ret [['Shuckle ex', 'Vespiquen ex']]
+   end kp3: ZNone/Some(Grass) H4 P0 | Shuckle ex 120 [G] | Teal Mask Ogerpon ex 130 [], Shuckle ex 120 [], Vespiquen ex 170 []
+   end kpf: ZNone/Some(Grass) H3 P0 | Vespiquen ex 170 [G] | Teal Mask Ogerpon ex 130 [], Shuckle ex 120 [], Shuckle ex 120 []
+--- 72160055 t3 v hydreigon (i=55, change +1.0)  first: PLAY Sabrina -> EVOLVE Vespiquen ex@3
+   own: ZSome(Grass)/Some(Grass) D0 H4 P0 | Teal Mask Ogerpon ex 130hp E[] | Combee 80hp E[]
+   opp: ZNone/Some(Darkness) D0 H3 P0 | Bombirdier 70hp E[D] | Deino 60hp E[], Mega Absol ex 170hp E[]
+   kp3: PLAY Sabrina ; EVOLVE Vespiquen ex@3 ; PLAY P-A 002 X Speed ; RETREAT->3 ; ATTACH@0 ; END   | zone A:Vespiquen ex atk None ret [['Teal Mask Ogerpon ex', 'Vespiquen ex']]
+   kpf: EVOLVE Vespiquen ex@3 ; PLAY P-A 002 X Speed ; RETREAT->3 ; PLAY Sabrina ; ATTACH@0 ; END   | zone A:Vespiquen ex atk None ret [['Teal Mask Ogerpon ex', 'Vespiquen ex']]
+   end kp3: ZNone/Some(Grass) H1 P0 | Vespiquen ex 170 [G] | Teal Mask Ogerpon ex 130 []
+   end kpf: ZNone/Some(Grass) H1 P0 | Vespiquen ex 170 [G] | Teal Mask Ogerpon ex 130 []
+--- 72160058 t5 v hydreigon (i=58, change +1.0)  first: PROMOTE@2 -> PROMOTE@3
+   own: ZNone/Some(Grass) D2 H2 P1 | - | Combee 50hp E[], Shuckle ex 110hp E[]
+   opp: ZNone/Some(Darkness) D0 H2 P1 | Bombirdier 70hp E[D] | Deino 60hp E[], Mega Absol ex 170hp E[D]
+   kp3: PROMOTE@2   | zone None atk None ret []
+   kpf: PROMOTE@3   | zone None atk None ret []
+   end kp3: ZNone/Some(Grass) H2 P1 | Combee 50 [] | Shuckle ex 110 []
+   end kpf: ZNone/Some(Grass) H2 P1 | Shuckle ex 110 [] | Combee 50 []
+--- 72160061 t1 v hydreigon (i=61, change +1.0)  first: PLAY Leaf Cape -> PLAY P-A 002 X Speed
+   own: ZNone/Some(Grass) D0 H4 P0 | Teal Mask Ogerpon ex 130hp E[] | Shuckle ex 120hp E[]
+   opp: ZNone/Some(Darkness) D0 H4 P0 | Deino 60hp E[] | 
+   kp3: PLAY Leaf Cape ; TOOL Leaf Cape@3 ; PLAY Leaf Cape ; TOOL Leaf Cape@0 ; END   | zone None atk None ret []
+   kpf: PLAY P-A 002 X Speed ; RETREAT->3 ; PLAY Leaf Cape ; TOOL Leaf Cape@3 ; PLAY Leaf Cape ; TOOL Leaf Cape@0 ; END   | zone None atk None ret [['Teal Mask Ogerpon ex', 'Shuckle ex']]
+   end kp3: ZNone/Some(Grass) H2 P0 | Teal Mask Ogerpon ex 160 [] | Shuckle ex 150 []
+   end kpf: ZNone/Some(Grass) H1 P0 | Shuckle ex 150 [] | Teal Mask Ogerpon ex 160 []
+--- 72160063 t3 v hydreigon (i=63, change +1.0)  first: EVOLVE Vespiquen ex@3 -> PLAY P-A 007 Professor's Research
+   own: ZSome(Grass)/Some(Grass) D0 H5 P0 | Shuckle ex 110hp E[] | Shuckle ex 120hp E[], Combee 50hp E[]
+   opp: ZNone/Some(Darkness) D0 H5 P0 | Bombirdier 70hp E[D] | Mega Absol ex 170hp E[]
+   kp3: EVOLVE Vespiquen ex@3 ; PLAY P-A 007 Professor's Research ; ATTACH@0 ; OTHER UseStadium ; PLACE Combee@1 ; ATTACK Triple Slap ; END   | zone A:Shuckle ex atk Triple Slap ret []
+   kpf: PLAY P-A 007 Professor's Research ; EVOLVE Vespiquen ex@3 ; PLAY P-A 002 X Speed ; RETREAT->3 ; ATTACH@0 ; OTHER UseStadium ; PLACE Combee@1 ; END   | zone A:Vespiquen ex atk None ret [['Shuckle ex', 'Vespiquen ex']]
+   end kp3: ZNone/Some(Grass) H5 P0 | Shuckle ex 110 [G] | Combee 50 [], Shuckle ex 120 [], Vespiquen ex 140 []
+   end kpf: ZNone/Some(Grass) H4 P0 | Vespiquen ex 140 [G] | Combee 50 [], Shuckle ex 120 [], Shuckle ex 110 []
+--- 72160072 t3 v hydreigon (i=72, change +1.0)  first: ATTACH@0 -> ATTACH@3
+   own: ZSome(Grass)/Some(Grass) D0 H2 P0 | Shuckle ex 140hp E[] | Combee 50hp E[], Vespiquen ex 140hp E[]
+   opp: ZNone/Some(Darkness) D0 H1 P0 | Bombirdier 70hp E[D] | Deino 60hp E[], Deino 60hp E[]
+   kp3: ATTACH@0 ; OTHER UseStadium ; PLACE Teal Mask Ogerpon ex@1 ; ATTACK Triple Slap ; END   | zone A:Shuckle ex atk Triple Slap ret []
+   kpf: ATTACH@3 ; OTHER UseStadium ; PLAY P-A 002 X Speed ; RETREAT->3 ; PLACE Teal Mask Ogerpon ex@1 ; END   | zone B:Vespiquen ex atk None ret [['Shuckle ex', 'Vespiquen ex']]
+   end kp3: ZNone/Some(Grass) H2 P0 | Shuckle ex 140 [G] | Teal Mask Ogerpon ex 130 [], Combee 50 [], Vespiquen ex 140 []
+   end kpf: ZNone/Some(Grass) H1 P0 | Vespiquen ex 140 [G] | Teal Mask Ogerpon ex 130 [], Combee 50 [], Shuckle ex 140 []
+--- 72160074 t4 v hydreigon (i=74, change +1.0)  first: RETREAT->2 -> ATTACH@3
+   own: ZSome(Grass)/Some(Grass) D0 H2 P0 | Shuckle ex 90hp E[G] | Combee 50hp E[], Shuckle ex 120hp E[], Vespiquen ex 140hp E[]
+   opp: ZNone/Some(Darkness) D0 H2 P0 | Bombirdier 50hp E[D] | Mega Absol ex 170hp E[], Deino 60hp E[], Deino 60hp E[]
+   kp3: RETREAT->2 ; ATTACH@0 ; OTHER UseStadium ; ATTACK Triple Slap ; END   | zone A:Shuckle ex atk Triple Slap ret [['Shuckle ex', 'Shuckle ex']]
+   kpf: ATTACH@3 ; OTHER UseStadium ; ATTACK Triple Slap ; END   | zone B:Vespiquen ex atk Triple Slap ret []
+   end kp3: ZNone/Some(Grass) H3 P0 | Shuckle ex 120 [G] | Combee 50 [], Shuckle ex 90 [], Vespiquen ex 140 []
+   end kpf: ZNone/Some(Grass) H3 P0 | Shuckle ex 90 [G] | Combee 50 [], Shuckle ex 120 [], Vespiquen ex 140 [G]
+--- 72160076 t1 v hydreigon (i=76, change +1.0)  first: END -> PLAY P-A 002 X Speed
+   own: ZNone/Some(Grass) D0 H2 P0 | Teal Mask Ogerpon ex 130hp E[] | Shuckle ex 120hp E[], Combee 50hp E[], Combee 50hp E[]
+   opp: ZNone/Some(Darkness) D0 H4 P0 | Deino 60hp E[] | 
+   kp3: END   | zone None atk None ret []
+   kpf: PLAY P-A 002 X Speed ; RETREAT->1 ; END   | zone None atk None ret [['Teal Mask Ogerpon ex', 'Shuckle ex']]
+   end kp3: ZNone/Some(Grass) H2 P0 | Teal Mask Ogerpon ex 130 [] | Shuckle ex 120 [], Combee 50 [], Combee 50 []
+   end kpf: ZNone/Some(Grass) H1 P0 | Shuckle ex 120 [] | Teal Mask Ogerpon ex 130 [], Combee 50 [], Combee 50 []
+--- 72160080 t3 v hydreigon (i=80, change +1.0)  first: EVOLVE Vespiquen ex@3 -> PLACE Shuckle ex@2
+   own: ZSome(Grass)/Some(Grass) D0 H5 P0 | Shuckle ex 110hp E[] | Combee 50hp E[]
+   opp: ZNone/Some(Darkness) D0 H4 P0 | Bombirdier 70hp E[D] | 
+   kp3: EVOLVE Vespiquen ex@3 ; PLACE Shuckle ex@2 ; ATTACH@0 ; ATTACK Triple Slap ; END   | zone A:Shuckle ex atk Triple Slap ret []
+   kpf: PLACE Shuckle ex@2 ; EVOLVE Vespiquen ex@3 ; ATTACH@0 ; ATTACK Triple Slap ; END   | zone A:Shuckle ex atk Triple Slap ret []
+   end kp3: ZNone/Some(Grass) H3 P0 | Shuckle ex 110 [G] | Shuckle ex 120 [], Vespiquen ex 140 []
+   end kpf: ZNone/Some(Grass) H3 P0 | Shuckle ex 110 [G] | Shuckle ex 120 [], Vespiquen ex 140 []
+--- 72160084 t3 v hydreigon (i=84, change +1.0)  first: PROMOTE@2 -> PROMOTE@3
+   own: ZNone/Some(Grass) D1 H3 P0 | - | Combee 50hp E[], Shuckle ex 120hp E[], Combee 50hp E[]
+   opp: ZNone/Some(Darkness) D3 H1 P2 | Hydreigon 140hp E[] | Bombirdier 70hp E[], Mega Absol ex 170hp E[]
+   kp3: PROMOTE@2   | zone None atk None ret []
+   kpf: PROMOTE@3   | zone None atk None ret []
+   end kp3: ZNone/Some(Grass) H3 P0 | Shuckle ex 120 [] | Combee 50 [], Combee 50 []
+   end kpf: ZNone/Some(Grass) H3 P0 | Combee 50 [] | Combee 50 [], Shuckle ex 120 []
+--- 72160090 t1 v hydreigon (i=90, change +1.0)  first: PLAY P-A 007 Professor's Research -> PLAY P-A 002 X Speed
+   own: ZNone/Some(Grass) D0 H4 P0 | Shuckle ex 150hp E[] | 
+   opp: ZNone/Some(Darkness) D0 H3 P0 | Deino 60hp E[] | Mega Absol ex 170hp E[]
+   kp3: PLAY P-A 007 Professor's Research ; PLAY Fragrant Forest ; PLACE Teal Mask Ogerpon ex@3 ; OTHER UseStadium ; PLACE Shuckle ex@2 ; END   | zone None atk None ret []
+   kpf: PLAY P-A 002 X Speed ; PLAY P-A 007 Professor's Research ; PLACE Teal Mask Ogerpon ex@3 ; PLAY Fragrant Forest ; RETREAT->3 ; OTHER UseStadium ; PLACE Shuckle ex@2 ; END   | zone None atk None ret [['Shuckle ex', 'Teal Mask Ogerpon ex']]
+   end kp3: ZNone/Some(Grass) H3 P0 | Shuckle ex 150 [] | Shuckle ex 120 [], Teal Mask Ogerpon ex 130 []
+   end kpf: ZNone/Some(Grass) H2 P0 | Teal Mask Ogerpon ex 130 [] | Shuckle ex 120 [], Shuckle ex 150 []
+--- 72200001 t5 v lucario (i=1, change +1.0)  first: PLAY Cyrus -> PLAY P-A 002 X Speed
+   own: ZSome(Grass)/Some(Grass) D0 H5 P0 | Shuckle ex 150hp E[G] | Combee 20hp E[], Shuckle ex 120hp E[]
+   opp: ZNone/Some(Fighting) D1 H1 P0 | Hitmonlee 80hp E[F] | Lucario 90hp E[], Mega Lucario ex 190hp E[]
+   kp3: PLAY Cyrus ; OTHER Activate ; EVOLVE Vespiquen ex@2 ; OTHER UseStadium ; PLACE Teal Mask Ogerpon ex@1 ; ATTACH@1 ; PLAY Field Blower ; OTHER DiscardToolFromPokemon ; ATTACK Triple Slap ; END   | zone B:Teal Mask Ogerpon ex atk Triple Slap ret []
+   kpf: PLAY P-A 002 X Speed ; RETREAT->2 ; PLAY Cyrus ; OTHER Activate ; EVOLVE Vespiquen ex@0 ; ATTACH@0 ; OTHER UseStadium ; PLAY Field Blower ; OTHER DiscardToolFromPokemon ; PLACE Teal Mask Ogerpon ex@1 ; END   | zone A:Vespiquen ex atk None ret [['Shuckle ex', 'Combee']]
+   end kp3: ZNone/Some(Grass) H2 P0 | Shuckle ex 150 [G] | Teal Mask Ogerpon ex 130 [G], Vespiquen ex 110 [], Shuckle ex 120 []
+   end kpf: ZNone/Some(Grass) H1 P0 | Vespiquen ex 110 [G] | Teal Mask Ogerpon ex 130 [], Shuckle ex 150 [G], Shuckle ex 120 []
+--- 72200012 t1 v lucario (i=12, change +1.0)  first: RETREAT->3 -> PLACE Shuckle ex@1
+   own: ZNone/Some(Grass) D0 H3 P0 | Shuckle ex 120hp E[] | Combee 50hp E[], Teal Mask Ogerpon ex 130hp E[]
+   opp: ZNone/Some(Fighting) D0 H4 P0 | Bonsly 30hp E[] | 
+   kp3: RETREAT->3 ; PLACE Shuckle ex@1 ; END   | zone None atk None ret [['Shuckle ex', 'Teal Mask Ogerpon ex']]
+   kpf: PLACE Shuckle ex@1 ; RETREAT->1 ; END   | zone None atk None ret [['Shuckle ex', 'Shuckle ex']]
+   end kp3: ZNone/Some(Grass) H2 P0 | Teal Mask Ogerpon ex 130 [] | Shuckle ex 120 [], Combee 50 [], Shuckle ex 120 []
+   end kpf: ZNone/Some(Grass) H2 P0 | Shuckle ex 120 [] | Shuckle ex 120 [], Combee 50 [], Teal Mask Ogerpon ex 130 []
+--- 72200038 t2 v lucario (i=38, change +1.0)  first: PLAY Sabrina -> PLAY Leaf Cape
+   own: ZNone/Some(Grass) D0 H5 P0 | Combee 40hp E[G] | 
+   opp: ZNone/Some(Fighting) D0 H5 P0 | Bonsly 30hp E[] | Hitmonlee 80hp E[]
+   kp3: PLAY Sabrina ; PLAY Leaf Cape ; TOOL Leaf Cape@0 ; PLACE Teal Mask Ogerpon ex@3 ; END   | zone A:Combee atk None ret []
+   kpf: PLAY Leaf Cape ; TOOL Leaf Cape@0 ; PLACE Teal Mask Ogerpon ex@3 ; END   | zone A:Combee atk None ret []
+   end kp3: ZNone/Some(Grass) H2 P0 | Combee 70 [G] | Teal Mask Ogerpon ex 130 []
+   end kpf: ZNone/Some(Grass) H3 P0 | Combee 70 [G] | Teal Mask Ogerpon ex 130 []
+--- 72200049 t2 v lucario (i=49, change +1.0)  first: PLAY Fragrant Forest -> PLAY P-A 002 X Speed
+   own: ZNone/Some(Grass) D0 H4 P0 | Teal Mask Ogerpon ex 160hp E[] | Combee 50hp E[G]
+   opp: ZNone/Some(Fighting) D0 H5 P0 | Riolu 60hp E[] | 
+   kp3: PLAY Fragrant Forest ; PLACE Shuckle ex@2 ; OTHER UseStadium ; PLACE Shuckle ex@1 ; END   | zone B:Combee atk None ret []
+   kpf: PLAY P-A 002 X Speed ; PLACE Shuckle ex@2 ; RETREAT->2 ; PLAY Fragrant Forest ; OTHER UseStadium ; PLACE Shuckle ex@1 ; END   | zone B:Combee atk None ret [['Teal Mask Ogerpon ex', 'Shuckle ex']]
+   end kp3: ZNone/Some(Grass) H2 P0 | Teal Mask Ogerpon ex 160 [] | Shuckle ex 120 [], Shuckle ex 120 [], Combee 50 [G]
+   end kpf: ZNone/Some(Grass) H1 P0 | Shuckle ex 120 [] | Shuckle ex 120 [], Teal Mask Ogerpon ex 160 [], Combee 50 [G]
+--- 72200050 t1 v lucario (i=50, change +1.0)  first: END -> PLAY P-A 002 X Speed
+   own: ZNone/Some(Grass) D0 H4 P0 | Teal Mask Ogerpon ex 160hp E[] | Shuckle ex 120hp E[], Combee 50hp E[]
+   opp: ZNone/Some(Fighting) D0 H4 P0 | Riolu 60hp E[] | 
+   kp3: END   | zone None atk None ret []
+   kpf: PLAY P-A 002 X Speed ; RETREAT->2 ; END   | zone None atk None ret [['Teal Mask Ogerpon ex', 'Shuckle ex']]
+   end kp3: ZNone/Some(Grass) H4 P0 | Teal Mask Ogerpon ex 160 [] | Shuckle ex 120 [], Combee 50 []
+   end kpf: ZNone/Some(Grass) H3 P0 | Shuckle ex 120 [] | Teal Mask Ogerpon ex 160 [], Combee 50 []
+--- 72200068 t2 v lucario (i=68, change +1.0)  first: PLAY P-A 002 X Speed -> PLAY Sabrina
+   own: ZSome(Grass)/Some(Grass) D0 H3 P0 | Teal Mask Ogerpon ex 130hp E[] | Shuckle ex 120hp E[], Combee 50hp E[]
+   opp: ZNone/Some(Fighting) D0 H0 P0 | Riolu 60hp E[] | Bonsly 30hp E[]
+   kp3: PLAY P-A 002 X Speed ; RETREAT->2 ; ATTACH@0 ; PLAY Sabrina ; ATTACK Triple Slap ; END   | zone A:Shuckle ex atk Triple Slap ret [['Teal Mask Ogerpon ex', 'Shuckle ex']]
+   kpf: PLAY Sabrina ; ATTACH@0 ; END   | zone A:Teal Mask Ogerpon ex atk None ret []
+   end kp3: ZNone/Some(Grass) H1 P0 | Shuckle ex 120 [G] | Teal Mask Ogerpon ex 130 [], Combee 50 []
+   end kpf: ZNone/Some(Grass) H2 P0 | Teal Mask Ogerpon ex 130 [G] | Shuckle ex 120 [], Combee 50 []
+--- 72200076 t2 v lucario (i=76, change +1.0)  first: PLACE Combee@3 -> PLAY Leaf Cape
+   own: ZSome(Grass)/Some(Grass) D0 H5 P0 | Teal Mask Ogerpon ex 130hp E[] | 
+   opp: ZNone/Some(Fighting) D0 H3 P0 | Riolu 60hp E[] | Bonsly 30hp E[]
+   kp3: PLACE Combee@3 ; PLAY Leaf Cape ; TOOL Leaf Cape@0 ; ATTACH@0 ; END   | zone A:Teal Mask Ogerpon ex atk None ret []
+   kpf: PLAY Leaf Cape ; TOOL Leaf Cape@0 ; PLACE Combee@3 ; PLAY Sabrina ; ATTACH@0 ; END   | zone A:Teal Mask Ogerpon ex atk None ret []
+   end kp3: ZNone/Some(Grass) H3 P0 | Teal Mask Ogerpon ex 160 [G] | Combee 50 []
+   end kpf: ZNone/Some(Grass) H2 P0 | Teal Mask Ogerpon ex 160 [G] | Combee 50 []
+--- 72200083 t2 v lucario (i=83, change +1.0)  first: PLAY Copycat -> PLAY Fragrant Forest
+   own: ZSome(Grass)/Some(Grass) D0 H5 P0 | Teal Mask Ogerpon ex 130hp E[] | 
+   opp: ZNone/Some(Fighting) D0 H4 P0 | Riolu 60hp E[] | Hitmonlee 80hp E[]
+   kp3: PLAY Copycat ; PLACE Shuckle ex@3 ; PLAY Leaf Cape ; TOOL Leaf Cape@0 ; PLAY Fragrant Forest ; ATTACH@0 ; OTHER UseStadium ; PLACE Shuckle ex@2 ; END   | zone A:Teal Mask Ogerpon ex atk None ret []
+   kpf: PLAY Fragrant Forest ; PLAY Copycat ; PLACE Combee@3 ; PLAY Leaf Cape ; TOOL Leaf Cape@0 ; PLACE Shuckle ex@2 ; PLAY Leaf Cape ; TOOL Leaf Cape@2 ; ATTACH@0 ; OTHER UseStadium ; PLACE Shuckle ex@1 ; END   | zone A:Teal Mask Ogerpon ex atk None ret []
+   end kp3: ZNone/Some(Grass) H1 P0 | Teal Mask Ogerpon ex 160 [G] | Shuckle ex 120 [], Shuckle ex 120 []
+   end kpf: ZNone/Some(Grass) H0 P0 | Teal Mask Ogerpon ex 160 [G] | Shuckle ex 120 [], Shuckle ex 150 [], Combee 50 []
+--- 72200106 t2 v lucario (i=106, change +1.0)  first: PLAY Copycat -> PLAY Fragrant Forest
+   own: ZSome(Grass)/Some(Grass) D0 H5 P0 | Shuckle ex 120hp E[] | 
+   opp: ZNone/Some(Fighting) D0 H3 P0 | Hitmonlee 80hp E[] | Riolu 60hp E[], Riolu 60hp E[]
+   kp3: PLAY Copycat ; PLAY Leaf Cape ; TOOL Leaf Cape@0 ; ATTACH@0 ; PLAY Fragrant Forest ; OTHER UseStadium ; PLACE Combee@3 ; ATTACK Triple Slap ; END   | zone A:Shuckle ex atk Triple Slap ret []
+   kpf: PLAY Fragrant Forest ; OTHER UseStadium ; PLAY P-A 007 Professor's Research ; PLACE Shuckle ex@3 ; PLAY Leaf Cape ; TOOL Leaf Cape@0 ; ATTACH@0 ; ATTACK Triple Slap ; END   | zone A:Shuckle ex atk Triple Slap ret []
+   end kp3: ZNone/Some(Grass) H1 P0 | Shuckle ex 150 [G] | Combee 50 []
+   end kpf: ZNone/Some(Grass) H4 P0 | Shuckle ex 150 [G] | Shuckle ex 120 []
+--- 72200137 t2 v lucario (i=137, change +1.0)  first: PLAY P-A 002 X Speed -> ATTACH@0
+   own: ZSome(Grass)/Some(Grass) D0 H4 P0 | Combee 50hp E[] | Shuckle ex 120hp E[]
+   opp: ZNone/Some(Fighting) D0 H5 P0 | Hitmonlee 80hp E[] | Riolu 60hp E[]
+   kp3: PLAY P-A 002 X Speed ; RETREAT->3 ; ATTACH@0 ; PLAY Fragrant Forest ; OTHER UseStadium ; PLACE Combee@2 ; ATTACK Triple Slap ; END   | zone A:Shuckle ex atk Triple Slap ret [['Combee', 'Shuckle ex']]
+   kpf: ATTACH@0 ; PLAY Fragrant Forest ; OTHER UseStadium ; PLACE Combee@2 ; ATTACK Reckless Charge ; END   | zone A:Combee atk Reckless Charge ret []
+   end kp3: ZNone/Some(Grass) H2 P0 | Shuckle ex 120 [G] | Combee 50 [], Combee 50 []
+   end kpf: ZNone/Some(Grass) H3 P0 | Combee 40 [G] | Combee 50 [], Shuckle ex 120 []
+--- 72200148 t7 v lucario (i=148, change +1.0)  first: ATTACH@0 -> PLAY P-A 002 X Speed
+   own: ZSome(Grass)/Some(Grass) D1 H5 P1 | Shuckle ex 70hp E[] | Teal Mask Ogerpon ex 100hp E[], Combee 40hp E[G], Vespiquen ex 110hp E[]
+   opp: ZSome(Fighting)/Some(Fighting) D1 H4 P0 | Hitmonlee 80hp E[F] | 
+   kp3: ATTACH@0 ; PLAY Leaf Cape ; TOOL Leaf Cape@0 ; ATTACK Triple Slap ; END   | zone A:Shuckle ex atk Triple Slap ret []
+   kpf: PLAY P-A 002 X Speed ; RETREAT->3 ; PLAY Leaf Cape ; TOOL Leaf Cape@0 ; ATTACH@0 ; OTHER UseStadium ; END   | zone A:Vespiquen ex atk None ret [['Shuckle ex', 'Vespiquen ex']]
+   end kp3: ZNone/Some(Grass) H4 P1 | Shuckle ex 100 [G] | Teal Mask Ogerpon ex 100 [], Combee 40 [G], Vespiquen ex 110 []
+   end kpf: ZNone/Some(Grass) H3 P1 | Vespiquen ex 140 [G] | Teal Mask Ogerpon ex 100 [], Combee 40 [G], Shuckle ex 70 []
+--- 72200156 t1 v lucario (i=156, change +1.0)  first: PLAY Fragrant Forest -> PLAY Copycat
+   own: ZNone/Some(Grass) D0 H4 P0 | Teal Mask Ogerpon ex 130hp E[] | Shuckle ex 120hp E[]
+   opp: ZNone/Some(Fighting) D0 H4 P0 | Riolu 60hp E[] | 
+   kp3: PLAY Fragrant Forest ; PLAY Copycat ; PLACE Combee@2 ; OTHER UseStadium ; PLACE Shuckle ex@1 ; END   | zone None atk None ret []
+   kpf: PLAY Copycat ; PLAY P-A 002 X Speed ; RETREAT->3 ; PLACE Combee@2 ; PLACE Combee@1 ; END   | zone None atk None ret [['Teal Mask Ogerpon ex', 'Shuckle ex']]
+   end kp3: ZNone/Some(Grass) H3 P0 | Teal Mask Ogerpon ex 130 [] | Shuckle ex 120 [], Combee 50 [], Shuckle ex 120 []
+   end kpf: ZNone/Some(Grass) H1 P0 | Shuckle ex 120 [] | Combee 50 [], Combee 50 [], Teal Mask Ogerpon ex 130 []
+--- 72200160 t1 v lucario (i=160, change +1.0)  first: PLAY Sabrina -> PLAY Leaf Cape
+   own: ZNone/Some(Grass) D0 H5 P0 | Combee 50hp E[] | 
+   opp: ZNone/Some(Fighting) D0 H3 P0 | Bonsly 30hp E[] | Riolu 60hp E[]
+   kp3: PLAY Sabrina ; PLAY Leaf Cape ; TOOL Leaf Cape@0 ; PLACE Shuckle ex@3 ; END   | zone None atk None ret []
+   kpf: PLAY Leaf Cape ; TOOL Leaf Cape@0 ; PLACE Shuckle ex@3 ; END   | zone None atk None ret []
+   end kp3: ZNone/Some(Grass) H2 P0 | Combee 80 [] | Shuckle ex 120 []
+   end kpf: ZNone/Some(Grass) H3 P0 | Combee 80 [] | Shuckle ex 120 []
+--- 72200163 t5 v lucario (i=163, change +1.0)  first: PLAY Sabrina -> ATTACH@0
+   own: ZSome(Grass)/Some(Grass) D0 H5 P0 | Vespiquen ex 170hp E[G] | Shuckle ex 110hp E[]
+   opp: ZNone/Some(Fighting) D1 H2 P0 | Hitmonlee 80hp E[F] | Mega Lucario ex 190hp E[], Lucario 100hp E[]
+   kp3: PLAY Sabrina ; ATTACH@0 ; ATTACK Chase Order ; OTHER DiscardOwnBenchedThenDamage ; OTHER ApplyDamage ; OTHER ResolveAttackRetaliation ; END   | zone A:Vespiquen ex atk Chase Order ret []
+   kpf: ATTACH@0 ; ATTACK Chase Order ; OTHER DiscardOwnBenchedThenDamage ; OTHER ApplyDamage ; OTHER ResolveAttackRetaliation ; END   | zone A:Vespiquen ex atk Chase Order ret []
+   end kp3: ZNone/Some(Grass) H4 P1 | Vespiquen ex 170 [GG] | 
+   end kpf: ZNone/Some(Grass) H5 P1 | Vespiquen ex 170 [GG] | 
+--- 72200170 t1 v lucario (i=170, change +1.0)  first: PLAY P-A 002 X Speed -> END
+   own: ZNone/Some(Grass) D0 H2 P0 | Shuckle ex 150hp E[] | Teal Mask Ogerpon ex 160hp E[]
+   opp: ZNone/Some(Fighting) D0 H4 P0 | Riolu 60hp E[] | 
+   kp3: PLAY P-A 002 X Speed ; RETREAT->2 ; END   | zone None atk None ret [['Shuckle ex', 'Teal Mask Ogerpon ex']]
+   kpf: END   | zone None atk None ret []
+   end kp3: ZNone/Some(Grass) H1 P0 | Teal Mask Ogerpon ex 160 [] | Shuckle ex 150 []
+   end kpf: ZNone/Some(Grass) H2 P0 | Shuckle ex 150 [] | Teal Mask Ogerpon ex 160 []
+--- 72200211 t1 v lucario (i=211, change +1.0)  first: END -> PLAY P-A 002 X Speed
+   own: ZNone/Some(Grass) D0 H4 P0 | Teal Mask Ogerpon ex 130hp E[] | Combee 50hp E[]
+   opp: ZNone/Some(Fighting) D0 H4 P0 | Bonsly 30hp E[] | 
+   kp3: END   | zone None atk None ret []
+   kpf: PLAY P-A 002 X Speed ; RETREAT->3 ; END   | zone None atk None ret [['Teal Mask Ogerpon ex', 'Combee']]
+   end kp3: ZNone/Some(Grass) H4 P0 | Teal Mask Ogerpon ex 130 [] | Combee 50 []
+   end kpf: ZNone/Some(Grass) H3 P0 | Combee 50 [] | Teal Mask Ogerpon ex 130 []
+--- 72200223 t2 v lucario (i=223, change +1.0)  first: PLAY Leaf Cape -> PLAY Fragrant Forest
+   own: ZSome(Grass)/Some(Grass) D0 H3 P0 | Teal Mask Ogerpon ex 100hp E[] | Combee 50hp E[], Combee 50hp E[]
+   opp: ZNone/Some(Fighting) D0 H3 P0 | Bonsly 30hp E[] | Riolu 60hp E[]
+   kp3: PLAY Leaf Cape ; TOOL Leaf Cape@2 ; PLAY P-A 007 Professor's Research ; PLAY P-A 002 X Speed ; RETREAT->2 ; ATTACH@0 ; PLAY Fragrant Forest ; OTHER UseStadium ; ATTACK Reckless Charge ; END   | zone A:Combee atk Reckless Charge ret [['Teal Mask Ogerpon ex', 'Combee']]
+   kpf: PLAY Fragrant Forest ; ATTACH@0 ; PLAY P-A 007 Professor's Research ; OTHER UseStadium ; PLAY Leaf Cape ; TOOL Leaf Cape@0 ; PLACE Shuckle ex@1 ; END   | zone A:Teal Mask Ogerpon ex atk None ret []
+   end kp3: ZNone/Some(Grass) H2 P1 | Combee 70 [G] | Teal Mask Ogerpon ex 100 [], Combee 50 []
+   end kpf: ZNone/Some(Grass) H2 P0 | Teal Mask Ogerpon ex 130 [G] | Shuckle ex 120 [], Combee 50 [], Combee 50 []
+--- 72200233 t2 v lucario (i=233, change +1.0)  first: PLAY Leaf Cape -> PLAY Fragrant Forest
+   own: ZSome(Grass)/Some(Grass) D0 H5 P0 | Shuckle ex 120hp E[] | 
+   opp: ZNone/Some(Fighting) D0 H4 P0 | Hitmonlee 80hp E[] | 
+   kp3: PLAY Leaf Cape ; TOOL Leaf Cape@0 ; ATTACH@0 ; PLAY Fragrant Forest ; OTHER UseStadium ; PLACE Combee@3 ; ATTACK Triple Slap ; END   | zone A:Shuckle ex atk Triple Slap ret []
+   kpf: PLAY Fragrant Forest ; OTHER UseStadium ; PLACE Combee@3 ; PLAY Leaf Cape ; TOOL Leaf Cape@0 ; ATTACH@0 ; ATTACK Triple Slap ; END   | zone A:Shuckle ex atk Triple Slap ret []
+   end kp3: ZNone/Some(Grass) H3 P0 | Shuckle ex 150 [G] | Combee 50 []
+   end kpf: ZNone/Some(Grass) H3 P0 | Shuckle ex 150 [G] | Combee 50 []
+--- 72200266 t7 v lucario (i=266, change +1.0)  first: ATTACH@3 -> PLAY P-A 002 X Speed
+   own: ZSome(Grass)/Some(Grass) D1 H3 P0 | Shuckle ex 80hp E[G] | Teal Mask Ogerpon ex 130hp E[], Shuckle ex 30hp E[], Vespiquen ex 140hp E[]
+   opp: ZNone/Some(Fighting) D0 H0 P0 | Lucario 80hp E[FF] | Riolu 40hp E[F]
+   kp3: ATTACH@3 ; ATTACK Triple Slap ; END   | zone B:Vespiquen ex atk Triple Slap ret []
+   kpf: PLAY P-A 002 X Speed ; RETREAT->3 ; ATTACH@0 ; END   | zone A:Vespiquen ex atk None ret [['Shuckle ex', 'Vespiquen ex']]
+   end kp3: ZNone/Some(Grass) H3 P0 | Shuckle ex 80 [G] | Teal Mask Ogerpon ex 130 [], Shuckle ex 30 [], Vespiquen ex 140 [G]
+   end kpf: ZNone/Some(Grass) H2 P0 | Vespiquen ex 140 [G] | Teal Mask Ogerpon ex 130 [], Shuckle ex 30 [], Shuckle ex 80 [G]
+--- 72200287 t2 v lucario (i=287, change +1.0)  first: PLAY P-A 007 Professor's Research -> PLAY Leaf Cape
+   own: ZSome(Grass)/Some(Grass) D0 H5 P0 | Combee 40hp E[] | 
+   opp: ZNone/Some(Fighting) D0 H4 P0 | Bonsly 30hp E[] | 
+   kp3: PLAY P-A 007 Professor's Research ; PLACE Combee@3 ; PLAY Leaf Cape ; TOOL Leaf Cape@3 ; PLACE Shuckle ex@2 ; ATTACH@0 ; END   | zone A:Combee atk None ret []
+   kpf: PLAY Leaf Cape ; TOOL Leaf Cape@0 ; PLAY P-A 007 Professor's Research ; PLACE Combee@3 ; PLAY P-A 002 X Speed ; RETREAT->3 ; ATTACH@0 ; ATTACK Reckless Charge   | zone A:Combee atk Reckless Charge ret [['Combee', 'Combee']]
+   end kp3: ZNone/Some(Grass) H3 P0 | Combee 40 [G] | Shuckle ex 120 [], Combee 80 []
+   end kpf: ZNone/Some(Grass) H3 P0 | Combee 50 [G] | Combee 70 []
+--- 72230001 t3 v sceptile (i=1, change +1.0)  first: EVOLVE Vespiquen ex@2 -> OTHER UseStadium
+   own: ZSome(Grass)/Some(Grass) D0 H5 P0 | Shuckle ex 110hp E[] | Combee 50hp E[], Shuckle ex 120hp E[]
+   opp: ZNone/Some(Grass) D0 H4 P0 | Metapod 80hp E[G] | Treecko 60hp E[], Caterpie 40hp E[]
+   kp3: EVOLVE Vespiquen ex@2 ; ATTACH@0 ; PLAY Copycat ; PLAY Leaf Cape ; TOOL Leaf Cape@0 ; PLACE Teal Mask Ogerpon ex@1 ; ATTACK Triple Slap ; END   | zone A:Shuckle ex atk Triple Slap ret []
+   kpf: OTHER UseStadium ; PLACE Combee@1 ; EVOLVE Vespiquen ex@2 ; PLAY P-A 002 X Speed ; RETREAT->2 ; PLAY P-A 002 X Speed ; PLAY Copycat ; ATTACH@0 ; END   | zone A:Vespiquen ex atk None ret [['Shuckle ex', 'Vespiquen ex']]
+   end kp3: ZNone/Some(Grass) H2 P0 | Shuckle ex 140 [G] | Teal Mask Ogerpon ex 130 [], Vespiquen ex 140 [], Shuckle ex 120 []
+   end kpf: ZNone/Some(Grass) H4 P0 | Vespiquen ex 140 [G] | Combee 50 [], Shuckle ex 110 [], Shuckle ex 120 []
+--- 72230011 t4 v sceptile (i=11, change +1.0)  first: ATTACH@0 -> ATTACH@2
+   own: ZSome(Grass)/Some(Grass) D0 H4 P0 | Shuckle ex 140hp E[] | Combee 50hp E[], Teal Mask Ogerpon ex 130hp E[G], Combee 50hp E[]
+   opp: ZNone/Some(Grass) D0 H2 P0 | Metapod 80hp E[G] | Caterpie 40hp E[], Treecko 60hp E[]
+   kp3: ATTACH@0 ; ATTACK Triple Slap ; END   | zone A:Shuckle ex atk Triple Slap ret []
+   kpf: ATTACH@2 ; OTHER UseStadium ; END   | zone B:Teal Mask Ogerpon ex atk None ret []
+   end kp3: ZNone/Some(Grass) H4 P0 | Shuckle ex 140 [G] | Combee 50 [], Teal Mask Ogerpon ex 130 [G], Combee 50 []
+   end kpf: ZNone/Some(Grass) H4 P0 | Shuckle ex 140 [] | Combee 50 [], Teal Mask Ogerpon ex 130 [GG], Combee 50 []
+--- 72230025 t3 v sceptile (i=25, change +1.0)  first: EVOLVE Vespiquen ex@3 -> OTHER UseStadium
+   own: ZSome(Grass)/Some(Grass) D0 H5 P0 | Shuckle ex 140hp E[] | Combee 50hp E[]
+   opp: ZNone/Some(Grass) D0 H4 P0 | Metapod 80hp E[G] | Treecko 60hp E[], Caterpie 40hp E[]
+   kp3: EVOLVE Vespiquen ex@3 ; PLAY P-A 007 Professor's Research ; PLACE Teal Mask Ogerpon ex@2 ; ATTACH@0 ; OTHER UseStadium ; PLACE Shuckle ex@1 ; ATTACK Triple Slap ; END   | zone A:Shuckle ex atk Triple Slap ret []
+   kpf: OTHER UseStadium ; PLACE Teal Mask Ogerpon ex@2 ; PLAY P-A 007 Professor's Research ; PLACE Combee@1 ; EVOLVE Vespiquen ex@3 ; ATTACH@3 ; END   | zone B:Vespiquen ex atk None ret []
+   end kp3: ZNone/Some(Grass) H4 P0 | Shuckle ex 140 [G] | Shuckle ex 120 [], Teal Mask Ogerpon ex 130 [], Vespiquen ex 140 []
+   end kpf: ZNone/Some(Grass) H4 P0 | Shuckle ex 140 [] | Combee 50 [], Teal Mask Ogerpon ex 130 [], Vespiquen ex 140 [G]
+--- 72230033 t1 v sceptile (i=33, change +1.0)  first: PLAY P-A 002 X Speed -> PLACE Shuckle ex@1
+   own: ZNone/Some(Grass) D0 H3 P0 | Shuckle ex 150hp E[] | Teal Mask Ogerpon ex 160hp E[], Combee 50hp E[]
+   opp: ZNone/Some(Grass) D0 H4 P0 | Caterpie 40hp E[] | 
+   kp3: PLAY P-A 002 X Speed ; RETREAT->2 ; PLACE Shuckle ex@1 ; END ; OTHER ResolvePokemonCheckup   | zone None atk None ret [['Shuckle ex', 'Teal Mask Ogerpon ex']]
+   kpf: PLACE Shuckle ex@1 ; END ; OTHER ResolvePokemonCheckup   | zone None atk None ret []
+   end kp3: ZNone/Some(Grass) H1 P0 | Teal Mask Ogerpon ex 160 [] | Shuckle ex 120 [], Shuckle ex 150 [], Combee 50 []
+   end kpf: ZNone/Some(Grass) H2 P0 | Shuckle ex 150 [] | Shuckle ex 120 [], Teal Mask Ogerpon ex 160 [], Combee 50 []
+--- 72230041 t4 v sceptile (i=41, change +1.0)  first: OTHER Activate -> OTHER Activate
+   own: ZNone/Some(Grass) D0 H3 P1 | Shuckle ex 150hp E[G] | Shuckle ex 120hp E[], Combee 50hp E[], Vespiquen ex 170hp E[]
+   opp: ZSome(Grass)/Some(Grass) D1 H3 P0 | Butterfree 130hp E[] | Caterpie 40hp E[]
+   kp3: OTHER Activate   | zone None atk None ret []
+   kpf: OTHER Activate   | zone None atk None ret []
+   end kp3: ZNone/Some(Grass) H3 P1 | Vespiquen ex 110 [] | Shuckle ex 120 [], Combee 50 [], Shuckle ex 150 [G]
+   end kpf: ZNone/Some(Grass) H3 P1 | Shuckle ex 80 [] | Shuckle ex 150 [G], Combee 50 [], Vespiquen ex 170 []
+--- 72230043 t4 v sceptile (i=43, change +1.0)  first: EVOLVE Vespiquen ex@0 -> PLAY Field Blower
+   own: ZSome(Grass)/Some(Grass) D0 H3 P0 | Combee 10hp E[G] | Teal Mask Ogerpon ex 130hp E[], Shuckle ex 120hp E[]
+   opp: ZNone/Some(Grass) D0 H4 P0 | Butterfree 160hp E[G] | Caterpie 40hp E[]
+   kp3: EVOLVE Vespiquen ex@0 ; ATTACH@0 ; ATTACK Chase Order ; OTHER DiscardOwnBenchedThenDamage ; OTHER ApplyDamage ; OTHER ResolveAttackRetaliation ; END   | zone A:Vespiquen ex atk Chase Order ret []
+   kpf: PLAY Field Blower ; OTHER DiscardToolFromPokemon ; EVOLVE Vespiquen ex@0 ; ATTACH@0 ; ATTACK Chase Order ; OTHER DiscardOwnBenchedThenDamage ; OTHER ApplyDamage ; OTHER ResolveAttackRetaliation ; END ; OTHER ResolvePokemonCheckup   | zone A:Vespiquen ex atk Chase Order ret []
+   end kp3: ZNone/Some(Grass) H2 P0 | Vespiquen ex 100 [GG] | Teal Mask Ogerpon ex 130 []
+   end kpf: ZNone/Some(Grass) H1 P1 | Vespiquen ex 100 [GG] | Teal Mask Ogerpon ex 130 []
+--- 72230067 t1 v sceptile (i=67, change +1.0)  first: PLAY Fragrant Forest -> PLAY P-A 007 Professor's Research
+   own: ZNone/Some(Grass) D0 H4 P0 | Teal Mask Ogerpon ex 130hp E[] | Shuckle ex 120hp E[]
+   opp: ZNone/Some(Grass) D0 H3 P0 | Treecko 60hp E[] | Caterpie 40hp E[]
+   kp3: PLAY Fragrant Forest ; PLAY P-A 007 Professor's Research ; PLACE Combee@2 ; OTHER UseStadium ; PLACE Combee@1 ; END   | zone None atk None ret []
+   kpf: PLAY P-A 007 Professor's Research ; PLAY Fragrant Forest ; PLACE Combee@2 ; OTHER UseStadium ; PLACE Combee@1 ; END   | zone None atk None ret []
+   end kp3: ZNone/Some(Grass) H3 P0 | Teal Mask Ogerpon ex 130 [] | Combee 50 [], Combee 50 [], Shuckle ex 120 []
+   end kpf: ZNone/Some(Grass) H3 P0 | Teal Mask Ogerpon ex 130 [] | Combee 50 [], Combee 50 [], Shuckle ex 120 []
+--- 72230068 t4 v sceptile (i=68, change +1.0)  first: OTHER Activate -> OTHER Activate
+   own: ZNone/Some(Grass) D0 H3 P0 | Shuckle ex 140hp E[G] | Shuckle ex 120hp E[], Vespiquen ex 140hp E[]
+   opp: ZSome(Grass)/Some(Grass) D0 H3 P0 | Butterfree 90hp E[G] | 
+   kp3: OTHER Activate   | zone None atk None ret []
+   kpf: OTHER Activate   | zone None atk None ret []
+   end kp3: ZNone/Some(Grass) H3 P0 | Vespiquen ex 80 [] | Shuckle ex 120 [], Shuckle ex 140 [G]
+   end kpf: ZNone/Some(Grass) H3 P0 | Shuckle ex 80 [] | Shuckle ex 140 [G], Vespiquen ex 140 []
+--- 72230076 t4 v sceptile (i=76, change +1.0)  first: PLAY P-A 007 Professor's Research -> RETREAT->3
+   own: ZSome(Grass)/Some(Grass) D0 H5 P0 | Shuckle ex 110hp E[G] | Teal Mask Ogerpon ex 130hp E[]
+   opp: ZNone/Some(Grass) D0 H3 P0 | Butterfree 130hp E[G] | Treecko 60hp E[], Metapod 80hp E[]
+   kp3: PLAY P-A 007 Professor's Research ; PLACE Shuckle ex@2 ; ATTACH@3 ; OTHER UseStadium ; PLACE Combee@1 ; ATTACK Triple Slap ; END   | zone B:Teal Mask Ogerpon ex atk Triple Slap ret []
+   kpf: RETREAT->3 ; ATTACH@0 ; OTHER UseStadium ; PLAY P-A 007 Professor's Research ; PLACE Combee@2 ; END   | zone A:Teal Mask Ogerpon ex atk None ret [['Shuckle ex', 'Teal Mask Ogerpon ex']]
+   end kp3: ZNone/Some(Grass) H5 P0 | Shuckle ex 110 [G] | Combee 50 [], Shuckle ex 120 [], Teal Mask Ogerpon ex 130 [G]
+   end kpf: ZNone/Some(Grass) H6 P0 | Teal Mask Ogerpon ex 130 [G] | Combee 50 [], Shuckle ex 110 []
+--- 72230108 t3 v sceptile (i=108, change +1.0)  first: PLAY P-A 007 Professor's Research -> EVOLVE Vespiquen ex@3
+   own: ZSome(Grass)/Some(Grass) D0 H4 P0 | Teal Mask Ogerpon ex 110hp E[] | Shuckle ex 120hp E[], Combee 50hp E[]
+   opp: ZNone/Some(Grass) D0 H6 P0 | Treecko 60hp E[G] | Caterpie 40hp E[]
+   kp3: PLAY P-A 007 Professor's Research ; EVOLVE Vespiquen ex@3 ; PLAY P-A 002 X Speed ; RETREAT->2 ; ATTACH@0 ; OTHER UseStadium ; PLACE Shuckle ex@1 ; ATTACK Triple Slap ; END   | zone A:Shuckle ex atk Triple Slap ret [['Teal Mask Ogerpon ex', 'Shuckle ex']]
+   kpf: EVOLVE Vespiquen ex@3 ; ATTACH@0 ; PLAY P-A 007 Professor's Research ; OTHER UseStadium ; PLACE Shuckle ex@1 ; END   | zone A:Teal Mask Ogerpon ex atk None ret []
+   end kp3: ZNone/Some(Grass) H3 P0 | Shuckle ex 120 [G] | Shuckle ex 120 [], Teal Mask Ogerpon ex 110 [], Vespiquen ex 140 []
+   end kpf: ZNone/Some(Grass) H4 P0 | Teal Mask Ogerpon ex 110 [G] | Shuckle ex 120 [], Shuckle ex 120 [], Vespiquen ex 140 []
+--- 72230109 t1 v sceptile (i=109, change +1.0)  first: PLACE Shuckle ex@2 -> PLAY P-A 002 X Speed
+   own: ZNone/Some(Grass) D0 H3 P0 | Teal Mask Ogerpon ex 160hp E[] | Combee 50hp E[]
+   opp: ZNone/Some(Grass) D0 H4 P0 | Caterpie 40hp E[] | 
+   kp3: PLACE Shuckle ex@2 ; END ; OTHER ResolvePokemonCheckup   | zone None atk None ret []
+   kpf: PLAY P-A 002 X Speed ; PLACE Shuckle ex@2 ; RETREAT->2 ; END ; OTHER ResolvePokemonCheckup   | zone None atk None ret [['Teal Mask Ogerpon ex', 'Shuckle ex']]
+   end kp3: ZNone/Some(Grass) H2 P0 | Teal Mask Ogerpon ex 160 [] | Shuckle ex 120 [], Combee 50 []
+   end kpf: ZNone/Some(Grass) H1 P0 | Shuckle ex 120 [] | Teal Mask Ogerpon ex 160 [], Combee 50 []
+--- 72230123 t1 v sceptile (i=123, change +1.0)  first: PLACE Teal Mask Ogerpon ex@2 -> PLAY Fragrant Forest
+   own: ZNone/Some(Grass) D0 H3 P0 | Shuckle ex 120hp E[] | Combee 50hp E[]
+   opp: ZNone/Some(Grass) D0 H3 P0 | Treecko 60hp E[] | Caterpie 40hp E[]
+   kp3: PLACE Teal Mask Ogerpon ex@2 ; PLAY Fragrant Forest ; RETREAT->2 ; OTHER UseStadium ; PLACE Shuckle ex@1 ; END   | zone None atk None ret [['Shuckle ex', 'Teal Mask Ogerpon ex']]
+   kpf: PLAY Fragrant Forest ; PLACE Teal Mask Ogerpon ex@2 ; OTHER UseStadium ; PLACE Shuckle ex@1 ; RETREAT->1 ; END   | zone None atk None ret [['Shuckle ex', 'Shuckle ex']]
+   end kp3: ZNone/Some(Grass) H1 P0 | Teal Mask Ogerpon ex 130 [] | Shuckle ex 120 [], Shuckle ex 120 [], Combee 50 []
+   end kpf: ZNone/Some(Grass) H1 P0 | Shuckle ex 120 [] | Shuckle ex 120 [], Teal Mask Ogerpon ex 130 [], Combee 50 []
+--- 72230137 t4 v sceptile (i=137, change +1.0)  first: PLAY P-A 002 X Speed -> PLAY Copycat
+   own: ZNone/Some(Grass) D0 H3 P1 | Teal Mask Ogerpon ex 70hp E[G] | Shuckle ex 150hp E[G], Combee 50hp E[], Combee 50hp E[]
+   opp: ZNone/Some(Grass) D0 H4 P0 | Butterfree 130hp E[G] | Treecko 60hp E[]
+   kp3: PLAY P-A 002 X Speed ; RETREAT->1 ; PLAY Copycat ; EVOLVE Vespiquen ex@3 ; ATTACK Triple Slap ; END   | zone A:Teal Mask Ogerpon ex atk Triple Slap ret [['Teal Mask Ogerpon ex', 'Shuckle ex']]
+   kpf: PLAY Copycat ; RETREAT->1 ; EVOLVE Vespiquen ex@3 ; ATTACK Triple Slap ; END   | zone A:Teal Mask Ogerpon ex atk Triple Slap ret [['Teal Mask Ogerpon ex', 'Shuckle ex']]
+   end kp3: ZNone/Some(Grass) H3 P1 | Shuckle ex 150 [G] | Teal Mask Ogerpon ex 70 [G], Combee 50 [], Vespiquen ex 140 []
+   end kpf: ZNone/Some(Grass) H3 P1 | Shuckle ex 150 [G] | Teal Mask Ogerpon ex 70 [], Combee 50 [], Vespiquen ex 140 []
+--- 72230139 t2 v sceptile (i=139, change +1.0)  first: OTHER Activate -> OTHER Activate
+   own: ZNone/Some(Grass) D0 H2 P0 | Combee 50hp E[] | Teal Mask Ogerpon ex 130hp E[], Combee 80hp E[]
+   opp: ZNone/Some(Grass) D0 H3 P0 | Metapod 80hp E[G] | Treecko 60hp E[], Caterpie 40hp E[]
+   kp3: OTHER Activate   | zone None atk None ret []
+   kpf: OTHER Activate   | zone None atk None ret []
+   end kp3: ZNone/Some(Grass) H2 P0 | Combee 50 [] | Teal Mask Ogerpon ex 130 [], Combee 50 []
+   end kpf: ZNone/Some(Grass) H2 P0 | Teal Mask Ogerpon ex 100 [] | Combee 50 [], Combee 80 []
+--- 72230140 t2 v sceptile (i=140, change +1.0)  first: PLAY Leaf Cape -> PLAY Fragrant Forest
+   own: ZSome(Grass)/Some(Grass) D0 H4 P0 | Teal Mask Ogerpon ex 130hp E[] | Combee 50hp E[]
+   opp: ZNone/Some(Grass) D0 H5 P0 | Treecko 60hp E[] | Caterpie 40hp E[]
+   kp3: PLAY Leaf Cape ; TOOL Leaf Cape@0 ; PLAY Leaf Cape ; TOOL Leaf Cape@3 ; PLAY P-A 007 Professor's Research ; PLAY Fragrant Forest ; ATTACH@0 ; OTHER UseStadium ; PLACE Shuckle ex@2 ; END   | zone A:Teal Mask Ogerpon ex atk None ret []
+   kpf: PLAY Fragrant Forest ; ATTACH@0 ; OTHER UseStadium ; PLACE Shuckle ex@2 ; PLAY P-A 007 Professor's Research ; PLAY Leaf Cape ; TOOL Leaf Cape@2 ; PLAY Leaf Cape ; TOOL Leaf Cape@0 ; END   | zone A:Teal Mask Ogerpon ex atk None ret []
+   end kp3: ZNone/Some(Grass) H2 P0 | Teal Mask Ogerpon ex 160 [G] | Shuckle ex 120 [], Combee 80 []
+   end kpf: ZNone/Some(Grass) H2 P0 | Teal Mask Ogerpon ex 160 [G] | Shuckle ex 150 [], Combee 50 []
+--- 72230147 t3 v sceptile (i=147, change +1.0)  first: PLAY P-A 007 Professor's Research -> PLAY P-A 002 X Speed
+   own: ZSome(Grass)/Some(Grass) D0 H3 P0 | Shuckle ex 120hp E[] | Vespiquen ex 140hp E[], Shuckle ex 120hp E[]
+   opp: ZNone/Some(Grass) D0 H4 P0 | Treecko 90hp E[G] | Caterpie 40hp E[]
+   kp3: PLAY P-A 007 Professor's Research ; ATTACH@0 ; OTHER UseStadium ; PLACE Combee@1 ; ATTACK Triple Slap ; END   | zone A:Shuckle ex atk Triple Slap ret []
+   kpf: PLAY P-A 002 X Speed ; RETREAT->2 ; PLAY P-A 007 Professor's Research ; ATTACH@0 ; OTHER UseStadium ; PLACE Combee@1 ; END   | zone A:Vespiquen ex atk None ret [['Shuckle ex', 'Vespiquen ex']]
+   end kp3: ZNone/Some(Grass) H4 P0 | Shuckle ex 120 [G] | Combee 50 [], Vespiquen ex 140 [], Shuckle ex 120 []
+   end kpf: ZNone/Some(Grass) H3 P0 | Vespiquen ex 140 [G] | Combee 50 [], Shuckle ex 120 [], Shuckle ex 120 []
+--- 72230153 t4 v sceptile (i=153, change +1.0)  first: EVOLVE Vespiquen ex@3 -> RETREAT->3
+   own: ZSome(Grass)/Some(Grass) D0 H5 P1 | Shuckle ex 80hp E[G] | Shuckle ex 120hp E[], Combee 50hp E[]
+   opp: ZNone/Some(Grass) D0 H3 P0 | Butterfree 130hp E[G] | Grovyle 80hp E[]
+   kp3: EVOLVE Vespiquen ex@3 ; PLAY P-A 007 Professor's Research ; PLACE Teal Mask Ogerpon ex@1 ; ATTACH@3 ; PLAY Leaf Cape ; TOOL Leaf Cape@0 ; OTHER UseStadium ; ATTACK Triple Slap ; END   | zone B:Vespiquen ex atk Triple Slap ret []
+   kpf: RETREAT->3 ; EVOLVE Vespiquen ex@0 ; ATTACH@0 ; OTHER UseStadium ; PLAY Leaf Cape ; TOOL Leaf Cape@0 ; PLAY P-A 007 Professor's Research ; PLACE Teal Mask Ogerpon ex@1 ; END   | zone A:Vespiquen ex atk None ret [['Shuckle ex', 'Combee']]
+   end kp3: ZNone/Some(Grass) H4 P1 | Shuckle ex 110 [G] | Teal Mask Ogerpon ex 130 [], Shuckle ex 120 [], Vespiquen ex 140 [G]
+   end kpf: ZNone/Some(Grass) H4 P1 | Vespiquen ex 170 [G] | Teal Mask Ogerpon ex 130 [], Shuckle ex 120 [], Shuckle ex 80 []
+--- 72230157 t5 v sceptile (i=157, change +1.0)  first: PLAY Sabrina -> ATTACH@0
+   own: ZSome(Grass)/Some(Grass) D0 H4 P0 | Vespiquen ex 110hp E[G] | Shuckle ex 120hp E[], Vespiquen ex 110hp E[], Teal Mask Ogerpon ex 130hp E[]
+   opp: ZNone/Some(Grass) D0 H4 P0 | Butterfree 160hp E[G] | Caterpie 40hp E[], Grovyle 80hp E[G]
+   kp3: PLAY Sabrina ; ATTACH@0 ; ATTACK Chase Order ; OTHER DiscardOwnBenchedThenDamage ; OTHER ApplyDamage ; OTHER ResolveAttackRetaliation ; END   | zone A:Vespiquen ex atk Chase Order ret []
+   kpf: ATTACH@0 ; ATTACK Chase Order ; OTHER DiscardOwnBenchedThenDamage ; OTHER ApplyDamage ; OTHER ResolveAttackRetaliation ; END   | zone A:Vespiquen ex atk Chase Order ret []
+   end kp3: ZNone/Some(Grass) H3 P1 | Vespiquen ex 110 [GG] | Vespiquen ex 110 [], Teal Mask Ogerpon ex 130 []
+   end kpf: ZNone/Some(Grass) H4 P0 | Vespiquen ex 110 [GG] | Vespiquen ex 110 [], Teal Mask Ogerpon ex 130 []
+--- 72230191 t5 v sceptile (i=191, change +1.0)  first: PLAY Sabrina -> ATTACH@0
+   own: ZSome(Grass)/Some(Grass) D0 H6 P0 | Vespiquen ex 120hp E[G] | Shuckle ex 120hp E[], Teal Mask Ogerpon ex 130hp E[]
+   opp: ZNone/Some(Grass) D0 H4 P1 | Grovyle 80hp E[GG] | Caterpie 40hp E[], Metapod 80hp E[]
+   kp3: PLAY Sabrina ; ATTACH@0 ; ATTACK Chase Order ; OTHER DiscardOwnBenchedThenDamage ; OTHER ApplyDamage ; OTHER ResolveAttackRetaliation ; END   | zone A:Vespiquen ex atk Chase Order ret []
+   kpf: ATTACH@0 ; ATTACK Chase Order ; OTHER DiscardOwnBenchedThenDamage ; OTHER ApplyDamage ; OTHER ResolveAttackRetaliation ; END   | zone A:Vespiquen ex atk Chase Order ret []
+   end kp3: ZNone/Some(Grass) H5 P1 | Vespiquen ex 120 [GG] | Teal Mask Ogerpon ex 130 []
+   end kpf: ZNone/Some(Grass) H6 P1 | Vespiquen ex 120 [GG] | Teal Mask Ogerpon ex 130 []
+--- 72230193 t2 v sceptile (i=193, change +1.0)  first: PLAY P-A 002 X Speed -> OTHER UseStadium
+   own: ZSome(Grass)/Some(Grass) D0 H4 P0 | Combee 50hp E[] | Shuckle ex 120hp E[]
+   opp: ZNone/Some(Grass) D0 H2 P0 | Treecko 60hp E[] | Caterpie 40hp E[], Caterpie 40hp E[]
+   kp3: PLAY P-A 002 X Speed ; RETREAT->3 ; PLAY P-A 007 Professor's Research ; PLACE Combee@2 ; ATTACH@0 ; OTHER UseStadium ; PLACE Teal Mask Ogerpon ex@1 ; ATTACK Triple Slap ; END   | zone A:Shuckle ex atk Triple Slap ret [['Combee', 'Shuckle ex']]
+   kpf: OTHER UseStadium ; PLAY P-A 002 X Speed ; RETREAT->3 ; PLACE Teal Mask Ogerpon ex@2 ; PLAY P-A 007 Professor's Research ; ATTACH@0 ; ATTACK Triple Slap ; END   | zone A:Shuckle ex atk Triple Slap ret [['Combee', 'Shuckle ex']]
+   end kp3: ZNone/Some(Grass) H3 P0 | Shuckle ex 120 [G] | Teal Mask Ogerpon ex 130 [], Combee 50 [], Combee 50 []
+   end kpf: ZNone/Some(Grass) H4 P0 | Shuckle ex 120 [G] | Teal Mask Ogerpon ex 130 [], Combee 50 []
+--- 72250004 t2 v suicune (i=4, change +1.0)  first: ATTACH@0 -> PLAY Leaf Cape
+   own: ZSome(Grass)/Some(Grass) D0 H4 P0 | Teal Mask Ogerpon ex 130hp E[] | Combee 50hp E[]
+   opp: ZNone/Some(Water) D0 H2 P0 | Suicune ex 140hp E[] | Frigibax 60hp E[]
+   kp3: ATTACH@0 ; PLAY Fragrant Forest ; OTHER UseStadium ; PLACE Shuckle ex@2 ; PLAY Leaf Cape ; TOOL Leaf Cape@2 ; PLAY Copycat ; END   | zone A:Teal Mask Ogerpon ex atk None ret []
+   kpf: PLAY Leaf Cape ; TOOL Leaf Cape@0 ; ATTACH@0 ; PLAY Copycat ; END   | zone A:Teal Mask Ogerpon ex atk None ret []
+   end kp3: ZNone/Some(Grass) H2 P0 | Teal Mask Ogerpon ex 130 [G] | Shuckle ex 150 [], Combee 50 []
+   end kpf: ZNone/Some(Grass) H2 P0 | Teal Mask Ogerpon ex 160 [G] | Combee 50 []
+--- 72250006 t2 v suicune (i=6, change +1.0)  first: PLACE Shuckle ex@2 -> ATTACH@0
+   own: ZSome(Grass)/Some(Grass) D0 H4 P0 | Teal Mask Ogerpon ex 130hp E[] | Shuckle ex 150hp E[]
+   opp: ZNone/Some(Water) D0 H5 P0 | Suicune ex 140hp E[] | Suicune ex 160hp E[], Chien-Pao ex 130hp E[]
+   kp3: PLACE Shuckle ex@2 ; ATTACH@0 ; END   | zone A:Teal Mask Ogerpon ex atk None ret []
+   kpf: ATTACH@0 ; END   | zone A:Teal Mask Ogerpon ex atk None ret []
+   end kp3: ZNone/Some(Grass) H3 P0 | Teal Mask Ogerpon ex 130 [G] | Shuckle ex 120 [], Shuckle ex 150 []
+   end kpf: ZNone/Some(Grass) H4 P0 | Teal Mask Ogerpon ex 130 [G] | Shuckle ex 150 []
+--- 72250012 t3 v suicune (i=12, change +1.0)  first: PLAY P-A 002 X Speed -> PLACE Shuckle ex@2
+   own: ZSome(Grass)/Some(Grass) D0 H4 P0 | Combee 30hp E[] | Shuckle ex 120hp E[]
+   opp: ZNone/Some(Water) D0 H3 P0 | Chien-Pao ex 130hp E[W] | Frigibax 60hp E[], Frigibax 60hp E[]
+   kp3: PLAY P-A 002 X Speed ; RETREAT->3 ; PLACE Shuckle ex@2 ; PLAY Leaf Cape ; TOOL Leaf Cape@0 ; ATTACH@0 ; OTHER UseStadium ; PLACE Teal Mask Ogerpon ex@1 ; ATTACK Triple Slap ; END   | zone A:Shuckle ex atk Triple Slap ret [['Combee', 'Shuckle ex']]
+   kpf: PLACE Shuckle ex@2 ; PLAY P-A 002 X Speed ; RETREAT->3 ; OTHER UseStadium ; PLACE Teal Mask Ogerpon ex@1 ; PLAY Leaf Cape ; TOOL Leaf Cape@0 ; ATTACH@0 ; ATTACK Triple Slap ; END   | zone A:Shuckle ex atk Triple Slap ret [['Combee', 'Shuckle ex']]
+   end kp3: ZNone/Some(Grass) H1 P0 | Shuckle ex 150 [G] | Teal Mask Ogerpon ex 130 [], Shuckle ex 120 [], Combee 30 []
+   end kpf: ZNone/Some(Grass) H1 P0 | Shuckle ex 150 [G] | Teal Mask Ogerpon ex 130 [], Shuckle ex 120 [], Combee 30 []
+--- 72250017 t2 v suicune (i=17, change +1.0)  first: PLAY Field Blower -> PLAY Sabrina
+   own: ZSome(Grass)/Some(Grass) D0 H4 P0 | Teal Mask Ogerpon ex 160hp E[] | 
+   opp: ZNone/Some(Water) D0 H3 P0 | Frigibax 80hp E[] | Suicune ex 140hp E[]
+   kp3: PLAY Field Blower ; OTHER DiscardToolFromPokemon ; PLAY Fragrant Forest ; ATTACH@0 ; OTHER UseStadium ; END   | zone A:Teal Mask Ogerpon ex atk None ret []
+   kpf: PLAY Sabrina ; PLAY Field Blower ; OTHER DiscardToolFromPokemon ; PLAY Fragrant Forest ; ATTACH@0 ; OTHER UseStadium ; END   | zone A:Teal Mask Ogerpon ex atk None ret []
+   end kp3: ZNone/Some(Grass) H3 P0 | Teal Mask Ogerpon ex 160 [G] | 
+   end kpf: ZNone/Some(Grass) H2 P0 | Teal Mask Ogerpon ex 160 [G] | 
+--- 72250018 t1 v suicune (i=18, change +1.0)  first: PLAY Copycat -> PLAY P-A 002 X Speed
+   own: ZNone/Some(Grass) D0 H3 P0 | Teal Mask Ogerpon ex 130hp E[] | Shuckle ex 120hp E[], Combee 50hp E[]
+   opp: ZNone/Some(Water) D0 H4 P0 | Suicune ex 140hp E[] | 
+   kp3: PLAY Copycat ; PLAY Fragrant Forest ; OTHER UseStadium ; END   | zone None atk None ret []
+   kpf: PLAY P-A 002 X Speed ; RETREAT->2 ; PLAY Copycat ; PLAY Fragrant Forest ; OTHER UseStadium ; END   | zone None atk None ret [['Teal Mask Ogerpon ex', 'Shuckle ex']]
+   end kp3: ZNone/Some(Grass) H4 P0 | Teal Mask Ogerpon ex 130 [] | Shuckle ex 120 [], Combee 50 []
+   end kpf: ZNone/Some(Grass) H4 P0 | Shuckle ex 120 [] | Teal Mask Ogerpon ex 130 [], Combee 50 []
+--- 72250032 t8 v suicune (i=32, change +1.0)  first: PLAY Sabrina -> EVOLVE Vespiquen ex@2
+   own: ZSome(Grass)/Some(Grass) D3 H6 P2 | Shuckle ex 120hp E[] | Combee 50hp E[], Combee 50hp E[]
+   opp: ZNone/Some(Water) D2 H4 P2 | Suicune ex 140hp E[WW] | Frigibax 60hp E[], Chien-Pao ex 130hp E[], Baxcalibur 140hp E[]
+   kp3: PLAY Sabrina ; EVOLVE Vespiquen ex@2 ; ATTACH@0 ; ATTACK Triple Slap ; END   | zone A:Shuckle ex atk Triple Slap ret []
+   kpf: EVOLVE Vespiquen ex@2 ; PLAY P-A 002 X Speed ; RETREAT->2 ; PLAY Copycat ; PLACE Shuckle ex@3 ; EVOLVE Vespiquen ex@1 ; ATTACH@0 ; END   | zone A:Vespiquen ex atk None ret [['Shuckle ex', 'Vespiquen ex']]
+   end kp3: ZNone/Some(Grass) H4 P2 | Shuckle ex 120 [G] | Combee 50 [], Vespiquen ex 140 []
+   end kpf: ZNone/Some(Grass) H2 P2 | Vespiquen ex 140 [G] | Vespiquen ex 140 [], Shuckle ex 120 [], Shuckle ex 120 []
+--- 72250039 t5 v suicune (i=39, change +1.0)  first: PLACE Shuckle ex@1 -> RETREAT->3
+   own: ZSome(Grass)/Some(Grass) D0 H6 P0 | Teal Mask Ogerpon ex 50hp E[G] | Combee 50hp E[], Vespiquen ex 140hp E[]
+   opp: ZNone/Some(Water) D0 H8 P0 | Suicune ex 140hp E[WW] | Chien-Pao ex 130hp E[], Suicune ex 140hp E[]
+   kp3: PLACE Shuckle ex@1 ; PLAY Copycat ; EVOLVE Vespiquen ex@2 ; ATTACH@0 ; PLAY Leaf Cape ; TOOL Leaf Cape@0 ; PLAY Leaf Cape ; TOOL Leaf Cape@3 ; ATTACK Energized Leaves ; END   | zone A:Teal Mask Ogerpon ex atk Energized Leaves ret []
+   kpf: RETREAT->3 ; PLACE Shuckle ex@1 ; PLAY Copycat ; EVOLVE Vespiquen ex@2 ; PLAY Leaf Cape ; TOOL Leaf Cape@0 ; PLAY Leaf Cape ; TOOL Leaf Cape@3 ; ATTACH@0 ; OTHER UseStadium ; END   | zone A:Vespiquen ex atk None ret [['Teal Mask Ogerpon ex', 'Vespiquen ex']]
+   end kp3: ZNone/Some(Grass) H5 P0 | Teal Mask Ogerpon ex 80 [GG] | Shuckle ex 120 [], Vespiquen ex 140 [], Vespiquen ex 170 []
+   end kpf: ZNone/Some(Grass) H5 P0 | Vespiquen ex 170 [G] | Shuckle ex 120 [], Vespiquen ex 140 [], Teal Mask Ogerpon ex 80 []
+--- 72250041 t6 v suicune (i=41, change +1.0)  first: PLAY Fragrant Forest -> PLAY Leaf Cape
+   own: ZSome(Grass)/Some(Grass) D0 H3 P2 | Vespiquen ex 110hp E[GG] | 
+   opp: ZNone/Some(Water) D1 H1 P0 | Chien-Pao ex 150hp E[WW] | Baxcalibur 140hp E[], Suicune ex 140hp E[], Frigibax 60hp E[]
+   kp3: PLAY Fragrant Forest ; OTHER UseStadium ; PLACE Combee@3 ; ATTACH@3 ; ATTACK Chase Order ; OTHER ApplyDamage ; OTHER ResolveAttackRetaliation ; END   | zone B:Combee atk Chase Order ret []
+   kpf: PLAY Leaf Cape ; TOOL Leaf Cape@0 ; PLAY Fragrant Forest ; OTHER UseStadium ; PLACE Combee@3 ; ATTACK Chase Order ; OTHER DiscardOwnBenchedThenDamage ; OTHER ApplyDamage ; OTHER ResolveAttackRetaliation ; END   | zone None atk Chase Order ret []
+   end kp3: ZNone/Some(Grass) H2 P2 | Vespiquen ex 110 [GG] | Combee 50 [G]
+   end kpf: ZSome(Grass)/Some(Grass) H1 P2 | Vespiquen ex 140 [GG] | 
+--- 72250045 t2 v suicune (i=45, change +1.0)  first: PLAY P-A 007 Professor's Research -> PLAY P-A 002 X Speed
+   own: ZSome(Grass)/Some(Grass) D0 H5 P0 | Combee 50hp E[] | 
+   opp: ZNone/Some(Water) D0 H3 P0 | Chien-Pao ex 130hp E[] | Suicune ex 140hp E[], Frigibax 60hp E[]
+   kp3: PLAY P-A 007 Professor's Research ; PLACE Combee@3 ; PLACE Teal Mask Ogerpon ex@2 ; PLAY Leaf Cape ; TOOL Leaf Cape@3 ; PLAY Leaf Cape ; TOOL Leaf Cape@0 ; ATTACH@0 ; ATTACK Reckless Charge ; END   | zone A:Combee atk Reckless Charge ret []
+   kpf: PLAY P-A 002 X Speed ; PLACE Teal Mask Ogerpon ex@3 ; RETREAT->3 ; PLAY Leaf Cape ; TOOL Leaf Cape@0 ; ATTACH@0 ; PLAY Copycat ; PLAY Leaf Cape ; TOOL Leaf Cape@3 ; END   | zone A:Teal Mask Ogerpon ex atk None ret [['Combee', 'Teal Mask Ogerpon ex']]
+   end kp3: ZNone/Some(Grass) H2 P0 | Combee 70 [G] | Teal Mask Ogerpon ex 130 [], Combee 80 []
+   end kpf: ZNone/Some(Grass) H2 P0 | Teal Mask Ogerpon ex 160 [G] | Combee 80 []
+--- 72250048 t10 v suicune (i=48, change +1.0)  first: EVOLVE Vespiquen ex@3 -> RETREAT->3
+   own: ZSome(Grass)/Some(Grass) D3 H3 P2 | Shuckle ex 20hp E[G] | Shuckle ex 120hp E[], Combee 50hp E[], Combee 50hp E[]
+   opp: ZNone/Some(Water) D2 H4 P2 | Suicune ex 160hp E[WWW] | Frigibax 60hp E[], Baxcalibur 140hp E[W], Chien-Pao ex 130hp E[]
+   kp3: EVOLVE Vespiquen ex@3 ; RETREAT->1 ; PLAY P-A 007 Professor's Research ; ATTACH@0 ; ATTACK Triple Slap ; END   | zone A:Shuckle ex atk Triple Slap ret [['Shuckle ex', 'Shuckle ex']]
+   kpf: RETREAT->3 ; PLAY P-A 007 Professor's Research ; EVOLVE Vespiquen ex@0 ; ATTACH@0 ; OTHER UseStadium ; END   | zone A:Vespiquen ex atk None ret [['Shuckle ex', 'Combee']]
+   end kp3: ZNone/Some(Grass) H3 P2 | Shuckle ex 120 [G] | Shuckle ex 20 [], Combee 50 [], Vespiquen ex 140 []
+   end kpf: ZNone/Some(Grass) H3 P2 | Vespiquen ex 140 [G] | Shuckle ex 120 [], Combee 50 [], Shuckle ex 20 []
+--- 72250049 t4 v suicune (i=49, change +1.0)  first: EVOLVE Vespiquen ex@3 -> RETREAT->3
+   own: ZSome(Grass)/Some(Grass) D0 H4 P0 | Shuckle ex 120hp E[G] | Combee 50hp E[]
+   opp: ZNone/Some(Water) D0 H5 P0 | Suicune ex 160hp E[W] | Frigibax 60hp E[], Frigibax 60hp E[], Chien-Pao ex 130hp E[]
+   kp3: EVOLVE Vespiquen ex@3 ; PLAY Sabrina ; ATTACH@3 ; ATTACK Triple Slap ; END   | zone B:Vespiquen ex atk Triple Slap ret []
+   kpf: RETREAT->3 ; PLAY P-A 007 Professor's Research ; PLAY Field Blower ; OTHER DiscardToolFromPokemon ; PLAY Leaf Cape ; TOOL Leaf Cape@0 ; EVOLVE Vespiquen ex@0 ; ATTACH@0 ; END   | zone A:Vespiquen ex atk None ret [['Shuckle ex', 'Combee']]
+   end kp3: ZNone/Some(Grass) H2 P0 | Shuckle ex 120 [G] | Vespiquen ex 140 [G]
+   end kpf: ZNone/Some(Grass) H2 P0 | Vespiquen ex 170 [G] | Shuckle ex 120 []
+--- 72250050 t3 v suicune (i=50, change +1.0)  first: TOOL Leaf Cape@0 -> TOOL Leaf Cape@3
+   own: ZSome(Grass)/Some(Grass) D0 H2 P0 | Shuckle ex 120hp E[] | Vespiquen ex 140hp E[]
+   opp: ZNone/Some(Water) D0 H4 P0 | Suicune ex 140hp E[W] | Frigibax 60hp E[]
+   kp3: TOOL Leaf Cape@0 ; ATTACH@0 ; OTHER UseStadium ; ATTACK Triple Slap ; END   | zone A:Shuckle ex atk Triple Slap ret []
+   kpf: TOOL Leaf Cape@3 ; PLAY P-A 002 X Speed ; RETREAT->3 ; ATTACH@0 ; OTHER UseStadium ; END   | zone A:Vespiquen ex atk None ret [['Shuckle ex', 'Vespiquen ex']]
+   end kp3: ZNone/Some(Grass) H3 P0 | Shuckle ex 150 [G] | Vespiquen ex 140 []
+   end kpf: ZNone/Some(Grass) H2 P0 | Vespiquen ex 170 [G] | Shuckle ex 120 []
+--- 72250073 t1 v suicune (i=73, change +1.0)  first: PLAY P-A 002 X Speed -> PLAY Fragrant Forest
+   own: ZNone/Some(Grass) D0 H3 P0 | Teal Mask Ogerpon ex 130hp E[] | Shuckle ex 120hp E[], Shuckle ex 150hp E[]
+   opp: ZNone/Some(Water) D0 H3 P0 | Suicune ex 140hp E[] | Suicune ex 140hp E[]
+   kp3: PLAY P-A 002 X Speed ; RETREAT->3 ; PLAY Fragrant Forest ; OTHER UseStadium ; END   | zone None atk None ret [['Teal Mask Ogerpon ex', 'Shuckle ex']]
+   kpf: PLAY Fragrant Forest ; OTHER UseStadium ; END   | zone None atk None ret []
+   end kp3: ZNone/Some(Grass) H2 P0 | Shuckle ex 150 [] | Shuckle ex 120 [], Teal Mask Ogerpon ex 130 []
+   end kpf: ZNone/Some(Grass) H3 P0 | Teal Mask Ogerpon ex 130 [] | Shuckle ex 120 [], Shuckle ex 150 []
+--- 72250078 t3 v suicune (i=78, change +1.0)  first: ATTACH@0 -> ATTACH@1
+   own: ZSome(Grass)/Some(Grass) D0 H3 P0 | Shuckle ex 120hp E[] | Shuckle ex 120hp E[], Combee 50hp E[], Combee 50hp E[]
+   opp: ZNone/Some(Water) D0 H5 P0 | Suicune ex 140hp E[W] | 
+   kp3: ATTACH@0 ; PLAY Copycat ; EVOLVE Vespiquen ex@3 ; ATTACK Triple Slap ; END   | zone A:Shuckle ex atk Triple Slap ret []
+   kpf: ATTACH@1 ; PLAY Copycat ; EVOLVE Vespiquen ex@3 ; PLAY P-A 002 X Speed ; RETREAT->1 ; ATTACK Triple Slap ; END   | zone B:Shuckle ex atk Triple Slap ret [['Shuckle ex', 'Shuckle ex']]
+   end kp3: ZNone/Some(Grass) H4 P0 | Shuckle ex 120 [G] | Shuckle ex 120 [], Combee 50 [], Vespiquen ex 140 []
+   end kpf: ZNone/Some(Grass) H3 P0 | Shuckle ex 120 [G] | Shuckle ex 120 [], Combee 50 [], Vespiquen ex 140 []
+--- 72250083 t7 v suicune (i=83, change +1.0)  first: PROMOTE@1 -> PROMOTE@3
+   own: ZNone/Some(Grass) D3 H2 P2 | - | Shuckle ex 120hp E[], Combee 50hp E[], Vespiquen ex 140hp E[]
+   opp: ZNone/Some(Water) D2 H3 P2 | Suicune ex 140hp E[WW] | Baxcalibur 140hp E[], Chien-Pao ex 130hp E[]
+   kp3: PROMOTE@1   | zone None atk None ret []
+   kpf: PROMOTE@3   | zone None atk None ret []
+   end kp3: ZNone/Some(Grass) H2 P2 | Shuckle ex 120 [] | Combee 50 [], Vespiquen ex 140 []
+   end kpf: ZNone/Some(Grass) H2 P2 | Vespiquen ex 140 [] | Shuckle ex 120 [], Combee 50 []
+--- 72250087 t3 v suicune (i=87, change +1.0)  first: ATTACH@0 -> ATTACH@3
+   own: ZSome(Grass)/Some(Grass) D0 H5 P0 | Shuckle ex 150hp E[] | Teal Mask Ogerpon ex 130hp E[]
+   opp: ZNone/Some(Water) D0 H4 P0 | Chien-Pao ex 130hp E[] | Suicune ex 140hp E[W], Frigibax 60hp E[]
+   kp3: ATTACH@0 ; OTHER UseStadium ; ATTACK Triple Slap ; END   | zone A:Shuckle ex atk Triple Slap ret []
+   kpf: ATTACH@3 ; OTHER UseStadium ; END   | zone B:Teal Mask Ogerpon ex atk None ret []
+   end kp3: ZNone/Some(Grass) H6 P0 | Shuckle ex 150 [G] | Teal Mask Ogerpon ex 130 []
+   end kpf: ZNone/Some(Grass) H6 P0 | Shuckle ex 150 [] | Teal Mask Ogerpon ex 130 [G]
+--- 72250088 t6 v suicune (i=88, change +1.0)  first: ATTACH@2 -> RETREAT->2
+   own: ZSome(Grass)/Some(Grass) D0 H3 P0 | Shuckle ex 20hp E[G] | Shuckle ex 120hp E[G], Combee 50hp E[], Combee 50hp E[]
+   opp: ZNone/Some(Water) D0 H3 P0 | Suicune ex 120hp E[WW] | Frigibax 60hp E[], Suicune ex 140hp E[W], Baxcalibur 140hp E[]
+   kp3: ATTACH@2 ; RETREAT->1 ; PLAY Copycat ; PLAY Leaf Cape ; TOOL Leaf Cape@0 ; ATTACK Triple Slap ; END   | zone B:Combee atk Triple Slap ret [['Shuckle ex', 'Shuckle ex']]
+   kpf: RETREAT->2 ; PLAY P-A 007 Professor's Research ; PLAY Leaf Cape ; TOOL Leaf Cape@1 ; EVOLVE Vespiquen ex@0 ; ATTACH@0 ; END   | zone A:Vespiquen ex atk None ret [['Shuckle ex', 'Combee']]
+   end kp3: ZNone/Some(Grass) H2 P0 | Shuckle ex 150 [G] | Shuckle ex 20 [], Combee 50 [G], Combee 50 []
+   end kpf: ZNone/Some(Grass) H2 P0 | Vespiquen ex 140 [G] | Shuckle ex 150 [G], Shuckle ex 20 [], Combee 50 []
+--- 72250092 t5 v suicune (i=92, change +1.0)  first: PLAY Sabrina -> ATTACH@0
+   own: ZSome(Grass)/Some(Grass) D0 H3 P0 | Vespiquen ex 40hp E[G] | Shuckle ex 120hp E[], Combee 50hp E[], Shuckle ex 150hp E[]
+   opp: ZNone/Some(Water) D0 H5 P0 | Suicune ex 140hp E[WW] | Frigibax 60hp E[], Frigibax 80hp E[]
+   kp3: PLAY Sabrina ; ATTACH@0 ; ATTACK Chase Order ; OTHER DiscardOwnBenchedThenDamage ; OTHER ApplyDamage ; OTHER ResolveAttackRetaliation ; END   | zone A:Vespiquen ex atk Chase Order ret []
+   kpf: ATTACH@0 ; ATTACK Chase Order ; OTHER DiscardOwnBenchedThenDamage ; OTHER ApplyDamage ; OTHER ResolveAttackRetaliation ; END   | zone A:Vespiquen ex atk Chase Order ret []
+   end kp3: ZNone/Some(Grass) H2 P1 | Vespiquen ex 40 [GG] | Shuckle ex 120 [], Shuckle ex 150 []
+   end kpf: ZNone/Some(Grass) H3 P2 | Vespiquen ex 40 [GG] | Shuckle ex 120 [], Shuckle ex 150 []
+--- 72250110 t4 v suicune (i=110, change +1.0)  first: ATTACH@0 -> ATTACH@2
+   own: ZSome(Grass)/Some(Grass) D0 H4 P0 | Teal Mask Ogerpon ex 130hp E[G] | Combee 50hp E[], Combee 50hp E[], Shuckle ex 120hp E[]
+   opp: ZNone/Some(Water) D0 H2 P0 | Chien-Pao ex 130hp E[] | Suicune ex 140hp E[], Suicune ex 140hp E[W], Frigibax 80hp E[]
+   kp3: ATTACH@0 ; PLAY Copycat ; EVOLVE Vespiquen ex@2 ; ATTACK Energized Leaves ; END   | zone A:Teal Mask Ogerpon ex atk Energized Leaves ret []
+   kpf: ATTACH@2 ; PLAY P-A 002 X Speed ; PLAY P-A 002 X Speed ; RETREAT->3 ; PLAY Copycat ; PLAY Fragrant Forest ; EVOLVE Vespiquen ex@2 ; OTHER UseStadium ; END   | zone B:Combee atk None ret [['Teal Mask Ogerpon ex', 'Shuckle ex']]
+   end kp3: ZNone/Some(Grass) H1 P0 | Teal Mask Ogerpon ex 130 [GG] | Combee 50 [], Vespiquen ex 140 [], Shuckle ex 120 []
+   end kpf: ZNone/Some(Grass) H1 P0 | Shuckle ex 120 [] | Combee 50 [], Vespiquen ex 140 [G], Teal Mask Ogerpon ex 130 [G]
+--- 72250114 t7 v suicune (i=114, change +1.0)  first: PROMOTE@2 -> PROMOTE@3
+   own: ZNone/Some(Grass) D3 H4 P2 | - | Shuckle ex 120hp E[], Shuckle ex 120hp E[], Vespiquen ex 140hp E[]
+   opp: ZNone/Some(Water) D2 H4 P2 | Suicune ex 140hp E[WW] | Frigibax 60hp E[], Baxcalibur 140hp E[], Chien-Pao ex 130hp E[]
+   kp3: PROMOTE@2   | zone None atk None ret []
+   kpf: PROMOTE@3   | zone None atk None ret []
+   end kp3: ZNone/Some(Grass) H4 P2 | Shuckle ex 120 [] | Shuckle ex 120 [], Vespiquen ex 140 []
+   end kpf: ZNone/Some(Grass) H4 P2 | Vespiquen ex 140 [] | Shuckle ex 120 [], Shuckle ex 120 []
+--- 72270003 t3 v weezing (i=3, change +1.0)  first: ATTACH@0 -> ATTACH@2
+   own: ZSome(Grass)/Some(Grass) D0 H4 P0 | Shuckle ex 100hp E[] | Vespiquen ex 120hp E[], Shuckle ex 120hp E[]
+   opp: ZNone/Some(Darkness) D0 H4 P0 | Hoopa ex 150hp E[D] | Darkrai ex 140hp E[]
+   kp3: ATTACH@0 ; PLAY Copycat ; PLACE Teal Mask Ogerpon ex@1 ; PLAY Field Blower ; OTHER DiscardToolFromPokemon ; ATTACK Triple Slap ; END   | zone A:Shuckle ex atk Triple Slap ret []
+   kpf: ATTACH@2 ; PLAY Copycat ; PLAY Field Blower ; OTHER DiscardToolFromPokemon ; PLACE Teal Mask Ogerpon ex@1 ; OTHER UseStadium ; END   | zone B:Vespiquen ex atk None ret []
+   end kp3: ZNone/Some(Grass) H2 P0 | Shuckle ex 100 [G] | Teal Mask Ogerpon ex 130 [], Vespiquen ex 120 [], Shuckle ex 120 []
+   end kpf: ZNone/Some(Grass) H2 P0 | Shuckle ex 100 [] | Teal Mask Ogerpon ex 130 [], Vespiquen ex 120 [G], Shuckle ex 120 []
+--- 72270013 t10 v weezing (i=13, change +1.0)  first: PLAY Sabrina -> PLAY P-A 007 Professor's Research
+   own: ZSome(Grass)/Some(Grass) D2 H3 P2 | Shuckle ex 20hp E[G] | Shuckle ex 30hp E[G], Combee 50hp E[]
+   opp: ZNone/Some(Darkness) D1 H1 P1 | Team Rocket's Weezing ex 120hp E[DD] | Darkrai ex 140hp E[D], Team Rocket's Weezing ex 140hp E[], Hoopa ex 150hp E[]
+   kp3: PLAY Sabrina ; OTHER UseStadium ; PLACE Teal Mask Ogerpon ex@1 ; RETREAT->3 ; ATTACH@0 ; ATTACK Reckless Charge ; END   | zone A:Combee atk Reckless Charge ret [['Shuckle ex', 'Combee']]
+   kpf: PLAY P-A 007 Professor's Research ; RETREAT->3 ; EVOLVE Vespiquen ex@0 ; ATTACH@0 ; OTHER UseStadium ; PLAY Leaf Cape ; TOOL Leaf Cape@0 ; PLACE Teal Mask Ogerpon ex@1 ; END   | zone A:Vespiquen ex atk None ret [['Shuckle ex', 'Combee']]
+   end kp3: ZNone/Some(Grass) H2 P2 | Combee 40 [G] | Teal Mask Ogerpon ex 130 [], Shuckle ex 30 [G], Shuckle ex 20 []
+   end kpf: ZNone/Some(Grass) H2 P2 | Vespiquen ex 170 [G] | Teal Mask Ogerpon ex 130 [], Shuckle ex 30 [G], Shuckle ex 20 []
+--- 72270019 t1 v weezing (i=19, change +1.0)  first: PLAY Copycat -> PLAY Fragrant Forest
+   own: ZNone/Some(Grass) D0 H4 P0 | Shuckle ex 120hp E[] | 
+   opp: ZNone/Some(Darkness) D0 H4 P0 | Team Rocket's Koffing 60hp E[] | 
+   kp3: PLAY Copycat ; PLAY Leaf Cape ; TOOL Leaf Cape@0 ; PLACE Combee@3 ; END   | zone None atk None ret []
+   kpf: PLAY Fragrant Forest ; PLAY Copycat ; OTHER UseStadium ; PLAY Leaf Cape ; TOOL Leaf Cape@0 ; PLACE Combee@3 ; PLAY Leaf Cape ; TOOL Leaf Cape@3 ; END   | zone None atk None ret []
+   end kp3: ZNone/Some(Grass) H2 P0 | Shuckle ex 150 [] | Combee 50 []
+   end kpf: ZNone/Some(Grass) H2 P0 | Shuckle ex 150 [] | Combee 80 []
+--- 72270020 t6 v weezing (i=20, change +1.0)  first: ATTACH@3 -> RETREAT->3
+   own: ZSome(Grass)/Some(Grass) D1 H2 P0 | Shuckle ex 80hp PSN E[G] | Combee 50hp E[]
+   opp: ZNone/Some(Darkness) D1 H2 P1 | Team Rocket's Weezing ex 140hp E[] | Darkrai ex 140hp E[], Hoopa ex 60hp E[], Hoopa ex 150hp E[D]
+   kp3: ATTACH@3 ; ATTACK Triple Slap ; END   | zone B:Combee atk Triple Slap ret []
+   kpf: RETREAT->3 ; ATTACH@0 ; ATTACK Reckless Charge ; END   | zone A:Combee atk Reckless Charge ret [['Shuckle ex', 'Combee']]
+   end kp3: ZNone/Some(Grass) H2 P0 | Shuckle ex 80 PSN [G] | Combee 50 [G]
+   end kpf: ZNone/Some(Grass) H2 P0 | Combee 40 [G] | Shuckle ex 80 []
+--- 72270023 t1 v weezing (i=23, change +1.0)  first: END -> PLAY P-A 002 X Speed
+   own: ZNone/Some(Grass) D0 H3 P0 | Teal Mask Ogerpon ex 130hp E[] | Shuckle ex 120hp E[], Combee 50hp E[]
+   opp: ZNone/Some(Darkness) D0 H4 P0 | Team Rocket's Koffing 60hp E[] | 
+   kp3: END   | zone None atk None ret []
+   kpf: PLAY P-A 002 X Speed ; RETREAT->2 ; END   | zone None atk None ret [['Teal Mask Ogerpon ex', 'Shuckle ex']]
+   end kp3: ZNone/Some(Grass) H3 P0 | Teal Mask Ogerpon ex 130 [] | Shuckle ex 120 [], Combee 50 []
+   end kpf: ZNone/Some(Grass) H2 P0 | Shuckle ex 120 [] | Teal Mask Ogerpon ex 130 [], Combee 50 []
+--- 72270027 t4 v weezing (i=27, change +1.0)  first: PLAY Copycat -> RETREAT->3
+   own: ZSome(Grass)/Some(Grass) D0 H6 P0 | Shuckle ex 80hp PSN BRN E[G] | Combee 30hp E[]
+   opp: ZNone/Some(Darkness) D0 H3 P0 | Hoopa ex 150hp E[D] | Team Rocket's Weezing ex 140hp E[], Darkrai ex 140hp E[], Team Rocket's Weezing ex 140hp E[]
+   kp3: PLAY Copycat ; PLACE Teal Mask Ogerpon ex@2 ; PLACE Shuckle ex@1 ; RETREAT->1 ; ATTACH@0 ; ATTACK Triple Slap ; END   | zone A:Shuckle ex atk Triple Slap ret [['Shuckle ex', 'Shuckle ex']]
+   kpf: RETREAT->3 ; EVOLVE Vespiquen ex@0 ; ATTACH@0 ; PLAY P-A 002 X Speed ; PLAY Copycat ; PLACE Teal Mask Ogerpon ex@2 ; PLACE Shuckle ex@1 ; OTHER UseStadium ; END   | zone A:Vespiquen ex atk None ret [['Shuckle ex', 'Combee']]
+   end kp3: ZNone/Some(Grass) H1 P0 | Shuckle ex 120 [G] | Shuckle ex 80 [], Teal Mask Ogerpon ex 130 [], Combee 30 []
+   end kpf: ZNone/Some(Grass) H1 P0 | Vespiquen ex 120 [G] | Shuckle ex 120 [], Teal Mask Ogerpon ex 130 [], Shuckle ex 80 []
+--- 72270034 t1 v weezing (i=34, change +1.0)  first: PLACE Shuckle ex@2 -> PLAY P-A 002 X Speed
+   own: ZNone/Some(Grass) D0 H3 P0 | Teal Mask Ogerpon ex 160hp E[] | Combee 50hp E[]
+   opp: ZNone/Some(Darkness) D0 H4 P0 | Hoopa ex 150hp E[] | 
+   kp3: PLACE Shuckle ex@2 ; END   | zone None atk None ret []
+   kpf: PLAY P-A 002 X Speed ; PLACE Shuckle ex@2 ; RETREAT->2 ; END   | zone None atk None ret [['Teal Mask Ogerpon ex', 'Shuckle ex']]
+   end kp3: ZNone/Some(Grass) H2 P0 | Teal Mask Ogerpon ex 160 [] | Shuckle ex 120 [], Combee 50 []
+   end kpf: ZNone/Some(Grass) H1 P0 | Shuckle ex 120 [] | Teal Mask Ogerpon ex 160 [], Combee 50 []
+--- 72270048 t4 v weezing (i=48, change +1.0)  first: PLAY Sabrina -> ATTACH@0
+   own: ZSome(Grass)/Some(Grass) D0 H4 P0 | Teal Mask Ogerpon ex 90hp E[G] | Combee 30hp E[], Shuckle ex 120hp E[]
+   opp: ZNone/Some(Darkness) D0 H4 P0 | Hoopa ex 150hp E[D] | Darkrai ex 140hp E[], Hoopa ex 150hp E[], Team Rocket's Koffing 60hp E[]
+   kp3: PLAY Sabrina ; ATTACH@0 ; OTHER UseStadium ; PLACE Shuckle ex@1 ; ATTACK Energized Leaves ; END   | zone A:Teal Mask Ogerpon ex atk Energized Leaves ret []
+   kpf: ATTACH@0 ; PLAY Copycat ; PLACE Combee@1 ; EVOLVE Vespiquen ex@2 ; OTHER UseStadium ; ATTACK Energized Leaves ; END   | zone A:Teal Mask Ogerpon ex atk Energized Leaves ret []
+   end kp3: ZNone/Some(Grass) H3 P0 | Teal Mask Ogerpon ex 90 [GG] | Shuckle ex 120 [], Combee 30 [], Shuckle ex 120 []
+   end kpf: ZNone/Some(Grass) H3 P0 | Teal Mask Ogerpon ex 90 [GG] | Combee 50 [], Vespiquen ex 120 [], Shuckle ex 120 []
+--- 72270051 t1 v weezing (i=51, change +1.0)  first: PLACE Shuckle ex@3 -> PLAY P-A 002 X Speed
+   own: ZNone/Some(Grass) D0 H5 P0 | Teal Mask Ogerpon ex 130hp E[] | Shuckle ex 120hp E[]
+   opp: ZNone/Some(Darkness) D0 H3 P0 | Darkrai ex 140hp E[] | Team Rocket's Koffing 60hp E[]
+   kp3: PLACE Shuckle ex@3 ; END   | zone None atk None ret []
+   kpf: PLAY P-A 002 X Speed ; RETREAT->2 ; PLACE Shuckle ex@3 ; END   | zone None atk None ret [['Teal Mask Ogerpon ex', 'Shuckle ex']]
+   end kp3: ZNone/Some(Grass) H4 P0 | Teal Mask Ogerpon ex 130 [] | Shuckle ex 120 [], Shuckle ex 120 []
+   end kpf: ZNone/Some(Grass) H3 P0 | Shuckle ex 120 [] | Teal Mask Ogerpon ex 130 [], Shuckle ex 120 []
+--- 72270068 t3 v weezing (i=68, change +1.0)  first: EVOLVE Vespiquen ex@3 -> OTHER UseStadium
+   own: ZSome(Grass)/Some(Grass) D0 H4 P0 | Shuckle ex 120hp E[] | Teal Mask Ogerpon ex 130hp E[], Combee 50hp E[]
+   opp: ZNone/Some(Darkness) D1 H1 P0 | Hoopa ex 150hp E[] | Hoopa ex 150hp E[], Team Rocket's Koffing 60hp E[]
+   kp3: EVOLVE Vespiquen ex@3 ; ATTACH@0 ; OTHER UseStadium ; PLACE Combee@1 ; ATTACK Triple Slap ; END   | zone A:Shuckle ex atk Triple Slap ret []
+   kpf: OTHER UseStadium ; PLACE Combee@1 ; EVOLVE Vespiquen ex@3 ; ATTACH@3 ; END   | zone B:Vespiquen ex atk None ret []
+   end kp3: ZNone/Some(Grass) H3 P0 | Shuckle ex 120 [G] | Combee 50 [], Teal Mask Ogerpon ex 130 [], Vespiquen ex 140 []
+   end kpf: ZNone/Some(Grass) H3 P0 | Shuckle ex 120 [] | Combee 50 [], Teal Mask Ogerpon ex 130 [], Vespiquen ex 140 [G]
+--- 72270080 t1 v weezing (i=80, change +1.0)  first: PLAY Leaf Cape -> PLAY P-A 002 X Speed
+   own: ZNone/Some(Grass) D0 H5 P0 | Combee 50hp E[] | 
+   opp: ZNone/Some(Darkness) D0 H3 P0 | Hoopa ex 150hp E[] | Darkrai ex 140hp E[]
+   kp3: PLAY Leaf Cape ; TOOL Leaf Cape@0 ; PLACE Teal Mask Ogerpon ex@3 ; PLAY P-A 002 X Speed ; RETREAT->3 ; PLAY Copycat ; END   | zone None atk None ret [['Combee', 'Teal Mask Ogerpon ex']]
+   kpf: PLAY P-A 002 X Speed ; PLACE Teal Mask Ogerpon ex@3 ; RETREAT->3 ; PLAY Leaf Cape ; TOOL Leaf Cape@3 ; PLAY Copycat ; END   | zone None atk None ret [['Combee', 'Teal Mask Ogerpon ex']]
+   end kp3: ZNone/Some(Grass) H3 P0 | Teal Mask Ogerpon ex 130 [] | Combee 80 []
+   end kpf: ZNone/Some(Grass) H3 P0 | Teal Mask Ogerpon ex 130 [] | Combee 80 []
+--- 72270088 t7 v weezing (i=88, change +1.0)  first: PLAY P-A 002 X Speed -> ATTACH@0
+   own: ZSome(Grass)/Some(Grass) D0 H4 P0 | Vespiquen ex 70hp E[] | Shuckle ex 150hp E[], Combee 50hp E[], Teal Mask Ogerpon ex 60hp E[GG]
+   opp: ZNone/Some(Darkness) D0 H3 P0 | Hoopa ex 70hp E[D] | Darkrai ex 140hp E[DD], Hoopa ex 150hp E[]
+   kp3: PLAY P-A 002 X Speed ; ATTACH@0 ; RETREAT->3 ; PLAY Copycat ; EVOLVE Vespiquen ex@2 ; OTHER UseStadium ; ATTACK Energized Leaves ; END   | zone A:Vespiquen ex atk Energized Leaves ret [['Vespiquen ex', 'Teal Mask Ogerpon ex']]
+   kpf: ATTACH@0 ; PLAY P-A 002 X Speed ; RETREAT->3 ; PLAY Copycat ; EVOLVE Vespiquen ex@2 ; OTHER UseStadium ; ATTACK Energized Leaves ; END   | zone A:Vespiquen ex atk Energized Leaves ret [['Vespiquen ex', 'Teal Mask Ogerpon ex']]
+   end kp3: ZNone/Some(Grass) H3 P2 | Teal Mask Ogerpon ex 60 [GG] | Shuckle ex 150 [], Vespiquen ex 140 [], Vespiquen ex 70 []
+   end kpf: ZNone/Some(Grass) H3 P2 | Teal Mask Ogerpon ex 60 [GG] | Shuckle ex 150 [], Vespiquen ex 140 [], Vespiquen ex 70 []
+--- 72270097 t2 v weezing (i=97, change +1.0)  first: PLACE Teal Mask Ogerpon ex@2 -> RETREAT->3
+   own: ZNone/Some(Grass) D0 H1 P0 | Combee 70hp E[G] | Shuckle ex 120hp E[]
+   opp: ZNone/Some(Darkness) D0 H2 P0 | Team Rocket's Koffing 60hp E[] | Darkrai ex 140hp E[]
+   kp3: PLACE Teal Mask Ogerpon ex@2 ; RETREAT->2 ; END   | zone A:Combee atk None ret [['Combee', 'Teal Mask Ogerpon ex']]
+   kpf: RETREAT->3 ; PLACE Teal Mask Ogerpon ex@2 ; END   | zone A:Combee atk None ret [['Combee', 'Shuckle ex']]
+   end kp3: ZNone/Some(Grass) H0 P0 | Teal Mask Ogerpon ex 130 [] | Combee 70 [], Shuckle ex 120 []
+   end kpf: ZNone/Some(Grass) H0 P0 | Shuckle ex 120 [] | Teal Mask Ogerpon ex 130 [], Combee 70 []
+--- 72270103 t5 v weezing (i=103, change +1.0)  first: RETREAT->3 -> PLAY P-A 002 X Speed
+   own: ZSome(Grass)/Some(Grass) D0 H3 P0 | Shuckle ex 110hp E[G] | Combee 50hp E[], Teal Mask Ogerpon ex 130hp E[], Shuckle ex 150hp E[]
+   opp: ZNone/Some(Darkness) D0 H3 P0 | Darkrai ex 140hp E[] | Team Rocket's Weezing ex 120hp E[DD], Team Rocket's Koffing 60hp E[]
+   kp3: RETREAT->3 ; ATTACH@0 ; OTHER UseStadium ; ATTACK Triple Slap ; END   | zone A:Shuckle ex atk Triple Slap ret [['Shuckle ex', 'Shuckle ex']]
+   kpf: PLAY P-A 002 X Speed ; RETREAT->2 ; ATTACH@0 ; OTHER UseStadium ; END   | zone A:Teal Mask Ogerpon ex atk None ret [['Shuckle ex', 'Teal Mask Ogerpon ex']]
+   end kp3: ZNone/Some(Grass) H4 P0 | Shuckle ex 150 [G] | Combee 50 [], Teal Mask Ogerpon ex 130 [], Shuckle ex 110 []
+   end kpf: ZNone/Some(Grass) H3 P0 | Teal Mask Ogerpon ex 130 [G] | Combee 50 [], Shuckle ex 110 [G], Shuckle ex 150 []
+--- 72270111 t1 v weezing (i=111, change +1.0)  first: RETREAT->2 -> PLAY Leaf Cape
+   own: ZNone/Some(Grass) D0 H3 P0 | Shuckle ex 120hp E[] | Teal Mask Ogerpon ex 130hp E[]
+   opp: ZNone/Some(Darkness) D0 H4 P0 | Darkrai ex 140hp E[] | 
+   kp3: RETREAT->2 ; PLAY Leaf Cape ; TOOL Leaf Cape@0 ; PLAY Copycat ; PLACE Shuckle ex@3 ; END   | zone None atk None ret [['Shuckle ex', 'Teal Mask Ogerpon ex']]
+   kpf: PLAY Leaf Cape ; TOOL Leaf Cape@2 ; PLAY Copycat ; PLACE Shuckle ex@3 ; RETREAT->3 ; END   | zone None atk None ret [['Shuckle ex', 'Shuckle ex']]
+   end kp3: ZNone/Some(Grass) H3 P0 | Teal Mask Ogerpon ex 160 [] | Shuckle ex 120 [], Shuckle ex 120 []
+   end kpf: ZNone/Some(Grass) H3 P0 | Shuckle ex 120 [] | Teal Mask Ogerpon ex 160 [], Shuckle ex 120 []
+--- 72270115 t1 v weezing (i=115, change +1.0)  first: PLAY P-A 002 X Speed -> END
+   own: ZNone/Some(Grass) D0 H3 P0 | Shuckle ex 150hp E[] | Teal Mask Ogerpon ex 160hp E[]
+   opp: ZNone/Some(Darkness) D0 H4 P0 | Hoopa ex 150hp E[] | 
+   kp3: PLAY P-A 002 X Speed ; RETREAT->3 ; END   | zone None atk None ret [['Shuckle ex', 'Teal Mask Ogerpon ex']]
+   kpf: END   | zone None atk None ret []
+   end kp3: ZNone/Some(Grass) H2 P0 | Teal Mask Ogerpon ex 160 [] | Shuckle ex 150 []
+   end kpf: ZNone/Some(Grass) H3 P0 | Shuckle ex 150 [] | Teal Mask Ogerpon ex 160 []
+--- 72270140 t1 v weezing (i=140, change +1.0)  first: PLAY P-A 002 X Speed -> END
+   own: ZNone/Some(Grass) D0 H3 P0 | Shuckle ex 120hp E[] | Combee 80hp E[]
+   opp: ZNone/Some(Darkness) D0 H3 P0 | Hoopa ex 150hp E[] | Hoopa ex 150hp E[]
+   kp3: PLAY P-A 002 X Speed ; RETREAT->3 ; END   | zone None atk None ret [['Shuckle ex', 'Combee']]
+   kpf: END   | zone None atk None ret []
+   end kp3: ZNone/Some(Grass) H2 P0 | Combee 80 [] | Shuckle ex 120 []
+   end kpf: ZNone/Some(Grass) H3 P0 | Shuckle ex 120 [] | Combee 80 []
+--- 72270149 t1 v weezing (i=149, change +0.5)  first: PLACE Shuckle ex@2 -> PLAY P-A 002 X Speed
+   own: ZNone/Some(Grass) D0 H3 P0 | Teal Mask Ogerpon ex 160hp E[] | Combee 50hp E[]
+   opp: ZNone/Some(Darkness) D0 H4 P0 | Hoopa ex 150hp E[] | 
+   kp3: PLACE Shuckle ex@2 ; OTHER UseStadium ; PLACE Combee@1 ; END   | zone None atk None ret []
+   kpf: PLAY P-A 002 X Speed ; PLACE Shuckle ex@2 ; RETREAT->2 ; OTHER UseStadium ; PLACE Combee@1 ; END   | zone None atk None ret [['Teal Mask Ogerpon ex', 'Shuckle ex']]
+   end kp3: ZNone/Some(Grass) H2 P0 | Teal Mask Ogerpon ex 160 [] | Combee 50 [], Shuckle ex 120 [], Combee 50 []
+   end kpf: ZNone/Some(Grass) H1 P0 | Shuckle ex 120 [] | Combee 50 [], Teal Mask Ogerpon ex 160 [], Combee 50 []
+--- 72270151 t2 v weezing (i=151, change +1.0)  first: ATTACH@0 -> PLAY Fragrant Forest
+   own: ZSome(Grass)/Some(Grass) D0 H4 P0 | Combee 50hp E[] | 
+   opp: ZNone/Some(Darkness) D0 H4 P0 | Hoopa ex 150hp E[] | Team Rocket's Koffing 60hp E[]
+   kp3: ATTACH@0 ; PLAY Fragrant Forest ; OTHER UseStadium ; PLACE Shuckle ex@3 ; ATTACK Reckless Charge ; END   | zone A:Combee atk Reckless Charge ret []
+   kpf: PLAY Fragrant Forest ; OTHER UseStadium ; PLACE Shuckle ex@3 ; ATTACH@0 ; ATTACK Reckless Charge ; END   | zone A:Combee atk Reckless Charge ret []
+   end kp3: ZNone/Some(Grass) H3 P0 | Combee 40 [G] | Shuckle ex 120 []
+   end kpf: ZNone/Some(Grass) H3 P0 | Combee 40 [G] | Shuckle ex 120 []
+--- 72270156 t1 v weezing (i=156, change +1.0)  first: PLAY P-A 007 Professor's Research -> PLAY P-A 002 X Speed
+   own: ZNone/Some(Grass) D0 H5 P0 | Combee 50hp E[] | 
+   opp: ZNone/Some(Darkness) D0 H2 P0 | Hoopa ex 150hp E[] | Hoopa ex 150hp E[], Team Rocket's Koffing 60hp E[]
+   kp3: PLAY P-A 007 Professor's Research ; PLAY P-A 002 X Speed ; PLACE Shuckle ex@3 ; RETREAT->3 ; END   | zone None atk None ret [['Combee', 'Shuckle ex']]
+   kpf: PLAY P-A 002 X Speed ; PLAY P-A 007 Professor's Research ; PLACE Shuckle ex@3 ; RETREAT->3 ; END   | zone None atk None ret [['Combee', 'Shuckle ex']]
+   end kp3: ZNone/Some(Grass) H4 P0 | Shuckle ex 120 [] | Combee 50 []
+   end kpf: ZNone/Some(Grass) H4 P0 | Shuckle ex 120 [] | Combee 50 []
