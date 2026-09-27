@@ -1,4 +1,4 @@
-Decision this informs: kph's reading by the laptop (REGISTRATION.md section 5: footprint first, then the mechanism check, the Rayquaza traces and the 45 cells). This note records the build it reads. Build commit BUILD_COMMIT, scan sha256 SCAN_SHA.
+Decision this informs: kph's reading by the laptop (REGISTRATION.md section 5: footprint first, then the mechanism check, the Rayquaza traces and the 45 cells). This note records the build it reads. Build commit 7e7d864: the official engine's source (main 83e17ae) plus the player code built since on this branch (kt, kog, kph; each checked by identity runs), `cargo build --release --example legality_scan` (the `--pairs` option is in it), scan sha256 41a65af46bc8a42824f19dbfdc0ddbaaab2700c2c2305ff7f85cc38b97aac67d.
 
 Seeds: the identity checks use the table's deals only (72,000,000 + pairing × 10,000 + i, i < 40, even i = first-named deck in seat 0).
 
@@ -30,6 +30,7 @@ Seeds: the identity checks use the table's deals only (72,000,000 + pairing × 1
 - **steps > 0:** clamp((total − missing − steps) / total, 0, 1) on R's projected Active. The score is the larger of that and the unprojected reading (kp's).
 - **steps = 0:** R's projected reading exactly, with no max.
 - On the opponent's side `public_only` hides the deck and hand, so the target is the card itself and steps = 0: A never changes the opponent's reading. A test checks this with a Mega Altaria ex hidden behind the opponent's Swablu.
+- **Setup.** Nothing is projected during setup (turn 0), so there A equals R and kp.
 
 ### Fix B: the Zone Energy to a Pokémon that can reach the Active
 
@@ -58,3 +59,26 @@ This is what makes the registration's two Q10 boards come out as written, mid-tu
 - Shuckle ex holding a [G] is credited, although `has_retreated` is true.
 
 Read literally ("the side's turn is running"), the positive control would not be credited mid-turn. If the laptop prefers the literal reading, it is a one-line change, `attack_this_turn = running`.
+
+
+## Tests (REGISTRATION.md section 4)
+
+Each constructed board states its timing: mid-turn (the side to move, its turn running), or the leaf after player 0's EndTurn (player 1 to move, its turn running).
+
+| test | board and timing | result |
+|---|---|---|
+| A, steps = 0 | on played positions (12 random games, 4 pairings), both players, both horizons, both zone permissions | A = R exactly wherever there is no step |
+| A, steps > 0 | same | A never below the unprojected reading |
+| Swablu | mid-turn; Swablu with [P], [P] in this turn's Zone; Mega Altaria ex ([P][P]) the deck's only evolution | unprojected 0.5, R 1.0, A 0.5 |
+| Bare Riolu | Riolu B3 079 with nothing; Mega Lucario ex ([F][F]) the deck's only evolution; [F] now and next. The yardstick is [F][F], as the registration assumed | after EndTurn: R 0.5, A 0. Mid-turn: R 1.0, A 0.5 |
+| B, never slower | kpr's test (`the_clock_never_gets_slower_for_the_projection`) with a B case: Deino with nothing (cost 1 unpaid), Deino holding a [D], and an empty Bench; and on played positions | Deino with nothing: 3, as R. Deino holding [D]: R 7, B 2. Empty Bench: R. On played positions B is never slower than R, and equal to it with an empty Bench |
+| B, opponent | the usual leaf: player 1's Bonsly (cost 0) in front, Bulbasaur with [G] benched, [G] in its Zone | the Active and the benched Bulbasaur each get one [G]; the opponent's clock on Snorlax 13 → 4; with a retreat already made this turn, not credited (13) |
+| Dustin's Q01 | after EndTurn: Bonsly (cost 0) and Mega Lucario ex with [F], [F] next, against Bulbasaur | keep and swap both read 1 under kph; under R, keep 7 and swap 1 |
+| Dustin's Q10 | mid-turn: Shuckle ex in front with nothing, Vespiquen ex benched with [G], [G] now and next, X Speed's turn effect, `has_retreated` true | this turn's cost 0 (X Speed), board cost 1, unpaid: not credited, the clock is R's |
+| Positive control | the same board, Shuckle ex holding a [G] | credited: 1 hit, faster than R |
+| F on | mid-turn: Bonsly in front, Charmander benched, [R][R] in the discard pile, Flame Patch in hand (F live) | with nothing in the Zone B gives nothing, so kphb = kpf's value; with [R] in the Zone B gives exactly that [R], and the pile F reads is untouched |
+| Opponent board-only | after EndTurn: the opponent's Swablu with [P] and Bulbasaur with [G] benched; Mega Altaria ex, Ivysaur or Squirtle hidden in its hand or deck | kph's value is the same whatever is hidden |
+| Switches | presets and played positions | kph with A and B off is kpf's preset; A only is kpha's, B only kphb's; with R off, kph's value is kpg's on every played position |
+| Parser | | kph3, KPH5, kpha3, kphb3 parse; kph, kphx, kpha, kphc3 rejected; kpf3, kpg3, kpr3, kp3 unchanged |
+
+**Full suite:** 1,974 passed, 0 failed (10 new tests, and the B case added to kpr's test).
