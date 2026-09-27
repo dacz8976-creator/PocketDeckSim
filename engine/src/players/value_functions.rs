@@ -279,6 +279,13 @@ pub fn public_clock_effect_kpg_value_function(state: &State, myself: usize) -> f
     parametric_value_function_ex6(state, myself, &ValueFunctionParams::baseline(), true, false, true, true, false, EvalFeatures::KPG)
 }
 
+/// The `kog` pilot (players/mod.rs `KOG`, piloted like `kp`): `k`'s evaluator with koa's switch A (the opening-Active
+/// term, read only in the setup evaluation) and kpg's part F (the discard-Energy credit, read only after setup), each
+/// exactly as in its own code. The composition of two separately read candidates (Dustin, Sept 27), not a new one.
+pub fn public_clock_effect_kog_value_function(state: &State, myself: usize) -> f64 {
+    parametric_value_function_ex6(state, myself, &ValueFunctionParams::baseline(), true, false, true, true, false, EvalFeatures::KOG)
+}
+
 /// The `kt` tier (players/mod.rs `KT`, piloted like `kp`; registered Sept 26, `rl/results/kt_2026-09-26/README.md`,
 /// amendment 1): `k`'s evaluator with Tools and temporary damage cuts priced by what they do. Switch 1: the defender's
 /// temporary cuts and damage-cut Tools in the threat clock. Switch 2: the flat +10 for a Tool on the Active is 0.
@@ -399,6 +406,9 @@ impl EvalFeatures {
     const KPF: EvalFeatures = EvalFeatures { fuel_credit: true, ..EvalFeatures::KPR };
     /// kpg (diagnostic): F only.
     const KPG: EvalFeatures = EvalFeatures { fuel_credit: true, ..EvalFeatures::OFF };
+    /// kog: koa's switch A and kpg's F together, each exactly as in its own code (Dustin, Sept 27: one pilot by a
+    /// composition check, RUN5 "Rules").
+    const KOG: EvalFeatures = EvalFeatures { opening_first_turn_active: true, fuel_credit: true, ..EvalFeatures::OFF };
     /// kt: switches 1, 2 and 3 on kp (`rl/results/kt_2026-09-26/README.md`).
     const KT: EvalFeatures =
         EvalFeatures { defender_cuts: true, tool_by_holder: true, counter_damage: true, ..EvalFeatures::OFF };
@@ -4634,5 +4644,53 @@ mod kt_tests {
         }
         // Both kinds of state were met.
         assert!(states > 500 && with_source > 50 && with_source < states, "{states} states, {with_source} with a source");
+    }
+}
+
+#[cfg(test)]
+mod kog_tests {
+    //! kog = kp + koa's switch A + kpg's F. Switch A is read only in the setup evaluation, which returns before F; F
+    //! only after it. So kog's value is koa's wherever the opponent's setup is masked, and kpg's everywhere else.
+    use super::*;
+    use crate::observation::{PlayerObservation, RevealedKnowledge};
+    use crate::players::RandomPlayer;
+    use crate::{Deck, Game};
+
+    #[test]
+    fn kog_is_koa_in_setup_and_kpg_after_it() {
+        let flags = EvalFeatures::KOG;
+        assert!(flags.opening_first_turn_active && flags.fuel_credit);
+        assert!(!flags.opening_bench_working && !flags.opening_readiness && !flags.projected_readiness);
+        assert!(!flags.next_attack_reduction && flags.bench_attacker_weight == 0.0 && !flags.defender_modifiers);
+        assert!(!flags.defender_cuts && !flags.tool_by_holder && !flags.counter_damage);
+        let deck = |name: &str| Deck::from_file(&format!("../decks/research/{name}.txt")).unwrap();
+        let (mut setup, mut play) = (0, 0);
+        for (a, b) in [("altaria", "blaziken"), ("blaziken", "suicune"), ("altaria", "lucario")] {
+            for seed in 0..4u64 {
+                let players: Vec<Box<dyn crate::players::Player>> =
+                    vec![Box::new(RandomPlayer { deck: deck(a) }), Box::new(RandomPlayer { deck: deck(b) })];
+                let mut game = Game::new(players, 20_000_000_100 + seed);
+                let mut ticks = 0;
+                while !game.is_game_over() && ticks < 400 {
+                    let state = game.get_state_clone();
+                    for me in 0..2 {
+                        // Each player's own view, as the search evaluates it: the opponent's setup is masked at turn 0.
+                        let observation = PlayerObservation::from_state(&state, me, &RevealedKnowledge::default());
+                        let view = observation.visible_state();
+                        let kog = public_clock_effect_kog_value_function(view, me);
+                        if view.setup_opponent_hidden {
+                            setup += 1;
+                            assert_eq!(kog, public_clock_effect_koa_value_function(view, me));
+                        } else {
+                            play += 1;
+                            assert_eq!(kog, public_clock_effect_kpg_value_function(view, me));
+                        }
+                    }
+                    game.play_tick();
+                    ticks += 1;
+                }
+            }
+        }
+        assert!(setup > 0 && play > 500, "{setup} setup and {play} play evaluations");
     }
 }
