@@ -1,0 +1,37 @@
+kog3 at a823b6d: 14000 table games, clean run True
+lists with a recovery source for F: ['blaziken']
+check 1, pairings with no recovery source (21 pairings): kog3 = koa3 in 10500 of 10500 games -> PASS
+check 2, games where koa3 = kp3 (13152 of 14000): kog3 = kpg3 in 13152 of 13152 games -> PASS
+  (for information: games where koa3's openings = kp3's: 13152; kog3 = kpg3 in 13152)
+check 3, games equal to neither koa3 nor kpg3: 10. Switch A acts in each (kog3's openings = koa3's != kpg3's): 10. Traces replaying the table games exactly: 20 of 20; first difference from kpg3 in setup: 10 of 10; first difference from koa3 after setup (F): 10 of 10 -> PASS
+  (for information: F also changes kp3's own game, kpg3 != kp3, in 4 of them)
+  altaria v blaziken: 10 games (kog3's openings = koa3's in 10); seeds 72000015, 72000068, 72000139, 72000180, 72000217, 72000228, 72000253, 72000354, 72000389, 72000422
+by cell: games equal to koa3 / equal to kpg3 / equal to both / neither
+  altaria v blaziken      447  391  348   10
+  altaria v hydreigon     500  376  376    0
+  altaria v lucario       500  377  377    0
+  altaria v sceptile      500  369  369    0
+  altaria v suicune       500  384  384    0
+  altaria v vespiquen     500  378  378    0
+  altaria v weezing       500  377  377    0
+  blaziken v hydreigon    453  500  453    0
+  blaziken v lucario      452  500  452    0
+  blaziken v sceptile     453  500  453    0
+  blaziken v suicune      474  500  474    0
+  blaziken v vespiquen    444  500  444    0
+  blaziken v weezing      440  500  440    0
+  hydreigon v lucario     500  500  500    0
+  hydreigon v sceptile    500  500  500    0
+  hydreigon v suicune     500  500  500    0
+  hydreigon v vespiquen   500  500  500    0
+  hydreigon v weezing     500  500  500    0
+  lucario v sceptile      500  500  500    0
+  lucario v suicune       500  500  500    0
+  lucario v vespiquen     500  500  500    0
+  lucario v weezing       500  500  500    0
+  sceptile v suicune      500  500  500    0
+  sceptile v vespiquen    500  500  500    0
+  sceptile v weezing      500  500  500    0
+  suicune v vespiquen     500  500  500    0
+  suicune v weezing       500  500  500    0
+  vespiquen v weezing     500  500  500    0
