@@ -12,7 +12,7 @@ Seeds: kt's table on the table's deals (72,000,000 + pairing × 10,000 + i, i < 
 - **Review.** The draft (2b01c65) had its one review on Sept 28 (`REVIEW_amendment2_laptop_2026-09-28.md` in this folder, on main at 9cdcd3b). Skeptics confirmed 34 findings (R1-R13, C1-C10, F1-F11), and all are folded in below. The 7 refuted findings aren't taken up. The harm tests for the Scizor row and the second lists are kph amendment 2's, as that amendment offers them to kt (item 4).
 - **Before any kt game, Dustin's word is needed on:**
   1. this text as kt's registration on kog (amendment 1: the registration is his decision, "the text he is asked to approve");
-  2. the new build on kog, with its timing run. His Sept 27 go-ahead was "build kt now, as registered", on kp3 (`BUILD.md`). Whether it extends to a build on kog is his to say.
+  2. the new build on kog, with its timing run. His Sept 27 go-ahead was "build kt now, as registered", on kp3 (`BUILD.md`). Whether it extends to a build on kog is his to say. Until his word on it is recorded in a commit, no kt build is made on kog.
   3. kt's tables. `BUILD.md` records that the tables wait for his word, and notes that his word depends on which pilot kt is read against.
 - **Also needed before any kta game,** from Dustin or the laptop: amendment 1's open confirmation, Rayquaza as the one clause (d) test, with Suicune reported. A commit records it and names who gave it; a review can't supply it.
 - **The order, set by this amendment:** kog's check, then koh's reading, then kt. No kt build or game comes before koh's verdict is committed, coverage included.
@@ -68,7 +68,7 @@ Dustin's go-ahead of Sept 27 covered the build on kp3; for the build on kog, see
      1. **The refactor of the rules files** `hooks/core.rs` and `hooks/mod.rs` (ed81c8b, 92c4563). This is judged by RUN5's rule for a refactor of a rules file (Dustin, Sept 28), through the Sept 28 engine switch's check (`../engine_switch_2026-09-28/`): the written source equivalence, the full suite, and games that reach the touched paths on the Barrier, Jasmine, Cheren and Blue carriers and the Scizor row, replayed on both builds.
         - The whole-table replays at 43cef0b don't qualify on their own. The table's lists reach the changed lines only on their "no cut" branch.
         - **No kt game until that check's result is committed.** If it fails, kt waits with the engine.
-     2. **The shared player code** in `value_functions.rs` (`threat_candidates`, `owner_next_turn`, `first_attack_turn_number`, `extract_features`' optional clock). This is shown by the full table replays of the bots whose clocks run it: kp3, kq3 and kog3 (item 7).
+     2. **The shared player code** in `value_functions.rs` (`threat_candidates`, `status_clock_turns`, `owner_next_turn`, `first_attack_turn_number`, `extract_features`' optional clock). This is shown by the full table replays of the bots whose clocks run it: kp3, kq3 and kog3 (item 7).
 2. **The frame: the 45 cells.** RUN5 "The frame a candidate is read in" (Sept 27) registers every candidate from Sept 27 on the 45 cells, and this amendment is dated Sept 28.
    - **On the 45 cells** (R4, F11):
      - the footprint;
@@ -89,7 +89,7 @@ Dustin's go-ahead of Sept 27 covered the build on kp3; for the build on kog, see
      - They are kog3's own runs from the laptop's build of a823b6d (`../kog_composition_2026-09-27/table_kog3.jsonl`, `new17_kog3.jsonl`).
      - a823b6d is main 83e17ae plus the branch's player code (kt, kog) and kt's refactor of `hooks/core.rs` and `hooks/mod.rs`. That refactor is qualified only through item 1's check.
      - At the cloud's build of a823b6d, k3 and kp3 replay the official references 14,000 of 14,000. At the laptop's build they replay 1,120 of 1,120, and its `table_kog3` equals the cloud's on 14,000 of 14,000.
-     - **The kt build** is the official engine's commit at the time plus kt's preset change only. That is 233bced once it is pinned; its `engine/` equals bd2907f's.
+     - **The kt build** is 233bced plus kt's preset change only, whether or not the pin has finished (233bced's `engine/` equals bd2907f's), or a later official commit that carries kog, replayed in full as item 7 says. No kt build is made on 83e17ae, which has no kog.
      - The references stay `table_kog3` and `new17_kog3` whichever commit is official, because item 7 checks kog3 at the kt build against both. kog3 at 233bced already equals `table_kog3` on 14,000 of 14,000 (the laptop's `PIN_STATUS.txt`).
    - **Footprint:** the share of the 45 cells' 22,500 paired games whose moves differ from kog3's. It is read first and fixes the route for kt3 and kta3 alike: under 15%, the reserve route; otherwise, the ordinary adoption rule.
    - **The ordinary rule:** paired ΔMSE against kog3 on the 45 cells, with the whole 95% interval below zero. Vetoes are rule v2's, counting only through mixed rows against kog3 on the same deals.
@@ -119,16 +119,16 @@ Dustin's go-ahead of Sept 27 covered the build on kp3; for the build on kog, see
      - The scoreboard's Rayquaza list is a different list: two Trainers and the Dratini card differ.
      - Its 45-cell rows are read under clause (c), for no harm, and never as a second chance at (d).
    - **The Rayquaza archetype's real cells are no longer ungated** (R13).
-     - As 45-cell cells, they count for no harm in (b), in the vetoes and in the ordinary rule.
-     - What stays ungated ("reported, not gated" in the text below) is any gain through them. It is reported and never credited to (d).
+     - As 45-cell cells they count like every other cell: in the ordinary rule's ΔMSE, gains and losses alike, and for no harm in (b)'s τ̂ margin and in the vetoes.
+     - What stays ungated ("reported, not gated" in the text below) is clause (d): no gain through them is ever credited to (d).
    - **Amendment 1's report beside (d)** ("Suicune's own side on its seven kta3-v-kp3 mixed rows, the same rows (c) reads") now reads: Suicune's own side on its nine rows (7 table and 2 new), kta3 against kog3.
 4. **Coverage** (RUN5 "The frame a candidate is read in"). Held-out and coverage decks are read before any verdict is final, whatever the 45-cell result (as kph's registration, section 5 item 6).
    - **A veto there blocks the takeover.** A gain is reported, not credited.
    - **"Not adopted" is provisional** (R1; RUN5 "A 'not adopted' is provisional until the coverage decks are read").
-     - A "nothing adopted" under FOOTPRINT AND ROUTES (kt3 fails; kta3 fails or is closed) stands only once kt3 has been read on all the coverage rows: B2e's 96 pairings, the Scizor row and the four second lists. kta3 is read on them too, if it took the reserve route.
+     - A "nothing adopted" under FOOTPRINT AND ROUTES (kt3 fails; kta3 fails or is closed) stands only once kt3 has been read on all the coverage rows: B2e's 96 pairings, the Scizor row and the four second lists. kta3 is read on them too, by either route.
      - Coverage evidence can reopen kt only through a new reading under the rules in force, never by re-reading this one.
    - **Who is read and how** (R5):
-     - Coverage is run for kt3, and for kta3 when it takes the reserve route (its (b) includes the held-out veto).
+     - Coverage is run for kt3, and for kta3 by either route: on the reserve route its (b) includes the held-out veto, and at 15% or more its ordinary rule includes rule v2's held-out veto and the no-harm tests below (item 2).
      - First each code runs on both sides, as kpg and koh did.
      - Then mixed rows (the code on the held-out or coverage deck, kog3 on the other deck) are run on:
        - every B2e held-out deck that moves more than 2 points further from its figure;
@@ -171,17 +171,21 @@ Dustin's go-ahead of Sept 27 covered the build on kp3; for the build on kog, see
      - Ordinary rule: on the post-freeze events alone, kt3's τ̂ margin over kog3 must be at least half its development margin, with its own 90% interval above zero. The pooled figure and the sign are reported beside it.
      - Reserve route: the no-harm re-check (the τ̂ margin's 90% lower bound at −1.0 or above, and no veto), with its own real cells reported.
    - **If kta3 passed by the reserve route,** its no-harm re-check also applies: the τ̂ margin (kog3 minus kta3) with its 90% lower bound at −1.0 or above, and no veto. Suicune's and Rayquaza's real cells are reported.
+   - **If kta3 passed by the ordinary rule,** its check is the ordinary one: on the post-freeze events alone, kta3's τ̂ margin over kog3 must be at least half its development margin, with its own 90% interval above zero.
    - kt is confirmed only if every check that applies passes.
    - **A failed check reads "not confirmed at this size"** (RUN5; F10). kt's own check is read on its own row, and kog's row stays kog3 against kp3.
-   - **If kog's row is not confirmed** at any read up to and including kt's own (R8), then kt is not confirmed either, since it carries switch A and F. The same holds if kpg's or koa's row, which kog inherits, is not confirmed.
-     - Both are read again at the next pull (the rolling freeze).
+   - **If kog's row, or kpg's or koa's that kog inherits, has not passed** by the pull at which kt's own check passes (R8, F10), kt is not confirmed yet, since it carries switch A and F.
+     - kt's passed check stands and is not read again. kt stays "unconfirmed", and is confirmed at the first later pull at which those rows pass.
+     - A check that failed, kog's or kt's own, is read again at the next pull, on the events after it (the rolling freeze).
      - kt's switches get a new reading only if the working pilot changes from kog.
    - **Until confirmed,** an adopted kt is the working pilot, "unconfirmed". The screen moves to it once the official engine carries its code.
 7. **Identity at the new build.**
    - **Presets:** kt's preset with its three switches off is kog's, and each single-switch preset is kog's plus that switch. The parser tests check that kt3, kta3, ktb3 and ktc3 now parse to the kog-based presets.
    - **Values** (C6), as kog's and koh's builds had. The test runs on every position of 12 random games (Altaria v Blaziken, Blaziken v Suicune, Suicune v Lucario, and Rayquaza v Blaziken with the scoreboard's Rayquaza list), from each player's own view:
      - where the opponent's setup is masked, kt, kta, ktb and ktc equal koa's value, and so kog's;
-     - everywhere else, each equals the same switches on kp (EvalFeatures with kog's two flags off) plus kog's F term, exactly.
+     - everywhere else, each equals the same switches on kp (EvalFeatures with kog's two flags off) plus kog's F term, exactly;
+     - wherever nothing kt reads is on the board (43cef0b's `has_kt_source` is false), kt, kta, ktb and ktc equal kog's value, exactly.
+     - 43cef0b's played-position tests (`the_codes_switch_off_to_kp`; kt's clock equals kp's with its switches off, and the kt codes equal kp with nothing to price) are kept, run on the same switches on kp (EvalFeatures with kog's two flags off).
    - **k3 and kp3:** all 500 deals, 14,000 of 14,000 each, against the official engine's references at the time of the build. That is its frozen table once 233bced is pinned; otherwise `../rules09_fixes_2026-09-26/af8489f_{k3,kp3}_500.jsonl`, which equal it.
    - **kog3 at the kt build:**
      - equal to kog3's table (`../kog_2026-09-27/a823b6d_kog3_500.jsonl`, which the laptop's `table_kog3` equals), all 14,000 games;
@@ -236,6 +240,16 @@ Dustin's go-ahead of Sept 27 covered the build on kp3; for the build on kog, see
   - Hydreigon's "before" (F7);
   - the traces' exact command (C10, F8).
 - **Seeds line:** completed (R11, C9, F6).
+
+**A check of the fold-in** (independent readers, each gap re-checked by a skeptic) found 8 gaps, fixed in the commit after 3913c51:
+- kta3 is read on coverage by either route;
+- the kt build's base is 233bced, never 83e17ae;
+- no kt build before Dustin's word on it;
+- kta3's confirmation if it passed by the ordinary rule;
+- the lapse clause no longer re-reads a passed check;
+- the Rayquaza real cells count both ways in ΔMSE;
+- the values test's third identity;
+- `status_clock_turns` in the shared code.
 
 ## Amendment 1 (Sept 26, before any kt code or game): Dustin's rulings
 
