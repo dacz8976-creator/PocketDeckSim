@@ -1,5 +1,25 @@
 # The floor's Payback pre-use check, re-run under kog3 on the new engine (Sept 28)
 
+## Result: the check passes, and the floor stays usable under kog3
+
+| deck | pilots | wins of 1,920 | verdict | needed | Sept 25 (kp3, old engine) |
+|---|---|---:|---|---|---|
+| brew-06 (Pyukumuku/Silvally Payback) | kog3, kog3 | 124 (6.5%) | **fail** | fail ✔ | 128, fail |
+| brew-06b (Grass, Team Rocket's Scyther) | kog3, kog3 | 259 (13.5%) | **fail** | fail ✔ | 281, fail |
+| deck 14 (Comfey/Raticate/Hypno), control | k3, k3 | 196 (10.2%) | **control reading: untrusted** | untrusted ✔ | 195, untrusted |
+| brew-05b (Meowstic/Hatterene/Comfey) | kog3, kog3 | 584 (30.4%) | clears the floor | descriptive | 597 (31.1%) |
+| deck 07 (Skarmory stall) | kog3, kog3 | 903 (47.0%) | clears the floor | descriptive | 908 (47.3%) |
+
+- **The Payback lists fail with their plan in use**, so a fail isn't the bot ignoring it:
+  - brew-06: Silvally attacks on 587 of 589 chances, Pyukumuku is benched on 58%, Rocky Helmet is played on 90%.
+  - brew-06b: Silvally 591 of 598, Team Rocket's Scyther 178 of 184, Pyukumuku 66%, Rocky Helmet 62%.
+- **The control works.** Team Rocket's Goo-zooka is played on 66 of 4,486 chances (1.5%), under the 25% flag.
+- **Tracing changed no game.** A plain `run_screen.py` at 240 games per matchup, same seeds (`run_screen.txt`), gives exactly the floor's wins against every opponent for brew-06 and brew-06b.
+- **The anchors moved by under 1 point,** within the floor's own noise (about ±1.8 at 1,920 games).
+- Pages, per-game files, coverage and timing are in this folder; the control's are in `control_k3/`.
+
+---
+
 **Written and committed before any game of this check was played.**
 
 **Why:**
