@@ -29,3 +29,23 @@ Seeds: the identity checks use the table's deals only (72,000,000 + pairing × 1
     - koh with A and B off (kog + R) = koa in setup, and kpf after it. There is no code for kog + R, so this is its identity check.
 - The parser test above.
 - **Full suite:** 1,975 passed, 0 failed.
+
+## Identity (agreed with the laptop, Sept 27-28)
+
+**Every check passes** (`run_identity.sh`, `identity.py`, `identity_check.txt`). All runs are at bd2907f, on the table's deals. A game is equal when its moves, choices, openings and result all are.
+
+| check | reference | result |
+|---|---|---|
+| kog3 (koh with R′ off), all 500 deals | the cloud's kog3 table, `../kog_2026-09-27/a823b6d_kog3_500.jsonl` (the laptop's `table_kog3` equals it) | 14,000 of 14,000; clean |
+| kog + R (koh with A and B off) | no code of its own: checked on values (tests above) | koa's value in setup and kpf's after it, on every position tested |
+| k3, first 40 deals | `../rules09_fixes_2026-09-26/af8489f_k3_500.jsonl` | 1,120 of 1,120; clean |
+| kp3, first 40 deals | `af8489f_kp3_500.jsonl` | 1,120 of 1,120; clean |
+| koh3 smoke, first 40 deals | — | 1,120 games; clean |
+
+- The smoke's changed games aren't counted here. The laptop reads the footprint first, against kog3 on the 45 cells.
+- The base reading is kph's, as registered, with kog3 as the base: the laptop's `table_kog3` and `new17_kog3`, and koh3's mixed rows against kog3.
+
+## Files
+
+- `run_identity.sh`, `identity.py`, `identity_check.txt`, `timing.txt`.
+- The raw outputs: `bd2907f_kog3_500`, `bd2907f_{k3,kp3,koh3}_40` (`.jsonl` and `.txt`).
