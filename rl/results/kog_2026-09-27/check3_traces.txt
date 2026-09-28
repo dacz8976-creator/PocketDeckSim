@@ -1,0 +1,120 @@
+seed 72000015: kog3 moves 3d63f24eadb02582 (table: true), koa3 moves 76184e183440280a (table: true)
+first difference at step 40: turn 4 (play), player 0 (blaziken) chooses from 4 moves; same state in both: true
+  kog3: Attach { attachments: [(1, Fire, 0)], is_turn_energy: true }
+  koa3: Play { trainer_card: B1 217 Flame Patch }
+  that player: discard-pile Energy [Fire]; Flame Patch in hand 1, in deck 0; Active Heatmor (0 Energy)
+
+seed 72000015: kog3 moves 3d63f24eadb02582 (table: true), kpg3 moves 912492a1a93e4bf8 (table: true)
+first difference at step 0: turn 0 (setup), player 1 (altaria) chooses from 2 moves; same state in both: true
+  kog3: Place(Pokemon(B1 184 Eevee), 0)
+  kpg3: Place(Pokemon(B2b 040 Darkrai), 0)
+  that player: discard-pile Energy []; Flame Patch in hand 0, in deck 0; Active none
+
+seed 72000068: kog3 moves 8981e8efd2358b52 (table: true), koa3 moves de4e8f5c95a07ec2 (table: true)
+first difference at step 48: turn 6 (play), player 1 (blaziken) chooses from 6 moves; same state in both: true
+  kog3: Attach { attachments: [(1, Fire, 0)], is_turn_energy: true }
+  koa3: Play { trainer_card: B1 217 Flame Patch }
+  that player: discard-pile Energy [Fire]; Flame Patch in hand 1, in deck 1; Active Castform Sunny Form (0 Energy)
+
+seed 72000068: kog3 moves 8981e8efd2358b52 (table: true), kpg3 moves be2a8a578a452829 (table: true)
+first difference at step 0: turn 0 (setup), player 0 (altaria) chooses from 2 moves; same state in both: true
+  kog3: Place(Pokemon(B1 184 Eevee), 0)
+  kpg3: Place(Pokemon(B1 196 Swablu), 0)
+  that player: discard-pile Energy []; Flame Patch in hand 0, in deck 0; Active none
+
+seed 72000139: kog3 moves 849b419084bab3e3 (table: true), koa3 moves 1d4a3a89b4f48a5f (table: true)
+first difference at step 43: turn 6 (play), player 0 (blaziken) chooses from 6 moves; same state in both: true
+  kog3: Attach { attachments: [(1, Fire, 2)], is_turn_energy: true }
+  koa3: Play { trainer_card: B1 217 Flame Patch }
+  that player: discard-pile Energy [Fire]; Flame Patch in hand 1, in deck 1; Active Castform Sunny Form (1 Energy)
+
+seed 72000139: kog3 moves 849b419084bab3e3 (table: true), kpg3 moves 63a566d9c9ec37a4 (table: true)
+first difference at step 0: turn 0 (setup), player 1 (altaria) chooses from 2 moves; same state in both: true
+  kog3: Place(Pokemon(B1 184 Eevee), 0)
+  kpg3: Place(Pokemon(B1 196 Swablu), 0)
+  that player: discard-pile Energy []; Flame Patch in hand 0, in deck 0; Active none
+
+seed 72000180: kog3 moves a1c1bf2f0528a943 (table: true), koa3 moves bb860a327d3e08f4 (table: true)
+first difference at step 36: turn 4 (play), player 1 (blaziken) chooses from 3 moves; same state in both: true
+  kog3: Attack(Attack { energy_required: [Fire], title: "Sunny Scorching", fixed_damage: 30, effect: Some("If a Stadium is in play, your opponent's Active Pokémon is now Burned.") })
+  koa3: Play { trainer_card: B1 217 Flame Patch }
+  that player: discard-pile Energy [Fire]; Flame Patch in hand 1, in deck 1; Active Castform Sunny Form (1 Energy)
+
+seed 72000180: kog3 moves a1c1bf2f0528a943 (table: true), kpg3 moves 5973b04deb005b0d (table: true)
+first difference at step 0: turn 0 (setup), player 0 (altaria) chooses from 3 moves; same state in both: true
+  kog3: Place(Pokemon(B1 184 Eevee), 0)
+  kpg3: Place(Pokemon(B2b 040 Darkrai), 0)
+  that player: discard-pile Energy []; Flame Patch in hand 0, in deck 0; Active none
+
+seed 72000217: kog3 moves d281a6da9272da08 (table: true), koa3 moves eb40bb7427084834 (table: true)
+first difference at step 52: turn 7 (play), player 0 (blaziken) chooses from 7 moves; same state in both: true
+  kog3: Place(Pokemon(B1 033 Torchic), 3)
+  koa3: Play { trainer_card: B1 217 Flame Patch }
+  that player: discard-pile Energy [Fire]; Flame Patch in hand 1, in deck 1; Active Heatmor (1 Energy)
+
+seed 72000217: kog3 moves d281a6da9272da08 (table: true), kpg3 moves 63671ab2f60276a5 (table: true)
+first difference at step 2: turn 0 (setup), player 1 (altaria) chooses from 2 moves; same state in both: true
+  kog3: Place(Pokemon(B1 184 Eevee), 0)
+  kpg3: Place(Pokemon(B1 196 Swablu), 0)
+  that player: discard-pile Energy []; Flame Patch in hand 0, in deck 0; Active none
+
+seed 72000228: kog3 moves 9cff55964cd6e8ba (table: true), koa3 moves 87f03be6dc571c1c (table: true)
+first difference at step 58: turn 9 (play), player 1 (blaziken) chooses from 3 moves; same state in both: true
+  kog3: Attach { attachments: [(1, Fire, 0)], is_turn_energy: true }
+  koa3: Attach { attachments: [(1, Fire, 3)], is_turn_energy: true }
+  that player: discard-pile Energy []; Flame Patch in hand 1, in deck 1; Active Castform Sunny Form (1 Energy)
+
+seed 72000228: kog3 moves 9cff55964cd6e8ba (table: true), kpg3 moves 3ba8da7fc66baf09 (table: true)
+first difference at step 2: turn 0 (setup), player 0 (altaria) chooses from 4 moves; same state in both: true
+  kog3: Place(Pokemon(B1 184 Eevee), 0)
+  kpg3: Place(Pokemon(B2b 040 Darkrai), 0)
+  that player: discard-pile Energy []; Flame Patch in hand 0, in deck 0; Active none
+
+seed 72000253: kog3 moves bf516d599b9fc435 (table: true), koa3 moves 94cc65e3e0febffc (table: true)
+first difference at step 46: turn 6 (play), player 0 (blaziken) chooses from 7 moves; same state in both: true
+  kog3: Attach { attachments: [(1, Fire, 3)], is_turn_energy: true }
+  koa3: Play { trainer_card: B1 217 Flame Patch }
+  that player: discard-pile Energy [Fire]; Flame Patch in hand 1, in deck 0; Active Castform Sunny Form (1 Energy)
+
+seed 72000253: kog3 moves bf516d599b9fc435 (table: true), kpg3 moves 52823702a57dcad9 (table: true)
+first difference at step 0: turn 0 (setup), player 1 (altaria) chooses from 2 moves; same state in both: true
+  kog3: Place(Pokemon(B1 184 Eevee), 0)
+  kpg3: Place(Pokemon(B1 196 Swablu), 0)
+  that player: discard-pile Energy []; Flame Patch in hand 0, in deck 0; Active none
+
+seed 72000354: kog3 moves 267891685b8d1c01 (table: true), koa3 moves ed06425647a4930e (table: true)
+first difference at step 37: turn 6 (play), player 1 (blaziken) chooses from 5 moves; same state in both: true
+  kog3: Attach { attachments: [(1, Fire, 0)], is_turn_energy: true }
+  koa3: Play { trainer_card: B1 217 Flame Patch }
+  that player: discard-pile Energy [Fire, Fire]; Flame Patch in hand 1, in deck 1; Active Heatmor (0 Energy)
+
+seed 72000354: kog3 moves 267891685b8d1c01 (table: true), kpg3 moves ffd06b6a0539e552 (table: true)
+first difference at step 0: turn 0 (setup), player 0 (altaria) chooses from 3 moves; same state in both: true
+  kog3: Place(Pokemon(B1 184 Eevee), 0)
+  kpg3: Place(Pokemon(B2b 040 Darkrai), 0)
+  that player: discard-pile Energy []; Flame Patch in hand 0, in deck 0; Active none
+
+seed 72000389: kog3 moves bf456c88ecce4516 (table: true), koa3 moves 9c9c31fef5a19c03 (table: true)
+first difference at step 32: turn 4 (play), player 0 (blaziken) chooses from 3 moves; same state in both: true
+  kog3: Attack(Attack { energy_required: [Fire], title: "Sunny Scorching", fixed_damage: 30, effect: Some("If a Stadium is in play, your opponent's Active Pokémon is now Burned.") })
+  koa3: Play { trainer_card: B1 225 Copycat }
+  that player: discard-pile Energy [Fire]; Flame Patch in hand 0, in deck 2; Active Castform Sunny Form (1 Energy)
+
+seed 72000389: kog3 moves bf456c88ecce4516 (table: true), kpg3 moves 82b8ccc530c793b5 (table: true)
+first difference at step 0: turn 0 (setup), player 1 (altaria) chooses from 2 moves; same state in both: true
+  kog3: Place(Pokemon(B1 184 Eevee), 0)
+  kpg3: Place(Pokemon(B2b 040 Darkrai), 0)
+  that player: discard-pile Energy []; Flame Patch in hand 0, in deck 0; Active none
+
+seed 72000422: kog3 moves 30246a476df5e934 (table: true), koa3 moves 39f34ed39a311d70 (table: true)
+first difference at step 71: turn 9 (play), player 1 (blaziken) chooses from 5 moves; same state in both: true
+  kog3: Play { trainer_card: B1 225 Copycat }
+  koa3: Play { trainer_card: B1 217 Flame Patch }
+  that player: discard-pile Energy [Fire]; Flame Patch in hand 1, in deck 0; Active Mega Blaziken ex (3 Energy)
+
+seed 72000422: kog3 moves 30246a476df5e934 (table: true), kpg3 moves 530774a6c2ccab08 (table: true)
+first difference at step 2: turn 0 (setup), player 0 (altaria) chooses from 2 moves; same state in both: true
+  kog3: Place(Pokemon(B1 184 Eevee), 0)
+  kpg3: Place(Pokemon(B1 196 Swablu), 0)
+  that player: discard-pile Energy []; Flame Patch in hand 0, in deck 0; Active none
+

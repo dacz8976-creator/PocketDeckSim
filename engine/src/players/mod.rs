@@ -178,6 +178,33 @@ pub enum PlayerCode {
     KPF { max_depth: usize },
     /// 'kpg<N>': 'kp<N>' with part F only. Diagnostic, never adopted.
     KPG { max_depth: usize },
+    /// 'kph<N>' is 'kpg<N>' + R', kpf's projection with its two diagnosed faults fixed (fix A: evolution steps count as
+    /// missing Energy in the projected readiness; fix B: the clock may give the Zone Energy to a benched Pokemon that
+    /// can reach the Active Spot), registered Sept 27 (rl/results/kph_2026-09-27/REGISTRATION.md;
+    /// value_functions::public_clock_effect_kph_value_function).
+    KPH { max_depth: usize },
+    /// 'kpha<N>': kpf with fix A only. Diagnostic.
+    KPHA { max_depth: usize },
+    /// 'kphb<N>': kpf with fix B only. Diagnostic.
+    KPHB { max_depth: usize },
+    /// 'kog<N>': 'kp<N>' with koa's switch A and kpg's part F, each exactly as in its own code: the one pilot Dustin
+    /// ruled on Sept 27, reached by a composition check (rl/RUN5.md "Rules")
+    /// (value_functions::public_clock_effect_kog_value_function).
+    KOG { max_depth: usize },
+    /// 'koh<N>': 'kog<N>' + R', kph's projection with fixes A and B, on the composed pilot (kph's registration section
+    /// 2; value_functions::public_clock_effect_koh_value_function).
+    KOH { max_depth: usize },
+    /// 'kt<N>' is 'kp<N>' with Tools and temporary damage cuts priced by what they do, registered Sept 26
+    /// (rl/results/kt_2026-09-26/README.md, amendment 1): the defender's temporary cuts and damage-cut Tools in the
+    /// threat clock (switch 1), no flat +10 for a Tool on the Active (switch 2), and damage back to the attacker in the
+    /// holder's own clock (switch 3) (value_functions::public_clock_effect_kt_value_function).
+    KT { max_depth: usize },
+    /// 'kta<N>': 'kp<N>' with kt's switch 1 only. Read under the reserve route; otherwise attribution.
+    KTA { max_depth: usize },
+    /// 'ktb<N>': 'kp<N>' with kt's switch 2 only. Diagnostic.
+    KTB { max_depth: usize },
+    /// 'ktc<N>': 'kp<N>' with kt's switch 3 only. Diagnostic.
+    KTC { max_depth: usize },
 }
 /// Custom parser function enforcing case-insensitivity
 pub fn parse_player_code(s: &str) -> Result<PlayerCode, String> {
@@ -230,9 +257,28 @@ pub fn parse_player_code(s: &str) -> Result<PlayerCode, String> {
             "Invalid player code: {s}. Use 't<number>', e.g. 't3'"
         ));
     }
-    // 'kpf<N>' and 'kpg<N>' (see PlayerCode::KPF). Before 'kp<N>' and 'k<N>', which would reject them.
+    // 'kta<N>', 'ktb<N>', 'ktc<N>', then 'kt<N>' (see PlayerCode::KT): the one-switch codes before 'kt<N>', which
+    // would reject them, and all four before 'k<N>'. No other code starts with 'kt'.
     for (prefix, code) in [
-        ("kpf", (|max_depth| PlayerCode::KPF { max_depth }) as fn(usize) -> PlayerCode),
+        ("kta", (|max_depth| PlayerCode::KTA { max_depth }) as fn(usize) -> PlayerCode),
+        ("ktb", |max_depth| PlayerCode::KTB { max_depth }),
+        ("ktc", |max_depth| PlayerCode::KTC { max_depth }),
+        ("kt", |max_depth| PlayerCode::KT { max_depth }),
+    ] {
+        if let Some(depth) = lower.strip_prefix(prefix) {
+            if let Ok(max_depth) = depth.parse::<usize>() {
+                return Ok(code(max_depth));
+            }
+            return Err(format!("Invalid player code: {s}. Use '{prefix}<number>', e.g. '{prefix}3'"));
+        }
+    }
+    // 'kpf<N>' and 'kpg<N>' (see PlayerCode::KPF), and 'kpha<N>', 'kphb<N>' before 'kph<N>' (see PlayerCode::KPH).
+    // Before 'kp<N>' and 'k<N>', which would reject them.
+    for (prefix, code) in [
+        ("kpha", (|max_depth| PlayerCode::KPHA { max_depth }) as fn(usize) -> PlayerCode),
+        ("kphb", |max_depth| PlayerCode::KPHB { max_depth }),
+        ("kph", |max_depth| PlayerCode::KPH { max_depth }),
+        ("kpf", |max_depth| PlayerCode::KPF { max_depth }),
         ("kpg", |max_depth| PlayerCode::KPG { max_depth }),
     ] {
         if let Some(depth) = lower.strip_prefix(prefix) {
@@ -266,12 +312,15 @@ pub fn parse_player_code(s: &str) -> Result<PlayerCode, String> {
         }
         return Err(format!("Invalid player code: {s}. Use 'kq<number>', e.g. 'kq3'"));
     }
-    // 'koa<N>', 'kob<N>', 'kor<N>': the opening-Active switches (see PlayerCode::KOA). Before 'k<N>', which would
-    // reject them. There is no bare 'ko' code; if one is ever added, parse these three before it.
-    let opening_codes: [(&str, fn(usize) -> PlayerCode); 3] = [
+    // 'koa<N>', 'kob<N>', 'kor<N>': the opening-Active switches (see PlayerCode::KOA); 'kog<N>', switch A with
+    // kpg's F (see PlayerCode::KOG); and 'koh<N>', kog + R' (see PlayerCode::KOH). Before 'k<N>', which would reject
+    // them. There is no bare 'ko' code; if one is ever added, parse these five before it.
+    let opening_codes: [(&str, fn(usize) -> PlayerCode); 5] = [
         ("koa", |max_depth| PlayerCode::KOA { max_depth }),
         ("kob", |max_depth| PlayerCode::KOB { max_depth }),
         ("kor", |max_depth| PlayerCode::KOR { max_depth }),
+        ("kog", |max_depth| PlayerCode::KOG { max_depth }),
+        ("koh", |max_depth| PlayerCode::KOH { max_depth }),
     ];
     for (prefix, code) in opening_codes {
         if let Some(depth) = lower.strip_prefix(prefix) {
@@ -609,12 +658,30 @@ fn get_player(deck: Deck, opponent_deck: &Deck, player: &PlayerCode) -> Box<dyn 
         | PlayerCode::KOB { max_depth }
         | PlayerCode::KOR { max_depth }
         | PlayerCode::KPF { max_depth }
-        | PlayerCode::KPG { max_depth } => {
+        | PlayerCode::KPG { max_depth }
+        | PlayerCode::KOG { max_depth }
+        | PlayerCode::KOH { max_depth }
+        | PlayerCode::KPH { max_depth }
+        | PlayerCode::KPHA { max_depth }
+        | PlayerCode::KPHB { max_depth }
+        | PlayerCode::KT { max_depth }
+        | PlayerCode::KTA { max_depth }
+        | PlayerCode::KTB { max_depth }
+        | PlayerCode::KTC { max_depth } => {
             let value_function: expectiminimax_player::ValueFunction = match player {
                 PlayerCode::KOA { .. } => Box::new(value_functions::public_clock_effect_koa_value_function),
                 PlayerCode::KOB { .. } => Box::new(value_functions::public_clock_effect_kob_value_function),
                 PlayerCode::KPF { .. } => Box::new(value_functions::public_clock_effect_kpf_value_function),
                 PlayerCode::KPG { .. } => Box::new(value_functions::public_clock_effect_kpg_value_function),
+                PlayerCode::KOG { .. } => Box::new(value_functions::public_clock_effect_kog_value_function),
+                PlayerCode::KOH { .. } => Box::new(value_functions::public_clock_effect_koh_value_function),
+                PlayerCode::KPH { .. } => Box::new(value_functions::public_clock_effect_kph_value_function),
+                PlayerCode::KPHA { .. } => Box::new(value_functions::public_clock_effect_kpha_value_function),
+                PlayerCode::KPHB { .. } => Box::new(value_functions::public_clock_effect_kphb_value_function),
+                PlayerCode::KT { .. } => Box::new(value_functions::public_clock_effect_kt_value_function),
+                PlayerCode::KTA { .. } => Box::new(value_functions::public_clock_effect_kta_value_function),
+                PlayerCode::KTB { .. } => Box::new(value_functions::public_clock_effect_ktb_value_function),
+                PlayerCode::KTC { .. } => Box::new(value_functions::public_clock_effect_ktc_value_function),
                 _ => Box::new(value_functions::public_clock_effect_kor_value_function),
             };
             Box::new(PublicPricingPlayer {
@@ -761,6 +828,54 @@ mod s42_tier_parse_tests {
         assert!(parse_player_code("kpf").is_err());
         assert!(parse_player_code("kpfx").is_err());
         assert!(parse_player_code("kpg").is_err());
+        // kph, kpha, kphb: with kpf and kpg, before 'kp<N>'; kpha and kphb before kph.
+        assert_eq!(parse_player_code("kph3").unwrap(), PlayerCode::KPH { max_depth: 3 });
+        assert_eq!(parse_player_code("KPH5").unwrap(), PlayerCode::KPH { max_depth: 5 });
+        assert_eq!(parse_player_code("kpha3").unwrap(), PlayerCode::KPHA { max_depth: 3 });
+        assert_eq!(parse_player_code("kphb3").unwrap(), PlayerCode::KPHB { max_depth: 3 });
+        assert_eq!(parse_player_code("kpf3").unwrap(), PlayerCode::KPF { max_depth: 3 });
+        assert_eq!(parse_player_code("kpg3").unwrap(), PlayerCode::KPG { max_depth: 3 });
+        assert_eq!(parse_player_code("kpr3").unwrap(), PlayerCode::KPR { max_depth: 3 });
+        assert_eq!(parse_player_code("kp3").unwrap(), PlayerCode::KP { max_depth: 3 });
+        assert!(parse_player_code("kph").is_err());
+        assert!(parse_player_code("kphx").is_err());
+        assert!(parse_player_code("kpha").is_err());
+        assert!(parse_player_code("kphc3").is_err());
+        // kog: with koa, kob and kor, before 'k<N>'; none of the codes it combines moved.
+        assert_eq!(parse_player_code("kog3").unwrap(), PlayerCode::KOG { max_depth: 3 });
+        assert_eq!(parse_player_code("KOG5").unwrap(), PlayerCode::KOG { max_depth: 5 });
+        assert_eq!(parse_player_code("koa3").unwrap(), PlayerCode::KOA { max_depth: 3 });
+        assert_eq!(parse_player_code("kob3").unwrap(), PlayerCode::KOB { max_depth: 3 });
+        assert_eq!(parse_player_code("kor3").unwrap(), PlayerCode::KOR { max_depth: 3 });
+        assert_eq!(parse_player_code("kpg3").unwrap(), PlayerCode::KPG { max_depth: 3 });
+        assert_eq!(parse_player_code("kpf3").unwrap(), PlayerCode::KPF { max_depth: 3 });
+        assert!(parse_player_code("kog").is_err());
+        assert!(parse_player_code("kogx").is_err());
+        // koh: with koa, kob, kor and kog, before 'k<N>'.
+        assert_eq!(parse_player_code("koh3").unwrap(), PlayerCode::KOH { max_depth: 3 });
+        assert_eq!(parse_player_code("KOH5").unwrap(), PlayerCode::KOH { max_depth: 5 });
+        assert_eq!(parse_player_code("kog3").unwrap(), PlayerCode::KOG { max_depth: 3 });
+        assert_eq!(parse_player_code("kph3").unwrap(), PlayerCode::KPH { max_depth: 3 });
+        assert!(parse_player_code("koh").is_err());
+        assert!(parse_player_code("kohx").is_err());
+        // kta, ktb, ktc before kt, kt before 'k<N>'; 'kt13' is depth 13 and 'kt1a' is rejected.
+        assert_eq!(parse_player_code("kta3").unwrap(), PlayerCode::KTA { max_depth: 3 });
+        assert_eq!(parse_player_code("ktb3").unwrap(), PlayerCode::KTB { max_depth: 3 });
+        assert_eq!(parse_player_code("ktc3").unwrap(), PlayerCode::KTC { max_depth: 3 });
+        assert_eq!(parse_player_code("kt3").unwrap(), PlayerCode::KT { max_depth: 3 });
+        assert_eq!(parse_player_code("KT3").unwrap(), PlayerCode::KT { max_depth: 3 });
+        assert_eq!(parse_player_code("kt13").unwrap(), PlayerCode::KT { max_depth: 13 });
+        assert!(parse_player_code("kt1a").is_err());
+        assert!(parse_player_code("kt").is_err());
+        assert!(parse_player_code("kta").is_err());
+        assert!(parse_player_code("ktd3").is_err());
+        // Nothing earlier moved: 't<N>', 'k<N>' and every other 'k' code still parse as before.
+        assert_eq!(parse_player_code("t3").unwrap(), PlayerCode::T { max_depth: 3 });
+        assert_eq!(parse_player_code("k3").unwrap(), PlayerCode::K { max_depth: 3 });
+        assert_eq!(parse_player_code("kq3").unwrap(), PlayerCode::KQ { max_depth: 3 });
+        assert_eq!(parse_player_code("kd3").unwrap(), PlayerCode::KD { max_depth: 3 });
+        assert_eq!(parse_player_code("kpr3").unwrap(), PlayerCode::KPR { max_depth: 3 });
+        assert_eq!(parse_player_code("kpf3").unwrap(), PlayerCode::KPF { max_depth: 3 });
         // §115: 'd<N>' must parse and must not shadow anything earlier.
         assert_eq!(
             parse_player_code("d3").unwrap(),
