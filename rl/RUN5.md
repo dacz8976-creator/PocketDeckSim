@@ -372,7 +372,8 @@ sides with k3 still available; the 0.7.2 wheel and its run identities are untouc
    games with the sequential stopping rule, the bot on the archetype's list and never his exact list; B5 blind-spot
    fixes under the card-agnostic rule, each with a paired A/B and the sentinels (queued classes, Sept 26: Tools and
    turn effects (`kt`); Trainer pricing, shown early by the gauntlet's variation check, where one swapped Trainer moved a
-   deck 4 to 7 points on average, Team Rocket's Boss especially; discard-cost attacks and discard-pile Energy (`kpf`)); B6 done (skill explains under 0.6 of
+   deck 4 to 7 points on average, Team Rocket's Boss especially (also X Speed played with no retreat after it, 23% of
+   its turns and 52% in Dustin's deck 12, `results/xspeed_census_2026-09-27/`); discard-cost attacks and discard-pile Energy (`kpf`)); B6 done (skill explains under 0.6 of
    any gap; Sceptile v Vespiquen out of quarantine as drift-sensitive, Altaria v Sceptile in); B7 not now, gated by
    the cloud transfer probe or three card-patch entries in B5's log.
 4. Not doing: policy networks trained on who won as the pilot (one network per mispiloted deck as a blind-spot
@@ -412,6 +413,14 @@ sides with k3 still available; the 0.7.2 wheel and its run identities are untouc
   - A no-harm fix can't show a gain of fixed size by design.
   - Its confirmation is a re-check of no harm on post-freeze Limitless events (after Sept 24): the τ̂ margin's 90% lower bound at −1.0 or above, and no veto, with the fix's own real cells reported.
   - Until then it is the working pilot, "unconfirmed".
+- **When post-freeze data is read** (Dustin, Sept 27; standing rule; the pull is in `results/postfreeze_2026-09-27/`).
+  - **Trigger:** read once, when the post-freeze pull reaches half the development half: 804 matches on the 28 panel cells and 303 on the 17 new cells. That is the smallest size at which the confirmation rule has meaningful power. Until then, re-pull and count sizes only, never results.
+  - **The Mega Garchomp ex clause:** if its release (mid or late October) comes first, read at the last pull before it, with the size printed beside the result. That is a confirmation on the B4a meta, which the pilots were built against.
+  - **One pull, every pending check.** Every check waiting on post-freeze data is read at the same pull. The list is pre-registered in the pull's folder before the data is opened. The data is looked at once, for everything, never once per candidate.
+  - **Rolling freeze.** Once read, that pull becomes development data like everything before it. The next confirmation waits for events after its date. The post-Garchomp meta becomes the next confirmation set that way, once the table decks are refreshed for it.
+  - **How a result reads:**
+    - At this size the pass criterion is unchanged: direction, plus at least half the development margin, with the interval not crossing a loss (its own 90% interval above zero; for a no-harm re-check, the lower bound at −1.0 or above and no veto).
+    - A failure reads **"not confirmed at this size"**, never "no better", as for the first holdout, and more strongly here.
 - **The frame a candidate is read in** (Dustin, Sept 27).
   - A candidate's adoption verdict is read on the cells it was registered on. Changing the frame after the result is what the rules exist to prevent.
   - An "adopted" must also survive the coverage cells it touches: there they count for no harm only. A veto blocks the takeover; a gain is reported, not credited.
@@ -424,6 +433,8 @@ sides with k3 still available; the 0.7.2 wheel and its run identities are untouc
     - accuracy no worse than the better component alone.
   - Each component keeps its own verdict and evidence, and the combined pilot inherits both.
   - First case: kp3 + koa's opening (switch A) + kpg's discard credit, run once kpg's held-out check is in.
+    - **Passed Sept 28 as `kog`** (`results/kog_composition_2026-09-27/READING.md`): identity 14,000 of 14,000; real error 15.5 → 14.0 on the 45 cells; no veto; level with kpg3 (−0.01).
+    - It is the working pilot, "unconfirmed" until the post-freeze read. The screen moves to it once the official engine carries its code.
 - **Open causes** (cells whose remaining error has no named cause; each fix's reading adds to this list):
   - **Sceptile v Vespiquen:** sim about 66, real about 33.
   - **Altaria v Vespiquen and Altaria v Weezing:** koa's correct opening fix lifts Altaria past their real cells (52.0 v 37.6 and 40.3 v 33.0), so their remaining error has one less explanation (Dustin, Sept 27).

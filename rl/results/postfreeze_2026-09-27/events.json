@@ -1,0 +1,54 @@
+{
+  "frozen_at": "2026-09-27T21:39:08.145491+00:00",
+  "rule": ", fixed here before any outcome is fetched:\n- Events: the Limitless API tournament list (game=POCKET, limit=1000), format null or STANDARD, scheduled start date\n  (UTC) on or after 2026-09-25, and at least 24 hours before this pull's frozen time (the API has no completion\n  timestamp). The skill model's collection ended with start dates through 2026-09-24 UTC, so no event overlaps it,\n  and nothing from the spent Sept 25 holdout is read.\n- Membership is frozen from event metadata only (events.json, with the pull time), before any standings or pairings.\n- Outcomes: details, standings and pairings per event, cached raw with the same fetch code (honours RateLimit and\n  Retry-After). An event with any \"unresolved\" pairing is unfinished: it is dropped whole and listed.\n- Matches: the skill model's serialize_matches, unchanged (one row per API pairing entry; exact deck ids).",
+  "start_date_utc": "2026-09-25",
+  "latest_start_utc": "2026-09-26T21:39:08.145491Z",
+  "events": [
+    {
+      "game": "POCKET",
+      "name": "BRICKVERSARY₊⊹⁀➴prize: US$150, FA CARDS",
+      "date": "2026-09-25T22:05:00.000Z",
+      "format": null,
+      "id": "6a76311ccdc0391d7fa5fb09",
+      "players": 122,
+      "organizerId": 2593,
+      "split": "postfreeze"
+    },
+    {
+      "game": "POCKET",
+      "name": "Umbreon99's Aura Sphere #6 ($10 USD)",
+      "date": "2026-09-25T17:50:00.000Z",
+      "format": null,
+      "id": "6a8743ba5a30714095575489",
+      "players": 114,
+      "organizerId": 2748,
+      "split": "postfreeze"
+    },
+    {
+      "game": "POCKET",
+      "name": "PMPT #48 - TEAM ROCKETS ALTERCATION!!! | $100 USD",
+      "date": "2026-09-26T16:00:00.000Z",
+      "format": null,
+      "id": "6ab1739df127b1b52c27ed98",
+      "players": 272,
+      "organizerId": 13,
+      "split": "postfreeze"
+    },
+    {
+      "game": "POCKET",
+      "name": "⭐️ WIN A DELUXE 2.0 CARD︱ $20 BEC'S WEEKLY ⭐️",
+      "date": "2026-09-25T13:00:00.000Z",
+      "format": null,
+      "id": "6ab4eb04e905c1db68749406",
+      "players": 85,
+      "organizerId": 2011,
+      "split": "postfreeze"
+    }
+  ],
+  "too_recent_not_taken": [
+    "6ab7d10f783097f8dcb71331",
+    "6ab808f6880ed327106dd614",
+    "6ab875b9783097f8dcb71b53",
+    "6ab8fbe7880ed327106ddca0"
+  ]
+}

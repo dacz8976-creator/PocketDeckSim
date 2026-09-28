@@ -1,6 +1,11 @@
 # REGISTERED (Sept 27): kph = kpg + R′, kpf's projection with its two diagnosed faults fixed
 
 **Registered before any kph code or game.** One review, two lenses (engine code; rules and plan), all findings applied: `REVIEW.md`.
+
+**Amendment 1 (Sept 27, laptop session, before any kph game; wording from the cloud's build): "already retreated".**
+- `has_retreated` blocks the credit only when the credited attack must happen this turn, meaning the projection holds this turn only. That is the opponent's side at its next attack while its turn is running (the usual leaf).
+- On the own side mid-turn, the projection also holds next turn, and a retreat then isn't blocked by one already made this turn.
+- This is how the build (7e7d864) reads section 2's "when the credited attack is this turn". It makes both registered Q10 boards (section 4) come out as written: the positive control carries `has_retreated` = true and is credited through next turn's retreat.
 - Dustin, Sept 27, in chat (recorded here first), on kpf's vetoes: "leave it provisional and diagnose … the fix is registered as a new candidate on top of kpg and read against the 45 cells and the coverage decks; the vetoed cells are the cells that decide it, not the cells it's tuned to."
 - Sources:
   - the diagnosis `../kpf_2026-09-26/diagnosis/DIAGNOSIS.md`;
