@@ -312,14 +312,15 @@ pub fn public_clock_effect_kog_value_function(state: &State, myself: usize) -> f
 }
 
 /// The `kt` tier (players/mod.rs `KT`, piloted like `kp`; registered Sept 26, `rl/results/kt_2026-09-26/README.md`,
-/// amendment 1): `k`'s evaluator with Tools and temporary damage cuts priced by what they do. Switch 1: the defender's
-/// temporary cuts and damage-cut Tools in the threat clock. Switch 2: the flat +10 for a Tool on the Active is 0.
-/// Switch 3: damage back to the attacker in the holder's own side's clock. kq's, kd's, kpr's and kpf's features off.
+/// amendments 1 and 2): `kog`'s evaluator with Tools and temporary damage cuts priced by what they do. Switch 1: the
+/// defender's temporary cuts and damage-cut Tools in the threat clock. Switch 2: the flat +10 for a Tool on the Active
+/// is 0. Switch 3: damage back to the attacker in the holder's own side's clock. kog's switch A and F on; kq's, kd's,
+/// kpr's and kph's features off. Re-issued on kog (amendment 2); before that, these codes were the switches on kp.
 pub fn public_clock_effect_kt_value_function(state: &State, myself: usize) -> f64 {
     parametric_value_function_ex6(state, myself, &ValueFunctionParams::baseline(), true, false, true, true, false, EvalFeatures::KT)
 }
 
-/// The `kta` code: `kt` with switch 1 only (read under the reserve route; otherwise attribution).
+/// The `kta` code: `kt` with switch 1 only, on kog (read by the route its footprint fixes, amendment 2).
 pub fn public_clock_effect_kta_value_function(state: &State, myself: usize) -> f64 {
     parametric_value_function_ex6(state, myself, &ValueFunctionParams::baseline(), true, false, true, true, false, EvalFeatures::KTA)
 }
@@ -458,15 +459,16 @@ impl EvalFeatures {
     /// kog: koa's switch A and kpg's F together, each exactly as in its own code (Dustin, Sept 27: one pilot by a
     /// composition check, RUN5 "Rules").
     const KOG: EvalFeatures = EvalFeatures { opening_first_turn_active: true, fuel_credit: true, ..EvalFeatures::OFF };
-    /// kt: switches 1, 2 and 3 on kp (`rl/results/kt_2026-09-26/README.md`).
+    /// kt: switches 1, 2 and 3 on kog (`rl/results/kt_2026-09-26/README.md`, amendment 2: re-issued on kog, Sept 28;
+    /// from ed81c8b to 233bced these codes were the switches on kp).
     const KT: EvalFeatures =
-        EvalFeatures { defender_cuts: true, tool_by_holder: true, counter_damage: true, ..EvalFeatures::OFF };
-    /// kta (diagnostic, and the reserve-route candidate): switch 1 only.
-    const KTA: EvalFeatures = EvalFeatures { defender_cuts: true, ..EvalFeatures::OFF };
-    /// ktb (diagnostic): switch 2 only.
-    const KTB: EvalFeatures = EvalFeatures { tool_by_holder: true, ..EvalFeatures::OFF };
-    /// ktc (diagnostic): switch 3 only.
-    const KTC: EvalFeatures = EvalFeatures { counter_damage: true, ..EvalFeatures::OFF };
+        EvalFeatures { defender_cuts: true, tool_by_holder: true, counter_damage: true, ..EvalFeatures::KOG };
+    /// kta (the reserve-route candidate, or read by the ordinary rule at a footprint of 15% or more): switch 1 on kog.
+    const KTA: EvalFeatures = EvalFeatures { defender_cuts: true, ..EvalFeatures::KOG };
+    /// ktb (diagnostic): switch 2 on kog.
+    const KTB: EvalFeatures = EvalFeatures { tool_by_holder: true, ..EvalFeatures::KOG };
+    /// ktc (diagnostic): switch 3 on kog.
+    const KTC: EvalFeatures = EvalFeatures { counter_damage: true, ..EvalFeatures::KOG };
 
     /// Whether kt's clock ([`kt_clocks`]) replaces kp's.
     fn kt_clock(&self) -> bool {
@@ -4632,6 +4634,17 @@ mod kt_tests {
     use crate::players::RandomPlayer;
     use crate::{Deck, Game};
 
+    /// The same switches on kp: `f` with kog's switch A and F off. From ed81c8b to 233bced the kt codes were these
+    /// presets. Since amendment 2 (Sept 28) they are the switches on kog, and 43cef0b's tests read them this way.
+    fn on_kp(f: EvalFeatures) -> EvalFeatures {
+        EvalFeatures { opening_first_turn_active: false, fuel_credit: false, ..f }
+    }
+
+    /// `features`' value from `myself`'s view, evaluated as the public kt codes are.
+    fn value(state: &State, myself: usize, features: EvalFeatures) -> f64 {
+        parametric_value_function_ex6(state, myself, &ValueFunctionParams::baseline(), true, false, true, true, false, features)
+    }
+
     /// Player 0: `victim` Active (and Bench). Player 1: `threat` Active (and Bench). Player 0 to move on turn 5.
     fn board(victim: Vec<PlayedCard>, threat: Vec<PlayedCard>) -> State {
         let mut state = State::default();
@@ -4863,22 +4876,25 @@ mod kt_tests {
 
     #[test]
     fn switch_two_drops_only_the_flat_tool_term() {
-        // A Giant Cape on player 0's Active: kp adds 10 for it; ktb doesn't. Nothing else differs.
+        // A Giant Cape on player 0's Active: kp adds 10 for it; ktb doesn't. Nothing else differs. (43cef0b's test, on
+        // the same switches on kp: amendment 2, item 7.)
         let caped = with(CardId::B3b055Snorlax, EnergyType::Colorless, 3).with_tool(tool(CardId::A2147GiantCape));
         let state = board(vec![caped], vec![mewtwo()]);
         let kp = public_clock_effect_value_function(&state, 0);
-        assert!((kp - public_clock_effect_ktb_value_function(&state, 0) - 10.0).abs() < 1e-9);
+        assert!((kp - value(&state, 0, on_kp(EvalFeatures::KTB)) - 10.0).abs() < 1e-9);
         // From the other side it is -10 under kp and 0 under ktb.
         let kp1 = public_clock_effect_value_function(&state, 1);
-        assert!((public_clock_effect_ktb_value_function(&state, 1) - kp1 - 10.0).abs() < 1e-9);
+        assert!((value(&state, 1, on_kp(EvalFeatures::KTB)) - kp1 - 10.0).abs() < 1e-9);
         // kta and ktc keep the flat term: with nothing for their clocks to act on, they are kp.
-        assert_eq!(public_clock_effect_kta_value_function(&state, 0), kp);
-        assert_eq!(public_clock_effect_ktc_value_function(&state, 0), kp);
+        assert_eq!(value(&state, 0, on_kp(EvalFeatures::KTA)), kp);
+        assert_eq!(value(&state, 0, on_kp(EvalFeatures::KTC)), kp);
     }
 
     #[test]
     fn the_codes_switch_off_to_kp() {
-        let (kt, kta, ktb, ktc) = (EvalFeatures::KT, EvalFeatures::KTA, EvalFeatures::KTB, EvalFeatures::KTC);
+        // 43cef0b's preset test, on the same switches on kp (amendment 2, item 7).
+        let (kt, kta, ktb, ktc) =
+            (on_kp(EvalFeatures::KT), on_kp(EvalFeatures::KTA), on_kp(EvalFeatures::KTB), on_kp(EvalFeatures::KTC));
         assert!(kt.defender_cuts && kt.tool_by_holder && kt.counter_damage);
         assert!(kta.defender_cuts && !kta.tool_by_holder && !kta.counter_damage);
         assert!(!ktb.defender_cuts && ktb.tool_by_holder && !ktb.counter_damage);
@@ -4889,6 +4905,29 @@ mod kt_tests {
             assert!(!f.projected_readiness && !f.any_opening_switch() && !f.fuel_credit);
         }
         for f in [EvalFeatures::OFF, EvalFeatures::KQ, EvalFeatures::KD, EvalFeatures::KPR, EvalFeatures::KPF] {
+            assert!(!f.defender_cuts && !f.tool_by_holder && !f.counter_damage);
+        }
+    }
+
+    #[test]
+    fn the_codes_are_kog_plus_their_switches() {
+        // Amendment 2: kt<N> = kog<N> with the three switches on; kta, ktb and ktc = kog<N> with switch 1, 2 or 3 only.
+        // With its switches off, each code is kog's preset exactly.
+        let (kt, kta, ktb, ktc) = (EvalFeatures::KT, EvalFeatures::KTA, EvalFeatures::KTB, EvalFeatures::KTC);
+        assert!(kt.defender_cuts && kt.tool_by_holder && kt.counter_damage);
+        assert!(kta.defender_cuts && !kta.tool_by_holder && !kta.counter_damage);
+        assert!(!ktb.defender_cuts && ktb.tool_by_holder && !ktb.counter_damage);
+        assert!(!ktc.defender_cuts && !ktc.tool_by_holder && ktc.counter_damage);
+        let switches_off =
+            |f: EvalFeatures| EvalFeatures { defender_cuts: false, tool_by_holder: false, counter_damage: false, ..f };
+        for f in [kt, kta, ktb, ktc] {
+            assert_eq!(format!("{:?}", switches_off(f)), format!("{:?}", EvalFeatures::KOG));
+            // kog's switch A and F on; kq's, kd's, kpr's (R) and kph's (A, B) features off.
+            assert!(f.opening_first_turn_active && f.fuel_credit && !f.projected_readiness);
+            assert!(!f.evolution_steps && !f.zone_to_bench && !f.next_attack_reduction && !f.defender_modifiers);
+        }
+        // kog, koh and the tiers before them have no kt switch.
+        for f in [EvalFeatures::KOG, EvalFeatures::KOH, EvalFeatures::KPH, EvalFeatures::KPG] {
             assert!(!f.defender_cuts && !f.tool_by_holder && !f.counter_damage);
         }
     }
@@ -4941,13 +4980,9 @@ mod kt_tests {
                     if has_kt_source(&state) {
                         with_source += 1;
                     } else {
-                        for kt in [
-                            public_clock_effect_kt_value_function,
-                            public_clock_effect_kta_value_function,
-                            public_clock_effect_ktb_value_function,
-                            public_clock_effect_ktc_value_function,
-                        ] {
-                            assert_eq!(kt(&state, state.current_player), kp, "turn {}", state.turn_count);
+                        // 43cef0b's check, on the same switches on kp (amendment 2, item 7).
+                        for f in [EvalFeatures::KT, EvalFeatures::KTA, EvalFeatures::KTB, EvalFeatures::KTC] {
+                            assert_eq!(value(&state, state.current_player, on_kp(f)), kp, "turn {}", state.turn_count);
                         }
                     }
                 }
@@ -4955,6 +4990,87 @@ mod kt_tests {
         }
         // Both kinds of state were met.
         assert!(states > 500 && with_source > 50 && with_source < states, "{states} states, {with_source} with a source");
+    }
+
+    #[test]
+    fn kt_on_kog_is_koa_in_setup_and_the_switches_on_kp_plus_f_after_it() {
+        // Amendment 2, item 7: on every position of 12 random games, from each player's own view, where the opponent's
+        // setup is masked each code is koa's value (and so kog's); everywhere else it is the same switches on kp plus
+        // kog's F term, exactly; and wherever nothing kt reads is on the board, it is kog's value, exactly.
+        use crate::observation::{PlayerObservation, RevealedKnowledge};
+        let research = |name: &str| format!("../decks/research/{name}.txt");
+        let rayquaza = "../decks/gauntlet_2026-09-26/g-dragonair_mega_rayquaza.txt".to_string();
+        let pokemon_value = ValueFunctionParams::baseline().pokemon_value;
+        let codes: [(EvalFeatures, fn(&State, usize) -> f64); 4] = [
+            (EvalFeatures::KT, public_clock_effect_kt_value_function),
+            (EvalFeatures::KTA, public_clock_effect_kta_value_function),
+            (EvalFeatures::KTB, public_clock_effect_ktb_value_function),
+            (EvalFeatures::KTC, public_clock_effect_ktc_value_function),
+        ];
+        let (mut setup, mut play, mut with_f, mut without_source) = (0, 0, 0, 0);
+        let pairings = [
+            (research("altaria"), research("blaziken")),
+            (research("blaziken"), research("suicune")),
+            (research("suicune"), research("lucario")),
+            (rayquaza, research("blaziken")),
+        ];
+        for (a, b) in &pairings {
+            for seed in 0..3u64 {
+                let players: Vec<Box<dyn crate::players::Player>> = vec![
+                    Box::new(RandomPlayer { deck: Deck::from_file(a).unwrap() }),
+                    Box::new(RandomPlayer { deck: Deck::from_file(b).unwrap() }),
+                ];
+                let mut game = Game::new(players, 20_000_000_300 + seed);
+                let mut ticks = 0;
+                while !game.is_game_over() && ticks < 400 {
+                    let state = game.get_state_clone();
+                    for me in 0..2 {
+                        let observation = PlayerObservation::from_state(&state, me, &RevealedKnowledge::default());
+                        let view = observation.visible_state();
+                        if view.winner.is_some() {
+                            continue;
+                        }
+                        let turn = view.turn_count;
+                        if view.setup_opponent_hidden {
+                            setup += 1;
+                            let koa = public_clock_effect_koa_value_function(view, me);
+                            for (f, code) in codes {
+                                assert_eq!(code(view, me), value(view, me, f));
+                                assert_eq!(code(view, me), koa, "setup, turn {turn}");
+                            }
+                            continue;
+                        }
+                        play += 1;
+                        let opp = (me + 1) % 2;
+                        // kog's F with R off: the whole pile on each side (parametric_value_function_ex6).
+                        let fuel = (crate::players::fuel_credit::fuel_credit(view, me, true, &view.discard_energies[me])
+                            - crate::players::fuel_credit::fuel_credit(view, opp, false, &view.discard_energies[opp]))
+                            * pokemon_value;
+                        if fuel != 0.0 {
+                            with_f += 1;
+                        }
+                        for (f, code) in codes {
+                            assert_eq!(code(view, me), value(view, me, f));
+                            assert_eq!(code(view, me), value(view, me, on_kp(f)) + fuel, "turn {turn}");
+                        }
+                        if !has_kt_source(view) {
+                            without_source += 1;
+                            let kog = public_clock_effect_kog_value_function(view, me);
+                            for (_, code) in codes {
+                                assert_eq!(code(view, me), kog, "turn {turn}");
+                            }
+                        }
+                    }
+                    game.play_tick();
+                    ticks += 1;
+                }
+            }
+        }
+        // Every kind of position was met: setup, F acting, and positions with and without anything kt reads.
+        assert!(
+            setup > 0 && play > 500 && with_f > 0 && without_source > 0 && without_source < play,
+            "{setup} setup, {play} play, {with_f} with F, {without_source} without a kt source"
+        );
     }
 }
 

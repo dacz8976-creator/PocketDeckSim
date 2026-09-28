@@ -194,16 +194,16 @@ pub enum PlayerCode {
     /// 'koh<N>': 'kog<N>' + R', kph's projection with fixes A and B, on the composed pilot (kph's registration section
     /// 2; value_functions::public_clock_effect_koh_value_function).
     KOH { max_depth: usize },
-    /// 'kt<N>' is 'kp<N>' with Tools and temporary damage cuts priced by what they do, registered Sept 26
-    /// (rl/results/kt_2026-09-26/README.md, amendment 1): the defender's temporary cuts and damage-cut Tools in the
+    /// 'kt<N>' is 'kog<N>' with Tools and temporary damage cuts priced by what they do, registered Sept 26
+    /// (rl/results/kt_2026-09-26/README.md; amendment 2 re-issued it on kog, Sept 28; before that it was on kp): the defender's temporary cuts and damage-cut Tools in the
     /// threat clock (switch 1), no flat +10 for a Tool on the Active (switch 2), and damage back to the attacker in the
     /// holder's own clock (switch 3) (value_functions::public_clock_effect_kt_value_function).
     KT { max_depth: usize },
-    /// 'kta<N>': 'kp<N>' with kt's switch 1 only. Read under the reserve route; otherwise attribution.
+    /// 'kta<N>': 'kog<N>' with kt's switch 1 only. Read by the route its footprint fixes (amendment 2).
     KTA { max_depth: usize },
-    /// 'ktb<N>': 'kp<N>' with kt's switch 2 only. Diagnostic.
+    /// 'ktb<N>': 'kog<N>' with kt's switch 2 only. Diagnostic.
     KTB { max_depth: usize },
-    /// 'ktc<N>': 'kp<N>' with kt's switch 3 only. Diagnostic.
+    /// 'ktc<N>': 'kog<N>' with kt's switch 3 only. Diagnostic.
     KTC { max_depth: usize },
 }
 /// Custom parser function enforcing case-insensitivity
