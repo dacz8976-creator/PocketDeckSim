@@ -16,7 +16,7 @@ Seeds: kt's table on the table's deals (72,000,000 + pairing × 10,000 + i, i < 
   3. kt's tables. `BUILD.md` records that the tables wait for his word, and notes that his word depends on which pilot kt is read against.
 - **Also needed before any kta game,** from Dustin or the laptop: amendment 1's open confirmation, Rayquaza as the one clause (d) test, with Suicune reported. A commit records it and names who gave it; a review can't supply it.
 - **The order, set by this amendment:** kog's check, then koh's reading, then kt. No kt build or game comes before koh's verdict is committed, coverage included.
-- **The rules-file refactor gate** (item 1): no kt game until the Sept 28 engine switch's check of kt's refactor of the rules files is committed as passed.
+- **The rules-file refactor gate** (item 1): no kt game until the Sept 28 engine switch's check of kt's refactor of the rules files is committed as passed. **Met, Sept 28 evening:** the switch accepted the refactor on Dustin's three-part ruling (main 33f56da; `../engine_switch_2026-09-28/README.md`: the source equivalence read by two readers, the suite 1,975 passed, and 16,000 of 16,000 touched-path games identical on both builds).
 
 **Why an amendment re-issues kt.** The base line (BASE AND CODES below) says: "Built on the pilot the kpr reading leaves: kp3. If that changes, this registration is re-issued, not amended." The base has changed.
 - kog passed its composition check on Sept 28. It is the working pilot, "unconfirmed" (RUN5 "Composing candidates into one pilot"; `../kog_composition_2026-09-27/READING.md`, 5bca434). kog is kp3 plus koa's opening switch A plus kpg's discard credit F.
@@ -52,7 +52,7 @@ Dustin's go-ahead of Sept 27 covered the build on kp3; for the build on kog, see
      - the readout counters' baseline;
      - the timing budget.
    - **The code names already mean the kp-based bots** (C1, F1).
-     - In every build since ed81c8b, kt3, kta3, ktb3 and ktc3 are the kp-based codes of 43cef0b. That includes 233bced, the official engine being pinned on Sept 28 (deckgym sha256 4f46c87f…, the laptop's `PIN_STATUS.txt`).
+     - In every build since ed81c8b, kt3, kta3, ktb3 and ktc3 are the kp-based codes of 43cef0b. That includes 233bced, pinned on Sept 28 as the official engine `rl/engine-2026-09-28/` (main 9b4df9b; deckgym sha256 4f46c87f…; `../engine_switch_2026-09-28/PIN_STATUS.txt`).
      - The kt build redefines them on kog, and its parser and preset tests check that.
      - **Every game under this amendment is played by the kt build's own programs,** with their sha256 recorded in `BUILD.md`: the tables, the mixed rows, the coverage rows, clause (d), the A/B, the Rayquaza traces, the readout counters and the timing run.
      - **Each output file name starts with that build's commit** (`<build>_kta3_500.jsonl`).
@@ -67,7 +67,7 @@ Dustin's go-ahead of Sept 27 covered the build on kp3; for the build on kog, see
    - **What shows kt's shared code changes nothing for other bots** (C2, R3). The build at 43cef0b (kt on kp) stays as history. The evidence comes in two parts:
      1. **The refactor of the rules files** `hooks/core.rs` and `hooks/mod.rs` (ed81c8b, 92c4563). This is judged by RUN5's rule for a refactor of a rules file (Dustin, Sept 28), through the Sept 28 engine switch's check (`../engine_switch_2026-09-28/`): the written source equivalence, the full suite, and games that reach the touched paths on the Barrier, Jasmine, Cheren and Blue carriers and the Scizor row, replayed on both builds.
         - The whole-table replays at 43cef0b don't qualify on their own. The table's lists reach the changed lines only on their "no cut" branch.
-        - **No kt game until that check's result is committed.** If it fails, kt waits with the engine.
+        - **No kt game until that check's result is committed.** If it fails, kt waits with the engine. (Committed as passed with the switch, main 33f56da; see Status.)
      2. **The shared player code** in `value_functions.rs` (`threat_candidates`, `status_clock_turns`, `owner_next_turn`, `first_attack_turn_number`, `extract_features`' optional clock). This is shown by the full table replays of the bots whose clocks run it: kp3, kq3 and kog3 (item 7).
 2. **The frame: the 45 cells.** RUN5 "The frame a candidate is read in" (Sept 27) registers every candidate from Sept 27 on the 45 cells, and this amendment is dated Sept 28.
    - **On the 45 cells** (R4, F11):
@@ -89,7 +89,7 @@ Dustin's go-ahead of Sept 27 covered the build on kp3; for the build on kog, see
      - They are kog3's own runs from the laptop's build of a823b6d (`../kog_composition_2026-09-27/table_kog3.jsonl`, `new17_kog3.jsonl`).
      - a823b6d is main 83e17ae plus the branch's player code (kt, kog) and kt's refactor of `hooks/core.rs` and `hooks/mod.rs`. That refactor is qualified only through item 1's check.
      - At the cloud's build of a823b6d, k3 and kp3 replay the official references 14,000 of 14,000. At the laptop's build they replay 1,120 of 1,120, and its `table_kog3` equals the cloud's on 14,000 of 14,000.
-     - **The kt build** is 233bced plus kt's preset change only, whether or not the pin has finished (233bced's `engine/` equals bd2907f's), or a later official commit that carries kog, replayed in full as item 7 says. No kt build is made on 83e17ae, which has no kog.
+     - **The kt build** is 233bced (pinned Sept 28 as `rl/engine-2026-09-28/`) plus kt's preset change only (233bced's `engine/` equals bd2907f's), or a later official commit that carries kog, replayed in full as item 7 says. No kt build is made on 83e17ae, which has no kog.
      - The references stay `table_kog3` and `new17_kog3` whichever commit is official, because item 7 checks kog3 at the kt build against both. kog3 at 233bced already equals `table_kog3` on 14,000 of 14,000 (the laptop's `PIN_STATUS.txt`).
    - **Footprint:** the share of the 45 cells' 22,500 paired games whose moves differ from kog3's. It is read first and fixes the route for kt3 and kta3 alike: under 15%, the reserve route; otherwise, the ordinary adoption rule.
    - **The ordinary rule:** paired ΔMSE against kog3 on the 45 cells, with the whole 95% interval below zero. Vetoes are rule v2's, counting only through mixed rows against kog3 on the same deals.
@@ -250,6 +250,8 @@ Dustin's go-ahead of Sept 27 covered the build on kp3; for the build on kog, see
 - the Rayquaza real cells count both ways in ΔMSE;
 - the values test's third identity;
 - `status_clock_turns` in the shared code.
+
+**After the pin** (Sept 28 evening; facts only, no rule changed): the refactor gate is recorded as met, and 233bced as the pinned official engine.
 
 ## Amendment 1 (Sept 26, before any kt code or game): Dustin's rulings
 
