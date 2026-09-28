@@ -1,4 +1,4 @@
-Decision this informs: whether the pilot after kp3 prices the defender's temporary damage cuts and reduction Tools in the threat clock, replaces the flat +10 for a Tool on the Active by what the Tool does for its holder, and credits damage back to the attacker; read against kp3 by the Sept 25 plan. **Amendment 2 (Sept 28, a draft for one review) re-issues kt on kog: read against kog3 on the 45 cells. Once its review is committed, it holds over the text below.** This file is kt's registration (Sept 26), committed before any kt code or game; no engine commit yet (kt is built after the rules/09 fixes and the regenerated kp3 base, step ORDER below).
+Decision this informs: whether the pilot after kp3 prices the defender's temporary damage cuts and reduction Tools in the threat clock, replaces the flat +10 for a Tool on the Active by what the Tool does for its holder, and credits damage back to the attacker; read against kp3 by the Sept 25 plan. **Amendment 2 (Sept 28, a draft for one review) re-issues kt on kog: read against kog3 on the 45 cells. Once its review is committed, it holds over the text below.** This file is kt's registration (Sept 26), committed before any kt code or game. kt was first built on kp at 43cef0b (`BUILD.md`, kept as history); the codes re-issued on kog need a new build (amendment 2, item 7).
 
 Seeds: kt's table on the table's deals (72,000,000 + pairing × 10,000 + i, i < 500, even i = first-named deck in seat 0) and, under amendment 2, the 17 new cells' (21,108,000,000 + pairing × 10,000 + i); B2e's rows on 21,106,000,000 + pairing × 10,000 + i and the Scizor row on 21,108,000,000 + pairing × 10,000 + i (pairings 0-7), as in every reading; clause (d)'s rows on 22,700,000,000 + panel index × 10,000 + i (amendment 1); the Dustin-deck A/B on the new block 22,600,000,000 – 22,699,999,999 (START_HERE's seed table).
 
@@ -8,15 +8,31 @@ Seeds: kt's table on the table's deals (72,000,000 + pairing × 10,000 + i, i < 
 
 ## Amendment 2 (Sept 28, before any kt game on kog): kt re-issued on kog. DRAFT for one review
 
-**Status.** This is a draft for one review, as the laptop asked on Sept 28. It comes into force when the review's outcome is committed, as written or as the review amends it. That commit is dated and comes before any kt game on kog. Until then kog has no kt build and no kt game.
+**Status.**
+- This is a draft for one review, as the laptop asked on Sept 28. It comes into force when the review's outcome is committed, as written or as the review amends it. That commit is dated and comes before any kt game on kog.
+- **Coming into force doesn't start any kt game.** kt's tables still wait for Dustin's word (`BUILD.md`). His Sept 27 go-ahead covered the build on kp3, and his word on the tables "also depends on which pilot kt is read against". Amendment 1's open confirmation is also still due from Dustin or the laptop before any kta game, unless the review's commit records it: Rayquaza as the one clause (d) test, with Suicune reported.
+- **No kt build or game until koh's verdict is committed,** coverage included (see Order below).
 
 **Why an amendment re-issues kt.** The base line (BASE AND CODES below) says: "Built on the pilot the kpr reading leaves: kp3. If that changes, this registration is re-issued, not amended." The base has changed.
 - kog passed its composition check on Sept 28. It is the working pilot, "unconfirmed" (RUN5 "Composing candidates into one pilot"; `../kog_composition_2026-09-27/READING.md`, 5bca434). kog is kp3 plus koa's opening switch A plus kpg's discard credit F.
 - The laptop asked for the re-issue as a dated amendment to this file. That keeps the registration in one place with its history visible. In substance it is the re-issue the base line asks for: every clause below is re-read on the new base, before any kt game on it.
-- No kt game has been read. The build at 43cef0b ran only identity replays and 40-deal smokes on the table's deals, all on kp3 (`BUILD.md`). No game has been played on clause (d)'s seed block or the A/B's.
-- **Order** (the laptop and the review, Sept 27): kog's check first, then kph's reading on the resulting base, then kt. kph's reading on kog is running now as `koh` (kog + R′). If it changes the working pilot before any kt game, kt is re-issued on that pilot the same way: a further dated amendment, before any kt game.
+- **What kt games exist.** All are on kp3; none is on kog, none is a table game, and none is on clause (d)'s seed block or the A/B's.
+  - The build at 43cef0b ran identity replays and 40-deal smokes on the table's deals, all 28 pairings (`BUILD.md`).
+  - The smokes were read only for how often a game's choices differ from kp3's: kt3 65.7%, kta3 1.4% (all in Suicune's cells), ktb3 66.7%, ktc3 8.8%.
+  - Their scan pages also print a first-deck win rate for each cell, as every scan page does. No reading uses them.
+- **Order** (the review, relayed by the laptop on Sept 27; `../kog_composition_2026-09-27/READING.md`, "What follows"):
+  1. kog's check;
+  2. kph's reading on the resulting base, running now as `koh` (kog + R′);
+  3. kt.
+- **If koh's reading makes koh the working pilot,** kt is re-issued on koh by a further dated amendment, reviewed before any kt game. That is not a flag change.
+  - kt's clock replaces the whole threat clock and takes no projection (`players/value_functions.rs`: `extract_features` uses a given clock in place of `calculate_turns_until_opponent_wins_projected`; `kt_clocks` has no horizon).
+  - So on koh, switches 1 and 3 would switch off R′'s projected clock and fix B, while R's readiness projection and F stay on. ktb would keep them.
+  - That amendment says how switches 1 and 3 combine with R′'s clock, and the new build tests it.
 
-**Where this amendment and the text below (amendment 1 included) differ, this amendment holds.** Everything it doesn't name stands as written: the rule, the three switches, the reserve route and its clauses, amendment 1's rulings, and Dustin's go-ahead of Sept 27 (Bench Poncho is not covered; it is a named gap in `BUILD.md`).
+**Where this amendment and the text below (amendment 1 included) differ, this amendment holds.** Everything it doesn't name stands as written:
+- the rule, the three switches, the reserve route and its clauses;
+- amendment 1's rulings;
+- Dustin's go-ahead of Sept 27 for the build (Bench Poncho is not covered; it is a named gap in `BUILD.md`).
 
 1. **Base and codes.** `kt<N>` = `kog<N>` with the three switches on. `kta<N>`, `ktb<N>` and `ktc<N>` = `kog<N>` with switch 1, 2 or 3 only. kq's, kd's and kpr's features (R, and kph's fixes A and B) are off.
    - **Every "kp3" below that names the base or the paired comparator reads kog3.** That covers:
@@ -32,55 +48,90 @@ Seeds: kt's table on the table's deals (72,000,000 + pairing × 10,000 + i, i < 
      - F is its own term, added after the score is summed. It reads the discard pile (the whole pile, since R is off), not the clock.
      - kt's clocks replace kog's, which are kp's (kog has no projection).
      - Switch 2 zeroes only the flat Tool term.
-     - So kt on kog is kog's value in setup, and after setup it is kt's clock and Tool term plus F.
+     - So kt on kog is kog's value in setup. After setup it is kt's clock and Tool term, plus F.
    - The build at 43cef0b (kt on kp) stays as history. Its identity runs remain the evidence that kt's shared code changes nothing for other bots. The re-issued codes need a new build.
-2. **The frame: the 45 cells.** RUN5 "The frame a candidate is read in" (Sept 27) registers every candidate from Sept 27 on the 45 cells, and this amendment is dated Sept 28. So "the table" and "scoreboard v2's 27-cell decision set" in the sections below read "the 45 cells": the table's 28 on the table's deals, and the 17 new cells on 21,108,000,000 + pairing × 10,000 + i. The references are kog3's own runs on the official engine (`../kog_composition_2026-09-27/table_kog3.jsonl`, `new17_kog3.jsonl`).
-   - **Footprint:** the share of the 45 cells' paired games whose moves differ from kog3's. It is read first and fixes the route for kt3 and kta3 alike: under 15%, the reserve route; otherwise, the ordinary adoption rule.
+2. **The frame: the 45 cells.** RUN5 "The frame a candidate is read in" (Sept 27) registers every candidate from Sept 27 on the 45 cells, and this amendment is dated Sept 28.
+   - **On the 45 cells:** the footprint, the ordinary rule, the vetoes, clause (c)'s mixed rows and kt's four tables.
+     - The cells are the table's 28 on the table's deals, and the 17 new cells on 21,108,000,000 + pairing × 10,000 + i. Altaria v Sceptile is included, as in scoreboard v3 and kog's and kph's readings.
+     - Each code's table is 45 × 500 paired games: step 4's "28 × 500 on the table's deals" plus 17 × 500 on the new cells.
+     - "Scoreboard v2's 27-cell decision set" reads "scoreboard v3's 45 cells", and "the 28-pairing mixed rows" reads "the 45 cells' mixed rows".
+     - "The table" in clause (e) ("adoption for the screen and the table") and in step 4 ("the table's commit", "before the table") names the pilot's role and kt's own run. Those uses are unchanged.
+     - Identity is as item 7 states.
+   - **The references:** kog3's own runs from the laptop's build of a823b6d, which is the official engine's source (main 83e17ae) plus the branch's player code (`../kog_composition_2026-09-27/table_kog3.jsonl`, `new17_kog3.jsonl`). kog isn't in the official program yet. At a823b6d, k3 and kp3 replay the official references 14,000 of 14,000, and the laptop's `table_kog3` equals the cloud's.
+   - **Footprint:** the share of the 45 cells' 22,500 paired games whose moves differ from kog3's. It is read first and fixes the route for kt3 and kta3 alike: under 15%, the reserve route; otherwise, the ordinary adoption rule.
    - **The ordinary rule:** paired ΔMSE against kog3 on the 45 cells, with the whole 95% interval below zero. Vetoes are rule v2's, counting only through mixed rows against kog3 on the same deals.
    - **kta3's reserve route:** clause (c)'s mixed rows are the pairings of the 45 cells where kta3's footprint isn't zero, both directions, 500 deals.
-3. **Where the switches reach on the lists the frame adds.** This is read from the lists, not from games, with the carrier census's card set (`../kt_carrier_census_2026-09-26/cards.json`) and the card database.
-   - **Switch 1 reaches more than Suicune now.**
+3. **Where the switches reach on the 45 cells.** This is read from the lists, not from games, with the carrier census's card set (`../kt_carrier_census_2026-09-26/cards.json`) and the card database. Every switch acts on both sides, so a cell is reached when either list carries the card.
+   - **Switch 1 reaches 17 of the 45 cells, not just Suicune's seven:**
      - Suicune's list (one Frigibax P-B 037, Stiffen): its 7 table cells and its 2 new cells (Rayquaza v Suicune and Mega Altaria ex Greninja v Suicune).
      - The scoreboard's Rayquaza list, `decks/gauntlet_2026-09-26/g-dragonair_mega_rayquaza.txt`, carries 2 Gouging Fire B3a 054 (a self-cutting attack, amendment 1). So switch 1 reaches all 9 Rayquaza cells.
      - Mega Altaria ex Greninja carries no switch-1 card.
-   - **Switch 2:** Rayquaza carries a Small Balloon and an Ancient Booster Energy Capsule. The capsule is an HP Tool (+40 HP on an Ancient Pokémon, as `card.py` prints it), priced by the rule like the Capes, with no spec edit. Mega Altaria ex Greninja carries a Small Balloon.
-   - **Switch 3:** no carrier among the added lists. Rocky Helmet stays Blaziken's alone.
+   - **Switch 2 reaches every cell.** Every list carries a Tool.
+     - Rayquaza carries a Small Balloon and an Ancient Booster Energy Capsule. The capsule is an HP Tool (+40 HP on an Ancient Pokémon, as `card.py` prints it), priced by the rule like the Capes, with no spec edit.
+     - Mega Altaria ex Greninja carries a Small Balloon.
+   - **Switch 3** is carried only by Blaziken's list (Rocky Helmet). So it reaches Blaziken's 7 table cells and 2 new cells (Rayquaza v Blaziken and Mega Altaria ex Greninja v Blaziken).
    - **The prediction "kta3's footprint under 5%"** was made on the 28 cells, where only Suicune's seven carry a switch-1 card. It is not restated for the 45, where the Rayquaza cells are new ground for switch 1. Predictions never choose the route (amendment 1); the measured footprint does.
-   - **Clause (d) stays the one test** (amendment 1): kta3 against kog3 on the census's Rayquaza list, 8 × 500 deals on the 22,700,000,000 block. The scoreboard's Rayquaza list is a different list (two Trainers and the Dratini card differ). Its 45-cell rows are read under clause (c), for no harm, and never as a second chance at (d). A gain there is reported, not credited to (d).
+   - **Clause (d) stays the one test** (amendment 1): kta3 against kog3 on the census's Rayquaza list, 8 × 500 deals on the 22,700,000,000 block.
+     - The scoreboard's Rayquaza list is a different list: two Trainers and the Dratini card differ.
+     - Its 45-cell rows are read under clause (c), for no harm, and never as a second chance at (d). A gain there is reported, not credited to (d).
+   - **Amendment 1's report beside (d)** ("Suicune's own side on its seven kta3-v-kp3 mixed rows, the same rows (c) reads") reads: Suicune's own side on its nine rows (7 table and 2 new), kta3 against kog3.
 4. **Coverage** (RUN5 "The frame a candidate is read in": no harm only). A veto there blocks the takeover; a gain is reported, not credited.
    - B2e's held-out archetypes (pairings 0-47): one moving more than 2 points further from its Limitless average is a veto, through mixed rows as above. Dustin's files (48-95) are reported beside.
-   - The variation check's second lists and the Scizor row count for no harm only.
-   - **Reach there:** the Scizor list carries 2 Metal Core Barrier B2 148, so switches 1 and 2 reach its 8 rows. Among B2e's lists, the held-out Garchomp list carries a Protective Poncho, which switch 2 prices at 0 as it does Lucario's. No B2e list and no second list carries a switch-1 card.
-   - **The base's coverage runs:** kog3's B2e and Scizor rows are being run now, as koh's held-out baselines, on the same engine (`../koh_2026-09-28/reading/b2e_kog3.jsonl`, `scizor_kog3.jsonl`). If kog3 has no runs on the second lists when kt is read, they are made at kt's build.
+   - The variation check's second lists (all four decks' second lists, `../gauntlet_runs_2026-09-26/README.md`) and the Scizor row count for no harm only.
+   - **Open for the review, to be fixed before any kt game: what harm means on the Scizor row and the second lists.** They have no usable Limitless figure, so rule v2's vetoes can't fire there as written, and kpg's reading reported Scizor without gating it. Scizor is the one coverage deck that carries a switch-1 card.
+     - Proposed wording: through mixed rows against kog3 on the same deals, both directions, 500 deals; the deck's own-side average against the panel worse beyond its paired noise is a veto.
+     - The alternative is "reported only", said explicitly.
+   - **Reach there** (both sides, as in item 3):
+     - **Switch 1:** the Scizor list carries 2 Metal Core Barrier B2 148, so switch 1 reaches its 8 rows. Through the panel's Suicune it also reaches every coverage row against Suicune: B2e pairings 4, 12, 20, 28, 36 and 44 (held-out) and 52 to 92 in steps of 8 (Dustin's), and the second lists' rows against Suicune. No B2e list or second list carries a switch-1 card of its own.
+     - **Switch 2** reaches every coverage row. Every held-out list, every panel list and every second list but Lucario's carries a Tool, all of kinds the registration already prices. Protective Poncho, priced at 0 as Lucario's is, is in the held-out Garchomp list and in Charizard Y's second list (`l-charizardy.txt`).
+     - **Switch 3:** through the panel's Blaziken, every coverage row against Blaziken.
+   - **The base's coverage runs:** kog3's B2e and Scizor rows are being run now, as koh's held-out baselines, at koh's build bd2907f (`../koh_2026-09-28/reading/b2e_kog3.jsonl`, `scizor_kog3.jsonl`). kog3's runs on the second lists are made at kt's build if none exist then.
 5. **Development data** (RUN5 "Development data, stated with each reading").
    - The Tool census and the Trainer audit read kp3's games on the 28 table cells, so those cells are development data for kt.
    - Of the 17 new cells, the carrier census read the Rayquaza archetype's real Limitless results against the eight panel decks (pooled 46.3 ± 4.8) when it chose clause (d)'s deck. Those 8 cells' real results are development data for kt.
    - The other 9 new cells weren't used in kt's design. For all 17, the holdout is post-freeze events anyway (RUN5).
-6. **Confirmation:** kt joins the pre-registered list of the post-freeze pull (RUN5 "When post-freeze data is read").
-   - Under the ordinary rule: on the post-freeze events alone, kt's τ̂ margin over kog must be at least half its development margin, with its own 90% interval above zero.
-   - Under the reserve route: the no-harm re-check (the τ̂ margin's 90% lower bound at −1.0 or above, and no veto).
+6. **Confirmation** (RUN5 "When post-freeze data is read").
+   - **Joining the list.** If kt is adopted before the post-freeze read, it joins that pull's list by a commit to `../postfreeze_2026-09-27/README.md` before the data is opened. Otherwise it waits for the next pull (the rolling freeze).
+   - **kt3's check follows kt3's route.**
+     - Ordinary rule: on the post-freeze events alone, kt3's τ̂ margin over kog3 must be at least half its development margin, with its own 90% interval above zero. The pooled figure and the sign are reported beside it.
+     - Reserve route: the no-harm re-check (the τ̂ margin's 90% lower bound at −1.0 or above, and no veto), with its own real cells reported.
+   - **If kta3 passed by the reserve route,** its no-harm re-check also applies: the τ̂ margin (kog3 minus kta3) with its 90% lower bound at −1.0 or above, and no veto. Suicune's and Rayquaza's real cells are reported.
+   - kt is confirmed only if every check that applies passes.
+   - **If kog is not confirmed** at that read (its own row, or kpg's or koa's that it inherits), kt's verdict lapses with it, since kt carries switch A and F. kt's switches are then read again on the base in force at that time, as a new reading under the rules in force, as kph's registration does for F.
 7. **Identity at the new build.**
    - kt's preset with its three switches off is kog's, and each single-switch preset is kog's plus that switch (a test).
-   - k3 and kp3 against the official references.
-   - kog3 at the kt build equal to kog3's table (`../kog_2026-09-27/a823b6d_kog3_500.jsonl`, which the laptop's `table_kog3` equals), all 14,000 games.
+   - k3 and kp3, all 500 deals, 14,000 of 14,000 each, against the official references (`../rules09_fixes_2026-09-26/af8489f_{k3,kp3}_500.jsonl`), as registered.
+   - kog3 at the kt build:
+     - equal to kog3's table (`../kog_2026-09-27/a823b6d_kog3_500.jsonl`, which the laptop's `table_kog3` equals), all 14,000 games;
+     - equal to `new17_kog3.jsonl` on the 17 new cells, all 8,500 games;
+     - equal to koh's `b2e_kog3` and `scizor_kog3` on i < 40 of every pairing.
    - kq3 (14,000 games), kd3 and kpr3 (1,120 each), as registered.
-   - A kt-only diff of everything after the last full replay.
+   - A diff of `engine/` from the kt build's parent to the kt build, showing kt's changes only. The full replays above are made at the kt build itself.
    - Timing: kt3's 40-deal run within 1.25× kog3's.
 8. **Clause (d) and the Dustin-deck A/B keep their lists, sizes and seeds.** Only the comparator changes:
    - (d): kta3 against kog3 on the Rayquaza list's eight rows, with kog3 on the panel lists in both arms.
    - The A/B: kt3 against kog3 on the deck seat, with kog3 on the opponent's seat in both arms.
-9. **The predictions' "before" figures.** These are kp3's census figures: Stiffen 55 of 124, the Barrier's and Jasmine's rates, Poncho 427 of 428, Balloon 225 of 501, and Blower's targets.
-   - kog3 plays kp3's moves except in Altaria's opening and where Blaziken's F acts (`../kog_2026-09-27/BUILD.md`), so they stand as the "before" figures.
-   - The readout counters measure kog3's own figures on the same deals.
+9. **The predictions' "before" figures and the readout counters.**
+   - **Each prediction is judged against kog3's own readout counter** on the same deals, at the kt build's engine.
+   - **Why not kp3's census figures:** those are kp3's games on the Sept 25 engine, before the rules/09 repairs. kog3's games also differ from kp3's in 1,175 of the 14,000 table games (a823b6d): 116 to 152 of 500 in each Altaria cell and 26 to 60 in each Blaziken cell, since a changed opening or F choice changes the rest of the game. That is where the Balloon and Rocky Helmet predictions sit.
+   - **The census figures are printed beside, as history:** Stiffen 55 of 124 (44%); Balloon 88% and 225 of 501; Boat 60%; Poncho 68% and 427 of 428; Rocky Helmet 69%; Blower's 453 + 93 + 64 of 1,414. Jasmine's and the Barrier's "before" is kog3's arm of the Dustin-deck A/B.
+   - **The readout counters stay as fixed:** `tool_census.rs` and `legality_scan`'s counters, on the first 100 deals of each of the 28 table pairings, for kog3, kt3, kta3, ktb3 and ktc3, with fingerprints checked against each code's table file. `tool_census.rs` is written for the eight table decks and counts Stiffen as the only self-cutting attack, and `legality_scan` has no Scorching Interruption counter.
+   - **So switch 1 on Rayquaza is read through the Rayquaza traces:** `trace_pilot.py` on the 200 Rayquaza v Lucario deals (21,108,900,000+), as kpf's and kph's readings ran it, kta3 and kog3 on Rayquaza with kog3 on Lucario in both. The traces count Scorching Interruption's offered and used turns, and are reported only.
 
-**Changes from the Sept 28 draft of this re-issue (966d75d), before the review.** Every change was made before any kt game.
+**Main changes from the first draft of this re-issue** (966d75d, committed as in force; this draft is not). The full diff is `git diff 966d75d -- README.md`. Every change was made before any kt game on kog, and none after any reading of kt on kog.
 - Recast as amendment 2, a draft for one review.
-- Added the order and the koh contingency.
-- Added the reach on the added lists (item 3), including that switch 1 now reaches the Rayquaza cells and that the 28-cell footprint prediction isn't carried over.
-- Stated that clause (d) stays the one test.
-- Named the base's coverage runs.
-- Corrected "the 17 new cells weren't used in kt's design": the Rayquaza archetype's real cells were read by the carrier census.
-- Added the preset test to the identity checks.
+- Status: coming into force starts no kt game (Dustin's word; amendment 1's open (d) confirmation).
+- The kt games that do exist on kp3, and what was read of them.
+- The order, and the koh case as a design question, not a flag change.
+- The frame stated item by item instead of by blanket substitution, with the table size.
+- The references' true source: a823b6d, not the official program.
+- The reach on the 45 cells and on coverage, both sides.
+- Clause (d) stays the one test, with amendment 1's report beside it restated.
+- Scizor's and the second lists' harm test left open for the review.
+- Confirmation by route, plus the lapse clause.
+- Identity in full: k3 and kp3 on 14,000, and kog3 on the new cells and coverage.
+- The before figures are kog3's own counters, with the census as history; switch 1 on Rayquaza is read through the traces.
+- Development data corrected: the Rayquaza archetype's real cells were read by the carrier census.
 
 ## Amendment 1 (Sept 26, before any kt code or game): Dustin's rulings
 
