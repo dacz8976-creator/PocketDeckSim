@@ -297,6 +297,13 @@ pub fn public_clock_effect_kphb_value_function(state: &State, myself: usize) -> 
     parametric_value_function_ex6(state, myself, &ValueFunctionParams::baseline(), true, false, true, true, false, EvalFeatures::KPHB)
 }
 
+/// The `koh` tier (players/mod.rs `KOH`, piloted like `kp`): kph's R' (kpr's projection R with fixes A and B) on the
+/// composed pilot kog (kp + koa's switch A + kpg's F), as kph's registration section 2 has it once kog is in force
+/// (kog passed its composition check on Sept 28).
+pub fn public_clock_effect_koh_value_function(state: &State, myself: usize) -> f64 {
+    parametric_value_function_ex6(state, myself, &ValueFunctionParams::baseline(), true, false, true, true, false, EvalFeatures::KOH)
+}
+
 /// The `kog` pilot (players/mod.rs `KOG`, piloted like `kp`): `k`'s evaluator with koa's switch A (the opening-Active
 /// term, read only in the setup evaluation) and kpg's part F (the discard-Energy credit, read only after setup), each
 /// exactly as in its own code. The composition of two separately read candidates (Dustin, Sept 27), not a new one.
@@ -445,6 +452,9 @@ impl EvalFeatures {
     const KPHA: EvalFeatures = EvalFeatures { evolution_steps: true, ..EvalFeatures::KPF };
     /// kphb (diagnostic): kpf + fix B only.
     const KPHB: EvalFeatures = EvalFeatures { zone_to_bench: true, ..EvalFeatures::KPF };
+    /// koh: kog + R' (kph's R' on the composed pilot, `rl/results/kph_2026-09-27/REGISTRATION.md` section 2): koa's
+    /// switch A with kph's flags. With R' off (R, A and B) it is [`EvalFeatures::KOG`].
+    const KOH: EvalFeatures = EvalFeatures { opening_first_turn_active: true, ..EvalFeatures::KPH };
     /// kog: koa's switch A and kpg's F together, each exactly as in its own code (Dustin, Sept 27: one pilot by a
     /// composition check, RUN5 "Rules").
     const KOG: EvalFeatures = EvalFeatures { opening_first_turn_active: true, fuel_credit: true, ..EvalFeatures::OFF };
@@ -5313,5 +5323,58 @@ mod kph_tests {
             }
         });
         assert!(faster > 10 && empty > 10, "{faster} faster, {empty} with an empty Bench");
+    }
+}
+
+#[cfg(test)]
+mod koh_tests {
+    //! koh = kog + R'. Switch A is read only in the setup evaluation, where nothing is projected (turn 0), and F, R, A
+    //! and B only after it. So koh's value is koa's where the opponent's setup is masked and kph's everywhere else; with
+    //! A and B off (kog + R) it is koa's in setup and kpf's after; with R' off it is kog.
+    use super::*;
+    use crate::observation::{PlayerObservation, RevealedKnowledge};
+    use crate::players::RandomPlayer;
+    use crate::{Deck, Game};
+
+    #[test]
+    fn koh_is_kog_with_r_prime_and_reads_as_its_parts() {
+        let r_prime_off =
+            EvalFeatures { projected_readiness: false, evolution_steps: false, zone_to_bench: false, ..EvalFeatures::KOH };
+        assert_eq!(format!("{r_prime_off:?}"), format!("{:?}", EvalFeatures::KOG));
+        let kog_r = EvalFeatures { evolution_steps: false, zone_to_bench: false, ..EvalFeatures::KOH };
+        assert_eq!(format!("{kog_r:?}"), format!("{:?}", EvalFeatures { opening_first_turn_active: true, ..EvalFeatures::KPF }));
+        let value = |state: &State, me: usize, f: EvalFeatures| {
+            parametric_value_function_ex6(state, me, &ValueFunctionParams::baseline(), true, false, true, true, false, f)
+        };
+        let deck = |name: &str| Deck::from_file(&format!("../decks/research/{name}.txt")).unwrap();
+        let (mut setup, mut play) = (0, 0);
+        for (a, b) in [("altaria", "blaziken"), ("lucario", "vespiquen"), ("altaria", "lucario"), ("vespiquen", "hydreigon")] {
+            for seed in 0..3u64 {
+                let players: Vec<Box<dyn crate::players::Player>> =
+                    vec![Box::new(RandomPlayer { deck: deck(a) }), Box::new(RandomPlayer { deck: deck(b) })];
+                let mut game = Game::new(players, 20_000_000_300 + seed);
+                let mut ticks = 0;
+                while !game.is_game_over() && ticks < 400 {
+                    let state = game.get_state_clone();
+                    for me in 0..2 {
+                        let observation = PlayerObservation::from_state(&state, me, &RevealedKnowledge::default());
+                        let view = observation.visible_state();
+                        let (koh, koh_ab_off) = (public_clock_effect_koh_value_function(view, me), value(view, me, kog_r));
+                        if view.setup_opponent_hidden {
+                            setup += 1;
+                            let koa = public_clock_effect_koa_value_function(view, me);
+                            assert_eq!((koh, koh_ab_off), (koa, koa));
+                        } else {
+                            play += 1;
+                            assert_eq!(koh, public_clock_effect_kph_value_function(view, me));
+                            assert_eq!(koh_ab_off, public_clock_effect_kpf_value_function(view, me));
+                        }
+                    }
+                    game.play_tick();
+                    ticks += 1;
+                }
+            }
+        }
+        assert!(setup > 0 && play > 500, "{setup} setup and {play} play evaluations");
     }
 }
