@@ -316,10 +316,10 @@ moves the counts below.
 - Games that carry weight: 19 becomes 18 of 33 (~58% becomes ~55%). The relayed wording "covers 19 of 33 (~58%)" would
   no longer be true; the wording used here and in section 2's note is the one that is.
 - The panel-family record in section 1: 15 games, 5-10 becomes 14 games, 4-10 (the dropped game was a win).
-- **The dropped game is still in `calibration_games.csv`** as a Weezing variant played against the panel's Weezing
-  (Hoopa) list, which is not the deck he met. It is not removed here (that is a `ladder_mapping.csv` change that also
-  moves `ladder_counts.md`). If the calibration runs, report it with and without that game, beside the skeptic's
-  16-game run without concessions (5g). Removing it is the cleaner fix; say the word.
+- **The dropped game is removed from calibration** (Fable's ruling later on Sept 28, same delegation, relayed: "under P3
+  it does not belong in calibration either; consistency matters more than the row count while calibration is held").
+  It was a Weezing variant played against the panel's Weezing (Hoopa) list, which is not the deck he met. See "Files
+  changed for the Weezing removal" below.
 
 **Files changed for P5:**
 - `build_calibration_games.py`: the Charizard Y list is now `rl/results/b2e_card_check_2026-09-26/decks/h-charizardy_entei.txt`.
@@ -330,3 +330,21 @@ moves the counts below.
   archetype name is now "Mega Blaziken ex Castform Sunny Form".
 - `l-charizardy.txt` stays in this folder, unused. `ladder_counts.md` is unchanged: it holds the Sept 26 add-one tables.
 - Sections 1 to 7 are left as written; this section supersedes them where they differ.
+
+**Files changed for the Weezing removal** (recorded about 20:00 CDT, after Fable's ruling above):
+- `ladder_mapping.csv`, one row: Sept 15, Brew 01, a win against "team rocket: magmar, weezing ex," now has class
+  "established off-list" (it is listed on Limitless with 189 rows, outside the top 30) and no panel key. The 33 games and
+  the 12-21 record are unchanged.
+- `calibration_games.csv`, regenerated with `build_calibration_games.py`: exactly that one row is gone and no other row
+  changed (checked field by field). The set is now **18 rows with a listed opponent, 17 usable, record 5-12 (base rate
+  0.294), 14 distinct pairs**, and the base rate's Brier score is 0.208. The variant rows left are three Lucario and one
+  Hydreigon. `run_calibration.py --pairs-only` (plays nothing) lists the 14 pairs; the pairs after the removed one
+  renumber, so the two Charizard Y pairs are now **9 and 10** (they were 10 and 11 in section 3's "one dependency" note)
+  and each pair's seed block moves with its number. Nothing has run, so no seed was used.
+- `ladder_counts.md`: recomputed without the game (panel family 14 of 33, 42.4%, record 4-10; established off-list 10,
+  5-5; the rescaled ladder and 50/50 blend tables; the variant rule). Every changed figure was recomputed from the
+  mapping CSV by script and matches. Its Sept 26 figures are named as such where they were kept for comparison.
+- **Not redone:** section 1's class table and section 3's calibration figures above (18 usable, 6-12, 15 pairs, 0.333, the
+  7,500-game estimate) and `calibration_README.md`'s power table, which was computed for 18 games. They are the Sept 26
+  numbers. `calibrate.py` reads its counts from the CSV, so nothing breaks; the power table needs re-running at 17 games
+  if the calibration is ever run, and it is on hold.

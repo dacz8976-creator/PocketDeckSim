@@ -1,5 +1,11 @@
 # A3: per-game calibration against the Ladder Log (prepared Sept 26, 2026; no games played yet)
 
+> **Updated Sept 28 (README section 8):** the figures below describe the Sept 26 set of 18 usable games (6-12, 15 pairs,
+> base rate 0.333). Two rulings changed the set: the Charizard Y stand-in is now `h-charizardy_entei`, and the one
+> Weezing game against the TR Magmar build was removed. The set is now **17 usable games, 5-12 (base rate 0.294), 14
+> pairs**, and the base rate's Brier score is 0.208, not 0.222. The power table (computed for 18 games) has not been
+> re-run and would need it at 17 if the calibration is ever run; it is on hold until more games are logged.
+
 **The question.** When Dustin sits down with one of his lists against a deck the simulator has a
 list for, does the simulator's win chance for that exact pair tell us anything about whether he
 wins? The honest comparison is against the base rate: Dustin's own win rate over the same games,
