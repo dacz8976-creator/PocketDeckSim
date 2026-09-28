@@ -383,7 +383,9 @@ sides with k3 still available; the 0.7.2 wheel and its run identities are untouc
    reads "untrusted" instead of "fail" only when a flagged card central to the list was used on a small share of the
    turns it was available; the page reports available and used counts for every flagged card. Check before use: both
    Payback lists must come out "fail", not "untrusted"; A3 per-game calibration from the Ladder Log; A4 one brew to 15 to 20 ladder games with a
-   stop-loss; A5 B4b as a data refresh with bit-for-bit reproduction of the k3 table plus a card-effect pass, and an
+   stop-loss; A5 B4b as a data refresh (B4b is reprint-only: its five "new" cards are new-art reprints, and the one new card
+   in the window is Mega Garchomp ex, an October promo, `results/b4b_prep_2026-09-26/`; Dustin, Sept 28: B4b waits up to
+   three days for upstream) with bit-for-bit reproduction of the k3 table plus a card-effect pass, and an
    upstream code-merge trial in the cloud before C1.
 3. Pilot quality: kd (the defender's Weakness and reductions in the clock) read against kp3 on v2; then, approved by
    Dustin on Sept 25 as optional and only after kd is read, **one Altaria detector network** on an otherwise idle
