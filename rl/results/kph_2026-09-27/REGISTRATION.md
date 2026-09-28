@@ -32,6 +32,12 @@
   - the Scizor mixed rows with koh on Scizor.
   - B2e's held-out rows stay as registered in section 5.
 
+**Amendment 4 (Sept 28 evening): Dustin's ruling on the coverage rows, which supersedes amendment 2's tests.** (Recorded the same day. Amendment 2's tests were applied in koh's reading at 087528f; this ruling came after that reading, and the reading is re-judged under it at the commit that records this.)
+- Dustin, about 6:40 pm Central, typed in the Fable session "Recommendations and advice" and relayed verbatim: "coverage rows count for the mixed-row veto and are reported for accuracy."
+- **Scizor and the second lists:** their accuracy numbers are reported, never vetoing. A second list shares its archetype's real cell with the main list, so scoring both would count the same real data twice. Their own-side mixed rows gate in full: the candidate's own side worse beyond paired noise (the paired 95% interval wholly below zero) is harm, and a veto that blocks the takeover.
+- **B2e's held-out archetypes:** the "more than 2 further" accuracy veto stands, since they have real cells. They also get own-side mixed rows every time (the candidate on the held deck, the base on the panel list).
+- **Also beside koh (Dustin):** the Hyper Ray census, since R′ is the Hyper Ray fix reworked.
+
 **Amendment 3 (Sept 28, laptop session, before any koh dump is played or read): the mechanism check's slices, made exact.**
 - **Which slices.** Section 5 step 3 pins the slices to the analyst's files (`luc_rows.json`, `v_rows.json`, `sk_alt_rows.json` with `altaria_games.jsonl`). DIAGNOSIS.md's printed counts, which this registration quotes (bare Riolu 24/11, Combee 9/2, Swablu/Eevee 15/3, forward swaps 52/32), come from its second reader's rules. For Lucario and Vespiquen those rules give slightly different members than the analyst's (Lucario: 7 promote-first games read on the next own turn, one status-parsing miss, two end-board readings; Vespiquen: a few games each way).
   - The slices used are the printed ones, reconstructed and proven by a workflow with a skeptic per deck (Sept 28): every count equals DIAGNOSIS.md's, and each skeptic's independent recount agrees row for row.

@@ -5,7 +5,7 @@
 # Part B (kt games; waits for the flag GATE_koh_b2e_read, written once koh's B2e rows are read and committed):
 #   timing; the four tables on the 45 cells; the footprint (noted for the laptop to read and commit alone); mixed rows
 #   on all 45 cells both directions for kt3 and kta3 (the conservative set: it covers either route); coverage for kt3
-#   and kta3 (B2e 96 both sides, Scizor both sides + mixed, second lists both sides + mixed by side); clause (d)'s rows
+#   and kta3 (B2e 96 both sides + mixed on the held deck, Scizor both sides + mixed, second lists both sides + mixed by side); clause (d)'s rows
 #   (kta3 and kt3 on the census Rayquaza list v kog3 on the panel, and kog3 on both; 22,700,000,000 block); the Rayquaza
 #   traces (kta3 and kog3 on Rayquaza, kog3 on Lucario, item 9). The Dustin-deck A/B and the readout counters are a
 #   separate script. Output names start with the kt build's short commit (item 1).
@@ -105,6 +105,9 @@ for bot in kt3 kta3; do
   run ${S}_mixed_new17_${bot}_first "${N17[@]}" --games 500 --bot-a $bot --bot-b kog3
   run ${S}_mixed_new17_${bot}_second "${N17[@]}" --games 500 --bot-a kog3 --bot-b $bot
   run ${S}_b2e_${bot} "${BB[@]}" --games 500 --bot $bot
+  # B2e's own-side mixed rows (Dustin, Sept 28 evening: coverage rows count for the mixed-row veto, so every time):
+  # kt on the held deck (side a), kog3 on the panel; pairings 0-47 count, 48-95 (Dustin's files) reported.
+  run ${S}_mixed_b2e_${bot}_first "${BB[@]}" --games 500 --bot-a $bot --bot-b kog3
   run ${S}_scizor_${bot} "${SCZ[@]}" --games 500 --bot $bot
   run ${S}_mixed_scizor_${bot}_first "${SCZ[@]}" --games 500 --bot-a $bot --bot-b kog3
   run ${S}_mixed_scizor_${bot}_second "${SCZ[@]}" --games 500 --bot-a kog3 --bot-b $bot

@@ -15,6 +15,19 @@
 - **Rayquaza is clause (d)'s one test,** with Suicune reported.
 - That is the carrier census's choice (`../kt_carrier_census_2026-09-26/README.md`: the census Rayquaza list, 8 × 500 on the 22,700,000,000 block), and amendment 2's item 3 and item 8.
 
+**Dustin's rulings for the reading** (typed in the Fable session "Recommendations and advice", Sept 28, relayed verbatim; recorded the same day, also in RUN5's frame):
+- **About 6:40 pm Central, kt's part:** "kt is the Tool fix on the reserve route: the 15 percent trigger read first, no-harm with the −1.0 lower bound, no deck hurt, and the real gain shown on your Skarmory deck and on Suicune as the non-Dustin deck per the earlier ruling, with Suicune's real cells before and after reported. If the readings show those, the verdicts write themselves; if they show something else, that's the morning conversation."
+- **The same message, on coverage:** "coverage rows count for the mixed-row veto and are reported for accuracy."
+  - So kt3's and kta3's coverage rows (Scizor, the four second lists, B2e's held-out decks) all get own-side mixed rows. B2e's were added to `run_kt.sh`.
+- **About 7 pm Central, on the clause (d) conflict:**
+  - "Rayquaza, as registered. My "Suicune" tonight was a recollection of the earlier ruling that Suicune could count as the non-Dustin deck for the Tool fix — it was permitted, not required — and the registration then chose Rayquaza on exactly the grounds clause (d) asks for: a Limitless top-30 archetype, carries the relevant Tools, not your deck. A registration written before the games and satisfying the rule outranks a reviewer's paraphrase after it. Changing the gating deck now, with the rows already running, would be the goalpost move the registration exists to prevent, whichever way it went."
+  - "Suicune stays reported beside, as the record already says, and if it moves in the same direction as Rayquaza that's supporting evidence; if it moves the other way that's a finding to write down, not a gate that fired."
+  - "The correction belongs in the saved rulings too, so the record reads: (d) gates on Rayquaza per registration; Suicune reported; Fable's Suicune wording of Sept 28 was a misstatement and is withdrawn."
+- **So:**
+  - (d) gates on the census Rayquaza list's eight rows, kta3 v kog3.
+  - Suicune's seven mixed rows and its real cells before and after are reported.
+  - The Skarmory deck is in the Dustin-deck A/B, as motivation.
+
 **Who does what:**
 - **The cloud:** the kt build's code on 233bced's `engine/` (kt's presets redefined on kog), the parser, preset and values tests (item 7), the full suite and `BUILD.md`.
 - **The laptop:** builds the same commit, then runs everything that plays games, each from the kt build's own programs with their sha256 recorded:

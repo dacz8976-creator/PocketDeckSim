@@ -461,6 +461,17 @@ sides with k3 still available; the 0.7.2 wheel and its run identities are untouc
 - **The frame a candidate is read in** (Dustin, Sept 27).
   - A candidate's adoption verdict is read on the cells it was registered on. Changing the frame after the result is what the rules exist to prevent.
   - An "adopted" must also survive the coverage cells it touches: there they count for no harm only. A veto blocks the takeover; a gain is reported, not credited.
+  - **How coverage rows count** (Dustin, Sept 28 about 6:40 pm Central, typed in the Fable session "Recommendations and advice" and relayed verbatim; recorded the same day): "coverage rows count for the mixed-row veto and are reported for accuracy."
+    - The accuracy half needs real cells, and neither Scizor nor a second list has its own. Scizor's nine real lists can't anchor a cell. A second Lucario list shares Lucario's archetype cell with the first, and scoring both against it counts the same real data twice. So for accuracy they are reported, never vetoing.
+    - The own-side half ("no deck's own side plays worse beyond noise in the mixed rows") is simulator-internal and needs no real cell, so it applies to them in full. A candidate that makes Scizor or a second list play its own side worse beyond paired noise has done harm, and that counts: "Coverage decks hurt is exactly the failure mode the gauntlet was added to catch."
+    - So coverage rows (Scizor, the second lists, and B2e's held-out decks) get mixed rows every time, not only after a veto. This supersedes kph amendment 2's two-part tests, and the matching text of kt's amendment 2 (its R6).
+  - **What koh's and kt's readings hinge on** (same message): "No verdict from me without the readings, but what each hinges on is fixed already."
+    - koh: the 45 cells under the standard rule, "no coverage deck hurt, and the Hyper Ray census beside it".
+    - kt: the reserve route, "the 15 percent trigger read first, no-harm with the −1.0 lower bound, no deck hurt", and the real gain.
+    - "If the readings show those, the verdicts write themselves; if they show something else, that's the morning conversation."
+  - **kt's clause (d) gates on Rayquaza, as registered** (Dustin, Sept 28 about 7 pm Central, relayed verbatim by Fable). "A registration written before the games and satisfying the rule outranks a reviewer's paraphrase after it."
+    - Suicune is reported beside. The same direction as Rayquaza is supporting evidence; the other direction is "a finding to write down, not a gate that fired".
+    - Fable's Suicune wording of Sept 28 was a misstatement and is withdrawn. His full words are in `results/kt_tables_2026-09-28/README.md`.
   - Every candidate registered from Sept 27 is registered on the 45 cells, so the split doesn't recur. (koa: the 28 table cells for the verdict; its two new cells, where the panel's Altaria is the opponent, for no harm.)
 - **Composing candidates into one pilot** (Dustin, Sept 27: "two pilots is the drift risk").
   - Candidates that pass separately and touch different things are combined into one pilot through a **composition check**, not a new candidate:
