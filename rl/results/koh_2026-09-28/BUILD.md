@@ -1,4 +1,4 @@
-Decision this informs: kph's registered reading on the composed base (`../kph_2026-09-27/REGISTRATION.md` section 2, with amendment 1): R′ read against kog3 on the 45 cells, by the laptop. kog passed its composition check on Sept 28 (`../kog_composition_2026-09-27/READING.md`, 5bca434), so kph at 7e7d864 is not run. This note records the build. Build commit BUILD_COMMIT, scan sha256 SCAN_SHA.
+Decision this informs: kph's registered reading on the composed base (`../kph_2026-09-27/REGISTRATION.md` section 2, with amendment 1): R′ read against kog3 on the 45 cells, by the laptop. kog passed its composition check on Sept 28 (`../kog_composition_2026-09-27/READING.md`, 5bca434), so kph at 7e7d864 is not run. This note records the build. Build commit bd2907f: the official engine's source (main 83e17ae) plus the player code on this branch (kt, kog, kph, koh), `cargo build --release --example legality_scan` (the `--pairs` option is in it), scan sha256 c84ead95202e7e200313e37f78ceabb184937ab46f366bd5c570d0470a5010cb.
 
 Seeds: the identity checks use the table's deals only (72,000,000 + pairing × 10,000 + i, even i = first-named deck in seat 0).
 
@@ -28,4 +28,4 @@ Seeds: the identity checks use the table's deals only (72,000,000 + pairing × 1
     - koh = koa while the opponent's setup is masked, and koh = kph after it;
     - koh with A and B off (kog + R) = koa in setup, and kpf after it. There is no code for kog + R, so this is its identity check.
 - The parser test above.
-- **Full suite:** SUITE.
+- **Full suite:** 1,975 passed, 0 failed.
