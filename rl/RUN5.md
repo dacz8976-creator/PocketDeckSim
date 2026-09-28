@@ -339,7 +339,12 @@ sides with k3 still available; the 0.7.2 wheel and its run identities are untouc
   - k3 stays the reproduction reference.
 - **The yardstick:** scoreboard v3, 45 cells (`results/scoreboard_v3_2026-09-27/`). Development real error: k3 15.3, kp3 15.5, kog3 14.0; the target is 5.5. Every 45-cell reading prints the by-event interval beside the match-level one.
 - **Candidates:**
-  - koh (kog + R′, kph's registration): footprint 93.4%, so it is read by the ordinary rule. Its runs are in the cloud; nothing else has been read.
+  - koh (kog + R′, kph's registration): **not adopted, provisional** (`results/koh_2026-09-28/laptop_reading/READING.md`).
+    - Real error 14.0 → 12.3, but the ΔMSE interval crosses zero.
+    - Altaria's vetoes count (v Lucario −4.8 ± 3.8; deck −1.8 ± 1.4).
+    - The mechanism check crosses fix A's line in Altaria's Swablu/Eevee positions.
+    - Lucario and Vespiquen are repaired, and Rayquaza's gain is kept.
+    - B2e's held-out rows are pending.
   - kt: being re-issued on kog (amendment 2, one review done). No kt game until Dustin's word on its tables.
   - kph is not run (superseded by koh on the composed base).
 - **Waiting on post-freeze data:** kpg's confirmation, koa's no-harm re-check and kog's own row (`results/postfreeze_2026-09-27/README.md`). Read once, at 804 + 303 matches (about mid-October) or at the last pull before Mega Garchomp ex.

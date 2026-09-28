@@ -1,0 +1,32 @@
+koh's mechanism check (kph registration section 5 step 3, amendment 3). Rows: worse and better together.
+slice                           rows  reached  kp3 move  kpf move  other  share kp3 | share kpf (of reached)
+altaria forward_swap_darkrai       5        4         3         0      1  0.75 | 0.00
+altaria swablu_eevee              18       15         6         8      1  0.40 | 0.53
+lucario bare_riolu                35       31        24         5      2  0.77 | 0.16
+lucario forward_swap              58       49        18        22      9  0.37 | 0.45
+lucario hides                     45       35         2        29      4  0.06 | 0.83
+vespiquen combee                  11        9         6         3      0  0.67 | 0.33
+vespiquen forward_swap            21       17        12         2      3  0.71 | 0.12
+vespiquen tempo_trade             44       40         2        35      3  0.05 | 0.88
+
+Fix A (section 6: fails if kp3's move is played in half or fewer of the reached rows, any A slice or pooled):
+  swablu_eevee   kp3's move 6 of 15 reached (0.40) -> FAILS  [3 of 18 unreached]
+  bare_riolu     kp3's move 24 of 31 reached (0.77) -> holds  [4 of 35 unreached]
+  combee         kp3's move 6 of 9 reached (0.67) -> holds  [2 of 11 unreached]
+  pooled         kp3's move 36 of 55 reached (0.65) -> holds  [9 of 64 unreached]
+
+Fix B (section 6: fails if kpf's move is played in more than half of the reached forward swaps):
+  altaria    kpf's move 0 of 4 reached (0.00); kp3's 3; other 1  [1 unreached]  (reported)
+  lucario    kpf's move 22 of 49 reached (0.45); kp3's 18; other 9  [9 unreached]  (reported)
+  vespiquen  kpf's move 2 of 17 reached (0.12); kp3's 12; other 3  [4 unreached]  (reported)
+  pooled     kpf's move 24 of 70 reached (0.34) -> holds  [14 of 84 unreached]
+
+Reported beside, gating nothing:
+  hides        rows 45, reached 35: kp3's move 2, kpf's move 29, other 4
+  tempo_trade  rows 44, reached 40: kp3's move 2, kpf's move 35, other 3
+  Lucario bare_riolu   koh's end-of-turn Active in T: wall 28, Riolu line 3, other 0
+  Lucario forward_swap koh's end-of-turn Active in T: wall 29, Riolu line 20, other 0
+  Lucario hides        koh's end-of-turn Active in T: wall 31, Riolu line 4, other 0
+  unreached, why: {'split earlier': 37}
+
+RESULT: REFUTATION LINES CROSSED: A: swablu_eevee
