@@ -28,4 +28,7 @@ Real error is score.py's τ̂ in points; the target is 5.5. The development half
 - **Limitless cells:** scoreboard v2's development cells for the 28 (`../scoreboard_v2_2026-09-25/limitless_v2_dev.json`), and the gauntlet's cells for the 17 (`../gauntlet_runs_2026-09-26/gauntlet_cells.csv`).
 - **Hashes:** the input files' sha256 are in `frozen_summary.json`.
 - **Per cell:** `frozen_cells.csv`.
+- **Per event (since Sept 28):** `limitless_45_dev_events.json` (from `build_events45.py`) has the 45 development cells for each of 59 tournament events. It sums exactly to the cells above, which is checked.
+  - `score45.py` passes it by default, so every 45-cell reading prints the event-resampled interval beside the match-level one (Fable and Astra, Sept 28: a standing column).
+  - The sensitivity on the readings already made (`events_sensitivity.txt`; kpg3, koa3, kog3, kpr3 and kpf3 against kp3) changes no conclusion. Every by-event interval is within about 0.2 points of its match-level one, and every ΔMSE interval below zero stays below zero. So treating matches as independent hasn't been flattering the readings.
 - **History, unchanged:** the Sept 23 table (`../limitless_check_2026-09-23.md`), the Sept 25 references (`../per_game_table_2026-09-25/k3_500.jsonl`, `../public_pricing_2026-09-25/kp3_500_*.jsonl`) and scoreboard v2 (`../scoreboard_v2_2026-09-25/`).

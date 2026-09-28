@@ -1,0 +1,81 @@
+=== kpg3 against kp3, 45 cells (development half; rules v2; no mixed rows here, so vetoes aren't read)
+== all cells: 45 pairings
+         kp3: real error 15.5 | reported only: correlation 0.48, average miss 13.6, favorite right 28/45, clear 15/20, beyond chance 17
+        kpg3: real error 14.0 | reported only: correlation 0.52, average miss 13.0, favorite right 28/45, clear 15/20, beyond chance 16
+  dMSE new - current: -43.2 points^2, 95% interval -62.2 to -26.5 (below 0) [Limitless side binomial]
+  dMSE, Limitless side resampled by event: 95% interval -61.7 to -26.3 (below 0; 67 of 4067 event draws redrawn because a cell had no match)
+  real error, current minus new: +1.47 points, 90% interval +0.87 to +1.70 (margin rule: E = 3; 'current' is the cheap bot when comparing variants)
+  real error, Limitless side resampled by event: 90% interval +0.84 to +1.69
+== decision set (Altaria v Sceptile quarantined): 44 pairings
+         kp3: real error 15.7 | reported only: correlation 0.49, average miss 13.9, favorite right 27/44, clear 15/20, beyond chance 17
+        kpg3: real error 14.2 | reported only: correlation 0.52, average miss 13.3, favorite right 27/44, clear 15/20, beyond chance 16
+  dMSE new - current: -44.2 points^2, 95% interval -63.0 to -27.3 (below 0) [Limitless side binomial]
+  dMSE, Limitless side resampled by event: 95% interval -63.5 to -27.8 (below 0; 67 of 4067 event draws redrawn because a cell had no match)
+  real error, current minus new: +1.48 points, 90% interval +0.89 to +1.70 (margin rule: E = 3; 'current' is the cheap bot when comparing variants)
+  real error, Limitless side resampled by event: 90% interval +0.88 to +1.69
+=== koa3 against kp3, 45 cells (development half; rules v2; no mixed rows here, so vetoes aren't read)
+== all cells: 45 pairings
+         kp3: real error 15.5 | reported only: correlation 0.48, average miss 13.6, favorite right 28/45, clear 15/20, beyond chance 17
+        koa3: real error 15.5 | reported only: correlation 0.48, average miss 13.6, favorite right 28/45, clear 14/20, beyond chance 18
+  dMSE new - current: +0.4 points^2, 95% interval -5.3 to +6.4 (not below 0) [Limitless side binomial]
+  dMSE, Limitless side resampled by event: 95% interval -5.5 to +5.8 (not below 0; 67 of 4067 event draws redrawn because a cell had no match)
+  real error, current minus new: -0.01 points, 90% interval -0.15 to +0.12 (margin rule: E = 3; 'current' is the cheap bot when comparing variants)
+  real error, Limitless side resampled by event: 90% interval -0.13 to +0.12
+  ADOPTION RULE (v2): do not adopt (dMSE interval not below 0) (held-out-deck veto checked separately)
+== decision set (Altaria v Sceptile quarantined): 44 pairings
+         kp3: real error 15.7 | reported only: correlation 0.49, average miss 13.9, favorite right 27/44, clear 15/20, beyond chance 17
+        koa3: real error 15.7 | reported only: correlation 0.48, average miss 13.8, favorite right 27/44, clear 14/20, beyond chance 18
+  dMSE new - current: +0.3 points^2, 95% interval -5.0 to +6.1 (not below 0) [Limitless side binomial]
+  dMSE, Limitless side resampled by event: 95% interval -4.9 to +5.7 (not below 0; 67 of 4067 event draws redrawn because a cell had no match)
+  real error, current minus new: -0.01 points, 90% interval -0.15 to +0.12 (margin rule: E = 3; 'current' is the cheap bot when comparing variants)
+  real error, Limitless side resampled by event: 90% interval -0.13 to +0.11
+  ADOPTION RULE (v2): do not adopt (dMSE interval not below 0) (held-out-deck veto checked separately)
+=== kog3 against kp3, 45 cells (development half; rules v2; no mixed rows here, so vetoes aren't read)
+== all cells: 45 pairings
+         kp3: real error 15.5 | reported only: correlation 0.48, average miss 13.6, favorite right 28/45, clear 15/20, beyond chance 17
+        kog3: real error 14.0 | reported only: correlation 0.51, average miss 13.0, favorite right 28/45, clear 14/20, beyond chance 18
+  dMSE new - current: -43.1 points^2, 95% interval -62.3 to -25.3 (below 0) [Limitless side binomial]
+  dMSE, Limitless side resampled by event: 95% interval -61.9 to -26.0 (below 0; 67 of 4067 event draws redrawn because a cell had no match)
+  real error, current minus new: +1.46 points, 90% interval +0.84 to +1.71 (margin rule: E = 3; 'current' is the cheap bot when comparing variants)
+  real error, Limitless side resampled by event: 90% interval +0.82 to +1.70
+== decision set (Altaria v Sceptile quarantined): 44 pairings
+         kp3: real error 15.7 | reported only: correlation 0.49, average miss 13.9, favorite right 27/44, clear 15/20, beyond chance 17
+        kog3: real error 14.2 | reported only: correlation 0.52, average miss 13.2, favorite right 27/44, clear 14/20, beyond chance 18
+  dMSE new - current: -44.2 points^2, 95% interval -63.5 to -26.2 (below 0) [Limitless side binomial]
+  dMSE, Limitless side resampled by event: 95% interval -63.6 to -27.5 (below 0; 67 of 4067 event draws redrawn because a cell had no match)
+  real error, current minus new: +1.48 points, 90% interval +0.85 to +1.72 (margin rule: E = 3; 'current' is the cheap bot when comparing variants)
+  real error, Limitless side resampled by event: 90% interval +0.86 to +1.71
+=== kpr3 against kp3, 45 cells (development half; rules v2; no mixed rows here, so vetoes aren't read)
+== all cells: 45 pairings
+         kp3: real error 15.5 | reported only: correlation 0.48, average miss 13.6, favorite right 28/45, clear 15/20, beyond chance 17
+        kpr3: real error 12.5 | reported only: correlation 0.43, average miss 12.7, favorite right 26/45, clear 17/20, beyond chance 17
+  dMSE new - current: -84.7 points^2, 95% interval -150.4 to -21.7 (below 0) [Limitless side binomial]
+  dMSE, Limitless side resampled by event: 95% interval -153.2 to -14.6 (below 0; 67 of 4067 event draws redrawn because a cell had no match)
+  real error, current minus new: +3.03 points, 90% interval +1.01 to +4.17 (margin rule: E = 3; 'current' is the cheap bot when comparing variants)
+  real error, Limitless side resampled by event: 90% interval +0.88 to +4.17
+  ADOPTION RULE (v2): not decided: dMSE below 0, vetoes await mixed rows (altaria v suicune, blaziken v lucario, lucario v suicune, altaria, hydreigon, vespiquen) (held-out-deck veto checked separately)
+== decision set (Altaria v Sceptile quarantined): 44 pairings
+         kp3: real error 15.7 | reported only: correlation 0.49, average miss 13.9, favorite right 27/44, clear 15/20, beyond chance 17
+        kpr3: real error 12.6 | reported only: correlation 0.42, average miss 12.9, favorite right 25/44, clear 17/20, beyond chance 17
+  dMSE new - current: -86.6 points^2, 95% interval -152.0 to -21.6 (below 0) [Limitless side binomial]
+  dMSE, Limitless side resampled by event: 95% interval -156.4 to -18.4 (below 0; 67 of 4067 event draws redrawn because a cell had no match)
+  real error, current minus new: +3.06 points, 90% interval +0.97 to +4.27 (margin rule: E = 3; 'current' is the cheap bot when comparing variants)
+  real error, Limitless side resampled by event: 90% interval +0.89 to +4.21
+  ADOPTION RULE (v2): not decided: dMSE below 0, vetoes await mixed rows (altaria v suicune, blaziken v lucario, lucario v suicune, altaria, hydreigon, vespiquen) (held-out-deck veto checked separately)
+=== kpf3 against kp3, 45 cells (development half; rules v2; no mixed rows here, so vetoes aren't read)
+== all cells: 45 pairings
+         kp3: real error 15.5 | reported only: correlation 0.48, average miss 13.6, favorite right 28/45, clear 15/20, beyond chance 17
+        kpf3: real error 12.5 | reported only: correlation 0.42, average miss 12.8, favorite right 26/45, clear 17/20, beyond chance 15
+  dMSE new - current: -84.2 points^2, 95% interval -149.9 to -21.3 (below 0) [Limitless side binomial]
+  dMSE, Limitless side resampled by event: 95% interval -151.7 to -13.2 (below 0; 67 of 4067 event draws redrawn because a cell had no match)
+  real error, current minus new: +3.01 points, 90% interval +0.98 to +4.20 (margin rule: E = 3; 'current' is the cheap bot when comparing variants)
+  real error, Limitless side resampled by event: 90% interval +0.81 to +4.15
+  ADOPTION RULE (v2): not decided: dMSE below 0, vetoes await mixed rows (altaria v suicune, blaziken v lucario, lucario v suicune, altaria, hydreigon, vespiquen) (held-out-deck veto checked separately)
+== decision set (Altaria v Sceptile quarantined): 44 pairings
+         kp3: real error 15.7 | reported only: correlation 0.49, average miss 13.9, favorite right 27/44, clear 15/20, beyond chance 17
+        kpf3: real error 12.7 | reported only: correlation 0.42, average miss 13.0, favorite right 25/44, clear 17/20, beyond chance 15
+  dMSE new - current: -86.1 points^2, 95% interval -152.2 to -21.4 (below 0) [Limitless side binomial]
+  dMSE, Limitless side resampled by event: 95% interval -155.6 to -16.6 (below 0; 67 of 4067 event draws redrawn because a cell had no match)
+  real error, current minus new: +3.05 points, 90% interval +0.94 to +4.25 (margin rule: E = 3; 'current' is the cheap bot when comparing variants)
+  real error, Limitless side resampled by event: 90% interval +0.84 to +4.22
+  ADOPTION RULE (v2): not decided: dMSE below 0, vetoes await mixed rows (altaria v suicune, blaziken v lucario, lucario v suicune, altaria, hydreigon, vespiquen) (held-out-deck veto checked separately)

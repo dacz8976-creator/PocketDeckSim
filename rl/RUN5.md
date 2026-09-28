@@ -408,6 +408,13 @@ sides with k3 still available; the 0.7.2 wheel and its run identities are untouc
     - 7,437 of its 7,461 changed games had an on-board end-of-turn or Checkup Knock Out.
     - The other 24 first split at a turn where a Checkup Knock Out was within the bots' reach: 22 plainly, 2 through an attack plus Burn. All were in the cells where its on-board changes are.
     - Its code runs only when a promotion is pending after the Checkup. So it passed.
+  - **A refactor of a rules file** (Dustin, Sept 28; general, since it will recur; worked example `results/engine_switch_2026-09-28/`):
+    - It is acceptable only when all three hold:
+      1. the source equivalence is written down;
+      2. the full test suite passes;
+      3. games that reach the touched paths replay identically on the old and new builds.
+    - The whole-table replay alone doesn't qualify when the table's lists don't reach the changed code: identical games that never execute the changed lines prove nothing about them.
+    - It is the "in lookahead" rule from the other side: the check has to be where the change is.
   - **Baselines move with the engine.** k3 and kp3 on all 45 scoreboard cells at the new engine become the frozen table. Earlier tables stay as history with their hashes. Every reading uses baselines from the same engine as the candidate, with no exceptions.
 - **Confirming a reserve-route (no-harm) fix** (Dustin, Sept 27; standing rule, not decided per candidate).
   - A no-harm fix can't show a gain of fixed size by design.
