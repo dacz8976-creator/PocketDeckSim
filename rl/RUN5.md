@@ -385,8 +385,24 @@ sides with k3 still available; the 0.7.2 wheel and its run identities are untouc
    Payback lists must come out "fail", not "untrusted"; A3 per-game calibration from the Ladder Log; A4 one brew to 15 to 20 ladder games with a
    stop-loss; A5 B4b as a data refresh (B4b is reprint-only: its five "new" cards are new-art reprints, and the one new card
    in the window is Mega Garchomp ex, an October promo, `results/b4b_prep_2026-09-26/`; Dustin, Sept 28: B4b waits up to
-   three days for upstream) with bit-for-bit reproduction of the k3 table plus a card-effect pass, and an
+   three days for upstream) with bit-for-bit reproduction of the k3, kp3 and kog3 tables (14,000 games each) on the pinned engine `rl/engine-2026-09-28/` plus a card-effect pass, Mega Garchomp ex as its own small refresh when its text is published, and an
    upstream code-merge trial in the cloud before C1.
+   - **Dustin, Sept 28 about 7:30 pm Central** (typed in the Fable session, relayed verbatim; recorded the same day):
+     - **A4, which brew:** "Play the one you'll enjoy twenty games of — that's the only rule that matters, and the log's spread problem came from switching. But if it's a coin flip between 07 and 08, 08 is the better evidence ... it's an unchanged real Limitless list, so it's the first deck you'd play that has both a screen number and a real cell." Also: "the A1 prediction — 07 and 08 fastest to set up, 10 slowest — gets its first real test from whichever you play, so note setup speed when you log." The brew pages in `results/floor_brews_2026-09-28/` say what to note.
+     - **A5, the merge trial:** "Trial it whenever the cloud has room, in isolation, off the official engine — a separate worktree, the full test suite and the identity replays against the current references, with the new cards' text checked against `card.py` as they come in. Don't pin it until two things are true: the current candidate queue (koh, kt) has its verdicts, and the mid-October read has been taken on the B4a meta it was registered against. The Garchomp release is the natural pin date."
+     - **The Sleep/Paralysis pull request upstream: "yes, and first."** "If upstream merges the fix before you merge upstream's B4b, the new set arrives with the fix already in it and there's nothing to re-patch." The seven repairs from this week may follow, "but one clean pull request first". The laptop prepares it; Dustin opens it from his own account.
+     - **The B4b release-note defaults** (decided under his delegation by the Fable session and the fourth session, Sept 28):
+       - B1: keep CRLF in `engine/` for this refresh.
+       - B2: the version string is recorded, not changed.
+       - B3: moot; the replay references are the Sept 28 tables.
+       - B5: the 44 Pocket Deck Lab replay segments are not a condition; the full suite and the 14,000-game replays are the standard.
+       - B6: Mega Garchomp ex is its own refresh.
+       - B8: skip the QR catalog until a B4b card fails to scan.
+       - B9 is still his: the merge trial's window.
+   - **The cloud** (Dustin, Sept 28 about 7:30 pm Central, then revised about 7:50 pm, both verbatim via Fable):
+     - First: "each candidate gets one cloud round — build, one review, identity check — before its table, with a second cloud round only after a table has asked a question ... The laptop is free and does the tables."
+     - Revised: "I don't want a weekly cloud cap, but don't want things overlapping unnecessarily. As long as no one is stepping on one another, the cloud gives us two more cores to run/test things."
+     - So there is no cap. The one-round shape is the default order. Before a cloud job starts, its plan names the laptop job it must not duplicate, and the other way round (Fable's practical rule). kt's cloud cross-check (`results/kt_kog_2026-09-28/`) is the one deliberate overlap.
 3. Pilot quality: kd (the defender's Weakness and reductions in the clock) read against kp3 on v2; then, approved by
    Dustin on Sept 25 as optional and only after kd is read, **one Altaria detector network** on an otherwise idle
    laptop night: the Hydreigon recipe (two networks trained against each other, pair checks passed before anything is

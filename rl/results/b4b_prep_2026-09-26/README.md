@@ -259,6 +259,13 @@ upstream is Dustin's call, separately (REVIEW line 162; `UPSTREAM.md` line 5).
 9. **The merge trial's window and budget:** week of October 12 to 19 and 2 cloud days, or another slot? And does the
    Sleep/Paralysis PR go out before it?
 
+**Answers (Sept 28; recorded the same day, also in RUN5's A5):**
+- **Decided under Dustin's delegation** (the Fable session and the fourth session): 1 keep CRLF in `engine/` for this refresh; 2 the version string is recorded, not changed; 3 moot, since the replay references are the Sept 28 tables (k3, kp3 and kog3, 14,000 games each, on `rl/engine-2026-09-28/`); 5 the 44 replay segments are not a condition, the full suite and the 14,000-game replays are the standard; 6 Mega Garchomp ex is its own refresh; 8 skip the QR catalog until a B4b card fails to scan. Item 4 was Dustin's own (Sept 28: wait up to three days for upstream); item 7 is done (939ea5d).
+- **Item 9, Dustin, about 7:30 pm Central, verbatim via Fable:**
+  - "Trial it whenever the cloud has room, in isolation, off the official engine — a separate worktree, the full test suite and the identity replays against the current references, with the new cards' text checked against `card.py` as they come in. Don't pin it until two things are true: the current candidate queue (koh, kt) has its verdicts, and the mid-October read has been taken on the B4a meta it was registered against. The Garchomp release is the natural pin date: the meta changes then, the table decks get refreshed then, and a new official engine with the new set belongs to that refresh rather than to the middle of the current one."
+  - "The Sleep/Paralysis pull request: yes, and first." The laptop prepares it; Dustin opens it from his own account.
+  - On the cloud: no weekly cap. Jobs must not overlap unnecessarily (RUN5's A5 has his words).
+
 ## Unverified (collected)
 
 - Everything that needs a build: main's test count at `7fc6ccb`, that the suite is green there, that the identity replay passes

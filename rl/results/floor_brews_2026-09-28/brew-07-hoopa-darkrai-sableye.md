@@ -54,3 +54,22 @@ Main attackers for these measures (fallback: the Pokemon with the highest printe
   - t-vespiquen, deck in seat 1: 57 / 63 / 0
   - t-weezing, deck in seat 0: 93 / 27 / 0
   - t-weezing, deck in seat 1: 30 / 90 / 0
+
+## If you play it on the ladder: what to note (Dustin, Sept 28)
+
+Dustin, about 7:30 pm Central (via the Fable session, verbatim): "Play the one you'll enjoy twenty games of — that's the only rule that matters", with 08 the better evidence on a coin flip (an unchanged real Limitless list), and "Brew 07 next, at 62 percent and more your kind of deck, tests the screen's top score once the screen's calibration is worth something." Either way, "note setup speed when you log."
+
+For each game, note three things beside the result:
+- whether you went first or second;
+- **the turn you first attacked with Hoopa ex**, counting your own turns (your first turn is 1), or "never";
+- **the opponent's points at that moment**.
+
+The simulator's numbers to compare, from the table above:
+- went first: Hoopa ex attacked by your turn 2 in 63% of games, turn 3 in 74%, turn 4 in 82%;
+- went second: 72%, 79% and 85%;
+- the opponent had about 0.4 points on average when it did;
+- about 10% of games never saw Hoopa ex attack.
+
+Hoopa ex is the page's fallback choice (the highest printed damage). If a different Pokémon is the one you rely on to attack, note that one instead and say which.
+
+In the Ladder Log, put them in the game's Note box, for example `1st | Hoopa T3 | opp 1 pt` (the log has no separate boxes for these, and none are needed).

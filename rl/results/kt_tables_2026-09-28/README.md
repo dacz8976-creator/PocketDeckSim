@@ -28,6 +28,12 @@
   - Suicune's seven mixed rows and its real cells before and after are reported.
   - The Skarmory deck is in the Dustin-deck A/B, as motivation.
 
+**The cloud's amendment 3 is not in force** (Fable's overnight ruling, Sept 28 about 23:45 UTC). Amendment 3 (f72cb77) read the GO as starting kt's games before koh's B2e read. Fable ruled:
+- Dustin's "Yes, all; build now" was given here with the koh-first order attached, and the amendment is the cloud's own reading, not his word.
+- The laptop's kt run is the run of record.
+- The cloud's identity and table runs (`../kt_kog_2026-09-28/`) are a cross-check only. The same commit and seeds should give the same games, and a difference is a finding to stop on. The cloud writes no footprint reading, route, verdict or further amendment.
+- Its table files may be input to the laptop's footprint, but only after identity confirms its build hash and its games equal the laptop's on the overlap. This README says so if they are used.
+
 **Who does what:**
 - **The cloud:** the kt build's code on 233bced's `engine/` (kt's presets redefined on kog), the parser, preset and values tests (item 7), the full suite and `BUILD.md`.
 - **The laptop:** builds the same commit, then runs everything that plays games, each from the kt build's own programs with their sha256 recorded:

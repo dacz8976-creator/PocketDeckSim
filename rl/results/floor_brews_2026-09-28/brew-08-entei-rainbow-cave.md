@@ -54,3 +54,21 @@ Main attackers for these measures (fallback: the Pokemon with the highest printe
   - t-vespiquen, deck in seat 1: 20 / 100 / 0
   - t-weezing, deck in seat 0: 64 / 56 / 0
   - t-weezing, deck in seat 1: 60 / 60 / 0
+
+## If you play it on the ladder: what to note (Dustin, Sept 28)
+
+Dustin, about 7:30 pm Central (via the Fable session, verbatim): "Play the one you'll enjoy twenty games of ... if it's a coin flip between 07 and 08, 08 is the better evidence ... it's an unchanged real Limitless list, so it's the first deck you'd play that has both a screen number and a real cell." And: "the A1 prediction — 07 and 08 fastest to set up, 10 slowest — gets its first real test from whichever you play, so note setup speed when you log."
+
+For each game, note three things beside the result:
+- whether you went first or second;
+- **the turn you first attacked with Entei ex**, counting your own turns (your first turn is 1), or "never";
+- **the opponent's points at that moment** (0, 1, 2...).
+
+The simulator's numbers to compare, from the table above:
+- went first: Entei ex attacked by your turn 2 in 38% of games, turn 3 in 92%, turn 4 in 99%;
+- went second: 92% by turn 2, 98% by turn 3;
+- the opponent had 0.06 points on average when it did.
+
+Twenty games is enough to see whether the real setup is roughly that fast, not to measure it exactly.
+
+In the Ladder Log, put them in the game's Note box, for example `2nd | Entei T2 | opp 0 pts` (the log has no separate boxes for these, and none are needed).
