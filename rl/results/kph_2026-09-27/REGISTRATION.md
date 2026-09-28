@@ -31,6 +31,15 @@
   - their mixed rows;
   - the Scizor mixed rows with koh on Scizor.
   - B2e's held-out rows stay as registered in section 5.
+
+**Amendment 3 (Sept 28, laptop session, before any koh dump is played or read): the mechanism check's slices, made exact.**
+- **Which slices.** Section 5 step 3 pins the slices to the analyst's files (`luc_rows.json`, `v_rows.json`, `sk_alt_rows.json` with `altaria_games.jsonl`). DIAGNOSIS.md's printed counts, which this registration quotes (bare Riolu 24/11, Combee 9/2, Swablu/Eevee 15/3, forward swaps 52/32), come from its second reader's rules. For Lucario and Vespiquen those rules give slightly different members than the analyst's (Lucario: 7 promote-first games read on the next own turn, one status-parsing miss, two end-board readings; Vespiquen: a few games each way).
+  - The slices used are the printed ones, reconstructed and proven by a workflow with a skeptic per deck (Sept 28): every count equals DIAGNOSIS.md's, and each skeptic's independent recount agrees row for row.
+  - They are `laptop_reading/slices_{altaria,lucario,vespiquen}.json` in `../koh_2026-09-28/`.
+  - The analyst-only games are reported beside, gating nothing.
+- **What is compared.** At each row's first-divergence index k (the tick-split trace, the copy chosen by config as `classify.py` does), koh's trace counts as reached when its first k moves and its board at k equal kp3's. koh's move at k is then kp3's, kpf's or another. That is section 5's registered measure, and section 6's pass lines apply to it.
+- **Reported beside, gating nothing:** Lucario's slices are defined by the end-of-turn Active, not by the move at k. So for Lucario, koh's end-of-turn Active in turn T (the diagnosis's rule) is also reported as wall-like or Riolu-line-like.
+- **Pooling:** A's pooled count is the three A slices' rows together (Swablu/Eevee, bare Riolu, Combee: 48/16). B's is the forward swaps of all three decks (52/32). Worse and better rows both count.
 - Dustin, Sept 27, in chat (recorded here first), on kpf's vetoes: "leave it provisional and diagnose … the fix is registered as a new candidate on top of kpg and read against the 45 cells and the coverage decks; the vetoed cells are the cells that decide it, not the cells it's tuned to."
 - Sources:
   - the diagnosis `../kpf_2026-09-26/diagnosis/DIAGNOSIS.md`;
