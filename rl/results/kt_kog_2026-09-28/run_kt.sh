@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
-# kt on kog, Sept 28-29 night (Dustin's GO via Fable; README.md is the plan, committed before any kt game).
-# Build ec7e1a8 (233bced + kt's presets on kog). Every step writes to scratch and moves into this folder when complete;
-# STATUS.txt logs each step. Any identity failure, timing over 1.25x, or scan failure stops the run.
+# kt on kog, the cloud's CROSS-CHECK of the laptop's run of record (Dustin via Fable, Sept 28 late evening; README.md).
+# Build ec7e1a8 (233bced + kt's presets on kog). The suite, the identity checks and the four tables only: no timing,
+# footprint, reading, mixed rows, coverage, (d) or A/B. Every step writes to scratch and moves into this folder when
+# complete; STATUS.txt logs each step. Any identity failure or scan failure stops the run.
 set -euo pipefail
 R=/home/user/PocketDeckSim; D=$R/rl/results/kt_kog_2026-09-28; BUILD=ec7e1a8
 S=/tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/ktkog
@@ -52,41 +53,11 @@ scan "$I" ${BUILD}_kd3_40 40 kd3 kd3 "${TABLE[@]}";         ident "kd3, 40 table
 scan "$I" ${BUILD}_kpr3_40 40 kpr3 kpr3 "${TABLE[@]}";      ident "kpr3, 40 table deals, v af8489f_kpr3_40" ${BUILD}_kpr3_40 "$REF/rules09_fixes_2026-09-26/af8489f_kpr3_40.jsonl" 40
 note "IDENTITY DONE"
 
-# 3. Timing: kog3 then kt3 on the first 40 table deals, back to back.
-if [ ! -s "$D/timing.txt" ]; then
-  for b in kog3 kt3; do
-    s=$(date +%s.%N)
-    ( cd "$R/engine" && RAYON_NUM_THREADS=$T "$SCAN" "${TABLE[@]}" --games 40 --bot $b > "$S/timing_$b.txt" 2>&1 ) || die "timing $b"
-    echo "$b $(echo "$(date +%s.%N) - $s" | bc)" >> "$S/timing_raw.txt"
-  done
-  python3 - "$S/timing_raw.txt" > "$D/timing.txt" <<'EOF' || die "TIMING: kt3 over 1.25x kog3 (timing.txt)"
-import sys
-t = dict((b, float(x)) for b, x in (l.split() for l in open(sys.argv[1])))
-r = t["kt3"] / t["kog3"]
-print(f"40 table deals per pairing (1,120 games), 4 threads, back to back: kog3 {t['kog3']:.0f} s, kt3 {t['kt3']:.0f} s; "
-      f"kt3 / kog3 = {r:.2f} (the bound is 1.25): {'within' if r <= 1.25 else 'OVER'}")
-sys.exit(0 if r <= 1.25 else 1)
-EOF
-  note "timing: $(cat "$D/timing.txt")"
-fi
-
-# 4. The four tables on the 45 cells.
+# 3. The four tables on the 45 cells.
 for code in kt3 kta3 ktb3 ktc3; do
   scan "$D" ${BUILD}_table_${code}_500 500 $code $code "${TABLE[@]}"
   scan "$D" ${BUILD}_new17_${code}_500 500 $code $code "${NEW17[@]}"
 done
 note "TABLES DONE"
 
-# 5. The footprint (moves only), read first; committed alone by hand.
-[ -s "$D/footprint.txt" ] || python3 "$D/footprint.py" > "$D/footprint.txt" || die "footprint"
-note "FOOTPRINT WRITTEN (commit it alone before anything else is read)"
-
-# 6. Mixed rows against kog3 on the 45 cells: kt3, then kta3.
-for code in kt3 kta3; do
-  scan "$D" ${BUILD}_mixed_table_${code}_first 500 $code kog3 "${TABLE[@]}"
-  scan "$D" ${BUILD}_mixed_table_${code}_second 500 kog3 $code "${TABLE[@]}"
-  scan "$D" ${BUILD}_mixed_new17_${code}_first 500 $code kog3 "${NEW17[@]}"
-  scan "$D" ${BUILD}_mixed_new17_${code}_second 500 kog3 $code "${NEW17[@]}"
-  note "MIXED DONE $code"
-done
-note "KT RUN DONE"
+note "CROSS-CHECK RUNS DONE (identity and the four tables); nothing is read here"
