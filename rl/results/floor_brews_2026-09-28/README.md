@@ -29,3 +29,10 @@ refute one. The tempo harness's prediction stands as it was, scored only by Dust
 
 **Run:** `run_floor.sh`, at the lowest CPU priority so it never slows another run. Pages, per-game files and coverage
 land in this folder; timing in `timing.txt`; the readings go in a results section below once they exist.
+
+## Reading note (added Sept 28, about 18:20, before any page of this run was read; changes no rule and no verdict)
+
+Each page prints every flagged card's role and where the role came from ("default from the flag" or "set for this
+deck"). No role was set for any of these six decks. So on any page where a flagged card carries a default role, a
+verdict is **provisional**: a "fail", "borderline" or "untrusted" there may be a wrong-role problem rather than a deck
+problem, and the reading below will say so beside the verdict. Nothing in this folder ranks the brews.
