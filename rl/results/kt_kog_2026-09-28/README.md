@@ -9,11 +9,13 @@ Seeds: the table's deals (72,000,000 + pairing × 10,000 + i, i < 500, even i = 
 1. **Dustin's message (via Fable, Sept 28 evening):** "kt tables: GO. Start kt's games now on your branch. [...]". The cloud read it as a go for its own run.
    - It committed a plan here and kt amendment 3 (f72cb77), and started the runner at 23:33 UTC.
    - The runner was still in the test suite; **no kt game had been played.**
-2. **Dustin's correction (via Fable, Sept 28 late evening):**
-   - Amendment 3 is not in force. His go was given to the laptop with the koh-first order attached, and the cloud's reading was its own interpretation, not his word.
-   - The laptop's kt run is the run of record. The cloud's identity and table runs may continue as a cross-check only.
-   - No footprint reading, route choice, verdict or reading of any kind.
-   - No coverage, mixed rows, clause (d) or A/B.
+2. **Dustin's correction** (via Fable, "Recommendations and advice", Sept 28 late evening), verbatim:
+   > 1. kt amendment 3 is NOT in force. My go was given to the laptop with the koh-first order attached; your reading of it as "start kt's games now" is the cloud's interpretation, not my word. Mark amendment 3 as withdrawn, dated, in one line. Write no further amendments.
+   > 2. The laptop's kt run is the run of record. Your identity and table runs may continue as a cross-check only. You write no footprint reading, no route choice, no verdict, and no reading of any kind. If your games differ from the laptop's on the same commit and seeds, that is a finding: stop and write it down.
+   > 3. If you finish the cross-check, push the game files and go idle. Do not start coverage, mixed rows, clause (d), or the A/B; the laptop runs those.
+
+   - **His word to the laptop** is recorded on main (f7defd1, `rl/results/kt_tables_2026-09-28/README.md`): "kt tables: go"; "Yes, all; build now". kt's first game there waits until koh's B2e rows are read.
+   - **The laptop builds this commit** (ec7e1a8) and plays every game of record from it.
 3. **What the cloud did:**
    - stopped the runner at 23:41 UTC;
    - marked amendment 3 withdrawn in one line (`../kt_2026-09-26/README.md`), with no further amendment;

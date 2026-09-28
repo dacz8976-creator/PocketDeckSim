@@ -1,6 +1,54 @@
-Decision this informs: kt's tables (kt3, then kta3, ktb3 and ktc3, on the table's deals) and their reading by the laptop under rule v2 and the reserve route (README "FOOTPRINT AND ROUTES"). This note records the build they run on. Build commit 43cef0b: the official engine (main 83e17ae) plus kt's code (ed81c8b; 92c4563 restores two files' Windows line endings; 43cef0b adds the review's tests). The scan at 43cef0b has sha256 d63f66b47bf76aed8ec38f93511cb0b339deca770d8e20528aa6c70b391de21f.
+Decision this informs: kt's registered reading on kog (README amendment 2), run by the laptop from this build (`../kt_tables_2026-09-28/` on main: Dustin's word, f7defd1, and the laptop's runner). **The kt build on kog is ec7e1a8** (section "The build on kog" below): the official engine 233bced (`rl/engine-2026-09-28/`, main 9b4df9b) plus kt's presets redefined on kog, `engine/src/players/` only. The build on kp (43cef0b, the rest of this file) is history: from ed81c8b to 233bced the codes kt3, kta3, ktb3 and ktc3 meant the switches on kp.
+
+Earlier header (the build on kp): Decision this informs: kt's tables (kt3, then kta3, ktb3 and ktc3, on the table's deals) and their reading by the laptop under rule v2 and the reserve route (README "FOOTPRINT AND ROUTES"). This note records the build they run on. Build commit 43cef0b: the official engine (main 83e17ae) plus kt's code (ed81c8b; 92c4563 restores two files' Windows line endings; 43cef0b adds the review's tests). The scan at 43cef0b has sha256 d63f66b47bf76aed8ec38f93511cb0b339deca770d8e20528aa6c70b391de21f.
 
 Seeds: the identity checks use the table's deals only (72,000,000 + pairing × 10,000 + i, even i = first-named deck in seat 0).
+
+# kt: the build on kog (ec7e1a8, Sept 28)
+
+## What changed (`git diff 233bced ec7e1a8 -- engine/`: `engine/src/players/` only)
+
+- **`players/value_functions.rs`:**
+  - `EvalFeatures::KT`, `KTA`, `KTB` and `KTC` are the switches on `EvalFeatures::KOG` (koa's switch A and kpg's F on) instead of `OFF`.
+  - The code's docs say so.
+  - The kt tests are adapted and extended (below).
+- **`players/mod.rs`:** doc comments only ("'kt<N>' is 'kog<N>' with …"). The parser and the code-to-value-function match are unchanged.
+- **Nothing else.** The rules files (`hooks/`, `state/`, `actions/`, `tools.rs`) are 233bced's. Their refactor for kt (ed81c8b) was accepted by the Sept 28 engine switch.
+
+## The code names (amendment 2, item 1)
+
+- **The official program answers kt3/kta3/ktb3/ktc3 with the kp-based presets.** That is `rl/engine-2026-09-28/` (233bced), and every build from ed81c8b to 233bced does the same.
+- **Every kt game is played by this build's own programs,** and every kt output file name starts with `ec7e1a8_`.
+- **The cloud's programs:** legality_scan sha256 e19703b1007571c01a79a0b61dcd59bce1d04668bd0a0402c1c13e6535801dcb, deckgym sha256 158b0564c96ffb746e662c08244a6d7138d90804eebb51327f3e6a201f080a1a.
+  - These are the cloud's build. The laptop builds the same commit itself and records its own sha256.
+  - Builds differ by machine; the games don't (as for kog and koh).
+
+## Tests (amendment 2, item 7)
+
+- **The kt tests: 14 passed** (`cargo test --release --features test-utils --lib kt_tests`).
+  - `the_codes_are_kog_plus_their_switches` (new): with its switches off, each code's preset is `KOG` exactly (every field). kt has all three switches and kta, ktb and ktc one each. Switch A and F are on; R, kph's A and B, kq's and kd's features are off.
+  - `kt_on_kog_is_koa_in_setup_and_the_switches_on_kp_plus_f_after_it` (new): on every position of 12 random games (Altaria v Blaziken, Blaziken v Suicune, Suicune v Lucario, and Rayquaza v Blaziken with the scoreboard's Rayquaza list), from each player's own view, each public kt value function:
+    - equals its preset's value;
+    - where the opponent's setup is masked, equals koa's value;
+    - after setup, equals the same switches on kp plus kog's F term (R off: the whole pile on each side, times the Pokémon-value weight), **exactly**;
+    - wherever nothing kt reads is on the board (43cef0b's `has_kt_source`), equals kog's value, exactly.
+
+    The test also asserts it met every kind of position: setup, F acting, and positions with and without anything kt reads.
+  - **43cef0b's 12 kt tests are kept.** The ones that compared the kt codes with kp now run on the same switches on kp (`on_kp`: the preset with switch A and F off). These are `switch_two_drops_only_the_flat_tool_term`, `the_codes_switch_off_to_kp`, and the played-states test.
+  - The clock tests read kt's clocks, which switch A and F don't touch, and are unchanged.
+- **A gap, stated plainly** (found by the cloud's read-only review of this build, confirmed by a skeptic).
+  - The parser tests (`players/mod.rs`) check name to code only: "kt3" parses to `PlayerCode::KT`.
+  - The step from code to value function (`players/mod.rs`, the match at `PlayerCode::KT { .. } => … public_clock_effect_kt_value_function` and its three neighbours) was checked by reading, not by a test. Reading it, KT, KTA, KTB and KTC each go to their own function, and each function uses its own preset.
+  - Amendment 2's sentence "the parser tests check that kt3, kta3, ktb3 and ktc3 now parse to the kog-based presets" is therefore met by reading plus the preset and value tests, not by a parser test.
+  - A test that builds each code's value function from the parsed code would close it. That is a code change, proposed for after tonight's runs, not made now.
+- **The full suite: 1,977 passed, 0 failed** (`../kt_kog_2026-09-28/suite.log`, Sept 28 23:42 UTC): 1,975 as at bd2907f/233bced, plus the two new tests.
+
+## Baseline files named before the first kt game (amendment 2, item 4)
+
+- **The 45 cells:** `../kog_composition_2026-09-27/table_kog3.jsonl` and `new17_kog3.jsonl` (the laptop's a823b6d runs; kog3 at 233bced equals the table on 14,000 of 14,000).
+- **B2e:** `../koh_2026-09-28/reading/b2e_kog3.jsonl` (the cloud's, at bd2907f, whose `engine/` equals 233bced's).
+- **Scizor and the four second lists:** kog3's rows in `../koh_2026-09-28/laptop_runs/` (the laptop's, at the official engine), once committed. If not committed before a kt coverage row, they are run with kog3 at the kt build in full.
+- **Identity against each of them at the kt build** is in the laptop's runner (Part A). The cloud's cross-check of the same identities, at its own build of ec7e1a8, is in `../kt_kog_2026-09-28/identity/identity_check.txt` as it lands.
 
 # kt: the build (Sept 27)
 
