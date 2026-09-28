@@ -77,10 +77,32 @@ echo "$(date -u +%F\ %T) KT PART A DONE $S" >> "$O/STATUS.txt"
 # ---- Part B: kt games, after koh's B2e read.
 until [ -e "$O/GATE_koh_b2e_read" ]; do sleep 60; done
 note "gate open: $(cat "$O/GATE_koh_b2e_read")"
-t0=$(date +%s); run ${S}_timing_kog3_40 "${TAB[@]}" --games 40 --bot kog3; t1=$(date +%s)
-run ${S}_timing_kt3_40 "${TAB[@]}" --games 40 --bot kt3; t2=$(date +%s)
-note "timing: kog3 $((t1 - t0)) s, kt3 $((t2 - t1)) s (limit 1.25x)"
-python3 -c "import sys; a, b = $((t1 - t0)), $((t2 - t1)); sys.exit(0 if b <= 1.25 * a else 1)" || die "timing: kt3 over 1.25x kog3 (item 4: the per-leaf Tool classification is rewritten before the table)"
+# Timing (item 4). Both arms always run fresh: a restart must not reuse a cached arm, which would time it at 0 s
+# (Astra's review via Fable, Sept 28). kog3 then kt3 back to back, wall seconds gating as registered, with user+sys
+# CPU seconds recorded beside. This laptop is shared with other runs, so if kt3 is over 1.25x on the first pair,
+# both arms are rerun once and the second pair decides.
+TIMEFORMAT='%R %U %S'
+timing_pair() {
+  local b
+  for b in kog3 kt3; do
+    rm -f "$O/${S}_timing_${b}_40.jsonl"
+    { time run ${S}_timing_${b}_40 "${TAB[@]}" --games 40 --bot $b; } 2> "$O/${S}_timing_${b}.time"
+  done
+  python3 - "$O/${S}_timing_kog3.time" "$O/${S}_timing_kt3.time" <<'EOF'
+import sys
+(wa, ua, sa), (wb, ub, sb) = [tuple(map(float, open(p).read().split()[-3:])) for p in sys.argv[1:3]]
+r, c = wb / wa, (ub + sb) / (ua + sa)
+print(f"kog3 {wa:.0f} s wall, {ua + sa:.0f} s CPU; kt3 {wb:.0f} s wall, {ub + sb:.0f} s CPU; "
+      f"kt3/kog3 wall {r:.2f} (limit 1.25: {'within' if r <= 1.25 else 'OVER'}), CPU {c:.2f}")
+sys.exit(0 if r <= 1.25 else 1)
+EOF
+}
+if timing_pair > "$O/${S}_timing_1.txt"; then note "timing: $(cat "$O/${S}_timing_1.txt")"
+else
+  note "timing, first pair: $(cat "$O/${S}_timing_1.txt"); rerunning both arms once"
+  timing_pair > "$O/${S}_timing_2.txt" || die "timing: kt3 over 1.25x kog3 on both pairs ($(cat "$O/${S}_timing_2.txt")); item 4: the per-leaf Tool classification is rewritten before the table"
+  note "timing, second pair (decides): $(cat "$O/${S}_timing_2.txt")"
+fi
 for bot in kt3 kta3 ktb3 ktc3; do
   run ${S}_${bot}_table "${TAB[@]}" --games 500 --bot $bot
   run ${S}_${bot}_new17 "${N17[@]}" --games 500 --bot $bot

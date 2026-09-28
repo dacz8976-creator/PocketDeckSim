@@ -41,3 +41,9 @@
   - the readout counters;
   - the Rayquaza traces.
 - **The reading follows amendment 2 and the text it amends:** the footprint first, which fixes each code's route.
+
+**The timing check in `run_kt.sh`** (fixed Sept 28 night; the bug was found by Astra's read-only review and confirmed by Fable):
+- The first version reused a cached timing arm after a restart, which timed it at 0 s.
+- Now both arms (kog3, then kt3, 40 table deals) always run fresh, and wall time gates as registered (kt3 ≤ 1.25 × kog3). User+sys CPU seconds are recorded beside.
+- The laptop runs other jobs at the same time. So if the first pair is over, both arms are rerun once and the second pair decides.
+- The cloud's own timing run (`../kt_kog_2026-09-28/`, 4 threads) is a second measurement.
