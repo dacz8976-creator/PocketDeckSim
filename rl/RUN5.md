@@ -433,6 +433,8 @@ sides with k3 still available; the 0.7.2 wheel and its run identities are untouc
     - accuracy no worse than the better component alone.
   - Each component keeps its own verdict and evidence, and the combined pilot inherits both.
   - First case: kp3 + koa's opening (switch A) + kpg's discard credit, run once kpg's held-out check is in.
+    - **Passed Sept 28 as `kog`** (`results/kog_composition_2026-09-27/READING.md`): identity 14,000 of 14,000; real error 15.5 → 14.0 on the 45 cells; no veto; level with kpg3 (−0.01).
+    - It is the working pilot, "unconfirmed" until the post-freeze read. The screen moves to it once the official engine carries its code.
 - **Open causes** (cells whose remaining error has no named cause; each fix's reading adds to this list):
   - **Sceptile v Vespiquen:** sim about 66, real about 33.
   - **Altaria v Vespiquen and Altaria v Weezing:** koa's correct opening fix lifts Altaria past their real cells (52.0 v 37.6 and 40.3 v 33.0), so their remaining error has one less explanation (Dustin, Sept 27).

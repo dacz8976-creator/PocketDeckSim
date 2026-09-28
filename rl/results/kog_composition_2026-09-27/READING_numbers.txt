@@ -1,0 +1,27 @@
+1. Identity:
+   k3 at the laptop's a823b6d v the official reference: 1120 of 1120 games equal on ['moves', 'decisions', 'openings', 'winner_seat', 'points', 'seed']
+   kp3 at the laptop's a823b6d v the official reference: 1120 of 1120 games equal on ['moves', 'decisions', 'openings', 'winner_seat', 'points', 'seed']
+   table_kog3 (laptop) v the cloud's a823b6d_kog3_500: 14000 of 14000 games equal on ['moves', 'decisions', 'openings', 'winner_seat', 'points', 'seed']
+2-3. The 45 cells, kog3 against kp3 (the pilot in force), rules v2 with kog3's mixed rows (score45_kog3_vs_kp3.txt):
+   kp3: real error 15.5 | reported only: correlation 0.48, average miss 13.6, favorite right 28/45, clear 15/20, beyond chance 17
+   kog3: real error 14.0 | reported only: correlation 0.51, average miss 13.0, favorite right 28/45, clear 14/20, beyond chance 18
+   dMSE new - current: -43.1 points^2, 95% interval -62.3 to -25.3 (below 0)
+   real error, current minus new: +1.46 points, 90% interval +0.84 to +1.71 (margin rule: E = 3; 'current' is the cheap bot when comparing variants)
+   cell veto (miss grows > 6): none
+   deck veto (gap grows > 2): none
+   ADOPTION RULE (v2): adopt (held-out-deck veto checked separately)
+   kp3: real error 15.7 | reported only: correlation 0.49, average miss 13.9, favorite right 27/44, clear 15/20, beyond chance 17
+   kog3: real error 14.2 | reported only: correlation 0.52, average miss 13.2, favorite right 27/44, clear 14/20, beyond chance 18
+   dMSE new - current: -44.2 points^2, 95% interval -63.5 to -26.2 (below 0)
+   real error, current minus new: +1.48 points, 90% interval +0.85 to +1.72 (margin rule: E = 3; 'current' is the cheap bot when comparing variants)
+   cell veto (miss grows > 6): none
+   deck veto (gap grows > 2): none
+   ADOPTION RULE (v2): adopt (held-out-deck veto checked separately)
+4. Accuracy against the components (no mixed rows; only the margin is read):
+   all 45 cells: margin (kpg3 minus kog3) -0.01, 90% interval -0.16 to +0.14: PASSES (lower bound at -1.0 or above)
+   decision set (Altaria v Sceptile quarantined): margin (kpg3 minus kog3) -0.00, 90% interval -0.15 to +0.13: PASSES (lower bound at -1.0 or above)
+   all 45 cells: margin (koa3 minus kog3) +1.47, 90% interval +0.88 to +1.70: reported
+   decision set (Altaria v Sceptile quarantined): margin (koa3 minus kog3) +1.49, 90% interval +0.89 to +1.71: reported
+5. Where the parts meet (first-named deck's score, 500 deals each):
+   altaria v blaziken: kp3 58.0, koa3 59.2, kpg3 57.4, kog3 58.6
+   rayquaza v altaria: kp3 35.4, koa3 34.4, kpg3 36.0, kog3 35.4
