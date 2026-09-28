@@ -1,10 +1,32 @@
-Decision this informs: whether the pilot after kp3 prices the defender's temporary damage cuts and reduction Tools in the threat clock, replaces the flat +10 for a Tool on the Active by what the Tool does for its holder, and credits damage back to the attacker; read against kp3 by the Sept 25 plan. **Amendment 2 (Sept 28; reviewed once, its fixes folded in; waiting on Dustin's word) re-issues kt on kog: read against kog3 on the 45 cells. Once Dustin approves it, it holds over the text below (its Status says what else each kt game waits for).** This file is kt's registration (Sept 26), committed before any kt code or game. kt was first built on kp at 43cef0b (`BUILD.md`, kept as history); the codes re-issued on kog need a new build (amendment 2, item 7).
+Decision this informs: whether the pilot after kp3 prices the defender's temporary damage cuts and reduction Tools in the threat clock, replaces the flat +10 for a Tool on the Active by what the Tool does for its holder, and credits damage back to the attacker; read against kp3 by the Sept 25 plan. **Amendment 2 (Sept 28; reviewed once, its fixes folded in) re-issues kt on kog: read against kog3 on the 45 cells. Amendment 3 (Sept 28 evening) records Dustin's GO for kt's tables; with it, amendment 2 holds over the text below.** This file is kt's registration (Sept 26), committed before any kt code or game. kt was first built on kp at 43cef0b (`BUILD.md`, kept as history); the codes re-issued on kog need a new build (amendment 2, item 7).
 
 Seeds: kt's table on the table's deals (72,000,000 + pairing × 10,000 + i, i < 500, even i = first-named deck in seat 0). Under amendment 2 also: the 17 new cells on 21,108,000,000 + pairing × 10,000 + i (pairings 8-24 of `../gauntlet_runs_2026-09-26/tsv/new_decks.tsv`, i < 500, even i = the new deck in seat 0); B2e's rows on 21,106,000,000 + pairing × 10,000 + i (pairings 0-95); the Scizor row on 21,108,000,000 + pairing × 10,000 + i (pairings 0-7 of `new_decks.tsv`, Scizor in seat 0 on even i); the second lists on their main lists' deals, with no new seeds (`tsv/var_<version>.tsv`: Lucario's at table pairings 2, 8, 13 and 18-21, Suicune's at 4, 10, 15, 19, 22, 25 and 26, Weezing's at 6, 12, 17, 21, 24, 26 and 27, all on 72,000,000; Charizard Y's on B2e pairings 40-47 on 21,106,000,000; even i = the file's first-named deck in seat 0); the Rayquaza v Lucario traces on 21,108,900,000+ (`--seed-stream`, 200 games); clause (d)'s rows on 22,700,000,000 + panel index × 10,000 + i (amendment 1); the Dustin-deck A/B on the new block 22,600,000,000 – 22,699,999,999 (START_HERE's seed table).
 
 # kt: Tools and temporary damage cuts priced by what they do (registration, Sept 26)
 
 **Source.** Fable's proposed registration text (`rl/results/fable_reviews_2026-09-26/kt_spec_review.md` on main, "The registration text Fable proposes the cloud commit"), taken as written except where marked **[amended]** or **[filled]** below, with the reason beside each; the laptop's answers of Sept 26 (A/B size, opponent seat, Jasmine's denominator, seed block, kp3 regenerated after the rules/09 fixes); and the laptop's carrier census for clause (d) (`rl/results/kt_carrier_census_2026-09-26/README.md` on main). The earlier draft (`../tool_turn_effect_census_2026-09-25/README.md`, c002d2f) is superseded; its census stands. Any change after this commit is a dated amendment before any kt game, and a spec change after any reading is a new code.
+
+## Amendment 3 (Sept 28 evening, before any kt game on kog): Dustin's GO
+
+**Dustin, Sept 28 evening, via Fable ("Recommendations and advice"):**
+> kt tables: GO. Start kt's games now on your branch. Write the plan to a dated results folder and commit before starting, per convention. Run the full table overnight; do not stop for check-ins. [...] When kt finishes or blocks, write a one-paragraph readout in the results README and commit.
+
+**How it is read.** Where this and amendment 2 differ, this holds.
+- **Amendment 2's Status items 1-3:** the GO is taken as Dustin's word on all three: this text as kt's registration on kog, the build on kog (with its timing run), and the tables. It is a GO to run kt under this registration now. If he meant less, the morning readout says exactly what ran under it.
+- **It overrides amendment 2's order** ("No kt build or game comes before koh's verdict is committed, coverage included").
+  - kt runs now, on kog, the working pilot.
+  - If koh's reading later makes koh the working pilot, these runs stay kt-on-kog's reading. kt on koh would need its own amendment, as amendment 2 says (kt's clock and R′'s projected clock have to be combined by design).
+- **Still held:**
+  - Clause (d)'s rows wait for amendment 1's confirmation, from Dustin or the laptop (the GO doesn't name it).
+  - The Dustin-deck A/B, the coverage rows and the readout counters come after the footprint, and aren't part of tonight's "full table".
+- **The plan** is `../kt_kog_2026-09-28/README.md`, committed with this amendment before any kt game:
+  1. the build ec7e1a8, which is 233bced plus kt's presets on kog, with `engine/src/players/` the only part changed;
+  2. the suite and the identity checks of amendment 2, item 7;
+  3. the timing run;
+  4. the four tables on the 45 cells;
+  5. the footprint, read first and committed alone;
+  6. then kt3's and kta3's mixed rows against kog3, as time allows.
+- **The readout Dustin asked for** is the cloud's first reading, by `score45.py` against kog3 under each code's route. It marks what is still provisional: vetoes until the mixed rows, "not adopted" until coverage, clause (d), and confirmation. The laptop's reading (step 5) is still owed as the second reader.
 
 ## Amendment 2 (Sept 28, before any kt game on kog): kt re-issued on kog. Reviewed once; waiting on Dustin's word
 
