@@ -1,57 +1,39 @@
-# START HERE — PocketDeckSim (from Pocket Deck Lab, 2026-09-24)
+# START HERE — PocketDeckSim
 
-Read this before anything else in the folder. It is the only summary that is current. If another
-file disagrees with it, the other file is history.
+Read this before anything else in the folder.
+- **This page carries no status, on purpose** (Fable, Sept 28, after it went stale twice in three days). It holds only what doesn't expire: what the project is for, which engine is official, the rules for agents, where things are, and the seed registry.
+- **What is running, finished or next** lives in `rl/RUN5.md`: "The plan, revised Sept 25 (approved by Dustin)", with its "Where things stand", order of work and rules. Each result's own dated folder under `rl/results/` holds its reading.
+- If another file disagrees with this page on a standing fact, the other file is history. On status, RUN5 wins.
 
-> This is Pocket Deck Lab's START_HERE.md as of Sept 24, 2026 (Dustin's laptop), with paths translated to
-> this repo. Deck building stays in Pocket Deck Lab; the simulator and bot work lives here. Anything marked
-> *(Pocket Deck Lab only)* wasn't copied. The last section (what's running, seed ranges) is added for this repo.
+> Pocket Deck Lab (the folder beside this repo) is the archived predecessor. Deck building stays there; the simulator and bot work lives here. Anything marked *(Pocket Deck Lab only)* wasn't copied.
 
 ## What this project is for
 
-Find 20-card Pokémon TCG Pocket decks that are creative **and** win — off-meta, catch people off
-guard, built around what Dustin enjoys playing (Arceus/Crobat, Xatu, poison, weird pairings). Not
-"the optimized deck that wins 0.1% more often." The output that counts is a deck Dustin plays on
-the ladder and wins with.
+Find 20-card Pokémon TCG Pocket decks that are creative **and** win: off-meta, catch people off guard, built around what Dustin enjoys playing (Arceus/Crobat, Xatu, poison, weird pairings). Not "the optimized deck that wins 0.1% more often." The output that counts is a deck Dustin plays on the ladder and wins with.
 
-## What is true right now
+## The official engine (one line; the engine-switch procedure updates it)
 
-- **The engine is `0.1.0-pdl.rules4`** (September 22). It retains the earlier rules repairs,
-  player-selected Energy discards and corrected Cubone/Clefable/Bonsly effects, and fixes the
-  T2 last-Pokemon/third-point result to a tie. **Since Sept 27 the official executable is `rl/engine-2026-09-27/deckgym`**
-  (with `legality_scan` and `goldfish` beside it), built from main at 83e17ae. It is the repaired engine: rules4 plus the
-  ten rules/09 repairs of Sept 26, of which only Legendary Pulse and end-of-turn promotion change table games. It was
-  switched in on Dustin's go after the repair replays, the mechanic check (`rl/results/engine_switch_2026-09-26/`) and an
-  identity replay (`rl/engine-2026-09-27/README.md`). The Sept 25 program (`rl/engine-2026-09-25/`, 7fc6ccb) and the
-  rules4 program `rl/addon-0.7.2/deckgym` are kept as history.
-  `project_manifest.json` names it; `current_engine.py` and the screen resolve to it.
-  Verification: 1,826 engine tests, 44 accepted-review segments and four k3 smoke games.
-  See the [rules4 repair and evidence limits](rl/addon-0.7.2/rules4-repair-README.md)
-  and earlier rules3 repairs (`Boss Folder/rules3-repairs-2026-09-22/README.md`, *Pocket Deck Lab only*).
-  The RL add-on is now **0.7.2** on rules4. Its chosen-pair replay, hidden-card, forecast and
-  choice-encoding checks passed, and all 47,800 benchmark games are complete and validated. See the
-  [current add-on recheck](rl/results/astra-review/rules4-addon-recheck-2026-09-22/README.md).
-  Historical binaries, results and training environments are preserved. Any new run must identify
-  the add-on explicitly and have a fresh result identity. Run 5's step 0 and stage 1 finished Sept 23;
-  its stage 2 is dropped. Results and the plan after it: `rl/RUN5.md`.
-- **Every deck ranking produced before 2026-09-10 is void.** All of them (meta4–meta9, the
-  Zoroark work, the Sept 8 eval18 panel) ran on an engine where Asleep/Paralyzed Pokémon could
-  still attack and retreat. Don't re-run them; don't cite them.
-- **What the simulator is good for (refreshed Sept 26).**
-  - The yardstick is now **45 scoreboard cells**: the 28 table cells plus Rayquaza's and Altaria/Greninja's 17 (Dustin, Sept 26; `rl/results/gauntlet_runs_2026-09-26/`).
-  - On the 28, kp3 (the confirmed pilot) has a real error of 8.4 and k3 10.8 (scoreboard v2's development half).
-  - On the 17 new cells, both are far off: 22.5 and 20.3. Rayquaza plays at 22% against a real 46%, because kp3 skips its discard-cost attacks.
-  - The target is 5.5. The simulator hasn't been shown to rank decks, and brews can't be checked this way; the ladder still judges those.
-  - Card A vs card B in the same shell still needs paired seeds and ≥1,000 games; differences under 5 points are noise.
-  - History: `rl/results/limitless_check_2026-09-23.md`.
-- **What "competitive" means is read off Limitless**, not simulated. Snapshot and top-30 table:
-  `decks/classifier/limitless_2026-09-10.json`. Refresh roughly monthly or when a set drops.
+`rl/engine-2026-09-28/` (`deckgym`, `legality_scan`, `goldfish`), main-9b4df9b: rules4 plus the ten rules/09 repairs, with the kog pilot. `project_manifest.json` names it with its hashes, and `current_engine.py` and the screen resolve to it. Earlier engines are history there.
+
+## Standing facts
+
+- **The engine rules are `0.1.0-pdl.rules4` plus the rules/09 repairs.**
+  - Every engine switch follows RUN5's procedure: replays, the mechanic check, and for a rules-file refactor, games that reach the touched code.
+  - The RL add-on stays at 0.7.2 on rules4. Its wheel is copied, never rebuilt ([recheck](rl/results/astra-review/rules4-addon-recheck-2026-09-22/README.md)).
+  - Any new run identifies the add-on explicitly and has a fresh result identity.
+- **Every deck ranking produced before 2026-09-10 is void.** They ran on an engine where Asleep/Paralyzed Pokémon could still attack and retreat. Don't re-run them; don't cite them.
+- **What the simulator is for.**
+  - The yardstick is the scoreboard: 45 cells scored against Limitless (the current version and its numbers are in RUN5).
+  - The target real error is 5.5.
+  - The simulator hasn't been shown to rank decks, so brews are judged on the ladder.
+  - Card A vs card B in the same shell needs paired seeds and ≥1,000 games; differences under 5 points are noise.
+- **What "competitive" means is read off Limitless**, not simulated. Snapshot and top-30 table: `decks/classifier/limitless_2026-09-10.json`. Refresh roughly monthly or when a set drops.
 
 ## The loop
 
-Deck building has its own folder and rules: **`decks/README.md`** (*Pocket Deck Lab only*; kept separate from the bot/RL
-work). In short: draft in `decks/brews/` → QR + Ladder Log → Dustin plays 10–15 games → keep, adjust or
-retire. Brew screening and its cutoffs wait until the engine is trustworthy and realistic (Dustin, Sept 24); the quick bot screen (`decks/screen/`) is on hold until then.
+Deck building has its own folder and rules: **`decks/README.md`** (*Pocket Deck Lab only*; kept separate from the bot/RL work).
+- In short: draft in `decks/brews/`, then QR + Ladder Log, then Dustin plays 10-15 games, then keep, adjust or retire.
+- What the bot screen may be used for at the moment (the floor check, holds on ranking) is in RUN5.
 
 ## Before you do anything
 
@@ -61,6 +43,7 @@ When your session ends, add one dated line to `LOG.md` (*Pocket Deck Lab only*) 
 
 ## Where things are
 
+- `rl/RUN5.md`: the approved plan, its rules and "Where things stand" (all status). `rl/results/<topic>_<date>/`: each run's files and reading. `project_manifest.json`: the official engine and its hashes.
 - `RULES_FOR_AGENTS.md` — the rules. `lib/card.py` — card lookup. `LOG.md` — one line per session (*Pocket Deck Lab only*).
 - `decks/dustin/` — Dustin's 15 real decks, decoded from in-game QR codes.
 - `decks/README.md` — deck-building rules, the quick screen and its pass bar (*Pocket Deck Lab only*).
@@ -107,41 +90,7 @@ claim files, 1,100+ root files — instead of decks. Four different "current" en
 Sixty sessions on video/OCR that never read a single card. Fixating on one deck (Zoroark) that
 the sim liked and the ladder didn't. Full list with what catches each: `docs/AUDIT_2026-09-10/`.
 
-## Running now, and seed ranges already used (added for this repo, Sept 24; refreshed Sept 26 evening)
-
-**The current plan** is "The plan, revised Sept 25 (approved by Dustin)" at the end of `rl/RUN5.md`. It supersedes
-the Sept 24 plan. The full record and every number behind it is section 8 of `docs/REVIEW_2026-09-24_direction.md`;
-the per-candidate table readings are indexed in `rl/results/table_readings_2026-09-24/README.md`.
-
-**Finished**
-- **The Hydreigon network run** (Sept 24–25, `runs/diag-hydreigon-lucario`): +40.8 over k3, two k3 blind spots
-  found (Darkness Claw pricing, the Hyper Ray chip). Reading: `rl/results/hydreigon_network_readout/READING.md`;
-  summary in section 8. It was the last run of that family; run 6 is B7 in the plan and not now.
-- **Scoreboard v2** (the 28 cells rebuilt from the development half's pairings; holdout reserved):
-  `rl/results/scoreboard_v2_2026-09-25/`.
-- **Brew pilot checks** (k3 against kp3 on Dustin's decks): `rl/results/brew_pilot_check_2026-09-25/`.
-- **Earlier:** the deeper-search table (k4–k6 don't help, Sept 24), the option B and kp3 table readings, the
-  discard-attack census.
-
-**Finished Sept 25–26**
-- **kd3:** read and not adopted.
-- **kp3:** confirmed on the frozen holdout (`rl/results/holdout_kp3_2026-09-25/READING.md`); the holdout is spent. Later candidates are confirmed only on events after the freeze date (after Sept 24).
-- **The A2 floor check** (`decks/screen/floor.py`): passed its Payback pre-use check, read by a second session. It may be used under the A2 decision.
-- **kpr3:** read and "not adopted" on the 28 cells. On the 45 it has the lowest real error, which is provisional under the Sept 26 rule (RUN5).
-- **The gauntlet's first run:** 45 cells, and the variation check (four decks' second lists join).
-- **The blind quiz** (`rl/results/blind_quiz_2026-09-25/`): kp3 matches Dustin at 17 of 33 decisions, k3 at 13.
-- **Recordings and frame checks:** `rl/results/recordings_check_2026-09-25/`.
-- **The laptop's share of the rules/09 fix replays:** 0 table games change.
-
-**Running or next** (refreshed Sept 27):
-- **The official engine is the repaired one** (`rl/engine-2026-09-27/`, main-83e17ae), and the frozen table is scoreboard v3 (`rl/results/scoreboard_v3_2026-09-27/`). Every candidate is compared against baselines from the same engine.
-- **kpf was read on Sept 27** (`rl/results/kpf_2026-09-26/reading/READING.md`). Real error 12.5 against kp3's 15.5 on the 45 cells, but vetoes count, so "not adopted, provisional". F alone (kpg3) passes the rule with no veto. The next step is Dustin's.
-- **koa** (the opening-Active fix): registered and built on the repaired engine; its identity runs are in the cloud. The laptop reads it, footprint first.
-- **kpf** (discard-cost attacks and discard-pile Energy): registered (`rl/results/kpf_2026-09-26/REGISTRATION.md`). The cloud builds it, and the laptop reads it on the 45 cells, B2e and the coverage decks.
-- **kt** (Tools and turn effects): registered on the cloud branch (07927e2). Trainer pricing is queued beside it (RUN5 B5).
-- **Deck ranking stays on hold** until the ladder-weighted panel and real-game calibration exist.
-- **Next:** kpr (the cloud, built on kp), and the optional Altaria detector network (the laptop, after its pair checks).
-- The quick screen's ranking stays on hold (Dustin, Sept 25). The hold lifts for the floor check only.
+## Seed ranges already used
 
 **Seed ranges already used.** Pick a new block outside all of these for any new measurement. Everything up to
 Run 5 stage 1 is from `rl/results/run5_build/BUILD_NOTES.md` ("Ranges already used", read from the code) and

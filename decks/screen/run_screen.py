@@ -4,14 +4,15 @@
 Purpose: catch decks that are clearly bad before Dustin spends ladder games on them. Not a ranking.
 See decks/README.md for the pass bar and how to read the result.
 
-usage: run_screen.py DECK.txt [DECK2.txt ...] [--engine PATH/TO/deckgym] [--pilot kp3] [--meta-pilot kp3]
+usage: run_screen.py DECK.txt [DECK2.txt ...] [--engine PATH/TO/deckgym] [--pilot kog3] [--meta-pilot kog3]
                      [--games 60] [--seed 7100]
 Each matchup is played half with the deck in seat 0 and half in seat 1, on fixed seeds, so
 different decks face the same shuffles. Needs Linux (WSL or the cloud).
 
 Engine: by default the manifest's available release (project_manifest.json, checked by current_engine.py, which
-refuses a binary whose hash differs). Pilots: kp3 on both sides by default (the plan revised Sept 25, approved by
-Dustin); --pilot k3 --meta-pilot k3 reproduces the Sept 24 screen.
+refuses a binary whose hash differs). Pilots: kog3 on both sides by default, the working pilot since the Sept 28
+engine switch (kp3 before it, from the plan revised Sept 25); --pilot kp3 --meta-pilot kp3 reproduces the Sept 25-27
+screen, and --pilot k3 --meta-pilot k3 the Sept 24 one.
 """
 import argparse, glob, os, re, subprocess, sys
 
@@ -23,8 +24,8 @@ from current_engine import resolve  # noqa: E402
 ap = argparse.ArgumentParser()
 ap.add_argument('decks', nargs='+')
 ap.add_argument('--engine', default=None, help="default: the manifest's available release")
-ap.add_argument('--pilot', default='kp3', help="the screened deck's bot (default kp3)")
-ap.add_argument('--meta-pilot', default='kp3', help="the panel decks' bot (default kp3)")
+ap.add_argument('--pilot', default='kog3', help="the screened deck's bot (default kog3)")
+ap.add_argument('--meta-pilot', default='kog3', help="the panel decks' bot (default kog3)")
 ap.add_argument('--games', type=int, default=60, help='games per matchup (split across seats)')
 ap.add_argument('--seed', type=int, default=7100)
 ap.add_argument('--opponents', default=os.path.join(here, 'opponents'))

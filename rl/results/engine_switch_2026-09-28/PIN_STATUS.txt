@@ -1,0 +1,30 @@
+2026-09-28T15:06:13Z built 233bced99cf99b2a90aededaa48d1381ef147400
+2026-09-28T15:06:13Z sha256 4f46c87f8e4709891c8d3110fada23ea3188545af51bd5e4b372726a619fe4af deckgym
+2026-09-28T15:06:14Z sha256 797c9c76c3951f2f66d65206c137cd8353335c594bc40ff9746247b090e4dc61 legality_scan
+2026-09-28T15:06:14Z sha256 f3ebb69b061c884a261dc7cf120352ff8112eebd0fdd705dfd9c841f72a46f09 goldfish
+2026-09-28T15:14:19Z watch build of 233bced99cf99b2a90aededaa48d1381ef147400 ready: /home/dacz8976/engine-watch-233bced/engine/target/release/examples/legality_scan
+2026-09-28T15:20:29Z PREPARE STOPPED by a script bug, not an identity difference (an unquoted path with spaces broke the comparison call; the k3 games themselves equal the reference on every field, 14,000 of 14,000; fixed and re-run)
+2026-09-28T15:21:06Z sha256 4f46c87f8e4709891c8d3110fada23ea3188545af51bd5e4b372726a619fe4af deckgym
+2026-09-28T15:21:06Z sha256 797c9c76c3951f2f66d65206c137cd8353335c594bc40ff9746247b090e4dc61 legality_scan
+2026-09-28T15:21:06Z sha256 f3ebb69b061c884a261dc7cf120352ff8112eebd0fdd705dfd9c841f72a46f09 goldfish
+2026-09-28T15:42:08Z SUITE at 233bced99cf99b2a90aededaa48d1381ef147400: exit 0; passed 1975, failed 0 (101 test binaries)
+2026-09-28 15:42:08 SUITE DONE
+2026-09-28T15:50:56Z k3 at the new build: v kpf_2026-09-26/reading/table_k3.jsonl 14000 of 14000 kp3 at the new build: v kpf_2026-09-26/reading/table_kp3.jsonl 14000 of 14000 kog3 at the new build: v /tmp/ref_kog3.jsonl 14000 of 14000; v kog_composition_2026-09-27/table_kog3.jsonl 14000 of 14000 
+2026-09-28T15:51:27Z cli and goldfish ran (3 cli lines)
+2026-09-28 15:51:27 PREPARE DONE 233bced99cf99b2a90aededaa48d1381ef147400
+2026-09-28T16:10:59Z touched carriers_kp3_old done (16000 games)
+2026-09-28T16:30:47Z touched carriers_kp3_new done (16000 games)
+2026-09-28T16:57:19Z touched carriers_kp3_watch done (16000 games)
+2026-09-28T17:05:29Z touched carriers_k3_old done (8000 games)
+2026-09-28T20:25:44Z touched carriers_k3_new done (8000 games)
+2026-09-28T20:30:24Z touched scizor_kp3_new done (4000 games)
+2026-09-28T20:34:40Z touched scizor_k3_new done (4000 games)
+2026-09-28T20:38:56Z touched scizor_kp3_watch done (4000 games)
+2026-09-28T20:42:13Z count.py floor old done
+2026-09-28T20:45:33Z count.py floor new done
+2026-09-28T20:48:36Z count.py alt old done
+2026-09-28T20:51:48Z count.py alt new done
+2026-09-28 20:51:52 TOUCHED DONE
+2026-09-28T21:18:32Z MERGED 233bced into main as 9b4df9b; engine/ identical to 233bced
+2026-09-28T21:18:33Z PINNED in rl/engine-2026-09-28: 4f46c87f8e4709891c8d3110fada23ea3188545af51bd5e4b372726a619fe4af  deckgym 797c9c76c3951f2f66d65206c137cd8353335c594bc40ff9746247b090e4dc61  legality_scan f3ebb69b061c884a261dc7cf120352ff8112eebd0fdd705dfd9c841f72a46f09  goldfish 
+2026-09-28 21:18:33 PIN DONE 9b4df9b
