@@ -60,6 +60,11 @@ Two things worth saying plainly:
   Dustin has already played (brew-01 and 03a, 1-3 each on the ladder; four games each, too few to say more than that
   the two point the same way). 02 is a clear fail; 03b is borderline and probably better than it reads.
 
+- **03b's Goo-zooka at 2.1% of chances is a card-use finding, not a deck verdict.** The bot barely plays that card (the
+  Sept 25 audit, `../trainer_audit_2026-09-25/`, already had it at 2.1% for this deck, and its census lists Goo-zooka as
+  a Trainer the score reads only partly). So 03b's "borderline" says how the bot plays it, not how good the deck is.
+  Finding out why is later laptop work, not part of this run.
+
 **Not done here:** no role was set for any deck (A2 leaves that to whoever wrote the page), no ranking, no calibration,
 no comparison with the ladder record beyond the line above.
 
