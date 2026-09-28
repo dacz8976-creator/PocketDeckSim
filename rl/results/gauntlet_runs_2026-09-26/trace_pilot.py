@@ -133,7 +133,7 @@ def main():
                     for lab2 in pt["off"]:
                         att[lab2][0] += 1
                         att[lab2][1] += pt["used"] == lab2
-                per_game_rows.append({"seed": r.get("randomness", {}).get("game_seed"), "won": r["outcome"] == {"Win": 0},
+                per_game_rows.append({"seed": (r.get("randomness") or {}).get("game_seed"), "won": r["outcome"] == {"Win": 0},
                                       "final_turn": r["final_turn"], "attacks": {k: v for k, v in att.items()}})
             for pt in per_turn.values():
                 for lab3 in pt.get("moff", ()):
