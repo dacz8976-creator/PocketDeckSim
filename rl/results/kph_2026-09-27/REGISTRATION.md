@@ -6,6 +6,31 @@
 - `has_retreated` blocks the credit only when the credited attack must happen this turn, meaning the projection holds this turn only. That is the opponent's side at its next attack while its turn is running (the usual leaf).
 - On the own side mid-turn, the projection also holds next turn, and a retreat then isn't blocked by one already made this turn.
 - This is how the build (7e7d864) reads section 2's "when the credited attack is this turn". It makes both registered Q10 boards (section 4) come out as written: the positive control carries `has_retreated` = true and is credited through next turn's retreat.
+
+**Amendment 2 (Sept 28, laptop session, before koh's footprint or any coverage row is read): what "no harm" means on the coverage rows.**
+- Section 5 step 6 says the second lists and the Scizor row "count for no harm only", but it never said how harm is measured there. The runner (`reading/run_kph_reading.sh`, which the cloud's koh runs copy) also left out the second lists.
+- Found by the one review of kt's amendment 2 (`../kt_2026-09-26/REVIEW_amendment2_laptop_2026-09-28.md`, findings F2 and F3, confirmed by a skeptic). The wording below is that review's.
+- It applies to koh, this registration on the composed base, and is offered to kt, which takes it.
+- **The second lists** (`decks/gauntlet_2026-09-26/v-lucario_2.txt`, `v-suicune_2.txt`, `v-weezing_2.txt`, and `l-charizardy.txt` from `decks/screen/panel_ladder_2026-09-26/`):
+  - Each stands for its archetype's usual list (RUN5, the variation check), so it is read against its archetype's Limitless figure:
+    - for Lucario, Suicune and Weezing, the development half's 7-opponent average (scoreboard v3's cells);
+    - for Charizard Y, the figure B2e's held-out rule reads for Charizard Y Entei.
+  - **A veto:** the list's opponent average under koh (koh on both sides) ends more than 2 points further from that figure than under the base (the base on both sides).
+  - It counts only when the list's own side is worse beyond the variation check's paired 95% interval. The own side is read from mixed rows: koh on the list and the base on the other deck, against the base on both, 500 deals, paired by deal.
+  - Cell-level vetoes don't apply to these rows.
+  - The deals are each version's own: `rl/results/gauntlet_runs_2026-09-26/tsv/var_v-lucario_2.tsv`, `var_v-suicune_2.tsv`, `var_v-weezing_2.tsv` and `var_l-charizardy.tsv`, as the variation check ran them.
+- **The Scizor row** has no usable Limitless figure (0 to 6 development matches per cell, two cells empty), so harm there means koh plays Scizor worse.
+  - **A veto:** Scizor's own-side average over its 8 rows falls by more than 2 points, and its paired 95% interval lies wholly below zero.
+    - The own-side rows: koh on Scizor with the base on the panel list, against the base on both sides, paired by deal, 500 deals per row (21,108,000,000 + pairing × 10,000 + i, pairings 0-7).
+    - The interval is the variation check's: 1.96 × sqrt(Σ per-cell variance of the mean difference) / 8.
+    - The 2-point size is rule v2's deck-level size, so a drop inside the average's own noise (about ±1.5) can't veto.
+  - The other direction (koh on the panel list, the base on Scizor) is reported only; the panel decks' harm is read on the 45 cells.
+- **A veto on any of these rows blocks the takeover.** A gain is reported, not credited (RUN5 "The frame a candidate is read in").
+- **The runs this needs,** added to koh's queue (the cloud):
+  - the four second lists with koh and with the base, each on both sides;
+  - their mixed rows;
+  - the Scizor mixed rows with koh on Scizor.
+  - B2e's held-out rows stay as registered in section 5.
 - Dustin, Sept 27, in chat (recorded here first), on kpf's vetoes: "leave it provisional and diagnose … the fix is registered as a new candidate on top of kpg and read against the 45 cells and the coverage decks; the vetoed cells are the cells that decide it, not the cells it's tuned to."
 - Sources:
   - the diagnosis `../kpf_2026-09-26/diagnosis/DIAGNOSIS.md`;
