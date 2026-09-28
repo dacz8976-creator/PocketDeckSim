@@ -4,6 +4,9 @@
   dataset "development"; Rayquaza and Altaria/Greninja against the 8 and against each other).
 This wrapper only widens deep_table's PAIRS from the 28 to the 45 cells, and hands score.py a 45-cell --limitless file.
 Every rule, bootstrap, veto and quarantine is score.py's own.
+Since Sept 28 it also hands score.py the same 45 cells per tournament event
+(../../scoreboard_v3_2026-09-27/limitless_45_dev_events.json), so every reading prints the event-resampled interval
+beside the match-level one (Fable and Astra: a standing column). Pass --limitless-events yourself to override it.
 Usage: python3 score45.py --rules v2 --old-games <table_kp3> <new17_kp3> --new-games <table_kpf3> <new17_kpf3> --old kp3 --new kpf3 [--mixed ...]"""
 import csv, json, os, sys, tempfile
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -26,7 +29,9 @@ S.D.PAIRS[:] = list(S.D.PAIRS) + new17
 tmp = tempfile.NamedTemporaryFile("w", suffix=".json", delete=False)
 json.dump({"cells": cells, "note": "45 cells: scoreboard v2 dev (28) + gauntlet dev (17)"}, tmp)
 tmp.close()
-sys.argv = [sys.argv[0], "--limitless", tmp.name] + sys.argv[1:]
+EVENTS45 = os.path.join(RES, "scoreboard_v3_2026-09-27", "limitless_45_dev_events.json")
+events = [] if "--limitless-events" in sys.argv else ["--limitless-events", EVENTS45]
+sys.argv = [sys.argv[0], "--limitless", tmp.name] + events + sys.argv[1:]
 print(f"45-cell scoreboard: {len(S.D.PAIRS)} pairs; Limitless development half (v2's 28 + the gauntlet's 17)")
 try:
     S.main()

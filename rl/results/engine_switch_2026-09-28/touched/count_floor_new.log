@@ -1,0 +1,43 @@
+pin28_floor_new t-altaria seat 0: printed (79, 41, 0)
+pin28_floor_new t-altaria seat 1: printed (51, 69, 0)
+pin28_floor_new t-blaziken seat 0: printed (29, 91, 0)
+pin28_floor_new t-blaziken seat 1: printed (94, 26, 0)
+pin28_floor_new t-hydreigon seat 0: printed (78, 42, 0)
+pin28_floor_new t-hydreigon seat 1: printed (43, 77, 0)
+pin28_floor_new t-lucario seat 0: printed (33, 87, 0)
+pin28_floor_new t-lucario seat 1: printed (90, 30, 0)
+pin28_floor_new t-sceptile seat 0: printed (34, 86, 0)
+pin28_floor_new t-sceptile seat 1: printed (85, 35, 0)
+pin28_floor_new t-suicune seat 0: printed (87, 33, 0)
+pin28_floor_new t-suicune seat 1: printed (36, 84, 0)
+pin28_floor_new t-vespiquen seat 0: printed (43, 77, 0)
+pin28_floor_new t-vespiquen seat 1: printed (53, 67, 0)
+pin28_floor_new t-weezing seat 0: printed (61, 59, 0)
+pin28_floor_new t-weezing seat 1: printed (43, 77, 0)
+== pin28_floor_new (4f46c87f8e470989): wins 909/1920
+  Metal Core Barrier: 2426/3053 (79.5%)
+  Steel Apron: 1265/1707 (74.1%)
+  Lucky Ice Pop: 1511/1958 (77.2%)
+  Poke Ball: 1789/3718 (48.1%)
+  Jasmine: 50/3965 (1.3%)
+  Professor's Research: 2163/2273 (95.2%)
+  Red: 1488/4440 (33.5%)
+  Cyrus: 1140/1302 (87.6%)
+  Sabrina: 1078/1495 (72.1%)
+  Pokemon Center Lady: 980/1324 (74.0%)
+  tool split: {"Metal Core Barrier": {"free_opp": 1943, "free_used": 1834, "notfree_opp": 1110, "notfree_used": 592}, "Steel Apron": {"free_opp": 1323, "free_used": 995, "notfree_opp": 384, "notfree_used": 270}}
+  attach: {'Metal Core Barrier->active Skarmory ex (Metal)': 1983, 'Steel Apron->active Skarmory ex (Metal)': 1086, 'Steel Apron->bench Indeedee ex (Psychic)': 2, 'Metal Core Barrier->active Indeedee ex (Psychic)': 433, 'Steel Apron->active Indeedee ex (Psychic)': 174, 'Steel Apron->bench Skarmory ex (Metal)': 3, 'Metal Core Barrier->bench Skarmory ex (Metal)': 7, 'Metal Core Barrier->bench Indeedee ex (Psychic)': 3}
+  jasmine offered, Active: {'Skarmory ex': 7251, 'Indeedee ex': 1425}
+  jasmine offered, Supporter played that turn: {'none': 3915, 'Red': 1079, "Professor's Research": 1257, 'Pokemon Center Lady': 727, 'Cyrus': 921, 'Sabrina': 727, 'Jasmine': 50}
+  jasmine play: {"turn": 14, "points": [2, 0], "active": "Skarmory ex", "hand": 5, "deck": 8, "n_actions": 8, "idx": 6, "seed": 7110, "opp": "t-altaria", "seat": 0, "won": true, "final_turn": 20, "final_points": [5, 2]}
+  jasmine play: {"turn": 7, "points": [0, 0], "active": "Indeedee ex", "hand": 4, "deck": 9, "n_actions": 7, "idx": 6, "seed": 7141, "opp": "t-altaria", "seat": 0, "won": false, "final_turn": 14, "final_points": [1, 4]}
+  jasmine play: {"turn": 10, "points": [1, 0], "active": "Skarmory ex", "hand": 6, "deck": 5, "n_actions": 8, "idx": 7, "seed": 7146, "opp": "t-altaria", "seat": 0, "won": true, "final_turn": 14, "final_points": [4, 2]}
+  jasmine play: {"turn": 4, "points": [0, 0], "active": "Indeedee ex", "hand": 4, "deck": 12, "n_actions": 8, "idx": 7, "seed": 7213, "opp": "t-altaria", "seat": 0, "won": true, "final_turn": 8, "final_points": [3, 2]}
+  jasmine play: {"turn": 6, "points": [0, 0], "active": "Skarmory ex", "hand": 4, "deck": 11, "n_actions": 7, "idx": 6, "seed": 7636, "opp": "t-altaria", "seat": 1, "won": false, "final_turn": 9, "final_points": [4, 0]}
+  jasmine play: {"turn": 2, "points": [0, 0], "active": "Skarmory ex", "hand": 5, "deck": 13, "n_actions": 9, "idx": 8, "seed": 7648, "opp": "t-altaria", "seat": 1, "won": false, "final_turn": 13, "final_points": [4, 1]}
+  jasmine play: {"turn": 3, "points": [0, 0], "active": "Indeedee ex", "hand": 4, "deck": 11, "n_actions": 8, "idx": 7, "seed": 7689, "opp": "t-altaria", "seat": 1, "won": true, "final_turn": 15, "final_points": [0, 3]}
+  jasmine play: {"turn": 5, "points": [0, 0], "active": "Skarmory ex", "hand": 3, "deck": 10, "n_actions": 3, "idx": 2, "seed": 8100, "opp": "t-blaziken", "seat": 0, "won": false, "final_turn": 18, "final_points": [2, 4]}
+  jasmine play: {"turn": 5, "points": [0, 0], "active": "Skarmory ex", "hand": 3, "deck": 10, "n_actions": 7, "idx": 6, "seed": 8117, "opp": "t-blaziken", "seat": 0, "won": true, "final_turn": 11, "final_points": [4, 2]}
+  jasmine play: {"turn": 8, "points": [1, 0], "active": "Skarmory ex", "hand": 3, "deck": 8, "n_actions": 10, "idx": 6, "seed": 8119, "opp": "t-blaziken", "seat": 0, "won": true, "final_turn": 10, "final_points": [3, 0]}
+  jasmine play: {"turn": 3, "points": [0, 0], "active": "Skarmory ex", "hand": 5, "deck": 10, "n_actions": 9, "idx": 6, "seed": 8124, "opp": "t-blaziken", "seat": 0, "won": false, "final_turn": 12, "final_points": [2, 4]}
+  jasmine play: {"turn": 7, "points": [1, 0], "active": "Skarmory ex", "hand": 3, "deck": 7, "n_actions": 6, "idx": 3, "seed": 8124, "opp": "t-blaziken", "seat": 0, "won": false, "final_turn": 12, "final_points": [2, 4]}

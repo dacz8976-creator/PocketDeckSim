@@ -1,0 +1,26 @@
+1. Carrier lists v the 8 panel lists, same seeds (22,801,000,000 + pairing x 10,000 + i):
+  kp3, old official build v new build: 16000 of 16000 games identical on ['moves', 'decisions', 'openings', 'winner_seat', 'points', 'seed']
+  kp3, new build v the watch build (watch-only): 16000 of 16000 games identical on ['moves', 'decisions', 'openings', 'winner_seat', 'points', 'seed']
+  k3, old v new (250 deals): 8000 of 8000 games identical on ['moves', 'decisions', 'openings', 'winner_seat', 'points', 'seed']
+  reach (kp3, by list): games where a cut applied on the board / cuts applied
+    bluetest                                  4000 games | Barrier cut in    0 games (    0 hits) | turn-effect cut in  116 games (  131 hits)
+    deck05                                    4000 games | Barrier cut in    0 games (    0 hits) | turn-effect cut in   12 games (   12 hits)
+    deck07                                    4000 games | Barrier cut in 1477 games ( 1735 hits) | turn-effect cut in   26 games (   26 hits)
+    metalbarrier                              4000 games | Barrier cut in 1401 games ( 1616 hits) | turn-effect cut in  141 games (  156 hits)
+2. The Scizor coverage row (recorded on an engine tree identical to 83e17ae) replayed:
+  kp3, recorded v new build: 4000 of 4000 games identical on ['moves', 'decisions', 'openings', 'winner_seat', 'points', 'seed']
+  k3, recorded v new build: 4000 of 4000 games identical on ['moves', 'decisions', 'openings', 'winner_seat', 'points', 'seed']
+  kp3, new build v the watch build: 4000 of 4000 games identical on ['moves', 'decisions', 'openings', 'winner_seat', 'points', 'seed']
+  reach (Scizor row, kp3): games where a cut applied on the board / cuts applied
+    scizor v altaria                           500 games | Barrier cut in  166 games (  188 hits) | turn-effect cut in    0 games (    0 hits)
+    scizor v blaziken                          500 games | Barrier cut in  198 games (  223 hits) | turn-effect cut in    0 games (    0 hits)
+    scizor v hydreigon                         500 games | Barrier cut in  199 games (  225 hits) | turn-effect cut in    0 games (    0 hits)
+    scizor v lucario                           500 games | Barrier cut in  183 games (  212 hits) | turn-effect cut in    0 games (    0 hits)
+    scizor v sceptile                          500 games | Barrier cut in  307 games (  406 hits) | turn-effect cut in    0 games (    0 hits)
+    scizor v suicune                           500 games | Barrier cut in  221 games (  250 hits) | turn-effect cut in    0 games (    0 hits)
+    scizor v vespiquen                         500 games | Barrier cut in  236 games (  276 hits) | turn-effect cut in    0 games (    0 hits)
+    scizor v weezing                           500 games | Barrier cut in  202 games (  229 hits) | turn-effect cut in    0 games (    0 hits)
+3. Dustin's recorded Skarmory (deck 07) commands on both builds (count.py: sha256 of every chosen action per game):
+  the floor check's block, seed 7,100: 1920 of 1920 games identical (move hash, outcome, points); Jasmine plays 50
+  the largest Jasmine block, seed 21,102,860,000: 1920 of 1920 games identical (move hash, outcome, points); Jasmine plays 39
+RESULT: ALL IDENTICAL

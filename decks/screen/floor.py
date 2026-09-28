@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 """The A2 floor check (Dustin's decision, Sept 25; rl/RUN5.md A2 and section 8 of docs/REVIEW_2026-09-24_direction.md).
 
-    python3 decks/screen/floor.py DECK.txt --out DIR [--games 240] [--pilot kp3] [--meta-pilot kp3]
+    python3 decks/screen/floor.py DECK.txt --out DIR [--games 240] [--pilot kog3] [--meta-pilot kog3]
                                   [--seed 7100] [--goldfish PATH] [--opponents DIR]
     python3 decks/screen/floor.py --self-check
 
-A floor verdict needs all of: 240 games per matchup, kp3 on both sides, the opponents in decks/screen/opponents/, and
+A floor verdict needs all of: 240 games per matchup, the working pilot on both sides (kog3 since the Sept 28 engine
+switch, kp3 before it; re-checked in rl/results/floor_recheck_2026-09-28/), the opponents in decks/screen/opponents/, and
 the coverage from the official release's goldfish (project_manifest.json available_release, hash checked). Any other
 --games is a development run and gives no verdict. With 240 games but other pilots, opponents or goldfish, the page
 reads "control reading, not a floor verdict" and names what differs (the positive control runs deck 14 under k3).
@@ -71,9 +72,9 @@ BAR = 0.20
 SMALL_SHARE = 0.25
 MIN_OPPORTUNITIES = 20
 FIXED_GAMES = 240   # per matchup, 1,920 per floor run (Dustin, Sept 25: "Yes. Fix.")
-FLOOR_PILOT = "kp3"
+FLOOR_PILOT = "kog3"   # the working pilot (Sept 28 engine switch; kp3 before)
 DEFAULT_OPPONENTS = os.path.join(HERE, "opponents")
-PRICING_PILOT = re.compile(r"k[pqd]\d+")   # the codes the engine builds as PublicPricingPlayer (players/mod.rs)
+PRICING_PILOT = re.compile(r"k(?:[pqd]|og)\d+")   # codes built as PublicPricingPlayer (players/mod.rs); kog added Sept 28
 ROLES_ALL = ("attacker", "activated ability", "bench piece/passive ability", "wall", "Trainer (played)", "not countable")
 # A deck's role for a flagged card when the default from its flag is wrong, or set in advance: {deck path: {name: role}}.
 # The Payback lists' roles were set by the page's author before any floor game on them (section 8, Sept 25), for the
@@ -414,8 +415,8 @@ def main():
     ap.add_argument("deck", nargs="?")
     ap.add_argument("--out")
     ap.add_argument("--games", type=int, default=FIXED_GAMES, help="games per matchup (fixed at 240 for a verdict)")
-    ap.add_argument("--pilot", default="kp3")
-    ap.add_argument("--meta-pilot", default="kp3")
+    ap.add_argument("--pilot", default=FLOOR_PILOT)
+    ap.add_argument("--meta-pilot", default=FLOOR_PILOT)
     ap.add_argument("--seed", type=int, default=7100)
     ap.add_argument("--goldfish", help="A1's goldfish program for the coverage (default: the official release's, "
                     "project_manifest.json available_release; any other makes the run a control reading)")
