@@ -1,10 +1,55 @@
-Decision this informs: whether the pilot after kp3 prices the defender's temporary damage cuts and reduction Tools in the threat clock, replaces the flat +10 for a Tool on the Active by what the Tool does for its holder, and credits damage back to the attacker; read against kp3 by the Sept 25 plan. This file is kt's registration (Sept 26), committed before any kt code or game; no engine commit yet (kt is built after the rules/09 fixes and the regenerated kp3 base, step ORDER below).
+Decision this informs: whether the pilot after kp3 prices the defender's temporary damage cuts and reduction Tools in the threat clock, replaces the flat +10 for a Tool on the Active by what the Tool does for its holder, and credits damage back to the attacker; read against kp3 by the Sept 25 plan. **Re-issued Sept 28 on kog: read against kog3 on the 45 cells (section "RE-ISSUED ON KOG", which holds over the text below).** This file is kt's registration (Sept 26), committed before any kt code or game; no engine commit yet (kt is built after the rules/09 fixes and the regenerated kp3 base, step ORDER below).
 
-Seeds: kt's table on the table's deals only (72,000,000 + pairing × 10,000 + i, i < 500, even i = first-named deck in seat 0); the Dustin-deck A/B on the new block 22,600,000,000 – 22,699,999,999 (START_HERE's seed table).
+Seeds: kt's table on the table's deals (72,000,000 + pairing × 10,000 + i, i < 500, even i = first-named deck in seat 0) and, since the re-issue, the 17 new cells' (21,108,000,000 + pairing × 10,000 + i); the Dustin-deck A/B on the new block 22,600,000,000 – 22,699,999,999 (START_HERE's seed table).
 
 # kt: Tools and temporary damage cuts priced by what they do (registration, Sept 26)
 
 **Source.** Fable's proposed registration text (`rl/results/fable_reviews_2026-09-26/kt_spec_review.md` on main, "The registration text Fable proposes the cloud commit"), taken as written except where marked **[amended]** or **[filled]** below, with the reason beside each; the laptop's answers of Sept 26 (A/B size, opponent seat, Jasmine's denominator, seed block, kp3 regenerated after the rules/09 fixes); and the laptop's carrier census for clause (d) (`rl/results/kt_carrier_census_2026-09-26/README.md` on main). The earlier draft (`../tool_turn_effect_census_2026-09-25/README.md`, c002d2f) is superseded; its census stands. Any change after this commit is a dated amendment before any kt game, and a spec change after any reading is a new code.
+
+## RE-ISSUED ON KOG (Sept 28, before any kt game)
+
+**Why.** This registration's base line says: "Built on the pilot the kpr reading leaves: kp3. If that changes, this registration is re-issued, not amended."
+- kog passed its composition check on Sept 28 and is the working pilot, "unconfirmed" (RUN5 "Composing candidates into one pilot"; `../kog_composition_2026-09-27/READING.md`, 5bca434). kog is kp3 + koa's opening switch A + kpg's discard credit F.
+- The laptop asked for this re-issue on Sept 28.
+- No kt game has been read. The build at 43cef0b ran only identity replays and 40-deal smokes, all on kp3 (`BUILD.md`).
+
+**Where this section and the text below differ, this section holds.** Everything it doesn't name stands as written: the rule, the three switches, the reserve route and its clauses, amendment 1, and Dustin's go-ahead of Sept 27 (Bench Poncho not covered, a named gap in `BUILD.md`).
+
+1. **Base and codes.** `kt<N>` = `kog<N>` with the three switches on. `kta<N>`, `ktb<N>` and `ktc<N>` = `kog<N>` with switch 1, 2 or 3 only. kq's, kd's and kpr's features (R, and kph's fixes A and B) are off.
+   - **Every "kp3" below that names the base or the paired comparator reads kog3.** That covers:
+     - the reference and the footprint;
+     - the mixed rows' other side;
+     - clause (d)'s comparator arm and the panel's pilot;
+     - the Dustin-deck A/B's comparator and opponent seat;
+     - the readout counters' baseline;
+     - the timing budget.
+   - **The parts don't read each other.**
+     - Switch A is read only in the setup evaluation.
+     - F is its own term, added after the clock; it reads the discard pile, not the clock.
+     - kt's clock replaces kog's, which is kp's (kog has no projection).
+     - Switch 2 zeroes only the flat Tool term.
+   - The build at 43cef0b (kt on kp) stays as history. Its identity runs remain the evidence that kt's shared code changes nothing for other bots. The re-issued codes need a new build.
+2. **The frame: the 45 cells.** RUN5 "The frame a candidate is read in" (Sept 27) registers every candidate from Sept 27 on the 45 cells, and this re-issue is dated Sept 28. So "the table" in the sections below reads "the 45 cells": the table's 28 on the table's deals, and the 17 new cells on 21,108,000,000 + pairing × 10,000 + i. The references are kog3's own runs (`../kog_composition_2026-09-27/table_kog3.jsonl`, `new17_kog3.jsonl`).
+   - **Footprint:** the share of the 45 cells' paired games whose moves differ from kog3's. It is read first and fixes the route for kt3 and kta3 alike: under 15%, the reserve route; otherwise, the ordinary adoption rule.
+   - **The ordinary rule:** paired ΔMSE against kog3 on the 45 cells, the whole 95% interval below zero. Vetoes are rule v2's, counting only through mixed rows against kog3 on the same deals.
+   - **kta3's reserve route:** clause (c)'s mixed rows are the pairings of the 45 cells where kta3's footprint isn't zero.
+   - **Coverage:** B2e's held-out archetypes (pairings 0-47), the variation check's second lists and the Scizor row count for no harm only (RUN5). B2e's held-out rule is as RUN5 states it. Dustin's files (48-95) are reported beside.
+   - **Development data:** the Tool census and the Trainer audit read kp3's games on the 28 table cells, so those cells are development data for kt. The 17 new cells weren't used in kt's design.
+   - **Confirmation:** kt joins the pre-registered list of the post-freeze pull (RUN5 "When post-freeze data is read").
+     - Under the ordinary rule: on the post-freeze events alone, kt's τ̂ margin over kog at least half its development margin, with its own 90% interval above zero.
+     - Under the reserve route: the no-harm re-check.
+3. **Identity at the new build.**
+   - k3 and kp3 against the official references.
+   - kog3 at the kt build equal to kog3's table (`../kog_2026-09-27/a823b6d_kog3_500.jsonl`, which the laptop's `table_kog3` equals), all 14,000 games.
+   - kq3 (14,000), kd3 and kpr3 (1,120) as registered.
+   - A kt-only diff of everything after the last full replay.
+   - Timing: kt3's 40-deal run within 1.25× kog3's.
+4. **Clause (d) and the Dustin-deck A/B keep their lists, sizes and seeds.** Only the comparator changes:
+   - (d): kta3 against kog3 on the Rayquaza list's eight rows, with kog3 on the panel lists in both arms.
+   - The A/B: kt3 against kog3 on the deck seat, with kog3 on the opponent's seat in both arms.
+5. **The predictions' "before" figures.** Stiffen 55 of 124, the Barrier's and Jasmine's rates, Poncho 427 of 428, Balloon 225 of 501, and Blower's targets are kp3's census figures.
+   - kog3 plays kp3's moves except in Altaria's opening and where Blaziken's F acts (`../kog_2026-09-27/BUILD.md`), so they stand as the "before" figures.
+   - The readout counters measure kog3's own figures on the same deals.
 
 ## Amendment 1 (Sept 26, before any kt code or game): Dustin's rulings
 
