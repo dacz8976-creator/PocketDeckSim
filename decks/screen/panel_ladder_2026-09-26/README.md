@@ -87,6 +87,9 @@ lean on the tournament meta; it is tabulated for the eight in `ladder_counts.md`
 | l-charizardy | 2 | 10.5% | **10.3%** | 4.2% |
 | l-sharpedo | 2 | 10.5% | **10.3%** | 1.8% |
 
+*These are the Sept 26 add-one proposal, superseded by section 8. Every weight in this section covers 19 of 33 logged
+games (~58%); under section 8's rulings it is 18 of 33 (~55%).*
+
 If the family rule is rejected (variants not counted), the exact-only counts are Lucario 1, Altaria 2,
 Sceptile 0, Vespiquen 2, Suicune 1, Weezing 0, Blaziken 2, Hydreigon 2, Charizard Y 2, Sharpedo 2 (14
 games), and the same add-one rule gives Lucario 8.3%, Sceptile and Weezing 4.2% each, Suicune 8.3%, and
@@ -264,3 +267,66 @@ In the scratchpad (`...\scratchpad\panel\`, session-local, not in the repo): `ch
 `extract_sharpedo.py`, `sharpedo_candidates.json`, `smoke_l-charizardy.sh`, `smoke_sharpedo.sh`,
 `smoke_calibration.sh`, `smoke_sim_results.csv`, `test_calibrate.py`, `synthetic/` (the power check),
 `artifact_db/` (the artifact export: `logs/`, `decks/`), `calibration_games_check.csv`.
+
+## 8. Decisions of Sept 28 (recorded by the session "Opus agents progress", about 19:15 CDT)
+
+**Where these come from.** The session "Recommendations and advice" (Fable) relayed them, citing Dustin's Sept 28
+delegation of overnight decisions to it. Dustin did not state them himself in this session; the instruction is a
+peer message, and the record here says so. The ranking hold, the calibration hold and the four panel proposals
+(weight by his ladder games, same-core variants count, readout only, Manectric out) were also endorsed in an unsigned
+review that arrived in this session's chat on Sept 28; Dustin's own lines in that message were about laptop quiet hours
+only, so his own word on the panel is still the relayed one. **Nothing is wired in and no game was played.**
+`run_screen.py`, `floor.py`, `opponents/`, RUN5 and START_HERE are untouched.
+
+| # | question (section 4) | ruling | note |
+|---|---|---|---|
+| P1 | ranking hold | **keep the hold** (the bot is at 14.0 against a 5.5 target) | a judgement call: this README only said the hold stands until Dustin decides |
+| P2 | floor for lists never met | **floor only the zero-game lists, at one game** (Dustin's words: "a one-game floor") | not add-one for everyone; zero-game lists are Sceptile and, after P3, Weezing. Lucario is not floored: it has 4 games, and its 20.0% below is the skeptic's floor-only-zero number (5c) |
+| P3 | family rule | **variants count, except the Weezing case is dropped** (TR Magmar changes the attacker, so it is not the panel's core) | consequences listed below |
+| P4 | where the two new lists live | **readout only**; `opponents/` and the floor are unchanged | a judgement call: the README stated options only |
+| P5 | which Charizard Y list | **`h-charizardy_entei`** (3rd of 172; the skeptic leans this way) | case applied: **the log cannot tell.** The two games are "Mega Charizard Y ex / Entei ex" (2026-09-15, exact name, no build detail) and "Charizard ex / entei ex" (2026-09-24, Mega or plain not recorded). I searched every game note for the four cards the lists differ by (Protective Poncho, a second Rainbow Cave, Pokémon Center Lady, Lucky Ice Pop) and for "charizard" and "entei": nothing beyond those two opponent fields. |
+| P6 | Manectric | **stays out.** Wording, as the skeptic (5b) asked: the Charizard Y and Sharpedo lists each rest on **one exact game plus one inferred game** | Manectric has one exact game and nothing else |
+| P7 | calibration run and its seed line | **hold until more games are logged** (18 usable games can only say "cannot tell") | a judgement call; the seed block 21,107,000,000 to 21,107,199,999 is not added to START_HERE while it is held |
+| P8 | `l-sharpedo.provenance.json` | **keep it** | |
+
+Judgement calls (P1, P4, P7) were accepted by the Fable session under Dustin's Sept 28 delegation, Sept 28.
+
+**The weights under these rulings** (18 games count, plus one floor game each for Sceptile and Weezing, out of 20).
+*Every weight below covers 18 of 33 logged games (~55%).*
+
+| List | family games | counted as | weight | was (add-one, section 2) |
+|---|---|---|---|---|
+| t-lucario | 4 | 4 | **20.0%** | 17.2% |
+| t-altaria | 2 | 2 | **10.0%** | 10.3% |
+| t-sceptile | 0 | 1 (floor) | **5.0%** | 3.4% |
+| t-vespiquen | 2 | 2 | **10.0%** | 10.3% |
+| t-suicune | 1 | 1 | **5.0%** | 6.9% |
+| t-weezing | 0 | 1 (floor) | **5.0%** | 6.9% |
+| t-blaziken | 2 | 2 | **10.0%** | 10.3% |
+| t-hydreigon | 3 | 3 | **15.0%** | 13.8% |
+| h-charizardy_entei (stands in for Mega Charizard Y ex / Entei ex) | 2 | 2 | **10.0%** | 10.3% |
+| l-sharpedo | 2 | 2 | **10.0%** | 10.3% |
+
+**Weezing's weight, so the effect of P3 is visible:** 6.9% under add-one with the variant kept, 3.4% under add-one with
+it dropped (the skeptic's 5d figure), and **5.0% under the chosen floor rule either way**, because Weezing then has
+1 game with the variant kept, or 0 floored to 1 with it dropped. Under the chosen rule P3 therefore moves no weight; it
+moves the counts below.
+
+**What P3 changes:**
+- Games that carry weight: 19 becomes 18 of 33 (~58% becomes ~55%). The relayed wording "covers 19 of 33 (~58%)" would
+  no longer be true; the wording used here and in section 2's note is the one that is.
+- The panel-family record in section 1: 15 games, 5-10 becomes 14 games, 4-10 (the dropped game was a win).
+- **The dropped game is still in `calibration_games.csv`** as a Weezing variant played against the panel's Weezing
+  (Hoopa) list, which is not the deck he met. It is not removed here (that is a `ladder_mapping.csv` change that also
+  moves `ladder_counts.md`). If the calibration runs, report it with and without that game, beside the skeptic's
+  16-game run without concessions (5g). Removing it is the cleaner fix; say the word.
+
+**Files changed for P5:**
+- `build_calibration_games.py`: the Charizard Y list is now `rl/results/b2e_card_check_2026-09-26/decks/h-charizardy_entei.txt`.
+- `calibration_games.csv`: regenerated with that script from the artifact export (33 games, 19 with a listed opponent,
+  18 usable, 6-12, 15 distinct pairs, all unchanged). Two Charizard Y rows (pairs 10 and 11) now point at the h- list.
+  Two other rows also changed because the skeptic's Sept 26 fixes to `ladder_mapping.csv` (section 7) had never been
+  carried into this file: the Sept 16 Hydreigon / bombirdier game is now marked inferred, and the Blaziken game's
+  archetype name is now "Mega Blaziken ex Castform Sunny Form".
+- `l-charizardy.txt` stays in this folder, unused. `ladder_counts.md` is unchanged: it holds the Sept 26 add-one tables.
+- Sections 1 to 7 are left as written; this section supersedes them where they differ.

@@ -45,7 +45,9 @@ DECK_FILES = {
 
 # Limitless archetype name (as in ladder_mapping.csv) -> (key, list file) for off-panel lists in this folder
 OFF_PANEL_FILES = {
-    "Mega Charizard Y ex Entei ex": ("charizardy", "decks/screen/panel_ladder_2026-09-26/l-charizardy.txt"),
+    # Sept 28 ruling P5 (README section 8): the log cannot tell which build he met, so the better-placed B2e list stands in
+    # (was decks/screen/panel_ladder_2026-09-26/l-charizardy.txt).
+    "Mega Charizard Y ex Entei ex": ("charizardy", "rl/results/b2e_card_check_2026-09-26/decks/h-charizardy_entei.txt"),
     "Mega Sharpedo ex Gyarados": ("sharpedo", "decks/screen/panel_ladder_2026-09-26/l-sharpedo.txt"),
 }
 
