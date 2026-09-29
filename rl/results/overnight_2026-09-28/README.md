@@ -4,6 +4,12 @@ Kept by the laptop session ("Project familiarization"). **Since about 11:30 pm C
 
 ## Decisions waiting for you
 
+- **Two calls on km, the Trainer-pricing candidate** (its review, `../trainer_pricing_2026-09-28/REVIEW.md`, three Sonnet lenses; still a draft, nothing registered):
+  1. **Keep the retreat-cost switch (N1, which prices Goo-zooka) inside km?** Nothing in the 45 cells can test it, so as written it would be adopted without a gain test. The review leans to keeping its code but taking it out of km's gate, and measuring Goo-zooka's play rate. It also found your Goo-zooka concern points the other way from the draft's prediction: the code suggests N1 should make the bot play Goo-zooka more.
+  2. **How many deals km's clause (d) gets** (its one gating test, on Lucario). At 500 deals it could miss a real gain anywhere from about 1 time in 100 to 7 in 10. The review leans to 2,000 deals for (d) only, about 30,000 games.
+
+  The review's two blockers (a reversed sign; clause (d) not yet one exact test) and 13 should-fix items get applied before anything is registered. Your word on the text is still needed.
+
 - **Three from the eval-power check** (from the article you sent; `../eval_power_2026-09-29/README.md`). What it found: koh's "not below zero" was mostly a power problem. A gain of koh's size would clear the test only about a third of the time at today's data sizes, because the real Limitless data in the Rayquaza cells is thin. Your three calls, all rule changes:
   1. **Fold the spent Sept 25 holdout into the development data?** Real matches would go from 2,214 to 4,712, and the chance of confirming a koh-sized gain from 36% to 57%. It ends the rule that the holdout is never opened.
   2. **2,000 deals per cell for small-footprint candidates** (4× today)? Their needed gain falls by a third to a half, at about 3 laptop hours each.
