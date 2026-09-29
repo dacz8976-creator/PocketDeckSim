@@ -4,9 +4,9 @@
 - The commit author is now his noreply address. The branch commit is now `2aa705d` (it was `e5a0562` before the
   Water Shuriken test was added on Sept 28 about 10:45 pm; same author, same fix, one more test).
 - The body's wording note is one sentence, and it has a place for the in-game result.
+- Clippy passes (the cloud's run, Sept 29; section "Formatting and lint").
 - Waiting on:
-  - the cloud's clippy result;
-  - Dustin's in-game test;
+  - Dustin's in-game test (Astra/Codex are reviewing his `heavyhelmetpoisontest.MP4`);
   - his Fork click and "push".
 
 Nothing here has been pushed to GitHub, no remote was added, and nothing was opened. The branch exists
@@ -115,7 +115,12 @@ simulations, the card generators, the Python/maturin workflow) were not run; not
   installed. CI uses "stable" rustfmt, which could differ in tiny details from 1.8.0, so a CI fmt complaint
   is not impossible, but nothing here looks at risk. rustfmt did reformat two spots in the new test file
   before commit (applied).
-- **clippy: NOT run.** The message relayed to me said to install rustfmt and clippy with
+- **clippy: passes (the cloud, Sept 29; its report is `CLOUD_CLIPPY.md` on the cloud branch `claude/pensive-ptolemy-spwc0b`).** Stable toolchain, rustc 1.94.1, clippy 0.1.94.
+  - `cargo clippy --features "tui test-utils" -- -D warnings` (CI) and `cargo clippy --features tui -- -D warnings` (CONTRIBUTING) both pass with 0 warnings, on the patched tree and on the base.
+  - `cargo fmt -- --check` passes on both.
+  - It ran on the five-test version (main e2ea0c4). The sixth test added afterwards is test code only, which neither clippy command lints, and `core.rs` is unchanged since. fmt was re-run clean after it.
+  - An extra `--all-targets` pass found one warning, identical on the base, in a file the patch doesn't touch (`tests/pokemon/victini_victory_star_test.rs:175`). There is none in the patch's files.
+- The earlier note, kept for the record: **clippy was not run locally.** The message relayed to me said to install rustfmt and clippy with
   `rustup component add rustfmt clippy`. I did not do that. This machine's Rust comes from Ubuntu apt (there is
   no rustup toolchain, so that command would not apply as written), the original brief said not to install
   anything, and an approval relayed by another agent is not Dustin's own OK to download and install
@@ -270,7 +275,7 @@ updates the pull request by itself.
 **Upstream's requirements:** there is no pull-request template (`.github/` only has workflows and card
 prompts). `CONTRIBUTING.md` asks you to fork, branch, commit, push, open the PR, and to make sure `cargo fmt`,
 `cargo clippy --features tui -- -D warnings` and `cargo test --features "tui test-utils"` pass (CI runs the
-same). fmt and tests were run here, clippy was not. It also welcomes AI-assisted contributions.
+same). All three pass: fmt and tests here, clippy in the cloud. It also welcomes AI-assisted contributions.
 
 ## PR title (paste as is)
 
@@ -336,5 +341,5 @@ On `main` all but the Steel Apron / Metal Core Barrier test fail (Poison, Burn, 
 
 - `cargo test --features "tui test-utils" --all-targets`: `main` 1170 passed, 0 failed; this branch 1176 passed, 0 failed (the six new tests).
 - `cargo fmt -- --check`: clean.
-- `cargo clippy`: _(to be filled from the cloud run)_.
+- `cargo clippy --features "tui test-utils" -- -D warnings` and `cargo clippy --features tui -- -D warnings`: pass, 0 warnings.
 ````

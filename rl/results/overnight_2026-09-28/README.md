@@ -11,7 +11,8 @@ Kept by the laptop session ("Project familiarization"). **Since about 11:30 pm C
     - The commit now uses your noreply address (`e5a0562`, same code).
     - The wording note is one sentence: each text limits the card to attacks.
     - The body has a line waiting for your in-game result, with the FAQ beneath it as secondary.
-    - The cloud is running clippy.
+    - A sixth test for your Greninja point: Water Shuriken, which Heavy Helmet cut to 0 upstream (commit `2aa705d`; upstream's suite 1176 passing).
+    - Clippy, upstream's lint check, passes with 0 warnings (the cloud's run), and formatting is clean. Every check upstream asks for passes.
   - **Left for you:**
     1. The in-game test: Heavy Helmet on a Retreat-3 Active, Poisoned, and read the Checkup damage (10 is the rule). Harden or Hide too if you can. Log it in the Pocket Shot List.
     2. Click Fork on github.com/bcollazo/deckgym-core and tell the laptop "push".
