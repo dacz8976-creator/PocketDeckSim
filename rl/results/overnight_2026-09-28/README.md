@@ -5,8 +5,40 @@ Kept by the laptop session ("Project familiarization"), which Dustin put in char
 ## Decisions waiting for you
 
 - **The Sleep/Paralysis pull request isn't needed.** Upstream merged the same fix on Sept 27 (PR #379, by another contributor, with tests). So the new set will arrive with it already in, as you wanted, and there's nothing to send (`engine/UPSTREAM.md`).
-  - **Your choice:** do you want a different first pull request? A read-only check of which of this week's engine repairs upstream still lacks is running now. Its answer will be here, with a suggestion.
-  - Nothing goes out without you.
+  - **Your choice: a different first pull request?** A read-only check (a Sonnet agent reading upstream main ca4b67f of Sept 27; nothing compiled or run) sorted the fork's repairs. Nothing goes out, and nothing is prepared for a fork, until you pick.
+  - **Suggested first PR: "damage that isn't from an attack no longer gets cut by 'from attacks' protections."**
+    - What it fixes: in upstream, a Pokémon with Heavy Helmet takes no Poison damage and only 10 from a Burn. Cascoon under Harden (and Shinx's Hide, Carracosta's Blocking Shell) can't be hurt by Poison, Burn or Bad Dreams. All four cards say "from attacks" or "by attacks".
+    - Why first: about 15-20 lines in one function plus three short tests. It copies the check upstream already uses for Steel Apron and Metal Core Barrier right beside it. No other PR touches it, and it doesn't depend on the fork's own code. Heavy Helmet matters for your deck 01.
+    - The laptop checked the Heavy Helmet part in upstream's code itself: no attack or opponent check (`hooks/core.rs:696-709`).
+  - **Already upstream, nothing to send:** Sleep/Paralysis (and Paralysis timing, and the rule that only one of Asleep, Paralyzed or Confused can apply at a time); the damage order (Weakness between attacker and defender effects); the Checkup order; Checkup knockouts waiting until every Checkup effect is done; Politoed and Weavile's evolution checks. The point-denial coin and Rough Skin/Poison Point are partly there.
+  - **Missing upstream, small (good later PRs), one line each:**
+    - Mythical Slab keeps a Psychic Pokémon of any stage, not any Basic: a one-line fix, the smallest fallback.
+    - Only one Stadium card played per turn: confirmed in your T10 video.
+    - In a double knockout, the attacking player promotes first: may break upstream tests that assume player 0 goes first.
+    - Rare Candy can't get around Aerodactyl ex's Primeval Law or Malamar's Jammer: confirmed in your video.
+    - Legendary Pulse draws before Hiking Trail tops the hand up: confirmed in a video.
+    - Discard-all-Energy attacks (Hyper Ray, Thunderbolt and others) put the Energy in the discard pile instead of deleting it.
+    - Pichu's Crackly Toss goes to a Benched Basic only.
+    - Protective Poncho only blocks the opponent's damage.
+    - Lum Berry and Bad Dreams resolve in the official FAQ's order: medium size.
+    - Eevee's Boosted Evolution applies only to that Eevee.
+    - Mimikyu ex's Disguise isn't used up by a 0-damage hit.
+    - Roar in Unison isn't offered under the Energy Zone lock.
+    - Poké Ball can't be played on an empty deck.
+  - **Missing upstream, but big, tangled or disputed** (not first):
+    - the opening-hand deal: changes every seeded game upstream;
+    - promotion before the next turn's draw;
+    - the point-denial coin on non-attack knockouts: collides with open upstream PRs;
+    - retaliation timing: conflicts with upstream's design;
+    - Growl/Moonblast reductions;
+    - Clemont's Backpack: the fork's version uses a hack;
+    - player-chosen Energy discards, and player-chosen Quick-Grow Extract and Wallace targets;
+    - the hidden-deck legality rules: your policy, which upstream may not share;
+    - damaged-only healing targets;
+    - Piers' random Energy: upstream chose otherwise on purpose;
+    - the 10-card search cap: still unresolved in the fork's own list;
+    - the 3-3 tie: upstream rules the opposite way.
+  - Caveats: every patch has to be re-made by hand on a fresh upstream copy, because the fork's rules repairs sit in one big commit. The agent was least sure about Mimikyu, the promotion order and Eevee.
 
 ## What happened
 
