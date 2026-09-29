@@ -8,6 +8,7 @@
 - Both in-game tests are done and in the body:
   - Poison (`heavyhelmetpoisontest.MP4`, Sept 28): Heavy Helmet cut an attack 110 → 90, then Poison did the full 10.
   - Water Shuriken (`20260929_195929000_iOS.MP4`, Sept 29): Heavy Helmet cut Blizzard 80 → 60, then Water Shuriken did the full 20.
+  - Harden (`20260929_204425000_iOS.MP4`, Sept 29, Sol review lead-accepted): Water Shuriken did the full 20 through Harden, while the same Harden prevented Ice Wing's 40.
 - Waiting on:
   - his Fork click and "push";
   - optionally, the Water Shuriken test for the second line. Dustin: "I'll get you proof". If it isn't done, delete that placeholder line before posting; the card text and the Poison test carry the argument.
@@ -326,6 +327,12 @@ Each text, quoted exactly, limits the card to damage done by attacks.
 - Regigigas (Retreat Cost 4) held Heavy Helmet in the Active Spot.
 - Articuno ex's Blizzard, printed 80, did **60** to it (120 → 60 HP): the −20 on an attack.
 - On the opponent's next turn, Greninja's Water Shuriken ("Ability Water Shuriken: Once during your turn, you may do 20 damage to 1 of your opponent's Pokémon.") did the **full 20** to the same Helmet-wearing Regigigas (60 → 40 HP): Heavy Helmet did not reduce the Ability's damage.
+
+**Verified in-game (recorded test, Sept 29), Harden:**
+- Cascoon used Harden, and the game showed its protection.
+- On the opponent's next turn, Water Shuriken did the **full 20** to it (110 → 90 HP).
+- Then, in the same turn, Articuno ex's Ice Wing (40, an attack) was **prevented** by the same Harden (HP stayed 90).
+- So Harden stops attack damage of 40 or less, and not an Ability's damage.
 
 The official Detailed battle FAQ (in the game under Tips), "Why didn't Mimikyu ex's Disguise Ability prevent damage?", also says Disguise "does not prevent damage that doesn't come from attacks", and lists as not blocked: damage from Special Conditions (such as Poisoned or Burned), from Pokémon Abilities (such as Greninja's Water Shuriken) and from Pokémon Tools (such as Rocky Helmet). Wording as recorded in the PocketDeckSim rules notes (`rules/_research_notes/detailed_battle_faq.md`, lines 38-40, captured 2026-09-21); the same notes tabulate it in `rules/02_damage_knockouts_points.md`, section 4, lines 78-79: "Poison / Burn at Checkup: No" and "Ability damage: No", both graded official (Mimikyu ex FAQ).
 
