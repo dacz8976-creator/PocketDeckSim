@@ -5826,4 +5826,37 @@ mod km_tests {
         let not_played = card_term_after(&state, &[]);
         assert_eq!(played - not_played, 1.0);
     }
+
+    #[test]
+    fn an_evolving_threat_that_the_clock_picks_is_priced_as_its_evolved_form() {
+        // The review's case (Sept 29): through the whole clock, not only the candidates. Player 0's Cubone A1 151
+        // (Basic [F], [C] Growl, no damage) with [F] attached and Marowak A1 152 (Stage 1 [F], [F] Bone Beatdown 40)
+        // in player 0's hand; player 1's Mega Rayquaza ex (180, ex, no Weakness). Scanned with zones read (player 0's
+        // own threat), the only damaging candidate is the Marowak form: 1 missing (the evolution step), 40 a hit.
+        let mut state = board(
+            vec![mon(CardId::A1151Cubone).with_energy(vec![EnergyType::Fighting])],
+            vec![mon(CardId::B4120MegaRayquazaEx)],
+            None,
+        );
+        state.hands[0] = vec![get_card_by_enum(CardId::A1152Marowak)];
+        let with = |stadium: Option<CardId>| {
+            let mut s = state.clone();
+            s.active_stadium = stadium.map(get_card_by_enum);
+            s
+        };
+        // kog: 1 + ceil(180 / 40) = 6 turns, whatever the Stadium.
+        for stadium in [None, Some(CardId::B2153TrainingArea), Some(CardId::B3154ArenaofAntiquity)] {
+            assert_eq!(clock(&with(stadium), 1, true, false), 6.0, "{stadium:?}");
+        }
+        // km: Training Area's +10 comes from the form's Stage 1 (Cubone, Stage 0, would get none): 1 + ceil(180 / 50)
+        // = 5. Arena's +20 from its [F] against the ex: 1 + 180 / 60 = 4. Hiking Trail adds nothing: 6.
+        assert_eq!(clock(&with(None), 1, true, true), 6.0);
+        assert_eq!(clock(&with(Some(CardId::B2153TrainingArea)), 1, true, true), 5.0);
+        assert_eq!(clock(&with(Some(CardId::B3154ArenaofAntiquity)), 1, true, true), 4.0);
+        assert_eq!(clock(&with(Some(CardId::B2b069HikingTrail)), 1, true, true), 6.0);
+        // Read as the opponent's threat (board only), no form is scanned, Cubone has no damaging attack, and the clock
+        // is "never" (30) either way.
+        let ta = with(Some(CardId::B2153TrainingArea));
+        assert_eq!((clock(&ta, 1, false, true), clock(&ta, 1, false, false)), (30.0, 30.0));
+    }
 }

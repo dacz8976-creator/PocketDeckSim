@@ -910,8 +910,6 @@ mod s42_tier_parse_tests {
         assert_eq!(parse_player_code("er").unwrap(), PlayerCode::ER);
     }
 
-    /// The two §42 flags must be independent, and OFF for every pre-§42 tier — otherwise
-    /// re-running history would not reproduce it.
     #[test]
     fn km_parses_before_k_and_nothing_else_moves() {
         // km (rl/results/trainer_pricing_2026-09-28/REGISTRATION_DRAFT.md, section 4.1): 'km<N>' before 'k<N>'.
@@ -929,6 +927,8 @@ mod s42_tier_parse_tests {
         assert_eq!(parse_player_code("k3").unwrap(), PlayerCode::K { max_depth: 3 });
     }
 
+    /// The two §42 flags must be independent, and OFF for every pre-§42 tier — otherwise
+    /// re-running history would not reproduce it.
     #[test]
     fn test_search_flags_are_off_for_historical_tiers() {
         use crate::players::expectiminimax_player::SearchFlags;
