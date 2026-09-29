@@ -1,6 +1,6 @@
 # Overnight, Sept 28-29: one page for Dustin's morning
 
-Kept by the laptop session ("Project familiarization"), which Dustin put in charge overnight. The Fable session "Recommendations and advice" coordinates, under Dustin's word that it may decide while he is away, except for gates he set in his own words. Updated as things land; the newest entries are at the top of each section.
+Kept by the laptop session ("Project familiarization"). **Since about 11:30 pm Central the laptop session is in charge overnight, with Sonnet agents** (Dustin: "Okay you are back in charge. Fable is too expensive. You and the sonnet agent continue overnight"). Before that, the Fable session coordinated. Gates Dustin set in his own words still need his word, and anything that changes direction comes here as a decision for him. Updated as things land; the newest entries are at the top of each section.
 
 ## Decisions waiting for you
 
