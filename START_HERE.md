@@ -133,7 +133,8 @@ its seed-overlap check; the rest was added since.
 | 96,092,200 – 96,092,201 | Astra's add-on/CLI parity check |
 | 97,000,000 – 97,999,999 | crossplay |
 | 22,000,000,000 – 22,599,999,999 | Claude Code, Sept 25 overnight list: kp3 equivalence test (22.0B), brew card-draw model (22.1B, Python), brew goldfish (22.2B), Lucario network games (22.3B), their rollouts (22.4B) and k3 probes (22.5B) |
-| 22,600,000,000 – 22,699,999,999 | Claude Code, kt's Dustin-deck A/B (registered Sept 26 in `rl/results/kt_2026-09-26/README.md`; 1,920 games per arm; no game played yet) |
-| 22,700,000,000 – 22,700,079,999 | Claude Code, kt's clause (d) rows: the Dragonair Mega Rayquaza ex list against the eight panel lists (kt amendment 1, Sept 26; 22.7B + panel index × 10,000 + i, i < 500; no game played yet) |
+| 22,600,000,000 – 22,699,999,999 | Claude Code, kt's Dustin-deck A/B (registered Sept 26 in `rl/results/kt_2026-09-26/README.md`; 1,920 games per arm; played Sept 29, `rl/results/kt_tables_2026-09-28/`) |
+| 22,700,000,000 – 22,700,079,999 | Claude Code, kt's clause (d) rows: the Dragonair Mega Rayquaza ex list against the eight panel lists (kt amendment 1, Sept 26; 22.7B + panel index × 10,000 + i, i < 500; played Sept 29) |
 | 22,800,000,000 – 22,800,099,999 | Claude Code, X Speed census (Sept 27, `rl/results/xspeed_census_2026-09-27/`): 22.8B + 10,000 × deck + 1,000 × opponent (+500 seat 1), `--seed-stream`, 15 games per call |
 | 22,801,000,000 – 22,801,319,999 | Claude Code, the Sept 28 engine switch's touched-path check (`rl/results/engine_switch_2026-09-28/touched/`): 22.801B + pairing × 10,000 + i, 32 pairings (decks 07 and 05, the metal-barrier example, a 2-Blue test list, each v the 8 panel lists) |
+| 23,000,000,000 – 23,009,999,999 | Claude Code, kta's fresh deals (registered Sept 29, `rl/results/kta_2026-09-29/REGISTRATION.md`, section 3.2 for the sub-blocks; clause (d) at 23,003,000,000 + row × 10,000 + i, i < 2,000) |

@@ -1,4 +1,26 @@
-# DRAFT (Sept 29; harmonised with RUN5 and with km's draft, Sept 29; second fix pass, Sept 29; third pass, Sept 29 (review changes)): `kta`, kt's switch 1 alone on kog, registered afresh on fresh deals
+# REGISTERED (Sept 29, with Dustin's word): `kta`, kt's switch 1 alone on kog, registered afresh on fresh deals
+
+## Registration (Sept 29, Dustin's word; this block governs every older note below)
+
+**Dustin, Sept 29, in the laptop session, verbatim:** "kta: approved. Register the text with clause (d) at 2,000 fresh deals per row, the 20% Jasmine threshold and baseline guard, and the coverage shortcut. Start as soon as possible within the stated plan. For coverage, skip mixed rows only when every corresponding deal has matching complete move fingerprints, decks, seeds and seats. Matching winners alone is insufficient."
+
+So, registered as follows. Where anything below reads otherwise, this block holds.
+1. **Clause (d):** the census Rayquaza list's 8 rows, **2,000 fresh deals per row**, both arms (kta3 and kog3 on the Rayquaza side, kog3 on the panel), seeds 23,003,000,000 + row × 10,000 + i (section 3.2), read once.
+2. **The Jasmine threshold:** at least **20%** of offered turns on deck 07. It gates only when the ΔMSE interval spans zero.
+   - **The baseline guard:** if kog3's own Jasmine rate on the same fresh deals already reaches 20%, the footprint test counts as not passed in the fallback.
+3. **The coverage shortcut, exactly as he worded it.** A coverage pairing's mixed rows are skipped **only when every corresponding deal of kta3's both-sides games and kog3's both-sides games in that pairing matches on the complete move fingerprint, both decks, the seed and the seats.** Matching winners alone is not enough. Any single deal that differs on any of these runs the pairing's mixed rows in full.
+   - The comparison is a script whose output is committed beside the runs.
+   - It checks deal by deal on the `moves` fingerprint, the `a` and `b` decks, the `seed`, and the seat assignment.
+   - It names every pairing it skips.
+4. **Everything else as drafted:**
+   - the reserve route, and the three outcomes on both footprint routes;
+   - the near-zero rerun rule on both ΔMSE edges;
+   - the development-data declaration (3.1) and the fresh block 23,000,000,000 - 23,009,999,999 (3.2);
+   - the build ec7e1a8's kta3 reused as-is, with section 4's checks and no cloud round;
+   - the Skarmory A/B reported, gating nothing.
+5. **Start:** as soon as possible, within the stated plan. The laptop's runner and a blind-written reading script are committed before any fresh game is read.
+
+**Superseded:** the "DRAFT" title and the status paragraph below, and the "Needs Dustin's word" list, which he has now given. Any change from here is a dated amendment made before any fresh game.
 
 **Decision this informs:** whether kog3, the working pilot, is replaced by kta3. kta3 is kog3 plus kt's switch 1 only: the defender's temporary damage cuts and reduction Tools priced in the threat clock. It is read on the 45 cells, by the route the footprint fixes, with clause (d) on Dragonair Mega Rayquaza ex.
 
