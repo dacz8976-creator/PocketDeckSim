@@ -8,12 +8,15 @@ Seeds: identity on the table's deals (72,000,000 + pairing × 10,000 + i), the 1
 
 - **km3 is kog3 with one change.** When it counts how many turns the opponent needs to win (and how many it needs itself), each hit now includes the damage a Stadium in play adds: Training Area's +10 for a Stage 1 attacker, Arena of Antiquity's +20 for an [F] attacker hitting an ex. Nothing else changed. With neither Stadium in play, km3 plays exactly as kog3.
 - **Where things stand** (`STATUS.txt` has a line per step):
-  1. **Build:** done, commit 9c11b30. It changes three files in `engine/src/players/` and nothing else in `engine/`.
-  2. **Tests:** done. km's 11 new tests pass. The full suite passes: 1,986 passed, 0 failed.
+  1. **Build:** done, commit 9c11b30. It changes three files in `engine/src/players/` and nothing else in `engine/`. The programs for every game here are built from it.
+  2. **Tests:** done. km's 11 tests at 9c11b30 pass, and the full suite passes: 1,986 passed, 0 failed.
+     - The code review added a 12th test, test code only, in commit fb825d1.
+     - A scan built from fb825d1 replays identity items 6 and 7 (160 games) byte for byte, so 9c11b30 stays the build.
   3. **Counter tool:** done. It now plays all 17 named cells, including the Rayquaza and Altaria/Greninja lists on their own seed base. It has a first-deal option and writes one row per game with each seat's counts. Its four tests and its identity check (8a) pass. Without the new options it prints exactly what the old tool printed, byte for byte.
   4. **Identity:** see the table below.
 - **Two things the laptop should know before it builds this commit:**
   - **The program hashes will not match across machines.** A Rust build embeds its build paths, so the laptop's programs built from 9c11b30 will have different sha256s from the cloud's below. This already happened with kt: the same commit ec7e1a8 gave the cloud's scan e19703b1… and the laptop's 924751ba…, and both played every game identically. What does carry across is the commit, the counter tool's source sha256 (below), and the games. The laptop's own identity games at 9c11b30 equal to these (or to the same reference files) show the two builds are the same.
+  - **Build 9c11b30, not the branch head.** Later commits on the branch add a test and notes only, but any source edit changes a Rust program's hash. So build the programs from 9c11b30's `engine/`, and the counter tool as an example in a copy of it, as done here.
   - **This build has the official engine's kt codes, not kt on kog.** km sits on 233bced's `engine/` exactly, so `engine/src/players/` was set back to 233bced's before km was added. The kt presets on kog from ec7e1a8 (kt's and kta's build) are therefore not in 9c11b30. kta keeps playing from ec7e1a8, and nothing here touches it.
 - **One extra game, noted for completeness.** Before the identity runs I ran the scan once as `km3` on one deal (pairing 2, deal 0) to check that it accepts the code. That deal is part of item 7's smoke. Its result was not used.
 
@@ -52,7 +55,13 @@ In `value_functions.rs`, `mod km_tests`, and in `players/mod.rs` and `public_pri
 - **Evolving threat** (`an_evolving_threat_is_priced_as_its_evolved_form_and_the_opponents_forms_are_not_scanned`):
   - Riolu with Mega Lucario ex in the bot's own hand. The evolved form's candidates read as Stage 1 [F], so they get Training Area +10 and Arena +20. Riolu's own read as Stage 0, so they get Arena only.
   - Read as the opponent's threat (board only), no form is scanned.
-  - This test is at the unit level (the candidates and the attacker lookup) rather than through the whole clock. On this board the clock picks Riolu's own attack: each evolution step counts as one missing Energy, so the Mega's Fighting Pulse costs one more than Riolu's attack. A whole-clock test would price Riolu (Stage 0), not the form. The form gets its own stage and types whenever the clock does pick it, which is what the unit test checks.
+  - This test is at the unit level (the candidates and the attacker lookup). Through the whole clock, this board prices Riolu, not the form: each evolution step counts as one missing Energy, so Riolu's own attack is always at least one Energy closer than the Mega's Fighting Pulse. So the registered Riolu case can't be shown through the clock. The code review pointed this out.
+- **Evolving threat through the whole clock** (`an_evolving_threat_that_the_clock_picks_is_priced_as_its_evolved_form`; added after the review, commit fb825d1, test code only):
+  - The board: Cubone (Basic [F], only Growl, no damage) with [F] attached, Marowak (Stage 1 [F], Bone Beatdown 40) in the bot's hand, against Mega Rayquaza ex (180).
+  - The clock picks the Marowak form: 1 turn for the evolution step, then 40 a hit, so 6 turns.
+  - With Training Area it is 5. That +10 comes from the form's Stage 1; Cubone, at Stage 0, would get none.
+  - With Arena it is 4, and with Hiking Trail 6. kog sees 6 in every case.
+  - Board only (the opponent's view) there is no form and no damaging attack, so the clock is 30 either way.
 - **Nothing to read** (`with_nothing_to_read_kms_clock_is_kogs`): with no Stadium, Hiking Trail or Fragrant Forest, km's clock equals kog's on the boards above.
 - **Flag-off identity, bitwise** (`km_is_kog_plus_n2_and_nothing_else`): `KM` with its flag cleared equals `KOG`, and every other preset has the flag off.
 - **Played states** (`on_played_states_km_is_kog_wherever_no_damage_stadium_is_in_play`):
@@ -67,7 +76,7 @@ In `value_functions.rs`, `mod km_tests`, and in `players/mod.rs` and `public_pri
 - **Diagnostic** (open question 13; `diagnostic_the_card_term_rewards_x_speed_before_copycat_and_a_play_under_hiking_trail_by_one`):
   - X Speed then Copycat, against Copycat alone, with no Trail: the card term differs by exactly +1.
   - With Hiking Trail in play and a hand under 3, playing any card is +1.
-- **Full suite:** 1,986 passed, 0 failed. That is 233bced's 1,975 plus km's 11. No existing test's expected value was edited.
+- **Full suite:** at 9c11b30, 1,986 passed, 0 failed (`suite.log`). That is 233bced's 1,975 plus km's 11. No existing test's expected value was edited. At fb825d1: SUITE2.
 
 ## The counter tool (step 3; identity 8a)
 
@@ -96,8 +105,17 @@ In `value_functions.rs`, `mod km_tests`, and in `players/mod.rs` and `public_pri
 - **`--no-counts`:** rows without any count, and no printed table. Used for identity checks on gating deals.
 - **`--trace-out`:** every decision, with the watched cards offered and the move chosen.
 - **The counting rule is the old one:** a turn is offered when the card is among the owner's legal moves at some decision of that turn, and played when it is played that turn.
+- **Refused** (legality_scan refuses the same kinds of thing):
+  - `--seed-base` with `--cells km17`, whose seed bases are the registration's. So a run meant as a diagnostic can't land on gating deals;
+  - `--cells` with `--pairs`, `--decks` with `--pairs`, and `--root` in table mode;
+  - `--trace-out` with `--no-counts`, since a trace carries the counts;
+  - deals past a pairing's 10,000-seed block;
+  - a pairings file with a pairing listed twice or a short row.
+  - These came from the code review.
 - **Usage for the threshold sample** (the laptop's step; not run here):
-  - `--cells km17 --first-deal 200 --games 100 --bot kog3 --rows-out <file>`, and the same with `km3`.
+  - The sample is deals 200-299 of the 14 gating cells: M1's nine (table 2, 8, 13, 18, 19, 20 and 21; `new_decks.tsv` 8 and 16) and M2's five (table 0, 1, 3 and 4; `new_decks.tsv` 9).
+  - So: `--cells km17 --pairings table:0,table:1,table:2,table:3,table:4,table:8,table:13,table:18,table:19,table:20,table:21,new_decks.tsv:8,new_decks.tsv:9,new_decks.tsv:16 --first-deal 200 --games 100 --bot kog3 --rows-out <file>`, and the same with `km3`. That is 1,400 games for each pilot.
+  - A bare `--cells km17` would play all 17 cells.
   - Each row carries what the registration's deal-by-deal check of a measuring run reads: the move fingerprint (`moves`), both decks (`a`, `b`, `a_file`, `b_file`), `seed`, `first_seat` and `seat_decks`, keyed by `source`, `pairing` and `i`. (`tool_check.py rows` checks deals from 0 only. It was written for identity 8a, not for the sample.)
 
 **Tests and identity 8a** (`check_tool.sh`, `tool_check.py`, `tool_check.txt`; all pass):
@@ -122,6 +140,37 @@ In `value_functions.rs`, `mod km_tests`, and in `players/mod.rs` and `public_pri
   - The tool's kog3 on i < 40 of all 17 cells: **680 of 680** deals equal `table_kog3.jsonl` (13 cells) and `new17_kog3.jsonl` (4 cells). The check covers the move fingerprint, both decks (names, plus files where the reference has them), seed and seats.
   - Its km3 on pairings 0 and 2, i < 40: **80 of 80** equal item 7's smoke in the same way.
   - No count was written or read for these games (`--no-counts`).
+
+## The code review (section 4.0: the cloud's one review)
+
+**Who and how.** An independent agent in this session did the review, read-only: git and file reads only, no builds and no games. It covered 9c11b30's diff against the registration's section 2 (N2) and section 4.1, and the counter tool with its checks against step 3 and identity 8a.
+
+**What it checked in the code, with no blocker found:**
+- km equals kog bit for bit when neither Stadium applies. The bonus is looked up only with the flag on and a Stadium in play, and `+ 0.0` leaves the number unchanged.
+- The call sites are right: `extract_features` has its only two callers, and the wrappers pass `false`.
+- The bonus mirrors `modify_damage` (`hooks/core.rs:1999-2009`): the same functions, the most over dual types, and the target's `is_ex()`.
+- The side and the attacker are right, including an evolution form.
+- No hidden information is read. Forms are scanned only for the bot's own threats.
+- The parser order is right.
+- With no new options, the counter tool behaves exactly as before. Its seats, seeds and deck files match legality_scan, and its km17 cells match the registration.
+
+The one place km's bonus differs from `modify_damage` is also noted: every hit is treated as landing on the Active. This is the registration's stated simplification (section 2, "Intended simplifications").
+
+**Its findings, and what was done:**
+
+| finding | severity | done |
+|---|---|---|
+| The Riolu test never runs the evolution-form branch through the clock (Riolu always has one fewer missing Energy than the form) | note | Added the whole-clock Cubone/Marowak test (above; fb825d1, test code only). The registered Riolu case itself can't be shown through the clock, as the Riolu bullet above says. |
+| A doc comment in `players/mod.rs`'s tests landed on the km parser test | note | Moved back (fb825d1) |
+| The tool silently ignored `--seed-base` under `--cells km17` (a "diagnostic" could play gating deals and write their counts), and `--decks` under `--pairs` | should-fix | Both refused now |
+| BUILD.md's sample command played all 17 cells, not the 14 gating cells | should-fix | Corrected (above) |
+| `tool_check.py rows` took its cells from the rows, so a dropped cell would pass | note | It now asserts the count (17, or 2) |
+| Test 3's recount leaned on the tool's own choice of which moves are the card | note | The trace now lists every Trainer the owner could play, so the recount is independent |
+| No guard on deals past 10,000; duplicate or short rows in a pairings file; `--trace-out` with `--no-counts`; a misleading error for `--cells` with `--pairs` | note | All refused now |
+| `tool_check.py` can't check a measuring run's kog3 arm deal by deal (it starts at deal 0 and refuses rows with counts) | note | Stated above. The laptop's reading check needs its own script. |
+| Registration 4.0 step 4 has the laptop check the programs' sha256 against BUILD.md, which can't match across machines | process | For the laptop and Dustin: see "In plain words". The source sha256s and the commit do carry across, and the laptop's identity games show the builds agree. |
+
+The tool was rebuilt after these changes. Every tool test and identity 8a were rerun with the revised program; the results are below. The first program's results stay in `STATUS.txt` and `tool_check.txt` as history.
 
 ## Identity (section 4.1; `run_km.sh`, `identity.py`, `identity/identity_check.txt`)
 

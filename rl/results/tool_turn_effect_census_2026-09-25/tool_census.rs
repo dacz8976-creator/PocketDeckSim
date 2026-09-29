@@ -31,8 +31,12 @@
 //!   played, Field Blower's and the Tools' targets, and each X Speed play (turn, whether Hiking Trail was in play,
 //!   whether the seat retreated later that turn). `--no-counts` leaves out every count and prints no table: for identity checks on gating deals,
 //!   whose counts are not read.
-//! - `--trace-out <path>`: every decision of every game: source, pairing, i, seat, turn, the watched cards among the
-//!   legal moves, and the chosen move. For checking the counts by hand.
+//! - `--trace-out <path>`: every decision of every game: source, pairing, i, seat, turn, every Trainer among the legal
+//!   moves (by name, whether watched or not), and the chosen move. For checking the counts by hand. Not with
+//!   `--no-counts` (a trace carries the counts).
+//! - Refused, as legality_scan refuses its like: `--seed-base` with `--cells km17` (its bases are the registration's),
+//!   `--decks` with `--pairs`, `--root` in table mode, `--cells` with `--pairs`, deals past a pairing's 10,000-seed
+//!   block, and a pairings file with a pairing listed twice or a short row.
 //! The rows watch the original cards (Tools, Field Blower, Stiffen) and also every Stadium, X Speed, Team Rocket's
 //! Boss and Copycat. The stdout table keeps the original set.
 use deckgym::actions::SimpleAction;
@@ -176,7 +180,15 @@ fn play_one(cell: &Cell, i: u64, bot: &str, trace: bool) -> GameCensus {
         let chosen = game.play_tick();
         format!("{:?}", chosen).hash(&mut moves);
         if trace {
-            let names: Vec<&str> = row_names.iter().map(|s| s.as_str()).collect();
+            // Every Trainer the owner could play, by name, watched or not.
+            let playable: BTreeSet<&str> = actions
+                .iter()
+                .filter_map(|a| match &a.action {
+                    SimpleAction::Play { trainer_card } => Some(trainer_card.name.as_str()),
+                    _ => None,
+                })
+                .collect();
+            let names: Vec<&str> = playable.iter().copied().collect();
             census.trace.push(format!(
                 "{}\t{}\t{}\t{actor}\t{}\t{}\t{:?}",
                 cell.source,
@@ -266,6 +278,7 @@ fn read_pairs(path: &str, root: &str, seed_base: u64) -> Vec<Cell> {
     let (c_pairing, c_held_key, c_held_file) = (col("pairing"), col("held_key"), col("held_file"));
     let (c_opponent, c_panel_file) = (col("opponent"), col("panel_file"));
     let c_seed_first = header.iter().position(|h| *h == "seed_first");
+    let mut listed = BTreeSet::new();
     let load = |file: &str| {
         let full = std::path::Path::new(root).join(file);
         Deck::from_file(full.to_str().unwrap()).unwrap_or_else(|e| panic!("deck file {}: {e}", full.display()))
@@ -273,7 +286,9 @@ fn read_pairs(path: &str, root: &str, seed_base: u64) -> Vec<Cell> {
     lines
         .map(|line| {
             let f: Vec<&str> = line.split('\t').map(str::trim).collect();
+            assert!(f.len() >= header.len(), "pairs file {path}: short row {line:?}");
             let pairing: usize = f[c_pairing].parse().unwrap();
+            assert!(listed.insert(pairing), "pairs file {path}: pairing {pairing} listed twice");
             if let Some(c) = c_seed_first {
                 assert_eq!(f[c].parse::<u64>().ok(), Some(seed_base + pairing as u64 * 10_000), "pairing {pairing}: seed_first");
             }
@@ -316,6 +331,13 @@ fn main() {
     let first_deal: u64 = arg(&args, "--first-deal").map(|x| x.parse().unwrap()).unwrap_or(0);
     let only: Option<Vec<String>> = arg(&args, "--pairings").map(|x| x.split(',').map(|p| p.trim().to_string()).collect());
     let no_counts = args.iter().any(|a| a == "--no-counts");
+    let has = |o: &str| args.iter().any(|a| a == o);
+    assert!(first_deal + games <= 10_000, "deals {first_deal}..{} run past a pairing's 10,000 seeds", first_deal + games);
+    assert!(!(no_counts && has("--trace-out")), "--trace-out carries the counts; not with --no-counts");
+    assert!(!(has("--cells") && has("--pairs")), "--cells and --pairs are exclusive");
+    assert!(!(has("--cells") && has("--seed-base")), "--cells km17 sets each cell's seed base; --seed-base is refused");
+    assert!(!(has("--pairs") && has("--decks")), "--pairs names its own deck files; --decks is for the table");
+    assert!(has("--cells") || has("--pairs") || !has("--root"), "--root is only for --pairs and --cells");
     let extended = ["--cells", "--pairs", "--seed-base", "--pairings", "--first-deal", "--rows-out", "--trace-out"]
         .iter()
         .any(|o| args.iter().any(|a| a == o))

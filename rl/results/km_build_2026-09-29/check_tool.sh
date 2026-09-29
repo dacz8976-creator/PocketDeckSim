@@ -57,11 +57,11 @@ note "tool $(tail -1 "$D/identity/identity_check.txt")"
 # km3 on pairings 0 and 2, i < 40 (80 games), against item 7's smoke. Fingerprint, both decks, seed and seats only.
 run "$NEW" --cells km17 --games 40 --bot kog3 --no-counts --rows-out "$W/8a_kog3_rows.jsonl" > /dev/null 2>&1
 python3 "$D/tool_check.py" rows "identity 8a: the tool's kog3, the 17 named cells, i < 40" "$W/8a_kog3_rows.jsonl" 40 \
-  table="$REF/table_kog3.jsonl" new_decks.tsv="$REF/new17_kog3.jsonl" > /dev/null || die "IDENTITY 8a FAILED (kog3)"
+  cells=17 table="$REF/table_kog3.jsonl" new_decks.tsv="$REF/new17_kog3.jsonl" > /dev/null || die "IDENTITY 8a FAILED (kog3)"
 note "$(tail -1 "$D/identity/identity_check.txt")"
 run "$NEW" --cells km17 --pairings table:0,table:2 --games 40 --bot km3 --no-counts --rows-out "$W/8a_km3_rows.jsonl" > /dev/null 2>&1
 python3 "$D/tool_check.py" rows "identity 8a: the tool's km3, pairings 0 and 2, i < 40, v item 7's smoke" "$W/8a_km3_rows.jsonl" 40 \
-  table="$D/identity/${BUILD}_km3_p02_40.jsonl" > /dev/null || die "IDENTITY 8a FAILED (km3)"
+  cells=2 table="$D/identity/${BUILD}_km3_p02_40.jsonl" > /dev/null || die "IDENTITY 8a FAILED (km3)"
 note "$(tail -1 "$D/identity/identity_check.txt")"
 cp "$W/8a_kog3_rows.jsonl" "$D/identity/${BUILD}_tool_kog3_km17_40.jsonl"; cp "$W/8a_km3_rows.jsonl" "$D/identity/${BUILD}_tool_km3_p02_40.jsonl"
 
@@ -74,4 +74,19 @@ a8 = [r for r in map(json.loads, open(sys.argv[2])) if r["i"] >= 20]
 assert len(t4) == len(a8) == 340 and t4 == a8
 EOF
 note "tool test 4 PASS: --first-deal 20 --games 20 gives 8a's rows for deals 20-39 of the 17 cells exactly (340 rows)"
-note "STEP 3 COUNTER TOOL: done (tests 1-4 and identity 8a pass)"
+# Test 5: the combinations the tool refuses exit with an error before any game is played (no games-out is written).
+refused() {  # label args...
+  local label=$1; shift
+  rm -f "$W/t5_games.jsonl"
+  if run "$NEW" "$@" --games 1 --bot kp3 --games-out "$W/t5_games.jsonl" > /dev/null 2>&1 || [ -e "$W/t5_games.jsonl" ]; then
+    die "test 5: not refused: $label"
+  fi
+}
+refused "--seed-base with --cells km17" --cells km17 --seed-base 20000900000
+refused "--cells with --pairs" --cells km17 --pairs "$R/rl/results/gauntlet_runs_2026-09-26/tsv/new_decks.tsv"
+refused "--decks with --pairs" --pairs "$R/rl/results/gauntlet_runs_2026-09-26/tsv/new_decks.tsv" --seed-base 21108000000 --decks ../decks/research
+refused "--root in table mode" --root ..
+refused "--trace-out with --no-counts" --no-counts --trace-out "$W/t5_trace.tsv"
+refused "deals past a pairing's 10,000 seeds" --first-deal 9999 --pairings 2 --games 2
+note "tool test 5 PASS: the tool refuses --seed-base with --cells km17, --cells with --pairs, --decks with --pairs, --root in table mode, --trace-out with --no-counts, and deals past a pairing's 10,000 seeds, before any game"
+note "STEP 3 COUNTER TOOL: done (tests 1-5 and identity 8a pass)"

@@ -3,11 +3,13 @@
 rows: the tool's per-game rows (`--rows-out`, run with `--no-counts`) against the table files, deal by deal, on the move
 fingerprint, both decks (names, and files where the reference has them), the seed and the seats; every expected deal
 present. Only those fields are read: a row carrying counts is an error, so no count of a gating deal is ever loaded.
-  python3 tool_check.py rows <label> <rows.jsonl> <deals> table=<table ref.jsonl> [new_decks.tsv=<new17 ref.jsonl>]
+  python3 tool_check.py rows <label> <rows.jsonl> <deals> cells=<n> table=<table ref.jsonl> [new_decks.tsv=<new17 ref>]
+(the rows must hold exactly n cells, so a cell the tool dropped fails)
 
 trace: on diagnostic games (not table deals), the tool's offered and played counts for Arena of Antiquity and Training
 Area against a recount from its own move trace (`--trace-out`): per game and seat, a turn is offered when the card is
-among the watched legal moves at some decision of that turn, and played when the chosen move plays it. Every game must
+among the Trainers the owner could play at some decision of that turn (the trace lists every one, watched or not, so
+the recount doesn't rely on the tool's classification), and played when the chosen move plays it. Every game must
 agree; at least one game must play each card; that game's trace lines for the card are printed, to count by hand.
   python3 tool_check.py trace <label> <rows.jsonl> <trace.tsv>
 
@@ -37,6 +39,7 @@ def finish(ok, line):
 if mode == "rows":
     rows_path, deals = sys.argv[3], int(sys.argv[4])
     refs = dict(a.split("=", 1) for a in sys.argv[5:])
+    ncells = int(refs.pop("cells"))
     rows = [json.loads(l) for l in open(rows_path, encoding="utf-8")]
     if any("counts" in r or "xspeed" in r for r in rows):
         finish(False, "rows carry counts (run the tool with --no-counts)")
@@ -59,10 +62,10 @@ if mode == "rows":
             bad.append(k)
     report.extend(f"  differs: {k}" for k in bad[:20])
     report.extend(f"  missing: {k}" for k in missing[:20])
-    ok = not bad and not missing and len(got) == len(want)
+    ok = not bad and not missing and len(got) == len(want) and len(cells) == ncells
     finish(ok, f"{len(want) - len(bad) - len(missing)} of {len(want)} deals equal on the move fingerprint, both decks, "
                f"seed and seats ({len(cells)} cells, i < {deals}; rows {len(rows)}; differing {len(bad)}, missing "
-               f"{len(missing)}); no count read")
+               f"{len(missing)}; {ncells} cells expected); no count read")
 
 if mode == "trace":
     rows_path, trace_path = sys.argv[3], sys.argv[4]
