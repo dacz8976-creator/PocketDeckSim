@@ -1,0 +1,30 @@
+2026-09-28T23:33:59Z diff 233bced..ec7e1a8 under engine/: engine/src/players/mod.rs engine/src/players/value_functions.rs  (players/ only)
+2026-09-28T23:53:46Z kt build ec7e1a8: legality_scan 924751ba0926993e, deckgym 407976366fa2104e
+2026-09-29T00:23:23Z ec7e1a8_id_k3_500 done in 1776 s (14000 games)
+2026-09-29T00:55:07Z ec7e1a8_id_kp3_500 done in 1901 s (14000 games)
+2026-09-29T01:23:30Z ec7e1a8_id_kog3_500 done in 1701 s (14000 games)
+2026-09-29T01:44:33Z ec7e1a8_id_kog3_new17 done in 1261 s (8500 games)
+2026-09-29T02:28:16Z ec7e1a8_id_kq3_500 done in 2621 s (14000 games)
+2026-09-29T02:32:00Z ec7e1a8_id_kd3_40 done in 221 s (1120 games)
+2026-09-29T02:35:25Z ec7e1a8_id_kpr3_40 done in 205 s (1120 games)
+2026-09-29T02:46:09Z ec7e1a8_id_kog3_b2e40 done in 642 s (3840 games)
+2026-09-29T02:47:05Z ec7e1a8_id_kog3_scz40 done in 53 s (320 games)
+2026-09-29T02:47:35Z ec7e1a8_id_kog3_var_v-lucario_240 done in 29 s (280 games)
+2026-09-29T02:48:19Z ec7e1a8_id_kog3_var_v-suicune_240 done in 44 s (280 games)
+2026-09-29T02:48:56Z ec7e1a8_id_kog3_var_v-weezing_240 done in 36 s (280 games)
+2026-09-29T02:49:47Z ec7e1a8_id_kog3_var_l-charizardy40 done in 50 s (320 games)
+2026-09-29T02:49:47Z identity: k3 v official: 14000 of 14000 equal on ['moves', 'decisions', 'openings', 'winner_seat', 'points', 'seed'] kp3 v official: 14000 of 14000 equal on ['moves', 'decisions', 'openings', 'winner_seat', 'points', 'seed'] kog3 v table_kog3: 14000 of 14000 equal on ['moves', 'decisions', 'openings', 'winner_seat', 'points', 'seed'] kog3 v new17_kog3: 8500 of 8500 equal on ['moves', 'decisions', 'openings', 'winner_seat', 'points', 'seed'] kq3 v official: 14000 of 14000 equal on ['moves', 'decisions', 'openings', 'winner_seat', 'points', 'seed'] kd3 v 43cef0b (official then): 1120 of 1120 equal on ['moves', 'decisions', 'openings', 'winner_seat', 'points', 'seed'] kpr3 v official: 1120 of 1120 equal on ['moves', 'decisions', 'openings', 'winner_seat', 'points', 'seed'] kog3 B2e i<40 v b2e_kog3: 3840 of 3840 equal on ['moves', 'decisions', 'openings', 'winner_seat', 'points', 'seed'] kog3 Scizor i<40 v scizor_kog3: 320 of 320 equal on ['moves', 'decisions', 'openings', 'winner_seat', 'points', 'seed'] kog3 v-lucario_2 i<40 v var_v-lucario_2_kog3: 280 of 280 equal on ['moves', 'decisions', 'openings', 'winner_seat', 'points', 'seed'] kog3 v-suicune_2 i<40 v var_v-suicune_2_kog3: 280 of 280 equal on ['moves', 'decisions', 'openings', 'winner_seat', 'points', 'seed'] kog3 v-weezing_2 i<40 v var_v-weezing_2_kog3: 280 of 280 equal on ['moves', 'decisions', 'openings', 'winner_seat', 'points', 'seed'] kog3 l-charizardy i<40 v var_l-charizardy_kog3: 320 of 320 equal on ['moves', 'decisions', 'openings', 'winner_seat', 'points', 'seed'] 
+2026-09-29 02:49:47 KT PART A DONE ec7e1a8
+2026-09-29T02:49:47Z gate open: koh's B2e rows read and committed at 0497f47 (2026-09-29T02:45:30Z): no held-out accuracy veto; koh stays not adopted (its 45-cell test failed). The B2e mixed rows complete koh's record and don't hold this gate (Fable's ruling, kt_tables README).
+2026-09-29T02:52:39Z ec7e1a8_timing_kog3_40 done in 172 s (1120 games)
+2026-09-29T02:55:15Z ec7e1a8_timing_kt3_40 done in 156 s (1120 games)
+2026-09-29T02:55:15Z timing: kog3 172 s wall, 1158 s CPU; kt3 157 s wall, 1108 s CPU; kt3/kog3 wall 0.91 (limit 1.25: within), CPU 0.96
+2026-09-29T03:20:01Z ec7e1a8_kt3_table done in 1486 s (14000 games)
+2026-09-29T03:35:51Z ec7e1a8_kt3_new17 done in 950 s (8500 games)
+2026-09-29T03:56:59Z ec7e1a8_kta3_table done in 1268 s (14000 games)
+2026-09-29T04:13:48Z ec7e1a8_kta3_new17 done in 1008 s (8500 games)
+2026-09-29T04:37:56Z ec7e1a8_ktb3_table done in 1448 s (14000 games)
+2026-09-29T04:57:15Z ec7e1a8_ktb3_new17 done in 1159 s (8500 games)
+2026-09-29T05:14:53Z ec7e1a8_ktc3_table done in 1058 s (14000 games)
+2026-09-29T05:24:23Z ec7e1a8_ktc3_new17 done in 570 s (8500 games)
+2026-09-29T05:24:26Z footprint written (footprint.txt): read and commit it alone before anything else

@@ -56,6 +56,12 @@ Kept by the laptop session ("Project familiarization"). **Since about 11:30 pm C
 
 ## What happened
 
+- **kt's footprint is in, which fixes each code's route** (05:24 UTC, committed alone at 6c900fd).
+  - **kta3** (switch 1 alone, the Tool pricing) changes only 2.5% of games, so it's read on the reserve route (your "15 percent trigger").
+  - **kt3** (all three switches) changes 64.7%, so it's read on the ordinary adoption rule. Almost all of that comes from switch 2 (ktb3: 65.4%).
+  - Before any kt game, all 13 identity replays at the kt build matched the old pilots game for game, and kt3 ran at 0.91× kog3's time.
+  - Next on the laptop: kt3's and kta3's mixed rows and coverage, then clause (d) on Rayquaza, the Rayquaza traces, and the Dustin-deck A/B. The reading code is being written and reviewed blind before any of it is read.
+
 - **The Pocket Shot List has eight new test requests** (your 11:40 pm OK). They were drafted and checked by Sonnet agents: every card text against card.py, every "what the simulator does" claim against the engine code.
   - High: Greninja's Water Shuriken on a Heavy Helmet holder, for the pull request.
   - Medium: Glimmora's coin when Poison knocks it out; a second Poison on a Severely Poisoned Pokémon (40 or back to 10; brews 03a and 03b).
