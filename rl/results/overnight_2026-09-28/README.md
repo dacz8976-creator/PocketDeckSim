@@ -85,9 +85,13 @@ Kept by the laptop session ("Project familiarization"), which Dustin put in char
   - kt's first game waits for koh's B2e read.
   - Rayquaza is clause (d)'s one test, with Suicune reported (your 7 pm word).
 - **koh failing, in your framing (9 pm): the Rayquaza gain is still behind a problem nobody has named yet.** R′ was the reworked Hyper Ray fix. It didn't clear R's side effects on the table decks: Altaria is still played worse, and now Weezing's second list too.
-  - **Where the Altaria diagnosis stands** (a Sonnet workflow, still running at the lowest priority; no synthesis yet). Its first sign: in Altaria's opening, koh retreats Igglybuff into Eevee to use Boosted Evolution. Fix A appears to misread the step count when the evolution can happen that same turn.
-  - That fits the mechanism check, where fix A fails only in the Swablu/Eevee positions (6 of 15 recovered).
-  - It is a first sign, not a finding. What it finds goes here, and no R′ variant is registered before it's read.
+  - **The Altaria diagnosis is done** (`../koh_2026-09-28/altaria_diagnosis/SYNTHESIS.md`). It corrects the earlier "first sign": Boosted Evolution isn't the cause.
+    - **The "crossed" Swablu/Eevee line is mostly a reading problem.** Fix A works on Swablu: koh never makes kpf's Igglybuff-into-Swablu retreat, 0 of 18 rows, against kpf's 8. A can't act on Eevee by construction, since Espeon needs one Energy, so an Eevee holding one already reads ready. Those Eevee lines don't cost points.
+    - **koh's Altaria deficit is small and spread out:** −1.33 ± 1.61 over the traced cells, not clearly beyond noise. It splits three ways:
+      - **R's attack-skipping (−0.64):** the tempo trade R′ keeps. It costs points only against Lucario, and no list-free repair was found.
+      - **Fix B's retreat-payment test (−0.40):** it counts the fresh Zone Energy twice, once to pay a retreat to a benched Mega Altaria ex and once for the Active attacking. A repair (B counts only Energy the Active held before this turn's Zone attach) was built in a scratch copy. It's identical to koh on every registered slice and moves those rows back to kog's play; that's worth maybe +0.2-0.3 points. It's a candidate, not registered.
+      - **Fix A (−0.23):** small.
+    - **The synthesizer's own verdict:** "Altaria's evidence alone does not justify changing the player." So the problem behind the Rayquaza gain is now partly named: R's tempo trade against Lucario, plus B's double count. Weezing's second list and Hoopa aren't diagnosed yet.
 - **koh: not adopted, provisional** (087528f; `../koh_2026-09-28/laptop_reading/READING.md`).
   - Real error 14.0 → 12.3, but the accuracy test's interval crosses zero.
   - Altaria is played worse, which counts as a veto.
