@@ -75,6 +75,13 @@ The accepted 225430 segment revealed that a zero-HP attacker was discarded befor
 
 ## Open engine bugs (not fixed yet)
 
+- **Two knockout-promotion bugs fixed upstream, not in the fork** (found Sept 29 in upstream 09e964f, "Expose public agent observations and fix stale knockout promotions"; `../rl/results/b4b_prep_2026-09-26/B4B_REPRINT_CHECK_2026-09-29.md`). Take them at the next upstream merge, with their tests.
+  1. **Promotion into an emptied slot** (upstream `apply_action_helpers.rs`, `handle_knockouts`; test `tests/hp_aura_promotion_test.rs`). A knockout removes an HP bonus, the only one being Lilligant's "Each of your [G] Pokémon gets +20 HP.", which knocks out a damaged Benched Pokémon after promotion choices were already queued. Promoting that emptied slot could leave the Active Spot empty.
+     - The fork has its own `prune_stale_bench_activate_choices` (`engine/src/actions/apply_action_helpers.rs:1032`), which skips frames where the Active Spot is empty. Whether it covers this case is unchecked.
+  2. **Lethal knock-back asked for two promotions** (upstream `apply_attack_action.rs`, `knock_back_attack` and `coin_flip_knock_back_opponent_active`; test `tests/knock_back_knockout_test.rs`). When the hit knocks out the opponent's Active, the switch choice was still queued on top of the promotion, so the opponent chose a new Active twice.
+     - It affects Hariyama's Push Out, Grapploct's Knock Back, Houndour's and Yamper's Roar, Throh's Circle Throw, and Chinchou's Luring Glow.
+     - The fork's `knock_back_attack` (`engine/src/actions/apply_attack_action.rs:4952`) has no lethal check.
+
 - **Coin-flip damage cuts come off before Weakness** (found Sept 25, in the kd review). Guarded Grill (Bastiodon A2
   114, heads: −100) and Securely Sheltered (Hisuian Goodra B3b 050, heads: −80) are Abilities. The engine takes their
   cut off the attack's raw damage in the attack outcome (`AttackOutcomes::split_with_damage_prevention`,

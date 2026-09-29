@@ -423,7 +423,13 @@ sides with k3 still available; the 0.7.2 wheel and its run identities are untouc
          - "If this one is accepted, the thirteen small missing repairs become a sequence, one at a time, each with the same shape."
          - The list is in `results/overnight_2026-09-28/README.md`. Nothing is pushed until he clicks Fork.
      - **B4b and the size rule** (Dustin, Sept 28 about 11:15 pm Central, verbatim via Fable): "On B4b going live tomorrow: if RUN5's line is right that it's reprint-only, the meta doesn't shift and the post-Sept-24 confirmation window stays open, so nothing about the size rule changes — but 'reprint-only' should be confirmed against the card list when it lands, because if it isn't, the window closes tomorrow at an eighth of the data and that becomes a decision."
-       - **Release time** (Dustin, Sept 29, from the app): B4b releases at 8 pm Central on Sept 29. The laptop checks upstream at 9:07 pm that night and again at 9:03 am Sept 30.
+       - **Release time** (Dustin, Sept 29, from the app): B4b releases at 8 pm Central on Sept 29.
+       - **Checked Sept 29, before the release: B4b is reprint-only** (`results/b4b_prep_2026-09-26/B4B_REPRINT_CHECK_2026-09-29.md`). Upstream's card data landed early, at main 9044ff6 "B4b", 1:57 am EDT.
+         - Two agents checked every card, the second as an independent recheck. All 429 B4b cards and 8 of the 9 new promos are reprints, with game text identical to an earlier printing.
+         - The one new card is P-B 099 Mega Garchomp ex, as this line said.
+         - So, by Dustin's rule, the meta doesn't shift, the post-Sept-24 confirmation window stays open, and nothing about the size rule changes. No decision is needed.
+         - The two later checks were cancelled.
+         - The same upstream range also brings 09e964f, which fixes two knockout-promotion bugs the fork also has. `rules/09` lists them for the next merge.
        - **To do when the list lands**: check each B4b card against `lib/card.py` (a reprint is the same name and text as an earlier printing) and record the answer here.
        - If it isn't reprint-only, nothing is decided here. The consequence goes to Dustin as a decision, with the numbers from `results/postfreeze_2026-09-27/`.
      - **The B4b release-note defaults** (decided under his delegation by the Fable session and the fourth session, Sept 28):
