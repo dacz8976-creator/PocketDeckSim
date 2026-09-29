@@ -77,3 +77,7 @@ identity 8a: the tool's km3, pairings 0 and 2, i < 40, v item 7's smoke: 80 of 8
     seat 1 turn 12: offered [Arena of Antiquity|Korrina|Poké Ball]; chose Play { trainer_card: B3 154 Arena of Antiquity }
 tool test 3: traced games, kp3, Altaria v Lucario, seeds 20,000,920,000-019: 20 traced games, 40 seats: the tool's offered and played turns for Arena of Antiquity and Training Area equal the trace's recount in 80 of 80 seat-cards (differing 0); games where each is played: Arena of Antiquity 7, Training Area 9; PASS
 
+identity 8a: the tool's kog3, the 17 named cells, i < 40: 680 of 680 deals equal on the move fingerprint, both decks, seed and seats (17 cells, i < 40; rows 680; differing 0, missing 0; 17 cells expected); no count read; PASS
+
+identity 8a: the tool's km3, pairings 0 and 2, i < 40, v item 7's smoke: 80 of 80 deals equal on the move fingerprint, both decks, seed and seats (2 cells, i < 40; rows 80; differing 0, missing 0; 2 cells expected); no count read; PASS
+
