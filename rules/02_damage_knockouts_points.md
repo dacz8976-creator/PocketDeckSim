@@ -85,6 +85,11 @@ and Weakness all ignore those non-attack sources. Historical engine finding: `un
 damage from attacks") also reduced Poison, Burn, Ability and Tool damage (`07` H2). This was repaired in rules1 and is
 retained in active rules4: Heavy Helmet reduces attack damage only. Metal Core Barrier and Steel Apron are right.
 
+**[DUSTIN] Sept 28, about 10:40 pm Central** (typed in the Fable session, relayed verbatim; recorded the same day): "Heavy
+helmet doesn't protect against poison or effects. Just attack. It doesn't protect against greninja's snipe ability
+either, but I'll get you proof." His in-game tests (Poison at Checkup, and Greninja's Water Shuriken on a Heavy Helmet
+holder) are to follow, and go in `08_tests_to_record.md` and the upstream pull request (`../rl/results/upstream_pr_2026-09-28/`).
+
 The game has three separate prevention wordings, and they do different things **[IN-GAME TEXT]**:
 - "Prevent all damage done by attacks" — damage only; Special Conditions and other effects still apply.
 - "Prevent all effects of attacks used by the opponent's Pokémon" — effects only; damage still applies ("Damage are not effects": Regice). [COMMUNITY] pokemon-zone
