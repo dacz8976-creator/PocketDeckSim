@@ -72,3 +72,27 @@ The simulator's numbers to compare, from the table above:
 Twenty games is enough to see whether the real setup is roughly that fast, not to measure it exactly.
 
 In the Ladder Log, put them in the game's Note box, for example `2nd | Entei T2 | opp 0 pts` (the log has no separate boxes for these, and none are needed).
+
+## Your first nine ladder games with it (Sept 28 evening; from the written video reviews)
+
+The video reviewer logged them in the Ladder Log as "Entei ex (video-visible core)". Every card seen on your side is in this list, and Rainbow Cave was played in six games. The reviews only see part of a deck, so this shows nothing contradicts brew 08, not all 20 cards. The setup items were taken from each game's REVIEW.md (`Battle Logs/Recording_QA/`), counting your own turns.
+
+| Opponent | Went | First Entei ex attack | Opp. points then | Result |
+|---|---|---|---|---|
+| ユアンジュナ (Mega Rayquaza) | 2nd | turn 2 | 0 | Win (concession) |
+| Pipelayer69 (Hitmonchan ex) | 2nd | never (conceded first) | 0 | Win (concession) |
+| Belial (Dragonite) | 1st | turn 3 | 0 | Loss 2-3 |
+| かえぴ (Riolu / Sawk) | 1st | turn 2 | 0 | Win (concession) |
+| NINTENDO DS (Snorlax) | 2nd | turn 2 | 0 | Win (concession) |
+| ぽて (Mega Diancie / Gardevoir) | 2nd | turn 2 | 0 | Loss 0-3 |
+| Maru (Raticate ex) | 2nd | turn 2 | 0 | Win (concession) |
+| JayLaPi (Mega Audino) | 1st | turn 2 | 0 | Win (concession) |
+| PsyckoHead (Mega Lucario) | 2nd (inferred) | turn 2 (inferred) | 0 | Loss 2-3 |
+
+- **Against the simulator's numbers above:** no sign the real deck sets up slower than predicted.
+  - Going second, Entei attacked by turn 2 in 5 of 5 games that got that far (sim: 92%).
+  - Going first, it attacked by turn 2 in 2 of 3 (sim: 38%) and by turn 3 in 3 of 3 (sim: 92%).
+  - The opponent had 0 points every time (sim: 0.06 on average).
+- **What nine games can't do:** measure a rate. 2 of 3 fits anything from about 10% to 99%.
+- The win rate can't be compared with the sim's either: 6-3, with all six wins by concession.
+- **The A1 prediction** (07 and 08 fastest, 10 slowest) needs games with 07 or 10 to be tested.
