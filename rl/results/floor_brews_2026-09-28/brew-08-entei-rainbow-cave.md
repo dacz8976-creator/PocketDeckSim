@@ -77,6 +77,8 @@ In the Ladder Log, put them in the game's Note box, for example `2nd | Entei T2 
 
 All nine were brew 08 (Dustin, Sept 28). They are filed under "Brew 8" in the Ladder Log; the video reviewer had first logged them as "Entei ex (video-visible core)". The setup items were taken from each game's REVIEW.md (`Battle Logs/Recording_QA/`), counting your own turns.
 
+**Running record:** this section is the first nine games only, as written up on Sept 28. Brew 08's ladder record as the Ladder Log grows (7-3 with the tenth game, filed Sept 28 at 23:43 CDT) is kept current in `decks/screen/panel_ladder_2026-09-26/brew_scorecard.md`.
+
 | Opponent | Went | First Entei ex attack | Opp. points then | Result |
 |---|---|---|---|---|
 | ユアンジュナ (Mega Rayquaza) | 2nd | turn 2 | 0 | Win (concession) |
