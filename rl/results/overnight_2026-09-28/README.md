@@ -56,6 +56,10 @@ Kept by the laptop session ("Project familiarization"). **Since about 11:30 pm C
 
 ## What happened
 
+- **koh's coverage is complete, and it stays not adopted** (05:10 UTC). Its mixed rows show the Hoopa / Absol drop is koh's own play: it plays Hoopa's side 10.4 points worse on the held-out list (a veto), and 5.1 worse on your Hoopa file. Whimsicott is a small veto too (−2.0).
+  - kog, the pilot your screen uses, isn't affected, so brew 07's 61.3% stands.
+  - Why R′ hurts Hoopa this much isn't diagnosed. It's a lead for any later version of that fix.
+
 - **Your nine brew 08 ladder games went 6-3 (67%), and it set up as fast as the simulator said.** You confirmed they were all brew 08. They're now filed under "Brew 8" in the Ladder Log; the season total is unchanged, 55 games, 26-29.
   - Entei ex attacked on your own turn 2 in seven of the eight games where it attacked, and on turn 3 in the other.
   - The opponent had 0 points every time.

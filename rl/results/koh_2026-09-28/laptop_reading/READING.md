@@ -125,6 +125,24 @@
 - **What the read means for kt's gate:** nothing here could reopen koh. Its ordinary-rule test already failed on the 45 cells, and coverage can only add vetoes. So kt's gate opens now (Fable's ruling; `../../kt_tables_2026-09-28/README.md`).
 - **Status:** "not adopted" is complete once the B2e mixed rows are read.
 
+## B2e's own-side mixed rows (read Sept 29, 05:10 UTC; `READING_numbers.txt` 6d): koh's coverage is complete
+
+koh3 on the held deck and kog3 on the panel, against kog3 on both, on the same 500 deals per pairing. Under Dustin's coverage rule, a paired 95% interval wholly below zero is harm and a veto.
+
+| Held-out deck (0-47, counted) | Own side | Result | Dustin's file (48-95, reported) |
+|---|---|---|---|
+| **Hoopa / Absol** | **−10.43 ± 1.51** | **veto** | −5.05 ± 1.46 (worse beyond noise) |
+| **Whimsicott** | **−1.95 ± 1.26** | **veto** | −1.78 ± 1.14 (worse beyond noise) |
+| Manectric | +1.60 ± 1.00 | no harm | +1.23 ± 1.09 |
+| Raticate | −0.04 ± 1.21 | no harm | +2.42 ± 1.12 |
+| Garchomp | +2.21 ± 1.03 | no harm | −0.44 ± 1.30 |
+| Charizard Y / Entei | +3.80 ± 1.31 | no harm | +3.70 ± 1.35 |
+
+- **The Hoopa / Absol drop is koh's own play.** koh plays Hoopa's side about 10 points worse on the held-out list and 5 on Dustin's. It isn't the opponents playing better.
+- **koh's verdict is complete: not adopted.** It fails the ordinary rule on the 45 cells, with vetoes on Altaria (cell and deck), Weezing's second list, and B2e's Hoopa / Absol and Whimsicott.
+- **kog, the working pilot and the screen's, is unaffected.** Brew 07's floor figure (61.3%, kog3) stands.
+- **Open cause, not diagnosed:** why R′ costs Hoopa / Absol so much. It is a lead for any later R′ variant, next to the Altaria diagnosis's B double-count.
+
 ## What it means
 
 - **Fix B and fix A work where the diagnosis found the harm for Lucario and Vespiquen.** kpf's vetoes there are gone, and so is Vespiquen's own-side loss.
