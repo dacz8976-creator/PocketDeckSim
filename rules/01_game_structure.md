@@ -60,7 +60,7 @@ Order: **coin flip → each player draws 5 → each player places an Active (fac
 | Attack | **Allowed** if the attack's cost can be paid — in practice a zero-cost attack, or Energy put on by a card effect. [OFFICIAL] Battle Rules FAQ ("can be used on the first turn of the player that goes first") + [COMMUNITY] Bulbapedia | Allowed |
 | Evolve (incl. Rare Candy, Quick-Grow Extract) | **No** — "Neither player can evolve Pokémon on the first turn, whether they go first or second." [OFFICIAL] in-app Tips + printed Rare Candy text | **No** (same rule) |
 | Retreat | Allowed (no rule against it; Wimpod's Ability "During your first turn, this Pokémon has no Retreat Cost" presupposes it) [INFERRED from card text] | Allowed |
-| Exceptions | Cards that say so: Eevee's Boosted Evolution ("can evolve during your first turn or the turn you play it" while Active) [OBSERVED battle accepted-232035]; card effects that evolve without printing the limit — Wallace on turn 1 and Caterpie's Quick Growth at the end of turn 1 [OBSERVED 150630]; Zeraora's Thunderclap Flash attaches Energy "at the end of your first turn". | same |
+| Exceptions | Cards that say so: Eevee's Boosted Evolution ("can evolve during your first turn or the turn you play it" while Active) [OBSERVED battle accepted-232035], for that Eevee only: a Benched Rattata couldn't evolve on the same first turn [OBSERVED 194920, Sept 29; `04` §4]; card effects that evolve without printing the limit — Wallace on turn 1 and Caterpie's Quick Growth at the end of turn 1 [OBSERVED 150630]; Zeraora's Thunderclap Flash attaches Energy "at the end of your first turn". | same |
 
 ## 4. Energy Zone
 

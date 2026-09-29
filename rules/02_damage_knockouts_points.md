@@ -67,6 +67,7 @@ So flat cases agree; cases with a reduction bigger than the pre-Weakness damage,
   - [COMMUNITY] did2memo (JP): Giovanni's +10 applies to the Active part of a spread/random attack only; not to Bench picks, not to Ability damage, not to a 0-damage result.
   - ⚠ Engine: every turn-long boost is Active-only (`hooks/core.rs:1015`), so Clemont's Backpack's +20 never reaches the Bench (`07` M2, shown by running it).
 - Defender-side effects on a Benched Pokémon apply if their text doesn't restrict them to the Active Spot (e.g. Protective Poncho *only* works on the Bench; Rocky Helmet *only* in the Active Spot). [INFERRED from card text; Protective Poncho [OBSERVED second-altaria]]
+  - Protective Poncho [OBSERVED 195929, Sept 29]: on the Bench it blocked Blizzard's Bench damage twice (Regice stayed at 10); on an Active Regice it did nothing (Ice Wing 110 → 70, Water Shuriken 110 → 90). Engine ✓. Not seen: Water Shuriken aimed at a Benched Poncho holder (its Ability protection is card text only).
 - A protection Ability on the Active (Oricorio's Safeguard vs ex attacks) protects only that Pokémon; the same attack's Bench damage still lands. [OBSERVED 031901, 170229]
 - Random multi-hit attacks ("1 of your opponent's Pokémon is chosen at random 4 times… do 50 damage to it"): a JP guide reports Giovanni's +10 was added **once** to the Active's total (50×2 → 110), i.e. hits on the same Pokémon are totalled before modifiers. [SINGLE] did2memo — not verified in the recordings.
 
@@ -76,7 +77,7 @@ So flat cases agree; cases with a reduction bigger than the pre-Weakness damage,
 |---|---|---|
 | The attack's damage to Active or Bench | Yes | — |
 | Poison / Burn at Checkup | **No** | [OFFICIAL] Mimikyu ex FAQ |
-| Ability damage (Greninja Water Shuriken, Crobat Cunning Link, Darkrai Nightmare Aura, Flygon ex Sand Slammer) | **No** | [OFFICIAL] Mimikyu FAQ + [COMMUNITY] did2memo (Giovanni's +10 not added to Water Shuriken). (The recordings show Aegislash's "−80 from attacks by Pokémon ex" not reducing Crobat's Cunning Link, but Crobat isn't an ex, so that case doesn't prove this.) |
+| Ability damage (Greninja Water Shuriken, Crobat Cunning Link, Darkrai Nightmare Aura, Flygon ex Sand Slammer) | **No** | [OFFICIAL] Mimikyu FAQ + [COMMUNITY] did2memo (Giovanni's +10 not added to Water Shuriken) + [OBSERVED 195929, Sept 29]: Heavy Helmet didn't reduce Water Shuriken (full 20) + [OBSERVED 204425, Sept 29]: Cascoon's Harden ("prevent all damage done to this Pokémon by attacks if that damage is 40 or less") didn't stop Water Shuriken (110 → 90) but blocked Articuno ex's Ice Wing 40 the same turn; engine ✓. Hide and Blocking Shell not tested. (The recordings show Aegislash's "−80 from attacks by Pokémon ex" not reducing Crobat's Cunning Link, but Crobat isn't an ex, so that case doesn't prove this.) |
 | Tool damage (Rocky Helmet, Deceptive Needle) | **No** | [OFFICIAL] Mimikyu FAQ + [OBSERVED 031901]: Safeguard didn't stop Deceptive Needle |
 | Retaliation damage (Rough Skin) | **No** — so Rough Skin does not trigger another Rough Skin or Rocky Helmet | [COMMUNITY] pokemon-zone Mythical Island rulings |
 
@@ -93,11 +94,17 @@ holder) are to follow, and go in `08_tests_to_record.md` and the upstream pull r
 - Wailmer (Retreat Cost 3) held Heavy Helmet and was Poisoned and Burned by Boiler Smog.
 - Team Rocket's Magmar's Derisive Roasting (10 + 50 × 2 conditions = 110) showed 90 with the Helmet's indicator (00:72; 100 → 10 HP).
 - Poison then did the full 10 (00:73.5; 10 → 0).
-- So Heavy Helmet cuts attack damage and not Poison. The Water Shuriken test is still to come.
+- So Heavy Helmet cuts attack damage and not Poison.
+
+**[OBSERVED 195929, Sept 29]** (Sol review with an independent lead check, `Battle Logs/Recording_QA/20260929_195929000_iOS_rule_sol/`): **Heavy Helmet doesn't cut Water Shuriken.**
+- Greninja's Water Shuriken did the full 20 to Active Regigigas (Retreat Cost 4) holding Heavy Helmet: 60 → 40.
+- In the same clip Articuno ex's Blizzard (80) did 60 to that Regigigas (120 → 60).
+- Engine ✓ (rules1 H2 repair: Ability damage bypasses Heavy Helmet). Dustin (Shot List): "Full 20 damage on regigas with heavy helmet on."
+- Protective Poncho and Clear Veil from the same clip are in §3 and the prevention wordings below.
 
 The game has three separate prevention wordings, and they do different things **[IN-GAME TEXT]**:
 - "Prevent all damage done by attacks" — damage only; Special Conditions and other effects still apply.
-- "Prevent all effects of attacks used by the opponent's Pokémon" — effects only; damage still applies ("Damage are not effects": Regice). [COMMUNITY] pokemon-zone
+- "Prevent all effects of attacks used by the opponent's Pokémon" — effects only; damage still applies ("Damage are not effects": Regice). [COMMUNITY] pokemon-zone + [OBSERVED 195929, Sept 29]: Clear Veil (prevents all effects of the opponent's attacks on its holder) didn't stop Blizzard's Bench damage, Registeel 110 → 100 → 90. Engine ✓ (its effect-only prevention doesn't touch damage, `_research_notes/audit_2026-09-22/core_damage_status.md`). Not seen: a status or other effect aimed at the Veil holder, or an Ability hitting it.
 - "Prevent all damage from—and effects of—attacks" — both. (Cramorant's Dive: attack damage/effects only, not Abilities or effects on other Pokémon.) [COMMUNITY]
 - "Negate the entire attack" style (Manectric's Flash) stops Bench damage too. [COMMUNITY] pokemon-zone Triumphant Light rulings
 
@@ -121,8 +128,11 @@ The game has three separate prevention wordings, and they do different things **
 - The Knocked-Out Pokémon goes to its owner's discard pile with "all Energy and other cards attached to it" (Tools, the cards it evolved from). [OFFICIAL] in-app Tips
 - A Knock Out can happen without points: Glimmora's Shattering Crystal (Heads → "Opponent was unable to get any points"); that Pokémon still counts as Knocked Out for other cards (Kingambit's Overlord's Blade counted it). [OBSERVED 181914] + [IN-GAME TEXT]
   The card text ("When this Pokémon is Knocked Out, flip a coin…") covers any Knock Out, including Poison/Burn and
-  Ability damage. ⚠ Engine: the coin only flips for attack Knock Outs; a Poisoned Glimmora always gives the point
-  (40/40 runs, `07` M3).
+  Ability damage. **Poison Knock Out [OBSERVED 200857, Sept 29]:** Poison took Glimmora 10 → 0 at Checkup, Shattering
+  Crystal flipped heads, and "Opponent was unable to get any points" showed, with the score still empty, before the
+  replacement prompt. Engine ✓ since rules1 (`09` M3). Not seen: Burn, tails. Dustin (Shot List): the coin flips on
+  any Knock Out, as the text reads. Historical `unified1` finding: the coin flipped only for attack Knock Outs, so a
+  Poisoned Glimmora always gave the point (40/40 runs, `07` M3).
 - Extra points: "Get 1 more point if the opponent's Active Pokémon is Knocked Out by damage from an attack used by X". [IN-GAME TEXT]
 - Removal without a Knock Out (discard effects, returning to hand) gives **no** points. [OFFICIAL] + [OBSERVED 150630: Gyarados's Wild Swing discarded Dustin's own two Benched Pokémon; the score stayed 1–1.]
 - Self-discarding a Fossil gives no points; a Fossil Knocked Out gives 1. [COMMUNITY] Bulbapedia, gameland
