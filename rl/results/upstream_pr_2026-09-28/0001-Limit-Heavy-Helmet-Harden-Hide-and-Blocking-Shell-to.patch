@@ -1,0 +1,415 @@
+From e4b3f950de45a9d31dd842452b9c0d5ad43eb120 Mon Sep 17 00:00:00 2001
+From: dacz8976-creator <dacz8976@gmail.com>
+Date: Mon, 28 Sep 2026 21:35:18 -0500
+Subject: [PATCH] Limit Heavy Helmet, Harden, Hide and Blocking Shell to attack
+ damage
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Heavy Helmet ("takes -20 damage from attacks from your opponent's
+Pokémon"), Cascoon's Harden and Carracosta's Blocking Shell ("by
+attacks"), and Shinx's Hide ("from—and effects of—attacks") are all
+limited to damage from attacks. modify_damage applied them to every kind
+of damage instead: Poison, Burn, Ability damage such as Darkrai's Bad
+Dreams, Tool damage, and, for Heavy Helmet, attacks from the holder's own
+player.
+
+Gate them on is_from_active_attack, and Heavy Helmet also on the attacker
+being the opponent, the same way Steel Apron and Metal Core Barrier are
+already gated.
+
+Adds tests/rules/attack_damage_only_test.rs: one test per card, plus one
+showing Steel Apron and Metal Core Barrier are unchanged.
+---
+ src/hooks/core.rs                      |  34 ++-
+ tests/rules.rs                         |   2 +
+ tests/rules/attack_damage_only_test.rs | 283 +++++++++++++++++++++++++
+ 3 files changed, 312 insertions(+), 7 deletions(-)
+ create mode 100644 tests/rules/attack_damage_only_test.rs
+
+diff --git a/src/hooks/core.rs b/src/hooks/core.rs
+index e94d67c..da8ce86 100644
+--- a/src/hooks/core.rs
++++ b/src/hooks/core.rs
+@@ -693,10 +693,20 @@ pub(crate) fn can_play_item(state: &State) -> bool {
+     !has_modifiers
+ }
+ 
+-fn get_heavy_helmet_reduction(state: &State, (target_player, target_idx): (usize, usize)) -> u32 {
++fn get_heavy_helmet_reduction(
++    state: &State,
++    attacking_player: usize,
++    (target_player, target_idx): (usize, usize),
++    is_from_active_attack: bool,
++) -> u32 {
++    if !is_from_active_attack || attacking_player == target_player {
++        return 0;
++    }
++
+     let defending_pokemon = &state.in_play_pokemon[target_player][target_idx]
+         .as_ref()
+         .expect("Defending Pokemon should be there when checking Heavy Helmet");
++    // Heavy Helmet: "...it takes -20 damage from attacks from your opponent's Pokémon."
+     if has_tool(defending_pokemon, CardId::B1219HeavyHelmet) {
+         if let Card::Pokemon(pokemon_card) = &defending_pokemon.card {
+             if pokemon_card.retreat_cost.len() >= 3 {
+@@ -1384,17 +1394,21 @@ pub(crate) fn modify_damage(
+         return 0;
+     }
+ 
+-    // Check for PreventAllDamageAndEffects (Shinx's Hide)
++    // Check for PreventAllDamageAndEffects (Shinx's Hide): only "damage from—and effects of—
++    // attacks", so Poison, Burn and Ability damage still go through.
+     if target_effects
+         .iter()
+         .any(|effect| matches!(effect, CardEffect::PreventAllDamageAndEffects))
++        && is_from_active_attack
+     {
+         debug!("PreventAllDamageAndEffects: Preventing all damage and effects");
+         return 0;
+     }
+ 
+-    // Check for PreventDamageFromBasic (Carracosta's Blocking Shell)
+-    if attacking_pokemon.card.is_basic()
++    // Check for PreventDamageFromBasic (Carracosta's Blocking Shell): only "by attacks from Basic
++    // Pokémon", so a Basic's Ability damage (e.g. Darkrai's Bad Dreams) still goes through.
++    if is_from_active_attack
++        && attacking_pokemon.card.is_basic()
+         && target_effects
+             .iter()
+             .any(|effect| matches!(effect, CardEffect::PreventDamageFromBasic))
+@@ -1418,7 +1432,12 @@ pub(crate) fn modify_damage(
+     let heavy_helmet_reduction = if skip_target_effects {
+         0
+     } else {
+-        get_heavy_helmet_reduction(state, (target_player, target_idx))
++        get_heavy_helmet_reduction(
++            state,
++            attacking_player,
++            (target_player, target_idx),
++            is_from_active_attack,
++        )
+     };
+     let metal_core_barrier_reduction = if skip_target_effects {
+         0
+@@ -1600,11 +1619,12 @@ pub(crate) fn modify_damage(
+             + ability_damage_reduction,
+     );
+ 
+-    // Threshold-based prevention (e.g. Cascoon's Harden): prevent all damage if it is low enough.
++    // Threshold-based prevention (e.g. Cascoon's Harden): prevent all damage by attacks if it is
++    // low enough. Poison, Burn and Ability damage are not damage by attacks.
+     let prevented_by_threshold = target_effects
+         .iter()
+         .any(|effect| matches!(effect, CardEffect::PreventDamageIfLessOrEqual { threshold } if final_damage <= *threshold));
+-    if prevented_by_threshold {
++    if prevented_by_threshold && is_from_active_attack {
+         debug!("PreventDamageIfLessOrEqual: Preventing {final_damage} damage");
+         return 0;
+     }
+diff --git a/tests/rules.rs b/tests/rules.rs
+index 4937246..bbd308a 100644
+--- a/tests/rules.rs
++++ b/tests/rules.rs
+@@ -1,6 +1,8 @@
+ //! Rules-accuracy tests derived from the game's own text: the in-app "Tips" (Battle Guide) panel
+ //! and the app-linked official "Detailed battle FAQ", both transcribed 2026-09-08. Each test
+ //! cites the sentence it enforces.
++#[path = "rules/attack_damage_only_test.rs"]
++mod attack_damage_only_test;
+ #[path = "rules/checkup_order_test.rs"]
+ mod checkup_order_test;
+ #[path = "rules/damage_order_test.rs"]
+diff --git a/tests/rules/attack_damage_only_test.rs b/tests/rules/attack_damage_only_test.rs
+new file mode 100644
+index 0000000..673afbe
+--- /dev/null
++++ b/tests/rules/attack_damage_only_test.rs
+@@ -0,0 +1,283 @@
++//! Effects whose card text limits them to damage "from attacks" leave every other kind of damage
++//! alone.
++//!
++//! Official **Detailed battle FAQ**, "Why didn't Mimikyu ex's Disguise Ability prevent damage?":
++//! Disguise does not prevent damage that doesn't come from attacks. Damage from Special
++//! Conditions (such as Poisoned or Burned), from Abilities (such as Greninja's Water Shuriken)
++//! and from Tools (such as Rocky Helmet) all get through. The same reading applies to any
++//! reduction or prevention whose text names attacks. The cards tested here say:
++//!
++//! - Heavy Helmet: "it takes -20 damage from attacks from your opponent's Pokémon".
++//! - Cascoon's Harden: "prevent all damage done to this Pokémon by attacks if that damage is 40
++//!   or less".
++//! - Shinx's Hide: "prevent all damage from—and effects of—attacks done to this Pokémon".
++//! - Carracosta's Blocking Shell: "Prevent all damage done to this Pokémon by attacks from Basic
++//!   Pokémon".
++//!
++//! Steel Apron and Metal Core Barrier ("takes -10 / -50 damage from attacks from your opponent's
++//! Pokémon") already behave this way; the last test pins that down so this file also shows they
++//! are unchanged.
++//!
++//! The non-attack damage used below is Poison (10) and Burn (20) at Pokémon Checkup, and Darkrai's
++//! Bad Dreams (20, an Ability) at the end of the turn.
++
++use deckgym::{
++    actions::{Action, SimpleAction},
++    card_ids::CardId,
++    database::get_card_by_enum,
++    effects::CardEffect,
++    models::{EnergyType, PlayedCard, StatusCondition},
++    test_support::{attack_action, get_test_game_with_board},
++    Game,
++};
++
++const POISON_DAMAGE: u32 = 10;
++const BURN_DAMAGE: u32 = 20;
++const BAD_DREAMS_DAMAGE: u32 = 20;
++
++fn end_turn(game: &mut Game<'static>, actor: usize) {
++    game.apply_action(&Action {
++        actor,
++        action: SimpleAction::EndTurn,
++        is_stack: false,
++    });
++}
++
++/// Player 1 uses the first attack of their Active `attacker` against player 0's Active.
++fn opponent_attacks(game: &mut Game<'static>, attacker: CardId) {
++    let mut state = game.get_state_clone();
++    state.current_player = 1;
++    game.set_state(state);
++    game.apply_action(&Action {
++        actor: 1,
++        action: attack_action(attacker, 0),
++        is_stack: false,
++    });
++}
++
++/// Player 0's Active `holder` faces player 1's Darkrai, is given `conditions`, and player 0 ends
++/// their turn. Returns how much damage the holder took over that end of turn: Poison and Burn
++/// at Pokémon Checkup, and Bad Dreams if it is Asleep.
++fn damage_over_end_of_turn(holder: PlayedCard, conditions: &[StatusCondition]) -> u32 {
++    let mut game = get_test_game_with_board(
++        vec![holder],
++        vec![PlayedCard::from_id(CardId::B2b040Darkrai)],
++    );
++    let mut state = game.get_state_clone();
++    for condition in conditions {
++        state.apply_status_condition(0, 0, *condition);
++    }
++    game.set_state(state);
++
++    let hp_before = game.get_state_clone().get_remaining_hp(0, 0);
++    end_turn(&mut game, 0);
++    hp_before - game.get_state_clone().get_remaining_hp(0, 0)
++}
++
++/// Poison, Burn and Bad Dreams each go through whatever protection `holder` carries.
++fn assert_non_attack_damage_goes_through(holder: impl Fn() -> PlayedCard, protection: &str) {
++    assert_eq!(
++        damage_over_end_of_turn(holder(), &[StatusCondition::Poisoned]),
++        POISON_DAMAGE,
++        "{protection} only covers attacks, so it must not stop the Poison damage at Checkup"
++    );
++    assert_eq!(
++        damage_over_end_of_turn(holder(), &[StatusCondition::Burned]),
++        BURN_DAMAGE,
++        "{protection} only covers attacks, so it must not stop the Burn damage at Checkup"
++    );
++    assert_eq!(
++        damage_over_end_of_turn(holder(), &[StatusCondition::Asleep]),
++        BAD_DREAMS_DAMAGE,
++        "{protection} only covers attacks, so it must not stop Bad Dreams (an Ability)"
++    );
++}
++
++#[test]
++fn test_heavy_helmet_cuts_an_opponents_attack_but_not_other_damage() {
++    // Snorlax's Retreat Cost is 4, so Heavy Helmet's -20 is switched on.
++    let helmet_snorlax = || {
++        PlayedCard::from_id(CardId::A1211Snorlax)
++            .with_tool(get_card_by_enum(CardId::B1219HeavyHelmet))
++    };
++
++    // An opponent's attack is still cut by 20: Vine Whip does 40, so Snorlax takes 20.
++    let mut game = get_test_game_with_board(
++        vec![helmet_snorlax()],
++        vec![PlayedCard::from_id(CardId::A1001Bulbasaur)
++            .with_energy(vec![EnergyType::Grass, EnergyType::Colorless])],
++    );
++    opponent_attacks(&mut game, CardId::A1001Bulbasaur);
++    assert_eq!(
++        game.get_state_clone().get_remaining_hp(0, 0),
++        150 - 20,
++        "Heavy Helmet should still take 20 off a 40-damage attack from the opponent"
++    );
++
++    // Poison, Burn and Bad Dreams are not damage from attacks, so they are not cut.
++    assert_non_attack_damage_goes_through(helmet_snorlax, "Heavy Helmet");
++
++    // "from attacks from your opponent's Pokémon": damage an attack of yours does to your own
++    // Benched Pokémon is not cut either.
++    let mut game = get_test_game_with_board(
++        vec![
++            PlayedCard::from_id(CardId::A1001Bulbasaur),
++            helmet_snorlax(),
++        ],
++        vec![PlayedCard::from_id(CardId::A1001Bulbasaur)],
++    );
++    game.apply_action(&Action {
++        actor: 0,
++        action: SimpleAction::ApplyDamage {
++            attacking_ref: (0, 0),
++            targets: vec![(30, 0, 1)],
++            is_from_active_attack: true,
++        },
++        is_stack: false,
++    });
++    assert_eq!(
++        game.get_state_clone().get_remaining_hp(0, 1),
++        150 - 30,
++        "Heavy Helmet only cuts attacks from the opponent's Pokémon, not the player's own"
++    );
++}
++
++#[test]
++fn test_harden_prevents_attack_damage_but_not_other_damage() {
++    let hardened_cascoon = || {
++        let mut cascoon = PlayedCard::from_id(CardId::B1006Cascoon);
++        cascoon.add_effect(CardEffect::PreventDamageIfLessOrEqual { threshold: 40 }, 1);
++        cascoon
++    };
++
++    // Attack damage of 40 or less is still prevented: Vine Whip does 40.
++    let mut game = get_test_game_with_board(
++        vec![hardened_cascoon()],
++        vec![PlayedCard::from_id(CardId::A1001Bulbasaur)
++            .with_energy(vec![EnergyType::Grass, EnergyType::Colorless])],
++    );
++    opponent_attacks(&mut game, CardId::A1001Bulbasaur);
++    assert_eq!(
++        game.get_state_clone().get_remaining_hp(0, 0),
++        80,
++        "Harden should still prevent a 40-damage attack"
++    );
++
++    // Poison, Burn and Bad Dreams are all 40 or less, but they are not damage by attacks.
++    assert_non_attack_damage_goes_through(hardened_cascoon, "Harden");
++}
++
++#[test]
++fn test_hide_prevents_attack_damage_but_not_other_damage() {
++    let hidden_shinx = || {
++        let mut shinx = PlayedCard::from_id(CardId::A2058Shinx);
++        shinx.add_effect(CardEffect::PreventAllDamageAndEffects, 1);
++        shinx
++    };
++
++    // All damage from an attack is still prevented.
++    let mut game = get_test_game_with_board(
++        vec![hidden_shinx()],
++        vec![PlayedCard::from_id(CardId::A1001Bulbasaur)
++            .with_energy(vec![EnergyType::Grass, EnergyType::Colorless])],
++    );
++    opponent_attacks(&mut game, CardId::A1001Bulbasaur);
++    assert_eq!(
++        game.get_state_clone().get_remaining_hp(0, 0),
++        60,
++        "Hide should still prevent all damage from an attack"
++    );
++
++    // Poison, Burn and Bad Dreams are not attacks, so Hide does not stop them.
++    assert_non_attack_damage_goes_through(hidden_shinx, "Hide");
++}
++
++#[test]
++fn test_blocking_shell_prevents_basic_attack_damage_but_not_ability_damage() {
++    let shielded_carracosta = || {
++        let mut carracosta = PlayedCard::from_id(CardId::B1067Carracosta);
++        carracosta.add_effect(CardEffect::PreventDamageFromBasic, 1);
++        carracosta
++    };
++
++    // Damage from a Basic Pokémon's attack is still prevented (Mewtwo ex's Psychic Sphere: 50).
++    let mut game = get_test_game_with_board(
++        vec![shielded_carracosta()],
++        vec![PlayedCard::from_id(CardId::A1129MewtwoEx)
++            .with_energy(vec![EnergyType::Psychic, EnergyType::Colorless])],
++    );
++    opponent_attacks(&mut game, CardId::A1129MewtwoEx);
++    assert_eq!(
++        game.get_state_clone().get_remaining_hp(0, 0),
++        150,
++        "Blocking Shell should still prevent all damage from a Basic Pokémon's attack"
++    );
++
++    // Darkrai is a Basic Pokémon, but Bad Dreams is an Ability, not an attack. (Carracosta is a
++    // Stage 2, so its own Poison and Burn were never "from a Basic Pokémon"; Bad Dreams is the
++    // damage this wording can wrongly catch.)
++    assert_eq!(
++        damage_over_end_of_turn(shielded_carracosta(), &[StatusCondition::Asleep]),
++        BAD_DREAMS_DAMAGE,
++        "Blocking Shell only covers attacks, so it must not stop Bad Dreams (an Ability)"
++    );
++}
++
++#[test]
++fn test_steel_apron_and_metal_core_barrier_are_unchanged() {
++    // Metal Core Barrier: "The [M] Pokémon this card is attached to takes -50 damage from
++    // attacks from your opponent's Pokémon."
++    let barrier_registeel = || {
++        PlayedCard::from_id(CardId::A2112Registeel)
++            .with_tool(get_card_by_enum(CardId::B2148MetalCoreBarrier))
++    };
++    let mut game = get_test_game_with_board(
++        vec![barrier_registeel()],
++        vec![PlayedCard::from_id(CardId::A1211Snorlax).with_energy(vec![EnergyType::Colorless; 4])],
++    );
++    opponent_attacks(&mut game, CardId::A1211Snorlax); // Rollout, 70
++    assert_eq!(
++        game.get_state_clone().get_remaining_hp(0, 0),
++        110 - (70 - 50),
++        "Metal Core Barrier should still take 50 off an opponent's attack"
++    );
++    assert_eq!(
++        damage_over_end_of_turn(barrier_registeel(), &[StatusCondition::Poisoned]),
++        POISON_DAMAGE,
++        "Metal Core Barrier should still leave Poison damage alone"
++    );
++
++    // Steel Apron: "The [M] Pokémon this card is attached to takes -10 damage from attacks from
++    // your opponent's Pokémon". It also stops Special Conditions, so the non-attack damage here
++    // is Deceptive Needle's 10 at the end of its owner's turn.
++    let apron_meltan = || {
++        PlayedCard::from_id(CardId::A1181Meltan)
++            .with_tool(get_card_by_enum(CardId::A4153SteelApron))
++    };
++    let mut game = get_test_game_with_board(
++        vec![apron_meltan()],
++        vec![PlayedCard::from_id(CardId::A1001Bulbasaur)
++            .with_energy(vec![EnergyType::Grass, EnergyType::Colorless])],
++    );
++    opponent_attacks(&mut game, CardId::A1001Bulbasaur); // Vine Whip, 40
++    assert_eq!(
++        game.get_state_clone().get_remaining_hp(0, 0),
++        60 - (40 - 10),
++        "Steel Apron should still take 10 off an opponent's attack"
++    );
++
++    let mut game = get_test_game_with_board(
++        vec![apron_meltan()],
++        vec![PlayedCard::from_id(CardId::A2096Murkrow)
++            .with_tool(get_card_by_enum(CardId::B4148DeceptiveNeedle))],
++    );
++    let mut state = game.get_state_clone();
++    state.current_player = 1;
++    game.set_state(state);
++    end_turn(&mut game, 1);
++    assert_eq!(
++        game.get_state_clone().get_remaining_hp(0, 0),
++        60 - 10,
++        "Steel Apron should still leave Deceptive Needle's damage alone"
++    );
++}
+-- 
+2.53.0
+
