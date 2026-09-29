@@ -75,7 +75,7 @@ In the Ladder Log, put them in the game's Note box, for example `2nd | Entei T2 
 
 ## Your first nine ladder games with it (Sept 28 evening; from the written video reviews)
 
-The video reviewer logged them in the Ladder Log as "Entei ex (video-visible core)". Every card seen on your side is in this list, and Rainbow Cave was played in six games. The reviews only see part of a deck, so this shows nothing contradicts brew 08, not all 20 cards. The setup items were taken from each game's REVIEW.md (`Battle Logs/Recording_QA/`), counting your own turns.
+All nine were brew 08 (Dustin, Sept 28). They are filed under "Brew 8" in the Ladder Log; the video reviewer had first logged them as "Entei ex (video-visible core)". The setup items were taken from each game's REVIEW.md (`Battle Logs/Recording_QA/`), counting your own turns.
 
 | Opponent | Went | First Entei ex attack | Opp. points then | Result |
 |---|---|---|---|---|
@@ -94,5 +94,5 @@ The video reviewer logged them in the Ladder Log as "Entei ex (video-visible cor
   - Going first, it attacked by turn 2 in 2 of 3 (sim: 38%) and by turn 3 in 3 of 3 (sim: 92%).
   - The opponent had 0 points every time (sim: 0.06 on average).
 - **What nine games can't do:** measure a rate. 2 of 3 fits anything from about 10% to 99%.
-- The win rate can't be compared with the sim's either: 6-3, with all six wins by concession.
+- **Win rate: 6-3 (67%).** A concession is a win: the opponent gives up because they can't win or are about to lose, which is common on the ladder. The floor's 54.2% is against the sim's eight-list panel, not ladder opponents. Nine games can't separate 67% from 54% (roughly ±30 points at this size), so it's consistent, nothing more yet.
 - **The A1 prediction** (07 and 08 fastest, 10 slowest) needs games with 07 or 10 to be tested.

@@ -54,11 +54,11 @@ Kept by the laptop session ("Project familiarization"), which Dustin put in char
 
 ## What happened
 
-- **Your nine Entei ex ladder games (6-3) look like brew 08, and it set up as fast as the simulator said.** Every card seen on your side is in brew 08.
+- **Your nine brew 08 ladder games went 6-3 (67%), and it set up as fast as the simulator said.** You confirmed they were all brew 08. They're now filed under "Brew 8" in the Ladder Log; the season total is unchanged, 55 games, 26-29.
   - Entei ex attacked on your own turn 2 in seven of the eight games where it attacked, and on turn 3 in the other.
   - The opponent had 0 points every time.
   - Nine games can't measure a rate, but nothing suggests the real deck is slower than predicted. The table is at the end of brew 08's page (`../floor_brews_2026-09-28/brew-08-entei-rainbow-cave.md`).
-  - **Your call:** the reviewer logged them under "Entei ex (video-visible core)". Want them moved to "Brew 8" in the Ladder Log?
+  - The old "Entei ex (video-visible core)" card in the log is now empty. Remove it from the page whenever you like.
   - One upload, `20260929_020916000_iOS.MP4`, is stuck on a OneDrive download. "Always keep on this device" should free it.
 
 - **koh's B2e held-out rows are read, and kt's gate opened at 02:45 UTC** (0497f47, 2c6d220).
