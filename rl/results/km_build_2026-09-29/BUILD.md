@@ -1,7 +1,139 @@
-Decision this informs: none on its own. This is the cloud's one round for km (`../trainer_pricing_2026-09-28/REGISTRATION_DRAFT.md`, registered Sept 29, main 55e5d95; its top block governs): the build, the tests, the counter tool's extension to all 17 named cells with its check, and the identity checks. After this, the order is section 4.0's "Gate and order": Dustin's word on the build, then the laptop. No registered km game was played, M1's and M2's thresholds were not measured, and nothing here is a reading. Build commit **9c11b30**: the official engine's code (233bced's `engine/`) plus km in `engine/src/players/` only.
+Decision this informs: none on its own. This is the cloud's one round for km (`../trainer_pricing_2026-09-28/REGISTRATION_DRAFT.md`, registered Sept 29, main 55e5d95; its top block governs): the build, the tests, the counter tool's extension to all 17 named cells with its check, the identity checks and the one code review. After this, the order is section 4.0's "Gate and order": Dustin's word on the build, then the laptop. No registered km game was played, M1's and M2's thresholds were not measured, and nothing here is a reading. Build commit **9c11b30**: the official engine's code (233bced's `engine/`) plus km in `engine/src/players/` only.
 
 Seeds: identity on the table's deals (72,000,000 + pairing × 10,000 + i), the 17 new cells' (21,108,000,000 + pairing × 10,000 + i), B2e's (21,106,000,000 + …) and the second lists' own; even i puts the first-named deck in seat 0. The counter tool's traced test games use Claude diagnostic seeds 20,000,920,000 to 20,000,920,019 (kp3, Altaria v Lucario). The km unit tests' random games use 20,000,000,400 and up.
 
 # km: the build (Sept 29)
 
-(filled in below as the steps finish)
+## In plain words
+
+- **km3 is kog3 with one change.** When it counts how many turns the opponent needs to win (and how many it needs itself), each hit now includes the damage a Stadium in play adds: Training Area's +10 for a Stage 1 attacker, Arena of Antiquity's +20 for an [F] attacker hitting an ex. Nothing else changed. With neither Stadium in play, km3 plays exactly as kog3.
+- **Where things stand** (`STATUS.txt` has a line per step):
+  1. **Build:** done, commit 9c11b30. It changes three files in `engine/src/players/` and nothing else in `engine/`.
+  2. **Tests:** done. km's 11 new tests pass. The full suite passes: 1,986 passed, 0 failed.
+  3. **Counter tool:** done. It now plays all 17 named cells, including the Rayquaza and Altaria/Greninja lists on their own seed base. It has a first-deal option and writes one row per game with each seat's counts. Its four tests and its identity check (8a) pass. Without the new options it prints exactly what the old tool printed, byte for byte.
+  4. **Identity:** see the table below.
+- **Two things the laptop should know before it builds this commit:**
+  - **The program hashes will not match across machines.** A Rust build embeds its build paths, so the laptop's programs built from 9c11b30 will have different sha256s from the cloud's below. This already happened with kt: the same commit ec7e1a8 gave the cloud's scan e19703b1… and the laptop's 924751ba…, and both played every game identically. What does carry across is the commit, the counter tool's source sha256 (below), and the games. The laptop's own identity games at 9c11b30 equal to these (or to the same reference files) show the two builds are the same.
+  - **This build has the official engine's kt codes, not kt on kog.** km sits on 233bced's `engine/` exactly, so `engine/src/players/` was set back to 233bced's before km was added. The kt presets on kog from ec7e1a8 (kt's and kta's build) are therefore not in 9c11b30. kta keeps playing from ec7e1a8, and nothing here touches it.
+- **One extra game, noted for completeness.** Before the identity runs I ran the scan once as `km3` on one deal (pairing 2, deal 0) to check that it accepts the code. That deal is part of item 7's smoke. Its result was not used.
+
+## What was built (`git diff 233bced 9c11b30 -- engine/`)
+
+- **The flag and preset** (`value_functions.rs`):
+  - `EvalFeatures` gets `stadium_bonus_in_clock: bool` (`:388`). It is false in `OFF`, `KQ`, `KD` and `KPR`, the four presets that list every field.
+  - `const KM = EvalFeatures { stadium_bonus_in_clock: true, ..EvalFeatures::KOG }` (`:478`).
+  - The value function `public_clock_effect_km_value_function` sits beside kog's (`:318`). It is kog's call with `EvalFeatures::KM`.
+- **The hook** (`value_functions.rs`):
+  - `extract_features` gets one more argument, the flag (`:866`), and passes it to the clock. Both of `parametric_value_function_ex6`'s calls pass `features.stadium_bonus_in_clock`.
+  - The damage-aware clock and its scan each get a `_stadium` version that takes the flag (`:1142`, `:1248`). The old functions, `calculate_turns_until_opponent_wins_projected` and `turns_until_opponent_wins_scan_projected`, are now thin wrappers that pass `false`. So no existing call site changed, and every test that calls them positionally runs the same code as before.
+  - In the scan, after the threat is picked (`:1280-1291`): only when the flag is on **and** a Stadium is in play, it reads the threat's attacker's stage and types. Each hit on a victim is then the threat's damage plus `lasting_stadium_damage_bonus(stage, types, victim is ex)`. Otherwise a hit is the threat's damage, as before. The bonus goes into the two victim loops (the Active, then the safest remaining Pokémon); kq's own branch is untouched.
+  - `lasting_stadium_damage_bonus` (`:1366`) returns 0 at once with no Stadium in play. Otherwise it adds the engine's own `stadiums::get_training_area_damage_bonus` (by stage) and the largest `stadiums::get_arena_of_antiquity_damage_bonus` over the attacker's types (against an ex). Its doc comment points at `hooks::modify_damage`, which it mirrors. No comment was added on the `core.rs` side, since that would touch a rules file.
+  - `threat_attacker_stage_and_types` (`:1382`) returns the threat's Pokémon's stage and types. When the threat is an evolution form, it returns the evolved card's. Forms are only scanned for the bot's own threats, so no hidden zone of the opponent is read.
+- **The code** (`players/mod.rs`):
+  - `PlayerCode::KM { max_depth }` (`:200`).
+  - The parser line, before `k<N>` (`:280`).
+  - The `get_player` arm, with its own inner arm to km's value function (`:675`, `:690`). This avoids the or-pattern trap that section 4.1's wiring test guards against.
+- **Floating point.** A hit was `max_damage`, and is now `max_damage + bonus as f64`. With a bonus of 0 the sum is the same number, so km equals kog bit for bit wherever neither Stadium applies. Identity 5 tests this in games.
+
+## Tests (all pass; `suite.log`)
+
+In `value_functions.rs`, `mod km_tests`, and in `players/mod.rs` and `public_pricing_player.rs`. Numbers were taken from `card.py`.
+
+- **The pin** (`the_bonus_is_what_modify_damage_adds_for_an_active_to_active_attack`):
+  - The cases: {no Stadium, Training Area, Arena} × attackers at Stage 0, 1 and 2 in [F], [R] and [P] (Machop line, Charmander line, Ralts line) × a target that is an ex (Mega Rayquaza ex) or not (Dratini). That is 54 cases.
+  - In each, the new function equals `modify_damage` at base 50 with the Stadium minus without it.
+  - Nine cases are nonzero: Training Area's three Stage 1s against both targets, and Arena's three [F] attackers against the ex.
+- **The clock** (`a_stadium_bonus_that_saves_a_hit_shortens_the_clock_by_one_turn`):
+  - Mega Lucario ex with [F][F] (Fighting Pulse 90) against a 190-HP Mega Lucario ex: 3 hits, and 2 with Training Area or with Arena. kog sees 3 either way.
+  - Against 180 HP: 2 hits in every case.
+  - Kirlia ([P], Stage 1, Smack 30) against Mega Rayquaza ex (180): 6 hits, 5 with Training Area, 6 with Arena.
+- **Both sides** (`the_same_stadium_shortens_the_other_sides_clock_by_the_same_rule`): the same boards with the roles swapped give 3 → 2.
+- **Benched threat** (`a_benched_stage_1_threat_gets_the_bonus`): Bonsly in front, and Mega Lucario ex with [F][F] benched. The threat is the benched Mega: 3 hits, 2 with Training Area.
+- **Evolving threat** (`an_evolving_threat_is_priced_as_its_evolved_form_and_the_opponents_forms_are_not_scanned`):
+  - Riolu with Mega Lucario ex in the bot's own hand. The evolved form's candidates read as Stage 1 [F], so they get Training Area +10 and Arena +20. Riolu's own read as Stage 0, so they get Arena only.
+  - Read as the opponent's threat (board only), no form is scanned.
+  - This test is at the unit level (the candidates and the attacker lookup) rather than through the whole clock. On this board the clock picks Riolu's own attack: each evolution step counts as one missing Energy, so the Mega's Fighting Pulse costs one more than Riolu's attack. A whole-clock test would price Riolu (Stage 0), not the form. The form gets its own stage and types whenever the clock does pick it, which is what the unit test checks.
+- **Nothing to read** (`with_nothing_to_read_kms_clock_is_kogs`): with no Stadium, Hiking Trail or Fragrant Forest, km's clock equals kog's on the boards above.
+- **Flag-off identity, bitwise** (`km_is_kog_plus_n2_and_nothing_else`): `KM` with its flag cleared equals `KOG`, and every other preset has the flag off.
+- **Played states** (`on_played_states_km_is_kog_wherever_no_damage_stadium_is_in_play`):
+  - The positions: every position of 12 random-move games (Altaria v Lucario, Lucario v Blaziken, Altaria v Suicune, Lucario v Altaria, 3 each; seeds 20,000,000,400-402), from each player's own view.
+  - km's value equals kog's, bit for bit, in setup and wherever neither Training Area nor Arena is in play.
+  - Where one is in play, km differs from kog at some position, so the test also sees the switch act.
+- **Wiring** (`km3_from_get_player_plays_arena_where_n2_saves_a_hit_and_otherwise_plays_as_kog3`, `public_pricing_player.rs`):
+  - The board: a Machoke that can't attack faces Mega Lucario ex with [F][F]. Arena of Antiquity is in the bot's hand, and no Zone Energy is available.
+  - km3 from `get_player` plays Arena, and kog3 doesn't.
+  - With Hiking Trail in hand instead, the two decide the same.
+- **Parser** (`km_parses_before_k_and_nothing_else_moves`): `km3` and `KM5` parse; `km`, `kmx`, `km3x` and `km1a` are rejected; the other codes parse as before.
+- **Diagnostic** (open question 13; `diagnostic_the_card_term_rewards_x_speed_before_copycat_and_a_play_under_hiking_trail_by_one`):
+  - X Speed then Copycat, against Copycat alone, with no Trail: the card term differs by exactly +1.
+  - With Hiking Trail in play and a hand under 3, playing any card is +1.
+- **Full suite:** 1,986 passed, 0 failed. That is 233bced's 1,975 plus km's 11. No existing test's expected value was edited.
+
+## The counter tool (step 3; identity 8a)
+
+`../tool_turn_effect_census_2026-09-25/tool_census.rs`, extended. It is built as an example in a scratch copy of 9c11b30's `engine/` (`git archive`), so the build's diff stays `players/` only.
+
+| | sha256 |
+|---|---|
+| source (this round) | `b3eb7684cecd5dcbd4e24f3f532d701a145ca4fcfebe9624c4f1835cd2b2eecc` |
+| program, cloud build | `69d98fcb23cb5a5b23724eceb97cc2ff74b049975c4a126e4e2b7e164a2788e4` |
+| old source (816fd9c's, the one main has and the laptop's kt counters used) | `a2510339e5867b171f22832dc1f31072494fe4667b862b36c92c263c39f01759` |
+| old program, cloud build, for test 1 | `8d4f103cc54e415d1667e7f0e1dbb8a9f1f24eb4672b5ae79690d0576e689a32` |
+
+**What it adds** (the file's header has the details):
+- **`--cells km17`:** the 17 named cells.
+  - The 13 table cells (pairings 0-6, 8, 13 and 18-21) are on 72,000,000 with the `decks/research` lists.
+  - `new_decks.tsv` pairings 8, 9, 16 and 17 are on 21,108,000,000 with that file's lists: Rayquaza v Lucario, Rayquaza v Altaria, Altaria/Greninja v Lucario and Altaria/Greninja v Altaria.
+  - Each cell's deck names are checked against the registration's list.
+- **`--pairs`, `--root`, `--seed-base`:** read a pairings file as legality_scan does.
+- **`--pairings`:** keeps the listed cells in their own order. Pairing 8 exists in both the table and `new_decks.tsv`, so `table:8` and `new_decks.tsv:8` pick one; a bare `8` keeps both.
+- **`--first-deal`:** deal i starts at the given number.
+- **`--rows-out`:** one row per game. Each row has the cell (source, pairing, decks a and b with their files), i, seed, first seat, each seat's deck and bot, and the move fingerprint (legality_scan's `moves`). Per seat and card it also has the turns offered, the turns played, and the targets. The cards counted:
+  - the old ones (Tools, Field Blower, Stiffen);
+  - every Stadium, X Speed, Team Rocket's Boss and Copycat;
+  - Field Blower's targets, including the Stadium;
+  - each X Speed play, with whether Hiking Trail was in play and whether the seat retreated later that turn.
+- **`--no-counts`:** rows without any count, and no printed table. Used for identity checks on gating deals.
+- **`--trace-out`:** every decision, with the watched cards offered and the move chosen.
+- **The counting rule is the old one:** a turn is offered when the card is among the owner's legal moves at some decision of that turn, and played when it is played that turn.
+- **Usage for the threshold sample** (the laptop's step; not run here):
+  - `--cells km17 --first-deal 200 --games 100 --bot kog3 --rows-out <file>`, and the same with `km3`.
+  - Each row carries what the registration's deal-by-deal check of a measuring run reads: the move fingerprint (`moves`), both decks (`a`, `b`, `a_file`, `b_file`), `seed`, `first_seat` and `seat_decks`, keyed by `source`, `pairing` and `i`. (`tool_check.py rows` checks deals from 0 only. It was written for identity 8a, not for the sample.)
+
+**Tests and identity 8a** (`check_tool.sh`, `tool_check.py`, `tool_check.txt`; all pass):
+1. **The old output, exactly.**
+   - kp3 on the table's first 20 deals of the 28 pairings (560 games), with the same default arguments for the old and new tools.
+   - stdout, stderr and `--games-out` are byte-identical. stdout sha256 is `a82786bb…`, games-out `057ae92e…`.
+   - kp3's counts on these deals were already public (`kp3_census.txt`, 100 deals).
+2. **The same games through the new options.** With `--seed-base 72000000` and `--rows-out`:
+   - games-out is byte-identical;
+   - the card table is the same;
+   - every row's fingerprint, seed and seats equal games-out's.
+3. **Traced games against a count from the trace.**
+   - kp3 on Altaria v Lucario, on diagnostic seeds 20,000,920,000-019 (the lists that carry Training Area and Arena).
+   - For each game, seat and card, the rows' offered and played turns for Arena of Antiquity and Training Area equal a recount from the move trace: 80 of 80.
+   - Both cards are played in several games.
+   - `tool_check.txt` prints one game per card line by line, to count by hand:
+     - Training Area, i 1 seat 1: offered on turns 2, 4, 6 and 8, played on 8, so (4, 1);
+     - Arena, i 4 seat 1: offered on turns 2, 8, 10 and 12, played on 12, so (4, 1).
+   - The first run of this test failed on the check script's own pattern, not the tool. The trace prints a Trainer as `B2 153 Training Area`, and the script looked for `name: "…"`. It was fixed and rerun with the same program, and both runs are recorded.
+4. **`--first-deal`.** kog3 with `--first-deal 20 --games 20` on the 17 cells gives identity 8a's rows for deals 20-39 exactly (340 rows, no counts).
+- **Identity 8a:**
+  - The tool's kog3 on i < 40 of all 17 cells: **680 of 680** deals equal `table_kog3.jsonl` (13 cells) and `new17_kog3.jsonl` (4 cells). The check covers the move fingerprint, both decks (names, plus files where the reference has them), seed and seats.
+  - Its km3 on pairings 0 and 2, i < 40: **80 of 80** equal item 7's smoke in the same way.
+  - No count was written or read for these games (`--no-counts`).
+
+## Identity (section 4.1; `run_km.sh`, `identity.py`, `identity/identity_check.txt`)
+
+All runs use the cloud's programs built from 9c11b30 (legality_scan sha256 `e8f72631f812871f529dd8374610032acea03d1ddfe0d106ff0cd0725ccefdd5`, deckgym `fcbcdba4968b38f806904e602b3c2999271297390fb5e03a0c88ec1cc89c2e3b`), 4 threads. A game is equal when its moves, choices, openings, winner, points, seed and seats all are (and the deck files, where the reference has them). Every run's scan page must also be free of rule findings. The run times in `STATUS.txt` are not a timing measure: the counter tool's build and checks ran on the same machine at the same time. The timing gate is the laptop's.
+
+(the table is filled in when the runs finish)
+
+## Files
+
+- `STATUS.txt`: one line per step, with the sha256s.
+- `suite.log`: the full suite.
+- `run_km.sh`, `identity.py`, `identity/`: the identity runs (each `9c11b30_*.jsonl` with its scan page `.txt`) and `identity_check.txt`.
+- `check_tool.sh`, `tool_check.py`, `tool_check.txt`: the counter tool's tests and identity 8a.
+- `identity/9c11b30_tool_kog3_km17_40.jsonl`, `identity/9c11b30_tool_km3_p02_40.jsonl`: 8a's rows (no counts).
+- `tool_test3_trace_rows.jsonl`, `tool_test3_trace.tsv`: test 3's diagnostic games.
