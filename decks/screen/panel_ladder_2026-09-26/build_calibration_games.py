@@ -59,6 +59,8 @@ OFF_PANEL_FILES = {
     # (was decks/screen/panel_ladder_2026-09-26/l-charizardy.txt).
     "Mega Charizard Y ex Entei ex": ("charizardy", "rl/results/b2e_card_check_2026-09-26/decks/h-charizardy_entei.txt"),
     "Mega Sharpedo ex Gyarados": ("sharpedo", "decks/screen/panel_ladder_2026-09-26/l-sharpedo.txt"),
+    # Sept 28 night, Dustin's ruling (relayed): met 3 times, 2-1, so it meets the "met twice" rule; the gauntlet's own list.
+    "Dragonair Mega Rayquaza ex": ("rayquaza", "decks/gauntlet_2026-09-26/g-dragonair_mega_rayquaza.txt"),
 }
 
 FIRST_RE = re.compile(r"\bwent first\b", re.I)

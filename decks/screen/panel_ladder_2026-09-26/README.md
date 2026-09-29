@@ -396,7 +396,9 @@ and Weezing). Small shifts in the other eight lists are only the denominator mov
 - `calibration_README.md`: its top note now carries these figures. Its power table (computed for 18 games) still has not
   been re-run; it is now 18 usable games again, but on a different set.
 
-**For Dustin: the 10 unmapped games** (record 8-2; none guessed; full reasons in `ladder_counts.md`):
+**The 10 unmapped games** (record 8-2; none guessed; full reasons in `ladder_counts.md`). Dustin's answer, Sept 28, relayed:
+"I don't know the deck of who I play against. So if it isn't visible, I don't have more information than you." **They stay
+unmapped and are not to be listed for him again.** What each would change if it were ever mapped, for the record:
 1. Butterfree / Caterpie / Klefki, a loss: the panel's Sceptile list has Butterfree and Caterpie but not Klefki, and Mega
    Sceptile ex was not seen. If it is Sceptile, that list gets its first game.
 2. Entei ex / Charmander / Houndour, a win: fits Charizard Y / Entei (would make it 4 games), but Entei ex is also its own
@@ -407,13 +409,45 @@ and Weezing). Small shifts in the other eight lists are only the denominator mov
    (win); Salazzle / Sizzlipede / Chansey (win); Pachirisu ex / Arceus ex / Raichu (win); Arceus ex / Dialga ex / Shaymin (loss):
    no listed deck contains them.
 
-**For Fable and Dustin, not decided here:**
-- **Rayquaza is now the most-met off-panel deck**: 3 games, 2-1 (top-30 #22). The rule that admitted Charizard Y and Sharpedo
-  ("met twice") would admit it; the gauntlet already has a Rayquaza list. The ten lists are unchanged, as asked.
-- **Coverage is 36%.** The weighted readout now describes how a deck does against roughly a third of the ladder, so the
-  ranking hold has one more reason to stand.
-- **Do the 13 games that are not brew 8 count as ladder games?** They are video-derived with unverified owner lists. They move
-  only the opponent counts (none of the 13 is usable for calibration except the brew-09 game, whose opponent did not map).
-- **10 of the season's 26 wins have "concession" in their notes** (wins "by opponent concession", from 0-0 to 2-2), all among
-  the 22 new games. They count as wins in the log, and the calibration cannot reproduce them (the skeptic's 5g point).
+**Decided later the same night** (Dustin, relayed by the Fable session, Sept 28 about 23:15 CDT):
+- **Rayquaza is admitted as the panel's eleventh list.** His words: "Dragonair Mega Rayquaza met three times at 2–1 meets the
+  panel's own 'met twice' rule and is already in the gauntlet; admit it." The list is the gauntlet's existing one,
+  `decks/gauntlet_2026-09-26/g-dragonair_mega_rayquaza.txt` (`lib/deck_check.py`: clean). Its three games: brew-05 (a win,
+  Sept 15), a Hydreigon / Obstagoon video game (a loss, Sept 27), brew-08 (a win, Sept 28).
+- **The concession count is a fact, not an adjustment.** His words: "The concession count (10 of 26 wins) is a fact about the
+  ladder, not a calibration problem — a concession is a win, and the simulator plays the game out to the same result; note it,
+  don't adjust for it." So: 10 of the season's 26 wins have "concession" in their notes (wins "by opponent concession", from
+  0-0 to 2-2), all among the 22 new games; they count as wins and nothing is adjusted. This withdraws the earlier remark
+  here that the calibration cannot reproduce them, and section 7's point (g), a run without concessions, is not wanted.
   (A search for the word also hits one loss, but that is only an opponent's username, "plz_concede".)
+
+**The weights on eleven lists** (floor only zero-game lists, same rules). *Every weight covers **23 of 55 logged games
+(~42%)**;* 22 games are mapped to decks outside the eleven and 10 are unmapped. Counted total 25 (23 games plus one floor game
+each for Sceptile and Weezing). Recomputed from `ladder_mapping.csv` by script.
+
+| List | games | weight | ten-list weight above | change |
+|---|---|---|---|---|
+| t-lucario | 5 | **20.0%** | 22.7% | -2.7 |
+| t-altaria | 2 | **8.0%** | 9.1% | -1.1 |
+| t-sceptile | 0 (floor 1) | **4.0%** | 4.5% | -0.5 |
+| t-vespiquen | 2 | **8.0%** | 9.1% | -1.1 |
+| t-suicune | 1 | **4.0%** | 4.5% | -0.5 |
+| t-weezing | 0 (floor 1) | **4.0%** | 4.5% | -0.5 |
+| t-blaziken | 2 | **8.0%** | 9.1% | -1.1 |
+| t-hydreigon | 3 | **12.0%** | 13.6% | -1.6 |
+| h-charizardy_entei | 3 | **12.0%** | 13.6% | -1.6 |
+| l-sharpedo | 2 | **8.0%** | 9.1% | -1.1 |
+| g-dragonair_mega_rayquaza (new) | 3 | **12.0%** | not on the panel | new |
+
+Every existing list falls because a new list took a share; the only new weight is Rayquaza's 12.0%. Calibration: the set is now
+**23 rows with a listed opponent, 20 usable, record 7-13 (base rate 0.350), 17 pairs, base-rate Brier 0.227**. Three rows were
+added and none changed: brew-05 against the Rayquaza list (a win, usable), brew-08 against it (a win, usable), and the
+Hydreigon / Obstagoon video game against it (a loss, not usable: no deck file). `build_calibration_games.py` maps the archetype
+to that file. Nothing was run. The power table is still the Sept 26 one.
+
+**Still open, not decided here:**
+- **Coverage.** It was 36% on ten lists and is 42% on eleven: the weighted readout describes a bit over two-fifths of the
+  ladder, so the ranking hold has one more reason to stand.
+- **Do the 13 games that are not brew 8 count as ladder games?** They are video-derived with unverified owner lists. They move
+  only the opponent counts; none of the 13 is usable for calibration (the four c- decks have no file, and the brew-09 game's
+  opponent has no list).

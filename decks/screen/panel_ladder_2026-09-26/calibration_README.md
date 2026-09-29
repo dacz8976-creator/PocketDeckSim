@@ -9,6 +9,10 @@
 > **Updated again Sept 28 night (README section 9):** the log grew to 55 games and two rows were added here, so the set is
 > now **18 usable games, 5-13 (base rate 0.278), 15 pairs, base-rate Brier 0.201**. The power table still describes the
 > Sept 26 set, not this one.
+>
+> **And again later that night (README section 9):** Dustin admitted Dragonair Mega Rayquaza ex as the panel's eleventh
+> list, which added three rows. The set is now **23 rows with a listed opponent, 20 usable, 7-13 (base rate 0.350), 17
+> pairs, base-rate Brier 0.227.** Section 7's sensitivity run without concessions is not wanted (Dustin, Sept 28).
 
 **The question.** When Dustin sits down with one of his lists against a deck the simulator has a
 list for, does the simulator's win chance for that exact pair tell us anything about whether he

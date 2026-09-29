@@ -4,7 +4,7 @@ Source: the Ladder Log artifact database (collection `logs`, read Sept 28 night)
 
 Overall record: 26-29 (47.3%).
 
-**Refreshed Sept 28 night** (the session "Opus agents progress", for the Fable session "Recommendations and advice"): 22 games were added since Sept 26, all filed from Battle Logs videos (Sept 21 to Sept 28): 9 with Brew 8, 1 with Brew 9, and 12 in four video-derived "c-" decks whose owner lists are unverified. Ten of the 22 opponents could not be mapped without guessing; they are class `unmapped` below and on the list for Dustin. The rules are the ones applied on Sept 28 (README section 8): same-core variants only (TR Weezing ex with TR Magmar is not a panel variant), a game goes on a panel or ten-list deck only if the opponent text names that deck's defining Pokemon or the archetype. The Sept 26 figures are kept only where a line says so.
+**Refreshed Sept 28 night** (the session "Opus agents progress", for the Fable session "Recommendations and advice"): 22 games were added since Sept 26, all filed from Battle Logs videos (Sept 21 to Sept 28): 9 with Brew 8, 1 with Brew 9, and 12 in four video-derived "c-" decks whose owner lists are unverified. Ten of the 22 opponents could not be mapped without guessing; they are class `unmapped` below and **stay unmapped** (Dustin, Sept 28, relayed: "I don't know the deck of who I play against. So if it isn't visible, I don't have more information than you."). The rules are the ones applied on Sept 28 (README section 8): same-core variants only (TR Weezing ex with TR Magmar is not a panel variant), a game goes on a panel or listed deck only if the opponent text names that deck's defining Pokemon or the archetype. Later the same night Dustin admitted Dragonair Mega Rayquaza ex to the panel as its eleventh list (README section 9). The Sept 26 figures are kept only where a line says so.
 
 ## The short version
 
@@ -12,7 +12,7 @@ Overall record: 26-29 (47.3%).
 - Butterfree / Mega Sceptile ex (4.95% on Limitless) is still not confirmed once (one unmapped game, Butterfree and Caterpie without Mega Sceptile ex, is on the ask list). TR Weezing ex / Hoopa ex never showed up.
 - 29 of 55 games (52.7%) were mapped to a deck the panel does not have: 13 against other top-30 decks, 16 against listed decks outside the top 30; 1 game (1.8%) was a homebrew; **10 games (18.2%) are unmapped**.
 - Dustin is 4-11 against panel decks (family view), 5-8 against other top-30 decks, 9-7 against off-list established decks, 0-1 against the homebrew, 8-2 against the unmapped games.
-- The most-met off-panel deck is now Dragonair Mega Rayquaza ex: 3 games, 2-1. Mega Charizard Y ex / Entei ex is next (3 mapped games, 0-3).
+- The most-met deck outside the original eight is Dragonair Mega Rayquaza ex: 3 games, 2-1 (now the panel's eleventh list). Mega Charizard Y ex / Entei ex is next (3 mapped games, 0-3).
 - 55 games is still a small sample. One game is 1.8 percentage points, so every share below has a wide margin. Treat them as a first read, not a measurement.
 
 ## Every archetype faced
@@ -55,7 +55,7 @@ Overall record: 26-29 (47.3%).
 | 1 | 0-1 | Weezing / Nihilego / Darkrai ex poison pile | homebrew |
 | 1 | 0-1 | Whimsicott ex Ariados | top-30 off-panel |
 
-### Unmapped (not guessed; on the ask-Dustin list)
+### Unmapped (not guessed; Dustin cannot see more than the video shows, so they stay unmapped)
 
 | Record | Deck he played | Opponent text as logged | Why it is not mapped |
 |---|---|---|---|
@@ -100,7 +100,7 @@ Strict = exact archetype only. Family = exact plus variants with the same core. 
 
 ## Panel weights, Sept 26 style (history)
 
-The eight panel decks rescaled to sum to 100% (family view) and the 50/50 blend with Limitless. **These are not the weights the panel will use**; those are on ten lists with a one-game floor for zero-game lists, in README sections 8 and 9.
+The eight panel decks rescaled to sum to 100% (family view) and the 50/50 blend with Limitless. **These are not the weights the panel will use**; those are on eleven lists (ten until the Rayquaza ruling) with a one-game floor for zero-game lists, in README sections 8 and 9.
 
 | Panel deck | Ladder weight (family) | Limitless weight (rescaled) | 50/50 blend |
 |---|---|---|---|
