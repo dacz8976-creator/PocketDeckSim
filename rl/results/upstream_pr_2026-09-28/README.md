@@ -1,7 +1,8 @@
 # Upstream pull request: non-attack damage fix (prepared Sept 28, NOT pushed, NOT opened)
 
 **Status (Sept 28, about 10:20 pm Central):**
-- The commit author is now his noreply address (`e5a0562`).
+- The commit author is now his noreply address. The branch commit is now `2aa705d` (it was `e5a0562` before the
+  Water Shuriken test was added on Sept 28 about 10:45 pm; same author, same fix, one more test).
 - The body's wording note is one sentence, and it has a place for the in-game result.
 - Waiting on:
   - the cloud's clippy result;
@@ -15,8 +16,8 @@ committed; the only files written there are this README and the `.patch`.
 In plain words: four cards (Heavy Helmet, Cascoon's Harden, Shinx's Hide, Carracosta's Blocking Shell)
 say they only work against damage "from attacks", but the upstream engine applies them to every kind of
 damage (Poison, Burn, Darkrai's Bad Dreams, ...). The fix makes them work only against attack damage,
-copying how the engine already treats Steel Apron and Metal Core Barrier. It comes with 5 tests, and the
-whole existing test suite still passes.
+copying how the engine already treats Steel Apron and Metal Core Barrier. It comes with 6 tests (one of them
+checks that Greninja's Water Shuriken is not cut by Heavy Helmet), and the whole existing test suite still passes.
 
 ## Facts
 
@@ -25,12 +26,12 @@ whole existing test suite still passes.
 | Upstream | https://github.com/bcollazo/deckgym-core |
 | Base (upstream `main`, re-checked with `git fetch` and `git ls-remote` at the end; it did not move) | `ca4b67f41eaa514103833b8b6f6829a1f0deaa37` |
 | Branch | `fix/non-attack-damage-protections` |
-| Branch commit | `e5a0562933f6475a20f5e0a12868cdc81746723e` (one commit on top of the base). Author: `dacz8976-creator <307781668+dacz8976-creator@users.noreply.github.com>`, GitHub's private noreply address (Dustin, Sept 28 about 10:15 pm: "yes, that's the right default for a public repository"). This replaces `e4b3f95`, which had the same tree but his Gmail address; he can confirm the address under GitHub Settings > Emails. |
-| Commit message | "Limit Heavy Helmet, Harden, Hide and Blocking Shell to attack damage" (+ short explanation) |
-| Diff | 3 files, +312 -7. `src/hooks/core.rs` +27 -7; `tests/rules.rs` +2; new `tests/rules/attack_damage_only_test.rs` +283 |
+| Branch commit | `2aa705d314d3c95441d0cd3f5a9c0290870e0f28` (one commit on top of the base). Author and committer: `dacz8976-creator <307781668+dacz8976-creator@users.noreply.github.com>`, GitHub's private noreply address (Dustin, Sept 28 about 10:15 pm: "yes, that's the right default for a public repository"). This replaces `e5a0562` (same fix, five tests) and, before that, `e4b3f95` (his Gmail address); he can confirm the address under GitHub Settings > Emails. |
+| Commit message | "Limit Heavy Helmet, Harden, Hide and Blocking Shell to attack damage" (+ short explanation; its last paragraph now also lists the Water Shuriken test) |
+| Diff | 3 files, +351 -7. `src/hooks/core.rs` +27 -7 (unchanged by the sixth test); `tests/rules.rs` +2; new `tests/rules/attack_damage_only_test.rs` +322 |
 | Patch | `0001-Limit-Heavy-Helmet-Harden-Hide-and-Blocking-Shell-to.patch` (next to this file; checked with `git apply --check` against a clean checkout of the base: applies cleanly; Unix line endings, no CRs) |
 | Remotes | only `origin` = upstream (clone default). Nothing added. |
-| Logs | `/home/dacz8976/upstream-pr/logs/` (`main_baseline.log`, `newtests_on_main.log`, `newtests_on_main_soft.log`, `branch_rules.log`, `branch_full.log`) |
+| Logs | `/home/dacz8976/upstream-pr/logs/` (`main_baseline.log`, `newtests_on_main.log`, `newtests_on_main_soft.log`, `branch_rules.log`, `branch_full.log` for the five-test version; `sixth_on_unfixed_main.log` and `branch2_full.log` for the current six-test commit) |
 
 ## The change (all in `src/hooks/core.rs`)
 
@@ -55,15 +56,30 @@ folder). Written in upstream's style: `get_test_game_with_board`, `attack_action
 | Test | Still true (passes on main and branch) | Bug (fails on main, passes on branch) |
 |---|---|---|
 | `test_heavy_helmet_cuts_an_opponents_attack_but_not_other_damage` | Snorlax (Retreat 4) + Heavy Helmet takes 20 from a 40 Vine Whip | Poison tick 0 instead of 10; Burn 0 instead of 20; Bad Dreams 0 instead of 20; own player's attack on own Bench: 10 instead of 30 |
+| `test_heavy_helmet_does_not_cut_greninjas_water_shuriken` (added Sept 28 after Dustin's ruling) | none needed | Greninja's Water Shuriken (Ability, 20 to the opponent's Active) on a Snorlax holding Heavy Helmet: Snorlax takes 0 (150 HP left), should take the full 20 (130 left) |
 | `test_harden_prevents_attack_damage_but_not_other_damage` | Vine Whip (40) still prevented | Poison 0 (should be 10), Burn 0 (20), Bad Dreams 0 (20) |
 | `test_hide_prevents_attack_damage_but_not_other_damage` | Vine Whip still prevented | Poison 0 (10), Burn 0 (20), Bad Dreams 0 (20) |
 | `test_blocking_shell_prevents_basic_attack_damage_but_not_ability_damage` | Mewtwo ex's Psychic Sphere (Basic, 50) still prevented | Bad Dreams 0 (should be 20) |
 | `test_steel_apron_and_metal_core_barrier_are_unchanged` | Metal Core Barrier: Rollout 70 -> 20, Poison still 10. Steel Apron: Vine Whip 40 -> 30, Deceptive Needle still 10 | none (passes on main, on purpose: shows the diff does not widen) |
 
-The "bug" column values were read off unfixed main with a throwaway soft-assert copy of the file (results in
-`newtests_on_main_soft.log`; the file was then restored byte-identical). Every "still true" assertion matched
-on main; every "bug" assertion mismatched exactly as listed. The real tests stop at the first failing
-assertion, so on main they report: Poison for Heavy Helmet, Harden and Hide; Bad Dreams for Blocking Shell.
+The "bug" column values for the Heavy Helmet, Harden, Hide and Blocking Shell tests were read off unfixed main with a throwaway soft-assert copy of
+the file (results in `newtests_on_main_soft.log`; the file was then restored byte-identical). Every "still
+true" assertion matched on main; every "bug" assertion mismatched exactly as listed. The real tests stop at the
+first failing assertion, so on main they report: Poison for Heavy Helmet, Harden and Hide; Bad Dreams for
+Blocking Shell; Snorlax at 150 instead of 130 for Water Shuriken. The sixth test was run against the real
+unfixed `core.rs` (taken from `origin/main` for that one run, then the fix was restored;
+`sixth_on_unfixed_main.log`): 5 failed, 1 passed (Steel Apron / Metal Core Barrier).
+
+**Water Shuriken (Dustin's ruling, Sept 28 about 10:40 pm: "Heavy helmet doesn't protect against poison or
+effects. Just attack. It doesn't protect against greninja's snipe ability either").** Upstream `ca4b67f`
+implements it. `database.json` has the Ability on 6 Greninja printings; `effect_ability_mechanic_map.rs:355`
+maps "Once during your turn, you may do 20 damage to 1 of your opponent's Pokémon." to
+`AbilityMechanic::DamageOneOpponentPokemon { amount: 20 }`; `damage_one_opponent` in
+`apply_abilities_action.rs:484` queues one `ApplyDamage` choice per opponent Pokémon (Active and Bench) with
+`is_from_active_attack: false`; that goes through `handle_damage` into `modify_damage`. So on unfixed main
+Heavy Helmet cut it (20 - 20 = 0). The test drives the real path (`UseAbility`, then picks the offered
+`ApplyDamage` on the Active). Existing upstream coverage only checks Protective Poncho against it
+(`tests/tools/protective_poncho_test.rs`).
 
 Note on Blocking Shell: on main it does not actually stop Carracosta's own Poison or Burn (Carracosta is a
 Stage 2, so its own checkup damage is never "from a Basic Pokémon"). Only Ability damage that comes from a
@@ -79,10 +95,13 @@ added so a failure could not hide later binaries; there were none.)
 | | passed | failed | ignored | exit |
 |---|---|---|---|---|
 | `main` (`ca4b67f`, pristine) | 1170 | 0 | 0 | 0 |
-| new tests on unfixed main (`cargo test --test rules`) | 36 passed in that binary | **4 failed** (Heavy Helmet, Harden, Hide, Blocking Shell tests) | 0 | 101 |
-| branch (`e4b3f95`) | 1175 | 0 | 0 | 0 |
+| the six new tests on unfixed `core.rs` (`cargo test --test rules attack_damage_only`) | 1 passed (Steel Apron / Metal Core Barrier) | **5 failed**: Heavy Helmet, Water Shuriken, Harden, Hide, Blocking Shell | 0 | 101 |
+| branch (`2aa705d`) | 1176 | 0 | 0 | 0 |
 
-The only per-binary difference between main and branch is `tests/rules.rs`: 35 -> 40 passed. The Steel
+(The first run of the five original tests on unfixed main, before the Water Shuriken test existed, was the whole
+rules binary: 36 passed, 4 failed. `newtests_on_main.log`.)
+
+The only per-binary difference between main and branch is `tests/rules.rs`: 35 -> 41 passed. The Steel
 Apron / Metal Core Barrier test passes on both, as intended. CI's later steps (the four `cargo run` example
 simulations, the card generators, the Python/maturin workflow) were not run; nothing in this change touches them.
 
@@ -136,6 +155,9 @@ opponent gate) and Metal Core Barrier (711-716, attack gate) are gated. Differen
    a separate open question. Out of scope here.
 6. I did not re-check the fork commits `e2ca3ba` / `53cba79` (they are not in upstream); the upstream code was
    fixed and tested on its own.
+7. **Greninja's Water Shuriken is implemented upstream and reaches `modify_damage` with
+   `is_from_active_attack = false`**, so Heavy Helmet used to cut it to 0 (details under Tests). Same root
+   cause, no extra code change needed; it only got its own test.
 
 ## Card text (from `python3 lib/card.py`, run in the PocketDeckSim repo)
 
@@ -156,6 +178,8 @@ Metal Core Barrier  [B2 148, B2b 117]  Trainer
   If this card is attached to 1 of your Pokémon, discard it at the end of your opponent's turn.The [M] Pokémon this card is attached to takes -50 damage from attacks from your opponent's Pokémon.
 Darkrai  [B2b 040]  Darkness  Stage 0  HP 100  weak Grass  retreat 2
   Ability Bad Dreams: At the end of each turn, if your opponent's Active Pokémon is Asleep, do 20 damage to that Pokémon.
+Greninja  [A1 089, A3a 093, A4b 114, A4b 115, A4b 356, P-A 019]  Water  Stage 2 (from Frogadier)  HP 120  weak Lightning  retreat 1
+  Ability Water Shuriken: Once during your turn, you may do 20 damage to 1 of your opponent's Pokémon.
 ```
 
 Wording, since the brief expected "from attacks": only **Heavy Helmet** says "from attacks" word for word.
@@ -201,16 +225,18 @@ battle FAQ" as its sources, which is why the tests live there and the PR body ci
 
 ## Decisions (Dustin, Sept 28 about 10:15 pm, verbatim via Fable)
 
-1. **Commit author:** "The noreply address: yes, that's the right default for a public repository." Done: the commit is `e5a0562` with `307781668+dacz8976-creator@users.noreply.github.com`, read from his signed-in GitHub account.
+1. **Commit author:** "The noreply address: yes, that's the right default for a public repository." Done: the commit is now `2aa705d` (was `e5a0562`) with `307781668+dacz8976-creator@users.noreply.github.com`, read from his signed-in GitHub account; the sixth-test amend kept that identity.
 2. **clippy:** "yes, paste it." The cloud is running CI's clippy and fmt on the patch. Its result goes in `CLOUD_CLIPPY.md` and is folded in here when it lands.
 3. **The rule's evidence:** "do it as an in-game test rather than a text lookup, and put the result in the pull request body ... One solo battle: Heavy Helmet on your Active, get it Poisoned, read the Checkup damage. If you can also do it with a Harden or Hide Pokémon, the four cards are covered; if not, Heavy Helmet plus the card texts is enough." The PR body has a place for the result, with the FAQ citation beneath it as secondary.
 4. **The card wording:** all four limit the reduction to attacks, "which is the whole argument". The body says it in one sentence, not as a caveat.
 5. **Pushing:** the laptop's WSL git signs in to GitHub through `gh` (the same sign-in that pushes PocketDeckSim). Nothing is pushed until he reports the in-game test, forks, and says push.
+6. **The Heavy Helmet ruling (Sept 28 about 10:40 pm, verbatim via Fable):** "Heavy helmet doesn't protect against poison or effects. Just attack. It doesn't protect against greninja's snipe ability either, but I'll get you proof." He does the in-game tests himself. This is what the fix already does; the sixth test pins the Greninja case, and the body has a second "Verified in-game" line for it.
 
 ## Before you post (Dustin): the in-game test
 
 - One solo battle. Heavy Helmet on your Active: it needs a Retreat Cost of 3 or more, e.g. Snorlax, Cascoon or Carracosta. Get it Poisoned, then read the damage at Checkup: 10 means Heavy Helmet didn't cut it, which is the rule; 0 would mean it did.
 - If you can, also do it with Cascoon's Harden or Shinx's Hide in effect: Poison should still do 10.
+- Greninja's Water Shuriken on a Pokémon holding Heavy Helmet (Retreat Cost 3 or more): the Ability's 20 should land in full (20, not 0). Your result fills the second "Verified in-game on Sept 29" line in the body.
 - Record it in the Pocket Shot List as you did the Helmet, Rare Candy and Pulse checks. The laptop then fills the line "Verified in-game on Sept 29" in the body.
 
 ## Steps for Dustin (website / GitHub Desktop terms)
@@ -233,7 +259,7 @@ had recent pushes", with a **Compare & pull request** button. Click it. Then:
    `dacz8976-creator/deckgym-core`, compare `fix/non-attack-damage-protections`.
 2. Paste the **title** and the **body** from below (Markdown renders as you type in the "Preview" tab).
 3. Click the **Files changed** tab. You should see exactly 3 files: `src/hooks/core.rs`,
-   `tests/rules.rs`, `tests/rules/attack_damage_only_test.rs`, about +312 -7. If it shows anything else, stop and ask.
+   `tests/rules.rs`, `tests/rules/attack_damage_only_test.rs`, about +351 -7. If it shows anything else, stop and ask.
 4. Back on the first tab, click the green **Create pull request**.
 
 After that GitHub runs upstream's checks (fmt, clippy, tests). For a first-time contributor the maintainer may
@@ -259,7 +285,7 @@ Limit Heavy Helmet, Harden, Hide and Blocking Shell to damage from attacks
 
 Four cards say they only apply to damage **from attacks**. In `modify_damage` (`src/hooks/core.rs`) they currently apply to every kind of damage instead:
 
-- **Heavy Helmet**: the holder takes 20 less from Poison and Burn (a Poison tick becomes 0), from Ability damage such as Darkrai's Bad Dreams, from Tool and delayed-effect damage, and even from attacks of its own player.
+- **Heavy Helmet**: the holder takes 20 less from Poison and Burn (a Poison tick becomes 0), from Ability damage such as Darkrai's Bad Dreams or Greninja's Water Shuriken, from Tool and delayed-effect damage, and even from attacks of its own player.
 - **Cascoon's Harden** and **Shinx's Hide**: while the effect lasts, the Pokémon also ignores Poison, Burn and Bad Dreams damage.
 - **Carracosta's Blocking Shell**: also ignores Ability damage that comes from a Basic Pokémon (Bad Dreams is Darkrai's Ability, and Darkrai is a Basic). Carracosta's own Poison and Burn were never affected, because Carracosta is a Stage 2, not a Basic.
 
@@ -278,9 +304,11 @@ Each text, quoted exactly, limits the card to damage done by attacks.
 
 **Verified in-game on Sept 29:** _(to be filled from the test: a Poisoned Pokémon holding Heavy Helmet took __ damage at Checkup [and a Pokémon under Harden / Hide took __])_.
 
+**Verified in-game on Sept 29:** _(Greninja's Water Shuriken did __ to a Pokémon holding Heavy Helmet)_
+
 The official Detailed battle FAQ (in the game under Tips), "Why didn't Mimikyu ex's Disguise Ability prevent damage?", also says Disguise "does not prevent damage that doesn't come from attacks", and lists as not blocked: damage from Special Conditions (such as Poisoned or Burned), from Pokémon Abilities (such as Greninja's Water Shuriken) and from Pokémon Tools (such as Rocky Helmet). Wording as recorded in the PocketDeckSim rules notes (`rules/_research_notes/detailed_battle_faq.md`, lines 38-40, captured 2026-09-21); the same notes tabulate it in `rules/02_damage_knockouts_points.md`, section 4, lines 78-79: "Poison / Burn at Checkup: No" and "Ability damage: No", both graded official (Mimikyu ex FAQ).
 
-Darkrai's Bad Dreams is an Ability ("Ability Bad Dreams: At the end of each turn, if your opponent's Active Pokémon is Asleep, do 20 damage to that Pokémon."), so it is Ability damage under the same reading. `tests/rules.rs` already builds its tests on this FAQ and the in-app Tips.
+Darkrai's Bad Dreams is an Ability ("Ability Bad Dreams: At the end of each turn, if your opponent's Active Pokémon is Asleep, do 20 damage to that Pokémon."), and so is Greninja's Water Shuriken ("Ability Water Shuriken: Once during your turn, you may do 20 damage to 1 of your opponent's Pokémon."), so both are Ability damage under the same reading. `tests/rules.rs` already builds its tests on this FAQ and the in-app Tips.
 
 ## The change
 
@@ -293,19 +321,20 @@ Nothing else changes (Steel Apron, Metal Core Barrier, Safeguard, Shell Shield a
 
 ## Tests
 
-New `tests/rules/attack_damage_only_test.rs` (registered in `tests/rules.rs`), five tests:
+New `tests/rules/attack_damage_only_test.rs` (registered in `tests/rules.rs`), six tests:
 
 - `test_heavy_helmet_cuts_an_opponents_attack_but_not_other_damage`: still -20 on an opponent's attack (Retreat Cost 4); Poison, Burn, Bad Dreams and the player's own attack on their own Bench are not reduced.
+- `test_heavy_helmet_does_not_cut_greninjas_water_shuriken`: Water Shuriken (an Ability) deals its full 20 to a Heavy Helmet holder with Retreat Cost 4.
 - `test_harden_prevents_attack_damage_but_not_other_damage`: a 40-damage attack is still prevented; Poison, Burn and Bad Dreams are not.
 - `test_hide_prevents_attack_damage_but_not_other_damage`: attack damage is still prevented; Poison, Burn and Bad Dreams are not.
 - `test_blocking_shell_prevents_basic_attack_damage_but_not_ability_damage`: a Basic's attack is still prevented; Bad Dreams (from a Basic) is not.
 - `test_steel_apron_and_metal_core_barrier_are_unchanged`: both still reduce an opponent's attack (-10 and -50) and still leave Poison / Deceptive Needle damage alone. It passes before and after, so the diff does not widen anything.
 
-On `main` the first four fail (Poison, Burn and Bad Dreams deal 0; the own-Bench attack is cut by 20); the fifth passes. With this change all five pass.
+On `main` all but the Steel Apron / Metal Core Barrier test fail (Poison, Burn, Bad Dreams and Water Shuriken deal 0; the own-Bench attack is cut by 20); that one passes. With this change all six pass.
 
 ## Checks
 
-- `cargo test --features "tui test-utils" --all-targets`: `main` 1170 passed, 0 failed; this branch 1175 passed, 0 failed (the five new tests).
+- `cargo test --features "tui test-utils" --all-targets`: `main` 1170 passed, 0 failed; this branch 1176 passed, 0 failed (the six new tests).
 - `cargo fmt -- --check`: clean.
 - `cargo clippy`: _(to be filled from the cloud run)_.
 ````

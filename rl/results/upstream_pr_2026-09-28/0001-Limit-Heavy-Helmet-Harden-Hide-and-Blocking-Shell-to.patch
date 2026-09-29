@@ -1,4 +1,4 @@
-From e5a0562933f6475a20f5e0a12868cdc81746723e Mon Sep 17 00:00:00 2001
+From 2aa705d314d3c95441d0cd3f5a9c0290870e0f28 Mon Sep 17 00:00:00 2001
 From: dacz8976-creator <307781668+dacz8976-creator@users.noreply.github.com>
 Date: Mon, 28 Sep 2026 22:04:34 -0500
 Subject: [PATCH] Limit Heavy Helmet, Harden, Hide and Blocking Shell to attack
@@ -19,13 +19,14 @@ Gate them on is_from_active_attack, and Heavy Helmet also on the attacker
 being the opponent, the same way Steel Apron and Metal Core Barrier are
 already gated.
 
-Adds tests/rules/attack_damage_only_test.rs: one test per card, plus one
+Adds tests/rules/attack_damage_only_test.rs: one test per card, one
+showing Heavy Helmet does not cut Greninja's Water Shuriken, and one
 showing Steel Apron and Metal Core Barrier are unchanged.
 ---
  src/hooks/core.rs                      |  34 ++-
  tests/rules.rs                         |   2 +
- tests/rules/attack_damage_only_test.rs | 283 +++++++++++++++++++++++++
- 3 files changed, 312 insertions(+), 7 deletions(-)
+ tests/rules/attack_damage_only_test.rs | 322 +++++++++++++++++++++++++
+ 3 files changed, 351 insertions(+), 7 deletions(-)
  create mode 100644 tests/rules/attack_damage_only_test.rs
 
 diff --git a/src/hooks/core.rs b/src/hooks/core.rs
@@ -123,10 +124,10 @@ index 4937246..bbd308a 100644
  #[path = "rules/damage_order_test.rs"]
 diff --git a/tests/rules/attack_damage_only_test.rs b/tests/rules/attack_damage_only_test.rs
 new file mode 100644
-index 0000000..673afbe
+index 0000000..e64d1e8
 --- /dev/null
 +++ b/tests/rules/attack_damage_only_test.rs
-@@ -0,0 +1,283 @@
+@@ -0,0 +1,322 @@
 +//! Effects whose card text limits them to damage "from attacks" leave every other kind of damage
 +//! alone.
 +//!
@@ -147,8 +148,9 @@ index 0000000..673afbe
 +//! Pokémon") already behave this way; the last test pins that down so this file also shows they
 +//! are unchanged.
 +//!
-+//! The non-attack damage used below is Poison (10) and Burn (20) at Pokémon Checkup, and Darkrai's
-+//! Bad Dreams (20, an Ability) at the end of the turn.
++//! The non-attack damage used below is Poison (10) and Burn (20) at Pokémon Checkup, Darkrai's
++//! Bad Dreams (20, an Ability) at the end of the turn, and Greninja's Water Shuriken ("Once during
++//! your turn, you may do 20 damage to 1 of your opponent's Pokémon", also an Ability).
 +
 +use deckgym::{
 +    actions::{Action, SimpleAction},
@@ -268,6 +270,44 @@ index 0000000..673afbe
 +        game.get_state_clone().get_remaining_hp(0, 1),
 +        150 - 30,
 +        "Heavy Helmet only cuts attacks from the opponent's Pokémon, not the player's own"
++    );
++}
++
++#[test]
++fn test_heavy_helmet_does_not_cut_greninjas_water_shuriken() {
++    // Water Shuriken is an Ability, not an attack, so the full 20 lands on a Heavy Helmet holder
++    // (Snorlax's Retreat Cost is 4).
++    let mut game = get_test_game_with_board(
++        vec![
++            PlayedCard::from_id(CardId::A1001Bulbasaur),
++            PlayedCard::from_id(CardId::A1089Greninja),
++        ],
++        vec![PlayedCard::from_id(CardId::A1211Snorlax)
++            .with_tool(get_card_by_enum(CardId::B1219HeavyHelmet))],
++    );
++    game.apply_action(&Action {
++        actor: 0,
++        action: SimpleAction::UseAbility { in_play_idx: 1 },
++        is_stack: false,
++    });
++
++    // The Ability now asks which of the opponent's Pokémon to hit; choose Snorlax.
++    let (_actor, choices) = game.get_state_clone().generate_possible_actions();
++    let hit_snorlax = choices
++        .into_iter()
++        .find(|choice| {
++            matches!(
++                &choice.action,
++                SimpleAction::ApplyDamage { targets, .. } if targets.as_slice() == [(20, 1, 0)]
++            )
++        })
++        .expect("Water Shuriken should offer 20 damage to the opponent's Active");
++    game.apply_action(&hit_snorlax);
++
++    assert_eq!(
++        game.get_state_clone().get_remaining_hp(1, 0),
++        150 - 20,
++        "Water Shuriken is an Ability, so Heavy Helmet must not take anything off its 20 damage"
 +    );
 +}
 +
