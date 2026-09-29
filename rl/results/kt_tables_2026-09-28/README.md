@@ -34,6 +34,12 @@
 - The cloud's identity and table runs (`../kt_kog_2026-09-28/`) are a cross-check only. The same commit and seeds should give the same games, and a difference is a finding to stop on. The cloud writes no footprint reading, route, verdict or further amendment.
 - Its table files may be input to the laptop's footprint, but only after identity confirms its build hash and its games equal the laptop's on the overlap. This README says so if they are used.
 
+**When the gate opens** (Fable's overnight ruling, Sept 28 about 00:05 UTC):
+- `GATE_koh_b2e_read` is written once koh's B2e rows (`b2e_koh3`) are read and committed.
+- It doesn't wait for koh's B2e mixed rows. The gate exists because kt's base would change if koh were adopted. koh already fails the ordinary rule on the 45 cells (the ΔMSE interval crosses zero), and mixed rows can only add vetoes, never turn a fail into an adoption.
+- koh's B2e mixed rows still run, to complete its coverage record.
+- If the B2e read shows anything that would reopen koh, the gate stays shut and Fable is told first.
+
 **Who does what:**
 - **The cloud:** the kt build's code on 233bced's `engine/` (kt's presets redefined on kog), the parser, preset and values tests (item 7), the full suite and `BUILD.md`.
 - **The laptop:** builds the same commit, then runs everything that plays games, each from the kt build's own programs with their sha256 recorded:

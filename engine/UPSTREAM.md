@@ -2,7 +2,12 @@
 
 Upstream: `https://github.com/bcollazo/deckgym-core.git` (`upstream`). Fetched main: `fda48391a4747c7d9085e6a95520b731cee0b546` (2026-08-30). Divergence / merge-base: `8b40f55d889b89634467cca7da153114789ffdf4` (2026-07-30). The accumulated Aug22-and-later fork tree, including B4a, is preserved as `12938ca` on `engine/unified-2026-09-09`.
 
-The upstream-based single commit `79ba7ebd65d822afb8dac7acfb54ffa02ddb7cf4` on `upstream/status-restrictions` is prepared against the fetched upstream main for a PR; it uses upstream State::apply_status_condition for the fixture (the fork builder helper is unavailable upstream). Its equivalent in the qualified canonical engine is the standalone commit `1c4a05835e937ddbd13dacf60493077b73a4fea1` (**fix: disallow attacks and retreats while asleep or paralyzed**, 74 added lines across five files) contains the restriction and a plain test for upstream submission. Historical replay fixtures remain in the separate integration commit. No PR has been published. Other status lifecycle/forecast changes remain separate.
+**The Sleep/Paralysis fix is already upstream; no PR was made** (checked 2026-09-28 against upstream main `ca4b67f41eaa514103833b8b6f6829a1f0deaa37`, 2026-09-27).
+- The fork's fix is `1c4a05835e937ddbd13dacf60493077b73a4fea1` (**fix: disallow attacks and retreats while asleep or paralyzed**). An upstream-based copy, `79ba7eb`, sits on `upstream/status-restrictions` in the old clone `Pocket Deck Lab/deckgym-fork-s193`, on the Aug 30 upstream main.
+- Upstream fixed the same thing independently: commit `e38b77d` ("Fix Special Conditions: Asleep/Paralyzed lock-out, Paralysis duration, exclusivity, Active-only"), merged in PR #379 on 2026-09-27. Its tests are in `tests/rules/special_conditions_test.rs`.
+- So Dustin's "yes, and first" (Sept 28) found nothing left to send, and `79ba7eb` is obsolete. The one thing `79ba7eb` has that upstream lacks is a panic guard in `apply_action`, not worth proposing.
+- **At the next upstream merge:** `1c4a058` and `e38b77d` edit the same lines in `src/hooks/retreat.rs` and `src/move_generation/attacks.rs`, so expect a conflict there. Upstream times Paralysis with a `PlayedCard::paralyzed_on_turn` stamp, and the fork has its own `paralysis_lifecycle_test.rs`. Compare the two Paralysis models then.
+- Other status lifecycle and forecast changes remain separate.
 
 Known merge-conflict areas (semantic changes, beyond the preserved CRLF churn):
 - `src/game.rs`: fork decision randomness, forecasts, state adoption and terminal/turn handling.
