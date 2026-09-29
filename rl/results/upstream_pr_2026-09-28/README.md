@@ -1,4 +1,10 @@
-# Upstream pull request: non-attack damage fix (prepared Sept 28, NOT pushed, NOT opened)
+# Upstream pull request: non-attack damage fix (OPENED Sept 29: https://github.com/bcollazo/deckgym-core/pull/383)
+
+**Opened Sept 29 by the laptop session at Dustin's word** ("You can do the pull request unless I need to"):
+- The branch `fix/non-attack-damage-protections` (2aa705d) is on his fork, dacz8976-creator/deckgym-core. He had already forked it.
+- The PR is from his account, with the title and body below plus two lines: the base it was tested on, and the Claude Code note.
+- Upstream main had moved to 9044ff6 (B4b and 09e964f), which doesn't touch the PR's files. GitHub reports it MERGEABLE.
+- Upstream's checks (build-and-test, build 3.12) were queued at opening. A first-time contributor's runs may wait for the maintainer's approval.
 
 **Status (Sept 28, about 10:20 pm Central):**
 - The commit author is now his noreply address. The branch commit is now `2aa705d` (it was `e5a0562` before the

@@ -421,7 +421,8 @@ sides with k3 still available; the 0.7.2 wheel and its run identities are untouc
            - "the rules reference for Poison, Burn and Bad Dreams damage not being attack damage cited from the project's `rules/` sources rather than asserted";
            - "one test per card plus one that shows Steel Apron and Metal Core Barrier unchanged, so the diff demonstrably doesn't widen."
          - "If this one is accepted, the thirteen small missing repairs become a sequence, one at a time, each with the same shape."
-         - The list is in `results/overnight_2026-09-28/README.md`. Nothing is pushed until he clicks Fork.
+         - The list is in `results/overnight_2026-09-28/README.md`.
+         - **Opened Sept 29 as https://github.com/bcollazo/deckgym-core/pull/383**, from his account at his word. It carries three in-game proofs (Heavy Helmet v Poison, Heavy Helmet v Water Shuriken, Harden v Water Shuriken), six tests, and fmt and clippy clean (`results/upstream_pr_2026-09-28/`).
      - **B4b and the size rule** (Dustin, Sept 28 about 11:15 pm Central, verbatim via Fable): "On B4b going live tomorrow: if RUN5's line is right that it's reprint-only, the meta doesn't shift and the post-Sept-24 confirmation window stays open, so nothing about the size rule changes — but 'reprint-only' should be confirmed against the card list when it lands, because if it isn't, the window closes tomorrow at an eighth of the data and that becomes a decision."
        - **Release time** (Dustin, Sept 29, from the app): B4b releases at 8 pm Central on Sept 29.
        - **Checked Sept 29, before the release: B4b is reprint-only** (`results/b4b_prep_2026-09-26/B4B_REPRINT_CHECK_2026-09-29.md`). Upstream's card data landed early, at main 9044ff6 "B4b", 1:57 am EDT.
