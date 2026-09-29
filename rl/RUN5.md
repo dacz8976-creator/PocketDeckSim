@@ -392,6 +392,14 @@ sides with k3 still available; the 0.7.2 wheel and its run identities are untouc
      - **A5, the merge trial:** "Trial it whenever the cloud has room, in isolation, off the official engine — a separate worktree, the full test suite and the identity replays against the current references, with the new cards' text checked against `card.py` as they come in. Don't pin it until two things are true: the current candidate queue (koh, kt) has its verdicts, and the mid-October read has been taken on the B4a meta it was registered against. The Garchomp release is the natural pin date."
      - **The Sleep/Paralysis pull request upstream: "yes, and first."** "If upstream merges the fix before you merge upstream's B4b, the new set arrives with the fix already in it and there's nothing to re-patch." The seven repairs from this week may follow, "but one clean pull request first". The laptop prepares it; Dustin opens it from his own account.
        - **Checked the same night: nothing to send.** Upstream merged the same fix on Sept 27 (commit `e38b77d`, PR #379, with its own tests), so the new set will arrive with it already in, which is what the ruling wanted (`../engine/UPSTREAM.md`). Which fork repair upstream still lacks is being checked for his choice of a first PR.
+       - **Dustin's pick, about 9 pm Central Sept 28** (relayed verbatim by Fable): "Send the non-attack damage fix."
+         - His reasons: "it's a rules error with the card text as the argument, so the maintainer doesn't have to trust our simulator to accept it"; "it copies a gate upstream already uses two lines away for Steel Apron and Metal Core Barrier, so it reads as consistency rather than opinion"; and "it touches a card you play", Heavy Helmet in deck 01.
+         - His conditions before the branch goes up:
+           - "Every one of the four cards' text — Heavy Helmet, Harden, Hide, Blocking Shell — quoted from `card.py` in the pull request body, with the phrase 'from attacks' shown";
+           - "the rules reference for Poison, Burn and Bad Dreams damage not being attack damage cited from the project's `rules/` sources rather than asserted";
+           - "one test per card plus one that shows Steel Apron and Metal Core Barrier unchanged, so the diff demonstrably doesn't widen."
+         - "If this one is accepted, the thirteen small missing repairs become a sequence, one at a time, each with the same shape."
+         - The list is in `results/overnight_2026-09-28/README.md`. Nothing is pushed until he clicks Fork.
      - **The B4b release-note defaults** (decided under his delegation by the Fable session and the fourth session, Sept 28):
        - B1: keep CRLF in `engine/` for this refresh.
        - B2: the version string is recorded, not changed.
