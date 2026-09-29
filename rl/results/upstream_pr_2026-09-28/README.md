@@ -1,5 +1,13 @@
 # Upstream pull request: non-attack damage fix (prepared Sept 28, NOT pushed, NOT opened)
 
+**Status (Sept 28, about 10:20 pm Central):**
+- The commit author is now his noreply address (`e5a0562`).
+- The body's wording note is one sentence, and it has a place for the in-game result.
+- Waiting on:
+  - the cloud's clippy result;
+  - Dustin's in-game test;
+  - his Fork click and "push".
+
 Nothing here has been pushed to GitHub, no remote was added, and nothing was opened. The branch exists
 only in the WSL clone `/home/dacz8976/upstream-pr/deckgym-core`. Nothing in the PocketDeckSim repo was
 committed; the only files written there are this README and the `.patch`.
@@ -17,7 +25,7 @@ whole existing test suite still passes.
 | Upstream | https://github.com/bcollazo/deckgym-core |
 | Base (upstream `main`, re-checked with `git fetch` and `git ls-remote` at the end; it did not move) | `ca4b67f41eaa514103833b8b6f6829a1f0deaa37` |
 | Branch | `fix/non-attack-damage-protections` |
-| Branch commit | `e4b3f950de45a9d31dd842452b9c0d5ad43eb120` (one commit on top of the base) |
+| Branch commit | `e5a0562933f6475a20f5e0a12868cdc81746723e` (one commit on top of the base). Author: `dacz8976-creator <307781668+dacz8976-creator@users.noreply.github.com>`, GitHub's private noreply address (Dustin, Sept 28 about 10:15 pm: "yes, that's the right default for a public repository"). This replaces `e4b3f95`, which had the same tree but his Gmail address; he can confirm the address under GitHub Settings > Emails. |
 | Commit message | "Limit Heavy Helmet, Harden, Hide and Blocking Shell to attack damage" (+ short explanation) |
 | Diff | 3 files, +312 -7. `src/hooks/core.rs` +27 -7; `tests/rules.rs` +2; new `tests/rules/attack_damage_only_test.rs` +283 |
 | Patch | `0001-Limit-Heavy-Helmet-Harden-Hide-and-Blocking-Shell-to.patch` (next to this file; checked with `git apply --check` against a clean checkout of the base: applies cleanly; Unix line endings, no CRs) |
@@ -191,24 +199,19 @@ these bugs). Those are the fork's notes, not independent sources.
 Upstream's `tests/rules.rs` header already treats "the in-app Tips panel and the app-linked official Detailed
 battle FAQ" as its sources, which is why the tests live there and the PR body cites the same FAQ.
 
-## Things needing a human decision
+## Decisions (Dustin, Sept 28 about 10:15 pm, verbatim via Fable)
 
-1. **Commit author.** No git identity was configured, so I committed with `dacz8976-creator
-   <dacz8976@gmail.com>` (his GitHub name and the email on this account) using `-c` flags only; nothing was
-   saved to git config. That email would become public in upstream's history. If Dustin prefers GitHub's private
-   "noreply" address, the laptop session can change it before pushing (GitHub > Settings > Emails shows it):
-   `git commit --amend --reset-author` after setting `user.email`, then re-run `git format-patch`.
-2. **clippy** has not been run (see above). CI will run it. Dustin's call whether to install it first.
-3. **FAQ wording** is second-hand (see "Before you post").
-4. **Pushing from WSL needs GitHub sign-in** (a token or SSH key); I did not check whether that is set up
-   on the laptop. If it is a problem, the fallback is slower: make the three file changes in the fork's web
-   editor by hand (the patch shows exactly what).
+1. **Commit author:** "The noreply address: yes, that's the right default for a public repository." Done: the commit is `e5a0562` with `307781668+dacz8976-creator@users.noreply.github.com`, read from his signed-in GitHub account.
+2. **clippy:** "yes, paste it." The cloud is running CI's clippy and fmt on the patch. Its result goes in `CLOUD_CLIPPY.md` and is folded in here when it lands.
+3. **The rule's evidence:** "do it as an in-game test rather than a text lookup, and put the result in the pull request body ... One solo battle: Heavy Helmet on your Active, get it Poisoned, read the Checkup damage. If you can also do it with a Harden or Hide Pokémon, the four cards are covered; if not, Heavy Helmet plus the card texts is enough." The PR body has a place for the result, with the FAQ citation beneath it as secondary.
+4. **The card wording:** all four limit the reduction to attacks, "which is the whole argument". The body says it in one sentence, not as a caveat.
+5. **Pushing:** the laptop's WSL git signs in to GitHub through `gh` (the same sign-in that pushes PocketDeckSim). Nothing is pushed until he reports the in-game test, forks, and says push.
 
-## Before you post (Dustin)
+## Before you post (Dustin): the in-game test
 
-- In the game, open Menu > Tips > Detailed Battle FAQ and find "Why didn't Mimikyu ex's Disguise Ability
-  prevent damage?". Check it says roughly what the PR body quotes. If the wording differs, edit that one
-  paragraph in the body before posting. Nothing else in the body depends on it (the card texts are exact).
+- One solo battle. Heavy Helmet on your Active: it needs a Retreat Cost of 3 or more, e.g. Snorlax, Cascoon or Carracosta. Get it Poisoned, then read the damage at Checkup: 10 means Heavy Helmet didn't cut it, which is the rule; 0 would mean it did.
+- If you can, also do it with Cascoon's Harden or Shinx's Hide in effect: Poison should still do 10.
+- Record it in the Pocket Shot List as you did the Helmet, Rare Candy and Pulse checks. The laptop then fills the line "Verified in-game on Sept 29" in the body.
 
 ## Steps for Dustin (website / GitHub Desktop terms)
 
@@ -269,11 +272,13 @@ Exactly as stored in `database.json`, with the wording that limits each card to 
 - **Hide** (Shinx, A2 058 / A2 163): "Flip a coin. If heads, during your opponent's next turn, prevent all damage **from—and effects of—attacks** done to this Pokémon."
 - **Blocking Shell** (Carracosta, B1 067): "Prevent all damage done to this Pokémon **by attacks from Basic Pokémon** during your opponent's next turn."
 
-Only Heavy Helmet says "from attacks" word for word; Harden and Blocking Shell say "by attacks", and Hide says "from—and effects of—attacks". All four limit the card to attacks.
+Each text, quoted exactly, limits the card to damage done by attacks.
 
 ## Why Poison, Burn and Ability damage are not damage from attacks
 
-The official Detailed battle FAQ (in the game under Tips), "Why didn't Mimikyu ex's Disguise Ability prevent damage?", says Disguise "does not prevent damage that doesn't come from attacks", and lists as not blocked: damage from Special Conditions (such as Poisoned or Burned), from Pokémon Abilities (such as Greninja's Water Shuriken) and from Pokémon Tools (such as Rocky Helmet). Wording as recorded in the PocketDeckSim rules notes (`rules/_research_notes/detailed_battle_faq.md`, lines 38-40, captured 2026-09-21); the same notes tabulate it in `rules/02_damage_knockouts_points.md`, section 4, lines 78-79: "Poison / Burn at Checkup: No" and "Ability damage: No", both graded official (Mimikyu ex FAQ).
+**Verified in-game on Sept 29:** _(to be filled from the test: a Poisoned Pokémon holding Heavy Helmet took __ damage at Checkup [and a Pokémon under Harden / Hide took __])_.
+
+The official Detailed battle FAQ (in the game under Tips), "Why didn't Mimikyu ex's Disguise Ability prevent damage?", also says Disguise "does not prevent damage that doesn't come from attacks", and lists as not blocked: damage from Special Conditions (such as Poisoned or Burned), from Pokémon Abilities (such as Greninja's Water Shuriken) and from Pokémon Tools (such as Rocky Helmet). Wording as recorded in the PocketDeckSim rules notes (`rules/_research_notes/detailed_battle_faq.md`, lines 38-40, captured 2026-09-21); the same notes tabulate it in `rules/02_damage_knockouts_points.md`, section 4, lines 78-79: "Poison / Burn at Checkup: No" and "Ability damage: No", both graded official (Mimikyu ex FAQ).
 
 Darkrai's Bad Dreams is an Ability ("Ability Bad Dreams: At the end of each turn, if your opponent's Active Pokémon is Asleep, do 20 damage to that Pokémon."), so it is Ability damage under the same reading. `tests/rules.rs` already builds its tests on this FAQ and the in-app Tips.
 
@@ -302,5 +307,5 @@ On `main` the first four fail (Poison, Burn and Bad Dreams deal 0; the own-Bench
 
 - `cargo test --features "tui test-utils" --all-targets`: `main` 1170 passed, 0 failed; this branch 1175 passed, 0 failed (the five new tests).
 - `cargo fmt -- --check`: clean.
-- I have not run `cargo clippy` locally; CI will.
+- `cargo clippy`: _(to be filled from the cloud run)_.
 ````

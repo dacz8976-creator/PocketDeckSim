@@ -7,11 +7,15 @@ Kept by the laptop session ("Project familiarization"), which Dustin put in char
 - **Your first upstream pull request is ready, not pushed** (your 9 pm pick): `../upstream_pr_2026-09-28/README.md` has the title, the body to paste, and the steps.
   - **What it is:** one commit on upstream's current main, 27 lines changed in `hooks/core.rs`, plus five tests. Upstream's own suite gives 1170 passing on main and 1175 on the branch, with no failures. The four card tests fail on unfixed main, and the Steel Apron / Metal Core Barrier test passes on both. Formatting is clean.
   - **Your conditions are met:** all four texts are quoted exactly, with the limiting words in bold. Only Heavy Helmet says "from attacks" word for word: Harden and Blocking Shell say "by attacks", and Hide says "from—and effects of—attacks". The body says so plainly. The rules citation is `rules/02_damage_knockouts_points.md` lines 78-79, from the official Mimikyu ex FAQ.
-  - **Three things for you:**
-    1. **Which email goes public on the commit.** It's set to dacz8976@gmail.com, which would show in upstream's history. GitHub's private "noreply" address (Settings > Emails) hides it. Say which, and the laptop updates it before pushing.
-    2. **Check one FAQ quote in the game:** Menu > Tips > Detailed Battle FAQ > "Why didn't Mimikyu ex's Disguise Ability prevent damage?". Our copy of its wording is second-hand.
-    3. **Then:** click Fork on github.com/bcollazo/deckgym-core and tell the laptop "OK to push". Then click "Compare & pull request" on your fork. The README walks through it.
-  - **Not run:** clippy, upstream's lint check. The laptop doesn't have it. The cloud can run it (the paste block is with Fable), or upstream's automatic checks will run it after you open the PR.
+  - **Done from your 10:15 pm answers:**
+    - The commit now uses your noreply address (`e5a0562`, same code).
+    - The wording note is one sentence: each text limits the card to attacks.
+    - The body has a line waiting for your in-game result, with the FAQ beneath it as secondary.
+    - The cloud is running clippy.
+  - **Left for you:**
+    1. The in-game test: Heavy Helmet on a Retreat-3 Active, Poisoned, and read the Checkup damage (10 is the rule). Harden or Hide too if you can. Log it in the Pocket Shot List.
+    2. Click Fork on github.com/bcollazo/deckgym-core and tell the laptop "push".
+    3. Click "Compare & pull request" on your fork. The README walks through it.
 - **The Sleep/Paralysis pull request isn't needed.** Upstream merged the same fix on Sept 27 (PR #379, by another contributor, with tests). So the new set will arrive with it already in, as you wanted, and there's nothing to send (`engine/UPSTREAM.md`).
   - **A different first pull request: you picked the non-attack damage fix at 9 pm** (above). The list you chose from stays here for the later ones. It came from a read-only check (a Sonnet agent reading upstream main ca4b67f of Sept 27; nothing compiled or run).
   - **Suggested first PR: "damage that isn't from an attack no longer gets cut by 'from attacks' protections."**
@@ -53,7 +57,14 @@ Kept by the laptop session ("Project familiarization"), which Dustin put in char
 - **koh's B2e held-out rows are read, and kt's gate opened at 02:45 UTC** (0497f47, 2c6d220).
   - The laptop's 48,000 games equal the cloud's copy game for game.
   - No held-out deck moves more than 2 points further from its real figure, so there's no held-out veto. koh stays not adopted, and kog stays the pilot.
-  - **For your brew 07:** under koh, both Hoopa / Absol lists do worse: the held-out one 56.9 → 45.5, and your own file 33.2 → 26.4. koh's mixed rows, running now, will show whether that's koh playing Hoopa worse. kog, the pilot the screen uses, isn't affected.
+  - **Hoopa / Absol drops under koh in both lists** (your 10:15 pm framing): the held-out one 56.9 → 45.5, your own file 33.2 → 26.4.
+    - The held-out move is toward Limitless, so it isn't an accuracy veto.
+    - Brew 07's main attacker is Hoopa ex. If koh's mixed rows (running now) show koh playing Hoopa's own side worse, that's a coverage veto under last night's rule.
+    - **Did the screen check brew 07 under kog3? Yes.** The fourth session's floor run on Sept 28 (`../floor_brews_2026-09-28/`) used kog3 on both sides and the official engine:
+      - it clears the floor, 1,177 of 1,920 (61.3%);
+      - worst matchups: Sceptile 37% and Vespiquen 50%;
+      - one mild flag: Mega Sableye ex's Cursed Jewel is priced at its printed damage, but it's used on 90.6% of chances, so it isn't a role problem.
+    - koh's result doesn't touch that number, because kog is the screen's pilot. No extra run is needed before you play 07.
 
 - **Your evening rulings are recorded as your words** (3e30896, 5c0cf04):
   - coverage rows count for the mixed-row veto;
