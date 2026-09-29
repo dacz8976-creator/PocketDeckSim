@@ -76,3 +76,32 @@
 2026-09-29T11:55:18Z ec7e1a8_ab_d07_kog3 done in 176 s (1920 games); deckgym 407976366fa2104e
 2026-09-29T11:58:41Z ec7e1a8_ab_d05_kog3 done in 203 s (1920 games); deckgym 407976366fa2104e
 2026-09-29T12:01:34Z ec7e1a8_ab_d11_kog3 done in 173 s (1920 games); deckgym 407976366fa2104e
+2026-09-29T12:06:19Z ec7e1a8_ab_d01_kog3 done in 285 s (1920 games); deckgym 407976366fa2104e
+2026-09-29T12:11:33Z ec7e1a8_ab_d03_kog3 done in 314 s (1920 games); deckgym 407976366fa2104e
+2026-09-29T12:14:47Z ec7e1a8_ab_d07_kt3 done in 194 s (1920 games); deckgym 407976366fa2104e
+2026-09-29T12:17:58Z ec7e1a8_ab_d07_kta3 done in 191 s (1920 games); deckgym 407976366fa2104e
+2026-09-29T12:21:23Z ec7e1a8_ab_d05_kt3 done in 205 s (1920 games); deckgym 407976366fa2104e
+2026-09-29T12:24:45Z ec7e1a8_ab_d05_kta3 done in 201 s (1920 games); deckgym 407976366fa2104e
+2026-09-29T12:27:30Z ec7e1a8_ab_d11_kt3 done in 164 s (1920 games); deckgym 407976366fa2104e
+2026-09-29T12:30:14Z ec7e1a8_ab_d11_kta3 done in 164 s (1920 games); deckgym 407976366fa2104e
+2026-09-29T12:34:52Z ec7e1a8_ab_d01_kt3 done in 278 s (1920 games); deckgym 407976366fa2104e
+2026-09-29T12:39:25Z ec7e1a8_ab_d01_kta3 done in 273 s (1920 games); deckgym 407976366fa2104e
+2026-09-29T12:44:41Z ec7e1a8_ab_d03_kt3 done in 316 s (1920 games); deckgym 407976366fa2104e
+2026-09-29T12:49:52Z ec7e1a8_ab_d03_kta3 done in 311 s (1920 games); deckgym 407976366fa2104e
+2026-09-29T12:49:53Z A/B table written (ec7e1a8_ab_table.txt)
+2026-09-29 12:49:53 KT AB DONE ec7e1a8
+2026-09-29T13:49:37Z run_kt_counters ec7e1a8: codes kog3 kt3 kta3 ktb3 ktc3, first 100 deals of the 28 table pairings, 12 threads; kt build legality_scan sha256 924751ba0926993eaee87ecc8fb8301ffd0b7eee8490bfb3369427794328f938, deckgym sha256 407976366fa2104ee1f2663c94fe31b1c503466defe9d6154b7e60659cb0991c
+2026-09-29T13:49:38Z building tool_census in /home/dacz8976/engine-kt-ec7e1a8/engine (source a2510339e5867b17, from ../tool_turn_effect_census_2026-09-25/tool_census.rs)
+2026-09-29T13:49:48Z tool_census sha256 d9799c96015f74b952889a7f7d9820bbc12d5d97e4d267ad8acc2b63cdcc720b (built in the kt build's tree at ec7e1a8)
+2026-09-29T13:52:35Z ec7e1a8_census_kog3 done in 167 s (2800 games); tool_census d9799c96015f74b9
+2026-09-29T13:55:26Z ec7e1a8_scan_kog3_100 done in 171 s (2800 games); legality_scan 924751ba0926993e
+2026-09-29T13:58:18Z ec7e1a8_census_kt3 done in 172 s (2800 games); tool_census d9799c96015f74b9
+2026-09-29T14:01:17Z ec7e1a8_scan_kt3_100 done in 179 s (2800 games); legality_scan 924751ba0926993e
+2026-09-29T14:04:46Z ec7e1a8_census_kta3 done in 209 s (2800 games); tool_census d9799c96015f74b9
+2026-09-29T14:07:41Z ec7e1a8_scan_kta3_100 done in 175 s (2800 games); legality_scan 924751ba0926993e
+2026-09-29T14:10:30Z ec7e1a8_census_ktb3 done in 169 s (2800 games); tool_census d9799c96015f74b9
+2026-09-29T14:13:20Z ec7e1a8_scan_ktb3_100 done in 170 s (2800 games); legality_scan 924751ba0926993e
+2026-09-29T14:16:14Z ec7e1a8_census_ktc3 done in 174 s (2800 games); tool_census d9799c96015f74b9
+2026-09-29T14:19:17Z ec7e1a8_scan_ktc3_100 done in 183 s (2800 games); legality_scan 924751ba0926993e
+2026-09-29T14:19:18Z fingerprints: kog3: tool_census: 2800 of 2800 seeds and move fingerprints equal the table file's (ec7e1a8_id_kog3_500.jsonl); 2800 games in the counter file kog3: legality_scan: 2800 of 2800 seeds and move fingerprints equal the table file's (ec7e1a8_id_kog3_500.jsonl); 2800 games in the counter file kt3: tool_census: 2800 of 2800 seeds and move fingerprints equal the table file's (ec7e1a8_kt3_table.jsonl); 2800 games in the counter file kt3: legality_scan: 2800 of 2800 seeds and move fingerprints equal the table file's (ec7e1a8_kt3_table.jsonl); 2800 games in the counter file kta3: tool_census: 2800 of 2800 seeds and move fingerprints equal the table file's (ec7e1a8_kta3_table.jsonl); 2800 games in the counter file kta3: legality_scan: 2800 of 2800 seeds and move fingerprints equal the table file's (ec7e1a8_kta3_table.jsonl); 2800 games in the counter file ktb3: tool_census: 2800 of 2800 seeds and move fingerprints equal the table file's (ec7e1a8_ktb3_table.jsonl); 2800 games in the counter file ktb3: legality_scan: 2800 of 2800 seeds and move fingerprints equal the table file's (ec7e1a8_ktb3_table.jsonl); 2800 games in the counter file ktc3: tool_census: 2800 of 2800 seeds and move fingerprints equal the table file's (ec7e1a8_ktc3_table.jsonl); 2800 games in the counter file ktc3: legality_scan: 2800 of 2800 seeds and move fingerprints equal the table file's (ec7e1a8_ktc3_table.jsonl); 2800 games in the counter file 
+2026-09-29 14:19:18 KT COUNTERS DONE ec7e1a8
