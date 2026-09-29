@@ -6,6 +6,8 @@ proposal or a preparation. No screen, floor or calibration game was played beyon
 noted below; `decks/screen/run_screen.py`, `floor.py`, `opponents/` and `START_HERE.md` are untouched;
 the ranking hold from Dustin's Sept 25 decision still stands (section 4).
 
+**Standing job (Dustin, Sept 29):** the panel agent keeps `brew_scorecard.md` (floor figure, predicted setup speed and ladder record with the three-item note, one row per brew) current whenever the Ladder Log changes; rebuild it with `build_brew_scorecard.py`; the steps are at the top of the scorecard.
+
 ## 1. What Dustin actually faces on the ladder
 
 Source: the Ladder Log artifact (collection `logs`, 10 deck documents, read Sept 26), 33 games from

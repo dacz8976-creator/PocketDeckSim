@@ -24,7 +24,10 @@
   - (b) τ margin +0.21, 90% interval +0.06 to +0.31, where the rule asks for −1.0 or above. Real error goes 14.0 → 13.8. No veto counts;
   - (c) no meta deck's own side is worse beyond noise. The lowest is Blaziken, −0.15 ± 0.29;
   - (d) the census Rayquaza list's own side gains +1.00 ± 0.39 over its eight rows (52 games better, 12 worse). The Vespiquen row, +3.8, supplies about half of it; without that row the gain is about +0.6;
-  - coverage: no harm. But kta3 barely touches most coverage rows. It differs from kog3 in 28 of 48,000 B2e games and in almost none on the second lists. The Scizor row (980 of 4,000 games differ) is the one informative coverage test, and it shows no harm (+0.11 ± 0.61).
+  - coverage: no harm. But kta3 barely touches most coverage rows:
+    - its B2e mixed rows differ from kog3 in 28 of 48,000 games, and its both-sides rows in 325;
+    - it differs in almost no games on the second lists;
+    - the Scizor row is the one informative coverage test (980 of 4,000 mixed games differ; 1,225 both sides), and it shows no harm (+0.11 ± 0.61).
 - **The outcome the registration fixed before any game** (line 404): "kt3 fails: nothing adopted. The diagnostic codes are read for attribution only, and the next candidate is registered afresh."
   - Amendment 2 doesn't change the outcomes. Its only overrides (lines 400 and 403) don't cover this case.
   - The "nothing adopted" is final, because both codes were read on every coverage row (line 152).
