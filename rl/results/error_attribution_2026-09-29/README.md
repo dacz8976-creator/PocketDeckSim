@@ -1,5 +1,7 @@
 # Where kog3's 14.0 comes from, cell by cell (Sept 29, read-only)
 
+**Wording corrected Sept 29, by the session "Opus agents progress" at the laptop session's request, to match the "Check (Sept 29)" section at the end.** Items 1 to 6 of the check's "Where the checker disagrees" are applied to the headline and the conclusions, together with its in-sample point, the "5 or 6" cell count, the bootstrap convention and its four unmarked assumptions (now A9 to A12). No number was changed and nothing was re-run; figures added here are quoted from the check and say so. The check's smaller points (its item 10) are left as they were.
+
 **Why:** Dustin's item 4, done once before the next candidate is registered. Which cells carry the 14.0, and for each, how much is the chance floor, how much is list variation, and how much is left for the pilot. The decision it feeds: is the pilot's reachable share small enough that the next candidates should be list handling and data, and should the 5.5 target be restated as one the pilot alone can't reach.
 
 **What this is:** an attribution built from existing results. No game, build or engine was run. Nothing is registered and nothing here gates a candidate. No post-freeze match file was opened. No kt file beyond the tables already read on Sept 29 was used.
@@ -8,24 +10,25 @@
 
 ## In plain words
 
-1. **The 14.0 is 73% of the squared miss.** The 45 cells' squared misses add to 12,112 (raw RMS 16.4). Chance takes 3,229 (27%). The other 8,882 is what τ̂ = 14.05 measures. Its own 90% interval is 11.2 to 16.8.
+1. **The 14.0 is 73% of the squared miss.** The 45 cells' squared misses add to 12,112 (raw RMS 16.4). Chance takes 3,229 (27%). The other 8,882 is what τ̂ = 14.05 measures. Its own 90% interval is 11.2 to 16.8 (a bias-corrected bootstrap: each draw has the chance floor taken out again; the plain percentile of score.py's τ̂ gives 14.1 to 18.8 and the delta method 11.4 to 16.3, per the check).
    - **Which cells carry it:** the top 15 by squared miss hold 96% of the excess (table below). By group: Rayquaza's 9 cells 43%, Altaria/Greninja's 8 cells 33%, the 28 panel cells 24%.
 2. **Split of those 8,882 (the excess), by what the evidence supports:**
 
    | Piece | pts² | % of excess | Who can move it |
    |---|---:|---:|---|
    | A tested pilot fix reaches it: Rayquaza's 9 cells (koh3) | 2,980 | 34% (22% to 53%) | a pilot |
-   | The target itself moves: Limitless's two halves disagree, almost all Altaria/Greninja | 1,543 | 17% | data |
-   | List variation, middle assumption (range 503 to 2,014) | 1,007 | 11% (6% to 23%) | list handling |
-   | Not reached by any tested pilot, not explained by the two lines above | 3,353 | 38% | unknown |
+   | The target itself moves: Limitless's two halves disagree, almost all Altaria/Greninja | 1,543 | 17% (5% to 34%, the check's resample of the cells) | data |
+   | List variation, middle assumption (range 503 to 2,014) | 1,007 | 11% (6% to 23%, an assumption range, not an interval) | list handling |
+   | Not credited to any pilot in this accounting (outside Rayquaza no whole tested pilot has a net gain), not explained by the two lines above. This is not "out of reach": the best tested pilot cell by cell would move 4,861, 55% of the excess (section 4) | 3,353 | 38% | unknown |
 
-   - The last row holds Sceptile v Vespiquen 749, Altaria/Greninja's remainder 1,371, the other 27 panel cells 810 and Rayquaza's leftover 423.
-3. **The pilot's reachable share is not small, but it sits in one place.** Rayquaza's nine cells carry 3,806 of the 8,882 (43%). Three pilot builds bring that group's τ̂ down to 8.5 (koh3, from kog3's 20.6), 8.7 (kpf3, from kp3's 25.3) and 8.7 (kpr3, from kp3's 25.3). kpf3 and koh3 share the R′ projection; kpr3 uses a different one. koh3 was not adopted (its accuracy interval crossed zero, and vetoes counted). Across the cells it made worse it lost 2,727.
-4. **Outside Rayquaza's cells, no tested pilot has a net gain.** koh3 on the other 36 cells helped +1,264 and hurt −2,384 (net −1,120).
-5. **A/G's target is unreliable.** Its 8 non-Rayquaza cells score 56.3% (269 matches) in the development half and 41.5% (219) in the other half. Against the other half, kog3's A/G error is 9.0, not 19.1.
-6. **List variation cannot explain the big misses.** The largest single list change in the variation check is 25.2 points and the typical one is 4 to 7. The top-15 misses are 17.5 to 38.5.
-7. **Per cell, this is a description.** Only 6 of 45 cells have an excess whose own 90% interval stays above zero. They hold 63% of the excess. The thin cells (fewer than 25 real matches, 11 cells) are 52% chance by squared miss.
-8. **The 5.5 target sits at or below what a perfect pilot would read** on these cells and single lists: about 7.5 (6.7 to 8.9), or 3.3 to 6.7 if the halves-disagree term is set aside. The pilot alone can be asked for about 11 (Rayquaza's gain alone: 11.3, 90% 9.4 to 12.8).
+   - The last row holds Sceptile v Vespiquen 749, Altaria/Greninja's remainder 1,371, the other 27 panel cells 810 and Rayquaza's leftover 423. Only 1,472 (17% of the excess) is left where no tested pilot moved the cell at all, and its own 90% interval is −1,385 to 3,645 (the check).
+   - **The halves term rests on three cells.** 89% of it is Altaria/Greninja, and that estimate rests on three cells (v Vespiquen, v Sceptile, v Suicune): without them it is 0, and without v Vespiquen alone it is 108 per cell (171 with all eight) (the check). So "data first" is a judgement the numbers allow but do not force; on these numbers the 17% does not outrank the pilot's 34% (22% to 53%).
+3. **The pilot's reachable share is not small, but it sits in one place.** Rayquaza's nine cells carry 3,806 of the 8,882 (43%). Three pilot builds bring that group's τ̂ down to 8.5 (koh3, from kog3's 20.6), 8.7 (kpf3, from kp3's 25.3) and 8.7 (kpr3, from kp3's 25.3). kpf3 and koh3 share the R′ projection; kpr3 uses a different one. koh3 was not adopted (its accuracy interval crossed zero, and vetoes counted). Across the cells it made worse it lost 2,727. **koh3's Rayquaza gain is in-sample** (A11): the 17 new cells were used to diagnose Rayquaza and design kpf (RUN5, "Development data, stated with each reading"), so the other half of those cells is not a clean holdout; their holdout is the post-freeze events. Three designs reaching 8.5 to 8.7 on the same 500 deals and the same Limitless target answer sim-side luck only (the check).
+4. **Outside Rayquaza's cells, no whole tested pilot has a net gain.** koh3 on the other 36 cells helped +1,264 and hurt −2,384 (net −1,120). On the 28 panel cells koh3's net is −1,216 (90% −2,341 to −198, the check), a cost with zero outside its interval; it moves the panel cells by an rms of 6.5 points (12 of 28 by more than 5; largest 14.0) and kpf3 and kpr3 by 6.1.
+5. **A/G's target moves between the two halves, on three cells' evidence.** Its 8 non-Rayquaza cells score 56.3% (269 matches) in the development half and 41.5% (219) in the other half. Against the other half, kog3's A/G error is 9.0, not 19.1. Without the three cells named above the halves term is 0.
+6. **On the tested decks a list change is far smaller than the big misses; for the rest it is an assumption.** The largest single list change in the variation check is 25.2 points and the typical one is 4 to 7, against top-15 misses of 17.5 to 38.5. But 7 of the top 9 cells have no varied deck, and Rayquaza and Altaria/Greninja, the two decks with the most list spread, were never varied. The tested changes are one to three cards; second lists alone move cells more (ν 60.2, rms 7.8, against 13.8 for single-card swaps; the check). The 6% to 23% is an assumption range, not a bound, and the scaling behind it has no support in the data (correlation +0.02 across the four measured decks).
+7. **Per cell, this is a description.** Only 5 or 6 of 45 cells have an excess whose own 90% interval stays above zero (the edge: Suicune v Vespiquen's lower end is +6 here and −18 in the check's resample). They hold 60% to 63% of the excess. The thin cells (fewer than 25 real matches, 11 cells) are 52% chance by squared miss.
+8. **At central values, 5.5 sits at or below what a perfect pilot would read** on these cells and single lists: about 7.5, or 3.3 to 6.7 if the halves-disagree term is set aside. That is not a bound. 6.7 to 8.9 is an assumption range on the list term (¼ to 1), not an interval; with the halves interval added the perfect-pilot floor is 5.6 to 9.5 at the mid list and 4.5 to 8.9 at the low list, so 5.5 is inside the range at the low list (the check). Rayquaza's gain alone reads 11.3 (90% 9.4 to 12.8): that is what the one tested lever gives, not a level the pieces derive for the pilot alone.
 
 ## The split, by group (pts²)
 
@@ -39,7 +42,7 @@ Every cell's raw squared miss (kog3 − Limitless, development half) is chance +
 | **All 45** | 45 | **12,112** | **3,229** | **1,543** | **1,007** | **6,332** | **+4,763** | **−2,727** |
 
 - "Remainder" is pilot, engine and anything else. The pieces cannot separate them (see "What the pieces do not support").
-- koh3 helped/hurt is the change in each cell's excess against kog3, summed over cells it improved and cells it worsened. Net +2,037 (23% of the excess; 90% −64 to +4,169, so zero is inside).
+- koh3 helped/hurt is the change in each cell's excess against kog3, summed over cells it improved and cells it worsened. Net +2,037 (23% of the excess; 90% −64 to +4,169, so zero is inside, on the edge: the check's resample gives +96 to +4,031).
 - The Rayquaza tier above is koh3's gain in Rayquaza's cells, capped at each cell's remainder: 2,980 (uncapped 3,157; group bootstrap 90% 1,971 to 4,696).
 
 ## Top 15 cells by squared miss
@@ -66,7 +69,7 @@ Together they hold 82% of the raw sum (9,915 of 12,112) and 96% of the excess. A
 | **Top 15** | | | | | **9,915** | **1,366** | **781** | **322 (161–643)** | **7,446** | | | | |
 
 - Rows 1 to 5 hold 5,604 of the table's 9,915. Rows 3, 6, 7 and 9 (Altaria/Greninja) are four of the top nine.
-- The first five rows are the cells whose own 90% excess intervals stay above zero, plus Suicune v Vespiquen (lower end +6). Every other row's interval includes zero.
+- The first five rows are the cells whose own 90% excess intervals stay above zero, plus Suicune v Vespiquen (lower end +6 here; the check's resample puts it at −18, so 5 or 6 cells). Every other row's interval includes zero.
 - Where the check varied a deck in the cell (Hydreigon v Lucario, Vespiquen v Weezing, Suicune v Vespiquen), the measured list swing is 4.2, 4.4 and 6.0 points. The best tested list moves those misses by +4.6, +1.6 and +1.0. The other 12 cells' list part uses the deck-level swing (measured for Lucario, Suicune and Weezing, assumed for the rest), not a swing measured in that cell.
 - Rayquaza v Lucario: the other half is 54.7, koh3 is at 53.6 and kpf3 at 61.4. On this cell the Limitless figure itself is soft (73.3 in the development half, 54.7 in the other).
 - Sceptile v Vespiquen is the largest cell that nothing has moved and whose target holds still: development 35.7 (n 56), other half 32.5 (n 83). Deeper search (k4 to k6) moved it 66.1 → 56.8 on the Sept 23 table; option B moved it −4.2.
@@ -155,27 +158,27 @@ Together they hold 82% of the raw sum (9,915 of 12,112) and 96% of the excess. A
 ## What the pieces do not support
 
 - **Pilot v engine v anything else inside the remainder.** The pieces give what tested pilots did, not what any pilot could do. The remainder (6,332) is labelled "pilot, engine and anything else" on purpose. Assumption A8.
-- **A per-cell split.** 39 of 45 cells have an excess whose own 90% interval includes zero (9 of the top 15). Only the group totals and the six cells named above are supported. The 11 thin cells are 52% chance by squared miss.
-- **List variation for the decks the check did not vary.** Their list part is an assumption (A3, A4), not a measurement. For the top 15 cells the middle list part is 10 to 36 pts² (at most 71 at the high value) against remainders of 91 to 1,399, so the conclusion does not hinge on it. For the total it is 6% to 23% of the excess.
+- **A per-cell split.** 39 or 40 of 45 cells have an excess whose own 90% interval includes zero (9 of the top 15). Only the group totals and the five or six cells named above are supported. The 11 thin cells are 52% chance by squared miss.
+- **List variation for the decks the check did not vary.** Their list part is an assumption (A3, A4), not a measurement. For the top 15 cells the middle list part is 10 to 36 pts² (at most 71 at the high value) against remainders of 91 to 1,399, so the top-15 reading does not hinge on it. For the total it is 6% to 23% of the excess, an assumption range, not a bound (A3's scaling has no support in the data: correlation +0.02 with the measured swings, per the check).
 - **Why A/G's halves disagree.** The pieces exclude skill and a few busy players. They do not say what it is (lists, time, partner cards). A/G's gap is an open cause in RUN5, and this does not look into it either.
 - **Cross-engine tables.** kpf3, kpr3, koh3 and kt3 were played on different engine builds. kog3's tables are byte-identical between the Sept 28 composition run and kt's build (same sha256). k3 and kp3 replay identically at a823b6d, and the Sept 27 engine repairs moved the 28-cell τ̂ by 0.1 to 0.3. Nothing else was re-checked.
-- **The size of the reach.** koh3's net gain has a 90% interval that includes zero (−64 to +4,169). The Rayquaza-only figure is firmer: the group bootstrap gives 1,971 to 4,696 (the group's own excess is 3,806), and its lower end is well above zero.
+- **The size of the reach.** koh3's net gain has a 90% interval that includes zero (−64 to +4,169; on the edge, +96 to +4,031 in the check). The Rayquaza-only figure is firmer: the group bootstrap gives 1,971 to 4,696 (the group's own excess is 3,806), and its lower end is well above zero. It is in-sample (A11), so it shows what the mechanism can do on cells used to design it, not a confirmed gain.
 
 ## Decision the attribution favours
 
 For Dustin and the parent session to decide. Nothing below is registered.
 
-1. **Data first, where the target moves.** A/G's misses are not shown to be a pilot problem: 1,371 of its 2,920 is the halves disagreeing, and against the other half kog3's A/G error is 9.0. Thin cells (11 cells under 25 matches) cannot be read either way. This favours the eval-power decision to fold the spent holdout into the development data (`eval_power_2026-09-29/README.md`, decision 1), and the post-freeze read. By assumption A2, folding the other half in halves the halves-disagree term.
-2. **One pilot candidate, and it is not a new scoring term.** The attribution's one large reachable piece is Rayquaza's mechanism (34%, 2,980). The mechanism is built (kpf, kpr, koh). koh was not adopted: its accuracy interval crossed zero, and vetoes counted on Altaria, on Weezing's second list, and on B2e's Hoopa/Absol and Whimsicott. Its cost on the 45 cells is −2,727 in the cells it made worse. The nine cells it hurt by more than 100 sum to −2,256: Hydreigon v Suicune −504, Rayquaza v Weezing −343, Hydreigon v Vespiquen −312, Blaziken v Weezing −241, Altaria v Blaziken −204, Hydreigon v Weezing −184, Altaria v Lucario −178, Altaria v Hydreigon −176 and Blaziken v Sceptile −114. All three Rayquaza designs show the same panel cost (kpf3 and kpr3 panel 137 and 135 per cell, koh3 120, against 76 to 77 for their bases). The pilot-side candidate this favours is Rayquaza's gain without that spill onto the panel. Rayquaza's group alone gets τ̂ from 14.05 to 11.3. Whether such a candidate can be built is a design question this attribution does not answer.
-3. **List handling is third.** It is 6% to 23% of the excess and cannot explain the top-15 misses. Its use is the target's floor (below), and mixing lists by field share rather than swapping in one second list, since a second list moved all three panel decks' averages away from Limitless.
+1. **Data first, where the target moves: a judgement the numbers allow but do not force.** A/G's misses are not shown to be a pilot problem: 1,371 of its 2,920 is the halves disagreeing (an estimate that rests on three cells), and against the other half kog3's A/G error is 9.0. On these numbers the halves term (17%, 5% to 34%) does not outrank the pilot's 34% (22% to 53%). Thin cells (11 cells under 25 matches) cannot be read either way. This favours the eval-power decision to fold the spent holdout into the development data (`eval_power_2026-09-29/README.md`, decision 1), and the post-freeze read. By assumption A2, folding the other half in halves the halves-disagree term.
+2. **One pilot candidate, and it is not a new scoring term.** The attribution's one large reachable piece is Rayquaza's mechanism (34%, 2,980). The mechanism is built (kpf, kpr, koh). koh was not adopted: its accuracy interval crossed zero, and vetoes counted on Altaria, on Weezing's second list, and on B2e's Hoopa/Absol and Whimsicott. Its cost on the 45 cells is −2,727 in the cells it made worse. The nine cells it hurt by more than 100 sum to −2,256: Hydreigon v Suicune −504, Rayquaza v Weezing −343, Hydreigon v Vespiquen −312, Blaziken v Weezing −241, Altaria v Blaziken −204, Hydreigon v Weezing −184, Altaria v Lucario −178, Altaria v Hydreigon −176 and Blaziken v Sceptile −114. All three Rayquaza designs show the same panel cost (kpf3 and kpr3 panel 137 and 135 per cell, koh3 120, against 76 to 77 for their bases). koh3's panel net is −1,216 (90% −2,341 to −198, the check), a real cost with zero outside its interval, and its Rayquaza gain is in-sample (A11). The pilot-side candidate this favours is Rayquaza's gain without that spill onto the panel. Rayquaza's group alone gets τ̂ from 14.05 to 11.3. Whether such a candidate can be built is a design question this attribution does not answer.
+3. **List handling is third, on an assumption.** It is 6% to 23% of the excess (an assumption range, not a bound). On the tested decks a list change moves a cell 4 to 7 points against 17 to 38 point misses, but 7 of the top 9 cells had no varied deck, so this ranking rests on the assumption. Its use is the target's floor (below), and mixing lists by field share rather than swapping in one second list, since a second list moved all three panel decks' averages away from Limitless.
 4. **Sceptile v Vespiquen is a diagnosis, not a candidate.** 749 (8% of the excess) and a stable target (35.7 v 32.5). No tested pilot moved it more than 0.2 points toward Limitless. The deepest search moved it about 10 of a 33-point miss on the older table (66.1 → 56.5). Nothing in the pieces says whether the cause is the pilot or the engine.
-5. **Not favoured:** another scoring term aimed at the panel or at A/G. Tested pilots move those cells by ±4 with no net gain (koh3 net −1,120 outside Rayquaza), and deeper search moves cells both ways.
+5. **Not favoured:** another scoring term aimed at the panel or at A/G. Tested pilots move the panel cells by an rms of 6.5 (koh3; 12 of 28 cells by more than 5) and 6.1 (kpf3, kpr3), and A/G's by 3.7 to 3.9 (so "about ±4" fits A/G only), with no net gain outside Rayquaza (koh3 net −1,120 over the other 36 cells): koh3's panel net is −1,216 (90% −2,341 to −198), a cost. Deeper search moves cells both ways.
 
-The test in the request was "if the pilot's reachable share of the remaining error is small". It is 34% (22% to 53%), all in nine cells, so it is not small. Outside those nine cells the pieces point to data and lists, then a diagnosis, and not to another scoring term.
+The test in the request was "if the pilot's reachable share of the remaining error is small". It is 34% (22% to 53%), all in nine cells and in-sample (A11), so it is not small. Outside those nine cells the pieces point to data and lists, then a diagnosis, and not to another scoring term; that ordering ("data first, then one pilot candidate") is a judgement the numbers allow but do not force.
 
 ## The 5.5 target, restated (proposal)
 
-τ̂ is score.py's real error on the 45 development cells. Today kog3 is 14.05 (90% 11.2 to 16.8).
+τ̂ is score.py's real error on the 45 development cells. Today kog3 is 14.05 (90% 11.2 to 16.8, a bias-corrected bootstrap; see the first section).
 
 | Level | τ̂ | What it means |
 |---|---:|---|
@@ -184,15 +187,15 @@ The test in the request was "if the pilot's reachable share of the remaining err
 | Rayquaza's gain alone (kog3 in every other cell) | 11.3 (9.4 to 12.8) | the pilot lever shown; no cost elsewhere assumed |
 | Best tested pilot in every cell | 9.45 | upper bound; includes selection luck |
 | Best tested whole pilot per group | 10.84 | upper bound; ignores cost across groups |
-| A perfect pilot and engine on today's cells and single lists | 7.5 (6.7 to 8.9) | halves-disagree 5.9, lists 3.3 / 4.7 / 6.7 (low / mid / high) |
+| A perfect pilot and engine on today's cells and single lists | 7.5 (6.7 to 8.9 is an assumption range on the list term, not an interval; with the halves interval added: 5.6 to 9.5 at the mid list, 4.5 to 8.9 at the low list, the check) | halves-disagree 5.9, lists 3.3 / 4.7 / 6.7 (low / mid / high) |
 | The same, if the halves-disagree term is set aside | 3.3 to 6.7 | lists only |
 | A perfect pilot after the other half is folded in | 6.3 | halves-disagree term halved, mid list |
 | The same, and list handling cuts the list term to the low value | 5.3 | data and lists together |
 
-- **Proposed wording.** 5.5 is the bar for the whole system (pilot, lists and data), not for the pilot alone. On today's data and single lists a perfect pilot would read about 7.5, so the pilot cannot be shown to miss 5.5 or to reach it.
-- **The pilot alone** is asked for about 11 on the 45 cells as scored now. Below that, τ̂ is measuring the cells' own noise and the list, and no verdict should rest on it.
+- **Proposed wording.** 5.5 is the bar for the whole system (pilot, lists and data), not for the pilot alone. On today's data and single lists a perfect pilot would read about 7.5 at central values (not as a bound: the range with the halves interval added is 5.6 to 9.5 at the mid list and 4.5 to 8.9 at the low list, so 5.5 is inside it at the low list), so the pilot cannot be shown to miss 5.5 or to reach it.
+- **About 11 is a proposed near-term level for the pilot alone, not a number the pieces derive.** It is what Rayquaza's gain alone gives (11.3). At 11.3 the excess left is 5,726, of which the halves and list terms are 2,548 (45%) and the rest is remainder, so readings between 7.5 and 11.3 still contain pilot, engine or unnamed error. It is not true that below 11 τ̂ is only the cells' own noise and the list (the check).
 - **What lowers the floor:** more real data (6.3) and list handling (5.3). Both assume the halves-disagree and list terms are as estimated here.
-- eval-power's finding still holds: on binomial noise alone a perfect simulator reads 0.9 to 1.1. The floor above adds the two real-side terms that reading left out.
+- eval-power's finding still holds: on binomial noise alone a perfect simulator's median reading is 0.9 to 1.1 (eval-power: mean 1.96, 95th percentile 6.17). The floor above adds the two real-side terms that reading left out.
 
 ## Assumptions
 
@@ -204,6 +207,10 @@ The test in the request was "if the pilot's reachable share of the remaining err
 - **A6** Pilot tables from different builds are comparable cell by cell. The best-pilot envelope includes selection luck. koh3's reach is capped at each cell's remainder.
 - **A7** A BO3 series = three independent games at the simulator's rate.
 - **A8** The remainder is pilot + engine + anything not named. No split between them is claimed.
+- **A9** (marked Sept 29, from the check) The list part of a cell adds its two decks' swings as if they were independent (in A4's formula).
+- **A10** (marked Sept 29) ν, measured against 7 or 8 panel opponents, is applied to cells against Rayquaza and Altaria/Greninja.
+- **A11** (marked Sept 29) koh3's Rayquaza gain is in-sample: the 17 new cells were used to diagnose Rayquaza and design kpf, and their holdout is the post-freeze events (RUN5, "Development data, stated with each reading").
+- **A12** (marked Sept 29) The τ̂ interval is a bias-corrected bootstrap: each draw has the chance floor taken out again.
 
 ## How to re-run
 
