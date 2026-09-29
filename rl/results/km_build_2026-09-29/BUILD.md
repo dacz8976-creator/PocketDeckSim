@@ -84,8 +84,10 @@ In `value_functions.rs`, `mod km_tests`, and in `players/mod.rs` and `public_pri
 
 | | sha256 |
 |---|---|
-| source (this round) | `b3eb7684cecd5dcbd4e24f3f532d701a145ca4fcfebe9624c4f1835cd2b2eecc` |
-| program, cloud build | `69d98fcb23cb5a5b23724eceb97cc2ff74b049975c4a126e4e2b7e164a2788e4` |
+| **source (this round, after the review)** | `05d7ba4183ce9e3098036de9acb5181ea71f7077ef9b3798ad4e5d165dc22365` |
+| **program, cloud build** (in a copy of 9c11b30's `engine/`) | `883426520104f9f834d88c0e3344e9568b6247a1558f44d90ecaedf77d7039e4` |
+| first source, before the review (history; its checks passed too) | `b3eb7684cecd5dcbd4e24f3f532d701a145ca4fcfebe9624c4f1835cd2b2eecc` |
+| first program (history) | `69d98fcb23cb5a5b23724eceb97cc2ff74b049975c4a126e4e2b7e164a2788e4` |
 | old source (816fd9c's, the one main has and the laptop's kt counters used) | `a2510339e5867b171f22832dc1f31072494fe4667b862b36c92c263c39f01759` |
 | old program, cloud build, for test 1 | `8d4f103cc54e415d1667e7f0e1dbb8a9f1f24eb4672b5ae79690d0576e689a32` |
 
@@ -118,7 +120,7 @@ In `value_functions.rs`, `mod km_tests`, and in `players/mod.rs` and `public_pri
   - A bare `--cells km17` would play all 17 cells.
   - Each row carries what the registration's deal-by-deal check of a measuring run reads: the move fingerprint (`moves`), both decks (`a`, `b`, `a_file`, `b_file`), `seed`, `first_seat` and `seat_decks`, keyed by `source`, `pairing` and `i`. (`tool_check.py rows` checks deals from 0 only. It was written for identity 8a, not for the sample.)
 
-**Tests and identity 8a** (`check_tool.sh`, `tool_check.py`, `tool_check.txt`; all pass):
+**Tests and identity 8a** (`check_tool.sh`, `tool_check.py`, `tool_check.txt`). All pass with the revised program, the one in bold above. The first program passed tests 1 to 4 and 8a as well, before the review.
 1. **The old output, exactly.**
    - kp3 on the table's first 20 deals of the 28 pairings (560 games), with the same default arguments for the old and new tools.
    - stdout, stderr and `--games-out` are byte-identical. stdout sha256 is `a82786bb…`, games-out `057ae92e…`.
@@ -130,15 +132,24 @@ In `value_functions.rs`, `mod km_tests`, and in `players/mod.rs` and `public_pri
 3. **Traced games against a count from the trace.**
    - kp3 on Altaria v Lucario, on diagnostic seeds 20,000,920,000-019 (the lists that carry Training Area and Arena).
    - For each game, seat and card, the rows' offered and played turns for Arena of Antiquity and Training Area equal a recount from the move trace: 80 of 80.
-   - Both cards are played in several games.
+   - The trace lists every Trainer the owner could play at each decision, watched or not. So the recount decides for itself which moves are the card.
+   - Arena of Antiquity is played in 7 games and Training Area in 9.
    - `tool_check.txt` prints one game per card line by line, to count by hand:
      - Training Area, i 1 seat 1: offered on turns 2, 4, 6 and 8, played on 8, so (4, 1);
      - Arena, i 4 seat 1: offered on turns 2, 8, 10 and 12, played on 12, so (4, 1).
-   - The first run of this test failed on the check script's own pattern, not the tool. The trace prints a Trainer as `B2 153 Training Area`, and the script looked for `name: "…"`. It was fixed and rerun with the same program, and both runs are recorded.
+   - The first program's first run of this test failed on the check script's own pattern, not the tool. The trace prints a Trainer as `B2 153 Training Area`, and the script looked for `name: "…"`. It was fixed and rerun, and every run is recorded.
 4. **`--first-deal`.** kog3 with `--first-deal 20 --games 20` on the 17 cells gives identity 8a's rows for deals 20-39 exactly (340 rows, no counts).
+5. **Refusals.** These combinations each exit with an error before any game, with no games file written:
+   - `--seed-base` with `--cells km17`;
+   - `--cells` with `--pairs`;
+   - `--decks` with `--pairs`;
+   - `--root` in table mode;
+   - `--trace-out` with `--no-counts`;
+   - deals past a pairing's 10,000 seeds.
 - **Identity 8a:**
   - The tool's kog3 on i < 40 of all 17 cells: **680 of 680** deals equal `table_kog3.jsonl` (13 cells) and `new17_kog3.jsonl` (4 cells). The check covers the move fingerprint, both decks (names, plus files where the reference has them), seed and seats.
   - Its km3 on pairings 0 and 2, i < 40: **80 of 80** equal item 7's smoke in the same way.
+  - The check asserts the number of cells (17, and 2), so a dropped cell would fail.
   - No count was written or read for these games (`--no-counts`).
 
 ## The code review (section 4.0: the cloud's one review)
