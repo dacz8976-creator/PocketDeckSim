@@ -51,3 +51,15 @@ Everything runs from this build's own programs, 4 threads. The official program 
    - Then the cloud goes idle.
 
 **Not run here:** the timing run, the footprint, any score, clause (d), the A/B, coverage and mixed rows. The laptop runs those.
+
+## Where it ended (Sept 29, 07:15 UTC)
+
+- **The cross-check runs are complete**, all pushed to this folder.
+  - **The suite:** 1,977 passed, 0 failed.
+  - **Identity:** 8 of 8 checks pass, with every game equal and a clean rule check (`identity/identity_check.txt`).
+  - **The four tables on the 45 cells:** kt3, kta3, ktb3 and ktc3, each 14,000 + 8,500 games, with no rule findings on any scan page.
+  - A container restart at about 04:00 UTC cost only the run in progress, kt3's new cells. It was rerun from the start with the same program and calls (`STATUS.txt`, "RESUMED").
+- **The comparison with the laptop's games isn't possible yet.** Main (6368a96) holds the laptop's kt records (identity, the footprint, timing, scripts) but not its per-game files. So no game-by-game comparison was made, and nothing of the laptop's reading was used here.
+  - If the laptop commits its `ec7e1a8_*` game files, the comparison is one run of `identity.py` per file. It compares moves, choices, openings, winner, points and seed; it reads no result.
+- **One agreement that needs no reading:** the laptop's identity replays at ec7e1a8 (main 0fe3d7f) and these match the same reference files game for game. So the two builds of ec7e1a8 play those bots identically.
+- **Nothing here was read, scored or chosen.** The cloud is idle on kt.
