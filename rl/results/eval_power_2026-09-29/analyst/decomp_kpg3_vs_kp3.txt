@@ -1,0 +1,60 @@
+=== kpg3_vs_kp3: kpg3 (new) vs kp3 (current), K = 45 cells, 500 deals/cell, Limitless n = 2214
+point dMSE -43.2  tau kp3 15.51 -> kpg3 14.04
+ANALYTIC (delta method): var_sim 45.7 (sd 6.76), var_lim 26.2 (sd 5.12), cross 7.0; total sd 8.88; Limitless share of variance 33.2%; 95% half-width sim-only 13.2, Limitless-only 10.0, both 17.4
+paired difference per deal: share of deals whose score differs 4% (mean over cells); mean var(D) 0.042 => sd 20 points per deal
+BOOTSTRAP (20000 reps; multinomial resampling of deals; event redraws 307):
+  both sides (binomial Limitless)   : mean  -43.08 sd   8.91 var     79.4 skew -0.21  95% interval   -61.5 to   -26.5 (width 35.1)
+  simulator side only              : mean  -43.14 sd   6.79 var     46.1 skew -0.02  95% interval   -56.4 to   -29.7 (width 26.7)
+  Limitless side only (binomial)  : mean  -43.18 sd   5.11 var     26.2 skew +0.02  95% interval   -53.1 to   -33.2 (width 19.9)
+  both sides (Limitless by event)  : mean  -43.63 sd   9.02 var     81.3 skew -0.20  95% interval   -62.0 to   -26.7 (width 35.3)
+  Limitless side only (by event)   : mean  -43.74 sd   5.06 var     25.6 skew +0.38  95% interval   -53.0 to   -32.5 (width 20.5)
+  additivity check: var_sim + var_lim = 72.2 vs var_both = 79.4 (the gap is the cross term, analytic 7.0); (by event: 71.7 vs 81.3)
+  Limitless share of variance: binomial 32.9%, by event 31.5%
+PER CELL (sorted by total variance; sd_sim, sd_lim = that side's sd of the cell's part of dMSE, in points^2): d = new-cur (pts), e_cur = cur-Limitless miss (pts), contrib = the cell's part of the point dMSE
+  cell                              d     e_cur   contrib   sd_sim  sd_lim   Lim share  larger side
+  rayquaza v lucario                 +9.0    -47.5     -17.2     3.91    2.32        26%  simulator
+  rayquaza v vespiquen               +5.2    -41.1      -8.9     3.62    1.88        21%  simulator
+  rayquaza v blaziken                +4.0    -26.7      -4.4     2.21    3.14        67%  Limitless
+  rayquaza v sceptile                +7.4    -34.8     -10.2     2.32    2.31        50%  simulator
+  rayquaza v altaria_greninja        +1.0    -18.6      -0.8     1.71    0.37         4%  simulator
+  rayquaza v suicune                 +1.8    -13.1      -1.0     1.03    0.72        33%  simulator
+  rayquaza v hydreigon               +1.6    -11.2      -0.7     0.90    0.76        41%  simulator
+  rayquaza v altaria                 +0.6    -11.7      -0.3     1.06    0.14         2%  simulator
+  altaria_greninja v blaziken        +0.4    -26.7      -0.5     0.75    0.20         6%  simulator
+  rayquaza v weezing                 +1.6     -0.2      +0.0     0.12    0.73        97%  Limitless
+  altaria v blaziken                 -0.6    -18.5      +0.5     0.50    0.19        13%  simulator
+  blaziken v weezing                 +0.6     +5.3      +0.1     0.14    0.32        83%  Limitless
+  blaziken v hydreigon               +0.0    -18.5      +0.0     0.33    0.00         0%  simulator
+  blaziken v sceptile                +0.0    -11.5      +0.0     0.32    0.00         0%  simulator
+  blaziken v vespiquen               +0.6     +2.0      +0.1     0.07    0.19        89%  Limitless
+  blaziken v suicune                 -0.4     -3.3      +0.1     0.07    0.19        87%  Limitless
+  blaziken v lucario                 -0.2     +4.6      -0.0     0.12    0.06        18%  simulator
+  altaria v hydreigon                +0.0     -7.3      +0.0     0.00    0.00         0%  none (identical games)
+  altaria v lucario                  +0.0    -10.4      +0.0     0.00    0.00         0%  none (identical games)
+  altaria v sceptile                 +0.0     -1.8      +0.0     0.00    0.00         0%  none (identical games)
+  altaria v suicune                  +0.0     -7.8      +0.0     0.00    0.00         0%  none (identical games)
+  altaria v vespiquen                +0.0     +9.8      +0.0     0.00    0.00         0%  none (identical games)
+  altaria v weezing                  +0.0     +4.6      +0.0     0.00    0.00         0%  none (identical games)
+  hydreigon v lucario                +0.0    -20.0      +0.0     0.00    0.00         0%  none (identical games)
+  hydreigon v sceptile               +0.0     +3.2      +0.0     0.00    0.00         0%  none (identical games)
+  hydreigon v suicune                +0.0    +15.0      +0.0     0.00    0.00         0%  none (identical games)
+  hydreigon v vespiquen              +0.0     +4.2      +0.0     0.00    0.00         0%  none (identical games)
+  hydreigon v weezing                +0.0     +4.8      +0.0     0.00    0.00         0%  none (identical games)
+  lucario v sceptile                 +0.0     -3.9      +0.0     0.00    0.00         0%  none (identical games)
+  lucario v suicune                  +0.0     -0.8      +0.0     0.00    0.00         0%  none (identical games)
+  lucario v vespiquen                +0.0     -1.4      +0.0     0.00    0.00         0%  none (identical games)
+  lucario v weezing                  +0.0    -12.9      +0.0     0.00    0.00         0%  none (identical games)
+  sceptile v suicune                 +0.0    +12.8      +0.0     0.00    0.00         0%  none (identical games)
+  sceptile v vespiquen               +0.0    +28.5      +0.0     0.00    0.00         0%  none (identical games)
+  sceptile v weezing                 +0.0     +1.5      +0.0     0.00    0.00         0%  none (identical games)
+  suicune v vespiquen                +0.0    +17.5      +0.0     0.00    0.00         0%  none (identical games)
+  suicune v weezing                  +0.0     -5.1      +0.0     0.00    0.00         0%  none (identical games)
+  vespiquen v weezing                +0.0    -18.1      +0.0     0.00    0.00         0%  none (identical games)
+  altaria_greninja v lucario         +0.0    -16.1      +0.0     0.00    0.00         0%  none (identical games)
+  altaria_greninja v altaria         +0.0     +3.7      +0.0     0.00    0.00         0%  none (identical games)
+  altaria_greninja v sceptile        +0.0    -35.7      +0.0     0.00    0.00         0%  none (identical games)
+  altaria_greninja v vespiquen       +0.0     -7.4      +0.0     0.00    0.00         0%  none (identical games)
+  altaria_greninja v suicune         +0.0    -16.5      +0.0     0.00    0.00         0%  none (identical games)
+  altaria_greninja v hydreigon       +0.0    -25.3      +0.0     0.00    0.00         0%  none (identical games)
+  altaria_greninja v weezing         +0.0    -21.4      +0.0     0.00    0.00         0%  none (identical games)
+  cells where the simulator side has the larger variance: 12 of 45; Limitless: 5; neither (the two pilots played identical games and the rate did not move): 28

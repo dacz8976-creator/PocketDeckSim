@@ -1,0 +1,26 @@
+
+### NOISE FLOOR / TOP CELLS koh3_vs_kog3  (the OLD pilot vs Limitless)
+raw sum of squared miss 12112, mean 269.2, raw RMS 16.41
+Limitless noise mean 67.2 (sum 3024, 25.0% of raw), sim noise mean 4.6 (1.7%), bias mean 197.4 (73.3%), tau 14.05
+noise-floor raw RMS: Limitless alone 8.20; with sim noise 8.47
+observed average absolute miss 12.97
+cells missing by more than 2 sd of pure noise: 17; cells with squared miss below expected noise: 19
+top 10 by squared miss: cell | old / Limitless | nL | miss | miss^2 | % of raw sum | Limitless-noise share of miss^2
+   rayquaza v lucario            34.8 /  73.3 |  58 |  -38.5 |   1480 |  12.2% |   2%
+   rayquaza v vespiquen          25.2 /  61.1 |  36 |  -35.9 |   1290 |  10.6% |   5%
+   altaria_greninja v sceptile           31.0 /  66.7 |  33 |  -35.7 |   1272 |  10.5% |   5%
+   sceptile v vespiquen          64.2 /  35.7 |  56 |  +28.5 |    811 |   6.7% |   5%
+   rayquaza v sceptile           17.6 /  45.0 |  50 |  -27.4 |    751 |   6.2% |   7%
+   altaria_greninja v blaziken           44.3 /  70.6 |  17 |  -26.3 |    691 |   5.7% |  18%
+   altaria_greninja v hydreigon          39.4 /  64.7 |  17 |  -25.3 |    640 |   5.3% |  21%
+   rayquaza v blaziken           27.3 /  50.0 |   8 |  -22.7 |    515 |   4.3% |  61%
+   altaria_greninja v weezing            28.6 /  50.0 |  16 |  -21.4 |    458 |   3.8% |  34%
+   hydreigon v lucario            43.6 /  63.6 |  55 |  -20.0 |    401 |   3.3% |  10%
+top 10 hold 68.6% of raw sum; Limitless noise in them 12.3% of their miss^2; their excess 81.5% of all excess
+   group Rayquaza(9): share of excess 42.9%; group tau 20.6; Limitless matches 337
+   group A/G(8): share of excess 32.9%; group tau 19.1; Limitless matches 269
+   group panel(28): share of excess 24.3%; group tau 8.8; Limitless matches 1608
+   group new 17: share of excess 75.7%; group tau 19.9; Limitless matches 606
+perfect simulator (truth = Limitless observed rates), 10000 draws:
+   tau-hat: median 1.10, mean 1.98, 95th pct 6.14, share <= 5.5 91.0%
+   raw RMS mean 8.41; average absolute miss mean 6.47

@@ -1,0 +1,60 @@
+=== koh3_vs_kog3: koh3 (new) vs kog3 (current), K = 45 cells, 500 deals/cell, Limitless n = 2214
+point dMSE -45.1  tau kog3 14.05 -> koh3 12.33
+ANALYTIC (delta method): var_sim 135.5 (sd 11.64), var_lim 626.8 (sd 25.04), cross 33.9; total sd 28.22; Limitless share of variance 78.7%; 95% half-width sim-only 22.8, Limitless-only 49.1, both 55.3
+paired difference per deal: share of deals whose score differs 29% (mean over cells); mean var(D) 0.285 => sd 53 points per deal
+BOOTSTRAP (20000 reps; multinomial resampling of deals; event redraws 307):
+  both sides (binomial Limitless)   : mean  -45.04 sd  28.19 var    794.8 skew +0.00  95% interval  -100.3 to   +10.0 (width 110.3)
+  simulator side only              : mean  -45.05 sd  11.67 var    136.2 skew +0.01  95% interval   -67.8 to   -22.2 (width 45.6)
+  Limitless side only (binomial)  : mean  -45.14 sd  24.97 var    623.7 skew -0.01  95% interval   -94.0 to    +4.1 (width 98.1)
+  both sides (Limitless by event)  : mean  -45.39 sd  28.80 var    829.6 skew -0.01  95% interval  -102.2 to   +11.4 (width 113.7)
+  Limitless side only (by event)   : mean  -45.44 sd  25.65 var    658.0 skew +0.06  95% interval   -95.4 to    +5.8 (width 101.1)
+  additivity check: var_sim + var_lim = 759.9 vs var_both = 794.8 (the gap is the cross term, analytic 33.9); (by event: 794.2 vs 829.6)
+  Limitless share of variance: binomial 78.5%, by event 79.3%
+PER CELL (sorted by total variance; sd_sim, sd_lim = that side's sd of the cell's part of dMSE, in points^2): d = new-cur (pts), e_cur = cur-Limitless miss (pts), contrib = the cell's part of the point dMSE
+  cell                              d     e_cur   contrib   sd_sim  sd_lim   Lim share  larger side
+  rayquaza v vespiquen              +26.0    -35.9     -26.5     3.16    9.39        90%  Limitless
+  rayquaza v blaziken               +11.7    -22.7      -8.8     1.89    9.19        96%  Limitless
+  rayquaza v suicune                +20.2    -11.3      -1.1     1.45    8.13        97%  Limitless
+  rayquaza v weezing                +17.2     +1.4      +7.6     1.77    7.90        95%  Limitless
+  rayquaza v altaria_greninja       +20.6    -17.6      -6.7     1.78    7.62        95%  Limitless
+  rayquaza v hydreigon              +16.0     -9.6      -1.1     1.15    7.58        98%  Limitless
+  rayquaza v lucario                +18.8    -38.5     -24.3     3.48    4.86        66%  Limitless
+  blaziken v weezing                +10.7     +5.9      +5.4     1.39    5.68        94%  Limitless
+  hydreigon v vespiquen             +14.0     +4.2      +6.9     1.74    4.87        89%  Limitless
+  altaria_greninja v weezing         +8.6    -21.4      -6.5     1.77    4.78        88%  Limitless
+  hydreigon v suicune               +12.0    +15.0     +11.2     2.63    4.13        71%  Limitless
+  hydreigon v weezing                +9.6     +4.8      +4.1     1.33    4.34        91%  Limitless
+  rayquaza v altaria                +16.6    -11.7      -2.5     1.30    3.97        90%  Limitless
+  suicune v weezing                  +9.5     -5.1      -0.1     0.78    3.31        95%  Limitless
+  lucario v weezing                 +12.8    -12.9      -3.7     1.28    3.13        86%  Limitless
+  altaria_greninja v sceptile        -1.2    -35.7      +1.9     3.29    0.44         2%  simulator
+  altaria_greninja v blaziken        -1.7    -26.3      +2.1     3.02    0.83         7%  simulator
+  altaria v hydreigon                -9.4     -4.7      +3.9     1.26    2.78        83%  Limitless
+  rayquaza v sceptile                +6.2    -27.4      -6.7     2.35    1.94        41%  simulator
+  altaria_greninja v hydreigon       +0.2    -25.3      -0.2     2.85    0.10         0%  simulator
+  sceptile v vespiquen               -0.2    +28.5      -0.3     2.85    0.06         0%  simulator
+  altaria v blaziken                 -5.0    -17.9      +4.5     2.26    1.62        34%  simulator
+  hydreigon v lucario                +5.4    -20.0      -4.2     1.96    1.56        39%  simulator
+  vespiquen v weezing                +6.2    -18.1      -4.1     1.77    1.55        43%  simulator
+  suicune v vespiquen                -6.2    +17.5      -4.0     1.71    1.47        42%  simulator
+  altaria_greninja v lucario         -2.6    -16.1      +2.0     1.92    0.80        15%  simulator
+  blaziken v sceptile                -4.2    -11.5      +2.5     1.20    1.66        66%  Limitless
+  blaziken v hydreigon               +1.0    -18.5      -0.8     1.91    0.43         5%  simulator
+  altaria_greninja v suicune         +2.0    -16.5      -1.4     1.78    0.72        14%  simulator
+  altaria v lucario                  -7.4     -8.4      +4.0     1.42    1.16        40%  simulator
+  lucario v suicune                  +6.8     -0.8      +0.8     0.61    1.61        88%  Limitless
+  altaria v vespiquen                -2.8    +14.4      -1.6     1.52    0.63        14%  simulator
+  sceptile v suicune                 +2.0    +12.8      +1.2     1.17    0.62        22%  simulator
+  blaziken v lucario                 +3.5     +4.4      +1.0     0.76    0.99        63%  Limitless
+  altaria_greninja v altaria         +3.8     +1.9      +0.6     0.52    0.99        79%  Limitless
+  altaria v weezing                  +2.0     +7.3      +0.7     0.92    0.61        31%  simulator
+  altaria_greninja v vespiquen       +2.2     -7.4      -0.6     0.73    0.80        55%  Limitless
+  lucario v sceptile                 +4.0     -3.9      -0.3     0.38    0.81        82%  Limitless
+  blaziken v vespiquen               -2.1     +2.6      -0.1     0.18    0.68        93%  Limitless
+  lucario v vespiquen                +3.2     -1.4      +0.0     0.25    0.63        87%  Limitless
+  altaria v suicune                  +0.2     -5.4      -0.0     0.58    0.05         1%  simulator
+  blaziken v suicune                 +0.0     -3.7      +0.0     0.36    0.00         0%  simulator
+  hydreigon v sceptile               +0.0     +3.2      +0.0     0.33    0.00         0%  simulator
+  sceptile v weezing                 +0.8     +1.5      +0.1     0.17    0.28        73%  Limitless
+  altaria v sceptile                 -0.2     +2.6      -0.0     0.24    0.04         3%  simulator
+  cells where the simulator side has the larger variance: 20 of 45; Limitless: 25; neither (the two pilots played identical games and the rate did not move): 0

@@ -1,0 +1,44 @@
+kog3 on the 45 development cells (K = 45); all numbers in points (rates x100) or points^2
+sum e^2 = 12112  -> raw MSE 269.2, raw RMS miss 16.41
+expected Limitless noise  sum L(1-L)/nL = 3024 -> mean 67.2 pts^2
+expected simulator noise  sum S(1-S)/500 = 206 -> mean 4.6 pts^2
+excess (real bias^2) = 8882 -> mean 197.4 -> tau-hat = 14.05  (score.py prints 14.0)
+shares of the raw sum of squared misses: real bias 73%, Limitless noise 25%, simulator noise 2%
+NOISE FLOOR (raw RMS miss a perfect simulator would still show): Limitless noise alone 8.20; with the simulator's own 500-deal noise 8.47 (raw RMS observed 16.41)
+average (absolute) miss: observed 13.0 (score.py prints 13.0); a perfect simulator would show about 6.5 (sum of sd*sqrt(2/pi))
+cells whose miss is beyond 2 sd of pure noise: 17 of 45; beyond 1 sd: 26; a perfect simulator expects about 2.0 and 14
+
+TOP 10 CELLS BY SQUARED MISS (kog3 - Limitless), and what noise alone would give
+cell                              kog3   Lim   nL   miss  miss^2 % of sum Lim noise sim noise noise share  excess     z
+rayquaza v lucario                34.8  73.3   58  -38.5    1480    12.2%        34         5          3%    1442   6.2
+rayquaza v vespiquen              25.2  61.1   36  -35.9    1290    10.6%        66         4          5%    1220   4.3
+altaria_greninja v sceptile       31.0  66.7   33  -35.7    1272    10.5%        67         4          6%    1200   4.2
+sceptile v vespiquen              64.2  35.7   56  +28.5     811     6.7%        41         5          6%     766   4.2
+rayquaza v sceptile               17.6  45.0   50  -27.4     751     6.2%        50         3          7%     698   3.8
+altaria_greninja v blaziken       44.3  70.6   17  -26.3     691     5.7%       122         5         18%     564   2.3
+altaria_greninja v hydreigon      39.4  64.7   17  -25.3     640     5.3%       134         5         22%     501   2.1
+rayquaza v blaziken               27.3  50.0    8  -22.7     515     4.3%       312         4         61%     199   1.3
+altaria_greninja v weezing        28.6  50.0   16  -21.4     458     3.8%       156         4         35%     298   1.7
+hydreigon v lucario               43.6  63.6   55  -20.0     401     3.3%        42         5         12%     354   2.9
+top 10 together: miss^2 8310 = 69% of the total; Limitless noise expected in them 1025 (12% of their squared miss), simulator noise 43 (1%), excess 7243 = 82% of all excess
+the other 35 cells: miss^2 3801, expected noise 2162, excess 1640
+cells whose squared miss is below the expected noise (excess < 0): 19
+
+TOP 10 CELLS BY EXCESS (miss^2 minus expected noise = the cell's part of tau^2*K)
+  rayquaza v lucario               miss  -38.5  excess   1442 = 16.2% of the total excess (nL 58)
+  rayquaza v vespiquen             miss  -35.9  excess   1220 = 13.7% of the total excess (nL 36)
+  altaria_greninja v sceptile      miss  -35.7  excess   1200 = 13.5% of the total excess (nL 33)
+  sceptile v vespiquen             miss  +28.5  excess    766 =  8.6% of the total excess (nL 56)
+  rayquaza v sceptile              miss  -27.4  excess    698 =  7.9% of the total excess (nL 50)
+  altaria_greninja v blaziken      miss  -26.3  excess    564 =  6.3% of the total excess (nL 17)
+  altaria_greninja v hydreigon     miss  -25.3  excess    501 =  5.6% of the total excess (nL 17)
+  hydreigon v lucario              miss  -20.0  excess    354 =  4.0% of the total excess (nL 55)
+  altaria_greninja v weezing       miss  -21.4  excess    298 =  3.4% of the total excess (nL 16)
+  vespiquen v weezing              miss  -18.1  excess    292 =  3.3% of the total excess (nL 43)
+  group 9 Rayquaza cells: excess 3806 = 43% of the total; group tau-hat 20.6; raw RMS 22.9; noise floor RMS 10.0
+  group 8 Altaria/Greninja cells (not vs Rayquaza): excess 2920 = 33% of the total; group tau-hat 19.1; raw RMS 21.4; noise floor RMS 9.6
+  group 28 panel cells: excess 2156 = 24% of the total; group tau-hat 8.8; raw RMS 11.6; noise floor RMS 7.6
+
+PERFECT SIMULATOR (truth = the observed Limitless cells; both sides redrawn at their real sizes, 20,000 draws)
+  raw RMS miss: median 8.35, 5-95% 6.76 to 10.23
+  tau-hat (score.py's real error): median 0.91, mean 1.96, 90th pct 5.33, 95th pct 6.17, 99th 7.55; share of draws <= 5.5: 91.2%

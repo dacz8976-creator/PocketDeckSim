@@ -4,6 +4,13 @@ Kept by the laptop session ("Project familiarization"). **Since about 11:30 pm C
 
 ## Decisions waiting for you
 
+- **Three from the eval-power check** (from the article you sent; `../eval_power_2026-09-29/README.md`). What it found: koh's "not below zero" was mostly a power problem. A gain of koh's size would clear the test only about a third of the time at today's data sizes, because the real Limitless data in the Rayquaza cells is thin. Your three calls, all rule changes:
+  1. **Fold the spent Sept 25 holdout into the development data?** Real matches would go from 2,214 to 4,712, and the chance of confirming a koh-sized gain from 36% to 57%. It ends the rule that the holdout is never opened.
+  2. **2,000 deals per cell for small-footprint candidates** (4× today)? Their needed gain falls by a third to a half, at about 3 laptop hours each.
+  3. **The 5.5 real-error target** sits inside the scoreboard's own noise: a perfect simulator reads up to about 6.2. Keep it as "as good as the data allows"?
+
+  Reporting-only, no rule change: every ΔMSE reading will print the smallest gain it could detect, beside its interval.
+
 - **Your first upstream pull request is ready, not pushed** (your 9 pm pick): `../upstream_pr_2026-09-28/README.md` has the title, the body to paste, and the steps.
   - **What it is:** one commit on upstream's current main, 27 lines changed in `hooks/core.rs`, plus five tests. Upstream's own suite gives 1170 passing on main and 1175 on the branch, with no failures. The four card tests fail on unfixed main, and the Steel Apron / Metal Core Barrier test passes on both. Formatting is clean.
   - **Your conditions are met:** all four texts are quoted exactly, with the limiting words in bold. Only Heavy Helmet says "from attacks" word for word: Harden and Blocking Shell say "by attacks", and Hide says "from—and effects of—attacks". The body says so plainly. The rules citation is `rules/02_damage_knockouts_points.md` lines 78-79, from the official Mimikyu ex FAQ.
