@@ -49,6 +49,17 @@
   - the reader asserts complete files (1,920 games per deck and arm) and reports draws.
 - **Launch order:** after `run_kt.sh` part B's footprint is committed, one runner at a time, never beside part B at 12 threads each. That also keeps them off kt's timing check.
 
+**The reading code** (`read_kt.py`, `test_read_kt.sh`; Sept 29, committed before any kt result was read):
+- Written blind by a Sonnet agent from the registration: amendment 2 over the original text, with Dustin's rulings. Two independent Sonnet reviews (faithfulness, statistics and files) found no blocker. A fixer applied all 23 findings and reran every stand-in scenario and guard.
+- The laptop accepted the six policy calls as coded, all the conservative readings:
+  1. A τ or ΔMSE bound near its line is PENDING until a `--reps 20000` rerun, which decides.
+  2. The zero-footprint integrity check holds the verdict (PENDING) and never fails it.
+  3. A missing or failed identity or timing record stops the reading.
+  4. Coverage vetoes (B2e held-out, Scizor, second lists) gate on both routes (Dustin: "no deck hurt"). The verdict says which reading decided.
+  5. Own-side harm alone is a coverage veto (koh's precedent, Dustin's coverage rule). The size and "further" counts are printed beside.
+  6. The footprint is read and committed first (6c900fd).
+- One line was added after the reviews, before any kt result was read: on the ordinary route, the smallest ΔMSE the reading could detect, reported beside and gating nothing (`../eval_power_2026-09-29/`).
+
 **Who does what:**
 - **The cloud:** the kt build's code on 233bced's `engine/` (kt's presets redefined on kog), the parser, preset and values tests (item 7), the full suite and `BUILD.md`.
 - **The laptop:** builds the same commit, then runs everything that plays games, each from the kt build's own programs with their sha256 recorded:
