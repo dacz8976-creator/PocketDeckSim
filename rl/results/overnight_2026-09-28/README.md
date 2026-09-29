@@ -4,6 +4,12 @@ Kept by the laptop session ("Project familiarization"). **Since about 11:30 pm C
 
 ## Decisions waiting for you
 
+- **kt's result, and whether to register the Tool fix on its own** (`../kt_tables_2026-09-28/READING.md`, 87a68d4).
+  - **kt as a whole is not adopted.** kt3 (all three switches) changed 65% of games and didn't improve the scoreboard: real error 14.0 → 14.1. It also played five coverage decks' own sides worse. Switch 2 is the cause.
+  - **kta3, your Tool fix alone** (switch 1, the reserve route you described), **passed every one of its tests.** It changes only 2.5% of games, it improves the scoreboard a little (real error 14.0 → 13.8, whole interval above zero), it gains on the Rayquaza list (+1.0 ± 0.4), and it hurts no deck anywhere. Your Skarmory deck's A/B is running now.
+  - The registration fixed this outcome before any game: "kt3 fails: nothing adopted ... the next candidate is registered afresh". kog stays the pilot.
+  - **Your call:** register kta (the Tool cut alone) as a fresh candidate? Tonight's cells are now development data for it, so its confirmation would come from new data, e.g. the post-freeze pull.
+
 - **Two calls on km, the Trainer-pricing candidate** (its review, `../trainer_pricing_2026-09-28/REVIEW.md`, three Sonnet lenses; still a draft, nothing registered):
   1. **Keep the retreat-cost switch (N1, which prices Goo-zooka) inside km?** Nothing in the 45 cells can test it, so as written it would be adopted without a gain test. The review leans to keeping its code but taking it out of km's gate, and measuring Goo-zooka's play rate. It also found your Goo-zooka concern points the other way from the draft's prediction: the code suggests N1 should make the bot play Goo-zooka more.
   2. **How many deals km's clause (d) gets** (its one gating test, on Lucario). At 500 deals it could miss a real gain anywhere from about 1 time in 100 to 7 in 10. The review leans to 2,000 deals for (d) only, about 30,000 games.

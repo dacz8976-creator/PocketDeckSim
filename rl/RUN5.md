@@ -348,7 +348,13 @@ sides with k3 still available; the 0.7.2 wheel and its run identities are untouc
       - Whimsicott, −2.0 ± 1.3.
     - Lucario and Vespiquen are repaired, and Rayquaza's gain is kept.
     - The Altaria diagnosis (`results/koh_2026-09-28/altaria_diagnosis/`) finds the crossed Swablu/Eevee line mostly a reading problem. The deficit is small and spread: R's attack-skipping v Lucario, and fix B double-counting the fresh Zone Energy (a candidate repair, not registered).
-  - kt: on kog under amendment 2 with Dustin's word (`results/kt_tables_2026-09-28/`). The gate opened Sept 29 at 02:45 UTC after koh's B2e read. The tables are running, and the footprint is read first.
+  - kt (kog + Tool/turn-effect switches; amendment 2, Dustin's word): **not adopted, as registered, Sept 29** (`results/kt_tables_2026-09-28/READING.md`; first reader; the second is owed).
+    - kt3 (all three switches, footprint 64.7%, ordinary rule) fails: ΔMSE +1.0 (−16.7 to +18.9), plus own-side harm on three B2e held-out decks and two second lists. Switch 2 is the cause (ktb3: real error 14.3).
+    - kta3 (switch 1, the Tool cut, 2.5%, reserve route) passes every test:
+      - τ margin +0.21 (90% interval +0.06 to +0.31), real error 14.0 → 13.8;
+      - Rayquaza's (d) +1.00 ± 0.39;
+      - no harm anywhere.
+    - The registration's fixed outcome, "kt3 fails: nothing adopted ... the next candidate is registered afresh", decides. Whether to register kta afresh is Dustin's call.
   - kph is not run (superseded by koh on the composed base).
 - **Waiting on post-freeze data:** kpg's confirmation, koa's no-harm re-check and kog's own row (`results/postfreeze_2026-09-27/README.md`). Read once, at 804 + 303 matches (about mid-October) or at the last pull before Mega Garchomp ex.
 - **Holds:** deck ranking stays on hold (14.0 against 5.5; the ladder-weighted panel and calibration are unfinished). The floor check may be used under the A2 decision. The quick screen's ranking is on hold.
