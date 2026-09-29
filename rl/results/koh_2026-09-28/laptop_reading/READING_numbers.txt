@@ -1,4 +1,4 @@
-5. The 45 cells, koh3 against kog3, rules v2 with koh3's mixed rows (score45_koh3_vs_kog3.txt):
+5. The 45 cells, koh3 against kog3, rules v2 with koh3's mixed rows (score45_koh3_vs_kog3.txt, reused: the committed page, inputs unchanged):
    kog3: real error 14.0 | reported only: correlation 0.51, average miss 13.0, favorite right 28/45, clear 14/20, beyond chance 18
    koh3: real error 12.3 | reported only: correlation 0.43, average miss 12.3, favorite right 29/45, clear 16/20, beyond chance 17
    dMSE new - current: -45.1 points^2, 95% interval -100.4 to +10.4 (not below 0) [Limitless side binomial]
@@ -35,15 +35,31 @@
    ADOPTION RULE (v2): do not adopt (dMSE interval not below 0) (held-out-deck veto checked separately)
 
 6a. B2e's held-out archetypes (panel average, equal-weight over 8; Limitless pooled):
-   b2e_koh3.jsonl not in yet
+   rows: ../laptop_runs/b2e_koh3.jsonl
+   cross-check against the cloud's b2e_koh3: identical on moves, winner_seat, points, seed (48000 and 48000 games)
+   A_archetype charizardy_entei             kog3  46.4 -> koh3  50.0; Limitless  49.2; further by -2.0: no
+   A_archetype garchomp                     kog3  21.0 -> koh3  23.8; Limitless  32.5; further by -2.8: no
+   A_archetype hoopa_absol                  kog3  56.9 -> koh3  45.5; Limitless  50.0; further by -2.6: no
+   A_archetype manectric                    kog3  63.0 -> koh3  63.1; Limitless  49.2; further by +0.1: no
+   A_archetype raticate                     kog3  57.1 -> koh3  55.5; Limitless  41.2; further by -1.6: no
+   A_archetype whimsicott                   kog3  35.5 -> koh3  35.2; Limitless  32.3; further by -0.4: no
+   B_dustin dustin_charizardy_entei      kog3  54.5 -> koh3  55.6; Limitless  49.2; further by +1.2: reported only
+   B_dustin dustin_garchomp              kog3  25.6 -> koh3  25.0; Limitless  32.5; further by +0.6: reported only
+   B_dustin dustin_hoopa_absol           kog3  33.2 -> koh3  26.4; Limitless  50.0; further by +6.7: reported only
+   B_dustin dustin_manectric             kog3  59.0 -> koh3  59.0; Limitless  49.2; further by +0.0: reported only
+   B_dustin dustin_raticate              kog3  55.4 -> koh3  55.9; Limitless  41.2; further by +0.5: reported only
+   B_dustin dustin_whimsicott            kog3  29.7 -> koh3  30.2; Limitless  32.3; further by -0.5: reported only
 
-6b. The Scizor row (amendment 2):
-   own side (koh3 on Scizor v kog3 on both): +0.06 +/- 1.37 over 8 rows -> no veto
+6b. The Scizor row (amendment 2's rows, amendment 4's test):
+   own side (koh3 on Scizor v kog3 on both): +0.06 +/- 1.37 over 8 rows -> no harm
    the other direction (koh3 on the panel list, kog3 on Scizor), the panel's side: +1.38 +/- 1.31 (reported)
    Scizor's panel average, both sides: kog3 31.1 -> koh3 29.0 (reported)
 
-6c. The second lists (amendment 2):
-   v-lucario_2   opponent average kog3  55.8 -> koh3  58.5; figure  50.4 (development half, the same opponents); further by +2.7; own side (mixed) +3.26 +/- 1.51 over 7 -> investigation item
-   v-suicune_2   opponent average kog3  50.9 -> koh3  51.0; figure  47.1 (development half, the same opponents); further by +0.1; own side (mixed) +0.94 +/- 1.45 over 7 -> no veto
-   v-weezing_2   opponent average kog3  54.4 -> koh3  47.9; figure  43.8 (development half, the same opponents); further by -6.5; own side (mixed) -3.77 +/- 1.57 over 7 -> no veto
-   l-charizardy  opponent average kog3  40.5 -> koh3  43.6; figure  49.2 (B2e pooled, charizardy_entei); further by -3.1; own side (mixed) +2.94 +/- 1.26 over 8 -> no veto
+6c. The second lists (amendment 2's rows, amendment 4's test; accuracy reported):
+   v-lucario_2   opponent average kog3  55.8 -> koh3  58.5; figure  50.4 (development half, the same opponents); further by +2.7 (reported); own side (mixed) +3.26 +/- 1.51 over 7 -> no harm
+   v-suicune_2   opponent average kog3  50.9 -> koh3  51.0; figure  47.1 (development half, the same opponents); further by +0.1 (reported); own side (mixed) +0.94 +/- 1.45 over 7 -> no harm
+   v-weezing_2   opponent average kog3  54.4 -> koh3  47.9; figure  43.8 (development half, the same opponents); further by -6.5 (reported); own side (mixed) -3.77 +/- 1.57 over 7 -> VETO (own side worse beyond paired noise; amendment 4)
+   l-charizardy  opponent average kog3  40.5 -> koh3  43.6; figure  49.2 (B2e pooled, charizardy_entei); further by -3.1 (reported); own side (mixed) +2.94 +/- 1.26 over 8 -> no harm
+
+6d. B2e's own side in the mixed rows (koh3 on the held deck, kog3 on the panel; amendment 4):
+   mixed_b2e_koh3_first.jsonl (or b2e_koh3) not in yet

@@ -15,7 +15,7 @@
   - Mega Rayquaza keeps its gain.
 - Altaria is where it fails. The mechanism check shows fix A doesn't hold in Altaria's Swablu/Eevee positions: koh still plays kpf's move there more often than kp3's.
 - **Status: "not adopted, provisional"** (RUN5: a "not adopted" stands only once coverage is read).
-  - B2e's held-out rows are running on the laptop (the cloud's copy too), with their own-side mixed rows queued after.
+  - B2e's held-out rows are read (Sept 29): no held-out accuracy veto. Both Hoopa / Absol lists fall under koh. Their own-side mixed rows are running and complete the record.
   - Under Dustin's coverage ruling (below), Weezing's second list is a counted harm: koh plays it worse on its own side. Scizor and the other three lists show none.
 - **kog stays the working pilot.**
 
@@ -101,6 +101,29 @@
 - Hydreigon's own side is +5.7 ± 1.5 better under koh, which pushes its deck gap further past Limitless (+3.7, an investigation item). That is RUN5's open cause "Hydreigon's overshoot".
 - Not read as cause: for kpr, the cell-by-cell rise in chip use and Hydreigon's score change were uncorrelated (`kpr_readout_review.md`). This table doesn't test that either.
 - kp3's figures equal kog3's in the five cells without Altaria or Blaziken. Those two differ slightly (kp3: 3/62 and 1/99), through kog's switch A and F.
+
+## B2e's held-out rows (read Sept 29, 02:50 UTC; `READING_numbers.txt` 6a)
+
+- **The rows:** the laptop's `../laptop_runs/b2e_koh3.jsonl` (48,000 games, finished 02:25 UTC). The cloud's copy is identical game for game on moves, winner, points and seed.
+- The 45-cell section of the numbers page reuses the committed page. Its inputs are unchanged since 087528f; each input's last change on the branch predates it.
+- **Held-out archetypes (0-47, counted):** none moves more than 2 points further from its Limitless pooled average. **No held-out accuracy veto.**
+
+  | Held-out deck | kog3 → koh3 | Limitless | Further by |
+  |---|---|---:|---:|
+  | Charizard Y / Entei | 46.4 → 50.0 | 49.2 | −2.0 |
+  | Garchomp | 21.0 → 23.8 | 32.5 | −2.8 |
+  | **Hoopa / Absol** | **56.9 → 45.5** | 50.0 | −2.6 |
+  | Manectric | 63.0 → 63.1 | 49.2 | +0.1 |
+  | Raticate | 57.1 → 55.5 | 41.2 | −1.6 |
+  | Whimsicott | 35.5 → 35.2 | 32.3 | −0.4 |
+
+- **Dustin's files (48-95, reported):** all within about 1 point, except his Hoopa / Absol file: 33.2 → 26.4, 6.7 points further from Limitless.
+- **Hoopa / Absol falls under koh in both lists**, by 11.4 and 6.8 points.
+  - Whether koh plays Hoopa worse, or its opponents better, is what the own-side mixed rows (koh3 on the held deck, kog3 on the panel) will show. They are running now (`../laptop_runs/mixed_b2e_koh3_first`, 6d).
+  - Under Dustin's coverage rule, own-side harm on a held-out deck is a veto.
+  - Hoopa ex is also brew 07's main attacker.
+- **What the read means for kt's gate:** nothing here could reopen koh. Its ordinary-rule test already failed on the 45 cells, and coverage can only add vetoes. So kt's gate opens now (Fable's ruling; `../../kt_tables_2026-09-28/README.md`).
+- **Status:** "not adopted" is complete once the B2e mixed rows are read.
 
 ## What it means
 

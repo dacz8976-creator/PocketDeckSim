@@ -36,12 +36,19 @@ cmd = [sys.executable, os.path.join(K, "score45.py"), "--rules", "v2",
        "--new-games", os.path.join(CLOUD, "table_koh3.jsonl"), os.path.join(CLOUD, "new17_koh3.jsonl"),
        "--old", "kog3", "--new", "koh3", "--mixed"] + [os.path.join(CLOUD, f"mixed_{s}_koh3_{d}.jsonl")
                                                      for s in ("table", "new17") for d in ("first", "second")]
-out = subprocess.run(cmd, capture_output=True, text=True, cwd=K)
-open(os.path.join(HERE, "score45_koh3_vs_kog3.txt"), "w", encoding="utf-8").write(out.stdout + out.stderr)
-if out.returncode:
-    sys.exit(f"score45.py FAILED (exit {out.returncode}); nothing read:\n{out.stderr[-600:]}")
-print("5. The 45 cells, koh3 against kog3, rules v2 with koh3's mixed rows (score45_koh3_vs_kog3.txt):")
-for line in out.stdout.splitlines():
+P45 = os.path.join(HERE, "score45_koh3_vs_kog3.txt")
+if os.environ.get("KOH_REUSE_45"):
+    # The 45 cells' inputs are unchanged since the committed page (087528f): reuse it rather than re-score (Sept 29,
+    # to put B2e's read ahead of a slow re-score under load).
+    stdout, tag = open(P45, encoding="utf-8").read(), ", reused: the committed page, inputs unchanged"
+else:
+    out = subprocess.run(cmd, capture_output=True, text=True, cwd=K)
+    open(P45, "w", encoding="utf-8").write(out.stdout + out.stderr)
+    if out.returncode:
+        sys.exit(f"score45.py FAILED (exit {out.returncode}); nothing read:\n{out.stderr[-600:]}")
+    stdout, tag = out.stdout, ""
+print(f"5. The 45 cells, koh3 against kog3, rules v2 with koh3's mixed rows (score45_koh3_vs_kog3.txt{tag}):")
+for line in stdout.splitlines():
     if any(t in line for t in ("real error ", "dMSE", "cell veto", "deck veto", "ADOPTION", "COUNTS:", "AWAITS",
                                "never counts:", "investigation item")):
         if "PASS (a)" not in line and not line.startswith("Veto rule"):
