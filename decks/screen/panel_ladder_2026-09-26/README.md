@@ -88,7 +88,8 @@ lean on the tournament meta; it is tabulated for the eight in `ladder_counts.md`
 | l-sharpedo | 2 | 10.5% | **10.3%** | 1.8% |
 
 *These are the Sept 26 add-one proposal, superseded by section 8. Every weight in this section covers 19 of 33 logged
-games (~58%); under section 8's rulings it is 18 of 33 (~55%).*
+games (~58%); under section 8's rulings it is 18 of 33 (~55%); after the Sept 28 night refresh (section 9) it is 20 of 55
+(~36%).*
 
 If the family rule is rejected (variants not counted), the exact-only counts are Lucario 1, Altaria 2,
 Sceptile 0, Vespiquen 2, Suicune 1, Weezing 0, Blaziken 2, Hydreigon 2, Charizard Y 2, Sharpedo 2 (14
@@ -348,3 +349,71 @@ moves the counts below.
   7,500-game estimate) and `calibration_README.md`'s power table, which was computed for 18 games. They are the Sept 26
   numbers. `calibrate.py` reads its counts from the CSV, so nothing breaks; the power table needs re-running at 17 games
   if the calibration is ever run, and it is on hold.
+
+## 9. Refresh of Sept 28 night (recorded by "Opus agents progress", about 23:00 CDT)
+
+**Asked by** the Fable session "Recommendations and advice" (relayed, same Sept 28 delegation): refresh the weights, the
+coverage line, `ladder_counts.md` and `calibration_games.csv` from the Ladder Log under the section 8 rulings, report the
+new coverage and any weight that changes, and list opponents that do not map rather than guess. **Nothing is wired in and no
+calibration was run** (it stays held).
+
+**What the log holds now:** 17 documents (16 with games), **55 games, 26-29**. The request spoke of nine new games (brew 8,
+6-3); the log has **22 added since my last read**: 9 in `brew-08` (6-3), 1 in `brew-09` (1-0), and 12 in four video-derived
+"c-" decks: Hydreigon / Galarian Obstagoon 8 (4-4), Skarmory ex / Indeedee ex / Genesect 2 (2-0), Mega Sharpedo ex / Gyarados 1
+(0-1), Type: Null / Silvally 1 (1-0). All 22 were filed on Sept 28 evening from Battle Logs videos (their notes name the
+video files); the c- decks' owner lists are marked "unverified". **I counted all 22 as ladder games because they are in the
+log**; whether the 13 that are not brew 8 should count is a question for Dustin (list below).
+
+**The mapping rule** (same strictness as Sept 26 and 28): a game goes on a panel deck, a ten-list deck or a Limitless deck
+only if the opponent text names that deck's defining Pokémon or the archetype itself. Support cards alone (Riolu without Mega
+Lucario ex, Butterfree without Mega Sceptile ex, Entei ex without a Charizard) are **unmapped**, not guessed.
+
+| List | games | weight now | section 8 | change |
+|---|---|---|---|---|
+| t-lucario | 5 | **22.7%** | 20.0% | +2.7 (one new Mega Lucario ex / Hitmontop game) |
+| t-altaria | 2 | **9.1%** | 10.0% | -0.9 |
+| t-sceptile | 0 (floor 1) | **4.5%** | 5.0% | -0.5 |
+| t-vespiquen | 2 | **9.1%** | 10.0% | -0.9 |
+| t-suicune | 1 | **4.5%** | 5.0% | -0.5 |
+| t-weezing | 0 (floor 1) | **4.5%** | 5.0% | -0.5 |
+| t-blaziken | 2 | **9.1%** | 10.0% | -0.9 |
+| t-hydreigon | 3 | **13.6%** | 15.0% | -1.4 |
+| h-charizardy_entei | 3 | **13.6%** | 10.0% | **+3.6** (a third game, exact name, a loss; now 2 exact + 1 inferred) |
+| l-sharpedo | 2 | **9.1%** | 10.0% | -0.9 (still 1 exact + 1 inferred) |
+
+*Every weight above covers **20 of 55 logged games (~36%)**, down from 18 of 33 (~55%).* Twenty games sit on the ten lists,
+25 are mapped to decks outside them, and 10 are unmapped. Counted total is 22 (20 games plus one floor game each for Sceptile
+and Weezing). Small shifts in the other eight lists are only the denominator moving; the two real changes are Charizard Y
+(+3.6) and Lucario (+2.7). All figures were recomputed from `ladder_mapping.csv` by script.
+
+**Files:**
+- `ladder_mapping.csv`: 22 rows appended; the existing 33 are untouched (`git diff` shows +22, -0).
+- `calibration_games.csv`: regenerated, 18 to 20 rows, nothing removed or changed. Added: the brew-08 game against the
+  Lucario / Hitmontop list (usable) and a Hydreigon / Obstagoon video game against the Charizard Y list (not usable: no deck
+  file). Usable set: **18 games, 5-13 (base rate 0.278), 15 pairs, base-rate Brier 0.201.** `build_calibration_games.py` gained
+  six deck entries (brew-08 and brew-09 point at their files; the four c- decks are "no-file").
+- `ladder_counts.md`: regenerated from the CSV by script (classes sum to 55).
+- `calibration_README.md`: its top note now carries these figures. Its power table (computed for 18 games) still has not
+  been re-run; it is now 18 usable games again, but on a different set.
+
+**For Dustin: the 10 unmapped games** (record 8-2; none guessed; full reasons in `ladder_counts.md`):
+1. Butterfree / Caterpie / Klefki, a loss: the panel's Sceptile list has Butterfree and Caterpie but not Klefki, and Mega
+   Sceptile ex was not seen. If it is Sceptile, that list gets its first game.
+2. Entei ex / Charmander / Houndour, a win: fits Charizard Y / Entei (would make it 4 games), but Entei ex is also its own
+   deck and no Charizard was seen.
+3. Riolu / Sawk, a win: Riolu is in the Lucario list; Mega Lucario ex was not seen, and Sawk is not a known partner.
+4. Magikarp, a win by concession at 0-0: Sharpedo / Gyarados (would make it 3) or the listed Magikarp deck.
+5. Tyrogue / Hitmonchan ex / Falinks (win); Snorlax with Massive Body (win); Mega Audino ex / Mantyke / Meditite / Magby
+   (win); Salazzle / Sizzlipede / Chansey (win); Pachirisu ex / Arceus ex / Raichu (win); Arceus ex / Dialga ex / Shaymin (loss):
+   no listed deck contains them.
+
+**For Fable and Dustin, not decided here:**
+- **Rayquaza is now the most-met off-panel deck**: 3 games, 2-1 (top-30 #22). The rule that admitted Charizard Y and Sharpedo
+  ("met twice") would admit it; the gauntlet already has a Rayquaza list. The ten lists are unchanged, as asked.
+- **Coverage is 36%.** The weighted readout now describes how a deck does against roughly a third of the ladder, so the
+  ranking hold has one more reason to stand.
+- **Do the 13 games that are not brew 8 count as ladder games?** They are video-derived with unverified owner lists. They move
+  only the opponent counts (none of the 13 is usable for calibration except the brew-09 game, whose opponent did not map).
+- **10 of the season's 26 wins have "concession" in their notes** (wins "by opponent concession", from 0-0 to 2-2), all among
+  the 22 new games. They count as wins in the log, and the calibration cannot reproduce them (the skeptic's 5g point).
+  (A search for the word also hits one loss, but that is only an opponent's username, "plz_concede".)

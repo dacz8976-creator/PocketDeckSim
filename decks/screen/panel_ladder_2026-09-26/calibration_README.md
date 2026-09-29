@@ -5,6 +5,10 @@
 > Weezing game against the TR Magmar build was removed. The set is now **17 usable games, 5-12 (base rate 0.294), 14
 > pairs**, and the base rate's Brier score is 0.208, not 0.222. The power table (computed for 18 games) has not been
 > re-run and would need it at 17 if the calibration is ever run; it is on hold until more games are logged.
+>
+> **Updated again Sept 28 night (README section 9):** the log grew to 55 games and two rows were added here, so the set is
+> now **18 usable games, 5-13 (base rate 0.278), 15 pairs, base-rate Brier 0.201**. The power table still describes the
+> Sept 26 set, not this one.
 
 **The question.** When Dustin sits down with one of his lists against a deck the simulator has a
 list for, does the simulator's win chance for that exact pair tell us anything about whether he
