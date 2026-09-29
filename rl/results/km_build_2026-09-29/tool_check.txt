@@ -52,3 +52,28 @@ identity 8a: the tool's km3, pairings 0 and 2, i < 40, v item 7's smoke: 80 of 8
 
 ======== The counter tool revised after the code review; every check below is the revised program's (the blocks above are the first program's) ========
 
+  Training Area, table pairing 2 i 1 (seed 20000920001), seat 1: the tool says offered 4, played 1; the trace's lines:
+    seat 1 turn 2: offered [Poké Ball|Small Balloon|Training Area]; chose Play { trainer_card: P-A 005 Poké Ball }
+    seat 1 turn 2: offered [Small Balloon|Training Area]; chose Play { trainer_card: B3b 064 Small Balloon }
+    seat 1 turn 2: offered [Training Area]; chose Place(Pokemon(B2b 040 Darkrai), 2)
+    seat 1 turn 2: offered [Training Area]; chose EndTurn
+    seat 1 turn 4: offered [Copycat|Training Area]; chose Play { trainer_card: B1 225 Copycat }
+    seat 1 turn 6: offered [Field Blower|Training Area]; chose Place(Pokemon(B1 184 Eevee), 3)
+    seat 1 turn 6: offered [Field Blower|Training Area]; chose Evolve { evolution: Pokemon(B1 102 Mega Altaria ex), in_play_idx: 1, from_deck: false }
+    seat 1 turn 6: offered [Field Blower|Training Area]; chose EndTurn
+    seat 1 turn 8: offered [Training Area]; chose Evolve { evolution: Pokemon(B3a 020 Espeon), in_play_idx: 3, from_deck: false }
+    seat 1 turn 8: offered [Training Area]; chose Retreat(3)
+    seat 1 turn 8: offered [Training Area]; chose Play { trainer_card: B2 153 Training Area }
+  Arena of Antiquity, table pairing 2 i 4 (seed 20000920004), seat 1: the tool says offered 4, played 1; the trace's lines:
+    seat 1 turn 2: offered [Arena of Antiquity|Copycat|Korrina|X Speed]; chose Play { trainer_card: B1 225 Copycat }
+    seat 1 turn 8: offered [Arena of Antiquity|Korrina]; chose Attach { attachments: [(1, Fighting, 3)], is_turn_energy: true }
+    seat 1 turn 8: offered [Arena of Antiquity|Korrina]; chose Retreat(2)
+    seat 1 turn 8: offered [Arena of Antiquity|Korrina]; chose Attack(Attack { energy_required: [Fighting], title: "Stretch Kick", fixed_damage: 0, effec
+    seat 1 turn 10: offered [Arena of Antiquity|Korrina|Poké Ball]; chose Retreat(3)
+    seat 1 turn 10: offered [Arena of Antiquity|Korrina|Poké Ball]; chose Play { trainer_card: P-A 005 Poké Ball }
+    seat 1 turn 10: offered [Arena of Antiquity|Korrina]; chose Place(Pokemon(B3 079 Riolu), 1)
+    seat 1 turn 10: offered [Arena of Antiquity|Korrina]; chose Attach { attachments: [(1, Fighting, 0)], is_turn_energy: true }
+    seat 1 turn 10: offered [Arena of Antiquity|Korrina]; chose Attack(Attack { energy_required: [Fighting, Fighting], title: "Fighting Pulse", fixed_dama
+    seat 1 turn 12: offered [Arena of Antiquity|Korrina|Poké Ball]; chose Play { trainer_card: B3 154 Arena of Antiquity }
+tool test 3: traced games, kp3, Altaria v Lucario, seeds 20,000,920,000-019: 20 traced games, 40 seats: the tool's offered and played turns for Arena of Antiquity and Training Area equal the trace's recount in 80 of 80 seat-cards (differing 0); games where each is played: Arena of Antiquity 7, Training Area 9; PASS
+
