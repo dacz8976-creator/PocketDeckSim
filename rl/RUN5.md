@@ -348,8 +348,8 @@ sides with k3 still available; the 0.7.2 wheel and its run identities are untouc
       - Whimsicott, −2.0 ± 1.3.
     - Lucario and Vespiquen are repaired, and Rayquaza's gain is kept.
     - The Altaria diagnosis (`results/koh_2026-09-28/altaria_diagnosis/`) finds the crossed Swablu/Eevee line mostly a reading problem. The deficit is small and spread: R's attack-skipping v Lucario, and fix B double-counting the fresh Zone Energy (a candidate repair, not registered).
-  - kt (kog + Tool/turn-effect switches; amendment 2, Dustin's word): **not adopted, as registered, Sept 29** (`results/kt_tables_2026-09-28/READING.md`; first reader; the second is owed).
-    - kt3 (all three switches, footprint 64.7%, ordinary rule) fails: ΔMSE +1.0 (−16.7 to +18.9), plus own-side harm on three B2e held-out decks and two second lists. Switch 2 is the cause (ktb3: real error 14.3).
+  - kt (kog + Tool/turn-effect switches; amendment 2, Dustin's word): **not adopted, as registered, Sept 29** (`results/kt_tables_2026-09-28/READING.md`; two readers agree on every number; the outcome was audited against the text).
+    - kt3 (all three switches, footprint 64.7%, ordinary rule) fails: ΔMSE +1.0 (−16.7 to +18.9), plus own-side harm on three B2e held-out decks and two second lists. The scoreboard points at switch 2, but not beyond noise (ktb3: real error 14.3, τ margin −0.30 (−0.75 to +0.23)).
     - kta3 (switch 1, the Tool cut, 2.5%, reserve route) passes every test:
       - τ margin +0.21 (90% interval +0.06 to +0.31), real error 14.0 → 13.8;
       - Rayquaza's (d) +1.00 ± 0.39;

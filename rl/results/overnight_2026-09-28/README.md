@@ -5,10 +5,16 @@ Kept by the laptop session ("Project familiarization"). **Since about 11:30 pm C
 ## Decisions waiting for you
 
 - **kt's result, and whether to register the Tool fix on its own** (`../kt_tables_2026-09-28/READING.md`, 87a68d4).
-  - **kt as a whole is not adopted.** kt3 (all three switches) changed 65% of games and didn't improve the scoreboard: real error 14.0 → 14.1. It also played five coverage decks' own sides worse. Switch 2 is the cause.
-  - **kta3, your Tool fix alone** (switch 1, the reserve route you described), **passed every one of its tests.** It changes only 2.5% of games, it improves the scoreboard a little (real error 14.0 → 13.8, whole interval above zero), it gains on the Rayquaza list (+1.0 ± 0.4), and it hurts no deck anywhere. Your Skarmory deck's A/B is running now.
-  - The registration fixed this outcome before any game: "kt3 fails: nothing adopted ... the next candidate is registered afresh". kog stays the pilot.
-  - **Your call:** register kta (the Tool cut alone) as a fresh candidate? Tonight's cells are now development data for it, so its confirmation would come from new data, e.g. the post-freeze pull.
+  - **kt as a whole is not adopted.** kt3 (all three switches) changed 65% of games and didn't improve the scoreboard: real error 14.0 → 14.1. It also played five coverage decks' own sides worse. The scoreboard points at switch 2, but not beyond noise.
+  - **kta3** (switch 1 alone, the Tool cut) **passed every one of its tests on the reserve route.**
+    - It changes only 2.5% of games.
+    - It improves the scoreboard a little: real error 14.0 → 13.8, with the whole interval above zero.
+    - It gains on the Rayquaza list, +1.0 ± 0.4, about half of that from the Vespiquen row.
+    - No deck is worse beyond noise. Most coverage rows barely exercise it, though; Scizor is the one real coverage test, and it shows no harm.
+  - An independent second reader agrees on every number, and an auditor confirmed the outcome against the registration text.
+  - The registration fixed the outcome before any game: "kt3 fails: nothing adopted ... the next candidate is registered afresh". kog stays the pilot.
+  - Your hinge said "kt is the Tool fix on the reserve route". The 15% trigger put kt3 on the ordinary rule, and only kta3 on the reserve route, so this is "something else" and your conversation. (Calling kta3 "the Tool fix" is my reading, not your words.)
+  - **Your call:** register kta (the Tool cut alone) afresh? It would need your word first, a development-data declaration for everything read tonight, and confirmation on post-freeze data. Your Skarmory deck's A/B is still running and unread.
 
 - **Two calls on km, the Trainer-pricing candidate** (its review, `../trainer_pricing_2026-09-28/REVIEW.md`, three Sonnet lenses; still a draft, nothing registered):
   1. **Keep the retreat-cost switch (N1, which prices Goo-zooka) inside km?** Nothing in the 45 cells can test it, so as written it would be adopted without a gain test. The review leans to keeping its code but taking it out of km's gate, and measuring Goo-zooka's play rate. It also found your Goo-zooka concern points the other way from the draft's prediction: the code suggests N1 should make the bot play Goo-zooka more.
