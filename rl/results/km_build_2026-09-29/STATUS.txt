@@ -1,0 +1,7 @@
+2026-09-29T18:38:36Z STEP 1 BUILD: done. km at 9c11b30 (engine/ = 233bced's plus engine/src/players/ only: mod.rs, value_functions.rs, public_pricing_player.rs). Release programs built in the cloud: deckgym sha256 fcbcdba4968b38f806904e602b3c2999271297390fb5e03a0c88ec1cc89c2e3b, legality_scan sha256 e8f72631f812871f529dd8374610032acea03d1ddfe0d106ff0cd0725ccefdd5
+2026-09-29T18:38:36Z STEP 2 TESTS: done. km's 11 tests pass; full suite 1986 passed, 0 failed (suite.log)
+2026-09-29T18:38:42Z identity start: build 9c11b30; scan sha256 e8f72631f812871f529dd8374610032acea03d1ddfe0d106ff0cd0725ccefdd5; item 8: engine/ diff from 233bced is players/ only (engine/src/players/mod.rs engine/src/players/public_pricing_player.rs engine/src/players/value_functions.rs)
+2026-09-29T18:38:55Z 9c11b30_kog3_p02_40 done in 13 s (80 games)
+2026-09-29T18:38:55Z identity: item 6: kog3 at the km build, pairings 0 and 2, 40 deals, v table_kog3: 80 of 80 games equal on moves, decisions, openings, winner_seat, points, seed, first_seat (run has 80; missing 0, differing 0); clean; PASS
+2026-09-29T18:39:18Z 9c11b30_km3_p02_40 done in 23 s (80 games)
+2026-09-29T18:39:18Z identity: item 7: km3 smoke, pairings 0 and 2, 40 deals: 80 games in 2 cells, complete; clean; PASS (no reference: results not read)
