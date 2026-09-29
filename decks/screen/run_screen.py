@@ -2,7 +2,7 @@
 """Quick screen: a bot pilots a deck against the opponent panel (decks/screen/opponents/).
 
 Purpose: catch decks that are clearly bad before Dustin spends ladder games on them. Not a ranking.
-See decks/README.md for the pass bar and how to read the result.
+The quick screen's percentages are not a verdict and not a ranking (RUN5); the one approved bar is the floor check's (decks/screen/floor.py, RUN5 A2).
 
 usage: run_screen.py DECK.txt [DECK2.txt ...] [--engine PATH/TO/deckgym] [--pilot kog3] [--meta-pilot kog3]
                      [--games 60] [--seed 7100]

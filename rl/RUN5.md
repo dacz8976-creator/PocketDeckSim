@@ -521,21 +521,24 @@ sides with k3 still available; the 0.7.2 wheel and its run identities are untouc
   - **Accuracy judges only what it can detect** (Dustin, Sept 29 morning, in the laptop session; adopted from the eval-power check, `results/eval_power_2026-09-29/`).
     - His words: "a candidate whose gain is below the detectable size is not judged adopt or reject on accuracy at all. It's judged on no-harm, the coverage decks, and its behavioural footprint (the census counts — did it chip, did it play the Tool, did Rayquaza attack), and 'not adopted' for a sub-threshold gain is recorded as 'undetectable at this size,' not as a negative. Otherwise the project keeps rejecting fixes it can't measure and calling that rigor."
     - **The detectable size.** Every ΔMSE reading prints the interval's own sd and the true gain it would detect: half the time (MDE50, 1.96 sd, which is the interval's half-width) and 80% of the time (2.80 sd), each also as real error.
-      - A gain below the detectable size is exactly an interval that crosses zero, since the point estimate is then smaller than the half-width.
       - The check found the size is set by the candidate. Big movers like koh are limited by Limitless's thin cells (about 80% of the variance): MDE50 is about 2.1 points of real error, 14.05 → 11.9. Small-footprint candidates are limited by the simulator's deals: MDE50 is about 0.7 points.
-    - **The rule.** When the ΔMSE interval isn't wholly below zero, accuracy is not judged either way. The result reads "undetectable at this size". The candidate is then judged on three things:
-      1. no harm: the τ̂ margin's 90% lower bound at −1.0 or above, and no mixed-row veto that counts;
-      2. the coverage decks, by "How coverage rows count";
-      3. its behavioural footprint: the mechanism counters its registration named move the way it predicted (did it chip, did it play the Tool, did Rayquaza attack).
-      - Passing all three means adopted, "unconfirmed", with confirmation at the post-freeze pull as for a no-harm fix.
-      - Failing any means not adopted, recorded by the test it failed (harm, coverage, or mechanism), never as an accuracy negative.
-      - A gain whose interval is wholly below zero is read as before.
+    - **The rule: an accuracy result has three outcomes** (corrected Sept 29 on Astra's catch; Dustin: "it should be written exactly that way"; the first transcription had sent every non-gain to the fallback):
+      1. **Interval wholly on the improvement side** (ΔMSE, new minus current, wholly below zero): demonstrated improvement. The accuracy clause passes.
+      2. **Interval wholly on the worsening side** (wholly above zero): demonstrated worsening. The candidate fails on accuracy "regardless of anything else — no fallback".
+      3. **Interval spanning zero:** "inconclusive at this size". Only this case goes to the fallback, where the verdict rests on four things:
+         - no harm: the τ̂ margin's 90% lower bound at −1.0 or above, and no mixed-row veto that counts;
+         - the coverage decks, by "How coverage rows count";
+         - the pre-named decks: clause (d);
+         - the behavioural footprint.
+         - Passing all four means adopted, "unconfirmed", with confirmation at the post-freeze pull as for a no-harm fix.
+         - Failing any means not adopted, recorded by the test it failed, never as an accuracy negative.
+    - **The footprint counts are diagnostic in the normal route and gating only in the fallback.** Even there they gate only as predictions written before the games, with a threshold attached: "Jasmine played on at least X percent of eligible turns", not "more often".
+    - **Clause (d)'s gain stays required in both routes.** It is the paired, simulator-only test whose noise more deals actually reduce, "so it's the one place a small gain can be shown rather than assumed".
     - **More deals only where they help.** Where the simulator's share dominates a candidate's cells, the registration may fix more deals in those cells before the tables, on the cloud's spare cores ("cheaply, and only there").
     - **Scope.** It applies to candidates registered from Sept 29. Past verdicts are relabelled, not re-read:
-      - koh's and kt3's accuracy results read "undetectable at this size";
+      - koh's (−45.1, −100.4 to +10.4) and kt3's (+1.0, −16.7 to +18.9) accuracy intervals both span zero, so both read "inconclusive at this size";
       - both stay not adopted, on their vetoes and coverage harms;
       - a new reading needs a new registration.
-    - The operational wording above (the MDE50 equivalence; "passing all three means adopted, unconfirmed") is the laptop's reading of his rule, and his to correct.
   - **The held-out direction, reported beside every verdict** (Dustin, Sept 29 morning): "Report the held-out direction beside every verdict, as proposed, and revisit whether it should gate when the post-freeze data reaches the size rule — at that point it's a real test."
     - Every verdict prints how B2e's held-out archetypes (pairings 0-47) moved under the candidate: how many moved closer to their Limitless figure and how many further, and the mean change in miss.
     - It gates nothing. Blocking on "dev up, test flat" would reject at random, since "flat" is the expected reading for any sub-threshold candidate, real ones included.
