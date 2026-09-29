@@ -4,7 +4,13 @@
 Synthetic data only: every deck, list, engine "binary" and CSV here is invented in a temporary folder, the engine is
 never started (run_calibration.run is replaced by a stub), and nothing under the repo is written.
 
-    python3 -B -m unittest -v test_calibration_safety      (from this folder; standard library only)
+Run them in WSL (or any Linux), from the repo root:
+
+    cd '/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/decks/screen/panel_ladder_2026-09-26'
+    python3 -B -m unittest -v test_calibration_safety      (standard library only; about a second)
+
+The runner is Linux-only (folder lock, symlinks, POSIX permissions and paths), so on Windows this file skips itself with
+a note instead of reporting failures that say nothing about the runner.
 
 What they pin down (Dustin, Sept 29): an identical resume works; changed inputs and conflicting records fail clearly
 BEFORE anything is appended or scored; valid records keep exactly the scores the original calibrate.py gave.
@@ -21,6 +27,10 @@ import types
 import unittest
 from pathlib import Path
 from unittest import mock
+
+linux_only = unittest.skipUnless(sys.platform.startswith("linux"),
+                                 "run these tests in WSL or Linux: the runner they test is Linux-only "
+                                 "(python3 -B -m unittest -v test_calibration_safety, from decks/screen/panel_ladder_2026-09-26)")
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 if HERE not in sys.path:
@@ -130,6 +140,7 @@ class Repo:
         return read_rows(self.out)
 
 
+@linux_only
 class RunnerResume(unittest.TestCase):
     def setUp(self):
         self.w = Repo(self)
@@ -796,16 +807,27 @@ class RunnerResume(unittest.TestCase):
         self.assertIn("nothing was run and nothing was appended", msg)
         self.assertEqual((calls, self.w.raw()), (0, before))
 
-    def test_a_resume_with_nothing_to_resume_says_so_and_an_identical_resume_says_nothing_was_written(self):
-        out, msg, calls = self.w.call("--resume")
+    def test_a_resume_of_a_missing_empty_or_header_only_file_is_refused_and_a_fresh_start_is_a_run_without_resume(self):
+        for name, content in (("missing", None), ("empty", b""), ("header only", (",".join(FIELDS) + "\n").encode())):
+            if self.w.out.exists():
+                self.w.out.unlink()
+            if content is not None:
+                self.w.out.write_bytes(content)
+            out, msg, calls = self.w.call("--resume")
+            self.assertIn("--resume was given but sim_results.csv", msg, name)
+            self.assertIn("nothing to resume", msg, name)
+            self.assertIn("leave out --resume", msg, name)
+            self.assertIn("nothing was run and nothing was appended", msg, name)
+            self.assertEqual(calls, 0, name)
+            self.assertEqual(self.w.out.read_bytes() if content is not None else self.w.out.exists(),
+                             content if content is not None else False, name)
+        self.w.out.unlink()
+        out, msg, calls = self.w.call()                                       # a fresh start needs no --resume
         self.assertIsNone(msg, out)
-        self.assertIn("WARNING: nothing to resume: sim_results.csv does not exist or is empty", out)
-        out, msg, calls = self.w.call("--resume")
+        self.assertEqual(calls, 4)
+        out, msg, calls = self.w.call("--resume")                             # and an identical resume of it writes nothing
         self.assertIn("nothing written: every pair (2) was already in sim_results.csv, the file is unchanged", out)
         self.assertNotIn("wrote ", out)
-        self.w.out.write_text(",".join(FIELDS) + "\n")
-        out, msg, calls = self.w.call("--resume")
-        self.assertIn("nothing to resume in sim_results.csv: it holds no finished pair", out)
 
     def test_an_empty_plan_is_refused(self):
         self.w.games_csv.write_text("game_id,deck_file,opponent_file,result,usable\n")
@@ -848,6 +870,7 @@ class RunnerResume(unittest.TestCase):
         self.assertRefusedUntouched(msg, calls, raw, "this line repeats the header", "nothing was run and nothing was appended")
 
 
+@linux_only
 class EngineOutput(unittest.TestCase):
     """rc.run() parses the engine's text; tested with subprocess.run replaced, so no engine is ever started."""
 
@@ -885,6 +908,7 @@ class EngineOutput(unittest.TestCase):
             self.assertIn("Player 0 won: 3", msg)                   # the tail of what the engine printed is shown
 
 
+@linux_only
 class RunnerLayout(unittest.TestCase):
     def test_games_beyond_the_slot_spacing_are_refused_even_for_a_plan_only_run(self):
         w = Repo(self)
@@ -914,6 +938,7 @@ class RunnerLayout(unittest.TestCase):
         self.assertEqual(max(c[4] for c in w.calls), 21_107_195_000)   # stays inside 21,107,199,999
 
 
+@linux_only
 class RunnerPilot(unittest.TestCase):
     def test_default_is_the_working_pilot_on_both_sides_and_says_so(self):
         w = Repo(self, npairs=1)
@@ -989,6 +1014,7 @@ SIM = [("d0", "o0", 200, 110, 4, "any"), ("d1", "o1", 200, 60, 0, "any"), ("d2",
        ("d0", "o0", 100, 70, 0, "first"), ("d2", "o2", 100, 45, 1, "second")]
 
 
+@linux_only
 class ScoringBase(unittest.TestCase):
     """The fixtures the scorer's tests share (no tests of its own)."""
 
@@ -1867,6 +1893,7 @@ class ScoringBoundaries(ScoringBase):
         self.assertIn("games=200 wins=200 draws=1 do not make sense", self.refused())
 
 
+@linux_only
 class RunnerBoundaries(unittest.TestCase):
     """Runner behaviour the round-3 mutation review found nothing pinning: the edges of the reserved block, plan-only runs,
     an edited opponent, rows without seeds, pilot defaults, and the shape of the games file."""
@@ -2013,6 +2040,7 @@ class RunnerBoundaries(unittest.TestCase):
         self.assertEqual(seen, [(str(w.root), "/some/engine"), (str(w.root), None)])
 
 
+@linux_only
 class HelperUnits(unittest.TestCase):
     def test_strict_int(self):
         self.assertEqual(calibrate.strict_int(" 500 ", "x"), 500)

@@ -24,7 +24,8 @@ those disagree or if --pilot/--meta-pilot name another bot, unless --allow-pilot
 Output and resume. Each finished pair is one row, appended and flushed at once, carrying what is needed to check it
 later: engine and its hash, sha256 of the deck and the opponent file (line endings normalised), both pilots, game
 counts per slot and both seeds, and schema "1". Nothing is appended to a file that already holds rows unless
---resume is given, and --resume reuses a finished pair only after checking, against THIS run, the engine hash, both
+--resume is given; --resume on a file that is missing, empty or holds only a header is refused (a mistyped --out
+would otherwise replay every pair), so a fresh start is a run without --resume. --resume reuses a finished pair only after checking, against THIS run, the engine hash, both
 files' contents, both pilots, the game count and the seeds. Any difference, a duplicated or overlapping record, a
 second row for a pair, an unknown header, or a planned seed that another row already used, stops the run BEFORE the
 engine is started or a row is written, and every problem found is listed. Rows without full provenance (older or
@@ -257,7 +258,8 @@ def check_existing(out, header, plan, ident, resume, accept_unverified):
     except SystemExit as e:          # a bad row, a repeated header line, a cut number: refuse in the same form as every other problem
         return {}, [], [str(e.code)]
     if not rows:
-        return {}, ([f"nothing to resume in {name}: it holds no finished pair, so every pair will be played"] if resume else []), []
+        return {}, [], ([f"--resume was given but {name} holds no finished pair (a header only), so there is nothing to resume; "
+                         f"to start it, leave out --resume"] if resume else [])
     if not resume:
         return {}, [], [f"{name} already holds {len(rows)} row{'s' if len(rows) != 1 else ''}; appending would write games twice. "
                         f"Pass --resume to continue it (each finished pair is then verified), or choose a new --out."]
@@ -475,8 +477,8 @@ def execute(a, pairs, label, half, state):
     reuse, warnings = {}, []
     header = read_out_header(a.out)
     if a.resume and header is None:
-        warnings.append(f"nothing to resume: {os.path.basename(a.out)} does not exist or is empty, so every pair will be played "
-                        f"(a mistyped --out?)")
+        problems.append(f"--resume was given but {os.path.basename(a.out)} does not exist or is empty, so there is nothing to resume "
+                        f"(a mistyped --out?); to start a new file, leave out --resume")
     if header is not None and not problems:
         reuse, warnings, more = check_existing(a.out, header, plan, ident, a.resume, a.accept_unverified_resume)
         problems += more
