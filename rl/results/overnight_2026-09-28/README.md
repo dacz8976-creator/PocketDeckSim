@@ -47,6 +47,11 @@ Kept by the laptop session ("Project familiarization"), which Dustin put in char
 
 ## What happened
 
+- **koh's B2e held-out rows are read, and kt's gate opened at 02:45 UTC** (0497f47, 2c6d220).
+  - The laptop's 48,000 games equal the cloud's copy game for game.
+  - No held-out deck moves more than 2 points further from its real figure, so there's no held-out veto. koh stays not adopted, and kog stays the pilot.
+  - **For your brew 07:** under koh, both Hoopa / Absol lists do worse: the held-out one 56.9 → 45.5, and your own file 33.2 → 26.4. koh's mixed rows, running now, will show whether that's koh playing Hoopa worse. kog, the pilot the screen uses, isn't affected.
+
 - **Your evening rulings are recorded as your words** (3e30896, 5c0cf04):
   - coverage rows count for the mixed-row veto;
   - what koh's and kt's readings hinge on;
@@ -78,10 +83,8 @@ Kept by the laptop session ("Project familiarization"), which Dustin put in char
 
 ## Running now
 
-- koh's B2e held-out rows on the laptop (ETA about 01:20 UTC).
-  - Then koh's B2e mixed rows, which complete its coverage record.
-  - kt's gate opens once the B2e rows are read, without waiting for the mixed rows (Fable: they can't change kt's base).
-- kt's identity checks at its build: the old pilots must replay game for game.
+- koh's B2e mixed rows (about 2-3 hours from 02:25 UTC), which complete its coverage record.
+- kt: the last identity checks. Then, on its own, the timing run, the four tables on the 45 cells (about 3 hours), and the footprint.
 - The cloud: its own kt identity and tables, as a cross-check.
 - Sonnet agents:
   - the PR preparation;
