@@ -15,6 +15,12 @@ on the base kog3 at the official engine. The route is the ordinary adoption rule
        beyond the variation check's paired 95% interval. Figures: the development half's average over the same
        opponents for Lucario, Suicune and Weezing (scoreboard v2/v3's cells); for Charizard Y, B2e's held-out pooled
        figure for charizardy_entei.
+  Amendment 4 (Dustin, Sept 28 evening: "coverage rows count for the mixed-row veto and are reported for accuracy")
+  supersedes the two-part tests above: Scizor's and the second lists' accuracy is reported only; for them and for B2e's
+  held-out decks, the own side in the mixed rows worse beyond paired noise (the 95% interval wholly below zero) is a
+  veto. B2e's "more than 2 further" stands; without own-side harm it is an investigation item (rule v2). B2e's rows
+  are the laptop's (laptop_runs/b2e_koh3, cross-checked game for game against the cloud's copy when both exist); its
+  mixed rows are laptop_runs/mixed_b2e_koh3_first (koh3 on the held deck, kog3 on the panel), 48-95 reported.
 Usage: python3 read_koh.py <dir with the cloud's koh files> > READING_numbers.txt"""
 import csv, json, math, os, subprocess, sys
 from collections import defaultdict
@@ -62,14 +68,24 @@ def panel(path):
 
 
 print("\n6a. B2e's held-out archetypes (panel average, equal-weight over 8; Limitless pooled):")
-bk = os.path.join(CLOUD, "b2e_koh3.jsonl")
+bk, bc = os.path.join(RUNS, "b2e_koh3.jsonl"), os.path.join(CLOUD, "b2e_koh3.jsonl")
+if not os.path.exists(bk):
+    bk = bc
+FURTHER = {}
 if not os.path.exists(bk):
     print("   b2e_koh3.jsonl not in yet")
 else:
+    print(f"   rows: {os.path.relpath(bk, HERE)}")
+    if bk != bc and os.path.exists(bc):
+        x_, y_ = load(bk), load(bc)
+        f_ = ("moves", "winner_seat", "points", "seed")
+        same_ = x_.keys() == y_.keys() and all(x_[k][f] == y_[k][f] for k in x_ for f in f_)
+        print(f"   cross-check against the cloud's b2e_koh3: {'identical' if same_ else 'DIFFERENT'} on {', '.join(f_)} "
+              f"({len(x_)} and {len(y_)} games)")
+        assert same_, "the laptop's and the cloud's b2e_koh3 differ: stop and write it down"
     a, b = panel(os.path.join(CLOUD, "b2e_kog3.jsonl")), panel(bk)
     assert all(a[k].keys() == b[k].keys() and len(a[k]) == 8 for k in a) and \
         sum(1 for _ in open(bk, encoding="utf-8")) == 96 * 500, "b2e_koh3 incomplete"
-    fires = []
     for (block, k) in sorted(a):
         x, y = sum(a[(block, k)].values()) / 8, sum(b[(block, k)].values()) / 8
         base = k.replace("dustin_", "")
@@ -77,11 +93,10 @@ else:
         cells = [o for o in a[(block, k)] if (arch, o) in lim["pooled"]]
         L = sum(lim["pooled"][(arch, o)] for o in cells) / len(cells)
         fur = abs(y - L) - abs(x - L)
-        counted = block.startswith("A")
-        tag = ("VETO CANDIDATE (mixed rows needed)" if fur > 2 else "no") if counted else "reported only"
-        fires += [k] if counted and fur > 2 else []
+        FURTHER[k] = (block, fur)
+        tag = ("more than 2 further: a veto only with own-side harm (6d)" if fur > 2 else "no") \
+            if block.startswith("A") else "reported only"
         print(f"   {block} {k:28} kog3 {x:5.1f} -> koh3 {y:5.1f}; Limitless {L:5.1f}; further by {fur:+.1f}: {tag}")
-    print(f"   held-out veto: {'none fires' if not fires else 'CANDIDATES ' + ', '.join(fires)}")
 
 
 def paired(base_rows, new_rows, own):
@@ -97,20 +112,21 @@ def paired(base_rows, new_rows, own):
 
 
 # 6b. The Scizor row.
-print("\n6b. The Scizor row (amendment 2):")
+print("\n6b. The Scizor row (amendment 2's rows, amendment 4's test):")
 sk, sg = load(os.path.join(RUNS, "scizor_koh3.jsonl")), load(os.path.join(RUNS, "scizor_kog3.jsonl"))
 m1 = load(os.path.join(RUNS, "mixed_scizor_koh3_first.jsonl")); m2 = load(os.path.join(RUNS, "mixed_scizor_koh3_second.jsonl"))
 assert {k[0] for k in m1} == {k[0] for k in m2} == set(range(8)) and len(m1) == len(m2) == 4000, "Scizor mixed rows incomplete"
 fds = lambda g: g["first_deck_score"]
 m, h, n = paired(sg, m1, fds)
-veto = m < -2 and m + h < 0
-print(f"   own side (koh3 on Scizor v kog3 on both): {m:+.2f} +/- {h:.2f} over {n} rows -> {'VETO' if veto else 'no veto'}")
+veto = m + h < 0
+print(f"   own side (koh3 on Scizor v kog3 on both): {m:+.2f} +/- {h:.2f} over {n} rows -> "
+      f"{'VETO (own side worse beyond paired noise; amendment 4)' if veto else 'no harm'}")
 m, h, n = paired(sg, m2, lambda g: 1 - g["first_deck_score"])
 print(f"   the other direction (koh3 on the panel list, kog3 on Scizor), the panel's side: {m:+.2f} +/- {h:.2f} (reported)")
 print(f"   Scizor's panel average, both sides: kog3 {100 * sum(map(fds, sg.values())) / len(sg):.1f} -> koh3 {100 * sum(map(fds, sk.values())) / len(sk):.1f} (reported)")
 
 # 6c. The second lists.
-print("\n6c. The second lists (amendment 2):")
+print("\n6c. The second lists (amendment 2's rows, amendment 4's test; accuracy reported):")
 v2 = json.load(open(os.path.join(RES, "scoreboard_v2_2026-09-25", "limitless_v2_dev.json"), encoding="utf-8"))["cells"]
 for v in ("v-lucario_2", "v-suicune_2", "v-weezing_2", "l-charizardy"):
     rows = {int(r["pairing"]): r for r in csv.DictReader(open(os.path.join(T, f"var_{v}.tsv"), encoding="utf-8"), delimiter="\t")}
@@ -143,6 +159,31 @@ for v in ("v-lucario_2", "v-suicune_2", "v-weezing_2", "l-charizardy"):
     if miss:
         sys.exit(f"{v}: mixed rows missing for pairings {miss}; wait for the laptop runs")
     m, h, n = paired(gg, mix, own)
-    counts = fur > 2 and m + h < 0
-    print(f"   {v:13} opponent average kog3 {x:5.1f} -> koh3 {y:5.1f}; figure {L:5.1f} ({src}); further by {fur:+.1f}; "
-          f"own side (mixed) {m:+.2f} +/- {h:.2f} over {n} -> {'VETO' if counts else ('investigation item' if fur > 2 else 'no veto')}")
+    counts = m + h < 0
+    print(f"   {v:13} opponent average kog3 {x:5.1f} -> koh3 {y:5.1f}; figure {L:5.1f} ({src}); further by {fur:+.1f} "
+          f"(reported); own side (mixed) {m:+.2f} +/- {h:.2f} over {n} -> "
+          f"{'VETO (own side worse beyond paired noise; amendment 4)' if counts else 'no harm'}")
+
+# 6d. B2e's own-side mixed rows (amendment 4): koh3 on the held deck, kog3 on the panel, against kog3 on both.
+print("\n6d. B2e's own side in the mixed rows (koh3 on the held deck, kog3 on the panel; amendment 4):")
+mb = os.path.join(RUNS, "mixed_b2e_koh3_first.jsonl")
+if not os.path.exists(mb) or not FURTHER:
+    print("   mixed_b2e_koh3_first.jsonl (or b2e_koh3) not in yet")
+else:
+    base_b2e, mix_b2e = load(os.path.join(CLOUD, "b2e_kog3.jsonl")), load(mb)
+    assert len(mix_b2e) == 96 * 500 and {k[0] for k in mix_b2e} == set(range(96)), "B2e mixed rows incomplete"
+    assert {(g["bot_a"], g["bot_b"]) for g in mix_b2e.values()} == {("koh3", "kog3")}, "B2e mixed rows: wrong pilots"
+    vetoes = []
+    for key in sorted({tsv[p]["held_key"] for p in range(96)}, key=lambda k: min(p for p in range(96) if tsv[p]["held_key"] == k)):
+        rows = {kk: g for kk, g in mix_b2e.items() if tsv[kk[0]]["held_key"] == key}
+        m, h, n = paired(base_b2e, rows, fds)
+        block, fur = FURTHER[key]
+        harm = m + h < 0
+        if block.startswith("A"):
+            tag = "VETO (own side worse beyond paired noise)" if harm else \
+                ("investigation item (more than 2 further, own side not worse)" if fur > 2 else "no harm")
+            vetoes += [key] if harm else []
+        else:
+            tag = "reported (Dustin's file)" + ("; own side worse beyond paired noise" if harm else "")
+        print(f"   {block} {key:28} own side {m:+.2f} +/- {h:.2f} over {n} rows; further by {fur:+.1f} -> {tag}")
+    print(f"   B2e held-out veto: {'none' if not vetoes else ', '.join(vetoes)}")
