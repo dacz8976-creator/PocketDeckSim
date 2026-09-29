@@ -28,3 +28,6 @@
 2026-09-29T19:49:09Z tool test 4 PASS: --first-deal 20 --games 20 gives 8a's rows for deals 20-39 of the 17 cells exactly (340 rows)
 2026-09-29T19:49:10Z tool test 5 PASS: the tool refuses --seed-base with --cells km17, --cells with --pairs, --decks with --pairs, --root in table mode, --trace-out with --no-counts, and deals past a pairing's 10,000 seeds, before any game
 2026-09-29T19:49:10Z STEP 3 COUNTER TOOL: done (tests 1-5 and identity 8a pass)
+2026-09-29T19:59:56Z 9c11b30_km3_new13_500 done in 2564 s (6500 games)
+2026-09-29T19:59:57Z identity: item 5: km3 on the 13 new cells without Altaria or Lucario, 500 deals, v new17_kog3: 6500 of 6500 games equal on moves, decisions, openings, winner_seat, points, seed, first_seat, a_file, b_file (run has 6500; missing 0, differing 0); clean; PASS
+2026-09-29T20:01:06Z STEP 2 TESTS (after the review): at fb825d1 (9c11b30 plus one test and a moved doc comment, test code only) the full suite is 1987 passed, 0 failed (suite_fb825d1.log); the head's scan replays identity items 6 and 7 (160 games) byte-identically to 9c11b30's

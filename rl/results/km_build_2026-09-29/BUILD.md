@@ -76,7 +76,7 @@ In `value_functions.rs`, `mod km_tests`, and in `players/mod.rs` and `public_pri
 - **Diagnostic** (open question 13; `diagnostic_the_card_term_rewards_x_speed_before_copycat_and_a_play_under_hiking_trail_by_one`):
   - X Speed then Copycat, against Copycat alone, with no Trail: the card term differs by exactly +1.
   - With Hiking Trail in play and a hand under 3, playing any card is +1.
-- **Full suite:** at 9c11b30, 1,986 passed, 0 failed (`suite.log`). That is 233bced's 1,975 plus km's 11. No existing test's expected value was edited. At fb825d1: SUITE2.
+- **Full suite:** at 9c11b30, 1,986 passed, 0 failed (`suite.log`). That is 233bced's 1,975 plus km's 11. No existing test's expected value was edited. At fb825d1, with the review's added test: 1,987 passed, 0 failed (`suite_fb825d1.log`).
 
 ## The counter tool (step 3; identity 8a)
 
@@ -192,7 +192,7 @@ All runs use the cloud's programs built from 9c11b30 (legality_scan sha256 `e8f7
 ## Files
 
 - `STATUS.txt`: one line per step, with the sha256s.
-- `suite.log`: the full suite.
+- `suite.log`, `suite_fb825d1.log`: the full suite at 9c11b30 and at fb825d1.
 - `run_km.sh`, `identity.py`, `identity/`: the identity runs (each `9c11b30_*.jsonl` with its scan page `.txt`) and `identity_check.txt`.
 - `check_tool.sh`, `tool_check.py`, `tool_check.txt`: the counter tool's tests and identity 8a.
 - `identity/9c11b30_tool_kog3_km17_40.jsonl`, `identity/9c11b30_tool_km3_p02_40.jsonl`: 8a's rows (no counts).
