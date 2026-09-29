@@ -490,6 +490,49 @@ mod tests {
         assert!(is_hyper_ray(&decide(PlayerCode::KPR { max_depth: 3 })), "kpr3 chips with Hyper Ray");
     }
 
+    /// km3 through get_player (km's registration, section 4.1, "Wiring through get_player"). Player 0's Machoke
+    /// (Stage 1 [F], [F][F] Strength 50) holds one [F] with no Energy to attach, so it can't attack this turn and the
+    /// search sees no attack in its line. Player 1's Mega Lucario ex (190 HP, ex) holds [F][F]. Player 0's only card
+    /// is a Stadium. Arena of Antiquity makes Strength 70 against the ex, 3 hits instead of 4, and adds nothing to Mega
+    /// Lucario ex's hits on the non-ex Machoke: only km's N2 sees that, in the clock, so km3 plays Arena and kog3
+    /// doesn't. With Hiking Trail as the card instead, N2 reads nothing and km3 plays as kog3. If the KM arm of
+    /// get_player stopped using the km value function, km3 would play as kog3 (or kor) and this fails.
+    #[test]
+    fn km3_from_get_player_plays_arena_where_n2_saves_a_hit_and_otherwise_plays_as_kog3() {
+        let decide_with = |stadium: CardId| {
+            let mut game = crate::test_support::get_initialized_game(0);
+            let mut state = game.get_state_clone();
+            state.set_board(
+                vec![PlayedCard::from_id(CardId::A1144Machoke).with_energy(vec![EnergyType::Fighting])],
+                vec![PlayedCard::from_id(CardId::B3081MegaLucarioEx).with_energy(vec![EnergyType::Fighting; 2])],
+            );
+            state.current_player = 0;
+            state.turn_count = 5;
+            state.move_generation_stack.clear();
+            state.active_stadium = None;
+            state.hands[0] = vec![crate::database::get_card_by_enum(stadium)];
+            state.energy_zone[0].current = None;
+            game.set_state(state);
+            let real = game.get_state_clone();
+            let observation = PlayerObservation::from_state(&real, 0, &RevealedKnowledge::default());
+            let (_, mut actions) = real.generate_possible_actions();
+            crate::observation::canonical_actions(&mut actions);
+            let decide = |code: PlayerCode| {
+                let mut player = get_player(Deck::default(), &Deck::default(), &code);
+                player.decision_fn(&mut StdRng::seed_from_u64(3), &observation, &actions).action
+            };
+            (decide(PlayerCode::KM { max_depth: 3 }), decide(PlayerCode::KOG { max_depth: 3 }))
+        };
+        let plays = |action: &SimpleAction, name: &str| {
+            matches!(action, SimpleAction::Play { trainer_card } if trainer_card.name == name)
+        };
+        let (km, kog) = decide_with(CardId::B3154ArenaofAntiquity);
+        assert!(plays(&km, "Arena of Antiquity"), "km3 plays Arena: {km:?}");
+        assert!(!plays(&kog, "Arena of Antiquity"), "kog3 doesn't: {kog:?}");
+        let (km, kog) = decide_with(CardId::B2b069HikingTrail);
+        assert_eq!(km, kog, "with Hiking Trail, km3 plays as kog3");
+    }
+
     /// kpr3 is built the same way (get_player) and keeps kp's pricing: it prices Darkness Claw too.
     #[test]
     fn kpr3_from_get_player_also_prices_darkness_claw() {

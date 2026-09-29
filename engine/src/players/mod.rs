@@ -194,16 +194,20 @@ pub enum PlayerCode {
     /// 'koh<N>': 'kog<N>' + R', kph's projection with fixes A and B, on the composed pilot (kph's registration section
     /// 2; value_functions::public_clock_effect_koh_value_function).
     KOH { max_depth: usize },
-    /// 'kt<N>' is 'kog<N>' with Tools and temporary damage cuts priced by what they do, registered Sept 26
-    /// (rl/results/kt_2026-09-26/README.md; amendment 2 re-issued it on kog, Sept 28; before that it was on kp): the defender's temporary cuts and damage-cut Tools in the
+    /// 'km<N>': 'kog<N>' with switch N2, the attacker's lasting Stadium damage bonus (Training Area, Arena of Antiquity)
+    /// in the threat clock for both sides, registered Sept 29 (rl/results/trainer_pricing_2026-09-28/
+    /// REGISTRATION_DRAFT.md; value_functions::public_clock_effect_km_value_function).
+    KM { max_depth: usize },
+    /// 'kt<N>' is 'kp<N>' with Tools and temporary damage cuts priced by what they do, registered Sept 26
+    /// (rl/results/kt_2026-09-26/README.md, amendment 1): the defender's temporary cuts and damage-cut Tools in the
     /// threat clock (switch 1), no flat +10 for a Tool on the Active (switch 2), and damage back to the attacker in the
     /// holder's own clock (switch 3) (value_functions::public_clock_effect_kt_value_function).
     KT { max_depth: usize },
-    /// 'kta<N>': 'kog<N>' with kt's switch 1 only. Read by the route its footprint fixes (amendment 2).
+    /// 'kta<N>': 'kp<N>' with kt's switch 1 only. Read under the reserve route; otherwise attribution.
     KTA { max_depth: usize },
-    /// 'ktb<N>': 'kog<N>' with kt's switch 2 only. Diagnostic.
+    /// 'ktb<N>': 'kp<N>' with kt's switch 2 only. Diagnostic.
     KTB { max_depth: usize },
-    /// 'ktc<N>': 'kog<N>' with kt's switch 3 only. Diagnostic.
+    /// 'ktc<N>': 'kp<N>' with kt's switch 3 only. Diagnostic.
     KTC { max_depth: usize },
 }
 /// Custom parser function enforcing case-insensitivity
@@ -271,6 +275,13 @@ pub fn parse_player_code(s: &str) -> Result<PlayerCode, String> {
             }
             return Err(format!("Invalid player code: {s}. Use '{prefix}<number>', e.g. '{prefix}3'"));
         }
+    }
+    // 'km<N>' (see PlayerCode::KM): kog + N2. Before 'k<N>', which would reject it. No other code starts with 'km'.
+    if let Some(depth) = lower.strip_prefix("km") {
+        if let Ok(max_depth) = depth.parse::<usize>() {
+            return Ok(PlayerCode::KM { max_depth });
+        }
+        return Err(format!("Invalid player code: {s}. Use 'km<number>', e.g. 'km3'"));
     }
     // 'kpf<N>' and 'kpg<N>' (see PlayerCode::KPF), and 'kpha<N>', 'kphb<N>' before 'kph<N>' (see PlayerCode::KPH).
     // Before 'kp<N>' and 'k<N>', which would reject them.
@@ -661,6 +672,7 @@ fn get_player(deck: Deck, opponent_deck: &Deck, player: &PlayerCode) -> Box<dyn 
         | PlayerCode::KPG { max_depth }
         | PlayerCode::KOG { max_depth }
         | PlayerCode::KOH { max_depth }
+        | PlayerCode::KM { max_depth }
         | PlayerCode::KPH { max_depth }
         | PlayerCode::KPHA { max_depth }
         | PlayerCode::KPHB { max_depth }
@@ -675,6 +687,7 @@ fn get_player(deck: Deck, opponent_deck: &Deck, player: &PlayerCode) -> Box<dyn 
                 PlayerCode::KPG { .. } => Box::new(value_functions::public_clock_effect_kpg_value_function),
                 PlayerCode::KOG { .. } => Box::new(value_functions::public_clock_effect_kog_value_function),
                 PlayerCode::KOH { .. } => Box::new(value_functions::public_clock_effect_koh_value_function),
+                PlayerCode::KM { .. } => Box::new(value_functions::public_clock_effect_km_value_function),
                 PlayerCode::KPH { .. } => Box::new(value_functions::public_clock_effect_kph_value_function),
                 PlayerCode::KPHA { .. } => Box::new(value_functions::public_clock_effect_kpha_value_function),
                 PlayerCode::KPHB { .. } => Box::new(value_functions::public_clock_effect_kphb_value_function),
@@ -899,6 +912,23 @@ mod s42_tier_parse_tests {
 
     /// The two §42 flags must be independent, and OFF for every pre-§42 tier — otherwise
     /// re-running history would not reproduce it.
+    #[test]
+    fn km_parses_before_k_and_nothing_else_moves() {
+        // km (rl/results/trainer_pricing_2026-09-28/REGISTRATION_DRAFT.md, section 4.1): 'km<N>' before 'k<N>'.
+        assert_eq!(parse_player_code("km3").unwrap(), PlayerCode::KM { max_depth: 3 });
+        assert_eq!(parse_player_code("KM5").unwrap(), PlayerCode::KM { max_depth: 5 });
+        for bad in ["km", "kmx", "km3x", "km1a"] {
+            assert!(parse_player_code(bad).is_err(), "{bad}");
+        }
+        // Nothing else moved.
+        assert_eq!(parse_player_code("kog3").unwrap(), PlayerCode::KOG { max_depth: 3 });
+        assert_eq!(parse_player_code("koh3").unwrap(), PlayerCode::KOH { max_depth: 3 });
+        assert_eq!(parse_player_code("kph3").unwrap(), PlayerCode::KPH { max_depth: 3 });
+        assert_eq!(parse_player_code("kt3").unwrap(), PlayerCode::KT { max_depth: 3 });
+        assert_eq!(parse_player_code("kta3").unwrap(), PlayerCode::KTA { max_depth: 3 });
+        assert_eq!(parse_player_code("k3").unwrap(), PlayerCode::K { max_depth: 3 });
+    }
+
     #[test]
     fn test_search_flags_are_off_for_historical_tiers() {
         use crate::players::expectiminimax_player::SearchFlags;
