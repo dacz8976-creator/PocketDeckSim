@@ -445,9 +445,12 @@ added and none changed: brew-05 against the Rayquaza list (a win, usable), brew-
 Hydreigon / Obstagoon video game against it (a loss, not usable: no deck file). `build_calibration_games.py` maps the archetype
 to that file. Nothing was run. The power table is still the Sept 26 one.
 
-**Still open, not decided here:**
+**Decided Sept 28, about 23:40 CDT** (by the Fable session under Dustin's delegation, relayed; Dustin has seen the count and has
+not objected):
+- **The 13 games that are not brew 8 count as ladder games.** They are his games on his ladder and the log is the record; they
+  only move opponent counts. Their owner lists are unverified, which affects which deck he played, not who he met. None of the
+  13 is usable for calibration (the four c- decks have no deck file, and the brew-09 game's opponent has no list).
+
+**Noted:**
 - **Coverage.** It was 36% on ten lists and is 42% on eleven: the weighted readout describes a bit over two-fifths of the
   ladder, so the ranking hold has one more reason to stand.
-- **Do the 13 games that are not brew 8 count as ladder games?** They are video-derived with unverified owner lists. They move
-  only the opponent counts; none of the 13 is usable for calibration (the four c- decks have no file, and the brew-09 game's
-  opponent has no list).
