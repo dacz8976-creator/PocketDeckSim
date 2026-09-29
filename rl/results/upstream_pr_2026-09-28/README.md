@@ -5,9 +5,10 @@
   Water Shuriken test was added on Sept 28 about 10:45 pm; same author, same fix, one more test).
 - The body's wording note is one sentence, and it has a place for the in-game result.
 - Clippy passes (the cloud's run, Sept 29; section "Formatting and lint").
+- The in-game Poison test is done and in the body (`heavyhelmetpoisontest.MP4`: Heavy Helmet cut an attack 110 → 90; Poison then did the full 10).
 - Waiting on:
-  - Dustin's in-game test (Astra/Codex are reviewing his `heavyhelmetpoisontest.MP4`);
-  - his Fork click and "push".
+  - his Fork click and "push";
+  - optionally, the Water Shuriken test for the second line. Dustin: "I'll get you proof". If it isn't done, delete that placeholder line before posting; the card text and the Poison test carry the argument.
 
 Nothing here has been pushed to GitHub, no remote was added, and nothing was opened. The branch exists
 only in the WSL clone `/home/dacz8976/upstream-pr/deckgym-core`. Nothing in the PocketDeckSim repo was
@@ -243,6 +244,9 @@ battle FAQ" as its sources, which is why the tests live there and the PR body ci
 - If you can, also do it with Cascoon's Harden or Shinx's Hide in effect: Poison should still do 10.
 - Greninja's Water Shuriken on a Pokémon holding Heavy Helmet (Retreat Cost 3 or more): the Ability's 20 should land in full (20, not 0). Your result fills the second "Verified in-game on Sept 29" line in the body.
 - Record it in the Pocket Shot List as you did the Helmet, Rare Candy and Pulse checks. The laptop then fills the line "Verified in-game on Sept 29" in the body.
+- **Done for Poison (Sept 28):** `heavyhelmetpoisontest.MP4`, reviewed by Sol with an independent lead check (`Battle Logs/Recording_QA/heavyhelmetpoisontest_sol/`).
+  - Heavy Helmet cut Magmar's Derisive Roasting from 110 to 90, then Poison did the full 10 at Checkup.
+  - The first "Verified in-game" line in the body is filled from that review. The Water Shuriken line is still open.
 
 ## Steps for Dustin (website / GitHub Desktop terms)
 
@@ -307,7 +311,11 @@ Each text, quoted exactly, limits the card to damage done by attacks.
 
 ## Why Poison, Burn and Ability damage are not damage from attacks
 
-**Verified in-game on Sept 29:** _(to be filled from the test: a Poisoned Pokémon holding Heavy Helmet took __ damage at Checkup [and a Pokémon under Harden / Hide took __])_.
+**Verified in-game (recorded test, Sept 28):**
+- Wailmer (100 HP, Retreat Cost 3) held Heavy Helmet in the Active Spot.
+- Team Rocket's Weezing ex's Boiler Smog made it Poisoned and Burned.
+- Team Rocket's Magmar then used Derisive Roasting: "10, ... 50 more damage for each Special Condition affecting your opponent's Active Pokémon", so 110. The game showed **90**, with Heavy Helmet's indicator, and Wailmer went from 100 to 10 HP. That is the −20 on an attack.
+- At Checkup, **Poison then did its full 10** (10 → 0 HP): Heavy Helmet did not reduce it.
 
 **Verified in-game on Sept 29:** _(Greninja's Water Shuriken did __ to a Pokémon holding Heavy Helmet)_
 

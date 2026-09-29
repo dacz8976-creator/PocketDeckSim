@@ -89,6 +89,11 @@ retained in active rules4: Heavy Helmet reduces attack damage only. Metal Core B
 helmet doesn't protect against poison or effects. Just attack. It doesn't protect against greninja's snipe ability
 either, but I'll get you proof." His in-game tests (Poison at Checkup, and Greninja's Water Shuriken on a Heavy Helmet
 holder) are to follow, and go in `08_tests_to_record.md` and the upstream pull request (`../rl/results/upstream_pr_2026-09-28/`).
+**[OBSERVED heavyhelmetpoisontest.MP4, Sept 28]** (Sol review with an independent lead check, `Battle Logs/Recording_QA/heavyhelmetpoisontest_sol/`):
+- Wailmer (Retreat Cost 3) held Heavy Helmet and was Poisoned and Burned by Boiler Smog.
+- Team Rocket's Magmar's Derisive Roasting (10 + 50 × 2 conditions = 110) showed 90 with the Helmet's indicator (00:72; 100 → 10 HP).
+- Poison then did the full 10 (00:73.5; 10 → 0).
+- So Heavy Helmet cuts attack damage and not Poison. The Water Shuriken test is still to come.
 
 The game has three separate prevention wordings, and they do different things **[IN-GAME TEXT]**:
 - "Prevent all damage done by attacks" — damage only; Special Conditions and other effects still apply.

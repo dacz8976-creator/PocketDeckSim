@@ -13,8 +13,9 @@ Kept by the laptop session ("Project familiarization"). **Since about 11:30 pm C
     - The body has a line waiting for your in-game result, with the FAQ beneath it as secondary.
     - A sixth test for your Greninja point: Water Shuriken, which Heavy Helmet cut to 0 upstream (commit `2aa705d`; upstream's suite 1176 passing).
     - Clippy, upstream's lint check, passes with 0 warnings (the cloud's run), and formatting is clean. Every check upstream asks for passes.
+  - **Your Poison test is in the body.** Heavy Helmet cut Magmar's attack from 110 to 90, then Poison did the full 10 and knocked out Wailmer. It's recorded in `rules/02` too.
   - **Left for you:**
-    1. The in-game test: Heavy Helmet on a Retreat-3 Active, Poisoned, and read the Checkup damage (10 is the rule). Harden or Hide too if you can. Log it in the Pocket Shot List.
+    1. Optionally, the Water Shuriken test for the second line. If you skip it, the laptop deletes that line before you post.
     2. Click Fork on github.com/bcollazo/deckgym-core and tell the laptop "push".
     3. Click "Compare & pull request" on your fork. The README walks through it.
 - **The Sleep/Paralysis pull request isn't needed.** Upstream merged the same fix on Sept 27 (PR #379, by another contributor, with tests). So the new set will arrive with it already in, as you wanted, and there's nothing to send (`engine/UPSTREAM.md`).
