@@ -1,0 +1,149 @@
+A. PLUG-IN: sd of dMSE (points^2) and the smallest true dMSE cleared 50% / 80% of the time; tau after = sqrt(14.05^2 - delta)
+   (a future candidate that moves the 45 cells the way each reading's candidate did; sd measured from that reading's games)
+
+-- like koh3 vs kog3 (point dMSE -45.1; analytic var: sim 135.5, Limitless 626.8, cross 33.9)
+   configuration                                          sd   MDE50  -> tau   MDE80  -> tau  Limitless share
+   now: 500 deals, 2,214 matches                        28.2    55.3   11.92    79.1   10.88              79%
+   sim x2                                               26.7    52.3   12.05    74.7   11.08              88%
+   sim x4                                               25.9    50.7   12.11    72.5   11.18              94%
+   sim x8                                               25.5    49.9   12.15    71.3   11.23              97%
+   Limitless x0.5 (post-freeze read alone, 1,107)       38.2    74.8   11.07   106.9    9.51              86%
+   Limitless x1.5 (dev + post-freeze read, 3,321)       24.0    47.0   12.26    67.2   11.41              73%
+   Limitless x2                                         21.6    42.3   12.45    60.5   11.70              67%
+   Limitless x4                                         17.3    34.0   12.78    48.6   12.20              52%
+   Limitless x infinity (sim noise only)                11.6    22.8   13.21    32.6   12.84               0%
+   sim x4 + Limitless x1.5                              21.4    41.9   12.47    59.9   11.73              91%
+   sim x4 + Limitless x4                                13.9    27.2   13.05    38.9   12.59              81%
+   sim x infinity (Limitless noise only)                25.0    49.1   12.18    70.1   11.28             100%
+
+-- like kpf3 vs kp3 (point dMSE -84.2; analytic var: sim 151.9, Limitless 899.7, cross 35.7)
+   configuration                                          sd   MDE50  -> tau   MDE80  -> tau  Limitless share
+   now: 500 deals, 2,214 matches                        33.0    64.6   11.52    92.4   10.25              83%
+   sim x2                                               31.5    61.8   11.65    88.3   10.44              91%
+   sim x4                                               30.8    60.3   11.71    86.2   10.55              95%
+   sim x8                                               30.4    59.6   11.74    85.1   10.60              97%
+   Limitless x0.5 (post-freeze read alone, 1,107)       45.0    88.2   10.45   126.0    8.45              89%
+   Limitless x1.5 (dev + post-freeze read, 3,321)       27.8    54.6   11.95    78.0   10.93              77%
+   Limitless x2                                         24.9    48.8   12.19    69.7   11.30              73%
+   Limitless x4                                         19.6    38.5   12.61    55.0   11.93              58%
+   Limitless x infinity (sim noise only)                12.3    24.2   13.16    34.5   12.76               0%
+   sim x4 + Limitless x1.5                              25.4    49.7   12.15    71.1   11.24              93%
+   sim x4 + Limitless x4                                16.3    31.9   12.86    45.6   12.32              85%
+   sim x infinity (Limitless noise only)                30.0    58.8   11.77    84.0   10.65             100%
+
+-- like kpr3 vs kp3 (point dMSE -84.7; analytic var: sim 149.3, Limitless 877.4, cross 35.5)
+   configuration                                          sd   MDE50  -> tau   MDE80  -> tau  Limitless share
+   now: 500 deals, 2,214 matches                        32.6    63.9   11.56    91.3   10.30              83%
+   sim x2                                               31.1    61.0   11.68    87.2   10.50              90%
+   sim x4                                               30.4    59.6   11.74    85.1   10.60              95%
+   sim x8                                               30.0    58.8   11.77    84.1   10.65              97%
+   Limitless x0.5 (post-freeze read alone, 1,107)       44.4    87.1   10.50   124.5    8.54              89%
+   Limitless x1.5 (dev + post-freeze read, 3,321)       27.5    54.0   11.98    77.1   10.97              77%
+   Limitless x2                                         24.6    48.2   12.21    69.0   11.33              72%
+   Limitless x4                                         19.4    38.1   12.62    54.4   11.96              58%
+   Limitless x infinity (sim noise only)                12.2    24.0   13.17    34.2   12.77               0%
+   sim x4 + Limitless x1.5                              25.1    49.1   12.18    70.2   11.28              93%
+   sim x4 + Limitless x4                                16.1    31.5   12.88    45.1   12.34              85%
+   sim x infinity (Limitless noise only)                29.6    58.1   11.80    83.0   10.70             100%
+
+-- like kog3 vs kp3 (point dMSE -43.1; analytic var: sim 48.7, Limitless 30.1, cross 8.0)
+   configuration                                          sd   MDE50  -> tau   MDE80  -> tau  Limitless share
+   now: 500 deals, 2,214 matches                         9.3    18.3   13.38    26.1   13.09              35%
+   sim x2                                                7.6    15.0   13.51    21.4   13.27              52%
+   sim x4                                                6.7    13.0   13.58    18.6   13.37              68%
+   sim x8                                                6.1    12.0   13.62    17.1   13.43              81%
+   Limitless x0.5 (post-freeze read alone, 1,107)       11.2    21.9   13.25    31.3   12.89              48%
+   Limitless x1.5 (dev + post-freeze read, 3,321)        8.6    16.9   13.44    24.1   13.16              27%
+   Limitless x2                                          8.2    16.1   13.46    23.1   13.20              22%
+   Limitless x4                                          7.6    15.0   13.51    21.4   13.27              13%
+   Limitless x infinity (sim noise only)                 7.0    13.7   13.55    19.5   13.34               0%
+   sim x4 + Limitless x1.5                               5.8    11.4   13.64    16.2   13.46              60%
+   sim x4 + Limitless x4                                 4.5     8.8   13.73    12.6   13.59              37%
+   sim x infinity (Limitless noise only)                 5.5    10.8   13.66    15.4   13.49             100%
+
+-- like kpg3 vs kp3 (point dMSE -43.2; analytic var: sim 45.7, Limitless 26.2, cross 7.0)
+   configuration                                          sd   MDE50  -> tau   MDE80  -> tau  Limitless share
+   now: 500 deals, 2,214 matches                         8.9    17.4   13.42    24.9   13.13              33%
+   sim x2                                                7.2    14.2   13.53    20.3   13.31              50%
+   sim x4                                                6.3    12.3   13.61    17.6   13.41              67%
+   sim x8                                                5.7    11.2   13.64    16.0   13.47              80%
+   Limitless x0.5 (post-freeze read alone, 1,107)       10.6    20.8   13.29    29.7   12.95              47%
+   Limitless x1.5 (dev + post-freeze read, 3,321)        8.2    16.1   13.46    23.1   13.20              26%
+   Limitless x2                                          7.9    15.5   13.49    22.1   13.24              21%
+   Limitless x4                                          7.3    14.4   13.53    20.6   13.30              12%
+   Limitless x infinity (sim noise only)                 6.8    13.2   13.57    18.9   13.36               0%
+   sim x4 + Limitless x1.5                               5.5    10.7   13.66    15.4   13.49              58%
+   sim x4 + Limitless x4                                 4.3     8.4   13.75    12.0   13.62              36%
+   sim x infinity (Limitless noise only)                 5.1    10.0   13.69    14.3   13.53             100%
+
+-- like kog3 vs kpg3 (point dMSE +0.1; analytic var: sim 3.3, Limitless 4.1, cross 1.1)
+   configuration                                          sd   MDE50  -> tau   MDE80  -> tau  Limitless share
+   now: 500 deals, 2,214 matches                         2.9     5.7   13.85     8.1   13.76              49%
+   sim x2                                                2.5     4.9   13.87     7.0   13.80              66%
+   sim x4                                                2.3     4.5   13.89     6.4   13.82              79%
+   sim x8                                                2.2     4.2   13.90     6.0   13.83              88%
+   Limitless x0.5 (post-freeze read alone, 1,107)        3.7     7.2   13.79    10.3   13.68              60%
+   Limitless x1.5 (dev + post-freeze read, 3,321)        2.6     5.1   13.87     7.3   13.79              41%
+   Limitless x2                                          2.4     4.7   13.88     6.8   13.81              35%
+   Limitless x4                                          2.1     4.2   13.90     6.0   13.84              23%
+   Limitless x infinity (sim noise only)                 1.8     3.5   13.92     5.1   13.87               0%
+   sim x4 + Limitless x1.5                               1.9     3.8   13.91     5.4   13.86              73%
+   sim x4 + Limitless x4                                 1.4     2.7   13.95     3.9   13.91              54%
+   sim x infinity (Limitless noise only)                 2.0     4.0   13.91     5.7   13.85             100%
+
+
+Power at each reading's own observed effect (if the truth equalled the estimate; winner's-curse caveat):
+  koh3 vs kog3: effect +45.1:  now 36% | sim x2 39% | sim x4 41% | sim x8 43% | Limitless x1.5 47% | sim x4 + Limitless x1.5 56%
+  kpf3 vs kp3: effect +84.2:  now 72% | sim x2 76% | sim x4 78% | sim x8 79% | Limitless x1.5 86% | sim x4 + Limitless x1.5 91%
+  kpr3 vs kp3: effect +84.7:  now 74% | sim x2 78% | sim x4 80% | sim x8 81% | Limitless x1.5 87% | sim x4 + Limitless x1.5 92%
+  kog3 vs kp3: effect +43.1:  now 100% | sim x2 100% | sim x4 100% | sim x8 100% | Limitless x1.5 100% | sim x4 + Limitless x1.5 100%
+  kpg3 vs kp3: effect +43.2:  now 100% | sim x2 100% | sim x4 100% | sim x8 100% | Limitless x1.5 100% | sim x4 + Limitless x1.5 100%
+  kog3 vs kpg3: effect -0.1:  now 2% | sim x2 2% | sim x4 2% | sim x8 2% | Limitless x1.5 2% | sim x4 + Limitless x1.5 2%
+
+
+B. SCENARIO: well-aimed candidate; e*_k = kog3's noise-corrected miss (shrunk so mean e*^2 = 197.4 = tau-hat^2 = 14.05^2 = 197.4)
+
+-- surgical (feasible minimum: only games that must flip do)
+   configuration                                        f50   MDE50    tau    f80   MDE80    tau   sd@50  Lim share@50
+   now: 500 deals, 2,214 matches                      0.003     1.2  14.01  0.006     2.5  13.96     0.6            3%
+   sim x2                                             0.002     0.6  14.03  0.003     1.3  14.00     0.3            3%
+   sim x4                                             0.001     0.3  14.04  0.002     0.6  14.03     0.2            3%
+   sim x8                                             0.000     0.2  14.04  0.001     0.3  14.04     0.1            3%
+   Limitless x0.5 (post-freeze read alone, 1,107)     0.003     1.4  14.00  0.008     3.0  13.94     0.7            6%
+   Limitless x1.5 (dev + post-freeze read, 3,321)     0.003     1.2  14.01  0.006     2.4  13.96     0.6            2%
+   Limitless x2                                       0.003     1.1  14.01  0.006     2.3  13.97     0.6            1%
+   Limitless x4                                       0.003     1.1  14.01  0.006     2.2  13.97     0.6            1%
+   Limitless x infinity (sim noise only)              0.003     1.1  14.01  0.005     2.1  13.97     0.5            0%
+   sim x4 + Limitless x1.5                            0.001     0.3  14.04  0.002     0.6  14.03     0.1            2%
+   sim x4 + Limitless x4                              0.001     0.3  14.04  0.001     0.6  14.03     0.1            1%
+   sim x infinity (Limitless noise only)              0.000     0.0  14.05  0.000     0.0  14.05     0.0          100%
+
+-- footprint of kog3 vs kp3 (6% of deals differ)
+   configuration                                        f50   MDE50    tau    f80   MDE80    tau   sd@50  Lim share@50
+   now: 500 deals, 2,214 matches                      0.036    13.9  13.55  0.052    20.1  13.31     7.1            3%
+   sim x2                                             0.025     9.8  13.70  0.037    14.3  13.53     5.0            3%
+   sim x4                                             0.018     7.0  13.80  0.026    10.1  13.69     3.6            3%
+   sim x8                                             0.013     4.9  13.87  0.018     7.2  13.79     2.5            3%
+   Limitless x0.5 (post-freeze read alone, 1,107)     0.039    15.3  13.50  0.059    22.6  13.22     7.8            6%
+   Limitless x1.5 (dev + post-freeze read, 3,321)     0.035    13.4  13.56  0.050    19.4  13.34     6.9            2%
+   Limitless x2                                       0.034    13.2  13.57  0.049    19.0  13.36     6.7            2%
+   Limitless x4                                       0.033    12.8  13.59  0.048    18.4  13.38     6.6            1%
+   Limitless x infinity (sim noise only)              0.032    12.5  13.60  0.046    17.8  13.40     6.4            0%
+   sim x4 + Limitless x1.5                            0.017     6.7  13.81  0.025     9.7  13.70     3.4            2%
+   sim x4 + Limitless x4                              0.016     6.4  13.82  0.024     9.2  13.72     3.3            1%
+   sim x infinity (Limitless noise only)              0.000     0.0  14.05  0.000     0.0  14.05     0.0          100%
+
+-- footprint of koh3 vs kog3 (29% of deals differ)
+   configuration                                        f50   MDE50    tau    f80   MDE80    tau   sd@50  Lim share@50
+   now: 500 deals, 2,214 matches                      0.066    25.2  13.12  0.096    36.0  12.70    12.9            3%
+   sim x2                                             0.047    18.1  13.39  0.068    25.9  13.10     9.2            3%
+   sim x4                                             0.033    12.9  13.58  0.048    18.6  13.37     6.6            3%
+   sim x8                                             0.024     9.2  13.72  0.034    13.2  13.57     4.7            3%
+   Limitless x0.5 (post-freeze read alone, 1,107)     0.074    28.1  13.01  0.110    41.0  12.51    14.3            6%
+   Limitless x1.5 (dev + post-freeze read, 3,321)     0.063    24.2  13.16  0.091    34.4  12.77    12.4            2%
+   Limitless x2                                       0.062    23.7  13.18  0.089    33.6  12.80    12.1            2%
+   Limitless x4                                       0.060    23.0  13.21  0.086    32.3  12.85    11.7            1%
+   Limitless x infinity (sim noise only)              0.058    22.2  13.24  0.082    31.1  12.90    11.3            0%
+   sim x4 + Limitless x1.5                            0.032    12.4  13.60  0.046    17.7  13.40     6.3            2%
+   sim x4 + Limitless x4                              0.030    11.8  13.62  0.043    16.7  13.44     6.0            1%
+   sim x infinity (Limitless noise only)              0.000     0.0  14.05  0.000     0.0  14.05     0.0           99%

@@ -1,0 +1,55 @@
+
+### ANALYTIC kog3_vs_kpg3
+deals per cell: min 500 max 500; Limitless matches total 2214 (28 table cells 1608, 17 new 606); min cell n 8
+dMSE point +0.14; tau old 14.04, tau new 14.05; tau^2 old 197.2, new 197.4, diff +0.1
+variance points^4: sim 3.3 (sd 1.81), Limitless 4.1 (sd 2.03), cross 1.1 (sd 1.03); total 8.4 sd 2.91
+Limitless share of total variance 48.8%; sim share 38.7%; cross 12.6%; Limitless share of (sim+Limitless) 55.8%
+half-width both 5.7; sim only 3.5; Limitless only 4.0; sim+cross 4.1
+interval both -5.6 to +5.8; sim-only -3.4 to +3.7; Limitless-only -3.8 to +4.1
+cells: sim larger 3 / Limitless larger 6 / no movement 36
+top cells by Limitless variance (cell part sd: Limitless, sim; d = new-old in points; cum share of Limitless var):
+   altaria v vespiquen         L  1.03  sim  0.90  d   +4.6  cum  25.6%  (nL 93)
+   altaria v sceptile          L  0.94  sim  0.42  d   +4.4  cum  46.9%  (nL 108)
+   altaria v weezing           L  0.82  sim  0.44  d   +2.7  cum  63.3%  (nL 47)
+   altaria v hydreigon         L  0.77  sim  0.43  d   +2.6  cum  77.7%  (nL 56)
+   altaria v suicune           L  0.66  sim  0.46  d   +2.4  cum  88.1%  (nL 65)
+   altaria_greninja v altaria           L  0.47  sim  0.24  d   -1.8  cum  93.5%  (nL 68)
+   altaria v blaziken          L  0.39  sim  0.94  d   +1.2  cum  97.1%  (nL 34)
+   altaria v lucario           L  0.31  sim  0.57  d   +2.0  cum  99.5%  (nL 161)
+   rayquaza v altaria           L  0.14  sim  0.65  d   -0.6  cum 100.0%  (nL 86)
+   blaziken v hydreigon         L  0.00  sim  0.00  d   +0.0  cum 100.0%  (nL 24)
+   blaziken v lucario           L  0.00  sim  0.00  d   +0.0  cum 100.0%  (nL 59)
+   blaziken v sceptile          L  0.00  sim  0.00  d   +0.0  cum 100.0%  (nL 23)
+top 6 cells' share of Limitless variance: 93.5%
+top 10 cells' share of Limitless variance: 100.0%
+  group Rayquaza(9): 9 cells; share of Limitless var 0.5%; share of sim var 13.0%
+  group A/G(8): 8 cells; share of Limitless var 5.4%; share of sim var 1.8%
+  group panel(28): 28 cells; share of Limitless var 94.1%; share of sim var 85.3%
+top cells by sim variance:
+   altaria v blaziken          sim  0.94  L  0.39  d   +1.2
+   altaria v vespiquen         sim  0.90  L  1.03  d   +4.6
+   rayquaza v altaria           sim  0.65  L  0.14  d   -0.6
+   altaria v lucario           sim  0.57  L  0.31  d   +2.0
+   altaria v suicune           sim  0.46  L  0.66  d   +2.4
+   altaria v weezing           sim  0.44  L  0.82  d   +2.7
+share of deals whose score differs: 1.8%; mean per-deal diff sd 13.3 points (rms over cells)
+
+### MDE kog3_vs_kpg3
+tau_old^2 = 197.2; z50 = 1.96, z80 = 2.802
+  now                sd   2.9  MDE50   5.7 -> real error 13.84 | MDE80   8.1 -> 13.75
+  sim x2             sd   2.5  MDE50   4.9 -> real error 13.87 | MDE80   7.0 -> 13.79
+  sim x4             sd   2.3  MDE50   4.5 -> real error 13.88 | MDE80   6.4 -> 13.81
+  Limitless x0.5     sd   3.7  MDE50   7.2 -> real error 13.78 | MDE80  10.3 -> 13.67
+  Limitless x1.5     sd   2.6  MDE50   5.1 -> real error 13.86 | MDE80   7.3 -> 13.78
+  Limitless x2       sd   2.4  MDE50   4.7 -> real error 13.87 | MDE80   6.8 -> 13.80
+  sim x4 + L x1.5    sd   1.9  MDE50   3.8 -> real error 13.91 | MDE80   5.4 -> 13.85
+  sim x4 + L x4      sd   1.4  MDE50   2.7 -> real error 13.95 | MDE80   3.9 -> 13.91
+  floor unlimited sim 4.0; floor unlimited Limitless 3.5
+  power at true = observed +0.1, now: 2.8%
+  power at true = observed +0.1, sim x4: 2.9%
+  power at true = observed +0.1, Limitless x1.5: 2.8%
+  power at true = observed +0.1, Limitless x2.13: 2.9%
+  power at true = observed +0.1, sim x4 + L x2.13: 3.0%
+  power at true = observed +0.1, Limitless x0.5: 2.7%
+  sim x1: not reachable with any Limitless size
+  sim x4: not reachable with any Limitless size

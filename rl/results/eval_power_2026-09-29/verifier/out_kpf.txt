@@ -1,0 +1,60 @@
+
+### ANALYTIC kpf3_vs_kp3
+deals per cell: min 500 max 500; Limitless matches total 2214 (28 table cells 1608, 17 new 606); min cell n 8
+dMSE point -84.18; tau old 15.51, tau new 12.50; tau^2 old 240.5, new 156.1, diff -84.4
+variance points^4: sim 151.9 (sd 12.33), Limitless 899.7 (sd 30.00), cross 35.7 (sd 5.97); total 1087.3 sd 32.97
+Limitless share of total variance 82.7%; sim share 14.0%; cross 3.3%; Limitless share of (sim+Limitless) 85.6%
+half-width both 64.6; sim only 24.2; Limitless only 58.8; sim+cross 26.8
+interval both -148.8 to -19.5; sim-only -108.3 to -60.0; Limitless-only -143.0 to -25.4
+cells: sim larger 20 / Limitless larger 25 / no movement 0
+top cells by Limitless variance (cell part sd: Limitless, sim; d = new-old in points; cum share of Limitless var):
+   rayquaza v blaziken          L 12.81  sim  2.19  d  +16.3  cum  18.2%  (nL 8)
+   rayquaza v altaria_greninja  L  9.91  sim  2.10  d  +26.8  cum  29.1%  (nL 36)
+   rayquaza v hydreigon         L  9.86  sim  1.48  d  +20.8  cum  39.9%  (nL 20)
+   rayquaza v suicune           L  9.74  sim  1.67  d  +24.2  cum  50.5%  (nL 28)
+   rayquaza v vespiquen         L  9.39  sim  3.39  d  +26.0  cum  60.3%  (nL 36)
+   rayquaza v weezing           L  9.27  sim  1.95  d  +20.2  cum  69.8%  (nL 15)
+   rayquaza v lucario           L  9.19  sim  4.07  d  +35.6  cum  79.2%  (nL 58)
+   blaziken v weezing           L  6.10  sim  1.45  d  +11.5  cum  83.4%  (nL 17)
+   hydreigon v vespiquen         L  5.43  sim  1.93  d  +15.6  cum  86.6%  (nL 38)
+   rayquaza v sceptile          L  4.63  sim  2.45  d  +14.8  cum  89.0%  (nL 50)
+   rayquaza v altaria           L  4.16  sim  1.33  d  +17.4  cum  91.0%  (nL 86)
+   hydreigon v suicune           L  3.72  sim  2.49  d  +10.8  cum  92.5%  (nL 35)
+top 6 cells' share of Limitless variance: 69.8%
+top 10 cells' share of Limitless variance: 89.0%
+  group Rayquaza(9): 9 cells; share of Limitless var 83.5%; share of sim var 35.4%
+  group A/G(8): 8 cells; share of Limitless var 2.5%; share of sim var 26.1%
+  group panel(28): 28 cells; share of Limitless var 14.0%; share of sim var 38.5%
+top cells by sim variance:
+   rayquaza v lucario           sim  4.07  L  9.19  d  +35.6
+   rayquaza v vespiquen         sim  3.39  L  9.39  d  +26.0
+   altaria_greninja v sceptile          sim  3.30  L  0.88  d   +2.4
+   sceptile v vespiquen         sim  3.10  L  0.63  d   +2.2
+   altaria_greninja v blaziken          sim  3.09  L  0.29  d   -0.6
+   altaria_greninja v hydreigon         sim  2.85  L  1.03  d   +2.0
+share of deals whose score differs: 31.3%; mean per-deal diff sd 54.6 points (rms over cells)
+
+### MDE kpf3_vs_kp3
+tau_old^2 = 240.5; z50 = 1.96, z80 = 2.802
+  now                sd  33.0  MDE50  64.6 -> real error 13.26 | MDE80  92.4 -> 12.17
+  sim x2             sd  31.5  MDE50  61.8 -> real error 13.37 | MDE80  88.3 -> 12.34
+  sim x4             sd  30.8  MDE50  60.3 -> real error 13.43 | MDE80  86.2 -> 12.42
+  Limitless x0.5     sd  45.0  MDE50  88.2 -> real error 12.34 | MDE80 126.0 -> 10.70
+  Limitless x1.5     sd  27.8  MDE50  54.6 -> real error 13.64 | MDE80  78.0 -> 12.75
+  Limitless x2       sd  24.9  MDE50  48.8 -> real error 13.85 | MDE80  69.7 -> 13.07
+  sim x4 + L x1.5    sd  25.4  MDE50  49.7 -> real error 13.81 | MDE80  71.1 -> 13.02
+  sim x4 + L x4      sd  16.3  MDE50  31.9 -> real error 14.44 | MDE80  45.6 -> 13.96
+  floor unlimited sim 58.8; floor unlimited Limitless 24.2
+  power at true = observed -84.2, now: 72.3%
+  power at true = observed -84.2, sim x4: 78.1%
+  power at true = observed -84.2, Limitless x1.5: 85.6%
+  power at true = observed -84.2, Limitless x2.13: 93.3%
+  power at true = observed -84.2, sim x4 + L x2.13: 97.4%
+  power at true = observed -84.2, Limitless x0.5: 46.5%
+  to reach 80% at |effect| 84.2 with sim x1: Limitless x1.25 = 2758 matches
+  to reach 80% at |effect| 84.2 with sim x4: Limitless x1.05 = 2326 matches
+
+### BRUTE FORCE kpf3_vs_kp3 (4000 experiments)
+  mean est -84.27 (observed -84.18); MC sd of est 33.22; mean in-experiment analytic sd 33.31
+  fraction of experiments whose interval clears zero: 72.2%  (Normal rule at observed: 71.5%)
+  (59s)

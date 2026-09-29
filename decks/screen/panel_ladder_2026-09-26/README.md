@@ -6,6 +6,8 @@ proposal or a preparation. No screen, floor or calibration game was played beyon
 noted below; `decks/screen/run_screen.py`, `floor.py`, `opponents/` and `START_HERE.md` are untouched;
 the ranking hold from Dustin's Sept 25 decision still stands (section 4).
 
+**Standing job (Dustin, Sept 29):** the panel agent keeps `brew_scorecard.md` (floor figure, predicted setup speed and ladder record with the three-item note, one row per brew) current whenever the Ladder Log changes; rebuild it with `build_brew_scorecard.py`; the steps are at the top of the scorecard.
+
 ## 1. What Dustin actually faces on the ladder
 
 Source: the Ladder Log artifact (collection `logs`, 10 deck documents, read Sept 26), 33 games from
@@ -86,6 +88,10 @@ lean on the tournament meta; it is tabulated for the eight in `ladder_counts.md`
 | t-hydreigon | 3 | 15.8% | **13.8%** | 8.3% |
 | l-charizardy | 2 | 10.5% | **10.3%** | 4.2% |
 | l-sharpedo | 2 | 10.5% | **10.3%** | 1.8% |
+
+*These are the Sept 26 add-one proposal, superseded by section 8. Every weight in this section covers 19 of 33 logged
+games (~58%); under section 8's rulings it is 18 of 33 (~55%); after the Sept 28 night refresh (section 9) it is 20 of 55
+(~36%).*
 
 If the family rule is rejected (variants not counted), the exact-only counts are Lucario 1, Altaria 2,
 Sceptile 0, Vespiquen 2, Suicune 1, Weezing 0, Blaziken 2, Hydreigon 2, Charizard Y 2, Sharpedo 2 (14
@@ -264,3 +270,189 @@ In the scratchpad (`...\scratchpad\panel\`, session-local, not in the repo): `ch
 `extract_sharpedo.py`, `sharpedo_candidates.json`, `smoke_l-charizardy.sh`, `smoke_sharpedo.sh`,
 `smoke_calibration.sh`, `smoke_sim_results.csv`, `test_calibrate.py`, `synthetic/` (the power check),
 `artifact_db/` (the artifact export: `logs/`, `decks/`), `calibration_games_check.csv`.
+
+## 8. Decisions of Sept 28 (recorded by the session "Opus agents progress", about 19:15 CDT)
+
+**Where these come from.** The session "Recommendations and advice" (Fable) relayed them, citing Dustin's Sept 28
+delegation of overnight decisions to it. Dustin did not state them himself in this session; the instruction is a
+peer message, and the record here says so. The ranking hold, the calibration hold and the four panel proposals
+(weight by his ladder games, same-core variants count, readout only, Manectric out) were also endorsed in an unsigned
+review that arrived in this session's chat on Sept 28; Dustin's own lines in that message were about laptop quiet hours
+only, so his own word on the panel is still the relayed one. **Nothing is wired in and no game was played.**
+`run_screen.py`, `floor.py`, `opponents/`, RUN5 and START_HERE are untouched.
+
+| # | question (section 4) | ruling | note |
+|---|---|---|---|
+| P1 | ranking hold | **keep the hold** (the bot is at 14.0 against a 5.5 target) | a judgement call: this README only said the hold stands until Dustin decides |
+| P2 | floor for lists never met | **floor only the zero-game lists, at one game** (Dustin's words: "a one-game floor") | not add-one for everyone; zero-game lists are Sceptile and, after P3, Weezing. Lucario is not floored: it has 4 games, and its 20.0% below is the skeptic's floor-only-zero number (5c) |
+| P3 | family rule | **variants count, except the Weezing case is dropped** (TR Magmar changes the attacker, so it is not the panel's core) | consequences listed below |
+| P4 | where the two new lists live | **readout only**; `opponents/` and the floor are unchanged | a judgement call: the README stated options only |
+| P5 | which Charizard Y list | **`h-charizardy_entei`** (3rd of 172; the skeptic leans this way) | case applied: **the log cannot tell.** The two games are "Mega Charizard Y ex / Entei ex" (2026-09-15, exact name, no build detail) and "Charizard ex / entei ex" (2026-09-24, Mega or plain not recorded). I searched every game note for the four cards the lists differ by (Protective Poncho, a second Rainbow Cave, Pokémon Center Lady, Lucky Ice Pop) and for "charizard" and "entei": nothing beyond those two opponent fields. |
+| P6 | Manectric | **stays out.** Wording, as the skeptic (5b) asked: the Charizard Y and Sharpedo lists each rest on **one exact game plus one inferred game** | Manectric has one exact game and nothing else |
+| P7 | calibration run and its seed line | **hold until more games are logged** (18 usable games can only say "cannot tell") | a judgement call; the seed block 21,107,000,000 to 21,107,199,999 is not added to START_HERE while it is held |
+| P8 | `l-sharpedo.provenance.json` | **keep it** | |
+
+Judgement calls (P1, P4, P7) were accepted by the Fable session under Dustin's Sept 28 delegation, Sept 28.
+
+**The weights under these rulings** (18 games count, plus one floor game each for Sceptile and Weezing, out of 20).
+*Every weight below covers 18 of 33 logged games (~55%).*
+
+| List | family games | counted as | weight | was (add-one, section 2) |
+|---|---|---|---|---|
+| t-lucario | 4 | 4 | **20.0%** | 17.2% |
+| t-altaria | 2 | 2 | **10.0%** | 10.3% |
+| t-sceptile | 0 | 1 (floor) | **5.0%** | 3.4% |
+| t-vespiquen | 2 | 2 | **10.0%** | 10.3% |
+| t-suicune | 1 | 1 | **5.0%** | 6.9% |
+| t-weezing | 0 | 1 (floor) | **5.0%** | 6.9% |
+| t-blaziken | 2 | 2 | **10.0%** | 10.3% |
+| t-hydreigon | 3 | 3 | **15.0%** | 13.8% |
+| h-charizardy_entei (stands in for Mega Charizard Y ex / Entei ex) | 2 | 2 | **10.0%** | 10.3% |
+| l-sharpedo | 2 | 2 | **10.0%** | 10.3% |
+
+**Weezing's weight, so the effect of P3 is visible:** 6.9% under add-one with the variant kept, 3.4% under add-one with
+it dropped (the skeptic's 5d figure), and **5.0% under the chosen floor rule either way**, because Weezing then has
+1 game with the variant kept, or 0 floored to 1 with it dropped. Under the chosen rule P3 therefore moves no weight; it
+moves the counts below.
+
+**What P3 changes:**
+- Games that carry weight: 19 becomes 18 of 33 (~58% becomes ~55%). The relayed wording "covers 19 of 33 (~58%)" would
+  no longer be true; the wording used here and in section 2's note is the one that is.
+- The panel-family record in section 1: 15 games, 5-10 becomes 14 games, 4-10 (the dropped game was a win).
+- **The dropped game is removed from calibration** (Fable's ruling later on Sept 28, same delegation, relayed: "under P3
+  it does not belong in calibration either; consistency matters more than the row count while calibration is held").
+  It was a Weezing variant played against the panel's Weezing (Hoopa) list, which is not the deck he met. See "Files
+  changed for the Weezing removal" below.
+
+**Files changed for P5:**
+- `build_calibration_games.py`: the Charizard Y list is now `rl/results/b2e_card_check_2026-09-26/decks/h-charizardy_entei.txt`.
+- `calibration_games.csv`: regenerated with that script from the artifact export (33 games, 19 with a listed opponent,
+  18 usable, 6-12, 15 distinct pairs, all unchanged). Two Charizard Y rows (pairs 10 and 11) now point at the h- list.
+  Two other rows also changed because the skeptic's Sept 26 fixes to `ladder_mapping.csv` (section 7) had never been
+  carried into this file: the Sept 16 Hydreigon / bombirdier game is now marked inferred, and the Blaziken game's
+  archetype name is now "Mega Blaziken ex Castform Sunny Form".
+- `l-charizardy.txt` stays in this folder, unused. `ladder_counts.md` is unchanged: it holds the Sept 26 add-one tables.
+- Sections 1 to 7 are left as written; this section supersedes them where they differ.
+
+**Files changed for the Weezing removal** (recorded about 20:00 CDT, after Fable's ruling above):
+- `ladder_mapping.csv`, one row: Sept 15, Brew 01, a win against "team rocket: magmar, weezing ex," now has class
+  "established off-list" (it is listed on Limitless with 189 rows, outside the top 30) and no panel key. The 33 games and
+  the 12-21 record are unchanged.
+- `calibration_games.csv`, regenerated with `build_calibration_games.py`: exactly that one row is gone and no other row
+  changed (checked field by field). The set is now **18 rows with a listed opponent, 17 usable, record 5-12 (base rate
+  0.294), 14 distinct pairs**, and the base rate's Brier score is 0.208. The variant rows left are three Lucario and one
+  Hydreigon. `run_calibration.py --pairs-only` (plays nothing) lists the 14 pairs; the pairs after the removed one
+  renumber, so the two Charizard Y pairs are now **9 and 10** (they were 10 and 11 in section 3's "one dependency" note)
+  and each pair's seed block moves with its number. Nothing has run, so no seed was used.
+- `ladder_counts.md`: recomputed without the game (panel family 14 of 33, 42.4%, record 4-10; established off-list 10,
+  5-5; the rescaled ladder and 50/50 blend tables; the variant rule). Every changed figure was recomputed from the
+  mapping CSV by script and matches. Its Sept 26 figures are named as such where they were kept for comparison.
+- **Not redone:** section 1's class table and section 3's calibration figures above (18 usable, 6-12, 15 pairs, 0.333, the
+  7,500-game estimate) and `calibration_README.md`'s power table, which was computed for 18 games. They are the Sept 26
+  numbers. `calibrate.py` reads its counts from the CSV, so nothing breaks; the power table needs re-running at 17 games
+  if the calibration is ever run, and it is on hold.
+
+## 9. Refresh of Sept 28 night (recorded by "Opus agents progress", about 23:00 CDT)
+
+**Asked by** the Fable session "Recommendations and advice" (relayed, same Sept 28 delegation): refresh the weights, the
+coverage line, `ladder_counts.md` and `calibration_games.csv` from the Ladder Log under the section 8 rulings, report the
+new coverage and any weight that changes, and list opponents that do not map rather than guess. **Nothing is wired in and no
+calibration was run** (it stays held).
+
+**What the log holds now:** 17 documents (16 with games), **55 games, 26-29**. The request spoke of nine new games (brew 8,
+6-3); the log has **22 added since my last read**: 9 in `brew-08` (6-3), 1 in `brew-09` (1-0), and 12 in four video-derived
+"c-" decks: Hydreigon / Galarian Obstagoon 8 (4-4), Skarmory ex / Indeedee ex / Genesect 2 (2-0), Mega Sharpedo ex / Gyarados 1
+(0-1), Type: Null / Silvally 1 (1-0). All 22 were filed on Sept 28 evening from Battle Logs videos (their notes name the
+video files); the c- decks' owner lists are marked "unverified". **I counted all 22 as ladder games because they are in the
+log**; whether the 13 that are not brew 8 should count is a question for Dustin (list below).
+
+**The mapping rule** (same strictness as Sept 26 and 28): a game goes on a panel deck, a ten-list deck or a Limitless deck
+only if the opponent text names that deck's defining Pokémon or the archetype itself. Support cards alone (Riolu without Mega
+Lucario ex, Butterfree without Mega Sceptile ex, Entei ex without a Charizard) are **unmapped**, not guessed.
+
+| List | games | weight now | section 8 | change |
+|---|---|---|---|---|
+| t-lucario | 5 | **22.7%** | 20.0% | +2.7 (one new Mega Lucario ex / Hitmontop game) |
+| t-altaria | 2 | **9.1%** | 10.0% | -0.9 |
+| t-sceptile | 0 (floor 1) | **4.5%** | 5.0% | -0.5 |
+| t-vespiquen | 2 | **9.1%** | 10.0% | -0.9 |
+| t-suicune | 1 | **4.5%** | 5.0% | -0.5 |
+| t-weezing | 0 (floor 1) | **4.5%** | 5.0% | -0.5 |
+| t-blaziken | 2 | **9.1%** | 10.0% | -0.9 |
+| t-hydreigon | 3 | **13.6%** | 15.0% | -1.4 |
+| h-charizardy_entei | 3 | **13.6%** | 10.0% | **+3.6** (a third game, exact name, a loss; now 2 exact + 1 inferred) |
+| l-sharpedo | 2 | **9.1%** | 10.0% | -0.9 (still 1 exact + 1 inferred) |
+
+*Every weight above covers **20 of 55 logged games (~36%)**, down from 18 of 33 (~55%).* Twenty games sit on the ten lists,
+25 are mapped to decks outside them, and 10 are unmapped. Counted total is 22 (20 games plus one floor game each for Sceptile
+and Weezing). Small shifts in the other eight lists are only the denominator moving; the two real changes are Charizard Y
+(+3.6) and Lucario (+2.7). All figures were recomputed from `ladder_mapping.csv` by script.
+
+**Files:**
+- `ladder_mapping.csv`: 22 rows appended; the existing 33 are untouched (`git diff` shows +22, -0).
+- `calibration_games.csv`: regenerated, 18 to 20 rows, nothing removed or changed. Added: the brew-08 game against the
+  Lucario / Hitmontop list (usable) and a Hydreigon / Obstagoon video game against the Charizard Y list (not usable: no deck
+  file). Usable set: **18 games, 5-13 (base rate 0.278), 15 pairs, base-rate Brier 0.201.** `build_calibration_games.py` gained
+  six deck entries (brew-08 and brew-09 point at their files; the four c- decks are "no-file").
+- `ladder_counts.md`: regenerated from the CSV by script (classes sum to 55).
+- `calibration_README.md`: its top note now carries these figures. Its power table (computed for 18 games) still has not
+  been re-run; it is now 18 usable games again, but on a different set.
+
+**The 10 unmapped games** (record 8-2; none guessed; full reasons in `ladder_counts.md`). Dustin's answer, Sept 28, relayed:
+"I don't know the deck of who I play against. So if it isn't visible, I don't have more information than you." **They stay
+unmapped and are not to be listed for him again.** What each would change if it were ever mapped, for the record:
+1. Butterfree / Caterpie / Klefki, a loss: the panel's Sceptile list has Butterfree and Caterpie but not Klefki, and Mega
+   Sceptile ex was not seen. If it is Sceptile, that list gets its first game.
+2. Entei ex / Charmander / Houndour, a win: fits Charizard Y / Entei (would make it 4 games), but Entei ex is also its own
+   deck and no Charizard was seen.
+3. Riolu / Sawk, a win: Riolu is in the Lucario list; Mega Lucario ex was not seen, and Sawk is not a known partner.
+4. Magikarp, a win by concession at 0-0: Sharpedo / Gyarados (would make it 3) or the listed Magikarp deck.
+5. Tyrogue / Hitmonchan ex / Falinks (win); Snorlax with Massive Body (win); Mega Audino ex / Mantyke / Meditite / Magby
+   (win); Salazzle / Sizzlipede / Chansey (win); Pachirisu ex / Arceus ex / Raichu (win); Arceus ex / Dialga ex / Shaymin (loss):
+   no listed deck contains them.
+
+**Decided later the same night** (Dustin, relayed by the Fable session, Sept 28 about 23:15 CDT):
+- **Rayquaza is admitted as the panel's eleventh list.** His words: "Dragonair Mega Rayquaza met three times at 2–1 meets the
+  panel's own 'met twice' rule and is already in the gauntlet; admit it." The list is the gauntlet's existing one,
+  `decks/gauntlet_2026-09-26/g-dragonair_mega_rayquaza.txt` (`lib/deck_check.py`: clean). Its three games: brew-05 (a win,
+  Sept 15), a Hydreigon / Obstagoon video game (a loss, Sept 27), brew-08 (a win, Sept 28).
+- **The concession count is a fact, not an adjustment.** His words: "The concession count (10 of 26 wins) is a fact about the
+  ladder, not a calibration problem — a concession is a win, and the simulator plays the game out to the same result; note it,
+  don't adjust for it." So: 10 of the season's 26 wins have "concession" in their notes (wins "by opponent concession", from
+  0-0 to 2-2), all among the 22 new games; they count as wins and nothing is adjusted. This withdraws the earlier remark
+  here that the calibration cannot reproduce them, and section 7's point (g), a run without concessions, is not wanted.
+  (A search for the word also hits one loss, but that is only an opponent's username, "plz_concede".)
+
+**The weights on eleven lists** (floor only zero-game lists, same rules). *Every weight covers **23 of 55 logged games
+(~42%)**;* 22 games are mapped to decks outside the eleven and 10 are unmapped. Counted total 25 (23 games plus one floor game
+each for Sceptile and Weezing). Recomputed from `ladder_mapping.csv` by script.
+
+| List | games | weight | ten-list weight above | change |
+|---|---|---|---|---|
+| t-lucario | 5 | **20.0%** | 22.7% | -2.7 |
+| t-altaria | 2 | **8.0%** | 9.1% | -1.1 |
+| t-sceptile | 0 (floor 1) | **4.0%** | 4.5% | -0.5 |
+| t-vespiquen | 2 | **8.0%** | 9.1% | -1.1 |
+| t-suicune | 1 | **4.0%** | 4.5% | -0.5 |
+| t-weezing | 0 (floor 1) | **4.0%** | 4.5% | -0.5 |
+| t-blaziken | 2 | **8.0%** | 9.1% | -1.1 |
+| t-hydreigon | 3 | **12.0%** | 13.6% | -1.6 |
+| h-charizardy_entei | 3 | **12.0%** | 13.6% | -1.6 |
+| l-sharpedo | 2 | **8.0%** | 9.1% | -1.1 |
+| g-dragonair_mega_rayquaza (new) | 3 | **12.0%** | not on the panel | new |
+
+Every existing list falls because a new list took a share; the only new weight is Rayquaza's 12.0%. Calibration: the set is now
+**23 rows with a listed opponent, 20 usable, record 7-13 (base rate 0.350), 17 pairs, base-rate Brier 0.227**. Three rows were
+added and none changed: brew-05 against the Rayquaza list (a win, usable), brew-08 against it (a win, usable), and the
+Hydreigon / Obstagoon video game against it (a loss, not usable: no deck file). `build_calibration_games.py` maps the archetype
+to that file. Nothing was run. The power table is still the Sept 26 one.
+
+**Decided Sept 28, about 23:40 CDT** (by the Fable session under Dustin's delegation, relayed; Dustin has seen the count and has
+not objected):
+- **The 13 games that are not brew 8 count as ladder games.** They are his games on his ladder and the log is the record; they
+  only move opponent counts. Their owner lists are unverified, which affects which deck he played, not who he met. None of the
+  13 is usable for calibration (the four c- decks have no deck file, and the brew-09 game's opponent has no list).
+
+**Noted:**
+- **Coverage.** It was 36% on ten lists and is 42% on eleven: the weighted readout describes a bit over two-fifths of the
+  ladder, so the ranking hold has one more reason to stand.

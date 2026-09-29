@@ -1,0 +1,107 @@
+2026-09-28T23:33:59Z diff 233bced..ec7e1a8 under engine/: engine/src/players/mod.rs engine/src/players/value_functions.rs  (players/ only)
+2026-09-28T23:53:46Z kt build ec7e1a8: legality_scan 924751ba0926993e, deckgym 407976366fa2104e
+2026-09-29T00:23:23Z ec7e1a8_id_k3_500 done in 1776 s (14000 games)
+2026-09-29T00:55:07Z ec7e1a8_id_kp3_500 done in 1901 s (14000 games)
+2026-09-29T01:23:30Z ec7e1a8_id_kog3_500 done in 1701 s (14000 games)
+2026-09-29T01:44:33Z ec7e1a8_id_kog3_new17 done in 1261 s (8500 games)
+2026-09-29T02:28:16Z ec7e1a8_id_kq3_500 done in 2621 s (14000 games)
+2026-09-29T02:32:00Z ec7e1a8_id_kd3_40 done in 221 s (1120 games)
+2026-09-29T02:35:25Z ec7e1a8_id_kpr3_40 done in 205 s (1120 games)
+2026-09-29T02:46:09Z ec7e1a8_id_kog3_b2e40 done in 642 s (3840 games)
+2026-09-29T02:47:05Z ec7e1a8_id_kog3_scz40 done in 53 s (320 games)
+2026-09-29T02:47:35Z ec7e1a8_id_kog3_var_v-lucario_240 done in 29 s (280 games)
+2026-09-29T02:48:19Z ec7e1a8_id_kog3_var_v-suicune_240 done in 44 s (280 games)
+2026-09-29T02:48:56Z ec7e1a8_id_kog3_var_v-weezing_240 done in 36 s (280 games)
+2026-09-29T02:49:47Z ec7e1a8_id_kog3_var_l-charizardy40 done in 50 s (320 games)
+2026-09-29T02:49:47Z identity: k3 v official: 14000 of 14000 equal on ['moves', 'decisions', 'openings', 'winner_seat', 'points', 'seed'] kp3 v official: 14000 of 14000 equal on ['moves', 'decisions', 'openings', 'winner_seat', 'points', 'seed'] kog3 v table_kog3: 14000 of 14000 equal on ['moves', 'decisions', 'openings', 'winner_seat', 'points', 'seed'] kog3 v new17_kog3: 8500 of 8500 equal on ['moves', 'decisions', 'openings', 'winner_seat', 'points', 'seed'] kq3 v official: 14000 of 14000 equal on ['moves', 'decisions', 'openings', 'winner_seat', 'points', 'seed'] kd3 v 43cef0b (official then): 1120 of 1120 equal on ['moves', 'decisions', 'openings', 'winner_seat', 'points', 'seed'] kpr3 v official: 1120 of 1120 equal on ['moves', 'decisions', 'openings', 'winner_seat', 'points', 'seed'] kog3 B2e i<40 v b2e_kog3: 3840 of 3840 equal on ['moves', 'decisions', 'openings', 'winner_seat', 'points', 'seed'] kog3 Scizor i<40 v scizor_kog3: 320 of 320 equal on ['moves', 'decisions', 'openings', 'winner_seat', 'points', 'seed'] kog3 v-lucario_2 i<40 v var_v-lucario_2_kog3: 280 of 280 equal on ['moves', 'decisions', 'openings', 'winner_seat', 'points', 'seed'] kog3 v-suicune_2 i<40 v var_v-suicune_2_kog3: 280 of 280 equal on ['moves', 'decisions', 'openings', 'winner_seat', 'points', 'seed'] kog3 v-weezing_2 i<40 v var_v-weezing_2_kog3: 280 of 280 equal on ['moves', 'decisions', 'openings', 'winner_seat', 'points', 'seed'] kog3 l-charizardy i<40 v var_l-charizardy_kog3: 320 of 320 equal on ['moves', 'decisions', 'openings', 'winner_seat', 'points', 'seed'] 
+2026-09-29 02:49:47 KT PART A DONE ec7e1a8
+2026-09-29T02:49:47Z gate open: koh's B2e rows read and committed at 0497f47 (2026-09-29T02:45:30Z): no held-out accuracy veto; koh stays not adopted (its 45-cell test failed). The B2e mixed rows complete koh's record and don't hold this gate (Fable's ruling, kt_tables README).
+2026-09-29T02:52:39Z ec7e1a8_timing_kog3_40 done in 172 s (1120 games)
+2026-09-29T02:55:15Z ec7e1a8_timing_kt3_40 done in 156 s (1120 games)
+2026-09-29T02:55:15Z timing: kog3 172 s wall, 1158 s CPU; kt3 157 s wall, 1108 s CPU; kt3/kog3 wall 0.91 (limit 1.25: within), CPU 0.96
+2026-09-29T03:20:01Z ec7e1a8_kt3_table done in 1486 s (14000 games)
+2026-09-29T03:35:51Z ec7e1a8_kt3_new17 done in 950 s (8500 games)
+2026-09-29T03:56:59Z ec7e1a8_kta3_table done in 1268 s (14000 games)
+2026-09-29T04:13:48Z ec7e1a8_kta3_new17 done in 1008 s (8500 games)
+2026-09-29T04:37:56Z ec7e1a8_ktb3_table done in 1448 s (14000 games)
+2026-09-29T04:57:15Z ec7e1a8_ktb3_new17 done in 1159 s (8500 games)
+2026-09-29T05:14:53Z ec7e1a8_ktc3_table done in 1058 s (14000 games)
+2026-09-29T05:24:23Z ec7e1a8_ktc3_new17 done in 570 s (8500 games)
+2026-09-29T05:24:26Z footprint written (footprint.txt): read and commit it alone before anything else
+2026-09-29T05:38:37Z ec7e1a8_mixed_table_kt3_first done in 851 s (14000 games)
+2026-09-29T05:52:18Z ec7e1a8_mixed_table_kt3_second done in 821 s (14000 games)
+2026-09-29T06:02:14Z ec7e1a8_mixed_new17_kt3_first done in 596 s (8500 games)
+2026-09-29T06:12:05Z ec7e1a8_mixed_new17_kt3_second done in 591 s (8500 games)
+2026-09-29T07:02:14Z ec7e1a8_b2e_kt3 done in 3009 s (48000 games)
+2026-09-29T07:50:31Z ec7e1a8_mixed_b2e_kt3_first done in 2897 s (48000 games)
+2026-09-29T07:54:55Z ec7e1a8_scizor_kt3 done in 264 s (4000 games)
+2026-09-29T07:59:11Z ec7e1a8_mixed_scizor_kt3_first done in 256 s (4000 games)
+2026-09-29T08:03:29Z ec7e1a8_mixed_scizor_kt3_second done in 258 s (4000 games)
+2026-09-29T08:06:25Z ec7e1a8_var_v-lucario_2_kt3 done in 176 s (3500 games)
+2026-09-29T08:08:15Z ec7e1a8_var_v-lucario_2_kt3_mixed_a done in 110 s (2000 games)
+2026-09-29T08:09:17Z ec7e1a8_var_v-lucario_2_kt3_mixed_b done in 62 s (1500 games)
+2026-09-29T08:13:26Z ec7e1a8_var_v-suicune_2_kt3 done in 249 s (3500 games)
+2026-09-29T08:14:55Z ec7e1a8_var_v-suicune_2_kt3_mixed_a done in 89 s (1000 games)
+2026-09-29T08:17:27Z ec7e1a8_var_v-suicune_2_kt3_mixed_b done in 152 s (2500 games)
+2026-09-29T08:21:18Z ec7e1a8_var_v-weezing_2_kt3 done in 231 s (3500 games)
+2026-09-29T08:24:49Z ec7e1a8_var_v-weezing_2_kt3_mixed_b done in 211 s (3500 games)
+2026-09-29T08:29:34Z ec7e1a8_var_l-charizardy_kt3 done in 285 s (4000 games)
+2026-09-29T08:34:13Z ec7e1a8_var_l-charizardy_kt3_mixed_a done in 279 s (4000 games)
+2026-09-29T08:47:12Z ec7e1a8_mixed_table_kta3_first done in 779 s (14000 games)
+2026-09-29T09:00:13Z ec7e1a8_mixed_table_kta3_second done in 781 s (14000 games)
+2026-09-29T09:09:19Z ec7e1a8_mixed_new17_kta3_first done in 546 s (8500 games)
+2026-09-29T09:18:26Z ec7e1a8_mixed_new17_kta3_second done in 547 s (8500 games)
+2026-09-29T10:06:13Z ec7e1a8_b2e_kta3 done in 2867 s (48000 games)
+2026-09-29T10:53:30Z ec7e1a8_mixed_b2e_kta3_first done in 2837 s (48000 games)
+2026-09-29T10:57:47Z ec7e1a8_scizor_kta3 done in 257 s (4000 games)
+2026-09-29T11:01:59Z ec7e1a8_mixed_scizor_kta3_first done in 252 s (4000 games)
+2026-09-29T11:06:13Z ec7e1a8_mixed_scizor_kta3_second done in 254 s (4000 games)
+2026-09-29T11:08:58Z ec7e1a8_var_v-lucario_2_kta3 done in 165 s (3500 games)
+2026-09-29T11:10:42Z ec7e1a8_var_v-lucario_2_kta3_mixed_a done in 104 s (2000 games)
+2026-09-29T11:11:40Z ec7e1a8_var_v-lucario_2_kta3_mixed_b done in 58 s (1500 games)
+2026-09-29T11:15:38Z ec7e1a8_var_v-suicune_2_kta3 done in 237 s (3500 games)
+2026-09-29T11:17:05Z ec7e1a8_var_v-suicune_2_kta3_mixed_a done in 87 s (1000 games)
+2026-09-29T11:19:33Z ec7e1a8_var_v-suicune_2_kta3_mixed_b done in 148 s (2500 games)
+2026-09-29T11:23:02Z ec7e1a8_var_v-weezing_2_kta3 done in 209 s (3500 games)
+2026-09-29T11:26:28Z ec7e1a8_var_v-weezing_2_kta3_mixed_b done in 206 s (3500 games)
+2026-09-29T11:30:54Z ec7e1a8_var_l-charizardy_kta3 done in 266 s (4000 games)
+2026-09-29T11:35:18Z ec7e1a8_var_l-charizardy_kta3_mixed_a done in 264 s (4000 games)
+2026-09-29T11:40:34Z ec7e1a8_d_kog3 done in 316 s (4000 games)
+2026-09-29T11:45:57Z ec7e1a8_d_kta3 done in 323 s (4000 games)
+2026-09-29T11:51:20Z ec7e1a8_d_kt3 done in 323 s (4000 games)
+2026-09-29T11:51:34Z trace kta3 done
+2026-09-29T11:51:48Z trace kog3 done
+2026-09-29 11:51:48 KT PART B DONE ec7e1a8
+2026-09-29T11:52:22Z run_kt_ab ec7e1a8: decks 07 05 11 01 03, arms kog3 kt3 kta3, 240 games per matchup, 12 threads; kt build deckgym sha256 407976366fa2104ee1f2663c94fe31b1c503466defe9d6154b7e60659cb0991c; seeds 22,600,000,000 + 10,000 x deck + 1,000 x opponent (+500 seat 1) + i
+2026-09-29T11:55:18Z ec7e1a8_ab_d07_kog3 done in 176 s (1920 games); deckgym 407976366fa2104e
+2026-09-29T11:58:41Z ec7e1a8_ab_d05_kog3 done in 203 s (1920 games); deckgym 407976366fa2104e
+2026-09-29T12:01:34Z ec7e1a8_ab_d11_kog3 done in 173 s (1920 games); deckgym 407976366fa2104e
+2026-09-29T12:06:19Z ec7e1a8_ab_d01_kog3 done in 285 s (1920 games); deckgym 407976366fa2104e
+2026-09-29T12:11:33Z ec7e1a8_ab_d03_kog3 done in 314 s (1920 games); deckgym 407976366fa2104e
+2026-09-29T12:14:47Z ec7e1a8_ab_d07_kt3 done in 194 s (1920 games); deckgym 407976366fa2104e
+2026-09-29T12:17:58Z ec7e1a8_ab_d07_kta3 done in 191 s (1920 games); deckgym 407976366fa2104e
+2026-09-29T12:21:23Z ec7e1a8_ab_d05_kt3 done in 205 s (1920 games); deckgym 407976366fa2104e
+2026-09-29T12:24:45Z ec7e1a8_ab_d05_kta3 done in 201 s (1920 games); deckgym 407976366fa2104e
+2026-09-29T12:27:30Z ec7e1a8_ab_d11_kt3 done in 164 s (1920 games); deckgym 407976366fa2104e
+2026-09-29T12:30:14Z ec7e1a8_ab_d11_kta3 done in 164 s (1920 games); deckgym 407976366fa2104e
+2026-09-29T12:34:52Z ec7e1a8_ab_d01_kt3 done in 278 s (1920 games); deckgym 407976366fa2104e
+2026-09-29T12:39:25Z ec7e1a8_ab_d01_kta3 done in 273 s (1920 games); deckgym 407976366fa2104e
+2026-09-29T12:44:41Z ec7e1a8_ab_d03_kt3 done in 316 s (1920 games); deckgym 407976366fa2104e
+2026-09-29T12:49:52Z ec7e1a8_ab_d03_kta3 done in 311 s (1920 games); deckgym 407976366fa2104e
+2026-09-29T12:49:53Z A/B table written (ec7e1a8_ab_table.txt)
+2026-09-29 12:49:53 KT AB DONE ec7e1a8
+2026-09-29T13:49:37Z run_kt_counters ec7e1a8: codes kog3 kt3 kta3 ktb3 ktc3, first 100 deals of the 28 table pairings, 12 threads; kt build legality_scan sha256 924751ba0926993eaee87ecc8fb8301ffd0b7eee8490bfb3369427794328f938, deckgym sha256 407976366fa2104ee1f2663c94fe31b1c503466defe9d6154b7e60659cb0991c
+2026-09-29T13:49:38Z building tool_census in /home/dacz8976/engine-kt-ec7e1a8/engine (source a2510339e5867b17, from ../tool_turn_effect_census_2026-09-25/tool_census.rs)
+2026-09-29T13:49:48Z tool_census sha256 d9799c96015f74b952889a7f7d9820bbc12d5d97e4d267ad8acc2b63cdcc720b (built in the kt build's tree at ec7e1a8)
+2026-09-29T13:52:35Z ec7e1a8_census_kog3 done in 167 s (2800 games); tool_census d9799c96015f74b9
+2026-09-29T13:55:26Z ec7e1a8_scan_kog3_100 done in 171 s (2800 games); legality_scan 924751ba0926993e
+2026-09-29T13:58:18Z ec7e1a8_census_kt3 done in 172 s (2800 games); tool_census d9799c96015f74b9
+2026-09-29T14:01:17Z ec7e1a8_scan_kt3_100 done in 179 s (2800 games); legality_scan 924751ba0926993e
+2026-09-29T14:04:46Z ec7e1a8_census_kta3 done in 209 s (2800 games); tool_census d9799c96015f74b9
+2026-09-29T14:07:41Z ec7e1a8_scan_kta3_100 done in 175 s (2800 games); legality_scan 924751ba0926993e
+2026-09-29T14:10:30Z ec7e1a8_census_ktb3 done in 169 s (2800 games); tool_census d9799c96015f74b9
+2026-09-29T14:13:20Z ec7e1a8_scan_ktb3_100 done in 170 s (2800 games); legality_scan 924751ba0926993e
+2026-09-29T14:16:14Z ec7e1a8_census_ktc3 done in 174 s (2800 games); tool_census d9799c96015f74b9
+2026-09-29T14:19:17Z ec7e1a8_scan_ktc3_100 done in 183 s (2800 games); legality_scan 924751ba0926993e
+2026-09-29T14:19:18Z fingerprints: kog3: tool_census: 2800 of 2800 seeds and move fingerprints equal the table file's (ec7e1a8_id_kog3_500.jsonl); 2800 games in the counter file kog3: legality_scan: 2800 of 2800 seeds and move fingerprints equal the table file's (ec7e1a8_id_kog3_500.jsonl); 2800 games in the counter file kt3: tool_census: 2800 of 2800 seeds and move fingerprints equal the table file's (ec7e1a8_kt3_table.jsonl); 2800 games in the counter file kt3: legality_scan: 2800 of 2800 seeds and move fingerprints equal the table file's (ec7e1a8_kt3_table.jsonl); 2800 games in the counter file kta3: tool_census: 2800 of 2800 seeds and move fingerprints equal the table file's (ec7e1a8_kta3_table.jsonl); 2800 games in the counter file kta3: legality_scan: 2800 of 2800 seeds and move fingerprints equal the table file's (ec7e1a8_kta3_table.jsonl); 2800 games in the counter file ktb3: tool_census: 2800 of 2800 seeds and move fingerprints equal the table file's (ec7e1a8_ktb3_table.jsonl); 2800 games in the counter file ktb3: legality_scan: 2800 of 2800 seeds and move fingerprints equal the table file's (ec7e1a8_ktb3_table.jsonl); 2800 games in the counter file ktc3: tool_census: 2800 of 2800 seeds and move fingerprints equal the table file's (ec7e1a8_ktc3_table.jsonl); 2800 games in the counter file ktc3: legality_scan: 2800 of 2800 seeds and move fingerprints equal the table file's (ec7e1a8_ktc3_table.jsonl); 2800 games in the counter file 
+2026-09-29 14:19:18 KT COUNTERS DONE ec7e1a8

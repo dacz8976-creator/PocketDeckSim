@@ -1,0 +1,23 @@
+== plug-in from koh3_vs_kog3 (var sim 135.5, Limitless 626.8, cross 33.9)
+  true dMSE -45.1 (real error 14.05 -> 12.34, i.e. 1.71 better): power now 36% | sim x4 41% | Limitless x1.5 47% | Limitless x2.13 57% | Limitless x0.5 22% | sim x4 + Limitless x2.13 70% | sim x4 + Limitless x1.5 56%
+  true dMSE -27.6 (real error 14.05 -> 13.03, i.e. 1.02 better): power now 16% | sim x4 19% | Limitless x1.5 21% | Limitless x2.13 26% | Limitless x0.5 11% | sim x4 + Limitless x2.13 33% | sim x4 + Limitless x1.5 25%
+  true dMSE -55.0 (real error 14.05 -> 11.93, i.e. 2.12 better): power now 50% | sim x4 57% | Limitless x1.5 63% | Limitless x2.13 74% | Limitless x0.5 30% | sim x4 + Limitless x2.13 85% | sim x4 + Limitless x1.5 73%
+  80% power at -45.1 with sim x1: needs Limitless x5.35 = 11,835 matches
+  80% power at -45.1 with sim x2: needs Limitless x3.36 = 7,447 matches
+  80% power at -45.1 with sim x4: needs Limitless x2.82 = 6,244 matches
+  80% power at -45.1 with sim x8: needs Limitless x2.61 = 5,768 matches
+== plug-in from kog3_vs_kp3 (var sim 48.7, Limitless 30.1, cross 8.0)
+  true dMSE -17.0 (real error 14.05 -> 13.43, i.e. 0.62 better): power now 45% | sim x4 72% | Limitless x1.5 51% | Limitless x2.13 55% | Limitless x0.5 33% | sim x4 + Limitless x2.13 90% | sim x4 + Limitless x1.5 83%
+  true dMSE -27.6 (real error 14.05 -> 13.03, i.e. 1.02 better): power now 84% | sim x4 99% | Limitless x1.5 89% | Limitless x2.13 92% | Limitless x0.5 69% | sim x4 + Limitless x2.13 100% | sim x4 + Limitless x1.5 100%
+  true dMSE -43.1 (real error 14.05 -> 12.42, i.e. 1.63 better): power now 100% | sim x4 100% | Limitless x1.5 100% | Limitless x2.13 100% | Limitless x0.5 97% | sim x4 + Limitless x2.13 100% | sim x4 + Limitless x1.5 100%
+  80% power at -17.0 with sim x1: impossible even with unlimited Limitless data
+  80% power at -17.0 with sim x2: needs Limitless x2.73 = 6,049 matches
+  80% power at -17.0 with sim x4: needs Limitless x1.30 = 2,886 matches
+  80% power at -17.0 with sim x8: needs Limitless x1.01 = 2,243 matches
+== plug-in from kog3_vs_kpg3 (var sim 3.3, Limitless 4.1, cross 1.1)
+  true dMSE -5.0 (real error 14.05 -> 13.87, i.e. 0.18 better): power now 41% | sim x4 59% | Limitless x1.5 49% | Limitless x2.13 55% | Limitless x0.5 27% | sim x4 + Limitless x2.13 84% | sim x4 + Limitless x1.5 73%
+  true dMSE -10.0 (real error 14.05 -> 13.69, i.e. 0.36 better): power now 93% | sim x4 99% | Limitless x1.5 97% | Limitless x2.13 99% | Limitless x0.5 77% | sim x4 + Limitless x2.13 100% | sim x4 + Limitless x1.5 100%
+  80% power at -5.0 with sim x1: impossible even with unlimited Limitless data
+  80% power at -5.0 with sim x2: needs Limitless x3.00 = 6,635 matches
+  80% power at -5.0 with sim x4: needs Limitless x1.85 = 4,100 matches
+  80% power at -5.0 with sim x8: needs Limitless x1.53 = 3,392 matches

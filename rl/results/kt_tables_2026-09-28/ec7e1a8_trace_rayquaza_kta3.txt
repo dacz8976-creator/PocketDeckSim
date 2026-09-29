@@ -1,0 +1,56 @@
+DIAGNOSTIC ENGINE /home/dacz8976/engine-kt-ec7e1a8/engine/target/release/deckgym sha256 407976366fa2104e
+g-dragonair_mega_rayquaza.txt (seat 0) v t-lucario.txt: players kta3,kog3, 200 games, seeds 21108900000+ (--seed-stream); seat 0 won 60; average final turn 10.9
+slot keys: ['ability_hp_bonus', 'ability_used', 'asleep', 'attached_energy', 'attached_tools', 'base_hp', 'burned', 'card', 'cards_behind', 'confused', 'damage_counters', 'damaged_by_attack_while_active_last_turn', 'damaged_by_attack_while_active_this_turn', 'effects', 'has_attacked_since_play', 'moved_to_active_this_turn', 'paralyzed', 'played_this_turn', 'poison_checkup_damage', 'poisoned', 'prevent_first_attack_damage_used', 'stadium_hp_bonus']
+move (seat 0 decisions)                                      offered chosen
+  EndTurn                                                       5891   1217
+  Attach                                                        3324    955
+  Retreat                                                       2029    156
+  UseStadium                                                    1356    378
+  play:Rainbow Cave                                             1144    186
+  DrawCard                                                      1077   1077
+  play:Copycat                                                   827    225
+  ability:Dragonair                                              768    356
+  place:Dratini                                                  745    337
+  play:Small Balloon                                             738    141
+  play:Poké Ball                                                 614    273
+  play:Sabrina                                                   606     94
+  play:Professor's Research                                      536    249
+  place:Gouging Fire                                             464    344
+  evolve:Dragonair                                               457    237
+  play:Ancient Booster Energy Capsule                            431    149
+  attack:Gouging Fire:Scorching Interruption                     410    151
+  play:Pokémon Center Lady                                       386    111
+  attack:Mega Rayquaza ex:Mega Burst                             379    105
+  AttachTypedFromDiscard                                         356    356
+  AttachTool                                                     290    290
+  play:Professor Sada                                            243    117
+  place:Mega Rayquaza ex                                         235    179
+  attack:Dragonair:Draconic Whip                                 179     69
+  attack:Dratini:Tail Strike                                     167     62
+  ChooseAttackEnergyDiscard                                      151    151
+  ResolveAttackRetaliation                                       151    151
+  SadaAttach                                                     117    117
+  Heal                                                           111    111
+  ChooseRetreatEnergy                                              4      4
+  energy on attacker when attack:Gouging Fire:Scorching Interruption: {3: 105, 4: 25, 5: 21}
+  energy on attacker when attack:Dragonair:Draconic Whip: {2: 68, 3: 1}
+  energy on attacker when attack:Dratini:Tail Strike: {1: 42, 2: 20}
+  energy on attacker when attack:Mega Rayquaza ex:Mega Burst: {2: 73, 3: 19, 4: 13}
+per own turn: attack offered at some decision -> used that turn / declined (what instead; Energy on the Active)
+  attack:Gouging Fire:Scorching Interruption         turns offered  220, used  151; instead {'no attack': 68, 'attack:Dragonair:Draconic Whip': 1}; Energy when declined {3: 69}
+  attack:Mega Rayquaza ex:Mega Burst                 turns offered  171, used  105; instead {'no attack': 62, 'attack:Gouging Fire:Scorching Interruption': 3, 'attack:Dragonair:Draconic Whip': 1}; Energy when declined {2: 65, 3: 1}
+  attack:Dratini:Tail Strike                         turns offered   93, used   62; instead {'attack:Dragonair:Draconic Whip': 18, 'no attack': 9, 'attack:Mega Rayquaza ex:Mega Burst': 2, 'attack:Gouging Fire:Scorching Interruption': 2}; Energy when declined {1: 27, 2: 4}
+  attack:Dragonair:Draconic Whip                     turns offered   84, used   69; instead {'no attack': 7, 'attack:Gouging Fire:Scorching Interruption': 5, 'attack:Dratini:Tail Strike': 2, 'attack:Mega Rayquaza ex:Mega Burst': 1}; Energy when declined {2: 15}
+hoarding check: seat 0's discard-pile Energy at the end 4.61 per game; retreats 0.78 per game; recovery moves 2.37 per game
+per own turn: ability / Stadium use / Trainer offered at some decision -> used that turn
+  UseStadium                                         turns offered  636, used  378 (59%)
+  ability:Dragonair                                  turns offered  392, used  323 (82%)
+  play:Copycat                                       turns offered  391, used  225 (58%)
+  play:Rainbow Cave                                  turns offered  374, used  186 (50%)
+  play:Professor's Research                          turns offered  341, used  249 (73%)
+  play:Poké Ball                                     turns offered  314, used  249 (79%)
+  play:Sabrina                                       turns offered  289, used   94 (33%)
+  play:Small Balloon                                 turns offered  226, used  141 (62%)
+  play:Pokémon Center Lady                           turns offered  206, used  111 (54%)
+  play:Ancient Booster Energy Capsule                turns offered  185, used  149 (81%)
+  play:Professor Sada                                turns offered  157, used  117 (75%)

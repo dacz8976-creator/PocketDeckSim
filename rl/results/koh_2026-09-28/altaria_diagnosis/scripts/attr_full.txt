@@ -1,0 +1,84 @@
+bad lines 6 dupes 0
+rows 2898 Counter({5: 458, 4: 436, 6: 431, 1: 422, 0: 409, 3: 394, 2: 348})
+reproduced both picks: 2223 of 2898
+== ALL cells: 2223 reproduced first-divergence rows
+  R alone already gives koh's move (A, B not needed)         n=1798 worse 270 better 248 net pts/3500 -0.64 sign p 0.356
+  needs B (R alone keeps kog's move)                         n= 297 worse  48 better  34 net pts/3500 -0.40 sign p 0.151
+  needs A (R alone keeps kog's move)                         n=  94 worse  17 better   9 net pts/3500 -0.23 sign p 0.169
+  needs A+B together (each alone keeps kog's move)           n=  14 worse   2 better   2 net pts/3500 +0.00 sign p 1.000
+  R+B gives it, A takes it back                              n=  11 worse   2 better   1 net pts/3500 -0.03 sign p 1.000
+  other pattern (True, True, False)                          n=   9 worse   1 better   3 net pts/3500 +0.06 sign p 0.625
+  (all reproduced rows)                                      n=2223 worse 340 better 297 net pts/3500 -1.24 sign p 0.096
+== blaziken: 326 reproduced first-divergence rows
+  R alone already gives koh's move (A, B not needed)         n= 258 worse  43 better  40 net pts/3500 -0.09 sign p 0.826
+  needs B (R alone keeps kog's move)                         n=  48 worse   6 better   9 net pts/3500 +0.09 sign p 0.607
+  needs A (R alone keeps kog's move)                         n=  17 worse   4 better   3 net pts/3500 -0.03 sign p 1.000
+  needs A+B together (each alone keeps kog's move)           n=   2 worse   0 better   0 net pts/3500 +0.00 sign p 1.000
+  other pattern (True, True, False)                          n=   1 worse   0 better   0 net pts/3500 +0.00 sign p 1.000
+  (all reproduced rows)                                      n= 326 worse  53 better  52 net pts/3500 -0.03 sign p 1.000
+== hydreigon: 318 reproduced first-divergence rows
+  R alone already gives koh's move (A, B not needed)         n= 246 worse  39 better  39 net pts/3500 +0.00 sign p 1.000
+  needs B (R alone keeps kog's move)                         n=  44 worse   4 better   6 net pts/3500 +0.06 sign p 0.754
+  needs A (R alone keeps kog's move)                         n=  16 worse   3 better   0 net pts/3500 -0.09 sign p 0.250
+  R+B gives it, A takes it back                              n=   5 worse   2 better   0 net pts/3500 -0.06 sign p 0.500
+  needs A+B together (each alone keeps kog's move)           n=   4 worse   0 better   1 net pts/3500 +0.03 sign p 1.000
+  other pattern (True, True, False)                          n=   3 worse   0 better   2 net pts/3500 +0.06 sign p 0.500
+  (all reproduced rows)                                      n= 318 worse  48 better  48 net pts/3500 +0.00 sign p 1.000
+== lucario: 276 reproduced first-divergence rows
+  R alone already gives koh's move (A, B not needed)         n= 207 worse  38 better  17 net pts/3500 -0.60 sign p 0.006
+  needs B (R alone keeps kog's move)                         n=  51 worse  11 better   5 net pts/3500 -0.17 sign p 0.210
+  needs A (R alone keeps kog's move)                         n=  14 worse   4 better   2 net pts/3500 -0.06 sign p 0.688
+  R+B gives it, A takes it back                              n=   2 worse   0 better   0 net pts/3500 +0.00 sign p 1.000
+  needs A+B together (each alone keeps kog's move)           n=   1 worse   0 better   0 net pts/3500 +0.00 sign p 1.000
+  other pattern (True, True, False)                          n=   1 worse   0 better   0 net pts/3500 +0.00 sign p 1.000
+  (all reproduced rows)                                      n= 276 worse  53 better  24 net pts/3500 -0.83 sign p 0.001
+== sceptile: 309 reproduced first-divergence rows
+  R alone already gives koh's move (A, B not needed)         n= 267 worse  37 better  34 net pts/3500 -0.09 sign p 0.813
+  needs A (R alone keeps kog's move)                         n=  19 worse   3 better   2 net pts/3500 -0.03 sign p 1.000
+  needs B (R alone keeps kog's move)                         n=  18 worse   3 better   1 net pts/3500 -0.06 sign p 0.625
+  other pattern (True, True, False)                          n=   3 worse   0 better   1 net pts/3500 +0.03 sign p 1.000
+  needs A+B together (each alone keeps kog's move)           n=   2 worse   0 better   0 net pts/3500 +0.00 sign p 1.000
+  (all reproduced rows)                                      n= 309 worse  43 better  38 net pts/3500 -0.14 sign p 0.657
+== suicune: 330 reproduced first-divergence rows
+  R alone already gives koh's move (A, B not needed)         n= 268 worse  43 better  31 net pts/3500 -0.34 sign p 0.201
+  needs B (R alone keeps kog's move)                         n=  53 worse   6 better   7 net pts/3500 +0.03 sign p 1.000
+  needs A (R alone keeps kog's move)                         n=   7 worse   1 better   0 net pts/3500 -0.03 sign p 1.000
+  needs A+B together (each alone keeps kog's move)           n=   2 worse   1 better   0 net pts/3500 -0.03 sign p 1.000
+  (all reproduced rows)                                      n= 330 worse  51 better  38 net pts/3500 -0.37 sign p 0.203
+== vespiquen: 343 reproduced first-divergence rows
+  R alone already gives koh's move (A, B not needed)         n= 283 worse  38 better  49 net pts/3500 +0.31 sign p 0.284
+  needs B (R alone keeps kog's move)                         n=  48 worse  11 better   5 net pts/3500 -0.17 sign p 0.210
+  needs A (R alone keeps kog's move)                         n=  10 worse   1 better   1 net pts/3500 +0.00 sign p 1.000
+  needs A+B together (each alone keeps kog's move)           n=   1 worse   0 better   1 net pts/3500 +0.03 sign p 1.000
+  R+B gives it, A takes it back                              n=   1 worse   0 better   0 net pts/3500 +0.00 sign p 1.000
+  (all reproduced rows)                                      n= 343 worse  50 better  56 net pts/3500 +0.17 sign p 0.627
+== weezing: 321 reproduced first-divergence rows
+  R alone already gives koh's move (A, B not needed)         n= 269 worse  32 better  38 net pts/3500 +0.16 sign p 0.550
+  needs B (R alone keeps kog's move)                         n=  35 worse   7 better   1 net pts/3500 -0.17 sign p 0.070
+  needs A (R alone keeps kog's move)                         n=  11 worse   1 better   1 net pts/3500 +0.00 sign p 1.000
+  R+B gives it, A takes it back                              n=   3 worse   0 better   1 net pts/3500 +0.03 sign p 1.000
+  needs A+B together (each alone keeps kog's move)           n=   2 worse   1 better   0 net pts/3500 -0.03 sign p 1.000
+  other pattern (True, True, False)                          n=   1 worse   1 better   0 net pts/3500 -0.03 sign p 1.000
+  (all reproduced rows)                                      n= 321 worse  42 better  41 net pts/3500 -0.04 sign p 1.000
+== not reproduced: 675
+  (not reproduced rows)                                      n= 675 worse  95 better  93 net pts/3500 -0.06 sign p 0.942
+== by (category, class), ALL cells, n>=15
+  bench placement differs | R alone already gives koh's move (A, B n n= 537 worse  85 better  79 net pts/3500 -0.17 sign p 0.696
+  trainer play differs | R alone already gives koh's move (A, B n n= 331 worse  53 better  56 net pts/3500 +0.09 sign p 0.848
+  reorder (same turn result) | R alone already gives koh's move (A, B n n= 272 worse  30 better  28 net pts/3500 -0.07 sign p 0.896
+  koh retreats, kog does not | R alone already gives koh's move (A, B n n= 215 worse  31 better  30 net pts/3500 -0.03 sign p 1.000
+  promote after KO | R alone already gives koh's move (A, B n n= 161 worse  25 better  17 net pts/3500 -0.21 sign p 0.280
+  Zone attach target differs | R alone already gives koh's move (A, B n n=  91 worse  15 better  13 net pts/3500 -0.06 sign p 0.851
+  Zone attach target differs | needs B (R alone keeps kog's move) n=  82 worse  14 better  10 net pts/3500 -0.11 sign p 0.541
+  kog evolves, koh does not  | R alone already gives koh's move (A, B n n=  75 worse  11 better  12 net pts/3500 +0.01 sign p 1.000
+  trainer play differs | needs B (R alone keeps kog's move)  n=  54 worse   8 better  10 net pts/3500 +0.06 sign p 0.815
+  reorder (same turn result) | needs B (R alone keeps kog's move) n=  49 worse   5 better   2 net pts/3500 -0.09 sign p 0.453
+  bench placement differs | needs B (R alone keeps kog's move) n=  35 worse  11 better   4 net pts/3500 -0.20 sign p 0.118
+  promote after KO | needs A (R alone keeps kog's move)      n=  34 worse   2 better   3 net pts/3500 +0.03 sign p 1.000
+  kog retreats, koh does not | needs B (R alone keeps kog's move) n=  28 worse   3 better   2 net pts/3500 -0.03 sign p 1.000
+  kog ends turn, koh acts | R alone already gives koh's move (A, B n n=  28 worse   3 better   4 net pts/3500 +0.03 sign p 1.000
+  koh evolves, kog does not  | R alone already gives koh's move (A, B n n=  28 worse   5 better   3 net pts/3500 -0.06 sign p 0.727
+  trainer play differs | needs A (R alone keeps kog's move)  n=  20 worse   5 better   4 net pts/3500 -0.03 sign p 1.000
+  koh ends turn, kog acts | R alone already gives koh's move (A, B n n=  18 worse   4 better   3 net pts/3500 -0.03 sign p 1.000
+  kog retreats, koh does not | R alone already gives koh's move (A, B n n=  17 worse   8 better   2 net pts/3500 -0.17 sign p 0.109
+  koh retreats, kog does not | needs B (R alone keeps kog's move) n=  16 worse   0 better   3 net pts/3500 +0.09 sign p 0.250

@@ -1,0 +1,10 @@
+kog3 tau^2 197.4
+scenario B, footprint kog3_vs_kp3, sim x1, MDE50: effect 13.9 (f = 3.6%), sd 7.08, real error 13.55, Limitless share of var 4.6%
+scenario B, footprint kog3_vs_kp3, sim x1, MDE80: effect 20.2 (f = 5.3%), sd 7.23, real error 13.31, Limitless share of var 9.7%
+scenario B, footprint kog3_vs_kp3, sim x4, MDE50: effect 7.0 (f = 1.8%), sd 3.57, real error 13.80
+scenario B, footprint kog3_vs_kp3, sim x4, MDE80: effect 10.2 (f = 2.6%), sd 3.65, real error 13.68
+scenario B, footprint koh3_vs_kog3, sim x1, MDE50: effect 25.9 (f = 6.8%), sd 13.20, real error 13.10, Limitless share of var 4.8%
+scenario B, footprint koh3_vs_kog3, sim x1, MDE80: effect 37.6 (f = 10.0%), sd 13.41, real error 12.64, Limitless share of var 10.2%
+scenario B, footprint koh3_vs_kog3, sim x4, MDE50: effect 13.1 (f = 3.4%), sd 6.69, real error 13.58
+scenario B, footprint koh3_vs_kog3, sim x4, MDE80: effect 19.1 (f = 5.0%), sd 6.82, real error 13.35
+Limitless-only, 20000 reps: binomial var 631 (sd 25.1); by-event var 639 (sd 25.3); ratio 1.013

@@ -41,12 +41,26 @@ DECK_FILES = {
     "brew-06": ("decks/brews/brew-06-pyukumuku-silvally-payback.txt", "file", ""),
     "brew-06b": ("decks/brews/brew-06b-pyukumuku-silvally-scyther-grass.txt", "file", ""),
     "c-skarmory-ex-chandelure": ("", "no-file", "custom Skarmory ex / Chandelure list; no file in decks/dustin or decks/brews"),
+    # Added Sept 28 night for the games filed since Sept 26. Log notes say "full deck list unverified" for every one of
+    # them; brew-08 was confirmed as Brew 8 by Dustin on Sept 28. The c- decks are video-derived and have no file.
+    "brew-08": ("decks/brews/brew-08-entei-rainbow-cave.txt", "file",
+                "log notes say 'two Entei ex; full deck list unverified'; Dustin confirmed all nine games were brew 8"),
+    "brew-09": ("decks/brews/brew-09-sableye-obstagoon.txt", "file",
+                "log note says 'Mega Sableye ex / Obstagoon core; full deck list unverified'"),
+    "c-hydreigon-galarian-obstagoon-video-visib": ("", "no-file", "video-derived Hydreigon / Galarian Obstagoon deck; no file, list unverified"),
+    "c-mega-sharpedo-ex-gyarados-video-visible-": ("", "no-file", "video-derived Mega Sharpedo ex / Gyarados deck; no file, list unverified"),
+    "c-skarmory-ex-indeedee-ex-genesect-video-v": ("", "no-file", "video-derived Skarmory ex / Indeedee ex / Genesect deck; no file, list unverified"),
+    "c-type-null-silvally-video-visible-core": ("", "no-file", "video-derived Type: Null / Silvally deck; no file, list unverified"),
 }
 
 # Limitless archetype name (as in ladder_mapping.csv) -> (key, list file) for off-panel lists in this folder
 OFF_PANEL_FILES = {
-    "Mega Charizard Y ex Entei ex": ("charizardy", "decks/screen/panel_ladder_2026-09-26/l-charizardy.txt"),
+    # Sept 28 ruling P5 (README section 8): the log cannot tell which build he met, so the better-placed B2e list stands in
+    # (was decks/screen/panel_ladder_2026-09-26/l-charizardy.txt).
+    "Mega Charizard Y ex Entei ex": ("charizardy", "rl/results/b2e_card_check_2026-09-26/decks/h-charizardy_entei.txt"),
     "Mega Sharpedo ex Gyarados": ("sharpedo", "decks/screen/panel_ladder_2026-09-26/l-sharpedo.txt"),
+    # Sept 28 night, Dustin's ruling (relayed): met 3 times, 2-1, so it meets the "met twice" rule; the gauntlet's own list.
+    "Dragonair Mega Rayquaza ex": ("rayquaza", "decks/gauntlet_2026-09-26/g-dragonair_mega_rayquaza.txt"),
 }
 
 FIRST_RE = re.compile(r"\bwent first\b", re.I)

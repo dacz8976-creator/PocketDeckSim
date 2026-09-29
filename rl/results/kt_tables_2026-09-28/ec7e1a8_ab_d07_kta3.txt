@@ -1,0 +1,12 @@
+kt Dustin-deck A/B: decks/dustin/07-skarmory-stall.txt piloted by kta3 on its own seat, kog3 on the 8 lists in decks/screen/opponents; 240 games per matchup
+engine /home/dacz8976/engine-kt-ec7e1a8/engine/target/release/deckgym sha256 407976366fa2104ee1f2663c94fe31b1c503466defe9d6154b7e60659cb0991c
+seeds 22600000000 + 10,000 x 7 + 1,000 x opponent index (+500 seat 1) + i, --seed-stream
+  t-altaria      142/240 =  59.2%
+  t-blaziken      67/240 =  27.9%
+  t-hydreigon    176/240 =  73.3%
+  t-lucario       83/240 =  34.6%
+  t-sceptile      92/240 =  38.3%
+  t-suicune      202/240 =  84.2%
+  t-vespiquen    144/240 =  60.0%
+  t-weezing      168/240 =  70.0%
+07-skarmory-stall.txt: 1074/1920 = 55.94% (kta3 on the deck), 190 s

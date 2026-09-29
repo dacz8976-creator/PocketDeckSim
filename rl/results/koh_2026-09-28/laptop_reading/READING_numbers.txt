@@ -1,0 +1,77 @@
+5. The 45 cells, koh3 against kog3, rules v2 with koh3's mixed rows (score45_koh3_vs_kog3.txt, reused: the committed page, inputs unchanged):
+   kog3: real error 14.0 | reported only: correlation 0.51, average miss 13.0, favorite right 28/45, clear 14/20, beyond chance 18
+   koh3: real error 12.3 | reported only: correlation 0.43, average miss 12.3, favorite right 29/45, clear 16/20, beyond chance 17
+   dMSE new - current: -45.1 points^2, 95% interval -100.4 to +10.4 (not below 0) [Limitless side binomial]
+   dMSE, Limitless side resampled by event: 95% interval -102.0 to +12.0 (not below 0; 67 of 4067 event draws redrawn because a cell had no match)
+   cell veto (miss grows > 6): altaria v hydreigon +9.4, altaria v lucario +7.4, blaziken v weezing +10.7, hydreigon v suicune +12.0, hydreigon v vespiquen +14.0, hydreigon v weezing +9.6, rayquaza v weezing +17.2
+   deck veto (gap grows > 2): altaria +4.8, hydreigon +3.7, vespiquen +3.1
+   altaria v hydreigon +9.4: investigation item: neither side worse (altaria's side -1.4 ± 4.4; hydreigon's side +3.8 ± 4.2)
+   altaria v lucario +7.4: COUNTS: koh3 pilots altaria worse (altaria's side -4.8 ± 3.8; lucario's side +5.0 ± 3.6)
+   blaziken v weezing +10.7: never counts: Limitless band ±23.4 is wider than ±15
+   hydreigon v suicune +12.0: never counts: Limitless band ±15.2 is wider than ±15
+   hydreigon v vespiquen +14.0: never counts: Limitless band ±15.3 is wider than ±15
+   hydreigon v weezing +9.6: never counts: Limitless band ±19.9 is wider than ±15
+   rayquaza v weezing +17.2: never counts: Limitless band ±20.2 is wider than ±15
+   deck altaria +4.8: COUNTS: koh3 pilots altaria's own side worse (altaria's own side -1.8 ± 1.4 (4,500 deals); its opponents' side +1.9 ± 1.3 (4,500 deals))
+   deck hydreigon +3.7: investigation item: neither side worse (hydreigon's own side +5.7 ± 1.5 (4,500 deals); its opponents' side +2.9 ± 1.4 (4,500 deals))
+   deck vespiquen +3.1: investigation item: neither side worse (vespiquen's own side -0.3 ± 1.4 (4,500 deals); its opponents' side +2.1 ± 1.4 (4,500 deals))
+   ADOPTION RULE (v2): do not adopt (dMSE interval not below 0) (held-out-deck veto checked separately)
+   kog3: real error 14.2 | reported only: correlation 0.52, average miss 13.2, favorite right 27/44, clear 14/20, beyond chance 18
+   koh3: real error 12.5 | reported only: correlation 0.43, average miss 12.5, favorite right 28/44, clear 16/20, beyond chance 17
+   dMSE new - current: -46.1 points^2, 95% interval -101.8 to +9.4 (not below 0) [Limitless side binomial]
+   dMSE, Limitless side resampled by event: 95% interval -105.4 to +14.0 (not below 0; 67 of 4067 event draws redrawn because a cell had no match)
+   cell veto (miss grows > 6): altaria v hydreigon +9.4, altaria v lucario +7.4, blaziken v weezing +10.7, hydreigon v suicune +12.0, hydreigon v vespiquen +14.0, hydreigon v weezing +9.6, rayquaza v weezing +17.2
+   deck veto (gap grows > 2): altaria +5.3, hydreigon +3.7, vespiquen +3.1
+   altaria v hydreigon +9.4: investigation item: neither side worse (altaria's side -1.4 ± 4.4; hydreigon's side +3.8 ± 4.2)
+   altaria v lucario +7.4: COUNTS: koh3 pilots altaria worse (altaria's side -4.8 ± 3.8; lucario's side +5.0 ± 3.6)
+   blaziken v weezing +10.7: never counts: Limitless band ±23.4 is wider than ±15
+   hydreigon v suicune +12.0: never counts: Limitless band ±15.2 is wider than ±15
+   hydreigon v vespiquen +14.0: never counts: Limitless band ±15.3 is wider than ±15
+   hydreigon v weezing +9.6: never counts: Limitless band ±19.9 is wider than ±15
+   rayquaza v weezing +17.2: never counts: Limitless band ±20.2 is wider than ±15
+   deck altaria +5.3: COUNTS: koh3 pilots altaria's own side worse (altaria's own side -2.1 ± 1.5 (4,000 deals); its opponents' side +2.3 ± 1.4 (4,000 deals))
+   deck hydreigon +3.7: investigation item: neither side worse (hydreigon's own side +5.7 ± 1.5 (4,500 deals); its opponents' side +2.9 ± 1.4 (4,500 deals))
+   deck vespiquen +3.1: investigation item: neither side worse (vespiquen's own side -0.3 ± 1.4 (4,500 deals); its opponents' side +2.1 ± 1.4 (4,500 deals))
+   ADOPTION RULE (v2): do not adopt (dMSE interval not below 0) (held-out-deck veto checked separately)
+
+6a. B2e's held-out archetypes (panel average, equal-weight over 8; Limitless pooled):
+   rows: ../laptop_runs/b2e_koh3.jsonl
+   cross-check against the cloud's b2e_koh3: identical on moves, winner_seat, points, seed (48000 and 48000 games)
+   A_archetype charizardy_entei             kog3  46.4 -> koh3  50.0; Limitless  49.2; further by -2.0: no
+   A_archetype garchomp                     kog3  21.0 -> koh3  23.8; Limitless  32.5; further by -2.8: no
+   A_archetype hoopa_absol                  kog3  56.9 -> koh3  45.5; Limitless  50.0; further by -2.6: no
+   A_archetype manectric                    kog3  63.0 -> koh3  63.1; Limitless  49.2; further by +0.1: no
+   A_archetype raticate                     kog3  57.1 -> koh3  55.5; Limitless  41.2; further by -1.6: no
+   A_archetype whimsicott                   kog3  35.5 -> koh3  35.2; Limitless  32.3; further by -0.4: no
+   B_dustin dustin_charizardy_entei      kog3  54.5 -> koh3  55.6; Limitless  49.2; further by +1.2: reported only
+   B_dustin dustin_garchomp              kog3  25.6 -> koh3  25.0; Limitless  32.5; further by +0.6: reported only
+   B_dustin dustin_hoopa_absol           kog3  33.2 -> koh3  26.4; Limitless  50.0; further by +6.7: reported only
+   B_dustin dustin_manectric             kog3  59.0 -> koh3  59.0; Limitless  49.2; further by +0.0: reported only
+   B_dustin dustin_raticate              kog3  55.4 -> koh3  55.9; Limitless  41.2; further by +0.5: reported only
+   B_dustin dustin_whimsicott            kog3  29.7 -> koh3  30.2; Limitless  32.3; further by -0.5: reported only
+
+6b. The Scizor row (amendment 2's rows, amendment 4's test):
+   own side (koh3 on Scizor v kog3 on both): +0.06 +/- 1.37 over 8 rows -> no harm
+   the other direction (koh3 on the panel list, kog3 on Scizor), the panel's side: +1.38 +/- 1.31 (reported)
+   Scizor's panel average, both sides: kog3 31.1 -> koh3 29.0 (reported)
+
+6c. The second lists (amendment 2's rows, amendment 4's test; accuracy reported):
+   v-lucario_2   opponent average kog3  55.8 -> koh3  58.5; figure  50.4 (development half, the same opponents); further by +2.7 (reported); own side (mixed) +3.26 +/- 1.51 over 7 -> no harm
+   v-suicune_2   opponent average kog3  50.9 -> koh3  51.0; figure  47.1 (development half, the same opponents); further by +0.1 (reported); own side (mixed) +0.94 +/- 1.45 over 7 -> no harm
+   v-weezing_2   opponent average kog3  54.4 -> koh3  47.9; figure  43.8 (development half, the same opponents); further by -6.5 (reported); own side (mixed) -3.77 +/- 1.57 over 7 -> VETO (own side worse beyond paired noise; amendment 4)
+   l-charizardy  opponent average kog3  40.5 -> koh3  43.6; figure  49.2 (B2e pooled, charizardy_entei); further by -3.1 (reported); own side (mixed) +2.94 +/- 1.26 over 8 -> no harm
+
+6d. B2e's own side in the mixed rows (koh3 on the held deck, kog3 on the panel; amendment 4):
+   A_archetype manectric                    own side +1.60 +/- 1.00 over 8 rows; further by +0.1 -> no harm
+   A_archetype raticate                     own side -0.04 +/- 1.21 over 8 rows; further by -1.6 -> no harm
+   A_archetype hoopa_absol                  own side -10.43 +/- 1.51 over 8 rows; further by -2.6 -> VETO (own side worse beyond paired noise)
+   A_archetype garchomp                     own side +2.21 +/- 1.03 over 8 rows; further by -2.8 -> no harm
+   A_archetype whimsicott                   own side -1.95 +/- 1.26 over 8 rows; further by -0.4 -> VETO (own side worse beyond paired noise)
+   A_archetype charizardy_entei             own side +3.80 +/- 1.31 over 8 rows; further by -2.0 -> no harm
+   B_dustin dustin_manectric             own side +1.23 +/- 1.09 over 8 rows; further by +0.0 -> reported (Dustin's file)
+   B_dustin dustin_raticate              own side +2.42 +/- 1.12 over 8 rows; further by +0.5 -> reported (Dustin's file)
+   B_dustin dustin_hoopa_absol           own side -5.05 +/- 1.46 over 8 rows; further by +6.7 -> reported (Dustin's file); own side worse beyond paired noise
+   B_dustin dustin_garchomp              own side -0.44 +/- 1.30 over 8 rows; further by +0.6 -> reported (Dustin's file)
+   B_dustin dustin_whimsicott            own side -1.78 +/- 1.14 over 8 rows; further by -0.5 -> reported (Dustin's file); own side worse beyond paired noise
+   B_dustin dustin_charizardy_entei      own side +3.70 +/- 1.35 over 8 rows; further by +1.2 -> reported (Dustin's file)
+   B2e held-out veto: hoopa_absol, whimsicott

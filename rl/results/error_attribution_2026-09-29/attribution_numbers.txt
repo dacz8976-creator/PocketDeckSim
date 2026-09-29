@@ -1,0 +1,208 @@
+A. kog3 against Limitless, 45 development cells (points, points^2)
+   checked against eval_power_2026-09-29/analyst/noise_floor.json: all 45 cells agree
+   raw sum of squared misses 12112 (mean 269.2, raw RMS 16.41)
+   chance floor: Limitless binomial noise 3024 + simulator noise 206 = 3229  = 26.7% of the raw sum
+   excess (what tau-hat calls real error squared, times 45) 8882 = 73.3% of the raw sum; tau-hat 14.05
+   Rayquaza (9 cells)                           raw   4704  chance   898  excess   3806 = 42.9% of all excess; group tau-hat 20.6
+   Altaria/Greninja (8 cells, not v Rayquaza)   raw   3653  chance   733  excess   2920 = 32.9% of all excess; group tau-hat 19.1
+   panel (28 cells)                             raw   3755  chance  1599  excess   2156 = 24.3% of all excess; group tau-hat 8.8
+   pilots loaded: k3, kp3, kpf3, kpr3, kpg3, kog3, koh3, kt3, kta3, ktb3, ktc3
+
+B. real-side instability: dev half against the other half (pooled minus dev), same cells   [A2]
+   z^2 per cell = (dev - other)^2 / binomial variance of the difference; 1.0 is what binomial noise alone gives
+   all 45 cells: mean z^2 1.08 (binomial alone expects 1.00, sd of the mean about 0.21)
+   Rayquaza (9 cells)                           mean z^2  1.28   extra half-variance omega^2   19.2 pts^2 per cell (90% 0 to 118; sd 4.4 pts)
+   Altaria/Greninja (8 cells, not v Rayquaza)   mean z^2  3.04   extra half-variance omega^2  171.4 pts^2 per cell (90% 26 to 320; sd 13.1 pts)
+   panel (28 cells)                             mean z^2  0.45   extra half-variance omega^2    0.0 pts^2 per cell (90% 0 to 0; sd 0.0 pts)
+   allocated to cells (group value to every cell in the group): 1543 pts^2 = 17.4% of the excess
+   Altaria/Greninja's 8 cells pooled (match-weighted): dev 56.3% (269 matches), other half 41.5% (219)
+   kog3's tau-hat against the OTHER half alone: 11.36 (against the dev half: 14.05)   [descriptive only; nothing is decided from it]
+
+C. list variation: the variation check (kp3, three versions per deck: a second list and two single-Trainer swaps)
+   reproduces the README's own-side differences (deck average over its opponents, paired 95% half-width):
+     v-lucario_2           +4.7 +/- 1.6   per cell  +0.8  +0.5  +4.2  +4.4  +8.8  +3.2 +11.2
+     v-lucario_swap1       +4.2 +/- 1.2   per cell  +3.4  +1.7  +3.8  +4.8  +5.4  +3.8  +6.2
+     v-lucario_swap2       -3.1 +/- 1.3   per cell  -2.6  -4.4  -4.6  -4.4  +0.2  -2.6  -3.1
+     v-suicune_2           +5.8 +/- 1.8   per cell +10.0  +9.7  +5.8  +2.0  +2.6  +5.4  +5.3
+     v-suicune_swap1       +7.3 +/- 1.5   per cell  +6.2 +12.2  +5.6  +4.6  +4.6  +8.8  +9.0
+     v-suicune_swap2       -0.4 +/- 1.5   per cell  +0.6  -1.7  -2.4  -0.6  +0.6  -1.0  +1.5
+     v-weezing_2           +9.0 +/- 1.9   per cell +10.3  +3.2 +25.2  +5.8  +7.8  +3.9  +7.0
+     v-weezing_swap1       +3.8 +/- 1.3   per cell  +5.4  +0.8  +7.4  +1.2  +4.2  +5.1  +2.5
+     v-weezing_swap2       +1.3 +/- 1.3   per cell  +2.2  +0.3  +4.4  +2.8  +1.0  -0.2  -1.6
+     l-charizardy          -6.8 +/- 1.8   per cell  -3.0  -7.7  -5.5  -8.5  -2.5 -10.4 -12.8  -3.6
+     v-charizardy_swap1    -0.9 +/- 1.2   per cell  -0.3  +0.3  -1.0  -3.7  -1.2  -0.7  -0.4  -0.4
+     v-charizardy_swap2    -1.9 +/- 1.5   per cell  -6.6  +3.6  -1.1  -4.5  +2.0  -4.2  -7.8  +3.0
+   deck-level list swing: mean over (cell, version) of [change^2 - its paired variance], in pts^2 (then its square root)
+     lucario     all three versions  19.0 (rms 4.4; 90% over the 21 cell-version changes 10 to 30); second list alone  31.4; the two swaps alone  12.8; largest single change 11.2
+     suicune     all three versions  29.9 (rms 5.5; 90% over the 21 cell-version changes 16 to 45); second list alone  36.4; the two swaps alone  26.7; largest single change 12.2
+     weezing     all three versions  47.2 (rms 6.9; 90% over the 21 cell-version changes 12 to 103); second list alone 123.3; the two swaps alone   9.1; largest single change 25.2
+     charizardy  all three versions  22.0 (rms 4.7; 90% over the 24 cell-version changes 10 to 36); second list alone  51.0; the two swaps alone   7.5; largest single change 12.8
+   the same second lists under kog3 (the koh reading's runs; own-side deck average, and against kp3's paired change):
+     v-lucario_2    kog3 own-side change  +4.7; kp3  +4.7; per cell (kog3)  +0.8  +0.3  +4.0  +4.4  +8.2  +3.2 +12.2
+     v-suicune_2    kog3 own-side change  +4.6; kp3  +5.8; per cell (kog3)  +4.8  +9.1  +5.0  +1.4  +3.0  +4.4  +4.8
+     v-weezing_2    kog3 own-side change  +8.3; kp3  +9.0; per cell (kog3)  +8.2  +2.8 +24.2  +4.2  +8.0  +4.4  +6.1
+     l-charizardy   kog3 own-side change  -5.9; kp3  -6.8; per cell (kog3)  -0.9  -4.9  -8.0  -7.0  -5.3  -8.3 -13.1  +0.5
+   A3: for a deck the check did not vary, the list swing is the four measured decks' mean (29.5 pts^2) scaled by (1 - modal-list share) / 0.86:
+     lucario           modal list 16.3% of its lists -> full swing  19.0 pts^2 (measured)
+     altaria           modal list 42.9% of its lists -> full swing  19.6 pts^2 (assumed (A3))
+     sceptile          modal list 70.9% of its lists -> full swing  10.0 pts^2 (assumed (A3))
+     vespiquen         modal list 29.6% of its lists -> full swing  24.2 pts^2 (assumed (A3))
+     suicune           modal list  9.0% of its lists -> full swing  29.9 pts^2 (measured)
+     hydreigon         modal list 58.3% of its lists -> full swing  14.3 pts^2 (assumed (A3))
+     weezing           modal list 15.8% of its lists -> full swing  47.2 pts^2 (measured)
+     blaziken          modal list 81.5% of its lists -> full swing   6.4 pts^2 (assumed (A3))
+     rayquaza          modal list 13.3% of its lists -> full swing  29.8 pts^2 (assumed (A3))
+     altaria_greninja  modal list 32.0% of its lists -> full swing  23.4 pts^2 (assumed (A3))
+   A4: the list part of a cell's miss^2 is taken as f x (sum of its two decks' full swings), f = 1/4 (low), 1/2 (mid), 1 (high)
+       totals over the 45 cells: low 503, mid 1007, high 2014 pts^2  (= 5.7%, 11.3%, 22.7% of the excess)
+
+   Can list choice close a deck's gap? kog3's 7-opponent average against Limitless (dev), and each tested version's shift (kp3 changes added to kog3):
+     lucario   sim 51.1 v Limitless 50.4: gap +0.7 pts. v-lucario_2 +4.7 -> gap +5.4; v-lucario_swap1 +4.2 -> gap +4.9; v-lucario_swap2 -3.1 -> gap -2.4
+     suicune   sim 46.3 v Limitless 47.1: gap -0.8 pts. v-suicune_2 +5.8 -> gap +5.0; v-suicune_swap1 +7.3 -> gap +6.5; v-suicune_swap2 -0.4 -> gap -1.2
+     weezing   sim 46.1 v Limitless 43.8: gap +2.4 pts. v-weezing_2 +9.0 -> gap +11.4; v-weezing_swap1 +3.8 -> gap +6.2; v-weezing_swap2 +1.3 -> gap +3.6
+
+   B2e: archetype list minus Dustin's file, per cell against the 8 panel decks (unpaired, 500 deals each); a large list change by design
+     kp3 manectric      panel-average list difference  +3.8; per-cell rms  4.7 (noise-corrected)
+     kp3 raticate       panel-average list difference  +1.4; per-cell rms  1.7 (noise-corrected)
+     kp3 hoopa_absol    panel-average list difference +23.9; per-cell rms 26.1 (noise-corrected)
+     kp3 garchomp       panel-average list difference  -5.3; per-cell rms  8.9 (noise-corrected)
+     kp3 whimsicott     panel-average list difference  +5.6; per-cell rms 10.7 (noise-corrected)
+     kp3 charizardy_entei panel-average list difference  -0.2; per-cell rms  9.0 (noise-corrected)
+     kp3 all six archetypes: per-cell rms 12.8 over 48 cells
+     kp3 without Hoopa/Absol: per-cell rms 7.7 over 40 cells
+     k3  manectric      panel-average list difference  +1.8; per-cell rms  3.0 (noise-corrected)
+     k3  raticate       panel-average list difference  -2.2; per-cell rms  2.6 (noise-corrected)
+     k3  hoopa_absol    panel-average list difference +17.6; per-cell rms 19.7 (noise-corrected)
+     k3  garchomp       panel-average list difference  -7.7; per-cell rms 10.9 (noise-corrected)
+     k3  whimsicott     panel-average list difference  +3.7; per-cell rms 10.2 (noise-corrected)
+     k3  charizardy_entei panel-average list difference  -1.8; per-cell rms 12.0 (noise-corrected)
+     k3  all six archetypes: per-cell rms 11.3 over 48 cells
+     k3  without Hoopa/Absol: per-cell rms 8.8 over 40 cells
+
+D. pilot reach: each tested pilot's table on the 45 cells (excess = miss^2 minus both noise terms, pts^2 per cell; tau-hat in brackets)
+   pilot         all 45    Rayquaza 9    Alt/Gren 8      panel 28   note
+   k3      232.7 (15.3)  464.9 (21.6)  367.1 (19.2)  119.7 (10.9)   reference
+   kp3     240.5 (15.5)  639.2 (25.3)  368.9 (19.2)   75.7 ( 8.7)   Sept 26-27 base
+   kpg3    197.2 (14.0)  421.4 (20.5)  366.3 (19.1)   76.9 ( 8.8)   kp3 + discard-Energy credit
+   kog3    197.4 (14.0)  422.9 (20.6)  365.0 (19.1)   77.0 ( 8.8)   working pilot (kp3 + opening switch A + credit F)
+   kta3    191.4 (13.8)  395.3 (19.9)  365.0 (19.1)   76.3 ( 8.7)   kog + Tool cut (switch 1 alone)
+   ktc3    197.1 (14.0)  428.1 (20.7)  361.1 (19.0)   76.0 ( 8.7)   kog + switch 3
+   ktb3    205.8 (14.3)  424.8 (20.6)  327.2 (18.1)  100.7 (10.0)   kog + switch 2
+   kt3     198.4 (14.1)  401.3 (20.0)  336.7 (18.3)   93.6 ( 9.7)   kog + all three Tool switches
+   kpf3    156.1 (12.5)   76.4 ( 8.7)  313.9 (17.7)  136.7 (11.7)   kp3 + R' projection (discard-cost attacks)
+   kpr3    155.7 (12.5)   75.0 ( 8.7)  318.0 (17.8)  135.2 (11.6)   kp3 + readiness for the Active
+   koh3    152.1 (12.3)   72.2 ( 8.5)  353.0 (18.8)  120.4 (11.0)   kog + R' (kpf's projection with fixes A and B)
+
+E/F. THE SPLIT, totals over the 45 cells (pts^2; share of the excess in brackets). Intervals are 5th to 95th percentile of a joint bootstrap
+   (Limitless cells redrawn from Binomial, simulator resampled by deal, every pilot on the same deals; 600 draws), except where marked as an assumption range.
+   raw squared miss                            12112
+   1 chance floor (Limitless + simulator)        3229   = 27% of the raw sum
+   excess = tau-hat^2 x 45                       8882   (bootstrap 90% 5616 to 12688; tau-hat 14.05, 90% 11.2 to 16.8)
+   2 real-side instability (halves)   [A2]      1543   (17%) ; bootstrap over cells: rq 0-1066, ag 212-2562, pn 0-0
+   3 list variation   [A3, A4]  low 503, mid 1007, high 2014   (6% / 11% / 23%)  (assumption range, not a statistical interval)
+   4 remainder (mid list)                        6332   (71%)   90% 3065 to 10137
+       of which moved by a tested pilot:
+         koh3 (the whole pilot built on kog; net of what it made worse, all 45 cells):    2037 = 23% of the excess (90% -64 to 4169)
+         koh3, cells where it helped, capped at the cell's remainder:                    3857 (43% of the excess, 61% of the remainder; 90% 3042 to 6009)
+         best tested pilot per cell (upper bound; includes selection luck  [A6]):         4861 (55% of the excess, 77% of the remainder; 90% 3991 to 7327)
+       left where no tested pilot moved it (against the best-pilot bound):               1472 (17% of the excess, 23% of the remainder; 90% -1385 to 3645)
+   by group (pts^2; share of the group's excess in brackets):
+   group                                         excess  chance instab. list mid remainder koh3 reach best reach    left
+   Rayquaza (9 cells)                              3806     898     172      231      3403       2980       3275     128   koh 1971-4696; best 2211-5094
+   Altaria/Greninja (8 cells, not v Rayquaza)      2920     733    1371      179      1371        107        607     764   koh 0-869; best 209-1445
+   panel (28 cells)                                2156    1599       0      597      1559        771        978     580   koh 459-1408; best 694-1798
+
+   The same, on tau-hat's scale (square root of the per-cell mean; points):
+   now (kog3) 14.05
+   a perfect pilot and engine on these cells and lists would still read about 6.7 (low), 7.5 (mid), 8.9 (high): instability + list variation only   [A2, A4]
+     of which instability alone 5.9, list variation alone 3.3 / 4.7 / 6.7
+   koh3, as tested (whole pilot): 12.33
+   what would lower that floor (arithmetic on the same assumptions): folding the other half into the dev data halves the instability term -> floor 6.3 (mid list); and if list handling also cut the list term to the low value -> 5.3
+
+   THE THREE TIERS (pts^2; % of the excess):
+   1 a tested pilot fix reaches it (Rayquaza's 9 cells, koh3, capped at each cell's remainder):   2980  33.5%   (koh3 uncapped gain in those cells 3157; group bootstrap 90% 1971 to 4696 = 22% to 53%)
+   2 no pilot can touch it: the target moving (halves disagree)   1543  17.4%   (Altaria/Greninja 1371, Rayquaza 172, panel 0)
+                            list variation, mid                        1007  11.3%   (low 503 = 5.7%, high 2014 = 22.7%)
+   3 not reached by any tested pilot and not explained by 2:          3353  37.7%
+       Sceptile v Vespiquen 749; Altaria/Greninja's remainder 1371; the other 27 panel cells 810; Rayquaza's leftover 423
+   the 6 cells whose own 90% excess interval stays above zero (sceptile v vespiquen, suicune v vespiquen, rayquaza v lucario, rayquaza v sceptile, rayquaza v vespiquen, altaria_greninja v sceptile) hold 5601 = 63% of the excess
+   koh3 outside Rayquaza's cells (36 cells): helped +1264, hurt -2384, net -1120
+   optimistic pilot-only bound (each group taken from the best tested whole pilot, ignoring what that pilot does to other groups): rq koh3 650; ag kpf3 2511; pn ktc3 2127 -> total 5288, tau-hat 10.84
+   excess left after the best-pilot bound, cell by cell: 4022 -> tau-hat 9.45
+   excess left after koh3's net reach: 6845 -> tau-hat 12.33
+   koh3's Rayquaza cells with kog3 everywhere else (the pilot's demonstrated lever without its cost elsewhere): gain 3157 (90% 1500 to 4936) -> excess 5726, tau-hat 11.28
+   tau-hat by group against the dev half and against the other half (kog3; descriptive only):
+     Rayquaza (9 cells)                           dev half  20.6   other half  18.1
+     Altaria/Greninja (8 cells, not v Rayquaza)   dev half  19.1   other half   9.0
+     panel (28 cells)                             dev half   8.8   other half   8.9
+
+G. TOP 15 CELLS BY SQUARED MISS (kog3 - Limitless, dev half); every column is pts^2 unless stated
+cell                              nL  kog3   Lim   miss  miss^2 chance instab      list remaind  koh3 koh gain  best best gain   left
+rayquaza v lucario                58  34.8  73.3  -38.5    1480     38     19  12-49     1399  53.6     1094  61.4      1340     59
+rayquaza v vespiquen              36  25.2  61.1  -35.9    1290     70     19  13-54     1174  51.2     1193  51.2      1193      0
+altaria_greninja v sceptile       33  31.0  66.7  -35.7    1272     72    171   8-33     1012  29.8      -87  33.4       166    847
+sceptile v vespiquen              56  64.2  35.7  +28.5     811     46      0   9-34      749  64.0       11  64.0        11    737
+rayquaza v sceptile               50  17.6  45.0  -27.4     751     52     19  10-40      659  23.8      302  25.0       352    308
+altaria_greninja v blaziken       17  44.3  70.6  -26.3     691    127    171   7-30      378  42.6      -92  49.2       234    144
+altaria_greninja v hydreigon      17  39.4  64.7  -25.3     640    139    171   9-38      311  39.6       10  41.4        97    214
+rayquaza v blaziken                8  27.3  50.0  -22.7     515    316     19   9-36      162  39.0      395  41.5       444      0
+altaria_greninja v weezing        16  28.6  50.0  -21.4     458    160    171  18-71       91  37.2      295  37.2       295      0
+hydreigon v lucario               55  43.6  63.6  -20.0     401     47      0   8-33      338  49.0      187  52.6       280     58
+blaziken v hydreigon              24  48.2  66.7  -18.5     341     98      0   5-21      233  49.2       36  49.2        36    197
+vespiquen v weezing               43  65.6  83.7  -18.1     328     36      0  18-71      256  71.8      186  72.3       197     59
+altaria v blaziken                34  58.6  76.5  -17.9     319     58      0   6-26      249  53.6     -204  61.2        86    163
+rayquaza v altaria_greninja       36  35.2  52.8  -17.6     309     74     19  13-53      189  55.8      300  55.8       300      0
+suicune v vespiquen               72  46.0  28.5  +17.5     307     33      0  14-54      247  39.8      179  39.8       179     68
+top 15 together                                            9915   1366    781 161-643    7446           3805            5208   2854
+   the top 15 hold 82% of the raw sum and 96% of the excess
+   extra columns per cell (90% interval of the cell's excess; other-half rate; halves z^2; measured list swing; best tested list change toward Limitless):
+   rayquaza v lucario               excess   1442 (90% 701 to 2277); best pilot kpf3; other half 54.7 (n 62), z^2 4.5; list swing measured - pts; best tested list moves the miss by -
+   rayquaza v vespiquen             excess   1220 (90% 342 to 2354); best pilot koh3; other half 44.6 (n 28), z^2 1.7; list swing measured - pts; best tested list moves the miss by -
+   altaria_greninja v sceptile      excess   1200 (90% 253 to 2234); best pilot kpf3; other half 33.9 (n 31), z^2 6.9; list swing measured - pts; best tested list moves the miss by -
+   sceptile v vespiquen             excess    766 (90% 181 to 1468); best pilot koh3; other half 32.5 (n 83), z^2 0.2; list swing measured - pts; best tested list moves the miss by -
+   rayquaza v sceptile              excess    698 (90% 125 to 1496); best pilot kpf3; other half 40.9 (n 44), z^2 0.2; list swing measured - pts; best tested list moves the miss by -
+   altaria_greninja v blaziken      excess    564 (90% -215 to 1808); best pilot ktb3; other half 45.0 (n 10), z^2 1.7; list swing measured - pts; best tested list moves the miss by -
+   altaria_greninja v hydreigon     excess    501 (90% -267 to 1738); best pilot kpf3; other half 45.9 (n 24), z^2 1.4; list swing measured - pts; best tested list moves the miss by -
+   rayquaza v blaziken              excess    199 (90% -554 to 1906); best pilot kpr3; other half 40.0 (n 15), z^2 0.2; list swing measured - pts; best tested list moves the miss by -
+   altaria_greninja v weezing       excess    298 (90% -289 to 1445); best pilot koh3; other half 50.0 (n 12), z^2 0.0; list swing measured - pts; best tested list moves the miss by -
+   hydreigon v lucario              excess    354 (90% -28 to 847); best pilot kpf3; other half 50.1 (n 102), z^2 2.6; list swing measured 4.2 pts; best tested list moves the miss by +4.6
+   blaziken v hydreigon             excess    243 (90% -189 to 1053); best pilot koh3; other half 54.0 (n 37), z^2 1.0; list swing measured - pts; best tested list moves the miss by -
+   vespiquen v weezing              excess    292 (90% -34 to 718); best pilot kpf3; other half 83.3 (n 42), z^2 0.0; list swing measured 4.4 pts; best tested list moves the miss by +1.6
+   altaria v blaziken               excess    262 (90% -99 to 845); best pilot ktb3; other half 73.0 (n 65), z^2 0.1; list swing measured - pts; best tested list moves the miss by -
+   rayquaza v altaria_greninja      excess    235 (90% -126 to 839); best pilot koh3; other half 49.9 (n 26), z^2 0.0; list swing measured - pts; best tested list moves the miss by -
+   suicune v vespiquen              excess    274 (90% 6 to 667); best pilot koh3; other half 27.6 (n 58), z^2 0.0; list swing measured 6.0 pts; best tested list moves the miss by +1.0
+   thin cells (fewer than 25 real matches): 11 cells; raw miss^2 2943 of which chance 1522 (52%); excess 1421; cells whose own 90% excess interval includes zero 11
+   all 45: cells whose own 90% excess interval includes zero 39; of the top 15 by squared miss 9
+   Sceptile v Vespiquen: kog3 64.2, Limitless dev 35.7 (n 56), other half 32.5 (n 83); no tested pilot moved it: k3 66.8, kp3 64.2, kpg3 64.2, kog3 64.2, kta3 64.2, ktc3 64.2, ktb3 64.6, kt3 64.6, kpf3 66.4, kpr3 66.4, koh3 64.0
+
+   cells.csv written (all 45 cells, sorted by squared miss)
+
+H. other evidence
+   deeper search (k4/k5/k6 on both sides; the Sept 23 table, 28 cells, old Limitless pull, 1000 deals): change from k3, points
+     k4: rms change 3.0, cells moved 5+ points 5, toward Limitless by 1+ 8, away by 1+ 6; raw MSE v Limitless 149 (k3) -> 139
+     k5: rms change 3.8, cells moved 5+ points 7, toward Limitless by 1+ 11, away by 1+ 9; raw MSE v Limitless 149 (k3) -> 130
+     k6: rms change 4.0, cells moved 5+ points 8, toward Limitless by 1+ 9, away by 1+ 8; raw MSE v Limitless 149 (k3) -> 138
+     Sceptile v Vespiquen: k3 66.1, k4 59.2, k5 56.5, k6 56.8; Limitless 33.1
+   option B (b3o3n1: guesses the hand and searches the reply) v k3, five cells, Sept 24 table and old Limitless: squared miss 2792 -> 1752 (37% less); Hydreigon v Lucario alone 566 -> 94
+     per cell change: altaria v blaziken +2.0, altaria v lucario +1.6, blaziken v sceptile +4.5, hydreigon v lucario +14.1, sceptile v vespiquen -4.2
+   B6 skill proxy applied to the new decks (development matches against the 8 panel decks; B6's own beta 0.29, 95% -0.06 to 0.43; score change = 100 x 0.25 x beta x mean skill difference):
+     altaria_greninja  269 matches, mean skill difference +0.066 -> +0.48 points (range -0.11 to +0.71)
+       65 players; the three busiest play 54 of the 269 matches (20%); score 56.3% with them, 56.0% without
+     rayquaza          301 matches, mean skill difference -0.018 -> -0.13 points (range +0.03 to -0.19)
+       82 players; the three busiest play 53 of the 301 matches (18%); score 50.3% with them, 48.0% without
+   how far tested pilots moved the cells, against their own base (points per cell; delta-MSE per cell = mean over cells of new miss^2 minus base miss^2):
+     kpf3  v kp3  : cells moved by more than 5 points 21 of 45, largest  35.6, rms 11.6, cells not moved at all  0, delta-MSE  -84.2
+     kpr3  v kp3  : cells moved by more than 5 points 21 of 45, largest  33.4, rms 11.2, cells not moved at all  0, delta-MSE  -84.7
+     kpg3  v kp3  : cells moved by more than 5 points  3 of 45, largest   9.0, rms  2.1, cells not moved at all 30, delta-MSE  -43.2
+     kog3  v kp3  : cells moved by more than 5 points  3 of 45, largest   9.0, rms  2.4, cells not moved at all 24, delta-MSE  -43.1
+     koh3  v kog3 : cells moved by more than 5 points 22 of 45, largest  26.0, rms  9.6, cells not moved at all  2, delta-MSE  -45.1
+     kt3   v kog3 : cells moved by more than 5 points  3 of 45, largest   6.6, rms  2.2, cells not moved at all  2, delta-MSE   +1.0
+     kta3  v kog3 : cells moved by more than 5 points  0 of 45, largest   1.2, rms  0.4, cells not moved at all 30, delta-MSE   -5.9
+     ktb3  v kog3 : cells moved by more than 5 points  3 of 45, largest   6.6, rms  2.4, cells not moved at all  2, delta-MSE   +8.4
+     ktc3  v kog3 : cells moved by more than 5 points  0 of 45, largest   2.2, rms  0.5, cells not moved at all 38, delta-MSE   -0.3
+   A7: format. 33% of the development matches are best-of-three (BO3), the rest BO1; the simulator plays single games. If a series were three independent games at the simulator's rate, real cells would sit 1.8 points (rms) from the simulator's; allowance 148 pts^2 = 1.7% of the excess (not carved out of the split above).
+     largest: blaziken v vespiquen +3.7 (BO3 share 39%), lucario v vespiquen +3.5 (BO3 share 44%), vespiquen v weezing +3.4 (BO3 share 49%), sceptile v vespiquen +3.3 (BO3 share 50%)
+   koh3's biggest losses against kog3 (excess change, pts^2, negative = worse): hydreigon v suicune -504; rayquaza v weezing -343; hydreigon v vespiquen -312; blaziken v weezing -241; altaria v blaziken -204; hydreigon v weezing -184
+     Rayquaza (9 cells)                           net  +3157 = helped  +3499 and hurt   -343
+     Altaria/Greninja (8 cells, not v Rayquaza)   net    +96 = helped   +395 and hurt   -299
+     panel (28 cells)                             net  -1216 = helped   +869 and hurt  -2085

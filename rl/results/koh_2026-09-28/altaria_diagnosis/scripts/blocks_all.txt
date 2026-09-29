@@ -1,0 +1,735 @@
+
+########## 72000046 swablu_eevee kind=worse opp=blaziken altaria_seat=0 k=38 T=6 (row: koh v kp3 move=kpf, kp3_act=Play Sabrina, kpf_act=Place Swablu@1)
+  <kp3>
+   T6 own: Play Sabrina; Place Swablu@1; Attach P->Eevee(bench) (zone); ATTACK Hypnoblast; EndTurn
+        end: alt P1 H1 | Espeon[P]70, Swablu[]50, Eevee[P]50, Swablu[P]20   || opp P0 H1 | Castform Sunny Form[]SLP20, Heatmor[F]80, Mega Blaziken ex[]210
+   T7 opp: Retreat->slot2; ATTACK Tongue Whip
+   T8 own: Play Poké Ball; Place Darkrai@3; Attach P->Darkrai(bench) (zone); ATTACK Hypnoblast; EndTurn
+        end: alt P1 H1 | Espeon[P]70, Swablu[]50, Eevee[P]50, Darkrai[P]100   || opp P1 H2 | Heatmor[F]SLP30, Castform Sunny Form[]20, Mega Blaziken ex[]210
+   T9 opp: Retreat->slot2; ATTACK Sunny Scorching
+   T10 own: Play Field Blower; DiscardToolFromPokemon { player: 1, in_play_idx: 0, tool_idx: 0 }; Play Professor's Research; Attach P->Darkrai(bench) (zone); Play Small Balloon; AttachTo (abil); ATTACK Hypnoblast; EndTurn
+        end: alt P2 H1 | Espeon[P]20, Swablu[]50, Eevee[P]50, Darkrai[PP]100   || opp P1 H2 | Mega Blaziken ex[]210, Heatmor[]10
+  <kog_v_kog3> identical to kp3 trace
+  <koh_v_kog3>
+   T6 own: Place Swablu@1; Attach P->Eevee(bench) (zone); ATTACK Hypnoblast; EndTurn
+        end: alt P1 H2 | Espeon[P]70, Swablu[]50, Eevee[P]50, Swablu[P]20   || opp P0 H1 | Heatmor[F]SLP30, Castform Sunny Form[]70, Mega Blaziken ex[]210
+   T7 opp: ATTACK Tongue Whip
+   T8 own: Play Poké Ball; Place Darkrai@3; Attach P->Darkrai(bench) (zone); ATTACK Hypnoblast; EndTurn
+        end: alt P2 H2 | Espeon[P]70, Swablu[]50, Eevee[P]50, Darkrai[P]100   || opp P1 H2 | Mega Blaziken ex[F]210, Castform Sunny Form[]70
+   T9 opp: ATTACK Mega Burning
+   T10 own: Play Professor's Research; Play Small Balloon; AttachTo (abil); Retreat Swablu->Eevee; Attach P->Darkrai(bench) (zone); Play Field Blower; DiscardToolFromPokemon { player: 1, in_play_idx: 0, tool_idx: 0 }; ATTACK Stampede; EndTurn
+        end: alt P2 H2 | Eevee[P]50, Swablu[]50, Darkrai[PP]100   || opp P2 H2 | Mega Blaziken ex[F]200, Castform Sunny Form[]70
+   T11 opp: ATTACK Mega Burning
+  <kpf>
+   T6 own: Place Swablu@1; Retreat Espeon->Swablu; Play Sabrina; Attach P->Swablu(Active) (zone); ATTACK Sing; EndTurn
+        end: alt P1 H1 | Swablu[P]50, Espeon[]70, Eevee[]50, Swablu[P]20   || opp P0 H1 | Castform Sunny Form[]SLP70, Heatmor[F]80, Mega Blaziken ex[]210
+   T7 opp: ATTACK Sunny Scorching
+   T8 own: Play Poké Ball; Play Field Blower; DiscardToolFromPokemon { player: 1, in_play_idx: 0, tool_idx: 0 }; Retreat Swablu->Espeon; Place Igglybuff@3; Attach P->Espeon(Active) (zone); ATTACK Hypnoblast; EndTurn
+        end: alt P1 H0 | Espeon[P]70, Swablu[]20, Eevee[]50, Igglybuff[]30   || opp P1 H1 | Castform Sunny Form[F]SLP20, Heatmor[F]80, Mega Blaziken ex[]210
+   T10 own: Attach P->Swablu(Active) (zone); Retreat Swablu->Espeon; ATTACK Hypnoblast; EndTurn
+        end: alt P2 H1 | Espeon[P]70, Swablu[]20, Eevee[]50, Igglybuff[]30   || opp P1 H1 | Mega Blaziken ex[F]210, Heatmor[F]80
+   T11 opp: ATTACK Mega Burning
+
+########## 72000065 swablu_eevee kind=worse opp=blaziken altaria_seat=1 k=23 T=3 (row: koh v kp3 move=other, kp3_act=Attach P->slot1 (zone), kpf_act=Retreat->slot3)
+  <kp3>
+   T3 own: Attach P->Darkrai(bench) (zone); EndTurn
+        end: alt P0 H2 | Igglybuff[]30, Darkrai[P]100, Swablu[]50, Swablu[]50   || opp P0 H2 | Castform Sunny Form[F]SLP20, Heatmor[]80, Torchic[]60, Torchic[]60
+   T4 opp: ATTACK Tongue Whip
+   T5 own: Attach P->Darkrai(bench) (zone); ATTACK Sleepy Lullaby; EndTurn
+        end: alt P1 H3 | Igglybuff[]30, Darkrai[PP]70, Swablu[]50, Swablu[]50   || opp P0 H3 | Heatmor[F]SLP70, Torchic[]60, Torchic[]60
+   T6 opp: ATTACK Tongue Whip
+   T7 own: Retreat Igglybuff->Darkrai; Attach P->Darkrai(Active) (zone); Play Training Area; Play Copycat; Play Poké Ball; Evolve Swablu->Mega Altaria ex(bench); ATTACK Dark Slumber; EndTurn
+        end: alt P1 H2 | Darkrai[PPP]40, Igglybuff[]30, Swablu[]50, Mega Altaria ex[]190   || opp P0 H3 | Heatmor[F]SLP10, Torchic[]60, Torchic[F]60
+   T8 opp: Evolve->Mega Blaziken ex slot0; ATTACK Mega Burning
+  <kog_v_kog3> identical to kp3 trace
+  <koh_v_kog3>
+   T3 own: Retreat Igglybuff->Darkrai; Attach P->Darkrai(Active) (zone); EndTurn
+        end: alt P0 H2 | Darkrai[P]100, Igglybuff[]30, Swablu[]50, Swablu[]50   || opp P0 H2 | Castform Sunny Form[F]SLP20, Heatmor[]80, Torchic[]60, Torchic[]60
+   T4 opp: ATTACK Tongue Whip
+   T5 own: Place Eevee@1; Attach P->Darkrai(Active) (zone); EndTurn
+        end: alt P1 H2 | Darkrai[PP]100, Eevee[]50, Swablu[]50, Swablu[]50   || opp P1 H3 | Heatmor[F]80, Torchic[]60, Torchic[]60
+   T6 opp: ATTACK Tongue Whip
+   T7 own: Play Copycat; Attach P->Darkrai(Active) (zone); Play Small Balloon; AttachTo (abil); ATTACK Dark Slumber; EndTurn
+        end: alt P1 H3 | Darkrai[PPP]100, Eevee[]50, Swablu[]50, Swablu[]20   || opp P1 H4 | Heatmor[F]SLP40, Torchic[]60, Torchic[F]60
+   T8 opp: ATTACK Tongue Whip
+  <kpf>
+   T3 own: Retreat Igglybuff->Swablu; Attach P->Swablu(Active) (zone); ATTACK Sing; EndTurn
+        end: alt P0 H2 | Swablu[P]50, Darkrai[]100, Swablu[]50, Igglybuff[]30   || opp P0 H2 | Castform Sunny Form[F]SLP20, Heatmor[]80, Torchic[]60, Torchic[]60
+   T4 opp: ATTACK Tongue Whip
+   T5 own: Place Eevee@3; Attach P->Darkrai(bench) (zone); ATTACK Sing; EndTurn
+        end: alt P1 H2 | Swablu[P]50, Darkrai[P]100, Swablu[]50, Eevee[]50   || opp P1 H3 | Heatmor[F]SLP80, Torchic[]60, Torchic[]60
+   T6 opp: ATTACK Tongue Whip
+   T7 own: Play Copycat; Attach P->Darkrai(bench) (zone); Play Small Balloon; AttachTo (abil); ATTACK Sing; EndTurn
+        end: alt P1 H3 | Swablu[P]50, Darkrai[PP]70, Swablu[]50, Eevee[]50   || opp P1 H4 | Heatmor[F]SLP60, Torchic[]60, Torchic[F]60
+   T8 opp: Evolve->Mega Blaziken ex slot3; Retreat->slot3; ATTACK Mega Burning
+
+########## 72000083 swablu_eevee kind=worse opp=blaziken altaria_seat=1 k=14 T=2 (row: koh v kp3 move=kpf, kp3_act=Play Training Area, kpf_act=Place Eevee@1)
+  <kp3>
+   T2 own: Play Poké Ball; Place Swablu@3; Play Training Area; Attach P->Swablu(bench) (zone); Play Field Blower; DiscardActiveStadium; Play Copycat; EndTurn
+        end: alt P0 H3 | Swablu[]50, Swablu[P]50   || opp P0 H3 | Castform Sunny Form[]70, Heatmor[]80, Torchic[]60, Torchic[]60
+   T3 opp: Evolve->Mega Blaziken ex slot3; ATTACK Sunny Scorching
+   T4 own: Place Darkrai@2; Attach P->Swablu(Active) (zone); Retreat Swablu->Swablu; ATTACK Sing; EndTurn
+        end: alt P0 H3 | Swablu[P]50, Darkrai[]100, Swablu[]20   || opp P0 H3 | Castform Sunny Form[F]SLP70, Heatmor[]80, Torchic[]60, Mega Blaziken ex[]210
+   T6 own: Place Igglybuff@1; Retreat Swablu->Igglybuff; Attach P->Darkrai(bench) (zone); ATTACK Sleepy Lullaby; EndTurn
+        end: alt P0 H3 | Igglybuff[]30, Swablu[]50, Darkrai[P]100, Swablu[]20   || opp P0 H5 | Castform Sunny Form[F]SLP20, Heatmor[]80, Torchic[]60, Mega Blaziken ex[F]210
+   T7 opp: ATTACK Tongue Whip
+  <kog_v_kog3>
+   T2 own: Play Poké Ball; Place Swablu@3; Play Training Area; Attach P->Swablu(bench) (zone); Play Field Blower; DiscardActiveStadium; Play Copycat; EndTurn
+        end: alt P0 H3 | Swablu[]50, Swablu[P]50   || opp P0 H3 | Castform Sunny Form[]70, Heatmor[]80, Torchic[]60, Torchic[]60
+   T3 opp: Evolve->Mega Blaziken ex slot3; ATTACK Sunny Scorching
+   T4 own: Place Darkrai@2; Attach P->Swablu(Active) (zone); Retreat Swablu->Swablu; ATTACK Sing; EndTurn
+        end: alt P0 H3 | Swablu[P]50, Darkrai[]100, Swablu[]20   || opp P0 H3 | Castform Sunny Form[F]SLP70, Heatmor[]80, Torchic[]60, Mega Blaziken ex[]210
+   T6 own: Place Igglybuff@1; Retreat Swablu->Igglybuff; Attach P->Darkrai(bench) (zone); ATTACK Sleepy Lullaby; EndTurn
+        end: alt P0 H3 | Igglybuff[]30, Swablu[]50, Darkrai[P]100, Swablu[]20   || opp P0 H5 | Castform Sunny Form[F]SLP20, Heatmor[]80, Torchic[]60, Mega Blaziken ex[F]210
+   T7 opp: ATTACK Tongue Whip
+  <koh_v_kog3>
+   T2 own: Play Poké Ball; Place Swablu@3; Place Eevee@1; Play Copycat; Place Eevee@2; Attach P->Swablu(Active) (zone); ATTACK Sing; EndTurn
+        end: alt P0 H2 | Swablu[P]50, Eevee[]50, Eevee[]50, Swablu[]50   || opp P0 H3 | Castform Sunny Form[]SLP70, Heatmor[]80, Torchic[]60, Torchic[]60
+   T3 opp: Evolve->Mega Blaziken ex slot3
+   T4 own: Attach P->Swablu(Active) (zone); ATTACK Sing; EndTurn
+        end: alt P0 H3 | Swablu[PP]50, Eevee[]50, Eevee[]50, Swablu[]50   || opp P0 H3 | Castform Sunny Form[F]SLP70, Heatmor[]80, Torchic[]60, Mega Blaziken ex[]210
+   T5 opp: Retreat->slot3; ATTACK Mega Burning
+   T6 own: Place Darkrai@3; Evolve Eevee->Espeon(bench); Attach P->Swablu(Active) (zone); ATTACK Sing; EndTurn
+        end: alt P0 H2 | Swablu[P]50, Eevee[]50, Espeon[]90, Darkrai[]100   || opp P1 H4 | Mega Blaziken ex[F]SLP210, Heatmor[]80, Torchic[]60, Castform Sunny Form[]70
+   T7 opp: ATTACK Mega Burning
+  <kpf>
+   T2 own: Play Poké Ball; Place Swablu@3; Place Eevee@1; Play Copycat; Place Eevee@2; Attach P->Swablu(Active) (zone); ATTACK Sing; EndTurn
+        end: alt P0 H2 | Swablu[P]50, Eevee[]50, Eevee[]50, Swablu[]50   || opp P0 H3 | Castform Sunny Form[]SLP70, Heatmor[]80, Torchic[]60, Torchic[]60
+   T3 opp: Evolve->Mega Blaziken ex slot3
+   T4 own: Attach P->Swablu(bench) (zone); ATTACK Sing; EndTurn
+        end: alt P0 H3 | Swablu[P]50, Eevee[]50, Eevee[]50, Swablu[P]50   || opp P0 H3 | Castform Sunny Form[F]SLP70, Heatmor[]80, Torchic[]60, Mega Blaziken ex[]210
+   T5 opp: Retreat->slot3; ATTACK Mega Burning
+   T6 own: Place Darkrai@3; Evolve Eevee->Espeon(bench); Attach P->Darkrai(bench) (zone); ATTACK Sing; EndTurn
+        end: alt P0 H2 | Swablu[P]50, Eevee[]50, Espeon[]90, Darkrai[P]100   || opp P1 H4 | Mega Blaziken ex[F]SLP210, Heatmor[]80, Torchic[]60, Castform Sunny Form[]70
+   T7 opp: ATTACK Mega Burning
+
+########## 72000133 swablu_eevee kind=better opp=blaziken altaria_seat=1 k=20 T=3 (row: koh v kp3 move=kp3, kp3_act=Play Poké Ball, kpf_act=Retreat->slot3)
+  <kp3>
+   T3 own: Play Poké Ball; Attach P->Darkrai(bench) (zone); Play Training Area; Play Copycat; ATTACK Sleepy Lullaby; EndTurn
+        end: alt P1 H3 | Igglybuff[]10, Darkrai[]100, Darkrai[P]100, Swablu[]50   || opp P0 H3 | Heatmor[]80
+   T4 opp: ATTACK Tongue Whip
+   T5 own: Attach P->Darkrai(bench) (zone); ATTACK Sleepy Lullaby; EndTurn
+        end: alt P1 H4 | Igglybuff[]10, Darkrai[P]100, Darkrai[P]70, Swablu[]50   || opp P0 H2 | Heatmor[F]SLP70, Castform Sunny Form[]70
+   T6 opp: Retreat->slot3; ATTACK Sunny Scorching
+   T7 own: Place Swablu@1; Play Small Balloon; AttachTo (abil); Play Field Blower; DiscardToolFromPokemon { player: 0, in_play_idx: 0, tool_idx: 0 }; Attach P->Darkrai(Active) (zone); EndTurn
+        end: alt P1 H2 | Darkrai[PP]100, Swablu[]50, Darkrai[P]70, Swablu[]50   || opp P1 H3 | Castform Sunny Form[F]70, Heatmor[]30
+   T8 opp: ATTACK Sunny Scorching
+  <kog_v_kog3> identical to kp3 trace
+  <koh_v_kog3>
+   T3 own: Play Poké Ball; Attach P->Darkrai(bench) (zone); Play Training Area; Play Copycat; ATTACK Sleepy Lullaby; EndTurn
+        end: alt P1 H3 | Igglybuff[]10, Darkrai[]100, Darkrai[P]100, Swablu[]50   || opp P0 H3 | Heatmor[]80
+   T4 opp: ATTACK Tongue Whip
+   T5 own: Attach P->Darkrai(bench) (zone); ATTACK Sleepy Lullaby; EndTurn
+        end: alt P1 H4 | Igglybuff[]10, Darkrai[]100, Darkrai[PP]70, Swablu[]50   || opp P0 H2 | Heatmor[F]SLP70, Castform Sunny Form[]70
+   T6 opp: Retreat->slot3; ATTACK Sunny Scorching
+   T7 own: Place Swablu@2; Attach P->Darkrai(Active) (zone); Play Field Blower; DiscardToolFromPokemon { player: 0, in_play_idx: 0, tool_idx: 0 }; Play Small Balloon; AttachTo (abil); ATTACK Dark Slumber; EndTurn
+        end: alt P1 H2 | Darkrai[PPP]70, Darkrai[]100, Swablu[]50, Swablu[]50   || opp P1 H3 | Castform Sunny Form[F]SLP30, Heatmor[]30
+   T8 opp: ATTACK Tongue Whip
+  <kpf>
+   T3 own: Retreat Igglybuff->Swablu; Play Poké Ball; Attach P->Swablu(Active) (zone); Play Training Area; Play Copycat; ATTACK Sing; EndTurn
+        end: alt P0 H3 | Swablu[P]50, Darkrai[]100, Darkrai[]100, Igglybuff[]10   || opp P0 H3 | Torchic[F]SLP10, Heatmor[]80
+   T4 opp: ATTACK Tongue Whip
+   T5 own: Place Swablu@3; Attach P->Darkrai(bench) (zone); ATTACK Sing; EndTurn
+        end: alt P1 H3 | Swablu[P]50, Darkrai[]100, Darkrai[P]100, Swablu[]50   || opp P1 H4 | Heatmor[F]SLP80
+   T6 opp: ATTACK Tongue Whip
+   T7 own: ATTACK Sing; EndTurn
+        end: alt P1 H4 | Swablu[P]50, Darkrai[]100, Darkrai[P]70, Swablu[]50   || opp P1 H5 | Heatmor[F]SLP40
+
+########## 72010095 swablu_eevee kind=better opp=hydreigon altaria_seat=1 k=24 T=3 (row: koh v kp3 move=kp3, kp3_act=Attach P->slot1 (zone), kpf_act=Retreat->slot3)
+  <kp3>
+   T3 own: Attach P->Darkrai(bench) (zone); ATTACK Sleepy Lullaby; EndTurn
+        end: alt P0 H3 | Igglybuff[]20, Darkrai[P]100, Eevee[]50, Swablu[]50   || opp P0 H2 | Bombirdier[D]SLP10, Mega Absol ex[]170, Deino[]60
+   T4 opp: ATTACK Headbutt
+   T5 own: Play Sabrina; Place Darkrai@1; Play Small Balloon; AttachTo (abil); Attach P->Darkrai(Active) (zone); EndTurn
+        end: alt P1 H1 | Darkrai[PP]90, Darkrai[]100, Eevee[]50, Swablu[]50   || opp P1 H3 | Deino[]60, Mega Absol ex[]170, Deino[D]60
+   T6 opp: Retreat->slot3; Evolve->Hydreigon slot0; ATTACK Hyper Ray
+   T7 own: Place Eevee@2; Evolve Swablu->Mega Altaria ex(bench); Attach P->Mega Altaria ex(bench) (zone); EndTurn
+        end: alt P1 H0 | Eevee[]40, Darkrai[]100, Eevee[]50, Mega Altaria ex[P]190   || opp P2 H2 | Hydreigon[]150, Mega Absol ex[]170, Deino[]60
+   T8 opp: ATTACK Hyper Ray
+  <kog_v_kog3> identical to kp3 trace
+  <koh_v_kog3>
+   T3 own: Attach P->Darkrai(bench) (zone); ATTACK Sleepy Lullaby; EndTurn
+        end: alt P0 H3 | Igglybuff[]20, Darkrai[P]100, Eevee[]50, Swablu[]50   || opp P0 H2 | Bombirdier[D]SLP10, Mega Absol ex[]170, Deino[]60
+   T4 opp: ATTACK Headbutt
+   T5 own: Play Small Balloon; AttachTo (abil); Play Sabrina; Place Darkrai@1; Attach P->Swablu(bench) (zone); EndTurn
+        end: alt P1 H1 | Darkrai[P]90, Darkrai[]100, Eevee[]50, Swablu[P]50   || opp P1 H3 | Deino[]60, Mega Absol ex[]170, Deino[D]60
+   T6 opp: Retreat->slot3; Evolve->Hydreigon slot0; ATTACK Hyper Ray
+   T7 own: Evolve Swablu->Mega Altaria ex(Active); Place Eevee@3; Attach P->Mega Altaria ex(Active) (zone); ATTACK Mega Harmony; EndTurn
+        end: alt P1 H0 | Mega Altaria ex[PP]180, Darkrai[]100, Eevee[]50, Eevee[]50   || opp P2 H2 | Hydreigon[]20, Mega Absol ex[]170, Deino[]60
+  <kpf>
+   T3 own: Retreat Igglybuff->Swablu; Attach P->Swablu(Active) (zone); ATTACK Sing; EndTurn
+        end: alt P0 H3 | Swablu[P]50, Darkrai[]100, Eevee[]50, Igglybuff[]20   || opp P0 H2 | Bombirdier[D]SLP20, Mega Absol ex[]170, Deino[]60
+   T5 own: Retreat Swablu->Igglybuff; Attach P->Darkrai(bench) (zone); Play Small Balloon; AttachTo (abil); Play Sabrina; ATTACK Sleepy Lullaby; EndTurn
+        end: alt P1 H2 | Igglybuff[]20, Darkrai[P]100, Eevee[]50, Swablu[]40   || opp P0 H3 | Deino[]SLP50, Mega Absol ex[D]170, Deino[]60
+   T6 opp: Evolve->Hydreigon slot0; ATTACK Hyper Ray
+   T7 own: Place Darkrai@3; Evolve Swablu->Mega Altaria ex(Active); Attach P->Mega Altaria ex(Active) (zone); EndTurn
+        end: alt P1 H1 | Mega Altaria ex[P]180, Darkrai[P]100, Eevee[]50, Darkrai[]100   || opp P1 H2 | Hydreigon[]110, Mega Absol ex[D]170, Deino[]60
+   T8 opp: ATTACK Hyper Ray
+
+########## 72020026 swablu_eevee kind=worse opp=lucario altaria_seat=0 k=17 T=2 (row: koh v kp3 move=None, kp3_act=Place Swablu@2, kpf_act=Retreat->slot3)
+  <kp3>
+   T2 own: Play Training Area; Play Poké Ball; Play Copycat; Place Swablu@2; Play Field Blower; DiscardToolFromPokemon { player: 1, in_play_idx: 0, tool_idx: 0 }; Attach P->Swablu(bench) (zone); ATTACK Sleepy Lullaby; EndTurn
+        end: alt P0 H0 | Igglybuff[]20, Swablu[]50, Swablu[P]50   || opp P0 H2 | Bonsly[]SLP30, Hitmonlee[]80, Riolu[]60
+   T3 opp: Evolve->Mega Lucario ex slot3; ATTACK Teary Attack
+   T4 own: Attach P->Igglybuff(Active) (zone); Retreat Igglybuff->Swablu; Play Copycat; Evolve Swablu->Mega Altaria ex(bench); ATTACK Sing; EndTurn
+        end: alt P0 H2 | Swablu[P]50, Mega Altaria ex[]190, Igglybuff[P]10   || opp P0 H3 | Bonsly[]SLP30, Hitmonlee[F]80, Mega Lucario ex[]190
+   T5 opp: ATTACK Teary Attack
+   T6 own: Place Eevee@3; Play Sabrina; Attach P->Mega Altaria ex(bench) (zone); ATTACK Sing; EndTurn
+        end: alt P0 H1 | Swablu[P]50, Mega Altaria ex[P]190, Eevee[]50   || opp P1 H3 | Hitmonlee[F]SLP80, Bonsly[]30, Mega Lucario ex[F]190
+   T7 opp: Retreat->slot3; ATTACK Fighting Pulse
+  <kog_v_kog3> identical to kp3 trace
+  <koh_v_kog3>
+   T2 own: Play Poké Ball; Place Eevee@2; Play Copycat; Place Swablu@1; Attach P->Swablu(bench) (zone); Play Field Blower; DiscardToolFromPokemon { player: 1, in_play_idx: 0, tool_idx: 0 }; ATTACK Sleepy Lullaby; EndTurn
+        end: alt P0 H0 | Igglybuff[]20, Swablu[]50, Eevee[]50, Swablu[P]50   || opp P0 H2 | Bonsly[]SLP30, Hitmonlee[]80, Riolu[]60
+   T3 opp: Evolve->Mega Lucario ex slot3; ATTACK Teary Attack
+   T4 own: Attach P->Swablu(bench) (zone); Play Copycat; Retreat Igglybuff->Swablu; Evolve Eevee->Espeon(bench); Evolve Swablu->Mega Altaria ex(bench); ATTACK Sing; EndTurn
+        end: alt P0 H1 | Swablu[P]50, Mega Altaria ex[P]190, Espeon[]90, Igglybuff[]10   || opp P0 H3 | Bonsly[]SLP30, Hitmonlee[F]80, Mega Lucario ex[]190
+   T5 opp: ATTACK Teary Attack
+   T6 own: Retreat Swablu->Espeon; Attach P->Espeon(Active) (zone); ATTACK Hypnoblast; EndTurn
+        end: alt P1 H2 | Espeon[P]90, Mega Altaria ex[P]190, Swablu[]50   || opp P1 H3 | Hitmonlee[F]80, Mega Lucario ex[F]190
+   T7 opp: Retreat->slot3; ATTACK Fighting Pulse
+  <kpf>
+   T2 own: Play Training Area; Play Poké Ball; Play Copycat; Retreat Igglybuff->Swablu; Place Swablu@2; Play Field Blower; DiscardToolFromPokemon { player: 1, in_play_idx: 0, tool_idx: 0 }; Attach P->Swablu(Active) (zone); ATTACK Sing; EndTurn
+        end: alt P0 H0 | Swablu[P]50, Swablu[]50, Igglybuff[]20   || opp P0 H2 | Bonsly[]SLP30, Hitmonlee[]80, Riolu[]60
+   T3 opp: Evolve->Mega Lucario ex slot3; Retreat->slot2; ATTACK Stretch Kick
+   T4 own: Attach P->Swablu(bench) (zone); Retreat Swablu->Swablu; Play Copycat; Evolve Swablu->Mega Altaria ex(Active); EndTurn
+        end: alt P0 H2 | Mega Altaria ex[P]190, Swablu[]50   || opp P1 H3 | Hitmonlee[F]80, Bonsly[]30, Mega Lucario ex[]190
+   T5 opp: ATTACK Stretch Kick
+   T6 own: Place Eevee@3; Attach P->Mega Altaria ex(Active) (zone); ATTACK Mega Harmony; EndTurn
+        end: alt P1 H2 | Mega Altaria ex[PP]190, Swablu[]20, Eevee[]50   || opp P1 H4 | Bonsly[]30, Mega Lucario ex[F]190
+   T7 opp: Retreat->slot3; ATTACK Fighting Pulse
+
+########## 72020028 swablu_eevee kind=worse opp=lucario altaria_seat=0 k=14 T=2 (row: koh v kp3 move=kpf, kp3_act=Play Copycat, kpf_act=Retreat->slot1)
+  <kp3>
+   T2 own: Play Copycat; Play Poké Ball; Attach P->Darkrai(bench) (zone); ATTACK Sleepy Lullaby; EndTurn
+        end: alt P0 H4 | Igglybuff[]30, Eevee[]50, Swablu[]50, Darkrai[P]100   || opp P0 H4 | Riolu[]SLP50, Hitmonlee[]80, Riolu[]60
+   T3 opp: Evolve->Mega Lucario ex slot3
+   T4 own: Evolve Swablu->Mega Altaria ex(bench); Attach P->Mega Altaria ex(bench) (zone); Play Copycat; ATTACK Sleepy Lullaby; EndTurn
+        end: alt P1 H1 | Igglybuff[]30, Eevee[]50, Mega Altaria ex[P]190, Darkrai[P]100   || opp P0 H1 | Hitmonlee[]80, Mega Lucario ex[F]190
+   T6 own: Retreat Igglybuff->Mega Altaria ex; Play Professor's Research; Evolve Eevee->Espeon(bench); Play Poké Ball; Attach P->Mega Altaria ex(Active) (zone); Play Small Balloon; AttachTo (abil); ATTACK Mega Harmony; EndTurn
+        end: alt P2 H1 | Mega Altaria ex[PP]190, Espeon[]90, Igglybuff[]30, Darkrai[P]100   || opp P0 H2 | Mega Lucario ex[FF]190
+   T7 opp: ATTACK Fighting Pulse
+  <kog_v_kog3> identical to kp3 trace
+  <koh_v_kog3>
+   T2 own: Retreat Igglybuff->Eevee; Play Copycat; Play Poké Ball; Attach P->Eevee(Active) (zone); ATTACK Stampede; EndTurn
+        end: alt P0 H4 | Eevee[P]50, Igglybuff[]30, Swablu[]50, Darkrai[]100   || opp P0 H4 | Riolu[]50, Hitmonlee[]80, Riolu[]60
+   T3 opp: Evolve->Mega Lucario ex slot3
+   T4 own: Evolve Swablu->Mega Altaria ex(bench); Attach P->Mega Altaria ex(bench) (zone); Play Copycat; Play Poké Ball; ATTACK Stampede; EndTurn
+        end: alt P0 H4 | Eevee[P]50, Igglybuff[]30, Mega Altaria ex[P]190, Darkrai[]100   || opp P0 H4 | Riolu[]40, Hitmonlee[]80, Mega Lucario ex[F]190
+   T5 opp: Evolve->Lucario slot0
+   T6 own: Evolve Eevee->Espeon(Active); Play Professor's Research; Attach P->Mega Altaria ex(bench) (zone); ATTACK Hypnoblast; EndTurn
+        end: alt P0 H5 | Espeon[P]90, Igglybuff[]30, Mega Altaria ex[PP]190, Darkrai[]100   || opp P0 H3 | Lucario[F]SLP20, Hitmonlee[]80, Mega Lucario ex[F]190
+   T7 opp: ATTACK Fighting Pulse
+  <kpf>
+   T2 own: Retreat Igglybuff->Eevee; Play Copycat; Play Poké Ball; Attach P->Eevee(Active) (zone); ATTACK Stampede; EndTurn
+        end: alt P0 H4 | Eevee[P]50, Igglybuff[]30, Swablu[]50, Darkrai[]100   || opp P0 H4 | Riolu[]50, Hitmonlee[]80, Riolu[]60
+   T3 opp: Evolve->Mega Lucario ex slot3
+   T4 own: Retreat Eevee->Swablu; Evolve Swablu->Mega Altaria ex(Active); Play Copycat; Play Poké Ball; Attach P->Mega Altaria ex(Active) (zone); EndTurn
+        end: alt P0 H4 | Mega Altaria ex[P]190, Igglybuff[]30, Eevee[]50, Darkrai[]100   || opp P0 H4 | Riolu[]50, Hitmonlee[]80, Mega Lucario ex[F]190
+   T5 opp: Evolve->Lucario slot0
+   T6 own: Evolve Eevee->Espeon(bench); Play Professor's Research; Attach P->Mega Altaria ex(Active) (zone); ATTACK Mega Harmony; EndTurn
+        end: alt P1 H5 | Mega Altaria ex[PP]190, Igglybuff[]30, Espeon[]90, Darkrai[]100   || opp P0 H3 | Mega Lucario ex[F]190, Hitmonlee[]80
+   T7 opp: ATTACK Fighting Pulse
+
+########## 72020076 swablu_eevee kind=worse opp=lucario altaria_seat=0 k=19 T=3 (row: koh v kp3 move=None, kp3_act=Play Sabrina, kpf_act=Attach P->slot0 (zone))
+  <kp3>
+   T3 own: Evolve Eevee->Espeon(bench); Play Sabrina; Attach P->Espeon(bench) (zone); EndTurn
+        end: alt P0 H2 | Swablu[]40, Igglybuff[]30, Swablu[]50, Espeon[P]90   || opp P0 H5 | Riolu[]60, Riolu[F]60
+   T4 opp: Evolve->Mega Lucario ex slot3; Retreat->slot3; Evolve->Mega Lucario ex slot3; ATTACK Fighting Pulse
+   T5 own: Place Darkrai@3; Evolve Swablu->Mega Altaria ex(bench); Attach P->Mega Altaria ex(bench) (zone); ATTACK Hypnoblast; EndTurn
+        end: alt P0 H1 | Espeon[P]90, Igglybuff[]30, Mega Altaria ex[P]190, Darkrai[]100   || opp P1 H0 | Mega Lucario ex[FF]SLP130, Bonsly[]30, Mega Lucario ex[]190
+   T6 opp: ATTACK Fighting Pulse
+   T7 own: Attach P->Mega Altaria ex(Active) (zone); ATTACK Mega Harmony
+  <kog_v_kog3>
+   T3 own: Place Darkrai@1; Attach P->Espeon(Active) (zone); ATTACK Hypnoblast; EndTurn
+        end: alt P1 H3 | Espeon[P]80, Darkrai[]100, Swablu[]50, Swablu[]50   || opp P0 H5 | Riolu[]60
+   T4 opp: Evolve->Mega Lucario ex slot0
+   T5 own: Play Sabrina; Evolve Swablu->Mega Altaria ex(bench); Attach P->Mega Altaria ex(bench) (zone); ATTACK Hypnoblast; EndTurn
+        end: alt P1 H2 | Espeon[P]80, Darkrai[]100, Swablu[]50, Mega Altaria ex[P]190   || opp P0 H1 | Hitmonlee[]SLP20, Mega Lucario ex[F]190
+   T6 opp: ATTACK Fighting Pulse
+   T7 own: Place Igglybuff@3; Play Professor's Research; Play Training Area; Attach P->Mega Altaria ex(Active) (zone); ATTACK Mega Harmony; EndTurn
+        end: alt P2 H2 | Mega Altaria ex[PP]190, Darkrai[]100, Swablu[]50, Igglybuff[]30   || opp P1 H2 | Mega Lucario ex[FF]30
+   T8 opp: ATTACK Fighting Pulse
+  <koh_v_kog3>
+   T3 own: Attach P->Espeon(Active) (zone); ATTACK Hypnoblast; EndTurn
+        end: alt P1 H3 | Espeon[P]80, Igglybuff[]30, Swablu[]50, Swablu[]50   || opp P0 H5 | Riolu[]60
+   T4 opp: Evolve->Mega Lucario ex slot0
+   T5 own: Evolve Swablu->Mega Altaria ex(bench); Attach P->Mega Altaria ex(bench) (zone); ATTACK Hypnoblast; EndTurn
+        end: alt P1 H3 | Espeon[P]80, Igglybuff[]30, Swablu[]50, Mega Altaria ex[P]190   || opp P0 H1 | Mega Lucario ex[F]SLP130, Hitmonlee[]80
+   T6 opp: ATTACK Fighting Pulse
+   T7 own: Play Professor's Research; Place Darkrai@2; Attach P->Mega Altaria ex(bench) (zone); EndTurn
+        end: alt P1 H4 | Swablu[]50, Igglybuff[]30, Darkrai[]100, Mega Altaria ex[PP]190   || opp P1 H3 | Mega Lucario ex[FF]130, Hitmonlee[]80
+   T8 opp: ATTACK Fighting Pulse
+  <kpf>
+   T3 own: Evolve Eevee->Espeon(bench); Attach P->Swablu(Active) (zone); Retreat Swablu->Espeon; EndTurn
+        end: alt P0 H3 | Espeon[]90, Igglybuff[]30, Swablu[]50, Swablu[]40   || opp P0 H5 | Riolu[F]60, Riolu[]60
+   T4 opp: Evolve->Mega Lucario ex slot0; ATTACK Fighting Pulse
+   T5 own: Retreat Igglybuff->Swablu; Place Darkrai@1; Evolve Swablu->Mega Altaria ex(Active); Play Sabrina; Attach P->Mega Altaria ex(Active) (zone); EndTurn
+        end: alt P0 H1 | Mega Altaria ex[P]190, Darkrai[]100, Igglybuff[]30, Swablu[]40   || opp P1 H4 | Bonsly[]30, Mega Lucario ex[FF]190, Riolu[]60
+   T6 opp: Retreat->slot3; ATTACK Fighting Fist
+   T7 own: Play Professor's Research; Attach P->Mega Altaria ex(Active) (zone); ATTACK Mega Harmony; EndTurn
+        end: alt P1 H3 | Mega Altaria ex[PP]150, Darkrai[]100, Igglybuff[]30, Swablu[]40   || opp P1 H4 | Mega Lucario ex[FF]190, Hitmonlee[]80, Bonsly[]30
+   T8 opp: Retreat->slot1; ATTACK Stretch Kick
+
+########## 72020187 swablu_eevee kind=better opp=lucario altaria_seat=1 k=12 T=2 (row: koh v kp3 move=kpf, kp3_act=Play Copycat, kpf_act=Retreat->slot3)
+  <kp3>
+   T2 own: Play Copycat; Place Darkrai@2; Place Eevee@1; Attach P->Darkrai(bench) (zone); ATTACK Sleepy Lullaby; EndTurn
+        end: alt P0 H1 | Igglybuff[]30, Eevee[]50, Darkrai[P]100, Eevee[]50   || opp P0 H3 | Riolu[]SLP50, Hitmonlee[]80, Riolu[]60
+   T3 opp: Evolve->Mega Lucario ex slot3
+   T4 own: Play Professor's Research; Play Poké Ball; Attach P->Darkrai(bench) (zone); Play Small Balloon; AttachTo (abil); ATTACK Sleepy Lullaby; EndTurn
+        end: alt P1 H2 | Igglybuff[]30, Eevee[]50, Darkrai[PP]100, Eevee[]50   || opp P0 H3 | Hitmonlee[]80, Mega Lucario ex[F]190
+   T5 opp: ATTACK Stretch Kick
+   T6 own: Play Sabrina; Retreat Igglybuff->Darkrai; Attach P->Darkrai(Active) (zone); ATTACK Dark Slumber; EndTurn
+        end: alt P2 H2 | Darkrai[PPP]70, Eevee[]50, Igglybuff[]30, Eevee[]50   || opp P0 H3 | Mega Lucario ex[F]190, Hitmonlee[F]80
+   T7 opp: ATTACK Fighting Pulse
+  <kog_v_kog3> identical to kp3 trace
+  <koh_v_kog3>
+   T2 own: Retreat Igglybuff->Eevee; Play Professor's Research; Place Swablu@2; Attach P->Eevee(Active) (zone); Play Small Balloon; AttachTo (abil); ATTACK Stampede; EndTurn
+        end: alt P0 H3 | Eevee[P]50, Swablu[]50, Igglybuff[]30   || opp P0 H3 | Riolu[]50, Hitmonlee[]80, Riolu[]60
+   T3 opp: Evolve->Mega Lucario ex slot3
+   T4 own: Place Darkrai@1; Retreat Eevee->Darkrai; Attach P->Eevee(bench) (zone); Play Sabrina; EndTurn
+        end: alt P0 H2 | Darkrai[]100, Eevee[PP]50, Swablu[]50, Igglybuff[]30   || opp P0 H1 | Hitmonlee[]80, Riolu[]50, Mega Lucario ex[F]190
+   T5 opp: ATTACK Stretch Kick
+   T6 own: Play Copycat; Evolve Swablu->Mega Altaria ex(bench); Attach P->Darkrai(Active) (zone); EndTurn
+        end: alt P0 H0 | Darkrai[P]100, Eevee[PP]50, Mega Altaria ex[]190   || opp P1 H1 | Hitmonlee[F]80, Riolu[]50, Bonsly[]30, Mega Lucario ex[F]190
+   T7 opp: Retreat->slot2; ATTACK Teary Attack
+  <kpf>
+   T2 own: Retreat Igglybuff->Eevee; Play Professor's Research; Place Swablu@2; Attach P->Eevee(Active) (zone); Play Small Balloon; AttachTo (abil); ATTACK Stampede; EndTurn
+        end: alt P0 H3 | Eevee[P]50, Swablu[]50, Igglybuff[]30   || opp P0 H3 | Riolu[]50, Hitmonlee[]80, Riolu[]60
+   T3 opp: Evolve->Mega Lucario ex slot3
+   T4 own: Attach P->Swablu(bench) (zone); Retreat Eevee->Igglybuff; Play Copycat; Play Poké Ball; Place Swablu@1; ATTACK Sleepy Lullaby; EndTurn
+        end: alt P0 H0 | Igglybuff[]30, Swablu[]50, Swablu[P]50, Eevee[P]50   || opp P0 H1 | Riolu[]SLP40, Hitmonlee[]80, Mega Lucario ex[F]190
+   T6 own: Retreat Igglybuff->Eevee; Evolve Swablu->Mega Altaria ex(bench); Attach P->Mega Altaria ex(bench) (zone); ATTACK Stampede; EndTurn
+        end: alt P0 H0 | Eevee[P]50, Swablu[]50, Mega Altaria ex[PP]190, Igglybuff[]30   || opp P0 H1 | Riolu[]30, Hitmonlee[]80, Bonsly[]30, Mega Lucario ex[FF]190
+   T7 opp: Retreat->slot3; ATTACK Fighting Pulse
+
+########## 72030010 swablu_eevee kind=worse opp=sceptile altaria_seat=0 k=14 T=2 (row: koh v kp3 move=kpf, kp3_act=Play Sabrina, kpf_act=Retreat->slot2)
+  <kp3>
+   T2 own: Play Sabrina; Attach P->Darkrai(bench) (zone); ATTACK Sleepy Lullaby; EndTurn
+        end: alt P0 H1 | Igglybuff[]30, Eevee[]50, Eevee[]50, Darkrai[P]100   || opp P0 H5 | Treecko[]SLP50, Caterpie[]40
+   T3 opp: Evolve->Metapod slot3
+   T4 own: Attach P->Darkrai(bench) (zone); ATTACK Sleepy Lullaby; EndTurn
+        end: alt P0 H2 | Igglybuff[]30, Eevee[]50, Eevee[]50, Darkrai[PP]100   || opp P0 H3 | Grovyle[G]SLP70, Caterpie[]40, Metapod[]80
+   T5 opp: Evolve->Butterfree slot3; ATTACK Slicing Snipe
+   T6 own: Retreat Igglybuff->Darkrai; Place Swablu@2; Play Copycat; Play Poké Ball; Attach P->Darkrai(Active) (zone); ATTACK Dark Slumber; EndTurn
+        end: alt P0 H3 | Darkrai[PPP]100, Eevee[]50, Swablu[]50, Igglybuff[]30   || opp P1 H3 | Grovyle[GG]SLP10, Caterpie[]40, Butterfree[]130
+   T7 opp: Evolve->Metapod slot2; ATTACK Sunny Wind
+  <kog_v_kog3> identical to kp3 trace
+  <koh_v_kog3>
+   T2 own: Retreat Igglybuff->Eevee; Attach P->Eevee(Active) (zone); ATTACK Stampede; EndTurn
+        end: alt P0 H2 | Eevee[P]50, Eevee[]50, Igglybuff[]30, Darkrai[]100   || opp P0 H5 | Caterpie[]30, Treecko[]60
+   T3 opp: ATTACK Sunny Wind
+   T4 own: Place Swablu@2; Attach P->Darkrai(bench) (zone); ATTACK Sleepy Lullaby; EndTurn
+        end: alt P0 H2 | Igglybuff[]30, Eevee[]50, Swablu[]50, Darkrai[P]100   || opp P1 H5 | Butterfree[G]SLP120, Caterpie[]40, Treecko[]60
+   T5 opp: Evolve->Metapod slot2; Evolve->Grovyle slot3
+   T6 own: Attach P->Swablu(bench) (zone); UseStadium; Retreat Igglybuff->Darkrai; Play Copycat; Evolve Eevee->Espeon(bench); Evolve Swablu->Mega Altaria ex(bench); EndTurn
+        end: alt P0 H1 | Darkrai[P]100, Espeon[]90, Mega Altaria ex[P]190, Igglybuff[]30   || opp P1 H3 | Butterfree[G]110, Metapod[]80, Grovyle[G]80
+   T7 opp: Evolve->Mega Sceptile ex slot3; Retreat->slot3; ATTACK Terminating Tail
+  <kpf>
+   T2 own: Retreat Igglybuff->Eevee; Attach P->Eevee(Active) (zone); ATTACK Stampede; EndTurn
+        end: alt P0 H2 | Eevee[P]50, Eevee[]50, Igglybuff[]30, Darkrai[]100   || opp P0 H5 | Caterpie[]30, Treecko[]60
+   T3 opp: ATTACK Sunny Wind
+   T4 own: Place Swablu@2; Attach P->Darkrai(bench) (zone); ATTACK Sleepy Lullaby; EndTurn
+        end: alt P0 H2 | Igglybuff[]30, Eevee[]50, Swablu[]50, Darkrai[P]100   || opp P1 H5 | Butterfree[G]SLP120, Caterpie[]40, Treecko[]60
+   T5 opp: Evolve->Metapod slot2; Evolve->Grovyle slot3
+   T6 own: Retreat Igglybuff->Darkrai; UseStadium; Play Copycat; Evolve Eevee->Espeon(bench); Evolve Swablu->Mega Altaria ex(bench); Attach P->Darkrai(Active) (zone); EndTurn
+        end: alt P0 H1 | Darkrai[PP]100, Espeon[]90, Mega Altaria ex[]190, Igglybuff[]30   || opp P1 H3 | Butterfree[G]110, Metapod[]80, Grovyle[G]80
+   T7 opp: Evolve->Mega Sceptile ex slot3; Retreat->slot3; ATTACK Terminating Tail
+
+########## 72030147 swablu_eevee kind=worse opp=sceptile altaria_seat=1 k=12 T=2 (row: koh v kp3 move=kpf, kp3_act=Attach P->slot3 (zone), kpf_act=Play Copycat)
+  <kp3>
+   T2 own: Play Poké Ball; Place Darkrai@3; Attach P->Darkrai(bench) (zone); UseStadium; Play Copycat; Place Darkrai@2; Place Swablu@1; EndTurn
+        end: alt P0 H2 | Swablu[]50, Swablu[]50, Darkrai[]100, Darkrai[P]100   || opp P0 H4 | Treecko[]60, Caterpie[]40
+   T3 opp: Evolve->Metapod slot3; ATTACK Pound
+   T4 own: Attach P->Swablu(Active) (zone); ATTACK Sing; EndTurn
+        end: alt P0 H3 | Swablu[P]30, Swablu[]50, Darkrai[]100, Darkrai[P]100   || opp P0 H3 | Treecko[G]SLP60, Caterpie[]40, Metapod[]80
+   T5 opp: Evolve->Butterfree slot3; ATTACK Slicing Snipe
+   T6 own: Place Eevee@1; Play Professor's Research; Attach P->Swablu(Active) (zone); ATTACK Sing; EndTurn
+        end: alt P0 H4 | Swablu[PP]30, Eevee[]50, Darkrai[]100, Darkrai[P]100   || opp P1 H2 | Grovyle[GG]SLP40, Caterpie[]40, Butterfree[]130
+   T7 opp: ATTACK Sunny Wind
+  <kog_v_kog3> identical to kp3 trace
+  <koh_v_kog3>
+   T2 own: Play Poké Ball; Place Darkrai@3; Play Copycat; Place Swablu@2; Attach P->Swablu(Active) (zone); ATTACK Sing; EndTurn
+        end: alt P0 H3 | Swablu[P]50, Swablu[]50, Darkrai[]100   || opp P0 H4 | Treecko[]SLP60, Caterpie[]40
+   T3 opp: Evolve->Metapod slot3
+   T4 own: Attach P->Darkrai(Active) (zone); UseStadium; EndTurn
+        end: alt P0 H4 | Darkrai[P]100, Swablu[]50, Swablu[P]50   || opp P0 H2 | Treecko[]SLP20, Caterpie[]40, Metapod[G]80
+   T5 opp: Evolve->Butterfree slot0; Evolve->Metapod slot2; ATTACK Sunny Wind
+   T6 own: Play Sabrina; Play Small Balloon; AttachTo (abil); Retreat Darkrai->Swablu; Attach P->Swablu(Active) (zone); ATTACK Sing; EndTurn
+        end: alt P1 H3 | Swablu[PP]50, Swablu[]50, Darkrai[]20   || opp P0 H1 | Metapod[G]SLP80, Butterfree[G]130
+  <kpf>
+   T2 own: Play Poké Ball; Place Darkrai@3; Play Copycat; Place Swablu@2; Attach P->Swablu(Active) (zone); ATTACK Sing; EndTurn
+        end: alt P0 H3 | Swablu[P]50, Swablu[]50, Darkrai[]100   || opp P0 H4 | Treecko[]SLP60, Caterpie[]40
+   T3 opp: Evolve->Metapod slot3
+   T4 own: Attach P->Swablu(Active) (zone); ATTACK Sing; EndTurn
+        end: alt P0 H4 | Swablu[P]50, Swablu[P]50, Darkrai[]100   || opp P0 H2 | Treecko[]SLP20, Caterpie[]40, Metapod[G]80
+   T5 opp: Evolve->Butterfree slot0; Evolve->Metapod slot2; ATTACK Sunny Wind
+   T6 own: Play Poké Ball; Place Eevee@2; Attach P->Darkrai(bench) (zone); Play Sabrina; ATTACK Sing; EndTurn
+        end: alt P1 H3 | Swablu[P]50, Eevee[]50, Darkrai[P]100   || opp P1 H1 | Metapod[G]SLP80, Butterfree[G]130
+   T7 opp: Retreat->slot2; ATTACK Sunny Wind
+
+########## 72030204 swablu_eevee kind=worse opp=sceptile altaria_seat=0 k=24 T=3 (row: koh v kp3 move=kp3, kp3_act=Attach P->slot3 (zone), kpf_act=Retreat->slot1)
+  <kp3>
+   T3 own: Attach P->Darkrai(bench) (zone); ATTACK Sleepy Lullaby; EndTurn
+        end: alt P0 H3 | Igglybuff[]10, Swablu[]50, Darkrai[]100, Darkrai[P]100   || opp P0 H3 | Treecko[G]SLP50, Caterpie[]40
+   T4 opp: Evolve->Grovyle slot0; ATTACK Slicing Snipe
+   T5 own: Place Eevee@1; Play Professor's Research; Attach P->Darkrai(bench) (zone); ATTACK Sleepy Lullaby; EndTurn
+        end: alt P0 H4 | Igglybuff[]10, Eevee[]50, Darkrai[]100, Darkrai[PP]100   || opp P1 H2 | Grovyle[GG]SLP20, Caterpie[]40, Metapod[]80
+   T6 opp: Evolve->Butterfree slot0; ATTACK Sunny Wind
+   T7 own: Play Sabrina; Place Swablu@3; Evolve Eevee->Espeon(bench); Play Poké Ball; Attach P->Darkrai(Active) (zone); ATTACK Dark Slumber; EndTurn
+        end: alt P2 H2 | Darkrai[PPP]100, Espeon[]90, Darkrai[]100, Swablu[]50   || opp P2 H2 | Butterfree[G]130
+   T8 opp: ATTACK Sunny Wind
+  <kog_v_kog3> identical to kp3 trace
+  <koh_v_kog3>
+   T3 own: Attach P->Darkrai(bench) (zone); ATTACK Sleepy Lullaby; EndTurn
+        end: alt P0 H3 | Igglybuff[]10, Swablu[]50, Darkrai[]100, Darkrai[P]100   || opp P0 H3 | Treecko[G]SLP50, Caterpie[]40
+   T4 opp: Evolve->Grovyle slot0; ATTACK Slicing Snipe
+   T5 own: Place Eevee@1; Play Professor's Research; Attach P->Darkrai(bench) (zone); ATTACK Sleepy Lullaby; EndTurn
+        end: alt P0 H4 | Igglybuff[]10, Eevee[]50, Darkrai[]100, Darkrai[PP]100   || opp P1 H2 | Grovyle[GG]SLP20, Caterpie[]40, Metapod[]80
+   T6 opp: Evolve->Butterfree slot0; ATTACK Sunny Wind
+   T7 own: Place Swablu@3; Evolve Eevee->Espeon(bench); Play Poké Ball; Attach P->Darkrai(Active) (zone); Play Sabrina; ATTACK Dark Slumber; EndTurn
+        end: alt P2 H2 | Darkrai[PPP]100, Espeon[]90, Darkrai[]100, Swablu[]50   || opp P2 H2 | Butterfree[G]130
+   T8 opp: ATTACK Sunny Wind
+  <kpf>
+   T3 own: Retreat Igglybuff->Swablu; Attach P->Swablu(Active) (zone); ATTACK Sing; EndTurn
+        end: alt P0 H3 | Swablu[P]50, Igglybuff[]10, Darkrai[]100, Darkrai[]100   || opp P0 H3 | Treecko[G]SLP60, Caterpie[]40
+   T4 opp: Evolve->Grovyle slot0; ATTACK Slicing Snipe
+   T5 own: Place Eevee@1; Play Professor's Research; Attach P->Darkrai(bench) (zone); ATTACK Sing; EndTurn
+        end: alt P0 H4 | Swablu[P]50, Eevee[]50, Darkrai[]100, Darkrai[P]100   || opp P1 H2 | Grovyle[GG]SLP40, Caterpie[]40, Metapod[]80
+   T6 opp: Evolve->Butterfree slot0; ATTACK Sunny Wind
+   T7 own: Play Sabrina; Place Swablu@3; Play Poké Ball; Evolve Eevee->Espeon(bench); Attach P->Darkrai(Active) (zone); UseStadium; EndTurn
+        end: alt P1 H2 | Darkrai[PP]100, Espeon[]90, Darkrai[]100, Swablu[]50   || opp P2 H2 | Caterpie[]40, Butterfree[G]130
+   T8 opp: Evolve->Butterfree slot0; ATTACK Sunny Wind
+
+########## 72040028 swablu_eevee kind=worse opp=suicune altaria_seat=0 k=17 T=3 (row: koh v kp3 move=None, kp3_act=Place Igglybuff@2, kpf_act=Evolve->Espeon slot3)
+  <kp3>
+   T3 own: Place Igglybuff@2; Play Professor's Research; Play Poké Ball; Evolve Eevee->Espeon(bench); Play Field Blower; DiscardToolFromPokemon { player: 1, in_play_idx: 3, tool_idx: 0 }; Attach P->Espeon(bench) (zone); EndTurn
+        end: alt P0 H4 | Swablu[]50, Igglybuff[]30, Espeon[P]90   || opp P0 H2 | Frigibax[]60, Suicune ex[W]140, Frigibax[]60
+   T4 opp: Retreat->slot2
+   T5 own: Attach P->Swablu(Active) (zone); Retreat Swablu->Espeon; Play Training Area; Place Darkrai@1; Play Copycat; Evolve Swablu->Mega Altaria ex(bench); ATTACK Hypnoblast; EndTurn
+        end: alt P0 H2 | Espeon[P]90, Darkrai[]100, Igglybuff[]30, Mega Altaria ex[]190   || opp P0 H3 | Suicune ex[W]SLP90, Suicune ex[]140, Frigibax[]60, Frigibax[]60
+   T6 opp: Evolve->Baxcalibur slot3; ATTACK Crystal Waltz
+   T7 own: Place Darkrai@2; Play Copycat; Attach P->Mega Altaria ex(bench) (zone); ATTACK Sleepy Lullaby; EndTurn
+        end: alt P0 H2 | Igglybuff[]30, Darkrai[]100, Darkrai[]100, Mega Altaria ex[P]190   || opp P1 H2 | Suicune ex[WWW]SLP80, Suicune ex[]140, Frigibax[]60, Baxcalibur[]140
+   T8 opp: Evolve->Baxcalibur slot2
+  <kog_v_kog3>
+   T3 own: Attach P->Espeon(Active) (zone); Play Professor's Research; Play Poké Ball; Place Darkrai@2; Place Eevee@1; Play Field Blower; DiscardToolFromPokemon { player: 1, in_play_idx: 3, tool_idx: 0 }; ATTACK Hypnoblast; EndTurn
+        end: alt P0 H3 | Espeon[P]90, Eevee[]50, Darkrai[]100, Swablu[]50   || opp P0 H2 | Frigibax[]SLP20, Suicune ex[W]140, Frigibax[]60
+   T4 opp: ATTACK Crystal Waltz
+   T5 own: Play Copycat; Play Poké Ball; Evolve Swablu->Mega Altaria ex(bench); Attach P->Mega Altaria ex(bench) (zone); EndTurn
+        end: alt P1 H2 | Eevee[]50, Darkrai[]100, Mega Altaria ex[P]190   || opp P1 H3 | Suicune ex[WW]140, Suicune ex[]140, Frigibax[]60
+   T6 opp: Evolve->Baxcalibur slot3; ATTACK Crystal Waltz
+   T7 own: Place Darkrai@3; Play Training Area; Play Copycat; Place Swablu@1; Attach P->Mega Altaria ex(Active) (zone); ATTACK Mega Harmony
+  <koh_v_kog3>
+   T3 own: Attach P->Espeon(Active) (zone); Play Professor's Research; Play Poké Ball; Place Darkrai@2; Play Field Blower; DiscardToolFromPokemon { player: 1, in_play_idx: 3, tool_idx: 0 }; Place Eevee@1; ATTACK Hypnoblast; EndTurn
+        end: alt P0 H3 | Espeon[P]90, Eevee[]50, Darkrai[]100, Swablu[]50   || opp P0 H2 | Frigibax[]SLP20, Suicune ex[W]140, Frigibax[]60
+   T4 opp: ATTACK Crystal Waltz
+   T5 own: Play Copycat; Play Poké Ball; Evolve Swablu->Mega Altaria ex(Active); Attach P->Mega Altaria ex(Active) (zone); EndTurn
+        end: alt P1 H2 | Mega Altaria ex[P]190, Eevee[]50, Darkrai[]100   || opp P1 H3 | Suicune ex[WW]140, Suicune ex[]140, Frigibax[]60
+   T6 opp: Evolve->Baxcalibur slot3; ATTACK Crystal Waltz
+   T7 own: Place Darkrai@3; Play Training Area; Attach P->Mega Altaria ex(Active) (zone); ATTACK Mega Harmony
+  <kpf>
+   T3 own: Evolve Eevee->Espeon(bench); Play Professor's Research; Play Poké Ball; Play Field Blower; DiscardToolFromPokemon { player: 1, in_play_idx: 3, tool_idx: 0 }; Place Darkrai@2; Attach P->Swablu(Active) (zone); ATTACK Sing; EndTurn
+        end: alt P0 H4 | Swablu[P]50, Darkrai[]100, Espeon[]90   || opp P0 H2 | Frigibax[]SLP60, Suicune ex[W]140, Frigibax[]60
+   T5 own: Attach P->Darkrai(bench) (zone); ATTACK Sing; EndTurn
+        end: alt P0 H5 | Swablu[P]50, Darkrai[P]100, Espeon[]90   || opp P0 H1 | Frigibax[]SLP20, Suicune ex[]140, Suicune ex[WW]140, Frigibax[]60
+   T6 opp: Evolve->Baxcalibur slot3; ATTACK Crystal Waltz
+   T7 own: Place Eevee@2; Attach P->Darkrai(Active) (zone); EndTurn
+        end: alt P1 H5 | Darkrai[PP]100, Eevee[]50, Espeon[]90   || opp P1 H1 | Suicune ex[WWW]140, Suicune ex[W]140, Baxcalibur[]140
+   T8 opp: Retreat->slot1; ATTACK Crystal Waltz
+
+########## 72040056 swablu_eevee kind=worse opp=suicune altaria_seat=0 k=29 T=5 (row: koh v kp3 move=kpf, kp3_act=Play Poké Ball, kpf_act=Retreat->slot1)
+  <kp3>
+   T5 own: Place Darkrai@3; Place Darkrai@2; Place Swablu@1; Play Poké Ball; Attach P->Darkrai(bench) (zone); ATTACK Stampede; EndTurn
+        end: alt P0 H4 | Eevee[P]30, Swablu[]50, Darkrai[]100, Darkrai[P]100   || opp P0 H5 | Suicune ex[WW]130, Chien-Pao ex[]130
+   T6 opp: ATTACK Crystal Waltz
+   T7 own: Evolve Swablu->Mega Altaria ex(bench); Play Sabrina; Attach P->Mega Altaria ex(bench) (zone); EndTurn
+        end: alt P0 H3 | Darkrai[P]100, Mega Altaria ex[P]190, Darkrai[]100   || opp P1 H6 | Chien-Pao ex[W]130, Frigibax[]60, Suicune ex[WW]140
+   T8 opp: Retreat->slot3; Evolve->Baxcalibur slot2; ATTACK Crystal Waltz
+   T9 own: Play Training Area; Play Copycat; Play Field Blower; DiscardToolFromPokemon { player: 1, in_play_idx: 3, tool_idx: 0 }; Play Small Balloon; AttachTo (abil); Retreat Darkrai->Mega Altaria ex; Place Swablu@3; Attach P->Mega Altaria ex(Active) (zone); ATTACK Mega Harmony; EndTurn
+        end: alt P2 H3 | Mega Altaria ex[PP]190, Darkrai[]20, Darkrai[]100, Swablu[]50   || opp P1 H6 | Chien-Pao ex[W]130, Baxcalibur[]140
+   T10 opp: ATTACK Diving Icicles
+  <kog_v_kog3> identical to kp3 trace
+  <koh_v_kog3>
+   T5 own: Place Darkrai@3; Place Darkrai@2; Place Swablu@1; Retreat Eevee->Swablu; Play Poké Ball; Attach P->Swablu(Active) (zone); ATTACK Sing; EndTurn
+        end: alt P0 H4 | Swablu[P]50, Eevee[]30, Darkrai[]100, Darkrai[]100   || opp P0 H5 | Suicune ex[WW]SLP140, Chien-Pao ex[]130
+   T6 opp: ATTACK Crystal Waltz
+   T7 own: Play Sabrina; Attach P->Darkrai(Active) (zone); EndTurn
+        end: alt P0 H4 | Darkrai[P]100, Eevee[]30, Darkrai[]100   || opp P1 H5 | Suicune ex[W]140, Suicune ex[WW]140, Chien-Pao ex[]130
+   T8 opp: ATTACK Crystal Waltz
+   T9 own: Play Copycat; Play Small Balloon; AttachTo (abil); Play Training Area; Place Swablu@3; Retreat Darkrai->Swablu; Evolve Eevee->Espeon(bench); Attach P->Swablu(Active) (zone); ATTACK Sing; EndTurn
+        end: alt P0 H3 | Swablu[P]50, Espeon[]70, Darkrai[]100, Darkrai[]20   || opp P1 H7 | Suicune ex[WW]SLP160, Suicune ex[WW]140, Chien-Pao ex[]130
+  <kpf>
+   T5 own: Place Darkrai@3; Place Darkrai@2; Place Swablu@1; Retreat Eevee->Swablu; Play Poké Ball; Attach P->Swablu(Active) (zone); ATTACK Sing; EndTurn
+        end: alt P0 H4 | Swablu[P]50, Eevee[]30, Darkrai[]100, Darkrai[]100   || opp P0 H5 | Suicune ex[WW]SLP140, Chien-Pao ex[]130
+   T6 opp: ATTACK Crystal Waltz
+   T7 own: Play Sabrina; Attach P->Darkrai(Active) (zone); EndTurn
+        end: alt P0 H4 | Darkrai[P]100, Eevee[]30, Darkrai[]100   || opp P1 H5 | Suicune ex[W]140, Suicune ex[WW]140, Chien-Pao ex[]130
+   T8 opp: ATTACK Crystal Waltz
+   T9 own: Play Copycat; Evolve Eevee->Espeon(bench); Attach P->Darkrai(Active) (zone); Play Small Balloon; AttachTo (abil); Retreat Darkrai->Espeon; EndTurn
+        end: alt P0 H5 | Espeon[]70, Darkrai[P]20, Darkrai[]100   || opp P1 H7 | Suicune ex[WW]160, Suicune ex[WW]140, Chien-Pao ex[]130
+   T10 opp: ATTACK Crystal Waltz
+
+########## 72040099 swablu_eevee kind=worse opp=suicune altaria_seat=1 k=20 T=3 (row: koh v kp3 move=kp3, kp3_act=Play Professor's Research, kpf_act=Retreat->slot3)
+  <kp3>
+   T3 own: Play Professor's Research; Place Darkrai@1; Evolve Swablu->Mega Altaria ex(bench); Attach P->Mega Altaria ex(bench) (zone); ATTACK Sleepy Lullaby; EndTurn
+        end: alt P0 H4 | Igglybuff[]30, Darkrai[]100, Darkrai[]100, Mega Altaria ex[P]190   || opp P0 H3 | Suicune ex[W]SLP100, Frigibax[]60, Chien-Pao ex[]130, Frigibax[]60
+   T4 opp: ATTACK Crystal Waltz
+   T5 own: Place Eevee@3; Play Copycat; Attach P->Mega Altaria ex(Active) (zone); Play Small Balloon; AttachTo (abil); ATTACK Mega Harmony; EndTurn
+        end: alt P2 H3 | Mega Altaria ex[PP]190, Darkrai[]100, Darkrai[]100, Eevee[]50   || opp P1 H4 | Chien-Pao ex[]130, Frigibax[]60, Frigibax[]60
+   T7 own: ATTACK Mega Harmony
+  <kog_v_kog3> identical to kp3 trace
+  <koh_v_kog3>
+   T3 own: Play Professor's Research; Place Darkrai@1; Evolve Swablu->Mega Altaria ex(bench); Attach P->Mega Altaria ex(bench) (zone); ATTACK Sleepy Lullaby; EndTurn
+        end: alt P0 H4 | Igglybuff[]30, Darkrai[]100, Darkrai[]100, Mega Altaria ex[P]190   || opp P0 H3 | Suicune ex[W]SLP100, Frigibax[]60, Chien-Pao ex[]130, Frigibax[]60
+   T4 opp: ATTACK Crystal Waltz
+   T5 own: Place Eevee@3; Play Copycat; Attach P->Mega Altaria ex(Active) (zone); Play Small Balloon; AttachTo (abil); ATTACK Mega Harmony; EndTurn
+        end: alt P2 H3 | Mega Altaria ex[PP]190, Darkrai[]100, Darkrai[]100, Eevee[]50   || opp P1 H4 | Chien-Pao ex[]130, Frigibax[]60, Frigibax[]60
+   T7 own: ATTACK Mega Harmony
+  <kpf>
+   T3 own: Retreat Igglybuff->Swablu; Attach P->Swablu(Active) (zone); Play Copycat; Place Eevee@1; ATTACK Sing; EndTurn
+        end: alt P0 H2 | Swablu[P]50, Eevee[]50, Darkrai[]100, Igglybuff[]30   || opp P0 H3 | Suicune ex[W]SLP110, Frigibax[]60, Chien-Pao ex[]130, Frigibax[]60
+   T4 opp: ATTACK Crystal Waltz
+   T5 own: Evolve Eevee->Espeon(bench); Retreat Igglybuff->Espeon; Play Training Area; Attach P->Espeon(Active) (zone); ATTACK Hypnoblast; EndTurn
+        end: alt P0 H1 | Espeon[P]90, Igglybuff[]30, Darkrai[]100   || opp P1 H4 | Suicune ex[WW]SLP90, Frigibax[]60, Chien-Pao ex[]130, Frigibax[]60
+   T6 opp: ATTACK Crystal Waltz
+   T7 own: Attach P->Darkrai(bench) (zone); Play Small Balloon; AttachTo (abil); ATTACK Sleepy Lullaby; EndTurn
+        end: alt P0 H1 | Igglybuff[]30, Darkrai[P]100   || opp P2 H6 | Suicune ex[WW]SLP60, Frigibax[]60, Chien-Pao ex[W]130, Frigibax[]60
+
+########## 72050015 swablu_eevee kind=worse opp=vespiquen altaria_seat=1 k=19 T=2 (row: koh v kp3 move=kp3, kp3_act=Attach P->slot3 (zone), kpf_act=Retreat->slot2)
+  <kp3>
+   T2 own: Play Poké Ball; Play Professor's Research; Place Darkrai@3; Place Swablu@2; Place Swablu@1; Attach P->Darkrai(bench) (zone); ATTACK Sleepy Lullaby; EndTurn
+        end: alt P0 H3 | Igglybuff[]30, Swablu[]50, Swablu[]50, Darkrai[P]100   || opp P0 H1 | Shuckle ex[]SLP120, Shuckle ex[]120, Combee[]50
+   T3 opp: ATTACK Triple Slap
+   T4 own: Play Training Area; Attach P->Darkrai(Active) (zone); Retreat Darkrai->Swablu; Play Copycat; Evolve Swablu->Mega Altaria ex(bench); EndTurn
+        end: alt P0 H0 | Swablu[]50, Mega Altaria ex[]190, Darkrai[]40, Igglybuff[]30   || opp P0 H1 | Shuckle ex[G]100, Teal Mask Ogerpon ex[]130, Shuckle ex[]120, Combee[]50
+   T5 opp: Retreat->slot3; ATTACK Reckless Charge
+   T6 own: Attach P->Mega Altaria ex(bench) (zone); Play Small Balloon; AttachTo (abil); ATTACK Sleepy Lullaby; EndTurn
+        end: alt P0 H0 | Igglybuff[]30, Mega Altaria ex[P]190, Swablu[]50   || opp P1 H1 | Combee[G]30, Teal Mask Ogerpon ex[]130, Shuckle ex[]120, Shuckle ex[]100
+   T7 opp: ATTACK Reckless Charge
+  <kog_v_kog3> identical to kp3 trace
+  <koh_v_kog3>
+   T2 own: Play Poké Ball; Play Professor's Research; Place Darkrai@3; Place Swablu@2; Place Swablu@1; Attach P->Darkrai(bench) (zone); ATTACK Sleepy Lullaby; EndTurn
+        end: alt P0 H3 | Igglybuff[]30, Swablu[]50, Swablu[]50, Darkrai[P]100   || opp P0 H1 | Shuckle ex[]SLP120, Shuckle ex[]120, Combee[]50
+   T3 opp: ATTACK Triple Slap
+   T4 own: Play Training Area; Attach P->Darkrai(Active) (zone); EndTurn
+        end: alt P0 H3 | Darkrai[PP]40, Swablu[]50, Swablu[]50, Igglybuff[]30   || opp P0 H1 | Shuckle ex[G]100, Teal Mask Ogerpon ex[]130, Shuckle ex[]120, Combee[]50
+   T5 opp: Retreat->slot3; ATTACK Reckless Charge
+   T6 own: Retreat Igglybuff->Swablu; UseStadium; Play Copycat; Place Eevee@3; Attach P->Swablu(Active) (zone); ATTACK Sing; EndTurn
+        end: alt P0 H1 | Swablu[P]50, Igglybuff[]30, Swablu[]50, Eevee[]50   || opp P1 H2 | Combee[G]70, Teal Mask Ogerpon ex[]130, Shuckle ex[]120, Shuckle ex[]100
+   T7 opp: Retreat->slot2; Evolve->Vespiquen ex slot2; ATTACK Triple Slap
+  <kpf>
+   T2 own: Play Poké Ball; Play Professor's Research; Place Darkrai@3; Place Swablu@2; Place Swablu@1; Retreat Igglybuff->Swablu; Attach P->Swablu(Active) (zone); ATTACK Sing; EndTurn
+        end: alt P0 H3 | Swablu[P]50, Swablu[]50, Igglybuff[]30, Darkrai[]100   || opp P0 H1 | Shuckle ex[]SLP120, Shuckle ex[]120, Combee[]50
+   T3 opp: Evolve->Vespiquen ex slot3; ATTACK Triple Slap
+   T4 own: Attach P->Darkrai(bench) (zone); Retreat Swablu->Igglybuff; ATTACK Sleepy Lullaby; EndTurn
+        end: alt P0 H4 | Igglybuff[]30, Swablu[]50, Swablu[]10, Darkrai[P]100   || opp P0 H2 | Shuckle ex[G]100, Teal Mask Ogerpon ex[]130, Shuckle ex[]120, Vespiquen ex[]140
+   T5 opp: Retreat->slot2; ATTACK Triple Slap
+   T6 own: Play Copycat; Place Darkrai@3; Attach P->Darkrai(Active) (zone); UseStadium; EndTurn
+        end: alt P0 H2 | Darkrai[PP]100, Swablu[]50, Igglybuff[]30, Darkrai[]100   || opp P1 H3 | Shuckle ex[G]120, Teal Mask Ogerpon ex[]130, Shuckle ex[]100, Vespiquen ex[]140
+   T7 opp: ATTACK Triple Slap
+
+########## 72050131 swablu_eevee kind=worse opp=vespiquen altaria_seat=1 k=15 T=2 (row: koh v kp3 move=kp3, kp3_act=Place Swablu@2, kpf_act=Retreat->slot3)
+  <kp3>
+   T2 own: Play Professor's Research; Place Swablu@3; Place Swablu@2; Attach P->Swablu(bench) (zone); ATTACK Sleepy Lullaby; EndTurn
+        end: alt P0 H4 | Igglybuff[]30, Swablu[]50, Swablu[P]50   || opp P0 H3 | Shuckle ex[]SLP120, Combee[]50, Shuckle ex[]120, Combee[]50
+   T3 opp: Evolve->Vespiquen ex slot3; Evolve->Vespiquen ex slot1
+   T4 own: UseStadium; Play Professor's Research; Place Eevee@1; Play Poké Ball; Evolve Swablu->Mega Altaria ex(bench); Retreat Igglybuff->Mega Altaria ex; Play Training Area; Attach P->Mega Altaria ex(Active) (zone); ATTACK Mega Harmony; EndTurn
+        end: alt P0 H3 | Mega Altaria ex[PP]190, Eevee[]50, Swablu[]50, Igglybuff[]30   || opp P0 H2 | Shuckle ex[G]SLP30, Vespiquen ex[]140, Shuckle ex[]120, Vespiquen ex[]140
+   T5 opp: ATTACK Triple Slap
+   T6 own: Evolve Eevee->Espeon(bench); Attach P->Espeon(bench) (zone); ATTACK Mega Harmony; EndTurn
+        end: alt P2 H3 | Mega Altaria ex[PP]170, Espeon[P]90, Swablu[]50, Igglybuff[]30   || opp P0 H2 | Vespiquen ex[G]170, Vespiquen ex[]140, Shuckle ex[]120
+   T7 opp: ATTACK Chase Order
+  <kog_v_kog3> identical to kp3 trace
+  <koh_v_kog3>
+   T2 own: Play Professor's Research; Place Swablu@3; Place Swablu@2; Attach P->Swablu(bench) (zone); ATTACK Sleepy Lullaby; EndTurn
+        end: alt P0 H4 | Igglybuff[]30, Swablu[]50, Swablu[P]50   || opp P0 H3 | Shuckle ex[]SLP120, Combee[]50, Shuckle ex[]120, Combee[]50
+   T3 opp: Evolve->Vespiquen ex slot3; Evolve->Vespiquen ex slot1
+   T4 own: UseStadium; Play Professor's Research; Play Poké Ball; Place Darkrai@1; Evolve Swablu->Mega Altaria ex(bench); Retreat Igglybuff->Swablu; Attach P->Mega Altaria ex(bench) (zone); EndTurn
+        end: alt P0 H4 | Swablu[]50, Darkrai[]100, Igglybuff[]30, Mega Altaria ex[PP]190   || opp P0 H2 | Shuckle ex[G]SLP150, Vespiquen ex[]140, Shuckle ex[]120, Vespiquen ex[]140
+   T5 opp: ATTACK Triple Slap
+   T6 own: Place Darkrai@2; Attach P->Darkrai(bench) (zone); ATTACK Sleepy Lullaby; EndTurn
+        end: alt P0 H4 | Igglybuff[]30, Darkrai[]100, Darkrai[P]100, Mega Altaria ex[PP]190   || opp P1 H4 | Shuckle ex[G]SLP130, Vespiquen ex[]140, Shuckle ex[]120, Vespiquen ex[G]170
+   T7 opp: Retreat->slot3; ATTACK Chase Order
+  <kpf>
+   T2 own: Play Professor's Research; Place Swablu@3; Retreat Igglybuff->Swablu; Place Swablu@2; Attach P->Swablu(Active) (zone); ATTACK Sing; EndTurn
+        end: alt P0 H4 | Swablu[P]50, Swablu[]50, Igglybuff[]30   || opp P0 H3 | Shuckle ex[]SLP120, Combee[]50, Shuckle ex[]120, Combee[]50
+   T3 opp: Evolve->Vespiquen ex slot3; Evolve->Vespiquen ex slot1
+   T4 own: Play Professor's Research; Place Eevee@1; Retreat Swablu->Eevee; Evolve Eevee->Espeon(Active); Play Training Area; Attach P->Espeon(Active) (zone); ATTACK Hypnoblast; EndTurn
+        end: alt P0 H3 | Espeon[P]90, Swablu[]50, Swablu[]50, Igglybuff[]30   || opp P0 H2 | Shuckle ex[G]SLP120, Vespiquen ex[]140, Shuckle ex[]120, Vespiquen ex[]140
+   T6 own: Attach P->Swablu(bench) (zone); ATTACK Hypnoblast; EndTurn
+        end: alt P0 H4 | Espeon[P]90, Swablu[]50, Swablu[P]50, Igglybuff[]30   || opp P0 H3 | Shuckle ex[G]SLP90, Vespiquen ex[]140, Shuckle ex[]120, Vespiquen ex[G]140
+
+########## 72060061 swablu_eevee kind=worse opp=weezing altaria_seat=1 k=16 T=2 (row: koh v kp3 move=kpf, kp3_act=Play Professor's Research, kpf_act=Retreat->slot1)
+  <kp3>
+   T2 own: Play Professor's Research; Play Poké Ball; Attach P->Darkrai(bench) (zone); ATTACK Sleepy Lullaby; EndTurn
+        end: alt P0 H3 | Igglybuff[]20, Eevee[]50, Swablu[]50, Darkrai[P]100   || opp P0 H3 | Hoopa ex[]SLP140, Hoopa ex[]150, Team Rocket's Koffing[]60
+   T3 opp: ATTACK Shadow Bullet
+   T4 own: Play Sabrina; Place Darkrai@3; Evolve Eevee->Espeon(bench); Attach P->Darkrai(Active) (zone); EndTurn
+        end: alt P0 H1 | Darkrai[PP]70, Espeon[]90, Swablu[]50, Darkrai[]100   || opp P1 H2 | Hoopa ex[]150, Darkrai ex[]140, Hoopa ex[D]120, Team Rocket's Koffing[]60
+   T5 opp: Evolve->Team Rocket's Weezing ex slot3; ATTACK Shadow Bullet
+   T6 own: Retreat Darkrai->Espeon; Play Training Area; Attach P->Espeon(Active) (zone); ATTACK Hypnoblast; EndTurn
+        end: alt P0 H1 | Espeon[P]90, Darkrai[]10, Swablu[]50, Darkrai[]80   || opp P1 H2 | Hoopa ex[D]SLP100, Darkrai ex[]140, Hoopa ex[D]120, Team Rocket's Weezing ex[]140
+  <kog_v_kog3> identical to kp3 trace
+  <koh_v_kog3>
+   T2 own: Retreat Igglybuff->Eevee; Play Professor's Research; Play Poké Ball; Attach P->Eevee(Active) (zone); ATTACK Stampede; EndTurn
+        end: alt P0 H3 | Eevee[P]50, Igglybuff[]20, Swablu[]50, Darkrai[]100   || opp P0 H3 | Hoopa ex[]140, Hoopa ex[]150, Team Rocket's Koffing[]60
+   T3 opp: ATTACK Shadow Bullet
+   T4 own: Place Darkrai@1; Evolve Eevee->Espeon(Active); Attach P->Darkrai(bench) (zone); ATTACK Hypnoblast; EndTurn
+        end: alt P0 H2 | Espeon[P]50, Darkrai[]100, Swablu[]50, Darkrai[P]100   || opp P1 H3 | Hoopa ex[D]SLP100, Hoopa ex[]150, Team Rocket's Koffing[]60
+   T5 opp: Evolve->Team Rocket's Weezing ex slot3
+   T6 own: Retreat Espeon->Swablu; Attach P->Swablu(Active) (zone); ATTACK Sing; EndTurn
+        end: alt P0 H3 | Swablu[P]50, Darkrai[]100, Espeon[]10, Darkrai[P]100   || opp P1 H2 | Hoopa ex[DD]SLP20, Hoopa ex[]150, Team Rocket's Weezing ex[]140
+   T7 opp: ATTACK Shadow Bullet
+  <kpf>
+   T2 own: Retreat Igglybuff->Eevee; Play Professor's Research; Play Poké Ball; Attach P->Eevee(Active) (zone); ATTACK Stampede; EndTurn
+        end: alt P0 H3 | Eevee[P]50, Igglybuff[]20, Swablu[]50, Darkrai[]100   || opp P0 H3 | Hoopa ex[]140, Hoopa ex[]150, Team Rocket's Koffing[]60
+   T3 opp: ATTACK Shadow Bullet
+   T4 own: Place Darkrai@1; Evolve Eevee->Espeon(Active); Retreat Espeon->Swablu; Attach P->Swablu(Active) (zone); ATTACK Sing; EndTurn
+        end: alt P0 H2 | Swablu[P]50, Darkrai[]100, Espeon[]50, Darkrai[]100   || opp P1 H3 | Hoopa ex[D]SLP140, Hoopa ex[]150, Team Rocket's Koffing[]60
+   T5 opp: Evolve->Team Rocket's Weezing ex slot3
+   T6 own: Attach P->Espeon(Active) (zone); ATTACK Hypnoblast; EndTurn; Promote p1 slot2
+        end: alt P0 H3 | Espeon[P]PSN10, Darkrai[]100, Swablu[P]50, Darkrai[]100   || opp P1 H2 | Hoopa ex[D]SLP20, Hoopa ex[D]150, Team Rocket's Weezing ex[]140
+   T7 opp: ATTACK Shadow Bullet
+
+########## 72000056 forward_swap_darkrai kind=worse opp=blaziken altaria_seat=0 k=27 T=4 (row: koh v kp3 move=kp3, kp3_act=Attach P->slot3 (zone), kpf_act=Retreat->slot3)
+  <kp3>
+   T4 own: Play Copycat; Attach P->Darkrai(bench) (zone); ATTACK Sleepy Lullaby; EndTurn
+        end: alt P1 H3 | Igglybuff[]30, Darkrai[]100, Swablu[]50, Darkrai[PP]100   || opp P0 H3 | Torchic[]SLP50, Mega Blaziken ex[]210
+   T6 own: Evolve Swablu->Mega Altaria ex(bench); Retreat Igglybuff->Darkrai; Play Professor's Research; Attach P->Darkrai(Active) (zone); ATTACK Dark Slumber; EndTurn
+        end: alt P2 H4 | Darkrai[PPP]80, Darkrai[]100, Mega Altaria ex[]190, Igglybuff[]30   || opp P0 H1 | Mega Blaziken ex[F]SLP170
+   T8 own: Play Sabrina; ATTACK Dark Slumber; EndTurn
+        end: alt P2 H4 | Darkrai[PPP]80, Darkrai[]100, Mega Altaria ex[]190, Igglybuff[]30   || opp P0 H2 | Castform Sunny Form[F]SLP30, Mega Blaziken ex[FF]90
+  <kog_v_kog3> identical to kp3 trace
+  <koh_v_kog3>
+   T4 own: Play Copycat; Attach P->Darkrai(bench) (zone); ATTACK Sleepy Lullaby; EndTurn
+        end: alt P1 H3 | Igglybuff[]30, Darkrai[]100, Swablu[]50, Darkrai[PP]100   || opp P0 H3 | Torchic[]SLP50, Mega Blaziken ex[]210
+   T6 own: Evolve Swablu->Mega Altaria ex(bench); Play Professor's Research; Attach P->Mega Altaria ex(bench) (zone); ATTACK Sleepy Lullaby; EndTurn
+        end: alt P2 H4 | Igglybuff[]10, Darkrai[]100, Mega Altaria ex[P]190, Darkrai[PP]100   || opp P0 H1 | Mega Blaziken ex[F]SLP200
+   T8 own: Retreat Igglybuff->Mega Altaria ex; Attach P->Mega Altaria ex(Active) (zone); ATTACK Mega Harmony
+  <kpf>
+   T4 own: Play Copycat; Retreat Igglybuff->Darkrai; Attach P->Darkrai(Active) (zone); EndTurn
+        end: alt P1 H3 | Darkrai[PP]100, Darkrai[]100, Swablu[]50, Igglybuff[]30   || opp P0 H3 | Torchic[]60, Mega Blaziken ex[]210
+   T6 own: Evolve Swablu->Mega Altaria ex(bench); Play Professor's Research; Attach P->Darkrai(Active) (zone); ATTACK Dark Slumber; EndTurn
+        end: alt P1 H4 | Darkrai[PPP]100, Darkrai[]100, Mega Altaria ex[]190, Igglybuff[]30   || opp P0 H4 | Torchic[]SLP20, Mega Blaziken ex[F]210
+   T7 opp: ATTACK Mega Burning
+   T8 own: Play Sabrina; Place Eevee@2; Attach P->Mega Altaria ex(Active) (zone); EndTurn
+        end: alt P2 H3 | Mega Altaria ex[P]190, Darkrai[]100, Eevee[]50, Igglybuff[]30   || opp P1 H3 | Castform Sunny Form[]70, Mega Blaziken ex[FF]210
+   T9 opp: Retreat->slot3; ATTACK Mega Burning
+
+########## 72020097 forward_swap_darkrai kind=better opp=lucario altaria_seat=1 k=29 T=4 (row: koh v kp3 move=kp3, kp3_act=Play Professor's Research, kpf_act=Retreat->slot1)
+  <kp3>
+   T4 own: Play Professor's Research; Play Poké Ball; Attach P->Darkrai(bench) (zone); ATTACK Sleepy Lullaby; EndTurn
+        end: alt P0 H4 | Igglybuff[]30, Darkrai[PP]100, Swablu[]50, Swablu[]50   || opp P0 H3 | Hitmonlee[]SLP70, Mega Lucario ex[]190
+   T5 opp: ATTACK Stretch Kick
+   T6 own: Retreat Igglybuff->Darkrai; Play Professor's Research; Play Poké Ball; Attach P->Darkrai(Active) (zone); ATTACK Dark Slumber; EndTurn
+        end: alt P0 H6 | Darkrai[PPP]70, Igglybuff[]30, Swablu[]50, Swablu[]50   || opp P0 H5 | Hitmonlee[F]SLP10, Mega Lucario ex[]190
+   T8 own: Play Sabrina; Attach P->Swablu(bench) (zone); Play Field Blower; DiscardToolFromPokemon { player: 0, in_play_idx: 3, tool_idx: 0 }; ATTACK Dark Slumber; EndTurn
+        end: alt P1 H5 | Darkrai[PPP]70, Igglybuff[]30, Swablu[]50, Swablu[P]50   || opp P0 H6 | Riolu[]SLP20, Mega Lucario ex[F]190
+   T9 opp: ATTACK Fighting Pulse
+  <kog_v_kog3> identical to kp3 trace
+  <koh_v_kog3>
+   T4 own: Play Professor's Research; Retreat Igglybuff->Darkrai; Play Poké Ball; Attach P->Darkrai(Active) (zone); EndTurn
+        end: alt P0 H4 | Darkrai[PP]100, Igglybuff[]30, Swablu[]50, Swablu[]50   || opp P0 H3 | Hitmonlee[]80, Mega Lucario ex[]190
+   T5 opp: ATTACK Stretch Kick
+   T6 own: Place Darkrai@1; Play Professor's Research; Play Poké Ball; Attach P->Darkrai(Active) (zone); ATTACK Dark Slumber; EndTurn
+        end: alt P0 H5 | Darkrai[PPP]100, Darkrai[]100, Swablu[]50, Swablu[]50   || opp P1 H5 | Hitmonlee[F]SLP40, Mega Lucario ex[]190
+   T8 own: Play Sabrina; Attach P->Darkrai(bench) (zone); Play Field Blower; DiscardToolFromPokemon { player: 0, in_play_idx: 3, tool_idx: 0 }; ATTACK Dark Slumber; EndTurn
+        end: alt P1 H4 | Darkrai[PPP]100, Darkrai[P]100, Swablu[]50, Swablu[]50   || opp P1 H5 | Riolu[]SLP20, Mega Lucario ex[F]190
+   T9 opp: ATTACK Fighting Pulse
+  <kpf>
+   T4 own: Retreat Igglybuff->Darkrai; Play Professor's Research; Play Poké Ball; Attach P->Darkrai(Active) (zone); EndTurn
+        end: alt P0 H4 | Darkrai[PP]100, Igglybuff[]30, Swablu[]50, Swablu[]50   || opp P0 H3 | Hitmonlee[]80, Mega Lucario ex[]190
+   T5 opp: ATTACK Stretch Kick
+   T6 own: Place Darkrai@1; Play Professor's Research; Play Poké Ball; Attach P->Darkrai(Active) (zone); ATTACK Dark Slumber; EndTurn
+        end: alt P0 H5 | Darkrai[PPP]100, Darkrai[]100, Swablu[]50, Swablu[]50   || opp P1 H5 | Hitmonlee[F]SLP40, Mega Lucario ex[]190
+   T8 own: Play Sabrina; Attach P->Darkrai(bench) (zone); Play Field Blower; DiscardToolFromPokemon { player: 0, in_play_idx: 3, tool_idx: 0 }; ATTACK Dark Slumber; EndTurn
+        end: alt P1 H4 | Darkrai[PPP]100, Darkrai[P]100, Swablu[]50, Swablu[]50   || opp P1 H5 | Riolu[]SLP20, Mega Lucario ex[F]190
+   T9 opp: ATTACK Fighting Pulse
+
+########## 72020121 forward_swap_darkrai kind=worse opp=lucario altaria_seat=1 k=31 T=4 (row: koh v kp3 move=None, kp3_act=Play Sabrina, kpf_act=Retreat->slot3)
+  <kp3>
+   T4 own: Play Sabrina; Attach P->Darkrai(bench) (zone); ATTACK Sleepy Lullaby; EndTurn
+        end: alt P1 H1 | Igglybuff[]20, Swablu[]50, Darkrai[PP]100   || opp P0 H3 | Mega Lucario ex[]SLP180, Hitmonlee[F]80
+   T6 own: Place Darkrai@1; Retreat Igglybuff->Darkrai; Attach P->Darkrai(Active) (zone); ATTACK Dark Slumber; EndTurn
+        end: alt P1 H1 | Darkrai[PPP]100, Darkrai[]100, Swablu[]50, Igglybuff[]20   || opp P0 H3 | Mega Lucario ex[F]SLP100, Riolu[]60, Hitmonlee[F]80
+   T7 opp: Evolve->Mega Lucario ex slot2
+   T8 own: ATTACK Dark Slumber
+  <kog_v_kog3> identical to kp3 trace
+  <koh_v_kog3>
+   T4 own: Play Sabrina; Attach P->Darkrai(bench) (zone); ATTACK Sleepy Lullaby; EndTurn
+        end: alt P1 H1 | Igglybuff[]20, Swablu[]50, Darkrai[PP]100   || opp P0 H3 | Mega Lucario ex[]SLP180, Hitmonlee[F]80
+   T6 own: Retreat Igglybuff->Darkrai; Place Darkrai@1; Attach P->Darkrai(Active) (zone); ATTACK Dark Slumber; EndTurn
+        end: alt P1 H1 | Darkrai[PPP]100, Darkrai[]100, Swablu[]50, Igglybuff[]20   || opp P0 H3 | Mega Lucario ex[F]SLP100, Riolu[]60, Hitmonlee[F]80
+   T7 opp: Evolve->Mega Lucario ex slot2
+   T8 own: ATTACK Dark Slumber
+  <kpf>
+   T4 own: Retreat Igglybuff->Darkrai; Play Sabrina; Attach P->Darkrai(Active) (zone); EndTurn
+        end: alt P1 H1 | Darkrai[PP]100, Swablu[]50, Igglybuff[]20   || opp P0 H3 | Mega Lucario ex[]190, Hitmonlee[F]80
+   T5 opp: Retreat->slot3; ATTACK Stretch Kick
+   T6 own: Place Darkrai@3; Attach P->Darkrai(Active) (zone); ATTACK Dark Slumber; EndTurn
+        end: alt P1 H1 | Darkrai[PPP]100, Swablu[]50, Darkrai[]100   || opp P1 H4 | Hitmonlee[F]SLP40, Riolu[]60, Mega Lucario ex[]190
+   T7 opp: Evolve->Lucario slot2
+   T8 own: Place Eevee@1; Attach P->Darkrai(bench) (zone); ATTACK Dark Slumber; EndTurn
+        end: alt P2 H1 | Darkrai[PPP]100, Eevee[]50, Swablu[]50, Darkrai[P]100   || opp P1 H3 | Mega Lucario ex[F]SLP150, Lucario[]100
+   T9 opp: ATTACK Fighting Pulse
+
+########## 72040008 forward_swap_darkrai kind=worse opp=suicune altaria_seat=0 k=32 T=5 (row: koh v kp3 move=kp3, kp3_act=Attach P->slot1 (zone), kpf_act=Retreat->slot1)
+  <kp3>
+   T5 own: Attach P->Darkrai(bench) (zone); ATTACK Sleepy Lullaby; EndTurn
+        end: alt P0 H3 | Igglybuff[]30, Darkrai[PP]100, Eevee[]50, Eevee[]50   || opp P0 H3 | Suicune ex[W]SLP130, Chien-Pao ex[]130, Frigibax[]60, Suicune ex[W]140
+   T6 opp: Evolve->Baxcalibur slot2
+   T7 own: Retreat Igglybuff->Darkrai; Play Poké Ball; Attach P->Darkrai(Active) (zone); Play Field Blower; DiscardToolFromPokemon { player: 1, in_play_idx: 0, tool_idx: 0 }; ATTACK Dark Slumber; EndTurn
+        end: alt P0 H3 | Darkrai[PPP]100, Igglybuff[]30, Eevee[]50, Eevee[]50   || opp P0 H3 | Suicune ex[WW]SLP70, Chien-Pao ex[]130, Baxcalibur[]140, Suicune ex[WW]140
+   T9 own: Play Copycat; Evolve Eevee->Espeon(bench); Attach P->Espeon(bench) (zone); ATTACK Dark Slumber; EndTurn
+        end: alt P0 H4 | Darkrai[PPP]100, Igglybuff[]30, Eevee[]50, Espeon[P]90   || opp P0 H5 | Suicune ex[WWW]SLP30, Chien-Pao ex[]130, Baxcalibur[W]140, Suicune ex[WW]140
+  <kog_v_kog3> identical to kp3 trace
+  <koh_v_kog3>
+   T5 own: Attach P->Darkrai(bench) (zone); ATTACK Sleepy Lullaby; EndTurn
+        end: alt P0 H3 | Igglybuff[]30, Darkrai[PP]100, Eevee[]50, Eevee[]50   || opp P0 H3 | Suicune ex[W]SLP130, Chien-Pao ex[]130, Frigibax[]60, Suicune ex[W]140
+   T6 opp: Evolve->Baxcalibur slot2
+   T7 own: Retreat Igglybuff->Darkrai; Play Poké Ball; Attach P->Darkrai(Active) (zone); Play Field Blower; DiscardToolFromPokemon { player: 1, in_play_idx: 0, tool_idx: 0 }; ATTACK Dark Slumber; EndTurn
+        end: alt P0 H3 | Darkrai[PPP]100, Igglybuff[]30, Eevee[]50, Eevee[]50   || opp P0 H3 | Suicune ex[WW]SLP70, Chien-Pao ex[]130, Baxcalibur[]140, Suicune ex[WW]140
+   T9 own: Play Copycat; Evolve Eevee->Espeon(bench); Attach P->Espeon(bench) (zone); ATTACK Dark Slumber; EndTurn
+        end: alt P0 H4 | Darkrai[PPP]100, Igglybuff[]30, Eevee[]50, Espeon[P]90   || opp P0 H5 | Suicune ex[WWW]SLP30, Chien-Pao ex[]130, Baxcalibur[W]140, Suicune ex[WW]140
+  <kpf>
+   T5 own: Retreat Igglybuff->Darkrai; Attach P->Darkrai(Active) (zone); EndTurn
+        end: alt P0 H3 | Darkrai[PP]100, Igglybuff[]30, Eevee[]50, Eevee[]50   || opp P0 H3 | Suicune ex[W]140, Chien-Pao ex[]130, Frigibax[]60, Suicune ex[W]140
+   T6 opp: Evolve->Baxcalibur slot2; ATTACK Crystal Waltz
+   T7 own: Play Poké Ball; Place Swablu@1; Retreat Igglybuff->Eevee; Attach P->Eevee(Active) (zone); Play Field Blower; DiscardToolFromPokemon { player: 1, in_play_idx: 0, tool_idx: 0 }; ATTACK Stampede; EndTurn
+        end: alt P0 H2 | Eevee[P]50, Swablu[]50, Eevee[]50, Igglybuff[]30   || opp P1 H3 | Suicune ex[WWW]130, Chien-Pao ex[]130, Baxcalibur[]140, Suicune ex[W]140
+   T8 opp: ATTACK Crystal Waltz
+   T9 own: Place Swablu@1; Evolve Swablu->Mega Altaria ex(Active); Attach P->Mega Altaria ex(Active) (zone); Play Copycat; Play Small Balloon; AttachTo (abil); Evolve Eevee->Espeon(bench); EndTurn
+        end: alt P0 H3 | Mega Altaria ex[P]190, Swablu[]50, Espeon[]90, Igglybuff[]30   || opp P2 H5 | Suicune ex[WWWW]160, Chien-Pao ex[]130, Baxcalibur[]140, Suicune ex[WW]140
+   T10 opp: ATTACK Crystal Waltz
+
+########## 72050110 forward_swap_darkrai kind=worse opp=vespiquen altaria_seat=0 k=27 T=4 (row: koh v kp3 move=other, kp3_act=Play Sabrina, kpf_act=Retreat->slot3)
+  <kp3>
+   T4 own: Play Sabrina; Attach P->Darkrai(bench) (zone); ATTACK Sleepy Lullaby; EndTurn
+        end: alt P0 H3 | Igglybuff[]30, Darkrai[]100, Swablu[]50, Darkrai[PP]100   || opp P0 H2 | Vespiquen ex[]SLP160, Teal Mask Ogerpon ex[G]80, Combee[]50
+   T6 own: Retreat Igglybuff->Darkrai; Play Professor's Research; Evolve Swablu->Mega Altaria ex(bench); Attach P->Darkrai(Active) (zone); Play Field Blower; DiscardToolFromPokemon { player: 1, in_play_idx: 0, tool_idx: 0 }; ATTACK Dark Slumber; EndTurn
+        end: alt P0 H3 | Darkrai[PPP]100, Darkrai[]100, Mega Altaria ex[]190, Igglybuff[]30   || opp P0 H3 | Vespiquen ex[G]50, Teal Mask Ogerpon ex[G]80, Shuckle ex[]120, Combee[]50
+   T7 opp: ATTACK Chase Order
+   T8 own: Place Eevee@3; Retreat Igglybuff->Eevee; Evolve Eevee->Espeon(Active); Play Copycat; Play Training Area; Attach P->Espeon(Active) (zone); Play Small Balloon; AttachTo (abil); ATTACK Hypnoblast; EndTurn
+        end: alt P2 H2 | Espeon[P]90, Darkrai[]100, Mega Altaria ex[]190, Igglybuff[]30   || opp P1 H4 | Teal Mask Ogerpon ex[G]80, Shuckle ex[]120
+   T9 opp: ATTACK Energized Leaves
+  <kog_v_kog3> identical to kp3 trace
+  <koh_v_kog3>
+   T4 own: Attach P->Swablu(bench) (zone); Play Professor's Research; Play Field Blower; DiscardToolFromPokemon { player: 1, in_play_idx: 1, tool_idx: 0 }; ATTACK Sleepy Lullaby; EndTurn
+        end: alt P0 H4 | Igglybuff[]30, Darkrai[]100, Swablu[P]50, Darkrai[P]100   || opp P0 H2 | Teal Mask Ogerpon ex[G]70, Vespiquen ex[]140, Combee[]50
+   T5 opp: ATTACK Energized Leaves
+   T6 own: Place Eevee@3; Evolve Swablu->Mega Altaria ex(bench); Attach P->Darkrai(Active) (zone); Play Copycat; Play Small Balloon; AttachTo (abil); UseStadium; EndTurn
+        end: alt P0 H3 | Darkrai[PP]100, Darkrai[]100, Mega Altaria ex[P]190, Eevee[]50   || opp P1 H4 | Teal Mask Ogerpon ex[GG]70, Vespiquen ex[]140, Shuckle ex[]120, Combee[]50
+   T7 opp: Evolve->Vespiquen ex slot3; ATTACK Energized Leaves
+   T8 own: Place Swablu@2; Evolve Eevee->Espeon(bench); Play Professor's Research; Attach P->Mega Altaria ex(Active) (zone); ATTACK Mega Harmony; EndTurn
+        end: alt P2 H3 | Mega Altaria ex[PP]190, Darkrai[]100, Swablu[]50, Espeon[]90   || opp P2 H5 | Vespiquen ex[]140, Vespiquen ex[]140, Shuckle ex[]120
+  <kpf>
+   T4 own: Retreat Igglybuff->Darkrai; Play Professor's Research; Play Field Blower; DiscardToolFromPokemon { player: 1, in_play_idx: 1, tool_idx: 0 }; Attach P->Darkrai(Active) (zone); UseStadium; EndTurn
+        end: alt P0 H4 | Darkrai[PP]100, Darkrai[]100, Swablu[]50, Igglybuff[]30   || opp P0 H2 | Teal Mask Ogerpon ex[G]80, Vespiquen ex[]140, Combee[]50
+   T5 opp: ATTACK Energized Leaves
+   T6 own: Play Copycat; Attach P->Darkrai(Active) (zone); ATTACK Dark Slumber; EndTurn
+        end: alt P0 H3 | Darkrai[PPP]20, Darkrai[]100, Swablu[]50, Igglybuff[]30   || opp P0 H3 | Teal Mask Ogerpon ex[GG]70, Vespiquen ex[]140, Shuckle ex[]120, Combee[]50
+   T7 opp: ATTACK Energized Leaves
+   T8 own: Place Swablu@3; Attach P->Darkrai(bench) (zone); ATTACK Sleepy Lullaby; EndTurn
+        end: alt P0 H3 | Igglybuff[]30, Darkrai[P]100, Swablu[]50, Swablu[]50   || opp P1 H5 | Teal Mask Ogerpon ex[GG]60, Vespiquen ex[G]140, Shuckle ex[]120, Combee[]50
+   T9 opp: Evolve->Vespiquen ex slot3; ATTACK Energized Leaves

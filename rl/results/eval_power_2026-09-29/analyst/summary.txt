@@ -1,0 +1,44 @@
+TOTALS (analytic delta method; the resampling check agrees within ~2% of the sd)
+reading            dMSE  sd sim  sd Lim sd cross sd total boot sd Lim var% +-sim only +-Lim only  +-both  boot +-  cells: sim>Lim / Lim>sim / neither
+koh3/kog3         -45.1    11.6    25.0      5.8     28.2    28.2      79%       22.8       49.1    55.3     55.2     20/25/0
+kog3/kp3          -43.1     7.0     5.5      2.8      9.3     9.4      35%       13.7       10.8    18.3     18.3     13/11/21
+kpg3/kp3          -43.2     6.8     5.1      2.6      8.9     8.9      33%       13.2       10.0    17.4     17.5     12/5/28
+kpf3/kp3          -84.2    12.3    30.0      6.0     33.0    33.4      83%       24.2       58.8    64.6     65.4     20/25/0
+kpr3/kp3          -84.7    12.2    29.6      6.0     32.6    32.6      83%       24.0       58.1    63.9     64.2     20/25/0
+kog3/kpg3          +0.1     1.8     2.0      1.0      2.9     2.9      49%        3.5        4.0     5.7      5.8      3/6/36
+
+GROUPS OF CELLS: share of each side's variance carried by (9 Rayquaza cells | 8 Altaria/Greninja cells | 28 panel cells)
+koh3/kog3        simulator variance: Rayquaza  31%, A/G  29%, panel  40%   | Limitless variance: Rayquaza  73%, A/G   4%, panel  22%
+kog3/kp3         simulator variance: Rayquaza  92%, A/G   1%, panel   6%   | Limitless variance: Rayquaza  86%, A/G   1%, panel  13%
+kpg3/kp3         simulator variance: Rayquaza  98%, A/G   1%, panel   1%   | Limitless variance: Rayquaza  99%, A/G   0%, panel   1%
+kpf3/kp3         simulator variance: Rayquaza  35%, A/G  26%, panel  39%   | Limitless variance: Rayquaza  84%, A/G   2%, panel  14%
+kpr3/kp3         simulator variance: Rayquaza  35%, A/G  26%, panel  39%   | Limitless variance: Rayquaza  83%, A/G   3%, panel  14%
+kog3/kpg3        simulator variance: Rayquaza  13%, A/G   2%, panel  85%   | Limitless variance: Rayquaza   0%, A/G   5%, panel  94%
+
+HOW CONCENTRATED: koh3 vs kog3, cumulative share of the Limitless variance by the biggest cells
+   1. rayquaza v vespiquen           share 14.1%  cumulative  14.1%
+   2. rayquaza v blaziken            share 13.5%  cumulative  27.5%
+   3. rayquaza v suicune             share 10.5%  cumulative  38.1%
+   4. rayquaza v weezing             share  9.9%  cumulative  48.0%
+   5. rayquaza v altaria_greninja    share  9.3%  cumulative  57.3%
+   6. rayquaza v hydreigon           share  9.2%  cumulative  66.5%
+   7. blaziken v weezing             share  5.1%  cumulative  71.6%
+   8. hydreigon v vespiquen          share  3.8%  cumulative  75.4%
+   9. rayquaza v lucario             share  3.8%  cumulative  79.2%
+  10. altaria_greninja v weezing     share  3.6%  cumulative  82.8%
+  11. hydreigon v weezing            share  3.0%  cumulative  85.8%
+  12. hydreigon v suicune            share  2.7%  cumulative  88.5%
+
+WORKED ARITHMETIC (koh3 vs kog3), K = 45; scores in points
+  rayquaza v vespiquen: kog3 25.2 -> koh3 51.2 (d = +26.0), Limitless 61.1 on 36 matches
+    Limitless side: binomial sd of the cell = 100*sqrt(0.611*0.389/36) = 8.1; weight 2|d|/K = 2*26.0/45 = 1.156; part of dMSE sd = 9.39
+    simulator side: per-deal linear form m*D_i + d*O_i, m = N-L = -9.9; sd(D) = 63 (paired koh3-kog3 per deal), sd(O) = 43 (kog3 per deal), n = 500
+      term m*D: 2*9.9/45*63/sqrt(500) = 1.24; term d*O: 2*26.0/45*43/sqrt(500) = 2.25; with their covariance the cell's sim sd = 3.16
+  altaria_greninja v sceptile: kog3 31.0 -> koh3 29.8 (d = -1.2), Limitless 66.7 on 33 matches
+    Limitless side: binomial sd of the cell = 100*sqrt(0.667*0.333/33) = 8.2; weight 2|d|/K = 2*1.2/45 = 0.053; part of dMSE sd = 0.44
+    simulator side: per-deal linear form m*D_i + d*O_i, m = N-L = -36.9; sd(D) = 46 (paired koh3-kog3 per deal), sd(O) = 46 (kog3 per deal), n = 500
+      term m*D: 2*36.9/45*46/sqrt(500) = 3.34; term d*O: 2*1.2/45*46/sqrt(500) = 0.11; with their covariance the cell's sim sd = 3.29
+
+LIMITLESS SAMPLE SIZES (matches): development half per scoreboard cell, from frozen_cells.csv n columns only
+  dev 2214, pooled (dev + the spent Sept 25 holdout; sizes only, no outcome used) 4712 = x2.13
+  dev per-cell n: min 8, median 38, max 161; cells with n < 20: 6; n < 40: 24

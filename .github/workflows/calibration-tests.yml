@@ -1,0 +1,52 @@
+name: calibration-tests
+
+# Runs the tests for run_calibration.py and calibrate.py (decks/screen/panel_ladder_2026-09-26). They use invented decks,
+# an invented engine file and a stubbed engine call: nothing here builds or starts the simulator.
+#
+# The test file skips itself on anything but Linux, so a green run that ran nothing, or skipped tests, would prove
+# nothing. The last step therefore fails unless unittest reports at least one test and no skipped ones.
+
+on:
+  pull_request:
+    paths:
+      - 'decks/screen/panel_ladder_2026-09-26/**'
+      - '.github/workflows/calibration-tests.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'decks/screen/panel_ladder_2026-09-26/**'
+      - '.github/workflows/calibration-tests.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  calibration-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.14'
+
+      - name: Run the calibration tests
+        shell: bash
+        working-directory: decks/screen/panel_ladder_2026-09-26
+        run: |
+          log="$RUNNER_TEMP/calibration-tests.log"
+          python3 --version
+          # -eo pipefail (from shell: bash) makes a failing test fail the step even though the output goes through tee
+          python3 -B -m unittest -v test_calibration_safety 2>&1 | tee "$log"
+          ran=$(sed -n 's/^Ran \([0-9][0-9]*\) tests\{0,1\} in .*/\1/p' "$log" | tail -n 1)
+          if [ -z "$ran" ] || [ "$ran" -eq 0 ]; then
+            echo "::error::unittest reported no tests, so nothing was checked"
+            exit 1
+          fi
+          if grep -Eq '^(OK|FAILED) \(.*skipped=' "$log" || grep -Eq ' \.\.\. skipped ' "$log"; then
+            echo "::error::some tests were skipped (they skip themselves on anything but Linux), so they did not check anything"
+            exit 1
+          fi
+          echo "Ran $ran tests, none skipped."
+          echo "Ran $ran tests, none skipped." >> "$GITHUB_STEP_SUMMARY"

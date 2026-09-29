@@ -55,7 +55,10 @@ def main():
     ap.add_argument("--seed", type=int, default=21108900000)
     ap.add_argument("--opp-pilot", default=None, help="seat 1's pilot (default: the same as --pilot)")
     ap.add_argument("--engine", default=None, help="a diagnostic build instead of the official engine (hash printed)")
+    ap.add_argument("--per-game", default=None, help="also write one JSON line per game (seed, seat 0 won, and per "
+                    "attack the own turns it was offered and used), for paired comparisons (added Sept 28 for koh)")
     a = ap.parse_args()
+    per_game_rows = []
     engine = a.engine or str(resolve())
     if a.engine:
         import hashlib
@@ -124,6 +127,14 @@ def main():
                     attack_energy[lab][len(e) if isinstance(e, list) else str(e)[:40]] += 1
             if last_state is not None and "discard_energies" in last_state:
                 end_discard.append(len(last_state["discard_energies"][0]))
+            if a.per_game:
+                att = defaultdict(lambda: [0, 0])
+                for pt in per_turn.values():
+                    for lab2 in pt["off"]:
+                        att[lab2][0] += 1
+                        att[lab2][1] += pt["used"] == lab2
+                per_game_rows.append({"seed": (r.get("randomness") or {}).get("game_seed"), "won": r["outcome"] == {"Win": 0},
+                                      "final_turn": r["final_turn"], "attacks": {k: v for k, v in att.items()}})
             for pt in per_turn.values():
                 for lab3 in pt.get("moff", ()):
                     move_off[lab3] += 1
@@ -137,6 +148,10 @@ def main():
                         declined_energy[lab2][en] += 1
     finally:
         shutil.rmtree(tmp, ignore_errors=True)
+    if a.per_game:
+        with open(a.per_game, "w", encoding="utf-8") as f:
+            for row in sorted(per_game_rows, key=lambda x: (x["seed"] is None, x["seed"])):
+                f.write(json.dumps(row) + "\n")
     print(f"{os.path.basename(a.deck)} (seat 0) v {os.path.basename(a.opp)}: players {players}, {a.games} games, "
           f"seeds {a.seed}+ (--seed-stream); seat 0 won {wins}; average final turn {turns / a.games:.1f}")
     print("slot keys:", first_slot_keys)

@@ -339,8 +339,35 @@ sides with k3 still available; the 0.7.2 wheel and its run identities are untouc
   - k3 stays the reproduction reference.
 - **The yardstick:** scoreboard v3, 45 cells (`results/scoreboard_v3_2026-09-27/`). Development real error: k3 15.3, kp3 15.5, kog3 14.0; the target is 5.5. Every 45-cell reading prints the by-event interval beside the match-level one.
 - **Candidates:**
-  - koh (kog + R′, kph's registration): footprint 93.4%, so it is read by the ordinary rule. Its runs are in the cloud; nothing else has been read.
-  - kt: being re-issued on kog (amendment 2, one review done). No kt game until Dustin's word on its tables.
+  - koh (kog + R′, kph's registration): **not adopted; coverage complete Sept 29** (`results/koh_2026-09-28/laptop_reading/READING.md`).
+    - Real error 14.0 → 12.3, but the ΔMSE interval crosses zero.
+    - Altaria's vetoes count (v Lucario −4.8 ± 3.8; deck −1.8 ± 1.4).
+    - Under Dustin's coverage rule, koh plays its own side worse on:
+      - Weezing's second list, −3.8 ± 1.6;
+      - B2e's held-out Hoopa / Absol, −10.4 ± 1.5 (his own Hoopa file −5.1 ± 1.5, reported);
+      - Whimsicott, −2.0 ± 1.3.
+    - Lucario and Vespiquen are repaired, and Rayquaza's gain is kept.
+    - The Altaria diagnosis (`results/koh_2026-09-28/altaria_diagnosis/`) finds the crossed Swablu/Eevee line mostly a reading problem. The deficit is small and spread: R's attack-skipping v Lucario, and fix B double-counting the fresh Zone Energy (a candidate repair, not registered).
+  - kt (kog + Tool/turn-effect switches; amendment 2, Dustin's word): **not adopted, as registered, Sept 29** (`results/kt_tables_2026-09-28/READING.md`; two readers agree on every number; the outcome was audited against the text).
+    - kt3 (all three switches, footprint 64.7%, ordinary rule) fails: ΔMSE +1.0 (−16.7 to +18.9), plus own-side harm on three B2e held-out decks and two second lists. The scoreboard points at switch 2, but not beyond noise (ktb3: real error 14.3, τ margin −0.30 (−0.75 to +0.23)).
+    - kta3 (switch 1, the Tool cut, 2.5%, reserve route) passes every test:
+      - τ margin +0.21 (90% interval +0.06 to +0.31), real error 14.0 → 13.8;
+      - Rayquaza's (d) +1.00 ± 0.39;
+      - no harm anywhere.
+    - The registration's fixed outcome, "kt3 fails: nothing adopted ... the next candidate is registered afresh", decides.
+    - **Dustin, Sept 29 morning:** "honoring a registered 'not adopted' while an encouraging sub-result sits right there is the process doing its job."
+      - **"kta alone, kog stays."** Register kta as switch 1 alone, on kog, with the same clause (d) gate as before: Rayquaza per the registration, with Skarmory as the motivating deck and Suicune reported.
+      - "The +8.5 on your Skarmory deck is real simulator evidence and it should be in the registration as the reason the candidate exists; it isn't the gate." (The A/B: deck 07, kta3 v kog3, +8.5, 95% interval +6.7 to +10.4.)
+      - **km:** "Goo-zooka's switch separate from km" (D1: option A). "Two switches that could each be adopted or dropped alone get two decisions, and a candidate is never adopted because its other half improved a different deck." "The specific caution is right too: Goo-zooka being played more often is a footprint, not a gain, and the footprint alone doesn't confirm the switch."
+      - "**2,000 deals for clause (d)'s Lucario rows, fixed before play**" (D2). Clause (d) is paired and simulator-only, so its noise is all simulator noise, and quadrupling the deals halves it. The scoreboard cells are the opposite case, so no reason to enlarge every cell.
+      - **kta registered, Sept 29** (Dustin, verbatim): "kta: approved. Register the text with clause (d) at 2,000 fresh deals per row, the 20% Jasmine threshold and baseline guard, and the coverage shortcut. Start as soon as possible within the stated plan. For coverage, skip mixed rows only when every corresponding deal has matching complete move fingerprints, decks, seeds and seats. Matching winners alone is insufficient." (`results/kta_2026-09-29/REGISTRATION.md`)
+      - **km's threshold procedure approved, Sept 29, with three corrections before registration** (Dustin, verbatim):
+        - "km: approve the threshold-setting procedure with these corrections before registration: 1. Use the exact midpoint for comparisons. Round only for display. 2. Complete the counter tool's support for all named cells before measuring either pilot. No reduced-cell substitute. 3. Freeze the exact paired-noise calculation and its random seed before measuring."
+        - "Use development deals 200–299 to set the thresholds and deals 0–199 for the mechanism test, as drafted. Record and independently check the resulting rates, intervals and thresholds before the registered evaluation. Only the procedure needs my approval. The calculated numbers do not need another approval if they follow it exactly. If the procedure says a mechanism cannot pass, record that result without adjusting the threshold or trying another sample."
+        - **Roles:** "Local Opus owns registration and integration. Cloud Opus owns km's build, counter-tool extension, tests and identity checks. Sonnet continues its separate calibration reliability task."
+      - **Two additions to readings (columns, not rules):**
+        - the reading says which condition carried the verdict. "No harm with almost no changed games" is the reserve route working as designed, but it says little. The informative parts are the gain on the pre-named decks and the footprint.
+        - a per-cell breakdown beside a pooled gain, "so a gain that is really one cell is visible as one cell".
   - kph is not run (superseded by koh on the composed base).
 - **Waiting on post-freeze data:** kpg's confirmation, koa's no-harm re-check and kog's own row (`results/postfreeze_2026-09-27/README.md`). Read once, at 804 + 303 matches (about mid-October) or at the last pull before Mega Garchomp ex.
 - **Holds:** deck ranking stays on hold (14.0 against 5.5; the ladder-weighted panel and calibration are unfinished). The floor check may be used under the A2 decision. The quick screen's ranking is on hold.
@@ -378,8 +405,39 @@ sides with k3 still available; the 0.7.2 wheel and its run identities are untouc
    reads "untrusted" instead of "fail" only when a flagged card central to the list was used on a small share of the
    turns it was available; the page reports available and used counts for every flagged card. Check before use: both
    Payback lists must come out "fail", not "untrusted"; A3 per-game calibration from the Ladder Log; A4 one brew to 15 to 20 ladder games with a
-   stop-loss; A5 B4b as a data refresh with bit-for-bit reproduction of the k3 table plus a card-effect pass, and an
+   stop-loss; A5 B4b as a data refresh (B4b is reprint-only: its five "new" cards are new-art reprints, and the one new card
+   in the window is Mega Garchomp ex, an October promo, `results/b4b_prep_2026-09-26/`; Dustin, Sept 28: B4b waits up to
+   three days for upstream) with bit-for-bit reproduction of the k3, kp3 and kog3 tables (14,000 games each) on the pinned engine `rl/engine-2026-09-28/` plus a card-effect pass, Mega Garchomp ex as its own small refresh when its text is published, and an
    upstream code-merge trial in the cloud before C1.
+   - **Dustin, Sept 28 about 7:30 pm Central** (typed in the Fable session, relayed verbatim; recorded the same day):
+     - **A4, which brew:** "Play the one you'll enjoy twenty games of — that's the only rule that matters, and the log's spread problem came from switching. But if it's a coin flip between 07 and 08, 08 is the better evidence ... it's an unchanged real Limitless list, so it's the first deck you'd play that has both a screen number and a real cell." Also: "the A1 prediction — 07 and 08 fastest to set up, 10 slowest — gets its first real test from whichever you play, so note setup speed when you log." The brew pages in `results/floor_brews_2026-09-28/` say what to note.
+     - **A5, the merge trial:** "Trial it whenever the cloud has room, in isolation, off the official engine — a separate worktree, the full test suite and the identity replays against the current references, with the new cards' text checked against `card.py` as they come in. Don't pin it until two things are true: the current candidate queue (koh, kt) has its verdicts, and the mid-October read has been taken on the B4a meta it was registered against. The Garchomp release is the natural pin date."
+     - **The Sleep/Paralysis pull request upstream: "yes, and first."** "If upstream merges the fix before you merge upstream's B4b, the new set arrives with the fix already in it and there's nothing to re-patch." The seven repairs from this week may follow, "but one clean pull request first". The laptop prepares it; Dustin opens it from his own account.
+       - **Checked the same night: nothing to send.** Upstream merged the same fix on Sept 27 (commit `e38b77d`, PR #379, with its own tests), so the new set will arrive with it already in, which is what the ruling wanted (`../engine/UPSTREAM.md`). Which fork repair upstream still lacks is being checked for his choice of a first PR.
+       - **Dustin's pick, about 9 pm Central Sept 28** (relayed verbatim by Fable): "Send the non-attack damage fix."
+         - His reasons: "it's a rules error with the card text as the argument, so the maintainer doesn't have to trust our simulator to accept it"; "it copies a gate upstream already uses two lines away for Steel Apron and Metal Core Barrier, so it reads as consistency rather than opinion"; and "it touches a card you play", Heavy Helmet in deck 01.
+         - His conditions before the branch goes up:
+           - "Every one of the four cards' text — Heavy Helmet, Harden, Hide, Blocking Shell — quoted from `card.py` in the pull request body, with the phrase 'from attacks' shown";
+           - "the rules reference for Poison, Burn and Bad Dreams damage not being attack damage cited from the project's `rules/` sources rather than asserted";
+           - "one test per card plus one that shows Steel Apron and Metal Core Barrier unchanged, so the diff demonstrably doesn't widen."
+         - "If this one is accepted, the thirteen small missing repairs become a sequence, one at a time, each with the same shape."
+         - The list is in `results/overnight_2026-09-28/README.md`. Nothing is pushed until he clicks Fork.
+     - **B4b and the size rule** (Dustin, Sept 28 about 11:15 pm Central, verbatim via Fable): "On B4b going live tomorrow: if RUN5's line is right that it's reprint-only, the meta doesn't shift and the post-Sept-24 confirmation window stays open, so nothing about the size rule changes — but 'reprint-only' should be confirmed against the card list when it lands, because if it isn't, the window closes tomorrow at an eighth of the data and that becomes a decision."
+       - **Release time** (Dustin, Sept 29, from the app): B4b releases at 8 pm Central on Sept 29. The laptop checks upstream at 9:07 pm that night and again at 9:03 am Sept 30.
+       - **To do when the list lands**: check each B4b card against `lib/card.py` (a reprint is the same name and text as an earlier printing) and record the answer here.
+       - If it isn't reprint-only, nothing is decided here. The consequence goes to Dustin as a decision, with the numbers from `results/postfreeze_2026-09-27/`.
+     - **The B4b release-note defaults** (decided under his delegation by the Fable session and the fourth session, Sept 28):
+       - B1: keep CRLF in `engine/` for this refresh.
+       - B2: the version string is recorded, not changed.
+       - B3: moot; the replay references are the Sept 28 tables.
+       - B5: the 44 Pocket Deck Lab replay segments are not a condition; the full suite and the 14,000-game replays are the standard.
+       - B6: Mega Garchomp ex is its own refresh.
+       - B8: skip the QR catalog until a B4b card fails to scan.
+       - B9 is still his: the merge trial's window.
+   - **The cloud** (Dustin, Sept 28 about 7:30 pm Central, then revised about 7:50 pm, both verbatim via Fable):
+     - First: "each candidate gets one cloud round — build, one review, identity check — before its table, with a second cloud round only after a table has asked a question ... The laptop is free and does the tables."
+     - Revised: "I don't want a weekly cloud cap, but don't want things overlapping unnecessarily. As long as no one is stepping on one another, the cloud gives us two more cores to run/test things."
+     - So there is no cap. The one-round shape is the default order. Before a cloud job starts, its plan names the laptop job it must not duplicate, and the other way round (Fable's practical rule). kt's cloud cross-check (`results/kt_kog_2026-09-28/`) is the one deliberate overlap.
 3. Pilot quality: kd (the defender's Weakness and reductions in the clock) read against kp3 on v2; then, approved by
    Dustin on Sept 25 as optional and only after kd is read, **one Altaria detector network** on an otherwise idle
    laptop night: the Hydreigon recipe (two networks trained against each other, pair checks passed before anything is
@@ -396,7 +454,7 @@ sides with k3 still available; the 0.7.2 wheel and its run identities are untouc
    fixes under the card-agnostic rule, each with a paired A/B and the sentinels (queued classes, Sept 26: Tools and
    turn effects (`kt`); Trainer pricing, shown early by the gauntlet's variation check, where one swapped Trainer moved a
    deck 4 to 7 points on average, Team Rocket's Boss especially (also X Speed played with no retreat after it, 23% of
-   its turns and 52% in Dustin's deck 12, `results/xspeed_census_2026-09-27/`); discard-cost attacks and discard-pile Energy (`kpf`)); B6 done (skill explains under 0.6 of
+   its turns and 52% in Dustin's deck 12, `results/xspeed_census_2026-09-27/`; and, Dustin Sept 28 about 11:15 pm, verbatim via Fable: "Brew 03b's borderline through Goo-zooka at 2.1 percent use is the Trainer-pricing blind spot showing up again, which puts a fourth card on that candidate's list": 95 of 4,445 chances, `results/floor_brews_2026-09-28/`; the draft is `results/trainer_pricing_2026-09-28/`, not registered); discard-cost attacks and discard-pile Energy (`kpf`)); B6 done (skill explains under 0.6 of
    any gap; Sceptile v Vespiquen out of quarantine as drift-sensitive, Altaria v Sceptile in); B7 not now, gated by
    the cloud transfer probe or three card-patch entries in B5's log.
 4. Not doing: policy networks trained on who won as the pilot (one network per mispiloted deck as a blind-spot
@@ -454,6 +512,42 @@ sides with k3 still available; the 0.7.2 wheel and its run identities are untouc
 - **The frame a candidate is read in** (Dustin, Sept 27).
   - A candidate's adoption verdict is read on the cells it was registered on. Changing the frame after the result is what the rules exist to prevent.
   - An "adopted" must also survive the coverage cells it touches: there they count for no harm only. A veto blocks the takeover; a gain is reported, not credited.
+  - **How coverage rows count** (Dustin, Sept 28 about 6:40 pm Central, typed in the Fable session "Recommendations and advice" and relayed verbatim; recorded the same day): "coverage rows count for the mixed-row veto and are reported for accuracy."
+    - The accuracy half needs real cells, and neither Scizor nor a second list has its own. Scizor's nine real lists can't anchor a cell. A second Lucario list shares Lucario's archetype cell with the first, and scoring both against it counts the same real data twice. So for accuracy they are reported, never vetoing.
+    - The own-side half ("no deck's own side plays worse beyond noise in the mixed rows") is simulator-internal and needs no real cell, so it applies to them in full. A candidate that makes Scizor or a second list play its own side worse beyond paired noise has done harm, and that counts: "Coverage decks hurt is exactly the failure mode the gauntlet was added to catch."
+    - So coverage rows (Scizor, the second lists, and B2e's held-out decks) get mixed rows every time, not only after a veto. This supersedes kph amendment 2's two-part tests, and the matching text of kt's amendment 2 (its R6).
+  - **What koh's and kt's readings hinge on** (same message): "No verdict from me without the readings, but what each hinges on is fixed already."
+    - koh: the 45 cells under the standard rule, "no coverage deck hurt, and the Hyper Ray census beside it".
+    - kt: the reserve route, "the 15 percent trigger read first, no-harm with the −1.0 lower bound, no deck hurt", and the real gain.
+    - "If the readings show those, the verdicts write themselves; if they show something else, that's the morning conversation."
+  - **kt's clause (d) gates on Rayquaza, as registered** (Dustin, Sept 28 about 7 pm Central, relayed verbatim by Fable). "A registration written before the games and satisfying the rule outranks a reviewer's paraphrase after it."
+    - Suicune is reported beside. The same direction as Rayquaza is supporting evidence; the other direction is "a finding to write down, not a gate that fired".
+    - Fable's Suicune wording of Sept 28 was a misstatement and is withdrawn. His full words are in `results/kt_tables_2026-09-28/README.md`.
+  - **Accuracy judges only what it can detect** (Dustin, Sept 29 morning, in the laptop session; adopted from the eval-power check, `results/eval_power_2026-09-29/`).
+    - His words: "a candidate whose gain is below the detectable size is not judged adopt or reject on accuracy at all. It's judged on no-harm, the coverage decks, and its behavioural footprint (the census counts — did it chip, did it play the Tool, did Rayquaza attack), and 'not adopted' for a sub-threshold gain is recorded as 'undetectable at this size,' not as a negative. Otherwise the project keeps rejecting fixes it can't measure and calling that rigor."
+    - **The detectable size.** Every ΔMSE reading prints the interval's own sd and the true gain it would detect: half the time (MDE50, 1.96 sd, which is the interval's half-width) and 80% of the time (2.80 sd), each also as real error.
+      - The check found the size is set by the candidate. Big movers like koh are limited by Limitless's thin cells (about 80% of the variance): MDE50 is about 2.1 points of real error, 14.05 → 11.9. Small-footprint candidates are limited by the simulator's deals: MDE50 is about 0.7 points.
+    - **The rule: an accuracy result has three outcomes** (corrected Sept 29 on Astra's catch; Dustin: "it should be written exactly that way"; the first transcription had sent every non-gain to the fallback):
+      1. **Interval wholly on the improvement side** (ΔMSE, new minus current, wholly below zero): demonstrated improvement. The accuracy clause passes.
+      2. **Interval wholly on the worsening side** (wholly above zero): demonstrated worsening. The candidate fails on accuracy "regardless of anything else — no fallback".
+      3. **Interval spanning zero:** "inconclusive at this size". Only this case goes to the fallback, where the verdict rests on four things:
+         - no harm: the τ̂ margin's 90% lower bound at −1.0 or above, and no mixed-row veto that counts;
+         - the coverage decks, by "How coverage rows count";
+         - the pre-named decks: clause (d);
+         - the behavioural footprint.
+         - Passing all four means adopted, "unconfirmed", with confirmation at the post-freeze pull as for a no-harm fix.
+         - Failing any means not adopted, recorded by the test it failed, never as an accuracy negative.
+    - **The footprint counts are diagnostic in the normal route and gating only in the fallback.** Even there they gate only as predictions written before the games, with a threshold attached: "Jasmine played on at least X percent of eligible turns", not "more often".
+    - **Clause (d)'s gain stays required in both routes.** It is the paired, simulator-only test whose noise more deals actually reduce, "so it's the one place a small gain can be shown rather than assumed".
+    - **More deals only where they help.** Where the simulator's share dominates a candidate's cells, the registration may fix more deals in those cells before the tables, on the cloud's spare cores ("cheaply, and only there").
+    - **Scope.** It applies to candidates registered from Sept 29. Past verdicts are relabelled, not re-read:
+      - koh's (−45.1, −100.4 to +10.4) and kt3's (+1.0, −16.7 to +18.9) accuracy intervals both span zero, so both read "inconclusive at this size";
+      - both stay not adopted, on their vetoes and coverage harms;
+      - a new reading needs a new registration.
+  - **The held-out direction, reported beside every verdict** (Dustin, Sept 29 morning): "Report the held-out direction beside every verdict, as proposed, and revisit whether it should gate when the post-freeze data reaches the size rule — at that point it's a real test."
+    - Every verdict prints how B2e's held-out archetypes (pairings 0-47) moved under the candidate: how many moved closer to their Limitless figure and how many further, and the mean change in miss.
+    - It gates nothing. Blocking on "dev up, test flat" would reject at random, since "flat" is the expected reading for any sub-threshold candidate, real ones included.
+    - Revisit when the post-freeze data reaches the size rule ("When post-freeze data is read").
   - Every candidate registered from Sept 27 is registered on the 45 cells, so the split doesn't recur. (koa: the 28 table cells for the verdict; its two new cells, where the panel's Altaria is the opponent, for no harm.)
 - **Composing candidates into one pilot** (Dustin, Sept 27: "two pilots is the drift risk").
   - Candidates that pass separately and touch different things are combined into one pilot through a **composition check**, not a new candidate:

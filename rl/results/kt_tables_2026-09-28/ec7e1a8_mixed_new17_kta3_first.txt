@@ -1,0 +1,49 @@
+bot kta3 (first-named deck) v kog3 (second), 500 table deals per pairing, rules checked against RULES_FOR_AGENTS.md (updated 2026-09-22, rules4)
+pairings from /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/gauntlet_runs_2026-09-26/tsv/new_decks.tsv (25 rows), seed base 21108000000, deck paths relative to /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim
+ rayquaza v lucario   first deck  35.4%   distinct games 500 of 500   games with findings: 0
+      Ability turns (used of offered, by the deck that has it): Dragon's Blessing 809 of 978
+ rayquaza v altaria   first deck  35.8%   distinct games 500 of 500   games with findings: 0
+      Ability turns (used of offered, by the deck that has it): Dragon's Blessing 911 of 1105
+ rayquaza v sceptile  first deck  18.6%   distinct games 500 of 500   games with findings: 0
+      Terminating Tail turns: KO-able used 597 passed 1 | not KO-able used 79 passed 15 (84% used)
+      Ability turns (used of offered, by the deck that has it): Dragon's Blessing 1146 of 1273
+ rayquaza v vespiquen first deck  26.4%   distinct games 500 of 500   games with findings: 0
+      Ability turns (used of offered, by the deck that has it): Dragon's Blessing 1099 of 1233
+      Chase Order choices: discarded 581 of 832 (Combee 134, Shuckle ex 346, Teal Mask Ogerpon ex 101)
+ rayquaza v suicune   first deck  25.2%   distinct games 500 of 500   games with findings: 0
+      Diving Icicles turns: KO-able used 105 passed 0 | not KO-able used 0 passed 0 (0% used)
+      Ability turns (used of offered, by the deck that has it): Dragon's Blessing 1219 of 1301, Ice Maker 1715 of 1932
+ rayquaza v hydreigon first deck  26.2%   distinct games 500 of 500   games with findings: 0
+      Hyper Ray turns: KO-able used 545 passed 16 | not KO-able used 44 passed 248 (15% used)
+      Ability turns (used of offered, by the deck that has it): Dragon's Blessing 976 of 1100, Roar in Unison 905 of 1300
+ rayquaza v weezing   first deck  21.2%   distinct games 500 of 500   games with findings: 0
+      Ability turns (used of offered, by the deck that has it): Boiler Smog 530 of 530, Dragon's Blessing 844 of 929
+ rayquaza v blaziken  first deck  27.5%   distinct games 500 of 500   games with findings: 0
+      Mega Burning turns: KO-able used 814 passed 0 | not KO-able used 329 passed 66 (83% used)
+      Ability turns (used of offered, by the deck that has it): Dragon's Blessing 884 of 1028
+altaria_greninja v lucario   first deck  52.8%   distinct games 500 of 500   games with findings: 0
+      Ability turns (used of offered, by the deck that has it): Water Shuriken 610 of 712
+altaria_greninja v altaria   first deck  39.4%   distinct games 500 of 500   games with findings: 0
+      Ability turns (used of offered, by the deck that has it): Water Shuriken 732 of 841
+altaria_greninja v sceptile  first deck  31.0%   distinct games 500 of 500   games with findings: 0
+      Terminating Tail turns: KO-able used 212 passed 0 | not KO-able used 20 passed 3 (87% used)
+      Ability turns (used of offered, by the deck that has it): Water Shuriken 797 of 868
+altaria_greninja v vespiquen first deck  54.0%   distinct games 500 of 500   games with findings: 0
+      Ability turns (used of offered, by the deck that has it): Water Shuriken 890 of 992
+      Chase Order choices: discarded 270 of 489 (Combee 54, Shuckle ex 163, Teal Mask Ogerpon ex 53)
+altaria_greninja v suicune   first deck  37.4%   distinct games 500 of 500   games with findings: 0
+      Diving Icicles turns: KO-able used 63 passed 0 | not KO-able used 0 passed 0 (0% used)
+      Ability turns (used of offered, by the deck that has it): Ice Maker 1223 of 1397, Water Shuriken 1023 of 1080
+altaria_greninja v hydreigon first deck  39.4%   distinct games 500 of 500   games with findings: 0
+      Hyper Ray turns: KO-able used 390 passed 9 | not KO-able used 1 passed 71 (1% used)
+      Ability turns (used of offered, by the deck that has it): Roar in Unison 665 of 914, Water Shuriken 764 of 839
+altaria_greninja v weezing   first deck  28.6%   distinct games 500 of 500   games with findings: 0
+      Ability turns (used of offered, by the deck that has it): Boiler Smog 467 of 467, Water Shuriken 765 of 835
+altaria_greninja v blaziken  first deck  44.3%   distinct games 500 of 500   games with findings: 0
+      Mega Burning turns: KO-able used 540 passed 5 | not KO-able used 189 passed 18 (91% used)
+      Ability turns (used of offered, by the deck that has it): Water Shuriken 744 of 881
+ rayquaza v altaria_greninja first deck  36.2%   distinct games 500 of 500   games with findings: 0
+      Ability turns (used of offered, by the deck that has it): Dragon's Blessing 910 of 1138, Water Shuriken 1289 of 1467
+
+Findings (occurrences / games affected):
+  none

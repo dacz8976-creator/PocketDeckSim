@@ -1,0 +1,9 @@
+consistency, kpf3: replay 110 wins, SI (262, 254), MB (155, 141) | page 110 wins, SI (262, 254), MB (155, 141) -> equal
+consistency, koh3: replay 116 wins, SI (268, 262), MB (158, 144) | page 116 wins, SI (268, 262), MB (158, 144) -> equal
+
+koh3 minus kpf3, paired over the 200 deals (bootstrap 95%):
+  wins per game                      +0.030  [-0.005, +0.065]
+  Scorching Interruption use rate    +0.008  [+0.000, +0.021]
+  Mega Burst use rate                +0.002  [-0.021, +0.025]
+
+Finding (section 6, reported, gating nothing): Rayquaza's gain is not reached (no interval wholly below zero)

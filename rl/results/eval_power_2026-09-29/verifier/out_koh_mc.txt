@@ -1,0 +1,7 @@
+
+### MONTE CARLO koh3_vs_kog3 (4000 reps)
+  both                       mean  -44.72 sd  28.62 var   819.0  95% pct interval -100.7 to +11.4  (half-width 56.1)
+  sim only                   mean  -44.85 sd  11.85 var   140.5  95% pct interval -68.0 to -21.8  (half-width 23.1)
+  Limitless only (binomial)  mean  -45.05 sd  25.58 var   654.4  95% pct interval -95.5 to +4.8  (half-width 50.2)
+  Limitless only (by event)  mean  -46.32 sd  25.04 var   627.0  95% pct interval -95.3 to +2.9  (59 events, 64 redrawn)
+  (45s)

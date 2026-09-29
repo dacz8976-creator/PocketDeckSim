@@ -1,5 +1,30 @@
 # A3: per-game calibration against the Ladder Log (prepared Sept 26, 2026; no games played yet)
 
+> **Updated Sept 28 (README section 8):** the figures below describe the Sept 26 set of 18 usable games (6-12, 15 pairs,
+> base rate 0.333). Two rulings changed the set: the Charizard Y stand-in is now `h-charizardy_entei`, and the one
+> Weezing game against the TR Magmar build was removed. The set is now **17 usable games, 5-12 (base rate 0.294), 14
+> pairs**, and the base rate's Brier score is 0.208, not 0.222. The power table (computed for 18 games) has not been
+> re-run and would need it at 17 if the calibration is ever run; it is on hold until more games are logged.
+>
+> **Updated again Sept 28 night (README section 9):** the log grew to 55 games and two rows were added here, so the set is
+> now **18 usable games, 5-13 (base rate 0.278), 15 pairs, base-rate Brier 0.201**. The power table still describes the
+> Sept 26 set, not this one.
+>
+> **And again later that night (README section 9):** Dustin admitted Dragonair Mega Rayquaza ex as the panel's eleventh
+> list, which added three rows. The set is now **23 rows with a listed opponent, 20 usable, 7-13 (base rate 0.350), 17
+> pairs, base-rate Brier 0.227.** Section 7's sensitivity run without concessions is not wanted (Dustin, Sept 28).
+>
+> **Current use (Sept 29). The calibration is still on hold and has not been run.** If it is ever run: the pilot is
+> **kog3** on both sides (the working pilot since the Sept 28 engine switch, read from `run_screen.py` and `floor.py`;
+> the runner refuses any other pilot unless `--allow-pilot-mismatch` says it is deliberate), the engine is
+> `rl/engine-2026-09-28/deckgym`, and the set is the 20 usable games in 17 pairs. Everything below that says kp3, the
+> Sept 25 engine, 15 pairs, 18 games or the power table is **the Sept 26 plan, kept as history**; "What the laptop has
+> to run" has been brought up to date. `run_calibration.py` and `calibrate.py` were made safe to resume on Sept 29
+> (`test_calibration_safety.py`): a resume reuses a finished pair only after the engine, both deck files, both pilots,
+> the game count and the seeds are checked against the new run, and the scorer refuses duplicate, overlapping or
+> mixed-run rows and files without provenance unless `--accept-unverified` is given. Tests run in WSL, from this folder:
+> `python3 -B -m unittest -v test_calibration_safety`.
+
 **The question.** When Dustin sits down with one of his lists against a deck the simulator has a
 list for, does the simulator's win chance for that exact pair tell us anything about whether he
 wins? The honest comparison is against the base rate: Dustin's own win rate over the same games,
@@ -10,8 +35,9 @@ which is what he would know without any simulator.
 | File | What it is |
 |---|---|
 | `calibration_games.csv` | One row per logged game whose opponent has a list file: 19 rows, 18 usable. Built from `ladder_mapping.csv` and the Ladder Log artifact (collection `logs`, read Sept 26; the Sept 24 CSV copy agrees on all 33 games). |
-| `run_calibration.py` | Plays the 15 pairs on the official engine (WSL or the cloud) and writes `sim_results.csv`. |
-| `calibrate.py` | Joins `sim_results.csv` to `calibration_games.csv` and prints the scores. Windows or Linux python 3, no extra packages. |
+| `run_calibration.py` | Plays every usable pair (17 now; 15 in the Sept 26 plan) on the official engine (WSL or the cloud) and writes `sim_results.csv`: one row per pair, with the engine and both files' hashes, both pilots, game counts and seeds. `--resume` continues a stopped run only after checking all of that (Sept 29). |
+| `calibrate.py` | Joins `sim_results.csv` to `calibration_games.csv` and prints the scores. Windows or Linux python 3, no extra packages. Refuses duplicate, overlapping or mixed-run rows; rows without provenance count as unverified and need `--accept-unverified` (Sept 29). |
+| `test_calibration_safety.py` | 168 tests of the two scripts on invented data; no engine is started. Run in WSL (Linux only), from this folder: `python3 -B -m unittest -v test_calibration_safety`. |
 | `build_calibration_games.py` | Rebuilds `calibration_games.csv` when the log or the mapping grows. |
 
 ## The games
@@ -69,32 +95,46 @@ Dustin's record on the 18: **6-12** (base rate 0.333). They fall into **15 pairs
 
 ## What the laptop has to run
 
-Not tonight: a training run holds the laptop. Everything below is a WSL command from the repo root.
+On hold (Sept 29): nothing here has been run. Brought up to date on Sept 29; the figures the Sept 26 plan used are noted as such.
+Everything below is a WSL command from the repo root.
 
 ```bash
 cd '/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim'
-python3 decks/screen/panel_ladder_2026-09-26/run_calibration.py --pairs-only     # lists the 15 pairs and their seeds, plays nothing
-python3 decks/screen/panel_ladder_2026-09-26/run_calibration.py                  # the run: 15 pairs x 500 games, kp3 both sides
+python3 decks/screen/panel_ladder_2026-09-26/run_calibration.py --pairs-only     # lists the 17 pairs and their seeds; starts no engine, writes nothing
+python3 decks/screen/panel_ladder_2026-09-26/run_calibration.py                  # the run: 17 pairs x 500 games, kog3 both sides
+python3 decks/screen/panel_ladder_2026-09-26/run_calibration.py --resume         # after a stop: the same command plus --resume
 ```
 
-- **Engine:** the manifest's available release, `rl/engine-2026-09-25/deckgym` (sha256
-  f4d235e5…), resolved and hash-checked by `current_engine.py` exactly as `run_screen.py` does.
-- **Pilots:** kp3 on Dustin's deck and kp3 on the opponent, the plan's pilot on both sides.
-  `--pilot`/`--meta-pilot` change that (a k3 row for comparison would be a separate `--out`).
-- **Games:** 500 per pair, 250 with Dustin's deck in slot 0 and 250 in slot 1, `--seed-stream`.
-  At 500 games the sim's own chance has a standard error of about ±2 points, well under anything
-  18 ladder games can resolve; fewer (200) would also do.
+- **Engine:** the manifest's available release, `rl/engine-2026-09-28/deckgym`, resolved and hash-checked by
+  `current_engine.py` exactly as `run_screen.py` does. (The Sept 26 plan named `rl/engine-2026-09-25/deckgym`.)
+  Every row records the engine's hash, and a resume with a different engine is refused.
+- **Pilots:** kog3 on Dustin's deck and kog3 on the opponent, read from `run_screen.py` and `floor.py`. The runner
+  prints what it found and **refuses any other pilot** (`--pilot`/`--meta-pilot`) unless `--allow-pilot-mismatch` is
+  given; a kp3 run to reproduce the Sept 26 plan needs that flag and its own `--out`. (The Sept 26 plan was kp3.)
+- **Games:** 500 per pair, 250 with Dustin's deck in slot 0 and 250 in slot 1, `--seed-stream`. A slot may play at
+  most 5,000 games (10,000 a pair) and a run at most 20 pairs; larger requests are refused before any game, because
+  their seeds would run into the next slot, the next pair or another registered block. At 500 games the sim's own
+  chance has a standard error of about ±2 points, well under anything the ladder games can resolve; fewer (200) would
+  also do.
 - **Seeds:** pair *i* (0-based, in the printed order) uses 21,107,000,000 + *i* × 10,000 + *g* for
-  slot 0 and + 5,000 + *g* for slot 1, so the run uses 21,107,000,000 to 21,107,149,999. **Reserve
-  21,107,000,000 – 21,107,199,999 for this in START_HERE's seed table** when this is wired in.
-  It sits above the B2e block (21,106,000,000+, its smokes at 21,106,999,000) and below the
-  cloud's 22,000,000,000+; tonight's smokes used 21,107,990,000/995,000 (this runner) and
-  21,107,999,000 (the two list smokes), all outside the reserved range.
-- **Time:** the 2-game smoke took 3.9 s with the training run loading the laptop, so about 2 s a
-  game: roughly 4 hours for 7,500 games under that load, less on an idle laptop. The output is
-  appended one pair at a time, so a stopped run keeps what it finished; `--resume` continues it.
-- **Output:** `sim_results.csv` next to this file, columns `deck_file, opponent_file, pilot,
-  games, wins, draws, seat` plus the per-slot counts, seeds, engine path and hash, and seconds.
+  slot 0 and + 5,000 + *g* for slot 1, so 17 pairs use 21,107,000,000 to 21,107,169,999 (15 pairs, the Sept 26
+  plan, ended at 21,107,149,999). **Reserve 21,107,000,000 – 21,107,199,999 for this in START_HERE's seed table**
+  when this is wired in. It sits above the B2e block (21,106,000,000+, its smokes at 21,106,999,000) and below the
+  cloud's 22,000,000,000+; the Sept 26 smokes used 21,107,990,000/995,000 (this runner) and 21,107,999,000 (the two
+  list smokes), all outside the reserved range. A `--seed` block that overlaps part of the reserved one is refused; a
+  disjoint one is allowed and announced (it must be in START_HERE's seed table).
+- **Time:** the Sept 26 2-game smoke (old engine and pilot, laptop loaded by a training run) took 3.9 s, about 2 s a
+  game: roughly 4 hours for 8,500 games under that load, less on an idle laptop. Not re-measured with kog3. The output
+  is appended one pair at a time, so a stopped run keeps what it finished.
+- **Output and resume:** `sim_results.csv` next to this file, columns `deck_file, opponent_file, pilot, games, wins,
+  draws, seat` plus the per-slot counts, seeds, both pilots, engine path and hash, seconds, a schema marker and the
+  hashes of the deck and opponent files. Nothing is appended to a file that already holds rows unless `--resume` is
+  given. `--resume` reuses a finished pair only after the engine hash, both files' contents, both pilots, the game
+  count and the seeds match the new run; any difference (or a duplicated, overlapping or unknown-header row, or a file
+  that does not end with a newline) stops it before any engine call, listing every problem. **`--resume` on a missing,
+  empty or header-only file is refused** (a mistyped `--out` would otherwise replay every pair); to start fresh, leave
+  out `--resume`. Rows from older files without this provenance are reused only with `--accept-unverified-resume`,
+  and are then named as unverified.
 
 Then, on Windows or in WSL:
 
