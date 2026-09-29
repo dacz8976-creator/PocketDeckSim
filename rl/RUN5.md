@@ -400,6 +400,9 @@ sides with k3 still available; the 0.7.2 wheel and its run identities are untouc
            - "one test per card plus one that shows Steel Apron and Metal Core Barrier unchanged, so the diff demonstrably doesn't widen."
          - "If this one is accepted, the thirteen small missing repairs become a sequence, one at a time, each with the same shape."
          - The list is in `results/overnight_2026-09-28/README.md`. Nothing is pushed until he clicks Fork.
+     - **B4b and the size rule** (Dustin, Sept 28 about 11:15 pm Central, verbatim via Fable): "On B4b going live tomorrow: if RUN5's line is right that it's reprint-only, the meta doesn't shift and the post-Sept-24 confirmation window stays open, so nothing about the size rule changes — but 'reprint-only' should be confirmed against the card list when it lands, because if it isn't, the window closes tomorrow at an eighth of the data and that becomes a decision."
+       - **To do when the list lands** (Fable checks upstream at 9 am Central Sept 29): check each B4b card against `lib/card.py` (a reprint is the same name and text as an earlier printing) and record the answer here.
+       - If it isn't reprint-only, nothing is decided here. The consequence goes to Dustin as a decision, with the numbers from `results/postfreeze_2026-09-27/`.
      - **The B4b release-note defaults** (decided under his delegation by the Fable session and the fourth session, Sept 28):
        - B1: keep CRLF in `engine/` for this refresh.
        - B2: the version string is recorded, not changed.
@@ -428,7 +431,7 @@ sides with k3 still available; the 0.7.2 wheel and its run identities are untouc
    fixes under the card-agnostic rule, each with a paired A/B and the sentinels (queued classes, Sept 26: Tools and
    turn effects (`kt`); Trainer pricing, shown early by the gauntlet's variation check, where one swapped Trainer moved a
    deck 4 to 7 points on average, Team Rocket's Boss especially (also X Speed played with no retreat after it, 23% of
-   its turns and 52% in Dustin's deck 12, `results/xspeed_census_2026-09-27/`); discard-cost attacks and discard-pile Energy (`kpf`)); B6 done (skill explains under 0.6 of
+   its turns and 52% in Dustin's deck 12, `results/xspeed_census_2026-09-27/`; and, Dustin Sept 28 about 11:15 pm, verbatim via Fable: "Brew 03b's borderline through Goo-zooka at 2.1 percent use is the Trainer-pricing blind spot showing up again, which puts a fourth card on that candidate's list": 95 of 4,445 chances, `results/floor_brews_2026-09-28/`; the draft is `results/trainer_pricing_2026-09-28/`, not registered); discard-cost attacks and discard-pile Energy (`kpf`)); B6 done (skill explains under 0.6 of
    any gap; Sceptile v Vespiquen out of quarantine as drift-sensitive, Altaria v Sceptile in); B7 not now, gated by
    the cloud transfer probe or three card-patch entries in B5's log.
 4. Not doing: policy networks trained on who won as the pilot (one network per mispiloted deck as a blind-spot
