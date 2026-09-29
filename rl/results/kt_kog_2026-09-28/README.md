@@ -59,7 +59,16 @@ Everything runs from this build's own programs, 4 threads. The official program 
   - **Identity:** 8 of 8 checks pass, with every game equal and a clean rule check (`identity/identity_check.txt`).
   - **The four tables on the 45 cells:** kt3, kta3, ktb3 and ktc3, each 14,000 + 8,500 games, with no rule findings on any scan page.
   - A container restart at about 04:00 UTC cost only the run in progress, kt3's new cells. It was rerun from the start with the same program and calls (`STATUS.txt`, "RESUMED").
-- **The comparison with the laptop's games isn't possible yet.** Main (6368a96) holds the laptop's kt records (identity, the footprint, timing, scripts) but not its per-game files. So no game-by-game comparison was made, and nothing of the laptop's reading was used here.
-  - If the laptop commits its `ec7e1a8_*` game files, the comparison is one run of `identity.py` per file. It compares moves, choices, openings, winner, points and seed; it reads no result.
+- **The comparison with the laptop's games (Sept 29 morning): all eight files match.** The laptop's game files arrived on main at 87a68d4. Each of the cloud's eight table files was compared with the laptop's file for the same code and cells, game by game on moves, winner, points and seed, keyed by pairing and deal. The only things counted were equal fields and matching keys; no result was read.
+
+  | code | 28 table cells | 17 new cells |
+  |---|---|---|
+  | kt3 | 14,000 of 14,000 match | 8,500 of 8,500 match |
+  | kta3 | 14,000 of 14,000 match | 8,500 of 8,500 match |
+  | ktb3 | 14,000 of 14,000 match | 8,500 of 8,500 match |
+  | ktc3 | 14,000 of 14,000 match | 8,500 of 8,500 match |
+
+  - The same games are present in both, with the same code on both sides.
+  - So the two builds of ec7e1a8 (cloud: scan e19703b1…; laptop: its own build) play kt's games identically. There is no finding.
 - **One agreement that needs no reading:** the laptop's identity replays at ec7e1a8 (main 0fe3d7f) and these match the same reference files game for game. So the two builds of ec7e1a8 play those bots identically.
-- **Nothing here was read, scored or chosen.** The cloud is idle on kt.
+- **Nothing here was read, scored or chosen.** The cross-check is finished, and the cloud is idle on kt.
