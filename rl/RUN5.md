@@ -418,7 +418,8 @@ sides with k3 still available; the 0.7.2 wheel and its run identities are untouc
          - "If this one is accepted, the thirteen small missing repairs become a sequence, one at a time, each with the same shape."
          - The list is in `results/overnight_2026-09-28/README.md`. Nothing is pushed until he clicks Fork.
      - **B4b and the size rule** (Dustin, Sept 28 about 11:15 pm Central, verbatim via Fable): "On B4b going live tomorrow: if RUN5's line is right that it's reprint-only, the meta doesn't shift and the post-Sept-24 confirmation window stays open, so nothing about the size rule changes — but 'reprint-only' should be confirmed against the card list when it lands, because if it isn't, the window closes tomorrow at an eighth of the data and that becomes a decision."
-       - **To do when the list lands** (Fable checks upstream at 9 am Central Sept 29): check each B4b card against `lib/card.py` (a reprint is the same name and text as an earlier printing) and record the answer here.
+       - **Release time** (Dustin, Sept 29, from the app): B4b releases at 8 pm Central on Sept 29. The laptop checks upstream at 9:07 pm that night and again at 9:03 am Sept 30.
+       - **To do when the list lands**: check each B4b card against `lib/card.py` (a reprint is the same name and text as an earlier printing) and record the answer here.
        - If it isn't reprint-only, nothing is decided here. The consequence goes to Dustin as a decision, with the numbers from `results/postfreeze_2026-09-27/`.
      - **The B4b release-note defaults** (decided under his delegation by the Fable session and the fourth session, Sept 28):
        - B1: keep CRLF in `engine/` for this refresh.
