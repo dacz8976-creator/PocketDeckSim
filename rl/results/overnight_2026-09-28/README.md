@@ -56,6 +56,12 @@ Kept by the laptop session ("Project familiarization"). **Since about 11:30 pm C
 
 ## What happened
 
+- **The Pocket Shot List has eight new test requests** (your 11:40 pm OK). They were drafted and checked by Sonnet agents: every card text against card.py, every "what the simulator does" claim against the engine code.
+  - High: Greninja's Water Shuriken on a Heavy Helmet holder, for the pull request.
+  - Medium: Glimmora's coin when Poison knocks it out; a second Poison on a Severely Poisoned Pokémon (40 or back to 10; brews 03a and 03b).
+  - Low: Harden or Hide against Water Shuriken; Eevee's Boosted Evolution; Lum Berry against Bad Dreams; who promotes first after a double knockout; Mimikyu ex's Disguise against Sing.
+  - Your Heavy Helmet + Poison test is on the list as captured.
+
 - **koh's coverage is complete, and it stays not adopted** (05:10 UTC). Its mixed rows show the Hoopa / Absol drop is koh's own play: it plays Hoopa's side 10.4 points worse on the held-out list (a veto), and 5.1 worse on your Hoopa file. Whimsicott is a small veto too (−2.0).
   - kog, the pilot your screen uses, isn't affected, so brew 07's 61.3% stands.
   - Why R′ hurts Hoopa this much isn't diagnosed. It's a lead for any later version of that fix.
