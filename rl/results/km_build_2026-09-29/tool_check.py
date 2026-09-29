@@ -73,9 +73,11 @@ if mode == "trace":
         for card in CARDS:
             if card in names.split("|"):
                 offered[game + (card,)].add(int(turn))
-            if chosen.startswith("Play {") and f'name: "{card}"' in chosen:
+            # The trace prints a Trainer as "<set> <number> <name>": Play { trainer_card: B2 153 Training Area }.
+            plays = chosen.startswith("Play { trainer_card: ") and chosen.endswith(f" {card} }}")
+            if plays:
                 played[game + (card,)].add(int(turn))
-            if card in names.split("|") or f'name: "{card}"' in chosen:
+            if card in names.split("|") or plays:
                 lines[game[:3] + (card,)].append(f"    seat {seat} turn {turn}: offered [{names}]; chose {chosen[:90]}")
     rows = [json.loads(l) for l in open(rows_path, encoding="utf-8")]
     bad, shown, played_games = [], set(), defaultdict(int)

@@ -1,2 +1,5 @@
 item 6: kog3 at the km build, pairings 0 and 2, 40 deals, v table_kog3: 80 of 80 games equal on moves, decisions, openings, winner_seat, points, seed, first_seat (run has 80; missing 0, differing 0); clean; PASS
 item 7: km3 smoke, pairings 0 and 2, 40 deals: 80 games in 2 cells, complete; clean; PASS (no reference: results not read)
+tool test 3: traced games, kp3, Altaria v Lucario, seeds 20,000,920,000-019: 20 traced games, 40 seats: the tool's offered and played turns for Arena of Antiquity and Training Area equal the trace's recount in 64 of 80 seat-cards (differing 16); games where each is played: Arena of Antiquity 0, Training Area 0; FAIL
+(identity_check.txt's FAIL line for tool test 3 above is the check script's error: see tool_check.txt; rerun below)
+tool test 3: traced games, kp3, Altaria v Lucario, seeds 20,000,920,000-019: 20 traced games, 40 seats: the tool's offered and played turns for Arena of Antiquity and Training Area equal the trace's recount in 80 of 80 seat-cards (differing 0); games where each is played: Arena of Antiquity 7, Training Area 9; PASS

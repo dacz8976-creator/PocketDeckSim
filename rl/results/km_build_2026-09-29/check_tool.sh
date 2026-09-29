@@ -21,7 +21,9 @@ cmp -s <(git -C "$R" show 816fd9c:rl/results/tool_turn_effect_census_2026-09-25/
 note "tool: source sha256 $(sha256sum "$E/examples/tool_census.rs" | cut -c1-64); program sha256 $(sha256sum "$NEW" | cut -c1-64) (built in a scratch copy of $BUILD's engine/); the old tool (816fd9c's source, sha256 $(sha256sum "$E/examples/tool_census_old.rs" | cut -c1-64)) program sha256 $(sha256sum "$OLD" | cut -c1-64)"
 run() { ( cd "$R/engine" && RAYON_NUM_THREADS=$T "$@" ); }
 
+FROM=${1:-1}  # the first test to run (tests before it are already recorded as passed in STATUS.txt)
 # Test 1: at the old base and lists, the new tool reproduces the old tool's output exactly (stdout, stderr, games-out).
+if [ "$FROM" -le 2 ]; then
 run "$OLD" --games 20 --bot kp3 --games-out "$W/old_games.jsonl" > "$W/old_stdout.txt" 2> "$W/old_stderr.txt"
 run "$NEW" --games 20 --bot kp3 --games-out "$W/new_games.jsonl" > "$W/new_stdout.txt" 2> "$W/new_stderr.txt"
 for f in games.jsonl stdout.txt stderr.txt; do cmp "$W/old_$f" "$W/new_$f" || die "test 1: $f differs"; done
@@ -41,6 +43,7 @@ for r, g in zip(rows, games):
     assert r["first_seat"] == r["i"] % 2 and r["seat_decks"] == ([r["a"], r["b"]] if r["i"] % 2 == 0 else [r["b"], r["a"]])
 EOF
 note "tool test 2 PASS: the same 560 games with --seed-base 72000000 and --rows-out: games-out byte-identical, the same card table, every row's fingerprint, seed and seats equal games-out's"
+fi
 
 # Test 3: traced games on diagnostic seeds (20,000,900,000 + pairing 2 x 10,000 + i, i < 20; Altaria v Lucario, the
 # lists carrying Training Area and Arena of Antiquity; kp3 both sides): the rows' offered and played counts for the
