@@ -354,7 +354,15 @@ sides with k3 still available; the 0.7.2 wheel and its run identities are untouc
       - τ margin +0.21 (90% interval +0.06 to +0.31), real error 14.0 → 13.8;
       - Rayquaza's (d) +1.00 ± 0.39;
       - no harm anywhere.
-    - The registration's fixed outcome, "kt3 fails: nothing adopted ... the next candidate is registered afresh", decides. Whether to register kta afresh is Dustin's call.
+    - The registration's fixed outcome, "kt3 fails: nothing adopted ... the next candidate is registered afresh", decides.
+    - **Dustin, Sept 29 morning:** "honoring a registered 'not adopted' while an encouraging sub-result sits right there is the process doing its job."
+      - **"kta alone, kog stays."** Register kta as switch 1 alone, on kog, with the same clause (d) gate as before: Rayquaza per the registration, with Skarmory as the motivating deck and Suicune reported.
+      - "The +8.5 on your Skarmory deck is real simulator evidence and it should be in the registration as the reason the candidate exists; it isn't the gate." (The A/B: deck 07, kta3 v kog3, +8.5, 95% interval +6.7 to +10.4.)
+      - **km:** "Goo-zooka's switch separate from km" (D1: option A). "Two switches that could each be adopted or dropped alone get two decisions, and a candidate is never adopted because its other half improved a different deck." "Goo-zooka being played more often is a footprint, not a gain."
+      - "**2,000 deals for clause (d)'s Lucario rows, fixed before play**" (D2). Clause (d) is paired and simulator-only, so its noise is all simulator noise, and quadrupling the deals halves it. The scoreboard cells are the opposite case, so no reason to enlarge every cell.
+      - **Two additions to readings (columns, not rules):**
+        - the reading says which condition carried the verdict. "No harm with almost no changed games" is the reserve route working as designed, but it says little. The informative parts are the gain on the pre-named decks and the footprint.
+        - a per-cell breakdown beside a pooled gain, "so a gain that is really one cell is visible as one cell".
   - kph is not run (superseded by koh on the composed base).
 - **Waiting on post-freeze data:** kpg's confirmation, koa's no-harm re-check and kog's own row (`results/postfreeze_2026-09-27/README.md`). Read once, at 804 + 303 matches (about mid-October) or at the last pull before Mega Garchomp ex.
 - **Holds:** deck ranking stays on hold (14.0 against 5.5; the ladder-weighted panel and calibration are unfinished). The floor check may be used under the A2 decision. The quick screen's ranking is on hold.
@@ -509,6 +517,28 @@ sides with k3 still available; the 0.7.2 wheel and its run identities are untouc
   - **kt's clause (d) gates on Rayquaza, as registered** (Dustin, Sept 28 about 7 pm Central, relayed verbatim by Fable). "A registration written before the games and satisfying the rule outranks a reviewer's paraphrase after it."
     - Suicune is reported beside. The same direction as Rayquaza is supporting evidence; the other direction is "a finding to write down, not a gate that fired".
     - Fable's Suicune wording of Sept 28 was a misstatement and is withdrawn. His full words are in `results/kt_tables_2026-09-28/README.md`.
+  - **Accuracy judges only what it can detect** (Dustin, Sept 29 morning, in the laptop session; adopted from the eval-power check, `results/eval_power_2026-09-29/`).
+    - His words: "a candidate whose gain is below the detectable size is not judged adopt or reject on accuracy at all. It's judged on no-harm, the coverage decks, and its behavioural footprint (the census counts — did it chip, did it play the Tool, did Rayquaza attack), and 'not adopted' for a sub-threshold gain is recorded as 'undetectable at this size,' not as a negative. Otherwise the project keeps rejecting fixes it can't measure and calling that rigor."
+    - **The detectable size.** Every ΔMSE reading prints the interval's own sd and the true gain it would detect: half the time (MDE50, 1.96 sd, which is the interval's half-width) and 80% of the time (2.80 sd), each also as real error.
+      - A gain below the detectable size is exactly an interval that crosses zero, since the point estimate is then smaller than the half-width.
+      - The check found the size is set by the candidate. Big movers like koh are limited by Limitless's thin cells (about 80% of the variance): MDE50 is about 2.1 points of real error, 14.05 → 11.9. Small-footprint candidates are limited by the simulator's deals: MDE50 is about 0.7 points.
+    - **The rule.** When the ΔMSE interval isn't wholly below zero, accuracy is not judged either way. The result reads "undetectable at this size". The candidate is then judged on three things:
+      1. no harm: the τ̂ margin's 90% lower bound at −1.0 or above, and no mixed-row veto that counts;
+      2. the coverage decks, by "How coverage rows count";
+      3. its behavioural footprint: the mechanism counters its registration named move the way it predicted (did it chip, did it play the Tool, did Rayquaza attack).
+      - Passing all three means adopted, "unconfirmed", with confirmation at the post-freeze pull as for a no-harm fix.
+      - Failing any means not adopted, recorded by the test it failed (harm, coverage, or mechanism), never as an accuracy negative.
+      - A gain whose interval is wholly below zero is read as before.
+    - **More deals only where they help.** Where the simulator's share dominates a candidate's cells, the registration may fix more deals in those cells before the tables, on the cloud's spare cores ("cheaply, and only there").
+    - **Scope.** It applies to candidates registered from Sept 29. Past verdicts are relabelled, not re-read:
+      - koh's and kt3's accuracy results read "undetectable at this size";
+      - both stay not adopted, on their vetoes and coverage harms;
+      - a new reading needs a new registration.
+    - The operational wording above (the MDE50 equivalence; "passing all three means adopted, unconfirmed") is the laptop's reading of his rule, and his to correct.
+  - **The held-out direction, reported beside every verdict** (Dustin, Sept 29 morning): "Report the held-out direction beside every verdict, as proposed, and revisit whether it should gate when the post-freeze data reaches the size rule — at that point it's a real test."
+    - Every verdict prints how B2e's held-out archetypes (pairings 0-47) moved under the candidate: how many moved closer to their Limitless figure and how many further, and the mean change in miss.
+    - It gates nothing. Blocking on "dev up, test flat" would reject at random, since "flat" is the expected reading for any sub-threshold candidate, real ones included.
+    - Revisit when the post-freeze data reaches the size rule ("When post-freeze data is read").
   - Every candidate registered from Sept 27 is registered on the 45 cells, so the split doesn't recur. (koa: the 28 table cells for the verdict; its two new cells, where the panel's Altaria is the opponent, for no harm.)
 - **Composing candidates into one pilot** (Dustin, Sept 27: "two pilots is the drift risk").
   - Candidates that pass separately and touch different things are combined into one pilot through a **composition check**, not a new candidate:

@@ -1,0 +1,66 @@
+kt Dustin-deck A/B, kt build ec7e1a8; files /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/kt_tables_2026-09-28/ec7e1a8_ab_d<deck>_<arm>.jsonl
+Deck win rate by arm. Differences are paired with kog3's games on the same deals (same seed, same seat), kog3 on the opponent's seat in every arm. A draw is not a win.
+
+== Deck 07: against the 8 panel lists (kog3 on the lists)
+arm    games  wins win rate   paired vs kog3 (95% interval)            McNemar p  arm-only / kog3-only  moves differ
+kog3    1920   910    47.4%   (comparator)
+kt3     1920  1048    54.6%   +7.2 points (+5.2 to +9.2)                   0.000           263 / 125         95.3%
+kta3    1920  1074    55.9%   +8.5 points (+6.7 to +10.4)                  0.000            258 / 94         83.5%
+
+Jasmine and the damage-cut Tools (turns the deck could play the card / turns it did; where each Tool was attached):
+    kog3   Jasmine: offered 8597 turns, played 36 (0.4%)
+    kt3    Jasmine: offered 5675 turns, played 1632 (28.8%)
+    kta3   Jasmine: offered 5669 turns, played 1711 (30.2%)
+    kog3   Metal Core Barrier: offered 3060 turns, played 2401 (78.5%); attached 2407: on a qualifying holder 1918 (80%), on the Active 2396, qualifying and Active 1915
+    kt3    Metal Core Barrier: offered 5749 turns, played 1694 (29.5%); attached 1709: on a qualifying holder 1651 (97%), on the Active 1636, qualifying and Active 1621
+    kta3   Metal Core Barrier: offered 3760 turns, played 2345 (62.4%); attached 2353: on a qualifying holder 1850 (79%), on the Active 2330, qualifying and Active 1840
+    kog3   Steel Apron: offered 1825 turns, played 1292 (70.8%); attached 1292: on a qualifying holder 1087 (84%), on the Active 1284, qualifying and Active 1083
+    kt3    Steel Apron: offered 2370 turns, played 1032 (43.5%); attached 1032: on a qualifying holder 1029 (100%), on the Active 634, qualifying and Active 632
+    kta3   Steel Apron: offered 1552 turns, played 1314 (84.7%); attached 1314: on a qualifying holder 1226 (93%), on the Active 1112, qualifying and Active 1025
+
+== Deck 05: against the 8 panel lists (kog3 on the lists)
+arm    games  wins win rate   paired vs kog3 (95% interval)            McNemar p  arm-only / kog3-only  moves differ
+kog3    1920   526    27.4%   (comparator)
+kt3     1920   529    27.6%   +0.2 points (-1.4 to +1.7)                   0.893           111 / 108         82.0%
+kta3    1920   560    29.2%   +1.8 points (+0.9 to +2.6)                   0.000             51 / 17         20.1%
+
+Jasmine and the damage-cut Tools (turns the deck could play the card / turns it did; where each Tool was attached):
+    (this deck plays none of them)
+
+== Deck 11: against the 8 panel lists (kog3 on the lists)
+arm    games  wins win rate   paired vs kog3 (95% interval)            McNemar p  arm-only / kog3-only  moves differ
+kog3    1920   315    16.4%   [1 draws] (comparator)
+kt3     1920   319    16.6%   [1 draws] +0.2 points (-0.0 to +0.5)                   0.219               5 / 1          2.8%
+kta3    1920   316    16.5%   [1 draws] +0.1 points (-0.0 to +0.2)                   1.000               1 / 0          0.3%
+
+Jasmine and the damage-cut Tools (turns the deck could play the card / turns it did; where each Tool was attached):
+    (this deck plays none of them)
+
+== Deck 01: against the 8 panel lists (kog3 on the lists)
+arm    games  wins win rate   paired vs kog3 (95% interval)            McNemar p  arm-only / kog3-only  moves differ
+kog3    1920   309    16.1%   [2 draws] (comparator)
+kt3     1920   307    16.0%   [2 draws] -0.1 points (-1.4 to +1.2)                   0.935             75 / 77         78.5%
+kta3    1920   305    15.9%   [2 draws] -0.2 points (-1.2 to +0.8)                   0.752             43 / 47         44.4%
+
+Jasmine and the damage-cut Tools (turns the deck could play the card / turns it did; where each Tool was attached):
+    kog3   Heavy Helmet: offered 1865 turns, played 1616 (86.6%); attached 1616: on a qualifying holder 763 (47%), on the Active 1604, qualifying and Active 760
+    kt3    Heavy Helmet: offered 2961 turns, played 1296 (43.8%); attached 1296: on a qualifying holder 1205 (93%), on the Active 590, qualifying and Active 560
+    kta3   Heavy Helmet: offered 1808 turns, played 1630 (90.2%); attached 1630: on a qualifying holder 1096 (67%), on the Active 1194, qualifying and Active 680
+
+== Deck 03: against the 8 panel lists (kog3 on the lists)
+arm    games  wins win rate   paired vs kog3 (95% interval)            McNemar p  arm-only / kog3-only  moves differ
+kog3    1920  1169    60.9%   [34 draws] (comparator)
+kt3     1920  1128    58.8%   [25 draws] -2.1 points (-3.9 to -0.4)                   0.019           126 / 167         87.6%
+kta3    1920  1182    61.6%   [31 draws] +0.7 points (-0.7 to +2.1)                   0.372             97 / 84         64.6%
+
+Jasmine and the damage-cut Tools (turns the deck could play the card / turns it did; where each Tool was attached):
+    kog3   Heavy Helmet: offered 4316 turns, played 2964 (68.7%); attached 2967: on a qualifying holder 2217 (75%), on the Active 2850, qualifying and Active 2195
+    kt3    Heavy Helmet: offered 5655 turns, played 2434 (43.0%); attached 2500: on a qualifying holder 2434 (97%), on the Active 1491, qualifying and Active 1476
+    kta3   Heavy Helmet: offered 3986 turns, played 2925 (73.4%); attached 3006: on a qualifying holder 2499 (83%), on the Active 2252, qualifying and Active 1848
+
+== All decks together (paired over every game)
+  kog3    9600 games,  3229 wins (33.6%), 37 draws
+  kt3     9600 games,  3331 wins (34.7%), 28 draws; vs kog3 +1.1 points (+0.4 to +1.7), McNemar p 0.002, moves differ 69.2%
+  kta3    9600 games,  3437 wins (35.8%), 34 draws; vs kog3 +2.2 points (+1.6 to +2.7), McNemar p 0.000, moves differ 42.6%
+
+For scale (registration): the flat +10 took Jasmine to 82.4% of the turns she was offered on the 240-seed causal block; the deck-seat-only Jasmine pricing gave +5.7 points on a separate fresh 1,920-game block.
