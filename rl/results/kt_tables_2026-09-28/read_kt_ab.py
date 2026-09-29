@@ -33,9 +33,15 @@ def mcnemar_exact(b, c):
     return min(1.0, 2 * tail)
 
 
+EXPECT = None  # games per deck and arm (8 x games per matchup); set by --expect, asserted on every file read
+
+
 def load(path):
     rows = [json.loads(l) for l in open(path, encoding="utf-8") if l.strip()]
-    return {(r["opp"], r["seat"], r["seed"]): r for r in rows}
+    d = {(r["opp"], r["seat"], r["seed"]): r for r in rows}
+    assert len(d) == len(rows), f"{path}: {len(rows) - len(d)} duplicate deals"
+    assert EXPECT is None or len(d) == EXPECT, f"{path}: {len(d)} games, not {EXPECT}: incomplete, not read"
+    return d
 
 
 def paired(base, arm):
@@ -98,7 +104,8 @@ def deck_report(deck, arms, files, by_opp, out):
             out.append(f"{a:6} not run yet")
             continue
         d = loaded[a]
-        line = f"{a:6} {len(d):5d} {wins_of(d):5d} {pct(wins_of(d) / len(d)):>8}   "
+        draws = sum(bool(r.get("draw")) for r in d.values())
+        line = f"{a:6} {len(d):5d} {wins_of(d):5d} {pct(wins_of(d) / len(d)):>8}   " + (f"[{draws} draws] " if draws else "")
         if a == base_arm:
             line += "(comparator)"
         elif base is None:
@@ -147,7 +154,10 @@ def main():
     ap.add_argument("--decks", default="07,05,11,01,03")
     ap.add_argument("--arms", default="kog3,kt3,kta3", help="comparator first")
     ap.add_argument("--by-opponent", action="store_true")
+    ap.add_argument("--expect", type=int, default=1920, help="games per deck and arm (8 x games per matchup); 0 skips")
     a = ap.parse_args()
+    global EXPECT
+    EXPECT = a.expect or None
     arms, decks = a.arms.split(","), a.decks.split(",")
     out = [f"kt Dustin-deck A/B, kt build {a.build}; files {a.dir}/{a.build}_ab_d<deck>_<arm>.jsonl",
            "Deck win rate by arm. Differences are paired with kog3's games on the same deals (same seed, same seat), kog3 on "
@@ -164,7 +174,8 @@ def main():
             d = everything.get(arm)
             if not d:
                 continue
-            line = f"  {arm:6} {len(d):5d} games, {wins_of(d):5d} wins ({pct(wins_of(d) / len(d))})"
+            line = (f"  {arm:6} {len(d):5d} games, {wins_of(d):5d} wins ({pct(wins_of(d) / len(d))}), "
+                    f"{sum(bool(r.get('draw')) for r in d.values())} draws")
             pr = paired(base, d) if base and arm != arms[0] else None
             if pr:
                 line += (f"; vs {arms[0]} {diff_text(pr)}, McNemar p {mcnemar_exact(pr['b'], pr['c']):.3f}, "

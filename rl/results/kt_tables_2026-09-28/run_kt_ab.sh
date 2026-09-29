@@ -33,6 +33,10 @@ die() { note "FAILED: $*"; exit 1; }
 [ -x "$GYM" ] || die "run_kt_ab: no deckgym at $GYM"
 GYMFULL=$(sha256sum "$GYM" | cut -d' ' -f1); GYMH=${GYMFULL:0:16}
 [ "$GYMH" = "$GYM_EXPECT" ] || die "run_kt_ab: deckgym sha256 $GYMH is not the kt build's $GYM_EXPECT"
+# One run at a time (review, Sept 29: two writers on one .part otherwise).
+exec 9> "$O/.run_kt_ab.lock"; flock -n 9 || { note "run_kt_ab: another run holds the lock; this one exits"; exit 2; }
+# No game on a build whose identity checks haven't passed (run_kt.sh part A); a scratch run (KT_OUT set) skips this.
+[ -n "${KT_OUT:-}" ] || grep -q "KT PART A DONE $S" "$O/STATUS.txt" || die "run_kt_ab: run_kt.sh part A (identity) has not passed for $S"
 note "run_kt_ab $S: decks $DECKS, arms $ARMS, $GAMES games per matchup, $THREADS threads; kt build deckgym sha256 $GYMFULL; seeds 22,600,000,000 + 10,000 x deck + 1,000 x opponent (+500 seat 1) + i"
 
 gate() {  # no kt game before koh's B2e rows are read and committed (../kt_tables_2026-09-28/README.md)
@@ -45,7 +49,10 @@ gate() {  # no kt game before koh's B2e rows are read and committed (../kt_table
 }
 unit() {  # deck arm: 1,920 games (GAMES x 8 opponents), written to .part and moved when done
   local deck=$1 arm=$2 name=${S}_ab_d${1}_${2} s
-  [ -s "$O/$name.jsonl" ] && return
+  if [ -s "$O/$name.jsonl" ]; then  # reused only at its full size (a smoke run's file must never pass as an arm)
+    [ "$(wc -l < "$O/$name.jsonl")" -eq $((8 * GAMES)) ] && return
+    die "$name.jsonl has $(wc -l < "$O/$name.jsonl") games, not $((8 * GAMES)): move it away first"
+  fi
   case $arm in kt*) gate;; esac
   s=$(date +%s)
   ( RAYON_NUM_THREADS=$THREADS nice -n "$NICE" python3 "$HERE/kt_ab_play.py" --deck "$deck" --pilot "$arm" --meta-pilot kog3 \
@@ -57,7 +64,7 @@ unit() {  # deck arm: 1,920 games (GAMES x 8 opponents), written to .part and mo
 for arm in $ARMS; do case $arm in kt*) ;; *) for deck in $DECKS; do unit "$deck" "$arm"; done;; esac; done
 # then the kt arms, deck by deck (07 first): the first one waits for the gate.
 for deck in $DECKS; do for arm in $ARMS; do case $arm in kt*) unit "$deck" "$arm";; esac; done; done
-python3 "$HERE/read_kt_ab.py" --dir "$O" --build "$S" --decks "${DECKS// /,}" --arms "${ARMS// /,}" > "$O/${S}_ab_table.txt" \
+python3 "$HERE/read_kt_ab.py" --dir "$O" --build "$S" --decks "${DECKS// /,}" --arms "${ARMS// /,}" --expect $((8 * GAMES)) > "$O/${S}_ab_table.txt" \
   || die "read_kt_ab.py"
 note "A/B table written (${S}_ab_table.txt)"
 echo "$(date -u +%F\ %T) KT AB DONE $S" >> "$O/STATUS.txt"

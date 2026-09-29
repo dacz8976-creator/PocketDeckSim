@@ -44,6 +44,14 @@ check_build() {
 [ "$(cut -c1-7 "$B/COMMIT" 2>/dev/null)" = "$S" ] || die "run_kt_counters: $B is not the build of $S"
 [ -x "$GYM" ] && [ -x "$SCAN" ] || die "run_kt_counters: the kt build's programs are not in $B"
 check_build
+# One run at a time, and no game on a build whose identity checks haven't passed (review, Sept 29); scratch runs skip the latter.
+exec 9> "$O/.run_kt_counters.lock"; flock -n 9 || { note "run_kt_counters: another run holds the lock; this one exits"; exit 2; }
+[ -n "${KT_OUT:-}" ] || grep -q "KT PART A DONE $S" "$O/STATUS.txt" || die "run_kt_counters: run_kt.sh part A (identity) has not passed for $S"
+full() {  # file: a finished output is reused only at its full size (28 pairings x DEALS games)
+  [ -s "$1" ] || return 1
+  [ "$(wc -l < "$1")" -eq $((28 * DEALS)) ] && return 0
+  die "$(basename "$1") has $(wc -l < "$1") games, not $((28 * DEALS)): move it away first"
+}
 SCANH=$(sha "$SCAN")
 note "run_kt_counters $S: codes $CODES, first $DEALS deals of the 28 table pairings, $THREADS threads; kt build legality_scan sha256 $SCANH, deckgym sha256 $(sha "$GYM")"
 
@@ -69,7 +77,7 @@ gate() {  # no kt game before koh's B2e rows are read and committed (../kt_table
 }
 run_census() {  # code
   local code=$1 name=${S}_census_${1} s
-  [ -s "$O/$name.jsonl" ] && [ -s "$O/$name.txt" ] && return
+  full "$O/$name.jsonl" && [ -s "$O/$name.txt" ] && return
   case $code in kt*) gate;; esac
   s=$(date +%s)
   ( cd "$B/engine" && RAYON_NUM_THREADS=$THREADS nice -n "$NICE" "$CENSUS" --decks ../decks/research --games "$DEALS" --bot "$code" \
@@ -79,7 +87,7 @@ run_census() {  # code
 }
 run_scan() {  # code
   local code=$1 name=${S}_scan_${1}_${DEALS} s
-  [ -s "$O/$name.jsonl" ] && [ -s "$O/$name.txt" ] && return
+  full "$O/$name.jsonl" && [ -s "$O/$name.txt" ] && return
   case $code in kt*) gate;; esac
   s=$(date +%s)
   ( cd "$B/engine" && RAYON_NUM_THREADS=$THREADS nice -n "$NICE" "$SCAN" --decks ../decks/research --games "$DEALS" --bot "$code" \

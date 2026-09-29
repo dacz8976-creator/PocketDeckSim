@@ -40,6 +40,15 @@
 - koh's B2e mixed rows still run, to complete its coverage record.
 - If the B2e read shows anything that would reopen koh, the gate stays shut and Fable is told first.
 
+**The A/B and the readout counters** (`run_kt_ab.sh`, `kt_ab_play.py`, `read_kt_ab.py`, `run_kt_counters.sh`; edd4ab8):
+- Written by a Sonnet agent and tested with kog3 only. Reviewed by a second one: no blocker.
+- The review's fixes are in:
+  - each runner refuses to play before `run_kt.sh` part A (identity) has passed;
+  - a finished file is reused only at its full size;
+  - one run at a time (a lock);
+  - the reader asserts complete files (1,920 games per deck and arm) and reports draws.
+- **Launch order:** after `run_kt.sh` part B's footprint is committed, one runner at a time, never beside part B at 12 threads each. That also keeps them off kt's timing check.
+
 **Who does what:**
 - **The cloud:** the kt build's code on 233bced's `engine/` (kt's presets redefined on kog), the parser, preset and values tests (item 7), the full suite and `BUILD.md`.
 - **The laptop:** builds the same commit, then runs everything that plays games, each from the kt build's own programs with their sha256 recorded:
