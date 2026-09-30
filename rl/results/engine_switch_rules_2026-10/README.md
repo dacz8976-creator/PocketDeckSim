@@ -25,6 +25,24 @@ Given in the Fable coordinator session ("Work delegation and task routing") and 
 - R is that branch's head.
 - The cloud stays on N1.
 
+## The carrier lists (step 3; the coordinator's choice under Dustin's Q4 answer)
+
+The cloud extracted them from the committed Limitless archive (commit e0d149a on `claude/pensive-ptolemy-spwc0b`, `carriers/`; provenance in its `README.md` and `selection.json`). By the plan's rule, the most frequent exact list among top-8 development finishes, only one exists:
+- **`garchomp_meowth.txt`** (Meowth B2 124). Shaquill10, BEC'S KING OF THE HILL, 95 players, 2026-09-18, 5th place (4-1).
+
+The other three have real development lists, but none placed top-8. These are the "alternates":
+- **`alternates/togekiss_meowth.txt`** (Togekiss A4 080 and Meowth). Alolan Jay, The Breakfast Club Nightly, 118 players, 2026-09-07, 19th place (5-3).
+- **`alternates/hisuian_goodra.txt`** (Hisuian Goodra B3b 050, the (a) finite cut). tommyboistreams, TH Event's "When DX Pack?!", 68 players, dropped (0-3).
+- **`alternates/houndoom_victini.txt`** (Victini B3 025, repair A). foodking90, Dark League Pocket Tournament, 118 players, 2026-09-12, dropped after round 1 (0-1).
+
+**The coordinator's decision** (Sept 30, operational, under Dustin's Q4 answer "real lists, made lists as fallback"): step 8's carriers are `garchomp_meowth.txt` plus the three alternates.
+- The reason: a carrier's job is to reach the mechanic in real play, not to measure strength, and a poor record doesn't change which cards a list holds.
+- The made lists (`coinflip_deck.txt`, `fire_victini.txt`) are used only in 8b's scratch rows.
+- Every list passed the cloud's card checks: one printing per id, no B4b card, the validator clean, and a 560-game legality scan with no findings.
+- Each list's Energy line was added from its Pokémon's attack costs, since the archive's decklists carry none (`select_carriers.py`).
+
+**R stays Sonnet's branch head,** never the cloud's head. The cloud's kn (N1) build is on the same cloud branch (71877f6) and changes `players/`.
+
 ## Who does what
 
 | Part | Who |
