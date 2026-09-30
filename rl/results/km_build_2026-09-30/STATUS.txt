@@ -1,0 +1,82 @@
+2026-09-30T02:27:01Z STEP 1 BUILD: B = 1f6319e (ec7e1a8's engine/ plus N2 in kta's clock; engine/ differs from ec7e1a8 only in engine/src/players/ and the notes file UPSTREAM.md). Cloud programs built from B: deckgym sha256 35b42fc3938ad6770b6b2a6f53830ae50d1005e244d444d1f87a425a9ce22d3b, legality_scan sha256 e72a18f50464c716f9477d2201033c5f11ae6270b90b63662b061f62b255d639
+2026-09-30T02:31:13Z STEP 2 TESTS: km's 14 tests at B pass (11 in km_tests, the parser test, two get_player wiring tests); full suite 1991 passed, 0 failed (ec7e1a8's 1,977 plus km's 14; suite.log); no existing test's expected value edited. Two planted faults (the Stadium bonus after the cuts; KM on kog) each failed a test before B was committed
+2026-09-30T02:31:13Z identity start: build 1f6319e; scan sha256 e72a18f50464c716f9477d2201033c5f11ae6270b90b63662b061f62b255d639; item 8: engine/ diff from ec7e1a8 (UPSTREAM.md aside) is players/ only (engine/src/players/mod.rs engine/src/players/public_pricing_player.rs engine/src/players/value_functions.rs)
+2026-09-30T02:31:24Z 1f6319e_kta3_p02_40 done in 11 s (80 games)
+2026-09-30T02:31:24Z identity: item 6: kta3 at B, pairings 0 and 2, 40 deals, v ec7e1a8_kta3_table: 80 of 80 games equal on moves, decisions, openings, winner_seat, points, seed, first_seat (run has 80; missing 0, differing 0); clean; PASS
+2026-09-30T02:31:39Z 1f6319e_km3_smoke_40 done in 15 s (120 games)
+2026-09-30T02:31:39Z identity: item 7: km3 smoke, pairings 0, 2 and 19, 40 deals: 120 games in 3 cells, complete; clean; PASS (no reference: results not read)
+2026-09-30T02:31:39Z item 7's smoke file: identity/1f6319e_km3_smoke_40.jsonl sha256 55f7a5905acad7d9a9daabdf541c9aee258704c23712a1d2b8f8271e2e73d043
+2026-09-30T02:31:40Z tool: source sha256 05d7ba4183ce9e3098036de9acb5181ea71f7077ef9b3798ad4e5d165dc22365; program sha256 b48db2a89fd871b0d96c4de2090dd8a699aa515b378f51c5964a0edf1fe6947e (built in a scratch copy of 1f6319e's engine/); the old tool (816fd9c's source, sha256 a2510339e5867b171f22832dc1f31072494fe4667b862b36c92c263c39f01759) program sha256 bf29c60f2eece878f879922fb4135d75faf7fe477dc4b0ad2018a8165cfb963c
+2026-09-30T02:38:11Z tool test 1 PASS: kp3, the table's first 20 deals of the 28 pairings (560 games), the old and new tools' stdout, stderr and games-out are byte-identical (stdout sha256 a82786bb69fa10ca3bfba4c5854055911a280246440d9ab7b359319acb746997, games-out sha256 057ae92e9a369d016bd10754313dd80f5eb7da1148bcdc79a1252cd642c67e0f)
+2026-09-30T02:38:12Z tool test 1's stdout and games-out equal 9c11b30's (the sha256 its STATUS.txt records)
+2026-09-30T02:39:50Z CODE REVIEW: one independent read-only review of B's diff against ec7e1a8: no blocker, no should-fix, five notes (BUILD.md). For note A (no test shows N2 reaching the bot's own survival clock through kt_clocks), a diagnostic test appended to a scratch copy of B's engine/ (not in B; review_note_a_diagnostic.rs) passes: with Training Area in play, kt_clocks gives mine 2 under KM and 3 under KTA, theirs 2 and 3
+2026-09-30T02:41:20Z tool test 2 PASS: the same 560 games with --seed-base 72000000 and --rows-out: games-out byte-identical, the same card table, every row's fingerprint, seed and seats equal games-out's
+2026-09-30T02:41:25Z tool tool test 3: traced games, kp3, Altaria v Lucario, seeds 20,000,920,000-019: 20 traced games, 40 seats: the tool's offered and played turns for Arena of Antiquity and Training Area equal the trace's recount in 80 of 80 seat-cards (differing 0); games where each is played: Arena of Antiquity 7, Training Area 9; PASS
+2026-09-30T02:41:25Z tool test 3's rows sha256 fe983bab064437f5ea836ad43556c3896e6bbdf319eb44e74205729d265dd6b2, trace sha256 dee32d7fc8acd82f8dac23d1d3290140f483f27dd7289f61799f88d07840f285
+2026-09-30T02:41:26Z tool test 3's rows and trace equal 9c11b30's byte for byte
+2026-09-30T02:44:42Z identity 8a: the tool's kta3, the 17 named cells, i < 40: 680 of 680 deals equal on the move fingerprint, both decks, seed and seats (17 cells, i < 40; rows 680; differing 0, missing 0; 17 cells expected); no count read; PASS
+2026-09-30T02:45:01Z identity 8a: the tool's km3, pairings 0 and 2, i < 40, v item 7's smoke: 80 of 80 deals equal on the move fingerprint, both decks, seed and seats (2 cells, i < 40; rows 80; differing 0, missing 0; 2 cells expected); no count read; PASS
+2026-09-30T02:46:38Z tool test 4 PASS: --first-deal 20 --games 20 gives 8a's rows for deals 20-39 of the 17 cells exactly (340 rows)
+2026-09-30T02:46:39Z tool test 5 PASS: the tool refuses --seed-base with --cells km17, --cells with --pairs, --decks with --pairs, --root in table mode, --trace-out with --no-counts, and deals past a pairing's 10,000 seeds, before any game
+2026-09-30T02:46:39Z STEP 3 COUNTER TOOL: done (tests 1-5 and identity 8a pass)
+2026-09-30T02:57:44Z 1f6319e_km3_table15_500 done in 1565 s (7500 games)
+2026-09-30T02:57:45Z identity: item 5: km3 on the 15 table cells without Altaria or Lucario, 500 deals, v ec7e1a8_kta3_table: 7500 of 7500 games equal on moves, decisions, openings, winner_seat, points, seed, first_seat (run has 7500; missing 0, differing 0); clean; PASS
+2026-09-30T03:14:04Z 1f6319e_km3_new13_500 done in 979 s (6500 games)
+2026-09-30T03:14:04Z identity: item 5: km3 on the 13 new cells without Altaria or Lucario, 500 deals, v ec7e1a8_kta3_new17: 6500 of 6500 games equal on moves, decisions, openings, winner_seat, points, seed, first_seat, a_file, b_file (run has 6500; missing 0, differing 0); clean; PASS
+2026-09-30T04:49:42Z RESUMED after a container restart (uptime 0 at 04:49; the runner stopped about 03:21, during 1f6319e_kta3_500, which was incomplete and is replayed from the start). Same build, scan program (sha256 unchanged) and calls; finished items are skipped
+2026-09-30T04:49:42Z identity start: build 1f6319e; scan sha256 e72a18f50464c716f9477d2201033c5f11ae6270b90b63662b061f62b255d639; item 8: engine/ diff from ec7e1a8 (UPSTREAM.md aside) is players/ only (engine/src/players/mod.rs engine/src/players/public_pricing_player.rs engine/src/players/value_functions.rs)
+2026-09-30T04:49:42Z 1f6319e_kta3_p02_40 exists, skipped
+2026-09-30T04:49:43Z identity: item 6: kta3 at B, pairings 0 and 2, 40 deals, v ec7e1a8_kta3_table: 80 of 80 games equal on moves, decisions, openings, winner_seat, points, seed, first_seat (run has 80; missing 0, differing 0); clean; PASS
+2026-09-30T04:49:43Z 1f6319e_km3_smoke_40 exists, skipped
+2026-09-30T04:49:43Z identity: item 7: km3 smoke, pairings 0, 2 and 19, 40 deals: 120 games in 3 cells, complete; clean; PASS (no reference: results not read)
+2026-09-30T04:49:43Z item 7's smoke file: identity/1f6319e_km3_smoke_40.jsonl sha256 55f7a5905acad7d9a9daabdf541c9aee258704c23712a1d2b8f8271e2e73d043
+2026-09-30T04:49:43Z 1f6319e_km3_table15_500 exists, skipped
+2026-09-30T04:49:44Z identity: item 5: km3 on the 15 table cells without Altaria or Lucario, 500 deals, v ec7e1a8_kta3_table: 7500 of 7500 games equal on moves, decisions, openings, winner_seat, points, seed, first_seat (run has 7500; missing 0, differing 0); clean; PASS
+2026-09-30T04:49:44Z 1f6319e_km3_new13_500 exists, skipped
+2026-09-30T04:49:45Z identity: item 5: km3 on the 13 new cells without Altaria or Lucario, 500 deals, v ec7e1a8_kta3_new17: 6500 of 6500 games equal on moves, decisions, openings, winner_seat, points, seed, first_seat, a_file, b_file (run has 6500; missing 0, differing 0); clean; PASS
+2026-09-30T05:20:04Z 1f6319e_kta3_500 done in 1819 s (14000 games)
+2026-09-30T05:20:05Z identity: item 1: kta3, 500 table deals, v ec7e1a8_kta3_table: 14000 of 14000 games equal on moves, decisions, openings, winner_seat, points, seed, first_seat (run has 14000; missing 0, differing 0); clean; PASS
+2026-09-30T05:41:08Z 1f6319e_new17_kta3_500 done in 1263 s (8500 games)
+2026-09-30T05:41:08Z identity: item 1: kta3, the 17 new cells, 500 deals, v ec7e1a8_kta3_new17: 8500 of 8500 games equal on moves, decisions, openings, winner_seat, points, seed, first_seat, a_file, b_file (run has 8500; missing 0, differing 0); clean; PASS
+2026-09-30T06:06:31Z 1f6319e_k3_500 done in 1523 s (14000 games)
+2026-09-30T06:06:32Z identity: item 1: k3, 500 table deals, v the pin's frozen table: 14000 of 14000 games equal on moves, decisions, openings, winner_seat, points, seed, first_seat (run has 14000; missing 0, differing 0); clean; PASS
+2026-09-30T06:37:42Z 1f6319e_kp3_500 done in 1870 s (14000 games)
+2026-09-30T06:37:43Z identity: item 1: kp3, 500 table deals, v the pin's frozen table: 14000 of 14000 games equal on moves, decisions, openings, winner_seat, points, seed, first_seat (run has 14000; missing 0, differing 0); clean; PASS
+2026-09-30T07:09:24Z 1f6319e_kog3_500 done in 1901 s (14000 games)
+2026-09-30T07:09:26Z identity: item 1: kog3, 500 table deals, v bd2907f_kog3_500: 14000 of 14000 games equal on moves, decisions, openings, winner_seat, points, seed, first_seat (run has 14000; missing 0, differing 0); clean; PASS
+2026-09-30T07:09:26Z identity: item 1: kog3, 500 table deals, v table_kog3: 14000 of 14000 games equal on moves, decisions, openings, winner_seat, points, seed, first_seat (run has 14000; missing 0, differing 0); clean; PASS
+2026-09-30T07:34:27Z 1f6319e_new17_kog3_500 done in 1501 s (8500 games)
+2026-09-30T07:34:27Z identity: item 1: kog3, the 17 new cells, 500 deals, v new17_kog3: 8500 of 8500 games equal on moves, decisions, openings, winner_seat, points, seed, first_seat, a_file, b_file (run has 8500; missing 0, differing 0); clean; PASS
+2026-09-30T08:18:36Z 1f6319e_kq3_500 done in 2649 s (14000 games)
+2026-09-30T08:18:37Z identity: item 2: kq3, 500 table deals, v official_kq3_500: 14000 of 14000 games equal on moves, decisions, openings, winner_seat, points, seed, first_seat (run has 14000; missing 0, differing 0); clean; PASS
+2026-09-30T08:22:02Z 1f6319e_kd3_40 done in 205 s (1120 games)
+2026-09-30T08:22:02Z identity: item 2: kd3, 40 table deals, v af8489f_kd3_40: 1120 of 1120 games equal on moves, decisions, openings, winner_seat, points, seed, first_seat (run has 1120; missing 0, differing 0); clean; PASS
+2026-09-30T08:25:49Z 1f6319e_kpr3_40 done in 227 s (1120 games)
+2026-09-30T08:25:49Z identity: item 2: kpr3, 40 table deals, v af8489f_kpr3_40: 1120 of 1120 games equal on moves, decisions, openings, winner_seat, points, seed, first_seat (run has 1120; missing 0, differing 0); clean; PASS
+2026-09-30T08:37:50Z 1f6319e_b2e_kta3_40 done in 721 s (3840 games)
+2026-09-30T08:37:51Z identity: item 3: kta3, B2e's 96 pairings i < 40, v ec7e1a8_b2e_kta3.jsonl: 3840 of 3840 games equal on moves, decisions, openings, winner_seat, points, seed, first_seat, a_file, b_file (run has 3840; missing 0, differing 0); clean; PASS
+2026-09-30T08:38:51Z 1f6319e_scizor_kta3_40 done in 60 s (320 games)
+2026-09-30T08:38:51Z identity: item 3: kta3, Scizor's 8 pairings i < 40, v ec7e1a8_scizor_kta3.jsonl: 320 of 320 games equal on moves, decisions, openings, winner_seat, points, seed, first_seat, a_file, b_file (run has 320; missing 0, differing 0); clean; PASS
+2026-09-30T08:39:29Z 1f6319e_var_v-lucario_2_kta3_40 done in 38 s (280 games)
+2026-09-30T08:39:29Z identity: item 3: kta3, second list v-lucario_2 i < 40, v ec7e1a8_var_v-lucario_2_kta3.jsonl: 280 of 280 games equal on moves, decisions, openings, winner_seat, points, seed, first_seat, a_file, b_file (run has 280; missing 0, differing 0); clean; PASS
+2026-09-30T08:40:27Z 1f6319e_var_v-suicune_2_kta3_40 done in 58 s (280 games)
+2026-09-30T08:40:27Z identity: item 3: kta3, second list v-suicune_2 i < 40, v ec7e1a8_var_v-suicune_2_kta3.jsonl: 280 of 280 games equal on moves, decisions, openings, winner_seat, points, seed, first_seat, a_file, b_file (run has 280; missing 0, differing 0); clean; PASS
+2026-09-30T08:41:19Z 1f6319e_var_v-weezing_2_kta3_40 done in 52 s (280 games)
+2026-09-30T08:41:19Z identity: item 3: kta3, second list v-weezing_2 i < 40, v ec7e1a8_var_v-weezing_2_kta3.jsonl: 280 of 280 games equal on moves, decisions, openings, winner_seat, points, seed, first_seat, a_file, b_file (run has 280; missing 0, differing 0); clean; PASS
+2026-09-30T08:42:27Z 1f6319e_var_l-charizardy_kta3_40 done in 68 s (320 games)
+2026-09-30T08:42:27Z identity: item 3: kta3, second list l-charizardy i < 40, v ec7e1a8_var_l-charizardy_kta3.jsonl: 320 of 320 games equal on moves, decisions, openings, winner_seat, points, seed, first_seat, a_file, b_file (run has 320; missing 0, differing 0); clean; PASS
+2026-09-30T08:53:47Z 1f6319e_b2e_kog3_40 done in 680 s (3840 games)
+2026-09-30T08:53:49Z identity: item 3: kog3, B2e's 96 pairings i < 40, v b2e_kog3.jsonl: 3840 of 3840 games equal on moves, decisions, openings, winner_seat, points, seed, first_seat, a_file, b_file (run has 3840; missing 0, differing 0); clean; PASS
+2026-09-30T08:54:53Z 1f6319e_scizor_kog3_40 done in 64 s (320 games)
+2026-09-30T08:54:53Z identity: item 3: kog3, Scizor's 8 pairings i < 40, v scizor_kog3.jsonl: 320 of 320 games equal on moves, decisions, openings, winner_seat, points, seed, first_seat, a_file, b_file (run has 320; missing 0, differing 0); clean; PASS
+2026-09-30T08:55:30Z 1f6319e_var_v-lucario_2_kog3_40 done in 37 s (280 games)
+2026-09-30T08:55:30Z identity: item 3: kog3, second list v-lucario_2 i < 40, v var_v-lucario_2_kog3.jsonl: 280 of 280 games equal on moves, decisions, openings, winner_seat, points, seed, first_seat, a_file, b_file (run has 280; missing 0, differing 0); clean; PASS
+2026-09-30T08:56:25Z 1f6319e_var_v-suicune_2_kog3_40 done in 55 s (280 games)
+2026-09-30T08:56:25Z identity: item 3: kog3, second list v-suicune_2 i < 40, v var_v-suicune_2_kog3.jsonl: 280 of 280 games equal on moves, decisions, openings, winner_seat, points, seed, first_seat, a_file, b_file (run has 280; missing 0, differing 0); clean; PASS
+2026-09-30T08:57:14Z 1f6319e_var_v-weezing_2_kog3_40 done in 49 s (280 games)
+2026-09-30T08:57:14Z identity: item 3: kog3, second list v-weezing_2 i < 40, v var_v-weezing_2_kog3.jsonl: 280 of 280 games equal on moves, decisions, openings, winner_seat, points, seed, first_seat, a_file, b_file (run has 280; missing 0, differing 0); clean; PASS
+2026-09-30T08:58:25Z 1f6319e_var_l-charizardy_kog3_40 done in 71 s (320 games)
+2026-09-30T08:58:25Z identity: item 3: kog3, second list l-charizardy i < 40, v var_l-charizardy_kog3.jsonl: 320 of 320 games equal on moves, decisions, openings, winner_seat, points, seed, first_seat, a_file, b_file (run has 320; missing 0, differing 0); clean; PASS
+2026-09-30T08:58:25Z IDENTITY DONE (items 1-3 and 5-8; item 4 is a test; item 8a is the counter tool's check)
+2026-09-30T08:59:02Z STEP 4 IDENTITY: done. Items 1-3 and 5-8 pass at B, every game equal and every page clean (114,080 games through the scan; identity/identity_check.txt); item 4 is a test that passes; 8a passes (760 games; STEP 3). No difference found
+2026-09-30T08:59:02Z STEP 5 COMMIT: the round is committed on claude/pensive-ptolemy-spwc0b. Build B = 1f6319e4b72e34a42d2d3c3ffc7cc9a09fdfa6f3. Cloud programs built from B: deckgym sha256 35b42fc3938ad6770b6b2a6f53830ae50d1005e244d444d1f87a425a9ce22d3b, legality_scan sha256 e72a18f50464c716f9477d2201033c5f11ae6270b90b63662b061f62b255d639; counter tool source sha256 05d7ba4183ce9e3098036de9acb5181ea71f7077ef9b3798ad4e5d165dc22365, program sha256 b48db2a89fd871b0d96c4de2090dd8a699aa515b378f51c5964a0edf1fe6947e (built in a copy of B's engine/). The laptop's km3 reference: identity/1f6319e_km3_smoke_40.jsonl sha256 55f7a5905acad7d9a9daabdf541c9aee258704c23712a1d2b8f8271e2e73d043. No registered km game or table played; no threshold measured; nothing read

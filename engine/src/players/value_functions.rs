@@ -312,14 +312,15 @@ pub fn public_clock_effect_kog_value_function(state: &State, myself: usize) -> f
 }
 
 /// The `kt` tier (players/mod.rs `KT`, piloted like `kp`; registered Sept 26, `rl/results/kt_2026-09-26/README.md`,
-/// amendment 1): `k`'s evaluator with Tools and temporary damage cuts priced by what they do. Switch 1: the defender's
-/// temporary cuts and damage-cut Tools in the threat clock. Switch 2: the flat +10 for a Tool on the Active is 0.
-/// Switch 3: damage back to the attacker in the holder's own side's clock. kq's, kd's, kpr's and kpf's features off.
+/// amendments 1 and 2): `kog`'s evaluator with Tools and temporary damage cuts priced by what they do. Switch 1: the
+/// defender's temporary cuts and damage-cut Tools in the threat clock. Switch 2: the flat +10 for a Tool on the Active
+/// is 0. Switch 3: damage back to the attacker in the holder's own side's clock. kog's switch A and F on; kq's, kd's,
+/// kpr's and kph's features off. Re-issued on kog (amendment 2); before that, these codes were the switches on kp.
 pub fn public_clock_effect_kt_value_function(state: &State, myself: usize) -> f64 {
     parametric_value_function_ex6(state, myself, &ValueFunctionParams::baseline(), true, false, true, true, false, EvalFeatures::KT)
 }
 
-/// The `kta` code: `kt` with switch 1 only (read under the reserve route; otherwise attribution).
+/// The `kta` code: `kt` with switch 1 only, on kog (read by the route its footprint fixes, amendment 2).
 pub fn public_clock_effect_kta_value_function(state: &State, myself: usize) -> f64 {
     parametric_value_function_ex6(state, myself, &ValueFunctionParams::baseline(), true, false, true, true, false, EvalFeatures::KTA)
 }
@@ -332,6 +333,14 @@ pub fn public_clock_effect_ktb_value_function(state: &State, myself: usize) -> f
 /// The `ktc` diagnostic: `kt` with switch 3 only.
 pub fn public_clock_effect_ktc_value_function(state: &State, myself: usize) -> f64 {
     parametric_value_function_ex6(state, myself, &ValueFunctionParams::baseline(), true, false, true, true, false, EvalFeatures::KTC)
+}
+
+/// The `km` code (players/mod.rs `KM`, piloted like `kp`): kta with switch N2, the attacker's lasting Stadium damage
+/// bonus (Training Area, Arena of Antiquity) in kta's threat clock for both sides
+/// (`rl/results/trainer_pricing_2026-09-28/REGISTRATION_DRAFT.md`, registered Sept 29; re-issued on kta by
+/// Amendment 1, Sept 30). kta's call with [`EvalFeatures::KM`].
+pub fn public_clock_effect_km_value_function(state: &State, myself: usize) -> f64 {
+    parametric_value_function_ex6(state, myself, &ValueFunctionParams::baseline(), true, false, true, true, false, EvalFeatures::KM)
 }
 
 /// Weight of [`best_benched_attacker_online_score`] in `kq`: half the Active online score's 500 in
@@ -361,7 +370,7 @@ struct EvalFeatures {
     /// ([`super::fuel_credit::fuel_credit`]), over the pile R's projection left when R is on.
     fuel_credit: bool,
     /// kt switch 1 (kt, kta): the defender's temporary damage cuts and damage-cut Tools in the threat clock
-    /// ([`kt_clock`]). Not combined with kq's, kd's or kpr's clock features: no player code sets them together.
+    /// ([`kt_clock_stadium`]). Not combined with kq's, kd's or kpr's clock features: no player code sets them together.
     defender_cuts: bool,
     /// kt switch 2 (kt, ktb): the flat +10 for a Tool on the Active (`active_has_tool`) is 0; each Tool counts only
     /// through the terms that read what it does for its holder.
@@ -375,6 +384,9 @@ struct EvalFeatures {
     /// kph fix B (kph, kphb): with R on, the clock may also give the side's Zone Energy to a benched Pokemon that can
     /// reach the Active Spot by the retreat rule ([`calculate_turns_until_opponent_wins_projected`]).
     zone_to_bench: bool,
+    /// km switch N2 (km): each hit in kt's clock ([`kt_clock_stadium`]) carries the attacker's lasting Stadium damage
+    /// bonus ([`lasting_stadium_damage_bonus`]). Read only in kt's clock, so only with switch 1 or 3 on (km: switch 1).
+    stadium_bonus_in_clock: bool,
 }
 
 impl EvalFeatures {
@@ -392,6 +404,7 @@ impl EvalFeatures {
         counter_damage: false,
         evolution_steps: false,
         zone_to_bench: false,
+        stadium_bonus_in_clock: false,
     };
     const KQ: EvalFeatures = EvalFeatures {
         next_attack_reduction: true,
@@ -407,6 +420,7 @@ impl EvalFeatures {
         counter_damage: false,
         evolution_steps: false,
         zone_to_bench: false,
+        stadium_bonus_in_clock: false,
     };
     const KD: EvalFeatures = EvalFeatures {
         next_attack_reduction: false,
@@ -422,6 +436,7 @@ impl EvalFeatures {
         counter_damage: false,
         evolution_steps: false,
         zone_to_bench: false,
+        stadium_bonus_in_clock: false,
     };
     const KPR: EvalFeatures = EvalFeatures {
         next_attack_reduction: false,
@@ -437,6 +452,7 @@ impl EvalFeatures {
         counter_damage: false,
         evolution_steps: false,
         zone_to_bench: false,
+        stadium_bonus_in_clock: false,
     };
     const KOA: EvalFeatures = EvalFeatures { opening_first_turn_active: true, ..EvalFeatures::OFF };
     const KOB: EvalFeatures = EvalFeatures { opening_bench_working: true, ..EvalFeatures::OFF };
@@ -458,15 +474,18 @@ impl EvalFeatures {
     /// kog: koa's switch A and kpg's F together, each exactly as in its own code (Dustin, Sept 27: one pilot by a
     /// composition check, RUN5 "Rules").
     const KOG: EvalFeatures = EvalFeatures { opening_first_turn_active: true, fuel_credit: true, ..EvalFeatures::OFF };
-    /// kt: switches 1, 2 and 3 on kp (`rl/results/kt_2026-09-26/README.md`).
+    /// kt: switches 1, 2 and 3 on kog (`rl/results/kt_2026-09-26/README.md`, amendment 2: re-issued on kog, Sept 28;
+    /// from ed81c8b to 233bced these codes were the switches on kp).
     const KT: EvalFeatures =
-        EvalFeatures { defender_cuts: true, tool_by_holder: true, counter_damage: true, ..EvalFeatures::OFF };
-    /// kta (diagnostic, and the reserve-route candidate): switch 1 only.
-    const KTA: EvalFeatures = EvalFeatures { defender_cuts: true, ..EvalFeatures::OFF };
-    /// ktb (diagnostic): switch 2 only.
-    const KTB: EvalFeatures = EvalFeatures { tool_by_holder: true, ..EvalFeatures::OFF };
-    /// ktc (diagnostic): switch 3 only.
-    const KTC: EvalFeatures = EvalFeatures { counter_damage: true, ..EvalFeatures::OFF };
+        EvalFeatures { defender_cuts: true, tool_by_holder: true, counter_damage: true, ..EvalFeatures::KOG };
+    /// kta (the reserve-route candidate, or read by the ordinary rule at a footprint of 15% or more): switch 1 on kog.
+    const KTA: EvalFeatures = EvalFeatures { defender_cuts: true, ..EvalFeatures::KOG };
+    /// ktb (diagnostic): switch 2 on kog.
+    const KTB: EvalFeatures = EvalFeatures { tool_by_holder: true, ..EvalFeatures::KOG };
+    /// ktc (diagnostic): switch 3 on kog.
+    const KTC: EvalFeatures = EvalFeatures { counter_damage: true, ..EvalFeatures::KOG };
+    /// km: kta + N2 (Amendment 1, Sept 30: km re-issued on kta). With N2's flag off it is [`EvalFeatures::KTA`].
+    const KM: EvalFeatures = EvalFeatures { stadium_bonus_in_clock: true, ..EvalFeatures::KTA };
 
     /// Whether kt's clock ([`kt_clocks`]) replaces kp's.
     fn kt_clock(&self) -> bool {
@@ -1257,6 +1276,39 @@ fn turns_until_opponent_wins_scan_projected(
     total_turns
 }
 
+/// km (N2): the damage bonus a lasting Stadium adds to an attack by a Pokemon of `attacker_stage` and `attacker_types`
+/// against the opponent's Active, through the engine's own Stadium bonus functions, as `hooks::modify_damage`'s Stadium
+/// branch makes them for an active-to-active attack: Training Area +10 for a Stage 1 attacker, Arena of Antiquity +20
+/// for an [F] attacker against an ex (the most over the attacker's types). Read-only. It returns 0 first thing with no
+/// Stadium in play. The pin test (`km_tests`) ties it to `modify_damage`.
+fn lasting_stadium_damage_bonus(state: &State, attacker_stage: u8, attacker_types: &[EnergyType], target_is_ex: bool) -> u32 {
+    if state.active_stadium.is_none() {
+        return 0;
+    }
+    let training_area = crate::stadiums::get_training_area_damage_bonus(state, attacker_stage);
+    let arena_of_antiquity = attacker_types
+        .iter()
+        .map(|energy_type| crate::stadiums::get_arena_of_antiquity_damage_bonus(state, *energy_type, target_is_ex))
+        .max()
+        .unwrap_or(0);
+    training_area + arena_of_antiquity
+}
+
+/// km (N2): the stage and types of the Pokemon that makes `threat`: `owner`'s Pokemon in the threat's slot, or its
+/// evolution form when the threat is one (forms are scanned only for the evaluating player's own threats, so no hidden
+/// zone of the opponent is read). `None` if the slot is empty.
+fn threat_attacker_stage_and_types(state: &State, owner: usize, threat: &ThreatCandidate) -> Option<(u8, Vec<EnergyType>)> {
+    let pokemon = state.in_play_pokemon[owner][threat.slot].as_ref()?;
+    match threat.form {
+        None => Some((get_stage(pokemon), state.pokemon_energy_types(pokemon))),
+        Some(form) => {
+            let mut evolved = pokemon.clone();
+            evolved.card = evolution_targets(state, owner, pokemon).into_iter().nth(form)?;
+            Some((get_stage(&evolved), state.pokemon_energy_types(&evolved)))
+        }
+    }
+}
+
 /// Every attack `owner` could threaten with, in scan order: each in-play Pokemon's damaging attacks, then (with
 /// `read_scanned_zones`) those of its highest evolutions in `owner`'s deck or hand, one missing Energy per step.
 /// `projection` counts one Pokemon as it will stand at its next attack: kpr's Active ([`at_next_attack`]), or kph's
@@ -1680,7 +1732,15 @@ impl FirstAttackTurn {
 /// - switch 3 reads the parts: the Active victim's HP and hits, and the threat's slot ([`kt_clocks`]).
 ///
 /// With `cuts` off and no counter cut, [`KtClock::total`] is kp's clock exactly (pinned by a test on played states).
-fn kt_clock(
+///
+/// km's switch N2 (`stadium_bonus`; Amendment 1 of km's registration, Sept 30): each hit on each victim also carries
+/// the lasting Stadium damage bonus the threat's attacker gets against it ([`lasting_stadium_damage_bonus`], for the
+/// attacker [`threat_attacker_stage_and_types`] reads), in the order `hooks::modify_damage` applies them: the bonus is
+/// added to the attack's damage before Weakness, and the defender's cuts (switch 1) come off after, floored at 0. So a
+/// hit is `(damage + bonus) - cuts`. The threat is still picked on unbonused damage. With no Training Area or Arena of
+/// Antiquity in play the bonus is 0 and the arithmetic is kt's; every code but km runs it with N2 off.
+#[allow(clippy::too_many_arguments)]
+fn kt_clock_stadium(
     state: &State,
     victim_owner: usize,
     read_scanned_zones: bool,
@@ -1688,6 +1748,7 @@ fn kt_clock(
     reserve_aware: bool,
     consume_bench: bool,
     cuts: bool,
+    stadium_bonus: bool,
 ) -> KtClock {
     let owner = (victim_owner + 1) % 2;
     let attack_damage = |atk: &Attack, slot: &PlayedCard| -> u32 {
@@ -1709,18 +1770,32 @@ fn kt_clock(
         let (f, _) = first_attack_turn_number(next_turn, attach_next, threat.missing);
         (attacker, attack, f)
     });
+    // km (N2): the threat's attacker's stage and types, read only with the flag on and a Stadium in play.
+    let stadium_attacker = (stadium_bonus && state.active_stadium.is_some())
+        .then(|| threat_attacker_stage_and_types(state, owner, &threat))
+        .flatten();
+    // The threat's damage against `victim`, with N2's bonus when it has one; the threat's damage otherwise.
+    let damage_on = |victim: &PlayedCard| -> u32 {
+        match &stadium_attacker {
+            Some((stage, types)) => {
+                threat.damage + lasting_stadium_damage_bonus(state, *stage, types, victim.card.is_ex())
+            }
+            None => threat.damage,
+        }
+    };
     // (the damage of `victim`'s first hit, of every later hit); `first` when it takes the clock's first hit.
     let hits_on = |victim: &PlayedCard, first: bool| -> (f64, f64) {
+        let damage = damage_on(victim);
         let Some((attacker, attack, f)) = &cuts else {
-            return (threat.damage as f64, threat.damage as f64);
+            return (damage as f64, damage as f64);
         };
         let context = DamageModifierContext { attack_name: Some(&attack.title), attack_effect: attack.effect.as_deref() };
         let permanent = permanent_tool_reduction(state, victim_owner, victim, context);
         let temporary =
             if first { temporary_defender_reduction(state, victim_owner, victim, attacker, context, *f) } else { 0 };
         (
-            threat.damage.saturating_sub(permanent.saturating_add(temporary)) as f64,
-            threat.damage.saturating_sub(permanent) as f64,
+            damage.saturating_sub(permanent.saturating_add(temporary)) as f64,
+            damage.saturating_sub(permanent) as f64,
         )
     };
     let mut opp_points = state.points[owner];
@@ -1759,7 +1834,21 @@ fn kt_clock(
     KtClock { lead, active, rest, threat_slot: Some(threat.slot) }
 }
 
-/// One side's clock from [`kt_clock`], in the parts switch 3 reads.
+/// [`kt_clock_stadium`] with km's N2 off, as kt's tests call it positionally.
+#[cfg(test)]
+fn kt_clock(
+    state: &State,
+    victim_owner: usize,
+    read_scanned_zones: bool,
+    effect_aware: bool,
+    reserve_aware: bool,
+    consume_bench: bool,
+    cuts: bool,
+) -> KtClock {
+    kt_clock_stadium(state, victim_owner, read_scanned_zones, effect_aware, reserve_aware, consume_bench, cuts, false)
+}
+
+/// One side's clock from [`kt_clock_stadium`], in the parts switch 3 reads.
 #[derive(Debug, Clone, Copy)]
 struct KtClock {
     /// The turns before the threat's first hit (its missing Energy); 30 when nothing threatens.
@@ -1806,7 +1895,7 @@ fn kt_hits(hp: f64, first: f64, later: f64) -> f64 {
     }
 }
 
-/// kt, kta, ktc: both sides' clocks, (turns until `myself`'s opponent wins, turns until `myself` wins), with the zone
+/// kt, kta, ktc, km: both sides' clocks, (turns until `myself`'s opponent wins, turns until `myself` wins), with the zone
 /// reads and victim counting kp gives each side. Switch 3 (`counter_damage`) then takes the counter-damage of each
 /// side's Active off the other side's Active in the holder's own clock ([`counter_cut`]); each clock reads the
 /// other's hit count on its Active once, without the cut.
@@ -1819,8 +1908,9 @@ fn kt_clocks(
     features: EvalFeatures,
 ) -> (f64, f64) {
     let opponent = (myself + 1) % 2;
-    let mine = kt_clock(state, myself, false, effect_aware, reserve_aware, public_eval, features.defender_cuts);
-    let theirs = kt_clock(state, opponent, public_eval, effect_aware, reserve_aware, public_eval, features.defender_cuts);
+    let (cuts, n2) = (features.defender_cuts, features.stadium_bonus_in_clock);
+    let mine = kt_clock_stadium(state, myself, false, effect_aware, reserve_aware, public_eval, cuts, n2);
+    let theirs = kt_clock_stadium(state, opponent, public_eval, effect_aware, reserve_aware, public_eval, cuts, n2);
     if !features.counter_damage {
         return (mine.total(0.0), theirs.total(0.0));
     }
@@ -4632,6 +4722,17 @@ mod kt_tests {
     use crate::players::RandomPlayer;
     use crate::{Deck, Game};
 
+    /// The same switches on kp: `f` with kog's switch A and F off. From ed81c8b to 233bced the kt codes were these
+    /// presets. Since amendment 2 (Sept 28) they are the switches on kog, and 43cef0b's tests read them this way.
+    fn on_kp(f: EvalFeatures) -> EvalFeatures {
+        EvalFeatures { opening_first_turn_active: false, fuel_credit: false, ..f }
+    }
+
+    /// `features`' value from `myself`'s view, evaluated as the public kt codes are.
+    fn value(state: &State, myself: usize, features: EvalFeatures) -> f64 {
+        parametric_value_function_ex6(state, myself, &ValueFunctionParams::baseline(), true, false, true, true, false, features)
+    }
+
     /// Player 0: `victim` Active (and Bench). Player 1: `threat` Active (and Bench). Player 0 to move on turn 5.
     fn board(victim: Vec<PlayedCard>, threat: Vec<PlayedCard>) -> State {
         let mut state = State::default();
@@ -4863,22 +4964,25 @@ mod kt_tests {
 
     #[test]
     fn switch_two_drops_only_the_flat_tool_term() {
-        // A Giant Cape on player 0's Active: kp adds 10 for it; ktb doesn't. Nothing else differs.
+        // A Giant Cape on player 0's Active: kp adds 10 for it; ktb doesn't. Nothing else differs. (43cef0b's test, on
+        // the same switches on kp: amendment 2, item 7.)
         let caped = with(CardId::B3b055Snorlax, EnergyType::Colorless, 3).with_tool(tool(CardId::A2147GiantCape));
         let state = board(vec![caped], vec![mewtwo()]);
         let kp = public_clock_effect_value_function(&state, 0);
-        assert!((kp - public_clock_effect_ktb_value_function(&state, 0) - 10.0).abs() < 1e-9);
+        assert!((kp - value(&state, 0, on_kp(EvalFeatures::KTB)) - 10.0).abs() < 1e-9);
         // From the other side it is -10 under kp and 0 under ktb.
         let kp1 = public_clock_effect_value_function(&state, 1);
-        assert!((public_clock_effect_ktb_value_function(&state, 1) - kp1 - 10.0).abs() < 1e-9);
+        assert!((value(&state, 1, on_kp(EvalFeatures::KTB)) - kp1 - 10.0).abs() < 1e-9);
         // kta and ktc keep the flat term: with nothing for their clocks to act on, they are kp.
-        assert_eq!(public_clock_effect_kta_value_function(&state, 0), kp);
-        assert_eq!(public_clock_effect_ktc_value_function(&state, 0), kp);
+        assert_eq!(value(&state, 0, on_kp(EvalFeatures::KTA)), kp);
+        assert_eq!(value(&state, 0, on_kp(EvalFeatures::KTC)), kp);
     }
 
     #[test]
     fn the_codes_switch_off_to_kp() {
-        let (kt, kta, ktb, ktc) = (EvalFeatures::KT, EvalFeatures::KTA, EvalFeatures::KTB, EvalFeatures::KTC);
+        // 43cef0b's preset test, on the same switches on kp (amendment 2, item 7).
+        let (kt, kta, ktb, ktc) =
+            (on_kp(EvalFeatures::KT), on_kp(EvalFeatures::KTA), on_kp(EvalFeatures::KTB), on_kp(EvalFeatures::KTC));
         assert!(kt.defender_cuts && kt.tool_by_holder && kt.counter_damage);
         assert!(kta.defender_cuts && !kta.tool_by_holder && !kta.counter_damage);
         assert!(!ktb.defender_cuts && ktb.tool_by_holder && !ktb.counter_damage);
@@ -4889,6 +4993,29 @@ mod kt_tests {
             assert!(!f.projected_readiness && !f.any_opening_switch() && !f.fuel_credit);
         }
         for f in [EvalFeatures::OFF, EvalFeatures::KQ, EvalFeatures::KD, EvalFeatures::KPR, EvalFeatures::KPF] {
+            assert!(!f.defender_cuts && !f.tool_by_holder && !f.counter_damage);
+        }
+    }
+
+    #[test]
+    fn the_codes_are_kog_plus_their_switches() {
+        // Amendment 2: kt<N> = kog<N> with the three switches on; kta, ktb and ktc = kog<N> with switch 1, 2 or 3 only.
+        // With its switches off, each code is kog's preset exactly.
+        let (kt, kta, ktb, ktc) = (EvalFeatures::KT, EvalFeatures::KTA, EvalFeatures::KTB, EvalFeatures::KTC);
+        assert!(kt.defender_cuts && kt.tool_by_holder && kt.counter_damage);
+        assert!(kta.defender_cuts && !kta.tool_by_holder && !kta.counter_damage);
+        assert!(!ktb.defender_cuts && ktb.tool_by_holder && !ktb.counter_damage);
+        assert!(!ktc.defender_cuts && !ktc.tool_by_holder && ktc.counter_damage);
+        let switches_off =
+            |f: EvalFeatures| EvalFeatures { defender_cuts: false, tool_by_holder: false, counter_damage: false, ..f };
+        for f in [kt, kta, ktb, ktc] {
+            assert_eq!(format!("{:?}", switches_off(f)), format!("{:?}", EvalFeatures::KOG));
+            // kog's switch A and F on; kq's, kd's, kpr's (R) and kph's (A, B) features off.
+            assert!(f.opening_first_turn_active && f.fuel_credit && !f.projected_readiness);
+            assert!(!f.evolution_steps && !f.zone_to_bench && !f.next_attack_reduction && !f.defender_modifiers);
+        }
+        // kog, koh and the tiers before them have no kt switch.
+        for f in [EvalFeatures::KOG, EvalFeatures::KOH, EvalFeatures::KPH, EvalFeatures::KPG] {
             assert!(!f.defender_cuts && !f.tool_by_holder && !f.counter_damage);
         }
     }
@@ -4941,13 +5068,9 @@ mod kt_tests {
                     if has_kt_source(&state) {
                         with_source += 1;
                     } else {
-                        for kt in [
-                            public_clock_effect_kt_value_function,
-                            public_clock_effect_kta_value_function,
-                            public_clock_effect_ktb_value_function,
-                            public_clock_effect_ktc_value_function,
-                        ] {
-                            assert_eq!(kt(&state, state.current_player), kp, "turn {}", state.turn_count);
+                        // 43cef0b's check, on the same switches on kp (amendment 2, item 7).
+                        for f in [EvalFeatures::KT, EvalFeatures::KTA, EvalFeatures::KTB, EvalFeatures::KTC] {
+                            assert_eq!(value(&state, state.current_player, on_kp(f)), kp, "turn {}", state.turn_count);
                         }
                     }
                 }
@@ -4955,6 +5078,87 @@ mod kt_tests {
         }
         // Both kinds of state were met.
         assert!(states > 500 && with_source > 50 && with_source < states, "{states} states, {with_source} with a source");
+    }
+
+    #[test]
+    fn kt_on_kog_is_koa_in_setup_and_the_switches_on_kp_plus_f_after_it() {
+        // Amendment 2, item 7: on every position of 12 random games, from each player's own view, where the opponent's
+        // setup is masked each code is koa's value (and so kog's); everywhere else it is the same switches on kp plus
+        // kog's F term, exactly; and wherever nothing kt reads is on the board, it is kog's value, exactly.
+        use crate::observation::{PlayerObservation, RevealedKnowledge};
+        let research = |name: &str| format!("../decks/research/{name}.txt");
+        let rayquaza = "../decks/gauntlet_2026-09-26/g-dragonair_mega_rayquaza.txt".to_string();
+        let pokemon_value = ValueFunctionParams::baseline().pokemon_value;
+        let codes: [(EvalFeatures, fn(&State, usize) -> f64); 4] = [
+            (EvalFeatures::KT, public_clock_effect_kt_value_function),
+            (EvalFeatures::KTA, public_clock_effect_kta_value_function),
+            (EvalFeatures::KTB, public_clock_effect_ktb_value_function),
+            (EvalFeatures::KTC, public_clock_effect_ktc_value_function),
+        ];
+        let (mut setup, mut play, mut with_f, mut without_source) = (0, 0, 0, 0);
+        let pairings = [
+            (research("altaria"), research("blaziken")),
+            (research("blaziken"), research("suicune")),
+            (research("suicune"), research("lucario")),
+            (rayquaza, research("blaziken")),
+        ];
+        for (a, b) in &pairings {
+            for seed in 0..3u64 {
+                let players: Vec<Box<dyn crate::players::Player>> = vec![
+                    Box::new(RandomPlayer { deck: Deck::from_file(a).unwrap() }),
+                    Box::new(RandomPlayer { deck: Deck::from_file(b).unwrap() }),
+                ];
+                let mut game = Game::new(players, 20_000_000_300 + seed);
+                let mut ticks = 0;
+                while !game.is_game_over() && ticks < 400 {
+                    let state = game.get_state_clone();
+                    for me in 0..2 {
+                        let observation = PlayerObservation::from_state(&state, me, &RevealedKnowledge::default());
+                        let view = observation.visible_state();
+                        if view.winner.is_some() {
+                            continue;
+                        }
+                        let turn = view.turn_count;
+                        if view.setup_opponent_hidden {
+                            setup += 1;
+                            let koa = public_clock_effect_koa_value_function(view, me);
+                            for (f, code) in codes {
+                                assert_eq!(code(view, me), value(view, me, f));
+                                assert_eq!(code(view, me), koa, "setup, turn {turn}");
+                            }
+                            continue;
+                        }
+                        play += 1;
+                        let opp = (me + 1) % 2;
+                        // kog's F with R off: the whole pile on each side (parametric_value_function_ex6).
+                        let fuel = (crate::players::fuel_credit::fuel_credit(view, me, true, &view.discard_energies[me])
+                            - crate::players::fuel_credit::fuel_credit(view, opp, false, &view.discard_energies[opp]))
+                            * pokemon_value;
+                        if fuel != 0.0 {
+                            with_f += 1;
+                        }
+                        for (f, code) in codes {
+                            assert_eq!(code(view, me), value(view, me, f));
+                            assert_eq!(code(view, me), value(view, me, on_kp(f)) + fuel, "turn {turn}");
+                        }
+                        if !has_kt_source(view) {
+                            without_source += 1;
+                            let kog = public_clock_effect_kog_value_function(view, me);
+                            for (_, code) in codes {
+                                assert_eq!(code(view, me), kog, "turn {turn}");
+                            }
+                        }
+                    }
+                    game.play_tick();
+                    ticks += 1;
+                }
+            }
+        }
+        // Every kind of position was met: setup, F acting, and positions with and without anything kt reads.
+        assert!(
+            setup > 0 && play > 500 && with_f > 0 && without_source > 0 && without_source < play,
+            "{setup} setup, {play} play, {with_f} with F, {without_source} without a kt source"
+        );
     }
 }
 
@@ -5376,5 +5580,445 @@ mod koh_tests {
             }
         }
         assert!(setup > 0 && play > 500, "{setup} setup and {play} play evaluations");
+    }
+}
+
+#[cfg(test)]
+mod km_tests {
+    //! km on kta (`rl/results/trainer_pricing_2026-09-28/REGISTRATION_DRAFT.md`, section 4.1, as Amendment 1 (c) item
+    //! 3 re-bases it, Sept 30): switch N2, the attacker's lasting Stadium damage bonus, in kta's threat clock
+    //! ([`kt_clock_stadium`], switch 1 on). 9c11b30 built and tested N2 on kog; these are those tests on kta's clock,
+    //! with kta in kog's place, and the pin where N2 meets switch 1.
+    //! Numbers from `lib/card.py`: Mega Lucario ex B3 081 (Stage 1
+    //! [F], 190 HP, [F][F] Fighting Pulse 90); Kirlia A1 131 (Stage 1 [P], [P][C] Smack 30); Mega Rayquaza ex B4 120
+    //! (Basic Dragon ex, 180 HP, no Weakness); Dratini A1 183 (Basic Dragon, 70 HP, no Weakness); Bonsly B3 078 ([-]
+    //! Teary Attack 10); Riolu B3 079 (Basic [F]); Training Area B2 153 (+10 for a Stage 1 attacker); Arena of
+    //! Antiquity B3 154 (+20 for an [F] attacker against an ex).
+    use super::*;
+    use crate::card_ids::CardId;
+    use crate::database::get_card_by_enum;
+    use crate::hooks::modify_damage;
+    use crate::observation::{PlayerObservation, RevealedKnowledge};
+    use crate::players::RandomPlayer;
+    use crate::{Deck, Game};
+
+    const PLAIN: DamageModifierContext<'static> = DamageModifierContext { attack_name: None, attack_effect: None };
+
+    fn mon(id: CardId) -> PlayedCard {
+        PlayedCard::from_id(id)
+    }
+
+    /// Player 0: `victim` (Active, then Bench). Player 1: `threat`. Player 0 to move on turn 5; `stadium` in play.
+    fn board(victim: Vec<PlayedCard>, threat: Vec<PlayedCard>, stadium: Option<CardId>) -> State {
+        let mut state = State::default();
+        state.set_board(victim, threat);
+        state.turn_count = 5;
+        state.current_player = 0;
+        state.active_stadium = stadium.map(get_card_by_enum);
+        state
+    }
+
+    /// kta's clock on `victim`'s side, as `kt_clocks` runs it in public evaluation (effect-aware, switch 1 on), with N2
+    /// on (km) or off (kta).
+    fn clock(state: &State, victim: usize, read_zones: bool, n2: bool) -> f64 {
+        kt_clock_stadium(state, victim, read_zones, true, false, true, true, n2).total(0.0)
+    }
+
+    /// A code's value from `myself`'s view, evaluated as the public codes are.
+    fn value(state: &State, myself: usize, features: EvalFeatures) -> f64 {
+        parametric_value_function_ex6(state, myself, &ValueFunctionParams::baseline(), true, false, true, true, false, features)
+    }
+
+    fn lucario_ff() -> PlayedCard {
+        mon(CardId::B3081MegaLucarioEx).with_energy(vec![EnergyType::Fighting; 2])
+    }
+
+    #[test]
+    fn the_bonus_is_what_modify_damage_adds_for_an_active_to_active_attack() {
+        // Every Stadium case, attacker Stage 0, 1 and 2 of [F], [R] and [P], against an ex and a non-ex with no
+        // Weakness: the bonus equals modify_damage's result with the Stadium minus without it, base damage 50.
+        let attackers = [
+            CardId::A1143Machop,
+            CardId::A1144Machoke,
+            CardId::A1145Machamp,
+            CardId::A1033Charmander,
+            CardId::A1034Charmeleon,
+            CardId::A1035Charizard,
+            CardId::A1130Ralts,
+            CardId::A1131Kirlia,
+            CardId::A1132Gardevoir,
+        ];
+        let (mut cases, mut nonzero) = (0, 0);
+        for stadium in [None, Some(CardId::B2153TrainingArea), Some(CardId::B3154ArenaofAntiquity)] {
+            for attacker in attackers {
+                for target in [CardId::A1183Dratini, CardId::B4120MegaRayquazaEx] {
+                    let with = board(vec![mon(attacker)], vec![mon(target)], stadium);
+                    let without = board(vec![mon(attacker)], vec![mon(target)], None);
+                    let engine = modify_damage(&with, (0, 0), (50, 1, 0), true, PLAIN)
+                        - modify_damage(&without, (0, 0), (50, 1, 0), true, PLAIN);
+                    let a = with.get_active(0);
+                    let ours = lasting_stadium_damage_bonus(
+                        &with,
+                        get_stage(a),
+                        &with.pokemon_energy_types(a),
+                        with.get_active(1).card.is_ex(),
+                    );
+                    assert_eq!(ours, engine, "{stadium:?}, {attacker:?} against {target:?}");
+                    cases += 1;
+                    nonzero += (ours > 0) as usize;
+                }
+            }
+        }
+        // 3 Stadium cases x 9 attackers x 2 targets. Training Area: the three Stage 1s against both targets (6);
+        // Arena: the three [F] attackers against the ex (3).
+        assert_eq!((cases, nonzero), (54, 9));
+    }
+
+    #[test]
+    fn a_stadium_bonus_that_saves_a_hit_shortens_the_clock_by_one_turn() {
+        // Mega Lucario ex with [F][F] (90) against a Mega Lucario ex (190 HP, ex): 3 hits; 2 with Training Area (100)
+        // or Arena (110). The survival clock is exactly one turn shorter.
+        let base = board(vec![mon(CardId::B3081MegaLucarioEx)], vec![lucario_ff()], None);
+        assert_eq!((clock(&base, 0, false, false), clock(&base, 0, false, true)), (3.0, 3.0));
+        for stadium in [CardId::B2153TrainingArea, CardId::B3154ArenaofAntiquity] {
+            let state = board(vec![mon(CardId::B3081MegaLucarioEx)], vec![lucario_ff()], Some(stadium));
+            assert_eq!(clock(&state, 0, false, false), 3.0, "kta doesn't see {stadium:?}");
+            assert_eq!(clock(&state, 0, false, true), 2.0, "km: {stadium:?}");
+        }
+        // Against 180 HP: 2 hits of 90, 100 or 110 alike: no change.
+        for stadium in [None, Some(CardId::B2153TrainingArea), Some(CardId::B3154ArenaofAntiquity)] {
+            let state = board(vec![mon(CardId::B3081MegaLucarioEx).with_damage(10)], vec![lucario_ff()], stadium);
+            assert_eq!((clock(&state, 0, false, false), clock(&state, 0, false, true)), (2.0, 2.0), "{stadium:?}");
+        }
+        // A [P] Stage 1 attacker gets Training Area's +10 and not Arena's +20: Kirlia's Smack (30) against Mega
+        // Rayquaza ex (180, ex) is 6 hits, 5 with Training Area (40), 6 with Arena.
+        let kirlia = || mon(CardId::A1131Kirlia).with_energy(vec![EnergyType::Psychic, EnergyType::Colorless]);
+        let with = |stadium| board(vec![mon(CardId::B4120MegaRayquazaEx)], vec![kirlia()], stadium);
+        assert_eq!(clock(&with(None), 0, false, true), 6.0);
+        assert_eq!(clock(&with(Some(CardId::B2153TrainingArea)), 0, false, true), 5.0);
+        assert_eq!(clock(&with(Some(CardId::B3154ArenaofAntiquity)), 0, false, true), 6.0);
+    }
+
+    #[test]
+    fn the_same_stadium_shortens_the_other_sides_clock_by_the_same_rule() {
+        // Roles swapped: player 1 is the victim and player 0's Mega Lucario ex the threat.
+        for (stadium, hits) in [
+            (None, 3.0),
+            (Some(CardId::B2153TrainingArea), 2.0),
+            (Some(CardId::B3154ArenaofAntiquity), 2.0),
+        ] {
+            let state = board(vec![lucario_ff()], vec![mon(CardId::B3081MegaLucarioEx)], stadium);
+            assert_eq!(clock(&state, 1, false, true), hits, "{stadium:?}");
+            assert_eq!(clock(&state, 1, false, false), 3.0, "{stadium:?}");
+        }
+    }
+
+    #[test]
+    fn a_benched_stage_1_threat_gets_the_bonus() {
+        // Player 1's Bonsly in front (Teary Attack 10) and a Mega Lucario ex with [F][F] benched: the threat is the
+        // benched Mega (90 > 10, both ready). Against player 0's Mega Lucario ex (190): 3 hits, 2 with Training Area.
+        let threat = vec![mon(CardId::B3078Bonsly), lucario_ff()];
+        let state = board(vec![mon(CardId::B3081MegaLucarioEx)], threat.clone(), None);
+        assert_eq!(clock(&state, 0, false, true), 3.0);
+        let state = board(vec![mon(CardId::B3081MegaLucarioEx)], threat, Some(CardId::B2153TrainingArea));
+        assert_eq!(clock(&state, 0, false, true), 2.0);
+    }
+
+    #[test]
+    fn an_evolving_threat_is_priced_as_its_evolved_form_and_the_opponents_forms_are_not_scanned() {
+        // Player 0's Riolu (Basic [F]) with Mega Lucario ex in player 0's hand. Scanned as player 0's own threat
+        // (zones read), the evolved form's candidates carry the Stage 1 [F] form: Training Area +10 and Arena +20
+        // against an ex. Riolu's own candidates are Stage 0: Arena's +20 only.
+        let mut state = board(
+            vec![mon(CardId::B3079Riolu).with_energy(vec![EnergyType::Fighting; 2])],
+            vec![mon(CardId::B4120MegaRayquazaEx)],
+            Some(CardId::B2153TrainingArea),
+        );
+        state.hands[0] = vec![get_card_by_enum(CardId::B3081MegaLucarioEx)];
+        let damage = |atk: &Attack, _: &PlayedCard| atk.fixed_damage;
+        let own = threat_candidates(&state, 0, true, None, &damage);
+        let evolved: Vec<_> = own.iter().filter(|c| c.form.is_some()).collect();
+        let current: Vec<_> = own.iter().filter(|c| c.form.is_none()).collect();
+        assert!(!evolved.is_empty() && !current.is_empty());
+        for c in &evolved {
+            assert_eq!(threat_attacker_stage_and_types(&state, 0, c), Some((1, vec![EnergyType::Fighting])));
+        }
+        for c in &current {
+            assert_eq!(threat_attacker_stage_and_types(&state, 0, c), Some((0, vec![EnergyType::Fighting])));
+        }
+        let bonus = |stadium: CardId, stage: u8| {
+            let mut s = state.clone();
+            s.active_stadium = Some(get_card_by_enum(stadium));
+            lasting_stadium_damage_bonus(&s, stage, &[EnergyType::Fighting], true)
+        };
+        assert_eq!((bonus(CardId::B2153TrainingArea, 1), bonus(CardId::B2153TrainingArea, 0)), (10, 0));
+        assert_eq!((bonus(CardId::B3154ArenaofAntiquity, 1), bonus(CardId::B3154ArenaofAntiquity, 0)), (20, 20));
+        // As the opponent's threat (board only), no form is scanned, so the bonus is Riolu's own Stage 0's.
+        let board_only = threat_candidates(&state, 0, false, None, &damage);
+        assert!(!board_only.is_empty() && board_only.iter().all(|c| c.form.is_none()));
+    }
+
+    #[test]
+    fn with_nothing_to_read_kms_clock_is_ktas() {
+        // No Stadium, or a Stadium that adds no damage (Hiking Trail, Fragrant Forest): N2 changes nothing.
+        for stadium in [None, Some(CardId::B2b069HikingTrail), Some(CardId::B3153FragrantForest)] {
+            let state = board(vec![mon(CardId::B3081MegaLucarioEx)], vec![lucario_ff()], stadium);
+            for victim in 0..2 {
+                for zones in [false, true] {
+                    assert_eq!(clock(&state, victim, zones, true), clock(&state, victim, zones, false), "{stadium:?}");
+                }
+            }
+        }
+    }
+
+    #[test]
+    fn km_is_kta_plus_n2_and_nothing_else() {
+        // Amendment 1 (c) 3.2, flag-off identity, bitwise: with its flag cleared, KM's preset is KTA's, every field,
+        // compared as `the_codes_are_kog_plus_their_switches` compares presets. KTA is kog + kt's switch 1.
+        let km = EvalFeatures::KM;
+        assert!(km.stadium_bonus_in_clock && km.defender_cuts && !km.tool_by_holder && !km.counter_damage);
+        assert_eq!(
+            format!("{:?}", EvalFeatures { stadium_bonus_in_clock: false, ..km }),
+            format!("{:?}", EvalFeatures::KTA)
+        );
+        // Every other preset has the flag off.
+        for f in [
+            EvalFeatures::OFF,
+            EvalFeatures::KQ,
+            EvalFeatures::KD,
+            EvalFeatures::KPR,
+            EvalFeatures::KOA,
+            EvalFeatures::KOB,
+            EvalFeatures::KOR,
+            EvalFeatures::KPF,
+            EvalFeatures::KPG,
+            EvalFeatures::KPH,
+            EvalFeatures::KPHA,
+            EvalFeatures::KPHB,
+            EvalFeatures::KOH,
+            EvalFeatures::KOG,
+            EvalFeatures::KT,
+            EvalFeatures::KTA,
+            EvalFeatures::KTB,
+            EvalFeatures::KTC,
+        ] {
+            assert!(!f.stadium_bonus_in_clock, "{f:?}");
+        }
+    }
+
+    #[test]
+    fn on_played_states_km_is_kta_wherever_no_damage_stadium_is_in_play() {
+        // Values, bitwise, on every position of 12 random games of the lists that carry the two Stadiums (Altaria's
+        // Training Area, Lucario's Arena), from each player's own view: km = kta in setup, and wherever neither
+        // Training Area nor Arena of Antiquity is in play. Where one is, km differs from kta somewhere. And everywhere,
+        // km's value with KM's flag cleared is kta's value function's (Amendment 1 (c) 3.2).
+        let deck = |name: &str| Deck::from_file(&format!("../decks/research/{name}.txt")).unwrap();
+        let is_damage_stadium = |state: &State| {
+            crate::stadiums::has_stadium(state, CardId::B2153TrainingArea)
+                || crate::stadiums::has_stadium(state, CardId::B3154ArenaofAntiquity)
+        };
+        let (mut same, mut with_stadium, mut differ) = (0, 0, 0);
+        for (a, b) in [("altaria", "lucario"), ("lucario", "blaziken"), ("altaria", "suicune"), ("lucario", "altaria")] {
+            for seed in 0..3u64 {
+                let players: Vec<Box<dyn crate::players::Player>> =
+                    vec![Box::new(RandomPlayer { deck: deck(a) }), Box::new(RandomPlayer { deck: deck(b) })];
+                let mut game = Game::new(players, 20_000_000_400 + seed);
+                let mut ticks = 0;
+                while !game.is_game_over() && ticks < 400 {
+                    let state = game.get_state_clone();
+                    for me in 0..2 {
+                        let observation = PlayerObservation::from_state(&state, me, &RevealedKnowledge::default());
+                        let view = observation.visible_state();
+                        let (km, kta) =
+                            (public_clock_effect_km_value_function(view, me), public_clock_effect_kta_value_function(view, me));
+                        let flag_cleared = value(view, me, EvalFeatures { stadium_bonus_in_clock: false, ..EvalFeatures::KM });
+                        assert_eq!(flag_cleared, kta, "turn {}", view.turn_count);
+                        if view.setup_opponent_hidden || !is_damage_stadium(view) {
+                            assert_eq!(km, kta, "turn {}", view.turn_count);
+                            same += 1;
+                        } else {
+                            with_stadium += 1;
+                            differ += (km != kta) as usize;
+                        }
+                    }
+                    game.play_tick();
+                    ticks += 1;
+                }
+            }
+        }
+        assert!(same > 500 && with_stadium > 50 && differ > 0, "{same} same, {with_stadium} with a Stadium, {differ} differ");
+    }
+
+    /// The score's card term for player 0: `(my.hand - opp.hand) * hand_size + (opp.deck - my.deck) * deck_size`
+    /// (`parametric_value_function_ex6`; both weights 1 in the baseline).
+    fn card_term(state: &State) -> f64 {
+        let p = ValueFunctionParams::baseline();
+        (state.hands[0].len() as f64 - state.hands[1].len() as f64) * p.hand_size
+            + (state.decks[1].cards.len() as f64 - state.decks[0].cards.len() as f64) * p.deck_size
+    }
+
+    /// Plays `names` in order (each the legal Play of that Trainer), then EndTurn, from `state`; the card term after.
+    fn card_term_after(state: &State, names: &[&str]) -> f64 {
+        let mut game = crate::test_support::get_initialized_game(0);
+        game.set_state(state.clone());
+        for name in names.iter().copied().chain(["EndTurn"]) {
+            let (_, actions) = game.get_state_clone().generate_possible_actions();
+            let action = actions
+                .into_iter()
+                .find(|a| match (&a.action, name) {
+                    (crate::actions::SimpleAction::EndTurn, "EndTurn") => true,
+                    (crate::actions::SimpleAction::Play { trainer_card }, n) => trainer_card.name == n,
+                    _ => false,
+                })
+                .unwrap_or_else(|| panic!("{name} is not legal here"));
+            game.apply_action(&action);
+        }
+        card_term(&game.get_state_clone())
+    }
+
+    #[test]
+    fn diagnostic_the_card_term_rewards_x_speed_before_copycat_and_a_play_under_hiking_trail_by_one() {
+        // Open question 13 of km's registration (a diagnostic of section 1.2's arithmetic, not km's switch): on
+        // boards that end the turn, with hands of inert cards (a Charizard with no Charmeleon in play can't be
+        // played), only the card term compared.
+        let inert = || get_card_by_enum(CardId::A1035Charizard);
+        let mut game = crate::test_support::get_initialized_game(0);
+        let mut state = game.get_state_clone();
+        state.set_board(vec![mon(CardId::A1143Machop)], vec![mon(CardId::A1183Dratini)]);
+        state.current_player = 0;
+        state.turn_count = 5;
+        state.move_generation_stack.clear();
+        state.active_stadium = None;
+        state.hands[1] = vec![inert(), inert(), inert(), inert()];
+        game.set_state(state);
+        let base = game.get_state_clone();
+        // 1. No Trail: X Speed then Copycat against Copycat alone. X Speed goes to the discard pile instead of into
+        //    the shuffle, so the deck ends one card smaller: +1.
+        let mut state = base.clone();
+        state.hands[0] = vec![
+            get_card_by_enum(CardId::PA002XSpeed),
+            get_card_by_enum(CardId::B1225Copycat),
+            inert(),
+            inert(),
+        ];
+        let both = card_term_after(&state, &["X Speed", "Copycat"]);
+        let copycat = card_term_after(&state, &["Copycat"]);
+        assert_eq!(both - copycat, 1.0);
+        // 2. Hiking Trail in play and a hand under 3: playing a card (X Speed) and ending the turn tops the hand up
+        //    to 3 with one draw more than not playing it: +1.
+        let mut state = base.clone();
+        state.active_stadium = Some(get_card_by_enum(CardId::B2b069HikingTrail));
+        state.hands[0] = vec![get_card_by_enum(CardId::PA002XSpeed), inert()];
+        let played = card_term_after(&state, &["X Speed"]);
+        let not_played = card_term_after(&state, &[]);
+        assert_eq!(played - not_played, 1.0);
+    }
+
+    #[test]
+    fn an_evolving_threat_that_the_clock_picks_is_priced_as_its_evolved_form() {
+        // The full-clock Cubone/Marowak test (fb825d1, kept by Amendment 1 (f)), on kta's clock: through the whole
+        // clock, not only the candidates. The board carries no cut, so kta's clock gives kog's numbers. Player 0's Cubone A1 151
+        // (Basic [F], [C] Growl, no damage) with [F] attached and Marowak A1 152 (Stage 1 [F], [F] Bone Beatdown 40)
+        // in player 0's hand; player 1's Mega Rayquaza ex (180, ex, no Weakness). Scanned with zones read (player 0's
+        // own threat), the only damaging candidate is the Marowak form: 1 missing (the evolution step), 40 a hit.
+        let mut state = board(
+            vec![mon(CardId::A1151Cubone).with_energy(vec![EnergyType::Fighting])],
+            vec![mon(CardId::B4120MegaRayquazaEx)],
+            None,
+        );
+        state.hands[0] = vec![get_card_by_enum(CardId::A1152Marowak)];
+        let with = |stadium: Option<CardId>| {
+            let mut s = state.clone();
+            s.active_stadium = stadium.map(get_card_by_enum);
+            s
+        };
+        // kta: 1 + ceil(180 / 40) = 6 turns, whatever the Stadium.
+        for stadium in [None, Some(CardId::B2153TrainingArea), Some(CardId::B3154ArenaofAntiquity)] {
+            assert_eq!(clock(&with(stadium), 1, true, false), 6.0, "{stadium:?}");
+        }
+        // km: Training Area's +10 comes from the form's Stage 1 (Cubone, Stage 0, would get none): 1 + ceil(180 / 50)
+        // = 5. Arena's +20 from its [F] against the ex: 1 + 180 / 60 = 4. Hiking Trail adds nothing: 6.
+        assert_eq!(clock(&with(None), 1, true, true), 6.0);
+        assert_eq!(clock(&with(Some(CardId::B2153TrainingArea)), 1, true, true), 5.0);
+        assert_eq!(clock(&with(Some(CardId::B3154ArenaofAntiquity)), 1, true, true), 4.0);
+        assert_eq!(clock(&with(Some(CardId::B2b069HikingTrail)), 1, true, true), 6.0);
+        // Read as the opponent's threat (board only), no form is scanned, Cubone has no damaging attack, and the clock
+        // is "never" (30) either way.
+        let ta = with(Some(CardId::B2153TrainingArea));
+        assert_eq!((clock(&ta, 1, false, true), clock(&ta, 1, false, false)), (30.0, 30.0));
+    }
+
+    #[test]
+    fn where_n2_meets_switch_1_a_hit_in_ktas_clock_is_what_modify_damage_deals() {
+        // Amendment 1 (c) 3.1, the case new to the re-issue. Player 1's attacker, ready (its first attack turn is 6),
+        // against player 0's Active carrying a damage-cut Tool, a -20 live through turn 6 (Stiffen's kind), or both;
+        // no Stadium, Training Area or Arena of Antiquity in play. In kta's clock the first hit carries every cut and
+        // each later hit the lasting ones (switch 1). Under km each also carries N2's bonus: the clock's hits equal
+        // what modify_damage deals for that active-to-active attack, the Stadium's bonus added before Weakness and
+        // the cuts taken off after, floored at 0. Under kta they equal modify_damage on the same board with no
+        // Stadium. The victims have no Weakness to [F] or [P] (card.py: Venusaur ex A1 004, 190 HP, Retreat 3, weak
+        // Fire; Venusaur A1 003, 160 HP, Retreat 3, weak Fire; Melmetal ex B1 174, [M], 170 HP, Retreat 3, weak Fire).
+        // Heavy Helmet B1 219: -20 with a Retreat Cost of 3 or more. Steel Apron A4 153: -10 for an [M] Pokemon.
+        // Metal Core Barrier B2 148: -50 for an [M] Pokemon, discarded at the end of the opponent's turn (the first hit
+        // only). Attackers: Mega Lucario ex (Stage 1 [F], 90), Kirlia A1 131 (Stage 1 [P], [P][C] Smack 30), Machop
+        // A1 143 (Basic [F], [F] Knuckle Punch 20).
+        let tool = |id: CardId| get_card_by_enum(id);
+        let for_a_turn = |mut p: PlayedCard| {
+            p.add_effect(CardEffect::ReducedDamage { amount: 20 }, 1);
+            p
+        };
+        let venusaur_ex = || mon(CardId::A1004VenusaurEx);
+        let melmetal_ex = || mon(CardId::B1174MelmetalEx);
+        let helmet = || tool(CardId::B1219HeavyHelmet);
+        // (the victim with every cut, the victim with its lasting cuts only)
+        let victims = [
+            (venusaur_ex().with_tool(helmet()), venusaur_ex().with_tool(helmet())),
+            (mon(CardId::A1003Venusaur).with_tool(helmet()), mon(CardId::A1003Venusaur).with_tool(helmet())),
+            (for_a_turn(venusaur_ex()), venusaur_ex()),
+            (for_a_turn(venusaur_ex().with_tool(helmet())), venusaur_ex().with_tool(helmet())),
+            (melmetal_ex().with_tool(tool(CardId::B2148MetalCoreBarrier)), melmetal_ex()),
+            (
+                for_a_turn(melmetal_ex().with_tool(tool(CardId::A4153SteelApron))),
+                melmetal_ex().with_tool(tool(CardId::A4153SteelApron)),
+            ),
+        ];
+        let attackers = [
+            lucario_ff(),
+            mon(CardId::A1131Kirlia).with_energy(vec![EnergyType::Psychic, EnergyType::Colorless]),
+            mon(CardId::A1143Machop).with_energy(vec![EnergyType::Fighting]),
+        ];
+        let bare = |state: &State| {
+            let mut state = state.clone();
+            state.active_stadium = None;
+            state
+        };
+        let (mut cases, mut n2_acts, mut cut_acts) = (0, 0, 0);
+        for stadium in [None, Some(CardId::B2153TrainingArea), Some(CardId::B3154ArenaofAntiquity)] {
+            for attacker in &attackers {
+                let attack = attacker.card.get_attacks()[0].clone();
+                let context =
+                    DamageModifierContext { attack_name: Some(&attack.title), attack_effect: attack.effect.as_deref() };
+                let engine = |state: &State| modify_damage(state, (1, 0), (attack.fixed_damage, 0, 0), true, context) as f64;
+                for (all_cuts, lasting_cuts) in &victims {
+                    let first_board = board(vec![all_cuts.clone()], vec![attacker.clone()], stadium);
+                    let later_board = board(vec![lasting_cuts.clone()], vec![attacker.clone()], stadium);
+                    let hits = |n2: bool| {
+                        let (_, first, later) =
+                            kt_clock_stadium(&first_board, 0, false, true, false, true, true, n2).active.unwrap();
+                        (first, later)
+                    };
+                    let label = format!("{stadium:?}, {} against {}", attacker.get_name(), all_cuts.get_name());
+                    let (km, kta) = (hits(true), hits(false));
+                    assert_eq!(km, (engine(&first_board), engine(&later_board)), "km: {label}");
+                    assert_eq!(kta, (engine(&bare(&first_board)), engine(&bare(&later_board))), "kta: {label}");
+                    cases += 1;
+                    n2_acts += (km != kta) as usize;
+                    cut_acts += (km.0 < attack.fixed_damage as f64) as usize;
+                }
+            }
+        }
+        // 3 Stadium cases x 3 attackers x 6 victims. N2 changes a hit in some, and a cut shortens a first hit in many.
+        assert_eq!(cases, 54);
+        assert!(n2_acts > 10 && cut_acts > 20, "{n2_acts} cases where N2 acts, {cut_acts} where a cut acts");
     }
 }

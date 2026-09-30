@@ -1,0 +1,32 @@
+2026-09-28T23:33:55Z start: build ec7e1a8; scan sha256 e19703b1007571c01a79a0b61dcd59bce1d04668bd0a0402c1c13e6535801dcb; deckgym sha256 158b0564c96ffb746e662c08244a6d7138d90804eebb51327f3e6a201f080a1a; engine/ diff from 233bced: players/ only
+2026-09-28T23:40:58Z STOPPED at Dustin's correction (via Fable): cross-check only; no footprint, route, verdict or reading; no mixed rows, coverage, (d) or A/B. Restarting with identity and tables only.
+2026-09-28T23:41:50Z start: build ec7e1a8; scan sha256 e19703b1007571c01a79a0b61dcd59bce1d04668bd0a0402c1c13e6535801dcb; deckgym sha256 158b0564c96ffb746e662c08244a6d7138d90804eebb51327f3e6a201f080a1a; engine/ diff from 233bced: players/ only
+2026-09-28T23:42:37Z suite: 1977 passed, 0 failed in 47 s
+2026-09-29T00:37:19Z ec7e1a8_k3_500 done in 3282 s (14000 games)
+2026-09-29T00:37:19Z identity: k3, 500 table deals, v the pin's frozen table: 14000 of 14000 games equal on moves, decisions, openings, winner_seat, points, seed (run has 14000; missing 0, differing 0); clean; PASS
+2026-09-29T01:29:49Z ec7e1a8_kp3_500 done in 3150 s (14000 games)
+2026-09-29T01:29:49Z identity: kp3, 500 table deals, v the pin's frozen table: 14000 of 14000 games equal on moves, decisions, openings, winner_seat, points, seed (run has 14000; missing 0, differing 0); clean; PASS
+2026-09-29T02:01:13Z ec7e1a8_kog3_500 done in 1884 s (14000 games)
+2026-09-29T02:01:13Z identity: kog3, 500 table deals, v a823b6d_kog3_500: 14000 of 14000 games equal on moves, decisions, openings, winner_seat, points, seed (run has 14000; missing 0, differing 0); clean; PASS
+2026-09-29T02:23:13Z ec7e1a8_new17_kog3_500 done in 1320 s (8500 games)
+2026-09-29T02:23:13Z identity: kog3, the 17 new cells, v new17_kog3: 8500 of 8500 games equal on moves, decisions, openings, winner_seat, points, seed (run has 8500; missing 0, differing 0); clean; PASS
+2026-09-29T02:33:00Z ec7e1a8_b2e_kog3_40 done in 587 s (3840 games)
+2026-09-29T02:33:00Z identity: kog3, B2e's 96 pairings i < 40, v koh's b2e_kog3: 3840 of 3840 games equal on moves, decisions, openings, winner_seat, points, seed (run has 3840; missing 0, differing 0); clean; PASS
+2026-09-29T03:13:25Z ec7e1a8_kq3_500 done in 2425 s (14000 games)
+2026-09-29T03:13:26Z identity: kq3, 500 table deals, v official_kq3_500: 14000 of 14000 games equal on moves, decisions, openings, winner_seat, points, seed (run has 14000; missing 0, differing 0); clean; PASS
+2026-09-29T03:16:18Z ec7e1a8_kd3_40 done in 172 s (1120 games)
+2026-09-29T03:16:18Z identity: kd3, 40 table deals, v af8489f_kd3_40: 1120 of 1120 games equal on moves, decisions, openings, winner_seat, points, seed (run has 1120; missing 0, differing 0); clean; PASS
+2026-09-29T03:19:28Z ec7e1a8_kpr3_40 done in 190 s (1120 games)
+2026-09-29T03:19:28Z identity: kpr3, 40 table deals, v af8489f_kpr3_40: 1120 of 1120 games equal on moves, decisions, openings, winner_seat, points, seed (run has 1120; missing 0, differing 0); clean; PASS
+2026-09-29T03:19:28Z IDENTITY DONE
+2026-09-29T03:52:37Z ec7e1a8_table_kt3_500 done in 1989 s (14000 games)
+2026-09-29T04:04:46Z RESUMED after the container restart (identity complete; the tables continue; same build, scan and calls)
+2026-09-29T04:28:09Z ec7e1a8_new17_kt3_500 done in 1403 s (8500 games)
+2026-09-29T05:00:17Z ec7e1a8_table_kta3_500 done in 1928 s (14000 games)
+2026-09-29T05:23:15Z ec7e1a8_new17_kta3_500 done in 1378 s (8500 games)
+2026-09-29T05:55:44Z ec7e1a8_table_ktb3_500 done in 1949 s (14000 games)
+2026-09-29T06:19:00Z ec7e1a8_new17_ktb3_500 done in 1395 s (8500 games)
+2026-09-29T06:51:41Z ec7e1a8_table_ktc3_500 done in 1961 s (14000 games)
+2026-09-29T07:15:04Z ec7e1a8_new17_ktc3_500 done in 1403 s (8500 games)
+2026-09-29T07:15:04Z TABLES DONE
+2026-09-29T07:15:04Z CROSS-CHECK RUNS DONE (identity and the four tables); nothing is read here

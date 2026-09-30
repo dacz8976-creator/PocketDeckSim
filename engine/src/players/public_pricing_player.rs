@@ -490,6 +490,82 @@ mod tests {
         assert!(is_hyper_ray(&decide(PlayerCode::KPR { max_depth: 3 })), "kpr3 chips with Hyper Ray");
     }
 
+    /// Player 0 to move on turn 5 with `mine` against `theirs` and `hand`, no Energy to attach and no Stadium in play:
+    /// each code's first move, through get_player, as the table plays it.
+    fn first_moves(mine: PlayedCard, theirs: PlayedCard, hand: Vec<Card>, codes: &[PlayerCode]) -> Vec<SimpleAction> {
+        let mut game = crate::test_support::get_initialized_game(0);
+        let mut state = game.get_state_clone();
+        state.set_board(vec![mine], vec![theirs]);
+        state.current_player = 0;
+        state.turn_count = 5;
+        state.move_generation_stack.clear();
+        state.active_stadium = None;
+        state.hands[0] = hand;
+        state.energy_zone[0].current = None;
+        game.set_state(state);
+        let real = game.get_state_clone();
+        let observation = PlayerObservation::from_state(&real, 0, &RevealedKnowledge::default());
+        let (_, mut actions) = real.generate_possible_actions();
+        crate::observation::canonical_actions(&mut actions);
+        codes
+            .iter()
+            .map(|code| {
+                let mut player = get_player(Deck::default(), &Deck::default(), code);
+                player.decision_fn(&mut StdRng::seed_from_u64(3), &observation, &actions).action
+            })
+            .collect()
+    }
+
+    fn plays(action: &SimpleAction, name: &str) -> bool {
+        matches!(action, SimpleAction::Play { trainer_card } if trainer_card.name == name)
+    }
+
+    /// km3 through get_player (km's registration, section 4.1, "Wiring through get_player", as Amendment 1 (c) 3.2
+    /// re-bases it on kta). Player 0's Machoke (Stage 1 [F], [F][F] Strength 50) holds one [F] with no Energy to
+    /// attach, so it can't attack this turn and the search sees no attack in its line. Player 1's Mega Lucario ex (190
+    /// HP, ex) holds [F][F]. Player 0's only card is a Stadium. Arena of Antiquity makes Strength 70 against the ex, 3
+    /// hits instead of 4, and adds nothing to Mega Lucario ex's hits on the non-ex Machoke: only km's N2 sees that, in
+    /// the clock, so km3 plays Arena and kta3 doesn't. With Hiking Trail as the card instead, N2 reads nothing and km3
+    /// plays as kta3. Neither side carries a cut, so switch 1 reads nothing here.
+    #[test]
+    fn km3_from_get_player_plays_arena_where_n2_saves_a_hit_and_otherwise_plays_as_kta3() {
+        let decide_with = |stadium: CardId| {
+            first_moves(
+                PlayedCard::from_id(CardId::A1144Machoke).with_energy(vec![EnergyType::Fighting]),
+                PlayedCard::from_id(CardId::B3081MegaLucarioEx).with_energy(vec![EnergyType::Fighting; 2]),
+                vec![crate::database::get_card_by_enum(stadium)],
+                &[PlayerCode::KM { max_depth: 3 }, PlayerCode::KTA { max_depth: 3 }],
+            )
+        };
+        let moves = decide_with(CardId::B3154ArenaofAntiquity);
+        assert!(plays(&moves[0], "Arena of Antiquity"), "km3 plays Arena: {:?}", moves[0]);
+        assert!(!plays(&moves[1], "Arena of Antiquity"), "kta3 doesn't: {:?}", moves[1]);
+        let moves = decide_with(CardId::B2b069HikingTrail);
+        assert_eq!(moves[0], moves[1], "with Hiking Trail, km3 plays as kta3");
+    }
+
+    /// km3 is built on kta, not kog, and kta3 from get_player plays switch 1 (Amendment 1 (c) 3.2; the step kta's
+    /// registration left to behaviour). Player 0's Venusaur A1 003 (160 HP, 150 left, Retreat 3, weak Fire) against
+    /// player 1's Mewtwo ex with [P][P] (Psychic Sphere 50), with Heavy Helmet (-20 at a Retreat Cost of 3 or more) and
+    /// Giant Cape (+20 HP) in hand, one Tool slot. kog's clock doesn't see the Helmet's cut and does see the Cape's HP:
+    /// 3 hits, 4 with the Cape, so kog3 plays the Cape. kta's clock (switch 1) sees the cut: 5 hits with the Helmet
+    /// (150 / 30), 4 with the Cape, so kta3 plays the Helmet. No Stadium is in play, so km3 plays as kta3.
+    #[test]
+    fn km3_and_kta3_from_get_player_play_switch_1_where_it_decides_and_kog3_doesnt() {
+        let moves = first_moves(
+            PlayedCard::from_id(CardId::A1003Venusaur).with_remaining_hp(150),
+            PlayedCard::from_id(CardId::A1129MewtwoEx).with_energy(vec![EnergyType::Psychic; 2]),
+            vec![
+                crate::database::get_card_by_enum(CardId::B1219HeavyHelmet),
+                crate::database::get_card_by_enum(CardId::A2147GiantCape),
+            ],
+            &[PlayerCode::KM { max_depth: 3 }, PlayerCode::KTA { max_depth: 3 }, PlayerCode::KOG { max_depth: 3 }],
+        );
+        assert!(plays(&moves[1], "Heavy Helmet"), "kta3 plays the Helmet: {:?}", moves[1]);
+        assert!(plays(&moves[2], "Giant Cape"), "kog3 plays the Cape: {:?}", moves[2]);
+        assert_eq!(moves[0], moves[1], "km3 plays as kta3");
+    }
+
     /// kpr3 is built the same way (get_player) and keeps kp's pricing: it prices Darkness Claw too.
     #[test]
     fn kpr3_from_get_player_also_prices_darkness_claw() {
