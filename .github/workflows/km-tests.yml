@@ -1,0 +1,62 @@
+name: km-tests
+
+# km's two light self-tests, run on every change to km_run/. No game, no engine, no build:
+#   read_km.py --selftest        the reader's gate logic on canned numbers, including the near-zero sweeps (each side of the
+#                                 dMSE and tau lines, never a wrong call, the 20,000-rep rule unchanged)
+#   test_km_thresholds.py        km_thresholds.py on synthetic counts (the M1 / M2 threshold cases, the guard, the frozen seeds)
+# unittest discovery finds neither (the second is a plain script that takes a scratch folder), so each is run directly, and each
+# step fails unless the test printed its own success line: a run that checked nothing must not go green.
+# Not run here: test_read_km.sh, the stand-in suite of the whole reader. It takes about 20 minutes, builds stand-in trees from
+# km's reference files and needs a fetched cloud branch, so it stays a by-hand run.
+
+on:
+  pull_request:
+    paths:
+      - 'rl/results/trainer_pricing_2026-09-28/km_run/**'
+      - '.github/workflows/km-tests.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'rl/results/trainer_pricing_2026-09-28/km_run/**'
+      - '.github/workflows/km-tests.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  km-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.14'
+
+      - name: read_km.py --selftest
+        shell: bash
+        working-directory: rl/results/trainer_pricing_2026-09-28/km_run
+        run: |
+          log="$RUNNER_TEMP/read_km_selftest.log"
+          python3 --version
+          # -eo pipefail (from shell: bash) makes a failing selftest fail the step even though the output goes through tee
+          python3 -B read_km.py --selftest 2>&1 | tee "$log"
+          if ! grep -q '^selftest ok: ' "$log"; then
+            echo "::error::read_km.py --selftest did not print its success line, so nothing was checked"
+            exit 1
+          fi
+          echo "read_km.py --selftest: ok" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: test_km_thresholds.py
+        shell: bash
+        working-directory: rl/results/trainer_pricing_2026-09-28/km_run
+        run: |
+          log="$RUNNER_TEMP/test_km_thresholds.log"
+          python3 -B test_km_thresholds.py "$RUNNER_TEMP/km_thresholds" 2>&1 | tee "$log"
+          cases=$(grep -c '^  ok    ' "$log" || true)
+          if [ "$cases" -eq 0 ] || grep -q '^  WRONG ' "$log" || ! grep -qx 'ALL CASES GIVE THEIR KNOWN ANSWER' "$log"; then
+            echo "::error::test_km_thresholds.py did not report every case ok ($cases ok), so it checked nothing or something is wrong"
+            exit 1
+          fi
+          echo "test_km_thresholds.py: $cases cases ok" >> "$GITHUB_STEP_SUMMARY"
