@@ -1,0 +1,13 @@
+ok   Fire Claws into Bastiodon (Guarded Grill): finite [0], full []
+ok   Fire Claws into Hisuian Goodra (Securely Sheltered): finite [0], full []
+ok   Fire Claws into Togekiss (Celestial Blessing): finite [], full [0]
+ok   Fire Claws into Meowth B2 124 (Carefree Steps): finite [], full [0]
+ok   Fire Claws into Bulbasaur (no coin Ability): finite [], full []
+ok   Fire Claws into Bastiodon with Togekiss on the Bench (only the Active takes damage): finite [0], full []
+ok   Heat Charged (no damage) into Bastiodon: finite [], full []
+ok   Tongue Whip itself (no own damage) with a coin Pokemon on the Bench: finite [], full []
+ok   queued choices offered after Tongue Whip at the coin Pokemon (coin_queued_offered): 1
+ok   plain ApplyDamage choices offered after it, for the other Bench slot (offgate_helper_choice's source): 1
+ok   choosing the queued choice: the finite cut is recorded for the Bench Bastiodon: finite [2], full []
+ok   Tongue Whip with no coin Pokemon: queued offered / plain offered: 0 / 2
+12 checks, 0 failures
