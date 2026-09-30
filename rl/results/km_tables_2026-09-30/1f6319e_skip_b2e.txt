@@ -1,0 +1,108 @@
+COVERAGE SHORTCUT, b2e
+Rule: "For coverage, skip mixed rows only when every corresponding deal has matching complete move fingerprints, decks, seeds and seats. Matching winners alone is insufficient." (Dustin, Sept 29; REGISTRATION.md top block, item 3)
+Compared deal by deal, on the deal key (pairing, i): moves, a, b, a_file, b_file, seed, first_seat (moves = the complete move fingerprint; a, b, a_file, b_file = both decks; seed; first_seat = the seats).
+A pairing is skipped only when every one of its deals is equal on all of them. winner_seat is not a criterion.
+kta3 both sides: /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/kt_tables_2026-09-28/ec7e1a8_b2e_kta3.jsonl (48000 games, sha256 38abd687e38c27285383616876729fd465bc4e42fe9445cddfe17ca7cde468ae)
+km3 both sides: /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/km_tables_2026-09-30/1f6319e_b2e_km3.jsonl (48000 games, sha256 fa6fcaf5a4d219a1b4a9ad4ddd4cb0dbb83bc8498481c9ee69390dbfad863b63)
+96 pairings x 500 deals.
+Coverage (step 5; block item 7): km3's both-sides games against kta3's references (Amendment 1 (b) item 2); the own-side mixed rows run on every pairing listed RUN. Pairings 0-47 (held-out) count; 48-95 (Dustin's files) are reported.
+
+RUN b2e 0: 365 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (manectric v lucario): its mixed rows run; 135 of 500 deals differ (moves 135); first at i = 0 (moves); winners equal on 119 of those 135 deals, which does not make it skip
+RUN b2e 1: 415 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (manectric v altaria): its mixed rows run; 85 of 500 deals differ (moves 85); first at i = 10 (moves); winners equal on 80 of those 85 deals, which does not make it skip
+RUN b2e 2: 395 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (manectric v sceptile): its mixed rows run; 105 of 500 deals differ (moves 105); first at i = 1 (moves); winners equal on 93 of those 105 deals, which does not make it skip
+RUN b2e 3: 342 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (manectric v vespiquen): its mixed rows run; 158 of 500 deals differ (moves 158); first at i = 1 (moves); winners equal on 144 of those 158 deals, which does not make it skip
+RUN b2e 4: 441 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (manectric v suicune): its mixed rows run; 59 of 500 deals differ (moves 59); first at i = 2 (moves); winners equal on 53 of those 59 deals, which does not make it skip
+RUN b2e 5: 371 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (manectric v hydreigon): its mixed rows run; 129 of 500 deals differ (moves 129); first at i = 9 (moves); winners equal on 115 of those 129 deals, which does not make it skip
+RUN b2e 6: 439 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (manectric v weezing): its mixed rows run; 61 of 500 deals differ (moves 61); first at i = 1 (moves); winners equal on 57 of those 61 deals, which does not make it skip
+RUN b2e 7: 445 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (manectric v blaziken): its mixed rows run; 55 of 500 deals differ (moves 55); first at i = 0 (moves); winners equal on 46 of those 55 deals, which does not make it skip
+RUN b2e 8: 279 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (raticate v lucario): its mixed rows run; 221 of 500 deals differ (moves 221); first at i = 0 (moves); winners equal on 201 of those 221 deals, which does not make it skip
+RUN b2e 9: 350 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (raticate v altaria): its mixed rows run; 150 of 500 deals differ (moves 150); first at i = 9 (moves); winners equal on 130 of those 150 deals, which does not make it skip
+RUN b2e 10: 389 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (raticate v sceptile): its mixed rows run; 111 of 500 deals differ (moves 111); first at i = 1 (moves); winners equal on 96 of those 111 deals, which does not make it skip
+RUN b2e 11: 374 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (raticate v vespiquen): its mixed rows run; 126 of 500 deals differ (moves 126); first at i = 0 (moves); winners equal on 97 of those 126 deals, which does not make it skip
+RUN b2e 12: 459 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (raticate v suicune): its mixed rows run; 41 of 500 deals differ (moves 41); first at i = 40 (moves); winners equal on 39 of those 41 deals, which does not make it skip
+RUN b2e 13: 309 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (raticate v hydreigon): its mixed rows run; 191 of 500 deals differ (moves 191); first at i = 0 (moves); winners equal on 168 of those 191 deals, which does not make it skip
+RUN b2e 14: 453 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (raticate v weezing): its mixed rows run; 47 of 500 deals differ (moves 47); first at i = 30 (moves); winners equal on 40 of those 47 deals, which does not make it skip
+RUN b2e 15: 464 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (raticate v blaziken): its mixed rows run; 36 of 500 deals differ (moves 36); first at i = 19 (moves); winners equal on 30 of those 36 deals, which does not make it skip
+RUN b2e 16: 182 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (hoopa_absol v lucario): its mixed rows run; 318 of 500 deals differ (moves 318); first at i = 0 (moves); winners equal on 221 of those 318 deals, which does not make it skip
+RUN b2e 17: 314 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (hoopa_absol v altaria): its mixed rows run; 186 of 500 deals differ (moves 186); first at i = 1 (moves); winners equal on 151 of those 186 deals, which does not make it skip
+SKIP b2e 18: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (hoopa_absol v sceptile): its mixed rows are skipped
+SKIP b2e 19: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (hoopa_absol v vespiquen): its mixed rows are skipped
+SKIP b2e 20: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (hoopa_absol v suicune): its mixed rows are skipped
+SKIP b2e 21: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (hoopa_absol v hydreigon): its mixed rows are skipped
+SKIP b2e 22: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (hoopa_absol v weezing): its mixed rows are skipped
+SKIP b2e 23: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (hoopa_absol v blaziken): its mixed rows are skipped
+SKIP b2e 24: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (garchomp v lucario): its mixed rows are skipped
+RUN b2e 25: 444 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (garchomp v altaria): its mixed rows run; 56 of 500 deals differ (moves 56); first at i = 2 (moves); winners equal on 55 of those 56 deals, which does not make it skip
+SKIP b2e 26: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (garchomp v sceptile): its mixed rows are skipped
+SKIP b2e 27: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (garchomp v vespiquen): its mixed rows are skipped
+SKIP b2e 28: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (garchomp v suicune): its mixed rows are skipped
+SKIP b2e 29: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (garchomp v hydreigon): its mixed rows are skipped
+SKIP b2e 30: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (garchomp v weezing): its mixed rows are skipped
+SKIP b2e 31: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (garchomp v blaziken): its mixed rows are skipped
+RUN b2e 32: 329 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (whimsicott v lucario): its mixed rows run; 171 of 500 deals differ (moves 171); first at i = 1 (moves); winners equal on 148 of those 171 deals, which does not make it skip
+RUN b2e 33: 303 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (whimsicott v altaria): its mixed rows run; 197 of 500 deals differ (moves 197); first at i = 5 (moves); winners equal on 168 of those 197 deals, which does not make it skip
+SKIP b2e 34: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (whimsicott v sceptile): its mixed rows are skipped
+SKIP b2e 35: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (whimsicott v vespiquen): its mixed rows are skipped
+SKIP b2e 36: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (whimsicott v suicune): its mixed rows are skipped
+SKIP b2e 37: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (whimsicott v hydreigon): its mixed rows are skipped
+SKIP b2e 38: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (whimsicott v weezing): its mixed rows are skipped
+SKIP b2e 39: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (whimsicott v blaziken): its mixed rows are skipped
+RUN b2e 40: 185 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (charizardy_entei v lucario): its mixed rows run; 315 of 500 deals differ (moves 315); first at i = 1 (moves); winners equal on 250 of those 315 deals, which does not make it skip
+RUN b2e 41: 270 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (charizardy_entei v altaria): its mixed rows run; 230 of 500 deals differ (moves 230); first at i = 1 (moves); winners equal on 173 of those 230 deals, which does not make it skip
+SKIP b2e 42: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (charizardy_entei v sceptile): its mixed rows are skipped
+SKIP b2e 43: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (charizardy_entei v vespiquen): its mixed rows are skipped
+SKIP b2e 44: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (charizardy_entei v suicune): its mixed rows are skipped
+SKIP b2e 45: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (charizardy_entei v hydreigon): its mixed rows are skipped
+SKIP b2e 46: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (charizardy_entei v weezing): its mixed rows are skipped
+SKIP b2e 47: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (charizardy_entei v blaziken): its mixed rows are skipped
+RUN b2e 48: 357 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (dustin_manectric v lucario): its mixed rows run; 143 of 500 deals differ (moves 143); first at i = 17 (moves); winners equal on 123 of those 143 deals, which does not make it skip
+RUN b2e 49: 399 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (dustin_manectric v altaria): its mixed rows run; 101 of 500 deals differ (moves 101); first at i = 1 (moves); winners equal on 89 of those 101 deals, which does not make it skip
+RUN b2e 50: 407 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (dustin_manectric v sceptile): its mixed rows run; 93 of 500 deals differ (moves 93); first at i = 1 (moves); winners equal on 77 of those 93 deals, which does not make it skip
+RUN b2e 51: 361 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (dustin_manectric v vespiquen): its mixed rows run; 139 of 500 deals differ (moves 139); first at i = 1 (moves); winners equal on 127 of those 139 deals, which does not make it skip
+RUN b2e 52: 453 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (dustin_manectric v suicune): its mixed rows run; 47 of 500 deals differ (moves 47); first at i = 4 (moves); winners equal on 46 of those 47 deals, which does not make it skip
+RUN b2e 53: 389 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (dustin_manectric v hydreigon): its mixed rows run; 111 of 500 deals differ (moves 111); first at i = 5 (moves); winners equal on 103 of those 111 deals, which does not make it skip
+RUN b2e 54: 428 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (dustin_manectric v weezing): its mixed rows run; 72 of 500 deals differ (moves 72); first at i = 22 (moves); winners equal on 62 of those 72 deals, which does not make it skip
+RUN b2e 55: 442 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (dustin_manectric v blaziken): its mixed rows run; 58 of 500 deals differ (moves 58); first at i = 25 (moves); winners equal on 48 of those 58 deals, which does not make it skip
+RUN b2e 56: 294 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (dustin_raticate v lucario): its mixed rows run; 206 of 500 deals differ (moves 206); first at i = 2 (moves); winners equal on 185 of those 206 deals, which does not make it skip
+RUN b2e 57: 406 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (dustin_raticate v altaria): its mixed rows run; 94 of 500 deals differ (moves 94); first at i = 2 (moves); winners equal on 82 of those 94 deals, which does not make it skip
+SKIP b2e 58: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (dustin_raticate v sceptile): its mixed rows are skipped
+SKIP b2e 59: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (dustin_raticate v vespiquen): its mixed rows are skipped
+SKIP b2e 60: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (dustin_raticate v suicune): its mixed rows are skipped
+SKIP b2e 61: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (dustin_raticate v hydreigon): its mixed rows are skipped
+SKIP b2e 62: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (dustin_raticate v weezing): its mixed rows are skipped
+SKIP b2e 63: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (dustin_raticate v blaziken): its mixed rows are skipped
+RUN b2e 64: 271 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (dustin_hoopa_absol v lucario): its mixed rows run; 229 of 500 deals differ (moves 229); first at i = 2 (moves); winners equal on 175 of those 229 deals, which does not make it skip
+RUN b2e 65: 371 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (dustin_hoopa_absol v altaria): its mixed rows run; 129 of 500 deals differ (moves 129); first at i = 1 (moves); winners equal on 103 of those 129 deals, which does not make it skip
+SKIP b2e 66: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (dustin_hoopa_absol v sceptile): its mixed rows are skipped
+SKIP b2e 67: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (dustin_hoopa_absol v vespiquen): its mixed rows are skipped
+SKIP b2e 68: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (dustin_hoopa_absol v suicune): its mixed rows are skipped
+SKIP b2e 69: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (dustin_hoopa_absol v hydreigon): its mixed rows are skipped
+SKIP b2e 70: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (dustin_hoopa_absol v weezing): its mixed rows are skipped
+SKIP b2e 71: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (dustin_hoopa_absol v blaziken): its mixed rows are skipped
+SKIP b2e 72: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (dustin_garchomp v lucario): its mixed rows are skipped
+RUN b2e 73: 403 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (dustin_garchomp v altaria): its mixed rows run; 97 of 500 deals differ (moves 97); first at i = 8 (moves); winners equal on 90 of those 97 deals, which does not make it skip
+SKIP b2e 74: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (dustin_garchomp v sceptile): its mixed rows are skipped
+SKIP b2e 75: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (dustin_garchomp v vespiquen): its mixed rows are skipped
+SKIP b2e 76: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (dustin_garchomp v suicune): its mixed rows are skipped
+SKIP b2e 77: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (dustin_garchomp v hydreigon): its mixed rows are skipped
+SKIP b2e 78: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (dustin_garchomp v weezing): its mixed rows are skipped
+SKIP b2e 79: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (dustin_garchomp v blaziken): its mixed rows are skipped
+RUN b2e 80: 236 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (dustin_whimsicott v lucario): its mixed rows run; 264 of 500 deals differ (moves 264); first at i = 1 (moves); winners equal on 222 of those 264 deals, which does not make it skip
+RUN b2e 81: 295 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (dustin_whimsicott v altaria): its mixed rows run; 205 of 500 deals differ (moves 205); first at i = 3 (moves); winners equal on 172 of those 205 deals, which does not make it skip
+SKIP b2e 82: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (dustin_whimsicott v sceptile): its mixed rows are skipped
+SKIP b2e 83: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (dustin_whimsicott v vespiquen): its mixed rows are skipped
+SKIP b2e 84: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (dustin_whimsicott v suicune): its mixed rows are skipped
+SKIP b2e 85: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (dustin_whimsicott v hydreigon): its mixed rows are skipped
+SKIP b2e 86: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (dustin_whimsicott v weezing): its mixed rows are skipped
+SKIP b2e 87: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (dustin_whimsicott v blaziken): its mixed rows are skipped
+RUN b2e 88: 150 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (dustin_charizardy_entei v lucario): its mixed rows run; 350 of 500 deals differ (moves 350); first at i = 0 (moves); winners equal on 256 of those 350 deals, which does not make it skip
+RUN b2e 89: 260 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (dustin_charizardy_entei v altaria): its mixed rows run; 240 of 500 deals differ (moves 240); first at i = 0 (moves); winners equal on 183 of those 240 deals, which does not make it skip
+SKIP b2e 90: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (dustin_charizardy_entei v sceptile): its mixed rows are skipped
+SKIP b2e 91: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (dustin_charizardy_entei v vespiquen): its mixed rows are skipped
+SKIP b2e 92: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (dustin_charizardy_entei v suicune): its mixed rows are skipped
+SKIP b2e 93: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (dustin_charizardy_entei v hydreigon): its mixed rows are skipped
+SKIP b2e 94: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (dustin_charizardy_entei v weezing): its mixed rows are skipped
+SKIP b2e 95: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (dustin_charizardy_entei v blaziken): its mixed rows are skipped
+
+Skipped pairings (56): 18,19,20,21,22,23,24,26,27,28,29,30,31,34,35,36,37,38,39,42,43,44,45,46,47,58,59,60,61,62,63,66,67,68,69,70,71,72,74,75,76,77,78,79,82,83,84,85,86,87,90,91,92,93,94,95
+Pairings whose mixed rows run (40): 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,25,32,33,40,41,48,49,50,51,52,53,54,55,56,57,64,65,73,80,81,88,89

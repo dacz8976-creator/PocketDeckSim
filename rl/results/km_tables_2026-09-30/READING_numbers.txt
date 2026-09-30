@@ -1,0 +1,312 @@
+km's reading (rl/results/trainer_pricing_2026-09-28/REGISTRATION_DRAFT.md, registered Sept 29 with Dustin's word; Amendment 1, Sept 30: km re-issued on kta): km3 against kta3; files /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/km_tables_2026-09-30/1f6319e_*; B 1f6319e4b72e34a42d2d3c3ffc7cc9a09fdfa6f3; the config /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/trainer_pricing_2026-09-28/km_run/km_config.json (sha256 a352c04fcb588372...)
+km's one list (Amendment 1 (b) item 4), checked before anything else was read: km_inputs.sha256 (sha256 6c9732b68bfbd09b..., as STATUS.txt records it): its set is the config's (B 1f6319e, km3 against kta3, 8 reference files, the cloud's outputs, 3 programs) and its 65 files have their sha256
+score45 bootstrap: --reps 4000 (score.py's default; its seeds are fixed, so a rerun is identical).
+
+1. THE FOOTPRINT (step 1; footprint.txt, read first; it fixes the route):
+   FOOTPRINT: 3117 of 22500 paired games on the 45 cells differ from kta3's moves = 13.85%
+   ROUTE (fixed on this number, before anything else is read): RESERVE route, clauses (a)-(e)
+   by cell (games differing of 500): altaria v blaziken 79, altaria v hydreigon 82, altaria v lucario 197, altaria v sceptile 108, altaria v suicune 227, altaria v vespiquen 182, altaria v weezing 184, altaria_greninja v altaria 96, altaria_greninja v lucario 143, blaziken v lucario 160, hydreigon v lu ...
+   cross-check: the moves fields of km3's files against kta3's reference files reproduce footprint.txt's count (3,117); 615 of those games changed their result.
+   km3: 3,117 of 22,500 = 13.8533% (15% is 3,375 games) -> THE RESERVE ROUTE (step 4; under 15%); decided from the counts, and footprint.txt's own route text agrees.
+   predicted, not chosen (section 7): between about 3% and 17%, no reliable centre, all in the 17 cells that hold the panel Altaria or Lucario list. Both routes are registered in full; the prediction never picks the route.
+   cells with a changed game: 17 of 45: altaria v blaziken (79), altaria v hydreigon (82), altaria v lucario (197), altaria v sceptile (108), altaria v suicune (227), altaria v vespiquen (182), altaria v weezing (184), blaziken v lucario (160), hydreigon v lucario (218), lucario v sceptile (85), lucario v suicune (303), lucario v vespiquen (329), lucario v weezing (315), rayquaza v lucario (210), rayquaza v altaria (199), altaria_greninja v lucario (143), altaria_greninja v altaria (96)
+   integrity line: every changed game sits in the 17 cells whose lists carry Training Area or Arena of Antiquity.
+
+1b. PRECONDITIONS (section 4.0, 'Gate and order', and section 4.1, as Amendment 1 (e) and (g) re-base them). Restated from the disk and the runner's files:
+   (not checkable here: Dustin's word on the build, (g) step 3, and his separate go-ahead for the tables; the runner holds them)
+   deckgym: 119389c57de425c55e951de6e14bcbe9811a6cf2861c88c4fa43b6cdb9ccd215 (on the disk = programs.txt = STATUS.txt's 'KM PART B DONE 1f6319e' line = km_inputs.sha256; built from B 1f6319e)
+   legality_scan: c1ef78e3758eb8cdeec3444076873d8215b8d54e3e6fe74ee73c4a351f2e9abf (on the disk = programs.txt = STATUS.txt's 'KM PART B DONE 1f6319e' line = km_inputs.sha256; built from B 1f6319e)
+   tool_census: 9e7bdc1b47b9eda69540fd5263acbab7a1f081f7467db657af5fbb7def47f807 (on the disk = programs.txt = STATUS.txt's 'KM PART B DONE 1f6319e' line = km_inputs.sha256; built from B 1f6319e)
+   The cloud's programs differ by machine (a Rust build embeds its paths); what carries across is B, the counter tool's source, the games and the tool's outputs, checked as agreement on the tested games (Amendment 1 (e)).
+   counter tool source: tool_census.rs: sha256 = the config's 05d7ba4183ce9e30...
+   identity (the laptop's own games at B, recorded as agreement on the tested games, Amendment 1 (e)): 15 lines, every
+      one equal, 4,664 games, rows and files: 1 kta3, laptop build, the 28 table cells, i < 20, v
+      ec7e1a8_kta3_table.jsonl 560; 2 kta3, laptop build, the 17 new cells, i < 20, v ec7e1a8_kta3_new17.jsonl 340; 3
+      km3 (as km3) equal to kta3, laptop build, the 15 table cells with neither damage Stadium, i < 20, v
+      ec7e1a8_kta3_table.jsonl 300; 3 km3 (as km3) equal to kta3, laptop build, the 13 new cells with neither damage
+      Stadium, i < 20, v ec7e1a8_kta3_new17.jsonl 260; 4 km3 (as km3), laptop build, pairings 0,2,19 (where N2 acts),
+      i < 40, v 1f6319e_km3_smoke_40.jsonl 120; 5 kta3, laptop build, b2e (96 pairings), i < 20, v
+      ec7e1a8_b2e_kta3.jsonl 1,920; 5 kta3, laptop build, scizor (8 pairings), i < 20, v ec7e1a8_scizor_kta3.jsonl
+      160; 5 kta3, laptop build, var_v-lucario_2 (7 pairings), i < 20, v ec7e1a8_var_v-lucario_2_kta3.jsonl 140; 5
+      kta3, laptop build, var_v-suicune_2 (7 pairings), i < 20, v ec7e1a8_var_v-suicune_2_kta3.jsonl 140; 5 kta3,
+      laptop build, var_v-weezing_2 (7 pairings), i < 20, v ec7e1a8_var_v-weezing_2_kta3.jsonl 140; 5 kta3, laptop
+      build, var_l-charizardy (8 pairings), i < 20, v ec7e1a8_var_l-charizardy_kta3.jsonl 160; 6 the counter tool's
+      kta3 (8a's slice, --no-counts), laptop build, the 17 named cells, i < 20, v ec7e1a8_kta3_table.jsonl /
+      ec7e1a8_kta3_new17.jsonl 340; 6 the counter tool's km3 (as km3; 8a's slice, --no-counts), laptop build, pairings
+      0 and 2, i < 40, v 1f6319e_km3_smoke_40.jsonl 80; 7 tool test 3's exact command, laptop build (kp3, Altaria v
+      Lucario, seeds 20,000,920,000-019, 20 games; counts compared byte for byte, none read) 2; 8 tool test 1's run of
+      the tool, laptop build (kp3, the table's first 20 deals of the 28 pairings, 560 games; counts compared byte for
+      byte, none read) 2
+   timing (1f6319e_timing_1.txt): kta3 4.0 s wall, 37.9 s CPU; km3 4.3 s wall, 39.6 s CPU; km3/kta3 wall 1.062 (limit 1.25: within), CPU 1.044
+   RULE findings: none in the 39 scan pages in the folder (each page beside a file read is checked in section 9).
+   thresholds.json (/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/km_tables_2026-09-30/thresholds.json): km_thresholds.py sha256 c84a87688d178f08...; the counter tool's source = the config's; its program = the pinned tool_census
+   M1 (Arena of Antiquity): sample kta3 355 of 1,664 = 21.3%, km3 444 of 1,308 = 33.9%; paired interval +0.1071 to +0.1469; T = 100263/362752 = 27.6% (displayed; compared exactly); in the amendment (100263/362752)
+   M2 (Training Area): sample kta3 254 of 870 = 29.2%, km3 275 of 786 = 35.0%; paired interval +0.0386 to +0.0783; T = 24383/75980 = 32.1% (displayed; compared exactly); in the amendment (24383/75980)
+   the threshold sample's rows are in: both arms checked deal by deal (kta3 against its reference files, km3 against its footprint games) and every sum of thresholds.json recomputed from them, equal. (The interval is the independent check's to recompute, not this reader's.)
+
+NOTES: where the registration's text needs a coding, and the one coded (km3 against kta3, Amendment 1 (b) item 2)
+ K1  Frame. The 45-cell block of score45.py gates; its 44-cell decision set (Altaria v Sceptile quarantined) is compared
+     beside on the ΔMSE label, the τ̂ bound and the vetoes that count; a difference is a note and gates nothing.
+ K2  The event-resampled intervals are printed beside and gate nothing; the match-level ones gate.
+ K3  The route comes from the integers of footprint.txt (100 d < 15 n is the reserve route) and its own route text must
+     agree; the files themselves must reproduce its count.
+ K4  What gates under which route and ΔMSE label (step 4; section 6, "Outcomes fixed now"): wholly above zero fails on
+     accuracy, no fallback, both routes. Reserve route: (b) (the τ̂ bound and no veto), (c), coverage and (d) gate when
+     the label is 'below' or 'spans'; M1 and M2 only on 'spans'. Ordinary rule: the vetoes, coverage and (d) gate on
+     'below' and 'spans'; the τ̂ bound gates only on 'spans' (the fallback's no-harm test (1)); (c) is reported (section
+     6 item 3: harm is "route (c) or the vetoes"); M1 and M2 only on 'spans'.
+ K5  (c): per meta deck, pooled over its cells where km3's footprint is not zero, both seat orders, worse = the pooled 95%
+     interval wholly below zero. A zero-footprint cell's mixed rows are read as kta3's games (a pilot's choice is a
+     function of the position; the identity at B, item 5, finds km3 = kta3 on the 28 cells without either Stadium); a
+     mixed-row game run there that differs from kta3's is an INTEGRITY line. km's registration names no i<40 sample.
+ K6  (d) (step 4 (d)): Lucario's 9 rows, 2,000 deals each (500 on the table's seeds + 1,500 on D2's block), km3 on
+     Lucario with kta3 on the other deck against kta3 on both; Lucario's own-side score whichever seat; the equal-weight
+     mean of the per-row mean differences, half-width 1.96 x sqrt(sum of per-row variances of the mean difference) / 9
+     (read_koh.py's paired()); passes when mean minus half-width is above zero; read once, on both routes. Each game's row
+     and deal are read from its seed; the block's seat rule is Lucario in seat 0 on even j. (d)'s kta3 arm on deals 0-499
+     must replay kta3's reference games (moves, seed, seats): a difference STOPS (section 4.1 item 9).
+ K7  The ΔMSE label: the upper edge from score.py's own "below 0"; the lower edge only as printed ("+0.0" is not called);
+     no changed result on the 45 cells: the interval is the point 0, which spans zero.
+ K8  Near-zero bounds (step 4): a ΔMSE bound within 5% of the interval's width of 0 (either edge) and a τ̂ bound within
+     0.10 of -1.0 are PENDING below --reps 20000; the 20,000-rep rerun (the same games) decides. Inclusive, in whole units
+     of the printout.
+ K9  Coverage mixed rows (Dustin's rule, registration item 7): a pairing may be skipped only when every one of its deals
+     has km3's both-sides game equal to kta3's on the move fingerprint, both decks (and deck files), the seed and the
+     seats. The reader checks that itself for every pairing; a skipped pairing counts as no change and must be named in
+     coverage_skip.txt. A pairing named as skipped whose deals differ, a skipped pairing not named, or a pairing whose
+     deals differ without its mixed rows holds its coverage test (PENDING, named). A mixed-row game that differs in a
+     pairing whose both-sides games all matched is an INTEGRITY line.
+ K10 M1 and M2 (step 3): pooled over the line's cells on deals 0-199, the owner's side only (Lucario's for Arena,
+     Altaria's for Training Area): turns played summed over turns offered summed, an exact Fraction, compared with
+     thresholds.json's exact T (Fraction against Fraction, never rounded; displayed to one decimal only); PASS when km3's
+     rate >= T. Not passed: 'cannot pass' in the amendment (the midpoint is then not used), the guard (kta3's own rate on
+     the same deals >= T, 'not shown at this size'), km3 never offered the card, or km3's rate < T. thresholds.json must
+     agree with itself (T is the exact midpoint of its two sample rates; 'cannot pass' exactly when its lower bound is not
+     above zero or an offered sum is 0), with the registration's dated amendment (T's fraction, or 'cannot pass' with the
+     card and km3's offered sum, in the text), and with the sample's raw rows when they are in the folder.
+ K11 Counter rows (step 3): every measuring run's kta3 arm is checked deal by deal against ec7e1a8_kta3_table.jsonl and
+     ec7e1a8_kta3_new17.jsonl (moves, both decks, seed, seats) and its km3 arm against km3's own 45-cell games; any
+     difference STOPS. A km3 row whose moves equal kta3's on the same deal but whose counts differ is an INTEGRITY line
+     (the counts are a function of the game).
+ K12 Integrity lines hold the reading (HELD), never fail it, and are read before anything that decides, 'wholly above
+     zero' and every FAIL included; the verdict they would allow is printed beside. A file read without its scan page
+     holds the same way. --integrity-explained FILE records a human's explanation, printed in full.
+ K13 Preconditions (Amendment 1 (e)): programs.txt (the laptop's hashes; every program on the disk equal to them, in a
+     build folder of B, outside rl/; STATUS.txt's part B line giving the same three); the counter tool's source sha256 =
+     the config's; identity_check.txt (the laptop's own identity games at B, (e) item 3's checks 1 to 8, every line
+     equal, kta3 and km3, at least 4,664: agreement on the tested games); the timing line within 1.25x;
+     every scan page RULE-free; thresholds.json and its amendment (its counter-tool program = the pinned one). kta3's
+     reference files are checked against the config's sha256. Before any of it, km's one list (km_inputs.sha256,
+     (b) item 4): recorded by STATUS.txt, its set the config's, the config read the one it lists, every file it lists
+     unchanged; programs.txt names its three programs.
+ K14 Step 5's count: every own-side no-harm test with a changed game behind it is counted, and 1 - 0.975^n printed.
+
+
+2. THE 45 CELLS (score45.py --rules v2; kta3 current (its reference files), km3 new; paired by deal; km3's mixed rows).
+   mixed rows, km3 on the first-named deck: 8,500 games in 2 file(s)
+   mixed rows, km3 on the second-named deck: 8,500 games in 2 file(s)
+   integrity: every mixed-row game run in a zero-footprint cell equals kta3's moves.
+   page: score45_km3_vs_kta3.txt (freshly scored, --reps 4000); mixed rows given to score45: 1f6319e_km3_mixed_first_composite.jsonl, 1f6319e_km3_mixed_second_composite.jsonl (the runner's games in the cells it ran; kta3's in a zero-footprint cell, K5)
+   real error on the 45 cells: kta3 13.8 -> km3 13.9
+   ΔMSE (km3 minus kta3): +1.1 points^2, 95% interval -7.0 to +10.1; by event (beside): -8.1 to +10.3
+   LABEL (RUN5's three outcomes, on the reserve route): SPANS zero (outcome 3: 'undetectable at this size'; the fallback, with its four tests)
+   detectable size (step 5b item 1): the interval's sd 4.4; MDE50 (1.96 sd) 8.6 points^2, as real error 13.80 -> 13.49; MDE80 (2.80 sd) 12.2, as real error 13.80 -> 13.35 (real error after = sqrt(kta3's^2 - δ)). A gain below it reads 'undetectable at this size'.
+   expected sign (step 4, stated before any game): ΔMSE is expected POSITIVE if N2 gains on Lucario (the simulator already over-rates Lucario, 52.2 against 45.6 real, the same at the printed precision on either base: Amendment 1 (b) item 5); outcome 2 applies to km's own mechanism on both routes.
+   τ̂ margin (kta3 minus km3): -0.04, 90% interval -0.26 to +0.18; by event (beside) -0.26 to +0.21; sd 0.134. It is (b)'s no-harm test on the reserve route.
+   rule-v2 vetoes that count or await mixed rows: none
+   investigation items (neither side worse): altaria v suicune (+6.2); never count (band over +/-15): none
+   NOTE (K1): the 44-cell decision set gives the same label, τ̂ gate and vetoes.
+
+3. CLAUSE (c), no meta deck's own side worse beyond paired noise: the mixed rows of the cells with a changed game, both directions, 500 deals, pooled per deck (K5). It gates on the reserve route.
+             altaria: own side +0.18 +/- 0.54 over 9 cells (4,500 deals; 1,062 mixed-row games changed)
+    altaria_greninja: own side -0.20 +/- 0.39 over 2 cells (1,000 deals; 36 mixed-row games changed)
+            blaziken: own side +0.20 +/- 0.39 over 2 cells (1,000 deals; 55 mixed-row games changed)
+           hydreigon: own side +0.00 +/- 0.39 over 2 cells (1,000 deals; 24 mixed-row games changed)
+             lucario: own side +0.82 +/- 0.83 over 9 cells (4,500 deals; 1,778 mixed-row games changed)
+            rayquaza: own side +0.20 +/- 0.83 over 2 cells (1,000 deals; 112 mixed-row games changed)
+            sceptile: own side -0.10 +/- 0.20 over 2 cells (1,000 deals; 50 mixed-row games changed)
+             suicune: own side +2.50 +/- 1.24 over 2 cells (1,000 deals; 186 mixed-row games changed)
+           vespiquen: own side +1.50 +/- 1.02 over 2 cells (1,000 deals; 203 mixed-row games changed)
+             weezing: own side +1.05 +/- 0.88 over 2 cells (1,000 deals; 128 mixed-row games changed)
+
+4. CLAUSE (d), the gain on the pre-named deck, Mega Lucario ex Lucario: 9 rows x 2,000 deals per arm (the table's deals 0-499 plus D2's block 22,900,000,000 - 22,900,081,499), km3 on Lucario with kta3 on the other deck against kta3 on both; gates on BOTH routes; read once (step 4 (d)).
+   7,046 of 18,000 km3-arm games differ from kta3's. Per row (step 5b item 3, beside the pooled figure; each row's share of the pooled sum; the pooled interval is the gate):
+     row 0 Lucario v altaria          : kta3  37.8 -> km3  37.4 (-0.45 +/- 0.87); share -11%
+     row 1 Lucario v blaziken         : kta3  49.9 -> km3  49.9 (+0.05 +/- 0.69); share +1%
+     row 2 Lucario v hydreigon        : kta3  57.1 -> km3  57.4 (+0.25 +/- 1.33); share +6%
+     row 3 Lucario v sceptile         : kta3  38.2 -> km3  38.2 (+0.00 +/- 0.24); share +0%
+     row 4 Lucario v suicune          : kta3  56.5 -> km3  59.1 (+2.65 +/- 1.69); share +66%
+     row 5 Lucario v vespiquen        : kta3  70.3 -> km3  69.9 (-0.45 +/- 1.64); share -11%
+     row 6 Lucario v weezing          : kta3  48.6 -> km3  51.0 (+2.35 +/- 1.70); share +59%
+     row 7 Lucario v rayquaza         : kta3  64.5 -> km3  63.8 (-0.75 +/- 1.40); share -19%
+     row 8 Lucario v altaria_greninja : kta3  44.3 -> km3  44.6 (+0.35 +/- 0.84); share +9%
+   pooled over 9 rows (18,000 deals per arm): +0.44 +/- 0.42 points -> a GAIN: the whole 95% interval is above zero
+   detectable size: sd 0.213; MDE50 (1.96 sd) 0.42 points, MDE80 (2.80 sd) 0.60 points (the registration's model: half-width about 0.4 to 0.8 points at 2,000 deals).
+   NOTE (step 5b item 3, gates nothing): one row supplies more than half of this passing gain: Lucario v suicune supplies 66% of the pooled gain.
+
+5. COVERAGE (step 5; RUN5 'How coverage rows count': own-side harm in the mixed rows blocks the takeover; accuracy is reported). Mixed rows only where km3's both-sides games differ from kta3's reference files (K9).
+   coverage_skip.txt: in; it names b2e 56 skipped / 40 run, new17 13 skipped / 4 run, scizor 0 skipped / 8 run, table 15 skipped / 13 run, var_l-charizardy 6 skipped / 2 run, var_v-lucario_2 0 skipped / 7 run, var_v-suicune_2 5 skipped / 2 run, var_v-weezing_2 5 skipped / 2 run
+
+   5a. B2e (96 pairings; the held-out archetypes 0-47 count, Dustin's files 48-95 are reported):
+     kta3 baseline: /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/kt_tables_2026-09-28/ec7e1a8_b2e_kta3.jsonl (sha256 = the config's 38abd687e38c2728...)
+     b2e: 5,761 both-sides games differ, in 40 of 96 pairings; own-side rows: 40 run, 56 skipped as unchanged
+     A_archetype charizardy_entei         kta3  46.4 -> km3  47.0; Limitless  49.2; further by -0.7 (accuracy reported)
+     A_archetype garchomp                 kta3  21.0 -> km3  21.0; Limitless  32.5; further by +0.0 (accuracy reported)
+     A_archetype hoopa_absol              kta3  57.0 -> km3  57.4; Limitless  50.0; further by +0.4 (accuracy reported)
+     A_archetype manectric                kta3  63.0 -> km3  62.7; Limitless  49.2; further by -0.3 (accuracy reported)
+     A_archetype raticate                 kta3  57.1 -> km3  57.1; Limitless  41.2; further by +0.0 (accuracy reported)
+     A_archetype whimsicott               kta3  35.6 -> km3  36.0; Limitless  32.3; further by +0.4 (accuracy reported)
+     B_dustin dustin_charizardy_entei  kta3  54.5 -> km3  56.0; Limitless  49.2; further by +1.6 (accuracy reported)
+     B_dustin dustin_garchomp          kta3  25.5 -> km3  25.5; Limitless  32.5; further by -0.0 (accuracy reported)
+     B_dustin dustin_hoopa_absol       kta3  33.1 -> km3  33.3; Limitless  50.0; further by -0.2 (accuracy reported)
+     B_dustin dustin_manectric         kta3  58.9 -> km3  58.9; Limitless  49.2; further by -0.0 (accuracy reported)
+     B_dustin dustin_raticate          kta3  55.5 -> km3  55.5; Limitless  41.2; further by +0.1 (accuracy reported)
+     B_dustin dustin_whimsicott        kta3  29.8 -> km3  29.8; Limitless  32.3; further by -0.0 (accuracy reported)
+     own side in the mixed rows (km3 on the held deck, kta3 on the panel, against kta3 on both; a skipped pairing is no change):
+     A_archetype manectric                own side +0.10 +/- 0.32 over 8 rows (523 changed); further by -0.3 -> no harm
+     A_archetype raticate                 own side +0.08 +/- 0.42 over 8 rows (585 changed); further by +0.0 -> no harm
+     A_archetype hoopa_absol              own side +0.42 +/- 0.34 over 8 rows (182 changed); further by +0.4 -> no harm
+     A_archetype garchomp                 own side +0.00 +/- 0.00 over 8 rows (16 changed); further by +0.0 -> no harm
+     A_archetype whimsicott               own side +0.05 +/- 0.18 over 8 rows (96 changed); further by +0.4 -> no harm
+     A_archetype charizardy_entei         own side +0.51 +/- 0.35 over 8 rows (235 changed); further by -0.7 -> no harm
+     B_dustin dustin_manectric         own side +0.17 +/- 0.34 over 8 rows (510 changed); further by -0.0 -> reported (Dustin's file)
+     B_dustin dustin_raticate          own side -0.05 +/- 0.12 over 8 rows (74 changed); further by +0.1 -> reported (Dustin's file)
+     B_dustin dustin_hoopa_absol       own side -0.05 +/- 0.14 over 8 rows (57 changed); further by -0.2 -> reported (Dustin's file)
+     B_dustin dustin_garchomp          own side +0.00 +/- 0.10 over 8 rows (33 changed); further by -0.0 -> reported (Dustin's file)
+     B_dustin dustin_whimsicott        own side +0.00 +/- 0.21 over 8 rows (106 changed); further by -0.0 -> reported (Dustin's file)
+     B_dustin dustin_charizardy_entei  own side +0.62 +/- 0.33 over 8 rows (293 changed); further by +1.6 -> reported (Dustin's file)
+   B2e: harm or held-out veto: none  (harm but not more than 2 further: none; more than 2 further but no harm: none)
+
+   The held-out direction (step 5b item 4; RUN5, Sept 29; reported beside every verdict, gates nothing):
+   charizardy_entei             kta3  46.4 -> km3  47.0; Limitless  49.2; miss  2.8 ->  2.2; change in miss -0.66 (closer)
+   garchomp                     kta3  21.0 -> km3  21.0; Limitless  32.5; miss 11.5 -> 11.6; change in miss +0.02 (further)
+   hoopa_absol                  kta3  57.0 -> km3  57.4; Limitless  50.0; miss  7.0 ->  7.4; change in miss +0.41 (further)
+   manectric                    kta3  63.0 -> km3  62.7; Limitless  49.2; miss 13.8 -> 13.5; change in miss -0.30 (closer)
+   raticate                     kta3  57.1 -> km3  57.1; Limitless  41.2; miss 15.9 -> 15.9; change in miss +0.00 (unchanged)
+   whimsicott                   kta3  35.6 -> km3  36.0; Limitless  32.3; miss  3.2 ->  3.6; change in miss +0.40 (further)
+   held-out direction: 2 closer, 3 further, 1 unchanged, mean change in miss -0.02 (reported, gates nothing)
+   Dustin's files (48-95; deck 09 carries Training Area), beside, not in the line above:
+   dustin_charizardy_entei      kta3  54.5 -> km3  56.0; Limitless  49.2; miss  5.3 ->  6.8; change in miss +1.57 (further)
+   dustin_garchomp              kta3  25.5 -> km3  25.5; Limitless  32.5; miss  7.0 ->  7.0; change in miss -0.02 (closer)
+   dustin_hoopa_absol           kta3  33.1 -> km3  33.3; Limitless  50.0; miss 16.8 -> 16.6; change in miss -0.20 (closer)
+   dustin_manectric             kta3  58.9 -> km3  58.9; Limitless  49.2; miss  9.7 ->  9.6; change in miss -0.02 (closer)
+   dustin_raticate              kta3  55.5 -> km3  55.5; Limitless  41.2; miss 14.2 -> 14.3; change in miss +0.07 (further)
+   dustin_whimsicott            kta3  29.8 -> km3  29.8; Limitless  32.3; miss  2.6 ->  2.5; change in miss -0.03 (closer)
+   Dustin's files: 4 closer, 2 further, mean change in miss +0.23 (reported, gates nothing)
+
+   5b. The Scizor row (carries Training Area; 8 rows x 500; own side = km3 on Scizor, kta3 on the panel list, against kta3 on both):
+     scizor: 1,361 both-sides games differ, in 8 of 8 pairings; own-side rows: 8 run, 0 skipped as unchanged
+     Scizor's panel average, both sides: kta3 31.1 -> km3 30.4 (reported; gates nothing)
+     own side: -0.23 +/- 0.42 over 8 rows (846 changed) -> no harm
+
+   5c. The four second lists (own side = km3 on the list, kta3 on the other deck, against kta3 on both; accuracy reported):
+     var_v-lucario_2: 1,585 both-sides games differ, in 7 of 7 pairings; own-side rows: 7 run, 0 skipped as unchanged
+     v-lucario_2   opponent average kta3  55.8 -> km3  55.3; figure  50.4 (development half, the same opponents); further by -0.5 (reported); own side (mixed) +0.51 +/- 0.91 over 7 rows (1390 changed) -> no harm
+     var_v-suicune_2: 501 both-sides games differ, in 2 of 7 pairings; own-side rows: 2 run, 5 skipped as unchanged
+     v-suicune_2   opponent average kta3  50.9 -> km3  51.4; figure  47.1 (development half, the same opponents); further by +0.5 (reported); own side (mixed) +0.29 +/- 0.19 over 7 rows (142 changed) -> no harm
+     var_v-weezing_2: 449 both-sides games differ, in 2 of 7 pairings; own-side rows: 2 run, 5 skipped as unchanged
+     v-weezing_2   opponent average kta3  54.4 -> km3  54.3; figure  43.8 (development half, the same opponents); further by -0.1 (reported); own side (mixed) -0.06 +/- 0.21 over 7 rows (79 changed) -> no harm
+     var_l-charizardy: 502 both-sides games differ, in 2 of 8 pairings; own-side rows: 2 run, 6 skipped as unchanged
+     l-charizardy  opponent average kta3  40.5 -> km3  41.0; figure  49.2 (B2e pooled, charizardy_entei); further by -0.6 (reported); own side (mixed) +0.30 +/- 0.25 over 8 rows (215 changed) -> no harm
+
+   Step 5's count: 21 own-side no-harm tests ((c) per deck on the reserve route, B2e held-out, Scizor, second lists); 21 have a changed game behind them; the chance a harmless candidate trips at least one of those: 1 - 0.975^21 = 0.412.
+
+6. THE MECHANISM (step 3; the counter tool's rows, deals 0-199 of the 17 named cells, km3 and kta3 on both sides). M1 and M2 gate only when the ΔMSE interval spans zero (the fallback's behavioural footprint), on either route; otherwise they are reported with their thresholds beside (K10).
+   both arms checked deal by deal (moves, decks, seed, seats): kta3 against its reference files, km3 against its footprint games, all 3,400 deals each: equal.
+   M1 (gates: the fallback), Arena of Antiquity on Lucario's side, pooled over 9 cells, deals 0-199: PASS: km3 918 of 2,574 = 35.7% is at or above T = 100263/362752 (= 27.6%, displayed only), compared exactly; guard: kta3 734 of 3,279 = 22.4%, below T
+      reported beside: kta3 22.4% -> km3 35.7%; paired change +13.3 points, 95% interval +11.9 to +14.7 (2000 replicates of step 3's per-cell resampling on these deals; reported); it rises in 9 of 9 cells
+      per cell: table:2 13.5% -> 23.8%; table:8 23.3% -> 28.9%; table:13 23.6% -> 43.1%; table:18 11.5% -> 15.6%; table:19 33.9% -> 64.0%; table:20 38.7% -> 73.6%; table:21 42.3% -> 79.8%; new_decks.tsv:8 15.8% -> 30.4%; new_decks.tsv:16 15.0% -> 21.4%
+   M2 (gates: the fallback), Training Area on Altaria's side, pooled over 5 cells, deals 0-199: PASS: km3 533 of 1,579 = 33.8% is at or above T = 24383/75980 (= 32.1%, displayed only), compared exactly; guard: kta3 498 of 1,748 = 28.5%, below T
+      reported beside: kta3 28.5% -> km3 33.8%; paired change +5.3 points, 95% interval +3.8 to +6.8 (2000 replicates of step 3's per-cell resampling on these deals; reported); it rises in 4 of 5 cells
+      per cell: table:0 29.9% -> 34.4%; table:1 25.1% -> 30.4%; table:3 26.8% -> 25.7%; table:4 33.9% -> 43.5%; new_decks.tsv:9 26.7% -> 35.8%
+      the last four cells (v Lucario, Vespiquen, Weezing; Altaria/Greninja v Altaria: Stage 1 attackers, no rise predicted): kta3 26.6% -> km3 32.5%; the contrast (mean change over the five) - (mean change over the four): 95% interval -3.2 to +1.1 points (reported)
+   Reported (gate nothing): M3, Field Blower's Stadium targets: kta3 57, km3 257.
+     sentinel X Speed (Lucario, Vespiquen, Weezing): kta3 890 of 4,624 (19.2%) -> km3 926 of 4,687 (19.8%); expected unchanged within paired noise (N2 touches none of these cards)
+     sentinel Team Rocket's Boss (Suicune): kta3 27 of 987 (2.7%) -> km3 28 of 1,001 (2.8%); expected unchanged within paired noise (N2 touches none of these cards)
+     sentinel Copycat (all 17 cells): kta3 6,312 of 12,356 (51.1%) -> km3 6,332 of 12,366 (51.2%); expected unchanged within paired noise (N2 touches none of these cards)
+     X Speed plays with no retreat after them: kta3 276 of 906, km3 290 of 943; with Hiking Trail in play: kta3 65, km3 61 (the registration's 96-turn upper bound of 1.2 is settled by this column)
+
+7. REPORTED BESIDE (these gate nothing).
+
+   7a. Lucario (the pre-named deck) and Altaria (reported beside, gating nothing: the same direction is supporting evidence, the other a finding to write down). Their real cells, before and after:
+   Lucario's nine real cells (its own score; Limitless development half; miss = |sim - Limitless|):
+     lucario v altaria           kta3  36.0 km3  34.6 | Limitless  27.6 +/-  6.9 (n 161) | miss  8.4 ->  7.0
+     lucario v blaziken          kta3  54.9 km3  54.1 | Limitless  59.3 +/- 12.5 (n 59) | miss  4.4 ->  5.2
+     lucario v hydreigon         kta3  56.4 km3  57.2 | Limitless  36.4 +/- 12.7 (n 55) | miss 20.0 -> 20.8
+     lucario v sceptile          kta3  35.6 km3  35.4 | Limitless  39.5 +/-  9.0 (n 114) | miss  3.9 ->  4.1
+     lucario v suicune           kta3  57.8 km3  57.8 | Limitless  58.8 +/- 10.5 (n 85) | miss  1.0 ->  1.0
+     lucario v vespiquen         kta3  68.2 km3  63.2 | Limitless  69.6 +/-  8.7 (n 107) | miss  1.4 ->  6.4
+     lucario v weezing           kta3  48.6 km3  52.4 | Limitless  61.5 +/- 10.8 (n 78) | miss 12.9 ->  9.1
+     lucario v rayquaza          kta3  64.8 km3  64.6 | Limitless  26.7 +/- 11.4 (n 58) | miss 38.1 -> 37.9
+     lucario v altaria_greninja  kta3  47.2 km3  47.8 | Limitless  31.1 +/- 13.5 (n 45) | miss 16.1 -> 16.7
+      equal-weight average over 9 cells: kta3  52.2 km3  51.9 | Limitless  45.6 | miss  6.5 ->  6.3
+   Altaria's nine real cells (its own score; Limitless development half; miss = |sim - Limitless|):
+     altaria v blaziken          kta3  58.6 km3  58.0 | Limitless  76.5 +/- 14.3 (n 34) | miss 17.9 -> 18.5
+     altaria v hydreigon         kta3  49.8 km3  50.2 | Limitless  54.5 +/- 13.0 (n 56) | miss  4.7 ->  4.3
+     altaria v lucario           kta3  64.0 km3  65.4 | Limitless  72.4 +/-  6.9 (n 161) | miss  8.4 ->  7.0
+     altaria v sceptile          kta3  48.0 km3  47.2 | Limitless  45.4 +/-  9.4 (n 108) | miss  2.6 ->  1.8
+     altaria v suicune           kta3  50.6 km3  44.4 | Limitless  56.2 +/- 12.1 (n 65) | miss  5.6 -> 11.8
+     altaria v vespiquen         kta3  52.0 km3  49.4 | Limitless  37.6 +/-  9.8 (n 93) | miss 14.4 -> 11.8
+     altaria v weezing           kta3  40.3 km3  41.6 | Limitless  33.0 +/- 13.4 (n 47) | miss  7.3 ->  8.6
+     altaria v rayquaza          kta3  64.2 km3  64.0 | Limitless  52.9 +/- 10.5 (n 86) | miss 11.3 -> 11.1
+     altaria v altaria_greninja  kta3  60.6 km3  61.2 | Limitless  62.5 +/- 11.5 (n 68) | miss  1.9 ->  1.3
+      equal-weight average over 9 cells: kta3  54.2 km3  53.5 | Limitless  54.5 | miss  0.3 ->  1.0
+   Altaria's own side in the mixed rows over its nine cells: +0.18 +/- 0.54 (4,500 deals; zero-footprint cells read as kta3's games, K5)
+   Lucario's own side in the mixed rows over its nine cells: +0.82 +/- 0.83 (4,500 deals; zero-footprint cells read as kta3's games, K5)
+
+   7b. Deck averages over the 45 cells (score45's rows; current / new / Limitless; change in miss, + = further). Lucario's gap under kta3: 52.2 against 45.6 real (+6.6; Amendment 1 (b) item 5), stated before any game:
+               altaria: kta3  54.2 -> km3  53.5; Limitless  54.5; gap  0.3 ->  1.0 (+0.7)
+              blaziken: kta3  57.4 -> km3  57.6; Limitless  52.3; gap  5.1 ->  5.3 (+0.2)
+             hydreigon: kta3  51.0 -> km3  50.9; Limitless  43.9; gap  7.1 ->  7.0 (-0.1)
+               lucario: kta3  52.2 -> km3  51.9; Limitless  45.6; gap  6.6 ->  6.3 (-0.3)
+              sceptile: kta3  61.7 -> km3  61.8; Limitless  49.0; gap 12.7 -> 12.8 (+0.1)
+               suicune: kta3  51.3 -> km3  52.0; Limitless  48.9; gap  2.4 ->  3.1 (+0.7)
+             vespiquen: kta3  48.1 -> km3  48.9; Limitless  52.7; gap  4.6 ->  3.8 (-0.8)
+               weezing: kta3  52.6 -> km3  52.1; Limitless  48.5; gap  4.1 ->  3.6 (-0.6)
+   Closure sentence (step 4 (e); 'Stadium damage bonuses count as the relevant cards'): the carrier count found two archetypes (Lucario with Arena, Altaria with Training Area), so the route is open on the count.
+
+8. WHICH CONDITION CARRIED THE VERDICT (step 5b item 2; a column, not a rule): each condition, its result, whether it gates here, and the changed games behind it.
+   step 1: the footprint        reserve (under 15%)            3,117 of 22,500 both-sides games on the 45 cells
+   ΔMSE label (step 4)          spans                          the same 3,117 games, 615 of them with a changed result
+   no harm: τ̂ bound            PASS (gates)                   3,117 both-sides games
+   no harm: rule-v2 vetoes      PASS (gates)                   3,634 mixed-row games changed
+   (c) no meta deck worse       PASS (gates)                   3,634 mixed-row games changed on the 45 cells
+   coverage: B2e held-out       PASS (gates)                   5,761 both-sides; 2,710 own-side mixed-row games changed
+   coverage: Scizor             PASS (gates)                   1,361 both-sides; 846 own-side mixed-row games changed
+   coverage: second lists       PASS (gates)                   3,037 both-sides; 1,826 own-side mixed-row games changed
+   (d) the gain on Lucario      PASS (gates)                   7,046 of 18,000 km3-arm games differ
+   M1 Arena of Antiquity        PASS (gates)                   km3 918 of 2,574, kta3 734 of 3,279
+   M2 Training Area             PASS (gates)                   km3 533 of 1,579, kta3 498 of 1,748
+   'No harm with almost no changed games' is the reserve route working as designed and says little; the informative parts are the gain on the pre-named deck (Lucario) and the footprint (M1, M2).
+
+9. VERDICT (section 6, 'Outcomes fixed now', read from the numbers above).
+   route: the reserve route (footprint under 15%); ΔMSE label: SPANS zero (outcome 3: 'undetectable at this size'; the fallback, with its four tests)
+     PASS (gates)               no harm: the τ̂ margin (kta3 minus km3) 90% lower bound at -1.0 or above: -0.26 (margin -0.04, interval -0.26 to +0.18; by event -0.26 to +0.21)
+     PASS (gates)               no harm: no rule-v2 veto counts on the 45 cells (through the mixed rows): none counts (1 veto candidates, all investigation items or never-count)
+     PASS (gates)               (c) no meta deck's own side worse beyond paired noise: 17 cells with a changed game read, no deck worse
+     PASS (gates)               (d) Lucario's pooled own-side gain, whole 95% interval above zero: +0.44 +/- 0.42 points pooled over 9 rows x 2,000
+     PASS (gates)               coverage (B2e held-out): no held-out deck's own side hurt: no held-out deck's own side worse (harm but not more than 2 further: none; more than 2 further but no harm: none)
+     PASS (gates)               coverage: Scizor's own side not hurt: Scizor own side -0.23 +/- 0.42
+     PASS (gates)               coverage: no second list's own side hurt: no second list's own side worse beyond noise
+     PASS (gates)               M1: km3 plays Arena of Antiquity on at least T of its offered turns (the fallback only): km3 918 of 2,574 = 35.7% is at or above T = 100263/362752 (= 27.6%, displayed only), compared exactly; guard: kta3 734 of 3,279 = 22.4%, below T
+     PASS (gates)               M2: km3 plays Training Area on at least T of its offered turns (the fallback only): km3 533 of 1,579 = 33.8% is at or above T = 24383/75980 (= 32.1%, displayed only), compared exactly; guard: kta3 498 of 1,748 = 28.5%, below T
+     PASS (gates)               every file read has its scan page: 26 files, each with its page; no RULE finding
+     PASS                       integrity lines (K12): none: every changed game sits where N2 reaches, no mixed-row game differs where the both-sides games all matched, and the counts follow the games
+
+   => km3 is ADOPTED as the working pilot in the tables, replacing kta3, 'unconfirmed': the ΔMSE interval spans zero ('undetectable at this size') and the fallback's four tests all held: no harm, the coverage decks, (d) on Lucario and M1's and M2's thresholds. Its use in the screen and the floor waits for the official engine switch, as kta3's does (Amendment 1 (g)).
+      Confirmation (step 7): the no-harm re-check at the post-freeze pull: τ̂ margin 90% lower bound at -1.0 or above and no veto, with Lucario's and Altaria's post-freeze cells reported.
+      km joins the post-freeze list by a commit to rl/results/postfreeze_2026-09-27/README.md before that data is opened.
+   Beside the verdict (step 5b item 3, gates nothing): one row supplies more than half of the passing (d) gain: Lucario v suicune supplies 66% of the pooled gain.
+
+   THE OUTCOMES THE REGISTRATION FIXES (section 6):
+     - On either route, ΔMSE interval wholly above zero: not adopted, on accuracy, whatever else passes (no fallback).
+     - Reserve route: wholly below zero and (b), (c), (d) and step 5 pass: adopted (in the tables, replacing kta3; the screen and the floor wait for the official engine switch, Amendment 1 (g)); spanning zero ('undetectable at this size'): (b), (c), step 5, (d) and M1's and M2's thresholds all pass: adopted, 'unconfirmed'.
+     - Ordinary rule: wholly below zero and the vetoes, step 5 and (d) pass: adopted; spanning zero: all four fallback tests pass (no harm, the coverage decks, (d), M1 and M2): adopted, 'unconfirmed'.
+     - Any test that applies fails: not adopted, recorded by that test (harm, coverage, gain or mechanism), never as an accuracy negative for an interval that spans zero. If (d) fails or the route is closed, adoption comes only by Dustin's explicit override, recorded as such. A spec change after any reading is a new code. N1 is not in km.
+
+   WHAT STAYS PROVISIONAL, whatever the numbers say:
+     - A 'not adopted' is provisional until step 5 (the coverage decks) is read.
+     - Confirmation at the post-freeze pull (step 7): an adopted km is the working pilot 'unconfirmed'; a failed check reads 'not confirmed at this size'. The lapse clause (as Amendment 1 (b) item 5 restates it): km carries kta's switch 1 and, through kta, kog's A and F, so until kta's row, kog's, and the kpg and koa rows kog inherits have passed, km is not confirmed even if its own check passes.
+     - The base-change rule (section 2), applied by Amendment 1 (Sept 30): km is re-issued on kta; this reading is km3 against kta3, at B 1f6319e.
+     - The 45 cells are development evidence for km (step 6); the Sept 25 holdout is spent. The confirmation is the post-freeze read.
+     - The second reader (RUN5 tier 1) and an outcome audit against the registration are still owed; this is the laptop's first reader. The footprint is committed alone before the rest is read (step 1).

@@ -1,0 +1,185 @@
+{
+ "group": "var_l-charizardy",
+ "rule": "\"For coverage, skip mixed rows only when every corresponding deal has matching complete move fingerprints, decks, seeds and seats. Matching winners alone is insufficient.\" (Dustin, Sept 29; REGISTRATION.md top block, item 3)",
+ "fields": [
+  "moves",
+  "a",
+  "b",
+  "a_file",
+  "b_file",
+  "seed",
+  "first_seat"
+ ],
+ "deals": 500,
+ "base": {
+  "code": "kta3",
+  "file": "ec7e1a8_var_l-charizardy_kta3.jsonl",
+  "sha256": "7980b996618ef0efbac8392db0a73a25a9466c700ddab70d58ee35b64ce0d271"
+ },
+ "cand": {
+  "code": "km3",
+  "file": "1f6319e_var_l-charizardy_km3.jsonl",
+  "sha256": "caca2523e930820a32fb3df84e3322d98cafdb9fc54f5bbdc3ff9b129ff02df3"
+ },
+ "context": "Coverage (step 5; block item 7): km3's both-sides games against kta3's references (Amendment 1 (b) item 2); the own-side mixed rows run on every pairing listed RUN.",
+ "pairings": {
+  "40": {
+   "cell": "l-charizardy v lucario",
+   "skip": false,
+   "differing_deals": 306,
+   "by_field": {
+    "moves": 306,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": {
+    "i": 1,
+    "fields": [
+     "moves"
+    ]
+   },
+   "winners_equal_among_differing": 216,
+   "why": "306 of 500 deals differ (moves 306); first at i = 1 (moves); winners equal on 216 of those 306 deals, which does not make it skip"
+  },
+  "41": {
+   "cell": "l-charizardy v altaria",
+   "skip": false,
+   "differing_deals": 196,
+   "by_field": {
+    "moves": 196,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": {
+    "i": 3,
+    "fields": [
+     "moves"
+    ]
+   },
+   "winners_equal_among_differing": 157,
+   "why": "196 of 500 deals differ (moves 196); first at i = 3 (moves); winners equal on 157 of those 196 deals, which does not make it skip"
+  },
+  "42": {
+   "cell": "l-charizardy v sceptile",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "43": {
+   "cell": "l-charizardy v vespiquen",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "44": {
+   "cell": "l-charizardy v suicune",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "45": {
+   "cell": "l-charizardy v hydreigon",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "46": {
+   "cell": "l-charizardy v weezing",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "47": {
+   "cell": "l-charizardy v blaziken",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  }
+ },
+ "skipped": [
+  42,
+  43,
+  44,
+  45,
+  46,
+  47
+ ],
+ "run": [
+  40,
+  41
+ ]
+}

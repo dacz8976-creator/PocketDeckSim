@@ -49,3 +49,49 @@ KM TIMING DONE 1f6319e 2026-09-30T09:22:07Z knobs km3/km3/20/40/40/100/500/1500/
 2026-09-30T09:24:33Z thresholds written: thresholds.txt and thresholds.json (sha256 3bf6a248d3d43bb49837288c3dfe42f2dbfd520be98bf04738b156ddf1a3efff); RESULT M1: THRESHOLD T = 100263/362752 (27.6% displayed); the paired-noise interval's lower bound is above zero RESULT M2: THRESHOLD T = 24383/75980 (32.1% displayed); the paired-noise interval's lower bound is above zero 
 KM PART T DONE 1f6319e 2026-09-30T09:24:35Z thresholds.json 3bf6a248d3d43bb49837288c3dfe42f2dbfd520be98bf04738b156ddf1a3efff knobs km3/km3/20/40/40/100/500/1500/200
 2026-09-30T09:24:35Z STOP after part T: the independent check (another agent, its own code, from the committed raw files) and the dated amendment are next, each committed on its own; part R needs GO_km_tables (Dustin's separate go-ahead for the tables) with 'amendment <commit>' and 'check <path>' lines
+2026-09-30T09:31:44Z KM PART R START 1f6319e: out /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/km_tables_2026-09-30; build /home/dacz8976/engine-km-1f6319e (B = 1f6319e4b72e34a42d2d3c3ffc7cc9a09fdfa6f3); km3 (km3) against kta3; config /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/trainer_pricing_2026-09-28/km_run/km_config.json (sha256 a352c04fcb588372); knobs km3/km3/20/40/40/100/500/1500/200 (the registered run); commit checks on; threads 12, nice 10; load 0.34 1.95 2.77; other game programs running: 
+2026-09-30T09:31:44Z GO_km_tables present: Dustin's separate go-ahead for the km tables (Amendment 1 (g) step 5; block item 9), Sept 30 about 02:20 UTC in the laptop session, verbatim: "The cloud has the message go ahead on the tables" (RUN5 "Where things stand", km; commit c74d8df).
+2026-09-30T09:31:56Z amendment e308a65dd1fa84c2c2808aa08e22975f9414f2c4; the independent check's output rl/results/km_tables_2026-09-30/INDEPENDENT_CHECK.md; commit order (section 4.0 steps 6-8): rl/results/km_tables_2026-09-30/1f6319e_sample_kta3_rows.jsonl first committed at 1fc9e0b; rl/results/km_tables_2026-09-30/1f6319e_sample_km3_rows.jsonl first committed at 1fc9e0b; rl/results/km_tables_2026-09-30/thresholds.json first committed at 1fc9e0b; rl/results/km_tables_2026-09-30/INDEPENDENT_CHECK.md first committed at 80d77cf; then the amendment e308a65, which changes REGISTRATION_DRAFT.md: the raw files with or before the first, then each strictly before the next; PASS
+2026-09-30T09:32:00Z reference files (part R start): 8 of 8 groups PASS: sha256 = the config's, every game kta3 on both sides on its deal, committed and unchanged
+2026-09-30T09:32:01Z clause (d)'s block: d_lucario_block.tsv: clause (d)'s block, 9 rows (0 = table 2; 1 = table 8; 2 = table 13; 3 = table 18; 4 = table 19; 5 = table 20; 6 = table 21; 7 = new_decks.tsv 8; 8 = new_decks.tsv 16), Lucario first-named, seeds 22,900,000,000 + row x 10,000 + j, j < 1500 (last 22,900,081,499)
+2026-09-30T09:32:01Z part R's inputs recorded: 69 files, 1f6319e_inputs_R.sha256 (sha256 76bd366341195980)
+2026-09-30T09:44:48Z 1f6319e_km3_table done in 765 s (14000 games)
+2026-09-30T09:53:55Z 1f6319e_km3_new17 done in 546 s (8500 games)
+2026-09-30T09:53:56Z footprint written (footprint.txt, km3 against kta3's references, from 1f6319e_km3_table.jsonl aff167ac8ca56054 and 1f6319e_km3_new17.jsonl 8623d6f958ab46bd): the parent reads it and commits it alone, before anything else is read (step 1)
+2026-09-30T09:53:57Z the sample's km3 arm, deals 200-299, v km3's own games (the footprint run): 1400 of 1400 deals equal on the move fingerprint, both decks, seed and seats (14 cells, i 200-299; references 1f6319e_km3_table.jsonl, 1f6319e_km3_new17.jsonl; differing 0, missing 0); no count read; PASS
+2026-09-30T09:57:07Z 1f6319e_counters_kta3_rows done in 189 s (3400 rows)
+2026-09-30T09:57:07Z the counters' kta3 arm, deals 0-199 of the 17 cells, v ec7e1a8_kta3_table.jsonl / ec7e1a8_kta3_new17.jsonl: 3400 of 3400 deals equal on the move fingerprint, both decks, seed and seats (17 cells, i 0-199; references ec7e1a8_kta3_table.jsonl, ec7e1a8_kta3_new17.jsonl; differing 0, missing 0); no count read; PASS
+2026-09-30T10:00:12Z 1f6319e_counters_km3_rows done in 184 s (3400 rows)
+2026-09-30T10:00:13Z the counters' km3 arm, deals 0-199 of the 17 cells, v km3's own games: 3400 of 3400 deals equal on the move fingerprint, both decks, seed and seats (17 cells, i 0-199; references 1f6319e_km3_table.jsonl, 1f6319e_km3_new17.jsonl; differing 0, missing 0); no count read; PASS
+2026-09-30T10:00:16Z 45 cells' mixed rows: table pairings [0,1,2,3,4,5,6,8,13,18,19,20,21], new pairings [8,9,16,17], both directions, 500 deals; skipped: table [7,9,10,11,12,14,15,16,17,22,23,24,25,26,27], new [10,11,12,13,14,15,18,19,20,21,22,23,24]
+2026-09-30T10:05:53Z 1f6319e_mixed_table_km3_first done in 336 s (6500 games)
+2026-09-30T10:11:34Z 1f6319e_mixed_table_km3_second done in 340 s (6500 games)
+2026-09-30T10:13:29Z 1f6319e_mixed_new17_km3_first done in 114 s (2000 games)
+2026-09-30T10:15:23Z 1f6319e_mixed_new17_km3_second done in 113 s (2000 games)
+2026-09-30T10:18:02Z 1f6319e_d_kta3_table done in 155 s (3500 games)
+2026-09-30T10:18:59Z 1f6319e_d_km3_table_lucario_b done in 56 s (1500 games)
+2026-09-30T10:20:35Z 1f6319e_d_km3_table_lucario_a done in 94 s (2000 games)
+2026-09-30T10:21:28Z 1f6319e_d_kta3_new done in 52 s (1000 games)
+2026-09-30T10:22:18Z 1f6319e_d_km3_new_lucario_b done in 49 s (1000 games)
+2026-09-30T10:32:31Z 1f6319e_d_kta3_block done in 612 s (13500 games)
+2026-09-30T10:42:25Z 1f6319e_d_km3_block done in 593 s (13500 games)
+2026-09-30T11:29:27Z 1f6319e_b2e_km3 done in 2817 s (48000 games)
+2026-09-30T11:29:29Z B2e: own-side mixed rows (the held deck, side a) on [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,25,32,33,40,41,48,49,50,51,52,53,54,55,56,57,64,65,73,80,81,88,89], skipped [18,19,20,21,22,23,24,26,27,28,29,30,31,34,35,36,37,38,39,42,43,44,45,46,47,58,59,60,61,62,63,66,67,68,69,70,71,72,74,75,76,77,78,79,82,83,84,85,86,87,90,91,92,93,94,95] (1f6319e_skip_b2e.txt)
+2026-09-30T11:45:38Z 1f6319e_mixed_b2e_km3_first done in 968 s (20000 games)
+2026-09-30T11:49:48Z 1f6319e_scizor_km3 done in 249 s (4000 games)
+2026-09-30T11:49:49Z Scizor: own-side mixed rows on [0,1,2,3,4,5,6,7], skipped [] (1f6319e_skip_scizor.txt)
+2026-09-30T11:54:04Z 1f6319e_mixed_scizor_km3_first done in 254 s (4000 games)
+2026-09-30T11:56:48Z 1f6319e_var_v-lucario_2_km3 done in 163 s (3500 games)
+2026-09-30T11:56:49Z v-lucario_2: own-side mixed rows on side a [18,19,20,21], side b [2,8,13], skipped [] (1f6319e_skip_var_v-lucario_2.txt)
+2026-09-30T11:58:30Z 1f6319e_var_v-lucario_2_km3_mixed_a done in 100 s (2000 games)
+2026-09-30T11:59:30Z 1f6319e_var_v-lucario_2_km3_mixed_b done in 59 s (1500 games)
+2026-09-30T12:03:30Z 1f6319e_var_v-suicune_2_km3 done in 239 s (3500 games)
+2026-09-30T12:03:31Z v-suicune_2: own-side mixed rows on side a [], side b [4,19], skipped [10,15,22,25,26] (1f6319e_skip_var_v-suicune_2.txt)
+2026-09-30T12:04:37Z 1f6319e_var_v-suicune_2_km3_mixed_b done in 66 s (1000 games)
+2026-09-30T12:08:07Z 1f6319e_var_v-weezing_2_km3 done in 209 s (3500 games)
+2026-09-30T12:08:08Z v-weezing_2: own-side mixed rows on side a [], side b [6,21], skipped [12,17,24,26,27] (1f6319e_skip_var_v-weezing_2.txt)
+2026-09-30T12:09:00Z 1f6319e_var_v-weezing_2_km3_mixed_b done in 51 s (1000 games)
+2026-09-30T12:13:28Z 1f6319e_var_l-charizardy_km3 done in 267 s (4000 games)
+2026-09-30T12:13:28Z l-charizardy: own-side mixed rows on side a [40,41], side b [], skipped [42,43,44,45,46,47] (1f6319e_skip_var_l-charizardy.txt)
+2026-09-30T12:14:34Z 1f6319e_var_l-charizardy_km3_mixed_a done in 65 s (1000 games)
+KM PART R DONE 1f6319e 2026-09-30T12:14:36Z knobs km3/km3/20/40/40/100/500/1500/200

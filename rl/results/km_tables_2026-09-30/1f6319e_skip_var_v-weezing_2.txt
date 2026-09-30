@@ -1,0 +1,19 @@
+COVERAGE SHORTCUT, var_v-weezing_2
+Rule: "For coverage, skip mixed rows only when every corresponding deal has matching complete move fingerprints, decks, seeds and seats. Matching winners alone is insufficient." (Dustin, Sept 29; REGISTRATION.md top block, item 3)
+Compared deal by deal, on the deal key (pairing, i): moves, a, b, a_file, b_file, seed, first_seat (moves = the complete move fingerprint; a, b, a_file, b_file = both decks; seed; first_seat = the seats).
+A pairing is skipped only when every one of its deals is equal on all of them. winner_seat is not a criterion.
+kta3 both sides: /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/kt_tables_2026-09-28/ec7e1a8_var_v-weezing_2_kta3.jsonl (3500 games, sha256 9bb448868dd027f74edd38ec766cf961a8cc71b06d483e14d629cddb5cd85f8c)
+km3 both sides: /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/km_tables_2026-09-30/1f6319e_var_v-weezing_2_km3.jsonl (3500 games, sha256 aa5786d463d7fa37d5e0c2097e397985c5b6fae5ad7a1a0ae55b3fb94865cd91)
+7 pairings x 500 deals.
+Coverage (step 5; block item 7): km3's both-sides games against kta3's references (Amendment 1 (b) item 2); the own-side mixed rows run on every pairing listed RUN.
+
+RUN var_v-weezing_2 6: 359 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (altaria v v-weezing_2): its mixed rows run; 141 of 500 deals differ (moves 141); first at i = 0 (moves); winners equal on 122 of those 141 deals, which does not make it skip
+SKIP var_v-weezing_2 12: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (blaziken v v-weezing_2): its mixed rows are skipped
+SKIP var_v-weezing_2 17: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (hydreigon v v-weezing_2): its mixed rows are skipped
+RUN var_v-weezing_2 21: 192 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (lucario v v-weezing_2): its mixed rows run; 308 of 500 deals differ (moves 308); first at i = 0 (moves); winners equal on 232 of those 308 deals, which does not make it skip
+SKIP var_v-weezing_2 24: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (sceptile v v-weezing_2): its mixed rows are skipped
+SKIP var_v-weezing_2 26: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (suicune v v-weezing_2): its mixed rows are skipped
+SKIP var_v-weezing_2 27: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (vespiquen v v-weezing_2): its mixed rows are skipped
+
+Skipped pairings (5): 12,17,24,26,27
+Pairings whose mixed rows run (2): 6,21

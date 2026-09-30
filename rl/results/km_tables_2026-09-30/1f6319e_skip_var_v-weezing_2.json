@@ -1,0 +1,167 @@
+{
+ "group": "var_v-weezing_2",
+ "rule": "\"For coverage, skip mixed rows only when every corresponding deal has matching complete move fingerprints, decks, seeds and seats. Matching winners alone is insufficient.\" (Dustin, Sept 29; REGISTRATION.md top block, item 3)",
+ "fields": [
+  "moves",
+  "a",
+  "b",
+  "a_file",
+  "b_file",
+  "seed",
+  "first_seat"
+ ],
+ "deals": 500,
+ "base": {
+  "code": "kta3",
+  "file": "ec7e1a8_var_v-weezing_2_kta3.jsonl",
+  "sha256": "9bb448868dd027f74edd38ec766cf961a8cc71b06d483e14d629cddb5cd85f8c"
+ },
+ "cand": {
+  "code": "km3",
+  "file": "1f6319e_var_v-weezing_2_km3.jsonl",
+  "sha256": "aa5786d463d7fa37d5e0c2097e397985c5b6fae5ad7a1a0ae55b3fb94865cd91"
+ },
+ "context": "Coverage (step 5; block item 7): km3's both-sides games against kta3's references (Amendment 1 (b) item 2); the own-side mixed rows run on every pairing listed RUN.",
+ "pairings": {
+  "6": {
+   "cell": "altaria v v-weezing_2",
+   "skip": false,
+   "differing_deals": 141,
+   "by_field": {
+    "moves": 141,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": {
+    "i": 0,
+    "fields": [
+     "moves"
+    ]
+   },
+   "winners_equal_among_differing": 122,
+   "why": "141 of 500 deals differ (moves 141); first at i = 0 (moves); winners equal on 122 of those 141 deals, which does not make it skip"
+  },
+  "12": {
+   "cell": "blaziken v v-weezing_2",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "17": {
+   "cell": "hydreigon v v-weezing_2",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "21": {
+   "cell": "lucario v v-weezing_2",
+   "skip": false,
+   "differing_deals": 308,
+   "by_field": {
+    "moves": 308,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": {
+    "i": 0,
+    "fields": [
+     "moves"
+    ]
+   },
+   "winners_equal_among_differing": 232,
+   "why": "308 of 500 deals differ (moves 308); first at i = 0 (moves); winners equal on 232 of those 308 deals, which does not make it skip"
+  },
+  "24": {
+   "cell": "sceptile v v-weezing_2",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "26": {
+   "cell": "suicune v v-weezing_2",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "27": {
+   "cell": "vespiquen v v-weezing_2",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  }
+ },
+ "skipped": [
+  12,
+  17,
+  24,
+  26,
+  27
+ ],
+ "run": [
+  6,
+  21
+ ]
+}
