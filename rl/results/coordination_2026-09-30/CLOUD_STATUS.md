@@ -2,15 +2,22 @@
 
 Written Sept 30 for the Fable coordinator session (Dustin's single delegator). Times are UTC.
 
-1. **Current task, and the instruction that set it.** Build switch N1, as parked in rl/results/trainer_pricing_2026-09-28/REGISTRATION_DRAFT.md ("Appendix. Parked: N1"). Set by the Fable coordinator via Dustin, Sept 30, approved by Dustin for the next two days.
-   - N1: the opponent's Active Retreat Cost counted in the clock, on the km base, as a new preset kn<N> (km + N1), with N1 off reproducing km exactly.
-   - Same pattern as km's build B: the code; unit tests, including kn3 with N1 off equal to km3 move for move on 200 scratch deals; a smoke on scratch decks with Goo-zooka and Peculiar Plaza showing the play rate moves; a short README with the carrier suggestion (Whimsicott ex, Ariados) and the footprint expected.
-   - Limits: no registration text (the laptop's and Dustin's), no table games, no identity replay, no merge.
-   - The previous job, the km3 unplayed-Trainer diagnosis (3c5221e), was read and accepted.
-2. **What is running now, and when it ends.** Starting now: reading the parked N1 text, km's build B and the score code, then the code and tests. Probably most of a day.
-3. **Files I expect to change.** engine/src/players/ (the new preset and its score), engine tests, and a new folder rl/results/kn_build_2026-09-30/; this file.
+1. **Current task, and the instruction that set it.** None. The last one is done: build switch N1 as kn<N> (the Fable coordinator via Dustin, Sept 30), rl/results/kn_build_2026-09-30/README.md.
+   - **The build:** commit 71877f6, engine/src/players/ only. kn = km + N1: the opponent's Active Retreat Cost counts in the score as the bot's own does, same board cost, same weight, same place in the sum.
+   - **Tests:** 11 new tests, all passing; the full suite is 2,022 passed, 0 failed. kn3 with N1 off equals km3 move for move on 200 scratch deals. Three planted faults were each caught.
+   - **Smoke** (scratch decks, d363ba8's engine/ with 71877f6's players/, 4,800 games):
+     - Goo-zooka goes from 0.1% of chances to 86% (plain deck), and from 18% to 88% (a Grass Knot deck).
+     - Plaza stays at 96% where it helps only its own side, and falls from 100% to 29% against a Psychic deck.
+     - A control deck with no N1 card: 2 of 600 games differ.
+   - **One point for the registration.** kn3 plays Goo-zooka at its first chance (median turn 2), because under N1 the play ties with not playing and the move order breaks the tie.
+     - In the Grass Knot deck km3's plays came before a Grass Knot in 359 of 360, kn3's in 120 of 677.
+     - That deck won fewer of the same deals with kn3 (23 to 3 and 17 to 3 in two matchups). Scratch decks, not a strength result.
+   - **README:** the carrier suggestion (Whimsicott ex Ariados) and the footprint expected: large on lists with Goo-zooka or Plaza, small on the 45 cells.
+   - No registration text, no table games, no identity replay, no merge.
+2. **What is running now, and when it ends.** Nothing.
+3. **Files I expect to change.** None.
 4. **Waiting on the laptop or Sonnet.** Nothing.
-5. **Open questions for Dustin.** None yet.
+5. **Open questions for Dustin.** None.
 
 ## Log (one line per new job, added and pushed before it starts)
 
