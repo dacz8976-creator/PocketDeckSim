@@ -1,4 +1,4 @@
-Decision this informs: none yet. This is a drafted engine repair for a later engine switch (the Fable coordinator via Dustin, Sept 30). It is not merged to main and not pinned. There was no table game and no identity replay: the laptop does that replay at the switch that takes this repair.
+Decision this informs: none yet. This is a drafted engine repair for a later engine switch (the Fable coordinator via Dustin, Sept 30). It is not merged to main and not pinned. There was no table game and no identity replay: the laptop does that replay at the switch that takes this repair. Release approval waits on the laptop's review, including the per-thread design in (a), and on its replay checks. **No independent audit of the patch has been done yet.**
 
 Seeds: no table deal. The Part 1 probe used 20,940,000,000 + i, and the smoke check below 20,950,000,000 + i, on scratch decks only (Claude Code's diagnostic block, outside START_HERE's ranges).
 
@@ -21,11 +21,19 @@ Seeds: no table deal. The Part 1 probe used 20,940,000,000 + i, and the smoke ch
   - Diving Icicles and Volt Bolt;
   - Energy Arrow;
   - Volcanic Ash;
-  - Pull In and Pound and Entrap.
-- **Not changed** (see "Open questions"):
-  - Chase Order;
-  - `also_choice_bench_damage` in its own-Bench form (Raging Thunder, Flash Impact);
-  - the six sites Part 1 found outside the seven.
+  - Pull In and Pound and Entrap;
+  - **Chase Order (Vespiquen ex), with and without the discard.** This came in the follow-up: Dustin, Sept 30, "fix it now", with `apply_action.rs` allowed as a fourth file.
+- **Not changed** (Dustin's answers, Sept 30):
+  - **Left open:** `also_choice_bench_damage` in its own-Bench form (Zapdos's Raging Thunder, Emolga, Luxray's Flash Impact). It involves a separate interaction: its one queued choice also hits your own Bench, where a Guts coin would be dropped.
+  - **Recorded for a later round, not changed.** Each of these skips the coin too:
+    - the six sites Part 1 found outside the seven:
+      - Wellspring Mask Ogerpon's Wellspring Dance;
+      - Rapid Strike Urshifu's Tornado Shot;
+      - Blastoise's Double Splash and Mega Blastoise ex's Triple Bombardment;
+      - Mega Kangaskhan ex's second punch;
+      - Hoopa's Mischievous Ring;
+      - Slowking's Litter.
+    - **Gyarados's Wild Swing (A4 045, A4 215),** found during the Chase Order follow-up. Part 1 missed it: it queues its damage through the same discard action as Chase Order (`DiscardOwnBenchedThenDamage`), and is left exactly as it was. A4 045 is in one list: the panel ladder's l-sharpedo.
 - **Which games could change: none between two lists under `decks/`.** Both repairs run only when a Pokémon with one of those five Ability printings is in play, and no list under `decks/` has one (`HELPERS.md`, "The defenders").
   - Some lists hold attackers that (b) changes:
     - Heatmor (research/blaziken, t-blaziken, Dustin's 06);
@@ -34,8 +42,9 @@ Seeds: no table deal. The Part 1 probe used 20,940,000,000 + i, and the smoke ch
     - Absol (Dustin's 02);
     - Gabite (Dustin's 08);
     - Chien-Pao ex (research/suicune, t-suicune, three gauntlet Suicune variants, l-sharpedo);
-    - Team Rocket's Hypno (Dustin's 14).
-  - Their play changes only in a game against one of those five printings, and no list has one. On the ladder, it would be a game where the opponent has one in play.
+    - Team Rocket's Hypno (Dustin's 14);
+    - Vespiquen ex, Chase Order (B4 011: research/vespiquen, t-vespiquen, and two Vespiquen variants in variants-2026-09-23).
+  - Their play changes only in a game against one of those five printings, and no list has one. So Vespiquen ex's 4 lists add nothing: still **0 expected changed table games**. On the ladder, it would be a game where the opponent has one in play.
 
 ## Commits (branch `claude/pensive-ptolemy-spwc0b`)
 
@@ -44,9 +53,14 @@ Seeds: no table deal. The Part 1 probe used 20,940,000,000 + i, and the smoke ch
 3. `0785365`: the two pinning fixtures in `hooks/core.rs`, flipped to the rules and failing, in their own commit.
 4. `d21511a`: more failing tests, before the fix: two for (a) and seven for (b).
 5. `5942d1a`: the fix and `instrument_scan.py`.
-6. The commit adding this README, the suite log and `smoke/`; CLOUD_STATUS.md is updated in the commit after it.
+6. `391a010`: this README, the suite log and `smoke/`. `b35aeff`: CLOUD_STATUS.md.
+7. **The Chase Order follow-up:**
+   - `a1858cd`: the log line.
+   - `c350e70`: the failing tests (no discard and discard) plus the control, in their own commit.
+   - `e52a73b`: the gated fix.
+   - Then the commit updating this README and `suite.log`, and CLOUD_STATUS.md after it.
 
-The engine diff from the base (`31a9dbf`) is 5 files: `attack_outcome.rs`, `hooks/core.rs` and `apply_attack_action.rs` (the three permitted), and two test files, `tests/pokemon/hisuian_goodra_securely_sheltered_test.rs` and `tests/pokemon/meowth_carefree_steps_test.rs`. Nothing in `players/` changed.
+The engine diff from the base (`31a9dbf`) is 6 files: `attack_outcome.rs`, `hooks/core.rs` and `apply_attack_action.rs` (the three permitted), `apply_action.rs` (the fourth, allowed for Chase Order), and two test files, `tests/pokemon/hisuian_goodra_securely_sheltered_test.rs` and `tests/pokemon/meowth_carefree_steps_test.rs`. Nothing in `players/` changed.
 
 ## The gates (RUN5's repair template, part 1: read them in the code)
 
@@ -62,6 +76,13 @@ Line numbers are at `5942d1a`.
   - Every other target stays `ApplyDamage`, exactly as before.
   - Used by `push_direct_damage_choices` (2859), `direct_damage_if_damaged` (2903), `discard_all_energy_of_type_then_damage_any_opponent_pokemon` (2928), `self_discard_energy_then_damage_any_opponent_pokemon` (3894), `damage_to_any_opponent_per_target_energy` (4528) and `switch_in_opponent_benched_then_damage` (6487).
   - For Pull In and Pound, the Pokémon switched in is chosen after the damage is queued. So there the gate is "any of the opponent's Benched Pokémon has a coin Ability", and the coin is checked on the new Active when the damage resolves.
+- **Chase Order** (line numbers at `e52a73b`):
+  - **Without the discard:** `optional_discard_benched_basic_for_extra_damage` (`apply_attack_action.rs` 4418) queues the damage through `queued_attack_damage_choice`, gated like the helpers above on the opponent's Active.
+  - **With the discard:** `apply_action.rs`'s `apply_discard_own_benched_then_damage` (1306) queues the damage through `discard_then_damage_choice` (`apply_attack_action.rs` 311). That takes the coin-flipping path only when both hold:
+    - the opponent's Active has a coin Ability;
+    - the attacker's Active has Chase Order among its printed attacks (`chase_order_attack`, 329).
+  - Otherwise it is the same `ApplyDamage` as before. That covers every other attack sharing the discard action, which today is Gyarados's Wild Swing.
+  - The debug line and the scan counter are (b)'s: "Queued attack damage at a coin-flip damage Ability" and `coin_queued_attack_damage`.
 - **Logging.** Both gates write a `debug!` line: "Coin-flip damage cut on heads", and "Queued attack damage at a coin-flip damage Ability".
 - **Saturation bound.** `hooks/core.rs` `active_attack_damage_saturation_requirement` (1400) still adds the finite cut to the reductions. That bound stays valid with the cut in step 4, so only its comment changed.
 
@@ -80,14 +101,19 @@ Line numbers are at `5942d1a`.
 | `carefree_steps_flips_for_damage_after_discarding_energy` (Volcanic Ash) | same | fails: 0 of 60 | passes |
 | `carefree_steps_flips_for_damage_to_the_pokemon_switched_in` (Pull In and Pound) | same | fails: 0 of 60 | passes |
 | `only_a_snipe_at_a_coin_ability_pokemon_takes_the_coin_path` (the gate: a snipe at Bulbasaur stays `ApplyDamage`) | same | fails: both were `ApplyDamage` | passes |
+| `carefree_steps_flips_for_chase_order_without_the_discard` (Chase Order 70 into Meowth) | same | fails: 0 of 60 | passes |
+| `carefree_steps_flips_for_chase_order_with_the_discard` (a Benched Combee discarded, 140) | same | fails: 0 of 60 | passes |
+| `chase_order_into_a_pokemon_without_a_coin_ability_is_unchanged` (the control: into Mega Latios ex, both choices are queued as `ApplyDamage` and do 70 and 140) | same | passes | passes |
+
+Chase Order's two "before" results are from `c350e70`, the engine before its fix. Gyarados's four Wild Swing tests, which share the discard action, pass before and after.
 
 The fixtures keep kd's value where it is today, 60 and 30, because kd's follow-on changes are the laptop's. Their last line names the change.
 
 ## The unit suite
 
-`cargo test --release --features test-utils`, on `5942d1a`'s engine (the last commit that touches `engine/`; the later ones touch only `rl/results/`): **2,003 passed, 0 failed, 0 ignored**, in 101 test programs (`suite.log`).
-- That is the Victory Star round's 1,994 plus the 9 new tests. The two flipped fixtures were renamed, not added.
-- No existing test's expected value was edited, apart from the two fixtures the coordinator asked to flip.
+`cargo test --release --features test-utils`, on `e52a73b`'s engine (the last commit that touches `engine/`; the later ones touch only `rl/results/`): **2,006 passed, 0 failed, 0 ignored**, in 101 test programs (`suite.log`).
+- That is the first draft's 2,003 (at `5942d1a`) plus the three Chase Order tests.
+- No existing test's expected value was edited, apart from the two fixtures the coordinator asked to flip. The Chase Order commit reworked the Meowth test file's helper to take a whole attacker board; the earlier tests using it are unchanged and pass.
 
 ## Instrumentation (part 2) and the smoke check
 
@@ -96,7 +122,7 @@ The fixtures keep kd's value where it is today, 60 and 30, because kd's follow-o
   - It counts a wider set than either gate, so 0 in a game means the repaired code never ran there.
 - `coin_queued_attack_damage`: queued `ApplyQueuedAttackDamage` moves aimed at such a Pokémon, the (b) path.
 
-**The smoke check** (`smoke/`, run in scratch copies; no table deck):
+**The smoke check** (`smoke/`, run in scratch copies; no table deck). It was run on `5942d1a`, before the Chase Order fix, and was not rerun for it; Chase Order's evidence is its unit tests.
 
 - **Decks:** two 20-card lists made only for this check.
   - `fire_heatmor.txt`: 2 Heatmor (Tongue Whip snipes the Bench), 2 Slugma, 2 Magcargo, and Blaziken's Trainers.
@@ -128,12 +154,12 @@ The fixtures keep kd's value where it is today, 60 and 30, because kd's follow-o
    - Then the last line of `guarded_grill_under_bounded_field_comes_off_after_weakness` becomes `(engine, engine)`.
 2. **(b)** Drop the direct-damage exception, `engine_flips_coin`. Then the last line of `a_direct_damage_snipe_on_togekiss_flips_celestial_blessing` becomes `(engine, engine)`.
    - The engine now flips for the `DirectDamage`, `DirectDamageAndSelfCardEffect` and `DirectDamageIfDamaged` groups, which is all that exception covers.
-   - kd already flips for every other attack, as the card text says. So after this change kd and the engine will still disagree on the attacks this round leaves unchanged: Chase Order, `also_choice_bench_damage`'s own-Bench form, and the six sites outside the seven.
+   - kd already flips for every other attack, as the card text says. So after this change kd and the engine will still disagree on the attacks left unchanged: `also_choice_bench_damage`'s own-Bench form, the six sites outside the seven, and Gyarados's Wild Swing. For Chase Order they now agree.
 
 Nothing in `players/` was touched.
 
 **The replay** (RUN5, "Engine repairs: the switch procedure"):
-1. Bring `5942d1a`'s changes to the five `engine/` files into the switch's engine and build it.
+1. Bring the changes of `5942d1a` and `e52a73b` (the six `engine/` files) into the switch's engine and build it.
 2. Run the unit suite.
 3. Replay the table the procedure names on the engines without and with the repair, and list the changed games. **Expected: 0**, because no list under `decks/` has a coin-Ability Pokémon, and both gates need one in play.
 4. Run the instrumented scan (`python3 instrument_scan.py <copy of legality_scan.rs>`; it can go after the Victory Star script, which uses the same anchors). Check two things:
@@ -160,7 +186,11 @@ If Dustin prefers one of those, it is a small change.
 
 ## Limits
 
-- **Not changed, though Part 1 confirmed they skip the coin.** Chase Order; `also_choice_bench_damage`'s own-Bench form; and Ogerpon, Urshifu, Blastoise and Mega Blastoise ex, Mega Kangaskhan ex's second punch, Hoopa's Mischievous Ring and Slowking's Litter. They are the questions in CLOUD_STATUS.md.
+- **Chase Order copied by another Pokémon** (for example through Mew ex's Genome Hacking). The choice without the discard flips the coin. But the discard branch looks for Chase Order among the Active's own printed attacks, so a copied Chase Order's discard branch keeps the old path.
+- **Not changed, though they skip the coin:**
+  - left open: `also_choice_bench_damage`'s own-Bench form;
+  - for a later round: Ogerpon, Urshifu, Blastoise and Mega Blastoise ex, Mega Kangaskhan ex's second punch, Hoopa's Mischievous Ring, Slowking's Litter and Gyarados's Wild Swing.
+  - See "Not changed" above for Dustin's answers.
 - **Side effects of the redirected damage.** Damage redirected to `ApplyQueuedAttackDamage` also:
   - carries the attack's name and text into `modify_damage` (`ApplyDamage` carries none);
   - runs the defender's other attack coins for its target: Guts, point denial and Perish Body.
@@ -172,7 +202,7 @@ If Dustin prefers one of those, it is a small change.
 
 - `HELPERS.md`, `helpers_census.py`, `census_output.txt`, `probe_coin_helpers.rs`, `probe_output.txt`: Part 1.
 - `instrument_scan.py`: the watch-only counters.
-- `suite.log`: the full unit suite at `5942d1a`.
+- `suite.log`: the full unit suite at `e52a73b`.
 - `smoke/`: the smoke check.
   - `fire_heatmor.txt`, `meowth_carefree.txt`, `pairs.tsv`: its decks and pairing.
   - `games_legacy_instr.jsonl`, `games_fixed_plain.jsonl`, `games_fixed_instr.jsonl`: its games.
