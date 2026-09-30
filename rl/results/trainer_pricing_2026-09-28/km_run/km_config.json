@@ -1,0 +1,87 @@
+{
+ "about": "km's one set of candidate, baseline, reference files and program hashes (../REGISTRATION_DRAFT.md, Amendment 1 (Sept 30), (b) item 3: 'The runner and the reader use this set and no other'). run_km.sh, km_check.py, footprint_km.py and read_km.py read this file through km_config.py, which checks it; nothing else names a build, a baseline or a reference file. The values the committed amendment fixes (the codes, kt_build, official_engine, the counter tool, the eight reference files) are also constants in km_config.py, which refuses any other value; the values left to set are the cloud's. A null value is required and not known yet (the cloud reports it with B's round): every script refuses to run until it is set. From part I on, <out>/km_inputs.sha256 (the one list, (b) item 4) pins this file's bytes and the set it names.",
+ "comparison": {
+  "candidate": "km3",
+  "baseline": "kta3",
+  "note": "km3 = kta3 + N2 at B; kta3 = kog3 + kt's switch 1 as ec7e1a8 defines it (EvalFeatures::KTA), the adopted working pilot. Amendment 1 (b) items 1-2, (d) item 2."
+ },
+ "build": {
+  "commit": null,
+  "commit_note": "REQUIRED: B, the cloud's new build commit, 40 hex digits (BUILD.md in round_folder names it). Every output file name starts with its first 7 characters. Its engine/ differs from kt_build's in engine/src/players/ only, engine/UPSTREAM.md aside (Amendment 1 (c) item 2, (e) item 1: git diff ec7e1a8 B -- engine/ ':!engine/UPSTREAM.md'; UPSTREAM.md is a notes file no build reads and stays as the branch has it).",
+  "branch": "origin/claude/pensive-ptolemy-spwc0b",
+  "branch_note": "the cloud branch B and its round are committed on; confirm it when the cloud reports B (part B checks that B and round_head are on it).",
+  "round_head": null,
+  "round_head_note": "REQUIRED: the commit that completes B's round (BUILD.md, STATUS.txt, the km3 smoke and the tool tests' outputs committed as passed); B is its ancestor. The cloud outputs below are read from it.",
+  "round_folder": null,
+  "round_folder_note": "REQUIRED: rl/results/km_build_<date of B> (Amendment 1 (c) item 3: a new folder, never the Sept 29 one).",
+  "kt_build": "ec7e1a867bdaae2b0b4a3d2730e36dfffb611900",
+  "kt_build_note": "ec7e1a8, the kt build: kog-based kt/kta/ktb/ktc (players/mod.rs:197-207 there); the reference files below were played by the laptop's programs built from it. B's engine/ diff from it must touch engine/src/players/ only, engine/UPSTREAM.md aside. Fixed by the amendment: km_config.py refuses any other value.",
+  "official_engine": "233bced99cf99b2a90aededaa48d1381ef147400",
+  "official_engine_note": "233bced, the official engine's code (rl/engine-2026-09-28/); its kta<N> is the OLD kp-based preset, never run for km (Amendment 1 (d) item 4). Checked: B's engine/ diff from it is players/ only too, engine/UPSTREAM.md aside. Fixed by the amendment: km_config.py refuses any other value."
+ },
+ "counter_tool": {
+  "source_path": "rl/results/tool_turn_effect_census_2026-09-25/tool_census.rs",
+  "source_sha256": "05d7ba4183ce9e3098036de9acb5181ea71f7077ef9b3798ad4e5d165dc22365",
+  "note": "the counter tool's source in B's tree must have this sha256 (Amendment 1 (e) item 2); built as an example in B's engine/."
+ },
+ "cloud_outputs": {
+  "note": "B's round, committed at round_head under round_folder (Amendment 1 (c) item 3; (e) item 3). REQUIRED, set when the cloud reports them.",
+  "km3_smoke": {
+   "path": null,
+   "sha256": null,
+   "code": "km3",
+   "pairings": [0, 2, 19],
+   "deals": 40,
+   "seed_base": 72000000,
+   "note": "the km3 smoke at B, both sides, table pairings 0, 2 and 19, i < 40 (120 games): the laptop's km3 reference (identity 7; (e) item 3)"
+  },
+  "tool_test3_rows": {"path": null, "sha256": null, "note": "test 3's --rows-out, kp3 (check_tool.sh's exact command)"},
+  "tool_test3_trace": {"path": null, "sha256": null, "note": "test 3's --trace-out"},
+  "tool_test1_stdout_sha256": null,
+  "tool_test1_games_sha256": null,
+  "tool_test1_note": "test 1's stdout and --games-out sha256 as B's STATUS.txt records them (kp3, 560 games)"
+ },
+ "references": {
+  "folder": "rl/results/kt_tables_2026-09-28",
+  "code": "kta3",
+  "note": "kta3's committed games at ec7e1a8, kta3 on both sides in every row (Amendment 1 (b) item 3). Each group: the file, its sha256, its pairings, deals i < deals, seed seed_base + pairing x 10,000 + i, even i puts the first-named deck in seat 0; decks from 'pairs' (null: legality_scan's --decks table).",
+  "played_by": {
+   "deckgym": "407976366fa2104ee1f2663c94fe31b1c503466defe9d6154b7e60659cb0991c",
+   "legality_scan": "924751ba0926993eaee87ecc8fb8301ffd0b7eee8490bfb3369427794328f938",
+   "tool_census": "d9799c96015f74b952889a7f7d9820bbc12d5d97e4d267ad8acc2b63cdcc720b",
+   "note": "the laptop's ec7e1a8 programs (kta_tables_2026-09-29/STATUS.txt, line 2): provenance only; they play no km game (Amendment 1 (d) item 3)"
+  },
+  "groups": {
+   "table": {"file": "ec7e1a8_kta3_table.jsonl", "sha256": "6b90d3cfa24e17815026dab7c787df327cfc859e491d1399889aaa2369a3c73b",
+             "pairings": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27],
+             "deals": 500, "games": 14000, "seed_base": 72000000, "pairs": null},
+   "new17": {"file": "ec7e1a8_kta3_new17.jsonl", "sha256": "1803e256e45d2d5a6208d61854067e88e05af51315cd4eefecda33c2f84603ba",
+             "pairings": [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+             "deals": 500, "games": 8500, "seed_base": 21108000000, "pairs": "rl/results/gauntlet_runs_2026-09-26/tsv/new_decks.tsv"},
+   "b2e": {"file": "ec7e1a8_b2e_kta3.jsonl", "sha256": "38abd687e38c27285383616876729fd465bc4e42fe9445cddfe17ca7cde468ae",
+           "pairings": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31,
+                        32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63,
+                        64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95],
+           "deals": 500, "games": 48000, "seed_base": 21106000000, "pairs": "rl/results/b2e_card_check_2026-09-26/b2e_pairings.tsv"},
+   "scizor": {"file": "ec7e1a8_scizor_kta3.jsonl", "sha256": "6b27a513f0709510e75cdf360bb44d13b6044481307bb33e681723d735523839",
+              "pairings": [0, 1, 2, 3, 4, 5, 6, 7],
+              "deals": 500, "games": 4000, "seed_base": 21108000000, "pairs": "rl/results/gauntlet_runs_2026-09-26/tsv/new_decks.tsv"},
+   "var_v-lucario_2": {"file": "ec7e1a8_var_v-lucario_2_kta3.jsonl", "sha256": "d44a4c30f442c74ea46f50cc53c1ce7e399adc2ee90667c81dc540b5b35fc6a0",
+                       "pairings": [2, 8, 13, 18, 19, 20, 21],
+                       "deals": 500, "games": 3500, "seed_base": 72000000, "pairs": "rl/results/gauntlet_runs_2026-09-26/tsv/var_v-lucario_2.tsv"},
+   "var_v-suicune_2": {"file": "ec7e1a8_var_v-suicune_2_kta3.jsonl", "sha256": "c3f763bfe68f34246bd50c6bfd3e1d8df4063384bff0d007a5f8df2a5a8ceab5",
+                       "pairings": [4, 10, 15, 19, 22, 25, 26],
+                       "deals": 500, "games": 3500, "seed_base": 72000000, "pairs": "rl/results/gauntlet_runs_2026-09-26/tsv/var_v-suicune_2.tsv"},
+   "var_v-weezing_2": {"file": "ec7e1a8_var_v-weezing_2_kta3.jsonl", "sha256": "9bb448868dd027f74edd38ec766cf961a8cc71b06d483e14d629cddb5cd85f8c",
+                       "pairings": [6, 12, 17, 21, 24, 26, 27],
+                       "deals": 500, "games": 3500, "seed_base": 72000000, "pairs": "rl/results/gauntlet_runs_2026-09-26/tsv/var_v-weezing_2.tsv"},
+   "var_l-charizardy": {"file": "ec7e1a8_var_l-charizardy_kta3.jsonl", "sha256": "7980b996618ef0efbac8392db0a73a25a9466c700ddab70d58ee35b64ce0d271",
+                        "pairings": [40, 41, 42, 43, 44, 45, 46, 47],
+                        "deals": 500, "games": 4000, "seed_base": 21106000000, "pairs": "rl/results/gauntlet_runs_2026-09-26/tsv/var_l-charizardy.tsv"}
+  }
+ },
+ "programs": {
+  "pins": "programs.txt",
+  "note": "the laptop's sha256 of its deckgym, examples/legality_scan and examples/tool_census built from B: run_km.sh part B writes them to <out>/programs.txt and to its 'KM PART B DONE' line in <out>/STATUS.txt before the first game ((e) items 3 and 5); every later part checks the programs against them before its first game and after its last, and read_km.py checks programs.txt, the STATUS line and the programs on the disk."
+ }
+}
