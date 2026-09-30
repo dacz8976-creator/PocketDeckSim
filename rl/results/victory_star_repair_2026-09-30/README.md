@@ -25,6 +25,7 @@ Seeds: no table deal. The smoke check below played scratch decks only, on seeds 
 2. `4d026a5`: line endings only. The first commit rewrote `b4a_attack_batch2_test.rs` with Unix line endings by accident, which `.gitattributes` forbids. This puts back the Windows ones; the content is unchanged.
 3. `6415e39`: the fix, the restated legacy test, and `instrument_scan.py`.
 4. The commit that adds this README, `suite.log` and `smoke/`. CLOUD_STATUS.md is updated in the commit after it.
+5. The Fable coordinator's addition (via Dustin): the restated test also checks that a Confusion tails offers no reroll, and that the offer on heads is on the attack's own coins. It is test-only, and the engine is unchanged from `6415e39`.
 
 The engine diff from the base (`2711df0`) is 4 files in `engine/`: the two source files and two test files. Nothing in `players/` changed.
 
@@ -64,9 +65,14 @@ All use a Confused attacker with Victini on the Bench. "Before" is `265ce95`, th
 - **The second:** after a Confusion heads, a reroll always resolves its fresh coins. Nothing is attached only when all three are tails (1 in 8), where a second Confusion check would make it nearly 1 in 2. It needs more than a quarter of the rerolls to attach something.
   - Before the fix: 0 rerolls, because no offer was ever made.
 - **The guard:** CoinFlipToBlockAttack, Confused or not, 40 seeds each: no pause and no offer, before and after.
-- **The restated test:** Mega Houndoom ex's Grimhound Flare (flip 3 coins, 80 for each heads), Confused, 40 seeds. No damage lands before the choice, and both a pause and a Confusion tails occur.
+- **The restated test** (the one at about line 341 that pinned the old rule): Mega Houndoom ex's Grimhound Flare (flip 3 coins, 80 for each heads), Confused, 40 seeds.
+  - No damage lands before the choice.
+  - On a Confusion tails the attack does nothing, no reroll is offered, and Victory Star stays unused, exactly as before the repair.
+  - On a heads the offer is on Grimhound Flare's three coins.
+  - Both cases occur.
   - It replaces `confusion_combination_stays_on_explicit_legacy_boundary`, which asserted that a Confused attacker never gets the pause. That old test passed only because its one seed (3) gave Confusion tails.
-  - Before the fix it failed at seed 1: 160 damage at once (the defender at 240), with no pause. It was run on a scratch copy of `265ce95`'s engine.
+  - Before the fix it failed at seed 1: 160 damage at once (the defender at 240), with no pause. It was run on a scratch copy of `265ce95`'s engine, both as first restated and as strengthened.
+  - **The order differs from the coordinator's.** The coordinator asked for this test to be flipped, seen to fail and committed before the fix. It was flipped in the fix commit (`6415e39`); only the `b4a` tests were committed before it (`265ce95`). Its failure on the old engine was seen in the scratch copy, not in a commit of its own.
 
 ## The unit suite
 

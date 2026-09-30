@@ -338,8 +338,9 @@ fn defender_coin_is_resolved_after_choice_and_never_becomes_the_pending_batch() 
 }
 
 /// rules/04 §9 (seen in Pocket Sept 29): a Confused attacker's Confusion coin is flipped first and
-/// is never offered for a reroll. Tails ends the attack with nothing done; only heads reaches the
-/// attack-effect pause, still before any damage.
+/// is never offered for a reroll. Tails ends the attack with nothing done and no reroll offered, as
+/// before the repair; only heads reaches the attack-effect pause, on the attack's own coins and
+/// still before any damage.
 #[test]
 fn confusion_coin_comes_before_the_attack_effect_pause_and_tails_does_nothing() {
     let (mut paused, mut confusion_tails) = (0, 0);
@@ -351,9 +352,25 @@ fn confusion_coin_comes_before_the_attack_effect_pause_and_tails_does_nothing() 
         game.apply_action(&attack());
         let after = game.get_state_clone();
         assert_eq!(after.get_active(1).get_remaining_hp(), 400, "seed {seed}");
-        match after.pending_attack_coin_choice {
-            Some(_) => paused += 1,
-            None => confusion_tails += 1,
+        let offers_victory_star = after.generate_possible_actions().1.iter().any(|choice| {
+            matches!(
+                choice.action,
+                SimpleAction::KeepAttackCoinResults | SimpleAction::RerollAttackCoins { .. }
+            )
+        });
+        match &after.pending_attack_coin_choice {
+            // Heads: the offer is on Grimhound Flare's own three coins, never on the Confusion coin.
+            Some(pending) => {
+                assert_eq!(pending.flips.len(), 3, "seed {seed}");
+                assert!(offers_victory_star, "seed {seed}");
+                paused += 1;
+            }
+            // Tails: the attack does nothing and no reroll is offered.
+            None => {
+                assert!(!offers_victory_star, "seed {seed}");
+                assert!(!after.victory_star_used_this_turn[0], "seed {seed}");
+                confusion_tails += 1;
+            }
         }
     }
     assert!(
