@@ -77,7 +77,7 @@ The source is unchanged: `../tool_turn_effect_census_2026-09-25/tool_census.rs`,
 |---|---|
 | source | `05d7ba4183ce9e3098036de9acb5181ea71f7077ef9b3798ad4e5d165dc22365` |
 | program, cloud build at B | `b48db2a89fd871b0d96c4de2090dd8a699aa515b378f51c5964a0edf1fe6947e` |
-| old tool's program, for test 1 | `bf29c60f2eece878…` (full hash in `STATUS.txt`) |
+| old tool's program, for test 1 | `bf29c60f2eece878f879922fb4135d75faf7fe477dc4b0ad2018a8165cfb963c` |
 
 **All pass** (`check_tool.sh`, `tool_check.py`, `tool_check.txt`):
 1. **The old output, exactly.** kp3 on the table's first 20 deals of the 28 pairings (560 games): the old and new tools' stdout, stderr and games-out are byte-identical. Committed: `tool_test1_stdout.txt` (sha256 `a82786bb69fa10ca3bfba4c5854055911a280246440d9ab7b359319acb746997`) and `tool_test1_games.jsonl` (`057ae92e9a369d016bd10754313dd80f5eb7da1148bcdc79a1252cd642c67e0f`). **These equal 9c11b30's**, as expected: kp3 is untouched by B.
