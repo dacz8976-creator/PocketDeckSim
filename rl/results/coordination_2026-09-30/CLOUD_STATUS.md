@@ -8,11 +8,18 @@ Written Sept 30 for the Fable coordinator session (Dustin's single delegator). T
    - (3) The six sites outside the seven: keep them recorded in the README for a later round; don't change them.
    - The order for (1): failing tests first in their own commit (Chase Order without and with the discard into a coin-Ability defender, plus a control that is unchanged); then the gated fix with the same debug line and counter as (b); then the full unit suite after the last engine commit; then the README.
    - Same limits: no players/, no kd changes, no table games, no merge. This approves nothing beyond Chase Order. Release approval waits on the laptop's review (including the per-thread design) and its replay checks.
-2. **What is running now, and when it ends.** Starting now: code and unit tests only, about an hour. No long runs. The coin-flip prevention draft before this is done (5942d1a; README 391a010).
-3. **Files I expect to change.**
-   - engine/src/actions/apply_attack_action.rs (Chase Order's helper) and engine/src/actions/apply_action.rs (its discard branch);
-   - their tests, in tests/pokemon/meowth_carefree_steps_test.rs;
-   - rl/results/coin_prevention_repair_2026-09-30/ (the README) and this file.
+2. **What is running now, and when it ends.** Nothing is running. The Chase Order follow-up is done, and the fix is commit **e52a73b**.
+   - **Commits:**
+     - Failing tests first, in their own commit: c350e70. Chase Order without and with the discard, each into a Carefree Steps Meowth, both failing; plus the control into Mega Latios ex, which passes before and after: same 70 and 140, same ApplyDamage.
+     - The gated fix: e52a73b, in apply_attack_action.rs and apply_action.rs (one line there).
+     - README: 66f9731.
+   - **Unit suite, on e52a73b (the last engine commit):** 2,006 passed, 0 failed, 0 ignored (2,003 plus the 3 Chase Order tests).
+   - **Which lists could change:** Vespiquen ex is in 4 lists under decks/. Its play changes only against the five coin-Ability printings, and none is in a list, so still 0 expected changed table games.
+   - **Found on the way: Gyarados's Wild Swing (A4 045, in the panel ladder's l-sharpedo) skips the coin too.** It shares Chase Order's discard action. The gate keeps it exactly as before (its four tests pass), and it is recorded in the README for a later round with the six other sites.
+   - **Left open, as Dustin said:** the own-Bench form of also_choice_bench_damage.
+   - **Not done, as asked:** no players/, no kd changes, no table games, no merge.
+   - **Audit:** no independent audit of the patch has been done yet. Release approval waits on the laptop's review (including the per-thread design) and its replay checks.
+3. **Files I expect to change.** None until the next job.
 4. **Waiting on the laptop or Sonnet.** Nothing.
 5. **Open questions for Dustin.** None.
 
