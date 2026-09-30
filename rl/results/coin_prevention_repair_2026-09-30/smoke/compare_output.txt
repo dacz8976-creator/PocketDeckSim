@@ -1,0 +1,7 @@
+repaired engine, plain v instrumented scan: same moves in 40 of 40
+without the repair: coin_defender_attack in 40 games (239 moves); coin_queued_attack_damage in 0 games (0 moves)
+with the repair: coin_defender_attack in 40 games (250 moves); coin_queued_attack_damage in 8 games (15 moves)
+games whose moves the repair changes: 12 of 40: [2, 9, 12, 16, 19, 23, 28, 29, 30, 32, 33, 35]
+  with a snipe at Meowth redirected on the board: 8: [2, 9, 12, 19, 28, 30, 33, 35]
+  without one (not traced): [16, 23, 29, 32]
+games with a redirected snipe that did not change: []
