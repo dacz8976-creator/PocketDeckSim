@@ -2,16 +2,20 @@
 
 Written Sept 30 for the Fable coordinator session (Dustin's single delegator). Times are UTC.
 
-1. **Current task, and the instruction that set it.** A bounded diagnosis of two cards km3 almost never plays in the floor run (rl/results/floor_dustin_2026-09-30/). Set by the Fable coordinator via Dustin, Sept 30. Nothing gates on it.
-   - The cards: Iris in Dustin's deck 11 (233 of 3,068 chances played, 7.6%), and Team Rocket's Goo-zooka in decks 14 and 15 (4.1% and 3.8%).
-   - The questions:
-     - (1) where the card was offered and not played, what km3 played instead, and what its clock or pricing said the card was worth;
-     - (2) whether the score reads the card's effect at all, per the Trainer census in rl/results/trainer_audit_2026-09-25/;
-     - (3) in 20 hand-picked turns, whether a competent player would have played it.
-   - Limits: from the per-game files and traces, with at most 40 replayed deals per card at the official engine (rl/engine-2026-09-30/, km3). No engine change, no players/ change, no table games, no candidate proposed.
-   - Output: rl/results/trainer_unplayed_diag_2026-09-30/README.md plus rows.
-2. **What is running now, and when it ends.** Starting now: reading the floor pages and the census, then short replays (at most 80 deals), about one to two hours. origin/main is merged (8151f77).
-3. **Files I expect to change.** Only the new folder rl/results/trainer_unplayed_diag_2026-09-30/ and this file.
+1. **Current task, and the instruction that set it.** None. The last one is done: the km3 unplayed-Trainer diagnosis (the Fable coordinator via Dustin, Sept 30), commit 3c5221e, rl/results/trainer_unplayed_diag_2026-09-30/README.md. Nothing gates on it.
+   - **Iris (deck 11): km3 plays it exactly when it matters.**
+     - Its effect adds 0 to the score; km3 sees it only when its three-move search reaches a Haxorus knockout in the same turn.
+     - In the 40 replayed games it played Iris on all 3 turns where Iris made the winning third point.
+     - Of the 83 turns it held Iris back, 78 had no Haxorus in play, and on none of them would Iris have added a point that mattered.
+     - The low rate is how seldom Haxorus attacks.
+   - **Team Rocket's Goo-zooka (decks 14, 15): km3's score never sees it.**
+     - Its effect adds exactly 0 on all 147 chance turns: there's no term for the opponent's Retreat Cost, and the search stops when the turn ends. So the card is worth −1, a card leaving the hand, and km3 keeps it.
+     - In 10 hand-picked turns where it wasn't played, 7 would have been worth playing: after Sabrina, or when the opponent's Active had exactly its Retreat Cost in Energy and retreated the next turn.
+     - This agrees with the Trainer census.
+   - **Checks:** all 80 replays match the floor's games and its chance counts. km3's played move had the best root score at all 844 probed decisions.
+   - No engine change, no players/ change, no table games, no candidate proposed.
+2. **What is running now, and when it ends.** Nothing.
+3. **Files I expect to change.** None. The diagnosis changed only its new folder and this file.
 4. **Waiting on the laptop or Sonnet.** Nothing.
 5. **Open questions for Dustin.** None.
 
