@@ -401,6 +401,19 @@ sides with k3 still available; the 0.7.2 wheel and its run identities are untouc
         - brew-06 reads "fail" (125 of 1,920) and brew-06b "fail" (262), km3 on both sides, and plain `run_screen.py` gives the floor's wins per opponent exactly.
         - The deck 14 k3 control reads "untrusted" (196), repeating Sept 28's games.
         - Reported beside: brew-05b clears (577; 584 under kog3); **deck 07 (Skarmory) clears at 1,098 of 1,920 (57.2%), against 903 under kog3**, the Tool/Jasmine fix acting on Dustin's deck.
+    - **The next engine switch, the rules one** (`results/engine_switch_rules_2026-10/PLAN.md`, 0a68b0a): it carries the cloud's Victory Star / Confusion repair (A) and its coin-flip damage prevention + Chase Order repair (B), plus kd's follow-ons and the fixes F1-F7. It follows the full rules procedure, in two laptop sittings.
+      - Dustin, Sept 30 evening, via the Fable coordinator session, answering the plan's questions 1-6 and 8-10 (put to him as nine items, each with the plan's recommendation; verbatim): "Sure go for all 9".
+      - So, as recommended:
+        1. a conditional go, "pin if all pass", where every changed carrier or scratch game must be explained by an exact counter or by a trace meeting both halves, and a judgment-call trace comes to him;
+        2. the scope is A + B + kd's follow-ons + F1-F7, with 09e964f, PR #383 and B4b data left out;
+        3. the per-thread heads-cut value is kept;
+        4. real carrier lists, extracted by the cloud from the committed Limitless archive;
+        5. km3's coverage baselines are replayed as a gate;
+        6. kd3's identity is a gate;
+        8. overnight laptop runs on Oct 1 and Oct 2 nights, pushed by 7:00 am Central with main = origin/main;
+        9. if A fails its mechanic check, A is held and B + kd ship if B passes;
+        10. 09e964f's fix 2 is recorded as not taken (it contradicts the JP ruling the fork follows, `rules/06_sources.md:124`, and would break `rules_repair_retaliation_timing.rs:136`), and fix 1 stays "unchecked".
+      - Question 7 (the order against N1) was the coordinator's operational decision: Sonnet does F1-F7 tonight on sonnet/rules-fixes, cut from cae37a3 with no `players/` change; R is its head; the cloud stays on N1.
     - **The tables' go-ahead** (block item 9; Amendment 1 (g) step 5). Dustin, Sept 30 about 02:20 UTC, in the laptop session, after 3aed736 was pushed (verbatim): "The cloud has the message go ahead on the tables". The tables start in the laptop's queue as soon as the preparation has passed: the cloud's round at B committed as passed, the laptop's identity games and timing pair, the threshold sample, the independent check and the thresholds amendment, in (g)'s order. A stop in any of them holds the tables and goes to him.
       - **His confirmation of that reading** (Sept 30, after km's reading, given in the Fable coordinator session "Work delegation and task routing" and relayed to the laptop session; verbatim): "Yes, go ahead on the tables meant once preparation passes". This closes the outcome audit's N7 (`results/km_tables_2026-09-30/second_reader/OUTCOME_AUDIT.md`).
   - kph is not run (superseded by koh on the composed base).
