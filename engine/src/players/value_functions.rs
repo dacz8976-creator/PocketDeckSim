@@ -343,6 +343,13 @@ pub fn public_clock_effect_km_value_function(state: &State, myself: usize) -> f6
     parametric_value_function_ex6(state, myself, &ValueFunctionParams::baseline(), true, false, true, true, false, EvalFeatures::KM)
 }
 
+/// The `kn` code (players/mod.rs `KN`, piloted like `kp`): km with switch N1, the opponent's Active Retreat Cost
+/// counted in the score as the bot's own is (`rl/results/trainer_pricing_2026-09-28/REGISTRATION_DRAFT.md`, "Appendix.
+/// Parked: N1"; built Sept 30, not registered). km's call with [`EvalFeatures::KN`].
+pub fn public_clock_effect_kn_value_function(state: &State, myself: usize) -> f64 {
+    parametric_value_function_ex6(state, myself, &ValueFunctionParams::baseline(), true, false, true, true, false, EvalFeatures::KN)
+}
+
 /// Weight of [`best_benched_attacker_online_score`] in `kq`: half the Active online score's 500 in
 /// [`ValueFunctionParams::baseline`]. Pre-set before any A/B and not tuned on the table.
 pub const KQ_BENCH_ATTACKER_WEIGHT: f64 = 250.0;
@@ -387,6 +394,9 @@ struct EvalFeatures {
     /// km switch N2 (km): each hit in kt's clock ([`kt_clock_stadium`]) carries the attacker's lasting Stadium damage
     /// bonus ([`lasting_stadium_damage_bonus`]). Read only in kt's clock, so only with switch 1 or 3 on (km: switch 1).
     stadium_bonus_in_clock: bool,
+    /// Switch N1 (kn): the opponent's Active Retreat Cost counts in the score, as the bot's own does, through the same
+    /// extraction ([`get_active_retreat_cost`], the board cost) and the same weight. Read only after setup.
+    opponent_retreat_cost: bool,
 }
 
 impl EvalFeatures {
@@ -405,6 +415,7 @@ impl EvalFeatures {
         evolution_steps: false,
         zone_to_bench: false,
         stadium_bonus_in_clock: false,
+        opponent_retreat_cost: false,
     };
     const KQ: EvalFeatures = EvalFeatures {
         next_attack_reduction: true,
@@ -421,6 +432,7 @@ impl EvalFeatures {
         evolution_steps: false,
         zone_to_bench: false,
         stadium_bonus_in_clock: false,
+        opponent_retreat_cost: false,
     };
     const KD: EvalFeatures = EvalFeatures {
         next_attack_reduction: false,
@@ -437,6 +449,7 @@ impl EvalFeatures {
         evolution_steps: false,
         zone_to_bench: false,
         stadium_bonus_in_clock: false,
+        opponent_retreat_cost: false,
     };
     const KPR: EvalFeatures = EvalFeatures {
         next_attack_reduction: false,
@@ -453,6 +466,7 @@ impl EvalFeatures {
         evolution_steps: false,
         zone_to_bench: false,
         stadium_bonus_in_clock: false,
+        opponent_retreat_cost: false,
     };
     const KOA: EvalFeatures = EvalFeatures { opening_first_turn_active: true, ..EvalFeatures::OFF };
     const KOB: EvalFeatures = EvalFeatures { opening_bench_working: true, ..EvalFeatures::OFF };
@@ -486,6 +500,8 @@ impl EvalFeatures {
     const KTC: EvalFeatures = EvalFeatures { counter_damage: true, ..EvalFeatures::KOG };
     /// km: kta + N2 (Amendment 1, Sept 30: km re-issued on kta). With N2's flag off it is [`EvalFeatures::KTA`].
     const KM: EvalFeatures = EvalFeatures { stadium_bonus_in_clock: true, ..EvalFeatures::KTA };
+    /// kn: km + N1 (the parked switch, built Sept 30). With N1's flag off it is [`EvalFeatures::KM`].
+    const KN: EvalFeatures = EvalFeatures { opponent_retreat_cost: true, ..EvalFeatures::KM };
 
     /// Whether kt's clock ([`kt_clocks`]) replaces kp's.
     fn kt_clock(&self) -> bool {
@@ -775,11 +791,18 @@ fn parametric_value_function_ex6(
     );
     // kt, ktb (switch 2): no flat term for a Tool on the Active.
     let active_has_tool_weight = if features.tool_by_holder { 0.0 } else { params.active_has_tool };
+    // kn (N1): the opponent's Active Retreat Cost counts as the bot's own does. It sits where the one-sided term sat, in
+    // the same position in the sum, so with the flag off the score is the same expression, added in the same order.
+    let active_retreat_cost_term = if features.opponent_retreat_cost {
+        (opp.active_retreat_cost - my.active_retreat_cost) * params.active_retreat_cost
+    } else {
+        (-my.active_retreat_cost) * params.active_retreat_cost
+    };
     let score = (my.points - opp.points) * params.points
         + (my.pokemon_value - opp.pokemon_value) * params.pokemon_value
         + (my.hand_size - opp.hand_size) * params.hand_size
         + (opp.deck_size - my.deck_size) * params.deck_size
-        + (-my.active_retreat_cost) * params.active_retreat_cost
+        + active_retreat_cost_term
         + (my.active_pokemon_online_score - opp.active_pokemon_online_score)
             * params.active_pokemon_online_score
         + (my.active_safety - opp.active_safety) * params.active_safety
@@ -6020,5 +6043,358 @@ mod km_tests {
         // 3 Stadium cases x 3 attackers x 6 victims. N2 changes a hit in some, and a cut shortens a first hit in many.
         assert_eq!(cases, 54);
         assert!(n2_acts > 10 && cut_acts > 20, "{n2_acts} cases where N2 acts, {cut_acts} where a cut acts");
+    }
+}
+
+#[cfg(test)]
+mod kn_tests {
+    //! kn = km + switch N1, the opponent's Active Retreat Cost counted in the score as the bot's own is
+    //! (`rl/results/trainer_pricing_2026-09-28/REGISTRATION_DRAFT.md`, "Appendix. Parked: N1": its drafted tests, with
+    //! km in the place of the retired draft's kog and kn in the place of its `kma`). Built Sept 30, not registered.
+    //! Numbers from `lib/card.py`: Retreat Costs Team Rocket's Raticate ex B4a 059 0, Dratini A1 183 1, Ralts A1 130 1
+    //! ([P]), Machop A1 143 2, Mewtwo ex A1 129 2 ([P]), Machamp A1 145 3, Charmander A1 033 1, Suicune ex A4a 020 2;
+    //! Team Rocket's Goo-zooka B4a 068 (the opponent's Active +1 until the end of their next turn); Peculiar Plaza
+    //! B2 155 (each [P] Pokemon in play 2 less); Ariados B1a 006 (Trap Territory: the opponent's Active +1); Small
+    //! Balloon B3b 064 (a Basic 1 less); Inflatable Boat A4a 067 (a [W] Pokemon 1 less).
+    use super::*;
+    use crate::card_ids::CardId;
+    use crate::database::get_card_by_enum;
+    use crate::observation::{PlayerObservation, RevealedKnowledge};
+    use crate::players::expectiminimax_player::ExpectiMiniMaxPlayer;
+    use crate::players::public_pricing_player::PublicPricingPlayer;
+    use crate::players::{create_players, PlayerCode, RandomPlayer};
+    use crate::{Deck, Game};
+
+    /// Scratch lists made for these tests (not table, held-out or Dustin's lists): Goo-zooka, Peculiar Plaza, and two
+    /// opponents whose Actives carry a retreat Tool (Inflatable Boat, Small Balloon).
+    const GOO: &str = "Energy: Fighting\n2 Machop A1 143\n2 Machoke A1 144\n1 Machamp A1 145\n\
+        2 Team Rocket's Rattata B4a 058\n2 Team Rocket's Raticate ex B4a 059\n2 Team Rocket's Goo-zooka B4a 068\n\
+        2 Poké Ball P-A 005\n2 Professor's Research P-A 007\n1 Sabrina A1 225\n1 Cyrus A2 150\n1 Giant Cape A2 147\n\
+        1 X Speed P-A 002\n1 Potion P-A 001\n";
+    const PLAZA: &str = "Energy: Psychic\n2 Mewtwo ex A1 129\n2 Ralts A1 130\n2 Kirlia A1 131\n2 Gardevoir A1 132\n\
+        2 Peculiar Plaza B2 155\n2 Poké Ball P-A 005\n2 Professor's Research P-A 007\n1 Rare Candy A3 144\n\
+        1 Sabrina A1 225\n1 Cyrus A2 150\n1 Giant Cape A2 147\n1 X Speed P-A 002\n1 Potion P-A 001\n";
+    const WATER_BOAT: &str = "Energy: Water\n2 Suicune ex A4a 020\n2 Squirtle A1 053\n2 Wartortle A1 054\n\
+        1 Blastoise A1 055\n2 Inflatable Boat A4a 067\n2 Poké Ball P-A 005\n2 Professor's Research P-A 007\n\
+        1 Rare Candy A3 144\n1 Sabrina A1 225\n1 Cyrus A2 150\n1 Giant Cape A2 147\n1 X Speed P-A 002\n\
+        2 Potion P-A 001\n";
+    const FIRE_BALLOON: &str = "Energy: Fire\n2 Charmander A1 033\n2 Charmeleon A1 034\n2 Charizard A1 035\n\
+        2 Small Balloon B3b 064\n2 Poké Ball P-A 005\n2 Professor's Research P-A 007\n2 Rare Candy A3 144\n\
+        1 Sabrina A1 225\n1 Cyrus A2 150\n1 Giant Cape A2 147\n1 X Speed P-A 002\n2 Potion P-A 001\n";
+    /// The pairs the played-state and move-for-move tests cycle through.
+    const PAIRS: [(&str, &str); 5] =
+        [(GOO, WATER_BOAT), (GOO, FIRE_BALLOON), (PLAZA, FIRE_BALLOON), (PLAZA, WATER_BOAT), (GOO, PLAZA)];
+
+    fn deck(list: &str) -> Deck {
+        let deck = Deck::from_string(list).unwrap();
+        assert!(deck.is_valid(), "{list}");
+        deck
+    }
+
+    fn mon(id: CardId) -> PlayedCard {
+        PlayedCard::from_id(id)
+    }
+
+    /// A code's value from `myself`'s view, evaluated as the public codes are.
+    fn value(state: &State, myself: usize, features: EvalFeatures) -> f64 {
+        parametric_value_function_ex6(state, myself, &ValueFunctionParams::baseline(), true, false, true, true, false, features)
+    }
+
+    /// kn's value minus km's, from `myself`'s view.
+    fn n1(state: &State, myself: usize) -> f64 {
+        value(state, myself, EvalFeatures::KN) - value(state, myself, EvalFeatures::KM)
+    }
+
+    /// The board Retreat Cost of `player`'s Active, as the engine computes it for a public leaf.
+    fn board_cost(state: &State, player: usize) -> f64 {
+        crate::hooks::get_board_retreat_cost_for_player(state, player, state.get_active(player)).len() as f64
+    }
+
+    /// Player 0 (`mine`) against player 1 (`theirs`), player 0 to move on turn 5 after setup, `stadium` in play.
+    fn position(mine: Vec<PlayedCard>, theirs: Vec<PlayedCard>, stadium: Option<CardId>) -> State {
+        let game = crate::test_support::get_initialized_game(0);
+        let mut state = game.get_state_clone();
+        state.set_board(mine, theirs);
+        state.current_player = 0;
+        state.turn_count = 5;
+        state.move_generation_stack.clear();
+        state.setup_opponent_hidden = false;
+        state.active_stadium = stadium.map(get_card_by_enum);
+        state
+    }
+
+    fn close(a: f64, b: f64) -> bool {
+        (a - b).abs() < 1e-9
+    }
+
+    #[test]
+    fn kn_is_km_plus_n1_and_nothing_else() {
+        // With its flag cleared, KN's preset is KM's, every field, compared as presets are compared.
+        let kn = EvalFeatures::KN;
+        assert!(kn.opponent_retreat_cost && kn.stadium_bonus_in_clock && kn.defender_cuts);
+        assert_eq!(format!("{:?}", EvalFeatures { opponent_retreat_cost: false, ..kn }), format!("{:?}", EvalFeatures::KM));
+        // Every other preset has the flag off.
+        for f in [
+            EvalFeatures::OFF,
+            EvalFeatures::KQ,
+            EvalFeatures::KD,
+            EvalFeatures::KPR,
+            EvalFeatures::KOA,
+            EvalFeatures::KOB,
+            EvalFeatures::KOR,
+            EvalFeatures::KPF,
+            EvalFeatures::KPG,
+            EvalFeatures::KPH,
+            EvalFeatures::KPHA,
+            EvalFeatures::KPHB,
+            EvalFeatures::KOH,
+            EvalFeatures::KOG,
+            EvalFeatures::KT,
+            EvalFeatures::KTA,
+            EvalFeatures::KTB,
+            EvalFeatures::KTC,
+            EvalFeatures::KM,
+        ] {
+            assert!(!f.opponent_retreat_cost, "{f:?}");
+        }
+    }
+
+    #[test]
+    fn n1_the_term_is_the_opponents_active_retreat_cost() {
+        // The drafted test "N1, the term": two Actives with Retreat Costs a and b and no effects; from player 0's view
+        // kn - km = b, and from player 1's view kn - km = a. The bot's own cost counts in both codes, as before.
+        let costs = [
+            (CardId::B4a059TeamRocketsRaticateEx, 0.0),
+            (CardId::A1183Dratini, 1.0),
+            (CardId::A1143Machop, 2.0),
+            (CardId::A1145Machamp, 3.0),
+        ];
+        for (mine, a) in costs {
+            for (theirs, b) in costs {
+                let state = position(vec![mon(mine)], vec![mon(theirs)], None);
+                assert!(close(n1(&state, 0), b), "{mine:?} v {theirs:?}: {}", n1(&state, 0));
+                assert!(close(n1(&state, 1), a), "{mine:?} v {theirs:?}, player 1's view: {}", n1(&state, 1));
+            }
+        }
+    }
+
+    #[test]
+    fn n1_reads_the_board_cost_the_engine_computes() {
+        // The term is the engine's own board Retreat Cost of the opponent's Active (the cost a public leaf reads, as
+        // for the bot's own Active): Goo-zooka's effect, Trap Territory, Peculiar Plaza and the retreat Tools, each
+        // moving it from the printed cost.
+        let mut goo = mon(CardId::A1143Machop);
+        goo.add_effect(CardEffect::IncreasedRetreatCost { amount: 1 }, 1);
+        let cases: Vec<(&str, State, f64)> = vec![
+            ("printed", position(vec![mon(CardId::A1183Dratini)], vec![mon(CardId::A1143Machop)], None), 2.0),
+            ("Goo-zooka", position(vec![mon(CardId::A1183Dratini)], vec![goo], None), 3.0),
+            (
+                "Trap Territory",
+                position(vec![mon(CardId::A1183Dratini), mon(CardId::B1a006Ariados)], vec![mon(CardId::A1143Machop)], None),
+                3.0,
+            ),
+            (
+                "Plaza on a [P] Active",
+                position(vec![mon(CardId::A1183Dratini)], vec![mon(CardId::A1129MewtwoEx)], Some(CardId::B2155PeculiarPlaza)),
+                0.0,
+            ),
+            (
+                "Plaza on a non-[P] Active",
+                position(vec![mon(CardId::A1183Dratini)], vec![mon(CardId::A1143Machop)], Some(CardId::B2155PeculiarPlaza)),
+                2.0,
+            ),
+            (
+                "Small Balloon",
+                position(
+                    vec![mon(CardId::A1183Dratini)],
+                    vec![mon(CardId::A1143Machop).with_tool(get_card_by_enum(CardId::B3b064SmallBalloon))],
+                    None,
+                ),
+                1.0,
+            ),
+            (
+                "Inflatable Boat",
+                position(
+                    vec![mon(CardId::A1183Dratini)],
+                    vec![mon(CardId::A4a020SuicuneEx).with_tool(get_card_by_enum(CardId::A4a067InflatableBoat))],
+                    None,
+                ),
+                1.0,
+            ),
+        ];
+        for (label, state, cost) in cases {
+            assert_eq!(board_cost(&state, 1), cost, "{label}: the engine's cost");
+            assert!(close(n1(&state, 0), cost), "{label}: kn - km = {}", n1(&state, 0));
+        }
+    }
+
+    #[test]
+    fn n1_goo_zooka_moves_kn_by_one_and_km_by_nothing() {
+        // The drafted test "N1, Goo-zooka". The effect alone: +1 under kn, 0 under km. The whole play through the
+        // game (the card leaves the hand and the effect lands): -1 under km (the card term), level under kn.
+        let base = position(vec![mon(CardId::A1183Dratini)], vec![mon(CardId::A1143Machop)], None);
+        let mut hit = base.clone();
+        hit.get_active_mut(1).add_effect(CardEffect::IncreasedRetreatCost { amount: 1 }, 1);
+        let delta = |a: &State, b: &State, f: EvalFeatures| value(b, 0, f) - value(a, 0, f);
+        assert!(close(delta(&base, &hit, EvalFeatures::KN), 1.0), "kn: {}", delta(&base, &hit, EvalFeatures::KN));
+        assert_eq!(delta(&base, &hit, EvalFeatures::KM), 0.0, "km");
+
+        let mut game = crate::test_support::get_initialized_game(0);
+        let mut before = base.clone();
+        before.hands[0] = vec![get_card_by_enum(CardId::B4a068TeamRocketsGoozooka)];
+        game.set_state(before.clone());
+        let (_, actions) = before.generate_possible_actions();
+        let play = actions
+            .iter()
+            .find(|a| matches!(&a.action, SimpleAction::Play { trainer_card } if trainer_card.name == "Team Rocket's Goo-zooka"))
+            .expect("Goo-zooka is playable");
+        game.apply_action(play);
+        let after = game.get_state_clone();
+        assert_eq!(board_cost(&after, 1), 3.0, "the effect landed");
+        assert!(close(delta(&before, &after, EvalFeatures::KM), -1.0), "km: {}", delta(&before, &after, EvalFeatures::KM));
+        assert!(close(delta(&before, &after, EvalFeatures::KN), 0.0), "kn: {}", delta(&before, &after, EvalFeatures::KN));
+    }
+
+    #[test]
+    fn n1_peculiar_plaza_counts_for_both_sides() {
+        // The drafted test "N1, Plaza": Plaza in play against no Stadium. [P] Actives with cost 2 on both sides: kn 0,
+        // km +2. Only the bot's Active [P]: +2 under both. Only theirs: -2 under kn, 0 under km.
+        let (p, other) = (CardId::A1129MewtwoEx, CardId::A1143Machop);
+        for (mine, theirs, kn, km) in [(p, p, 0.0, 2.0), (p, other, 2.0, 2.0), (other, p, -2.0, 0.0)] {
+            let without = position(vec![mon(mine)], vec![mon(theirs)], None);
+            let with = position(vec![mon(mine)], vec![mon(theirs)], Some(CardId::B2155PeculiarPlaza));
+            let delta = |f: EvalFeatures| value(&with, 0, f) - value(&without, 0, f);
+            assert!(close(delta(EvalFeatures::KN), kn), "{mine:?} v {theirs:?}: kn {}", delta(EvalFeatures::KN));
+            assert!(close(delta(EvalFeatures::KM), km), "{mine:?} v {theirs:?}: km {}", delta(EvalFeatures::KM));
+        }
+    }
+
+    #[test]
+    fn n1_leaves_setup_to_km_and_reads_no_hidden_card() {
+        // The drafted test "N1, setup and hidden cards". In setup (the opponent's board masked) kn's value is km's,
+        // bit for bit: the setup path is untouched. After setup, the term doesn't move when the opponent's hand and
+        // deck are swapped for other cards.
+        let mut setup = position(vec![mon(CardId::A1143Machop)], vec![mon(CardId::A1145Machamp)], None);
+        setup.setup_opponent_hidden = true;
+        assert_eq!(value(&setup, 0, EvalFeatures::KN), value(&setup, 0, EvalFeatures::KM));
+
+        let state = position(vec![mon(CardId::A1183Dratini)], vec![mon(CardId::A1145Machamp)], None);
+        let mut swapped = state.clone();
+        let other = || get_card_by_enum(CardId::B2155PeculiarPlaza);
+        swapped.hands[1] = swapped.hands[1].iter().map(|_| other()).collect();
+        swapped.decks[1].cards = swapped.decks[1].cards.iter().map(|_| other()).collect();
+        assert!(close(n1(&state, 0), 3.0) && close(n1(&swapped, 0), 3.0), "{} {}", n1(&state, 0), n1(&swapped, 0));
+    }
+
+    #[test]
+    fn on_played_states_kn_is_km_plus_the_opponents_active_retreat_cost() {
+        // Values on every position of 10 random games of the scratch pairs, from each player's own view: kn = km
+        // bit for bit in setup; after it, kn - km is the opponent's board Retreat Cost; and everywhere, kn's value with
+        // KN's flag cleared is km's value function's, bit for bit.
+        let (mut setup, mut after, mut nonzero) = (0, 0, 0);
+        for (pair, (a, b)) in PAIRS.iter().enumerate() {
+            for seed in 0..2u64 {
+                let players: Vec<Box<dyn crate::players::Player>> =
+                    vec![Box::new(RandomPlayer { deck: deck(a) }), Box::new(RandomPlayer { deck: deck(b) })];
+                let mut game = Game::new(players, 20_950_000_000 + 10 * pair as u64 + seed);
+                let mut ticks = 0;
+                while !game.is_game_over() && ticks < 400 {
+                    let state = game.get_state_clone();
+                    for me in 0..2 {
+                        let observation = PlayerObservation::from_state(&state, me, &RevealedKnowledge::default());
+                        let view = observation.visible_state();
+                        let (kn, km) =
+                            (public_clock_effect_kn_value_function(view, me), public_clock_effect_km_value_function(view, me));
+                        let flag_cleared = value(view, me, EvalFeatures { opponent_retreat_cost: false, ..EvalFeatures::KN });
+                        assert_eq!(flag_cleared, km, "turn {}", view.turn_count);
+                        if view.setup_opponent_hidden || view.winner.is_some() || view.maybe_get_active(1 - me).is_none() {
+                            if view.setup_opponent_hidden || view.winner.is_some() {
+                                assert_eq!(kn, km, "turn {}", view.turn_count);
+                            }
+                            setup += 1;
+                        } else {
+                            let cost = board_cost(view, 1 - me);
+                            assert!(close(kn - km, cost), "turn {}: kn - km = {}, cost {cost}", view.turn_count, kn - km);
+                            after += 1;
+                            nonzero += (cost > 0.0) as usize;
+                        }
+                    }
+                    game.play_tick();
+                    ticks += 1;
+                }
+            }
+        }
+        assert!(setup > 20 && after > 500 && nonzero > 300, "{setup} setup or ended, {after} after setup, {nonzero} with a cost");
+    }
+
+    /// One game on `seed`, `players` in seats 0 and 1: every move played, then the points and the winner.
+    fn moves(players: Vec<Box<dyn crate::players::Player>>, seed: u64) -> Vec<String> {
+        let mut game = Game::new(players, seed);
+        let mut out = vec![];
+        while !game.is_game_over() && out.len() < 3000 {
+            out.push(format!("{:?}", game.play_tick()));
+        }
+        let state = game.get_state_clone();
+        out.push(format!("points {:?} winner {:?}", state.points, state.winner));
+        out
+    }
+
+    /// kn3 with N1 off: km3's player (as players/mod.rs builds the km, kn and kt codes) on kn's preset with the flag
+    /// cleared.
+    fn kn3_with_n1_off(deck: Deck) -> Box<dyn crate::players::Player> {
+        Box::new(PublicPricingPlayer {
+            search: ExpectiMiniMaxPlayer {
+                deck,
+                max_depth: 3,
+                write_debug_trees: false,
+                value_function: Box::new(|state: &State, myself: usize| {
+                    value(state, myself, EvalFeatures { opponent_retreat_cost: false, ..EvalFeatures::KN })
+                }),
+                opponent_ply: 0,
+                consistent_horizon: false,
+                soft_opponent: false,
+            },
+        })
+    }
+
+    #[test]
+    fn kn3_with_n1_off_equals_km3_move_for_move_on_200_scratch_deals() {
+        // 200 scratch deals: the five scratch pairs, 40 each, on Claude diagnostic seeds 20,951,000,000 + i, the
+        // first-named list in seat 0 on even i. km3 against km3 (players/mod.rs, as `deckgym simulate` builds them)
+        // and kn3 with N1 off against itself play the same moves, choices and results in every deal. kn3 itself
+        // (N1 on, from players/mod.rs) differs from km3 somewhere in the first 40, so the lists reach N1.
+        let deals: Vec<(Deck, Deck, u64)> = (0..200u64)
+            .map(|i| {
+                let (a, b) = PAIRS[(i / 40) as usize];
+                let (a, b) = if i % 2 == 0 { (deck(a), deck(b)) } else { (deck(b), deck(a)) };
+                (a, b, 20_951_000_000 + i)
+            })
+            .collect();
+        let workers = std::thread::available_parallelism().map(|n| n.get()).unwrap_or(1).clamp(1, 8);
+        let results: Vec<(usize, bool, Option<bool>)> = std::thread::scope(|scope| {
+            let handles: Vec<_> = (0..workers)
+                .map(|w| {
+                    let deals = &deals;
+                    scope.spawn(move || {
+                        let mut out = vec![];
+                        for (i, (a, b, seed)) in deals.iter().enumerate().filter(|(i, _)| i % workers == w) {
+                            let km = moves(create_players(a.clone(), b.clone(), vec![PlayerCode::KM { max_depth: 3 }; 2]), *seed);
+                            let off = moves(vec![kn3_with_n1_off(a.clone()), kn3_with_n1_off(b.clone())], *seed);
+                            let on = (i < 40).then(|| {
+                                moves(create_players(a.clone(), b.clone(), vec![PlayerCode::KN { max_depth: 3 }; 2]), *seed) != km
+                            });
+                            out.push((i, off == km, on));
+                        }
+                        out
+                    })
+                })
+                .collect();
+            handles.into_iter().flat_map(|h| h.join().unwrap()).collect()
+        });
+        assert_eq!(results.len(), 200);
+        let differ: Vec<usize> = results.iter().filter(|r| !r.1).map(|r| r.0).collect();
+        assert!(differ.is_empty(), "kn3 with N1 off differs from km3 on deals {differ:?}");
+        let n1_moves = results.iter().filter(|r| r.2 == Some(true)).count();
+        assert!(n1_moves > 0, "kn3 plays as km3 on all of the first 40 deals");
     }
 }

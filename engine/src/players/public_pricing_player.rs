@@ -566,6 +566,45 @@ mod tests {
         assert_eq!(moves[0], moves[1], "km3 plays as kta3");
     }
 
+    /// kn3 through get_player (kn = km + N1, the parked switch, built Sept 30). Both Actives are Mewtwo ex ([P],
+    /// Retreat Cost 2, no Energy, no Bench) and player 0's only card is Peculiar Plaza (each [P] Pokémon's Retreat
+    /// Cost 2 less). km3 counts only its own cost: +2 for the Plaza against 1 for the card, so it plays it. kn3 also
+    /// counts the opponent's cost, which the Plaza cuts by 2 as well: level, less the card, so it doesn't. With a
+    /// Machop (Fighting, cost 2) as the opponent's Active, the Plaza helps only player 0, and both play it.
+    #[test]
+    fn kn3_from_get_player_declines_a_plaza_that_helps_both_sides_where_km3_plays_it() {
+        let decide_against = |theirs: CardId| {
+            first_moves(
+                PlayedCard::from_id(CardId::A1129MewtwoEx),
+                PlayedCard::from_id(theirs),
+                vec![crate::database::get_card_by_enum(CardId::B2155PeculiarPlaza)],
+                &[PlayerCode::KN { max_depth: 3 }, PlayerCode::KM { max_depth: 3 }],
+            )
+        };
+        let moves = decide_against(CardId::A1129MewtwoEx);
+        assert!(!plays(&moves[0], "Peculiar Plaza"), "kn3 declines the Plaza: {:?}", moves[0]);
+        assert!(plays(&moves[1], "Peculiar Plaza"), "km3 plays it: {:?}", moves[1]);
+        let moves = decide_against(CardId::A1143Machop);
+        assert!(plays(&moves[0], "Peculiar Plaza") && plays(&moves[1], "Peculiar Plaza"), "both play it: {moves:?}");
+    }
+
+    /// kn3 through get_player on a Goo-zooka board: player 0's Dratini against player 1's Machop (cost 2), no Energy
+    /// to attach, Goo-zooka player 0's only card. km3 prices the play at -1 (the card term; the effect is unread) and
+    /// ends the turn. kn3 prices it level (+1 for the effect, -1 for the card); the tie goes to the play by the action
+    /// order (the draft's "Honest size": the list is sorted by each action's JSON, EndTurn first, and the search keeps
+    /// the last of equal scores).
+    #[test]
+    fn kn3_from_get_player_plays_goo_zooka_on_the_tie_where_km3_ends_the_turn() {
+        let moves = first_moves(
+            PlayedCard::from_id(CardId::A1183Dratini),
+            PlayedCard::from_id(CardId::A1143Machop),
+            vec![crate::database::get_card_by_enum(CardId::B4a068TeamRocketsGoozooka)],
+            &[PlayerCode::KN { max_depth: 3 }, PlayerCode::KM { max_depth: 3 }],
+        );
+        assert!(plays(&moves[0], "Team Rocket's Goo-zooka"), "kn3 plays Goo-zooka: {:?}", moves[0]);
+        assert_eq!(moves[1], SimpleAction::EndTurn, "km3 ends the turn");
+    }
+
     /// kpr3 is built the same way (get_player) and keeps kp's pricing: it prices Darkness Claw too.
     #[test]
     fn kpr3_from_get_player_also_prices_darkness_claw() {

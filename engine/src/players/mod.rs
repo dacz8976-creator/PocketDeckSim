@@ -209,6 +209,10 @@ pub enum PlayerCode {
     /// Antiquity) in kta's threat clock for both sides (rl/results/trainer_pricing_2026-09-28/REGISTRATION_DRAFT.md,
     /// registered Sept 29, re-issued on kta by Amendment 1, Sept 30; value_functions::public_clock_effect_km_value_function).
     KM { max_depth: usize },
+    /// 'kn<N>': 'km<N>' with switch N1, the opponent's Active Retreat Cost counted in the score as the bot's own is
+    /// (rl/results/trainer_pricing_2026-09-28/REGISTRATION_DRAFT.md, "Appendix. Parked: N1"; built Sept 30, not
+    /// registered; value_functions::public_clock_effect_kn_value_function).
+    KN { max_depth: usize },
 }
 /// Custom parser function enforcing case-insensitivity
 pub fn parse_player_code(s: &str) -> Result<PlayerCode, String> {
@@ -282,6 +286,13 @@ pub fn parse_player_code(s: &str) -> Result<PlayerCode, String> {
             return Ok(PlayerCode::KM { max_depth });
         }
         return Err(format!("Invalid player code: {s}. Use 'km<number>', e.g. 'km3'"));
+    }
+    // 'kn<N>' (see PlayerCode::KN): km + N1. Before 'k<N>', which would reject it. No other code starts with 'kn'.
+    if let Some(depth) = lower.strip_prefix("kn") {
+        if let Ok(max_depth) = depth.parse::<usize>() {
+            return Ok(PlayerCode::KN { max_depth });
+        }
+        return Err(format!("Invalid player code: {s}. Use 'kn<number>', e.g. 'kn3'"));
     }
     // 'kpf<N>' and 'kpg<N>' (see PlayerCode::KPF), and 'kpha<N>', 'kphb<N>' before 'kph<N>' (see PlayerCode::KPH).
     // Before 'kp<N>' and 'k<N>', which would reject them.
@@ -679,7 +690,8 @@ fn get_player(deck: Deck, opponent_deck: &Deck, player: &PlayerCode) -> Box<dyn 
         | PlayerCode::KTA { max_depth }
         | PlayerCode::KTB { max_depth }
         | PlayerCode::KTC { max_depth }
-        | PlayerCode::KM { max_depth } => {
+        | PlayerCode::KM { max_depth }
+        | PlayerCode::KN { max_depth } => {
             let value_function: expectiminimax_player::ValueFunction = match player {
                 PlayerCode::KOA { .. } => Box::new(value_functions::public_clock_effect_koa_value_function),
                 PlayerCode::KOB { .. } => Box::new(value_functions::public_clock_effect_kob_value_function),
@@ -695,6 +707,7 @@ fn get_player(deck: Deck, opponent_deck: &Deck, player: &PlayerCode) -> Box<dyn 
                 PlayerCode::KTB { .. } => Box::new(value_functions::public_clock_effect_ktb_value_function),
                 PlayerCode::KTC { .. } => Box::new(value_functions::public_clock_effect_ktc_value_function),
                 PlayerCode::KM { .. } => Box::new(value_functions::public_clock_effect_km_value_function),
+                PlayerCode::KN { .. } => Box::new(value_functions::public_clock_effect_kn_value_function),
                 _ => Box::new(value_functions::public_clock_effect_kor_value_function),
             };
             Box::new(PublicPricingPlayer {
@@ -920,6 +933,27 @@ mod s42_tier_parse_tests {
             assert!(parse_player_code(bad).is_err(), "{bad}");
         }
         // Nothing else moved.
+        assert_eq!(parse_player_code("kog3").unwrap(), PlayerCode::KOG { max_depth: 3 });
+        assert_eq!(parse_player_code("kt3").unwrap(), PlayerCode::KT { max_depth: 3 });
+        assert_eq!(parse_player_code("kta3").unwrap(), PlayerCode::KTA { max_depth: 3 });
+        assert_eq!(parse_player_code("ktb3").unwrap(), PlayerCode::KTB { max_depth: 3 });
+        assert_eq!(parse_player_code("ktc3").unwrap(), PlayerCode::KTC { max_depth: 3 });
+        assert_eq!(parse_player_code("koh3").unwrap(), PlayerCode::KOH { max_depth: 3 });
+        assert_eq!(parse_player_code("kph3").unwrap(), PlayerCode::KPH { max_depth: 3 });
+        assert_eq!(parse_player_code("k3").unwrap(), PlayerCode::K { max_depth: 3 });
+    }
+
+    #[test]
+    fn kn_parses_before_k_and_nothing_else_moves() {
+        // kn = km + N1 (the parked switch, rl/results/trainer_pricing_2026-09-28/REGISTRATION_DRAFT.md, "Appendix.
+        // Parked: N1"): 'kn<N>' before 'k<N>'.
+        assert_eq!(parse_player_code("kn3").unwrap(), PlayerCode::KN { max_depth: 3 });
+        assert_eq!(parse_player_code("KN5").unwrap(), PlayerCode::KN { max_depth: 5 });
+        for bad in ["kn", "knx", "kn3x", "kn1a"] {
+            assert!(parse_player_code(bad).is_err(), "{bad}");
+        }
+        // Nothing else moved.
+        assert_eq!(parse_player_code("km3").unwrap(), PlayerCode::KM { max_depth: 3 });
         assert_eq!(parse_player_code("kog3").unwrap(), PlayerCode::KOG { max_depth: 3 });
         assert_eq!(parse_player_code("kt3").unwrap(), PlayerCode::KT { max_depth: 3 });
         assert_eq!(parse_player_code("kta3").unwrap(), PlayerCode::KTA { max_depth: 3 });
