@@ -1,0 +1,40 @@
+== fault 1: printed cost
+test players::value_functions::kn_tests::kn_is_km_plus_n1_and_nothing_else ... ok
+test players::public_pricing_player::tests::kn3_from_get_player_declines_a_plaza_that_helps_both_sides_where_km3_plays_it ... FAILED
+test players::value_functions::kn_tests::n1_goo_zooka_moves_kn_by_one_and_km_by_nothing ... FAILED
+test players::public_pricing_player::tests::kn3_from_get_player_plays_goo_zooka_on_the_tie_where_km3_ends_the_turn ... FAILED
+test players::value_functions::kn_tests::n1_peculiar_plaza_counts_for_both_sides ... FAILED
+test players::value_functions::kn_tests::n1_leaves_setup_to_km_and_reads_no_hidden_card ... ok
+test players::value_functions::kn_tests::n1_reads_the_board_cost_the_engine_computes ... FAILED
+test players::value_functions::kn_tests::n1_the_term_is_the_opponents_active_retreat_cost ... ok
+test players::value_functions::kn_tests::on_played_states_kn_is_km_plus_the_opponents_active_retreat_cost ... FAILED
+test players::value_functions::kn_tests::kn3_with_n1_off_equals_km3_move_for_move_on_200_scratch_deals ... FAILED
+test result: FAILED. 3 passed; 7 failed; 0 ignored; 0 measured; 415 filtered out; finished in 38.81s
+error: test failed, to rerun pass `--lib`
+== fault 2: get_player wires kn to km
+test players::value_functions::kn_tests::kn_is_km_plus_n1_and_nothing_else ... ok
+test players::value_functions::kn_tests::n1_goo_zooka_moves_kn_by_one_and_km_by_nothing ... ok
+test players::value_functions::kn_tests::n1_leaves_setup_to_km_and_reads_no_hidden_card ... ok
+test players::value_functions::kn_tests::n1_peculiar_plaza_counts_for_both_sides ... ok
+test players::value_functions::kn_tests::n1_reads_the_board_cost_the_engine_computes ... ok
+test players::value_functions::kn_tests::n1_the_term_is_the_opponents_active_retreat_cost ... ok
+test players::public_pricing_player::tests::kn3_from_get_player_declines_a_plaza_that_helps_both_sides_where_km3_plays_it ... FAILED
+test players::public_pricing_player::tests::kn3_from_get_player_plays_goo_zooka_on_the_tie_where_km3_ends_the_turn ... FAILED
+test players::value_functions::kn_tests::on_played_states_kn_is_km_plus_the_opponents_active_retreat_cost ... ok
+test players::value_functions::kn_tests::kn3_with_n1_off_equals_km3_move_for_move_on_200_scratch_deals ... FAILED
+test result: FAILED. 7 passed; 3 failed; 0 ignored; 0 measured; 415 filtered out; finished in 39.50s
+error: test failed, to rerun pass `--lib`
+== fault 3: the test's N1-off player has N1 on
+test players::value_functions::kn_tests::kn_is_km_plus_n1_and_nothing_else ... ok
+test players::value_functions::kn_tests::n1_goo_zooka_moves_kn_by_one_and_km_by_nothing ... ok
+test players::public_pricing_player::tests::kn3_from_get_player_declines_a_plaza_that_helps_both_sides_where_km3_plays_it ... ok
+test players::public_pricing_player::tests::kn3_from_get_player_plays_goo_zooka_on_the_tie_where_km3_ends_the_turn ... ok
+test players::value_functions::kn_tests::n1_leaves_setup_to_km_and_reads_no_hidden_card ... ok
+test players::value_functions::kn_tests::n1_peculiar_plaza_counts_for_both_sides ... ok
+test players::value_functions::kn_tests::n1_reads_the_board_cost_the_engine_computes ... ok
+test players::value_functions::kn_tests::n1_the_term_is_the_opponents_active_retreat_cost ... ok
+test players::value_functions::kn_tests::on_played_states_kn_is_km_plus_the_opponents_active_retreat_cost ... ok
+test players::value_functions::kn_tests::kn3_with_n1_off_equals_km3_move_for_move_on_200_scratch_deals ... FAILED
+test result: FAILED. 9 passed; 1 failed; 0 ignored; 0 measured; 415 filtered out; finished in 34.81s
+error: test failed, to rerun pass `--lib`
+restored byte for byte
