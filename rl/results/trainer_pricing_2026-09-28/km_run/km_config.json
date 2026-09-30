@@ -6,13 +6,13 @@
   "note": "km3 = kta3 + N2 at B; kta3 = kog3 + kt's switch 1 as ec7e1a8 defines it (EvalFeatures::KTA), the adopted working pilot. Amendment 1 (b) items 1-2, (d) item 2."
  },
  "build": {
-  "commit": null,
+  "commit": "1f6319e4b72e34a42d2d3c3ffc7cc9a09fdfa6f3",
   "commit_note": "REQUIRED: B, the cloud's new build commit, 40 hex digits (BUILD.md in round_folder names it). Every output file name starts with its first 7 characters. Its engine/ differs from kt_build's in engine/src/players/ only, engine/UPSTREAM.md aside (Amendment 1 (c) item 2, (e) item 1: git diff ec7e1a8 B -- engine/ ':!engine/UPSTREAM.md'; UPSTREAM.md is a notes file no build reads and stays as the branch has it).",
   "branch": "origin/claude/pensive-ptolemy-spwc0b",
   "branch_note": "the cloud branch B and its round are committed on; confirm it when the cloud reports B (part B checks that B and round_head are on it).",
-  "round_head": null,
+  "round_head": "53fc5a1edf35f66873a7cb96f19374048e2e8597",
   "round_head_note": "REQUIRED: the commit that completes B's round (BUILD.md, STATUS.txt, the km3 smoke and the tool tests' outputs committed as passed); B is its ancestor. The cloud outputs below are read from it.",
-  "round_folder": null,
+  "round_folder": "rl/results/km_build_2026-09-30",
   "round_folder_note": "REQUIRED: rl/results/km_build_<date of B> (Amendment 1 (c) item 3: a new folder, never the Sept 29 one).",
   "kt_build": "ec7e1a867bdaae2b0b4a3d2730e36dfffb611900",
   "kt_build_note": "ec7e1a8, the kt build: kog-based kt/kta/ktb/ktc (players/mod.rs:197-207 there); the reference files below were played by the laptop's programs built from it. B's engine/ diff from it must touch engine/src/players/ only, engine/UPSTREAM.md aside. Fixed by the amendment: km_config.py refuses any other value.",
@@ -27,18 +27,18 @@
  "cloud_outputs": {
   "note": "B's round, committed at round_head under round_folder (Amendment 1 (c) item 3; (e) item 3). REQUIRED, set when the cloud reports them.",
   "km3_smoke": {
-   "path": null,
-   "sha256": null,
+   "path": "rl/results/km_build_2026-09-30/identity/1f6319e_km3_smoke_40.jsonl",
+   "sha256": "55f7a5905acad7d9a9daabdf541c9aee258704c23712a1d2b8f8271e2e73d043",
    "code": "km3",
    "pairings": [0, 2, 19],
    "deals": 40,
    "seed_base": 72000000,
    "note": "the km3 smoke at B, both sides, table pairings 0, 2 and 19, i < 40 (120 games): the laptop's km3 reference (identity 7; (e) item 3)"
   },
-  "tool_test3_rows": {"path": null, "sha256": null, "note": "test 3's --rows-out, kp3 (check_tool.sh's exact command)"},
-  "tool_test3_trace": {"path": null, "sha256": null, "note": "test 3's --trace-out"},
-  "tool_test1_stdout_sha256": null,
-  "tool_test1_games_sha256": null,
+  "tool_test3_rows": {"path": "rl/results/km_build_2026-09-30/tool_test3_trace_rows.jsonl", "sha256": "fe983bab064437f5ea836ad43556c3896e6bbdf319eb44e74205729d265dd6b2", "note": "test 3's --rows-out, kp3 (check_tool.sh's exact command)"},
+  "tool_test3_trace": {"path": "rl/results/km_build_2026-09-30/tool_test3_trace.tsv", "sha256": "dee32d7fc8acd82f8dac23d1d3290140f483f27dd7289f61799f88d07840f285", "note": "test 3's --trace-out"},
+  "tool_test1_stdout_sha256": "a82786bb69fa10ca3bfba4c5854055911a280246440d9ab7b359319acb746997",
+  "tool_test1_games_sha256": "057ae92e9a369d016bd10754313dd80f5eb7da1148bcdc79a1252cd642c67e0f",
   "tool_test1_note": "test 1's stdout and --games-out sha256 as B's STATUS.txt records them (kp3, 560 games)"
  },
  "references": {
