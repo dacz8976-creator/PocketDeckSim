@@ -10,7 +10,7 @@ Seeds: identity on the table's deals (72,000,000 + pairing × 10,000 + i), the 1
 - **Where things stand** (`STATUS.txt` has a line per step):
   1. **Build:** done, B = 1f6319e.
   2. **Tests:** done. km's 14 tests pass, and the full suite passes: 1,991 passed, 0 failed.
-  3. **Counter tool:** STEP3.
+  3. **Counter tool:** done, 8a at B. It is built from the unchanged source in a copy of B's `engine/`. Its five tests pass, and test 1's and test 3's outputs are byte-identical to 9c11b30's. 8a: kta3 680 of 680 and km3 80 of 80.
   4. **Identity:** STEP4.
   5. **Code review:** done. No blocker and no should-fix, five notes (below).
 - **For the laptop** (the amendment's (e) governs):
@@ -71,7 +71,27 @@ All of section 4.1's tests are re-based to kta by the amendment's (c) items 3.1 
 
 ## The counter tool (8a at B)
 
-STEP3DETAIL
+The source is unchanged: `../tool_turn_effect_census_2026-09-25/tool_census.rs`, sha256 `05d7ba4183ce9e3098036de9acb5181ea71f7077ef9b3798ad4e5d165dc22365`. It is built as an example in a scratch copy of B's `engine/` (`git archive 1f6319e engine`; `check_tool.sh` checks the copy against B and the source's sha256), with the version before the Sept 29 round (816fd9c's, `a2510339…`) beside it for test 1.
+
+| | sha256 |
+|---|---|
+| source | `05d7ba4183ce9e3098036de9acb5181ea71f7077ef9b3798ad4e5d165dc22365` |
+| program, cloud build at B | `b48db2a89fd871b0d96c4de2090dd8a699aa515b378f51c5964a0edf1fe6947e` |
+| old tool's program, for test 1 | `bf29c60f2eece878…` (full hash in `STATUS.txt`) |
+
+**All pass** (`check_tool.sh`, `tool_check.py`, `tool_check.txt`):
+1. **The old output, exactly.** kp3 on the table's first 20 deals of the 28 pairings (560 games): the old and new tools' stdout, stderr and games-out are byte-identical. Committed: `tool_test1_stdout.txt` (sha256 `a82786bb69fa10ca3bfba4c5854055911a280246440d9ab7b359319acb746997`) and `tool_test1_games.jsonl` (`057ae92e9a369d016bd10754313dd80f5eb7da1148bcdc79a1252cd642c67e0f`). **These equal 9c11b30's**, as expected: kp3 is untouched by B.
+2. **The same games through the new options:**
+   - games-out is byte-identical;
+   - the card table is the same;
+   - every row's fingerprint, seed and seats equal games-out's.
+3. **Traced games against a recount from the trace.** kp3, Altaria v Lucario, seeds 20,000,920,000-019: 80 of 80 seat-cards agree for Arena of Antiquity and Training Area. Committed: `tool_test3_trace_rows.jsonl` (sha256 `fe983bab064437f5ea836ad43556c3896e6bbdf319eb44e74205729d265dd6b2`) and `tool_test3_trace.tsv` (`dee32d7fc8acd82f8dac23d1d3290140f483f27dd7289f61799f88d07840f285`). **Both equal 9c11b30's byte for byte.**
+4. **`--first-deal`:** kta3 on deals 20-39 of the 17 cells gives 8a's rows for those deals exactly (340 rows, no counts).
+5. **Refusals:** each of the six refused combinations exits with an error before any game.
+- **Identity 8a** (move fingerprint, both decks, seed and seats; cell counts asserted; `--no-counts`, so no count was written or read):
+  - the tool's kta3 on i < 40 of all 17 named cells: **680 of 680** deals equal `ec7e1a8_kta3_table.jsonl` (13 cells) and `ec7e1a8_kta3_new17.jsonl` (4 cells);
+  - its km3 on pairings 0 and 2, i < 40: **80 of 80** equal item 7's smoke.
+  - kog3's 680 is dropped, as the amendment says.
 
 ## The code review (the amendment's (c) item 3.5)
 
