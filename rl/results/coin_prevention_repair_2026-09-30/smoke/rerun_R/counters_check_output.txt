@@ -1,0 +1,34 @@
+checks on the tools:
+  old engine replays the cloud's d21511a scan (same move fingerprint): 40 of 40
+  R's trace equals R's watch scan (the counters change no play): 40 of 40
+
+games the repairs change (old engine v R): 12 of 40: [2, 9, 12, 16, 19, 23, 28, 29, 30, 32, 33, 35]
+  the cloud's 12 (old v its repaired engine): [2, 9, 12, 16, 19, 23, 28, 29, 30, 32, 33, 35]; same set: True
+i =  2: first difference at tick  27 (same board, same offered moves, different choice (lookahead)); changed-mechanic counters {'coin_queued_offered': 30}; other exact {'coin_full_prevention': (5, 30), 'offgate_helper_choice': (2, 77)}; superset coin_defender_attack 11, coin_queued_attack_damage (chosen) 4  => NOT explained on the board
+i =  9: first difference at tick  11 (same board, same offered moves, different choice (lookahead)); changed-mechanic counters {'coin_queued_offered': 15}; other exact {'coin_full_prevention': (1, 15), 'offgate_helper_choice': (1, 30)}; superset coin_defender_attack 7, coin_queued_attack_damage (chosen) 1  => NOT explained on the board
+i = 12: first difference at tick  28 (same board, same offered moves, different choice (lookahead)); changed-mechanic counters {'coin_queued_offered': 31}; other exact {'coin_full_prevention': (3, 31), 'offgate_helper_choice': (3, 12)}; superset coin_defender_attack 11, coin_queued_attack_damage (chosen) 3  => NOT explained on the board
+i = 16: first difference at tick  88 (the board or the offered moves differ); changed-mechanic counters {'coin_queued_offered': 88}; other exact {'offgate_helper_choice': (2, 88)}; superset coin_defender_attack 11, coin_queued_attack_damage (chosen) 0  => explained on the board
+i = 19: first difference at tick  38 (same board, same offered moves, different choice (lookahead)); changed-mechanic counters {'coin_queued_offered': 38}; other exact {'coin_full_prevention': (5, 22), 'offgate_helper_choice': (2, 70)}; superset coin_defender_attack 10, coin_queued_attack_damage (chosen) 3  => explained on the board
+i = 23: first difference at tick  27 (the board or the offered moves differ); changed-mechanic counters {'coin_queued_offered': 27}; other exact {'coin_full_prevention': (2, 92), 'offgate_helper_choice': (1, 27)}; superset coin_defender_attack 7, coin_queued_attack_damage (chosen) 0  => explained on the board
+i = 28: first difference at tick  14 (same board, same offered moves, different choice (lookahead)); changed-mechanic counters {'coin_queued_offered': 20}; other exact {'coin_full_prevention': (1, 20), 'offgate_helper_choice': (1, 33)}; superset coin_defender_attack 7, coin_queued_attack_damage (chosen) 1  => NOT explained on the board
+i = 29: first difference at tick  14 (the board or the offered moves differ); changed-mechanic counters {'coin_queued_offered': 14}; other exact {'offgate_helper_choice': (2, 14)}; superset coin_defender_attack 7, coin_queued_attack_damage (chosen) 0  => explained on the board
+i = 30: first difference at tick  37 (same board, same offered moves, different choice (lookahead)); changed-mechanic counters {'coin_queued_offered': 40}; other exact {'coin_full_prevention': (3, 24)}; superset coin_defender_attack 6, coin_queued_attack_damage (chosen) 1  => NOT explained on the board
+i = 32: first difference at tick  17 (the board or the offered moves differ); changed-mechanic counters {'coin_queued_offered': 17}; other exact {'offgate_helper_choice': (2, 17)}; superset coin_defender_attack 7, coin_queued_attack_damage (chosen) 0  => explained on the board
+i = 33: first difference at tick  18 (same board, same offered moves, different choice (lookahead)); changed-mechanic counters {'coin_queued_offered': 18}; other exact {'coin_full_prevention': (2, 18), 'offgate_helper_choice': (2, 32)}; superset coin_defender_attack 11, coin_queued_attack_damage (chosen) 1  => explained on the board
+i = 35: first difference at tick  37 (same board, same offered moves, different choice (lookahead)); changed-mechanic counters {'coin_queued_offered': 44}; other exact {'coin_full_prevention': (1, 44), 'offgate_helper_choice': (1, 61)}; superset coin_defender_attack 8, coin_queued_attack_damage (chosen) 1  => NOT explained on the board
+
+explained on the board: 6 [16, 19, 23, 29, 32, 33]
+not explained on the board: 6 [2, 9, 12, 28, 30, 35]
+S3's four games, first differing tick v coin_queued_offered first tick:
+  i = 16: S3 traced the first difference to tick 88; here 88; coin_queued_offered first = 88  (match)
+  i = 23: S3 traced the first difference to tick 27; here 27; coin_queued_offered first = 27  (match)
+  i = 29: S3 traced the first difference to tick 14; here 14; coin_queued_offered first = 14  (match)
+  i = 32: S3 traced the first difference to tick 17; here 17; coin_queued_offered first = 17  (match)
+
+unchanged games (the counters are reach, not change):
+  coin_cut_recorded: fired in 0 unchanged games []; in 0 of the 12 changed
+  coin_queued_offered: fired in 13 unchanged games [0, 1, 5, 7, 10, 11, 13, 17, 26, 31, 34, 38, 39]; in 12 of the 12 changed
+  coin_full_prevention: fired in 4 unchanged games [0, 15, 20, 25]; in 9 of the 12 changed
+  offgate_helper_choice: fired in 17 unchanged games [0, 1, 5, 6, 7, 8, 10, 11, 13, 17, 22, 26, 31, 34, 36, 38, 39]; in 11 of the 12 changed
+  offgate_discard_then_damage: fired in 0 unchanged games []; in 0 of the 12 changed
+totals over the 40 games: coin_cut_recorded 0, coin_queued_offered 51, coin_full_prevention 27, offgate_helper_choice 53, offgate_discard_then_damage 0; superset coin_defender_attack 250, coin_queued_attack_damage 15
