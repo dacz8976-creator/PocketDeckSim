@@ -157,6 +157,17 @@ fn test_carefree_steps_applies_to_benched_meowth_with_independent_flips() {
 /// is steered at Meowth (the queued damage, or the switch that brings Meowth in). Over 60 seeds Meowth must sometimes
 /// take nothing (heads) and sometimes take the damage (tails, or a Knock Out).
 fn queued_damage_flips_carefree_steps(attacker: PlayedCard, attack: (CardId, usize), defender: Vec<PlayedCard>) {
+    queued_damage_flips_carefree_steps_from(vec![attacker], attack, defender, false);
+}
+
+/// As `queued_damage_flips_carefree_steps`, from a whole attacker board; with `discard`, a Chase Order choice that
+/// discards a Benched Pokemon is taken first.
+fn queued_damage_flips_carefree_steps_from(
+    attacker: Vec<PlayedCard>,
+    attack: (CardId, usize),
+    defender: Vec<PlayedCard>,
+    discard: bool,
+) {
     fn meowth(state: &State) -> Option<(usize, u32)> {
         state
             .enumerate_in_play_pokemon(1)
@@ -165,7 +176,7 @@ fn queued_damage_flips_carefree_steps(attacker: PlayedCard, attack: (CardId, usi
     }
     let (mut prevented, mut hit) = (0, 0);
     for seed in 0..60u64 {
-        let mut game: Game = get_initialized_game_with_board(seed, 0, 5, vec![attacker.clone()], defender.clone());
+        let mut game: Game = get_initialized_game_with_board(seed, 0, 5, attacker.clone(), defender.clone());
         let (_, before) = meowth(&game.get_state_clone()).expect("Meowth is in play");
         game.apply_action(&Action { actor: 0, action: attack_action(attack.0, attack.1), is_stack: false });
         for _ in 0..10 {
@@ -184,7 +195,11 @@ fn queued_damage_flips_carefree_steps(attacker: PlayedCard, attack: (CardId, usi
                 SimpleAction::Activate { player: 1, in_play_idx } => Some(*in_play_idx) == slot,
                 _ => false,
             });
-            game.apply_action(aimed.unwrap_or(&choices[0]));
+            let discarding = choices.iter().find(|choice| {
+                matches!(&choice.action, SimpleAction::DiscardOwnBenchedThenDamage { in_play_idxs, .. } if !in_play_idxs.is_empty())
+            });
+            let pick = if discard { discarding.or(aimed) } else { aimed };
+            game.apply_action(pick.unwrap_or(&choices[0]));
         }
         match meowth(&game.get_state_clone()) {
             Some((_, after)) if after == before => prevented += 1,
@@ -281,4 +296,75 @@ fn only_a_snipe_at_a_coin_ability_pokemon_takes_the_coin_path() {
     };
     let kinds: Vec<_> = choices.iter().filter_map(target).collect();
     assert_eq!(kinds, vec![("ApplyDamage", 1), ("ApplyQueuedAttackDamage", 2)]);
+}
+
+/// Vespiquen ex's Chase Order (70; 140 if a Benched Basic [G] Pokemon is discarded) into a Meowth with Carefree Steps:
+/// the damage is queued after the choice, and the coin flips for it (Dustin, Sept 30: fix Chase Order now).
+#[test]
+fn carefree_steps_flips_for_chase_order_without_the_discard() {
+    queued_damage_flips_carefree_steps_from(
+        vec![
+            PlayedCard::from_id(CardId::B4011VespiquenEx).with_energy(vec![EnergyType::Grass; 2]),
+            PlayedCard::from_id(CardId::B4010Combee),
+        ],
+        (CardId::B4011VespiquenEx, 0),
+        vec![PlayedCard::from_id(CardId::B2124Meowth)],
+        false,
+    );
+}
+
+#[test]
+fn carefree_steps_flips_for_chase_order_with_the_discard() {
+    queued_damage_flips_carefree_steps_from(
+        vec![
+            PlayedCard::from_id(CardId::B4011VespiquenEx).with_energy(vec![EnergyType::Grass; 2]),
+            PlayedCard::from_id(CardId::B4010Combee),
+        ],
+        (CardId::B4011VespiquenEx, 0),
+        vec![PlayedCard::from_id(CardId::B2124Meowth)],
+        true,
+    );
+}
+
+/// Chase Order's control (the repair's gate): into a Pokemon without a coin Ability (Mega Latios ex, 180 HP, no
+/// Weakness), both choices resolve exactly as before: the damage is queued as `ApplyDamage` and does 70 without the
+/// discard, 140 with it.
+#[test]
+fn chase_order_into_a_pokemon_without_a_coin_ability_is_unchanged() {
+    for discard in [false, true] {
+        for seed in 0..10u64 {
+            let mut game = get_initialized_game_with_board(
+                seed,
+                0,
+                5,
+                vec![
+                    PlayedCard::from_id(CardId::B4011VespiquenEx).with_energy(vec![EnergyType::Grass; 2]),
+                    PlayedCard::from_id(CardId::B4010Combee),
+                ],
+                vec![PlayedCard::from_id(CardId::PB024MegaLatiosEx)],
+            );
+            game.apply_action(&Action { actor: 0, action: attack_action(CardId::B4011VespiquenEx, 0), is_stack: false });
+            let (_, choices) = game.get_state_clone().generate_possible_actions();
+            let pick = choices
+                .iter()
+                .find(|choice| match &choice.action {
+                    SimpleAction::DiscardOwnBenchedThenDamage { in_play_idxs, .. } => discard && !in_play_idxs.is_empty(),
+                    SimpleAction::ApplyDamage { .. } | SimpleAction::ApplyQueuedAttackDamage { .. } => !discard,
+                    _ => false,
+                })
+                .expect("Chase Order offers both choices")
+                .clone();
+            game.apply_action(&pick);
+            if discard {
+                let (_, queued) = game.get_state_clone().generate_possible_actions();
+                assert_eq!(queued.len(), 1, "seed {seed}");
+                assert!(matches!(queued[0].action, SimpleAction::ApplyDamage { .. }), "seed {seed}: {:?}", queued[0].action);
+                game.apply_action(&queued[0]);
+            } else {
+                assert!(matches!(pick.action, SimpleAction::ApplyDamage { .. }), "seed {seed}: {:?}", pick.action);
+            }
+            let dealt = 180 - game.get_state_clone().get_active(1).get_remaining_hp();
+            assert_eq!(dealt, if discard { 140 } else { 70 }, "seed {seed}, discard {discard}");
+        }
+    }
 }
