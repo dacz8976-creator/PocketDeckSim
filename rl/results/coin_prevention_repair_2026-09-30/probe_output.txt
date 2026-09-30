@@ -1,0 +1,15 @@
+PROBE | also_choice_bench_damage, opponent (Pikachu Spark), Bench  | queued 100 | prevented  47 | hit  53 | damage seen {"0", "10"} | via {"ApplyQueuedAttackDamage"}
+PROBE | also_choice_bench_damage, own Bench (Zapdos Raging Thunder), Active | queued 100 | prevented   0 | hit 100 | damage seen {"100"} | via {"ApplyDamage"}
+PROBE | optional_discard_benched_basic (Chase Order), no discard   | queued 100 | prevented   0 | hit 100 | damage seen {"70"} | via {"ApplyDamage"}
+PROBE | optional_discard_benched_basic (Chase Order), discard      | queued 100 | prevented   0 | hit 100 | damage seen {"KO"} | via {"ApplyDamage", "DiscardOwnBenchedThenDamage"}
+PROBE | discard_all_energy_of_type (Chien-Pao ex Diving Icicles)   | queued 100 | prevented   0 | hit 100 | damage seen {"130"} | via {"ApplyDamage"}
+PROBE | damage_to_any_opponent_per_target_energy (Tapu Lele)       | queued 100 | prevented   0 | hit 100 | damage seen {"40"} | via {"ApplyDamage"}
+PROBE | self_discard_energy_then_damage_any (Volcarona Volcanic Ash) | queued 100 | prevented   0 | hit 100 | damage seen {"80"} | via {"ApplyDamage"}
+PROBE | switch_in_opponent_benched_then_damage (Sandy Shocks)      | queued 100 | prevented   0 | hit 100 | damage seen {"50"} | via {"ApplyDamage"}
+PROBE | direct_damage_if_damaged (Decidueye ex Pierce the Pain)    | queued 100 | prevented   0 | hit 100 | damage seen {"100"} | via {"ApplyDamage"}
+PROBE | direct_damage (Heatmor Tongue Whip), rules/09's example    | queued 100 | prevented   0 | hit 100 | damage seen {"30"} | via {"ApplyDamage"}
+PROBE | extra: coin_flip_also_choice_bench_damage (Ogerpon), Active | queued  53 | prevented   0 | hit  53 | damage seen {"40"} | via {"ApplyDamage"} | no queued choice in 47
+PROBE | extra: self_discard_energy_and_choice_bench (Urshifu), Active | queued 100 | prevented   0 | hit 100 | damage seen {"40"} | via {"ApplyDamage"}
+PROBE | extra: conditional_bench_damage (Blastoise Double Splash), Bench | queued 100 | prevented   0 | hit 100 | damage seen {"50"} | via {"ApplyDamage"}
+PROBE | extra: Mega Kangaskhan ex (second punch), Active           | queued 100 | prevented   0 | hit 100 | damage seen {"120", "40"} | via {"ApplyDamage"}
+PROBE | extra: shuffle_opponent_tools_before_damage (Hoopa), Active | queued 100 | prevented   0 | hit 100 | damage seen {"20"} | via {"ApplyDamage"}

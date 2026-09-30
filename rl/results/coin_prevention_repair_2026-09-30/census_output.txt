@@ -1,0 +1,186 @@
+
+## also_choice_bench_damage  (AlsoChoiceBenchDamage, AlsoChoiceBenchDamageFiltered)
+  A1 103    Zapdos - Raging Thunder  [{ opponent: false, damage: 30, },]
+  A2 037    Empoleon - Aqua Jet  [{ opponent: true, damage: 30, },]
+  A2 041    Gastrodon - Muddy Water  [{ opponent: true, damage: 20, },]
+  A2 138    Lopunny - Jump Kick  [{ opponent: true, damage: 20, },]
+  A2 161    Gastrodon - Muddy Water  [{ opponent: true, damage: 20, },]
+  A2a 025   Pikachu - Spark  [{ opponent: true, damage: 10, },]
+  A2a 026   Raichu - Spark  [{ opponent: true, damage: 20, },]
+  A2b 043   Lucario ex - Aura Sphere  [{ opponent: true, damage: 30, },]
+  A2b 084   Lucario ex - Aura Sphere  [{ opponent: true, damage: 30, },]
+  A2b 110   Lucario ex - Aura Sphere  [{ opponent: true, damage: 30, },]
+  A3 120    Escavalier - Pike  [{ opponent: true, damage: 20, },]
+  A3a 007   Pheromosa - Jump Blues  [{ opponent: true, damage: 20, },]
+  A3a 071   Pheromosa - Jump Blues  [{ opponent: true, damage: 20, },]
+  A4 072    Emolga - Raging Thunder  [{ opponent: false, damage: 10, },]
+  A4 102    Hitmontop - Piercing Spin  [{ opponent: true, damage: 20, },]
+  A4a 025   Raikou ex - Voltaic Bullet  [{ opponent: true, damage: 10, },]
+  A4a 081   Raikou ex - Voltaic Bullet  [{ opponent: true, damage: 10, },]
+  A4a 088   Raikou ex - Voltaic Bullet  [{ opponent: true, damage: 10, },]
+  A4b 045   Pheromosa - Jump Blues  [{ opponent: true, damage: 20, },]
+  A4b 046   Pheromosa - Jump Blues  [{ opponent: true, damage: 20, },]
+  A4b 214   Lucario ex - Aura Sphere  [{ opponent: true, damage: 30, },]
+  B1 031    Rapidash ex - Sprinting Flare  [{ opponent: true, damage: 20, },]
+  B1 088    Luxray - Flash Impact  [{ opponent: false, damage: 20, },]
+  B1 237    Luxray - Flash Impact  [{ opponent: false, damage: 20, },]
+  B1 253    Rapidash ex - Sprinting Flare  [{ opponent: true, damage: 20, },]
+  B1 274    Rapidash ex - Sprinting Flare  [{ opponent: true, damage: 20, },]
+  B1 302    Zapdos - Raging Thunder  [{ opponent: false, damage: 30, },]
+  B1a 025   Magneton - Spark  [{ opponent: true, damage: 20, },]
+  B2a 028   Palafin - Jet Punch  [{ opponent: true, damage: 50, },]
+  B2a 045   Miraidon - Lightning Laser  [{ opponent: true, damage: 30, },]
+  B2a 128   Raikou ex - Voltaic Bullet  [{ opponent: true, damage: 10, },]
+  B3a 015   Pawmo - Spark  [{ opponent: true, damage: 10, },]
+  B3b 013   Seaking - Aqua Bullet  [{ opponent: true, damage: 20, },]
+  B4 044    Samurott - Pike  [{ opponent: true, damage: 20, },]
+  B4 103    Hoopa ex - Shadow Bullet  [{ opponent: true, damage: 20, },]
+      in decks: decks/brews/brew-07-hoopa-darkrai-sableye.txt, decks/dustin/04-absol-hoopa-darkrai.txt, decks/gauntlet_2026-09-26/v-weezing_2.txt, decks/gauntlet_2026-09-26/v-weezing_swap1.txt, decks/gauntlet_2026-09-26/v-weezing_swap2.txt, decks/research/weezing.txt, decks/screen/opponents/t-weezing.txt
+  B4 163    Samurott - Pike  [{ opponent: true, damage: 20, },]
+  B4 186    Hoopa ex - Shadow Bullet  [{ opponent: true, damage: 20, },]
+  B4 199    Hoopa ex - Shadow Bullet  [{ opponent: true, damage: 20, },]
+  B4a 021   Team Rocket's Zapdos ex - Thunderclaw  [{ opponent: true, damage: 50, filter: BenchDamageFilter::Damaged, },]
+  B4a 081   Team Rocket's Zapdos ex - Thunderclaw  [{ opponent: true, damage: 50, filter: BenchDamageFilter::Damaged, },]
+  B4a 090   Team Rocket's Zapdos ex - Thunderclaw  [{ opponent: true, damage: 50, filter: BenchDamageFilter::Damaged, },]
+  B4a 098   Seaking - Aqua Bullet  [{ opponent: true, damage: 20, },]
+  P-A 044   Raichu - Spark  [{ opponent: true, damage: 20, },]
+  P-B 001   Pikachu - Spark  [{ opponent: true, damage: 10, },]
+  P-B 004   Luxray - Flash Impact  [{ opponent: false, damage: 20, },]
+  P-B 081   Carvanha - Aqua Jet  [{ opponent: true, damage: 10, },]
+
+## optional_discard_benched_basic_for_extra_damage  (OptionalDiscardBenchedBasicForExtraDamage)
+  B4 011    Vespiquen ex - Chase Order  [{ energy_type: EnergyType::Grass, extra_damage: 70, },]
+      in decks: decks/research/vespiquen.txt, decks/screen/opponents/t-vespiquen.txt, decks/variants-2026-09-23/vespiquen_kovacs469_pokebounty_2026-09-14.txt, decks/variants-2026-09-23/vespiquen_twidleurstixx_breakfastclub_2026-09-02.txt
+  B4 180    Vespiquen ex - Chase Order  [{ energy_type: EnergyType::Grass, extra_damage: 70, },]
+  B4 194    Vespiquen ex - Chase Order  [{ energy_type: EnergyType::Grass, extra_damage: 70, },]
+
+## discard_all_energy_of_type_then_damage_any_opponent_pokemon  (SelfDiscardAllTypeEnergyAndDamageAnyOpponentPokemon)
+  A2 060    Luxray - Volt Bolt  [{ energy_type: EnergyType::Lightning, damage: 120, },]
+  B2a 037   Chien-Pao ex - Diving Icicles  [{ energy_type: EnergyType::Water, damage: 130, },]
+      in decks: decks/gauntlet_2026-09-26/v-suicune_2.txt, decks/gauntlet_2026-09-26/v-suicune_swap1.txt, decks/gauntlet_2026-09-26/v-suicune_swap2.txt, decks/research/suicune.txt, decks/screen/opponents/t-suicune.txt, decks/screen/panel_ladder_2026-09-26/l-sharpedo.txt
+  B2a 102   Chien-Pao ex - Diving Icicles  [{ energy_type: EnergyType::Water, damage: 130, },]
+  B2a 112   Chien-Pao ex - Diving Icicles  [{ energy_type: EnergyType::Water, damage: 130, },]
+  P-B 041   Chien-Pao ex - Diving Icicles  [{ energy_type: EnergyType::Water, damage: 130, },]
+
+## damage_to_any_opponent_per_target_energy  (DamageToAnyOpponentPerTargetEnergy)
+  A3 084    Tapu Lele - Energy Arrow  [{ damage_per_energy: 20 },]
+  A3 170    Tapu Lele - Energy Arrow  [{ damage_per_energy: 20 },]
+
+## self_discard_energy_then_damage_any_opponent_pokemon  (SelfDiscardEnergyThenDamageAnyOpponentPokemon)
+  A1a 014   Volcarona - Volcanic Ash  [{ energies: vec![EnergyType::Fire, EnergyType::Fire], damage: 80, },]
+  P-A 028   Volcarona - Volcanic Ash  [{ energies: vec![EnergyType::Fire, EnergyType::Fire], damage: 80, },]
+
+## switch_in_opponent_benched_then_damage  (SwitchInOpponentBenchedThenDamage)
+  B3a 035   Sandy Shocks - Pull In and Pound  [{ damage: 50, coin_flip: false, },]
+  B4a 028   Team Rocket's Hypno - Entrap  [{ damage: 50, coin_flip: false, },]
+      in decks: decks/dustin/14-comfey-raticate-hypno.txt
+  B4a 074   Team Rocket's Hypno - Entrap  [{ damage: 50, coin_flip: false, },]
+  P-A 095   Chinchou - Luring Glow  [{ damage: 0, coin_flip: true, },]
+
+## direct_damage_if_damaged  (DirectDamageIfDamaged)
+  A3 012    Decidueye ex - Pierce the Pain  [{ damage: 100 },]
+  A3 180    Decidueye ex - Pierce the Pain  [{ damage: 100 },]
+  A3 198    Decidueye ex - Pierce the Pain  [{ damage: 100 },]
+  A4b 042   Decidueye ex - Pierce the Pain  [{ damage: 100 },]
+  B1 317    Decidueye ex - Pierce the Pain  [{ damage: 100 },]
+  B3 110    Mandibuzz - Blindside  [{ damage: 60 },]
+
+## direct_damage / direct_damage_and_self_card_effect  (DirectDamage, DirectDamageAndSelfCardEffect)
+  A1 071    Seadra - Water Arrow  [{ damage: 50, bench_only: false, },]
+  A1 106    Zebstrika - Thunder Spear  [{ damage: 30, bench_only: false, },]
+  A1 154    Hitmonlee - Stretch Kick  [{ damage: 30, bench_only: true, },]
+      in decks: decks/gauntlet_2026-09-26/v-lucario_2.txt, decks/gauntlet_2026-09-26/v-lucario_swap1.txt, decks/gauntlet_2026-09-26/v-lucario_swap2.txt, decks/research/lucario.txt, decks/screen/opponents/t-lucario.txt
+  A1a 021   Lumineon - Aqua Liner  [{ damage: 50, bench_only: true, },]
+  A1a 027   Electabuzz - Thunder Spear  [{ damage: 40, bench_only: false, },]
+  A2 077    Azelf - Psychic Arrow  [{ damage: 20, bench_only: false, },]
+  A2 097    Honchkrow - Skill Dive  [{ damage: 50, bench_only: false, },]
+  A2a 035   Rotom - Dash Attack  [{ damage: 20, bench_only: true, },]
+  A2a 047   Garchomp ex - Linear Attack  [{ damage: 50, bench_only: false, },]
+  A2a 084   Garchomp ex - Linear Attack  [{ damage: 50, bench_only: false, },]
+  A2a 093   Garchomp ex - Linear Attack  [{ damage: 50, bench_only: false, },]
+  A2b 017   Floatzel - Water Arrow  [{ damage: 30, bench_only: false, },]
+  A3 010    Rowlet - Skill Dive  [{ damage: 10, bench_only: false, },]
+  A3 105    Minior - Star Drop  [{ damage: 40, bench_only: false, },]
+  A3 174    Minior - Star Drop  [{ damage: 40, bench_only: false, },]
+  A3a 004   Dartrix - Skill Dive  [{ damage: 20, bench_only: false, },]
+  A3a 005   Decidueye - Sniping Arrow  [{ damage: 70, bench_only: false, },]
+  A3b 017   Glaceon - Ice Blade  [{ damage: 50, bench_only: false, },]
+  A3b 073   Glaceon - Ice Blade  [{ damage: 50, bench_only: false, },]
+  A4 070    Elekid - Zappy Shot  [{ damage: 20, bench_only: true, },]
+  A4 120    Absol - Leap Over  [{ damage: 30, bench_only: true, },]
+      in decks: decks/dustin/02-arceus-crobat.txt
+  A4a 024   Cryogonal - Ice Blade  [{ damage: 40, bench_only: false, },]
+  A4a 057   Lickitung - Stretch Tongue  [{ damage: 30, bench_only: false, },]
+  A4a 058   Lickilicky - Stretch Tongue  [{ damage: 60, bench_only: false, },]
+  A4a 103   Garchomp ex - Linear Attack  [{ damage: 50, bench_only: false, },]
+  A4b 038   Rowlet - Skill Dive  [{ damage: 10, bench_only: false, },]
+  A4b 039   Rowlet - Skill Dive  [{ damage: 10, bench_only: false, },]
+  A4b 209   Garchomp ex - Linear Attack  [{ damage: 50, bench_only: false, },]
+  B1 005    Beautifly - Skill Dive  [{ damage: 50, bench_only: false, },]
+  B1 044    Heatmor - Tongue Whip  [{ damage: 30, bench_only: true, },]
+      in decks: decks/dustin/06-mega-blaziken-tournament-list.txt, decks/research/blaziken.txt, decks/screen/opponents/t-blaziken.txt
+  B1 106    Jirachi - Star Drop  [{ damage: 30, bench_only: false, },]
+  B1 107    Drifloon - Wind Blast  [{ damage: 20, bench_only: true, },]
+  B1 227    Beautifly - Skill Dive  [{ damage: 50, bench_only: false, },]
+  B1 290    Rowlet - Skill Dive  [{ damage: 10, bench_only: false, },]
+  B1 291    Dartrix - Skill Dive  [{ damage: 20, bench_only: false, },]
+  B2 045    Cramorant - Spit-Out Shot  [{ damage: 30, bench_only: true, },]
+  B2 050    Alolan Raichu - Thunder Spear  [{ damage: 50, bench_only: false, },]
+  B2 076    Indeedee - Zen Shard  [{ damage: 70, bench_only: true, },]
+  B2 087    Gigalith ex - Megaton Cannon  [{ damage: 140, bench_only: false, effect: CardEffect::CannotAttack, duration: 2, },]
+  B2 091    Passimian - Fling  [{ damage: 30, bench_only: true, },]
+  B2 164    Cramorant - Spit-Out Shot  [{ damage: 30, bench_only: true, },]
+  B2 169    Indeedee - Zen Shard  [{ damage: 70, bench_only: true, },]
+  B2 187    Gigalith ex - Megaton Cannon  [{ damage: 140, bench_only: false, effect: CardEffect::CannotAttack, duration: 2, },]
+  B2 200    Gigalith ex - Megaton Cannon  [{ damage: 140, bench_only: false, effect: CardEffect::CannotAttack, duration: 2, },]
+  B2 218    Hitmonlee - Stretch Kick  [{ damage: 30, bench_only: true, },]
+  B2a 038   Pawmi - Random Spark  [{ damage: 10, bench_only: false, },]
+  B2a 119   Pawmi - Random Spark  [{ damage: 10, bench_only: false, },]
+  B3 006    Grovyle - Slicing Snipe  [{ damage: 50, bench_only: true, },]
+      in decks: decks/research/sceptile.txt, decks/screen/opponents/t-sceptile.txt
+  B3 032    Volcarona - Fire Arrow  [{ damage: 50, bench_only: false, },]
+  B3 129    Eevee - Jumping Kick  [{ damage: 10, bench_only: false, },]
+  B3 157    Grovyle - Slicing Snipe  [{ damage: 50, bench_only: true, },]
+  B4 060    Helioptile - Jumping Kick  [{ damage: 10, bench_only: false, },]
+  B4 097    Galarian Obstagoon - Bass Control  [{ damage: 80, bench_only: false, },]
+  B4 229    Gigalith ex - Megaton Cannon  [{ damage: 140, bench_only: false, effect: CardEffect::CannotAttack, duration: 2, },]
+  B4a 020   Team Rocket's Electrode - Random Spark  [{ damage: 30, bench_only: false, },]
+  B4a 053   Gabite - Linear Attack  [{ damage: 50, bench_only: false, },]
+      in decks: decks/dustin/08-garchomp-toolbox.txt
+  P-A 094   Horsea - Water Arrow  [{ damage: 10, bench_only: false, },]
+  P-A 117   Absol - Leap Over  [{ damage: 30, bench_only: true, },]
+  P-B 025   Jirachi - Star Drop  [{ damage: 30, bench_only: false, },]
+  P-B 039   Pawmi - Random Spark  [{ damage: 10, bench_only: false, },]
+
+## coin_flip_also_choice_bench_damage  (CoinFlipAlsoChoiceBenchDamage)
+  B2 048    Wellspring Mask Ogerpon - Wellspring Dance  [{ opponent: true, damage: 40 },]
+
+## self_discard_energy_and_choice_bench_damage  (SelfDiscardEnergyAndChoiceBenchDamage)
+  B3 051    Rapid Strike Urshifu - Tornado Shot  [{ energies: vec![EnergyType::Water], bench_damage: 40, },]
+
+## conditional_bench_damage_attack  (ConditionalBenchDamage)
+  B1a 019   Blastoise - Double Splash  [{ required_extra_energy: vec![EnergyType::Water, EnergyType::Water], bench_damage: 50, num_bench_targets: 1, opponent: true, },]
+  B1a 020   Mega Blastoise ex - Triple Bombardment  [{ required_extra_energy: vec![EnergyType::Water, EnergyType::Water, EnergyType::Water], bench_damage: 50, num_bench_targets: 2, opponent: true, },]
+  B1a 078   Mega Blastoise ex - Triple Bombardment  [{ required_extra_energy: vec![EnergyType::Water, EnergyType::Water, EnergyType::Water], bench_damage: 50, num_bench_targets: 2, opponent: true, },]
+  B1a 084   Mega Blastoise ex - Triple Bombardment  [{ required_extra_energy: vec![EnergyType::Water, EnergyType::Water, EnergyType::Water], bench_damage: 50, num_bench_targets: 2, opponent: true, },]
+
+## mega_kangaskhan_ex_double_punching_family  (MegaKangaskhanExDoublePunchingFamily)
+  B2 127    Mega Kangaskhan ex - Double-Punching Family  [,]
+  B2 189    Mega Kangaskhan ex - Double-Punching Family  [,]
+  B2 202    Mega Kangaskhan ex - Double-Punching Family  [,]
+  B4 231    Mega Kangaskhan ex - Double-Punching Family  [,]
+
+## shuffle_opponent_tools_into_deck_before_damage  (ShuffleOpponentToolsIntoDeckBeforeDamage)
+  B4 077    Hoopa - Mischievous Ring  [,]
+
+## discard_tools_from_hand_for_damage (its damage is queued in apply_action.rs)  (DiscardToolsFromHandForDamage)
+  A4a 018   Slowking - Litter  [{ max_cards: 2, damage_per_card: 50, },]
+
+## the coin Abilities (the defenders)
+  A2 114    Bastiodon - Guarded Grill  [CoinFlipToReduceDamage { amount: 100 },]
+  A4 080    Togekiss - Celestial Blessing  [CoinFlipToPreventDamage ,]
+  B2 124    Meowth - Carefree Steps  [CoinFlipToPreventDamage ,]
+  B2 204    Meowth - Carefree Steps  [CoinFlipToPreventDamage ,]
+  B3b 050   Hisuian Goodra - Securely Sheltered  [CoinFlipToReduceDamage { amount: 80 },]
+
+(deck lists read: 64 files under decks/)
