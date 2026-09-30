@@ -1394,8 +1394,9 @@ fn finite_damage_reductions(
 
 /// Conservative raw damage at which every larger active-to-active hit has the same lethal or
 /// fully-prevented successor. Positive bonuses and Weakness are deliberately ignored; doing so can
-/// only raise the boundary. Finite defender coin reduction is included because it is applied
-/// before `modify_damage`. A full-prevention coin branch is already identical at every damage.
+/// only raise the boundary. A finite defender coin reduction is included: on heads it comes off in
+/// `modify_damage`'s step 4 with the other reductions (rules/09, repaired Sept 30), so adding it to
+/// them keeps the bound. A full-prevention coin branch is already identical at every damage.
 pub(crate) fn active_attack_damage_saturation_requirement(
     state: &State,
     acting_player: usize,
@@ -2058,11 +2059,23 @@ pub(crate) fn modify_damage(
         WeaknessApplication::Flat(amount) => pre_weakness + amount,
         WeaknessApplication::Double => pre_weakness * 2,
     };
+    // Guarded Grill's and Securely Sheltered's cut on heads (rules/02, step 4; rules/09, "Open engine bugs", repaired
+    // Sept 30): an effect on the Defending Pokémon like the reductions below. Only an attack outcome whose coin came
+    // up heads puts one in force (`with_heads_coin_cuts`); everywhere else it is 0.
+    let heads_coin_cut = if is_from_active_attack && attacking_player != target_player {
+        crate::actions::attack_outcome::heads_coin_cut((target_player, target_idx))
+    } else {
+        0
+    };
+    if heads_coin_cut > 0 {
+        debug!("Coin-flip damage cut on heads: -{heads_coin_cut}, after Weakness");
+    }
     // Effects on the Defending Pokémon are step 4: after Weakness. This includes both
     // vulnerability (+damage) and reductions, with the final result floored at zero.
     let final_damage = after_weakness
         .saturating_add(increased_vulnerability_modifiers)
-        .saturating_sub(reductions.total_u32_saturating());
+        .saturating_sub(reductions.total_u32_saturating())
+        .saturating_sub(heads_coin_cut);
 
     // Threshold-based prevention (e.g. Cascoon's Harden): prevent all damage if it is low enough.
     let prevented_by_threshold = is_from_active_attack
