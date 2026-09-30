@@ -1,5 +1,5 @@
 use deckgym::{
-    actions::{Action, SimpleAction},
+    actions::{try_forecast_action, Action, SimpleAction},
     card_ids::CardId,
     database::get_card_by_enum,
     models::{Attack, Card, EnergyType, PlayedCard, StatusCondition, TrainerCard},
@@ -566,4 +566,134 @@ fn search_players_resolve_the_pause_instead_of_scoring_it_as_zero_damage() {
             .action,
         SimpleAction::RerollAttackCoins { .. }
     ));
+}
+
+// Repairs A and B together (Sonnet's F7: nothing tested them meeting). A Confused Fire attacker with Victory Star takes
+// Keep or Reroll after its Confusion heads, and the attack then runs into a defender whose coin-flip Ability cuts
+// damage: `finish_attack_after_confusion_heads`, then B's heads cut, which comes off after Weakness (rules/02, step 4).
+// Grimhound Flare is 80 per heads. The defenders get 400 HP so that no branch is a Knock Out.
+
+fn cut_defender(card_id: CardId) -> PlayedCard {
+    PlayedCard::new(get_card_by_enum(card_id), 0, 400, vec![], false, vec![])
+}
+
+/// The state paused on a Confused Houndoom's Grimhound Flare after its Confusion heads, with exactly `heads` heads among
+/// the three coins, against `defender`.
+fn paused_after_confusion_heads(defender: CardId, heads: usize) -> deckgym::State {
+    for seed in 0..500 {
+        let mut game = game(seed, CardId::B3025Victini, cut_defender(defender));
+        let mut state = game.get_state_clone();
+        state.apply_status_condition(0, 0, StatusCondition::Confused);
+        game.set_state(state);
+        game.apply_action(&attack());
+        let paused = game.get_state_clone();
+        let flips = paused.pending_attack_coin_choice.as_ref().map(|pending| pending.flips.clone());
+        if flips.is_some_and(|flips| flips.iter().filter(|face| **face).count() == heads) {
+            return paused;
+        }
+    }
+    panic!("no seed paused with {heads} heads");
+}
+
+/// (probability, HP the defender loses) of each branch of `choice`, taken on the paused `state`.
+fn damage_branches(state: &deckgym::State, choice: &Action) -> Vec<(f64, u32)> {
+    let before = state.get_active(1).get_remaining_hp();
+    let (probabilities, mutations) = try_forecast_action(state, choice).unwrap().into_branches();
+    probabilities
+        .iter()
+        .zip(mutations)
+        .map(|(probability, mutate)| {
+            let mut branch = state.clone();
+            mutate(&mut StdRng::seed_from_u64(7), &mut branch, choice);
+            (*probability, before - branch.get_active(1).get_remaining_hp())
+        })
+        .collect()
+}
+
+fn expected_loss(branches: &[(f64, u32)]) -> f64 {
+    assert!((branches.iter().map(|(p, _)| p).sum::<f64>() - 1.0).abs() < 1e-9, "{branches:?}");
+    branches.iter().map(|(p, loss)| p * f64::from(*loss)).sum()
+}
+
+/// Keep after a Confusion heads into Bastiodon (Metal, weak to Fire; Guarded Grill: heads takes -100). One head is 80,
+/// 100 with Weakness: tails 100, heads 100 - 100 = 0. Cutting the raw 80 first would leave 20 on heads.
+#[test]
+fn keep_after_confusion_heads_takes_guarded_grills_cut_after_weakness() {
+    let paused = paused_after_confusion_heads(CardId::A2114Bastiodon, 1);
+    let mut branches = damage_branches(&paused, &keep());
+    branches.sort_by_key(|(_, loss)| *loss);
+    assert_eq!(branches.len(), 2, "{branches:?}");
+    assert_eq!((branches[0].1, branches[1].1), (0, 100), "{branches:?}");
+    assert!(branches.iter().all(|(probability, _)| (probability - 0.5).abs() < 1e-12), "{branches:?}");
+}
+
+/// Reroll after a Confusion heads into Bastiodon: the fresh batch of three coins, then the cut, over every outcome.
+/// k heads: k = 1 loses 100 or 0, k = 2 loses 180 or 80, k = 3 loses 260 or 160, k = 0 nothing (no Weakness on 0).
+/// Expected 3/8 x 50 + 3/8 x 130 + 1/8 x 210 = 93.75. With the cut before Weakness the k = 1 heads branch would lose 20,
+/// and the expectation would be 97.5.
+#[test]
+fn reroll_after_confusion_heads_takes_guarded_grills_cut_after_weakness_over_the_whole_batch() {
+    let paused = paused_after_confusion_heads(CardId::A2114Bastiodon, 0);
+    let source = paused.pending_attack_coin_choice.as_ref().unwrap().victory_star_in_play_idx;
+    let branches = damage_branches(&paused, &reroll(source));
+    assert!((expected_loss(&branches) - 93.75).abs() < 1e-9, "{branches:?}");
+    assert!(branches.iter().all(|(_, loss)| *loss != 20), "{branches:?}");
+}
+
+/// The same into Hisuian Goodra (no Weakness; Securely Sheltered: heads takes -80), a finite cut and not a prevention:
+/// Keep on two heads loses 160 or 80; Reroll expects 3/8 x 40 + 3/8 x 120 + 1/8 x 200 = 85 (a full prevention on heads
+/// would give 60).
+#[test]
+fn keep_and_reroll_after_confusion_heads_take_securely_sheltered_as_a_finite_cut() {
+    let paused = paused_after_confusion_heads(CardId::B3b050HisuianGoodra, 2);
+    let mut kept: Vec<u32> = damage_branches(&paused, &keep()).into_iter().map(|(_, loss)| loss).collect();
+    kept.sort_unstable();
+    assert_eq!(kept, vec![80, 160]);
+    let source = paused.pending_attack_coin_choice.as_ref().unwrap().victory_star_in_play_idx;
+    let rerolled = damage_branches(&paused, &reroll(source));
+    assert!((expected_loss(&rerolled) - 85.0).abs() < 1e-9, "{rerolled:?}");
+}
+
+/// A Confused attacker whose attack flips no coins keeps the old path (`try_forecast_victory_star_attack` returns None
+/// when the attack has no coin batch): no pause, no offer, and the same result as with Victory Star already used this
+/// turn, where the gate is shut before it starts. Victini's own V-Flame (40, no coins) is the attack; Victini is its own
+/// Victory Star source.
+#[test]
+fn a_confused_attack_that_flips_no_coins_keeps_the_old_path() {
+    let (mut hit, mut missed) = (0, 0);
+    for seed in 0..40 {
+        let play = |used: bool| {
+            let mut game = get_initialized_game_with_board(
+                seed,
+                0,
+                3,
+                vec![victini(CardId::B3025Victini).with_energy(vec![EnergyType::Fire, EnergyType::Colorless])],
+                vec![sponge(400)],
+            );
+            let mut state = game.get_state_clone();
+            state.apply_status_condition(0, 0, StatusCondition::Confused);
+            state.victory_star_used_this_turn[0] = used;
+            game.set_state(state);
+            game.apply_action(&Action {
+                actor: 0,
+                action: attack_action(CardId::B3025Victini, 0),
+                is_stack: false,
+            });
+            game.get_state_clone()
+        };
+        let (open, shut) = (play(false), play(true));
+        assert!(open.pending_attack_coin_choice.is_none(), "seed {seed}: no pause");
+        assert_eq!(
+            open.get_active(1).get_remaining_hp(),
+            shut.get_active(1).get_remaining_hp(),
+            "seed {seed}: the same result as with Victory Star used"
+        );
+        assert_eq!(open.generate_possible_actions().1.len(), shut.generate_possible_actions().1.len(), "seed {seed}");
+        if open.get_active(1).get_remaining_hp() == 400 {
+            missed += 1;
+        } else {
+            hit += 1;
+        }
+    }
+    assert!(hit > 5 && missed > 5, "{hit} hits, {missed} Confusion tails");
 }

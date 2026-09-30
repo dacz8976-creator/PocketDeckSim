@@ -475,3 +475,44 @@ fn confusion_with_will_pending_keeps_the_legacy_resolution_without_a_victory_sta
     }
     assert!(resolved > 10, "the attack resolved (attached Energy) in only {resolved} of 60 seeds");
 }
+
+/// CoinFlipToBlockAttack keeps the old resolution, and not only "no pause, no offer": the result equals the old path's,
+/// which is what the same seed gives with Victory Star already used this turn (the gate shut before it starts). Sonnet's
+/// F7 (optional): the guard test above checked only the absence of a pause and an offer.
+#[test]
+fn coin_flip_to_block_attack_result_is_the_old_paths() {
+    for confused in [false, true] {
+        for seed in 0..40 {
+            let play = |used: bool| {
+                let mut attacker = moltres(CardId::B4a007TeamRocketsMoltresEx);
+                if confused {
+                    attacker = attacker.with_status_condition(StatusCondition::Confused);
+                }
+                attacker.add_effect(CardEffect::CoinFlipToBlockAttack, 1);
+                let mut game = get_initialized_game_with_board(
+                    seed,
+                    0,
+                    3,
+                    vec![attacker, PlayedCard::from_id(CardId::B3025Victini)],
+                    vec![sponge(0)],
+                );
+                let mut state = game.get_state_clone();
+                state.victory_star_used_this_turn[0] = used;
+                game.set_state(state);
+                game.apply_action(&attack(CardId::B4a007TeamRocketsMoltresEx, 0));
+                game.get_state_clone()
+            };
+            let (open, shut) = (play(false), play(true));
+            assert_eq!(
+                open.get_active(0).attached_energy.len(),
+                shut.get_active(0).attached_energy.len(),
+                "confused {confused}, seed {seed}"
+            );
+            assert_eq!(
+                open.generate_possible_actions().1.len(),
+                shut.generate_possible_actions().1.len(),
+                "confused {confused}, seed {seed}"
+            );
+        }
+    }
+}
