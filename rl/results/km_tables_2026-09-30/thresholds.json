@@ -1,0 +1,122 @@
+{
+ "procedure": "REGISTRATION_DRAFT.md step 3, 'The threshold rule for T1 and T2' (registered Sept 29, 55e5d95), read with Amendment 1 (Sept 30): km re-issued on kta, the sample kta3 then km3",
+ "km_thresholds_py_sha256": "c84a87688d178f08deac79023d6f6e5e85979a7f6fed3266db450baa3a49263a",
+ "python": "3.14.4",
+ "tool_source_sha256": "05d7ba4183ce9e3098036de9acb5181ea71f7077ef9b3798ad4e5d165dc22365",
+ "counter_tool": {
+  "source_sha256": "05d7ba4183ce9e3098036de9acb5181ea71f7077ef9b3798ad4e5d165dc22365",
+  "program_sha256": "9e7bdc1b47b9eda69540fd5263acbab7a1f081f7467db657af5fbb7def47f807"
+ },
+ "arms": [
+  "kta3",
+  "km3"
+ ],
+ "kta3_arm_code": "kta3",
+ "km3_arm_code": "km3",
+ "inputs": {
+  "kta3": {
+   "file": "1f6319e_sample_kta3_rows.jsonl",
+   "sha256": "743176c6f66951e506cb72a946d122f33543b0358b04b4e61f1c00f795b73fc3",
+   "rows": 1400
+  },
+  "km3": {
+   "file": "1f6319e_sample_km3_rows.jsonl",
+   "sha256": "687e138a5bc924869f27e1a4bfe9118db76424fa4ca79e0d13677fc19c2d3846",
+   "rows": 1400
+  }
+ },
+ "lines": {
+  "M1": {
+   "line": "M1",
+   "card": "Arena of Antiquity",
+   "owner_side": "lucario",
+   "cells": [
+    "table:2",
+    "table:8",
+    "table:13",
+    "table:18",
+    "table:19",
+    "table:20",
+    "table:21",
+    "new_decks.tsv:8",
+    "new_decks.tsv:16"
+   ],
+   "deals": "200-299",
+   "kta3": {
+    "offered": 1664,
+    "played": 355,
+    "rate": "355/1664",
+    "rate_display": "21.3%"
+   },
+   "km3": {
+    "offered": 1308,
+    "played": 444,
+    "rate": "37/109",
+    "rate_display": "33.9%"
+   },
+   "T": "100263/362752",
+   "T_display": "27.6%",
+   "interval": [
+    0.10706821380818238,
+    0.14692109105529338
+   ],
+   "interval_detail": {
+    "lower_repr": "0.10706821380818238",
+    "upper_repr": "0.14692109105529338",
+    "sorted_elements": [
+     250,
+     9750
+    ],
+    "resampling_seed": 20260929,
+    "replicates": 10000,
+    "zero_offered_replicates": 0
+   },
+   "status": "threshold",
+   "reason": "the paired-noise interval's lower bound is above zero"
+  },
+  "M2": {
+   "line": "M2",
+   "card": "Training Area",
+   "owner_side": "altaria",
+   "cells": [
+    "table:0",
+    "table:1",
+    "table:3",
+    "table:4",
+    "new_decks.tsv:9"
+   ],
+   "deals": "200-299",
+   "kta3": {
+    "offered": 870,
+    "played": 254,
+    "rate": "127/435",
+    "rate_display": "29.2%"
+   },
+   "km3": {
+    "offered": 786,
+    "played": 275,
+    "rate": "275/786",
+    "rate_display": "35.0%"
+   },
+   "T": "24383/75980",
+   "T_display": "32.1%",
+   "interval": [
+    0.03862448982989242,
+    0.0782545074154864
+   ],
+   "interval_detail": {
+    "lower_repr": "0.03862448982989242",
+    "upper_repr": "0.0782545074154864",
+    "sorted_elements": [
+     250,
+     9750
+    ],
+    "resampling_seed": 20260930,
+    "replicates": 10000,
+    "zero_offered_replicates": 0
+   },
+   "status": "threshold",
+   "reason": "the paired-noise interval's lower bound is above zero"
+  }
+ }
+}
