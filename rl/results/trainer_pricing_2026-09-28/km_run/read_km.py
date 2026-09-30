@@ -723,6 +723,38 @@ def selftest():
             assert "STOP" in str(e.code)
         else:
             raise AssertionError(f"a printed +0.0 with an unrounded {bad!r} was accepted")
+    # Bounds just on each side of a line, swept (Sept 30, after a review of the one-decimal and two-decimal printouts): whatever
+    # the TRUE bound is, the reader names the right label / gate status or holds PENDING; it never calls the wrong one, and the
+    # 20,000-rep rule is unchanged: below it the near-zero band is PENDING, at it the call is made. score.py prints a ΔMSE bound to
+    # one decimal and the τ̂ bound to two, so a true bound is fed through that same rounding before the reader sees it.
+    for k in range(-200, 201):                                   # the ΔMSE LOWER bound, true -0.200 .. +0.200; the upper is +9.0
+        x = k / 1000
+        s = f"{x:+.1f}"                                          # what score.py prints: +0.04 -> "+0.0", -0.04 -> "-0.0"
+        ex = x if s == "+0.0" else None                          # its unrounded line, which a printed +0.0 is read from
+        right = "above" if x > 0 else "spans"                    # outcome 2 needs the lower bound above zero, exactly
+        assert dmse_label(s, "+9.0", False, DECISIVE_REPS, False, ex)[0] == {right}, ("lower, decisive run", x, s)
+        assert right in dmse_label(s, "+9.0", False, 4000, False, ex)[0], ("lower, below 20,000 reps", x, s)
+        if s == "+0.0":                                          # without the unrounded line it is never called, at any --reps
+            assert dmse_label(s, "+9.0", False, DECISIVE_REPS)[0] == {"spans", "above"}, ("lower, no unrounded line", x)
+            assert dmse_label(s, "+9.0", False, 4000)[0] == {"spans", "above"}, ("lower, no unrounded line, 4000", x)
+    for k in range(-200, 201):                                   # the ΔMSE UPPER bound, true -0.200 .. +0.200; the lower is -9.0
+        x = k / 1000
+        s = f"{x:+.1f}"
+        right = "below" if x < 0 else "spans"                    # outcome 1 needs the upper bound below zero, exactly (score.py's own test)
+        assert dmse_label("-9.0", s, x < 0, DECISIVE_REPS)[0] == {right}, ("upper, decisive run", x, s)
+        assert right in dmse_label("-9.0", s, x < 0, 4000)[0], ("upper, below 20,000 reps", x, s)
+        if abs(x) < 0.05:                                        # in the near-zero band below 20,000 reps: both, PENDING
+            assert dmse_label("-9.0", s, x < 0, 4000)[0] == {"below", "spans"}, ("upper, the band at 4000", x, s)
+    for k in range(-1030, -969):                                 # the τ̂ margin's LOWER bound, true -1.030 .. -0.970 (the line is -1.0)
+        x = k / 1000
+        shown = float(f"{x:.2f}")                                # what score.py prints: -1.004 and -0.996 both print -1.00
+        at20k = tau_gate(shown, shown, DECISIVE_REPS)[0]
+        if at20k != "PENDING":
+            assert (at20k == "PASS") == (x >= -1.0), ("tau, decisive run", x, shown, at20k)
+        assert (at20k == "PENDING") == (shown == -1.0), ("tau: exactly the printed -1.00 is never called", x, shown, at20k)
+        if abs(x + 1.0) < 0.005:
+            assert at20k == "PENDING", ("tau: prints -1.00, never called", x)
+        assert tau_gate(shown, shown, 4000)[0] == "PENDING", ("tau: the 0.10 band below 20,000 reps", x, shown)   # -1.03 .. -0.97 all in it
     # the mechanism lines: exact comparison with T, the guard, 'cannot pass'
     T4 = Fraction(1, 4)
     assert m_gate("m1", T4, "threshold", 100, 25, 100, 20)[0] == "PASS"      # exactly T passes (">= T")
