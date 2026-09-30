@@ -1,0 +1,18 @@
+pct calls: 16; pass_parts calls: [(45, 13.550070174839268), (45, 13.391749465756023), (44, 13.72615942023522), (44, 13.566320888157513)]
+[reps 20000] 45 cells: dMSE lo -8.8278; dMSE hi +0.0308; dMSE_e lo -8.8561; dMSE_e hi +0.2500; tau lo +0.0197; tau hi +0.2534; tau_e lo +0.0141; tau_e hi +0.2487
+   label SPANS; width 8.8586; 5% width 0.4429; hi near: True; lo near: False; tau lo near -1: False; sd 2.2598 MDE50 4.4293 MDE80 6.3276
+   kog3 real error unrounded 13.5501; kta3 13.3917
+   from 13.550: MDE50 -> 13.386; MDE80 -> 13.315
+   from 13.600: MDE50 -> 13.436; MDE80 -> 13.365
+[reps 20000] 44-cell set: dMSE lo -9.0587; dMSE hi -0.0280; dMSE_e lo -9.0429; dMSE_e hi +0.1739; tau lo +0.0209; tau hi +0.2570; tau_e lo +0.0175; tau_e hi +0.2507
+   label BELOW; width 9.0308; 5% width 0.4515; hi near: True; lo near: False; tau lo near -1: False; sd 2.3038 MDE50 4.5154 MDE80 6.4505
+   kog3 real error unrounded 13.7262; kta3 13.5663
+   from 13.726: MDE50 -> 13.561; MDE80 -> 13.489
+   from 13.600: MDE50 -> 13.433; MDE80 -> 13.361
+[reps 4000, second reader's tapped bounds] sd 2.3083; from 13.550: 13.382, 13.309; from 13.600: 13.433, 13.360
+on-disk page lines 157, mine 157; differing lines 2:
+   disk: Limitless cells: /tmp/tmp_2hfqykv.json
+   mine: Limitless cells: /tmp/tmpirx3uv9c.json
+   disk: Mixed rows: /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/kta_tables_2026-09-29/score45_inputs/ec7e1a8_fresh_kta3_mixed_first_composite.jsonl + /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDec
+   mine: Mixed rows: /mnt/c/Users/dacz8/AppData/Local/Temp/claude/C--Users-dacz8-Projects/1b119d13-736d-4588-ba63-0e9ef1756970/scratchpad/wf_kta2/second-reader/sr_mixed_first.jsonl + /mnt/c/Users/dacz8/AppData/Local/Temp/claude/C
+B2e both-sides differing: 253; held-out (0-47) 117; Dustin's (48-95) 136; pairings [4, 12, 20, 28, 36, 44, 52, 60, 68, 76, 84, 92]

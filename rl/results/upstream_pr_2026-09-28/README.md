@@ -1,11 +1,20 @@
-# Upstream pull request: non-attack damage fix (prepared Sept 28, NOT pushed, NOT opened)
+# Upstream pull request: non-attack damage fix (OPENED Sept 29: https://github.com/bcollazo/deckgym-core/pull/383)
+
+**Opened Sept 29 by the laptop session at Dustin's word** ("You can do the pull request unless I need to"):
+- The branch `fix/non-attack-damage-protections` (2aa705d) is on his fork, dacz8976-creator/deckgym-core. He had already forked it.
+- The PR is from his account, with the title and body below plus two lines: the base it was tested on, and the Claude Code note.
+- Upstream main had moved to 9044ff6 (B4b and 09e964f), which doesn't touch the PR's files. GitHub reports it MERGEABLE.
+- Upstream's checks (build-and-test, build 3.12) were queued at opening. A first-time contributor's runs may wait for the maintainer's approval.
 
 **Status (Sept 28, about 10:20 pm Central):**
 - The commit author is now his noreply address. The branch commit is now `2aa705d` (it was `e5a0562` before the
   Water Shuriken test was added on Sept 28 about 10:45 pm; same author, same fix, one more test).
 - The body's wording note is one sentence, and it has a place for the in-game result.
 - Clippy passes (the cloud's run, Sept 29; section "Formatting and lint").
-- The in-game Poison test is done and in the body (`heavyhelmetpoisontest.MP4`: Heavy Helmet cut an attack 110 → 90; Poison then did the full 10).
+- Both in-game tests are done and in the body:
+  - Poison (`heavyhelmetpoisontest.MP4`, Sept 28): Heavy Helmet cut an attack 110 → 90, then Poison did the full 10.
+  - Water Shuriken (`20260929_195929000_iOS.MP4`, Sept 29): Heavy Helmet cut Blizzard 80 → 60, then Water Shuriken did the full 20.
+  - Harden (`20260929_204425000_iOS.MP4`, Sept 29, Sol review lead-accepted): Water Shuriken did the full 20 through Harden, while the same Harden prevented Ice Wing's 40.
 - Waiting on:
   - his Fork click and "push";
   - optionally, the Water Shuriken test for the second line. Dustin: "I'll get you proof". If it isn't done, delete that placeholder line before posting; the card text and the Poison test carry the argument.
@@ -246,7 +255,10 @@ battle FAQ" as its sources, which is why the tests live there and the PR body ci
 - Record it in the Pocket Shot List as you did the Helmet, Rare Candy and Pulse checks. The laptop then fills the line "Verified in-game on Sept 29" in the body.
 - **Done for Poison (Sept 28):** `heavyhelmetpoisontest.MP4`, reviewed by Sol with an independent lead check (`Battle Logs/Recording_QA/heavyhelmetpoisontest_sol/`).
   - Heavy Helmet cut Magmar's Derisive Roasting from 110 to 90, then Poison did the full 10 at Checkup.
-  - The first "Verified in-game" line in the body is filled from that review. The Water Shuriken line is still open.
+  - The first "Verified in-game" line in the body is filled from that review.
+- **Done for Water Shuriken (Sept 29):** recording `20260929_195929000_iOS.MP4`, reviewed by Sol with an independent lead check (`Battle Logs/Recording_QA/20260929_195929000_iOS_rule_sol/`).
+  - Blizzard's printed 80 did 60 to Heavy Helmet Regigigas (Retreat Cost 4), then Water Shuriken did the full 20 (60 → 40).
+  - The second "Verified in-game" line is filled from that review. Both in-game lines are done.
 
 ## Steps for Dustin (website / GitHub Desktop terms)
 
@@ -317,7 +329,16 @@ Each text, quoted exactly, limits the card to damage done by attacks.
 - Team Rocket's Magmar then used Derisive Roasting: "10, ... 50 more damage for each Special Condition affecting your opponent's Active Pokémon", so 110. The game showed **90**, with Heavy Helmet's indicator, and Wailmer went from 100 to 10 HP. That is the −20 on an attack.
 - At Checkup, **Poison then did its full 10** (10 → 0 HP): Heavy Helmet did not reduce it.
 
-**Verified in-game on Sept 29:** _(Greninja's Water Shuriken did __ to a Pokémon holding Heavy Helmet)_
+**Verified in-game (recorded test, Sept 29):**
+- Regigigas (Retreat Cost 4) held Heavy Helmet in the Active Spot.
+- Articuno ex's Blizzard, printed 80, did **60** to it (120 → 60 HP): the −20 on an attack.
+- On the opponent's next turn, Greninja's Water Shuriken ("Ability Water Shuriken: Once during your turn, you may do 20 damage to 1 of your opponent's Pokémon.") did the **full 20** to the same Helmet-wearing Regigigas (60 → 40 HP): Heavy Helmet did not reduce the Ability's damage.
+
+**Verified in-game (recorded test, Sept 29), Harden:**
+- Cascoon used Harden, and the game showed its protection.
+- On the opponent's next turn, Water Shuriken did the **full 20** to it (110 → 90 HP).
+- Then, in the same turn, Articuno ex's Ice Wing (40, an attack) was **prevented** by the same Harden (HP stayed 90).
+- So Harden stops attack damage of 40 or less, and not an Ability's damage.
 
 The official Detailed battle FAQ (in the game under Tips), "Why didn't Mimikyu ex's Disguise Ability prevent damage?", also says Disguise "does not prevent damage that doesn't come from attacks", and lists as not blocked: damage from Special Conditions (such as Poisoned or Burned), from Pokémon Abilities (such as Greninja's Water Shuriken) and from Pokémon Tools (such as Rocky Helmet). Wording as recorded in the PocketDeckSim rules notes (`rules/_research_notes/detailed_battle_faq.md`, lines 38-40, captured 2026-09-21); the same notes tabulate it in `rules/02_damage_knockouts_points.md`, section 4, lines 78-79: "Poison / Burn at Checkup: No" and "Ability damage: No", both graded official (Mimikyu ex FAQ).
 

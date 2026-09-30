@@ -13,7 +13,7 @@ This ledger records verified rules1/rules2 repairs and the active rules3 repairs
 | H2 - Heavy Helmet | Attack-only reductions apply only to an opponent's attack damage. Poison, Burn, Ability damage and the Tool owner's own damage bypass them. |
 | M1 - Checkup Knock Outs | Poison, Burn and Checkup Ability effects finish before the Checkup Knock Out wave. Point-denial choices and promotion continuations pause and resume Checkup without starting the next turn early. |
 | M2 - Clemont's Backpack | Its boost reaches damage to any opposing Pokémon, including the Bench, while Active-only boosts remain Active-only. |
-| M3 - Glimmora and Dusknoir | Point-denial Abilities now resolve for non-attack Knock Outs too, before points and turn advancement, and respect Ability suppression. |
+| M3 - Glimmora and Dusknoir | Point-denial Abilities now resolve for non-attack Knock Outs too, before points and turn advancement, and respect Ability suppression. Matches the game for a Poison Knock Out with heads [OBSERVED 200857, Sept 29; `08` T11]; Burn and tails not seen. |
 | M4 - retaliation Abilities | Retaliation uses the active Ability-mechanic path, respects Ability loss, includes the missing Iron Jugulis and Dragalge ex printings, and is staged after the attack's own effects. |
 | M5 - Mythical Slab | Keeps a Psychic Pokémon of any stage and moves a non-Psychic top card to the bottom. |
 | M6 - Stadium limit | Tracks one Stadium card play per turn separately from each player's once-per-turn Stadium effect use. |
@@ -32,7 +32,9 @@ These repairs are validated and active. Full details and preserved evidence are 
 - Double-Knock-Out promotion after an attack gives the turn player the first required promotion.
 - Checkup processes the player whose turn ended first.
 - Asleep, Paralyzed and Confused replace one another while Poison and Burn remain independent.
-- Eevee's Boosted Evolution exception applies only to that Eevee and respects Ability suppression.
+- Eevee's Boosted Evolution exception applies only to that Eevee and respects Ability suppression. Matches the game
+  [OBSERVED 194920, Sept 29: Benched Rattata refused "Unable to evolve" on the first turn with that Eevee Active;
+  Rattata was also played that turn, see `04` §4].
 - Quick-Grow Extract and Wallace let the player choose the visible target before the engine randomly chooses an
   eligible deck evolution. Wallace uses maximum HP after bonuses.
 - Lum Berry and Bad Dreams follow turn-owner order. Caterpie's Quick Growth resolves before Checkup.
@@ -73,6 +75,13 @@ The accepted 225430 segment revealed that a zero-HP attacker was discarded befor
 
 ## Open engine bugs (not fixed yet)
 
+- **Two knockout-promotion bugs fixed upstream, not in the fork** (found Sept 29 in upstream 09e964f, "Expose public agent observations and fix stale knockout promotions"; `../rl/results/b4b_prep_2026-09-26/B4B_REPRINT_CHECK_2026-09-29.md`). Take them at the next upstream merge, with their tests.
+  1. **Promotion into an emptied slot** (upstream `apply_action_helpers.rs`, `handle_knockouts`; test `tests/hp_aura_promotion_test.rs`). A knockout removes an HP bonus, the only one being Lilligant's "Each of your [G] Pokémon gets +20 HP.", which knocks out a damaged Benched Pokémon after promotion choices were already queued. Promoting that emptied slot could leave the Active Spot empty.
+     - The fork has its own `prune_stale_bench_activate_choices` (`engine/src/actions/apply_action_helpers.rs:1032`), which skips frames where the Active Spot is empty. Whether it covers this case is unchecked.
+  2. **Lethal knock-back asked for two promotions** (upstream `apply_attack_action.rs`, `knock_back_attack` and `coin_flip_knock_back_opponent_active`; test `tests/knock_back_knockout_test.rs`). When the hit knocks out the opponent's Active, the switch choice was still queued on top of the promotion, so the opponent chose a new Active twice.
+     - It affects Hariyama's Push Out, Grapploct's Knock Back, Houndour's and Yamper's Roar, Throh's Circle Throw, and Chinchou's Luring Glow.
+     - The fork's `knock_back_attack` (`engine/src/actions/apply_attack_action.rs:4952`) has no lethal check.
+
 - **Coin-flip damage cuts come off before Weakness** (found Sept 25, in the kd review). Guarded Grill (Bastiodon A2
   114, heads: −100) and Securely Sheltered (Hisuian Goodra B3b 050, heads: −80) are Abilities. The engine takes their
   cut off the attack's raw damage in the attack outcome (`AttackOutcomes::split_with_damage_prevention`,
@@ -103,6 +112,21 @@ The accepted 225430 segment revealed that a zero-HP attacker was discarded befor
   `a_direct_damage_snipe_on_togekiss_pins_the_engines_current_behaviour_no_coin` (`engine/src/hooks/core.rs`)
   fails when this is fixed. For the other attacks kd still flips the coin, as the card text says, so kd and the
   engine disagree there until the engine is fixed. Fix the engine first; kd follows.
+- **Victory Star is never offered while the attacker is Confused — the game offers it on the attack's coins
+  after a Confusion heads. CONFIRMED in-game 2026-09-29** (Sol reviews with lead checks,
+  `Battle Logs/Recording_QA/20260929_202314000_iOS_rule_sol/` and `20260929_203025000_iOS_rule_sol/`; summary
+  `Battle Logs/Recording_QA/VICTORY_STAR_CONFUSION_2026-09-29.md`; rule in `04` §9). In the game the Confusion coin
+  comes first and is never offered for a reroll; on tails the attack does nothing (202314, twice); on heads the
+  attack's own coins are flipped and Victory Star is offered on them (203025: Confused Team Rocket's Moltres ex's Heat
+  Charged flipped 1 heads 2 tails, Victory Star was taken, the three coins rerolled, no second Confusion check). The
+  engine skips Victory Star entirely for a Confused attacker: `try_forecast_victory_star_attack`
+  (`engine/src/actions/apply_action.rs` ~195–202) returns `None` whenever `has_unverified_attacker_coin_gate`
+  (`engine/src/actions/apply_attack_action.rs` ~92–108) is true, and its comment says it is waiting for this
+  evidence. Fix: flip the Confusion coin first; on heads, offer Victory Star on the attack's own coins as usual; never
+  on the Confusion coin. The same gate also covers `CoinFlipToBlockAttack`, which these recordings don't test; leave
+  that part gated until it is seen. A name search of `decks/` finds Victini only in a brew scorecard, not in a deck
+  list. Failing test first; identity replay after the fix.
+
 ## Fixed Sept 26 (cloud branch `claude/pensive-ptolemy-spwc0b`; each its own commit, replays in `rl/results/rules09_fixes_2026-09-26/`; the laptop's repair list items 1 to 10)
 
 - **"Discard all Energy from this Pokémon" never puts that Energy in the discard pile** (found Sept 25 in the laptop's
@@ -172,10 +196,13 @@ The accepted 225430 segment revealed that a zero-HP attacker was discarded befor
   **Fixed in 5bab907 (Sept 26).**
 - **A 0-damage attack that targets the Active used up Mimikyu ex's Disguise** (laptop's Altaria card check, 4b24b4b;
   upheld 3 to 0). Sing does no damage, so it doesn't "first damage" the Pokémon. The zero-damage skip now comes
-  before the Disguise check in `handle_damage`. **Fixed in 02fe9de (Sept 26).**
+  before the Disguise check in `handle_damage`. **Fixed in 02fe9de (Sept 26).** Not seen in-game and left open on card text:
+  `08` T14 (Dustin, Sept 29: "almost positive" Sing doesn't trigger Disguise; hard to replicate, no test planned).
 - **Bad Dreams (Ability damage) was stopped by three "by attacks" protections** (same source; upheld 3 to 0): Hide
   (`PreventAllDamageAndEffects`), Blocking Shell (`PreventDamageFromBasic`) and Harden (`PreventDamageIfLessOrEqual`).
   They now gate on `is_from_active_attack`, as Safeguard and Shell Shield do. **Fixed in 53cba79 (Sept 26).**
+  Matches the game for Harden [OBSERVED 204425, Sept 29; `08` T13]: Water Shuriken did the full 20 to Harden
+  Cascoon (110 → 90), and the same Harden blocked Ice Wing's 40 that turn. Hide and Blocking Shell not tested.
 - **Clemont's Backpack's +20 applied to non-attack damage and to its owner's Pokémon** (laptop's Raticate/Manectric
   card check, `rl/results/raticate_manectric_card_check_2026-09-26/`; upheld 3 to 0): a Poisoned or Burned Heliolisk
   took +20 at Checkup. "Attacks used by your Magneton or Heliolisk do +20 damage to your opponent's Pokémon": the

@@ -1,0 +1,20 @@
+COVERAGE SHORTCUT, scizor
+Rule: "For coverage, skip mixed rows only when every corresponding deal has matching complete move fingerprints, decks, seeds and seats. Matching winners alone is insufficient." (Dustin, Sept 29; REGISTRATION.md top block, item 3)
+Compared deal by deal, on the deal key (pairing, i): moves, a, b, a_file, b_file, seed, first_seat (moves = the complete move fingerprint; a, b, a_file, b_file = both decks; seed; first_seat = the seats).
+A pairing is skipped only when every one of its deals is equal on all of them. winner_seat is not a criterion.
+kog3 both sides: /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/kta_tables_2026-09-29/ec7e1a8_fresh_scizor_kog3.jsonl (4000 games, sha256 a00d88dac9f29a74b9ee0cac5cebc8f03954a6f134835e4f957d40a81e8b1704)
+kta3 both sides: /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/kta_tables_2026-09-29/ec7e1a8_fresh_scizor_kta3.jsonl (4000 games, sha256 cd4507b608b50ca6bce0d5b2f0ed03e8bc7546824ac89cad8626145f05d1b70c)
+8 pairings x 500 deals.
+Coverage (5.5): the own-side mixed rows run on every pairing listed RUN.
+
+RUN scizor 0: 364 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (scizor v lucario): its mixed rows run; 136 of 500 deals differ (moves 136); first at i = 4 (moves); winners equal on 108 of those 136 deals, which does not make it skip
+RUN scizor 1: 394 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (scizor v altaria): its mixed rows run; 106 of 500 deals differ (moves 106); first at i = 5 (moves); winners equal on 90 of those 106 deals, which does not make it skip
+RUN scizor 2: 303 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (scizor v sceptile): its mixed rows run; 197 of 500 deals differ (moves 197); first at i = 0 (moves); winners equal on 169 of those 197 deals, which does not make it skip
+RUN scizor 3: 319 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (scizor v vespiquen): its mixed rows run; 181 of 500 deals differ (moves 181); first at i = 2 (moves); winners equal on 150 of those 181 deals, which does not make it skip
+RUN scizor 4: 327 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (scizor v suicune): its mixed rows run; 173 of 500 deals differ (moves 173); first at i = 0 (moves); winners equal on 140 of those 173 deals, which does not make it skip
+RUN scizor 5: 380 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (scizor v hydreigon): its mixed rows run; 120 of 500 deals differ (moves 120); first at i = 2 (moves); winners equal on 100 of those 120 deals, which does not make it skip
+RUN scizor 6: 344 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (scizor v weezing): its mixed rows run; 156 of 500 deals differ (moves 156); first at i = 2 (moves); winners equal on 125 of those 156 deals, which does not make it skip
+RUN scizor 7: 342 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (scizor v blaziken): its mixed rows run; 158 of 500 deals differ (moves 158); first at i = 9 (moves); winners equal on 136 of those 158 deals, which does not make it skip
+
+Skipped pairings (0): none
+Pairings whose mixed rows run (8): 0,1,2,3,4,5,6,7

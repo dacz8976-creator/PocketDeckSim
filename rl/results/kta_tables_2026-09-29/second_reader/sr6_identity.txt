@@ -1,0 +1,32 @@
+program deckgym: /home/dacz8976/engine-kt-ec7e1a8/engine/target/release/deckgym sha256 407976366fa2104ee1f2663c94fe31b1c503466defe9d6154b7e60659cb0991c = registered: True
+program legality_scan: /home/dacz8976/engine-kt-ec7e1a8/engine/target/release/examples/legality_scan sha256 924751ba0926993eaee87ecc8fb8301ffd0b7eee8490bfb3369427794328f938 = registered: True
+program tool_census: /home/dacz8976/engine-kt-ec7e1a8/engine/target/release/examples/tool_census sha256 d9799c96015f74b952889a7f7d9820bbc12d5d97e4d267ad8acc2b63cdcc720b = registered: True
+recorded inputs (ec7e1a8_fresh_inputs.sha256): 75 equal now, 0 differ or missing []
+game files hashed now against coverage_skip.txt / the score45 record: 16 of 16 equal; differ: none
+identity kog3 table        : 560 of 560 equal on 15 fields (i < 20; bots [('kog3', 'kog3')])
+identity kog3 new17        : 340 of 340 equal on 15 fields (i < 20; bots [('kog3', 'kog3')])
+identity kog3 Scizor       : 160 of 160 equal on 15 fields (i < 20; bots [('kog3', 'kog3')])
+identity kog3 B2e          : 1920 of 1920 equal on 15 fields (i < 20; bots [('kog3', 'kog3')])
+identity kog3 v-lucario_2  : 140 of 140 equal on 15 fields (i < 20; bots [('kog3', 'kog3')])
+identity kog3 v-suicune_2  : 140 of 140 equal on 15 fields (i < 20; bots [('kog3', 'kog3')])
+identity kog3 v-weezing_2  : 140 of 140 equal on 15 fields (i < 20; bots [('kog3', 'kog3')])
+identity kog3 l-charizardy : 160 of 160 equal on 15 fields (i < 20; bots [('kog3', 'kog3')])
+identity kog3 (d)          : 160 of 160 equal on 15 fields (i < 20; bots [('kog3', 'kog3')])
+identity kta3 table        : 560 of 560 equal on 15 fields (i < 20; bots [('kta3', 'kta3')])
+identity kta3 new17        : 340 of 340 equal on 15 fields (i < 20; bots [('kta3', 'kta3')])
+identity kta3 Scizor       : 160 of 160 equal on 15 fields (i < 20; bots [('kta3', 'kta3')])
+identity kta3 B2e          : 1920 of 1920 equal on 15 fields (i < 20; bots [('kta3', 'kta3')])
+identity kta3 v-lucario_2  : 140 of 140 equal on 15 fields (i < 20; bots [('kta3', 'kta3')])
+identity kta3 v-suicune_2  : 140 of 140 equal on 15 fields (i < 20; bots [('kta3', 'kta3')])
+identity kta3 v-weezing_2  : 140 of 140 equal on 15 fields (i < 20; bots [('kta3', 'kta3')])
+identity kta3 l-charizardy : 160 of 160 equal on 15 fields (i < 20; bots [('kta3', 'kta3')])
+identity kta3 (d)          : 160 of 160 equal on 15 fields (i < 20; bots [('kta3', 'kog3')])
+identity A/B tool kog3, deck 07 v t-altaria, development block: 240 of 240 equal on every field of the reference row (reference rows 240)
+identity A/B tool kta3, deck 07 v t-altaria, development block: 240 of 240 equal on every field of the reference row (reference rows 240)
+IDENTITY: 7920 games replayed; all equal: True
+timing file ec7e1a8_fresh_timing_1.txt: kog3 79 s wall, 804 s CPU; kta3 91 s wall, 955 s CPU; kta3/kog3 wall 1.15 (limit 1.25: within), CPU 1.19
+timing file ec7e1a8_fresh_timing_kog3_1.time: TIMING 79.107 803.292 0.247
+timing file ec7e1a8_fresh_timing_kta3_1.time: TIMING 90.733 955.036 0.346
+scan pages: 81; pages with a RULE line: none
+legality_scan pages: 52; pages with a finding (any 'games with findings' > 0, or a Findings block other than 'none'): none
+game files without a page beside them: ['ec7e1a8_fresh_trace_rayquaza_lucario_kog3_pergame.jsonl', 'ec7e1a8_fresh_trace_rayquaza_lucario_kta3_pergame.jsonl', 'ec7e1a8_fresh_trace_rayquaza_vespiquen_kog3_pergame.jsonl', 'ec7e1a8_fresh_trace_rayquaza_vespiquen_kta3_pergame.jsonl']

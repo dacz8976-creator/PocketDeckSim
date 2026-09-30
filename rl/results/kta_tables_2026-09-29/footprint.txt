@@ -1,0 +1,21 @@
+FOOTPRINT kta3: 528 of 22500 paired games on the 45 cells differ from kog3's = 2.35% -> reserve route (5.2)
+  (the route is fixed from the counts: under 15% means 100 x 528 < 15 x 22500; the prediction, about 2.5%, never picks it)
+  cells with a changed game: 17 of 45
+    altaria v suicune: 10 of 500
+    altaria_greninja v suicune: 17 of 500
+    blaziken v suicune: 27 of 500
+    hydreigon v suicune: 23 of 500
+    lucario v suicune: 32 of 500
+    rayquaza v altaria: 27 of 500
+    rayquaza v altaria_greninja: 54 of 500
+    rayquaza v blaziken: 23 of 500
+    rayquaza v hydreigon: 31 of 500
+    rayquaza v lucario: 44 of 500
+    rayquaza v sceptile: 50 of 500
+    rayquaza v suicune: 37 of 500
+    rayquaza v vespiquen: 48 of 500
+    rayquaza v weezing: 30 of 500
+    sceptile v suicune: 30 of 500
+    suicune v vespiquen: 31 of 500
+    suicune v weezing: 14 of 500
+ROUTE reserve

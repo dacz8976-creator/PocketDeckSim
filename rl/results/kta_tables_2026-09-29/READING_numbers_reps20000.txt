@@ -1,0 +1,304 @@
+kta's reading (rl/results/kta_2026-09-29/REGISTRATION.md, registered Sept 29 with Dustin's word); files /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/kta_tables_2026-09-29/ec7e1a8_fresh_*
+NOTE: --reps 20000 is above score45's default 4000 (the rerun a bound near a registered line asks for; 5.4). The bounds below are this run's.
+
+1. THE FOOTPRINT (5.1; footprint.txt, read first; it fixes the route):
+   FOOTPRINT kta3: 528 of 22500 paired games on the 45 cells differ from kog3's = 2.35% -> reserve route (5.2)
+   cross-check: the moves fields of the fresh files reproduce footprint.txt's count (528); 113 of those games changed their result.
+   kta3: 528 of 22,500 = 2.3467% (15% is 3,375 games) -> THE RESERVE ROUTE (5.2); decided from the counts, and footprint.txt's own route text agrees.
+   predicted, not chosen (5.1): about 2.5% (development 559 of 22,500 = 2.48%), all in the 17 cells of section 2. The prediction never picks the route.
+   cells with a changed game: 17 of 45: altaria v suicune (10), blaziken v suicune (27), hydreigon v suicune (23), lucario v suicune (32), sceptile v suicune (30), suicune v vespiquen (31), suicune v weezing (14), rayquaza v lucario (44), rayquaza v altaria (27), rayquaza v sceptile (50), rayquaza v vespiquen (48), rayquaza v suicune (37), rayquaza v hydreigon (31), rayquaza v weezing (30), rayquaza v blaziken (23), altaria_greninja v suicune (17), rayquaza v altaria_greninja (54)
+   integrity line (section 4): every changed game sits in the 17 cells whose lists carry a switch-1 card.
+
+1b. PRECONDITIONS (section 4: the programs, identity, timing, RULE findings). The runner stops before any table if one fails; restated here from the disk and its files:
+   deckgym sha256 407976366fa2104ee1f2663c94fe31b1c503466defe9d6154b7e60659cb0991c = the registered hash
+   legality_scan sha256 924751ba0926993eaee87ecc8fb8301ffd0b7eee8490bfb3369427794328f938 = the registered hash
+   tool_census sha256 d9799c96015f74b952889a7f7d9820bbc12d5d97e4d267ad8acc2b63cdcc720b = the registered hash
+   identity: 20 replays, every one equal, 7,920 games (section 4 names 7,920): kog3 (as kog3), 28 table cells, i < 20
+      560; kog3 (as kog3), 17 new cells, i < 20 340; kog3 (as kog3), Scizor, i < 20 160; kog3 (as kog3), B2e, i < 20
+      1,920; kog3 (as kog3), second list v-lucario_2, i < 20 140; kog3 (as kog3), second list v-suicune_2, i < 20 140;
+      kog3 (as kog3), second list v-weezing_2, i < 20 140; kog3 (as kog3), second list l-charizardy, i < 20 160; kog3
+      (as kog3), clause (d) arm, i < 20 160; kta3 (as kta3), 28 table cells, i < 20 560; kta3 (as kta3), 17 new cells,
+      i < 20 340; kta3 (as kta3), Scizor, i < 20 160; kta3 (as kta3), B2e, i < 20 1,920; kta3 (as kta3), second list
+      v-lucario_2, i < 20 140; kta3 (as kta3), second list v-suicune_2, i < 20 140; kta3 (as kta3), second list
+      v-weezing_2, i < 20 140; kta3 (as kta3), second list l-charizardy, i < 20 160; kta3 (as kta3), clause (d) arm, i
+      < 20 160; A/B tool, kog3 (as kog3), deck 07 v t-altaria, development block 240; A/B tool, kta3 (as kta3), deck
+      07 v t-altaria, development block 240
+   timing (ec7e1a8_fresh_timing_1.txt): kog3 79 s wall, 804 s CPU; kta3 91 s wall, 955 s CPU; kta3/kog3 wall 1.15 (limit 1.25: within), CPU 1.19
+   RULE findings: none in the 52 scan pages in the folder (each page beside a file read is checked below).
+
+NOTES: where the registration's text needs a coding, and the one coded (the conservative one where they differ)
+ K1  Frame. The 45-cell block of score45.py gates; its 44-cell decision set (Altaria v Sceptile quarantined) is compared
+     beside on the ΔMSE label, the τ̂ bound and the vetoes that count; a difference is a note and gates nothing (N1).
+ K2  The event-resampled intervals are printed beside and gate nothing; the match-level ones gate (N2, 5.4).
+ K3  (b)'s "no veto counts (including B2e's held-out veto)": the 45-cell rule-v2 vetoes through mixed rows plus the B2e
+     held-out veto (N3). The held-out veto is also section 6 item 7's coverage test, so it is one gate, named "coverage
+     (B2e held-out, part of (b))" when it fails.
+ K4  A held-out veto is own-side harm in the mixed rows alone (the 95% interval wholly below zero) (N4); "more than 2
+     further" without harm is printed as an investigation item.
+ K5  (c): per meta deck, pooled over its cells where kta3's footprint is not zero, both seat orders, worse = the pooled
+     95% interval wholly below zero (N5). A cell whose footprint is zero has mixed rows equal to kog3's games (a pilot's
+     choice is a function of the position): the reading reads them as kog3's games and checks the i<40 sample of both
+     directions that 5.2 (c) runs there (an INTEGRITY line if a sampled game differs). On the ordinary route every cell
+     needs its 500 deals in both directions (5.3), and they are read as run.
+ K6  (d) (5.2 (d)): kta3 on the census Rayquaza list against kog3 on it, kog3 on the panel in both arms, 8 rows x 2,000
+     fresh deals; the equal-weight mean of the per-row mean differences; half-width 1.96 x sqrt(sum of per-row variances
+     of the mean difference) / 8; passes when mean minus half-width is above zero. The per-row share is the row's mean
+     over the sum of the row means (not shown when that sum is not positive); a passing gain more than half of which is
+     one row is said beside the verdict (5.9; gates nothing).
+ K7  The ΔMSE label (5.4). score.py prints the bounds to one decimal. The upper edge is read from its own "below 0",
+     which compares the unrounded bound; the lower edge only as printed: "+0.0" is not called. When no game on the 45
+     cells changed its result, every draw is exactly 0: the interval is the point 0, which spans zero.
+ K8  Near-zero bounds (5.4; N9 extended): a ΔMSE bound within 5% of the interval's width of 0 (either edge) and a τ̂
+     bound within 0.10 of -1.0 are PENDING below --reps 20000; the 20,000-rep rerun (the same games) decides. "Within"
+     is inclusive and is tested in whole units of the printout (a printed -1.10, or -1.9 to +0.1, is within).
+ K9  Coverage mixed rows (top block 3, Dustin's words): a pairing may be skipped only when every one of its deals has
+     kta3's both-sides game equal to kog3's on the move fingerprint, both decks (and deck files), the seed and the seats.
+     The reader checks that itself for every pairing. A skipped pairing counts as no change (its mixed rows are read
+     as kog3's games) and must be named in coverage_skip.txt. A pairing named as skipped whose deals differ, a skipped
+     pairing the report does not name, or a pairing whose deals differ without its mixed rows, holds its coverage test
+     (PENDING, named). A mixed-row game that differs in a pairing whose both-sides games all matched is an INTEGRITY line.
+ K10 Jasmine (5.5): pooled over deck 07's 1,920 games per arm (turns played summed over turns offered summed, the
+     census's denominator, kt_ab_play.py's per-game `plays`); a point value; it reaches 20% when 5 x played >= offered.
+     The guard: kog3's own rate on the same deals at 20% or more counts as not passed. Never offered: not passed.
+ K11 What gates on which ΔMSE label (5.2-5.5, section 6): wholly above zero fails with no fallback; the Jasmine line gates
+     only when the interval spans zero; every other test gates whenever the label does not fail on accuracy. On the
+     ordinary route with the interval wholly below zero, 5.3 names the vetoes, coverage and (d); section 6 items 4-5 name
+     the τ̂ bound and (c) as well, and they are gated (the conservative reading); a verdict that fails only on them says so.
+ K12 Integrity lines (section 4 and N5): a changed game where switch 1 cannot reach, or a mixed-row game that differs
+     where the both-sides games all matched. They hold the reading (HELD), never fail it; the verdict they would allow is
+     printed beside. They are read before anything that decides, the 'wholly above zero' label and every FAIL included
+     (section 4: such a line "holds the reading ... until it is explained"; 5.1 stops on it on the ordinary route), so no
+     verdict, NOT ADOPTED included, is recorded while one is open. A file read without its scan page (4.5) holds the same
+     way until the page is in. --integrity-explained FILE records a human's explanation, printed in full.
+ K13 Preconditions: the programs are hashed here from the disk (deckgym and legality_scan gate; tool_census is reported,
+     since 4.6's --seed-base option gives it its own sha256); identity_check.txt (every replay equal, 7,920 games); the
+     timing line within 1.25x; every scan page in the folder free of RULE findings (a RULE finding STOPs), and every
+     legality_scan file read has its page.
+ K14 Section 5.5's count: every own-side no-harm test with a changed game behind it is counted, and the chance that a
+     harmless candidate trips at least one (1 - 0.975^n) is printed.
+
+
+2. THE 45 CELLS (score45.py --rules v2; kog3 current, kta3 new; paired by deal; fresh deals; kta3's mixed rows).
+   mixed rows, kta3 on the first-named deck: 9,620 games in 4 file(s)
+   mixed rows, kta3 on the second-named deck: 9,620 games in 4 file(s)
+   integrity: every mixed-row game run in a zero-footprint cell equals kog3's moves.
+   page: score45_kta3_vs_kog3.txt (freshly scored, --reps 20000); mixed rows given to score45: ec7e1a8_fresh_kta3_mixed_first_composite.jsonl, ec7e1a8_fresh_kta3_mixed_second_composite.jsonl (the runner's games in the cells it ran; kog3's in a zero-footprint cell, K5)
+   real error on the 45 cells: kog3 13.6 -> kta3 13.4  (kog3's own figure on the fresh deals replicates the development 14.0: printed beside, 5.4)
+   ΔMSE (kta3 minus kog3): -4.3 points^2, 95% interval -8.8 to +0.0; by event (beside): -8.9 to +0.3
+   LABEL (RUN5's three outcomes): SPANS zero (outcome 3: inconclusive at this size; the fallback)
+     the upper bound is near 0; this --reps 20000 run is the decisive one
+   detectable size (5.4, RUN5): the interval's sd 2.2; MDE50 (1.96 sd) 4.4 points^2, as real error 13.60 -> 13.44; MDE80 (2.80 sd) 6.3, as real error 13.60 -> 13.37 (real error after = sqrt(kog3's^2 - δ), the eval-power check's conversion)
+   τ̂ margin (kog3 minus kta3): +0.16, 90% interval +0.02 to +0.25; by event (beside) +0.01 to +0.25; sd 0.070: (b) fails half the time only if the true margin is near -0.89 or worse (a guard, not a measurement). Read as no harm only: a positive margin 'replicates on the simulator side' and is never credited as accuracy (3.3).
+   development, for scale (not evidence): ΔMSE -5.9 (95% -11.0 to -1.4), τ̂ margin +0.21 (90% +0.06 to +0.31). score45's own 'ADOPTION RULE' line is the ordinary rule's view and is not read or quoted as an adoption here.
+   rule-v2 vetoes that count or await mixed rows: none
+   investigation items (neither side worse): none; never count (band over +/-15): none
+   NOTE (K1): the 44-cell decision set reads differently: ΔMSE label: 45 cells spans, 44 cells below. The 45-cell block gates.
+
+3. CLAUSE (c), no meta deck's own side worse beyond paired noise: the mixed rows of the cells with a changed game, both directions, 500 deals, pooled per deck (K5).
+             altaria: own side -0.10 +/- 0.20 over 2 cells (1,000 deals; 18 mixed-row games changed)
+    altaria_greninja: own side +0.10 +/- 0.44 over 2 cells (1,000 deals; 43 mixed-row games changed)
+            blaziken: own side +0.00 +/- 0.28 over 2 cells (1,000 deals; 21 mixed-row games changed)
+           hydreigon: own side +0.10 +/- 0.20 over 2 cells (1,000 deals; 18 mixed-row games changed)
+             lucario: own side +0.30 +/- 0.34 over 2 cells (1,000 deals; 39 mixed-row games changed)
+            rayquaza: own side +0.78 +/- 0.33 over 9 cells (4,500 deals; 183 mixed-row games changed)
+            sceptile: own side +0.00 +/- 0.00 over 2 cells (1,000 deals; 1 mixed-row games changed)
+             suicune: own side +0.13 +/- 0.28 over 9 cells (4,500 deals; 197 mixed-row games changed)
+           vespiquen: own side -0.10 +/- 0.34 over 2 cells (1,000 deals; 22 mixed-row games changed)
+             weezing: own side +0.00 +/- 0.00 over 2 cells (1,000 deals; 5 mixed-row games changed)
+
+4. CLAUSE (d), the census Rayquaza list v the eight panel lists: 8 rows x 2,000 fresh deals per arm (seeds 23,003,000,000 + panel index x 10,000 + i), kog3 on the panel in both arms; read once (5.2 (d)).
+   kta3 on the Rayquaza list (side a, seat 0 on even i) against kog3 on it; 862 of 16,000 kta3-arm games differ from kog3's. Per row (5.9, beside the pooled number; each row's share of the pooled sum):
+     v altaria  : kog3  36.3 -> kta3  37.1 (+0.80 +/- 0.41); share +10%; Limitless (census list, pooled) 49.7
+     v blaziken : kog3  30.0 -> kta3  30.4 (+0.40 +/- 0.27); share +5%; Limitless (census list, pooled) 43.5
+     v hydreigon: kog3  27.3 -> kta3  28.2 (+0.90 +/- 0.46); share +11%; Limitless (census list, pooled) 40.0
+     v lucario  : kog3  38.6 -> kta3  39.1 (+0.50 +/- 0.34); share +6%; Limitless (census list, pooled) 63.7
+     v sceptile : kog3  17.4 -> kta3  18.1 (+0.70 +/- 0.54); share +8%; Limitless (census list, pooled) 43.1
+     v suicune  : kog3  27.1 -> kta3  28.5 (+1.40 +/- 0.57); share +17%; Limitless (census list, pooled) 40.7
+     v vespiquen: kog3  24.9 -> kta3  27.7 (+2.85 +/- 0.86); share +35%; Limitless (census list, pooled) 53.9
+     v weezing  : kog3  17.1 -> kta3  17.8 (+0.70 +/- 0.50); share +8%; Limitless (census list, pooled) 35.7
+   pooled over 8 rows (16,000 deals per arm): +1.03 +/- 0.18 points -> a GAIN: the whole 95% interval is above zero
+   detectable size: sd 0.094; MDE50 (1.96 sd) 0.18 points, MDE80 (2.80 sd) 0.26 points (registered estimate at 2,000: half-width about 0.195, MDE50 about 0.20, MDE80 about 0.28). Development, for scale: +1.00 +/- 0.39 at 500 deals, Vespiquen +3.8 about half of it.
+   (census Limitless, equal-weight over the eight, pooled: 46.3 +/- 4.8 over 606 matches; the figures above are the simulator's on that list, reported, gating nothing)
+
+5. COVERAGE (5.5; RUN5 'How coverage rows count': own-side harm in the mixed rows is a veto that blocks the takeover; accuracy is reported). Mixed rows only where kta3's both-sides games differ (K9).
+   coverage_skip.txt: in; it names b2e 84 skipped / 12 run, new17 7 skipped / 10 run, scizor 0 skipped / 8 run, table 21 skipped / 7 run, var_l-charizardy 7 skipped / 1 run, var_v-lucario_2 6 skipped / 1 run, var_v-suicune_2 7 skipped / 0 run, var_v-weezing_2 6 skipped / 1 run
+
+   5a. B2e (96 pairings; the held-out archetypes 0-47 count, Dustin's files 48-95 are reported):
+     b2e: 253 both-sides games differ, in 12 of 96 pairings; own-side rows: 12 run, 84 skipped as unchanged
+     A_archetype charizardy_entei         kog3  47.0 -> kta3  47.0; Limitless  49.2; further by +0.0 (accuracy reported)
+     A_archetype garchomp                 kog3  20.6 -> kta3  20.6; Limitless  32.5; further by +0.0 (accuracy reported)
+     A_archetype hoopa_absol              kog3  55.9 -> kta3  55.8; Limitless  50.0; further by -0.0 (accuracy reported)
+     A_archetype manectric                kog3  62.3 -> kta3  62.3; Limitless  49.2; further by -0.0 (accuracy reported)
+     A_archetype raticate                 kog3  56.2 -> kta3  56.3; Limitless  41.2; further by +0.1 (accuracy reported)
+     A_archetype whimsicott               kog3  35.8 -> kta3  35.8; Limitless  32.3; further by -0.0 (accuracy reported)
+     B_dustin dustin_charizardy_entei  kog3  54.4 -> kta3  54.4; Limitless  49.2; further by +0.0 (accuracy reported)
+     B_dustin dustin_garchomp          kog3  25.2 -> kta3  25.3; Limitless  32.5; further by -0.1 (accuracy reported)
+     B_dustin dustin_hoopa_absol       kog3  33.0 -> kta3  32.9; Limitless  50.0; further by +0.1 (accuracy reported)
+     B_dustin dustin_manectric         kog3  60.1 -> kta3  60.2; Limitless  49.2; further by +0.1 (accuracy reported)
+     B_dustin dustin_raticate          kog3  55.6 -> kta3  55.7; Limitless  41.2; further by +0.1 (accuracy reported)
+     B_dustin dustin_whimsicott        kog3  28.6 -> kta3  28.5; Limitless  32.3; further by +0.1 (accuracy reported)
+     own side in the mixed rows (kta3 on the held deck, kog3 on the panel, against kog3 on both; a skipped pairing is no change):
+     A_archetype manectric                own side +0.00 +/- 0.00 over 8 rows (0 changed); further by -0.0 -> no harm
+     A_archetype raticate                 own side +0.00 +/- 0.00 over 8 rows (1 changed); further by +0.1 -> no harm
+     A_archetype hoopa_absol              own side +0.00 +/- 0.00 over 8 rows (1 changed); further by -0.0 -> no harm
+     A_archetype garchomp                 own side -0.03 +/- 0.05 over 8 rows (5 changed); further by +0.0 -> no harm
+     A_archetype whimsicott               own side +0.00 +/- 0.00 over 8 rows (4 changed); further by -0.0 -> no harm
+     A_archetype charizardy_entei         own side +0.00 +/- 0.00 over 8 rows (0 changed); further by +0.0 -> no harm
+     B_dustin dustin_manectric         own side +0.00 +/- 0.00 over 8 rows (0 changed); further by +0.1 -> reported (Dustin's file)
+     B_dustin dustin_raticate          own side +0.00 +/- 0.00 over 8 rows (1 changed); further by +0.1 -> reported (Dustin's file)
+     B_dustin dustin_hoopa_absol       own side +0.00 +/- 0.00 over 8 rows (2 changed); further by +0.1 -> reported (Dustin's file)
+     B_dustin dustin_garchomp          own side +0.05 +/- 0.07 over 8 rows (5 changed); further by -0.1 -> reported (Dustin's file)
+     B_dustin dustin_whimsicott        own side +0.00 +/- 0.00 over 8 rows (6 changed); further by +0.1 -> reported (Dustin's file)
+     B_dustin dustin_charizardy_entei  own side +0.00 +/- 0.00 over 8 rows (1 changed); further by +0.0 -> reported (Dustin's file)
+   B2e held-out veto: none  (K4: harm but not more than 2 further: none; more than 2 further but no harm: none)
+
+   The held-out direction (RUN5, Sept 29; reported beside every verdict, gates nothing):
+   charizardy_entei             kog3  47.0 -> kta3  47.0; Limitless  49.2; miss  2.2 ->  2.2; change in miss +0.00 (unchanged)
+   garchomp                     kog3  20.6 -> kta3  20.6; Limitless  32.5; miss 11.9 -> 11.9; change in miss +0.02 (further)
+   hoopa_absol                  kog3  55.9 -> kta3  55.8; Limitless  50.0; miss  5.9 ->  5.9; change in miss -0.05 (closer)
+   manectric                    kog3  62.3 -> kta3  62.3; Limitless  49.2; miss 13.1 -> 13.1; change in miss -0.03 (closer)
+   raticate                     kog3  56.2 -> kta3  56.3; Limitless  41.2; miss 15.0 -> 15.1; change in miss +0.08 (further)
+   whimsicott                   kog3  35.8 -> kta3  35.8; Limitless  32.3; miss  3.5 ->  3.4; change in miss -0.02 (closer)
+   held-out direction: 3 closer, 2 further, 1 unchanged, mean change in miss +0.00 (reported, gates nothing)
+   Dustin's files (48-95), beside, not in the line above:
+   dustin_charizardy_entei      kog3  54.4 -> kta3  54.4; Limitless  49.2; miss  5.2 ->  5.2; change in miss +0.00 (unchanged)
+   dustin_garchomp              kog3  25.2 -> kta3  25.3; Limitless  32.5; miss  7.4 ->  7.3; change in miss -0.12 (closer)
+   dustin_hoopa_absol           kog3  33.0 -> kta3  32.9; Limitless  50.0; miss 17.0 -> 17.1; change in miss +0.07 (further)
+   dustin_manectric             kog3  60.1 -> kta3  60.2; Limitless  49.2; miss 10.9 -> 11.0; change in miss +0.08 (further)
+   dustin_raticate              kog3  55.6 -> kta3  55.7; Limitless  41.2; miss 14.4 -> 14.5; change in miss +0.10 (further)
+   dustin_whimsicott            kog3  28.6 -> kta3  28.5; Limitless  32.3; miss  3.8 ->  3.8; change in miss +0.07 (further)
+   Dustin's files: 1 closer, 4 further, 1 unchanged, mean change in miss +0.03 (reported, gates nothing)
+   (development, kta3: all six held-out decks within 0.1 point.)
+
+   5b. The Scizor row (8 rows x 500; own side = kta3 on Scizor, kog3 on the panel list, against kog3 on both):
+     scizor: 1,227 both-sides games differ, in 8 of 8 pairings; own-side rows: 8 run, 0 skipped as unchanged
+     Scizor's panel average, both sides: kog3 31.5 -> kta3 31.1 (reported; Scizor's real figure 32.2 +/- 10.2 pooled; gates nothing)
+     own side: -0.45 +/- 0.65 over 8 rows (1007 changed) -> no harm
+     the other direction (kta3 on the panel list, kog3 on Scizor), the panel's side over 8 run rows: -0.11 +/- 0.28 (reported only)
+
+   5c. The four second lists (own side = kta3 on the list, kog3 on the other deck, against kog3 on both; accuracy reported):
+     var_v-lucario_2: 33 both-sides games differ, in 1 of 7 pairings; own-side rows: 1 run, 6 skipped as unchanged
+     v-lucario_2   opponent average kog3  55.3 -> kta3  55.4; figure  50.4 (development half, the same opponents); further by +0.1 (reported); own side (mixed) +0.06 +/- 0.08 over 7 rows (7 changed) -> no harm
+     var_v-suicune_2: 0 both-sides games differ, in 0 of 7 pairings; own-side rows: 0 run, 7 skipped as unchanged
+     v-suicune_2   opponent average kog3  52.4 -> kta3  52.4; figure  47.1 (development half, the same opponents); further by +0.0 (reported); own side (mixed) +0.00 +/- 0.00 over 7 rows (0 changed) -> no harm
+     var_v-weezing_2: 11 both-sides games differ, in 1 of 7 pairings; own-side rows: 1 run, 6 skipped as unchanged
+     v-weezing_2   opponent average kog3  56.4 -> kta3  56.3; figure  43.8 (development half, the same opponents); further by -0.1 (reported); own side (mixed) +0.00 +/- 0.00 over 7 rows (1 changed) -> no harm
+     var_l-charizardy: 2 both-sides games differ, in 1 of 8 pairings; own-side rows: 1 run, 7 skipped as unchanged
+     l-charizardy  opponent average kog3  40.2 -> kta3  40.1; figure  49.2 (B2e pooled, charizardy_entei); further by +0.0 (reported); own side (mixed) +0.00 +/- 0.00 over 8 rows (0 changed) -> no harm
+
+   5.5's count: 21 own-side no-harm tests ((c) per deck, B2e held-out, Scizor, second lists); 17 have a changed game behind them; the chance a harmless candidate trips at least one of those: 1 - 0.975^17 = 0.350.
+
+6. THE DUSTIN-DECK A/B, fresh (5.6; reported, gating nothing except through the Jasmine line, which gates only in the fallback). kog3 on the opponent's seat in both arms; paired by (opponent, seat, seed).
+   deck 07: kog3  48.0% -> kta3  56.1%; paired +8.1 points (+6.2 to +10.0); McNemar p 0.000 (259 / 103); moves differ 83.8%
+     Jasmine: kog3 played 34 of 8,707 offered turns (0.4%); kta3 played 1,738 of 5,544 offered turns (31.3%)
+     Metal Core Barrier: kog3 played 2,396 of 3,109 offered turns (77.1%), attached 2400, on a qualifying holder 1948 (81%); kta3 played 2,391 of 3,712 offered turns (64.4%), attached 2396, on a qualifying holder 1931 (81%)
+     Steel Apron: kog3 played 1,283 of 1,751 offered turns (73.3%), attached 1283, on a qualifying holder 1100 (86%); kta3 played 1,296 of 1,497 offered turns (86.6%), attached 1296, on a qualifying holder 1213 (94%)
+   deck 05: kog3  27.2% -> kta3  29.6%; paired +2.3 points (+1.4 to +3.3); McNemar p 0.000 (64 / 19); moves differ 20.3%
+   deck 11: kog3  13.5% -> kta3  13.5%; paired +0.0 points (+0.0 to +0.0); McNemar p 1.000 (0 / 0); moves differ 0.3%
+   deck 01: kog3  15.3% -> kta3  16.3%; paired +1.0 points (+0.1 to +2.0); McNemar p 0.049 (57 / 37); moves differ 43.7%
+     Heavy Helmet: kog3 played 1,624 of 1,888 offered turns (86.0%), attached 1624, on a qualifying holder 754 (46%); kta3 played 1,638 of 1,855 offered turns (88.3%), attached 1638, on a qualifying holder 1107 (68%)
+   deck 03: kog3  62.2% -> kta3  61.8%; paired -0.5 points (-2.0 to +1.0); McNemar p 0.582 (101 / 110); moves differ 66.1%
+     Heavy Helmet: kog3 played 2,917 of 4,354 offered turns (67.0%), attached 2922, on a qualifying holder 2202 (75%); kta3 played 2,880 of 4,015 offered turns (71.7%), attached 2961, on a qualifying holder 2496 (84%)
+   Predictions written before the games (reported; a wrong-direction move beyond its interval is a finding to write down, not a gate that fired): Metal Core Barrier on a qualifying holder unchanged (development 80% against 79%); Steel Apron 70.8% -> 84.7%, Heavy Helmet 86.6% -> 90.2% (deck 01), 68.7% -> 73.4% (deck 03); Jasmine 'well below the flat +10's 82%'.
+   JASMINE LINE (5.5): kta3 1,738 of 5,544 = 31.35% reaches 20%; guard: kog3 34 of 8,707 = 0.39%, below 20%. Development: kog3 0.4% (36 of 8,597), kta3 30.2% (1,711 of 5,669).
+   deck 07 (the reason the candidate exists; development +8.5, +6.7 to +10.4): +8.1 points (+6.2 to +10.0) -> REPLICATED on fresh deals (reported; it isn't the gate)
+   The counters (4.6; reported, gate nothing). Stiffen played per offered turn, predicted to rise (development kog3 45.7%, 58 of 127 -> kta3 55.3%, 84 of 152; the interval is wide, about +/-12 points, so a miss reads 'not shown at this size'):
+     not in yet (reported only; holds nothing)
+   The Rayquaza traces (5.5; reported only, gate nothing): the census list in seat 0, 200 games per arm on the same seeds, kta3 then kog3 on Rayquaza, kog3 on the other side; Scorching Interruption: no prediction. Development (v Lucario, the scoreboard's list): offered 220 and used 151 under kta3, 223 and 150 under kog3; wins 60 and 59.
+     v lucario: Scorching Interruption turns offered / used: kta3 262 / 176, kog3 262 / 173; Rayquaza's wins: kta3 80, kog3 79 of 200; games whose moves differ: 3 of 200
+       the first decision that differs, by kind (kta3's choice), over those games: Attach 3
+       in detail (kta3's choice / kog3's at the same ply): Attach / Attach: 3
+     v vespiquen: Scorching Interruption turns offered / used: kta3 279 / 150, kog3 262 / 121; Rayquaza's wins: kta3 62, kog3 53 of 200; games whose moves differ: 29 of 200
+       the first decision that differs, by kind (kta3's choice), over those games: Attack 15, Attach 14
+       in detail (kta3's choice / kog3's at the same ply): Attack Scorching Interruption / EndTurn: 8; Attach / Attach: 8; Attack Scorching Interruption / UseStadium: 6; Attach / Play Small Balloon: 2; Attach / UseStadium: 2; Attach / UseAbility Dragonair: 2; Attack Scorching Interruption / UseAbility Dragonair: 1
+
+7. REPORTED BESIDE (these gate nothing).
+
+   7a. Suicune (Dustin, Sept 28: reported beside; the same direction as Rayquaza is supporting evidence, the other a finding to write down, not a gate that fired). Its real cells, before and after:
+   Suicune's nine real cells (its own score; Limitless development half; miss = |sim - Limitless|):
+     suicune v altaria           kog3  44.8 kta3  44.6 | Limitless  43.8 +/- 12.1 (n 65) | miss  1.0 ->  0.8
+     suicune v blaziken          kog3  39.5 kta3  39.5 | Limitless  35.7 +/- 20.5 (n 21) | miss  3.8 ->  3.8
+     suicune v hydreigon         kog3  52.2 kta3  52.4 | Limitless  70.0 +/- 15.2 (n 35) | miss 17.8 -> 17.6
+     suicune v lucario           kog3  45.4 kta3  45.0 | Limitless  41.2 +/- 10.5 (n 85) | miss  4.2 ->  3.8
+     suicune v sceptile          kog3  37.6 kta3  38.6 | Limitless  50.0 +/- 13.6 (n 52) | miss 12.4 -> 11.4
+     suicune v vespiquen         kog3  47.8 kta3  47.8 | Limitless  28.5 +/- 10.4 (n 72) | miss 19.3 -> 19.3
+     suicune v weezing           kog3  58.0 kta3  58.2 | Limitless  60.3 +/- 15.4 (n 39) | miss  2.3 ->  2.1
+     suicune v rayquaza          kog3  73.6 kta3  73.2 | Limitless  64.3 +/- 17.7 (n 28) | miss  9.3 ->  8.9
+     suicune v altaria_greninja  kog3  66.4 kta3  66.8 | Limitless  46.1 +/- 15.8 (n 38) | miss 20.3 -> 20.7
+      equal-weight average over 9 cells: kog3  51.7 kta3  51.8 | Limitless  48.9 | miss  2.8 ->  2.9
+   Suicune's own side in the mixed rows: nine rows +0.13 +/- 0.28 (4,500 deals); the table's seven +0.09 +/- 0.31 (development -0.00 +/- 0.25 and +0.06 +/- 0.30)
+        Suicune v altaria           -0.20 +/- 0.39
+        Suicune v blaziken          -0.20 +/- 0.68
+        Suicune v hydreigon         +0.20 +/- 0.68
+        Suicune v lucario           -0.40 +/- 0.96
+        Suicune v sceptile          +1.00 +/- 0.87
+        Suicune v vespiquen         +0.00 +/- 1.24
+        Suicune v weezing           +0.20 +/- 0.68
+        Suicune v rayquaza          +0.20 +/- 0.88
+        Suicune v altaria_greninja  +0.40 +/- 0.96
+
+   7b. Rayquaza's real cells (the scoreboard's list; they count in the 45 cells like any other), before and after:
+   Rayquaza's nine real cells (its own score; Limitless development half; miss = |sim - Limitless|):
+     rayquaza v lucario           kog3  35.4 kta3  36.0 | Limitless  73.3 +/- 11.4 (n 58) | miss 37.9 -> 37.3
+     rayquaza v altaria           kog3  36.8 kta3  38.2 | Limitless  47.1 +/- 10.5 (n 86) | miss 10.3 ->  8.9
+     rayquaza v sceptile          kog3  16.0 kta3  16.6 | Limitless  45.0 +/- 13.8 (n 50) | miss 29.0 -> 28.4
+     rayquaza v vespiquen         kog3  28.4 kta3  29.2 | Limitless  61.1 +/- 15.9 (n 36) | miss 32.7 -> 31.9
+     rayquaza v suicune           kog3  26.4 kta3  26.8 | Limitless  35.7 +/- 17.7 (n 28) | miss  9.3 ->  8.9
+     rayquaza v hydreigon         kog3  26.4 kta3  27.2 | Limitless  35.0 +/- 20.9 (n 20) | miss  8.6 ->  7.8
+     rayquaza v weezing           kog3  22.4 kta3  23.8 | Limitless  20.0 +/- 20.2 (n 15) | miss  2.4 ->  3.8
+     rayquaza v blaziken          kog3  29.0 kta3  28.8 | Limitless  50.0 +/- 34.6 (n 8) | miss 21.0 -> 21.2
+     rayquaza v altaria_greninja  kog3  38.6 kta3  39.0 | Limitless  52.8 +/- 16.3 (n 36) | miss 14.2 -> 13.8
+      equal-weight average over 9 cells: kog3  28.8 kta3  29.5 | Limitless  46.7 | miss 17.8 -> 17.2
+   The census list's cells against the eight are in section 4 (census Limitless pooled 46.3 +/- 4.8 over 606 matches).
+
+   7c. Deck averages over the 45 cells (score45's rows; current / new / Limitless; change in miss, + = further). Hydreigon's gap: development 7.3 -> 7.1:
+               altaria: kog3  55.0 -> kta3  54.8; Limitless  54.5; gap  0.5 ->  0.3 (-0.1)
+              blaziken: kog3  58.4 -> kta3  58.5; Limitless  52.3; gap  6.1 ->  6.2 (+0.0)
+             hydreigon: kog3  51.3 -> kta3  51.2; Limitless  43.9; gap  7.4 ->  7.3 (-0.1)
+               lucario: kog3  52.7 -> kta3  52.7; Limitless  45.6; gap  7.1 ->  7.1 (-0.0)
+              sceptile: kog3  61.3 -> kta3  61.2; Limitless  49.0; gap 12.3 -> 12.2 (-0.2)
+               suicune: kog3  51.7 -> kta3  51.8; Limitless  48.9; gap  2.8 ->  2.9 (+0.1)
+             vespiquen: kog3  47.8 -> kta3  47.7; Limitless  52.7; gap  4.9 ->  5.0 (+0.1)
+               weezing: kog3  50.2 -> kta3  50.0; Limitless  48.5; gap  1.7 ->  1.5 (-0.2)
+
+8. WHICH CONDITION CARRIED THE VERDICT (5.8; Dustin's column, not a rule): each condition, its result, the changed games behind it.
+   (a) footprint under 15%          reserve                528 of 22,500 both-sides games on the 45 cells
+   ΔMSE label (5.4)                 spans                  the same 528 games, 113 of them with a changed result
+   (b) no harm on the 45 cells      PASS/PASS              528 both-sides games; 547 mixed-row games
+   (c) no meta deck worse           PASS                   547 mixed-row games changed on the 45 cells, both directions
+   coverage: B2e held-out           PASS                   253 both-sides games; 26 own-side mixed-row games
+   coverage: Scizor                 PASS                   1,227 both-sides games; 1,007 own-side mixed-row games
+   coverage: second lists           PASS                   46 both-sides games; 8 own-side mixed-row games
+   (d) the gain on Rayquaza         PASS                   862 of 16,000 kta3-arm games differ
+   Jasmine on deck 07               PASS (gates)           1,608 of 1,920 deck-07 games differ
+   'No harm with almost no changed games' is the reserve route working as designed and says little; the informative parts are the gain on the pre-named deck and the mechanism.
+
+9. VERDICT (the registration's section 6, read from the numbers above).
+   route: the reserve route (5.2); ΔMSE label: SPANS zero (outcome 3: inconclusive at this size; the fallback)
+     PASS               (b) τ̂ margin (kog3 minus kta3) 90% lower bound at -1.0 or above: +0.02 (margin +0.16, interval +0.02 to +0.25; by event +0.01 to +0.25)
+     PASS               (b) no rule-v2 veto counts on the 45 cells: none counts
+     PASS               (c) no meta deck's own side worse beyond paired noise: 17 cells with a changed game read, no deck worse
+     PASS               (d) Rayquaza's pooled own-side gain, whole 95% interval above zero: +1.03 +/- 0.18 points pooled over 8 rows x 2,000
+     PASS               coverage (B2e held-out, part of (b)): no held-out deck's own side hurt: no held-out deck's own side worse (harm but not more than 2 further: none; more than 2 further but no harm: none)
+     PASS               coverage: Scizor's own side not hurt: Scizor own side -0.45 +/- 0.65
+     PASS               coverage: no second list's own side hurt: no second list's own side worse beyond noise
+     PASS               Jasmine on deck 07: at least 20% of offered turns, with the kog3 guard (the fallback only): kta3 1,738 of 5,544 = 31.35% reaches 20%; guard: kog3 34 of 8,707 = 0.39%, below 20%
+     PASS               every file read has its scan page (section 4.5): 32 files, each with its page; no RULE finding
+     PASS               integrity lines (section 4, K12): none: every changed game sits where switch 1 reaches, and no mixed-row game differs where the both-sides games all matched
+
+   => kta3 is ADOPTED as the working pilot, 'unconfirmed' (section 6): the ΔMSE interval spans zero ('inconclusive at this size') and the fallback's four tests all held: no harm, the coverage decks, (d) on Rayquaza and the Jasmine line.
+      Confirmation is the no-harm re-check at the post-freeze pull (5.7): τ̂ margin 90% lower bound at -1.0 or above on post-freeze events alone, and no veto.
+      It joins the post-freeze list by a commit to rl/results/postfreeze_2026-09-27/README.md before that data is opened (5.7). An engine switch (RUN5's procedure) must carry the preset, and settle the name clash with the official program's kp-based 'kta3', before the screen or the floor use it (section 4, 'Pinning').
+   Beside the verdict (5.6): deck 07's fresh A/B replicates the reason the candidate exists (+8.1 points, +6.2 to +10.0). It isn't the gate.
+
+   THE OUTCOMES THE REGISTRATION FIXES (section 6):
+     - Adopted only if every applicable test holds: identity (section 4, timing, RULE-free pages, a clean integrity line), (a) or the ordinary rule's form, ΔMSE not wholly above zero, (b), (c), (d), coverage, and the Jasmine line only when the ΔMSE interval spans zero; (e) for the screen and the table together.
+     - Not adopted if any that applies fails: kog stays the working pilot; the reading names the test that failed (harm, coverage, gain, mechanism, or accuracy-worsening) and never records an accuracy negative for an inconclusive result.
+     - Unchanged by this registration: kt3's 'not adopted, as registered' stands; kt3, ktb3 and ktc3 are not run. A spec change after any reading is a new code. This registration offers no second fresh round on the same spec.
+
+   WHAT STAYS PROVISIONAL, whatever the numbers say:
+     - Confirmation at the post-freeze pull (5.7): an adopted kta is the working pilot 'unconfirmed'. The check is read once, at 804 panel matches and 303 on the new cells, or at the last pull before Mega Garchomp ex, with the size printed; Rayquaza's and Suicune's post-freeze real cells are reported. A failed check reads 'not confirmed at this size'.
+     - The lapse clause (kt item 6): kta carries kog's A and F; until kog's row (and kpg's and koa's) has passed, kta is not confirmed even if its own check passes.
+     - What no number here can show (section 7 item 10): that kta plays closer to the real game. The real side of the 45 cells is the development half that kta3 was chosen against (3.3).
+     - The second reader (RUN5 tier 1) and an outcome audit against the registration are still owed; this is the laptop's first reader.
+     - The footprint is committed alone before the rest is read (5.1); an adoption needs an engine switch before the screen or the floor use kta (section 4, 'Pinning').

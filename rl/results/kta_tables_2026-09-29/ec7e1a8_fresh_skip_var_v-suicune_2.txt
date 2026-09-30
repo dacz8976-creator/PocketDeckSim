@@ -1,0 +1,19 @@
+COVERAGE SHORTCUT, var_v-suicune_2
+Rule: "For coverage, skip mixed rows only when every corresponding deal has matching complete move fingerprints, decks, seeds and seats. Matching winners alone is insufficient." (Dustin, Sept 29; REGISTRATION.md top block, item 3)
+Compared deal by deal, on the deal key (pairing, i): moves, a, b, a_file, b_file, seed, first_seat (moves = the complete move fingerprint; a, b, a_file, b_file = both decks; seed; first_seat = the seats).
+A pairing is skipped only when every one of its deals is equal on all of them. winner_seat is not a criterion.
+kog3 both sides: /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/kta_tables_2026-09-29/ec7e1a8_fresh_var_v-suicune_2_kog3.jsonl (3500 games, sha256 65ba863f8369572a000e1a0dae975c70b503409992826cfc60ea9f73d06d2e2f)
+kta3 both sides: /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/kta_tables_2026-09-29/ec7e1a8_fresh_var_v-suicune_2_kta3.jsonl (3500 games, sha256 abf150fdc746434cfb0dffe468e70f6ae4863a65d844802552012da042a5aaa4)
+7 pairings x 500 deals.
+Coverage (5.5): the own-side mixed rows run on every pairing listed RUN.
+
+SKIP var_v-suicune_2 4: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (altaria v v-suicune_2): its mixed rows are skipped
+SKIP var_v-suicune_2 10: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (blaziken v v-suicune_2): its mixed rows are skipped
+SKIP var_v-suicune_2 15: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (hydreigon v v-suicune_2): its mixed rows are skipped
+SKIP var_v-suicune_2 19: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (lucario v v-suicune_2): its mixed rows are skipped
+SKIP var_v-suicune_2 22: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (sceptile v v-suicune_2): its mixed rows are skipped
+SKIP var_v-suicune_2 25: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (v-suicune_2 v vespiquen): its mixed rows are skipped
+SKIP var_v-suicune_2 26: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (v-suicune_2 v weezing): its mixed rows are skipped
+
+Skipped pairings (7): 4,10,15,19,22,25,26
+Pairings whose mixed rows run (0): none

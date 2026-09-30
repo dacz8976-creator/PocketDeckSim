@@ -1,0 +1,39 @@
+COVERAGE SHORTCUT, re-verified deal by deal (moves, a, b, a_file, b_file, seed, first_seat; winners not used)
+               table: 28 pairings; 167 both-sides games differ; mine skip 21 / run 7 [4, 10, 15, 19, 22, 25, 26]; coverage_skip.txt names the same skips and runs: True
+               new17: 17 pairings; 361 both-sides games differ; mine skip 7 / run 10 [8, 9, 10, 11, 12, 13, 14, 15, 20, 24]; coverage_skip.txt names the same skips and runs: True
+              scizor: 8 pairings; 1227 both-sides games differ; mine skip 0 / run 8 [0, 1, 2, 3, 4, 5, 6, 7]; coverage_skip.txt names the same skips and runs: True
+                 b2e: 96 pairings; 253 both-sides games differ; mine skip 84 / run 12 [4, 12, 20, 28, 36, 44, 52, 60, 68, 76, 84, 92]; coverage_skip.txt names the same skips and runs: True
+     var_v-lucario_2: 7 pairings; 33 both-sides games differ; mine skip 6 / run 1 [19]; coverage_skip.txt names the same skips and runs: True
+     var_v-suicune_2: 7 pairings; 0 both-sides games differ; mine skip 7 / run 0 []; coverage_skip.txt names the same skips and runs: True
+     var_v-weezing_2: 7 pairings; 11 both-sides games differ; mine skip 6 / run 1 [26]; coverage_skip.txt names the same skips and runs: True
+    var_l-charizardy: 8 pairings; 2 both-sides games differ; mine skip 7 / run 1 [44]; coverage_skip.txt names the same skips and runs: True
+  mixed rows b2e: pairings [4, 12, 20, 28, 36, 44, 52, 60, 68, 76, 84, 92] (kta3 on side a); exactly the pairings that must run: True
+  mixed rows scizor: pairings [0, 1, 2, 3, 4, 5, 6, 7] (kta3 on side a); exactly the pairings that must run: True
+  mixed rows var_v-lucario_2: pairings [19] (kta3 on side a); exactly the pairings that must run: True
+  mixed rows var_v-weezing_2: pairings [26] (kta3 on side b); exactly the pairings that must run: True
+  mixed rows var_l-charizardy: pairings [44] (kta3 on side a); exactly the pairings that must run: True
+  var_v-suicune_2: no pairing must run (mine: []); no mixed file exists: consistent
+INTEGRITY (coverage): changed pairings outside section 2's reach: {'scizor': [], 'b2e': [], 'var_v-lucario_2': [], 'var_v-weezing_2': [], 'var_l-charizardy': [], 'var_v-suicune_2': []}; all clean: True
+  (B2e pairings 4, 12, ..., 92 are the held decks v the panel's Suicune: True)
+B2e held-out (0-47 count; 48-95 Dustin's, reported). Own side = kta3 on the held deck (side a), kog3 on the panel:
+  A_archetype manectric                own side +0.000 +/- 0.000 over 8 rows (0 changed); both sides kog3 62.32 -> kta3 62.30; Limitless 49.20 (csv score_pct mean 49.20); change in miss -0.025
+  A_archetype raticate                 own side +0.000 +/- 0.000 over 8 rows (1 changed); both sides kog3 56.25 -> kta3 56.33; Limitless 41.19 (csv score_pct mean 41.20); change in miss +0.075
+  A_archetype hoopa_absol              own side +0.000 +/- 0.000 over 8 rows (1 changed); both sides kog3 55.86 -> kta3 55.81; Limitless 49.94 (csv score_pct mean 49.95); change in miss -0.050
+  A_archetype garchomp                 own side -0.025 +/- 0.049 over 8 rows (5 changed); both sides kog3 20.64 -> kta3 20.61; Limitless 32.55 (csv score_pct mean 32.54); change in miss +0.025
+  A_archetype whimsicott               own side +0.000 +/- 0.000 over 8 rows (4 changed); both sides kog3 35.80 -> kta3 35.77; Limitless 32.31 (csv score_pct mean 32.33); change in miss -0.025
+  A_archetype charizardy_entei         own side +0.000 +/- 0.000 over 8 rows (0 changed); both sides kog3 47.01 -> kta3 47.01; Limitless 49.19 (csv score_pct mean 49.20); change in miss +0.000
+     B_dustin dustin_manectric         own side +0.000 +/- 0.000 over 8 rows (0 changed); both sides kog3 60.09 -> kta3 60.16; Limitless 49.20 (csv score_pct mean 49.20); change in miss +0.075
+     B_dustin dustin_raticate          own side +0.000 +/- 0.000 over 8 rows (1 changed); both sides kog3 55.60 -> kta3 55.70; Limitless 41.19 (csv score_pct mean 41.20); change in miss +0.100
+     B_dustin dustin_hoopa_absol       own side +0.000 +/- 0.000 over 8 rows (2 changed); both sides kog3 32.96 -> kta3 32.89; Limitless 49.94 (csv score_pct mean 49.95); change in miss +0.075
+     B_dustin dustin_garchomp          own side +0.050 +/- 0.069 over 8 rows (5 changed); both sides kog3 25.15 -> kta3 25.28; Limitless 32.55 (csv score_pct mean 32.54); change in miss -0.125
+     B_dustin dustin_whimsicott        own side +0.000 +/- 0.000 over 8 rows (6 changed); both sides kog3 28.56 -> kta3 28.49; Limitless 32.31 (csv score_pct mean 32.33); change in miss +0.075
+     B_dustin dustin_charizardy_entei  own side +0.000 +/- 0.000 over 8 rows (1 changed); both sides kog3 54.39 -> kta3 54.39; Limitless 49.19 (csv score_pct mean 49.20); change in miss +0.000
+  B2e held-out veto (own-side harm on 0-47): none
+HELD-OUT DIRECTION (six archetypes, gates nothing): 3 closer, 2 further, 1 unchanged; mean change in miss +0.0000
+SCIZOR: own side -0.450 +/- 0.651 over 8 rows (1007 own-side mixed games changed; both-sides changed 1227) -> no harm; Scizor both sides kog3 31.48 -> kta3 31.06; other direction (panel's side, reported) -0.112 +/- 0.278
+SECOND LISTS (own side = kta3 on the list, kog3 on the other deck):
+  v-lucario_2   own side +0.057 +/- 0.079 over 7 rows (7 changed; both-sides changed 33 in 1 pairings) -> no harm; the list's average kog3 55.31 -> kta3 55.43
+  v-suicune_2   own side +0.000 +/- 0.000 over 7 rows (0 changed; both-sides changed 0 in 0 pairings) -> no harm; the list's average kog3 52.37 -> kta3 52.37
+  v-weezing_2   own side +0.000 +/- 0.000 over 7 rows (1 changed; both-sides changed 11 in 1 pairings) -> no harm; the list's average kog3 56.40 -> kta3 56.34
+  l-charizardy  own side +0.000 +/- 0.000 over 8 rows (0 changed; both-sides changed 2 in 1 pairings) -> no harm; the list's average kog3 40.17 -> kta3 40.15
+  second lists with own-side harm: none

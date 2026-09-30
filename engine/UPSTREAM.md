@@ -2,6 +2,10 @@
 
 Upstream: `https://github.com/bcollazo/deckgym-core.git` (`upstream`). Fetched main: `fda48391a4747c7d9085e6a95520b731cee0b546` (2026-08-30). Divergence / merge-base: `8b40f55d889b89634467cca7da153114789ffdf4` (2026-07-30). The accumulated Aug22-and-later fork tree, including B4a, is preserved as `12938ca` on `engine/unified-2026-09-09`.
 
+**The project's first upstream PR: https://github.com/bcollazo/deckgym-core/pull/383** (opened 2026-09-29 from dacz8976-creator's fork, branch `fix/non-attack-damage-protections` at 2aa705d, based on ca4b67f; mergeable into 9044ff6). It limits Heavy Helmet, Harden, Hide and Blocking Shell to damage from attacks, with six tests and three in-game proofs (`../rl/results/upstream_pr_2026-09-28/`). The fork's own version is rules4's H2 and Hide/Harden repairs (`rules/09`). At the next upstream merge, if #383 is merged, take upstream's version.
+
+**Upstream main moved to 9044ff6 on 2026-09-29** ("B4b": card data only, reprint-only apart from P-B 099 Mega Garchomp ex; `../rl/results/b4b_prep_2026-09-26/B4B_REPRINT_CHECK_2026-09-29.md`), after 09e964f (two knockout-promotion fixes the fork lacks; `rules/09`).
+
 **The Sleep/Paralysis fix is already upstream; no PR was made** (checked 2026-09-28 against upstream main `ca4b67f41eaa514103833b8b6f6829a1f0deaa37`, 2026-09-27).
 - The fork's fix is `1c4a05835e937ddbd13dacf60493077b73a4fea1` (**fix: disallow attacks and retreats while asleep or paralyzed**). An upstream-based copy, `79ba7eb`, sits on `upstream/status-restrictions` in the old clone `Pocket Deck Lab/deckgym-fork-s193`, on the Aug 30 upstream main.
 - Upstream fixed the same thing independently: commit `e38b77d` ("Fix Special Conditions: Asleep/Paralyzed lock-out, Paralysis duration, exclusivity, Active-only"), merged in PR #379 on 2026-09-27. Its tests are in `tests/rules/special_conditions_test.rs`.
