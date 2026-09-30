@@ -175,6 +175,9 @@ def main():
     ap.add_argument("--old-games", nargs="+")
     ap.add_argument("--new-games", nargs="+")
     ap.add_argument("--reps", type=int, default=4000)
+    ap.add_argument("--full-precision", action="store_true", help="also print ONE extra line per block with the dMSE interval and "
+                    "the real errors unrounded, for readers that must not decide from a one-decimal printout. Off by default: "
+                    "without it the page is exactly what this script always printed (added Sept 30)")
     ap.add_argument("--limitless", help="JSON whose 'cells' are {\"a|b\": [W, L, T]}, replacing the Sept 23 cells "
                     "(scoreboard v2, ../scoreboard_v2_2026-09-25/limitless_v2_dev.json); default: deep_table.py's")
     ap.add_argument("--limitless-events", help="the same cells per tournament event (build_v2.py writes "
@@ -268,9 +271,11 @@ def main():
 
     for label, keys in (("all cells", allk), ("decision set (Altaria v Sceptile quarantined)", qk)):
         p(f"== {label}: {len(keys)} pairings")
+        full_real = {}
         for bot, S, nS in ((a.old, O, nO), (new_name, N, nN)):
             sc = D.score_table({k: 100 * S[k] for k in keys}, {k: nS[k] for k in keys})
             t, fb, fc = pass_parts(S, nS, keys)
+            full_real[bot] = t
             p(f"  {bot:>10}: real error {t:4.1f} | reported only: correlation {sc['correlation']:.2f}, average miss "
               f"{sc['average_miss']:.1f}, favorite right {sc['favorite_right']}/{len(keys)}, clear {sc['clear_right']}/"
               f"{sc['clear']}, beyond chance {sc['beyond_chance']}")
@@ -317,6 +322,13 @@ def main():
         tag = "" if paired else " [INDICATIVE: unpaired; a no-change pilot trips a veto 30-40% of the time at 500 deals]"
         p(f"  dMSE new - current: {d_point:+.1f} points^2, 95% interval {lo:+.1f} to {hi:+.1f} ({'below 0' if hi < 0 else 'not below 0'})"
           + (" [Limitless side binomial]" if events else ""))
+        # Added Sept 30 (the outcome audits' km S2/N3 and kta N2): with --full-precision ONLY, one NEW line with the same numbers
+        # at full precision, for readers that must not decide from a one-decimal printout. Without the flag nothing is printed
+        # here, so the default page is byte-identical to what this script always printed; with it, no line printed above or below
+        # the new one changed.
+        if a.full_precision:
+            p(f"  unrounded (full precision): dMSE 95% interval {lo!r} to {hi!r}; real error "
+              + ", ".join(f"{b} {v!r}" for b, v in full_real.items()))
         if events:
             lo_e, hi_e = pct(dm_e, 0.025), pct(dm_e, 0.975)
             p(f"  dMSE, Limitless side resampled by event: 95% interval {lo_e:+.1f} to {hi_e:+.1f} "

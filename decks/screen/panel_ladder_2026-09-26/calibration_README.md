@@ -14,12 +14,15 @@
 > list, which added three rows. The set is now **23 rows with a listed opponent, 20 usable, 7-13 (base rate 0.350), 17
 > pairs, base-rate Brier 0.227.** Section 7's sensitivity run without concessions is not wanted (Dustin, Sept 28).
 >
-> **Current use (Sept 29). The calibration is still on hold and has not been run.** If it is ever run: the pilot is
-> **kog3** on both sides (the working pilot since the Sept 28 engine switch, read from `run_screen.py` and `floor.py`;
-> the runner refuses any other pilot unless `--allow-pilot-mismatch` says it is deliberate), the engine is
-> `rl/engine-2026-09-28/deckgym`, and the set is the 20 usable games in 17 pairs. Everything below that says kp3, the
-> Sept 25 engine, 15 pairs, 18 games or the power table is **the Sept 26 plan, kept as history**; "What the laptop has
-> to run" has been brought up to date. `run_calibration.py` and `calibrate.py` were made safe to resume on Sept 29
+> **Current use (Sept 30). The calibration is still on hold and has not been run.** If it is ever run: the pilot is
+> **km3** on both sides (the working pilot since the Sept 30 engine switch, read from `run_screen.py` and `floor.py`;
+> it was kog3 from Sept 28 and kp3 before; the runner refuses any other pilot unless `--allow-pilot-mismatch` says it
+> is deliberate), the engine is `rl/engine-2026-09-30/deckgym` (main-d363ba8), and the set is the 20 usable games in
+> 17 pairs. Everything below that says kp3, kog3, the Sept 25 or Sept 28 engine, 15 pairs, 18 games or the power table
+> is **the Sept 26 plan or an earlier update, kept as history**; "What the laptop has to run" has been brought up to
+> date (Sept 29, and again Sept 30 for km3 and the new engine). A run starts a new `--out` file; a results file written
+> under another pilot or engine is never resumed (the resume check below refuses it). `run_calibration.py` and
+> `calibrate.py` were made safe to resume on Sept 29
 > (`test_calibration_safety.py`): a resume reuses a finished pair only after the engine, both deck files, both pilots,
 > the game count and the seeds are checked against the new run, and the scorer refuses duplicate, overlapping or
 > mixed-run rows and files without provenance unless `--accept-unverified` is given. Tests run in WSL, from this folder:
@@ -95,22 +98,24 @@ Dustin's record on the 18: **6-12** (base rate 0.333). They fall into **15 pairs
 
 ## What the laptop has to run
 
-On hold (Sept 29): nothing here has been run. Brought up to date on Sept 29; the figures the Sept 26 plan used are noted as such.
+On hold: nothing here has been run. Brought up to date on Sept 29 and again on Sept 30 (km3, the Sept 30 engine); the figures the Sept 26 plan used are noted as such.
 Everything below is a WSL command from the repo root.
 
 ```bash
 cd '/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim'
 python3 decks/screen/panel_ladder_2026-09-26/run_calibration.py --pairs-only     # lists the 17 pairs and their seeds; starts no engine, writes nothing
-python3 decks/screen/panel_ladder_2026-09-26/run_calibration.py                  # the run: 17 pairs x 500 games, kog3 both sides
+python3 decks/screen/panel_ladder_2026-09-26/run_calibration.py                  # the run: 17 pairs x 500 games, km3 both sides
 python3 decks/screen/panel_ladder_2026-09-26/run_calibration.py --resume         # after a stop: the same command plus --resume
 ```
 
-- **Engine:** the manifest's available release, `rl/engine-2026-09-28/deckgym`, resolved and hash-checked by
-  `current_engine.py` exactly as `run_screen.py` does. (The Sept 26 plan named `rl/engine-2026-09-25/deckgym`.)
-  Every row records the engine's hash, and a resume with a different engine is refused.
-- **Pilots:** kog3 on Dustin's deck and kog3 on the opponent, read from `run_screen.py` and `floor.py`. The runner
+- **Engine:** the manifest's available release, `rl/engine-2026-09-30/deckgym` (main-d363ba8), resolved and
+  hash-checked by `current_engine.py` exactly as `run_screen.py` does. (The Sept 26 plan named
+  `rl/engine-2026-09-25/deckgym`; Sept 29's update named `rl/engine-2026-09-28/deckgym`.) Every row records the
+  engine's hash, and a resume with a different engine is refused.
+- **Pilots:** km3 on Dustin's deck and km3 on the opponent, read from `run_screen.py` and `floor.py`. The runner
   prints what it found and **refuses any other pilot** (`--pilot`/`--meta-pilot`) unless `--allow-pilot-mismatch` is
-  given; a kp3 run to reproduce the Sept 26 plan needs that flag and its own `--out`. (The Sept 26 plan was kp3.)
+  given; a kog3 or kp3 run to reproduce an earlier plan needs that flag and its own `--out`. (The Sept 26 plan was
+  kp3; Sept 29's update said kog3.)
 - **Games:** 500 per pair, 250 with Dustin's deck in slot 0 and 250 in slot 1, `--seed-stream`. A slot may play at
   most 5,000 games (10,000 a pair) and a run at most 20 pairs; larger requests are refused before any game, because
   their seeds would run into the next slot, the next pair or another registered block. At 500 games the sim's own
@@ -124,7 +129,7 @@ python3 decks/screen/panel_ladder_2026-09-26/run_calibration.py --resume        
   list smokes), all outside the reserved range. A `--seed` block that overlaps part of the reserved one is refused; a
   disjoint one is allowed and announced (it must be in START_HERE's seed table).
 - **Time:** the Sept 26 2-game smoke (old engine and pilot, laptop loaded by a training run) took 3.9 s, about 2 s a
-  game: roughly 4 hours for 8,500 games under that load, less on an idle laptop. Not re-measured with kog3. The output
+  game: roughly 4 hours for 8,500 games under that load, less on an idle laptop. Not re-measured with km3. The output
   is appended one pair at a time, so a stopped run keeps what it finished.
 - **Output and resume:** `sim_results.csv` next to this file, columns `deck_file, opponent_file, pilot, games, wins,
   draws, seat` plus the per-slot counts, seeds, both pilots, engine path and hash, seconds, a schema marker and the

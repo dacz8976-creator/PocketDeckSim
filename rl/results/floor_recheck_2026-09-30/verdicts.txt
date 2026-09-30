@@ -1,0 +1,12 @@
+RECHECK PASSED: the floor stays usable under km3
+
+PASS brew-06: 'fail', 125 of 1920, pilots km3/km3 (needed: fail, km3 on both sides)
+PASS brew-06: plain run_screen.py per opponent {'t-sceptile': 4, 't-blaziken': 8, 't-hydreigon': 14, 't-altaria': 16, 't-suicune': 16, 't-weezing': 16, 't-lucario': 20, 't-vespiquen': 31} (total 125) v the floor's {'t-sceptile': 4, 't-blaziken': 8, 't-hydreigon': 14, 't-altaria': 16, 't-suicune': 16, 't-weezing': 16, 't-lucario': 20, 't-vespiquen': 31} (total 125)
+PASS brew-06b: 'fail', 262 of 1920, pilots km3/km3 (needed: fail, km3 on both sides)
+PASS brew-06b: plain run_screen.py per opponent {'t-sceptile': 5, 't-blaziken': 16, 't-lucario': 26, 't-suicune': 28, 't-hydreigon': 30, 't-altaria': 51, 't-vespiquen': 53, 't-weezing': 53} (total 262) v the floor's {'t-sceptile': 5, 't-blaziken': 16, 't-lucario': 26, 't-suicune': 28, 't-hydreigon': 30, 't-altaria': 51, 't-vespiquen': 53, 't-weezing': 53} (total 262)
+PASS control deck 14: 'control reading, not a floor verdict (pilots k3 on the deck and k3 on the panel, not km3 on both): untrusted', 196 of 1920 (needed: untrusted, k3 on both sides)
+PASS engine on every page: ['rl/engine-2026-09-30/deckgym']
+
+reported: brew-05b: clears the floor, 577 of 1920 (30.1%); before: 584 (kog3, Sept 28); 597 (kp3, Sept 25)
+reported: deck-07: clears the floor, 1098 of 1920 (57.2%); before: 903 (kog3, Sept 28); 908 (kp3, Sept 25)
+reported: the k3 control repeats Sept 28's games (196 v 196 wins; per opponent equal)

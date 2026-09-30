@@ -7,6 +7,18 @@ Stadium damage bonus, Training Area and Arena of Antiquity, in kta's threat cloc
 pilot (kog + kt's switch 1 as ec7e1a8 defines it), on the table's own deals (development deals, step 6), paired against
 kta3's ec7e1a8 reference files, which the identity at B licenses (Amendment 1 (b) item 3, (c) item 4, (e)).
 
+HISTORY. km's reading (Sept 30; rl/results/km_tables_2026-09-30/READING_numbers.txt) used this file as committed at
+a14014e, unchanged. The changes after it are for the NEXT reading; they answer the gaps the two outcome audits found
+(kta's S2 and N2, km's S1, S2 and N3; none changed a verdict): (1) K7 reads the ΔMSE lower edge at full precision, as
+the upper edge already was, so a lower bound printed "+0.0" is no longer left PENDING at the decisive --reps; (2) the
+held-out direction is printed inside the verdict block; (3) the detectable size as real error starts from score.py's
+unrounded real error, and clause (d)'s pooled mean, half-width and 95% interval print to four decimals. For (1) and (3)
+this reader asks score45 for --full-precision, which makes score.py print ONE NEW line (its "unrounded (full precision)"
+line). The flag is OFF by default, so every page score.py or score45.py prints without it (and every page they printed
+before) is byte-identical to what they always printed, which the older readers and the reproduction scripts rely on; with it,
+no line printed before changed. A page without that line (made without the flag) is read as it always was (K7 as printed,
+the rounded real error, with a note). Nothing here re-reads km.
+
 ONE SET: the candidate and baseline codes, B (and so the file prefix, its first 7 characters), the counter tool's source
 sha256, and every reference file with its sha256, pairings, deals and seed base come from km_config.json (read through
 km_config.py, --config), the set the runner uses too (Amendment 1 (b) item 3: "The runner and the reader use this set
@@ -98,7 +110,8 @@ Usage (WSL):  python3 read_km.py --dir ../../km_tables_<date> > ../../km_tables_
   --pages-dir DIR   where score45's page and its composite mixed-row inputs go (default: --dir)
   --reps N          score45's bootstrap (default 4000); the 20,000-rep rerun is what a near-the-line bound asks for
   --reuse-45        reuse score45's page only if made by the same command at the same --reps on inputs with the same
-                    sha256 (a sidecar <page>.reps records them)
+                    sha256 (a sidecar <page>.reps records them), and only if it carries score.py's "unrounded (full
+                    precision)" line (a page made without --full-precision is scored afresh)
   --footprint-only  sections 1 and 1b only: the step "the footprint, the first result read, committed alone" (step 1)
   --thresholds F    thresholds.json (default: --dir/thresholds.json)   --registration F  the registration text (default:
                     ../REGISTRATION_DRAFT.md), searched for the dated amendment's numbers
@@ -220,12 +233,14 @@ def tau_gate(lo, ev_lo, reps):
     return status, notes
 
 
-def dmse_label(lo_s, hi_s, below0, reps, exact_zero=False):
+def dmse_label(lo_s, hi_s, below0, reps, exact_zero=False, lo_exact=None):
     """RUN5's three outcomes for ΔMSE (the candidate minus the baseline): 'below' (outcome 1: the accuracy clause passes), 'above' (outcome
     2: fails, no fallback), 'spans' (outcome 3: 'undetectable at this size', the fallback). Returns (possible labels, the
-    label as printed, notes); more than one possible label means PENDING. read_kta.py's rule, unchanged:
-      - the upper edge is decided by score.py's own 'below 0' (the unrounded bound); the lower edge only as printed, and
-        a printed '+0.0' is never called;
+    label as printed, notes); more than one possible label means PENDING. read_kta.py's rule, with one change (K7):
+      - the upper edge is decided by score.py's own 'below 0' (the unrounded bound); the lower edge is read as printed,
+        except that a printed '+0.0' (a bound in [0, +0.05)) is read from lo_exact, the unrounded bound on score.py's
+        "unrounded (full precision)" line: above zero is 'above', exactly zero spans. Without lo_exact (a page made
+        before that line existed) a printed '+0.0' is still never called;
       - a bound within 5% of the interval's width of 0 is PENDING below --reps 20000, at either edge, tested in whole
         units of the printout's last digit, inclusive; the 20,000-rep rerun decides;
       - exact_zero: no game on the 45 cells changed its result: the interval is the point 0, which spans zero."""
@@ -241,7 +256,11 @@ def dmse_label(lo_s, hi_s, below0, reps, exact_zero=False):
         die(f"score45 says the ΔMSE interval is not below 0 but prints its upper bound as {hi_s} (format changed?)")
     if lo > hi:
         die(f"score45's ΔMSE interval {lo_s} to {hi_s} has its bounds reversed")
-    base = "below" if below0 else ("above" if lo > 0 else "spans")
+    exact_read = lo_s == "+0.0" and lo_exact is not None
+    if exact_read and not 0 <= lo_exact < 0.05:
+        die(f"score45's ΔMSE lower bound prints as {lo_s} but its 'unrounded (full precision)' line gives {lo_exact!r}, which "
+            f"would not print that way: the page was edited, or its two lines are from different runs")
+    base = "below" if below0 else ("above" if lo > 0 or (exact_read and lo_exact > 0) else "spans")
     dec = max((len(s.split(".")[1]) if "." in s else 0) for s in (lo_s, hi_s))
     lo_u, hi_u = round(lo * 10 ** dec), round(hi * 10 ** dec)
     labels, notes, w_u = {base}, [], hi_u - lo_u
@@ -260,10 +279,14 @@ def dmse_label(lo_s, hi_s, below0, reps, exact_zero=False):
                          f"{DECISIVE_REPS}, and that run decides")
         else:
             notes.append(f"the lower bound is near 0; this --reps {reps} run is the decisive one")
-    if lo_s == "+0.0":
+    if exact_read:
+        notes.append(f"the lower bound prints as +0.0; score.py's unrounded value is {lo_exact!r}, so the interval is "
+                     + ("wholly ABOVE zero" if lo_exact > 0 else "not above zero (it reaches 0)") + " (K7, read at full precision)")
+    elif lo_s == "+0.0":
         labels |= {"spans", "above"}
         notes.append("BOUNDARY: the lower bound prints as +0.0 (true value 0 to +0.049): whether the interval is wholly above "
-                     "zero cannot be read from the page; read it at more digits")
+                     "zero cannot be read from this page (it has no 'unrounded (full precision)' line); score afresh, without "
+                     "--reuse-45, to read it at more digits")
     return labels, base, notes
 
 
@@ -493,6 +516,15 @@ def fmt(m, h):
     return f"{m:+.2f} +/- {h:.2f}"
 
 
+def fmt4(m, h):
+    """The same figure at four decimals: what a pass that rests on the third decimal needs to show."""
+    return f"{m:+.4f} +/- {h:.4f}"
+
+
+def ci4(m, h):
+    return f"95% interval {m - h:+.4f} to {m + h:+.4f}"
+
+
 def d_shares(means):
     s = sum(means)
     return None if s <= 0 else [m / s for m in means]
@@ -578,11 +610,22 @@ def parse45(text, lenient=False):
         die("score45.py's page does not have the 45-cell and 44-cell blocks (format changed?)")
     out = {}
     for name, b in blocks.items():
-        d = {"real": {}, "veto": [], "verdict": None, "deck_avg": {}}
+        d = {"real": {}, "veto": [], "verdict": None, "deck_avg": {}, "full": None}
         for ln in b["lines"]:
             m = re.match(r"\s*(\S+): real error\s+([\d.]+) \|", ln)
             if m:
                 d["real"][m.group(1)] = float(m.group(2))
+                continue
+            m = re.match(r"\s*unrounded \(full precision\): dMSE 95% interval (\S+) to (\S+); real error (.+)$", ln)
+            if m:                                # the one line score.py prints with --full-precision (Sept 30); other pages have none
+                try:
+                    real = {}
+                    for part in m.group(3).split(", "):
+                        who, val = part.rsplit(" ", 1)
+                        real[who] = float(val)
+                    d["full"] = {"lo": float(m.group(1)), "hi": float(m.group(2)), "real": real}
+                except ValueError:
+                    die(f"score45.py's 'unrounded (full precision)' line in the {name} block is not in the format read: {ln.strip()!r}")
                 continue
             m = re.match(rf"\s*dMSE new - current: {NUM} points\^2, 95% interval {NUM} to {NUM} \((not below 0|below 0)\)", ln)
             if m:
@@ -628,6 +671,12 @@ def parse45(text, lenient=False):
                 die(f"score45.py's {name} block has no '{key}' line (format changed?)")
         if not d["deck_avg"]:
             die(f"score45.py's {name} block has no 'Deck averages' rows (format changed?)")
+        if d["full"] is not None:               # its real errors must be the ones printed, to the printed digit
+            for who, printed in d["real"].items():
+                v = d["full"]["real"].get(who)
+                if v is None or round(v, 1) != printed:
+                    die(f"score45.py's {name} block: the unrounded real error for {who} is {v!r} but the page prints {printed}: "
+                        f"the page was edited, or its lines are from different runs. Nothing is read.")
         d["counts"] = [v for v in d["veto"] if v[2] == "COUNTS"]
         d["awaits"] = [v for v in d["veto"] if v[2] == "AWAITS"]
         got_cell = sorted((v[0], v[1]) for v in d["veto"] if not v[0].startswith("deck "))
@@ -659,6 +708,53 @@ def selftest():
     assert L("-20.0", "-0.4") == {"below", "spans"} and L("-20.0", "-0.4", 20000) == {"below"}   # ΔMSE upper edge near 0
     assert L("+0.4", "+20.0") == {"spans", "above"} and L("+0.4", "+20.0", 20000) == {"above"}   # ΔMSE lower edge near 0
     assert L("+0.0", "+0.9", 20000) == {"spans", "above"} and L("+0.0", "+0.0", 100, True) == {"spans"}
+    # K7 at full precision (the outcome audits: km N3, kta N2): a lower bound PRINTED +0.0 is read from score.py's unrounded one
+    Lx = lambda lo, hi, exact, reps=20000: dmse_label(lo, hi, float(hi) < 0, reps, False, exact)[0]  # noqa: E731
+    assert Lx("+0.0", "+9.0", 0.03) == {"above"} and Lx("+0.0", "+9.0", 0.049) == {"above"}   # true +0.03: wholly above zero
+    assert Lx("+0.0", "+9.0", 0.0) == {"spans"}                                               # exactly 0 is not above zero
+    assert Lx("-0.0", "+9.0", -0.03) == {"spans"} and L("-0.0", "+9.0", 20000) == {"spans"}   # true -0.03 prints -0.0: spans
+    assert Lx("+0.0", "+9.0", 0.03, 4000) == {"spans", "above"}                               # K8 is separate: PENDING below 20,000
+    assert Lx("+0.0", "+9.0", None) == {"spans", "above"}                                     # no unrounded line: not called, as before
+    assert Lx("+0.1", "+9.0", None) == {"above"} and Lx("-0.1", "+9.0", None) == {"spans"}   # other printed bounds are unchanged
+    for bad in (-0.03, 0.05, 0.5, -1e-12):                                                    # the two lines disagree: the page is edited
+        try:
+            Lx("+0.0", "+9.0", bad)
+        except SystemExit as e:
+            assert "STOP" in str(e.code)
+        else:
+            raise AssertionError(f"a printed +0.0 with an unrounded {bad!r} was accepted")
+    # Bounds just on each side of a line, swept (Sept 30, after a review of the one-decimal and two-decimal printouts): whatever
+    # the TRUE bound is, the reader names the right label / gate status or holds PENDING; it never calls the wrong one, and the
+    # 20,000-rep rule is unchanged: below it the near-zero band is PENDING, at it the call is made. score.py prints a ΔMSE bound to
+    # one decimal and the τ̂ bound to two, so a true bound is fed through that same rounding before the reader sees it.
+    for k in range(-200, 201):                                   # the ΔMSE LOWER bound, true -0.200 .. +0.200; the upper is +9.0
+        x = k / 1000
+        s = f"{x:+.1f}"                                          # what score.py prints: +0.04 -> "+0.0", -0.04 -> "-0.0"
+        ex = x if s == "+0.0" else None                          # its unrounded line, which a printed +0.0 is read from
+        right = "above" if x > 0 else "spans"                    # outcome 2 needs the lower bound above zero, exactly
+        assert dmse_label(s, "+9.0", False, DECISIVE_REPS, False, ex)[0] == {right}, ("lower, decisive run", x, s)
+        assert right in dmse_label(s, "+9.0", False, 4000, False, ex)[0], ("lower, below 20,000 reps", x, s)
+        if s == "+0.0":                                          # without the unrounded line it is never called, at any --reps
+            assert dmse_label(s, "+9.0", False, DECISIVE_REPS)[0] == {"spans", "above"}, ("lower, no unrounded line", x)
+            assert dmse_label(s, "+9.0", False, 4000)[0] == {"spans", "above"}, ("lower, no unrounded line, 4000", x)
+    for k in range(-200, 201):                                   # the ΔMSE UPPER bound, true -0.200 .. +0.200; the lower is -9.0
+        x = k / 1000
+        s = f"{x:+.1f}"
+        right = "below" if x < 0 else "spans"                    # outcome 1 needs the upper bound below zero, exactly (score.py's own test)
+        assert dmse_label("-9.0", s, x < 0, DECISIVE_REPS)[0] == {right}, ("upper, decisive run", x, s)
+        assert right in dmse_label("-9.0", s, x < 0, 4000)[0], ("upper, below 20,000 reps", x, s)
+        if abs(x) < 0.05:                                        # in the near-zero band below 20,000 reps: both, PENDING
+            assert dmse_label("-9.0", s, x < 0, 4000)[0] == {"below", "spans"}, ("upper, the band at 4000", x, s)
+    for k in range(-1030, -969):                                 # the τ̂ margin's LOWER bound, true -1.030 .. -0.970 (the line is -1.0)
+        x = k / 1000
+        shown = float(f"{x:.2f}")                                # what score.py prints: -1.004 and -0.996 both print -1.00
+        at20k = tau_gate(shown, shown, DECISIVE_REPS)[0]
+        if at20k != "PENDING":
+            assert (at20k == "PASS") == (x >= -1.0), ("tau, decisive run", x, shown, at20k)
+        assert (at20k == "PENDING") == (shown == -1.0), ("tau: exactly the printed -1.00 is never called", x, shown, at20k)
+        if abs(x + 1.0) < 0.005:
+            assert at20k == "PENDING", ("tau: prints -1.00, never called", x)
+        assert tau_gate(shown, shown, 4000)[0] == "PENDING", ("tau: the 0.10 band below 20,000 reps", x, shown)   # -1.03 .. -0.97 all in it
     # the mechanism lines: exact comparison with T, the guard, 'cannot pass'
     T4 = Fraction(1, 4)
     assert m_gate("m1", T4, "threshold", 100, 25, 100, 20)[0] == "PASS"      # exactly T passes (">= T")
@@ -717,7 +813,8 @@ def selftest():
     assert not equal5(r, {**r, "moves": "ac"}) and not equal5(r, {**r, "a_file": "decks/z.txt"})
     lo, hi, _ = boot_rate_change([[(2, 1, 2, 2)] * 10], 200, 1)
     assert abs(lo - 0.5) < 1e-12 and abs(hi - 0.5) < 1e-12
-    print("selftest ok: route from integers; tau and dMSE boundary logic at both edges; M1/M2 compared with the exact T "
+    print("selftest ok: route from integers; tau and dMSE boundary logic at both edges (a printed +0.0 lower bound read from "
+          "score.py's unrounded one, K7); M1/M2 compared with the exact T "
           f"(a rate displayed as T but below it fails), the {BASE} guard at exactly T, 'cannot pass', never offered; T parsed "
           "only as an exact fraction; the amendment's numbers found in the text; the gating table by route and label "
           "(M lines only in the fallback, τ̂ on the ordinary route only in the fallback, (c) only on the reserve route); "
@@ -732,7 +829,8 @@ if args.parse_page:
     for _nm, _d in _r.items():
         P(f"PARSED {_nm}: dMSE {_d['dmse'][4]} to {_d['dmse'][5]} ({'below 0' if _d['dmse'][3] else 'not below 0'}), "
           f"cell vetoes {len(_d['sum_cell'])}, deck vetoes {len(_d['sum_deck'])}, COUNTS {len(_d['counts'])}, "
-          f"AWAITS {len(_d['awaits'])}, verdict {_d['verdict']!r}")
+          f"AWAITS {len(_d['awaits'])}, verdict {_d['verdict']!r}"
+          + (f", unrounded ΔMSE bounds {_d['full']['lo']!r} to {_d['full']['hi']!r}" if _d["full"] else ""))
     sys.exit(0)
 if not args.dir:
     die("pass --dir, the km tables folder (the runner's output)")
@@ -1377,8 +1475,11 @@ NOTES: where the registration's text needs a coding, and the one coded ({CODE} a
      (read_koh.py's paired()); passes when mean minus half-width is above zero; read once, on both routes. Each game's row
      and deal are read from its seed; the block's seat rule is Lucario in seat 0 on even j. (d)'s {BASE} arm on deals 0-499
      must replay {BASE}'s reference games (moves, seed, seats): a difference STOPS (section 4.1 item 9).
- K7  The ΔMSE label: the upper edge from score.py's own "below 0"; the lower edge only as printed ("+0.0" is not called);
-     no changed result on the 45 cells: the interval is the point 0, which spans zero.
+ K7  The ΔMSE label: the upper edge from score.py's own "below 0"; the lower edge as printed, except that a printed "+0.0"
+     (a bound in [0, +0.05)) is read from score.py's unrounded value, its "unrounded (full precision)" line (above zero:
+     'above'; exactly zero: spans; a page without that line: not called, as before); no changed result on the 45 cells:
+     the interval is the point 0, which spans zero. The near-zero rule (K8) is separate and unchanged: it still holds the
+     label below --reps 20000. The detectable size as real error starts from that line's unrounded real error.
  K8  Near-zero bounds (step 4): a ΔMSE bound within 5% of the interval's width of 0 (either edge) and a τ̂ bound within
      0.10 of -1.0 are PENDING below --reps 20000; the 20,000-rep rerun (the same games) decides. Inclusive, in whole units
      of the printout.
@@ -1481,16 +1582,19 @@ def run_score45(with_mixed):
              if with_mixed and MIXR[dr] is not None]
     page = os.path.join(PAGES, f"score45_{CODE}_vs_{BASE}.txt")
     cmd = [sys.executable, os.path.join(K45, "score45.py"), "--rules", "v2", "--old-games"] + old_p + ["--new-games"] + new_p + \
-          ["--old", BASE, "--new", CODE] + (["--mixed"] + mixed if mixed else []) + ["--reps", str(REPS)]
+          ["--old", BASE, "--new", CODE] + (["--mixed"] + mixed if mixed else []) + ["--full-precision", "--reps", str(REPS)]
     sig = json.dumps({"reps": REPS, "args": [os.path.basename(x) for x in cmd[2:]],
                       "inputs": {os.path.basename(q): sha(q) for q in old_p + new_p + mixed}}, sort_keys=True)
     side = page + ".reps"
     same = os.path.exists(side) and open(side, encoding="utf-8").read() == sig
-    if args.reuse_45 and same and os.path.exists(page):
+    has_full = os.path.exists(page) and "unrounded (full precision):" in open(page, encoding="utf-8").read()
+    if args.reuse_45 and same and has_full:
         text, tag = open(page, encoding="utf-8").read(), f"reused: made by this same command on inputs with the same sha256, --reps {REPS}"
     else:
         if args.reuse_45 and os.path.exists(page):
-            P(f"   (--reuse-45: {os.path.basename(page)} is not reusable (a different command, inputs or --reps, or no sidecar); scoring afresh)")
+            P(f"   (--reuse-45: {os.path.basename(page)} is not reusable ("
+              + ("a different command, inputs or --reps, or no sidecar" if not same else
+                 "it has no 'unrounded (full precision)' line (made without --full-precision)") + "); scoring afresh)")
         out = subprocess.run(cmd, capture_output=True, text=True, encoding="utf-8", cwd=K45)
         text, tag = out.stdout + out.stderr, f"freshly scored, --reps {REPS}"
         os.makedirs(PAGES, exist_ok=True)
@@ -1509,10 +1613,15 @@ R45, PAGE45, TAG45, MIXED_IN = run_score45(True)
 A, Dn = R45["all"], R45["dec"]
 P(f"   page: {os.path.basename(PAGE45)} ({TAG45}); mixed rows given to score45: "
   + (", ".join(os.path.basename(m) for m in MIXED_IN) or "none in yet") + f" (the runner's games in the cells it ran; {BASE}'s in a zero-footprint cell, K5)")
-TAU_K = A["real"][BASE]
-P(f"   real error on the 45 cells: {BASE} {TAU_K:.1f} -> {CODE} {A['real'][CODE]:.1f}")
+FULL45, FULL44 = A["full"], Dn["full"]      # score.py's "unrounded (full precision)" lines (None on a page made without --full-precision)
+TAU_K = FULL45["real"][BASE] if FULL45 else A["real"][BASE]
+P(f"   real error on the 45 cells: {BASE} {A['real'][BASE]:.1f} -> {CODE} {A['real'][CODE]:.1f}")
+if not FULL45:
+    P("   NOTE: this score45 page has no 'unrounded (full precision)' line (it was made without --full-precision): the real "
+      "error below is the page's rounded figure, and a ΔMSE lower bound printed +0.0 is not called (K7). Score afresh, without "
+      "--reuse-45, to read both at full precision.")
 dm = A["dmse"]
-LABELS, LABEL, LNOTES = dmse_label(dm[4], dm[5], dm[3], REPS, exact_zero=(RES45 == 0))
+LABELS, LABEL, LNOTES = dmse_label(dm[4], dm[5], dm[3], REPS, exact_zero=(RES45 == 0), lo_exact=FULL45["lo"] if FULL45 else None)
 P(f"   ΔMSE ({CODE} minus {BASE}): {dm[0]:+.1f} points^2, 95% interval {dm[4]} to {dm[5]}; by event (beside): "
   f"{A['dmse_ev'][0]:+.1f} to {A['dmse_ev'][1]:+.1f}")
 P(f"   LABEL (RUN5's three outcomes, on the {ROUTE} route): {LABEL_TEXT[LABEL]}" + ("" if len(LABELS) == 1 else
@@ -1529,7 +1638,9 @@ def as_real(delta):
 
 P(f"   detectable size (step 5b item 1): the interval's sd {SD45:.1f}; MDE50 (1.96 sd) {1.96 * SD45:.1f} points^2, as real "
   f"error {TAU_K:.2f} -> {as_real(-1.96 * SD45):.2f}; MDE80 (2.80 sd) {2.80 * SD45:.1f}, as real error {TAU_K:.2f} -> "
-  f"{as_real(-2.80 * SD45):.2f} (real error after = sqrt({BASE}'s^2 - δ)). A gain below it reads 'undetectable at this size'.")
+  f"{as_real(-2.80 * SD45):.2f} (real error after = sqrt({BASE}'s^2 - δ), from {BASE}'s real error "
+  + (f"{TAU_K:.3f} as score.py computes it, unrounded" if FULL45 else f"{TAU_K:.1f}, the page's rounded figure")
+  + "). A gain below it reads 'undetectable at this size'.")
 P("   expected sign (step 4, stated before any game): ΔMSE is expected POSITIVE if N2 gains on Lucario (the simulator already "
   "over-rates Lucario, 52.2 against 45.6 real, the same at the printed precision on either base: Amendment 1 (b) item 5); "
   "outcome 2 applies to km's own mechanism on both routes.")
@@ -1554,7 +1665,7 @@ elif A["awaits"]:
 else:
     st, dt = "PASS", "none counts" + (f" ({len(A['veto'])} veto candidates, all investigation items or never-count)" if A["veto"] else "")
 gate("b2", "no harm: no rule-v2 veto counts on the 45 cells (through the mixed rows)", st, dt)
-_dl = dmse_label(Dn["dmse"][4], Dn["dmse"][5], Dn["dmse"][3], REPS, exact_zero=(RES45 == 0))[1]
+_dl = dmse_label(Dn["dmse"][4], Dn["dmse"][5], Dn["dmse"][3], REPS, exact_zero=(RES45 == 0), lo_exact=FULL44["lo"] if FULL44 else None)[1]
 diffs = []
 if _dl != LABEL:
     diffs.append(f"ΔMSE label: 45 cells {LABEL}, 44 cells {_dl}")
@@ -1747,6 +1858,8 @@ else:
     sd_d = h / 1.96
     gain = m - h > 0
     P(f"   pooled over 9 rows ({n:,} deals per arm): {fmt(m, h)} points -> {'a GAIN: the whole 95% interval is above zero' if gain else 'NO gain shown at this size'}")
+    P(f"   pooled, at more digits (outcome audits, km S2 and kta's audit: whether (d) passes can turn on the third decimal): "
+      f"{fmt4(m, h)} points; {ci4(m, h)}; the gate is the lower edge above zero")
     P(f"   detectable size: sd {sd_d:.3f}; MDE50 (1.96 sd) {1.96 * sd_d:.2f} points, MDE80 (2.80 sd) {2.80 * sd_d:.2f} points "
       f"(the registration's model: half-width about 0.4 to 0.8 points at 2,000 deals).")
     ONE_ROW = None
@@ -1755,7 +1868,7 @@ else:
         P(f"   NOTE (step 5b item 3, gates nothing): one row supplies more than half of this passing gain: {ONE_ROW}.")
     D_RES = (m, h, sd_d, CH_D, ONE_ROW)
     gate("d", "(d) Lucario's pooled own-side gain, whole 95% interval above zero", "PASS" if gain else "FAIL",
-         f"{fmt(m, h)} points pooled over 9 rows x {D_DEALS:,}" + ("" if gain else
+         f"{fmt4(m, h)} points ({ci4(m, h)}) pooled over 9 rows x {D_DEALS:,}" + ("" if gain else
          f"; 'no Lucario gain of about {1.96 * sd_d:.2f} (MDE50) to {2.80 * sd_d:.2f} (MDE80) points or more at this size'"))
 
 # ---------------------------------------------------------------------------------------------------------------
@@ -1888,6 +2001,7 @@ P("\n   5a. B2e (96 pairings; the held-out archetypes 0-47 count, Dustin's files
 _bt = have(f"{PX}_b2e_{CODE}.jsonl", "holds coverage (B2e)")
 b2e_decks = lambda r: (B2E_TSV[r["pairing"]]["held_key"], B2E_TSV[r["pairing"]]["opponent"])  # noqa: E731
 B2E_BASE_P = None
+HELD_DIR = None      # (base pilot, candidate pilot, closer, further, mean change in miss, decks): set below, printed in the verdict block
 if not _bt:
     gate("cov_b2e", "coverage (B2e held-out): no held-out deck's own side hurt", "PENDING", f"{CODE}'s B2e both-sides file is not in yet")
 else:
@@ -1962,6 +2076,8 @@ else:
     _bn, _cn, _hrows = HD.compute(B2E_BASE_P, _bt, B2E_DIR)
     HD.show(_bn, _cn, [r for r in _hrows if r[0].startswith("A")], None, "held-out direction")
     HD.show(_bn, _cn, [r for r in _hrows if r[0].startswith("B")], "   Dustin's files (48-95; deck 09 carries Training Area), beside, not in the line above:", "Dustin's files")
+    _ha = [r for r in _hrows if r[0].startswith("A")]      # the same counts and mean HD.show just printed, kept for the verdict block
+    HELD_DIR = (_bn, _cn, sum(1 for r in _ha if r[6] < 0), sum(1 for r in _ha if r[6] > 0), sum(r[6] for r in _ha) / len(_ha), len(_ha))
 
 # 5b. Scizor.
 P(f"\n   5b. The Scizor row (carries Training Area; 8 rows x 500; own side = {CODE} on Scizor, {BASE} on the panel list, against {BASE} on both):")
@@ -2399,6 +2515,16 @@ if _ungated and RESULT != "NOT ADOPTED":
       "would give NOT ADOPTED (harm). Written down for Dustin; this reading applies the text as registered.")
 if D_RES and D_RES[4] and RESULT == "ADOPTED":
     P(f"   Beside the verdict (step 5b item 3, gates nothing): one row supplies more than half of the passing (d) gain: {D_RES[4]}.")
+# RUN5, "The frame a candidate is read in", and the registrations: the held-out direction is printed beside EVERY verdict
+# (both outcome audits found it only in section 5a). It gates nothing.
+if HELD_DIR:
+    _hb, _hc, _hcl, _hfu, _hmean, _hn = HELD_DIR
+    P(f"   Held-out direction beside the verdict (RUN5's frame, step 5b item 4; B2e pairings 0-47, {_hb} -> {_hc}; gates nothing): "
+      f"{_hcl} closer, {_hfu} further" + (f", {_hn - _hcl - _hfu} unchanged" if _hn - _hcl - _hfu else "")
+      + f", mean change in miss {_hmean:+.2f}.")
+else:
+    P(f"   Held-out direction beside the verdict (RUN5's frame, step 5b item 4; gates nothing): not in yet ({CODE}'s B2e both-sides "
+      f"file is not in).")
 if REPORTED_MISSING:
     P(f"   Reported-only inputs not in yet (they hold nothing): {', '.join(REPORTED_MISSING)}")
 
