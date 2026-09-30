@@ -38,10 +38,12 @@ thread_local! {
         std::cell::RefCell::new(Vec::new());
 }
 
-/// Run `f` with `cuts` in force for `modify_damage`, then restore what was there before (also on a panic). With no
-/// cuts it just runs `f`: that is every attack without a heads coin cut, so their damage is calculated as before.
+/// Run `f` with exactly `cuts` in force for `modify_damage`, then restore what was there before (also on a panic).
+/// An inner call replaces the outer cuts for its length, and an inner call with no cuts clears them, so it never
+/// inherits them (Sonnet's S1, Sept 30). With no cuts and none in force it just runs `f`: that is every attack without
+/// a heads coin cut, so their damage is calculated as before.
 pub(crate) fn with_heads_coin_cuts<R>(cuts: Vec<((usize, usize), u32)>, f: impl FnOnce() -> R) -> R {
-    if cuts.is_empty() {
+    if cuts.is_empty() && HEADS_COIN_CUTS.with(|in_force| in_force.borrow().is_empty()) {
         return f();
     }
     struct Restore(Option<Vec<((usize, usize), u32)>>);
