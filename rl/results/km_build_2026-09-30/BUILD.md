@@ -11,7 +11,7 @@ Seeds: identity on the table's deals (72,000,000 + pairing × 10,000 + i), the 1
   1. **Build:** done, B = 1f6319e.
   2. **Tests:** done. km's 14 tests pass, and the full suite passes: 1,991 passed, 0 failed.
   3. **Counter tool:** done, 8a at B. It is built from the unchanged source in a copy of B's `engine/`. Its five tests pass, and test 1's and test 3's outputs are byte-identical to 9c11b30's. 8a: kta3 680 of 680 and km3 80 of 80.
-  4. **Identity:** STEP4.
+  4. **Identity:** done. Every check passes, with every game equal: 114,080 games through the scan plus the counter tool's 760, the amendment's 114,840. The table is below.
   5. **Code review:** done. No blocker and no should-fix, five notes (below).
 - **For the laptop** (the amendment's (e) governs):
   - Build the programs from B's `engine/` by `git archive 1f6319e engine`, not from the branch head, and the counter tool (source `05d7ba41…`) as an example in a copy of it.
@@ -122,7 +122,45 @@ The source is unchanged: `../tool_turn_effect_census_2026-09-25/tool_census.rs`,
 
 ## Identity at B (the amendment's (c) item 4; `run_km.sh`, `identity.py`, `identity/identity_check.txt`)
 
-IDENTITY
+All runs use the cloud's programs built from B (legality_scan sha256 `e72a18f50464c716f9477d2201033c5f11ae6270b90b63662b061f62b255d639`, deckgym `35b42fc3938ad6770b6b2a6f53830ae50d1005e244d444d1f87a425a9ce22d3b`), 4 threads, on the committed references. A game is equal when its moves, choices, openings, winner, points, seed and seats all are (and the deck files, where the reference has them). Every run's scan page must also be free of rule findings.
+
+**Every check passes, with every game equal and every scan page free of rule findings.** No difference was found, so nothing stopped. That is 114,080 games through the scan, plus the counter tool's 760 (8a, above): 114,840, the amendment's count.
+
+| item | run at B | reference | result |
+|---|---|---|---|
+| 1 | **kta3, all 500 table deals** | `../kt_tables_2026-09-28/ec7e1a8_kta3_table.jsonl` (the laptop's ec7e1a8 games) | 14,000 of 14,000 |
+| 1 | **kta3, the 17 new cells, 500 deals** | `ec7e1a8_kta3_new17.jsonl` | 8,500 of 8,500 |
+| 1 | k3, all 500 table deals | `../engine_switch_2026-09-28/pin_identity_k3_500.jsonl` | 14,000 of 14,000 |
+| 1 | kp3, all 500 table deals | `pin_identity_kp3_500.jsonl` | 14,000 of 14,000 |
+| 1 | kog3, all 500 table deals | `../koh_2026-09-28/bd2907f_kog3_500.jsonl`, and `../kog_composition_2026-09-27/table_kog3.jsonl` | 14,000 of 14,000 against each |
+| 1 | kog3, the 17 new cells, 500 deals | `new17_kog3.jsonl` | 8,500 of 8,500 |
+| 2 | kq3, all 500 table deals | `../kt_2026-09-26/identity/official_kq3_500.jsonl` | 14,000 of 14,000 |
+| 2 | kd3, 40 table deals | `../rules09_fixes_2026-09-26/af8489f_kd3_40.jsonl` | 1,120 of 1,120 |
+| 2 | kpr3, 40 table deals | `af8489f_kpr3_40.jsonl` | 1,120 of 1,120 |
+| 3 | **kta3, B2e's 96 pairings, i < 40** | `ec7e1a8_b2e_kta3.jsonl` | 3,840 of 3,840 |
+| 3 | **kta3, Scizor's 8 pairings, i < 40** | `ec7e1a8_scizor_kta3.jsonl` | 320 of 320 |
+| 3 | **kta3, the four second lists, i < 40** | `ec7e1a8_var_{v-lucario_2,v-suicune_2,v-weezing_2,l-charizardy}_kta3.jsonl` | 280, 280, 280 and 320: 1,160 of 1,160 |
+| 3 | kog3, B2e's 96 pairings, i < 40 | `../koh_2026-09-28/reading/b2e_kog3.jsonl` | 3,840 of 3,840 |
+| 3 | kog3, Scizor's 8 pairings, i < 40 | `../koh_2026-09-28/laptop_runs/scizor_kog3.jsonl` | 320 of 320 |
+| 3 | kog3, the four second lists, i < 40 | `laptop_runs/var_*_kog3.jsonl` | 280, 280, 280 and 320: 1,160 of 1,160 |
+| 4 | `KM` with its flag cleared equals `KTA` | a test (`km_is_kta_plus_n2_and_nothing_else`) | passes |
+| 5 | **km3 on the 15 table cells with neither the panel Altaria nor Lucario list, 500 deals** | `ec7e1a8_kta3_table.jsonl` | 7,500 of 7,500 |
+| 5 | **km3 on the 13 new cells with neither, 500 deals** | `ec7e1a8_kta3_new17.jsonl` | 6,500 of 6,500 |
+| 6 | kta3 at B, pairings 0 and 2, 40 deals | `ec7e1a8_kta3_table.jsonl` | 80 of 80 |
+| 7 | km3 smoke, pairings 0, 2 and 19, 40 deals | none: a clean, complete run only; its games were not read. It is the laptop's km3 reference: `identity/1f6319e_km3_smoke_40.jsonl`, sha256 `55f7a5905acad7d9a9daabdf541c9aee258704c23712a1d2b8f8271e2e73d043` | 120 games, clean |
+| 8 | the diff of `engine/` from ec7e1a8, `engine/UPSTREAM.md` aside | `engine/src/players/` only | yes |
+| 8a | the counter tool (above) | the kta3 files and item 7's smoke | 680 of 680; 80 of 80 |
+
+- **What these show:**
+  - **kta3 at B plays exactly as kta played its tables.** Item 1 matches all 22,500 games, and item 3 all 5,320 at i < 40. This runs through B's changed `kt_clock_stadium` with N2's flag off.
+  - **km3 with nothing for N2 to read plays kta3's games** (item 5). That includes the 464 development games in 13 of those 28 cells where kta3's moves differ from kog3's (the amendment's (b) item 6). So this is also game-level evidence that km3 is built on kta, switch 1 included.
+  - **The older codes are unchanged:** k3, kp3, kog3, kq3, kd3 and kpr3.
+- **What these license** (section 4.1, "Only an identity that covers those files licenses that reuse"):
+  - The eight kta3 reference files of the amendment's (b) item 3 are kta3's games at B, the files km3 is read against.
+  - The coverage files are covered at i < 40, as registered. The rest of each file is licensed by that rule, not by a game here, and the laptop's (e) adds i < 20 at its own build.
+- **Agreement across machines.** Every kta3 reference was played by the laptop's ec7e1a8 programs (`924751ba…`, `40797636…`), and the cloud's build of B agrees with them on every tested game. That is agreement on the tested games, not a claim that any two programs are identical.
+- **Run times are not a timing measure.** The counter tool's build and checks and a scratch diagnostic ran on the same machine at the same time. The timing pair is the laptop's.
+- **A container restart** stopped the runner at about 03:21 UTC, during kta3's 500 table deals. The runner was restarted at 04:49 with the same program and calls. It skipped the finished items and re-checked them (they pass again, so `identity_check.txt` lists items 5 to 7 twice), then replayed kta3's table deals from the start (`STATUS.txt`, "RESUMED").
 
 ## Files
 
