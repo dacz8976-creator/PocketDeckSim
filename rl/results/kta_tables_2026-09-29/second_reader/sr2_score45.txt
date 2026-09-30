@@ -1,0 +1,48 @@
+[mine] 45 cells: dMSE (kta3 - kog3) -4.254 points^2 (delta-method sd 2.12: -8.4 to -0.1); real error kog3 13.550 kta3 13.392; margin (kog3 - kta3) +0.158
+[mine]   cell misses growing > 6: none (largest +1.40); deck gaps growing > 2: none (largest +0.09)
+[mine]     deck           altaria: kog3  55.0 -> kta3  54.8; Limitless  54.5; change in gap -0.13
+[mine]     deck          blaziken: kog3  58.4 -> kta3  58.5; Limitless  52.3; change in gap +0.02
+[mine]     deck         hydreigon: kog3  51.3 -> kta3  51.2; Limitless  43.9; change in gap -0.11
+[mine]     deck           lucario: kog3  52.7 -> kta3  52.7; Limitless  45.6; change in gap -0.02
+[mine]     deck          sceptile: kog3  61.3 -> kta3  61.2; Limitless  49.0; change in gap -0.18
+[mine]     deck           suicune: kog3  51.7 -> kta3  51.8; Limitless  48.9; change in gap +0.09
+[mine]     deck         vespiquen: kog3  47.8 -> kta3  47.7; Limitless  52.7; change in gap +0.09
+[mine]     deck           weezing: kog3  50.2 -> kta3  50.0; Limitless  48.5; change in gap -0.18
+[mine]     deck          rayquaza: kog3  28.8 -> kta3  29.5; Limitless  46.7; change in gap -0.69
+[mine]     deck  altaria_greninja: kog3  42.7 -> kta3  42.6; Limitless  57.9; change in gap +0.09
+[mine] 44-cell decision set: dMSE (kta3 - kog3) -4.351 points^2 (delta-method sd 2.17: -8.6 to -0.1); real error kog3 13.726 kta3 13.566; margin (kog3 - kta3) +0.160
+[mine]   cell misses growing > 6: none (largest +1.40); deck gaps growing > 2: none (largest +0.09)
+[score45 unrounded, --reps 4000] 45 cells (all): dMSE lo (2.5%) -8.9830; dMSE hi (97.5%) +0.0655; dMSE by event lo -8.9758; dMSE by event hi +0.1449; tau margin lo (5%) +0.0188; tau margin hi (95%) +0.2540; tau by event lo +0.0163; tau by event hi +0.2463
+   label at these reps: SPANS zero (outcome 3, the fallback); width 9.049, 5% of width 0.452; upper edge within 5% of 0: True; lower edge within: False; tau lower bound within 0.10 of -1.0: False
+[score45 unrounded, --reps 4000] 44-cell decision set: dMSE lo (2.5%) -9.0242; dMSE hi (97.5%) +0.1180; dMSE by event lo -9.0165; dMSE by event hi +0.1184; tau margin lo (5%) +0.0215; tau margin hi (95%) +0.2559; tau by event lo +0.0185; tau by event hi +0.2519
+   label at these reps: SPANS zero (outcome 3, the fallback); width 9.142, 5% of width 0.457; upper edge within 5% of 0: True; lower edge within: False; tau lower bound within 0.10 of -1.0: False
+
+score45's page (/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/kta_tables_2026-09-29/second_reader/sr2_score45_page.txt), key lines:
+   Veto rule: rules v2 (pre-registered Sept 25): a veto counts only when mixed rows on the same deals show the changed pilot's own side got worse beyond their paired noise, and never on a cell whose Limitless band is wider than +/-15; otherwise it is an investigation item
+   Mixed rows: /mnt/c/Users/dacz8/AppData/Local/Temp/claude/C--Users-dacz8-Projects/1b119d13-736d-4588-ba63-0e9ef1756970/scratchpad/wf_kta2/second-reader/sr_mixed_first.jsonl + /mnt/c/Users/dacz8/AppData/Local/Temp/claude/C--Users-dacz8-Projects/1b119d13-736d-4588-ba63-0e9ef1756970/scratchpad/wf_kta2/second-reader/sr_mixed_second.jsonl (22500 games with kta3 on the first-named deck only, 22500 on the second-named only)
+   == all cells: 45 pairings
+           kog3: real error 13.6 | reported only: correlation 0.51, average miss 12.5, favorite right 30/45, clear 16/20, beyond chance 15
+                 PASS (a) real error <= 5.5: no | (b) cells over by >10 beyond noise: sceptile v vespiquen, rayquaza v lucario, rayquaza v sceptile, rayquaza v vespiquen, altaria_greninja v sceptile | (c) decks off by >6: altaria_greninja, blaziken, hydreigon, lucario, rayquaza, sceptile
+           kta3: real error 13.4 | reported only: correlation 0.51, average miss 12.4, favorite right 30/45, clear 16/20, beyond chance 15
+                 PASS (a) real error <= 5.5: no | (b) cells over by >10 beyond noise: sceptile v vespiquen, rayquaza v lucario, rayquaza v sceptile, rayquaza v vespiquen, altaria_greninja v sceptile | (c) decks off by >6: altaria_greninja, blaziken, hydreigon, lucario, rayquaza, sceptile
+     dMSE new - current: -4.3 points^2, 95% interval -9.0 to +0.1 (not below 0) [Limitless side binomial]
+     dMSE, Limitless side resampled by event: 95% interval -9.0 to +0.1 (not below 0; 67 of 4067 event draws redrawn because a cell had no match)
+     real error, current minus new: +0.16 points, 90% interval +0.02 to +0.25 (margin rule: E = 3; 'current' is the cheap bot when comparing variants)
+     real error, Limitless side resampled by event: 90% interval +0.02 to +0.25
+     cell veto (miss grows > 6): none
+     deck veto (gap grows > 2): none
+     ADOPTION RULE (v2): do not adopt (dMSE interval not below 0) (held-out-deck veto checked separately)
+   == decision set (Altaria v Sceptile quarantined): 44 pairings
+           kog3: real error 13.7 | reported only: correlation 0.51, average miss 12.8, favorite right 29/44, clear 16/20, beyond chance 15
+                 PASS (a) real error <= 5.5: no | (b) cells over by >10 beyond noise: sceptile v vespiquen, rayquaza v lucario, rayquaza v sceptile, rayquaza v vespiquen, altaria_greninja v sceptile | (c) decks off by >6: altaria_greninja, blaziken, hydreigon, lucario, rayquaza, sceptile
+           kta3: real error 13.6 | reported only: correlation 0.51, average miss 12.7, favorite right 29/44, clear 16/20, beyond chance 15
+                 PASS (a) real error <= 5.5: no | (b) cells over by >10 beyond noise: sceptile v vespiquen, rayquaza v lucario, rayquaza v sceptile, rayquaza v vespiquen, altaria_greninja v sceptile | (c) decks off by >6: altaria_greninja, blaziken, hydreigon, lucario, rayquaza, sceptile
+     dMSE new - current: -4.4 points^2, 95% interval -9.0 to +0.1 (not below 0) [Limitless side binomial]
+     dMSE, Limitless side resampled by event: 95% interval -9.0 to +0.1 (not below 0; 67 of 4067 event draws redrawn because a cell had no match)
+     real error, current minus new: +0.16 points, 90% interval +0.02 to +0.26 (margin rule: E = 3; 'current' is the cheap bot when comparing variants)
+     real error, Limitless side resampled by event: 90% interval +0.02 to +0.25
+     cell veto (miss grows > 6): none
+     deck veto (gap grows > 2): none
+     ADOPTION RULE (v2): do not adopt (dMSE interval not below 0) (held-out-deck veto checked separately)
+   Mixed rows: each deck's own score change with kta3 on that deck only, against kog3 on both sides, same deals (95% range from per-deal differences)
+   Mixed rows by deck, decision set (reported only; the vetoes above use them only when a veto fires): the deck's own side with kta3 on it only, and its opponents' own side with kta3 on them only, pooled over the deck's cells (mean of cell changes, 95% range)

@@ -1,0 +1,77 @@
+FOOTPRINT kta3 v kog3, 45 cells, paired by (a, b, i), seeds and seats checked equal: 528 of 22500 = 2.3467% -> reserve (5.2)
+  games among those whose result (first_deck_score) changed: 113
+  cells with a changed game: 17 of 45
+    altaria v suicune: 10
+    blaziken v suicune: 27
+    hydreigon v suicune: 23
+    lucario v suicune: 32
+    sceptile v suicune: 30
+    suicune v vespiquen: 31
+    suicune v weezing: 14
+    rayquaza v lucario: 44
+    rayquaza v altaria: 27
+    rayquaza v sceptile: 50
+    rayquaza v vespiquen: 48
+    rayquaza v suicune: 37
+    rayquaza v hydreigon: 31
+    rayquaza v weezing: 30
+    rayquaza v blaziken: 23
+    altaria_greninja v suicune: 17
+    rayquaza v altaria_greninja: 54
+  INTEGRITY (section 4 line): cells a switch-1 list reaches: 17; changed cells outside them: none
+  changed cells == reach cells: True
+MIXED ROWS run at 500 deals: first 17 cells, second 17 cells; equal to the changed cells: True
+i<40 samples: first 28 cells, second 28 cells; equal to the zero-footprint cells: True
+INTEGRITY (N5/K5): i<40 sample games in zero-footprint cells that differ from kog3's (moves or score): 0 of 2240
+mixed-row games that differ from kog3's (moves): first 236, second 311, total 547 (of them on deals where the both-sides games did not differ: 0 and 0)
+composite first: 22500 games -> /mnt/c/Users/dacz8/AppData/Local/Temp/claude/C--Users-dacz8-Projects/1b119d13-736d-4588-ba63-0e9ef1756970/scratchpad/wf_kta2/second-reader/sr_mixed_first.jsonl
+composite second: 22500 games -> /mnt/c/Users/dacz8/AppData/Local/Temp/claude/C--Users-dacz8-Projects/1b119d13-736d-4588-ba63-0e9ef1756970/scratchpad/wf_kta2/second-reader/sr_mixed_second.jsonl
+first reader's first composite: 22500 games, fields ['a', 'a_file', 'b', 'b_file', 'bot_a', 'bot_b', 'first_deck_score', 'first_seat', 'i', 'moves', 'pairing', 'seed']; records unequal to mine on those fields: 0
+first reader's second composite: 22500 games, fields ['a', 'a_file', 'b', 'b_file', 'bot_a', 'bot_b', 'first_deck_score', 'first_seat', 'i', 'moves', 'pairing', 'seed']; records unequal to mine on those fields: 0
+CLAUSE (c): own side (kta3 on that deck only v kog3 on both), pooled over the deck's cells with a changed game
+            altaria: own side -0.100 +/- 0.196 over 2 cells (1000 deals; 18 mixed-row games changed)
+           blaziken: own side +0.000 +/- 0.277 over 2 cells (1000 deals; 21 mixed-row games changed)
+          hydreigon: own side +0.100 +/- 0.196 over 2 cells (1000 deals; 18 mixed-row games changed)
+            lucario: own side +0.300 +/- 0.339 over 2 cells (1000 deals; 39 mixed-row games changed)
+           sceptile: own side +0.000 +/- 0.000 over 2 cells (1000 deals; 1 mixed-row games changed)
+            suicune: own side +0.133 +/- 0.282 over 9 cells (4500 deals; 197 mixed-row games changed)
+          vespiquen: own side -0.100 +/- 0.340 over 2 cells (1000 deals; 22 mixed-row games changed)
+            weezing: own side +0.000 +/- 0.000 over 2 cells (1000 deals; 5 mixed-row games changed)
+           rayquaza: own side +0.778 +/- 0.328 over 9 cells (4500 deals; 183 mixed-row games changed)
+   altaria_greninja: own side +0.100 +/- 0.439 over 2 cells (1000 deals; 43 mixed-row games changed)
+  (c) decks worse: none; mixed-row games changed, both directions: 547
+  per cell side (reported):
+    altaria v suicune, altaria's side: +0.00 +/- 0.00 (0 changed)
+    altaria v suicune, suicune's side: -0.20 +/- 0.39 (10 changed)
+    blaziken v suicune, blaziken's side: -0.20 +/- 0.39 (3 changed)
+    blaziken v suicune, suicune's side: -0.20 +/- 0.68 (25 changed)
+    hydreigon v suicune, hydreigon's side: +0.00 +/- 0.00 (0 changed)
+    hydreigon v suicune, suicune's side: +0.20 +/- 0.68 (23 changed)
+    lucario v suicune, lucario's side: +0.20 +/- 0.39 (6 changed)
+    lucario v suicune, suicune's side: -0.40 +/- 0.96 (29 changed)
+    sceptile v suicune, sceptile's side: +0.00 +/- 0.00 (0 changed)
+    sceptile v suicune, suicune's side: +1.00 +/- 0.87 (30 changed)
+    suicune v vespiquen, suicune's side: +0.00 +/- 1.24 (30 changed)
+    suicune v vespiquen, vespiquen's side: +0.00 +/- 0.00 (5 changed)
+    suicune v weezing, suicune's side: +0.20 +/- 0.68 (13 changed)
+    suicune v weezing, weezing's side: +0.00 +/- 0.00 (1 changed)
+    rayquaza v lucario, rayquaza's side: +1.00 +/- 0.87 (12 changed)
+    rayquaza v lucario, lucario's side: +0.40 +/- 0.55 (33 changed)
+    rayquaza v altaria, rayquaza's side: +1.20 +/- 0.96 (11 changed)
+    rayquaza v altaria, altaria's side: -0.20 +/- 0.39 (18 changed)
+    rayquaza v sceptile, rayquaza's side: +0.80 +/- 1.11 (49 changed)
+    rayquaza v sceptile, sceptile's side: +0.00 +/- 0.00 (1 changed)
+    rayquaza v vespiquen, rayquaza's side: +0.60 +/- 1.30 (34 changed)
+    rayquaza v vespiquen, vespiquen's side: -0.20 +/- 0.68 (17 changed)
+    rayquaza v suicune, rayquaza's side: +0.60 +/- 1.04 (19 changed)
+    rayquaza v suicune, suicune's side: +0.20 +/- 0.88 (20 changed)
+    rayquaza v hydreigon, rayquaza's side: +0.80 +/- 0.78 (14 changed)
+    rayquaza v hydreigon, hydreigon's side: +0.20 +/- 0.39 (18 changed)
+    rayquaza v weezing, rayquaza's side: +1.40 +/- 1.17 (27 changed)
+    rayquaza v weezing, weezing's side: +0.00 +/- 0.00 (4 changed)
+    rayquaza v blaziken, rayquaza's side: +0.00 +/- 0.00 (5 changed)
+    rayquaza v blaziken, blaziken's side: +0.20 +/- 0.39 (18 changed)
+    altaria_greninja v suicune, altaria_greninja's side: +0.00 +/- 0.00 (1 changed)
+    altaria_greninja v suicune, suicune's side: +0.40 +/- 0.96 (17 changed)
+    rayquaza v altaria_greninja, rayquaza's side: +0.60 +/- 1.04 (12 changed)
+    rayquaza v altaria_greninja, altaria_greninja's side: +0.20 +/- 0.88 (42 changed)

@@ -368,8 +368,13 @@ sides with k3 still available; the 0.7.2 wheel and its run identities are untouc
       - **Two additions to readings (columns, not rules):**
         - the reading says which condition carried the verdict. "No harm with almost no changed games" is the reserve route working as designed, but it says little. The informative parts are the gain on the pre-named decks and the footprint.
         - a per-cell breakdown beside a pooled gain, "so a gain that is really one cell is visible as one cell".
+  - kta (kog + switch 1, the Tool cut; registered Sept 29): **adopted as the working pilot, "unconfirmed", Sept 30** (`results/kta_tables_2026-09-29/READING.md`; two readers agree on every number that gates; the outcome audit found no blocker).
+    - Reserve route (footprint 2.35%). ΔMSE −4.3, 95% −8.8 to +0.0 at the deciding 20,000 reps: spans zero, "inconclusive at this size", so the fallback.
+    - The fallback's four tests held: no harm (τ̂ +0.16, 90% +0.02 to +0.25; no veto; no deck worse), coverage (Scizor −0.45 ± 0.65; B2e held-out and second lists unhurt), (d) +1.03 ± 0.18 over 8 × 2,000 with every row above zero (Vespiquen +2.85, a third of it), and Jasmine at 31.35% against kog3's 0.39%.
+    - Held-out direction flat (3 closer, 2 further, 1 unchanged, mean +0.00). Deck 07 replicated: +8.1 (+6.2 to +10.0).
+    - Joined the post-freeze list Sept 30. An engine switch must carry its presets (and settle the `kta3` name clash) before the screen or the floor use it.
   - kph is not run (superseded by koh on the composed base).
-- **Waiting on post-freeze data:** kpg's confirmation, koa's no-harm re-check and kog's own row (`results/postfreeze_2026-09-27/README.md`). Read once, at 804 + 303 matches (about mid-October) or at the last pull before Mega Garchomp ex.
+- **Waiting on post-freeze data:** kpg's confirmation, koa's no-harm re-check, kog's own row and kta's no-harm re-check (`results/postfreeze_2026-09-27/README.md`). Read once, at 804 + 303 matches (about mid-October) or at the last pull before Mega Garchomp ex.
 - **Holds:** deck ranking stays on hold (14.0 against 5.5; the ladder-weighted panel and calibration are unfinished). The floor check may be used under the A2 decision. The quick screen's ranking is on hold.
 - **Finished, with where:**
   - kp3 was confirmed on the Sept 25 holdout, which is now spent (`results/holdout_kp3_2026-09-25/`).

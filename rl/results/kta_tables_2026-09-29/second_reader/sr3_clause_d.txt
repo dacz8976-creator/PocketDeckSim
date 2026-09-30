@@ -1,0 +1,15 @@
+seeds: every game 23,003,000,000 + row x 10,000 + i, i < 2,000, both arms, paired by seed: checked (16,000 games per arm)
+sides: Rayquaza = the census list (side a) in both arms; bots kog3/kog3 v kta3/kog3; even i = seat 0: checked
+kta3-arm games whose moves differ from kog3's: 862 of 16,000; results better 198, worse 32
+  v altaria   : kog3 36.30 -> kta3 37.10  (+0.800 +/- 0.414); share +10%
+  v blaziken  : kog3 30.02 -> kta3 30.43  (+0.400 +/- 0.268); share +5%
+  v hydreigon : kog3 27.30 -> kta3 28.20  (+0.900 +/- 0.458); share +11%
+  v lucario   : kog3 38.60 -> kta3 39.10  (+0.500 +/- 0.339); share +6%
+  v sceptile  : kog3 17.40 -> kta3 18.10  (+0.700 +/- 0.536); share +8%
+  v suicune   : kog3 27.10 -> kta3 28.50  (+1.400 +/- 0.568); share +17%
+  v vespiquen : kog3 24.85 -> kta3 27.70  (+2.850 +/- 0.862); share +35%
+  v weezing   : kog3 17.05 -> kta3 17.75  (+0.700 +/- 0.499); share +8%
+POOLED (equal weight over 8 rows): +1.0312 +/- 0.1842 points (interval +0.8471 to +1.2154); sd 0.0940; MDE50 0.184, MDE80 0.263
+CLAUSE (d): PASS: the whole 95% interval is above zero
+  largest row: vespiquen +2.850 = 35% of the sum of row means (more than half: False)
+  without that row (7-row equal weight): +0.771
