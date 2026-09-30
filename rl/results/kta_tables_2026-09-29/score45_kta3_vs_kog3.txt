@@ -1,7 +1,7 @@
 45-cell scoreboard: 45 pairs; Limitless development half (v2's 28 + the gauntlet's 17)
 Reading: kta3 (new) against kog3 (current), 45 common pairings.
 Source: /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/kta_tables_2026-09-29/ec7e1a8_fresh_kog3_table.jsonl + /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/kta_tables_2026-09-29/ec7e1a8_fresh_kog3_new17.jsonl (current) vs /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/kta_tables_2026-09-29/ec7e1a8_fresh_kta3_table.jsonl + /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/kta_tables_2026-09-29/ec7e1a8_fresh_kta3_new17.jsonl (new), paired by deal
-Limitless cells: /tmp/tmpqg4ix8ka.json
+Limitless cells: /tmp/tmp_2hfqykv.json
 Limitless events: /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/kpf_2026-09-26/reading/../../scoreboard_v3_2026-09-27/limitless_45_dev_events.json (59 events)
 Veto rule: rules v2 (pre-registered Sept 25): a veto counts only when mixed rows on the same deals show the changed pilot's own side got worse beyond their paired noise, and never on a cell whose Limitless band is wider than +/-15; otherwise it is an investigation item
 Mixed rows: /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/kta_tables_2026-09-29/score45_inputs/ec7e1a8_fresh_kta3_mixed_first_composite.jsonl + /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/kta_tables_2026-09-29/score45_inputs/ec7e1a8_fresh_kta3_mixed_second_composite.jsonl (22500 games with kta3 on the first-named deck only, 22500 on the second-named only)
@@ -11,10 +11,10 @@ Mixed rows: /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results
               PASS (a) real error <= 5.5: no | (b) cells over by >10 beyond noise: sceptile v vespiquen, rayquaza v lucario, rayquaza v sceptile, rayquaza v vespiquen, altaria_greninja v sceptile | (c) decks off by >6: altaria_greninja, blaziken, hydreigon, lucario, rayquaza, sceptile
         kta3: real error 13.4 | reported only: correlation 0.51, average miss 12.4, favorite right 30/45, clear 16/20, beyond chance 15
               PASS (a) real error <= 5.5: no | (b) cells over by >10 beyond noise: sceptile v vespiquen, rayquaza v lucario, rayquaza v sceptile, rayquaza v vespiquen, altaria_greninja v sceptile | (c) decks off by >6: altaria_greninja, blaziken, hydreigon, lucario, rayquaza, sceptile
-  dMSE new - current: -4.3 points^2, 95% interval -9.0 to +0.1 (not below 0) [Limitless side binomial]
-  dMSE, Limitless side resampled by event: 95% interval -9.0 to +0.1 (not below 0; 67 of 4067 event draws redrawn because a cell had no match)
+  dMSE new - current: -4.3 points^2, 95% interval -8.8 to +0.0 (not below 0) [Limitless side binomial]
+  dMSE, Limitless side resampled by event: 95% interval -8.9 to +0.3 (not below 0; 340 of 20340 event draws redrawn because a cell had no match)
   real error, current minus new: +0.16 points, 90% interval +0.02 to +0.25 (margin rule: E = 3; 'current' is the cheap bot when comparing variants)
-  real error, Limitless side resampled by event: 90% interval +0.02 to +0.25
+  real error, Limitless side resampled by event: 90% interval +0.01 to +0.25
   cell veto (miss grows > 6): none
   deck veto (gap grows > 2): none
   ADOPTION RULE (v2): do not adopt (dMSE interval not below 0) (held-out-deck veto checked separately)
@@ -34,13 +34,13 @@ Mixed rows: /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results
               PASS (a) real error <= 5.5: no | (b) cells over by >10 beyond noise: sceptile v vespiquen, rayquaza v lucario, rayquaza v sceptile, rayquaza v vespiquen, altaria_greninja v sceptile | (c) decks off by >6: altaria_greninja, blaziken, hydreigon, lucario, rayquaza, sceptile
         kta3: real error 13.6 | reported only: correlation 0.51, average miss 12.7, favorite right 29/44, clear 16/20, beyond chance 15
               PASS (a) real error <= 5.5: no | (b) cells over by >10 beyond noise: sceptile v vespiquen, rayquaza v lucario, rayquaza v sceptile, rayquaza v vespiquen, altaria_greninja v sceptile | (c) decks off by >6: altaria_greninja, blaziken, hydreigon, lucario, rayquaza, sceptile
-  dMSE new - current: -4.4 points^2, 95% interval -9.0 to +0.1 (not below 0) [Limitless side binomial]
-  dMSE, Limitless side resampled by event: 95% interval -9.0 to +0.1 (not below 0; 67 of 4067 event draws redrawn because a cell had no match)
+  dMSE new - current: -4.4 points^2, 95% interval -9.1 to -0.0 (below 0) [Limitless side binomial]
+  dMSE, Limitless side resampled by event: 95% interval -9.0 to +0.2 (not below 0; 340 of 20340 event draws redrawn because a cell had no match)
   real error, current minus new: +0.16 points, 90% interval +0.02 to +0.26 (margin rule: E = 3; 'current' is the cheap bot when comparing variants)
   real error, Limitless side resampled by event: 90% interval +0.02 to +0.25
   cell veto (miss grows > 6): none
   deck veto (gap grows > 2): none
-  ADOPTION RULE (v2): do not adopt (dMSE interval not below 0) (held-out-deck veto checked separately)
+  ADOPTION RULE (v2): adopt (held-out-deck veto checked separately)
 
   Deck averages over these cells (current / new / Limitless; change in miss, + = further from Limitless):
       altaria:  56.1 /  56.0 /  55.7   -0.2
