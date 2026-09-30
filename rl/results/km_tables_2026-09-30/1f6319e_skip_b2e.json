@@ -1,0 +1,1959 @@
+{
+ "group": "b2e",
+ "rule": "\"For coverage, skip mixed rows only when every corresponding deal has matching complete move fingerprints, decks, seeds and seats. Matching winners alone is insufficient.\" (Dustin, Sept 29; REGISTRATION.md top block, item 3)",
+ "fields": [
+  "moves",
+  "a",
+  "b",
+  "a_file",
+  "b_file",
+  "seed",
+  "first_seat"
+ ],
+ "deals": 500,
+ "base": {
+  "code": "kta3",
+  "file": "ec7e1a8_b2e_kta3.jsonl",
+  "sha256": "38abd687e38c27285383616876729fd465bc4e42fe9445cddfe17ca7cde468ae"
+ },
+ "cand": {
+  "code": "km3",
+  "file": "1f6319e_b2e_km3.jsonl",
+  "sha256": "fa6fcaf5a4d219a1b4a9ad4ddd4cb0dbb83bc8498481c9ee69390dbfad863b63"
+ },
+ "context": "Coverage (step 5; block item 7): km3's both-sides games against kta3's references (Amendment 1 (b) item 2); the own-side mixed rows run on every pairing listed RUN. Pairings 0-47 (held-out) count; 48-95 (Dustin's files) are reported.",
+ "pairings": {
+  "0": {
+   "cell": "manectric v lucario",
+   "skip": false,
+   "differing_deals": 135,
+   "by_field": {
+    "moves": 135,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": {
+    "i": 0,
+    "fields": [
+     "moves"
+    ]
+   },
+   "winners_equal_among_differing": 119,
+   "why": "135 of 500 deals differ (moves 135); first at i = 0 (moves); winners equal on 119 of those 135 deals, which does not make it skip"
+  },
+  "1": {
+   "cell": "manectric v altaria",
+   "skip": false,
+   "differing_deals": 85,
+   "by_field": {
+    "moves": 85,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": {
+    "i": 10,
+    "fields": [
+     "moves"
+    ]
+   },
+   "winners_equal_among_differing": 80,
+   "why": "85 of 500 deals differ (moves 85); first at i = 10 (moves); winners equal on 80 of those 85 deals, which does not make it skip"
+  },
+  "2": {
+   "cell": "manectric v sceptile",
+   "skip": false,
+   "differing_deals": 105,
+   "by_field": {
+    "moves": 105,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": {
+    "i": 1,
+    "fields": [
+     "moves"
+    ]
+   },
+   "winners_equal_among_differing": 93,
+   "why": "105 of 500 deals differ (moves 105); first at i = 1 (moves); winners equal on 93 of those 105 deals, which does not make it skip"
+  },
+  "3": {
+   "cell": "manectric v vespiquen",
+   "skip": false,
+   "differing_deals": 158,
+   "by_field": {
+    "moves": 158,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": {
+    "i": 1,
+    "fields": [
+     "moves"
+    ]
+   },
+   "winners_equal_among_differing": 144,
+   "why": "158 of 500 deals differ (moves 158); first at i = 1 (moves); winners equal on 144 of those 158 deals, which does not make it skip"
+  },
+  "4": {
+   "cell": "manectric v suicune",
+   "skip": false,
+   "differing_deals": 59,
+   "by_field": {
+    "moves": 59,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": {
+    "i": 2,
+    "fields": [
+     "moves"
+    ]
+   },
+   "winners_equal_among_differing": 53,
+   "why": "59 of 500 deals differ (moves 59); first at i = 2 (moves); winners equal on 53 of those 59 deals, which does not make it skip"
+  },
+  "5": {
+   "cell": "manectric v hydreigon",
+   "skip": false,
+   "differing_deals": 129,
+   "by_field": {
+    "moves": 129,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": {
+    "i": 9,
+    "fields": [
+     "moves"
+    ]
+   },
+   "winners_equal_among_differing": 115,
+   "why": "129 of 500 deals differ (moves 129); first at i = 9 (moves); winners equal on 115 of those 129 deals, which does not make it skip"
+  },
+  "6": {
+   "cell": "manectric v weezing",
+   "skip": false,
+   "differing_deals": 61,
+   "by_field": {
+    "moves": 61,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": {
+    "i": 1,
+    "fields": [
+     "moves"
+    ]
+   },
+   "winners_equal_among_differing": 57,
+   "why": "61 of 500 deals differ (moves 61); first at i = 1 (moves); winners equal on 57 of those 61 deals, which does not make it skip"
+  },
+  "7": {
+   "cell": "manectric v blaziken",
+   "skip": false,
+   "differing_deals": 55,
+   "by_field": {
+    "moves": 55,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": {
+    "i": 0,
+    "fields": [
+     "moves"
+    ]
+   },
+   "winners_equal_among_differing": 46,
+   "why": "55 of 500 deals differ (moves 55); first at i = 0 (moves); winners equal on 46 of those 55 deals, which does not make it skip"
+  },
+  "8": {
+   "cell": "raticate v lucario",
+   "skip": false,
+   "differing_deals": 221,
+   "by_field": {
+    "moves": 221,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": {
+    "i": 0,
+    "fields": [
+     "moves"
+    ]
+   },
+   "winners_equal_among_differing": 201,
+   "why": "221 of 500 deals differ (moves 221); first at i = 0 (moves); winners equal on 201 of those 221 deals, which does not make it skip"
+  },
+  "9": {
+   "cell": "raticate v altaria",
+   "skip": false,
+   "differing_deals": 150,
+   "by_field": {
+    "moves": 150,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": {
+    "i": 9,
+    "fields": [
+     "moves"
+    ]
+   },
+   "winners_equal_among_differing": 130,
+   "why": "150 of 500 deals differ (moves 150); first at i = 9 (moves); winners equal on 130 of those 150 deals, which does not make it skip"
+  },
+  "10": {
+   "cell": "raticate v sceptile",
+   "skip": false,
+   "differing_deals": 111,
+   "by_field": {
+    "moves": 111,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": {
+    "i": 1,
+    "fields": [
+     "moves"
+    ]
+   },
+   "winners_equal_among_differing": 96,
+   "why": "111 of 500 deals differ (moves 111); first at i = 1 (moves); winners equal on 96 of those 111 deals, which does not make it skip"
+  },
+  "11": {
+   "cell": "raticate v vespiquen",
+   "skip": false,
+   "differing_deals": 126,
+   "by_field": {
+    "moves": 126,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": {
+    "i": 0,
+    "fields": [
+     "moves"
+    ]
+   },
+   "winners_equal_among_differing": 97,
+   "why": "126 of 500 deals differ (moves 126); first at i = 0 (moves); winners equal on 97 of those 126 deals, which does not make it skip"
+  },
+  "12": {
+   "cell": "raticate v suicune",
+   "skip": false,
+   "differing_deals": 41,
+   "by_field": {
+    "moves": 41,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": {
+    "i": 40,
+    "fields": [
+     "moves"
+    ]
+   },
+   "winners_equal_among_differing": 39,
+   "why": "41 of 500 deals differ (moves 41); first at i = 40 (moves); winners equal on 39 of those 41 deals, which does not make it skip"
+  },
+  "13": {
+   "cell": "raticate v hydreigon",
+   "skip": false,
+   "differing_deals": 191,
+   "by_field": {
+    "moves": 191,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": {
+    "i": 0,
+    "fields": [
+     "moves"
+    ]
+   },
+   "winners_equal_among_differing": 168,
+   "why": "191 of 500 deals differ (moves 191); first at i = 0 (moves); winners equal on 168 of those 191 deals, which does not make it skip"
+  },
+  "14": {
+   "cell": "raticate v weezing",
+   "skip": false,
+   "differing_deals": 47,
+   "by_field": {
+    "moves": 47,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": {
+    "i": 30,
+    "fields": [
+     "moves"
+    ]
+   },
+   "winners_equal_among_differing": 40,
+   "why": "47 of 500 deals differ (moves 47); first at i = 30 (moves); winners equal on 40 of those 47 deals, which does not make it skip"
+  },
+  "15": {
+   "cell": "raticate v blaziken",
+   "skip": false,
+   "differing_deals": 36,
+   "by_field": {
+    "moves": 36,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": {
+    "i": 19,
+    "fields": [
+     "moves"
+    ]
+   },
+   "winners_equal_among_differing": 30,
+   "why": "36 of 500 deals differ (moves 36); first at i = 19 (moves); winners equal on 30 of those 36 deals, which does not make it skip"
+  },
+  "16": {
+   "cell": "hoopa_absol v lucario",
+   "skip": false,
+   "differing_deals": 318,
+   "by_field": {
+    "moves": 318,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": {
+    "i": 0,
+    "fields": [
+     "moves"
+    ]
+   },
+   "winners_equal_among_differing": 221,
+   "why": "318 of 500 deals differ (moves 318); first at i = 0 (moves); winners equal on 221 of those 318 deals, which does not make it skip"
+  },
+  "17": {
+   "cell": "hoopa_absol v altaria",
+   "skip": false,
+   "differing_deals": 186,
+   "by_field": {
+    "moves": 186,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": {
+    "i": 1,
+    "fields": [
+     "moves"
+    ]
+   },
+   "winners_equal_among_differing": 151,
+   "why": "186 of 500 deals differ (moves 186); first at i = 1 (moves); winners equal on 151 of those 186 deals, which does not make it skip"
+  },
+  "18": {
+   "cell": "hoopa_absol v sceptile",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "19": {
+   "cell": "hoopa_absol v vespiquen",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "20": {
+   "cell": "hoopa_absol v suicune",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "21": {
+   "cell": "hoopa_absol v hydreigon",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "22": {
+   "cell": "hoopa_absol v weezing",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "23": {
+   "cell": "hoopa_absol v blaziken",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "24": {
+   "cell": "garchomp v lucario",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "25": {
+   "cell": "garchomp v altaria",
+   "skip": false,
+   "differing_deals": 56,
+   "by_field": {
+    "moves": 56,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": {
+    "i": 2,
+    "fields": [
+     "moves"
+    ]
+   },
+   "winners_equal_among_differing": 55,
+   "why": "56 of 500 deals differ (moves 56); first at i = 2 (moves); winners equal on 55 of those 56 deals, which does not make it skip"
+  },
+  "26": {
+   "cell": "garchomp v sceptile",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "27": {
+   "cell": "garchomp v vespiquen",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "28": {
+   "cell": "garchomp v suicune",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "29": {
+   "cell": "garchomp v hydreigon",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "30": {
+   "cell": "garchomp v weezing",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "31": {
+   "cell": "garchomp v blaziken",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "32": {
+   "cell": "whimsicott v lucario",
+   "skip": false,
+   "differing_deals": 171,
+   "by_field": {
+    "moves": 171,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": {
+    "i": 1,
+    "fields": [
+     "moves"
+    ]
+   },
+   "winners_equal_among_differing": 148,
+   "why": "171 of 500 deals differ (moves 171); first at i = 1 (moves); winners equal on 148 of those 171 deals, which does not make it skip"
+  },
+  "33": {
+   "cell": "whimsicott v altaria",
+   "skip": false,
+   "differing_deals": 197,
+   "by_field": {
+    "moves": 197,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": {
+    "i": 5,
+    "fields": [
+     "moves"
+    ]
+   },
+   "winners_equal_among_differing": 168,
+   "why": "197 of 500 deals differ (moves 197); first at i = 5 (moves); winners equal on 168 of those 197 deals, which does not make it skip"
+  },
+  "34": {
+   "cell": "whimsicott v sceptile",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "35": {
+   "cell": "whimsicott v vespiquen",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "36": {
+   "cell": "whimsicott v suicune",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "37": {
+   "cell": "whimsicott v hydreigon",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "38": {
+   "cell": "whimsicott v weezing",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "39": {
+   "cell": "whimsicott v blaziken",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "40": {
+   "cell": "charizardy_entei v lucario",
+   "skip": false,
+   "differing_deals": 315,
+   "by_field": {
+    "moves": 315,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": {
+    "i": 1,
+    "fields": [
+     "moves"
+    ]
+   },
+   "winners_equal_among_differing": 250,
+   "why": "315 of 500 deals differ (moves 315); first at i = 1 (moves); winners equal on 250 of those 315 deals, which does not make it skip"
+  },
+  "41": {
+   "cell": "charizardy_entei v altaria",
+   "skip": false,
+   "differing_deals": 230,
+   "by_field": {
+    "moves": 230,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": {
+    "i": 1,
+    "fields": [
+     "moves"
+    ]
+   },
+   "winners_equal_among_differing": 173,
+   "why": "230 of 500 deals differ (moves 230); first at i = 1 (moves); winners equal on 173 of those 230 deals, which does not make it skip"
+  },
+  "42": {
+   "cell": "charizardy_entei v sceptile",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "43": {
+   "cell": "charizardy_entei v vespiquen",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "44": {
+   "cell": "charizardy_entei v suicune",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "45": {
+   "cell": "charizardy_entei v hydreigon",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "46": {
+   "cell": "charizardy_entei v weezing",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "47": {
+   "cell": "charizardy_entei v blaziken",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "48": {
+   "cell": "dustin_manectric v lucario",
+   "skip": false,
+   "differing_deals": 143,
+   "by_field": {
+    "moves": 143,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": {
+    "i": 17,
+    "fields": [
+     "moves"
+    ]
+   },
+   "winners_equal_among_differing": 123,
+   "why": "143 of 500 deals differ (moves 143); first at i = 17 (moves); winners equal on 123 of those 143 deals, which does not make it skip"
+  },
+  "49": {
+   "cell": "dustin_manectric v altaria",
+   "skip": false,
+   "differing_deals": 101,
+   "by_field": {
+    "moves": 101,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": {
+    "i": 1,
+    "fields": [
+     "moves"
+    ]
+   },
+   "winners_equal_among_differing": 89,
+   "why": "101 of 500 deals differ (moves 101); first at i = 1 (moves); winners equal on 89 of those 101 deals, which does not make it skip"
+  },
+  "50": {
+   "cell": "dustin_manectric v sceptile",
+   "skip": false,
+   "differing_deals": 93,
+   "by_field": {
+    "moves": 93,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": {
+    "i": 1,
+    "fields": [
+     "moves"
+    ]
+   },
+   "winners_equal_among_differing": 77,
+   "why": "93 of 500 deals differ (moves 93); first at i = 1 (moves); winners equal on 77 of those 93 deals, which does not make it skip"
+  },
+  "51": {
+   "cell": "dustin_manectric v vespiquen",
+   "skip": false,
+   "differing_deals": 139,
+   "by_field": {
+    "moves": 139,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": {
+    "i": 1,
+    "fields": [
+     "moves"
+    ]
+   },
+   "winners_equal_among_differing": 127,
+   "why": "139 of 500 deals differ (moves 139); first at i = 1 (moves); winners equal on 127 of those 139 deals, which does not make it skip"
+  },
+  "52": {
+   "cell": "dustin_manectric v suicune",
+   "skip": false,
+   "differing_deals": 47,
+   "by_field": {
+    "moves": 47,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": {
+    "i": 4,
+    "fields": [
+     "moves"
+    ]
+   },
+   "winners_equal_among_differing": 46,
+   "why": "47 of 500 deals differ (moves 47); first at i = 4 (moves); winners equal on 46 of those 47 deals, which does not make it skip"
+  },
+  "53": {
+   "cell": "dustin_manectric v hydreigon",
+   "skip": false,
+   "differing_deals": 111,
+   "by_field": {
+    "moves": 111,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": {
+    "i": 5,
+    "fields": [
+     "moves"
+    ]
+   },
+   "winners_equal_among_differing": 103,
+   "why": "111 of 500 deals differ (moves 111); first at i = 5 (moves); winners equal on 103 of those 111 deals, which does not make it skip"
+  },
+  "54": {
+   "cell": "dustin_manectric v weezing",
+   "skip": false,
+   "differing_deals": 72,
+   "by_field": {
+    "moves": 72,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": {
+    "i": 22,
+    "fields": [
+     "moves"
+    ]
+   },
+   "winners_equal_among_differing": 62,
+   "why": "72 of 500 deals differ (moves 72); first at i = 22 (moves); winners equal on 62 of those 72 deals, which does not make it skip"
+  },
+  "55": {
+   "cell": "dustin_manectric v blaziken",
+   "skip": false,
+   "differing_deals": 58,
+   "by_field": {
+    "moves": 58,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": {
+    "i": 25,
+    "fields": [
+     "moves"
+    ]
+   },
+   "winners_equal_among_differing": 48,
+   "why": "58 of 500 deals differ (moves 58); first at i = 25 (moves); winners equal on 48 of those 58 deals, which does not make it skip"
+  },
+  "56": {
+   "cell": "dustin_raticate v lucario",
+   "skip": false,
+   "differing_deals": 206,
+   "by_field": {
+    "moves": 206,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": {
+    "i": 2,
+    "fields": [
+     "moves"
+    ]
+   },
+   "winners_equal_among_differing": 185,
+   "why": "206 of 500 deals differ (moves 206); first at i = 2 (moves); winners equal on 185 of those 206 deals, which does not make it skip"
+  },
+  "57": {
+   "cell": "dustin_raticate v altaria",
+   "skip": false,
+   "differing_deals": 94,
+   "by_field": {
+    "moves": 94,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": {
+    "i": 2,
+    "fields": [
+     "moves"
+    ]
+   },
+   "winners_equal_among_differing": 82,
+   "why": "94 of 500 deals differ (moves 94); first at i = 2 (moves); winners equal on 82 of those 94 deals, which does not make it skip"
+  },
+  "58": {
+   "cell": "dustin_raticate v sceptile",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "59": {
+   "cell": "dustin_raticate v vespiquen",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "60": {
+   "cell": "dustin_raticate v suicune",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "61": {
+   "cell": "dustin_raticate v hydreigon",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "62": {
+   "cell": "dustin_raticate v weezing",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "63": {
+   "cell": "dustin_raticate v blaziken",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "64": {
+   "cell": "dustin_hoopa_absol v lucario",
+   "skip": false,
+   "differing_deals": 229,
+   "by_field": {
+    "moves": 229,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": {
+    "i": 2,
+    "fields": [
+     "moves"
+    ]
+   },
+   "winners_equal_among_differing": 175,
+   "why": "229 of 500 deals differ (moves 229); first at i = 2 (moves); winners equal on 175 of those 229 deals, which does not make it skip"
+  },
+  "65": {
+   "cell": "dustin_hoopa_absol v altaria",
+   "skip": false,
+   "differing_deals": 129,
+   "by_field": {
+    "moves": 129,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": {
+    "i": 1,
+    "fields": [
+     "moves"
+    ]
+   },
+   "winners_equal_among_differing": 103,
+   "why": "129 of 500 deals differ (moves 129); first at i = 1 (moves); winners equal on 103 of those 129 deals, which does not make it skip"
+  },
+  "66": {
+   "cell": "dustin_hoopa_absol v sceptile",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "67": {
+   "cell": "dustin_hoopa_absol v vespiquen",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "68": {
+   "cell": "dustin_hoopa_absol v suicune",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "69": {
+   "cell": "dustin_hoopa_absol v hydreigon",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "70": {
+   "cell": "dustin_hoopa_absol v weezing",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "71": {
+   "cell": "dustin_hoopa_absol v blaziken",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "72": {
+   "cell": "dustin_garchomp v lucario",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "73": {
+   "cell": "dustin_garchomp v altaria",
+   "skip": false,
+   "differing_deals": 97,
+   "by_field": {
+    "moves": 97,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": {
+    "i": 8,
+    "fields": [
+     "moves"
+    ]
+   },
+   "winners_equal_among_differing": 90,
+   "why": "97 of 500 deals differ (moves 97); first at i = 8 (moves); winners equal on 90 of those 97 deals, which does not make it skip"
+  },
+  "74": {
+   "cell": "dustin_garchomp v sceptile",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "75": {
+   "cell": "dustin_garchomp v vespiquen",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "76": {
+   "cell": "dustin_garchomp v suicune",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "77": {
+   "cell": "dustin_garchomp v hydreigon",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "78": {
+   "cell": "dustin_garchomp v weezing",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "79": {
+   "cell": "dustin_garchomp v blaziken",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "80": {
+   "cell": "dustin_whimsicott v lucario",
+   "skip": false,
+   "differing_deals": 264,
+   "by_field": {
+    "moves": 264,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": {
+    "i": 1,
+    "fields": [
+     "moves"
+    ]
+   },
+   "winners_equal_among_differing": 222,
+   "why": "264 of 500 deals differ (moves 264); first at i = 1 (moves); winners equal on 222 of those 264 deals, which does not make it skip"
+  },
+  "81": {
+   "cell": "dustin_whimsicott v altaria",
+   "skip": false,
+   "differing_deals": 205,
+   "by_field": {
+    "moves": 205,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": {
+    "i": 3,
+    "fields": [
+     "moves"
+    ]
+   },
+   "winners_equal_among_differing": 172,
+   "why": "205 of 500 deals differ (moves 205); first at i = 3 (moves); winners equal on 172 of those 205 deals, which does not make it skip"
+  },
+  "82": {
+   "cell": "dustin_whimsicott v sceptile",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "83": {
+   "cell": "dustin_whimsicott v vespiquen",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "84": {
+   "cell": "dustin_whimsicott v suicune",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "85": {
+   "cell": "dustin_whimsicott v hydreigon",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "86": {
+   "cell": "dustin_whimsicott v weezing",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "87": {
+   "cell": "dustin_whimsicott v blaziken",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "88": {
+   "cell": "dustin_charizardy_entei v lucario",
+   "skip": false,
+   "differing_deals": 350,
+   "by_field": {
+    "moves": 350,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": {
+    "i": 0,
+    "fields": [
+     "moves"
+    ]
+   },
+   "winners_equal_among_differing": 256,
+   "why": "350 of 500 deals differ (moves 350); first at i = 0 (moves); winners equal on 256 of those 350 deals, which does not make it skip"
+  },
+  "89": {
+   "cell": "dustin_charizardy_entei v altaria",
+   "skip": false,
+   "differing_deals": 240,
+   "by_field": {
+    "moves": 240,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": {
+    "i": 0,
+    "fields": [
+     "moves"
+    ]
+   },
+   "winners_equal_among_differing": 183,
+   "why": "240 of 500 deals differ (moves 240); first at i = 0 (moves); winners equal on 183 of those 240 deals, which does not make it skip"
+  },
+  "90": {
+   "cell": "dustin_charizardy_entei v sceptile",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "91": {
+   "cell": "dustin_charizardy_entei v vespiquen",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "92": {
+   "cell": "dustin_charizardy_entei v suicune",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "93": {
+   "cell": "dustin_charizardy_entei v hydreigon",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "94": {
+   "cell": "dustin_charizardy_entei v weezing",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "95": {
+   "cell": "dustin_charizardy_entei v blaziken",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  }
+ },
+ "skipped": [
+  18,
+  19,
+  20,
+  21,
+  22,
+  23,
+  24,
+  26,
+  27,
+  28,
+  29,
+  30,
+  31,
+  34,
+  35,
+  36,
+  37,
+  38,
+  39,
+  42,
+  43,
+  44,
+  45,
+  46,
+  47,
+  58,
+  59,
+  60,
+  61,
+  62,
+  63,
+  66,
+  67,
+  68,
+  69,
+  70,
+  71,
+  72,
+  74,
+  75,
+  76,
+  77,
+  78,
+  79,
+  82,
+  83,
+  84,
+  85,
+  86,
+  87,
+  90,
+  91,
+  92,
+  93,
+  94,
+  95
+ ],
+ "run": [
+  0,
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  13,
+  14,
+  15,
+  16,
+  17,
+  25,
+  32,
+  33,
+  40,
+  41,
+  48,
+  49,
+  50,
+  51,
+  52,
+  53,
+  54,
+  55,
+  56,
+  57,
+  64,
+  65,
+  73,
+  80,
+  81,
+  88,
+  89
+ ]
+}

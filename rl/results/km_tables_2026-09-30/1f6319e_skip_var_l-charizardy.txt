@@ -1,0 +1,20 @@
+COVERAGE SHORTCUT, var_l-charizardy
+Rule: "For coverage, skip mixed rows only when every corresponding deal has matching complete move fingerprints, decks, seeds and seats. Matching winners alone is insufficient." (Dustin, Sept 29; REGISTRATION.md top block, item 3)
+Compared deal by deal, on the deal key (pairing, i): moves, a, b, a_file, b_file, seed, first_seat (moves = the complete move fingerprint; a, b, a_file, b_file = both decks; seed; first_seat = the seats).
+A pairing is skipped only when every one of its deals is equal on all of them. winner_seat is not a criterion.
+kta3 both sides: /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/kt_tables_2026-09-28/ec7e1a8_var_l-charizardy_kta3.jsonl (4000 games, sha256 7980b996618ef0efbac8392db0a73a25a9466c700ddab70d58ee35b64ce0d271)
+km3 both sides: /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/km_tables_2026-09-30/1f6319e_var_l-charizardy_km3.jsonl (4000 games, sha256 caca2523e930820a32fb3df84e3322d98cafdb9fc54f5bbdc3ff9b129ff02df3)
+8 pairings x 500 deals.
+Coverage (step 5; block item 7): km3's both-sides games against kta3's references (Amendment 1 (b) item 2); the own-side mixed rows run on every pairing listed RUN.
+
+RUN var_l-charizardy 40: 194 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (l-charizardy v lucario): its mixed rows run; 306 of 500 deals differ (moves 306); first at i = 1 (moves); winners equal on 216 of those 306 deals, which does not make it skip
+RUN var_l-charizardy 41: 304 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (l-charizardy v altaria): its mixed rows run; 196 of 500 deals differ (moves 196); first at i = 3 (moves); winners equal on 157 of those 196 deals, which does not make it skip
+SKIP var_l-charizardy 42: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (l-charizardy v sceptile): its mixed rows are skipped
+SKIP var_l-charizardy 43: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (l-charizardy v vespiquen): its mixed rows are skipped
+SKIP var_l-charizardy 44: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (l-charizardy v suicune): its mixed rows are skipped
+SKIP var_l-charizardy 45: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (l-charizardy v hydreigon): its mixed rows are skipped
+SKIP var_l-charizardy 46: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (l-charizardy v weezing): its mixed rows are skipped
+SKIP var_l-charizardy 47: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (l-charizardy v blaziken): its mixed rows are skipped
+
+Skipped pairings (6): 42,43,44,45,46,47
+Pairings whose mixed rows run (2): 40,41

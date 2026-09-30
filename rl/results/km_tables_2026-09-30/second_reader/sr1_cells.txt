@@ -1,0 +1,76 @@
+FOOTPRINT km3 v kta3's references, 45 cells, paired by (a, b, i); bots, seeds (base + pairing x 10,000 + i), seats (i % 2) and files checked: 3117 of 22500 = 13.853333%
+  ROUTE from the integers: 100 x 3117 = 311700 < 15 x 22500 = 337500 -> RESERVE route (under 15%)
+  games whose result (first_deck_score) changed among them: 615; games whose decisions fingerprint differs: 3117 (reported)
+  cells with a changed game: 17 of 45
+    altaria v blaziken: 79
+    altaria v hydreigon: 82
+    altaria v lucario: 197
+    altaria v sceptile: 108
+    altaria v suicune: 227
+    altaria v vespiquen: 182
+    altaria v weezing: 184
+    blaziken v lucario: 160
+    hydreigon v lucario: 218
+    lucario v sceptile: 85
+    lucario v suicune: 303
+    lucario v vespiquen: 329
+    lucario v weezing: 315
+    rayquaza v lucario: 210
+    rayquaza v altaria: 199
+    altaria_greninja v lucario: 143
+    altaria_greninja v altaria: 96
+  footprint.txt: 3117 of 22500; by-cell counts equal to mine: True
+INTEGRITY (45 cells): cells holding a panel Altaria or Lucario list: 17; changed cells outside them: none; changed cells == the 17 named cells: True
+MIXED ROWS as run: first 17 cells, second 17 cells; both equal to the changed cells: True
+  mixed-row games whose moves differ from kta3's: first 1970, second 1664, total 3634; of them on deals where the both-sides games did not differ: 0 and 0 (reported: one side changed can differ where both did not)
+composite first: 22500 games (17 cells run, 28 cells as kta3's games relabelled km3/kta3)
+composite second: 22500 games (17 cells run, 28 cells as kta3's games relabelled kta3/km3)
+  first reader's first composite: 22500 games; fields ['a', 'b', 'bot_a', 'bot_b', 'first_deck_score', 'first_seat', 'i', 'moves', 'pairing', 'seed']; records unequal to mine: 0
+  first reader's second composite: 22500 games; fields ['a', 'b', 'bot_a', 'bot_b', 'first_deck_score', 'first_seat', 'i', 'moves', 'pairing', 'seed']; records unequal to mine: 0
+CLAUSE (c): own side (km3 on that deck only, kta3 on the other, v kta3 on both), pooled per deck over its cells with a changed game
+            altaria: +0.1778 +/- 0.5403 (-0.3625 to +0.7181) over 9 cells, 4500 deals, 1062 mixed games changed
+           blaziken: +0.2000 +/- 0.3920 (-0.1920 to +0.5920) over 2 cells, 1000 deals, 55 mixed games changed
+          hydreigon: +0.0000 +/- 0.3922 (-0.3922 to +0.3922) over 2 cells, 1000 deals, 24 mixed games changed
+            lucario: +0.8222 +/- 0.8316 (-0.0094 to +1.6539) over 9 cells, 4500 deals, 1778 mixed games changed
+           sceptile: -0.1000 +/- 0.1960 (-0.2960 to +0.0960) over 2 cells, 1000 deals, 50 mixed games changed
+            suicune: +2.5000 +/- 1.2370 (+1.2630 to +3.7370) over 2 cells, 1000 deals, 186 mixed games changed
+          vespiquen: +1.5000 +/- 1.0152 (+0.4848 to +2.5152) over 2 cells, 1000 deals, 203 mixed games changed
+            weezing: +1.0500 +/- 0.8802 (+0.1698 to +1.9302) over 2 cells, 1000 deals, 128 mixed games changed
+           rayquaza: +0.2000 +/- 0.8323 (-0.6323 to +1.0323) over 2 cells, 1000 deals, 112 mixed games changed
+   altaria_greninja: -0.2000 +/- 0.3920 (-0.5920 to +0.1920) over 2 cells, 1000 deals, 36 mixed games changed
+  (c) decks worse beyond paired noise: none -> PASS
+  per cell side (reported):
+    altaria v blaziken, altaria's side: -0.20 +/- 1.30 (61 changed)
+    altaria v blaziken, blaziken's side: +0.40 +/- 0.55 (21 changed)
+    altaria v hydreigon, altaria's side: +0.60 +/- 1.41 (73 changed)
+    altaria v hydreigon, hydreigon's side: +0.20 +/- 0.39 (11 changed)
+    altaria v lucario, altaria's side: +0.60 +/- 1.41 (109 changed)
+    altaria v lucario, lucario's side: -0.80 +/- 1.47 (126 changed)
+    altaria v sceptile, altaria's side: -1.00 +/- 1.03 (80 changed)
+    altaria v sceptile, sceptile's side: -0.20 +/- 0.39 (35 changed)
+    altaria v suicune, altaria's side: -0.60 +/- 1.80 (188 changed)
+    altaria v suicune, suicune's side: +5.00 +/- 2.14 (91 changed)
+    altaria v vespiquen, altaria's side: +0.20 +/- 2.04 (146 changed)
+    altaria v vespiquen, vespiquen's side: +1.60 +/- 1.46 (80 changed)
+    altaria v weezing, altaria's side: +2.40 +/- 2.07 (156 changed)
+    altaria v weezing, weezing's side: +0.70 +/- 0.90 (50 changed)
+    blaziken v lucario, blaziken's side: +0.00 +/- 0.55 (34 changed)
+    blaziken v lucario, lucario's side: -0.20 +/- 1.41 (144 changed)
+    hydreigon v lucario, hydreigon's side: -0.20 +/- 0.68 (13 changed)
+    hydreigon v lucario, lucario's side: +0.80 +/- 3.09 (215 changed)
+    lucario v sceptile, lucario's side: +0.20 +/- 0.68 (72 changed)
+    lucario v sceptile, sceptile's side: +0.00 +/- 0.00 (15 changed)
+    lucario v suicune, lucario's side: +4.00 +/- 3.12 (282 changed)
+    lucario v suicune, suicune's side: +0.00 +/- 1.24 (95 changed)
+    lucario v vespiquen, lucario's side: -3.00 +/- 3.15 (302 changed)
+    lucario v vespiquen, vespiquen's side: +1.40 +/- 1.41 (123 changed)
+    lucario v weezing, lucario's side: +6.00 +/- 3.47 (306 changed)
+    lucario v weezing, weezing's side: +1.40 +/- 1.51 (78 changed)
+    rayquaza v lucario, rayquaza's side: +0.20 +/- 0.68 (35 changed)
+    rayquaza v lucario, lucario's side: -0.40 +/- 2.83 (201 changed)
+    rayquaza v altaria, rayquaza's side: +0.20 +/- 1.52 (77 changed)
+    rayquaza v altaria, altaria's side: -0.60 +/- 1.71 (161 changed)
+    altaria_greninja v lucario, altaria_greninja's side: -0.40 +/- 0.78 (20 changed)
+    altaria_greninja v lucario, lucario's side: +0.80 +/- 1.47 (130 changed)
+    altaria_greninja v altaria, altaria_greninja's side: +0.00 +/- 0.00 (16 changed)
+    altaria_greninja v altaria, altaria's side: +0.20 +/- 1.52 (88 changed)

@@ -1,0 +1,23 @@
+COUNTER ROWS, deals 0-199 of the 17 named cells: kta3 3400 rows, km3 3400 rows; cells, deals, seeds, seats and bots as registered; move fingerprints v the both-sides games: kta3 v kta3's references 0 differ, km3 v km3's footprint games 0 differ
+
+M1, Arena of Antiquity (lucario's side), deals 0-199 of 9 cells:
+  km3: played 918 of 2574 offered turns = 51/143 = 35.6643%
+  kta3: played 734 of 3279 offered turns = 734/3279 = 22.3849%
+  T = 100263/362752 = 27.6395%
+  km3 rate >= T (exact Fraction comparison): True  (km3 - T = 320211/3990272 = +8.0248 points)
+  GUARD: kta3's rate >= T: False  (kta3 - T = -5.2547 points) -> guard clear
+  LINE: PASS
+  per cell (km3 played/offered | kta3 played/offered; reported): table 2: 61/256 | 39/289; table 8: 101/350 | 92/395; table 13: 119/276 | 95/403; table 18: 72/462 | 56/487; table 19: 128/200 | 106/313; table 20: 131/178 | 109/282; table 21: 130/163 | 104/246; new 8: 97/319 | 72/457; new 16: 79/370 | 61/407; cells where km3's rate is higher: 9 of 9
+M2, Training Area (altaria's side), deals 0-199 of 5 cells:
+  km3: played 533 of 1579 offered turns = 533/1579 = 33.7555%
+  kta3: played 498 of 1748 offered turns = 249/874 = 28.4897%
+  T = 24383/75980 = 32.0913%
+  km3 rate >= T (exact Fraction comparison): True  (km3 - T = 1996583/119972420 = +1.6642 points)
+  GUARD: kta3's rate >= T: False  (kta3 - T = -3.6016 points) -> guard clear
+  LINE: PASS
+  per cell (km3 played/offered | kta3 played/offered; reported): table 0: 106/308 | 99/331; table 1: 92/303 | 83/331; table 3: 88/342 | 89/332; table 4: 128/294 | 121/357; new 9: 119/332 | 106/397; cells where km3's rate is higher: 4 of 5
+
+AMENDMENT 2 re-derived from the sample rows (deals 200-299), this script's own code:
+  sample rows: kta3 1400, km3 1400; fingerprints v both-sides games: kta3 0 differ, km3 0 differ
+  M1: kta3 355/1664 = 355/1664, km3 444/1308 = 37/109; T = 100263/362752 (Amendment 2: 100263/362752; equal: True); paired 95% interval 0.10706821380818238 to 0.14692109105529338 (zero-offered replicates 0); lower bound above zero: True
+  M2: kta3 254/870 = 127/435, km3 275/786 = 275/786; T = 24383/75980 (Amendment 2: 24383/75980; equal: True); paired 95% interval 0.03862448982989242 to 0.0782545074154864 (zero-offered replicates 0); lower bound above zero: True

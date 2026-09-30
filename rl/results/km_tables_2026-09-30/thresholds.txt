@@ -1,0 +1,24 @@
+km's M1 and M2 thresholds: the development sample (REGISTRATION_DRAFT.md step 3, the threshold rule, read with Amendment 1: km3 against kta3)
+km_thresholds.py sha256 c84a87688d178f08deac79023d6f6e5e85979a7f6fed3266db450baa3a49263a; Python 3.14.4
+counter tool: source sha256 05d7ba4183ce9e3098036de9acb5181ea71f7077ef9b3798ad4e5d165dc22365, program sha256 9e7bdc1b47b9eda69540fd5263acbab7a1f081f7467db657af5fbb7def47f807
+kta3 rows: 1f6319e_sample_kta3_rows.jsonl (1400 rows, sha256 743176c6f66951e506cb72a946d122f33543b0358b04b4e61f1c00f795b73fc3)
+km3 rows: 1f6319e_sample_km3_rows.jsonl (1400 rows, sha256 687e138a5bc924869f27e1a4bfe9118db76424fa4ca79e0d13677fc19c2d3846)
+Rates and T are exact fractions; the percentages are for display only (rounded half up to one decimal place) and no comparison uses them.
+
+M1, Arena of Antiquity (lucario's side), deals 200-299 of 9 cells: table:2, table:8, table:13, table:18, table:19, table:20, table:21, new_decks.tsv:8, new_decks.tsv:16
+  kta3: played on 355 of 1664 offered turns = 355/1664 = 21.3%
+  km3:  played on 444 of 1308 offered turns = 37/109 = 33.9%
+  T, the exact midpoint (R_kta3 + R_km3) / 2 = 100263/362752 = 27.6%
+  paired 95% interval of km3's rate minus kta3's (random.Random(20260929), 10,000 replicates, sorted elements 250 and 9750):
+      lower 0.10706821380818238, upper 0.14692109105529338
+      replicates with no offered turn in an arm (difference 0.0): 0
+  RESULT M1: THRESHOLD T = 100263/362752 (27.6% displayed); the paired-noise interval's lower bound is above zero
+
+M2, Training Area (altaria's side), deals 200-299 of 5 cells: table:0, table:1, table:3, table:4, new_decks.tsv:9
+  kta3: played on 254 of 870 offered turns = 127/435 = 29.2%
+  km3:  played on 275 of 786 offered turns = 275/786 = 35.0%
+  T, the exact midpoint (R_kta3 + R_km3) / 2 = 24383/75980 = 32.1%
+  paired 95% interval of km3's rate minus kta3's (random.Random(20260930), 10,000 replicates, sorted elements 250 and 9750):
+      lower 0.03862448982989242, upper 0.0782545074154864
+      replicates with no offered turn in an arm (difference 0.0): 0
+  RESULT M2: THRESHOLD T = 24383/75980 (32.1% displayed); the paired-noise interval's lower bound is above zero

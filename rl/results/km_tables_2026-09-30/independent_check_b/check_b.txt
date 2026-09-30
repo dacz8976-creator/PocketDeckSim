@@ -1,0 +1,99 @@
+checker-b: independent check of km's M1/M2 thresholds (deals 200-299, 14 gating cells)
+Text: rl/results/trainer_pricing_2026-09-28/REGISTRATION_DRAFT.md (registration block 1-5;
+  section 5 step 3; Amendment 1 (b) item 2: baseline kta3, candidate km3). pct: score.py 143-144.
+Python: 3.14.4 (main, Aug 20 2026, 10:41:58) [GCC 15.2.0] (CPython)
+check_b.py sha256: 84151757624aa584767ddbc5b2c439d95fb84aa8b78ad5254d0541d376185851
+input kta3  1f6319e_sample_kta3_rows.jsonl  sha256 743176c6f66951e506cb72a946d122f33543b0358b04b4e61f1c00f795b73fc3
+input km3   1f6319e_sample_km3_rows.jsonl  sha256 687e138a5bc924869f27e1a4bfe9118db76424fa4ca79e0d13677fc19c2d3846
+rows: kta3 1400, km3 1400
+
+== M1, Arena of Antiquity (lucario's side), bootstrap seed 20260929, 10000 replicates ==
+cells, in the fixed order: table 2, table 8, table 13, table 18, table 19, table 20, table 21, new_decks.tsv 8, new_decks.tsv 16
+per cell (offered/played): kta3 | km3
+  table           2 altaria           v lucario      175 /   31  |   153 /   38
+  table           8 blaziken          v lucario      205 /   38  |   180 /   47
+  table          13 hydreigon         v lucario      209 /   40  |   127 /   54
+  table          18 lucario           v sceptile     218 /   23  |   208 /   29
+  table          19 lucario           v suicune      139 /   41  |    95 /   48
+  table          20 lucario           v vespiquen    123 /   56  |    84 /   69
+  table          21 lucario           v weezing      135 /   56  |    88 /   68
+  new_decks.tsv   8 rayquaza          v lucario      262 /   44  |   189 /   56
+  new_decks.tsv  16 altaria_greninja  v lucario      198 /   26  |   184 /   35
+kta3: offered 1664, played 355
+km3: offered 1308, played 444
+R_kta3 = 355/1664 = 355/1664 (reduced)  display 21.3% (21.3341%)
+R_km3 = 444/1308 = 37/109 (reduced)  display 33.9% (33.9450%)
+T = (R_kta3 + R_km3)/2 = 100263/362752 (exact)  display 27.6% (27.6395%)
+point difference R_km3 - R_kta3 (float, reported only) = 0.12610819513055752
+replicates with an arm's offered sum 0: 0
+lower bound (sorted[250])  = 0.10706821380818238   (0.10706821380818238, hex 0x1.b68d28cbf4dacp-4)
+upper bound (sorted[9750]) = 0.14692109105529338   (0.14692109105529338, hex 0x1.2ce4f70966a70p-3)
+RESULT: lower bound above zero: the line can pass; T stands
+
+== M2, Training Area (altaria's side), bootstrap seed 20260930, 10000 replicates ==
+cells, in the fixed order: table 0, table 1, table 3, table 4, new_decks.tsv 9
+per cell (offered/played): kta3 | km3
+  table           0 altaria           v blaziken     165 /   41  |   159 /   46
+  table           1 altaria           v hydreigon    176 /   53  |   154 /   59
+  table           3 altaria           v sceptile     159 /   44  |   155 /   44
+  table           4 altaria           v suicune      162 /   54  |   135 /   62
+  new_decks.tsv   9 rayquaza          v altaria      208 /   62  |   183 /   64
+kta3: offered 870, played 254
+km3: offered 786, played 275
+R_kta3 = 254/870 = 127/435 (reduced)  display 29.2% (29.1954%)
+R_km3 = 275/786 = 275/786 (reduced)  display 35.0% (34.9873%)
+T = (R_kta3 + R_km3)/2 = 24383/75980 (exact)  display 32.1% (32.0913%)
+point difference R_km3 - R_kta3 (float, reported only) = 0.05791875054838993
+replicates with an arm's offered sum 0: 0
+lower bound (sorted[250])  = 0.03862448982989242   (0.038624489829892417, hex 0x1.3c696d149c3e0p-5)
+upper bound (sorted[9750]) = 0.0782545074154864   (0.078254507415486396, hex 0x1.4087cc61d35e4p-4)
+RESULT: lower bound above zero: the line can pass; T stands
+
+RESULTS_JSON: [{"R_b": "355/1664", "R_c": "37/109", "T": "100263/362752", "baseline": "kta3", "can_pass": true, "candidate": "km3", "card": "Arena of Antiquity", "line": "M1", "lower": 0.10706821380818238, "offered_km3": 1308, "offered_kta3": 1664, "owner": "lucario", "played_km3": 444, "played_kta3": 355, "result": "lower bound above zero: the line can pass; T stands", "seed": 20260929, "upper": 0.14692109105529338, "zero_replicates": 0}, {"R_b": "127/435", "R_c": "275/786", "T": "24383/75980", "baseline": "kta3", "can_pass": true, "candidate": "km3", "card": "Training Area", "line": "M2", "lower": 0.03862448982989242, "offered_km3": 786, "offered_kta3": 870, "owner": "altaria", "played_km3": 275, "played_kta3": 254, "result": "lower bound above zero: the line can pass; T stands", "seed": 20260930, "upper": 0.0782545074154864, "zero_replicates": 0}]
+
+== Comparison with thresholds.json (appended after the numbers above were written) ==
+written 2026-09-30 09:28:42 UTC; check_b.txt before this section sha256 d3969bc68e6cb232787fd2c5f83026f5d22b9a9e5ae849c9f77ab0ca6e042793
+thresholds.json sha256 3bf6a248d3d43bb49837288c3dfe42f2dbfd520be98bf04738b156ddf1a3efff (km_thresholds.py sha256 c84a87688d178f08deac79023d6f6e5e85979a7f6fed3266db450baa3a49263a, Python 3.14.4)
+  AGREE     input kta3 sha256                  mine 743176c6f66951e506cb72a946d122f33543b0358b04b4e61f1c00f795b73fc3 thresholds.json 743176c6f66951e506cb72a946d122f33543b0358b04b4e61f1c00f795b73fc3
+  AGREE     input km3 sha256                   mine 687e138a5bc924869f27e1a4bfe9118db76424fa4ca79e0d13677fc19c2d3846 thresholds.json 687e138a5bc924869f27e1a4bfe9118db76424fa4ca79e0d13677fc19c2d3846
+M1, Arena of Antiquity:
+  AGREE     owner side                         mine lucario                    thresholds.json lucario
+  AGREE     cells, in order                    mine table:2,table:8,table:13,table:18,table:19,table:20,table:21,new_decks.tsv:8,new_decks.tsv:16 thresholds.json table:2,table:8,table:13,table:18,table:19,table:20,table:21,new_decks.tsv:8,new_decks.tsv:16
+  AGREE     kta3 offered                       mine 1664                       thresholds.json 1664
+  AGREE     kta3 played                        mine 355                        thresholds.json 355
+  AGREE     km3 offered                        mine 1308                       thresholds.json 1308
+  AGREE     km3 played                         mine 444                        thresholds.json 444
+  AGREE     R_kta3 (exact fraction)            mine 355/1664                   thresholds.json 355/1664
+  AGREE     R_km3 (exact fraction)             mine 37/109                     thresholds.json 37/109
+  AGREE     T (exact fraction)                 mine 100263/362752              thresholds.json 100263/362752
+  AGREE     R_kta3 display                     mine 21.3%                      thresholds.json 21.3%
+  AGREE     R_km3 display                      mine 33.9%                      thresholds.json 33.9%
+  AGREE     T display                          mine 27.6%                      thresholds.json 27.6%
+  AGREE     resampling seed                    mine 20260929                   thresholds.json 20260929
+  AGREE     zero-offered replicates            mine 0                          thresholds.json 0
+  AGREE     lower bound (float ==)             mine 0.10706821380818238        thresholds.json 0.10706821380818238
+  AGREE     lower bound (repr string)          mine 0.10706821380818238        thresholds.json 0.10706821380818238
+  AGREE     upper bound (float ==)             mine 0.14692109105529338        thresholds.json 0.14692109105529338
+  AGREE     upper bound (repr string)          mine 0.14692109105529338        thresholds.json 0.14692109105529338
+  AGREE     result (can pass / cannot pass)    mine can pass                   thresholds.json can pass
+M2, Training Area:
+  AGREE     owner side                         mine altaria                    thresholds.json altaria
+  AGREE     cells, in order                    mine table:0,table:1,table:3,table:4,new_decks.tsv:9 thresholds.json table:0,table:1,table:3,table:4,new_decks.tsv:9
+  AGREE     kta3 offered                       mine 870                        thresholds.json 870
+  AGREE     kta3 played                        mine 254                        thresholds.json 254
+  AGREE     km3 offered                        mine 786                        thresholds.json 786
+  AGREE     km3 played                         mine 275                        thresholds.json 275
+  AGREE     R_kta3 (exact fraction)            mine 127/435                    thresholds.json 127/435
+  AGREE     R_km3 (exact fraction)             mine 275/786                    thresholds.json 275/786
+  AGREE     T (exact fraction)                 mine 24383/75980                thresholds.json 24383/75980
+  AGREE     R_kta3 display                     mine 29.2%                      thresholds.json 29.2%
+  AGREE     R_km3 display                      mine 35.0%                      thresholds.json 35.0%
+  AGREE     T display                          mine 32.1%                      thresholds.json 32.1%
+  AGREE     resampling seed                    mine 20260930                   thresholds.json 20260930
+  AGREE     zero-offered replicates            mine 0                          thresholds.json 0
+  AGREE     lower bound (float ==)             mine 0.03862448982989242        thresholds.json 0.03862448982989242
+  AGREE     lower bound (repr string)          mine 0.03862448982989242        thresholds.json 0.03862448982989242
+  AGREE     upper bound (float ==)             mine 0.0782545074154864         thresholds.json 0.0782545074154864
+  AGREE     upper bound (repr string)          mine 0.0782545074154864         thresholds.json 0.0782545074154864
+  AGREE     result (can pass / cannot pass)    mine can pass                   thresholds.json can pass
+TOTAL: 40 AGREE, 0 DISAGREE

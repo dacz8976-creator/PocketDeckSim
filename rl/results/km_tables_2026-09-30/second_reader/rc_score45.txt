@@ -1,0 +1,14 @@
+pct calls: 16; pass_parts calls (cells, real error): [(45, 13.836239), (45, 13.87517), (44, 14.009651), (44, 14.051854)]
+[reps 4000] 45 cells: dMSE lo -6.9769; dMSE hi +10.1414; dMSE_e lo -8.1080; dMSE_e hi +10.2765; tau lo -0.2589; tau hi +0.1808; tau_e lo -0.2638; tau_e hi +0.2052
+   label SPANS; width 17.1183; 5% of width 0.8559; hi near 0: False; lo near 0: False; tau lo within 0.10 of -1: False; sd 4.3669 MDE50 8.5591 MDE80 12.2273
+   kta3 real error unrounded 13.8362; km3 13.8752
+   from 13.8362: MDE50 -> 13.5234; MDE80 -> 13.3871
+   from 13.8000: MDE50 -> 13.4863; MDE80 -> 13.3496
+[reps 4000] 44-cell set: dMSE lo -7.5405; dMSE hi +9.8787; dMSE_e lo -8.7350; dMSE_e hi +10.3946; tau lo -0.2570; tau hi +0.1843; tau_e lo -0.2641; tau_e hi +0.2196
+   label SPANS; width 17.4191; 5% of width 0.8710; hi near 0: False; lo near 0: False; tau lo within 0.10 of -1: False; sd 4.4437 MDE50 8.7096 MDE80 12.4422
+   kta3 real error unrounded 14.0097; km3 14.0519
+   from 14.0097: MDE50 -> 13.6953; MDE80 -> 13.5583
+   from 13.8000: MDE50 -> 13.4807; MDE80 -> 13.3416
+committed page lines 159, mine 159; differing lines 1:
+   committed: Limitless cells: /tmp/tmpwzd0_ocs.json
+   mine:      Limitless cells: /mnt/c/Users/dacz8/AppData/Local/Temp/claude/C--Users-dacz8-Projects/1b119d13-736d-4588-ba63-0e9ef1756970/scratchpad/wf_km2r/reconciler/tmp4nfhg6xp.json

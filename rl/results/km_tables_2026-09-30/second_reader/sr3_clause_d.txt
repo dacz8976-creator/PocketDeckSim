@@ -1,0 +1,36 @@
+files: km3 arm table deals 4500, block 13500; kta3 arm table deals 4500, block 13500
+first_deck_score values seen: [0.0, 0.5, 1.0]
+seeds, seats, pairings, decks, files and bots checked on 36000 games (every game of both arms): all as registered (table: base + pairing x 10,000 + i, i < 500, first_seat = i % 2; block: 22,900,000,000 + row x 10,000 + j, j < 1,500, Lucario side a, first_seat = j % 2)
+  block seeds span 22,900,000,000 to 22,900,081,499
+kta3 arm, deals 0-499, v kta3's references (fields moves, decisions, first_deck_score, winner_seat, points, seed, first_seat, openings, turns, a, b): games differing per row [0, 0, 0, 0, 0, 0, 0, 0, 0]; total 0 of 4500 -> REPLAYS
+km3 arm, deals 0-499, v clause (c)'s mixed rows with km3 on Lucario (moves, decisions, score, seed, seat, bots): 0 of 4500 differ (reported)
+
+CLAUSE (d): Lucario's own side, km3 on Lucario (kta3 on the other deck) minus kta3 on both, points; N = 2,000 per row
+  row 0 (table 2, altaria v lucario): mean -0.450000 (exact -9/20), var of mean 0.19749750, 95% -1.3210 to +0.4210; deals with a changed result 79; table part -0.800, block part -0.333; Lucario kta3 37.80 -> km3 37.35; km3-arm games whose moves differ 526 (reported)
+  row 1 (table 8, blaziken v lucario): mean +0.050000 (exact 1/20), var of mean 0.12256003, 95% -0.6362 to +0.7362; deals with a changed result 49; table part -0.200, block part +0.133; Lucario kta3 49.88 -> km3 49.92; km3-arm games whose moves differ 566 (reported)
+  row 2 (table 13, hydreigon v lucario): mean +0.250000 (exact 1/4), var of mean 0.46270010, 95% -1.0832 to +1.5832; deals with a changed result 185; table part +0.800, block part +0.067; Lucario kta3 57.15 -> km3 57.40; km3-arm games whose moves differ 823 (reported)
+  row 3 (table 18, lucario v sceptile): mean +0.000000 (exact 0), var of mean 0.01500750, 95% -0.2401 to +0.2401; deals with a changed result 6; table part +0.200, block part -0.067; Lucario kta3 38.25 -> km3 38.25; km3-arm games whose moves differ 246 (reported)
+  row 4 (table 19, lucario v suicune): mean +2.650000 (exact 53/20), var of mean 0.73935843, 95% +0.9647 to +4.3353; deals with a changed result 297; table part +4.000, block part +2.200; Lucario kta3 56.45 -> km3 59.10; km3-arm games whose moves differ 1166 (reported)
+  row 5 (table 20, lucario v vespiquen): mean -0.450000 (exact -9/20), var of mean 0.70275013, 95% -2.0931 to +1.1931; deals with a changed result 281; table part -3.000, block part +0.400; Lucario kta3 70.35 -> km3 69.90; km3-arm games whose moves differ 1173 (reported)
+  row 6 (table 21, lucario v weezing): mean +2.350000 (exact 47/20), var of mean 0.75511631, 95% +0.6468 to +4.0532; deals with a changed result 303; table part +6.000, block part +1.133; Lucario kta3 48.62 -> km3 50.98; km3-arm games whose moves differ 1200 (reported)
+  row 7 (new 8, rayquaza v lucario): mean -0.750000 (exact -3/4), var of mean 0.50747249, 95% -2.1462 to +0.6462; deals with a changed result 203; table part -0.400, block part -0.867; Lucario kta3 64.55 -> km3 63.80; km3-arm games whose moves differ 796 (reported)
+  row 8 (new 16, altaria_greninja v lucario): mean +0.350000 (exact 7/20), var of mean 0.18253002, 95% -0.4874 to +1.1874; deals with a changed result 73; table part +0.800, block part +0.200; Lucario kta3 44.30 -> km3 44.65; km3-arm games whose moves differ 550 (reported)
+  km3-arm games whose moves differ from the kta3 arm's: 7046 of 18000 (reported)
+  POOLED (equal-weight mean of the 9 row means): 0.444444444444 (exact 4/9)
+  sum of per-row variances of the mean difference: 3.684992496248 (exact 73663/19990)
+  HALF-WIDTH 1.96 x sqrt(sum var) / 9 = 0.418053502004
+  LOWER EDGE (mean - half-width) = 0.026390942440085
+  upper edge = 0.862497946448803
+  (d): whole 95% interval above zero: True -> PASS; lower edge 2.639094e-2
+  sd 0.213293; MDE50 (1.96 sd) 0.418054; MDE80 (2.80 sd) 0.597219 (reported)
+  row shares of the pooled gain: -0.113, 0.013, 0.062, 0.000, 0.662, -0.113, 0.588, -0.188, 0.087 (reported)
+    without row 0: +0.556 +/- 0.458 (reported only)
+    without row 1: +0.494 +/- 0.462 (reported only)
+    without row 2: +0.469 +/- 0.440 (reported only)
+    without row 3: +0.500 +/- 0.469 (reported only)
+    without row 4: +0.169 +/- 0.420 (reported only)
+    without row 5: +0.556 +/- 0.423 (reported only)
+    without row 6: +0.206 +/- 0.419 (reported only)
+    without row 7: +0.594 +/- 0.437 (reported only)
+    without row 8: +0.456 +/- 0.459 (reported only)
+  NOT the registered statistic (reported only): stratified within each row (500 table + 1,500 block, weights 1/4, 3/4): 0.444444 +/- 0.417944, lower edge 0.026500

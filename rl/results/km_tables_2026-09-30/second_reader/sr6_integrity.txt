@@ -1,0 +1,42 @@
+PINS: STATUS 'KM PART B DONE' B = 1f6319e4b72e34a42d2d3c3ffc7cc9a09fdfa6f3 (config 1f6319e4b72e34a42d2d3c3ffc7cc9a09fdfa6f3; equal True); tool source 05d7ba4183ce9e3098036de9acb5181ea71f7077ef9b3798ad4e5d165dc22365 (config 05d7ba4183ce9e3098036de9acb5181ea71f7077ef9b3798ad4e5d165dc22365; equal True)
+  deckgym: programs.txt 119389c57de425c5..; STATUS 119389c57de425c5..; km_inputs.sha256 lists it: True; on the disk now 119389c57de425c5..; all equal: True
+  legality_scan: programs.txt c1ef78e3758eb8cd..; STATUS c1ef78e3758eb8cd..; km_inputs.sha256 lists it: True; on the disk now c1ef78e3758eb8cd..; all equal: True
+  tool_census: programs.txt 9e7bdc1b47b9eda6..; STATUS 9e7bdc1b47b9eda6..; km_inputs.sha256 lists it: True; on the disk now 9e7bdc1b47b9eda6..; all equal: True
+  Amendment 2's counter-tool program sha256 9e7bdc1b47b9eda6...: equal to the pin: True
+  STATUS 'KM PART I DONE' lines: 1
+  STATUS 'KM PART T DONE' lines: 1
+  STATUS 'KM PART R DONE' lines: 1
+REFERENCE FILES (kta3's, ec7e1a8) against km_config.json:
+               table: ec7e1a8_kta3_table.jsonl sha256 equal to the config's: True
+               new17: ec7e1a8_kta3_new17.jsonl sha256 equal to the config's: True
+                 b2e: ec7e1a8_b2e_kta3.jsonl sha256 equal to the config's: True
+              scizor: ec7e1a8_scizor_kta3.jsonl sha256 equal to the config's: True
+     var_v-lucario_2: ec7e1a8_var_v-lucario_2_kta3.jsonl sha256 equal to the config's: True
+     var_v-suicune_2: ec7e1a8_var_v-suicune_2_kta3.jsonl sha256 equal to the config's: True
+     var_v-weezing_2: ec7e1a8_var_v-weezing_2_kta3.jsonl sha256 equal to the config's: True
+    var_l-charizardy: ec7e1a8_var_l-charizardy_kta3.jsonl sha256 equal to the config's: True
+  1f6319e_km3_table.jsonl: sha256 aff167ac8ca56054.. equal to the footprint line's aff167ac8ca56054: True
+  1f6319e_km3_new17.jsonl: sha256 8623d6f958ab46bd.. equal to the footprint line's 8623d6f958ab46bd: True
+  km_config.json sha256 prefix a352c04fcb588372 (STATUS): True
+  km_inputs.sha256: 65 files equal to their recorded sha256 now, 0 not
+  1f6319e_inputs_I.sha256: 69 files equal to their recorded sha256 now, 0 not
+  1f6319e_inputs_T.sha256: 39 files equal to their recorded sha256 now, 0 not
+  1f6319e_inputs_R.sha256: 69 files equal to their recorded sha256 now, 0 not
+GIT: tracked changes since 18bd89c in the km folder, kt's folder and km_config.json: none
+  dac7dcf (footprint committed alone): files ['rl/results/km_tables_2026-09-30/footprint.txt']
+  last commit touching 1f6319e_km3_table.jsonl: 18bd89c
+IDENTITY REPLAYS (my comparison on moves, decisions, openings, winner_seat, points, seed, first_seat, score, decks, files, turns):
+  laptop_id_kta3_table_i20.jsonl: 560 games, 0 differ (kta3 v kta3's table references)
+  laptop_id_kta3_new17_i20.jsonl: 340 games, 0 differ (kta3 v kta3's new17 references)
+  laptop_id_km3_table15_i20.jsonl: 300 games, 0 differ (km3 equal to kta3 on the 15 table cells with neither damage Stadium)
+  laptop_id_km3_new13_i20.jsonl: 260 games, 0 differ (km3 equal to kta3 on the 13 new cells with neither damage Stadium)
+  laptop_id_km3_table15_i20.jsonl: 300 games, 0 differ (the same games v km3's registered games (determinism))
+  laptop_id_km3_new13_i20.jsonl: 260 games, 0 differ (the same games v km3's registered games (determinism))
+  laptop_id_km3_smoke_i40.jsonl: 120 games, 0 differ (km3 smoke (pairings 0, 2, 19, i < 40) v km3's registered games)
+  the cloud's km3 smoke file is not on this checkout (/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/km_build_2026-09-30/identity/1f6319e_km3_smoke_40.jsonl); not compared
+  laptop_id_b2e_kta3_i20.jsonl: 1920 games, 0 differ (kta3 v ec7e1a8_b2e_kta3.jsonl)
+  laptop_id_scizor_kta3_i20.jsonl: 160 games, 0 differ (kta3 v ec7e1a8_scizor_kta3.jsonl)
+  laptop_id_var_v-lucario_2_kta3_i20.jsonl: 140 games, 0 differ (kta3 v ec7e1a8_var_v-lucario_2_kta3.jsonl)
+  laptop_id_var_v-suicune_2_kta3_i20.jsonl: 140 games, 0 differ (kta3 v ec7e1a8_var_v-suicune_2_kta3.jsonl)
+  laptop_id_var_v-weezing_2_kta3_i20.jsonl: 140 games, 0 differ (kta3 v ec7e1a8_var_v-weezing_2_kta3.jsonl)
+  laptop_id_var_l-charizardy_kta3_i20.jsonl: 160 games, 0 differ (kta3 v ec7e1a8_var_l-charizardy_kta3.jsonl)
