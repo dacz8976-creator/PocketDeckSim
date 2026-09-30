@@ -381,6 +381,15 @@ sides with k3 still available; the 0.7.2 wheel and its run identities are untouc
       - Reserve route (footprint 13.85%). ΔMSE +1.1, 95% −7.0 to +10.1: spans zero, so the fallback.
       - The fallback's four tests held: no harm (τ̂ −0.04, 90% −0.26 to +0.18; no veto; no deck worse), coverage (B2e held-out, Scizor −0.23 ± 0.42, second lists unhurt), (d) on Lucario +0.444 ± 0.418 (lower edge +0.026, carried by the Suicune and Weezing rows), M1 Arena 35.7% against T 27.6% and M2 Training Area 33.8% against T 32.1% (kta3's rates 22.4% and 28.5% below).
       - Held-out direction flat (2 closer, 3 further, 1 unchanged). Joined the post-freeze list Sept 30. The screen and the floor stay on kog3 until the official engine switch carries kta and km.
+    - **The reader's three gaps, and score.py (Sept 30).** Both outcome audits (kta's, km's) flagged the same three gaps in the blind reader. Sonnet fixed them in `read_km.py` for the next reading (branch sonnet/read-km-fixes; km's own reading used a14014e unchanged):
+      - the ΔMSE lower edge is read from the unrounded value;
+      - the held-out direction goes beside the verdict;
+      - the detectable size starts from the unrounded real error.
+
+      The fix needs one new full-precision line printed by `rl/results/table_readings_2026-09-24/score.py`, the registered scorer.
+      - Dustin, asked via the Fable coordinator session "Is editing the registered scorer by that one line acceptable?" (recommended only if no script reading the pages breaks), verbatim: "Yes".
+      - The laptop's consumer check found that every number-reading script parses the same values, and existing lines stay byte-identical. But four reproduction checks that compare pages line by line would falsely report "does not reproduce" if re-run: `kpr3_reading/check_score_runs.py` and km's and kta's `second_reader/rc_score45.py` / `sr2_score45.py`. So the merge was held.
+      - The fix: the new line is printed only on an opt-in flag. The default page stays byte-identical, and only the new `read_km.py` asks for it. Dustin, via the coordinator, verbatim: "Flag option is fine, go ahead".
     - **The official engine switch carrying kta and km (Dustin, Sept 30 morning, in the laptop session, answering the switch plan's four questions; verbatim):**
       - Preparation timing: "now is fine, I don't have class on wednesdays this semester".
       - The pin: "Yes, pin if all pass (Recommended)", meaning the laptop pins if every replay matches, and a mismatch stops and comes to him first.
