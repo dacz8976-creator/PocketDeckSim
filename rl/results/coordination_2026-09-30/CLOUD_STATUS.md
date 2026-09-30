@@ -2,12 +2,13 @@
 
 Written Sept 30 for the Fable coordinator session (Dustin's single delegator). Times are UTC.
 
-1. **Current task, and the instruction that set it.** A bounded diagnosis, not an adoption gate: in km's Altaria v Suicune cell, which decisions changed behind Suicune's gain under km3 (mixed rows: Suicune's own side +5.0 ± 2.1, Altaria's own side −0.6 ± 1.8). Set by the laptop session, relayed by Dustin, Sept 30. The method: start from the committed records on main (km3's table games, the mixed rows, kta3's games), find the first differing decision in each deal where Suicune's side changes and classify it, with a short trace of at most 40 games at build B (1f6319e) if needed. Output: `rl/results/km_altaria_suicune_diag_2026-09-30/` on this branch. Nothing gates on it and nothing is re-read.
-2. **What is running now, and when it ends.** Nothing is running. The diagnosis is done (Sept 30): 40 replays at build B, taking 1½ minutes, all checked against the committed records. It is committed in `rl/results/km_altaria_suicune_diag_2026-09-30/`.
-3. **Files I expect to change.** Only new files in `rl/results/km_altaria_suicune_diag_2026-09-30/` (the trace program's source, its output rows, a check script and a README), and this file. No engine/ change, no change to B, and no other folder.
+1. **Current task, and the instruction that set it.** Draft the Victory Star / Confusion engine repair (rules/09_engine_repairs_2026-09-22.md, "Victory Star is never offered while the attacker is Confused"; rule in rules/04 section 9). Set by the Fable coordinator via Dustin, Sept 30 ("Yes, have the cloud draft the Victory Star repair"). The order: a failing test first, committed; then the fix behind a code gate with instrumentation (RUN5's switch template); then the unit suite. Only engine/src/actions/apply_action.rs and apply_attack_action.rs, plus a new folder rl/results/victory_star_repair_2026-09-30/. No table games, no identity replay, no pinning build, no players/ change, no merge to main. The laptop replays it later, under the full procedure.
+2. **What is running now, and when it ends.** Starting now: code and unit tests only, about an hour. The Altaria v Suicune diagnosis is done (6bb43cf).
+3. **Files I expect to change.** engine/src/actions/apply_action.rs and engine/src/actions/apply_attack_action.rs (and their tests), plus a new folder rl/results/victory_star_repair_2026-09-30/ (README), and this file. If the fix needs more than those two engine files, or touches anything a table deck uses, I stop and write the question here.
 4. **Waiting on the laptop or Sonnet.** Nothing.
 5. **Open questions for Dustin.** None for this task.
 
 ## Log (one line per new job, added and pushed before it starts)
 
 - 2026-09-30: km Altaria v Suicune diagnosis (the laptop's request via Dustin): 40 traced deals at B, no new table games.
+- 2026-09-30: Victory Star / Confusion repair draft (Fable via Dustin): failing test, then the gated fix, then the unit suite; engine/src/actions/ two files plus rl/results/victory_star_repair_2026-09-30/. No games.
