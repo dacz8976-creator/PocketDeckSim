@@ -67,6 +67,17 @@
 #                 km3 counters not in [spans: PENDING; below: ADOPTED]; (d) not in [PENDING]; the second-direction mixed
 #                 rows not in [PENDING]; score45's page edited to a ΔMSE interval +0.4 to +20.0 [NOT ADOPTED under both
 #                 open labels] and to a τ̂ bound of -1.10 [PENDING]; --footprint-only; --reuse-45 with its sidecar.
+#   Sept 30 fixes (the two outcome audits' gaps; read_km.py's HISTORY note; on the worsen tree's own page, whose results changed
+#   so a ΔMSE interval other than 0 to 0 is legitimate, edited as above and read with --reuse-45, a page standing for a decisive
+#   run by its sidecar's --reps rewritten to 20000): a ΔMSE lower bound printed +0.0 whose unrounded value (score.py's new
+#   "unrounded (full precision)" line) is +0.03 [wholly ABOVE: NOT ADOPTED (accuracy-worsening)], exactly 0 or printed -0.0 at
+#   -0.03 [SPANS, decided, not PENDING], the two lines disagreeing [STOP], the same page below --reps 20000 [still PENDING: K8
+#   is separate], a page without the new line [not reused, scored afresh]; the detectable size converted from an unrounded real
+#   error of 13.836 (printed 13.8), not the rounded figure; and, on the gain tree, the held-out direction inside the verdict
+#   block (equal to section 5a's figure, and 'not in yet' when km3's B2e file is not in) and clause (d)'s pooled mean,
+#   half-width and 95% interval at four decimals (equal to the two-decimal figure); --parse-page on a page carrying the new
+#   line. Also (Sept 30): the guard "the real km_config.json, B not set yet" now reads a copy of the real config with B nulled,
+#   because km's reading set B in the real one and the check could no longer pass on main.
 # Every scenario has an expected pattern (the verdict line or the STOP) and some have more (also / never): each is
 # checked against the reader's output; a miss is counted, listed at the end, and the script then exits 1.
 # Usage (WSL): bash test_read_km.sh [stand-in folder]   (FULL=1 prints every reader output in full; REPS; CLEAN=1)
@@ -703,6 +714,27 @@ lacks() {
     else echo "   [check ok] absent: $pat"; fi
   done
 }
+has() {  # file label fixed-string...: each string must appear in the file (grep -F, no pattern characters)
+  local f=$1 lab=$2 s; shift 2
+  for s in "$@"; do
+    NCHK=$((NCHK + 1))
+    if grep -qF -- "$s" "$f"; then echo "   [check ok] $s"
+    else echo "   [CHECK FAILED] not found: $s"; FAILS+=("$lab -- not found: $s"); fi
+  done
+}
+hasnt() {  # file label fixed-string...: none may appear
+  local f=$1 lab=$2 s; shift 2
+  for s in "$@"; do
+    NCHK=$((NCHK + 1))
+    if grep -qF -- "$s" "$f"; then echo "   [CHECK FAILED] found, must not be: $s"; FAILS+=("$lab -- found, must not be: $s")
+    else echo "   [check ok] absent: $s"; fi
+  done
+}
+equal() {  # label a b: two figures the reader printed in two places must be the same text
+  NCHK=$((NCHK + 1))
+  if [ -n "$2" ] && [ "$2" = "$3" ]; then echo "   [check ok] $1: $2"
+  else echo "   [CHECK FAILED] $1: '$2' vs '$3'"; FAILS+=("$1 -- '$2' vs '$3'"); fi
+}
 also() { check "$LAST" "$LASTLAB" "$@"; }
 never() { lacks "$LAST" "$LASTLAB" "$@"; }
 V_AD='^   => km3 is ADOPTED as the working pilot'
@@ -750,6 +782,43 @@ set -e
 check "$W/unit/parse_pages.txt" "unit: --parse-page" '^  .*: PARSED all: .*\(exit 0\)$'
 lacks "$W/unit/parse_pages.txt" "unit: --parse-page" '\(exit [1-9][0-9]*\)$'
 check "$W/unit/drop_deck_out.txt" "unit: a deck-veto line dropped" '^STOP: .*the parse missed or invented a veto line'
+# (Sept 30) score.py's one new line, "unrounded (full precision)": koh's committed page with that line added after each ΔMSE
+# line (bounds and real errors moved by less than half a printed digit, so they still print as the page says), then the same
+# with one real error moved by 0.2 (it no longer prints as the page says: a STOP).
+python3 - "$KP" "$W/unit/full_line.txt" "$W/unit/full_line_bad.txt" <<'PYEOF'
+import re, sys
+src, good, bad = sys.argv[1:4]
+lines = open(src, encoding="utf-8").read().split("\n")
+
+
+def build(real_shift):
+    out, real = [], {}
+    for ln in lines:
+        m = re.match(r"\s*(\S+): real error\s+([\d.]+) \|", ln)
+        if m:
+            real[m.group(1)] = float(m.group(2))
+        out.append(ln)
+        m = re.match(r"\s*dMSE new - current: [+-][\d.]+ points\^2, 95% interval ([+-][\d.]+) to ([+-][\d.]+) \(", ln)
+        if m:
+            lo, hi = float(m.group(1)) + 0.012, float(m.group(2)) - 0.013
+            out.append(f"  unrounded (full precision): dMSE 95% interval {lo!r} to {hi!r}; real error "
+                       + ", ".join(f"{b} {v + real_shift!r}" for b, v in real.items()))
+            real = {}
+    return "\n".join(out)
+
+
+open(good, "w", encoding="utf-8").write(build(0.036))
+open(bad, "w", encoding="utf-8").write(build(0.2))
+PYEOF
+set +e
+python3 "$O/read_km.py" --parse-page "$W/unit/full_line.txt" > "$W/unit/full_line_out.txt" 2>&1
+python3 "$O/read_km.py" --parse-page "$W/unit/full_line_bad.txt" > "$W/unit/full_line_bad_out.txt" 2>&1
+set -e
+check "$W/unit/full_line_out.txt" "unit: --parse-page on a page with score.py's unrounded line" \
+  '^PARSED all: .*unrounded ΔMSE bounds -?[0-9]+\.[0-9]+ to -?[0-9]+\.[0-9]+$' '^PARSED dec: .*unrounded ΔMSE bounds -?[0-9]+\.[0-9]+ to -?[0-9]+\.[0-9]+$'
+lacks "$W/unit/full_line_out.txt" "unit: --parse-page on a page with score.py's unrounded line" '^STOP'
+check "$W/unit/full_line_bad_out.txt" "unit: an unrounded real error that does not print as the page says" \
+  "^STOP: score45\\.py's all block: the unrounded real error for .* but the page prints "
 
 for s in null gain harm worsen worsen_ord below below_nogain ord_below ord_nogain ord_charm m1_low guard guard_below cannot cannot_below \
          skip_winners skip_unnamed reach edge3374 edge3375; do build $s; done
@@ -846,8 +915,17 @@ open(p, "w", encoding="utf-8").write(t)
 PYEOF
 }
 # ---- the one set (Amendment 1 (b) item 3): the config, the pinned programs, the build they come from
-mk cfgunset; run_reader "$G/cfgunset" "guard: the real km_config.json, B not set yet (nothing is read)" \
-  '^STOP: the config .*km_run/km_config\.json has required values not set yet \(build\.commit, ' --config "$O/km_config.json"
+# (Sept 30: this guard read the real km_config.json while B was still unset; once km's reading had set B in it, the check could
+# no longer pass on main. It now reads a copy of the real config with the values the cloud reports nulled, as it was then.)
+mk cfgunset
+python3 - "$O/km_config.json" "$G/cfg_unset.json" <<'PYEOF'
+import json, sys
+c = json.load(open(sys.argv[1], encoding="utf-8"))
+c["build"].update(commit=None, round_head=None, round_folder=None)
+json.dump(c, open(sys.argv[2], "w", encoding="utf-8"), indent=1)
+PYEOF
+run_reader "$G/cfgunset" "guard: the real km_config.json with B not set (a copy with the required values null; nothing is read)" \
+  '^STOP: the config .*cfg_unset\.json has required values not set yet \(build\.commit, ' --config "$G/cfg_unset.json"
 mkcfg() {  # name python-on-c: a copy of the stand-in config, edited
   python3 - "$CFG" "$G/$1.json" "$2" <<'PYEOF'
 import json, sys
@@ -1013,6 +1091,118 @@ run_reader "$G/tau" "guard: the gain tree, first run (its page is edited next)" 
 doctor tau 't = re.sub(r"(real error, current minus new: [+-][\d.]+ points, 90% interval )[+-][\d.]+", r"\g<1>-1.10", t, count=1)'
 run_reader "$G/tau" "guard: τ̂ lower bound printed -1.10 (exactly 0.10 from the line) at --reps $REPS: PENDING, the 20,000-rep rerun decides" "$V_PEND" --reuse-45
 also '^     PENDING \(gates\) +no harm: the τ̂ margin .*: -1\.10 .*MC-BOUNDARY: within 0\.10 of the -1\.0 line'
+# ---- (Sept 30) the gaps the two outcome audits found, fixed in the reader for the next reading (all on stand-in pages):
+#   K7's lower edge at full precision, the held-out direction inside the verdict block, the detectable size as real error from
+#   the unrounded real error, and clause (d) at four decimals. The pages are the gain tree's own, edited the way the pages
+#   above are; a page stands for a decisive run by its sidecar's --reps being rewritten to 20000 (the reader then reads it
+#   with --reps 20000 --reuse-45), since score45 itself is never run here at 20,000 replicates.
+echo; echo "################ Sept 30 fixes: K7 at full precision, the held-out line in the verdict block, more digits"
+mk k7 gain
+run_reader "$G/k7" "K7 tree, first run (the gain tree; its page is copied and edited next)" "$V_AD"
+resig() {  # guard-folder from-reps to-reps: the page's sidecar records the run's --reps twice (in its args and as "reps")
+  python3 - "$G/$1/pages/score45_${CAND}_vs_${BASE}.txt.reps" "$2" "$3" <<'PYEOF'
+import json, sys
+p, a, b = sys.argv[1:4]
+s = json.load(open(p, encoding="utf-8"))
+assert s["reps"] == int(a) and s["args"][-2:] == ["--reps", a], "the sidecar records another --reps"
+s["reps"], s["args"][-1] = int(b), b
+open(p, "w", encoding="utf-8").write(json.dumps(s, sort_keys=True))       # the reader's own format: sorted keys, no trailing newline
+PYEOF
+}
+K7_DOCTOR='t = re.sub(r"(dMSE new - current: )[+-][\d.]+( points\^2, 95% interval )[+-][\d.]+ to [+-][\d.]+ \(not below 0\)", r"\g<1>+10.0\g<2>@LO@ to +20.0 (not below 0)", t); t = re.sub(r"(unrounded \(full precision\): dMSE 95% interval )\S+ to \S+;", r"\g<1>@UN@ to 20.0;", t)'
+V_ANY='^   => km3 is (ADOPTED as the working pilot|NOT ADOPTED)'
+k7page() {  # guard-folder printed-lower unrounded-lower [more python on t]: the worsen tree's page (results changed on the 45 cells,
+  # so a ΔMSE interval other than 0 to 0 is legitimate) with the interval printed "<printed-lower> to +20.0". The gain tree changes
+  # no result at all, so the reader rightly refuses any page of it that shows a ΔMSE interval other than 0 to 0.
+  local code=${K7_DOCTOR//@LO@/$2}; code=${code//@UN@/$3}
+  mk "$1" worsen; cp -r "$W/worsen/run/pages" "$G/$1/pages"
+  doctor "$1" "$code; ${4:-pass}"
+}
+# the lower bound printed +0.0 whose unrounded value is +0.03, read at the decisive --reps: wholly above zero. The same page also
+# carries kta3's real error as 13.836 (printed 13.8), for the detectable-size check.
+k7page k7above "+0.0" "0.03" 't = re.sub(r"(\s+kta3: real error\s+)[\d.]+( \|)", r"\g<1>13.8\g<2>", t); t = re.sub(r"(unrounded \(full precision\): dMSE 95% interval \S+ to \S+; real error kta3 )\S+(, )", r"\g<1>13.836\g<2>", t)'
+resig k7above "$REPS" 20000
+run_reader "$G/k7above" "K7: a lower bound printed +0.0 whose unrounded value is +0.03, at the decisive --reps 20000: wholly ABOVE, NOT ADOPTED (accuracy-worsening)" \
+  "${V_NA}accuracy-worsening\.$" --reuse-45 --reps 20000
+also 'LABEL .*: wholly ABOVE zero' '^   page: .*\(reused: ' \
+     "the lower bound prints as \+0\.0; score\.py's unrounded value is 0\.03, so the interval is wholly ABOVE zero \(K7, read at full precision\)"
+never 'PENDING between' 'BOUNDARY: the lower bound prints as \+0\.0' '^   page: .*freshly scored'
+python3 - "$G/k7above/pages/score45_${CAND}_vs_${BASE}.txt" "$BASE" > "$G/k7above/expected_detectable.txt" <<'PYEOF'
+import math, re, sys
+t, base = open(sys.argv[1], encoding="utf-8").read(), sys.argv[2]
+m = re.search(r"dMSE new - current: [+-][\d.]+ points\^2, 95% interval ([+-][\d.]+) to ([+-][\d.]+)", t)
+sd = (float(m.group(2)) - float(m.group(1))) / 3.92
+
+
+def line(tau, tail):
+    ar = lambda d: math.sqrt(tau * tau + d)
+    return (f"MDE50 (1.96 sd) {1.96 * sd:.1f} points^2, as real error {tau:.2f} -> {ar(-1.96 * sd):.2f}; "
+            f"MDE80 (2.80 sd) {2.80 * sd:.1f}, as real error {tau:.2f} -> {ar(-2.80 * sd):.2f}" + tail)
+
+
+good = line(13.836, f" (real error after = sqrt({base}'s^2 - δ), from {base}'s real error 13.836 as score.py computes it, unrounded)")
+bad = line(13.8, "")
+assert line(13.836, "")[:40] != bad[:40] or line(13.836, "") != bad, "the stand-in cannot tell an unrounded input from a rounded one"
+print(good)
+print(bad)
+PYEOF
+has "$G/k7above/reader_output.txt" "K7: the detectable size is converted from the unrounded real error (13.836, printed 13.8)" "$(sed -n 1p "$G/k7above/expected_detectable.txt")"
+hasnt "$G/k7above/reader_output.txt" "K7: the detectable size is not converted from the page's rounded real error" "$(sed -n 2p "$G/k7above/expected_detectable.txt")"
+# printed -0.0 whose true value is -0.03: spans (the fallback), decided at the decisive --reps, not left PENDING
+k7page k7spans "-0.0" "-0.03"
+resig k7spans "$REPS" 20000
+run_reader "$G/k7spans" "K7: a lower bound printed -0.0 (true value -0.03), at the decisive --reps 20000: SPANS zero, decided (the fallback's tests then give the verdict)" "$V_ANY" --reuse-45 --reps 20000
+also 'LABEL .*: SPANS zero'
+never 'PENDING between' 'wholly ABOVE zero'
+# printed +0.0 whose unrounded value is exactly 0: it reaches zero, so it is not above zero: spans
+k7page k7zero "+0.0" "0.0"
+resig k7zero "$REPS" 20000
+run_reader "$G/k7zero" "K7: a lower bound printed +0.0 that is exactly 0, at --reps 20000: not above zero, SPANS, decided" "$V_ANY" --reuse-45 --reps 20000
+also 'LABEL .*: SPANS zero' "score\.py's unrounded value is 0\.0, so the interval is not above zero \(it reaches 0\) \(K7, read at full precision\)"
+never 'PENDING between' 'wholly ABOVE zero'
+# a page whose two lines disagree (printed +0.0, unrounded -0.03) is edited or mixed: a STOP
+k7page k7edit "+0.0" "-0.03"
+resig k7edit "$REPS" 20000
+run_reader "$G/k7edit" "K7: printed +0.0 but an unrounded -0.03 (which would print -0.0): the page's lines disagree" \
+  "^STOP: score45's ΔMSE lower bound prints as \+0\.0 but its 'unrounded \(full precision\)' line gives -0\.03" --reuse-45 --reps 20000
+# the near-zero rule (K8) is separate and unchanged: below --reps 20000 the same page is still held PENDING
+k7page k7pend "+0.0" "0.03"
+run_reader "$G/k7pend" "K7 and K8: printed +0.0, unrounded +0.03 at --reps $REPS: the label is still held open (K8 holds it below 20,000 replicates)" "$V_ANY" --reuse-45
+also 'MC-BOUNDARY \(lower edge\): \+0\.0 is within 5% of the interval.s width of 0' 'ΔMSE label: PENDING between above and spans'
+# a page made before score.py printed its full-precision line is not reused: it is scored afresh, and says why
+k7page k7old "+0.0" "0.03" 't = re.sub(r"(?m)^  unrounded \(full precision\):.*\n", "", t)'
+run_reader "$G/k7old" "K7: a page without score.py's unrounded line is not reused (scored afresh)" "${V_NA}accuracy-worsening\.$" --reuse-45
+also "\(--reuse-45: score45_${CAND}_vs_${BASE}\.txt is not reusable \(it was made before score\.py printed its 'unrounded \(full precision\)' line\); scoring afresh\)" \
+     '^   page: .*\(freshly scored, --reps '
+never 'has no .unrounded \(full precision\). line'
+# the held-out direction is printed inside the verdict block, beside the verdict, and is the section 5a line's figure
+sed -n '/^9\. VERDICT/,/THE OUTCOMES THE REGISTRATION FIXES/p' "$G/k7/reader_output.txt" > "$G/k7/verdict_block.txt"
+check "$G/k7/verdict_block.txt" "held-out direction: inside the verdict block" \
+  "^   Held-out direction beside the verdict \\(RUN5's frame, step 5b item 4; B2e pairings 0-47, $BASE -> $CAND; gates nothing\\): [0-9]+ closer, [0-9]+ further(, [0-9]+ unchanged)?, mean change in miss [+-][0-9]+\\.[0-9]{2}\\.\$"
+equal "held-out direction: the verdict block's figure is section 5a's" \
+  "$(sed -n 's/^   held-out direction: \(.*\) (reported, gates nothing)$/\1/p' "$G/k7/reader_output.txt")" \
+  "$(sed -n 's/^   Held-out direction beside the verdict (.*gates nothing): \(.*\)\.$/\1/p' "$G/k7/verdict_block.txt")"
+mk nob2e; rm "$G/nob2e/${PX}_b2e_${CAND}.jsonl" "$G/nob2e/${PX}_b2e_${CAND}.txt"
+run_reader "$G/nob2e" "held-out direction: km3's B2e file not in, the verdict block still carries the line ('not in yet')" "$V_PEND"
+sed -n '/^9\. VERDICT/,/THE OUTCOMES THE REGISTRATION FIXES/p' "$G/nob2e/reader_output.txt" > "$G/nob2e/verdict_block.txt"
+check "$G/nob2e/verdict_block.txt" "held-out direction: not in yet, inside the verdict block" \
+  "^   Held-out direction beside the verdict \\(RUN5's frame, step 5b item 4; gates nothing\\): not in yet \\($CAND's B2e both-sides file is not in\\)\\.\$"
+# clause (d): the pooled mean, half-width and 95% interval at four decimals, in section 4 and in the verdict block, agreeing with the
+# two-decimal line
+check "$G/k7/reader_output.txt" "clause (d) at four decimals" \
+  '^   pooled, at more digits .*: [+-][0-9]+\.[0-9]{4} \+/- [0-9]+\.[0-9]{4} points; 95% interval [+-][0-9]+\.[0-9]{4} to [+-][0-9]+\.[0-9]{4}; the gate is the lower edge above zero$'
+check "$G/k7/verdict_block.txt" "clause (d) at four decimals, in the verdict block" \
+  "^     PASS \\(gates\\) +\\(d\\) Lucario's pooled own-side gain, whole 95% interval above zero: [+-][0-9]+\\.[0-9]{4} \\+/- [0-9]+\\.[0-9]{4} points \\(95% interval [+-][0-9]+\\.[0-9]{4} to [+-][0-9]+\\.[0-9]{4}\\) pooled over 9 rows x 2,000"
+python3 - "$G/k7/reader_output.txt" > "$G/k7/d_digits.txt" <<'PYEOF'
+import re, sys
+t = open(sys.argv[1], encoding="utf-8").read()
+a = re.search(r"pooled over 9 rows \([\d,]+ deals per arm\): ([+-][\d.]+) \+/- ([\d.]+) points", t)
+b = re.search(r"pooled, at more digits .*: ([+-][\d.]+) \+/- ([\d.]+) points; 95% interval ([+-][\d.]+) to ([+-][\d.]+);", t)
+m, h, lo, hi = (float(x) for x in b.groups())
+ok = (f"{m:+.2f}" == a.group(1) and f"{h:.2f}" == a.group(2) and abs((lo + hi) / 2 - m) < 1.5e-4 and abs((hi - lo) / 2 - h) < 1.5e-4)
+print("(d) at two and at four decimals agree" if ok else f"(d) MISMATCH: {a.groups()} vs {b.groups()}")
+PYEOF
+check "$G/k7/d_digits.txt" "clause (d): the four-decimal figures are the two-decimal ones" '^\(d\) at two and at four decimals agree$'
 run_reader "$W/gain/run" "footprint-only: sections 1, 1b, then stop" '^\(--footprint-only: stopped after the footprint' --footprint-only
 never '^9\. VERDICT'
 echo; echo "################ --reuse-45: the page is reused only when made by the same command on the same inputs at the same --reps"

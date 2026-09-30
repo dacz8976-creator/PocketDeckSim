@@ -268,9 +268,11 @@ def main():
 
     for label, keys in (("all cells", allk), ("decision set (Altaria v Sceptile quarantined)", qk)):
         p(f"== {label}: {len(keys)} pairings")
+        full_real = {}
         for bot, S, nS in ((a.old, O, nO), (new_name, N, nN)):
             sc = D.score_table({k: 100 * S[k] for k in keys}, {k: nS[k] for k in keys})
             t, fb, fc = pass_parts(S, nS, keys)
+            full_real[bot] = t
             p(f"  {bot:>10}: real error {t:4.1f} | reported only: correlation {sc['correlation']:.2f}, average miss "
               f"{sc['average_miss']:.1f}, favorite right {sc['favorite_right']}/{len(keys)}, clear {sc['clear_right']}/"
               f"{sc['clear']}, beyond chance {sc['beyond_chance']}")
@@ -317,6 +319,10 @@ def main():
         tag = "" if paired else " [INDICATIVE: unpaired; a no-change pilot trips a veto 30-40% of the time at 500 deals]"
         p(f"  dMSE new - current: {d_point:+.1f} points^2, 95% interval {lo:+.1f} to {hi:+.1f} ({'below 0' if hi < 0 else 'not below 0'})"
           + (" [Limitless side binomial]" if events else ""))
+        # Added Sept 30 (the outcome audits' km S2/N3 and kta N2): the same numbers at full precision, for readers that must
+        # not decide from a one-decimal printout. It is a NEW line: no line printed above or below it changed.
+        p(f"  unrounded (full precision): dMSE 95% interval {lo!r} to {hi!r}; real error "
+          + ", ".join(f"{b} {v!r}" for b, v in full_real.items()))
         if events:
             lo_e, hi_e = pct(dm_e, 0.025), pct(dm_e, 0.975)
             p(f"  dMSE, Limitless side resampled by event: 95% interval {lo_e:+.1f} to {hi_e:+.1f} "
