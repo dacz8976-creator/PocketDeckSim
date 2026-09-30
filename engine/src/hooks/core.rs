@@ -9,9 +9,9 @@ use crate::{
             AbilityMechanic, AttackCostReductionScope, DiscardSearchKind, DiscardSelection,
             KnockoutDamageTarget, ARCEUS_NAMES,
         },
-        attacks::Mechanic, card_effect_from_ability_mechanic, get_ability_mechanic,
-        get_entering_play_ability_mechanic, get_in_play_ability_mechanic, handle_damage_only,
-        has_any_in_play_ability, has_in_play_ability_mechanic, SimpleAction, EFFECT_MECHANIC_MAP,
+        card_effect_from_ability_mechanic, get_ability_mechanic, get_entering_play_ability_mechanic,
+        get_in_play_ability_mechanic, handle_damage_only, has_any_in_play_ability,
+        has_in_play_ability_mechanic, SimpleAction,
     },
     card_ids::CardId,
     effects::{CardEffect, DamageReductionScope, TurnEffect},
@@ -1592,11 +1592,12 @@ pub(crate) enum DefenderHit {
 /// Returns `(first, later)`: the expected damage of the threat's first hit on this defender, and of every hit after
 /// it. They differ for Disguise (`PreventFirstAttack`, while unused: the first hit does 0) and Ice Face
 /// (`ReduceDamageAtFullHp`: only while undamaged, so the first hit only, or every hit if the first does 0).
-/// Expected, because two Abilities flip a coin: `CoinFlipToPreventIncomingDamage` and
-/// `CoinFlipToReduceIncomingDamage` (heads: the damage before modifiers is cut, as `apply_attack_action` does). As in
-/// the engine, the coin isn't flipped for the direct-damage attacks (`DirectDamage`, `DirectDamageAndSelfCardEffect`,
-/// `DirectDamageIfDamaged`): their damage lands through a queued choice the coin never sees. Both orders are known
-/// engine bugs (rules/09, "Open engine bugs"); kd follows the engine, and tests pin both.
+/// Expected, because two Abilities flip a coin: `CoinFlipToPreventIncomingDamage` (heads: no damage) and
+/// `CoinFlipToReduceIncomingDamage` (heads: its amount comes off the damage after Weakness and the other reductions,
+/// `modify_damage`'s step 4, as rules/02 has it). As in the engine, the coin flips for every hit an attack does to the
+/// defender, the direct-damage attacks (`DirectDamage`, `DirectDamageAndSelfCardEffect`, `DirectDamageIfDamaged`)
+/// included: their damage lands through a queued choice that now runs the defender's attack modifiers. Both were
+/// engine bugs until Sept 30 (rules/09, "Open engine bugs"); kd follows the engine, and tests pin both.
 ///
 /// It runs `modify_damage`'s own stages, in its order, restricted to what stays on the board:
 /// - `base_damage == 0` does nothing;
@@ -1611,7 +1612,8 @@ pub(crate) enum DefenderHit {
 /// - after Weakness, every finite reduction that isn't temporary: the Tools Heavy Helmet and Steel Apron;
 ///   `ReduceDamageFromAttacks` from the defender's Ability (Solid Shell, Shell Armor, ...); the conditional
 ///   Abilities `ReduceDamageFromTypedAttackers`, `ReduceDamageIfArceusInPlay`, `ReduceDamageAtFullHp` and
-///   `UnownGuard` (a teammate's Ability); and `CoordinatedUnit`. Board conditions are read on today's board.
+///   `UnownGuard` (a teammate's Ability); `CoordinatedUnit`; and, on a heads, `CoinFlipToReduceIncomingDamage`'s amount
+///   (Guarded Grill, Securely Sheltered). Board conditions are read on today's board.
 ///
 /// Left out, because they don't last or aren't the defender's: effects stored on the defender by attacks
 /// (`ReducedDamage`, `ReducedDamageFromEx`, `NoWeakness`, `PreventDamageFromBasic`, `PreventAllDamageAndEffects`,
@@ -1654,17 +1656,6 @@ pub(crate) fn persistent_defender_damage(
         ability_effect.clone()
     };
     let weakness_applies = hit == DefenderHit::Active && !attack_effect_ignores_weakness(context);
-    let engine_flips_coin = !context
-        .attack_effect
-        .and_then(|effect| EFFECT_MECHANIC_MAP.get(effect))
-        .is_some_and(|mechanic| {
-            matches!(
-                mechanic,
-                Mechanic::DirectDamage { .. }
-                    | Mechanic::DirectDamageAndSelfCardEffect { .. }
-                    | Mechanic::DirectDamageIfDamaged { .. }
-            )
-        });
     // One hit of `base` raw damage: (first, later) as above, before coins and Disguise.
     let hit = |base: u32| -> (u32, u32) {
         if base == 0 {
@@ -1730,16 +1721,16 @@ pub(crate) fn persistent_defender_damage(
         (first, later)
     };
     let (first, later) = match ability_effect {
-        Some(CardEffect::CoinFlipToPreventIncomingDamage) if engine_flips_coin => {
+        Some(CardEffect::CoinFlipToPreventIncomingDamage) => {
             let (first, later) = hit(base_damage);
             (0.5 * first as f64, 0.5 * later as f64)
         }
-        Some(CardEffect::CoinFlipToReduceIncomingDamage { amount }) if engine_flips_coin => {
-            let (tails_first, tails_later) = hit(base_damage);
-            let (heads_first, heads_later) = hit(base_damage.saturating_sub(amount));
+        Some(CardEffect::CoinFlipToReduceIncomingDamage { amount }) => {
+            // Heads: the cut comes off the damage after Weakness and the other reductions (never below 0).
+            let (first, later) = hit(base_damage);
             (
-                0.5 * (tails_first + heads_first) as f64,
-                0.5 * (tails_later + heads_later) as f64,
+                0.5 * (first as f64 + first.saturating_sub(amount) as f64),
+                0.5 * (later as f64 + later.saturating_sub(amount) as f64),
             )
         }
         _ => {
