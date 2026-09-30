@@ -1,8 +1,9 @@
 use deckgym::{
-    actions::Action,
+    actions::{Action, SimpleAction},
     card_ids::CardId,
     models::{EnergyType, PlayedCard},
     test_support::{attack_action, get_initialized_game_with_board},
+    Game, State,
 };
 
 /// Meowth's "Carefree Steps": "If any damage is done to this Pokémon by attacks, flip a coin. If
@@ -149,4 +150,135 @@ fn test_carefree_steps_applies_to_benched_meowth_with_independent_flips() {
         saw_mixed,
         "expected a mixed seed (one Meowth prevented, one not), proving two independent coin flips"
     );
+}
+
+/// Carefree Steps flips for damage an attack deals through a queued choice too (rules/09, "Open engine bugs",
+/// repaired Sept 30). Player 1 has a Meowth (B2 124) at `meowth_slot`; player 0 uses `attack`, and every queued choice
+/// is steered at Meowth (the queued damage, or the switch that brings Meowth in). Over 60 seeds Meowth must sometimes
+/// take nothing (heads) and sometimes take the damage (tails, or a Knock Out).
+fn queued_damage_flips_carefree_steps(attacker: PlayedCard, attack: (CardId, usize), defender: Vec<PlayedCard>) {
+    fn meowth(state: &State) -> Option<(usize, u32)> {
+        state
+            .enumerate_in_play_pokemon(1)
+            .find(|(_, p)| p.get_name() == "Meowth")
+            .map(|(idx, p)| (idx, p.get_remaining_hp()))
+    }
+    let (mut prevented, mut hit) = (0, 0);
+    for seed in 0..60u64 {
+        let mut game: Game = get_initialized_game_with_board(seed, 0, 5, vec![attacker.clone()], defender.clone());
+        let (_, before) = meowth(&game.get_state_clone()).expect("Meowth is in play");
+        game.apply_action(&Action { actor: 0, action: attack_action(attack.0, attack.1), is_stack: false });
+        for _ in 0..10 {
+            let state = game.get_state_clone();
+            if state.move_generation_stack.is_empty() {
+                break;
+            }
+            let (actor, choices) = state.generate_possible_actions();
+            if actor != 0 || choices.is_empty() {
+                break;
+            }
+            let slot = meowth(&state).map(|(idx, _)| idx);
+            let aimed = choices.iter().find(|choice| match &choice.action {
+                SimpleAction::ApplyDamage { targets, .. } => targets.iter().any(|(_, p, i)| *p == 1 && Some(*i) == slot),
+                SimpleAction::ApplyQueuedAttackDamage { targets, .. } => targets.iter().any(|(_, opp, i)| *opp && Some(*i) == slot),
+                SimpleAction::Activate { player: 1, in_play_idx } => Some(*in_play_idx) == slot,
+                _ => false,
+            });
+            game.apply_action(aimed.unwrap_or(&choices[0]));
+        }
+        match meowth(&game.get_state_clone()) {
+            Some((_, after)) if after == before => prevented += 1,
+            _ => hit += 1,
+        }
+    }
+    assert!(prevented > 10 && hit > 10, "{prevented} prevented, {hit} hit: the coin must flip");
+}
+
+#[test]
+fn carefree_steps_flips_for_a_direct_damage_snipe() {
+    // Heatmor's Tongue Whip: 30 to 1 of the opponent's Benched Pokemon (DirectDamage).
+    queued_damage_flips_carefree_steps(
+        PlayedCard::from_id(CardId::B1044Heatmor).with_energy(vec![EnergyType::Fire]),
+        (CardId::B1044Heatmor, 0),
+        vec![PlayedCard::from_id(CardId::A1001Bulbasaur), PlayedCard::from_id(CardId::B2124Meowth)],
+    );
+}
+
+#[test]
+fn carefree_steps_flips_for_direct_damage_to_a_damaged_pokemon() {
+    // Decidueye ex's Pierce the Pain: 100 to 1 of the opponent's Pokemon that have damage on them.
+    queued_damage_flips_carefree_steps(
+        PlayedCard::from_id(CardId::A3012DecidueyeEx).with_energy(vec![EnergyType::Grass; 2]),
+        (CardId::A3012DecidueyeEx, 0),
+        vec![PlayedCard::from_id(CardId::A1001Bulbasaur), PlayedCard::from_id(CardId::B2124Meowth).with_remaining_hp(40)],
+    );
+}
+
+#[test]
+fn carefree_steps_flips_for_damage_after_discarding_all_energy_of_a_type() {
+    // Chien-Pao ex's Diving Icicles: discard all [W], then 130 to 1 of the opponent's Pokemon.
+    queued_damage_flips_carefree_steps(
+        PlayedCard::from_id(CardId::B2a037ChienPaoEx).with_energy(vec![EnergyType::Water; 3]),
+        (CardId::B2a037ChienPaoEx, 1),
+        vec![PlayedCard::from_id(CardId::A1001Bulbasaur), PlayedCard::from_id(CardId::B2124Meowth)],
+    );
+}
+
+#[test]
+fn carefree_steps_flips_for_damage_per_energy_on_the_target() {
+    // Tapu Lele's Energy Arrow: 20 for each Energy on the chosen Pokemon (Meowth has 1).
+    queued_damage_flips_carefree_steps(
+        PlayedCard::from_id(CardId::A3084TapuLele).with_energy(vec![EnergyType::Psychic]),
+        (CardId::A3084TapuLele, 0),
+        vec![
+            PlayedCard::from_id(CardId::A1001Bulbasaur),
+            PlayedCard::from_id(CardId::B2124Meowth).with_energy(vec![EnergyType::Colorless]),
+        ],
+    );
+}
+
+#[test]
+fn carefree_steps_flips_for_damage_after_discarding_energy() {
+    // Volcarona's Volcanic Ash: discard 2 [R], then 80 to 1 of the opponent's Pokemon.
+    queued_damage_flips_carefree_steps(
+        PlayedCard::from_id(CardId::A1a014Volcarona).with_energy(vec![EnergyType::Fire; 3]),
+        (CardId::A1a014Volcarona, 0),
+        vec![PlayedCard::from_id(CardId::A1001Bulbasaur), PlayedCard::from_id(CardId::B2124Meowth)],
+    );
+}
+
+#[test]
+fn carefree_steps_flips_for_damage_to_the_pokemon_switched_in() {
+    // Sandy Shocks's Pull In and Pound: switch in 1 of the opponent's Benched Pokemon, then 50 to it.
+    queued_damage_flips_carefree_steps(
+        PlayedCard::from_id(CardId::B3a035SandyShocks).with_energy(vec![EnergyType::Fighting; 3]),
+        (CardId::B3a035SandyShocks, 0),
+        vec![PlayedCard::from_id(CardId::A1001Bulbasaur), PlayedCard::from_id(CardId::B2124Meowth)],
+    );
+}
+
+/// The repair's gate: only a snipe at a Pokemon with a coin Ability takes the coin-flipping path
+/// (`ApplyQueuedAttackDamage`); a snipe at any other Pokemon is queued exactly as before (`ApplyDamage`).
+#[test]
+fn only_a_snipe_at_a_coin_ability_pokemon_takes_the_coin_path() {
+    let mut game = get_initialized_game_with_board(
+        0,
+        0,
+        5,
+        vec![PlayedCard::from_id(CardId::B1044Heatmor).with_energy(vec![EnergyType::Fire])],
+        vec![
+            PlayedCard::from_id(CardId::A1001Bulbasaur),
+            PlayedCard::from_id(CardId::A1001Bulbasaur),
+            PlayedCard::from_id(CardId::B2124Meowth),
+        ],
+    );
+    game.apply_action(&Action { actor: 0, action: attack_action(CardId::B1044Heatmor, 0), is_stack: false });
+    let (_, choices) = game.get_state_clone().generate_possible_actions();
+    let target = |choice: &Action| match &choice.action {
+        SimpleAction::ApplyDamage { targets, .. } => Some(("ApplyDamage", targets[0].2)),
+        SimpleAction::ApplyQueuedAttackDamage { targets, .. } => Some(("ApplyQueuedAttackDamage", targets[0].2)),
+        _ => None,
+    };
+    let kinds: Vec<_> = choices.iter().filter_map(target).collect();
+    assert_eq!(kinds, vec![("ApplyDamage", 1), ("ApplyQueuedAttackDamage", 2)]);
 }
