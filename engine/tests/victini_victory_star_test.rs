@@ -337,16 +337,28 @@ fn defender_coin_is_resolved_after_choice_and_never_becomes_the_pending_batch() 
     }
 }
 
+/// rules/04 §9 (seen in Pocket Sept 29): a Confused attacker's Confusion coin is flipped first and
+/// is never offered for a reroll. Tails ends the attack with nothing done; only heads reaches the
+/// attack-effect pause, still before any damage.
 #[test]
-fn confusion_combination_stays_on_explicit_legacy_boundary() {
-    let mut game = game(3, CardId::B3025Victini, sponge(400));
-    let mut state = game.get_state_clone();
-    state.apply_status_condition(0, 0, StatusCondition::Confused);
-    game.set_state(state);
-    game.apply_action(&attack());
+fn confusion_coin_comes_before_the_attack_effect_pause_and_tails_does_nothing() {
+    let (mut paused, mut confusion_tails) = (0, 0);
+    for seed in 0..40 {
+        let mut game = game(seed, CardId::B3025Victini, sponge(400));
+        let mut state = game.get_state_clone();
+        state.apply_status_condition(0, 0, StatusCondition::Confused);
+        game.set_state(state);
+        game.apply_action(&attack());
+        let after = game.get_state_clone();
+        assert_eq!(after.get_active(1).get_remaining_hp(), 400, "seed {seed}");
+        match after.pending_attack_coin_choice {
+            Some(_) => paused += 1,
+            None => confusion_tails += 1,
+        }
+    }
     assert!(
-        game.get_state_clone().pending_attack_coin_choice.is_none(),
-        "unverified confusion/Victory Star interaction must not use the attack-effect pause"
+        paused > 5 && confusion_tails > 5,
+        "{paused} pauses, {confusion_tails} Confusion tails"
     );
 }
 

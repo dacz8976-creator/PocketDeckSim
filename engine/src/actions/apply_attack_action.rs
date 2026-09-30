@@ -89,8 +89,10 @@ pub(crate) fn finish_attack_from_effect_outcomes(
     }
 }
 
-/// Confusion and CoinFlipToBlockAttack are attacker-side gates whose Victory Star interaction has
-/// not been verified in Pocket. Do not stage the inner attack coin before those earlier gates.
+/// Confusion and CoinFlipToBlockAttack are attacker-side gates. CoinFlipToBlockAttack's Victory Star
+/// interaction has not been verified in Pocket, so the inner attack coin is not staged before it.
+/// Confusion's has (`victory_star_waits_for_confusion_heads`), and Victory Star checks that first;
+/// a Confused attacker that it does not cover still falls under this gate.
 pub(crate) fn has_unverified_attacker_coin_gate(
     acting_player: usize,
     state: &State,
@@ -105,6 +107,55 @@ pub(crate) fn has_unverified_attacker_coin_gate(
             .get_active_effects()
             .iter()
             .any(|effect| matches!(effect, CardEffect::CoinFlipToBlockAttack))
+}
+
+/// Victory Star with a Confused attacker (rules/04 §9, seen in Pocket Sept 29): the Confusion coin
+/// is flipped first and is never offered for a reroll. On tails the attack does nothing; on heads
+/// the attack's own coins are flipped and Victory Star is offered on them, with no second Confusion
+/// check. True for a Confused attacker's own attack, except with CoinFlipToBlockAttack or a pending
+/// Will as well: neither has been seen with Victory Star, so both keep the legacy resolution.
+pub(crate) fn victory_star_waits_for_confusion_heads(
+    acting_player: usize,
+    state: &State,
+    is_sub_attack: bool,
+) -> bool {
+    if is_sub_attack {
+        return false;
+    }
+    let active = state.get_active(acting_player);
+    active.is_confused()
+        && !active
+            .get_active_effects()
+            .iter()
+            .any(|effect| matches!(effect, CardEffect::CoinFlipToBlockAttack))
+        && !state.has_pending_will_first_heads()
+}
+
+/// The Confusion coin's tails before a Victory Star pause: the attack does nothing. This is
+/// `apply_confusion_coin_flip`'s tails branch, through the same defender modifiers.
+pub(crate) fn confusion_tails_outcomes(
+    acting_player: usize,
+    state: &State,
+    attack: &Attack,
+) -> Outcomes {
+    apply_defender_attack_modifiers(
+        acting_player,
+        state,
+        attack,
+        AttackOutcomes::single(AttackOutcome::noop()),
+    )
+    .into_outcomes()
+}
+
+/// Finish a Confused attacker's attack after its Confusion heads and the Victory Star choice: only
+/// the defender's modifiers remain (no second Confusion check).
+pub(crate) fn finish_attack_after_confusion_heads(
+    acting_player: usize,
+    state: &State,
+    attack: &Attack,
+    base_outcomes: AttackOutcomes,
+) -> Outcomes {
+    apply_defender_attack_modifiers(acting_player, state, attack, base_outcomes).into_outcomes()
 }
 
 fn apply_attack_common_modifiers(
