@@ -1,0 +1,4 @@
+repaired engine, plain v instrumented scan: same moves in 40 of 40
+without the repair: vs_confused_attack in 40 games (164 attacks); vs_confused_choice in 0 games (0 choices)
+with the repair: vs_confused_attack in 39 games (174 attacks); vs_confused_choice in 8 games (8 choices)
+games whose moves the repair changes: 13 of 40; of them, with vs_confused_attack > 0 without the repair: 13
