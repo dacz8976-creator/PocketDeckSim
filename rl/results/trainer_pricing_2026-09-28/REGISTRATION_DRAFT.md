@@ -234,6 +234,30 @@ The laptop's program check (section 4.0's step 4; (g) step 4) now reads, in this
 - **The appendix (N1) is untouched.**
 - **Older sections are kept as the record.** This amendment governs where they differ.
 
+## Amendment 2 (Sept 30, before any registered km game): M1's and M2's thresholds
+
+The amendment of step 3 ("The amendment") and of the registration block, items 3 to 5, read with Amendment 1 (kta3 is the baseline arm). It follows the procedure exactly and so needs no further word from Dustin ("Only the procedure needs my approval. The calculated numbers do not need another approval if they follow it exactly."). Written by the laptop session (Local Opus), dated 2026-09-30 UTC, committed before any registered km game.
+
+**The sample** (`rl/results/km_tables_2026-09-30/`, committed at 1fc9e0b): deals 200 to 299 of the 14 gating cells, kta3 on both sides then km3 on both sides, 2,800 games, played by the laptop's pinned programs built from B = 1f6319e (Amendment 1 (e) item 5; part I's agreement on the tested games committed at fcb3901). Raw files: `1f6319e_sample_kta3_rows.jsonl` (sha256 `743176c6f66951e506cb72a946d122f33543b0358b04b4e61f1c00f795b73fc3`) and `1f6319e_sample_km3_rows.jsonl` (`687e138a5bc924869f27e1a4bfe9118db76424fa4ca79e0d13677fc19c2d3846`).
+
+**M1, Arena of Antiquity** (Lucario's side; table pairings 2, 8, 13, 18, 19, 20, 21 and `new_decks.tsv` pairings 8, 16):
+- kta3: played on 355 of 1,664 offered turns, R_kta3 = 355/1664 (21.3%).
+- km3: played on 444 of 1,308 offered turns, R_km3 = 37/109 (33.9%).
+- Paired 95% interval of km3's rate minus kta3's (`random.Random(20260929)`, 10,000 replicates): 0.10706821380818238 to 0.14692109105529338. The lower bound is above zero.
+- **T1 = 100263/362752 (27.6% displayed).**
+
+**M2, Training Area** (Altaria's side; table pairings 0, 1, 3, 4 and `new_decks.tsv` pairing 9):
+- kta3: played on 254 of 870 offered turns, R_kta3 = 127/435 (29.2%).
+- km3: played on 275 of 786 offered turns, R_km3 = 275/786 (35.0%).
+- Paired 95% interval (`random.Random(20260930)`, 10,000 replicates): 0.03862448982989242 to 0.0782545074154864. The lower bound is above zero.
+- **T2 = 24383/75980 (32.1% displayed).**
+
+Neither line reads "cannot pass". On the gating deals (0 to 199), km3's pooled rate is compared with T exactly, and the guard compares kta3's rate there with the same exact T.
+
+**Code and tool:** `km_thresholds.py` sha256 `c84a87688d178f08deac79023d6f6e5e85979a7f6fed3266db450baa3a49263a` (committed at a14014e; Python 3.14.4). The counter tool: source sha256 `05d7ba4183ce9e3098036de9acb5181ea71f7077ef9b3798ad4e5d165dc22365`; the laptop's program sha256 `9e7bdc1b47b9eda69540fd5263acbab7a1f081f7467db657af5fbb7def47f807`.
+
+**The independent check agrees** (committed at 80d77cf; `rl/results/km_tables_2026-09-30/INDEPENDENT_CHECK.md`). Two agents, neither the author of `km_thresholds.py`, wrote their own code from this text and computed from the committed raw files before opening `thresholds.json`. Every figure agrees exactly: checker a on 39 of 39 compared, checker b on 40 of 40, with both bounds equal bit for bit.
+
 ---
 
 **Status: a draft, not registered. No code and no game.** Nothing here is registered until the text is committed as the registration, with Dustin's word on it (kt's registration says the same of itself). The review's findings (`REVIEW.md`) were applied to this text on Sept 29. Every change is listed with its finding id at the end ("Changes from the review (Sept 29)"). One check by a reader other than the editor has been done on the applied text (the review's order, step 3); its corrections are listed at the end ("Corrections at the check"). It was not a second full review. **Later on Sept 29 the text was narrowed to Dustin's two decisions, D1 and D2** (below; every change is in "Changes from Dustin's decisions D1 and D2 (Sept 29)"). That narrowing was then read once by a checker other than its editor (km-checker, Sept 29); its corrections are listed at the end ("Corrections at the second check"). That was not a full second review either. **Later still on Sept 29 the text was harmonised with RUN5 and with kta's draft** (`rl/results/kta_2026-09-29/REGISTRATION.md`); every change is listed in "Harmonised with RUN5 (Sept 29)", after the open questions. Where an older section below says something is open that the harmonisation settles, the harmonisation governs. **A second fix pass the same day** applied an independent checker's points; its changes are listed in "Second fix pass (Sept 29)", right after the harmonisation note. **A third pass the same day** applied the changes from a review Dustin forwarded (they await his word like the rest of the text); every change is listed in "Third pass, Sept 29 (review changes)", right after the second fix pass, and it governs where an older note says otherwise.
