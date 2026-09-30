@@ -350,6 +350,18 @@ pub fn public_clock_effect_kn_value_function(state: &State, myself: usize) -> f6
     parametric_value_function_ex6(state, myself, &ValueFunctionParams::baseline(), true, false, true, true, false, EvalFeatures::KN)
 }
 
+/// The `kr` code (players/mod.rs `KR`, piloted like `kp`): km with switch C2, a benched threat pays its Active's way
+/// out in km's clock, on both sides (`rl/results/kn_build_2026-09-30/TIMING.md`, C2; built Sept 30, not registered).
+/// N1's static term is off. km's call with [`EvalFeatures::KR`].
+pub fn public_clock_effect_kr_value_function(state: &State, myself: usize) -> f64 {
+    parametric_value_function_ex6(state, myself, &ValueFunctionParams::baseline(), true, false, true, true, false, EvalFeatures::KR)
+}
+
+/// The `kro` diagnostic: kr's C2 in the opponent's clock only (their threats, how soon they win), for attribution.
+pub fn public_clock_effect_kro_value_function(state: &State, myself: usize) -> f64 {
+    parametric_value_function_ex6(state, myself, &ValueFunctionParams::baseline(), true, false, true, true, false, EvalFeatures::KRO)
+}
+
 /// Weight of [`best_benched_attacker_online_score`] in `kq`: half the Active online score's 500 in
 /// [`ValueFunctionParams::baseline`]. Pre-set before any A/B and not tuned on the table.
 pub const KQ_BENCH_ATTACKER_WEIGHT: f64 = 250.0;
@@ -377,7 +389,7 @@ struct EvalFeatures {
     /// ([`super::fuel_credit::fuel_credit`]), over the pile R's projection left when R is on.
     fuel_credit: bool,
     /// kt switch 1 (kt, kta): the defender's temporary damage cuts and damage-cut Tools in the threat clock
-    /// ([`kt_clock_stadium`]). Not combined with kq's, kd's or kpr's clock features: no player code sets them together.
+    /// ([`kt_clock_c2`]). Not combined with kq's, kd's or kpr's clock features: no player code sets them together.
     defender_cuts: bool,
     /// kt switch 2 (kt, ktb): the flat +10 for a Tool on the Active (`active_has_tool`) is 0; each Tool counts only
     /// through the terms that read what it does for its holder.
@@ -391,12 +403,17 @@ struct EvalFeatures {
     /// kph fix B (kph, kphb): with R on, the clock may also give the side's Zone Energy to a benched Pokemon that can
     /// reach the Active Spot by the retreat rule ([`calculate_turns_until_opponent_wins_projected`]).
     zone_to_bench: bool,
-    /// km switch N2 (km): each hit in kt's clock ([`kt_clock_stadium`]) carries the attacker's lasting Stadium damage
+    /// km switch N2 (km): each hit in kt's clock ([`kt_clock_c2`]) carries the attacker's lasting Stadium damage
     /// bonus ([`lasting_stadium_damage_bonus`]). Read only in kt's clock, so only with switch 1 or 3 on (km: switch 1).
     stadium_bonus_in_clock: bool,
     /// Switch N1 (kn): the opponent's Active Retreat Cost counts in the score, as the bot's own does, through the same
     /// extraction ([`get_active_retreat_cost`], the board cost) and the same weight. Read only after setup.
     opponent_retreat_cost: bool,
+    /// Switch C2 (kr, kro): in kt's clock ([`kt_clock_c2`]), a benched threat candidate of the opponent's (the clock of
+    /// how soon they win) first pays what their Active lacks to retreat ([`benched_retreat_shortfall`]).
+    retreat_opponent_threat: bool,
+    /// Switch C2 (kr): the same for the bot's own benched threats (the clock of how soon it wins).
+    retreat_own_threat: bool,
 }
 
 impl EvalFeatures {
@@ -416,6 +433,8 @@ impl EvalFeatures {
         zone_to_bench: false,
         stadium_bonus_in_clock: false,
         opponent_retreat_cost: false,
+        retreat_opponent_threat: false,
+        retreat_own_threat: false,
     };
     const KQ: EvalFeatures = EvalFeatures {
         next_attack_reduction: true,
@@ -433,6 +452,8 @@ impl EvalFeatures {
         zone_to_bench: false,
         stadium_bonus_in_clock: false,
         opponent_retreat_cost: false,
+        retreat_opponent_threat: false,
+        retreat_own_threat: false,
     };
     const KD: EvalFeatures = EvalFeatures {
         next_attack_reduction: false,
@@ -450,6 +471,8 @@ impl EvalFeatures {
         zone_to_bench: false,
         stadium_bonus_in_clock: false,
         opponent_retreat_cost: false,
+        retreat_opponent_threat: false,
+        retreat_own_threat: false,
     };
     const KPR: EvalFeatures = EvalFeatures {
         next_attack_reduction: false,
@@ -467,6 +490,8 @@ impl EvalFeatures {
         zone_to_bench: false,
         stadium_bonus_in_clock: false,
         opponent_retreat_cost: false,
+        retreat_opponent_threat: false,
+        retreat_own_threat: false,
     };
     const KOA: EvalFeatures = EvalFeatures { opening_first_turn_active: true, ..EvalFeatures::OFF };
     const KOB: EvalFeatures = EvalFeatures { opening_bench_working: true, ..EvalFeatures::OFF };
@@ -502,6 +527,12 @@ impl EvalFeatures {
     const KM: EvalFeatures = EvalFeatures { stadium_bonus_in_clock: true, ..EvalFeatures::KTA };
     /// kn: km + N1 (the parked switch, built Sept 30). With N1's flag off it is [`EvalFeatures::KM`].
     const KN: EvalFeatures = EvalFeatures { opponent_retreat_cost: true, ..EvalFeatures::KM };
+    /// kr: km + C2 on both sides (TIMING.md's C2, built Sept 30), N1's static term off. With C2's flags off it is
+    /// [`EvalFeatures::KM`].
+    const KR: EvalFeatures =
+        EvalFeatures { retreat_opponent_threat: true, retreat_own_threat: true, ..EvalFeatures::KM };
+    /// kro (diagnostic): km + C2 in the opponent's clock only.
+    const KRO: EvalFeatures = EvalFeatures { retreat_opponent_threat: true, ..EvalFeatures::KM };
 
     /// Whether kt's clock ([`kt_clocks`]) replaces kp's.
     fn kt_clock(&self) -> bool {
@@ -1762,8 +1793,13 @@ impl FirstAttackTurn {
 /// added to the attack's damage before Weakness, and the defender's cuts (switch 1) come off after, floored at 0. So a
 /// hit is `(damage + bonus) - cuts`. The threat is still picked on unbonused damage. With no Training Area or Arena of
 /// Antiquity in play the bonus is 0 and the arithmetic is kt's; every code but km runs it with N2 off.
+///
+/// C2 (`retreat_in`; kr on both sides, kro in the opponent's clock only; `rl/results/kn_build_2026-09-30/TIMING.md`):
+/// before the threat is picked, each benched candidate's missing Energy also counts what its side's Active lacks to
+/// retreat ([`benched_retreat_shortfall`]), so a benched threat pays its Active's way out. The Active's own candidates
+/// are unchanged. With `retreat_in` off the arithmetic is km's; every code but kr and kro runs it off.
 #[allow(clippy::too_many_arguments)]
-fn kt_clock_stadium(
+fn kt_clock_c2(
     state: &State,
     victim_owner: usize,
     read_scanned_zones: bool,
@@ -1772,6 +1808,7 @@ fn kt_clock_stadium(
     consume_bench: bool,
     cuts: bool,
     stadium_bonus: bool,
+    retreat_in: bool,
 ) -> KtClock {
     let owner = (victim_owner + 1) % 2;
     let attack_damage = |atk: &Attack, slot: &PlayedCard| -> u32 {
@@ -1781,7 +1818,13 @@ fn kt_clock_stadium(
             atk.fixed_damage
         }
     };
-    let candidates = threat_candidates(state, owner, read_scanned_zones, None, &attack_damage);
+    let mut candidates = threat_candidates(state, owner, read_scanned_zones, None, &attack_damage);
+    // C2 (kr, kro): a benched candidate first pays what its side's Active lacks to retreat. Off, nothing changes.
+    if retreat_in {
+        for candidate in candidates.iter_mut().filter(|c| c.slot != 0) {
+            candidate.missing += benched_retreat_shortfall(state, owner, candidate.missing);
+        }
+    }
     let Some(threat) = candidates.iter().min_by_key(|c| (c.missing, u32::MAX - c.damage)).copied() else {
         return KtClock { lead: 30.0, active: None, rest: 0.0, threat_slot: None };
     };
@@ -1857,6 +1900,28 @@ fn kt_clock_stadium(
     KtClock { lead, active, rest, threat_slot: Some(threat.slot) }
 }
 
+/// [`kt_clock_c2`] with C2 off, as km's and kt's tests call it positionally.
+#[cfg(test)]
+#[allow(clippy::too_many_arguments)]
+fn kt_clock_stadium(
+    state: &State,
+    victim_owner: usize,
+    read_scanned_zones: bool,
+    effect_aware: bool,
+    reserve_aware: bool,
+    consume_bench: bool,
+    cuts: bool,
+    stadium_bonus: bool,
+) -> KtClock {
+    kt_clock_c2(state, victim_owner, read_scanned_zones, effect_aware, reserve_aware, consume_bench, cuts, stadium_bonus, false)
+}
+
+/// C2 (kr, kro; `rl/results/kn_build_2026-09-30/TIMING.md`): what `owner`'s Active still lacks to retreat, charged to a
+/// benched threat candidate of `owner`'s with `missing` Energy to go. Not yet implemented: 0, as km's clock has it.
+fn benched_retreat_shortfall(_state: &State, _owner: usize, _missing: usize) -> usize {
+    0
+}
+
 /// [`kt_clock_stadium`] with km's N2 off, as kt's tests call it positionally.
 #[cfg(test)]
 fn kt_clock(
@@ -1871,7 +1936,7 @@ fn kt_clock(
     kt_clock_stadium(state, victim_owner, read_scanned_zones, effect_aware, reserve_aware, consume_bench, cuts, false)
 }
 
-/// One side's clock from [`kt_clock_stadium`], in the parts switch 3 reads.
+/// One side's clock from [`kt_clock_c2`], in the parts switch 3 reads.
 #[derive(Debug, Clone, Copy)]
 struct KtClock {
     /// The turns before the threat's first hit (its missing Energy); 30 when nothing threatens.
@@ -1932,8 +1997,10 @@ fn kt_clocks(
 ) -> (f64, f64) {
     let opponent = (myself + 1) % 2;
     let (cuts, n2) = (features.defender_cuts, features.stadium_bonus_in_clock);
-    let mine = kt_clock_stadium(state, myself, false, effect_aware, reserve_aware, public_eval, cuts, n2);
-    let theirs = kt_clock_stadium(state, opponent, public_eval, effect_aware, reserve_aware, public_eval, cuts, n2);
+    // C2 (kr, kro): `mine` is the opponent's threats (how soon they win), `theirs` the bot's own.
+    let (c2_theirs, c2_mine) = (features.retreat_opponent_threat, features.retreat_own_threat);
+    let mine = kt_clock_c2(state, myself, false, effect_aware, reserve_aware, public_eval, cuts, n2, c2_theirs);
+    let theirs = kt_clock_c2(state, opponent, public_eval, effect_aware, reserve_aware, public_eval, cuts, n2, c2_mine);
     if !features.counter_damage {
         return (mine.total(0.0), theirs.total(0.0));
     }
@@ -6067,22 +6134,22 @@ mod kn_tests {
 
     /// Scratch lists made for these tests (not table, held-out or Dustin's lists): Goo-zooka, Peculiar Plaza, and two
     /// opponents whose Actives carry a retreat Tool (Inflatable Boat, Small Balloon).
-    const GOO: &str = "Energy: Fighting\n2 Machop A1 143\n2 Machoke A1 144\n1 Machamp A1 145\n\
+    pub(super) const GOO: &str = "Energy: Fighting\n2 Machop A1 143\n2 Machoke A1 144\n1 Machamp A1 145\n\
         2 Team Rocket's Rattata B4a 058\n2 Team Rocket's Raticate ex B4a 059\n2 Team Rocket's Goo-zooka B4a 068\n\
         2 Poké Ball P-A 005\n2 Professor's Research P-A 007\n1 Sabrina A1 225\n1 Cyrus A2 150\n1 Giant Cape A2 147\n\
         1 X Speed P-A 002\n1 Potion P-A 001\n";
-    const PLAZA: &str = "Energy: Psychic\n2 Mewtwo ex A1 129\n2 Ralts A1 130\n2 Kirlia A1 131\n2 Gardevoir A1 132\n\
+    pub(super) const PLAZA: &str = "Energy: Psychic\n2 Mewtwo ex A1 129\n2 Ralts A1 130\n2 Kirlia A1 131\n2 Gardevoir A1 132\n\
         2 Peculiar Plaza B2 155\n2 Poké Ball P-A 005\n2 Professor's Research P-A 007\n1 Rare Candy A3 144\n\
         1 Sabrina A1 225\n1 Cyrus A2 150\n1 Giant Cape A2 147\n1 X Speed P-A 002\n1 Potion P-A 001\n";
-    const WATER_BOAT: &str = "Energy: Water\n2 Suicune ex A4a 020\n2 Squirtle A1 053\n2 Wartortle A1 054\n\
+    pub(super) const WATER_BOAT: &str = "Energy: Water\n2 Suicune ex A4a 020\n2 Squirtle A1 053\n2 Wartortle A1 054\n\
         1 Blastoise A1 055\n2 Inflatable Boat A4a 067\n2 Poké Ball P-A 005\n2 Professor's Research P-A 007\n\
         1 Rare Candy A3 144\n1 Sabrina A1 225\n1 Cyrus A2 150\n1 Giant Cape A2 147\n1 X Speed P-A 002\n\
         2 Potion P-A 001\n";
-    const FIRE_BALLOON: &str = "Energy: Fire\n2 Charmander A1 033\n2 Charmeleon A1 034\n2 Charizard A1 035\n\
+    pub(super) const FIRE_BALLOON: &str = "Energy: Fire\n2 Charmander A1 033\n2 Charmeleon A1 034\n2 Charizard A1 035\n\
         2 Small Balloon B3b 064\n2 Poké Ball P-A 005\n2 Professor's Research P-A 007\n2 Rare Candy A3 144\n\
         1 Sabrina A1 225\n1 Cyrus A2 150\n1 Giant Cape A2 147\n1 X Speed P-A 002\n2 Potion P-A 001\n";
     /// The pairs the played-state and move-for-move tests cycle through.
-    const PAIRS: [(&str, &str); 5] =
+    pub(super) const PAIRS: [(&str, &str); 5] =
         [(GOO, WATER_BOAT), (GOO, FIRE_BALLOON), (PLAZA, FIRE_BALLOON), (PLAZA, WATER_BOAT), (GOO, PLAZA)];
 
     fn deck(list: &str) -> Deck {
@@ -6396,5 +6463,338 @@ mod kn_tests {
         assert!(differ.is_empty(), "kn3 with N1 off differs from km3 on deals {differ:?}");
         let n1_moves = results.iter().filter(|r| r.2 == Some(true)).count();
         assert!(n1_moves > 0, "kn3 plays as km3 on all of the first 40 deals");
+    }
+}
+
+#[cfg(test)]
+mod kr_tests {
+    //! kr = km + switch C2, a benched threat pays its Active's way out in km's clock (both sides), N1's static term off;
+    //! kro = C2 in the opponent's clock only (`rl/results/kn_build_2026-09-30/TIMING.md`, C2). Built Sept 30, not
+    //! registered. Numbers from `lib/card.py`: Retreat Costs Machop A1 143 2 (Basic [F]), Dratini A1 183 1 (Basic
+    //! Dragon, [WL] Ram 40), Mewtwo ex A1 129 2 (Basic [P], [PC] Psychic Sphere 50), Suicune ex A4a 020 2 ([W]),
+    //! Darkrai B2b 040 2 ([D]); Bombirdier B3 115 (Villainous Delivery: on the Bench, your Active [D] Pokemon's cost 1
+    //! less); Ariados B1a 006 (Trap Territory: the opponent's Active +1); Small Balloon B3b 064 (a Basic 1 less);
+    //! Inflatable Boat A4a 067 (a [W] Pokemon 1 less); Peculiar Plaza B2 155 (each [P] Pokemon 2 less); Team Rocket's
+    //! Goo-zooka B4a 068 (`IncreasedRetreatCost { 1 }` until the end of the opponent's next turn).
+    use super::kn_tests::PAIRS;
+    use super::*;
+    use crate::card_ids::CardId;
+    use crate::database::get_card_by_enum;
+    use crate::observation::{PlayerObservation, RevealedKnowledge};
+    use crate::players::expectiminimax_player::ExpectiMiniMaxPlayer;
+    use crate::players::public_pricing_player::PublicPricingPlayer;
+    use crate::players::{create_players, PlayerCode, RandomPlayer};
+    use crate::{Deck, Game};
+
+    fn mon(id: CardId) -> PlayedCard {
+        PlayedCard::from_id(id)
+    }
+
+    fn deck(list: &str) -> Deck {
+        Deck::from_string(list).unwrap()
+    }
+
+    /// A code's value from `myself`'s view, evaluated as the public codes are.
+    fn value(state: &State, myself: usize, features: EvalFeatures) -> f64 {
+        parametric_value_function_ex6(state, myself, &ValueFunctionParams::baseline(), true, false, true, true, false, features)
+    }
+
+    /// Player 0 (`zero`) against player 1 (`one`), player 0 to move on turn 5 after setup, `stadium` in play, and each
+    /// side's next Energy visible (so a side's next turn has its attachment).
+    fn position(zero: Vec<PlayedCard>, one: Vec<PlayedCard>, stadium: Option<CardId>) -> State {
+        let game = crate::test_support::get_initialized_game(0);
+        let mut state = game.get_state_clone();
+        state.set_board(zero, one);
+        state.current_player = 0;
+        state.turn_count = 5;
+        state.move_generation_stack.clear();
+        state.setup_opponent_hidden = false;
+        state.has_retreated = false;
+        state.active_stadium = stadium.map(get_card_by_enum);
+        state.energy_zone[0].current = Some(EnergyType::Psychic);
+        state.energy_zone[1].next = Some(EnergyType::Psychic);
+        state
+    }
+
+    /// The engine's own retreat arithmetic for player 0 (to move): the fewest Energy that must be added to its Active
+    /// before a Retreat is offered (`move_generation`: `can_retreat` and the Active's Energy covering its cost), or
+    /// `None` if none is offered within 8.
+    fn engine_shortfall(state: &State) -> Option<usize> {
+        (0..8).find(|&k| {
+            let mut s = state.clone();
+            s.get_active_mut(0).attached_energy.extend(vec![EnergyType::Fighting; k]);
+            let (actor, actions) = s.generate_possible_actions();
+            assert_eq!(actor, 0);
+            actions.iter().any(|a| matches!(a.action, SimpleAction::Retreat(_)))
+        })
+    }
+
+    #[test]
+    fn kr_and_kro_are_km_plus_c2_and_nothing_else() {
+        // With C2's flags cleared, KR's and KRO's presets are KM's, every field, compared as presets are compared; KRO
+        // is KR with the bot's own half off. N1's static term is off in both.
+        let (kr, kro) = (EvalFeatures::KR, EvalFeatures::KRO);
+        assert!(kr.retreat_opponent_threat && kr.retreat_own_threat && !kr.opponent_retreat_cost);
+        assert!(kro.retreat_opponent_threat && !kro.retreat_own_threat && !kro.opponent_retreat_cost);
+        let cleared = |f: EvalFeatures| format!("{:?}", EvalFeatures { retreat_opponent_threat: false, retreat_own_threat: false, ..f });
+        assert_eq!(cleared(kr), format!("{:?}", EvalFeatures::KM));
+        assert_eq!(cleared(kro), format!("{:?}", EvalFeatures::KM));
+        assert_eq!(format!("{:?}", EvalFeatures { retreat_own_threat: false, ..kr }), format!("{kro:?}"));
+        for f in [
+            EvalFeatures::OFF,
+            EvalFeatures::KQ,
+            EvalFeatures::KD,
+            EvalFeatures::KPR,
+            EvalFeatures::KOA,
+            EvalFeatures::KOB,
+            EvalFeatures::KOR,
+            EvalFeatures::KPF,
+            EvalFeatures::KPG,
+            EvalFeatures::KPH,
+            EvalFeatures::KPHA,
+            EvalFeatures::KPHB,
+            EvalFeatures::KOH,
+            EvalFeatures::KOG,
+            EvalFeatures::KT,
+            EvalFeatures::KTA,
+            EvalFeatures::KTB,
+            EvalFeatures::KTC,
+            EvalFeatures::KM,
+            EvalFeatures::KN,
+        ] {
+            assert!(!f.retreat_opponent_threat && !f.retreat_own_threat, "{f:?}");
+        }
+    }
+
+    #[test]
+    fn c2_pin_the_shortfall_is_the_engines_retreat_arithmetic() {
+        // TIMING.md's pin, as N2's pinned its bonus against modify_damage: on boards with Goo-zooka's effect, Peculiar
+        // Plaza, Trap Territory, Small Balloon, Inflatable Boat and Bombirdier, for every Energy count on the Active,
+        // C2's shortfall for a benched threat ready now (missing 0; the owner to move, so every stored effect is live)
+        // is the fewest Energy the engine needs added to the Active before it offers a Retreat.
+        let goo = |card: PlayedCard| {
+            let mut card = card;
+            card.add_effect(CardEffect::IncreasedRetreatCost { amount: 1 }, 1);
+            card
+        };
+        let bench = || mon(CardId::A1129MewtwoEx);
+        let other = || vec![mon(CardId::A1183Dratini)];
+        let tool = |id: CardId, t: CardId| mon(id).with_tool(get_card_by_enum(t));
+        let boards: Vec<(&str, State, usize)> = vec![
+            ("printed", position(vec![mon(CardId::A1143Machop), bench()], other(), None), 2),
+            ("Goo-zooka", position(vec![goo(mon(CardId::A1143Machop)), bench()], other(), None), 3),
+            (
+                "Trap Territory",
+                position(vec![mon(CardId::A1143Machop), bench()], vec![mon(CardId::A1183Dratini), mon(CardId::B1a006Ariados)], None),
+                3,
+            ),
+            ("Plaza, a [P] Active", position(vec![mon(CardId::A1129MewtwoEx), bench()], other(), Some(CardId::B2155PeculiarPlaza)), 0),
+            ("Plaza, a non-[P] Active", position(vec![mon(CardId::A1143Machop), bench()], other(), Some(CardId::B2155PeculiarPlaza)), 2),
+            (
+                "Small Balloon",
+                position(vec![tool(CardId::A1143Machop, CardId::B3b064SmallBalloon), bench()], other(), None),
+                1,
+            ),
+            (
+                "Inflatable Boat",
+                position(vec![tool(CardId::A4a020SuicuneEx, CardId::A4a067InflatableBoat), bench()], other(), None),
+                1,
+            ),
+            ("Bombirdier", position(vec![mon(CardId::B2b040Darkrai), mon(CardId::B3115Bombirdier)], other(), None), 1),
+            (
+                "Goo-zooka, Trap Territory and Small Balloon",
+                position(
+                    vec![goo(tool(CardId::A1143Machop, CardId::B3b064SmallBalloon)), bench()],
+                    vec![mon(CardId::A1183Dratini), mon(CardId::B1a006Ariados)],
+                    None,
+                ),
+                3,
+            ),
+        ];
+        for (label, board, cost) in boards {
+            for energy in 0..=cost + 1 {
+                let mut state = board.clone();
+                state.get_active_mut(0).attached_energy = vec![EnergyType::Fighting; energy];
+                let engine = engine_shortfall(&state).expect("a Retreat is offered");
+                assert_eq!(engine, cost.saturating_sub(energy), "{label}, {energy} Energy: the engine's cost");
+                assert_eq!(benched_retreat_shortfall(&state, 0, 0), engine, "{label}, {energy} Energy");
+            }
+        }
+        // An Active that can't retreat at all is left as today (a stated limit): Asleep, the engine offers no Retreat,
+        // and C2 charges nothing.
+        let asleep = position(
+            vec![mon(CardId::A1143Machop).with_status_condition(StatusCondition::Asleep), bench()],
+            other(),
+            None,
+        );
+        assert_eq!(engine_shortfall(&asleep), None);
+        assert_eq!(benched_retreat_shortfall(&asleep, 0, 0), 0);
+    }
+
+    #[test]
+    fn c2_counts_a_raised_cost_only_while_it_is_live_when_the_threat_would_attack() {
+        // Player 1's Active Dratini (cost 1) holds 1 Energy and carries Goo-zooka's effect, played on player 0's turn 5
+        // with 1 turn left: live through turn 6, player 1's next turn. A benched threat that would attack on turn 6
+        // (missing 0 or 1, with that turn's attachment) pays the raised cost: 1 more. One that would attack on turn 8
+        // or later doesn't. An effect with 3 turns left (live through turn 8) counts for a threat attacking on 8.
+        let with = |turns_left: u8| {
+            let mut dratini = mon(CardId::A1183Dratini).with_energy(vec![EnergyType::Psychic]);
+            dratini.add_effect(CardEffect::IncreasedRetreatCost { amount: 1 }, turns_left);
+            position(vec![mon(CardId::A1143Machop)], vec![dratini, mon(CardId::A1129MewtwoEx)], None)
+        };
+        let without = position(
+            vec![mon(CardId::A1143Machop)],
+            vec![mon(CardId::A1183Dratini).with_energy(vec![EnergyType::Psychic]), mon(CardId::A1129MewtwoEx)],
+            None,
+        );
+        for missing in 0..4 {
+            assert_eq!(benched_retreat_shortfall(&without, 1, missing), 0, "no effect, missing {missing}");
+        }
+        assert_eq!(benched_retreat_shortfall(&with(1), 1, 0), 1);
+        assert_eq!(benched_retreat_shortfall(&with(1), 1, 1), 1);
+        assert_eq!(benched_retreat_shortfall(&with(1), 1, 2), 0, "attacks on turn 8: the effect is gone");
+        assert_eq!(benched_retreat_shortfall(&with(1), 1, 3), 0);
+        assert_eq!(benched_retreat_shortfall(&with(3), 1, 2), 1, "live through turn 8");
+        assert_eq!(benched_retreat_shortfall(&with(3), 1, 3), 0, "attacks on turn 10");
+    }
+
+    /// km's clock for `victim_owner`'s side (the other side's threats), with C2 on or off, as kt_clocks runs it.
+    fn clock(state: &State, victim_owner: usize, c2: bool) -> KtClock {
+        kt_clock_c2(state, victim_owner, victim_owner == 1, true, false, true, true, true, c2)
+    }
+
+    #[test]
+    fn c2_moves_the_clock_only_where_a_benched_threat_waits() {
+        // Player 1's Mewtwo ex (1 Psychic: Psychic Sphere 1 short) waits on the Bench behind Dratini (1 Energy, cost 1,
+        // Ram [WL] 2 short). km's threat is Mewtwo ex, 1 turn of lead. With Goo-zooka's effect on Dratini (live on turn
+        // 6) the retreat costs 2, one more than Dratini holds: C2 adds 1, so 2 turns of lead. Without the effect, or
+        // with Mewtwo ex itself in front, C2 changes nothing.
+        let mewtwo = || mon(CardId::A1129MewtwoEx).with_energy(vec![EnergyType::Psychic]);
+        let dratini = |goo: bool| {
+            let mut card = mon(CardId::A1183Dratini).with_energy(vec![EnergyType::Psychic]);
+            if goo {
+                card.add_effect(CardEffect::IncreasedRetreatCost { amount: 1 }, 1);
+            }
+            card
+        };
+        let bot = || vec![mon(CardId::A1143Machop)];
+        let waits = position(bot(), vec![dratini(true), mewtwo()], None);
+        assert_eq!((clock(&waits, 0, false).lead, clock(&waits, 0, true).lead), (1.0, 2.0));
+        assert_eq!(clock(&waits, 0, true).total(0.0) - clock(&waits, 0, false).total(0.0), 1.0);
+        let no_effect = position(bot(), vec![dratini(false), mewtwo()], None);
+        assert_eq!(clock(&no_effect, 0, true).total(0.0), clock(&no_effect, 0, false).total(0.0));
+        let in_front = position(bot(), vec![mewtwo(), dratini(true)], None);
+        assert_eq!(clock(&in_front, 0, true).total(0.0), clock(&in_front, 0, false).total(0.0));
+        // The bot's own side, the same rule: player 0's Mewtwo ex waits behind Dratini with no Energy (cost 1): 1 more.
+        let own = position(vec![mon(CardId::A1183Dratini), mewtwo()], vec![mon(CardId::A1143Machop)], None);
+        assert_eq!((clock(&own, 1, false).lead, clock(&own, 1, true).lead), (1.0, 2.0));
+    }
+
+    #[test]
+    fn on_played_states_kr_and_kro_are_km_with_their_flags_cleared_and_differ_somewhere() {
+        // Every position of 10 random games of the scratch pairs, from each player's own view: kr's and kro's values
+        // with their flags cleared are km's, bit for bit; in setup kr and kro are km; and both differ from km somewhere.
+        let (mut positions, mut kr_differs, mut kro_differs) = (0, 0, 0);
+        for (pair, (a, b)) in PAIRS.iter().enumerate() {
+            for seed in 0..2u64 {
+                let players: Vec<Box<dyn crate::players::Player>> =
+                    vec![Box::new(RandomPlayer { deck: deck(a) }), Box::new(RandomPlayer { deck: deck(b) })];
+                let mut game = Game::new(players, 20_952_000_000 + 10 * pair as u64 + seed);
+                let mut ticks = 0;
+                while !game.is_game_over() && ticks < 400 {
+                    let state = game.get_state_clone();
+                    for me in 0..2 {
+                        let observation = PlayerObservation::from_state(&state, me, &RevealedKnowledge::default());
+                        let view = observation.visible_state();
+                        let km = public_clock_effect_km_value_function(view, me);
+                        let (kr, kro) =
+                            (public_clock_effect_kr_value_function(view, me), public_clock_effect_kro_value_function(view, me));
+                        for f in [EvalFeatures::KR, EvalFeatures::KRO] {
+                            let cleared = EvalFeatures { retreat_opponent_threat: false, retreat_own_threat: false, ..f };
+                            assert_eq!(value(view, me, cleared), km, "turn {}", view.turn_count);
+                        }
+                        if view.setup_opponent_hidden {
+                            assert_eq!((kr, kro), (km, km), "setup");
+                        }
+                        positions += 1;
+                        kr_differs += (kr != km) as usize;
+                        kro_differs += (kro != km) as usize;
+                    }
+                    game.play_tick();
+                    ticks += 1;
+                }
+            }
+        }
+        assert!(positions > 500 && kr_differs > 0 && kro_differs > 0, "{positions} positions, {kr_differs} kr, {kro_differs} kro");
+    }
+
+    /// One game on `seed`, `players` in seats 0 and 1: every move played, then the points and the winner.
+    fn moves(players: Vec<Box<dyn crate::players::Player>>, seed: u64) -> Vec<String> {
+        let mut game = Game::new(players, seed);
+        let mut out = vec![];
+        while !game.is_game_over() && out.len() < 3000 {
+            out.push(format!("{:?}", game.play_tick()));
+        }
+        let state = game.get_state_clone();
+        out.push(format!("points {:?} winner {:?}", state.points, state.winner));
+        out
+    }
+
+    /// kr3 with C2 off: km3's player (as players/mod.rs builds km, kn and kr) on kr's preset with its flags cleared.
+    fn kr3_with_c2_off(deck: Deck) -> Box<dyn crate::players::Player> {
+        Box::new(PublicPricingPlayer {
+            search: ExpectiMiniMaxPlayer {
+                deck,
+                max_depth: 3,
+                write_debug_trees: false,
+                value_function: Box::new(|state: &State, myself: usize| {
+                    let off = EvalFeatures { retreat_opponent_threat: false, retreat_own_threat: false, ..EvalFeatures::KR };
+                    value(state, myself, off)
+                }),
+                opponent_ply: 0,
+                consistent_horizon: false,
+                soft_opponent: false,
+            },
+        })
+    }
+
+    #[test]
+    fn kr3_with_c2_off_equals_km3_move_for_move_on_200_scratch_deals() {
+        // 200 scratch deals: kn's five scratch pairs, 40 each, on Claude diagnostic seeds 20,953,000,000 + i, the
+        // first-named list in seat 0 on even i. km3 against km3 (players/mod.rs, as `deckgym simulate` builds them)
+        // and kr3 with C2 off against itself play the same moves, choices and results in every deal. kr3 itself (C2
+        // on, from players/mod.rs) differs from km3 in at least one of the first 40, so the lists reach C2.
+        let deals: Vec<(Deck, Deck, u64)> = (0..200u64)
+            .map(|i| {
+                let (a, b) = PAIRS[(i / 40) as usize];
+                let (a, b) = if i % 2 == 0 { (deck(a), deck(b)) } else { (deck(b), deck(a)) };
+                (a, b, 20_953_000_000 + i)
+            })
+            .collect();
+        let workers = std::thread::available_parallelism().map(|n| n.get()).unwrap_or(1).clamp(1, 8);
+        let results: Vec<(usize, bool, Option<bool>)> = std::thread::scope(|scope| {
+            let handles: Vec<_> = (0..workers)
+                .map(|w| {
+                    let deals = &deals;
+                    scope.spawn(move || {
+                        let mut out = vec![];
+                        for (i, (a, b, seed)) in deals.iter().enumerate().filter(|(i, _)| i % workers == w) {
+                            let km = moves(create_players(a.clone(), b.clone(), vec![PlayerCode::KM { max_depth: 3 }; 2]), *seed);
+                            let off = moves(vec![kr3_with_c2_off(a.clone()), kr3_with_c2_off(b.clone())], *seed);
+                            let on = (i < 40).then(|| {
+                                moves(create_players(a.clone(), b.clone(), vec![PlayerCode::KR { max_depth: 3 }; 2]), *seed) != km
+                            });
+                            out.push((i, off == km, on));
+                        }
+                        out
+                    })
+                })
+                .collect();
+            handles.into_iter().flat_map(|h| h.join().unwrap()).collect()
+        });
+        assert_eq!(results.len(), 200);
+        let differ: Vec<usize> = results.iter().filter(|r| !r.1).map(|r| r.0).collect();
+        assert!(differ.is_empty(), "kr3 with C2 off differs from km3 on deals {differ:?}");
+        assert!(results.iter().any(|r| r.2 == Some(true)), "kr3 plays as km3 on all of the first 40 deals");
     }
 }

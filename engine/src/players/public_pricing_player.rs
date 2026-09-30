@@ -605,6 +605,53 @@ mod tests {
         assert_eq!(moves[1], SimpleAction::EndTurn, "km3 ends the turn");
     }
 
+    /// [`first_moves`] with whole boards: player 0 to move on turn 5 with `zero` against `one` and `hand`, no Energy to
+    /// attach and no Stadium in play, player 1's next Energy visible.
+    fn first_moves_on(zero: Vec<PlayedCard>, one: Vec<PlayedCard>, hand: Vec<Card>, codes: &[PlayerCode]) -> Vec<SimpleAction> {
+        let mut game = crate::test_support::get_initialized_game(0);
+        let mut state = game.get_state_clone();
+        state.set_board(zero, one);
+        state.current_player = 0;
+        state.turn_count = 5;
+        state.move_generation_stack.clear();
+        state.active_stadium = None;
+        state.hands[0] = hand;
+        state.energy_zone[0].current = None;
+        state.energy_zone[1].next = Some(EnergyType::Psychic);
+        game.set_state(state);
+        let real = game.get_state_clone();
+        let observation = PlayerObservation::from_state(&real, 0, &RevealedKnowledge::default());
+        let (_, mut actions) = real.generate_possible_actions();
+        crate::observation::canonical_actions(&mut actions);
+        codes
+            .iter()
+            .map(|code| {
+                let mut player = get_player(Deck::default(), &Deck::default(), code);
+                player.decision_fn(&mut StdRng::seed_from_u64(3), &observation, &actions).action
+            })
+            .collect()
+    }
+
+    /// kr3 and kro3 through get_player (kr = km + C2, `rl/results/kn_build_2026-09-30/TIMING.md`). Player 1's Mewtwo
+    /// ex (1 Psychic; Psychic Sphere [PC] 1 short) waits on the Bench behind Dratini (1 Psychic, Retreat Cost 1; Ram
+    /// [WL] 2 short), so next turn it attaches, retreats Dratini and attacks. Goo-zooka makes the retreat cost 2, one
+    /// more than Dratini holds: in C2's clock Mewtwo ex comes a turn later, worth far more than the card, so kr3 and
+    /// kro3 play it. km3 prices the play at the card alone and ends the turn. With Mewtwo ex in front instead, the
+    /// retreat doesn't matter and kr3 ends the turn too.
+    #[test]
+    fn kr3_from_get_player_plays_goo_zooka_where_it_delays_their_benched_threat_and_not_otherwise() {
+        let mewtwo = || PlayedCard::from_id(CardId::A1129MewtwoEx).with_energy(vec![EnergyType::Psychic]);
+        let dratini = || PlayedCard::from_id(CardId::A1183Dratini).with_energy(vec![EnergyType::Psychic]);
+        let goo = || vec![crate::database::get_card_by_enum(CardId::B4a068TeamRocketsGoozooka)];
+        let codes = [PlayerCode::KR { max_depth: 3 }, PlayerCode::KRO { max_depth: 3 }, PlayerCode::KM { max_depth: 3 }];
+        let moves = first_moves_on(vec![PlayedCard::from_id(CardId::A1143Machop)], vec![dratini(), mewtwo()], goo(), &codes);
+        assert!(plays(&moves[0], "Team Rocket's Goo-zooka"), "kr3 plays Goo-zooka: {:?}", moves[0]);
+        assert!(plays(&moves[1], "Team Rocket's Goo-zooka"), "kro3 plays Goo-zooka: {:?}", moves[1]);
+        assert_eq!(moves[2], SimpleAction::EndTurn, "km3 ends the turn");
+        let moves = first_moves_on(vec![PlayedCard::from_id(CardId::A1143Machop)], vec![mewtwo(), dratini()], goo(), &codes);
+        assert_eq!(moves[0], SimpleAction::EndTurn, "with Mewtwo ex in front, kr3 ends the turn");
+    }
+
     /// kpr3 is built the same way (get_player) and keeps kp's pricing: it prices Darkness Claw too.
     #[test]
     fn kpr3_from_get_player_also_prices_darkness_claw() {
