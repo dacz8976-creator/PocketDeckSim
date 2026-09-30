@@ -9,7 +9,7 @@ Written Sept 30 for the Fable coordinator session (Dustin's single delegator). T
      - (b) direct damage through a queued ApplyDamage choice triggers the coin, extended only to helpers Part 1 confirms.
      - The two pinning fixtures in hooks/core.rs are flipped and committed failing first, in their own commit; then the gated fix with instrumentation; then the full unit suite after the last commit.
    - **Limits:** no kd one-line changes and no players/ change (both listed for the laptop instead). No table games, no identity replay, no pin build, no merge to main.
-2. **What is running now, and when it ends.** Starting Part 1 now: reading code only, well under an hour. Then Part 2: code and unit tests, about an hour or two. No long runs. The Victory Star draft is done and accepted (6415e39, d4fbc2a).
+2. **What is running now, and when it ends.** Part 1 is done and committed: 7fa2f85, rl/results/coin_prevention_repair_2026-09-30/HELPERS.md. Working on Part 2 now: code and unit tests, about one to two hours. No long runs.
 3. **Files I expect to change.**
    - engine/src/actions/attack_outcome.rs and engine/src/hooks/core.rs;
    - the helpers' own files, only for helpers Part 1 confirms;
@@ -18,7 +18,10 @@ Written Sept 30 for the Fable coordinator session (Dustin's single delegator). T
    - this file.
    - If the fix needs any other file, I stop and write the question here.
 4. **Waiting on the laptop or Sonnet.** Nothing.
-5. **Open questions for Dustin.** None yet.
+5. **Open questions for Dustin** (from Part 1; I am going on with the rest of Part 2 meanwhile):
+   - **Chase Order (Vespiquen ex, in 4 lists under decks/).** It skips the coin both with and without the discard. The discard choice's damage is queued in engine/src/actions/apply_action.rs, outside the three files allowed, so I have not changed it. Should Part 2 cover it, adding apply_action.rs?
+   - **The own-Bench form of also_choice_bench_damage (Zapdos's Raging Thunder, Emolga, Luxray's Flash Impact; in no list).** Its hit on the opponent's Active skips the coin. Its one queued choice also damages your own Benched Pokemon, and the coin-flipping path would drop a Guts coin there, so I have not changed it. Leave it, or fix it with a split choice?
+   - **Six more sites outside the seven, all confirmed to skip the coin (none in a list):** Wellspring Mask Ogerpon, Rapid Strike Urshifu, Blastoise and Mega Blastoise ex, Mega Kangaskhan ex's second punch, Hoopa's Mischievous Ring, and Slowking's Litter (whose damage is queued in apply_action.rs). Not changed. Should a later round cover them?
 
 ## Log (one line per new job, added and pushed before it starts)
 
