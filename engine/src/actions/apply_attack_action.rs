@@ -303,6 +303,45 @@ fn queued_attack_damage_choice(
     }
 }
 
+/// The damage a `DiscardOwnBenchedThenDamage` choice queues at the opponent's Active once the
+/// discard is done (`apply_action.rs`). When that Pokémon has a coin-flip damage Ability and the
+/// attacker's Active has Chase Order, it is queued as Chase Order's own damage, so the coin flips
+/// (rules/09; Dustin, Sept 30: fix Chase Order now). Otherwise it is queued exactly as before,
+/// and so is every other attack that shares the action (Gyarados's Wild Swing).
+pub(crate) fn discard_then_damage_choice(state: &State, actor: usize, damage: u32) -> SimpleAction {
+    let opponent = (actor + 1) % 2;
+    let coin_target = state.in_play_pokemon[opponent][0]
+        .as_ref()
+        .is_some_and(|pokemon| coin_damage_prevention(state, pokemon).is_some());
+    if coin_target {
+        if let Some(chase_order) = chase_order_attack(state, actor) {
+            return queued_attack_damage_choice(actor, &chase_order, damage, 0, true);
+        }
+    }
+    SimpleAction::ApplyDamage {
+        attacking_ref: (actor, 0),
+        targets: vec![(damage, opponent, 0)],
+        is_from_active_attack: true,
+    }
+}
+
+/// The attacker's Active's printed Chase Order attack (Vespiquen ex), if it has one.
+fn chase_order_attack(state: &State, actor: usize) -> Option<Attack> {
+    let Card::Pokemon(pokemon) = &state.in_play_pokemon[actor][0].as_ref()?.card else {
+        return None;
+    };
+    pokemon
+        .attacks
+        .iter()
+        .find(|attack| {
+            matches!(
+                attack.effect.as_deref().and_then(|effect| EFFECT_MECHANIC_MAP.get(effect)),
+                Some(Mechanic::OptionalDiscardBenchedBasicForExtraDamage { .. })
+            )
+        })
+        .cloned()
+}
+
 /// Apply the defender's Guts ability (e.g. Ursaluna): each opponent in-play Pokémon with the
 /// ability flips a coin when this attack's damage would knock it out; on heads it survives
 /// with its remaining HP set to 10.
@@ -913,6 +952,7 @@ fn forecast_effect_attack_by_mechanic(
             extra_damage,
         } => optional_discard_benched_basic_for_extra_damage(
             state,
+            attack,
             attack.fixed_damage,
             *energy_type,
             *extra_damage,
@@ -4377,6 +4417,7 @@ fn extra_damage_if_undamaged(state: &State, base: u32, extra: u32) -> AttackOutc
 /// boosted damage is applied in one go (damage modifiers must not run twice).
 fn optional_discard_benched_basic_for_extra_damage(
     state: &State,
+    attack: &Attack,
     base_damage: u32,
     energy_type: EnergyType,
     extra_damage: u32,
@@ -4385,13 +4426,22 @@ fn optional_discard_benched_basic_for_extra_damage(
         return active_damage_doutcome(base_damage);
     }
 
+    let attack = attack.clone();
     active_damage_effect_doutcome(0, move |_, state, action| {
         let opponent = (action.actor + 1) % 2;
-        let mut choices = vec![SimpleAction::ApplyDamage {
-            attacking_ref: (action.actor, 0),
-            targets: vec![(base_damage, opponent, 0)],
-            is_from_active_attack: true,
-        }];
+        // Without the discard: the damage is queued, and takes the coin-flipping path when the
+        // opponent's Active has a coin-flip damage Ability. The discard choices queue theirs in
+        // `apply_action.rs`, through `discard_then_damage_choice`.
+        let coin_target = state.in_play_pokemon[opponent][0]
+            .as_ref()
+            .is_some_and(|pokemon| coin_damage_prevention(state, pokemon).is_some());
+        let mut choices = vec![queued_attack_damage_choice(
+            action.actor,
+            &attack,
+            base_damage,
+            0,
+            coin_target,
+        )];
         choices.extend(
             benched_basic_indices_of_type(state, action.actor, energy_type)
                 .into_iter()

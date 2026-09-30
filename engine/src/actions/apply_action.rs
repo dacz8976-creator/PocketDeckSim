@@ -1302,14 +1302,9 @@ fn apply_discard_own_benched_then_damage(
     if state.in_play_pokemon[opponent][0].is_none() {
         return;
     }
-    state.move_generation_stack.push((
-        acting_player,
-        vec![SimpleAction::ApplyDamage {
-            attacking_ref: (acting_player, 0),
-            targets: vec![(damage, opponent, 0)],
-            is_from_active_attack: true,
-        }],
-    ));
+    // `ApplyDamage` as before, except Chase Order into a coin-flip damage Ability (rules/09).
+    let queued = apply_attack_action::discard_then_damage_choice(state, acting_player, damage);
+    state.move_generation_stack.push((acting_player, vec![queued]));
 }
 
 fn apply_healing(
