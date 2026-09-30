@@ -2,21 +2,21 @@
 
 Written Sept 30 for the Fable coordinator session (Dustin's single delegator). Times are UTC.
 
-1. **Current task, and the instruction that set it.** None. The last one is done: the N1 timing assessment (the Fable coordinator via Dustin, Sept 30), commit 2f56033, rl/results/kn_build_2026-09-30/TIMING.md. No build, no games.
-   - **(1) Why the tie.** Under kn, Goo-zooka's effect adds exactly +1 wherever the target stays Active, and the card leaving the hand costs exactly 1. The search has no opponent ply, so every leaf shows the +1 and none shows whether it pays. The tie goes to Play by the sorted move order: 492 of 682 and 507 of 677 plays came on the game's first chance turn.
-   - **(2) Causes.**
-     - N1's term has no condition, and no opponent ply is searched.
-     - Grass Knot's damage is not in the clock. This is the carrier's cost: 120 of 677 kn3 plays before a Grass Knot, against 359 of 360 for km3.
-     - Underneath: km's clock gives a benched threat a free path to the Active Spot, with no retreat charged.
-   - **(3) Candidates:**
-     - C1: count N1 only when their Active is damaged or not their clock's threat. Still a tie on the turns it counts.
-     - C2: in the clock, a benched threat pays its Active's missing retreat Energy, both sides, N1's static term off. It prices the play by value, about 100 for a turn of their threat against the card's 1. By reading, it covers 6 of the diagnosis's 7 "yes" turns and none of the 3 "no". Its footprint is large.
-     - C3: price Grass Knot and Shadow Seeker's retreat-cost damage in the clock. Whimsicott carrier only.
-   - **(4) Recommendation:** C2 next as a new code on km, with the full footprint route; C1 the cheap fallback; C3 separate. kn as built should not be registered. Registration stays the laptop's and Dustin's.
-2. **What is running now, and when it ends.** Nothing.
-3. **Files I expect to change.** None.
+1. **Current task, and the instruction that set it.** Build C2 as TIMING.md states it (the Fable coordinator via Dustin, Sept 30; Dustin approves building C2 as the next candidate, build only).
+   - C2: on the km base with N1's static term off, in km's clock, both sides, a benched threat candidate adds max(0, its Active's board Retreat Cost with effects live on that turn − Energy attached to the Active) to its missing Energy. NoRetreat is left as today, and stated.
+   - A preset name free of clashes, plus a one-sided diagnostic code (the opponent's clock only).
+   - Tests first:
+     - the unit pin against the engine's retreat arithmetic (Goo-zooka, Plaza, Trap Territory, Balloon, Boat, Bombirdier);
+     - the new code with the term off equal to km3 move for move on 200 scratch deals;
+     - the diagnosis's 10 judged turns (play on the 6, not on the 3).
+   - Then the same scratch smoke as kn's.
+   - Built on d363ba8's engine/ with this branch's players/; only players/ and tests are touched. No table games, no identity replay, no merge.
+   - README with the expected footprint and carrier (Whimsicott ex Ariados; decks 14 and 15). Registration is the laptop's and Dustin's, after the rules switch pins.
+   - TIMING.md (2f56033) was read and accepted; kn as built will not be registered.
+2. **What is running now, and when it ends.** Starting now: the preset name and the tests, then the code, the suite and the smoke. Within the two days given.
+3. **Files I expect to change.** engine/src/players/ (value_functions.rs, mod.rs, public_pricing_player.rs), possibly one new file under engine/tests/, a new folder rl/results/kr_build_2026-09-30/, and this file.
 4. **Waiting on the laptop or Sonnet.** Nothing.
-5. **Open questions for Dustin.** Which of C1, C2 or C3 (if any) to build next. C2 is recommended.
+5. **Open questions for Dustin.** None.
 
 ## Log (one line per new job, added and pushed before it starts)
 
@@ -29,3 +29,4 @@ Written Sept 30 for the Fable coordinator session (Dustin's single delegator). T
 - 2026-09-30: build switch N1 as kn<N> (km + the opponent's Active Retreat Cost in the clock; Fable via Dustin): code, unit tests (kn3 with N1 off = km3 on 200 scratch deals), smoke on scratch decks with Goo-zooka and Peculiar Plaza, README. No registration text, no table games, no identity replay, no merge.
 - 2026-09-30: carrier lists for the rules switch (Fable via Dustin; PLAN.md step 3): four development lists from the committed Limitless archive (Garchomp Meowth, Togekiss Meowth, Hisuian Goodra, Mega Houndoom ex Victini), card-checked, with provenance; rl/results/engine_switch_rules_2026-10/carriers/. No games beyond the legality scan, no engine change.
 - 2026-09-30: N1 timing assessment (Fable via Dustin): rl/results/kn_build_2026-09-30/TIMING.md, why kn3 plays Goo-zooka on a tie, which simplification causes it, up to three list-free candidate rules with footprint, carrier and smoke, and a recommendation. No new build, no table games.
+- 2026-09-30: build C2 (TIMING.md; Fable via Dustin): a benched threat pays its Active's missing retreat Energy in km's clock, both sides, N1 off, plus a one-sided diagnostic code; tests first (the retreat pin, 200 scratch deals with the term off = km3, the 10 judged turns), then the scratch smoke and README. players/ and tests only; no table games, no identity replay, no merge.
