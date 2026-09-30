@@ -2,20 +2,18 @@
 
 Written Sept 30 for the Fable coordinator session (Dustin's single delegator). Times are UTC.
 
-1. **Current task, and the instruction that set it.** None. The last one is done: build switch N1 as kn<N> (the Fable coordinator via Dustin, Sept 30), rl/results/kn_build_2026-09-30/README.md.
-   - **The build:** commit 71877f6, engine/src/players/ only. kn = km + N1: the opponent's Active Retreat Cost counts in the score as the bot's own does, same board cost, same weight, same place in the sum.
-   - **Tests:** 11 new tests, all passing; the full suite is 2,022 passed, 0 failed. kn3 with N1 off equals km3 move for move on 200 scratch deals. Three planted faults were each caught.
-   - **Smoke** (scratch decks, d363ba8's engine/ with 71877f6's players/, 4,800 games):
-     - Goo-zooka goes from 0.1% of chances to 86% (plain deck), and from 18% to 88% (a Grass Knot deck).
-     - Plaza stays at 96% where it helps only its own side, and falls from 100% to 29% against a Psychic deck.
-     - A control deck with no N1 card: 2 of 600 games differ.
-   - **One point for the registration.** kn3 plays Goo-zooka at its first chance (median turn 2), because under N1 the play ties with not playing and the move order breaks the tie.
-     - In the Grass Knot deck km3's plays came before a Grass Knot in 359 of 360, kn3's in 120 of 677.
-     - That deck won fewer of the same deals with kn3 (23 to 3 and 17 to 3 in two matchups). Scratch decks, not a strength result.
-   - **README:** the carrier suggestion (Whimsicott ex Ariados) and the footprint expected: large on lists with Goo-zooka or Plaza, small on the 45 cells.
-   - No registration text, no table games, no identity replay, no merge.
-2. **What is running now, and when it ends.** Nothing.
-3. **Files I expect to change.** None.
+1. **Current task, and the instruction that set it.** The carrier lists for the rules switch, step 3 of rl/results/engine_switch_rules_2026-10/PLAN.md (main 0a68b0a). Set by the Fable coordinator via Dustin, Sept 30, "about 1 hour, before N1's next long step".
+   - The lists: one development list each, by decklist_sources.json's rule (the most frequent exact list among the top 8), from the committed archive rl/results/limitless_skill_model_2026-09-25/raw/*_standings.json.gz (no web access):
+     - Garchomp Meowth (garchomp-b4a-meowth-b2);
+     - Togekiss Meowth (togekiss-a4-meowth-b2);
+     - the most-played Hisuian Goodra list;
+     - Mega Houndoom ex Victini (mega-houndoom-ex-p-b-victini-b3).
+   - Each is card-checked (lib/card.py, card status, a legality scan on the official engine), with no B4b card and provenance (event, player, date) per list. The plan's fallback applies where a list can't be had.
+   - Output: rl/results/engine_switch_rules_2026-10/carriers/ on this branch (no engine file).
+   - The rules fixes F1-F7 are Sonnet's, on a separate branch; not started here.
+   - The N1 build before it is done: 71877f6, README 52dd2ef, rl/results/kn_build_2026-09-30/.
+2. **What is running now, and when it ends.** Starting now: reading the archive and the plan's rule, then the card checks and a legality scan. About an hour.
+3. **Files I expect to change.** Only the new folder rl/results/engine_switch_rules_2026-10/carriers/ and this file.
 4. **Waiting on the laptop or Sonnet.** Nothing.
 5. **Open questions for Dustin.** None.
 
@@ -28,3 +26,4 @@ Written Sept 30 for the Fable coordinator session (Dustin's single delegator). T
 - 2026-09-30: Sonnet's follow-ups S1-S4 (Fable via Dustin): with_heads_coin_cuts test and hardening, Wild Swing and Ability/Tool/Checkup pins, smoke rerun on e52a73b with a trace of 4 games. Scratch decks only, no table games.
 - 2026-09-30: km3 unplayed-Trainer diagnosis (Fable via Dustin): Iris (deck 11) and Team Rocket's Goo-zooka (decks 14, 15) from the floor run; at most 40 replayed deals per card at the official engine; diagnosis only, no table games.
 - 2026-09-30: build switch N1 as kn<N> (km + the opponent's Active Retreat Cost in the clock; Fable via Dustin): code, unit tests (kn3 with N1 off = km3 on 200 scratch deals), smoke on scratch decks with Goo-zooka and Peculiar Plaza, README. No registration text, no table games, no identity replay, no merge.
+\n- 2026-09-30: carrier lists for the rules switch (Fable via Dustin; PLAN.md step 3): four development lists from the committed Limitless archive (Garchomp Meowth, Togekiss Meowth, Hisuian Goodra, Mega Houndoom ex Victini), card-checked, with provenance; rl/results/engine_switch_rules_2026-10/carriers/. No games beyond the legality scan, no engine change.\n
