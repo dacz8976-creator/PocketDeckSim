@@ -379,6 +379,40 @@ fn confusion_coin_comes_before_the_attack_effect_pause_and_tails_does_nothing() 
     );
 }
 
+/// A Confusion tails on the repaired path ends the attack, and the turn moves on as after any attack: the one action
+/// left is `EndTurn`, as after a committed Keep (`sampled_result_pauses_without_damage_then_keep_commits_exactly_once`).
+/// The tails half is committed through `wrap_with_common_logic` in `try_forecast_victory_star_attack`; without that wrap
+/// the attack would stay available and the turn would not move on, and no other test would notice (Sonnet's F3).
+#[test]
+fn a_confusion_tails_on_the_victory_star_path_ends_the_attack_and_the_turn_moves_on() {
+    let mut confusion_tails = 0;
+    for seed in 0..40 {
+        let mut game = game(seed, CardId::B3025Victini, sponge(400));
+        let mut state = game.get_state_clone();
+        state.apply_status_condition(0, 0, StatusCondition::Confused);
+        game.set_state(state);
+        game.apply_action(&attack());
+        let after = game.get_state_clone();
+        if after.pending_attack_coin_choice.is_some() {
+            continue; // Confusion heads: the pause, covered above
+        }
+        confusion_tails += 1;
+        let actions = after.generate_possible_actions().1;
+        assert_eq!(
+            actions.len(),
+            1,
+            "seed {seed}: after a Confusion tails only EndTurn is left, got {actions:?}"
+        );
+        assert!(
+            matches!(actions[0].action, SimpleAction::EndTurn),
+            "seed {seed}: {:?}",
+            actions[0]
+        );
+        assert_eq!(after.get_active(1).get_remaining_hp(), 400, "seed {seed}: tails does nothing");
+    }
+    assert!(confusion_tails > 5, "{confusion_tails} Confusion tails");
+}
+
 #[test]
 fn pending_result_is_public_but_only_controller_receives_choice_payload() {
     let mut game = game(19, CardId::PB049Victini, sponge(400));
