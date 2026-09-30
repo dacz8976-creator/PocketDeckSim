@@ -1,0 +1,19 @@
+Sonnet's S3 (Sept 30): the smoke check rerun on e52a73b (the Chase Order engine), same decks, bots and seeds as smoke/
+(kog3 v kog3, fire_heatmor.txt v meowth_carefree.txt, 40 games, seeds 20,950,000,000 + i).
+
+Rerun v the committed smoke files (smoke/games_*.jsonl, run on 5942d1a and d21511a):
+  without the repair (d21511a), instrumented: identical rows 40 of 40
+  with the repair (e52a73b), plain:           identical rows 40 of 40
+  with the repair (e52a73b), instrumented:    identical rows 40 of 40
+(Chase Order is in neither deck, so e52a73b plays these 40 games exactly as 5942d1a did.)
+
+The traces (coin_trace.rs) replay each of i = 16, 23, 29, 32 with the same move fingerprint as the scan's game, on
+both engines (first_diff_output.txt, last line).
+
+sha256 of the scratch builds:
+  scan without the repair, instrumented (d21511a): 360eb2738dba78641c749ee36b8f1c3a1096f97e57cd270cbc6abae90c4e8b59
+    (the same as the first round's build of it)
+  scan with the repair, plain (e52a73b):           2d6a911591ecd127664f49a1514ae4a933330cd91ad360553b3ac3baa0a86ebf
+  scan with the repair, instrumented (e52a73b):    aa2e43ce2a20a48b10a48ee085823105504af1a5bd8c2fd7bdbb56bc83eb437c
+  coin_trace without the repair (d21511a):         a34af7ecf8dbb02911dc261d13b80374823e6a487318b64fa37e0055e1acf184
+  coin_trace with the repair (e52a73b):            bc892ecc80b60076b835f413e4c06751e53385980d1cf9f8683e0f1ecef59b9f

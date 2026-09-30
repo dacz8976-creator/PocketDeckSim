@@ -58,7 +58,12 @@ Seeds: no table deal. The Part 1 probe used 20,940,000,000 + i, and the smoke ch
    - `a1858cd`: the log line.
    - `c350e70`: the failing tests (no discard and discard) plus the control, in their own commit.
    - `e52a73b`: the gated fix.
-   - Then the commit updating this README and `suite.log`, and CLOUD_STATUS.md after it.
+   - `66f9731`: this README and `suite.log`. `dc9618c`: CLOUD_STATUS.md.
+8. **Sonnet's follow-ups S1-S4** (Sonnet's independent read found both drafts "ready for the laptop's switch review", no blockers):
+   - `d42430e`: the log line.
+   - `52daee6`: the tests, S1's failing.
+   - `c9df626`: S1's hardening, the last engine commit.
+   - Then the commit updating this README, `suite.log` and `smoke/rerun_e52a73b/`, and CLOUD_STATUS.md after it.
 
 The engine diff from the base (`31a9dbf`) is 6 files: `attack_outcome.rs`, `hooks/core.rs` and `apply_attack_action.rs` (the three permitted), `apply_action.rs` (the fourth, allowed for Chase Order), and two test files, `tests/pokemon/hisuian_goodra_securely_sheltered_test.rs` and `tests/pokemon/meowth_carefree_steps_test.rs`. Nothing in `players/` changed.
 
@@ -105,15 +110,21 @@ Line numbers are at `5942d1a`.
 | `carefree_steps_flips_for_chase_order_with_the_discard` (a Benched Combee discarded, 140) | same | fails: 0 of 60 | passes |
 | `chase_order_into_a_pokemon_without_a_coin_ability_is_unchanged` (the control: into Mega Latios ex, both choices are queued as `ApplyDamage` and do 70 and 140) | same | passes | passes |
 
-Chase Order's two "before" results are from `c350e70`, the engine before its fix. Gyarados's four Wild Swing tests, which share the discard action, pass before and after.
+| `heads_coin_cuts_are_scoped_to_their_own_call` (S1: a cut is in force only inside its own call and on its own target; an empty inner call doesn't inherit; nothing is left after a panic) | `src/actions/attack_outcome.rs` | fails: an empty inner call saw the outer 100 | passes |
+| `wild_swing_into_carefree_steps_pins_todays_behaviour_no_coin` (S2: pins a known gap, Wild Swing with and without the discard, 0 prevented of 60) | `tests/pokemon/meowth_carefree_steps_test.rs` | passes (pin) | passes (pin) |
+| `carefree_steps_never_flips_for_an_abilitys_damage` (S4: Greninja's Water Shuriken always does 20) | same | passes | passes |
+| `celestial_blessing_never_flips_for_a_tools_damage` (S4: Rocky Helmet always does 20 to an attacking Togekiss) | same | passes | passes |
+| `carefree_steps_never_flips_for_the_checkups_damage` (S4: Poison always does 10) | same | passes | passes |
+
+Chase Order's two "before" results are from `c350e70`, the engine before its fix. S1's "before" is from `52daee6`, before its hardening. S2 pins today's behaviour, and the laptop's later round will change it knowingly. S4 pins a rule the code already honoured (rules/09: only attacks trigger these Abilities). Gyarados's four Wild Swing tests, which share the discard action, pass before and after.
 
 The fixtures keep kd's value where it is today, 60 and 30, because kd's follow-on changes are the laptop's. Their last line names the change.
 
 ## The unit suite
 
-`cargo test --release --features test-utils`, on `e52a73b`'s engine (the last commit that touches `engine/`; the later ones touch only `rl/results/`): **2,006 passed, 0 failed, 0 ignored**, in 101 test programs (`suite.log`).
-- That is the first draft's 2,003 (at `5942d1a`) plus the three Chase Order tests.
-- No existing test's expected value was edited, apart from the two fixtures the coordinator asked to flip. The Chase Order commit reworked the Meowth test file's helper to take a whole attacker board; the earlier tests using it are unchanged and pass.
+`cargo test --release --features test-utils`, on `c9df626`'s engine (the last commit that touches `engine/`; the later ones touch only `rl/results/`): **2,011 passed, 0 failed, 0 ignored**, in 101 test programs (`suite.log`).
+- That is the Chase Order round's 2,006 (at `e52a73b`) plus Sonnet's five tests (S1, S2 and three for S4).
+- No existing test's expected value was edited, apart from the two fixtures the coordinator asked to flip. The Chase Order and S2 commits reworked the Meowth test file's helper (a whole attacker board; counts returned); the earlier tests using it are unchanged and pass.
 
 ## Instrumentation (part 2) and the smoke check
 
@@ -137,10 +148,18 @@ The fixtures keep kd's value where it is today, 60 and 30, because kd's follow-o
   - **The counters change no play:** the repaired engine's plain and instrumented scans give the same moves in 40 of 40 games.
   - **Without the repair:** no snipe was ever queued through the coin-flipping path.
   - **With the repair:** a snipe at Meowth went through it 15 times, in 8 games.
-  - **The repair changes 12 of the 40 games.** 8 of them are exactly the 8 with a redirected snipe on the board; every game with one changed.
-  - **The other 4 (i = 16, 23, 29, 32) changed without one.** Most likely the bots' search now prices a snipe at Meowth with its coin and chose differently, but they are not traced here. That trace is the template's part 3, for the laptop if a table game ever changes.
+  - **The repair changes 12 of the 40 games.** 8 of them are exactly the 8 where a redirected snipe at Meowth was chosen; every game with one changed.
+  - **The other 4 (i = 16, 23, 29, 32) changed without a redirected snipe being chosen.** Sonnet's S3 traced them (below): each is the bot pricing the coin on a choice the repair changed on the board.
   - The `coin_defender_attack` counter is above 0 in all 40 games, because this deck always has a Meowth. So here it can't tell changed games from unchanged ones. It only confirms that it is never 0 where the code could run.
-- **The scans' sha256** (scratch builds, for this check only):
+- **S3: the rerun on `e52a73b` and the trace** (`smoke/rerun_e52a73b/`; Sonnet's S3, Sept 30):
+  - **The rerun.** Same decks, bots and seeds, on the Chase Order engine `e52a73b` (and `d21511a` without the repair). All three scans give rows identical to the committed ones: 40 of 40 each (`rerun_check.txt`). Chase Order is in neither deck, so nothing moves.
+  - **The trace.** `coin_trace.rs` replays i = 16, 23, 29 and 32 tick by tick on both engines, set up exactly as the scan sets up a game; each replay has the scan's move fingerprint. `first_diff.py` (output in `first_diff_output.txt`) finds each game's first difference.
+  - **In all 4, the first differing decision is Tongue Whip's target choice.** It comes right after Heatmor attacks. The board is identical and the same number of targets is offered. The difference: on the repaired engine the target at Meowth is offered as `ApplyQueuedAttackDamage` (the coin path), not `ApplyDamage`.
+    - Without the repair, the bot sniped Meowth: a sure 30.
+    - With it, the bot sniped a Pokémon without the Ability: Chatot (i = 16) or Bulbasaur (23, 29, 32), a sure 30 instead of 30 on a coin.
+  - **So each is the bot pricing the coin**, on a choice the repair changed on the board: the mechanic was reached on the board, not only in the bot's lookahead.
+  - The first smoke's `coin_queued_attack_damage` counter counts only redirected snipes that were *chosen*, which is why these 4 showed 0. `coin_defender_attack`, which gates the "0 means never ran" check, was above 0 in all of them.
+- **The scans' sha256** (scratch builds, for this check only; the rerun's are in `rerun_check.txt`):
   - without the repair, instrumented: `360eb2738dba78641c749ee36b8f1c3a1096f97e57cd270cbc6abae90c4e8b59`;
   - repaired, plain: `770220094e813aaaf76e78fa5ee47bfdfad7126317f4f846d7fc7f4aadcfe6bb`;
   - repaired, instrumented: `5f2f051b7ecc8811efd48f66878df1208dac48419dfd5dd7d9ae74615108e6de`.
@@ -175,7 +194,7 @@ rules/09's entries are not edited here. They stay open until a switch adopts the
 
 The cut has to reach `modify_damage`'s step 4 for exactly one damage calculation.
 
-**The route used.** `AttackOutcome::into_mutation` puts the cut in force around `handle_damage_only`, and `modify_damage` reads it. The value is set and cleared by one function, `with_heads_coin_cuts`, which restores the previous value even on a panic. It is not game state: nothing about it is saved, cloned or seen by a player.
+**The route used.** `AttackOutcome::into_mutation` puts the cut in force around `handle_damage_only`, and `modify_damage` reads it. Since Sonnet's S1 (`c9df626`), each call puts exactly its own cuts in force. An empty call nested inside a non-empty one clears the outer cuts for its length instead of inheriting them. No engine path nests an empty call today, so no game changed; `heads_coin_cuts_are_scoped_to_their_own_call` tests it. The value is set and cleared by one function, `with_heads_coin_cuts`, which restores the previous value even on a panic. It is not game state: nothing about it is saved, cloned or seen by a player.
 
 **The cleaner routes each need a file outside the three:**
 - a field on `DamageModifierContext` (also built in `players/`, which is off-limits);
@@ -202,8 +221,13 @@ If Dustin prefers one of those, it is a small change.
 
 - `HELPERS.md`, `helpers_census.py`, `census_output.txt`, `probe_coin_helpers.rs`, `probe_output.txt`: Part 1.
 - `instrument_scan.py`: the watch-only counters.
-- `suite.log`: the full unit suite at `e52a73b`.
+- `suite.log`: the full unit suite at `c9df626`.
 - `smoke/`: the smoke check.
   - `fire_heatmor.txt`, `meowth_carefree.txt`, `pairs.tsv`: its decks and pairing.
   - `games_legacy_instr.jsonl`, `games_fixed_plain.jsonl`, `games_fixed_instr.jsonl`: its games.
   - `compare.py`, `compare_output.txt`: the comparison.
+  - `rerun_e52a73b/`: S3's rerun and trace.
+    - `rerun_check.txt`: the rerun against the committed games, and the sha256s.
+    - `coin_trace.rs`: the trace program.
+    - `trace_legacy_d21511a.jsonl.gz`, `trace_fixed_e52a73b.jsonl.gz`: the two engines' tick-by-tick traces of the 4 games.
+    - `first_diff.py`, `first_diff_output.txt`: the first differences.
