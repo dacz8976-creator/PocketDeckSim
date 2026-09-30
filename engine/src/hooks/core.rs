@@ -3173,15 +3173,16 @@ mod persistent_defender_damage_tests {
         assert_eq!(both(mon(CardId::A2114Bastiodon), mon(CardId::A1033Charmander), 40).0, (30.0, 30.0));
     }
 
-    /// PINS THE ENGINE'S CURRENT ORDER, which is a known engine bug (rules/09, "Open engine bugs"): the engine takes
-    /// Guarded Grill's -100 off the raw damage, before Weakness; by the rules (rules/02, step 4) it comes after.
-    /// kd prices what the engine does, so the bot's clock agrees with the engine it plays in. When the engine is
-    /// fixed, this fails on purpose: then make the matching one-line change in `persistent_defender_damage` (take
-    /// the heads reduction off the damage after the rest of the pipeline, not off `base_damage`).
+    /// The engine's order (rules/02, step 4; rules/09, "Open engine bugs", repaired Sept 30): Guarded Grill's -100 on
+    /// heads comes off the damage after Weakness and Bounded Field, as every defender-side effect does.
+    /// kd has not followed yet. It still takes the cut off the raw damage, so it prices 60 where the engine now does
+    /// 70. Its one-line change is in `persistent_defender_damage`: take the heads reduction off the damage after the
+    /// rest of the pipeline, not off `base_damage`. It is the laptop's (rl/results/coin_prevention_repair_2026-09-30/).
+    /// When it is made, the last line here becomes `(engine, engine)`.
     #[test]
-    fn guarded_grill_under_bounded_field_pins_the_engines_current_order_coin_cut_before_weakness() {
-        // Charmeleon's Fire Claws (60) into Bastiodon (160 HP, weak to Fire) under Bounded Field. The engine today:
-        // tails 60 x2 = 120, heads 60 - 100 = 0, so 60 on average. By the rules: tails 120, heads 120 - 100 = 20: 70.
+    fn guarded_grill_under_bounded_field_comes_off_after_weakness() {
+        // Charmeleon's Fire Claws (60) into Bastiodon (160 HP, weak to Fire) under Bounded Field. By the rules:
+        // tails 60 x2 = 120, heads 120 - 100 = 20, so 70 on average. Before the repair: heads 60 - 100 = 0, so 60.
         let charmeleon = mon(CardId::A1034Charmeleon).with_energy(vec![EnergyType::Fire; 3]);
         let mut state = duel(vec![mon(CardId::A2114Bastiodon)], vec![charmeleon]);
         state.active_stadium = Some(get_card_by_enum(CardId::B3155BoundedField));
@@ -3203,16 +3204,18 @@ mod persistent_defender_damage_tests {
                 probability * (160 - branch.get_active(0).get_remaining_hp()) as f64
             })
             .sum();
-        assert_eq!(engine, 60.0, "the engine's Guarded Grill order changed: see this test's doc comment");
-        assert_eq!(both_on(&state, 60, None, 0).0, (engine, engine));
+        assert_eq!(engine, 70.0, "Guarded Grill's cut must come off after Weakness (rules/02, step 4)");
+        assert_eq!(both_on(&state, 60, None, 0).0, (60.0, 60.0), "kd's one-line follow-on: see this test's doc comment");
     }
 
-    /// PINS THE ENGINE'S CURRENT BEHAVIOUR, a known engine bug (rules/09, "Open engine bugs"): a direct-damage
-    /// attack's damage lands through a queued choice, and the defender's coin-flip Ability never flips for it.
-    /// kd follows the engine. When the engine is fixed this fails on purpose: then drop the direct-damage exception
-    /// (`engine_flips_coin`) in `persistent_defender_damage`.
+    /// The engine's behaviour (rules/09, "Open engine bugs", repaired Sept 30): a direct-damage attack's damage lands
+    /// through a queued choice, and the defender's coin-flip Ability flips for it as for any damage done by an attack.
+    /// kd has not followed yet. It still skips the coin for the direct-damage group, so it prices 30 where the engine
+    /// now does 15. Its one-line change is to drop the direct-damage exception (`engine_flips_coin`) in
+    /// `persistent_defender_damage`. It is the laptop's (rl/results/coin_prevention_repair_2026-09-30/). When it is
+    /// made, the last line here becomes `(engine, engine)`.
     #[test]
-    fn a_direct_damage_snipe_on_togekiss_pins_the_engines_current_behaviour_no_coin() {
+    fn a_direct_damage_snipe_on_togekiss_flips_celestial_blessing() {
         // Heatmor's Tongue Whip (30 to a Benched Pokemon) on a benched Togekiss (Celestial Blessing: heads prevents).
         let heatmor = mon(CardId::B1044Heatmor).with_energy(vec![EnergyType::Fire]);
         let mut state = duel(vec![mon(CardId::A1001Bulbasaur), mon(CardId::A4080Togekiss)], vec![heatmor]);
@@ -3234,11 +3237,16 @@ mod persistent_defender_damage_tests {
         for (probability, mutate) in probabilities.iter().zip(mutations) {
             let mut branch = state.clone();
             mutate(&mut rng, &mut branch, &tongue_whip);
+            // The snipe at Togekiss (Bench slot 1), in either queued form.
             let snipe = branch
                 .generate_possible_actions()
                 .1
                 .into_iter()
-                .find(|action| matches!(&action.action, SimpleAction::ApplyDamage { targets, .. } if targets[0].2 == 1))
+                .find(|action| match &action.action {
+                    SimpleAction::ApplyDamage { targets, .. } => targets[0].2 == 1,
+                    SimpleAction::ApplyQueuedAttackDamage { targets, .. } => targets[0].2 == 1,
+                    _ => false,
+                })
                 .expect("the snipe at Togekiss is offered");
             let (snipe_probabilities, snipe_mutations) =
                 crate::actions::forecast_action(&branch, &snipe).into_branches();
@@ -3249,8 +3257,8 @@ mod persistent_defender_damage_tests {
                 engine += probability * snipe_probability * (140 - togekiss.get_remaining_hp()) as f64;
             }
         }
-        assert_eq!(engine, 30.0, "the engine now flips Celestial Blessing for direct damage: see this test's doc comment");
-        assert_eq!(both_on(&state, 30, effect.as_deref(), 1).0, (engine, engine));
+        assert_eq!(engine, 15.0, "Celestial Blessing must flip for direct damage from an attack (rules/09)");
+        assert_eq!(both_on(&state, 30, effect.as_deref(), 1).0, (30.0, 30.0), "kd's one-line follow-on: see this test's doc comment");
     }
 
     #[test]
