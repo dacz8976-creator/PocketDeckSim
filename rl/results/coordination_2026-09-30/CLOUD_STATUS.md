@@ -11,6 +11,9 @@ Written Sept 30 for the Fable coordinator session (Dustin's single delegator). T
      - **Games.** The line says "No games". I played a smoke check of 120 games (40 on each of three scans), on two scratch decks made for it and the seeds 20,930,000,000 + i, with no table deck. It checked that the scan counters change no play, and that the games the repair changes all reach the mechanic.
      - **Test files.** Besides the two engine files, the tests touch two test files. I added three tests to b4a_attack_batch2_test.rs. I restated one old test in victini_victory_star_test.rs: it asserted the old rule and passed only on its one lucky seed.
    - The fix itself needed only the two engine files and touches nothing a table deck uses.
+   - The coordinator's addition (via Dustin), on the Victini test at about line 341 that pinned the old rule, is done in d4fbc2a. The test now also checks that a Confusion tails does nothing and offers no reroll, and that the offer on heads is on the attack's own coins. It fails on the old engine and passes on the repaired one. It is test-only; the engine is unchanged from 6415e39.
+     - The order differs from the one asked. This test was flipped in the fix commit, not committed failing before it. Its failure was seen in a scratch copy of the old engine; only the b4a tests were committed first (265ce95).
+     - I did not rewrite the pushed history to reorder it. The README says so.
    - The Altaria v Suicune diagnosis is done (6bb43cf).
 3. **Files I expect to change.** None until the next job. The repair changed engine/src/actions/apply_action.rs and apply_attack_action.rs, engine/tests/b4a_attack_batch2_test.rs and victini_victory_star_test.rs, the new folder rl/results/victory_star_repair_2026-09-30/, and this file.
 4. **Waiting on the laptop or Sonnet.** Nothing.
