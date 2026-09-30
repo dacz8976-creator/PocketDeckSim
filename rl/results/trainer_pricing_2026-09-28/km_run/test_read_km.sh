@@ -72,7 +72,9 @@
 #   run by its sidecar's --reps rewritten to 20000): a ΔMSE lower bound printed +0.0 whose unrounded value (score.py's new
 #   "unrounded (full precision)" line) is +0.03 [wholly ABOVE: NOT ADOPTED (accuracy-worsening)], exactly 0 or printed -0.0 at
 #   -0.03 [SPANS, decided, not PENDING], the two lines disagreeing [STOP], the same page below --reps 20000 [still PENDING: K8
-#   is separate], a page without the new line [not reused, scored afresh]; the detectable size converted from an unrounded real
+#   is separate], a page without the new line [not reused, scored afresh], score.py's new line being opt-in (--full-precision,
+#   asked for by this reader only; score45 run directly with and without it on the same files: the default page has no new line
+#   and equals the reader's page minus its added lines, byte for byte); the detectable size converted from an unrounded real
 #   error of 13.836 (printed 13.8), not the rounded figure; and, on the gain tree, the held-out direction inside the verdict
 #   block (equal to section 5a's figure, and 'not in yet' when km3's B2e file is not in) and clause (d)'s pooled mean,
 #   half-width and 95% interval at four decimals (equal to the two-decimal figure); --parse-page on a page carrying the new
@@ -1169,12 +1171,53 @@ run_reader "$G/k7edit" "K7: printed +0.0 but an unrounded -0.03 (which would pri
 k7page k7pend "+0.0" "0.03"
 run_reader "$G/k7pend" "K7 and K8: printed +0.0, unrounded +0.03 at --reps $REPS: the label is still held open (K8 holds it below 20,000 replicates)" "$V_ANY" --reuse-45
 also 'MC-BOUNDARY \(lower edge\): \+0\.0 is within 5% of the interval.s width of 0' 'ΔMSE label: PENDING between above and spans'
-# a page made before score.py printed its full-precision line is not reused: it is scored afresh, and says why
+# a page without score.py's full-precision line (made without --full-precision) is not reused: it is scored afresh, and says why
 k7page k7old "+0.0" "0.03" 't = re.sub(r"(?m)^  unrounded \(full precision\):.*\n", "", t)'
 run_reader "$G/k7old" "K7: a page without score.py's unrounded line is not reused (scored afresh)" "${V_NA}accuracy-worsening\.$" --reuse-45
-also "\(--reuse-45: score45_${CAND}_vs_${BASE}\.txt is not reusable \(it was made before score\.py printed its 'unrounded \(full precision\)' line\); scoring afresh\)" \
+also "\(--reuse-45: score45_${CAND}_vs_${BASE}\.txt is not reusable \(it has no 'unrounded \(full precision\)' line \(made without --full-precision\)\); scoring afresh\)" \
      '^   page: .*\(freshly scored, --reps '
-never 'has no .unrounded \(full precision\). line'
+never 'NOTE: this score45 page has no .unrounded \(full precision\). line'
+# score.py's new line is OPT-IN (--full-precision, off by default; the older readers and the reproduction scripts compare pages line by
+# line): the default page is exactly what score45 always printed, and with the flag it differs only by the added lines. score45 is
+# run directly on the very files the reader's page names (its "Source:" and "Mixed rows:" lines), with and without the flag.
+python3 - "$G/k7/pages/score45_${CAND}_vs_${BASE}.txt" "$R/rl/results/kpf_2026-09-26/reading" "$REPS" "$BASE" "$CAND" <<'PYEOF' > "$G/k7/optin_result.txt"
+import os, re, subprocess, sys
+page, k45, reps, base, cand = sys.argv[1:6]
+text = open(page, encoding="utf-8").read()
+src = re.search(r"^Source: (.+?) \+ (.+?) \(current\) vs (.+?) \+ (.+?) \(new\), paired by deal$", text, re.M).groups()   # paths may hold spaces
+mixed = re.search(r"^Mixed rows: (.+?) \+ (.+?) \(\d", text, re.M).groups()
+cmd = [sys.executable, "-B", os.path.join(k45, "score45.py"), "--rules", "v2", "--old-games", src[0], src[1], "--new-games", src[2], src[3],
+       "--old", base, "--new", cand, "--mixed", *mixed, "--reps", reps]
+
+
+def run(extra):
+    r = subprocess.run(cmd + extra, capture_output=True, text=True, encoding="utf-8", cwd=k45, env=dict(os.environ, PYTHONDONTWRITEBYTECODE="1"))
+    assert r.returncode == 0, r.stderr[-300:]
+    return r.stdout + r.stderr
+
+
+def norm(t):                     # the page names a random temp file for the Limitless cells; nothing else varies between runs
+    return re.sub(r"(?m)^(Limitless cells: ).*$", r"\1<temp>", t)
+
+
+def dropped(t):
+    return "".join(l for l in t.splitlines(True) if not l.startswith("  unrounded (full precision):"))
+
+
+default, flagged = norm(run([])), norm(run(["--full-precision"]))
+added = [l for l in flagged.splitlines(True) if l.startswith("  unrounded (full precision):")]
+print("OPTIN default page has no unrounded line" if "unrounded (full precision)" not in default else "OPTIN WRONG default page has the line")
+print("OPTIN --full-precision adds exactly one line per block (2)" if len(added) == 2 else f"OPTIN WRONG the flag added {len(added)} lines")
+print("OPTIN the flagged page minus its added lines is the default page, byte for byte" if dropped(flagged) == default
+      else "OPTIN WRONG the flagged page differs from the default in another line")
+print("OPTIN the reader's page minus its added lines is the default page, byte for byte" if dropped(norm(text)) == default
+      else "OPTIN WRONG the reader's page differs from the default page in another line")
+PYEOF
+check "$G/k7/optin_result.txt" "score.py's new line is opt-in (default page byte-identical)" \
+  '^OPTIN default page has no unrounded line$' '^OPTIN --full-precision adds exactly one line per block \(2\)$' \
+  '^OPTIN the flagged page minus its added lines is the default page, byte for byte$' \
+  '^OPTIN the reader.s page minus its added lines is the default page, byte for byte$'
+lacks "$G/k7/optin_result.txt" "score.py's new line is opt-in (default page byte-identical)" 'OPTIN WRONG'
 # the held-out direction is printed inside the verdict block, beside the verdict, and is the section 5a line's figure
 sed -n '/^9\. VERDICT/,/THE OUTCOMES THE REGISTRATION FIXES/p' "$G/k7/reader_output.txt" > "$G/k7/verdict_block.txt"
 check "$G/k7/verdict_block.txt" "held-out direction: inside the verdict block" \

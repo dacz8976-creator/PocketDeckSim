@@ -13,9 +13,11 @@ a14014e, unchanged. The changes after it are for the NEXT reading; they answer t
 the upper edge already was, so a lower bound printed "+0.0" is no longer left PENDING at the decisive --reps; (2) the
 held-out direction is printed inside the verdict block; (3) the detectable size as real error starts from score.py's
 unrounded real error, and clause (d)'s pooled mean, half-width and 95% interval print to four decimals. For (1) and (3)
-score.py prints ONE NEW line (its "unrounded (full precision)" line); no line score.py or score45.py printed before
-changed, and a page made before that line existed is read as it always was (K7 as printed, the rounded real error, with
-a note). Nothing here re-reads km.
+this reader asks score45 for --full-precision, which makes score.py print ONE NEW line (its "unrounded (full precision)"
+line). The flag is OFF by default, so every page score.py or score45.py prints without it (and every page they printed
+before) is byte-identical to what they always printed, which the older readers and the reproduction scripts rely on; with it,
+no line printed before changed. A page without that line (made without the flag) is read as it always was (K7 as printed,
+the rounded real error, with a note). Nothing here re-reads km.
 
 ONE SET: the candidate and baseline codes, B (and so the file prefix, its first 7 characters), the counter tool's source
 sha256, and every reference file with its sha256, pairings, deals and seed base come from km_config.json (read through
@@ -109,7 +111,7 @@ Usage (WSL):  python3 read_km.py --dir ../../km_tables_<date> > ../../km_tables_
   --reps N          score45's bootstrap (default 4000); the 20,000-rep rerun is what a near-the-line bound asks for
   --reuse-45        reuse score45's page only if made by the same command at the same --reps on inputs with the same
                     sha256 (a sidecar <page>.reps records them), and only if it carries score.py's "unrounded (full
-                    precision)" line (a page made before that line existed is scored afresh)
+                    precision)" line (a page made without --full-precision is scored afresh)
   --footprint-only  sections 1 and 1b only: the step "the footprint, the first result read, committed alone" (step 1)
   --thresholds F    thresholds.json (default: --dir/thresholds.json)   --registration F  the registration text (default:
                     ../REGISTRATION_DRAFT.md), searched for the dated amendment's numbers
@@ -615,7 +617,7 @@ def parse45(text, lenient=False):
                 d["real"][m.group(1)] = float(m.group(2))
                 continue
             m = re.match(r"\s*unrounded \(full precision\): dMSE 95% interval (\S+) to (\S+); real error (.+)$", ln)
-            if m:                                # the one line score.py gained on Sept 30; a page made before it has none
+            if m:                                # the one line score.py prints with --full-precision (Sept 30); other pages have none
                 try:
                     real = {}
                     for part in m.group(3).split(", "):
@@ -1548,7 +1550,7 @@ def run_score45(with_mixed):
              if with_mixed and MIXR[dr] is not None]
     page = os.path.join(PAGES, f"score45_{CODE}_vs_{BASE}.txt")
     cmd = [sys.executable, os.path.join(K45, "score45.py"), "--rules", "v2", "--old-games"] + old_p + ["--new-games"] + new_p + \
-          ["--old", BASE, "--new", CODE] + (["--mixed"] + mixed if mixed else []) + ["--reps", str(REPS)]
+          ["--old", BASE, "--new", CODE] + (["--mixed"] + mixed if mixed else []) + ["--full-precision", "--reps", str(REPS)]
     sig = json.dumps({"reps": REPS, "args": [os.path.basename(x) for x in cmd[2:]],
                       "inputs": {os.path.basename(q): sha(q) for q in old_p + new_p + mixed}}, sort_keys=True)
     side = page + ".reps"
@@ -1560,7 +1562,7 @@ def run_score45(with_mixed):
         if args.reuse_45 and os.path.exists(page):
             P(f"   (--reuse-45: {os.path.basename(page)} is not reusable ("
               + ("a different command, inputs or --reps, or no sidecar" if not same else
-                 "it was made before score.py printed its 'unrounded (full precision)' line") + "); scoring afresh)")
+                 "it has no 'unrounded (full precision)' line (made without --full-precision)") + "); scoring afresh)")
         out = subprocess.run(cmd, capture_output=True, text=True, encoding="utf-8", cwd=K45)
         text, tag = out.stdout + out.stderr, f"freshly scored, --reps {REPS}"
         os.makedirs(PAGES, exist_ok=True)
@@ -1579,11 +1581,11 @@ R45, PAGE45, TAG45, MIXED_IN = run_score45(True)
 A, Dn = R45["all"], R45["dec"]
 P(f"   page: {os.path.basename(PAGE45)} ({TAG45}); mixed rows given to score45: "
   + (", ".join(os.path.basename(m) for m in MIXED_IN) or "none in yet") + f" (the runner's games in the cells it ran; {BASE}'s in a zero-footprint cell, K5)")
-FULL45, FULL44 = A["full"], Dn["full"]      # score.py's "unrounded (full precision)" lines (None on a page made before them)
+FULL45, FULL44 = A["full"], Dn["full"]      # score.py's "unrounded (full precision)" lines (None on a page made without --full-precision)
 TAU_K = FULL45["real"][BASE] if FULL45 else A["real"][BASE]
 P(f"   real error on the 45 cells: {BASE} {A['real'][BASE]:.1f} -> {CODE} {A['real'][CODE]:.1f}")
 if not FULL45:
-    P("   NOTE: this score45 page has no 'unrounded (full precision)' line (it was made before score.py printed one): the real "
+    P("   NOTE: this score45 page has no 'unrounded (full precision)' line (it was made without --full-precision): the real "
       "error below is the page's rounded figure, and a ΔMSE lower bound printed +0.0 is not called (K7). Score afresh, without "
       "--reuse-45, to read both at full precision.")
 dm = A["dmse"]
