@@ -2,19 +2,21 @@
 
 Written Sept 30 for the Fable coordinator session (Dustin's single delegator). Times are UTC.
 
-1. **Current task, and the instruction that set it.** A bounded design assessment of N1's timing (the Fable coordinator via Dustin, Sept 30): rl/results/kn_build_2026-09-30/TIMING.md. No new build, no table games; registration stays the laptop's and Dustin's.
-   - The questions:
-     - (1) why the tie exists: what exactly the N1 term adds and why it is equal on every chance turn;
-     - (2) which of the parked text's simplifications causes it;
-     - (3) at most three list-free, constant-free candidate rules that would make the play land on the turn it pays, each with its expected footprint, carrier and smoke;
-     - (4) a recommendation.
-   - Received with it:
-     - kn (71877f6, README 52dd2ef) is accepted as a build. The smoke's timing problem (359 of 360 Goo-zooka plays before Grass Knot under km3, 120 of 677 under kn3) was also Astra's reading.
-     - For the rules switch, the coordinator chose the three real alternates as carriers (e0d149a), with the made lists for the scratch rows only.
-2. **What is running now, and when it ends.** Starting now: reading the score, search and clock code, and the smoke's and the diagnosis's data. A few hours at most.
-3. **Files I expect to change.** rl/results/kn_build_2026-09-30/TIMING.md (new) and this file. No engine file.
+1. **Current task, and the instruction that set it.** None. The last one is done: the N1 timing assessment (the Fable coordinator via Dustin, Sept 30), commit 2f56033, rl/results/kn_build_2026-09-30/TIMING.md. No build, no games.
+   - **(1) Why the tie.** Under kn, Goo-zooka's effect adds exactly +1 wherever the target stays Active, and the card leaving the hand costs exactly 1. The search has no opponent ply, so every leaf shows the +1 and none shows whether it pays. The tie goes to Play by the sorted move order: 492 of 682 and 507 of 677 plays came on the game's first chance turn.
+   - **(2) Causes.**
+     - N1's term has no condition, and no opponent ply is searched.
+     - Grass Knot's damage is not in the clock. This is the carrier's cost: 120 of 677 kn3 plays before a Grass Knot, against 359 of 360 for km3.
+     - Underneath: km's clock gives a benched threat a free path to the Active Spot, with no retreat charged.
+   - **(3) Candidates:**
+     - C1: count N1 only when their Active is damaged or not their clock's threat. Still a tie on the turns it counts.
+     - C2: in the clock, a benched threat pays its Active's missing retreat Energy, both sides, N1's static term off. It prices the play by value, about 100 for a turn of their threat against the card's 1. By reading, it covers 6 of the diagnosis's 7 "yes" turns and none of the 3 "no". Its footprint is large.
+     - C3: price Grass Knot and Shadow Seeker's retreat-cost damage in the clock. Whimsicott carrier only.
+   - **(4) Recommendation:** C2 next as a new code on km, with the full footprint route; C1 the cheap fallback; C3 separate. kn as built should not be registered. Registration stays the laptop's and Dustin's.
+2. **What is running now, and when it ends.** Nothing.
+3. **Files I expect to change.** None.
 4. **Waiting on the laptop or Sonnet.** Nothing.
-5. **Open questions for Dustin.** None.
+5. **Open questions for Dustin.** Which of C1, C2 or C3 (if any) to build next. C2 is recommended.
 
 ## Log (one line per new job, added and pushed before it starts)
 
