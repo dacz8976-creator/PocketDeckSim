@@ -8,12 +8,20 @@ Written Sept 30 for the Fable coordinator session (Dustin's single delegator). T
    - S3: rerun the smoke check on e52a73b, and trace the 4 changed games without a redirected snipe (i = 16, 23, 29, 32) to their first differing decision;
    - S4: a test pinning rules/09's requirement that damage from an Ability, a Tool or the Checkup never flips the coin.
    - Limits: scratch decks and seeds outside START_HERE's ranges only; no table games, no players/, no merge. Full suite after the last engine commit; README tests table updated.
-2. **What is running now, and when it ends.** Starting now: tests, one small hardening, and a scratch smoke rerun with a trace. About one to two hours. The Chase Order follow-up is done (e52a73b).
-3. **Files I expect to change.**
-   - engine/src/actions/attack_outcome.rs (S1: the hardening and its unit test);
-   - engine/tests/pokemon/meowth_carefree_steps_test.rs (S2, S4);
-   - rl/results/coin_prevention_repair_2026-09-30/ (the S3 rerun and trace, the README);
-   - this file.
+2. **What is running now, and when it ends.** Nothing is running. Sonnet's S1-S4 are done. The last engine commit is **c9df626**; README and files are at 3a31ce2.
+   - **S1:** with_heads_coin_cuts now puts exactly its own cuts in force, so an empty call nested in a non-empty one clears the outer cuts instead of inheriting them.
+     - Commits: the test first and failing (52daee6), then the hardening (c9df626).
+     - No engine path nests an empty call today, so no game changes.
+   - **S2:** Gyarados's Wild Swing into a Carefree Steps Meowth is pinned at today's behaviour: no coin, 0 prevented of 60, with and without the discard. The later round will change it knowingly.
+   - **S3:**
+     - **The rerun.** On e52a73b the smoke check gives rows identical to the committed ones (40 of 40 on each scan).
+     - **The trace.** In all 4 games (i = 16, 23, 29, 32) the first differing decision is Tongue Whip's target choice: same board, same number of targets. On the repaired engine the snipe at Meowth is offered on the coin path. The old bot sniped Meowth; the repaired one sniped Chatot or Bulbasaur, a sure 30.
+     - So it is the bot pricing the coin, on a choice the repair changed on the board.
+     - The first smoke's counter counted only chosen redirected snipes, which is why those 4 showed 0.
+   - **S4:** three tests pin that damage from an Ability (Greninja's Water Shuriken), a Tool (Rocky Helmet) or the Checkup (Poison) never flips the coin. The code already honoured it.
+   - **Unit suite, on c9df626:** 2,011 passed, 0 failed, 0 ignored (2,006 plus the 5 new tests). The README's tests table is updated.
+   - **Not done, as asked:** scratch decks and seeds 20,950,000,000 + i only; no table games, no players/, no merge.
+3. **Files I expect to change.** None until the next job.
 4. **Waiting on the laptop or Sonnet.** Nothing.
 5. **Open questions for Dustin.** None.
 
