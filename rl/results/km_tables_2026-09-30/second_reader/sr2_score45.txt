@@ -1,0 +1,57 @@
+[mine] 45 cells: dMSE (km3 - kta3) +1.0836 points^2 (delta-method sd 4.146: -7.04 to +9.21); real error kta3 13.8362 km3 13.8752; margin (kta3 - km3) -0.0389
+[mine]   cell misses growing > 6: [(('altaria', 'suicune'), 6.2)] (largest +6.20 at ('altaria', 'suicune')); deck gaps growing > 2: none (largest +0.74 at altaria)
+[mine]     deck           altaria: kta3  54.23 -> km3  53.49; Limitless  54.54; change in gap +0.744
+[mine]     deck          blaziken: kta3  57.41 -> km3  57.57; Limitless  52.32; change in gap +0.156
+[mine]     deck         hydreigon: kta3  51.02 -> km3  50.89; Limitless  43.94; change in gap -0.133
+[mine]     deck           lucario: kta3  52.17 -> km3  51.90; Limitless  45.62; change in gap -0.267
+[mine]     deck          sceptile: kta3  61.71 -> km3  61.82; Limitless  49.02; change in gap +0.111
+[mine]     deck           suicune: kta3  51.27 -> km3  51.96; Limitless  48.87; change in gap +0.689
+[mine]     deck         vespiquen: kta3  48.09 -> km3  48.93; Limitless  52.65; change in gap -0.844
+[mine]     deck           weezing: kta3  52.62 -> km3  52.06; Limitless  48.49; change in gap -0.567
+[mine]     deck          rayquaza: kta3  28.04 -> km3  28.09; Limitless  46.66; change in gap -0.044
+[mine]     deck  altaria_greninja: kta3  43.43 -> km3  43.30; Limitless  57.88; change in gap +0.133
+[mine] 44-cell decision set: dMSE (km3 - kta3) +1.1893 points^2 (delta-method sd 4.236: -7.11 to +9.49); real error kta3 14.0097 km3 14.0519; margin (kta3 - km3) -0.0422
+[mine]   cell misses growing > 6: [(('altaria', 'suicune'), 6.2)] (largest +6.20 at ('altaria', 'suicune')); deck gaps growing > 2: none (largest +0.74 at altaria)
+[tap] score.pct calls recorded: 16 (q values [0.025, 0.975, 0.025, 0.975, 0.05, 0.95, 0.05, 0.95, 0.025, 0.975, 0.025, 0.975, 0.05, 0.95, 0.05, 0.95])
+[score45 unrounded, --reps 4000] 45 cells (all): dMSE lo (2.5%) -6.97693; dMSE hi (97.5%) +10.14136; dMSE by event lo -8.10803; dMSE by event hi +10.27648; tau margin lo (5%) -0.25888; tau margin hi (95%) +0.18084; tau by event lo -0.26376; tau by event hi +0.20522
+   label: SPANS zero (outcome 3, the fallback); width 17.1183; 5% of width 0.8559; upper edge within 5% of 0: False (|hi| = 10.1414); lower edge within: False (|lo| = 6.9769); tau lower bound -0.25888, within 0.10 of -1.0: False (distance +0.7411); sd from the interval 4.3669, MDE50 8.559, MDE80 12.227
+   [tap] score.py's real error unrounded: kta3 13.83624, km3 13.87517; detectable size as real error (sqrt(kta3^2 - delta)): MDE50 13.84 -> 13.523, MDE80 13.84 -> 13.387 (from the rounded 13.80: 13.486 and 13.350)
+[score45 unrounded, --reps 4000] 44-cell decision set: dMSE lo (2.5%) -7.54049; dMSE hi (97.5%) +9.87865; dMSE by event lo -8.73497; dMSE by event hi +10.39458; tau margin lo (5%) -0.25698; tau margin hi (95%) +0.18429; tau by event lo -0.26407; tau by event hi +0.21965
+   label: SPANS zero (outcome 3, the fallback); width 17.4191; 5% of width 0.8710; upper edge within 5% of 0: False (|hi| = 9.8787); lower edge within: False (|lo| = 7.5405); tau lower bound -0.25698, within 0.10 of -1.0: False (distance +0.7430); sd from the interval 4.4437, MDE50 8.710, MDE80 12.442
+   [tap] score.py's real error unrounded: kta3 14.00965, km3 14.05185; detectable size as real error (sqrt(kta3^2 - delta)): MDE50 14.01 -> 13.695, MDE80 14.01 -> 13.558 (from the rounded 13.80: 13.481 and 13.342)
+[tap] score.pass_parts calls (keys, real error): [(45, 13.83624), (45, 13.87517), (44, 14.00965), (44, 14.05185)]
+first reader's page score45_km3_vs_kta3.txt (--reps 4000): 159 lines, mine 159; differing lines 2:
+   theirs: Limitless cells: /tmp/tmpwzd0_ocs.json
+   mine:   Limitless cells: /tmp/tmpgvarbpf1.json
+   theirs: Mixed rows: /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/km_tables_2026-09-30/score45_inputs/1f6319e_km3_mixed_first_composite.jsonl + /mnt/c/Users/dacz8/Projects/Pocket Deck S
+   mine:   Mixed rows: /mnt/c/Users/dacz8/AppData/Local/Temp/claude/C--Users-dacz8-Projects/1b119d13-736d-4588-ba63-0e9ef1756970/scratchpad/wf_km2r/second-reader/sr_mixed_first.jsonl + /mnt/c/Users/dacz8/AppData
+
+score45's page (/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/km_tables_2026-09-30/second_reader/sr2_score45_page.txt), key lines:
+   Veto rule: rules v2 (pre-registered Sept 25): a veto counts only when mixed rows on the same deals show the changed pilot's own side got worse beyond their paired noise, and never on a cell whose Limitless band is wider than +/-15; otherwise it is an investigation item
+   Mixed rows: /mnt/c/Users/dacz8/AppData/Local/Temp/claude/C--Users-dacz8-Projects/1b119d13-736d-4588-ba63-0e9ef1756970/scratchpad/wf_km2r/second-reader/sr_mixed_first.jsonl + /mnt/c/Users/dacz8/AppData/Local/Temp/claude/C--Users-dacz8-Projects/1b119d13-736d-4588-ba63-0e9ef1756970/scratchpad/wf_km2r/second-reader/sr_mixed_second.jsonl (22500 games with km3 on the first-named deck only, 22500 on the second-named only)
+   == all cells: 45 pairings
+           kta3: real error 13.8 | reported only: correlation 0.52, average miss 12.8, favorite right 28/45, clear 14/20, beyond chance 16
+                 PASS (a) real error <= 5.5: no | (b) cells over by >10 beyond noise: sceptile v vespiquen, rayquaza v lucario, rayquaza v sceptile, rayquaza v vespiquen, altaria_greninja v sceptile | (c) decks off by >6: altaria_greninja, hydreigon, lucario, rayquaza, sceptile
+            km3: real error 13.9 | reported only: correlation 0.52, average miss 13.0, favorite right 30/45, clear 16/20, beyond chance 14
+                 PASS (a) real error <= 5.5: no | (b) cells over by >10 beyond noise: sceptile v vespiquen, rayquaza v lucario, rayquaza v sceptile, rayquaza v vespiquen, altaria_greninja v sceptile | (c) decks off by >6: altaria_greninja, hydreigon, lucario, rayquaza, sceptile
+     dMSE new - current: +1.1 points^2, 95% interval -7.0 to +10.1 (not below 0) [Limitless side binomial]
+     dMSE, Limitless side resampled by event: 95% interval -8.1 to +10.3 (not below 0; 67 of 4067 event draws redrawn because a cell had no match)
+     real error, current minus new: -0.04 points, 90% interval -0.26 to +0.18 (margin rule: E = 3; 'current' is the cheap bot when comparing variants)
+     real error, Limitless side resampled by event: 90% interval -0.26 to +0.21
+     cell veto (miss grows > 6): altaria v suicune +6.2
+     deck veto (gap grows > 2): none
+     ADOPTION RULE (v2): do not adopt (dMSE interval not below 0) (held-out-deck veto checked separately)
+   == decision set (Altaria v Sceptile quarantined): 44 pairings
+           kta3: real error 14.0 | reported only: correlation 0.52, average miss 13.1, favorite right 27/44, clear 14/20, beyond chance 16
+                 PASS (a) real error <= 5.5: no | (b) cells over by >10 beyond noise: sceptile v vespiquen, rayquaza v lucario, rayquaza v sceptile, rayquaza v vespiquen, altaria_greninja v sceptile | (c) decks off by >6: altaria_greninja, hydreigon, lucario, rayquaza, sceptile
+            km3: real error 14.1 | reported only: correlation 0.52, average miss 13.2, favorite right 29/44, clear 16/20, beyond chance 14
+                 PASS (a) real error <= 5.5: no | (b) cells over by >10 beyond noise: sceptile v vespiquen, rayquaza v lucario, rayquaza v sceptile, rayquaza v vespiquen, altaria_greninja v sceptile | (c) decks off by >6: altaria_greninja, hydreigon, lucario, rayquaza, sceptile
+     dMSE new - current: +1.2 points^2, 95% interval -7.5 to +9.9 (not below 0) [Limitless side binomial]
+     dMSE, Limitless side resampled by event: 95% interval -8.7 to +10.4 (not below 0; 67 of 4067 event draws redrawn because a cell had no match)
+     real error, current minus new: -0.04 points, 90% interval -0.26 to +0.18 (margin rule: E = 3; 'current' is the cheap bot when comparing variants)
+     real error, Limitless side resampled by event: 90% interval -0.26 to +0.22
+     cell veto (miss grows > 6): altaria v suicune +6.2
+     deck veto (gap grows > 2): none
+     ADOPTION RULE (v2): do not adopt (dMSE interval not below 0) (held-out-deck veto checked separately)
+   Mixed rows: each deck's own score change with km3 on that deck only, against kta3 on both sides, same deals (95% range from per-deal differences)
+   Mixed rows by deck, decision set (reported only; the vetoes above use them only when a veto fires): the deck's own side with km3 on it only, and its opponents' own side with km3 on them only, pooled over the deck's cells (mean of cell changes, 95% range)

@@ -39,8 +39,9 @@
 | koa's no-harm re-check | τ̂ margin (kp3 minus koa) 90% lower bound at −1.0 or above, no veto; Altaria's post-freeze cells reported | RUN5 "Confirming a reserve-route (no-harm) fix" |
 | kog, the composed pilot (passed its composition check Sept 28) | τ̂ margin over kp3 at least +0.73 (half of +1.46), its own 90% interval above zero; it inherits the two rows above, and this row reads the pilot as it runs | `../kog_composition_2026-09-27/READING.md` |
 | kta, switch 1 on kog (adopted "unconfirmed" Sept 30 on the reserve route) | τ̂ margin (kog3 minus kta3) on post-freeze events alone, 90% lower bound at −1.0 or above, and no veto; Rayquaza's and Suicune's post-freeze real cells reported with their sizes. Lapse clause: kta carries kog's A and F, so it isn't confirmed until kog's row (and the kpg and koa rows kog inherits) has passed; a passed kta check stands and isn't read again | `../kta_2026-09-29/REGISTRATION.md` 5.7; `../kta_tables_2026-09-29/READING.md` |
+| km, N2 on kta (adopted "unconfirmed" Sept 30 on the reserve route, replacing kta3 in the tables) | τ̂ margin (kta3 minus km3) on post-freeze events alone, 90% lower bound at −1.0 or above, and no veto; Lucario's and Altaria's post-freeze cells reported with their sizes. Lapse clause: km carries kta's switch 1 and, through kta, kog's A and F, so it isn't confirmed until kta's, kog's, kpg's and koa's rows have all passed; a passed km check stands and isn't read again | `../trainer_pricing_2026-09-28/REGISTRATION_DRAFT.md` step 7 and Amendment 1 (b) item 5; `../km_tables_2026-09-30/READING.md` |
 
-- Anything else adopted before the read joins this list, by a commit here, before the data is opened. koh and kt were not adopted (Sept 29); kta joined Sept 30.
+- Anything else adopted before the read joins this list, by a commit here, before the data is opened. koh and kt were not adopted (Sept 29); kta joined Sept 30, and km joined Sept 30.
 - Each check is read on the same engine as its baselines.
 
 ## Files

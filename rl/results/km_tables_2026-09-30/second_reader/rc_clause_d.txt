@@ -1,0 +1,37 @@
+games: km3 arm 18000, kta3 arm 18000; expected 18,000 each
+keys: both arms hold exactly rows 0-8 x deals 0-1999; opponent/seat/bot problems: km3 0, kta3 0
+pairing across arms (seed, seat, both decks, both deck files where recorded): 0 of 18,000 differ (7000 of 36,000 records carry no deck-file field: the table files, decks named by key)
+km3-arm games whose moves differ from the kta3 arm's: 7046 of 18,000
+kta3 arm deals 0-499 replay kta3's references: 4500 compared, 0 differ on moves, decisions, first_deck_score, winner_seat, seed, first_seat, a, b, a_file, b_file, turns
+
+per row (points; km3 arm minus kta3 arm; 2,000 deals; half-width 1.96 x sd of the mean):
+   row 0 Lucario v altaria           kta3  37.80 -> km3  37.35: -0.4500 +/- 0.8710
+   row 1 Lucario v blaziken          kta3  49.88 -> km3  49.92: +0.0500 +/- 0.6862
+   row 2 Lucario v hydreigon         kta3  57.15 -> km3  57.40: +0.2500 +/- 1.3332
+   row 3 Lucario v sceptile          kta3  38.25 -> km3  38.25: +0.0000 +/- 0.2401
+   row 4 Lucario v suicune           kta3  56.45 -> km3  59.10: +2.6500 +/- 1.6853
+   row 5 Lucario v vespiquen         kta3  70.35 -> km3  69.90: -0.4500 +/- 1.6431
+   row 6 Lucario v weezing           kta3  48.62 -> km3  50.98: +2.3500 +/- 1.7032
+   row 7 Lucario v rayquaza          kta3  64.55 -> km3  63.80: -0.7500 +/- 1.3962
+   row 8 Lucario v altaria_greninja  kta3  44.30 -> km3  44.65: +0.3500 +/- 0.8374
+
+POOLED MEAN (exact): 4/9 = 0.444444444444444
+sum of per-row variances of the mean (exact): 73663/19990 = 3.684992496248124
+half-width 1.96 x sqrt(sum) / 9 = 0.418053502004359
+LOWER EDGE (mean - half-width) = 0.026390942440085; upper edge 0.862497946448803
+exact test without a square root: M > 0 and (9M)^2 > 1.96^2 x sum:  16 > 176864863/12493750 = 14.156267: True
+=> clause (d) PASSES: the whole 95% interval is above zero
+sd of the pooled mean 0.213293; z = M / sd = 2.0837
+float replica of paired(): mean 0.4444444444444444, half-width 0.418053502004359, lower edge 0.02639094244008544
+
+reported only: each row's share of the pooled sum, and the 8-row pool without it
+   row 0 altaria           share  -11.2%   without it: +0.5563 +/- 0.4575 (lower edge +0.0987)
+   row 1 blaziken          share   +1.2%   without it: +0.4938 +/- 0.4624 (lower edge +0.0313)
+   row 2 hydreigon         share   +6.2%   without it: +0.4688 +/- 0.4398 (lower edge +0.0290)
+   row 3 sceptile          share   +0.0%   without it: +0.5000 +/- 0.4694 (lower edge +0.0306)
+   row 4 suicune           share  +66.2%   without it: +0.1688 +/- 0.4205 (lower edge -0.2517)
+   row 5 vespiquen         share  -11.2%   without it: +0.5563 +/- 0.4231 (lower edge +0.1332)
+   row 6 weezing           share  +58.8%   without it: +0.2062 +/- 0.4194 (lower edge -0.2131)
+   row 7 rayquaza          share  -18.8%   without it: +0.5938 +/- 0.4367 (lower edge +0.1570)
+   row 8 altaria_greninja  share   +8.8%   without it: +0.4562 +/- 0.4585 (lower edge -0.0023)
+one km3-arm game from a win to a loss moves the pooled mean by 100 / 2,000 / 9 = 0.005556 points; lower edge / that = 4.75 games (variance held fixed)
