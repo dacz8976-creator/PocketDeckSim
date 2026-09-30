@@ -1,0 +1,40 @@
+COVERAGE SHORTCUT, table
+Rule: "For coverage, skip mixed rows only when every corresponding deal has matching complete move fingerprints, decks, seeds and seats. Matching winners alone is insufficient." (Dustin, Sept 29; REGISTRATION.md top block, item 3)
+Compared deal by deal, on the deal key (pairing, i): moves, a, b, a_file, b_file, seed, first_seat (moves = the complete move fingerprint; a, b, a_file, b_file = both decks; seed; first_seat = the seats).
+A pairing is skipped only when every one of its deals is equal on all of them. winner_seat is not a criterion.
+kog3 both sides: /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/kta_tables_2026-09-29/ec7e1a8_fresh_kog3_table.jsonl (14000 games, sha256 ca9a08b75ea7bd9ea74b5bf1e064e6b6e59e988edfde088b7e4d04e0abc78947)
+kta3 both sides: /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/kta_tables_2026-09-29/ec7e1a8_fresh_kta3_table.jsonl (14000 games, sha256 e3d7f4d71490aa2c074e21a7d3f3495912d3fa1d51d16ce77bc6bd96b51f7c5a)
+28 pairings x 500 deals.
+The 45 cells' mixed rows (5.2 (c)): run on the cells whose kta3 games differ from kog3's; this comparison uses the coverage condition, which gives that set or a larger one. The cells skipped here get the i < 40 sample of both directions.
+
+SKIP table 0: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (altaria v blaziken): its mixed rows are skipped
+SKIP table 1: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (altaria v hydreigon): its mixed rows are skipped
+SKIP table 2: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (altaria v lucario): its mixed rows are skipped
+SKIP table 3: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (altaria v sceptile): its mixed rows are skipped
+RUN table 4: 490 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (altaria v suicune): its mixed rows run; 10 of 500 deals differ (moves 10); first at i = 19 (moves); winners equal on 9 of those 10 deals, which does not make it skip
+SKIP table 5: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (altaria v vespiquen): its mixed rows are skipped
+SKIP table 6: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (altaria v weezing): its mixed rows are skipped
+SKIP table 7: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (blaziken v hydreigon): its mixed rows are skipped
+SKIP table 8: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (blaziken v lucario): its mixed rows are skipped
+SKIP table 9: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (blaziken v sceptile): its mixed rows are skipped
+RUN table 10: 473 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (blaziken v suicune): its mixed rows run; 27 of 500 deals differ (moves 27); first at i = 20 (moves); winners equal on 23 of those 27 deals, which does not make it skip
+SKIP table 11: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (blaziken v vespiquen): its mixed rows are skipped
+SKIP table 12: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (blaziken v weezing): its mixed rows are skipped
+SKIP table 13: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (hydreigon v lucario): its mixed rows are skipped
+SKIP table 14: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (hydreigon v sceptile): its mixed rows are skipped
+RUN table 15: 477 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (hydreigon v suicune): its mixed rows run; 23 of 500 deals differ (moves 23); first at i = 15 (moves); winners equal on 20 of those 23 deals, which does not make it skip
+SKIP table 16: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (hydreigon v vespiquen): its mixed rows are skipped
+SKIP table 17: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (hydreigon v weezing): its mixed rows are skipped
+SKIP table 18: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (lucario v sceptile): its mixed rows are skipped
+RUN table 19: 468 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (lucario v suicune): its mixed rows run; 32 of 500 deals differ (moves 32); first at i = 3 (moves); winners equal on 26 of those 32 deals, which does not make it skip
+SKIP table 20: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (lucario v vespiquen): its mixed rows are skipped
+SKIP table 21: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (lucario v weezing): its mixed rows are skipped
+RUN table 22: 470 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (sceptile v suicune): its mixed rows run; 30 of 500 deals differ (moves 30); first at i = 8 (moves); winners equal on 25 of those 30 deals, which does not make it skip
+SKIP table 23: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (sceptile v vespiquen): its mixed rows are skipped
+SKIP table 24: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (sceptile v weezing): its mixed rows are skipped
+RUN table 25: 469 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (suicune v vespiquen): its mixed rows run; 31 of 500 deals differ (moves 31); first at i = 10 (moves); winners equal on 21 of those 31 deals, which does not make it skip
+RUN table 26: 486 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (suicune v weezing): its mixed rows run; 14 of 500 deals differ (moves 14); first at i = 51 (moves); winners equal on 11 of those 14 deals, which does not make it skip
+SKIP table 27: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (vespiquen v weezing): its mixed rows are skipped
+
+Skipped pairings (21): 0,1,2,3,5,6,7,8,9,11,12,13,14,16,17,18,20,21,23,24,27
+Pairings whose mixed rows run (7): 4,10,15,19,22,25,26

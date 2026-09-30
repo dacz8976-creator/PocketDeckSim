@@ -1,0 +1,29 @@
+COVERAGE SHORTCUT, new17
+Rule: "For coverage, skip mixed rows only when every corresponding deal has matching complete move fingerprints, decks, seeds and seats. Matching winners alone is insufficient." (Dustin, Sept 29; REGISTRATION.md top block, item 3)
+Compared deal by deal, on the deal key (pairing, i): moves, a, b, a_file, b_file, seed, first_seat (moves = the complete move fingerprint; a, b, a_file, b_file = both decks; seed; first_seat = the seats).
+A pairing is skipped only when every one of its deals is equal on all of them. winner_seat is not a criterion.
+kog3 both sides: /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/kta_tables_2026-09-29/ec7e1a8_fresh_kog3_new17.jsonl (8500 games, sha256 861e524db718e7bd08633cf8cef0a1c83c2afd5907636af405d5a03cca009069)
+kta3 both sides: /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/kta_tables_2026-09-29/ec7e1a8_fresh_kta3_new17.jsonl (8500 games, sha256 b5216c940d4a3c680ba8bc67cf2c8097f458f7691d48963cbe9e3db5bfb6f3fa)
+17 pairings x 500 deals.
+The 45 cells' mixed rows (5.2 (c)): run on the cells whose kta3 games differ from kog3's; this comparison uses the coverage condition, which gives that set or a larger one. The cells skipped here get the i < 40 sample of both directions.
+
+RUN new17 8: 456 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (rayquaza v lucario): its mixed rows run; 44 of 500 deals differ (moves 44); first at i = 10 (moves); winners equal on 37 of those 44 deals, which does not make it skip
+RUN new17 9: 473 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (rayquaza v altaria): its mixed rows run; 27 of 500 deals differ (moves 27); first at i = 12 (moves); winners equal on 20 of those 27 deals, which does not make it skip
+RUN new17 10: 450 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (rayquaza v sceptile): its mixed rows run; 50 of 500 deals differ (moves 50); first at i = 20 (moves); winners equal on 43 of those 50 deals, which does not make it skip
+RUN new17 11: 452 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (rayquaza v vespiquen): its mixed rows run; 48 of 500 deals differ (moves 48); first at i = 12 (moves); winners equal on 34 of those 48 deals, which does not make it skip
+RUN new17 12: 463 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (rayquaza v suicune): its mixed rows run; 37 of 500 deals differ (moves 37); first at i = 2 (moves); winners equal on 25 of those 37 deals, which does not make it skip
+RUN new17 13: 469 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (rayquaza v hydreigon): its mixed rows run; 31 of 500 deals differ (moves 31); first at i = 12 (moves); winners equal on 25 of those 31 deals, which does not make it skip
+RUN new17 14: 470 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (rayquaza v weezing): its mixed rows run; 30 of 500 deals differ (moves 30); first at i = 32 (moves); winners equal on 21 of those 30 deals, which does not make it skip
+RUN new17 15: 477 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (rayquaza v blaziken): its mixed rows run; 23 of 500 deals differ (moves 23); first at i = 43 (moves); winners equal on 22 of those 23 deals, which does not make it skip
+SKIP new17 16: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (altaria_greninja v lucario): its mixed rows are skipped
+SKIP new17 17: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (altaria_greninja v altaria): its mixed rows are skipped
+SKIP new17 18: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (altaria_greninja v sceptile): its mixed rows are skipped
+SKIP new17 19: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (altaria_greninja v vespiquen): its mixed rows are skipped
+RUN new17 20: 483 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (altaria_greninja v suicune): its mixed rows run; 17 of 500 deals differ (moves 17); first at i = 31 (moves); winners equal on 11 of those 17 deals, which does not make it skip
+SKIP new17 21: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (altaria_greninja v hydreigon): its mixed rows are skipped
+SKIP new17 22: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (altaria_greninja v weezing): its mixed rows are skipped
+SKIP new17 23: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (altaria_greninja v blaziken): its mixed rows are skipped
+RUN new17 24: 446 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (rayquaza v altaria_greninja): its mixed rows run; 54 of 500 deals differ (moves 54); first at i = 10 (moves); winners equal on 42 of those 54 deals, which does not make it skip
+
+Skipped pairings (7): 16,17,18,19,21,22,23
+Pairings whose mixed rows run (10): 8,9,10,11,12,13,14,15,20,24

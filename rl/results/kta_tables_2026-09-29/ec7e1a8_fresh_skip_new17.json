@@ -1,0 +1,387 @@
+{
+ "group": "new17",
+ "rule": "\"For coverage, skip mixed rows only when every corresponding deal has matching complete move fingerprints, decks, seeds and seats. Matching winners alone is insufficient.\" (Dustin, Sept 29; REGISTRATION.md top block, item 3)",
+ "fields": [
+  "moves",
+  "a",
+  "b",
+  "a_file",
+  "b_file",
+  "seed",
+  "first_seat"
+ ],
+ "deals": 500,
+ "base": {
+  "code": "kog3",
+  "file": "ec7e1a8_fresh_kog3_new17.jsonl",
+  "sha256": "861e524db718e7bd08633cf8cef0a1c83c2afd5907636af405d5a03cca009069"
+ },
+ "cand": {
+  "code": "kta3",
+  "file": "ec7e1a8_fresh_kta3_new17.jsonl",
+  "sha256": "b5216c940d4a3c680ba8bc67cf2c8097f458f7691d48963cbe9e3db5bfb6f3fa"
+ },
+ "context": "The 45 cells' mixed rows (5.2 (c)): run on the cells whose kta3 games differ from kog3's; this comparison uses the coverage condition, which gives that set or a larger one. The cells skipped here get the i < 40 sample of both directions.",
+ "pairings": {
+  "8": {
+   "cell": "rayquaza v lucario",
+   "skip": false,
+   "differing_deals": 44,
+   "by_field": {
+    "moves": 44,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": {
+    "i": 10,
+    "fields": [
+     "moves"
+    ]
+   },
+   "winners_equal_among_differing": 37,
+   "why": "44 of 500 deals differ (moves 44); first at i = 10 (moves); winners equal on 37 of those 44 deals, which does not make it skip"
+  },
+  "9": {
+   "cell": "rayquaza v altaria",
+   "skip": false,
+   "differing_deals": 27,
+   "by_field": {
+    "moves": 27,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": {
+    "i": 12,
+    "fields": [
+     "moves"
+    ]
+   },
+   "winners_equal_among_differing": 20,
+   "why": "27 of 500 deals differ (moves 27); first at i = 12 (moves); winners equal on 20 of those 27 deals, which does not make it skip"
+  },
+  "10": {
+   "cell": "rayquaza v sceptile",
+   "skip": false,
+   "differing_deals": 50,
+   "by_field": {
+    "moves": 50,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": {
+    "i": 20,
+    "fields": [
+     "moves"
+    ]
+   },
+   "winners_equal_among_differing": 43,
+   "why": "50 of 500 deals differ (moves 50); first at i = 20 (moves); winners equal on 43 of those 50 deals, which does not make it skip"
+  },
+  "11": {
+   "cell": "rayquaza v vespiquen",
+   "skip": false,
+   "differing_deals": 48,
+   "by_field": {
+    "moves": 48,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": {
+    "i": 12,
+    "fields": [
+     "moves"
+    ]
+   },
+   "winners_equal_among_differing": 34,
+   "why": "48 of 500 deals differ (moves 48); first at i = 12 (moves); winners equal on 34 of those 48 deals, which does not make it skip"
+  },
+  "12": {
+   "cell": "rayquaza v suicune",
+   "skip": false,
+   "differing_deals": 37,
+   "by_field": {
+    "moves": 37,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": {
+    "i": 2,
+    "fields": [
+     "moves"
+    ]
+   },
+   "winners_equal_among_differing": 25,
+   "why": "37 of 500 deals differ (moves 37); first at i = 2 (moves); winners equal on 25 of those 37 deals, which does not make it skip"
+  },
+  "13": {
+   "cell": "rayquaza v hydreigon",
+   "skip": false,
+   "differing_deals": 31,
+   "by_field": {
+    "moves": 31,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": {
+    "i": 12,
+    "fields": [
+     "moves"
+    ]
+   },
+   "winners_equal_among_differing": 25,
+   "why": "31 of 500 deals differ (moves 31); first at i = 12 (moves); winners equal on 25 of those 31 deals, which does not make it skip"
+  },
+  "14": {
+   "cell": "rayquaza v weezing",
+   "skip": false,
+   "differing_deals": 30,
+   "by_field": {
+    "moves": 30,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": {
+    "i": 32,
+    "fields": [
+     "moves"
+    ]
+   },
+   "winners_equal_among_differing": 21,
+   "why": "30 of 500 deals differ (moves 30); first at i = 32 (moves); winners equal on 21 of those 30 deals, which does not make it skip"
+  },
+  "15": {
+   "cell": "rayquaza v blaziken",
+   "skip": false,
+   "differing_deals": 23,
+   "by_field": {
+    "moves": 23,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": {
+    "i": 43,
+    "fields": [
+     "moves"
+    ]
+   },
+   "winners_equal_among_differing": 22,
+   "why": "23 of 500 deals differ (moves 23); first at i = 43 (moves); winners equal on 22 of those 23 deals, which does not make it skip"
+  },
+  "16": {
+   "cell": "altaria_greninja v lucario",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "17": {
+   "cell": "altaria_greninja v altaria",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "18": {
+   "cell": "altaria_greninja v sceptile",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "19": {
+   "cell": "altaria_greninja v vespiquen",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "20": {
+   "cell": "altaria_greninja v suicune",
+   "skip": false,
+   "differing_deals": 17,
+   "by_field": {
+    "moves": 17,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": {
+    "i": 31,
+    "fields": [
+     "moves"
+    ]
+   },
+   "winners_equal_among_differing": 11,
+   "why": "17 of 500 deals differ (moves 17); first at i = 31 (moves); winners equal on 11 of those 17 deals, which does not make it skip"
+  },
+  "21": {
+   "cell": "altaria_greninja v hydreigon",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "22": {
+   "cell": "altaria_greninja v weezing",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "23": {
+   "cell": "altaria_greninja v blaziken",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "24": {
+   "cell": "rayquaza v altaria_greninja",
+   "skip": false,
+   "differing_deals": 54,
+   "by_field": {
+    "moves": 54,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": {
+    "i": 10,
+    "fields": [
+     "moves"
+    ]
+   },
+   "winners_equal_among_differing": 42,
+   "why": "54 of 500 deals differ (moves 54); first at i = 10 (moves); winners equal on 42 of those 54 deals, which does not make it skip"
+  }
+ },
+ "skipped": [
+  16,
+  17,
+  18,
+  19,
+  21,
+  22,
+  23
+ ],
+ "run": [
+  8,
+  9,
+  10,
+  11,
+  12,
+  13,
+  14,
+  15,
+  20,
+  24
+ ]
+}

@@ -1,0 +1,156 @@
+{
+ "group": "var_v-suicune_2",
+ "rule": "\"For coverage, skip mixed rows only when every corresponding deal has matching complete move fingerprints, decks, seeds and seats. Matching winners alone is insufficient.\" (Dustin, Sept 29; REGISTRATION.md top block, item 3)",
+ "fields": [
+  "moves",
+  "a",
+  "b",
+  "a_file",
+  "b_file",
+  "seed",
+  "first_seat"
+ ],
+ "deals": 500,
+ "base": {
+  "code": "kog3",
+  "file": "ec7e1a8_fresh_var_v-suicune_2_kog3.jsonl",
+  "sha256": "65ba863f8369572a000e1a0dae975c70b503409992826cfc60ea9f73d06d2e2f"
+ },
+ "cand": {
+  "code": "kta3",
+  "file": "ec7e1a8_fresh_var_v-suicune_2_kta3.jsonl",
+  "sha256": "abf150fdc746434cfb0dffe468e70f6ae4863a65d844802552012da042a5aaa4"
+ },
+ "context": "Coverage (5.5): the own-side mixed rows run on every pairing listed RUN.",
+ "pairings": {
+  "4": {
+   "cell": "altaria v v-suicune_2",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "10": {
+   "cell": "blaziken v v-suicune_2",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "15": {
+   "cell": "hydreigon v v-suicune_2",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "19": {
+   "cell": "lucario v v-suicune_2",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "22": {
+   "cell": "sceptile v v-suicune_2",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "25": {
+   "cell": "v-suicune_2 v vespiquen",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  },
+  "26": {
+   "cell": "v-suicune_2 v weezing",
+   "skip": true,
+   "differing_deals": 0,
+   "by_field": {
+    "moves": 0,
+    "a": 0,
+    "b": 0,
+    "a_file": 0,
+    "b_file": 0,
+    "seed": 0,
+    "first_seat": 0
+   },
+   "first_difference": null,
+   "winners_equal_among_differing": 0,
+   "why": "all 500 corresponding deals equal on moves, a, b, a_file, b_file, seed, first_seat"
+  }
+ },
+ "skipped": [
+  4,
+  10,
+  15,
+  19,
+  22,
+  25,
+  26
+ ],
+ "run": []
+}

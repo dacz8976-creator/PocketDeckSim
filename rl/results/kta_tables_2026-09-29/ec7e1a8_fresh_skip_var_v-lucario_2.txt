@@ -1,0 +1,19 @@
+COVERAGE SHORTCUT, var_v-lucario_2
+Rule: "For coverage, skip mixed rows only when every corresponding deal has matching complete move fingerprints, decks, seeds and seats. Matching winners alone is insufficient." (Dustin, Sept 29; REGISTRATION.md top block, item 3)
+Compared deal by deal, on the deal key (pairing, i): moves, a, b, a_file, b_file, seed, first_seat (moves = the complete move fingerprint; a, b, a_file, b_file = both decks; seed; first_seat = the seats).
+A pairing is skipped only when every one of its deals is equal on all of them. winner_seat is not a criterion.
+kog3 both sides: /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/kta_tables_2026-09-29/ec7e1a8_fresh_var_v-lucario_2_kog3.jsonl (3500 games, sha256 eceb8255a3d5f888537001819a1956f9dfa3ee1a0e260cab7dda2205d41f7dd0)
+kta3 both sides: /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/kta_tables_2026-09-29/ec7e1a8_fresh_var_v-lucario_2_kta3.jsonl (3500 games, sha256 6e45eb72c63e19dc546a2ae31e948659bc25291ab45826f67d836faf91272cbb)
+7 pairings x 500 deals.
+Coverage (5.5): the own-side mixed rows run on every pairing listed RUN.
+
+SKIP var_v-lucario_2 2: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (altaria v v-lucario_2): its mixed rows are skipped
+SKIP var_v-lucario_2 8: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (blaziken v v-lucario_2): its mixed rows are skipped
+SKIP var_v-lucario_2 13: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (hydreigon v v-lucario_2): its mixed rows are skipped
+SKIP var_v-lucario_2 18: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (v-lucario_2 v sceptile): its mixed rows are skipped
+RUN var_v-lucario_2 19: 467 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (v-lucario_2 v suicune): its mixed rows run; 33 of 500 deals differ (moves 33); first at i = 3 (moves); winners equal on 27 of those 33 deals, which does not make it skip
+SKIP var_v-lucario_2 20: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (v-lucario_2 v vespiquen): its mixed rows are skipped
+SKIP var_v-lucario_2 21: 500 of 500 deals equal on moves, a, b, a_file, b_file, seed, first_seat (v-lucario_2 v weezing): its mixed rows are skipped
+
+Skipped pairings (6): 2,8,13,18,20,21
+Pairings whose mixed rows run (1): 19
