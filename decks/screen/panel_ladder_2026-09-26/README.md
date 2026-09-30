@@ -6,6 +6,10 @@ proposal or a preparation. No screen, floor or calibration game was played beyon
 noted below; `decks/screen/run_screen.py`, `floor.py`, `opponents/` and `START_HERE.md` are untouched;
 the ranking hold from Dustin's Sept 25 decision still stands (section 4).
 
+**Sept 30:** `decks/screen/run_screen.py` gained an opt-in `--weights FILE` (off by default; output unchanged without it), with
+the eleven-list table of section 9 committed as `panel_weights.csv` in this folder. `floor.py`, `opponents/`, the engine and
+`START_HERE.md` are still untouched, and the weighted line is not a ranking. Details at the end of section 4.
+
 **Standing job (Dustin, Sept 29):** the panel agent keeps `brew_scorecard.md` (floor figure, predicted setup speed and ladder record with the three-item note, one row per brew) current whenever the Ladder Log changes; rebuild it with `build_brew_scorecard.py`; the steps are at the top of the scorecard.
 
 ## 1. What Dustin actually faces on the ladder
@@ -181,6 +185,48 @@ Needs Dustin (decisions, in the order they block things):
 8. Whether to keep the `l-sharpedo.provenance.json` sidecar next to the deck file (delete it if unwanted;
    the Charizard one is in the scratchpad).
 
+**Decided Sept 30, 2026 (evening): decided by the Fable coordinator session under Dustin's Sept 30 authority; the ranking
+hold unchanged.** Dustin gave that session authority for operational decisions; his own gates stay his. The list above is
+kept as written; these are the coordinator's words for the items it decided:
+1. "the ranking hold is Dustin's gate and STAYS; the weighted readout is not for ranking."
+4. "the two new lists are readout only: weights, no change to opponents/, so the floor is not redefined and no Payback
+   re-check is needed." (The same holds for Rayquaza, the eleventh list Dustin admitted on Sept 28, section 9: weights
+   only, and `opponents/` still holds the eight.)
+6. "Manectric does not join on one game; revisit when the log grows."
+7. "calibration run: no-go for now (4 laptop hours for an expected "cannot tell" at 18 games); revisit at the next ladder log
+   growth." (The set is now 20 usable games in 17 pairs, 8,500 games, still about 4 hours under load and still "cannot
+   tell"; `calibration_README.md` has the current figures.)
+8. "keep the provenance sidecar." (`l-sharpedo.provenance.json` stays.)
+
+Items 2, 3 and 5 were **already ruled by Dustin on Sept 28** (sections 8 and 9): P2, a one-game floor for zero-game lists
+only, not add-one for everyone; P3, variants count except the TR Magmar Weezing game; P5, `h-charizardy_entei` stands in for
+Charizard Y. The coordinator's first Sept 30 list named add-one, variants count and `l-charizardy.txt` for them, and withdrew
+those three the same day on reading sections 8 and 9. Dustin's Sept 28 rulings stand, and the weights are section 9's.
+
+**Built Sept 30 (supersedes the `--weights` bullet under "Ready" above).** Readout only; the ranking hold stands.
+- `panel_weights.csv` (this folder): section 9's eleven-list table (Sept 28 night, 55 logged games, 23 on these lists; the
+  25 counted games are the 23 plus one floor game each for Sceptile and Weezing), with the ladder games, the counted games
+  and the deck file of each list. `ladder_mapping.csv` still has those 55 games, so the table is current.
+- `run_screen.py --weights FILE` prints, under each deck's usual line, a ladder-weighted win rate: the weights times the win
+  rates over the lists played, renormalised over the weight those lists carry, plus that share of the ladder weight, the
+  weighted lists not played and the played lists with no weight. It ends every time with "not a ranking: the ranking hold
+  stands". A bad file (unreadable, no `list`/`weight` columns, a repeated list, a weight that is not a positive number, a total
+  not within half a point of 100, or no played list with a weight) is refused before any game. Without the option nothing
+  changes: same lines, same engine calls.
+- With `opponents/` alone only the eight panel lists have cells, so the line covers **68%** of the weight (Charizard Y
+  12%, Sharpedo 8% and Rayquaza 12% have none) and says so. For a full-weight line, put the eleven lists (copies are fine)
+  in a readout-only folder and pass it as `--opponents`; `opponents/` itself is not touched and the floor is not redefined.
+  Games per matchup stay equal for every list, so every cell keeps the same noise.
+  ```bash
+  python3 decks/screen/run_screen.py DECK.txt --weights decks/screen/panel_ladder_2026-09-26/panel_weights.csv
+  python3 decks/screen/run_screen.py DECK.txt --weights decks/screen/panel_ladder_2026-09-26/panel_weights.csv --opponents READOUT_FOLDER
+  ```
+- `decks/screen/test_run_screen_weights.py` (18 tests, Linux; from `decks/screen`: `python3 -B -m unittest -v
+  test_run_screen_weights`). It copies the script into a scratch tree with a stand-in engine, so no game is played. The
+  script run without the option must reproduce, byte for byte, the output and the engine calls of `run_screen.py` as it was
+  before (recorded from 654d139); with the option, only the readout lines are added and the same games are asked for. No game
+  was run for this change, on the real engine or otherwise (the laptop's floor run was going).
+
 ## 5. Provenance of every list
 
 - **The eight `t-*.txt` panel lists** are the Sept 8 competitive study's archetype lists (Pocket Deck Lab,
@@ -231,6 +277,8 @@ In this folder (`decks/screen/panel_ladder_2026-09-26/`):
 - `l-charizardy.txt`, `l-sharpedo.txt`, `l-sharpedo.provenance.json`.
 - `calibration_README.md`, `calibration_games.csv`, `run_calibration.py`, `calibrate.py`,
   `build_calibration_games.py`.
+- `panel_weights.csv` (Sept 30): the eleven-list weights that `run_screen.py --weights` reads. Its test,
+  `test_run_screen_weights.py`, is in `decks/screen/`, next to the script.
 
 ## 7. The skeptic's pass (`skeptic.md`), added after the sections above were written
 

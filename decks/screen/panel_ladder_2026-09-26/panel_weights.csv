@@ -1,0 +1,15 @@
+# Ladder weights for the readout-only panel: README.md section 9, "The weights on eleven lists" (Sept 28 night; 55 logged games, 23 of them on these lists; ladder_mapping.csv still has those 55).
+# Rulings behind it (Dustin, Sept 28, README section 8): a list never met counts as one game (P2); variants of a panel deck count as it, except the TR Magmar Weezing game (P3); h-charizardy_entei stands in for Charizard Y (P5); Rayquaza is the eleventh list.
+# Counted games total 25, so weight = counted_as / 25. Read by run_screen.py --weights. A readout only, not a ranking: the ranking hold stands. The first eight lists are in decks/screen/opponents/; the last three are readout-only (no cells unless --opponents points at a folder holding them).
+list,weight,ladder_games,counted_as,file
+t-lucario,20.0,5,5,decks/screen/opponents/t-lucario.txt
+t-altaria,8.0,2,2,decks/screen/opponents/t-altaria.txt
+t-sceptile,4.0,0,1,decks/screen/opponents/t-sceptile.txt
+t-vespiquen,8.0,2,2,decks/screen/opponents/t-vespiquen.txt
+t-suicune,4.0,1,1,decks/screen/opponents/t-suicune.txt
+t-weezing,4.0,0,1,decks/screen/opponents/t-weezing.txt
+t-blaziken,8.0,2,2,decks/screen/opponents/t-blaziken.txt
+t-hydreigon,12.0,3,3,decks/screen/opponents/t-hydreigon.txt
+h-charizardy_entei,12.0,3,3,rl/results/b2e_card_check_2026-09-26/decks/h-charizardy_entei.txt
+l-sharpedo,8.0,2,2,decks/screen/panel_ladder_2026-09-26/l-sharpedo.txt
+g-dragonair_mega_rayquaza,12.0,3,3,decks/gauntlet_2026-09-26/g-dragonair_mega_rayquaza.txt
