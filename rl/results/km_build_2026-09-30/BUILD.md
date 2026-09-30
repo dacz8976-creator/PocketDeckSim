@@ -75,7 +75,30 @@ STEP3DETAIL
 
 ## The code review (the amendment's (c) item 3.5)
 
-REVIEW
+**Who and how.** One independent agent in this session did the review, read-only: git, file reads and grep, with no builds and no games. It covered B's diff against ec7e1a8, set against the amendment's (b), (c), (d) and (f). **It found no blocker and no should-fix.**
+
+**What it checked in the code:**
+- **Flag off (every code but km):** `kt_clock_stadium`'s arithmetic, casts, threat pick, cuts and bench loop are ec7e1a8's. The flag-off branch adds no work that changes anything, and kt's tests call the test-only wrapper unchanged.
+- **Flag on:**
+  - the threat is picked on unbonused damage;
+  - the bonus is for the picked threat's attacker (its form through the same `evolution_targets` index, and board only for the opponent's side);
+  - it uses each victim's own ex-ness, for the Active and the Bench;
+  - it is combined as `modify_damage` does, bonus before the cuts and floored at 0;
+  - no hidden information is read;
+  - the two helpers are byte-identical to 9c11b30's.
+- **The flag reaches both of `kt_clocks`' calls,** and only `KM` sets it.
+- **The parser line, the variant and km's own inner `get_player` arm** are right.
+- **Every test (c) 3.1 and 3.2 lists is present,** and no existing test's expected value was edited. The new pin and the switch-1 board would each fail on the faults they target.
+
+**Its five notes, and what was done:**
+
+| note | done |
+|---|---|
+| A. No test shows N2 reaching the bot's own survival clock (the opponent's threat) through `kt_clocks`: every test would pass if that call got `false`. | Checked without changing B. A diagnostic test was appended to a separate scratch copy of B's `engine/` and passes (`review_note_a_diagnostic.rs`). With Training Area in play, `kt_clocks` gives the bot's survival clock 2 under `KM` against 3 under `KTA`, and its clock on the opponent 2 against 3. Each equals `kt_clock_stadium` on its side. It is not one of B's tests: adding it would change B's commit, and the reviewer advised against reopening B for it. |
+| B. The "flag cleared equals kta's value" check is true by construction once the preset test passes. | Kept, since (c) 3.2 asks for it. The game-level evidence that the flag-off path is kta's is identity items 1, 5 and 6 below. |
+| C. No test pins a benched victim under N2, or the unbonused threat pick. | Noted. The code is right on both (the review read it), and the amendment requires neither. |
+| D. BUILD.md must state the order, how the flag gets there, and that 9c11b30's scan change is not kept. | Stated above, in "What was built". |
+| E. `threat.damage + bonus` is an unchecked u32 add. | Noted. It could overflow only if a damage estimate were near u32's maximum, which no attack's is, and `modify_damage` adds the same way. |
 
 ## Identity at B (the amendment's (c) item 4; `run_km.sh`, `identity.py`, `identity/identity_check.txt`)
 
