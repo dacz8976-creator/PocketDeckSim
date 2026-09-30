@@ -23,3 +23,14 @@
 2026-09-30T02:57:45Z identity: item 5: km3 on the 15 table cells without Altaria or Lucario, 500 deals, v ec7e1a8_kta3_table: 7500 of 7500 games equal on moves, decisions, openings, winner_seat, points, seed, first_seat (run has 7500; missing 0, differing 0); clean; PASS
 2026-09-30T03:14:04Z 1f6319e_km3_new13_500 done in 979 s (6500 games)
 2026-09-30T03:14:04Z identity: item 5: km3 on the 13 new cells without Altaria or Lucario, 500 deals, v ec7e1a8_kta3_new17: 6500 of 6500 games equal on moves, decisions, openings, winner_seat, points, seed, first_seat, a_file, b_file (run has 6500; missing 0, differing 0); clean; PASS
+2026-09-30T04:49:42Z RESUMED after a container restart (uptime 0 at 04:49; the runner stopped about 03:21, during 1f6319e_kta3_500, which was incomplete and is replayed from the start). Same build, scan program (sha256 unchanged) and calls; finished items are skipped
+2026-09-30T04:49:42Z identity start: build 1f6319e; scan sha256 e72a18f50464c716f9477d2201033c5f11ae6270b90b63662b061f62b255d639; item 8: engine/ diff from ec7e1a8 (UPSTREAM.md aside) is players/ only (engine/src/players/mod.rs engine/src/players/public_pricing_player.rs engine/src/players/value_functions.rs)
+2026-09-30T04:49:42Z 1f6319e_kta3_p02_40 exists, skipped
+2026-09-30T04:49:43Z identity: item 6: kta3 at B, pairings 0 and 2, 40 deals, v ec7e1a8_kta3_table: 80 of 80 games equal on moves, decisions, openings, winner_seat, points, seed, first_seat (run has 80; missing 0, differing 0); clean; PASS
+2026-09-30T04:49:43Z 1f6319e_km3_smoke_40 exists, skipped
+2026-09-30T04:49:43Z identity: item 7: km3 smoke, pairings 0, 2 and 19, 40 deals: 120 games in 3 cells, complete; clean; PASS (no reference: results not read)
+2026-09-30T04:49:43Z item 7's smoke file: identity/1f6319e_km3_smoke_40.jsonl sha256 55f7a5905acad7d9a9daabdf541c9aee258704c23712a1d2b8f8271e2e73d043
+2026-09-30T04:49:43Z 1f6319e_km3_table15_500 exists, skipped
+2026-09-30T04:49:44Z identity: item 5: km3 on the 15 table cells without Altaria or Lucario, 500 deals, v ec7e1a8_kta3_table: 7500 of 7500 games equal on moves, decisions, openings, winner_seat, points, seed, first_seat (run has 7500; missing 0, differing 0); clean; PASS
+2026-09-30T04:49:44Z 1f6319e_km3_new13_500 exists, skipped
+2026-09-30T04:49:45Z identity: item 5: km3 on the 13 new cells without Altaria or Lucario, 500 deals, v ec7e1a8_kta3_new17: 6500 of 6500 games equal on moves, decisions, openings, winner_seat, points, seed, first_seat, a_file, b_file (run has 6500; missing 0, differing 0); clean; PASS
