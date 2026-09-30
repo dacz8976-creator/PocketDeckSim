@@ -2,20 +2,21 @@
 
 Written Sept 30 for the Fable coordinator session (Dustin's single delegator). Times are UTC.
 
-1. **Current task, and the instruction that set it.** The carrier lists for the rules switch, step 3 of rl/results/engine_switch_rules_2026-10/PLAN.md (main 0a68b0a). Set by the Fable coordinator via Dustin, Sept 30, "about 1 hour, before N1's next long step".
-   - The lists: one development list each, by decklist_sources.json's rule (the most frequent exact list among the top 8), from the committed archive rl/results/limitless_skill_model_2026-09-25/raw/*_standings.json.gz (no web access):
-     - Garchomp Meowth (garchomp-b4a-meowth-b2);
-     - Togekiss Meowth (togekiss-a4-meowth-b2);
-     - the most-played Hisuian Goodra list;
-     - Mega Houndoom ex Victini (mega-houndoom-ex-p-b-victini-b3).
-   - Each is card-checked (lib/card.py, card status, a legality scan on the official engine), with no B4b card and provenance (event, player, date) per list. The plan's fallback applies where a list can't be had.
-   - Output: rl/results/engine_switch_rules_2026-10/carriers/ on this branch (no engine file).
-   - The rules fixes F1-F7 are Sonnet's, on a separate branch; not started here.
-   - The N1 build before it is done: 71877f6, README 52dd2ef, rl/results/kn_build_2026-09-30/.
-2. **What is running now, and when it ends.** Starting now: reading the archive and the plan's rule, then the card checks and a legality scan. About an hour.
-3. **Files I expect to change.** Only the new folder rl/results/engine_switch_rules_2026-10/carriers/ and this file.
+1. **Current task, and the instruction that set it.** None. The last one is done: the carrier lists for the rules switch (PLAN.md step 3; the Fable coordinator via Dustin, Sept 30), commit e0d149a, rl/results/engine_switch_rules_2026-10/carriers/README.md.
+   - **By the rule** (decklist_sources.json's, keyed by deck id: development events, top 8, most frequent exact list), only Garchomp Meowth has a list: shaquill10, 5th of 95, 2026-09-18.
+   - **Togekiss Meowth, Hisuian Goodra and Mega Houndoom ex Victini have no top-8 development list,** so none by the rule.
+   - **The plan's fallback:** fire_victini.txt (repair A) and coinflip_deck.txt (Meowth B2 204). No fallback carries Togekiss A4 080 or Hisuian Goodra.
+   - **Alternates, not by the rule** (the same rule without the placing filter), for the coordinator's choice: Togekiss Meowth 19th of 118 (5-3-0); Hisuian Goodra (0-3-0, dropped); Houndoom Victini (0-1-0, dropped).
+   - **Card checks** on the official programs:
+     - every id is one printing, and there is no B4b card;
+     - the validator is clean. The upstream coinflip_deck.txt fails on three unpadded ids; a padded copy is clean and reads the same;
+     - every card is implemented. Victini carries the status repair A addresses;
+     - legality scan, km3: 560 games, no findings.
+   - **N1** (kn, 71877f6, README 52dd2ef) is built as asked: code, tests, smoke, README. No further N1 step has been named, so nothing of it is running.
+2. **What is running now, and when it ends.** Nothing.
+3. **Files I expect to change.** None.
 4. **Waiting on the laptop or Sonnet.** Nothing.
-5. **Open questions for Dustin.** None.
+5. **Open questions for Dustin.** For the coordinator or Dustin: step 8's carriers under the strict rule are garchomp_meowth.txt, coinflip_deck.txt and fire_victini.txt. Should the alternates be used for Togekiss A4 080 and Hisuian Goodra (and for repair A) instead?
 
 ## Log (one line per new job, added and pushed before it starts)
 
