@@ -12,10 +12,11 @@ Seeds: identity on the table's deals (72,000,000 + pairing × 10,000 + i), the 1
   2. **Tests:** done. km's 11 tests at 9c11b30 pass, and the full suite passes: 1,986 passed, 0 failed.
      - The code review added a 12th test, test code only, in commit fb825d1.
      - A scan built from fb825d1 replays identity items 6 and 7 (160 games) byte for byte, so 9c11b30 stays the build.
-  3. **Counter tool:** done. It now plays all 17 named cells, including the Rayquaza and Altaria/Greninja lists on their own seed base. It has a first-deal option and writes one row per game with each seat's counts. Its four tests and its identity check (8a) pass. Without the new options it prints exactly what the old tool printed, byte for byte.
-  4. **Identity:** see the table below.
-- **Two things the laptop should know before it builds this commit:**
-  - **The program hashes will not match across machines.** A Rust build embeds its build paths, so the laptop's programs built from 9c11b30 will have different sha256s from the cloud's below. This already happened with kt: the same commit ec7e1a8 gave the cloud's scan e19703b1… and the laptop's 924751ba…, and both played every game identically. What does carry across is the commit, the counter tool's source sha256 (below), and the games. The laptop's own identity games at 9c11b30 equal to these (or to the same reference files) show the two builds are the same.
+  3. **Counter tool:** done. It now plays all 17 named cells, including the Rayquaza and Altaria/Greninja lists on their own seed base. It has a first-deal option and writes one row per game with each seat's counts. Its five tests and its identity check (8a) pass. Without the new options it prints exactly what the old tool printed, byte for byte.
+  4. **Identity:** done. Every check passes, with every game equal: 86,220 games at the build plus the counter tool's 760. The table is below.
+  5. **Code review:** done. It found no blocker. Its findings and what was done are below.
+- **Three things the laptop should know before it builds this commit:**
+  - **The program hashes will not match across machines.** A Rust build embeds its build paths and a hash of every source file, so the laptop's programs built from 9c11b30 will have different sha256s from the cloud's below. This already happened with kt: the same commit ec7e1a8 gave the cloud's scan e19703b1… and the laptop's 924751ba…, and both played every game identically. What does carry across is the commit, the counter tool's source sha256 (below), and the games. The laptop's own identity games at 9c11b30 equal to these (or to the same reference files) show the two builds are the same.
   - **Build 9c11b30, not the branch head.** Later commits on the branch add a test and notes only, but any source edit changes a Rust program's hash. So build the programs from 9c11b30's `engine/`, and the counter tool as an example in a copy of it, as done here.
   - **This build has the official engine's kt codes, not kt on kog.** km sits on 233bced's `engine/` exactly, so `engine/src/players/` was set back to 233bced's before km was added. The kt presets on kog from ec7e1a8 (kt's and kta's build) are therefore not in 9c11b30. kta keeps playing from ec7e1a8, and nothing here touches it.
 - **One extra game, noted for completeness.** Before the identity runs I ran the scan once as `km3` on one deal (pairing 2, deal 0) to check that it accepts the code. That deal is part of item 7's smoke. Its result was not used.
@@ -187,7 +188,38 @@ The tool was rebuilt after these changes. Every tool test and identity 8a were r
 
 All runs use the cloud's programs built from 9c11b30 (legality_scan sha256 `e8f72631f812871f529dd8374610032acea03d1ddfe0d106ff0cd0725ccefdd5`, deckgym `fcbcdba4968b38f806904e602b3c2999271297390fb5e03a0c88ec1cc89c2e3b`), 4 threads. A game is equal when its moves, choices, openings, winner, points, seed and seats all are (and the deck files, where the reference has them). Every run's scan page must also be free of rule findings. The run times in `STATUS.txt` are not a timing measure: the counter tool's build and checks ran on the same machine at the same time. The timing gate is the laptop's.
 
-(the table is filled in when the runs finish)
+**Every check passes, with every game equal and every scan page free of rule findings.** No difference was found, so nothing stopped. That is 86,220 games through the scan, or 86,980 with identity 8a's 760 (the registration's row 1 count), from 18:38 to 00:07 UTC.
+
+| item | run at 9c11b30 | reference | result |
+|---|---|---|---|
+| 1 | k3, all 500 table deals | `../engine_switch_2026-09-28/pin_identity_k3_500.jsonl` (the pin's frozen table) | 14,000 of 14,000 |
+| 1 | kp3, all 500 table deals | `../engine_switch_2026-09-28/pin_identity_kp3_500.jsonl` | 14,000 of 14,000 |
+| 1 | kog3, all 500 table deals | `../koh_2026-09-28/bd2907f_kog3_500.jsonl`, and `../kog_composition_2026-09-27/table_kog3.jsonl` | 14,000 of 14,000 against each |
+| 1 | kog3, the 17 new cells, 500 deals | `../kog_composition_2026-09-27/new17_kog3.jsonl` | 8,500 of 8,500 |
+| 2 | kq3, all 500 table deals | `../kt_2026-09-26/identity/official_kq3_500.jsonl` | 14,000 of 14,000 |
+| 2 | kd3, 40 table deals | `../rules09_fixes_2026-09-26/af8489f_kd3_40.jsonl` | 1,120 of 1,120 |
+| 2 | kpr3, 40 table deals | `../rules09_fixes_2026-09-26/af8489f_kpr3_40.jsonl` | 1,120 of 1,120 |
+| 3 | kog3, B2e's 96 pairings, i < 40 | `../koh_2026-09-28/reading/b2e_kog3.jsonl` | 3,840 of 3,840 |
+| 3 | kog3, Scizor's 8 pairings, i < 40 | `../koh_2026-09-28/laptop_runs/scizor_kog3.jsonl` | 320 of 320 |
+| 3 | kog3, second list v-lucario_2, i < 40 | `../koh_2026-09-28/laptop_runs/var_v-lucario_2_kog3.jsonl` | 280 of 280 |
+| 3 | kog3, second list v-suicune_2, i < 40 | `…/var_v-suicune_2_kog3.jsonl` | 280 of 280 |
+| 3 | kog3, second list v-weezing_2, i < 40 | `…/var_v-weezing_2_kog3.jsonl` | 280 of 280 |
+| 3 | kog3, second list l-charizardy, i < 40 | `…/var_l-charizardy_kog3.jsonl` | 320 of 320 |
+| 4 | `KM` with its flag off equals `KOG` | a test (`km_is_kog_plus_n2_and_nothing_else`) | passes |
+| 5 | km3 on the 15 table cells with neither the panel Altaria nor Lucario list, 500 deals | `table_kog3.jsonl` | 7,500 of 7,500 |
+| 5 | km3 on the 13 new cells with neither, 500 deals | `new17_kog3.jsonl` | 6,500 of 6,500 |
+| 6 | kog3, pairings 0 and 2, 40 deals | `table_kog3.jsonl` | 80 of 80 |
+| 7 | km3 smoke, pairings 0 and 2, 40 deals | none: a clean, complete run only; its games were not read | 80 games, clean |
+| 8 | the diff of `engine/` from 233bced | `engine/src/players/` only | yes |
+| 8a | the counter tool (above) | `table_kog3`, `new17_kog3`, item 7's smoke | 680 of 680; 80 of 80 |
+
+- **What these license** (section 4.1, "Only an identity that covers those files licenses that reuse"):
+  - The stored kog3 files the reading pairs km3 against, `table_kog3.jsonl` and `new17_kog3.jsonl`, are kog3's games at this build.
+  - So are the coverage baselines at i < 40: B2e's `reading/b2e_kog3.jsonl` (on this branch; not on main), and on main `laptop_runs/scizor_kog3.jsonl` and the four `var_*_kog3.jsonl`.
+  - These are the baseline files, named before the first km game as section 5 asks.
+- **The table's 28 cells without either damage Stadium:** there km3 played every game exactly as kog3 did (item 5). Section 7 predicts the same.
+- **Item 3 does not re-play every deal:** only i < 40 of each pairing, as registered. The rest of each baseline file is licensed by the rule, not by a game here.
+
 
 ## Files
 

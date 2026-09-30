@@ -40,3 +40,24 @@
 2026-09-29T22:06:14Z identity: item 1: kog3, 500 table deals, v table_kog3: 14000 of 14000 games equal on moves, decisions, openings, winner_seat, points, seed, first_seat (run has 14000; missing 0, differing 0); clean; PASS
 2026-09-29T22:37:49Z 9c11b30_new17_kog3_500 done in 1895 s (8500 games)
 2026-09-29T22:37:50Z identity: item 1: kog3, the 17 new cells, 500 deals, v new17_kog3: 8500 of 8500 games equal on moves, decisions, openings, winner_seat, points, seed, first_seat, a_file, b_file (run has 8500; missing 0, differing 0); clean; PASS
+2026-09-29T23:35:07Z 9c11b30_kq3_500 done in 3437 s (14000 games)
+2026-09-29T23:35:08Z identity: item 2: kq3, 500 table deals, v official_kq3_500: 14000 of 14000 games equal on moves, decisions, openings, winner_seat, points, seed, first_seat (run has 14000; missing 0, differing 0); clean; PASS
+2026-09-29T23:39:31Z 9c11b30_kd3_40 done in 263 s (1120 games)
+2026-09-29T23:39:31Z identity: item 2: kd3, 40 table deals, v af8489f_kd3_40: 1120 of 1120 games equal on moves, decisions, openings, winner_seat, points, seed, first_seat (run has 1120; missing 0, differing 0); clean; PASS
+2026-09-29T23:44:44Z 9c11b30_kpr3_40 done in 313 s (1120 games)
+2026-09-29T23:44:44Z identity: item 2: kpr3, 40 table deals, v af8489f_kpr3_40: 1120 of 1120 games equal on moves, decisions, openings, winner_seat, points, seed, first_seat (run has 1120; missing 0, differing 0); clean; PASS
+2026-09-30T00:00:31Z 9c11b30_b2e_kog3_40 done in 947 s (3840 games)
+2026-09-30T00:00:33Z identity: item 3: kog3, B2e's 96 pairings i < 40, v koh's reading/b2e_kog3: 3840 of 3840 games equal on moves, decisions, openings, winner_seat, points, seed, first_seat, a_file, b_file (run has 3840; missing 0, differing 0); clean; PASS
+2026-09-30T00:01:55Z 9c11b30_scizor_kog3_40 done in 82 s (320 games)
+2026-09-30T00:01:55Z identity: item 3: kog3, Scizor's 8 pairings i < 40, v laptop_runs/scizor_kog3: 320 of 320 games equal on moves, decisions, openings, winner_seat, points, seed, first_seat, a_file, b_file (run has 320; missing 0, differing 0); clean; PASS
+2026-09-30T00:02:45Z 9c11b30_var_v-lucario_2_kog3_40 done in 50 s (280 games)
+2026-09-30T00:02:45Z identity: item 3: kog3, second list v-lucario_2 i < 40, v laptop_runs/var_v-lucario_2_kog3: 280 of 280 games equal on moves, decisions, openings, winner_seat, points, seed, first_seat, a_file, b_file (run has 280; missing 0, differing 0); clean; PASS
+2026-09-30T00:04:03Z 9c11b30_var_v-suicune_2_kog3_40 done in 78 s (280 games)
+2026-09-30T00:04:04Z identity: item 3: kog3, second list v-suicune_2 i < 40, v laptop_runs/var_v-suicune_2_kog3: 280 of 280 games equal on moves, decisions, openings, winner_seat, points, seed, first_seat, a_file, b_file (run has 280; missing 0, differing 0); clean; PASS
+2026-09-30T00:05:13Z 9c11b30_var_v-weezing_2_kog3_40 done in 69 s (280 games)
+2026-09-30T00:05:13Z identity: item 3: kog3, second list v-weezing_2 i < 40, v laptop_runs/var_v-weezing_2_kog3: 280 of 280 games equal on moves, decisions, openings, winner_seat, points, seed, first_seat, a_file, b_file (run has 280; missing 0, differing 0); clean; PASS
+2026-09-30T00:06:44Z 9c11b30_var_l-charizardy_kog3_40 done in 91 s (320 games)
+2026-09-30T00:06:44Z identity: item 3: kog3, second list l-charizardy i < 40, v laptop_runs/var_l-charizardy_kog3: 320 of 320 games equal on moves, decisions, openings, winner_seat, points, seed, first_seat, a_file, b_file (run has 320; missing 0, differing 0); clean; PASS
+2026-09-30T00:06:44Z IDENTITY DONE (items 1-3 and 5-8; item 4 is a test; item 8a is the counter tool's check)
+2026-09-30T00:08:04Z STEP 4 IDENTITY: done. Items 1-3 and 5-8 pass (every game equal, every page clean; identity/identity_check.txt), item 4 is a test that passes, item 8a passes (step 3). No difference found
+2026-09-30T00:08:17Z STEP 5 COMMIT: the round is committed on claude/pensive-ptolemy-spwc0b. Build 9c11b30. Programs (cloud build from 9c11b30): deckgym sha256 fcbcdba4968b38f806904e602b3c2999271297390fb5e03a0c88ec1cc89c2e3b, legality_scan sha256 e8f72631f812871f529dd8374610032acea03d1ddfe0d106ff0cd0725ccefdd5; counter tool source sha256 05d7ba4183ce9e3098036de9acb5181ea71f7077ef9b3798ad4e5d165dc22365, program sha256 883426520104f9f834d88c0e3344e9568b6247a1558f44d90ecaedf77d7039e4 (built in a copy of 9c11b30's engine/). No registered km game played; M1/M2 not measured; nothing read
