@@ -2,8 +2,9 @@
 //! deck in seat `--seat`, game k on seed `--seed` + k, with `--codes` (the deck's code, the opponent's) built by
 //! `create_players` and played by `Game::new` and `play_tick`, as `deckgym simulate --seed-stream` plays them. Per
 //! game it prints one JSON row: the result, the deck's chances for `--card` (its turns on which playing the card from
-//! hand was offered at some decision, as the floor counts a played Trainer) and the turns it was played, and a
-//! fingerprint of every move of the game (to count the games two codes play differently).
+//! hand was offered at some decision, as the floor counts a played Trainer), the turns it was played, the deck's
+//! attacks (turn and name), and a fingerprint of every move of the game (to count the games two codes play
+//! differently).
 //!   kn_smoke --deck D --opp O --card "Peculiar Plaza" --seat 0 --seed 20960000000 --num 100 --codes kn3,km3
 use deckgym::actions::SimpleAction;
 use deckgym::players::{create_players, parse_player_code};
@@ -30,6 +31,7 @@ fn main() {
         seat_codes[seat] = parse_player_code(&codes[0]).unwrap();
         let mut game = Game::new(create_players(d0, d1, seat_codes), seed + k);
         let (mut offered, mut used) = (BTreeSet::new(), BTreeSet::new());
+        let mut attacks: Vec<(u8, String)> = vec![];
         let mut hasher = std::collections::hash_map::DefaultHasher::new();
         let mut plies = 0u32;
         while !game.is_game_over() && plies < 5000 {
@@ -42,6 +44,9 @@ fn main() {
             if chosen.actor == seat && is_card(&chosen.action) {
                 used.insert(state.turn_count);
             }
+            if let (true, SimpleAction::Attack(attack)) = (chosen.actor == seat, &chosen.action) {
+                attacks.push((state.turn_count, attack.title.clone()));
+            }
             format!("{chosen:?}").hash(&mut hasher);
             plies += 1;
         }
@@ -50,7 +55,7 @@ fn main() {
             "{}",
             serde_json::json!({"deck": deck_path, "opp": opp_path, "card": card, "seat": seat, "seed": seed + k,
                 "codes": codes, "winner": format!("{:?}", end.winner), "points": end.points, "turns": end.turn_count,
-                "plies": plies, "chances": offered, "used": used, "fingerprint": format!("{:016x}", hasher.finish())})
+                "plies": plies, "chances": offered, "used": used, "attacks": attacks, "fingerprint": format!("{:016x}", hasher.finish())})
         );
     }
 }

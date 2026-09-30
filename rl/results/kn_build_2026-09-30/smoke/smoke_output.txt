@@ -1,0 +1,50 @@
+| deck (card) | opponent | km3: plays / chances | kn3: plays / chances | km3 wins | kn3 wins | games that differ |
+|---|---|---|---|---|---|---|
+| goo (Goo-zooka) | fire_balloon | 0 / 853 (0.0%) | 206 / 253 (81.4%) | 194 / 200 | 191 / 200 | 163 / 200 |
+| goo (Goo-zooka) | psychic | 3 / 846 (0.4%) | 228 / 255 (89.4%) | 60 / 200 | 63 / 200 | 178 / 200 |
+| goo (Goo-zooka) | water_boat | 0 / 988 (0.0%) | 248 / 284 (87.3%) | 136 / 200 | 132 / 200 | 173 / 200 |
+| grass_goo (Goo-zooka) | fire_balloon | 72 / 636 (11.3%) | 199 / 241 (82.6%) | 135 / 200 | 135 / 200 | 155 / 200 |
+| grass_goo (Goo-zooka) | psychic | 123 / 675 (18.2%) | 229 / 251 (91.2%) | 105 / 200 | 85 / 200 | 155 / 200 |
+| grass_goo (Goo-zooka) | water_boat | 165 / 683 (24.2%) | 249 / 278 (89.6%) | 126 / 200 | 112 / 200 | 157 / 200 |
+| plaza (Plaza) | fire_balloon | 166 / 173 (96.0%) | 166 / 173 (96.0%) | 188 / 200 | 188 / 200 | 0 / 200 |
+| plaza (Plaza) | psychic | 176 / 176 (100.0%) | 116 / 397 (29.2%) | 86 / 200 | 88 / 200 | 124 / 200 |
+| plaza (Plaza) | water_boat | 169 / 176 (96.0%) | 169 / 176 (96.0%) | 109 / 200 | 109 / 200 | 0 / 200 |
+| psychic (Cyrus; control) | fire_balloon | 17 / 21 (81.0%) | 17 / 21 (81.0%) | 192 / 200 | 192 / 200 | 0 / 200 |
+| psychic (Cyrus; control) | psychic | 38 / 58 (65.5%) | 38 / 58 (65.5%) | 100 / 200 | 100 / 200 | 2 / 200 |
+| psychic (Cyrus; control) | water_boat | 83 / 92 (90.2%) | 83 / 92 (90.2%) | 115 / 200 | 115 / 200 | 0 / 200 |
+
+goo: km3 3 / 2687 (0.1%), kn3 682 / 792 (86.1%); games that differ 514 / 600
+grass_goo: km3 360 / 1994 (18.1%), kn3 677 / 770 (87.9%); games that differ 467 / 600
+plaza: km3 511 / 525 (97.3%), kn3 451 / 746 (60.5%); games that differ 124 / 600
+psychic: km3 138 / 171 (80.7%), kn3 138 / 171 (80.7%); games that differ 2 / 600
+
+| deck | code | games with a chance | games with a play | median turn of the first play | plays per game with a play |
+|---|---|---|---|---|---|
+| goo | km3 | 542 / 600 | 3 | 7 | 1.00 |
+| goo | kn3 | 542 / 600 | 513 | 2 | 1.33 |
+| grass_goo | km3 | 537 / 600 | 317 | 8 | 1.14 |
+| grass_goo | kn3 | 537 / 600 | 520 | 2 | 1.30 |
+| plaza | km3 | 525 / 600 | 511 | 2 | 1.00 |
+| plaza | kn3 | 525 / 600 | 451 | 2 | 1.00 |
+| psychic | km3 | 160 / 600 | 138 | 10 | 1.00 |
+| psychic | kn3 | 160 / 600 | 138 | 10 | 1.00 |
+
+| deck | opponent | won with km3 only | won with kn3 only |
+|---|---|---|---|
+| goo | fire_balloon | 3 | 0 |
+| goo | psychic | 1 | 4 |
+| goo | water_boat | 8 | 4 |
+| grass_goo | fire_balloon | 1 | 1 |
+| grass_goo | psychic | 23 | 3 |
+| grass_goo | water_boat | 17 | 3 |
+| plaza | fire_balloon | 0 | 0 |
+| plaza | psychic | 3 | 5 |
+| plaza | water_boat | 0 | 0 |
+| psychic | fire_balloon | 0 | 0 |
+| psychic | psychic | 0 | 0 |
+| psychic | water_boat | 0 | 0 |
+
+| code | Goo-zooka plays | followed by Grass Knot that turn | Grass Knots in all | games |
+|---|---|---|---|---|
+| km3 | 360 | 359 | 1033 | 600 |
+| kn3 | 677 | 120 | 1135 | 600 |
