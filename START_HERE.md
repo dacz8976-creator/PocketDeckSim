@@ -13,7 +13,7 @@ Find 20-card Pokémon TCG Pocket decks that are creative **and** win: off-meta, 
 
 ## The official engine (one line; the engine-switch procedure updates it)
 
-`rl/engine-2026-09-28/` (`deckgym`, `legality_scan`, `goldfish`), main-9b4df9b: rules4 plus the ten rules/09 repairs, with the kog pilot. `project_manifest.json` names it with its hashes, and `current_engine.py` and the screen resolve to it. Earlier engines are history there.
+`rl/engine-2026-09-30/` (`deckgym`, `legality_scan`, `goldfish`), main-d363ba8: rules4 plus the ten rules/09 repairs, with the km pilot (kta + N2) on both sides of the screen and the floor. `project_manifest.json` names it with its hashes, and `current_engine.py` and the screen resolve to it. Earlier engines are history there. Since Sept 30, `kt3`, `kta3`, `ktb3` and `ktc3` name the kog-based presets; the older kp-based ones replay on `rl/engine-2026-09-28/`.
 
 ## Standing facts
 

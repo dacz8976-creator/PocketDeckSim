@@ -4,15 +4,17 @@
 Purpose: catch decks that are clearly bad before Dustin spends ladder games on them. Not a ranking.
 The quick screen's percentages are not a verdict and not a ranking (RUN5); the one approved bar is the floor check's (decks/screen/floor.py, RUN5 A2).
 
-usage: run_screen.py DECK.txt [DECK2.txt ...] [--engine PATH/TO/deckgym] [--pilot kog3] [--meta-pilot kog3]
+usage: run_screen.py DECK.txt [DECK2.txt ...] [--engine PATH/TO/deckgym] [--pilot km3] [--meta-pilot km3]
                      [--games 60] [--seed 7100]
 Each matchup is played half with the deck in seat 0 and half in seat 1, on fixed seeds, so
 different decks face the same shuffles. Needs Linux (WSL or the cloud).
 
 Engine: by default the manifest's available release (project_manifest.json, checked by current_engine.py, which
-refuses a binary whose hash differs). Pilots: kog3 on both sides by default, the working pilot since the Sept 28
-engine switch (kp3 before it, from the plan revised Sept 25); --pilot kp3 --meta-pilot kp3 reproduces the Sept 25-27
-screen, and --pilot k3 --meta-pilot k3 the Sept 24 one.
+refuses a binary whose hash differs). Pilots: km3 on both sides by default, the working pilot since the Sept 30
+engine switch (kog3 from Sept 28, kp3 before it, from the plan revised Sept 25); --pilot kog3 --meta-pilot kog3
+reproduces the Sept 28-30 screen, --pilot kp3 --meta-pilot kp3 the Sept 25-27 one, and --pilot k3 --meta-pilot k3
+the Sept 24 one. Since Sept 30, kt3, kta3, ktb3 and ktc3 in the official engine are the kog-based presets (kta3 is
+the adopted one; kt3, ktb3 and ktc3 are diagnostic); the older kp-based ones are only in rl/engine-2026-09-28/.
 """
 import argparse, glob, os, re, subprocess, sys
 
@@ -24,8 +26,8 @@ from current_engine import resolve  # noqa: E402
 ap = argparse.ArgumentParser()
 ap.add_argument('decks', nargs='+')
 ap.add_argument('--engine', default=None, help="default: the manifest's available release")
-ap.add_argument('--pilot', default='kog3', help="the screened deck's bot (default kog3)")
-ap.add_argument('--meta-pilot', default='kog3', help="the panel decks' bot (default kog3)")
+ap.add_argument('--pilot', default='km3', help="the screened deck's bot (default km3)")
+ap.add_argument('--meta-pilot', default='km3', help="the panel decks' bot (default km3)")
 ap.add_argument('--games', type=int, default=60, help='games per matchup (split across seats)')
 ap.add_argument('--seed', type=int, default=7100)
 ap.add_argument('--opponents', default=os.path.join(here, 'opponents'))

@@ -1,0 +1,12 @@
+PDL decision-integrity candidate 0.1.0-pdl.rules4: closed-list observations; unknown opponent continuations are UNPRICED. Historical seed results are not comparable.
+Welcome to deckgym simulation!
+Running 240 games with players (parallel):
+	Player 0: KOG { max_depth: 3 }(decks/research/altaria.txt)
+	Player 1: KOG { max_depth: 3 }(decks/research/blaziken.txt)
+Ran 240 simulations in 9s 641ms 383us 207ns (40ms 172us 430ns per game)!
+Average number of turns per game: 8.88
+Average number of plys per game: 64.03
+Average number of degrees per ply: 3.98
+Player 0 won: 149 (62.08%)
+Player 1 won: 91 (37.92%)
+Draws: 0 (0.00%)

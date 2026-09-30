@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 """The A2 floor check (Dustin's decision, Sept 25; rl/RUN5.md A2 and section 8 of docs/REVIEW_2026-09-24_direction.md).
 
-    python3 decks/screen/floor.py DECK.txt --out DIR [--games 240] [--pilot kog3] [--meta-pilot kog3]
+    python3 decks/screen/floor.py DECK.txt --out DIR [--games 240] [--pilot km3] [--meta-pilot km3]
                                   [--seed 7100] [--goldfish PATH] [--opponents DIR]
     python3 decks/screen/floor.py --self-check
 
-A floor verdict needs all of: 240 games per matchup, the working pilot on both sides (kog3 since the Sept 28 engine
-switch, kp3 before it; re-checked in rl/results/floor_recheck_2026-09-28/), the opponents in decks/screen/opponents/, and
-the coverage from the official release's goldfish (project_manifest.json available_release, hash checked). Any other
+A floor verdict needs all of: 240 games per matchup, the working pilot on both sides (km3 since the Sept 30 engine
+switch, kog3 from Sept 28, kp3 before; re-checked in rl/results/floor_recheck_2026-09-30/), the opponents in
+decks/screen/opponents/, and the coverage from the official release's goldfish (project_manifest.json
+available_release, hash checked). Any other
 --games is a development run and gives no verdict. With 240 games but other pilots, opponents or goldfish, the page
 reads "control reading, not a floor verdict" and names what differs (the positive control runs deck 14 under k3).
 
@@ -32,8 +33,9 @@ Verdict (fixed before any floor game; the band is the screen's own binomial nois
 
 Flagged card: a card of the list with any entry in A1's coverage (engine/examples/goldfish.rs --coverage): an
   incomplete engine status or a named limitation; a text the pilot leaves unpriced (the opponent-hand/deck text rule;
-  for a public-pricing pilot, kp/kq/kd, texts in kp's 62 audited texts are priced and drop out); an attack k's damage
-  estimate prices at printed damage; an effect that pays off during the opponent's turn, which the search doesn't
+  for a public-pricing pilot, any code PRICING_PILOT matches (kp3 ... km3, not k3), texts in kp's 62 audited texts
+  are priced and drop out); an attack k's damage estimate prices at printed damage; an effect that pays off during
+  the opponent's turn, which the search doesn't
   play out. Printings of one card (same name, different ids) are one card: their turns are counted together.
 
 Role of each flagged card (Dustin, Sept 25: every card has a job; the page prints the role beside its count so a
@@ -72,9 +74,12 @@ BAR = 0.20
 SMALL_SHARE = 0.25
 MIN_OPPORTUNITIES = 20
 FIXED_GAMES = 240   # per matchup, 1,920 per floor run (Dustin, Sept 25: "Yes. Fix.")
-FLOOR_PILOT = "kog3"   # the working pilot (Sept 28 engine switch; kp3 before)
+FLOOR_PILOT = "km3"   # the working pilot (Sept 30 engine switch; kog3 from Sept 28, kp3 before)
 DEFAULT_OPPONENTS = os.path.join(HERE, "opponents")
-PRICING_PILOT = re.compile(r"k(?:[pqd]|og)\d+")   # codes built as PublicPricingPlayer (players/mod.rs); kog added Sept 28
+# Every code players/mod.rs get_player builds as PublicPricingPlayer, and not k<N> (Sept 30 engine switch; the old
+# pattern k(?:[pqd]|og) missed kpr, koa, kob, kor, kpf, kpg, koh, kph, kpha, kphb, kt, kta, ktb, ktc and km). The list
+# and a check against mod.rs are in test_floor_pricing_pilot.py; self_check() asserts the floor's own pilot matches.
+PRICING_PILOT = re.compile(r"k(?:p|q|d|pr|pf|pg|ph|pha|phb|oa|ob|or|og|oh|t|ta|tb|tc|m)\d+")
 ROLES_ALL = ("attacker", "activated ability", "bench piece/passive ability", "wall", "Trainer (played)", "not countable")
 # A deck's role for a flagged card when the default from its flag is wrong, or set in advance: {deck path: {name: role}}.
 # The Payback lists' roles were set by the page's author before any floor game on them (section 8, Sept 25), for the
@@ -130,6 +135,8 @@ def self_check():
     assert role_sets("Trainer (played)", sup, off, cho, set(), {1: "OTHER", 2: "S1", 4: "OTHER"}) == ({2, 3}, {2})
     item = dict(sup, supporter=False)
     assert role_sets("Trainer (played)", item, off, cho, set(), {1: "OTHER"}) == ({1, 2, 3, 4}, {2})
+    # the floor's pilot must get kp's audited texts (a pattern that misses it flags priced cards and can read 'untrusted')
+    assert PRICING_PILOT.fullmatch(FLOOR_PILOT) and not PRICING_PILOT.fullmatch("k3"), FLOOR_PILOT
     print("self-check passed: edges 349/350/418/419 (n 1,920) and 78/79/113/114 (n 480); untrusted rule; Supporter turns")
 
 

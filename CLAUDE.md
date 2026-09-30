@@ -12,11 +12,12 @@
   20,000,000,000 and up.
 - Build: `cd engine && cargo build --release`. Tests: `cargo test --release --features test-utils`.
   A cloud build reproduces the Sept 23 table exactly (Altaria v Blaziken 58.3% on its seeds).
-- The official engine program is `rl/engine-2026-09-28/deckgym` (since Sept 28; main-9b4df9b: rules4 plus the ten
-  rules/09 repairs, with the kog, koh, kph and kt players; `rl/engine-2026-09-28/README.md`). The working pilot
-  is kog3, on both sides of the screen. Earlier programs (`rl/engine-2026-09-27/`, `-09-25/`, `rl/addon-0.7.2/deckgym`)
-  are history; the verified add-on 0.7.2 wheel (`rl/addon-0.7.2/wheels/`) is unchanged, and run identities bind
-  to it: copy it, never rebuild it.
+- The official engine program is `rl/engine-2026-09-30/deckgym` (since Sept 30; main-d363ba8: the Sept 28 rules
+  unchanged, rules4 plus the ten rules/09 repairs, with the kog-based kta and km players added;
+  `rl/engine-2026-09-30/README.md`). The working pilot is km3, on both sides of the screen and the floor. Since
+  Sept 30, kt3/kta3/ktb3/ktc3 name the kog-based presets (kt3, ktb3 and ktc3 are diagnostic only). Earlier programs
+  (`rl/engine-2026-09-28/`, `-09-27/`, `-09-25/`, `rl/addon-0.7.2/deckgym`) are history; the verified add-on 0.7.2
+  wheel (`rl/addon-0.7.2/wheels/`) is unchanged, and run identities bind to it: copy it, never rebuild it.
   Hashes for all of them are in `project_manifest.json`. All are Linux files (WSL or the cloud).
 - `engine/CLAUDE.md` is upstream deckgym's card-implementation guide, not the project's instructions.
 - Dustin is new to GitHub. Explain git steps in GitHub Desktop terms (Commit, Push origin, Fetch
