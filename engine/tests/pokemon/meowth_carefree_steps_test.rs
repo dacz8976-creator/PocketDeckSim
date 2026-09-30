@@ -1,7 +1,8 @@
 use deckgym::{
     actions::{Action, SimpleAction},
     card_ids::CardId,
-    models::{EnergyType, PlayedCard},
+    database::get_card_by_enum,
+    models::{EnergyType, PlayedCard, StatusCondition},
     test_support::{attack_action, get_initialized_game_with_board},
     Game, State,
 };
@@ -168,6 +169,17 @@ fn queued_damage_flips_carefree_steps_from(
     defender: Vec<PlayedCard>,
     discard: bool,
 ) {
+    let (prevented, hit) = carefree_steps_counts(attacker, attack, defender, discard);
+    assert!(prevented > 10 && hit > 10, "{prevented} prevented, {hit} hit: the coin must flip");
+}
+
+/// Over 60 seeds, how often Meowth took none of the attack's damage (prevented) and how often it took some (hit).
+fn carefree_steps_counts(
+    attacker: Vec<PlayedCard>,
+    attack: (CardId, usize),
+    defender: Vec<PlayedCard>,
+    discard: bool,
+) -> (usize, usize) {
     fn meowth(state: &State) -> Option<(usize, u32)> {
         state
             .enumerate_in_play_pokemon(1)
@@ -206,7 +218,7 @@ fn queued_damage_flips_carefree_steps_from(
             _ => hit += 1,
         }
     }
-    assert!(prevented > 10 && hit > 10, "{prevented} prevented, {hit} hit: the coin must flip");
+    (prevented, hit)
 }
 
 #[test]
@@ -366,5 +378,89 @@ fn chase_order_into_a_pokemon_without_a_coin_ability_is_unchanged() {
             let dealt = 180 - game.get_state_clone().get_active(1).get_remaining_hp();
             assert_eq!(dealt, if discard { 140 } else { 70 }, "seed {seed}, discard {discard}");
         }
+    }
+}
+
+/// PINS TODAY'S BEHAVIOUR, a known gap (Sonnet's S2, Sept 30; the README's "Not changed", recorded for a later
+/// round): Gyarados's Wild Swing (20, and 40 more for each Benched [W] Pokemon discarded) queues its damage through the
+/// discard action it shares with Chase Order, and only Chase Order was repaired, so Carefree Steps never flips for it.
+/// When the later round repairs Wild Swing this fails on purpose: then assert that the coin flips, as the Chase Order
+/// tests do.
+#[test]
+fn wild_swing_into_carefree_steps_pins_todays_behaviour_no_coin() {
+    for discard in [false, true] {
+        let (prevented, hit) = carefree_steps_counts(
+            vec![
+                PlayedCard::from_id(CardId::A4045Gyarados).with_energy(vec![EnergyType::Water; 2]),
+                PlayedCard::from_id(CardId::A1053Squirtle),
+            ],
+            (CardId::A4045Gyarados, 0),
+            vec![PlayedCard::from_id(CardId::B2124Meowth)],
+            discard,
+        );
+        assert_eq!((prevented, hit), (0, 60), "discard {discard}: Wild Swing is not repaired yet");
+    }
+}
+
+/// rules/09 (Sonnet's S4, Sept 30): only attacks trigger the coin-flip damage Abilities. Damage from an Ability, a Tool
+/// or the Checkup never flips them. The engine already honours this (the coin is set up only on an attack's path);
+/// these three pin it.
+#[test]
+fn carefree_steps_never_flips_for_an_abilitys_damage() {
+    // Greninja's Water Shuriken: "Once during your turn, you may do 20 damage to 1 of your opponent's Pokemon."
+    for seed in 0..40u64 {
+        let mut game = get_initialized_game_with_board(
+            seed,
+            0,
+            5,
+            vec![PlayedCard::from_id(CardId::A1089Greninja)],
+            vec![PlayedCard::from_id(CardId::A1001Bulbasaur), PlayedCard::from_id(CardId::B2124Meowth)],
+        );
+        game.apply_action(&Action { actor: 0, action: SimpleAction::UseAbility { in_play_idx: 0 }, is_stack: false });
+        let (_, choices) = game.get_state_clone().generate_possible_actions();
+        let at_meowth = choices
+            .iter()
+            .find(|choice| matches!(&choice.action, SimpleAction::ApplyDamage { targets, .. } if targets[0].2 == 1))
+            .expect("Water Shuriken can target the Benched Meowth")
+            .clone();
+        assert!(matches!(at_meowth.action, SimpleAction::ApplyDamage { is_from_active_attack: false, .. }));
+        game.apply_action(&at_meowth);
+        let meowth = game.get_state_clone().in_play_pokemon[1][1].clone().expect("Meowth survives 20");
+        assert_eq!(meowth.get_remaining_hp(), 30, "seed {seed}: an Ability's damage never flips the coin");
+    }
+}
+
+#[test]
+fn celestial_blessing_never_flips_for_a_tools_damage() {
+    // Togekiss (Celestial Blessing) attacks Mega Latios ex holding Rocky Helmet ("... do 20 damage to the Attacking
+    // Pokemon"): the Helmet's 20 always lands on Togekiss.
+    for seed in 0..40u64 {
+        let mut game = get_initialized_game_with_board(
+            seed,
+            0,
+            5,
+            vec![PlayedCard::from_id(CardId::A4080Togekiss).with_energy(vec![EnergyType::Psychic; 3])],
+            vec![PlayedCard::from_id(CardId::PB024MegaLatiosEx).with_tool(get_card_by_enum(CardId::A2148RockyHelmet))],
+        );
+        game.apply_action(&Action { actor: 0, action: attack_action(CardId::A4080Togekiss, 0), is_stack: false });
+        let togekiss = game.get_state_clone().in_play_pokemon[0][0].clone().expect("Togekiss survives 20");
+        assert_eq!(togekiss.get_remaining_hp(), 120, "seed {seed}: a Tool's damage never flips the coin");
+    }
+}
+
+#[test]
+fn carefree_steps_never_flips_for_the_checkups_damage() {
+    // A Poisoned Meowth takes 10 in the Checkup when player 0 ends the turn.
+    for seed in 0..40u64 {
+        let mut game = get_initialized_game_with_board(
+            seed,
+            0,
+            5,
+            vec![PlayedCard::from_id(CardId::A1001Bulbasaur)],
+            vec![PlayedCard::from_id(CardId::B2124Meowth).with_status_condition(StatusCondition::Poisoned)],
+        );
+        game.apply_action(&Action { actor: 0, action: SimpleAction::EndTurn, is_stack: false });
+        let meowth = game.get_state_clone().in_play_pokemon[1][0].clone().expect("Meowth survives 10");
+        assert_eq!(meowth.get_remaining_hp(), 40, "seed {seed}: the Checkup's damage never flips the coin");
     }
 }

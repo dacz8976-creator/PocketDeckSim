@@ -1251,6 +1251,35 @@ mod tests {
     use crate::card_ids::CardId;
     use crate::models::PlayedCard;
 
+    /// `with_heads_coin_cuts` (Sonnet's S1, Sept 30): a cut is in force only inside its own call and only on its own
+    /// target; an inner call replaces the outer cuts for its length, an inner call with no cuts included (it must not
+    /// inherit them); the outer cuts come back after an inner call, and nothing is left behind after a panic.
+    #[test]
+    fn heads_coin_cuts_are_scoped_to_their_own_call() {
+        assert_eq!(heads_coin_cut((1, 0)), 0, "nothing in force outside any call");
+        with_heads_coin_cuts(vec![((1, 0), 100)], || {
+            assert_eq!(heads_coin_cut((1, 0)), 100);
+            assert_eq!(heads_coin_cut((1, 1)), 0, "only on its own target");
+            assert_eq!(heads_coin_cut((0, 0)), 0, "only on its own player");
+            with_heads_coin_cuts(vec![], || {
+                assert_eq!(heads_coin_cut((1, 0)), 0, "an inner call with no cuts must not inherit the outer ones");
+            });
+            assert_eq!(heads_coin_cut((1, 0)), 100, "the outer cut is back after the inner call");
+            with_heads_coin_cuts(vec![((1, 2), 80)], || {
+                assert_eq!(heads_coin_cut((1, 0)), 0, "an inner call replaces the outer cuts");
+                assert_eq!(heads_coin_cut((1, 2)), 80);
+            });
+            assert_eq!(heads_coin_cut((1, 0)), 100);
+            assert_eq!(heads_coin_cut((1, 2)), 0);
+        });
+        assert_eq!(heads_coin_cut((1, 0)), 0, "nothing left in force after the call");
+        let unwound = std::panic::catch_unwind(|| {
+            with_heads_coin_cuts(vec![((1, 0), 100)], || panic!("a panic inside the call"));
+        });
+        assert!(unwound.is_err());
+        assert_eq!(heads_coin_cut((1, 0)), 0, "nothing left in force after a panic");
+    }
+
     fn state_with_grimer_vs_meowth() -> State {
         let mut state = State::default();
         state.current_player = 0;
