@@ -1,0 +1,110 @@
+deckgym: OK
+legality_scan: OK
+goldfish: OK
+== ids (lib/card.py): printings per id, and B4b
+garchomp_meowth.txt | 1 x A1 225 | == A1 225: 1 printings, 1 distinct
+garchomp_meowth.txt | 1 x A2 121 | == A2 121: 1 printings, 1 distinct
+garchomp_meowth.txt | 2 x A2 152 | == A2 152: 1 printings, 1 distinct
+garchomp_meowth.txt | 1 x A3 144 | == A3 144: 1 printings, 1 distinct
+garchomp_meowth.txt | 1 x B1 225 | == B1 225: 1 printings, 1 distinct
+garchomp_meowth.txt | 2 x B2 124 | == B2 124: 1 printings, 1 distinct
+garchomp_meowth.txt | 1 x B3 004 | == B3 004: 1 printings, 1 distinct
+garchomp_meowth.txt | 1 x B4 153 | == B4 153: 1 printings, 1 distinct
+garchomp_meowth.txt | 1 x B4 155 | == B4 155: 1 printings, 1 distinct
+garchomp_meowth.txt | 1 x B4a 052 | == B4a 052: 1 printings, 1 distinct
+garchomp_meowth.txt | 1 x B4a 053 | == B4a 053: 1 printings, 1 distinct
+garchomp_meowth.txt | 2 x B4a 054 | == B4a 054: 1 printings, 1 distinct
+garchomp_meowth.txt | 1 x P-A 002 | == P-A 002: 1 printings, 1 distinct
+garchomp_meowth.txt | 2 x P-A 005 | == P-A 005: 1 printings, 1 distinct
+garchomp_meowth.txt | 2 x P-A 007 | == P-A 007: 1 printings, 1 distinct
+alternates/togekiss_meowth.txt | 1 x A2 064 | == A2 064: 1 printings, 1 distinct
+alternates/togekiss_meowth.txt | 1 x A2 147 | == A2 147: 1 printings, 1 distinct
+alternates/togekiss_meowth.txt | 1 x A2 150 | == A2 150: 1 printings, 1 distinct
+alternates/togekiss_meowth.txt | 2 x A2 152 | == A2 152: 1 printings, 1 distinct
+alternates/togekiss_meowth.txt | 1 x A3 080 | == A3 080: 1 printings, 1 distinct
+alternates/togekiss_meowth.txt | 1 x A3 144 | == A3 144: 1 printings, 1 distinct
+alternates/togekiss_meowth.txt | 2 x A4 078 | == A4 078: 1 printings, 1 distinct
+alternates/togekiss_meowth.txt | 2 x A4 080 | == A4 080: 1 printings, 1 distinct
+alternates/togekiss_meowth.txt | 1 x B1 225 | == B1 225: 1 printings, 1 distinct
+alternates/togekiss_meowth.txt | 2 x B2 124 | == B2 124: 1 printings, 1 distinct
+alternates/togekiss_meowth.txt | 1 x B2 155 | == B2 155: 1 printings, 1 distinct
+alternates/togekiss_meowth.txt | 1 x B4 153 | == B4 153: 1 printings, 1 distinct
+alternates/togekiss_meowth.txt | 2 x P-A 005 | == P-A 005: 1 printings, 1 distinct
+alternates/togekiss_meowth.txt | 2 x P-A 007 | == P-A 007: 1 printings, 1 distinct
+alternates/hisuian_goodra.txt | 2 x A1 183 | == A1 183: 1 printings, 1 distinct
+alternates/hisuian_goodra.txt | 1 x A2 150 | == A2 150: 1 printings, 1 distinct
+alternates/hisuian_goodra.txt | 2 x A3 144 | == A3 144: 1 printings, 1 distinct
+alternates/hisuian_goodra.txt | 2 x B1 177 | == B1 177: 1 printings, 1 distinct
+alternates/hisuian_goodra.txt | 1 x B1 219 | == B1 219: 1 printings, 1 distinct
+alternates/hisuian_goodra.txt | 2 x B1 225 | == B1 225: 1 printings, 1 distinct
+alternates/hisuian_goodra.txt | 2 x B3b 050 | == B3b 050: 1 printings, 1 distinct
+alternates/hisuian_goodra.txt | 2 x B4 117 | == B4 117: 1 printings, 1 distinct
+alternates/hisuian_goodra.txt | 2 x B4 155 | == B4 155: 1 printings, 1 distinct
+alternates/hisuian_goodra.txt | 2 x P-A 005 | == P-A 005: 1 printings, 1 distinct
+alternates/hisuian_goodra.txt | 2 x P-A 007 | == P-A 007: 1 printings, 1 distinct
+alternates/houndoom_victini.txt | 2 x A1 225 | == A1 225: 1 printings, 1 distinct
+alternates/houndoom_victini.txt | 2 x A2 150 | == A2 150: 1 printings, 1 distinct
+alternates/houndoom_victini.txt | 2 x A2a 011 | == A2a 011: 1 printings, 1 distinct
+alternates/houndoom_victini.txt | 1 x A3 066 | == A3 066: 1 printings, 1 distinct
+alternates/houndoom_victini.txt | 2 x B1 217 | == B1 217: 1 printings, 1 distinct
+alternates/houndoom_victini.txt | 1 x B2a 093 | == B2a 093: 1 printings, 1 distinct
+alternates/houndoom_victini.txt | 2 x B3 025 | == B3 025: 1 printings, 1 distinct
+alternates/houndoom_victini.txt | 2 x B4 155 | == B4 155: 1 printings, 1 distinct
+alternates/houndoom_victini.txt | 2 x P-A 005 | == P-A 005: 1 printings, 1 distinct
+alternates/houndoom_victini.txt | 2 x P-A 007 | == P-A 007: 1 printings, 1 distinct
+alternates/houndoom_victini.txt | 2 x P-B 080 | == P-B 080: 1 printings, 1 distinct
+fallback/coinflip_deck.txt | 2 x A1 151 | == A1 151: 1 printings, 1 distinct
+fallback/coinflip_deck.txt | 2 x A1 153 | == A1 153: 1 printings, 1 distinct
+fallback/coinflip_deck.txt | 2 x B1a 42 | == B1a 42: 0 printings, 0 distinct
+fallback/coinflip_deck.txt | 2 x B1a 75 | == B1a 75: 0 printings, 0 distinct
+fallback/coinflip_deck.txt | 1 x B2 204 | == B2 204: 1 printings, 1 distinct
+fallback/coinflip_deck.txt | 2 x A2 148 | == A2 148: 1 printings, 1 distinct
+fallback/coinflip_deck.txt | 2 x A2b 111 | == A2b 111: 1 printings, 1 distinct
+fallback/coinflip_deck.txt | 2 x A4 196 | == A4 196: 1 printings, 1 distinct
+fallback/coinflip_deck.txt | 2 x A4b 373 | == A4b 373: 1 printings, 1 distinct
+fallback/coinflip_deck.txt | 1 x B1 270 | == B1 270: 1 printings, 1 distinct
+fallback/coinflip_deck.txt | 1 x B2 145 | == B2 145: 1 printings, 1 distinct
+fallback/coinflip_deck.txt | 1 x B2a 93 | == B2a 93: 0 printings, 0 distinct
+fallback/coinflip_deck_padded.txt | 2 x A1 151 | == A1 151: 1 printings, 1 distinct
+fallback/coinflip_deck_padded.txt | 2 x A1 153 | == A1 153: 1 printings, 1 distinct
+fallback/coinflip_deck_padded.txt | 2 x B1a 042 | == B1a 042: 1 printings, 1 distinct
+fallback/coinflip_deck_padded.txt | 2 x B1a 075 | == B1a 075: 1 printings, 1 distinct
+fallback/coinflip_deck_padded.txt | 1 x B2 204 | == B2 204: 1 printings, 1 distinct
+fallback/coinflip_deck_padded.txt | 2 x A2 148 | == A2 148: 1 printings, 1 distinct
+fallback/coinflip_deck_padded.txt | 2 x A2b 111 | == A2b 111: 1 printings, 1 distinct
+fallback/coinflip_deck_padded.txt | 2 x A4 196 | == A4 196: 1 printings, 1 distinct
+fallback/coinflip_deck_padded.txt | 2 x A4b 373 | == A4b 373: 1 printings, 1 distinct
+fallback/coinflip_deck_padded.txt | 1 x B1 270 | == B1 270: 1 printings, 1 distinct
+fallback/coinflip_deck_padded.txt | 1 x B2 145 | == B2 145: 1 printings, 1 distinct
+fallback/coinflip_deck_padded.txt | 1 x B2a 093 | == B2a 093: 1 printings, 1 distinct
+fallback/fire_victini.txt | 2 x B4a 007 | == B4a 007: 1 printings, 1 distinct
+fallback/fire_victini.txt | 2 x B3 025 | == B3 025: 1 printings, 1 distinct
+fallback/fire_victini.txt | 2 x B1 033 | == B1 033: 1 printings, 1 distinct
+fallback/fire_victini.txt | 2 x P-A 007 | == P-A 007: 1 printings, 1 distinct
+fallback/fire_victini.txt | 2 x B1 225 | == B1 225: 1 printings, 1 distinct
+fallback/fire_victini.txt | 1 x A2 150 | == A2 150: 1 printings, 1 distinct
+fallback/fire_victini.txt | 2 x B1 217 | == B1 217: 1 printings, 1 distinct
+fallback/fire_victini.txt | 2 x A3 144 | == A3 144: 1 printings, 1 distinct
+fallback/fire_victini.txt | 2 x P-A 005 | == P-A 005: 1 printings, 1 distinct
+fallback/fire_victini.txt | 1 x B3 147 | == B3 147: 1 printings, 1 distinct
+fallback/fire_victini.txt | 1 x A2 148 | == A2 148: 1 printings, 1 distinct
+fallback/fire_victini.txt | 1 x B2b 069 | == B2b 069: 1 printings, 1 distinct
+== lib/deck_check.py files
+garchomp_meowth.txt: ✅ decks clean
+alternates/togekiss_meowth.txt: ✅ decks clean
+alternates/hisuian_goodra.txt: ✅ decks clean
+alternates/houndoom_victini.txt: ✅ decks clean
+fallback/coinflip_deck.txt: ❌ 1 deck(s) FAILED — DO NOT SIM
+fallback/coinflip_deck_padded.txt: ✅ decks clean
+fallback/fire_victini.txt: ✅ decks clean
+== goldfish coverage (card status), 0 games
+garchomp_meowth.txt: exit 0
+alternates/togekiss_meowth.txt: exit 0
+alternates/hisuian_goodra.txt: exit 0
+alternates/houndoom_victini.txt: exit 0
+fallback/coinflip_deck.txt: exit 0
+fallback/coinflip_deck_padded.txt: exit 0
+fallback/fire_victini.txt: exit 0
+== legality scan: km3, each list v the 8 panel lists, 10 games a pairing
+scan exit 0
+560

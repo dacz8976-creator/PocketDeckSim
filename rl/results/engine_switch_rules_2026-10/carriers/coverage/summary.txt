@@ -1,0 +1,15 @@
+coinflip_deck: 12 distinct cards; Fully implemented: 12
+  bot flags (pays off on the opponent's turn, or unpriced): Cubone (attack Growl); Rocky Helmet (its effect); Copycat (its effect)
+coinflip_deck_padded: 12 distinct cards; Fully implemented: 12
+  bot flags (pays off on the opponent's turn, or unpriced): Cubone (attack Growl); Rocky Helmet (its effect); Copycat (its effect)
+fire_victini: 12 distinct cards; Fully implemented: 11; Implemented with unverified rule boundaries: 1
+  Victini B3 025: Implemented with unverified rule boundaries; limitations: ['Victory Star supports printed attack-effect coin batches; confusion and attacker-side coin gates currently bypass the reroll prompt pending Pocket rule verification.']
+  bot flags (pays off on the opponent's turn, or unpriced): Rocky Helmet (its effect); Copycat (its effect)
+garchomp_meowth: 15 distinct cards; Fully implemented: 15
+  bot flags (pays off on the opponent's turn, or unpriced): Copycat (its effect); Garchomp (ability Mach Stealth)
+hisuian_goodra: 11 distinct cards; Fully implemented: 11
+  bot flags (pays off on the opponent's turn, or unpriced): Copycat (its effect)
+houndoom_victini: 11 distinct cards; Fully implemented: 10; Implemented with unverified rule boundaries: 1
+  Victini B3 025: Implemented with unverified rule boundaries; limitations: ['Victory Star supports printed attack-effect coin batches; confusion and attacker-side coin gates currently bypass the reroll prompt pending Pocket rule verification.']
+togekiss_meowth: 14 distinct cards; Fully implemented: 14
+  bot flags (pays off on the opponent's turn, or unpriced): Togepi (attack Charm); Copycat (its effect)
