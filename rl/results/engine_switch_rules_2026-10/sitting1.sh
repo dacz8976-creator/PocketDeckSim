@@ -508,7 +508,12 @@ candidate_checks() {  # tree-ish main: step 4's checks on the candidate (in a dr
 
 # ---- Step 5's parts: programs, references, inputs.
 prog_sha() {  # program path: its recorded sha256 (programs.sha256 or watch.sha256)
-  cat -- "$PINS" "$WPINS" 2> /dev/null | awk -v p="$1" 'substr($0, 67) == p {print substr($0, 1, 64); exit}'
+  # Only the records that exist: before step 6, watch.sha256 does not, and a cat of it failed the pipeline under
+  # pipefail (the Oct 1 03:16 UTC stop, right after step 5 passed: PIN_GYM's bare assignment exited the run).
+  local f fs=()
+  for f in "$PINS" "$WPINS"; do [ ! -s "$f" ] || fs+=("$f"); done
+  [ ${#fs[@]} -gt 0 ] || return 0
+  awk -v p="$1" 'substr($0, 67) == p {print substr($0, 1, 64); exit}' "${fs[@]}"
 }
 check_pins() {  # when
   local out
