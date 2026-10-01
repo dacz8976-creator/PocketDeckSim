@@ -1,6 +1,9 @@
 name: km-tests
 
-# km's two light self-tests, run on every change to km_run/. No game, no engine, no build:
+# km's two light self-tests, run on every change to km_run/ and to score.py (rl/results/table_readings_2026-09-24/score.py). The
+# reader reads score45's page and km_thresholds.py reproduces score.py's rounding, so a change to score.py is a change to what
+# they are written against. The tests run on canned numbers and do not execute score.py; the stand-in suite (below) does.
+# No game, no engine, no build:
 #   read_km.py --selftest        the reader's gate logic on canned numbers, including the near-zero sweeps (each side of the
 #                                 dMSE and tau lines, never a wrong call, the 20,000-rep rule unchanged)
 #   test_km_thresholds.py        km_thresholds.py on synthetic counts (the M1 / M2 threshold cases, the guard, the frozen seeds)
@@ -13,11 +16,13 @@ on:
   pull_request:
     paths:
       - 'rl/results/trainer_pricing_2026-09-28/km_run/**'
+      - 'rl/results/table_readings_2026-09-24/score.py'
       - '.github/workflows/km-tests.yml'
   push:
     branches: [main]
     paths:
       - 'rl/results/trainer_pricing_2026-09-28/km_run/**'
+      - 'rl/results/table_readings_2026-09-24/score.py'
       - '.github/workflows/km-tests.yml'
 
 permissions:
