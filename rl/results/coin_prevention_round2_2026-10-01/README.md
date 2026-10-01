@@ -130,6 +130,10 @@ The engine diff from R is three files: `engine/src/actions/apply_attack_action.r
 - **Ready, not committed:**
   - two failing tests: Celestial Blessing flips for the second punch, and Meowth promoted after a knockout flips for it;
   - the fix: the punch goes through `queued_attack_damage_choice`, gated on any of the opponent's Pokémon having a coin Ability, since the target is whichever Pokémon is Active when it lands. `state/mod.rs`'s check also recognises an `ApplyQueuedAttackDamage` at the empty Active.
+  - **Checked in a scratch copy** (nothing committed; this branch's `engine/` plus the two tests):
+    - before the fix, both tests fail: 0 prevented of 60;
+    - with `apply_attack_action.rs` changed alone, Celestial Blessing's test passes, but the knockout case fails ("the second punch waits for the new Active": the punch lands first);
+    - with the `state/mod.rs` check too, both pass, 25 of 25 in the file.
   - On a yes they go in as two more commits, followed by the suite and this README. On a no, the site stays as it is and is recorded here as still open.
 
 ## For the laptop
