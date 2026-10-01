@@ -2,7 +2,27 @@
 
 Written Sept 30 for the Fable coordinator session (Dustin's single delegator). Times are UTC.
 
-1. **Current task, and the instruction that set it.** PLAN.md step 8b's early-warning rows on a scratch build of R (Fable via Dustin, Oct 1 morning; see the log). Then idle. The two earlier Oct 1 jobs are done:
+1. **Current task, and the instruction that set it.** None: idle, as the coordinator asked (Oct 1 morning, via Dustin: "Then idle"). The Oct 1 jobs are done:
+   - **PLAN step 8b's early-warning rows** (3a107f4, `rl/results/engine_switch_rules_2026-10/early_warning_8b/README.md`), on a scratch build of R (f8cfa9c, engine tree 38af8b0, the laptop's candidate's):
+     - 960 games, pairings 32-35 × 40 × km3 and k3 × old, new and watch, every program built from `git archive` in a fresh target folder.
+     - The checks:
+       - watch = new 160/160 per bot;
+       - the pinned old `legality_scan` = the old built from source, 160/160 per bot;
+       - no rule findings;
+       - the laptop's `sitting2_check.py touched` and `stepsum` pass both bots.
+     - **63 of 320 deals change.** By `tightened_rule.py`:
+       - 50 on the board;
+       - 13 lookahead only, with both halves found by `coin_probe` or `vs_probe`;
+       - 0 needing a judgment, 0 unexplained.
+     - CONDITION 3: 1 game (km3 34/35). It is one of the 13 lookahead games, explained under the Oct 1 ruling.
+     - Rows 13/22: pairing 35 met (15 games). Pairing 34 is NOT met: no unchanged game fired the off-gate discard counter. That is a report line, not a stop.
+     - **The trace load:**
+       - changed games with no exact counter: 13/320, about 1,050 for step 8 by the plan's arithmetic, all of them the automated check's;
+       - needing a hand trace: 0 on this sample (by the rule of three, up to about 240);
+       - which number goes on TRACE LOAD is the coordinator's call.
+     - CLOUD8B lines, if wanted:
+       - `CLOUD8B 3a107f4 km3 rl/results/engine_switch_rules_2026-10/early_warning_8b/8b_new_km3.jsonl`
+       - `CLOUD8B 3a107f4 k3 rl/results/engine_switch_rules_2026-10/early_warning_8b/8b_new_k3.jsonl`
    - **Job 1, F8** (5a929c0): accepted. F8's wording goes into rules/09 and PLAN.md at the pin.
    - **Job 2, the later round of coin-flip prevention**, all seven sites, on `claude/coin-prevention-round2` (from Sonnet's R, 1abdbe8; README `rl/results/coin_prevention_round2_2026-10-01/README.md`, 78af4e8). The six sites were accepted (76b87cd). Round 2 stays out of the current switch and goes in the next one.
      - Mega Kangaskhan ex's second punch, after the fifth file was approved:
@@ -14,8 +34,8 @@ Written Sept 30 for the Fable coordinator session (Dustin's single delegator). T
        - The `ApplyDamage` arm's attacker clause is not mirrored. A Mega Kangaskhan ex Knocked Out on its own turn gives 3 points and ends the game (checked in a scratch copy), and mirroring it would have reordered the first round's choices.
      - Full suite at 29e126a: 2,027 passed, 0 failed (R's 2,018 plus the 9 new tests). The counter probe: 32 checks, 0 failures.
      - The scratch smoke, rerun on the final engine, gives byte-identical game files to its first run (80 of 80 for each scan).
-2. **What is running now, and when it ends.** Step 8b's early-warning rows: starting now, a few hours at most (builds plus 960 short games and the classification).
-3. **Files I expect to change.** None. Job 2 changed these on its branch:
+2. **What is running now, and when it ends.** Nothing.
+3. **Files I expect to change.** None. The 8b rows are in `rl/results/engine_switch_rules_2026-10/early_warning_8b/` (this branch). The coin round-2 job changed these on its branch:
    - engine: `engine/src/actions/apply_attack_action.rs`, `engine/src/actions/apply_action.rs`, `engine/src/state/mod.rs` (the approved fifth file), `engine/tests/pokemon/meowth_carefree_steps_test.rs`;
    - results: `rl/results/coin_prevention_repair_2026-09-30/instrument_scan.py` (the counters) and `rl/results/coin_prevention_round2_2026-10-01/`.
 4. **Waiting on the laptop or Sonnet.** Nothing.
