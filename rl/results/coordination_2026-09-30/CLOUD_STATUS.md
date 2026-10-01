@@ -12,7 +12,13 @@ Written Sept 30 for the Fable coordinator session (Dustin's single delegator). T
      - full suite after the last engine commit; a README with reach per card and the lists under decks/ that hold them;
      - I will ask here before touching any file beyond the four the first round used.
    - kr/kro (7c882b5, README 639c55b) was accepted as a build and as a finding; kr will not be registered.
-2. **What is running now, and when it ends.** Starting now: job 1 (fetching upstream 09e964f read-only, the scratch test, F8.md), then job 2. Within the two days given.
+2. **What is running now, and when it ends.**
+   - **Job 1 is done: 5a929c0** (`rl/results/engine_switch_rules_2026-10/f8/F8.md`).
+     - Yes, the fork already covers fix 1's case. Upstream's test, ported, passes on d363ba8.
+     - Knockouts resolve in waves (`apply_action_helpers.rs:690-820`), with a nested pass after them (836-847), before any promotion is built (906). Either guard alone covers the case.
+     - Planted faults: only with both removed (upstream's single pass) does the fork fail, exactly as upstream did (3 choices for 2). The prune that rules/09 pointed at isn't what covers it. Upstream's own test fails at ca4b67f and passes at 09e964f.
+     - F8.md suggests wording for rules/09:80 and PLAN.md:26 (not edited), and says what it doesn't settle: the fork has no general clean-up of stale `Promote` choices, and I didn't audit every other path.
+   - **Job 2 is running** on `claude/coin-prevention-round2`. Its failing tests are written; the six-site fix is next. Mega Kangaskhan ex waits on the question in 5. Within the two days given.
 3. **Files I expect to change.**
    - Job 1: rl/results/engine_switch_rules_2026-10/f8/ (new), on this branch.
    - Job 2, on the new branch: the first round's four files (engine/src/actions/apply_attack_action.rs, apply_action.rs, attack_outcome.rs, engine/src/hooks/core.rs), their tests, and rl/results/coin_prevention_round2_2026-10-01/.
@@ -20,7 +26,7 @@ Written Sept 30 for the Fable coordinator session (Dustin's single delegator). T
 4. **Waiting on the laptop or Sonnet.** Nothing.
 5. **Open questions for Dustin.**
    - **Job 2: may I touch a fifth engine file, `engine/src/state/mod.rs`, for Mega Kangaskhan ex's second punch only?** (asked Oct 1, before touching it)
-     - Why: when the first punch Knocks Out the Active, the opponent must choose a new Active before the second punch lands. `trigger_promotion_or_declare_winner` (`state/mod.rs:1416-1424`, "pending_hit_floor") finds the waiting punch by looking for an `ApplyDamage` aimed at the empty Active. The coin-flipping path queues the punch as `ApplyQueuedAttackDamage`, which that check doesn't see. The promotion would then go under the punch, and the punch would land on an empty Active Spot.
+     - Why: when the first punch Knocks Out the Active, the opponent must choose a new Active before the second punch lands. `trigger_promotion_or_declare_winner` (`state/mod.rs:1417-1426`, "pending_hit_floor") finds the waiting punch by looking for an `ApplyDamage` aimed at the empty Active. The coin-flipping path queues the punch as `ApplyQueuedAttackDamage`, which that check doesn't see. The promotion would then go under the punch, and the punch would land on an empty Active Spot.
      - The change: that check also recognises an `ApplyQueuedAttackDamage` aimed at the empty Active (a few lines, same shape). Nothing else in the file.
      - If the answer is no, the second punch stays as it is (recorded as still open), and the other six sites go ahead in the four files.
      - Meanwhile I'm doing the other six sites, which fit in the four files.
