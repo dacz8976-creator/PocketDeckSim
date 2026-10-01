@@ -43,6 +43,20 @@ The other three have real development lists, but none placed top-8. These are th
 
 **R stays Sonnet's branch head,** never the cloud's head. The cloud's kn (N1) build is on the same cloud branch (71877f6) and changes `players/`.
 
+## After the laptop's second read of R (Sept 30 evening)
+
+`SECOND_READ_F1_F7_opus.md` (fa1d442) found no code bug, and four things to fix before sitting 1. The coordinator's decisions:
+- **(a)** Findings 1, 3 and 4 are Sonnet's, tonight on `sonnet/rules-fixes`, and they give a new R:
+  - F7's test numbers;
+  - `counter_probe` cases for `offgate_discard_then_damage`;
+  - every firing tick recorded.
+
+  Finding 2's runner change is the laptop's, and it's made: step 7b requires both off-gate counters above 0. 7c's scope has no t-vespiquen pairing, so there the discard counter is reported only.
+- **(b) The mechanic check's "on the board"** is tightened, in the coordinator's wording, Oct 1: an exact counter must fire in the same turn as the first differing move. Otherwise the probe must show the gate within search depth (both halves), and an earlier firing alone explains nothing. It's written into `PLAN.md`'s mechanic check.
+- **(c) Victory Star smoke game 28** holds by elimination only, through one sampled Copycat draw. It goes to Dustin on Oct 1 evening as the one judgment call, and it doesn't block the build. A step 8 game that lands the same way stops, as the plan says.
+- **The cloud's later-round coin branch** is cut from the old R (1abdbe8). When the new R lands, that merge touches only test files, but the laptop checks it before step 4.
+- **Sitting 1:** Oct 1 from 5 pm Central, on the new R, after the laptop's short re-read of the three fixes.
+
 ## Who does what
 
 | Part | Who |
@@ -59,3 +73,10 @@ The other three have real development lists, but none placed top-8. These are th
 | Routing and audit | the Fable coordinator session |
 
 This table is updated as each part lands.
+
+## Sitting 1's runner and the shared index (one exception, recorded for Dustin)
+
+`sitting1.sh` never stages or commits through the shared index (the one GitHub Desktop uses). Each checkpoint commit is built in a private index, and main moves to it only if no one else moved main meanwhile, as `pin.sh` makes the pin commit.
+- **The exception:** right before main moves, the shared index's entries for exactly the files being committed are set to the new commit's (`git reset <commit> -- <those files>`, `pin.sh` line 487 does the same). Without it, GitHub Desktop would show those files as deleted or changed back, and another session's commit could record them that way.
+- Nothing else in the shared index is touched. A start unstages files of this folder only when they are staged with the working copy's own content, which is what an interrupted checkpoint leaves.
+- It pushes only its own commits (and the runner's own commit), only as a fast-forward of origin/main. When origin/main is ahead, or main carries another session's unpushed commit, it stops and says what to do.
