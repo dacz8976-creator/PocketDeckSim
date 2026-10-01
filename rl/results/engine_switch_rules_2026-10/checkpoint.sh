@@ -50,7 +50,7 @@ ckpt_commit() (  # a subshell: the caller's traps and variables are untouched
   [ -s "$msg" ] || { echo "no commit message ($msg)" >&2; return 1; }
   for p in "${paths[@]}"; do
     case $p in "$rel"/*) ;; *) echo "$p is outside $rel/" >&2; return 1;; esac
-    case ${p##*/} in *.part|.sitting1.*) echo "$p is a working file, never committed" >&2; return 1;; esac
+    case ${p##*/} in *.part|.sitting1.*|.sitting2.*) echo "$p is a working file, never committed" >&2; return 1;; esac
     [ -f "$repo/$p" ] || { echo "$p is missing" >&2; return 1; }
   done
   staged=$(git -C "$repo" diff --cached --name-only -- "${paths[@]}" 9>&-) || { echo "git diff --cached failed" >&2; return 1; }

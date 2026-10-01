@@ -1,6 +1,9 @@
-# sitting1.sh's working files: its lock, process group, watchdog and checkpoint flags, unfinished outputs. Never
-# evidence; never committed (checkpoint.sh refuses them too).
+# sitting1.sh's and sitting2.sh's working files: their locks, process groups, watchdog and checkpoint flags, unfinished
+# outputs. Never evidence; never committed (checkpoint.sh refuses them too).
 .sitting1.*
+.sitting2.*
+# quiet.sh's own log (pause/resume/stop notes; STATUS.txt records what the sittings did)
+quiet.log
 *.part
 *.part/
 __pycache__/

@@ -15,35 +15,43 @@
 #   push), as the watchdog does, so no git lock is held through a pause and a stop lands between git steps.
 #   status  the group's members.
 # Usage (WSL): bash quiet.sh pause | resume | stop | status        Log: quiet.log here.
+# Sitting 2 (sitting2.sh, Oct 1) writes .sitting2.pgid and .sitting2.ckpt the same way. SITTING=1 or SITTING=2 picks one;
+# without it, the sitting whose .pgid file is newer.
 set -euo pipefail
 O=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 log() { echo "$(date -u +%FT%TZ) $*" | tee -a "$O/quiet.log"; }
-[ -s "$O/.sitting1.pgid" ] || { echo "no .sitting1.pgid: sitting1.sh has not started here"; exit 1; }
-read -r G _ ST _ < "$O/.sitting1.pgid" || true
-[[ $G =~ ^[0-9]+$ ]] || { echo ".sitting1.pgid does not hold a process group id"; exit 1; }
-[[ ${ST:-} =~ ^[0-9]+$ ]] || { echo ".sitting1.pgid does not hold the leader's start time"; exit 1; }
-alive() {  # the group leader is the sitting1.sh that wrote .sitting1.pgid (same pid and start time) and still leads its group
+N=${SITTING:-}
+if [ -z "$N" ]; then
+  if [ -s "$O/.sitting2.pgid" ] && { [ ! -s "$O/.sitting1.pgid" ] || [ "$O/.sitting2.pgid" -nt "$O/.sitting1.pgid" ]; }; then N=2; else N=1; fi
+fi
+[[ $N =~ ^[12]$ ]] || { echo "SITTING must be 1 or 2"; exit 1; }
+P="sitting$N.sh"
+[ -s "$O/.sitting$N.pgid" ] || { echo "no .sitting$N.pgid: $P has not started here"; exit 1; }
+read -r G _ ST _ < "$O/.sitting$N.pgid" || true
+[[ $G =~ ^[0-9]+$ ]] || { echo ".sitting$N.pgid does not hold a process group id"; exit 1; }
+[[ ${ST:-} =~ ^[0-9]+$ ]] || { echo ".sitting$N.pgid does not hold the leader's start time"; exit 1; }
+alive() {  # the group leader is the sitting script that wrote the .pgid file (same pid and start time) and still leads its group
   local s c; local -a f
   s=$(cat "/proc/$G/stat" 2> /dev/null) || return 1
   s=${s##*) }; read -r -a f <<< "$s"
   [ "${f[19]:-}" = "$ST" ] && [ "${f[2]:-}" = "$G" ] || return 1
   c=$(tr '\0' ' ' < "/proc/$G/cmdline" 2> /dev/null) || return 1
-  [[ $c == *sitting1.sh* ]]
+  [[ $c == *"$P"* ]]
 }
 members() { ps -eo pid=,pgid=,stat=,comm= | awk -v g="$G" '$2 == g {printf "%s(%s,%s) ", $4, $1, $3}'; }
-ckpt_wait() {  # at most 60 s while sitting1.sh is inside a checkpoint (its commit and push)
+ckpt_wait() {  # at most 60 s while the sitting is inside a checkpoint (its commit and push)
   local i
-  for i in $(seq 1 60); do [ -e "$O/.sitting1.ckpt" ] || return 0; [ "$i" != 1 ] || echo "inside a checkpoint: waiting (at most 60 s)"; sleep 1; done
+  for i in $(seq 1 60); do [ -e "$O/.sitting$N.ckpt" ] || return 0; [ "$i" != 1 ] || echo "inside a checkpoint: waiting (at most 60 s)"; sleep 1; done
   log "still inside a checkpoint after 60 s; going ahead"
 }
 case ${1:-} in
-  pause)  alive || { echo "process group $G is not the running sitting1.sh; nothing paused"; exit 1; }
-          ckpt_wait; kill -STOP -- "-$G"; log "paused process group $G: $(members)";;
-  resume) alive || { echo "process group $G is not the running sitting1.sh; nothing to resume"; exit 1; }
-          kill -CONT -- "-$G"; log "resumed process group $G: $(members)";;
-  stop)   alive || { echo "process group $G is not the running sitting1.sh; nothing to stop"; exit 1; }
+  pause)  alive || { echo "process group $G is not the running $P; nothing paused"; exit 1; }
+          ckpt_wait; kill -STOP -- "-$G"; log "paused $P's process group $G: $(members)";;
+  resume) alive || { echo "process group $G is not the running $P; nothing to resume"; exit 1; }
+          kill -CONT -- "-$G"; log "resumed $P's process group $G: $(members)";;
+  stop)   alive || { echo "process group $G is not the running $P; nothing to stop"; exit 1; }
           ckpt_wait; kill -TERM -- "-$G"; kill -CONT -- "-$G" 2> /dev/null || true
-          log "sent TERM (and CONT) to process group $G; left a moment later: $(sleep 2; members)";;
-  status) if alive; then echo "sitting1.sh group $G: $(members)"; else echo "sitting1.sh group $G is not running; members left: $(members)"; fi;;
-  *) echo "usage: bash quiet.sh pause|resume|stop|status"; exit 1;;
+          log "sent TERM (and CONT) to $P's process group $G; left a moment later: $(sleep 2; members)";;
+  status) if alive; then echo "$P group $G: $(members)"; else echo "$P group $G is not running; members left: $(members)"; fi;;
+  *) echo "usage: [SITTING=1|2] bash quiet.sh pause|resume|stop|status"; exit 1;;
 esac

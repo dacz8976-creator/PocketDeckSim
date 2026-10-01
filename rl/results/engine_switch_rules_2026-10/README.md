@@ -88,6 +88,24 @@ The other three have real development lists, but none placed top-8. These are th
 - They are not in this switch: Dustin's scope answer (question 2) is A + B + kd + F1-F7. They go in the next rules switch.
 - So 8b's l-sharpedo v meowth_carefree row stays this switch's Wild Swing control, as planned.
 
+## Sitting 2 (steps 8-10): the runner and the coordinator's decisions (Oct 1)
+
+`sitting2.sh` (with `sitting2_check.py`) runs PLAN.md's steps 8, 8b, 9 and 10 on sitting 1's programs, never rebuilt. The plan's model was sitting 1's runner. Two Opus reviews (evidence and safety) found no blocker, and their fixes are in.
+- **When:** Oct 1 from 5 pm Central. Step 8 can't start on the night of Sept 30, because 8c's trace load (below) doesn't exist yet.
+- **Order:**
+  1. `8-seeds`: the carrier lists (e0d149a's blobs, at the same paths in `carriers/`) and 8b's scratch decks (`scratch_8b/`, the candidate's blobs) are brought onto main blob-checked, and `pairs_8.tsv` and `seeds_8.txt` are committed, all before any game.
+  2. 8b.
+  3. The trace-load gate.
+  4. 8, if the gate allows.
+  5. 9 and 10.
+  6. The gate is read again; step 8 runs then if it can still end before the deadline. Otherwise the sitting ends PAUSED, and a later start runs step 8 alone.
+- **The trace-load gate:** step 8 starts only when `trace_load.txt` here is committed with a line `TRACE LOAD <n> <the cloud's commit and text>` and n is about 50 or less, or with a line `DUSTIN <his words>` (PLAN 8c).
+  - The load comes from the cloud's 8b early-warning rows on its build of R (`early_warning_8b/` on its branch, classified with `tightened_rule.py`); the laptop runs no traces.
+  - Optional `CLOUD8B <commit> <bot> <path>` lines make the gate check that the laptop's 8b rows equal the cloud's (PLAN 8b).
+- **The hand-off to 8c:** `handoff_8c.tsv` and `handoff_8c.md` list every changed game of 8b and 8 with what a tracer needs, and `touched_check.txt` gives reach per mechanic. The cloud traces from them, and Sonnet reads every hand trace.
+- **Condition 3 (the coordinator's ruling, Oct 1, consistent with Dustin's Q1 answer):** PLAN.md:95's "must be identical" reads as "no exact counter fired on the board and no trace meets both halves". A game whose lookahead trace meets both halves is one where a repaired mechanic acted, so it is explained. The runner lists each such game as CONDITION 3, a pin-gate item, and one with no trace meeting both halves fails as before.
+- **Frozen on main until sitting 2 ends** (a change to a step's input halts that step): `decks/screen/run_screen.py`, `decks/brews/brew-06*.txt`, `decks/research/{altaria,blaziken}.txt`, `decks/screen/opponents/*`, step 9's pairs files and their decks, and this folder.
+
 ## Who does what
 
 | Part | Who |
