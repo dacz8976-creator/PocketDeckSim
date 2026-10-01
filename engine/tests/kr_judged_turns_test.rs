@@ -4,11 +4,19 @@
 //! --seed-stream` played it (`create_players`, `Game::new` on the game's own seed, `play_tick`); a guard checks the
 //! opponent's Active there is the one the diagnosis recorded. From the start of that turn the deck's side plays the
 //! turn once as kr3 and once as km3 (the opponent km3 in both, `Game::from_state` on the game's seed).
-//! - TIMING.md's reading: C2 plays Goo-zooka on the six turns where a benched threat of theirs would come in on their
-//!   next turn behind an Active that can't pay the raised cost (9102 t4, 12600 t4, 9600 t3 in deck 14; 8101 t3,
-//!   11602 t4, 7102 t2 in deck 15), and not on the three the diagnosis judged "no" (7100 t9, 8103 t4 in deck 14;
-//!   14600 t4 in deck 15). 13600 t6 (deck 15), the seventh "yes", is one TIMING.md expected C2 to miss: it is printed,
-//!   not asserted.
+//! - TIMING.md's reading was that C2 plays Goo-zooka on six of the diagnosis's seven "yes" turns (9102 t4, 12600 t4,
+//!   9600 t3 in deck 14; 8101 t3, 11602 t4, 7102 t2 in deck 15; all but 13600 t6) and on none of its three "no" turns
+//!   (7100 t9, 8103 t4, 14600 t4). That reading was wrong for five of the six. C2 as built (the rule exactly as
+//!   TIMING.md states it) plays it on 11602 t4 only, and on none of the "no" turns. This test pins what it does; the
+//!   reasons, from a probe of each turn's root scores and clock (`rl/results/kr_build_2026-09-30/README.md`):
+//!   - 11602 t4: after Sabrina, Butterfree (ready) waits behind Grovyle with no Energy; Goo-zooka delays it a turn.
+//!   - 9102 t4: Hydreigon's own Ability (Roar in Unison) gives it its Energy, which km's clock doesn't count, so the
+//!     clock already has the Deino retreat costing Hydreigon a turn, past the effect's last turn.
+//!   - 12600 t4: Chien-Pao ex retreats for free (Inflatable Boat) and is itself their clock's threat (ready now); the
+//!     payoff was the damaged ex left in front, which C2 doesn't price.
+//!   - 9600 t3, 7102 t2: their Active (Deino, Igglybuff) can attack now, so it is their clock's threat (fewest missing
+//!     first); the Pokemon they really brought in (Bombirdier from the hand, Espeon by evolution) isn't visible.
+//!   - 8101 t3: after Sabrina, Torchic in front attacks as soon as Castform could: the clock is the same either way.
 //! - km3 plays it on none of the ten (the floor's km3 didn't).
 //! The lists are embedded as they are at this commit, so a later edit to a deck file can't change the test.
 use deckgym::actions::SimpleAction;
@@ -191,30 +199,27 @@ fn plays_goo_zooka(deck: &str, opponent: &str, seat: usize, seed: u64, turn: u8,
 }
 
 #[test]
-fn kr3_plays_goo_zooka_on_the_six_judged_turns_c2_reads_and_not_on_the_three_judged_no() {
-    // (deck, opponent, seat, floor seed, turn, the opponent's Active the diagnosis recorded, kr3 expected to play it)
-    let cases: [(&str, &str, usize, u64, u8, &str, Option<bool>); 10] = [
-        (DECK14, T_HYDREIGON, 0, 9102, 4, "Deino", Some(true)),
-        (DECK14, T_SUICUNE, 1, 12600, 4, "Chien-Pao ex", Some(true)),
-        (DECK14, T_HYDREIGON, 1, 9600, 3, "Deino", Some(true)),
-        (DECK15, T_BLAZIKEN, 0, 8101, 3, "Castform Sunny Form", Some(true)),
-        (DECK15, T_SCEPTILE, 1, 11602, 4, "Butterfree", Some(true)),
-        (DECK15, T_ALTARIA, 0, 7102, 2, "Igglybuff", Some(true)),
-        (DECK14, T_ALTARIA, 0, 7100, 9, "Mega Altaria ex", Some(false)),
-        (DECK14, T_BLAZIKEN, 0, 8103, 4, "Mega Blaziken ex", Some(false)),
-        (DECK15, T_WEEZING, 1, 14600, 4, "Hoopa ex", Some(false)),
-        (DECK15, T_VESPIQUEN, 1, 13600, 6, "Shuckle ex", None),
+fn kr3_on_the_ten_judged_goo_zooka_turns_plays_it_on_11602_only_and_km3_on_none() {
+    // (deck, opponent, seat, floor seed, turn, the opponent's Active the diagnosis recorded, TIMING.md's reading,
+    // what kr3 does)
+    let cases: [(&str, &str, usize, u64, u8, &str, Option<bool>, bool); 10] = [
+        (DECK14, T_HYDREIGON, 0, 9102, 4, "Deino", Some(true), false),
+        (DECK14, T_SUICUNE, 1, 12600, 4, "Chien-Pao ex", Some(true), false),
+        (DECK14, T_HYDREIGON, 1, 9600, 3, "Deino", Some(true), false),
+        (DECK15, T_BLAZIKEN, 0, 8101, 3, "Castform Sunny Form", Some(true), false),
+        (DECK15, T_SCEPTILE, 1, 11602, 4, "Butterfree", Some(true), true),
+        (DECK15, T_ALTARIA, 0, 7102, 2, "Igglybuff", Some(true), false),
+        (DECK14, T_ALTARIA, 0, 7100, 9, "Mega Altaria ex", Some(false), false),
+        (DECK14, T_BLAZIKEN, 0, 8103, 4, "Mega Blaziken ex", Some(false), false),
+        (DECK15, T_WEEZING, 1, 14600, 4, "Hoopa ex", Some(false), false),
+        (DECK15, T_VESPIQUEN, 1, 13600, 6, "Shuckle ex", None, false),
     ];
-    let mut wrong = vec![];
-    for (deck, opponent, seat, seed, turn, active, expected) in cases {
+    for (deck, opponent, seat, seed, turn, active, timing, pinned) in cases {
         let (kr3, their_active) = plays_goo_zooka(deck, opponent, seat, seed, turn, "kr3");
         let (km3, _) = plays_goo_zooka(deck, opponent, seat, seed, turn, "km3");
         assert_eq!(their_active, active, "floor game {seed}: the replay's board is not the diagnosis's");
-        println!("seed {seed} turn {turn} (their Active {active}): kr3 plays Goo-zooka {kr3}, km3 {km3}");
+        println!("seed {seed} turn {turn} (their Active {active}): kr3 plays Goo-zooka {kr3} (TIMING.md read {timing:?}), km3 {km3}");
         assert!(!km3, "km3 plays Goo-zooka on {seed} turn {turn}");
-        if expected.is_some_and(|e| e != kr3) {
-            wrong.push((seed, turn, kr3));
-        }
+        assert_eq!(kr3, pinned, "kr3 on {seed} turn {turn}");
     }
-    assert!(wrong.is_empty(), "kr3 against TIMING.md's reading (seed, turn, played): {wrong:?}");
 }

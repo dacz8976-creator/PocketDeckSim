@@ -1917,9 +1917,41 @@ fn kt_clock_stadium(
 }
 
 /// C2 (kr, kro; `rl/results/kn_build_2026-09-30/TIMING.md`): what `owner`'s Active still lacks to retreat, charged to a
-/// benched threat candidate of `owner`'s with `missing` Energy to go. Not yet implemented: 0, as km's clock has it.
-fn benched_retreat_shortfall(_state: &State, _owner: usize, _missing: usize) -> usize {
-    0
+/// benched threat candidate of `owner`'s with `missing` Energy to go: max(0, the Active's board Retreat Cost - the
+/// Energy attached to it). The turn's attachment goes either to the retreat or to the attacker, as in kq's escape
+/// (`retreat_cost + short <= attached + attach_next`).
+/// - The cost is the engine's own board cost ([`crate::hooks::get_board_retreat_cost_for_player`]: Tools, Stadiums,
+///   Abilities such as Trap Territory and Villainous Delivery, the stored effects; not this turn's discounts).
+/// - A stored `IncreasedRetreatCost` (Goo-zooka's) counts only if it is live on the turn the threat would otherwise
+///   attack: [`first_attack_turn_number`] for `missing` plus the shortfall without such effects, an effect with d turns
+///   left being live through turn t + d, as switch 1 reads a temporary cut for turn f.
+/// - An Active that can't retreat at all (a Special Condition that blocks it, `NoRetreat`) gets no charge: left as km's
+///   clock has it, a stated limit. (A fossil Active's board cost is 0, so it gets none either.)
+fn benched_retreat_shortfall(state: &State, owner: usize, missing: usize) -> usize {
+    let Some(active) = state.maybe_get_active(owner) else {
+        return 0;
+    };
+    if special_condition_blocks_attack_or_retreat(active) || active.get_active_effects().contains(&CardEffect::NoRetreat) {
+        return 0;
+    }
+    // The Active's board cost with the stored IncreasedRetreatCost effects live through `turn` only (none for `None`),
+    // by the engine's arithmetic on a copy whose stored effects are rebuilt without the others. The board cost reads no
+    // Special Condition, so clearing them on the copy changes nothing else.
+    let cost_through = |turn: Option<u32>| -> usize {
+        let mut card = active.clone();
+        card.clear_status_and_effects();
+        for (effect, turns_left) in active.get_effects() {
+            let live = turn.is_some_and(|f| f <= state.turn_count as u32 + *turns_left as u32);
+            if !matches!(effect, CardEffect::IncreasedRetreatCost { .. }) || live {
+                card.add_effect(effect.clone(), *turns_left);
+            }
+        }
+        crate::hooks::get_board_retreat_cost_for_player(state, owner, &card).len()
+    };
+    let energy = active.attached_energy.len();
+    let (next_turn, attach_next) = owner_next_turn(state, owner);
+    let (turn, _) = first_attack_turn_number(next_turn, attach_next, missing + cost_through(None).saturating_sub(energy));
+    cost_through(Some(turn)).saturating_sub(energy)
 }
 
 /// [`kt_clock_stadium`] with km's N2 off, as kt's tests call it positionally.
@@ -6570,11 +6602,13 @@ mod kr_tests {
     fn c2_pin_the_shortfall_is_the_engines_retreat_arithmetic() {
         // TIMING.md's pin, as N2's pinned its bonus against modify_damage: on boards with Goo-zooka's effect, Peculiar
         // Plaza, Trap Territory, Small Balloon, Inflatable Boat and Bombirdier, for every Energy count on the Active,
-        // C2's shortfall for a benched threat ready now (missing 0; the owner to move, so every stored effect is live)
-        // is the fewest Energy the engine needs added to the Active before it offers a Retreat.
+        // C2's shortfall for a benched threat ready now (missing 0, the owner to move) is the fewest Energy the engine
+        // needs added to the Active before it offers a Retreat. The pin reads the cost arithmetic alone, so Goo-zooka's
+        // effect here has 9 turns left and is live on any turn the retreat can come (with 1 turn left, a retreat that
+        // itself waits for attachments would come after it expires: that timing is the next test's).
         let goo = |card: PlayedCard| {
             let mut card = card;
-            card.add_effect(CardEffect::IncreasedRetreatCost { amount: 1 }, 1);
+            card.add_effect(CardEffect::IncreasedRetreatCost { amount: 1 }, 9);
             card
         };
         let bench = || mon(CardId::A1129MewtwoEx);
