@@ -2,11 +2,13 @@ name: km-tests
 
 # km's two light self-tests, run on every change to km_run/ and to score.py (rl/results/table_readings_2026-09-24/score.py). The
 # reader reads score45's page and km_thresholds.py reproduces score.py's rounding, so a change to score.py is a change to what
-# they are written against. The tests run on canned numbers and do not execute score.py; the stand-in suite (below) does.
+# they are written against. Only one part of them executes score.py: the percentile arithmetic (the P cases of the second test, below).
+# The rest runs on canned numbers; the stand-in suite (below) is what runs score.py on a whole reading.
 # No game, no engine, no build:
 #   read_km.py --selftest        the reader's gate logic on canned numbers, including the near-zero sweeps (each side of the
 #                                 dMSE and tau lines, never a wrong call, the 20,000-rep rule unchanged)
-#   test_km_thresholds.py        km_thresholds.py on synthetic counts (the M1 / M2 threshold cases, the guard, the frozen seeds)
+#   test_km_thresholds.py        km_thresholds.py on synthetic counts (the M1 / M2 threshold cases, the guard, the frozen seeds), and
+#                                 (P1-P3) km_thresholds.py's and read_km.py's percentile index arithmetic against score.py's own pct
 # unittest discovery finds neither (the second is a plain script that takes a scratch folder), so each is run directly, and each
 # step fails unless the test printed its own success line: a run that checked nothing must not go green.
 # Not run here: test_read_km.sh, the stand-in suite of the whole reader. It takes about 20 minutes, builds stand-in trees from
