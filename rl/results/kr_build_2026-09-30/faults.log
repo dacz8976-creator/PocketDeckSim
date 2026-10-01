@@ -1,0 +1,41 @@
+== fault 1: Goo-zooka's effect counts whenever it is on the board (no liveness)
+test players::value_functions::kr_tests::c2_moves_the_clock_only_where_a_benched_threat_waits ... ok
+test players::value_functions::kr_tests::c2_pin_the_shortfall_is_the_engines_retreat_arithmetic ... ok
+test players::value_functions::kr_tests::kr_and_kro_are_km_plus_c2_and_nothing_else ... ok
+test players::public_pricing_player::tests::kr3_from_get_player_plays_goo_zooka_where_it_delays_their_benched_threat_and_not_otherwise ... ok
+test players::value_functions::kr_tests::c2_counts_a_raised_cost_only_while_it_is_live_when_the_threat_would_attack ... FAILED
+test players::value_functions::kr_tests::on_played_states_kr_and_kro_are_km_with_their_flags_cleared_and_differ_somewhere ... ok
+test players::value_functions::kr_tests::kr3_with_c2_off_equals_km3_move_for_move_on_200_scratch_deals ... ok
+test result: FAILED. 6 passed; 1 failed; 0 ignored; 0 measured; 426 filtered out; finished in 55.30s
+error: test failed, to rerun pass `--lib`
+== fault 2: the Active's own candidates are charged too
+test players::value_functions::kr_tests::c2_counts_a_raised_cost_only_while_it_is_live_when_the_threat_would_attack ... ok
+test players::value_functions::kr_tests::c2_pin_the_shortfall_is_the_engines_retreat_arithmetic ... ok
+test players::value_functions::kr_tests::kr_and_kro_are_km_plus_c2_and_nothing_else ... ok
+test players::public_pricing_player::tests::kr3_from_get_player_plays_goo_zooka_where_it_delays_their_benched_threat_and_not_otherwise ... ok
+test players::value_functions::kr_tests::c2_moves_the_clock_only_where_a_benched_threat_waits ... FAILED
+test players::value_functions::kr_tests::on_played_states_kr_and_kro_are_km_with_their_flags_cleared_and_differ_somewhere ... ok
+test players::value_functions::kr_tests::kr3_with_c2_off_equals_km3_move_for_move_on_200_scratch_deals ... ok
+test result: FAILED. 6 passed; 1 failed; 0 ignored; 0 measured; 426 filtered out; finished in 56.44s
+error: test failed, to rerun pass `--lib`
+== fault 3: kt_clocks gives each clock the other side's flag
+test players::value_functions::kr_tests::c2_counts_a_raised_cost_only_while_it_is_live_when_the_threat_would_attack ... ok
+test players::value_functions::kr_tests::c2_moves_the_clock_only_where_a_benched_threat_waits ... ok
+test players::value_functions::kr_tests::kr_and_kro_are_km_plus_c2_and_nothing_else ... ok
+test players::value_functions::kr_tests::c2_pin_the_shortfall_is_the_engines_retreat_arithmetic ... ok
+test players::public_pricing_player::tests::kr3_from_get_player_plays_goo_zooka_where_it_delays_their_benched_threat_and_not_otherwise ... FAILED
+test players::value_functions::kr_tests::on_played_states_kr_and_kro_are_km_with_their_flags_cleared_and_differ_somewhere ... ok
+test players::value_functions::kr_tests::kr3_with_c2_off_equals_km3_move_for_move_on_200_scratch_deals ... ok
+test result: FAILED. 6 passed; 1 failed; 0 ignored; 0 measured; 426 filtered out; finished in 54.93s
+error: test failed, to rerun pass `--lib`
+== fault 4: the 200-deal test's "C2 off" player has C2 on
+test players::value_functions::kr_tests::c2_counts_a_raised_cost_only_while_it_is_live_when_the_threat_would_attack ... ok
+test players::value_functions::kr_tests::c2_moves_the_clock_only_where_a_benched_threat_waits ... ok
+test players::value_functions::kr_tests::kr_and_kro_are_km_plus_c2_and_nothing_else ... ok
+test players::public_pricing_player::tests::kr3_from_get_player_plays_goo_zooka_where_it_delays_their_benched_threat_and_not_otherwise ... ok
+test players::value_functions::kr_tests::c2_pin_the_shortfall_is_the_engines_retreat_arithmetic ... ok
+test players::value_functions::kr_tests::on_played_states_kr_and_kro_are_km_with_their_flags_cleared_and_differ_somewhere ... ok
+test players::value_functions::kr_tests::kr3_with_c2_off_equals_km3_move_for_move_on_200_scratch_deals ... FAILED
+test result: FAILED. 6 passed; 1 failed; 0 ignored; 0 measured; 426 filtered out; finished in 59.85s
+error: test failed, to rerun pass `--lib`
+restored byte for byte
