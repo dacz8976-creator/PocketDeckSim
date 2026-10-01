@@ -1594,10 +1594,15 @@ pub(crate) enum DefenderHit {
 /// (`ReduceDamageAtFullHp`: only while undamaged, so the first hit only, or every hit if the first does 0).
 /// Expected, because two Abilities flip a coin: `CoinFlipToPreventIncomingDamage` (heads: no damage) and
 /// `CoinFlipToReduceIncomingDamage` (heads: its amount comes off the damage after Weakness and the other reductions,
-/// `modify_damage`'s step 4, as rules/02 has it). As in the engine, the coin flips for every hit an attack does to the
-/// defender, the direct-damage attacks (`DirectDamage`, `DirectDamageAndSelfCardEffect`, `DirectDamageIfDamaged`)
-/// included: their damage lands through a queued choice that now runs the defender's attack modifiers. Both were
-/// engine bugs until Sept 30 (rules/09, "Open engine bugs"); kd follows the engine, and tests pin both.
+/// `modify_damage`'s step 4, as rules/02 has it). As in the engine, the coin flips for the hits the engine routes
+/// through the defender's attack modifiers: the damage an attack carries in its outcome, the direct-damage attacks
+/// (`DirectDamage`, `DirectDamageAndSelfCardEffect`, `DirectDamageIfDamaged`), whose damage lands through a queued
+/// choice that now runs those modifiers, and Chase Order's discard branch (`discard_then_damage_choice`). Both orders
+/// were engine bugs until Sept 30 (rules/09, "Open engine bugs"). The engine still skips the coin at the other sites
+/// that deliver damage through a queued choice (Wild Swing, the own-Bench branch of `also_choice_bench_damage`, a
+/// copied Chase Order's discard branch, and the rest of that rules/09 entry's list): kd prices the coin there, as the
+/// card text says, so kd and the engine disagree at those sites, as they did before F1, until the engine is fixed.
+/// Tests pin the repaired orders.
 ///
 /// It runs `modify_damage`'s own stages, in its order, restricted to what stays on the board:
 /// - `base_damage == 0` does nothing;
@@ -3173,7 +3178,8 @@ mod persistent_defender_damage_tests {
     fn coin_flip_abilities_are_priced_in_expectation() {
         // Celestial Blessing: heads prevents the damage.
         assert_eq!(both(mon(CardId::A4080Togekiss), mon(CardId::A1001Bulbasaur), 40).0, (20.0, 20.0));
-        // Guarded Grill: heads takes -100 from the damage before modifiers (Bastiodon is weak to Fire).
+        // Guarded Grill: heads takes -100 from the damage after Weakness and the other modifiers (Bastiodon is weak to
+        // Fire): 40 + 20 = 60, tails 60, heads 0, so 30 on average.
         assert_eq!(both(mon(CardId::A2114Bastiodon), mon(CardId::A1033Charmander), 40).0, (30.0, 30.0));
     }
 

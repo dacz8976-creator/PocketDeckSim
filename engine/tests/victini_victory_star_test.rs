@@ -570,20 +570,26 @@ fn search_players_resolve_the_pause_instead_of_scoring_it_as_zero_damage() {
 
 // Repairs A and B together (Sonnet's F7: nothing tested them meeting). A Confused Fire attacker with Victory Star takes
 // Keep or Reroll after its Confusion heads, and the attack then runs into a defender whose coin-flip Ability cuts
-// damage: `finish_attack_after_confusion_heads`, then B's heads cut, which comes off after Weakness (rules/02, step 4).
-// Grimhound Flare is 80 per heads. The defenders get 400 HP so that no branch is a Knock Out.
+// damage: `finish_attack_after_confusion_heads`, then B's heads cut, which comes off after the attacker's bonuses and
+// Weakness (rules/02, step 4). Grimhound Flare is 80 per heads. The defenders get 400 HP so that no branch is a Knock Out.
+// Training Area is in play in every case (+10 for a Stage 1 attacker, which Mega Houndoom ex is): without a bonus the old
+// order, the cut off the raw damage, and the new one give the same numbers on heads (a hit cut to 0 first was dropped and
+// Weakness never applied to it), so the tests could not tell them apart (the laptop Opus's second read of F1-F7). With the
+// bonus they can: one head on Bastiodon is 80 + 10 + 20 = 110, and 110 - 100 = 10 comes off after the bonus, against 0 if the
+// raw 80 were cut first. All three coin tests fail on the engine with repair A only (d4fbc2a), where the cut is the old one.
 
 fn cut_defender(card_id: CardId) -> PlayedCard {
     PlayedCard::new(get_card_by_enum(card_id), 0, 400, vec![], false, vec![])
 }
 
-/// The state paused on a Confused Houndoom's Grimhound Flare after its Confusion heads, with exactly `heads` heads among
-/// the three coins, against `defender`.
+/// The state paused on a Confused Houndoom's Grimhound Flare after its Confusion heads, under Training Area (+10), with
+/// exactly `heads` heads among the three coins, against `defender`.
 fn paused_after_confusion_heads(defender: CardId, heads: usize) -> deckgym::State {
     for seed in 0..500 {
         let mut game = game(seed, CardId::B3025Victini, cut_defender(defender));
         let mut state = game.get_state_clone();
         state.apply_status_condition(0, 0, StatusCondition::Confused);
+        state.active_stadium = Some(get_card_by_enum(CardId::B2153TrainingArea));
         game.set_state(state);
         game.apply_action(&attack());
         let paused = game.get_state_clone();
@@ -615,43 +621,44 @@ fn expected_loss(branches: &[(f64, u32)]) -> f64 {
     branches.iter().map(|(p, loss)| p * f64::from(*loss)).sum()
 }
 
-/// Keep after a Confusion heads into Bastiodon (Metal, weak to Fire; Guarded Grill: heads takes -100). One head is 80,
-/// 100 with Weakness: tails 100, heads 100 - 100 = 0. Cutting the raw 80 first would leave 20 on heads.
+/// Keep after a Confusion heads into Bastiodon (Metal, weak to Fire; Guarded Grill: heads takes -100). One head is 80, 110
+/// with Training Area and Weakness: tails 110, heads 110 - 100 = 10. Cutting the raw 80 first would leave 0 on heads (the hit
+/// is dropped before the bonus and Weakness apply).
 #[test]
 fn keep_after_confusion_heads_takes_guarded_grills_cut_after_weakness() {
     let paused = paused_after_confusion_heads(CardId::A2114Bastiodon, 1);
     let mut branches = damage_branches(&paused, &keep());
     branches.sort_by_key(|(_, loss)| *loss);
     assert_eq!(branches.len(), 2, "{branches:?}");
-    assert_eq!((branches[0].1, branches[1].1), (0, 100), "{branches:?}");
+    assert_eq!((branches[0].1, branches[1].1), (10, 110), "{branches:?}");
     assert!(branches.iter().all(|(probability, _)| (probability - 0.5).abs() < 1e-12), "{branches:?}");
 }
 
 /// Reroll after a Confusion heads into Bastiodon: the fresh batch of three coins, then the cut, over every outcome.
-/// k heads: k = 1 loses 100 or 0, k = 2 loses 180 or 80, k = 3 loses 260 or 160, k = 0 nothing (no Weakness on 0).
-/// Expected 3/8 x 50 + 3/8 x 130 + 1/8 x 210 = 93.75. With the cut before Weakness the k = 1 heads branch would lose 20,
-/// and the expectation would be 97.5.
+/// k heads (Training Area +10 and Weakness +20 on any damage): k = 1 loses 110 or 10, k = 2 loses 190 or 90, k = 3 loses 270
+/// or 170, k = 0 nothing (no damage, so no bonus). Expected 3/8 x 60 + 3/8 x 140 + 1/8 x 220 = 102.5. With the cut off the raw
+/// damage first the k = 1 heads branch would lose 0 and the expectation would be 100.625.
 #[test]
 fn reroll_after_confusion_heads_takes_guarded_grills_cut_after_weakness_over_the_whole_batch() {
     let paused = paused_after_confusion_heads(CardId::A2114Bastiodon, 0);
     let source = paused.pending_attack_coin_choice.as_ref().unwrap().victory_star_in_play_idx;
     let branches = damage_branches(&paused, &reroll(source));
-    assert!((expected_loss(&branches) - 93.75).abs() < 1e-9, "{branches:?}");
-    assert!(branches.iter().all(|(_, loss)| *loss != 20), "{branches:?}");
+    assert!((expected_loss(&branches) - 102.5).abs() < 1e-9, "{branches:?}");
+    assert!(branches.iter().any(|(_, loss)| *loss == 10), "the k = 1 heads branch loses 10: {branches:?}");
 }
 
-/// The same into Hisuian Goodra (no Weakness; Securely Sheltered: heads takes -80), a finite cut and not a prevention:
-/// Keep on two heads loses 160 or 80; Reroll expects 3/8 x 40 + 3/8 x 120 + 1/8 x 200 = 85 (a full prevention on heads
-/// would give 60).
+/// The same into Hisuian Goodra (no Weakness; Securely Sheltered: heads takes -80), a finite cut and not a prevention, and
+/// after the +10: Keep on one head loses 90 or 10 (80 + 10 - 80; the raw cut would leave 0); Reroll expects 3/8 x 50 + 3/8 x 130
+/// + 1/8 x 210 = 93.75 (the raw cut: 91.875; a full prevention on heads: 64.375).
 #[test]
 fn keep_and_reroll_after_confusion_heads_take_securely_sheltered_as_a_finite_cut() {
-    let paused = paused_after_confusion_heads(CardId::B3b050HisuianGoodra, 2);
+    let paused = paused_after_confusion_heads(CardId::B3b050HisuianGoodra, 1);
     let mut kept: Vec<u32> = damage_branches(&paused, &keep()).into_iter().map(|(_, loss)| loss).collect();
     kept.sort_unstable();
-    assert_eq!(kept, vec![80, 160]);
+    assert_eq!(kept, vec![10, 90]);
     let source = paused.pending_attack_coin_choice.as_ref().unwrap().victory_star_in_play_idx;
     let rerolled = damage_branches(&paused, &reroll(source));
-    assert!((expected_loss(&rerolled) - 85.0).abs() < 1e-9, "{rerolled:?}");
+    assert!((expected_loss(&rerolled) - 93.75).abs() < 1e-9, "{rerolled:?}");
 }
 
 /// A Confused attacker whose attack flips no coins keeps the old path (`try_forecast_victory_star_attack` returns None
