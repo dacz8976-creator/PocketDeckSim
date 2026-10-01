@@ -496,6 +496,11 @@ sides with k3 still available; the 0.7.2 wheel and its run identities are untouc
      - **Where work runs (Dustin, Sept 30, in the "Second brain from GitHub repos" session, relayed to the laptop session; verbatim):** "Longer runs and builds should be laptop, parallel smaller jobs should be cloud". It came after he asked why the cloud was running km's 114,840-game identity (about 6½ hours by its log) when the laptop plays about 8.6 games a second (about 3¾ hours), with the laptop waiting on it.
        - **It supersedes** the part of the rules above that gives builds and identity replays to the cloud. From the next job: release builds, long identity replays and tables go to the laptop; the cloud takes smaller jobs that can run in parallel (code changes, unit tests, the one code review, short smoke checks, diagnostics). A candidate's cloud round is fitted to that. Laptop quiet hours still apply to the long runs.
        - **km's round at B** (started before the rule) finishes on the cloud, unless Dustin says to move it. The laptop's part is unchanged (km's Amendment 1 (g)).
+   - **The shot list and blind quizzes: a standing rule (Dustin, Sept 30 evening).**
+     - To the laptop session, verbatim: "if anything should be added to the shot list artifact or another quiz helps at any point, feel free to do either".
+     - Then via the Fable coordinator session, verbatim: "quizzes or the shot list should be used to clear up things whenever helpful, so I don't have to specifically ask for it."
+     - **So any session may add a Pocket Shot List row or build a blind quiz without asking.** It tells Dustin in one line what the row or quiz is evidence for.
+     - An untaken quiz or an unrecorded shot is never a blocker.
 3. Pilot quality: kd (the defender's Weakness and reductions in the clock) read against kp3 on v2; then, approved by
    Dustin on Sept 25 as optional and only after kd is read, **one Altaria detector network** on an otherwise idle
    laptop night: the Hydreigon recipe (two networks trained against each other, pair checks passed before anything is
