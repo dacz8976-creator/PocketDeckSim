@@ -39,7 +39,7 @@ Written Sept 30 for the Fable coordinator session (Dustin's single delegator). T
    - This file.
 4. **Waiting on the laptop or Sonnet.** Nothing.
 5. **Open questions for Dustin.**
-   - **Job 2: may I touch a fifth engine file, `engine/src/state/mod.rs`, for Mega Kangaskhan ex's second punch only?** (asked Oct 1, before touching it)
+   - **Job 2: may I touch a fifth engine file, `engine/src/state/mod.rs`, for Mega Kangaskhan ex's second punch only?** (asked Oct 1, before touching it) **Answered yes (Fable via Dustin, Oct 1): its pending-hit check only, nothing else in the file.**
      - Why: when the first punch Knocks Out the Active, the opponent must choose a new Active before the second punch lands. `trigger_promotion_or_declare_winner` (`state/mod.rs:1417-1426`, "pending_hit_floor") finds the waiting punch by looking for an `ApplyDamage` aimed at the empty Active. The coin-flipping path queues the punch as `ApplyQueuedAttackDamage`, which that check doesn't see. The promotion would then go under the punch, and the punch would land on an empty Active Spot.
      - The change: that check also recognises an `ApplyQueuedAttackDamage` aimed at the empty Active (a few lines, same shape). Nothing else in the file.
      - Checked in a scratch copy, not committed:
@@ -63,3 +63,4 @@ Written Sept 30 for the Fable coordinator session (Dustin's single delegator). T
 - 2026-09-30: build C2 (TIMING.md; Fable via Dustin): a benched threat pays its Active's missing retreat Energy in km's clock, both sides, N1 off, plus a one-sided diagnostic code; tests first (the retreat pin, 200 scratch deals with the term off = km3, the 10 judged turns), then the scratch smoke and README. players/ and tests only; no table games, no identity replay, no merge.
 - 2026-10-01: F8 (Fable via Dustin): upstream 09e964f's hp_aura_promotion_test.rs ported as a scratch test under rl/results/engine_switch_rules_2026-10/f8/, run against d363ba8's engine; F8.md on fix 1. No engine change.
 - 2026-10-01: coin-flip prevention, the later round (Fable via Dustin): the seven recorded sites, failing tests first, then the gated fix; on a new branch claude/coin-prevention-round2 cut from Sonnet's R (1abdbe8). Own-Bench form left open. No players/ change, no table games, no merge.
+- 2026-10-01: coin-flip prevention, the later round's seventh site (Fable via Dustin): Mega Kangaskhan ex's second punch on claude/coin-prevention-round2, with engine/src/state/mod.rs's pending-hit check as the approved fifth file; tests first (the knockout-then-promotion case and the non-knockout case), then the fix, the full suite and the README. Then idle. Round 2 goes in the next switch, not the current one.
