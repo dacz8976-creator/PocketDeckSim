@@ -518,6 +518,94 @@ fn carefree_steps_flips_for_litter() {
     assert!(prevented > 10 && hit > 10, "{prevented} prevented, {hit} hit: the coin must flip");
 }
 
+/// Mega Kangaskhan ex's Double-Punching Family: "This attack is used twice in a row. The second attack does 40 damage."
+/// Each punch is an attack of its own, so Togekiss's Celestial Blessing flips for each: over 60 seeds the damage is 0, 40,
+/// 80 or 120, and the second punch is sometimes prevented (0 or 80) and sometimes not (40 or 120).
+#[test]
+fn celestial_blessing_flips_for_both_punches_of_double_punching_family() {
+    let (mut second_prevented, mut second_hit) = (0, 0);
+    for seed in 0..60u64 {
+        let mut game = get_initialized_game_with_board(
+            seed,
+            0,
+            5,
+            vec![PlayedCard::from_id(CardId::B2127MegaKangaskhanEx).with_energy(vec![EnergyType::Colorless; 3])],
+            vec![PlayedCard::from_id(CardId::A4080Togekiss), bulbasaur()],
+        );
+        game.apply_action(&Action { actor: 0, action: attack_action(CardId::B2127MegaKangaskhanEx, 0), is_stack: false });
+        for _ in 0..10 {
+            let state = game.get_state_clone();
+            let (actor, choices) = state.generate_possible_actions();
+            if state.move_generation_stack.is_empty() || actor != 0 || choices.is_empty() {
+                break;
+            }
+            game.apply_action(&choices[0]);
+        }
+        let togekiss = game.get_state_clone().in_play_pokemon[1][0].clone().expect("Togekiss survives 120");
+        match 140 - togekiss.get_remaining_hp() {
+            0 | 80 => second_prevented += 1,
+            40 | 120 => second_hit += 1,
+            other => panic!("seed {seed}: {other} damage"),
+        }
+    }
+    assert!(
+        second_prevented > 10 && second_hit > 10,
+        "second punch: {second_prevented} prevented, {second_hit} hit: the coin must flip for it"
+    );
+}
+
+/// When the first punch Knocks Out the Active (Bulbasaur, 70 HP), the opponent chooses a new Active first and the second
+/// punch lands on it ("... used after your opponent chooses a new Active Pokemon"). Promoting Meowth, its coin flips for
+/// the second punch.
+#[test]
+fn carefree_steps_flips_for_the_second_punch_after_a_knock_out() {
+    let (mut prevented, mut hit) = (0, 0);
+    for seed in 0..60u64 {
+        let mut game = get_initialized_game_with_board(
+            seed,
+            0,
+            5,
+            vec![PlayedCard::from_id(CardId::B2127MegaKangaskhanEx).with_energy(vec![EnergyType::Colorless; 3])],
+            vec![bulbasaur(), meowth()],
+        );
+        game.apply_action(&Action { actor: 0, action: attack_action(CardId::B2127MegaKangaskhanEx, 0), is_stack: false });
+        let mut promoted = false;
+        for _ in 0..10 {
+            let state = game.get_state_clone();
+            if state.move_generation_stack.is_empty() {
+                break;
+            }
+            let (actor, choices) = state.generate_possible_actions();
+            if choices.is_empty() {
+                break;
+            }
+            if actor == 1 {
+                let promote = choices
+                    .iter()
+                    .find(|choice| matches!(choice.action, SimpleAction::Promote { player: 1, in_play_idx: 1 }))
+                    .expect("player 1 promotes Meowth");
+                promoted = true;
+                game.apply_action(promote);
+                continue;
+            }
+            // The attack's retaliation step comes first; the second punch's damage must wait for the promotion.
+            if matches!(choices[0].action, SimpleAction::ApplyDamage { .. } | SimpleAction::ApplyQueuedAttackDamage { .. }) {
+                assert!(promoted, "seed {seed}: the second punch waits for the new Active");
+            }
+            game.apply_action(&choices[0]);
+        }
+        assert!(promoted, "seed {seed}: the first punch Knocks Out Bulbasaur");
+        let state = game.get_state_clone();
+        assert_eq!(state.get_active(1).get_name(), "Meowth", "seed {seed}");
+        if state.get_active(1).get_remaining_hp() == 50 {
+            prevented += 1;
+        } else {
+            hit += 1;
+        }
+    }
+    assert!(prevented > 10 && hit > 10, "{prevented} prevented, {hit} hit: the coin must flip for the second punch");
+}
+
 /// The later round's gate: a choice takes the coin-flipping path (`ApplyQueuedAttackDamage`) only when one of its
 /// targets has a coin-flip damage Ability; every other choice is queued exactly as before (`ApplyDamage`). Tornado Shot
 /// queues the Active's hit and a Benched hit together, so a coin Ability in the Active Spot sends every choice there.
