@@ -18,7 +18,12 @@ Written Sept 30 for the Fable coordinator session (Dustin's single delegator). T
    - Job 2, on the new branch: the first round's four files (engine/src/actions/apply_attack_action.rs, apply_action.rs, attack_outcome.rs, engine/src/hooks/core.rs), their tests, and rl/results/coin_prevention_round2_2026-10-01/.
    - This file.
 4. **Waiting on the laptop or Sonnet.** Nothing.
-5. **Open questions for Dustin.** None yet.
+5. **Open questions for Dustin.**
+   - **Job 2: may I touch a fifth engine file, `engine/src/state/mod.rs`, for Mega Kangaskhan ex's second punch only?** (asked Oct 1, before touching it)
+     - Why: when the first punch Knocks Out the Active, the opponent must choose a new Active before the second punch lands. `trigger_promotion_or_declare_winner` (`state/mod.rs:1416-1424`, "pending_hit_floor") finds the waiting punch by looking for an `ApplyDamage` aimed at the empty Active. The coin-flipping path queues the punch as `ApplyQueuedAttackDamage`, which that check doesn't see. The promotion would then go under the punch, and the punch would land on an empty Active Spot.
+     - The change: that check also recognises an `ApplyQueuedAttackDamage` aimed at the empty Active (a few lines, same shape). Nothing else in the file.
+     - If the answer is no, the second punch stays as it is (recorded as still open), and the other six sites go ahead in the four files.
+     - Meanwhile I'm doing the other six sites, which fit in the four files.
 
 ## Log (one line per new job, added and pushed before it starts)
 
