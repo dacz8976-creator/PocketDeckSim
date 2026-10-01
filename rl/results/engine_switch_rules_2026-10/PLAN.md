@@ -125,7 +125,13 @@ Times use 8.6 games a second on the laptop, so treat them as upper bounds: Sept 
 
 **The mechanic check** (for steps 8 and 8b, and for any changed game anywhere):
 - Every changed game must reach its repair's mechanic.
-- **On the board** (the coordinator's wording, Oct 1, tightening the earlier "first fires at or before"): an exact F5 counter must fire **in the same turn as the game's first differing move**. The counters record every firing tick, not only the first. Otherwise the probe (`vs_probe.rs` for A, `coin_probe.rs` and `coin_lookahead.py` for B) must show the gate within the mover's search depth: both halves of "in lookahead" below. An earlier firing alone explains nothing. This follows the laptop's second read of R (`SECOND_READ_F1_F7_opus.md`, finding 4): `coin_queued_offered` fired in 13 of the coin smoke's 28 unchanged games. Only exact counters count as reach:
+- **On the board.** This is the coordinator's wording, Oct 1, tightening the earlier "first fires at or before". It is made exact in `tightened_rule.py`'s header (Sonnet), which the coordinator accepted.
+  - A changed game is on the board only if an exact F5 counter fired at a tick at or before the first differing tick k, and either in the same turn as k or at the cause tick (the move just before k). A chosen-move counter fires at the move before k, which is in the previous turn when that move ends the turn.
+  - Counters record every firing tick. A firing after k, or in an earlier turn other than the cause tick, never explains a game.
+  - These are **board differences:** the offered moves differ on the same state; a forced move (n = 1) differs; the state differs after identical moves; or one game is a prefix of the other. A board difference with no counter is **UNEXPLAINED** and stops the switch.
+  - A **lookahead difference** is the same state with the same offered moves and a different choice. It needs the probe (`vs_probe.rs` for A, `coin_probe.rs` and `coin_lookahead.py` for B) to find the gate inside the mover's search depth at tick k: both halves of "in lookahead" below.
+  - This follows the laptop's second read of R (`SECOND_READ_F1_F7_opus.md`, finding 4): `coin_queued_offered` fired in 13 of the coin smoke's 28 unchanged games.
+  - Only exact counters count as reach:
   - (A) the Confusion-first branch built;
   - (B a) a heads finite cut recorded on a Bastiodon or Goodra taking more than 0;
   - (B b and Chase Order) the queued coin-path choice offered.
