@@ -140,4 +140,7 @@ fn main() {
             println!("  after [{}] the attack(s) {:?} would build the Confusion-first branch", path.join(" ; "), titles);
         }
     }
+    // For the scripts: the fewest moves before an attack that builds the branch (0 = the branch is built by an attack offered at the
+    // tick itself); anything found is inside kog3's three plies, as the search above stops at MAX_ACTIONS_BEFORE moves.
+    println!("RESULT built={}", found.keys().next().map_or("none".to_string(), |depth| depth.to_string()));
 }
