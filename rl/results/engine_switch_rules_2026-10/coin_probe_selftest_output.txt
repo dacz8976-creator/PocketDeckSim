@@ -1,0 +1,26 @@
+  A mover seat 1, turn 5; Active Charmeleon; 5 offered moves
+  A CUT: a finite heads cut is recorded by the move chosen at ply 1: INSIDE THE SEARCH
+    after [Attack(Attack { energy_required: [Fire, Colorless, Colorless], title: "Fire Claws", fix...] the attack's own damage, finite cut at slot(s) [0]
+ok   Fire Claws into Bastiodon: queued None (free false), cut Some(1)
+  B mover seat 1, turn 5; Active Heatmor; 6 offered moves
+  B CUT: a finite heads cut is recorded by the move chosen at ply 2: INSIDE THE SEARCH
+    after [Attack(Attack { energy_required: [Fire], title: "Tongue Whip", fixed_damage: 0, effect:... ; ApplyQueuedAttackDamage { attack: Attack { energy_required: [Fire], title: "Tongue Whip...] the queued choice's finite cut at slot(s) [2]
+  B QUEUED: a queued coin-path choice is offered after 1 move(s): INSIDE THE SEARCH
+    after [Attack(Attack { energy_required: [Fire], title: "Tongue Whip", fixed_damage: 0, effect:...] offers ApplyQueuedAttackDamage { attack: Attack { energy_required: [Fire], title: "Tongue Whip... (a mixed frame: an ordinary move)
+ok   Tongue Whip, Bastiodon on the Bench: queued Some(1) (free false), cut Some(2)
+  C mover seat 1, turn 5; Active Heatmor; 6 offered moves
+  C QUEUED: a queued coin-path choice is offered after 1 move(s): INSIDE THE SEARCH
+    after [Attack(Attack { energy_required: [Fire], title: "Tongue Whip", fixed_damage: 0, effect:...] offers ApplyQueuedAttackDamage { attack: Attack { energy_required: [Fire], title: "Tongue Whip... (a mixed frame: an ordinary move)
+ok   Tongue Whip, Togekiss on the Bench: queued Some(1) (free false), cut None
+  F mover seat 1, turn 5; Active Heatmor; 6 offered moves
+  F QUEUED: a queued coin-path choice is offered after 1 move(s): INSIDE THE SEARCH
+    after [Attack(Attack { energy_required: [Fire], title: "Tongue Whip", fixed_damage: 0, effect:...] offers ApplyQueuedAttackDamage { attack: Attack { energy_required: [Fire], title: "Tongue Whip... (a pure frame: the bots resolve it without spending a ply)
+ok   Tongue Whip, a lone Togekiss on the Bench (a pure frame): queued Some(1) (free true), cut None
+  D mover seat 1, turn 5; Active Heatmor; 6 offered moves
+  D NOT FOUND: neither a queued coin-path choice nor a finite heads cut within 3 plies (12 chance samples per move; not a proof of absence)
+ok   Tongue Whip, no coin Pokemon: queued None (free false), cut None
+  E mover seat 1, turn 5; Active Heatmor; 2 offered moves
+  E QUEUED: a queued coin-path choice is offered after 0 move(s): INSIDE THE SEARCH
+    after [] offers ApplyQueuedAttackDamage { attack: Attack { energy_required: [Fire], title: "Tongue Whip... (a mixed frame: an ordinary move)
+ok   the state after Tongue Whip (the choice is on the table): queued Some(0) (free false), cut None
+selftest: 6 checks and 2 frame checks, 0 failures

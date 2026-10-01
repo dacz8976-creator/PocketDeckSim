@@ -1,0 +1,28 @@
+12 changed games of 40: [2, 9, 12, 16, 19, 23, 28, 29, 30, 32, 33, 35]
+i =  2: first difference at tick  27 (same board and offered moves, different choice); counters {'coin_queued_offered': 30}; probe: queued choice after 1 move(s) (a pure frame, resolved without a ply), finite cut at ply None => LOOKAHEAD ONLY, both halves hold
+i =  9: first difference at tick  11 (same board and offered moves, different choice); counters {'coin_queued_offered': 15}; probe: queued choice after 2 move(s) (a pure frame, resolved without a ply), finite cut at ply None => LOOKAHEAD ONLY, both halves hold
+i = 12: first difference at tick  28 (same board and offered moves, different choice); counters {'coin_queued_offered': 31}; probe: queued choice after 1 move(s) (a pure frame, resolved without a ply), finite cut at ply None => LOOKAHEAD ONLY, both halves hold
+i = 16: first difference at tick  88 (the board or the offered moves differ); counters {'coin_queued_offered': 88}; probe: queued choice after 0 move(s), finite cut at ply None => ON THE BOARD
+i = 19: first difference at tick  38 (same board and offered moves, different choice); counters {'coin_queued_offered': 38}; probe: queued choice after 0 move(s) (a pure frame, resolved without a ply), finite cut at ply None => ON THE BOARD
+i = 23: first difference at tick  27 (the board or the offered moves differ); counters {'coin_queued_offered': 27}; probe: queued choice after 0 move(s), finite cut at ply None => ON THE BOARD
+i = 28: first difference at tick  14 (same board and offered moves, different choice); counters {'coin_queued_offered': 20}; probe: queued choice after 2 move(s) (a pure frame, resolved without a ply), finite cut at ply None => LOOKAHEAD ONLY, both halves hold
+i = 29: first difference at tick  14 (the board or the offered moves differ); counters {'coin_queued_offered': 14}; probe: queued choice after 0 move(s), finite cut at ply None => ON THE BOARD
+i = 30: first difference at tick  37 (same board and offered moves, different choice); counters {'coin_queued_offered': 40}; probe: queued choice after 1 move(s) (a pure frame, resolved without a ply), finite cut at ply None => LOOKAHEAD ONLY, both halves hold
+i = 32: first difference at tick  17 (the board or the offered moves differ); counters {'coin_queued_offered': 17}; probe: queued choice after 0 move(s), finite cut at ply None => ON THE BOARD
+i = 33: first difference at tick  18 (same board and offered moves, different choice); counters {'coin_queued_offered': 18}; probe: queued choice after 0 move(s) (a pure frame, resolved without a ply), finite cut at ply None => ON THE BOARD
+i = 35: first difference at tick  37 (same board and offered moves, different choice); counters {'coin_queued_offered': 44}; probe: queued choice after 3 move(s) (a pure frame, resolved without a ply), finite cut at ply None => LOOKAHEAD ONLY, both halves hold
+
+S3's four games (the probe must find the queued coin-path choice on the table, after 0 moves, at the first differing tick):
+  i = 16: S3 traced tick 88; first difference here 88; probe: queued after 0 move(s)  (match)
+  i = 23: S3 traced tick 27; first difference here 27; probe: queued after 0 move(s)  (match)
+  i = 29: S3 traced tick 14; first difference here 14; probe: queued after 0 move(s)  (match)
+  i = 32: S3 traced tick 17; first difference here 17; probe: queued after 0 move(s)  (match)
+
+negative control (unchanged games, a mid-game tick with no Meowth in play on either side: the probe must find nothing):
+  i = 0, tick 10: queued None, cut None  (nothing found, as it must be)
+  i = 3, tick 8: queued None, cut None  (nothing found, as it must be)
+  i = 4, tick 8: queued None, cut None  (nothing found, as it must be)
+
+verdicts: {"LOOKAHEAD ONLY, both halves hold": 6, "ON THE BOARD": 6}
+games by verdict: {"LOOKAHEAD ONLY, both halves hold": [2, 9, 12, 28, 30, 35], "ON THE BOARD": [16, 19, 23, 29, 32, 33]}
+unexplained: none; needing a judgment: none; golden and control mismatches: 0
