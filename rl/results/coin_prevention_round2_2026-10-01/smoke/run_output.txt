@@ -1,0 +1,47 @@
+   Compiling deckgym v0.1.0-pdl.rules4 (<scratch>/r2smoke/r_plain/engine)
+    Finished `release` profile [optimized] target(s) in 2m 14s
+scan_r_plain sha256 aca7d9a018ee0a6b9a49bd49e0e05e0a0144a0f86ec2e6b2146109552b4ca6e9 (1abdbe8: 1abdbe8)
+   Compiling deckgym v0.1.0-pdl.rules4 (<scratch>/r2smoke/round2_plain/engine)
+    Finished `release` profile [optimized] target(s) in 2m 12s
+scan_round2_plain sha256 b7c1c6f462aa1039515ec48a35865e83dae30656deb8cee26243e7c2dc0b6dc9 (HEAD: 0e9464a)
+instrumented <scratch>/r2smoke/round2_watch/engine/examples/legality_scan.rs
+   Compiling deckgym v0.1.0-pdl.rules4 (<scratch>/r2smoke/round2_watch/engine)
+    Finished `release` profile [optimized] target(s) in 2m 06s
+scan_round2_watch sha256 0467c6aaf67ed64d16e7ac10089bfc8ef4f1a7cd24383c419ef991effa27eb2d (HEAD: 0e9464a)
+games_r_plain.jsonl: 80 games
+games_round2_plain.jsonl: 80 games
+games_round2_watch.jsonl: 80 games
+exit 0
+
+== scan page, r_plain
+bot km3, 40 table deals per pairing, rules checked against RULES_FOR_AGENTS.md (updated 2026-09-22, rules4)
+pairings from pairs.tsv (2 rows), seed base 20980000000, deck paths relative to .
+water_round2 v meowth_carefree first deck  86.2%   distinct games 40 of 40   games with findings: 0
+      Chase Order choices: discarded 36 of 36 (Gyarados 4, Magikarp 1, Rapid Strike Urshifu 14, Slowking 3, Slowpoke 1, Wellspring Mask Ogerpon 23)
+water_round2 v fire_heatmor first deck  52.5%   distinct games 40 of 40   games with findings: 0
+      Chase Order choices: discarded 9 of 9 (Rapid Strike Urshifu 4, Slowking 1, Wellspring Mask Ogerpon 7)
+
+Findings (occurrences / games affected):
+  none
+
+== scan page, round2_plain
+bot km3, 40 table deals per pairing, rules checked against RULES_FOR_AGENTS.md (updated 2026-09-22, rules4)
+pairings from pairs.tsv (2 rows), seed base 20980000000, deck paths relative to .
+water_round2 v meowth_carefree first deck  86.2%   distinct games 40 of 40   games with findings: 0
+      Chase Order choices: discarded 47 of 47 (Gyarados 5, Magikarp 4, Rapid Strike Urshifu 20, Slowking 4, Slowpoke 1, Wellspring Mask Ogerpon 22)
+water_round2 v fire_heatmor first deck  52.5%   distinct games 40 of 40   games with findings: 0
+      Chase Order choices: discarded 9 of 9 (Rapid Strike Urshifu 4, Slowking 1, Wellspring Mask Ogerpon 7)
+
+Findings (occurrences / games affected):
+  none
+
+== scan page, round2_watch
+bot km3, 40 table deals per pairing, rules checked against RULES_FOR_AGENTS.md (updated 2026-09-22, rules4)
+pairings from pairs.tsv (2 rows), seed base 20980000000, deck paths relative to .
+water_round2 v meowth_carefree first deck  86.2%   distinct games 40 of 40   games with findings: 0
+      Chase Order choices: discarded 47 of 47 (Gyarados 5, Magikarp 4, Rapid Strike Urshifu 20, Slowking 4, Slowpoke 1, Wellspring Mask Ogerpon 22)
+water_round2 v fire_heatmor first deck  52.5%   distinct games 40 of 40   games with findings: 0
+      Chase Order choices: discarded 9 of 9 (Rapid Strike Urshifu 4, Slowking 1, Wellspring Mask Ogerpon 7)
+
+Findings (occurrences / games affected):
+  none

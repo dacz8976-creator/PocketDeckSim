@@ -1,0 +1,56 @@
+
+## Wild Swing (discard_own_benched_type_for_damage, then discard_then_damage_choice)  (DiscardOwnBenchedTypeForDamage)
+  A4 045    Gyarados - Wild Swing  [{ energy_type: EnergyType::Water, damage_per: 40, },]
+      in decks: decks/screen/panel_ladder_2026-09-26/l-sharpedo.txt (2)
+  A4 215    Gyarados - Wild Swing  [{ energy_type: EnergyType::Water, damage_per: 40, },]
+      in decks: none
+
+## Wellspring Dance (coin_flip_also_choice_bench_damage)  (CoinFlipAlsoChoiceBenchDamage)
+  B2 048    Wellspring Mask Ogerpon - Wellspring Dance  [{ opponent: true, damage: 40 },]
+      in decks: none
+
+## Tornado Shot (self_discard_energy_and_choice_bench_damage)  (SelfDiscardEnergyAndChoiceBenchDamage)
+  B3 051    Rapid Strike Urshifu - Tornado Shot  [{ energies: vec![EnergyType::Water], bench_damage: 40, },]
+      in decks: none
+
+## Double Splash / Triple Bombardment (conditional_bench_damage_attack)  (ConditionalBenchDamage)
+  B1a 019   Blastoise - Double Splash  [{ required_extra_energy: vec![EnergyType::Water, EnergyType::Water], bench_damage: 50, num_bench_targets: 1, opponent: true, },]
+      in decks: none
+  B1a 020   Mega Blastoise ex - Triple Bombardment  [{ required_extra_energy: vec![EnergyType::Water, EnergyType::Water, EnergyType::Water], bench_damage: 50, num_bench_targets: 2, opponent: true, },]
+      in decks: none
+  B1a 078   Mega Blastoise ex - Triple Bombardment  [{ required_extra_energy: vec![EnergyType::Water, EnergyType::Water, EnergyType::Water], bench_damage: 50, num_bench_targets: 2, opponent: true, },]
+      in decks: none
+  B1a 084   Mega Blastoise ex - Triple Bombardment  [{ required_extra_energy: vec![EnergyType::Water, EnergyType::Water, EnergyType::Water], bench_damage: 50, num_bench_targets: 2, opponent: true, },]
+      in decks: none
+
+## Mega Kangaskhan ex's second punch (mega_kangaskhan_ex_double_punching_family)  (MegaKangaskhanExDoublePunchingFamily)
+  B2 127    Mega Kangaskhan ex - Double-Punching Family  [,]
+      in decks: none
+  B2 189    Mega Kangaskhan ex - Double-Punching Family  [,]
+      in decks: none
+  B2 202    Mega Kangaskhan ex - Double-Punching Family  [,]
+      in decks: none
+  B4 231    Mega Kangaskhan ex - Double-Punching Family  [,]
+      in decks: none
+
+## Mischievous Ring (shuffle_opponent_tools_into_deck_before_damage)  (ShuffleOpponentToolsIntoDeckBeforeDamage)
+  B4 077    Hoopa - Mischievous Ring  [,]
+      in decks: none
+
+## Litter (discard_tools_from_hand_for_damage, then discard_tools_then_damage_choice)  (DiscardToolsFromHandForDamage)
+  A4a 018   Slowking - Litter  [{ max_cards: 2, damage_per_card: 50, },]
+      in decks: none
+
+## the coin-flip damage Abilities (the defenders)
+  A2 114    Bastiodon - Guarded Grill  [CoinFlipToReduceDamage { amount: 100 },]
+      in decks: none
+  A4 080    Togekiss - Celestial Blessing  [CoinFlipToPreventDamage ,]
+      in decks: none
+  B2 124    Meowth - Carefree Steps  [CoinFlipToPreventDamage ,]
+      in decks: none
+  B2 204    Meowth - Carefree Steps  [CoinFlipToPreventDamage ,]
+      in decks: none
+  B3b 050   Hisuian Goodra - Securely Sheltered  [CoinFlipToReduceDamage { amount: 80 },]
+      in decks: none
+
+(deck lists read: 64 files under decks/)

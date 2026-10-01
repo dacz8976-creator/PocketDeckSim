@@ -1,0 +1,21 @@
+this branch, plain v watch scan (the counters change no play): same moves in 80 of 80
+
+pairing 0, water_round2 v meowth_carefree: games whose moves this round changes, R v this branch: 23 of 40: [0, 1, 2, 3, 4, 5, 6, 8, 10, 15, 19, 20, 21, 23, 24, 27, 28, 29, 34, 36, 37, 38, 39]
+  coin_cut_recorded: fires in 0 games (0 ticks)
+  coin_full_prevention: fires in 16 games (28 ticks)
+  coin_queued_offered: fires in 33 games (71 ticks)
+  offgate_helper_choice: fires in 39 games (97 ticks)
+  offgate_discard_then_damage: fires in 18 games (40 ticks)
+  coin_defender_attack: fires in 39 games (428 ticks)
+  changed games with no queued coin-path choice offered on the board (lookahead only; to trace): []
+  games with one offered that did not change (the coin went the old way, or the bot chose another): [9, 13, 14, 17, 18, 22, 26, 30, 32, 35]
+
+pairing 1, water_round2 v fire_heatmor: games whose moves this round changes, R v this branch: 0 of 40
+  coin_cut_recorded: fires in 0 games (0 ticks)
+  coin_full_prevention: fires in 0 games (0 ticks)
+  coin_queued_offered: fires in 0 games (0 ticks)
+  offgate_helper_choice: fires in 38 games (172 ticks)
+  offgate_discard_then_damage: fires in 8 games (9 ticks)
+  coin_defender_attack: fires in 0 games (0 ticks)
+  changed games with no queued coin-path choice offered on the board (lookahead only; to trace): []
+  games with one offered that did not change (the coin went the old way, or the bot chose another): []
