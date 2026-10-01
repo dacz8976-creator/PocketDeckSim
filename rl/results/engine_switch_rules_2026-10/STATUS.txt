@@ -7,3 +7,12 @@ SITTING 1 START 2026-10-01T03:10:06Z ?: threads 14, nice 10, cargo jobs 14, dead
 2026-10-01T03:10:10Z candidate made: 5a18d31657897545a9eaaf849c9d0cb5b0a08ffa (merge of main c9f4224 and R f8cfa9c, tree c841532; at refs/pocketdecksim/rules-switch-candidate)
 STEP 4 DONE 5a18d31 2026-10-01T03:10:10Z candidate 5a18d31657897545a9eaaf849c9d0cb5b0a08ffa (main c9f4224 + R f8cfa9c): engine/ = R's, exactly the plan's 9 engine files, players/ and Cargo.lock unchanged, no conflict
 2026-10-01T03:10:10Z step 4 passed: candidate 5a18d31657897545a9eaaf849c9d0cb5b0a08ffa (main c9f4224 + R f8cfa9c): engine/ = R's, exactly the plan's 9 engine files, players/ and Cargo.lock unchanged, no conflict
+2026-10-01T03:10:16Z checkpoint (step 4 passed): commit 2cd2be4dd2bfd4e4db290449cb7ef4f5cdaeb1d7 4 (4 paths named); pushed 2cd2be4dd2bfd4e4db290449cb7ef4f5cdaeb1d7
+2026-10-01T03:10:16Z step 5: the plain build: one git archive of 5a18d31, cargo --locked (deckgym, legality_scan, goldfish) (about 50 min with the overhead; deadline 2026-10-01T11:30:00Z)
+2026-10-01T03:10:23Z one git archive of 5a18d31657897545a9eaaf849c9d0cb5b0a08ffa (engine/ and decks/) in /home/dacz8976/engine-rules-5a18d31
+2026-10-01T03:10:23Z building: cargo 1.93.1 (083ac5135 2025-12-15) (built from a source tarball), rustc 1.93.1 (01f6ddf75 2026-02-11) (built from a source tarball), 14 jobs, nice 10 (build.log)
+2026-10-01T03:16:03Z built in 340 s
+2026-10-01T03:16:09Z references taken from the candidate (git cat-file, blob-checked) into /home/dacz8976/engine-rules-5a18d31/ref: 27 files (step 7's 15, each with the sha256 recorded when it was played or adopted, and the 4 floor pages' games, coverage and page, each the blob recorded at 4690810), 5a18d31_refs.sha256
+2026-10-01T03:16:10Z inputs recorded (before any game): 40 files, 5a18d31_inputs.sha256; the 32 inside the repository equal the candidate's files; floor.py is the floor pages' blob; every step checks them
+STEP 5 DONE 5a18d31 2026-10-01T03:16:12Z deckgym 2f7e5fd6e0ae21ff, legality_scan 978912748c83fd6c, goldfish cecc76fbe51b3327 from one archive of 5a18d31 (cargo --locked); 27 references blob-checked, step 7's 15 with their recorded sha256, the floor pages' 12 files 4690810's blobs; inputs recorded
+2026-10-01T03:16:12Z step 5 passed: deckgym 2f7e5fd6e0ae21ff, legality_scan 978912748c83fd6c, goldfish cecc76fbe51b3327 from one archive of 5a18d31 (cargo --locked); 27 references blob-checked, step 7's 15 with their recorded sha256, the floor pages' 12 files 4690810's blobs; inputs recorded

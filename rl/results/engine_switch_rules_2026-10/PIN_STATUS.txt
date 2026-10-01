@@ -1,3 +1,11 @@
 2026-10-01T03:10:06Z sitting 1 start ?: sitting1.sh b1bb9468c3686828, checkpoint.sh 5f6450a9c2ec0a0b, switch_check.py da48c8b2eb7a8541, sitting1_check.py 8bdd65ae07b979d6, floor_with.py d3768197f2093eea (sha256; HEAD c9f4224)
 2026-10-01T03:10:10Z candidate 5a18d31657897545a9eaaf849c9d0cb5b0a08ffa: the merge of main c9f4224 and R f8cfa9c (sonnet/rules-fixes), at refs/pocketdecksim/rules-switch-candidate; engine/ tree 38af8b0cc4f35fdccc647ed540a56ec8f5e6c1d5 (R's 38af8b0)
 2026-10-01T03:10:10Z step 4: candidate 5a18d31657897545a9eaaf849c9d0cb5b0a08ffa (main c9f4224 + R f8cfa9c): engine/ = R's, exactly the plan's 9 engine files, players/ and Cargo.lock unchanged, no conflict
+2026-10-01T03:16:03Z built 5a18d31657897545a9eaaf849c9d0cb5b0a08ffa in /home/dacz8976/engine-rules-5a18d31 (cargo build --release --locked; build.log); a fresh build: /home/dacz8976/engine-rules-5a18d31 was removed first and archived anew, so engine/target/ started empty and CARGO_TARGET_DIR was unset (no cached library from another tree can be reused; the coordinator's note on git archive's commit-time stamps, Sept 30)
+2026-10-01T03:16:03Z sha256 2f7e5fd6e0ae21fffcb9a4df6e70dc3302e2a372f1fde1eb2bb1aa106747a62e deckgym (new, plain)
+2026-10-01T03:16:03Z sha256 978912748c83fd6c8ee8e3e966c9a6b95c9fdf1eb9d500c7367b2c1463e71699 legality_scan (new, plain)
+2026-10-01T03:16:03Z sha256 cecc76fbe51b33276e0e2e787b6eacba41c52ef4eaa36c5a20954caeedc50b66 goldfish (new, plain)
+2026-10-01T03:16:03Z sha256 fe244ecd92e159706c1ee0fc9933037e87d885c4a1cb9b4f37ee7adf96067be1 rl/engine-2026-09-30/legality_scan (the pinned old program; SHA256SUMS and the manifest agree)
+2026-10-01T03:16:03Z sha256 8f6056a0aa3fd232cbd9c7329a63f8542c2f3a20f756a69e466b51a27ce02073 rl/engine-2026-09-30/goldfish (the pinned old program; SHA256SUMS and the manifest agree)
+2026-10-01T03:16:03Z sha256 119389c57de425c55e951de6e14bcbe9811a6cf2861c88c4fa43b6cdb9ccd215 rl/engine-2026-09-30/deckgym (the pinned old program; SHA256SUMS and the manifest agree)
+2026-10-01T03:16:12Z step 5: deckgym 2f7e5fd6e0ae21ff, legality_scan 978912748c83fd6c, goldfish cecc76fbe51b3327 from one archive of 5a18d31 (cargo --locked); 27 references blob-checked, step 7's 15 with their recorded sha256, the floor pages' 12 files 4690810's blobs; inputs recorded
