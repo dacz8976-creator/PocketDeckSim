@@ -9,3 +9,4 @@
 2026-10-01T03:16:03Z sha256 8f6056a0aa3fd232cbd9c7329a63f8542c2f3a20f756a69e466b51a27ce02073 rl/engine-2026-09-30/goldfish (the pinned old program; SHA256SUMS and the manifest agree)
 2026-10-01T03:16:03Z sha256 119389c57de425c55e951de6e14bcbe9811a6cf2861c88c4fa43b6cdb9ccd215 rl/engine-2026-09-30/deckgym (the pinned old program; SHA256SUMS and the manifest agree)
 2026-10-01T03:16:12Z step 5: deckgym 2f7e5fd6e0ae21ff, legality_scan 978912748c83fd6c, goldfish cecc76fbe51b3327 from one archive of 5a18d31 (cargo --locked); 27 references blob-checked, step 7's 15 with their recorded sha256, the floor pages' 12 files 4690810's blobs; inputs recorded
+SITTING 1 STOPPED 2026-10-01T03:16:21Z 5a18d31: step 5: exit code 1 outside a check (a script, system or signal stop, not a result; see the log); no untracked file is left here
