@@ -2,12 +2,12 @@
     Finished `release` profile [optimized] target(s) in 2m 14s
 scan_r_plain sha256 aca7d9a018ee0a6b9a49bd49e0e05e0a0144a0f86ec2e6b2146109552b4ca6e9 (1abdbe8: 1abdbe8)
    Compiling deckgym v0.1.0-pdl.rules4 (<scratch>/r2smoke/round2_plain/engine)
-    Finished `release` profile [optimized] target(s) in 2m 12s
-scan_round2_plain sha256 b7c1c6f462aa1039515ec48a35865e83dae30656deb8cee26243e7c2dc0b6dc9 (HEAD: 0e9464a)
+    Finished `release` profile [optimized] target(s) in 2m 10s
+scan_round2_plain sha256 24cf696ff6c8541133038fa9f57dbe8e0bb471d2ee59732e0836baf4fca59c3a (HEAD: bfe8aeb)
 instrumented <scratch>/r2smoke/round2_watch/engine/examples/legality_scan.rs
    Compiling deckgym v0.1.0-pdl.rules4 (<scratch>/r2smoke/round2_watch/engine)
-    Finished `release` profile [optimized] target(s) in 2m 06s
-scan_round2_watch sha256 0467c6aaf67ed64d16e7ac10089bfc8ef4f1a7cd24383c419ef991effa27eb2d (HEAD: 0e9464a)
+    Finished `release` profile [optimized] target(s) in 2m 09s
+scan_round2_watch sha256 452dfada0e726f15305402c85c1879793b3d5c6f5b8bbcdbf01bcd1ca9710f04 (HEAD: bfe8aeb)
 games_r_plain.jsonl: 80 games
 games_round2_plain.jsonl: 80 games
 games_round2_watch.jsonl: 80 games
@@ -45,3 +45,8 @@ water_round2 v fire_heatmor first deck  52.5%   distinct games 40 of 40   games 
 
 Findings (occurrences / games affected):
   none
+
+== the first run (built from 0e9464a, before the seventh site), its build lines
+scan_r_plain sha256 aca7d9a018ee0a6b9a49bd49e0e05e0a0144a0f86ec2e6b2146109552b4ca6e9 (1abdbe8: 1abdbe8)
+scan_round2_plain sha256 b7c1c6f462aa1039515ec48a35865e83dae30656deb8cee26243e7c2dc0b6dc9 (HEAD: 0e9464a)
+scan_round2_watch sha256 0467c6aaf67ed64d16e7ac10089bfc8ef4f1a7cd24383c419ef991effa27eb2d (HEAD: 0e9464a)
