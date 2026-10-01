@@ -1,0 +1,400 @@
+{
+ "order": 8,
+ "matchup": {
+  "you": "Weezing"
+ },
+ "turn": 5,
+ "you_went_first": true,
+ "situation": "Your turn (your 3rd turn; turn 5 of the game).",
+ "question": "What do you do this turn, in order? Pick the first thing you'd tap, then write the rest of your turn: each card you'd play, where your Energy goes, any retreat, and your attack or end turn. If you'd play a card that draws, stop there and say \"then depends on the draw\".",
+ "points": {
+  "you": 1,
+  "opponent": 2
+ },
+ "you": {
+  "active": {
+   "name": "Hoopa ex",
+   "stage": 0,
+   "type": "Darkness",
+   "hp": 150,
+   "max_hp": 150,
+   "energy": [],
+   "tools": [],
+   "conditions": [],
+   "ability": null,
+   "attacks": [
+    {
+     "name": "Shadow Bullet",
+     "cost": [
+      "Darkness"
+     ],
+     "damage": "30",
+     "text": "This attack also does 20 damage to 1 of your opponent's Benched Pokémon."
+    },
+    {
+     "name": "Dynamite Punch",
+     "cost": [
+      "Darkness",
+      "Darkness",
+      "Colorless"
+     ],
+     "damage": "100",
+     "text": "This Pokémon also does 20 damage to itself."
+    }
+   ],
+   "weakness": "Grass",
+   "retreat": 2,
+   "retreat_now": 2,
+   "retreat_note": null,
+   "ko_points": 2,
+   "notes": []
+  },
+  "bench": [
+   {
+    "name": "Darkrai ex",
+    "stage": 0,
+    "type": "Darkness",
+    "hp": 140,
+    "max_hp": 140,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": {
+     "name": "Nightmare Aura",
+     "text": "Whenever you attach a Darkness Energy from your Energy Zone to this Pokémon, do 20 damage to your opponent's Active Pokémon.",
+     "used_this_turn": false
+    },
+    "attacks": [
+     {
+      "name": "Dark Prism",
+      "cost": [
+       "Darkness",
+       "Darkness",
+       "Colorless"
+      ],
+      "damage": "80",
+      "text": ""
+     }
+    ],
+    "weakness": "Grass",
+    "retreat": 2,
+    "retreat_now": 2,
+    "retreat_note": null,
+    "ko_points": 2,
+    "notes": []
+   },
+   {
+    "name": "Hoopa ex",
+    "stage": 0,
+    "type": "Darkness",
+    "hp": 150,
+    "max_hp": 150,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": null,
+    "attacks": [
+     {
+      "name": "Shadow Bullet",
+      "cost": [
+       "Darkness"
+      ],
+      "damage": "30",
+      "text": "This attack also does 20 damage to 1 of your opponent's Benched Pokémon."
+     },
+     {
+      "name": "Dynamite Punch",
+      "cost": [
+       "Darkness",
+       "Darkness",
+       "Colorless"
+      ],
+      "damage": "100",
+      "text": "This Pokémon also does 20 damage to itself."
+     }
+    ],
+    "weakness": "Grass",
+    "retreat": 2,
+    "retreat_now": 2,
+    "retreat_note": null,
+    "ko_points": 2,
+    "notes": []
+   },
+   null
+  ],
+  "deck_count": 9,
+  "discard": [
+   "Copycat",
+   "Poké Ball",
+   "Copycat",
+   "Team Rocket's Koffing",
+   "Deceptive Needle",
+   "Team Rocket's Weezing ex"
+  ],
+  "discard_energy": [
+   "Darkness"
+  ],
+  "energy_zone": {
+   "this_turn": "Darkness",
+   "next": "Darkness",
+   "lines": [
+    "This turn: Darkness",
+    "Next: Darkness"
+   ]
+  },
+  "hand": [
+   {
+    "name": "Cyrus",
+    "kind": "Supporter",
+    "text": "Switch in 1 of your opponent's Benched Pokémon that has damage on it to the Active Spot."
+   },
+   {
+    "name": "Field Blower",
+    "kind": "Item",
+    "text": "Discard a Pokémon Tool card from a Pokémon (yours or your opponent's), or discard a Stadium card in play."
+   }
+  ],
+  "decklist": [
+   {
+    "name": "Darkrai ex",
+    "kind": "Basic Pokémon",
+    "text": "Basic Pokémon, HP 140, Darkness type. Gives 2 points when Knocked Out. Ability Nightmare Aura: Whenever you attach a Darkness Energy from your Energy Zone to this Pokémon, do 20 damage to your opponent's Active Pokémon. Attack Dark Prism [Darkness Darkness Colorless] 80. Weakness: Grass. Retreat: 2.",
+    "count": 1,
+    "left": 0
+   },
+   {
+    "name": "Hoopa ex",
+    "kind": "Basic Pokémon",
+    "text": "Basic Pokémon, HP 150, Darkness type. Gives 2 points when Knocked Out. Attack Shadow Bullet [Darkness] 30: This attack also does 20 damage to 1 of your opponent's Benched Pokémon. Attack Dynamite Punch [Darkness Darkness Colorless] 100: This Pokémon also does 20 damage to itself. Weakness: Grass. Retreat: 2.",
+    "count": 2,
+    "left": 0
+   },
+   {
+    "name": "Team Rocket's Koffing",
+    "kind": "Basic Pokémon",
+    "text": "Basic Pokémon, HP 60, Darkness type. Attack Reverse Thrust [Darkness] 10: Switch this Pokémon with 1 of your Benched Pokémon. Weakness: Fighting. Retreat: 1.",
+    "count": 2,
+    "left": 1
+   },
+   {
+    "name": "Team Rocket's Weezing ex",
+    "kind": "Stage 1 Pokémon",
+    "text": "Stage 1 Pokémon, HP 140, Darkness type, evolves from Team Rocket's Koffing. Gives 2 points when Knocked Out. Ability Boiler Smog: Once during your turn, when you play this Pokémon from your hand to evolve 1 of your Pokémon, you may make your opponent's Active Pokémon Poisoned and Burned. Attack Confusion Gas [Darkness Darkness] 60: Your opponent's Active Pokémon is now Confused. Weakness: Fighting. Retreat: 2.",
+    "count": 2,
+    "left": 1
+   },
+   {
+    "name": "Copycat",
+    "kind": "Supporter",
+    "text": "Shuffle your hand into your deck. Draw a card for each card in your opponent's hand.",
+    "count": 2,
+    "left": 0
+   },
+   {
+    "name": "Cyrus",
+    "kind": "Supporter",
+    "text": "Switch in 1 of your opponent's Benched Pokémon that has damage on it to the Active Spot.",
+    "count": 2,
+    "left": 1
+   },
+   {
+    "name": "Mars",
+    "kind": "Supporter",
+    "text": "Your opponent shuffles their hand into their deck and draws a card for each of their remaining points needed to win.",
+    "count": 1,
+    "left": 1
+   },
+   {
+    "name": "Professor's Research",
+    "kind": "Supporter",
+    "text": "Draw 2 cards.",
+    "count": 2,
+    "left": 2
+   },
+   {
+    "name": "Field Blower",
+    "kind": "Item",
+    "text": "Discard a Pokémon Tool card from a Pokémon (yours or your opponent's), or discard a Stadium card in play.",
+    "count": 1,
+    "left": 0
+   },
+   {
+    "name": "Poké Ball",
+    "kind": "Item",
+    "text": "Put a random Basic Pokémon from your deck into your hand.",
+    "count": 2,
+    "left": 1
+   },
+   {
+    "name": "X Speed",
+    "kind": "Item",
+    "text": "During this turn, the Retreat Cost of your Active Pokémon is 1 less.",
+    "count": 1,
+    "left": 1
+   },
+   {
+    "name": "Deceptive Needle",
+    "kind": "Pokémon Tool",
+    "text": "At the end of your turn, if the Darkness Pokémon this card is attached to is in the Active Spot, do 10 damage to your opponent's Active Pokémon.",
+    "count": 2,
+    "left": 1
+   }
+  ],
+  "energy_types": [
+   "Darkness"
+  ],
+  "supporter_played_this_turn": false,
+  "retreated_this_turn": false
+ },
+ "opponent": {
+  "active": {
+   "name": "Riolu",
+   "stage": 0,
+   "type": "Fighting",
+   "hp": 60,
+   "max_hp": 60,
+   "energy": [
+    "Fighting",
+    "Fighting"
+   ],
+   "tools": [],
+   "conditions": [],
+   "ability": null,
+   "attacks": [
+    {
+     "name": "Fighting Fist",
+     "cost": [
+      "Fighting"
+     ],
+     "damage": "10+",
+     "text": "If your opponent's Active Pokémon is a Pokémon ex, this attack does 30 more damage."
+    }
+   ],
+   "weakness": "Psychic",
+   "retreat": 1,
+   "retreat_now": 1,
+   "retreat_note": null,
+   "ko_points": 1,
+   "notes": []
+  },
+  "bench": [
+   null,
+   null,
+   null
+  ],
+  "deck_count": 11,
+  "discard": [
+   "Professor's Research",
+   "Protective Poncho",
+   "Bonsly",
+   "Korrina"
+  ],
+  "discard_energy": [],
+  "energy_zone": {
+   "next": "Fighting",
+   "lines": [
+    "Next: Fighting"
+   ]
+  },
+  "hand_count": 3
+ },
+ "stadium": {
+  "name": "Arena of Antiquity",
+  "text": "Attacks used by each Fighting Pokémon in play (both yours and your opponent's) do +20 damage to the opponent's Active Pokémon ex.",
+  "played_by": "opponent"
+ },
+ "turn_effects": [],
+ "this_turn_so_far": [],
+ "log": [
+  {
+   "turn": 0,
+   "who": "setup",
+   "header": "Setup",
+   "lines": [
+    "You: started with Team Rocket's Koffing (Active)",
+    "Opponent: started with Bonsly (Active), Riolu (Bench 3)"
+   ]
+  },
+  {
+   "turn": 1,
+   "who": "you",
+   "header": "Turn 1 - You",
+   "lines": [
+    "You: Played Copycat (Supporter)",
+    "You: Ended the turn without attacking"
+   ]
+  },
+  {
+   "turn": 2,
+   "who": "opponent",
+   "header": "Turn 2 - Opponent",
+   "lines": [
+    "Opponent: Played Professor's Research (Supporter)",
+    "Opponent: Attached Fighting Energy to Riolu (Bench 3)",
+    "Opponent: Played Protective Poncho (Pokémon Tool) → attached Protective Poncho to Bonsly (Active)",
+    "Opponent: Bonsly attacked with Teary Attack (10) → did 30 damage to your Team Rocket's Koffing (Active)"
+   ]
+  },
+  {
+   "turn": 3,
+   "who": "you",
+   "header": "Turn 3 - You",
+   "lines": [
+    "You: Evolved Team Rocket's Koffing (Active) into Team Rocket's Weezing ex",
+    "You: Used Team Rocket's Weezing ex's Ability Boiler Smog (Active) → opponent's Bonsly (Active) is now Poisoned and Burned",
+    "You: Played Poké Ball (Item)",
+    "You: Put Hoopa ex on Bench 3",
+    "You: Played Copycat (Supporter)",
+    "You: Put Hoopa ex on Bench 2",
+    "You: Put Darkrai ex on Bench 1",
+    "You: Attached Darkness Energy to Team Rocket's Weezing ex (Active)",
+    "You: Played Deceptive Needle (Pokémon Tool) → attached Deceptive Needle to Team Rocket's Weezing ex (Active)",
+    "You: Ended the turn without attacking",
+    "End of turn: Opponent's Bonsly (Active) was Knocked Out by Deceptive Needle, Poison and Burn (you +1 point; score: you 1, opponent 0)",
+    "Opponent: Moved Riolu (Bench 3) into the Active Spot as the new Active Pokémon"
+   ]
+  },
+  {
+   "turn": 4,
+   "who": "opponent",
+   "header": "Turn 4 - Opponent",
+   "lines": [
+    "Opponent: Played Arena of Antiquity (Stadium)",
+    "Opponent: Played Korrina (Supporter)",
+    "Opponent: Attached Fighting Energy to Riolu (Active)",
+    "Opponent: Riolu attacked with Fighting Fist (10+) → your Team Rocket's Weezing ex (Active) was Knocked Out (opponent +2 points; score: you 1, opponent 2)",
+    "You: Moved Hoopa ex (Bench 3) into the Active Spot as the new Active Pokémon"
+   ]
+  }
+ ],
+ "options": [
+  {
+   "key": "4",
+   "group": "Trainers",
+   "text": "Play Field Blower (Item): Discard a Pokémon Tool card from a Pokémon (yours or your opponent's), or discard a Stadium card in play."
+  },
+  {
+   "key": "1",
+   "group": "Energy",
+   "text": "Attach Darkness Energy to Hoopa ex (Active)"
+  },
+  {
+   "key": "2",
+   "group": "Energy",
+   "text": "Attach Darkness Energy to Darkrai ex (Bench 1)"
+  },
+  {
+   "key": "3",
+   "group": "Energy",
+   "text": "Attach Darkness Energy to Hoopa ex (Bench 2)"
+  },
+  {
+   "key": "0",
+   "group": "End turn",
+   "text": "End your turn without attacking"
+  }
+ ],
+ "cant_play": [
+  "Cyrus: your opponent has no Benched Pokémon"
+ ]
+}
