@@ -1416,12 +1416,18 @@ impl State {
                 .map_or(0, |idx| idx + 1);
             // A later hit (for example Double Punching Family) requires a replacement
             // before its damage forecast can inspect the new Active Pokémon.
-            let pending_hit_floor = self.move_generation_stack.iter().rposition(|(_, choices)|
+            // Mega Kangaskhan ex's second hit is queued as the attack's own damage
+            // (`ApplyQueuedAttackDamage`, targets relative to the frame's actor) when a coin-flip
+            // damage Ability is in play (the later round of coin-flip prevention, Oct 1).
+            let pending_hit_floor = self.move_generation_stack.iter().rposition(|(actor, choices)|
                 choices.iter().any(|action| match action {
                     SimpleAction::ApplyDamage { attacking_ref, targets, .. } =>
                         *attacking_ref == (player_with_empty_active, 0)
                         || targets.iter().any(|(_, player, idx)|
                             *player == player_with_empty_active && *idx == 0),
+                    SimpleAction::ApplyQueuedAttackDamage { targets, .. } =>
+                        (*actor + 1) % 2 == player_with_empty_active
+                        && targets.iter().any(|(_, is_opponent, idx)| *is_opponent && *idx == 0),
                     _ => false,
                 })).map_or(0, |idx| idx + 1);
             self.move_generation_stack

@@ -2195,25 +2195,21 @@ fn coin_flip_per_specific_energy_type(
 }
 
 fn mega_kangaskhan_ex_double_punching_family(attack: &Attack) -> AttackOutcomes {
-    active_damage_effect_doutcome(attack.fixed_damage, |_, state, action| {
+    let attack = attack.clone();
+    active_damage_effect_doutcome(attack.fixed_damage, move |_, state, action| {
         // The structured attack resolves retaliation and KOs after this effect. Keep the
         // second hit underneath any promotions that pass will add to the LIFO stack.
-        let attacking_ref = (action.actor, 0);
+        let opponent = (action.actor + 1) % 2;
+        // The second attack is an attack of its own, so a coin-flip damage Ability flips for it
+        // (rules/09; the later round, Oct 1). It lands on whichever Pokémon is Active then, the one
+        // hit now or the one promoted if this hit Knocks it Out, so the gate is any of the
+        // opponent's Pokémon, and the coin is read on the Active when the damage resolves.
+        let coin_in_play =
+            any_coin_target(state, opponent, 0..state.in_play_pokemon[opponent].len());
+        let second = queued_attack_damage_choice(action.actor, &attack, 40, 0, coin_in_play);
 
         // .insert(0 damage to purposely do after the K.O. promotions
-        let opponent = (action.actor + 1) % 2;
-        let targets = vec![(40, opponent, 0)];
-        state.move_generation_stack.insert(
-            0,
-            (
-                action.actor,
-                vec![SimpleAction::ApplyDamage {
-                    attacking_ref,
-                    targets,
-                    is_from_active_attack: true,
-                }],
-            ),
-        )
+        state.move_generation_stack.insert(0, (action.actor, vec![second]))
     })
 }
 
