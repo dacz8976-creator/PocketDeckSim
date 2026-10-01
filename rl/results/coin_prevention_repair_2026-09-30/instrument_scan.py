@@ -21,7 +21,7 @@ EXACT (these count as reach, as the mechanic check uses them). Each is {"n": tic
   attacks and zero damage are all the engine's own decisions).
 - "coin_full_prevention": the same split for a full-prevention Pokemon (Togekiss, Meowth): an attack's own damage, or a
   queued ApplyQueuedAttackDamage, at it. This is what step 2's `retain` check needs (full prevention drops the damage entry).
-- "coin_queued_offered" (B b and Chase Order): the queued coin-path choice was offered: an ApplyQueuedAttackDamage at a
+- "coin_queued_offered" (B b, Chase Order and the later round's sites): the queued coin-path choice was offered: an ApplyQueuedAttackDamage at a
   coin-Ability Pokemon of the mover's opponent, whose attack's mechanic is not AlsoChoiceBenchDamage[Filtered] (that one
   already queued it on the old engine, for its opponent-Bench form, so it is not the repair's doing). Seen among the moves
   the tick OFFERED, so a choice the bot then declines still counts.
@@ -29,12 +29,15 @@ EXACT (these count as reach, as the mechanic check uses them). Each is {"n": tic
   at the mover's opponent is offered, in the same turn as an Attack whose mechanic is one of the helpers B rewrote
   (DirectDamage, DirectDamageAndSelfCardEffect, DirectDamageIfDamaged, the discard-all-energy-of-a-type and the
   self-discard-energy then damage-any-opponent-Pokemon attacks, damage per target energy, switch-in-then-damage, and Chase
-  Order without the discard). A plain ApplyDamage has the same fields whoever built it, so the source is told by the
-  mechanic of the last Attack the mover chose that turn (copied attacks included). Built by
-  `queued_attack_damage_choice`'s else branch. It is the proof that the table runs those rewritten lines.
+  Order without the discard; and the later round's, Oct 1: Wellspring Dance, Tornado Shot, Double Splash and Triple
+  Bombardment, Mischievous Ring and Litter). A plain ApplyDamage has the same fields whoever built it, so the source is
+  told by the mechanic of the last Attack the mover chose that turn (copied attacks included). Built by
+  `queued_attack_damage_targets_choice`'s else branch, or returned unchanged by `coin_gated_choice` (the later round).
+  It is the proof that the table runs those rewritten lines.
 - "offgate_discard_then_damage": the fall-through ApplyDamage of `discard_then_damage_choice` (Chase Order with the discard,
-  and Gyarados's Wild Swing): an ApplyDamage (is_from_active_attack) offered at the very next tick after a
-  DiscardOwnBenchedThenDamage move. It does not pass through `queued_attack_damage_choice`, so it is its own counter.
+  and Gyarados's Wild Swing, gated too since the later round): an ApplyDamage (is_from_active_attack) offered at the very
+  next tick after a DiscardOwnBenchedThenDamage move. It does not pass through `queued_attack_damage_choice`, so it is its
+  own counter.
 SUPERSET (kept to back "all counters 0 means identical"; never reach):
 - "coin_defender_attack": attack moves (an Attack, or a queued ApplyDamage / ApplyQueuedAttackDamage from an attack) while
   the mover's opponent has a Pokemon with a coin-flip damage Ability in play. A superset of both gates.
@@ -66,10 +69,13 @@ EDITS = [
      "            const COIN_IDS: [&str; 5] = [\"A2 114\", \"A4 080\", \"B2 124\", \"B2 204\", \"B3b 050\"];\n"
      "            const FINITE: [&str; 2] = [\"A2 114\", \"B3b 050\"];\n"
      "            const FULL: [&str; 3] = [\"A4 080\", \"B2 124\", \"B2 204\"];\n"
-     "            const HELPERS: [&str; 8] = [\"DirectDamage\", \"DirectDamageAndSelfCardEffect\", \"DirectDamageIfDamaged\",\n"
+     "            const HELPERS: [&str; 13] = [\"DirectDamage\", \"DirectDamageAndSelfCardEffect\", \"DirectDamageIfDamaged\",\n"
      "                \"SelfDiscardAllTypeEnergyAndDamageAnyOpponentPokemon\", \"SelfDiscardEnergyThenDamageAnyOpponentPokemon\",\n"
      "                \"DamageToAnyOpponentPerTargetEnergy\", \"SwitchInOpponentBenchedThenDamage\",\n"
-     "                \"OptionalDiscardBenchedBasicForExtraDamage\"];\n"
+     "                \"OptionalDiscardBenchedBasicForExtraDamage\",\n"
+     "                // The later round (Oct 1).\n"
+     "                \"CoinFlipAlsoChoiceBenchDamage\", \"SelfDiscardEnergyAndChoiceBenchDamage\", \"ConditionalBenchDamage\",\n"
+     "                \"ShuffleOpponentToolsIntoDeckBeforeDamage\", \"DiscardToolsFromHandForDamage\"];\n"
      "            let opp = 1 - chosen.actor;\n"
      "            let is_coin = |q: usize, i: usize| {\n"
      "                before.in_play_pokemon[q].get(i).and_then(|p| p.as_ref()).is_some_and(|p| COIN_IDS.contains(&p.card.get_id().as_str()))\n"
