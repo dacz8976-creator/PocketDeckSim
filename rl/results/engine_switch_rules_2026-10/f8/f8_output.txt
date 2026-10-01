@@ -1,0 +1,44 @@
+d363ba8 apply_action_helpers.rs sha256 17e67f3c6143363069aba422e47679f4d87904d89d073a25849acea043a4f71f
+== fork d363ba8, as committed (expect pass)
+compiled deckgym v0.1.0-pdl.rules4
+test hp_aura_knockout_removes_stale_promotion_choice ... ok
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished
+exit status 0
+== fault a: one knockout wave only (the nested pass at 842 still runs)
+compiled deckgym v0.1.0-pdl.rules4
+test hp_aura_knockout_removes_stale_promotion_choice ... ok
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished
+exit status 0
+== fault b: one knockout wave and no nested pass (upstream's single pass)
+compiled deckgym v0.1.0-pdl.rules4
+test hp_aura_knockout_removes_stale_promotion_choice ... FAILED
+thread 'hp_aura_knockout_removes_stale_promotion_choice' (11312) panicked at tests/hp_aura_promotion_test.rs:51:5:
+assertion `left == right` failed
+  left: 3
+ right: 2
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished
+exit status 101
+== fault c: the prune at 892 not called
+compiled deckgym v0.1.0-pdl.rules4
+test hp_aura_knockout_removes_stale_promotion_choice ... ok
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished
+exit status 0
+== fault d: no nested pass (the waves still run)
+compiled deckgym v0.1.0-pdl.rules4
+test hp_aura_knockout_removes_stale_promotion_choice ... ok
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished
+exit status 0
+== upstream ca4b67f, upstream's own test
+compiled deckgym v0.1.0
+test hp_aura_knockout_removes_stale_promotion_choice ... FAILED
+thread 'hp_aura_knockout_removes_stale_promotion_choice' (12402) panicked at tests/hp_aura_promotion_test.rs:43:5:
+assertion `left == right` failed
+  left: 3
+ right: 2
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished
+exit status 101
+== upstream 09e964f, upstream's own test
+compiled deckgym v0.1.0
+test hp_aura_knockout_removes_stale_promotion_choice ... ok
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished
+exit status 0
