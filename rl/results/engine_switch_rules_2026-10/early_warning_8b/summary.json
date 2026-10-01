@@ -1,0 +1,124 @@
+{
+ "km3": {
+  "games": 160,
+  "changed": 32,
+  "no_counter": 8,
+  "hand": 0,
+  "tally": {
+   "ON THE BOARD": 24,
+   "LOOKAHEAD ONLY, both halves hold": 8
+  },
+  "no_counter_games": [
+   [
+    32,
+    12
+   ],
+   [
+    32,
+    26
+   ],
+   [
+    32,
+    38
+   ],
+   [
+    33,
+    8
+   ],
+   [
+    33,
+    20
+   ],
+   [
+    33,
+    25
+   ],
+   [
+    34,
+    7
+   ],
+   [
+    34,
+    35
+   ]
+  ],
+  "hand_games": [],
+  "per_pairing": {
+   "32": {
+    "changed": 9,
+    "no_counter": 3,
+    "hand": 0
+   },
+   "33": {
+    "changed": 13,
+    "no_counter": 3,
+    "hand": 0
+   },
+   "34": {
+    "changed": 10,
+    "no_counter": 2,
+    "hand": 0
+   },
+   "35": {
+    "changed": 0,
+    "no_counter": 0,
+    "hand": 0
+   }
+  }
+ },
+ "k3": {
+  "games": 160,
+  "changed": 31,
+  "no_counter": 5,
+  "hand": 0,
+  "tally": {
+   "LOOKAHEAD ONLY, both halves hold": 5,
+   "ON THE BOARD": 26
+  },
+  "no_counter_games": [
+   [
+    32,
+    6
+   ],
+   [
+    32,
+    38
+   ],
+   [
+    33,
+    20
+   ],
+   [
+    33,
+    32
+   ],
+   [
+    34,
+    7
+   ]
+  ],
+  "hand_games": [],
+  "per_pairing": {
+   "32": {
+    "changed": 8,
+    "no_counter": 2,
+    "hand": 0
+   },
+   "33": {
+    "changed": 13,
+    "no_counter": 2,
+    "hand": 0
+   },
+   "34": {
+    "changed": 8,
+    "no_counter": 1,
+    "hand": 0
+   },
+   "35": {
+    "changed": 2,
+    "no_counter": 0,
+    "hand": 0
+   }
+  }
+ }
+}

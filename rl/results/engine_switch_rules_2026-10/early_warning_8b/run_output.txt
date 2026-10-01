@@ -1,0 +1,27 @@
+pairs8: pairings 0-35 (36 rows: the 4 carrier lists x the 8 panel lists, 0-31; 8b's 4 scratch rows, 32-35); seeds 23,100,000,000 + pairing x 10,000 + i: step 8 23,100,000,000 - 23,100,310,499 (km3 i < 500, k3 i < 250), 8b 23,100,320,000 - 23,100,350,039 (i < 40); 17 deck files
+warning: unused import: `TrainerType`
+bin_old_legality_scan sha256 e72a18f50464c716f9477d2201033c5f11ae6270b90b63662b061f62b255d639 (d363ba8)
+warning: unused import: `TrainerType`
+bin_old_vs_trace sha256 52e7ce6010e1b607ee9e261991c579b956d17bc839179039a9dfa6bcb5a1f9fe (d363ba8)
+warning: unused import: `TrainerType`
+bin_new_legality_scan sha256 e519e37786d148e221ab1285693266500580dcfdbf29a2d0cd088cf34a35f772 (f8cfa9c)
+warning: unused import: `TrainerType`
+bin_new_vs_trace sha256 423586b35a488564c6eeac0636a7c89ae0baf0da875bd7a2ad4b12b81b07165c (f8cfa9c)
+warning: unused import: `TrainerType`
+bin_new_vs_probe sha256 bd3cd66e77739cb475cb664ec89c77fd1b2cf51bbc7f0296bcf493a312457513 (f8cfa9c)
+instrumented <work>/watch/engine/examples/legality_scan.rs
+instrumented <work>/watch/engine/examples/legality_scan.rs
+warning: unused import: `TrainerType`
+bin_watch_legality_scan sha256 1cbf054a8ac8833929607f3cb9419eb75e048c762f03efe2013ac6bfa77f2d77 (f8cfa9c)
+warning: unused import: `TrainerType`
+bin_probe_coin_probe sha256 3e69e6a42bd6555d3d46b76d276ad1555bb99a16eb7f63d71ecb4b72f15410cb (f8cfa9c)
+pinned old programs: SHA256SUMS verify
+8b_old_km3.jsonl: 160 games
+8b_new_km3.jsonl: 160 games
+8b_watch_km3.jsonl: 160 games
+8b_pinned_km3.jsonl: 160 games
+8b_old_k3.jsonl: 160 games
+8b_new_k3.jsonl: 160 games
+8b_watch_k3.jsonl: 160 games
+8b_pinned_k3.jsonl: 160 games
+exit 0
