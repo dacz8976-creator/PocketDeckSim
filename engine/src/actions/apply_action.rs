@@ -1302,7 +1302,7 @@ fn apply_discard_own_benched_then_damage(
     if state.in_play_pokemon[opponent][0].is_none() {
         return;
     }
-    // `ApplyDamage` as before, except Chase Order into a coin-flip damage Ability (rules/09).
+    // `ApplyDamage` as before, except Chase Order or Wild Swing into a coin-flip damage Ability (rules/09).
     let queued = apply_attack_action::discard_then_damage_choice(state, acting_player, damage);
     state.move_generation_stack.push((acting_player, vec![queued]));
 }
@@ -1726,15 +1726,10 @@ fn forecast_discard_own_cards_for_attack_damage(
         let damage = damage_per_card * cards_clone.len() as u32;
         debug!("Discarded {cards_clone:?} from hand for {damage} attack damage");
         if damage > 0 {
-            let opponent = (acting_player + 1) % 2;
-            state.move_generation_stack.push((
-                acting_player,
-                vec![SimpleAction::ApplyDamage {
-                    attacking_ref: (acting_player, 0),
-                    targets: vec![(damage, opponent, 0)],
-                    is_from_active_attack: true,
-                }],
-            ));
+            // `ApplyDamage` as before, except into a coin-flip damage Ability (rules/09; the later round, Oct 1).
+            let queued =
+                apply_attack_action::discard_tools_then_damage_choice(state, acting_player, damage);
+            state.move_generation_stack.push((acting_player, vec![queued]));
         }
     })
 }

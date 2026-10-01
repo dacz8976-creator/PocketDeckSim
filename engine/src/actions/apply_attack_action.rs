@@ -285,48 +285,117 @@ fn queued_attack_damage_choice(
     target_idx: usize,
     coin_target: bool,
 ) -> SimpleAction {
+    queued_attack_damage_targets_choice(actor, attack, &[(damage, target_idx)], coin_target)
+}
+
+/// As `queued_attack_damage_choice`, for one choice that hits several of the opponent's Pokémon
+/// at once (`targets`: the damage and in-play index of each, in order), such as the Active's hit
+/// and a Benched hit queued together.
+fn queued_attack_damage_targets_choice(
+    actor: usize,
+    attack: &Attack,
+    targets: &[(u32, usize)],
+    coin_target: bool,
+) -> SimpleAction {
     if coin_target {
         log::debug!(
-            "Queued attack damage at a coin-flip damage Ability: {} to slot {target_idx}, through the attack's modifiers",
-            attack.title
+            "Queued attack damage at a coin-flip damage Ability: {} to slot {}, through the attack's modifiers",
+            attack.title,
+            targets.iter().map(|(_, idx)| idx.to_string()).collect::<Vec<_>>().join(" and ")
         );
         SimpleAction::ApplyQueuedAttackDamage {
             attack: attack.clone(),
-            targets: vec![(damage, true, target_idx)],
+            targets: targets.iter().map(|&(damage, idx)| (damage, true, idx)).collect(),
         }
     } else {
         SimpleAction::ApplyDamage {
             attacking_ref: (actor, 0),
-            targets: vec![(damage, (actor + 1) % 2, target_idx)],
+            targets: targets.iter().map(|&(damage, idx)| (damage, (actor + 1) % 2, idx)).collect(),
             is_from_active_attack: true,
         }
     }
 }
 
+/// Whether any of the opponent's Pokémon at `idxs` has a coin-flip damage Ability.
+fn any_coin_target(state: &State, opponent: usize, idxs: impl IntoIterator<Item = usize>) -> bool {
+    idxs.into_iter().any(|idx| {
+        state.in_play_pokemon[opponent][idx]
+            .as_ref()
+            .is_some_and(|pokemon| coin_damage_prevention(state, pokemon).is_some())
+    })
+}
+
+/// The later round's gate (Oct 1; the first round's README, "Recorded for a later round"), for a
+/// queued choice of `attack` built as `ApplyDamage` from the Active: when every target is one of
+/// the opponent's Pokémon and any of them has a coin-flip damage Ability, it is queued through
+/// `queued_attack_damage_targets_choice` as the attack's own damage, so those coins flip. Every
+/// other choice comes back exactly as it was, including one that also hits the attacker's own
+/// Bench (that form stays open, as Dustin ruled for `also_choice_bench_damage`).
+fn coin_gated_choice(state: &State, attack: &Attack, choice: SimpleAction) -> SimpleAction {
+    let SimpleAction::ApplyDamage {
+        attacking_ref: (actor, 0),
+        targets,
+        is_from_active_attack: true,
+    } = &choice
+    else {
+        return choice;
+    };
+    let opponent = (actor + 1) % 2;
+    if !targets.iter().all(|(_, player, _)| *player == opponent)
+        || !any_coin_target(state, opponent, targets.iter().map(|(_, _, idx)| *idx))
+    {
+        return choice;
+    }
+    let targets: Vec<(u32, usize)> = targets.iter().map(|&(damage, _, idx)| (damage, idx)).collect();
+    queued_attack_damage_targets_choice(*actor, attack, &targets, true)
+}
+
 /// The damage a `DiscardOwnBenchedThenDamage` choice queues at the opponent's Active once the
 /// discard is done (`apply_action.rs`). When that Pokémon has a coin-flip damage Ability and the
-/// attacker's Active has Chase Order, it is queued as Chase Order's own damage, so the coin flips
-/// (rules/09; Dustin, Sept 30: fix Chase Order now). Otherwise it is queued exactly as before,
-/// and so is every other attack that shares the action (Gyarados's Wild Swing).
+/// attacker's Active has the attack that offered the discard among its printed attacks (Chase
+/// Order or Gyarados's Wild Swing), it is queued as that attack's own damage, so the coin flips
+/// (rules/09; Dustin, Sept 30: fix Chase Order now; Wild Swing in the later round, Oct 1).
+/// Otherwise it is queued exactly as before.
 pub(crate) fn discard_then_damage_choice(state: &State, actor: usize, damage: u32) -> SimpleAction {
+    chosen_damage_choice(state, actor, damage, |mechanic| {
+        matches!(
+            mechanic,
+            Mechanic::OptionalDiscardBenchedBasicForExtraDamage { .. }
+                | Mechanic::DiscardOwnBenchedTypeForDamage { .. }
+        )
+    })
+}
+
+/// Slowking's Litter: the damage a `DiscardOwnCardsForAttackDamage` choice queues at the
+/// opponent's Active once the Tools are discarded (`apply_action.rs`), gated as
+/// `discard_then_damage_choice` (the later round, Oct 1).
+pub(crate) fn discard_tools_then_damage_choice(state: &State, actor: usize, damage: u32) -> SimpleAction {
+    chosen_damage_choice(state, actor, damage, |mechanic| {
+        matches!(mechanic, Mechanic::DiscardToolsFromHandForDamage { .. })
+    })
+}
+
+fn chosen_damage_choice(
+    state: &State,
+    actor: usize,
+    damage: u32,
+    source: impl Fn(&Mechanic) -> bool,
+) -> SimpleAction {
     let opponent = (actor + 1) % 2;
-    let coin_target = state.in_play_pokemon[opponent][0]
-        .as_ref()
-        .is_some_and(|pokemon| coin_damage_prevention(state, pokemon).is_some());
-    if coin_target {
-        if let Some(chase_order) = chase_order_attack(state, actor) {
-            return queued_attack_damage_choice(actor, &chase_order, damage, 0, true);
-        }
-    }
-    SimpleAction::ApplyDamage {
+    let plain = SimpleAction::ApplyDamage {
         attacking_ref: (actor, 0),
         targets: vec![(damage, opponent, 0)],
         is_from_active_attack: true,
+    };
+    match printed_attack(state, actor, source) {
+        Some(attack) => coin_gated_choice(state, &attack, plain),
+        None => plain,
     }
 }
 
-/// The attacker's Active's printed Chase Order attack (Vespiquen ex), if it has one.
-fn chase_order_attack(state: &State, actor: usize) -> Option<Attack> {
+/// The attacker's Active's first printed attack whose mechanic `source` accepts, if it has one.
+/// A copied attack is not among them, so its queued damage keeps the old path.
+fn printed_attack(state: &State, actor: usize, source: impl Fn(&Mechanic) -> bool) -> Option<Attack> {
     let Card::Pokemon(pokemon) = &state.in_play_pokemon[actor][0].as_ref()?.card else {
         return None;
     };
@@ -334,10 +403,11 @@ fn chase_order_attack(state: &State, actor: usize) -> Option<Attack> {
         .attacks
         .iter()
         .find(|attack| {
-            matches!(
-                attack.effect.as_deref().and_then(|effect| EFFECT_MECHANIC_MAP.get(effect)),
-                Some(Mechanic::OptionalDiscardBenchedBasicForExtraDamage { .. })
-            )
+            attack
+                .effect
+                .as_deref()
+                .and_then(|effect| EFFECT_MECHANIC_MAP.get(effect))
+                .is_some_and(&source)
         })
         .cloned()
 }
@@ -787,6 +857,7 @@ fn forecast_effect_attack_by_mechanic(
             bench_damage,
         } => self_discard_energy_and_choice_bench_damage(
             state,
+            attack,
             attack.fixed_damage,
             energies.clone(),
             *bench_damage,
@@ -1511,7 +1582,7 @@ fn forecast_effect_attack_by_mechanic(
             *target_benched_type,
         ),
         Mechanic::CoinFlipAlsoChoiceBenchDamage { opponent, damage } => {
-            coin_flip_also_choice_bench_damage(state, *opponent, attack.fixed_damage, *damage)
+            coin_flip_also_choice_bench_damage(state, attack, *opponent, attack.fixed_damage, *damage)
         }
         Mechanic::ExtraDamageIfDefenderStatus {
             status,
@@ -1599,7 +1670,7 @@ fn forecast_effect_attack_by_mechanic(
             )
         }
         Mechanic::ShuffleOpponentToolsIntoDeckBeforeDamage => {
-            shuffle_opponent_tools_into_deck_before_damage(attack.fixed_damage)
+            shuffle_opponent_tools_into_deck_before_damage(attack)
         }
         Mechanic::SelfDiscardAllEnergyAndDelayedSpotKnockOut => {
             self_discard_all_energy_and_delayed_spot_knock_out()
@@ -3873,6 +3944,7 @@ fn self_discard_chosen_energy_and_card_effect(
 /// attack also does `bench_damage` to 1 of the opponent's Benched Pokémon (chosen).
 fn self_discard_energy_and_choice_bench_damage(
     state: &State,
+    attack: &Attack,
     active_damage: u32,
     to_discard: Vec<EnergyType>,
     bench_damage: u32,
@@ -3885,11 +3957,15 @@ fn self_discard_energy_and_choice_bench_damage(
                 (active_damage, opponent, 0),
                 (bench_damage, opponent, in_play_idx),
             ];
-            SimpleAction::ApplyDamage {
-                attacking_ref: (state.current_player, 0),
-                targets,
-                is_from_active_attack: true,
-            }
+            coin_gated_choice(
+                state,
+                attack,
+                SimpleAction::ApplyDamage {
+                    attacking_ref: (state.current_player, 0),
+                    targets,
+                    is_from_active_attack: true,
+                },
+            )
         })
         .collect();
     if choices.is_empty() {
@@ -5731,6 +5807,7 @@ fn coin_flip_charge_bench(
 /// Flip a coin. If heads, this attack also does `bench_damage` to 1 of the chosen side's bench.
 fn coin_flip_also_choice_bench_damage(
     state: &State,
+    attack: &Attack,
     opponent: bool,
     active_damage: u32,
     bench_damage: u32,
@@ -5744,13 +5821,19 @@ fn coin_flip_also_choice_bench_damage(
     // Build choices that bundle active + bench damage atomically (avoids stale slot issues).
     let choices: Vec<_> = state
         .enumerate_bench_pokemon(bench_target)
-        .map(|(in_play_idx, _)| SimpleAction::ApplyDamage {
-            attacking_ref: (state.current_player, 0),
-            targets: vec![
-                (active_damage, opponent_player, 0),
-                (bench_damage, bench_target, in_play_idx),
-            ],
-            is_from_active_attack: true,
+        .map(|(in_play_idx, _)| {
+            coin_gated_choice(
+                state,
+                attack,
+                SimpleAction::ApplyDamage {
+                    attacking_ref: (state.current_player, 0),
+                    targets: vec![
+                        (active_damage, opponent_player, 0),
+                        (bench_damage, bench_target, in_play_idx),
+                    ],
+                    is_from_active_attack: true,
+                },
+            )
         })
         .collect();
 
@@ -6119,6 +6202,10 @@ fn conditional_bench_damage_attack(
                 vec![]
             };
 
+            let choices: Vec<_> = choices
+                .into_iter()
+                .map(|choice| coin_gated_choice(state, attack, choice))
+                .collect();
             AttackOutcomes::single_effect(move |_, state, action| {
                 if !choices.is_empty() {
                     state
@@ -8421,7 +8508,9 @@ fn inflict_status_conditions_and_shuffle_self_into_deck(
 /// Protective Poncho, Metal Core Barrier) must already be gone when the damage is computed, and
 /// `AttackOutcomes::single_effect` runs the mutation without pre-computing a damage target, so the
 /// damage is queued afterwards and re-priced against the stripped board.
-fn shuffle_opponent_tools_into_deck_before_damage(damage: u32) -> AttackOutcomes {
+fn shuffle_opponent_tools_into_deck_before_damage(attack: &Attack) -> AttackOutcomes {
+    let attack = attack.clone();
+    let damage = attack.fixed_damage;
     AttackOutcomes::single_effect(move |rng, state, action| {
         let opponent = (action.actor + 1) % 2;
         let stripped: Vec<Card> = state.in_play_pokemon[opponent]
@@ -8440,14 +8529,16 @@ fn shuffle_opponent_tools_into_deck_before_damage(damage: u32) -> AttackOutcomes
         if state.in_play_pokemon[opponent][0].is_none() {
             return;
         }
-        state.move_generation_stack.push((
-            action.actor,
-            vec![SimpleAction::ApplyDamage {
+        let queued = coin_gated_choice(
+            state,
+            &attack,
+            SimpleAction::ApplyDamage {
                 attacking_ref: (action.actor, 0),
                 targets: vec![(damage, opponent, 0)],
                 is_from_active_attack: true,
-            }],
-        ));
+            },
+        );
+        state.move_generation_stack.push((action.actor, vec![queued]));
     })
 }
 
