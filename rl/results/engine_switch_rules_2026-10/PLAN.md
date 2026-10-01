@@ -131,6 +131,11 @@ Times use 8.6 games a second on the laptop, so treat them as upper bounds: Sept 
   - These are **board differences:** the offered moves differ on the same state; a forced move (n = 1) differs; the state differs after identical moves; or one game is a prefix of the other. A board difference with no counter is **UNEXPLAINED** and stops the switch.
   - A **lookahead difference** is the same state with the same offered moves and a different choice. It needs the probe (`vs_probe.rs` for A, `coin_probe.rs` and `coin_lookahead.py` for B) to find the gate inside the mover's search depth at tick k: both halves of "in lookahead" below.
   - This follows the laptop's second read of R (`SECOND_READ_F1_F7_opus.md`, finding 4): `coin_queued_offered` fired in 13 of the coin smoke's 28 unchanged games.
+  - **Where `tightened_rule.py` reads stricter than the text above** (the laptop's delta read of f8cfa9c; each errs toward stopping, and the script's reading is the one applied):
+    - For an offered-moves difference and a lookahead difference, the cause tick is k itself, not k−1, because the state at k is identical.
+    - A prefix difference (one game shorter) is always UNEXPLAINED.
+    - The reach counters it reads are `vs_confusion_first_built`, `vs_confused_choice_offered` and `vs_confused_choice_chosen` for A, and `coin_cut_recorded`, `coin_queued_offered` and `coin_queued_offered_any` for B. `coin_queued_offered_any` drops the coin-id test: every queued attack-damage choice other than AlsoChoiceBenchDamage comes from the coin branch.
+    - A lookahead difference with a chosen-move counter at k is labelled on the board. The golden probe gives the same evidence there.
   - Only exact counters count as reach:
   - (A) the Confusion-first branch built;
   - (B a) a heads finite cut recorded on a Bastiodon or Goodra taking more than 0;

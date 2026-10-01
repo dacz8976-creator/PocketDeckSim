@@ -1,0 +1,8 @@
+# sitting1.sh's working files: its lock, process group, watchdog and checkpoint flags, unfinished outputs. Never
+# evidence; never committed (checkpoint.sh refuses them too).
+.sitting1.*
+*.part
+*.part/
+__pycache__/
+# a kept game file found no longer intact at a later start, moved aside before it is played again (noted in STATUS.txt)
+*.broken_*
