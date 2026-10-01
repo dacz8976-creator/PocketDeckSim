@@ -57,6 +57,37 @@ The other three have real development lists, but none placed top-8. These are th
 - **The cloud's later-round coin branch** is cut from the old R (1abdbe8). When the new R lands, that merge touches only test files, but the laptop checks it before step 4.
 - **Sitting 1:** Oct 1 from 5 pm Central, on the new R, after the laptop's short re-read of the three fixes.
 
+## Sitting 1 (the night of Sept 30) and two notes from the coordinator (Oct 1)
+
+**Sitting 1 passed** (record b55aad4; `STATUS.txt` and `PIN_STATUS.txt` here). Dustin asked "If it's 6.5 hours why not run it now?", so the coordinator moved the start up a day: it started at 03:10 UTC Oct 1 (10:10 pm Central) and finished at 06:47 UTC.
+- **Step 4:** candidate 5a18d31 (main c9f4224 + R f8cfa9c). Its engine/ is R's tree 38af8b0, and it changes exactly the plan's 9 engine files.
+- **Step 5:** deckgym 2f7e5fd6, legality_scan 97891274, goldfish cecc76fb (`programs.sha256`).
+- **Step 6:** the watch legality_scan, 8d881a1b.
+- **Step 7:** 151,240 of 151,240 identity games equal to their references on every field, kd3's gate included.
+- **Step 7b:**
+  - 28,000 watch games equal to the plain ones, with every repair counter 0.
+  - offgate_helper_choice fired in 12,246 games and offgate_discard_then_damage in 3,353.
+- **Step 7c:**
+  - The 4 floor pages replayed, 1,920 of 1,920 games each equal.
+  - The 32 pairings x 60 were identical on the watch and old programs, with repair counters 0.
+  - offgate_helper_choice fired in 218 of the 540 in-scope games. offgate_discard_then_damage read 0 there; it is reported only, and rows 13 and 22 carry to steps 8 and 8b.
+- **One stop: a runner fault, not a result.**
+  - At 03:16 UTC, right after step 5 passed, a bare assignment failed under pipefail: `prog_sha` read `watch.sha256` before step 6 made it.
+  - Fixed in 4f0a4fd. The restart at 03:19 re-checked steps 4-5's evidence and skipped them.
+  - An Opus reader then checked the rest of the runner for the same kind of fault and found none on the path that ran. Sitting 2's scripts get the same check.
+
+**F8 is done** (the cloud, 5a929c0, `f8/F8.md`). The fork already covers 09e964f's fix 1: knockouts resolve in waves, plus a nested pass.
+- Upstream's Lilligant test passes on d363ba8.
+- Planted faults show that only removing both guards reproduces upstream's failure.
+- So at step 13, `rules/09`'s line 80 and `PLAN.md`'s line 26 change from "unchecked" to "covered, F8.md".
+- Dustin's answer on fix 2 (question 10 above) stands.
+
+**The cloud's later-round coin fixes** are on their own branch, `claude/coin-prevention-round2`.
+- It is 76b87cd: six sites, with the suite at 2,025 passed and 0 failed.
+- It is cut from R. This corrects the note above, which said it was cut from the old R.
+- They are not in this switch: Dustin's scope answer (question 2) is A + B + kd + F1-F7. They go in the next rules switch.
+- So 8b's l-sharpedo v meowth_carefree row stays this switch's Wild Swing control, as planned.
+
 ## Who does what
 
 | Part | Who |
