@@ -1,13 +1,15 @@
 //! The later round of coin-flip prevention (Oct 1; scratch): do the coin counters of
-//! `../coin_prevention_repair_2026-09-30/instrument_scan.py` see the six repaired sites? Like Sonnet's F5 probe
+//! `../coin_prevention_repair_2026-09-30/instrument_scan.py` see the seven repaired sites? Like Sonnet's F5 probe
 //! (`../coin_prevention_repair_2026-09-30/smoke/rerun_R/counter_probe.rs`, whose detection functions are copied here
 //! unchanged), it applies the counters' detection logic to boards built with `test_support` and asserts what each must
 //! read. For each site:
 //! - the attack's mechanic name, as the scan prints it, is in the script's HELPERS (the off-gate counter
 //!   `offgate_helper_choice` keys on it); Wild Swing's is counted instead by `offgate_discard_then_damage`;
 //! - with Meowth (Carefree Steps) where the queued damage lands, the queued coin-path choice is offered
-//!   (`coin_queued_offered`), and choosing it runs the coin split for Meowth (`coin_full_prevention`);
-//! - with Bulbasaur there instead, no queued coin-path choice is offered, only plain ApplyDamage ones.
+//!   (`coin_queued_offered`), and choosing it runs the coin split for Meowth (`coin_full_prevention`); for Mega
+//!   Kangaskhan ex's second punch, Togekiss (Celestial Blessing) stands in, since the first punch would Knock Out a Meowth;
+//! - with Bulbasaur there instead (Mega Latios ex for the punch), no queued coin-path choice is offered, only plain
+//!   ApplyDamage ones.
 //! It plays no game and needs the `test-utils` feature.
 //!   cargo run --release --features test-utils --example counter_probe_round2
 use deckgym::actions::{try_forecast_action, Action, SimpleAction};
@@ -20,12 +22,13 @@ use deckgym::State;
 const FINITE: [&str; 2] = ["A2 114", "B3b 050"];
 const FULL: [&str; 3] = ["A4 080", "B2 124", "B2 204"];
 /// The HELPERS list of `instrument_scan.py`, as of the later round (its run checks each name is in the script).
-const HELPERS: [&str; 13] = ["DirectDamage", "DirectDamageAndSelfCardEffect", "DirectDamageIfDamaged",
+const HELPERS: [&str; 14] = ["DirectDamage", "DirectDamageAndSelfCardEffect", "DirectDamageIfDamaged",
     "SelfDiscardAllTypeEnergyAndDamageAnyOpponentPokemon", "SelfDiscardEnergyThenDamageAnyOpponentPokemon",
     "DamageToAnyOpponentPerTargetEnergy", "SwitchInOpponentBenchedThenDamage",
     "OptionalDiscardBenchedBasicForExtraDamage",
     "CoinFlipAlsoChoiceBenchDamage", "SelfDiscardEnergyAndChoiceBenchDamage", "ConditionalBenchDamage",
-    "ShuffleOpponentToolsIntoDeckBeforeDamage", "DiscardToolsFromHandForDamage"];
+    "ShuffleOpponentToolsIntoDeckBeforeDamage", "DiscardToolsFromHandForDamage",
+    "MegaKangaskhanExDoublePunchingFamily"];
 
 /// The coin split detection of `instrument_scan.py`: slots of the mover's opponent whose coin split ran in the chosen move's
 /// forecast, (finite-cut slots, full-prevention slots).
@@ -155,19 +158,23 @@ fn main() {
             vec![with(CardId::A4a018Slowking, vec![EnergyType::Water])], "Litter",
             vec![CardId::A2147GiantCape, CardId::A2148RockyHelmet], 0,
             vec![mon(meowth), mon(bulbasaur)], vec![mon(bulbasaur), mon(bulbasaur)], "1 / 0", "0 / 1", "offgate_helper_choice"),
+        ("Double-Punching Family's second punch (Mega Kangaskhan ex B2 127), into Togekiss",
+            vec![with(CardId::B2127MegaKangaskhanEx, vec![EnergyType::Colorless; 3])], "Double-Punching Family", vec![], 0,
+            vec![mon(CardId::A4080Togekiss), mon(bulbasaur)], vec![mon(CardId::PB024MegaLatiosEx), mon(bulbasaur)],
+            "1 / 0", "0 / 1", "offgate_helper_choice"),
     ];
     for (site, attacker, title, hand, slot, on, off, want_on, want_off, counter) in sites {
         let (state, name) = damage_frame(&attacker, &on, &hand, title);
         let keyed = if HELPERS.contains(&name.as_str()) { "offgate_helper_choice" } else { "offgate_discard_then_damage" };
         check(&format!("{site}: mechanic {name}, off-gate counter"), keyed.to_string(), counter);
-        check(&format!("{site}, Meowth in slot {slot}: queued offered / plain offered"),
+        check(&format!("{site}, the coin Pokemon in slot {slot}: queued offered / plain offered"),
             format!("{} / {}", queued_offered(&state, 1), plain_damage_offered(&state, 1)), want_on);
         let queued = state.generate_possible_actions().1.into_iter()
             .find(|a| matches!(a.action, SimpleAction::ApplyQueuedAttackDamage { .. }));
         let split = queued.map(|q| show(split_slots(&state, &q))).unwrap_or_else(|| "no queued choice".to_string());
-        check(&format!("{site}: choosing it runs Meowth's coin split"), split, &format!("finite [], full [{slot}]"));
+        check(&format!("{site}: choosing it runs the coin split there"), split, &format!("finite [], full [{slot}]"));
         let (state, _) = damage_frame(&attacker, &off, &hand, title);
-        check(&format!("{site}, Bulbasaur instead: queued offered / plain offered"),
+        check(&format!("{site}, no coin Pokemon there: queued offered / plain offered"),
             format!("{} / {}", queued_offered(&state, 1), plain_damage_offered(&state, 1)), want_off);
     }
 

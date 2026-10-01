@@ -30,7 +30,7 @@ EXACT (these count as reach, as the mechanic check uses them). Each is {"n": tic
   (DirectDamage, DirectDamageAndSelfCardEffect, DirectDamageIfDamaged, the discard-all-energy-of-a-type and the
   self-discard-energy then damage-any-opponent-Pokemon attacks, damage per target energy, switch-in-then-damage, and Chase
   Order without the discard; and the later round's, Oct 1: Wellspring Dance, Tornado Shot, Double Splash and Triple
-  Bombardment, Mischievous Ring and Litter). A plain ApplyDamage has the same fields whoever built it, so the source is
+  Bombardment, Mischievous Ring, Litter and Mega Kangaskhan ex's second punch). A plain ApplyDamage has the same fields whoever built it, so the source is
   told by the mechanic of the last Attack the mover chose that turn (copied attacks included). Built by
   `queued_attack_damage_targets_choice`'s else branch, or returned unchanged by `coin_gated_choice` (the later round).
   It is the proof that the table runs those rewritten lines.
@@ -69,13 +69,14 @@ EDITS = [
      "            const COIN_IDS: [&str; 5] = [\"A2 114\", \"A4 080\", \"B2 124\", \"B2 204\", \"B3b 050\"];\n"
      "            const FINITE: [&str; 2] = [\"A2 114\", \"B3b 050\"];\n"
      "            const FULL: [&str; 3] = [\"A4 080\", \"B2 124\", \"B2 204\"];\n"
-     "            const HELPERS: [&str; 13] = [\"DirectDamage\", \"DirectDamageAndSelfCardEffect\", \"DirectDamageIfDamaged\",\n"
+     "            const HELPERS: [&str; 14] = [\"DirectDamage\", \"DirectDamageAndSelfCardEffect\", \"DirectDamageIfDamaged\",\n"
      "                \"SelfDiscardAllTypeEnergyAndDamageAnyOpponentPokemon\", \"SelfDiscardEnergyThenDamageAnyOpponentPokemon\",\n"
      "                \"DamageToAnyOpponentPerTargetEnergy\", \"SwitchInOpponentBenchedThenDamage\",\n"
      "                \"OptionalDiscardBenchedBasicForExtraDamage\",\n"
      "                // The later round (Oct 1).\n"
      "                \"CoinFlipAlsoChoiceBenchDamage\", \"SelfDiscardEnergyAndChoiceBenchDamage\", \"ConditionalBenchDamage\",\n"
-     "                \"ShuffleOpponentToolsIntoDeckBeforeDamage\", \"DiscardToolsFromHandForDamage\"];\n"
+     "                \"ShuffleOpponentToolsIntoDeckBeforeDamage\", \"DiscardToolsFromHandForDamage\",\n"
+     "                \"MegaKangaskhanExDoublePunchingFamily\"];\n"
      "            let opp = 1 - chosen.actor;\n"
      "            let is_coin = |q: usize, i: usize| {\n"
      "                before.in_play_pokemon[q].get(i).and_then(|p| p.as_ref()).is_some_and(|p| COIN_IDS.contains(&p.card.get_id().as_str()))\n"

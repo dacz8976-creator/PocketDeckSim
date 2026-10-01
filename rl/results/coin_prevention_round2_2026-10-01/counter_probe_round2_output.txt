@@ -1,29 +1,33 @@
 ok   Wild Swing (Gyarados A4 045), with the discard: mechanic DiscardOwnBenchedTypeForDamage, off-gate counter: offgate_discard_then_damage
-ok   Wild Swing (Gyarados A4 045), with the discard, Meowth in slot 0: queued offered / plain offered: 1 / 0
-ok   Wild Swing (Gyarados A4 045), with the discard: choosing it runs Meowth's coin split: finite [], full [0]
-ok   Wild Swing (Gyarados A4 045), with the discard, Bulbasaur instead: queued offered / plain offered: 0 / 1
+ok   Wild Swing (Gyarados A4 045), with the discard, the coin Pokemon in slot 0: queued offered / plain offered: 1 / 0
+ok   Wild Swing (Gyarados A4 045), with the discard: choosing it runs the coin split there: finite [], full [0]
+ok   Wild Swing (Gyarados A4 045), with the discard, no coin Pokemon there: queued offered / plain offered: 0 / 1
 ok   Wellspring Dance (Wellspring Mask Ogerpon B2 048), on its heads: mechanic CoinFlipAlsoChoiceBenchDamage, off-gate counter: offgate_helper_choice
-ok   Wellspring Dance (Wellspring Mask Ogerpon B2 048), on its heads, Meowth in slot 1: queued offered / plain offered: 1 / 0
-ok   Wellspring Dance (Wellspring Mask Ogerpon B2 048), on its heads: choosing it runs Meowth's coin split: finite [], full [1]
-ok   Wellspring Dance (Wellspring Mask Ogerpon B2 048), on its heads, Bulbasaur instead: queued offered / plain offered: 0 / 1
+ok   Wellspring Dance (Wellspring Mask Ogerpon B2 048), on its heads, the coin Pokemon in slot 1: queued offered / plain offered: 1 / 0
+ok   Wellspring Dance (Wellspring Mask Ogerpon B2 048), on its heads: choosing it runs the coin split there: finite [], full [1]
+ok   Wellspring Dance (Wellspring Mask Ogerpon B2 048), on its heads, no coin Pokemon there: queued offered / plain offered: 0 / 1
 ok   Tornado Shot (Rapid Strike Urshifu B3 051): mechanic SelfDiscardEnergyAndChoiceBenchDamage, off-gate counter: offgate_helper_choice
-ok   Tornado Shot (Rapid Strike Urshifu B3 051), Meowth in slot 1: queued offered / plain offered: 1 / 0
-ok   Tornado Shot (Rapid Strike Urshifu B3 051): choosing it runs Meowth's coin split: finite [], full [1]
-ok   Tornado Shot (Rapid Strike Urshifu B3 051), Bulbasaur instead: queued offered / plain offered: 0 / 1
+ok   Tornado Shot (Rapid Strike Urshifu B3 051), the coin Pokemon in slot 1: queued offered / plain offered: 1 / 0
+ok   Tornado Shot (Rapid Strike Urshifu B3 051): choosing it runs the coin split there: finite [], full [1]
+ok   Tornado Shot (Rapid Strike Urshifu B3 051), no coin Pokemon there: queued offered / plain offered: 0 / 1
 ok   Double Splash (Blastoise B1a 019): mechanic ConditionalBenchDamage, off-gate counter: offgate_helper_choice
-ok   Double Splash (Blastoise B1a 019), Meowth in slot 1: queued offered / plain offered: 1 / 1
-ok   Double Splash (Blastoise B1a 019): choosing it runs Meowth's coin split: finite [], full [1]
-ok   Double Splash (Blastoise B1a 019), Bulbasaur instead: queued offered / plain offered: 0 / 2
+ok   Double Splash (Blastoise B1a 019), the coin Pokemon in slot 1: queued offered / plain offered: 1 / 1
+ok   Double Splash (Blastoise B1a 019): choosing it runs the coin split there: finite [], full [1]
+ok   Double Splash (Blastoise B1a 019), no coin Pokemon there: queued offered / plain offered: 0 / 2
 ok   Triple Bombardment (Mega Blastoise ex B1a 020): mechanic ConditionalBenchDamage, off-gate counter: offgate_helper_choice
-ok   Triple Bombardment (Mega Blastoise ex B1a 020), Meowth in slot 1: queued offered / plain offered: 1 / 0
-ok   Triple Bombardment (Mega Blastoise ex B1a 020): choosing it runs Meowth's coin split: finite [], full [1]
-ok   Triple Bombardment (Mega Blastoise ex B1a 020), Bulbasaur instead: queued offered / plain offered: 0 / 1
+ok   Triple Bombardment (Mega Blastoise ex B1a 020), the coin Pokemon in slot 1: queued offered / plain offered: 1 / 0
+ok   Triple Bombardment (Mega Blastoise ex B1a 020): choosing it runs the coin split there: finite [], full [1]
+ok   Triple Bombardment (Mega Blastoise ex B1a 020), no coin Pokemon there: queued offered / plain offered: 0 / 1
 ok   Mischievous Ring (Hoopa B4 077): mechanic ShuffleOpponentToolsIntoDeckBeforeDamage, off-gate counter: offgate_helper_choice
-ok   Mischievous Ring (Hoopa B4 077), Meowth in slot 0: queued offered / plain offered: 1 / 0
-ok   Mischievous Ring (Hoopa B4 077): choosing it runs Meowth's coin split: finite [], full [0]
-ok   Mischievous Ring (Hoopa B4 077), Bulbasaur instead: queued offered / plain offered: 0 / 1
+ok   Mischievous Ring (Hoopa B4 077), the coin Pokemon in slot 0: queued offered / plain offered: 1 / 0
+ok   Mischievous Ring (Hoopa B4 077): choosing it runs the coin split there: finite [], full [0]
+ok   Mischievous Ring (Hoopa B4 077), no coin Pokemon there: queued offered / plain offered: 0 / 1
 ok   Litter (Slowking A4a 018), 2 Tools discarded: mechanic DiscardToolsFromHandForDamage, off-gate counter: offgate_helper_choice
-ok   Litter (Slowking A4a 018), 2 Tools discarded, Meowth in slot 0: queued offered / plain offered: 1 / 0
-ok   Litter (Slowking A4a 018), 2 Tools discarded: choosing it runs Meowth's coin split: finite [], full [0]
-ok   Litter (Slowking A4a 018), 2 Tools discarded, Bulbasaur instead: queued offered / plain offered: 0 / 1
-28 checks, 0 failures
+ok   Litter (Slowking A4a 018), 2 Tools discarded, the coin Pokemon in slot 0: queued offered / plain offered: 1 / 0
+ok   Litter (Slowking A4a 018), 2 Tools discarded: choosing it runs the coin split there: finite [], full [0]
+ok   Litter (Slowking A4a 018), 2 Tools discarded, no coin Pokemon there: queued offered / plain offered: 0 / 1
+ok   Double-Punching Family's second punch (Mega Kangaskhan ex B2 127), into Togekiss: mechanic MegaKangaskhanExDoublePunchingFamily, off-gate counter: offgate_helper_choice
+ok   Double-Punching Family's second punch (Mega Kangaskhan ex B2 127), into Togekiss, the coin Pokemon in slot 0: queued offered / plain offered: 1 / 0
+ok   Double-Punching Family's second punch (Mega Kangaskhan ex B2 127), into Togekiss: choosing it runs the coin split there: finite [], full [0]
+ok   Double-Punching Family's second punch (Mega Kangaskhan ex B2 127), into Togekiss, no coin Pokemon there: queued offered / plain offered: 0 / 1
+32 checks, 0 failures
