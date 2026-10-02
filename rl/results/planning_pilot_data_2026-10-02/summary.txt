@@ -1,0 +1,30 @@
+games: 9600; seat 0 won 4750, seat 1 won 4832, ties 18; the player going first won 4599 (48.0% of decided games)
+km's check (the terms add up to km's value): games with a mismatch 0, mismatched rows 0
+game length: mean 10.3 turns (min 1, max 27); mean 73.8 ticks
+
+per list (class from pool.tsv): games, win rate, mean turn of its first attack (games with none), mean game length
+  early 04-absol-hoopa-darkrai                  1200  48.8%  first attack 2.55 (1 none)  length 10.2
+  early 09-mega-manectric-heliolisk             1200  65.7%  first attack 3.11 (5 none)  length 8.8
+  early brew-02-arceus-tandemaus-persian        1200  20.5%  first attack 4.48 (53 none)  length 10.1
+  early brew-09-sableye-obstagoon               1200  55.0%  first attack 5.15 (11 none)  length 10.6
+  panel t-lucario                               1200  58.9%  first attack 2.56 (7 none)  length 9.6
+  panel t-blaziken                              1200  60.3%  first attack 2.78 (8 none)  length 9.5
+  panel t-sceptile                              1200  69.2%  first attack 2.80 (25 none)  length 10.1
+  panel t-hydreigon                             1200  51.9%  first attack 3.23 (6 none)  length 10.0
+  panel t-vespiquen                             1200  58.3%  first attack 3.30 (6 none)  length 10.4
+  panel t-altaria                               1200  56.0%  first attack 3.30 (12 none)  length 10.2
+  panel t-weezing                               1200  63.5%  first attack 3.73 (30 none)  length 9.7
+  panel t-suicune                               1200  62.8%  first attack 4.09 (12 none)  length 10.3
+  slow  08-garchomp-toolbox                     1200  36.8%  first attack 2.79 (34 none)  length 10.5
+  slow  01-muk-glimmora-kingambit-regigigas     1200  21.5%  first attack 5.10 (29 none)  length 13.2
+  slow  brew-10-diancie-giratina                1200  51.0%  first attack 5.42 (43 none)  length 10.4
+  slow  11-archaludon-haxorus-dragonair         1200  18.2%  first attack 5.46 (132 none)  length 10.8
+  by class, mean first attack turn: early 3.81, panel 3.22, slow 4.68
+
+rows: 467146 (48.7 a game); own turn 449614, the opponent's turn 17532 (promotions and the like); setup 15184
+rows by result for the mover: win 236848, loss 229260, tie 1038
+rows by the move chosen: Play 126086, Attach 81547, Attack 69098, Place 64613, Evolve 24321, Promote 15737, Retreat 15511, EndTurn 15120, AttachTool 14540, UseStadium 14401, UseAbility 9941, ApplyQueuedAttackDamage 4017, ApplyDamage 3089, DiscardToolFromPokemon 2752, Activate 2467, ChooseRandomEvolutionTarget 1008, DiscardOwnBenchedThenDamage 876, AttachTypedFromDiscard 627, Heal 625, DiscardActiveStadium 412, DiscardOpponentSupporter 260, ChooseRetreatEnergy 78, BenchOpponentFromDiscard 13, BenchOpponentHandBasics 6, Noop 1
+features: 139 (meta 10, labels 5)
+dead or nearly constant features (2): my_is_winner (constant 0); opp_is_winner (constant 0)
+
+throughput: total: 9600 games, 467146 rows, 3021.9s, 3.177 games/s, 154.6 rows/s, threads 2; km check mismatches: 0

@@ -1,0 +1,45 @@
+rows: 450955 battle rows without ties (90017 held out: games with i % 5 == 4); features: 136; wins 50.8% of rows
+held-out games: log loss / accuracy
+  base rate (0.508):       0.6930 / 0.508
+  km's value alone:        0.6313 / 0.611
+  all 134 features:     0.5254 / 0.725
+
+the weightiest features (standardised coefficient; + favours the mover's win):
+  my_energy_distance_to_online             -1.350
+  opp_pokemon_value                        -0.995
+  my_deck_size                             -0.967
+  opp_deck_size                            +0.926
+  opp_active_evo_missing_priciest          +0.888
+  opp_clock_first_hit                      +0.748
+  opp_bench1_evo_missing_priciest          -0.728
+  my_pokemon_value                         +0.724
+  my_bench3_missing_cheapest               +0.705
+  opp_bench1_evo_missing_cheapest          +0.669
+  my_bench1_missing_cheapest               +0.663
+  my_bench2_missing_cheapest               +0.659
+  my_discard_size                          -0.637
+  opp_bench3_evo_missing_priciest          +0.591
+  opp_clock_later_hit                      -0.564
+  opp_discard_size                         +0.492
+  opp_active_evo_missing_cheapest          -0.461
+  opp_bench3_evo_missing_cheapest          -0.365
+  opp_energy_distance_to_online            +0.364
+  my_bench_count                           -0.359
+  opp_active_energy                        +0.340
+  opp_clock_active_hp                      -0.338
+  opp_points                               -0.317
+  opp_bench3_has_evolution                 -0.316
+  my_clock_active_hp                       +0.316
+  my_attach_now                            +0.300
+  my_points                                +0.300
+  my_clock_first_hit                       -0.297
+  my_active_ko_ends_game                   -0.293
+  opp_active_online_score                  +0.285
+
+my_bench_attacker_energy: coefficient -0.1422 (rank 65 of 134 by size) in the full model
+  my_bench_energy_total: +0.0272 (rank 115)
+  my_bench_attacker_missing: -0.1900 (rank 46)
+  opp_bench_attacker_energy: +0.1345 (rank 68)
+  opp_bench_energy_total: +0.0017 (rank 132)
+  by fold (held out i % 5 == 0..4): -0.1621, -0.1531, -0.1379, -0.1285, -0.1422
+  in a small model (km's terms and the two Bench Energy features, 30 columns): my_bench_attacker_energy -0.0543, my_bench_energy_total -0.0477; held-out log loss 0.5583

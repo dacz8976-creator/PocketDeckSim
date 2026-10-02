@@ -151,3 +151,81 @@ held-out test of a pilot developed on this pool.
   - the held-out log loss and accuracy against always predicting the base rate.
 
   No pilot changes and no claim is made from it.
+
+## Where it stopped (Oct 2, 20:45 UTC)
+
+The coordinator switched the cloud to the play-out pilot (Fable via Dustin, Oct 2): "commit what you have of it, note where it
+stopped". So:
+- **The first pass finished:** 9,600 games, 80 in every pairing (i < 80), the whole pool. Its rows and games are here.
+- **The second pass (i = 80-159) was cancelled before it started.** The dataset is the first pass only, about 50 minutes of
+  generation, not the hour planned.
+- **One conflict for whoever picks this up.** The design's locked final-exam list (`rl/strength/heldout.json`, 8521b291), fixed
+  after this pool, holds out Dustin's 04, 08 and 11. All three are in this pool. Rows with those lists on either side must be
+  dropped before this data is used for development.
+
+## Results of the first pass
+
+Files:
+- `data/rows_pass1.tsv.gz`: 467,146 rows, gzipped TSV with a header.
+- `data/games_pass1.jsonl`: one line a game.
+- `data/run_pass1_stdout.txt`: per-pairing times.
+- `summary.txt` and `feature_stats.tsv`: from `summarize.py`.
+- `baseline_fit.txt`: from `baseline_fit.py`.
+- `identity/`: the fingerprint check.
+
+The program was built from 9efbb0f, sha256 82ba2129…c3ad.
+
+**The games are km3's own.** `legality_scan`, built from main (a9b8ce5, an untouched engine), played 80 of the same deals: 16
+in each of pairings 0, 45, 92, 104 and 119. All 80 move fingerprints are equal to this example's (`identity/`).
+
+**Size and speed.**
+- 9,600 games, 467,146 rows (48.7 a game), in 3,022 s on two threads: **3.18 games/s and 155 rows/s**, about 1.6 games/s per
+  thread.
+- My own builds ran beside it on the other two cores at times, so treat that as a floor.
+- km's check (its terms add up to km's value) matched on all 467,146 rows.
+- The rows: 449,614 in the mover's own turn, 17,532 in the opponent's turn (promotions and the like), and 15,184 setup
+  choices.
+- The rows by kind of move: Play 126,086, Attach 81,547, Attack 69,098, Place 64,613, Evolve 24,321, Promote 15,737,
+  Retreat 15,511, EndTurn 15,120, and the rest.
+- At this rate a full run of 100,000 games is about 9 hours on two threads (about 5 million rows, about 160 MB gzipped).
+
+**Outcome balance.**
+- Seat 0 won 4,750, seat 1 won 4,832, and 18 games were ties.
+- The player going first won 48.0% of decided games.
+- Rows by the mover's result: 236,848 wins, 229,260 losses, 1,038 ties.
+- Mean game length 10.3 turns (1 to 27).
+
+**The class check.** Mean turn of the first attack: early 3.81, panel 3.22, slow 4.68. The slow lists do attack later, but
+the classes hold only in part:
+- brew-09 (5.15) and brew-02 (4.48) attack late for "early" lists;
+- Dustin's 08 attacks early (2.79) for a "slow" one.
+
+Per list, in `summary.txt`.
+
+**The features.** 139, ranges in `feature_stats.tsv`. Only two are constant: `my_is_winner` and `opp_is_winner`, which are 0 at
+every decision point by construction. Nothing else is dead.
+
+**The baseline fit** (`baseline_fit.txt`; a sanity check only, no claim).
+- 450,955 battle rows without ties. The held-out games (i % 5 == 4) have 90,017 rows.
+- Held-out log loss / accuracy:
+
+  | model | log loss | accuracy |
+  |---|---|---|
+  | base rate | 0.693 | 50.8% |
+  | km's value alone | 0.631 | 61.1% |
+  | all 134 features | 0.525 | 72.5% |
+
+- The weightiest features (standardised):
+  - the mover's Energy distance to online (−1.35);
+  - the opponent's Pokémon value (−1.00);
+  - the deck sizes (mine −0.97, the opponent's +0.93);
+  - the opponent's evolution readiness;
+  - the opponent's clock (the first hit on the opponent's Active, +0.75).
+- **The fitted sign of `my_bench_attacker_energy` (Energy on the likely benched attacker) is negative:**
+  - −0.142 in the full model, rank 65 of 134;
+  - negative in all five folds (−0.162 to −0.129);
+  - negative in a small model of km's terms and the two Bench Energy features (−0.054).
+- `my_bench_energy_total` is +0.027 in the full model and −0.048 in the small one.
+- This is a correlation in km3's own games, not a value. km3 puts Energy on the Bench mostly when its Active can't use it,
+  which is itself a losing sign, and the features overlap heavily. It doesn't say that Bench Energy is bad. It says that a
+  linear fit on km3 self-play can't answer that question.

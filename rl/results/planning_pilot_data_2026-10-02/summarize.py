@@ -3,8 +3,9 @@ Reads the rows (gzipped TSV) and the games (JSONL), and writes summary.txt and f
 - Rows and games, rows by kind of decision (own turn, setup, the move chosen).
 - The outcome balance: wins, losses and ties by seat, by who went first, by list.
 - The class check of the pool: each list's mean turn of its first attack and its mean game length (pool.tsv's classes).
-- The feature ranges: min, max, mean, standard deviation, share non-zero and number of distinct values of every feature,
-  and the features that are constant or nearly so ("dead").
+- The feature ranges: min, max, mean, standard deviation, share non-zero, number of distinct values (counted up to 1,000)
+  and the share of rows holding its most common value, for every feature; and the features that are constant or nearly so
+  ("dead": one value in 99.9% of rows or more).
 - km's check: games whose rows' km terms didn't add up to km's value.
 Usage: python3 summarize.py <rows.tsv.gz> <games.jsonl> [<run_stdout.txt>]"""
 import csv, gzip, json, math, sys
@@ -66,7 +67,7 @@ with gzip.open(rows_path, "rt", encoding="utf-8") as f:
     header = next(reader)
     feats = [h for h in header if h not in META and h not in LABELS]
     idx = {h: k for k, h in enumerate(header)}
-    stats = {h: {"n": 0, "sum": 0.0, "sq": 0.0, "min": math.inf, "max": -math.inf, "nonzero": 0, "distinct": set()} for h in feats}
+    stats = {h: {"n": 0, "sum": 0.0, "sq": 0.0, "min": math.inf, "max": -math.inf, "nonzero": 0, "values": Counter()} for h in feats}
     rows, kinds, own, setup, results = 0, Counter(), Counter(), Counter(), Counter()
     for r in reader:
         rows += 1
@@ -83,27 +84,29 @@ with gzip.open(rows_path, "rt", encoding="utf-8") as f:
             s["min"] = min(s["min"], v)
             s["max"] = max(s["max"], v)
             s["nonzero"] += v != 0
-            if len(s["distinct"]) < 1000:
-                s["distinct"].add(v)
+            if v in s["values"] or len(s["values"]) < 1000:
+                s["values"][v] += 1
 say(f"\nrows: {rows} ({rows / n:.1f} a game); own turn {own['1']}, the opponent's turn {own['0']} (promotions and the like); "
     f"setup {setup['1']}")
 say(f"rows by result for the mover: win {results['1']}, loss {results['0']}, tie {results['0.5']}")
 say("rows by the move chosen: " + ", ".join(f"{k} {v}" for k, v in kinds.most_common()))
 say(f"features: {len(feats)} (meta {len(META)}, labels {len(LABELS)})")
 
-lines = ["feature\tmin\tmax\tmean\tsd\tnonzero_share\tdistinct"]
+lines = ["feature\tmin\tmax\tmean\tsd\tnonzero_share\tdistinct\tmode_share"]
 dead = []
 for h in feats:
     s = stats[h]
     mean = s["sum"] / s["n"]
     sd = math.sqrt(max(0.0, s["sq"] / s["n"] - mean * mean))
-    distinct = len(s["distinct"])
+    distinct = len(s["values"])
+    mode_value, mode_count = s["values"].most_common(1)[0]
+    mode_share = mode_count / s["n"] if distinct < 1000 else 0.0
     lines.append(f"{h}\t{s['min']:g}\t{s['max']:g}\t{mean:.4g}\t{sd:.4g}\t{s['nonzero'] / s['n']:.4f}\t"
-                 f"{distinct if distinct < 1000 else '1000+'}")
+                 f"{distinct if distinct < 1000 else '1000+'}\t{mode_share:.4f}")
     if distinct <= 1:
         dead.append(f"{h} (constant {s['min']:g})")
-    elif min(s["nonzero"], s["n"] - s["nonzero"]) / s["n"] < 0.001:
-        dead.append(f"{h} (all but {min(s['nonzero'], s['n'] - s['nonzero'])} rows the same)")
+    elif mode_share >= 0.999:
+        dead.append(f"{h} ({mode_value:g} in all but {s['n'] - mode_count} rows)")
 (HERE / "feature_stats.tsv").write_text("\n".join(lines) + "\n", encoding="utf-8")
 say(f"dead or nearly constant features ({len(dead)}): " + ("; ".join(dead) if dead else "none"))
 
