@@ -1,4 +1,4 @@
-Decision this informs: none yet. This is a drafted engine repair for a later engine switch (the Fable coordinator via Dustin, Oct 1). It stacks on Sonnet's R (1abdbe8, `origin/sonnet/rules-fixes`) on its own branch, `claude/coin-prevention-round2`, and is not merged or pinned. **It stays out of the current rules switch, whose scope is fixed, and goes in the next one** (the coordinator, Oct 1). No table game, carrier game or identity replay was played. **No independent audit of the patch has been done yet.**
+Decision this informs: none yet. This is a drafted engine repair for a later engine switch (the Fable coordinator via Dustin, Oct 1). It stacks on Sonnet's R (1abdbe8, `origin/sonnet/rules-fixes`) on its own branch, `claude/coin-prevention-round2`, and is not merged or pinned. **It stays out of the current rules switch, whose scope is fixed, and goes in the next one** (the coordinator, Oct 1). No table game, carrier game or identity replay was played. **No independent audit of the patch has been done yet.** **Since Oct 2 it also carries the card-text job** (the coordinator via Dustin, Oct 1 evening): see "The card-text job" below and `TEXT_AUDIT.md`.
 
 Seeds: no table deal. The smoke check used 20,980,000,000 + pairing × 10,000 + i, on scratch decks only (Claude Code's diagnostic block, outside START_HERE's ranges). The unit tests' seeds are their own, as in the first round.
 
@@ -17,10 +17,73 @@ Seeds: no table deal. The smoke check used 20,980,000,000 + pairing × 10,000 + 
   - Slowking's Litter (A4a 018);
   - Mega Kangaskhan ex's second punch (B2 127, 189, 202; B4 231), with or without a knockout first.
 - **The second punch needed a fifth engine file, `engine/src/state/mod.rs`** (asked in CLOUD_STATUS.md, approved by the coordinator via Dustin, Oct 1: its pending-hit check only). The check now also sees the punch in its coin-flipping form, so the opponent still chooses a new Active before it lands. See "Mega Kangaskhan ex" below.
-- **Unchanged, as Dustin ruled:** `also_choice_bench_damage` in its own-Bench form. The new gate also leaves alone any choice that hits the attacker's own Bench. No card today has an own-Bench form of these sites.
+- **Unchanged, as Dustin ruled (superseded Oct 2 by his card-text rule; it now flips, see "The card-text job"):** `also_choice_bench_damage` in its own-Bench form. The new gate also leaves alone any choice that hits the attacker's own Bench. No card today has an own-Bench form of these sites.
 - **Off the gate nothing changes.** A queued choice takes the new path only when one of its targets has one of the four Abilities. Every other choice is the same `ApplyDamage` as before.
 - **Which games could change: none between two lists under `decks/`.** No list under `decks/` holds one of the four Abilities. One list holds a repaired attacker: the panel ladder's l-sharpedo, with 2 Gyarados A4 045 (Wild Swing). Its play changes only in a game against one of those Abilities.
 - **For the next switch's early-warning rows.** The current switch's step 8b has a row "l-sharpedo v `meowth_carefree`" as "the Wild Swing control". On an engine with this round, Wild Swing into that Meowth flips the coin, so a row like it is no longer a control for Wild Swing.
+
+## The card-text job (Oct 2)
+
+Set by the Fable coordinator via Dustin, Oct 1 evening, on this branch, with Dustin's rule: plain card text is the rule, and a simulator path that contradicts it is a bug. Tests first for every fix; no table game; nothing in `players/`.
+
+### In plain words
+
+1. **Will with a Confused attacker** (item 1). Will names coins flipped "for the effect of an attack, Ability, or Trainer card"; the Confusion coin is none of those. So after a Confusion heads, Will now makes the attack's first coin heads, and Victory Star is still offered. Before: Will lapsed unused, and Victini offered nothing. The game does this (Recording_QA 210403, T14).
+2. **The audit** (item 2, `TEXT_AUDIT.md`): every gated or "not seen" case in rules/09, rules/04 and `card_validation.rs`'s caveats, with the card texts. 9 are decided by the text and contradicted by the engine, 7 are decided and already followed, 17 are not decided by any text (each a shot-list row, with what to record), and 4 are not rules questions.
+3. **The four text-decided fixes that fit the five files** (item 3):
+   - **Victory Star with a block coin** (Smokescreen and the like): the block coin comes first and is never offered; on its heads the attack's own coins are offered. Before: no offer at all.
+   - **Will with a block coin:** Will makes the block coin heads (it is flipped "for the effect of an attack", the opponent's), and the attack's own coins stay fair. Before: Will lapsed unused.
+   - **The coin Abilities on the attacker's own Pokémon:** Carefree Steps, Celestial Blessing, Guarded Grill and Securely Sheltered now flip for your own attack's damage to your own Pokémon (Zapdos's and Emolga's Raging Thunder, Luxray's Flash Impact, Mimikyu's Shadow Hit, the Earthquake family, Shaking Stomp, Hailstorm, Enormous Explosion), and for the opponent's Active hit in an own-Bench choice. Before: never. This supersedes Dustin's earlier "unchanged" for the own-Bench form.
+   - **A copied discard attack** (Chase Order through Ditto's Copy Anything, Wild Swing through either Ditto) now flips the coin. Before: never.
+4. **Trap Territory** (item 4): two Ariados add 2 to the opponent's Active's Retreat Cost, not 1 (213034: Grass Knot did 160). That changes retreat, Grass Knot and the other per-Retreat-Cost attacks, and Heavy Helmet.
+- **Asked in CLOUD_STATUS.md, not done** (de0d53c): Victini's caveat text in `card_validation.rs`; Luxury Coin on the opponent's Stadium (`trainer_coin_plan.rs`); a Fossil under an Item lock (`move_generation_trainer.rs`); Guts on your own Pokémon and Perish Body on a plain queued hit (in the five files, but outside the three sources).
+- **Which games could change** (the 79 lists under `decks/` on this branch):
+  - Trap Territory: Dustin's deck 12 (`decks/dustin/12-ariados-whimsicott-ogerpon.txt`, 2 Ariados B1a 006). Its own Grass Knot (Whimsicott ex) and its opponent's retreats change whenever both Ariados are in play.
+  - Will: `decks/brews/brew-01-arceus-crobat-xatu.txt`, `decks/brews/brew-04-xatu-slowking.txt` and `decks/dustin/10-xatu-oricorio-tr-weezing.txt` hold Will. Their games change only when Will is played and the attacker is then Confused and attacks with coins.
+  - Nothing else: no list holds Victini, a block-coin attacker, a coin Ability, an own-side damage attacker or Ditto.
+- **The suite** (`suite_card_text.log`), at `5155ff7`, the last engine commit: **2,035 passed, 0 failed, 0 ignored**: the 2,027 above plus the 11 tests added here, less the 3 old pins they replace.
+
+### Commits
+
+- The log line on the coordination branch (d13b9d2); the sixth-file question (de0d53c).
+- `59c7c2a`: item 1's tests (`tests_before_fix_will.log`: the 2 new tests fail, 14 pass). `27a0c37`: its fix (`tests_after_fix_will.log`).
+- `539594a`: `TEXT_AUDIT.md`, before any further code.
+- `7e13132`: item 3's tests (`tests_before_fix_text.log`: 7 fail; 0 prevented of 60 for every own-side and copied case). `46953bf`: the fixes (`tests_after_fix_text.log`).
+- `05eb849`: item 4's tests (`tests_before_fix_trap_territory.log`: both fail at two Ariados only). `5155ff7`: the fix (`tests_after_fix_trap_territory.log`).
+- Then the suite and this README.
+
+The engine diff from R is now nine files: the five (`apply_attack_action.rs`, `apply_action.rs`, `attack_outcome.rs`, `hooks/core.rs`, `state/mod.rs`), `hooks/retreat.rs` (allowed for Trap Territory only), and the test files `tests/pokemon/meowth_carefree_steps_test.rs`, `tests/b4a_attack_batch2_test.rs` and `tests/pokemon/legacy_ability_logic_test.rs`. Nothing in `players/` or `Cargo.lock` changed.
+
+### Tests
+
+| test | file | before | after |
+|---|---|---|---|
+| `confusion_with_will_pending_forces_the_attacks_first_coin_and_still_offers_victory_star` (replaces F4's `confusion_with_will_pending_keeps_the_legacy_resolution_without_a_victory_star_offer`) | `b4a_attack_batch2_test.rs` | fails: no pause | passes |
+| `confusion_with_will_pending_forces_the_attacks_first_coin_without_victory_star` (the exact forecast) | same | fails: nothing attached 0.5625, Will unused | passes |
+| `a_block_coin_comes_first_then_victory_star_is_offered_on_the_attacks_own_coins` (replaces `coin_flip_to_block_attack_keeps_its_resolution_without_a_victory_star_offer` and `coin_flip_to_block_attack_result_is_the_old_paths`) | same | fails: no pause | passes |
+| `will_makes_the_block_coin_heads_and_leaves_the_attacks_own_coins_fair` (the exact forecast, Confused or not) | same | fails: Will unused | passes |
+| `will_on_the_block_coin_then_victory_star_on_the_attacks_fair_coins` | same | fails: no pause | passes |
+| `carefree_steps_flips_for_your_own_attacks_damage_to_your_own_meowth` (Raging Thunder, Shadow Hit, Earthquake) | `meowth_carefree_steps_test.rs` | fails: 0 prevented of 60 | passes |
+| `securely_sheltered_cuts_your_own_shaking_stomp_on_your_benched_goodra` | same | fails: 0 of 60 | passes |
+| `carefree_steps_flips_for_the_active_hit_of_an_own_bench_choice` | same | fails: 0 of 60 | passes |
+| `carefree_steps_flips_for_a_copied_discard_attack` (Copy Anything + Chase Order, Copy a Friend + Wild Swing; the discard offered on all 60 seeds) | same | fails: 0 of 60 | passes |
+| `trap_territory_adds_one_to_the_retreat_cost_for_each_ariados` (retreat legality with 0, 1, 2 Ariados) | `legacy_ability_logic_test.rs` | fails at 2 Ariados | passes |
+| `grass_knot_reads_one_more_retreat_cost_for_each_ariados` (100, 130, 160 into Charizard ex) | same | fails: 130, not 160 | passes |
+
+The three replaced tests pinned the old resolution, as their comments said. Two in-crate tests in `attack_outcome.rs` were updated to the prevention split's new (side, index, cut) form, with the same values. No other test changed.
+
+### How (line numbers at `5155ff7`)
+
+- **Will on a Confused attacker:** `AttackOutcomes::force_first_heads_using_will` (`attack_outcome.rs`) conditions the attack's own coins on a first heads, as `Outcomes::force_first_heads` does, and uses Will in each branch before its damage. `apply_attack_common_modifiers` (`apply_attack_action.rs`) applies it before the Confusion gate. With Victini, the Confusion-first staging takes the case (the Will carve-out is gone).
+- **The block coin:** `victory_star_waits_for_gate_heads` (formerly `..._confusion_heads`) covers both gate coins, with `gate_heads_probability`, `gate_tails_outcomes` and `finish_attack_after_gate_heads`; `has_unverified_attacker_coin_gate` and its early return in `try_forecast_victory_star_attack` are gone. Will: `will_goes_to_the_block_coin`, and `AttackOutcomes::block_coin_heads_by_will`, which keeps every branch, uses Will, and drops the coin record so `finish_forecast` doesn't apply Will again.
+- **The attacker's own Pokémon:** `split_with_damage_prevention` takes (side, index, cut) and `heads_coin_cuts` carry the side; `apply_defender_damage_prevention_if_needed` collects both sides; `modify_damage`'s heads cut applies to either side (`hooks/core.rs`). `forecast_apply_damage` (`apply_action.rs`) flips the coin for any target of an attack's queued `ApplyDamage`, with the heads cut in force and the Guts check after it; that covers the own-Bench and own-Pokémon choices and a copied discard attack.
+- **Trap Territory:** `get_retreat_cost_for_player_internal` (`hooks/retreat.rs`) adds each Ariados's amount; the loop no longer stops at the first.
+
+### For the laptop
+
+- The replay at the next switch: Trap Territory moves deck 12's games, and Will moves the three Will lists' games only in the Confused case (above).
+- `instrument_scan.py`'s counters don't see the new paths (Victory Star after a block coin, Will on a gate, the own-side coin, the queued `ApplyDamage` coin). They would need new counters if the replay wants a proof that a table ran them.
+- `players/value_functions.rs` prices the block coin at 50/50 (its comment at 1976). With Will pending the engine now makes it heads, so the bots' clock is off in that rare case. `players/` is not changed here.
 
 ## Reach per card (`reach.py`, `reach_output.txt`)
 
@@ -172,11 +235,11 @@ The engine diff from R is four files:
 
 ## Limits
 
-- **A copied attack.** Wild Swing's and Litter's queued damage looks for the attack among the attacker's own printed attacks, as Chase Order's discard branch already did. A copied Wild Swing or Litter (for example through Mew ex's Genome Hacking) keeps the old path.
+- **A copied attack.** Wild Swing's and Litter's queued damage looks for the attack among the attacker's own printed attacks, as Chase Order's discard branch already did. A copied one keeps a plain `ApplyDamage`, which since the card-text job (Oct 2) flips the coin itself (`forecast_apply_damage`).
 - **The other targets of a gated choice.** When a choice that hits two Pokémon takes the coin path because one of them has a coin Ability, the other target's damage also runs the attack's modifiers. That is the attack's name and text in `modify_damage`, and the defender's Guts, point-denial and Perish Body coins.
   - That is right by the rules, since it is the attack's damage. But it differs from the plain `ApplyDamage` it replaces, which carried none of them.
   - The same side effect the first round recorded for its helpers.
-- **The own-Bench forms** of `coin_flip_also_choice_bench_damage` and `conditional_bench_damage_attack` (no card today) pass through unchanged, like `also_choice_bench_damage`'s.
+- **The own-Bench forms** of `coin_flip_also_choice_bench_damage` and `conditional_bench_damage_attack` (no card today) pass through the gate unchanged, like `also_choice_bench_damage`'s; since the card-text job their plain `ApplyDamage` flips the coin itself.
 - **The fifth file's new arm sees any queued attack damage aimed at the empty Active**, not only the second punch: also the first round's gated choices and `also_choice_bench_damage`'s opponent-Bench form. That is the same as the `ApplyDamage` arm already does for their plain twins.
   - I found no path where one of them is still on the stack when a promotion is queued, but I did not audit every one.
   - The smoke check's games are unchanged by it (below).
@@ -187,6 +250,7 @@ The engine diff from R is four files:
 - `tests_before_fix.log`, `tests_after_fix.log`: `meowth_carefree_steps_test` before and after the six sites' fix.
 - `tests_before_fix_kangaskhan.log`, `tests_after_fix_kangaskhan.log`: the same, for the seventh.
 - `suite.log`: the full unit suite at `29e126a`.
+- The card-text job: `TEXT_AUDIT.md`; `tests_before_fix_will.log`, `tests_after_fix_will.log`; `tests_before_fix_text.log`, `tests_after_fix_text.log`; `tests_before_fix_trap_territory.log`, `tests_after_fix_trap_territory.log`; `suite_card_text.log` (the full suite at `5155ff7`).
 - `reach.py`, `reach_output.txt`: reach per card.
 - `counter_probe_round2.rs`, `counter_probe_round2_output.txt`: the counters on constructed boards.
 - `smoke/`: the smoke check.
