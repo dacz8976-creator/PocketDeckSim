@@ -130,6 +130,38 @@ Given in the Fable coordinator session, in answer to (a) accept or hold Victory 
 
 This switch's two gated Victory Star cases (CoinFlipToBlockAttack, and Confusion with a pending Will) were gated the other way round, "until seen in the game". They go to the next rules switch on their plain reading, with the four bugs from the Oct 1 recordings (`../rules_recordings_2026-10-01/READOUT.md`).
 
+## The pin (Oct 1)
+
+- **Before it:** 8c passed on Dustin's conditions above, and the coordinator audited it (`8c_RESULT.txt`, which names Sonnet's result commits). All 3,813 changed games are accounted for:
+  - 2,414 on the board;
+  - 1,391 in lookahead with both halves;
+  - all 297 flagged CONDITION 3 cases traced;
+  - 8 that the rule couldn't settle, each then explained. Two prefix games are Victory Star offers with their exact counters at the extra tick. In six (five promotions and i106), B's queued coin frame is resolved free at ply 3 inside the search, which the probe didn't count. Reverting just that change brings back the old choice and scores, and Sonnet's revert check over all 1,395 coin-Ability lookahead games had 0 failures (`8c_FIVE_LOOKAHEAD_opus.md`, `trace_8c_sonnet/`).
+  - Dustin accepted the 8 (Oct 2, about 1:30 am Central, laptop session; verbatim, his chosen answer): "Accept all 8 and pin (Recommended)" (`8c_DECISION.md`).
+
+  Victory Star smoke game 28 stays the switch's one documented judgment exception.
+- **Merge:** R (f8cfa9c, `sonnet/rules-fixes`) into main as 8626a35861b88ae86a70c2386d47f9d765cfa2bc (main-8626a35), a merge commit with parents main and R, made off-tree with git merge-tree and commit-tree.
+  - Main had moved since the candidate (in `rl/` only; `engine/` is unchanged since c9f4224), so the pin made main's own merge commit. Its `engine/` is R's tree 38af8b0, byte-identical to the built candidate 5a18d31's. 5a18d31 stays a laptop ref (`refs/pocketdecksim/rules-switch-candidate`, not a branch).
+  - Nothing outside `rl/results/` and the plan's 9 engine files came along, and nothing was deleted (checked by the pin; `PIN_STATUS.txt`). The merge brings R's records under `rl/results/` onto main, among them `../coin_prevention_repair_2026-09-30/`, `../victory_star_repair_2026-09-30/` and `EQUIVALENCE_sonnet.md` here.
+- **Programs:** copied to `rl/engine-2026-10-02/` with `SHA256SUMS`. They are the programs sitting 1 built and tested, never rebuilt (`programs.sha256`: deckgym 2f7e5fd6…, legality_scan 97891274…, goldfish cecc76fb…). In the manifest, main-d363ba8 moved to the history as superseded. The screen's and the floor's default pilot stays km3.
+- **Scoreboard v3 re-verified at the new engine, 45 cells.** k3 and kp3 replayed identical on all 45 cells (step 7), every table counter but the two off-gate ones read 0 (7b), and every reference was blob-checked (step 5). So scoreboard v3's files are this engine's frozen k3 and kp3 tables, with the same hashes.
+- **After the pin:** Fetch origin in GitHub Desktop before Push origin. Then tell Sonnet, and the cloud through Dustin's paste block, that the official engine is main-8626a35 (`rl/engine-2026-10-02/`); the working pilot stays km3. The floor's pre-use re-check under km3 (PLAN step 15, `../floor_recheck_2026-10/PLAN.md`) follows. If it fails, the floor isn't used until Dustin has seen the pages.
+
+## Next switch backlog (left out of this switch; each needs the full procedure)
+
+- **The B4b refresh's id-keyed items** (PLAN.md, "Left out").
+  - The repairs' gates read card effects and mechanics, not ids, so B4b's reprints reach them as they are. Once B4b's data lands, both repairs reach further: Victini is reprinted as B4b 044 and 267 (repair A), and Meowth B2 124 as B4b 180 and 352 and Vespiquen ex as B4b 015 (repair B) (`../b4b_prep_2026-09-26/B4B_REPRINT_CHECK_2026-09-29.md` lines 70, 99, 235, 322, 407).
+  - Two things are keyed by id and would miss the new printings. Add the B4b ids to both at the refresh:
+    - Victini's card-status caveat arm, `engine/src/card_validation.rs:96` (`B3025Victini | PB049Victini`), so the B4b Victini carry the same RulesUnverified caveat;
+    - `COIN_IDS`, `FINITE` and `FULL` in the coin `instrument_scan.py` (`../coin_prevention_repair_2026-09-30/instrument_scan.py`, lines 82-84; `COIN_IDS` lists A2 114, A4 080, B2 124, B2 204 and B3b 050), and any F5 counter keyed the same way, before a watch build counts reach on a list with a B4b printing.
+- **The next rules switch:** `rules/09`'s open entry ("What the Oct 1 rules switch left open"), each case built on its card's plain text (Dustin's rule above):
+  - the cloud's later-round coin fixes on `claude/coin-prevention-round2` (76b87cd, then 78af4e8: Wild Swing and the six other sites; not yet audited). With them, 8b's l-sharpedo v `meowth_carefree` row is no longer a Wild Swing control;
+  - the own-Bench form of `also_choice_bench_damage`, and a copied Chase Order's discard branch;
+  - Victory Star with CoinFlipToBlockAttack, and with Confusion plus a pending Will (the carve-out at `apply_attack_action.rs:131`), together with Will on a Confused attacker's own first coin;
+  - two Ariados's Trap Territories (`hooks/retreat.rs:260`), with a two-Ariados test.
+  - Left in R's own files for then (`../rules_recordings_2026-10-01/READOUT.md` §4, "Don't edit inside the switch"): the F4 test's comment (`b4a_attack_batch2_test.rs`, about lines 432-433) and Victini's caveat (`card_validation.rs:97`), whose Will-pending half the Oct 1 recordings answered. Also `card_logic/wallace.rs`, old code with no caller (`../rules_recordings_2026-10-01/WALLACE_second_read_sonnet.md` §3).
+- **At the next upstream merge:** 09e964f's knockout-promotion fixes: fix 2 is not taken (Dustin, Sept 30); fix 1's case is already covered in the fork (F8, Oct 1), so there is nothing to port (F8 did not audit every path). Keep ours over PR #383 for its four cards (PLAN.md, "Left out").
+
 ## Who does what
 
 | Part | Who |

@@ -23,7 +23,7 @@ This switch changes the game rules, not the pilots. It brings in two repairs the
 - **kd's follow-ons ride along** (rules/09: "Fix the engine first; kd follows"). Only kd reaches this code: only KD sets `defender_modifiers` (`players/value_functions.rs:425-428`), and km3 never calls it. They change kd3's pricing only in games where one of these coin-Ability Pokémon is in play.
 - **Left out:**
   - **Upstream 09e964f** (two knockout-promotion fixes). It is not a clean pick: 12 files, mostly observation and serde.
-    - Fix 1: whether the fork already covers it is **unchecked** (rules/09:80). One reading of `apply_action_helpers.rs` 691-820 (knockouts resolve in waves) suggests it does, but there's no test and no second reader yet (F8).
+    - Fix 1: **covered, F8.md** (the cloud, Oct 1, 5a929c0, `f8/F8.md` on `claude/pensive-ptolemy-spwc0b`). Upstream's test, ported, passes on d363ba8: knockouts resolve in waves (`apply_action_helpers.rs` 690-820), with a nested pass after them, before any promotion is built. Until F8 this line said "unchecked" (rules/09:80).
     - Fix 2 would contradict the official JP ruling the fork follows for a lethal Knock Back: a Pokémon moved to the Bench is Knocked Out on the Bench (rules/06_sources.md:124). It would also break `rules_repair_retaliation_timing.rs:136`.
     - No list reaches either fix.
   - **PR #383.** Still open upstream. Main already carries the same fix for all four cards. Applying it anyway would undo the current-Retreat-Cost fix that your decks 01 and 03 rely on (Heavy Helmet), and it conflicts with B's `modify_damage` hunk. At the next upstream merge, keep ours.

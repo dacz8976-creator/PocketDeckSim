@@ -75,12 +75,29 @@ The accepted 225430 segment revealed that a zero-HP attacker was discarded befor
 
 ## Open engine bugs (not fixed yet)
 
-- **Two knockout-promotion bugs fixed upstream, not in the fork** (found Sept 29 in upstream 09e964f, "Expose public agent observations and fix stale knockout promotions"; `../rl/results/b4b_prep_2026-09-26/B4B_REPRINT_CHECK_2026-09-29.md`). Take them at the next upstream merge, with their tests.
+- **Two knockout-promotion bugs fixed upstream, not in the fork** (found Sept 29 in upstream 09e964f, "Expose public agent observations and fix stale knockout promotions"; `../rl/results/b4b_prep_2026-09-26/B4B_REPRINT_CHECK_2026-09-29.md`). **Neither is to be ported at the next upstream merge.** Fix 2 is not taken (Dustin, Sept 30). Fix 1's case is already covered in the fork (F8, Oct 1), so there is nothing to port; F8 did not audit every path (both below).
   1. **Promotion into an emptied slot** (upstream `apply_action_helpers.rs`, `handle_knockouts`; test `tests/hp_aura_promotion_test.rs`). A knockout removes an HP bonus, the only one being Lilligant's "Each of your [G] Pokémon gets +20 HP.", which knocks out a damaged Benched Pokémon after promotion choices were already queued. Promoting that emptied slot could leave the Active Spot empty.
-     - The fork has its own `prune_stale_bench_activate_choices` (`engine/src/actions/apply_action_helpers.rs:1032`), which skips frames where the Active Spot is empty. Whether it covers this case is unchecked.
+     - **Covered in the fork (F8, Oct 1).** Upstream's test, ported, passes on d363ba8. Knockouts resolve in waves (`engine/src/actions/apply_action_helpers.rs:690-820`), with a nested pass after them (`:836-847`), before any promotion is built (`:906`), so the second knockout falls before the promotion choices exist. Either guard alone covers the case; only with both removed does the fork fail as upstream did. The fork's `prune_stale_bench_activate_choices` (`:1032`) is not what covers it, and fix 1 ported as written would do nothing here: it filters `Activate` choices, and the fork promotes with its own `Promote` move. F8's limits: the fork has no general clean-up of stale `Promote` choices, and F8 did not audit every other path. Source: `rl/results/engine_switch_rules_2026-10/f8/F8.md` (the cloud, 5a929c0, on `claude/pensive-ptolemy-spwc0b`).
   2. **Lethal knock-back asked for two promotions** (upstream `apply_attack_action.rs`, `knock_back_attack` and `coin_flip_knock_back_opponent_active`; test `tests/knock_back_knockout_test.rs`). When the hit knocks out the opponent's Active, the switch choice was still queued on top of the promotion, so the opponent chose a new Active twice.
      - It affects Hariyama's Push Out, Grapploct's Knock Back, Houndour's and Yamper's Roar, Throh's Circle Throw, and Chinchou's Luring Glow.
      - The fork's `knock_back_attack` (`engine/src/actions/apply_attack_action.rs:4952`) has no lethal check.
+     - **Not taken** (Dustin, Sept 30, the rules switch's question 10). It contradicts the official JP ruling the fork follows: a Pokémon moved to the Bench by a lethal Knock Back is Knocked Out on the Bench (`06_sources.md:124`; "Lethal Knock Back finishes its switch" above). It would also break `rules_repair_retaliation_timing.rs:136`.
+
+- **What the Oct 1 rules switch left open: bugs against the plain card text, for the next rules switch.** The switch (main-8626a35) fixed the parts under "Fixed Oct 1" below; these remain. Dustin's rule (Oct 1, `../rl/RUN5.md`): "if there is a plain reading of the text, the engine build should go with that, unless there is contradicting evidence. Not the other way around". So each case is built on its card's plain text, and none waits for footage. Line numbers are at main-8626a35, whose `engine/` is the candidate 5a18d31's.
+  1. **Some attacks still never flip a coin-flip damage Ability.** Carefree Steps, Celestial Blessing, Guarded Grill and Securely Sheltered read "If any damage is done to this Pokémon by attacks, flip a coin". These attacks still queue their damage as a plain `ApplyDamage` choice, which never flips it:
+     - **Gyarados's Wild Swing**, whenever it can discard a Benched [W] Pokémon, with or without the discard. `discard_then_damage_choice` (`engine/src/actions/apply_attack_action.rs:311`) takes the coin path only for Chase Order. The game flips [OBSERVED 213822 T6, 150-154, Oct 1: Wild Swing into Meowth, Carefree Steps' coin, tails, 100 damage; DUSTIN: "Coin still applies. It is an attack"]. Pinned today by `wild_swing_into_carefree_steps_pins_todays_behaviour_no_coin` (`engine/tests/pokemon/meowth_carefree_steps_test.rs:390`).
+     - **Six other sites, seven attacks** (`../rl/results/coin_prevention_repair_2026-09-30/HELPERS.md`, "Found outside the seven"): Wellspring Mask Ogerpon's Wellspring Dance on heads (`coin_flip_also_choice_bench_damage`), Rapid Strike Urshifu's Tornado Shot (`self_discard_energy_and_choice_bench_damage`), Blastoise's Double Splash and Mega Blastoise ex's Triple Bombardment (`conditional_bench_damage_attack`), Mega Kangaskhan ex's second punch (`mega_kangaskhan_ex_double_punching_family`), Hoopa's Mischievous Ring (`shuffle_opponent_tools_into_deck_before_damage`) and Slowking's Litter (`forecast_discard_own_cards_for_attack_damage`, in `apply_action.rs`).
+     - **The own-Bench form of `also_choice_bench_damage`** (Zapdos's Raging Thunder, Emolga A4 072, Luxray's Flash Impact). The hit on the opponent's Active is queued together with the hit on your own Bench, as one `ApplyDamage`. It has been left out so far because moving that choice to the coin path would drop a Guts coin (Ursaluna) on your own Bench.
+     - **A copied Chase Order's discard branch.** The coin path needs the attacker's Active to print Chase Order (`chase_order_attack`, `apply_attack_action.rs:329`), so a Pokémon that uses it through a copy attack keeps the old path.
+     - The cloud's branch `claude/coin-prevention-round2` (76b87cd, then 78af4e8; suite 2,027 passed; no independent audit yet) drafts Wild Swing and the six other sites on this switch's gated path. It leaves the own-Bench form and the copy as they are.
+     - No list under `decks/` holds one of these Abilities. Of the attackers named here, only Gyarados is in a list (the panel ladder's l-sharpedo).
+  2. **Victory Star with CoinFlipToBlockAttack** (on the attacker, from an attack such as "If the Defending Pokémon tries to use an attack, your opponent flips a coin. If tails, that attack doesn't happen."). No Victory Star is offered at all, not even on the attack's own coins after that coin lets the attack through: `victory_star_waits_for_confusion_heads` (`apply_attack_action.rs:117-132`) excludes the case, and `try_forecast_victory_star_attack` (`apply_action.rs:185`) then keeps the old path. Victory Star reads "after you flip any coins for an attack of 1 of your [R] Pokémon, you may ignore all results of those coin flips and begin flipping those coins again". The switch kept this case on the old path "until seen in the game"; by Dustin's rule it is built on that text instead: like the Confusion coin (`04` §9), the block coin is not one of the attack's own coins. It is flipped first, and Victory Star is offered on the attack's own coins if the attack goes ahead.
+  3. **Victory Star with Confusion and a pending Will.** The game offers Victory Star on the attack's own coins after a Confusion heads with Will pending [OBSERVED 210403 T14, 354-355, Oct 1]. The engine offers nothing: the Will carve-out (`apply_attack_action.rs:131`) keeps the old path. Pinned by `confusion_with_will_pending_keeps_the_legacy_resolution_without_a_victory_star_offer` (`engine/tests/b4a_attack_batch2_test.rs:437`); Victini's card-status caveat (`engine/src/card_validation.rs:97`) still calls the case unverified.
+  4. **Will is wasted on a Confused attacker.** Will reads "The next time you flip any number of coins for the effect of an attack, Ability, or Trainer card after using this card on this turn, the first coin flip will definitely be heads." The Confusion check is none of those, so Will waits for the attack's own first coin, and the game does exactly that [OBSERVED 210403 T14: the Confusion coin "Heads!" at 342.0-342.75, then Will's banner on Heat Charged's own coin screen at 347.25-347.95, and 3 heads at 352; DUSTIN: "Will does not apply on a re-roll or on confusion. It does apply on an attack after the confusion coin flip"]. The engine drops the coin record behind the Confusion coin (`prepend_nullifying_coin_gate`, `engine/src/actions/attack_outcome.rs:590-604`), so Will finds no coin to force (`outcomes.rs:489-491`; `apply_action.rs:675-688`), isn't used, and lapses at the end of the turn. This happens with or without Victini; it is older behaviour that the switch didn't touch. Fix it together with item 3: Will forces the attack's first coin, and a Victory Star reroll stays a fresh flip with no second Confusion check.
+  5. **Two Ariados count as one.** Trap Territory reads "Your opponent's Active Pokémon's Retreat Cost is 1 more." on each Ariados, so two add 2 (same-name passive Abilities stack, `04` §5). The engine adds one Colorless for any number of them (`engine/src/hooks/retreat.rs:251-262`, the `break` at 260). The same capped cost feeds retreat, Heavy Helmet and attacks that count the Retreat Cost. In 213034 (T5, 117-124, Oct 1) Grass Knot did 160 to a Team Rocket's Moltres ex with two Ariados on the attacker's Bench: 40 + 30 × (printed 2 + 1 + 1), the only reading that fits (arithmetic, not a shown breakdown); the engine would deal 130. Every Ariados test uses one Ariados. Exposed: Dustin's deck 12 (two Ariados). Fix it with a two-Ariados test. It is outside the switch.
+  - Sources: `../rl/results/rules_recordings_2026-10-01/READOUT.md` (§3b and §4); `../rl/results/engine_switch_rules_2026-10/PLAN.md` ("Known limits", repair A's "Still to do"); `../rl/results/engine_switch_rules_2026-10/README.md` (Dustin's rule on card text).
+
+## Fixed Oct 1 (the rules switch, main-8626a35; plan and evidence in `rl/results/engine_switch_rules_2026-10/`; what stays open is the entry above)
 
 - **Coin-flip damage cuts come off before Weakness** (found Sept 25, in the kd review). Guarded Grill (Bastiodon A2
   114, heads: −100) and Securely Sheltered (Hisuian Goodra B3b 050, heads: −80) are Abilities. The engine takes their
@@ -93,6 +110,10 @@ The accepted 225430 segment revealed that a zero-HP attacker was discarded befor
   `guarded_grill_under_bounded_field_pins_the_engines_current_order_coin_cut_before_weakness`
   (`engine/src/hooks/core.rs`) fails when this is fixed and names the matching one-line kd change. Fix the engine
   first; kd follows.
+  **Fixed in main-8626a35 (Oct 1; repair B, the fix 5942d1a).** The heads cut now comes off in step 4, after the
+  attacker's bonuses and Weakness, with the other defender-side effects (`modify_damage`, `engine/src/hooks/core.rs`). By
+  that order the example above gives 120 − 100 = 20. kd followed in the same switch (F1, 160a9d4): its test is now
+  `guarded_grill_under_bounded_field_comes_off_after_weakness`.
 - **Coin-flip damage Abilities never flip for damage dealt through a queued choice** (found Sept 25, in the kd
   review). Carefree Steps, Celestial Blessing, Guarded Grill and Securely Sheltered read "If any damage is done to
   this Pokémon by attacks, flip a coin". The engine flips only for damage carried in the attack's outcome
@@ -112,6 +133,21 @@ The accepted 225430 segment revealed that a zero-HP attacker was discarded befor
   `a_direct_damage_snipe_on_togekiss_pins_the_engines_current_behaviour_no_coin` (`engine/src/hooks/core.rs`)
   fails when this is fixed. For the other attacks kd still flips the coin, as the card text says, so kd and the
   engine disagree there until the engine is fixed. Fix the engine first; kd follows.
+  **Fixed in main-8626a35 (Oct 1; repair B, 5942d1a, with Chase Order's e52a73b) for these seven helper functions
+  and Chase Order** (Part 1's census counted the first two as one helper, the `DirectDamage` group, so it said six):
+  `direct_damage` and `direct_damage_and_self_card_effect` (Heatmor's Tongue Whip now flips), `direct_damage_if_damaged`,
+  `discard_all_energy_of_type_then_damage_any_opponent_pokemon`, `damage_to_any_opponent_per_target_energy`,
+  `self_discard_energy_then_damage_any_opponent_pokemon` and `switch_in_opponent_benched_then_damage` (the damage to the
+  Pokémon switched in); and Chase Order (`optional_discard_benched_basic_for_extra_damage`), with and without its
+  discard. A queued choice aimed at a Pokémon with one of these Abilities now resolves as the attack's own damage
+  (`ApplyQueuedAttackDamage`), so the coin flips; with no coin-Ability Pokémon among the possible targets, the choice is
+  queued exactly as before. Ability, Tool and
+  Checkup damage still never flip. kd followed (F1, 160a9d4): its test is now
+  `a_direct_damage_snipe_on_togekiss_flips_celestial_blessing`. Still open (the entry above): Wild Swing,
+  `also_choice_bench_damage`'s own-Bench form, six other sites (seven attacks) and a copied Chase Order's discard
+  branch. Sources:
+  `../rl/results/coin_prevention_repair_2026-09-30/HELPERS.md` (the census) and
+  `../rl/results/engine_switch_rules_2026-10/EQUIVALENCE_sonnet.md` §2 (rows 12-22).
 - **Victory Star is never offered while the attacker is Confused — the game offers it on the attack's coins
   after a Confusion heads. CONFIRMED in-game 2026-09-29** (Sol reviews with lead checks,
   `Battle Logs/Recording_QA/20260929_202314000_iOS_rule_sol/` and `20260929_203025000_iOS_rule_sol/`; summary
@@ -126,6 +162,13 @@ The accepted 225430 segment revealed that a zero-HP attacker was discarded befor
   on the Confusion coin. The same gate also covers `CoinFlipToBlockAttack`, which these recordings don't test; leave
   that part gated until it is seen. A name search of `decks/` finds Victini only in a brew scorecard, not in a deck
   list. Failing test first; identity replay after the fix.
+  **Fixed in main-8626a35 (Oct 1; repair A: the tests 265ce95 and d4fbc2a, 4d026a5's line-ending fix, the fix 6415e39)** for a
+  Confused attacker whose attack flips coins: the Confusion coin comes first and is never offered; on tails the attack
+  does nothing and nothing is offered; on heads Victory Star is offered on the attack's own coins, with no second
+  Confusion check (`victory_star_waits_for_confusion_heads`, `engine/src/actions/apply_attack_action.rs:117`). Seen a
+  third time on Oct 1, the first time with a 0-heads original [OBSERVED 204634 T4, 184-205]. F2 (d479f01) rewrote
+  Victini's card-status caveat to match. Still open (the entry above): CoinFlipToBlockAttack and a pending Will, which
+  this switch kept on the old path; both are now plain-text bugs.
 
 ## Fixed Sept 26 (cloud branch `claude/pensive-ptolemy-spwc0b`; each its own commit, replays in `rl/results/rules09_fixes_2026-09-26/`; the laptop's repair list items 1 to 10)
 
