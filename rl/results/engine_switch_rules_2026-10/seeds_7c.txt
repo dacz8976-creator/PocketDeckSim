@@ -1,0 +1,4 @@
+The rules switch's step 7c seeds (sitting1.sh), recorded and committed before any 7c game (pushed with that checkpoint when the network allows).
+pairs7c: engine_switch_rules_2026-10/pairs_7c.tsv: pairings 40-71 (32 rows: 02, 06, 08, 14 x the 8 panel lists), i < 60, seeds 23,100,400,000 - 23,100,710,059 (23,100,000,000 + pairing x 10,000 + i; step 8 uses pairings 0-31 and 8b 32-35, seeds up to 23,100,350,499)
+Block: 23,100,000,000 + pairing x 10,000 + i (PLAN.md step 8's block, in START_HERE's seed table). Step 8: pairings 0-31; step 8b: 32-35; step 7c: 40-71 (02: 40-47, 06: 48-55, 08: 56-63, 14: 64-71).
+The floor replays use floor.py's own seeds: 7,100 + 1,000 x opponent (seat 0) and + 500 (seat 1), as recorded.

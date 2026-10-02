@@ -1,0 +1,595 @@
+{
+ "rule": "decklist_sources.json's: most frequent exact 20-card multiset among final placing 1-8 in the development events; ties by best placing, largest event, earliest date, player id, multiset. Keyed here by the Limitless deck id.",
+ "alternate_rule": "The same without the placing filter (any final placing; None sorts last). Not the rule.",
+ "hisuian_goodra_ids_by_development_entries": {
+  "dragonair-b4-hisuian-goodra-b3b": 3,
+  "hisuian-goodra-b3b-mantyke-a4a": 2
+ },
+ "carriers": {
+  "garchomp_meowth": {
+   "deck_ids": [
+    "garchomp-b4a-meowth-b2"
+   ],
+   "purpose": "Meowth (Carefree Steps)",
+   "development_entries_any_placing": 9,
+   "development_placings": [
+    5,
+    28,
+    33,
+    56,
+    65,
+    null,
+    null,
+    null,
+    null
+   ],
+   "rule": {
+    "status": "saved",
+    "file": "garchomp_meowth.txt",
+    "cards_sha256": "85b9b7af3d49521d680a5e728074805f9e9ad0867de248f408f425e2af957909",
+    "energy_line": "Water, Fighting",
+    "energy_line_from": "Garchomp B4a 054 [WFC] Land Crush and Gabite B4a 053 [WF]; as Dustin's deck 08",
+    "frequency": 1,
+    "eligible_entries": 1,
+    "distinct_exact_lists": 1,
+    "invalid_lists": [],
+    "representative": {
+     "event_id": "6aaac3d9f1243e65f9802bad",
+     "date": "2026-09-18T13:00:00.000Z",
+     "event_name": "🥊 20$ BEC'S KING OF THE HILL - ANY FA PRIZE!",
+     "players": 95,
+     "player": "shaquill10",
+     "player_name": "Shaquill10",
+     "country": "ID",
+     "placing": 5,
+     "record": "4-1-0",
+     "drop": null,
+     "deck_id": "garchomp-b4a-meowth-b2",
+     "deck_name": "Garchomp Meowth",
+     "decklist_url": "https://play.limitlesstcg.com/tournament/6aaac3d9f1243e65f9802bad/player/shaquill10/decklist",
+     "raw_source": "rl/results/limitless_skill_model_2026-09-25/raw/6aaac3d9f1243e65f9802bad_standings.json.gz",
+     "card_names": [
+      {
+       "set": "B4a",
+       "number": "052",
+       "count": 1,
+       "name": "Gible"
+      },
+      {
+       "set": "A2",
+       "number": "121",
+       "count": 1,
+       "name": "Gible"
+      },
+      {
+       "set": "B4a",
+       "number": "053",
+       "count": 1,
+       "name": "Gabite"
+      },
+      {
+       "set": "B4a",
+       "number": "054",
+       "count": 2,
+       "name": "Garchomp"
+      },
+      {
+       "set": "B2",
+       "number": "124",
+       "count": 2,
+       "name": "Meowth"
+      },
+      {
+       "set": "B3",
+       "number": "004",
+       "count": 1,
+       "name": "Celebi"
+      },
+      {
+       "set": "P-A",
+       "number": "007",
+       "count": 2,
+       "name": "Professor's Research"
+      },
+      {
+       "set": "A2",
+       "number": "152",
+       "count": 2,
+       "name": "Cynthia"
+      },
+      {
+       "set": "B4",
+       "number": "153",
+       "count": 1,
+       "name": "Wally"
+      },
+      {
+       "set": "B1",
+       "number": "225",
+       "count": 1,
+       "name": "Copycat"
+      },
+      {
+       "set": "A1",
+       "number": "225",
+       "count": 1,
+       "name": "Sabrina"
+      },
+      {
+       "set": "P-A",
+       "number": "005",
+       "count": 2,
+       "name": "Poké Ball"
+      },
+      {
+       "set": "A3",
+       "number": "144",
+       "count": 1,
+       "name": "Rare Candy"
+      },
+      {
+       "set": "P-A",
+       "number": "002",
+       "count": 1,
+       "name": "X Speed"
+      },
+      {
+       "set": "B4",
+       "number": "155",
+       "count": 1,
+       "name": "Rainbow Cave"
+      }
+     ]
+    },
+    "matching_entries": [
+     {
+      "event_id": "6aaac3d9f1243e65f9802bad",
+      "date": "2026-09-18T13:00:00.000Z",
+      "event_name": "🥊 20$ BEC'S KING OF THE HILL - ANY FA PRIZE!",
+      "players": 95,
+      "player": "shaquill10",
+      "player_name": "Shaquill10",
+      "country": "ID",
+      "placing": 5,
+      "record": "4-1-0",
+      "drop": null,
+      "deck_id": "garchomp-b4a-meowth-b2",
+      "deck_name": "Garchomp Meowth",
+      "decklist_url": "https://play.limitlesstcg.com/tournament/6aaac3d9f1243e65f9802bad/player/shaquill10/decklist",
+      "raw_source": "rl/results/limitless_skill_model_2026-09-25/raw/6aaac3d9f1243e65f9802bad_standings.json.gz"
+     }
+    ]
+   }
+  },
+  "togekiss_meowth": {
+   "deck_ids": [
+    "togekiss-a4-meowth-b2"
+   ],
+   "purpose": "Togekiss A4 080 (Celestial Blessing) and Meowth",
+   "development_entries_any_placing": 1,
+   "development_placings": [
+    19
+   ],
+   "rule": {
+    "status": "no list: no top-8 development entry with a valid 20-card list"
+   },
+   "alternate": {
+    "status": "saved",
+    "file": "alternates/togekiss_meowth.txt",
+    "cards_sha256": "30b4a1bf4fdfef907252f5ad9efefc341f589dcb599788497e89d04a9bd8d97b",
+    "energy_line": "Psychic",
+    "energy_line_from": "Togekiss A4 080 [PCC], Togetic A2 064 [P], Comfey A3 080 [PC]",
+    "frequency": 1,
+    "eligible_entries": 1,
+    "distinct_exact_lists": 1,
+    "invalid_lists": [],
+    "representative": {
+     "event_id": "6a9dc423ab080c8c957fc250",
+     "date": "2026-09-07T00:45:00.000Z",
+     "event_name": "The Breakfast Club Nightly-$20",
+     "players": 118,
+     "player": "trainer4572",
+     "player_name": "Alolan Jay",
+     "country": "US",
+     "placing": 19,
+     "record": "5-3-0",
+     "drop": null,
+     "deck_id": "togekiss-a4-meowth-b2",
+     "deck_name": "Togekiss Meowth",
+     "decklist_url": "https://play.limitlesstcg.com/tournament/6a9dc423ab080c8c957fc250/player/trainer4572/decklist",
+     "raw_source": "rl/results/limitless_skill_model_2026-09-25/raw/6a9dc423ab080c8c957fc250_standings.json.gz",
+     "card_names": [
+      {
+       "set": "A4",
+       "number": "078",
+       "count": 2,
+       "name": "Togepi"
+      },
+      {
+       "set": "A2",
+       "number": "064",
+       "count": 1,
+       "name": "Togetic"
+      },
+      {
+       "set": "A4",
+       "number": "080",
+       "count": 2,
+       "name": "Togekiss"
+      },
+      {
+       "set": "B2",
+       "number": "124",
+       "count": 2,
+       "name": "Meowth"
+      },
+      {
+       "set": "A3",
+       "number": "080",
+       "count": 1,
+       "name": "Comfey"
+      },
+      {
+       "set": "P-A",
+       "number": "007",
+       "count": 2,
+       "name": "Professor's Research"
+      },
+      {
+       "set": "A2",
+       "number": "152",
+       "count": 2,
+       "name": "Cynthia"
+      },
+      {
+       "set": "B1",
+       "number": "225",
+       "count": 1,
+       "name": "Copycat"
+      },
+      {
+       "set": "A2",
+       "number": "150",
+       "count": 1,
+       "name": "Cyrus"
+      },
+      {
+       "set": "B4",
+       "number": "153",
+       "count": 1,
+       "name": "Wally"
+      },
+      {
+       "set": "P-A",
+       "number": "005",
+       "count": 2,
+       "name": "Poké Ball"
+      },
+      {
+       "set": "A3",
+       "number": "144",
+       "count": 1,
+       "name": "Rare Candy"
+      },
+      {
+       "set": "A2",
+       "number": "147",
+       "count": 1,
+       "name": "Giant Cape"
+      },
+      {
+       "set": "B2",
+       "number": "155",
+       "count": 1,
+       "name": "Peculiar Plaza"
+      }
+     ]
+    },
+    "matching_entries": [
+     {
+      "event_id": "6a9dc423ab080c8c957fc250",
+      "date": "2026-09-07T00:45:00.000Z",
+      "event_name": "The Breakfast Club Nightly-$20",
+      "players": 118,
+      "player": "trainer4572",
+      "player_name": "Alolan Jay",
+      "country": "US",
+      "placing": 19,
+      "record": "5-3-0",
+      "drop": null,
+      "deck_id": "togekiss-a4-meowth-b2",
+      "deck_name": "Togekiss Meowth",
+      "decklist_url": "https://play.limitlesstcg.com/tournament/6a9dc423ab080c8c957fc250/player/trainer4572/decklist",
+      "raw_source": "rl/results/limitless_skill_model_2026-09-25/raw/6a9dc423ab080c8c957fc250_standings.json.gz"
+     }
+    ]
+   }
+  },
+  "hisuian_goodra": {
+   "deck_ids": [
+    "dragonair-b4-hisuian-goodra-b3b"
+   ],
+   "purpose": "Hisuian Goodra (Securely Sheltered: the (a) finite cut)",
+   "development_entries_any_placing": 3,
+   "development_placings": [
+    null,
+    null,
+    null
+   ],
+   "rule": {
+    "status": "no list: no top-8 development entry with a valid 20-card list"
+   },
+   "alternate": {
+    "status": "saved",
+    "file": "alternates/hisuian_goodra.txt",
+    "cards_sha256": "80f342f41166c8b28252e9ce049b9a86a896da1d243d2f4beed678744aaa64a4",
+    "energy_line": "Water, Metal",
+    "energy_line_from": "Hisuian Goodra B3b 050 [WMC] Heavy Impact, the attacker",
+    "frequency": 3,
+    "eligible_entries": 3,
+    "distinct_exact_lists": 1,
+    "invalid_lists": [],
+    "representative": {
+     "event_id": "6ab3aa2de905c1db68748664",
+     "date": "2026-09-23T19:00:00.000Z",
+     "event_name": "TH Event's Presents: When DX Pack?!|5$ + FA's!",
+     "players": 68,
+     "player": "tommyboistreams",
+     "player_name": "tommyboistreams",
+     "country": "US",
+     "placing": null,
+     "record": "0-3-0",
+     "drop": 3,
+     "deck_id": "dragonair-b4-hisuian-goodra-b3b",
+     "deck_name": "Dragonair Hisuian Goodra",
+     "decklist_url": "https://play.limitlesstcg.com/tournament/6ab3aa2de905c1db68748664/player/tommyboistreams/decklist",
+     "raw_source": "rl/results/limitless_skill_model_2026-09-25/raw/6ab3aa2de905c1db68748664_standings.json.gz",
+     "card_names": [
+      {
+       "set": "B1",
+       "number": "177",
+       "count": 2,
+       "name": "Goomy"
+      },
+      {
+       "set": "B3b",
+       "number": "050",
+       "count": 2,
+       "name": "Hisuian Goodra"
+      },
+      {
+       "set": "A1",
+       "number": "183",
+       "count": 2,
+       "name": "Dratini"
+      },
+      {
+       "set": "B4",
+       "number": "117",
+       "count": 2,
+       "name": "Dragonair"
+      },
+      {
+       "set": "P-A",
+       "number": "007",
+       "count": 2,
+       "name": "Professor's Research"
+      },
+      {
+       "set": "B1",
+       "number": "225",
+       "count": 2,
+       "name": "Copycat"
+      },
+      {
+       "set": "A2",
+       "number": "150",
+       "count": 1,
+       "name": "Cyrus"
+      },
+      {
+       "set": "A3",
+       "number": "144",
+       "count": 2,
+       "name": "Rare Candy"
+      },
+      {
+       "set": "P-A",
+       "number": "005",
+       "count": 2,
+       "name": "Poké Ball"
+      },
+      {
+       "set": "B1",
+       "number": "219",
+       "count": 1,
+       "name": "Heavy Helmet"
+      },
+      {
+       "set": "B4",
+       "number": "155",
+       "count": 2,
+       "name": "Rainbow Cave"
+      }
+     ]
+    },
+    "matching_entries": [
+     {
+      "event_id": "6aabc067f1243e65f98035ec",
+      "date": "2026-09-21T17:00:00.000Z",
+      "event_name": "The TCGP Arena #6! Prizing: 🌟🌟 Cards",
+      "players": 53,
+      "player": "r0zey",
+      "player_name": "r0zey",
+      "country": "US",
+      "placing": null,
+      "record": "0-3-0",
+      "drop": 3,
+      "deck_id": "dragonair-b4-hisuian-goodra-b3b",
+      "deck_name": "Dragonair Hisuian Goodra",
+      "decklist_url": "https://play.limitlesstcg.com/tournament/6aabc067f1243e65f98035ec/player/r0zey/decklist",
+      "raw_source": "rl/results/limitless_skill_model_2026-09-25/raw/6aabc067f1243e65f98035ec_standings.json.gz"
+     },
+     {
+      "event_id": "6aabc067f1243e65f98035ec",
+      "date": "2026-09-21T17:00:00.000Z",
+      "event_name": "The TCGP Arena #6! Prizing: 🌟🌟 Cards",
+      "players": 53,
+      "player": "tommyboistreams",
+      "player_name": "tommyboistreams",
+      "country": "US",
+      "placing": null,
+      "record": "0-2-0",
+      "drop": 2,
+      "deck_id": "dragonair-b4-hisuian-goodra-b3b",
+      "deck_name": "Dragonair Hisuian Goodra",
+      "decklist_url": "https://play.limitlesstcg.com/tournament/6aabc067f1243e65f98035ec/player/tommyboistreams/decklist",
+      "raw_source": "rl/results/limitless_skill_model_2026-09-25/raw/6aabc067f1243e65f98035ec_standings.json.gz"
+     },
+     {
+      "event_id": "6ab3aa2de905c1db68748664",
+      "date": "2026-09-23T19:00:00.000Z",
+      "event_name": "TH Event's Presents: When DX Pack?!|5$ + FA's!",
+      "players": 68,
+      "player": "tommyboistreams",
+      "player_name": "tommyboistreams",
+      "country": "US",
+      "placing": null,
+      "record": "0-3-0",
+      "drop": 3,
+      "deck_id": "dragonair-b4-hisuian-goodra-b3b",
+      "deck_name": "Dragonair Hisuian Goodra",
+      "decklist_url": "https://play.limitlesstcg.com/tournament/6ab3aa2de905c1db68748664/player/tommyboistreams/decklist",
+      "raw_source": "rl/results/limitless_skill_model_2026-09-25/raw/6ab3aa2de905c1db68748664_standings.json.gz"
+     }
+    ]
+   }
+  },
+  "houndoom_victini": {
+   "deck_ids": [
+    "mega-houndoom-ex-p-b-victini-b3"
+   ],
+   "purpose": "Victini (Victory Star): repair A",
+   "development_entries_any_placing": 1,
+   "development_placings": [
+    null
+   ],
+   "rule": {
+    "status": "no list: no top-8 development entry with a valid 20-card list"
+   },
+   "alternate": {
+    "status": "saved",
+    "file": "alternates/houndoom_victini.txt",
+    "cards_sha256": "431824dd19acfcc14d97c6406ec6f71f26730dd52c952165a139a9fcdc05a5fd",
+    "energy_line": "Fire",
+    "energy_line_from": "Mega Houndoom ex P-B 080 [RRC], Houndour A2a 011 [R], Victini B3 025 [RC]",
+    "frequency": 1,
+    "eligible_entries": 1,
+    "distinct_exact_lists": 1,
+    "invalid_lists": [],
+    "representative": {
+     "event_id": "6aa17ddeab080c8c957ff0fe",
+     "date": "2026-09-12T20:30:00.000Z",
+     "event_name": "Dark League Pocket Tournament | 20$USD Prize Pool",
+     "players": 118,
+     "player": "foodking90",
+     "player_name": "foodking90",
+     "country": "GB",
+     "placing": null,
+     "record": "0-1-0",
+     "drop": 1,
+     "deck_id": "mega-houndoom-ex-p-b-victini-b3",
+     "deck_name": "Mega Houndoom ex Victini",
+     "decklist_url": "https://play.limitlesstcg.com/tournament/6aa17ddeab080c8c957ff0fe/player/foodking90/decklist",
+     "raw_source": "rl/results/limitless_skill_model_2026-09-25/raw/6aa17ddeab080c8c957ff0fe_standings.json.gz",
+     "card_names": [
+      {
+       "set": "A2a",
+       "number": "011",
+       "count": 2,
+       "name": "Houndour"
+      },
+      {
+       "set": "P-B",
+       "number": "080",
+       "count": 2,
+       "name": "Mega Houndoom ex"
+      },
+      {
+       "set": "B3",
+       "number": "025",
+       "count": 2,
+       "name": "Victini"
+      },
+      {
+       "set": "A3",
+       "number": "066",
+       "count": 1,
+       "name": "Oricorio"
+      },
+      {
+       "set": "P-A",
+       "number": "007",
+       "count": 2,
+       "name": "Professor's Research"
+      },
+      {
+       "set": "A1",
+       "number": "225",
+       "count": 2,
+       "name": "Sabrina"
+      },
+      {
+       "set": "A2",
+       "number": "150",
+       "count": 2,
+       "name": "Cyrus"
+      },
+      {
+       "set": "P-A",
+       "number": "005",
+       "count": 2,
+       "name": "Poké Ball"
+      },
+      {
+       "set": "B1",
+       "number": "217",
+       "count": 2,
+       "name": "Flame Patch"
+      },
+      {
+       "set": "B4",
+       "number": "155",
+       "count": 2,
+       "name": "Rainbow Cave"
+      },
+      {
+       "set": "B2a",
+       "number": "093",
+       "count": 1,
+       "name": "Mesagoza"
+      }
+     ]
+    },
+    "matching_entries": [
+     {
+      "event_id": "6aa17ddeab080c8c957ff0fe",
+      "date": "2026-09-12T20:30:00.000Z",
+      "event_name": "Dark League Pocket Tournament | 20$USD Prize Pool",
+      "players": 118,
+      "player": "foodking90",
+      "player_name": "foodking90",
+      "country": "GB",
+      "placing": null,
+      "record": "0-1-0",
+      "drop": 1,
+      "deck_id": "mega-houndoom-ex-p-b-victini-b3",
+      "deck_name": "Mega Houndoom ex Victini",
+      "decklist_url": "https://play.limitlesstcg.com/tournament/6aa17ddeab080c8c957ff0fe/player/foodking90/decklist",
+      "raw_source": "rl/results/limitless_skill_model_2026-09-25/raw/6aa17ddeab080c8c957ff0fe_standings.json.gz"
+     }
+    ]
+   }
+  }
+ }
+}

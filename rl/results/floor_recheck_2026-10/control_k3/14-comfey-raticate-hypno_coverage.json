@@ -1,0 +1,139 @@
+{
+  "A1a 064": {
+    "engine_complete": true,
+    "engine_status": "Fully implemented",
+    "estimator_printed_damage": [],
+    "limitations": [],
+    "name": "Pokémon Flute",
+    "pays_off_on_opponent_turn": [],
+    "unpriced_text_rule": []
+  },
+  "A2 150": {
+    "engine_complete": true,
+    "engine_status": "Fully implemented",
+    "estimator_printed_damage": [],
+    "limitations": [],
+    "name": "Cyrus",
+    "pays_off_on_opponent_turn": [],
+    "unpriced_text_rule": []
+  },
+  "A3 080": {
+    "engine_complete": true,
+    "engine_status": "Fully implemented",
+    "estimator_printed_damage": [],
+    "limitations": [],
+    "name": "Comfey",
+    "pays_off_on_opponent_turn": [],
+    "unpriced_text_rule": []
+  },
+  "B1 225": {
+    "engine_complete": true,
+    "engine_status": "Fully implemented",
+    "estimator_printed_damage": [],
+    "limitations": [],
+    "name": "Copycat",
+    "pays_off_on_opponent_turn": [],
+    "unpriced_text_rule": [
+      "its effect"
+    ]
+  },
+  "B2 150": {
+    "engine_complete": true,
+    "engine_status": "Fully implemented",
+    "estimator_printed_damage": [],
+    "limitations": [],
+    "name": "Sightseer",
+    "pays_off_on_opponent_turn": [],
+    "unpriced_text_rule": []
+  },
+  "B3b 065": {
+    "engine_complete": true,
+    "engine_status": "Fully implemented",
+    "estimator_printed_damage": [],
+    "limitations": [],
+    "name": "Elegant Cape",
+    "pays_off_on_opponent_turn": [],
+    "unpriced_text_rule": []
+  },
+  "B4a 027": {
+    "engine_complete": true,
+    "engine_status": "Fully implemented",
+    "estimator_printed_damage": [],
+    "limitations": [],
+    "name": "Team Rocket's Drowzee",
+    "pays_off_on_opponent_turn": [],
+    "unpriced_text_rule": []
+  },
+  "B4a 028": {
+    "engine_complete": true,
+    "engine_status": "Fully implemented",
+    "estimator_printed_damage": [
+      "Entrap: SwitchInOpponentBenchedThenDamage estimated at printed damage"
+    ],
+    "limitations": [],
+    "name": "Team Rocket's Hypno",
+    "pays_off_on_opponent_turn": [],
+    "unpriced_text_rule": []
+  },
+  "B4a 058": {
+    "engine_complete": true,
+    "engine_status": "Fully implemented",
+    "estimator_printed_damage": [],
+    "limitations": [],
+    "name": "Team Rocket's Rattata",
+    "pays_off_on_opponent_turn": [],
+    "unpriced_text_rule": []
+  },
+  "B4a 059": {
+    "engine_complete": true,
+    "engine_status": "Fully implemented",
+    "estimator_printed_damage": [],
+    "limitations": [],
+    "name": "Team Rocket's Raticate ex",
+    "pays_off_on_opponent_turn": [],
+    "unpriced_text_rule": [
+      "ability Thieving Incisors"
+    ]
+  },
+  "B4a 068": {
+    "engine_complete": true,
+    "engine_status": "Fully implemented",
+    "estimator_printed_damage": [],
+    "limitations": [],
+    "name": "Team Rocket's Goo-zooka",
+    "pays_off_on_opponent_turn": [
+      "its effect"
+    ],
+    "unpriced_text_rule": []
+  },
+  "B4a 069": {
+    "engine_complete": false,
+    "engine_status": "Implemented with unverified rule boundaries",
+    "estimator_printed_damage": [],
+    "limitations": [
+      "Unverified Pokémon TCG Pocket boundary: random Pokémon transferred by this effect are not capped at a 10-card hand; this inherits the engine's existing random-search transfer policy.",
+      "Unverified Pokémon TCG Pocket boundary: the deck is shuffled exactly once after resolution, including zero heads or no eligible Pokémon; this inherits the engine's hidden-zone normalization policy rather than printed card text."
+    ],
+    "name": "Team Rocket's Researcher",
+    "pays_off_on_opponent_turn": [],
+    "unpriced_text_rule": []
+  },
+  "P-A 005": {
+    "engine_complete": true,
+    "engine_status": "Fully implemented",
+    "estimator_printed_damage": [],
+    "limitations": [],
+    "name": "Poké Ball",
+    "pays_off_on_opponent_turn": [],
+    "unpriced_text_rule": []
+  },
+  "P-A 007": {
+    "engine_complete": true,
+    "engine_status": "Fully implemented",
+    "estimator_printed_damage": [],
+    "limitations": [],
+    "name": "Professor's Research",
+    "pays_off_on_opponent_turn": [],
+    "unpriced_text_rule": []
+  }
+}

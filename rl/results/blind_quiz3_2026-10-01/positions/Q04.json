@@ -1,0 +1,503 @@
+{
+ "order": 4,
+ "matchup": {
+  "you": "Altaria"
+ },
+ "turn": 4,
+ "you_went_first": false,
+ "situation": "Your turn (your 2nd turn; turn 4 of the game).",
+ "question": "What do you do this turn, in order? Pick the first thing you'd tap, then write the rest of your turn: each card you'd play, where your Energy goes, any retreat, and your attack or end turn. If you'd play a card that draws, stop there and say \"then depends on the draw\".",
+ "points": {
+  "you": 0,
+  "opponent": 0
+ },
+ "you": {
+  "active": {
+   "name": "Swablu",
+   "stage": 0,
+   "type": "Colorless",
+   "hp": 50,
+   "max_hp": 50,
+   "energy": [],
+   "tools": [],
+   "conditions": [],
+   "ability": null,
+   "attacks": [
+    {
+     "name": "Sing",
+     "cost": [
+      "Colorless"
+     ],
+     "damage": null,
+     "text": "Your opponent's Active Pokémon is now Asleep."
+    }
+   ],
+   "weakness": "Lightning",
+   "retreat": 1,
+   "retreat_now": 1,
+   "retreat_note": null,
+   "ko_points": 1,
+   "notes": []
+  },
+  "bench": [
+   {
+    "name": "Eevee",
+    "stage": 0,
+    "type": "Colorless",
+    "hp": 50,
+    "max_hp": 50,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": {
+     "name": "Boosted Evolution",
+     "text": "As long as this Pokémon is in the Active Spot, it can evolve during your first turn or the turn you play it.",
+     "used_this_turn": false
+    },
+    "attacks": [
+     {
+      "name": "Stampede",
+      "cost": [
+       "Colorless"
+      ],
+      "damage": "10",
+      "text": ""
+     }
+    ],
+    "weakness": "Fighting",
+    "retreat": 1,
+    "retreat_now": 1,
+    "retreat_note": null,
+    "ko_points": 1,
+    "notes": []
+   },
+   {
+    "name": "Eevee",
+    "stage": 0,
+    "type": "Colorless",
+    "hp": 50,
+    "max_hp": 50,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": {
+     "name": "Boosted Evolution",
+     "text": "As long as this Pokémon is in the Active Spot, it can evolve during your first turn or the turn you play it.",
+     "used_this_turn": false
+    },
+    "attacks": [
+     {
+      "name": "Stampede",
+      "cost": [
+       "Colorless"
+      ],
+      "damage": "10",
+      "text": ""
+     }
+    ],
+    "weakness": "Fighting",
+    "retreat": 1,
+    "retreat_now": 1,
+    "retreat_note": null,
+    "ko_points": 1,
+    "notes": []
+   },
+   {
+    "name": "Darkrai",
+    "stage": 0,
+    "type": "Darkness",
+    "hp": 100,
+    "max_hp": 100,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": {
+     "name": "Bad Dreams",
+     "text": "At the end of each turn, if your opponent's Active Pokémon is Asleep, do 20 damage to that Pokémon.",
+     "used_this_turn": false
+    },
+    "attacks": [
+     {
+      "name": "Dark Slumber",
+      "cost": [
+       "Colorless",
+       "Colorless",
+       "Colorless"
+      ],
+      "damage": "40",
+      "text": "Your opponent's Active Pokémon is now Asleep."
+     }
+    ],
+    "weakness": "Grass",
+    "retreat": 2,
+    "retreat_now": 2,
+    "retreat_note": null,
+    "ko_points": 1,
+    "notes": []
+   }
+  ],
+  "deck_count": 12,
+  "discard": [
+   "Poké Ball"
+  ],
+  "discard_energy": [
+   "Psychic"
+  ],
+  "energy_zone": {
+   "this_turn": "Psychic",
+   "next": "Psychic",
+   "lines": [
+    "This turn: Psychic",
+    "Next: Psychic"
+   ]
+  },
+  "hand": [
+   {
+    "name": "Mega Altaria ex",
+    "kind": "Stage 1 Pokémon",
+    "text": "Stage 1 Pokémon, HP 190, Psychic type, evolves from Swablu. Gives 3 points when Knocked Out. Attack Mega Harmony [Psychic Psychic] 40+: This attack does 30 more damage for each of your Benched Pokémon. Weakness: Metal. Retreat: 1."
+   },
+   {
+    "name": "Small Balloon",
+    "kind": "Pokémon Tool",
+    "text": "The Retreat Cost of the Basic Pokémon this card is attached to is 1 less."
+   },
+   {
+    "name": "Training Area",
+    "kind": "Stadium",
+    "text": "Attacks used by Stage 1 Pokémon in play (both yours and your opponent's) do +10 damage to the opponent's Active Pokémon."
+   }
+  ],
+  "decklist": [
+   {
+    "name": "Darkrai",
+    "kind": "Basic Pokémon",
+    "text": "Basic Pokémon, HP 100, Darkness type. Ability Bad Dreams: At the end of each turn, if your opponent's Active Pokémon is Asleep, do 20 damage to that Pokémon. Attack Dark Slumber [Colorless Colorless Colorless] 40: Your opponent's Active Pokémon is now Asleep. Weakness: Grass. Retreat: 2.",
+    "count": 2,
+    "left": 1
+   },
+   {
+    "name": "Eevee",
+    "kind": "Basic Pokémon",
+    "text": "Basic Pokémon, HP 50, Colorless type. Ability Boosted Evolution: As long as this Pokémon is in the Active Spot, it can evolve during your first turn or the turn you play it. Attack Stampede [Colorless] 10. Weakness: Fighting. Retreat: 1.",
+    "count": 2,
+    "left": 0
+   },
+   {
+    "name": "Igglybuff",
+    "kind": "Basic Pokémon",
+    "text": "Basic Pokémon, HP 30, Colorless type. Attack Sleepy Lullaby [no Energy] 10: Your opponent's Active Pokémon is now Asleep. Weakness: none. Retreat: 0.",
+    "count": 1,
+    "left": 1
+   },
+   {
+    "name": "Swablu",
+    "kind": "Basic Pokémon",
+    "text": "Basic Pokémon, HP 50, Colorless type. Attack Sing [Colorless]: Your opponent's Active Pokémon is now Asleep. Weakness: Lightning. Retreat: 1.",
+    "count": 2,
+    "left": 1
+   },
+   {
+    "name": "Espeon",
+    "kind": "Stage 1 Pokémon",
+    "text": "Stage 1 Pokémon, HP 90, Psychic type, evolves from Eevee. Attack Hypnoblast [Psychic] 40: Your opponent's Active Pokémon is now Asleep. Weakness: Darkness. Retreat: 1.",
+    "count": 2,
+    "left": 2
+   },
+   {
+    "name": "Mega Altaria ex",
+    "kind": "Stage 1 Pokémon",
+    "text": "Stage 1 Pokémon, HP 190, Psychic type, evolves from Swablu. Gives 3 points when Knocked Out. Attack Mega Harmony [Psychic Psychic] 40+: This attack does 30 more damage for each of your Benched Pokémon. Weakness: Metal. Retreat: 1.",
+    "count": 1,
+    "left": 0
+   },
+   {
+    "name": "Copycat",
+    "kind": "Supporter",
+    "text": "Shuffle your hand into your deck. Draw a card for each card in your opponent's hand.",
+    "count": 2,
+    "left": 2
+   },
+   {
+    "name": "Professor's Research",
+    "kind": "Supporter",
+    "text": "Draw 2 cards.",
+    "count": 2,
+    "left": 2
+   },
+   {
+    "name": "Sabrina",
+    "kind": "Supporter",
+    "text": "Switch out your opponent's Active Pokémon to the Bench. (Your opponent chooses the new Active Pokémon.)",
+    "count": 1,
+    "left": 1
+   },
+   {
+    "name": "Field Blower",
+    "kind": "Item",
+    "text": "Discard a Pokémon Tool card from a Pokémon (yours or your opponent's), or discard a Stadium card in play.",
+    "count": 1,
+    "left": 1
+   },
+   {
+    "name": "Poké Ball",
+    "kind": "Item",
+    "text": "Put a random Basic Pokémon from your deck into your hand.",
+    "count": 2,
+    "left": 1
+   },
+   {
+    "name": "Small Balloon",
+    "kind": "Pokémon Tool",
+    "text": "The Retreat Cost of the Basic Pokémon this card is attached to is 1 less.",
+    "count": 1,
+    "left": 0
+   },
+   {
+    "name": "Training Area",
+    "kind": "Stadium",
+    "text": "Attacks used by Stage 1 Pokémon in play (both yours and your opponent's) do +10 damage to the opponent's Active Pokémon.",
+    "count": 1,
+    "left": 0
+   }
+  ],
+  "energy_types": [
+   "Psychic"
+  ],
+  "supporter_played_this_turn": false,
+  "retreated_this_turn": true
+ },
+ "opponent": {
+  "active": {
+   "name": "Suicune ex",
+   "stage": 0,
+   "type": "Water",
+   "hp": 140,
+   "max_hp": 140,
+   "energy": [
+    "Water"
+   ],
+   "tools": [],
+   "conditions": [],
+   "ability": {
+    "name": "Legendary Pulse",
+    "text": "At the end of your turn, if this Pokémon is in the Active Spot, draw a card.",
+    "used_this_turn": false
+   },
+   "attacks": [
+    {
+     "name": "Crystal Waltz",
+     "cost": [
+      "Water",
+      "Water"
+     ],
+     "damage": "20×",
+     "text": "This attack does 20 damage for each Benched Pokémon (both yours and your opponent's)."
+    }
+   ],
+   "weakness": "Lightning",
+   "retreat": 2,
+   "retreat_now": 2,
+   "retreat_note": null,
+   "ko_points": 2,
+   "notes": []
+  },
+  "bench": [
+   {
+    "name": "Suicune ex",
+    "stage": 0,
+    "type": "Water",
+    "hp": 140,
+    "max_hp": 140,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": {
+     "name": "Legendary Pulse",
+     "text": "At the end of your turn, if this Pokémon is in the Active Spot, draw a card.",
+     "used_this_turn": false
+    },
+    "attacks": [
+     {
+      "name": "Crystal Waltz",
+      "cost": [
+       "Water",
+       "Water"
+      ],
+      "damage": "20×",
+      "text": "This attack does 20 damage for each Benched Pokémon (both yours and your opponent's)."
+     }
+    ],
+    "weakness": "Lightning",
+    "retreat": 2,
+    "retreat_now": 2,
+    "retreat_note": null,
+    "ko_points": 2,
+    "notes": []
+   },
+   {
+    "name": "Frigibax",
+    "stage": 0,
+    "type": "Water",
+    "hp": 60,
+    "max_hp": 60,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": null,
+    "attacks": [
+     {
+      "name": "Chilly",
+      "cost": [
+       "Water"
+      ],
+      "damage": "20",
+      "text": ""
+     }
+    ],
+    "weakness": "Metal",
+    "retreat": 1,
+    "retreat_now": 1,
+    "retreat_note": null,
+    "ko_points": 1,
+    "notes": []
+   },
+   {
+    "name": "Chien-Pao ex",
+    "stage": 0,
+    "type": "Water",
+    "hp": 130,
+    "max_hp": 130,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": null,
+    "attacks": [
+     {
+      "name": "Icicle",
+      "cost": [
+       "Water"
+      ],
+      "damage": "20",
+      "text": ""
+     },
+     {
+      "name": "Diving Icicles",
+      "cost": [
+       "Water",
+       "Water",
+       "Water"
+      ],
+      "damage": null,
+      "text": "Discard all Water Energy from this Pokémon. This attack does 130 damage to 1 of your opponent's Pokémon."
+     }
+    ],
+    "weakness": "Metal",
+    "retreat": 1,
+    "retreat_now": 1,
+    "retreat_note": null,
+    "ko_points": 2,
+    "notes": []
+   }
+  ],
+  "deck_count": 10,
+  "discard": [
+   "Poké Ball",
+   "Pokémon Center Lady"
+  ],
+  "discard_energy": [],
+  "energy_zone": {
+   "next": "Water",
+   "lines": [
+    "Next: Water"
+   ]
+  },
+  "hand_count": 4
+ },
+ "stadium": null,
+ "turn_effects": [],
+ "this_turn_so_far": [
+  "You: Retreated Eevee (Active), switching in Swablu (Bench 1)"
+ ],
+ "log": [
+  {
+   "turn": 0,
+   "who": "setup",
+   "header": "Setup",
+   "lines": [
+    "Opponent: started with Suicune ex (Active), Chien-Pao ex (Bench 3), Frigibax (Bench 2)",
+    "You: started with Eevee (Active), Darkrai (Bench 3)"
+   ]
+  },
+  {
+   "turn": 1,
+   "who": "opponent",
+   "header": "Turn 1 - Opponent",
+   "lines": [
+    "Opponent: Played Poké Ball (Item)",
+    "Opponent: Put Suicune ex on Bench 1",
+    "Opponent: Ended the turn without attacking"
+   ]
+  },
+  {
+   "turn": 2,
+   "who": "you",
+   "header": "Turn 2 - You",
+   "lines": [
+    "You: Put Eevee on Bench 2",
+    "You: Played Poké Ball (Item)",
+    "You: Put Swablu on Bench 1",
+    "You: Attached Psychic Energy to Eevee (Active)",
+    "You: Eevee attacked with Stampede (10) → did 10 damage to opponent's Suicune ex (Active)"
+   ]
+  },
+  {
+   "turn": 3,
+   "who": "opponent",
+   "header": "Turn 3 - Opponent",
+   "lines": [
+    "Opponent: Played Pokémon Center Lady (Supporter) → healed 10 damage from Suicune ex (Active) and removed its Special Conditions",
+    "Opponent: Attached Water Energy to Suicune ex (Active)",
+    "Opponent: Ended the turn without attacking"
+   ]
+  }
+ ],
+ "options": [
+  {
+   "key": "7",
+   "group": "Trainers",
+   "text": "Play Small Balloon (Pokémon Tool), then choose which of your Pokémon to attach it to: The Retreat Cost of the Basic Pokémon this card is attached to is 1 less."
+  },
+  {
+   "key": "6",
+   "group": "Trainers",
+   "text": "Play Training Area (Stadium): Attacks used by Stage 1 Pokémon in play (both yours and your opponent's) do +10 damage to the opponent's Active Pokémon."
+  },
+  {
+   "key": "1",
+   "group": "Energy",
+   "text": "Attach Psychic Energy to Swablu (Active)"
+  },
+  {
+   "key": "2",
+   "group": "Energy",
+   "text": "Attach Psychic Energy to a Benched Eevee (Bench 1 or 2)"
+  },
+  {
+   "key": "4",
+   "group": "Energy",
+   "text": "Attach Psychic Energy to Darkrai (Bench 3)"
+  },
+  {
+   "key": "5",
+   "group": "Pokémon",
+   "text": "Evolve Swablu (Active) into Mega Altaria ex"
+  },
+  {
+   "key": "0",
+   "group": "End turn",
+   "text": "End your turn without attacking"
+  }
+ ],
+ "cant_play": []
+}

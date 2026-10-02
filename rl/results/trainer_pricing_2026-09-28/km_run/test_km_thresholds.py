@@ -17,11 +17,19 @@ folder, runs km_thresholds.py's own command line on them, and checks:
   G2  GUARD CASE with S2's T1 = 5/8: kta3's own gating rate 7/8 is at or above T, so M1 is "not shown at this size"
       even though km3's rate (1) is above T.
   and that a second run on the same files writes byte-identical output (the frozen seed and order).
+  P1-P3  AGREEMENT WITH score.py (added Oct 1): km_thresholds.py carries its own copy of score.py's pct (its docstring says
+      "unchanged"), and read_km.py writes the same index arithmetic inline. The cases above run on made-up counts and never
+      execute score.py, so they cannot see the two drift apart; these do. P1: km_thresholds.pct equals score.pct on a grid of
+      (length, q); P2: both pick elements 250 and 9750 of 10,000 (the registered replicate count) and 500 and 9500; P3: read_km.py's
+      two inline `out[int(0.025 * reps)], out[int(0.975 * reps)]` lines are still there and pick what score.pct picks at the
+      reps the reader uses (4,000 and the 20,000 of its decisive rerun). Importing score.py needs rl/results/deep_search_table.
 Exit 0 when every case gives its known answer."""
-import json, os, subprocess, sys
+import importlib.util, json, os, re, subprocess, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 KT = os.path.join(HERE, "km_thresholds.py")
+SCORE = os.path.join(HERE, "..", "..", "table_readings_2026-09-24", "score.py")
+READ_KM = os.path.join(HERE, "read_km.py")
 BASES = {"table": 72_000_000, "new_decks.tsv": 21_108_000_000}
 CELLS = {("table", 0): ("altaria", "blaziken"), ("table", 1): ("altaria", "hydreigon"), ("table", 2): ("altaria", "lucario"),
          ("table", 3): ("altaria", "sceptile"), ("table", 4): ("altaria", "suicune"), ("table", 8): ("blaziken", "lucario"),
@@ -77,6 +85,37 @@ def expect(cond, what):
     return bool(cond)
 
 
+def load(path, name):
+    """A script loaded as a module (neither score.py nor km_thresholds.py runs anything at import)."""
+    spec = importlib.util.spec_from_file_location(name, path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+def pct_cases():
+    """P1-P3: km_thresholds.py's and read_km.py's percentile arithmetic against score.py's pct."""
+    ok = True
+    try:
+        score, kt = load(SCORE, "score_for_the_pct_check"), load(KT, "km_thresholds_for_the_pct_check")
+    except Exception as e:                                       # a moved or broken file must fail loudly, not skip
+        return expect(False, f"P1 could not load score.py and km_thresholds.py to compare their pct: {e!r}")
+    grid = [q / 1000 for q in range(0, 1001, 5)] + [0.025, 0.05, 0.95, 0.975, 1 / 3, 2 / 3]
+    differ = [(n, q) for n in range(1, 201) for q in grid if score.pct(list(range(n)), q) != kt.pct(list(range(n)), q)]
+    ok &= expect(not differ, f"P1 km_thresholds.pct equals score.pct on {200 * len(grid)} (length, q) pairs (differ: {differ[:3]})")
+    big = list(range(10_000))
+    picked = {q: (score.pct(big, q), kt.pct(big, q)) for q in (0.025, 0.975, 0.05, 0.95)}
+    ok &= expect(picked == {0.025: (250, 250), 0.975: (9750, 9750), 0.05: (500, 500), 0.95: (9500, 9500)},
+                 f"P2 both pick elements 250 and 9750 (and 500, 9500) of 10,000: {picked}")
+    text = open(READ_KM, encoding="utf-8").read()
+    inline = text.count("out[int(0.025 * reps)], out[int(0.975 * reps)]")
+    same = all(score.pct(list(range(r)), 0.025) == int(0.025 * r) and score.pct(list(range(r)), 0.975) == int(0.975 * r)
+               for r in (4000, 20000))
+    ok &= expect(inline == 2 and same, f"P3 read_km.py still writes `out[int(0.025 * reps)], out[int(0.975 * reps)]` twice "
+                                       f"({inline} found) and it picks what score.pct picks at 4,000 and 20,000 reps ({same})")
+    return ok
+
+
 def main():
     d = sys.argv[1]
     os.makedirs(d, exist_ok=True)
@@ -130,6 +169,8 @@ def main():
     print("==== G2: gate, the guard\n" + out)
     ok &= expect("kta3 1575/1800 = 7/8" in out and "the guard" in out,
                  "G2: kta3's gating rate 7/8 >= T = 5/8 -> NOT SHOWN AT THIS SIZE (the guard), though km3's rate 1 is above T")
+    # P1-P3: the percentile arithmetic agrees with score.py's (imports it; see the module docstring).
+    ok &= pct_cases()
     print("ALL CASES GIVE THEIR KNOWN ANSWER" if ok else "A CASE IS WRONG")
     sys.exit(0 if ok else 1)
 

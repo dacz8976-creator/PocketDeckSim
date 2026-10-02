@@ -1,0 +1,27 @@
+deal 7, tick 95: chose Promote { player: 0, in_play_idx: 2 }
+PGTICK 95 (the decision asked about)
+PGCAND Promote { player: 0, in_play_idx: 2 }
+PGGATE queued coin-target frame: mover 0 target (owner 1, slot 3) attack "Slicing Snipe" depth_left=0
+PGCAND Promote { player: 0, in_play_idx: 3 }
+PGDUMP actor=0 candidates=2
+PGDUMP      55342.599999999998545 Promote { player: 0, in_play_idx: 2 }
+PGDUMP      11224.200000000000728 Promote { player: 0, in_play_idx: 3 }
+PGTREE candidate 0
+PGTREE A Promote { player: 0, in_play_idx: 2 } value=55342.600000
+PGTREE   S actor=1 p=1.0000 value=55342.600000 (1 moves)
+PGTREE     A EndTurn value=55342.600000
+PGTREE       S actor=0 p=1.0000 value=55342.600000 (1 moves)
+PGTREE         A DrawCard { amount: 1 } value=55342.600000
+PGTREE           S actor=0 p=1.0000 value=55342.600000 (10 moves)
+PGTREE             A Attack(Attack { energy_required: [Grass, Grass], title: "Slicing Snipe", fixed_damage: 0, effect: Some("This attack does 50 damage to 1 of your opponent's Benched Pokémon.") }) value=55342.600000
+PGTREE               S actor=0 p=1.0000 value=55342.600000 (1 moves)
+PGTREE                 A ApplyQueuedAttackDamage { attack: Attack { energy_required: [Grass, Grass], title: "Slicing Snipe", fixed_damage: 0, effect: Some("This attack does 50 damage to 1 of your opponent's Benched Pokémon.") }, targets: [(50, true, 3)] } value=55342.600000
+PGTREE candidate 1
+PGTREE A Promote { player: 0, in_play_idx: 3 } value=11224.200000
+PGTREE   S actor=1 p=1.0000 value=11224.200000 (1 moves)
+PGTREE     A EndTurn value=11224.200000
+PGTREE       S actor=0 p=1.0000 value=11224.200000 (1 moves)
+PGTREE         A DrawCard { amount: 1 } value=11224.200000
+PGTREE           S actor=0 p=1.0000 value=11224.200000 (10 moves)
+PGTREE             A Evolve { evolution: Pokemon(B3 008 Mega Sceptile ex), in_play_idx: 2, from_deck: false } value=11224.200000
+PGTREE               S actor=0 p=1.0000 value=11224.200000 (0 moves)

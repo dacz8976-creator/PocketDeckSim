@@ -208,20 +208,25 @@ those three the same day on reading sections 8 and 9. Dustin's Sept 28 rulings s
   25 counted games are the 23 plus one floor game each for Sceptile and Weezing), with the ladder games, the counted games
   and the deck file of each list. `ladder_mapping.csv` still has those 55 games, so the table is current.
 - `run_screen.py --weights FILE` prints, under each deck's usual line, a ladder-weighted win rate: the weights times the win
-  rates over the lists played, renormalised over the weight those lists carry, plus that share of the ladder weight, the
-  weighted lists not played and the played lists with no weight. It ends every time with "not a ranking: the ranking hold
-  stands". A bad file (unreadable, no `list`/`weight` columns, a repeated list, a weight that is not a positive number, a total
+  rates over the lists played, renormalised over the weight those lists carry, plus the share of the table's weights those
+  lists carry and how little of the saved ladder the whole table covers (about 42%: 23 of the 55 saved games, read from
+  the table's `ladder_games` column and its `# logged_games: 55` line; the sentence is left out if the table does not give
+  both numbers), the weighted lists not played and the played lists with no weight. It ends every time with "not a ranking:
+  the ranking hold stands". A bad file (unreadable, no `list`/`weight` columns, a repeated list, a weight that is not a positive number, a total
   not within half a point of 100, or no played list with a weight) is refused before any game. Without the option nothing
   changes: same lines, same engine calls.
-- With `opponents/` alone only the eight panel lists have cells, so the line covers **68%** of the weight (Charizard Y
-  12%, Sharpedo 8% and Rayquaza 12% have none) and says so. For a full-weight line, put the eleven lists (copies are fine)
+- With `opponents/` alone only the eight panel lists have cells, so the line says it covers **68% of the eleven-list
+  weights** (Charizard Y 12%, Sharpedo 8% and Rayquaza 12% have none) and that those eleven lists cover about 42% of the
+  saved ladder games: even a full-weight line describes well under half of the ladder (section 9's coverage note). The
+  line first read "68% of the ladder weight", which could be taken for 68% of the ladder; relabelled Oct 1 (the coordinator,
+  from Astra's Sept 30 review). For a full-weight line, put the eleven lists (copies are fine)
   in a readout-only folder and pass it as `--opponents`; `opponents/` itself is not touched and the floor is not redefined.
   Games per matchup stay equal for every list, so every cell keeps the same noise.
   ```bash
   python3 decks/screen/run_screen.py DECK.txt --weights decks/screen/panel_ladder_2026-09-26/panel_weights.csv
   python3 decks/screen/run_screen.py DECK.txt --weights decks/screen/panel_ladder_2026-09-26/panel_weights.csv --opponents READOUT_FOLDER
   ```
-- `decks/screen/test_run_screen_weights.py` (18 tests, Linux; from `decks/screen`: `python3 -B -m unittest -v
+- `decks/screen/test_run_screen_weights.py` (21 tests, Linux; from `decks/screen`: `python3 -B -m unittest -v
   test_run_screen_weights`). It copies the script into a scratch tree with a stand-in engine, so no game is played. The
   script run without the option must reproduce, byte for byte, the output and the engine calls of `run_screen.py` as it was
   before (recorded from 654d139); with the option, only the readout lines are added and the same games are asked for. No game

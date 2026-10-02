@@ -1,0 +1,22 @@
+TRACE LOAD 0 cloud 3a107f433bfce3bee7036fdbde06884df9e89d92: hand traces implied for step 8 by 8b's early-warning rows (0 of 13 no-counter games needed one; rule-of-three bound about 240); automated 8c work about 1,050 probe games and about 4,750 traces, the cloud's
+CLOUD8B 3a107f433bfce3bee7036fdbde06884df9e89d92 km3 rl/results/engine_switch_rules_2026-10/early_warning_8b/8b_new_km3.jsonl
+CLOUD8B 3a107f433bfce3bee7036fdbde06884df9e89d92 k3 rl/results/engine_switch_rules_2026-10/early_warning_8b/8b_new_k3.jsonl
+
+The trace load for PLAN.md step 8c's gate (read by sitting2.sh before step 8), written by the laptop session on Oct 1 at
+about 6:10 pm Central from the cloud's early-warning rows (commit 3a107f4 on claude/pensive-ptolemy-spwc0b,
+early_warning_8b/README.md):
+- 960 games: watch = new 160/160 per bot; pinned old = old built from source 160/160; no rule findings.
+- 63 of 320 deals changed (km3 32, k3 31). Every one is explained: 50 on the board, 13 lookahead with both halves by
+  probe, 0 needing a judgment, 0 unexplained.
+- CONDITION 3: 1 game (km3, pairing 34, i 35), explained by probe (a lookahead difference at tick 86) under the Oct 1
+  ruling. It is a pin-gate item.
+
+The coordinator's ruling (Oct 1): the plan's threshold of about 50 is about HAND traces, so the line above carries the
+implied hand-trace load, 0. By the plan's own arithmetic, the automated load is about 1,050 probe games plus about 4,750
+traces, which the cloud runs in 8c. If the hand-trace count after the probes tops 50, the pin waits for Dustin.
+
+A pin-gate note to carry: pairing 34's off-gate discard counter (Chase Order's discard, row 13) fired in none of its
+unchanged 8b games. This is a report line. The table run (step 7b) already showed it firing in 3,353 games.
+
+The CLOUD8B lines make the gate compare the laptop's 8b new-build rows with the cloud's, deal by deal (sitting2_check.py
+cloud8b). A difference halts.

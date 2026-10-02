@@ -1,0 +1,9 @@
+# STOP: 7 unexplained games
+
+- 8 k3 pairing 4 i 7: first difference at tick 95 (turn 13; lookahead: the same state, the same offered moves, a different choice; cause tick 95); reach counters at or before it in its turn or at the cause tick: none; probes: {"coin": {"cut": null, "free": false, "queued": null, "tick": 95}, "vs": {"built": null, "tick": 95}} => UNEXPLAINED
+- 8 k3 pairing 31 i 81: one game is a prefix of the other (72 and 73 ticks) => UNEXPLAINED
+- 8 km3 pairing 1 i 399: first difference at tick 81 (turn 13; lookahead: the same state, the same offered moves, a different choice; cause tick 81); reach counters at or before it in its turn or at the cause tick: none; probes: {"coin": {"cut": null, "free": false, "queued": null, "tick": 81}, "vs": {"built": null, "tick": 81}} => UNEXPLAINED
+- 8 km3 pairing 4 i 7: first difference at tick 84 (turn 11; lookahead: the same state, the same offered moves, a different choice; cause tick 84); reach counters at or before it in its turn or at the cause tick: none; probes: {"coin": {"cut": null, "free": false, "queued": null, "tick": 84}, "vs": {"built": null, "tick": 84}} => UNEXPLAINED
+- 8 km3 pairing 4 i 360: first difference at tick 57 (turn 8; lookahead: the same state, the same offered moves, a different choice; cause tick 57); reach counters at or before it in its turn or at the cause tick: none; probes: {"coin": {"cut": null, "free": false, "queued": null, "tick": 57}, "vs": {"built": null, "tick": 57}} => UNEXPLAINED
+- 8 km3 pairing 21 i 310: first difference at tick 87 (turn 12; lookahead: the same state, the same offered moves, a different choice; cause tick 87); reach counters at or before it in its turn or at the cause tick: none; probes: {"coin": {"cut": null, "free": false, "queued": null, "tick": 87}, "vs": {"built": null, "tick": 87}} => UNEXPLAINED
+- 8 km3 pairing 31 i 12: one game is a prefix of the other (48 and 49 ticks) => UNEXPLAINED

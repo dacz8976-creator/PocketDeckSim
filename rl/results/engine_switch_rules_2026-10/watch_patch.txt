@@ -1,0 +1,8 @@
+The watch build of 5a18d31657897545a9eaaf849c9d0cb5b0a08ffa (/home/dacz8976/engine-rules-watch-5a18d31), sitting1.sh step 6. The two F5 scripts, taken from the candidate (R's blobs), applied in this order:
+  rl/results/victory_star_repair_2026-09-30/instrument_scan.py blob cd8fe70b291b9d5258a384bca444379a71601bb5 sha256 2fcf97407f31b00adebc44c3f453441e96b6cadb9f28a6653afd64190f2493a3
+  rl/results/coin_prevention_repair_2026-09-30/instrument_scan.py blob df6e9d5ee2df4b77e8aa3eda3776fe5555d13caf sha256 7abc39cef9eef7652a0de0013395b8a238ce384941e3b14431c83c2ba6d68721
+engine/examples/legality_scan.rs before: sha256 b9ce6d06d6866bfce7718604f12b81c5de3c12664c678c67f542c59fd9b0ef83
+instrumented /home/dacz8976/engine-rules-watch-5a18d31/engine/examples/legality_scan.rs
+instrumented /home/dacz8976/engine-rules-watch-5a18d31/engine/examples/legality_scan.rs
+engine/examples/legality_scan.rs after: sha256 043a33a8989baff84406b8486f2502ad707d47df308c269d5c68524634e2b399, 204 lines added, 0 removed; it writes all 15 counters (R = f8cfa9c: every firing tick kept)
+Its source differs from the plain build's (/home/dacz8976/engine-rules-5a18d31) in engine/examples/legality_scan.rs only (diff -rq, target/ aside); decks/ equal.

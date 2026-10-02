@@ -1,0 +1,174 @@
+====================================================================================================
+k3 pairing 4 deal 7: garchomp_meowth v t-sceptile
+  row.old_moves = 1812221c06328628
+  row.new_moves = 64d245842aeaab10
+  row.differing_fields = decisions,moves
+  row.old_winner = 0
+  row.new_winner = 0
+  row.old_points = [3,1]
+  row.new_points = [3,1]
+  row.exact_counters = {"coin_full_prevention":[100],"coin_queued_offered":[100],"coin_queued_offered_any":[100]}
+  row.superset_counters = {"coin_defender_attack":2,"coin_queued_attack_damage":1}
+  row.vs_confused_choice = {}
+  row.offgate_counters = {}
+  row.no_reach_counter = no
+  row.full_prevention_only = no
+  ticks old 102 new 102; done old {"done": true, "first_seat": 1, "i": 7, "moves": "1812221c06328628", "ticks": 102}; done new {"done": true, "first_seat": 1, "i": 7, "moves": "64d245842aeaab10", "ticks": 102}
+  first_difference: kind=lookahead k=95 cause=95 detail=the same state, the same offered moves, a different choice
+  tick-record keys: ['actor', 'board', 'chosen', 'chosen_actor', 'facts', 'i', 'n', 'offered', 'state', 'tick', 'turn']
+  OLD chose: Promote { player: 0, in_play_idx: 3 }
+  R   chose: Promote { player: 0, in_play_idx: 2 }
+  offered (old) null
+  tick 93: old chosen 'Attach { attachments: [(1, Water, 0)], is_turn_energy: true }' | new chosen 'Attach { attachments: [(1, Water, 0)], is_turn_energy: true }'
+  tick 94: old chosen 'Attack(Attack { energy_required: [Water, Fighting, Colorless], title: "Land Crush", fixed_damage: 120, effect: None })' | new chosen 'Attack(Attack { energy_required: [Water, Fighting, Colorless], title: "Land Crush", fixed_damage: 120, effect: None })'
+  tick 95: old chosen 'Promote { player: 0, in_play_idx: 3 }' | new chosen 'Promote { player: 0, in_play_idx: 2 }'
+  tick 96: old chosen 'EndTurn' | new chosen 'EndTurn'
+  tick 97: old chosen 'DrawCard { amount: 1 }' | new chosen 'DrawCard { amount: 1 }'
+====================================================================================================
+k3 pairing 31 deal 81: houndoom_victini v t-weezing
+  row.old_moves = e52ea52506045d1a
+  row.new_moves = 425b1f6f8b09f840
+  row.differing_fields = decisions,moves
+  row.old_winner = 1
+  row.new_winner = 1
+  row.old_points = [2,3]
+  row.new_points = [2,3]
+  row.exact_counters = {"vs_confused_choice_chosen":[72],"vs_confused_choice_offered":[72],"vs_confusion_first_built":[61,71]}
+  row.superset_counters = {"vs_confused_attack":2}
+  row.vs_confused_choice = {"first":72,"n":1}
+  row.offgate_counters = {}
+  row.no_reach_counter = no
+  row.full_prevention_only = no
+  ticks old 72 new 73; done old {"done": true, "first_seat": 1, "i": 81, "moves": "e52ea52506045d1a", "ticks": 72}; done new {"done": true, "first_seat": 1, "i": 81, "moves": "425b1f6f8b09f840", "ticks": 73}
+  first_difference: kind=length k=72 cause=None detail=one game is a prefix of the other (72 and 73 ticks)
+  the R game is the longer one; its extra tick(s):
+  tick 70: {"actor": 1, "board": {"hands": [6, 2], "p0": ["0:Team Rocket's Weezing ex 140hp 2E", "3:Hoopa ex 150hp 1E"], "p1": ["0:Mega Houndoom ex 40hp 3E", "1:Victini 70hp 0E", "2:Oricorio 20hp 0E"]}, "chosen": "Attach { attachments: [(1, Fire, 1)], is_turn_energy: true }", "chosen_actor": 1, "facts": {"confused": [false, true], "pending": false, "victini": [false, true], "vs_used": [false, false]}, "i": 81, "n": 9, "offered": ["EndTurn", "Play { trainer_card: B4 155 Rainbow Cave }", "Play { trainer_card: P-A 005 Poké Ball }", "Attach { attachments: [(1, Fire, 0)], is_turn_energy: true }", "Attach { attachments: [(1, Fire, 1)], is_turn_energy: true }", "Attach { attachments: [(1, Fire, 2)], is_turn_energy: true }", "Retreat(1)", "Retreat(2)", "Attack(Attack { energy_required: [Fire, Fire, Colorless], title: \"Grimhound Flare\", fixed_damage: 80, effect: Some(\"Flip 3 coins. This attack does 80 da...(+82 chars)
+  tick 71: {"actor": 1, "board": {"hands": [6, 2], "p0": ["0:Team Rocket's Weezing ex 140hp 2E", "3:Hoopa ex 150hp 1E"], "p1": ["0:Mega Houndoom ex 40hp 3E", "1:Victini 70hp 1E", "2:Oricorio 20hp 0E"]}, "chosen": "Attack(Attack { energy_required: [Fire, Fire, Colorless], title: \"Grimhound Flare\", fixed_damage: 80, effect: Some(\"Flip 3 coins. This attack does 80 damage for each heads.\") })", "chosen_actor": 1, "facts": {"confused": [false, true], "pending": false, "victini": [false, true], "vs_used": [false, false]}, "i": 81, "n": 6, "offered": ["EndTurn", "Play { trainer_card: B4 155 Rainbow Cave }", "Play { trainer_card: P-A 005 Poké Ball }", "Retreat(1)", "Retreat(2)", "Attack(Attack { energy_required: [Fire, Fire, Colorless], title: \"Grimhound Flare\", fixed_damage: 80, effect: Some(\"Flip 3 coins. This attack does 80 damage for each heads.\") })"], "state": "7f7c57de6e8498b3", "tick": 71, ...(+11 chars)
+  tick 72: {"actor": 1, "board": {"hands": [6, 2], "p0": ["0:Team Rocket's Weezing ex 140hp 2E", "3:Hoopa ex 150hp 1E"], "p1": ["0:Mega Houndoom ex 40hp 3E", "1:Victini 70hp 1E", "2:Oricorio 20hp 0E"]}, "chosen": "KeepAttackCoinResults", "chosen_actor": 1, "facts": {"confused": [false, true], "pending": true, "victini": [false, true], "vs_used": [false, false]}, "i": 81, "n": 2, "offered": ["KeepAttackCoinResults", "RerollAttackCoins { victory_star_in_play_idx: 1 }"], "state": "7dd6dec43134cfc8", "tick": 72, "turn": 12}
+  the shorter game's last tick: {"actor": 1, "board": {"hands": [6, 2], "p0": ["0:Team Rocket's Weezing ex 140hp 2E", "3:Hoopa ex 150hp 1E"], "p1": ["0:Mega Houndoom ex 40hp 3E", "1:Victini 70hp 1E", "2:Oricorio 20hp 0E"]}, "chosen": "Attack(Attack { energy_required: [Fire, Fire, Colorless], title: \"Grimhound Flare\", fixed_damage: 80, effect: Some(\"Flip 3 coins. This attack does 80 damage for each heads.\") })", "chosen_actor": 1, "facts": {"confused": [false, true], "pending": false, "victini": [false, true], "vs_used": [false, false]}, "i": 81, "n": 6, "offered": ["EndTurn", "Play { trainer_card: B4 155 Rainbow Cave }", "Play { trainer_card: P-A 005 Poké Ball }", "Retreat(1)", "Retreat(2)", "Attack(Attack { energy_required: [Fire, Fire, Colorless], title: \"Grimhound Flare\", fixed_damage: 80, effect: Some(\"Flip 3 coins. This attack does 80 damage for each heads.\") })"], "state": "7f7c57de6e8498b3", "tick": 71, ...(+11 chars)
+====================================================================================================
+km3 pairing 1 deal 399: garchomp_meowth v t-blaziken
+  row.old_moves = 02238aedbc22274e
+  row.new_moves = 5a5f5f10ee6d4b28
+  row.differing_fields = decisions,discard_attacks,first_deck_score,moves,points,turns,winner_seat
+  row.old_winner = 1
+  row.new_winner = 0
+  row.old_points = [2,3]
+  row.new_points = [3,2]
+  row.exact_counters = {"coin_full_prevention":[62,87],"coin_queued_offered":[87],"coin_queued_offered_any":[87]}
+  row.superset_counters = {"coin_defender_attack":9,"coin_queued_attack_damage":1}
+  row.vs_confused_choice = {}
+  row.offgate_counters = {}
+  row.no_reach_counter = no
+  row.full_prevention_only = no
+  ticks old 102 new 108; done old {"done": true, "first_seat": 1, "i": 399, "moves": "02238aedbc22274e", "ticks": 102}; done new {"done": true, "first_seat": 1, "i": 399, "moves": "5a5f5f10ee6d4b28", "ticks": 108}
+  first_difference: kind=lookahead k=81 cause=81 detail=the same state, the same offered moves, a different choice
+  tick-record keys: ['actor', 'board', 'chosen', 'chosen_actor', 'facts', 'i', 'n', 'offered', 'state', 'tick', 'turn']
+  OLD chose: Promote { player: 0, in_play_idx: 2 }
+  R   chose: Promote { player: 0, in_play_idx: 3 }
+  offered (old) null
+  tick 79: old chosen 'Attach { attachments: [(1, Water, 0)], is_turn_energy: true }' | new chosen 'Attach { attachments: [(1, Water, 0)], is_turn_energy: true }'
+  tick 80: old chosen 'Attack(Attack { energy_required: [Water, Fighting, Colorless], title: "Land Crush", fixed_damage: 120, effect: None })' | new chosen 'Attack(Attack { energy_required: [Water, Fighting, Colorless], title: "Land Crush", fixed_damage: 120, effect: None })'
+  tick 81: old chosen 'Promote { player: 0, in_play_idx: 2 }' | new chosen 'Promote { player: 0, in_play_idx: 3 }'
+  tick 82: old chosen 'EndTurn' | new chosen 'EndTurn'
+  tick 83: old chosen 'DrawCard { amount: 1 }' | new chosen 'DrawCard { amount: 1 }'
+====================================================================================================
+km3 pairing 4 deal 7: garchomp_meowth v t-sceptile
+  row.old_moves = 5f2349fd4c4dc2a8
+  row.new_moves = c7dddc97fce424fc
+  row.differing_fields = decisions,moves
+  row.old_winner = 0
+  row.new_winner = 0
+  row.old_points = [3,1]
+  row.new_points = [3,1]
+  row.exact_counters = {"coin_full_prevention":[89],"coin_queued_offered":[89],"coin_queued_offered_any":[89]}
+  row.superset_counters = {"coin_defender_attack":2,"coin_queued_attack_damage":1}
+  row.vs_confused_choice = {}
+  row.offgate_counters = {}
+  row.no_reach_counter = no
+  row.full_prevention_only = no
+  ticks old 91 new 91; done old {"done": true, "first_seat": 1, "i": 7, "moves": "5f2349fd4c4dc2a8", "ticks": 91}; done new {"done": true, "first_seat": 1, "i": 7, "moves": "c7dddc97fce424fc", "ticks": 91}
+  first_difference: kind=lookahead k=84 cause=84 detail=the same state, the same offered moves, a different choice
+  tick-record keys: ['actor', 'board', 'chosen', 'chosen_actor', 'facts', 'i', 'n', 'offered', 'state', 'tick', 'turn']
+  OLD chose: Promote { player: 0, in_play_idx: 2 }
+  R   chose: Promote { player: 0, in_play_idx: 3 }
+  offered (old) null
+  tick 82: old chosen 'Attach { attachments: [(1, Fighting, 0)], is_turn_energy: true }' | new chosen 'Attach { attachments: [(1, Fighting, 0)], is_turn_energy: true }'
+  tick 83: old chosen 'Attack(Attack { energy_required: [Water, Fighting, Colorless], title: "Land Crush", fixed_damage: 120, effect: None })' | new chosen 'Attack(Attack { energy_required: [Water, Fighting, Colorless], title: "Land Crush", fixed_damage: 120, effect: None })'
+  tick 84: old chosen 'Promote { player: 0, in_play_idx: 2 }' | new chosen 'Promote { player: 0, in_play_idx: 3 }'
+  tick 85: old chosen 'EndTurn' | new chosen 'EndTurn'
+  tick 86: old chosen 'DrawCard { amount: 1 }' | new chosen 'DrawCard { amount: 1 }'
+====================================================================================================
+km3 pairing 4 deal 360: garchomp_meowth v t-sceptile
+  row.old_moves = e7282e539fdca177
+  row.new_moves = cfcf792324696e91
+  row.differing_fields = decisions,discard_attacks,first_deck_score,moves,points,turns,winner_seat
+  row.old_winner = 0
+  row.new_winner = 1
+  row.old_points = [5,1]
+  row.new_points = [2,3]
+  row.exact_counters = {"coin_full_prevention":[64],"coin_queued_offered":[64],"coin_queued_offered_any":[64]}
+  row.superset_counters = {"coin_defender_attack":2,"coin_queued_attack_damage":1}
+  row.vs_confused_choice = {}
+  row.offgate_counters = {}
+  row.no_reach_counter = no
+  row.full_prevention_only = no
+  ticks old 95 new 79; done old {"done": true, "first_seat": 0, "i": 360, "moves": "e7282e539fdca177", "ticks": 95}; done new {"done": true, "first_seat": 0, "i": 360, "moves": "cfcf792324696e91", "ticks": 79}
+  first_difference: kind=lookahead k=57 cause=57 detail=the same state, the same offered moves, a different choice
+  tick-record keys: ['actor', 'board', 'chosen', 'chosen_actor', 'facts', 'i', 'n', 'offered', 'state', 'tick', 'turn']
+  OLD chose: Promote { player: 1, in_play_idx: 2 }
+  R   chose: Promote { player: 1, in_play_idx: 3 }
+  offered (old) null
+  tick 55: old chosen 'Attach { attachments: [(1, Fighting, 0)], is_turn_energy: true }' | new chosen 'Attach { attachments: [(1, Fighting, 0)], is_turn_energy: true }'
+  tick 56: old chosen 'Attack(Attack { energy_required: [Water, Fighting, Colorless], title: "Land Crush", fixed_damage: 120, effect: None })' | new chosen 'Attack(Attack { energy_required: [Water, Fighting, Colorless], title: "Land Crush", fixed_damage: 120, effect: None })'
+  tick 57: old chosen 'Promote { player: 1, in_play_idx: 2 }' | new chosen 'Promote { player: 1, in_play_idx: 3 }'
+  tick 58: old chosen 'EndTurn' | new chosen 'EndTurn'
+  tick 59: old chosen 'ResolveEndTurnEvolution { player: 1 }' | new chosen 'DrawCard { amount: 1 }'
+====================================================================================================
+km3 pairing 21 deal 310: hisuian_goodra v t-suicune
+  row.old_moves = 5ca67a5ad2b7f2b3
+  row.new_moves = 224f42cb1da86cfd
+  row.differing_fields = decisions,moves
+  row.old_winner = 1
+  row.new_winner = 1
+  row.old_points = [1,3]
+  row.new_points = [1,3]
+  row.exact_counters = {"coin_cut_recorded":[69,82,91],"coin_queued_offered":[91],"coin_queued_offered_any":[91]}
+  row.superset_counters = {"coin_defender_attack":5,"coin_queued_attack_damage":1}
+  row.vs_confused_choice = {}
+  row.offgate_counters = {}
+  row.no_reach_counter = no
+  row.full_prevention_only = no
+  ticks old 95 new 93; done old {"done": true, "first_seat": 0, "i": 310, "moves": "5ca67a5ad2b7f2b3", "ticks": 95}; done new {"done": true, "first_seat": 0, "i": 310, "moves": "224f42cb1da86cfd", "ticks": 93}
+  first_difference: kind=lookahead k=87 cause=87 detail=the same state, the same offered moves, a different choice
+  tick-record keys: ['actor', 'board', 'chosen', 'chosen_actor', 'facts', 'i', 'n', 'offered', 'state', 'tick', 'turn']
+  OLD chose: Promote { player: 1, in_play_idx: 2 }
+  R   chose: Promote { player: 1, in_play_idx: 3 }
+  offered (old) null
+  tick 85: old chosen 'Attach { attachments: [(1, Water, 1)], is_turn_energy: true }' | new chosen 'Attach { attachments: [(1, Water, 1)], is_turn_energy: true }'
+  tick 86: old chosen 'Attack(Attack { energy_required: [Water, Metal, Colorless], title: "Heavy Impact", fixed_damage: 120, effect: None })' | new chosen 'Attack(Attack { energy_required: [Water, Metal, Colorless], title: "Heavy Impact", fixed_damage: 120, effect: None })'
+  tick 87: old chosen 'Promote { player: 1, in_play_idx: 2 }' | new chosen 'Promote { player: 1, in_play_idx: 3 }'
+  tick 88: old chosen 'EndTurn' | new chosen 'EndTurn'
+  tick 89: old chosen 'DrawCard { amount: 1 }' | new chosen 'DrawCard { amount: 1 }'
+====================================================================================================
+km3 pairing 31 deal 12: houndoom_victini v t-weezing
+  row.old_moves = 628854f8149cd0ee
+  row.new_moves = 5d67882005ce7f9a
+  row.differing_fields = decisions,moves
+  row.old_winner = 0
+  row.new_winner = 0
+  row.old_points = [4,0]
+  row.new_points = [4,0]
+  row.exact_counters = {"vs_confused_choice_chosen":[48],"vs_confused_choice_offered":[48],"vs_confusion_first_built":[47]}
+  row.superset_counters = {"vs_confused_attack":1}
+  row.vs_confused_choice = {"first":48,"n":1}
+  row.offgate_counters = {}
+  row.no_reach_counter = no
+  row.full_prevention_only = no
+  ticks old 48 new 49; done old {"done": true, "first_seat": 0, "i": 12, "moves": "628854f8149cd0ee", "ticks": 48}; done new {"done": true, "first_seat": 0, "i": 12, "moves": "5d67882005ce7f9a", "ticks": 49}
+  first_difference: kind=length k=48 cause=None detail=one game is a prefix of the other (48 and 49 ticks)
+  the R game is the longer one; its extra tick(s):
+  tick 46: {"actor": 0, "board": {"hands": [2, 4], "p0": ["0:Mega Houndoom ex 70hp 3E", "3:Victini 70hp 0E"], "p1": ["0:Darkrai ex 140hp 0E", "3:Team Rocket's Weezing ex 120hp 2E"]}, "chosen": "Attach { attachments: [(1, Fire, 3)], is_turn_energy: true }", "chosen_actor": 0, "facts": {"confused": [true, false], "pending": false, "victini": [true, false], "vs_used": [false, false]}, "i": 12, "n": 5, "offered": ["EndTurn", "Attach { attachments: [(1, Fire, 0)], is_turn_energy: true }", "Attach { attachments: [(1, Fire, 3)], is_turn_energy: true }", "Retreat(3)", "Attack(Attack { energy_required: [Fire, Fire, Colorless], title: \"Grimhound Flare\", fixed_damage: 80, effect: Some(\"Flip 3 coins. This attack does 80 damage for each heads.\") })"], "state": "6f2d6e5ce4b63ea8", "tick": 46, "turn": 6}
+  tick 47: {"actor": 0, "board": {"hands": [2, 4], "p0": ["0:Mega Houndoom ex 70hp 3E", "3:Victini 70hp 1E"], "p1": ["0:Darkrai ex 140hp 0E", "3:Team Rocket's Weezing ex 120hp 2E"]}, "chosen": "Attack(Attack { energy_required: [Fire, Fire, Colorless], title: \"Grimhound Flare\", fixed_damage: 80, effect: Some(\"Flip 3 coins. This attack does 80 damage for each heads.\") })", "chosen_actor": 0, "facts": {"confused": [true, false], "pending": false, "victini": [true, false], "vs_used": [false, false]}, "i": 12, "n": 3, "offered": ["EndTurn", "Retreat(3)", "Attack(Attack { energy_required: [Fire, Fire, Colorless], title: \"Grimhound Flare\", fixed_damage: 80, effect: Some(\"Flip 3 coins. This attack does 80 damage for each heads.\") })"], "state": "871fa9b0f4127e97", "tick": 47, "turn": 6}
+  tick 48: {"actor": 0, "board": {"hands": [2, 4], "p0": ["0:Mega Houndoom ex 70hp 3E", "3:Victini 70hp 1E"], "p1": ["0:Darkrai ex 140hp 0E", "3:Team Rocket's Weezing ex 120hp 2E"]}, "chosen": "KeepAttackCoinResults", "chosen_actor": 0, "facts": {"confused": [true, false], "pending": true, "victini": [true, false], "vs_used": [false, false]}, "i": 12, "n": 2, "offered": ["KeepAttackCoinResults", "RerollAttackCoins { victory_star_in_play_idx: 3 }"], "state": "3aa187082444f9a5", "tick": 48, "turn": 6}
+  the shorter game's last tick: {"actor": 0, "board": {"hands": [2, 4], "p0": ["0:Mega Houndoom ex 70hp 3E", "3:Victini 70hp 1E"], "p1": ["0:Darkrai ex 140hp 0E", "3:Team Rocket's Weezing ex 120hp 2E"]}, "chosen": "Attack(Attack { energy_required: [Fire, Fire, Colorless], title: \"Grimhound Flare\", fixed_damage: 80, effect: Some(\"Flip 3 coins. This attack does 80 damage for each heads.\") })", "chosen_actor": 0, "facts": {"confused": [true, false], "pending": false, "victini": [true, false], "vs_used": [false, false]}, "i": 12, "n": 3, "offered": ["EndTurn", "Retreat(3)", "Attack(Attack { energy_required: [Fire, Fire, Colorless], title: \"Grimhound Flare\", fixed_damage: 80, effect: Some(\"Flip 3 coins. This attack does 80 damage for each heads.\") })"], "state": "871fa9b0f4127e97", "tick": 47, "turn": 6}

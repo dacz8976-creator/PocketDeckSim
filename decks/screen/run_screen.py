@@ -11,8 +11,10 @@ different decks face the same shuffles. Needs Linux (WSL or the cloud).
 
 --weights FILE (off by default; Sept 30): also print a ladder-weighted line under each deck's usual one, from a table of
 `list,weight` (decks/screen/panel_ladder_2026-09-26/panel_weights.csv, README section 9). It is a readout of the lists
-played, renormalised over their weights, and says what share of the ladder weight those lists carry (68% with opponents/
-alone; --opponents can point at a readout-only folder holding all eleven). It is not a ranking: the ranking hold stands.
+played, renormalised over their weights. The line says what share of the table's weights those lists carry (68% of the
+eleven-list weights with opponents/ alone; --opponents can point at a readout-only folder holding all eleven) and, when the
+table says how many games it counts (a `# logged_games: N` line and a ladder_games column), how little of the saved ladder
+the whole table covers (about 42%: 23 of the 55 saved games). It is not a ranking: the ranking hold stands.
 Nothing else changes, and without the option the output is exactly what it was.
 
 Engine: by default the manifest's available release (project_manifest.json, checked by current_engine.py, which
@@ -47,13 +49,17 @@ except (OSError, ValueError) as e:
 opps = sorted(glob.glob(os.path.join(a.opponents, '*.txt')))
 
 def read_weights(path):
-    """list name -> weight (percent) from a `list,weight` CSV (other columns and `#` lines are ignored). Refuses a file that
-    is unreadable, lacks either column, repeats a list, has a weight that is not a positive number, or does not total 100."""
+    """(list name -> weight in percent, saved) from a `list,weight` CSV (other columns and `#` lines are ignored, except as
+    below). `saved` is (games on these lists, games in the saved ladder log) when the file gives both, a ladder_games column
+    and a `# logged_games: N` line, and the first does not exceed the second; otherwise None. Refuses a file that is
+    unreadable, lacks either column, repeats a list, has a weight that is not a positive number, or does not total 100."""
     try:
         with open(path, encoding='utf-8-sig', newline='') as f:
-            rows = list(csv.DictReader(line for line in f if not line.startswith('#')))
+            lines = list(f)
     except (OSError, UnicodeDecodeError) as e:
         raise SystemExit(f'REFUSED: cannot read the weights file {path}: {e}')
+    logged = next((int(m[1]) for m in (re.match(r'#\s*logged_games:\s*(\d+)\b', line) for line in lines) if m), None)
+    rows = list(csv.DictReader(line for line in lines if not line.startswith('#')))
     if not rows or not {'list', 'weight'} <= set(rows[0]):
         raise SystemExit(f'REFUSED: {path} needs a header with the columns list and weight, and at least one row')
     weights = {}
@@ -68,21 +74,35 @@ def read_weights(path):
         weights[name] = w
     if abs(sum(weights.values()) - 100) > 0.5:
         raise SystemExit(f'REFUSED: the weights in {path} total {sum(weights.values()):.1f}, not 100')
-    return weights
+    try:
+        on_lists = sum(int(r['ladder_games']) for r in rows)
+    except (KeyError, TypeError, ValueError):
+        on_lists = None
+    saved = (on_lists, logged) if logged and on_lists is not None and 0 <= on_lists <= logged else None
+    return weights, saved
 
-weights = read_weights(a.weights) if a.weights else None
+weights, saved = read_weights(a.weights) if a.weights else (None, None)
 if weights is not None and not any(os.path.splitext(os.path.basename(o))[0] in weights for o in opps):
     raise SystemExit(f'REFUSED: none of the {len(opps)} opponent lists in {a.opponents} has a weight in {a.weights}')
 
-def weighted_lines(rows, games, weights, path):
+WORDS = 'zero one two three four five six seven eight nine ten eleven twelve'.split()
+
+def weighted_lines(rows, games, weights, path, saved=None):
     """The readout lines under a deck's usual one: the weighted win rate over the lists played that have a weight, the
-    share of the ladder weight they carry, the lists with a weight that were not played, and the lists played without one."""
+    share of the table's weights they carry (and, when `saved` says so, how much of the saved ladder the whole table covers),
+    the lists with a weight that were not played, and the lists played without one."""
     played = {o: w for o, w, _, _ in rows}
     used = {o: w for o, w in played.items() if o in weights}
     carried = sum(weights[o] for o in used)
     pct = 100 * sum(weights[o] * w / games for o, w in used.items()) / carried
-    lines = [f'   ladder-weighted: {pct:.1f}%  (weights from {os.path.basename(path)}; {len(used)} of {len(weights)} weighted '
-             f'lists played, carrying {100 * carried / sum(weights.values()):.0f}% of the ladder weight)']
+    n = len(weights)
+    word = WORDS[n] if n < len(WORDS) else str(n)
+    cover = f'{100 * carried / sum(weights.values()):.0f}% of the {word}-list weights'
+    if saved:
+        cover += (f'; those {word} lists cover about {100 * saved[0] / saved[1]:.0f}% of the saved ladder games, '
+                  f'{saved[0]} of {saved[1]}, README section 9')
+    lines = [f'   ladder-weighted: {pct:.1f}%  (weights from {os.path.basename(path)}; {len(used)} of {n} weighted '
+             f'lists played = {cover})']
     missing = sorted(n for n in weights if n not in played)
     if missing:
         lines.append('   not played, no cells: ' + ', '.join(missing))
@@ -116,6 +136,6 @@ for deck in a.decks:
     print(f'\n== {name}: {tw}/{tg} = {100*tw/tg:.0f}% vs the panel  ({a.pilot} on the deck, {a.meta_pilot} on the panel, '
           f'{a.games} games per matchup; engine {os.path.relpath(engine, root)})')
     if weights is not None:
-        print('\n'.join(weighted_lines(rows, a.games, weights, a.weights)))
+        print('\n'.join(weighted_lines(rows, a.games, weights, a.weights, saved)))
     for oname, w, l, d in sorted(rows, key=lambda r: r[1]):
         print(f'   {oname:14s} {w:3d}-{l:<3d}' + (f' ({d} draws)' if d else '') + f'  {100*w/a.games:3.0f}%')

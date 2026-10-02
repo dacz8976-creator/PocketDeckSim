@@ -1,6 +1,7 @@
 # Ladder weights for the readout-only panel: README.md section 9, "The weights on eleven lists" (Sept 28 night; 55 logged games, 23 of them on these lists; ladder_mapping.csv still has those 55).
 # Rulings behind it (Dustin, Sept 28, README section 8): a list never met counts as one game (P2); variants of a panel deck count as it, except the TR Magmar Weezing game (P3); h-charizardy_entei stands in for Charizard Y (P5); Rayquaza is the eleventh list.
 # Counted games total 25, so weight = counted_as / 25. Read by run_screen.py --weights. A readout only, not a ranking: the ranking hold stands. The first eight lists are in decks/screen/opponents/; the last three are readout-only (no cells unless --opponents points at a folder holding them).
+# logged_games: 55   (the Ladder Log's games at the Sept 28 night refresh; run_screen.py --weights prints how little of them these lists cover: the ladder_games column, 23 of 55)
 list,weight,ladder_games,counted_as,file
 t-lucario,20.0,5,5,decks/screen/opponents/t-lucario.txt
 t-altaria,8.0,2,2,decks/screen/opponents/t-altaria.txt

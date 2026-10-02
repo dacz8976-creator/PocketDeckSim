@@ -1,0 +1,7 @@
+Replays for the rules switch's step 7c (sitting1.sh): floor.py's own call, unchanged, on the candidate's new deckgym
+(floor_with.py), compared with floor_dustin_2026-09-30's recorded km3 pages. Evidence only: these are not floor pages and
+carry no verdict to use; their '- Engine:' line names the new program, the one difference allowed. The comparison is on
+every field of floor.py's per-game summary record (seed, seat, result, points, turns and the like), not on moves or
+decisions: the 32 scans beside them carry those. Run as floor_dustin_2026-09-30/run_floor.sh ran them: no
+RAYON_NUM_THREADS (rayon's default, every logical CPU: 16 here); nice 10, where the recorded run used 19
+(nice changes no game).

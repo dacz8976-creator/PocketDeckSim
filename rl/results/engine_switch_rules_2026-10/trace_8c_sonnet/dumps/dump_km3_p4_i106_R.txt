@@ -1,0 +1,42 @@
+deal 106, tick 82: chose Attack(Attack { energy_required: [Grass], title: "Pound", fixed_damage: 20, effect: None })
+PGTICK 82 (the decision asked about)
+PGCAND EndTurn
+PGCAND Attack(Attack { energy_required: [Grass], title: "Pound", fixed_damage: 20, effect: None })
+PGCAND Play { trainer_card: B1a 067 Quick-Grow Extract }
+PGCAND Play { trainer_card: B3 153 Fragrant Forest }
+PGDUMP actor=1 candidates=4
+PGDUMP     -20513.400000000001455 EndTurn
+PGDUMP     -10973.299999999999272 Attack(Attack { energy_required: [Grass], title: "Pound", fixed_damage: 20, effect: None })
+PGDUMP     -14873.350000000000364 Play { trainer_card: B1a 067 Quick-Grow Extract }
+PGDUMP     -10974.299999999999272 Play { trainer_card: B3 153 Fragrant Forest }
+PGTREE candidate 0
+PGTREE A EndTurn value=-20513.400000
+PGTREE   S actor=0 p=1.0000 value=-20513.400000 (0 moves)
+PGTREE candidate 1
+PGTREE A Attack(Attack { energy_required: [Grass], title: "Pound", fixed_damage: 20, effect: None }) value=-10973.300000
+PGTREE   S actor=0 p=1.0000 value=-10973.300000 (3 moves)
+PGTREE     A Promote { player: 0, in_play_idx: 1 } value=-10973.300000
+PGTREE       S actor=1 p=1.0000 value=-10973.300000 (1 moves)
+PGTREE         A EndTurn value=-10973.300000
+PGTREE           S actor=0 p=1.0000 value=-10973.300000 (0 moves)
+PGTREE candidate 2
+PGTREE A Play { trainer_card: B1a 067 Quick-Grow Extract } value=-14873.350000
+PGTREE   S actor=1 p=1.0000 value=-14873.350000 (1 moves)
+PGTREE     A ChooseRandomEvolutionTarget { in_play_idx: 0, energy_type: Grass } value=-14873.350000
+PGTREE       S actor=1 p=1.0000 value=-14873.350000 (3 moves)
+PGTREE         A Attack(Attack { energy_required: [Grass, Grass], title: "Slicing Snipe", fixed_damage: 0, effect: Some("This attack does 50 damage to 1 of your opponent's Benched Pokémon.") }) value=-14873.350000
+PGTREE           S actor=1 p=1.0000 value=-14873.350000 (3 moves)
+PGTREE             A ApplyQueuedAttackDamage { attack: Attack { energy_required: [Grass, Grass], title: "Slicing Snipe", fixed_damage: 0, effect: Some("This attack does 50 damage to 1 of your opponent's Benched Pokémon.") }, targets: [(50, true, 3)] } value=-14873.350000
+PGTREE               S actor=1 p=0.5000 value=-9773.300000 (1 moves)
+PGTREE                 A ResolveAttackRetaliation { attacking_ref: (1, 0), perish_body_heads: false, point_denial_flips: [], damaged_refs: [] } value=-9773.300000
+PGTREE               S actor=1 p=0.5000 value=-19973.400000 (1 moves)
+PGTREE                 A ResolveAttackRetaliation { attacking_ref: (1, 0), perish_body_heads: false, point_denial_flips: [], damaged_refs: [] } value=-19973.400000
+PGTREE candidate 3
+PGTREE A Play { trainer_card: B3 153 Fragrant Forest } value=-10974.300000
+PGTREE   S actor=1 p=1.0000 value=-10974.300000 (4 moves)
+PGTREE     A Attack(Attack { energy_required: [Grass], title: "Pound", fixed_damage: 20, effect: None }) value=-10974.300000
+PGTREE       S actor=0 p=1.0000 value=-10974.300000 (3 moves)
+PGTREE         A Promote { player: 0, in_play_idx: 1 } value=-10974.300000
+PGTREE           S actor=1 p=1.0000 value=-10974.300000 (1 moves)
+PGTREE             A EndTurn value=-10974.300000
+PGTREE               S actor=0 p=1.0000 value=-10974.300000 (0 moves)

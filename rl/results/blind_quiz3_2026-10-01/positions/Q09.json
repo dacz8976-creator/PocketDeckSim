@@ -1,0 +1,281 @@
+{
+ "order": 9,
+ "matchup": {
+  "you": "Skarmory ex stall (your deck 07)"
+ },
+ "turn": 1,
+ "you_went_first": true,
+ "situation": "Your turn (your 1st turn; turn 1 of the game).",
+ "question": "What do you do this turn, in order? Pick the first thing you'd tap, then write the rest of your turn: each card you'd play, where your Energy goes, any retreat, and your attack or end turn. If you'd play a card that draws, stop there and say \"then depends on the draw\".",
+ "points": {
+  "you": 0,
+  "opponent": 0
+ },
+ "you": {
+  "active": {
+   "name": "Skarmory ex",
+   "stage": 0,
+   "type": "Metal",
+   "hp": 140,
+   "max_hp": 140,
+   "energy": [],
+   "tools": [],
+   "conditions": [],
+   "ability": null,
+   "attacks": [
+    {
+     "name": "Steel Wing",
+     "cost": [
+      "Metal",
+      "Metal"
+     ],
+     "damage": "70",
+     "text": "During your opponent's next turn, this Pokémon takes -20 damage from attacks."
+    }
+   ],
+   "weakness": "Fire",
+   "retreat": 2,
+   "retreat_now": 2,
+   "retreat_note": null,
+   "ko_points": 2,
+   "notes": []
+  },
+  "bench": [
+   null,
+   null,
+   null
+  ],
+  "deck_count": 13,
+  "discard": [
+   "Poké Ball"
+  ],
+  "discard_energy": [],
+  "energy_zone": {
+   "this_turn": "none (first player's first turn)",
+   "next": "Metal",
+   "lines": [
+    "This turn: none (first player's first turn)",
+    "Next: Metal"
+   ]
+  },
+  "hand": [
+   {
+    "name": "Indeedee ex",
+    "kind": "Basic Pokémon",
+    "text": "Basic Pokémon, HP 130, Psychic type. Gives 2 points when Knocked Out. Ability Watch Over: Once during your turn, you may heal 20 damage from your Active Pokémon. Attack Psychic [Psychic Psychic] 30+: This attack does 30 more damage for each Energy attached to your opponent's Active Pokémon. Weakness: Darkness. Retreat: 1."
+   },
+   {
+    "name": "Jasmine",
+    "kind": "Supporter",
+    "text": "During your opponent's next turn, all of your Steelix and Skarmory ex take -50 damage from attacks from your opponent's Pokémon."
+   },
+   {
+    "name": "Professor's Research",
+    "kind": "Supporter",
+    "text": "Draw 2 cards."
+   },
+   {
+    "name": "Lucky Ice Pop",
+    "kind": "Item",
+    "text": "Heal 20 damage from your Active Pokémon. If you healed any damage in this way, flip a coin. If heads, put this Lucky Ice Pop into your hand instead of the discard pile."
+   },
+   {
+    "name": "Starting Plains",
+    "kind": "Stadium",
+    "text": "Each Basic Pokémon in play (both yours and your opponent's) gets +20 HP."
+   }
+  ],
+  "decklist": [
+   {
+    "name": "Indeedee ex",
+    "kind": "Basic Pokémon",
+    "text": "Basic Pokémon, HP 130, Psychic type. Gives 2 points when Knocked Out. Ability Watch Over: Once during your turn, you may heal 20 damage from your Active Pokémon. Attack Psychic [Psychic Psychic] 30+: This attack does 30 more damage for each Energy attached to your opponent's Active Pokémon. Weakness: Darkness. Retreat: 1.",
+    "count": 1,
+    "left": 0
+   },
+   {
+    "name": "Skarmory ex",
+    "kind": "Basic Pokémon",
+    "text": "Basic Pokémon, HP 140, Metal type. Gives 2 points when Knocked Out. Attack Steel Wing [Metal Metal] 70: During your opponent's next turn, this Pokémon takes -20 damage from attacks. Weakness: Fire. Retreat: 2.",
+    "count": 2,
+    "left": 1
+   },
+   {
+    "name": "Cyrus",
+    "kind": "Supporter",
+    "text": "Switch in 1 of your opponent's Benched Pokémon that has damage on it to the Active Spot.",
+    "count": 2,
+    "left": 2
+   },
+   {
+    "name": "Jasmine",
+    "kind": "Supporter",
+    "text": "During your opponent's next turn, all of your Steelix and Skarmory ex take -50 damage from attacks from your opponent's Pokémon.",
+    "count": 2,
+    "left": 1
+   },
+   {
+    "name": "Pokémon Center Lady",
+    "kind": "Supporter",
+    "text": "Heal 30 damage from 1 of your Pokémon, and it recovers from all Special Conditions.",
+    "count": 1,
+    "left": 1
+   },
+   {
+    "name": "Professor's Research",
+    "kind": "Supporter",
+    "text": "Draw 2 cards.",
+    "count": 2,
+    "left": 1
+   },
+   {
+    "name": "Red",
+    "kind": "Supporter",
+    "text": "During this turn, attacks used by your Pokémon do +20 damage to your opponent's Active Pokémon ex.",
+    "count": 2,
+    "left": 2
+   },
+   {
+    "name": "Sabrina",
+    "kind": "Supporter",
+    "text": "Switch out your opponent's Active Pokémon to the Bench. (Your opponent chooses the new Active Pokémon.)",
+    "count": 1,
+    "left": 1
+   },
+   {
+    "name": "Lucky Ice Pop",
+    "kind": "Item",
+    "text": "Heal 20 damage from your Active Pokémon. If you healed any damage in this way, flip a coin. If heads, put this Lucky Ice Pop into your hand instead of the discard pile.",
+    "count": 1,
+    "left": 0
+   },
+   {
+    "name": "Poké Ball",
+    "kind": "Item",
+    "text": "Put a random Basic Pokémon from your deck into your hand.",
+    "count": 2,
+    "left": 1
+   },
+   {
+    "name": "Metal Core Barrier",
+    "kind": "Pokémon Tool",
+    "text": "If this card is attached to 1 of your Pokémon, discard it at the end of your opponent's turn.The Metal Pokémon this card is attached to takes -50 damage from attacks from your opponent's Pokémon.",
+    "count": 2,
+    "left": 2
+   },
+   {
+    "name": "Steel Apron",
+    "kind": "Pokémon Tool",
+    "text": "The Metal Pokémon this card is attached to takes -10 damage from attacks from your opponent's Pokémon, recovers from all Special Conditions, and can't be affected by any Special Conditions.",
+    "count": 1,
+    "left": 1
+   },
+   {
+    "name": "Starting Plains",
+    "kind": "Stadium",
+    "text": "Each Basic Pokémon in play (both yours and your opponent's) gets +20 HP.",
+    "count": 1,
+    "left": 0
+   }
+  ],
+  "energy_types": [
+   "Metal"
+  ],
+  "supporter_played_this_turn": false,
+  "retreated_this_turn": false
+ },
+ "opponent": {
+  "active": {
+   "name": "Eevee",
+   "stage": 0,
+   "type": "Colorless",
+   "hp": 50,
+   "max_hp": 50,
+   "energy": [],
+   "tools": [],
+   "conditions": [],
+   "ability": {
+    "name": "Boosted Evolution",
+    "text": "As long as this Pokémon is in the Active Spot, it can evolve during your first turn or the turn you play it.",
+    "used_this_turn": false
+   },
+   "attacks": [
+    {
+     "name": "Stampede",
+     "cost": [
+      "Colorless"
+     ],
+     "damage": "10",
+     "text": ""
+    }
+   ],
+   "weakness": "Fighting",
+   "retreat": 1,
+   "retreat_now": 1,
+   "retreat_note": null,
+   "ko_points": 1,
+   "notes": []
+  },
+  "bench": [
+   null,
+   null,
+   null
+  ],
+  "deck_count": 15,
+  "discard": [],
+  "discard_energy": [],
+  "energy_zone": {
+   "next": "Psychic",
+   "lines": [
+    "Next: Psychic"
+   ]
+  },
+  "hand_count": 4
+ },
+ "stadium": null,
+ "turn_effects": [],
+ "this_turn_so_far": [
+  "You: Played Poké Ball (Item)"
+ ],
+ "log": [
+  {
+   "turn": 0,
+   "who": "setup",
+   "header": "Setup",
+   "lines": [
+    "You: started with Skarmory ex (Active)",
+    "Opponent: started with Eevee (Active)"
+   ]
+  }
+ ],
+ "options": [
+  {
+   "key": "4",
+   "group": "Trainers",
+   "text": "Play Jasmine (Supporter): During your opponent's next turn, all of your Steelix and Skarmory ex take -50 damage from attacks from your opponent's Pokémon."
+  },
+  {
+   "key": "6",
+   "group": "Trainers",
+   "text": "Play Professor's Research (Supporter): Draw 2 cards."
+  },
+  {
+   "key": "5",
+   "group": "Trainers",
+   "text": "Play Starting Plains (Stadium): Each Basic Pokémon in play (both yours and your opponent's) gets +20 HP."
+  },
+  {
+   "key": "1",
+   "group": "Pokémon",
+   "text": "Put Indeedee ex onto your Bench"
+  },
+  {
+   "key": "0",
+   "group": "End turn",
+   "text": "End your turn without attacking"
+  }
+ ],
+ "cant_play": [
+  "Lucky Ice Pop: your Active Pokémon has no damage on it"
+ ]
+}

@@ -212,12 +212,15 @@ class RunWithStandInEngine(unittest.TestCase):
             expect = (50 * w["t-lucario"] + 30 * w["t-altaria"] + 20 * w["t-weezing"]) / 9      # weights sum to 100
             self.assertIn(f"== {deck}: ", proc.stdout)
             block = proc.stdout.split(f"== {deck}: ")[1].split("\n\n")[0]
-            self.assertIn(f"   ladder-weighted: {expect:.1f}%  (weights from weights.csv; 3 of 3 weighted lists played, "
-                          f"carrying 100% of the ladder weight)", block)
+            self.assertIn(f"   ladder-weighted: {expect:.1f}%  (weights from weights.csv; 3 of 3 weighted lists played = "
+                          f"100% of the three-list weights)", block)
 
-    def test_the_committed_table_covers_68_percent_with_opponents_alone_and_names_the_rest(self):
+    def test_the_committed_table_covers_68_percent_of_its_weights_and_says_how_little_of_the_ladder(self):
         proc, _ = self.tree.run(*ARGS, "--weights", WEIGHTS)
-        self.assertEqual(proc.stdout.count("8 of 11 weighted lists played, carrying 68% of the ladder weight)"), 2)
+        self.assertEqual(proc.stdout.count(
+            "8 of 11 weighted lists played = 68% of the eleven-list weights; those eleven lists cover about 42% of the "
+            "saved ladder games, 23 of 55, README section 9)\n"), 2)
+        self.assertNotIn("of the ladder weight", proc.stdout)
         self.assertEqual(proc.stdout.count("   not played, no cells: g-dragonair_mega_rayquaza, h-charizardy_entei, "
                                            "l-sharpedo\n"), 2)
         self.assertNotIn("played but not weighted", proc.stdout)
@@ -227,7 +230,9 @@ class RunWithStandInEngine(unittest.TestCase):
         proc, calls = self.tree.run(*ARGS, "--weights", WEIGHTS, "--opponents", folder)
         self.assertEqual((proc.returncode, proc.stderr), (0, ""))
         self.assertEqual(len(calls), 2 * 11 * 2)
-        self.assertEqual(proc.stdout.count("11 of 11 weighted lists played, carrying 100% of the ladder weight)"), 2)
+        self.assertEqual(proc.stdout.count(
+            "11 of 11 weighted lists played = 100% of the eleven-list weights; those eleven lists cover about 42% of the "
+            "saved ladder games, 23 of 55, README section 9)\n"), 2)
         self.assertNotIn("not played", proc.stdout)
         self.assertEqual(sorted(cell_wins(proc.stdout)["alpha"]), sorted(ELEVEN))
         self.assertEqual(sorted(os.listdir(self.tree.root / "decks" / "screen" / "opponents")),
@@ -238,7 +243,7 @@ class RunWithStandInEngine(unittest.TestCase):
         proc, _ = self.tree.run(*ARGS, "--weights", weights)
         left_out = ", ".join(sorted(set(EIGHT) - {"t-lucario", "t-altaria"}))
         self.assertEqual(proc.stdout.count(f"   played but not weighted, left out: {left_out}\n"), 2)
-        self.assertEqual(proc.stdout.count("2 of 2 weighted lists played, carrying 100% of the ladder weight)"), 2)
+        self.assertEqual(proc.stdout.count("2 of 2 weighted lists played = 100% of the two-list weights)"), 2)
         wins = cell_wins(proc.stdout)["alpha"]
         expect = (60 * wins["t-lucario"] + 40 * wins["t-altaria"]) / 9
         self.assertIn(f"   ladder-weighted: {expect:.1f}%  (", proc.stdout)
@@ -250,8 +255,31 @@ class RunWithStandInEngine(unittest.TestCase):
         for deck, w in cell_wins(proc.stdout).items():
             expect = (40 * w["t-lucario"] + 30 * w["t-altaria"] + 10 * w["t-weezing"]) / 80 / 9 * 100
             block = proc.stdout.split(f"== {deck}: ")[1].split("\n\n")[0]
-            self.assertIn(f"   ladder-weighted: {expect:.1f}%  (weights from weights.csv; 3 of 4 weighted lists played, "
-                          f"carrying 80% of the ladder weight)\n   not played, no cells: l-sharpedo\n", block)
+            self.assertIn(f"   ladder-weighted: {expect:.1f}%  (weights from weights.csv; 3 of 4 weighted lists played = "
+                          f"80% of the four-list weights)\n   not played, no cells: l-sharpedo\n", block)
+
+    def test_the_ladder_coverage_comes_from_the_table_itself(self):
+        # 6 + 4 games on the two lists, 50 saved: the whole table covers 20% of the saved ladder games.
+        weights = self.tree.weights_file("# logged_games: 50\nlist,weight,ladder_games\nt-lucario,60,6\nt-altaria,40,4\n")
+        proc, _ = self.tree.run(*ARGS, "--weights", weights)
+        self.assertEqual((proc.returncode, proc.stderr), (0, ""))
+        self.assertEqual(proc.stdout.count("2 of 2 weighted lists played = 100% of the two-list weights; those two lists "
+                                           "cover about 20% of the saved ladder games, 10 of 50, README section 9)\n"), 2)
+
+    def test_no_coverage_sentence_unless_the_table_gives_both_numbers_and_they_make_sense(self):
+        cases = {
+            "no logged_games line": "list,weight,ladder_games\nt-lucario,60,6\nt-altaria,40,4\n",
+            "no ladder_games column": "# logged_games: 50\nlist,weight\nt-lucario,60\nt-altaria,40\n",
+            "logged_games 0": "# logged_games: 0\nlist,weight,ladder_games\nt-lucario,60,6\nt-altaria,40,4\n",
+            "more games on the lists than saved": "# logged_games: 8\nlist,weight,ladder_games\nt-lucario,60,6\nt-altaria,40,4\n",
+            "a ladder_games cell that is not a number": "# logged_games: 50\nlist,weight,ladder_games\nt-lucario,60,x\nt-altaria,40,4\n",
+        }
+        for what, text in cases.items():
+            with self.subTest(what):
+                proc, _ = self.tree.run(*ARGS, "--weights", self.tree.weights_file(text))
+                self.assertEqual((proc.returncode, proc.stderr), (0, ""), what)
+                self.assertEqual(proc.stdout.count("2 of 2 weighted lists played = 100% of the two-list weights)\n"), 2, what)
+                self.assertNotIn("saved ladder games", proc.stdout)
 
     def test_the_committed_table_value_is_renormalised_over_the_68_percent_played(self):
         table = {r["list"]: float(r["weight"]) for r in read_table(WEIGHTS)}
@@ -350,6 +378,13 @@ class CommittedTable(unittest.TestCase):
             head = "".join(l for l in f if l.startswith("#"))
         for must in ("section 9", "run_screen.py --weights", "not a ranking: the ranking hold stands"):
             self.assertIn(must, head)
+
+    def test_the_saved_ladder_total_is_named_and_the_coverage_rounds_to_42_percent(self):
+        with open(WEIGHTS, encoding="utf-8") as f:
+            logged = [int(m.group(1)) for m in (re.match(r"#\s*logged_games:\s*(\d+)\b", l) for l in f) if m]
+        self.assertEqual(logged, [55])                                   # the Ladder Log's games at the Sept 28 night refresh
+        on_lists = sum(int(r["ladder_games"]) for r in read_table(WEIGHTS))
+        self.assertEqual((on_lists, round(100 * on_lists / logged[0])), (23, 42))
 
 
 if __name__ == "__main__":

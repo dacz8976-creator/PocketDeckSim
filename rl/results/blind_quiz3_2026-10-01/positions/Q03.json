@@ -1,0 +1,469 @@
+{
+ "order": 3,
+ "matchup": {
+  "you": "Skarmory ex stall (your deck 07)"
+ },
+ "turn": 5,
+ "you_went_first": true,
+ "situation": "Your turn (your 3rd turn; turn 5 of the game).",
+ "question": "What do you do this turn, in order? Pick the first thing you'd tap, then write the rest of your turn: each card you'd play, where your Energy goes, any retreat, and your attack or end turn. If you'd play a card that draws, stop there and say \"then depends on the draw\".",
+ "points": {
+  "you": 0,
+  "opponent": 0
+ },
+ "you": {
+  "active": {
+   "name": "Skarmory ex",
+   "stage": 0,
+   "type": "Metal",
+   "hp": 50,
+   "max_hp": 140,
+   "energy": [
+    "Metal"
+   ],
+   "tools": [],
+   "conditions": [],
+   "ability": null,
+   "attacks": [
+    {
+     "name": "Steel Wing",
+     "cost": [
+      "Metal",
+      "Metal"
+     ],
+     "damage": "70",
+     "text": "During your opponent's next turn, this Pokémon takes -20 damage from attacks."
+    }
+   ],
+   "weakness": "Fire",
+   "retreat": 2,
+   "retreat_now": 2,
+   "retreat_note": null,
+   "ko_points": 2,
+   "notes": []
+  },
+  "bench": [
+   null,
+   {
+    "name": "Skarmory ex",
+    "stage": 0,
+    "type": "Metal",
+    "hp": 140,
+    "max_hp": 140,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": null,
+    "attacks": [
+     {
+      "name": "Steel Wing",
+      "cost": [
+       "Metal",
+       "Metal"
+      ],
+      "damage": "70",
+      "text": "During your opponent's next turn, this Pokémon takes -20 damage from attacks."
+     }
+    ],
+    "weakness": "Fire",
+    "retreat": 2,
+    "retreat_now": 2,
+    "retreat_note": null,
+    "ko_points": 2,
+    "notes": []
+   },
+   {
+    "name": "Indeedee ex",
+    "stage": 0,
+    "type": "Psychic",
+    "hp": 130,
+    "max_hp": 130,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": {
+     "name": "Watch Over",
+     "text": "Once during your turn, you may heal 20 damage from your Active Pokémon.",
+     "used_this_turn": false
+    },
+    "attacks": [
+     {
+      "name": "Psychic",
+      "cost": [
+       "Psychic",
+       "Psychic"
+      ],
+      "damage": "30+",
+      "text": "This attack does 30 more damage for each Energy attached to your opponent's Active Pokémon."
+     }
+    ],
+    "weakness": "Darkness",
+    "retreat": 1,
+    "retreat_now": 1,
+    "retreat_note": null,
+    "ko_points": 2,
+    "notes": []
+   }
+  ],
+  "deck_count": 9,
+  "discard": [
+   "Professor's Research",
+   "Poké Ball",
+   "Metal Core Barrier"
+  ],
+  "discard_energy": [],
+  "energy_zone": {
+   "this_turn": "Metal",
+   "next": "Metal",
+   "lines": [
+    "This turn: Metal",
+    "Next: Metal"
+   ]
+  },
+  "hand": [
+   {
+    "name": "Jasmine",
+    "kind": "Supporter",
+    "text": "During your opponent's next turn, all of your Steelix and Skarmory ex take -50 damage from attacks from your opponent's Pokémon."
+   },
+   {
+    "name": "Red",
+    "kind": "Supporter",
+    "text": "During this turn, attacks used by your Pokémon do +20 damage to your opponent's Active Pokémon ex."
+   },
+   {
+    "name": "Sabrina",
+    "kind": "Supporter",
+    "text": "Switch out your opponent's Active Pokémon to the Bench. (Your opponent chooses the new Active Pokémon.)"
+   },
+   {
+    "name": "Lucky Ice Pop",
+    "kind": "Item",
+    "text": "Heal 20 damage from your Active Pokémon. If you healed any damage in this way, flip a coin. If heads, put this Lucky Ice Pop into your hand instead of the discard pile."
+   },
+   {
+    "name": "Poké Ball",
+    "kind": "Item",
+    "text": "Put a random Basic Pokémon from your deck into your hand."
+   }
+  ],
+  "decklist": [
+   {
+    "name": "Indeedee ex",
+    "kind": "Basic Pokémon",
+    "text": "Basic Pokémon, HP 130, Psychic type. Gives 2 points when Knocked Out. Ability Watch Over: Once during your turn, you may heal 20 damage from your Active Pokémon. Attack Psychic [Psychic Psychic] 30+: This attack does 30 more damage for each Energy attached to your opponent's Active Pokémon. Weakness: Darkness. Retreat: 1.",
+    "count": 1,
+    "left": 0
+   },
+   {
+    "name": "Skarmory ex",
+    "kind": "Basic Pokémon",
+    "text": "Basic Pokémon, HP 140, Metal type. Gives 2 points when Knocked Out. Attack Steel Wing [Metal Metal] 70: During your opponent's next turn, this Pokémon takes -20 damage from attacks. Weakness: Fire. Retreat: 2.",
+    "count": 2,
+    "left": 0
+   },
+   {
+    "name": "Cyrus",
+    "kind": "Supporter",
+    "text": "Switch in 1 of your opponent's Benched Pokémon that has damage on it to the Active Spot.",
+    "count": 2,
+    "left": 2
+   },
+   {
+    "name": "Jasmine",
+    "kind": "Supporter",
+    "text": "During your opponent's next turn, all of your Steelix and Skarmory ex take -50 damage from attacks from your opponent's Pokémon.",
+    "count": 2,
+    "left": 1
+   },
+   {
+    "name": "Pokémon Center Lady",
+    "kind": "Supporter",
+    "text": "Heal 30 damage from 1 of your Pokémon, and it recovers from all Special Conditions.",
+    "count": 1,
+    "left": 1
+   },
+   {
+    "name": "Professor's Research",
+    "kind": "Supporter",
+    "text": "Draw 2 cards.",
+    "count": 2,
+    "left": 1
+   },
+   {
+    "name": "Red",
+    "kind": "Supporter",
+    "text": "During this turn, attacks used by your Pokémon do +20 damage to your opponent's Active Pokémon ex.",
+    "count": 2,
+    "left": 1
+   },
+   {
+    "name": "Sabrina",
+    "kind": "Supporter",
+    "text": "Switch out your opponent's Active Pokémon to the Bench. (Your opponent chooses the new Active Pokémon.)",
+    "count": 1,
+    "left": 0
+   },
+   {
+    "name": "Lucky Ice Pop",
+    "kind": "Item",
+    "text": "Heal 20 damage from your Active Pokémon. If you healed any damage in this way, flip a coin. If heads, put this Lucky Ice Pop into your hand instead of the discard pile.",
+    "count": 1,
+    "left": 0
+   },
+   {
+    "name": "Poké Ball",
+    "kind": "Item",
+    "text": "Put a random Basic Pokémon from your deck into your hand.",
+    "count": 2,
+    "left": 0
+   },
+   {
+    "name": "Metal Core Barrier",
+    "kind": "Pokémon Tool",
+    "text": "If this card is attached to 1 of your Pokémon, discard it at the end of your opponent's turn.The Metal Pokémon this card is attached to takes -50 damage from attacks from your opponent's Pokémon.",
+    "count": 2,
+    "left": 1
+   },
+   {
+    "name": "Steel Apron",
+    "kind": "Pokémon Tool",
+    "text": "The Metal Pokémon this card is attached to takes -10 damage from attacks from your opponent's Pokémon, recovers from all Special Conditions, and can't be affected by any Special Conditions.",
+    "count": 1,
+    "left": 1
+   },
+   {
+    "name": "Starting Plains",
+    "kind": "Stadium",
+    "text": "Each Basic Pokémon in play (both yours and your opponent's) gets +20 HP.",
+    "count": 1,
+    "left": 1
+   }
+  ],
+  "energy_types": [
+   "Metal"
+  ],
+  "supporter_played_this_turn": false,
+  "retreated_this_turn": false
+ },
+ "opponent": {
+  "active": {
+   "name": "Mega Lucario ex",
+   "stage": 1,
+   "type": "Fighting",
+   "hp": 190,
+   "max_hp": 190,
+   "energy": [
+    "Fighting",
+    "Fighting"
+   ],
+   "tools": [],
+   "conditions": [],
+   "ability": null,
+   "attacks": [
+    {
+     "name": "Fighting Pulse",
+     "cost": [
+      "Fighting",
+      "Fighting"
+     ],
+     "damage": "90+",
+     "text": "If this Pokémon has at least 1 extra Fighting Energy attached, this attack does 50 more damage."
+    }
+   ],
+   "weakness": "Psychic",
+   "retreat": 1,
+   "retreat_now": 1,
+   "retreat_note": null,
+   "ko_points": 3,
+   "notes": []
+  },
+  "bench": [
+   null,
+   {
+    "name": "Bonsly",
+    "stage": 0,
+    "type": "Fighting",
+    "hp": 30,
+    "max_hp": 30,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": null,
+    "attacks": [
+     {
+      "name": "Teary Attack",
+      "cost": [],
+      "damage": "10",
+      "text": "During your opponent's next turn, attacks used by the Defending Pokémon do -30 damage."
+     }
+    ],
+    "weakness": null,
+    "retreat": 0,
+    "retreat_now": 0,
+    "retreat_note": null,
+    "ko_points": 1,
+    "notes": []
+   },
+   {
+    "name": "Hitmonlee",
+    "stage": 0,
+    "type": "Fighting",
+    "hp": 80,
+    "max_hp": 80,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": null,
+    "attacks": [
+     {
+      "name": "Stretch Kick",
+      "cost": [
+       "Fighting"
+      ],
+      "damage": null,
+      "text": "This attack does 30 damage to 1 of your opponent's Benched Pokémon."
+     }
+    ],
+    "weakness": "Psychic",
+    "retreat": 1,
+    "retreat_now": 1,
+    "retreat_note": null,
+    "ko_points": 1,
+    "notes": []
+   }
+  ],
+  "deck_count": 10,
+  "discard": [
+   "Professor's Research",
+   "Field Blower",
+   "Copycat",
+   "Poké Ball"
+  ],
+  "discard_energy": [],
+  "energy_zone": {
+   "next": "Fighting",
+   "lines": [
+    "Next: Fighting"
+   ]
+  },
+  "hand_count": 2
+ },
+ "stadium": null,
+ "turn_effects": [],
+ "this_turn_so_far": [],
+ "log": [
+  {
+   "turn": 0,
+   "who": "setup",
+   "header": "Setup",
+   "lines": [
+    "You: started with Skarmory ex (Active)",
+    "Opponent: started with Riolu (Active)"
+   ]
+  },
+  {
+   "turn": 1,
+   "who": "you",
+   "header": "Turn 1 - You",
+   "lines": [
+    "You: Played Professor's Research (Supporter)",
+    "You: Played Poké Ball (Item)",
+    "You: Put Indeedee ex on Bench 3",
+    "You: Played Metal Core Barrier (Pokémon Tool) → attached Metal Core Barrier to Skarmory ex (Active)",
+    "You: Used Indeedee ex's Ability Watch Over (Bench 3)",
+    "You: Put Skarmory ex on Bench 2",
+    "You: Ended the turn without attacking"
+   ]
+  },
+  {
+   "turn": 2,
+   "who": "opponent",
+   "header": "Turn 2 - Opponent",
+   "lines": [
+    "Opponent: Played Professor's Research (Supporter)",
+    "Opponent: Attached Fighting Energy to Riolu (Active)",
+    "Opponent: Played Field Blower (Item) → discarded Metal Core Barrier from your Skarmory ex (Active)",
+    "Opponent: Riolu attacked with Fighting Fist (10+) → did 40 damage to your Skarmory ex (Active)"
+   ]
+  },
+  {
+   "turn": 3,
+   "who": "you",
+   "header": "Turn 3 - You",
+   "lines": [
+    "You: Used Indeedee ex's Ability Watch Over (Bench 3) → healed 20 damage from Skarmory ex (Active)",
+    "You: Played Lucky Ice Pop (Item) → healed 20 damage from Skarmory ex (Active)",
+    "You: Attached Metal Energy to Skarmory ex (Active)",
+    "You: Ended the turn without attacking"
+   ]
+  },
+  {
+   "turn": 4,
+   "who": "opponent",
+   "header": "Turn 4 - Opponent",
+   "lines": [
+    "Opponent: Attached Fighting Energy to Riolu (Active)",
+    "Opponent: Put Hitmonlee on Bench 3",
+    "Opponent: Played Copycat (Supporter)",
+    "Opponent: Played Poké Ball (Item)",
+    "Opponent: Put Bonsly on Bench 2",
+    "Opponent: Evolved Riolu (Active) into Mega Lucario ex",
+    "Opponent: Mega Lucario ex attacked with Fighting Pulse (90+) → did 90 damage to your Skarmory ex (Active)"
+   ]
+  }
+ ],
+ "options": [
+  {
+   "key": "9",
+   "group": "Abilities",
+   "text": "Use Indeedee ex's Ability Watch Over (Bench 3): Once during your turn, you may heal 20 damage from your Active Pokémon."
+  },
+  {
+   "key": "6",
+   "group": "Trainers",
+   "text": "Play Jasmine (Supporter): During your opponent's next turn, all of your Steelix and Skarmory ex take -50 damage from attacks from your opponent's Pokémon."
+  },
+  {
+   "key": "5",
+   "group": "Trainers",
+   "text": "Play Red (Supporter): During this turn, attacks used by your Pokémon do +20 damage to your opponent's Active Pokémon ex."
+  },
+  {
+   "key": "4",
+   "group": "Trainers",
+   "text": "Play Sabrina (Supporter): Switch out your opponent's Active Pokémon to the Bench. (Your opponent chooses the new Active Pokémon.)"
+  },
+  {
+   "key": "7",
+   "group": "Trainers",
+   "text": "Play Lucky Ice Pop (Item): Heal 20 damage from your Active Pokémon. If you healed any damage in this way, flip a coin. If heads, put this Lucky Ice Pop into your hand instead of the discard pile."
+  },
+  {
+   "key": "8",
+   "group": "Trainers",
+   "text": "Play Poké Ball (Item): Put a random Basic Pokémon from your deck into your hand."
+  },
+  {
+   "key": "1",
+   "group": "Energy",
+   "text": "Attach Metal Energy to Skarmory ex (Active)"
+  },
+  {
+   "key": "2",
+   "group": "Energy",
+   "text": "Attach Metal Energy to Skarmory ex (Bench 2)"
+  },
+  {
+   "key": "3",
+   "group": "Energy",
+   "text": "Attach Metal Energy to Indeedee ex (Bench 3)"
+  },
+  {
+   "key": "0",
+   "group": "End turn",
+   "text": "End your turn without attacking"
+  }
+ ],
+ "cant_play": []
+}

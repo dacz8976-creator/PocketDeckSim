@@ -1,0 +1,38 @@
+# The official engine from Oct 1: main-8626a35
+
+- **Programs:** `deckgym`, `legality_scan`, `goldfish`; sha256 in `SHA256SUMS` and `project_manifest.json`. Linux (WSL or the cloud). Committed with the executable bit (git mode 100755), so a Linux clone runs them as they are.
+  - `deckgym` 2f7e5fd6e0ae21fffcb9a4df6e70dc3302e2a372f1fde1eb2bb1aa106747a62e
+  - `legality_scan` 978912748c83fd6c8ee8e3e966c9a6b95c9fdf1eb9d500c7367b2c1463e71699
+  - `goldfish` cecc76fbe51b33276e0e2e787b6eacba41c52ef4eaa36c5a20954caeedc50b66
+  - These are the programs sitting 1 built and tested, copied and never rebuilt (`../results/engine_switch_rules_2026-10/programs.sha256`).
+- **Built** in WSL on the night of Sept 30 (Oct 1, 03:16 UTC) from one `git archive` of 5a18d31, the merge candidate: main c9f4224 plus R, f8cfa9c (`sonnet/rules-fixes`), whose `engine/` tree is 38af8b0. `cargo build --release --locked`, `--example legality_scan`, `--example goldfish`, in a fresh folder with an empty target directory (`../results/engine_switch_rules_2026-10/PIN_STATUS.txt`, `build.log`).
+  - main's merge commit 8626a35861b88ae86a70c2386d47f9d765cfa2bc (main plus R) has an `engine/` byte-identical to it (tree 38af8b0, checked by the pin). Main had moved since the candidate, in `rl/` only, so the pin made main's merge commit itself. 5a18d31 is kept only on the laptop (`refs/pocketdecksim/rules-switch-candidate`; not a branch); elsewhere, build from main's merge commit, the same `engine/`.
+  - The watch build (`legality_scan` 8d881a1b, with the F5 counters) is evidence only. It is not pinned.
+- **What it is:** a rules switch. The Sept 30 engine (main-d363ba8: rules4 plus the ten rules/09 repairs, with the kta and km players) plus:
+  - **(A) Victory Star after a Confusion heads** (tests 265ce95 and d4fbc2a, 4d026a5's line-ending fix; the fix 6415e39). For a Confused attacker whose attack flips coins, the Confusion coin comes first and is never offered for a reroll. On tails the attack does nothing; on heads Victory Star is offered on the attack's own coins, with no second Confusion check (`rules/04` §9; seen in Pocket on Sept 29 and Oct 1).
+  - **(B) Coin-flip damage prevention, Chase Order included** (0785365, d21511a, the fix 5942d1a, c350e70, Chase Order's fix e52a73b, 52daee6, c9df626).
+    - Guarded Grill's and Securely Sheltered's heads cut comes off after Weakness, in step 4 (`rules/02` §1).
+    - Damage an attack aims after it is chosen now flips the defender's coin Ability, as the attack's own damage does. That covers seven helper functions and Chase Order with and without its discard (`rules/09`, "Fixed Oct 1").
+  - **kd's follow-ons** (F1, 160a9d4): kd prices the heads cut after Weakness and flips for direct damage, as the engine now does. Only kd reaches this code (`persistent_defender_damage` in `hooks/core.rs`), and only in games with a coin-Ability Pokémon in play.
+  - **F2-F7**, the other pre-build fixes on R (`../results/engine_switch_rules_2026-10/PLAN.md`, "Confirmed findings"): F2, Victini's card-status caveat (text only); F3, F4 and F7, tests; F5 and F6, counters and traces under `rl/results/`, with no code in `engine/`.
+  - 9 engine files change: `apply_action.rs`, `apply_attack_action.rs`, `attack_outcome.rs`, `hooks/core.rs` and `card_validation.rs`, plus four test files (`../results/engine_switch_rules_2026-10/candidate.txt`).
+- **What didn't change: the players.** `engine/src/players/` and `Cargo.lock` are unchanged. Wherever no Victini (B3 025, P-B 049) and no coin-Ability Pokémon (Meowth B2 124 and B2 204, Togekiss A4 080, Bastiodon A2 114, Hisuian Goodra B3b 050) is in play, every bot plays exactly as on the Sept 30 engine. No list under `decks/` holds one. The replays show it (`../results/engine_switch_rules_2026-10/identity_check.txt`; every replay matched by pairing and game number, counts asserted, on every recorded field):
+  - Step 7: kta3 (fresh and development deals), km3, k3, kp3 and kog3 on the table's 28 cells and the 17 new cells, kq3 on the 28, and kpr3 and kd3 on the 28 (i < 40): 151,240 games, each equal to its reference. So scoreboard v3's 45 cells are re-verified at this engine for k3 and kp3.
+  - Step 9: km3's coverage baselines (B2e 48,000, Scizor 4,000, the second lists 14,500): 66,500 games equal.
+  - Step 7c: Dustin's decks 02, 06, 08 and 14, their recorded km3 floor pages, 1,920 of 1,920 games each equal.
+  - Step 10: `deckgym simulate` on seed 7,100 repeats Sept 30's lines (k3 150/90/0, kp3 144/96/0, kog3 149/91/0; kta3 and km3 equal); goldfish `--coverage` is byte-equal; `run_screen` under km3 on brew-06 and 06b equals the Sept 30 floor re-check's page.
+  - Step 7b: the table runs B's rewritten lines. On the watch build the off-gate counters fired (`offgate_helper_choice` in 12,246 of 28,000 table games, `offgate_discard_then_damage` in 3,353), every repair counter read 0, and every game equalled the plain one.
+- **Where games do change:** only with one of those cards in play.
+  - The carrier games (step 8: four real Limitless lists holding them, against the 8 panel lists, 72,000 games) and the scratch-deck rows (8b, 960 games) changed 3,750 of 24,000 carrier deals and 63 of 320 scratch deals. Every game with all repair counters at 0 was identical.
+  - Step 8c accounted for every changed game, 3,813 (63 + 3,750): on the board by an exact counter, or in lookahead by a trace meeting both halves, including all 297 flagged CONDITION 3 cases. 8 games the rule could not settle were each explained by repair A (2: a Victory Star offer at the extra tick) or B (6: its queued coin frame resolved inside the search). Dustin accepted them on Oct 2 (`../results/engine_switch_rules_2026-10/8c_RESULT.txt` and `8c_DECISION.md`; Sonnet's result commits; audited by the coordinator).
+  - Victory Star smoke game 28 is the switch's one documented judgment exception (Dustin, Oct 1). Its Copycat explanation is supported by a possible sampled path, not a replay of the bot's exact original search.
+- **Approved:** Dustin, Sept 30: "Sure go for all 9" (the plan's questions, including a conditional "pin if all pass"); Oct 1: "pin the existing candidate once all remaining required trace checks pass" (`../results/engine_switch_rules_2026-10/README.md`; RUN5).
+- **Known limits** (open on `rules/09`, for the next rules switch, each built on its card's plain text by Dustin's Oct 1 rule):
+  - Gyarados's Wild Swing, the own-Bench form of `also_choice_bench_damage`, six other sites (seven attacks) and a copied Chase Order's discard branch still queue damage that never flips a coin-flip damage Ability.
+  - Victory Star with CoinFlipToBlockAttack, and with Confusion plus a pending Will, stays on the old resolution: no offer.
+  - Will is wasted on a Confused attacker's own coins (older behaviour; the switch didn't touch it).
+  - Two Ariados's Trap Territories count as one (older; outside the switch).
+  - A future card that printed both Chase Order and another discard-then-damage attack would misfire. The clean fix needs a field in `types.rs`.
+  - Two things are keyed by card id and will miss B4b's reprints of Victini and the coin cards: Victini's caveat arm in `card_validation.rs`, and `COIN_IDS`, `FINITE` and `FULL` in the coin `instrument_scan.py` (the switch README's backlog).
+  - Left out of this switch: upstream 09e964f (fix 2 is not taken, Dustin, Sept 30; fix 1's case is already covered in the fork, F8, so there is nothing to port), PR #383 and the B4b card data.
+- **History:** `../engine-2026-09-30/` (main-d363ba8) and earlier are kept unchanged, with their hashes in the manifest's historical releases.
