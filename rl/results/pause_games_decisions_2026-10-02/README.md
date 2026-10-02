@@ -2,7 +2,7 @@
 
 **One-line answer.** On the 20 turn starts of his turns 1-4 (five Draft A games), km3's first action matches his in 8, splits in 7 (draw-card choices that change with the sampled deck order) and differs in 5; its whole plan up to the first draw matches in 3. On the 12 turn starts of his turns 5-7 it matches in 5 and differs in 7 (these turns have more cards in play and more to choose from), the whole plan in 2. Over all 32 turn starts, where both his line and km3's reach an attack, **km3 uses a different attack in 1 of 22**: 114458 turn 10, where he attacked with the four-Water Lapras (Surf) and km3 retreats it and attacks with the Ninetales ex (Binding Snow). Everything else that differs is the plan around the attack: which Supporter (Irida on 11 turns where he did not), which draw card first (seed noise), healing and retreat/promotion order. On Turbo Shark's Bench Energy km3's scores differ by 10-50 between targets, with ties, and its pick matched his on 2 of 4 real choices. km3 recognised all three immediate wins (143837 t13, 114458 t12, 143309 t10). No turn lets me say who was right by outcome. Nothing here says anything about strength.
 
-**Added later on Oct 2: turns 5-7** (see the section below), the held-out set of positions, and milestone tags on every position.
+**Added later on Oct 2: turns 5-7** (see the section below), the held-out set of positions, and milestone tags on every position; then **deck 03** (three of the five Wailord games, 15 turn starts, from the review text alone: see "Deck 03" below). The page now holds 49 positions.
 
 ## What was done
 
@@ -60,7 +60,7 @@ Not unambiguous on any turn. The narrowest fact: on 114458 t08 his Ninetales ex 
 4. Misty's target is not preserved in the review on 114458 t08 (treated as a wildcard). Coin outcomes never matter at a decision point.
 5. km3 is a depth-3 search; its choice among draw cards and the root scores depend on the sampled deck order. A score is a root value of the search, not a probability.
 6. Five games and twenty turns: no claim about strength, either way.
-7. Deck 03 (the five Wailord games) is not done; it waits for the coordinator.
+7. Deck 03 (the five Wailord games): three of the five are built (see the section below); the other two name no opening hand and are listed for the Codex agents.
 
 ## His turns 5-7 (12 more turn starts), the held-out set and the milestone tags
 
@@ -77,7 +77,25 @@ Not unambiguous on any turn. The narrowest fact: on 114458 t08 his Ninetales ex 
 
 **Held-out set.** A quarter of the games, chosen by game and not by turn, by a fixed rule written in `positions_A.py` and `positions_heldout.json`: a game is held out when `int(sha256('pause-heldout-v1|' + game_id), 16) % 4 == 0` (game id = the recording stem, `ladder-<stem>` for the Ladder Log). It is stable as games are added. For these five games that holds out **143309** (its 5 positions); the development games are 114458, 115323, 132311 and 143837 (27 positions with the two mid-turn ones). `run_pilot.sh` skips held-out positions while `positions_heldout.json` says `locked: true`, and `filter_positions.py` refuses `--include-heldout` while it is locked; nobody flips it until the laptop Opus or the coordinator says so. (km3, the reference, was run on everything, and the findings above include 143309: the lock concerns development pilots.)
 
-**Milestone tags** (my reading of what each turn is about; a position can carry several; each row of `TABLES.md` shows them): preparing an attacker (18 turn starts), managing a sacrifice (7), recognising an immediate win (3), adapting when the plan fails (2). The positions with their tags are in `positions_A.json` (`milestones`).
+**Milestone tags** (my reading of what each turn is about; a position can carry several; each row of `TABLES.md` shows them): preparing an attacker (28 of the 49 positions), managing a sacrifice (10), recognising an immediate win (3), adapting when the plan fails (3); 36 positions carry a tag (counts after deck 03 was added). The positions with their tags are in `positions_A.json` (`milestones`).
+
+## Deck 03 (the Wailord / Indeedee wall): 15 more turn starts, text only (Oct 2)
+
+Three games, every one of his turns: **020315** (lost 1-3, second; turns 2, 4, 6, 8, 10), **020920** (won by concession 0-0, second; turns 2, 4, 6, 8) and **023418** (won by concession 0-1, first; turns 1, 3, 5, 7, 9, 11). All 15 hands come from the written reviews (`text`): each names the opening hand and every drawn card; no still frame was opened and no helper was used. The opponent's hand size is bookkeeping, not a count (it only matters for Copycat, the deck's one card that reads it; Copycat was not in his hand in any of these three games). Games 021402 and 022135 name no opening hand, so they are not built (listed for the Codex agents in `CODEX_REQUEST.md`). Held out by the fixed rule: none of the three (the rule held out only 143309 among the eight games).
+
+**Results (15 turn starts, 12 seeds each).** km3's first action equals his in 13 of 15 and its whole plan to the first draw in 6. The two where the first action differs: 020920 t02 (he opens with the Poké Ball; km3 puts the Heavy Helmet on first in 9 of 12 seeds and Research in 3 of 12, an order difference) and 020920 t04. Details per position in `TABLES.md`. The differences that are about a choice and not an order:
+
+- **Evolution target (020920 t04).** With the damaged Wailmer (80/100) Active and both a Wailord and a Wailord ex in hand, he evolves into the Wailord (200 HP) and keeps the Wailord ex for the Wailmer he benches later; km3 evolves into the Wailord ex (250 HP) in 12 of 12 seeds, after two Watch Overs.
+- **Pokémon Center Lady is used by km3, held by him (020315 t08 and t10; 023418 t09).** Two Watch Overs heal 20 each; he kept Lady in hand through all three games, km3 plays it for the rest of the damage on those turns (on 023418 t09 it plays Lady in 7 of 12 seeds and fewer Lucky Ice Pops than the four heads he flipped: the Ice Pop's coin flips are why the plans differ in length).
+- **A Stadium km3 never plays (023418 t03).** He plays Soothing Shore the turn he evolves; km3 does not in any of the 12 seeds (I did not look into why).
+- **A point on the table (023418 t11).** Wailord (five Water, a -30 from Bonsly's Teary Attack in force) can Whale Pump the 30-HP Bonsly Active for a knockout, 1 point; km3 does that in 12 of 12 seeds. He healed, attached and used Cyrus to bring the damaged Mega Lucario ex (110 HP) Active, and the opponent conceded before his attack (80 damage would have left it on 30). Not a verdict either way: the review says the Cyrus line was not shown lethal, and what he had planned after Cyrus is not recorded.
+- **Benching order (023418 t01).** He benches the Indeedee ex before Research; km3's plan reaches Research with no bench move before it (the grading stops at the first draw card, so what it does after is not compared).
+
+**A rule added to the report for this deck.** Watch Over heals 20 from the Active and the engine offers it at full HP, where it does nothing; km3 sometimes uses it then. On a turn where none of his Pokémon is damaged (`noop_ability` in `positions_A.json`: 020315 t02, t04, t06; 020920 t02, t06; 023418 t01, t03, t05, t07), bare Ability steps are dropped from both plans, so a no-op does not count as a difference. The draft A rows are unchanged by it (all 34 compared). Which of two identical Indeedee ex uses Watch Over is not compared either.
+
+Milestones: preparing an attacker (020920 t04, t06, t08; 023418 t03, t05, t07, t09; 020315 t06), adapting when the plan fails (020315 t08), managing a sacrifice (020315 t10). 023418 t11 carries none. One decision of his own (Sabrina's forced switch on game turn 6 of 023418, where he chose the unenergised Wailmer) falls on the opponent's turn and is not built.
+
+New harness support: a Pokémon in a position may carry effects (`effects` on a board entry; used for Bonsly's -30 on 023418 t11) in `pg_pos.rs`; `pg_pos.rs` and the report script are updated in `harness/`.
 
 ## The positions as a test set for any pilot
 

@@ -4745,5 +4745,2118 @@
    "recognising an immediate win"
   ],
   "heldout": true
+ },
+ {
+  "id": "D3-020315-t02",
+  "game": "020315",
+  "his_turn": 1,
+  "turn_count": 2,
+  "hand_source": "text",
+  "his": [
+   "Play:Heavy Helmet",
+   "Tool:Heavy Helmet@0",
+   "Play:Poké Ball"
+  ],
+  "n": 12,
+  "first": {
+   "Play:Heavy Helmet": 12
+  },
+  "same_first": 12,
+  "same_plan": 12,
+  "modal": [
+   "Play:Heavy Helmet",
+   "Tool:Heavy Helmet@0",
+   "Play:Poké Ball"
+  ],
+  "modal_n": 12,
+  "cat": "same plan",
+  "tags": [],
+  "desc": " [Watch Over with nothing damaged does nothing: ignored in both plans]",
+  "gap": 0.0,
+  "plans": [
+   [
+    [
+     "Play:Heavy Helmet",
+     "Tool:Heavy Helmet@0",
+     "Play:Poké Ball"
+    ],
+    12
+   ]
+  ],
+  "summary": {
+   "me": {
+    "board": [
+     {
+      "behind": [],
+      "card": "Wailmer",
+      "energy": [],
+      "hp": 100,
+      "id": "B4 036",
+      "slot": 0,
+      "tools": []
+     }
+    ],
+    "deck": 14,
+    "discard": [],
+    "energy_zone": [
+     "Some(Water)",
+     "Some(Water)"
+    ],
+    "hand": [
+     "Heavy Helmet",
+     "Indeedee ex",
+     "Irida",
+     "Lucky Ice Pop",
+     "Poké Ball"
+    ]
+   },
+   "opp": {
+    "board": [
+     {
+      "behind": [],
+      "card": "Feebas",
+      "energy": [],
+      "hp": 30,
+      "id": "B3b 014",
+      "slot": 0,
+      "tools": []
+     },
+     {
+      "behind": [],
+      "card": "Frigibax",
+      "energy": [],
+      "hp": 60,
+      "id": "B2a 034",
+      "slot": 1,
+      "tools": []
+     }
+    ],
+    "deck": 14,
+    "hand": 4
+   },
+   "points": [
+    0,
+    0
+   ],
+   "stadium": null,
+   "turn_count": 2
+  },
+  "notes": "Going second. Opening hand: Lucky Ice Pop, Irida, Poké Ball, Indeedee ex + the Wailmer he placed; draw Heavy Helmet. Review: Helmet on the Active Wailmer, Poké Ball finds a second Wailmer, bench it and the Indeedee ex, one Water.",
+  "mid_turn": false,
+  "forced": false,
+  "milestones": [],
+  "heldout": false
+ },
+ {
+  "id": "D3-020315-t04",
+  "game": "020315",
+  "his_turn": 2,
+  "turn_count": 4,
+  "hand_source": "text",
+  "his": [
+   "Attach:1Water@0 zone"
+  ],
+  "n": 12,
+  "first": {
+   "Attach:1Water@0 zone": 12
+  },
+  "same_first": 12,
+  "same_plan": 12,
+  "modal": [
+   "Attach:1Water@0 zone"
+  ],
+  "modal_n": 12,
+  "cat": "same plan",
+  "tags": [],
+  "desc": " [Watch Over with nothing damaged does nothing: ignored in both plans]",
+  "gap": 0.0,
+  "plans": [
+   [
+    [
+     "Attach:1Water@0 zone"
+    ],
+    12
+   ]
+  ],
+  "summary": {
+   "me": {
+    "board": [
+     {
+      "behind": [],
+      "card": "Wailmer",
+      "energy": [
+       "Water"
+      ],
+      "hp": 100,
+      "id": "B4 036",
+      "slot": 0,
+      "tools": [
+       "Heavy Helmet"
+      ]
+     },
+     {
+      "behind": [],
+      "card": "Wailmer",
+      "energy": [],
+      "hp": 100,
+      "id": "B4 036",
+      "slot": 1,
+      "tools": []
+     },
+     {
+      "behind": [],
+      "card": "Indeedee ex",
+      "energy": [],
+      "hp": 130,
+      "id": "B1 121",
+      "slot": 2,
+      "tools": []
+     }
+    ],
+    "deck": 12,
+    "discard": [
+     "Poké Ball"
+    ],
+    "energy_zone": [
+     "Some(Water)",
+     "Some(Water)"
+    ],
+    "hand": [
+     "Irida",
+     "Lucky Ice Pop",
+     "Pokémon Center Lady"
+    ]
+   },
+   "opp": {
+    "board": [
+     {
+      "behind": [],
+      "card": "Feebas",
+      "energy": [
+       "Water"
+      ],
+      "hp": 30,
+      "id": "B3b 014",
+      "slot": 0,
+      "tools": []
+     },
+     {
+      "behind": [
+       "Frigibax"
+      ],
+      "card": "Baxcalibur",
+      "energy": [],
+      "hp": 140,
+      "id": "B2a 036",
+      "slot": 1,
+      "tools": []
+     },
+     {
+      "behind": [],
+      "card": "Palkia ex",
+      "energy": [
+       "Water"
+      ],
+      "hp": 150,
+      "id": "A2 049",
+      "slot": 2,
+      "tools": []
+     }
+    ],
+    "deck": 12,
+    "hand": 1
+   },
+   "points": [
+    0,
+    0
+   ],
+   "stadium": null,
+   "turn_count": 4
+  },
+  "notes": "Draw Pokémon Center Lady (kept). He attaches the second Water and passes. The review does not say where the opponent's Palkia ex got its first Water (assumed one here); it does not affect this turn.",
+  "mid_turn": false,
+  "forced": false,
+  "milestones": [],
+  "heldout": false
+ },
+ {
+  "id": "D3-020315-t06",
+  "game": "020315",
+  "his_turn": 3,
+  "turn_count": 6,
+  "hand_source": "text",
+  "his": [
+   "Place:Indeedee ex",
+   "Attach:1Water@0 zone",
+   "Attack:Wave Splash"
+  ],
+  "n": 12,
+  "first": {
+   "Place:Indeedee ex": 12
+  },
+  "same_first": 12,
+  "same_plan": 12,
+  "modal": [
+   "Place:Indeedee ex",
+   "Attach:1Water@0 zone",
+   "Attack:Wave Splash"
+  ],
+  "modal_n": 12,
+  "cat": "same plan",
+  "tags": [],
+  "desc": " [Watch Over with nothing damaged does nothing: ignored in both plans]",
+  "gap": 0.0,
+  "plans": [
+   [
+    [
+     "Place:Indeedee ex",
+     "Attach:1Water@0 zone",
+     "Attack:Wave Splash"
+    ],
+    12
+   ]
+  ],
+  "summary": {
+   "me": {
+    "board": [
+     {
+      "behind": [],
+      "card": "Wailmer",
+      "energy": [
+       "Water",
+       "Water"
+      ],
+      "hp": 100,
+      "id": "B4 036",
+      "slot": 0,
+      "tools": [
+       "Heavy Helmet"
+      ]
+     },
+     {
+      "behind": [],
+      "card": "Wailmer",
+      "energy": [],
+      "hp": 100,
+      "id": "B4 036",
+      "slot": 1,
+      "tools": []
+     },
+     {
+      "behind": [],
+      "card": "Indeedee ex",
+      "energy": [],
+      "hp": 130,
+      "id": "B1 121",
+      "slot": 2,
+      "tools": []
+     }
+    ],
+    "deck": 11,
+    "discard": [
+     "Poké Ball"
+    ],
+    "energy_zone": [
+     "Some(Water)",
+     "Some(Water)"
+    ],
+    "hand": [
+     "Indeedee ex",
+     "Irida",
+     "Lucky Ice Pop",
+     "Pokémon Center Lady"
+    ]
+   },
+   "opp": {
+    "board": [
+     {
+      "behind": [],
+      "card": "Feebas",
+      "energy": [
+       "Water",
+       "Water"
+      ],
+      "hp": 30,
+      "id": "B3b 014",
+      "slot": 0,
+      "tools": []
+     },
+     {
+      "behind": [
+       "Frigibax"
+      ],
+      "card": "Baxcalibur",
+      "energy": [],
+      "hp": 140,
+      "id": "B2a 036",
+      "slot": 1,
+      "tools": []
+     },
+     {
+      "behind": [],
+      "card": "Palkia ex",
+      "energy": [
+       "Water",
+       "Water"
+      ],
+      "hp": 150,
+      "id": "A2 049",
+      "slot": 2,
+      "tools": []
+     },
+     {
+      "behind": [],
+      "card": "Frigibax",
+      "energy": [],
+      "hp": 60,
+      "id": "B2a 034",
+      "slot": 3,
+      "tools": []
+     }
+    ],
+    "deck": 8,
+    "hand": 3
+   },
+   "points": [
+    0,
+    0
+   ],
+   "stadium": null,
+   "turn_count": 6
+  },
+  "notes": "Draw the second Indeedee ex (benched). Third Water on the Wailmer, Wave Splash (60) KOs the 30-HP Feebas: his first point.",
+  "mid_turn": false,
+  "forced": false,
+  "milestones": [
+   "preparing an attacker"
+  ],
+  "heldout": false
+ },
+ {
+  "id": "D3-020315-t08",
+  "game": "020315",
+  "his_turn": 4,
+  "turn_count": 8,
+  "hand_source": "text",
+  "his": [
+   "Ability",
+   "Evolve:Wailord@0",
+   "Attach:1Water@0 zone"
+  ],
+  "n": 12,
+  "first": {
+   "Ability": 12
+  },
+  "same_first": 12,
+  "same_plan": 0,
+  "modal": [
+   "Ability",
+   "Ability",
+   "Evolve:Wailord@0",
+   "Play:Pokémon Center Lady",
+   "Heal:30@2",
+   "Attach:1Water@0 zone"
+  ],
+  "modal_n": 12,
+  "cat": "ability use",
+  "tags": [
+   "ability use",
+   "Supporter/Item choice or order"
+  ],
+  "desc": "his [-] ↔ km3 [Ability]; his [-] ↔ km3 [Play:Pokémon Center Lady, Heal:30@2]",
+  "gap": 0.0,
+  "plans": [
+   [
+    [
+     "Ability",
+     "Ability",
+     "Evolve:Wailord@0",
+     "Play:Pokémon Center Lady",
+     "Heal:30@2",
+     "Attach:1Water@0 zone"
+    ],
+    12
+   ]
+  ],
+  "summary": {
+   "me": {
+    "board": [
+     {
+      "behind": [],
+      "card": "Wailmer",
+      "energy": [],
+      "hp": 80,
+      "id": "B4 036",
+      "slot": 0,
+      "tools": []
+     },
+     {
+      "behind": [],
+      "card": "Indeedee ex",
+      "energy": [],
+      "hp": 110,
+      "id": "B1 121",
+      "slot": 1,
+      "tools": []
+     },
+     {
+      "behind": [],
+      "card": "Indeedee ex",
+      "energy": [],
+      "hp": 110,
+      "id": "B1 121",
+      "slot": 2,
+      "tools": []
+     }
+    ],
+    "deck": 10,
+    "discard": [
+     "Poké Ball",
+     "Heavy Helmet",
+     "Wailmer"
+    ],
+    "energy_zone": [
+     "Some(Water)",
+     "Some(Water)"
+    ],
+    "hand": [
+     "Irida",
+     "Lucky Ice Pop",
+     "Pokémon Center Lady",
+     "Wailord"
+    ]
+   },
+   "opp": {
+    "board": [
+     {
+      "behind": [],
+      "card": "Palkia ex",
+      "energy": [
+       "Water"
+      ],
+      "hp": 150,
+      "id": "A2 049",
+      "slot": 0,
+      "tools": []
+     },
+     {
+      "behind": [
+       "Frigibax"
+      ],
+      "card": "Baxcalibur",
+      "energy": [],
+      "hp": 140,
+      "id": "B2a 036",
+      "slot": 1,
+      "tools": []
+     },
+     {
+      "behind": [],
+      "card": "Frigibax",
+      "energy": [],
+      "hp": 60,
+      "id": "B2a 034",
+      "slot": 2,
+      "tools": []
+     },
+     {
+      "behind": [],
+      "card": "Feebas",
+      "energy": [],
+      "hp": 30,
+      "id": "B3b 014",
+      "slot": 3,
+      "tools": []
+     }
+    ],
+    "deck": 7,
+    "hand": 2
+   },
+   "points": [
+    1,
+    1
+   ],
+   "stadium": "Soothing Shore",
+   "turn_count": 8
+  },
+  "notes": "Draw the Wailord. Palkia ex's Dimensional Storm (four Water) KO'd the three-Water Wailmer through its Helmet and chipped 20 off each Bench Pokémon; the reserve Wailmer (80 HP, no Energy) was promoted. Watch Over heals it to 100, it evolves into Wailord (200 HP), one Water, no attack.",
+  "mid_turn": false,
+  "forced": false,
+  "milestones": [
+   "adapting when the plan fails"
+  ],
+  "heldout": false
+ },
+ {
+  "id": "D3-020315-t10",
+  "game": "020315",
+  "his_turn": 5,
+  "turn_count": 10,
+  "hand_source": "text",
+  "his": [
+   "Ability",
+   "Ability",
+   "Attach:1Water@0 zone"
+  ],
+  "n": 12,
+  "first": {
+   "Ability": 12
+  },
+  "same_first": 12,
+  "same_plan": 0,
+  "modal": [
+   "Ability",
+   "Play:Pokémon Center Lady",
+   "Heal:30@2",
+   "Ability",
+   "Attach:1Water@0 zone"
+  ],
+  "modal_n": 12,
+  "cat": "Supporter/Item choice or order",
+  "tags": [
+   "Supporter/Item choice or order"
+  ],
+  "desc": "his [-] ↔ km3 [Play:Pokémon Center Lady, Heal:30@2]",
+  "gap": 0.0,
+  "plans": [
+   [
+    [
+     "Ability",
+     "Play:Pokémon Center Lady",
+     "Heal:30@2",
+     "Ability",
+     "Attach:1Water@0 zone"
+    ],
+    12
+   ]
+  ],
+  "summary": {
+   "me": {
+    "board": [
+     {
+      "behind": [
+       "Wailmer"
+      ],
+      "card": "Wailord",
+      "energy": [
+       "Water"
+      ],
+      "hp": 170,
+      "id": "B1 057",
+      "slot": 0,
+      "tools": []
+     },
+     {
+      "behind": [],
+      "card": "Indeedee ex",
+      "energy": [],
+      "hp": 110,
+      "id": "B1 121",
+      "slot": 1,
+      "tools": []
+     },
+     {
+      "behind": [],
+      "card": "Indeedee ex",
+      "energy": [],
+      "hp": 110,
+      "id": "B1 121",
+      "slot": 2,
+      "tools": []
+     }
+    ],
+    "deck": 9,
+    "discard": [
+     "Poké Ball",
+     "Heavy Helmet",
+     "Wailmer"
+    ],
+    "energy_zone": [
+     "Some(Water)",
+     "Some(Water)"
+    ],
+    "hand": [
+     "Irida",
+     "Lucky Ice Pop",
+     "Pokémon Center Lady",
+     "Soothing Shore"
+    ]
+   },
+   "opp": {
+    "board": [
+     {
+      "behind": [],
+      "card": "Palkia ex",
+      "energy": [
+       "Water",
+       "Water"
+      ],
+      "hp": 150,
+      "id": "A2 049",
+      "slot": 0,
+      "tools": []
+     },
+     {
+      "behind": [
+       "Feebas"
+      ],
+      "card": "Milotic ex",
+      "energy": [
+       "Water",
+       "Water"
+      ],
+      "hp": 140,
+      "id": "B3b 015",
+      "slot": 1,
+      "tools": []
+     },
+     {
+      "behind": [
+       "Frigibax"
+      ],
+      "card": "Baxcalibur",
+      "energy": [],
+      "hp": 140,
+      "id": "B2a 036",
+      "slot": 2,
+      "tools": []
+     },
+     {
+      "behind": [],
+      "card": "Frigibax",
+      "energy": [],
+      "hp": 60,
+      "id": "B2a 034",
+      "slot": 3,
+      "tools": []
+     }
+    ],
+    "deck": 4,
+    "hand": 3
+   },
+   "points": [
+    1,
+    1
+   ],
+   "stadium": "Soothing Shore",
+   "turn_count": 10
+  },
+  "notes": "Draw Soothing Shore (cannot be played: the opponent's Shore is in play). Two Watch Overs heal the Wailord 170 -> 190 -> 200; second Water; no attack (it needs four). Next turn the opponent's Cyrus brought an Indeedee ex Active and Dimensional Storm KO'd it (the game).",
+  "mid_turn": false,
+  "forced": false,
+  "milestones": [
+   "managing a sacrifice"
+  ],
+  "heldout": false
+ },
+ {
+  "id": "D3-020920-t02",
+  "game": "020920",
+  "his_turn": 1,
+  "turn_count": 2,
+  "hand_source": "text",
+  "his": [
+   "Play:Poké Ball"
+  ],
+  "n": 12,
+  "first": {
+   "Play:Heavy Helmet": 9,
+   "Play:Professor's Research": 3
+  },
+  "same_first": 0,
+  "same_plan": 0,
+  "modal": [
+   "Play:Heavy Helmet",
+   "Tool:Heavy Helmet@0",
+   "Play:Poké Ball"
+  ],
+  "modal_n": 7,
+  "cat": "Supporter/Item choice or order",
+  "tags": [
+   "Supporter/Item choice or order",
+   "Tool placement"
+  ],
+  "desc": "his [-] ↔ km3 [Play:Heavy Helmet, Tool:Heavy Helmet@0] [Watch Over with nothing damaged does nothing: ignored in both plans]",
+  "gap": 28.083333333333485,
+  "plans": [
+   [
+    [
+     "Play:Heavy Helmet",
+     "Tool:Heavy Helmet@0",
+     "Play:Poké Ball"
+    ],
+    7
+   ],
+   [
+    [
+     "Play:Professor's Research"
+    ],
+    3
+   ],
+   [
+    [
+     "Play:Heavy Helmet",
+     "Tool:Heavy Helmet@0",
+     "Play:Professor's Research"
+    ],
+    2
+   ]
+  ],
+  "summary": {
+   "me": {
+    "board": [
+     {
+      "behind": [],
+      "card": "Wailmer",
+      "energy": [],
+      "hp": 100,
+      "id": "B4 036",
+      "slot": 0,
+      "tools": []
+     }
+    ],
+    "deck": 14,
+    "discard": [],
+    "energy_zone": [
+     "Some(Water)",
+     "Some(Water)"
+    ],
+    "hand": [
+     "Cyrus",
+     "Heavy Helmet",
+     "Poké Ball",
+     "Pokémon Center Lady",
+     "Professor's Research"
+    ]
+   },
+   "opp": {
+    "board": [
+     {
+      "behind": [],
+      "card": "Charmander",
+      "energy": [],
+      "hp": 60,
+      "id": "A1 033",
+      "slot": 0,
+      "tools": []
+     }
+    ],
+    "deck": 12,
+    "hand": 6
+   },
+   "points": [
+    0,
+    0
+   ],
+   "stadium": null,
+   "turn_count": 2
+  },
+  "notes": "Going second. Opening hand: Poké Ball, Professor's Research, Cyrus, Pokémon Center Lady + the Wailmer he placed; draw Heavy Helmet. Poké Ball finds an Indeedee ex (benched), Research draws the second Indeedee ex and the Wailord (benched), Helmet on the Wailmer, first Water, no attack.",
+  "mid_turn": false,
+  "forced": false,
+  "milestones": [],
+  "heldout": false
+ },
+ {
+  "id": "D3-020920-t04",
+  "game": "020920",
+  "his_turn": 2,
+  "turn_count": 4,
+  "hand_source": "text",
+  "his": [
+   "Evolve:Wailord@0",
+   "Attach:1Water@0 zone",
+   "Ability"
+  ],
+  "n": 12,
+  "first": {
+   "Ability": 12
+  },
+  "same_first": 0,
+  "same_plan": 0,
+  "modal": [
+   "Ability",
+   "Ability",
+   "Evolve:Wailord ex@0",
+   "Attach:1Water@0 zone"
+  ],
+  "modal_n": 12,
+  "cat": "evolution timing/target",
+  "tags": [
+   "evolution timing/target",
+   "ability use"
+  ],
+  "desc": "his [Evolve:Wailord@0] ↔ km3 [Ability, Ability, Evolve:Wailord ex@0]; his [Ability] ↔ km3 [-]",
+  "gap": 375.0,
+  "plans": [
+   [
+    [
+     "Ability",
+     "Ability",
+     "Evolve:Wailord ex@0",
+     "Attach:1Water@0 zone"
+    ],
+    12
+   ]
+  ],
+  "summary": {
+   "me": {
+    "board": [
+     {
+      "behind": [],
+      "card": "Wailmer",
+      "energy": [
+       "Water"
+      ],
+      "hp": 80,
+      "id": "B4 036",
+      "slot": 0,
+      "tools": [
+       "Heavy Helmet"
+      ]
+     },
+     {
+      "behind": [],
+      "card": "Indeedee ex",
+      "energy": [],
+      "hp": 130,
+      "id": "B1 121",
+      "slot": 1,
+      "tools": []
+     },
+     {
+      "behind": [],
+      "card": "Indeedee ex",
+      "energy": [],
+      "hp": 130,
+      "id": "B1 121",
+      "slot": 2,
+      "tools": []
+     }
+    ],
+    "deck": 10,
+    "discard": [
+     "Poké Ball",
+     "Professor's Research"
+    ],
+    "energy_zone": [
+     "Some(Water)",
+     "Some(Water)"
+    ],
+    "hand": [
+     "Cyrus",
+     "Pokémon Center Lady",
+     "Wailord",
+     "Wailord ex"
+    ]
+   },
+   "opp": {
+    "board": [
+     {
+      "behind": [
+       "Charmander"
+      ],
+      "card": "Charmeleon",
+      "energy": [
+       "Fire",
+       "Fire"
+      ],
+      "hp": 80,
+      "id": "B2b 008",
+      "slot": 0,
+      "tools": []
+     }
+    ],
+    "deck": 11,
+    "hand": 6
+   },
+   "points": [
+    0,
+    0
+   ],
+   "stadium": null,
+   "turn_count": 4
+  },
+  "notes": "Draw Wailord ex. The opponent's Charmeleon (Ignition, two Fire) used Slash 40 (20 through the Helmet): Wailmer 80. He evolves the damaged Wailmer into the Wailord (180 HP), second Water, one Watch Over heals it to 200, no attack (Whale Pump needs four Energy). The review's alternative (keep the Wailmer unevolved for a third-Water Wave Splash on turn 6) is Astra-checked as legal, not proven better.",
+  "mid_turn": false,
+  "forced": false,
+  "milestones": [
+   "preparing an attacker"
+  ],
+  "heldout": false
+ },
+ {
+  "id": "D3-020920-t06",
+  "game": "020920",
+  "his_turn": 3,
+  "turn_count": 6,
+  "hand_source": "text",
+  "his": [
+   "Place:Wailmer",
+   "Attach:1Water@0 zone"
+  ],
+  "n": 12,
+  "first": {
+   "Place:Wailmer": 12
+  },
+  "same_first": 12,
+  "same_plan": 12,
+  "modal": [
+   "Place:Wailmer",
+   "Attach:1Water@0 zone"
+  ],
+  "modal_n": 12,
+  "cat": "same plan",
+  "tags": [],
+  "desc": " [Watch Over with nothing damaged does nothing: ignored in both plans]",
+  "gap": 0.0,
+  "plans": [
+   [
+    [
+     "Place:Wailmer",
+     "Attach:1Water@0 zone"
+    ],
+    12
+   ]
+  ],
+  "summary": {
+   "me": {
+    "board": [
+     {
+      "behind": [
+       "Wailmer"
+      ],
+      "card": "Wailord",
+      "energy": [
+       "Water",
+       "Water"
+      ],
+      "hp": 200,
+      "id": "B1 057",
+      "slot": 0,
+      "tools": [
+       "Heavy Helmet"
+      ]
+     },
+     {
+      "behind": [],
+      "card": "Indeedee ex",
+      "energy": [],
+      "hp": 130,
+      "id": "B1 121",
+      "slot": 1,
+      "tools": []
+     },
+     {
+      "behind": [],
+      "card": "Indeedee ex",
+      "energy": [],
+      "hp": 130,
+      "id": "B1 121",
+      "slot": 2,
+      "tools": []
+     }
+    ],
+    "deck": 9,
+    "discard": [
+     "Poké Ball",
+     "Professor's Research"
+    ],
+    "energy_zone": [
+     "Some(Water)",
+     "Some(Water)"
+    ],
+    "hand": [
+     "Cyrus",
+     "Pokémon Center Lady",
+     "Wailmer",
+     "Wailord ex"
+    ]
+   },
+   "opp": {
+    "board": [
+     {
+      "behind": [
+       "Charmander"
+      ],
+      "card": "Charmeleon",
+      "energy": [
+       "Fire",
+       "Fire"
+      ],
+      "hp": 80,
+      "id": "B2b 008",
+      "slot": 0,
+      "tools": []
+     },
+     {
+      "behind": [],
+      "card": "Charmander",
+      "energy": [
+       "Fire"
+      ],
+      "hp": 60,
+      "id": "A1 033",
+      "slot": 1,
+      "tools": []
+     }
+    ],
+    "deck": 10,
+    "hand": 5
+   },
+   "points": [
+    0,
+    0
+   ],
+   "stadium": null,
+   "turn_count": 6
+  },
+  "notes": "Draw the second Wailmer (benched at once), third Water on the Wailord (it needs four), no attack. The opponent's Poké Ball found a second Charmander (one Fire).",
+  "mid_turn": false,
+  "forced": false,
+  "milestones": [
+   "preparing an attacker"
+  ],
+  "heldout": false
+ },
+ {
+  "id": "D3-020920-t08",
+  "game": "020920",
+  "his_turn": 4,
+  "turn_count": 8,
+  "hand_source": "text",
+  "his": [
+   "Ability",
+   "Ability",
+   "Evolve:Wailord ex@1",
+   "Attach:1Water@0 zone",
+   "Attack:Whale Pump"
+  ],
+  "n": 12,
+  "first": {
+   "Ability": 12
+  },
+  "same_first": 12,
+  "same_plan": 0,
+  "modal": [
+   "Ability",
+   "Evolve:Wailord ex@1",
+   "Ability",
+   "Attach:1Water@0 zone",
+   "Attack:Whale Pump"
+  ],
+  "modal_n": 12,
+  "cat": "same actions, different order",
+  "tags": [],
+  "desc": "order: his Ability → Ability → Evolve:Wailord ex@1 → Attach:1Water@0 zone → Attack:Whale Pump | km3 Ability → Evolve:Wailord ex@1 → Ability → Attach:1Water@0 zone → Attack:Whale Pump",
+  "gap": 0.0,
+  "plans": [
+   [
+    [
+     "Ability",
+     "Evolve:Wailord ex@1",
+     "Ability",
+     "Attach:1Water@0 zone",
+     "Attack:Whale Pump"
+    ],
+    12
+   ]
+  ],
+  "summary": {
+   "me": {
+    "board": [
+     {
+      "behind": [
+       "Wailmer"
+      ],
+      "card": "Wailord",
+      "energy": [
+       "Water",
+       "Water",
+       "Water"
+      ],
+      "hp": 160,
+      "id": "B1 057",
+      "slot": 0,
+      "tools": [
+       "Heavy Helmet"
+      ]
+     },
+     {
+      "behind": [],
+      "card": "Wailmer",
+      "energy": [],
+      "hp": 100,
+      "id": "B4 036",
+      "slot": 1,
+      "tools": []
+     },
+     {
+      "behind": [],
+      "card": "Indeedee ex",
+      "energy": [],
+      "hp": 130,
+      "id": "B1 121",
+      "slot": 2,
+      "tools": []
+     },
+     {
+      "behind": [],
+      "card": "Indeedee ex",
+      "energy": [],
+      "hp": 130,
+      "id": "B1 121",
+      "slot": 3,
+      "tools": []
+     }
+    ],
+    "deck": 8,
+    "discard": [
+     "Poké Ball",
+     "Professor's Research"
+    ],
+    "energy_zone": [
+     "Some(Water)",
+     "Some(Water)"
+    ],
+    "hand": [
+     "Cyrus",
+     "Lucky Ice Pop",
+     "Pokémon Center Lady",
+     "Wailord ex"
+    ]
+   },
+   "opp": {
+    "board": [
+     {
+      "behind": [],
+      "card": "Entei ex",
+      "energy": [
+       "Fire",
+       "Fire"
+      ],
+      "hp": 140,
+      "id": "A4a 010",
+      "slot": 0,
+      "tools": []
+     },
+     {
+      "behind": [
+       "Charmander"
+      ],
+      "card": "Charmeleon",
+      "energy": [],
+      "hp": 80,
+      "id": "B2b 008",
+      "slot": 1,
+      "tools": []
+     },
+     {
+      "behind": [],
+      "card": "Charmander",
+      "energy": [
+       "Fire",
+       "Fire"
+      ],
+      "hp": 60,
+      "id": "A1 033",
+      "slot": 2,
+      "tools": []
+     }
+    ],
+    "deck": 8,
+    "hand": 3
+   },
+   "points": [
+    0,
+    0
+   ],
+   "stadium": null,
+   "turn_count": 8
+  },
+  "notes": "Draw Lucky Ice Pop. The opponent's Entei ex (Blazing Beatdown, two Fire via two Flame Patch) took the Wailord to 160 through the Helmet. Two Watch Overs heal it to 200, the benched Wailmer evolves into Wailord ex (no Energy), fourth Water, Whale Pump (100 + 20 Water weakness) leaves Entei ex on 20 HP; the opponent conceded next turn.",
+  "mid_turn": false,
+  "forced": false,
+  "milestones": [
+   "preparing an attacker"
+  ],
+  "heldout": false
+ },
+ {
+  "id": "D3-023418-t01",
+  "game": "023418",
+  "his_turn": 1,
+  "turn_count": 1,
+  "hand_source": "text",
+  "his": [
+   "Play:Heavy Helmet",
+   "Tool:Heavy Helmet@0",
+   "Place:Indeedee ex",
+   "Play:Professor's Research"
+  ],
+  "n": 12,
+  "first": {
+   "Play:Heavy Helmet": 12
+  },
+  "same_first": 12,
+  "same_plan": 0,
+  "modal": [
+   "Play:Heavy Helmet",
+   "Tool:Heavy Helmet@0",
+   "Play:Professor's Research"
+  ],
+  "modal_n": 12,
+  "cat": "bench development",
+  "tags": [
+   "bench development"
+  ],
+  "desc": "his [Place:Indeedee ex] ↔ km3 [-] [Watch Over with nothing damaged does nothing: ignored in both plans]",
+  "gap": 0.0,
+  "plans": [
+   [
+    [
+     "Play:Heavy Helmet",
+     "Tool:Heavy Helmet@0",
+     "Play:Professor's Research"
+    ],
+    12
+   ]
+  ],
+  "summary": {
+   "me": {
+    "board": [
+     {
+      "behind": [],
+      "card": "Wailmer",
+      "energy": [],
+      "hp": 100,
+      "id": "B4 036",
+      "slot": 0,
+      "tools": []
+     }
+    ],
+    "deck": 14,
+    "discard": [],
+    "energy_zone": [
+     "None",
+     "Some(Water)"
+    ],
+    "hand": [
+     "Cyrus",
+     "Heavy Helmet",
+     "Indeedee ex",
+     "Professor's Research",
+     "Wailord"
+    ]
+   },
+   "opp": {
+    "board": [
+     {
+      "behind": [],
+      "card": "Bonsly",
+      "energy": [],
+      "hp": 30,
+      "id": "B3 078",
+      "slot": 0,
+      "tools": []
+     }
+    ],
+    "deck": 15,
+    "hand": 4
+   },
+   "points": [
+    0,
+    0
+   ],
+   "stadium": null,
+   "turn_count": 1
+  },
+  "notes": "Going first: no Energy. Opening hand Cyrus, Heavy Helmet, Wailord, Indeedee ex + the Wailmer he placed; draw Professor's Research. Helmet on the Wailmer, bench the Indeedee ex, Research (draws Pokémon Center Lady and Soothing Shore).",
+  "mid_turn": false,
+  "forced": false,
+  "milestones": [],
+  "heldout": false
+ },
+ {
+  "id": "D3-023418-t03",
+  "game": "023418",
+  "his_turn": 2,
+  "turn_count": 3,
+  "hand_source": "text",
+  "his": [
+   "Evolve:Wailord@0",
+   "Play:Soothing Shore",
+   "Attach:1Water@0 zone"
+  ],
+  "n": 12,
+  "first": {
+   "Evolve:Wailord@0": 12
+  },
+  "same_first": 12,
+  "same_plan": 0,
+  "modal": [
+   "Evolve:Wailord@0",
+   "Attach:1Water@0 zone"
+  ],
+  "modal_n": 12,
+  "cat": "Supporter/Item choice or order",
+  "tags": [
+   "Supporter/Item choice or order"
+  ],
+  "desc": "his [Play:Soothing Shore] ↔ km3 [-] [Watch Over with nothing damaged does nothing: ignored in both plans]",
+  "gap": 0.0,
+  "plans": [
+   [
+    [
+     "Evolve:Wailord@0",
+     "Attach:1Water@0 zone"
+    ],
+    12
+   ]
+  ],
+  "summary": {
+   "me": {
+    "board": [
+     {
+      "behind": [],
+      "card": "Wailmer",
+      "energy": [],
+      "hp": 100,
+      "id": "B4 036",
+      "slot": 0,
+      "tools": [
+       "Heavy Helmet"
+      ]
+     },
+     {
+      "behind": [],
+      "card": "Indeedee ex",
+      "energy": [],
+      "hp": 130,
+      "id": "B1 121",
+      "slot": 1,
+      "tools": []
+     }
+    ],
+    "deck": 11,
+    "discard": [
+     "Professor's Research"
+    ],
+    "energy_zone": [
+     "Some(Water)",
+     "Some(Water)"
+    ],
+    "hand": [
+     "Cyrus",
+     "Lucky Ice Pop",
+     "Pokémon Center Lady",
+     "Soothing Shore",
+     "Wailord"
+    ]
+   },
+   "opp": {
+    "board": [
+     {
+      "behind": [],
+      "card": "Bonsly",
+      "energy": [],
+      "hp": 30,
+      "id": "B3 078",
+      "slot": 0,
+      "tools": []
+     },
+     {
+      "behind": [],
+      "card": "Riolu",
+      "energy": [],
+      "hp": 60,
+      "id": "B3 079",
+      "slot": 1,
+      "tools": [
+       "Small Balloon"
+      ]
+     },
+     {
+      "behind": [],
+      "card": "Riolu",
+      "energy": [
+       "Fighting"
+      ],
+      "hp": 60,
+      "id": "B3 079",
+      "slot": 2,
+      "tools": []
+     }
+    ],
+    "deck": 10,
+    "hand": 3
+   },
+   "points": [
+    0,
+    0
+   ],
+   "stadium": null,
+   "turn_count": 3
+  },
+  "notes": "Draw Lucky Ice Pop. The opponent's Bonsly used Teary Attack (a -30 on the Wailmer's next attack, cleared when it evolves; not modelled). He evolves the Wailmer into the Wailord, plays Soothing Shore and attaches the first Water; no attack (four Energy).",
+  "mid_turn": false,
+  "forced": false,
+  "milestones": [
+   "preparing an attacker"
+  ],
+  "heldout": false
+ },
+ {
+  "id": "D3-023418-t05",
+  "game": "023418",
+  "his_turn": 3,
+  "turn_count": 5,
+  "hand_source": "text",
+  "his": [
+   "Play:Poké Ball"
+  ],
+  "n": 12,
+  "first": {
+   "Play:Poké Ball": 12
+  },
+  "same_first": 12,
+  "same_plan": 12,
+  "modal": [
+   "Play:Poké Ball"
+  ],
+  "modal_n": 12,
+  "cat": "same plan",
+  "tags": [],
+  "desc": " [Watch Over with nothing damaged does nothing: ignored in both plans]",
+  "gap": 0.0,
+  "plans": [
+   [
+    [
+     "Play:Poké Ball"
+    ],
+    12
+   ]
+  ],
+  "summary": {
+   "me": {
+    "board": [
+     {
+      "behind": [
+       "Wailmer"
+      ],
+      "card": "Wailord",
+      "energy": [
+       "Water"
+      ],
+      "hp": 200,
+      "id": "B1 057",
+      "slot": 0,
+      "tools": [
+       "Heavy Helmet"
+      ]
+     },
+     {
+      "behind": [],
+      "card": "Indeedee ex",
+      "energy": [],
+      "hp": 130,
+      "id": "B1 121",
+      "slot": 1,
+      "tools": []
+     }
+    ],
+    "deck": 10,
+    "discard": [
+     "Professor's Research"
+    ],
+    "energy_zone": [
+     "Some(Water)",
+     "Some(Water)"
+    ],
+    "hand": [
+     "Cyrus",
+     "Lucky Ice Pop",
+     "Poké Ball",
+     "Pokémon Center Lady"
+    ]
+   },
+   "opp": {
+    "board": [
+     {
+      "behind": [],
+      "card": "Bonsly",
+      "energy": [],
+      "hp": 30,
+      "id": "B3 078",
+      "slot": 0,
+      "tools": []
+     },
+     {
+      "behind": [],
+      "card": "Riolu",
+      "energy": [],
+      "hp": 60,
+      "id": "B3 079",
+      "slot": 1,
+      "tools": [
+       "Small Balloon"
+      ]
+     },
+     {
+      "behind": [],
+      "card": "Riolu",
+      "energy": [
+       "Fighting",
+       "Fighting"
+      ],
+      "hp": 60,
+      "id": "B3 079",
+      "slot": 2,
+      "tools": []
+     },
+     {
+      "behind": [],
+      "card": "Hitmonchan",
+      "energy": [],
+      "hp": 80,
+      "id": "B2 219",
+      "slot": 3,
+      "tools": []
+     }
+    ],
+    "deck": 9,
+    "hand": 3
+   },
+   "points": [
+    0,
+    0
+   ],
+   "stadium": "Soothing Shore",
+   "turn_count": 5
+  },
+  "notes": "Draw Poké Ball (finds the second Wailmer, benched); second Water on the Wailord; no attack. The next opponent turn: Sabrina, Mega Lucario ex, and the Wailmer was the sacrificed switch-in (a forced choice during the opponent's turn, not built here).",
+  "mid_turn": false,
+  "forced": false,
+  "milestones": [
+   "preparing an attacker"
+  ],
+  "heldout": false
+ },
+ {
+  "id": "D3-023418-t07",
+  "game": "023418",
+  "his_turn": 4,
+  "turn_count": 7,
+  "hand_source": "text",
+  "his": [
+   "Place:Indeedee ex",
+   "Attach:1Water@0 zone"
+  ],
+  "n": 12,
+  "first": {
+   "Place:Indeedee ex": 12
+  },
+  "same_first": 12,
+  "same_plan": 12,
+  "modal": [
+   "Place:Indeedee ex",
+   "Attach:1Water@0 zone"
+  ],
+  "modal_n": 12,
+  "cat": "same plan",
+  "tags": [],
+  "desc": " [Watch Over with nothing damaged does nothing: ignored in both plans]",
+  "gap": 0.0,
+  "plans": [
+   [
+    [
+     "Place:Indeedee ex",
+     "Attach:1Water@0 zone"
+    ],
+    12
+   ]
+  ],
+  "summary": {
+   "me": {
+    "board": [
+     {
+      "behind": [
+       "Wailmer"
+      ],
+      "card": "Wailord",
+      "energy": [
+       "Water",
+       "Water"
+      ],
+      "hp": 200,
+      "id": "B1 057",
+      "slot": 0,
+      "tools": [
+       "Heavy Helmet"
+      ]
+     },
+     {
+      "behind": [],
+      "card": "Indeedee ex",
+      "energy": [],
+      "hp": 130,
+      "id": "B1 121",
+      "slot": 1,
+      "tools": []
+     }
+    ],
+    "deck": 8,
+    "discard": [
+     "Professor's Research",
+     "Poké Ball",
+     "Wailmer"
+    ],
+    "energy_zone": [
+     "Some(Water)",
+     "Some(Water)"
+    ],
+    "hand": [
+     "Cyrus",
+     "Indeedee ex",
+     "Lucky Ice Pop",
+     "Pokémon Center Lady"
+    ]
+   },
+   "opp": {
+    "board": [
+     {
+      "behind": [
+       "Riolu"
+      ],
+      "card": "Mega Lucario ex",
+      "energy": [
+       "Fighting",
+       "Fighting",
+       "Fighting"
+      ],
+      "hp": 190,
+      "id": "B3 081",
+      "slot": 0,
+      "tools": []
+     },
+     {
+      "behind": [],
+      "card": "Bonsly",
+      "energy": [],
+      "hp": 30,
+      "id": "B3 078",
+      "slot": 1,
+      "tools": []
+     },
+     {
+      "behind": [
+       "Riolu"
+      ],
+      "card": "Lucario",
+      "energy": [],
+      "hp": 100,
+      "id": "A2 092",
+      "slot": 2,
+      "tools": [
+       "Small Balloon"
+      ]
+     },
+     {
+      "behind": [],
+      "card": "Hitmonchan",
+      "energy": [],
+      "hp": 80,
+      "id": "B2 219",
+      "slot": 3,
+      "tools": []
+     }
+    ],
+    "deck": 8,
+    "hand": 1
+   },
+   "points": [
+    0,
+    1
+   ],
+   "stadium": "Soothing Shore",
+   "turn_count": 7
+  },
+  "notes": "Draw the second Indeedee ex (benched). The opponent's Sabrina dragged the unenergised Wailmer up, Mega Lucario ex's Fighting Pulse took it (1 point to the opponent), the Wailord was promoted. Third Water, no attack.",
+  "mid_turn": false,
+  "forced": false,
+  "milestones": [
+   "preparing an attacker"
+  ],
+  "heldout": false
+ },
+ {
+  "id": "D3-023418-t09",
+  "game": "023418",
+  "his_turn": 5,
+  "turn_count": 9,
+  "hand_source": "text",
+  "his": [
+   "Ability",
+   "Ability",
+   "Play:Lucky Ice Pop",
+   "Attach:1Water@0 zone",
+   "Attack:Whale Pump"
+  ],
+  "n": 12,
+  "first": {
+   "Ability": 12
+  },
+  "same_first": 12,
+  "same_plan": 0,
+  "modal": [
+   "Ability",
+   "Ability",
+   "Play:Lucky Ice Pop",
+   "Play:Lucky Ice Pop",
+   "Play:Lucky Ice Pop",
+   "Play:Lucky Ice Pop",
+   "Attach:1Water@0 zone",
+   "Attack:Whale Pump"
+  ],
+  "modal_n": 5,
+  "cat": "Supporter/Item choice or order",
+  "tags": [
+   "Supporter/Item choice or order"
+  ],
+  "desc": "his [-] ↔ km3 [Play:Lucky Ice Pop, Play:Lucky Ice Pop, Play:Lucky Ice Pop]",
+  "gap": 0.0,
+  "plans": [
+   [
+    [
+     "Ability",
+     "Ability",
+     "Play:Lucky Ice Pop",
+     "Play:Lucky Ice Pop",
+     "Play:Lucky Ice Pop",
+     "Play:Lucky Ice Pop",
+     "Attach:1Water@0 zone",
+     "Attack:Whale Pump"
+    ],
+    5
+   ],
+   [
+    [
+     "Ability",
+     "Ability",
+     "Play:Lucky Ice Pop",
+     "Play:Lucky Ice Pop",
+     "Attach:1Water@0 zone",
+     "Play:Pokémon Center Lady",
+     "Heal:30@0",
+     "Attack:Whale Pump"
+    ],
+    4
+   ],
+   [
+    [
+     "Ability",
+     "Ability",
+     "Play:Lucky Ice Pop",
+     "Attach:1Water@0 zone",
+     "Play:Pokémon Center Lady",
+     "Heal:30@0",
+     "Attack:Whale Pump"
+    ],
+    3
+   ]
+  ],
+  "summary": {
+   "me": {
+    "board": [
+     {
+      "behind": [
+       "Wailmer"
+      ],
+      "card": "Wailord",
+      "energy": [
+       "Water",
+       "Water",
+       "Water"
+      ],
+      "hp": 60,
+      "id": "B1 057",
+      "slot": 0,
+      "tools": [
+       "Heavy Helmet"
+      ]
+     },
+     {
+      "behind": [],
+      "card": "Indeedee ex",
+      "energy": [],
+      "hp": 130,
+      "id": "B1 121",
+      "slot": 1,
+      "tools": []
+     },
+     {
+      "behind": [],
+      "card": "Indeedee ex",
+      "energy": [],
+      "hp": 130,
+      "id": "B1 121",
+      "slot": 2,
+      "tools": []
+     }
+    ],
+    "deck": 7,
+    "discard": [
+     "Professor's Research",
+     "Poké Ball",
+     "Wailmer"
+    ],
+    "energy_zone": [
+     "Some(Water)",
+     "Some(Water)"
+    ],
+    "hand": [
+     "Cyrus",
+     "Lucky Ice Pop",
+     "Pokémon Center Lady",
+     "Wailord ex"
+    ]
+   },
+   "opp": {
+    "board": [
+     {
+      "behind": [
+       "Riolu"
+      ],
+      "card": "Mega Lucario ex",
+      "energy": [
+       "Fighting",
+       "Fighting",
+       "Fighting"
+      ],
+      "hp": 190,
+      "id": "B3 081",
+      "slot": 0,
+      "tools": []
+     },
+     {
+      "behind": [],
+      "card": "Bonsly",
+      "energy": [],
+      "hp": 30,
+      "id": "B3 078",
+      "slot": 1,
+      "tools": []
+     },
+     {
+      "behind": [
+       "Riolu"
+      ],
+      "card": "Lucario",
+      "energy": [
+       "Fighting"
+      ],
+      "hp": 100,
+      "id": "A2 092",
+      "slot": 2,
+      "tools": [
+       "Small Balloon"
+      ]
+     },
+     {
+      "behind": [],
+      "card": "Hitmonchan",
+      "energy": [],
+      "hp": 80,
+      "id": "B2 219",
+      "slot": 3,
+      "tools": []
+     }
+    ],
+    "deck": 7,
+    "hand": 2
+   },
+   "points": [
+    0,
+    1
+   ],
+   "stadium": "Soothing Shore",
+   "turn_count": 9
+  },
+  "notes": "Draw the Wailord ex (left in hand). Mega Lucario ex's Fighting Pulse took the Wailord to 60. He heals 60 -> 100 with two Watch Overs, then Lucky Ice Pop four times (four heads, the card returns each time) to 180, fourth Water, Whale Pump (100): Mega Lucario ex 190 -> 90; Soothing Shore heals the Wailord to 200 at the end of his turn.",
+  "mid_turn": false,
+  "forced": false,
+  "milestones": [
+   "preparing an attacker"
+  ],
+  "heldout": false
+ },
+ {
+  "id": "D3-023418-t11",
+  "game": "023418",
+  "his_turn": 6,
+  "turn_count": 11,
+  "hand_source": "text",
+  "his": [
+   "Ability",
+   "Attach:1Water@0 zone",
+   "Play:Cyrus"
+  ],
+  "n": 12,
+  "first": {
+   "Ability": 12
+  },
+  "same_first": 12,
+  "same_plan": 0,
+  "modal": [
+   "Ability",
+   "Ability",
+   "Attach:1Water@0 zone",
+   "Attack:Whale Pump"
+  ],
+  "modal_n": 12,
+  "cat": "ability use",
+  "tags": [
+   "ability use",
+   "Supporter/Item choice or order",
+   "attack vs another action"
+  ],
+  "desc": "his [-] ↔ km3 [Ability]; his [Play:Cyrus] ↔ km3 [Attack:Whale Pump]",
+  "gap": 0.0,
+  "plans": [
+   [
+    [
+     "Ability",
+     "Ability",
+     "Attach:1Water@0 zone",
+     "Attack:Whale Pump"
+    ],
+    12
+   ]
+  ],
+  "summary": {
+   "me": {
+    "board": [
+     {
+      "behind": [
+       "Wailmer"
+      ],
+      "card": "Wailord",
+      "energy": [
+       "Water",
+       "Water",
+       "Water",
+       "Water"
+      ],
+      "hp": 190,
+      "id": "B1 057",
+      "slot": 0,
+      "tools": [
+       "Heavy Helmet"
+      ]
+     },
+     {
+      "behind": [],
+      "card": "Indeedee ex",
+      "energy": [],
+      "hp": 130,
+      "id": "B1 121",
+      "slot": 1,
+      "tools": []
+     },
+     {
+      "behind": [],
+      "card": "Indeedee ex",
+      "energy": [],
+      "hp": 130,
+      "id": "B1 121",
+      "slot": 2,
+      "tools": []
+     }
+    ],
+    "deck": 6,
+    "discard": [
+     "Professor's Research",
+     "Poké Ball",
+     "Wailmer"
+    ],
+    "energy_zone": [
+     "Some(Water)",
+     "Some(Water)"
+    ],
+    "hand": [
+     "Cyrus",
+     "Lucky Ice Pop",
+     "Pokémon Center Lady",
+     "Soothing Shore",
+     "Wailord ex"
+    ]
+   },
+   "opp": {
+    "board": [
+     {
+      "behind": [],
+      "card": "Bonsly",
+      "energy": [],
+      "hp": 30,
+      "id": "B3 078",
+      "slot": 0,
+      "tools": []
+     },
+     {
+      "behind": [
+       "Riolu"
+      ],
+      "card": "Mega Lucario ex",
+      "energy": [
+       "Fighting",
+       "Fighting",
+       "Fighting"
+      ],
+      "hp": 110,
+      "id": "B3 081",
+      "slot": 1,
+      "tools": []
+     },
+     {
+      "behind": [
+       "Riolu"
+      ],
+      "card": "Lucario",
+      "energy": [
+       "Fighting",
+       "Fighting"
+      ],
+      "hp": 100,
+      "id": "A2 092",
+      "slot": 2,
+      "tools": [
+       "Small Balloon"
+      ]
+     },
+     {
+      "behind": [],
+      "card": "Hitmonchan",
+      "energy": [],
+      "hp": 80,
+      "id": "B2 219",
+      "slot": 3,
+      "tools": []
+     }
+    ],
+    "deck": 6,
+    "hand": 1
+   },
+   "points": [
+    0,
+    1
+   ],
+   "stadium": "Soothing Shore",
+   "turn_count": 11
+  },
+  "notes": "Draw the second Soothing Shore (cannot be played). Bonsly's Teary Attack left the Wailord on 190 with a -30 on its next attack (modelled). He heals it to 200, fifth Water, and Cyrus brings the damaged Mega Lucario ex (110) Active; the opponent conceded before he attacked (Whale Pump would have done 110 - 30 = 80). The review's Astra check: not a lethal line.",
+  "mid_turn": false,
+  "forced": false,
+  "milestones": [],
+  "heldout": false
  }
 ]

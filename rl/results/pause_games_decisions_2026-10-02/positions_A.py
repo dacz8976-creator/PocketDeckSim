@@ -16,8 +16,9 @@ O = dict(ogerpon='Teal Mask Ogerpon ex B2 017', sprig='Sprigatito B2a 001', meow
          gard='Gardevoir A1 132', mew2='Mewtwo ex A1 129', arena='Arena of Antiquity B3 154')
 
 
-def pk(card, hp=None, energy=(), tools=(), behind=(), new=False):
+def pk(card, hp=None, energy=(), tools=(), behind=(), new=False, effects=()):
     d = {"card": card}
+    if effects: d["effects"] = [{"effect": e, "turns": n} for e, n in effects]
     if hp is not None: d["hp"] = hp
     if energy: d["energy"] = list(energy)
     if tools: d["tools"] = list(tools)
@@ -28,8 +29,8 @@ def pk(card, hp=None, energy=(), tools=(), behind=(), new=False):
 
 def pos(id, game, his_turn, turn_count, points, me_hand, me_board, opp_board, opp_hand, opp_energy_next, *, me_discard=(), me_discard_energy=(),
         opp_discard_n=0, opp_discard_energy=(), energy_now="Water", stadium=None, effects=(), his=(), hand_source="text", notes="", force=(),
-        top=None, flags=None, milestones=()):
-    p = {"id": id, "game": game, "his_turn": his_turn, "deck": "A", "turn_count": turn_count, "points": list(points),
+        top=None, flags=None, milestones=(), deck="A"):
+    p = {"id": id, "game": game, "his_turn": his_turn, "deck": deck, "turn_count": turn_count, "points": list(points),
          "me": {"hand": list(me_hand), "discard": list(me_discard), "discard_energy": list(me_discard_energy), "board": me_board,
                 "energy_now": energy_now, "energy_next": "Water"},
          "opp": {"hand_count": opp_hand, "discard_n": opp_discard_n, "discard_energy": list(opp_discard_energy), "board": opp_board,
@@ -312,6 +313,123 @@ P.append(pos(f"A-{G}-t10", G, 5, 10, (1, 0), [A['nine'], A['copy'], A['cyrus'], 
 for p in P:
     p.pop("discard_n", None)
 
+# ======================================================================== deck 03 (the Wailord / Indeedee wall), game 020315: his turns 2-10, all hands from the review text
+# (the opening hand and every draw are named in the review; no still frame was used; the opponent's hand sizes are bookkeeping, not counted)
+W = dict(wailmer='Wailmer B4 036', wailord='Wailord B1 057', wailordex='Wailord ex B4 037', indee='Indeedee ex B1 121', ball='Poké Ball P-A 005',
+         pop='Lucky Ice Pop B2 145', helmet='Heavy Helmet B1 219', rs="Professor's Research P-A 007", cyrus='Cyrus A2 150', irida='Irida A2a 072',
+         lady='Pokémon Center Lady A2b 070', copy='Copycat B1 225', shore='Soothing Shore B4 154')
+O.update(feebas='Feebas B3b 014', frig='Frigibax B2a 034', bax='Baxcalibur B2a 036', palkia='Palkia ex A2 049', milotic='Milotic ex B3b 015')
+G = "020315"
+SH = {"card": W['shore'], "owner": 1}
+P.append(pos(f"D3-{G}-t02", G, 1, 2, (0, 0), [W['pop'], W['irida'], W['ball'], W['indee'], W['helmet']], [pk(W['wailmer'], 100)],
+             [pk(O['feebas'], 30), pk(O['frig'], 60)], 4, "Water", deck="D03", hand_source="text",
+             his=["Play:Heavy Helmet", "Tool:Heavy Helmet@0", "Play:Poké Ball", "(then: bench Wailmer and Indeedee ex, Water on the Wailmer)"], milestones=[],
+             notes="Going second. Opening hand: Lucky Ice Pop, Irida, Poké Ball, Indeedee ex + the Wailmer he placed; draw Heavy Helmet. Review: Helmet on the Active Wailmer, Poké Ball finds a second Wailmer, bench it and the Indeedee ex, one Water."))
+P.append(pos(f"D3-{G}-t04", G, 2, 4, (0, 0), [W['pop'], W['irida'], W['lady']],
+             [pk(W['wailmer'], 100, ["Water"], tools=[W['helmet']]), pk(W['wailmer'], 100), pk(W['indee'], 130)],
+             [pk(O['feebas'], 30, ["Water"]), pk(O['bax'], 140, behind=[O['frig']]), pk(O['palkia'], 150, ["Water"])], 1, "Water",
+             me_discard=[W['ball']], opp_discard_n=3, deck="D03", hand_source="text",
+             his=["Attach:1Water@0 zone"], milestones=[],
+             notes="Draw Pokémon Center Lady (kept). He attaches the second Water and passes. The review does not say where the opponent's Palkia ex got its first Water (assumed one here); it does not affect this turn."))
+P.append(pos(f"D3-{G}-t06", G, 3, 6, (0, 0), [W['pop'], W['irida'], W['lady'], W['indee']],
+             [pk(W['wailmer'], 100, ["Water", "Water"], tools=[W['helmet']]), pk(W['wailmer'], 100), pk(W['indee'], 130)],
+             [pk(O['feebas'], 30, ["Water", "Water"]), pk(O['bax'], 140, behind=[O['frig']]), pk(O['palkia'], 150, ["Water", "Water"]), pk(O['frig'], 60)], 3, "Water",
+             me_discard=[W['ball']], opp_discard_n=4, deck="D03", hand_source="text",
+             his=["Place:Indeedee ex@3", "Attach:1Water@0 zone", "Attack:Wave Splash"], milestones=["preparing an attacker"],
+             notes="Draw the second Indeedee ex (benched). Third Water on the Wailmer, Wave Splash (60) KOs the 30-HP Feebas: his first point."))
+P.append(pos(f"D3-{G}-t08", G, 4, 8, (1, 1), [W['pop'], W['irida'], W['lady'], W['wailord']],
+             [pk(W['wailmer'], 80), pk(W['indee'], 110), pk(W['indee'], 110)],
+             [pk(O['palkia'], 150, ["Water"]), pk(O['bax'], 140, behind=[O['frig']]), pk(O['frig'], 60), pk(O['feebas'], 30)], 2, "Water",
+             me_discard=[W['ball'], W['helmet'], W['wailmer']], me_discard_energy=["Water"] * 3, opp_discard_n=5, opp_discard_energy=["Water"] * 5, stadium=SH,
+             deck="D03", hand_source="text",
+             his=["Ability:Watch Over@1", "Evolve:Wailord@0", "Attach:1Water@0 zone"], milestones=["adapting when the plan fails"],
+             notes="Draw the Wailord. Palkia ex's Dimensional Storm (four Water) KO'd the three-Water Wailmer through its Helmet and chipped 20 off each Bench Pokémon; the reserve Wailmer (80 HP, no Energy) was promoted. Watch Over heals it to 100, it evolves into Wailord (200 HP), one Water, no attack."))
+P.append(pos(f"D3-{G}-t10", G, 5, 10, (1, 1), [W['pop'], W['irida'], W['lady'], W['shore']],
+             [pk(W['wailord'], 170, ["Water"], behind=[W['wailmer']]), pk(W['indee'], 110), pk(W['indee'], 110)],
+             [pk(O['palkia'], 150, ["Water", "Water"]), pk(O['milotic'], 140, ["Water", "Water"], behind=[O['feebas']]), pk(O['bax'], 140, behind=[O['frig']]), pk(O['frig'], 60)], 3, "Water",
+             me_discard=[W['ball'], W['helmet'], W['wailmer']], me_discard_energy=["Water"] * 3, opp_discard_n=6, opp_discard_energy=["Water"] * 5, stadium=SH,
+             deck="D03", hand_source="text",
+             his=["Ability:Watch Over@1", "Ability:Watch Over@2", "Attach:1Water@0 zone"], milestones=["managing a sacrifice"],
+             notes="Draw Soothing Shore (cannot be played: the opponent's Shore is in play). Two Watch Overs heal the Wailord 170 -> 190 -> 200; second Water; no attack (it needs four). Next turn the opponent's Cyrus brought an Indeedee ex Active and Dimensional Storm KO'd it (the game)."))
+
+# ======================================================================== deck 03, game 020920 (second, won by concession 0-0; opp Fire: Charmander line, Entei ex): his turns 2, 4, 6, 8, all from the review text
+# (opening hand Poké Ball, Wailmer, Research, Cyrus, Lady; every draw named; opponent hand sizes are bookkeeping)
+O.update(charmander='Charmander A1 033', charmeleon='Charmeleon B2b 008', entei='Entei ex A4a 010', bonsly='Bonsly B3 078', riolu='Riolu B3 079',
+         lucario='Lucario A2 092', mega='Mega Lucario ex B3 081', hitmon='Hitmonchan B2 219', balloon='Small Balloon B3b 064')
+G = "020920"
+P.append(pos(f"D3-{G}-t02", G, 1, 2, (0, 0), [W['ball'], W['rs'], W['cyrus'], W['lady'], W['helmet']], [pk(W['wailmer'], 100)],
+             [pk(O['charmander'], 60)], 6, "Fire", opp_discard_n=1, deck="D03", hand_source="text",
+             his=["Play:Poké Ball", "(then: bench Indeedee ex, Research draws Indeedee ex #2 and Wailord, bench the second Indeedee ex, Helmet on Wailmer, Water)"], milestones=[],
+             notes="Going second. Opening hand: Poké Ball, Professor's Research, Cyrus, Pokémon Center Lady + the Wailmer he placed; draw Heavy Helmet. "
+                   "Poké Ball finds an Indeedee ex (benched), Research draws the second Indeedee ex and the Wailord (benched), Helmet on the Wailmer, first Water, no attack."))
+P.append(pos(f"D3-{G}-t04", G, 2, 4, (0, 0), [W['cyrus'], W['lady'], W['wailord'], W['wailordex']],
+             [pk(W['wailmer'], 80, ["Water"], tools=[W['helmet']]), pk(W['indee'], 130), pk(W['indee'], 130)],
+             [pk(O['charmeleon'], 80, ["Fire", "Fire"], behind=[O['charmander']])], 6, "Fire",
+             me_discard=[W['ball'], W['rs']], opp_discard_n=1, deck="D03", hand_source="text",
+             his=["Evolve:Wailord@0", "Attach:1Water@0 zone", "Ability:Watch Over@1"], milestones=["preparing an attacker"],
+             notes="Draw Wailord ex. The opponent's Charmeleon (Ignition, two Fire) used Slash 40 (20 through the Helmet): Wailmer 80. He evolves the damaged Wailmer into the "
+                   "Wailord (180 HP), second Water, one Watch Over heals it to 200, no attack (Whale Pump needs four Energy). The review's alternative (keep the Wailmer unevolved "
+                   "for a third-Water Wave Splash on turn 6) is Astra-checked as legal, not proven better."))
+P.append(pos(f"D3-{G}-t06", G, 3, 6, (0, 0), [W['cyrus'], W['lady'], W['wailordex'], W['wailmer']],
+             [pk(W['wailord'], 200, ["Water", "Water"], tools=[W['helmet']], behind=[W['wailmer']]), pk(W['indee'], 130), pk(W['indee'], 130)],
+             [pk(O['charmeleon'], 80, ["Fire", "Fire"], behind=[O['charmander']]), pk(O['charmander'], 60, ["Fire"])], 5, "Fire",
+             me_discard=[W['ball'], W['rs']], opp_discard_n=2, deck="D03", hand_source="text",
+             his=["Place:Wailmer@3", "Attach:1Water@0 zone"], milestones=["preparing an attacker"],
+             notes="Draw the second Wailmer (benched at once), third Water on the Wailord (it needs four), no attack. The opponent's Poké Ball found a second Charmander (one Fire)."))
+P.append(pos(f"D3-{G}-t08", G, 4, 8, (0, 0), [W['cyrus'], W['lady'], W['wailordex'], W['pop']],
+             [pk(W['wailord'], 160, ["Water", "Water", "Water"], tools=[W['helmet']], behind=[W['wailmer']]), pk(W['wailmer'], 100), pk(W['indee'], 130), pk(W['indee'], 130)],
+             [pk(O['entei'], 140, ["Fire", "Fire"]), pk(O['charmeleon'], 80, behind=[O['charmander']]), pk(O['charmander'], 60, ["Fire", "Fire"])], 3, "Fire",
+             me_discard=[W['ball'], W['rs']], opp_discard_n=5, deck="D03", hand_source="text",
+             his=["Ability:Watch Over@2", "Ability:Watch Over@3", "Evolve:Wailord ex@1", "Attach:1Water@0 zone", "Attack:Whale Pump"], milestones=["preparing an attacker"],
+             notes="Draw Lucky Ice Pop. The opponent's Entei ex (Blazing Beatdown, two Fire via two Flame Patch) took the Wailord to 160 through the Helmet. Two Watch Overs heal it to 200, "
+                   "the benched Wailmer evolves into Wailord ex (no Energy), fourth Water, Whale Pump (100 + 20 Water weakness) leaves Entei ex on 20 HP; the opponent conceded next turn."))
+
+# ======================================================================== deck 03, game 023418 (first, won by concession 0-1; opp Fighting: Bonsly, Riolu, Lucario, Mega Lucario ex): his turns 1-11, from the review text
+# (opening hand Wailmer, Cyrus, Heavy Helmet, Wailord, Indeedee ex; every draw named; opponent hand sizes are bookkeeping)
+G = "023418"
+SH0 = {"card": W['shore'], "owner": 0}
+P.append(pos(f"D3-{G}-t01", G, 1, 1, (0, 0), [W['cyrus'], W['helmet'], W['wailord'], W['indee'], W['rs']], [pk(W['wailmer'], 100)],
+             [pk(O['bonsly'], 30)], 4, "Fighting", energy_now=None, deck="D03", hand_source="text",
+             his=["Play:Heavy Helmet", "Tool:Heavy Helmet@0", "Place:Indeedee ex@1", "Play:Professor's Research"], milestones=[],
+             notes="Going first: no Energy. Opening hand Cyrus, Heavy Helmet, Wailord, Indeedee ex + the Wailmer he placed; draw Professor's Research. Helmet on the Wailmer, bench the Indeedee ex, "
+                   "Research (draws Pokémon Center Lady and Soothing Shore)."))
+P.append(pos(f"D3-{G}-t03", G, 2, 3, (0, 0), [W['cyrus'], W['wailord'], W['lady'], W['shore'], W['pop']],
+             [pk(W['wailmer'], 100, tools=[W['helmet']]), pk(W['indee'], 130)],
+             [pk(O['bonsly'], 30), pk(O['riolu'], 60, tools=[O['balloon']]), pk(O['riolu'], 60, ["Fighting"])], 3, "Fighting",
+             me_discard=[W['rs']], opp_discard_n=3, deck="D03", hand_source="text",
+             his=["Evolve:Wailord@0", "Play:Soothing Shore", "Attach:1Water@0 zone"], milestones=["preparing an attacker"],
+             notes="Draw Lucky Ice Pop. The opponent's Bonsly used Teary Attack (a -30 on the Wailmer's next attack, cleared when it evolves; not modelled). He evolves the Wailmer into the Wailord, "
+                   "plays Soothing Shore and attaches the first Water; no attack (four Energy)."))
+P.append(pos(f"D3-{G}-t05", G, 3, 5, (0, 0), [W['cyrus'], W['lady'], W['pop'], W['ball']],
+             [pk(W['wailord'], 200, ["Water"], tools=[W['helmet']], behind=[W['wailmer']]), pk(W['indee'], 130)],
+             [pk(O['bonsly'], 30), pk(O['riolu'], 60, tools=[O['balloon']]), pk(O['riolu'], 60, ["Fighting", "Fighting"]), pk(O['hitmon'], 80)], 3, "Fighting",
+             me_discard=[W['rs']], opp_discard_n=3, stadium=SH0, deck="D03", hand_source="text",
+             his=["Play:Poké Ball", "(then: bench the second Wailmer, second Water, no attack)"], milestones=["preparing an attacker"],
+             notes="Draw Poké Ball (finds the second Wailmer, benched); second Water on the Wailord; no attack. The next opponent turn: Sabrina, Mega Lucario ex, and the Wailmer was the sacrificed "
+                   "switch-in (a forced choice during the opponent's turn, not built here)."))
+P.append(pos(f"D3-{G}-t07", G, 4, 7, (0, 1), [W['cyrus'], W['lady'], W['pop'], W['indee']],
+             [pk(W['wailord'], 200, ["Water", "Water"], tools=[W['helmet']], behind=[W['wailmer']]), pk(W['indee'], 130)],
+             [pk(O['mega'], 190, ["Fighting", "Fighting", "Fighting"], behind=[O['riolu']]), pk(O['bonsly'], 30), pk(O['lucario'], 100, tools=[O['balloon']], behind=[O['riolu']]), pk(O['hitmon'], 80)], 1, "Fighting",
+             me_discard=[W['rs'], W['ball'], W['wailmer']], opp_discard_n=4, stadium=SH0, deck="D03", hand_source="text",
+             his=["Place:Indeedee ex@2", "Attach:1Water@0 zone"], milestones=["preparing an attacker"],
+             notes="Draw the second Indeedee ex (benched). The opponent's Sabrina dragged the unenergised Wailmer up, Mega Lucario ex's Fighting Pulse took it (1 point to the opponent), the Wailord was promoted. "
+                   "Third Water, no attack."))
+P.append(pos(f"D3-{G}-t09", G, 5, 9, (0, 1), [W['cyrus'], W['lady'], W['pop'], W['wailordex']],
+             [pk(W['wailord'], 60, ["Water", "Water", "Water"], tools=[W['helmet']], behind=[W['wailmer']]), pk(W['indee'], 130), pk(W['indee'], 130)],
+             [pk(O['mega'], 190, ["Fighting", "Fighting", "Fighting"], behind=[O['riolu']]), pk(O['bonsly'], 30), pk(O['lucario'], 100, ["Fighting"], tools=[O['balloon']], behind=[O['riolu']]), pk(O['hitmon'], 80)], 2, "Fighting",
+             me_discard=[W['rs'], W['ball'], W['wailmer']], opp_discard_n=4, stadium=SH0, deck="D03", hand_source="text",
+             his=["Ability:Watch Over@1", "Ability:Watch Over@2", "Play:Lucky Ice Pop", "(Ice Pop four times, four heads, the card back to hand each time)", "Attach:1Water@0 zone", "Attack:Whale Pump"],
+             milestones=["preparing an attacker"],
+             notes="Draw the Wailord ex (left in hand). Mega Lucario ex's Fighting Pulse took the Wailord to 60. He heals 60 -> 100 with two Watch Overs, then Lucky Ice Pop four times (four heads, "
+                   "the card returns each time) to 180, fourth Water, Whale Pump (100): Mega Lucario ex 190 -> 90; Soothing Shore heals the Wailord to 200 at the end of his turn."))
+P.append(pos(f"D3-{G}-t11", G, 6, 11, (0, 1), [W['cyrus'], W['lady'], W['wailordex'], W['pop'], W['shore']],
+             [pk(W['wailord'], 190, ["Water", "Water", "Water", "Water"], tools=[W['helmet']], behind=[W['wailmer']], effects=[({"ReducedAttackDamage": {"amount": 30}}, 0)]), pk(W['indee'], 130), pk(W['indee'], 130)],
+             [pk(O['bonsly'], 30), pk(O['mega'], 110, ["Fighting", "Fighting", "Fighting"], behind=[O['riolu']]), pk(O['lucario'], 100, ["Fighting", "Fighting"], tools=[O['balloon']], behind=[O['riolu']]), pk(O['hitmon'], 80)], 1, "Fighting",
+             me_discard=[W['rs'], W['ball'], W['wailmer']], opp_discard_n=6, stadium=SH0, deck="D03", hand_source="text",
+             his=["Ability:Watch Over@1", "Attach:1Water@0 zone", "Play:Cyrus", "(then: Mega Lucario ex Active; the opponent conceded before an attack)"], milestones=[],
+             notes="Draw the second Soothing Shore (cannot be played). Bonsly's Teary Attack left the Wailord on 190 with a -30 on its next attack (modelled). He heals it to 200, fifth Water, and Cyrus "
+                   "brings the damaged Mega Lucario ex (110) Active; the opponent conceded before he attacked (Whale Pump would have done 110 - 30 = 80). The review's Astra check: not a lethal line."))
+
 # ---- milestone tags for the earlier turns (my reading of what each turn is about: preparing an attacker, managing a sacrifice,
 #      recognising an immediate win, adapting when the plan fails); turns with nothing of the four carry none
 MS = {
@@ -325,6 +443,13 @@ MS = {
 for _p in P:
     if not _p.get("milestones"):
         _p["milestones"] = MS.get(_p["id"], [])
+
+# deck 03: Watch Over (Indeedee ex) heals the Active and the engine offers it at full HP, where it does nothing; a turn on which none of his Pokemon is damaged
+# is flagged so the report does not count a no-op use as a difference
+MAXHP = {W['wailmer']: 100, W['wailord']: 200, W['wailordex']: 250, W['indee']: 130}
+for _p in P:
+    if _p["deck"] == "D03":
+        _p["noop_ability"] = not any(b.get("hp", MAXHP[b["card"]]) < MAXHP[b["card"]] for b in _p["me"]["board"])
 
 # ---- the held-out set of positions: a quarter of the GAMES, chosen by a fixed hash of the game id (not by turn), stable as games are added.
 #      No development pilot is run on a held-out position until the lock file says so (run_pilot.sh skips them while locked).

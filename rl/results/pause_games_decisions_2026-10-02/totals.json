@@ -6,14 +6,14 @@
  },
  "tags": {
   "Supporter/Item choice or order": 23,
-  "Energy attachment timing": 9,
   "attack vs another action": 5,
-  "Energy attachment target": 1,
+  "Energy attachment timing": 9,
   "retreat/promotion": 4,
+  "Energy attachment target": 1,
   "evolution timing/target": 3,
   "Turbo Shark Bench target": 2,
-  "attack choice": 1,
   "Tool placement": 2,
+  "attack choice": 1,
   "bench development": 2
  },
  "draw_tag": 10,
@@ -55,5 +55,64 @@
   "A-143837-t13",
   "A-115323-t09",
   "A-115323-t11"
- ]
+ ],
+ "deck03": {
+  "positions": 15,
+  "verdicts": {
+   "agree": 13,
+   "differ": 2
+  },
+  "first_action_agrees": [
+   "D3-020315-t02",
+   "D3-020315-t04",
+   "D3-020315-t06",
+   "D3-020315-t08",
+   "D3-020315-t10",
+   "D3-020920-t06",
+   "D3-020920-t08",
+   "D3-023418-t01",
+   "D3-023418-t03",
+   "D3-023418-t05",
+   "D3-023418-t07",
+   "D3-023418-t09",
+   "D3-023418-t11"
+  ],
+  "same_plan_10": [
+   "D3-020315-t02",
+   "D3-020315-t04",
+   "D3-020315-t06",
+   "D3-020920-t06",
+   "D3-023418-t05",
+   "D3-023418-t07"
+  ],
+  "categories": {
+   "Supporter/Item choice or order": [
+    "D3-020315-t10",
+    "D3-020920-t02",
+    "D3-023418-t03",
+    "D3-023418-t09"
+   ],
+   "ability use": [
+    "D3-020315-t08",
+    "D3-023418-t11"
+   ],
+   "bench development": [
+    "D3-023418-t01"
+   ],
+   "evolution timing/target": [
+    "D3-020920-t04"
+   ],
+   "same actions, different order": [
+    "D3-020920-t08"
+   ],
+   "same plan": [
+    "D3-020315-t02",
+    "D3-020315-t04",
+    "D3-020315-t06",
+    "D3-020920-t06",
+    "D3-023418-t05",
+    "D3-023418-t07"
+   ]
+  }
+ }
 }
