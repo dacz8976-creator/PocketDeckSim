@@ -85,6 +85,47 @@ The three replaced tests pinned the old resolution, as their comments said. Two 
 - `instrument_scan.py`'s counters don't see the new paths (Victory Star after a block coin, Will on a gate, the own-side coin, the queued `ApplyDamage` coin). They would need new counters if the replay wants a proof that a table ran them.
 - `players/value_functions.rs` prices the block coin at 50/50 (its comment at 1976). With Will pending the engine now makes it heads, so the bots' clock is off in that rare case. `players/` is not changed here.
 
+### The follow-up (Oct 2): the answer to the sixth-file question, all yes
+
+The coordinator via Dustin, Oct 2: the card-text job accepted, and the question answered "all yes, tests first, same branch, same limits". Before it, origin/main (the pinned rules engine, `rl/engine-2026-10-02`, main-8626a35, pin 24374a0) was merged into this branch (`d1b986c`). Main's engine tree equals R's (38af8b0), so the merge changed no engine line here: this branch now stacks on the official engine.
+
+**In plain words:**
+1. **Victini's caveat** (`card_validation.rs`) now says what is implemented: the gate coins, Confusion and a block coin, come first and are never offered; after their heads the attack's own coins are offered; Will goes to a block coin, else to the attack's first coin; a reroll is a fresh batch. It also says what stays open: the order of the two gate coins when both apply (nothing visible depends on it), and the block coin's reading, which shot row `victory-star-block-coin` would confirm. Victini stays "rules unverified" for that.
+2. **Luxury Coin isn't offered on the opponent's Mesagoza or Arcade** (`trainer_coin_plan.rs`). Its text covers "coins for an effect of your Trainer cards", and a Stadium is the Trainer card of the player who played it. A Stadium with no recorded player (a board set up without playing it) keeps the offer.
+3. **A Fossil can't be played under an Item lock** (`move_generation_trainer.rs`): its printed type is Item. A Pocket Shot List row, `fossil-item-lock`, asks for a recording as supporting proof, not as a gate.
+4. **Guts on your own Pokémon** (E1): Guts now flips when your own attack would Knock Out your own Guts Pokémon in the attack's outcome (Earthquake on your Benched Ursaluna, for example). Before, only the opponent's flipped.
+5. **Perish Body on a plain queued hit** (E2): an attack's queued `ApplyDamage` that would Knock Out the opponent's Active Galarian Cursola now flips its coin (Chase Order or Wild Swing into Cursola, for example); on heads the attacker is Knocked Out after the retaliation, as in the attack's own outcome. Before, never.
+
+**Which games could change** (the 83 lists now under `decks/`, 15 of them Dustin's):
+- **No list holds a Fossil, and none holds Gholdengo (Luxury Coin).** So none of Dustin's decks has either. Mesagoza is in Dustin's 01 and 08 and Arcade in brew-04, but with no Gholdengo anywhere the Luxury Coin change reaches no game.
+- No list holds an Item-lock attacker, a Guts Pokémon (Conkeldurr, Ursaluna) or Galarian Cursola.
+- So this follow-up changes no game between lists under `decks/`.
+- Rechecked on the 83 lists, the card-text job's reach is unchanged (Trap Territory: Dustin's 12; Will: brew-01, brew-04, Dustin's 10). One new list holds Victini: `decks/brews/drafts_2026-10-01/draft-D-entei-grimhound.txt` (2 Victini, 2 Mega Houndoom ex). The block-coin change reaches it only against a block-coin attacker, and no list holds one; it holds no Will.
+
+**Commits:** the log line and the STOP's one line on the coordination branch (20540c0); `53a3cca`, the five tests, all failing first (`tests_before_fix_followup.log`); `3090abb`, the five changes (`tests_after_fix_followup.log`); then the suite and this README.
+
+**Tests:**
+
+| test | file | before | after |
+|---|---|---|---|
+| `victini_caveat_names_the_gate_coins_and_what_stays_open` | `victini_victory_star_test.rs` | fails: the text still said "legacy resolution" | passes |
+| `luxury_coin_is_offered_only_on_the_players_own_stadium` (replaces `activated_stadium_records_placer_but_eligibility_belongs_to_actor`, which pinned the offer whoever had played the Stadium) | `gholdengo_luxury_coin_test.rs` | fails: the opponent's Arcade paused for Luxury Coin | passes |
+| `an_item_lock_stops_a_fossil` (Chingling's Jingly Noise; Poké Ball is the control that the lock is in force) | `rules_repair_trainers.rs` | fails: the Fossil was offered under the lock | passes |
+| `guts_flips_for_your_own_attacks_damage_to_your_own_ursaluna` (Whiscash's Earthquake, Ursaluna at 10 HP) | `pokemon/ursaluna_guts_test.rs` | fails: 0 survived of 60 | passes |
+| `perish_body_flips_for_a_plain_queued_hit_at_the_active` (Chase Order with the discard into Galarian Cursola) | `pokemon/galarian_cursola_perish_body_test.rs` | fails: 0 attackers Knocked Out of 60 | passes |
+
+One in-crate test in `attack_outcome.rs` was updated to the Guts split's new (side, index) form, with the same values.
+
+**How (line numbers at `3090abb`):**
+- Luxury Coin: `luxury_coin_covers` (`trainer_coin_plan.rs`), checked right after the Luxury Coin source in both entry points (`try_sample_entry_actual`, `try_forecast_entry`). The Stadium's own coins then take the ordinary path.
+- Fossil: the Item-lock check in `generate_possible_trainer_actions` covers the Fossil type too.
+- E1: `split_with_guts_survival` takes (side, index); `apply_defender_guts_if_needed` collects both sides.
+- E2: `forecast_apply_damage_after_coins` (`apply_action.rs`) adds Perish Body's coin when the hit would Knock Out the opponent's Active Perish Body Pokémon (`would_knock_out`, now shared), and applies `apply_perish_body_retaliation` on heads between the retaliation and the knockouts.
+
+**The suite** (`suite_followup.log`), at `3090abb`, the last engine commit: **2,039 passed, 0 failed, 0 ignored**: the 2,035 above plus the 5 tests added here, less the one pin replaced.
+
+**The engine diff from the official engine** (main-8626a35) is now 17 files: `apply_action.rs`, `apply_attack_action.rs`, `attack_outcome.rs`, `hooks/core.rs`, `state/mod.rs` (the five); `hooks/retreat.rs` (Trap Territory); `trainer_coin_plan.rs`, `move_generation_trainer.rs`, `card_validation.rs` (allowed for this follow-up); and 8 test files. Nothing in `players/` or `Cargo.lock` changed.
+
 ## Reach per card (`reach.py`, `reach_output.txt`)
 
 Every printing whose attack text maps to the site's mechanic, and the lists under `decks/` (64 files) that hold it. `decks/` is the same on R and on main (d010d2d).
@@ -251,6 +292,7 @@ The engine diff from R is four files:
 - `tests_before_fix_kangaskhan.log`, `tests_after_fix_kangaskhan.log`: the same, for the seventh.
 - `suite.log`: the full unit suite at `29e126a`.
 - The card-text job: `TEXT_AUDIT.md`; `tests_before_fix_will.log`, `tests_after_fix_will.log`; `tests_before_fix_text.log`, `tests_after_fix_text.log`; `tests_before_fix_trap_territory.log`, `tests_after_fix_trap_territory.log`; `suite_card_text.log` (the full suite at `5155ff7`).
+- The follow-up: `tests_before_fix_followup.log`, `tests_after_fix_followup.log`, `suite_followup.log` (the full suite at `3090abb`).
 - `reach.py`, `reach_output.txt`: reach per card.
 - `counter_probe_round2.rs`, `counter_probe_round2_output.txt`: the counters on constructed boards.
 - `smoke/`: the smoke check.
