@@ -549,6 +549,8 @@ sides with k3 still available; the 0.7.2 wheel and its run identities are untouc
      - Then via the Fable coordinator session, verbatim: "quizzes or the shot list should be used to clear up things whenever helpful, so I don't have to specifically ask for it."
      - **So any session may add a Pocket Shot List row or build a blind quiz without asking.** It tells Dustin in one line what the row or quiz is evidence for.
      - An untaken quiz or an unrecorded shot is never a blocker.
+     - **Extended Oct 2 to gameplay recordings** (Dustin, relayed by the coordinator, verbatim): "at any time, if more gameplay recording of certain decks helps, if capturing unclear things on the 'shot list', or making more quizzes helps improve the bot, I am available to do anything to help."
+       - Each of his games costs him about 10 minutes plus recording time, and saving his hours is the point. So ask for the smallest targeted set: which decks, which situation, and what the transcript must capture (hand at each turn start, every drawn card by name, plays in exact order, opponent hand size).
 3. Pilot quality: kd (the defender's Weakness and reductions in the clock) read against kp3 on v2; then, approved by
    Dustin on Sept 25 as optional and only after kd is read, **one Altaria detector network** on an otherwise idle
    laptop night: the Hydreigon recipe (two networks trained against each other, pair checks passed before anything is
