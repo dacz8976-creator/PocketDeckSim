@@ -7,7 +7,7 @@ use deckgym::card_ids::CardId;
 use deckgym::models::{EnergyType, PlayedCard};
 use deckgym::observation::{PlayerObservation, RevealedKnowledge};
 use deckgym::players::playout_player::{Knowledge, PlayoutParams, PlayoutPlayer};
-use deckgym::players::{create_players, parse_player_code, Player, PlayerCode};
+use deckgym::players::{create_players, parse_player_code, PlayerCode};
 use deckgym::test_support::{get_test_game_with_board, load_test_decks};
 use deckgym::{Game, State};
 use rand::{rngs::StdRng, SeedableRng};
@@ -182,7 +182,11 @@ fn the_same_seeds_give_the_same_moves() {
         let (deck_a, deck_b) = load_test_decks();
         let players = create_players(deck_a, deck_b, vec![code.clone(), parse_player_code("km3").unwrap()]);
         let mut game = Game::from_state(state.clone(), players, 1234);
-        (0..12).take_while(|_| !game.is_game_over()).map(|_| format!("{:?}", game.play_tick())).collect::<Vec<_>>()
+        let mut moves = Vec::new();
+        while moves.len() < 12 && !game.is_game_over() {
+            moves.push(format!("{:?}", game.play_tick()));
+        }
+        moves
     };
     assert_eq!(run(), run());
 }
