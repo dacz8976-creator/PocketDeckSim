@@ -1,0 +1,22 @@
+{
+ "_note": "The default pool for a development comparison. Copy it, set `pilot` (an engine pilot code built into the harness, or ext:<command>), `question`, and the program fields printed by build.sh, then run strength_prereg.py. `aggro` and `setup` are three of Dustin's lists each (the shortest and the longest floor games, groups.json); `draftA` joins development as a deck; the held-out group (heldout.json) is never in a development run. `deals` is a parameter, not a target: read the precision the report reaches and the time it says more would cost.",
+ "name": "default_pool",
+ "question": "(fill in: what this run is for)",
+ "pilot": "kog3",
+ "reference": "km3",
+ "stage": "dev",
+ "deck_groups": ["panel8", "aggro", "setup", "draftA"],
+ "opponent_groups": ["panel8"],
+ "deals": 200,
+ "seats": [0, 1],
+ "seed_base": 24300000000,
+ "pair_stride": 10000,
+ "threads": 2,
+ "log_level": "deck",
+ "ext_timeout_s": null,
+ "intended_lines": "rl/strength/intended_lines.json",
+ "program": "/path/to/strength",
+ "engine": "main-8626a35 engine tree 38af8b0cc4f3 (or the experimental branch's engine)",
+ "pilot_provenance": "branch@commit of the pilot's engine",
+ "reference_provenance": "km3 on rl/engine-2026-10-02/deckgym, main-8626a35"
+}

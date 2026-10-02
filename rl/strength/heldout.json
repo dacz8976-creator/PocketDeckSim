@@ -1,0 +1,6 @@
+{
+ "_note": "The held-out group (DESIGN.md f81cc964, appendix): decks never used in development. A development run refuses any deck listed here, on either side, while locked is true. Nobody flips `locked` to false until the laptop Opus or the coordinator says so (record who and when in `unlocked_by`). Draft B stays set aside.",
+ "locked": true,
+ "unlocked_by": null,
+ "decks": ["02-arceus-crobat", "04-absol-hoopa-darkrai", "07-skarmory-stall", "08-garchomp-toolbox", "11-archaludon-haxorus-dragonair", "12-ariados-whimsicott-ogerpon", "13-a-ninetales-raticate", "14-comfey-raticate-hypno", "15-jolteon-oricorio-raticate", "draft-C-meowstic-hatterene-v2", "draft-D-entei-grimhound"]
+}

@@ -1,0 +1,4 @@
+{"name": "smoke_km3_km3", "question": "Harness smoke test: km3 against km3 (must give exactly zero) on a handful of deals. Not a measurement.",
+ "pilot": "km3", "reference": "km3", "decks": ["t-altaria", "t-hydreigon", "draft-A-shark-tempo"], "opponents": ["t-blaziken", "t-lucario", "t-suicune"],
+ "deals": 5, "seats": [0, 1], "seed_base": 24300000000, "threads": 2,
+ "program": "/home/dacz8976/strength_build/strength", "program_sha256": "fc07742a1374ecbb9d72e00a8c0d687d06e9c481f99cb236de4f2bf90997aca3", "engine": "main-8626a35 engine tree 38af8b0cc4f3"}

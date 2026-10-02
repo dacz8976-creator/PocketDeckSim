@@ -1,0 +1,21 @@
+{
+ "_note": "Intended lines, per deck name (a key '*' applies to every deck). Counted per game (an indicator, with a paired difference between the arms) and per use (a pooled rate). The laptop's list replaces these starting lines without any code change. `own turn` n is the deck player's n-th turn.",
+ "draft-A-shark-tempo": [
+  {"id": "turbo_shark_arms_bench", "text": "Turbo Shark used (arming a Benched Pokémon) by own turn 3", "kind": "used_by_own_turn", "action": "Attack:Turbo Shark", "own_turn": 3}
+ ],
+ "t-altaria": [
+  {"id": "eevee_active_own_turn_1", "text": "Eevee is the Active Pokémon on own turn 1 (Boosted Evolution is passive: an Active Eevee may evolve at once)", "kind": "active_at_own_turn", "active": "Eevee", "own_turn": 1}
+ ],
+ "t-hydreigon": [
+  {"id": "hyper_ray_without_ko", "text": "Hyper Ray used without a knockout (no point gained before the player's next decision)", "kind": "use_without_point", "action": "Attack:Hyper Ray"}
+ ],
+ "13-a-ninetales-raticate": [
+  {"id": "thieving_incisors", "text": "Thieving Incisors used (an ability choice when evolving into Raticate ex)", "kind": "used_ever", "action": "Ability:Thieving Incisors"}
+ ],
+ "14-comfey-raticate-hypno": [
+  {"id": "thieving_incisors", "text": "Thieving Incisors used (an ability choice when evolving into Raticate ex)", "kind": "used_ever", "action": "Ability:Thieving Incisors"}
+ ],
+ "15-jolteon-oricorio-raticate": [
+  {"id": "thieving_incisors", "text": "Thieving Incisors used (an ability choice when evolving into Raticate ex)", "kind": "used_ever", "action": "Ability:Thieving Incisors"}
+ ]
+}

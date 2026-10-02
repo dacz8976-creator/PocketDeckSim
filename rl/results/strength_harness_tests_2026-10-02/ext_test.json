@@ -1,0 +1,2 @@
+{"name": "ext_test", "question": "Protocol test: the example external pilot (prefers an attack) against km3.",
+ "pilot": "ext:python3 rl/strength/ext_pilot_example.py attack", "reference": "km3", "decks": ["t-altaria"], "opponents": ["t-blaziken"], "deals": 3, "seats": [0, 1], "threads": 2}
