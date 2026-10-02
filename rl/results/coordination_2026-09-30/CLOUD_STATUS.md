@@ -5,14 +5,15 @@ Written Sept 30 for the Fable coordinator session (Dustin's single delegator). T
 ## STOP (step 8c, from Oct 2 01:51 UTC): UNEXPLAINED games found
 
 The cloud's step 8c traces (`rl/results/engine_switch_rules_2026-10/trace_8c_cloud/`, `summary.txt` there for the running count) find changed games that `tightened_rule.py` with the accepted probes cannot explain. PLAN.md: this stops the switch until they are resolved. The run continues over every remaining game, and this section is updated at each push.
-- **So far 4 unexplained, all in garchomp_meowth v t-blaziken or t-sceptile, and all the same shape:**
+- **So far 5 unexplained, all the same shape:**
   - step 8 km3, pairing 1, deal 399, tick 81;
   - step 8 k3, pairing 4, deal 7, tick 95;
   - step 8 km3, pairing 4, deal 7, tick 84;
-  - step 8 km3, pairing 4, deal 360, tick 57.
-  - Garchomp's Land Crush knocks out the Active, and the knocked-out side's Promote is the first difference: R promotes Heatmor or Grovyle, the old engine another Pokémon, with Meowth (Carefree Steps) on the other Bench. Both traces reproduce their rows.
+  - step 8 km3, pairing 4, deal 360, tick 57;
+  - step 8 km3, pairing 21 (hisuian_goodra v t-suicune), deal 310, tick 87.
+  - An attack knocks out the Active (Garchomp's Land Crush; in 21/310 Goodra's Heavy Impact), and the knocked-out side's Promote is the first difference. R promotes a sniper: Heatmor or Grovyle at a Benched Meowth (Carefree Steps), or Chien-Pao ex at Hisuian Goodra (Securely Sheltered). The old engine promotes another Pokémon. Both traces reproduce their rows.
 - **Why the accepted probe can't explain them (by hand):** `coin_probe.rs` stops at any state where the opponent is to move, so it never looks past the end of the opponent's turn. The bots do (`expectiminimax_player.rs` at R, 630-655: a forced EndTurn is resolved without a ply, before the turn-boundary cutoffs at 773 and 914). km3 and k3 make this Promote with depth 3, and their search goes Promote, the forced EndTurn (no ply), the next turn's draw, Tongue Whip or Slicing Snipe, then the queued coin-path choice at Meowth, in a frame of only queued choices, which is priced even at depth 0 (660).
-- **A scratch variant of `coin_probe`** that resolves the opponent's forced continuations without a ply, exactly as the bots do (`make_coin_probe_xturn.py`; not the accepted probe), finds that gate in all four: "queued after 3, a pure frame". Its agreement check and controls are being run.
+- **A scratch variant of `coin_probe`** that resolves the opponent's forced continuations without a ply, exactly as the bots do (`make_coin_probe_xturn.py`; not the accepted probe), finds that gate in all five: "queued after 3, a pure frame" (in 21/310 also a finite heads cut on Goodra chosen at the third move). Its agreement check and controls are being run.
 - **Ruling needed (coordinator / Dustin):** whether that by-hand reading, or the variant, may count as the second half for these games. Until then they stay UNEXPLAINED and the stop stands.
 - **Also 1 needing a judgment so far:** km3 pairing 4, deal 106: coin_probe finds the queued choice only at the leaf, in a mixed frame (`judgment.md`).
 
