@@ -626,6 +626,57 @@ fn test_ariados_trap_territory_increases_retreat_cost() {
         .any(|action| matches!(action.action, SimpleAction::Retreat(1))));
 }
 
+/// Trap Territory counts once for each Ariados (the card text, on each Ariados: "Your opponent's Active Pokémon's Retreat
+/// Cost is 1 more."; Recording_QA 213034, T5: Grass Knot did 160 to Team Rocket's Moltres ex, printed Retreat Cost 2,
+/// with two Ariados on the Bench, 40 + 30 × 4). With zero, one and two of the opponent's Ariados in play, Bulbasaur
+/// (printed Retreat Cost 1) can retreat with exactly 1 more Energy for each, and not with one fewer.
+#[test]
+fn trap_territory_adds_one_to_the_retreat_cost_for_each_ariados() {
+    let can_retreat = |ariados: usize, energy: usize| {
+        let mut opponent = vec![PlayedCard::from_id(CardId::A1001Bulbasaur)];
+        opponent.extend((0..ariados).map(|_| PlayedCard::from_id(CardId::B1a006Ariados)));
+        let game = get_test_game_with_board(
+            vec![
+                PlayedCard::from_id(CardId::A1001Bulbasaur).with_energy(vec![EnergyType::Grass; energy]),
+                PlayedCard::from_id(CardId::A1053Squirtle),
+            ],
+            opponent,
+        );
+        let (_actor, actions) = game.get_state_clone().generate_possible_actions();
+        actions
+            .iter()
+            .any(|action| matches!(action.action, SimpleAction::Retreat(1)))
+    };
+    for ariados in 0..=2 {
+        let cost = 1 + ariados;
+        assert!(can_retreat(ariados, cost), "{ariados} Ariados: a Retreat Cost of {cost}, paid in full");
+        assert!(!can_retreat(ariados, cost - 1), "{ariados} Ariados: a Retreat Cost of {cost}, one Energy short");
+    }
+}
+
+/// The same count through Grass Knot, the attack that read it in 213034 (Whimsicott ex: "This attack does 30 more
+/// damage for each Energy in your opponent's Active Pokémon's Retreat Cost."): into Charizard ex (printed Retreat Cost
+/// 2, 180 HP) with zero, one and two of the attacker's Ariados in play, 100, 130 and 160.
+#[test]
+fn grass_knot_reads_one_more_retreat_cost_for_each_ariados() {
+    for (ariados, damage) in [(0, 100), (1, 130), (2, 160)] {
+        let mut attacker = vec![PlayedCard::from_id(CardId::B1016WhimsicottEx)
+            .with_energy(vec![EnergyType::Grass, EnergyType::Grass])];
+        attacker.extend((0..ariados).map(|_| PlayedCard::from_id(CardId::B1a006Ariados)));
+        let mut game = get_test_game_with_board(attacker, vec![PlayedCard::from_id(CardId::A1036CharizardEx)]);
+        game.apply_action(&Action {
+            actor: 0,
+            action: attack_action(CardId::B1016WhimsicottEx, 0),
+            is_stack: false,
+        });
+        assert_eq!(
+            game.get_state_clone().get_active(1).get_remaining_hp(),
+            180 - damage,
+            "{ariados} Ariados"
+        );
+    }
+}
+
 #[test]
 fn test_wartortle_shell_shield_prevents_bench_damage() {
     let mut game = get_test_game_with_board(
