@@ -248,16 +248,17 @@ fn get_retreat_cost_for_player_internal(
             normal_cost.push(EnergyType::Colorless);
         }
 
-        // Ariados Trap Territory: Your opponent's Active Pokémon's Retreat Cost is 1 more.
-        // This check needs to look at if the OPPONENT has Ariados in play
+        // Ariados Trap Territory: "Your opponent's Active Pokémon's Retreat Cost is 1 more." Each
+        // Ariados in the OPPONENT's play adds its own 1, as the text on each says (Recording_QA
+        // 213034: with two Ariados, Grass Knot read 2 more; the card-text job, Oct 2).
         let opponent = (player + 1) % 2;
         for (_idx, pokemon) in state.enumerate_in_play_pokemon(opponent).filter(|_| is_active) {
-            if matches!(
-                get_in_play_ability_mechanic(state, pokemon),
-                Some(AbilityMechanic::IncreaseRetreatCostForOpponentActive { amount: 1 })
-            ) {
-                normal_cost.push(EnergyType::Colorless);
-                break;
+            if let Some(AbilityMechanic::IncreaseRetreatCostForOpponentActive { amount }) =
+                get_in_play_ability_mechanic(state, pokemon)
+            {
+                for _ in 0..*amount {
+                    normal_cost.push(EnergyType::Colorless);
+                }
             }
         }
 
