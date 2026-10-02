@@ -2,6 +2,8 @@
 
 Source folders: `C:\Users\dacz8\OneDrive\Desktop\Battle Logs\Recording_QA\<stem>_iOS_shark_sol\` (REVIEW.md, COVERAGE.md, `native\` full-size frames, `overview\sample_frames\` one 390 px frame per 4 s, `gap_*\`). Dustin's go-ahead for stills (Oct 2, in chat): his own hand is visible, the opponent's is not; the decks are on the Pause Games log. Frames were read by Sonnet helpers (still images only, no video). The deck lists are the Pause Games `pause_decks` doc for Draft A (`decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt`).
 
+**Update (Oct 2, evening): Codex's retrospective packets confirm all five hands that were `elimination` or "probable" below (132311 t05 and t11, 115323 t13, 143837 t05 and t07), exactly as listed; their `hand_source` is now `codex-confirmed`. Deck 03 games 021402 and 022135 have hands from Codex's native-frame packets (`codex-native`), see README "Codex hands".**
+
 `text` = opening hand + named draws - named plays from the review. `frame` = read from stills. `elimination` = forced by the review's own later plays.
 
 Every position was checked by the harness: every card seen (hand, discard, board, under evolutions, Tools, own Stadium) must fit inside the 20-card list; the cards left over are the unseen deck. All 22 positions passed.

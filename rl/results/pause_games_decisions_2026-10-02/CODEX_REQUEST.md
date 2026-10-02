@@ -1,5 +1,20 @@
 # Request for the Codex agents: what to add when they re-review games (Oct 2, 2026)
 
+## Update, Oct 2 evening: read this first (the sections below are the original request; the parts already done are marked)
+
+**Done with your batch, thank you.** All five uncertain Draft A hands (`132311` turns 5 and 11, `115323` turn 13, `143837` turns 5 and 7) match what had been assumed, so nothing changed there. Deck 03 games `021402` and `022135` are now built from your hand packets (12 of his turns). So items 1 and 2 of section 2 are finished; item 3 (the Ladder Log games) is your batch in progress, and item 4 (the 26 Auto recordings, one game per deck first) is not started.
+
+**What would help most in the next batch, in order:**
+
+1. **Boards at the start of each owner turn as fresh observations.** The packets this time inherit every board from the accepted review's prose, so some values had to be estimated: the opponent's Energy per Pokémon (the review gives totals, not who holds what), bench order, discard counts. Per owner turn, for both players: every Pokémon in play left to right (name, HP now / maximum, Energy by type, Tool, the evolution stack underneath), the Stadium, both players' points, and the opponent's discard count whenever a pile is opened.
+2. **Choices he makes during the opponent's turn.** A forced switch (the opponent's Sabrina) or the promotion after a knockout: write the options on screen and the one he picked, with the frame time. Two such decisions could not be built: `021402` game turn 8 and `023418` game turn 6.
+3. **Deck lists for the old Ladder Log games.** The packets say the exact 20 cards are unavailable. If the Ladder Log or Dustin has them, add them: a position needs the list for the cards not yet seen. If nobody has them, the closest list in `decks/dustin/` could stand in and be marked approximate (decision for Dustin; do not substitute without it).
+4. **Who made each decision**: the batch already records the Auto flag for a whole game; for Auto games add, per owner turn, whether the decisions were the game's Auto or his own.
+
+**For Dustin to hand to Codex. Written from text only.**
+
+(original request follows)
+
 For Dustin to hand to Codex. Written from text only. It says what has already been rebuilt, in what order to re-review, exactly what to add, and what not to redo.
 
 ## 1. What has been rebuilt from the ten pause games

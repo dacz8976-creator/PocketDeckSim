@@ -120,7 +120,7 @@ P.append(pos(f"A-{G}-t03", G, 2, 3, (0, 0), [A['rs'], A['sharp'], A['cape'], A['
 P.append(pos(f"A-{G}-t05", G, 3, 5, (0, 0), [A['sharp'], A['pop'], A['copy'], A['ball']],
              [pk(A['lap'], 110, ["Water", "Water"]), pk(A['nine'], 180, tools=[A['cape']], behind=[A['vulp']])],
              [pk(O['meow'], 190, ["Grass"], tools=[O['leafcape']], behind=[O['sprig']]), pk(O['ogerpon'], 130)], 2, "Grass",
-             me_discard=[A['ball'], A['misty'], A['rs']], opp_discard_n=3, opp_discard_energy=["Grass"], hand_source="elimination",
+             me_discard=[A['ball'], A['misty'], A['rs']], opp_discard_n=3, opp_discard_energy=["Grass"], hand_source="codex-confirmed",
              effects=[{"turn": 5, "effect": {"DelayedSpotDamage": {"source_player": 1, "target_player": 0, "target_in_play_idx": 0, "amount": 70, "knock_out": False}}}],
              his=["Play:Poké Ball", "(then: bench Carvanha, Water on Lapras, Surf)"],
              notes="The turn-5 draw is the Poké Ball he plays (nothing else in hand could be it). Flower Trick's mark on the Active Spot (70 at the end of this turn) is set."))
@@ -128,7 +128,7 @@ P.append(pos(f"A-{G}-t07", G, 4, 7, (0, 1), [A['sharp'], A['pop'], A['copy'], A[
              [pk(A['carv'], 50), pk(A['nine'], 180, tools=[A['cape']], behind=[A['vulp']])],
              [pk(O['meow'], 120, ["Grass", "Grass"], tools=[O['leafcape']], behind=[O['sprig']]), pk(O['ogerpon'], 130)], 3, "Grass",
              me_discard=[A['ball'], A['misty'], A['rs'], A['ball'], A['lap']], me_discard_energy=["Water", "Water", "Water"],
-             opp_discard_n=3, opp_discard_energy=["Grass"], hand_source="elimination",
+             opp_discard_n=3, opp_discard_energy=["Grass"], hand_source="codex-confirmed",
              his=["Evolve:Mega Sharpedo ex@0", "Attach:1Water@0 zone", "Play:Copycat", "(then: Turbo Shark, Water to Ninetales)"],
              notes="Lapras was KO'd on T6 (Flower Trick 70 + Solar Beam 80); Carvanha promoted. Draw Misty."))
 
@@ -181,9 +181,9 @@ P.append(pos(f"A-{G}-t03", G, 2, 3, (0, 0), [A['sharp'], A['pop'], A['cyrus'], A
 P.append(pos(f"A-{G}-t05", G, 3, 5, (0, 0), [A['pop'], A['cyrus'], A['nine'], A['misty'], A['irida'], A['sharp']],
              [pk(A['sharp'], 130, ["Water"], behind=[A['carv']]), pk(A['carv'], 50, ["Water"])],
              [pk(O['furf'], 70, ["Grass"]), pk(O['shay'], 60)], 5, "Fighting",
-             me_discard=[A['ball'], A['rs']], opp_discard_n=2, opp_discard_energy=["Fighting"], hand_source="frame",
+             me_discard=[A['ball'], A['rs']], opp_discard_n=2, opp_discard_energy=["Fighting"], hand_source="codex-confirmed",
              his=["Evolve:Mega Sharpedo ex@1", "Play:Lucky Ice Pop", "Play:Lucky Ice Pop", "Attach:1Water@0 zone", "Attack:Turbo Shark", "Attach:1Water@1 fx"],
-             notes="Draw: the second Mega Sharpedo ex (probable, by card count). Opp healed Furfrou back to 70 with Ice Pop (twice) and Shaymin."))
+             notes="Draw: the second Mega Sharpedo ex (first read as probable, by card count; confirmed by Codex's native evidence). Opp healed Furfrou back to 70 with Ice Pop (twice) and Shaymin."))
 P.append(pos(f"A-{G}-t07", G, 4, 7, (0, 0), [A['cyrus'], A['nine'], A['misty'], A['irida'], A['rs']],
              [pk(A['sharp'], 140, ["Water", "Water"], behind=[A['carv']]), pk(A['sharp'], 190, ["Water", "Water"], behind=[A['carv']])],
              [pk(O['furf'], 30, ["Grass"]), pk(O['shay'], 60, ["Fighting"])], 5, "Fighting",
@@ -271,7 +271,7 @@ P.append(pos(f"A-{G}-t13", G, 7, 13, (1, 1), [A['cyrus'], A['nine']],
              [pk(A['sharp'], 70, ["Water"], tools=[A['cape']], behind=[A['carv']]), pk(A['carv'], 50), pk(A['vulp'], 60, ["Water"]), pk(A['vulp'], 60, ["Water", "Water"])],
              [pk(O['ramp'], 30, ["Fighting"], behind=[O['skull']]), pk(O['snor'], 130), pk(O['rowlet'], 60), pk(O['skull'], 40, ["Fighting"])], 2, "Fighting",
              me_discard=[A['ball'], A['misty'], A['misty'], A['copy'], A['irida'], A['pop'], A['lap']], me_discard_energy=["Water"] * 5, opp_discard_n=7, opp_discard_energy=["Fighting"] * 4,
-             stadium=AR, hand_source="frame",
+             stadium=AR, hand_source="codex-confirmed",
              his=["Evolve:Alolan Ninetales ex@3", "Attach:1Water@2 zone", "Retreat:3", "Attack:Binding Snow"],
              milestones=["managing a sacrifice"],
              notes="Draw Alolan Ninetales ex. The Mega Sharpedo ex (a 3-point liability) is at 70 HP in front of a Rampardos that hits for 150; he evolves the newly benched Vulpix, retreats the Mega into the Ninetales (2 points) and Binding Snow KOs the 30-HP Rampardos (2-1). The next opponent turn Head Smash KO'd the Ninetales for the game."))
@@ -289,7 +289,7 @@ P.append(pos(f"A-{G}-t09", G, 5, 9, (1, 0), [A['cyrus'], A['nine'], A['misty'], 
 P.append(pos(f"A-{G}-t11", G, 6, 11, (2, 0), [A['cyrus'], A['misty'], A['irida'], A['vulp'], A['copy'], A['cape']],
              [pk(A['nine'], 140, W3, behind=[A['vulp']]), pk(A['sharp'], 130, ["Water", "Water"], behind=[A['carv']]), pk(A['sharp'], 180, ["Water", "Water"], behind=[A['carv']])],
              [pk(O['flygon'], 180, ["Fighting"], behind=[O['trap']])], 3, "Fighting",
-             me_discard=[A['ball'], A['rs'], A['pop'], A['rs'], A['ball']], opp_discard_n=6, opp_discard_energy=["Fighting", "Grass", "Fighting"], stadium=RC, hand_source="frame",
+             me_discard=[A['ball'], A['rs'], A['pop'], A['rs'], A['ball']], opp_discard_n=6, opp_discard_energy=["Fighting", "Grass", "Fighting"], stadium=RC, hand_source="codex-confirmed",
              his=["Tool:Elegant Cape@0", "Play:Irida", "Place:Alolan Vulpix@3", "Attach:1Water@3 zone", "Attack:Binding Snow"],
              milestones=["preparing an attacker"],
              notes="Draw Elegant Cape. The opponent's Flygon ex (Rare Candy from Trapinch) has one Fighting and Sand Slammer chips 10 off each of his Pokémon at every checkup. Cape on the Ninetales, Irida heals the three Water Pokémon, the second Vulpix is benched with the turn's Water, Binding Snow 180 -> 100."))
@@ -430,6 +430,13 @@ P.append(pos(f"D3-{G}-t11", G, 6, 11, (0, 1), [W['cyrus'], W['lady'], W['wailord
              notes="Draw the second Soothing Shore (cannot be played). Bonsly's Teary Attack left the Wailord on 190 with a -30 on its next attack (modelled). He heals it to 200, fifth Water, and Cyrus "
                    "brings the damaged Mega Lucario ex (110) Active; the opponent conceded before he attacked (Whale Pump would have done 110 - 30 = 80). The review's Astra check: not a lethal line."))
 
+# ======================================================================== deck 03 games 021402 and 022135 (hands from the Codex native-frame packets, Oct 2)
+# The positions are data, not code: codex_positions/wl_final_<game>.json (built by two independent builders from the accepted reviews + the Codex hand
+# packets, adjudicated, audited by a third reader; see README "Codex hands"). Added to P as they are; milestones and the held-out flag are applied below.
+import glob
+for _f in sorted(glob.glob(os.path.join(os.path.dirname(os.path.abspath(__file__)), "codex_positions", "wl_final_*.json"))):
+    P.extend(json.load(open(_f, encoding="utf-8")))
+
 # ---- milestone tags for the earlier turns (my reading of what each turn is about: preparing an attacker, managing a sacrifice,
 #      recognising an immediate win, adapting when the plan fails); turns with nothing of the four carry none
 MS = {
@@ -439,6 +446,9 @@ MS = {
     "A-114458-t04": ["preparing an attacker"], "A-114458-t06": ["preparing an attacker"], "A-114458-t08": ["managing a sacrifice"],
     "A-132311-t03": ["preparing an attacker"], "A-132311-t05": ["preparing an attacker", "managing a sacrifice"],
     "A-132311-t07": ["preparing an attacker", "managing a sacrifice"], "A-132311-t07b": ["preparing an attacker", "managing a sacrifice"],
+    "D3-021402-t03": ["preparing an attacker"], "D3-021402-t05": ["preparing an attacker"],
+    "D3-022135-t03": ["preparing an attacker"], "D3-022135-t05": ["preparing an attacker"], "D3-022135-t07": ["preparing an attacker"],
+    "D3-022135-t09": ["adapting when the plan fails"],
 }
 for _p in P:
     if not _p.get("milestones"):
