@@ -4,11 +4,13 @@ Draft, not ranked. List: `draft-D-entei-grimhound.txt`. Written Oct 1, 2026 by t
 (see below). It keeps what worked in Dustin's brew 08 (Entei ex, Rainbow Cave, Flame Patch) and adds a finisher.
 
 **Amended Oct 2 (one Mega Houndoom ex).** The first version ran two Mega Houndoom ex. Dustin owns **one** (P-B 080; the coordinator,
-Oct 2), and ownership means copies as well as cards (`OWNERSHIP.md`), so that list was unusable. The second copy is replaced by
+Oct 2), and a promo-only card needs its copy count checked (Dustin's rule, Oct 2: any non-promo card he has two of or can easily get a
+second; `OWNERSHIP.md`), so that list was unusable. The second copy is replaced by
 **Copycat (B1 225)**, a one-of. Why Copycat: with one copy the deck's problem is finding the finisher, and Copycat is the one card
 here that turns the hand over; Dustin ran two Copycat in brew 08 (7-3 on the ladder), so he has them. Weighed and not taken: a second
-Giant Cape (also in brew 08, two copies; it protects a Pokémon, it does not find one), and any Fire Pokémon he has no list for
-(ownership unknown, the mistake that sank Lapras ex). What the swap does to the plan is in "The plan, by turn" and "What would make me
+Giant Cape (also in brew 08, two copies; it protects a Pokémon, it does not find one), and a different Fire Pokémon as the finisher (none that I found does
+what Grimhound Flare's three coins with Victory Star do for this shell; ownership of a regular card would not be the obstacle, but I did not
+find one that fits). What the swap does to the plan is in "The plan, by turn" and "What would make me
 drop it". **The floor page of Oct 2 (693 wins in 1,920, clears) is for the two-copy list; the amended list has no page yet.**
 
 ## The list (Fire energy)

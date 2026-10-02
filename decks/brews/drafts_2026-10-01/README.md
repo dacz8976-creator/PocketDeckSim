@@ -15,11 +15,11 @@ PROJECT_INSTRUCTIONS).
 | C, Meowstic / Hatterene v2 | borderline: 366 wins (19.1%), provisional (Hatterene's role is the default from the flag; its 140 is priced at 70) | open |
 | D, Entei / Grimhound | the two-copy list cleared: 693 wins (36.1%) | **amended Oct 2 to one Mega Houndoom ex**; the amended list has no floor page yet, so the 693 does not carry over |
 
-**Ownership includes copy counts.** A card in a list is only usable if Dustin owns enough copies, not just the card. He owns **exactly
-one Mega Houndoom ex (P-B 080)**: draft D as first written ran two and was unusable. The Lapras ex mistake was the same kind
-(a promo he cannot have). `OWNERSHIP.md` lists, for every card of the four drafts, the most copies his own lists show; any card with
-nothing there, or fewer copies than the draft runs, is unverified until he confirms it. Check this before a draft goes to the floor
-or to him.
+**Ownership (Dustin, Oct 2, verbatim): "any non-promo card I either have 2 of or can easily acquire a second."** A regular card at two copies is
+fine. **Only a card whose only printing is a promo needs checking with him, copy count included:** he has **exactly one Mega Houndoom ex
+(P-B 080)** and **no Lapras ex (P-A 014)**. Draft D as first written ran two Houndoom ex and was unusable; draft A's first version ran Lapras ex.
+`OWNERSHIP.md` has the copy counts his own lists show for every draft card, as evidence and for the promo-only cards; it is not a gate for
+regular cards. Check any new draft for promo-only cards before it goes to the floor or to him.
 
 **What changed on Oct 2** (branch `sonnet/drafts-fixes`):
 - Draft D: the second Mega Houndoom ex is replaced by a Copycat; plan, odds and the "drop it" line rewritten for one finisher
@@ -105,9 +105,10 @@ something to say about the floor.
   matters only for a card whose *only* printing is a promo. The Poké Ball (P-A 005) and Professor's Research (P-A 007) that every
   list uses are the database's names for cards that also exist as A2b 111 and A4b 373, and they are in his own decks. Beyond that,
   ownership of the other cards is not checked. A check of every card's printings in `lib/deckgym-database.json` (Oct 1) found Lapras
-  ex and Mega Houndoom ex to be the only cards in the four lists whose printings are all promos. **That check looked at which cards
-  exist as printings, not at how many copies he has** (Oct 2 correction: he owns one Mega Houndoom ex, so a draft running two was
-  unusable); see `OWNERSHIP.md` for the copy counts his own lists show.
+  ex and Mega Houndoom ex to be the only cards in the four lists whose printings are all promos. **That check was right about
+  which cards are promo-only, and missed that he has one copy of Mega Houndoom ex** (Oct 2: so a draft running two was unusable). Dustin's
+  rule (Oct 2): any non-promo card he has two of or can easily get a second; only promo-only cards need checking, copy count included.
+  See `OWNERSHIP.md`.
 
 ## Considered and not drafted
 
