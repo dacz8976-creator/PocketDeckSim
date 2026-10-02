@@ -20,7 +20,7 @@ python3 "$HERE/filter_positions.py" "$D/positions_A.json" "$D/positions_heldout.
 IDS=$(python3 -c "import json; print(' '.join(p['id'] for p in json.load(open('$RUNS/positions_run.json'))))")
 run_one() {
     id=$1
-    nice -n 19 "$BIN" --positions "$RUNS/positions_run.json" --deck A="$D/draftA.txt" --seeds "$SEEDS" --bot "$BOT" --only "$id" > "$RUNS/out_$id.jsonl" 2> "$RUNS/err_$id.txt"
+    nice -n 19 "$BIN" --positions "$RUNS/positions_run.json" --deck A="$D/draftA.txt" --deck D03="$D/deck03.txt" --seeds "$SEEDS" --bot "$BOT" --only "$id" > "$RUNS/out_$id.jsonl" 2> "$RUNS/err_$id.txt"
 }
 export -f run_one; export D SEEDS BIN BOT RUNS
 s=$(date +%s)

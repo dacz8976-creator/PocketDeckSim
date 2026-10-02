@@ -6,11 +6,11 @@ harness example: harness/pg_pos.rs  (cargo build --release --locked --example pg
 bot: parse_player_code("km3") = PublicPricingPlayer over ExpectiMiniMaxPlayer, km value function, depth 3, opponent_ply 0
 seeds 1..12 per position (each seed fixes the search's draw-order sample and the real draws)
 
-57acc758ea1feb42fd8a2c1a43ab6a653c3e5ac97d41516a536f4591fa18b7b7  pg_pos
+20739924c49a59c3cd5ea7eb528966aa8efaa3c9ff5eb84cb03fe0aac353d119  pg_pos
 3f39092ba6680cc5b8013b961e2f5a0f07bc779816ade7a6891983082b2e7417  draftA.txt
-3293053bee82f1b46ea0780ff3645dc317847f30e18c84f1430d5719419860f6  positions_A.json
+cf4914eeb540acbe2261dde4074a905dfc980ff89d9064ce60bbcdec62c390d4  positions_A.json
 c98ccc63a29a8b7e467a91043a5179295e2cfb9b67ab0a36ad946cdabb77949b  dg_patch.py
 01b17932001c57f0875318ef185f4a2bf34c6485e6cb73d08c75b9cfc8e857c5  pgd_patch.py
-7ab984326f63255c129f8fcb0640077072f340c6a800b102e0e4e517a7bea990  pg_pos.rs
+160608be706b72c6d90fd0da6b60d653004df68f41274884e532cde95ad4c251  pg_pos.rs
 
-compute: one 5-minute nice-19 build, then about 4 s for all 22 positions x 12 seeds
+compute: one 5-minute nice-19 build, then about 4 s for all 49 positions x 12 seeds

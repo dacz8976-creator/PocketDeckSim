@@ -8,7 +8,7 @@ echo "start $(date -u +%H:%M:%S) seeds=$SEEDS" > "$D/runall.log"
 run_one() {
     id=$1
     s=$(date +%s)
-    nice -n 19 "$D/pg_pos" --positions "$D/positions_A.json" --deck A="$D/draftA.txt" --seeds "$SEEDS" --only "$id" > "$D/runs/out_$id.jsonl" 2> "$D/runs/err_$id.txt"
+    nice -n 19 "$D/pg_pos" --positions "$D/positions_A.json" --deck A="$D/draftA.txt" --deck D03="$D/deck03.txt" --seeds "$SEEDS" --only "$id" > "$D/runs/out_$id.jsonl" 2> "$D/runs/err_$id.txt"
     echo "$(date -u +%H:%M:%S) done $id exit $? in $(( $(date +%s) - s )) s" >> "$D/runall.log"
 }
 export -f run_one; export D SEEDS

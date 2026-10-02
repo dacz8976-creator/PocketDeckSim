@@ -18,12 +18,20 @@ A "turn" here is one of his turns. "Text" = rebuilt from the written review (ope
 
 Still only **probable**, not certain: `132311` turn 5 (the second Mega Sharpedo ex: fixed by card count) and turn 11 (the Elegant Cape: seen played within seconds of the turn banner, not in the fan); `115323` turn 13 (the Alolan Ninetales ex: seen being dragged from the fan); `143837` turns 5 and 7 (elimination, not seen). The **opponent's hand size** in every position is a count of card backs or bookkeeping, good to about one card.
 
-**Deck 03, the five Wailord games (`competitive_sol`): nothing rebuilt yet.** Stems: `20261002_020315000` (lost 1-3, went second), `20261002_020920000`, `20261002_021402000`, `20261002_022135000` (lost 1-3 after 30 turns, went first), `20261002_023418000`. I read two of the five reviews: the opening hand is named in three (`020315`, `020920`, `023418`) and not in `022135` and `021402`; `020315` names its early draws, so its first turns could be rebuilt from text.
+**Deck 03, the five Wailord games (`competitive_sol`): three of the five are rebuilt from text, every one of his turns.** Their reviews name the opening hand and every drawn card, so no stills were needed.
+
+| recording stem | result, order | his turns rebuilt (game turn numbers, all from text) |
+|---|---|---|
+| `20261002_020315000` | lost 1-3, went second | 2, 4, 6, 8, 10 (all five) |
+| `20261002_020920000` | won by concession 0-0, went second | 2, 4, 6, 8 (all four) |
+| `20261002_023418000` | won by concession 0-1, went first | 1, 3, 5, 7, 9, 11 (all six) |
+
+**Not rebuilt, need Codex:** `20261002_021402000` (went first; Wailmer Active, no Bench) and `20261002_022135000` (lost 1-3 after 30 turns, went first, so 15 of his turns). Their reviews name no opening hand and only some of the draws, so no hand could be fixed from the text. Also not built: the one choice he made during the opponent's turn in `023418` (the opponent's Sabrina on game turn 6 forced a switch and he picked the unenergised Wailmer over the Indeedee ex; a mid-opponent-turn position, which the harness does not do yet). The **opponent's hand size** in the three rebuilt games is bookkeeping, not counted.
 
 ## 2. Order to re-review, most valuable first
 
 1. **Draft A's uncertain turns** (cheap, five items): `132311` turns 5 and 11, `115323` turn 13, `143837` turns 5 and 7. Name the hand from the frames as the fields below ask. Nothing else in draft A needs redoing.
-2. **Deck 03**, his first six turns of each game (30 turn starts), in this order: `020315`, `023418`, `020920`, `021402`, `022135`.
+2. **Deck 03**, his first six turns of `021402`, then of `022135` (the only two deck 03 games not rebuilt). Nothing else in deck 03 needs redoing.
 3. **Ladder Log games, by variety of deck** (the pre-season games are the varied ones; the season games are mostly one Entei ex deck):
    - the eight pre-season games, eight different decks: `20260907_232617000` (Eevee / Jolteon ex), `20260908_012720000` (Ogerpon / Whimsicott), `20260908_021327000` (Hypno / Raticate ex), `20260908_022627000` (Comfey / Raticate / Hypno), `20260908_190031000` and `20260908_190933000` (Mega Altaria / Darkrai), `20260909_023151000` (Mega Manectric / Heliolisk), `20260909_032418000` (Rotom ex / Gholdengo);
    - then `20260928_200654000` (Galarian Zigzagoon / Obstagoon) and two of the ten Sept 29 Entei ex games (for example `20260929_002539000` and `20260929_020916000`).
@@ -51,6 +59,7 @@ Write one table per game, one row per turn (both players' turns), plus the setup
 
 - **Do not re-review the ten pause games' outcomes, boards, points, or the plays already in their reviews.** Only add the fields above where section 1 says a hand is missing or probable.
 - **Do not redo the five draft A games** except the five uncertain turns in section 2. Their other turns have rebuilt hands, all checked against the stills.
+- **Do not redo deck 03 games `020315`, `020920` and `023418`**: every one of his turns there is rebuilt from the text.
 - **Do not redo the 16 rule-test recordings** (`*_rule_sol`), the Carefree Steps and Heavy Helmet tests, or the older clip reviews: they are about card rules, not his choices.
 - **Do not re-extract frames for a turn that section 1 lists as text or checked.**
 - **Do not redo the review of a game just to correct the result or the card identities**: the accepted reviews stand. This request is only for the added fields.
