@@ -59,7 +59,8 @@ Failure modes: A1's per-game fields (goldfish.rs play()), recomputed from the sa
   (setup excluded): went first; first own turn a main attacker could attack / did attack; opponent's points before
   that; Stage 2 in play by own turn 3; dead cards where the deck closes its main phase (hand cards not offered as a
   move, a Supporter held after one was played excepted), own turns 2-4. Main attackers: the list's attackers in
-  lib/brew_pages.py LISTS (A1's own harness entries), else the Pokemon with the highest printed damage, labelled.
+  floor.py's ATTACKERS (a list's own entry, below), else lib/brew_pages.py LISTS (A1's own harness entries), else the Pokemon
+  with the highest printed damage, labelled.
 """
 import argparse, glob, hashlib, json, math, os, re, shutil, subprocess, sys, tempfile
 from collections import defaultdict
@@ -91,6 +92,15 @@ ROLES = {
     "decks/brews/brew-06b-pyukumuku-silvally-scyther-grass.txt": {
         "Silvally": "attacker", "Team Rocket's Scyther": "attacker",
         "Pyukumuku": "bench piece/passive ability", "Rocky Helmet": "Trainer (played)"},
+}
+
+
+# Main attackers for the failure-modes table when the fallback (highest printed damage) names the wrong card: {deck path: [card names]}.
+# main_attackers() reads this first. Only the table's "main attacker" columns read it: the games played, the verdict, the matchups and the
+# flagged cards do not depend on it. Draft A's centerpiece is Mega Sharpedo ex (Turbo Shark 70); the fallback picked Alolan Ninetales ex
+# (Binding Snow 80) on the Oct 2 page, so its "could attack by turn 2 / 3 / 4" columns tracked Ninetales (Astra's review, Oct 2).
+ATTACKERS = {
+    "decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt": ["Mega Sharpedo ex"],
 }
 
 
@@ -137,7 +147,16 @@ def self_check():
     assert role_sets("Trainer (played)", item, off, cho, set(), {1: "OTHER"}) == ({1, 2, 3, 4}, {2})
     # the floor's pilot must get kp's audited texts (a pattern that misses it flags priced cards and can read 'untrusted')
     assert PRICING_PILOT.fullmatch(FLOOR_PILOT) and not PRICING_PILOT.fullmatch("k3"), FLOOR_PILOT
-    print("self-check passed: edges 349/350/418/419 (n 1,920) and 78/79/113/114 (n 480); untrusted rule; Supporter turns")
+    # ATTACKERS names cards that are in their lists, and main_attackers() reads the table (not the fallback) for them
+    db = database()
+    for path, names in ATTACKERS.items():
+        full = os.path.join(ROOT, path)
+        if os.path.exists(full):
+            in_list = {db[f"{p[-2]} {p[-1]}"][1]["name"] for p in (line.split() for line in open(full, encoding="utf-8-sig"))
+                       if len(p) >= 3 and p[0].isdigit() and f"{p[-2]} {p[-1]}" in db}
+            assert set(names) <= in_list, (path, names)
+            assert main_attackers(full, db) == (list(names), "set for this list in floor.py's ATTACKERS"), path
+    print("self-check passed: edges 349/350/418/419 (n 1,920) and 78/79/113/114 (n 480); untrusted rule; Supporter turns; ATTACKERS")
 
 
 # --- cards and actions as the engine serialises them -----------------------------------------------------------------
@@ -278,6 +297,8 @@ def default_role(card, ability_offered):
 def main_attackers(deck_path, db):
     import brew_pages
     rel = os.path.relpath(os.path.abspath(deck_path), ROOT).replace(os.sep, "/")
+    if rel in ATTACKERS:
+        return list(ATTACKERS[rel]), "set for this list in floor.py's ATTACKERS"
     for e in brew_pages.LISTS:
         if e["path"] == rel:
             return list(e["attackers"]), "the list's attackers in lib/brew_pages.py LISTS (A1's harness entry)"
@@ -468,6 +489,9 @@ def main():
     unknown = sorted(set(ROLES.get(rel, {})) - names_in_list)
     if unknown:
         raise SystemExit(f"ROLES names cards that are not in {rel}: {unknown}")
+    unknown = sorted(set(ATTACKERS.get(rel, [])) - names_in_list)
+    if unknown:
+        raise SystemExit(f"ATTACKERS names cards that are not in {rel}: {unknown}")
     cov_path = os.path.join(a.out, f"{name}_coverage.json")
     subprocess.run([a.goldfish, "--deck", a.deck, "--panel", a.opponents, "--games", "0",
                     "--coverage", cov_path], check=True, capture_output=True, cwd=os.path.join(ROOT, "engine"))

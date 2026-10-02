@@ -1,8 +1,34 @@
 # Brew drafts for the ladder's return (Oct 1, 2026)
 
-**Not run. Not a ranking.** Four draft lists with their reasoning. No game was played for any of them: the only program run was
-the floor's coverage check (`goldfish --games 0 --coverage`), which plays nothing. Nothing here says a deck is good. The ladder is
-the only score of a brew (START_HERE, PROJECT_INSTRUCTIONS).
+**Not a ranking.** Four draft lists with their reasoning. When they were written (Oct 1) no game had been played for any of them: the
+only program run was the floor's coverage check (`goldfish --games 0 --coverage`), which plays nothing. On Oct 2 the floor was run on
+all four (`rl/results/floor_drafts_2026-10-02/`) and Dustin played draft A in five pause games (not ladder results;
+`rl/results/pause_games_2026-10-02/README.md`). Nothing here says a deck is good. The ladder is the only score of a brew (START_HERE,
+PROJECT_INSTRUCTIONS).
+
+## Status (Oct 2)
+
+| Draft | Floor page (km3 on both sides, official engine main-8626a35, 1,920 games) | Status |
+|---|---|---|
+| A, Shark tempo | clears the floor: 950 wins (49.5%) | in use for pause games; tracked attacker fixed to Mega Sharpedo ex (see below) |
+| B, Tide heal | **fails**: 236 wins (12.3%); Lucario 34 of 240 (14%) | **SET ASIDE.** It met its own stopping condition (under 30% against Lucario; `draft-B-tide-heal.md`, "What would make me drop it"). Kept, not deleted, not to be played |
+| C, Meowstic / Hatterene v2 | borderline: 366 wins (19.1%), provisional (Hatterene's role is the default from the flag; its 140 is priced at 70) | open |
+| D, Entei / Grimhound | the two-copy list cleared: 693 wins (36.1%) | **amended Oct 2 to one Mega Houndoom ex**; the amended list has no floor page yet, so the 693 does not carry over |
+
+**Ownership (Dustin, Oct 2, verbatim): "any non-promo card I either have 2 of or can easily acquire a second."** A regular card at two copies is
+fine. **Only a card whose only printing is a promo needs checking with him, copy count included:** he has **exactly one Mega Houndoom ex
+(P-B 080)** and **no Lapras ex (P-A 014)**. Draft D as first written ran two Houndoom ex and was unusable; draft A's first version ran Lapras ex.
+`OWNERSHIP.md` has the copy counts his own lists show for every draft card, as evidence and for the promo-only cards; it is not a gate for
+regular cards. Check any new draft for promo-only cards before it goes to the floor or to him.
+
+**What changed on Oct 2** (branch `sonnet/drafts-fixes`):
+- Draft D: the second Mega Houndoom ex is replaced by a Copycat; plan, odds and the "drop it" line rewritten for one finisher
+  (`draft-D-entei-grimhound.md`, "Amended Oct 2"). deck_check is clean; the coverage-only goldfish (no game played) flags Victini only,
+  as before. The Victory Star / Confusion caveat in the text below is out of date: the repair is in the official engine since the pin.
+- Draft B: marked set aside, above and in its own file.
+- Draft A: the floor tool's "main attacker" for its failure-modes table was Alolan Ninetales ex (the fallback, highest printed damage);
+  `decks/screen/floor.py` now names Mega Sharpedo ex for this list (a separate commit). Draft A's floor page needs re-running for those
+  columns only (wins, matchups and flagged cards do not change); not run yet.
 
 **Who and why.** Written by the Sonnet session "Opus agents progress" (Claude Sonnet 5.5) for the Fable coordinator session
 ("Work delegation and task routing"), who relayed Astra's Oct 1 review of Dustin's ladder play (7-1 against homebrew, 5-10 against
@@ -16,9 +42,9 @@ is a new one on the local branch `sonnet/brew-drafts`: no frozen input was touch
 | File | Idea | Type | Aimed at | Pokémon ex in the list |
 |---|---|---|---|---|
 | [`draft-A-shark-tempo`](draft-A-shark-tempo.md) | Mega Sharpedo ex hits for one Water energy and arms the Bench each turn; Ninetales ex denies their energy | Water | the Fire decks (Blaziken, Charizard Y / Entei): 0-5 on the ladder | 4 |
-| [`draft-B-tide-heal`](draft-B-tide-heal.md) | No ex at all: Starmie and Milotic hit for 60 and the deck heals every turn | Water | the Lucario list | 0 |
+| [`draft-B-tide-heal`](draft-B-tide-heal.md) (**set aside**) | No ex at all: Starmie and Milotic hit for 60 and the deck heals every turn | Water | the Lucario list | 0 |
 | [`draft-C-meowstic-hatterene-v2`](draft-C-meowstic-hatterene-v2.md) | His own confusion lock (05b) with the fixes his notes asked for | Psychic | Lucario (58% in the cousin's sim page); Suicune's Basics (a confused Hatterene's 140 equals their HP); Sceptile's poison and Blaziken's burn (Comfey) | 0 |
-| [`draft-D-entei-grimhound`](draft-D-entei-grimhound.md) | Entei ex tempo plus Mega Houndoom ex's three coins with Victory Star | Fire | the Grass decks (Sceptile, Vespiquen) | 4 |
+| [`draft-D-entei-grimhound`](draft-D-entei-grimhound.md) (amended Oct 2: one Mega Houndoom ex) | Entei ex tempo plus Mega Houndoom ex's three coins with Victory Star | Fire | the Grass decks (Sceptile, Vespiquen) | 3 |
 
 Each `.md` holds the list with every card's text, the plan by turn, the interactions and whether the engine supports them, what
 the bot may get wrong in a test, and one line on the panel decks. The `.txt` beside it is the list in the repository's deck format
@@ -67,9 +93,10 @@ something to say about the floor.
 - **Floor roles.** A flagged card's role is the default unless set, and a "fail", "borderline" or "untrusted" verdict on a default
   role is marked provisional. Draft D's Victini would default to "attacker"; its job is the passive Ability, and setting that role is
   Dustin's call on the page.
-- **Victory Star (D) is the one card with a named engine caveat** (`card_validation.rs`: confusion and attacker-side coin gates
-  bypass the reroll prompt). The Victory Star / Confusion repair is in the rules switch's candidate, not in the official engine yet,
-  so run D's floor page after the pin, not before.
+- **Victory Star (D) is the one card with a named engine caveat.** Oct 1 text: "confusion and attacker-side coin gates bypass the
+  reroll prompt", with the repair in the rules switch's candidate. **Since the Oct 2 pin the repair is in the official engine**: after a
+  Confusion heads the attack's own coins are offered for a reroll. Left on the old resolution (the card's current note in
+  `card_validation.rs`): Victory Star with CoinFlipToBlockAttack, and with Confusion while a Will is pending.
 - **The sim favours the player who goes second** (for example brew 07: 55% going first, 67% going second). Compare lists on the same
   seats and seeds.
 - **Promo availability depends on when Dustin joined.** Promo cards are time-limited. He joined after P-A 014, so he does not have
@@ -78,7 +105,10 @@ something to say about the floor.
   matters only for a card whose *only* printing is a promo. The Poké Ball (P-A 005) and Professor's Research (P-A 007) that every
   list uses are the database's names for cards that also exist as A2b 111 and A4b 373, and they are in his own decks. Beyond that,
   ownership of the other cards is not checked. A check of every card's printings in `lib/deckgym-database.json` (Oct 1) found Lapras
-  ex and Mega Houndoom ex to be the only cards in the four lists whose printings are all promos.
+  ex and Mega Houndoom ex to be the only cards in the four lists whose printings are all promos. **That check was right about
+  which cards are promo-only, and missed that he has one copy of Mega Houndoom ex** (Oct 2: so a draft running two was unusable). Dustin's
+  rule (Oct 2): any non-promo card he has two of or can easily get a second; only promo-only cards need checking, copy count included.
+  See `OWNERSHIP.md`.
 
 ## Considered and not drafted
 
