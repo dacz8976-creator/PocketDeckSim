@@ -4,6 +4,10 @@
 //! changed from km3's move, the milliseconds per decision and the seconds per game. One JSON line per game to `--out`, and
 //! a summary on stdout. Games run one at a time; the pilot's play-outs use rayon's threads (RAYON_NUM_THREADS).
 //!   playout_smoke --a <deck> --b <deck> --deals 20 --seed-base <n> [--code kx3] [--out games.jsonl] [--trace-out trace.jsonl]
+//!     [--seats 0,1] [--resume]
+//! `--resume` skips the games already in `--out` (by seed and seat) and appends to both files: every game is seeded and the
+//! pilot is deterministic, so a stopped run resumed gives the games an unbroken run would. The summary line then covers the
+//! games this invocation played; `rl/results/playout_pilot_2026-10-02/smoke/summarize.py` reads the whole files.
 use std::io::Write;
 use std::sync::{Arc, Mutex};
 use std::time::Instant;
@@ -92,18 +96,39 @@ fn main() {
     let base: u64 = arg(&args, "--seed-base").expect("--seed-base").parse().unwrap();
     let code_text = arg(&args, "--code").unwrap_or_else(|| "kx3".into());
     let PlayerCode::KX { params } = parse_player_code(&code_text).expect("a kx code") else { panic!("--code must be a kx code") };
-    let mut out = arg(&args, "--out").map(|p| std::fs::File::create(p).unwrap());
-    let mut trace_out = arg(&args, "--trace-out").map(|p| std::fs::File::create(p).unwrap());
+    let resume = args.iter().any(|a| a == "--resume");
+    let open = |p: String| {
+        if resume {
+            std::fs::OpenOptions::new().create(true).append(true).open(p).unwrap()
+        } else {
+            std::fs::File::create(p).unwrap()
+        }
+    };
+    // The games already played (by seed and seat), when resuming.
+    let done: std::collections::BTreeSet<(u64, usize)> = match (resume, arg(&args, "--out")) {
+        (true, Some(p)) => std::fs::read_to_string(&p)
+            .unwrap_or_default()
+            .lines()
+            .filter_map(|l| serde_json::from_str::<serde_json::Value>(l).ok())
+            .map(|v| (v["seed"].as_u64().unwrap(), v["pilot_seat"].as_u64().unwrap() as usize))
+            .collect(),
+        _ => Default::default(),
+    };
+    let mut out = arg(&args, "--out").map(open);
+    let mut trace_out = arg(&args, "--trace-out").map(open);
     let km3 = || parse_player_code("km3").unwrap();
     let seats: Vec<usize> = arg(&args, "--seats").map_or(vec![0, 1], |s| s.split(',').map(|x| x.parse().unwrap()).collect());
-    println!("code {} ({}), {} deals x 2 seats, deck A (the pilot's) v deck B, rayon threads {}",
+    println!("code {} ({}), {} deals x 2 seats, deck A (the pilot's) v deck B, rayon threads {}{}",
         params.code(), PlayoutPlayer::new(deck_a.clone(), deck_b.clone(), params.clone()).knowledge_label(), deals,
-        rayon::current_num_threads());
+        rayon::current_num_threads(), if resume { format!("; resuming: {} games already played", done.len()) } else { String::new() });
     let (mut paired, mut game_secs, mut all_ms, mut changed, mut decisions) = (Vec::new(), Vec::new(), Vec::new(), 0usize, 0usize);
     let (mut pilot_total, mut ref_total) = (0.0f64, 0.0f64);
     for i in 0..deals {
         let seed = base + i;
         for seat in seats.iter().copied() {
+            if done.contains(&(seed, seat)) {
+                continue;
+            }
             // The pilot's arm: deck A with the pilot in `seat`, deck B with km3.
             let log = Arc::new(Mutex::new(Log::default()));
             let pilot = Recording {
@@ -156,7 +181,7 @@ fn main() {
     all_ms.sort_by(|a, b| a.partial_cmp(b).unwrap());
     let pct = |p: f64| all_ms.get(((all_ms.len() as f64 - 1.0) * p).round() as usize).cloned().unwrap_or(0.0);
     println!(
-        "summary: {} games; pilot score {:.3}, km3 v km3 on the same deals {:.3}; paired difference {:+.3} ± {:.3} (95%); \
+        "summary: {} games (played by this invocation); pilot score {:.3}, km3 v km3 on the same deals {:.3}; paired difference {:+.3} ± {:.3} (95%); \
          decisions {decisions}, changed from km3's move {changed}; ms per decision mean {:.0}, median {:.0}, p95 {:.0}, max {:.0}; \
          seconds per game mean {:.1}, max {:.1}",
         paired.len(),
