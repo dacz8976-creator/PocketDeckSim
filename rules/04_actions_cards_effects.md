@@ -73,7 +73,7 @@ Grades as in `01_game_structure.md`. Sources in `06_sources.md`. Card text quote
 
 ### Items
 - **Unlimited per turn** ("You may play as many Item cards as you like during your turn"). Two Clemont's Backpacks in one turn both added +20. [IN-GAME TEXT] + [OBSERVED trial-manectric]
-- Item-lock effects exist ("Can't play Item cards"); Fossils are Items, so they are presumably blocked too. [IN-GAME TEXT; Fossil part INFERRED]
+- Item-lock effects exist ("Can't play Item cards"). Fossils are Items, so an Item lock blocks them too. The card itself says so: Sail Fossil's kind line reads "Item" and "TRAINER", and its footer reads "You may play any number of Item cards during your turn" [IN-GAME TEXT: Dustin's screenshot, Oct 2]. Blocking them is the plain reading (Dustin's Oct 1 rule), no longer an inference. The engine's database stores the kind as "Fossil"; the cloud's round-2 package treats it as an Item, for the next rules switch.
 
 ### Unplayable cards and "whiffs"
 - The game **blocks** a Trainer/Ability/Stadium whose condition can't be met ("The conditions for using this Item card have not been met" etc.): healing with nothing damaged, Sabrina with no opposing Bench, Kid's Room with an empty hand, Pokémon Flute with a full opposing Bench. [IN-GAME TEXT] + [OBSERVED 020124] + [COMMUNITY]
