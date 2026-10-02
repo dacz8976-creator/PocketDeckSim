@@ -1,0 +1,579 @@
+{
+ "order": 11,
+ "matchup": {
+  "you": "Suicune"
+ },
+ "turn": 9,
+ "you_went_first": true,
+ "situation": "Your turn (your 5th turn; turn 9 of the game).",
+ "question": "What do you do this turn, in order? Pick the first thing you'd tap, then write the rest of your turn: each card you'd play, where your Energy goes, any retreat, and your attack or end turn. If you'd play a card that draws, stop there and say \"then depends on the draw\".",
+ "points": {
+  "you": 1,
+  "opponent": 2
+ },
+ "you": {
+  "active": {
+   "name": "Suicune ex",
+   "stage": 0,
+   "type": "Water",
+   "hp": 140,
+   "max_hp": 140,
+   "energy": [
+    "Water"
+   ],
+   "tools": [],
+   "conditions": [],
+   "ability": {
+    "name": "Legendary Pulse",
+    "text": "At the end of your turn, if this Pokémon is in the Active Spot, draw a card.",
+    "used_this_turn": false
+   },
+   "attacks": [
+    {
+     "name": "Crystal Waltz",
+     "cost": [
+      "Water",
+      "Water"
+     ],
+     "damage": "20×",
+     "text": "This attack does 20 damage for each Benched Pokémon (both yours and your opponent's)."
+    }
+   ],
+   "weakness": "Lightning",
+   "retreat": 2,
+   "retreat_now": 2,
+   "retreat_note": null,
+   "ko_points": 2,
+   "notes": []
+  },
+  "bench": [
+   null,
+   {
+    "name": "Baxcalibur",
+    "stage": 2,
+    "type": "Water",
+    "hp": 140,
+    "max_hp": 140,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": {
+     "name": "Ice Maker",
+     "text": "Once during your turn, you may take a Water Energy from your Energy Zone and attach it to the Water Pokémon in the Active Spot.",
+     "used_this_turn": true
+    },
+    "attacks": [
+     {
+      "name": "Buster Tail",
+      "cost": [
+       "Water",
+       "Water",
+       "Water"
+      ],
+      "damage": "90",
+      "text": ""
+     }
+    ],
+    "weakness": "Metal",
+    "retreat": 3,
+    "retreat_now": 3,
+    "retreat_note": null,
+    "ko_points": 1,
+    "notes": []
+   },
+   {
+    "name": "Frigibax",
+    "stage": 0,
+    "type": "Water",
+    "hp": 60,
+    "max_hp": 60,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": null,
+    "attacks": [
+     {
+      "name": "Stiffen",
+      "cost": [
+       "Water"
+      ],
+      "damage": null,
+      "text": "During your opponent's next turn, this Pokémon takes -20 damage from attacks."
+     }
+    ],
+    "weakness": "Metal",
+    "retreat": 1,
+    "retreat_now": 1,
+    "retreat_note": null,
+    "ko_points": 1,
+    "notes": []
+   }
+  ],
+  "deck_count": 4,
+  "discard": [
+   "Professor's Research",
+   "Poké Ball",
+   "Copycat",
+   "Poké Ball",
+   "Professor's Research",
+   "Rare Candy",
+   "Giant Cape",
+   "Suicune ex"
+  ],
+  "discard_energy": [
+   "Water",
+   "Water",
+   "Water",
+   "Water",
+   "Water"
+  ],
+  "energy_zone": {
+   "this_turn": "Water",
+   "next": "Water",
+   "lines": [
+    "This turn: Water",
+    "Next: Water"
+   ]
+  },
+  "hand": [
+   {
+    "name": "Team Rocket's Boss",
+    "kind": "Supporter",
+    "text": "Look at your opponent's hand and put any number of Basic Pokémon you find there onto your opponent's Bench."
+   },
+   {
+    "name": "Rare Candy",
+    "kind": "Item",
+    "text": "Choose 1 of your Basic Pokémon in play. If you have a Stage 2 card in your hand that evolves from that Pokémon, put that card onto the Basic Pokémon to evolve it, skipping the Stage 1. You can't use this card during your first turn or on a Basic Pokémon that was put into play this turn."
+   },
+   {
+    "name": "Inflatable Boat",
+    "kind": "Pokémon Tool",
+    "text": "The Retreat Cost of the Water Pokémon this card is attached to is 1 less."
+   },
+   {
+    "name": "Soothing Shore",
+    "kind": "Stadium",
+    "text": "At the end of each player's turn, that player heals 20 damage from each of their Pokémon that has any Water Energy attached."
+   }
+  ],
+  "decklist": [
+   {
+    "name": "Chien-Pao ex",
+    "kind": "Basic Pokémon",
+    "text": "Basic Pokémon, HP 130, Water type. Gives 2 points when Knocked Out. Attack Icicle [Water] 20. Attack Diving Icicles [Water Water Water]: Discard all Water Energy from this Pokémon. This attack does 130 damage to 1 of your opponent's Pokémon. Weakness: Metal. Retreat: 1.",
+    "count": 1,
+    "left": 1
+   },
+   {
+    "name": "Frigibax (Chilly)",
+    "kind": "Basic Pokémon",
+    "text": "Basic Pokémon, HP 60, Water type. Attack Chilly [Water] 20. Weakness: Metal. Retreat: 1.",
+    "count": 1,
+    "left": 0
+   },
+   {
+    "name": "Frigibax (Stiffen)",
+    "kind": "Basic Pokémon",
+    "text": "Basic Pokémon, HP 60, Water type. Attack Stiffen [Water]: During your opponent's next turn, this Pokémon takes -20 damage from attacks. Weakness: Metal. Retreat: 1.",
+    "count": 1,
+    "left": 0
+   },
+   {
+    "name": "Suicune ex",
+    "kind": "Basic Pokémon",
+    "text": "Basic Pokémon, HP 140, Water type. Gives 2 points when Knocked Out. Ability Legendary Pulse: At the end of your turn, if this Pokémon is in the Active Spot, draw a card. Attack Crystal Waltz [Water Water] 20×: This attack does 20 damage for each Benched Pokémon (both yours and your opponent's). Weakness: Lightning. Retreat: 2.",
+    "count": 2,
+    "left": 0
+   },
+   {
+    "name": "Baxcalibur",
+    "kind": "Stage 2 Pokémon",
+    "text": "Stage 2 Pokémon, HP 140, Water type, evolves from Arctibax. Ability Ice Maker: Once during your turn, you may take a Water Energy from your Energy Zone and attach it to the Water Pokémon in the Active Spot. Attack Buster Tail [Water Water Water] 90. Weakness: Metal. Retreat: 3.",
+    "count": 2,
+    "left": 1
+   },
+   {
+    "name": "Copycat",
+    "kind": "Supporter",
+    "text": "Shuffle your hand into your deck. Draw a card for each card in your opponent's hand.",
+    "count": 1,
+    "left": 0
+   },
+   {
+    "name": "Pokémon Center Lady",
+    "kind": "Supporter",
+    "text": "Heal 30 damage from 1 of your Pokémon, and it recovers from all Special Conditions.",
+    "count": 1,
+    "left": 1
+   },
+   {
+    "name": "Professor's Research",
+    "kind": "Supporter",
+    "text": "Draw 2 cards.",
+    "count": 2,
+    "left": 0
+   },
+   {
+    "name": "Team Rocket's Boss",
+    "kind": "Supporter",
+    "text": "Look at your opponent's hand and put any number of Basic Pokémon you find there onto your opponent's Bench.",
+    "count": 1,
+    "left": 0
+   },
+   {
+    "name": "Field Blower",
+    "kind": "Item",
+    "text": "Discard a Pokémon Tool card from a Pokémon (yours or your opponent's), or discard a Stadium card in play.",
+    "count": 1,
+    "left": 1
+   },
+   {
+    "name": "Poké Ball",
+    "kind": "Item",
+    "text": "Put a random Basic Pokémon from your deck into your hand.",
+    "count": 2,
+    "left": 0
+   },
+   {
+    "name": "Rare Candy",
+    "kind": "Item",
+    "text": "Choose 1 of your Basic Pokémon in play. If you have a Stage 2 card in your hand that evolves from that Pokémon, put that card onto the Basic Pokémon to evolve it, skipping the Stage 1. You can't use this card during your first turn or on a Basic Pokémon that was put into play this turn.",
+    "count": 2,
+    "left": 0
+   },
+   {
+    "name": "Giant Cape",
+    "kind": "Pokémon Tool",
+    "text": "The Pokémon this card is attached to gets +20 HP.",
+    "count": 1,
+    "left": 0
+   },
+   {
+    "name": "Inflatable Boat",
+    "kind": "Pokémon Tool",
+    "text": "The Retreat Cost of the Water Pokémon this card is attached to is 1 less.",
+    "count": 1,
+    "left": 0
+   },
+   {
+    "name": "Soothing Shore",
+    "kind": "Stadium",
+    "text": "At the end of each player's turn, that player heals 20 damage from each of their Pokémon that has any Water Energy attached.",
+    "count": 1,
+    "left": 0
+   }
+  ],
+  "energy_types": [
+   "Water"
+  ],
+  "supporter_played_this_turn": false,
+  "retreated_this_turn": false
+ },
+ "opponent": {
+  "active": {
+   "name": "Mega Altaria ex",
+   "stage": 1,
+   "type": "Psychic",
+   "hp": 190,
+   "max_hp": 190,
+   "energy": [
+    "Psychic",
+    "Psychic"
+   ],
+   "tools": [],
+   "conditions": [],
+   "ability": null,
+   "attacks": [
+    {
+     "name": "Mega Harmony",
+     "cost": [
+      "Psychic",
+      "Psychic"
+     ],
+     "damage": "40+",
+     "text": "This attack does 30 more damage for each of your Benched Pokémon."
+    }
+   ],
+   "weakness": "Metal",
+   "retreat": 1,
+   "retreat_now": 1,
+   "retreat_note": null,
+   "ko_points": 3,
+   "notes": []
+  },
+  "bench": [
+   {
+    "name": "Eevee",
+    "stage": 0,
+    "type": "Colorless",
+    "hp": 50,
+    "max_hp": 50,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": {
+     "name": "Boosted Evolution",
+     "text": "As long as this Pokémon is in the Active Spot, it can evolve during your first turn or the turn you play it.",
+     "used_this_turn": false
+    },
+    "attacks": [
+     {
+      "name": "Stampede",
+      "cost": [
+       "Colorless"
+      ],
+      "damage": "10",
+      "text": ""
+     }
+    ],
+    "weakness": "Fighting",
+    "retreat": 1,
+    "retreat_now": 1,
+    "retreat_note": null,
+    "ko_points": 1,
+    "notes": []
+   },
+   {
+    "name": "Swablu",
+    "stage": 0,
+    "type": "Colorless",
+    "hp": 50,
+    "max_hp": 50,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": null,
+    "attacks": [
+     {
+      "name": "Sing",
+      "cost": [
+       "Colorless"
+      ],
+      "damage": null,
+      "text": "Your opponent's Active Pokémon is now Asleep."
+     }
+    ],
+    "weakness": "Lightning",
+    "retreat": 1,
+    "retreat_now": 1,
+    "retreat_note": null,
+    "ko_points": 1,
+    "notes": []
+   },
+   {
+    "name": "Darkrai",
+    "stage": 0,
+    "type": "Darkness",
+    "hp": 100,
+    "max_hp": 100,
+    "energy": [
+     "Psychic"
+    ],
+    "tools": [],
+    "conditions": [],
+    "ability": {
+     "name": "Bad Dreams",
+     "text": "At the end of each turn, if your opponent's Active Pokémon is Asleep, do 20 damage to that Pokémon.",
+     "used_this_turn": false
+    },
+    "attacks": [
+     {
+      "name": "Dark Slumber",
+      "cost": [
+       "Colorless",
+       "Colorless",
+       "Colorless"
+      ],
+      "damage": "40",
+      "text": "Your opponent's Active Pokémon is now Asleep."
+     }
+    ],
+    "weakness": "Grass",
+    "retreat": 2,
+    "retreat_now": 2,
+    "retreat_note": null,
+    "ko_points": 1,
+    "notes": []
+   }
+  ],
+  "deck_count": 5,
+  "discard": [
+   "Copycat",
+   "Professor's Research",
+   "Poké Ball",
+   "Professor's Research",
+   "Field Blower",
+   "Darkrai",
+   "Copycat"
+  ],
+  "discard_energy": [
+   "Psychic"
+  ],
+  "energy_zone": {
+   "next": "Psychic",
+   "lines": [
+    "Next: Psychic"
+   ]
+  },
+  "hand_count": 2
+ },
+ "stadium": {
+  "name": "Training Area",
+  "text": "Attacks used by Stage 1 Pokémon in play (both yours and your opponent's) do +10 damage to the opponent's Active Pokémon.",
+  "played_by": "opponent"
+ },
+ "turn_effects": [],
+ "this_turn_so_far": [
+  "You: Used Baxcalibur's Ability Ice Maker (Bench 2)"
+ ],
+ "log": [
+  {
+   "turn": 0,
+   "who": "setup",
+   "header": "Setup",
+   "lines": [
+    "You: started with Frigibax (Active)",
+    "Opponent: started with Darkrai (Active)"
+   ]
+  },
+  {
+   "turn": 1,
+   "who": "you",
+   "header": "Turn 1 - You",
+   "lines": [
+    "You: Played Professor's Research (Supporter)",
+    "You: Played Poké Ball (Item)",
+    "You: Put Frigibax on Bench 3",
+    "You: Ended the turn without attacking"
+   ]
+  },
+  {
+   "turn": 2,
+   "who": "opponent",
+   "header": "Turn 2 - Opponent",
+   "lines": [
+    "Opponent: Put Darkrai on Bench 3",
+    "Opponent: Played Copycat (Supporter)",
+    "Opponent: Put Swablu on Bench 2",
+    "Opponent: Attached Psychic Energy to Darkrai (Active)",
+    "Opponent: Ended the turn without attacking"
+   ]
+  },
+  {
+   "turn": 3,
+   "who": "you",
+   "header": "Turn 3 - You",
+   "lines": [
+    "You: Played Copycat (Supporter)",
+    "You: Played Poké Ball (Item)",
+    "You: Put Suicune ex on Bench 2",
+    "You: Played Giant Cape (Pokémon Tool) → attached Giant Cape to Frigibax (Bench 3)",
+    "You: Attached Water Energy to Suicune ex (Bench 2)",
+    "You: Ended the turn without attacking"
+   ]
+  },
+  {
+   "turn": 4,
+   "who": "opponent",
+   "header": "Turn 4 - Opponent",
+   "lines": [
+    "Opponent: Played Professor's Research (Supporter)",
+    "Opponent: Played Poké Ball (Item)",
+    "Opponent: Evolved Swablu (Bench 2) into Mega Altaria ex",
+    "Opponent: Attached Psychic Energy to Mega Altaria ex (Bench 2)",
+    "Opponent: Ended the turn without attacking"
+   ]
+  },
+  {
+   "turn": 5,
+   "who": "you",
+   "header": "Turn 5 - You",
+   "lines": [
+    "You: Played Professor's Research (Supporter)",
+    "You: Played Rare Candy (Item) → evolved Frigibax (Active) into Baxcalibur (skipping Arctibax)",
+    "You: Used Baxcalibur's Ability Ice Maker (Active)",
+    "You: Attached Water Energy to Baxcalibur (Active)",
+    "You: Ended the turn without attacking"
+   ]
+  },
+  {
+   "turn": 6,
+   "who": "opponent",
+   "header": "Turn 6 - Opponent",
+   "lines": [
+    "Opponent: Played Professor's Research (Supporter)",
+    "Opponent: Played Field Blower (Item) → discarded Giant Cape from your Frigibax (Bench 3)",
+    "Opponent: Attached Psychic Energy to Mega Altaria ex (Bench 2)",
+    "Opponent: Ended the turn without attacking"
+   ]
+  },
+  {
+   "turn": 7,
+   "who": "you",
+   "header": "Turn 7 - You",
+   "lines": [
+    "You: Used Baxcalibur's Ability Ice Maker (Active)",
+    "You: Put Suicune ex on Bench 1",
+    "You: Retreated Baxcalibur (Active), switching in Suicune ex (Bench 2)",
+    "You: Attached Water Energy to Suicune ex (Active)",
+    "You: Suicune ex attacked with Crystal Waltz (20×) → opponent's Darkrai (Active) was Knocked Out (you +1 point; score: you 1, opponent 0)",
+    "Opponent: Moved Mega Altaria ex (Bench 2) into the Active Spot as the new Active Pokémon"
+   ]
+  },
+  {
+   "turn": 8,
+   "who": "opponent",
+   "header": "Turn 8 - Opponent",
+   "lines": [
+    "Opponent: Put Swablu on Bench 2",
+    "Opponent: Put Eevee on Bench 1",
+    "Opponent: Played Copycat (Supporter)",
+    "Opponent: Played Training Area (Stadium)",
+    "Opponent: Attached Psychic Energy to Darkrai (Bench 3)",
+    "Opponent: Mega Altaria ex attacked with Mega Harmony (40+) → your Suicune ex (Active) was Knocked Out (opponent +2 points; score: you 1, opponent 2)",
+    "You: Moved Suicune ex (Bench 1) into the Active Spot as the new Active Pokémon"
+   ]
+  }
+ ],
+ "options": [
+  {
+   "key": "6",
+   "group": "Trainers",
+   "text": "Play Team Rocket's Boss (Supporter): Look at your opponent's hand and put any number of Basic Pokémon you find there onto your opponent's Bench."
+  },
+  {
+   "key": "4",
+   "group": "Trainers",
+   "text": "Play Inflatable Boat (Pokémon Tool), then choose which of your Pokémon to attach it to: The Retreat Cost of the Water Pokémon this card is attached to is 1 less."
+  },
+  {
+   "key": "5",
+   "group": "Trainers",
+   "text": "Play Soothing Shore (Stadium): At the end of each player's turn, that player heals 20 damage from each of their Pokémon that has any Water Energy attached."
+  },
+  {
+   "key": "1",
+   "group": "Energy",
+   "text": "Attach Water Energy to Suicune ex (Active)"
+  },
+  {
+   "key": "2",
+   "group": "Energy",
+   "text": "Attach Water Energy to Baxcalibur (Bench 2)"
+  },
+  {
+   "key": "3",
+   "group": "Energy",
+   "text": "Attach Water Energy to Frigibax (Bench 3)"
+  },
+  {
+   "key": "0",
+   "group": "End turn",
+   "text": "End your turn without attacking"
+  }
+ ],
+ "cant_play": [
+  "Rare Candy: you have no Stage 2 Pokémon in your hand"
+ ]
+}

@@ -428,3 +428,91 @@ fn coin_flip_to_block_attack_keeps_its_resolution_without_a_victory_star_offer()
         }
     }
 }
+
+/// Confusion while a Will is pending is the other case the repair leaves on the legacy resolution: which coin Will turns
+/// to heads there has not been seen in Pocket, so `victory_star_waits_for_confusion_heads` excludes it. A Confused
+/// attacker with Victini on the Bench and a Will played gets no pause and no offer, and the result is exactly that of
+/// the same seed with no Victini in play (Sonnet's F4: nothing tested this guard).
+#[test]
+fn confusion_with_will_pending_keeps_the_legacy_resolution_without_a_victory_star_offer() {
+    let card_id = CardId::B4a007TeamRocketsMoltresEx;
+    let play_will_then_attack = |seed: u64, bench: CardId| {
+        let mut game = get_initialized_game_with_board(
+            seed,
+            0,
+            3,
+            vec![
+                moltres(card_id).with_status_condition(StatusCondition::Confused),
+                PlayedCard::from_id(bench),
+            ],
+            vec![sponge(0)],
+        );
+        let will = trainer(CardId::A4156Will);
+        let mut state = game.get_state_clone();
+        state.hands[0].push(Card::Trainer(will.clone()));
+        game.set_state(state);
+        game.apply_action(&Action {
+            actor: 0,
+            action: SimpleAction::Play { trainer_card: will },
+            is_stack: false,
+        });
+        game.apply_action(&attack(card_id, 0));
+        game
+    };
+    let mut resolved = 0;
+    for seed in 0..60 {
+        let with_victini = play_will_then_attack(seed, CardId::B3025Victini);
+        let without = play_will_then_attack(seed, CardId::A1001Bulbasaur);
+        let (a, b) = (with_victini.get_state_clone(), without.get_state_clone());
+        assert!(a.pending_attack_coin_choice.is_none(), "seed {seed}: no pause");
+        assert!(!offers_victory_star(&with_victini), "seed {seed}: no offer");
+        assert!(!a.victory_star_used_this_turn[0], "seed {seed}: Victory Star unused");
+        // The old result: what the same seed gives with nothing for Victory Star to work on.
+        assert_eq!(a.get_active(0).attached_energy.len(), b.get_active(0).attached_energy.len(), "seed {seed}");
+        assert_eq!(a.get_active(1).get_remaining_hp(), b.get_active(1).get_remaining_hp(), "seed {seed}");
+        assert_eq!(a.generate_possible_actions().1.len(), b.generate_possible_actions().1.len(), "seed {seed}");
+        resolved += (a.get_active(0).attached_energy.len() > 1) as usize;
+    }
+    assert!(resolved > 10, "the attack resolved (attached Energy) in only {resolved} of 60 seeds");
+}
+
+/// CoinFlipToBlockAttack keeps the old resolution, and not only "no pause, no offer": the result equals the old path's,
+/// which is what the same seed gives with Victory Star already used this turn (the gate shut before it starts). Sonnet's
+/// F7 (optional): the guard test above checked only the absence of a pause and an offer.
+#[test]
+fn coin_flip_to_block_attack_result_is_the_old_paths() {
+    for confused in [false, true] {
+        for seed in 0..40 {
+            let play = |used: bool| {
+                let mut attacker = moltres(CardId::B4a007TeamRocketsMoltresEx);
+                if confused {
+                    attacker = attacker.with_status_condition(StatusCondition::Confused);
+                }
+                attacker.add_effect(CardEffect::CoinFlipToBlockAttack, 1);
+                let mut game = get_initialized_game_with_board(
+                    seed,
+                    0,
+                    3,
+                    vec![attacker, PlayedCard::from_id(CardId::B3025Victini)],
+                    vec![sponge(0)],
+                );
+                let mut state = game.get_state_clone();
+                state.victory_star_used_this_turn[0] = used;
+                game.set_state(state);
+                game.apply_action(&attack(CardId::B4a007TeamRocketsMoltresEx, 0));
+                game.get_state_clone()
+            };
+            let (open, shut) = (play(false), play(true));
+            assert_eq!(
+                open.get_active(0).attached_energy.len(),
+                shut.get_active(0).attached_energy.len(),
+                "confused {confused}, seed {seed}"
+            );
+            assert_eq!(
+                open.generate_possible_actions().1.len(),
+                shut.generate_possible_actions().1.len(),
+                "confused {confused}, seed {seed}"
+            );
+        }
+    }
+}

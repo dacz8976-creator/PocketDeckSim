@@ -1,0 +1,1467 @@
+{
+ "_about": {
+  "quiz": "Your Move, Blind 3 (built in quiz4-2026-09-30; private: Dustin must not see this file)",
+  "engine": "rl/engine-2026-09-30/deckgym (main-d363ba8), sha256 119389c5...d215; every replay equals its committed game (table: winner, points, turns v km_tables 1f6319e_km3_table and kt_tables ec7e1a8_kta3_table; A/B: move fingerprints v kta_tables ec7e1a8_fresh_ab_dNN_kog3/kta3)",
+  "positions": "positions/Q01.json .. Q12.json (doc id = file name; the page loads them as the 'positions' collection, ordered by 'order')",
+  "grading_rule": "Grade only the part of the turn before any draw. A draw is any card or effect that puts unseen cards from the deck into the hand (Professor's Research, Copycat, Poke Ball, using Mesagoza). The draw card itself counts as part of the plan; everything after it depends on what was drawn and is not graded. Order alone is not graded when both plans play the same cards before the draw. Suicune ex's Legendary Pulse draws only at the end of the turn, after the plan, so it never cuts a plan short. The same cut applies to Dustin's answer: if his plan plays a draw card (Poke Ball, Research, Copycat, Mesagoza, Fragrant Forest) before he reaches the deciding card, grade what he wrote up to that draw, and if the decision is not reached by then, mark the position 'decided after a draw' instead of guessing.",
+  "how_to_grade": "Compare Dustin's first tap and written plan (up to any draw) with 'decision' and each choice's 'graded_part'. Table positions compare km3 (the new choice) with kta3; Dustin-deck positions compare kta3 (and km3, whose whole game equals kta3's) with kog3.",
+  "results_caution": "Each result is one game on one deal: not evidence either way."
+ },
+ "Q01": {
+  "candidate": "T12",
+  "order": 1,
+  "type": "(a) own Stadium play (Arena of Antiquity / Training Area)",
+  "kind": "table deal",
+  "seed": 72210047,
+  "seats": {
+   "0": "weezing",
+   "1": "lucario"
+  },
+  "deciding_seat": 1,
+  "your_deck": "Lucario",
+  "opponent_deck": "Weezing",
+  "turn": 2,
+  "ply_index": 12,
+  "you_went_first": false,
+  "arms": {
+   "kta3": "kta3,kta3",
+   "km3": "km3,km3"
+  },
+  "pilots_compared": "km3 v kta3 (the table pair: km3/kta3)",
+  "new_choice": {
+   "pilot": "km3",
+   "option_keys": [
+    "5"
+   ],
+   "option_text": "Play Arena of Antiquity (Stadium): Attacks used by each Fighting Pokémon in play (both yours and your opponent's) do +20 damage to the opponent's Active Pokémon ex.",
+   "first_move": "Play Arena of Antiquity (Stadium): Attacks used by each Fighting Pokémon in play (both yours and your opponent's) do +20 damage to the opponent's Active Pokémon ex.",
+   "whole_turn": [
+    "You: Played Arena of Antiquity (Stadium)",
+    "You: Put Hitmonlee on Bench 3",
+    "You: Attached Fighting Energy to Riolu (Active)",
+    "You: Riolu attacked with Fighting Fist (10+) → did 60 damage to opponent's Darkrai ex (Active)"
+   ],
+   "graded_part": [
+    "You: Played Arena of Antiquity (Stadium)",
+    "You: Put Hitmonlee on Bench 3",
+    "You: Attached Fighting Energy to Riolu (Active)",
+    "You: Riolu attacked with Fighting Fist (10+) → did 60 damage to opponent's Darkrai ex (Active)"
+   ],
+   "after_the_draw": [],
+   "draw": null,
+   "result": "win",
+   "final_points": {
+    "you": 4,
+    "opponent": 0
+   },
+   "final_turn": 8,
+   "game_fingerprint": "e97eb46f67d97ff1"
+  },
+  "other_choice": {
+   "pilot": "kta3",
+   "option_keys": [
+    "2",
+    "3",
+    "4"
+   ],
+   "option_text": "Put Hitmonlee onto your Bench",
+   "first_move": "Put Hitmonlee onto your Bench (Bench 3)",
+   "whole_turn": [
+    "You: Put Hitmonlee on Bench 3",
+    "You: Attached Fighting Energy to Hitmonlee (Bench 3)",
+    "You: Ended the turn without attacking"
+   ],
+   "graded_part": [
+    "You: Put Hitmonlee on Bench 3",
+    "You: Attached Fighting Energy to Hitmonlee (Bench 3)",
+    "You: Ended the turn without attacking"
+   ],
+   "after_the_draw": [],
+   "draw": null,
+   "result": "loss",
+   "final_points": {
+    "you": 2,
+    "opponent": 5
+   },
+   "final_turn": 13,
+   "game_fingerprint": "aa24da44901127aa"
+  },
+  "decision": [
+   "Arena of Antiquity now, Fighting Energy on Riolu and Fighting Fist into Darkrai ex for 60 (10, +30 against an ex, +20 from the Arena) (km3); or keep the Arena, put the Energy on the newly benched Hitmonlee and end the turn without attacking (kta3).",
+   "Both bench Hitmonlee, so a first tap of benching Hitmonlee says nothing on its own: grade the plan (Arena or not, Energy on Riolu and attack or Energy on Hitmonlee and no attack). A mix (attack without the Arena, or the Arena without an attack) matches neither; note which half matches."
+  ],
+  "grading_rule": "Grade only the part of the turn before any draw. A draw is any card or effect that puts unseen cards from the deck into the hand (Professor's Research, Copycat, Poke Ball, using Mesagoza). The draw card itself counts as part of the plan; everything after it depends on what was drawn and is not graded. Order alone is not graded when both plans play the same cards before the draw. Suicune ex's Legendary Pulse draws only at the end of the turn, after the plan, so it never cuts a plan short. The same cut applies to Dustin's answer: if his plan plays a draw card (Poke Ball, Research, Copycat, Mesagoza, Fragrant Forest) before he reaches the deciding card, grade what he wrote up to that draw, and if the decision is not reached by then, mark the position 'decided after a draw' instead of guessing.",
+  "hidden_information": "Opponent's 2 hand cards (whether Weezing holds Field Blower to remove the Arena); every card of Weezing's list not yet seen (only Darkrai ex, Hoopa ex, Team Rocket's Koffing, Poke Ball and Mars shown).",
+  "notes": [
+   "Going second, turn 2: Professor's Research was played earlier this turn (shown as already done)."
+  ],
+  "replay_checks": [
+   "kta3: replay {'winner_seat': 0, 'points': [5, 2], 'turns': 13, 'plies': 105, 'moves_blake2b': 'aa24da44901127aa'} v committed row winner 0 points [5, 2] turns 13 -> SAME",
+   "km3: replay {'winner_seat': 1, 'points': [0, 4], 'turns': 8, 'plies': 59, 'moves_blake2b': 'e97eb46f67d97ff1'} v committed row winner 1 points [0, 4] turns 8 -> SAME"
+  ],
+  "options_on_page": [
+   {
+    "key": "5",
+    "text": "Play Arena of Antiquity (Stadium): Attacks used by each Fighting Pokémon in play (both yours and your opponent's) do +20 damage to the opponent's Active Pokémon ex."
+   },
+   {
+    "key": "1",
+    "text": "Attach Fighting Energy to Riolu (Active)"
+   },
+   {
+    "key": "2",
+    "text": "Put Hitmonlee onto your Bench"
+   },
+   {
+    "key": "0",
+    "text": "End your turn without attacking"
+   }
+  ]
+ },
+ "Q02": {
+  "candidate": "T10",
+  "order": 2,
+  "type": "(b) clearing the opponent's Training Area / Arena (Field Blower or own Stadium)",
+  "kind": "table deal",
+  "seed": 72190294,
+  "seats": {
+   "0": "lucario",
+   "1": "suicune"
+  },
+  "deciding_seat": 1,
+  "your_deck": "Suicune",
+  "opponent_deck": "Lucario",
+  "turn": 2,
+  "ply_index": 13,
+  "you_went_first": false,
+  "arms": {
+   "kta3": "kta3,kta3",
+   "km3": "km3,km3"
+  },
+  "pilots_compared": "km3 v kta3 (the table pair: km3/kta3)",
+  "new_choice": {
+   "pilot": "km3",
+   "option_keys": [
+    "3"
+   ],
+   "option_text": "Play Field Blower (Item): Discard a Pokémon Tool card from a Pokémon (yours or your opponent's), or discard a Stadium card in play.",
+   "first_move": "Play Field Blower (Item): Discard a Pokémon Tool card from a Pokémon (yours or your opponent's), or discard a Stadium card in play.",
+   "whole_turn": [
+    "You: Played Field Blower (Item) → discarded the Stadium Arena of Antiquity",
+    "You: Played Pokémon Center Lady (Supporter) → healed 30 damage from Suicune ex (Active) and removed its Special Conditions",
+    "You: Attached Water Energy to Suicune ex (Active)",
+    "You: Ended the turn without attacking"
+   ],
+   "graded_part": [
+    "You: Played Field Blower (Item) → discarded the Stadium Arena of Antiquity",
+    "You: Played Pokémon Center Lady (Supporter) → healed 30 damage from Suicune ex (Active) and removed its Special Conditions",
+    "You: Attached Water Energy to Suicune ex (Active)",
+    "You: Ended the turn without attacking"
+   ],
+   "after_the_draw": [],
+   "draw": null,
+   "result": "win",
+   "final_points": {
+    "you": 3,
+    "opponent": 2
+   },
+   "final_turn": 12,
+   "game_fingerprint": "37831d8f65f2b9a4"
+  },
+  "other_choice": {
+   "pilot": "kta3",
+   "option_keys": [
+    "2"
+   ],
+   "option_text": "Play Pokémon Center Lady (Supporter): Heal 30 damage from 1 of your Pokémon, and it recovers from all Special Conditions.",
+   "first_move": "Play Pokémon Center Lady (Supporter): Heal 30 damage from 1 of your Pokémon, and it recovers from all Special Conditions.",
+   "whole_turn": [
+    "You: Played Pokémon Center Lady (Supporter) → healed 30 damage from Suicune ex (Active) and removed its Special Conditions",
+    "You: Played Field Blower (Item) → discarded Protective Poncho from opponent's Bonsly (Active)",
+    "You: Attached Water Energy to Suicune ex (Active)",
+    "You: Ended the turn without attacking"
+   ],
+   "graded_part": [
+    "You: Played Pokémon Center Lady (Supporter) → healed 30 damage from Suicune ex (Active) and removed its Special Conditions",
+    "You: Played Field Blower (Item) → discarded Protective Poncho from opponent's Bonsly (Active)",
+    "You: Attached Water Energy to Suicune ex (Active)",
+    "You: Ended the turn without attacking"
+   ],
+   "after_the_draw": [],
+   "draw": null,
+   "result": "loss",
+   "final_points": {
+    "you": 2,
+    "opponent": 3
+   },
+   "final_turn": 11,
+   "game_fingerprint": "4820c5c6881ba75e"
+  },
+  "decision": [
+   "Field Blower's target: the opponent's Stadium Arena of Antiquity (km3) or the Protective Poncho on the opponent's Active Bonsly (kta3).",
+   "Both also play Pokemon Center Lady on Suicune ex, attach Water to it and end the turn without attacking. kta3 taps Center Lady first, so a first tap of Center Lady says nothing: grade the Field Blower target in the plan. No Field Blower at all matches neither."
+  ],
+  "grading_rule": "Grade only the part of the turn before any draw. A draw is any card or effect that puts unseen cards from the deck into the hand (Professor's Research, Copycat, Poke Ball, using Mesagoza). The draw card itself counts as part of the plan; everything after it depends on what was drawn and is not graded. Order alone is not graded when both plans play the same cards before the draw. Suicune ex's Legendary Pulse draws only at the end of the turn, after the plan, so it never cuts a plan short. The same cut applies to Dustin's answer: if his plan plays a draw card (Poke Ball, Research, Copycat, Mesagoza, Fragrant Forest) before he reaches the deciding card, grade what he wrote up to that draw, and if the decision is not reached by then, mark the position 'decided after a draw' instead of guessing.",
+  "hidden_information": "Opponent's 4 hand cards (another Arena, Korrina or Red would add damage to Suicune ex); Lucario's list beyond Bonsly, Arena, Poncho, Research and Poke Ball.",
+  "notes": [],
+  "replay_checks": [
+   "kta3: replay {'winner_seat': 0, 'points': [3, 2], 'turns': 11, 'plies': 81, 'moves_blake2b': '4820c5c6881ba75e'} v committed row winner 0 points [3, 2] turns 11 -> SAME",
+   "km3: replay {'winner_seat': 1, 'points': [2, 3], 'turns': 12, 'plies': 94, 'moves_blake2b': '37831d8f65f2b9a4'} v committed row winner 1 points [2, 3] turns 12 -> SAME"
+  ],
+  "options_on_page": [
+   {
+    "key": "2",
+    "text": "Play Pokémon Center Lady (Supporter): Heal 30 damage from 1 of your Pokémon, and it recovers from all Special Conditions."
+   },
+   {
+    "key": "4",
+    "text": "Play Team Rocket's Boss (Supporter): Look at your opponent's hand and put any number of Basic Pokémon you find there onto your opponent's Bench."
+   },
+   {
+    "key": "3",
+    "text": "Play Field Blower (Item): Discard a Pokémon Tool card from a Pokémon (yours or your opponent's), or discard a Stadium card in play."
+   },
+   {
+    "key": "1",
+    "text": "Attach Water Energy to Suicune ex (Active)"
+   },
+   {
+    "key": "0",
+    "text": "End your turn without attacking"
+   }
+  ]
+ },
+ "Q03": {
+  "candidate": "J02",
+  "order": 3,
+  "type": "(c) Jasmine / Heavy Helmet (kta3's switch 1 against kog3)",
+  "kind": "Dustin-deck A/B deal",
+  "seed": 23004073073,
+  "seats": {
+   "0": "../dustin/07-skarmory-stall",
+   "1": "../screen/opponents/t-lucario"
+  },
+  "deciding_seat": 0,
+  "your_deck": "Skarmory ex stall (your deck 07)",
+  "opponent_deck": "Lucario",
+  "turn": 5,
+  "ply_index": 35,
+  "you_went_first": true,
+  "arms": {
+   "kog3": "kog3,kog3",
+   "kta3": "kta3,kog3",
+   "km3": "km3,kog3"
+  },
+  "pilots_compared": "kta3 v kog3 (the Dustin-deck pair: kog3/kta3; km3 makes kta3's choice and its whole game equals kta3's)",
+  "new_choice": {
+   "pilot": "kta3 (and km3)",
+   "option_keys": [
+    "6"
+   ],
+   "option_text": "Play Jasmine (Supporter): During your opponent's next turn, all of your Steelix and Skarmory ex take -50 damage from attacks from your opponent's Pokémon.",
+   "first_move": "Play Jasmine (Supporter): During your opponent's next turn, all of your Steelix and Skarmory ex take -50 damage from attacks from your opponent's Pokémon.",
+   "whole_turn": [
+    "You: Played Jasmine (Supporter)",
+    "You: Used Indeedee ex's Ability Watch Over (Bench 3) → healed 20 damage from Skarmory ex (Active)",
+    "You: Played Lucky Ice Pop (Item) → healed 20 damage from Skarmory ex (Active)",
+    "You: Attached Metal Energy to Skarmory ex (Active)",
+    "You: Skarmory ex attacked with Steel Wing (70) → did 70 damage to opponent's Mega Lucario ex (Active)"
+   ],
+   "graded_part": [
+    "You: Played Jasmine (Supporter)",
+    "You: Used Indeedee ex's Ability Watch Over (Bench 3) → healed 20 damage from Skarmory ex (Active)",
+    "You: Played Lucky Ice Pop (Item) → healed 20 damage from Skarmory ex (Active)",
+    "You: Attached Metal Energy to Skarmory ex (Active)",
+    "You: Skarmory ex attacked with Steel Wing (70) → did 70 damage to opponent's Mega Lucario ex (Active)"
+   ],
+   "after_the_draw": [],
+   "draw": null,
+   "result": "win",
+   "final_points": {
+    "you": 3,
+    "opponent": 2
+   },
+   "final_turn": 9,
+   "game_fingerprint": "3e0930056c0457f9"
+  },
+  "other_choice": {
+   "pilot": "kog3",
+   "option_keys": [
+    "9"
+   ],
+   "option_text": "Use Indeedee ex's Ability Watch Over (Bench 3): Once during your turn, you may heal 20 damage from your Active Pokémon.",
+   "first_move": "Use Indeedee ex's Ability Watch Over (Bench 3): Once during your turn, you may heal 20 damage from your Active Pokémon.",
+   "whole_turn": [
+    "You: Used Indeedee ex's Ability Watch Over (Bench 3) → healed 20 damage from Skarmory ex (Active)",
+    "You: Played Lucky Ice Pop (Item) → healed 20 damage from Skarmory ex (Active)",
+    "You: Played Red (Supporter)",
+    "You: Attached Metal Energy to Skarmory ex (Active)",
+    "You: Skarmory ex attacked with Steel Wing (70) → did 90 damage to opponent's Mega Lucario ex (Active)"
+   ],
+   "graded_part": [
+    "You: Used Indeedee ex's Ability Watch Over (Bench 3) → healed 20 damage from Skarmory ex (Active)",
+    "You: Played Lucky Ice Pop (Item) → healed 20 damage from Skarmory ex (Active)",
+    "You: Played Red (Supporter)",
+    "You: Attached Metal Energy to Skarmory ex (Active)",
+    "You: Skarmory ex attacked with Steel Wing (70) → did 90 damage to opponent's Mega Lucario ex (Active)"
+   ],
+   "after_the_draw": [],
+   "draw": null,
+   "result": "loss",
+   "final_points": {
+    "you": 0,
+    "opponent": 4
+   },
+   "final_turn": 8,
+   "game_fingerprint": "715112f4d6b5b387"
+  },
+  "decision": [
+   "The Supporter: Jasmine (kta3, and km3) or Red (kog3). Sabrina, or no Supporter, matches neither.",
+   "Both also heal with Indeedee ex's Watch Over and Lucky Ice Pop, attach Metal to the Active Skarmory ex and attack with Steel Wing (70, or 90 with Red's +20 against an ex). kog3 taps Watch Over first, so a first tap of Watch Over or Lucky Ice Pop says nothing: grade the Supporter."
+  ],
+  "grading_rule": "Grade only the part of the turn before any draw. A draw is any card or effect that puts unseen cards from the deck into the hand (Professor's Research, Copycat, Poke Ball, using Mesagoza). The draw card itself counts as part of the plan; everything after it depends on what was drawn and is not graded. Order alone is not graded when both plans play the same cards before the draw. Suicune ex's Legendary Pulse draws only at the end of the turn, after the plan, so it never cuts a plan short. The same cut applies to Dustin's answer: if his plan plays a draw card (Poke Ball, Research, Copycat, Mesagoza, Fragrant Forest) before he reaches the deciding card, grade what he wrote up to that draw, and if the decision is not reached by then, mark the position 'decided after a draw' instead of guessing.",
+  "hidden_information": "Opponent's 2 hand cards (Korrina, Arena or a third Energy for Fighting Pulse's +50 decide whether Skarmory ex survives); Lucario's list beyond what was played.",
+  "notes": [],
+  "replay_checks": [
+   "kog3: replay fingerprint 715112f4d6b5b387 v committed 715112f4d6b5b387 -> SAME",
+   "kta3: replay fingerprint 3e0930056c0457f9 v committed 3e0930056c0457f9 -> SAME",
+   "km3: no committed game (third arm); {'winner_seat': 0, 'points': [3, 2], 'turns': 9, 'plies': 61, 'moves_blake2b': '3e0930056c0457f9'}"
+  ],
+  "options_on_page": [
+   {
+    "key": "9",
+    "text": "Use Indeedee ex's Ability Watch Over (Bench 3): Once during your turn, you may heal 20 damage from your Active Pokémon."
+   },
+   {
+    "key": "6",
+    "text": "Play Jasmine (Supporter): During your opponent's next turn, all of your Steelix and Skarmory ex take -50 damage from attacks from your opponent's Pokémon."
+   },
+   {
+    "key": "5",
+    "text": "Play Red (Supporter): During this turn, attacks used by your Pokémon do +20 damage to your opponent's Active Pokémon ex."
+   },
+   {
+    "key": "4",
+    "text": "Play Sabrina (Supporter): Switch out your opponent's Active Pokémon to the Bench. (Your opponent chooses the new Active Pokémon.)"
+   },
+   {
+    "key": "7",
+    "text": "Play Lucky Ice Pop (Item): Heal 20 damage from your Active Pokémon. If you healed any damage in this way, flip a coin. If heads, put this Lucky Ice Pop into your hand instead of the discard pile."
+   },
+   {
+    "key": "8",
+    "text": "Play Poké Ball (Item): Put a random Basic Pokémon from your deck into your hand."
+   },
+   {
+    "key": "1",
+    "text": "Attach Metal Energy to Skarmory ex (Active)"
+   },
+   {
+    "key": "2",
+    "text": "Attach Metal Energy to Skarmory ex (Bench 2)"
+   },
+   {
+    "key": "3",
+    "text": "Attach Metal Energy to Indeedee ex (Bench 3)"
+   },
+   {
+    "key": "0",
+    "text": "End your turn without attacking"
+   }
+  ]
+ },
+ "Q04": {
+  "candidate": "T04",
+  "order": 4,
+  "type": "(a) own Stadium play (Arena of Antiquity / Training Area)",
+  "kind": "table deal",
+  "seed": 72040307,
+  "seats": {
+   "0": "suicune",
+   "1": "altaria"
+  },
+  "deciding_seat": 1,
+  "your_deck": "Altaria",
+  "opponent_deck": "Suicune",
+  "turn": 4,
+  "ply_index": 25,
+  "you_went_first": false,
+  "arms": {
+   "kta3": "kta3,kta3",
+   "km3": "km3,km3"
+  },
+  "pilots_compared": "km3 v kta3 (the table pair: km3/kta3)",
+  "new_choice": {
+   "pilot": "km3",
+   "option_keys": [
+    "6"
+   ],
+   "option_text": "Play Training Area (Stadium): Attacks used by Stage 1 Pokémon in play (both yours and your opponent's) do +10 damage to the opponent's Active Pokémon.",
+   "first_move": "Play Training Area (Stadium): Attacks used by Stage 1 Pokémon in play (both yours and your opponent's) do +10 damage to the opponent's Active Pokémon.",
+   "whole_turn": [
+    "You: Played Training Area (Stadium)",
+    "You: Evolved Swablu (Active) into Mega Altaria ex",
+    "You: Played Small Balloon (Pokémon Tool) → attached Small Balloon to Mega Altaria ex (Active)",
+    "You: Attached Psychic Energy to Mega Altaria ex (Active)",
+    "You: Ended the turn without attacking"
+   ],
+   "graded_part": [
+    "You: Played Training Area (Stadium)",
+    "You: Evolved Swablu (Active) into Mega Altaria ex",
+    "You: Played Small Balloon (Pokémon Tool) → attached Small Balloon to Mega Altaria ex (Active)",
+    "You: Attached Psychic Energy to Mega Altaria ex (Active)",
+    "You: Ended the turn without attacking"
+   ],
+   "after_the_draw": [],
+   "draw": null,
+   "result": "loss",
+   "final_points": {
+    "you": 0,
+    "opponent": 3
+   },
+   "final_turn": 7,
+   "game_fingerprint": "60480fcba2795a74"
+  },
+  "other_choice": {
+   "pilot": "kta3",
+   "option_keys": [
+    "5"
+   ],
+   "option_text": "Evolve Swablu (Active) into Mega Altaria ex",
+   "first_move": "Evolve Swablu (Active) into Mega Altaria ex",
+   "whole_turn": [
+    "You: Evolved Swablu (Active) into Mega Altaria ex",
+    "You: Played Small Balloon (Pokémon Tool) → attached Small Balloon to Mega Altaria ex (Active)",
+    "You: Attached Psychic Energy to Mega Altaria ex (Active)",
+    "You: Ended the turn without attacking"
+   ],
+   "graded_part": [
+    "You: Evolved Swablu (Active) into Mega Altaria ex",
+    "You: Played Small Balloon (Pokémon Tool) → attached Small Balloon to Mega Altaria ex (Active)",
+    "You: Attached Psychic Energy to Mega Altaria ex (Active)",
+    "You: Ended the turn without attacking"
+   ],
+   "after_the_draw": [],
+   "draw": null,
+   "result": "loss",
+   "final_points": {
+    "you": 2,
+    "opponent": 3
+   },
+   "final_turn": 9,
+   "game_fingerprint": "dd0410ce4a6f15a8"
+  },
+  "decision": [
+   "Training Area this turn (km3) or kept in hand (kta3).",
+   "Both evolve Swablu into Mega Altaria ex, put Small Balloon and the Psychic Energy on it and end the turn without attacking (Mega Harmony needs two Psychic, so the Stadium does nothing this turn). A first tap of Training Area is km3's plan; a first tap of the evolve needs the plan (Training Area later in the turn is km3's plan in another order)."
+  ],
+  "grading_rule": "Grade only the part of the turn before any draw. A draw is any card or effect that puts unseen cards from the deck into the hand (Professor's Research, Copycat, Poke Ball, using Mesagoza). The draw card itself counts as part of the plan; everything after it depends on what was drawn and is not graded. Order alone is not graded when both plans play the same cards before the draw. Suicune ex's Legendary Pulse draws only at the end of the turn, after the plan, so it never cuts a plan short. The same cut applies to Dustin's answer: if his plan plays a draw card (Poke Ball, Research, Copycat, Mesagoza, Fragrant Forest) before he reaches the deciding card, grade what he wrote up to that draw, and if the decision is not reached by then, mark the position 'decided after a draw' instead of guessing.",
+  "hidden_information": "Opponent's 4 hand cards (Suicune's Field Blower or Soothing Shore could remove Training Area before Mega Altaria ex attacks; neither has been seen); Suicune's list beyond what was played.",
+  "notes": [],
+  "replay_checks": [
+   "kta3: replay {'winner_seat': 0, 'points': [3, 2], 'turns': 9, 'plies': 56, 'moves_blake2b': 'dd0410ce4a6f15a8'} v committed row winner 0 points [3, 2] turns 9 -> SAME",
+   "km3: replay {'winner_seat': 0, 'points': [3, 0], 'turns': 7, 'plies': 44, 'moves_blake2b': '60480fcba2795a74'} v committed row winner 0 points [3, 0] turns 7 -> SAME"
+  ],
+  "options_on_page": [
+   {
+    "key": "7",
+    "text": "Play Small Balloon (Pokémon Tool), then choose which of your Pokémon to attach it to: The Retreat Cost of the Basic Pokémon this card is attached to is 1 less."
+   },
+   {
+    "key": "6",
+    "text": "Play Training Area (Stadium): Attacks used by Stage 1 Pokémon in play (both yours and your opponent's) do +10 damage to the opponent's Active Pokémon."
+   },
+   {
+    "key": "1",
+    "text": "Attach Psychic Energy to Swablu (Active)"
+   },
+   {
+    "key": "2",
+    "text": "Attach Psychic Energy to a Benched Eevee (Bench 1 or 2)"
+   },
+   {
+    "key": "4",
+    "text": "Attach Psychic Energy to Darkrai (Bench 3)"
+   },
+   {
+    "key": "5",
+    "text": "Evolve Swablu (Active) into Mega Altaria ex"
+   },
+   {
+    "key": "0",
+    "text": "End your turn without attacking"
+   }
+  ]
+ },
+ "Q05": {
+  "candidate": "T08",
+  "order": 5,
+  "type": "(b) clearing the opponent's Training Area / Arena (Field Blower or own Stadium)",
+  "kind": "table deal",
+  "seed": 72040253,
+  "seats": {
+   "0": "suicune",
+   "1": "altaria"
+  },
+  "deciding_seat": 0,
+  "your_deck": "Suicune",
+  "opponent_deck": "Altaria",
+  "turn": 7,
+  "ply_index": 58,
+  "you_went_first": true,
+  "arms": {
+   "kta3": "kta3,kta3",
+   "km3": "km3,km3"
+  },
+  "pilots_compared": "km3 v kta3 (the table pair: km3/kta3)",
+  "new_choice": {
+   "pilot": "km3",
+   "option_keys": [
+    "2"
+   ],
+   "option_text": "Play Field Blower (Item): Discard a Pokémon Tool card from a Pokémon (yours or your opponent's), or discard a Stadium card in play.",
+   "first_move": "Play Field Blower (Item): Discard a Pokémon Tool card from a Pokémon (yours or your opponent's), or discard a Stadium card in play.",
+   "whole_turn": [
+    "You: Played Field Blower (Item) → discarded the Stadium Training Area",
+    "You: Baxcalibur attacked with Buster Tail (90) → did 90 damage to opponent's Mega Altaria ex (Active)"
+   ],
+   "graded_part": [
+    "You: Played Field Blower (Item) → discarded the Stadium Training Area",
+    "You: Baxcalibur attacked with Buster Tail (90) → did 90 damage to opponent's Mega Altaria ex (Active)"
+   ],
+   "after_the_draw": [],
+   "draw": null,
+   "result": "win",
+   "final_points": {
+    "you": 5,
+    "opponent": 2
+   },
+   "final_turn": 9,
+   "game_fingerprint": "287cb08d303977a4"
+  },
+  "other_choice": {
+   "pilot": "kta3",
+   "option_keys": [
+    "1"
+   ],
+   "option_text": "Attack with Buster Tail (90 damage)",
+   "first_move": "Attack with Buster Tail (90 damage)",
+   "whole_turn": [
+    "You: Baxcalibur attacked with Buster Tail (90) → did 90 damage to opponent's Mega Altaria ex (Active)"
+   ],
+   "graded_part": [
+    "You: Baxcalibur attacked with Buster Tail (90) → did 90 damage to opponent's Mega Altaria ex (Active)"
+   ],
+   "after_the_draw": [],
+   "draw": null,
+   "result": "loss",
+   "final_points": {
+    "you": 2,
+    "opponent": 3
+   },
+   "final_turn": 8,
+   "game_fingerprint": "383efd532cdc7c86"
+  },
+  "decision": [
+   "Field Blower on Training Area before Buster Tail (km3), or Buster Tail with Field Blower kept (kta3).",
+   "Mega Harmony is 40 + 30 for each of the opponent's 3 Benched = 130; Training Area adds 10 = 140, exactly Baxcalibur's HP. The first tap settles it: attacking ends the turn."
+  ],
+  "grading_rule": "Grade only the part of the turn before any draw. A draw is any card or effect that puts unseen cards from the deck into the hand (Professor's Research, Copycat, Poke Ball, using Mesagoza). The draw card itself counts as part of the plan; everything after it depends on what was drawn and is not graded. Order alone is not graded when both plans play the same cards before the draw. Suicune ex's Legendary Pulse draws only at the end of the turn, after the plan, so it never cuts a plan short. The same cut applies to Dustin's answer: if his plan plays a draw card (Poke Ball, Research, Copycat, Mesagoza, Fragrant Forest) before he reaches the deciding card, grade what he wrote up to that draw, and if the decision is not reached by then, mark the position 'decided after a draw' instead of guessing.",
+  "hidden_information": "Opponent's 2 hand cards (a second Training Area, a Field Blower, a fourth Benched Pokemon); Altaria's list beyond what was played.",
+  "notes": [],
+  "replay_checks": [
+   "kta3: replay {'winner_seat': 1, 'points': [2, 3], 'turns': 8, 'plies': 62, 'moves_blake2b': '383efd532cdc7c86'} v committed row winner 1 points [2, 3] turns 8 -> SAME",
+   "km3: replay {'winner_seat': 0, 'points': [5, 2], 'turns': 9, 'plies': 79, 'moves_blake2b': '287cb08d303977a4'} v committed row winner 0 points [5, 2] turns 9 -> SAME"
+  ],
+  "options_on_page": [
+   {
+    "key": "1",
+    "text": "Attack with Buster Tail (90 damage)"
+   },
+   {
+    "key": "3",
+    "text": "Play Team Rocket's Boss (Supporter): Look at your opponent's hand and put any number of Basic Pokémon you find there onto your opponent's Bench."
+   },
+   {
+    "key": "2",
+    "text": "Play Field Blower (Item): Discard a Pokémon Tool card from a Pokémon (yours or your opponent's), or discard a Stadium card in play."
+   },
+   {
+    "key": "4",
+    "text": "Retreat Baxcalibur (Active) and switch in Chien-Pao ex (Bench 1); costs 3 Energy"
+   },
+   {
+    "key": "5",
+    "text": "Retreat Baxcalibur (Active) and switch in Frigibax (Bench 2); costs 3 Energy"
+   },
+   {
+    "key": "6",
+    "text": "Retreat Baxcalibur (Active) and switch in Suicune ex (Bench 3); costs 3 Energy"
+   },
+   {
+    "key": "0",
+    "text": "End your turn without attacking"
+   }
+  ]
+ },
+ "Q06": {
+  "candidate": "H01",
+  "order": 6,
+  "type": "(c) Jasmine / Heavy Helmet (kta3's switch 1 against kog3)",
+  "kind": "Dustin-deck A/B deal",
+  "seed": 23004016067,
+  "seats": {
+   "0": "../dustin/01-muk-glimmora-kingambit-regigigas",
+   "1": "../screen/opponents/t-vespiquen"
+  },
+  "deciding_seat": 0,
+  "your_deck": "Muk / Glimmora / Kingambit / Regigigas (your deck 01)",
+  "opponent_deck": "Vespiquen",
+  "turn": 6,
+  "ply_index": 41,
+  "you_went_first": false,
+  "arms": {
+   "kog3": "kog3,kog3",
+   "kta3": "kta3,kog3",
+   "km3": "km3,kog3"
+  },
+  "pilots_compared": "kta3 v kog3 (the Dustin-deck pair: kog3/kta3; km3 makes kta3's choice and its whole game equals kta3's)",
+  "new_choice": {
+   "pilot": "kta3 (and km3)",
+   "option_keys": [
+    "5"
+   ],
+   "option_text": "Play Heavy Helmet (Pokémon Tool), then choose which of your Pokémon to attach it to: If the Pokémon this card is attached to has a Retreat Cost of 3 or more, it takes -20 damage from attacks from your opponent's Pokémon.",
+   "first_move": "Play Heavy Helmet (Pokémon Tool), then choose which of your Pokémon to attach it to: If the Pokémon this card is attached to has a Retreat Cost of 3 or more, it takes -20 damage from attacks from your opponent's Pokémon.",
+   "whole_turn": [
+    "You: Played Heavy Helmet (Pokémon Tool) → attached Heavy Helmet to Regigigas (Bench 3)",
+    "You: Played Lucky Ice Pop (Item) → healed 20 damage from Alolan Muk (Active)",
+    "You: Played Mesagoza (Stadium)",
+    "You: Used the Stadium Mesagoza",
+    "You: Played Rare Candy (Item) → evolved Pawniard (Bench 2) into Kingambit (skipping Bisharp)",
+    "You: Attached Darkness Energy to Regigigas (Bench 3)",
+    "You: Ended the turn without attacking"
+   ],
+   "graded_part": [
+    "You: Played Heavy Helmet (Pokémon Tool) → attached Heavy Helmet to Regigigas (Bench 3)",
+    "You: Played Lucky Ice Pop (Item) → healed 20 damage from Alolan Muk (Active)",
+    "You: Played Mesagoza (Stadium)",
+    "You: Used the Stadium Mesagoza"
+   ],
+   "after_the_draw": [
+    "You: Played Rare Candy (Item) → evolved Pawniard (Bench 2) into Kingambit (skipping Bisharp)",
+    "You: Attached Darkness Energy to Regigigas (Bench 3)",
+    "You: Ended the turn without attacking"
+   ],
+   "draw": "You: Used the Stadium Mesagoza",
+   "result": "win",
+   "final_points": {
+    "you": 2,
+    "opponent": 2
+   },
+   "final_turn": 16,
+   "game_fingerprint": "b7af549169c6417d"
+  },
+  "other_choice": {
+   "pilot": "kog3",
+   "option_keys": [
+    "6"
+   ],
+   "option_text": "Play Lucky Ice Pop (Item): Heal 20 damage from your Active Pokémon. If you healed any damage in this way, flip a coin. If heads, put this Lucky Ice Pop into your hand instead of the discard pile.",
+   "first_move": "Play Lucky Ice Pop (Item): Heal 20 damage from your Active Pokémon. If you healed any damage in this way, flip a coin. If heads, put this Lucky Ice Pop into your hand instead of the discard pile.",
+   "whole_turn": [
+    "You: Played Lucky Ice Pop (Item) → healed 20 damage from Alolan Muk (Active)",
+    "You: Played Heavy Helmet (Pokémon Tool) → attached Heavy Helmet to Alolan Muk (Active)",
+    "You: Played Mesagoza (Stadium)",
+    "You: Used the Stadium Mesagoza",
+    "You: Played Rare Candy (Item) → evolved Pawniard (Bench 2) into Kingambit (skipping Bisharp)",
+    "You: Attached Darkness Energy to Regigigas (Bench 3)",
+    "You: Ended the turn without attacking"
+   ],
+   "graded_part": [
+    "You: Played Lucky Ice Pop (Item) → healed 20 damage from Alolan Muk (Active)",
+    "You: Played Heavy Helmet (Pokémon Tool) → attached Heavy Helmet to Alolan Muk (Active)",
+    "You: Played Mesagoza (Stadium)",
+    "You: Used the Stadium Mesagoza"
+   ],
+   "after_the_draw": [
+    "You: Played Rare Candy (Item) → evolved Pawniard (Bench 2) into Kingambit (skipping Bisharp)",
+    "You: Attached Darkness Energy to Regigigas (Bench 3)",
+    "You: Ended the turn without attacking"
+   ],
+   "draw": "You: Used the Stadium Mesagoza",
+   "result": "loss",
+   "final_points": {
+    "you": 2,
+    "opponent": 3
+   },
+   "final_turn": 19,
+   "game_fingerprint": "8b16c3e6c1977252"
+  },
+  "decision": [
+   "Heavy Helmet's holder: the Benched Regigigas (Retreat 4; kta3, and km3) or the Active Alolan Muk (Retreat 3; kog3). The Helmet on Pawniard (Retreat 1) does nothing and matches neither.",
+   "Both also play Lucky Ice Pop on Muk and Mesagoza and use it before the draw. kog3 taps Ice Pop first, so the first tap says nothing: grade the holder written in the plan. Rare Candy into Kingambit came from Mesagoza's flip (Kingambit was not in hand) and is after the draw, so it is not graded."
+  ],
+  "grading_rule": "Grade only the part of the turn before any draw. A draw is any card or effect that puts unseen cards from the deck into the hand (Professor's Research, Copycat, Poke Ball, using Mesagoza). The draw card itself counts as part of the plan; everything after it depends on what was drawn and is not graded. Order alone is not graded when both plans play the same cards before the draw. Suicune ex's Legendary Pulse draws only at the end of the turn, after the plan, so it never cuts a plan short. The same cut applies to Dustin's answer: if his plan plays a draw card (Poke Ball, Research, Copycat, Mesagoza, Fragrant Forest) before he reaches the deciding card, grade what he wrote up to that draw, and if the decision is not reached by then, mark the position 'decided after a draw' instead of guessing.",
+  "hidden_information": "Opponent's 5 hand cards (Vespiquen's Field Blower could discard the Helmet); its list beyond what was played.",
+  "notes": [
+   "The page offers 'Use the Stadium Fragrant Forest' to deck 01, which has no Basic Grass Pokemon (the same rules oddity as quiz 2's note 5). Neither pilot chose it.",
+   "kta3's 'win' at 2-2 is not on points: Poison Knocked Out the opponent's last Pokemon (Vespiquen ex, 170 HP with Leaf Cape, 160 damage) at the end of turn 16, so the opponent had no Pokemon left (verifier, Sept 30).",
+   "Alolan Muk's Power of Alchemy is in play: both Shuckle ex, Teal Mask Ogerpon ex and your Regigigas have no Ability (so Regigigas can attack). The page now notes this on each of them (verifier, Sept 30)."
+  ],
+  "replay_checks": [
+   "kog3: replay fingerprint 8b16c3e6c1977252 v committed 8b16c3e6c1977252 -> SAME",
+   "kta3: replay fingerprint b7af549169c6417d v committed b7af549169c6417d -> SAME",
+   "km3: no committed game (third arm); {'winner_seat': 0, 'points': [2, 2], 'turns': 16, 'plies': 115, 'moves_blake2b': 'b7af549169c6417d'}"
+  ],
+  "options_on_page": [
+   {
+    "key": "6",
+    "text": "Play Lucky Ice Pop (Item): Heal 20 damage from your Active Pokémon. If you healed any damage in this way, flip a coin. If heads, put this Lucky Ice Pop into your hand instead of the discard pile."
+   },
+   {
+    "key": "5",
+    "text": "Play Heavy Helmet (Pokémon Tool), then choose which of your Pokémon to attach it to: If the Pokémon this card is attached to has a Retreat Cost of 3 or more, it takes -20 damage from attacks from your opponent's Pokémon."
+   },
+   {
+    "key": "7",
+    "text": "Play Mesagoza (Stadium): Once during each player's turn, that player may flip a coin. If heads, that player puts a random Pokémon from their deck into their hand."
+   },
+   {
+    "key": "1",
+    "text": "Use the Stadium Fragrant Forest: Once during each player's turn, that player may put a random Basic Grass Pokémon from their deck into their hand."
+   },
+   {
+    "key": "2",
+    "text": "Attach Darkness Energy to Alolan Muk (Active)"
+   },
+   {
+    "key": "3",
+    "text": "Attach Darkness Energy to Pawniard (Bench 2)"
+   },
+   {
+    "key": "4",
+    "text": "Attach Darkness Energy to Regigigas (Bench 3)"
+   },
+   {
+    "key": "0",
+    "text": "End your turn without attacking"
+   }
+  ]
+ },
+ "Q07": {
+  "candidate": "T05",
+  "order": 7,
+  "type": "(a) own Stadium play (Arena of Antiquity / Training Area)",
+  "kind": "table deal",
+  "seed": 72020232,
+  "seats": {
+   "0": "altaria",
+   "1": "lucario"
+  },
+  "deciding_seat": 1,
+  "your_deck": "Lucario",
+  "opponent_deck": "Altaria",
+  "turn": 8,
+  "ply_index": 63,
+  "you_went_first": false,
+  "arms": {
+   "kta3": "kta3,kta3",
+   "km3": "km3,km3"
+  },
+  "pilots_compared": "km3 v kta3 (the table pair: km3/kta3)",
+  "new_choice": {
+   "pilot": "km3",
+   "option_keys": [
+    "3"
+   ],
+   "option_text": "Play Arena of Antiquity (Stadium): Attacks used by each Fighting Pokémon in play (both yours and your opponent's) do +20 damage to the opponent's Active Pokémon ex.",
+   "first_move": "Play Arena of Antiquity (Stadium): Attacks used by each Fighting Pokémon in play (both yours and your opponent's) do +20 damage to the opponent's Active Pokémon ex.",
+   "whole_turn": [
+    "You: Played Arena of Antiquity (Stadium)",
+    "You: Mega Lucario ex attacked with Fighting Pulse (90+) → did 90 damage to opponent's Darkrai (Active)"
+   ],
+   "graded_part": [
+    "You: Played Arena of Antiquity (Stadium)",
+    "You: Mega Lucario ex attacked with Fighting Pulse (90+) → did 90 damage to opponent's Darkrai (Active)"
+   ],
+   "after_the_draw": [],
+   "draw": null,
+   "result": "loss",
+   "final_points": {
+    "you": 2,
+    "opponent": 5
+   },
+   "final_turn": 13,
+   "game_fingerprint": "b0a2ab59654e3a8f"
+  },
+  "other_choice": {
+   "pilot": "kta3",
+   "option_keys": [
+    "1"
+   ],
+   "option_text": "Attack with Fighting Pulse (90+ damage): If this Pokémon has at least 1 extra Fighting Energy attached, this attack does 50 more damage.",
+   "first_move": "Attack with Fighting Pulse (90+ damage): If this Pokémon has at least 1 extra Fighting Energy attached, this attack does 50 more damage.",
+   "whole_turn": [
+    "You: Mega Lucario ex attacked with Fighting Pulse (90+) → did 90 damage to opponent's Darkrai (Active)"
+   ],
+   "graded_part": [
+    "You: Mega Lucario ex attacked with Fighting Pulse (90+) → did 90 damage to opponent's Darkrai (Active)"
+   ],
+   "after_the_draw": [],
+   "draw": null,
+   "result": "win",
+   "final_points": {
+    "you": 5,
+    "opponent": 2
+   },
+   "final_turn": 12,
+   "game_fingerprint": "42ab761eaf3bfa52"
+  },
+  "decision": [
+   "Arena of Antiquity before Fighting Pulse (km3) or Fighting Pulse with the Arena kept (kta3).",
+   "The Arena adds nothing this turn: the opponent's Active Darkrai is not an ex. The first tap settles it: attacking ends the turn. Korrina (+30 against an ex only) also does nothing here; Korrina then attack without the Arena counts as kta3's plan for the Arena question."
+  ],
+  "grading_rule": "Grade only the part of the turn before any draw. A draw is any card or effect that puts unseen cards from the deck into the hand (Professor's Research, Copycat, Poke Ball, using Mesagoza). The draw card itself counts as part of the plan; everything after it depends on what was drawn and is not graded. Order alone is not graded when both plans play the same cards before the draw. Suicune ex's Legendary Pulse draws only at the end of the turn, after the plan, so it never cuts a plan short. The same cut applies to Dustin's answer: if his plan plays a draw card (Poke Ball, Research, Copycat, Mesagoza, Fragrant Forest) before he reaches the deciding card, grade what he wrote up to that draw, and if the decision is not reached by then, mark the position 'decided after a draw' instead of guessing.",
+  "hidden_information": "Opponent's 2 hand cards (Training Area or Field Blower would replace or remove the Arena; whether Mega Altaria ex attacks next turn); Altaria's list beyond what was played.",
+  "notes": [],
+  "replay_checks": [
+   "kta3: replay {'winner_seat': 1, 'points': [2, 5], 'turns': 12, 'plies': 86, 'moves_blake2b': '42ab761eaf3bfa52'} v committed row winner 1 points [2, 5] turns 12 -> SAME",
+   "km3: replay {'winner_seat': 0, 'points': [5, 2], 'turns': 13, 'plies': 91, 'moves_blake2b': 'b0a2ab59654e3a8f'} v committed row winner 0 points [5, 2] turns 13 -> SAME"
+  ],
+  "options_on_page": [
+   {
+    "key": "1",
+    "text": "Attack with Fighting Pulse (90+ damage): If this Pokémon has at least 1 extra Fighting Energy attached, this attack does 50 more damage."
+   },
+   {
+    "key": "2",
+    "text": "Play Korrina (Supporter): During this turn, attacks used by your Fighting Pokémon do +30 damage to your opponent's Active Pokémon ex."
+   },
+   {
+    "key": "3",
+    "text": "Play Arena of Antiquity (Stadium): Attacks used by each Fighting Pokémon in play (both yours and your opponent's) do +20 damage to the opponent's Active Pokémon ex."
+   },
+   {
+    "key": "0",
+    "text": "End your turn without attacking"
+   }
+  ]
+ },
+ "Q08": {
+  "candidate": "T11",
+  "order": 8,
+  "type": "(b) clearing the opponent's Training Area / Arena (Field Blower or own Stadium)",
+  "kind": "table deal",
+  "seed": 72210115,
+  "seats": {
+   "0": "weezing",
+   "1": "lucario"
+  },
+  "deciding_seat": 0,
+  "your_deck": "Weezing",
+  "opponent_deck": "Lucario",
+  "turn": 5,
+  "ply_index": 37,
+  "you_went_first": true,
+  "arms": {
+   "kta3": "kta3,kta3",
+   "km3": "km3,km3"
+  },
+  "pilots_compared": "km3 v kta3 (the table pair: km3/kta3)",
+  "new_choice": {
+   "pilot": "km3",
+   "option_keys": [
+    "4"
+   ],
+   "option_text": "Play Field Blower (Item): Discard a Pokémon Tool card from a Pokémon (yours or your opponent's), or discard a Stadium card in play.",
+   "first_move": "Play Field Blower (Item): Discard a Pokémon Tool card from a Pokémon (yours or your opponent's), or discard a Stadium card in play.",
+   "whole_turn": [
+    "You: Played Field Blower (Item) → discarded the Stadium Arena of Antiquity",
+    "You: Attached Darkness Energy to Hoopa ex (Active)",
+    "You: Hoopa ex attacked with Shadow Bullet (30) → did 30 damage to opponent's Riolu (Active)"
+   ],
+   "graded_part": [
+    "You: Played Field Blower (Item) → discarded the Stadium Arena of Antiquity",
+    "You: Attached Darkness Energy to Hoopa ex (Active)",
+    "You: Hoopa ex attacked with Shadow Bullet (30) → did 30 damage to opponent's Riolu (Active)"
+   ],
+   "after_the_draw": [],
+   "draw": null,
+   "result": "loss",
+   "final_points": {
+    "you": 1,
+    "opponent": 4
+   },
+   "final_turn": 10,
+   "game_fingerprint": "e5a1465488fd5865"
+  },
+  "other_choice": {
+   "pilot": "kta3",
+   "option_keys": [
+    "1"
+   ],
+   "option_text": "Attach Darkness Energy to Hoopa ex (Active)",
+   "first_move": "Attach Darkness Energy to Hoopa ex (Active)",
+   "whole_turn": [
+    "You: Attached Darkness Energy to Hoopa ex (Active)",
+    "You: Hoopa ex attacked with Shadow Bullet (30) → did 30 damage to opponent's Riolu (Active)"
+   ],
+   "graded_part": [
+    "You: Attached Darkness Energy to Hoopa ex (Active)",
+    "You: Hoopa ex attacked with Shadow Bullet (30) → did 30 damage to opponent's Riolu (Active)"
+   ],
+   "after_the_draw": [],
+   "draw": null,
+   "result": "win",
+   "final_points": {
+    "you": 3,
+    "opponent": 2
+   },
+   "final_turn": 11,
+   "game_fingerprint": "d6f39ecf60c8ae76"
+  },
+  "decision": [
+   "Field Blower on the opponent's Arena of Antiquity (km3) or Field Blower kept (kta3).",
+   "Both attach Darkness to the Active Hoopa ex and attack with Shadow Bullet. A first tap of Field Blower is km3's plan; a first tap of the attach needs the plan (Field Blower later, before the attack, is km3's plan in another order)."
+  ],
+  "grading_rule": "Grade only the part of the turn before any draw. A draw is any card or effect that puts unseen cards from the deck into the hand (Professor's Research, Copycat, Poke Ball, using Mesagoza). The draw card itself counts as part of the plan; everything after it depends on what was drawn and is not graded. Order alone is not graded when both plans play the same cards before the draw. Suicune ex's Legendary Pulse draws only at the end of the turn, after the plan, so it never cuts a plan short. The same cut applies to Dustin's answer: if his plan plays a draw card (Poke Ball, Research, Copycat, Mesagoza, Fragrant Forest) before he reaches the deciding card, grade what he wrote up to that draw, and if the decision is not reached by then, mark the position 'decided after a draw' instead of guessing.",
+  "hidden_information": "Opponent's 3 hand cards (Korrina, Red, Mega Lucario ex, a second Arena); Lucario's list beyond what was played.",
+  "notes": [],
+  "replay_checks": [
+   "kta3: replay {'winner_seat': 0, 'points': [3, 2], 'turns': 11, 'plies': 71, 'moves_blake2b': 'd6f39ecf60c8ae76'} v committed row winner 0 points [3, 2] turns 11 -> SAME",
+   "km3: replay {'winner_seat': 1, 'points': [1, 4], 'turns': 10, 'plies': 73, 'moves_blake2b': 'e5a1465488fd5865'} v committed row winner 1 points [1, 4] turns 10 -> SAME"
+  ],
+  "options_on_page": [
+   {
+    "key": "4",
+    "text": "Play Field Blower (Item): Discard a Pokémon Tool card from a Pokémon (yours or your opponent's), or discard a Stadium card in play."
+   },
+   {
+    "key": "1",
+    "text": "Attach Darkness Energy to Hoopa ex (Active)"
+   },
+   {
+    "key": "2",
+    "text": "Attach Darkness Energy to Darkrai ex (Bench 1)"
+   },
+   {
+    "key": "3",
+    "text": "Attach Darkness Energy to Hoopa ex (Bench 2)"
+   },
+   {
+    "key": "0",
+    "text": "End your turn without attacking"
+   }
+  ]
+ },
+ "Q09": {
+  "candidate": "J03",
+  "order": 9,
+  "type": "(c) Jasmine / Heavy Helmet (kta3's switch 1 against kog3)",
+  "kind": "Dustin-deck A/B deal",
+  "seed": 23004070097,
+  "seats": {
+   "0": "../dustin/07-skarmory-stall",
+   "1": "../screen/opponents/t-altaria"
+  },
+  "deciding_seat": 0,
+  "your_deck": "Skarmory ex stall (your deck 07)",
+  "opponent_deck": "Altaria",
+  "turn": 1,
+  "ply_index": 6,
+  "you_went_first": true,
+  "arms": {
+   "kog3": "kog3,kog3",
+   "kta3": "kta3,kog3",
+   "km3": "km3,kog3"
+  },
+  "pilots_compared": "kta3 v kog3 (the Dustin-deck pair: kog3/kta3; km3 makes kta3's choice and its whole game equals kta3's)",
+  "new_choice": {
+   "pilot": "kta3 (and km3)",
+   "option_keys": [
+    "5"
+   ],
+   "option_text": "Play Starting Plains (Stadium): Each Basic Pokémon in play (both yours and your opponent's) gets +20 HP.",
+   "first_move": "Play Starting Plains (Stadium): Each Basic Pokémon in play (both yours and your opponent's) gets +20 HP.",
+   "whole_turn": [
+    "You: Played Starting Plains (Stadium)",
+    "You: Played Jasmine (Supporter)",
+    "You: Put Indeedee ex on Bench 3",
+    "You: Used Indeedee ex's Ability Watch Over (Bench 3)",
+    "You: Ended the turn without attacking"
+   ],
+   "graded_part": [
+    "You: Played Starting Plains (Stadium)",
+    "You: Played Jasmine (Supporter)",
+    "You: Put Indeedee ex on Bench 3",
+    "You: Used Indeedee ex's Ability Watch Over (Bench 3)",
+    "You: Ended the turn without attacking"
+   ],
+   "after_the_draw": [],
+   "draw": null,
+   "result": "loss",
+   "final_points": {
+    "you": 0,
+    "opponent": 4
+   },
+   "final_turn": 8,
+   "game_fingerprint": "681b454bb5efa14b"
+  },
+  "other_choice": {
+   "pilot": "kog3",
+   "option_keys": [
+    "6"
+   ],
+   "option_text": "Play Professor's Research (Supporter): Draw 2 cards.",
+   "first_move": "Play Professor's Research (Supporter): Draw 2 cards.",
+   "whole_turn": [
+    "You: Played Professor's Research (Supporter)",
+    "You: Played Starting Plains (Stadium)",
+    "You: Put Indeedee ex on Bench 3",
+    "You: Used Indeedee ex's Ability Watch Over (Bench 3)",
+    "You: Put Skarmory ex on Bench 2",
+    "You: Ended the turn without attacking"
+   ],
+   "graded_part": [
+    "You: Played Professor's Research (Supporter)"
+   ],
+   "after_the_draw": [
+    "You: Played Starting Plains (Stadium)",
+    "You: Put Indeedee ex on Bench 3",
+    "You: Used Indeedee ex's Ability Watch Over (Bench 3)",
+    "You: Put Skarmory ex on Bench 2",
+    "You: Ended the turn without attacking"
+   ],
+   "draw": "You: Played Professor's Research (Supporter)",
+   "result": "win",
+   "final_points": {
+    "you": 3,
+    "opponent": 2
+   },
+   "final_turn": 15,
+   "game_fingerprint": "4d06d4ab70bfc533"
+  },
+  "decision": [
+   "The Supporter on turn 1, going first: Jasmine (kta3, and km3) or Professor's Research (kog3). No Supporter matches neither.",
+   "kta3's whole turn: Starting Plains, Jasmine, bench Indeedee ex, Watch Over, end. kog3 plays Research first, so everything after it depends on the draw and is not graded. A first tap of Starting Plains or of benching Indeedee ex says nothing: grade the Supporter."
+  ],
+  "grading_rule": "Grade only the part of the turn before any draw. A draw is any card or effect that puts unseen cards from the deck into the hand (Professor's Research, Copycat, Poke Ball, using Mesagoza). The draw card itself counts as part of the plan; everything after it depends on what was drawn and is not graded. Order alone is not graded when both plans play the same cards before the draw. Suicune ex's Legendary Pulse draws only at the end of the turn, after the plan, so it never cuts a plan short. The same cut applies to Dustin's answer: if his plan plays a draw card (Poke Ball, Research, Copycat, Mesagoza, Fragrant Forest) before he reaches the deciding card, grade what he wrote up to that draw, and if the decision is not reached by then, mark the position 'decided after a draw' instead of guessing.",
+  "hidden_information": "Opponent's 4 hand cards and its whole list (only Eevee seen); the player's own deck order.",
+  "notes": [
+   "Going first on turn 1: no Energy this turn. Poke Ball was played earlier this turn (shown as already done)."
+  ],
+  "replay_checks": [
+   "kog3: replay fingerprint 4d06d4ab70bfc533 v committed 4d06d4ab70bfc533 -> SAME",
+   "kta3: replay fingerprint 681b454bb5efa14b v committed 681b454bb5efa14b -> SAME",
+   "km3: no committed game (third arm); {'winner_seat': 1, 'points': [0, 4], 'turns': 8, 'plies': 62, 'moves_blake2b': '681b454bb5efa14b'}"
+  ],
+  "options_on_page": [
+   {
+    "key": "4",
+    "text": "Play Jasmine (Supporter): During your opponent's next turn, all of your Steelix and Skarmory ex take -50 damage from attacks from your opponent's Pokémon."
+   },
+   {
+    "key": "6",
+    "text": "Play Professor's Research (Supporter): Draw 2 cards."
+   },
+   {
+    "key": "5",
+    "text": "Play Starting Plains (Stadium): Each Basic Pokémon in play (both yours and your opponent's) gets +20 HP."
+   },
+   {
+    "key": "1",
+    "text": "Put Indeedee ex onto your Bench"
+   },
+   {
+    "key": "0",
+    "text": "End your turn without attacking"
+   }
+  ]
+ },
+ "Q10": {
+  "candidate": "T06",
+  "order": 10,
+  "type": "(a) own Stadium play (Arena of Antiquity / Training Area)",
+  "kind": "table deal",
+  "seed": 72010266,
+  "seats": {
+   "0": "altaria",
+   "1": "hydreigon"
+  },
+  "deciding_seat": 0,
+  "your_deck": "Altaria",
+  "opponent_deck": "Hydreigon",
+  "turn": 4,
+  "ply_index": 28,
+  "you_went_first": false,
+  "arms": {
+   "kta3": "kta3,kta3",
+   "km3": "km3,km3"
+  },
+  "pilots_compared": "km3 v kta3 (the table pair: km3/kta3)",
+  "new_choice": {
+   "pilot": "km3",
+   "option_keys": [
+    "7"
+   ],
+   "option_text": "Play Training Area (Stadium): Attacks used by Stage 1 Pokémon in play (both yours and your opponent's) do +10 damage to the opponent's Active Pokémon.",
+   "first_move": "Play Training Area (Stadium): Attacks used by Stage 1 Pokémon in play (both yours and your opponent's) do +10 damage to the opponent's Active Pokémon.",
+   "whole_turn": [
+    "You: Played Training Area (Stadium)",
+    "You: Evolved Eevee (Bench 2) into Espeon",
+    "You: Played Copycat (Supporter)",
+    "You: Played Poké Ball (Item)",
+    "You: Put Swablu on Bench 3",
+    "You: Attached Psychic Energy to Espeon (Bench 2)",
+    "You: Ended the turn without attacking"
+   ],
+   "graded_part": [
+    "You: Played Training Area (Stadium)",
+    "You: Evolved Eevee (Bench 2) into Espeon",
+    "You: Played Copycat (Supporter)"
+   ],
+   "after_the_draw": [
+    "You: Played Poké Ball (Item)",
+    "You: Put Swablu on Bench 3",
+    "You: Attached Psychic Energy to Espeon (Bench 2)",
+    "You: Ended the turn without attacking"
+   ],
+   "draw": "You: Played Copycat (Supporter)",
+   "result": "loss",
+   "final_points": {
+    "you": 2,
+    "opponent": 3
+   },
+   "final_turn": 13,
+   "game_fingerprint": "594d1bde46bc0c4d"
+  },
+  "other_choice": {
+   "pilot": "kta3",
+   "option_keys": [
+    "4",
+    "5"
+   ],
+   "option_text": "Evolve a Benched Eevee (Bench 1 or 2) into Espeon",
+   "first_move": "Evolve Eevee (Bench 2) into Espeon",
+   "whole_turn": [
+    "You: Evolved Eevee (Bench 2) into Espeon",
+    "You: Played Copycat (Supporter)",
+    "You: Played Poké Ball (Item)",
+    "You: Put Swablu on Bench 3",
+    "You: Attached Psychic Energy to Darkrai (Active)",
+    "You: Ended the turn without attacking"
+   ],
+   "graded_part": [
+    "You: Evolved Eevee (Bench 2) into Espeon",
+    "You: Played Copycat (Supporter)"
+   ],
+   "after_the_draw": [
+    "You: Played Poké Ball (Item)",
+    "You: Put Swablu on Bench 3",
+    "You: Attached Psychic Energy to Darkrai (Active)",
+    "You: Ended the turn without attacking"
+   ],
+   "draw": "You: Played Copycat (Supporter)",
+   "result": "win",
+   "final_points": {
+    "you": 4,
+    "opponent": 2
+   },
+   "final_turn": 12,
+   "game_fingerprint": "1374cc91e422147b"
+  },
+  "decision": [
+   "Training Area played before Copycat (km3) or not (kta3: it stays in hand, so Copycat shuffles it back into the deck).",
+   "Both evolve a Benched Eevee into Espeon and play Copycat. Copycat is a draw, so only the part before it is graded: where the Psychic Energy goes (km3 the new Espeon, kta3 the Active Darkrai) came after the draw and is not graded. If the plan plays no Copycat, grade Training Area yes or no."
+  ],
+  "grading_rule": "Grade only the part of the turn before any draw. A draw is any card or effect that puts unseen cards from the deck into the hand (Professor's Research, Copycat, Poke Ball, using Mesagoza). The draw card itself counts as part of the plan; everything after it depends on what was drawn and is not graded. Order alone is not graded when both plans play the same cards before the draw. Suicune ex's Legendary Pulse draws only at the end of the turn, after the plan, so it never cuts a plan short. The same cut applies to Dustin's answer: if his plan plays a draw card (Poke Ball, Research, Copycat, Mesagoza, Fragrant Forest) before he reaches the deciding card, grade what he wrote up to that draw, and if the decision is not reached by then, mark the position 'decided after a draw' instead of guessing.",
+  "hidden_information": "Opponent's 2 hand cards; Hydreigon's list beyond what was played (whether it has Stage 1 attackers Training Area would also boost).",
+  "notes": [
+   "Copycat draws 2 (the opponent holds 2 cards)."
+  ],
+  "replay_checks": [
+   "kta3: replay {'winner_seat': 0, 'points': [4, 2], 'turns': 12, 'plies': 80, 'moves_blake2b': '1374cc91e422147b'} v committed row winner 0 points [4, 2] turns 12 -> SAME",
+   "km3: replay {'winner_seat': 1, 'points': [2, 3], 'turns': 13, 'plies': 95, 'moves_blake2b': '594d1bde46bc0c4d'} v committed row winner 1 points [2, 3] turns 13 -> SAME"
+  ],
+  "options_on_page": [
+   {
+    "key": "6",
+    "text": "Play Copycat (Supporter): Shuffle your hand into your deck. Draw a card for each card in your opponent's hand. (your opponent has 2 cards in hand, so you'd draw 2)"
+   },
+   {
+    "key": "7",
+    "text": "Play Training Area (Stadium): Attacks used by Stage 1 Pokémon in play (both yours and your opponent's) do +10 damage to the opponent's Active Pokémon."
+   },
+   {
+    "key": "1",
+    "text": "Attach Psychic Energy to Darkrai (Active)"
+   },
+   {
+    "key": "2",
+    "text": "Attach Psychic Energy to a Benched Eevee (Bench 1 or 2)"
+   },
+   {
+    "key": "4",
+    "text": "Evolve a Benched Eevee (Bench 1 or 2) into Espeon"
+   },
+   {
+    "key": "0",
+    "text": "End your turn without attacking"
+   }
+  ]
+ },
+ "Q11": {
+  "candidate": "T09",
+  "order": 11,
+  "type": "(b) clearing the opponent's Training Area / Arena (Field Blower or own Stadium)",
+  "kind": "table deal",
+  "seed": 72040476,
+  "seats": {
+   "0": "altaria",
+   "1": "suicune"
+  },
+  "deciding_seat": 1,
+  "your_deck": "Suicune",
+  "opponent_deck": "Altaria",
+  "turn": 9,
+  "ply_index": 61,
+  "you_went_first": true,
+  "arms": {
+   "kta3": "kta3,kta3",
+   "km3": "km3,km3"
+  },
+  "pilots_compared": "km3 v kta3 (the table pair: km3/kta3)",
+  "new_choice": {
+   "pilot": "km3",
+   "option_keys": [
+    "5"
+   ],
+   "option_text": "Play Soothing Shore (Stadium): At the end of each player's turn, that player heals 20 damage from each of their Pokémon that has any Water Energy attached.",
+   "first_move": "Play Soothing Shore (Stadium): At the end of each player's turn, that player heals 20 damage from each of their Pokémon that has any Water Energy attached.",
+   "whole_turn": [
+    "You: Played Soothing Shore (Stadium)",
+    "You: Attached Water Energy to Suicune ex (Active)",
+    "You: Played Inflatable Boat (Pokémon Tool) → attached Inflatable Boat to Suicune ex (Active)",
+    "You: Suicune ex attacked with Crystal Waltz (20×) → did 100 damage to opponent's Mega Altaria ex (Active)"
+   ],
+   "graded_part": [
+    "You: Played Soothing Shore (Stadium)",
+    "You: Attached Water Energy to Suicune ex (Active)",
+    "You: Played Inflatable Boat (Pokémon Tool) → attached Inflatable Boat to Suicune ex (Active)",
+    "You: Suicune ex attacked with Crystal Waltz (20×) → did 100 damage to opponent's Mega Altaria ex (Active)"
+   ],
+   "after_the_draw": [],
+   "draw": null,
+   "result": "win",
+   "final_points": {
+    "you": 4,
+    "opponent": 2
+   },
+   "final_turn": 11,
+   "game_fingerprint": "9e466e7784f00fbe"
+  },
+  "other_choice": {
+   "pilot": "kta3",
+   "option_keys": [
+    "1"
+   ],
+   "option_text": "Attach Water Energy to Suicune ex (Active)",
+   "first_move": "Attach Water Energy to Suicune ex (Active)",
+   "whole_turn": [
+    "You: Attached Water Energy to Suicune ex (Active)",
+    "You: Played Inflatable Boat (Pokémon Tool) → attached Inflatable Boat to Suicune ex (Active)",
+    "You: Suicune ex attacked with Crystal Waltz (20×) → did 100 damage to opponent's Mega Altaria ex (Active)"
+   ],
+   "graded_part": [
+    "You: Attached Water Energy to Suicune ex (Active)",
+    "You: Played Inflatable Boat (Pokémon Tool) → attached Inflatable Boat to Suicune ex (Active)",
+    "You: Suicune ex attacked with Crystal Waltz (20×) → did 100 damage to opponent's Mega Altaria ex (Active)"
+   ],
+   "after_the_draw": [],
+   "draw": null,
+   "result": "loss",
+   "final_points": {
+    "you": 1,
+    "opponent": 4
+   },
+   "final_turn": 10,
+   "game_fingerprint": "bcb57c9f64e343fd"
+  },
+  "decision": [
+   "Soothing Shore over the opponent's Training Area (km3) or no Stadium (kta3).",
+   "Both attach Water to Suicune ex, put Inflatable Boat on it and attack with Crystal Waltz for 100. Mega Harmony is 40 + 30 x 3 Benched = 130; Training Area's +10 makes it 140, exactly Suicune ex's HP. A first tap of Soothing Shore is km3's plan; a first tap of the attach needs the plan. Probably the easiest of the twelve."
+  ],
+  "grading_rule": "Grade only the part of the turn before any draw. A draw is any card or effect that puts unseen cards from the deck into the hand (Professor's Research, Copycat, Poke Ball, using Mesagoza). The draw card itself counts as part of the plan; everything after it depends on what was drawn and is not graded. Order alone is not graded when both plans play the same cards before the draw. Suicune ex's Legendary Pulse draws only at the end of the turn, after the plan, so it never cuts a plan short. The same cut applies to Dustin's answer: if his plan plays a draw card (Poke Ball, Research, Copycat, Mesagoza, Fragrant Forest) before he reaches the deciding card, grade what he wrote up to that draw, and if the decision is not reached by then, mark the position 'decided after a draw' instead of guessing.",
+  "hidden_information": "Opponent's 2 hand cards (a second Training Area, another Field Blower); Altaria's list beyond what was played.",
+  "notes": [],
+  "replay_checks": [
+   "kta3: replay {'winner_seat': 0, 'points': [4, 1], 'turns': 10, 'plies': 68, 'moves_blake2b': 'bcb57c9f64e343fd'} v committed row winner 0 points [4, 1] turns 10 -> SAME",
+   "km3: replay {'winner_seat': 1, 'points': [2, 4], 'turns': 11, 'plies': 74, 'moves_blake2b': '9e466e7784f00fbe'} v committed row winner 1 points [2, 4] turns 11 -> SAME"
+  ],
+  "options_on_page": [
+   {
+    "key": "6",
+    "text": "Play Team Rocket's Boss (Supporter): Look at your opponent's hand and put any number of Basic Pokémon you find there onto your opponent's Bench."
+   },
+   {
+    "key": "4",
+    "text": "Play Inflatable Boat (Pokémon Tool), then choose which of your Pokémon to attach it to: The Retreat Cost of the Water Pokémon this card is attached to is 1 less."
+   },
+   {
+    "key": "5",
+    "text": "Play Soothing Shore (Stadium): At the end of each player's turn, that player heals 20 damage from each of their Pokémon that has any Water Energy attached."
+   },
+   {
+    "key": "1",
+    "text": "Attach Water Energy to Suicune ex (Active)"
+   },
+   {
+    "key": "2",
+    "text": "Attach Water Energy to Baxcalibur (Bench 2)"
+   },
+   {
+    "key": "3",
+    "text": "Attach Water Energy to Frigibax (Bench 3)"
+   },
+   {
+    "key": "0",
+    "text": "End your turn without attacking"
+   }
+  ]
+ },
+ "Q12": {
+  "candidate": "H03",
+  "order": 12,
+  "type": "(c) Jasmine / Heavy Helmet (kta3's switch 1 against kog3)",
+  "kind": "Dustin-deck A/B deal",
+  "seed": 23004034029,
+  "seats": {
+   "0": "../dustin/03-wailord-indeedee-wall",
+   "1": "../screen/opponents/t-sceptile"
+  },
+  "deciding_seat": 0,
+  "your_deck": "Wailord / Indeedee wall (your deck 03)",
+  "opponent_deck": "Sceptile",
+  "turn": 6,
+  "ply_index": 54,
+  "you_went_first": false,
+  "arms": {
+   "kog3": "kog3,kog3",
+   "kta3": "kta3,kog3",
+   "km3": "km3,kog3"
+  },
+  "pilots_compared": "kta3 v kog3 (the Dustin-deck pair: kog3/kta3; km3 makes kta3's choice and its whole game equals kta3's)",
+  "new_choice": {
+   "pilot": "kta3 (and km3)",
+   "option_keys": [
+    "6"
+   ],
+   "option_text": "Play Heavy Helmet (Pokémon Tool), then choose which of your Pokémon to attach it to: If the Pokémon this card is attached to has a Retreat Cost of 3 or more, it takes -20 damage from attacks from your opponent's Pokémon.",
+   "first_move": "Play Heavy Helmet (Pokémon Tool), then choose which of your Pokémon to attach it to: If the Pokémon this card is attached to has a Retreat Cost of 3 or more, it takes -20 damage from attacks from your opponent's Pokémon.",
+   "whole_turn": [
+    "You: Played Heavy Helmet (Pokémon Tool) → attached Heavy Helmet to Wailord ex (Bench 3)",
+    "You: Played Soothing Shore (Stadium)",
+    "You: Attached Water Energy to Wailord (Active)",
+    "You: Ended the turn without attacking",
+    "End of turn: Your Wailord (Active) healed 10 damage (Soothing Shore 20 + Poison 10)"
+   ],
+   "graded_part": [
+    "You: Played Heavy Helmet (Pokémon Tool) → attached Heavy Helmet to Wailord ex (Bench 3)",
+    "You: Played Soothing Shore (Stadium)",
+    "You: Attached Water Energy to Wailord (Active)",
+    "You: Ended the turn without attacking",
+    "End of turn: Your Wailord (Active) healed 10 damage (Soothing Shore 20 + Poison 10)"
+   ],
+   "after_the_draw": [],
+   "draw": null,
+   "result": "loss",
+   "final_points": {
+    "you": 1,
+    "opponent": 3
+   },
+   "final_turn": 13,
+   "game_fingerprint": "56aaa37f5ad8cd21"
+  },
+  "other_choice": {
+   "pilot": "kog3",
+   "option_keys": [
+    "7"
+   ],
+   "option_text": "Play Soothing Shore (Stadium): At the end of each player's turn, that player heals 20 damage from each of their Pokémon that has any Water Energy attached.",
+   "first_move": "Play Soothing Shore (Stadium): At the end of each player's turn, that player heals 20 damage from each of their Pokémon that has any Water Energy attached.",
+   "whole_turn": [
+    "You: Played Soothing Shore (Stadium)",
+    "You: Attached Water Energy to Wailord (Active)",
+    "You: Played Heavy Helmet (Pokémon Tool) → attached Heavy Helmet to Wailord (Active)",
+    "You: Ended the turn without attacking",
+    "End of turn: Your Wailord (Active) healed 10 damage (Soothing Shore 20 + Poison 10)"
+   ],
+   "graded_part": [
+    "You: Played Soothing Shore (Stadium)",
+    "You: Attached Water Energy to Wailord (Active)",
+    "You: Played Heavy Helmet (Pokémon Tool) → attached Heavy Helmet to Wailord (Active)",
+    "You: Ended the turn without attacking",
+    "End of turn: Your Wailord (Active) healed 10 damage (Soothing Shore 20 + Poison 10)"
+   ],
+   "after_the_draw": [],
+   "draw": null,
+   "result": "win",
+   "final_points": {
+    "you": 4,
+    "opponent": 2
+   },
+   "final_turn": 20,
+   "game_fingerprint": "79d2c9be17b57847"
+  },
+  "decision": [
+   "Heavy Helmet's holder: the Active Wailord (Poisoned, 140/200; kog3) or the Benched Wailord ex (250/250; kta3, and km3). Helmet on an Indeedee ex (Retreat 1) does nothing and matches neither.",
+   "Both also play Soothing Shore and attach Water to the Active Wailord, no attack. kog3 taps Soothing Shore first, so that first tap says nothing: grade the holder written in the plan."
+  ],
+  "grading_rule": "Grade only the part of the turn before any draw. A draw is any card or effect that puts unseen cards from the deck into the hand (Professor's Research, Copycat, Poke Ball, using Mesagoza). The draw card itself counts as part of the plan; everything after it depends on what was drawn and is not graded. Order alone is not graded when both plans play the same cards before the draw. Suicune ex's Legendary Pulse draws only at the end of the turn, after the plan, so it never cuts a plan short. The same cut applies to Dustin's answer: if his plan plays a draw card (Poke Ball, Research, Copycat, Mesagoza, Fragrant Forest) before he reaches the deciding card, grade what he wrote up to that draw, and if the decision is not reached by then, mark the position 'decided after a draw' instead of guessing.",
+  "hidden_information": "Opponent's 1 hand card; Sceptile's list beyond what was played.",
+  "notes": [
+   "The page offers 'Use the Stadium Fragrant Forest' to deck 03, which has no Basic Grass Pokemon (same oddity as H01). Neither pilot chose it.",
+   "Professor's Research was played earlier this turn (shown as already done), so the plan from here has no draw."
+  ],
+  "replay_checks": [
+   "kog3: replay fingerprint 79d2c9be17b57847 v committed 79d2c9be17b57847 -> SAME",
+   "kta3: replay fingerprint 56aaa37f5ad8cd21 v committed 56aaa37f5ad8cd21 -> SAME",
+   "km3: no committed game (third arm); {'winner_seat': 1, 'points': [1, 3], 'turns': 13, 'plies': 99, 'moves_blake2b': '56aaa37f5ad8cd21'}"
+  ],
+  "options_on_page": [
+   {
+    "key": "6",
+    "text": "Play Heavy Helmet (Pokémon Tool), then choose which of your Pokémon to attach it to: If the Pokémon this card is attached to has a Retreat Cost of 3 or more, it takes -20 damage from attacks from your opponent's Pokémon."
+   },
+   {
+    "key": "7",
+    "text": "Play Soothing Shore (Stadium): At the end of each player's turn, that player heals 20 damage from each of their Pokémon that has any Water Energy attached."
+   },
+   {
+    "key": "1",
+    "text": "Use the Stadium Fragrant Forest: Once during each player's turn, that player may put a random Basic Grass Pokémon from their deck into their hand."
+   },
+   {
+    "key": "2",
+    "text": "Attach Water Energy to Wailord (Active)"
+   },
+   {
+    "key": "3",
+    "text": "Attach Water Energy to Indeedee ex (Bench 1)"
+   },
+   {
+    "key": "4",
+    "text": "Attach Water Energy to Indeedee ex (Bench 2)"
+   },
+   {
+    "key": "5",
+    "text": "Attach Water Energy to Wailord ex (Bench 3)"
+   },
+   {
+    "key": "0",
+    "text": "End your turn without attacking"
+   }
+  ]
+ }
+}

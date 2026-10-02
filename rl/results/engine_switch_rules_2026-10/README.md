@@ -1,0 +1,187 @@
+# The rules engine switch (Oct 2026): decisions and who does what
+
+The plan is `PLAN.md` (0a68b0a). This file records the decisions on it and who did which part.
+
+## Dustin's decisions (Sept 30 evening)
+
+Given in the Fable coordinator session ("Work delegation and task routing") and relayed to the laptop session. The coordinator put the plan's questions 1-6 and 8-10 to him as nine items, each with the plan's recommendation. His answer, verbatim: **"Sure go for all 9"**. So, as recommended (numbers as in `PLAN.md`):
+1. **A conditional go: "pin if all pass".**
+   - Every replay must be identical and every counter must read as expected.
+   - Every changed carrier or scratch game must be explained: on the board by an exact counter, or in lookahead by a trace that meets both halves.
+   - A trace that needs a judgment call comes to him, and the pin waits for his word on it.
+2. **Scope:** A + B + kd's follow-ons + F1-F7. 09e964f, PR #383 and B4b data are left out.
+3. **The per-thread heads-cut value** is kept.
+4. **Carrier lists:** real development lists, extracted by the cloud from the committed Limitless archive. The made lists are the fallback.
+5. **km3's coverage baselines** are replayed at this switch, as a gate.
+6. **kd3's identity** is a gate.
+8. **When:** overnight laptop runs on the Oct 1 and Oct 2 nights. Each morning everything is committed and pushed, with main = origin/main, by 7:00 am Central.
+9. **If A fails its mechanic check:** hold A, and ship B + kd if B passes (a revert commit of A, a new build and the replays again).
+10. **09e964f:**
+    - Fix 2 is recorded as not taken. It contradicts the JP ruling the fork follows (`rules/06_sources.md:124`) and would break `rules_repair_retaliation_timing.rs:136`.
+    - Fix 1 stays "unchecked" until F8 or a second reader settles it.
+
+**Question 7** (the order against the cloud's N1) was the coordinator's operational decision:
+- Sonnet does F1-F7 tonight on `sonnet/rules-fixes`, cut from cae37a3, with no `players/` change, and pushes it.
+- R is that branch's head.
+- The cloud stays on N1.
+
+## The carrier lists (step 3; the coordinator's choice under Dustin's Q4 answer)
+
+The cloud extracted them from the committed Limitless archive (commit e0d149a on `claude/pensive-ptolemy-spwc0b`, `carriers/`; provenance in its `README.md` and `selection.json`). By the plan's rule, the most frequent exact list among top-8 development finishes, only one exists:
+- **`garchomp_meowth.txt`** (Meowth B2 124). Shaquill10, BEC'S KING OF THE HILL, 95 players, 2026-09-18, 5th place (4-1).
+
+The other three have real development lists, but none placed top-8. These are the "alternates":
+- **`alternates/togekiss_meowth.txt`** (Togekiss A4 080 and Meowth). Alolan Jay, The Breakfast Club Nightly, 118 players, 2026-09-07, 19th place (5-3).
+- **`alternates/hisuian_goodra.txt`** (Hisuian Goodra B3b 050, the (a) finite cut). tommyboistreams, TH Event's "When DX Pack?!", 68 players, dropped (0-3).
+- **`alternates/houndoom_victini.txt`** (Victini B3 025, repair A). foodking90, Dark League Pocket Tournament, 118 players, 2026-09-12, dropped after round 1 (0-1).
+
+**The coordinator's decision** (Sept 30, operational, under Dustin's Q4 answer "real lists, made lists as fallback"): step 8's carriers are `garchomp_meowth.txt` plus the three alternates.
+- The reason: a carrier's job is to reach the mechanic in real play, not to measure strength, and a poor record doesn't change which cards a list holds.
+- The made lists (`coinflip_deck.txt`, `fire_victini.txt`) are used only in 8b's scratch rows.
+- Every list passed the cloud's card checks: one printing per id, no B4b card, the validator clean, and a 560-game legality scan with no findings.
+- Each list's Energy line was added from its Pokémon's attack costs, since the archive's decklists carry none (`select_carriers.py`).
+
+**R stays Sonnet's branch head,** never the cloud's head. The cloud's kn (N1) build is on the same cloud branch (71877f6) and changes `players/`.
+
+## After the laptop's second read of R (Sept 30 evening)
+
+`SECOND_READ_F1_F7_opus.md` (fa1d442) found no code bug, and four things to fix before sitting 1. The coordinator's decisions:
+- **(a)** Findings 1, 3 and 4 are Sonnet's, tonight on `sonnet/rules-fixes`, and they give a new R:
+  - F7's test numbers;
+  - `counter_probe` cases for `offgate_discard_then_damage`;
+  - every firing tick recorded.
+
+  Finding 2's runner change is the laptop's, and it's made: step 7b requires both off-gate counters above 0. 7c's scope has no t-vespiquen pairing, so there the discard counter is reported only.
+- **(b) The mechanic check's "on the board"** is tightened, in the coordinator's wording, Oct 1: an exact counter must fire in the same turn as the first differing move. Otherwise the probe must show the gate within search depth (both halves), and an earlier firing alone explains nothing. It's written into `PLAN.md`'s mechanic check.
+- **(c) Victory Star smoke game 28** holds by elimination only, through one sampled Copycat draw. It goes to Dustin on Oct 1 evening as the one judgment call, and it doesn't block the build. A step 8 game that lands the same way stops, as the plan says.
+- **The cloud's later-round coin branch** is cut from the old R (1abdbe8). When the new R lands, that merge touches only test files, but the laptop checks it before step 4.
+- **Sitting 1:** Oct 1 from 5 pm Central, on the new R, after the laptop's short re-read of the three fixes.
+
+## Sitting 1 (the night of Sept 30) and two notes from the coordinator (Oct 1)
+
+**Sitting 1 passed** (record b55aad4; `STATUS.txt` and `PIN_STATUS.txt` here). Dustin asked "If it's 6.5 hours why not run it now?", so the coordinator moved the start up a day: it started at 03:10 UTC Oct 1 (10:10 pm Central) and finished at 06:47 UTC.
+- **Step 4:** candidate 5a18d31 (main c9f4224 + R f8cfa9c). Its engine/ is R's tree 38af8b0, and it changes exactly the plan's 9 engine files.
+- **Step 5:** deckgym 2f7e5fd6, legality_scan 97891274, goldfish cecc76fb (`programs.sha256`).
+- **Step 6:** the watch legality_scan, 8d881a1b.
+- **Step 7:** 151,240 of 151,240 identity games equal to their references on every field, kd3's gate included.
+- **Step 7b:**
+  - 28,000 watch games equal to the plain ones, with every repair counter 0.
+  - offgate_helper_choice fired in 12,246 games and offgate_discard_then_damage in 3,353.
+- **Step 7c:**
+  - The 4 floor pages replayed, 1,920 of 1,920 games each equal.
+  - The 32 pairings x 60 were identical on the watch and old programs, with repair counters 0.
+  - offgate_helper_choice fired in 218 of the 540 in-scope games. offgate_discard_then_damage read 0 there; it is reported only, and rows 13 and 22 carry to steps 8 and 8b.
+- **One stop: a runner fault, not a result.**
+  - At 03:16 UTC, right after step 5 passed, a bare assignment failed under pipefail: `prog_sha` read `watch.sha256` before step 6 made it.
+  - Fixed in 4f0a4fd. The restart at 03:19 re-checked steps 4-5's evidence and skipped them.
+  - An Opus reader then checked the rest of the runner for the same kind of fault and found none on the path that ran. Sitting 2's scripts get the same check.
+
+**F8 is done** (the cloud, 5a929c0, `f8/F8.md`). The fork already covers 09e964f's fix 1: knockouts resolve in waves, plus a nested pass.
+- Upstream's Lilligant test passes on d363ba8.
+- Planted faults show that only removing both guards reproduces upstream's failure.
+- So at step 13, `rules/09`'s line 80 and `PLAN.md`'s line 26 change from "unchecked" to "covered, F8.md".
+- Dustin's answer on fix 2 (question 10 above) stands.
+
+**The cloud's later-round coin fixes** are on their own branch, `claude/coin-prevention-round2`.
+- It is 76b87cd: six sites, with the suite at 2,025 passed and 0 failed.
+- It is cut from R. This corrects the note above, which said it was cut from the old R.
+- They are not in this switch: Dustin's scope answer (question 2) is A + B + kd + F1-F7. They go in the next rules switch.
+- So 8b's l-sharpedo v meowth_carefree row stays this switch's Wild Swing control, as planned.
+
+## Sitting 2 (steps 8-10): the runner and the coordinator's decisions (Oct 1)
+
+`sitting2.sh` (with `sitting2_check.py`) runs PLAN.md's steps 8, 8b, 9 and 10 on sitting 1's programs, never rebuilt. The plan's model was sitting 1's runner. Two Opus reviews (evidence and safety) found no blocker, and their fixes are in.
+- **When:** Oct 1 from 5 pm Central. Step 8 can't start on the night of Sept 30, because 8c's trace load (below) doesn't exist yet.
+- **Order:**
+  1. `8-seeds`: the carrier lists (e0d149a's blobs, at the same paths in `carriers/`) and 8b's scratch decks (`scratch_8b/`, the candidate's blobs) are brought onto main blob-checked, and `pairs_8.tsv` and `seeds_8.txt` are committed, all before any game.
+  2. 8b.
+  3. The trace-load gate.
+  4. 8, if the gate allows.
+  5. 9 and 10.
+  6. The gate is read again; step 8 runs then if it can still end before the deadline. Otherwise the sitting ends PAUSED, and a later start runs step 8 alone.
+- **The trace-load gate:** step 8 starts only when `trace_load.txt` here is committed with a line `TRACE LOAD <n> <the cloud's commit and text>` and n is about 50 or less, or with a line `DUSTIN <his words>` (PLAN 8c).
+  - The load comes from the cloud's 8b early-warning rows on its build of R (`early_warning_8b/` on its branch, classified with `tightened_rule.py`); the laptop runs no traces.
+  - Optional `CLOUD8B <commit> <bot> <path>` lines make the gate check that the laptop's 8b rows equal the cloud's (PLAN 8b).
+- **The hand-off to 8c:** `handoff_8c.tsv` and `handoff_8c.md` list every changed game of 8b and 8 with what a tracer needs, and `touched_check.txt` gives reach per mechanic. The cloud traces from them, and Sonnet reads every hand trace.
+- **Condition 3 (the coordinator's ruling, Oct 1, consistent with Dustin's Q1 answer):** PLAN.md:95's "must be identical" reads as "no exact counter fired on the board and no trace meets both halves". A game whose lookahead trace meets both halves is one where a repaired mechanic acted, so it is explained. The runner lists each such game as CONDITION 3, a pin-gate item, and one with no trace meeting both halves fails as before.
+- **Sitting 2 passed** (Oct 1, 23:09 to 02:27 UTC; record 78e51e8).
+  - `trace_load.txt`: TRACE LOAD 0 hand traces, from the cloud's 8b rows at 3a107f4. The laptop's 8b equals the cloud's: 160 of 160 per bot.
+  - Step 8: 72,000 games, watch = new. Every all-zero-counter game is identical. 3,750 of 24,000 deals changed (306 with no reach counter). CONDITION 3 is 296 games (and 1 in 8b). The hand-off is at 1ba07d9.
+  - Step 9: 66,500 of 66,500 equal.
+  - Step 10: equal.
+- **Frozen on main until sitting 2 ends** (a change to a step's input halts that step): `decks/screen/run_screen.py`, `decks/brews/brew-06*.txt`, `decks/research/{altaria,blaziken}.txt`, `decks/screen/opponents/*`, step 9's pairs files and their decks, and this folder.
+
+## Dustin's word on game 28 and the pin (Oct 1 evening)
+
+Given in the Fable coordinator session, in answer to (a) accept or hold Victory Star smoke game 28 and (b) the pin; relayed, verbatim: "Accept Victory Star smoke game 28 as the specific documented judgment exception. State clearly that the Copycat explanation is supported by a possible sampled path, not a replay of the bot's exact original search. My conditional approval stands: pin the existing candidate once all remaining required trace checks pass. Account for every changed game, including all 297 flagged cases. This exception does not waive unexplained carrier games. Complete the planned checks after the pin. Bring me any new failure or judgment call; otherwise proceed."
+
+- **Victory Star smoke game 28** is the switch's one documented judgment exception. Its Copycat explanation is supported by a possible sampled path, not a replay of the bot's exact original search.
+- **The pin** of the existing candidate (5a18d31) goes ahead without a further word from him once 8c passes. The coordinator audits Sonnet's run first. 8c passes when:
+  - no game is unexplained;
+  - there is no new judgment call;
+  - every changed game is accounted for;
+  - each of the 296 + 1 CONDITION 3 games has a trace meeting both halves;
+  - the 63 8b rows agree with the cloud's, row for row.
+- **After the pin:** steps 11-14, then the floor re-check (15). Any new failure or judgment call stops and goes to him. The cloud's 8c run is the cross-check, and a disagreement with Sonnet's, even after the pin, goes to the coordinator at once.
+
+**His rule on card text** (Oct 1, the laptop session; verbatim):
+- "I don't know why you have such a hard time with understanding the rules. The first coin of the next coin flip for an Attack, Ability, or Trainer will definitely be heads. Not a status effect. Same thing with meowth, why would gyarados's attack bypass it magically with discarding water Pokemon?"
+- Then: "I don't mind getting video for proof, but if there is a plain reading of the text, the engine build should go with that, unless there is contradicting evidence. Not the other way around".
+
+This switch's two gated Victory Star cases (CoinFlipToBlockAttack, and Confusion with a pending Will) were gated the other way round, "until seen in the game". They go to the next rules switch on their plain reading, with the four bugs from the Oct 1 recordings (`../rules_recordings_2026-10-01/READOUT.md`).
+
+## The pin (Oct 1)
+
+- **Before it:** 8c passed on Dustin's conditions above, and the coordinator audited it (`8c_RESULT.txt`, which names Sonnet's result commits). All 3,813 changed games are accounted for:
+  - 2,414 on the board;
+  - 1,391 in lookahead with both halves;
+  - all 297 flagged CONDITION 3 cases traced;
+  - 8 that the rule couldn't settle, each then explained. Two prefix games are Victory Star offers with their exact counters at the extra tick. In six (five promotions and i106), B's queued coin frame is resolved free at ply 3 inside the search, which the probe didn't count. Reverting just that change brings back the old choice and scores, and Sonnet's revert check over all 1,395 coin-Ability lookahead games had 0 failures (`8c_FIVE_LOOKAHEAD_opus.md`, `trace_8c_sonnet/`).
+  - Dustin accepted the 8 (Oct 2, about 1:30 am Central, laptop session; verbatim, his chosen answer): "Accept all 8 and pin (Recommended)" (`8c_DECISION.md`).
+
+  Victory Star smoke game 28 stays the switch's one documented judgment exception.
+- **Merge:** R (f8cfa9c, `sonnet/rules-fixes`) into main as 8626a35861b88ae86a70c2386d47f9d765cfa2bc (main-8626a35), a merge commit with parents main and R, made off-tree with git merge-tree and commit-tree.
+  - Main had moved since the candidate (in `rl/` only; `engine/` is unchanged since c9f4224), so the pin made main's own merge commit. Its `engine/` is R's tree 38af8b0, byte-identical to the built candidate 5a18d31's. 5a18d31 stays a laptop ref (`refs/pocketdecksim/rules-switch-candidate`, not a branch).
+  - Nothing outside `rl/results/` and the plan's 9 engine files came along, and nothing was deleted (checked by the pin; `PIN_STATUS.txt`). The merge brings R's records under `rl/results/` onto main, among them `../coin_prevention_repair_2026-09-30/`, `../victory_star_repair_2026-09-30/` and `EQUIVALENCE_sonnet.md` here.
+- **Programs:** copied to `rl/engine-2026-10-02/` with `SHA256SUMS`. They are the programs sitting 1 built and tested, never rebuilt (`programs.sha256`: deckgym 2f7e5fd6…, legality_scan 97891274…, goldfish cecc76fb…). In the manifest, main-d363ba8 moved to the history as superseded. The screen's and the floor's default pilot stays km3.
+- **Scoreboard v3 re-verified at the new engine, 45 cells.** k3 and kp3 replayed identical on all 45 cells (step 7), every table counter but the two off-gate ones read 0 (7b), and every reference was blob-checked (step 5). So scoreboard v3's files are this engine's frozen k3 and kp3 tables, with the same hashes.
+- **After the pin:** Fetch origin in GitHub Desktop before Push origin. Then tell Sonnet, and the cloud through Dustin's paste block, that the official engine is main-8626a35 (`rl/engine-2026-10-02/`); the working pilot stays km3. The floor's pre-use re-check under km3 (PLAN step 15, `../floor_recheck_2026-10/PLAN.md`) follows. If it fails, the floor isn't used until Dustin has seen the pages.
+
+## Next switch backlog (left out of this switch; each needs the full procedure)
+
+- **The B4b refresh's id-keyed items** (PLAN.md, "Left out").
+  - The repairs' gates read card effects and mechanics, not ids, so B4b's reprints reach them as they are. Once B4b's data lands, both repairs reach further: Victini is reprinted as B4b 044 and 267 (repair A), and Meowth B2 124 as B4b 180 and 352 and Vespiquen ex as B4b 015 (repair B) (`../b4b_prep_2026-09-26/B4B_REPRINT_CHECK_2026-09-29.md` lines 70, 99, 235, 322, 407).
+  - Two things are keyed by id and would miss the new printings. Add the B4b ids to both at the refresh:
+    - Victini's card-status caveat arm, `engine/src/card_validation.rs:96` (`B3025Victini | PB049Victini`), so the B4b Victini carry the same RulesUnverified caveat;
+    - `COIN_IDS`, `FINITE` and `FULL` in the coin `instrument_scan.py` (`../coin_prevention_repair_2026-09-30/instrument_scan.py`, lines 82-84; `COIN_IDS` lists A2 114, A4 080, B2 124, B2 204 and B3b 050), and any F5 counter keyed the same way, before a watch build counts reach on a list with a B4b printing.
+- **The next rules switch:** `rules/09`'s open entry ("What the Oct 1 rules switch left open"), each case built on its card's plain text (Dustin's rule above):
+  - the cloud's later-round coin fixes on `claude/coin-prevention-round2` (76b87cd, then 78af4e8: Wild Swing and the six other sites; not yet audited). With them, 8b's l-sharpedo v `meowth_carefree` row is no longer a Wild Swing control;
+  - the own-Bench form of `also_choice_bench_damage`, and a copied Chase Order's discard branch;
+  - Victory Star with CoinFlipToBlockAttack, and with Confusion plus a pending Will (the carve-out at `apply_attack_action.rs:131`), together with Will on a Confused attacker's own first coin;
+  - two Ariados's Trap Territories (`hooks/retreat.rs:260`), with a two-Ariados test.
+  - Left in R's own files for then (`../rules_recordings_2026-10-01/READOUT.md` §4, "Don't edit inside the switch"): the F4 test's comment (`b4a_attack_batch2_test.rs`, about lines 432-433) and Victini's caveat (`card_validation.rs:97`), whose Will-pending half the Oct 1 recordings answered. Also `card_logic/wallace.rs`, old code with no caller (`../rules_recordings_2026-10-01/WALLACE_second_read_sonnet.md` §3).
+- **At the next upstream merge:** 09e964f's knockout-promotion fixes: fix 2 is not taken (Dustin, Sept 30); fix 1's case is already covered in the fork (F8, Oct 1), so there is nothing to port (F8 did not audit every path). Keep ours over PR #383 for its four cards (PLAN.md, "Left out").
+
+## Who does what
+
+| Part | Who |
+|---|---|
+| Repairs A and B, S1-S4 | the cloud (commits on `claude/pensive-ptolemy-spwc0b`) |
+| The second read of A and B | Sonnet (`../coin_prevention_repair_2026-09-30/SECOND_READ_sonnet.md`) |
+| The integrator's review and this plan | the laptop session (Opus), with its subagents, reading only |
+| F1-F7 (tests first, then fixes), ending at R | Sonnet, on `sonnet/rules-fixes` |
+| The second read of F1-F7 | an Opus subagent of the laptop session, reading only |
+| The step 2 equivalence readings | the laptop's Opus subagent (`EQUIVALENCE_opus.md`, tracing every caller) and Sonnet (the other reading) |
+| The carrier lists (step 3) | the cloud, beside N1, via Dustin's paste block |
+| The build, the replays, the pin and the floor re-check | the laptop |
+| The traces (step 8c) | the cloud, with Sonnet reading every hand trace |
+| Routing and audit | the Fable coordinator session |
+
+This table is updated as each part lands.
+
+## Sitting 1's runner and the shared index (one exception, recorded for Dustin)
+
+`sitting1.sh` never stages or commits through the shared index (the one GitHub Desktop uses). Each checkpoint commit is built in a private index, and main moves to it only if no one else moved main meanwhile, as `pin.sh` makes the pin commit.
+- **The exception:** right before main moves, the shared index's entries for exactly the files being committed are set to the new commit's (`git reset <commit> -- <those files>`, `pin.sh` line 487 does the same). Without it, GitHub Desktop would show those files as deleted or changed back, and another session's commit could record them that way.
+- Nothing else in the shared index is touched. A start unstages files of this folder only when they are staged with the working copy's own content, which is what an interrupted checkpoint leaves.
+- It pushes only its own commits (and the runner's own commit), only as a fast-forward of origin/main. When origin/main is ahead, or main carries another session's unpushed commit, it stops and says what to do.

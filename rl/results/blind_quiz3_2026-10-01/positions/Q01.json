@@ -1,0 +1,370 @@
+{
+ "order": 1,
+ "matchup": {
+  "you": "Lucario"
+ },
+ "turn": 2,
+ "you_went_first": false,
+ "situation": "Your turn (your 1st turn; turn 2 of the game).",
+ "question": "What do you do this turn, in order? Pick the first thing you'd tap, then write the rest of your turn: each card you'd play, where your Energy goes, any retreat, and your attack or end turn. If you'd play a card that draws, stop there and say \"then depends on the draw\".",
+ "points": {
+  "you": 0,
+  "opponent": 0
+ },
+ "you": {
+  "active": {
+   "name": "Riolu",
+   "stage": 0,
+   "type": "Fighting",
+   "hp": 60,
+   "max_hp": 60,
+   "energy": [],
+   "tools": [],
+   "conditions": [],
+   "ability": null,
+   "attacks": [
+    {
+     "name": "Fighting Fist",
+     "cost": [
+      "Fighting"
+     ],
+     "damage": "10+",
+     "text": "If your opponent's Active Pokémon is a Pokémon ex, this attack does 30 more damage."
+    }
+   ],
+   "weakness": "Psychic",
+   "retreat": 1,
+   "retreat_now": 1,
+   "retreat_note": null,
+   "ko_points": 1,
+   "notes": []
+  },
+  "bench": [
+   null,
+   null,
+   null
+  ],
+  "deck_count": 13,
+  "discard": [
+   "Professor's Research"
+  ],
+  "discard_energy": [],
+  "energy_zone": {
+   "this_turn": "Fighting",
+   "next": "Fighting",
+   "lines": [
+    "This turn: Fighting",
+    "Next: Fighting"
+   ]
+  },
+  "hand": [
+   {
+    "name": "Hitmonlee",
+    "kind": "Basic Pokémon",
+    "text": "Basic Pokémon, HP 80, Fighting type. Attack Stretch Kick [Fighting]: This attack does 30 damage to 1 of your opponent's Benched Pokémon. Weakness: Psychic. Retreat: 1."
+   },
+   {
+    "name": "Mega Lucario ex",
+    "kind": "Stage 1 Pokémon",
+    "text": "Stage 1 Pokémon, HP 190, Fighting type, evolves from Riolu. Gives 3 points when Knocked Out. Attack Fighting Pulse [Fighting Fighting] 90+: If this Pokémon has at least 1 extra Fighting Energy attached, this attack does 50 more damage. Weakness: Psychic. Retreat: 1."
+   },
+   {
+    "name": "Cyrus",
+    "kind": "Supporter",
+    "text": "Switch in 1 of your opponent's Benched Pokémon that has damage on it to the Active Spot."
+   },
+   {
+    "name": "Professor's Research",
+    "kind": "Supporter",
+    "text": "Draw 2 cards."
+   },
+   {
+    "name": "Arena of Antiquity",
+    "kind": "Stadium",
+    "text": "Attacks used by each Fighting Pokémon in play (both yours and your opponent's) do +20 damage to the opponent's Active Pokémon ex."
+   }
+  ],
+  "decklist": [
+   {
+    "name": "Bonsly",
+    "kind": "Basic Pokémon",
+    "text": "Basic Pokémon, HP 30, Fighting type. Attack Teary Attack [no Energy] 10: During your opponent's next turn, attacks used by the Defending Pokémon do -30 damage. Weakness: none. Retreat: 0.",
+    "count": 1,
+    "left": 1
+   },
+   {
+    "name": "Hitmonlee",
+    "kind": "Basic Pokémon",
+    "text": "Basic Pokémon, HP 80, Fighting type. Attack Stretch Kick [Fighting]: This attack does 30 damage to 1 of your opponent's Benched Pokémon. Weakness: Psychic. Retreat: 1.",
+    "count": 1,
+    "left": 0
+   },
+   {
+    "name": "Riolu",
+    "kind": "Basic Pokémon",
+    "text": "Basic Pokémon, HP 60, Fighting type. Attack Fighting Fist [Fighting] 10+: If your opponent's Active Pokémon is a Pokémon ex, this attack does 30 more damage. Weakness: Psychic. Retreat: 1.",
+    "count": 2,
+    "left": 1
+   },
+   {
+    "name": "Lucario",
+    "kind": "Stage 1 Pokémon",
+    "text": "Stage 1 Pokémon, HP 100, Fighting type, evolves from Riolu. Ability Fighting Coach: Attacks used by your Fighting Pokémon do +20 damage to your opponent's Active Pokémon. Attack Submarine Blow [Fighting Fighting] 40. Weakness: Psychic. Retreat: 2.",
+    "count": 1,
+    "left": 1
+   },
+   {
+    "name": "Mega Lucario ex",
+    "kind": "Stage 1 Pokémon",
+    "text": "Stage 1 Pokémon, HP 190, Fighting type, evolves from Riolu. Gives 3 points when Knocked Out. Attack Fighting Pulse [Fighting Fighting] 90+: If this Pokémon has at least 1 extra Fighting Energy attached, this attack does 50 more damage. Weakness: Psychic. Retreat: 1.",
+    "count": 2,
+    "left": 1
+   },
+   {
+    "name": "Copycat",
+    "kind": "Supporter",
+    "text": "Shuffle your hand into your deck. Draw a card for each card in your opponent's hand.",
+    "count": 2,
+    "left": 2
+   },
+   {
+    "name": "Cyrus",
+    "kind": "Supporter",
+    "text": "Switch in 1 of your opponent's Benched Pokémon that has damage on it to the Active Spot.",
+    "count": 1,
+    "left": 0
+   },
+   {
+    "name": "Korrina",
+    "kind": "Supporter",
+    "text": "During this turn, attacks used by your Fighting Pokémon do +30 damage to your opponent's Active Pokémon ex.",
+    "count": 1,
+    "left": 1
+   },
+   {
+    "name": "Pokémon Center Lady",
+    "kind": "Supporter",
+    "text": "Heal 30 damage from 1 of your Pokémon, and it recovers from all Special Conditions.",
+    "count": 1,
+    "left": 1
+   },
+   {
+    "name": "Professor's Research",
+    "kind": "Supporter",
+    "text": "Draw 2 cards.",
+    "count": 2,
+    "left": 0
+   },
+   {
+    "name": "Field Blower",
+    "kind": "Item",
+    "text": "Discard a Pokémon Tool card from a Pokémon (yours or your opponent's), or discard a Stadium card in play.",
+    "count": 1,
+    "left": 1
+   },
+   {
+    "name": "Poké Ball",
+    "kind": "Item",
+    "text": "Put a random Basic Pokémon from your deck into your hand.",
+    "count": 2,
+    "left": 2
+   },
+   {
+    "name": "X Speed",
+    "kind": "Item",
+    "text": "During this turn, the Retreat Cost of your Active Pokémon is 1 less.",
+    "count": 1,
+    "left": 1
+   },
+   {
+    "name": "Protective Poncho",
+    "kind": "Pokémon Tool",
+    "text": "As long as the Pokémon this card is attached to is on your Bench, prevent all damage done to that Pokémon by your opponent's attacks and Abilities.",
+    "count": 1,
+    "left": 1
+   },
+   {
+    "name": "Arena of Antiquity",
+    "kind": "Stadium",
+    "text": "Attacks used by each Fighting Pokémon in play (both yours and your opponent's) do +20 damage to the opponent's Active Pokémon ex.",
+    "count": 1,
+    "left": 0
+   }
+  ],
+  "energy_types": [
+   "Fighting"
+  ],
+  "supporter_played_this_turn": true,
+  "retreated_this_turn": false
+ },
+ "opponent": {
+  "active": {
+   "name": "Darkrai ex",
+   "stage": 0,
+   "type": "Darkness",
+   "hp": 140,
+   "max_hp": 140,
+   "energy": [],
+   "tools": [],
+   "conditions": [],
+   "ability": {
+    "name": "Nightmare Aura",
+    "text": "Whenever you attach a Darkness Energy from your Energy Zone to this Pokémon, do 20 damage to your opponent's Active Pokémon.",
+    "used_this_turn": false
+   },
+   "attacks": [
+    {
+     "name": "Dark Prism",
+     "cost": [
+      "Darkness",
+      "Darkness",
+      "Colorless"
+     ],
+     "damage": "80",
+     "text": ""
+    }
+   ],
+   "weakness": "Grass",
+   "retreat": 2,
+   "retreat_now": 2,
+   "retreat_note": null,
+   "ko_points": 2,
+   "notes": []
+  },
+  "bench": [
+   null,
+   {
+    "name": "Hoopa ex",
+    "stage": 0,
+    "type": "Darkness",
+    "hp": 150,
+    "max_hp": 150,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": null,
+    "attacks": [
+     {
+      "name": "Shadow Bullet",
+      "cost": [
+       "Darkness"
+      ],
+      "damage": "30",
+      "text": "This attack also does 20 damage to 1 of your opponent's Benched Pokémon."
+     },
+     {
+      "name": "Dynamite Punch",
+      "cost": [
+       "Darkness",
+       "Darkness",
+       "Colorless"
+      ],
+      "damage": "100",
+      "text": "This Pokémon also does 20 damage to itself."
+     }
+    ],
+    "weakness": "Grass",
+    "retreat": 2,
+    "retreat_now": 2,
+    "retreat_note": null,
+    "ko_points": 2,
+    "notes": []
+   },
+   {
+    "name": "Team Rocket's Koffing",
+    "stage": 0,
+    "type": "Darkness",
+    "hp": 60,
+    "max_hp": 60,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": null,
+    "attacks": [
+     {
+      "name": "Reverse Thrust",
+      "cost": [
+       "Darkness"
+      ],
+      "damage": "10",
+      "text": "Switch this Pokémon with 1 of your Benched Pokémon."
+     }
+    ],
+    "weakness": "Fighting",
+    "retreat": 1,
+    "retreat_now": 1,
+    "retreat_note": null,
+    "ko_points": 1,
+    "notes": []
+   }
+  ],
+  "deck_count": 13,
+  "discard": [
+   "Poké Ball",
+   "Mars"
+  ],
+  "discard_energy": [],
+  "energy_zone": {
+   "next": "Darkness",
+   "lines": [
+    "Next: Darkness"
+   ]
+  },
+  "hand_count": 2
+ },
+ "stadium": null,
+ "turn_effects": [],
+ "this_turn_so_far": [
+  "You: Played Professor's Research (Supporter)"
+ ],
+ "log": [
+  {
+   "turn": 0,
+   "who": "setup",
+   "header": "Setup",
+   "lines": [
+    "Opponent: started with Darkrai ex (Active)",
+    "You: started with Riolu (Active)"
+   ]
+  },
+  {
+   "turn": 1,
+   "who": "opponent",
+   "header": "Turn 1 - Opponent",
+   "lines": [
+    "Opponent: Played Poké Ball (Item)",
+    "Opponent: Played Mars (Supporter)",
+    "Opponent: Put Team Rocket's Koffing on Bench 3",
+    "Opponent: Put Hoopa ex on Bench 2",
+    "Opponent: Ended the turn without attacking"
+   ]
+  }
+ ],
+ "options": [
+  {
+   "key": "5",
+   "group": "Trainers",
+   "text": "Play Arena of Antiquity (Stadium): Attacks used by each Fighting Pokémon in play (both yours and your opponent's) do +20 damage to the opponent's Active Pokémon ex."
+  },
+  {
+   "key": "1",
+   "group": "Energy",
+   "text": "Attach Fighting Energy to Riolu (Active)"
+  },
+  {
+   "key": "2",
+   "group": "Pokémon",
+   "text": "Put Hitmonlee onto your Bench"
+  },
+  {
+   "key": "0",
+   "group": "End turn",
+   "text": "End your turn without attacking"
+  }
+ ],
+ "cant_play": [
+  "Mega Lucario ex: you can't evolve Pokémon during your first turn",
+  "Cyrus: you already played a Supporter this turn",
+  "Professor's Research: you already played a Supporter this turn"
+ ]
+}

@@ -1,0 +1,506 @@
+{
+ "order": 7,
+ "matchup": {
+  "you": "Lucario"
+ },
+ "turn": 8,
+ "you_went_first": false,
+ "situation": "Your turn (your 4th turn; turn 8 of the game).",
+ "question": "What do you do this turn, in order? Pick the first thing you'd tap, then write the rest of your turn: each card you'd play, where your Energy goes, any retreat, and your attack or end turn. If you'd play a card that draws, stop there and say \"then depends on the draw\".",
+ "points": {
+  "you": 1,
+  "opponent": 2
+ },
+ "you": {
+  "active": {
+   "name": "Mega Lucario ex",
+   "stage": 1,
+   "type": "Fighting",
+   "hp": 190,
+   "max_hp": 190,
+   "energy": [
+    "Fighting",
+    "Fighting"
+   ],
+   "tools": [],
+   "conditions": [],
+   "ability": null,
+   "attacks": [
+    {
+     "name": "Fighting Pulse",
+     "cost": [
+      "Fighting",
+      "Fighting"
+     ],
+     "damage": "90+",
+     "text": "If this Pokémon has at least 1 extra Fighting Energy attached, this attack does 50 more damage."
+    }
+   ],
+   "weakness": "Psychic",
+   "retreat": 1,
+   "retreat_now": 1,
+   "retreat_note": null,
+   "ko_points": 3,
+   "notes": []
+  },
+  "bench": [
+   null,
+   null,
+   {
+    "name": "Riolu",
+    "stage": 0,
+    "type": "Fighting",
+    "hp": 60,
+    "max_hp": 60,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": null,
+    "attacks": [
+     {
+      "name": "Fighting Fist",
+      "cost": [
+       "Fighting"
+      ],
+      "damage": "10+",
+      "text": "If your opponent's Active Pokémon is a Pokémon ex, this attack does 30 more damage."
+     }
+    ],
+    "weakness": "Psychic",
+    "retreat": 1,
+    "retreat_now": 1,
+    "retreat_note": null,
+    "ko_points": 1,
+    "notes": []
+   }
+  ],
+  "deck_count": 8,
+  "discard": [
+   "Poké Ball",
+   "Professor's Research",
+   "Hitmonlee",
+   "Field Blower",
+   "Protective Poncho",
+   "Bonsly"
+  ],
+  "discard_energy": [
+   "Fighting",
+   "Fighting"
+  ],
+  "energy_zone": {
+   "this_turn": "already attached",
+   "next": "Fighting",
+   "lines": [
+    "This turn: already attached",
+    "Next: Fighting"
+   ]
+  },
+  "hand": [
+   {
+    "name": "Korrina",
+    "kind": "Supporter",
+    "text": "During this turn, attacks used by your Fighting Pokémon do +30 damage to your opponent's Active Pokémon ex."
+   },
+   {
+    "name": "Pokémon Center Lady",
+    "kind": "Supporter",
+    "text": "Heal 30 damage from 1 of your Pokémon, and it recovers from all Special Conditions."
+   },
+   {
+    "name": "Arena of Antiquity",
+    "kind": "Stadium",
+    "text": "Attacks used by each Fighting Pokémon in play (both yours and your opponent's) do +20 damage to the opponent's Active Pokémon ex."
+   }
+  ],
+  "decklist": [
+   {
+    "name": "Bonsly",
+    "kind": "Basic Pokémon",
+    "text": "Basic Pokémon, HP 30, Fighting type. Attack Teary Attack [no Energy] 10: During your opponent's next turn, attacks used by the Defending Pokémon do -30 damage. Weakness: none. Retreat: 0.",
+    "count": 1,
+    "left": 0
+   },
+   {
+    "name": "Hitmonlee",
+    "kind": "Basic Pokémon",
+    "text": "Basic Pokémon, HP 80, Fighting type. Attack Stretch Kick [Fighting]: This attack does 30 damage to 1 of your opponent's Benched Pokémon. Weakness: Psychic. Retreat: 1.",
+    "count": 1,
+    "left": 0
+   },
+   {
+    "name": "Riolu",
+    "kind": "Basic Pokémon",
+    "text": "Basic Pokémon, HP 60, Fighting type. Attack Fighting Fist [Fighting] 10+: If your opponent's Active Pokémon is a Pokémon ex, this attack does 30 more damage. Weakness: Psychic. Retreat: 1.",
+    "count": 2,
+    "left": 0
+   },
+   {
+    "name": "Lucario",
+    "kind": "Stage 1 Pokémon",
+    "text": "Stage 1 Pokémon, HP 100, Fighting type, evolves from Riolu. Ability Fighting Coach: Attacks used by your Fighting Pokémon do +20 damage to your opponent's Active Pokémon. Attack Submarine Blow [Fighting Fighting] 40. Weakness: Psychic. Retreat: 2.",
+    "count": 1,
+    "left": 1
+   },
+   {
+    "name": "Mega Lucario ex",
+    "kind": "Stage 1 Pokémon",
+    "text": "Stage 1 Pokémon, HP 190, Fighting type, evolves from Riolu. Gives 3 points when Knocked Out. Attack Fighting Pulse [Fighting Fighting] 90+: If this Pokémon has at least 1 extra Fighting Energy attached, this attack does 50 more damage. Weakness: Psychic. Retreat: 1.",
+    "count": 2,
+    "left": 1
+   },
+   {
+    "name": "Copycat",
+    "kind": "Supporter",
+    "text": "Shuffle your hand into your deck. Draw a card for each card in your opponent's hand.",
+    "count": 2,
+    "left": 2
+   },
+   {
+    "name": "Cyrus",
+    "kind": "Supporter",
+    "text": "Switch in 1 of your opponent's Benched Pokémon that has damage on it to the Active Spot.",
+    "count": 1,
+    "left": 1
+   },
+   {
+    "name": "Korrina",
+    "kind": "Supporter",
+    "text": "During this turn, attacks used by your Fighting Pokémon do +30 damage to your opponent's Active Pokémon ex.",
+    "count": 1,
+    "left": 0
+   },
+   {
+    "name": "Pokémon Center Lady",
+    "kind": "Supporter",
+    "text": "Heal 30 damage from 1 of your Pokémon, and it recovers from all Special Conditions.",
+    "count": 1,
+    "left": 0
+   },
+   {
+    "name": "Professor's Research",
+    "kind": "Supporter",
+    "text": "Draw 2 cards.",
+    "count": 2,
+    "left": 1
+   },
+   {
+    "name": "Field Blower",
+    "kind": "Item",
+    "text": "Discard a Pokémon Tool card from a Pokémon (yours or your opponent's), or discard a Stadium card in play.",
+    "count": 1,
+    "left": 0
+   },
+   {
+    "name": "Poké Ball",
+    "kind": "Item",
+    "text": "Put a random Basic Pokémon from your deck into your hand.",
+    "count": 2,
+    "left": 1
+   },
+   {
+    "name": "X Speed",
+    "kind": "Item",
+    "text": "During this turn, the Retreat Cost of your Active Pokémon is 1 less.",
+    "count": 1,
+    "left": 1
+   },
+   {
+    "name": "Protective Poncho",
+    "kind": "Pokémon Tool",
+    "text": "As long as the Pokémon this card is attached to is on your Bench, prevent all damage done to that Pokémon by your opponent's attacks and Abilities.",
+    "count": 1,
+    "left": 0
+   },
+   {
+    "name": "Arena of Antiquity",
+    "kind": "Stadium",
+    "text": "Attacks used by each Fighting Pokémon in play (both yours and your opponent's) do +20 damage to the opponent's Active Pokémon ex.",
+    "count": 1,
+    "left": 0
+   }
+  ],
+  "energy_types": [
+   "Fighting"
+  ],
+  "supporter_played_this_turn": false,
+  "retreated_this_turn": true
+ },
+ "opponent": {
+  "active": {
+   "name": "Darkrai",
+   "stage": 0,
+   "type": "Darkness",
+   "hp": 100,
+   "max_hp": 100,
+   "energy": [
+    "Psychic"
+   ],
+   "tools": [],
+   "conditions": [],
+   "ability": {
+    "name": "Bad Dreams",
+    "text": "At the end of each turn, if your opponent's Active Pokémon is Asleep, do 20 damage to that Pokémon.",
+    "used_this_turn": false
+   },
+   "attacks": [
+    {
+     "name": "Dark Slumber",
+     "cost": [
+      "Colorless",
+      "Colorless",
+      "Colorless"
+     ],
+     "damage": "40",
+     "text": "Your opponent's Active Pokémon is now Asleep."
+    }
+   ],
+   "weakness": "Grass",
+   "retreat": 2,
+   "retreat_now": 2,
+   "retreat_note": null,
+   "ko_points": 1,
+   "notes": []
+  },
+  "bench": [
+   {
+    "name": "Mega Altaria ex",
+    "stage": 1,
+    "type": "Psychic",
+    "hp": 190,
+    "max_hp": 190,
+    "energy": [
+     "Psychic"
+    ],
+    "tools": [],
+    "conditions": [],
+    "ability": null,
+    "attacks": [
+     {
+      "name": "Mega Harmony",
+      "cost": [
+       "Psychic",
+       "Psychic"
+      ],
+      "damage": "40+",
+      "text": "This attack does 30 more damage for each of your Benched Pokémon."
+     }
+    ],
+    "weakness": "Metal",
+    "retreat": 1,
+    "retreat_now": 1,
+    "retreat_note": null,
+    "ko_points": 3,
+    "notes": []
+   },
+   {
+    "name": "Swablu",
+    "stage": 0,
+    "type": "Colorless",
+    "hp": 50,
+    "max_hp": 50,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": null,
+    "attacks": [
+     {
+      "name": "Sing",
+      "cost": [
+       "Colorless"
+      ],
+      "damage": null,
+      "text": "Your opponent's Active Pokémon is now Asleep."
+     }
+    ],
+    "weakness": "Lightning",
+    "retreat": 1,
+    "retreat_now": 1,
+    "retreat_note": null,
+    "ko_points": 1,
+    "notes": []
+   },
+   {
+    "name": "Darkrai",
+    "stage": 0,
+    "type": "Darkness",
+    "hp": 70,
+    "max_hp": 100,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": {
+     "name": "Bad Dreams",
+     "text": "At the end of each turn, if your opponent's Active Pokémon is Asleep, do 20 damage to that Pokémon.",
+     "used_this_turn": false
+    },
+    "attacks": [
+     {
+      "name": "Dark Slumber",
+      "cost": [
+       "Colorless",
+       "Colorless",
+       "Colorless"
+      ],
+      "damage": "40",
+      "text": "Your opponent's Active Pokémon is now Asleep."
+     }
+    ],
+    "weakness": "Grass",
+    "retreat": 2,
+    "retreat_now": 2,
+    "retreat_note": null,
+    "ko_points": 1,
+    "notes": []
+   }
+  ],
+  "deck_count": 6,
+  "discard": [
+   "Copycat",
+   "Professor's Research",
+   "Small Balloon",
+   "Professor's Research",
+   "Eevee",
+   "Espeon",
+   "Sabrina"
+  ],
+  "discard_energy": [
+   "Psychic"
+  ],
+  "energy_zone": {
+   "next": "Psychic",
+   "lines": [
+    "Next: Psychic"
+   ]
+  },
+  "hand_count": 2
+ },
+ "stadium": null,
+ "turn_effects": [],
+ "this_turn_so_far": [
+  "You: Attached Fighting Energy to Riolu (Active)",
+  "You: Retreated Riolu (Active), switching in Mega Lucario ex (Bench 3)"
+ ],
+ "log": [
+  {
+   "turn": 0,
+   "who": "setup",
+   "header": "Setup",
+   "lines": [
+    "Opponent: started with Eevee (Active), Darkrai (Bench 3)",
+    "You: started with Bonsly (Active)"
+   ]
+  },
+  {
+   "turn": 1,
+   "who": "opponent",
+   "header": "Turn 1 - Opponent",
+   "lines": [
+    "Opponent: Played Copycat (Supporter)",
+    "Opponent: Put Darkrai on Bench 2",
+    "Opponent: Evolved Eevee (Active) into Espeon",
+    "Opponent: Ended the turn without attacking"
+   ]
+  },
+  {
+   "turn": 2,
+   "who": "you",
+   "header": "Turn 2 - You",
+   "lines": [
+    "You: Played Poké Ball (Item)",
+    "You: Put Hitmonlee on Bench 3",
+    "You: Played Professor's Research (Supporter)",
+    "You: Retreated Bonsly (Active), switching in Hitmonlee (Bench 3)",
+    "You: Put Riolu on Bench 2",
+    "You: Attached Fighting Energy to Hitmonlee (Active)",
+    "You: Hitmonlee attacked with Stretch Kick → did 30 damage to opponent's Darkrai (Bench 3)"
+   ]
+  },
+  {
+   "turn": 3,
+   "who": "opponent",
+   "header": "Turn 3 - Opponent",
+   "lines": [
+    "Opponent: Played Professor's Research (Supporter)",
+    "Opponent: Attached Psychic Energy to Espeon (Active)",
+    "Opponent: Played Small Balloon (Pokémon Tool) → attached Small Balloon to Espeon (Active)",
+    "Opponent: Espeon attacked with Hypnoblast (40) → did 60 damage to your Hitmonlee (Active); your Hitmonlee (Active) is now Asleep",
+    "End of turn: Your Hitmonlee (Active) was Knocked Out by Darkrai's Bad Dreams (opponent +1 point; score: you 0, opponent 1)",
+    "You: Moved Bonsly (Bench 3) into the Active Spot as the new Active Pokémon"
+   ]
+  },
+  {
+   "turn": 4,
+   "who": "you",
+   "header": "Turn 4 - You",
+   "lines": [
+    "You: Evolved Riolu (Bench 2) into Mega Lucario ex",
+    "You: Attached Fighting Energy to Mega Lucario ex (Bench 2)",
+    "You: Played Field Blower (Item) → discarded Small Balloon from opponent's Espeon (Active)",
+    "You: Played Protective Poncho (Pokémon Tool) → attached Protective Poncho to Bonsly (Active)",
+    "You: Bonsly attacked with Teary Attack (10) → did 10 damage to opponent's Espeon (Active)"
+   ]
+  },
+  {
+   "turn": 5,
+   "who": "opponent",
+   "header": "Turn 5 - Opponent",
+   "lines": [
+    "Opponent: Played Professor's Research (Supporter)",
+    "Opponent: Put Swablu on Bench 1",
+    "Opponent: Attached Psychic Energy to Darkrai (Bench 2)",
+    "Opponent: Espeon attacked with Hypnoblast (40) → did 10 damage to your Bonsly (Active); your Bonsly (Active) is now Asleep",
+    "End of turn: Your Bonsly (Active) was Knocked Out by Darkrai's Bad Dreams (opponent +1 point; score: you 0, opponent 2)",
+    "You: Moved Mega Lucario ex (Bench 2) into the Active Spot as the new Active Pokémon"
+   ]
+  },
+  {
+   "turn": 6,
+   "who": "you",
+   "header": "Turn 6 - You",
+   "lines": [
+    "You: Put Riolu on Bench 3",
+    "You: Attached Fighting Energy to Mega Lucario ex (Active)",
+    "You: Mega Lucario ex attacked with Fighting Pulse (90+) → opponent's Espeon (Active) was Knocked Out (you +1 point; score: you 1, opponent 2)",
+    "Opponent: Moved Darkrai (Bench 2) into the Active Spot as the new Active Pokémon"
+   ]
+  },
+  {
+   "turn": 7,
+   "who": "opponent",
+   "header": "Turn 7 - Opponent",
+   "lines": [
+    "Opponent: Played Sabrina (Supporter)",
+    "You: Switched Riolu (Bench 3) into the Active Spot",
+    "Opponent: Put Swablu on Bench 2",
+    "Opponent: Evolved Swablu (Bench 1) into Mega Altaria ex",
+    "Opponent: Attached Psychic Energy to Mega Altaria ex (Bench 1)",
+    "Opponent: Ended the turn without attacking"
+   ]
+  }
+ ],
+ "options": [
+  {
+   "key": "1",
+   "group": "Attack",
+   "text": "Attack with Fighting Pulse (90+ damage): If this Pokémon has at least 1 extra Fighting Energy attached, this attack does 50 more damage."
+  },
+  {
+   "key": "2",
+   "group": "Trainers",
+   "text": "Play Korrina (Supporter): During this turn, attacks used by your Fighting Pokémon do +30 damage to your opponent's Active Pokémon ex."
+  },
+  {
+   "key": "3",
+   "group": "Trainers",
+   "text": "Play Arena of Antiquity (Stadium): Attacks used by each Fighting Pokémon in play (both yours and your opponent's) do +20 damage to the opponent's Active Pokémon ex."
+  },
+  {
+   "key": "0",
+   "group": "End turn",
+   "text": "End your turn without attacking"
+  }
+ ],
+ "cant_play": [
+  "Pokémon Center Lady: none of your Pokémon has damage or a Special Condition"
+ ]
+}

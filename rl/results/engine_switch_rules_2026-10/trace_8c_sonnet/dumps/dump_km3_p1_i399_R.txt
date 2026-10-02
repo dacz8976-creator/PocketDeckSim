@@ -1,0 +1,39 @@
+deal 399, tick 81: chose Promote { player: 0, in_play_idx: 3 }
+PGTICK 81 (the decision asked about)
+PGCAND Promote { player: 0, in_play_idx: 1 }
+PGCAND Promote { player: 0, in_play_idx: 2 }
+PGCAND Promote { player: 0, in_play_idx: 3 }
+PGGATE queued coin-target frame: mover 0 target (owner 1, slot 2) attack "Tongue Whip" depth_left=0
+PGGATE queued coin-target frame: mover 0 target (owner 1, slot 3) attack "Tongue Whip" depth_left=0
+PGDUMP actor=0 candidates=3
+PGDUMP       9595.700000000000728 Promote { player: 0, in_play_idx: 1 }
+PGDUMP       9595.700000000000728 Promote { player: 0, in_play_idx: 2 }
+PGDUMP       9600.700000000000728 Promote { player: 0, in_play_idx: 3 }
+PGTREE candidate 0
+PGTREE A Promote { player: 0, in_play_idx: 1 } value=9595.700000
+PGTREE   S actor=1 p=1.0000 value=9595.700000 (1 moves)
+PGTREE     A EndTurn value=9595.700000
+PGTREE       S actor=0 p=1.0000 value=9595.700000 (1 moves)
+PGTREE         A DrawCard { amount: 1 } value=9595.700000
+PGTREE           S actor=0 p=1.0000 value=9595.700000 (9 moves)
+PGTREE             A Attach { attachments: [(1, Fire, 0)], is_turn_energy: true } value=9595.700000
+PGTREE               S actor=0 p=1.0000 value=9595.700000 (0 moves)
+PGTREE candidate 1
+PGTREE A Promote { player: 0, in_play_idx: 2 } value=9595.700000
+PGTREE   S actor=1 p=1.0000 value=9595.700000 (1 moves)
+PGTREE     A EndTurn value=9595.700000
+PGTREE       S actor=0 p=1.0000 value=9595.700000 (1 moves)
+PGTREE         A DrawCard { amount: 1 } value=9595.700000
+PGTREE           S actor=0 p=1.0000 value=9595.700000 (9 moves)
+PGTREE             A Attach { attachments: [(1, Fire, 0)], is_turn_energy: true } value=9595.700000
+PGTREE               S actor=0 p=1.0000 value=9595.700000 (0 moves)
+PGTREE candidate 2
+PGTREE A Promote { player: 0, in_play_idx: 3 } value=9600.700000
+PGTREE   S actor=1 p=1.0000 value=9600.700000 (1 moves)
+PGTREE     A EndTurn value=9600.700000
+PGTREE       S actor=0 p=1.0000 value=9600.700000 (1 moves)
+PGTREE         A DrawCard { amount: 1 } value=9600.700000
+PGTREE           S actor=0 p=1.0000 value=9600.700000 (9 moves)
+PGTREE             A Attack(Attack { energy_required: [Fire], title: "Tongue Whip", fixed_damage: 0, effect: Some("This attack does 30 damage to 1 of your opponent's Benched Pokémon.") }) value=9600.700000
+PGTREE               S actor=0 p=1.0000 value=9600.700000 (2 moves)
+PGTREE                 A ApplyQueuedAttackDamage { attack: Attack { energy_required: [Fire], title: "Tongue Whip", fixed_damage: 0, effect: Some("This attack does 30 damage to 1 of your opponent's Benched Pokémon.") }, targets: [(30, true, 2)] } value=9600.700000

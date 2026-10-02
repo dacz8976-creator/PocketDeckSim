@@ -13,7 +13,7 @@ Find 20-card Pokémon TCG Pocket decks that are creative **and** win: off-meta, 
 
 ## The official engine (one line; the engine-switch procedure updates it)
 
-`rl/engine-2026-09-30/` (`deckgym`, `legality_scan`, `goldfish`), main-d363ba8: rules4 plus the ten rules/09 repairs, with the km pilot (kta + N2) on both sides of the screen and the floor. `project_manifest.json` names it with its hashes, and `current_engine.py` and the screen resolve to it. Earlier engines are history there. Since Sept 30, `kt3`, `kta3`, `ktb3` and `ktc3` name the kog-based presets; the older kp-based ones replay on `rl/engine-2026-09-28/`.
+`rl/engine-2026-10-02/` (`deckgym`, `legality_scan`, `goldfish`), main-8626a35: rules4 plus the rules/09 repairs (the ten of Sept 26, and since Oct 2 Victory Star after a Confusion heads and coin-flip damage prevention, Chase Order included), with the km pilot (kta + N2) on both sides of the screen and the floor. `project_manifest.json` names it with its hashes, and `current_engine.py` and the screen resolve to it. Earlier engines are history there. Since Sept 30, `kt3`, `kta3`, `ktb3` and `ktc3` name the kog-based presets; the older kp-based ones replay on `rl/engine-2026-09-28/`.
 
 ## Standing facts
 
@@ -139,3 +139,4 @@ its seed-overlap check; the rest was added since.
 | 22,801,000,000 – 22,801,319,999 | Claude Code, the Sept 28 engine switch's touched-path check (`rl/results/engine_switch_2026-09-28/touched/`): 22.801B + pairing × 10,000 + i, 32 pairings (decks 07 and 05, the metal-barrier example, a 2-Blue test list, each v the 8 panel lists) |
 | 22,900,000,000 – 22,900,081,499 | Claude Code, km's clause (d) Lucario rows (registered Sept 29, `rl/results/trainer_pricing_2026-09-28/REGISTRATION_DRAFT.md`, step 4 (d)): 22,900,000,000 + row × 10,000 + j, j < 1,500, rows 0–8 (the 7 table cells in pairing order, then Rayquaza v Lucario, then Altaria/Greninja v Lucario), Lucario in seat 0 on even j; deals 0–499 of each row are the table's own (72,000,000 and 21,108,000,000 blocks), reused on purpose; (d) plays both arms on them itself |
 | 23,000,000,000 – 23,009,999,999 | Claude Code, kta's fresh deals (registered Sept 29, `rl/results/kta_2026-09-29/REGISTRATION.md`, section 3.2 for the sub-blocks; clause (d) at 23,003,000,000 + row × 10,000 + i, i < 2,000) |
+| 23,100,000,000 – 23,100,999,999 | Claude Code, the rules engine switch (registered Sept 30, `rl/results/engine_switch_rules_2026-10/PLAN.md` step 8): 23,100,000,000 + pairing × 10,000 + i; pairings 0–31 step 8's carrier games (km3 i < 500, k3 i < 250), 32–35 step 8b's scratch-deck rows, 40–71 sitting 1's step 7c (Dustin's decks 02, 06, 08 and 14 v the 8 panel lists, i < 60; `pairs_7c.tsv`, `seeds_7c.txt`) |

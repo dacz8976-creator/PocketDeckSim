@@ -1,0 +1,13 @@
+games 1405
+process_ok: Counter({'yes': 1405})
+replay_ok (old choice != R choice at k): Counter({'yes': 1405})
+B-in-play vs A-only: Counter({'B': 1395, 'A-only': 10})
+by verdict x group: [(('LOOKAHEAD ONLY, both halves hold', 'A-only'), 9), (('LOOKAHEAD ONLY, both halves hold', 'B'), 1382), (('NEEDS A JUDGMENT', 'B'), 1), (('ON THE BOARD', 'A-only'), 1), (('ON THE BOARD', 'B'), 7), (('UNEXPLAINED', 'B'), 5)]
+
+== B: 1395 games; reproduced 1395; scores of every candidate equal old's 1395; gate printed in R's search 1126; gate in old 0
+   not reproduced (choice) 0; candidate scores differ 0; either 0
+
+== A-only: 10 games; reproduced 0; scores of every candidate equal old's 0; gate printed in R's search 0; gate in old 0
+   not reproduced (choice) 10; candidate scores differ 10; either 10
+
+failures by (bot, pairing) among B: []

@@ -1,0 +1,105 @@
+3813 changed rows, 210 chunks x 2 engines, 12 jobs
+  traced and compared 10/210 chunks
+  traced and compared 20/210 chunks
+  traced and compared 30/210 chunks
+  traced and compared 40/210 chunks
+  traced and compared 50/210 chunks
+  traced and compared 60/210 chunks
+  traced and compared 70/210 chunks
+  traced and compared 80/210 chunks
+  traced and compared 90/210 chunks
+  traced and compared 100/210 chunks
+  traced and compared 110/210 chunks
+  traced and compared 120/210 chunks
+  traced and compared 130/210 chunks
+  traced and compared 140/210 chunks
+  traced and compared 150/210 chunks
+  traced and compared 160/210 chunks
+  traced and compared 170/210 chunks
+  traced and compared 180/210 chunks
+  traced and compared 190/210 chunks
+  traced and compared 200/210 chunks
+  traced and compared 210/210 chunks
+5208 probe runs
+  probed 100/5208
+  probed 200/5208
+  probed 300/5208
+  probed 400/5208
+  probed 500/5208
+  probed 600/5208
+  probed 700/5208
+  probed 800/5208
+  probed 900/5208
+  probed 1000/5208
+  probed 1100/5208
+  probed 1200/5208
+  probed 1300/5208
+  probed 1400/5208
+  probed 1500/5208
+  probed 1600/5208
+  probed 1700/5208
+  probed 1800/5208
+  probed 1900/5208
+  probed 2000/5208
+  probed 2100/5208
+  probed 2200/5208
+  probed 2300/5208
+  probed 2400/5208
+  probed 2500/5208
+  probed 2600/5208
+  probed 2700/5208
+  probed 2800/5208
+  probed 2900/5208
+  probed 3000/5208
+  probed 3100/5208
+  probed 3200/5208
+  probed 3300/5208
+  probed 3400/5208
+  probed 3500/5208
+  probed 3600/5208
+  probed 3700/5208
+  probed 3800/5208
+  probed 3900/5208
+  probed 4000/5208
+  probed 4100/5208
+  probed 4200/5208
+  probed 4300/5208
+  probed 4400/5208
+  probed 4500/5208
+  probed 4600/5208
+  probed 4700/5208
+  probed 4800/5208
+  probed 4900/5208
+  probed 5000/5208
+  probed 5100/5208
+  probed 5200/5208
+  probed 5208/5208
+{
+ "rows": 3813,
+ "steps": "8,8b",
+ "tally": {
+  "ON THE BOARD": 2414,
+  "LOOKAHEAD ONLY, both halves hold": 1391,
+  "UNEXPLAINED": 7,
+  "NEEDS A JUDGMENT": 1
+ },
+ "kind_by_verdict": {
+  "length / UNEXPLAINED": 2,
+  "lookahead / LOOKAHEAD ONLY, both halves hold": 1391,
+  "lookahead / NEEDS A JUDGMENT": 1,
+  "lookahead / ON THE BOARD": 8,
+  "lookahead / UNEXPLAINED": 5,
+  "state / ON THE BOARD": 2406
+ },
+ "condition3": 297,
+ "condition3_verdicts": {
+  "LOOKAHEAD ONLY, both halves hold": 296,
+  "NEEDS A JUDGMENT": 1
+ },
+ "golden_mismatches": 0,
+ "control_failures": 0,
+ "problems": []
+}
+
+CONDITION 3 rows: 297; verdicts {'LOOKAHEAD ONLY, both halves hold': 296, 'NEEDS A JUDGMENT': 1}
+STOP: 7 UNEXPLAINED games (see UNEXPLAINED.md)

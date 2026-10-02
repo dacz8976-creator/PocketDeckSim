@@ -1,0 +1,28 @@
+deal 360, tick 57: chose Promote { player: 1, in_play_idx: 3 }
+PGTICK 57 (the decision asked about)
+PGCAND Promote { player: 1, in_play_idx: 2 }
+PGCAND Promote { player: 1, in_play_idx: 3 }
+PGGATE queued coin-target frame: mover 1 target (owner 0, slot 3) attack "Slicing Snipe" depth_left=0
+PGDUMP actor=1 candidates=2
+PGDUMP       -514.399999999999977 Promote { player: 1, in_play_idx: 2 }
+PGDUMP       4440.650000000000546 Promote { player: 1, in_play_idx: 3 }
+PGTREE candidate 0
+PGTREE A Promote { player: 1, in_play_idx: 2 } value=-514.400000
+PGTREE   S actor=0 p=1.0000 value=-514.400000 (1 moves)
+PGTREE     A EndTurn value=-514.400000
+PGTREE       S actor=0 p=1.0000 value=-514.400000 (1 moves)
+PGTREE         A ResolveEndTurnEvolution { player: 1 } value=-514.400000
+PGTREE           S actor=0 p=1.0000 value=-514.400000 (1 moves)
+PGTREE             A ResolvePokemonCheckup value=-514.400000
+PGTREE               S actor=1 p=1.0000 value=-514.400000 (1 moves)
+PGTREE                 A DrawCard { amount: 1 } value=-514.400000
+PGTREE candidate 1
+PGTREE A Promote { player: 1, in_play_idx: 3 } value=4440.650000
+PGTREE   S actor=0 p=1.0000 value=4440.650000 (1 moves)
+PGTREE     A EndTurn value=4440.650000
+PGTREE       S actor=1 p=1.0000 value=4440.650000 (1 moves)
+PGTREE         A DrawCard { amount: 1 } value=4440.650000
+PGTREE           S actor=1 p=1.0000 value=4440.650000 (9 moves)
+PGTREE             A Attack(Attack { energy_required: [Grass, Grass], title: "Slicing Snipe", fixed_damage: 0, effect: Some("This attack does 50 damage to 1 of your opponent's Benched Pokémon.") }) value=4440.650000
+PGTREE               S actor=1 p=1.0000 value=4440.650000 (1 moves)
+PGTREE                 A ApplyQueuedAttackDamage { attack: Attack { energy_required: [Grass, Grass], title: "Slicing Snipe", fixed_damage: 0, effect: Some("This attack does 50 damage to 1 of your opponent's Benched Pokémon.") }, targets: [(50, true, 3)] } value=4440.650000

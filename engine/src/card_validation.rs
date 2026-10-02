@@ -94,7 +94,7 @@ pub fn implementation_limitations(card_id: CardId) -> &'static [&'static str] {
             "Owner-approved assumption, not verified in Pokémon TCG Pocket: duplicate Lum Berries resolve sequentially; the first cure removes all Special Conditions, so later copies remain attached.",
         ],
         CardId::B3025Victini | CardId::PB049Victini => &[
-            "Victory Star supports printed attack-effect coin batches; confusion and attacker-side coin gates currently bypass the reroll prompt pending Pocket rule verification.",
+            "Victory Star supports printed attack-effect coin batches. After a Confusion heads the attack's own coins are offered for a reroll, with no second Confusion check (rules/04 §9, seen in Pocket Sept 29). Still unverified in Pocket, and left on the legacy resolution with no reroll prompt: Victory Star with CoinFlipToBlockAttack, and with Confusion while a Will is pending.",
         ],
         CardId::B4a051Gholdengo | CardId::B4a109Gholdengo => &[
             "Provisional engine convention, not verified in Pokémon TCG Pocket: complete Trainer coin batches are public while Luxury Coin is pending.",

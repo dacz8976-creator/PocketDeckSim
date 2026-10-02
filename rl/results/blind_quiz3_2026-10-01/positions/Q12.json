@@ -1,0 +1,526 @@
+{
+ "order": 12,
+ "matchup": {
+  "you": "Wailord / Indeedee wall (your deck 03)"
+ },
+ "turn": 6,
+ "you_went_first": false,
+ "situation": "Your turn (your 3rd turn; turn 6 of the game).",
+ "question": "What do you do this turn, in order? Pick the first thing you'd tap, then write the rest of your turn: each card you'd play, where your Energy goes, any retreat, and your attack or end turn. If you'd play a card that draws, stop there and say \"then depends on the draw\".",
+ "points": {
+  "you": 0,
+  "opponent": 0
+ },
+ "you": {
+  "active": {
+   "name": "Wailord",
+   "stage": 1,
+   "type": "Water",
+   "hp": 140,
+   "max_hp": 200,
+   "energy": [
+    "Water",
+    "Water"
+   ],
+   "tools": [],
+   "conditions": [
+    "Poisoned"
+   ],
+   "ability": null,
+   "attacks": [
+    {
+     "name": "Whale Pump",
+     "cost": [
+      "Colorless",
+      "Colorless",
+      "Colorless",
+      "Colorless"
+     ],
+     "damage": "60+",
+     "text": "This attack does 10 more damage for each Water Energy attached to this Pokémon."
+    }
+   ],
+   "weakness": "Lightning",
+   "retreat": 4,
+   "retreat_now": 4,
+   "retreat_note": null,
+   "ko_points": 1,
+   "notes": []
+  },
+  "bench": [
+   {
+    "name": "Indeedee ex",
+    "stage": 0,
+    "type": "Psychic",
+    "hp": 130,
+    "max_hp": 130,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": {
+     "name": "Watch Over",
+     "text": "Once during your turn, you may heal 20 damage from your Active Pokémon.",
+     "used_this_turn": true
+    },
+    "attacks": [
+     {
+      "name": "Psychic",
+      "cost": [
+       "Psychic",
+       "Psychic"
+      ],
+      "damage": "30+",
+      "text": "This attack does 30 more damage for each Energy attached to your opponent's Active Pokémon."
+     }
+    ],
+    "weakness": "Darkness",
+    "retreat": 1,
+    "retreat_now": 1,
+    "retreat_note": null,
+    "ko_points": 2,
+    "notes": [
+     "Put into play this turn"
+    ]
+   },
+   {
+    "name": "Indeedee ex",
+    "stage": 0,
+    "type": "Psychic",
+    "hp": 130,
+    "max_hp": 130,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": {
+     "name": "Watch Over",
+     "text": "Once during your turn, you may heal 20 damage from your Active Pokémon.",
+     "used_this_turn": true
+    },
+    "attacks": [
+     {
+      "name": "Psychic",
+      "cost": [
+       "Psychic",
+       "Psychic"
+      ],
+      "damage": "30+",
+      "text": "This attack does 30 more damage for each Energy attached to your opponent's Active Pokémon."
+     }
+    ],
+    "weakness": "Darkness",
+    "retreat": 1,
+    "retreat_now": 1,
+    "retreat_note": null,
+    "ko_points": 2,
+    "notes": []
+   },
+   {
+    "name": "Wailord ex",
+    "stage": 1,
+    "type": "Water",
+    "hp": 250,
+    "max_hp": 250,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": null,
+    "attacks": [
+     {
+      "name": "Wondrous Waves",
+      "cost": [
+       "Water",
+       "Water",
+       "Water",
+       "Water"
+      ],
+      "damage": "100",
+      "text": "This Pokémon recovers from all Special Conditions."
+     }
+    ],
+    "weakness": "Lightning",
+    "retreat": 4,
+    "retreat_now": 4,
+    "retreat_note": null,
+    "ko_points": 2,
+    "notes": []
+   }
+  ],
+  "deck_count": 6,
+  "discard": [
+   "Professor's Research",
+   "Poké Ball",
+   "Copycat",
+   "Poké Ball",
+   "Professor's Research",
+   "Lucky Ice Pop"
+  ],
+  "discard_energy": [],
+  "energy_zone": {
+   "this_turn": "Water",
+   "next": "Water",
+   "lines": [
+    "This turn: Water",
+    "Next: Water"
+   ]
+  },
+  "hand": [
+   {
+    "name": "Heavy Helmet",
+    "kind": "Pokémon Tool",
+    "text": "If the Pokémon this card is attached to has a Retreat Cost of 3 or more, it takes -20 damage from attacks from your opponent's Pokémon."
+   },
+   {
+    "name": "Soothing Shore",
+    "kind": "Stadium",
+    "text": "At the end of each player's turn, that player heals 20 damage from each of their Pokémon that has any Water Energy attached."
+   }
+  ],
+  "decklist": [
+   {
+    "name": "Indeedee ex",
+    "kind": "Basic Pokémon",
+    "text": "Basic Pokémon, HP 130, Psychic type. Gives 2 points when Knocked Out. Ability Watch Over: Once during your turn, you may heal 20 damage from your Active Pokémon. Attack Psychic [Psychic Psychic] 30+: This attack does 30 more damage for each Energy attached to your opponent's Active Pokémon. Weakness: Darkness. Retreat: 1.",
+    "count": 2,
+    "left": 0
+   },
+   {
+    "name": "Wailmer",
+    "kind": "Basic Pokémon",
+    "text": "Basic Pokémon, HP 100, Water type. Attack Wave Splash [Water Water Water] 60. Weakness: Lightning. Retreat: 3.",
+    "count": 2,
+    "left": 0
+   },
+   {
+    "name": "Wailord",
+    "kind": "Stage 1 Pokémon",
+    "text": "Stage 1 Pokémon, HP 200, Water type, evolves from Wailmer. Attack Whale Pump [Colorless Colorless Colorless Colorless] 60+: This attack does 10 more damage for each Water Energy attached to this Pokémon. Weakness: Lightning. Retreat: 4.",
+    "count": 1,
+    "left": 0
+   },
+   {
+    "name": "Wailord ex",
+    "kind": "Stage 1 Pokémon",
+    "text": "Stage 1 Pokémon, HP 250, Water type, evolves from Wailmer. Gives 2 points when Knocked Out. Attack Wondrous Waves [Water Water Water Water] 100: This Pokémon recovers from all Special Conditions. Weakness: Lightning. Retreat: 4.",
+    "count": 1,
+    "left": 0
+   },
+   {
+    "name": "Copycat",
+    "kind": "Supporter",
+    "text": "Shuffle your hand into your deck. Draw a card for each card in your opponent's hand.",
+    "count": 1,
+    "left": 0
+   },
+   {
+    "name": "Cyrus",
+    "kind": "Supporter",
+    "text": "Switch in 1 of your opponent's Benched Pokémon that has damage on it to the Active Spot.",
+    "count": 1,
+    "left": 1
+   },
+   {
+    "name": "Irida",
+    "kind": "Supporter",
+    "text": "Heal 40 damage from each of your Pokémon that has any Water Energy attached.",
+    "count": 1,
+    "left": 1
+   },
+   {
+    "name": "Pokémon Center Lady",
+    "kind": "Supporter",
+    "text": "Heal 30 damage from 1 of your Pokémon, and it recovers from all Special Conditions.",
+    "count": 1,
+    "left": 1
+   },
+   {
+    "name": "Professor's Research",
+    "kind": "Supporter",
+    "text": "Draw 2 cards.",
+    "count": 2,
+    "left": 0
+   },
+   {
+    "name": "Lucky Ice Pop",
+    "kind": "Item",
+    "text": "Heal 20 damage from your Active Pokémon. If you healed any damage in this way, flip a coin. If heads, put this Lucky Ice Pop into your hand instead of the discard pile.",
+    "count": 2,
+    "left": 1
+   },
+   {
+    "name": "Poké Ball",
+    "kind": "Item",
+    "text": "Put a random Basic Pokémon from your deck into your hand.",
+    "count": 2,
+    "left": 0
+   },
+   {
+    "name": "Heavy Helmet",
+    "kind": "Pokémon Tool",
+    "text": "If the Pokémon this card is attached to has a Retreat Cost of 3 or more, it takes -20 damage from attacks from your opponent's Pokémon.",
+    "count": 2,
+    "left": 1
+   },
+   {
+    "name": "Soothing Shore",
+    "kind": "Stadium",
+    "text": "At the end of each player's turn, that player heals 20 damage from each of their Pokémon that has any Water Energy attached.",
+    "count": 2,
+    "left": 1
+   }
+  ],
+  "energy_types": [
+   "Water"
+  ],
+  "supporter_played_this_turn": true,
+  "retreated_this_turn": false
+ },
+ "opponent": {
+  "active": {
+   "name": "Mega Sceptile ex",
+   "stage": 2,
+   "type": "Grass",
+   "hp": 210,
+   "max_hp": 210,
+   "energy": [
+    "Grass"
+   ],
+   "tools": [],
+   "conditions": [],
+   "ability": null,
+   "attacks": [
+    {
+     "name": "Terminating Tail",
+     "cost": [
+      "Grass",
+      "Grass"
+     ],
+     "damage": "130",
+     "text": "Discard a Grass Energy from this Pokémon. Your opponent's Active Pokémon is now Poisoned."
+    }
+   ],
+   "weakness": "Fire",
+   "retreat": 1,
+   "retreat_now": 1,
+   "retreat_note": null,
+   "ko_points": 3,
+   "notes": []
+  },
+  "bench": [
+   null,
+   {
+    "name": "Metapod",
+    "stage": 1,
+    "type": "Grass",
+    "hp": 110,
+    "max_hp": 110,
+    "energy": [],
+    "tools": [
+     {
+      "name": "Leaf Cape",
+      "text": "The Grass Pokémon this card is attached to gets +30 HP."
+     }
+    ],
+    "conditions": [],
+    "ability": null,
+    "attacks": [
+     {
+      "name": "Ram",
+      "cost": [
+       "Grass"
+      ],
+      "damage": "30",
+      "text": ""
+     }
+    ],
+    "weakness": "Fire",
+    "retreat": 2,
+    "retreat_now": 2,
+    "retreat_note": null,
+    "ko_points": 1,
+    "notes": []
+   },
+   {
+    "name": "Butterfree",
+    "stage": 2,
+    "type": "Grass",
+    "hp": 130,
+    "max_hp": 130,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": null,
+    "attacks": [
+     {
+      "name": "Sunny Wind",
+      "cost": [
+       "Grass"
+      ],
+      "damage": "60",
+      "text": "Heal 20 damage from this Pokémon."
+     }
+    ],
+    "weakness": "Fire",
+    "retreat": 1,
+    "retreat_now": 1,
+    "retreat_note": null,
+    "ko_points": 1,
+    "notes": []
+   }
+  ],
+  "deck_count": 5,
+  "discard": [
+   "Professor's Research",
+   "Quick-Grow Extract",
+   "Copycat",
+   "Quick-Grow Extract"
+  ],
+  "discard_energy": [
+   "Grass"
+  ],
+  "energy_zone": {
+   "next": "Grass",
+   "lines": [
+    "Next: Grass"
+   ]
+  },
+  "hand_count": 1
+ },
+ "stadium": {
+  "name": "Fragrant Forest",
+  "text": "Once during each player's turn, that player may put a random Basic Grass Pokémon from their deck into their hand.",
+  "played_by": "opponent"
+ },
+ "turn_effects": [],
+ "this_turn_so_far": [
+  "You: Played Poké Ball (Item)",
+  "You: Used Indeedee ex's Ability Watch Over (Bench 2) → healed 20 damage from Wailord (Active)",
+  "You: Put Indeedee ex on Bench 1",
+  "You: Used Indeedee ex's Ability Watch Over (Bench 1) → healed 20 damage from Wailord (Active)",
+  "You: Played Professor's Research (Supporter)",
+  "You: Played Lucky Ice Pop (Item) → healed 20 damage from Wailord (Active)",
+  "You: Played Lucky Ice Pop (Item) → healed 20 damage from Wailord (Active)"
+ ],
+ "log": [
+  {
+   "turn": 0,
+   "who": "setup",
+   "header": "Setup",
+   "lines": [
+    "Opponent: started with Treecko (Active)",
+    "You: started with Wailmer (Active)"
+   ]
+  },
+  {
+   "turn": 1,
+   "who": "opponent",
+   "header": "Turn 1 - Opponent",
+   "lines": [
+    "Opponent: Played Fragrant Forest (Stadium)",
+    "Opponent: Played Professor's Research (Supporter)",
+    "Opponent: Used the Stadium Fragrant Forest",
+    "Opponent: Put Caterpie on Bench 3",
+    "Opponent: Ended the turn without attacking"
+   ]
+  },
+  {
+   "turn": 2,
+   "who": "you",
+   "header": "Turn 2 - You",
+   "lines": [
+    "You: Played Professor's Research (Supporter)",
+    "You: Played Poké Ball (Item)",
+    "You: Put Wailmer on Bench 3",
+    "You: Put Indeedee ex on Bench 2",
+    "You: Used Indeedee ex's Ability Watch Over (Bench 2)",
+    "You: Attached Water Energy to Wailmer (Active)",
+    "You: Used the Stadium Fragrant Forest",
+    "You: Ended the turn without attacking"
+   ]
+  },
+  {
+   "turn": 3,
+   "who": "opponent",
+   "header": "Turn 3 - Opponent",
+   "lines": [
+    "Opponent: Played Quick-Grow Extract (Item) → Treecko (Active) evolved into Grovyle (a random card from the deck)",
+    "Opponent: Evolved Caterpie (Bench 3) into Metapod",
+    "Opponent: Attached Grass Energy to Grovyle (Active)",
+    "Opponent: Played Copycat (Supporter)",
+    "Opponent: Used the Stadium Fragrant Forest",
+    "Opponent: Put Caterpie on Bench 2",
+    "Opponent: Played Leaf Cape (Pokémon Tool) → attached Leaf Cape to Caterpie (Bench 2)",
+    "Opponent: Ended the turn without attacking"
+   ]
+  },
+  {
+   "turn": 4,
+   "who": "you",
+   "header": "Turn 4 - You",
+   "lines": [
+    "You: Used Indeedee ex's Ability Watch Over (Bench 2)",
+    "You: Evolved Wailmer (Active) into Wailord",
+    "You: Attached Water Energy to Wailord (Active)",
+    "You: Played Copycat (Supporter)",
+    "You: Evolved Wailmer (Bench 3) into Wailord ex",
+    "You: Used the Stadium Fragrant Forest",
+    "You: Ended the turn without attacking"
+   ]
+  },
+  {
+   "turn": 5,
+   "who": "opponent",
+   "header": "Turn 5 - Opponent",
+   "lines": [
+    "Opponent: Played Quick-Grow Extract (Item) → Grovyle (Active) evolved into Mega Sceptile ex (a random card from the deck)",
+    "Opponent: Evolved Metapod (Bench 3) into Butterfree",
+    "Opponent: Evolved Caterpie (Bench 2) into Metapod",
+    "Opponent: Attached Grass Energy to Mega Sceptile ex (Active)",
+    "Opponent: Mega Sceptile ex attacked with Terminating Tail (130) → did 130 damage to your Wailord (Active); your Wailord (Active) is now Poisoned",
+    "End of turn: Your Wailord (Active) took 10 damage (Poison)"
+   ]
+  }
+ ],
+ "options": [
+  {
+   "key": "6",
+   "group": "Trainers",
+   "text": "Play Heavy Helmet (Pokémon Tool), then choose which of your Pokémon to attach it to: If the Pokémon this card is attached to has a Retreat Cost of 3 or more, it takes -20 damage from attacks from your opponent's Pokémon."
+  },
+  {
+   "key": "7",
+   "group": "Trainers",
+   "text": "Play Soothing Shore (Stadium): At the end of each player's turn, that player heals 20 damage from each of their Pokémon that has any Water Energy attached."
+  },
+  {
+   "key": "1",
+   "group": "Stadium",
+   "text": "Use the Stadium Fragrant Forest: Once during each player's turn, that player may put a random Basic Grass Pokémon from their deck into their hand."
+  },
+  {
+   "key": "2",
+   "group": "Energy",
+   "text": "Attach Water Energy to Wailord (Active)"
+  },
+  {
+   "key": "3",
+   "group": "Energy",
+   "text": "Attach Water Energy to Indeedee ex (Bench 1)"
+  },
+  {
+   "key": "4",
+   "group": "Energy",
+   "text": "Attach Water Energy to Indeedee ex (Bench 2)"
+  },
+  {
+   "key": "5",
+   "group": "Energy",
+   "text": "Attach Water Energy to Wailord ex (Bench 3)"
+  },
+  {
+   "key": "0",
+   "group": "End turn",
+   "text": "End your turn without attacking"
+  }
+ ],
+ "cant_play": []
+}

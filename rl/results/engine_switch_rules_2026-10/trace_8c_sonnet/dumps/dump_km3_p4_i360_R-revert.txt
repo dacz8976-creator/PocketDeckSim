@@ -1,0 +1,26 @@
+deal 360, tick 57: chose Promote { player: 1, in_play_idx: 2 }
+PGTICK 57 (the decision asked about)
+PGCAND Promote { player: 1, in_play_idx: 2 }
+PGCAND Promote { player: 1, in_play_idx: 3 }
+PGDUMP actor=1 candidates=2
+PGDUMP       -514.399999999999977 Promote { player: 1, in_play_idx: 2 }
+PGDUMP       -594.399999999999977 Promote { player: 1, in_play_idx: 3 }
+PGTREE candidate 0
+PGTREE A Promote { player: 1, in_play_idx: 2 } value=-514.400000
+PGTREE   S actor=0 p=1.0000 value=-514.400000 (1 moves)
+PGTREE     A EndTurn value=-514.400000
+PGTREE       S actor=0 p=1.0000 value=-514.400000 (1 moves)
+PGTREE         A ResolveEndTurnEvolution { player: 1 } value=-514.400000
+PGTREE           S actor=0 p=1.0000 value=-514.400000 (1 moves)
+PGTREE             A ResolvePokemonCheckup value=-514.400000
+PGTREE               S actor=1 p=1.0000 value=-514.400000 (1 moves)
+PGTREE                 A DrawCard { amount: 1 } value=-514.400000
+PGTREE candidate 1
+PGTREE A Promote { player: 1, in_play_idx: 3 } value=-594.400000
+PGTREE   S actor=0 p=1.0000 value=-594.400000 (1 moves)
+PGTREE     A EndTurn value=-594.400000
+PGTREE       S actor=1 p=1.0000 value=-594.400000 (1 moves)
+PGTREE         A DrawCard { amount: 1 } value=-594.400000
+PGTREE           S actor=1 p=1.0000 value=-594.400000 (9 moves)
+PGTREE             A Attach { attachments: [(1, Grass, 2)], is_turn_energy: true } value=-594.400000
+PGTREE               S actor=1 p=1.0000 value=-594.400000 (0 moves)

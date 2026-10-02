@@ -1,0 +1,25 @@
+RESULT PASSED main-8626a35: the floor stays usable under km3 on rl/engine-2026-10-02/deckgym. brew-06 fail 125, brew-06b fail 262, the deck 14 k3 control untrusted 196, brew-05b 577, deck 07 1,098 (of 1,920 each), Sept 30's exactly; run_screen gives the floor's wins per opponent; all 16 outputs equal Sept 30's but for the engine lines
+
+PASS brew-06: 'fail', 125 of 1920, pilots km3/km3 (needed: fail, km3 on both sides, 1920 games)
+PASS brew-06: plain run_screen.py per opponent {'t-sceptile': 4, 't-blaziken': 8, 't-hydreigon': 14, 't-altaria': 16, 't-suicune': 16, 't-weezing': 16, 't-lucario': 20, 't-vespiquen': 31} (total 125) v the floor's {'t-sceptile': 4, 't-blaziken': 8, 't-hydreigon': 14, 't-altaria': 16, 't-suicune': 16, 't-weezing': 16, 't-lucario': 20, 't-vespiquen': 31} (total 125)
+PASS brew-06b: 'fail', 262 of 1920, pilots km3/km3 (needed: fail, km3 on both sides, 1920 games)
+PASS brew-06b: plain run_screen.py per opponent {'t-sceptile': 5, 't-blaziken': 16, 't-lucario': 26, 't-suicune': 28, 't-hydreigon': 30, 't-altaria': 51, 't-vespiquen': 53, 't-weezing': 53} (total 262) v the floor's {'t-sceptile': 5, 't-blaziken': 16, 't-lucario': 26, 't-suicune': 28, 't-hydreigon': 30, 't-altaria': 51, 't-vespiquen': 53, 't-weezing': 53} (total 262)
+PASS control deck 14: 'control reading, not a floor verdict (pilots k3 on the deck and k3 on the panel, not km3 on both): untrusted', 196 of 1920 (needed: untrusted, k3 on both sides, 1920 games)
+PASS engine on every page: ['rl/engine-2026-10-02/deckgym'] (needed: rl/engine-2026-10-02/deckgym)
+PASS wins equal Sept 30's exactly: brew-06 125 (Sept 30: 125), brew-06b 262 (Sept 30: 262), control 196 (Sept 30: 196), brew-05b 577 (Sept 30: 577), deck-07 1098 (Sept 30: 1098)
+PASS brew-06-pyukumuku-silvally-payback.md v rl/results/floor_recheck_2026-09-30/brew-06-pyukumuku-silvally-payback.md: equal but for the engine lines
+PASS brew-06-pyukumuku-silvally-payback_coverage.json v rl/results/floor_recheck_2026-09-30/brew-06-pyukumuku-silvally-payback_coverage.json: byte-equal
+PASS brew-06-pyukumuku-silvally-payback_games.jsonl v rl/results/floor_recheck_2026-09-30/brew-06-pyukumuku-silvally-payback_games.jsonl: byte-equal
+PASS brew-06b-pyukumuku-silvally-scyther-grass.md v rl/results/floor_recheck_2026-09-30/brew-06b-pyukumuku-silvally-scyther-grass.md: equal but for the engine lines
+PASS brew-06b-pyukumuku-silvally-scyther-grass_coverage.json v rl/results/floor_recheck_2026-09-30/brew-06b-pyukumuku-silvally-scyther-grass_coverage.json: byte-equal
+PASS brew-06b-pyukumuku-silvally-scyther-grass_games.jsonl v rl/results/floor_recheck_2026-09-30/brew-06b-pyukumuku-silvally-scyther-grass_games.jsonl: byte-equal
+PASS control_k3/14-comfey-raticate-hypno.md v rl/results/floor_recheck_2026-09-30/control_k3/14-comfey-raticate-hypno.md: equal but for the engine lines
+PASS control_k3/14-comfey-raticate-hypno_coverage.json v rl/results/floor_recheck_2026-09-30/control_k3/14-comfey-raticate-hypno_coverage.json: byte-equal
+PASS control_k3/14-comfey-raticate-hypno_games.jsonl v rl/results/floor_recheck_2026-09-30/control_k3/14-comfey-raticate-hypno_games.jsonl: byte-equal
+PASS brew-05b-meowstic-hatterene-comfey.md v rl/results/floor_recheck_2026-09-30/brew-05b-meowstic-hatterene-comfey.md: equal but for the engine lines
+PASS brew-05b-meowstic-hatterene-comfey_coverage.json v rl/results/floor_recheck_2026-09-30/brew-05b-meowstic-hatterene-comfey_coverage.json: byte-equal
+PASS brew-05b-meowstic-hatterene-comfey_games.jsonl v rl/results/floor_recheck_2026-09-30/brew-05b-meowstic-hatterene-comfey_games.jsonl: byte-equal
+PASS 07-skarmory-stall.md v rl/results/floor_recheck_2026-09-30/07-skarmory-stall.md: equal but for the engine lines
+PASS 07-skarmory-stall_coverage.json v rl/results/floor_recheck_2026-09-30/07-skarmory-stall_coverage.json: byte-equal
+PASS 07-skarmory-stall_games.jsonl v rl/results/floor_recheck_2026-09-30/07-skarmory-stall_games.jsonl: byte-equal
+PASS run_screen.txt v rl/results/floor_recheck_2026-09-30/run_screen.txt: equal but for the engine lines

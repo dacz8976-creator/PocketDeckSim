@@ -1,0 +1,315 @@
+{
+ "order": 2,
+ "matchup": {
+  "you": "Suicune"
+ },
+ "turn": 2,
+ "you_went_first": false,
+ "situation": "Your turn (your 1st turn; turn 2 of the game).",
+ "question": "What do you do this turn, in order? Pick the first thing you'd tap, then write the rest of your turn: each card you'd play, where your Energy goes, any retreat, and your attack or end turn. If you'd play a card that draws, stop there and say \"then depends on the draw\".",
+ "points": {
+  "you": 0,
+  "opponent": 0
+ },
+ "you": {
+  "active": {
+   "name": "Suicune ex",
+   "stage": 0,
+   "type": "Water",
+   "hp": 110,
+   "max_hp": 140,
+   "energy": [],
+   "tools": [],
+   "conditions": [
+    "Its attacks do 30 less damage (until the end of this turn)"
+   ],
+   "ability": {
+    "name": "Legendary Pulse",
+    "text": "At the end of your turn, if this Pokémon is in the Active Spot, draw a card.",
+    "used_this_turn": false
+   },
+   "attacks": [
+    {
+     "name": "Crystal Waltz",
+     "cost": [
+      "Water",
+      "Water"
+     ],
+     "damage": "20×",
+     "text": "This attack does 20 damage for each Benched Pokémon (both yours and your opponent's)."
+    }
+   ],
+   "weakness": "Lightning",
+   "retreat": 2,
+   "retreat_now": 2,
+   "retreat_note": null,
+   "ko_points": 2,
+   "notes": []
+  },
+  "bench": [
+   null,
+   null,
+   null
+  ],
+  "deck_count": 14,
+  "discard": [],
+  "discard_energy": [],
+  "energy_zone": {
+   "this_turn": "Water",
+   "next": "Water",
+   "lines": [
+    "This turn: Water",
+    "Next: Water"
+   ]
+  },
+  "hand": [
+   {
+    "name": "Baxcalibur",
+    "kind": "Stage 2 Pokémon",
+    "text": "Stage 2 Pokémon, HP 140, Water type, evolves from Arctibax. Ability Ice Maker: Once during your turn, you may take a Water Energy from your Energy Zone and attach it to the Water Pokémon in the Active Spot. Attack Buster Tail [Water Water Water] 90. Weakness: Metal. Retreat: 3."
+   },
+   {
+    "name": "Baxcalibur",
+    "kind": "Stage 2 Pokémon",
+    "text": "Stage 2 Pokémon, HP 140, Water type, evolves from Arctibax. Ability Ice Maker: Once during your turn, you may take a Water Energy from your Energy Zone and attach it to the Water Pokémon in the Active Spot. Attack Buster Tail [Water Water Water] 90. Weakness: Metal. Retreat: 3."
+   },
+   {
+    "name": "Pokémon Center Lady",
+    "kind": "Supporter",
+    "text": "Heal 30 damage from 1 of your Pokémon, and it recovers from all Special Conditions."
+   },
+   {
+    "name": "Team Rocket's Boss",
+    "kind": "Supporter",
+    "text": "Look at your opponent's hand and put any number of Basic Pokémon you find there onto your opponent's Bench."
+   },
+   {
+    "name": "Field Blower",
+    "kind": "Item",
+    "text": "Discard a Pokémon Tool card from a Pokémon (yours or your opponent's), or discard a Stadium card in play."
+   }
+  ],
+  "decklist": [
+   {
+    "name": "Chien-Pao ex",
+    "kind": "Basic Pokémon",
+    "text": "Basic Pokémon, HP 130, Water type. Gives 2 points when Knocked Out. Attack Icicle [Water] 20. Attack Diving Icicles [Water Water Water]: Discard all Water Energy from this Pokémon. This attack does 130 damage to 1 of your opponent's Pokémon. Weakness: Metal. Retreat: 1.",
+    "count": 1,
+    "left": 1
+   },
+   {
+    "name": "Frigibax (Chilly)",
+    "kind": "Basic Pokémon",
+    "text": "Basic Pokémon, HP 60, Water type. Attack Chilly [Water] 20. Weakness: Metal. Retreat: 1.",
+    "count": 1,
+    "left": 1
+   },
+   {
+    "name": "Frigibax (Stiffen)",
+    "kind": "Basic Pokémon",
+    "text": "Basic Pokémon, HP 60, Water type. Attack Stiffen [Water]: During your opponent's next turn, this Pokémon takes -20 damage from attacks. Weakness: Metal. Retreat: 1.",
+    "count": 1,
+    "left": 1
+   },
+   {
+    "name": "Suicune ex",
+    "kind": "Basic Pokémon",
+    "text": "Basic Pokémon, HP 140, Water type. Gives 2 points when Knocked Out. Ability Legendary Pulse: At the end of your turn, if this Pokémon is in the Active Spot, draw a card. Attack Crystal Waltz [Water Water] 20×: This attack does 20 damage for each Benched Pokémon (both yours and your opponent's). Weakness: Lightning. Retreat: 2.",
+    "count": 2,
+    "left": 1
+   },
+   {
+    "name": "Baxcalibur",
+    "kind": "Stage 2 Pokémon",
+    "text": "Stage 2 Pokémon, HP 140, Water type, evolves from Arctibax. Ability Ice Maker: Once during your turn, you may take a Water Energy from your Energy Zone and attach it to the Water Pokémon in the Active Spot. Attack Buster Tail [Water Water Water] 90. Weakness: Metal. Retreat: 3.",
+    "count": 2,
+    "left": 0
+   },
+   {
+    "name": "Copycat",
+    "kind": "Supporter",
+    "text": "Shuffle your hand into your deck. Draw a card for each card in your opponent's hand.",
+    "count": 1,
+    "left": 1
+   },
+   {
+    "name": "Pokémon Center Lady",
+    "kind": "Supporter",
+    "text": "Heal 30 damage from 1 of your Pokémon, and it recovers from all Special Conditions.",
+    "count": 1,
+    "left": 0
+   },
+   {
+    "name": "Professor's Research",
+    "kind": "Supporter",
+    "text": "Draw 2 cards.",
+    "count": 2,
+    "left": 2
+   },
+   {
+    "name": "Team Rocket's Boss",
+    "kind": "Supporter",
+    "text": "Look at your opponent's hand and put any number of Basic Pokémon you find there onto your opponent's Bench.",
+    "count": 1,
+    "left": 0
+   },
+   {
+    "name": "Field Blower",
+    "kind": "Item",
+    "text": "Discard a Pokémon Tool card from a Pokémon (yours or your opponent's), or discard a Stadium card in play.",
+    "count": 1,
+    "left": 0
+   },
+   {
+    "name": "Poké Ball",
+    "kind": "Item",
+    "text": "Put a random Basic Pokémon from your deck into your hand.",
+    "count": 2,
+    "left": 2
+   },
+   {
+    "name": "Rare Candy",
+    "kind": "Item",
+    "text": "Choose 1 of your Basic Pokémon in play. If you have a Stage 2 card in your hand that evolves from that Pokémon, put that card onto the Basic Pokémon to evolve it, skipping the Stage 1. You can't use this card during your first turn or on a Basic Pokémon that was put into play this turn.",
+    "count": 2,
+    "left": 2
+   },
+   {
+    "name": "Giant Cape",
+    "kind": "Pokémon Tool",
+    "text": "The Pokémon this card is attached to gets +20 HP.",
+    "count": 1,
+    "left": 1
+   },
+   {
+    "name": "Inflatable Boat",
+    "kind": "Pokémon Tool",
+    "text": "The Retreat Cost of the Water Pokémon this card is attached to is 1 less.",
+    "count": 1,
+    "left": 1
+   },
+   {
+    "name": "Soothing Shore",
+    "kind": "Stadium",
+    "text": "At the end of each player's turn, that player heals 20 damage from each of their Pokémon that has any Water Energy attached.",
+    "count": 1,
+    "left": 1
+   }
+  ],
+  "energy_types": [
+   "Water"
+  ],
+  "supporter_played_this_turn": false,
+  "retreated_this_turn": false
+ },
+ "opponent": {
+  "active": {
+   "name": "Bonsly",
+   "stage": 0,
+   "type": "Fighting",
+   "hp": 30,
+   "max_hp": 30,
+   "energy": [],
+   "tools": [
+    {
+     "name": "Protective Poncho",
+     "text": "As long as the Pokémon this card is attached to is on your Bench, prevent all damage done to that Pokémon by your opponent's attacks and Abilities."
+    }
+   ],
+   "conditions": [],
+   "ability": null,
+   "attacks": [
+    {
+     "name": "Teary Attack",
+     "cost": [],
+     "damage": "10",
+     "text": "During your opponent's next turn, attacks used by the Defending Pokémon do -30 damage."
+    }
+   ],
+   "weakness": null,
+   "retreat": 0,
+   "retreat_now": 0,
+   "retreat_note": null,
+   "ko_points": 1,
+   "notes": []
+  },
+  "bench": [
+   null,
+   null,
+   null
+  ],
+  "deck_count": 11,
+  "discard": [
+   "Professor's Research",
+   "Poké Ball"
+  ],
+  "discard_energy": [],
+  "energy_zone": {
+   "next": "Fighting",
+   "lines": [
+    "Next: Fighting"
+   ]
+  },
+  "hand_count": 4
+ },
+ "stadium": {
+  "name": "Arena of Antiquity",
+  "text": "Attacks used by each Fighting Pokémon in play (both yours and your opponent's) do +20 damage to the opponent's Active Pokémon ex.",
+  "played_by": "opponent"
+ },
+ "turn_effects": [],
+ "this_turn_so_far": [],
+ "log": [
+  {
+   "turn": 0,
+   "who": "setup",
+   "header": "Setup",
+   "lines": [
+    "Opponent: started with Bonsly (Active)",
+    "You: started with Suicune ex (Active)"
+   ]
+  },
+  {
+   "turn": 1,
+   "who": "opponent",
+   "header": "Turn 1 - Opponent",
+   "lines": [
+    "Opponent: Played Professor's Research (Supporter)",
+    "Opponent: Played Poké Ball (Item)",
+    "Opponent: Played Arena of Antiquity (Stadium)",
+    "Opponent: Played Protective Poncho (Pokémon Tool) → attached Protective Poncho to Bonsly (Active)",
+    "Opponent: Bonsly attacked with Teary Attack (10) → did 30 damage to your Suicune ex (Active)"
+   ]
+  }
+ ],
+ "options": [
+  {
+   "key": "2",
+   "group": "Trainers",
+   "text": "Play Pokémon Center Lady (Supporter): Heal 30 damage from 1 of your Pokémon, and it recovers from all Special Conditions."
+  },
+  {
+   "key": "4",
+   "group": "Trainers",
+   "text": "Play Team Rocket's Boss (Supporter): Look at your opponent's hand and put any number of Basic Pokémon you find there onto your opponent's Bench."
+  },
+  {
+   "key": "3",
+   "group": "Trainers",
+   "text": "Play Field Blower (Item): Discard a Pokémon Tool card from a Pokémon (yours or your opponent's), or discard a Stadium card in play."
+  },
+  {
+   "key": "1",
+   "group": "Energy",
+   "text": "Attach Water Energy to Suicune ex (Active)"
+  },
+  {
+   "key": "0",
+   "group": "End turn",
+   "text": "End your turn without attacking"
+  }
+ ],
+ "cant_play": [
+  "Baxcalibur (x2): no Arctibax in play"
+ ]
+}

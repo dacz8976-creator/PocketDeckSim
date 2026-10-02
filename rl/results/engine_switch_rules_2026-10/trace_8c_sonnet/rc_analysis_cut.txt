@@ -1,0 +1,25 @@
+games with a finite-cut Pokemon in a deck: 323
+finite-cut Pokemon on the board at the first differing tick: Counter({'yes': 323})
+
+== finite on board = yes: 323 games
+   queued_only_ok: Counter({'yes': 323})
+   cut_only_ok: Counter({'no': 323})
+   full_ok: Counter({'yes': 323})
+
+== finite on board = no: 0 games
+   queued_only_ok: Counter()
+   cut_only_ok: Counter()
+   full_ok: Counter()
+
+== finite on board = all: 323 games
+   queued_only_ok: Counter({'yes': 323})
+   cut_only_ok: Counter({'no': 323})
+   full_ok: Counter({'yes': 323})
+
+by verdict (all): [(('LOOKAHEAD ONLY, both halves hold', 'yes', 'no', 'yes'), 315), (('ON THE BOARD', 'yes', 'no', 'yes'), 7), (('UNEXPLAINED', 'yes', 'no', 'yes'), 1)]
+
+games where the cut-only revert reproduces old (alone): []
+games where queued-only fails but full reproduces (the cut order matters): []
+games where full fails: []
+
+by (bot, pairing): [(('k3', 17), 9), (('k3', 19), 8), (('k3', 20), 6), (('k3', 21), 10), (('k3', 22), 98), (('km3', 17), 11), (('km3', 19), 6), (('km3', 20), 3), (('km3', 21), 18), (('km3', 22), 154)]

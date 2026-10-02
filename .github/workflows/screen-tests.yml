@@ -1,0 +1,80 @@
+name: screen-tests
+
+# The quick screen's two tests, run on every change to the screen, the floor, their tests, the weights table, the lists it names
+# or the players file the floor test reads. No game, no engine, no build:
+#   test_run_screen_weights.py   run_screen.py --weights: the weighted readout is off by default and, when off, the output and the
+#                                 engine calls are exactly what they were; the script runs in a scratch tree with a stand-in
+#                                 engine, so no game is played (decks/screen)
+#   test_floor_pricing_pilot.py  floor.py's pricing-pilot pattern against engine/src/players/mod.rs, and the screen and the floor
+#                                 naming the same default pilot (km3 since Sept 30) (decks/screen)
+# The first skips its stand-in-engine tests on anything but Linux, and a run that ran nothing, or skipped tests, would prove
+# nothing. Each step therefore fails unless unittest reports at least one test and no skipped ones.
+
+on:
+  pull_request:
+    paths:
+      - 'decks/screen/**'
+      - 'decks/gauntlet_2026-09-26/g-dragonair_mega_rayquaza.txt'
+      - 'rl/results/b2e_card_check_2026-09-26/decks/h-charizardy_entei.txt'
+      - 'engine/src/players/mod.rs'
+      - 'current_engine.py'
+      - '.github/workflows/screen-tests.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'decks/screen/**'
+      - 'decks/gauntlet_2026-09-26/g-dragonair_mega_rayquaza.txt'
+      - 'rl/results/b2e_card_check_2026-09-26/decks/h-charizardy_entei.txt'
+      - 'engine/src/players/mod.rs'
+      - 'current_engine.py'
+      - '.github/workflows/screen-tests.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  screen-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.14'
+
+      - name: test_run_screen_weights
+        shell: bash
+        working-directory: decks/screen
+        run: |
+          log="$RUNNER_TEMP/test_run_screen_weights.log"
+          python3 --version
+          # -eo pipefail (from shell: bash) makes a failing test fail the step even though the output goes through tee
+          python3 -B -m unittest -v test_run_screen_weights 2>&1 | tee "$log"
+          ran=$(sed -n 's/^Ran \([0-9][0-9]*\) tests\{0,1\} in .*/\1/p' "$log" | tail -n 1)
+          if [ -z "$ran" ] || [ "$ran" -eq 0 ]; then
+            echo "::error::unittest reported no tests, so nothing was checked"
+            exit 1
+          fi
+          if grep -Eq '^(OK|FAILED) \(.*skipped=' "$log" || grep -Eq ' \.\.\. skipped ' "$log"; then
+            echo "::error::some tests were skipped (the stand-in-engine tests skip themselves on anything but Linux), so they did not check anything"
+            exit 1
+          fi
+          echo "test_run_screen_weights: ran $ran tests, none skipped." >> "$GITHUB_STEP_SUMMARY"
+
+      - name: test_floor_pricing_pilot
+        shell: bash
+        working-directory: decks/screen
+        run: |
+          log="$RUNNER_TEMP/test_floor_pricing_pilot.log"
+          python3 -B test_floor_pricing_pilot.py 2>&1 | tee "$log"
+          ran=$(sed -n 's/^Ran \([0-9][0-9]*\) tests\{0,1\} in .*/\1/p' "$log" | tail -n 1)
+          if [ -z "$ran" ] || [ "$ran" -eq 0 ]; then
+            echo "::error::unittest reported no tests, so nothing was checked"
+            exit 1
+          fi
+          if grep -Eq '^(OK|FAILED) \(.*skipped=' "$log" || grep -Eq ' \.\.\. skipped ' "$log"; then
+            echo "::error::some tests were skipped, so they did not check anything"
+            exit 1
+          fi
+          echo "test_floor_pricing_pilot: ran $ran tests, none skipped." >> "$GITHUB_STEP_SUMMARY"

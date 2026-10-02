@@ -1,0 +1,20 @@
+8C PASS afeb9c183965fbe488f51fdc4216fe4fb530e1d6 rule verdicts: unexplained 7, judgment 1; all 8 accepted by Dustin Oct 1-2 as documented exceptions explained by A/B (8c_DECISION.md; UNEXPLAINED_ANALYSIS.md, REVERT_CHECK.md; cloud trace_8c_cloud abb49cf agrees); net unaccounted 0; changed 3813 accounted 3813; condition3 297 traced 297; 8b_rows_vs_cloud equal
+
+The result of PLAN.md step 8c, the rules switch's pin gate (read by pin/pin_rules.sh; the line above, worded as the
+coordinator required on Oct 2).
+- Sonnet's traces of every changed game of steps 8 and 8b. The branch is sonnet/trace-8c: 37b49dd, then 2e581c1 and
+  afeb9c1. Its files are on main in trace_8c_sonnet/ (verdicts.tsv, condition3.tsv, judgment.md, UNEXPLAINED.md,
+  UNEXPLAINED_ANALYSIS.md, REVERT_CHECK.md).
+  - Tally: on the board 2,414; lookahead, both halves 1,391; needs a judgment 1; unexplained 7.
+  - 0 golden mismatches, 0 negative-control failures, 0 fingerprint problems.
+- The 8 the rule could not settle, accepted by Dustin on Oct 2 ("Accept all 8 and pin (Recommended)"; 8c_DECISION.md):
+  - 2 prefix games are repair A on the board: a Victory Star offer with its exact counters at the extra tick.
+  - 6 games are repair B in lookahead: its queued coin frame, resolved free at ply 3 inside the search.
+    8c_FIVE_LOOKAHEAD_opus.md has the code read. The revert check reproduces the old choice and scores in all 6, and in
+    1,395 of 1,395 coin-Ability lookahead games.
+- CONDITION 3: 297 rows, 296 lookahead with both halves plus 1 among the accepted 8.
+- 8b: the 63 rows agree with the cloud's 3a107f4 row for row.
+- The cloud's independent 8c (claude/pensive-ptolemy-spwc0b abb49cf, trace_8c_cloud/) agrees game for game.
+- Audited by the Fable coordinator session (8c_DECISION.md, its audit lines).
+- Victory Star smoke game 28 remains the switch's one other documented judgment exception. Dustin's words (README):
+  its Copycat explanation is supported by a possible sampled path, not a replay of the bot's exact original search.

@@ -1,0 +1,28 @@
+deal 310, tick 87: chose Promote { player: 1, in_play_idx: 3 }
+PGTICK 87 (the decision asked about)
+PGCAND Promote { player: 1, in_play_idx: 2 }
+PGCAND Promote { player: 1, in_play_idx: 3 }
+PGGATE queued coin-target frame: mover 1 target (owner 0, slot 0) attack "Diving Icicles" depth_left=0
+PGGATE queued coin-target frame: mover 1 target (owner 0, slot 1) attack "Diving Icicles" depth_left=0
+PGDUMP actor=1 candidates=2
+PGDUMP      10557.399999999999636 Promote { player: 1, in_play_idx: 2 }
+PGDUMP     100000.000000000000000 Promote { player: 1, in_play_idx: 3 }
+PGTREE candidate 0
+PGTREE A Promote { player: 1, in_play_idx: 2 } value=10557.400000
+PGTREE   S actor=0 p=1.0000 value=10557.400000 (1 moves)
+PGTREE     A EndTurn value=10557.400000
+PGTREE       S actor=1 p=1.0000 value=10557.400000 (1 moves)
+PGTREE         A DrawCard { amount: 1 } value=10557.400000
+PGTREE           S actor=1 p=1.0000 value=10557.400000 (7 moves)
+PGTREE             A Attach { attachments: [(1, Water, 0)], is_turn_energy: true } value=10557.400000
+PGTREE               S actor=1 p=1.0000 value=10557.400000 (0 moves)
+PGTREE candidate 1
+PGTREE A Promote { player: 1, in_play_idx: 3 } value=100000.000000
+PGTREE   S actor=0 p=1.0000 value=100000.000000 (1 moves)
+PGTREE     A EndTurn value=100000.000000
+PGTREE       S actor=1 p=1.0000 value=100000.000000 (1 moves)
+PGTREE         A DrawCard { amount: 1 } value=100000.000000
+PGTREE           S actor=1 p=1.0000 value=100000.000000 (10 moves)
+PGTREE             A Attack(Attack { energy_required: [Water, Water, Water], title: "Diving Icicles", fixed_damage: 0, effect: Some("Discard all [W] Energy from this Pokémon. This attack does 130 damage to 1 of your opponent's Pokémon.") }) value=100000.000000
+PGTREE               S actor=1 p=1.0000 value=100000.000000 (2 moves)
+PGTREE                 A ApplyQueuedAttackDamage { attack: Attack { energy_required: [Water, Water, Water], title: "Diving Icicles", fixed_damage: 0, effect: Some("Discard all [W] Energy from this Pokémon. This attack does 130 damage to 1 of your opponent's Pokémon.") }, targets: [(130, true, 0)] } value=100000.000000

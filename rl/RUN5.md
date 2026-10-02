@@ -332,10 +332,10 @@ hash; `deckgym simulate` k3,k3 on seed 7100 identical to rules4; the kp3 smoke t
 sides with k3 still available; the 0.7.2 wheel and its run identities are untouched.
 
 **Where things stand** (status; updated with each reading. START_HERE carries none since Sept 28)
-- **Official engine:** `rl/engine-2026-09-30/`, main-d363ba8 (pinned Sept 30; a players-only switch: the Sept 28 rules unchanged, rules4 + the ten rules/09 repairs, with the kog-based kta and km players from B, 1f6319e). kta3 and km3 replay their recorded games game for game, and k3, kp3 and kog3 the Sept 28 references (`results/engine_switch_2026-09-30/`). kt3, ktb3 and ktc3 are now kog-based: diagnostic, no identity claim. The Sept 28 engine (`rl/engine-2026-09-28/`, main-9b4df9b) is kept; its kp-based kt presets replay the Sept 26-28 kt records.
+- **Official engine:** `rl/engine-2026-10-02/`, main-8626a35 (pinned Oct 2; a rules switch: the Sept 30 engine plus Victory Star after a Confusion heads (A), coin-flip damage prevention with Chase Order (B), kd's follow-ons and F1-F7; `engine/src/players/` unchanged). kta3, km3, k3, kp3 and kog3 (and kq3, kpr3 and kd3) replay their recorded games game for game, k3 and kp3 on all 45 cells, and every changed carrier game is accounted for (`results/engine_switch_rules_2026-10/`). kt3, ktb3 and ktc3 are kog-based: diagnostic, no identity claim. The Sept 30 engine (`rl/engine-2026-09-30/`, main-d363ba8) and the Sept 28 engine (`rl/engine-2026-09-28/`, main-9b4df9b) are kept; the Sept 28 one's kp-based kt presets replay the Sept 26-28 kt records.
 - **Pilot:** km3 = kta3 + N2 (the Stadium damage bonus in the clock); kta3 = kog3 + switch 1 (the Tool cut); kog3 = kp3 + koa's opening switch A + kpg's discard-Energy credit F.
   - km3 was adopted in the tables Sept 30 (`results/km_tables_2026-09-30/READING.md`), after kta3 (Sept 30, `results/kta_tables_2026-09-29/READING.md`) and kog3 (Sept 28, `results/kog_composition_2026-09-27/READING.md`). Each is "unconfirmed" until the post-freeze read; if that read drops km, the default goes back to kta3.
-  - The screen and the floor use km3 on both sides since the Sept 30 engine switch. The floor's pre-use re-check under km3 is `results/floor_recheck_2026-09-30/` (planned and committed with the pin; if it fails, the floor isn't used until Dustin has seen the pages). The Sept 28 one, under kog3: `results/floor_recheck_2026-09-28/`.
+  - The screen and the floor use km3 on both sides since the Sept 30 engine switch. The floor's pre-use re-check under km3 is `results/floor_recheck_2026-10/` (planned and committed with the Oct 1 pin; if it fails, the floor isn't used until Dustin has seen the pages). Sept 30's: `results/floor_recheck_2026-09-30/`; the Sept 28 one, under kog3: `results/floor_recheck_2026-09-28/`.
   - k3 stays the reproduction reference.
 - **The yardstick:** scoreboard v3, 45 cells (`results/scoreboard_v3_2026-09-27/`). Development real error: k3 15.3, kp3 15.5, kog3 14.0; the target is 5.5. Every 45-cell reading prints the by-event interval beside the match-level one.
 - **Candidates:**
@@ -401,6 +401,52 @@ sides with k3 still available; the 0.7.2 wheel and its run identities are untouc
         - brew-06 reads "fail" (125 of 1,920) and brew-06b "fail" (262), km3 on both sides, and plain `run_screen.py` gives the floor's wins per opponent exactly.
         - The deck 14 k3 control reads "untrusted" (196), repeating Sept 28's games.
         - Reported beside: brew-05b clears (577; 584 under kog3); **deck 07 (Skarmory) clears at 1,098 of 1,920 (57.2%), against 903 under kog3**, the Tool/Jasmine fix acting on Dustin's deck.
+    - **The next engine switch, the rules one** (`results/engine_switch_rules_2026-10/PLAN.md`, 0a68b0a): it carries the cloud's Victory Star / Confusion repair (A) and its coin-flip damage prevention + Chase Order repair (B), plus kd's follow-ons and the fixes F1-F7. It follows the full rules procedure, in two laptop sittings.
+      - Dustin, Sept 30 evening, via the Fable coordinator session, answering the plan's questions 1-6 and 8-10 (put to him as nine items, each with the plan's recommendation; verbatim): "Sure go for all 9".
+      - So, as recommended:
+        1. a conditional go, "pin if all pass", where every changed carrier or scratch game must be explained by an exact counter or by a trace meeting both halves, and a judgment-call trace comes to him;
+        2. the scope is A + B + kd's follow-ons + F1-F7, with 09e964f, PR #383 and B4b data left out;
+        3. the per-thread heads-cut value is kept;
+        4. real carrier lists, extracted by the cloud from the committed Limitless archive;
+        5. km3's coverage baselines are replayed as a gate;
+        6. kd3's identity is a gate;
+        8. overnight laptop runs on Oct 1 and Oct 2 nights, pushed by 7:00 am Central with main = origin/main;
+        9. if A fails its mechanic check, A is held and B + kd ship if B passes;
+        10. 09e964f's fix 2 is recorded as not taken (it contradicts the JP ruling the fork follows, `rules/06_sources.md:124`, and would break `rules_repair_retaliation_timing.rs:136`), and fix 1 stays "unchecked" until F8 or a second reader settles it. F8 has (the cloud, Oct 1; `results/engine_switch_rules_2026-10/f8/F8.md` at 5a929c0 on `claude/pensive-ptolemy-spwc0b`): **covered**, the fork already handles fix 1's case.
+      - Question 7 (the order against N1) was the coordinator's operational decision: Sonnet does F1-F7 tonight on sonnet/rules-fixes, cut from cae37a3 with no `players/` change; R is its head; the cloud stays on N1.
+      - **Sitting 1 passed** (steps 4-7c, the night of Sept 30, record b55aad4):
+        - candidate 5a18d31 (main c9f4224 + R f8cfa9c);
+        - 151,240 identity games equal;
+        - the table's counters right;
+        - Dustin's floor pages equal.
+      - **Sitting 2 passed** (steps 8-10, Oct 1 evening, record 78e51e8):
+        - 8b and 8 played, with every all-zero-counter game identical. Of 24,000 carrier deals, 3,750 changed, and all are handed to 8c.
+        - km3's coverage baselines (66,500) equal.
+        - CLI, goldfish and the screen equal.
+        - Details: `results/engine_switch_rules_2026-10/README.md`.
+      - **Condition 3** (PLAN.md:95): it reads "no exact counter on the board and no trace meeting both halves". That is the coordinator's wording (Oct 1), consistent with his Q1 answer.
+      - **Dustin's word on Victory Star smoke game 28 and the pin** (Oct 1 evening, in the Fable coordinator session, relayed; verbatim): "Accept Victory Star smoke game 28 as the specific documented judgment exception. State clearly that the Copycat explanation is supported by a possible sampled path, not a replay of the bot's exact original search. My conditional approval stands: pin the existing candidate once all remaining required trace checks pass. Account for every changed game, including all 297 flagged cases. This exception does not waive unexplained carrier games. Complete the planned checks after the pin. Bring me any new failure or judgment call; otherwise proceed."
+        - So game 28 is the one documented judgment exception. Its Copycat explanation is a possible sampled path, not a replay of the bot's exact original search.
+        - The pin goes ahead without a further word from him once 8c passes:
+          - 0 unexplained;
+          - no new judgment call;
+          - every changed game accounted for;
+          - the 296 + 1 CONDITION 3 games each with a trace meeting both halves;
+          - the 63 8b rows agreeing with the cloud's.
+        - The coordinator audits 8c before the pin. Steps 11-14 follow, then the floor re-check (15). Any new failure or judgment call stops and goes to him.
+      - **8c and his acceptance of 8 games** (`results/engine_switch_rules_2026-10/8c_RESULT.txt`, `8c_DECISION.md`). Of the 3,813 changed games, Sonnet's traces put 2,414 on the board and 1,391 in lookahead with both halves; the CONDITION 3 rows were 297. The rule could not settle 8:
+        - **2 prefix games:** a Victory Star offer with its exact counters at the extra tick.
+        - **6 games** (5 promotions and i106): B's queued coin frame, resolved free at ply 3 inside the search, which the probe didn't count. Reverting just that one change brings back the old choice and scores. Sonnet's revert check over all 1,395 coin-Ability lookahead games had 0 failures (`8c_FIVE_LOOKAHEAD_opus.md`, `trace_8c_sonnet/`).
+        - **Dustin, Oct 2 (about 1:30 am Central), in the laptop session; verbatim, his chosen answer:** "Accept all 8 and pin (Recommended)". The question put to him was whether to accept the 8 as explained and pin tonight.
+      - **Pinned Oct 2** (early morning Central; `results/engine_switch_rules_2026-10/README.md`, "The pin"): 8c passed on his conditions and his acceptance of the 8, with game 28 the one documented exception. The official engine is main-8626a35 in `rl/engine-2026-10-02/`: the programs sitting 1 built from 5a18d31 and tested, never rebuilt. The repairs, kd's follow-ons included, act only with a Victini or a coin-Ability Pokémon in play, and every replay without one was identical (steps 7-10); the screen and the floor stay on km3. What the switch left open is `rules/09`'s open entry, for the next rules switch. The floor's pre-use re-check under km3 (PLAN step 15) follows (`results/floor_recheck_2026-10/PLAN.md`).
+      - **The floor's pre-use re-check passed** (Oct 2, 07:36 UTC; `results/floor_recheck_2026-10/verdicts.txt`). The floor stays usable under km3 on the new engine.
+        - brew-06 fail 125, brew-06b fail 262, the deck 14 k3 control untrusted 196, brew-05b 577, deck 07 1,098: Sept 30's exactly.
+        - All 16 outputs are equal to Sept 30's but for the engine lines.
+    - **Dustin's rule on card text** (Oct 1, in the laptop session; verbatim):
+      - "I don't know why you have such a hard time with understanding the rules. The first coin of the next coin flip for an Attack, Ability, or Trainer will definitely be heads. Not a status effect. Same thing with meowth, why would gyarados's attack bypass it magically with discarding water Pokemon?"
+      - Then: "I don't mind getting video for proof, but if there is a plain reading of the text, the engine build should go with that, unless there is contradicting evidence. Not the other way around".
+      - So the engine follows the plain reading of a card's text by default, and only contradicting evidence overturns it. A case is never kept on the old path "until seen in the game".
+      - The rules switch's two gated Victory Star cases go to the next rules switch on the plain reading. They are CoinFlipToBlockAttack, and Confusion with a pending Will. The four bugs from the Oct 1 recordings go there too (`results/rules_recordings_2026-10-01/READOUT.md`).
     - **The tables' go-ahead** (block item 9; Amendment 1 (g) step 5). Dustin, Sept 30 about 02:20 UTC, in the laptop session, after 3aed736 was pushed (verbatim): "The cloud has the message go ahead on the tables". The tables start in the laptop's queue as soon as the preparation has passed: the cloud's round at B committed as passed, the laptop's identity games and timing pair, the threshold sample, the independent check and the thresholds amendment, in (g)'s order. A stop in any of them holds the tables and goes to him.
       - **His confirmation of that reading** (Sept 30, after km's reading, given in the Fable coordinator session "Work delegation and task routing" and relayed to the laptop session; verbatim): "Yes, go ahead on the tables meant once preparation passes". This closes the outcome audit's N7 (`results/km_tables_2026-09-30/second_reader/OUTCOME_AUDIT.md`).
   - kph is not run (superseded by koh on the composed base).
@@ -413,7 +459,7 @@ sides with k3 still available; the 0.7.2 wheel and its run identities are untouc
   - The gauntlet: the 45 cells and the variation check (`results/gauntlet_runs_2026-09-26/`).
   - The blind quizzes 1 and 2 (`results/blind_quiz_2026-09-25/`, `results/blind_quiz2_2026-09-27/`).
   - The recordings and frame checks (`results/recordings_check_2026-09-25/`).
-  - The engine switches of Sept 25, 27, 28 and 30.
+  - The engine switches of Sept 25, 27, 28 and 30, and the rules switch of Oct 1.
   - The Hydreigon and Altaria detector networks; B2c and B2e; the X Speed census; the brew pilot checks.
 
 **Order of work.**
@@ -442,7 +488,7 @@ sides with k3 still available; the 0.7.2 wheel and its run identities are untouc
    Payback lists must come out "fail", not "untrusted"; A3 per-game calibration from the Ladder Log; A4 one brew to 15 to 20 ladder games with a
    stop-loss; A5 B4b as a data refresh (B4b is reprint-only: its five "new" cards are new-art reprints, and the one new card
    in the window is Mega Garchomp ex, an October promo, `results/b4b_prep_2026-09-26/`; Dustin, Sept 28: B4b waits up to
-   three days for upstream) with bit-for-bit reproduction of the k3, kp3 and kog3 tables (14,000 games each) and of kta3's and km3's recorded games (the Sept 30 switch's references) on the pinned engine `rl/engine-2026-09-30/` plus a card-effect pass, Mega Garchomp ex as its own small refresh when its text is published, and an
+   three days for upstream) with bit-for-bit reproduction of the k3, kp3 and kog3 tables (14,000 games each) and of kta3's and km3's recorded games (the Sept 30 switch's references) on the pinned engine `rl/engine-2026-10-02/` plus a card-effect pass, Mega Garchomp ex as its own small refresh when its text is published, and an
    upstream code-merge trial in the cloud before C1.
    - **Dustin, Sept 28 about 7:30 pm Central** (typed in the Fable session, relayed verbatim; recorded the same day):
      - **A4, which brew:** "Play the one you'll enjoy twenty games of — that's the only rule that matters, and the log's spread problem came from switching. But if it's a coin flip between 07 and 08, 08 is the better evidence ... it's an unchanged real Limitless list, so it's the first deck you'd play that has both a screen number and a real cell." Also: "the A1 prediction — 07 and 08 fastest to set up, 10 slowest — gets its first real test from whichever you play, so note setup speed when you log." The brew pages in `results/floor_brews_2026-09-28/` say what to note.
@@ -465,7 +511,7 @@ sides with k3 still available; the 0.7.2 wheel and its run identities are untouc
          - The one new card is P-B 099 Mega Garchomp ex, as this line said.
          - So, by Dustin's rule, the meta doesn't shift, the post-Sept-24 confirmation window stays open, and nothing about the size rule changes. No decision is needed.
          - The two later checks were cancelled.
-         - The same upstream range also brings 09e964f, which fixes two knockout-promotion bugs the fork also has. `rules/09` lists them for the next merge.
+         - The same upstream range also brings 09e964f, which fixes two knockout-promotion bugs. Fix 2 is not taken (Dustin, Sept 30: it contradicts the JP ruling the fork follows). Fix 1's case is already covered in the fork (F8, Oct 1), so there is nothing to port; F8 did not audit every path. `rules/09` records both.
        - **To do when the list lands**: check each B4b card against `lib/card.py` (a reprint is the same name and text as an earlier printing) and record the answer here.
        - If it isn't reprint-only, nothing is decided here. The consequence goes to Dustin as a decision, with the numbers from `results/postfreeze_2026-09-27/`.
      - **The B4b release-note defaults** (decided under his delegation by the Fable session and the fourth session, Sept 28):
@@ -483,6 +529,11 @@ sides with k3 still available; the 0.7.2 wheel and its run identities are untouc
      - **Where work runs (Dustin, Sept 30, in the "Second brain from GitHub repos" session, relayed to the laptop session; verbatim):** "Longer runs and builds should be laptop, parallel smaller jobs should be cloud". It came after he asked why the cloud was running km's 114,840-game identity (about 6½ hours by its log) when the laptop plays about 8.6 games a second (about 3¾ hours), with the laptop waiting on it.
        - **It supersedes** the part of the rules above that gives builds and identity replays to the cloud. From the next job: release builds, long identity replays and tables go to the laptop; the cloud takes smaller jobs that can run in parallel (code changes, unit tests, the one code review, short smoke checks, diagnostics). A candidate's cloud round is fitted to that. Laptop quiet hours still apply to the long runs.
        - **km's round at B** (started before the rule) finishes on the cloud, unless Dustin says to move it. The laptop's part is unchanged (km's Amendment 1 (g)).
+   - **The shot list and blind quizzes: a standing rule (Dustin, Sept 30 evening).**
+     - To the laptop session, verbatim: "if anything should be added to the shot list artifact or another quiz helps at any point, feel free to do either".
+     - Then via the Fable coordinator session, verbatim: "quizzes or the shot list should be used to clear up things whenever helpful, so I don't have to specifically ask for it."
+     - **So any session may add a Pocket Shot List row or build a blind quiz without asking.** It tells Dustin in one line what the row or quiz is evidence for.
+     - An untaken quiz or an unrecorded shot is never a blocker.
 3. Pilot quality: kd (the defender's Weakness and reductions in the clock) read against kp3 on v2; then, approved by
    Dustin on Sept 25 as optional and only after kd is read, **one Altaria detector network** on an otherwise idle
    laptop night: the Hydreigon recipe (two networks trained against each other, pair checks passed before anything is
