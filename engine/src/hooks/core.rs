@@ -1598,11 +1598,11 @@ pub(crate) enum DefenderHit {
 /// through the defender's attack modifiers: the damage an attack carries in its outcome, the direct-damage attacks
 /// (`DirectDamage`, `DirectDamageAndSelfCardEffect`, `DirectDamageIfDamaged`), whose damage lands through a queued
 /// choice that now runs those modifiers, and Chase Order's discard branch (`discard_then_damage_choice`). Both orders
-/// were engine bugs until Sept 30 (rules/09, "Open engine bugs"). The engine still skips the coin at the other sites
-/// that deliver damage through a queued choice (Wild Swing, the own-Bench branch of `also_choice_bench_damage`, a
-/// copied Chase Order's discard branch, and the rest of that rules/09 entry's list): kd prices the coin there, as the
-/// card text says, so kd and the engine disagree at those sites, as they did before F1, until the engine is fixed.
-/// Tests pin the repaired orders.
+/// were engine bugs until Sept 30 (rules/09, "Open engine bugs"). The engine now flips the coin at the other sites
+/// that deliver an attack's damage through a queued choice too: the later coin round (Oct 1) took Wild Swing and the
+/// rest of that rules/09 entry's list, and the card-text job (Oct 2; TEXT_AUDIT.md A4, A5) the own-Bench branch of
+/// `also_choice_bench_damage` and a copied attack's discard branch. kd prices the coin at those sites, as the card
+/// text says, so kd and the engine agree there now. Tests pin the repaired orders.
 ///
 /// It runs `modify_damage`'s own stages, in its order, restricted to what stays on the board:
 /// - `base_damage == 0` does nothing;
@@ -2057,8 +2057,9 @@ pub(crate) fn modify_damage(
     };
     // Guarded Grill's and Securely Sheltered's cut on heads (rules/02, step 4; rules/09, "Open engine bugs", repaired
     // Sept 30): an effect on the Defending Pokémon like the reductions below. Only an attack outcome whose coin came
-    // up heads puts one in force (`with_heads_coin_cuts`); everywhere else it is 0.
-    let heads_coin_cut = if is_from_active_attack && attacking_player != target_player {
+    // up heads puts one in force (`with_heads_coin_cuts`); everywhere else it is 0. It applies to the attacker's own
+    // Pokémon hit by its own attack as well ("If any damage is done to this Pokémon by attacks"; TEXT_AUDIT.md A4).
+    let heads_coin_cut = if is_from_active_attack {
         crate::actions::attack_outcome::heads_coin_cut((target_player, target_idx))
     } else {
         0

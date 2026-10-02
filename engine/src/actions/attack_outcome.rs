@@ -87,10 +87,11 @@ pub struct AttackOutcome {
     pre_damage_effect: Option<SharedEffect>,
     /// Effect that runs after damage is applied (the common case: status, energy moves, etc.).
     post_damage_effect: Option<SharedEffect>,
-    /// The defender's finite coin cuts that came up heads in this branch, as (opponent in-play index, cut): Guarded
-    /// Grill's -100 and Securely Sheltered's -80. They come off after the damage modifiers (`with_heads_coin_cuts`),
-    /// not off the raw damage above. Empty in every branch without such a heads.
-    heads_coin_cuts: Vec<(usize, u32)>,
+    /// The finite coin cuts that came up heads in this branch, as (is the opponent's, in-play index, cut): Guarded
+    /// Grill's -100 and Securely Sheltered's -80, on either side's Pokémon (TEXT_AUDIT.md A4). They come off after the
+    /// damage modifiers (`with_heads_coin_cuts`), not off the raw damage above. Empty in every branch without such a
+    /// heads.
+    heads_coin_cuts: Vec<(bool, usize, u32)>,
 }
 
 impl AttackOutcome {
@@ -171,13 +172,25 @@ impl AttackOutcome {
         }
     }
 
+    /// This outcome with Will's forced heads used up before anything else it does.
+    fn using_will_first(mut self) -> Self {
+        let before = self.pre_damage_effect.take();
+        self.pre_damage_effect = Some(Rc::new(move |rng, state, action| {
+            state.consume_pending_will_first_heads();
+            if let Some(effect) = &before {
+                effect(rng, state, action);
+            }
+        }));
+        self
+    }
+
     /// This branch's heads coin cuts as ((player, in-play index), cut) for `actor`'s attack, for
     /// `with_heads_coin_cuts`.
     fn resolved_heads_coin_cuts(&self, actor: usize) -> Vec<((usize, usize), u32)> {
         let opponent = (actor + 1) % 2;
         self.heads_coin_cuts
             .iter()
-            .map(|(idx, cut)| ((opponent, *idx), *cut))
+            .map(|(is_opponent, idx, cut)| ((if *is_opponent { opponent } else { actor }, *idx), *cut))
             .collect()
     }
 
@@ -642,17 +655,9 @@ impl AttackOutcomes {
                     (branch.probability, CoinPaths::UntilTailsAtLeast { min_heads })
                 }
             };
-            let mut outcome = branch.outcome;
-            let before = outcome.pre_damage_effect.take();
-            outcome.pre_damage_effect = Some(Rc::new(move |rng, state, action| {
-                state.consume_pending_will_first_heads();
-                if let Some(effect) = &before {
-                    effect(rng, state, action);
-                }
-            }));
             branches.push(AttackBranch {
                 probability,
-                outcome,
+                outcome: branch.outcome.using_will_first(),
                 coin_paths,
             });
         }
@@ -663,11 +668,32 @@ impl AttackOutcomes {
         Ok(Self { branches })
     }
 
-    /// Apply the defender's "if any damage is done to this Pokémon by attacks, flip a coin; if
-    /// heads, prevent that damage / this Pokémon takes -X damage from that attack" ability
-    /// (e.g. Meowth's Carefree Steps, Bastiodon's Guarded Grill, Hisuian Goodra's Securely
-    /// Sheltered) to each opponent in-play slot in `reductions`. Each entry pairs the slot index
-    /// with the amount subtracted on heads — use `u32::MAX` for full prevention.
+    /// Will (A4 156) on a block coin ("if the Defending Pokémon tries to use an attack, your opponent
+    /// flips a coin. If tails, that attack doesn't happen."): the attacking player flips it for the
+    /// effect of an attack (the opponent's), so it is the next coin Will covers, and it comes up heads
+    /// (TEXT_AUDIT.md A2). So the attack always happens: the branches keep their probabilities, each
+    /// uses Will up before its damage, and their coin record is dropped as
+    /// `prepend_nullifying_coin_gate` drops it, so the attack's own coins stay fair and
+    /// `finish_forecast` doesn't apply Will a second time.
+    pub(crate) fn block_coin_heads_by_will(self) -> Self {
+        let branches = self
+            .branches
+            .into_iter()
+            .map(|branch| AttackBranch {
+                probability: branch.probability,
+                outcome: branch.outcome.using_will_first(),
+                coin_paths: CoinPaths::None,
+            })
+            .collect();
+        Self { branches }
+    }
+
+    /// Apply the "if any damage is done to this Pokémon by attacks, flip a coin; if heads, prevent
+    /// that damage / this Pokémon takes -X damage from that attack" ability (e.g. Meowth's Carefree
+    /// Steps, Bastiodon's Guarded Grill, Hisuian Goodra's Securely Sheltered) to each in-play slot in
+    /// `reductions`, the opponent's or the attacker's own (the text has no "your opponent's":
+    /// TEXT_AUDIT.md A4). Each entry is (is the opponent's, in-play index, the amount subtracted on
+    /// heads); use `u32::MAX` for full prevention.
     ///
     /// The ability applies independently to each such Pokémon — whether Active or Benched — and
     /// only when it actually takes damage in a given branch. Each branch is therefore split into
@@ -678,20 +704,20 @@ impl AttackOutcomes {
     /// effects on the Defending Pokémon (rules/02; rules/09, repaired Sept 30). All other damage and
     /// all effects are kept. Existing metadata is preserved unchanged: it describes the
     /// acting player's earlier attack-effect coins, while these defender coins stay unlabelled.
-    pub fn split_with_damage_prevention(self, reductions: &[(usize, u32)]) -> Self {
+    pub fn split_with_damage_prevention(self, reductions: &[(bool, usize, u32)]) -> Self {
         let mut branches = vec![];
         for branch in self.branches {
-            // Only the protected Pokémon that actually take (>0) opponent damage flip a coin.
-            let flipping: Vec<(usize, u32)> = reductions
+            // Only the protected Pokémon that actually take (>0) damage flip a coin.
+            let flipping: Vec<(bool, usize, u32)> = reductions
                 .iter()
                 .copied()
-                .filter(|(target_idx, _)| {
+                .filter(|(target_side, target_idx, _)| {
                     branch
                         .outcome
                         .damage
                         .iter()
                         .any(|(amount, is_opponent, idx)| {
-                            *is_opponent && idx == target_idx && *amount > 0
+                            is_opponent == target_side && idx == target_idx && *amount > 0
                         })
                 })
                 .collect();
@@ -705,25 +731,24 @@ impl AttackOutcomes {
             let sub_probability = branch.probability / combos as f64;
             for mask in 0..combos {
                 // The subset of flipping Pokémon whose coin came up heads (damage reduced).
-                let reduced_now: Vec<(usize, u32)> = flipping
+                let reduced_now: Vec<(bool, usize, u32)> = flipping
                     .iter()
                     .enumerate()
                     .filter(|(bit, _)| (mask >> bit) & 1 == 1)
-                    .map(|(_, pair)| *pair)
+                    .map(|(_, reduction)| *reduction)
                     .collect();
                 let mut outcome = branch.outcome.clone();
                 // Full prevention: that Pokémon takes none of this attack's damage.
                 outcome.damage.retain(|(_, is_opponent, idx)| {
-                    !(*is_opponent
-                        && reduced_now
-                            .iter()
-                            .any(|(r_idx, reduction)| r_idx == idx && *reduction == u32::MAX))
+                    !reduced_now.iter().any(|(r_side, r_idx, reduction)| {
+                        r_side == is_opponent && r_idx == idx && *reduction == u32::MAX
+                    })
                 });
                 // A finite cut comes off after the damage modifiers (`with_heads_coin_cuts`).
                 outcome.heads_coin_cuts.extend(
                     reduced_now
                         .iter()
-                        .filter(|(_, reduction)| *reduction != u32::MAX)
+                        .filter(|(_, _, reduction)| *reduction != u32::MAX)
                         .copied(),
                 );
                 branches.push(AttackBranch {
@@ -1367,7 +1392,7 @@ mod tests {
     fn expected_damage_halves_under_active_damage_prevention() {
         let state = state_with_grimer_vs_meowth();
         let outcomes = AttackOutcomes::single(AttackOutcome::damage(vec![(20, true, 0)]))
-            .split_with_damage_prevention(&[(0, u32::MAX)]);
+            .split_with_damage_prevention(&[(true, 0, u32::MAX)]);
         // Heads branch (0.5) prevents the active damage, tails branch (0.5) deals 20.
         let expected = outcomes.expected_damage_to_opponent_active(&state, 0, None, None);
         assert!(
@@ -1591,7 +1616,7 @@ mod tests {
         };
 
         assert!(base()
-            .split_with_damage_prevention(&[(0, 80)])
+            .split_with_damage_prevention(&[(true, 0, 80)])
             .all_branches_have_coin_paths());
         assert!(base()
             .split_with_guts_survival(&state, 0, Some("Continuous Steps"), None, &[0])

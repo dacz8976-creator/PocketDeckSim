@@ -192,28 +192,18 @@ fn try_forecast_victory_star_attack(state: &State, action: &Action) -> Option<Ou
     );
     let source_idx = victory_star_source(state, action.actor)?;
 
-    // A Confused attacker (rules/04 §9, seen in Pocket Sept 29): the Confusion coin comes first and
-    // is never offered for a reroll, and only its heads reach the pause below.
-    let confusion_first = apply_attack_action::victory_star_waits_for_confusion_heads(
+    // The attacker-side gate coins, Confusion (rules/04 §9, seen in Pocket Sept 29) and a block
+    // coin (its text; TEXT_AUDIT.md A1), come first and are never offered for a reroll; only their
+    // heads reach the pause below. A pending Will goes to the block coin when there is one
+    // (TEXT_AUDIT.md A2); otherwise it is forced on the attack's own batch below and used only in
+    // the pause.
+    let gates_first = apply_attack_action::victory_star_waits_for_gate_heads(
         action.actor,
         state,
         action.is_stack,
     );
-    // Pocket evidence is still needed for whether Victory Star can replace CoinFlipToBlockAttack
-    // checks. Resolving the printed attack-effect coin first would reverse their order, so this
-    // bounded implementation deliberately keeps legacy resolution there. A pending Will with a
-    // Confused attacker takes the Confusion-first path: Will is forced on the attack's own batch
-    // below and used only in the pause, under the Confusion heads.
-    if !confusion_first
-        && apply_attack_action::has_unverified_attacker_coin_gate(
-            action.actor,
-            state,
-            action.is_stack,
-        )
-    {
-        debug!("Victory Star attack-effect pause skipped for unverified attacker coin gate");
-        return None;
-    }
+    let will_on_block =
+        apply_attack_action::will_goes_to_the_block_coin(action.actor, state, action.is_stack);
 
     let base = apply_attack_action::forecast_attack_effect(action.actor, state, attack);
     if !base.all_branches_have_coin_paths() {
@@ -222,7 +212,7 @@ fn try_forecast_victory_star_attack(state: &State, action: &Action) -> Option<Ou
 
     let mut sampled = base.into_outcomes();
     let mut will_consumed_on_sample = false;
-    if state.has_pending_will_first_heads() {
+    if !will_on_block && state.has_pending_will_first_heads() {
         sampled = match sampled.force_first_heads() {
             Ok(forced) => {
                 will_consumed_on_sample = true;
@@ -288,24 +278,39 @@ fn try_forecast_victory_star_attack(state: &State, action: &Action) -> Option<Ou
         })
         .collect();
 
-    let branches = if confusion_first {
-        debug!("Victory Star with a Confused attacker: Confusion coin first, pause on heads only");
-        // Tails: the attack does nothing, committed now as the ordinary attack path commits it.
-        // Heads: the pause staged above. Neither half is labelled with the attack's coins any more,
-        // as after `prepend_nullifying_coin_gate`.
-        let tails = apply_attack_action::confusion_tails_outcomes(action.actor, state, &attack);
-        let mut gated: Vec<(f64, Mutation, CoinPaths)> = tails
-            .into_branches_with_coin_paths()
-            .into_iter()
-            .map(|(probability, mutation, _)| {
-                (0.5 * probability, wrap_with_common_logic(mutation), CoinPaths::None)
-            })
-            .collect();
+    let branches = if gates_first {
+        debug!("Victory Star with attacker-side gate coins: gate coins first, pause on their heads only");
+        // A tails: the attack does nothing, committed now as the ordinary attack path commits it.
+        // All heads: the pause staged above. Neither half is labelled with the attack's coins any
+        // more, as after `prepend_nullifying_coin_gate`.
+        let heads = apply_attack_action::gate_heads_probability(action.actor, state);
+        let mut gated: Vec<(f64, Mutation, CoinPaths)> = Vec::new();
+        if heads < 1.0 {
+            let tails = apply_attack_action::gate_tails_outcomes(action.actor, state, &attack);
+            gated.extend(tails.into_branches_with_coin_paths().into_iter().map(
+                |(probability, mutation, _)| {
+                    ((1.0 - heads) * probability, wrap_with_common_logic(mutation), CoinPaths::None)
+                },
+            ));
+        }
         gated.extend(
             branches
                 .into_iter()
-                .map(|(probability, mutation, _)| (0.5 * probability, mutation, CoinPaths::None)),
+                .map(|(probability, mutation, _)| (heads * probability, mutation, CoinPaths::None)),
         );
+        if will_on_block {
+            // Will's heads went on the block coin, so it is used in every branch.
+            gated = gated
+                .into_iter()
+                .map(|(probability, mutation, coin_paths)| {
+                    let mutation: Mutation = Box::new(move |rng, state, action| {
+                        state.consume_pending_will_first_heads();
+                        mutation(rng, state, action);
+                    });
+                    (probability, mutation, coin_paths)
+                })
+                .collect();
+        }
         gated
     } else {
         branches
@@ -360,15 +365,15 @@ fn forecast_victory_star_choice(state: &State, action: &Action) -> Outcomes {
         _ => panic!("pending Victory Star state accepts only Keep or Reroll"),
     };
 
-    // A Confused attacker reaches this choice only through its Confusion heads (staged in
-    // `try_forecast_victory_star_attack`), so no second Confusion check follows.
-    let outcomes = if apply_attack_action::victory_star_waits_for_confusion_heads(
+    // An attacker with gate coins (Confusion, a block coin) reaches this choice only through their
+    // heads (staged in `try_forecast_victory_star_attack`), so no second gate coin follows.
+    let outcomes = if apply_attack_action::victory_star_waits_for_gate_heads(
         pending.actor,
         state,
         pending.original_is_stack,
     ) {
-        debug!("Victory Star choice for a Confused attacker: no second Confusion check");
-        apply_attack_action::finish_attack_after_confusion_heads(
+        debug!("Victory Star choice after the gate coins' heads: no second gate coin");
+        apply_attack_action::finish_attack_after_gate_heads(
             pending.actor,
             state,
             &pending.attack,
@@ -763,42 +768,122 @@ fn buggy_evolution_target(
 }
 
 /// ApplyDamage (damage queued through the move-generation stack, e.g. Mega Kangaskhan's second
-/// punch or Raikou ex's spot damage) is deterministic unless a target has the Guts ability and
-/// would be knocked out: each such target flips its own survival coin, independently of any
-/// Guts flip already resolved earlier in the same attack.
+/// punch or Raikou ex's spot damage) is deterministic unless a target has a coin-flip damage
+/// Ability or the Guts ability.
+///
+/// An attack's queued damage (`is_from_active_attack`) flips the coin of each target with a
+/// coin-flip damage Ability that takes some, on either side: "If any damage is done to this
+/// Pokémon by attacks, flip a coin" (TEXT_AUDIT.md A4, A5). The own-Bench and own-Pokémon choices
+/// (Raging Thunder, Flash Impact, Shadow Hit) and a copied discard attack's damage still arrive
+/// here; the other queued sites already take the attack's own path for such a target
+/// (`ApplyQueuedAttackDamage`). Heads drops that target's damage (Carefree Steps, Celestial
+/// Blessing) or puts its cut in force after Weakness (Guarded Grill, Securely Sheltered), as in an
+/// attack's outcome.
 fn forecast_apply_damage(
     state: &State,
     attacking_ref: (usize, usize),
     targets: &[(u32, usize, usize)],
     is_from_active_attack: bool,
 ) -> Outcomes {
+    let mut raw: std::collections::BTreeMap<(usize, usize), u32> = std::collections::BTreeMap::new();
+    for (damage, player, idx) in targets {
+        *raw.entry((*player, *idx)).or_insert(0) += damage;
+    }
+    let coin_targets: Vec<((usize, usize), u32)> = if is_from_active_attack {
+        raw.iter()
+            .filter(|(_, total)| **total > 0)
+            .filter_map(|(&(player, idx), _)| {
+                let pokemon = state.in_play_pokemon[player][idx].as_ref()?;
+                apply_attack_action::coin_damage_prevention(state, pokemon)
+                    .map(|cut| ((player, idx), cut))
+            })
+            .collect()
+    } else {
+        vec![]
+    };
+    if coin_targets.is_empty() {
+        return forecast_apply_damage_after_coins(
+            state,
+            attacking_ref,
+            targets.to_vec(),
+            vec![],
+            is_from_active_attack,
+        );
+    }
+    debug!("Queued attack damage at a coin-flip damage Ability: {coin_targets:?}");
+    let combos = 1usize << coin_targets.len();
+    let mut branches: Vec<(f64, Mutation, CoinPaths)> = Vec::new();
+    for mask in 0..combos {
+        let heads: Vec<((usize, usize), u32)> = coin_targets
+            .iter()
+            .enumerate()
+            .filter(|(bit, _)| (mask >> bit) & 1 == 1)
+            .map(|(_, coin_target)| *coin_target)
+            .collect();
+        let kept: Vec<(u32, usize, usize)> = targets
+            .iter()
+            .filter(|(_, player, idx)| {
+                !heads
+                    .iter()
+                    .any(|(target, cut)| *target == (*player, *idx) && *cut == u32::MAX)
+            })
+            .copied()
+            .collect();
+        let cuts: Vec<((usize, usize), u32)> =
+            heads.into_iter().filter(|(_, cut)| *cut != u32::MAX).collect();
+        for (probability, mutation, _) in
+            forecast_apply_damage_after_coins(state, attacking_ref, kept, cuts, is_from_active_attack)
+                .into_branches_with_coin_paths()
+        {
+            branches.push((probability / combos as f64, mutation, CoinPaths::None));
+        }
+    }
+    Outcomes::from_branches_with_coin_paths(branches)
+        .expect("queued attack damage coin branches must form a valid distribution")
+}
+
+/// `forecast_apply_damage` once the coin-flip damage Abilities' coins are settled: `cuts` are the
+/// finite heads cuts in force for this damage. Each target that has the Guts ability and would be
+/// knocked out flips its own survival coin, independently of any Guts flip already resolved
+/// earlier in the same attack.
+fn forecast_apply_damage_after_coins(
+    state: &State,
+    attacking_ref: (usize, usize),
+    targets: Vec<(u32, usize, usize)>,
+    cuts: Vec<((usize, usize), u32)>,
+    is_from_active_attack: bool,
+) -> Outcomes {
+    use super::attack_outcome::with_heads_coin_cuts;
     // Sum raw damage per target (mirroring handle_damage_only) to find the Guts coin flips.
     let mut damage_map: HashMap<(usize, usize), u32> = HashMap::new();
-    for (damage, player, idx) in targets {
+    for (damage, player, idx) in &targets {
         *damage_map.entry((*player, *idx)).or_insert(0) += damage;
     }
     let flipping: Vec<(usize, usize)> = damage_map
         .into_iter()
         .filter(|(target, raw_total)| {
-            guts_would_flip(
-                state,
-                attacking_ref,
-                *raw_total,
-                *target,
-                is_from_active_attack,
-                DamageModifierContext {
-                    attack_name: None,
-                    attack_effect: None,
-                },
-            )
+            with_heads_coin_cuts(cuts.clone(), || {
+                guts_would_flip(
+                    state,
+                    attacking_ref,
+                    *raw_total,
+                    *target,
+                    is_from_active_attack,
+                    DamageModifierContext {
+                        attack_name: None,
+                        attack_effect: None,
+                    },
+                )
+            })
         })
         .map(|(target, _)| target)
         .collect();
 
     if flipping.is_empty() {
-        let targets = targets.to_vec();
         return Outcomes::single_fn(move |_, state, _| {
-            handle_damage(state, attacking_ref, &targets, is_from_active_attack, None);
+            with_heads_coin_cuts(cuts.clone(), || {
+                handle_damage(state, attacking_ref, &targets, is_from_active_attack, None);
+            });
         });
     }
 
@@ -814,18 +899,21 @@ fn forecast_apply_damage(
             .filter(|(bit, _)| (mask >> bit) & 1 == 1)
             .map(|(_, target)| *target)
             .collect();
-        let targets = targets.to_vec();
+        let targets = targets.clone();
+        let cuts = cuts.clone();
         mutations.push(Box::new(move |_, state, _| {
-            let damaged_actives = handle_damage_only(
-                state,
-                attacking_ref,
-                &targets,
-                is_from_active_attack,
-                DamageModifierContext {
-                    attack_name: None,
-                    attack_effect: None,
-                },
-            );
+            let damaged_actives = with_heads_coin_cuts(cuts, || {
+                handle_damage_only(
+                    state,
+                    attacking_ref,
+                    &targets,
+                    is_from_active_attack,
+                    DamageModifierContext {
+                        attack_name: None,
+                        attack_effect: None,
+                    },
+                )
+            });
             for (player, idx) in &survivors {
                 if let Some(pokemon) = state.in_play_pokemon[*player][*idx].as_mut() {
                     pokemon.set_remaining_hp(10);
