@@ -30,6 +30,7 @@ def dump(prog, binary, flags, bot, pairing, deal, tick):
 def parse(text):
     """The asked decision's candidates [(score, action)], the gate lines per candidate action, the principal line per candidate, the chosen line."""
     lines = text.splitlines()
+    chosen = next((ln for ln in lines if ln.startswith("deal ")), "")      # stdout comes first in the joined text
     start = max((i for i, ln in enumerate(lines) if ln.startswith("PGTICK") and "asked about" in ln), default=0)
     lines = lines[start:]
     cands, gates, cur = [], {}, None
@@ -48,7 +49,6 @@ def parse(text):
             trees[tcur] = []
         elif ln.startswith("PGTREE") and tcur is not None:
             trees[tcur].append(ln[7:])
-    chosen = next((ln for ln in lines if ln.startswith("deal ")), "")
     return cands, gates, trees, chosen
 
 

@@ -1,8 +1,8 @@
 ================================================================================================================
 k3 pairing 4 deal 7 tick 95: garchomp_meowth v t-sceptile
-  old       
-  R         
-  R-revert  
+  old       deal 7, tick 95: chose Promote { player: 0, in_play_idx: 3 }
+  R         deal 7, tick 95: chose Promote { player: 0, in_play_idx: 2 }
+  R-revert  deal 7, tick 95: chose Promote { player: 0, in_play_idx: 3 }
   R-revert scores equal old's: True;   R's equal old's: False
     old      10964.2000   R      55342.6000   R-revert      10964.2000   Promote { player: 0, in_play_idx: 2 }   <-- R differs from old
         gate in R: 1 x, e.g. queued coin-target frame: mover 0 target (owner 1, slot 3) attack "Slicing Snipe" depth_left=0
@@ -28,9 +28,9 @@ k3 pairing 4 deal 7 tick 95: garchomp_meowth v t-sceptile
                      A ApplyQueuedAttackDamage { attack: Attack { energy_required: [Grass, Grass], title: "Slicing Snipe", fixed_damage: 0, effect: Some("This attack does 50 damage to 1 of your o
 ================================================================================================================
 km3 pairing 1 deal 399 tick 81: garchomp_meowth v t-blaziken
-  old       
-  R         
-  R-revert  
+  old       deal 399, tick 81: chose Promote { player: 0, in_play_idx: 2 }
+  R         deal 399, tick 81: chose Promote { player: 0, in_play_idx: 3 }
+  R-revert  deal 399, tick 81: chose Promote { player: 0, in_play_idx: 2 }
   R-revert scores equal old's: True;   R's equal old's: False
     old       9595.7000   R       9595.7000   R-revert       9595.7000   Promote { player: 0, in_play_idx: 1 }
     old       9595.7000   R       9595.7000   R-revert       9595.7000   Promote { player: 0, in_play_idx: 2 }
@@ -57,9 +57,9 @@ km3 pairing 1 deal 399 tick 81: garchomp_meowth v t-blaziken
                      A ApplyQueuedAttackDamage { attack: Attack { energy_required: [Fire], title: "Tongue Whip", fixed_damage: 0, effect: Some("This attack does 30 damage to 1 of your opponent's 
 ================================================================================================================
 km3 pairing 4 deal 7 tick 84: garchomp_meowth v t-sceptile
-  old       
-  R         
-  R-revert  
+  old       deal 7, tick 84: chose Promote { player: 0, in_play_idx: 2 }
+  R         deal 7, tick 84: chose Promote { player: 0, in_play_idx: 3 }
+  R-revert  deal 7, tick 84: chose Promote { player: 0, in_play_idx: 2 }
   R-revert scores equal old's: True;   R's equal old's: False
     old      10868.2000   R      10868.2000   R-revert      10868.2000   Promote { player: 0, in_play_idx: 2 }
     old      10608.2000   R      55114.6000   R-revert      10608.2000   Promote { player: 0, in_play_idx: 3 }   <-- R differs from old
@@ -85,9 +85,9 @@ km3 pairing 4 deal 7 tick 84: garchomp_meowth v t-sceptile
                      A ApplyQueuedAttackDamage { attack: Attack { energy_required: [Grass, Grass], title: "Slicing Snipe", fixed_damage: 0, effect: Some("This attack does 50 damage to 1 of your o
 ================================================================================================================
 km3 pairing 4 deal 360 tick 57: garchomp_meowth v t-sceptile
-  old       
-  R         
-  R-revert  
+  old       deal 360, tick 57: chose Promote { player: 1, in_play_idx: 2 }
+  R         deal 360, tick 57: chose Promote { player: 1, in_play_idx: 3 }
+  R-revert  deal 360, tick 57: chose Promote { player: 1, in_play_idx: 2 }
   R-revert scores equal old's: True;   R's equal old's: False
     old       -514.4000   R       -514.4000   R-revert       -514.4000   Promote { player: 1, in_play_idx: 2 }
     old       -594.4000   R       4440.6500   R-revert       -594.4000   Promote { player: 1, in_play_idx: 3 }   <-- R differs from old
@@ -113,9 +113,9 @@ km3 pairing 4 deal 360 tick 57: garchomp_meowth v t-sceptile
                      A ApplyQueuedAttackDamage { attack: Attack { energy_required: [Grass, Grass], title: "Slicing Snipe", fixed_damage: 0, effect: Some("This attack does 50 damage to 1 of your o
 ================================================================================================================
 km3 pairing 21 deal 310 tick 87: hisuian_goodra v t-suicune
-  old       
-  R         
-  R-revert  
+  old       deal 310, tick 87: chose Promote { player: 1, in_play_idx: 2 }
+  R         deal 310, tick 87: chose Promote { player: 1, in_play_idx: 3 }
+  R-revert  deal 310, tick 87: chose Promote { player: 1, in_play_idx: 2 }
   R-revert scores equal old's: True;   R's equal old's: False
     old      10557.4000   R      10557.4000   R-revert      10557.4000   Promote { player: 1, in_play_idx: 2 }
     old      10553.4000   R     100000.0000   R-revert      10553.4000   Promote { player: 1, in_play_idx: 3 }   <-- R differs from old
@@ -141,9 +141,9 @@ km3 pairing 21 deal 310 tick 87: hisuian_goodra v t-suicune
                      A ApplyQueuedAttackDamage { attack: Attack { energy_required: [Water, Water, Water], title: "Diving Icicles", fixed_damage: 0, effect: Some("Discard all [W] Energy from this 
 ================================================================================================================
 km3 pairing 4 deal 106 tick 82: garchomp_meowth v t-sceptile
-  old       
-  R         
-  R-revert  
+  old       deal 106, tick 82: chose Play { trainer_card: B1a 067 Quick-Grow Extract }
+  R         deal 106, tick 82: chose Attack(Attack { energy_required: [Grass], title: "Pound", fixed_damage: 20, effect: None })
+  R-revert  deal 106, tick 82: chose Play { trainer_card: B1a 067 Quick-Grow Extract }
   R-revert scores equal old's: True;   R's equal old's: False
     old     -20513.4000   R     -20513.4000   R-revert     -20513.4000   EndTurn
     old     -10973.3000   R     -10973.3000   R-revert     -10973.3000   Attack(Attack { energy_required: [Grass], title: "Pound", fixed_damage: 20, effect: 
