@@ -2,7 +2,7 @@
 
 Written Sept 30 for the Fable coordinator session (Dustin's single delegator). Times are UTC.
 
-1. **Current task, and the instruction that set it.** None: idle, as the coordinator asked (Oct 1 morning, via Dustin: "Then idle"). The Oct 1 jobs are done:
+1. **Current task, and the instruction that set it.** Step 8c of the rules switch (Fable via Dustin, Oct 1 evening; see the last log line). The card-text job (Will, the audit, Trap Territory) waits until it is done. The Oct 1 jobs before it are done:
    - **PLAN step 8b's early-warning rows** (3a107f4, `rl/results/engine_switch_rules_2026-10/early_warning_8b/README.md`), on a scratch build of R (f8cfa9c, engine tree 38af8b0, the laptop's candidate's):
      - 960 games, pairings 32-35 × 40 × km3 and k3 × old, new and watch, every program built from `git archive` in a fresh target folder.
      - The checks:
@@ -34,7 +34,7 @@ Written Sept 30 for the Fable coordinator session (Dustin's single delegator). T
        - The `ApplyDamage` arm's attacker clause is not mirrored. A Mega Kangaskhan ex Knocked Out on its own turn gives 3 points and ends the game (checked in a scratch copy), and mirroring it would have reordered the first round's choices.
      - Full suite at 29e126a: 2,027 passed, 0 failed (R's 2,018 plus the 9 new tests). The counter probe: 32 checks, 0 failures.
      - The scratch smoke, rerun on the final engine, gives byte-identical game files to its first run (80 of 80 for each scan).
-2. **What is running now, and when it ends.** Nothing.
+2. **What is running now, and when it ends.** Step 8c's traces: starting now. Partial results are pushed to `trace_8c_cloud/` as pairings finish.
 3. **Files I expect to change.** None. The 8b rows are in `rl/results/engine_switch_rules_2026-10/early_warning_8b/` (this branch). The coin round-2 job changed these on its branch:
    - engine: `engine/src/actions/apply_attack_action.rs`, `engine/src/actions/apply_action.rs`, `engine/src/state/mod.rs` (the approved fifth file), `engine/tests/pokemon/meowth_carefree_steps_test.rs`;
    - results: `rl/results/coin_prevention_repair_2026-09-30/instrument_scan.py` (the counters) and `rl/results/coin_prevention_round2_2026-10-01/`.
@@ -57,3 +57,4 @@ Written Sept 30 for the Fable coordinator session (Dustin's single delegator). T
 - 2026-10-01: coin-flip prevention, the later round (Fable via Dustin): the seven recorded sites, failing tests first, then the gated fix; on a new branch claude/coin-prevention-round2 cut from Sonnet's R (1abdbe8). Own-Bench form left open. No players/ change, no table games, no merge.
 - 2026-10-01: coin-flip prevention, the later round's seventh site (Fable via Dustin): Mega Kangaskhan ex's second punch on claude/coin-prevention-round2, with engine/src/state/mod.rs's pending-hit check as the approved fifth file; tests first (the knockout-then-promotion case and the non-knockout case), then the fix, the full suite and the README. Then idle. Round 2 goes in the next switch, not the current one.
 - 2026-10-01: PLAN.md step 8b's early-warning rows (Fable via Dustin): on a scratch build of R (f8cfa9c; engine = ab56bf4, fresh target dir), pairings 32-35 of the 23.1B block (fire_victini v psychic_confuse, fire_heatmor v meowth_carefree, t-vespiquen v meowth_carefree, l-sharpedo v meowth_carefree), 40 games each, km3 and k3, on the old engine (rl/engine-2026-09-30's source), the new, and the watch build; every changed game classified with tightened_rule.py; rows to rl/results/engine_switch_rules_2026-10/early_warning_8b/. Then idle.
+- 2026-10-02: step 8c of the rules switch (Fable via Dustin, Oct 1 evening; first, before the card-text job): every changed game of step 8's hand-off (main 1ba07d9, handoff_8c.tsv: 3,750 changed deals, 306 with no reach counter, CONDITION 3 = 296) traced on old (rl/engine-2026-09-30's source) and new (R f8cfa9c) to the first differing tick, fingerprint-checked against the row, classified with tightened_rule.py, both probes on every lookahead-only game; output rl/results/engine_switch_rules_2026-10/trace_8c_cloud/, pushed as pairings finish. An unexplained game is a stop, written at the top of this file at once.
