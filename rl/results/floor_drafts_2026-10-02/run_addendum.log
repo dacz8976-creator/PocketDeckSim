@@ -1,0 +1,37 @@
+2026-10-02 18:54:52 UTC start; current_engine resolves /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/engine-2026-10-02/deckgym
+2f7e5fd6e0ae21fffcb9a4df6e70dc3302e2a372f1fde1eb2bb1aa106747a62e  rl/engine-2026-10-02/deckgym
+cecc76fbe51b33276e0e2e787b6eacba41c52ef4eaa36c5a20954caeedc50b66  rl/engine-2026-10-02/goldfish
+763278659ea9a1ac7983c9cd2da2ff5f1f2c1e96468818cb84b29c106bb4b1e0  decks/screen/floor.py
+c3a57b9c835be77ba864514e2636645885c4f22d75028c5f29e2686edcbe171f  decks/screen/opponents/t-altaria.txt
+d88a70e56dae8f8500d539348223b5fee5eaba705667578a8fcbca95963fd7ed  decks/screen/opponents/t-blaziken.txt
+18688bd9ab09f2638538006590767a5750abe763572c0fb636c47eec93155f3b  decks/screen/opponents/t-hydreigon.txt
+76ad71c4d932da51fddc8c3082f184f8012c86e1f1e15c5858e055190560f634  decks/screen/opponents/t-lucario.txt
+fe0b7fc4de2f9dff0268a65d30dd39bfd5b73e7e5115b48e59f3975777018cd2  decks/screen/opponents/t-sceptile.txt
+639778c3cdc056130278fa13984b1bb1c508226032334d54b7a01a25d3187783  decks/screen/opponents/t-suicune.txt
+8356844fd2d143a44c547356ff5a32b74977478fbb1f9fc2a716a7f2233f8255  decks/screen/opponents/t-vespiquen.txt
+26cb869fe5f2c7cd79f8b974bf7667f802837bdb6ec9442db5360aef490ce5a1  decks/screen/opponents/t-weezing.txt
+3f39092ba6680cc5b8013b961e2f5a0f07bc779816ade7a6891983082b2e7417  decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt
+31035755a6d09148a709dd9d869625b7e588f13d0150cac99a9c58ef5469be6f  decks/brews/drafts_2026-10-01/draft-D-entei-grimhound.txt
+b05a59e875205643e60254ef3daf4ef0f7752f5cd49acbf597baf357ca333ea7  current_engine.py
+2f48cb72966c23ba3794f437aa94312e4eadcb2703c32893411ee27fc63b11d9  lib/deckgym-database.json
+bfa3b363af41f64424208d7114b4c98384900f29f173c964975001a24149ecfb  lib/brew_pages.py
+c309aff9254d5a7813fe5d1ab278a48a0e6056360a0cb36114dc6d1e8b5f2060  engine/src/players/public_pricing_player.rs
+git HEAD 9e139e653de1756f7138b91f9c15ce22bd5a67c9
+git status (decks/screen decks/brews/drafts_2026-10-01 current_engine.py project_manifest.json rl/engine-2026-10-02 lib):
+== draft-A-shark-tempo into rl/results/floor_drafts_2026-10-02/draft-A_attackers-sharpedo 18:54:52
+self-check passed: edges 349/350/418/419 (n 1,920) and 78/79/113/114 (n 480); untrusted rule; Supporter turns; ATTACKERS
+# Floor check: draft-A-shark-tempo
+
+**Verdict: clears the floor.** 950 wins in 1920 games (49.48%) against the 8 lists in decks/screen/opponents. Bar 20% with the screen's own noise ±1.79 points at this n: 349 wins or fewer fail, 350-418 are borderline, 419 or more clear the floor.
+Flagged cards (the bot is known not to price them fully): Alolan Ninetales ex as attacker: used on 3598 of 3903 opportunities (92.2%). A share under 25% of at least 20 opportunities is a flag for a person to look at.
+Written: /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/floor_drafts_2026-10-02/draft-A_attackers-sharpedo/draft-A-shark-tempo.md
+draft-A-shark-tempo 189 s wall
+== draft-D-entei-grimhound into rl/results/floor_drafts_2026-10-02/draft-D_amended 18:58:01
+self-check passed: edges 349/350/418/419 (n 1,920) and 78/79/113/114 (n 480); untrusted rule; Supporter turns; ATTACKERS
+# Floor check: draft-D-entei-grimhound
+
+**Verdict: clears the floor.** 597 wins in 1920 games (31.09%) against the 8 lists in decks/screen/opponents. Bar 20% with the screen's own noise ±1.79 points at this n: 349 wins or fewer fail, 350-418 are borderline, 419 or more clear the floor.
+Flagged cards (the bot is known not to price them fully): Victini as attacker: used on 916 of 1064 opportunities (86.1%). A share under 25% of at least 20 opportunities is a flag for a person to look at.
+Written: /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/floor_drafts_2026-10-02/draft-D_amended/draft-D-entei-grimhound.md
+draft-D-entei-grimhound 232 s wall
+2026-10-02 19:01:53 UTC done; floor.py unchanged after the runs

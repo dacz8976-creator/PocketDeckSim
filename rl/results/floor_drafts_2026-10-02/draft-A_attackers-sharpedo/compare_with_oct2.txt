@@ -1,0 +1,19 @@
+DIFFERS draft-A-shark-tempo.md: Oct 2 4244ada0eda85cecfe970cd0f54e5450a1fae5fcc6e6a9f74aa580bcd9e9f071 / re-run eefa68ffc332ad8c3b7f805cb53e2ab6a1496127d02bcf8c0da5dca6081d524f
+BYTE-EQUAL draft-A-shark-tempo_coverage.json: Oct 2 942a530a7436f3442ee1c46fb101b6a836ca089fdd36b80cf691704ea3d44d1b / re-run 942a530a7436f3442ee1c46fb101b6a836ca089fdd36b80cf691704ea3d44d1b
+DIFFERS draft-A-shark-tempo_games.jsonl: Oct 2 4300e9ca548c10f9cb2d0592622856d0a0cbbefba28b834ea4a9f7b9723fa5e9 / re-run cc46448e0a045bb7dd7bee725e9a4fb8132c20099dc50a292463c4e34777344a
+page lines: Oct 2 57, re-run 57
+line 32 differs:
+  Oct 2:  | went first | 923 | 0% / 34% / 48% | 0% / 34% / 47% | 1.15 | 26% | 0% | 1.19 | 49% |
+  re-run: | went first | 923 | 18% / 32% / 52% | 18% / 32% / 51% | 1.21 | 30% | 0% | 1.19 | 49% |
+line 33 differs:
+  Oct 2:  | went second | 997 | 15% / 32% / 47% | 15% / 32% / 47% | 1.27 | 32% | 0% | 1.23 | 50% |
+  re-run: | went second | 997 | 24% / 40% / 50% | 23% / 39% / 49% | 1.22 | 38% | 0% | 1.23 | 50% |
+line 35 differs:
+  Oct 2:  Main attackers for these measures (fallback: the Pokemon with the highest printed damage (no A1 entry for this list)): Alolan Ninetales ex. Draws: 1.
+  re-run: Main attackers for these measures (set for this list in floor.py's ATTACKERS): Mega Sharpedo ex. Draws: 1.
+games: Oct 2 1920 records, re-run 1920
+fields: ['conceded', 'could', 'dead', 'did', 'draw', 'flagged', 'opponent', 'points', 'seat', 'seed', 'stage2', 'turns', 'went_first', 'won']; same field set: True
+records with any difference: 1721 of 1920; per field: {'conceded': 888, 'could': 1708, 'did': 1719}
+every record equal once could / did / conceded are left out: True
+the files with could / did / conceded removed are equal text: True
+won, per record, equal: True; flagged equal: True
