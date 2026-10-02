@@ -12,7 +12,23 @@ The audit is committed: `rl/results/coin_prevention_round2_2026-10-01/TEXT_AUDIT
 - **A sixth file, `engine/src/move_generation/move_generation_trainer.rs`:** a Fossil can be played under an Item lock (the Item check at 65 skips the Fossil type). Its premise is that a Fossil's printed type is Item (rules/01, rules/04 §6; the local database can't show it).
 - **In the five files but outside rules/09, rules/04 and the caveats:** Guts on the attacker's own Pokémon in an attack's outcome (E1), and Perish Body on a plain queued hit at the Active (E2). Both are decided by their text. Fix them in this job, or leave them listed?
 
-1. **Current task, and the instruction that set it.** None running; idle. **The card-text follow-up is done** (Fable via Dustin, Oct 2: the sixth-file question answered "all yes"; branch claude/coin-prevention-round2, head 20e2651, now stacked on the official engine: origin/main merged first, d1b986c; README "The follow-up"). Tests first (53a3cca, all 5 failing), the changes in 3090abb:
+1. **Current task, and the instruction that set it.** None running; idle. **The round-2 readiness jobs are done** (Fable via Dustin, Oct 2; branch claude/coin-prevention-round2, head 57c65860; `rl/results/round2_readiness_2026-10-02/README.md`; no table games, no players/ or engine change):
+   - **(1) The inventory** (69471480; main 7c1b62f: the 68 deck lists under decks/, drafts_2026-10-01 included, and the 14 lists the pairing files name). EXPECTED to change:
+     - table 0 of 28; the 17 new cells 0; step 7c 0 of 32;
+     - B2e 16 of 96: `h-whimsicott` and Dustin's 12, each v all 8 panel lists (Trap Territory);
+     - carriers 1 of 36: l-sharpedo v `meowth_carefree` (Wild Swing);
+     - screen and floor 11, over 4 lists: Dustin's 12 v all 8 (Trap Territory); Dustin's 10, brew-01 and brew-04 v `t-weezing` (Will with a Confused attacker). Floor pages that would need rerunning: Dustin's 10 (1 pairing) and 12 (all 8).
+     - The amended draft D changes nothing: it holds no Will, and no list holds a block-coin attacker.
+   - **(2) The counters** (da086209, cf3cffee). `instrument_scan.py` (the coin script, as the branch has it) gets `r2_tick`: 13 exact counters, an off-gate counter per rewritten site (the later round's by attack), every firing tick.
+     - The probe (`counter_probe_readiness.rs`, the same lines through `--emit-fns`): 49 checks, 0 failures, each counter on a board where it must fire and one where it must not.
+     - Both watch scripts: the same sorted lines in either order; the instrumented scan compiles.
+     - Smoke, 6 pairings × 20, km3, seeds 20,990,000,000 + pairing × 10,000 + i: the same moves in 120 of 120 games, no legality finding. Trap Territory's and the later round's counters fire; the Will lists never attacked while Confused there.
+   - **(3) coin_probe v2 and tightened_rule v2** (57c65860), on all 3,813 games of handoff_8c:
+     - the same first differences in 3,813 of 3,813;
+     - **exactly the 8 expected verdicts changed** (the 5 promotion games and km3 4/106 to lookahead; the 2 pairing-31 games on the board), **3,805 unchanged**;
+     - 2,379 of 2,379 golden checks on the table; the 12 controls find nothing.
+     - The node limit: counting free frames free makes the search bigger. Two games (pairing 12, game 69, both bots) stopped at v1's 60,000 nodes before finding anything and are found at 600,000 (`--node-limit`); the check now runs any such probe again at 600,000.
+   **The card-text follow-up before it is done** (Fable via Dustin, Oct 2: the sixth-file question answered "all yes"; branch claude/coin-prevention-round2, head 20e2651, now stacked on the official engine: origin/main merged first, d1b986c; README "The follow-up"). Tests first (53a3cca, all 5 failing), the changes in 3090abb:
    - **Victini's caveat** (`card_validation.rs`): what is implemented (the gate coins, Confusion and a block coin, first and never offered; Will to a block coin, else the attack's first coin) and what stays open (the two gate coins' order together; the block coin's reading, shot row victory-star-block-coin).
    - **Luxury Coin** (`trainer_coin_plan.rs`): not offered on the opponent's Stadium (`active_stadium_owner`); a Stadium with no recorded player keeps the offer.
    - **A Fossil under an Item lock** (`move_generation_trainer.rs`): blocked, as an Item. Pocket Shot List row `fossil-item-lock` added (supporting proof, low, friend battle).
