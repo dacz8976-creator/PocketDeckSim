@@ -1,0 +1,14 @@
+2026-10-02 07:54:15 UTC start
+8e5395e63a14636827260bcb6e8631f02734aec690d9cf334fce606ed20dce0a  decks/screen/floor.py
+d5a751809b968c9a6a97e9a1f9ccb8e95a0fceab4cabc32861b7262f49c06db3  /mnt/c/Users/dacz8/AppData/Local/Temp/claude/C--Users-dacz8-Projects/1b119d13-736d-4588-ba63-0e9ef1756970/scratchpad/wf_floor/drafts/floor_victini_passive.py
+cc82a0326b903d560abcc9fcf832301c3477ab8a3091db13e15c802438ec1c04  /mnt/c/Users/dacz8/AppData/Local/Temp/claude/C--Users-dacz8-Projects/1b119d13-736d-4588-ba63-0e9ef1756970/scratchpad/wf_floor/drafts/run_copy.py
+2f7e5fd6e0ae21fffcb9a4df6e70dc3302e2a372f1fde1eb2bb1aa106747a62e  rl/engine-2026-10-02/deckgym
+cecc76fbe51b33276e0e2e787b6eacba41c52ef4eaa36c5a20954caeedc50b66  rl/engine-2026-10-02/goldfish
+self-check passed: edges 349/350/418/419 (n 1,920) and 78/79/113/114 (n 480); untrusted rule; Supporter turns
+# Floor check: draft-D-entei-grimhound
+
+**Verdict: clears the floor.** 693 wins in 1920 games (36.09%) against the 8 lists in decks/screen/opponents. Bar 20% with the screen's own noise ±1.79 points at this n: 349 wins or fewer fail, 350-418 are borderline, 419 or more clear the floor.
+Flagged cards (the bot is known not to price them fully): Victini as bench piece/passive ability: used on 2332 of 2603 opportunities (89.6%). A share under 25% of at least 20 opportunities is a flag for a person to look at.
+Written: /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/floor_drafts_2026-10-02/draft-D_victini-passive/draft-D-entei-grimhound.md
+3c0cf943105cd34225a0fff8ad4ff2c913b87a579cd68bc9382c33aa2e932adf  rl/results/floor_drafts_2026-10-02/draft-D_victini-passive/draft-D-entei-grimhound.md
+2026-10-02 07:57:38 UTC done
