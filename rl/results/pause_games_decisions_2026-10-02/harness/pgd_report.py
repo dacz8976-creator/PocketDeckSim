@@ -18,6 +18,8 @@ GAMES = {  # game stem -> (result, order, opponent, review folder)
     '020315': ('deck 03 (Wailord / Indeedee wall): lost 1-3', 'second', 'るか (Water: Feebas, Frigibax / Baxcalibur, Palkia ex, Milotic ex)'),
     '020920': ('deck 03 (Wailord / Indeedee wall): won by opponent concession (a full win), 0-0 on points', 'second', 'おさるの上司 (Fire: Charmander line, Entei ex)'),
     '023418': ('deck 03 (Wailord / Indeedee wall): won by opponent concession (a full win), 0-1 on points', 'first', 'KO歐~YOU (Fighting: Bonsly, Riolu / Lucario / Mega Lucario ex, Hitmonchan)'),
+    '021402': ('deck 03 (Wailord / Indeedee wall): lost 0-3', 'first', 'Psychic (Meloetta, Giratina ex, Mega Gardevoir ex, Mega Diancie ex)'),
+    '022135': ('deck 03 (Wailord / Indeedee wall): lost 1-3 after 30 turns', 'first', 'だんくしゅー (Swablu / Mega Altaria ex, Froakie)'),
 }
 DRAW = ("Play:Professor's Research", "Play:Copycat")
 IGNORE = ('EndTurn', 'ResolveAttackRetaliation')
