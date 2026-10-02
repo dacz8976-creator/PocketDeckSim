@@ -268,7 +268,13 @@ These are seen unless marked. Engine references are at 5a18d31 and unchanged on 
 - The results-page "damage done" totals, which include overkill.
 - Which side the 485 s empty-deck banner belongs to (204634).
 
-**Noticed while writing (outside the reviews; a quick read of main's working tree only):** rules/02:153 says the simulator's Wallace check reads printed HP. rules/04:91 says it is blocked unless a matching evolution is in the deck. But can_play_wallace (move_generation_trainer.rs:991-1004) checks get_effective_total_hp() <= 50 and only blocks on an empty deck. I didn't read wallace_effect. Those two notes may be stale; worth a second reader before step 13.
+**Noticed while writing (outside the reviews):** the Wallace notes in rules/02:153 and rules/04:91 looked stale. Sonnet's second read (`WALLACE_second_read_sonnet.md` here, Oct 1) confirms it, and goes further:
+- **What the engine does:** both Wallace's playability check and its effect read the current maximum HP. Wallace is blocked only on an empty deck or with no eligible Water Pokémon in play. A test pins this: `rules_repair_trainers.rs:276`.
+- **A third note is stale too:** rules/05:85.
+- **The whole ⚠ paragraph of rules/04:91 is stale:** every "from your deck" card is now blocked only by an empty deck.
+- **Old code with no caller:** `card_logic/wallace.rs` still reads printed HP, but nothing calls it.
+
+The plain text decides, and the engine already follows it. The replacement wording is in that file's section 5.
 
 ---
 
@@ -288,7 +294,7 @@ These are seen unless marked. Engine references are at 5a18d31 and unchanged on 
 **rules/04 §9:**
 - Line 145: add 204634 (T4, 184-205) as a third sighting, the first with a 0-heads original. Word the "engine mismatch" line as fixed, as step 13 says.
 - New line: Will does not force the Confusion coin [OBSERVED 210403 T16, 376-389; Astra; DUSTIN].
-- New line, next to 144: Will's forced heads is used up on the first batch, and a Victory Star replacement is a fresh flip [OBSERVED 203626 T12, 336.3-347; DUSTIN].
+- New line, next to 144: a Victory Star replacement is a fresh flip, and Will doesn't apply to it [OBSERVED 203626 T12: the replacement's first coin was tails (345.5); the original first heads is consistent with Will but not shown to be forced; DUSTIN: "Will does not apply on a re-roll"]. Sonnet's second read caught the earlier, stronger wording.
 - New line: after a Confusion heads, Will applies to the attack's own first coin [OBSERVED 210403 T14, 347.25-347.95; DUSTIN]. With Will pending, Victory Star is still offered [OBSERVED 210403 T14, 354-355].
 
 **rules/04 line 61** ("Passive same-name Abilities stack", now [COMMUNITY]): add 213034 (117-124), Grass Knot 160 with two Ariados. Label it as arithmetic, not a shown breakdown.
@@ -300,6 +306,10 @@ These are seen unless marked. Engine references are at 5a18d31 and unchanged on 
 - §6 line 137: add Wild Swing discarding two Mega ex with no points (213822, 145-161).
 - §1 / step 4: add 210403 T18 (40 × 2 − 20 = 60) as a second fixed-reduction case, labelled as arithmetic.
 - §2 line 57: add Water Shuriken's plain 20 on Water-weak Typhlosion ex (214736, 289-297).
+
+**Wallace notes** (from `WALLACE_second_read_sonnet.md`, section 5):
+- Replace rules/02:153, rules/04:91 (the whole ⚠ paragraph) and rules/05:85 with that file's wording.
+- Before "the six helpers" goes into rules/09, check the count against `EQUIVALENCE_sonnet.md` section 2. Sonnet counts seven helper functions plus Chase Order's two branches.
 
 **Don't edit inside the switch:**
 - The F4 test's comment (b4a_attack_batch2_test.rs ~432-433, "which coin Will turns to heads there has not been seen in Pocket") now has its Confusion-coin half answered.
