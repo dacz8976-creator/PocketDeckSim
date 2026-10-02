@@ -103,3 +103,45 @@ later round's scratch deck v its Meowth deck. km3 played both sides, 20 games a 
 - **Silent here:** the Will lists never attacked while Confused in these 40 games, so their counters read 0 (the inventory's
   "can act" is not "will act"). No list has a block coin, own-side coin, Guts, Perish Body, Gholdengo or a Fossil, so those
   counters are proven on the probe's boards only.
+
+## 3. coin_probe v2 and the classifier, checked on the Oct 1 hand-off
+
+**coin_probe v2** (`coin_probe_v2.rs`; v1 is `../engine_switch_rules_2026-10/coin_probe.rs`, unchanged) counts plies the way
+km3's and k3's own search does on the official engine (`expectiminimax_player.rs`).
+- The root move costs a ply.
+- A forced continuation costs nothing, so the search crosses the forced end of the opponent's turn. So does a free frame (a
+  pending coin choice, or a frame of only queued attack-damage and random-evolution choices) and a promotion.
+- The search stops where the bots stop: when the current player isn't the mover, and after 3 plies.
+- Everything else is v1's. The one addition is `--node-limit`: the default stays at v1's 60,000, and any other limit is named
+  on the command line.
+- Its self-test (`coin_probe_v2_selftest.txt`) passes: 7 checks and 3 frame checks, 0 failures.
+
+**tightened_rule v2** (`tightened_rule_v2.py`; v1 unchanged) changes one thing.
+- When one game is a prefix of the other and R's game is the longer one, R's first extra tick is a move the old engine never
+  offered.
+- If an exact counter fires at that tick, the game now reads ON THE BOARD (`extra_tick_hits`), not unexplained.
+
+**The check** (`validate_v2.py`, `v2_verdicts.tsv`, `v2_summary.txt`) covered all 3,813 changed games of the hand-off. It used
+step 8c's stored traces and counters, ran coin_probe v2 again on the official engine (main-8626a35), and kept step 8c's Victory
+Star probe results.
+- **The first difference is the same as step 8c's in 3,813 of 3,813 games.**
+- **Exactly the 8 expected verdicts changed; the other 3,805 are unchanged.**
+  - The 5 promotion games (km3 1/399, 4/7, 4/360, 21/310 and k3 4/7): UNEXPLAINED → lookahead. The probe now finds the
+    queued coin choice 3 plies deep, after the promotion and the free end of the opponent's turn, in a frame the bots resolve
+    for free.
+  - km3 4/106: NEEDS A JUDGMENT → lookahead. The choice is found after 2 plies, since Quick-Grow Extract's random evolution
+    is free.
+  - The 2 pairing-31 games (km3 31/12, k3 31/81): LENGTH → ON THE BOARD. `vs_confused_choice_offered` and `_chosen` fire at R's
+    extra tick.
+- Verdicts now: 2,416 on the board and 1,397 lookahead only. No game is unexplained, needs a judgment, or is a length case.
+- Golden checks (v2 at the last coin tick that explains each on-the-board game): 2,379 of 2,379 show the gate on the table.
+- Step 8c's 12 negative controls: v2 finds nothing in all 12.
+- **The node limit.** In the first full run, two other games (pairing 12, game 69, both bots) fell to unexplained. The probe
+  stopped at 60,000 nodes there before finding anything: counting free frames free makes its search tree bigger.
+  - At 600,000 nodes both are found: queued 3 plies deep in a free frame, as v1 found them.
+  - The check now runs again, at 600,000 nodes, any probe that stops at the limit having found nothing. That was these 2 games
+    and no control.
+  - Three other probes stopped at the limit after they had already found their path.
+- Against v1 on the 1,397 lookahead games (the smallest ply found): 1,382 the same, 1 smaller, 5 found only by v2 (the
+  promotion games), 0 found only by v1.
+  - 9 games have no coin path in either probe. All 9 are Victory Star games, explained by the Victory Star probe as in step 8c.

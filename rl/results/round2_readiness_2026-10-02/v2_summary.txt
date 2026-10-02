@@ -1,0 +1,19 @@
+games: 3813; first differences equal to step 8c's: 3813
+verdicts v2: {"LOOKAHEAD ONLY, both halves hold": 1397, "ON THE BOARD": 2416}
+verdicts 8c: {"LENGTH": 2, "LOOKAHEAD ONLY, both halves hold": 1391, "NEEDS A JUDGMENT": 1, "ON THE BOARD": 2414, "UNEXPLAINED": 5}
+changed verdicts: 8; the expected 8 (the 5 promotion games, km3 4/106, the 2 pairing-31 games): exactly these
+unchanged verdicts: 3805
+  8 km3 pairing 1 i 399 (lookahead at 81): UNEXPLAINED -> LOOKAHEAD ONLY, both halves hold; coin v1 {'cut': None, 'free': False, 'queued': None}, v2 {'queued': 3, 'cut': None, 'free': True, 'truncated': False}; path [Promote { player: 0, in_play_idx: 3 } ; (free) EndTurn ; DrawCard { amount: 1 } ; Attack(Attack { energy_required: [Fire], title: "Tongue Whip", fixed_damage: 0, effect:...]
+  8 km3 pairing 4 i 7 (lookahead at 84): UNEXPLAINED -> LOOKAHEAD ONLY, both halves hold; coin v1 {'cut': None, 'free': False, 'queued': None}, v2 {'queued': 3, 'cut': None, 'free': True, 'truncated': False}; path [Promote { player: 0, in_play_idx: 3 } ; (free) EndTurn ; DrawCard { amount: 1 } ; Attack(Attack { energy_required: [Grass, Grass], title: "Slicing Snipe", fixed_damage: ...]
+  8 km3 pairing 4 i 106 (lookahead at 82): NEEDS A JUDGMENT -> LOOKAHEAD ONLY, both halves hold; coin v1 {'cut': None, 'free': False, 'queued': 3}, v2 {'queued': 2, 'cut': None, 'free': False, 'truncated': False}; path [Play { trainer_card: B1a 067 Quick-Grow Extract } ; (free) ChooseRandomEvolutionTarget { in_play_idx: 0, energy_type: Grass } ; Attack(Attack { energy_required: [Grass, Grass], title: "Slicing Snipe",]
+  8 km3 pairing 4 i 360 (lookahead at 57): UNEXPLAINED -> LOOKAHEAD ONLY, both halves hold; coin v1 {'cut': None, 'free': False, 'queued': None}, v2 {'queued': 3, 'cut': None, 'free': True, 'truncated': False}; path [Promote { player: 1, in_play_idx: 3 } ; (free) EndTurn ; DrawCard { amount: 1 } ; Attack(Attack { energy_required: [Grass, Grass], title: "Slicing Snipe", fixed_damage: ...]
+  8 k3 pairing 4 i 7 (lookahead at 95): UNEXPLAINED -> LOOKAHEAD ONLY, both halves hold; coin v1 {'cut': None, 'free': False, 'queued': None}, v2 {'queued': 3, 'cut': None, 'free': True, 'truncated': False}; path [Promote { player: 0, in_play_idx: 2 } ; (free) EndTurn ; DrawCard { amount: 1 } ; Attack(Attack { energy_required: [Grass, Grass], title: "Slicing Snipe", fixed_damage: ...]
+  8 km3 pairing 21 i 310 (lookahead at 87): UNEXPLAINED -> LOOKAHEAD ONLY, both halves hold; coin v1 {'cut': None, 'free': False, 'queued': None}, v2 {'queued': 3, 'cut': 3, 'free': True, 'truncated': False}; path [Promote { player: 1, in_play_idx: 3 } ; (free) EndTurn ; DrawCard { amount: 1 } ; Attack(Attack { energy_required: [Water, Water, Water], title: "Diving Icicles", fixed_...]
+  8 km3 pairing 31 i 12 (length at 48): LENGTH -> ON THE BOARD; counters at the extra tick {'vs_confused_choice_offered': [48], 'vs_confused_choice_chosen': [48]}
+  8 k3 pairing 31 i 81 (length at 72): LENGTH -> ON THE BOARD; counters at the extra tick {'vs_confused_choice_offered': [72], 'vs_confused_choice_chosen': [72]}
+coin probe v2 against v1 on the 1397 lookahead games (the smallest ply found): {'same': 1382, 'smaller': 1, 'larger': 0, 'v2 only': 5, 'v1 only': 0, 'neither': 9}
+lookahead probes that stopped at 60,000 nodes having found nothing, run again at 600,000: 2 (2 found, 0 still stopped); controls run again: 0
+lookahead probes whose final run stopped at its node limit (anything found is still found): 3
+golden checks (v2 at the last explaining coin tick; the gate on the table): 2379 of 2379 on the table
+negative controls (step 8c's 12 coin-probe controls, unchanged deals): 12 found nothing
+problems: none
