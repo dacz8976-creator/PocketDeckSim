@@ -1,0 +1,46 @@
+{
+ "name": "ext_test",
+ "question": "Protocol test: the example external pilot (prefers an attack) against km3.",
+ "repo_commit": null,
+ "selfcheck": {},
+ "created_at": "2026-10-02T19:53:26Z",
+ "stage": "dev",
+ "repo_root": "/home/dacz8976/sh/tree",
+ "pilot": "ext:python3 rl/strength/ext_pilot_example.py attack",
+ "reference": "km3",
+ "decks": [
+  {
+   "name": "t-altaria",
+   "path": "decks/screen/opponents/t-altaria.txt",
+   "sha256": "c3a57b9c835be77ba864514e2636645885c4f22d75028c5f29e2686edcbe171f"
+  }
+ ],
+ "opponents": [
+  {
+   "name": "t-blaziken",
+   "path": "decks/screen/opponents/t-blaziken.txt",
+   "sha256": "d88a70e56dae8f8500d539348223b5fee5eaba705667578a8fcbca95963fd7ed"
+  }
+ ],
+ "deals": 3,
+ "seats": [
+  0,
+  1
+ ],
+ "seed_base": 24300000000,
+ "pair_stride": 10000,
+ "threads": 2,
+ "log_level": "deck",
+ "ext_timeout_s": null,
+ "heldout_decks": [],
+ "heldout_locked": true,
+ "intended_lines": "rl/strength/intended_lines.json",
+ "intended_lines_sha256": "80778f3c4a58aa11d8a10fd96196110177dcc20d240d24f9351798eda4dae5a1",
+ "program": null,
+ "program_sha256": null,
+ "engine": null,
+ "pilot_provenance": null,
+ "reference_provenance": null,
+ "planned_pairs": 1,
+ "planned_games": 12
+}

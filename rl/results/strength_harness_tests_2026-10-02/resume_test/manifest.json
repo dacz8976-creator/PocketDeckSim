@@ -1,0 +1,69 @@
+{
+ "name": "resume_test",
+ "question": "Harness smoke test: kog3 against km3 on a handful of deals. Not a measurement.",
+ "repo_commit": null,
+ "selfcheck": {
+  "km3": "selfcheck pilot=km3 games=12 seat0_wins=8 seat1_wins=4 ties=0 turns=127 digest=81b572198c04d5d1",
+  "kog3": "selfcheck pilot=kog3 games=12 seat0_wins=5 seat1_wins=7 ties=0 turns=126 digest=63f520e3318376ae"
+ },
+ "created_at": "2026-10-02T19:52:41Z",
+ "stage": "dev",
+ "repo_root": "/home/dacz8976/sh/tree",
+ "pilot": "kog3",
+ "reference": "km3",
+ "decks": [
+  {
+   "name": "t-altaria",
+   "path": "decks/screen/opponents/t-altaria.txt",
+   "sha256": "c3a57b9c835be77ba864514e2636645885c4f22d75028c5f29e2686edcbe171f"
+  },
+  {
+   "name": "t-hydreigon",
+   "path": "decks/screen/opponents/t-hydreigon.txt",
+   "sha256": "18688bd9ab09f2638538006590767a5750abe763572c0fb636c47eec93155f3b"
+  },
+  {
+   "name": "draft-A-shark-tempo",
+   "path": "decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt",
+   "sha256": "3f39092ba6680cc5b8013b961e2f5a0f07bc779816ade7a6891983082b2e7417"
+  }
+ ],
+ "opponents": [
+  {
+   "name": "t-blaziken",
+   "path": "decks/screen/opponents/t-blaziken.txt",
+   "sha256": "d88a70e56dae8f8500d539348223b5fee5eaba705667578a8fcbca95963fd7ed"
+  },
+  {
+   "name": "t-lucario",
+   "path": "decks/screen/opponents/t-lucario.txt",
+   "sha256": "76ad71c4d932da51fddc8c3082f184f8012c86e1f1e15c5858e055190560f634"
+  },
+  {
+   "name": "t-suicune",
+   "path": "decks/screen/opponents/t-suicune.txt",
+   "sha256": "639778c3cdc056130278fa13984b1bb1c508226032334d54b7a01a25d3187783"
+  }
+ ],
+ "deals": 5,
+ "seats": [
+  0,
+  1
+ ],
+ "seed_base": 24300000000,
+ "pair_stride": 10000,
+ "threads": 2,
+ "log_level": "deck",
+ "ext_timeout_s": null,
+ "heldout_decks": [],
+ "heldout_locked": true,
+ "intended_lines": "rl/strength/intended_lines.json",
+ "intended_lines_sha256": "80778f3c4a58aa11d8a10fd96196110177dcc20d240d24f9351798eda4dae5a1",
+ "program": "/home/dacz8976/strength_build/strength",
+ "program_sha256": "fc07742a1374ecbb9d72e00a8c0d687d06e9c481f99cb236de4f2bf90997aca3",
+ "engine": "main-8626a35 engine tree 38af8b0cc4f3",
+ "pilot_provenance": null,
+ "reference_provenance": null,
+ "planned_pairs": 9,
+ "planned_games": 180
+}
