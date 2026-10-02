@@ -704,3 +704,19 @@ fn a_confused_attack_that_flips_no_coins_keeps_the_old_path() {
     }
     assert!(hit > 5 && missed > 5, "{hit} hits, {missed} Confusion tails");
 }
+
+/// Victini's caveat (`card_validation.rs`) says what is implemented and what stays open (the card-text follow-up, Oct
+/// 2): the gate coins, Confusion and a block coin, come first and are never offered; Will goes to a block coin, else to
+/// the attack's first coin. It no longer calls those cases unverified and left on the legacy resolution.
+#[test]
+fn victini_caveat_names_the_gate_coins_and_what_stays_open() {
+    use deckgym::card_validation::{get_implementation_status, implementation_limitations, ImplementationStatus};
+    for id in [CardId::B3025Victini, CardId::PB049Victini] {
+        assert_eq!(get_implementation_status(id), ImplementationStatus::RulesUnverified, "{id:?}");
+        let text = implementation_limitations(id).join(" ");
+        assert!(!text.contains("legacy resolution"), "{id:?}: {text}");
+        for needed in ["Confusion", "block coin", "Will", "Still open"] {
+            assert!(text.contains(needed), "{id:?} should name {needed:?}: {text}");
+        }
+    }
+}

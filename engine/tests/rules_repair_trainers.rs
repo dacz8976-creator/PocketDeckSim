@@ -399,3 +399,58 @@ fn healing_trainers_offer_only_damaged_targets() {
         );
     }
 }
+
+/// A Fossil is an Item card (its printed type; rules/01, rules/04 §6), so an Item lock stops it (the card-text
+/// follow-up, Oct 2): player 1's Chingling uses Jingly Noise ("During your opponent's next turn, they can't play any
+/// Item cards from their hand."), and on player 0's turn Helix Fossil in hand can't be placed on the free Bench slots.
+/// The control: player 1 ends the turn without the lock, and the Fossil can be placed.
+#[test]
+fn an_item_lock_stops_a_fossil() {
+    use deckgym::{
+        actions::{Action, SimpleAction},
+        card_ids::CardId,
+        database::get_card_by_enum,
+        models::{Card, PlayedCard},
+        test_support::{attack_action, get_initialized_game_with_board},
+    };
+    for locked in [false, true] {
+        let mut game = get_initialized_game_with_board(
+            0,
+            1,
+            3,
+            vec![PlayedCard::from_id(CardId::A1001Bulbasaur)],
+            vec![
+                PlayedCard::from_id(CardId::B1109Chingling),
+                PlayedCard::from_id(CardId::A1033Charmander),
+            ],
+        );
+        let mut state = game.get_state_clone();
+        state.hands[0] = vec![get_card_by_enum(CardId::A1216HelixFossil), get_card_by_enum(CardId::PA005PokeBall)];
+        game.set_state(state);
+        if locked {
+            game.apply_action(&Action { actor: 1, action: attack_action(CardId::B1109Chingling, 0), is_stack: false });
+            game.play_until_stable();
+        }
+        let (actor, actions) = game.get_state_clone().generate_possible_actions();
+        if actor == 1 {
+            let end_turn = actions
+                .iter()
+                .find(|choice| matches!(choice.action, SimpleAction::EndTurn))
+                .expect("player 1 can end the turn")
+                .clone();
+            game.apply_action(&end_turn);
+            game.play_until_stable();
+        }
+        let (actor, actions) = game.get_state_clone().generate_possible_actions();
+        assert_eq!(actor, 0, "locked {locked}: player 0's turn");
+        let fossil = actions.iter().any(|choice| {
+            matches!(&choice.action, SimpleAction::Place(Card::Trainer(card), _) if card.name == "Helix Fossil")
+        });
+        // The lock is in force: Poke Ball, an Item, is stopped too.
+        let poke_ball = actions.iter().any(|choice| {
+            matches!(&choice.action, SimpleAction::Play { trainer_card } if trainer_card.name == "Poké Ball")
+        });
+        assert_eq!(poke_ball, !locked, "locked {locked}: Poke Ball is playable only without the Item lock");
+        assert_eq!(fossil, !locked, "locked {locked}: the Fossil can be placed only without the Item lock");
+    }
+}

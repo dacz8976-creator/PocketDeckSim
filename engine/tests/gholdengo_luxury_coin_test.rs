@@ -174,8 +174,13 @@ fn master_plan_prefix_is_once_only_and_tail_suffix_waits_for_commit() {
     }
 }
 
+/// Luxury Coin covers "coins for an effect of your Trainer cards" (TEXT_AUDIT.md A6b; the card-text follow-up, Oct 2),
+/// and a Stadium is the Trainer card of the player who played it. On your own Arcade the coins pause for Luxury Coin; on
+/// the opponent's they are flipped with no offer, and Luxury Coin stays unused. A Stadium with no recorded player (a
+/// board set up without playing it) keeps the offer. Replaces `activated_stadium_records_placer_but_eligibility_belongs_
+/// to_actor`, which pinned the offer whoever had played the Stadium.
 #[test]
-fn activated_stadium_records_placer_but_eligibility_belongs_to_actor() {
+fn luxury_coin_is_offered_only_on_the_players_own_stadium() {
     for owner in [None, Some(0), Some(1)] {
         let mut game = setup(7, CardId::B4a109Gholdengo);
         let mut state = game.get_state_clone();
@@ -188,14 +193,22 @@ fn activated_stadium_records_placer_but_eligibility_belongs_to_actor() {
             action: SimpleAction::UseStadium,
             is_stack: false,
         });
-        let paused = game.get_state_clone();
-        assert!(paused.has_used_stadium[0]);
-        let pending = paused.pending_trainer_coin_choice.unwrap();
-        assert_eq!(pending.flips.len(), 3);
-        assert!(matches!(
-            pending.route,
-            Some(TrainerCoinEffectRoute::Stadium { played_by, .. }) if played_by == owner
-        ));
+        let after = game.get_state_clone();
+        assert!(after.has_used_stadium[0]);
+        if owner == Some(1) {
+            assert!(
+                after.pending_trainer_coin_choice.is_none(),
+                "the opponent's Arcade is not one of your Trainer cards: no Luxury Coin offer"
+            );
+            assert!(!after.luxury_coin_used_this_turn[0]);
+        } else {
+            let pending = after.pending_trainer_coin_choice.unwrap();
+            assert_eq!(pending.flips.len(), 3, "owner {owner:?}");
+            assert!(matches!(
+                pending.route,
+                Some(TrainerCoinEffectRoute::Stadium { played_by, .. }) if played_by == owner
+            ));
+        }
     }
 }
 

@@ -210,3 +210,40 @@ fn test_guts_does_not_trigger_on_non_lethal_damage() {
         );
     }
 }
+
+/// Guts on the attacker's own Pokémon (TEXT_AUDIT.md E1; the card-text follow-up, Oct 2): "If this Pokémon would be
+/// Knocked Out by damage from an attack" has no "your opponent's". Whiscash's Earthquake ("This attack also does 10
+/// damage to each of your Benched Pokémon") would Knock Out its own Benched Ursaluna at 10 HP: over 60 seeds Ursaluna
+/// must sometimes survive at 10 HP (heads) and sometimes be Knocked Out. Before the fix the attack's outcome flipped
+/// Guts only for the opponent's Pokémon, so it was always Knocked Out.
+#[test]
+fn guts_flips_for_your_own_attacks_damage_to_your_own_ursaluna() {
+    let (mut survived, mut knocked_out) = (0, 0);
+    for seed in 0..60u64 {
+        let mut game = get_initialized_game_with_board(
+            seed,
+            0,
+            3,
+            vec![
+                PlayedCard::from_id(CardId::A3b039Whiscash).with_energy(vec![EnergyType::Fighting; 4]),
+                PlayedCard::from_id(CardId::B3b058Ursaluna).with_remaining_hp(10),
+            ],
+            vec![PlayedCard::from_id(CardId::A1036CharizardEx)],
+        );
+        game.apply_action(&Action {
+            actor: 0,
+            action: attack_action(CardId::A3b039Whiscash, 0),
+            is_stack: false,
+        });
+        game.play_until_stable();
+        let state = game.get_state_clone();
+        match state.enumerate_in_play_pokemon(0).find(|(_, p)| p.get_name() == "Ursaluna") {
+            Some((_, ursaluna)) => {
+                assert_eq!(ursaluna.get_remaining_hp(), 10, "seed {seed}: a Guts heads leaves 10 HP");
+                survived += 1;
+            }
+            None => knocked_out += 1,
+        };
+    }
+    assert!(survived > 10 && knocked_out > 10, "{survived} survived, {knocked_out} Knocked Out: the Guts coin must flip");
+}

@@ -171,3 +171,60 @@ fn test_perish_body_is_passive() {
         .iter()
         .any(|a| matches!(a.action, SimpleAction::UseAbility { .. })));
 }
+
+/// Perish Body on a plain queued hit at the Active (TEXT_AUDIT.md E2; the card-text follow-up, Oct 2). Vespiquen ex's
+/// Chase Order discards a Benched Bulbasaur for 70 more, 140 in all, queued as a plain `ApplyDamage` at the Active
+/// Galarian Cursola (80 HP), which is Knocked Out "by damage from an attack from your opponent's Pokémon". Over 60
+/// seeds the coin must sometimes Knock Out Vespiquen ex (the opponent then has its 2 points) and sometimes not. Before
+/// the fix a queued `ApplyDamage` never flipped Perish Body.
+#[test]
+fn perish_body_flips_for_a_plain_queued_hit_at_the_active() {
+    let (mut attacker_knocked_out, mut attacker_survived) = (0, 0);
+    for seed in 0..60u64 {
+        let mut game = get_initialized_game_with_board(
+            seed,
+            0,
+            3,
+            vec![
+                PlayedCard::from_id(CardId::B4011VespiquenEx).with_energy(vec![EnergyType::Grass; 2]),
+                PlayedCard::from_id(CardId::A1001Bulbasaur),
+                PlayedCard::from_id(CardId::A1001Bulbasaur),
+            ],
+            vec![
+                PlayedCard::from_id(CardId::A4a035GalarianCursola),
+                PlayedCard::from_id(CardId::A1033Charmander),
+            ],
+        );
+        game.apply_action(&Action {
+            actor: 0,
+            action: attack_action(CardId::B4011VespiquenEx, 0),
+            is_stack: false,
+        });
+        for _ in 0..10 {
+            let state = game.get_state_clone();
+            if state.move_generation_stack.is_empty() {
+                break;
+            }
+            let (actor, choices) = state.generate_possible_actions();
+            if actor != 0 || choices.is_empty() {
+                break;
+            }
+            let discard = choices.iter().find(|choice| {
+                matches!(&choice.action, SimpleAction::DiscardOwnBenchedThenDamage { in_play_idxs, .. } if !in_play_idxs.is_empty())
+            });
+            game.apply_action(discard.unwrap_or(&choices[0]));
+        }
+        game.play_until_stable();
+        let state = game.get_state_clone();
+        assert_eq!(state.points[0], 1, "seed {seed}: Cursola is Knocked Out either way");
+        if state.points[1] == 2 {
+            attacker_knocked_out += 1;
+        } else {
+            attacker_survived += 1;
+        }
+    }
+    assert!(
+        attacker_knocked_out > 10 && attacker_survived > 10,
+        "{attacker_knocked_out} attackers Knocked Out, {attacker_survived} survived: the Perish Body coin must flip"
+    );
+}
