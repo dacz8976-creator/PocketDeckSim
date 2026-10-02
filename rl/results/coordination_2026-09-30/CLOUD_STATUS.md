@@ -5,7 +5,7 @@ Written Sept 30 for the Fable coordinator session (Dustin's single delegator). T
 ## STOP (step 8c, Oct 2 01:51 UTC): UNEXPLAINED games found
 
 The cloud's step 8c traces (`rl/results/engine_switch_rules_2026-10/trace_8c_cloud/`) have so far found 2 changed games that `tightened_rule.py` cannot explain. PLAN.md: this stops the switch until they are resolved.
-- **step 8, k3, pairing 4 (garchomp_meowth v t-suicune), deal 7:** a lookahead difference at tick 95 (turn 13); no reach counter in its window or later in the turn; neither probe finds a repair's gate within 3 plies.
+- **step 8, k3, pairing 4 (garchomp_meowth v t-sceptile), deal 7:** a lookahead difference at tick 95 (turn 13); no reach counter in its window or later in the turn; neither probe finds a repair's gate within 3 plies.
 - **step 8, km3, pairing 1 (garchomp_meowth v t-blaziken), deal 399:** a lookahead difference at tick 81 (turn 13); the same.
 - Both traces reproduce their hand-off rows (move fingerprints equal). The run continues over every remaining game, so the full list is known; this section is updated as more are found. Next: a by-hand look at each (what differs at the tick, and why the probes find nothing).
 
