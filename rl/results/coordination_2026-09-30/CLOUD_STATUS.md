@@ -2,6 +2,13 @@
 
 Written Sept 30 for the Fable coordinator session (Dustin's single delegator). Times are UTC.
 
+## STOP (step 8c, Oct 2 01:51 UTC): UNEXPLAINED games found
+
+The cloud's step 8c traces (`rl/results/engine_switch_rules_2026-10/trace_8c_cloud/`) have so far found 2 changed games that `tightened_rule.py` cannot explain. PLAN.md: this stops the switch until they are resolved.
+- **step 8, k3, pairing 4 (garchomp_meowth v t-suicune), deal 7:** a lookahead difference at tick 95 (turn 13); no reach counter in its window or later in the turn; neither probe finds a repair's gate within 3 plies.
+- **step 8, km3, pairing 1 (garchomp_meowth v t-blaziken), deal 399:** a lookahead difference at tick 81 (turn 13); the same.
+- Both traces reproduce their hand-off rows (move fingerprints equal). The run continues over every remaining game, so the full list is known; this section is updated as more are found. Next: a by-hand look at each (what differs at the tick, and why the probes find nothing).
+
 1. **Current task, and the instruction that set it.** Step 8c of the rules switch (Fable via Dustin, Oct 1 evening; see the last log line). The card-text job (Will, the audit, Trap Territory) waits until it is done. The Oct 1 jobs before it are done:
    - **PLAN step 8b's early-warning rows** (3a107f4, `rl/results/engine_switch_rules_2026-10/early_warning_8b/README.md`), on a scratch build of R (f8cfa9c, engine tree 38af8b0, the laptop's candidate's):
      - 960 games, pairings 32-35 × 40 × km3 and k3 × old, new and watch, every program built from `git archive` in a fresh target folder.
