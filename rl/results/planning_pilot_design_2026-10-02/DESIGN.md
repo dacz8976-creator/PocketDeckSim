@@ -195,6 +195,25 @@ but never their hand or deck order. It would be built after Monday's reset, unle
   - the opponent's hand size.
 - If Sonnet's count finds Auto recordings with these decks already, those games drop off this list.
 
+## 9. Addendum: approved, with amendments (Oct 2)
+
+Dustin, verbatim: "I approve the build now." Adopted with the approval (the coordinator's amendments and Astra's points).
+Where they differ from sections 5-8, they win:
+1. **Candidates.** Every distinct legal first action where practical, not only km3's best few.
+2. **Information.** The pilot knows only what its side may know.
+   - Giving it the opponent's exact 20-card list (section 5) is a labelled laboratory condition, not the realistic setting.
+   - Realistic brew testing needs uncertainty about the opponent's list: recognising an archetype doesn't reveal its 20 cards.
+   - The meta side is never handed the brew's exact list.
+3. **No leak.** Every play-out starts from a state sampled from what the pilot may see. `engine/examples/net_divergence.rs` starts its play-outs from the real saved state, hidden cards included; the pilot must not.
+4. **Coordinated plans.** The first demonstrations include a plan that needs several coordinated decisions: charge a Benched attacker, keep a sacrificial Active, promote at the right time. That shows whether km3's later mistakes inside the play-outs hide good first moves (the first risk in section 5).
+5. **Reporting.** The 34 pause-game positions are development examples, not an exam. Agreement with Auto doesn't establish Auto-level strength.
+6. **Both sides of the result.** The report brings back examples of improved decisions and of remaining failures.
+
+Who does what:
+- The cloud writes the code on `claude/playout-pilot`.
+- The laptop reviews it once, then builds it beside the pinned engine. km3 in that build must reproduce the pinned self-check and the official games.
+- It then runs on the development positions, and the laptop sizes and launches the unattended development run in the strength harness. The harness's groups and the locked list are filled (`rl/strength/`, 8521b291).
+
 ---
 
 ## Appendix: what the strength harness needs (for Sonnet)
