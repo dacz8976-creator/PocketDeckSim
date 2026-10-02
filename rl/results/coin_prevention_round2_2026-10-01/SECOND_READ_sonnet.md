@@ -95,3 +95,29 @@ Re-done by card id over the 87 deck files at main (`decks/` and the switch's car
 ## Files
 
 `SECOND_READ_sonnet.md` (this), `second_read_inventory.py` and `second_read_inventory_output.txt` (the id-based deck inventory at main 7c1b62f8), `second_read_dbscan.py` and `second_read_dbscan_output.txt` (the database text scan).
+
+
+## Addendum (Oct 2, evening): the engine tests re-run, the later tips, the cloud's readiness inventory
+
+**Later tips.** The branch has moved since the read above: 3090abb → 69471480 (readiness job 1) → 57c65860 (jobs 2 and 3, `coin_probe` v2 and `tightened_rule` v2). `git diff --name-only` shows **no `engine/` file changed** across either step (docs, inventory and probe tooling only), so everything above still describes the same engine.
+
+**Tests re-run by a second reader** (nice 19, 2 jobs, a fresh `git archive` of 69471480's `engine/`, a new target directory on the WSL disk, run on the laptop with the laptop Opus's OK). Each row is the failing-before state the cloud's logs record, and the count matches the cloud's log in every row:
+
+| step | commit | filter | passed | failed | cloud's log |
+|---|---|---|---|---|---|
+| B1 six sites | 99f5bc4a | `meowth_carefree_steps_test` | 16 | 7 | 16 / 7 |
+| B2 Kangaskhan | 9145eb38 | same | 23 | 2 | 23 / 2 |
+| B3 Will | 59c7c2ae | `b4a_attack_batch2_test` | 14 | 2 | 14 / 2 |
+| B4a text, `b4a` | 7e131325 | `b4a_attack_batch2_test` | 14 | 3 | 14 / 3 |
+| B4b text, Meowth | 7e131325 | `meowth_carefree_steps_test` | 25 | 4 | 4 failed in the cloud's `pokemon` run |
+| B5 Trap Territory | 05eb8492 | `legacy_ability_logic_test` | 30 | 2 | 2 failed in the cloud's `pokemon` run |
+| B6a Ursaluna, Cursola | 53a3cca1 | `ursaluna_guts_test`, `galarian_cursola_perish_body_test` | 9 | 2 | 2 failed in the cloud's `pokemon` run |
+| B6b Gholdengo | 53a3cca1 | `gholdengo_luxury_coin_test` | 9 | 1 | 9 / 1 |
+| B6c Fossil | 53a3cca1 | `rules_repair_trainers` | 9 | 1 | 9 / 1 |
+| B6d Victini | 53a3cca1 | `victini_victory_star_test` | 19 | 1 | 19 / 1 |
+
+The failed counts match in every row. (B4b, B5 and B6a were filtered to one test file here; the cloud's logs run the whole `pokemon` binary, so for those three I compared the number of failing tests, not the totals.)
+
+**The full suite at the tip 69471480:** 2,030 passed, 9 failed. All nine are `players::` unit tests (`b3_with_an_empty_list_plays_k3_game_for_game`, the `km_`, `kog_`, `koh_`, `kph_` and `kt_` value-function tests) that read `../decks/research/...`; my archive held `engine/` only, so the files were missing (`No such file or directory`). With `decks/` added next to `engine/` (taken from the later tip 57c65860; the engine is identical) the same nine pass: **2,039 passed, 0 failed**, the cloud's count. They are environment failures of an engine-only archive, not a regression; a reader who archives `engine/` alone should expect them.
+
+**The cloud's readiness inventory** (`rl/results/round2_readiness_2026-10-02/`) covers 68 lists under `decks/` plus 14 lists outside it that the pairing files name (B2e, the carriers and scratch lists). My scan above covered `decks/` and the carriers only, so it missed lists such as B2e's `h-whimsicott`, which holds two Ariados (the cloud lists Dustin's 12 and `h-whimsicott` for Trap Territory). The two scans do not disagree on any list they share.
