@@ -5,7 +5,7 @@ import json, os, re, sys, collections, statistics
 D = os.environ.get('PGD_DIR', '/home/dacz8976/pgd')
 RUNS = os.environ.get('PGD_RUNS', f'{D}/runs')  # where the pg_pos output of the pilot being reported lives
 OUT = sys.argv[1]
-POS = {p['id']: p for p in json.load(open(f'{D}/positions_A.json', encoding='utf-8'))}
+POS = {p['id']: p for p in json.load(open(os.environ.get('PGD_POSITIONS', f'{D}/positions_A.json'), encoding='utf-8'))}
 
 
 def blocks(pid):
@@ -27,7 +27,9 @@ md = ["# Turbo Shark turns: km3's scores, step by step along his line\n",
       "Scores are the search's root values (the same print as the Step 8c dump), averaged over 12 seeds; a gap of 0 means his action was km3's top-scoring candidate. "
       "The last step of each block is the Bench Energy target of Turbo Shark: every legal target and its root score.\n"]
 rows = []
-for pid in ('A-132311-t03', 'A-115323-t05b', 'A-115323-t07', 'A-132311-t07b'):
+for pid in ('A-132311-t03', 'A-115323-t05b', 'A-115323-t07', 'A-115323-t11', 'A-132311-t07b'):
+    if pid not in POS or not os.path.exists(f'{RUNS}/out_{pid}.jsonl'):
+        continue  # not in this run (held out, or not built)
     p = POS[pid]
     lines = [json.loads(l) for l in open(f'{RUNS}/out_{pid}.jsonl', encoding='utf-8') if l.strip()]
     forced = [l for l in lines if l['kind'] == 'forced']

@@ -1,6 +1,8 @@
-# Pause games vs km3: draft A, his first four turns (Oct 2, 2026)
+# Pause games vs km3: draft A, his turns 1-7 (Oct 2, 2026)
 
-**One-line answer.** On the 20 turn starts (his turns 1-4 in the five Draft A games), km3's first action matches his in 8, splits in 7 (draw-card choices that change with the sampled deck order) and differs in 5; its whole plan up to the first draw matches in 3. Where the plans differ it is almost always a Supporter choice (Irida, or which draw card), then retreat/promotion (3 turns); the attack is never different. On Turbo Shark's Bench Energy km3's scores differ by 10-50 between targets, and one tie. No turn lets me say who was right by outcome. Nothing here says anything about strength.
+**One-line answer.** On the 20 turn starts of his turns 1-4 (five Draft A games), km3's first action matches his in 8, splits in 7 (draw-card choices that change with the sampled deck order) and differs in 5; its whole plan up to the first draw matches in 3. On the 12 turn starts of his turns 5-7 it matches in 5 and differs in 7 (these turns have more cards in play and more to choose from), the whole plan in 2. Over all 32 turn starts, where both his line and km3's reach an attack, **km3 uses a different attack in 1 of 22**: 114458 turn 10, where he attacked with the four-Water Lapras (Surf) and km3 retreats it and attacks with the Ninetales ex (Binding Snow). Everything else that differs is the plan around the attack: which Supporter (Irida on 11 turns where he did not), which draw card first (seed noise), healing and retreat/promotion order. On Turbo Shark's Bench Energy km3's scores differ by 10-50 between targets, with ties, and its pick matched his on 2 of 4 real choices. km3 recognised all three immediate wins (143837 t13, 114458 t12, 143309 t10). No turn lets me say who was right by outcome. Nothing here says anything about strength.
+
+**Added later on Oct 2: turns 5-7** (see the section below), the held-out set of positions, and milestone tags on every position.
 
 ## What was done
 
@@ -59,6 +61,23 @@ Not unambiguous on any turn. The narrowest fact: on 114458 t08 his Ninetales ex 
 5. km3 is a depth-3 search; its choice among draw cards and the root scores depend on the sampled deck order. A score is a root value of the search, not a probability.
 6. Five games and twenty turns: no claim about strength, either way.
 7. Deck 03 (the five Wailord games) is not done; it waits for the coordinator.
+
+## His turns 5-7 (12 more turn starts), the held-out set and the milestone tags
+
+**Hands.** Bookkeeping from the review (the opening hand, named draws, plays) predicted every hand; five Sonnet helpers then read the start of each of the 12 turns from stills and **all 12 predictions held** (nothing unreadable, nothing different; two cards, the Elegant Cape on 132311 turn 11 and the Ninetales ex on 115323 turn 13, are "probable" because the drawn card is seen zoomed or played, not in the fan). Opponent hand sizes are the helpers' visual counts of card backs. The frames are listed in `FRAME_READS.md`.
+
+**Results (turns 5-7, 12 turn starts).** First action = his in 5 (143837 t13, 114458 t12, 115323 t09, t11, 132311 t13), different in 7; the whole plan to the first draw equal in 2 (114458 t12 and 132311 t13); same first action but a different plan later in 3 (143837 t13, 115323 t09, t11). Details per position in `TABLES.md`. What is new compared with turns 1-4:
+
+- **The three immediate wins**: 143837 t13 (Cyrus brings the damaged Ogerpon ex Active, Binding Snow KOs it for 2 points: 2 -> 4), 114458 t12 (Binding Snow KOs the 20-HP Aerodactyl, the third point) and 143309 t10 (Binding Snow KOs the 10-HP Mewtwo ex, 1 -> 3). km3 takes the win in all three, and in 114458 t12 and 143837 t13 with exactly his first action (Cyrus; the attack). On 143309 t10 it attacks at once, without the Vulpix, Irida and attachment he did first.
+- **A different attack, once**: 114458 t10 (milestone: adapting when the plan fails): he put the Cape on the second Ninetales and attacked with the four-Water Lapras (Surf, 70 + 20 Water weakness, KOs the 40-HP Chandelure); km3 retreats Lapras, puts the Cape on, attaches and attacks with the Ninetales ex (Binding Snow, which also blocks the opponent's Active attachment).
+- **Same actions, different order, not always neutral**: 115323 t09 (managing a sacrifice): he heals the Mega Sharpedo ex (a 3-point liability) with Irida and two Lucky Ice Pops, then retreats it into Lapras; km3 retreats before the Ice Pops, so the Ice Pops, which heal the Active Pokémon, would heal Lapras instead. The report tags this "same actions, different order", but the order decides which Pokémon is healed.
+- **Retreat before evolving**: on 115323 t13 and 132311 t09 km3 retreats first and evolves the Vulpix in the Active Spot (his: evolve on the Bench, then retreat into it), the same end board; on 115323 t13 it also puts the turn's Water on the Carvanha (slot 1) where he put it on the earlier Vulpix.
+- **Turbo Shark target, a fourth**: 115323 t11 (he benched a new Vulpix, gave it the turn's Water, then Turbo Shark's Water too): km3's scores for the targets are Carvanha (0 Energy) 483.03, Vulpix 433.03, the new Vulpix 433.03, so it would put Turbo Shark's Water on the Carvanha; his pick scores 50 lower. Over the four real choices (115323 t05, t07, t11; 132311 t07) km3 matched his target on 2 (115323 t05, 132311 t07 by a tie-break), not on 2 (115323 t07 by 10, t11 by 50).
+- Irida: km3 plays it on 3 more turns where he did not (143837 t09 and t11, 132311 t09), 11 in all.
+
+**Held-out set.** A quarter of the games, chosen by game and not by turn, by a fixed rule written in `positions_A.py` and `positions_heldout.json`: a game is held out when `int(sha256('pause-heldout-v1|' + game_id), 16) % 4 == 0` (game id = the recording stem, `ladder-<stem>` for the Ladder Log). It is stable as games are added. For these five games that holds out **143309** (its 5 positions); the development games are 114458, 115323, 132311 and 143837 (27 positions with the two mid-turn ones). `run_pilot.sh` skips held-out positions while `positions_heldout.json` says `locked: true`, and `filter_positions.py` refuses `--include-heldout` while it is locked; nobody flips it until the laptop Opus or the coordinator says so. (km3, the reference, was run on everything, and the findings above include 143309: the lock concerns development pilots.)
+
+**Milestone tags** (my reading of what each turn is about; a position can carry several; each row of `TABLES.md` shows them): preparing an attacker (18 turn starts), managing a sacrifice (7), recognising an immediate win (3), adapting when the plan fails (2). The positions with their tags are in `positions_A.json` (`milestones`).
 
 ## The positions as a test set for any pilot
 
