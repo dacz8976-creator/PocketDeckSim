@@ -2,14 +2,15 @@
 """Turbo Shark turns: his line replayed step by step on km3, and the Bench-target scores. Writes TURBO_SHARK.md into OUTDIR."""
 import json, os, re, sys, collections, statistics
 
-D = '/home/dacz8976/pgd'
+D = os.environ.get('PGD_DIR', '/home/dacz8976/pgd')
+RUNS = os.environ.get('PGD_RUNS', f'{D}/runs')  # where the pg_pos output of the pilot being reported lives
 OUT = sys.argv[1]
 POS = {p['id']: p for p in json.load(open(f'{D}/positions_A.json', encoding='utf-8'))}
 
 
 def blocks(pid):
     out, cur = {}, None
-    for line in open(f'{D}/runs/err_{pid}.txt', encoding='utf-8', errors='replace'):
+    for line in open(f'{RUNS}/err_{pid}.txt', encoding='utf-8', errors='replace'):
         if line.startswith('PGSTEP'):
             m = re.match(r'PGSTEP (\S+) seed (\d+) (free|forced) (\d+)', line)
             cur = (int(m.group(2)), m.group(3), int(m.group(4)))
@@ -28,7 +29,7 @@ md = ["# Turbo Shark turns: km3's scores, step by step along his line\n",
 rows = []
 for pid in ('A-132311-t03', 'A-115323-t05b', 'A-115323-t07', 'A-132311-t07b'):
     p = POS[pid]
-    lines = [json.loads(l) for l in open(f'{D}/runs/out_{pid}.jsonl', encoding='utf-8') if l.strip()]
+    lines = [json.loads(l) for l in open(f'{RUNS}/out_{pid}.jsonl', encoding='utf-8') if l.strip()]
     forced = [l for l in lines if l['kind'] == 'forced']
     bl = blocks(pid)
     md.append(f"## {pid}: game {p['game']}, his turn {p['his_turn']} (game turn {p['turn_count']})" + (' (mid-turn position)' if pid.endswith('b') else '') + '\n')

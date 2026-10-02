@@ -3,7 +3,8 @@
 usage: pgd_report.py OUTDIR"""
 import json, glob, os, re, sys, collections, statistics
 
-D = '/home/dacz8976/pgd'
+D = os.environ.get('PGD_DIR', '/home/dacz8976/pgd')
+RUNS = os.environ.get('PGD_RUNS', f'{D}/runs')  # where the pg_pos output of the pilot being reported lives
 OUT = sys.argv[1]
 os.makedirs(OUT, exist_ok=True)
 POS = json.load(open(f'{D}/positions_A.json', encoding='utf-8'))
@@ -113,14 +114,14 @@ def category(his, km):
 
 
 def runs(pid):
-    f = f'{D}/runs/out_{pid}.jsonl'
+    f = f'{RUNS}/out_{pid}.jsonl'
     lines = [json.loads(l) for l in open(f, encoding='utf-8') if l.strip()]
     return ([l for l in lines if l['kind'] == 'free'], [l for l in lines if l['kind'] == 'forced'], [l for l in lines if l['kind'] == 'position'][0])
 
 
 def blocks(pid):
     out, cur = {}, None
-    for line in open(f'{D}/runs/err_{pid}.txt', encoding='utf-8', errors='replace'):
+    for line in open(f'{RUNS}/err_{pid}.txt', encoding='utf-8', errors='replace'):
         if line.startswith('PGSTEP'):
             m = re.match(r'PGSTEP (\S+) seed (\d+) (free|forced) (\d+)', line)
             cur = (int(m.group(2)), m.group(3), int(m.group(4)))

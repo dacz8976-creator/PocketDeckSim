@@ -60,6 +60,10 @@ Not unambiguous on any turn. The narrowest fact: on 114458 t08 his Ninetales ex 
 6. Five games and twenty turns: no claim about strength, either way.
 7. Deck 03 (the five Wailord games) is not done; it waits for the coordinator.
 
+## The positions as a test set for any pilot
+
+`harness/run_pilot.sh BOT [SEEDS] [PG_POS_BINARY]` runs every position with the pilot code BOT (any code `parse_player_code` knows) at nice 19 and writes `runs_<BOT>/` (raw) and `report_<BOT>/` (the tables above, for that pilot) in about four seconds. For an experimental pilot, build the harness against the engine tree that contains it: `PGD_ENGINE=<engine dir> PGD_TARGET=<target dir> PGD_BIN=<binary> harness/pgd_build.sh 8` (it applies the print-only patch, which asserts its anchors are found exactly once, then builds `pg_pos.rs` as an example). Pilots built on `ExpectiMiniMaxPlayer` also print their root scores; others record only their choices. To add positions, extend `positions_A.py` (a position names a deck key; `--deck KEY=file` supplies the list) and rerun. Check: `kta3` gives exactly the same tables as `km3` on these 22 positions, as it should (km differs from kta only by the Training Area / Arena bonus, which changes no choice here).
+
 ## Files
 
 `TABLES.md` (a table per game), `TURBO_SHARK.md`, `summary.json`, `totals.json`, `positions_A.json` and `positions_A.py` (the positions with their notes), `FRAME_READS.md` (how each hand was fixed), `raw/` (stdout JSON lines and the PGSTEP/PGDUMP root scores for every position and seed), `harness/` (the example, the print-only patch, the run and report scripts), `BUILD.txt` (hashes).
