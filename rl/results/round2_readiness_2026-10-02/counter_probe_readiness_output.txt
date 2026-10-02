@@ -1,0 +1,50 @@
+ok   Wild Swing, a coin Ability where it lands, the queued choice chosen: {"coin_queued_by_attack[Wild Swing]"}
+ok   Wild Swing, no coin Ability there, a plain choice chosen: {"offgate_by_attack[Wild Swing]", "offgate_plain_attack_damage"}
+ok   Wellspring Dance, a coin Ability where it lands, the queued choice chosen: {"coin_queued_by_attack[Wellspring Dance]"}
+ok   Wellspring Dance, no coin Ability there, a plain choice chosen: {"offgate_by_attack[Wellspring Dance]", "offgate_plain_attack_damage"}
+ok   Tornado Shot, a coin Ability where it lands, the queued choice chosen: {"coin_queued_by_attack[Tornado Shot]"}
+ok   Tornado Shot, no coin Ability there, a plain choice chosen: {"offgate_by_attack[Tornado Shot]", "offgate_plain_attack_damage"}
+ok   Double Splash, a coin Ability where it lands, the queued choice chosen: {"coin_queued_by_attack[Double Splash]", "offgate_by_attack[Double Splash]"}
+ok   Double Splash, no coin Ability there, a plain choice chosen: {"offgate_by_attack[Double Splash]", "offgate_plain_attack_damage"}
+ok   Triple Bombardment, a coin Ability where it lands, the queued choice chosen: {"coin_queued_by_attack[Triple Bombardment]"}
+ok   Triple Bombardment, no coin Ability there, a plain choice chosen: {"offgate_by_attack[Triple Bombardment]", "offgate_plain_attack_damage"}
+ok   Mischievous Ring, a coin Ability where it lands, the queued choice chosen: {"coin_queued_by_attack[Mischievous Ring]"}
+ok   Mischievous Ring, no coin Ability there, a plain choice chosen: {"offgate_by_attack[Mischievous Ring]", "offgate_plain_attack_damage"}
+ok   Litter, a coin Ability where it lands, the queued choice chosen: {"coin_queued_by_attack[Litter]"}
+ok   Litter, no coin Ability there, a plain choice chosen: {"offgate_by_attack[Litter]", "offgate_plain_attack_damage"}
+ok   Double-Punching Family, a coin Ability where it lands, the queued choice chosen: {"coin_queued_by_attack[Double-Punching Family]"}
+ok   Double-Punching Family, no coin Ability there, a plain choice chosen: {"offgate_by_attack[Double-Punching Family]", "offgate_plain_attack_damage"}
+ok   Raging Thunder into an Active B2124Meowth, the plain choice chosen: {"coin_plain_damage_by_attack[Raging Thunder]", "coin_plain_damage_chosen"}
+ok   Raging Thunder into an Active A1001Bulbasaur, the plain choice chosen: {"offgate_plain_attack_damage"}
+ok   a copied Chase Order (Copy Anything) into an Active B2124Meowth: {"coin_plain_damage_by_attack[Chase Order]", "coin_plain_damage_chosen"}
+ok   a copied Chase Order (Copy Anything) into an Active A1001Bulbasaur: {"offgate_by_attack[Chase Order]", "offgate_plain_attack_damage"}
+ok   Chase Order with the discard into an Active Galarian Cursola, 80 HP: {"offgate_by_attack[Chase Order]", "perish_plain_hit_chosen", "perish_plain_hit_offered"}
+ok   Chase Order with the discard into an Active Galarian Cursola, 400 HP: {"offgate_by_attack[Chase Order]", "offgate_plain_attack_damage"}
+ok   Earthquake, its own Benched Meowth: {"coin_own_side_split"}
+ok   Earthquake, its own Benched Bulbasaur: {}
+ok   Earthquake, its own Benched Ursaluna at 10 HP: {"guts_own_side_split"}
+ok   Earthquake, its own Benched Ursaluna at 160 HP: {}
+ok   Earthquake, into the opponent's Active Ursaluna at 10 HP: {"offgate_guts_opponent_split"}
+ok   Heat Charged, Confused, Will pending: {"will_confused_attack"}
+ok   Heat Charged, Confused, Will pending, Victini: {"will_confused_attack"}
+ok   Heat Charged, Confused, no Will: {"offgate_confused_attack"}
+ok   Heat Charged, Confused, no Will, Victini: {"offgate_confused_attack"}
+ok   Heat Charged, a block coin, Will pending: {"will_block_coin_attack"}
+ok   Heat Charged, a block coin, Will pending, Confused: {"will_block_coin_attack"}
+ok   Heat Charged, a block coin, no Will: {"offgate_block_coin_attack"}
+ok   Heat Charged, a block coin, no Will, Victini: {"vs_block_coin_built"}
+ok   Heat Charged, a block coin, Will pending, Victini: {"vs_block_coin_built", "will_block_coin_attack"}
+ok   Heat Charged, no gate coin, Victini: {"offgate_vs_ungated_built"}
+ok   Heat Charged, no gate coin, Will pending: {}
+ok   the Victory Star choice after a block coin's heads: {"vs_block_coin_choice_offered"}
+ok   player 0's moves, 2 Energy, two Ariados, EndTurn chosen: {"trap_territory_offer_changed", "trap_territory_two_in_play"}
+ok   player 0's moves, 4 Energy, two Ariados, EndTurn chosen: {"trap_territory_two_in_play"}
+ok   player 0's moves, 2 Energy, one Ariados, EndTurn chosen: {"offgate_trap_territory_one"}
+ok   Grass Knot into Charizard ex, 2 Ariados: {"trap_territory_outcome_changed", "trap_territory_two_in_play"}
+ok   Grass Knot into Charizard ex, 1 Ariados: {"offgate_trap_territory_one"}
+ok   UseStadium on the opponent's Arcade: {"luxury_coin_opp_stadium"}
+ok   UseStadium on player 0's own Arcade: {}
+ok   the Luxury Coin choice on player 0's own Arcade: {"offgate_luxury_coin_offered"}
+ok   player 0's main phase with a Fossil in hand, under an Item lock: {"fossil_item_lock"}
+ok   player 0's main phase with a Fossil in hand, no lock: {"offgate_fossil_offered"}
+49 checks, 0 failures

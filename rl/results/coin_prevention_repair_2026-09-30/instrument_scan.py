@@ -54,9 +54,412 @@ SUPERSET (kept to back "all counters 0 means identical"; never reach):
   the mover's opponent has a Pokemon with a coin-flip damage Ability in play. A superset of both gates.
 - "coin_queued_attack_damage": CHOSEN ApplyQueuedAttackDamage moves with a target that has one of those Abilities. It reads 0
   where the repair changed the offered choice but the bot picked another (Sonnet's S3): use "coin_queued_offered".
+THE ROUND-2 PACKAGE (claude/coin-prevention-round2: the later coin round, the card-text job and its follow-up; added for the
+readiness jobs, Oct 2). The lines are R2_FNS below (`r2_tick` and its helpers), put into legality_scan.rs before `play_one`; the
+probe `rl/results/round2_readiness_2026-10-02/counter_probe_readiness.rs` runs the same lines (`--emit-fns`) on constructed
+boards. Every counter is {"n", "first", "ticks"} as above, or {key: [every tick]} for a keyed one, and is written 0 or not. Where a
+counter compares forecasts, the board "without" is the same board with one Pokemon's printed Ability taken away (its card's
+ability set to none), so nothing else moves, and the engine's own forecast decides the rest (suppression, damage, knockouts).
+EXACT:
+- "coin_queued_by_attack" {attack: ticks}: the queued coin-path choice offered, keyed by its attack (Wild Swing, Wellspring Dance,
+  Tornado Shot, Double Splash, Triple Bombardment, Mischievous Ring, Litter, Double-Punching Family; Chase Order and the first
+  round's helpers too). "coin_queued_offered_any" split by site.
+- "coin_plain_damage_by_attack" {attack: ticks} and "coin_plain_damage_chosen": an attack's plain queued damage (ApplyDamage from
+  an attack) offered / chosen whose forecast has more branches than with a target's coin Ability taken away, on either side
+  (A4: the opponent's Active in an own-Bench choice, your own Pokemon in an own choice; A5: a copied discard attack; a copied
+  Wild Swing or Litter). Keyed by the attack the mover chose last this turn.
+- "perish_plain_hit_offered", "perish_plain_hit_chosen" (E2): the same for the defending Active's Perish Body.
+- "coin_own_side_split" (A4): the chosen Attack or ApplyQueuedAttackDamage has more branches than with a coin Ability on the
+  attacker's own side taken away (Earthquake on your own Benched Meowth).
+- "guts_own_side_split" (E1): the same for Guts on the attacker's own side.
+- "will_confused_attack" (item 1): a Confused attacker's own attack (no block coin) with Will pending, whose forecast has a branch
+  that uses Will or leaves a Victory Star pause. The old engine did neither (Will lapsed; no pause with Will pending).
+- "will_block_coin_attack" (A2): an attack with a block coin and Will pending, whose forecast has a branch that uses Will.
+- "vs_block_coin_built" (A1): an attack with a block coin whose forecast leaves a Victory Star pause (the old engine never paused
+  with a block coin). "vs_block_coin_choice_offered": Keep or Reroll offered while the chooser's Active has a block coin (the
+  heads half, a move or more later).
+- "trap_territory_offer_changed" (item 4): with two or more Ariados (Trap Territory) on one side, the moves offered to the other
+  side differ from those on the same board with every Ariados but one taken away (the old count).
+  "trap_territory_outcome_changed": the chosen move's forecast leaves a different board there (each in-play Pokemon's card, HP
+  and Energy, and the discard piles): Grass Knot, a retreat's Energy, Heavy Helmet.
+- "luxury_coin_opp_stadium" (the follow-up): UseStadium on the opponent's Stadium with Gholdengo (Luxury Coin) in the mover's
+  play, whose forecast leaves no Luxury Coin pause while it leaves one with the Stadium made the mover's own.
+- "fossil_item_lock" (the follow-up): at a main-phase choice (EndTurn offered) the mover holds a Fossil that its own builder
+  offers (`trainer_move_generation_implementation`), NoItemCards is in force and NoTrainerCards isn't: the old move generation
+  offered it.
+OFF THE GATE (the rewritten lines ran and gave the old answer: the proof that a table runs them):
+- "offgate_by_attack" {attack: ticks}: a plain choice (no coin-Ability target) offered after an attack whose queued damage the
+  later round rewrote (R2_SITES: its seven sites, and the first round's helpers and Chase Order, whose constructor it rewrote).
+  "offgate_helper_by_mechanic" and "offgate_discard_then_damage" by attack, Wild Swing apart from Chase Order.
+- "offgate_plain_attack_damage": a chosen plain ApplyDamage from an attack with neither split (`forecast_apply_damage`'s old path).
+- "offgate_guts_opponent_split": the opponent's Guts split in an attack's outcome, as before (E1 rewrote `split_with_guts_survival`).
+- "offgate_confused_attack": a Confused attacker's attack without Will pending (the Confusion gate, as before).
+- "offgate_block_coin_attack": an attack with a block coin, no Will pending and no Victory Star pause (the block coin, as before).
+- "offgate_vs_ungated_built": a Victory Star pause with no gate coin (the rewritten staging, as before).
+- "offgate_trap_territory_one": one Ariados in play against an Active (the rewritten loop adds 1, as before).
+- "offgate_luxury_coin_offered": a Luxury Coin reroll offered (`luxury_coin_covers` let it through).
+- "offgate_fossil_offered": a Fossil offered (the Item-lock check let it through).
+The coin split on the attack's opponent side keeps the counters above ("coin_cut_recorded", "coin_full_prevention"); they are A4's
+off-gate too.
+SUPERSET: "trap_territory_two_in_play": two or more Ariados in play against an Active (the gate held: the Retreat Cost is one more
+than before, whether or not anything reads it).
+On this branch the Victory Star script's "vs_confusion_first_built" also fires when Will is pending or a block coin is there too (the
+old engine built no pause then); "will_confused_attack" and "vs_block_coin_built" tell those apart. Victini's caveat text
+(card_validation.rs) changes no play and has no counter.
 Usage: python3 instrument_scan.py <legality_scan.rs>   (edits the file in place; every anchor must occur exactly once;
-it applies with the Victory Star repair's script in either order, and alone)"""
+it applies with the Victory Star repair's script in either order, and alone)
+       python3 instrument_scan.py --emit-fns <file.rs>   (writes R2_FNS alone, for the probe's include!)"""
 import sys
+R2_FNS = r'''// ---- The round-2 package's counters (`instrument_scan.py`; the readiness jobs, the cloud, Oct 2). Watch-only: they read the
+// state before a tick, the moves it offered and chose, and the engine's own forecasts on clones; nothing touches the game. The
+// constructed-board probe (rl/results/round2_readiness_2026-10-02/counter_probe_readiness.rs) runs these same lines, written
+// out by `instrument_scan.py --emit-fns`.
+
+/// The attack mechanics whose queued damage the later coin round (Oct 1) rewrote: its seven sites (Wild Swing's
+/// DiscardOwnBenchedTypeForDamage and the six after it), and the first round's helpers and Chase Order, whose constructor
+/// (`queued_attack_damage_choice`) it rewrote to hand its target to `queued_attack_damage_targets_choice`.
+const R2_SITES: [&str; 15] = ["DirectDamage", "DirectDamageAndSelfCardEffect", "DirectDamageIfDamaged",
+    "SelfDiscardAllTypeEnergyAndDamageAnyOpponentPokemon", "SelfDiscardEnergyThenDamageAnyOpponentPokemon",
+    "DamageToAnyOpponentPerTargetEnergy", "SwitchInOpponentBenchedThenDamage", "OptionalDiscardBenchedBasicForExtraDamage",
+    "DiscardOwnBenchedTypeForDamage", "CoinFlipAlsoChoiceBenchDamage", "SelfDiscardEnergyAndChoiceBenchDamage",
+    "ConditionalBenchDamage", "ShuffleOpponentToolsIntoDeckBeforeDamage", "DiscardToolsFromHandForDamage",
+    "MegaKangaskhanExDoublePunchingFamily"];
+
+/// The printed Ability of an in-play Pokemon, as the engine's map names its mechanic ("" for none). Read from the card, so a
+/// reprint is seen; whether the Ability works on this board (suppression) is left to the engine's forecasts below.
+fn r2_ability(p: &PlayedCard) -> String {
+    match &p.card {
+        Card::Pokemon(c) => c
+            .ability
+            .as_ref()
+            .and_then(|a| deckgym::actions::ability_mechanic_from_effect(&a.effect))
+            .map(|m| format!("{m:?}"))
+            .unwrap_or_default(),
+        _ => String::new(),
+    }
+}
+
+/// Carefree Steps, Celestial Blessing (full prevention), Guarded Grill and Securely Sheltered (a cut).
+fn r2_is_coin(p: &PlayedCard) -> bool {
+    let m = r2_ability(p);
+    m == "CoinFlipToPreventDamage" || m.starts_with("CoinFlipToReduceDamage")
+}
+
+fn r2_mechanic(attack: &deckgym::models::Attack) -> String {
+    attack
+        .effect
+        .as_deref()
+        .and_then(|e| deckgym::actions::EFFECT_MECHANIC_MAP.get(e))
+        .map(|m| format!("{m:?}").chars().take_while(|c| c.is_alphanumeric()).collect::<String>())
+        .unwrap_or_default()
+}
+
+/// `state` with the printed Ability of the Pokemon at (player, idx) taken away, nothing else changed: a move's forecast on it
+/// against the forecast on `state` shows what that Ability adds.
+fn r2_strip(state: &State, player: usize, idx: usize) -> State {
+    let mut s = state.clone();
+    if let Some(p) = s.in_play_pokemon[player][idx].as_mut() {
+        if let Card::Pokemon(c) = &mut p.card {
+            c.ability = None;
+        }
+    }
+    s
+}
+
+/// The number of branches of the engine's forecast of `action` (0 if it can't forecast it).
+fn r2_count(state: &State, action: &Action) -> usize {
+    deckgym::actions::try_forecast_action(state, action).map_or(0, |o| o.into_branches().0.len())
+}
+
+/// The engine's forecast of `action`: each branch's probability and the state it leaves, each applied to a clone of `state`
+/// with the same seeded generator (as the Victory Star counters do). Empty if the engine can't forecast it.
+fn r2_branches(state: &State, action: &Action) -> Vec<(f64, State)> {
+    let Ok(outcomes) = deckgym::actions::try_forecast_action(state, action) else {
+        return vec![];
+    };
+    let (probabilities, mutations) = outcomes.into_branches();
+    probabilities
+        .into_iter()
+        .zip(mutations)
+        .map(|(probability, mutate)| {
+            let mut s = state.clone();
+            mutate(&mut <rand::rngs::StdRng as rand::SeedableRng>::seed_from_u64(0), &mut s, action);
+            (probability, s)
+        })
+        .collect()
+}
+
+fn r2_variant(v: &serde_json::Value) -> String {
+    match v {
+        serde_json::Value::String(s) => s.clone(),
+        serde_json::Value::Object(o) => o.keys().next().cloned().unwrap_or_default(),
+        _ => String::new(),
+    }
+}
+
+/// The turn effects the engine keeps for `turn`, by name (read through serde: the field is private).
+fn r2_turn_effects(state: &State, turn: u8) -> Vec<String> {
+    let v = serde_json::to_value(state).unwrap_or_default();
+    v["turn_effects"][turn.to_string()].as_array().map(|e| e.iter().map(r2_variant).collect()).unwrap_or_default()
+}
+
+/// Will's pending heads (TurnEffect::ForceFirstHeads) in `turn`.
+fn r2_will(state: &State, turn: u8) -> bool {
+    r2_turn_effects(state, turn).iter().any(|e| e == "ForceFirstHeads")
+}
+
+/// A block coin on the Pokemon (CardEffect::CoinFlipToBlockAttack: Smokescreen and the like), read through serde.
+fn r2_has_block_coin(p: &PlayedCard) -> bool {
+    serde_json::to_value(p)
+        .ok()
+        .and_then(|v| v["effects"].as_array().cloned())
+        .unwrap_or_default()
+        .iter()
+        .any(|e| r2_variant(&e[0]) == "CoinFlipToBlockAttack")
+}
+
+/// What a Retreat Cost can change on the board: each in-play Pokemon's card, remaining HP and Energy, and both discard piles.
+fn r2_board(s: &State) -> String {
+    let mut out = String::new();
+    for q in 0..2 {
+        for slot in &s.in_play_pokemon[q] {
+            out += &match slot {
+                Some(p) => format!("{} {} {:?}; ", p.card.get_id(), p.get_remaining_hp(), p.attached_energy),
+                None => "-; ".to_string(),
+            };
+        }
+        out += &format!("discard {} {:?} | ", s.discard_piles[q].len(), s.discard_energies[q]);
+    }
+    out
+}
+
+/// One tick's firings: (counter, key), the key None for an unkeyed counter. `actions` are the moves the tick offered,
+/// `chosen` the one played, and `last_attack` the attack the mover chose last in this turn before it (a copied one included).
+fn r2_tick(
+    before: &State,
+    actions: &[Action],
+    chosen: &Action,
+    last_attack: Option<&deckgym::models::Attack>,
+) -> Vec<(&'static str, Option<String>)> {
+    let mut out: Vec<(&'static str, Option<String>)> = Vec::new();
+    let actor = chosen.actor;
+    let opp = 1 - actor;
+    let turn = before.turn_count;
+    let at = |q: usize, i: usize| before.in_play_pokemon[q].get(i).and_then(|p| p.as_ref());
+    let last_title = last_attack.map(|a| a.title.clone()).unwrap_or_default();
+    let last_mechanic = last_attack.map(r2_mechanic).unwrap_or_default();
+
+    // The later coin round's sites. Exact: the queued coin-path choice offered, by attack (built only for a target with a coin
+    // Ability). Off the gate: a plain choice offered after one of the rewritten attacks, with no coin-Ability target.
+    for a in actions {
+        match &a.action {
+            SimpleAction::ApplyQueuedAttackDamage { attack, .. }
+                if !r2_mechanic(attack).starts_with("AlsoChoiceBenchDamage") =>
+            {
+                out.push(("coin_queued_by_attack", Some(attack.title.clone())));
+            }
+            SimpleAction::ApplyDamage { is_from_active_attack: true, targets, .. }
+                if R2_SITES.contains(&last_mechanic.as_str())
+                    && targets.iter().any(|(_, q, _)| *q == opp)
+                    && !targets.iter().any(|(d, q, i)| *d > 0 && at(*q, *i).is_some_and(r2_is_coin)) =>
+            {
+                out.push(("offgate_by_attack", Some(last_title.clone())));
+            }
+            _ => {}
+        }
+    }
+
+    // The card-text job (A4, A5) and its follow-up (E2): an attack's plain queued damage (`forecast_apply_damage`). Exact: its
+    // forecast has more branches than with a target's coin Ability (either side) or the defending Active's Perish Body taken
+    // away. Off the gate: neither.
+    let plain = |a: &Action| -> Option<(bool, bool)> {
+        let SimpleAction::ApplyDamage { attacking_ref, targets, is_from_active_attack: true } = &a.action else {
+            return None;
+        };
+        let defender = 1 - attacking_ref.0;
+        let coins: Vec<(usize, usize)> = targets
+            .iter()
+            .filter(|(d, q, i)| *d > 0 && at(*q, *i).is_some_and(r2_is_coin))
+            .map(|(_, q, i)| (*q, *i))
+            .collect();
+        let perish = targets.iter().any(|(d, q, i)| *d > 0 && *q == defender && *i == 0)
+            && at(defender, 0).is_some_and(|p| r2_ability(p) == "CoinFlipToKnockOutAttackerOnKnockout");
+        if coins.is_empty() && !perish {
+            return Some((false, false));
+        }
+        let n = r2_count(before, a);
+        Some((
+            coins.iter().any(|&(q, i)| r2_count(&r2_strip(before, q, i), a) < n),
+            perish && r2_count(&r2_strip(before, defender, 0), a) < n,
+        ))
+    };
+    for a in actions {
+        if let Some((coin, perish)) = plain(a) {
+            if coin {
+                out.push(("coin_plain_damage_by_attack", Some(last_title.clone())));
+            }
+            if perish {
+                out.push(("perish_plain_hit_offered", None));
+            }
+        }
+    }
+    if let Some((coin, perish)) = plain(chosen) {
+        if coin {
+            out.push(("coin_plain_damage_chosen", None));
+        }
+        if perish {
+            out.push(("perish_plain_hit_chosen", None));
+        }
+        if !coin && !perish {
+            out.push(("offgate_plain_attack_damage", None));
+        }
+    }
+
+    // An attack's own outcome (A4: the coin Abilities on the attacker's own Pokemon; E1: Guts on them). Exact: the chosen move's
+    // forecast has more branches than with that own Pokemon's Ability taken away. Off the gate: the opponent's Guts split.
+    if matches!(&chosen.action, SimpleAction::Attack(_) | SimpleAction::ApplyQueuedAttackDamage { .. }) {
+        let guts = |p: &PlayedCard| r2_ability(p) == "CoinFlipToSurviveKnockOut";
+        let slots = |q: usize, f: &dyn Fn(&PlayedCard) -> bool| (0..4).filter(|&i| at(q, i).is_some_and(|p| f(p))).collect::<Vec<usize>>();
+        let (own_coin, own_guts, opp_guts) = (slots(actor, &r2_is_coin), slots(actor, &guts), slots(opp, &guts));
+        if !(own_coin.is_empty() && own_guts.is_empty() && opp_guts.is_empty()) {
+            let n = r2_count(before, chosen);
+            let split = |q: usize, s: &[usize]| s.iter().any(|&i| r2_count(&r2_strip(before, q, i), chosen) < n);
+            if split(actor, &own_coin) {
+                out.push(("coin_own_side_split", None));
+            }
+            if split(actor, &own_guts) {
+                out.push(("guts_own_side_split", None));
+            }
+            if split(opp, &opp_guts) {
+                out.push(("offgate_guts_opponent_split", None));
+            }
+        }
+    }
+
+    // The gate coins (item 1: Will on a Confused attacker; A1: Victory Star after a block coin; A2: Will on a block coin), read off
+    // the engine's forecast of the chosen attack: a branch that uses Will, or one that leaves a Victory Star pause.
+    if let (SimpleAction::Attack(_), false) = (&chosen.action, chosen.is_stack) {
+        if let Some(active) = at(actor, 0) {
+            let (confused, block) = (active.is_confused(), r2_has_block_coin(active));
+            let victini = !before.victory_star_used_this_turn[actor]
+                && (0..4).any(|i| at(actor, i).is_some_and(|p| r2_ability(p) == "VictoryStar"));
+            if confused || block || victini {
+                let will = r2_will(before, turn);
+                let branches = r2_branches(before, chosen);
+                let paused = branches.iter().any(|(_, s)| s.pending_attack_coin_choice.is_some());
+                let will_used = will && branches.iter().any(|(_, s)| !r2_will(s, turn));
+                if confused && !block && will && (will_used || paused) {
+                    out.push(("will_confused_attack", None));
+                }
+                if block && will && will_used {
+                    out.push(("will_block_coin_attack", None));
+                }
+                if block && paused {
+                    out.push(("vs_block_coin_built", None));
+                }
+                if confused && !will {
+                    out.push(("offgate_confused_attack", None));
+                }
+                if block && !will && !paused {
+                    out.push(("offgate_block_coin_attack", None));
+                }
+                if !confused && !block && paused {
+                    out.push(("offgate_vs_ungated_built", None));
+                }
+            }
+        }
+    }
+    if actions.iter().any(|a| matches!(a.action, SimpleAction::KeepAttackCoinResults | SimpleAction::RerollAttackCoins { .. }))
+        && at(actor, 0).is_some_and(r2_has_block_coin)
+    {
+        out.push(("vs_block_coin_choice_offered", None));
+    }
+
+    // Trap Territory (item 4): against the same board with every Ariados but one taken away (the old engine's count). Exact: the
+    // moves offered to that player's opponent differ, or the chosen move's forecast leaves a different board.
+    for p in 0..2usize {
+        if at(1 - p, 0).is_none() {
+            continue;
+        }
+        let traps: Vec<usize> =
+            (0..4).filter(|&i| at(p, i).is_some_and(|x| r2_ability(x).starts_with("IncreaseRetreatCostForOpponentActive"))).collect();
+        if traps.len() == 1 {
+            out.push(("offgate_trap_territory_one", None));
+        }
+        if traps.len() < 2 {
+            continue;
+        }
+        out.push(("trap_territory_two_in_play", None));
+        let mut old = before.clone();
+        for &i in &traps[1..] {
+            old = r2_strip(&old, p, i);
+        }
+        if actor == 1 - p {
+            let shown = |v: &[Action]| v.iter().map(|a| format!("{:?}", a.action)).collect::<Vec<_>>();
+            if shown(&old.generate_possible_actions().1) != shown(actions) {
+                out.push(("trap_territory_offer_changed", None));
+            }
+        }
+        let sig = |s: &State| r2_branches(s, chosen).iter().map(|(pr, b)| format!("{pr} {}", r2_board(b))).collect::<Vec<_>>();
+        if sig(before) != sig(&old) {
+            out.push(("trap_territory_outcome_changed", None));
+        }
+    }
+
+    // Luxury Coin on the opponent's Stadium (the follow-up). Exact: the chosen UseStadium's forecast leaves a Luxury Coin pause
+    // when the Stadium is made the mover's own, and none as it stands. Off the gate: a Luxury Coin reroll offered.
+    if matches!(chosen.action, SimpleAction::UseStadium)
+        && before.active_stadium_owner == Some(opp)
+        && (0..4).any(|i| at(actor, i).is_some_and(|p| r2_ability(p) == "LuxuryCoin"))
+    {
+        let mut own = before.clone();
+        own.active_stadium_owner = Some(actor);
+        let paused = |s: &State| r2_branches(s, chosen).iter().any(|(_, b)| b.pending_trainer_coin_choice.is_some());
+        if paused(&own) && !paused(before) {
+            out.push(("luxury_coin_opp_stadium", None));
+        }
+    }
+    if actions.iter().any(|a| matches!(a.action, SimpleAction::RerollTrainerCoins { .. })) {
+        out.push(("offgate_luxury_coin_offered", None));
+    }
+
+    // A Fossil under an Item lock (the follow-up). Exact: at a main-phase choice (EndTurn offered), the mover holds a Fossil that
+    // the old move generation offered (its own builder offers it, no NoTrainerCards), and NoItemCards is in force. Off the gate:
+    // a Fossil offered.
+    let is_fossil = |c: &Card| matches!(c, Card::Trainer(t) if t.trainer_card_type == TrainerType::Fossil);
+    if turn > 0
+        && actions.iter().any(|a| matches!(a.action, SimpleAction::EndTurn))
+        && before.hands[actor].iter().any(is_fossil)
+    {
+        let effects = r2_turn_effects(before, turn);
+        let playable = before.hands[actor].iter().any(|c| match c {
+            Card::Trainer(t) if t.trainer_card_type == TrainerType::Fossil => {
+                deckgym::move_generation::trainer_move_generation_implementation(before, t).is_some_and(|m| !m.is_empty())
+            }
+            _ => false,
+        });
+        if playable && effects.iter().any(|e| e == "NoItemCards") && !effects.iter().any(|e| e == "NoTrainerCards") {
+            out.push(("fossil_item_lock", None));
+        }
+    }
+    if actions.iter().any(|a| matches!(&a.action, SimpleAction::Place(c, _) if is_fossil(c))) {
+        out.push(("offgate_fossil_offered", None));
+    }
+    out
+}
+'''
+R2_COUNTERS = ["will_confused_attack", "will_block_coin_attack", "vs_block_coin_built", "vs_block_coin_choice_offered",
+               "coin_own_side_split", "coin_plain_damage_chosen", "perish_plain_hit_offered", "perish_plain_hit_chosen",
+               "guts_own_side_split", "trap_territory_offer_changed", "trap_territory_outcome_changed",
+               "luxury_coin_opp_stadium", "fossil_item_lock",
+               "offgate_plain_attack_damage", "offgate_guts_opponent_split", "offgate_confused_attack",
+               "offgate_block_coin_attack", "offgate_vs_ungated_built", "offgate_trap_territory_one",
+               "offgate_luxury_coin_offered", "offgate_fossil_offered", "trap_territory_two_in_play"]
+R2_KEYED = ["coin_queued_by_attack", "coin_plain_damage_by_attack", "offgate_by_attack"]
+if sys.argv[1:2] == ["--emit-fns"]:
+    open(sys.argv[2], "w", encoding="utf-8").write(R2_FNS)
+    print("wrote", sys.argv[2])
+    sys.exit(0)
 path = sys.argv[1]
 src = open(path, encoding="utf-8").read()
 if "coin_defender_attack" in src:
@@ -188,6 +591,46 @@ EDITS = [
      + "".join(f"        {name}: {VAR[name]},\n" for name in EXACT)
      + f"        {BY_MECHANIC}: coin_helper_by,\n"),
 ]
+# The round-2 package: its fields, its per-tick block (r2_tick, R2_FNS) and its functions before `play_one`.
+EDITS += [
+    ("    fingerprint: u64,\n",
+     "    r2_fired: BTreeMap<String, (u32, Vec<u32>)>,\n    r2_keyed: BTreeMap<String, BTreeMap<String, Vec<u32>>>,\n"),
+    ("    let mut moves = DefaultHasher::new();\n",
+     "    let mut r2_fired: BTreeMap<String, (u32, Vec<u32>)> = BTreeMap::new();\n"
+     "    let mut r2_keyed: BTreeMap<String, BTreeMap<String, Vec<u32>>> = BTreeMap::new();\n"
+     "    let mut r2_tick_n = 0u32;\n"
+     "    let mut r2_last: [Option<(u8, deckgym::models::Attack)>; 2] = [None, None];\n"),
+    ("        let after = game.get_state_clone();\n",
+     "        {\n"
+     "            // The round-2 package's counters (r2_tick): every tick at which each fires.\n"
+     "            let last = r2_last[chosen.actor].as_ref().filter(|(t, _)| *t == before.turn_count).map(|(_, a)| a);\n"
+     "            for (name, key) in r2_tick(&before, &actions, &chosen, last) {\n"
+     "                match key {\n"
+     "                    None => {\n"
+     "                        let c = r2_fired.entry(name.to_string()).or_default();\n"
+     "                        if c.1.last() != Some(&r2_tick_n) {\n"
+     "                            c.0 += 1;\n"
+     "                            c.1.push(r2_tick_n);\n"
+     "                        }\n"
+     "                    }\n"
+     "                    Some(k) => {\n"
+     "                        let ticks = r2_keyed.entry(name.to_string()).or_default().entry(k).or_default();\n"
+     "                        if ticks.last() != Some(&r2_tick_n) {\n"
+     "                            ticks.push(r2_tick_n);\n"
+     "                        }\n"
+     "                    }\n"
+     "                }\n"
+     "            }\n"
+     "            if let SimpleAction::Attack(attack) = &chosen.action {\n"
+     "                r2_last[chosen.actor] = Some((before.turn_count, attack.clone()));\n"
+     "            }\n"
+     "            r2_tick_n += 1;\n"
+     "        }\n"),
+    ("        fingerprint: moves.finish(),\n", "        r2_fired,\n        r2_keyed,\n"),
+]
+if src.count("\nfn play_one(") != 1:
+    raise SystemExit("anchor found other than once: fn play_one(")
+src = src.replace("\nfn play_one(", "\n" + R2_FNS + "\nfn play_one(")
 for anchor, add in EDITS:
     n = src.count(anchor)
     if n != 1:
@@ -203,7 +646,12 @@ lines = (f"{indent}line[\"coin_defender_attack\"] = serde_json::json!(r.coin_def
          f"{indent}line[\"coin_queued_attack_damage\"] = serde_json::json!(r.coin_queued_attack_damage);\n"
          + "".join(f"{indent}line[\"{name}\"] = serde_json::json!({{ \"n\": r.{name}.0, \"first\": r.{name}.1.first(), \"ticks\": r.{name}.1 }});\n"
                    for name in EXACT)
-         + f"{indent}line[\"{BY_MECHANIC}\"] = serde_json::json!(r.{BY_MECHANIC});\n")
+         + f"{indent}line[\"{BY_MECHANIC}\"] = serde_json::json!(r.{BY_MECHANIC});\n"
+         + "".join(f"{indent}line[\"{name}\"] = {{ let c = r.r2_fired.get(\"{name}\"); serde_json::json!({{ \"n\": c.map_or(0, |c| c.0), "
+                   f"\"first\": c.and_then(|c| c.1.first()), \"ticks\": c.map(|c| c.1.clone()).unwrap_or_default() }}) }};\n"
+                   for name in R2_COUNTERS)
+         + "".join(f"{indent}line[\"{name}\"] = serde_json::json!(r.r2_keyed.get(\"{name}\").cloned().unwrap_or_default());\n"
+                   for name in R2_KEYED))
 src = src[:end] + lines + src[end:]
 open(path, "w", encoding="utf-8").write(src)
 print("instrumented", path)
