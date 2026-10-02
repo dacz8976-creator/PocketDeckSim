@@ -313,8 +313,14 @@ fn run(args: &[String]) {
                         })
                         .collect();
                     let mut game = Game::new(wrapped, j.seed);
-                    let outcome = game.play();
+                    // plies = the engine's ticks (every applied action, forced single moves included): the number the engine's own results file calls plies
+                    let mut plies = 0u32;
+                    while !game.is_game_over() {
+                        game.play_tick();
+                        plies += 1;
+                    }
                     let st = game.get_state_clone();
+                    let outcome = st.winner;
                     let wall = t0.elapsed().as_secs_f64();
                     let (ds, os) = (j.seat, 1 - j.seat);
                     let winner = match outcome {
@@ -331,7 +337,7 @@ fn run(args: &[String]) {
                         "key": key, "deck": dn, "opp": on, "deal": j.deal, "seat": j.seat, "arm": j.arm, "seed": j.seed,
                         "pilot_deck": spec_deck, "pilot_opp": spec_opp,
                         "first": if first_seat == ds { "deck" } else { "opp" }, "winner": winner,
-                        "points": [st.points[ds], st.points[os]], "turns": st.turn_count, "wall_s": (wall * 1000.0).round() / 1000.0,
+                        "points": [st.points[ds], st.points[os]], "turns": st.turn_count, "plies": plies, "wall_s": (wall * 1000.0).round() / 1000.0,
                         "moves_deck": agg(ds), "moves_opp": agg(os), "started_at": started,
                     });
                     let lg = recs[ds].lock().unwrap().log.clone();
