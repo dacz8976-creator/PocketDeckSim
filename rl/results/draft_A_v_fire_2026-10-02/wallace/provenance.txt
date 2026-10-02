@@ -1,0 +1,20 @@
+== 2026-10-02 19:06:11 UTC run_wallace.sh start (chunks already finished are kept, never replayed)
+git HEAD 5bce8333ddbfc3a897c57327e8195d93b4473371
+engine main-8626a35: /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/engine-2026-10-02/deckgym (current_engine.py resolves it)
+2f7e5fd6e0ae21fffcb9a4df6e70dc3302e2a372f1fde1eb2bb1aa106747a62e  /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/engine-2026-10-02/deckgym
+cecc76fbe51b33276e0e2e787b6eacba41c52ef4eaa36c5a20954caeedc50b66  /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/engine-2026-10-02/goldfish
+763278659ea9a1ac7983c9cd2da2ff5f1f2c1e96468818cb84b29c106bb4b1e0  decks/screen/floor.py
+6ae4ec850f0a4678e03620be15b0a001b49cd910bfb2e55829f16c6422903563  rl/results/draft_A_v_fire_2026-10-02/analyze.py
+43ec09f4cdf05ed0b68ce8fd809a1e02b831f331fd799cd7dfa424a03a61f907  rl/results/draft_A_v_fire_2026-10-02/analyze_wallace.py
+7b53e370d770ab3fd993a12c31a61ed62673a57de4b4a83997d9eaee5a84c027  rl/results/draft_A_v_fire_2026-10-02/run_wallace.sh
+d1ea1ca7fe1ccb9fc6a297459bae95847208cc7d0f621b3dd24936d35ffebce7  rl/results/draft_A_v_fire_2026-10-02/ADDENDUM_WALLACE.md
+22d942d74562c0b56e2ef16fb7c9ffc0e6d119d8c05c949d10a2f2256feeb9ae  rl/results/draft_A_v_fire_2026-10-02/README.md
+b05a59e875205643e60254ef3daf4ef0f7752f5cd49acbf597baf357ca333ea7  current_engine.py
+72925304c20b108a903e3eeb17a6f44810e58400d18a690a84a859a3366ef3b4  project_manifest.json
+2f48cb72966c23ba3794f437aa94312e4eadcb2703c32893411ee27fc63b11d9  lib/deckgym-database.json
+c309aff9254d5a7813fe5d1ab278a48a0e6056360a0cb36114dc6d1e8b5f2060  engine/src/players/public_pricing_player.rs
+b5b66d02a0f20da6388ed90db83e6b72eb91134070795a0be36e6d5a3b0ab504  decks/brews/drafts_2026-10-01/draft-A-wallace.txt
+3f39092ba6680cc5b8013b961e2f5a0f07bc779816ade7a6891983082b2e7417  decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt
+f79ad459a1188f10ba34be4606f3cbc60db21386e8ef91721c5506239653b6fa  decks/dustin/13-a-ninetales-raticate.txt
+07b98258ec896664f27d4722db83a26041d23230d598d8216115ba7a77b43cef  rl/results/b2e_card_check_2026-09-26/decks/h-charizardy_entei.txt
+Python 3.14.4; Linux 6.18.33.2-microsoft-standard-WSL2 x86_64; 16 cores
