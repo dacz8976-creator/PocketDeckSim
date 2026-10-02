@@ -1,0 +1,26 @@
+F7 (the laptop Opus's second read): the Victory Star + coin-cut tests with Training Area (+10) on the engine with repair A only.
+Engine: git archive d4fbc2a engine (Victory Star repair A; no repair B, so the cut is still the old one: taken off the raw damage,
+a hit cut to 0 dropped before the bonus and Weakness). Test file: engine/tests/victini_victory_star_test.rs of this branch, copied in.
+Command: cargo test --release --features test-utils --locked --test victini_victory_star_test (sources touched first: git archive gives
+every file the old commit time, and cargo reuses a library built from other contents at the same path otherwise).
+
+test result: FAILED. 16 passed; 3 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.05s
+test keep_after_confusion_heads_takes_guarded_grills_cut_after_weakness ... FAILED
+test keep_and_reroll_after_confusion_heads_take_securely_sheltered_as_a_finite_cut ... FAILED
+test reroll_after_confusion_heads_takes_guarded_grills_cut_after_weakness_over_the_whole_batch ... FAILED
+
+---- keep_after_confusion_heads_takes_guarded_grills_cut_after_weakness stdout ----
+thread 'keep_after_confusion_heads_takes_guarded_grills_cut_after_weakness' (1133) panicked at tests/victini_victory_star_test.rs:633:5:
+assertion `left == right` failed: [(0.5, 0), (0.5, 110)]
+  left: (0, 110)
+ right: (10, 110)
+---- keep_and_reroll_after_confusion_heads_take_securely_sheltered_as_a_finite_cut stdout ----
+thread 'keep_and_reroll_after_confusion_heads_take_securely_sheltered_as_a_finite_cut' (1134) panicked at tests/victini_victory_star_test.rs:658:5:
+assertion `left == right` failed
+  left: [0, 90]
+ right: [10, 90]
+---- reroll_after_confusion_heads_takes_guarded_grills_cut_after_weakness_over_the_whole_batch stdout ----
+thread 'reroll_after_confusion_heads_takes_guarded_grills_cut_after_weakness_over_the_whole_batch' (1138) panicked at tests/victini_victory_star_test.rs:646:5:
+[(0.125, 0), (0.1875, 110), (0.1875, 0), (0.1875, 190), (0.1875, 90), (0.0625, 270), (0.0625, 170)]
+
+On this branch's engine (R and later) the same file passes: 19 passed, 0 failed (rf_test f7_new, run from the worktree).

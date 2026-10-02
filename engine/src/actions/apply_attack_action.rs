@@ -89,8 +89,10 @@ pub(crate) fn finish_attack_from_effect_outcomes(
     }
 }
 
-/// Confusion and CoinFlipToBlockAttack are attacker-side gates whose Victory Star interaction has
-/// not been verified in Pocket. Do not stage the inner attack coin before those earlier gates.
+/// Confusion and CoinFlipToBlockAttack are attacker-side gates. CoinFlipToBlockAttack's Victory Star
+/// interaction has not been verified in Pocket, so the inner attack coin is not staged before it.
+/// Confusion's has (`victory_star_waits_for_confusion_heads`), and Victory Star checks that first;
+/// a Confused attacker that it does not cover still falls under this gate.
 pub(crate) fn has_unverified_attacker_coin_gate(
     acting_player: usize,
     state: &State,
@@ -105,6 +107,55 @@ pub(crate) fn has_unverified_attacker_coin_gate(
             .get_active_effects()
             .iter()
             .any(|effect| matches!(effect, CardEffect::CoinFlipToBlockAttack))
+}
+
+/// Victory Star with a Confused attacker (rules/04 §9, seen in Pocket Sept 29): the Confusion coin
+/// is flipped first and is never offered for a reroll. On tails the attack does nothing; on heads
+/// the attack's own coins are flipped and Victory Star is offered on them, with no second Confusion
+/// check. True for a Confused attacker's own attack, except with CoinFlipToBlockAttack or a pending
+/// Will as well: neither has been seen with Victory Star, so both keep the legacy resolution.
+pub(crate) fn victory_star_waits_for_confusion_heads(
+    acting_player: usize,
+    state: &State,
+    is_sub_attack: bool,
+) -> bool {
+    if is_sub_attack {
+        return false;
+    }
+    let active = state.get_active(acting_player);
+    active.is_confused()
+        && !active
+            .get_active_effects()
+            .iter()
+            .any(|effect| matches!(effect, CardEffect::CoinFlipToBlockAttack))
+        && !state.has_pending_will_first_heads()
+}
+
+/// The Confusion coin's tails before a Victory Star pause: the attack does nothing. This is
+/// `apply_confusion_coin_flip`'s tails branch, through the same defender modifiers.
+pub(crate) fn confusion_tails_outcomes(
+    acting_player: usize,
+    state: &State,
+    attack: &Attack,
+) -> Outcomes {
+    apply_defender_attack_modifiers(
+        acting_player,
+        state,
+        attack,
+        AttackOutcomes::single(AttackOutcome::noop()),
+    )
+    .into_outcomes()
+}
+
+/// Finish a Confused attacker's attack after its Confusion heads and the Victory Star choice: only
+/// the defender's modifiers remain (no second Confusion check).
+pub(crate) fn finish_attack_after_confusion_heads(
+    acting_player: usize,
+    state: &State,
+    attack: &Attack,
+    base_outcomes: AttackOutcomes,
+) -> Outcomes {
+    apply_defender_attack_modifiers(acting_player, state, attack, base_outcomes).into_outcomes()
 }
 
 fn apply_attack_common_modifiers(
@@ -197,15 +248,7 @@ fn apply_defender_damage_prevention_if_needed(
         .enumerate_in_play_pokemon(opponent)
         .filter(|(idx, _)| !(ignores_active_effects && *idx == 0))
         .filter_map(|(idx, pokemon)| {
-            pokemon
-                .get_effective_card_effects(state)
-                .iter()
-                .find_map(|e| match e {
-                    CardEffect::CoinFlipToPreventIncomingDamage => Some(u32::MAX),
-                    CardEffect::CoinFlipToReduceIncomingDamage { amount } => Some(*amount),
-                    _ => None,
-                })
-                .map(|reduction| (idx, reduction))
+            coin_damage_prevention(state, pokemon).map(|reduction| (idx, reduction))
         })
         .collect();
 
@@ -213,6 +256,90 @@ fn apply_defender_damage_prevention_if_needed(
         return outcomes;
     }
     outcomes.split_with_damage_prevention(&reductions)
+}
+
+/// The heads cut of `pokemon`'s coin-flip damage Ability, if it has one: `u32::MAX` for full
+/// prevention (Carefree Steps, Celestial Blessing), else the amount (Guarded Grill, Securely
+/// Sheltered).
+fn coin_damage_prevention(state: &State, pokemon: &PlayedCard) -> Option<u32> {
+    pokemon
+        .get_effective_card_effects(state)
+        .iter()
+        .find_map(|e| match e {
+            CardEffect::CoinFlipToPreventIncomingDamage => Some(u32::MAX),
+            CardEffect::CoinFlipToReduceIncomingDamage { amount } => Some(*amount),
+            _ => None,
+        })
+}
+
+/// The queued choice for an attack's `damage` to the opponent's Pokémon at `target_idx`, chosen
+/// after the attack (a snipe, or the Pokémon about to be switched in). `ApplyDamage` never flips
+/// the defender's coin Abilities, so a target that has one (`coin_target`) is queued as
+/// `ApplyQueuedAttackDamage`, which runs the defender's attack modifiers as the attack's own
+/// damage does (rules/09, "Open engine bugs", repaired Sept 30). Every other target is queued
+/// exactly as before.
+fn queued_attack_damage_choice(
+    actor: usize,
+    attack: &Attack,
+    damage: u32,
+    target_idx: usize,
+    coin_target: bool,
+) -> SimpleAction {
+    if coin_target {
+        log::debug!(
+            "Queued attack damage at a coin-flip damage Ability: {} to slot {target_idx}, through the attack's modifiers",
+            attack.title
+        );
+        SimpleAction::ApplyQueuedAttackDamage {
+            attack: attack.clone(),
+            targets: vec![(damage, true, target_idx)],
+        }
+    } else {
+        SimpleAction::ApplyDamage {
+            attacking_ref: (actor, 0),
+            targets: vec![(damage, (actor + 1) % 2, target_idx)],
+            is_from_active_attack: true,
+        }
+    }
+}
+
+/// The damage a `DiscardOwnBenchedThenDamage` choice queues at the opponent's Active once the
+/// discard is done (`apply_action.rs`). When that Pokémon has a coin-flip damage Ability and the
+/// attacker's Active has Chase Order, it is queued as Chase Order's own damage, so the coin flips
+/// (rules/09; Dustin, Sept 30: fix Chase Order now). Otherwise it is queued exactly as before,
+/// and so is every other attack that shares the action (Gyarados's Wild Swing).
+pub(crate) fn discard_then_damage_choice(state: &State, actor: usize, damage: u32) -> SimpleAction {
+    let opponent = (actor + 1) % 2;
+    let coin_target = state.in_play_pokemon[opponent][0]
+        .as_ref()
+        .is_some_and(|pokemon| coin_damage_prevention(state, pokemon).is_some());
+    if coin_target {
+        if let Some(chase_order) = chase_order_attack(state, actor) {
+            return queued_attack_damage_choice(actor, &chase_order, damage, 0, true);
+        }
+    }
+    SimpleAction::ApplyDamage {
+        attacking_ref: (actor, 0),
+        targets: vec![(damage, opponent, 0)],
+        is_from_active_attack: true,
+    }
+}
+
+/// The attacker's Active's printed Chase Order attack (Vespiquen ex), if it has one.
+fn chase_order_attack(state: &State, actor: usize) -> Option<Attack> {
+    let Card::Pokemon(pokemon) = &state.in_play_pokemon[actor][0].as_ref()?.card else {
+        return None;
+    };
+    pokemon
+        .attacks
+        .iter()
+        .find(|attack| {
+            matches!(
+                attack.effect.as_deref().and_then(|effect| EFFECT_MECHANIC_MAP.get(effect)),
+                Some(Mechanic::OptionalDiscardBenchedBasicForExtraDamage { .. })
+            )
+        })
+        .cloned()
 }
 
 /// Apply the defender's Guts ability (e.g. Ursaluna): each opponent in-play Pokémon with the
@@ -675,7 +802,7 @@ fn forecast_effect_attack_by_mechanic(
             *bench_damage,
         ),
         Mechanic::SelfDiscardEnergyThenDamageAnyOpponentPokemon { energies, damage } => {
-            self_discard_energy_then_damage_any_opponent_pokemon(energies.clone(), *damage)
+            self_discard_energy_then_damage_any_opponent_pokemon(attack, energies.clone(), *damage)
         }
         Mechanic::ExtraDamageIfExtraEnergy {
             required_extra_energy,
@@ -709,13 +836,13 @@ fn forecast_effect_attack_by_mechanic(
         Mechanic::ExtraDamageIfBothHeads { extra_damage } => {
             both_heads_bonus_damage_attack(attack.fixed_damage, *extra_damage)
         }
-        Mechanic::DirectDamage { damage, bench_only } => direct_damage(*damage, *bench_only),
+        Mechanic::DirectDamage { damage, bench_only } => direct_damage(attack, *damage, *bench_only),
         Mechanic::DirectDamageAndSelfCardEffect {
             damage,
             bench_only,
             effect,
             duration,
-        } => direct_damage_and_self_card_effect(*damage, *bench_only, effect.clone(), *duration),
+        } => direct_damage_and_self_card_effect(attack, *damage, *bench_only, effect.clone(), *duration),
         Mechanic::DamageAndTurnEffect { effect, duration } => {
             damage_and_turn_effect_attack(attack.fixed_damage, effect.clone(), *duration)
         }
@@ -772,7 +899,7 @@ fn forecast_effect_attack_by_mechanic(
         Mechanic::SelfDiscardAllTypeEnergyAndDamageAnyOpponentPokemon {
             energy_type,
             damage,
-        } => discard_all_energy_of_type_then_damage_any_opponent_pokemon(*energy_type, *damage),
+        } => discard_all_energy_of_type_then_damage_any_opponent_pokemon(attack, *energy_type, *damage),
         Mechanic::SelfDiscardRandomEnergy { count } => {
             damage_and_discard_random_energy(acting_player, state, attack.fixed_damage, *count)
         }
@@ -825,6 +952,7 @@ fn forecast_effect_attack_by_mechanic(
             extra_damage,
         } => optional_discard_benched_basic_for_extra_damage(
             state,
+            attack,
             attack.fixed_damage,
             *energy_type,
             *extra_damage,
@@ -961,7 +1089,7 @@ fn forecast_effect_attack_by_mechanic(
             coin_flip_status_opponent_or_self(attack.fixed_damage, *condition)
         }
         Mechanic::DamageToAnyOpponentPerTargetEnergy { damage_per_energy } => {
-            damage_to_any_opponent_per_target_energy(*damage_per_energy)
+            damage_to_any_opponent_per_target_energy(attack, *damage_per_energy)
         }
         Mechanic::DiscardHandCards { count } => {
             discard_hand_cards_required_attack(state, attack.fixed_damage, *count)
@@ -1141,7 +1269,7 @@ fn forecast_effect_attack_by_mechanic(
             attack.fixed_damage,
             *damage_per_heads,
         ),
-        Mechanic::DirectDamageIfDamaged { damage } => direct_damage_if_damaged(*damage),
+        Mechanic::DirectDamageIfDamaged { damage } => direct_damage_if_damaged(attack, *damage),
         Mechanic::AttachEnergyToBenchedBasic { energy_type } => {
             attach_energy_to_benched_basic(state.current_player, *energy_type)
         }
@@ -1485,7 +1613,7 @@ fn forecast_effect_attack_by_mechanic(
         }
         Mechanic::CoinFlipReturnOpponentActiveToHand => coin_flip_return_opponent_active_to_hand(),
         Mechanic::SwitchInOpponentBenchedThenDamage { damage, coin_flip } => {
-            switch_in_opponent_benched_then_damage(attack.fixed_damage, *damage, *coin_flip)
+            switch_in_opponent_benched_then_damage(attack, attack.fixed_damage, *damage, *coin_flip)
         }
         Mechanic::HealEachYourPokemon {
             amount,
@@ -2742,38 +2870,47 @@ fn flip_coins_self_charge_active_per_heads(
 
 /// Used for attacks that can go directly to bench.
 /// It will queue (via move_generation_stack) for the user to choose a pokemon to damage.
-fn direct_damage(damage: u32, bench_only: bool) -> AttackOutcomes {
+fn direct_damage(attack: &Attack, damage: u32, bench_only: bool) -> AttackOutcomes {
+    let attack = attack.clone();
     active_damage_effect_doutcome(0, move |_, state, action| {
-        push_direct_damage_choices(state, action, damage, bench_only);
+        push_direct_damage_choices(state, action, &attack, damage, bench_only);
     })
 }
 
 /// Gigalith ex - Megaton Cannon: direct damage to a chosen opponent Pokémon, plus a card effect
 /// left on the attacking Pokémon (e.g. "During your next turn, this Pokémon can't attack.").
 fn direct_damage_and_self_card_effect(
+    attack: &Attack,
     damage: u32,
     bench_only: bool,
     effect: CardEffect,
     duration: u8,
 ) -> AttackOutcomes {
+    let attack = attack.clone();
     active_damage_effect_doutcome(0, move |_, state, action| {
         state
             .get_active_mut(action.actor)
             .add_effect(effect.clone(), duration);
-        push_direct_damage_choices(state, action, damage, bench_only);
+        push_direct_damage_choices(state, action, &attack, damage, bench_only);
     })
 }
 
 /// Queue the "pick which of your opponent's Pokémon takes the damage" decision.
-fn push_direct_damage_choices(state: &mut State, action: &Action, damage: u32, bench_only: bool) {
+fn push_direct_damage_choices(
+    state: &mut State,
+    action: &Action,
+    attack: &Attack,
+    damage: u32,
+    bench_only: bool,
+) {
     let opponent = (action.actor + 1) % 2;
-    let choices: Vec<SimpleAction> = state
+    let view: &State = state;
+    let choices: Vec<SimpleAction> = view
         .enumerate_in_play_pokemon(opponent)
         .filter(|(in_play_idx, _)| !bench_only || *in_play_idx != 0)
-        .map(|(in_play_idx, _)| SimpleAction::ApplyDamage {
-            attacking_ref: (action.actor, 0),
-            targets: vec![(damage, opponent, in_play_idx)],
-            is_from_active_attack: true,
+        .map(|(in_play_idx, pokemon)| {
+            let coin_target = coin_damage_prevention(view, pokemon).is_some();
+            queued_attack_damage_choice(action.actor, attack, damage, in_play_idx, coin_target)
         })
         .collect();
     if choices.is_empty() {
@@ -2803,18 +2940,22 @@ fn delayed_spot_damage(damage: u32) -> AttackOutcomes {
 
 /// For attacks that can target opponent's Pokémon that have damage on them.
 /// e.g. Decidueye ex's Pierce the Pain
-fn direct_damage_if_damaged(damage: u32) -> AttackOutcomes {
+fn direct_damage_if_damaged(attack: &Attack, damage: u32) -> AttackOutcomes {
+    let attack = attack.clone();
     active_damage_effect_doutcome(0, move |_, state, action| {
         let opponent = (action.actor + 1) % 2;
         let mut choices = Vec::new();
         for (in_play_idx, pokemon) in state.enumerate_in_play_pokemon(opponent) {
             // Only add as a target if the Pokémon has damage (remaining_hp < total_hp)
             if pokemon.is_damaged() {
-                choices.push(SimpleAction::ApplyDamage {
-                    attacking_ref: (action.actor, 0),
-                    targets: vec![(damage, opponent, in_play_idx)],
-                    is_from_active_attack: true,
-                });
+                let coin_target = coin_damage_prevention(state, pokemon).is_some();
+                choices.push(queued_attack_damage_choice(
+                    action.actor,
+                    &attack,
+                    damage,
+                    in_play_idx,
+                    coin_target,
+                ));
             }
         }
         if choices.is_empty() {
@@ -2825,9 +2966,11 @@ fn direct_damage_if_damaged(damage: u32) -> AttackOutcomes {
 }
 
 fn discard_all_energy_of_type_then_damage_any_opponent_pokemon(
+    attack: &Attack,
     energy_type: EnergyType,
     damage: u32,
 ) -> AttackOutcomes {
+    let attack = attack.clone();
     active_damage_effect_doutcome(0, move |_, state, action| {
         // Count and discard all matching energy from the attacking Pokémon.
         let active = state.get_active(action.actor);
@@ -2842,12 +2985,15 @@ fn discard_all_energy_of_type_then_damage_any_opponent_pokemon(
         // Create choices for which opponent's Pokémon to damage
         let opponent = (action.actor + 1) % 2;
         let mut choices = Vec::new();
-        for (in_play_idx, _) in state.enumerate_in_play_pokemon(opponent) {
-            choices.push(SimpleAction::ApplyDamage {
-                attacking_ref: (action.actor, 0),
-                targets: vec![(damage, opponent, in_play_idx)],
-                is_from_active_attack: true,
-            });
+        for (in_play_idx, pokemon) in state.enumerate_in_play_pokemon(opponent) {
+            let coin_target = coin_damage_prevention(state, pokemon).is_some();
+            choices.push(queued_attack_damage_choice(
+                action.actor,
+                &attack,
+                damage,
+                in_play_idx,
+                coin_target,
+            ));
         }
         if !choices.is_empty() {
             state.move_generation_stack.push((action.actor, choices));
@@ -3786,20 +3932,25 @@ fn self_discard_chosen_energy_and_bench_damage(
 /// Volcarona's Volcanic Ash: discard the listed Energy from the attacker, then deal `damage`
 /// to 1 of the opponent's Pokémon (chosen, Active or Benched).
 fn self_discard_energy_then_damage_any_opponent_pokemon(
+    attack: &Attack,
     to_discard: Vec<EnergyType>,
     damage: u32,
 ) -> AttackOutcomes {
+    let attack = attack.clone();
     active_damage_effect_doutcome(0, move |_, state, action| {
         discard_requested_energy_from_active_best_effort(state, action.actor, &to_discard);
 
         let opponent = (action.actor + 1) % 2;
         let mut choices = Vec::new();
-        for (in_play_idx, _) in state.enumerate_in_play_pokemon(opponent) {
-            choices.push(SimpleAction::ApplyDamage {
-                attacking_ref: (action.actor, 0),
-                targets: vec![(damage, opponent, in_play_idx)],
-                is_from_active_attack: true,
-            });
+        for (in_play_idx, pokemon) in state.enumerate_in_play_pokemon(opponent) {
+            let coin_target = coin_damage_prevention(state, pokemon).is_some();
+            choices.push(queued_attack_damage_choice(
+                action.actor,
+                &attack,
+                damage,
+                in_play_idx,
+                coin_target,
+            ));
         }
         if !choices.is_empty() {
             state.move_generation_stack.push((action.actor, choices));
@@ -4266,6 +4417,7 @@ fn extra_damage_if_undamaged(state: &State, base: u32, extra: u32) -> AttackOutc
 /// boosted damage is applied in one go (damage modifiers must not run twice).
 fn optional_discard_benched_basic_for_extra_damage(
     state: &State,
+    attack: &Attack,
     base_damage: u32,
     energy_type: EnergyType,
     extra_damage: u32,
@@ -4274,13 +4426,22 @@ fn optional_discard_benched_basic_for_extra_damage(
         return active_damage_doutcome(base_damage);
     }
 
+    let attack = attack.clone();
     active_damage_effect_doutcome(0, move |_, state, action| {
         let opponent = (action.actor + 1) % 2;
-        let mut choices = vec![SimpleAction::ApplyDamage {
-            attacking_ref: (action.actor, 0),
-            targets: vec![(base_damage, opponent, 0)],
-            is_from_active_attack: true,
-        }];
+        // Without the discard: the damage is queued, and takes the coin-flipping path when the
+        // opponent's Active has a coin-flip damage Ability. The discard choices queue theirs in
+        // `apply_action.rs`, through `discard_then_damage_choice`.
+        let coin_target = state.in_play_pokemon[opponent][0]
+            .as_ref()
+            .is_some_and(|pokemon| coin_damage_prevention(state, pokemon).is_some());
+        let mut choices = vec![queued_attack_damage_choice(
+            action.actor,
+            &attack,
+            base_damage,
+            0,
+            coin_target,
+        )];
         choices.extend(
             benched_basic_indices_of_type(state, action.actor, energy_type)
                 .into_iter()
@@ -4414,7 +4575,8 @@ fn damage_per_energy_all(
 }
 
 /// Choose 1 of the opponent's Pokémon; deal damage_per_energy × (energy on that Pokémon).
-fn damage_to_any_opponent_per_target_energy(damage_per_energy: u32) -> AttackOutcomes {
+fn damage_to_any_opponent_per_target_energy(attack: &Attack, damage_per_energy: u32) -> AttackOutcomes {
+    let attack = attack.clone();
     active_damage_effect_doutcome(0, move |_, state, action| {
         let opponent = (action.actor + 1) % 2;
         let choices: Vec<SimpleAction> = state
@@ -4422,11 +4584,8 @@ fn damage_to_any_opponent_per_target_energy(damage_per_energy: u32) -> AttackOut
             .map(|(in_play_idx, pokemon)| {
                 let energy_count = pokemon.attached_energy.len() as u32;
                 let damage = energy_count * damage_per_energy;
-                SimpleAction::ApplyDamage {
-                    attacking_ref: (action.actor, 0),
-                    targets: vec![(damage, opponent, in_play_idx)],
-                    is_from_active_attack: true,
-                }
+                let coin_target = coin_damage_prevention(state, pokemon).is_some();
+                queued_attack_damage_choice(action.actor, &attack, damage, in_play_idx, coin_target)
             })
             .collect();
         if !choices.is_empty() {
@@ -6376,11 +6535,14 @@ fn coin_flip_return_opponent_active_to_hand() -> AttackOutcomes {
 /// Pokémon, so it is queued *underneath* the switch choices — the move-generation stack is LIFO, so
 /// the promotion resolves first and the damage then hits whoever ended up in the Active Spot.
 fn switch_in_opponent_benched_then_damage(
+    attack: &Attack,
     fixed_damage: u32,
     switch_damage: u32,
     coin_flip: bool,
 ) -> AttackOutcomes {
+    let attack = attack.clone();
     let make_outcome = move || {
+        let attack = attack.clone();
         AttackOutcome::damage_then_effect(vec![(fixed_damage, true, 0)], move |_, state, action| {
             let opponent = (action.actor + 1) % 2;
             if state.prevents_attack_effects(opponent, 0) {
@@ -6397,13 +6559,21 @@ fn switch_in_opponent_benched_then_damage(
                 return; // "If you do" fails: nothing is switched, so no follow-up damage.
             }
             if switch_damage > 0 {
+                // The Pokémon switched in is chosen below, so the damage takes the coin-flipping
+                // path when any Benched candidate has a coin Ability; it is checked on the new
+                // Active when it resolves.
+                let coin_target = state
+                    .enumerate_bench_pokemon(opponent)
+                    .any(|(_, pokemon)| coin_damage_prevention(state, pokemon).is_some());
                 state.move_generation_stack.push((
                     action.actor,
-                    vec![SimpleAction::ApplyDamage {
-                        attacking_ref: (action.actor, 0),
-                        targets: vec![(switch_damage, opponent, 0)],
-                        is_from_active_attack: true,
-                    }],
+                    vec![queued_attack_damage_choice(
+                        action.actor,
+                        &attack,
+                        switch_damage,
+                        0,
+                        coin_target,
+                    )],
                 ));
             }
             state.move_generation_stack.push((action.actor, choices));

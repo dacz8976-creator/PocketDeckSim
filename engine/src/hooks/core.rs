@@ -9,9 +9,9 @@ use crate::{
             AbilityMechanic, AttackCostReductionScope, DiscardSearchKind, DiscardSelection,
             KnockoutDamageTarget, ARCEUS_NAMES,
         },
-        attacks::Mechanic, card_effect_from_ability_mechanic, get_ability_mechanic,
-        get_entering_play_ability_mechanic, get_in_play_ability_mechanic, handle_damage_only,
-        has_any_in_play_ability, has_in_play_ability_mechanic, SimpleAction, EFFECT_MECHANIC_MAP,
+        card_effect_from_ability_mechanic, get_ability_mechanic, get_entering_play_ability_mechanic,
+        get_in_play_ability_mechanic, handle_damage_only, has_any_in_play_ability,
+        has_in_play_ability_mechanic, SimpleAction,
     },
     card_ids::CardId,
     effects::{CardEffect, DamageReductionScope, TurnEffect},
@@ -1394,8 +1394,9 @@ fn finite_damage_reductions(
 
 /// Conservative raw damage at which every larger active-to-active hit has the same lethal or
 /// fully-prevented successor. Positive bonuses and Weakness are deliberately ignored; doing so can
-/// only raise the boundary. Finite defender coin reduction is included because it is applied
-/// before `modify_damage`. A full-prevention coin branch is already identical at every damage.
+/// only raise the boundary. A finite defender coin reduction is included: on heads it comes off in
+/// `modify_damage`'s step 4 with the other reductions (rules/09, repaired Sept 30), so adding it to
+/// them keeps the bound. A full-prevention coin branch is already identical at every damage.
 pub(crate) fn active_attack_damage_saturation_requirement(
     state: &State,
     acting_player: usize,
@@ -1591,11 +1592,17 @@ pub(crate) enum DefenderHit {
 /// Returns `(first, later)`: the expected damage of the threat's first hit on this defender, and of every hit after
 /// it. They differ for Disguise (`PreventFirstAttack`, while unused: the first hit does 0) and Ice Face
 /// (`ReduceDamageAtFullHp`: only while undamaged, so the first hit only, or every hit if the first does 0).
-/// Expected, because two Abilities flip a coin: `CoinFlipToPreventIncomingDamage` and
-/// `CoinFlipToReduceIncomingDamage` (heads: the damage before modifiers is cut, as `apply_attack_action` does). As in
-/// the engine, the coin isn't flipped for the direct-damage attacks (`DirectDamage`, `DirectDamageAndSelfCardEffect`,
-/// `DirectDamageIfDamaged`): their damage lands through a queued choice the coin never sees. Both orders are known
-/// engine bugs (rules/09, "Open engine bugs"); kd follows the engine, and tests pin both.
+/// Expected, because two Abilities flip a coin: `CoinFlipToPreventIncomingDamage` (heads: no damage) and
+/// `CoinFlipToReduceIncomingDamage` (heads: its amount comes off the damage after Weakness and the other reductions,
+/// `modify_damage`'s step 4, as rules/02 has it). As in the engine, the coin flips for the hits the engine routes
+/// through the defender's attack modifiers: the damage an attack carries in its outcome, the direct-damage attacks
+/// (`DirectDamage`, `DirectDamageAndSelfCardEffect`, `DirectDamageIfDamaged`), whose damage lands through a queued
+/// choice that now runs those modifiers, and Chase Order's discard branch (`discard_then_damage_choice`). Both orders
+/// were engine bugs until Sept 30 (rules/09, "Open engine bugs"). The engine still skips the coin at the other sites
+/// that deliver damage through a queued choice (Wild Swing, the own-Bench branch of `also_choice_bench_damage`, a
+/// copied Chase Order's discard branch, and the rest of that rules/09 entry's list): kd prices the coin there, as the
+/// card text says, so kd and the engine disagree at those sites, as they did before F1, until the engine is fixed.
+/// Tests pin the repaired orders.
 ///
 /// It runs `modify_damage`'s own stages, in its order, restricted to what stays on the board:
 /// - `base_damage == 0` does nothing;
@@ -1610,7 +1617,8 @@ pub(crate) enum DefenderHit {
 /// - after Weakness, every finite reduction that isn't temporary: the Tools Heavy Helmet and Steel Apron;
 ///   `ReduceDamageFromAttacks` from the defender's Ability (Solid Shell, Shell Armor, ...); the conditional
 ///   Abilities `ReduceDamageFromTypedAttackers`, `ReduceDamageIfArceusInPlay`, `ReduceDamageAtFullHp` and
-///   `UnownGuard` (a teammate's Ability); and `CoordinatedUnit`. Board conditions are read on today's board.
+///   `UnownGuard` (a teammate's Ability); `CoordinatedUnit`; and, on a heads, `CoinFlipToReduceIncomingDamage`'s amount
+///   (Guarded Grill, Securely Sheltered). Board conditions are read on today's board.
 ///
 /// Left out, because they don't last or aren't the defender's: effects stored on the defender by attacks
 /// (`ReducedDamage`, `ReducedDamageFromEx`, `NoWeakness`, `PreventDamageFromBasic`, `PreventAllDamageAndEffects`,
@@ -1653,17 +1661,6 @@ pub(crate) fn persistent_defender_damage(
         ability_effect.clone()
     };
     let weakness_applies = hit == DefenderHit::Active && !attack_effect_ignores_weakness(context);
-    let engine_flips_coin = !context
-        .attack_effect
-        .and_then(|effect| EFFECT_MECHANIC_MAP.get(effect))
-        .is_some_and(|mechanic| {
-            matches!(
-                mechanic,
-                Mechanic::DirectDamage { .. }
-                    | Mechanic::DirectDamageAndSelfCardEffect { .. }
-                    | Mechanic::DirectDamageIfDamaged { .. }
-            )
-        });
     // One hit of `base` raw damage: (first, later) as above, before coins and Disguise.
     let hit = |base: u32| -> (u32, u32) {
         if base == 0 {
@@ -1729,16 +1726,16 @@ pub(crate) fn persistent_defender_damage(
         (first, later)
     };
     let (first, later) = match ability_effect {
-        Some(CardEffect::CoinFlipToPreventIncomingDamage) if engine_flips_coin => {
+        Some(CardEffect::CoinFlipToPreventIncomingDamage) => {
             let (first, later) = hit(base_damage);
             (0.5 * first as f64, 0.5 * later as f64)
         }
-        Some(CardEffect::CoinFlipToReduceIncomingDamage { amount }) if engine_flips_coin => {
-            let (tails_first, tails_later) = hit(base_damage);
-            let (heads_first, heads_later) = hit(base_damage.saturating_sub(amount));
+        Some(CardEffect::CoinFlipToReduceIncomingDamage { amount }) => {
+            // Heads: the cut comes off the damage after Weakness and the other reductions (never below 0).
+            let (first, later) = hit(base_damage);
             (
-                0.5 * (tails_first + heads_first) as f64,
-                0.5 * (tails_later + heads_later) as f64,
+                0.5 * (first as f64 + first.saturating_sub(amount) as f64),
+                0.5 * (later as f64 + later.saturating_sub(amount) as f64),
             )
         }
         _ => {
@@ -2058,11 +2055,23 @@ pub(crate) fn modify_damage(
         WeaknessApplication::Flat(amount) => pre_weakness + amount,
         WeaknessApplication::Double => pre_weakness * 2,
     };
+    // Guarded Grill's and Securely Sheltered's cut on heads (rules/02, step 4; rules/09, "Open engine bugs", repaired
+    // Sept 30): an effect on the Defending Pokémon like the reductions below. Only an attack outcome whose coin came
+    // up heads puts one in force (`with_heads_coin_cuts`); everywhere else it is 0.
+    let heads_coin_cut = if is_from_active_attack && attacking_player != target_player {
+        crate::actions::attack_outcome::heads_coin_cut((target_player, target_idx))
+    } else {
+        0
+    };
+    if heads_coin_cut > 0 {
+        debug!("Coin-flip damage cut on heads: -{heads_coin_cut}, after Weakness");
+    }
     // Effects on the Defending Pokémon are step 4: after Weakness. This includes both
     // vulnerability (+damage) and reductions, with the final result floored at zero.
     let final_damage = after_weakness
         .saturating_add(increased_vulnerability_modifiers)
-        .saturating_sub(reductions.total_u32_saturating());
+        .saturating_sub(reductions.total_u32_saturating())
+        .saturating_sub(heads_coin_cut);
 
     // Threshold-based prevention (e.g. Cascoon's Harden): prevent all damage if it is low enough.
     let prevented_by_threshold = is_from_active_attack
@@ -3169,19 +3178,19 @@ mod persistent_defender_damage_tests {
     fn coin_flip_abilities_are_priced_in_expectation() {
         // Celestial Blessing: heads prevents the damage.
         assert_eq!(both(mon(CardId::A4080Togekiss), mon(CardId::A1001Bulbasaur), 40).0, (20.0, 20.0));
-        // Guarded Grill: heads takes -100 from the damage before modifiers (Bastiodon is weak to Fire).
+        // Guarded Grill: heads takes -100 from the damage after Weakness and the other modifiers (Bastiodon is weak to
+        // Fire): 40 + 20 = 60, tails 60, heads 0, so 30 on average.
         assert_eq!(both(mon(CardId::A2114Bastiodon), mon(CardId::A1033Charmander), 40).0, (30.0, 30.0));
     }
 
-    /// PINS THE ENGINE'S CURRENT ORDER, which is a known engine bug (rules/09, "Open engine bugs"): the engine takes
-    /// Guarded Grill's -100 off the raw damage, before Weakness; by the rules (rules/02, step 4) it comes after.
-    /// kd prices what the engine does, so the bot's clock agrees with the engine it plays in. When the engine is
-    /// fixed, this fails on purpose: then make the matching one-line change in `persistent_defender_damage` (take
-    /// the heads reduction off the damage after the rest of the pipeline, not off `base_damage`).
+    /// The engine's order (rules/02, step 4; rules/09, "Open engine bugs", repaired Sept 30): Guarded Grill's -100 on
+    /// heads comes off the damage after Weakness and Bounded Field, as every defender-side effect does. kd prices the
+    /// same: `persistent_defender_damage` takes the heads cut off the damage after the rest of the pipeline, not off
+    /// `base_damage`, so the last line here is `(engine, engine)`.
     #[test]
-    fn guarded_grill_under_bounded_field_pins_the_engines_current_order_coin_cut_before_weakness() {
-        // Charmeleon's Fire Claws (60) into Bastiodon (160 HP, weak to Fire) under Bounded Field. The engine today:
-        // tails 60 x2 = 120, heads 60 - 100 = 0, so 60 on average. By the rules: tails 120, heads 120 - 100 = 20: 70.
+    fn guarded_grill_under_bounded_field_comes_off_after_weakness() {
+        // Charmeleon's Fire Claws (60) into Bastiodon (160 HP, weak to Fire) under Bounded Field. By the rules:
+        // tails 60 x2 = 120, heads 120 - 100 = 20, so 70 on average. Before the repair: heads 60 - 100 = 0, so 60.
         let charmeleon = mon(CardId::A1034Charmeleon).with_energy(vec![EnergyType::Fire; 3]);
         let mut state = duel(vec![mon(CardId::A2114Bastiodon)], vec![charmeleon]);
         state.active_stadium = Some(get_card_by_enum(CardId::B3155BoundedField));
@@ -3203,16 +3212,16 @@ mod persistent_defender_damage_tests {
                 probability * (160 - branch.get_active(0).get_remaining_hp()) as f64
             })
             .sum();
-        assert_eq!(engine, 60.0, "the engine's Guarded Grill order changed: see this test's doc comment");
-        assert_eq!(both_on(&state, 60, None, 0).0, (engine, engine));
+        assert_eq!(engine, 70.0, "Guarded Grill's cut must come off after Weakness (rules/02, step 4)");
+        assert_eq!(both_on(&state, 60, None, 0).0, (engine, engine), "kd must price Guarded Grill's cut after Weakness, as the engine does");
     }
 
-    /// PINS THE ENGINE'S CURRENT BEHAVIOUR, a known engine bug (rules/09, "Open engine bugs"): a direct-damage
-    /// attack's damage lands through a queued choice, and the defender's coin-flip Ability never flips for it.
-    /// kd follows the engine. When the engine is fixed this fails on purpose: then drop the direct-damage exception
-    /// (`engine_flips_coin`) in `persistent_defender_damage`.
+    /// The engine's behaviour (rules/09, "Open engine bugs", repaired Sept 30): a direct-damage attack's damage lands
+    /// through a queued choice, and the defender's coin-flip Ability flips for it as for any damage done by an attack.
+    /// kd prices the same: `persistent_defender_damage` has no direct-damage exception, so the last line here is
+    /// `(engine, engine)`.
     #[test]
-    fn a_direct_damage_snipe_on_togekiss_pins_the_engines_current_behaviour_no_coin() {
+    fn a_direct_damage_snipe_on_togekiss_flips_celestial_blessing() {
         // Heatmor's Tongue Whip (30 to a Benched Pokemon) on a benched Togekiss (Celestial Blessing: heads prevents).
         let heatmor = mon(CardId::B1044Heatmor).with_energy(vec![EnergyType::Fire]);
         let mut state = duel(vec![mon(CardId::A1001Bulbasaur), mon(CardId::A4080Togekiss)], vec![heatmor]);
@@ -3234,11 +3243,16 @@ mod persistent_defender_damage_tests {
         for (probability, mutate) in probabilities.iter().zip(mutations) {
             let mut branch = state.clone();
             mutate(&mut rng, &mut branch, &tongue_whip);
+            // The snipe at Togekiss (Bench slot 1), in either queued form.
             let snipe = branch
                 .generate_possible_actions()
                 .1
                 .into_iter()
-                .find(|action| matches!(&action.action, SimpleAction::ApplyDamage { targets, .. } if targets[0].2 == 1))
+                .find(|action| match &action.action {
+                    SimpleAction::ApplyDamage { targets, .. } => targets[0].2 == 1,
+                    SimpleAction::ApplyQueuedAttackDamage { targets, .. } => targets[0].2 == 1,
+                    _ => false,
+                })
                 .expect("the snipe at Togekiss is offered");
             let (snipe_probabilities, snipe_mutations) =
                 crate::actions::forecast_action(&branch, &snipe).into_branches();
@@ -3249,8 +3263,8 @@ mod persistent_defender_damage_tests {
                 engine += probability * snipe_probability * (140 - togekiss.get_remaining_hp()) as f64;
             }
         }
-        assert_eq!(engine, 30.0, "the engine now flips Celestial Blessing for direct damage: see this test's doc comment");
-        assert_eq!(both_on(&state, 30, effect.as_deref(), 1).0, (engine, engine));
+        assert_eq!(engine, 15.0, "Celestial Blessing must flip for direct damage from an attack (rules/09)");
+        assert_eq!(both_on(&state, 30, effect.as_deref(), 1).0, (engine, engine), "kd must price the coin for direct damage, as the engine does");
     }
 
     #[test]

@@ -1,0 +1,37 @@
+
+== 11-archaludon-haxorus-dragonair (Iris): 88 chance turns in these games, used on 5
+  static effect (score after playing minus after only discarding), all chance turns: {0.0: 88}
+  static effect at the last offer, all chance turns: {0.0: 88}
+  unplayed, card score minus best at the first offer: {'-1 (the card leaving the hand)': 36, 'below -20': 34, '0 (a tie)': 5, '-2 to -20': 8}
+  unplayed, card score minus best at the last offer: {'-1 (the card leaving the hand)': 76, '0 (a tie)': 7}
+  unplayed, km3's move at the last offer: {'EndTurn': 48, 'attack': 35}
+  unplayed, km3's move at the first offer: {'Attach': 17, 'Evolve': 17, 'Place': 15, 'play Poké Ball': 9, 'play Lucky Ice Pop': 7, 'UseStadium': 7, 'attack': 3, 'UseAbility': 3, 'Retreat': 2, 'EndTurn': 2, 'play Rainbow Cave': 1}
+  unplayed, the turn attacked: 35 | knocked out: 10
+  used: Haxorus attacked 3, Haxorus knocked out 3 (of which the knockout won the game: 3; would have won without Iris's point: 0)
+    [('t-suicune', 12602, 12, {'before': 0, 'after': 3, 'wins_without_iris': False}), ('t-vespiquen', 13603, 10, {'before': 0, 'after': 3, 'wins_without_iris': False}), ('t-weezing', 14101, 7, {'before': 0, 'after': 3, 'wins_without_iris': False})]
+  unplayed: Haxorus attacked 3, Haxorus knocked out 2 (of which the knockout won the game: 2; would have won without Iris's point: 2)
+    [('t-blaziken', 8102, 12, {'before': 2, 'after': 3, 'wins_without_iris': True}), ('t-suicune', 12101, 10, {'before': 2, 'after': 4, 'wins_without_iris': True})]
+
+== 14-comfey-raticate-hypno (Team Rocket's Goo-zooka): 84 chance turns in these games, used on 1
+  static effect (score after playing minus after only discarding), all chance turns: {0.0: 84}
+  static effect at the last offer, all chance turns: {0.0: 84}
+  unplayed, card score minus best at the first offer: {'-1 (the card leaving the hand)': 20, '-2 to -20': 8, 'below -20': 53, '0 (a tie)': 2}
+  unplayed, card score minus best at the last offer: {'-1 (the card leaving the hand)': 67, 'below -20': 14, '0 (a tie)': 2}
+  unplayed, km3's move at the last offer: {'attack': 52, 'EndTurn': 28, 'play': 3}
+  unplayed, km3's move at the first offer: {'Attach': 19, 'Evolve': 18, 'play Poké Ball': 10, 'Place': 10, "play Professor's Research": 5, 'Retreat': 5, 'attack': 4, "play Team Rocket's Researcher": 4, 'play Copycat': 2, 'EndTurn': 2, 'play Sightseer': 2, 'play Cyrus': 1, 'play Elegant Cape': 1}
+  unplayed, the turn attacked: 53 | knocked out: 11
+  unplayed, a gust that turn (Cyrus, Sabrina or Entrap): 15
+  unplayed, the opponent retreated on its next turn: 13; with exactly its printed Retreat Cost in Energy on the Active: 10
+  used turns: [('t-sceptile', 11100, 6, -1.0, ['DrawCard', 'Attach', "play Team Rocket's Goo-zooka", 'play Copycat', 'Evolve', 'UseAbility', 'attack Boost Dash', 'EndTurn'])]
+
+== 15-jolteon-oricorio-raticate (Team Rocket's Goo-zooka): 63 chance turns in these games, used on 3
+  static effect (score after playing minus after only discarding), all chance turns: {0.0: 63}
+  static effect at the last offer, all chance turns: {0.0: 63}
+  unplayed, card score minus best at the first offer: {'-2 to -20': 6, '0 (a tie)': 6, 'below -20': 33, '-1 (the card leaving the hand)': 15}
+  unplayed, card score minus best at the last offer: {'-1 (the card leaving the hand)': 49, '0 (a tie)': 6, 'below -20': 5}
+  unplayed, km3's move at the last offer: {'attack': 37, 'EndTurn': 18, 'play': 5}
+  unplayed, km3's move at the first offer: {'Evolve': 11, "play Professor's Research": 7, 'Place': 7, 'Attach': 7, 'attack': 5, 'play Poké Ball': 5, 'play Sabrina': 5, 'play Copycat': 4, 'Retreat': 4, 'play Lisia': 2, 'play Pokémon Center Lady': 2, 'play Cyrus': 1}
+  unplayed, the turn attacked: 39 | knocked out: 15
+  unplayed, a gust that turn (Cyrus, Sabrina or Entrap): 9
+  unplayed, the opponent retreated on its next turn: 17; with exactly its printed Retreat Cost in Energy on the Active: 15
+  used turns: [('t-altaria', 7601, 3, 0.0, ['DrawCard', "play Team Rocket's Goo-zooka", 'Place', 'play Ilima', 'ReturnPokemonToHand', 'Promote', 'Place', 'Attach', 'attack Ambush', 'EndTurn']), ('t-blaziken', 8100, 7, -141.0, ['DrawCard', 'Evolve', 'Attach', "play Team Rocket's Goo-zooka", 'play Lisia', 'attack Mach Bolt', 'EndTurn']), ('t-blaziken', 8600, 7, -2.0, ['DrawCard', "play Professor's Research", 'Place', 'play Poké Ball', "play Team Rocket's Goo-zooka", 'Attach', 'attack Mach Bolt', 'EndTurn'])]

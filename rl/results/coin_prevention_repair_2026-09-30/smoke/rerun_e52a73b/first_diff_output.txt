@@ -1,0 +1,29 @@
+i = 16: first difference at tick 88, turn 16, mover seat 0, after Attack(Attack { energy_required: [Fire],...
+  same board before it: True; same number of offered moves: True
+  board: {'hands': [7, 7], 'p0': ['0:Heatmor 80hp 1E', '1:Slugma 70hp 1E', '2:Heatmor 80hp 1E'], 'p1': ['0:Bulbasaur 70hp 2E', '1:Chatot 70hp 1E', '2:Meowth 50hp 0E', '3:Meowth 50hp 1E']}
+  without the repair, offered: ['ApplyDamage { attacking_ref: (0, 0), targets: [(30, 1, 1)], is_from_active_attack: true }', 'ApplyDamage { attacking_ref: (0, 0), targets: [(30, 1, 2)], is_from_active_attack: true }', 'ApplyDamage { attacking_ref: (0, 0), targets: [(30, 1, 3)], is_from_active_attack: true }']
+  with the repair,    offered: ['ApplyDamage { attacking_ref: (0, 0), targets: [(30, 1, 1)], is_from_active_attack: true }', 'ApplyQueuedAttackDamage { attack: Tongue Whip, targets: [(30, true, 2)] }', 'ApplyQueuedAttackDamage { attack: Tongue Whip, targets: [(30, true, 3)] }']
+  without the repair, chose:   ApplyDamage { attacking_ref: (0, 0), targets: [(30, 1, 3)], is_from_active_attack: true }
+  with the repair,    chose:   ApplyDamage { attacking_ref: (0, 0), targets: [(30, 1, 1)], is_from_active_attack: true }
+i = 23: first difference at tick 27, turn 3, mover seat 1, after Attack(Attack { energy_required: [Fire],...
+  same board before it: True; same number of offered moves: True
+  board: {'hands': [4, 2], 'p0': ['0:Meowth 50hp 1E', '2:Chatot 70hp 0E', '3:Meowth 50hp 0E'], 'p1': ['0:Heatmor 80hp 1E', '1:Slugma 70hp 0E', '2:Magcargo 120hp 0E', '3:Heatmor 80hp 0E']}
+  without the repair, offered: ['ApplyDamage { attacking_ref: (1, 0), targets: [(30, 0, 2)], is_from_active_attack: true }', 'ApplyDamage { attacking_ref: (1, 0), targets: [(30, 0, 3)], is_from_active_attack: true }']
+  with the repair,    offered: ['ApplyDamage { attacking_ref: (1, 0), targets: [(30, 0, 2)], is_from_active_attack: true }', 'ApplyQueuedAttackDamage { attack: Tongue Whip, targets: [(30, true, 3)] }']
+  without the repair, chose:   ApplyDamage { attacking_ref: (1, 0), targets: [(30, 0, 3)], is_from_active_attack: true }
+  with the repair,    chose:   ApplyDamage { attacking_ref: (1, 0), targets: [(30, 0, 2)], is_from_active_attack: true }
+i = 29: first difference at tick 14, turn 2, mover seat 1, after Attack(Attack { energy_required: [Fire],...
+  same board before it: True; same number of offered moves: True
+  board: {'hands': [4, 5], 'p0': ['0:Chatot 70hp 0E', '2:Bulbasaur 70hp 0E', '3:Meowth 50hp 0E'], 'p1': ['0:Heatmor 80hp 1E', '3:Slugma 70hp 0E']}
+  without the repair, offered: ['ApplyDamage { attacking_ref: (1, 0), targets: [(30, 0, 2)], is_from_active_attack: true }', 'ApplyDamage { attacking_ref: (1, 0), targets: [(30, 0, 3)], is_from_active_attack: true }']
+  with the repair,    offered: ['ApplyDamage { attacking_ref: (1, 0), targets: [(30, 0, 2)], is_from_active_attack: true }', 'ApplyQueuedAttackDamage { attack: Tongue Whip, targets: [(30, true, 3)] }']
+  without the repair, chose:   ApplyDamage { attacking_ref: (1, 0), targets: [(30, 0, 3)], is_from_active_attack: true }
+  with the repair,    chose:   ApplyDamage { attacking_ref: (1, 0), targets: [(30, 0, 2)], is_from_active_attack: true }
+i = 32: first difference at tick 17, turn 2, mover seat 0, after Attack(Attack { energy_required: [Fire],...
+  same board before it: True; same number of offered moves: True
+  board: {'hands': [3, 4], 'p0': ['0:Heatmor 80hp 1E', '2:Slugma 70hp 0E', '3:Slugma 70hp 0E'], 'p1': ['0:Chatot 70hp 0E', '2:Bulbasaur 70hp 0E', '3:Meowth 50hp 0E']}
+  without the repair, offered: ['ApplyDamage { attacking_ref: (0, 0), targets: [(30, 1, 2)], is_from_active_attack: true }', 'ApplyDamage { attacking_ref: (0, 0), targets: [(30, 1, 3)], is_from_active_attack: true }']
+  with the repair,    offered: ['ApplyDamage { attacking_ref: (0, 0), targets: [(30, 1, 2)], is_from_active_attack: true }', 'ApplyQueuedAttackDamage { attack: Tongue Whip, targets: [(30, true, 3)] }']
+  without the repair, chose:   ApplyDamage { attacking_ref: (0, 0), targets: [(30, 1, 3)], is_from_active_attack: true }
+  with the repair,    chose:   ApplyDamage { attacking_ref: (0, 0), targets: [(30, 1, 2)], is_from_active_attack: true }
+fingerprints: {16: ('d9032c5ba1d74eff', '8f2de1f8ba9e4787'), 23: ('f144ef3184feaa17', '96edc7be0f1b197c'), 29: ('ac00f2a2b6b9fad0', 'c38b7fbd9b4ac5fb'), 32: ('18a551e8183116e2', '548eaef37102d8de')}

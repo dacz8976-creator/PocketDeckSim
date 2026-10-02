@@ -2,7 +2,8 @@ use deckgym::{
     actions::{Action, SimpleAction},
     card_ids::CardId,
     database::get_card_by_enum,
-    models::{Card, EnergyType, PlayedCard, TrainerCard},
+    effects::CardEffect,
+    models::{Card, EnergyType, PlayedCard, StatusCondition, TrainerCard},
     test_support::{attack_action, get_initialized_game_with_board},
     Game,
 };
@@ -316,5 +317,202 @@ fn second_strike_adds_seventy_only_when_the_defender_is_already_damaged() {
             before - game.get_state_clone().get_active(1).get_remaining_hp(),
             expected_attack_damage,
         );
+    }
+}
+
+/// Team Rocket's Moltres ex (Heat Charged: flip 3 coins, a [R] Energy for each heads) with one [R] Energy, Confused,
+/// with Victini (Victory Star) on the Bench.
+fn confused_moltres_with_victini(seed: u64) -> Game<'static> {
+    get_initialized_game_with_board(
+        seed,
+        0,
+        3,
+        vec![
+            moltres(CardId::B4a007TeamRocketsMoltresEx).with_status_condition(StatusCondition::Confused),
+            PlayedCard::from_id(CardId::B3025Victini),
+        ],
+        vec![sponge(0)],
+    )
+}
+
+fn offers_victory_star(game: &Game) -> bool {
+    let (_, choices) = game.get_state_clone().generate_possible_actions();
+    choices.iter().any(|choice| {
+        matches!(
+            choice.action,
+            SimpleAction::KeepAttackCoinResults | SimpleAction::RerollAttackCoins { .. }
+        )
+    })
+}
+
+/// rules/04 §9, observed in-game Sept 29 (Recording_QA 202314 and 203025; rules/09's Victory Star item): with a
+/// Confused attacker the Confusion coin comes first and is never offered for a reroll. On tails the attack does
+/// nothing and no Victory Star offer appears. On heads the attack's own coins are flipped and Victory Star is offered
+/// on them; keeping them resolves the attack, with no second Confusion check.
+#[test]
+fn confused_heat_charged_flips_confusion_first_then_offers_victory_star_on_its_own_coins() {
+    let (mut offered, mut confusion_tails) = (0, 0);
+    for seed in 0..200 {
+        let mut game = confused_moltres_with_victini(seed);
+        game.apply_action(&attack(CardId::B4a007TeamRocketsMoltresEx, 0));
+        let after = game.get_state_clone();
+        match after.pending_attack_coin_choice.clone() {
+            None => {
+                // Confusion tails: Heat Charged does nothing, and no Victory Star offer appears.
+                assert_eq!(after.get_active(0).attached_energy.len(), 1, "seed {seed}: tails attaches nothing");
+                assert!(!offers_victory_star(&game), "seed {seed}: no offer on the Confusion coin");
+                confusion_tails += 1;
+            }
+            Some(pending) => {
+                // Confusion heads: the offer is on Heat Charged's own three coins, before any Energy is attached.
+                assert_eq!(pending.flips.len(), 3, "seed {seed}");
+                assert_eq!(after.get_active(0).attached_energy.len(), 1, "seed {seed}");
+                assert!(offers_victory_star(&game), "seed {seed}");
+                let expected = 1 + pending.flips.iter().filter(|heads| **heads).count();
+                game.apply_action(&keep());
+                // No second Confusion check: the kept coins always resolve.
+                assert_eq!(game.get_state_clone().get_active(0).attached_energy.len(), expected, "seed {seed}");
+                offered += 1;
+            }
+        }
+    }
+    assert!(offered > 60 && confusion_tails > 60, "{offered} offers, {confusion_tails} Confusion tails");
+}
+
+/// The same order with a reroll (203025: Victory Star taken, the three coins rerolled, no second Confusion check).
+/// Every reroll resolves its fresh coins: nothing attaches only when all three are tails (1 in 8), where a second
+/// Confusion check would make it nearly 1 in 2.
+#[test]
+fn a_victory_star_reroll_after_confusion_heads_resolves_with_no_second_confusion_check() {
+    let (mut rerolls, mut nothing_attached) = (0, 0);
+    for seed in 0..400 {
+        let mut game = confused_moltres_with_victini(seed);
+        game.apply_action(&attack(CardId::B4a007TeamRocketsMoltresEx, 0));
+        let Some(pending) = game.get_state_clone().pending_attack_coin_choice else {
+            continue;
+        };
+        game.apply_action(&reroll(pending.victory_star_in_play_idx));
+        let after = game.get_state_clone();
+        assert!(after.pending_attack_coin_choice.is_none());
+        assert!(after.victory_star_used_this_turn[0]);
+        let attached = after.get_active(0).attached_energy.len();
+        assert!((1..=4).contains(&attached), "seed {seed}");
+        rerolls += 1;
+        nothing_attached += (attached == 1) as usize;
+    }
+    assert!(rerolls > 120, "{rerolls} rerolls");
+    assert!(nothing_attached * 4 < rerolls, "{nothing_attached} of {rerolls} rerolls attached nothing");
+}
+
+/// CoinFlipToBlockAttack's interaction with Victory Star has not been seen in Pocket, so the repair leaves it as it
+/// was: an attacker carrying it gets no Victory Star offer, Confused or not.
+#[test]
+fn coin_flip_to_block_attack_keeps_its_resolution_without_a_victory_star_offer() {
+    for confused in [false, true] {
+        for seed in 0..40 {
+            let mut attacker = moltres(CardId::B4a007TeamRocketsMoltresEx);
+            if confused {
+                attacker = attacker.with_status_condition(StatusCondition::Confused);
+            }
+            attacker.add_effect(CardEffect::CoinFlipToBlockAttack, 1);
+            let mut game = get_initialized_game_with_board(
+                seed,
+                0,
+                3,
+                vec![attacker, PlayedCard::from_id(CardId::B3025Victini)],
+                vec![sponge(0)],
+            );
+            game.apply_action(&attack(CardId::B4a007TeamRocketsMoltresEx, 0));
+            assert!(game.get_state_clone().pending_attack_coin_choice.is_none(), "confused {confused}, seed {seed}");
+            assert!(!offers_victory_star(&game), "confused {confused}, seed {seed}");
+        }
+    }
+}
+
+/// Confusion while a Will is pending is the other case the repair leaves on the legacy resolution: which coin Will turns
+/// to heads there has not been seen in Pocket, so `victory_star_waits_for_confusion_heads` excludes it. A Confused
+/// attacker with Victini on the Bench and a Will played gets no pause and no offer, and the result is exactly that of
+/// the same seed with no Victini in play (Sonnet's F4: nothing tested this guard).
+#[test]
+fn confusion_with_will_pending_keeps_the_legacy_resolution_without_a_victory_star_offer() {
+    let card_id = CardId::B4a007TeamRocketsMoltresEx;
+    let play_will_then_attack = |seed: u64, bench: CardId| {
+        let mut game = get_initialized_game_with_board(
+            seed,
+            0,
+            3,
+            vec![
+                moltres(card_id).with_status_condition(StatusCondition::Confused),
+                PlayedCard::from_id(bench),
+            ],
+            vec![sponge(0)],
+        );
+        let will = trainer(CardId::A4156Will);
+        let mut state = game.get_state_clone();
+        state.hands[0].push(Card::Trainer(will.clone()));
+        game.set_state(state);
+        game.apply_action(&Action {
+            actor: 0,
+            action: SimpleAction::Play { trainer_card: will },
+            is_stack: false,
+        });
+        game.apply_action(&attack(card_id, 0));
+        game
+    };
+    let mut resolved = 0;
+    for seed in 0..60 {
+        let with_victini = play_will_then_attack(seed, CardId::B3025Victini);
+        let without = play_will_then_attack(seed, CardId::A1001Bulbasaur);
+        let (a, b) = (with_victini.get_state_clone(), without.get_state_clone());
+        assert!(a.pending_attack_coin_choice.is_none(), "seed {seed}: no pause");
+        assert!(!offers_victory_star(&with_victini), "seed {seed}: no offer");
+        assert!(!a.victory_star_used_this_turn[0], "seed {seed}: Victory Star unused");
+        // The old result: what the same seed gives with nothing for Victory Star to work on.
+        assert_eq!(a.get_active(0).attached_energy.len(), b.get_active(0).attached_energy.len(), "seed {seed}");
+        assert_eq!(a.get_active(1).get_remaining_hp(), b.get_active(1).get_remaining_hp(), "seed {seed}");
+        assert_eq!(a.generate_possible_actions().1.len(), b.generate_possible_actions().1.len(), "seed {seed}");
+        resolved += (a.get_active(0).attached_energy.len() > 1) as usize;
+    }
+    assert!(resolved > 10, "the attack resolved (attached Energy) in only {resolved} of 60 seeds");
+}
+
+/// CoinFlipToBlockAttack keeps the old resolution, and not only "no pause, no offer": the result equals the old path's,
+/// which is what the same seed gives with Victory Star already used this turn (the gate shut before it starts). Sonnet's
+/// F7 (optional): the guard test above checked only the absence of a pause and an offer.
+#[test]
+fn coin_flip_to_block_attack_result_is_the_old_paths() {
+    for confused in [false, true] {
+        for seed in 0..40 {
+            let play = |used: bool| {
+                let mut attacker = moltres(CardId::B4a007TeamRocketsMoltresEx);
+                if confused {
+                    attacker = attacker.with_status_condition(StatusCondition::Confused);
+                }
+                attacker.add_effect(CardEffect::CoinFlipToBlockAttack, 1);
+                let mut game = get_initialized_game_with_board(
+                    seed,
+                    0,
+                    3,
+                    vec![attacker, PlayedCard::from_id(CardId::B3025Victini)],
+                    vec![sponge(0)],
+                );
+                let mut state = game.get_state_clone();
+                state.victory_star_used_this_turn[0] = used;
+                game.set_state(state);
+                game.apply_action(&attack(CardId::B4a007TeamRocketsMoltresEx, 0));
+                game.get_state_clone()
+            };
+            let (open, shut) = (play(false), play(true));
+            assert_eq!(
+                open.get_active(0).attached_energy.len(),
+                shut.get_active(0).attached_energy.len(),
+                "confused {confused}, seed {seed}"
+            );
+            assert_eq!(
+                open.generate_possible_actions().1.len(),
+                shut.generate_possible_actions().1.len(),
+                "confused {confused}, seed {seed}"
+            );
+        }
     }
 }

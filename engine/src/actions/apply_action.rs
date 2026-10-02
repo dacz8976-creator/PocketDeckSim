@@ -192,10 +192,23 @@ fn try_forecast_victory_star_attack(state: &State, action: &Action) -> Option<Ou
     );
     let source_idx = victory_star_source(state, action.actor)?;
 
-    // Pocket evidence is still needed for whether Victory Star can replace confusion and
-    // CoinFlipToBlockAttack checks. Resolving the printed attack-effect coin first would reverse
-    // their order, so this bounded implementation deliberately keeps legacy resolution there.
-    if apply_attack_action::has_unverified_attacker_coin_gate(action.actor, state, action.is_stack)
+    // A Confused attacker (rules/04 §9, seen in Pocket Sept 29): the Confusion coin comes first and
+    // is never offered for a reroll, and only its heads reach the pause below.
+    let confusion_first = apply_attack_action::victory_star_waits_for_confusion_heads(
+        action.actor,
+        state,
+        action.is_stack,
+    );
+    // Pocket evidence is still needed for whether Victory Star can replace CoinFlipToBlockAttack
+    // checks (or Confusion's with Will pending). Resolving the printed attack-effect coin first
+    // would reverse their order, so this bounded implementation deliberately keeps legacy
+    // resolution there.
+    if !confusion_first
+        && apply_attack_action::has_unverified_attacker_coin_gate(
+            action.actor,
+            state,
+            action.is_stack,
+        )
     {
         debug!("Victory Star attack-effect pause skipped for unverified attacker coin gate");
         return None;
@@ -274,6 +287,29 @@ fn try_forecast_victory_star_attack(state: &State, action: &Action) -> Option<Ou
         })
         .collect();
 
+    let branches = if confusion_first {
+        debug!("Victory Star with a Confused attacker: Confusion coin first, pause on heads only");
+        // Tails: the attack does nothing, committed now as the ordinary attack path commits it.
+        // Heads: the pause staged above. Neither half is labelled with the attack's coins any more,
+        // as after `prepend_nullifying_coin_gate`.
+        let tails = apply_attack_action::confusion_tails_outcomes(action.actor, state, &attack);
+        let mut gated: Vec<(f64, Mutation, CoinPaths)> = tails
+            .into_branches_with_coin_paths()
+            .into_iter()
+            .map(|(probability, mutation, _)| {
+                (0.5 * probability, wrap_with_common_logic(mutation), CoinPaths::None)
+            })
+            .collect();
+        gated.extend(
+            branches
+                .into_iter()
+                .map(|(probability, mutation, _)| (0.5 * probability, mutation, CoinPaths::None)),
+        );
+        gated
+    } else {
+        branches
+    };
+
     Some(
         Outcomes::from_branches_with_coin_paths(branches)
             .expect("Victory Star sample branches must remain a valid distribution"),
@@ -323,13 +359,29 @@ fn forecast_victory_star_choice(state: &State, action: &Action) -> Outcomes {
         _ => panic!("pending Victory Star state accepts only Keep or Reroll"),
     };
 
-    let outcomes = apply_attack_action::finish_attack_from_effect_outcomes(
+    // A Confused attacker reaches this choice only through its Confusion heads (staged in
+    // `try_forecast_victory_star_attack`), so no second Confusion check follows.
+    let outcomes = if apply_attack_action::victory_star_waits_for_confusion_heads(
         pending.actor,
         state,
-        &pending.attack,
         pending.original_is_stack,
-        base,
-    );
+    ) {
+        debug!("Victory Star choice for a Confused attacker: no second Confusion check");
+        apply_attack_action::finish_attack_after_confusion_heads(
+            pending.actor,
+            state,
+            &pending.attack,
+            base,
+        )
+    } else {
+        apply_attack_action::finish_attack_from_effect_outcomes(
+            pending.actor,
+            state,
+            &pending.attack,
+            pending.original_is_stack,
+            base,
+        )
+    };
 
     outcomes.map_mutations(move |mutation| {
         let pending = pending.clone();
@@ -1250,14 +1302,9 @@ fn apply_discard_own_benched_then_damage(
     if state.in_play_pokemon[opponent][0].is_none() {
         return;
     }
-    state.move_generation_stack.push((
-        acting_player,
-        vec![SimpleAction::ApplyDamage {
-            attacking_ref: (acting_player, 0),
-            targets: vec![(damage, opponent, 0)],
-            is_from_active_attack: true,
-        }],
-    ));
+    // `ApplyDamage` as before, except Chase Order into a coin-flip damage Ability (rules/09).
+    let queued = apply_attack_action::discard_then_damage_choice(state, acting_player, damage);
+    state.move_generation_stack.push((acting_player, vec![queued]));
 }
 
 fn apply_healing(

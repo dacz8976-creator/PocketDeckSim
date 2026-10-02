@@ -28,6 +28,50 @@ pub type DamageTarget = (u32, bool, usize);
 /// (active damage prevented) and a tails variant (full damage), both running the same effect.
 type SharedEffect = Rc<dyn Fn(&mut StdRng, &mut State, &Action)>;
 
+thread_local! {
+    /// The coin-flip damage cuts (Guarded Grill, Securely Sheltered) that came up heads for the attack damage being
+    /// calculated right now, by (player, in-play index). rules/02 puts them in step 4, with the other effects on the
+    /// Defending Pokémon, after the attacker's bonuses and Weakness, so `modify_damage` takes them off there
+    /// (`heads_coin_cut`). They are set only for the length of one calculation, by `with_heads_coin_cuts` (rules/09,
+    /// "Open engine bugs", repaired Sept 30). Empty everywhere else.
+    static HEADS_COIN_CUTS: std::cell::RefCell<Vec<((usize, usize), u32)>> =
+        std::cell::RefCell::new(Vec::new());
+}
+
+/// Run `f` with exactly `cuts` in force for `modify_damage`, then restore what was there before (also on a panic).
+/// An inner call replaces the outer cuts for its length, and an inner call with no cuts clears them, so it never
+/// inherits them (Sonnet's S1, Sept 30). With no cuts and none in force it just runs `f`: that is every attack without
+/// a heads coin cut, so their damage is calculated as before.
+pub(crate) fn with_heads_coin_cuts<R>(cuts: Vec<((usize, usize), u32)>, f: impl FnOnce() -> R) -> R {
+    if cuts.is_empty() && HEADS_COIN_CUTS.with(|in_force| in_force.borrow().is_empty()) {
+        return f();
+    }
+    struct Restore(Option<Vec<((usize, usize), u32)>>);
+    impl Drop for Restore {
+        fn drop(&mut self) {
+            if let Some(previous) = self.0.take() {
+                HEADS_COIN_CUTS.with(|in_force| *in_force.borrow_mut() = previous);
+            }
+        }
+    }
+    let previous = HEADS_COIN_CUTS.with(|in_force| std::mem::replace(&mut *in_force.borrow_mut(), cuts));
+    let _restore = Restore(Some(previous));
+    f()
+}
+
+/// The heads coin cut in force on `target` (player, in-play index), for `modify_damage`: 0 outside
+/// `with_heads_coin_cuts`.
+pub(crate) fn heads_coin_cut(target: (usize, usize)) -> u32 {
+    HEADS_COIN_CUTS.with(|in_force| {
+        in_force
+            .borrow()
+            .iter()
+            .filter(|(cut_target, _)| *cut_target == target)
+            .map(|(_, cut)| *cut)
+            .sum()
+    })
+}
+
 /// The structured result of (one branch of) an attack: the damage it deals, carried as data,
 /// plus the non-damage effects that run before and/or after damage is applied.
 ///
@@ -43,6 +87,10 @@ pub struct AttackOutcome {
     pre_damage_effect: Option<SharedEffect>,
     /// Effect that runs after damage is applied (the common case: status, energy moves, etc.).
     post_damage_effect: Option<SharedEffect>,
+    /// The defender's finite coin cuts that came up heads in this branch, as (opponent in-play index, cut): Guarded
+    /// Grill's -100 and Securely Sheltered's -80. They come off after the damage modifiers (`with_heads_coin_cuts`),
+    /// not off the raw damage above. Empty in every branch without such a heads.
+    heads_coin_cuts: Vec<(usize, u32)>,
 }
 
 impl AttackOutcome {
@@ -52,6 +100,7 @@ impl AttackOutcome {
             damage: vec![],
             pre_damage_effect: None,
             post_damage_effect: None,
+            heads_coin_cuts: vec![],
         }
     }
 
@@ -61,6 +110,7 @@ impl AttackOutcome {
             damage: targets,
             pre_damage_effect: None,
             post_damage_effect: None,
+            heads_coin_cuts: vec![],
         }
     }
 
@@ -73,6 +123,7 @@ impl AttackOutcome {
             damage: targets,
             pre_damage_effect: None,
             post_damage_effect: Some(Rc::new(effect)),
+            heads_coin_cuts: vec![],
         }
     }
 
@@ -85,6 +136,7 @@ impl AttackOutcome {
             damage: targets,
             pre_damage_effect: Some(Rc::new(effect)),
             post_damage_effect: None,
+            heads_coin_cuts: vec![],
         }
     }
 
@@ -102,6 +154,7 @@ impl AttackOutcome {
             damage: targets,
             pre_damage_effect: Some(Rc::new(before_damage)),
             post_damage_effect: Some(Rc::new(after_damage)),
+            heads_coin_cuts: vec![],
         }
     }
 
@@ -114,7 +167,18 @@ impl AttackOutcome {
             damage: vec![],
             pre_damage_effect: None,
             post_damage_effect: Some(Rc::new(effect)),
+            heads_coin_cuts: vec![],
         }
+    }
+
+    /// This branch's heads coin cuts as ((player, in-play index), cut) for `actor`'s attack, for
+    /// `with_heads_coin_cuts`.
+    fn resolved_heads_coin_cuts(&self, actor: usize) -> Vec<((usize, usize), u32)> {
+        let opponent = (actor + 1) % 2;
+        self.heads_coin_cuts
+            .iter()
+            .map(|(idx, cut)| ((opponent, *idx), *cut))
+            .collect()
     }
 
     /// Resolve `is_opponent_target` into concrete player indices for the acting player.
@@ -143,16 +207,23 @@ impl AttackOutcome {
             let mut damaged_actives = Vec::new();
             if !resolved.is_empty() {
                 let attack_metadata = attack_metadata_from_action(state, action);
-                damaged_actives = handle_damage_only(
-                    state,
-                    attacking_ref,
-                    &resolved,
-                    true,
-                    DamageModifierContext {
-                        attack_name: attack_metadata.name.as_deref(),
-                        attack_effect: attack_metadata.effect.as_deref(),
-                    },
-                );
+                // A heads coin cut comes off in `modify_damage`, after Weakness (rules/02, step 4).
+                let heads_coin_cuts = self.resolved_heads_coin_cuts(action.actor);
+                if !heads_coin_cuts.is_empty() {
+                    log::debug!("Coin-flip damage cut on heads, after the damage modifiers: {heads_coin_cuts:?}");
+                }
+                damaged_actives = with_heads_coin_cuts(heads_coin_cuts, || {
+                    handle_damage_only(
+                        state,
+                        attacking_ref,
+                        &resolved,
+                        true,
+                        DamageModifierContext {
+                            attack_name: attack_metadata.name.as_deref(),
+                            attack_effect: attack_metadata.effect.as_deref(),
+                        },
+                    )
+                });
                 // Hala-style survival changes a would-be knockout into 10 HP before the
                 // attack's own switch or other post-damage choices are exposed.
                 apply_survive_knockout_turn_effects(state);
@@ -504,6 +575,7 @@ impl AttackOutcomes {
                         damage: vec![],
                         pre_damage_effect: None,
                         post_damage_effect: Some(effect),
+                        heads_coin_cuts: vec![],
                     },
                     coin_paths,
                 }
@@ -540,9 +612,11 @@ impl AttackOutcomes {
     /// The ability applies independently to each such Pokémon — whether Active or Benched — and
     /// only when it actually takes damage in a given branch. Each branch is therefore split into
     /// `2^k` sub-branches (where `k` is the number of those Pokémon taking damage in that branch),
-    /// one per combination of heads/tails, reducing (saturating at 0, at which point the damage
-    /// entry is removed) the damage to the Pokémon whose coin came up heads while keeping all
-    /// other damage and all effects. Existing metadata is preserved unchanged: it describes the
+    /// one per combination of heads/tails. On heads, full prevention removes that Pokémon's damage
+    /// entry; a finite cut (Guarded Grill, Securely Sheltered) keeps the entry and is recorded in
+    /// `heads_coin_cuts`, so it comes off after the damage modifiers, in step 4 with the other
+    /// effects on the Defending Pokémon (rules/02; rules/09, repaired Sept 30). All other damage and
+    /// all effects are kept. Existing metadata is preserved unchanged: it describes the
     /// acting player's earlier attack-effect coins, while these defender coins stay unlabelled.
     pub fn split_with_damage_prevention(self, reductions: &[(usize, u32)]) -> Self {
         let mut branches = vec![];
@@ -578,21 +652,20 @@ impl AttackOutcomes {
                     .map(|(_, pair)| *pair)
                     .collect();
                 let mut outcome = branch.outcome.clone();
-                outcome.damage = outcome
-                    .damage
-                    .into_iter()
-                    .filter_map(|(amount, is_opponent, idx)| {
-                        if is_opponent {
-                            if let Some((_, reduction)) =
-                                reduced_now.iter().find(|(r_idx, _)| *r_idx == idx)
-                            {
-                                let reduced = amount.saturating_sub(*reduction);
-                                return (reduced > 0).then_some((reduced, is_opponent, idx));
-                            }
-                        }
-                        Some((amount, is_opponent, idx))
-                    })
-                    .collect();
+                // Full prevention: that Pokémon takes none of this attack's damage.
+                outcome.damage.retain(|(_, is_opponent, idx)| {
+                    !(*is_opponent
+                        && reduced_now
+                            .iter()
+                            .any(|(r_idx, reduction)| r_idx == idx && *reduction == u32::MAX))
+                });
+                // A finite cut comes off after the damage modifiers (`with_heads_coin_cuts`).
+                outcome.heads_coin_cuts.extend(
+                    reduced_now
+                        .iter()
+                        .filter(|(_, reduction)| *reduction != u32::MAX)
+                        .copied(),
+                );
                 branches.push(AttackBranch {
                     probability: sub_probability,
                     outcome,
@@ -640,17 +713,19 @@ impl AttackOutcomes {
                         .filter(|(_, is_opponent, idx)| *is_opponent && idx == target_idx)
                         .map(|(amount, _, _)| *amount)
                         .sum();
-                    guts_would_flip(
-                        state,
-                        (acting_player, 0),
-                        raw_total,
-                        (opponent, *target_idx),
-                        true,
-                        DamageModifierContext {
-                            attack_name,
-                            attack_effect,
-                        },
-                    )
+                    with_heads_coin_cuts(branch.outcome.resolved_heads_coin_cuts(acting_player), || {
+                        guts_would_flip(
+                            state,
+                            (acting_player, 0),
+                            raw_total,
+                            (opponent, *target_idx),
+                            true,
+                            DamageModifierContext {
+                                attack_name,
+                                attack_effect,
+                            },
+                        )
+                    })
                 })
                 .collect();
 
@@ -732,14 +807,16 @@ impl AttackOutcomes {
                         .filter(|(_, is_opponent, idx)| *is_opponent && idx == target_idx)
                         .map(|(amount, _, _)| *amount)
                         .sum();
-                    would_knock_out(
-                        state,
-                        acting_player,
-                        (opponent, *target_idx),
-                        raw_total,
-                        attack_name,
-                        attack_effect,
-                    )
+                    with_heads_coin_cuts(branch.outcome.resolved_heads_coin_cuts(acting_player), || {
+                        would_knock_out(
+                            state,
+                            acting_player,
+                            (opponent, *target_idx),
+                            raw_total,
+                            attack_name,
+                            attack_effect,
+                        )
+                    })
                 })
                 .collect();
 
@@ -840,14 +917,16 @@ impl AttackOutcomes {
                 .filter(|(_, is_opponent, idx)| *is_opponent && *idx == 0)
                 .map(|(amount, _, _)| *amount)
                 .sum();
-            if !would_knock_out(
-                state,
-                acting_player,
-                (opponent, 0),
-                raw_total,
-                attack_name,
-                attack_effect,
-            ) {
+            if !with_heads_coin_cuts(branch.outcome.resolved_heads_coin_cuts(acting_player), || {
+                would_knock_out(
+                    state,
+                    acting_player,
+                    (opponent, 0),
+                    raw_total,
+                    attack_name,
+                    attack_effect,
+                )
+            }) {
                 branches.push(branch);
                 continue;
             }
@@ -922,16 +1001,18 @@ impl AttackOutcomes {
                         player == target_player && *idx == target_idx
                     })
                     .map(|(amount, _, idx)| {
-                        modify_damage(
-                            state,
-                            attacking_ref,
-                            (*amount, target_player, *idx),
-                            true,
-                            DamageModifierContext {
-                                attack_name,
-                                attack_effect,
-                            },
-                        )
+                        with_heads_coin_cuts(branch.outcome.resolved_heads_coin_cuts(actor), || {
+                            modify_damage(
+                                state,
+                                attacking_ref,
+                                (*amount, target_player, *idx),
+                                true,
+                                DamageModifierContext {
+                                    attack_name,
+                                    attack_effect,
+                                },
+                            )
+                        })
                     })
                     .sum();
                 branch.probability * raw as f64
@@ -1171,6 +1252,35 @@ mod tests {
     use crate::actions::outcomes::MAX_GEOMETRIC_SATURATION_HEADS;
     use crate::card_ids::CardId;
     use crate::models::PlayedCard;
+
+    /// `with_heads_coin_cuts` (Sonnet's S1, Sept 30): a cut is in force only inside its own call and only on its own
+    /// target; an inner call replaces the outer cuts for its length, an inner call with no cuts included (it must not
+    /// inherit them); the outer cuts come back after an inner call, and nothing is left behind after a panic.
+    #[test]
+    fn heads_coin_cuts_are_scoped_to_their_own_call() {
+        assert_eq!(heads_coin_cut((1, 0)), 0, "nothing in force outside any call");
+        with_heads_coin_cuts(vec![((1, 0), 100)], || {
+            assert_eq!(heads_coin_cut((1, 0)), 100);
+            assert_eq!(heads_coin_cut((1, 1)), 0, "only on its own target");
+            assert_eq!(heads_coin_cut((0, 0)), 0, "only on its own player");
+            with_heads_coin_cuts(vec![], || {
+                assert_eq!(heads_coin_cut((1, 0)), 0, "an inner call with no cuts must not inherit the outer ones");
+            });
+            assert_eq!(heads_coin_cut((1, 0)), 100, "the outer cut is back after the inner call");
+            with_heads_coin_cuts(vec![((1, 2), 80)], || {
+                assert_eq!(heads_coin_cut((1, 0)), 0, "an inner call replaces the outer cuts");
+                assert_eq!(heads_coin_cut((1, 2)), 80);
+            });
+            assert_eq!(heads_coin_cut((1, 0)), 100);
+            assert_eq!(heads_coin_cut((1, 2)), 0);
+        });
+        assert_eq!(heads_coin_cut((1, 0)), 0, "nothing left in force after the call");
+        let unwound = std::panic::catch_unwind(|| {
+            with_heads_coin_cuts(vec![((1, 0), 100)], || panic!("a panic inside the call"));
+        });
+        assert!(unwound.is_err());
+        assert_eq!(heads_coin_cut((1, 0)), 0, "nothing left in force after a panic");
+    }
 
     fn state_with_grimer_vs_meowth() -> State {
         let mut state = State::default();

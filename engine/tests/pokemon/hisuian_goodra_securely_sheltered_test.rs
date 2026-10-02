@@ -1,6 +1,7 @@
 use deckgym::{
     actions::Action,
     card_ids::CardId,
+    database::get_card_by_enum,
     models::{EnergyType, PlayedCard},
     test_support::{attack_action, get_initialized_game_with_board},
 };
@@ -150,4 +151,63 @@ fn test_guarded_grill_reduces_damage_by_100() {
         saw_full_damage,
         "expected at least one seed where the full damage went through"
     );
+}
+
+/// The cut comes off after Weakness (rules/02, step 4; rules/09, repaired Sept 30). Magcargo's Heat Blast (90) into
+/// Bastiodon (160 HP, weak to Fire): tails 90 + 20 = 110 (50 left); heads 110 - 100 = 10 (150 left). Taking the cut off
+/// the raw 90 first would leave 0 on heads (160 left).
+#[test]
+fn test_guarded_grill_cut_comes_off_after_weakness() {
+    let (mut heads, mut tails) = (false, false);
+    for seed in 0..40u64 {
+        let mut game = get_initialized_game_with_board(
+            seed,
+            0,
+            3,
+            vec![PlayedCard::from_id(CardId::A4a009Magcargo).with_energy(vec![EnergyType::Fire; 3])],
+            vec![PlayedCard::from_id(CardId::A2114Bastiodon)],
+        );
+        game.apply_action(&Action {
+            actor: 0,
+            action: attack_action(CardId::A4a009Magcargo, 0),
+            is_stack: false,
+        });
+        match game.get_state_clone().get_active(1).get_remaining_hp() {
+            150 => heads = true,
+            50 => tails = true,
+            other => panic!("seed {seed}: unexpected Bastiodon HP {other}"),
+        }
+    }
+    assert!(heads && tails, "heads seen {heads}, tails seen {tails}");
+}
+
+/// The cut also comes after the attacker's own bonuses (rules/02, steps 2 and 4). Dubwool's Rolling Tackle (80) with
+/// Training Area (+10 for a Stage 1 attacker) into Hisuian Goodra (150 HP): tails 90 (60 left); heads 90 - 80 = 10
+/// (140 left). Taking the cut off the raw 80 first would leave 0 on heads (150 left).
+#[test]
+fn test_securely_sheltered_cut_comes_off_after_the_attackers_bonus() {
+    let (mut heads, mut tails) = (false, false);
+    for seed in 0..40u64 {
+        let mut game = get_initialized_game_with_board(
+            seed,
+            0,
+            3,
+            vec![PlayedCard::from_id(CardId::A1215Dubwool).with_energy(vec![EnergyType::Colorless; 3])],
+            vec![PlayedCard::from_id(CardId::B3b050HisuianGoodra)],
+        );
+        let mut state = game.get_state_clone();
+        state.active_stadium = Some(get_card_by_enum(CardId::B2153TrainingArea));
+        game.set_state(state);
+        game.apply_action(&Action {
+            actor: 0,
+            action: attack_action(CardId::A1215Dubwool, 0),
+            is_stack: false,
+        });
+        match game.get_state_clone().get_active(1).get_remaining_hp() {
+            140 => heads = true,
+            60 => tails = true,
+            other => panic!("seed {seed}: unexpected Goodra HP {other}"),
+        }
+    }
+    assert!(heads && tails, "heads seen {heads}, tails seen {tails}");
 }

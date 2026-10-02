@@ -1,0 +1,43 @@
+Checks, of 40 traced deals:
+  replay equals kta3's committed game: 40 of 40
+  Suicune differs where km3-on-Suicune's record differs: 40 of 40
+  Altaria differs where km3-on-Altaria's record differs: 40 of 40
+  a first difference where km3-on-both's record differs: 40 of 40
+
+Suicune's first differing decision (km3 on Suicune, kta3 on Altaria), by kind and by the deal's result change:
+  kind                     to Suicune   to Altaria  same result    all
+  Stadium play                     14            0            3     17
+  Field Blower                     14            1            1     16
+  attack choice                     0            0            0      0
+  retreat or promotion              0            1            1      2
+  other                             0            1            4      5
+  all                              28            3            9     40
+
+kta3's move -> km3's move at that decision:
+    8  attach Energy -> play Soothing Shore
+    7  attack -> play Field Blower
+    3  play Professor's Research -> play Soothing Shore
+    2  play Inflatable Boat -> play Field Blower
+    2  bench a Basic -> play Soothing Shore
+    2  attach Energy -> play Field Blower
+    2  bench a Basic -> play Field Blower
+    2  promote -> promote
+    2  attach a Tool -> attach a Tool
+    1  play Poké Ball -> play Soothing Shore
+    1  play Rare Candy -> play Field Blower
+    1  play Rare Candy -> play Soothing Shore
+    1  use an Ability -> play Soothing Shore
+    1  play Rare Candy -> attach Energy
+    1  play Pokémon Center Lady -> play Field Blower
+    1  play Giant Cape -> play Soothing Shore
+    1  play Rare Candy -> play Copycat
+    1  play Professor's Research -> play Field Blower
+    1  play Rare Candy -> play Pokémon Center Lady
+
+Field Blower's target (km3's next pick on a copy of the game): {'the Stadium': 16}
+The Stadium in play at that decision: {'Training Area': 40}
+Which of Suicune's clocks N2 changes at that decision (km vs kta, from Suicune's view): {'mine': 38, 'neither': 2}
+
+Context, the same 40 deals:
+  Altaria's first differing decision (km3 on Altaria only), by kind: {'Stadium play': 17, 'other': 4} (21 deals)
+  km3 on both sides, which seat's decision comes first: {'Altaria first': 20, 'Suicune only': 19, 'Suicune first': 1}
