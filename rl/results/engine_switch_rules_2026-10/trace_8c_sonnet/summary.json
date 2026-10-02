@@ -1,0 +1,294 @@
+{
+ "rows": 3813,
+ "steps": "8,8b",
+ "tally": {
+  "ON THE BOARD": 2414,
+  "LOOKAHEAD ONLY, both halves hold": 1391,
+  "UNEXPLAINED": 7,
+  "NEEDS A JUDGMENT": 1
+ },
+ "by_bot_pairing": {
+  "k3/1": {
+   "ON THE BOARD": 56,
+   "LOOKAHEAD ONLY, both halves hold": 27
+  },
+  "k3/3": {
+   "ON THE BOARD": 56,
+   "LOOKAHEAD ONLY, both halves hold": 32
+  },
+  "k3/4": {
+   "ON THE BOARD": 64,
+   "LOOKAHEAD ONLY, both halves hold": 38,
+   "UNEXPLAINED": 1
+  },
+  "k3/5": {
+   "LOOKAHEAD ONLY, both halves hold": 4,
+   "ON THE BOARD": 12
+  },
+  "k3/6": {
+   "ON THE BOARD": 92,
+   "LOOKAHEAD ONLY, both halves hold": 36
+  },
+  "k3/9": {
+   "ON THE BOARD": 58,
+   "LOOKAHEAD ONLY, both halves hold": 34
+  },
+  "k3/11": {
+   "ON THE BOARD": 75,
+   "LOOKAHEAD ONLY, both halves hold": 25
+  },
+  "k3/12": {
+   "ON THE BOARD": 78,
+   "LOOKAHEAD ONLY, both halves hold": 66
+  },
+  "k3/13": {
+   "ON THE BOARD": 32,
+   "LOOKAHEAD ONLY, both halves hold": 21
+  },
+  "k3/14": {
+   "ON THE BOARD": 140,
+   "LOOKAHEAD ONLY, both halves hold": 71
+  },
+  "k3/17": {
+   "LOOKAHEAD ONLY, both halves hold": 9,
+   "ON THE BOARD": 15
+  },
+  "k3/18": {
+   "ON THE BOARD": 12
+  },
+  "k3/19": {
+   "ON THE BOARD": 22,
+   "LOOKAHEAD ONLY, both halves hold": 8
+  },
+  "k3/20": {
+   "ON THE BOARD": 7,
+   "LOOKAHEAD ONLY, both halves hold": 3
+  },
+  "k3/21": {
+   "ON THE BOARD": 10,
+   "LOOKAHEAD ONLY, both halves hold": 10
+  },
+  "k3/22": {
+   "ON THE BOARD": 68,
+   "LOOKAHEAD ONLY, both halves hold": 98
+  },
+  "k3/31": {
+   "ON THE BOARD": 10,
+   "UNEXPLAINED": 1,
+   "LOOKAHEAD ONLY, both halves hold": 1
+  },
+  "k3/32": {
+   "LOOKAHEAD ONLY, both halves hold": 2,
+   "ON THE BOARD": 6
+  },
+  "k3/33": {
+   "ON THE BOARD": 11,
+   "LOOKAHEAD ONLY, both halves hold": 2
+  },
+  "k3/34": {
+   "ON THE BOARD": 7,
+   "LOOKAHEAD ONLY, both halves hold": 1
+  },
+  "k3/35": {
+   "ON THE BOARD": 2
+  },
+  "km3/1": {
+   "ON THE BOARD": 89,
+   "LOOKAHEAD ONLY, both halves hold": 60,
+   "UNEXPLAINED": 1
+  },
+  "km3/3": {
+   "ON THE BOARD": 107,
+   "LOOKAHEAD ONLY, both halves hold": 64
+  },
+  "km3/4": {
+   "ON THE BOARD": 115,
+   "UNEXPLAINED": 2,
+   "LOOKAHEAD ONLY, both halves hold": 71,
+   "NEEDS A JUDGMENT": 1
+  },
+  "km3/5": {
+   "ON THE BOARD": 17,
+   "LOOKAHEAD ONLY, both halves hold": 5
+  },
+  "km3/6": {
+   "ON THE BOARD": 195,
+   "LOOKAHEAD ONLY, both halves hold": 62
+  },
+  "km3/9": {
+   "ON THE BOARD": 122,
+   "LOOKAHEAD ONLY, both halves hold": 67
+  },
+  "km3/11": {
+   "ON THE BOARD": 135,
+   "LOOKAHEAD ONLY, both halves hold": 55
+  },
+  "km3/12": {
+   "ON THE BOARD": 141,
+   "LOOKAHEAD ONLY, both halves hold": 129
+  },
+  "km3/13": {
+   "LOOKAHEAD ONLY, both halves hold": 33,
+   "ON THE BOARD": 67
+  },
+  "km3/14": {
+   "ON THE BOARD": 261,
+   "LOOKAHEAD ONLY, both halves hold": 159
+  },
+  "km3/17": {
+   "ON THE BOARD": 20,
+   "LOOKAHEAD ONLY, both halves hold": 11
+  },
+  "km3/18": {
+   "ON THE BOARD": 62
+  },
+  "km3/19": {
+   "ON THE BOARD": 46,
+   "LOOKAHEAD ONLY, both halves hold": 6
+  },
+  "km3/20": {
+   "ON THE BOARD": 15,
+   "LOOKAHEAD ONLY, both halves hold": 3
+  },
+  "km3/21": {
+   "LOOKAHEAD ONLY, both halves hold": 17,
+   "ON THE BOARD": 19,
+   "UNEXPLAINED": 1
+  },
+  "km3/22": {
+   "LOOKAHEAD ONLY, both halves hold": 150,
+   "ON THE BOARD": 133
+  },
+  "km3/31": {
+   "UNEXPLAINED": 1,
+   "ON THE BOARD": 13,
+   "LOOKAHEAD ONLY, both halves hold": 3
+  },
+  "km3/32": {
+   "ON THE BOARD": 6,
+   "LOOKAHEAD ONLY, both halves hold": 3
+  },
+  "km3/33": {
+   "ON THE BOARD": 10,
+   "LOOKAHEAD ONLY, both halves hold": 3
+  },
+  "km3/34": {
+   "ON THE BOARD": 8,
+   "LOOKAHEAD ONLY, both halves hold": 2
+  }
+ },
+ "kind_by_verdict": {
+  "length / UNEXPLAINED": 2,
+  "lookahead / LOOKAHEAD ONLY, both halves hold": 1391,
+  "lookahead / NEEDS A JUDGMENT": 1,
+  "lookahead / ON THE BOARD": 8,
+  "lookahead / UNEXPLAINED": 5,
+  "state / ON THE BOARD": 2406
+ },
+ "condition3": 297,
+ "condition3_verdicts": {
+  "LOOKAHEAD ONLY, both halves hold": 296,
+  "NEEDS A JUDGMENT": 1
+ },
+ "golden_mismatches": 0,
+ "controls": [
+  {
+   "bot": "k3",
+   "kind": "vs",
+   "pairing": 1,
+   "i": 1,
+   "tick": 8,
+   "result": {
+    "built": null
+   },
+   "nothing": true
+  },
+  {
+   "bot": "k3",
+   "kind": "vs",
+   "pairing": 1,
+   "i": 2,
+   "tick": 8,
+   "result": {
+    "built": null
+   },
+   "nothing": true
+  },
+  {
+   "bot": "k3",
+   "kind": "coin",
+   "pairing": 1,
+   "i": 1,
+   "tick": 8,
+   "result": {
+    "queued": null,
+    "cut": null,
+    "free": false
+   },
+   "nothing": true
+  },
+  {
+   "bot": "k3",
+   "kind": "coin",
+   "pairing": 1,
+   "i": 5,
+   "tick": 34,
+   "result": {
+    "queued": null,
+    "cut": null,
+    "free": false
+   },
+   "nothing": true
+  },
+  {
+   "bot": "km3",
+   "kind": "vs",
+   "pairing": 1,
+   "i": 1,
+   "tick": 8,
+   "result": {
+    "built": null
+   },
+   "nothing": true
+  },
+  {
+   "bot": "km3",
+   "kind": "vs",
+   "pairing": 1,
+   "i": 2,
+   "tick": 8,
+   "result": {
+    "built": null
+   },
+   "nothing": true
+  },
+  {
+   "bot": "km3",
+   "kind": "coin",
+   "pairing": 1,
+   "i": 1,
+   "tick": 8,
+   "result": {
+    "queued": null,
+    "cut": null,
+    "free": false
+   },
+   "nothing": true
+  },
+  {
+   "bot": "km3",
+   "kind": "coin",
+   "pairing": 1,
+   "i": 5,
+   "tick": 37,
+   "result": {
+    "queued": null,
+    "cut": null,
+    "free": false
+   },
+   "nothing": true
+  }
+ ],
+ "control_failures": 0,
+ "problems": []
+}
