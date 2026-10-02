@@ -138,6 +138,10 @@ held-out test of a pilot developed on this pool.
   - So the run is **80 games in every pairing (i < 80), 9,600 games**, about an hour at that rate.
   - Command: `RAYON_NUM_THREADS=2 pilot_data --pool rl/results/planning_pilot_data_2026-10-02/pool.tsv --root .
     --seed-base 24000000000 --stride 100000 --games 80 --rows rows.tsv --games-out games.jsonl`, from the repository root.
+  - **Added during the first pass (19:53 UTC, from its timing only, before any result was read):** the first pairings ran
+    at about 5 games/s, so the 9,600 games take about 33 minutes, half the hour asked. A second pass follows at once:
+    `--first-game 80 --games 80` (i = 80 to 159 in every pairing, the same seed formula). The two passes together are the
+    dataset: **19,200 games, 160 a pairing**.
 - **The baseline fit's held-out games:** every game with i % 5 == 4, all of its rows together (about 20%). The fit uses the
   battle rows only (`setup = 0`) and leaves out ties.
 - **The fit is a sanity check only:** a plain logistic regression of the win on the features, on standardised features with a
