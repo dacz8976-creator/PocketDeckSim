@@ -407,29 +407,17 @@ fn a_victory_star_reroll_after_confusion_heads_resolves_with_no_second_confusion
     assert!(nothing_attached * 4 < rerolls, "{nothing_attached} of {rerolls} rerolls attached nothing");
 }
 
-/// CoinFlipToBlockAttack's interaction with Victory Star has not been seen in Pocket, so the repair leaves it as it
-/// was: an attacker carrying it gets no Victory Star offer, Confused or not.
-#[test]
-fn coin_flip_to_block_attack_keeps_its_resolution_without_a_victory_star_offer() {
-    for confused in [false, true] {
-        for seed in 0..40 {
-            let mut attacker = moltres(CardId::B4a007TeamRocketsMoltresEx);
-            if confused {
-                attacker = attacker.with_status_condition(StatusCondition::Confused);
-            }
-            attacker.add_effect(CardEffect::CoinFlipToBlockAttack, 1);
-            let mut game = get_initialized_game_with_board(
-                seed,
-                0,
-                3,
-                vec![attacker, PlayedCard::from_id(CardId::B3025Victini)],
-                vec![sponge(0)],
-            );
-            game.apply_action(&attack(CardId::B4a007TeamRocketsMoltresEx, 0));
-            assert!(game.get_state_clone().pending_attack_coin_choice.is_none(), "confused {confused}, seed {seed}");
-            assert!(!offers_victory_star(&game), "confused {confused}, seed {seed}");
-        }
-    }
+/// Plays Will (A4 156) from player 0's hand.
+fn play_will(game: &mut Game) {
+    let will = trainer(CardId::A4156Will);
+    let mut state = game.get_state_clone();
+    state.hands[0].push(Card::Trainer(will.clone()));
+    game.set_state(state);
+    game.apply_action(&Action {
+        actor: 0,
+        action: SimpleAction::Play { trainer_card: will },
+        is_stack: false,
+    });
 }
 
 /// Team Rocket's Moltres ex with one [R] Energy, Confused, with `bench` on the Bench, after Will is played this turn.
@@ -444,15 +432,7 @@ fn confused_moltres_after_will(seed: u64, bench: CardId) -> Game<'static> {
         ],
         vec![sponge(0)],
     );
-    let will = trainer(CardId::A4156Will);
-    let mut state = game.get_state_clone();
-    state.hands[0].push(Card::Trainer(will.clone()));
-    game.set_state(state);
-    game.apply_action(&Action {
-        actor: 0,
-        action: SimpleAction::Play { trainer_card: will },
-        is_stack: false,
-    });
+    play_will(&mut game);
     game
 }
 
@@ -545,43 +525,135 @@ fn confusion_with_will_pending_forces_the_attacks_first_coin_without_victory_sta
     }
 }
 
-/// CoinFlipToBlockAttack keeps the old resolution, and not only "no pause, no offer": the result equals the old path's,
-/// which is what the same seed gives with Victory Star already used this turn (the gate shut before it starts). Sonnet's
-/// F7 (optional): the guard test above checked only the absence of a pause and an offer.
+/// Team Rocket's Moltres ex with one [R] Energy under a block coin (Weezing's Smokescreen and the like: "During your
+/// opponent's next turn, if the Defending Pokémon tries to use an attack, your opponent flips a coin. If tails, that
+/// attack doesn't happen."), Confused when `confused`, with `bench` on the Bench; after Will when `will`.
+fn blocked_moltres(seed: u64, confused: bool, bench: CardId, will: bool) -> Game<'static> {
+    let mut attacker = moltres(CardId::B4a007TeamRocketsMoltresEx);
+    if confused {
+        attacker = attacker.with_status_condition(StatusCondition::Confused);
+    }
+    attacker.add_effect(CardEffect::CoinFlipToBlockAttack, 1);
+    let mut game = get_initialized_game_with_board(
+        seed,
+        0,
+        3,
+        vec![attacker, PlayedCard::from_id(bench)],
+        vec![sponge(0)],
+    );
+    if will {
+        play_will(&mut game);
+    }
+    game
+}
+
+/// The attack's exact forecast, as (attached Energy, Will still pending, probability), merged by the first two.
+fn heat_charged_results(state: &State) -> Vec<(usize, bool, f64)> {
+    let action = attack(CardId::B4a007TeamRocketsMoltresEx, 0);
+    let mut by_result: BTreeMap<(usize, bool), f64> = BTreeMap::new();
+    for (probability, mutation, _) in try_forecast_action(state, &action)
+        .expect("Heat Charged is exactly priced")
+        .into_branches_with_coin_paths()
+    {
+        let mut next = state.clone();
+        mutation(&mut StdRng::seed_from_u64(0), &mut next, &action);
+        *by_result
+            .entry((next.get_active(0).attached_energy.len(), will_pending(&next)))
+            .or_default() += probability;
+    }
+    by_result.into_iter().map(|((attached, will), p)| (attached, will, p)).collect()
+}
+
+/// Victory Star with a block coin (TEXT_AUDIT.md A1; the card text, Dustin's rule of Oct 1). The block coin is flipped
+/// when the Pokémon "tries to use an attack", so it comes first; it is flipped for the effect of the opponent's attack,
+/// not "for an attack of 1 of your [R] Pokémon", so Victory Star is never offered on it. On its tails the attack doesn't
+/// happen; on its heads Heat Charged's own coins are flipped and Victory Star is offered on them, and neither a kept nor
+/// a rerolled batch meets a second block coin. A Confused attacker flips both coins first. These replace the two tests
+/// that pinned the old resolution (no offer at all; the result of the path with Victory Star already used).
 #[test]
-fn coin_flip_to_block_attack_result_is_the_old_paths() {
+fn a_block_coin_comes_first_then_victory_star_is_offered_on_the_attacks_own_coins() {
     for confused in [false, true] {
-        for seed in 0..40 {
-            let play = |used: bool| {
-                let mut attacker = moltres(CardId::B4a007TeamRocketsMoltresEx);
-                if confused {
-                    attacker = attacker.with_status_condition(StatusCondition::Confused);
-                }
-                attacker.add_effect(CardEffect::CoinFlipToBlockAttack, 1);
-                let mut game = get_initialized_game_with_board(
-                    seed,
-                    0,
-                    3,
-                    vec![attacker, PlayedCard::from_id(CardId::B3025Victini)],
-                    vec![sponge(0)],
-                );
-                let mut state = game.get_state_clone();
-                state.victory_star_used_this_turn[0] = used;
-                game.set_state(state);
-                game.apply_action(&attack(CardId::B4a007TeamRocketsMoltresEx, 0));
-                game.get_state_clone()
+        let (mut offered, mut rerolls, mut rerolls_attaching_nothing) = (0, 0, 0);
+        for seed in 0..400 {
+            let mut game = blocked_moltres(seed, confused, CardId::B3025Victini, false);
+            game.apply_action(&attack(CardId::B4a007TeamRocketsMoltresEx, 0));
+            let after = game.get_state_clone();
+            let Some(pending) = after.pending_attack_coin_choice.clone() else {
+                // A gate coin's tails: the attack doesn't happen, and no offer appears.
+                assert_eq!(after.get_active(0).attached_energy.len(), 1, "confused {confused}, seed {seed}");
+                assert!(!offers_victory_star(&game), "confused {confused}, seed {seed}: no offer on a gate coin");
+                continue;
             };
-            let (open, shut) = (play(false), play(true));
-            assert_eq!(
-                open.get_active(0).attached_energy.len(),
-                shut.get_active(0).attached_energy.len(),
-                "confused {confused}, seed {seed}"
-            );
-            assert_eq!(
-                open.generate_possible_actions().1.len(),
-                shut.generate_possible_actions().1.len(),
-                "confused {confused}, seed {seed}"
-            );
+            assert_eq!(pending.flips.len(), 3, "confused {confused}, seed {seed}");
+            assert_eq!(after.get_active(0).attached_energy.len(), 1, "confused {confused}, seed {seed}");
+            assert!(offers_victory_star(&game), "confused {confused}, seed {seed}");
+            let expected = 1 + pending.flips.iter().filter(|heads| **heads).count();
+            let mut rerolled = blocked_moltres(seed, confused, CardId::B3025Victini, false);
+            rerolled.apply_action(&attack(CardId::B4a007TeamRocketsMoltresEx, 0));
+            game.apply_action(&keep());
+            // No second block coin: the kept coins always resolve.
+            assert_eq!(game.get_state_clone().get_active(0).attached_energy.len(), expected, "confused {confused}, seed {seed}");
+            rerolled.apply_action(&reroll(pending.victory_star_in_play_idx));
+            let attached = rerolled.get_state_clone().get_active(0).attached_energy.len();
+            assert!((1..=4).contains(&attached), "confused {confused}, seed {seed}");
+            rerolls += 1;
+            rerolls_attaching_nothing += (attached == 1) as usize;
+            offered += 1;
+        }
+        // One gate coin pauses half the attacks; with Confusion as well, a quarter.
+        let expected = if confused { 100 } else { 200 };
+        assert!(
+            offered * 4 > expected * 3 && offered * 4 < expected * 5,
+            "confused {confused}: {offered} offers of 400, about {expected} expected"
+        );
+        // A reroll attaches nothing only on three tails (1 in 8); a second block coin would make it nearly 1 in 2.
+        assert!(rerolls_attaching_nothing * 4 < rerolls, "confused {confused}: {rerolls_attaching_nothing} of {rerolls}");
+    }
+}
+
+/// Will with a block coin (TEXT_AUDIT.md A2). The block coin is flipped by the attacking player for the effect of an
+/// attack (the opponent's Smokescreen), so it is the next coin Will covers: it comes up heads, the attack happens, Will
+/// is used, and Heat Charged's own three coins are fair. A Confusion coin (not for the effect of an attack) stays fair.
+/// Before the fix Will found no coin behind the gates and lapsed, and the block coin was fair.
+#[test]
+fn will_makes_the_block_coin_heads_and_leaves_the_attacks_own_coins_fair() {
+    // Heat Charged's three fair coins: 0, 1, 2 or 3 heads with 1/8, 3/8, 3/8, 1/8.
+    let fair = [(1, 0.125), (2, 0.375), (3, 0.375), (4, 0.125)];
+    for confused in [false, true] {
+        let state = blocked_moltres(0, confused, CardId::A1001Bulbasaur, true).get_state_clone();
+        assert!(will_pending(&state));
+        let results = heat_charged_results(&state);
+        for (attached, will, _) in &results {
+            if *attached > 1 {
+                assert!(!will, "confused {confused}: the attack happened, so Will was used on the block coin: {results:?}");
+            }
+        }
+        for (attached, p) in fair {
+            // A Confusion tails (1/2) attaches nothing; otherwise the attack happens (Will's heads on the block coin).
+            let expected = if confused { 0.5 * p + if attached == 1 { 0.5 } else { 0.0 } } else { p };
+            let got: f64 = results.iter().filter(|(a, _, _)| *a == attached).map(|(_, _, p)| p).sum();
+            assert!((got - expected).abs() < 1e-9, "confused {confused}, {attached} Energy: {got} vs {expected}: {results:?}");
         }
     }
+}
+
+/// Will, a block coin and Victory Star together (TEXT_AUDIT.md A1 and A2): Will's heads goes on the block coin, so the
+/// attack always happens and pauses for Victory Star, Will is already used at the pause, and Heat Charged's own first
+/// coin is fair.
+#[test]
+fn will_on_the_block_coin_then_victory_star_on_the_attacks_fair_coins() {
+    let mut first_tails = 0;
+    for seed in 0..100 {
+        let mut game = blocked_moltres(seed, false, CardId::B3025Victini, true);
+        game.apply_action(&attack(CardId::B4a007TeamRocketsMoltresEx, 0));
+        let after = game.get_state_clone();
+        let pending = after
+            .pending_attack_coin_choice
+            .clone()
+            .unwrap_or_else(|| panic!("seed {seed}: Will's heads on the block coin, so the attack happens and pauses"));
+        assert!(!will_pending(&after), "seed {seed}: Will was used on the block coin");
+        assert!(offers_victory_star(&game), "seed {seed}");
+        first_tails += (pending.flips.first() == Some(&false)) as usize;
+    }
+    assert!(first_tails > 25, "{first_tails} first tails of 100: Will forced the attack's own first coin too");
 }

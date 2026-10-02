@@ -792,3 +792,169 @@ fn carefree_steps_never_flips_for_the_checkups_damage() {
         assert_eq!(meowth.get_remaining_hp(), 40, "seed {seed}: the Checkup's damage never flips the coin");
     }
 }
+
+/// The coin Abilities on the attacker's own Pokémon (TEXT_AUDIT.md A4; the card text, Dustin's rule of Oct 1). "If any
+/// damage is done to this Pokémon by attacks" has no "your opponent's", so damage from your own attack to your own
+/// coin-Ability Pokémon flips its coin. Over 60 seeds, how often player 0's own Pokémon named `name` took none of its own
+/// attack's damage, and how often it took some; every queued choice of player 0 is steered at that Pokémon.
+fn own_coin_counts(
+    attacker: Vec<PlayedCard>,
+    attack: (CardId, usize),
+    defender: Vec<PlayedCard>,
+    name: &str,
+) -> (usize, usize) {
+    let own = |state: &State| {
+        state
+            .enumerate_in_play_pokemon(0)
+            .find(|(_, p)| p.get_name() == name)
+            .map(|(idx, p)| (idx, p.get_remaining_hp()))
+    };
+    let (mut prevented, mut hit) = (0, 0);
+    for seed in 0..60u64 {
+        let mut game: Game = get_initialized_game_with_board(seed, 0, 5, attacker.clone(), defender.clone());
+        let (slot, before) = own(&game.get_state_clone()).expect("the attacker's own coin-Ability Pokémon is in play");
+        game.apply_action(&Action { actor: 0, action: attack_action(attack.0, attack.1), is_stack: false });
+        for _ in 0..10 {
+            let state = game.get_state_clone();
+            if state.move_generation_stack.is_empty() {
+                break;
+            }
+            let (actor, choices) = state.generate_possible_actions();
+            if actor != 0 || choices.is_empty() {
+                break;
+            }
+            let aimed = choices.iter().find(|choice| match &choice.action {
+                SimpleAction::ApplyDamage { targets, .. } => targets.iter().any(|(_, p, i)| *p == 0 && *i == slot),
+                SimpleAction::ApplyQueuedAttackDamage { targets, .. } => targets.iter().any(|(_, opp, i)| !*opp && *i == slot),
+                _ => false,
+            });
+            game.apply_action(aimed.unwrap_or(&choices[0]));
+        }
+        match own(&game.get_state_clone()) {
+            Some((_, after)) if after == before => prevented += 1,
+            _ => hit += 1,
+        }
+    }
+    (prevented, hit)
+}
+
+/// TEXT_AUDIT.md A4: your own Meowth on your Bench, hit by your own attack. Zapdos's Raging Thunder ("This attack also
+/// does 30 damage to 1 of your Benched Pokémon") and Mimikyu's Shadow Hit ("... 20 damage to 1 of your Pokémon") queue
+/// the hit as a choice; Whiscash's Earthquake ("... 10 damage to each of your Benched Pokémon") carries it in the
+/// attack's outcome. Before the fix none of them flipped (0 prevented of 60).
+#[test]
+fn carefree_steps_flips_for_your_own_attacks_damage_to_your_own_meowth() {
+    let cases = [
+        ("Raging Thunder", PlayedCard::from_id(CardId::A1103Zapdos).with_energy(vec![EnergyType::Lightning; 3]), CardId::A1103Zapdos),
+        ("Shadow Hit", PlayedCard::from_id(CardId::A3083Mimikyu).with_energy(vec![EnergyType::Psychic; 2]), CardId::A3083Mimikyu),
+        ("Earthquake", PlayedCard::from_id(CardId::A3b039Whiscash).with_energy(vec![EnergyType::Fighting; 4]), CardId::A3b039Whiscash),
+    ];
+    for (title, attacker, card_id) in cases {
+        let (prevented, hit) = own_coin_counts(
+            vec![attacker, meowth()],
+            (card_id, 0),
+            vec![PlayedCard::from_id(CardId::A1036CharizardEx)],
+            "Meowth",
+        );
+        assert!(prevented > 10 && hit > 10, "{title}: {prevented} prevented, {hit} hit: the coin must flip");
+    }
+}
+
+/// TEXT_AUDIT.md A4: Securely Sheltered's cut on your own Benched Hisuian Goodra, from Great Tusk's Shaking Stomp ("This
+/// attack also does 20 damage to each of your Benched Pokémon"): on heads it takes 20 − 80, so nothing.
+#[test]
+fn securely_sheltered_cuts_your_own_shaking_stomp_on_your_benched_goodra() {
+    let (prevented, hit) = own_coin_counts(
+        vec![
+            PlayedCard::from_id(CardId::B3a034GreatTusk).with_energy(vec![EnergyType::Fighting; 2]),
+            PlayedCard::from_id(CardId::B3b050HisuianGoodra),
+        ],
+        (CardId::B3a034GreatTusk, 0),
+        vec![PlayedCard::from_id(CardId::A1036CharizardEx)],
+        "Hisuian Goodra",
+    );
+    assert!(prevented > 10 && hit > 10, "{prevented} prevented, {hit} hit: the coin must flip");
+}
+
+/// TEXT_AUDIT.md A4: the opponent's Active Meowth in an own-Bench choice. Raging Thunder's 100 and its 30 to your own
+/// Bench are queued as one choice, which the later round's gate left as a plain `ApplyDamage` because it also hits your
+/// Bench, so the 100 never flipped Meowth's coin.
+#[test]
+fn carefree_steps_flips_for_the_active_hit_of_an_own_bench_choice() {
+    queued_damage_flips_carefree_steps_from(
+        vec![
+            PlayedCard::from_id(CardId::A1103Zapdos).with_energy(vec![EnergyType::Lightning; 3]),
+            bulbasaur(),
+        ],
+        (CardId::A1103Zapdos, 0),
+        vec![meowth()],
+        false,
+    );
+}
+
+/// A copied discard attack (TEXT_AUDIT.md A5): Ditto's copy is "this attack", so its damage is damage by an attack.
+/// Ditto's Copy Anything copies the opponent's Benched Vespiquen ex's Chase Order (discarding Ditto's Benched Bulbasaur),
+/// and Copy a Friend copies Ditto's own Benched Gyarados's Wild Swing (discarding a Benched Water Pokémon), each into an
+/// Active Meowth. Before the fix the discard's damage looked for the attack among Ditto's printed attacks, found none,
+/// and was queued without the coin.
+#[test]
+fn carefree_steps_flips_for_a_copied_discard_attack() {
+    let cases = [
+        (
+            "Chase Order",
+            vec![
+                PlayedCard::from_id(CardId::A1205Ditto).with_energy(vec![EnergyType::Grass; 2]),
+                bulbasaur(),
+            ],
+            CardId::A1205Ditto,
+            vec![meowth(), PlayedCard::from_id(CardId::B4011VespiquenEx)],
+        ),
+        (
+            "Wild Swing",
+            vec![
+                PlayedCard::from_id(CardId::B1a055Ditto).with_energy(vec![EnergyType::Water; 2]),
+                PlayedCard::from_id(CardId::A4045Gyarados),
+                PlayedCard::from_id(CardId::A1053Squirtle),
+            ],
+            CardId::B1a055Ditto,
+            vec![meowth()],
+        ),
+    ];
+    for (title, attacker, ditto, defender) in cases {
+        let (mut prevented, mut hit, mut discarded) = (0, 0, 0);
+        for seed in 0..60u64 {
+            let mut game: Game = get_initialized_game_with_board(seed, 0, 5, attacker.clone(), defender.clone());
+            let before = game.get_state_clone().get_active(1).get_remaining_hp();
+            game.apply_action(&Action { actor: 0, action: attack_action(ditto, 0), is_stack: false });
+            for _ in 0..10 {
+                let state = game.get_state_clone();
+                if state.move_generation_stack.is_empty() {
+                    break;
+                }
+                let (actor, choices) = state.generate_possible_actions();
+                if actor != 0 || choices.is_empty() {
+                    break;
+                }
+                let copy = choices
+                    .iter()
+                    .find(|choice| matches!(&choice.action, SimpleAction::Attack(attack) if attack.title == title));
+                let discard = choices.iter().find(|choice| {
+                    matches!(&choice.action, SimpleAction::DiscardOwnBenchedThenDamage { in_play_idxs, .. } if !in_play_idxs.is_empty())
+                });
+                discarded += discard.is_some() as usize;
+                game.apply_action(copy.or(discard).unwrap_or(&choices[0]));
+            }
+            let unhurt = game
+                .get_state_clone()
+                .enumerate_in_play_pokemon(1)
+                .any(|(idx, p)| idx == 0 && p.get_name() == "Meowth" && p.get_remaining_hp() == before);
+            if unhurt {
+                prevented += 1;
+            } else {
+                hit += 1;
+            }
+        }
+        assert_eq!(discarded, 60, "{title}: the copied attack's discard was offered on every seed");
+        assert!(prevented > 10 && hit > 10, "{title}: {prevented} prevented, {hit} hit: the coin must flip");
+    }
+}
