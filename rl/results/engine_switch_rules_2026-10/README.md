@@ -104,7 +104,31 @@ The other three have real development lists, but none placed top-8. These are th
   - Optional `CLOUD8B <commit> <bot> <path>` lines make the gate check that the laptop's 8b rows equal the cloud's (PLAN 8b).
 - **The hand-off to 8c:** `handoff_8c.tsv` and `handoff_8c.md` list every changed game of 8b and 8 with what a tracer needs, and `touched_check.txt` gives reach per mechanic. The cloud traces from them, and Sonnet reads every hand trace.
 - **Condition 3 (the coordinator's ruling, Oct 1, consistent with Dustin's Q1 answer):** PLAN.md:95's "must be identical" reads as "no exact counter fired on the board and no trace meets both halves". A game whose lookahead trace meets both halves is one where a repaired mechanic acted, so it is explained. The runner lists each such game as CONDITION 3, a pin-gate item, and one with no trace meeting both halves fails as before.
+- **Sitting 2 passed** (Oct 1, 23:09 to 02:27 UTC; record 78e51e8).
+  - `trace_load.txt`: TRACE LOAD 0 hand traces, from the cloud's 8b rows at 3a107f4. The laptop's 8b equals the cloud's: 160 of 160 per bot.
+  - Step 8: 72,000 games, watch = new. Every all-zero-counter game is identical. 3,750 of 24,000 deals changed (306 with no reach counter). CONDITION 3 is 296 games (and 1 in 8b). The hand-off is at 1ba07d9.
+  - Step 9: 66,500 of 66,500 equal.
+  - Step 10: equal.
 - **Frozen on main until sitting 2 ends** (a change to a step's input halts that step): `decks/screen/run_screen.py`, `decks/brews/brew-06*.txt`, `decks/research/{altaria,blaziken}.txt`, `decks/screen/opponents/*`, step 9's pairs files and their decks, and this folder.
+
+## Dustin's word on game 28 and the pin (Oct 1 evening)
+
+Given in the Fable coordinator session, in answer to (a) accept or hold Victory Star smoke game 28 and (b) the pin; relayed, verbatim: "Accept Victory Star smoke game 28 as the specific documented judgment exception. State clearly that the Copycat explanation is supported by a possible sampled path, not a replay of the bot's exact original search. My conditional approval stands: pin the existing candidate once all remaining required trace checks pass. Account for every changed game, including all 297 flagged cases. This exception does not waive unexplained carrier games. Complete the planned checks after the pin. Bring me any new failure or judgment call; otherwise proceed."
+
+- **Victory Star smoke game 28** is the switch's one documented judgment exception. Its Copycat explanation is supported by a possible sampled path, not a replay of the bot's exact original search.
+- **The pin** of the existing candidate (5a18d31) goes ahead without a further word from him once 8c passes. The coordinator audits Sonnet's run first. 8c passes when:
+  - no game is unexplained;
+  - there is no new judgment call;
+  - every changed game is accounted for;
+  - each of the 296 + 1 CONDITION 3 games has a trace meeting both halves;
+  - the 63 8b rows agree with the cloud's, row for row.
+- **After the pin:** steps 11-14, then the floor re-check (15). Any new failure or judgment call stops and goes to him. The cloud's 8c run is the cross-check, and a disagreement with Sonnet's, even after the pin, goes to the coordinator at once.
+
+**His rule on card text** (Oct 1, the laptop session; verbatim):
+- "I don't know why you have such a hard time with understanding the rules. The first coin of the next coin flip for an Attack, Ability, or Trainer will definitely be heads. Not a status effect. Same thing with meowth, why would gyarados's attack bypass it magically with discarding water Pokemon?"
+- Then: "I don't mind getting video for proof, but if there is a plain reading of the text, the engine build should go with that, unless there is contradicting evidence. Not the other way around".
+
+This switch's two gated Victory Star cases (CoinFlipToBlockAttack, and Confusion with a pending Will) were gated the other way round, "until seen in the game". They go to the next rules switch on their plain reading, with the four bugs from the Oct 1 recordings (`../rules_recordings_2026-10-01/READOUT.md`).
 
 ## Who does what
 

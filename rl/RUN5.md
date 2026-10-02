@@ -414,6 +414,31 @@ sides with k3 still available; the 0.7.2 wheel and its run identities are untouc
         9. if A fails its mechanic check, A is held and B + kd ship if B passes;
         10. 09e964f's fix 2 is recorded as not taken (it contradicts the JP ruling the fork follows, `rules/06_sources.md:124`, and would break `rules_repair_retaliation_timing.rs:136`), and fix 1 stays "unchecked".
       - Question 7 (the order against N1) was the coordinator's operational decision: Sonnet does F1-F7 tonight on sonnet/rules-fixes, cut from cae37a3 with no `players/` change; R is its head; the cloud stays on N1.
+      - **Sitting 1 passed** (steps 4-7c, the night of Sept 30, record b55aad4):
+        - candidate 5a18d31 (main c9f4224 + R f8cfa9c);
+        - 151,240 identity games equal;
+        - the table's counters right;
+        - Dustin's floor pages equal.
+      - **Sitting 2 passed** (steps 8-10, Oct 1 evening, record 78e51e8):
+        - 8b and 8 played, with every all-zero-counter game identical. Of 24,000 carrier deals, 3,750 changed, and all are handed to 8c.
+        - km3's coverage baselines (66,500) equal.
+        - CLI, goldfish and the screen equal.
+        - Details: `results/engine_switch_rules_2026-10/README.md`.
+      - **Condition 3** (PLAN.md:95): it reads "no exact counter on the board and no trace meeting both halves". That is the coordinator's wording (Oct 1), consistent with his Q1 answer.
+      - **Dustin's word on Victory Star smoke game 28 and the pin** (Oct 1 evening, in the Fable coordinator session, relayed; verbatim): "Accept Victory Star smoke game 28 as the specific documented judgment exception. State clearly that the Copycat explanation is supported by a possible sampled path, not a replay of the bot's exact original search. My conditional approval stands: pin the existing candidate once all remaining required trace checks pass. Account for every changed game, including all 297 flagged cases. This exception does not waive unexplained carrier games. Complete the planned checks after the pin. Bring me any new failure or judgment call; otherwise proceed."
+        - So game 28 is the one documented judgment exception. Its Copycat explanation is a possible sampled path, not a replay of the bot's exact original search.
+        - The pin goes ahead without a further word from him once 8c passes:
+          - 0 unexplained;
+          - no new judgment call;
+          - every changed game accounted for;
+          - the 296 + 1 CONDITION 3 games each with a trace meeting both halves;
+          - the 63 8b rows agreeing with the cloud's.
+        - The coordinator audits 8c before the pin. Steps 11-14 follow, then the floor re-check (15). Any new failure or judgment call stops and goes to him.
+    - **Dustin's rule on card text** (Oct 1, in the laptop session; verbatim):
+      - "I don't know why you have such a hard time with understanding the rules. The first coin of the next coin flip for an Attack, Ability, or Trainer will definitely be heads. Not a status effect. Same thing with meowth, why would gyarados's attack bypass it magically with discarding water Pokemon?"
+      - Then: "I don't mind getting video for proof, but if there is a plain reading of the text, the engine build should go with that, unless there is contradicting evidence. Not the other way around".
+      - So the engine follows the plain reading of a card's text by default, and only contradicting evidence overturns it. A case is never kept on the old path "until seen in the game".
+      - The rules switch's two gated Victory Star cases go to the next rules switch on the plain reading. They are CoinFlipToBlockAttack, and Confusion with a pending Will. The four bugs from the Oct 1 recordings go there too (`results/rules_recordings_2026-10-01/READOUT.md`).
     - **The tables' go-ahead** (block item 9; Amendment 1 (g) step 5). Dustin, Sept 30 about 02:20 UTC, in the laptop session, after 3aed736 was pushed (verbatim): "The cloud has the message go ahead on the tables". The tables start in the laptop's queue as soon as the preparation has passed: the cloud's round at B committed as passed, the laptop's identity games and timing pair, the threshold sample, the independent check and the thresholds amendment, in (g)'s order. A stop in any of them holds the tables and goes to him.
       - **His confirmation of that reading** (Sept 30, after km's reading, given in the Fable coordinator session "Work delegation and task routing" and relayed to the laptop session; verbatim): "Yes, go ahead on the tables meant once preparation passes". This closes the outcome audit's N7 (`results/km_tables_2026-09-30/second_reader/OUTCOME_AUDIT.md`).
   - kph is not run (superseded by koh on the composed base).
