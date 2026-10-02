@@ -332,6 +332,17 @@ hash; `deckgym simulate` k3,k3 on seed 7100 identical to rules4; the kp3 smoke t
 sides with k3 still available; the 0.7.2 wheel and its run identities are untouched.
 
 **Where things stand** (status; updated with each reading. START_HERE carries none since Sept 28)
+- **Direction from Oct 2: a pilot built for playing strength, on an experimental branch.** Dustin's words, relayed by the Fable coordinator session (verbatim):
+  - "a lot of decks perform poorly in the simulator, because the bot doesn't setup for the future. They often just put their strongest pokemon in the active spot when it doesn't have enough energy to attack, leaving it exposed. Sometimes the best thing to do is leave a pokemon active and not put any energy on them to arm the bench pokemon so when it is promoted to the active spot, it can actually attack. I don't feel like we are making any real progress towards the bot playing better even with all these rules fixes. This whole project has been so narrowly/carefully adjusting one thing and not moving the floor. That is a great plan when you have a good foundation, when your foundation is shitty, you sometimes have to break things to know how to fix them".
+  - On approving the direction change: "Regressions on some decks should be expected with these changes. Not all decks will move in the same direction. I want the realistic bot, not the bot that can pilot a bad deck the best. Astra's suggestions with the same instructions and your recommendations".
+  - So:
+    - **The new pilot** is built for playing strength on an experimental branch (design: `results/planning_pilot_design_2026-10-02/DESIGN.md`).
+    - **The reference stays** the official engine (main-8626a35) and km3.
+    - **The next rules switch is parked:** its plan stays a draft, not scheduled.
+  - **Astra's additions, adopted as requirements:**
+    - varied decks from the beginning (early aggression and preparation decks), so the bot learns WHEN building the Bench pays;
+    - next-turn planning as a concrete design question ("attack now" against "take a hit, prepare an attacker, attack next turn");
+    - experimentation kept separate from the final examination: freeze a promising version, then test it on fresh games and on decks it wasn't developed around, with runtime visible throughout.
 - **Official engine:** `rl/engine-2026-10-02/`, main-8626a35 (pinned Oct 2; a rules switch: the Sept 30 engine plus Victory Star after a Confusion heads (A), coin-flip damage prevention with Chase Order (B), kd's follow-ons and F1-F7; `engine/src/players/` unchanged). kta3, km3, k3, kp3 and kog3 (and kq3, kpr3 and kd3) replay their recorded games game for game, k3 and kp3 on all 45 cells, and every changed carrier game is accounted for (`results/engine_switch_rules_2026-10/`). kt3, ktb3 and ktc3 are kog-based: diagnostic, no identity claim. The Sept 30 engine (`rl/engine-2026-09-30/`, main-d363ba8) and the Sept 28 engine (`rl/engine-2026-09-28/`, main-9b4df9b) are kept; the Sept 28 one's kp-based kt presets replay the Sept 26-28 kt records.
 - **Pilot:** km3 = kta3 + N2 (the Stadium damage bonus in the clock); kta3 = kog3 + switch 1 (the Tool cut); kog3 = kp3 + koa's opening switch A + kpg's discard-Energy credit F.
   - km3 was adopted in the tables Sept 30 (`results/km_tables_2026-09-30/READING.md`), after kta3 (Sept 30, `results/kta_tables_2026-09-29/READING.md`) and kog3 (Sept 28, `results/kog_composition_2026-09-27/READING.md`). Each is "unconfirmed" until the post-freeze read; if that read drops km, the default goes back to kta3.
