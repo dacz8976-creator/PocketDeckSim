@@ -2,41 +2,9 @@
 
 Written Sept 30 for the Fable coordinator session (Dustin's single delegator). Times are UTC.
 
-## STOP (step 8c, Oct 2): 5 UNEXPLAINED games; a ruling is needed
+**Step 8c's STOP is resolved** (Fable via Dustin, Oct 2): the cloud's run (abb49cf) and Sonnet's agree game for game; Dustin accepted all 8 games as documented exceptions ("Accept all 8 and pin"), on Sonnet's revert check (1,395 of 1,395 lookahead games) and the Victory Star offers at the extra tick; the rules switch is pinned (rl/engine-2026-10-02, main-8626a35, pin 24374a0), merged into both cloud branches (9a5fb3d here, d1b986c on claude/coin-prevention-round2).
 
-Step 8c is done: all 3,813 changed games of the hand-off (main 1ba07d9) are traced, in `rl/results/engine_switch_rules_2026-10/trace_8c_cloud/` (README.md, by_hand.md).
-
-| | count |
-|---|---:|
-| on the board | 2,414 |
-| lookahead only, both halves | 1,391 |
-| needs a judgment | 1 |
-| **UNEXPLAINED** | **5** |
-| LENGTH, explained by hand | 2 |
-
-Every trace reproduces its row (3,813 of 3,813). PLAN.md: the 5 unexplained games stop the switch until they are resolved.
-- **The 5, all the same shape:** an attack knocks out the Active, and the first difference is the Promote. R promotes a sniper; the old engine promotes another Pokémon.
-  - step 8 km3, pairing 1 (garchomp_meowth v t-blaziken), deal 399, tick 81: Heatmor (Tongue Whip at two Benched Meowth);
-  - step 8 k3, pairing 4 (garchomp_meowth v t-sceptile), deal 7, tick 95: Grovyle (Slicing Snipe at a Benched Meowth);
-  - step 8 km3, pairing 4, deal 7, tick 84: Grovyle;
-  - step 8 km3, pairing 4, deal 360, tick 57: Grovyle;
-  - step 8 km3, pairing 21 (hisuian_goodra v t-suicune), deal 310, tick 87: Chien-Pao ex (Diving Icicles at Hisuian Goodra).
-- **By hand:** `coin_probe.rs` stops at any state where the opponent is to move, so it never looks past the end of the opponent's turn. km3's and k3's own search does (`expectiminimax_player.rs` at R, 631-655: a forced EndTurn costs no ply, ahead of the cutoffs at 773 and 908). Their line is:
-  - the Promote (ply 1);
-  - the forced EndTurn (no ply);
-  - the draw (ply 2);
-  - the snipe (ply 3);
-  - the queued coin-path choice, in a frame of only queued choices, priced at depth 0 (659-700).
-  - So the repaired choice is inside their 3 plies.
-- **A scratch variant of coin_probe** (`make_coin_probe_xturn.py`) resolves those forced continuations as the bots do. It is not the accepted probe and no verdict uses it.
-  - It finds the gate in all 5 ("queued after 3, a pure frame").
-  - It agrees with the accepted probe on 139 of 139 sampled lookahead games (same or smaller ply), and finds nothing at 12 controls.
-- **Ruling needed (coordinator / Dustin):** may this reading, or the variant, count as the second half for these 5? Until then the stop stands.
-- **The 2 LENGTH games** (km3 31/12, k3 31/81): R adds the Victory Star choice after a Confused Mega Houndoom ex's attack, and the old game ends there. The reach counters fired at that tick and at its cause, in the same turn: on the board, repair A, by hand.
-- **The 1 needing a judgment** (km3 4/106, a CONDITION 3 game; `judgment.md`): `coin_probe` counts a one-choice evolution pick as a ply, so the queued choice reads "at the leaf". The bots don't count it, so by hand the choice is inside their search at ply 3.
-- **CONDITION 3:** of step 8's 296, 295 are lookahead only with both halves and 1 needs a judgment (the game above). Each is listed with its probe in `condition3.tsv`.
-
-## Question (the card-text job, Oct 2): files outside the five, and two cases outside the three sources (still open)
+## Question (the card-text job, Oct 2): files outside the five, and two cases outside the three sources (answered Oct 2: all yes; the follow-up job is in the log)
 
 The audit is committed: `rl/results/coin_prevention_round2_2026-10-01/TEXT_AUDIT.md` (539594a, branch claude/coin-prevention-round2). The four text-decided cases that fit the five files and Trap Territory are now fixed (item 1 below). Nothing below is touched until you say:
 - **A sixth file, `engine/src/card_validation.rs`:** Victini's caveat (96-98) still calls Confusion with Will and the block coin "unverified ... legacy". A text change only.
@@ -110,3 +78,4 @@ The audit is committed: `rl/results/coin_prevention_round2_2026-10-01/TEXT_AUDIT
 - 2026-10-01: PLAN.md step 8b's early-warning rows (Fable via Dustin): on a scratch build of R (f8cfa9c; engine = ab56bf4, fresh target dir), pairings 32-35 of the 23.1B block (fire_victini v psychic_confuse, fire_heatmor v meowth_carefree, t-vespiquen v meowth_carefree, l-sharpedo v meowth_carefree), 40 games each, km3 and k3, on the old engine (rl/engine-2026-09-30's source), the new, and the watch build; every changed game classified with tightened_rule.py; rows to rl/results/engine_switch_rules_2026-10/early_warning_8b/. Then idle.
 - 2026-10-02: step 8c of the rules switch (Fable via Dustin, Oct 1 evening; first, before the card-text job): every changed game of step 8's hand-off (main 1ba07d9, handoff_8c.tsv: 3,750 changed deals, 306 with no reach counter, CONDITION 3 = 296) traced on old (rl/engine-2026-09-30's source) and new (R f8cfa9c) to the first differing tick, fingerprint-checked against the row, classified with tightened_rule.py, both probes on every lookahead-only game; output rl/results/engine_switch_rules_2026-10/trace_8c_cloud/, pushed as pairings finish. An unexplained game is a stop, written at the top of this file at once.
 - 2026-10-02: card text is the rule (Dustin, Oct 1; Fable via Dustin) on claude/coin-prevention-round2, tests first, no table games, no players/ change: (1) Will with a Confused attacker and Victory Star, F4's test flipped to the card text failing first, then the fix; (2) TEXT_AUDIT.md (read-only, committed before any further code): every gated or 'unverified' case in rules/09, rules/04 and card_validation.rs's caveats, decided by text or not; (3) fix the text-decided cases that fit the five allowed files, ask here before a sixth; (4) Trap Territory counts twice with two in play (engine/src/hooks/retreat.rs, allowed for this fix only), failing test first. Full suite after the last engine commit; README updated.
+- 2026-10-02: the card-text follow-up (Fable via Dustin, Oct 2; the answer to the sixth-file question: all yes) on claude/coin-prevention-round2, now stacked on the official engine (origin/main merged first: d1b986c; 9a5fb3d here), tests first, same limits, no further file without asking: (1) card_validation.rs: Victini's caveat text updated to what is implemented and what stays open; (2) trainer_coin_plan.rs: Luxury Coin only for coins from the player's own Trainer cards (active_stadium_owner in stadium_route); (3) move_generation_trainer.rs: a Fossil can't be played under an Item lock (its printed type is Item), plus a shot-list row for it as supporting proof, not a gate; (4) E1 Guts on the attacker's own Pokémon in an attack's outcome and E2 Perish Body on a plain queued hit at the Active, in the five files. Full suite after the last engine commit; README with reach per list under decks/ (which of Dustin's decks hold a Fossil or Luxury Coin); CLOUD_STATUS.md after. Then idle.
