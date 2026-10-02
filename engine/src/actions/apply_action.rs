@@ -200,9 +200,10 @@ fn try_forecast_victory_star_attack(state: &State, action: &Action) -> Option<Ou
         action.is_stack,
     );
     // Pocket evidence is still needed for whether Victory Star can replace CoinFlipToBlockAttack
-    // checks (or Confusion's with Will pending). Resolving the printed attack-effect coin first
-    // would reverse their order, so this bounded implementation deliberately keeps legacy
-    // resolution there.
+    // checks. Resolving the printed attack-effect coin first would reverse their order, so this
+    // bounded implementation deliberately keeps legacy resolution there. A pending Will with a
+    // Confused attacker takes the Confusion-first path: Will is forced on the attack's own batch
+    // below and used only in the pause, under the Confusion heads.
     if !confusion_first
         && apply_attack_action::has_unverified_attacker_coin_gate(
             action.actor,

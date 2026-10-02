@@ -112,8 +112,10 @@ pub(crate) fn has_unverified_attacker_coin_gate(
 /// Victory Star with a Confused attacker (rules/04 §9, seen in Pocket Sept 29): the Confusion coin
 /// is flipped first and is never offered for a reroll. On tails the attack does nothing; on heads
 /// the attack's own coins are flipped and Victory Star is offered on them, with no second Confusion
-/// check. True for a Confused attacker's own attack, except with CoinFlipToBlockAttack or a pending
-/// Will as well: neither has been seen with Victory Star, so both keep the legacy resolution.
+/// check. True for a Confused attacker's own attack, except with CoinFlipToBlockAttack as well,
+/// which keeps the legacy resolution. A pending Will waits for the attack's own coins (its text names
+/// coins flipped "for the effect of an attack"; Recording_QA 210403, T14): the staging forces their
+/// first coin and uses Will only on the Confusion heads.
 pub(crate) fn victory_star_waits_for_confusion_heads(
     acting_player: usize,
     state: &State,
@@ -128,7 +130,6 @@ pub(crate) fn victory_star_waits_for_confusion_heads(
             .get_active_effects()
             .iter()
             .any(|effect| matches!(effect, CardEffect::CoinFlipToBlockAttack))
-        && !state.has_pending_will_first_heads()
 }
 
 /// The Confusion coin's tails before a Victory Star pause: the attack does nothing. This is
@@ -171,6 +172,17 @@ fn apply_attack_common_modifiers(
         .any(|effect| matches!(effect, CardEffect::CoinFlipToBlockAttack));
 
     let mut outcomes = base_outcomes;
+
+    // Will waits for the attack's own coins, which a Confused attacker flips only after its Confusion
+    // heads (the Confusion coin is not "for the effect of an attack"). The forcing has to go on before
+    // the Confusion gate drops their coin paths; `finish_forecast` then finds none and leaves it.
+    // CoinFlipToBlockAttack as well keeps the legacy resolution, as in `victory_star_waits_for_confusion_heads`.
+    if active.is_confused() && !has_block_effect && state.has_pending_will_first_heads() {
+        outcomes = match outcomes.force_first_heads_using_will() {
+            Ok(forced) => forced,
+            Err(original) => original,
+        };
+    }
 
     // Handle confusion: 50% chance the attack fails (coin flip)
     if active.is_confused() {

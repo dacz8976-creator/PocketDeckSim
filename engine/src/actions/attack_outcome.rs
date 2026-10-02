@@ -603,6 +603,66 @@ impl AttackOutcomes {
         Self { branches }
     }
 
+    /// Will (A4 156) on a Confused attacker's own attack: "The next time you flip any number of coins for the effect of
+    /// an attack, Ability, or Trainer card after using this card on this turn, the first coin flip will definitely be
+    /// heads." The Confusion coin is not flipped for the effect of the attack, so it does not use Will; the attack's own
+    /// first coin, flipped only after a Confusion heads, does (the card text; Recording_QA 210403, T14). Called on the
+    /// attack's own distribution before `prepend_nullifying_coin_gate`, which drops the coin paths it reads. It
+    /// conditions the coin branches on a first heads exactly as `Outcomes::force_first_heads` does, and each branch
+    /// uses Will up before its damage. The Confusion gate then puts all of this under its heads, so a Confusion tails
+    /// leaves Will waiting. `Err(self)`, Will unused, when the attack flips no coin for its effect.
+    pub(crate) fn force_first_heads_using_will(self) -> Result<Self, Self> {
+        let has_first_heads = self.branches.iter().any(|branch| match &branch.coin_paths {
+            CoinPaths::None => false,
+            CoinPaths::Exact(paths) => paths.iter().any(|path| path.0.first().copied().unwrap_or(false)),
+            CoinPaths::UntilTailsAtLeast { .. } => true,
+        });
+        if !has_first_heads {
+            return Err(self);
+        }
+        let mut branches = Vec::new();
+        for branch in self.branches {
+            let (probability, coin_paths) = match branch.coin_paths {
+                CoinPaths::None => (branch.probability, CoinPaths::None),
+                CoinPaths::Exact(paths) => {
+                    let total = paths.len();
+                    let kept = paths
+                        .into_iter()
+                        .filter(|path| path.0.first().copied().unwrap_or(false))
+                        .collect::<Vec<_>>();
+                    if kept.is_empty() {
+                        continue;
+                    }
+                    (branch.probability * kept.len() as f64 / total as f64, CoinPaths::Exact(kept))
+                }
+                CoinPaths::UntilTailsAtLeast { min_heads: 0 } => {
+                    (branch.probability * 0.5, CoinPaths::UntilTailsAtLeast { min_heads: 1 })
+                }
+                CoinPaths::UntilTailsAtLeast { min_heads } => {
+                    (branch.probability, CoinPaths::UntilTailsAtLeast { min_heads })
+                }
+            };
+            let mut outcome = branch.outcome;
+            let before = outcome.pre_damage_effect.take();
+            outcome.pre_damage_effect = Some(Rc::new(move |rng, state, action| {
+                state.consume_pending_will_first_heads();
+                if let Some(effect) = &before {
+                    effect(rng, state, action);
+                }
+            }));
+            branches.push(AttackBranch {
+                probability,
+                outcome,
+                coin_paths,
+            });
+        }
+        let sum: f64 = branches.iter().map(|branch| branch.probability).sum();
+        for branch in &mut branches {
+            branch.probability /= sum;
+        }
+        Ok(Self { branches })
+    }
+
     /// Apply the defender's "if any damage is done to this Pokémon by attacks, flip a coin; if
     /// heads, prevent that damage / this Pokémon takes -X damage from that attack" ability
     /// (e.g. Meowth's Carefree Steps, Bastiodon's Guarded Grill, Hisuian Goodra's Securely
