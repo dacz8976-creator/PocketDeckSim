@@ -1,12 +1,15 @@
 use deckgym::{
-    actions::{Action, SimpleAction},
+    actions::{try_forecast_action, Action, SimpleAction},
     card_ids::CardId,
     database::get_card_by_enum,
     effects::CardEffect,
     models::{Card, EnergyType, PlayedCard, StatusCondition, TrainerCard},
+    state::State,
     test_support::{attack_action, get_initialized_game_with_board},
     Game,
 };
+use rand::{rngs::StdRng, SeedableRng};
+use std::collections::BTreeMap;
 
 fn sponge(damage: u32) -> PlayedCard {
     PlayedCard::new(
@@ -429,51 +432,117 @@ fn coin_flip_to_block_attack_keeps_its_resolution_without_a_victory_star_offer()
     }
 }
 
-/// Confusion while a Will is pending is the other case the repair leaves on the legacy resolution: which coin Will turns
-/// to heads there has not been seen in Pocket, so `victory_star_waits_for_confusion_heads` excludes it. A Confused
-/// attacker with Victini on the Bench and a Will played gets no pause and no offer, and the result is exactly that of
-/// the same seed with no Victini in play (Sonnet's F4: nothing tested this guard).
+/// Team Rocket's Moltres ex with one [R] Energy, Confused, with `bench` on the Bench, after Will is played this turn.
+fn confused_moltres_after_will(seed: u64, bench: CardId) -> Game<'static> {
+    let mut game = get_initialized_game_with_board(
+        seed,
+        0,
+        3,
+        vec![
+            moltres(CardId::B4a007TeamRocketsMoltresEx).with_status_condition(StatusCondition::Confused),
+            PlayedCard::from_id(bench),
+        ],
+        vec![sponge(0)],
+    );
+    let will = trainer(CardId::A4156Will);
+    let mut state = game.get_state_clone();
+    state.hands[0].push(Card::Trainer(will.clone()));
+    game.set_state(state);
+    game.apply_action(&Action {
+        actor: 0,
+        action: SimpleAction::Play { trainer_card: will },
+        is_stack: false,
+    });
+    game
+}
+
+/// Will's "the first coin flip will definitely be heads" is still waiting this turn (the state's own turn effects).
+fn will_pending(state: &State) -> bool {
+    let json = serde_json::to_value(state).expect("State serialises");
+    json["turn_effects"][state.turn_count.to_string()]
+        .as_array()
+        .is_some_and(|effects| effects.iter().any(|effect| effect == "ForceFirstHeads"))
+}
+
+/// Will (A4 156) with a Confused attacker, by the card text (Dustin, Oct 1: plain card text is the rule). Will names the
+/// coins flipped "for the effect of an attack, Ability, or Trainer card"; the Confusion coin is not one of them, so it
+/// does not use Will. On Confusion heads Will makes the attack's first coin heads and Victory Star is still offered on
+/// the attack's coins; on Confusion tails the attack flips nothing for its effect and Will is still waiting. A Victory
+/// Star reroll is a fresh batch that Will does not touch. Recording_QA 210403, T14, shows the same: Confusion heads at
+/// 342 s, Will's guaranteed heads on Heat Charged's coin screen at about 347 s, Victory Star offered at 354 s; 203626,
+/// T12, shows a reroll with Will not reapplied. This replaces Sonnet's F4 guard test, which pinned the old resolution
+/// (no pause, no offer, Will left on the Confusion path).
 #[test]
-fn confusion_with_will_pending_keeps_the_legacy_resolution_without_a_victory_star_offer() {
+fn confusion_with_will_pending_forces_the_attacks_first_coin_and_still_offers_victory_star() {
     let card_id = CardId::B4a007TeamRocketsMoltresEx;
-    let play_will_then_attack = |seed: u64, bench: CardId| {
-        let mut game = get_initialized_game_with_board(
-            seed,
-            0,
-            3,
-            vec![
-                moltres(card_id).with_status_condition(StatusCondition::Confused),
-                PlayedCard::from_id(bench),
-            ],
-            vec![sponge(0)],
-        );
-        let will = trainer(CardId::A4156Will);
-        let mut state = game.get_state_clone();
-        state.hands[0].push(Card::Trainer(will.clone()));
-        game.set_state(state);
-        game.apply_action(&Action {
-            actor: 0,
-            action: SimpleAction::Play { trainer_card: will },
-            is_stack: false,
-        });
+    let (mut offered, mut confusion_tails, mut rerolls_all_tails) = (0, 0, 0);
+    for seed in 0..200 {
+        let mut game = confused_moltres_after_will(seed, CardId::B3025Victini);
         game.apply_action(&attack(card_id, 0));
-        game
-    };
-    let mut resolved = 0;
-    for seed in 0..60 {
-        let with_victini = play_will_then_attack(seed, CardId::B3025Victini);
-        let without = play_will_then_attack(seed, CardId::A1001Bulbasaur);
-        let (a, b) = (with_victini.get_state_clone(), without.get_state_clone());
-        assert!(a.pending_attack_coin_choice.is_none(), "seed {seed}: no pause");
-        assert!(!offers_victory_star(&with_victini), "seed {seed}: no offer");
-        assert!(!a.victory_star_used_this_turn[0], "seed {seed}: Victory Star unused");
-        // The old result: what the same seed gives with nothing for Victory Star to work on.
-        assert_eq!(a.get_active(0).attached_energy.len(), b.get_active(0).attached_energy.len(), "seed {seed}");
-        assert_eq!(a.get_active(1).get_remaining_hp(), b.get_active(1).get_remaining_hp(), "seed {seed}");
-        assert_eq!(a.generate_possible_actions().1.len(), b.generate_possible_actions().1.len(), "seed {seed}");
-        resolved += (a.get_active(0).attached_energy.len() > 1) as usize;
+        let after = game.get_state_clone();
+        match after.pending_attack_coin_choice.clone() {
+            None => {
+                // Confusion tails: Heat Charged does nothing, no Victory Star offer, and Will is not used.
+                assert_eq!(after.get_active(0).attached_energy.len(), 1, "seed {seed}: tails attaches nothing");
+                assert!(!offers_victory_star(&game), "seed {seed}: no offer on the Confusion coin");
+                assert!(will_pending(&after), "seed {seed}: no coin flipped for the attack's effect, Will still waits");
+                confusion_tails += 1;
+            }
+            Some(pending) => {
+                // Confusion heads: Will's heads on Heat Charged's first coin, and the offer on its three coins.
+                assert_eq!(pending.flips.len(), 3, "seed {seed}");
+                assert_eq!(pending.flips.first(), Some(&true), "seed {seed}: Will's heads on the attack's first coin");
+                assert!(!will_pending(&after), "seed {seed}: Will is used on Heat Charged's coins");
+                assert_eq!(after.get_active(0).attached_energy.len(), 1, "seed {seed}");
+                assert!(offers_victory_star(&game), "seed {seed}");
+                let expected = 1 + pending.flips.iter().filter(|heads| **heads).count();
+                game.apply_action(&keep());
+                assert_eq!(game.get_state_clone().get_active(0).attached_energy.len(), expected, "seed {seed}");
+                // The same seed again, rerolled: three fresh coins, the first not forced.
+                let mut rerolled = confused_moltres_after_will(seed, CardId::B3025Victini);
+                rerolled.apply_action(&attack(card_id, 0));
+                assert_eq!(rerolled.get_state_clone().pending_attack_coin_choice, Some(pending.clone()), "seed {seed}");
+                rerolled.apply_action(&reroll(pending.victory_star_in_play_idx));
+                let attached = rerolled.get_state_clone().get_active(0).attached_energy.len();
+                assert!((1..=4).contains(&attached), "seed {seed}");
+                rerolls_all_tails += (attached == 1) as usize;
+                offered += 1;
+            }
+        }
     }
-    assert!(resolved > 10, "the attack resolved (attached Energy) in only {resolved} of 60 seeds");
+    assert!(offered > 60 && confusion_tails > 60, "{offered} offers, {confusion_tails} Confusion tails");
+    assert!(rerolls_all_tails > 0, "no reroll of {offered} came up all tails: Will forced a reroll's first coin");
+}
+
+/// The same with nothing for Victory Star to work on, exactly (the attack's forecast). Confusion tails, 1/2: nothing
+/// attaches and Will still waits. Confusion heads: Will makes Heat Charged's first coin heads, so it attaches 1, 2 or 3
+/// Energy with 1/4, 1/2 and 1/4 of that half, and Will is used. Before the fix Will found no attack coin behind the
+/// Confusion coin: it stayed pending and the three coins were all fair.
+#[test]
+fn confusion_with_will_pending_forces_the_attacks_first_coin_without_victory_star() {
+    let state = confused_moltres_after_will(0, CardId::A1001Bulbasaur).get_state_clone();
+    assert!(will_pending(&state));
+    let action = attack(CardId::B4a007TeamRocketsMoltresEx, 0);
+    let mut by_result: BTreeMap<(usize, bool), f64> = BTreeMap::new();
+    for (probability, mutation, _) in try_forecast_action(&state, &action)
+        .expect("Heat Charged is exactly priced")
+        .into_branches_with_coin_paths()
+    {
+        let mut next = state.clone();
+        mutation(&mut StdRng::seed_from_u64(0), &mut next, &action);
+        *by_result
+            .entry((next.get_active(0).attached_energy.len(), will_pending(&next)))
+            .or_default() += probability;
+    }
+    let expected = [((1, true), 0.5), ((2, false), 0.125), ((3, false), 0.25), ((4, false), 0.125)];
+    assert_eq!(
+        by_result.keys().copied().collect::<Vec<_>>(),
+        expected.iter().map(|(key, _)| *key).collect::<Vec<_>>(),
+        "(attached Energy, Will still pending) -> probability: {by_result:?}"
+    );
+    for (key, probability) in expected {
+        assert!((by_result[&key] - probability).abs() < 1e-9, "{key:?}: {by_result:?}");
+    }
 }
 
 /// CoinFlipToBlockAttack keeps the old resolution, and not only "no pause, no offer": the result equals the old path's,

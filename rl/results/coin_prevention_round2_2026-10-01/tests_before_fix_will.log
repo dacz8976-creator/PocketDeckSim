@@ -1,0 +1,40 @@
+21 | use crate::models::{Attack, Card, EnergyType, PlayedCard, StatusCondition, TrainerType, BASIC_STAGE};
+187 |     let mut take = |pools: &mut Vec<(usize, Vec<EnergyType>)>,
+298 | impl AttackOutcomes {
+...
+474 |     pub fn geometric_until_tails(
+2232 | fn estimated_attack_damage(attack: &Attack, slot: &PlayedCard, state: &State, player: usize) -> f64 {
+2528 | fn best_attack_value(slot: &PlayedCard, form: &Card, state: &State, player: usize) -> f64 {
+running 16 tests
+test coin_flip_to_block_attack_keeps_its_resolution_without_a_victory_star_offer ... ok
+test coin_flip_to_block_attack_result_is_the_old_paths ... ok
+test confusion_with_will_pending_forces_the_attacks_first_coin_and_still_offers_victory_star ... FAILED
+test confusion_with_will_pending_forces_the_attacks_first_coin_without_victory_star ... FAILED
+test effect_only_heat_charged_does_not_consume_the_defenders_first_damage_shield ... ok
+test draconic_slam_loses_one_hundred_damage_only_when_regidrago_is_damaged ... ok
+test evil_inspiration_requires_active_spot_and_a_card_to_draw ... ok
+test evil_inspiration_draws_one_from_active_once_per_turn_for_all_reprints ... ok
+test hand_kinesis_adds_twenty_damage_per_card_in_hand_for_all_reprints ... ok
+test second_strike_adds_seventy_only_when_the_defender_is_already_damaged ... ok
+test victory_star_pauses_heat_charged_before_energy_and_keep_commits_once ... ok
+test victory_star_reroll_discards_heat_charged_first_batch_instead_of_double_attaching ... ok
+test will_forces_heat_charged_first_flip_and_is_consumed_before_victory_star_choice ... ok
+test confused_heat_charged_flips_confusion_first_then_offers_victory_star_on_its_own_coins ... ok
+test a_victory_star_reroll_after_confusion_heads_resolves_with_no_second_confusion_check ... ok
+test heat_charged_attaches_one_fire_energy_per_head_for_all_reprints ... ok
+failures:
+---- confusion_with_will_pending_forces_the_attacks_first_coin_and_still_offers_victory_star stdout ----
+thread 'confusion_with_will_pending_forces_the_attacks_first_coin_and_still_offers_victory_star' (25506) panicked at tests/b4a_attack_batch2_test.rs:486:17:
+assertion `left == right` failed: seed 1: tails attaches nothing
+ right: 1
+stack backtrace:
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+---- confusion_with_will_pending_forces_the_attacks_first_coin_without_victory_star stdout ----
+thread 'confusion_with_will_pending_forces_the_attacks_first_coin_without_victory_star' (25507) panicked at tests/b4a_attack_batch2_test.rs:538:5:
+assertion `left == right` failed: (attached Energy, Will still pending) -> probability: {(1, true): 0.5625, (2, true): 0.1875, (3, true): 0.1875, (4, true): 0.0625}
+ right: [(1, true), (2, false), (3, false), (4, false)]
+stack backtrace:
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+failures:
+test result: FAILED. 14 passed; 2 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.47s
+error: test failed, to rerun pass `--test b4a_attack_batch2_test`
