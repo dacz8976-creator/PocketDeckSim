@@ -1,0 +1,540 @@
+PGSTEP A-132311-t03 seed 1 free 0
+PGDUMP actor=0 candidates=6
+PGDUMP       -147.900000000000006 EndTurn
+PGDUMP       1495.433333333333394 Attach:1Water@0 zone
+PGDUMP       1141.099999999999909 Attach:1Water@1 zone
+PGDUMP       1495.433333333333394 Evolve:Mega Sharpedo ex@0
+PGDUMP       1261.099999999999909 Evolve:Mega Sharpedo ex@1
+PGDUMP       -148.900000000000006 Play:Misty
+PGSTEP A-132311-t03 seed 1 free 1
+PGDUMP actor=0 candidates=5
+PGDUMP        605.433333333333394 EndTurn
+PGDUMP       1545.433333333333394 Attach:1Water@0 zone
+PGDUMP       1261.099999999999909 Attach:1Water@1 zone
+PGDUMP        604.433333333333394 Play:Misty
+PGDUMP       1261.099999999999909 Retreat:1
+PGSTEP A-132311-t03 seed 1 free 2
+PGDUMP actor=0 candidates=4
+PGDUMP       1395.433333333333394 EndTurn
+PGDUMP       1545.433333333333394 Attack:Turbo Shark
+PGDUMP       1394.433333333333394 Play:Misty
+PGDUMP       1081.099999999999909 Retreat:1
+PGSTEP A-132311-t03 seed 1 free 3
+PGSTEP A-132311-t03 seed 1 free 4
+PGSTEP A-132311-t03 seed 1 free 5
+PGSTEP A-132311-t03 seed 1 forced 0 want=Evolve:Mega Sharpedo ex@0
+PGDUMP actor=0 candidates=6
+PGDUMP       -147.900000000000006 EndTurn
+PGDUMP       1495.433333333333394 Attach:1Water@0 zone
+PGDUMP       1141.099999999999909 Attach:1Water@1 zone
+PGDUMP       1495.433333333333394 Evolve:Mega Sharpedo ex@0
+PGDUMP       1261.099999999999909 Evolve:Mega Sharpedo ex@1
+PGDUMP       -148.900000000000006 Play:Misty
+PGSTEP A-132311-t03 seed 1 forced 1 want=Attach:1Water@0 zone
+PGDUMP actor=0 candidates=5
+PGDUMP        605.433333333333394 EndTurn
+PGDUMP       1545.433333333333394 Attach:1Water@0 zone
+PGDUMP       1261.099999999999909 Attach:1Water@1 zone
+PGDUMP        604.433333333333394 Play:Misty
+PGDUMP       1261.099999999999909 Retreat:1
+PGSTEP A-132311-t03 seed 1 forced 2 want=Attack:Turbo Shark
+PGDUMP actor=0 candidates=4
+PGDUMP       1395.433333333333394 EndTurn
+PGDUMP       1545.433333333333394 Attack:Turbo Shark
+PGDUMP       1394.433333333333394 Play:Misty
+PGDUMP       1081.099999999999909 Retreat:1
+PGSTEP A-132311-t03 seed 2 free 0
+PGDUMP actor=0 candidates=6
+PGDUMP       -147.900000000000006 EndTurn
+PGDUMP       1495.433333333333394 Attach:1Water@0 zone
+PGDUMP       1141.099999999999909 Attach:1Water@1 zone
+PGDUMP       1495.433333333333394 Evolve:Mega Sharpedo ex@0
+PGDUMP       1261.099999999999909 Evolve:Mega Sharpedo ex@1
+PGDUMP       -148.900000000000006 Play:Misty
+PGSTEP A-132311-t03 seed 2 free 1
+PGDUMP actor=0 candidates=5
+PGDUMP        605.433333333333394 EndTurn
+PGDUMP       1545.433333333333394 Attach:1Water@0 zone
+PGDUMP       1261.099999999999909 Attach:1Water@1 zone
+PGDUMP        604.433333333333394 Play:Misty
+PGDUMP       1261.099999999999909 Retreat:1
+PGSTEP A-132311-t03 seed 2 free 2
+PGDUMP actor=0 candidates=4
+PGDUMP       1395.433333333333394 EndTurn
+PGDUMP       1545.433333333333394 Attack:Turbo Shark
+PGDUMP       1394.433333333333394 Play:Misty
+PGDUMP       1081.099999999999909 Retreat:1
+PGSTEP A-132311-t03 seed 2 free 3
+PGSTEP A-132311-t03 seed 2 free 4
+PGSTEP A-132311-t03 seed 2 free 5
+PGSTEP A-132311-t03 seed 2 forced 0 want=Evolve:Mega Sharpedo ex@0
+PGDUMP actor=0 candidates=6
+PGDUMP       -147.900000000000006 EndTurn
+PGDUMP       1495.433333333333394 Attach:1Water@0 zone
+PGDUMP       1141.099999999999909 Attach:1Water@1 zone
+PGDUMP       1495.433333333333394 Evolve:Mega Sharpedo ex@0
+PGDUMP       1261.099999999999909 Evolve:Mega Sharpedo ex@1
+PGDUMP       -148.900000000000006 Play:Misty
+PGSTEP A-132311-t03 seed 2 forced 1 want=Attach:1Water@0 zone
+PGDUMP actor=0 candidates=5
+PGDUMP        605.433333333333394 EndTurn
+PGDUMP       1545.433333333333394 Attach:1Water@0 zone
+PGDUMP       1261.099999999999909 Attach:1Water@1 zone
+PGDUMP        604.433333333333394 Play:Misty
+PGDUMP       1261.099999999999909 Retreat:1
+PGSTEP A-132311-t03 seed 2 forced 2 want=Attack:Turbo Shark
+PGDUMP actor=0 candidates=4
+PGDUMP       1395.433333333333394 EndTurn
+PGDUMP       1545.433333333333394 Attack:Turbo Shark
+PGDUMP       1394.433333333333394 Play:Misty
+PGDUMP       1081.099999999999909 Retreat:1
+PGSTEP A-132311-t03 seed 3 free 0
+PGDUMP actor=0 candidates=6
+PGDUMP       -147.900000000000006 EndTurn
+PGDUMP       1495.433333333333394 Attach:1Water@0 zone
+PGDUMP       1141.099999999999909 Attach:1Water@1 zone
+PGDUMP       1495.433333333333394 Evolve:Mega Sharpedo ex@0
+PGDUMP       1261.099999999999909 Evolve:Mega Sharpedo ex@1
+PGDUMP       -148.900000000000006 Play:Misty
+PGSTEP A-132311-t03 seed 3 free 1
+PGDUMP actor=0 candidates=5
+PGDUMP        605.433333333333394 EndTurn
+PGDUMP       1545.433333333333394 Attach:1Water@0 zone
+PGDUMP       1261.099999999999909 Attach:1Water@1 zone
+PGDUMP        604.433333333333394 Play:Misty
+PGDUMP       1261.099999999999909 Retreat:1
+PGSTEP A-132311-t03 seed 3 free 2
+PGDUMP actor=0 candidates=4
+PGDUMP       1395.433333333333394 EndTurn
+PGDUMP       1545.433333333333394 Attack:Turbo Shark
+PGDUMP       1394.433333333333394 Play:Misty
+PGDUMP       1081.099999999999909 Retreat:1
+PGSTEP A-132311-t03 seed 3 free 3
+PGSTEP A-132311-t03 seed 3 free 4
+PGSTEP A-132311-t03 seed 3 free 5
+PGSTEP A-132311-t03 seed 3 forced 0 want=Evolve:Mega Sharpedo ex@0
+PGDUMP actor=0 candidates=6
+PGDUMP       -147.900000000000006 EndTurn
+PGDUMP       1495.433333333333394 Attach:1Water@0 zone
+PGDUMP       1141.099999999999909 Attach:1Water@1 zone
+PGDUMP       1495.433333333333394 Evolve:Mega Sharpedo ex@0
+PGDUMP       1261.099999999999909 Evolve:Mega Sharpedo ex@1
+PGDUMP       -148.900000000000006 Play:Misty
+PGSTEP A-132311-t03 seed 3 forced 1 want=Attach:1Water@0 zone
+PGDUMP actor=0 candidates=5
+PGDUMP        605.433333333333394 EndTurn
+PGDUMP       1545.433333333333394 Attach:1Water@0 zone
+PGDUMP       1261.099999999999909 Attach:1Water@1 zone
+PGDUMP        604.433333333333394 Play:Misty
+PGDUMP       1261.099999999999909 Retreat:1
+PGSTEP A-132311-t03 seed 3 forced 2 want=Attack:Turbo Shark
+PGDUMP actor=0 candidates=4
+PGDUMP       1395.433333333333394 EndTurn
+PGDUMP       1545.433333333333394 Attack:Turbo Shark
+PGDUMP       1394.433333333333394 Play:Misty
+PGDUMP       1081.099999999999909 Retreat:1
+PGSTEP A-132311-t03 seed 4 free 0
+PGDUMP actor=0 candidates=6
+PGDUMP       -147.900000000000006 EndTurn
+PGDUMP       1495.433333333333394 Attach:1Water@0 zone
+PGDUMP       1141.099999999999909 Attach:1Water@1 zone
+PGDUMP       1495.433333333333394 Evolve:Mega Sharpedo ex@0
+PGDUMP       1261.099999999999909 Evolve:Mega Sharpedo ex@1
+PGDUMP       -148.900000000000006 Play:Misty
+PGSTEP A-132311-t03 seed 4 free 1
+PGDUMP actor=0 candidates=5
+PGDUMP        605.433333333333394 EndTurn
+PGDUMP       1545.433333333333394 Attach:1Water@0 zone
+PGDUMP       1261.099999999999909 Attach:1Water@1 zone
+PGDUMP        604.433333333333394 Play:Misty
+PGDUMP       1261.099999999999909 Retreat:1
+PGSTEP A-132311-t03 seed 4 free 2
+PGDUMP actor=0 candidates=4
+PGDUMP       1395.433333333333394 EndTurn
+PGDUMP       1545.433333333333394 Attack:Turbo Shark
+PGDUMP       1394.433333333333394 Play:Misty
+PGDUMP       1081.099999999999909 Retreat:1
+PGSTEP A-132311-t03 seed 4 free 3
+PGSTEP A-132311-t03 seed 4 free 4
+PGSTEP A-132311-t03 seed 4 free 5
+PGSTEP A-132311-t03 seed 4 forced 0 want=Evolve:Mega Sharpedo ex@0
+PGDUMP actor=0 candidates=6
+PGDUMP       -147.900000000000006 EndTurn
+PGDUMP       1495.433333333333394 Attach:1Water@0 zone
+PGDUMP       1141.099999999999909 Attach:1Water@1 zone
+PGDUMP       1495.433333333333394 Evolve:Mega Sharpedo ex@0
+PGDUMP       1261.099999999999909 Evolve:Mega Sharpedo ex@1
+PGDUMP       -148.900000000000006 Play:Misty
+PGSTEP A-132311-t03 seed 4 forced 1 want=Attach:1Water@0 zone
+PGDUMP actor=0 candidates=5
+PGDUMP        605.433333333333394 EndTurn
+PGDUMP       1545.433333333333394 Attach:1Water@0 zone
+PGDUMP       1261.099999999999909 Attach:1Water@1 zone
+PGDUMP        604.433333333333394 Play:Misty
+PGDUMP       1261.099999999999909 Retreat:1
+PGSTEP A-132311-t03 seed 4 forced 2 want=Attack:Turbo Shark
+PGDUMP actor=0 candidates=4
+PGDUMP       1395.433333333333394 EndTurn
+PGDUMP       1545.433333333333394 Attack:Turbo Shark
+PGDUMP       1394.433333333333394 Play:Misty
+PGDUMP       1081.099999999999909 Retreat:1
+PGSTEP A-132311-t03 seed 5 free 0
+PGDUMP actor=0 candidates=6
+PGDUMP       -147.900000000000006 EndTurn
+PGDUMP       1495.433333333333394 Attach:1Water@0 zone
+PGDUMP       1141.099999999999909 Attach:1Water@1 zone
+PGDUMP       1495.433333333333394 Evolve:Mega Sharpedo ex@0
+PGDUMP       1261.099999999999909 Evolve:Mega Sharpedo ex@1
+PGDUMP       -148.900000000000006 Play:Misty
+PGSTEP A-132311-t03 seed 5 free 1
+PGDUMP actor=0 candidates=5
+PGDUMP        605.433333333333394 EndTurn
+PGDUMP       1545.433333333333394 Attach:1Water@0 zone
+PGDUMP       1261.099999999999909 Attach:1Water@1 zone
+PGDUMP        604.433333333333394 Play:Misty
+PGDUMP       1261.099999999999909 Retreat:1
+PGSTEP A-132311-t03 seed 5 free 2
+PGDUMP actor=0 candidates=4
+PGDUMP       1395.433333333333394 EndTurn
+PGDUMP       1545.433333333333394 Attack:Turbo Shark
+PGDUMP       1394.433333333333394 Play:Misty
+PGDUMP       1081.099999999999909 Retreat:1
+PGSTEP A-132311-t03 seed 5 free 3
+PGSTEP A-132311-t03 seed 5 free 4
+PGSTEP A-132311-t03 seed 5 free 5
+PGSTEP A-132311-t03 seed 5 forced 0 want=Evolve:Mega Sharpedo ex@0
+PGDUMP actor=0 candidates=6
+PGDUMP       -147.900000000000006 EndTurn
+PGDUMP       1495.433333333333394 Attach:1Water@0 zone
+PGDUMP       1141.099999999999909 Attach:1Water@1 zone
+PGDUMP       1495.433333333333394 Evolve:Mega Sharpedo ex@0
+PGDUMP       1261.099999999999909 Evolve:Mega Sharpedo ex@1
+PGDUMP       -148.900000000000006 Play:Misty
+PGSTEP A-132311-t03 seed 5 forced 1 want=Attach:1Water@0 zone
+PGDUMP actor=0 candidates=5
+PGDUMP        605.433333333333394 EndTurn
+PGDUMP       1545.433333333333394 Attach:1Water@0 zone
+PGDUMP       1261.099999999999909 Attach:1Water@1 zone
+PGDUMP        604.433333333333394 Play:Misty
+PGDUMP       1261.099999999999909 Retreat:1
+PGSTEP A-132311-t03 seed 5 forced 2 want=Attack:Turbo Shark
+PGDUMP actor=0 candidates=4
+PGDUMP       1395.433333333333394 EndTurn
+PGDUMP       1545.433333333333394 Attack:Turbo Shark
+PGDUMP       1394.433333333333394 Play:Misty
+PGDUMP       1081.099999999999909 Retreat:1
+PGSTEP A-132311-t03 seed 6 free 0
+PGDUMP actor=0 candidates=6
+PGDUMP       -147.900000000000006 EndTurn
+PGDUMP       1495.433333333333394 Attach:1Water@0 zone
+PGDUMP       1141.099999999999909 Attach:1Water@1 zone
+PGDUMP       1495.433333333333394 Evolve:Mega Sharpedo ex@0
+PGDUMP       1261.099999999999909 Evolve:Mega Sharpedo ex@1
+PGDUMP       -148.900000000000006 Play:Misty
+PGSTEP A-132311-t03 seed 6 free 1
+PGDUMP actor=0 candidates=5
+PGDUMP        605.433333333333394 EndTurn
+PGDUMP       1545.433333333333394 Attach:1Water@0 zone
+PGDUMP       1261.099999999999909 Attach:1Water@1 zone
+PGDUMP        604.433333333333394 Play:Misty
+PGDUMP       1261.099999999999909 Retreat:1
+PGSTEP A-132311-t03 seed 6 free 2
+PGDUMP actor=0 candidates=4
+PGDUMP       1395.433333333333394 EndTurn
+PGDUMP       1545.433333333333394 Attack:Turbo Shark
+PGDUMP       1394.433333333333394 Play:Misty
+PGDUMP       1081.099999999999909 Retreat:1
+PGSTEP A-132311-t03 seed 6 free 3
+PGSTEP A-132311-t03 seed 6 free 4
+PGSTEP A-132311-t03 seed 6 free 5
+PGSTEP A-132311-t03 seed 6 forced 0 want=Evolve:Mega Sharpedo ex@0
+PGDUMP actor=0 candidates=6
+PGDUMP       -147.900000000000006 EndTurn
+PGDUMP       1495.433333333333394 Attach:1Water@0 zone
+PGDUMP       1141.099999999999909 Attach:1Water@1 zone
+PGDUMP       1495.433333333333394 Evolve:Mega Sharpedo ex@0
+PGDUMP       1261.099999999999909 Evolve:Mega Sharpedo ex@1
+PGDUMP       -148.900000000000006 Play:Misty
+PGSTEP A-132311-t03 seed 6 forced 1 want=Attach:1Water@0 zone
+PGDUMP actor=0 candidates=5
+PGDUMP        605.433333333333394 EndTurn
+PGDUMP       1545.433333333333394 Attach:1Water@0 zone
+PGDUMP       1261.099999999999909 Attach:1Water@1 zone
+PGDUMP        604.433333333333394 Play:Misty
+PGDUMP       1261.099999999999909 Retreat:1
+PGSTEP A-132311-t03 seed 6 forced 2 want=Attack:Turbo Shark
+PGDUMP actor=0 candidates=4
+PGDUMP       1395.433333333333394 EndTurn
+PGDUMP       1545.433333333333394 Attack:Turbo Shark
+PGDUMP       1394.433333333333394 Play:Misty
+PGDUMP       1081.099999999999909 Retreat:1
+PGSTEP A-132311-t03 seed 7 free 0
+PGDUMP actor=0 candidates=6
+PGDUMP       -147.900000000000006 EndTurn
+PGDUMP       1495.433333333333394 Attach:1Water@0 zone
+PGDUMP       1141.099999999999909 Attach:1Water@1 zone
+PGDUMP       1495.433333333333394 Evolve:Mega Sharpedo ex@0
+PGDUMP       1261.099999999999909 Evolve:Mega Sharpedo ex@1
+PGDUMP       -148.900000000000006 Play:Misty
+PGSTEP A-132311-t03 seed 7 free 1
+PGDUMP actor=0 candidates=5
+PGDUMP        605.433333333333394 EndTurn
+PGDUMP       1545.433333333333394 Attach:1Water@0 zone
+PGDUMP       1261.099999999999909 Attach:1Water@1 zone
+PGDUMP        604.433333333333394 Play:Misty
+PGDUMP       1261.099999999999909 Retreat:1
+PGSTEP A-132311-t03 seed 7 free 2
+PGDUMP actor=0 candidates=4
+PGDUMP       1395.433333333333394 EndTurn
+PGDUMP       1545.433333333333394 Attack:Turbo Shark
+PGDUMP       1394.433333333333394 Play:Misty
+PGDUMP       1081.099999999999909 Retreat:1
+PGSTEP A-132311-t03 seed 7 free 3
+PGSTEP A-132311-t03 seed 7 free 4
+PGSTEP A-132311-t03 seed 7 free 5
+PGSTEP A-132311-t03 seed 7 forced 0 want=Evolve:Mega Sharpedo ex@0
+PGDUMP actor=0 candidates=6
+PGDUMP       -147.900000000000006 EndTurn
+PGDUMP       1495.433333333333394 Attach:1Water@0 zone
+PGDUMP       1141.099999999999909 Attach:1Water@1 zone
+PGDUMP       1495.433333333333394 Evolve:Mega Sharpedo ex@0
+PGDUMP       1261.099999999999909 Evolve:Mega Sharpedo ex@1
+PGDUMP       -148.900000000000006 Play:Misty
+PGSTEP A-132311-t03 seed 7 forced 1 want=Attach:1Water@0 zone
+PGDUMP actor=0 candidates=5
+PGDUMP        605.433333333333394 EndTurn
+PGDUMP       1545.433333333333394 Attach:1Water@0 zone
+PGDUMP       1261.099999999999909 Attach:1Water@1 zone
+PGDUMP        604.433333333333394 Play:Misty
+PGDUMP       1261.099999999999909 Retreat:1
+PGSTEP A-132311-t03 seed 7 forced 2 want=Attack:Turbo Shark
+PGDUMP actor=0 candidates=4
+PGDUMP       1395.433333333333394 EndTurn
+PGDUMP       1545.433333333333394 Attack:Turbo Shark
+PGDUMP       1394.433333333333394 Play:Misty
+PGDUMP       1081.099999999999909 Retreat:1
+PGSTEP A-132311-t03 seed 8 free 0
+PGDUMP actor=0 candidates=6
+PGDUMP       -147.900000000000006 EndTurn
+PGDUMP       1495.433333333333394 Attach:1Water@0 zone
+PGDUMP       1141.099999999999909 Attach:1Water@1 zone
+PGDUMP       1495.433333333333394 Evolve:Mega Sharpedo ex@0
+PGDUMP       1261.099999999999909 Evolve:Mega Sharpedo ex@1
+PGDUMP       -148.900000000000006 Play:Misty
+PGSTEP A-132311-t03 seed 8 free 1
+PGDUMP actor=0 candidates=5
+PGDUMP        605.433333333333394 EndTurn
+PGDUMP       1545.433333333333394 Attach:1Water@0 zone
+PGDUMP       1261.099999999999909 Attach:1Water@1 zone
+PGDUMP        604.433333333333394 Play:Misty
+PGDUMP       1261.099999999999909 Retreat:1
+PGSTEP A-132311-t03 seed 8 free 2
+PGDUMP actor=0 candidates=4
+PGDUMP       1395.433333333333394 EndTurn
+PGDUMP       1545.433333333333394 Attack:Turbo Shark
+PGDUMP       1394.433333333333394 Play:Misty
+PGDUMP       1081.099999999999909 Retreat:1
+PGSTEP A-132311-t03 seed 8 free 3
+PGSTEP A-132311-t03 seed 8 free 4
+PGSTEP A-132311-t03 seed 8 free 5
+PGSTEP A-132311-t03 seed 8 forced 0 want=Evolve:Mega Sharpedo ex@0
+PGDUMP actor=0 candidates=6
+PGDUMP       -147.900000000000006 EndTurn
+PGDUMP       1495.433333333333394 Attach:1Water@0 zone
+PGDUMP       1141.099999999999909 Attach:1Water@1 zone
+PGDUMP       1495.433333333333394 Evolve:Mega Sharpedo ex@0
+PGDUMP       1261.099999999999909 Evolve:Mega Sharpedo ex@1
+PGDUMP       -148.900000000000006 Play:Misty
+PGSTEP A-132311-t03 seed 8 forced 1 want=Attach:1Water@0 zone
+PGDUMP actor=0 candidates=5
+PGDUMP        605.433333333333394 EndTurn
+PGDUMP       1545.433333333333394 Attach:1Water@0 zone
+PGDUMP       1261.099999999999909 Attach:1Water@1 zone
+PGDUMP        604.433333333333394 Play:Misty
+PGDUMP       1261.099999999999909 Retreat:1
+PGSTEP A-132311-t03 seed 8 forced 2 want=Attack:Turbo Shark
+PGDUMP actor=0 candidates=4
+PGDUMP       1395.433333333333394 EndTurn
+PGDUMP       1545.433333333333394 Attack:Turbo Shark
+PGDUMP       1394.433333333333394 Play:Misty
+PGDUMP       1081.099999999999909 Retreat:1
+PGSTEP A-132311-t03 seed 9 free 0
+PGDUMP actor=0 candidates=6
+PGDUMP       -147.900000000000006 EndTurn
+PGDUMP       1495.433333333333394 Attach:1Water@0 zone
+PGDUMP       1141.099999999999909 Attach:1Water@1 zone
+PGDUMP       1495.433333333333394 Evolve:Mega Sharpedo ex@0
+PGDUMP       1261.099999999999909 Evolve:Mega Sharpedo ex@1
+PGDUMP       -148.900000000000006 Play:Misty
+PGSTEP A-132311-t03 seed 9 free 1
+PGDUMP actor=0 candidates=5
+PGDUMP        605.433333333333394 EndTurn
+PGDUMP       1545.433333333333394 Attach:1Water@0 zone
+PGDUMP       1261.099999999999909 Attach:1Water@1 zone
+PGDUMP        604.433333333333394 Play:Misty
+PGDUMP       1261.099999999999909 Retreat:1
+PGSTEP A-132311-t03 seed 9 free 2
+PGDUMP actor=0 candidates=4
+PGDUMP       1395.433333333333394 EndTurn
+PGDUMP       1545.433333333333394 Attack:Turbo Shark
+PGDUMP       1394.433333333333394 Play:Misty
+PGDUMP       1081.099999999999909 Retreat:1
+PGSTEP A-132311-t03 seed 9 free 3
+PGSTEP A-132311-t03 seed 9 free 4
+PGSTEP A-132311-t03 seed 9 free 5
+PGSTEP A-132311-t03 seed 9 forced 0 want=Evolve:Mega Sharpedo ex@0
+PGDUMP actor=0 candidates=6
+PGDUMP       -147.900000000000006 EndTurn
+PGDUMP       1495.433333333333394 Attach:1Water@0 zone
+PGDUMP       1141.099999999999909 Attach:1Water@1 zone
+PGDUMP       1495.433333333333394 Evolve:Mega Sharpedo ex@0
+PGDUMP       1261.099999999999909 Evolve:Mega Sharpedo ex@1
+PGDUMP       -148.900000000000006 Play:Misty
+PGSTEP A-132311-t03 seed 9 forced 1 want=Attach:1Water@0 zone
+PGDUMP actor=0 candidates=5
+PGDUMP        605.433333333333394 EndTurn
+PGDUMP       1545.433333333333394 Attach:1Water@0 zone
+PGDUMP       1261.099999999999909 Attach:1Water@1 zone
+PGDUMP        604.433333333333394 Play:Misty
+PGDUMP       1261.099999999999909 Retreat:1
+PGSTEP A-132311-t03 seed 9 forced 2 want=Attack:Turbo Shark
+PGDUMP actor=0 candidates=4
+PGDUMP       1395.433333333333394 EndTurn
+PGDUMP       1545.433333333333394 Attack:Turbo Shark
+PGDUMP       1394.433333333333394 Play:Misty
+PGDUMP       1081.099999999999909 Retreat:1
+PGSTEP A-132311-t03 seed 10 free 0
+PGDUMP actor=0 candidates=6
+PGDUMP       -147.900000000000006 EndTurn
+PGDUMP       1495.433333333333394 Attach:1Water@0 zone
+PGDUMP       1141.099999999999909 Attach:1Water@1 zone
+PGDUMP       1495.433333333333394 Evolve:Mega Sharpedo ex@0
+PGDUMP       1261.099999999999909 Evolve:Mega Sharpedo ex@1
+PGDUMP       -148.900000000000006 Play:Misty
+PGSTEP A-132311-t03 seed 10 free 1
+PGDUMP actor=0 candidates=5
+PGDUMP        605.433333333333394 EndTurn
+PGDUMP       1545.433333333333394 Attach:1Water@0 zone
+PGDUMP       1261.099999999999909 Attach:1Water@1 zone
+PGDUMP        604.433333333333394 Play:Misty
+PGDUMP       1261.099999999999909 Retreat:1
+PGSTEP A-132311-t03 seed 10 free 2
+PGDUMP actor=0 candidates=4
+PGDUMP       1395.433333333333394 EndTurn
+PGDUMP       1545.433333333333394 Attack:Turbo Shark
+PGDUMP       1394.433333333333394 Play:Misty
+PGDUMP       1081.099999999999909 Retreat:1
+PGSTEP A-132311-t03 seed 10 free 3
+PGSTEP A-132311-t03 seed 10 free 4
+PGSTEP A-132311-t03 seed 10 free 5
+PGSTEP A-132311-t03 seed 10 forced 0 want=Evolve:Mega Sharpedo ex@0
+PGDUMP actor=0 candidates=6
+PGDUMP       -147.900000000000006 EndTurn
+PGDUMP       1495.433333333333394 Attach:1Water@0 zone
+PGDUMP       1141.099999999999909 Attach:1Water@1 zone
+PGDUMP       1495.433333333333394 Evolve:Mega Sharpedo ex@0
+PGDUMP       1261.099999999999909 Evolve:Mega Sharpedo ex@1
+PGDUMP       -148.900000000000006 Play:Misty
+PGSTEP A-132311-t03 seed 10 forced 1 want=Attach:1Water@0 zone
+PGDUMP actor=0 candidates=5
+PGDUMP        605.433333333333394 EndTurn
+PGDUMP       1545.433333333333394 Attach:1Water@0 zone
+PGDUMP       1261.099999999999909 Attach:1Water@1 zone
+PGDUMP        604.433333333333394 Play:Misty
+PGDUMP       1261.099999999999909 Retreat:1
+PGSTEP A-132311-t03 seed 10 forced 2 want=Attack:Turbo Shark
+PGDUMP actor=0 candidates=4
+PGDUMP       1395.433333333333394 EndTurn
+PGDUMP       1545.433333333333394 Attack:Turbo Shark
+PGDUMP       1394.433333333333394 Play:Misty
+PGDUMP       1081.099999999999909 Retreat:1
+PGSTEP A-132311-t03 seed 11 free 0
+PGDUMP actor=0 candidates=6
+PGDUMP       -147.900000000000006 EndTurn
+PGDUMP       1495.433333333333394 Attach:1Water@0 zone
+PGDUMP       1141.099999999999909 Attach:1Water@1 zone
+PGDUMP       1495.433333333333394 Evolve:Mega Sharpedo ex@0
+PGDUMP       1261.099999999999909 Evolve:Mega Sharpedo ex@1
+PGDUMP       -148.900000000000006 Play:Misty
+PGSTEP A-132311-t03 seed 11 free 1
+PGDUMP actor=0 candidates=5
+PGDUMP        605.433333333333394 EndTurn
+PGDUMP       1545.433333333333394 Attach:1Water@0 zone
+PGDUMP       1261.099999999999909 Attach:1Water@1 zone
+PGDUMP        604.433333333333394 Play:Misty
+PGDUMP       1261.099999999999909 Retreat:1
+PGSTEP A-132311-t03 seed 11 free 2
+PGDUMP actor=0 candidates=4
+PGDUMP       1395.433333333333394 EndTurn
+PGDUMP       1545.433333333333394 Attack:Turbo Shark
+PGDUMP       1394.433333333333394 Play:Misty
+PGDUMP       1081.099999999999909 Retreat:1
+PGSTEP A-132311-t03 seed 11 free 3
+PGSTEP A-132311-t03 seed 11 free 4
+PGSTEP A-132311-t03 seed 11 free 5
+PGSTEP A-132311-t03 seed 11 forced 0 want=Evolve:Mega Sharpedo ex@0
+PGDUMP actor=0 candidates=6
+PGDUMP       -147.900000000000006 EndTurn
+PGDUMP       1495.433333333333394 Attach:1Water@0 zone
+PGDUMP       1141.099999999999909 Attach:1Water@1 zone
+PGDUMP       1495.433333333333394 Evolve:Mega Sharpedo ex@0
+PGDUMP       1261.099999999999909 Evolve:Mega Sharpedo ex@1
+PGDUMP       -148.900000000000006 Play:Misty
+PGSTEP A-132311-t03 seed 11 forced 1 want=Attach:1Water@0 zone
+PGDUMP actor=0 candidates=5
+PGDUMP        605.433333333333394 EndTurn
+PGDUMP       1545.433333333333394 Attach:1Water@0 zone
+PGDUMP       1261.099999999999909 Attach:1Water@1 zone
+PGDUMP        604.433333333333394 Play:Misty
+PGDUMP       1261.099999999999909 Retreat:1
+PGSTEP A-132311-t03 seed 11 forced 2 want=Attack:Turbo Shark
+PGDUMP actor=0 candidates=4
+PGDUMP       1395.433333333333394 EndTurn
+PGDUMP       1545.433333333333394 Attack:Turbo Shark
+PGDUMP       1394.433333333333394 Play:Misty
+PGDUMP       1081.099999999999909 Retreat:1
+PGSTEP A-132311-t03 seed 12 free 0
+PGDUMP actor=0 candidates=6
+PGDUMP       -147.900000000000006 EndTurn
+PGDUMP       1495.433333333333394 Attach:1Water@0 zone
+PGDUMP       1141.099999999999909 Attach:1Water@1 zone
+PGDUMP       1495.433333333333394 Evolve:Mega Sharpedo ex@0
+PGDUMP       1261.099999999999909 Evolve:Mega Sharpedo ex@1
+PGDUMP       -148.900000000000006 Play:Misty
+PGSTEP A-132311-t03 seed 12 free 1
+PGDUMP actor=0 candidates=5
+PGDUMP        605.433333333333394 EndTurn
+PGDUMP       1545.433333333333394 Attach:1Water@0 zone
+PGDUMP       1261.099999999999909 Attach:1Water@1 zone
+PGDUMP        604.433333333333394 Play:Misty
+PGDUMP       1261.099999999999909 Retreat:1
+PGSTEP A-132311-t03 seed 12 free 2
+PGDUMP actor=0 candidates=4
+PGDUMP       1395.433333333333394 EndTurn
+PGDUMP       1545.433333333333394 Attack:Turbo Shark
+PGDUMP       1394.433333333333394 Play:Misty
+PGDUMP       1081.099999999999909 Retreat:1
+PGSTEP A-132311-t03 seed 12 free 3
+PGSTEP A-132311-t03 seed 12 free 4
+PGSTEP A-132311-t03 seed 12 free 5
+PGSTEP A-132311-t03 seed 12 forced 0 want=Evolve:Mega Sharpedo ex@0
+PGDUMP actor=0 candidates=6
+PGDUMP       -147.900000000000006 EndTurn
+PGDUMP       1495.433333333333394 Attach:1Water@0 zone
+PGDUMP       1141.099999999999909 Attach:1Water@1 zone
+PGDUMP       1495.433333333333394 Evolve:Mega Sharpedo ex@0
+PGDUMP       1261.099999999999909 Evolve:Mega Sharpedo ex@1
+PGDUMP       -148.900000000000006 Play:Misty
+PGSTEP A-132311-t03 seed 12 forced 1 want=Attach:1Water@0 zone
+PGDUMP actor=0 candidates=5
+PGDUMP        605.433333333333394 EndTurn
+PGDUMP       1545.433333333333394 Attach:1Water@0 zone
+PGDUMP       1261.099999999999909 Attach:1Water@1 zone
+PGDUMP        604.433333333333394 Play:Misty
+PGDUMP       1261.099999999999909 Retreat:1
+PGSTEP A-132311-t03 seed 12 forced 2 want=Attack:Turbo Shark
+PGDUMP actor=0 candidates=4
+PGDUMP       1395.433333333333394 EndTurn
+PGDUMP       1545.433333333333394 Attack:Turbo Shark
+PGDUMP       1394.433333333333394 Play:Misty
+PGDUMP       1081.099999999999909 Retreat:1
