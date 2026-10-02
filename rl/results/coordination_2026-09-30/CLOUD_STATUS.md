@@ -12,16 +12,15 @@ The audit is committed: `rl/results/coin_prevention_round2_2026-10-01/TEXT_AUDIT
 - **A sixth file, `engine/src/move_generation/move_generation_trainer.rs`:** a Fossil can be played under an Item lock (the Item check at 65 skips the Fossil type). Its premise is that a Fossil's printed type is Item (rules/01, rules/04 §6; the local database can't show it).
 - **In the five files but outside rules/09, rules/04 and the caveats:** Guts on the attacker's own Pokémon in an attack's outcome (E1), and Perish Body on a plain queued hit at the Active (E2). Both are decided by their text. Fix them in this job, or leave them listed?
 
-1. **Current task, and the instruction that set it.** None running. **The card-text job is done** (Fable via Dustin, Oct 1 evening; branch claude/coin-prevention-round2, head 94bd46e; `rl/results/coin_prevention_round2_2026-10-01/README.md`, "The card-text job"). Tests first for every fix; no table game; nothing in `players/`.
-   - **Item 1, Will with a Confused attacker:** after a Confusion heads, Will makes the attack's first coin heads and Victory Star is still offered (210403). F4's guard test flipped to the card text (59c7c2a, failing first), the fix 27a0c37.
-   - **Item 2, `TEXT_AUDIT.md`** (539594a, before any further code): decided by text and contradicted by the engine 9; decided and already followed 7; not decided by any text 17 (each a shot-list row with what to record); not rules questions 4.
-   - **Item 3, the text-decided fixes in the five files** (tests 7e13132, all 7 failing first; fixes 46953bf): Victory Star with a block coin (the block coin first, never offered; the attack's own coins offered on its heads); Will with a block coin (Will makes it heads); the coin Abilities on the attacker's own Pokémon hit by its own attack, and on the opponent's Active in an own-Bench choice; a copied discard attack (Chase Order, Wild Swing through Ditto).
-   - **Item 4, Trap Territory** (`hooks/retreat.rs`; tests 05eb849, failing at two Ariados; fix 5155ff7): each Ariados adds 1 (zero, one, two Ariados: Retreat Cost 1, 2, 3 more by retreat legality; Grass Knot 100, 130, 160).
-   - **Full suite at 5155ff7: 2,035 passed, 0 failed, 0 ignored** (`suite_card_text.log`).
-   - **Reach under `decks/`:** Trap Territory changes Dustin's deck 12 (2 Ariados); the Will fix changes brew-01, brew-04 and Dustin's 10 only when a Confused attacker attacks with coins after Will. No list holds Victini, a block-coin attacker, a coin Ability, an own-side attacker or Ditto.
-   - **Waiting on you:** the question above (three sixth files; E1 and E2).
-   - Main has since gained 669f7b3 ("8c: the five lookahead games and the judgment game explained ... confirmed by check (b)"), the laptop's; I have not read it against the STOP above.
-   The jobs before it are done: step 8c (its result is the STOP above), and the Oct 1 jobs:
+1. **Current task, and the instruction that set it.** None running; idle. **The card-text follow-up is done** (Fable via Dustin, Oct 2: the sixth-file question answered "all yes"; branch claude/coin-prevention-round2, head 20e2651, now stacked on the official engine: origin/main merged first, d1b986c; README "The follow-up"). Tests first (53a3cca, all 5 failing), the changes in 3090abb:
+   - **Victini's caveat** (`card_validation.rs`): what is implemented (the gate coins, Confusion and a block coin, first and never offered; Will to a block coin, else the attack's first coin) and what stays open (the two gate coins' order together; the block coin's reading, shot row victory-star-block-coin).
+   - **Luxury Coin** (`trainer_coin_plan.rs`): not offered on the opponent's Stadium (`active_stadium_owner`); a Stadium with no recorded player keeps the offer.
+   - **A Fossil under an Item lock** (`move_generation_trainer.rs`): blocked, as an Item. Pocket Shot List row `fossil-item-lock` added (supporting proof, low, friend battle).
+   - **E1:** Guts flips for your own attack's damage to your own Pokémon in the outcome. **E2:** Perish Body flips for an attack's plain queued hit at the Active.
+   - **Full suite at 3090abb: 2,039 passed, 0 failed, 0 ignored** (`suite_followup.log`).
+   - **Reach (83 lists under `decks/`):** no list holds a Fossil or Gholdengo (Luxury Coin), Dustin's 15 included; none holds an Item-lock attacker, a Guts Pokémon or Galarian Cursola. So this follow-up changes no game between those lists. The card-text job's reach is unchanged (Trap Territory: Dustin's 12; Will: brew-01, brew-04, Dustin's 10); the new draft-D (Victini) is reached by none of these changes.
+   - The card-text job before it (94bd46e; suite 2,035/0) was read and accepted.
+   The jobs before it are done: the card-text job, step 8c (its STOP resolved, above), and the Oct 1 jobs:
    - **PLAN step 8b's early-warning rows** (3a107f4, `rl/results/engine_switch_rules_2026-10/early_warning_8b/README.md`), on a scratch build of R (f8cfa9c, engine tree 38af8b0, the laptop's candidate's):
      - 960 games, pairings 32-35 × 40 × km3 and k3 × old, new and watch, every program built from `git archive` in a fresh target folder.
      - The checks:
