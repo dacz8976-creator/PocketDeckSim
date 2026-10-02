@@ -22,6 +22,11 @@ use crate::models::{Attack, Card, EnergyType, PlayedCard, StatusCondition, Train
 use crate::state::GameOutcome;
 use crate::State;
 
+/// The planning pilot's data features (branch claude/planning-pilot-data, Oct 2): read-only, called by no player; a child
+/// module so that it reads km's terms from the private functions below.
+#[path = "pilot_features.rs"]
+pub mod pilot_features;
+
 /// Coefficients for the parametric value function
 #[derive(Debug, Clone, Copy)]
 pub struct ValueFunctionParams {

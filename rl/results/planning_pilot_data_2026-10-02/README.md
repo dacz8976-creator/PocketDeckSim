@@ -132,6 +132,12 @@ held-out test of a pilot developed on this pool.
   - The fingerprint check reuses dataset deals.
 - **Size:** about an hour on two threads (`RAYON_NUM_THREADS=2`). The same number of games is played in each pairing, set
   from the timing check before the run and written here before it starts.
+  - **Set before the run:** the timing check (`timing/timing_games.jsonl`) played 18 games (2 in each of pairings 0, 15, 30,
+    45, 60, 75, 90, 105 and 119). On two threads it took 6.6 s: 2.7 games/s and 142 rows/s, about 52 rows a game, and km's
+    check matched on all 941 rows.
+  - So the run is **80 games in every pairing (i < 80), 9,600 games**, about an hour at that rate.
+  - Command: `RAYON_NUM_THREADS=2 pilot_data --pool rl/results/planning_pilot_data_2026-10-02/pool.tsv --root .
+    --seed-base 24000000000 --stride 100000 --games 80 --rows rows.tsv --games-out games.jsonl`, from the repository root.
 - **The baseline fit's held-out games:** every game with i % 5 == 4, all of its rows together (about 20%). The fit uses the
   battle rows only (`setup = 0`) and leaves out ties.
 - **The fit is a sanity check only:** a plain logistic regression of the win on the features, on standardised features with a
