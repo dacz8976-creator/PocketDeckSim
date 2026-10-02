@@ -1,4 +1,4 @@
-=== game 0, first difference at tick 31
+=== deal 0, tick 31
 deal 0, tick 31, turn 5, mover seat 0; its Active is Team Rocket's Moltres ex (Confused: true); offered 8 moves
   offered: EndTurn
   offered: Play { trainer_card: B1 225 Copycat }
@@ -15,7 +15,31 @@ GATE WITHIN THE SEARCH: 2 move(s) before the attack (attack = ply 3), e.g.:
   after [Play { trainer_card: B1 225 Copycat } ; Place(Pokemon(B3 025 Victini), 1)] the attack(s) ["Heat Charged"] would build the Confusion-first branch
   after [Play { trainer_card: B1 225 Copycat } ; Place(Pokemon(B3 025 Victini), 2)] the attack(s) ["Heat Charged"] would build the Confusion-first branch
   after [Play { trainer_card: B1 225 Copycat } ; Place(Pokemon(B3 025 Victini), 1)] the attack(s) ["Heat Charged"] would build the Confusion-first branch
-=== game 7, first difference at tick 47
+RESULT built=1
+=== deal 2, tick 35
+deal 2, tick 35, turn 5, mover seat 0; its Active is Team Rocket's Moltres ex (Confused: true); offered 2 moves
+  offered: EndTurn
+  offered: Attack(Attack { energy_required: [Fire], title: "Heat Charged", fixed_damage: 0, effect...
+GATE WITHIN THE SEARCH: 0 move(s) before the attack (attack = ply 1), e.g.:
+  after [] the attack(s) ["Heat Charged"] would build the Confusion-first branch
+RESULT built=0
+=== deal 3, tick 69
+deal 3, tick 69, turn 9, mover seat 1; its Active is Team Rocket's Moltres ex (Confused: true); offered 3 moves
+  offered: EndTurn
+  offered: Play { trainer_card: B3 147 Field Blower }
+  offered: Attack(Attack { energy_required: [Fire], title: "Heat Charged", fixed_damage: 0, effect...
+GATE WITHIN THE SEARCH: 0 move(s) before the attack (attack = ply 1), e.g.:
+  after [] the attack(s) ["Heat Charged"] would build the Confusion-first branch
+RESULT built=0
+=== deal 5, tick 31
+deal 5, tick 31, turn 5, mover seat 1; its Active is Team Rocket's Moltres ex (Confused: true); offered 3 moves
+  offered: EndTurn
+  offered: Play { trainer_card: B1 225 Copycat }
+  offered: Attack(Attack { energy_required: [Fire], title: "Heat Charged", fixed_damage: 0, effect...
+GATE WITHIN THE SEARCH: 0 move(s) before the attack (attack = ply 1), e.g.:
+  after [] the attack(s) ["Heat Charged"] would build the Confusion-first branch
+RESULT built=0
+=== deal 7, tick 47
 deal 7, tick 47, turn 6, mover seat 1; its Active is Team Rocket's Moltres ex (Confused: true); offered 7 moves
   offered: EndTurn
   offered: Play { trainer_card: B1 225 Copycat }
@@ -26,7 +50,8 @@ deal 7, tick 47, turn 6, mover seat 1; its Active is Team Rocket's Moltres ex (C
   offered: Attack(Attack { energy_required: [Fire, Fire, Fire, Colorless], title: "Netherwing", fi...
 GATE WITHIN THE SEARCH: 0 move(s) before the attack (attack = ply 1), e.g.:
   after [] the attack(s) ["Heat Charged"] would build the Confusion-first branch
-=== game 8, first difference at tick 29
+RESULT built=0
+=== deal 8, tick 29
 deal 8, tick 29, turn 4, mover seat 0; its Active is Team Rocket's Moltres ex (Confused: true); offered 8 moves
   offered: EndTurn
   offered: Play { trainer_card: B1 225 Copycat }
@@ -38,7 +63,8 @@ deal 8, tick 29, turn 4, mover seat 0; its Active is Team Rocket's Moltres ex (C
   offered: Attack(Attack { energy_required: [Fire], title: "Heat Charged", fixed_damage: 0, effect...
 GATE WITHIN THE SEARCH: 0 move(s) before the attack (attack = ply 1), e.g.:
   after [] the attack(s) ["Heat Charged"] would build the Confusion-first branch
-=== game 17, first difference at tick 39
+RESULT built=0
+=== deal 17, tick 39
 deal 17, tick 39, turn 5, mover seat 1; its Active is Team Rocket's Moltres ex (Confused: true); offered 8 moves
   offered: EndTurn
   offered: Play { trainer_card: B1 225 Copycat }
@@ -50,7 +76,18 @@ deal 17, tick 39, turn 5, mover seat 1; its Active is Team Rocket's Moltres ex (
   offered: Attack(Attack { energy_required: [Fire, Fire, Fire, Colorless], title: "Netherwing", fi...
 GATE WITHIN THE SEARCH: 0 move(s) before the attack (attack = ply 1), e.g.:
   after [] the attack(s) ["Heat Charged"] would build the Confusion-first branch
-=== game 22, first difference at tick 52
+RESULT built=0
+=== deal 18, tick 34
+deal 18, tick 34, turn 4, mover seat 0; its Active is Team Rocket's Moltres ex (Confused: true); offered 5 moves
+  offered: EndTurn
+  offered: Retreat(1)
+  offered: Retreat(2)
+  offered: Retreat(3)
+  offered: Attack(Attack { energy_required: [Fire], title: "Heat Charged", fixed_damage: 0, effect...
+GATE WITHIN THE SEARCH: 0 move(s) before the attack (attack = ply 1), e.g.:
+  after [] the attack(s) ["Heat Charged"] would build the Confusion-first branch
+RESULT built=0
+=== deal 22, tick 52
 deal 22, tick 52, turn 7, mover seat 0; its Active is Team Rocket's Moltres ex (Confused: true); offered 8 moves
   offered: EndTurn
   offered: Play { trainer_card: B1 225 Copycat }
@@ -62,7 +99,8 @@ deal 22, tick 52, turn 7, mover seat 0; its Active is Team Rocket's Moltres ex (
   offered: Attack(Attack { energy_required: [Fire, Fire, Fire, Colorless], title: "Netherwing", fi...
 GATE WITHIN THE SEARCH: 0 move(s) before the attack (attack = ply 1), e.g.:
   after [] the attack(s) ["Heat Charged"] would build the Confusion-first branch
-=== game 28, first difference at tick 18
+RESULT built=0
+=== deal 28, tick 18
 deal 28, tick 18, turn 3, mover seat 0; its Active is Team Rocket's Moltres ex (Confused: true); offered 5 moves
   offered: EndTurn
   offered: Play { trainer_card: B1 225 Copycat }
@@ -73,3 +111,57 @@ GATE WITHIN THE SEARCH: 2 move(s) before the attack (attack = ply 3), e.g.:
   after [Play { trainer_card: B1 225 Copycat } ; Place(Pokemon(B3 025 Victini), 1)] the attack(s) ["Heat Charged"] would build the Confusion-first branch
   after [Play { trainer_card: B1 225 Copycat } ; Place(Pokemon(B3 025 Victini), 2)] the attack(s) ["Heat Charged"] would build the Confusion-first branch
   after [Play { trainer_card: B1 225 Copycat } ; Place(Pokemon(B3 025 Victini), 1)] the attack(s) ["Heat Charged"] would build the Confusion-first branch
+RESULT built=2
+=== deal 33, tick 23
+deal 33, tick 23, turn 3, mover seat 1; its Active is Team Rocket's Moltres ex (Confused: true); offered 2 moves
+  offered: EndTurn
+  offered: Attack(Attack { energy_required: [Fire], title: "Heat Charged", fixed_damage: 0, effect...
+GATE WITHIN THE SEARCH: 0 move(s) before the attack (attack = ply 1), e.g.:
+  after [] the attack(s) ["Heat Charged"] would build the Confusion-first branch
+RESULT built=0
+=== deal 35, tick 32
+deal 35, tick 32, turn 4, mover seat 1; its Active is Team Rocket's Moltres ex (Confused: true); offered 5 moves
+  offered: EndTurn
+  offered: Retreat(1)
+  offered: Retreat(2)
+  offered: Retreat(3)
+  offered: Attack(Attack { energy_required: [Fire], title: "Heat Charged", fixed_damage: 0, effect...
+GATE WITHIN THE SEARCH: 0 move(s) before the attack (attack = ply 1), e.g.:
+  after [] the attack(s) ["Heat Charged"] would build the Confusion-first branch
+RESULT built=0
+=== deal 37, tick 30
+deal 37, tick 30, turn 4, mover seat 1; its Active is Team Rocket's Moltres ex (Confused: true); offered 5 moves
+  offered: EndTurn
+  offered: Retreat(1)
+  offered: Retreat(2)
+  offered: Retreat(3)
+  offered: Attack(Attack { energy_required: [Fire], title: "Heat Charged", fixed_damage: 0, effect...
+GATE WITHIN THE SEARCH: 0 move(s) before the attack (attack = ply 1), e.g.:
+  after [] the attack(s) ["Heat Charged"] would build the Confusion-first branch
+RESULT built=0
+=== deal 1, tick 8
+deal 1, tick 8, turn 1, mover seat 0; its Active is Ralts (Confused: false); offered 7 moves
+  offered: EndTurn
+  offered: Play { trainer_card: B1 225 Copycat }
+  offered: Play { trainer_card: P-A 007 Professor's Research }
+  offered: Play { trainer_card: P-A 005 Poké Ball }
+  offered: Place(Pokemon(A3b 060 Chatot), 1)
+  offered: Place(Pokemon(A3b 060 Chatot), 2)
+  offered: Place(Pokemon(A3b 060 Chatot), 3)
+NOT FOUND: no Confusion-first gate state within 2 moves before the attack (12 chance samples per move)
+RESULT built=none
+=== deal 4, tick 8
+deal 4, tick 8, turn 1, mover seat 1; its Active is Misdreavus (Confused: false); offered 2 moves
+  offered: EndTurn
+  offered: Play { trainer_card: B1 225 Copycat }
+NOT FOUND: no Confusion-first gate state within 2 moves before the attack (12 chance samples per move)
+RESULT built=none
+=== deal 6, tick 8
+deal 6, tick 8, turn 1, mover seat 1; its Active is Chatot (Confused: false); offered 5 moves
+  offered: EndTurn
+  offered: Play { trainer_card: B2b 069 Hiking Trail }
+  offered: Place(Pokemon(P-A 038 Misdreavus), 1)
+  offered: Place(Pokemon(P-A 038 Misdreavus), 2)
+  offered: Place(Pokemon(P-A 038 Misdreavus), 3)
+NOT FOUND: no Confusion-first gate state within 2 moves before the attack (12 chance samples per move)
+RESULT built=none

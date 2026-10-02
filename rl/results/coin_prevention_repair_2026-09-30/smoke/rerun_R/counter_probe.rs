@@ -3,8 +3,8 @@
 //! a real board, and no list under `decks/` holds either. This example applies the counters' detection logic, the same as the
 //! Rust that `instrument_scan.py` inserts (forecast of the chosen move with and without the coin Pokemon: more branches means
 //! the coin split ran for it; the queued ApplyQueuedAttackDamage offered at a coin target, not AlsoChoiceBenchDamage[Filtered];
-//! the off-gate ApplyDamage of a rewritten helper after its Attack), to boards built with `test_support`, and asserts what
-//! each must read. It plays no game and needs the `test-utils` feature.
+//! the off-gate ApplyDamage of a rewritten helper after its Attack, and the fall-through ApplyDamage after a Chase Order discard),
+//! to boards built with `test_support`, and asserts what each must read. It plays no game and needs the `test-utils` feature.
 //!   cargo run --release --features test-utils --example counter_probe
 use deckgym::actions::{try_forecast_action, Action, SimpleAction};
 use deckgym::card_ids::CardId;
@@ -137,6 +137,34 @@ fn main() {
     game.apply_action(&attack_named(&state, "Tongue Whip"));
     let after = game.get_state_clone();
     check("Tongue Whip with no coin Pokemon: queued offered / plain offered", format!("{} / {}", queued_offered(&after, 1), plain_damage_offered(&after, 1)), "0 / 2");
+
+    // 11-12: Vespiquen ex's Chase Order (70; may discard a Benched Basic [G] for 70 more) with Combee on the Bench. After the Attack
+    // the choices are the no-discard damage (a plain ApplyDamage, or the queued coin choice at a coin target) and the discard move;
+    // after the discard move the fall-through damage of `discard_then_damage_choice` is queued the same way. The counter
+    // `offgate_discard_then_damage` reads that plain ApplyDamage at the tick right after the discard, so it fires at a non-coin Active
+    // (as it did in the table games with a Vespiquen list) and must not fire at a Meowth B2 124 Active, where the damage is queued as
+    // `ApplyQueuedAttackDamage` and `coin_queued_offered` reads it instead.
+    for (name, defender, want) in [
+        ("a non-coin Active (Bulbasaur)", CardId::A1001Bulbasaur, "after the Attack plain 1 / queued 0; after the discard plain 1 / queued 0"),
+        ("Meowth B2 124 (Carefree Steps) as the Active", CardId::B2124Meowth, "after the Attack plain 0 / queued 1; after the discard plain 0 / queued 1"),
+    ] {
+        let vespiquen = PlayedCard::from_id(CardId::B4011VespiquenEx).with_energy(vec![EnergyType::Grass; 2]);
+        let mut game = get_initialized_game_with_board(4, 1, 5, vec![mon(defender), mon(CardId::A1001Bulbasaur)],
+            vec![vespiquen, mon(CardId::A2017Combee)]);
+        let mut state = game.get_state_clone();
+        state.current_player = 1;
+        game.set_state(state.clone());
+        game.apply_action(&attack_named(&state, "Chase Order"));
+        let after_attack = game.get_state_clone();
+        let discard = after_attack.generate_possible_actions().1.into_iter()
+            .find(|a| matches!(a.action, SimpleAction::DiscardOwnBenchedThenDamage { .. })).expect("the discard move is offered");
+        game.apply_action(&discard);
+        let after_discard = game.get_state_clone();
+        let got = format!("after the Attack plain {} / queued {}; after the discard plain {} / queued {}",
+            plain_damage_offered(&after_attack, 1), queued_offered(&after_attack, 1),
+            plain_damage_offered(&after_discard, 1), queued_offered(&after_discard, 1));
+        check(&format!("Chase Order with the discard into {name}"), got, want);
+    }
 
     let failures = report.iter().filter(|l| l.starts_with("FAIL")).count();
     for line in &report {

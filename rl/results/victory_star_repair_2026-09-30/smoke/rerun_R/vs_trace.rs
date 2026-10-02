@@ -1,8 +1,10 @@
 //! Victory Star / Confusion repair, F6 of the rules switch (Oct 1; scratch, diagnosis only). Replays chosen smoke-check games
 //! tick by tick and prints one JSON line per tick: the deal, the tick, the mover, the turn, the offered moves (when there are
 //! two or more), the chosen move, a board summary and the Victory Star facts the mechanic check reads (who is Confused, who
-//! has a Victini in play, Victory Star used this turn, a pause pending). It is `coin_trace.rs` (Sonnet's S3) with those
-//! fields added, and the same tick numbering, so a tick here is the "first" of the F5 counters. The game is set up exactly
+//! has a Victini in play, Victory Star used this turn, a pause pending) and "state", a hash of the whole `State` before the
+//! tick (`State` derives `Hash`; the second read of the rules switch's F5 asked for it: two engines at the same tick with the
+//! same state hash and different moves differ by decision, with different hashes by board). It is `coin_trace.rs` (Sonnet's
+//! S3) with those fields added, and the same tick numbering, so a tick here is a tick of the F5 counters. The game is set up exactly
 //! as legality_scan's `play_one` sets up a `--pairs` row (seed = seed base + pairing x 10,000 + i; even i puts the
 //! first-named deck in seat 0), and a last line gives legality_scan's move fingerprint, to check the replay against a scan.
 //! Built as an example in a scratch copy of each engine; diffing two engines' dumps gives each game's first differing tick.
@@ -53,6 +55,8 @@ fn main() {
         while !game.is_game_over() {
             let before = game.get_state_clone();
             let (actor, actions) = before.generate_possible_actions();
+            let mut state_hash = DefaultHasher::new();
+            before.hash(&mut state_hash);
             let chosen = game.play_tick();
             format!("{:?}", chosen).hash(&mut moves);
             let offered: Vec<String> = if actions.len() > 1 {
@@ -64,7 +68,8 @@ fn main() {
                 "{}",
                 serde_json::json!({"i": i, "tick": tick, "actor": actor, "chosen_actor": chosen.actor,
                     "turn": before.turn_count, "n": actions.len(), "offered": offered,
-                    "chosen": format!("{:?}", chosen.action), "board": board(&before), "facts": facts(&before)})
+                    "chosen": format!("{:?}", chosen.action), "board": board(&before), "facts": facts(&before),
+                    "state": format!("{:016x}", state_hash.finish())})
             );
             tick += 1;
         }

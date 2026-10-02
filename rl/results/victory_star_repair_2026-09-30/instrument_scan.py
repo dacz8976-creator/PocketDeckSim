@@ -2,12 +2,14 @@
 exact counters added for the rules switch's F5). It adds per-game counters to the --games-out line, changing no play
 (they only read the states before each tick, the chosen move, and forecasts of it on clones; nothing touches the game).
 
-Move numbers. "first" below is the 0-based number of the tick (one `play_tick`, one chosen move) at which a counter first
-fired, the numbering `coin_trace.rs` prints as "tick", so it compares directly with a first-difference trace.
-Everything is counted for the move the game CHOSE, never for the bots' lookahead.
+Move numbers. A tick is one `play_tick`, one chosen move, numbered from 0 as `coin_trace.rs` and `vs_trace.rs` print it, so a
+counter's ticks compare directly with a first-difference trace. Every exact counter is recorded as
+{"n": the number of ticks at which it fired, "first": the first such tick or null, "ticks": every such tick, ascending}, so a
+reader can ask whether it fired in a given turn or at a given tick, not only whether it ever fired (the rules switch's F5,
+second read). Everything is counted for the move the game CHOSE or OFFERED, never for the bots' lookahead.
 
 EXACT (these count as reach, as the mechanic check uses them):
-- "vs_confusion_first_built": {"n", "first"}. The Confusion-first branch was built for the attack the game chose: a Confused
+- "vs_confusion_first_built": {"n", "first", "ticks"}. The Confusion-first branch was built for the attack the game chose: a Confused
   Active's own (not a copied) attack for which the engine's forecast contains a Victory Star pause. Detected by asking the
   engine: `try_forecast_action(before, chosen)`, then each branch's mutation is applied to a clone of `before` and any
   branch that leaves `pending_attack_coin_choice` set is a built pause. Only the Confusion-first path builds a pause for a
@@ -17,7 +19,10 @@ EXACT (these count as reach, as the mechanic check uses them):
   On an engine without the repair it is always 0.
 - "vs_confused_choice" and "vs_confused_choice_first": Victory Star choices (Keep or Reroll) made while the chooser's
   Active is Confused. The legacy engine never offers one; the repaired engine offers one only after a Confusion heads. This
-  is the heads half of the built branch, seen one or more moves later.
+  is the heads half of the built branch, seen one or more moves later. Kept as the cloud wrote them (a count and the first
+  tick); "vs_confused_choice_chosen" is the same counter with every tick.
+- "vs_confused_choice_offered": {"n", "first", "ticks"}. Keep or Reroll among the moves a tick OFFERED while the chooser's
+  Active is Confused, whether or not the bot took it (a declined choice still shows that the repaired code ran).
 SUPERSET (kept to back "all counters 0 means identical"; never reach):
 - "vs_confused_attack": attacks (not stack sub-attacks) by a Confused Fire Active whose side has a Victini in play and has
   not used Victory Star this turn. A superset of the repair's gate (the gate also needs an attack-effect coin batch and no
@@ -32,24 +37,40 @@ if "vs_confused_attack" in src:
 EDITS = [
     ("    fingerprint: u64,\n",
      "    vs_confused_attack: u32,\n    vs_confused_choice: u32,\n"
-     "    vs_confusion_first_built: (u32, Option<u32>),\n    vs_confused_choice_first: Option<u32>,\n"),
+     "    vs_confusion_first_built: (u32, Vec<u32>),\n    vs_confused_choice_first: Option<u32>,\n"
+     "    vs_confused_choice_chosen: (u32, Vec<u32>),\n    vs_confused_choice_offered: (u32, Vec<u32>),\n"),
     ("    let mut moves = DefaultHasher::new();\n",
      "    let (mut vs_attack_n, mut vs_choice_n) = (0u32, 0u32);\n"
      "    let mut vs_tick = 0u32;\n"
-     "    let mut vs_built = (0u32, None::<u32>);\n"
-     "    let mut vs_choice_first = None::<u32>;\n"),
+     "    let mut vs_built = (0u32, Vec::<u32>::new());\n"
+     "    let mut vs_choice_first = None::<u32>;\n"
+     "    let mut vs_chosen = (0u32, Vec::<u32>::new());\n"
+     "    let mut vs_offered = (0u32, Vec::<u32>::new());\n"),
     ("        let after = game.get_state_clone();\n",
      "        {\n"
      "            let active = before.maybe_get_active(chosen.actor);\n"
      "            let confused = active.is_some_and(|p| p.is_confused());\n"
      "            let fire = active.is_some_and(|p| matches!(&p.card, Card::Pokemon(c) if c.energy_type == EnergyType::Fire));\n"
      "            let victini = before.enumerate_in_play_pokemon(chosen.actor).any(|(_, p)| p.get_name() == \"Victini\");\n"
+     "            // A counter fires once per tick: its count is the number of ticks, its list every one of them.\n"
+     "            let vs_fire = |c: &mut (u32, Vec<u32>), t: u32| {\n"
+     "                if c.1.last() != Some(&t) {\n"
+     "                    c.0 += 1;\n"
+     "                    c.1.push(t);\n"
+     "                }\n"
+     "            };\n"
+     "            // Exact: Keep or Reroll was among the offered moves while the chooser's Active is Confused.\n"
+     "            if confused && actions.iter().any(|a| matches!(&a.action,\n"
+     "                SimpleAction::KeepAttackCoinResults | SimpleAction::RerollAttackCoins { .. })) {\n"
+     "                vs_fire(&mut vs_offered, vs_tick);\n"
+     "            }\n"
      "            match &chosen.action {\n"
      "                SimpleAction::Attack(_) if !chosen.is_stack && confused && fire && victini\n"
      "                    && !before.victory_star_used_this_turn[chosen.actor] => vs_attack_n += 1,\n"
      "                SimpleAction::KeepAttackCoinResults | SimpleAction::RerollAttackCoins { .. } if confused => {\n"
      "                    vs_choice_n += 1;\n"
      "                    vs_choice_first.get_or_insert(vs_tick);\n"
+     "                    vs_fire(&mut vs_chosen, vs_tick);\n"
      "                }\n"
      "                _ => {}\n"
      "            }\n"
@@ -63,8 +84,7 @@ EDITS = [
      "                        branch.pending_attack_coin_choice.is_some()\n"
      "                    });\n"
      "                    if built {\n"
-     "                        vs_built.0 += 1;\n"
-     "                        vs_built.1.get_or_insert(vs_tick);\n"
+     "                        vs_fire(&mut vs_built, vs_tick);\n"
      "                    }\n"
      "                }\n"
      "            }\n"
@@ -72,7 +92,8 @@ EDITS = [
      "        }\n"),
     ("        fingerprint: moves.finish(),\n",
      "        vs_confused_attack: vs_attack_n,\n        vs_confused_choice: vs_choice_n,\n"
-     "        vs_confusion_first_built: vs_built,\n        vs_confused_choice_first: vs_choice_first,\n"),
+     "        vs_confusion_first_built: vs_built,\n        vs_confused_choice_first: vs_choice_first,\n"
+     "        vs_confused_choice_chosen: vs_chosen,\n        vs_confused_choice_offered: vs_offered,\n"),
 ]
 for anchor, add in EDITS:
     n = src.count(anchor)
@@ -89,7 +110,8 @@ src = (src[:end]
        + f"{indent}line[\"vs_confused_attack\"] = serde_json::json!(r.vs_confused_attack);\n"
        + f"{indent}line[\"vs_confused_choice\"] = serde_json::json!(r.vs_confused_choice);\n"
        + f"{indent}line[\"vs_confused_choice_first\"] = serde_json::json!(r.vs_confused_choice_first);\n"
-       + f"{indent}line[\"vs_confusion_first_built\"] = serde_json::json!({{ \"n\": r.vs_confusion_first_built.0, \"first\": r.vs_confusion_first_built.1 }});\n"
+       + "".join(f"{indent}line[\"{name}\"] = serde_json::json!({{ \"n\": r.{name}.0, \"first\": r.{name}.1.first(), \"ticks\": r.{name}.1 }});\n"
+                 for name in ("vs_confusion_first_built", "vs_confused_choice_chosen", "vs_confused_choice_offered"))
        + src[end:])
 open(path, "w", encoding="utf-8").write(src)
 print("instrumented", path)

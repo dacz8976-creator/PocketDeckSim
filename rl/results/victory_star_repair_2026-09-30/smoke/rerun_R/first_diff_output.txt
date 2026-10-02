@@ -7,137 +7,171 @@ checks on the tools:
 games the repairs change (old engine v R): 13 of 40: [0, 2, 3, 5, 7, 8, 17, 18, 22, 28, 33, 35, 37]
   of the cloud's 13 (old v 6415e39): 13 changed
 
-i = 0: first difference at tick 31 (turn 5, mover seat 0); old 157 ticks, R 115 ticks
-  F5 exact, on R: vs_confusion_first_built n=0 first=None; vs_confused_choice n=0 first=None; superset vs_confused_attack n=0
-  => NOT explained on the board
-  same board before it: True; same facts: True; same offered: True; same chosen: False
+i = 0: first difference at tick 31 (turn 5, mover seat 0): lookahead, the same state, the same offered moves, a different choice; cause tick 31 (turn 5); old 157 ticks, R 115 ticks
+  exact counters on R at or before tick 31 in its turn, or at the cause tick: none; same turn after tick 31 (never an explanation): none
+  all ticks on R: vs_confusion_first_built [], vs_confused_choice_offered [], vs_confused_choice_chosen []; superset vs_confused_attack n=0
+  probe at tick 31: the Confusion-first branch is built by an attack after 1 move(s) of the mover's own, inside kog3's three plies (attack = ply 2)
+  => LOOKAHEAD ONLY, both halves hold
+  same state: True; same board summary: True; same facts: True; same offered: True (n 8 / 8); same chosen: False
   facts at the tick (old): {'confused': [True, False], 'pending': False, 'victini': [False, False], 'vs_used': [False, False]}
   board: {'hands': [7, 5], 'p0': ["0:Team Rocket's Moltres ex 120hp 1E", '3:Torchic 60hp 0E'], 'p1': ['0:Chatot 50hp 1E', '1:Misdreavus 60hp 0E', '2:Ralts 60hp 0E', '3:Misdreavus 60hp 1E']}
   old chose: Place(Pokemon(B3 025 Victini), 2)
   R   chose: Play { trainer_card: B1 225 Copycat }
   the tick before it (same on both): DrawCard { amount: 1 }
 
-i = 2: first difference at tick 36 (turn 5, mover seat 0); old 66 ticks, R 129 ticks
-  F5 exact, on R: vs_confusion_first_built n=1 first=35; vs_confused_choice n=1 first=36; superset vs_confused_attack n=11
-  => EXPLAINED ON THE BOARD (the Confusion-first branch was built at tick 35, not after tick 36)
-  same board before it: False; same facts: False; same offered: False; same chosen: False
+i = 2: first difference at tick 36 (turn 5, mover seat 0): state, the state differs after identical moves up to the tick before; cause tick 35 (turn 5); old 66 ticks, R 129 ticks
+  exact counters on R at or before tick 36 in its turn, or at the cause tick: {'vs_confusion_first_built': [35], 'vs_confused_choice_offered': [36], 'vs_confused_choice_chosen': [36]}; same turn after tick 36 (never an explanation): none
+  all ticks on R: vs_confusion_first_built [35], vs_confused_choice_offered [36], vs_confused_choice_chosen [36]; superset vs_confused_attack n=11
+  golden: the probe at tick 35 (the last built branch up to the cause) finds the branch built after 0 move(s) (match)
+  => ON THE BOARD
+  same state: False; same board summary: False; same facts: False; same offered: False (n 1 / 2); same chosen: False
   facts at the tick (old): {'confused': [True, False], 'pending': False, 'victini': [True, False], 'vs_used': [False, False]}
   board: {'hands': [3, 2], 'p0': ["0:Team Rocket's Moltres ex 120hp 3E", '1:Torchic 60hp 0E', '2:Victini 60hp 1E', '3:Torchic 60hp 0E'], 'p1': ['0:Chatot 70hp 1E', '1:Chatot 70hp 1E', '2:Misdreavus 60hp 0E', '3:Ralts 60hp 0E']}
   old chose: EndTurn
   R   chose: KeepAttackCoinResults
   the tick before it (same on both): Attack(Attack { energy_required: [Fire], title: "Heat Charged", fixed_damage: 0, effect: Some("Flip 3 coins. For each heads, produce a [R] Energy f...
 
-i = 3: first difference at tick 70 (turn 9, mover seat 1); old 110 ticks, R 111 ticks
-  F5 exact, on R: vs_confusion_first_built n=2 first=27; vs_confused_choice n=1 first=70; superset vs_confused_attack n=5
-  => EXPLAINED ON THE BOARD (the Confusion-first branch was built at tick 27, not after tick 70)
-  same board before it: False; same facts: False; same offered: False; same chosen: False
+i = 3: first difference at tick 70 (turn 9, mover seat 1): state, the state differs after identical moves up to the tick before; cause tick 69 (turn 9); old 110 ticks, R 111 ticks
+  exact counters on R at or before tick 70 in its turn, or at the cause tick: {'vs_confusion_first_built': [69], 'vs_confused_choice_offered': [70], 'vs_confused_choice_chosen': [70]}; same turn after tick 70 (never an explanation): none
+  all ticks on R: vs_confusion_first_built [27, 69], vs_confused_choice_offered [70], vs_confused_choice_chosen [70]; superset vs_confused_attack n=5
+  golden: the probe at tick 69 (the last built branch up to the cause) finds the branch built after 0 move(s) (match)
+  => ON THE BOARD
+  same state: False; same board summary: False; same facts: False; same offered: False (n 1 / 2); same chosen: False
   facts at the tick (old): {'confused': [False, True], 'pending': False, 'victini': [False, True], 'vs_used': [False, False]}
   board: {'hands': [4, 5], 'p0': ['0:Chatot 70hp 1E', '1:Ralts 60hp 0E', '2:Misdreavus 60hp 0E', '3:Misdreavus 60hp 0E'], 'p1': ["0:Team Rocket's Moltres ex 110hp 4E", "1:Team Rocket's Moltres ex 120hp 3E", '2:Victini 70hp 0E', '3:Victini 70hp 0E']}
   old chose: EndTurn
   R   chose: KeepAttackCoinResults
   the tick before it (same on both): Attack(Attack { energy_required: [Fire], title: "Heat Charged", fixed_damage: 0, effect: Some("Flip 3 coins. For each heads, produce a [R] Energy f...
 
-i = 5: first difference at tick 32 (turn 5, mover seat 1); old 106 ticks, R 107 ticks
-  F5 exact, on R: vs_confusion_first_built n=2 first=22; vs_confused_choice n=1 first=32; superset vs_confused_attack n=6
-  => EXPLAINED ON THE BOARD (the Confusion-first branch was built at tick 22, not after tick 32)
-  same board before it: False; same facts: False; same offered: False; same chosen: False
+i = 5: first difference at tick 32 (turn 5, mover seat 1): state, the state differs after identical moves up to the tick before; cause tick 31 (turn 5); old 106 ticks, R 107 ticks
+  exact counters on R at or before tick 32 in its turn, or at the cause tick: {'vs_confusion_first_built': [31], 'vs_confused_choice_offered': [32], 'vs_confused_choice_chosen': [32]}; same turn after tick 32 (never an explanation): none
+  all ticks on R: vs_confusion_first_built [22, 31], vs_confused_choice_offered [32], vs_confused_choice_chosen [32]; superset vs_confused_attack n=6
+  golden: the probe at tick 31 (the last built branch up to the cause) finds the branch built after 0 move(s) (match)
+  => ON THE BOARD
+  same state: False; same board summary: False; same facts: False; same offered: False (n 1 / 2); same chosen: False
   facts at the tick (old): {'confused': [False, True], 'pending': False, 'victini': [False, True], 'vs_used': [False, False]}
   board: {'hands': [2, 3], 'p0': ['0:Ralts 60hp 1E', '2:Misdreavus 60hp 0E', '3:Ralts 60hp 1E'], 'p1': ["0:Team Rocket's Moltres ex 130hp 3E", '1:Victini 70hp 1E', "2:Team Rocket's Moltres ex 130hp 0E", '3:Torchic 60hp 0E']}
   old chose: EndTurn
   R   chose: KeepAttackCoinResults
   the tick before it (same on both): Attack(Attack { energy_required: [Fire], title: "Heat Charged", fixed_damage: 0, effect: Some("Flip 3 coins. For each heads, produce a [R] Energy f...
 
-i = 7: first difference at tick 47 (turn 6, mover seat 1); old 72 ticks, R 93 ticks
-  F5 exact, on R: vs_confusion_first_built n=0 first=None; vs_confused_choice n=0 first=None; superset vs_confused_attack n=5
-  => NOT explained on the board
-  same board before it: True; same facts: True; same offered: True; same chosen: False
+i = 7: first difference at tick 47 (turn 6, mover seat 1): lookahead, the same state, the same offered moves, a different choice; cause tick 47 (turn 6); old 72 ticks, R 93 ticks
+  exact counters on R at or before tick 47 in its turn, or at the cause tick: none; same turn after tick 47 (never an explanation): none
+  all ticks on R: vs_confusion_first_built [], vs_confused_choice_offered [], vs_confused_choice_chosen []; superset vs_confused_attack n=5
+  probe at tick 47: the Confusion-first branch is built by an attack after 0 move(s) of the mover's own, inside kog3's three plies (attack = ply 1)
+  => LOOKAHEAD ONLY, both halves hold
+  same state: True; same board summary: True; same facts: True; same offered: True (n 7 / 7); same chosen: False
   facts at the tick (old): {'confused': [False, True], 'pending': False, 'victini': [False, True], 'vs_used': [False, False]}
   board: {'hands': [3, 4], 'p0': ['0:Ralts 60hp 1E', '1:Misdreavus 60hp 0E', '2:Ralts 60hp 0E', '3:Chatot 70hp 0E'], 'p1': ["0:Team Rocket's Moltres ex 130hp 4E", '1:Victini 70hp 0E', "2:Team Rocket's Moltres ex 130hp 0E", '3:Victini 70hp 0E']}
   old chose: Play { trainer_card: B1 225 Copycat }
   R   chose: Attack(Attack { energy_required: [Fire, Fire, Fire, Colorless], title: "Netherwing", fixed_damage: 130, effect: Some("Discard a [R] Energy from thi...
   the tick before it (same on both): Attach { attachments: [(1, Fire, 0)], is_turn_energy: true }
 
-i = 8: first difference at tick 29 (turn 4, mover seat 0); old 93 ticks, R 85 ticks
-  F5 exact, on R: vs_confusion_first_built n=1 first=35; vs_confused_choice n=1 first=36; superset vs_confused_attack n=4
-  => NOT explained on the board
-  same board before it: True; same facts: True; same offered: True; same chosen: False
+i = 8: first difference at tick 29 (turn 4, mover seat 0): lookahead, the same state, the same offered moves, a different choice; cause tick 29 (turn 4); old 93 ticks, R 85 ticks
+  exact counters on R at or before tick 29 in its turn, or at the cause tick: none; same turn after tick 29 (never an explanation): {'vs_confusion_first_built': [35], 'vs_confused_choice_offered': [36], 'vs_confused_choice_chosen': [36]}
+  all ticks on R: vs_confusion_first_built [35], vs_confused_choice_offered [36], vs_confused_choice_chosen [36]; superset vs_confused_attack n=4
+  probe at tick 29: the Confusion-first branch is built by an attack after 0 move(s) of the mover's own, inside kog3's three plies (attack = ply 1)
+  => LOOKAHEAD ONLY, both halves hold
+  same state: True; same board summary: True; same facts: True; same offered: True (n 8 / 8); same chosen: False
   facts at the tick (old): {'confused': [True, False], 'pending': False, 'victini': [True, False], 'vs_used': [False, False]}
   board: {'hands': [5, 3], 'p0': ["0:Team Rocket's Moltres ex 130hp 2E", '3:Victini 70hp 0E'], 'p1': ['0:Misdreavus 60hp 1E', '1:Misdreavus 60hp 0E', '2:Chatot 70hp 0E', '3:Ralts 60hp 0E']}
   old chose: Attach { attachments: [(1, Fire, 3)], is_turn_energy: true }
   R   chose: Play { trainer_card: P-A 007 Professor's Research }
   the tick before it (same on both): DrawCard { amount: 1 }
 
-i = 17: first difference at tick 39 (turn 5, mover seat 1); old 74 ticks, R 104 ticks
-  F5 exact, on R: vs_confusion_first_built n=0 first=None; vs_confused_choice n=0 first=None; superset vs_confused_attack n=7
-  => NOT explained on the board
-  same board before it: True; same facts: True; same offered: True; same chosen: False
+i = 17: first difference at tick 39 (turn 5, mover seat 1): lookahead, the same state, the same offered moves, a different choice; cause tick 39 (turn 5); old 74 ticks, R 104 ticks
+  exact counters on R at or before tick 39 in its turn, or at the cause tick: none; same turn after tick 39 (never an explanation): none
+  all ticks on R: vs_confusion_first_built [], vs_confused_choice_offered [], vs_confused_choice_chosen []; superset vs_confused_attack n=7
+  probe at tick 39: the Confusion-first branch is built by an attack after 0 move(s) of the mover's own, inside kog3's three plies (attack = ply 1)
+  => LOOKAHEAD ONLY, both halves hold
+  same state: True; same board summary: True; same facts: True; same offered: True (n 8 / 8); same chosen: False
   facts at the tick (old): {'confused': [False, True], 'pending': False, 'victini': [False, True], 'vs_used': [False, False]}
   board: {'hands': [4, 5], 'p0': ['0:Chatot 70hp 1E', '1:Misdreavus 60hp 0E', '2:Ralts 60hp 0E', '3:Misdreavus 60hp 0E'], 'p1': ["0:Team Rocket's Moltres ex 120hp 4E", '1:Victini 70hp 0E', '2:Torchic 60hp 0E', '3:Torchic 60hp 0E']}
   old chose: Attack(Attack { energy_required: [Fire, Fire, Fire, Colorless], title: "Netherwing", fixed_damage: 130, effect: Some("Discard a [R] Energy from thi...
   R   chose: Play { trainer_card: B1 225 Copycat }
   the tick before it (same on both): Attach { attachments: [(1, Fire, 0)], is_turn_energy: true }
 
-i = 18: first difference at tick 35 (turn 4, mover seat 0); old 95 ticks, R 83 ticks
-  F5 exact, on R: vs_confusion_first_built n=1 first=34; vs_confused_choice n=1 first=35; superset vs_confused_attack n=4
-  => EXPLAINED ON THE BOARD (the Confusion-first branch was built at tick 34, not after tick 35)
-  same board before it: False; same facts: False; same offered: False; same chosen: False
+i = 18: first difference at tick 35 (turn 4, mover seat 0): state, the state differs after identical moves up to the tick before; cause tick 34 (turn 4); old 95 ticks, R 83 ticks
+  exact counters on R at or before tick 35 in its turn, or at the cause tick: {'vs_confusion_first_built': [34], 'vs_confused_choice_offered': [35], 'vs_confused_choice_chosen': [35]}; same turn after tick 35 (never an explanation): none
+  all ticks on R: vs_confusion_first_built [34], vs_confused_choice_offered [35], vs_confused_choice_chosen [35]; superset vs_confused_attack n=4
+  golden: the probe at tick 34 (the last built branch up to the cause) finds the branch built after 0 move(s) (match)
+  => ON THE BOARD
+  same state: False; same board summary: False; same facts: False; same offered: False (n 1 / 2); same chosen: False
   facts at the tick (old): {'confused': [True, False], 'pending': False, 'victini': [True, False], 'vs_used': [False, False]}
   board: {'hands': [2, 5], 'p0': ["0:Team Rocket's Moltres ex 130hp 5E", '1:Victini 70hp 0E', "2:Team Rocket's Moltres ex 130hp 0E", '3:Victini 70hp 0E'], 'p1': ['0:Misdreavus 60hp 1E', '3:Chatot 70hp 0E']}
   old chose: EndTurn
   R   chose: KeepAttackCoinResults
   the tick before it (same on both): Attack(Attack { energy_required: [Fire], title: "Heat Charged", fixed_damage: 0, effect: Some("Flip 3 coins. For each heads, produce a [R] Energy f...
 
-i = 22: first difference at tick 52 (turn 7, mover seat 0); old 88 ticks, R 80 ticks
-  F5 exact, on R: vs_confusion_first_built n=0 first=None; vs_confused_choice n=0 first=None; superset vs_confused_attack n=5
-  => NOT explained on the board
-  same board before it: True; same facts: True; same offered: True; same chosen: False
+i = 22: first difference at tick 52 (turn 7, mover seat 0): lookahead, the same state, the same offered moves, a different choice; cause tick 52 (turn 7); old 88 ticks, R 80 ticks
+  exact counters on R at or before tick 52 in its turn, or at the cause tick: none; same turn after tick 52 (never an explanation): none
+  all ticks on R: vs_confusion_first_built [], vs_confused_choice_offered [], vs_confused_choice_chosen []; superset vs_confused_attack n=5
+  probe at tick 52: the Confusion-first branch is built by an attack after 0 move(s) of the mover's own, inside kog3's three plies (attack = ply 1)
+  => LOOKAHEAD ONLY, both halves hold
+  same state: True; same board summary: True; same facts: True; same offered: True (n 8 / 8); same chosen: False
   facts at the tick (old): {'confused': [True, False], 'pending': False, 'victini': [True, False], 'vs_used': [False, False]}
   board: {'hands': [5, 3], 'p0': ["0:Team Rocket's Moltres ex 100hp 4E", '1:Victini 70hp 0E', '2:Victini 70hp 0E', '3:Torchic 60hp 0E'], 'p1': ['0:Ralts 60hp 1E', '1:Misdreavus 60hp 0E', '2:Ralts 60hp 0E', '3:Chatot 70hp 0E']}
   old chose: Attack(Attack { energy_required: [Fire, Fire, Fire, Colorless], title: "Netherwing", fixed_damage: 130, effect: Some("Discard a [R] Energy from thi...
   R   chose: Play { trainer_card: B1 225 Copycat }
   the tick before it (same on both): Attach { attachments: [(1, Fire, 0)], is_turn_energy: true }
 
-i = 28: first difference at tick 18 (turn 3, mover seat 0); old 83 ticks, R 99 ticks
-  F5 exact, on R: vs_confusion_first_built n=3 first=23; vs_confused_choice n=0 first=None; superset vs_confused_attack n=7
-  => NOT explained on the board
-  same board before it: True; same facts: True; same offered: True; same chosen: False
+i = 28: first difference at tick 18 (turn 3, mover seat 0): lookahead, the same state, the same offered moves, a different choice; cause tick 18 (turn 3); old 83 ticks, R 99 ticks
+  exact counters on R at or before tick 18 in its turn, or at the cause tick: none; same turn after tick 18 (never an explanation): {'vs_confusion_first_built': [23]}
+  all ticks on R: vs_confusion_first_built [23, 34, 45], vs_confused_choice_offered [], vs_confused_choice_chosen []; superset vs_confused_attack n=7
+  probe at tick 18: the Confusion-first branch is built by an attack after 2 move(s) of the mover's own, inside kog3's three plies (attack = ply 3)
+  => LOOKAHEAD ONLY, both halves hold
+  same state: True; same board summary: True; same facts: True; same offered: True (n 5 / 5); same chosen: False
   facts at the tick (old): {'confused': [True, False], 'pending': False, 'victini': [False, False], 'vs_used': [False, False]}
   board: {'hands': [6, 4], 'p0': ["0:Team Rocket's Moltres ex 120hp 1E", "3:Team Rocket's Moltres ex 130hp 0E"], 'p1': ['0:Chatot 70hp 1E', '2:Chatot 70hp 0E', '3:Ralts 60hp 0E']}
   old chose: Attack(Attack { energy_required: [Fire], title: "Heat Charged", fixed_damage: 0, effect: Some("Flip 3 coins. For each heads, produce a [R] Energy f...
   R   chose: Play { trainer_card: B1 225 Copycat }
   the tick before it (same on both): Attach { attachments: [(1, Fire, 0)], is_turn_energy: true }
 
-i = 33: first difference at tick 24 (turn 3, mover seat 1); old 55 ticks, R 85 ticks
-  F5 exact, on R: vs_confusion_first_built n=1 first=23; vs_confused_choice n=1 first=24; superset vs_confused_attack n=7
-  => EXPLAINED ON THE BOARD (the Confusion-first branch was built at tick 23, not after tick 24)
-  same board before it: False; same facts: False; same offered: False; same chosen: False
+i = 33: first difference at tick 24 (turn 3, mover seat 1): state, the state differs after identical moves up to the tick before; cause tick 23 (turn 3); old 55 ticks, R 85 ticks
+  exact counters on R at or before tick 24 in its turn, or at the cause tick: {'vs_confusion_first_built': [23], 'vs_confused_choice_offered': [24], 'vs_confused_choice_chosen': [24]}; same turn after tick 24 (never an explanation): none
+  all ticks on R: vs_confusion_first_built [23], vs_confused_choice_offered [24], vs_confused_choice_chosen [24]; superset vs_confused_attack n=7
+  golden: the probe at tick 23 (the last built branch up to the cause) finds the branch built after 0 move(s) (match)
+  => ON THE BOARD
+  same state: False; same board summary: False; same facts: False; same offered: False (n 1 / 2); same chosen: False
   facts at the tick (old): {'confused': [False, True], 'pending': False, 'victini': [False, True], 'vs_used': [False, False]}
   board: {'hands': [1, 5], 'p0': ['0:Misdreavus 60hp 1E', '1:Chatot 70hp 0E', '2:Chatot 70hp 0E', '3:Ralts 60hp 0E'], 'p1': ["0:Team Rocket's Moltres ex 130hp 3E", '1:Victini 70hp 0E', '2:Victini 70hp 0E', '3:Torchic 60hp 0E']}
   old chose: EndTurn
   R   chose: KeepAttackCoinResults
   the tick before it (same on both): Attack(Attack { energy_required: [Fire], title: "Heat Charged", fixed_damage: 0, effect: Some("Flip 3 coins. For each heads, produce a [R] Energy f...
 
-i = 35: first difference at tick 33 (turn 4, mover seat 1); old 92 ticks, R 92 ticks
-  F5 exact, on R: vs_confusion_first_built n=1 first=32; vs_confused_choice n=1 first=33; superset vs_confused_attack n=6
-  => EXPLAINED ON THE BOARD (the Confusion-first branch was built at tick 32, not after tick 33)
-  same board before it: False; same facts: False; same offered: False; same chosen: False
+i = 35: first difference at tick 33 (turn 4, mover seat 1): state, the state differs after identical moves up to the tick before; cause tick 32 (turn 4); old 92 ticks, R 92 ticks
+  exact counters on R at or before tick 33 in its turn, or at the cause tick: {'vs_confusion_first_built': [32], 'vs_confused_choice_offered': [33], 'vs_confused_choice_chosen': [33]}; same turn after tick 33 (never an explanation): none
+  all ticks on R: vs_confusion_first_built [32], vs_confused_choice_offered [33], vs_confused_choice_chosen [33]; superset vs_confused_attack n=6
+  golden: the probe at tick 32 (the last built branch up to the cause) finds the branch built after 0 move(s) (match)
+  => ON THE BOARD
+  same state: False; same board summary: False; same facts: False; same offered: False (n 1 / 2); same chosen: False
   facts at the tick (old): {'confused': [False, True], 'pending': False, 'victini': [False, True], 'vs_used': [False, False]}
   board: {'hands': [5, 5], 'p0': ['0:Misdreavus 60hp 1E', '1:Chatot 70hp 0E', '2:Misdreavus 60hp 0E', '3:Ralts 60hp 0E'], 'p1': ["0:Team Rocket's Moltres ex 130hp 5E", '1:Victini 70hp 0E', '2:Torchic 60hp 0E', '3:Torchic 60hp 0E']}
   old chose: EndTurn
   R   chose: KeepAttackCoinResults
   the tick before it (same on both): Attack(Attack { energy_required: [Fire], title: "Heat Charged", fixed_damage: 0, effect: Some("Flip 3 coins. For each heads, produce a [R] Energy f...
 
-i = 37: first difference at tick 31 (turn 4, mover seat 1); old 81 ticks, R 72 ticks
-  F5 exact, on R: vs_confusion_first_built n=1 first=30; vs_confused_choice n=1 first=31; superset vs_confused_attack n=3
-  => EXPLAINED ON THE BOARD (the Confusion-first branch was built at tick 30, not after tick 31)
-  same board before it: False; same facts: False; same offered: False; same chosen: False
+i = 37: first difference at tick 31 (turn 4, mover seat 1): state, the state differs after identical moves up to the tick before; cause tick 30 (turn 4); old 81 ticks, R 72 ticks
+  exact counters on R at or before tick 31 in its turn, or at the cause tick: {'vs_confusion_first_built': [30], 'vs_confused_choice_offered': [31], 'vs_confused_choice_chosen': [31]}; same turn after tick 31 (never an explanation): none
+  all ticks on R: vs_confusion_first_built [30], vs_confused_choice_offered [31], vs_confused_choice_chosen [31]; superset vs_confused_attack n=3
+  golden: the probe at tick 30 (the last built branch up to the cause) finds the branch built after 0 move(s) (match)
+  => ON THE BOARD
+  same state: False; same board summary: False; same facts: False; same offered: False (n 1 / 2); same chosen: False
   facts at the tick (old): {'confused': [False, True], 'pending': False, 'victini': [False, True], 'vs_used': [False, False]}
   board: {'hands': [5, 5], 'p0': ['0:Chatot 70hp 1E', '1:Misdreavus 60hp 0E', '2:Chatot 70hp 0E', '3:Ralts 60hp 0E'], 'p1': ["0:Team Rocket's Moltres ex 120hp 5E", '1:Torchic 60hp 0E', '2:Victini 70hp 0E', "3:Team Rocket's Moltres ex 130hp 0E"]}
   old chose: EndTurn
   R   chose: KeepAttackCoinResults
   the tick before it (same on both): Attack(Attack { energy_required: [Fire], title: "Heat Charged", fixed_damage: 0, effect: Some("Flip 3 coins. For each heads, produce a [R] Energy f...
 
-explained on the board: 7 [2, 3, 5, 18, 33, 35, 37]
-not explained on the board: 6 [0, 7, 8, 17, 22, 28]
+negative control (unchanged games, a mid-game tick: the probe must find no gate):
+  i = 1, tick 8: built after None move(s) (nothing found, as it must be)
+  i = 4, tick 8: built after None move(s) (nothing found, as it must be)
+  i = 6, tick 8: built after None move(s) (nothing found, as it must be)
+
+kinds of first difference: {'lookahead': [0, 7, 8, 17, 22, 28], 'state': [2, 3, 5, 18, 33, 35, 37]}
+verdicts: {'LOOKAHEAD ONLY, both halves hold': 6, 'ON THE BOARD': 7}
+  LOOKAHEAD ONLY, both halves hold: [0, 7, 8, 17, 22, 28]
+  ON THE BOARD: [2, 3, 5, 18, 33, 35, 37]
+unexplained: none; golden and control mismatches: 0
 unchanged games with a built branch on R (the branch was built and the game still equals the old engine's): [21, 24]
 fingerprints (old, R): {0: ('ae0d9608661a50c5', 'd8cff32025504e94'), 2: ('bdeb51c7bc354587', 'ba76f665356111bd'), 3: ('b11deaa26135870c', '750f381f7260365e'), 5: ('d9e726ec23ee4522', '0f15888a726de910'), 7: ('a5c76c1f9012b2fa', 'f159041c37914d2a'), 8: ('fb0c0a047cffba4e', '0ce0891283a213f7'), 17: ('e65fa914d4871280', 'ef05549a271b9d29'), 18: ('698c94e0c93555ce', '6b612e53e5aa7124'), 22: ('743fb6ab4e4bf617', 'b7c884c92e8199db'), 28: ('bb4e8dfbad6689a4', '2b187a8e4ed28cda'), 33: ('d4d7f7221ececb6e', '75c917720311c269'), 35: ('1c22838d3199d6af', '278792ade2ff06fe'), 37: ('79783900cded079e', 'f4dfe51295231c36')}

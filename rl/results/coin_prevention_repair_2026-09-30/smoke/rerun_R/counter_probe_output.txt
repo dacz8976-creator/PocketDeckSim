@@ -10,4 +10,6 @@ ok   queued choices offered after Tongue Whip at the coin Pokemon (coin_queued_o
 ok   plain ApplyDamage choices offered after it, for the other Bench slot (offgate_helper_choice's source): 1
 ok   choosing the queued choice: the finite cut is recorded for the Bench Bastiodon: finite [2], full []
 ok   Tongue Whip with no coin Pokemon: queued offered / plain offered: 0 / 2
-12 checks, 0 failures
+ok   Chase Order with the discard into a non-coin Active (Bulbasaur): after the Attack plain 1 / queued 0; after the discard plain 1 / queued 0
+ok   Chase Order with the discard into Meowth B2 124 (Carefree Steps) as the Active: after the Attack plain 0 / queued 1; after the discard plain 0 / queued 1
+14 checks, 0 failures
