@@ -1,0 +1,4 @@
+      1 error: could not compile `deckgym` (test "playout_pilot_test") due to 7 previous errors; 1 warning emitted
+      1 error[E0432]: unresolved import `deckgym::players::playout_player`
+      1 error[E0433]: failed to resolve: could not find `playout_player` in `players`
+      5 error[E0599]: no variant named `KX` found for enum `PlayerCode`
