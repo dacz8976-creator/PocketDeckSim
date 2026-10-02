@@ -1,6 +1,8 @@
 # Draft A: Shark Tempo (Water)
 
-Draft, not run, not a ranking. List: `draft-A-shark-tempo.txt`. Written Oct 1, 2026 by the Sonnet session "Opus agents progress".
+Draft, not a ranking. List: `draft-A-shark-tempo.txt`. Written Oct 1, 2026 by the Sonnet session "Opus agents progress". Oct 2: its floor
+page clears the floor (950 of 1,920, `rl/results/floor_drafts_2026-10-02/`), and Dustin played it in five pause games (not ladder results;
+`rl/results/pause_games_2026-10-02/README.md`).
 
 ## The list (Water energy)
 
@@ -63,7 +65,8 @@ This is dispatch coverage, not a rules verification of each text.
   Ninetales ex). Keep one on the Bench or the attack does only its 70.
 - **Binding Snow blocks only the attach from the Energy Zone to their Active.** They can still attach to the Bench and retreat.
   Whether it also stops Energy Zone abilities that attach to their Active (Baxcalibur's Ice Maker is in the panel) is not something
-  I read in the engine; check before relying on it against Suicune.
+  I read in the engine; check before relying on it against Suicune. **Pause game, Oct 2** (Astra's reading of Dustin's video): it also
+  stopped Mewtwo ex's Psy Shadow attachment to the Active, and Bench attachments stayed legal. Not yet checked in the engine.
 - **Misty is a coin-until-tails Supporter**: expected one energy, sometimes none, sometimes three. Put it on a Benched Water Pokémon
   the turn Turbo Shark is not enough.
 - **Elegant Cape fits Stage 1 only**: Mega Sharpedo ex (190 to 220) and Ninetales ex (150 to 180), not Lapras.
@@ -74,6 +77,13 @@ This is dispatch coverage, not a rules verification of each text.
 - **Binding Snow is flagged**: "pays off during the opponent's turn, which the search doesn't play out". km3 may pick another Turbo
   Shark over Binding Snow, so Ninetales ex looks weaker on a floor page than it plays. Its default role is "attacker"; if the page
   shows it used on under 25% of its chances, that is this flag, not the deck.
+- **The tracked attacker is Mega Sharpedo ex (fixed Oct 2).** The floor page's failure-modes table counts when "a main attacker" could
+  first attack. With no entry for this list, the floor tool fell back to the Pokémon with the highest printed damage, which is
+  Alolan Ninetales ex (Binding Snow 80) and not Mega Sharpedo ex (Turbo Shark 70), so the Oct 2 page's "could attack by turn 2 / 3 / 4"
+  and "opponent's points before the first main attack" columns tracked Ninetales. `decks/screen/floor.py` now has an entry for this list
+  naming Mega Sharpedo ex (the second commit of the branch `sonnet/drafts-fixes`, kept apart so it can be dropped); the page has to be re-run
+  for those columns to change. Its wins (950), its matchups and Ninetales ex's flagged-card row do not depend on it: same games, same
+  seeds. Ninetales ex stays the flagged card. The write-up above already named Sharpedo as the centerpiece; only the tooling label was off.
 - Misty is not flagged. Turbo Shark's benefit (energy on the Bench) is read only through the leaf value of the position.
 - The t-lucario list carries Arena of Antiquity and Korrina, which km3 prices, so a floor page against it shows the ex penalty for
   real, not as a bot error.

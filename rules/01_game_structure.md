@@ -16,7 +16,7 @@ wikis/guides (two or more agree) · **[SINGLE]** one community source · **[INFE
 | At least **one Basic Pokémon**. | [IN-GAME TEXT] |
 | **No more than two cards with the same name.** "X" and "X ex" are different names (2 Blastoise + 2 Blastoise ex is legal). "Team Rocket's X" is a different name from "X". | [IN-GAME TEXT] + [COMMUNITY] Bulbapedia, pokemon-zone |
 | **1 to 3 Energy types** may be selected ("You may only select up to three Energy types"). The deck must have Energy selected "that allows one or more Pokémon to use their attacks". | [IN-GAME TEXT]. Note: an older pokemon-zone guide says "limited to two types" — outdated; the current in-game message says three. The deck *recommendation* feature says "select up to two types", which is a different screen. |
-| Fossils are Trainer (Item) cards in the deck; they are **not** Pokémon while in the deck or hand. | [COMMUNITY] Bulbapedia Fossil page |
+| Fossils are Trainer (Item) cards in the deck; they are **not** Pokémon while in the deck or hand. | [COMMUNITY] Bulbapedia Fossil page + [IN-GAME TEXT] Sail Fossil's card reads "Item" and "TRAINER" (Dustin's screenshot, Oct 2) |
 
 ## 2. Setup
 
