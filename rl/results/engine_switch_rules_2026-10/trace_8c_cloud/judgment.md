@@ -2,4 +2,4 @@
 
 Each is a lookahead difference (the same state and the same offered moves on both engines, a different choice) with no reach counter in its window, where vs_probe finds nothing and coin_probe finds repair B's queued coin-path choice only at the leaf: offered after 3 of the mover's moves, in a mixed frame (plain ApplyDamage choices beside it), which the bot never applies at ply 3. So the repaired code is in the tree only as an unpriced leaf; whether that counts as the mechanic acting is the judgment (coin_lookahead.py's NEEDS A JUDGMENT).
 
-None.
+- **8 km3, pairing 4 (garchomp_meowth v t-sceptile), deal 106 (seed 23,100,040,106), CONDITION 3.** First difference at tick 82 (turn 12), 4 moves offered. Old engine chose `Play { trainer_card: B1a 067 Quick-Grow Extract }`; R chose `Attack(Attack { energy_required: [Grass], title: "Pound", fixed_damage: 20, effect: None })`. coin_probe: queued=3 cut=None free=false; vs_probe: built=None. Counters later in the turn (never an explanation): none.

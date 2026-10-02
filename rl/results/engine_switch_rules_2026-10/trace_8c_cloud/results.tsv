@@ -491,6 +491,195 @@ step	bot	pairing	lists	i	seed	verdict	kind	k	turn	cause	counters_explaining	coun
 8	k3	3	garchomp_meowth v t-lucario	246	23100030246	ON THE BOARD	state	32	5	31	{"coin_queued_offered":[32],"coin_queued_offered_any":[32]}				yes	no	no	118	141
 8	k3	3	garchomp_meowth v t-lucario	247	23100030247	ON THE BOARD	state	51	7	50	{"coin_queued_offered":[51],"coin_queued_offered_any":[51]}				yes	no	no	75	104
 8	k3	3	garchomp_meowth v t-lucario	249	23100030249	ON THE BOARD	state	14	2	13	{"coin_queued_offered":[14],"coin_queued_offered_any":[14]}				yes	no	no	67	79
+8	km3	4	garchomp_meowth v t-sceptile	0	23100040000	ON THE BOARD	state	68	9	67	{"coin_queued_offered":[68],"coin_queued_offered_any":[68]}				yes	no	no	82	81
+8	km3	4	garchomp_meowth v t-sceptile	1	23100040001	ON THE BOARD	state	37	4	36	{"coin_queued_offered":[37],"coin_queued_offered_any":[37]}				yes	no	no	86	104
+8	km3	4	garchomp_meowth v t-sceptile	7	23100040007	UNEXPLAINED	lookahead	84	11	84			queued=None cut=None free=false	built=None		no	no	91	91
+8	km3	4	garchomp_meowth v t-sceptile	12	23100040012	ON THE BOARD	state	69	9	68	{"coin_queued_offered":[69],"coin_queued_offered_any":[69]}				yes	no	no	90	90
+8	km3	4	garchomp_meowth v t-sceptile	15	23100040015	ON THE BOARD	state	82	11	81	{"coin_queued_offered":[82],"coin_queued_offered_any":[82]}				yes	no	no	97	97
+8	km3	4	garchomp_meowth v t-sceptile	18	23100040018	LOOKAHEAD ONLY, both halves hold	lookahead	80	10	80		{"coin_queued_offered":[85],"coin_queued_offered_any":[85]}	queued=3 cut=None free=true	built=None		no	no	87	87
+8	km3	4	garchomp_meowth v t-sceptile	25	23100040025	ON THE BOARD	state	29	4	28	{"coin_queued_offered":[29],"coin_queued_offered_any":[29]}				yes	no	no	57	59
+8	km3	4	garchomp_meowth v t-sceptile	28	23100040028	ON THE BOARD	state	28	4	27	{"coin_queued_offered":[28],"coin_queued_offered_any":[28]}				yes	no	no	56	86
+8	km3	4	garchomp_meowth v t-sceptile	29	23100040029	ON THE BOARD	state	35	4	34	{"coin_queued_offered":[35],"coin_queued_offered_any":[35]}				yes	no	no	61	78
+8	km3	4	garchomp_meowth v t-sceptile	32	23100040032	ON THE BOARD	state	45	5	44	{"coin_queued_offered":[45],"coin_queued_offered_any":[45]}				yes	no	no	103	100
+8	km3	4	garchomp_meowth v t-sceptile	33	23100040033	ON THE BOARD	state	61	8	60	{"coin_queued_offered":[61],"coin_queued_offered_any":[61]}				yes	no	no	92	91
+8	km3	4	garchomp_meowth v t-sceptile	40	23100040040	ON THE BOARD	state	85	12	84	{"coin_queued_offered":[85],"coin_queued_offered_any":[85]}				yes	no	no	90	90
+8	km3	4	garchomp_meowth v t-sceptile	46	23100040046	ON THE BOARD	state	35	4	34	{"coin_queued_offered":[35],"coin_queued_offered_any":[35]}				yes	no	no	59	103
+8	km3	4	garchomp_meowth v t-sceptile	52	23100040052	ON THE BOARD	state	30	4	29	{"coin_queued_offered":[30],"coin_queued_offered_any":[30]}				yes	no	no	60	52
+8	km3	4	garchomp_meowth v t-sceptile	55	23100040055	ON THE BOARD	state	24	4	23	{"coin_queued_offered":[24],"coin_queued_offered_any":[24]}				yes	no	no	30	30
+8	km3	4	garchomp_meowth v t-sceptile	59	23100040059	LOOKAHEAD ONLY, both halves hold	lookahead	67	10	67			queued=2 cut=None free=false	built=None		no	no	86	87
+8	km3	4	garchomp_meowth v t-sceptile	62	23100040062	LOOKAHEAD ONLY, both halves hold	lookahead	53	6	53			queued=2 cut=None free=false	built=None		yes	yes	86	78
+8	km3	4	garchomp_meowth v t-sceptile	73	23100040073	LOOKAHEAD ONLY, both halves hold	lookahead	55	6	55			queued=1 cut=None free=false	built=None		yes	yes	99	101
+8	km3	4	garchomp_meowth v t-sceptile	76	23100040076	ON THE BOARD	state	118	16	117	{"coin_queued_offered":[118],"coin_queued_offered_any":[118]}				yes	no	no	120	123
+8	km3	4	garchomp_meowth v t-sceptile	78	23100040078	ON THE BOARD	state	36	4	35	{"coin_queued_offered":[36],"coin_queued_offered_any":[36]}				yes	no	no	64	86
+8	km3	4	garchomp_meowth v t-sceptile	80	23100040080	ON THE BOARD	state	75	10	74	{"coin_queued_offered":[75],"coin_queued_offered_any":[75]}				yes	no	no	104	104
+8	km3	4	garchomp_meowth v t-sceptile	81	23100040081	ON THE BOARD	state	47	5	46	{"coin_queued_offered":[47],"coin_queued_offered_any":[47]}				yes	no	no	94	91
+8	km3	4	garchomp_meowth v t-sceptile	82	23100040082	ON THE BOARD	state	94	14	93	{"coin_queued_offered":[94],"coin_queued_offered_any":[94]}				yes	no	no	96	96
+8	km3	4	garchomp_meowth v t-sceptile	83	23100040083	ON THE BOARD	state	27	4	26	{"coin_queued_offered":[27],"coin_queued_offered_any":[27]}				yes	no	no	59	59
+8	km3	4	garchomp_meowth v t-sceptile	92	23100040092	LOOKAHEAD ONLY, both halves hold	lookahead	64	9	64		{"coin_queued_offered":[68],"coin_queued_offered_any":[68]}	queued=3 cut=None free=true	built=None		no	no	89	89
+8	km3	4	garchomp_meowth v t-sceptile	104	23100040104	LOOKAHEAD ONLY, both halves hold	lookahead	66	9	66			queued=3 cut=None free=true	built=None		yes	no	70	70
+8	km3	4	garchomp_meowth v t-sceptile	106	23100040106	NEEDS A JUDGMENT	lookahead	82	12	82			queued=3 cut=None free=false	built=None		yes	yes	92	87
+8	km3	4	garchomp_meowth v t-sceptile	111	23100040111	LOOKAHEAD ONLY, both halves hold	lookahead	68	9	68		{"coin_queued_offered":[71],"coin_queued_offered_any":[71]}	queued=1 cut=None free=false	built=None		no	no	71	86
+8	km3	4	garchomp_meowth v t-sceptile	112	23100040112	ON THE BOARD	state	43	5	42	{"coin_queued_offered":[43],"coin_queued_offered_any":[43]}				yes	no	no	87	113
+8	km3	4	garchomp_meowth v t-sceptile	115	23100040115	ON THE BOARD	state	55	8	54	{"coin_queued_offered":[55],"coin_queued_offered_any":[55]}				yes	no	no	89	87
+8	km3	4	garchomp_meowth v t-sceptile	116	23100040116	ON THE BOARD	state	30	4	29	{"coin_queued_offered":[30],"coin_queued_offered_any":[30]}				yes	no	no	72	70
+8	km3	4	garchomp_meowth v t-sceptile	123	23100040123	LOOKAHEAD ONLY, both halves hold	lookahead	17	4	17		{"coin_queued_offered":[24],"coin_queued_offered_any":[24]}	queued=2 cut=None free=true	built=None		no	no	67	97
+8	km3	4	garchomp_meowth v t-sceptile	126	23100040126	ON THE BOARD	state	79	9	78	{"coin_queued_offered":[79],"coin_queued_offered_any":[79]}				yes	no	no	107	107
+8	km3	4	garchomp_meowth v t-sceptile	127	23100040127	ON THE BOARD	state	73	10	72	{"coin_queued_offered":[73],"coin_queued_offered_any":[73]}				yes	no	no	78	78
+8	km3	4	garchomp_meowth v t-sceptile	130	23100040130	LOOKAHEAD ONLY, both halves hold	lookahead	52	7	52			queued=2 cut=None free=false	built=None		yes	yes	71	65
+8	km3	4	garchomp_meowth v t-sceptile	131	23100040131	LOOKAHEAD ONLY, both halves hold	lookahead	37	6	37			queued=1 cut=None free=false	built=None		yes	yes	57	78
+8	km3	4	garchomp_meowth v t-sceptile	134	23100040134	LOOKAHEAD ONLY, both halves hold	lookahead	93	12	93		{"coin_queued_offered":[96],"coin_queued_offered_any":[96]}	queued=3 cut=None free=true	built=None		no	no	98	110
+8	km3	4	garchomp_meowth v t-sceptile	135	23100040135	ON THE BOARD	state	19	4	18	{"coin_queued_offered":[19],"coin_queued_offered_any":[19]}				yes	no	no	81	80
+8	km3	4	garchomp_meowth v t-sceptile	137	23100040137	LOOKAHEAD ONLY, both halves hold	lookahead	71	10	71		{"coin_queued_offered":[74],"coin_queued_offered_any":[74]}	queued=3 cut=None free=true	built=None		no	no	76	84
+8	km3	4	garchomp_meowth v t-sceptile	140	23100040140	ON THE BOARD	state	32	4	31	{"coin_queued_offered":[32],"coin_queued_offered_any":[32]}				yes	no	no	61	73
+8	km3	4	garchomp_meowth v t-sceptile	142	23100040142	LOOKAHEAD ONLY, both halves hold	lookahead	80	12	80		{"coin_queued_offered":[83],"coin_queued_offered_any":[83]}	queued=3 cut=None free=true	built=None		no	no	85	85
+8	km3	4	garchomp_meowth v t-sceptile	143	23100040143	LOOKAHEAD ONLY, both halves hold	lookahead	69	10	69			queued=2 cut=None free=false	built=None		yes	yes	83	80
+8	km3	4	garchomp_meowth v t-sceptile	145	23100040145	LOOKAHEAD ONLY, both halves hold	lookahead	52	7	52			queued=2 cut=None free=true	built=None		yes	yes	121	119
+8	km3	4	garchomp_meowth v t-sceptile	150	23100040150	ON THE BOARD	state	77	10	76	{"coin_queued_offered":[77],"coin_queued_offered_any":[77]}				yes	no	no	94	94
+8	km3	4	garchomp_meowth v t-sceptile	152	23100040152	ON THE BOARD	state	80	12	79	{"coin_queued_offered":[80],"coin_queued_offered_any":[80]}				yes	no	no	85	85
+8	km3	4	garchomp_meowth v t-sceptile	153	23100040153	ON THE BOARD	state	92	14	91	{"coin_queued_offered":[92],"coin_queued_offered_any":[92]}				yes	no	no	107	107
+8	km3	4	garchomp_meowth v t-sceptile	154	23100040154	LOOKAHEAD ONLY, both halves hold	lookahead	64	10	64			queued=2 cut=None free=false	built=None		yes	yes	68	80
+8	km3	4	garchomp_meowth v t-sceptile	155	23100040155	LOOKAHEAD ONLY, both halves hold	lookahead	65	8	65			queued=2 cut=None free=false	built=None		yes	yes	105	121
+8	km3	4	garchomp_meowth v t-sceptile	157	23100040157	LOOKAHEAD ONLY, both halves hold	lookahead	69	8	69			queued=2 cut=None free=false	built=None		no	no	105	105
+8	km3	4	garchomp_meowth v t-sceptile	159	23100040159	ON THE BOARD	state	46	6	45	{"coin_queued_offered":[46],"coin_queued_offered_any":[46]}				yes	no	no	79	80
+8	km3	4	garchomp_meowth v t-sceptile	160	23100040160	ON THE BOARD	state	33	4	32	{"coin_queued_offered":[33],"coin_queued_offered_any":[33]}				yes	no	no	89	89
+8	km3	4	garchomp_meowth v t-sceptile	163	23100040163	ON THE BOARD	state	91	12	90	{"coin_queued_offered":[91],"coin_queued_offered_any":[91]}				yes	no	no	131	131
+8	km3	4	garchomp_meowth v t-sceptile	166	23100040166	LOOKAHEAD ONLY, both halves hold	lookahead	58	8	58			queued=1 cut=None free=false	built=None		yes	yes	72	82
+8	km3	4	garchomp_meowth v t-sceptile	167	23100040167	LOOKAHEAD ONLY, both halves hold	lookahead	67	9	67		{"coin_queued_offered":[70],"coin_queued_offered_any":[70]}	queued=3 cut=None free=true	built=None		no	no	72	72
+8	km3	4	garchomp_meowth v t-sceptile	169	23100040169	LOOKAHEAD ONLY, both halves hold	lookahead	70	10	70			queued=2 cut=None free=false	built=None		yes	yes	74	104
+8	km3	4	garchomp_meowth v t-sceptile	172	23100040172	ON THE BOARD	state	38	5	37	{"coin_queued_offered":[38],"coin_queued_offered_any":[38]}				yes	no	no	69	69
+8	km3	4	garchomp_meowth v t-sceptile	174	23100040174	ON THE BOARD	state	40	4	39	{"coin_queued_offered":[40],"coin_queued_offered_any":[40]}				yes	no	no	67	137
+8	km3	4	garchomp_meowth v t-sceptile	183	23100040183	ON THE BOARD	state	24	4	23	{"coin_queued_offered":[24],"coin_queued_offered_any":[24]}				yes	no	no	46	135
+8	km3	4	garchomp_meowth v t-sceptile	184	23100040184	ON THE BOARD	state	32	5	31	{"coin_queued_offered":[32],"coin_queued_offered_any":[32]}				yes	no	no	87	87
+8	km3	4	garchomp_meowth v t-sceptile	188	23100040188	ON THE BOARD	state	28	4	27	{"coin_queued_offered":[28],"coin_queued_offered_any":[28]}				yes	no	no	53	50
+8	km3	4	garchomp_meowth v t-sceptile	192	23100040192	LOOKAHEAD ONLY, both halves hold	lookahead	75	10	75		{"coin_queued_offered":[77],"coin_queued_offered_any":[77]}	queued=1 cut=None free=false	built=None		no	no	78	82
+8	km3	4	garchomp_meowth v t-sceptile	194	23100040194	ON THE BOARD	state	30	4	29	{"coin_queued_offered":[30],"coin_queued_offered_any":[30]}				yes	no	no	85	139
+8	km3	4	garchomp_meowth v t-sceptile	202	23100040202	LOOKAHEAD ONLY, both halves hold	lookahead	51	7	51			queued=2 cut=None free=false	built=None		yes	yes	86	79
+8	km3	4	garchomp_meowth v t-sceptile	204	23100040204	LOOKAHEAD ONLY, both halves hold	lookahead	56	8	56			queued=2 cut=None free=false	built=None		no	no	60	75
+8	km3	4	garchomp_meowth v t-sceptile	205	23100040205	LOOKAHEAD ONLY, both halves hold	lookahead	69	9	69		{"coin_queued_offered":[72],"coin_queued_offered_any":[72]}	queued=3 cut=None free=true	built=None		no	no	98	74
+8	km3	4	garchomp_meowth v t-sceptile	211	23100040211	ON THE BOARD	state	23	4	22	{"coin_queued_offered":[23],"coin_queued_offered_any":[23]}				yes	no	no	49	49
+8	km3	4	garchomp_meowth v t-sceptile	212	23100040212	ON THE BOARD	state	38	4	37	{"coin_queued_offered":[38],"coin_queued_offered_any":[38]}				yes	no	no	71	120
+8	km3	4	garchomp_meowth v t-sceptile	215	23100040215	ON THE BOARD	state	59	7	58	{"coin_queued_offered":[59],"coin_queued_offered_any":[59]}				yes	no	no	95	96
+8	km3	4	garchomp_meowth v t-sceptile	218	23100040218	ON THE BOARD	state	52	6	51	{"coin_queued_offered":[52],"coin_queued_offered_any":[52]}				yes	no	no	66	92
+8	km3	4	garchomp_meowth v t-sceptile	220	23100040220	LOOKAHEAD ONLY, both halves hold	lookahead	50	6	50			queued=2 cut=None free=false	built=None		no	no	66	95
+8	km3	4	garchomp_meowth v t-sceptile	222	23100040222	ON THE BOARD	state	56	7	55	{"coin_queued_offered":[56],"coin_queued_offered_any":[56]}				yes	no	no	85	87
+8	km3	4	garchomp_meowth v t-sceptile	223	23100040223	ON THE BOARD	state	35	4	34	{"coin_queued_offered":[35],"coin_queued_offered_any":[35]}				yes	no	no	61	78
+8	km3	4	garchomp_meowth v t-sceptile	226	23100040226	LOOKAHEAD ONLY, both halves hold	lookahead	24	4	24		{"coin_queued_offered":[31],"coin_queued_offered_any":[31]}	queued=2 cut=None free=true	built=None		no	no	61	80
+8	km3	4	garchomp_meowth v t-sceptile	227	23100040227	ON THE BOARD	state	86	12	85	{"coin_queued_offered":[86],"coin_queued_offered_any":[86]}				yes	no	no	88	91
+8	km3	4	garchomp_meowth v t-sceptile	228	23100040228	ON THE BOARD	state	33	4	32	{"coin_queued_offered":[33],"coin_queued_offered_any":[33]}				yes	no	no	91	69
+8	km3	4	garchomp_meowth v t-sceptile	229	23100040229	LOOKAHEAD ONLY, both halves hold	lookahead	88	11	88			queued=2 cut=None free=false	built=None		no	no	120	120
+8	km3	4	garchomp_meowth v t-sceptile	230	23100040230	ON THE BOARD	state	80	11	79	{"coin_queued_offered":[80],"coin_queued_offered_any":[80]}				yes	no	no	85	85
+8	km3	4	garchomp_meowth v t-sceptile	231	23100040231	ON THE BOARD	state	61	7	60	{"coin_queued_offered":[61],"coin_queued_offered_any":[61]}				yes	no	no	76	76
+8	km3	4	garchomp_meowth v t-sceptile	232	23100040232	ON THE BOARD	state	26	4	25	{"coin_queued_offered":[26],"coin_queued_offered_any":[26]}				yes	no	no	87	73
+8	km3	4	garchomp_meowth v t-sceptile	235	23100040235	ON THE BOARD	state	26	4	25	{"coin_queued_offered":[26],"coin_queued_offered_any":[26]}				yes	no	no	70	52
+8	km3	4	garchomp_meowth v t-sceptile	236	23100040236	ON THE BOARD	state	71	9	70	{"coin_queued_offered":[71],"coin_queued_offered_any":[71]}				yes	no	no	89	89
+8	km3	4	garchomp_meowth v t-sceptile	237	23100040237	ON THE BOARD	state	58	7	57	{"coin_queued_offered":[58],"coin_queued_offered_any":[58]}				yes	no	no	73	84
+8	km3	4	garchomp_meowth v t-sceptile	238	23100040238	LOOKAHEAD ONLY, both halves hold	lookahead	95	12	95		{"coin_queued_offered":[98],"coin_queued_offered_any":[98]}	queued=1 cut=None free=true	built=None		no	no	98	100
+8	km3	4	garchomp_meowth v t-sceptile	239	23100040239	ON THE BOARD	state	39	5	38	{"coin_queued_offered":[39],"coin_queued_offered_any":[39]}				yes	no	no	80	100
+8	km3	4	garchomp_meowth v t-sceptile	242	23100040242	ON THE BOARD	state	38	5	37	{"coin_queued_offered":[38],"coin_queued_offered_any":[38]}				yes	no	no	68	78
+8	km3	4	garchomp_meowth v t-sceptile	245	23100040245	ON THE BOARD	state	73	10	72	{"coin_queued_offered":[73],"coin_queued_offered_any":[73]}				yes	no	no	78	78
+8	km3	4	garchomp_meowth v t-sceptile	246	23100040246	ON THE BOARD	state	65	10	64	{"coin_queued_offered":[65],"coin_queued_offered_any":[65]}				yes	no	no	70	70
+8	km3	4	garchomp_meowth v t-sceptile	249	23100040249	LOOKAHEAD ONLY, both halves hold	lookahead	50	6	50			queued=1 cut=None free=false	built=None		no	no	69	94
+8	km3	4	garchomp_meowth v t-sceptile	250	23100040250	ON THE BOARD	state	43	6	42	{"coin_queued_offered":[43],"coin_queued_offered_any":[43]}				yes	no	no	85	108
+8	km3	4	garchomp_meowth v t-sceptile	260	23100040260	ON THE BOARD	state	34	4	33	{"coin_queued_offered":[34],"coin_queued_offered_any":[34]}				yes	no	no	65	65
+8	km3	4	garchomp_meowth v t-sceptile	264	23100040264	LOOKAHEAD ONLY, both halves hold	lookahead	35	5	35			queued=2 cut=None free=false	built=None		yes	yes	68	96
+8	km3	4	garchomp_meowth v t-sceptile	267	23100040267	ON THE BOARD	state	37	5	36	{"coin_queued_offered":[37],"coin_queued_offered_any":[37]}				yes	no	no	90	90
+8	km3	4	garchomp_meowth v t-sceptile	268	23100040268	LOOKAHEAD ONLY, both halves hold	lookahead	39	6	39		{"coin_queued_offered":[42],"coin_queued_offered_any":[42]}	queued=3 cut=None free=true	built=None		no	no	131	54
+8	km3	4	garchomp_meowth v t-sceptile	270	23100040270	ON THE BOARD	state	50	6	49	{"coin_queued_offered":[50],"coin_queued_offered_any":[50]}				yes	no	no	96	83
+8	km3	4	garchomp_meowth v t-sceptile	275	23100040275	ON THE BOARD	state	33	4	32	{"coin_queued_offered":[33],"coin_queued_offered_any":[33]}				yes	no	no	89	88
+8	km3	4	garchomp_meowth v t-sceptile	276	23100040276	ON THE BOARD	state	72	10	71	{"coin_queued_offered":[72],"coin_queued_offered_any":[72]}				yes	no	no	77	77
+8	km3	4	garchomp_meowth v t-sceptile	280	23100040280	LOOKAHEAD ONLY, both halves hold	lookahead	46	6	46			queued=2 cut=None free=false	built=None		yes	yes	81	96
+8	km3	4	garchomp_meowth v t-sceptile	286	23100040286	ON THE BOARD	state	24	4	23	{"coin_queued_offered":[24],"coin_queued_offered_any":[24]}				yes	no	no	57	84
+8	km3	4	garchomp_meowth v t-sceptile	287	23100040287	ON THE BOARD	state	35	4	34	{"coin_queued_offered":[35],"coin_queued_offered_any":[35]}				yes	no	no	81	109
+8	km3	4	garchomp_meowth v t-sceptile	289	23100040289	ON THE BOARD	state	29	4	28	{"coin_queued_offered":[29],"coin_queued_offered_any":[29]}				yes	no	no	51	51
+8	km3	4	garchomp_meowth v t-sceptile	291	23100040291	LOOKAHEAD ONLY, both halves hold	lookahead	35	5	35			queued=2 cut=None free=false	built=None		yes	yes	46	56
+8	km3	4	garchomp_meowth v t-sceptile	292	23100040292	LOOKAHEAD ONLY, both halves hold	lookahead	29	5	29			queued=2 cut=None free=false	built=None		yes	yes	62	71
+8	km3	4	garchomp_meowth v t-sceptile	296	23100040296	LOOKAHEAD ONLY, both halves hold	lookahead	72	12	72			queued=2 cut=None free=true	built=None		yes	yes	76	75
+8	km3	4	garchomp_meowth v t-sceptile	298	23100040298	ON THE BOARD	state	35	4	34	{"coin_queued_offered":[35],"coin_queued_offered_any":[35]}				yes	no	no	88	111
+8	km3	4	garchomp_meowth v t-sceptile	299	23100040299	ON THE BOARD	state	30	4	29	{"coin_queued_offered":[30],"coin_queued_offered_any":[30]}				yes	no	no	56	68
+8	km3	4	garchomp_meowth v t-sceptile	300	23100040300	LOOKAHEAD ONLY, both halves hold	lookahead	48	7	48			queued=2 cut=None free=true	built=None		yes	yes	69	65
+8	km3	4	garchomp_meowth v t-sceptile	305	23100040305	ON THE BOARD	state	32	4	31	{"coin_queued_offered":[32],"coin_queued_offered_any":[32]}				yes	no	no	103	78
+8	km3	4	garchomp_meowth v t-sceptile	309	23100040309	ON THE BOARD	state	67	8	66	{"coin_queued_offered":[67],"coin_queued_offered_any":[67]}				yes	no	no	119	119
+8	km3	4	garchomp_meowth v t-sceptile	311	23100040311	ON THE BOARD	state	36	5	35	{"coin_queued_offered":[36],"coin_queued_offered_any":[36]}				yes	no	no	68	68
+8	km3	4	garchomp_meowth v t-sceptile	313	23100040313	LOOKAHEAD ONLY, both halves hold	lookahead	33	5	33			queued=2 cut=None free=false	built=None		yes	yes	101	116
+8	km3	4	garchomp_meowth v t-sceptile	315	23100040315	ON THE BOARD	state	25	4	24	{"coin_queued_offered":[25],"coin_queued_offered_any":[25]}				yes	no	no	53	53
+8	km3	4	garchomp_meowth v t-sceptile	318	23100040318	ON THE BOARD	state	29	4	28	{"coin_queued_offered":[29],"coin_queued_offered_any":[29]}				yes	no	no	40	40
+8	km3	4	garchomp_meowth v t-sceptile	320	23100040320	ON THE BOARD	state	82	10	81	{"coin_queued_offered":[82],"coin_queued_offered_any":[82]}				yes	no	no	84	84
+8	km3	4	garchomp_meowth v t-sceptile	321	23100040321	LOOKAHEAD ONLY, both halves hold	lookahead	64	9	64			queued=2 cut=None free=false	built=None		yes	yes	68	68
+8	km3	4	garchomp_meowth v t-sceptile	322	23100040322	ON THE BOARD	state	61	8	60	{"coin_queued_offered":[61],"coin_queued_offered_any":[61]}				yes	no	no	90	93
+8	km3	4	garchomp_meowth v t-sceptile	324	23100040324	LOOKAHEAD ONLY, both halves hold	lookahead	66	10	66		{"coin_queued_offered":[69],"coin_queued_offered_any":[69]}	queued=3 cut=None free=true	built=None		no	no	71	71
+8	km3	4	garchomp_meowth v t-sceptile	326	23100040326	LOOKAHEAD ONLY, both halves hold	lookahead	94	12	94			queued=2 cut=None free=false	built=None		no	no	127	128
+8	km3	4	garchomp_meowth v t-sceptile	329	23100040329	ON THE BOARD	state	83	12	82	{"coin_queued_offered":[83],"coin_queued_offered_any":[83]}				yes	no	no	88	88
+8	km3	4	garchomp_meowth v t-sceptile	331	23100040331	LOOKAHEAD ONLY, both halves hold	lookahead	81	11	81		{"coin_queued_offered":[86],"coin_queued_offered_any":[86]}	queued=3 cut=None free=true	built=None		no	no	88	96
+8	km3	4	garchomp_meowth v t-sceptile	333	23100040333	ON THE BOARD	state	33	4	32	{"coin_queued_offered":[33],"coin_queued_offered_any":[33]}				yes	no	no	104	62
+8	km3	4	garchomp_meowth v t-sceptile	334	23100040334	LOOKAHEAD ONLY, both halves hold	lookahead	34	5	34			queued=2 cut=None free=false	built=None		yes	yes	45	94
+8	km3	4	garchomp_meowth v t-sceptile	348	23100040348	LOOKAHEAD ONLY, both halves hold	lookahead	61	8	61			queued=2 cut=None free=false	built=None		yes	yes	100	94
+8	km3	4	garchomp_meowth v t-sceptile	349	23100040349	ON THE BOARD	state	75	9	74	{"coin_queued_offered":[75],"coin_queued_offered_any":[75]}				yes	no	no	88	93
+8	km3	4	garchomp_meowth v t-sceptile	350	23100040350	ON THE BOARD	state	33	4	32	{"coin_queued_offered":[33],"coin_queued_offered_any":[33]}				yes	no	no	48	48
+8	km3	4	garchomp_meowth v t-sceptile	352	23100040352	LOOKAHEAD ONLY, both halves hold	lookahead	38	5	38			queued=2 cut=None free=false	built=None		yes	yes	72	96
+8	km3	4	garchomp_meowth v t-sceptile	356	23100040356	ON THE BOARD	state	66	8	65	{"coin_queued_offered":[66],"coin_queued_offered_any":[66]}				yes	no	no	68	82
+8	km3	4	garchomp_meowth v t-sceptile	358	23100040358	LOOKAHEAD ONLY, both halves hold	lookahead	49	6	49			queued=2 cut=None free=false	built=None		yes	yes	78	96
+8	km3	4	garchomp_meowth v t-sceptile	360	23100040360	UNEXPLAINED	lookahead	57	8	57			queued=None cut=None free=false	built=None		no	no	95	79
+8	km3	4	garchomp_meowth v t-sceptile	361	23100040361	ON THE BOARD	state	69	9	68	{"coin_queued_offered":[69],"coin_queued_offered_any":[69]}				yes	no	no	93	123
+8	km3	4	garchomp_meowth v t-sceptile	362	23100040362	ON THE BOARD	state	48	6	47	{"coin_queued_offered":[48],"coin_queued_offered_any":[48]}				yes	no	no	64	64
+8	km3	4	garchomp_meowth v t-sceptile	363	23100040363	LOOKAHEAD ONLY, both halves hold	lookahead	56	7	56			queued=2 cut=None free=false	built=None		no	no	89	99
+8	km3	4	garchomp_meowth v t-sceptile	370	23100040370	ON THE BOARD	state	53	7	52	{"coin_queued_offered":[53],"coin_queued_offered_any":[53]}				yes	no	no	64	67
+8	km3	4	garchomp_meowth v t-sceptile	371	23100040371	ON THE BOARD	state	26	4	25	{"coin_queued_offered":[26],"coin_queued_offered_any":[26]}				yes	no	no	75	66
+8	km3	4	garchomp_meowth v t-sceptile	376	23100040376	LOOKAHEAD ONLY, both halves hold	lookahead	52	8	52			queued=2 cut=None free=false	built=None		yes	yes	82	92
+8	km3	4	garchomp_meowth v t-sceptile	377	23100040377	LOOKAHEAD ONLY, both halves hold	lookahead	56	9	56		{"coin_queued_offered":[60],"coin_queued_offered_any":[60]}	queued=3 cut=None free=true	built=None		no	no	62	96
+8	km3	4	garchomp_meowth v t-sceptile	380	23100040380	LOOKAHEAD ONLY, both halves hold	lookahead	64	9	64			queued=2 cut=None free=false	built=None		yes	yes	80	103
+8	km3	4	garchomp_meowth v t-sceptile	382	23100040382	ON THE BOARD	state	33	4	32	{"coin_queued_offered":[33],"coin_queued_offered_any":[33]}				yes	no	no	69	68
+8	km3	4	garchomp_meowth v t-sceptile	384	23100040384	LOOKAHEAD ONLY, both halves hold	lookahead	79	11	79		{"coin_queued_offered":[82],"coin_queued_offered_any":[82]}	queued=3 cut=None free=true	built=None		no	no	84	84
+8	km3	4	garchomp_meowth v t-sceptile	385	23100040385	LOOKAHEAD ONLY, both halves hold	lookahead	27	4	27		{"coin_queued_offered":[31],"coin_queued_offered_any":[31]}	queued=3 cut=None free=true	built=None		no	no	52	75
+8	km3	4	garchomp_meowth v t-sceptile	390	23100040390	ON THE BOARD	state	43	6	42	{"coin_queued_offered":[43],"coin_queued_offered_any":[43]}				yes	no	no	75	95
+8	km3	4	garchomp_meowth v t-sceptile	391	23100040391	ON THE BOARD	state	101	14	100	{"coin_queued_offered":[101],"coin_queued_offered_any":[101]}				yes	no	no	103	103
+8	km3	4	garchomp_meowth v t-sceptile	392	23100040392	LOOKAHEAD ONLY, both halves hold	lookahead	61	9	61		{"coin_queued_offered":[64],"coin_queued_offered_any":[64]}	queued=3 cut=None free=true	built=None		no	no	66	91
+8	km3	4	garchomp_meowth v t-sceptile	393	23100040393	LOOKAHEAD ONLY, both halves hold	lookahead	107	14	107		{"coin_queued_offered":[110],"coin_queued_offered_any":[110]}	queued=3 cut=None free=true	built=None		no	no	112	112
+8	km3	4	garchomp_meowth v t-sceptile	399	23100040399	LOOKAHEAD ONLY, both halves hold	lookahead	62	8	62			queued=2 cut=None free=false	built=None		no	no	84	80
+8	km3	4	garchomp_meowth v t-sceptile	400	23100040400	LOOKAHEAD ONLY, both halves hold	lookahead	83	12	83		{"coin_queued_offered":[86],"coin_queued_offered_any":[86]}	queued=3 cut=None free=true	built=None		no	no	105	105
+8	km3	4	garchomp_meowth v t-sceptile	404	23100040404	ON THE BOARD	state	77	9	76	{"coin_queued_offered":[77],"coin_queued_offered_any":[77]}				yes	no	no	115	98
+8	km3	4	garchomp_meowth v t-sceptile	409	23100040409	ON THE BOARD	state	82	12	81	{"coin_queued_offered":[82],"coin_queued_offered_any":[82]}				yes	no	no	84	84
+8	km3	4	garchomp_meowth v t-sceptile	410	23100040410	ON THE BOARD	state	60	8	59	{"coin_queued_offered":[60],"coin_queued_offered_any":[60]}				yes	no	no	73	89
+8	km3	4	garchomp_meowth v t-sceptile	411	23100040411	LOOKAHEAD ONLY, both halves hold	lookahead	40	5	40			queued=1 cut=None free=false	built=None		yes	yes	106	107
+8	km3	4	garchomp_meowth v t-sceptile	412	23100040412	LOOKAHEAD ONLY, both halves hold	lookahead	40	5	40			queued=2 cut=None free=false	built=None		yes	yes	121	112
+8	km3	4	garchomp_meowth v t-sceptile	414	23100040414	LOOKAHEAD ONLY, both halves hold	lookahead	77	10	77		{"coin_queued_offered":[81],"coin_queued_offered_any":[81]}	queued=3 cut=None free=true	built=None		no	no	91	83
+8	km3	4	garchomp_meowth v t-sceptile	415	23100040415	ON THE BOARD	state	38	5	37	{"coin_queued_offered":[38],"coin_queued_offered_any":[38]}				yes	no	no	89	76
+8	km3	4	garchomp_meowth v t-sceptile	417	23100040417	ON THE BOARD	state	70	10	69	{"coin_queued_offered":[70],"coin_queued_offered_any":[70]}				yes	no	no	89	89
+8	km3	4	garchomp_meowth v t-sceptile	419	23100040419	ON THE BOARD	state	64	8	63	{"coin_queued_offered":[64],"coin_queued_offered_any":[64]}				yes	no	no	89	95
+8	km3	4	garchomp_meowth v t-sceptile	421	23100040421	ON THE BOARD	state	64	8	63	{"coin_queued_offered":[64],"coin_queued_offered_any":[64]}				yes	no	no	76	98
+8	km3	4	garchomp_meowth v t-sceptile	422	23100040422	ON THE BOARD	state	95	12	94	{"coin_queued_offered":[95],"coin_queued_offered_any":[95]}				yes	no	no	111	111
+8	km3	4	garchomp_meowth v t-sceptile	423	23100040423	ON THE BOARD	state	49	6	48	{"coin_queued_offered":[49],"coin_queued_offered_any":[49]}				yes	no	no	83	83
+8	km3	4	garchomp_meowth v t-sceptile	424	23100040424	LOOKAHEAD ONLY, both halves hold	lookahead	58	8	58			queued=2 cut=None free=false	built=None		yes	yes	77	103
+8	km3	4	garchomp_meowth v t-sceptile	425	23100040425	ON THE BOARD	state	81	11	80	{"coin_queued_offered":[81],"coin_queued_offered_any":[81]}				yes	no	no	86	86
+8	km3	4	garchomp_meowth v t-sceptile	428	23100040428	LOOKAHEAD ONLY, both halves hold	lookahead	70	10	70			queued=2 cut=None free=false	built=None		yes	yes	74	71
+8	km3	4	garchomp_meowth v t-sceptile	432	23100040432	LOOKAHEAD ONLY, both halves hold	lookahead	56	7	56			queued=2 cut=None free=false	built=None		no	no	85	86
+8	km3	4	garchomp_meowth v t-sceptile	437	23100040437	LOOKAHEAD ONLY, both halves hold	lookahead	72	9	72			queued=2 cut=None free=false	built=None		no	no	103	89
+8	km3	4	garchomp_meowth v t-sceptile	438	23100040438	ON THE BOARD	state	32	4	31	{"coin_queued_offered":[32],"coin_queued_offered_any":[32]}				yes	no	no	59	117
+8	km3	4	garchomp_meowth v t-sceptile	442	23100040442	ON THE BOARD	state	97	12	96	{"coin_queued_offered":[97],"coin_queued_offered_any":[97]}				yes	no	no	112	112
+8	km3	4	garchomp_meowth v t-sceptile	444	23100040444	ON THE BOARD	state	75	10	74	{"coin_queued_offered":[75],"coin_queued_offered_any":[75]}				yes	no	no	88	154
+8	km3	4	garchomp_meowth v t-sceptile	446	23100040446	LOOKAHEAD ONLY, both halves hold	lookahead	90	13	90			queued=2 cut=None free=false	built=None		yes	yes	94	91
+8	km3	4	garchomp_meowth v t-sceptile	449	23100040449	ON THE BOARD	state	28	4	27	{"coin_queued_offered":[28],"coin_queued_offered_any":[28]}				yes	no	no	58	102
+8	km3	4	garchomp_meowth v t-sceptile	456	23100040456	LOOKAHEAD ONLY, both halves hold	lookahead	65	8	65			queued=2 cut=None free=false	built=None		yes	yes	80	79
+8	km3	4	garchomp_meowth v t-sceptile	459	23100040459	ON THE BOARD	state	26	4	25	{"coin_queued_offered":[26],"coin_queued_offered_any":[26]}				yes	no	no	61	79
+8	km3	4	garchomp_meowth v t-sceptile	462	23100040462	ON THE BOARD	state	85	10	84	{"coin_queued_offered":[85],"coin_queued_offered_any":[85]}				yes	no	no	104	104
+8	km3	4	garchomp_meowth v t-sceptile	463	23100040463	LOOKAHEAD ONLY, both halves hold	lookahead	63	9	63		{"coin_queued_offered":[68],"coin_queued_offered_any":[68]}	queued=2 cut=None free=true	built=None		no	no	83	83
+8	km3	4	garchomp_meowth v t-sceptile	467	23100040467	LOOKAHEAD ONLY, both halves hold	lookahead	41	5	41			queued=2 cut=None free=false	built=None		yes	no	98	78
+8	km3	4	garchomp_meowth v t-sceptile	468	23100040468	ON THE BOARD	state	73	10	72	{"coin_queued_offered":[73],"coin_queued_offered_any":[73]}				yes	no	no	78	78
+8	km3	4	garchomp_meowth v t-sceptile	469	23100040469	ON THE BOARD	state	47	5	46	{"coin_queued_offered":[47],"coin_queued_offered_any":[47]}				yes	no	no	68	67
+8	km3	4	garchomp_meowth v t-sceptile	472	23100040472	ON THE BOARD	state	59	8	58	{"coin_queued_offered":[59],"coin_queued_offered_any":[59]}				yes	no	no	71	84
+8	km3	4	garchomp_meowth v t-sceptile	474	23100040474	ON THE BOARD	state	57	8	56	{"coin_queued_offered":[57],"coin_queued_offered_any":[57]}				yes	no	no	105	102
+8	km3	4	garchomp_meowth v t-sceptile	476	23100040476	ON THE BOARD	state	67	8	66	{"coin_queued_offered":[67],"coin_queued_offered_any":[67]}				yes	no	no	69	89
+8	km3	4	garchomp_meowth v t-sceptile	478	23100040478	LOOKAHEAD ONLY, both halves hold	lookahead	59	8	59			queued=2 cut=None free=false	built=None		no	no	77	127
+8	km3	4	garchomp_meowth v t-sceptile	480	23100040480	ON THE BOARD	state	32	4	31	{"coin_queued_offered":[32],"coin_queued_offered_any":[32]}				yes	no	no	59	60
+8	km3	4	garchomp_meowth v t-sceptile	482	23100040482	LOOKAHEAD ONLY, both halves hold	lookahead	34	5	34			queued=2 cut=None free=false	built=None		yes	yes	87	103
+8	km3	4	garchomp_meowth v t-sceptile	484	23100040484	LOOKAHEAD ONLY, both halves hold	lookahead	56	8	56		{"coin_queued_offered":[59],"coin_queued_offered_any":[59]}	queued=3 cut=None free=true	built=None		no	no	110	115
+8	km3	4	garchomp_meowth v t-sceptile	486	23100040486	ON THE BOARD	state	85	12	84	{"coin_queued_offered":[85],"coin_queued_offered_any":[85]}				yes	no	no	100	100
+8	km3	4	garchomp_meowth v t-sceptile	488	23100040488	ON THE BOARD	state	27	4	26	{"coin_queued_offered":[27],"coin_queued_offered_any":[27]}				yes	no	no	35	35
+8	km3	4	garchomp_meowth v t-sceptile	489	23100040489	LOOKAHEAD ONLY, both halves hold	lookahead	49	7	49		{"coin_queued_offered":[54],"coin_queued_offered_any":[54]}	queued=3 cut=None free=true	built=None		no	no	56	56
+8	km3	4	garchomp_meowth v t-sceptile	490	23100040490	ON THE BOARD	state	29	4	28	{"coin_queued_offered":[29],"coin_queued_offered_any":[29]}				yes	no	no	64	77
+8	km3	4	garchomp_meowth v t-sceptile	492	23100040492	ON THE BOARD	state	81	11	80	{"coin_queued_offered":[81],"coin_queued_offered_any":[81]}				yes	no	no	97	97
+8	km3	4	garchomp_meowth v t-sceptile	494	23100040494	ON THE BOARD	state	29	4	28	{"coin_queued_offered":[29],"coin_queued_offered_any":[29]}				yes	no	no	76	76
+8	km3	4	garchomp_meowth v t-sceptile	497	23100040497	ON THE BOARD	state	41	5	40	{"coin_queued_offered":[41],"coin_queued_offered_any":[41]}				yes	no	no	90	69
+8	km3	4	garchomp_meowth v t-sceptile	498	23100040498	ON THE BOARD	state	77	9	76	{"coin_queued_offered":[77],"coin_queued_offered_any":[77]}				yes	no	no	79	109
 8	k3	4	garchomp_meowth v t-sceptile	1	23100040001	ON THE BOARD	state	37	4	36	{"coin_queued_offered":[37],"coin_queued_offered_any":[37]}				yes	no	no	86	104
 8	k3	4	garchomp_meowth v t-sceptile	6	23100040006	LOOKAHEAD ONLY, both halves hold	lookahead	50	7	50			queued=2 cut=None free=false	built=None		no	no	86	93
 8	k3	4	garchomp_meowth v t-sceptile	7	23100040007	UNEXPLAINED	lookahead	95	13	95			queued=None cut=None free=false	built=None		no	no	102	102

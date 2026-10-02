@@ -2,12 +2,19 @@
 
 Written Sept 30 for the Fable coordinator session (Dustin's single delegator). Times are UTC.
 
-## STOP (step 8c, Oct 2 01:51 UTC): UNEXPLAINED games found
+## STOP (step 8c, from Oct 2 01:51 UTC): UNEXPLAINED games found
 
-The cloud's step 8c traces (`rl/results/engine_switch_rules_2026-10/trace_8c_cloud/`) have so far found 2 changed games that `tightened_rule.py` cannot explain. PLAN.md: this stops the switch until they are resolved.
-- **step 8, k3, pairing 4 (garchomp_meowth v t-sceptile), deal 7:** a lookahead difference at tick 95 (turn 13); no reach counter in its window or later in the turn; neither probe finds a repair's gate within 3 plies.
-- **step 8, km3, pairing 1 (garchomp_meowth v t-blaziken), deal 399:** a lookahead difference at tick 81 (turn 13); the same.
-- Both traces reproduce their hand-off rows (move fingerprints equal). The run continues over every remaining game, so the full list is known; this section is updated as more are found. Next: a by-hand look at each (what differs at the tick, and why the probes find nothing).
+The cloud's step 8c traces (`rl/results/engine_switch_rules_2026-10/trace_8c_cloud/`, `summary.txt` there for the running count) find changed games that `tightened_rule.py` with the accepted probes cannot explain. PLAN.md: this stops the switch until they are resolved. The run continues over every remaining game, and this section is updated at each push.
+- **So far 4 unexplained, all in garchomp_meowth v t-blaziken or t-sceptile, and all the same shape:**
+  - step 8 km3, pairing 1, deal 399, tick 81;
+  - step 8 k3, pairing 4, deal 7, tick 95;
+  - step 8 km3, pairing 4, deal 7, tick 84;
+  - step 8 km3, pairing 4, deal 360, tick 57.
+  - Garchomp's Land Crush knocks out the Active, and the knocked-out side's Promote is the first difference: R promotes Heatmor or Grovyle, the old engine another Pokémon, with Meowth (Carefree Steps) on the other Bench. Both traces reproduce their rows.
+- **Why the accepted probe can't explain them (by hand):** `coin_probe.rs` stops at any state where the opponent is to move, so it never looks past the end of the opponent's turn. The bots do (`expectiminimax_player.rs` at R, 630-655: a forced EndTurn is resolved without a ply, before the turn-boundary cutoffs at 773 and 914). km3 and k3 make this Promote with depth 3, and their search goes Promote, the forced EndTurn (no ply), the next turn's draw, Tongue Whip or Slicing Snipe, then the queued coin-path choice at Meowth, in a frame of only queued choices, which is priced even at depth 0 (660).
+- **A scratch variant of `coin_probe`** that resolves the opponent's forced continuations without a ply, exactly as the bots do (`make_coin_probe_xturn.py`; not the accepted probe), finds that gate in all four: "queued after 3, a pure frame". Its agreement check and controls are being run.
+- **Ruling needed (coordinator / Dustin):** whether that by-hand reading, or the variant, may count as the second half for these games. Until then they stay UNEXPLAINED and the stop stands.
+- **Also 1 needing a judgment so far:** km3 pairing 4, deal 106: coin_probe finds the queued choice only at the leaf, in a mixed frame (`judgment.md`).
 
 1. **Current task, and the instruction that set it.** Step 8c of the rules switch (Fable via Dustin, Oct 1 evening; see the last log line). The card-text job (Will, the audit, Trap Territory) waits until it is done. The Oct 1 jobs before it are done:
    - **PLAN step 8b's early-warning rows** (3a107f4, `rl/results/engine_switch_rules_2026-10/early_warning_8b/README.md`), on a scratch build of R (f8cfa9c, engine tree 38af8b0, the laptop's candidate's):
