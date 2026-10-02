@@ -53,7 +53,7 @@ impl Player for Recording {
                 serde_json::json!({
                     "turn": report.turn, "seat": report.actor, "rounds": report.rounds, "ms": report.millis.round(),
                     "km_move": report.candidates[report.km3].label, "chosen": report.candidates[report.chosen].label,
-                    "reason": report.reason,
+                    "reason": report.reason, "lists": report.lists, "failed_rounds": report.failed_rounds,
                     "candidates": report.candidates.iter().map(|c| serde_json::json!({
                         "move": c.label, "score": c.score, "diff": c.diff, "se": if c.se.is_finite() { c.se } else { -1.0 }
                     })).collect::<Vec<_>>(),

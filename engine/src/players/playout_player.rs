@@ -159,6 +159,8 @@ pub struct DecisionReport {
     pub rounds: usize,
     /// Rounds dropped because a play-out in them failed (an engine panic); the rest stay paired.
     pub failed_rounds: usize,
+    /// The opponent lists the rounds drew, with how many rounds drew each (REALISTIC; LAB: the exact list).
+    pub lists: BTreeMap<String, usize>,
     pub millis: f64,
 }
 
@@ -372,6 +374,7 @@ impl PlayoutPlayer {
             reason: String::new(),
             rounds: 0,
             failed_rounds: 0,
+            lists: BTreeMap::new(),
             millis: 0.0,
         };
         let opponent = 1 - me;
@@ -435,18 +438,21 @@ impl PlayoutPlayer {
             let to = if self.params.budget_ms == 0 { total } else { (from + threads).min(total) };
             next = to;
             // A play-out that panics (an engine bug in a sampled world) drops its whole round, so the rest stay paired.
-            let batch: Vec<Option<Vec<f64>>> = (from..to)
+            let batch: Vec<Option<(Vec<f64>, String)>> = (from..to)
                 .into_par_iter()
                 .map(|j| {
                     std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
-                        let (world, list, _, seed) = sample(j);
-                        candidates.iter().map(|a| core.playout(&world, &list, me, a, seed)).collect::<Vec<f64>>()
+                        let (world, list, name, seed) = sample(j);
+                        (candidates.iter().map(|a| core.playout(&world, &list, me, a, seed)).collect::<Vec<f64>>(), name)
                     }))
                     .ok()
                 })
                 .collect();
             report.failed_rounds += batch.iter().filter(|r| r.is_none()).count();
-            results.extend(batch.into_iter().flatten());
+            for (round, name) in batch.into_iter().flatten() {
+                *report.lists.entry(name).or_default() += 1;
+                results.push(round);
+            }
             if self.params.budget_ms > 0
                 && results.len() >= 2
                 && start.elapsed().as_millis() as u64 >= self.params.budget_ms
@@ -508,6 +514,7 @@ impl PlayoutPlayer {
             "seat": report.actor,
             "rounds": report.rounds,
             "failed_rounds": report.failed_rounds,
+            "lists": report.lists,
             "ms": (report.millis * 10.0).round() / 10.0,
             "km_move": report.candidates[report.km3].label,
             "chosen": report.candidates[report.chosen].label,
