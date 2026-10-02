@@ -1,0 +1,6 @@
+{
+ "_note": "The held-out group: decks never used in development. A development run refuses any deck listed here, on either side, while locked is true. Nobody flips `locked` to false until the laptop Opus or the coordinator says so (record who and when in `unlocked_by`). The list is empty until the design names the group.",
+ "locked": true,
+ "unlocked_by": null,
+ "decks": []
+}
