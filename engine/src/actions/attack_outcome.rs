@@ -761,9 +761,11 @@ impl AttackOutcomes {
         Self { branches }
     }
 
-    /// Apply the defender's "if this Pokémon would be Knocked Out by damage from an attack,
-    /// flip a coin; if heads, it is not Knocked Out and its remaining HP becomes 10" ability
-    /// (e.g. Ursaluna's Guts) to each opponent in-play slot in `guts_indices`.
+    /// Apply the "if this Pokémon would be Knocked Out by damage from an attack, flip a coin; if
+    /// heads, it is not Knocked Out and its remaining HP becomes 10" ability (e.g. Ursaluna's Guts)
+    /// to each in-play slot in `guts_slots`, as (is the opponent's, in-play index): the opponent's,
+    /// or the attacker's own hit by its own attack (the text has no "your opponent's"; the card-text
+    /// follow-up, Oct 2, TEXT_AUDIT.md E1).
     ///
     /// The ability applies independently to each such Pokémon, and only in branches where the
     /// (modified) damage it takes would knock it out. Each such branch is split into `2^k`
@@ -781,29 +783,30 @@ impl AttackOutcomes {
         acting_player: usize,
         attack_name: Option<&str>,
         attack_effect: Option<&str>,
-        guts_indices: &[usize],
+        guts_slots: &[(bool, usize)],
     ) -> Self {
         let opponent = (acting_player + 1) % 2;
         let mut branches = vec![];
         for branch in self.branches {
             // Only the Guts Pokémon that would be knocked out by this branch's damage flip a coin.
-            let flipping: Vec<usize> = guts_indices
+            let flipping: Vec<(bool, usize)> = guts_slots
                 .iter()
                 .copied()
-                .filter(|target_idx| {
+                .filter(|(target_side, target_idx)| {
                     let raw_total: u32 = branch
                         .outcome
                         .damage
                         .iter()
-                        .filter(|(_, is_opponent, idx)| *is_opponent && idx == target_idx)
+                        .filter(|(_, is_opponent, idx)| is_opponent == target_side && idx == target_idx)
                         .map(|(amount, _, _)| *amount)
                         .sum();
+                    let target_player = if *target_side { opponent } else { acting_player };
                     with_heads_coin_cuts(branch.outcome.resolved_heads_coin_cuts(acting_player), || {
                         guts_would_flip(
                             state,
                             (acting_player, 0),
                             raw_total,
-                            (opponent, *target_idx),
+                            (target_player, *target_idx),
                             true,
                             DamageModifierContext {
                                 attack_name,
@@ -823,19 +826,20 @@ impl AttackOutcomes {
             let sub_probability = branch.probability / combos as f64;
             for mask in 0..combos {
                 // The subset of flipping Pokémon whose coin came up heads (survive at 10 HP).
-                let survivors: Vec<usize> = flipping
+                let survivors: Vec<(bool, usize)> = flipping
                     .iter()
                     .enumerate()
                     .filter(|(bit, _)| (mask >> bit) & 1 == 1)
-                    .map(|(_, idx)| *idx)
+                    .map(|(_, slot)| *slot)
                     .collect();
                 let mut outcome = branch.outcome.clone();
                 if !survivors.is_empty() {
                     let previous_post = outcome.post_damage_effect.take();
                     outcome.post_damage_effect = Some(Rc::new(move |rng, state, action| {
                         let opponent = (action.actor + 1) % 2;
-                        for idx in &survivors {
-                            if let Some(pokemon) = state.in_play_pokemon[opponent][*idx].as_mut() {
+                        for (is_opponent, idx) in &survivors {
+                            let player = if *is_opponent { opponent } else { action.actor };
+                            if let Some(pokemon) = state.in_play_pokemon[player][*idx].as_mut() {
                                 pokemon.set_remaining_hp(10);
                             }
                         }
@@ -1217,8 +1221,9 @@ impl AttackOutcomes {
 }
 
 /// Whether `raw_total` (after damage modifiers) would knock out the Pokémon at `target`, forecast
-/// against the pre-attack board. Shared by the on-knockout coin-flip splits.
-fn would_knock_out(
+/// against the pre-attack board. Shared by the on-knockout coin-flip splits, and by Perish Body on
+/// an attack's queued damage (`apply_action.rs`).
+pub(crate) fn would_knock_out(
     state: &State,
     acting_player: usize,
     target: (usize, usize),
@@ -1619,7 +1624,7 @@ mod tests {
             .split_with_damage_prevention(&[(true, 0, 80)])
             .all_branches_have_coin_paths());
         assert!(base()
-            .split_with_guts_survival(&state, 0, Some("Continuous Steps"), None, &[0])
+            .split_with_guts_survival(&state, 0, Some("Continuous Steps"), None, &[(true, 0)])
             .all_branches_have_coin_paths());
         assert!(base()
             .split_with_point_denial(&state, 0, Some("Continuous Steps"), None, &[0])

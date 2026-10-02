@@ -37,6 +37,15 @@ fn luxury_coin_source(state: &State, actor: usize) -> Option<usize> {
         })
 }
 
+/// Luxury Coin covers "coins for an effect of your Trainer cards", and a Stadium is the Trainer card
+/// of the player who played it: the opponent's Stadium is not covered (the card-text follow-up,
+/// Oct 2; TEXT_AUDIT.md A6b). A Stadium with no recorded player (a board set up without playing
+/// it) stays covered, as before.
+fn luxury_coin_covers(state: &State, action: &Action) -> bool {
+    !matches!(action.action, SimpleAction::UseStadium)
+        || state.active_stadium_owner != Some((action.actor + 1) % 2)
+}
+
 fn producer_id(route: &TrainerCoinEffectRoute) -> CardId {
     CardId::from_card_id(&route.effect_trainer().id)
         .expect("a resolved Trainer source must have a known CardId")
@@ -602,6 +611,9 @@ pub(crate) fn try_sample_entry_actual(
     action: &Action,
 ) -> Option<Mutation> {
     let source_idx = luxury_coin_source(state, action.actor)?;
+    if !luxury_coin_covers(state, action) {
+        return None;
+    }
     let route = match &action.action {
         SimpleAction::Play { trainer_card } if trainer_card.name == "Penny" => {
             let candidates = penny_candidates(state, 1 - action.actor);
@@ -830,6 +842,9 @@ pub(crate) fn try_forecast_entry(
     let Some(source_idx) = luxury_coin_source(state, action.actor) else {
         return Ok(None);
     };
+    if !luxury_coin_covers(state, action) {
+        return Ok(None);
+    }
     match &action.action {
         SimpleAction::Play { trainer_card } if trainer_card.name == "Penny" => {
             search_penny_entry(state, action, source_idx, trainer_card).map(Some)

@@ -845,7 +845,12 @@ fn forecast_apply_damage(
 /// `forecast_apply_damage` once the coin-flip damage Abilities' coins are settled: `cuts` are the
 /// finite heads cuts in force for this damage. Each target that has the Guts ability and would be
 /// knocked out flips its own survival coin, independently of any Guts flip already resolved
-/// earlier in the same attack.
+/// earlier in the same attack. An attack's queued hit that would Knock Out the opponent's Active
+/// Galarian Cursola flips its Perish Body coin ("If this Pokémon is in the Active Spot and is
+/// Knocked Out by damage from an attack from your opponent's Pokémon, flip a coin. If heads, the
+/// Attacking Pokémon is Knocked Out."), as the attack's own outcome does (the card-text follow-up,
+/// Oct 2; TEXT_AUDIT.md E2): on heads the attacker is Knocked Out after the retaliation, before
+/// the knockouts resolve.
 fn forecast_apply_damage_after_coins(
     state: &State,
     attacking_ref: (usize, usize),
@@ -853,12 +858,30 @@ fn forecast_apply_damage_after_coins(
     cuts: Vec<((usize, usize), u32)>,
     is_from_active_attack: bool,
 ) -> Outcomes {
-    use super::attack_outcome::with_heads_coin_cuts;
+    use super::attack_outcome::{apply_perish_body_retaliation, with_heads_coin_cuts, would_knock_out};
     // Sum raw damage per target (mirroring handle_damage_only) to find the Guts coin flips.
     let mut damage_map: HashMap<(usize, usize), u32> = HashMap::new();
     for (damage, player, idx) in &targets {
         *damage_map.entry((*player, *idx)).or_insert(0) += damage;
     }
+    let defender = (attacking_ref.0 + 1) % 2;
+    let perish_body = is_from_active_attack
+        && state.in_play_pokemon[defender][0].as_ref().is_some_and(|pokemon| {
+            matches!(
+                get_in_play_ability_mechanic(state, pokemon),
+                Some(AbilityMechanic::CoinFlipToKnockOutAttackerOnKnockout)
+            )
+        })
+        && with_heads_coin_cuts(cuts.clone(), || {
+            would_knock_out(
+                state,
+                attacking_ref.0,
+                (defender, 0),
+                damage_map.get(&(defender, 0)).copied().unwrap_or(0),
+                None,
+                None,
+            )
+        });
     let flipping: Vec<(usize, usize)> = damage_map
         .into_iter()
         .filter(|(target, raw_total)| {
@@ -879,7 +902,7 @@ fn forecast_apply_damage_after_coins(
         .map(|(target, _)| target)
         .collect();
 
-    if flipping.is_empty() {
+    if flipping.is_empty() && !perish_body {
         return Outcomes::single_fn(move |_, state, _| {
             with_heads_coin_cuts(cuts.clone(), || {
                 handle_damage(state, attacking_ref, &targets, is_from_active_attack, None);
@@ -887,41 +910,48 @@ fn forecast_apply_damage_after_coins(
         });
     }
 
-    // One branch per heads/tails combination; on heads the damage still applies (so on-damage
-    // triggers fire) and the survivor's remaining HP is set to 10 before knockouts resolve.
+    // One branch per heads/tails combination; on a Guts heads the damage still applies (so
+    // on-damage triggers fire) and the survivor's remaining HP is set to 10 before knockouts
+    // resolve. Perish Body's coin, if any, doubles the branches.
     let combos = 1usize << flipping.len();
-    let probabilities = vec![1.0 / combos as f64; combos];
+    let perish_coins: &[bool] = if perish_body { &[false, true] } else { &[false] };
+    let probabilities = vec![1.0 / (combos * perish_coins.len()) as f64; combos * perish_coins.len()];
     let mut mutations: Mutations = vec![];
     for mask in 0..combos {
-        let survivors: Vec<(usize, usize)> = flipping
-            .iter()
-            .enumerate()
-            .filter(|(bit, _)| (mask >> bit) & 1 == 1)
-            .map(|(_, target)| *target)
-            .collect();
-        let targets = targets.clone();
-        let cuts = cuts.clone();
-        mutations.push(Box::new(move |_, state, _| {
-            let damaged_actives = with_heads_coin_cuts(cuts, || {
-                handle_damage_only(
-                    state,
-                    attacking_ref,
-                    &targets,
-                    is_from_active_attack,
-                    DamageModifierContext {
-                        attack_name: None,
-                        attack_effect: None,
-                    },
-                )
-            });
-            for (player, idx) in &survivors {
-                if let Some(pokemon) = state.in_play_pokemon[*player][*idx].as_mut() {
-                    pokemon.set_remaining_hp(10);
+        for &perish_heads in perish_coins {
+            let survivors: Vec<(usize, usize)> = flipping
+                .iter()
+                .enumerate()
+                .filter(|(bit, _)| (mask >> bit) & 1 == 1)
+                .map(|(_, target)| *target)
+                .collect();
+            let targets = targets.clone();
+            let cuts = cuts.clone();
+            mutations.push(Box::new(move |_, state, _| {
+                let damaged_actives = with_heads_coin_cuts(cuts, || {
+                    handle_damage_only(
+                        state,
+                        attacking_ref,
+                        &targets,
+                        is_from_active_attack,
+                        DamageModifierContext {
+                            attack_name: None,
+                            attack_effect: None,
+                        },
+                    )
+                });
+                for (player, idx) in &survivors {
+                    if let Some(pokemon) = state.in_play_pokemon[*player][*idx].as_mut() {
+                        pokemon.set_remaining_hp(10);
+                    }
                 }
-            }
-            super::apply_action_helpers::handle_attack_retaliation(state, attacking_ref, &damaged_actives);
-            handle_knockouts(state, attacking_ref, is_from_active_attack);
-        }));
+                super::apply_action_helpers::handle_attack_retaliation(state, attacking_ref, &damaged_actives);
+                if perish_heads {
+                    apply_perish_body_retaliation(state, attacking_ref, &damaged_actives);
+                }
+                handle_knockouts(state, attacking_ref, is_from_active_attack);
+            }));
+        }
     }
     Outcomes::from_parts(probabilities, mutations)
 }

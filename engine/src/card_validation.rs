@@ -94,7 +94,8 @@ pub fn implementation_limitations(card_id: CardId) -> &'static [&'static str] {
             "Owner-approved assumption, not verified in Pokémon TCG Pocket: duplicate Lum Berries resolve sequentially; the first cure removes all Special Conditions, so later copies remain attached.",
         ],
         CardId::B3025Victini | CardId::PB049Victini => &[
-            "Victory Star supports printed attack-effect coin batches. After a Confusion heads the attack's own coins are offered for a reroll, with no second Confusion check (rules/04 §9, seen in Pocket Sept 29). Still unverified in Pocket, and left on the legacy resolution with no reroll prompt: Victory Star with CoinFlipToBlockAttack, and with Confusion while a Will is pending.",
+            "Victory Star supports printed attack-effect coin batches. The gate coins come first and are never offered for a reroll: Confusion (rules/04 §9, seen in Pocket Sept 29) and a block coin (\"if the Defending Pokémon tries to use an attack, your opponent flips a coin\"; Victory Star covers only \"coins for an attack of 1 of your [R] Pokémon\", TEXT_AUDIT.md A1). After their heads the attack's own coins are offered, with no second gate coin. A pending Will goes to a block coin when there is one (flipped for the effect of an attack), otherwise to the attack's own first coin (Recording_QA 210403), and a reroll is a fresh batch it does not touch (203626).",
+            "Still open, decided by no card text: which of the Confusion coin and a block coin comes first when both apply (nothing visible depends on it). The block coin's not being offered rests on the plain reading of Victory Star's text; a recording of shot row victory-star-block-coin would confirm it.",
         ],
         CardId::B4a051Gholdengo | CardId::B4a109Gholdengo => &[
             "Provisional engine convention, not verified in Pokémon TCG Pocket: complete Trainer coin batches are public while Luxury Coin is pending.",

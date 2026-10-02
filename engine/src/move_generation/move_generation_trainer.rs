@@ -62,7 +62,11 @@ pub fn generate_possible_trainer_actions(
     if trainer_card.trainer_card_type == TrainerType::Supporter && !can_play_support(state) {
         return cannot_play_trainer(); // dont even check which type it is
     }
-    if trainer_card.trainer_card_type == TrainerType::Item && !can_play_item(state) {
+    // A Fossil's printed type is Item, so an Item lock stops it too ("they can't play any Item
+    // cards from their hand"; the card-text follow-up, Oct 2; rules/04 §6).
+    if matches!(trainer_card.trainer_card_type, TrainerType::Item | TrainerType::Fossil)
+        && !can_play_item(state)
+    {
         return cannot_play_trainer(); // cant play item cards
     }
 

@@ -452,19 +452,29 @@ fn apply_defender_guts_if_needed(
     attack: &Attack,
     outcomes: AttackOutcomes,
 ) -> AttackOutcomes {
+    // The opponent's Guts Pokémon, and the attacker's own hit by its own attack (Earthquake and the
+    // like): "If this Pokémon would be Knocked Out by damage from an attack" has no "your
+    // opponent's" (the card-text follow-up, Oct 2; TEXT_AUDIT.md E1).
     let opponent = (acting_player + 1) % 2;
-    let guts_indices: Vec<usize> = state
+    let has_guts = |pokemon: &PlayedCard| {
+        matches!(
+            get_in_play_ability_mechanic(state, pokemon),
+            Some(AbilityMechanic::CoinFlipToSurviveKnockOut)
+        )
+    };
+    let guts_slots: Vec<(bool, usize)> = state
         .enumerate_in_play_pokemon(opponent)
-        .filter(|(_, pokemon)| {
-            matches!(
-                get_in_play_ability_mechanic(state, pokemon),
-                Some(AbilityMechanic::CoinFlipToSurviveKnockOut)
-            )
-        })
-        .map(|(idx, _)| idx)
+        .filter(|(_, pokemon)| has_guts(pokemon))
+        .map(|(idx, _)| (true, idx))
+        .chain(
+            state
+                .enumerate_in_play_pokemon(acting_player)
+                .filter(|(_, pokemon)| has_guts(pokemon))
+                .map(|(idx, _)| (false, idx)),
+        )
         .collect();
 
-    if guts_indices.is_empty() {
+    if guts_slots.is_empty() {
         return outcomes;
     }
     outcomes.split_with_guts_survival(
@@ -472,7 +482,7 @@ fn apply_defender_guts_if_needed(
         acting_player,
         Some(&attack.title),
         attack.effect.as_deref(),
-        &guts_indices,
+        &guts_slots,
     )
 }
 
