@@ -1,6 +1,10 @@
 # Draft B: Tide Heal (Water, no ex)
 
-Draft, not run, not a ranking. List: `draft-B-tide-heal.txt`. Written Oct 1, 2026 by the Sonnet session "Opus agents progress".
+**SET ASIDE (Oct 2).** This draft met its own stopping condition (see "What would make me drop it" below): its floor page has it at 34 wins
+of 240 against Lucario (14%), under the 30% line, and 236 of 1,920 overall (a fail, `rl/results/floor_drafts_2026-10-02/`). It is kept, not
+deleted, and not to be played. The list below is the Oct 1 text, unchanged.
+
+Draft, not a ranking. List: `draft-B-tide-heal.txt`. Written Oct 1, 2026 by the Sonnet session "Opus agents progress".
 This is the weakest-evidenced of the four; it is here because it is the one built around the Lucario list's design.
 
 ## The list (Water energy)

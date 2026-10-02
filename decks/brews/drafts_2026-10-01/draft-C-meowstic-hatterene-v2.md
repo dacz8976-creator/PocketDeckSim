@@ -1,6 +1,7 @@
 # Draft C: Meowstic / Hatterene v2 (Psychic, no ex)
 
-Draft, not run, not a ranking. List: `draft-C-meowstic-hatterene-v2.txt`. Written Oct 1, 2026 by the Sonnet session "Opus agents
+Draft, not a ranking (Oct 2: its floor page is borderline, 366 of 1,920, provisional because Hatterene's role is the default; Hatterene's 140 is
+priced at its printed 70, see the README). List: `draft-C-meowstic-hatterene-v2.txt`. Written Oct 1, 2026 by the Sonnet session "Opus agents
 progress". This is Dustin's brew 05b with the edits his own game notes asked for.
 
 ## The list (Psychic energy)
