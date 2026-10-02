@@ -122,3 +122,54 @@ this way when its effect changes the damage and its mechanic is not one of the 3
 (`estimated_attack_damage_ex`, `engine/src/players/value_functions.rs`) prices; `ExtraDamageIfDefenderStatus` appears nowhere in
 `engine/src/players/`. So the bot's damage estimate, which it uses when it scores a position, counts Mental Crush at 70 even into a Confused Active. The game itself, and any attack the search actually plays out, deals the 140: the engine maps
 the text to `ExtraDamageIfDefenderStatus { status: Confused, extra_damage: 70 }` (`engine/src/actions/effect_mechanic_map.rs`).
+
+## Addendum, Oct 2 afternoon: floor.py's ATTACKERS change
+
+Added Oct 2, about 19:05 UTC, by a Claude Code subagent (Opus 5.5) on a job from the coordinator. Nothing above was changed, and
+nothing is committed by this job. The numbers side by side are in READOUT.md under the same heading.
+
+**What changed and why.** Astra's review (Oct 2): draft A's failure-modes table tracked Alolan Ninetales ex, the fallback's pick
+(highest printed damage, Binding Snow 80), not the deck's centerpiece Mega Sharpedo ex (Turbo Shark 70). Sonnet's 5678b63,
+integrated at 9e139e6, adds an ATTACKERS table to floor.py, read before the fallback; its only entry is draft A, Mega Sharpedo ex.
+floor.py's sha256 is now `763278659ea9a1ac7983c9cd2da2ff5f1f2c1e96468818cb84b29c106bb4b1e0` (it was `8e5395e6…`, above). By the
+code, ATTACKERS feeds only the failure-modes table's main-attacker columns. The draft D amendment came in the same commit: one Mega
+Houndoom ex instead of two, plus a Copycat (`draft-D-entei-grimhound.txt`, sha256
+`31035755a6d09148a709dd9d869625b7e588f13d0150cac99a9c58ef5469be6f`).
+
+**What was run** (floor.py's own call with its defaults: km3 on both sides, the official engine main-8626a35, 240 games per
+matchup, seed 7,100; one after another, never in parallel, at `nice -n 10`; repository at 9e139e6, its inputs clean; the engine,
+goldfish and draft A hashes and the other inputs' the same as above, the panel lists' the same as in `run.log`; the engine,
+goldfish, floor.py and draft hashes checked before the first game):
+1. **The Payback check again**, because a change that redefines the floor needs it; this one is meant not to. brew 06 and brew 06b,
+   18:47-18:54 UTC (208 and 207 s), into the job's scratch folder (outside the repository), every output compared byte for byte
+   with `../floor_recheck_2026-10/` (same engine, the old floor.py). **Result: all six files byte-equal** (brew 06 fail, 125
+   wins; brew 06b fail, 262), sha256 in READOUT.md and in `payback_equality.log`. The pages don't print floor.py's own sha256.
+   Runner: `run_payback_equality.sh`.
+2. **Draft A again**, into `draft-A_attackers-sharpedo/`, 18:54-18:58 UTC (189 s). Equal to this morning's page: the verdict
+   (clears), 950 wins, every matchup, the flagged row, the coverage file (byte-equal). The page differs on three lines: the two
+   failure-mode rows and the "Main attackers" line, which now names Mega Sharpedo ex. Went first, could attack by turn 2 / 3 / 4:
+   0% / 34% / 48% with Ninetales, 18% / 32% / 52% with Sharpedo; went second: 15% / 32% / 47%, now 24% / 40% / 50% (every
+   column, old and new, is in READOUT.md). The games file is not byte-equal: each game's `could`, `did` and `conceded` fields are
+   the main-attacker measures and differ in 1,721 of 1,920 records; with those three fields left out the files are the same text
+   (`draft-A_attackers-sharpedo/compare_with_oct2.txt`, made by `compare_with_oct2.py`).
+3. **Amended draft D, a first page**, into `draft-D_amended/`, 18:58-19:02 UTC (232 s). Victini has floor.py's default role; the
+   passive-role variant was not run. **Verdict as printed: clears the floor, 597 wins in 1920 (31.09%).** Weakest: Suicune 34/240
+   = 14%, Weezing 46/240 = 19%, Blaziken 59/240 = 25% (Hydreigon 61/240 also 25%). Coverage flag: Victini (B3 025), attacker,
+   default from the flag, 916 of 1064 (86.1%). Provisional: no (it clears). Main attacker for the failure modes: Mega Houndoom ex
+   (fallback). Beside it: the two-copy draft D page, clears, 693 (36.09%); the cousin brew 08, clears, 1067 (55.57%), Sept 30
+   engine.
+
+Steps 2 and 3 ran from `run_addendum.sh` (log `run_addendum.log`); floor.py's sha256 was checked again after the runs, unchanged.
+
+**Files written by this addendum** (sha256):
+- `draft-A_attackers-sharpedo/draft-A-shark-tempo.md` `eefa68ffc332ad8c3b7f805cb53e2ab6a1496127d02bcf8c0da5dca6081d524f`
+  (this morning's page: `4244ada0eda85cecfe970cd0f54e5450a1fae5fcc6e6a9f74aa580bcd9e9f071`)
+- `draft-A_attackers-sharpedo/draft-A-shark-tempo_coverage.json` `942a530a7436f3442ee1c46fb101b6a836ca089fdd36b80cf691704ea3d44d1b`
+  (byte-equal to this morning's)
+- `draft-A_attackers-sharpedo/draft-A-shark-tempo_games.jsonl` `cc46448e0a045bb7dd7bee725e9a4fb8132c20099dc50a292463c4e34777344a`
+  (this morning's: `4300e9ca548c10f9cb2d0592622856d0a0cbbefba28b834ea4a9f7b9723fa5e9`)
+- `draft-A_attackers-sharpedo/compare_with_oct2.py`, `compare_with_oct2.txt`
+- `draft-D_amended/draft-D-entei-grimhound.md` `fcc6714d30fec78b06922885fa99a87a0cdca329ad6c04cbad9ffc4e06e01709`
+- `draft-D_amended/draft-D-entei-grimhound_coverage.json` `3d2d217b2fc4bb59498ee5eed8963b15897ebd373413ed3baea97c42669ee239`
+- `draft-D_amended/draft-D-entei-grimhound_games.jsonl` `df7c7a0721f1e1757274d39aec09e734bd23ed86701d2999b3cf31e4de06173e`
+- `run_payback_equality.sh`, `payback_equality.log`, `run_addendum.sh`, `run_addendum.log`; this section and READOUT.md's.
