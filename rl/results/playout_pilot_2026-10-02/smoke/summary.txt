@@ -1,0 +1,51 @@
+games: 40 (pilot kx3 v km3; the same deals km3 v km3), deals 20
+  all: 40 games; pilot 0.875, km3 on the same deals 0.850; paired difference +0.025 ± 0.111 (95%)
+  pilot in seat 0: 20 games; pilot 0.900, km3 on the same deals 0.800; paired difference +0.100 ± 0.196 (95%)
+  pilot in seat 1: 20 games; pilot 0.850, km3 on the same deals 0.900; paired difference -0.050 ± 0.098 (95%)
+deals whose result differs between the arms: 5: seed 24200000005 seat 0: pilot 1, km3 0 (changed 1); seed 24200000006 seat 1: pilot 0, km3 1 (changed 1); seed 24200000007 seat 0: pilot 0, km3 1 (changed 3); seed 24200000010 seat 0: pilot 1, km3 0 (changed 2); seed 24200000019 seat 0: pilot 1, km3 0 (changed 2)
+games with at least one changed decision: 21; of these, same result as km3's game: 16
+
+decisions asked of the pilot: 1120; with play-outs 1097; without 23 (km's move kept with no play-out); changed from km3's move 31 (2.8% of those with play-outs)
+ms per decision with play-outs: mean 7417, median 6217, p95 17599, max 32001
+ms per decision of any kind (from the games' means): 7265
+seconds per pilot game, all: mean 203.6, median 175.5, max 380.7; decisions per game 28.0; turns per game 14.0
+seconds per pilot game, seat 0: mean 218.5, median 213.3, max 380.7; decisions per game 29.6; turns per game 15.1
+seconds per pilot game, seat 1: mean 188.8, median 160.5, max 334.1; decisions per game 26.4; turns per game 12.9
+
+candidates per decision with play-outs: mean 5.3, median 5, max 12; decisions at the cap (with drops) 3, moves dropped 3
+play-out rounds: 17552, failed (dropped) 0
+opponent lists the rounds drew (the smoke's real opponent list, example_decks/weezing-arbok.txt, is not in the pool): t-altaria (closest; no list consistent) 85.2%, t-lucario (closest; no list consistent) 9.6%, t-vespiquen (closest; no list consistent) 4.4%, t-vespiquen (1 of 16 consistent) 0.1%, research/altaria (1 of 16 consistent) 0.1%, research/hydreigon (1 of 16 consistent) 0.1%, research/sceptile (1 of 16 consistent) 0.1%, research/blaziken (1 of 16 consistent) 0.1%, t-altaria (1 of 16 consistent) 0.1%, t-sceptile (1 of 16 consistent) 0.1%, research/suicune (1 of 16 consistent) 0.1%, research/lucario (1 of 16 consistent) 0.1%, t-hydreigon (1 of 16 consistent) 0.0%, t-weezing (1 of 16 consistent) 0.0%, t-blaziken (1 of 16 consistent) 0.0%, t-suicune (1 of 16 consistent) 0.0%, research/weezing (1 of 16 consistent) 0.0%, research/vespiquen (1 of 16 consistent) 0.0%, t-lucario (1 of 16 consistent) 0.0%
+
+the changed decisions (seed, seat, turn: km3's move -> the pilot's; the lead over km3's move ± its standard error):
+  24200000001 s1 t4: Activate { player: 1, in_play_idx: 3 } -> Activate { player: 1, in_play_idx: 1 }: +0.312 ± 0.120 (3 candidates, 16 rounds)
+  24200000002 s0 t7: Place(Pokemon(A1 021 Exeggcute), 1) -> Attach { attachments: [(1, Grass, 2)], is_turn_energy: true }: +0.312 ± 0.151 (7 candidates, 16 rounds)
+  24200000002 s0 t8: Promote { player: 0, in_play_idx: 3 } -> Promote { player: 0, in_play_idx: 1 }: +0.250 ± 0.112 (3 candidates, 16 rounds)
+  24200000002 s1 t4: Evolve { evolution: Pokemon(A1 023 Exeggutor ex), in_play_idx: 0, from_deck: false } -> Play { trainer_card: P-A 002 X Speed }: +0.438 ± 0.128 (7 candidates, 16 rounds)
+  24200000003 s0 t14: Play { trainer_card: P-A 005 Poké Ball } -> Attach { attachments: [(1, Grass, 0)], is_turn_energy: true }: +0.312 ± 0.120 (6 candidates, 16 rounds)
+  24200000003 s0 t14: Place(Pokemon(A1 001 Bulbasaur), 3) -> Attack(Attack { energy_required: [Grass], title: "Tropical Swing", fixed_damage: 40, effect: Some("Flip a coin. If heads, this attack does 40 more damage.") }): +0.250 ± 0.112 (5 candidates, 16 rounds)
+  24200000003 s0 t16: Attach { attachments: [(1, Grass, 2)], is_turn_energy: true } -> EndTurn: +0.250 ± 0.112 (5 candidates, 16 rounds)
+  24200000003 s0 t18: Retreat(2) -> Attach { attachments: [(1, Grass, 3)], is_turn_energy: true }: +0.500 ± 0.129 (8 candidates, 16 rounds)
+  24200000005 s0 t3: Attach { attachments: [(1, Grass, 3)], is_turn_energy: true } -> Attach { attachments: [(1, Grass, 0)], is_turn_energy: true }: +0.375 ± 0.125 (4 candidates, 16 rounds)
+  24200000005 s1 t4: Evolve { evolution: Pokemon(A1 023 Exeggutor ex), in_play_idx: 0, from_deck: false } -> Attach { attachments: [(1, Grass, 3)], is_turn_energy: true }: +0.312 ± 0.120 (9 candidates, 16 rounds)
+  24200000005 s1 t7: Activate { player: 1, in_play_idx: 3 } -> Activate { player: 1, in_play_idx: 2 }: +0.312 ± 0.151 (2 candidates, 16 rounds)
+  24200000006 s0 t3: Evolve { evolution: Pokemon(A1 002 Ivysaur), in_play_idx: 2, from_deck: false } -> Attach { attachments: [(1, Grass, 2)], is_turn_energy: true }: +0.500 ± 0.129 (6 candidates, 16 rounds)
+  24200000006 s1 t8: Attack(Attack { energy_required: [Grass], title: "Tropical Swing", fixed_damage: 40, effect: Some("Flip a coin. If heads, this attack does 40 more damage.") }) -> Play { trainer_card: P-A 005 Poké Ball }: +0.250 ± 0.112 (3 candidates, 16 rounds)
+  24200000007 s0 t1: Play { trainer_card: P-A 007 Professor's Research } -> Play { trainer_card: P-A 002 X Speed }: +0.312 ± 0.151 (4 candidates, 16 rounds)
+  24200000007 s0 t7: Attach { attachments: [(1, Grass, 0)], is_turn_energy: true } -> Play { trainer_card: P-A 006 Red Card }: +0.438 ± 0.157 (6 candidates, 16 rounds)
+  24200000007 s0 t19: Play { trainer_card: P-A 007 Professor's Research } -> Attach { attachments: [(1, Grass, 0)], is_turn_energy: true }: +0.625 ± 0.125 (7 candidates, 16 rounds)
+  24200000007 s1 t2: Attach { attachments: [(1, Grass, 0)], is_turn_energy: true } -> Attach { attachments: [(1, Grass, 2)], is_turn_energy: true }: +0.312 ± 0.151 (6 candidates, 16 rounds)
+  24200000009 s0 t2: Play { trainer_card: P-A 006 Red Card } -> Attach { attachments: [(1, Grass, 0)], is_turn_energy: true }: +0.438 ± 0.128 (7 candidates, 16 rounds)
+  24200000010 s0 t16: Play { trainer_card: P-A 007 Professor's Research } -> Attach { attachments: [(1, Grass, 1)], is_turn_energy: true }: +0.250 ± 0.112 (11 candidates, 16 rounds)
+  24200000010 s0 t17: Activate { player: 0, in_play_idx: 1 } -> Activate { player: 0, in_play_idx: 3 }: +0.875 ± 0.085 (2 candidates, 16 rounds)
+  24200000010 s1 t8: Evolve { evolution: Pokemon(A1 004 Venusaur ex), in_play_idx: 1, from_deck: false } -> EndTurn: +0.375 ± 0.125 (8 candidates, 16 rounds)
+  24200000011 s0 t1: Play { trainer_card: P-A 006 Red Card } -> Play { trainer_card: P-A 002 X Speed }: +0.375 ± 0.155 (4 candidates, 16 rounds)
+  24200000011 s1 t1: Place(Pokemon(A1 001 Bulbasaur), 2) -> Retreat(3): +0.312 ± 0.151 (4 candidates, 16 rounds)
+  24200000012 s0 t1: Place(Pokemon(A1 001 Bulbasaur), 3) -> EndTurn: +0.250 ± 0.112 (4 candidates, 16 rounds)
+  24200000013 s1 t4: Play { trainer_card: A1 225 Sabrina } -> Play { trainer_card: P-A 002 X Speed }: +0.312 ± 0.151 (11 candidates, 16 rounds)
+  24200000013 s1 t4: Attack(Attack { energy_required: [Grass], title: "Seed Bomb", fixed_damage: 20, effect: None }) -> Play { trainer_card: P-A 006 Red Card }: +0.312 ± 0.120 (3 candidates, 16 rounds)
+  24200000015 s1 t4: Activate { player: 1, in_play_idx: 3 } -> Activate { player: 1, in_play_idx: 2 }: +0.500 ± 0.129 (2 candidates, 16 rounds)
+  24200000017 s0 t3: Play { trainer_card: A1 219 Erika } -> Evolve { evolution: Pokemon(A1 002 Ivysaur), in_play_idx: 0, from_deck: false }: +0.375 ± 0.125 (6 candidates, 16 rounds)
+  24200000018 s1 t8: Attach { attachments: [(1, Grass, 2)], is_turn_energy: true } -> Play { trainer_card: P-A 002 X Speed }: +0.375 ± 0.125 (7 candidates, 16 rounds)
+  24200000019 s0 t13: Evolve { evolution: Pokemon(A1 023 Exeggutor ex), in_play_idx: 1, from_deck: false } -> Retreat(1): +0.500 ± 0.129 (10 candidates, 16 rounds)
+  24200000019 s0 t15: Attach { attachments: [(1, Grass, 2)], is_turn_energy: true } -> Attach { attachments: [(1, Grass, 3)], is_turn_energy: true }: +0.469 ± 0.155 (7 candidates, 16 rounds)
+kept decisions where a rival led km3's move: 294; the rival's lead in standard errors: median 1.00, share at 1.5 or more 9.2%
