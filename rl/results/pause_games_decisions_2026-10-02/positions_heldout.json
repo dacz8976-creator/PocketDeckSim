@@ -1,0 +1,14 @@
+{
+ "locked": true,
+ "unlocked_by": null,
+ "rule": "held out iff int(sha256('pause-heldout-v1|' + game_id), 16) % 4 == 0  (game_id = the recording stem, e.g. 143837, or ladder-<stem>)",
+ "games_held_out": [
+  "143309"
+ ],
+ "games_development": [
+  "114458",
+  "115323",
+  "132311",
+  "143837"
+ ]
+}

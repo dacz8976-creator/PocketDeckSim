@@ -51,7 +51,9 @@
    "(then: bench Lapras, Water on Vulpix, Gnaw 20)"
   ],
   "hand_source": "text",
-  "notes": "Opening Vulpix(Active) + 2 Ninetales ex + Research + Copycat; T2 draw Cyrus. Opp hand 4 by bookkeeping."
+  "notes": "Opening Vulpix(Active) + 2 Ninetales ex + Research + Copycat; T2 draw Cyrus. Opp hand 4 by bookkeeping.",
+  "milestones": [],
+  "heldout": true
  },
  {
   "id": "A-143309-t04",
@@ -124,7 +126,11 @@
    "Attack:Binding Snow"
   ],
   "hand_source": "text",
-  "notes": "Research at T2 drew Lapras + Irida; Lapras benched. Draw Misty."
+  "notes": "Research at T2 drew Lapras + Irida; Lapras benched. Draw Misty.",
+  "milestones": [
+   "preparing an attacker"
+  ],
+  "heldout": true
  },
  {
   "id": "A-143309-t06",
@@ -207,7 +213,11 @@
    "(then: Poké Ball, bench Carvanha, Cape on Ninetales, Water on Lapras, Binding Snow 80)"
   ],
   "hand_source": "text",
-  "notes": "Draw Research (played). Sigilyph KO'd on T4 (point 1). Opp hand 2 by bookkeeping."
+  "notes": "Draw Research (played). Sigilyph KO'd on T4 (point 1). Opp hand 2 by bookkeeping.",
+  "milestones": [
+   "preparing an attacker"
+  ],
+  "heldout": true
  },
  {
   "id": "A-143309-t08",
@@ -305,7 +315,11 @@
    "Attack:Binding Snow"
   ],
   "hand_source": "text",
-  "notes": "Draw Mega Sharpedo ex. Turbo Shark was reachable only by retreating the Mega (retreat 0) into the Active Spot."
+  "notes": "Draw Mega Sharpedo ex. Turbo Shark was reachable only by retreating the Mega (retreat 0) into the Active Spot.",
+  "milestones": [
+   "preparing an attacker"
+  ],
+  "heldout": true
  },
  {
   "id": "A-115323-t01",
@@ -355,7 +369,9 @@
    "(then: bench Carvanha, Cape on Carvanha, Misty: no heads)"
   ],
   "hand_source": "text",
-  "notes": "Opening hand Lapras(Active) + Cape + Copycat + 2 Misty; T1 draw Poké Ball. First player: no Energy."
+  "notes": "Opening hand Lapras(Active) + Cape + Copycat + 2 Misty; T1 draw Poké Ball. First player: no Energy.",
+  "milestones": [],
+  "heldout": false
  },
  {
   "id": "A-115323-t03",
@@ -424,7 +440,9 @@
    "Attach:1Water@0 zone"
   ],
   "hand_source": "text",
-  "notes": "Draw Irida. Opp played Arena of Antiquity on T2 (Snorlax's Massive Body bars Stadiums from my hand)."
+  "notes": "Draw Irida. Opp played Arena of Antiquity on T2 (Snorlax's Massive Body bars Stadiums from my hand).",
+  "milestones": [],
+  "heldout": false
  },
  {
   "id": "A-115323-t05",
@@ -505,7 +523,12 @@
    "(then: bench Vulpix, evolve the caped Carvanha, retreat Lapras, Water, Turbo Shark)"
   ],
   "hand_source": "text",
-  "notes": "Draw the second Carvanha. Opp Barry + Mega Punch took Lapras to 40 on T4. Opp hand 3 = what his Copycat drew."
+  "notes": "Draw the second Carvanha. Opp Barry + Mega Punch took Lapras to 40 on T4. Opp hand 3 = what his Copycat drew.",
+  "milestones": [
+   "managing a sacrifice",
+   "preparing an attacker"
+  ],
+  "heldout": false
  },
  {
   "id": "A-115323-t07",
@@ -601,10 +624,14 @@
   ],
   "hand_source": "text",
   "notes": "Draw Irida (shuffled away by Copycat on T5, drawn again). Opp Penny'd the damaged Snorlax back to hand on T6. Turbo Shark's Bench target: Lapras (his pick), Carvanha or Vulpix.",
+  "milestones": [
+   "preparing an attacker"
+  ],
   "force": [
    "Attach:1Water@1 zone",
    "Attack:Turbo Shark"
-  ]
+  ],
+  "heldout": false
  },
  {
   "id": "A-115323-t05b",
@@ -695,6 +722,10 @@
   ],
   "hand_source": "text",
   "notes": "MID-TURN position: turn 5 after the second Carvanha was benched and Copycat drew Sharpedo, Vulpix, Cyrus. Turbo Shark's Bench target: Lapras (0 Energy after the retreat), the second Carvanha, or Vulpix (his pick).",
+  "milestones": [
+   "managing a sacrifice",
+   "preparing an attacker"
+  ],
   "force": [
    "Place:Alolan Vulpix@3",
    "Evolve:Mega Sharpedo ex@1",
@@ -704,7 +735,8 @@
   ],
   "flags": {
    "has_played_support": true
-  }
+  },
+  "heldout": false
  },
  {
   "id": "A-143837-t01",
@@ -754,7 +786,9 @@
    "(then: bench Vulpix, Misty one head)"
   ],
   "hand_source": "frame",
-  "notes": "Hand read from frames 00010/00011 (Research, Poké Ball, Misty, a Mega Sharpedo ex, and the drawn Elegant Cape)."
+  "notes": "Hand read from frames 00010/00011 (Research, Poké Ball, Misty, a Mega Sharpedo ex, and the drawn Elegant Cape).",
+  "milestones": [],
+  "heldout": false
  },
  {
   "id": "A-143837-t03",
@@ -820,7 +854,9 @@
    "(then: evolve Vulpix, Cape on Ninetales, Water on Lapras)"
   ],
   "hand_source": "frame",
-  "notes": "Draw Lucky Ice Pop. Hand read from frames 00023 and native t0100."
+  "notes": "Draw Lucky Ice Pop. Hand read from frames 00023 and native t0100.",
+  "milestones": [],
+  "heldout": false
  },
  {
   "id": "A-143837-t05",
@@ -915,7 +951,11 @@
    "(then: bench Carvanha, Water on Lapras, Surf)"
   ],
   "hand_source": "elimination",
-  "notes": "The turn-5 draw is the Poké Ball he plays (nothing else in hand could be it). Flower Trick's mark on the Active Spot (70 at the end of this turn) is set."
+  "notes": "The turn-5 draw is the Poké Ball he plays (nothing else in hand could be it). Flower Trick's mark on the Active Spot (70 at the end of this turn) is set.",
+  "milestones": [
+   "preparing an attacker"
+  ],
+  "heldout": false
  },
  {
   "id": "A-143837-t07",
@@ -1002,7 +1042,11 @@
    "(then: Turbo Shark, Water to Ninetales)"
   ],
   "hand_source": "elimination",
-  "notes": "Lapras was KO'd on T6 (Flower Trick 70 + Solar Beam 80); Carvanha promoted. Draw Misty."
+  "notes": "Lapras was KO'd on T6 (Flower Trick 70 + Solar Beam 80); Carvanha promoted. Draw Misty.",
+  "milestones": [
+   "preparing an attacker"
+  ],
+  "heldout": false
  },
  {
   "id": "A-114458-t02",
@@ -1065,7 +1109,9 @@
    "(then: Water on Vulpix, Gnaw 20)"
   ],
   "hand_source": "text",
-  "notes": "Opening Vulpix(Active) + Sharpedo + Copycat + Ice Pop + Ninetales; T2 draw Research. Chingling's Jingly Noise item-locks this turn."
+  "notes": "Opening Vulpix(Active) + Sharpedo + Copycat + Ice Pop + Ninetales; T2 draw Research. Chingling's Jingly Noise item-locks this turn.",
+  "milestones": [],
+  "heldout": false
  },
  {
   "id": "A-132311-t01",
@@ -1115,7 +1161,9 @@
    "(then: bench Carvanha, Research)"
   ],
   "hand_source": "text",
-  "notes": "Opening Carvanha(Active) + Sharpedo + Ice Pop + Poké Ball + Research; T1 draw Cyrus."
+  "notes": "Opening Carvanha(Active) + Sharpedo + Ice Pop + Poké Ball + Research; T1 draw Cyrus.",
+  "milestones": [],
+  "heldout": false
  },
  {
   "id": "A-114458-t04",
@@ -1193,7 +1241,11 @@
    "(then: bench Lapras, Binding Snow 80)"
   ],
   "hand_source": "frame",
-  "notes": "Hand read from stills: Research (T2) drew Irida + Poké Ball; the T4 draw is the second Mega Sharpedo. Item lock again (Jingly Noise on T3). Opp hand 4 = what his Copycat drew."
+  "notes": "Hand read from stills: Research (T2) drew Irida + Poké Ball; the T4 draw is the second Mega Sharpedo. Item lock again (Jingly Noise on T3). Opp hand 4 = what his Copycat drew.",
+  "milestones": [
+   "preparing an attacker"
+  ],
+  "heldout": false
  },
  {
   "id": "A-114458-t06",
@@ -1280,7 +1332,11 @@
    "(then: bench Vulpix, Misty on Lapras four heads, Water on Vulpix, Binding Snow 80)"
   ],
   "hand_source": "frame",
-  "notes": "Draw: a second Alolan Ninetales ex (pink art) read from stills. Opp hand 2 by a visual count of card backs."
+  "notes": "Draw: a second Alolan Ninetales ex (pink art) read from stills. Opp hand 2 by a visual count of card backs.",
+  "milestones": [
+   "preparing an attacker"
+  ],
+  "heldout": false
  },
  {
   "id": "A-114458-t08",
@@ -1385,7 +1441,11 @@
    "Attack:Binding Snow"
   ],
   "hand_source": "frame",
-  "notes": "Draw: the second Misty. Irida was milled by Slow Sear on the opponent's T7. Misty's target was not preserved in the review (MistyTarget@?)."
+  "notes": "Draw: the second Misty. Irida was milled by Slow Sear on the opponent's T7. Misty's target was not preserved in the review (MistyTarget@?).",
+  "milestones": [
+   "managing a sacrifice"
+  ],
+  "heldout": false
  },
  {
   "id": "A-132311-t03",
@@ -1452,11 +1512,15 @@
   ],
   "hand_source": "frame",
   "notes": "Draw Irida. Opp Furfrou's Fur Coat takes 20 off attacks. The Bench holds only one Water Pokémon, so Turbo Shark has no real target choice here.",
+  "milestones": [
+   "preparing an attacker"
+  ],
   "force": [
    "Evolve:Mega Sharpedo ex@0",
    "Attach:1Water@0 zone",
    "Attack:Turbo Shark"
-  ]
+  ],
+  "heldout": false
  },
  {
   "id": "A-132311-t05",
@@ -1536,7 +1600,12 @@
    "Attach:1Water@1 fx"
   ],
   "hand_source": "frame",
-  "notes": "Draw: the second Mega Sharpedo ex (probable, by card count). Opp healed Furfrou back to 70 with Ice Pop (twice) and Shaymin."
+  "notes": "Draw: the second Mega Sharpedo ex (probable, by card count). Opp healed Furfrou back to 70 with Ice Pop (twice) and Shaymin.",
+  "milestones": [
+   "preparing an attacker",
+   "managing a sacrifice"
+  ],
+  "heldout": false
  },
  {
   "id": "A-132311-t07",
@@ -1623,7 +1692,12 @@
    "(then: Poké Ball, bench Vulpix, Water on Vulpix, free retreat to the fresh Mega, Turbo Shark KOs Furfrou, Water to Vulpix)"
   ],
   "hand_source": "frame",
-  "notes": "Draw Professor's Research (alternate art). It drew Poké Ball + Alolan Vulpix. Opp played Rainbow Cave on T6."
+  "notes": "Draw Professor's Research (alternate art). It drew Poké Ball + Alolan Vulpix. Opp played Rainbow Cave on T6.",
+  "milestones": [
+   "preparing an attacker",
+   "managing a sacrifice"
+  ],
+  "heldout": false
  },
  {
   "id": "A-132311-t07b",
@@ -1717,6 +1791,10 @@
   ],
   "hand_source": "frame",
   "notes": "MID-TURN position: turn 7 after Research and Poké Ball. Turbo Shark's Bench target: the damaged Mega (2 Water) or the new Vulpix (1 Water, his pick).",
+  "milestones": [
+   "preparing an attacker",
+   "managing a sacrifice"
+  ],
   "force": [
    "Place:Alolan Vulpix@2",
    "Attach:1Water@2 zone",
@@ -1725,6 +1803,1317 @@
   ],
   "flags": {
    "has_played_support": true
-  }
+  },
+  "heldout": false
+ },
+ {
+  "id": "A-143837-t09",
+  "game": "143837",
+  "his_turn": 5,
+  "deck": "A",
+  "turn_count": 9,
+  "points": [
+   0,
+   1
+  ],
+  "me": {
+   "hand": [
+    "Irida A2a 072",
+    "Alolan Ninetales ex B2 029",
+    "Cyrus A2 150",
+    "Lucky Ice Pop B2 145"
+   ],
+   "discard": [
+    "Poké Ball P-A 005",
+    "Misty A1 220",
+    "Professor's Research P-A 007",
+    "Poké Ball P-A 005",
+    "Lapras A3 044",
+    "Copycat B1 225"
+   ],
+   "discard_energy": [
+    "Water",
+    "Water",
+    "Water"
+   ],
+   "board": [
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 110,
+     "energy": [
+      "Water"
+     ],
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    },
+    {
+     "card": "Alolan Ninetales ex B2 029",
+     "hp": 180,
+     "energy": [
+      "Water"
+     ],
+     "tools": [
+      "Elegant Cape B3b 065"
+     ],
+     "behind": [
+      "Alolan Vulpix B2 028"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 2,
+   "discard_n": 4,
+   "discard_energy": [
+    "Grass"
+   ],
+   "board": [
+    {
+     "card": "Meowscarada ex B2a 003",
+     "hp": 50,
+     "energy": [
+      "Grass",
+      "Grass"
+     ],
+     "tools": [
+      "Leaf Cape A3 147"
+     ],
+     "behind": [
+      "Sprigatito B2a 001"
+     ]
+    },
+    {
+     "card": "Teal Mask Ogerpon ex B2 017",
+     "hp": 130,
+     "energy": [
+      "Grass"
+     ]
+    },
+    {
+     "card": "Sprigatito B2a 001",
+     "hp": 60
+    }
+   ],
+   "energy_next": "Grass"
+  },
+  "stadium": {
+   "card": "Fragrant Forest B3 153",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Lucky Ice Pop",
+   "Play:Lucky Ice Pop",
+   "Play:Lucky Ice Pop",
+   "Attach:1Water@1 zone",
+   "Retreat:1",
+   "Attack:Binding Snow"
+  ],
+  "hand_source": "frame",
+  "notes": "Draw Lucky Ice Pop. He heals the Mega Sharpedo ex (a 3-point liability) 110 -> 170 with three Ice Pops (heads, heads, tails), arms Ninetales with the turn's Water, retreats the Mega into it and KOs the 50-HP Meowscarada ex with Binding Snow.",
+  "milestones": [
+   "preparing an attacker",
+   "managing a sacrifice"
+  ],
+  "heldout": false
+ },
+ {
+  "id": "A-143837-t11",
+  "game": "143837",
+  "his_turn": 6,
+  "deck": "A",
+  "turn_count": 11,
+  "points": [
+   2,
+   1
+  ],
+  "me": {
+   "hand": [
+    "Irida A2a 072",
+    "Alolan Ninetales ex B2 029",
+    "Cyrus A2 150",
+    "Misty A1 220"
+   ],
+   "discard": [
+    "Poké Ball P-A 005",
+    "Misty A1 220",
+    "Professor's Research P-A 007",
+    "Poké Ball P-A 005",
+    "Lapras A3 044",
+    "Copycat B1 225",
+    "Lucky Ice Pop B2 145"
+   ],
+   "discard_energy": [
+    "Water",
+    "Water",
+    "Water"
+   ],
+   "board": [
+    {
+     "card": "Alolan Ninetales ex B2 029",
+     "hp": 180,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "tools": [
+      "Elegant Cape B3b 065"
+     ],
+     "behind": [
+      "Alolan Vulpix B2 028"
+     ]
+    },
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 170,
+     "energy": [
+      "Water"
+     ],
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 3,
+   "discard_n": 7,
+   "discard_energy": [
+    "Grass",
+    "Grass",
+    "Grass"
+   ],
+   "board": [
+    {
+     "card": "Teal Mask Ogerpon ex B2 017",
+     "hp": 130,
+     "energy": [
+      "Grass"
+     ]
+    },
+    {
+     "card": "Sprigatito B2a 001",
+     "hp": 60,
+     "energy": [
+      "Grass"
+     ]
+    }
+   ],
+   "energy_next": "Grass"
+  },
+  "stadium": {
+   "card": "Fragrant Forest B3 153",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Attack:Binding Snow"
+  ],
+  "hand_source": "frame",
+  "notes": "Draw Misty (kept). He attacks with Binding Snow and does not attach the turn's Water at all (the review sees no attachment).",
+  "milestones": [],
+  "heldout": false
+ },
+ {
+  "id": "A-143837-t13",
+  "game": "143837",
+  "his_turn": 7,
+  "deck": "A",
+  "turn_count": 13,
+  "points": [
+   2,
+   1
+  ],
+  "me": {
+   "hand": [
+    "Irida A2a 072",
+    "Alolan Ninetales ex B2 029",
+    "Cyrus A2 150",
+    "Misty A1 220",
+    "Mega Sharpedo ex B4 035"
+   ],
+   "discard": [
+    "Poké Ball P-A 005",
+    "Misty A1 220",
+    "Professor's Research P-A 007",
+    "Poké Ball P-A 005",
+    "Lapras A3 044",
+    "Copycat B1 225",
+    "Lucky Ice Pop B2 145"
+   ],
+   "discard_energy": [
+    "Water",
+    "Water",
+    "Water"
+   ],
+   "board": [
+    {
+     "card": "Alolan Ninetales ex B2 029",
+     "hp": 180,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "tools": [
+      "Elegant Cape B3b 065"
+     ],
+     "behind": [
+      "Alolan Vulpix B2 028"
+     ]
+    },
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 170,
+     "energy": [
+      "Water"
+     ],
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 3,
+   "discard_n": 7,
+   "discard_energy": [
+    "Grass",
+    "Grass",
+    "Grass",
+    "Grass"
+   ],
+   "board": [
+    {
+     "card": "Sprigatito B2a 001",
+     "hp": 90,
+     "energy": [
+      "Grass",
+      "Grass"
+     ],
+     "tools": [
+      "Leaf Cape A3 147"
+     ]
+    },
+    {
+     "card": "Teal Mask Ogerpon ex B2 017",
+     "hp": 50
+    }
+   ],
+   "energy_next": "Grass"
+  },
+  "stadium": {
+   "card": "Fragrant Forest B3 153",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Cyrus",
+   "Activate:1@1"
+  ],
+  "hand_source": "frame",
+  "notes": "Draw Mega Sharpedo ex. He plays Cyrus to bring the damaged benched Ogerpon ex (50 HP) Active; Binding Snow would then KO it for 2 points (2 -> 4 wins the game). The opponent conceded after Cyrus.",
+  "milestones": [
+   "recognising an immediate win"
+  ],
+  "heldout": false
+ },
+ {
+  "id": "A-114458-t10",
+  "game": "114458",
+  "his_turn": 5,
+  "deck": "A",
+  "turn_count": 10,
+  "points": [
+   1,
+   2
+  ],
+  "me": {
+   "hand": [
+    "Mega Sharpedo ex B4 035",
+    "Elegant Cape B3b 065"
+   ],
+   "discard": [
+    "Professor's Research P-A 007",
+    "Copycat B1 225",
+    "Poké Ball P-A 005",
+    "Misty A1 220",
+    "Misty A1 220",
+    "Irida A2a 072",
+    "Lucky Ice Pop B2 145",
+    "Alolan Ninetales ex B2 029",
+    "Alolan Vulpix B2 028"
+   ],
+   "discard_energy": [
+    "Water",
+    "Water"
+   ],
+   "board": [
+    {
+     "card": "Lapras A3 044",
+     "hp": 110,
+     "energy": [
+      "Water",
+      "Water",
+      "Water",
+      "Water"
+     ]
+    },
+    {
+     "card": "Alolan Ninetales ex B2 029",
+     "hp": 150,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Alolan Vulpix B2 028"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 4,
+   "discard_n": 5,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Chandelure B1 043",
+     "hp": 40,
+     "energy": [
+      "Fire",
+      "Fire"
+     ],
+     "behind": [
+      "Litwick B1 041"
+     ]
+    },
+    {
+     "card": "Aerodactyl A1 210",
+     "hp": 20,
+     "energy": [
+      "Fire"
+     ],
+     "behind": [
+      "Old Amber A1 218"
+     ]
+    },
+    {
+     "card": "Chingling B1 109",
+     "hp": 30
+    },
+    {
+     "card": "Old Amber A1 218",
+     "hp": 40
+    }
+   ],
+   "energy_next": "Fire"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Tool:Elegant Cape@1",
+   "Attack:Surf"
+  ],
+  "hand_source": "frame",
+  "notes": "His first Ninetales ex was KO'd by Heat Blast (2 points to the opponent); the four-Water Lapras (Misty's four heads) was promoted. Cape on the second Ninetales, Surf (70 + Water weakness) KOs the 40-HP Chandelure.",
+  "milestones": [
+   "adapting when the plan fails"
+  ],
+  "heldout": false
+ },
+ {
+  "id": "A-114458-t12",
+  "game": "114458",
+  "his_turn": 6,
+  "deck": "A",
+  "turn_count": 12,
+  "points": [
+   2,
+   2
+  ],
+  "me": {
+   "hand": [
+    "Mega Sharpedo ex B4 035",
+    "Professor's Research P-A 007"
+   ],
+   "discard": [
+    "Professor's Research P-A 007",
+    "Copycat B1 225",
+    "Poké Ball P-A 005",
+    "Misty A1 220",
+    "Misty A1 220",
+    "Irida A2a 072",
+    "Lucky Ice Pop B2 145",
+    "Alolan Ninetales ex B2 029",
+    "Alolan Vulpix B2 028"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Alolan Ninetales ex B2 029",
+     "hp": 180,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "tools": [
+      "Elegant Cape B3b 065"
+     ],
+     "behind": [
+      "Alolan Vulpix B2 028"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 3,
+   "discard_n": 6,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Aerodactyl A1 210",
+     "hp": 20,
+     "energy": [
+      "Fire",
+      "Fire"
+     ],
+     "behind": [
+      "Old Amber A1 218"
+     ]
+    },
+    {
+     "card": "Chingling B1 109",
+     "hp": 30
+    },
+    {
+     "card": "Old Amber A1 218",
+     "hp": 40
+    },
+    {
+     "card": "Litwick B1 041",
+     "hp": 50
+    }
+   ],
+   "energy_next": "Fire"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Attack:Binding Snow"
+  ],
+  "hand_source": "frame",
+  "notes": "Will + Primal Wingbeat shuffled his Lapras away; the second Ninetales ex (180 HP, two Water) was promoted. Draw Research. Binding Snow KOs the 20-HP Aerodactyl: the third point, the game.",
+  "milestones": [
+   "recognising an immediate win"
+  ],
+  "heldout": false
+ },
+ {
+  "id": "A-115323-t09",
+  "game": "115323",
+  "his_turn": 5,
+  "deck": "A",
+  "turn_count": 9,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Cyrus A2 150",
+    "Irida A2a 072",
+    "Lucky Ice Pop B2 145"
+   ],
+   "discard": [
+    "Poké Ball P-A 005",
+    "Misty A1 220",
+    "Misty A1 220",
+    "Copycat B1 225"
+   ],
+   "discard_energy": [
+    "Water",
+    "Water"
+   ],
+   "board": [
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 150,
+     "energy": [
+      "Water"
+     ],
+     "tools": [
+      "Elegant Cape B3b 065"
+     ],
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    },
+    {
+     "card": "Lapras A3 044",
+     "hp": 40,
+     "energy": [
+      "Water",
+      "Water"
+     ]
+    },
+    {
+     "card": "Carvanha B4 034",
+     "hp": 50
+    },
+    {
+     "card": "Alolan Vulpix B2 028",
+     "hp": 60,
+     "energy": [
+      "Water"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 2,
+   "discard_n": 6,
+   "discard_energy": [
+    "Fighting"
+   ],
+   "board": [
+    {
+     "card": "Snorlax B3b 055",
+     "hp": 60,
+     "energy": [
+      "Fighting",
+      "Fighting",
+      "Fighting"
+     ]
+    },
+    {
+     "card": "Snorlax B3b 055",
+     "hp": 130
+    },
+    {
+     "card": "Rampardos A2 089",
+     "hp": 150,
+     "behind": [
+      "Skull Fossil A2 144"
+     ]
+    }
+   ],
+   "energy_next": "Fighting"
+  },
+  "stadium": {
+   "card": "Arena of Antiquity B3 154",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Irida",
+   "Play:Lucky Ice Pop",
+   "Play:Lucky Ice Pop",
+   "Retreat:1",
+   "Attach:1Water@0 zone",
+   "Attack:Surf"
+  ],
+  "hand_source": "frame",
+  "notes": "Draw Lucky Ice Pop. Irida and two Ice Pops restore the Mega Sharpedo ex (a 3-point liability) 150 -> 220 and Lapras 40 -> 80; he retreats the Mega (free) into the three-Energy-ready Lapras and Surf KOs the 60-HP Snorlax.",
+  "milestones": [
+   "managing a sacrifice",
+   "preparing an attacker"
+  ],
+  "heldout": false
+ },
+ {
+  "id": "A-115323-t11",
+  "game": "115323",
+  "his_turn": 6,
+  "deck": "A",
+  "turn_count": 11,
+  "points": [
+   1,
+   1
+  ],
+  "me": {
+   "hand": [
+    "Cyrus A2 150",
+    "Alolan Vulpix B2 028"
+   ],
+   "discard": [
+    "Poké Ball P-A 005",
+    "Misty A1 220",
+    "Misty A1 220",
+    "Copycat B1 225",
+    "Irida A2a 072",
+    "Lucky Ice Pop B2 145",
+    "Lapras A3 044"
+   ],
+   "discard_energy": [
+    "Water",
+    "Water",
+    "Water",
+    "Water",
+    "Water"
+   ],
+   "board": [
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 220,
+     "energy": [
+      "Water"
+     ],
+     "tools": [
+      "Elegant Cape B3b 065"
+     ],
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    },
+    {
+     "card": "Carvanha B4 034",
+     "hp": 50
+    },
+    {
+     "card": "Alolan Vulpix B2 028",
+     "hp": 60,
+     "energy": [
+      "Water"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 2,
+   "discard_n": 7,
+   "discard_energy": [
+    "Fighting",
+    "Fighting",
+    "Fighting",
+    "Fighting"
+   ],
+   "board": [
+    {
+     "card": "Rampardos A2 089",
+     "hp": 100,
+     "energy": [
+      "Fighting"
+     ],
+     "behind": [
+      "Skull Fossil A2 144"
+     ]
+    },
+    {
+     "card": "Snorlax B3b 055",
+     "hp": 130
+    },
+    {
+     "card": "Rowlet A3 010",
+     "hp": 60
+    }
+   ],
+   "energy_next": "Fighting"
+  },
+  "stadium": {
+   "card": "Arena of Antiquity B3 154",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Place:Alolan Vulpix@3",
+   "Attach:1Water@3 zone",
+   "Attack:Turbo Shark",
+   "Attach:1Water@3 fx"
+  ],
+  "hand_source": "frame",
+  "notes": "Head Smash (130 + Arena's 20 only against ex) KO'd the 80-HP Lapras; the Mega Sharpedo ex was promoted at 220 HP. Draw Vulpix: bench it, give it the turn's Water, Turbo Shark (70) hits Rampardos 100 -> 30 and sends the second Water to the new Vulpix.",
+  "milestones": [
+   "adapting when the plan fails",
+   "preparing an attacker"
+  ],
+  "force": [
+   "Place:Alolan Vulpix@3",
+   "Attach:1Water@3 zone",
+   "Attack:Turbo Shark"
+  ],
+  "heldout": false
+ },
+ {
+  "id": "A-115323-t13",
+  "game": "115323",
+  "his_turn": 7,
+  "deck": "A",
+  "turn_count": 13,
+  "points": [
+   1,
+   1
+  ],
+  "me": {
+   "hand": [
+    "Cyrus A2 150",
+    "Alolan Ninetales ex B2 029"
+   ],
+   "discard": [
+    "Poké Ball P-A 005",
+    "Misty A1 220",
+    "Misty A1 220",
+    "Copycat B1 225",
+    "Irida A2a 072",
+    "Lucky Ice Pop B2 145",
+    "Lapras A3 044"
+   ],
+   "discard_energy": [
+    "Water",
+    "Water",
+    "Water",
+    "Water",
+    "Water"
+   ],
+   "board": [
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 70,
+     "energy": [
+      "Water"
+     ],
+     "tools": [
+      "Elegant Cape B3b 065"
+     ],
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    },
+    {
+     "card": "Carvanha B4 034",
+     "hp": 50
+    },
+    {
+     "card": "Alolan Vulpix B2 028",
+     "hp": 60,
+     "energy": [
+      "Water"
+     ]
+    },
+    {
+     "card": "Alolan Vulpix B2 028",
+     "hp": 60,
+     "energy": [
+      "Water",
+      "Water"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 2,
+   "discard_n": 7,
+   "discard_energy": [
+    "Fighting",
+    "Fighting",
+    "Fighting",
+    "Fighting"
+   ],
+   "board": [
+    {
+     "card": "Rampardos A2 089",
+     "hp": 30,
+     "energy": [
+      "Fighting"
+     ],
+     "behind": [
+      "Skull Fossil A2 144"
+     ]
+    },
+    {
+     "card": "Snorlax B3b 055",
+     "hp": 130
+    },
+    {
+     "card": "Rowlet A3 010",
+     "hp": 60
+    },
+    {
+     "card": "Skull Fossil A2 144",
+     "hp": 40,
+     "energy": [
+      "Fighting"
+     ]
+    }
+   ],
+   "energy_next": "Fighting"
+  },
+  "stadium": {
+   "card": "Arena of Antiquity B3 154",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Evolve:Alolan Ninetales ex@3",
+   "Attach:1Water@2 zone",
+   "Retreat:3",
+   "Attack:Binding Snow"
+  ],
+  "hand_source": "frame",
+  "notes": "Draw Alolan Ninetales ex. The Mega Sharpedo ex (a 3-point liability) is at 70 HP in front of a Rampardos that hits for 150; he evolves the newly benched Vulpix, retreats the Mega into the Ninetales (2 points) and Binding Snow KOs the 30-HP Rampardos (2-1). The next opponent turn Head Smash KO'd the Ninetales for the game.",
+  "milestones": [
+   "managing a sacrifice"
+  ],
+  "heldout": false
+ },
+ {
+  "id": "A-132311-t09",
+  "game": "132311",
+  "his_turn": 5,
+  "deck": "A",
+  "turn_count": 9,
+  "points": [
+   1,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Cyrus A2 150",
+    "Alolan Ninetales ex B2 029",
+    "Misty A1 220",
+    "Irida A2a 072",
+    "Alolan Vulpix B2 028",
+    "Copycat B1 225"
+   ],
+   "discard": [
+    "Poké Ball P-A 005",
+    "Professor's Research P-A 007",
+    "Lucky Ice Pop B2 145",
+    "Professor's Research P-A 007",
+    "Poké Ball P-A 005"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 190,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    },
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 140,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    },
+    {
+     "card": "Alolan Vulpix B2 028",
+     "hp": 60,
+     "energy": [
+      "Water",
+      "Water"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 4,
+   "discard_n": 4,
+   "discard_energy": [
+    "Fighting",
+    "Grass"
+   ],
+   "board": [
+    {
+     "card": "Shaymin A2 022",
+     "hp": 60,
+     "energy": [
+      "Fighting"
+     ]
+    },
+    {
+     "card": "Trapinch B3 076",
+     "hp": 60,
+     "energy": [
+      "Fighting"
+     ]
+    }
+   ],
+   "energy_next": "Fighting"
+  },
+  "stadium": {
+   "card": "Rainbow Cave B4 155",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Evolve:Alolan Ninetales ex@2",
+   "Attach:1Water@2 zone",
+   "Retreat:2",
+   "Attack:Binding Snow"
+  ],
+  "hand_source": "frame",
+  "notes": "Draw Copycat (kept). After Turbo Shark's Water the Vulpix holds two Water; he evolves it, gives it a third, retreats the Mega into it and Binding Snow KOs the 60-HP Shaymin (2-0) while starting the Active-attachment block before the Flygon ex appears.",
+  "milestones": [
+   "preparing an attacker"
+  ],
+  "heldout": false
+ },
+ {
+  "id": "A-132311-t11",
+  "game": "132311",
+  "his_turn": 6,
+  "deck": "A",
+  "turn_count": 11,
+  "points": [
+   2,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Cyrus A2 150",
+    "Misty A1 220",
+    "Irida A2a 072",
+    "Alolan Vulpix B2 028",
+    "Copycat B1 225",
+    "Elegant Cape B3b 065"
+   ],
+   "discard": [
+    "Poké Ball P-A 005",
+    "Professor's Research P-A 007",
+    "Lucky Ice Pop B2 145",
+    "Professor's Research P-A 007",
+    "Poké Ball P-A 005"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Alolan Ninetales ex B2 029",
+     "hp": 140,
+     "energy": [
+      "Water",
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Alolan Vulpix B2 028"
+     ]
+    },
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 130,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    },
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 180,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 3,
+   "discard_n": 6,
+   "discard_energy": [
+    "Fighting",
+    "Grass",
+    "Fighting"
+   ],
+   "board": [
+    {
+     "card": "Flygon ex B3 126",
+     "hp": 180,
+     "energy": [
+      "Fighting"
+     ],
+     "behind": [
+      "Trapinch B3 076"
+     ]
+    }
+   ],
+   "energy_next": "Fighting"
+  },
+  "stadium": {
+   "card": "Rainbow Cave B4 155",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Tool:Elegant Cape@0",
+   "Play:Irida",
+   "Place:Alolan Vulpix@3",
+   "Attach:1Water@3 zone",
+   "Attack:Binding Snow"
+  ],
+  "hand_source": "frame",
+  "notes": "Draw Elegant Cape. The opponent's Flygon ex (Rare Candy from Trapinch) has one Fighting and Sand Slammer chips 10 off each of his Pokémon at every checkup. Cape on the Ninetales, Irida heals the three Water Pokémon, the second Vulpix is benched with the turn's Water, Binding Snow 180 -> 100.",
+  "milestones": [
+   "preparing an attacker"
+  ],
+  "heldout": false
+ },
+ {
+  "id": "A-132311-t13",
+  "game": "132311",
+  "his_turn": 7,
+  "deck": "A",
+  "turn_count": 13,
+  "points": [
+   2,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Cyrus A2 150",
+    "Misty A1 220",
+    "Copycat B1 225",
+    "Lapras A3 044"
+   ],
+   "discard": [
+    "Poké Ball P-A 005",
+    "Professor's Research P-A 007",
+    "Lucky Ice Pop B2 145",
+    "Professor's Research P-A 007",
+    "Poké Ball P-A 005",
+    "Irida A2a 072"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Alolan Ninetales ex B2 029",
+     "hp": 160,
+     "energy": [
+      "Water",
+      "Water",
+      "Water"
+     ],
+     "tools": [
+      "Elegant Cape B3b 065"
+     ],
+     "behind": [
+      "Alolan Vulpix B2 028"
+     ]
+    },
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 150,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    },
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 170,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    },
+    {
+     "card": "Alolan Vulpix B2 028",
+     "hp": 40,
+     "energy": [
+      "Water"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 3,
+   "discard_n": 6,
+   "discard_energy": [
+    "Fighting",
+    "Grass",
+    "Fighting"
+   ],
+   "board": [
+    {
+     "card": "Flygon ex B3 126",
+     "hp": 100,
+     "energy": [
+      "Fighting"
+     ],
+     "behind": [
+      "Trapinch B3 076"
+     ]
+    },
+    {
+     "card": "Furfrou B3b 061",
+     "hp": 70,
+     "energy": [
+      "Grass"
+     ]
+    }
+   ],
+   "energy_next": "Fighting"
+  },
+  "stadium": {
+   "card": "Rainbow Cave B4 155",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Copycat"
+  ],
+  "hand_source": "frame",
+  "notes": "Draw Lapras. He plays Copycat (drawing Misty, Cyrus, Lapras back), puts the second Water on the Vulpix and Binding Snow takes the Flygon ex 100 -> 20. The opponent then failed to return.",
+  "milestones": [
+   "preparing an attacker"
+  ],
+  "heldout": false
+ },
+ {
+  "id": "A-143309-t10",
+  "game": "143309",
+  "his_turn": 5,
+  "deck": "A",
+  "turn_count": 10,
+  "points": [
+   1,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Alolan Ninetales ex B2 029",
+    "Copycat B1 225",
+    "Cyrus A2 150",
+    "Irida A2a 072",
+    "Alolan Vulpix B2 028"
+   ],
+   "discard": [
+    "Professor's Research P-A 007",
+    "Misty A1 220",
+    "Professor's Research P-A 007",
+    "Poké Ball P-A 005"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Alolan Ninetales ex B2 029",
+     "hp": 170,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "tools": [
+      "Elegant Cape B3b 065"
+     ],
+     "behind": [
+      "Alolan Vulpix B2 028"
+     ]
+    },
+    {
+     "card": "Lapras A3 044",
+     "hp": 110,
+     "energy": [
+      "Water",
+      "Water",
+      "Water"
+     ]
+    },
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 190,
+     "energy": [
+      "Water"
+     ],
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 1,
+   "discard_n": 5,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Mewtwo ex A1 129",
+     "hp": 10
+    },
+    {
+     "card": "Gardevoir A1 132",
+     "hp": 110,
+     "energy": [
+      "Psychic",
+      "Psychic"
+     ],
+     "behind": [
+      "Ralts A1 130",
+      "Kirlia A1 131"
+     ]
+    },
+    {
+     "card": "Gardevoir A1 132",
+     "hp": 110,
+     "energy": [
+      "Psychic"
+     ],
+     "behind": [
+      "Ralts A1 130",
+      "Kirlia A1 131"
+     ]
+    }
+   ],
+   "energy_next": "Psychic"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Place:Alolan Vulpix@3",
+   "Play:Irida",
+   "Attach:1Water@3 zone",
+   "Attack:Binding Snow"
+  ],
+  "hand_source": "frame",
+  "notes": "Draw Alolan Vulpix. Mewtwo ex is Active at 10 HP with no Energy: Binding Snow (80) KOs it for 2 points, 1 -> 3, the game. He benched the Vulpix, healed the last 10 damage with Irida and attached to the new Vulpix first.",
+  "milestones": [
+   "recognising an immediate win"
+  ],
+  "heldout": true
  }
 ]

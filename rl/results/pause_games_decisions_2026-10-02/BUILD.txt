@@ -1,4 +1,4 @@
-Pause games vs km3, draft A turns 1-4: build record (Oct 2, 2026)
+Pause games vs km3, draft A turns 1-7: build record (Oct 2, 2026)
 
 engine source: git archive of main-8626a35 engine/ (tree 38af8b0cc4f35fdccc647ed540a56ec8f5e6c1d5), the Oct 1 pinned official engine (rl/engine-2026-10-02)
 print-only patch (score dump + pg_label): harness/dg_patch.py + harness/pgd_patch.py, applied to src/players/expectiminimax_player.rs; no behaviour change
@@ -8,7 +8,7 @@ seeds 1..12 per position (each seed fixes the search's draw-order sample and the
 
 57acc758ea1feb42fd8a2c1a43ab6a653c3e5ac97d41516a536f4591fa18b7b7  pg_pos
 3f39092ba6680cc5b8013b961e2f5a0f07bc779816ade7a6891983082b2e7417  draftA.txt
-17cc26ddcace95967e5b23770284b6454a11e226c0d07d9fcdaf590ba0a9a3a3  positions_A.json
+3293053bee82f1b46ea0780ff3645dc317847f30e18c84f1430d5719419860f6  positions_A.json
 c98ccc63a29a8b7e467a91043a5179295e2cfb9b67ab0a36ad946cdabb77949b  dg_patch.py
 01b17932001c57f0875318ef185f4a2bf34c6485e6cb73d08c75b9cfc8e857c5  pgd_patch.py
 7ab984326f63255c129f8fcb0640077072f340c6a800b102e0e4e517a7bea990  pg_pos.rs

@@ -32,6 +32,17 @@ Opening hand: Lapras (Active), Elegant Cape, Copycat, Misty x2. Draws: turn 1 Po
 - Turn 5 (`frame`): Lucky Ice Pop, Cyrus, Ninetales ex, Misty, Irida, and the drawn second Mega Sharpedo ex (alternate art; "probable, by card count": four cards remain at the end of the turn, `native/t0190.00.jpg`). `native/t0161.00.jpg`, `00041`-`00043`.
 - Turn 7 (`frame`): Cyrus, Ninetales ex, Misty, Irida, and the drawn Professor's Research (alternate art), which drew Poké Ball + Alolan Vulpix; the Poké Ball then fetched a second Vulpix that stayed in hand. `00059`-`00062`, `native/t0246.00.jpg`. (The mid-turn position uses that state.)
 
+## His turns 5-7 (added later on Oct 2): every hand predicted by bookkeeping, confirmed by stills
+
+The helpers were given the bookkeeping prediction and asked to check it; none found a difference or an unreadable card. Frame names are in the folders above (`overview/sample_frames/NNNNN.jpg` is about second 4 x N).
+
+- **143837** turn 9 (about 289 s): Irida, Alolan Ninetales ex, Cyrus, Lucky Ice Pop (the zoomed draw, `00073`; the three-card fan in `00072`, `native/t0296.00.jpg`); turn 11 (about 355 s): Irida, Ninetales ex, Cyrus, Misty (`native/t0357`, `t0359`, `t0360`); turn 13 (about 405 s): Irida, Ninetales ex, Cyrus, Misty, Mega Sharpedo ex (`native/t0404`, `t0407`, `t0410`). The Lucky Ice Pop is in his discard in the turn-11 and 13 frames (the third flip was tails).
+- **114458** turn 10 (about 316 s): Mega Sharpedo ex, Elegant Cape (`native/t0318.00.jpg`, `00079`, `00080`); turn 12 (about 388 s): Mega Sharpedo ex, Professor's Research (`native/t0394`, `t0396`, `00097`-`00099`).
+- **115323** turn 9 (about 324 s): Cyrus, Irida, Lucky Ice Pop (`00081`-`00083`, `native/t0338.00.jpg`); turn 11 (about 412 s): Cyrus, Alolan Vulpix (`00103`, `00104`, `native/t0418.00.jpg`); turn 13 (about 458 s): Cyrus, Alolan Ninetales ex (probable: seen being dragged out of the fan, `00115`-`00117`, `native/t0478.00.jpg` shows the evolved card).
+- **132311** turn 9 (about 298 s): Cyrus, Alolan Ninetales ex, Misty, Irida, Alolan Vulpix, Copycat (`00074`-`00076`, `native/t0305.00.jpg`); turn 11 (about 356 s): Cyrus, Misty, Irida, Alolan Vulpix, Copycat, Elegant Cape (the Cape is probable: it is zoomed and played within four seconds of the turn banner, `native/t0356`, `00090`, `t0366`); turn 13 (about 406 s): Cyrus, Misty, Copycat, Lapras (`native/t0410.00.jpg`, `00100`-`00102`).
+- **143309** turn 10 (about 260 s): Alolan Ninetales ex, Copycat, Cyrus, Irida and the drawn Alolan Vulpix (seen zoomed and on the Bench, never in the fan; `native/t0257`, `00064`-`00067`, `t0268`).
+- Opponent hand sizes (visual counts of card backs; a card could hide behind the name plate): 143837 turns 9/11/13: 2, 3, 3; 114458 turns 10/12: 4 (5 not fully excluded), 3; 115323 turns 9/11/13: 2, 2, 2; 132311 turns 9/11/13: 4, 3, 3; 143309 turn 10: 1 (moderate confidence).
+
 ## Opponent hand sizes
 Bookkeeping from the review (opening 5, draws, named plays), checked against visual counts of card backs by the helpers. They agree except where the opponent went second on his first turn(s): the helpers counted 5 on turn 1 (and 6 on turn 3 of 143837) against 4 and 5 by bookkeeping. The positions use the visual counts there (143837 turns 1 and 3, 132311 turn 1) and 5 for 115323 turn 1 by analogy. A re-run with the bookkeeping counts gives the same first-action counts in all four turns. The opponent's hand only enters km3's search through Copycat's draw count.
 

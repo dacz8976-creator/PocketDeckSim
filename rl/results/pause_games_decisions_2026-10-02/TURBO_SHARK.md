@@ -51,6 +51,24 @@ Bench target after Turbo Shark (step 2); km3 picks: Attach:1Water@2 fx ×12. His
 | Attach:1Water@2 fx | 679.50 | 679.50 | 679.50 |
 | Attach:1Water@3 fx | 629.50 | 629.50 | 629.50 |
 
+## A-115323-t11: game 115323, his turn 6 (game turn 11)
+
+His line: Place:Alolan Vulpix@3 → Attach:1Water@3 zone → Attack:Turbo Shark → Attach:1Water@3 fx. Head Smash (130 + Arena's 20 only against ex) KO'd the 80-HP Lapras; the Mega Sharpedo ex was promoted at 220 HP. Draw Vulpix: bench it, give it the turn's Water, Turbo Shark (70) hits Rampardos 100 -> 30 and sends the second Water to the new Vulpix.
+
+| step | his action | km3 picks (12 seeds) | km3 score for his action | km3 best at this step | gap |
+|---|---|---|---|---|---|
+| 0 | Place:Alolan Vulpix@3 | Place:Alolan Vulpix@3 ×12 | 433.0 | 433.0 | 0.0 |
+| 1 | Attach:1Water@3 zone | Attach:1Water@3 zone ×12 | 483.0 | 483.0 | 0.0 |
+| 2 | Attack:Turbo Shark | Attack:Turbo Shark ×12 | 483.0 | 483.0 | 0.0 |
+
+Bench target after Turbo Shark (step 3); km3 picks: Attach:1Water@1 fx ×12. His pick: ['Attach:1Water@3 fx']
+
+| target (slot) | km3 root score (mean of 12 seeds) | min | max |
+|---|---|---|---|
+| Attach:1Water@1 fx | 483.03 | 483.03 | 483.03 |
+| Attach:1Water@2 fx | 433.03 | 433.03 | 433.03 |
+| Attach:1Water@3 fx | 433.03 | 433.03 | 433.03 |
+
 ## A-132311-t07b: game 132311, his turn 4 (game turn 7) (mid-turn position)
 
 His line: Place:Alolan Vulpix@2 → Attach:1Water@2 zone → Retreat:1 → Attack:Turbo Shark → Attach:1Water@2 fx. MID-TURN position: turn 7 after Research and Poké Ball. Turbo Shark's Bench target: the damaged Mega (2 Water) or the new Vulpix (1 Water, his pick).

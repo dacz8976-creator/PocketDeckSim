@@ -1,0 +1,816 @@
+PGSTEP A-115323-t11 seed 1 free 0
+PGDUMP actor=0 candidates=8
+PGDUMP          4.033333333333315 EndTurn
+PGDUMP        373.033333333333303 Attach:1Water@0 zone
+PGDUMP        423.033333333333360 Attach:1Water@1 zone
+PGDUMP        373.033333333333303 Attach:1Water@2 zone
+PGDUMP        364.033333333333303 Attack:Turbo Shark
+PGDUMP        433.033333333333360 Place:Alolan Vulpix@3
+PGDUMP        309.699999999999989 Retreat:1
+PGDUMP        139.699999999999989 Retreat:2
+PGSTEP A-115323-t11 seed 1 free 1
+PGDUMP actor=0 candidates=9
+PGDUMP         63.033333333333317 EndTurn
+PGDUMP        433.033333333333360 Attach:1Water@0 zone
+PGDUMP        483.033333333333360 Attach:1Water@1 zone
+PGDUMP        433.033333333333360 Attach:1Water@2 zone
+PGDUMP        483.033333333333360 Attach:1Water@3 zone
+PGDUMP        433.033333333333360 Attack:Turbo Shark
+PGDUMP        368.699999999999989 Retreat:1
+PGDUMP        198.699999999999989 Retreat:2
+PGDUMP          8.699999999999999 Retreat:3
+PGSTEP A-115323-t11 seed 1 free 2
+PGDUMP actor=0 candidates=5
+PGDUMP        123.033333333333317 EndTurn
+PGDUMP        483.033333333333360 Attack:Turbo Shark
+PGDUMP       -311.300000000000011 Retreat:1
+PGDUMP          8.699999999999999 Retreat:2
+PGDUMP          8.699999999999999 Retreat:3
+PGSTEP A-115323-t11 seed 1 free 3
+PGDUMP actor=0 candidates=3
+PGDUMP        483.033333333333360 Attach:1Water@1 fx
+PGDUMP        433.033333333333360 Attach:1Water@2 fx
+PGDUMP        433.033333333333360 Attach:1Water@3 fx
+PGSTEP A-115323-t11 seed 1 free 4
+PGSTEP A-115323-t11 seed 1 free 5
+PGSTEP A-115323-t11 seed 1 forced 0 want=Place:Alolan Vulpix@3
+PGDUMP actor=0 candidates=8
+PGDUMP          4.033333333333315 EndTurn
+PGDUMP        373.033333333333303 Attach:1Water@0 zone
+PGDUMP        423.033333333333360 Attach:1Water@1 zone
+PGDUMP        373.033333333333303 Attach:1Water@2 zone
+PGDUMP        364.033333333333303 Attack:Turbo Shark
+PGDUMP        433.033333333333360 Place:Alolan Vulpix@3
+PGDUMP        309.699999999999989 Retreat:1
+PGDUMP        139.699999999999989 Retreat:2
+PGSTEP A-115323-t11 seed 1 forced 1 want=Attach:1Water@3 zone
+PGDUMP actor=0 candidates=9
+PGDUMP         63.033333333333317 EndTurn
+PGDUMP        433.033333333333360 Attach:1Water@0 zone
+PGDUMP        483.033333333333360 Attach:1Water@1 zone
+PGDUMP        433.033333333333360 Attach:1Water@2 zone
+PGDUMP        483.033333333333360 Attach:1Water@3 zone
+PGDUMP        433.033333333333360 Attack:Turbo Shark
+PGDUMP        368.699999999999989 Retreat:1
+PGDUMP        198.699999999999989 Retreat:2
+PGDUMP          8.699999999999999 Retreat:3
+PGSTEP A-115323-t11 seed 1 forced 2 want=Attack:Turbo Shark
+PGDUMP actor=0 candidates=5
+PGDUMP        123.033333333333317 EndTurn
+PGDUMP        483.033333333333360 Attack:Turbo Shark
+PGDUMP       -311.300000000000011 Retreat:1
+PGDUMP          8.699999999999999 Retreat:2
+PGDUMP          8.699999999999999 Retreat:3
+PGSTEP A-115323-t11 seed 1 forced 3 want=(next choice)
+PGDUMP actor=0 candidates=3
+PGDUMP        483.033333333333360 Attach:1Water@1 fx
+PGDUMP        433.033333333333360 Attach:1Water@2 fx
+PGDUMP        433.033333333333360 Attach:1Water@3 fx
+PGSTEP A-115323-t11 seed 2 free 0
+PGDUMP actor=0 candidates=8
+PGDUMP          4.033333333333315 EndTurn
+PGDUMP        373.033333333333303 Attach:1Water@0 zone
+PGDUMP        423.033333333333360 Attach:1Water@1 zone
+PGDUMP        373.033333333333303 Attach:1Water@2 zone
+PGDUMP        364.033333333333303 Attack:Turbo Shark
+PGDUMP        433.033333333333360 Place:Alolan Vulpix@3
+PGDUMP        309.699999999999989 Retreat:1
+PGDUMP        139.699999999999989 Retreat:2
+PGSTEP A-115323-t11 seed 2 free 1
+PGDUMP actor=0 candidates=9
+PGDUMP         63.033333333333317 EndTurn
+PGDUMP        433.033333333333360 Attach:1Water@0 zone
+PGDUMP        483.033333333333360 Attach:1Water@1 zone
+PGDUMP        433.033333333333360 Attach:1Water@2 zone
+PGDUMP        483.033333333333360 Attach:1Water@3 zone
+PGDUMP        433.033333333333360 Attack:Turbo Shark
+PGDUMP        368.699999999999989 Retreat:1
+PGDUMP        198.699999999999989 Retreat:2
+PGDUMP          8.699999999999999 Retreat:3
+PGSTEP A-115323-t11 seed 2 free 2
+PGDUMP actor=0 candidates=5
+PGDUMP        123.033333333333317 EndTurn
+PGDUMP        483.033333333333360 Attack:Turbo Shark
+PGDUMP       -311.300000000000011 Retreat:1
+PGDUMP          8.699999999999999 Retreat:2
+PGDUMP          8.699999999999999 Retreat:3
+PGSTEP A-115323-t11 seed 2 free 3
+PGDUMP actor=0 candidates=3
+PGDUMP        483.033333333333360 Attach:1Water@1 fx
+PGDUMP        433.033333333333360 Attach:1Water@2 fx
+PGDUMP        433.033333333333360 Attach:1Water@3 fx
+PGSTEP A-115323-t11 seed 2 free 4
+PGSTEP A-115323-t11 seed 2 free 5
+PGSTEP A-115323-t11 seed 2 forced 0 want=Place:Alolan Vulpix@3
+PGDUMP actor=0 candidates=8
+PGDUMP          4.033333333333315 EndTurn
+PGDUMP        373.033333333333303 Attach:1Water@0 zone
+PGDUMP        423.033333333333360 Attach:1Water@1 zone
+PGDUMP        373.033333333333303 Attach:1Water@2 zone
+PGDUMP        364.033333333333303 Attack:Turbo Shark
+PGDUMP        433.033333333333360 Place:Alolan Vulpix@3
+PGDUMP        309.699999999999989 Retreat:1
+PGDUMP        139.699999999999989 Retreat:2
+PGSTEP A-115323-t11 seed 2 forced 1 want=Attach:1Water@3 zone
+PGDUMP actor=0 candidates=9
+PGDUMP         63.033333333333317 EndTurn
+PGDUMP        433.033333333333360 Attach:1Water@0 zone
+PGDUMP        483.033333333333360 Attach:1Water@1 zone
+PGDUMP        433.033333333333360 Attach:1Water@2 zone
+PGDUMP        483.033333333333360 Attach:1Water@3 zone
+PGDUMP        433.033333333333360 Attack:Turbo Shark
+PGDUMP        368.699999999999989 Retreat:1
+PGDUMP        198.699999999999989 Retreat:2
+PGDUMP          8.699999999999999 Retreat:3
+PGSTEP A-115323-t11 seed 2 forced 2 want=Attack:Turbo Shark
+PGDUMP actor=0 candidates=5
+PGDUMP        123.033333333333317 EndTurn
+PGDUMP        483.033333333333360 Attack:Turbo Shark
+PGDUMP       -311.300000000000011 Retreat:1
+PGDUMP          8.699999999999999 Retreat:2
+PGDUMP          8.699999999999999 Retreat:3
+PGSTEP A-115323-t11 seed 2 forced 3 want=(next choice)
+PGDUMP actor=0 candidates=3
+PGDUMP        483.033333333333360 Attach:1Water@1 fx
+PGDUMP        433.033333333333360 Attach:1Water@2 fx
+PGDUMP        433.033333333333360 Attach:1Water@3 fx
+PGSTEP A-115323-t11 seed 3 free 0
+PGDUMP actor=0 candidates=8
+PGDUMP          4.033333333333315 EndTurn
+PGDUMP        373.033333333333303 Attach:1Water@0 zone
+PGDUMP        423.033333333333360 Attach:1Water@1 zone
+PGDUMP        373.033333333333303 Attach:1Water@2 zone
+PGDUMP        364.033333333333303 Attack:Turbo Shark
+PGDUMP        433.033333333333360 Place:Alolan Vulpix@3
+PGDUMP        309.699999999999989 Retreat:1
+PGDUMP        139.699999999999989 Retreat:2
+PGSTEP A-115323-t11 seed 3 free 1
+PGDUMP actor=0 candidates=9
+PGDUMP         63.033333333333317 EndTurn
+PGDUMP        433.033333333333360 Attach:1Water@0 zone
+PGDUMP        483.033333333333360 Attach:1Water@1 zone
+PGDUMP        433.033333333333360 Attach:1Water@2 zone
+PGDUMP        483.033333333333360 Attach:1Water@3 zone
+PGDUMP        433.033333333333360 Attack:Turbo Shark
+PGDUMP        368.699999999999989 Retreat:1
+PGDUMP        198.699999999999989 Retreat:2
+PGDUMP          8.699999999999999 Retreat:3
+PGSTEP A-115323-t11 seed 3 free 2
+PGDUMP actor=0 candidates=5
+PGDUMP        123.033333333333317 EndTurn
+PGDUMP        483.033333333333360 Attack:Turbo Shark
+PGDUMP       -311.300000000000011 Retreat:1
+PGDUMP          8.699999999999999 Retreat:2
+PGDUMP          8.699999999999999 Retreat:3
+PGSTEP A-115323-t11 seed 3 free 3
+PGDUMP actor=0 candidates=3
+PGDUMP        483.033333333333360 Attach:1Water@1 fx
+PGDUMP        433.033333333333360 Attach:1Water@2 fx
+PGDUMP        433.033333333333360 Attach:1Water@3 fx
+PGSTEP A-115323-t11 seed 3 free 4
+PGSTEP A-115323-t11 seed 3 free 5
+PGSTEP A-115323-t11 seed 3 forced 0 want=Place:Alolan Vulpix@3
+PGDUMP actor=0 candidates=8
+PGDUMP          4.033333333333315 EndTurn
+PGDUMP        373.033333333333303 Attach:1Water@0 zone
+PGDUMP        423.033333333333360 Attach:1Water@1 zone
+PGDUMP        373.033333333333303 Attach:1Water@2 zone
+PGDUMP        364.033333333333303 Attack:Turbo Shark
+PGDUMP        433.033333333333360 Place:Alolan Vulpix@3
+PGDUMP        309.699999999999989 Retreat:1
+PGDUMP        139.699999999999989 Retreat:2
+PGSTEP A-115323-t11 seed 3 forced 1 want=Attach:1Water@3 zone
+PGDUMP actor=0 candidates=9
+PGDUMP         63.033333333333317 EndTurn
+PGDUMP        433.033333333333360 Attach:1Water@0 zone
+PGDUMP        483.033333333333360 Attach:1Water@1 zone
+PGDUMP        433.033333333333360 Attach:1Water@2 zone
+PGDUMP        483.033333333333360 Attach:1Water@3 zone
+PGDUMP        433.033333333333360 Attack:Turbo Shark
+PGDUMP        368.699999999999989 Retreat:1
+PGDUMP        198.699999999999989 Retreat:2
+PGDUMP          8.699999999999999 Retreat:3
+PGSTEP A-115323-t11 seed 3 forced 2 want=Attack:Turbo Shark
+PGDUMP actor=0 candidates=5
+PGDUMP        123.033333333333317 EndTurn
+PGDUMP        483.033333333333360 Attack:Turbo Shark
+PGDUMP       -311.300000000000011 Retreat:1
+PGDUMP          8.699999999999999 Retreat:2
+PGDUMP          8.699999999999999 Retreat:3
+PGSTEP A-115323-t11 seed 3 forced 3 want=(next choice)
+PGDUMP actor=0 candidates=3
+PGDUMP        483.033333333333360 Attach:1Water@1 fx
+PGDUMP        433.033333333333360 Attach:1Water@2 fx
+PGDUMP        433.033333333333360 Attach:1Water@3 fx
+PGSTEP A-115323-t11 seed 4 free 0
+PGDUMP actor=0 candidates=8
+PGDUMP          4.033333333333315 EndTurn
+PGDUMP        373.033333333333303 Attach:1Water@0 zone
+PGDUMP        423.033333333333360 Attach:1Water@1 zone
+PGDUMP        373.033333333333303 Attach:1Water@2 zone
+PGDUMP        364.033333333333303 Attack:Turbo Shark
+PGDUMP        433.033333333333360 Place:Alolan Vulpix@3
+PGDUMP        309.699999999999989 Retreat:1
+PGDUMP        139.699999999999989 Retreat:2
+PGSTEP A-115323-t11 seed 4 free 1
+PGDUMP actor=0 candidates=9
+PGDUMP         63.033333333333317 EndTurn
+PGDUMP        433.033333333333360 Attach:1Water@0 zone
+PGDUMP        483.033333333333360 Attach:1Water@1 zone
+PGDUMP        433.033333333333360 Attach:1Water@2 zone
+PGDUMP        483.033333333333360 Attach:1Water@3 zone
+PGDUMP        433.033333333333360 Attack:Turbo Shark
+PGDUMP        368.699999999999989 Retreat:1
+PGDUMP        198.699999999999989 Retreat:2
+PGDUMP          8.699999999999999 Retreat:3
+PGSTEP A-115323-t11 seed 4 free 2
+PGDUMP actor=0 candidates=5
+PGDUMP        123.033333333333317 EndTurn
+PGDUMP        483.033333333333360 Attack:Turbo Shark
+PGDUMP       -311.300000000000011 Retreat:1
+PGDUMP          8.699999999999999 Retreat:2
+PGDUMP          8.699999999999999 Retreat:3
+PGSTEP A-115323-t11 seed 4 free 3
+PGDUMP actor=0 candidates=3
+PGDUMP        483.033333333333360 Attach:1Water@1 fx
+PGDUMP        433.033333333333360 Attach:1Water@2 fx
+PGDUMP        433.033333333333360 Attach:1Water@3 fx
+PGSTEP A-115323-t11 seed 4 free 4
+PGSTEP A-115323-t11 seed 4 free 5
+PGSTEP A-115323-t11 seed 4 forced 0 want=Place:Alolan Vulpix@3
+PGDUMP actor=0 candidates=8
+PGDUMP          4.033333333333315 EndTurn
+PGDUMP        373.033333333333303 Attach:1Water@0 zone
+PGDUMP        423.033333333333360 Attach:1Water@1 zone
+PGDUMP        373.033333333333303 Attach:1Water@2 zone
+PGDUMP        364.033333333333303 Attack:Turbo Shark
+PGDUMP        433.033333333333360 Place:Alolan Vulpix@3
+PGDUMP        309.699999999999989 Retreat:1
+PGDUMP        139.699999999999989 Retreat:2
+PGSTEP A-115323-t11 seed 4 forced 1 want=Attach:1Water@3 zone
+PGDUMP actor=0 candidates=9
+PGDUMP         63.033333333333317 EndTurn
+PGDUMP        433.033333333333360 Attach:1Water@0 zone
+PGDUMP        483.033333333333360 Attach:1Water@1 zone
+PGDUMP        433.033333333333360 Attach:1Water@2 zone
+PGDUMP        483.033333333333360 Attach:1Water@3 zone
+PGDUMP        433.033333333333360 Attack:Turbo Shark
+PGDUMP        368.699999999999989 Retreat:1
+PGDUMP        198.699999999999989 Retreat:2
+PGDUMP          8.699999999999999 Retreat:3
+PGSTEP A-115323-t11 seed 4 forced 2 want=Attack:Turbo Shark
+PGDUMP actor=0 candidates=5
+PGDUMP        123.033333333333317 EndTurn
+PGDUMP        483.033333333333360 Attack:Turbo Shark
+PGDUMP       -311.300000000000011 Retreat:1
+PGDUMP          8.699999999999999 Retreat:2
+PGDUMP          8.699999999999999 Retreat:3
+PGSTEP A-115323-t11 seed 4 forced 3 want=(next choice)
+PGDUMP actor=0 candidates=3
+PGDUMP        483.033333333333360 Attach:1Water@1 fx
+PGDUMP        433.033333333333360 Attach:1Water@2 fx
+PGDUMP        433.033333333333360 Attach:1Water@3 fx
+PGSTEP A-115323-t11 seed 5 free 0
+PGDUMP actor=0 candidates=8
+PGDUMP          4.033333333333315 EndTurn
+PGDUMP        373.033333333333303 Attach:1Water@0 zone
+PGDUMP        423.033333333333360 Attach:1Water@1 zone
+PGDUMP        373.033333333333303 Attach:1Water@2 zone
+PGDUMP        364.033333333333303 Attack:Turbo Shark
+PGDUMP        433.033333333333360 Place:Alolan Vulpix@3
+PGDUMP        309.699999999999989 Retreat:1
+PGDUMP        139.699999999999989 Retreat:2
+PGSTEP A-115323-t11 seed 5 free 1
+PGDUMP actor=0 candidates=9
+PGDUMP         63.033333333333317 EndTurn
+PGDUMP        433.033333333333360 Attach:1Water@0 zone
+PGDUMP        483.033333333333360 Attach:1Water@1 zone
+PGDUMP        433.033333333333360 Attach:1Water@2 zone
+PGDUMP        483.033333333333360 Attach:1Water@3 zone
+PGDUMP        433.033333333333360 Attack:Turbo Shark
+PGDUMP        368.699999999999989 Retreat:1
+PGDUMP        198.699999999999989 Retreat:2
+PGDUMP          8.699999999999999 Retreat:3
+PGSTEP A-115323-t11 seed 5 free 2
+PGDUMP actor=0 candidates=5
+PGDUMP        123.033333333333317 EndTurn
+PGDUMP        483.033333333333360 Attack:Turbo Shark
+PGDUMP       -311.300000000000011 Retreat:1
+PGDUMP          8.699999999999999 Retreat:2
+PGDUMP          8.699999999999999 Retreat:3
+PGSTEP A-115323-t11 seed 5 free 3
+PGDUMP actor=0 candidates=3
+PGDUMP        483.033333333333360 Attach:1Water@1 fx
+PGDUMP        433.033333333333360 Attach:1Water@2 fx
+PGDUMP        433.033333333333360 Attach:1Water@3 fx
+PGSTEP A-115323-t11 seed 5 free 4
+PGSTEP A-115323-t11 seed 5 free 5
+PGSTEP A-115323-t11 seed 5 forced 0 want=Place:Alolan Vulpix@3
+PGDUMP actor=0 candidates=8
+PGDUMP          4.033333333333315 EndTurn
+PGDUMP        373.033333333333303 Attach:1Water@0 zone
+PGDUMP        423.033333333333360 Attach:1Water@1 zone
+PGDUMP        373.033333333333303 Attach:1Water@2 zone
+PGDUMP        364.033333333333303 Attack:Turbo Shark
+PGDUMP        433.033333333333360 Place:Alolan Vulpix@3
+PGDUMP        309.699999999999989 Retreat:1
+PGDUMP        139.699999999999989 Retreat:2
+PGSTEP A-115323-t11 seed 5 forced 1 want=Attach:1Water@3 zone
+PGDUMP actor=0 candidates=9
+PGDUMP         63.033333333333317 EndTurn
+PGDUMP        433.033333333333360 Attach:1Water@0 zone
+PGDUMP        483.033333333333360 Attach:1Water@1 zone
+PGDUMP        433.033333333333360 Attach:1Water@2 zone
+PGDUMP        483.033333333333360 Attach:1Water@3 zone
+PGDUMP        433.033333333333360 Attack:Turbo Shark
+PGDUMP        368.699999999999989 Retreat:1
+PGDUMP        198.699999999999989 Retreat:2
+PGDUMP          8.699999999999999 Retreat:3
+PGSTEP A-115323-t11 seed 5 forced 2 want=Attack:Turbo Shark
+PGDUMP actor=0 candidates=5
+PGDUMP        123.033333333333317 EndTurn
+PGDUMP        483.033333333333360 Attack:Turbo Shark
+PGDUMP       -311.300000000000011 Retreat:1
+PGDUMP          8.699999999999999 Retreat:2
+PGDUMP          8.699999999999999 Retreat:3
+PGSTEP A-115323-t11 seed 5 forced 3 want=(next choice)
+PGDUMP actor=0 candidates=3
+PGDUMP        483.033333333333360 Attach:1Water@1 fx
+PGDUMP        433.033333333333360 Attach:1Water@2 fx
+PGDUMP        433.033333333333360 Attach:1Water@3 fx
+PGSTEP A-115323-t11 seed 6 free 0
+PGDUMP actor=0 candidates=8
+PGDUMP          4.033333333333315 EndTurn
+PGDUMP        373.033333333333303 Attach:1Water@0 zone
+PGDUMP        423.033333333333360 Attach:1Water@1 zone
+PGDUMP        373.033333333333303 Attach:1Water@2 zone
+PGDUMP        364.033333333333303 Attack:Turbo Shark
+PGDUMP        433.033333333333360 Place:Alolan Vulpix@3
+PGDUMP        309.699999999999989 Retreat:1
+PGDUMP        139.699999999999989 Retreat:2
+PGSTEP A-115323-t11 seed 6 free 1
+PGDUMP actor=0 candidates=9
+PGDUMP         63.033333333333317 EndTurn
+PGDUMP        433.033333333333360 Attach:1Water@0 zone
+PGDUMP        483.033333333333360 Attach:1Water@1 zone
+PGDUMP        433.033333333333360 Attach:1Water@2 zone
+PGDUMP        483.033333333333360 Attach:1Water@3 zone
+PGDUMP        433.033333333333360 Attack:Turbo Shark
+PGDUMP        368.699999999999989 Retreat:1
+PGDUMP        198.699999999999989 Retreat:2
+PGDUMP          8.699999999999999 Retreat:3
+PGSTEP A-115323-t11 seed 6 free 2
+PGDUMP actor=0 candidates=5
+PGDUMP        123.033333333333317 EndTurn
+PGDUMP        483.033333333333360 Attack:Turbo Shark
+PGDUMP       -311.300000000000011 Retreat:1
+PGDUMP          8.699999999999999 Retreat:2
+PGDUMP          8.699999999999999 Retreat:3
+PGSTEP A-115323-t11 seed 6 free 3
+PGDUMP actor=0 candidates=3
+PGDUMP        483.033333333333360 Attach:1Water@1 fx
+PGDUMP        433.033333333333360 Attach:1Water@2 fx
+PGDUMP        433.033333333333360 Attach:1Water@3 fx
+PGSTEP A-115323-t11 seed 6 free 4
+PGSTEP A-115323-t11 seed 6 free 5
+PGSTEP A-115323-t11 seed 6 forced 0 want=Place:Alolan Vulpix@3
+PGDUMP actor=0 candidates=8
+PGDUMP          4.033333333333315 EndTurn
+PGDUMP        373.033333333333303 Attach:1Water@0 zone
+PGDUMP        423.033333333333360 Attach:1Water@1 zone
+PGDUMP        373.033333333333303 Attach:1Water@2 zone
+PGDUMP        364.033333333333303 Attack:Turbo Shark
+PGDUMP        433.033333333333360 Place:Alolan Vulpix@3
+PGDUMP        309.699999999999989 Retreat:1
+PGDUMP        139.699999999999989 Retreat:2
+PGSTEP A-115323-t11 seed 6 forced 1 want=Attach:1Water@3 zone
+PGDUMP actor=0 candidates=9
+PGDUMP         63.033333333333317 EndTurn
+PGDUMP        433.033333333333360 Attach:1Water@0 zone
+PGDUMP        483.033333333333360 Attach:1Water@1 zone
+PGDUMP        433.033333333333360 Attach:1Water@2 zone
+PGDUMP        483.033333333333360 Attach:1Water@3 zone
+PGDUMP        433.033333333333360 Attack:Turbo Shark
+PGDUMP        368.699999999999989 Retreat:1
+PGDUMP        198.699999999999989 Retreat:2
+PGDUMP          8.699999999999999 Retreat:3
+PGSTEP A-115323-t11 seed 6 forced 2 want=Attack:Turbo Shark
+PGDUMP actor=0 candidates=5
+PGDUMP        123.033333333333317 EndTurn
+PGDUMP        483.033333333333360 Attack:Turbo Shark
+PGDUMP       -311.300000000000011 Retreat:1
+PGDUMP          8.699999999999999 Retreat:2
+PGDUMP          8.699999999999999 Retreat:3
+PGSTEP A-115323-t11 seed 6 forced 3 want=(next choice)
+PGDUMP actor=0 candidates=3
+PGDUMP        483.033333333333360 Attach:1Water@1 fx
+PGDUMP        433.033333333333360 Attach:1Water@2 fx
+PGDUMP        433.033333333333360 Attach:1Water@3 fx
+PGSTEP A-115323-t11 seed 7 free 0
+PGDUMP actor=0 candidates=8
+PGDUMP          4.033333333333315 EndTurn
+PGDUMP        373.033333333333303 Attach:1Water@0 zone
+PGDUMP        423.033333333333360 Attach:1Water@1 zone
+PGDUMP        373.033333333333303 Attach:1Water@2 zone
+PGDUMP        364.033333333333303 Attack:Turbo Shark
+PGDUMP        433.033333333333360 Place:Alolan Vulpix@3
+PGDUMP        309.699999999999989 Retreat:1
+PGDUMP        139.699999999999989 Retreat:2
+PGSTEP A-115323-t11 seed 7 free 1
+PGDUMP actor=0 candidates=9
+PGDUMP         63.033333333333317 EndTurn
+PGDUMP        433.033333333333360 Attach:1Water@0 zone
+PGDUMP        483.033333333333360 Attach:1Water@1 zone
+PGDUMP        433.033333333333360 Attach:1Water@2 zone
+PGDUMP        483.033333333333360 Attach:1Water@3 zone
+PGDUMP        433.033333333333360 Attack:Turbo Shark
+PGDUMP        368.699999999999989 Retreat:1
+PGDUMP        198.699999999999989 Retreat:2
+PGDUMP          8.699999999999999 Retreat:3
+PGSTEP A-115323-t11 seed 7 free 2
+PGDUMP actor=0 candidates=5
+PGDUMP        123.033333333333317 EndTurn
+PGDUMP        483.033333333333360 Attack:Turbo Shark
+PGDUMP       -311.300000000000011 Retreat:1
+PGDUMP          8.699999999999999 Retreat:2
+PGDUMP          8.699999999999999 Retreat:3
+PGSTEP A-115323-t11 seed 7 free 3
+PGDUMP actor=0 candidates=3
+PGDUMP        483.033333333333360 Attach:1Water@1 fx
+PGDUMP        433.033333333333360 Attach:1Water@2 fx
+PGDUMP        433.033333333333360 Attach:1Water@3 fx
+PGSTEP A-115323-t11 seed 7 free 4
+PGSTEP A-115323-t11 seed 7 free 5
+PGSTEP A-115323-t11 seed 7 forced 0 want=Place:Alolan Vulpix@3
+PGDUMP actor=0 candidates=8
+PGDUMP          4.033333333333315 EndTurn
+PGDUMP        373.033333333333303 Attach:1Water@0 zone
+PGDUMP        423.033333333333360 Attach:1Water@1 zone
+PGDUMP        373.033333333333303 Attach:1Water@2 zone
+PGDUMP        364.033333333333303 Attack:Turbo Shark
+PGDUMP        433.033333333333360 Place:Alolan Vulpix@3
+PGDUMP        309.699999999999989 Retreat:1
+PGDUMP        139.699999999999989 Retreat:2
+PGSTEP A-115323-t11 seed 7 forced 1 want=Attach:1Water@3 zone
+PGDUMP actor=0 candidates=9
+PGDUMP         63.033333333333317 EndTurn
+PGDUMP        433.033333333333360 Attach:1Water@0 zone
+PGDUMP        483.033333333333360 Attach:1Water@1 zone
+PGDUMP        433.033333333333360 Attach:1Water@2 zone
+PGDUMP        483.033333333333360 Attach:1Water@3 zone
+PGDUMP        433.033333333333360 Attack:Turbo Shark
+PGDUMP        368.699999999999989 Retreat:1
+PGDUMP        198.699999999999989 Retreat:2
+PGDUMP          8.699999999999999 Retreat:3
+PGSTEP A-115323-t11 seed 7 forced 2 want=Attack:Turbo Shark
+PGDUMP actor=0 candidates=5
+PGDUMP        123.033333333333317 EndTurn
+PGDUMP        483.033333333333360 Attack:Turbo Shark
+PGDUMP       -311.300000000000011 Retreat:1
+PGDUMP          8.699999999999999 Retreat:2
+PGDUMP          8.699999999999999 Retreat:3
+PGSTEP A-115323-t11 seed 7 forced 3 want=(next choice)
+PGDUMP actor=0 candidates=3
+PGDUMP        483.033333333333360 Attach:1Water@1 fx
+PGDUMP        433.033333333333360 Attach:1Water@2 fx
+PGDUMP        433.033333333333360 Attach:1Water@3 fx
+PGSTEP A-115323-t11 seed 8 free 0
+PGDUMP actor=0 candidates=8
+PGDUMP          4.033333333333315 EndTurn
+PGDUMP        373.033333333333303 Attach:1Water@0 zone
+PGDUMP        423.033333333333360 Attach:1Water@1 zone
+PGDUMP        373.033333333333303 Attach:1Water@2 zone
+PGDUMP        364.033333333333303 Attack:Turbo Shark
+PGDUMP        433.033333333333360 Place:Alolan Vulpix@3
+PGDUMP        309.699999999999989 Retreat:1
+PGDUMP        139.699999999999989 Retreat:2
+PGSTEP A-115323-t11 seed 8 free 1
+PGDUMP actor=0 candidates=9
+PGDUMP         63.033333333333317 EndTurn
+PGDUMP        433.033333333333360 Attach:1Water@0 zone
+PGDUMP        483.033333333333360 Attach:1Water@1 zone
+PGDUMP        433.033333333333360 Attach:1Water@2 zone
+PGDUMP        483.033333333333360 Attach:1Water@3 zone
+PGDUMP        433.033333333333360 Attack:Turbo Shark
+PGDUMP        368.699999999999989 Retreat:1
+PGDUMP        198.699999999999989 Retreat:2
+PGDUMP          8.699999999999999 Retreat:3
+PGSTEP A-115323-t11 seed 8 free 2
+PGDUMP actor=0 candidates=5
+PGDUMP        123.033333333333317 EndTurn
+PGDUMP        483.033333333333360 Attack:Turbo Shark
+PGDUMP       -311.300000000000011 Retreat:1
+PGDUMP          8.699999999999999 Retreat:2
+PGDUMP          8.699999999999999 Retreat:3
+PGSTEP A-115323-t11 seed 8 free 3
+PGDUMP actor=0 candidates=3
+PGDUMP        483.033333333333360 Attach:1Water@1 fx
+PGDUMP        433.033333333333360 Attach:1Water@2 fx
+PGDUMP        433.033333333333360 Attach:1Water@3 fx
+PGSTEP A-115323-t11 seed 8 free 4
+PGSTEP A-115323-t11 seed 8 free 5
+PGSTEP A-115323-t11 seed 8 forced 0 want=Place:Alolan Vulpix@3
+PGDUMP actor=0 candidates=8
+PGDUMP          4.033333333333315 EndTurn
+PGDUMP        373.033333333333303 Attach:1Water@0 zone
+PGDUMP        423.033333333333360 Attach:1Water@1 zone
+PGDUMP        373.033333333333303 Attach:1Water@2 zone
+PGDUMP        364.033333333333303 Attack:Turbo Shark
+PGDUMP        433.033333333333360 Place:Alolan Vulpix@3
+PGDUMP        309.699999999999989 Retreat:1
+PGDUMP        139.699999999999989 Retreat:2
+PGSTEP A-115323-t11 seed 8 forced 1 want=Attach:1Water@3 zone
+PGDUMP actor=0 candidates=9
+PGDUMP         63.033333333333317 EndTurn
+PGDUMP        433.033333333333360 Attach:1Water@0 zone
+PGDUMP        483.033333333333360 Attach:1Water@1 zone
+PGDUMP        433.033333333333360 Attach:1Water@2 zone
+PGDUMP        483.033333333333360 Attach:1Water@3 zone
+PGDUMP        433.033333333333360 Attack:Turbo Shark
+PGDUMP        368.699999999999989 Retreat:1
+PGDUMP        198.699999999999989 Retreat:2
+PGDUMP          8.699999999999999 Retreat:3
+PGSTEP A-115323-t11 seed 8 forced 2 want=Attack:Turbo Shark
+PGDUMP actor=0 candidates=5
+PGDUMP        123.033333333333317 EndTurn
+PGDUMP        483.033333333333360 Attack:Turbo Shark
+PGDUMP       -311.300000000000011 Retreat:1
+PGDUMP          8.699999999999999 Retreat:2
+PGDUMP          8.699999999999999 Retreat:3
+PGSTEP A-115323-t11 seed 8 forced 3 want=(next choice)
+PGDUMP actor=0 candidates=3
+PGDUMP        483.033333333333360 Attach:1Water@1 fx
+PGDUMP        433.033333333333360 Attach:1Water@2 fx
+PGDUMP        433.033333333333360 Attach:1Water@3 fx
+PGSTEP A-115323-t11 seed 9 free 0
+PGDUMP actor=0 candidates=8
+PGDUMP          4.033333333333315 EndTurn
+PGDUMP        373.033333333333303 Attach:1Water@0 zone
+PGDUMP        423.033333333333360 Attach:1Water@1 zone
+PGDUMP        373.033333333333303 Attach:1Water@2 zone
+PGDUMP        364.033333333333303 Attack:Turbo Shark
+PGDUMP        433.033333333333360 Place:Alolan Vulpix@3
+PGDUMP        309.699999999999989 Retreat:1
+PGDUMP        139.699999999999989 Retreat:2
+PGSTEP A-115323-t11 seed 9 free 1
+PGDUMP actor=0 candidates=9
+PGDUMP         63.033333333333317 EndTurn
+PGDUMP        433.033333333333360 Attach:1Water@0 zone
+PGDUMP        483.033333333333360 Attach:1Water@1 zone
+PGDUMP        433.033333333333360 Attach:1Water@2 zone
+PGDUMP        483.033333333333360 Attach:1Water@3 zone
+PGDUMP        433.033333333333360 Attack:Turbo Shark
+PGDUMP        368.699999999999989 Retreat:1
+PGDUMP        198.699999999999989 Retreat:2
+PGDUMP          8.699999999999999 Retreat:3
+PGSTEP A-115323-t11 seed 9 free 2
+PGDUMP actor=0 candidates=5
+PGDUMP        123.033333333333317 EndTurn
+PGDUMP        483.033333333333360 Attack:Turbo Shark
+PGDUMP       -311.300000000000011 Retreat:1
+PGDUMP          8.699999999999999 Retreat:2
+PGDUMP          8.699999999999999 Retreat:3
+PGSTEP A-115323-t11 seed 9 free 3
+PGDUMP actor=0 candidates=3
+PGDUMP        483.033333333333360 Attach:1Water@1 fx
+PGDUMP        433.033333333333360 Attach:1Water@2 fx
+PGDUMP        433.033333333333360 Attach:1Water@3 fx
+PGSTEP A-115323-t11 seed 9 free 4
+PGSTEP A-115323-t11 seed 9 free 5
+PGSTEP A-115323-t11 seed 9 forced 0 want=Place:Alolan Vulpix@3
+PGDUMP actor=0 candidates=8
+PGDUMP          4.033333333333315 EndTurn
+PGDUMP        373.033333333333303 Attach:1Water@0 zone
+PGDUMP        423.033333333333360 Attach:1Water@1 zone
+PGDUMP        373.033333333333303 Attach:1Water@2 zone
+PGDUMP        364.033333333333303 Attack:Turbo Shark
+PGDUMP        433.033333333333360 Place:Alolan Vulpix@3
+PGDUMP        309.699999999999989 Retreat:1
+PGDUMP        139.699999999999989 Retreat:2
+PGSTEP A-115323-t11 seed 9 forced 1 want=Attach:1Water@3 zone
+PGDUMP actor=0 candidates=9
+PGDUMP         63.033333333333317 EndTurn
+PGDUMP        433.033333333333360 Attach:1Water@0 zone
+PGDUMP        483.033333333333360 Attach:1Water@1 zone
+PGDUMP        433.033333333333360 Attach:1Water@2 zone
+PGDUMP        483.033333333333360 Attach:1Water@3 zone
+PGDUMP        433.033333333333360 Attack:Turbo Shark
+PGDUMP        368.699999999999989 Retreat:1
+PGDUMP        198.699999999999989 Retreat:2
+PGDUMP          8.699999999999999 Retreat:3
+PGSTEP A-115323-t11 seed 9 forced 2 want=Attack:Turbo Shark
+PGDUMP actor=0 candidates=5
+PGDUMP        123.033333333333317 EndTurn
+PGDUMP        483.033333333333360 Attack:Turbo Shark
+PGDUMP       -311.300000000000011 Retreat:1
+PGDUMP          8.699999999999999 Retreat:2
+PGDUMP          8.699999999999999 Retreat:3
+PGSTEP A-115323-t11 seed 9 forced 3 want=(next choice)
+PGDUMP actor=0 candidates=3
+PGDUMP        483.033333333333360 Attach:1Water@1 fx
+PGDUMP        433.033333333333360 Attach:1Water@2 fx
+PGDUMP        433.033333333333360 Attach:1Water@3 fx
+PGSTEP A-115323-t11 seed 10 free 0
+PGDUMP actor=0 candidates=8
+PGDUMP          4.033333333333315 EndTurn
+PGDUMP        373.033333333333303 Attach:1Water@0 zone
+PGDUMP        423.033333333333360 Attach:1Water@1 zone
+PGDUMP        373.033333333333303 Attach:1Water@2 zone
+PGDUMP        364.033333333333303 Attack:Turbo Shark
+PGDUMP        433.033333333333360 Place:Alolan Vulpix@3
+PGDUMP        309.699999999999989 Retreat:1
+PGDUMP        139.699999999999989 Retreat:2
+PGSTEP A-115323-t11 seed 10 free 1
+PGDUMP actor=0 candidates=9
+PGDUMP         63.033333333333317 EndTurn
+PGDUMP        433.033333333333360 Attach:1Water@0 zone
+PGDUMP        483.033333333333360 Attach:1Water@1 zone
+PGDUMP        433.033333333333360 Attach:1Water@2 zone
+PGDUMP        483.033333333333360 Attach:1Water@3 zone
+PGDUMP        433.033333333333360 Attack:Turbo Shark
+PGDUMP        368.699999999999989 Retreat:1
+PGDUMP        198.699999999999989 Retreat:2
+PGDUMP          8.699999999999999 Retreat:3
+PGSTEP A-115323-t11 seed 10 free 2
+PGDUMP actor=0 candidates=5
+PGDUMP        123.033333333333317 EndTurn
+PGDUMP        483.033333333333360 Attack:Turbo Shark
+PGDUMP       -311.300000000000011 Retreat:1
+PGDUMP          8.699999999999999 Retreat:2
+PGDUMP          8.699999999999999 Retreat:3
+PGSTEP A-115323-t11 seed 10 free 3
+PGDUMP actor=0 candidates=3
+PGDUMP        483.033333333333360 Attach:1Water@1 fx
+PGDUMP        433.033333333333360 Attach:1Water@2 fx
+PGDUMP        433.033333333333360 Attach:1Water@3 fx
+PGSTEP A-115323-t11 seed 10 free 4
+PGSTEP A-115323-t11 seed 10 free 5
+PGSTEP A-115323-t11 seed 10 forced 0 want=Place:Alolan Vulpix@3
+PGDUMP actor=0 candidates=8
+PGDUMP          4.033333333333315 EndTurn
+PGDUMP        373.033333333333303 Attach:1Water@0 zone
+PGDUMP        423.033333333333360 Attach:1Water@1 zone
+PGDUMP        373.033333333333303 Attach:1Water@2 zone
+PGDUMP        364.033333333333303 Attack:Turbo Shark
+PGDUMP        433.033333333333360 Place:Alolan Vulpix@3
+PGDUMP        309.699999999999989 Retreat:1
+PGDUMP        139.699999999999989 Retreat:2
+PGSTEP A-115323-t11 seed 10 forced 1 want=Attach:1Water@3 zone
+PGDUMP actor=0 candidates=9
+PGDUMP         63.033333333333317 EndTurn
+PGDUMP        433.033333333333360 Attach:1Water@0 zone
+PGDUMP        483.033333333333360 Attach:1Water@1 zone
+PGDUMP        433.033333333333360 Attach:1Water@2 zone
+PGDUMP        483.033333333333360 Attach:1Water@3 zone
+PGDUMP        433.033333333333360 Attack:Turbo Shark
+PGDUMP        368.699999999999989 Retreat:1
+PGDUMP        198.699999999999989 Retreat:2
+PGDUMP          8.699999999999999 Retreat:3
+PGSTEP A-115323-t11 seed 10 forced 2 want=Attack:Turbo Shark
+PGDUMP actor=0 candidates=5
+PGDUMP        123.033333333333317 EndTurn
+PGDUMP        483.033333333333360 Attack:Turbo Shark
+PGDUMP       -311.300000000000011 Retreat:1
+PGDUMP          8.699999999999999 Retreat:2
+PGDUMP          8.699999999999999 Retreat:3
+PGSTEP A-115323-t11 seed 10 forced 3 want=(next choice)
+PGDUMP actor=0 candidates=3
+PGDUMP        483.033333333333360 Attach:1Water@1 fx
+PGDUMP        433.033333333333360 Attach:1Water@2 fx
+PGDUMP        433.033333333333360 Attach:1Water@3 fx
+PGSTEP A-115323-t11 seed 11 free 0
+PGDUMP actor=0 candidates=8
+PGDUMP          4.033333333333315 EndTurn
+PGDUMP        373.033333333333303 Attach:1Water@0 zone
+PGDUMP        423.033333333333360 Attach:1Water@1 zone
+PGDUMP        373.033333333333303 Attach:1Water@2 zone
+PGDUMP        364.033333333333303 Attack:Turbo Shark
+PGDUMP        433.033333333333360 Place:Alolan Vulpix@3
+PGDUMP        309.699999999999989 Retreat:1
+PGDUMP        139.699999999999989 Retreat:2
+PGSTEP A-115323-t11 seed 11 free 1
+PGDUMP actor=0 candidates=9
+PGDUMP         63.033333333333317 EndTurn
+PGDUMP        433.033333333333360 Attach:1Water@0 zone
+PGDUMP        483.033333333333360 Attach:1Water@1 zone
+PGDUMP        433.033333333333360 Attach:1Water@2 zone
+PGDUMP        483.033333333333360 Attach:1Water@3 zone
+PGDUMP        433.033333333333360 Attack:Turbo Shark
+PGDUMP        368.699999999999989 Retreat:1
+PGDUMP        198.699999999999989 Retreat:2
+PGDUMP          8.699999999999999 Retreat:3
+PGSTEP A-115323-t11 seed 11 free 2
+PGDUMP actor=0 candidates=5
+PGDUMP        123.033333333333317 EndTurn
+PGDUMP        483.033333333333360 Attack:Turbo Shark
+PGDUMP       -311.300000000000011 Retreat:1
+PGDUMP          8.699999999999999 Retreat:2
+PGDUMP          8.699999999999999 Retreat:3
+PGSTEP A-115323-t11 seed 11 free 3
+PGDUMP actor=0 candidates=3
+PGDUMP        483.033333333333360 Attach:1Water@1 fx
+PGDUMP        433.033333333333360 Attach:1Water@2 fx
+PGDUMP        433.033333333333360 Attach:1Water@3 fx
+PGSTEP A-115323-t11 seed 11 free 4
+PGSTEP A-115323-t11 seed 11 free 5
+PGSTEP A-115323-t11 seed 11 forced 0 want=Place:Alolan Vulpix@3
+PGDUMP actor=0 candidates=8
+PGDUMP          4.033333333333315 EndTurn
+PGDUMP        373.033333333333303 Attach:1Water@0 zone
+PGDUMP        423.033333333333360 Attach:1Water@1 zone
+PGDUMP        373.033333333333303 Attach:1Water@2 zone
+PGDUMP        364.033333333333303 Attack:Turbo Shark
+PGDUMP        433.033333333333360 Place:Alolan Vulpix@3
+PGDUMP        309.699999999999989 Retreat:1
+PGDUMP        139.699999999999989 Retreat:2
+PGSTEP A-115323-t11 seed 11 forced 1 want=Attach:1Water@3 zone
+PGDUMP actor=0 candidates=9
+PGDUMP         63.033333333333317 EndTurn
+PGDUMP        433.033333333333360 Attach:1Water@0 zone
+PGDUMP        483.033333333333360 Attach:1Water@1 zone
+PGDUMP        433.033333333333360 Attach:1Water@2 zone
+PGDUMP        483.033333333333360 Attach:1Water@3 zone
+PGDUMP        433.033333333333360 Attack:Turbo Shark
+PGDUMP        368.699999999999989 Retreat:1
+PGDUMP        198.699999999999989 Retreat:2
+PGDUMP          8.699999999999999 Retreat:3
+PGSTEP A-115323-t11 seed 11 forced 2 want=Attack:Turbo Shark
+PGDUMP actor=0 candidates=5
+PGDUMP        123.033333333333317 EndTurn
+PGDUMP        483.033333333333360 Attack:Turbo Shark
+PGDUMP       -311.300000000000011 Retreat:1
+PGDUMP          8.699999999999999 Retreat:2
+PGDUMP          8.699999999999999 Retreat:3
+PGSTEP A-115323-t11 seed 11 forced 3 want=(next choice)
+PGDUMP actor=0 candidates=3
+PGDUMP        483.033333333333360 Attach:1Water@1 fx
+PGDUMP        433.033333333333360 Attach:1Water@2 fx
+PGDUMP        433.033333333333360 Attach:1Water@3 fx
+PGSTEP A-115323-t11 seed 12 free 0
+PGDUMP actor=0 candidates=8
+PGDUMP          4.033333333333315 EndTurn
+PGDUMP        373.033333333333303 Attach:1Water@0 zone
+PGDUMP        423.033333333333360 Attach:1Water@1 zone
+PGDUMP        373.033333333333303 Attach:1Water@2 zone
+PGDUMP        364.033333333333303 Attack:Turbo Shark
+PGDUMP        433.033333333333360 Place:Alolan Vulpix@3
+PGDUMP        309.699999999999989 Retreat:1
+PGDUMP        139.699999999999989 Retreat:2
+PGSTEP A-115323-t11 seed 12 free 1
+PGDUMP actor=0 candidates=9
+PGDUMP         63.033333333333317 EndTurn
+PGDUMP        433.033333333333360 Attach:1Water@0 zone
+PGDUMP        483.033333333333360 Attach:1Water@1 zone
+PGDUMP        433.033333333333360 Attach:1Water@2 zone
+PGDUMP        483.033333333333360 Attach:1Water@3 zone
+PGDUMP        433.033333333333360 Attack:Turbo Shark
+PGDUMP        368.699999999999989 Retreat:1
+PGDUMP        198.699999999999989 Retreat:2
+PGDUMP          8.699999999999999 Retreat:3
+PGSTEP A-115323-t11 seed 12 free 2
+PGDUMP actor=0 candidates=5
+PGDUMP        123.033333333333317 EndTurn
+PGDUMP        483.033333333333360 Attack:Turbo Shark
+PGDUMP       -311.300000000000011 Retreat:1
+PGDUMP          8.699999999999999 Retreat:2
+PGDUMP          8.699999999999999 Retreat:3
+PGSTEP A-115323-t11 seed 12 free 3
+PGDUMP actor=0 candidates=3
+PGDUMP        483.033333333333360 Attach:1Water@1 fx
+PGDUMP        433.033333333333360 Attach:1Water@2 fx
+PGDUMP        433.033333333333360 Attach:1Water@3 fx
+PGSTEP A-115323-t11 seed 12 free 4
+PGSTEP A-115323-t11 seed 12 free 5
+PGSTEP A-115323-t11 seed 12 forced 0 want=Place:Alolan Vulpix@3
+PGDUMP actor=0 candidates=8
+PGDUMP          4.033333333333315 EndTurn
+PGDUMP        373.033333333333303 Attach:1Water@0 zone
+PGDUMP        423.033333333333360 Attach:1Water@1 zone
+PGDUMP        373.033333333333303 Attach:1Water@2 zone
+PGDUMP        364.033333333333303 Attack:Turbo Shark
+PGDUMP        433.033333333333360 Place:Alolan Vulpix@3
+PGDUMP        309.699999999999989 Retreat:1
+PGDUMP        139.699999999999989 Retreat:2
+PGSTEP A-115323-t11 seed 12 forced 1 want=Attach:1Water@3 zone
+PGDUMP actor=0 candidates=9
+PGDUMP         63.033333333333317 EndTurn
+PGDUMP        433.033333333333360 Attach:1Water@0 zone
+PGDUMP        483.033333333333360 Attach:1Water@1 zone
+PGDUMP        433.033333333333360 Attach:1Water@2 zone
+PGDUMP        483.033333333333360 Attach:1Water@3 zone
+PGDUMP        433.033333333333360 Attack:Turbo Shark
+PGDUMP        368.699999999999989 Retreat:1
+PGDUMP        198.699999999999989 Retreat:2
+PGDUMP          8.699999999999999 Retreat:3
+PGSTEP A-115323-t11 seed 12 forced 2 want=Attack:Turbo Shark
+PGDUMP actor=0 candidates=5
+PGDUMP        123.033333333333317 EndTurn
+PGDUMP        483.033333333333360 Attack:Turbo Shark
+PGDUMP       -311.300000000000011 Retreat:1
+PGDUMP          8.699999999999999 Retreat:2
+PGDUMP          8.699999999999999 Retreat:3
+PGSTEP A-115323-t11 seed 12 forced 3 want=(next choice)
+PGDUMP actor=0 candidates=3
+PGDUMP        483.033333333333360 Attach:1Water@1 fx
+PGDUMP        433.033333333333360 Attach:1Water@2 fx
+PGDUMP        433.033333333333360 Attach:1Water@3 fx

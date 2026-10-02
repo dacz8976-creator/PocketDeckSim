@@ -7,7 +7,7 @@ D = os.environ.get('PGD_DIR', '/home/dacz8976/pgd')
 RUNS = os.environ.get('PGD_RUNS', f'{D}/runs')  # where the pg_pos output of the pilot being reported lives
 OUT = sys.argv[1]
 os.makedirs(OUT, exist_ok=True)
-POS = json.load(open(f'{D}/positions_A.json', encoding='utf-8'))
+POS = json.load(open(os.environ.get('PGD_POSITIONS', f'{D}/positions_A.json'), encoding='utf-8'))
 BYID = {p['id']: p for p in POS}
 GAMES = {  # game stem -> (result, order, opponent, review folder)
     '143309': ('won 3-0 (normal win)', 'second', 'もつ (Psychic: Sigilyph, Ralts line, Mewtwo ex)'),
@@ -163,7 +163,7 @@ for p in POS:
                      cat=category(his, list(modal))[0], tags=category(his, list(modal))[1], desc=category(his, list(modal))[2],
                      gap=(statistics.mean(gaps) if gaps else None),
                      plans=[(list(k), c) for k, c in collections.Counter(kms).most_common()], summary=posline['summary'], notes=p['notes'],
-                     mid_turn=pid.endswith('b'), forced=bool(forced)))
+                     mid_turn=pid.endswith('b'), forced=bool(forced), milestones=p.get('milestones', []), heldout=p.get('heldout', False)))
 
 json.dump(rows, open(f'{OUT}/summary.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
 
@@ -178,20 +178,21 @@ def verdict(r):
 md = []
 for g, (res, order, opp) in GAMES.items():
     md.append(f"## Game {g}: {res}; he went {order}; opponent {opp}\n")
-    md.append('| his turn | game turn | hand | his plan (to the first draw) | km3 first action over 12 seeds | same first action | same plan to first draw | km3 modal plan (seeds) | category (all tags) | what differs | km3 root gap (his first action) |')
-    md.append('|---|---|---|---|---|---|---|---|---|---|---|')
+    md.append('| his turn | game turn | hand | his plan (to the first draw) | km3 first action over 12 seeds | same first action | same plan to first draw | km3 modal plan (seeds) | category (all tags) | what differs | km3 root gap (his first action) | milestones |')
+    md.append('|---|---|---|---|---|---|---|---|---|---|---|---|')
     for r in rows:
         if r['game'] != g:
             continue
         label = f"{r['his_turn']}{' (mid-turn)' if r['mid_turn'] else ''}"
         fa = ', '.join(f"{k} ×{v}" for k, v in sorted(r['first'].items(), key=lambda kv: -kv[1]))
         gap = '' if r['gap'] is None else f"{r['gap']:.0f}"
-        md.append(f"| {label} | {r['turn_count']} | {r['hand_source']} | {fmt(r['his'])} | {fa} | {r['same_first']}/{r['n']} ({verdict(r)}) | {r['same_plan']}/{r['n']} | {fmt(r['modal'])} ({r['modal_n']}/{r['n']}) | {r['cat']}{' (also: ' + ', '.join(t for t in r['tags'] if t != r['cat']) + ')' if len(r['tags']) > 1 else ''} | {r['desc']} | {gap} |")
+        md.append(f"| {label} | {r['turn_count']} | {r['hand_source']} | {fmt(r['his'])} | {fa} | {r['same_first']}/{r['n']} ({verdict(r)}) | {r['same_plan']}/{r['n']} | {fmt(r['modal'])} ({r['modal_n']}/{r['n']}) | {r['cat']}{' (also: ' + ', '.join(t for t in r['tags'] if t != r['cat']) + ')' if len(r['tags']) > 1 else ''} | {r['desc']} | {gap} | {', '.join(r['milestones'])} |")
     md.append('')
 open(f'{OUT}/TABLES.md', 'w', encoding='utf-8').write('\n'.join(md))
 
 # the 20 turn-start positions only (not the mid-turn ones) for the totals
-ts = [r for r in rows if not r['mid_turn']]
+MAXTURN = int(os.environ.get('PGD_MAXTURN', '99'))
+ts = [r for r in rows if not r['mid_turn'] and r['his_turn'] <= MAXTURN]
 cnt = collections.Counter(verdict(r) for r in ts)
 plan_same = sum(1 for r in ts if r['same_plan'] / r['n'] >= 10 / 12)
 cats = collections.Counter(r['cat'] for r in ts)
