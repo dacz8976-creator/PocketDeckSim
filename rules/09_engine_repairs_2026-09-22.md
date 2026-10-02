@@ -143,7 +143,9 @@ The accepted 225430 segment revealed that a zero-HP attacker was discarded befor
   (`ApplyQueuedAttackDamage`), so the coin flips; with no coin-Ability Pokémon among the possible targets, the choice is
   queued exactly as before. Ability, Tool and
   Checkup damage still never flip. kd followed (F1, 160a9d4): its test is now
-  `a_direct_damage_snipe_on_togekiss_flips_celestial_blessing`. Still open (the entry above): Wild Swing,
+  `a_direct_damage_snipe_on_togekiss_flips_celestial_blessing`. Seen in Pocket on Oct 2 [OBSERVED 20261002_161342000,
+  86-94 s; Codex/Sol review, Astra checked; DUSTIN]: Heatmor's Tongue Whip at a Benched Meowth (50 HP) brought up Carefree
+  Steps' coin, which landed heads, and Meowth took no damage. Still open (the entry above): Wild Swing,
   `also_choice_bench_damage`'s own-Bench form, six other sites (seven attacks) and a copied Chase Order's discard
   branch. Sources:
   `../rl/results/coin_prevention_repair_2026-09-30/HELPERS.md` (the census) and
