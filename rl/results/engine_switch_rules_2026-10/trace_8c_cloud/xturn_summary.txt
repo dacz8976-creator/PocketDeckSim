@@ -1,0 +1,11 @@
+the cross-turn variant (not the accepted probe; no verdict changes):
+  on the 6 games trace_8c.py left UNEXPLAINED or NEEDS A JUDGMENT: inside 5, leaf only 1
+  agreement check on 139 of the 1382 lookahead games coin_probe explains (every 10th): 139 found by the variant at the same or a smaller ply
+  negative controls (12, controls.txt's coin-probe deals and ticks): 12 found nothing
+  problems: none
+  8 km3 pairing 1 i 399 (tick 81, UNEXPLAINED): variant inside: {'queued': 3, 'cut': None, 'free': True}; path [Promote { player: 0, in_play_idx: 3 } ; (forced) EndTurn ; DrawCard { amount: 1 } ; Attack(Attack { energy_required: [Fire], title: "Tongue Whip", fixed_damage: 0, effect:...]
+  8 km3 pairing 4 i 7 (tick 84, UNEXPLAINED): variant inside: {'queued': 3, 'cut': None, 'free': True}; path [Promote { player: 0, in_play_idx: 3 } ; (forced) EndTurn ; DrawCard { amount: 1 } ; Attack(Attack { energy_required: [Grass, Grass], title: "Slicing Snipe", fixed_damage: ...]
+  8 km3 pairing 4 i 106 (tick 82, NEEDS A JUDGMENT): variant leaf only: {'queued': 3, 'cut': None, 'free': False}; path [Play { trainer_card: B1a 067 Quick-Grow Extract } ; ChooseRandomEvolutionTarget { in_play_idx: 0, energy_type: Grass } ; Attack(Attack { energy_required: [Grass, Grass], title: "Slicing Snipe", fixed_damage: ...]
+  8 km3 pairing 4 i 360 (tick 57, UNEXPLAINED): variant inside: {'queued': 3, 'cut': None, 'free': True}; path [Promote { player: 1, in_play_idx: 3 } ; (forced) EndTurn ; DrawCard { amount: 1 } ; Attack(Attack { energy_required: [Grass, Grass], title: "Slicing Snipe", fixed_damage: ...]
+  8 k3 pairing 4 i 7 (tick 95, UNEXPLAINED): variant inside: {'queued': 3, 'cut': None, 'free': True}; path [Promote { player: 0, in_play_idx: 2 } ; (forced) EndTurn ; DrawCard { amount: 1 } ; Attack(Attack { energy_required: [Grass, Grass], title: "Slicing Snipe", fixed_damage: ...]
+  8 km3 pairing 21 i 310 (tick 87, UNEXPLAINED): variant inside: {'queued': 3, 'cut': 3, 'free': True}; path [Promote { player: 1, in_play_idx: 3 } ; (forced) EndTurn ; DrawCard { amount: 1 } ; Attack(Attack { energy_required: [Water, Water, Water], title: "Diving Icicles", fixed_...]

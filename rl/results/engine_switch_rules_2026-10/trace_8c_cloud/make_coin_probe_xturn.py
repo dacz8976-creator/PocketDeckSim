@@ -9,7 +9,8 @@ with end_turn_pending set) "without spending another ordinary action ply", whoev
 the same depth (a Promote made during the opponent's turn, then that turn's forced end, then the mover's own next turn).
 The variant applies exactly that test, read from the state (end_turn_pending through its serialised form, the field
 being crate-private), and follows such a continuation at the same depth, over the same 12 sampled chance outcomes.
-Everything else is coin_probe.rs, unchanged.
+Everything else is coin_probe.rs, unchanged. A settled game is a leaf, and a chain of more than 8 forced steps is cut
+(the first build looped on a finished game's forced EndTurn: a stack overflow in 18 of the agreement check's 139 games).
 Usage: python3 make_coin_probe_xturn.py <coin_probe.rs> <out.rs>"""
 import sys
 
@@ -41,8 +42,12 @@ fn explore(state: &State, actor: usize, path: &mut Vec<String>, found: &mut Foun
 """,
      """    let depth = path.len();
     let (mover, actions) = state.generate_possible_actions();
-    // XTURN: a forced continuation is resolved without a ply, as the bots resolve it, whoever is to move.
-    if forced_end_turn(state) && actions.len() == 1 {
+    // XTURN: a forced continuation is resolved without a ply, as the bots resolve it, whoever is to move. A settled game
+    // is a leaf (the bots stop there too), and a chain of more than 8 forced steps is cut, so the search always ends.
+    if state.winner.is_some() {
+        return;
+    }
+    if forced_end_turn(state) && actions.len() == 1 && path.iter().filter(|m| m.starts_with("(forced)")).count() < 8 {
         path.push(format!("(forced) {}", short(&actions[0])));
         let saved = path.len();
         for next in successors(state, &actions[0]) {

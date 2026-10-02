@@ -1,7 +1,9 @@
-Step 8c, the cloud's traces (trace_8c.py on the hand-off at main 1ba07d9): 2881 of 3813 changed games traced (partial: more groups to come).
-verdicts, all traced games: ON THE BOARD 1902, LOOKAHEAD ONLY, both halves hold 971, NEEDS A JUDGMENT 1, UNEXPLAINED 5, LENGTH 2
-  step 8 km3: 1755 games: ON THE BOARD 1163, LOOKAHEAD ONLY, both halves hold 586, NEEDS A JUDGMENT 1, UNEXPLAINED 4, LENGTH 1
-  step 8 k3: 1126 games: ON THE BOARD 739, LOOKAHEAD ONLY, both halves hold 385, UNEXPLAINED 1, LENGTH 1
+Step 8c, the cloud's traces (trace_8c.py on the hand-off at main 1ba07d9): 3813 of 3813 changed games traced (ALL).
+verdicts, all traced games: ON THE BOARD 2414, LOOKAHEAD ONLY, both halves hold 1391, NEEDS A JUDGMENT 1, UNEXPLAINED 5, LENGTH 2
+  step 8 km3: 2458 games: ON THE BOARD 1557, LOOKAHEAD ONLY, both halves hold 895, NEEDS A JUDGMENT 1, UNEXPLAINED 4, LENGTH 1
+  step 8 k3: 1292 games: ON THE BOARD 807, LOOKAHEAD ONLY, both halves hold 483, UNEXPLAINED 1, LENGTH 1
+  step 8b km3: 32 games: ON THE BOARD 24, LOOKAHEAD ONLY, both halves hold 8
+  step 8b k3: 31 games: ON THE BOARD 26, LOOKAHEAD ONLY, both halves hold 5
 
 per pairing (step, pairing, lists: games, verdicts):
   8  1 garchomp_meowth v t-blaziken: 233: ON THE BOARD 145, LOOKAHEAD ONLY, both halves hold 87, UNEXPLAINED 1
@@ -13,19 +15,24 @@ per pairing (step, pairing, lists: games, verdicts):
   8 11 togekiss_meowth v t-lucario: 290: ON THE BOARD 210, LOOKAHEAD ONLY, both halves hold 80
   8 12 togekiss_meowth v t-sceptile: 414: ON THE BOARD 219, LOOKAHEAD ONLY, both halves hold 195
   8 13 togekiss_meowth v t-suicune: 153: ON THE BOARD 99, LOOKAHEAD ONLY, both halves hold 54
-  8 14 togekiss_meowth v t-vespiquen: 211: ON THE BOARD 140, LOOKAHEAD ONLY, both halves hold 71
+  8 14 togekiss_meowth v t-vespiquen: 631: ON THE BOARD 401, LOOKAHEAD ONLY, both halves hold 230
   8 17 hisuian_goodra v t-blaziken: 55: ON THE BOARD 35, LOOKAHEAD ONLY, both halves hold 20
   8 18 hisuian_goodra v t-hydreigon: 74: ON THE BOARD 74
   8 19 hisuian_goodra v t-lucario: 82: ON THE BOARD 68, LOOKAHEAD ONLY, both halves hold 14
   8 20 hisuian_goodra v t-sceptile: 28: ON THE BOARD 22, LOOKAHEAD ONLY, both halves hold 6
   8 21 hisuian_goodra v t-suicune: 57: ON THE BOARD 29, LOOKAHEAD ONLY, both halves hold 27, UNEXPLAINED 1
+  8 22 hisuian_goodra v t-vespiquen: 449: ON THE BOARD 201, LOOKAHEAD ONLY, both halves hold 248
   8 31 houndoom_victini v t-weezing: 29: ON THE BOARD 23, LOOKAHEAD ONLY, both halves hold 4, LENGTH 2
+  8b 32 fire_victini v psychic_confuse: 17: ON THE BOARD 12, LOOKAHEAD ONLY, both halves hold 5
+  8b 33 fire_heatmor v meowth_carefree: 26: ON THE BOARD 21, LOOKAHEAD ONLY, both halves hold 5
+  8b 34 t-vespiquen v meowth_carefree: 18: ON THE BOARD 15, LOOKAHEAD ONLY, both halves hold 3
+  8b 35 l-sharpedo v meowth_carefree: 2: ON THE BOARD 2
 
-CONDITION 3 (handoff_8c.tsv's full_prevention_only = yes): 282 games traced: LOOKAHEAD ONLY, both halves hold 281, NEEDS A JUDGMENT 1; listed one by one in condition3.tsv
-no reach counter anywhere in the game: 292 games: LOOKAHEAD ONLY, both halves hold 291, NEEDS A JUDGMENT 1
-kinds of first difference: {"length": 2, "lookahead": 980, "state": 1899}
+CONDITION 3 (handoff_8c.tsv's full_prevention_only = yes): 297 games traced: LOOKAHEAD ONLY, both halves hold 296, NEEDS A JUDGMENT 1; listed one by one in condition3.tsv
+no reach counter anywhere in the game: 309 games: LOOKAHEAD ONLY, both halves hold 308, NEEDS A JUDGMENT 1
+kinds of first difference: {"length": 2, "lookahead": 1405, "state": 2406}
 
-tool checks: every traced game's two fingerprints equal its row's: 2881 of 2881; golden probes run on 1902 games explained on the board, gate on the table in 1902
+tool checks: every traced game's two fingerprints equal its row's: 3813 of 3813; golden probes run on 2414 games explained on the board, gate on the table in 2414
 STOPS (unexplained, length, untraced, probe error): 7
   8 km3 pairing 1 (garchomp_meowth v t-blaziken) i 399: UNEXPLAINED (lookahead at tick 81)
   8 km3 pairing 4 (garchomp_meowth v t-sceptile) i 7: UNEXPLAINED (lookahead at tick 84)
@@ -35,19 +42,23 @@ STOPS (unexplained, length, untraced, probe error): 7
   8 km3 pairing 31 (houndoom_victini v t-weezing) i 12: LENGTH (length at tick 48)
   8 k3 pairing 31 (houndoom_victini v t-weezing) i 81: LENGTH (length at tick 72)
 needs a judgment: 1 (judgment.md)
-what the probes found in the 971 lookahead games (moves of the mover's own before the gate):
-   255  queued after 2
-   235  queued after 2 (pure frame)
+what the probes found in the 1391 lookahead games (moves of the mover's own before the gate):
+   317  queued after 2
+   266  queued after 1
+   239  queued after 2 (pure frame)
+   232  queued after 1; cut at ply 2
    166  queued after 3 (pure frame)
-   165  queued after 1
     81  queued after 1 (pure frame)
     25  queued after 3 (pure frame); cut at ply 1
+    21  queued after 2; cut at ply 1
     14  queued after 1 (pure frame); cut at ply 2
-    12  queued after 1; cut at ply 2
-     4  queued after 2; cut at ply 3
+    10  queued after 2; cut at ply 3
+     5  Confusion-first built after 2
      3  queued after 2 (pure frame); cut at ply 3
      3  queued after 1 (pure frame); cut at ply 1
-     3  Confusion-first built after 2
      2  queued after 2 (pure frame); cut at ply 1
      2  queued after 3 (pure frame); cut at ply 2
-     1  Confusion-first built after 1
+     2  Confusion-first built after 1
+     2  Confusion-first built after 0
+     1  queued after 2; cut at ply 2
+negative controls (controls_8c.py): 16 controls, 0 found something

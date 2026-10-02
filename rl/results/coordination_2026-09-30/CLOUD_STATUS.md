@@ -2,23 +2,41 @@
 
 Written Sept 30 for the Fable coordinator session (Dustin's single delegator). Times are UTC.
 
-## STOP (step 8c, from Oct 2 01:51 UTC): UNEXPLAINED games found
+## STOP (step 8c, Oct 2): 5 UNEXPLAINED games; a ruling is needed
 
-The cloud's step 8c traces (`rl/results/engine_switch_rules_2026-10/trace_8c_cloud/`, `summary.txt` there for the running count) find changed games that `tightened_rule.py` with the accepted probes cannot explain. PLAN.md: this stops the switch until they are resolved. The run continues over every remaining game, and this section is updated at each push.
-- **So far 5 unexplained, all the same shape:**
-  - step 8 km3, pairing 1, deal 399, tick 81;
-  - step 8 k3, pairing 4, deal 7, tick 95;
-  - step 8 km3, pairing 4, deal 7, tick 84;
-  - step 8 km3, pairing 4, deal 360, tick 57;
-  - step 8 km3, pairing 21 (hisuian_goodra v t-suicune), deal 310, tick 87.
-  - An attack knocks out the Active (Garchomp's Land Crush; in 21/310 Goodra's Heavy Impact), and the knocked-out side's Promote is the first difference. R promotes a sniper: Heatmor or Grovyle at a Benched Meowth (Carefree Steps), or Chien-Pao ex at Hisuian Goodra (Securely Sheltered). The old engine promotes another Pokémon. Both traces reproduce their rows.
-- **Why the accepted probe can't explain them (by hand):** `coin_probe.rs` stops at any state where the opponent is to move, so it never looks past the end of the opponent's turn. The bots do (`expectiminimax_player.rs` at R, 630-655: a forced EndTurn is resolved without a ply, before the turn-boundary cutoffs at 773 and 914). km3 and k3 make this Promote with depth 3, and their search goes Promote, the forced EndTurn (no ply), the next turn's draw, Tongue Whip or Slicing Snipe, then the queued coin-path choice at Meowth, in a frame of only queued choices, which is priced even at depth 0 (660).
-- **A scratch variant of `coin_probe`** that resolves the opponent's forced continuations without a ply, exactly as the bots do (`make_coin_probe_xturn.py`; not the accepted probe), finds that gate in all five: "queued after 3, a pure frame" (in 21/310 also a finite heads cut on Goodra chosen at the third move). Its agreement check and controls are being run.
-- **Ruling needed (coordinator / Dustin):** whether that by-hand reading, or the variant, may count as the second half for these games. Until then they stay UNEXPLAINED and the stop stands.
-- **1 LENGTH game, explained by hand (not a stop):** step 8 k3, pairing 31 (houndoom_victini v t-weezing), deal 81. The games agree for 72 ticks. On R, a Confused Mega Houndoom ex's attack (tick 71, Victini in play) builds the Confusion-first branch and offers the Victory Star choice (tick 72, an extra tick), and the old engine ends the game there. The reach counters fired at the cause tick (vs_confusion_first_built, 71) and at the choice (72), in the same turn: on the board, repair A. `first_difference` can't place a tick when one game ends where the other goes on.
-- **Also 1 needing a judgment so far:** km3 pairing 4, deal 106: coin_probe finds the queued choice only at the leaf, in a mixed frame (`judgment.md`).
+Step 8c is done: all 3,813 changed games of the hand-off (main 1ba07d9) are traced, in `rl/results/engine_switch_rules_2026-10/trace_8c_cloud/` (README.md, by_hand.md).
 
-1. **Current task, and the instruction that set it.** Step 8c of the rules switch (Fable via Dustin, Oct 1 evening; see the last log line). The card-text job (Will, the audit, Trap Territory) waits until it is done. The Oct 1 jobs before it are done:
+| | count |
+|---|---:|
+| on the board | 2,414 |
+| lookahead only, both halves | 1,391 |
+| needs a judgment | 1 |
+| **UNEXPLAINED** | **5** |
+| LENGTH, explained by hand | 2 |
+
+Every trace reproduces its row (3,813 of 3,813). PLAN.md: the 5 unexplained games stop the switch until they are resolved.
+- **The 5, all the same shape:** an attack knocks out the Active, and the first difference is the Promote. R promotes a sniper; the old engine promotes another Pokémon.
+  - step 8 km3, pairing 1 (garchomp_meowth v t-blaziken), deal 399, tick 81: Heatmor (Tongue Whip at two Benched Meowth);
+  - step 8 k3, pairing 4 (garchomp_meowth v t-sceptile), deal 7, tick 95: Grovyle (Slicing Snipe at a Benched Meowth);
+  - step 8 km3, pairing 4, deal 7, tick 84: Grovyle;
+  - step 8 km3, pairing 4, deal 360, tick 57: Grovyle;
+  - step 8 km3, pairing 21 (hisuian_goodra v t-suicune), deal 310, tick 87: Chien-Pao ex (Diving Icicles at Hisuian Goodra).
+- **By hand:** `coin_probe.rs` stops at any state where the opponent is to move, so it never looks past the end of the opponent's turn. km3's and k3's own search does (`expectiminimax_player.rs` at R, 631-655: a forced EndTurn costs no ply, ahead of the cutoffs at 773 and 908). Their line is:
+  - the Promote (ply 1);
+  - the forced EndTurn (no ply);
+  - the draw (ply 2);
+  - the snipe (ply 3);
+  - the queued coin-path choice, in a frame of only queued choices, priced at depth 0 (659-700).
+  - So the repaired choice is inside their 3 plies.
+- **A scratch variant of coin_probe** (`make_coin_probe_xturn.py`) resolves those forced continuations as the bots do. It is not the accepted probe and no verdict uses it.
+  - It finds the gate in all 5 ("queued after 3, a pure frame").
+  - It agrees with the accepted probe on 139 of 139 sampled lookahead games (same or smaller ply), and finds nothing at 12 controls.
+- **Ruling needed (coordinator / Dustin):** may this reading, or the variant, count as the second half for these 5? Until then the stop stands.
+- **The 2 LENGTH games** (km3 31/12, k3 31/81): R adds the Victory Star choice after a Confused Mega Houndoom ex's attack, and the old game ends there. The reach counters fired at that tick and at its cause, in the same turn: on the board, repair A, by hand.
+- **The 1 needing a judgment** (km3 4/106, a CONDITION 3 game; `judgment.md`): `coin_probe` counts a one-choice evolution pick as a ply, so the queued choice reads "at the leaf". The bots don't count it, so by hand the choice is inside their search at ply 3.
+- **CONDITION 3:** of step 8's 296, 295 are lookahead only with both halves and 1 needs a judgment (the game above). Each is listed with its probe in `condition3.tsv`.
+
+1. **Current task, and the instruction that set it.** Step 8c of the rules switch (Fable via Dustin, Oct 1 evening) is done; its result is the STOP above. The card-text job (Will, the audit, Trap Territory) waits: its instruction hasn't reached me yet. The Oct 1 jobs before it are done:
    - **PLAN step 8b's early-warning rows** (3a107f4, `rl/results/engine_switch_rules_2026-10/early_warning_8b/README.md`), on a scratch build of R (f8cfa9c, engine tree 38af8b0, the laptop's candidate's):
      - 960 games, pairings 32-35 × 40 × km3 and k3 × old, new and watch, every program built from `git archive` in a fresh target folder.
      - The checks:
@@ -50,7 +68,7 @@ The cloud's step 8c traces (`rl/results/engine_switch_rules_2026-10/trace_8c_clo
        - The `ApplyDamage` arm's attacker clause is not mirrored. A Mega Kangaskhan ex Knocked Out on its own turn gives 3 points and ends the game (checked in a scratch copy), and mirroring it would have reordered the first round's choices.
      - Full suite at 29e126a: 2,027 passed, 0 failed (R's 2,018 plus the 9 new tests). The counter probe: 32 checks, 0 failures.
      - The scratch smoke, rerun on the final engine, gives byte-identical game files to its first run (80 of 80 for each scan).
-2. **What is running now, and when it ends.** Step 8c's traces: starting now. Partial results are pushed to `trace_8c_cloud/` as pairings finish.
+2. **What is running now, and when it ends.** Nothing.
 3. **Files I expect to change.** None. The 8b rows are in `rl/results/engine_switch_rules_2026-10/early_warning_8b/` (this branch). The coin round-2 job changed these on its branch:
    - engine: `engine/src/actions/apply_attack_action.rs`, `engine/src/actions/apply_action.rs`, `engine/src/state/mod.rs` (the approved fifth file), `engine/tests/pokemon/meowth_carefree_steps_test.rs`;
    - results: `rl/results/coin_prevention_repair_2026-09-30/instrument_scan.py` (the counters) and `rl/results/coin_prevention_round2_2026-10-01/`.
