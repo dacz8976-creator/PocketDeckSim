@@ -1,0 +1,1128 @@
+PGSTEP A-115323-t05b seed 1 free 0
+PGDUMP actor=0 candidates=8
+PGDUMP       -364.933333333333394 EndTurn
+PGDUMP        620.733333333333348 Attach:1Water@0 zone
+PGDUMP        383.066666666666606 Attach:1Water@1 zone
+PGDUMP       -448.266666666666652 Attach:1Water@2 zone
+PGDUMP        620.733333333333348 Evolve:Mega Sharpedo ex@1
+PGDUMP        383.066666666666606 Place:Alolan Vulpix@3
+PGDUMP        356.066666666666663 Retreat:1
+PGDUMP        -78.266666666666623 Retreat:2
+PGSTEP A-115323-t05b seed 1 free 1
+PGDUMP actor=0 candidates=7
+PGDUMP          4.066666666666658 EndTurn
+PGDUMP        679.733333333333348 Attach:1Water@0 zone
+PGDUMP        666.066666666666720 Attach:1Water@1 zone
+PGDUMP       -258.266666666666652 Attach:1Water@2 zone
+PGDUMP        679.733333333333348 Place:Alolan Vulpix@3
+PGDUMP        666.066666666666720 Retreat:1
+PGDUMP        -19.266666666666659 Retreat:2
+PGSTEP A-115323-t05b seed 1 free 2
+PGDUMP actor=0 candidates=8
+PGDUMP         63.066666666666656 EndTurn
+PGDUMP        679.733333333333348 Attach:1Water@0 zone
+PGDUMP        725.066666666666720 Attach:1Water@1 zone
+PGDUMP       -199.266666666666623 Attach:1Water@2 zone
+PGDUMP       -859.266666666666652 Attach:1Water@3 zone
+PGDUMP        725.066666666666720 Retreat:1
+PGDUMP        -19.266666666666659 Retreat:2
+PGDUMP         -9.266666666666657 Retreat:3
+PGSTEP A-115323-t05b seed 1 free 3
+PGDUMP actor=0 candidates=5
+PGDUMP       -404.933333333333337 EndTurn
+PGDUMP        785.066666666666720 Attach:1Water@0 zone
+PGDUMP       -364.933333333333337 Attach:1Water@1 zone
+PGDUMP       -954.933333333333280 Attach:1Water@2 zone
+PGDUMP      -1344.933333333333167 Attach:1Water@3 zone
+PGSTEP A-115323-t05b seed 1 free 4
+PGDUMP actor=0 candidates=2
+PGDUMP        415.066666666666663 EndTurn
+PGDUMP        785.066666666666720 Attack:Turbo Shark
+PGSTEP A-115323-t05b seed 1 free 5
+PGDUMP actor=0 candidates=3
+PGDUMP        765.066666666666720 Attach:1Water@1 fx
+PGDUMP        775.066666666666720 Attach:1Water@2 fx
+PGDUMP        785.066666666666720 Attach:1Water@3 fx
+PGSTEP A-115323-t05b seed 1 free 6
+PGSTEP A-115323-t05b seed 1 free 7
+PGSTEP A-115323-t05b seed 1 forced 0 want=Place:Alolan Vulpix@3
+PGDUMP actor=0 candidates=8
+PGDUMP       -364.933333333333394 EndTurn
+PGDUMP        620.733333333333348 Attach:1Water@0 zone
+PGDUMP        383.066666666666606 Attach:1Water@1 zone
+PGDUMP       -448.266666666666652 Attach:1Water@2 zone
+PGDUMP        620.733333333333348 Evolve:Mega Sharpedo ex@1
+PGDUMP        383.066666666666606 Place:Alolan Vulpix@3
+PGDUMP        356.066666666666663 Retreat:1
+PGDUMP        -78.266666666666623 Retreat:2
+PGSTEP A-115323-t05b seed 1 forced 1 want=Evolve:Mega Sharpedo ex@1
+PGDUMP actor=0 candidates=9
+PGDUMP       -305.933333333333394 EndTurn
+PGDUMP        679.733333333333348 Attach:1Water@0 zone
+PGDUMP        415.066666666666663 Attach:1Water@1 zone
+PGDUMP       -389.266666666666652 Attach:1Water@2 zone
+PGDUMP       -876.933333333333394 Attach:1Water@3 zone
+PGDUMP        679.733333333333348 Evolve:Mega Sharpedo ex@1
+PGDUMP        415.066666666666663 Retreat:1
+PGDUMP        -19.266666666666659 Retreat:2
+PGDUMP         -9.266666666666657 Retreat:3
+PGSTEP A-115323-t05b seed 1 forced 2 want=Retreat:1
+PGDUMP actor=0 candidates=8
+PGDUMP         63.066666666666656 EndTurn
+PGDUMP        679.733333333333348 Attach:1Water@0 zone
+PGDUMP        725.066666666666720 Attach:1Water@1 zone
+PGDUMP       -199.266666666666623 Attach:1Water@2 zone
+PGDUMP       -859.266666666666652 Attach:1Water@3 zone
+PGDUMP        725.066666666666720 Retreat:1
+PGDUMP        -19.266666666666659 Retreat:2
+PGDUMP         -9.266666666666657 Retreat:3
+PGSTEP A-115323-t05b seed 1 forced 3 want=Attach:1Water@0 zone
+PGDUMP actor=0 candidates=5
+PGDUMP       -404.933333333333337 EndTurn
+PGDUMP        785.066666666666720 Attach:1Water@0 zone
+PGDUMP       -364.933333333333337 Attach:1Water@1 zone
+PGDUMP       -954.933333333333280 Attach:1Water@2 zone
+PGDUMP      -1344.933333333333167 Attach:1Water@3 zone
+PGSTEP A-115323-t05b seed 1 forced 4 want=Attack:Turbo Shark
+PGDUMP actor=0 candidates=2
+PGDUMP        415.066666666666663 EndTurn
+PGDUMP        785.066666666666720 Attack:Turbo Shark
+PGSTEP A-115323-t05b seed 1 forced 5 want=(next choice)
+PGDUMP actor=0 candidates=3
+PGDUMP        765.066666666666720 Attach:1Water@1 fx
+PGDUMP        775.066666666666720 Attach:1Water@2 fx
+PGDUMP        785.066666666666720 Attach:1Water@3 fx
+PGSTEP A-115323-t05b seed 2 free 0
+PGDUMP actor=0 candidates=8
+PGDUMP       -364.933333333333394 EndTurn
+PGDUMP        620.733333333333348 Attach:1Water@0 zone
+PGDUMP        383.066666666666606 Attach:1Water@1 zone
+PGDUMP       -448.266666666666652 Attach:1Water@2 zone
+PGDUMP        620.733333333333348 Evolve:Mega Sharpedo ex@1
+PGDUMP        383.066666666666606 Place:Alolan Vulpix@3
+PGDUMP        356.066666666666663 Retreat:1
+PGDUMP        -78.266666666666623 Retreat:2
+PGSTEP A-115323-t05b seed 2 free 1
+PGDUMP actor=0 candidates=7
+PGDUMP          4.066666666666658 EndTurn
+PGDUMP        679.733333333333348 Attach:1Water@0 zone
+PGDUMP        666.066666666666720 Attach:1Water@1 zone
+PGDUMP       -258.266666666666652 Attach:1Water@2 zone
+PGDUMP        679.733333333333348 Place:Alolan Vulpix@3
+PGDUMP        666.066666666666720 Retreat:1
+PGDUMP        -19.266666666666659 Retreat:2
+PGSTEP A-115323-t05b seed 2 free 2
+PGDUMP actor=0 candidates=8
+PGDUMP         63.066666666666656 EndTurn
+PGDUMP        679.733333333333348 Attach:1Water@0 zone
+PGDUMP        725.066666666666720 Attach:1Water@1 zone
+PGDUMP       -199.266666666666623 Attach:1Water@2 zone
+PGDUMP       -859.266666666666652 Attach:1Water@3 zone
+PGDUMP        725.066666666666720 Retreat:1
+PGDUMP        -19.266666666666659 Retreat:2
+PGDUMP         -9.266666666666657 Retreat:3
+PGSTEP A-115323-t05b seed 2 free 3
+PGDUMP actor=0 candidates=5
+PGDUMP       -404.933333333333337 EndTurn
+PGDUMP        785.066666666666720 Attach:1Water@0 zone
+PGDUMP       -364.933333333333337 Attach:1Water@1 zone
+PGDUMP       -954.933333333333280 Attach:1Water@2 zone
+PGDUMP      -1344.933333333333167 Attach:1Water@3 zone
+PGSTEP A-115323-t05b seed 2 free 4
+PGDUMP actor=0 candidates=2
+PGDUMP        415.066666666666663 EndTurn
+PGDUMP        785.066666666666720 Attack:Turbo Shark
+PGSTEP A-115323-t05b seed 2 free 5
+PGDUMP actor=0 candidates=3
+PGDUMP        765.066666666666720 Attach:1Water@1 fx
+PGDUMP        775.066666666666720 Attach:1Water@2 fx
+PGDUMP        785.066666666666720 Attach:1Water@3 fx
+PGSTEP A-115323-t05b seed 2 free 6
+PGSTEP A-115323-t05b seed 2 free 7
+PGSTEP A-115323-t05b seed 2 forced 0 want=Place:Alolan Vulpix@3
+PGDUMP actor=0 candidates=8
+PGDUMP       -364.933333333333394 EndTurn
+PGDUMP        620.733333333333348 Attach:1Water@0 zone
+PGDUMP        383.066666666666606 Attach:1Water@1 zone
+PGDUMP       -448.266666666666652 Attach:1Water@2 zone
+PGDUMP        620.733333333333348 Evolve:Mega Sharpedo ex@1
+PGDUMP        383.066666666666606 Place:Alolan Vulpix@3
+PGDUMP        356.066666666666663 Retreat:1
+PGDUMP        -78.266666666666623 Retreat:2
+PGSTEP A-115323-t05b seed 2 forced 1 want=Evolve:Mega Sharpedo ex@1
+PGDUMP actor=0 candidates=9
+PGDUMP       -305.933333333333394 EndTurn
+PGDUMP        679.733333333333348 Attach:1Water@0 zone
+PGDUMP        415.066666666666663 Attach:1Water@1 zone
+PGDUMP       -389.266666666666652 Attach:1Water@2 zone
+PGDUMP       -876.933333333333394 Attach:1Water@3 zone
+PGDUMP        679.733333333333348 Evolve:Mega Sharpedo ex@1
+PGDUMP        415.066666666666663 Retreat:1
+PGDUMP        -19.266666666666659 Retreat:2
+PGDUMP         -9.266666666666657 Retreat:3
+PGSTEP A-115323-t05b seed 2 forced 2 want=Retreat:1
+PGDUMP actor=0 candidates=8
+PGDUMP         63.066666666666656 EndTurn
+PGDUMP        679.733333333333348 Attach:1Water@0 zone
+PGDUMP        725.066666666666720 Attach:1Water@1 zone
+PGDUMP       -199.266666666666623 Attach:1Water@2 zone
+PGDUMP       -859.266666666666652 Attach:1Water@3 zone
+PGDUMP        725.066666666666720 Retreat:1
+PGDUMP        -19.266666666666659 Retreat:2
+PGDUMP         -9.266666666666657 Retreat:3
+PGSTEP A-115323-t05b seed 2 forced 3 want=Attach:1Water@0 zone
+PGDUMP actor=0 candidates=5
+PGDUMP       -404.933333333333337 EndTurn
+PGDUMP        785.066666666666720 Attach:1Water@0 zone
+PGDUMP       -364.933333333333337 Attach:1Water@1 zone
+PGDUMP       -954.933333333333280 Attach:1Water@2 zone
+PGDUMP      -1344.933333333333167 Attach:1Water@3 zone
+PGSTEP A-115323-t05b seed 2 forced 4 want=Attack:Turbo Shark
+PGDUMP actor=0 candidates=2
+PGDUMP        415.066666666666663 EndTurn
+PGDUMP        785.066666666666720 Attack:Turbo Shark
+PGSTEP A-115323-t05b seed 2 forced 5 want=(next choice)
+PGDUMP actor=0 candidates=3
+PGDUMP        765.066666666666720 Attach:1Water@1 fx
+PGDUMP        775.066666666666720 Attach:1Water@2 fx
+PGDUMP        785.066666666666720 Attach:1Water@3 fx
+PGSTEP A-115323-t05b seed 3 free 0
+PGDUMP actor=0 candidates=8
+PGDUMP       -364.933333333333394 EndTurn
+PGDUMP        620.733333333333348 Attach:1Water@0 zone
+PGDUMP        383.066666666666606 Attach:1Water@1 zone
+PGDUMP       -448.266666666666652 Attach:1Water@2 zone
+PGDUMP        620.733333333333348 Evolve:Mega Sharpedo ex@1
+PGDUMP        383.066666666666606 Place:Alolan Vulpix@3
+PGDUMP        356.066666666666663 Retreat:1
+PGDUMP        -78.266666666666623 Retreat:2
+PGSTEP A-115323-t05b seed 3 free 1
+PGDUMP actor=0 candidates=7
+PGDUMP          4.066666666666658 EndTurn
+PGDUMP        679.733333333333348 Attach:1Water@0 zone
+PGDUMP        666.066666666666720 Attach:1Water@1 zone
+PGDUMP       -258.266666666666652 Attach:1Water@2 zone
+PGDUMP        679.733333333333348 Place:Alolan Vulpix@3
+PGDUMP        666.066666666666720 Retreat:1
+PGDUMP        -19.266666666666659 Retreat:2
+PGSTEP A-115323-t05b seed 3 free 2
+PGDUMP actor=0 candidates=8
+PGDUMP         63.066666666666656 EndTurn
+PGDUMP        679.733333333333348 Attach:1Water@0 zone
+PGDUMP        725.066666666666720 Attach:1Water@1 zone
+PGDUMP       -199.266666666666623 Attach:1Water@2 zone
+PGDUMP       -859.266666666666652 Attach:1Water@3 zone
+PGDUMP        725.066666666666720 Retreat:1
+PGDUMP        -19.266666666666659 Retreat:2
+PGDUMP         -9.266666666666657 Retreat:3
+PGSTEP A-115323-t05b seed 3 free 3
+PGDUMP actor=0 candidates=5
+PGDUMP       -404.933333333333337 EndTurn
+PGDUMP        785.066666666666720 Attach:1Water@0 zone
+PGDUMP       -364.933333333333337 Attach:1Water@1 zone
+PGDUMP       -954.933333333333280 Attach:1Water@2 zone
+PGDUMP      -1344.933333333333167 Attach:1Water@3 zone
+PGSTEP A-115323-t05b seed 3 free 4
+PGDUMP actor=0 candidates=2
+PGDUMP        415.066666666666663 EndTurn
+PGDUMP        785.066666666666720 Attack:Turbo Shark
+PGSTEP A-115323-t05b seed 3 free 5
+PGDUMP actor=0 candidates=3
+PGDUMP        765.066666666666720 Attach:1Water@1 fx
+PGDUMP        775.066666666666720 Attach:1Water@2 fx
+PGDUMP        785.066666666666720 Attach:1Water@3 fx
+PGSTEP A-115323-t05b seed 3 free 6
+PGSTEP A-115323-t05b seed 3 free 7
+PGSTEP A-115323-t05b seed 3 forced 0 want=Place:Alolan Vulpix@3
+PGDUMP actor=0 candidates=8
+PGDUMP       -364.933333333333394 EndTurn
+PGDUMP        620.733333333333348 Attach:1Water@0 zone
+PGDUMP        383.066666666666606 Attach:1Water@1 zone
+PGDUMP       -448.266666666666652 Attach:1Water@2 zone
+PGDUMP        620.733333333333348 Evolve:Mega Sharpedo ex@1
+PGDUMP        383.066666666666606 Place:Alolan Vulpix@3
+PGDUMP        356.066666666666663 Retreat:1
+PGDUMP        -78.266666666666623 Retreat:2
+PGSTEP A-115323-t05b seed 3 forced 1 want=Evolve:Mega Sharpedo ex@1
+PGDUMP actor=0 candidates=9
+PGDUMP       -305.933333333333394 EndTurn
+PGDUMP        679.733333333333348 Attach:1Water@0 zone
+PGDUMP        415.066666666666663 Attach:1Water@1 zone
+PGDUMP       -389.266666666666652 Attach:1Water@2 zone
+PGDUMP       -876.933333333333394 Attach:1Water@3 zone
+PGDUMP        679.733333333333348 Evolve:Mega Sharpedo ex@1
+PGDUMP        415.066666666666663 Retreat:1
+PGDUMP        -19.266666666666659 Retreat:2
+PGDUMP         -9.266666666666657 Retreat:3
+PGSTEP A-115323-t05b seed 3 forced 2 want=Retreat:1
+PGDUMP actor=0 candidates=8
+PGDUMP         63.066666666666656 EndTurn
+PGDUMP        679.733333333333348 Attach:1Water@0 zone
+PGDUMP        725.066666666666720 Attach:1Water@1 zone
+PGDUMP       -199.266666666666623 Attach:1Water@2 zone
+PGDUMP       -859.266666666666652 Attach:1Water@3 zone
+PGDUMP        725.066666666666720 Retreat:1
+PGDUMP        -19.266666666666659 Retreat:2
+PGDUMP         -9.266666666666657 Retreat:3
+PGSTEP A-115323-t05b seed 3 forced 3 want=Attach:1Water@0 zone
+PGDUMP actor=0 candidates=5
+PGDUMP       -404.933333333333337 EndTurn
+PGDUMP        785.066666666666720 Attach:1Water@0 zone
+PGDUMP       -364.933333333333337 Attach:1Water@1 zone
+PGDUMP       -954.933333333333280 Attach:1Water@2 zone
+PGDUMP      -1344.933333333333167 Attach:1Water@3 zone
+PGSTEP A-115323-t05b seed 3 forced 4 want=Attack:Turbo Shark
+PGDUMP actor=0 candidates=2
+PGDUMP        415.066666666666663 EndTurn
+PGDUMP        785.066666666666720 Attack:Turbo Shark
+PGSTEP A-115323-t05b seed 3 forced 5 want=(next choice)
+PGDUMP actor=0 candidates=3
+PGDUMP        765.066666666666720 Attach:1Water@1 fx
+PGDUMP        775.066666666666720 Attach:1Water@2 fx
+PGDUMP        785.066666666666720 Attach:1Water@3 fx
+PGSTEP A-115323-t05b seed 4 free 0
+PGDUMP actor=0 candidates=8
+PGDUMP       -364.933333333333394 EndTurn
+PGDUMP        620.733333333333348 Attach:1Water@0 zone
+PGDUMP        383.066666666666606 Attach:1Water@1 zone
+PGDUMP       -448.266666666666652 Attach:1Water@2 zone
+PGDUMP        620.733333333333348 Evolve:Mega Sharpedo ex@1
+PGDUMP        383.066666666666606 Place:Alolan Vulpix@3
+PGDUMP        356.066666666666663 Retreat:1
+PGDUMP        -78.266666666666623 Retreat:2
+PGSTEP A-115323-t05b seed 4 free 1
+PGDUMP actor=0 candidates=7
+PGDUMP          4.066666666666658 EndTurn
+PGDUMP        679.733333333333348 Attach:1Water@0 zone
+PGDUMP        666.066666666666720 Attach:1Water@1 zone
+PGDUMP       -258.266666666666652 Attach:1Water@2 zone
+PGDUMP        679.733333333333348 Place:Alolan Vulpix@3
+PGDUMP        666.066666666666720 Retreat:1
+PGDUMP        -19.266666666666659 Retreat:2
+PGSTEP A-115323-t05b seed 4 free 2
+PGDUMP actor=0 candidates=8
+PGDUMP         63.066666666666656 EndTurn
+PGDUMP        679.733333333333348 Attach:1Water@0 zone
+PGDUMP        725.066666666666720 Attach:1Water@1 zone
+PGDUMP       -199.266666666666623 Attach:1Water@2 zone
+PGDUMP       -859.266666666666652 Attach:1Water@3 zone
+PGDUMP        725.066666666666720 Retreat:1
+PGDUMP        -19.266666666666659 Retreat:2
+PGDUMP         -9.266666666666657 Retreat:3
+PGSTEP A-115323-t05b seed 4 free 3
+PGDUMP actor=0 candidates=5
+PGDUMP       -404.933333333333337 EndTurn
+PGDUMP        785.066666666666720 Attach:1Water@0 zone
+PGDUMP       -364.933333333333337 Attach:1Water@1 zone
+PGDUMP       -954.933333333333280 Attach:1Water@2 zone
+PGDUMP      -1344.933333333333167 Attach:1Water@3 zone
+PGSTEP A-115323-t05b seed 4 free 4
+PGDUMP actor=0 candidates=2
+PGDUMP        415.066666666666663 EndTurn
+PGDUMP        785.066666666666720 Attack:Turbo Shark
+PGSTEP A-115323-t05b seed 4 free 5
+PGDUMP actor=0 candidates=3
+PGDUMP        765.066666666666720 Attach:1Water@1 fx
+PGDUMP        775.066666666666720 Attach:1Water@2 fx
+PGDUMP        785.066666666666720 Attach:1Water@3 fx
+PGSTEP A-115323-t05b seed 4 free 6
+PGSTEP A-115323-t05b seed 4 free 7
+PGSTEP A-115323-t05b seed 4 forced 0 want=Place:Alolan Vulpix@3
+PGDUMP actor=0 candidates=8
+PGDUMP       -364.933333333333394 EndTurn
+PGDUMP        620.733333333333348 Attach:1Water@0 zone
+PGDUMP        383.066666666666606 Attach:1Water@1 zone
+PGDUMP       -448.266666666666652 Attach:1Water@2 zone
+PGDUMP        620.733333333333348 Evolve:Mega Sharpedo ex@1
+PGDUMP        383.066666666666606 Place:Alolan Vulpix@3
+PGDUMP        356.066666666666663 Retreat:1
+PGDUMP        -78.266666666666623 Retreat:2
+PGSTEP A-115323-t05b seed 4 forced 1 want=Evolve:Mega Sharpedo ex@1
+PGDUMP actor=0 candidates=9
+PGDUMP       -305.933333333333394 EndTurn
+PGDUMP        679.733333333333348 Attach:1Water@0 zone
+PGDUMP        415.066666666666663 Attach:1Water@1 zone
+PGDUMP       -389.266666666666652 Attach:1Water@2 zone
+PGDUMP       -876.933333333333394 Attach:1Water@3 zone
+PGDUMP        679.733333333333348 Evolve:Mega Sharpedo ex@1
+PGDUMP        415.066666666666663 Retreat:1
+PGDUMP        -19.266666666666659 Retreat:2
+PGDUMP         -9.266666666666657 Retreat:3
+PGSTEP A-115323-t05b seed 4 forced 2 want=Retreat:1
+PGDUMP actor=0 candidates=8
+PGDUMP         63.066666666666656 EndTurn
+PGDUMP        679.733333333333348 Attach:1Water@0 zone
+PGDUMP        725.066666666666720 Attach:1Water@1 zone
+PGDUMP       -199.266666666666623 Attach:1Water@2 zone
+PGDUMP       -859.266666666666652 Attach:1Water@3 zone
+PGDUMP        725.066666666666720 Retreat:1
+PGDUMP        -19.266666666666659 Retreat:2
+PGDUMP         -9.266666666666657 Retreat:3
+PGSTEP A-115323-t05b seed 4 forced 3 want=Attach:1Water@0 zone
+PGDUMP actor=0 candidates=5
+PGDUMP       -404.933333333333337 EndTurn
+PGDUMP        785.066666666666720 Attach:1Water@0 zone
+PGDUMP       -364.933333333333337 Attach:1Water@1 zone
+PGDUMP       -954.933333333333280 Attach:1Water@2 zone
+PGDUMP      -1344.933333333333167 Attach:1Water@3 zone
+PGSTEP A-115323-t05b seed 4 forced 4 want=Attack:Turbo Shark
+PGDUMP actor=0 candidates=2
+PGDUMP        415.066666666666663 EndTurn
+PGDUMP        785.066666666666720 Attack:Turbo Shark
+PGSTEP A-115323-t05b seed 4 forced 5 want=(next choice)
+PGDUMP actor=0 candidates=3
+PGDUMP        765.066666666666720 Attach:1Water@1 fx
+PGDUMP        775.066666666666720 Attach:1Water@2 fx
+PGDUMP        785.066666666666720 Attach:1Water@3 fx
+PGSTEP A-115323-t05b seed 5 free 0
+PGDUMP actor=0 candidates=8
+PGDUMP       -364.933333333333394 EndTurn
+PGDUMP        620.733333333333348 Attach:1Water@0 zone
+PGDUMP        383.066666666666606 Attach:1Water@1 zone
+PGDUMP       -448.266666666666652 Attach:1Water@2 zone
+PGDUMP        620.733333333333348 Evolve:Mega Sharpedo ex@1
+PGDUMP        383.066666666666606 Place:Alolan Vulpix@3
+PGDUMP        356.066666666666663 Retreat:1
+PGDUMP        -78.266666666666623 Retreat:2
+PGSTEP A-115323-t05b seed 5 free 1
+PGDUMP actor=0 candidates=7
+PGDUMP          4.066666666666658 EndTurn
+PGDUMP        679.733333333333348 Attach:1Water@0 zone
+PGDUMP        666.066666666666720 Attach:1Water@1 zone
+PGDUMP       -258.266666666666652 Attach:1Water@2 zone
+PGDUMP        679.733333333333348 Place:Alolan Vulpix@3
+PGDUMP        666.066666666666720 Retreat:1
+PGDUMP        -19.266666666666659 Retreat:2
+PGSTEP A-115323-t05b seed 5 free 2
+PGDUMP actor=0 candidates=8
+PGDUMP         63.066666666666656 EndTurn
+PGDUMP        679.733333333333348 Attach:1Water@0 zone
+PGDUMP        725.066666666666720 Attach:1Water@1 zone
+PGDUMP       -199.266666666666623 Attach:1Water@2 zone
+PGDUMP       -859.266666666666652 Attach:1Water@3 zone
+PGDUMP        725.066666666666720 Retreat:1
+PGDUMP        -19.266666666666659 Retreat:2
+PGDUMP         -9.266666666666657 Retreat:3
+PGSTEP A-115323-t05b seed 5 free 3
+PGDUMP actor=0 candidates=5
+PGDUMP       -404.933333333333337 EndTurn
+PGDUMP        785.066666666666720 Attach:1Water@0 zone
+PGDUMP       -364.933333333333337 Attach:1Water@1 zone
+PGDUMP       -954.933333333333280 Attach:1Water@2 zone
+PGDUMP      -1344.933333333333167 Attach:1Water@3 zone
+PGSTEP A-115323-t05b seed 5 free 4
+PGDUMP actor=0 candidates=2
+PGDUMP        415.066666666666663 EndTurn
+PGDUMP        785.066666666666720 Attack:Turbo Shark
+PGSTEP A-115323-t05b seed 5 free 5
+PGDUMP actor=0 candidates=3
+PGDUMP        765.066666666666720 Attach:1Water@1 fx
+PGDUMP        775.066666666666720 Attach:1Water@2 fx
+PGDUMP        785.066666666666720 Attach:1Water@3 fx
+PGSTEP A-115323-t05b seed 5 free 6
+PGSTEP A-115323-t05b seed 5 free 7
+PGSTEP A-115323-t05b seed 5 forced 0 want=Place:Alolan Vulpix@3
+PGDUMP actor=0 candidates=8
+PGDUMP       -364.933333333333394 EndTurn
+PGDUMP        620.733333333333348 Attach:1Water@0 zone
+PGDUMP        383.066666666666606 Attach:1Water@1 zone
+PGDUMP       -448.266666666666652 Attach:1Water@2 zone
+PGDUMP        620.733333333333348 Evolve:Mega Sharpedo ex@1
+PGDUMP        383.066666666666606 Place:Alolan Vulpix@3
+PGDUMP        356.066666666666663 Retreat:1
+PGDUMP        -78.266666666666623 Retreat:2
+PGSTEP A-115323-t05b seed 5 forced 1 want=Evolve:Mega Sharpedo ex@1
+PGDUMP actor=0 candidates=9
+PGDUMP       -305.933333333333394 EndTurn
+PGDUMP        679.733333333333348 Attach:1Water@0 zone
+PGDUMP        415.066666666666663 Attach:1Water@1 zone
+PGDUMP       -389.266666666666652 Attach:1Water@2 zone
+PGDUMP       -876.933333333333394 Attach:1Water@3 zone
+PGDUMP        679.733333333333348 Evolve:Mega Sharpedo ex@1
+PGDUMP        415.066666666666663 Retreat:1
+PGDUMP        -19.266666666666659 Retreat:2
+PGDUMP         -9.266666666666657 Retreat:3
+PGSTEP A-115323-t05b seed 5 forced 2 want=Retreat:1
+PGDUMP actor=0 candidates=8
+PGDUMP         63.066666666666656 EndTurn
+PGDUMP        679.733333333333348 Attach:1Water@0 zone
+PGDUMP        725.066666666666720 Attach:1Water@1 zone
+PGDUMP       -199.266666666666623 Attach:1Water@2 zone
+PGDUMP       -859.266666666666652 Attach:1Water@3 zone
+PGDUMP        725.066666666666720 Retreat:1
+PGDUMP        -19.266666666666659 Retreat:2
+PGDUMP         -9.266666666666657 Retreat:3
+PGSTEP A-115323-t05b seed 5 forced 3 want=Attach:1Water@0 zone
+PGDUMP actor=0 candidates=5
+PGDUMP       -404.933333333333337 EndTurn
+PGDUMP        785.066666666666720 Attach:1Water@0 zone
+PGDUMP       -364.933333333333337 Attach:1Water@1 zone
+PGDUMP       -954.933333333333280 Attach:1Water@2 zone
+PGDUMP      -1344.933333333333167 Attach:1Water@3 zone
+PGSTEP A-115323-t05b seed 5 forced 4 want=Attack:Turbo Shark
+PGDUMP actor=0 candidates=2
+PGDUMP        415.066666666666663 EndTurn
+PGDUMP        785.066666666666720 Attack:Turbo Shark
+PGSTEP A-115323-t05b seed 5 forced 5 want=(next choice)
+PGDUMP actor=0 candidates=3
+PGDUMP        765.066666666666720 Attach:1Water@1 fx
+PGDUMP        775.066666666666720 Attach:1Water@2 fx
+PGDUMP        785.066666666666720 Attach:1Water@3 fx
+PGSTEP A-115323-t05b seed 6 free 0
+PGDUMP actor=0 candidates=8
+PGDUMP       -364.933333333333394 EndTurn
+PGDUMP        620.733333333333348 Attach:1Water@0 zone
+PGDUMP        383.066666666666606 Attach:1Water@1 zone
+PGDUMP       -448.266666666666652 Attach:1Water@2 zone
+PGDUMP        620.733333333333348 Evolve:Mega Sharpedo ex@1
+PGDUMP        383.066666666666606 Place:Alolan Vulpix@3
+PGDUMP        356.066666666666663 Retreat:1
+PGDUMP        -78.266666666666623 Retreat:2
+PGSTEP A-115323-t05b seed 6 free 1
+PGDUMP actor=0 candidates=7
+PGDUMP          4.066666666666658 EndTurn
+PGDUMP        679.733333333333348 Attach:1Water@0 zone
+PGDUMP        666.066666666666720 Attach:1Water@1 zone
+PGDUMP       -258.266666666666652 Attach:1Water@2 zone
+PGDUMP        679.733333333333348 Place:Alolan Vulpix@3
+PGDUMP        666.066666666666720 Retreat:1
+PGDUMP        -19.266666666666659 Retreat:2
+PGSTEP A-115323-t05b seed 6 free 2
+PGDUMP actor=0 candidates=8
+PGDUMP         63.066666666666656 EndTurn
+PGDUMP        679.733333333333348 Attach:1Water@0 zone
+PGDUMP        725.066666666666720 Attach:1Water@1 zone
+PGDUMP       -199.266666666666623 Attach:1Water@2 zone
+PGDUMP       -859.266666666666652 Attach:1Water@3 zone
+PGDUMP        725.066666666666720 Retreat:1
+PGDUMP        -19.266666666666659 Retreat:2
+PGDUMP         -9.266666666666657 Retreat:3
+PGSTEP A-115323-t05b seed 6 free 3
+PGDUMP actor=0 candidates=5
+PGDUMP       -404.933333333333337 EndTurn
+PGDUMP        785.066666666666720 Attach:1Water@0 zone
+PGDUMP       -364.933333333333337 Attach:1Water@1 zone
+PGDUMP       -954.933333333333280 Attach:1Water@2 zone
+PGDUMP      -1344.933333333333167 Attach:1Water@3 zone
+PGSTEP A-115323-t05b seed 6 free 4
+PGDUMP actor=0 candidates=2
+PGDUMP        415.066666666666663 EndTurn
+PGDUMP        785.066666666666720 Attack:Turbo Shark
+PGSTEP A-115323-t05b seed 6 free 5
+PGDUMP actor=0 candidates=3
+PGDUMP        765.066666666666720 Attach:1Water@1 fx
+PGDUMP        775.066666666666720 Attach:1Water@2 fx
+PGDUMP        785.066666666666720 Attach:1Water@3 fx
+PGSTEP A-115323-t05b seed 6 free 6
+PGSTEP A-115323-t05b seed 6 free 7
+PGSTEP A-115323-t05b seed 6 forced 0 want=Place:Alolan Vulpix@3
+PGDUMP actor=0 candidates=8
+PGDUMP       -364.933333333333394 EndTurn
+PGDUMP        620.733333333333348 Attach:1Water@0 zone
+PGDUMP        383.066666666666606 Attach:1Water@1 zone
+PGDUMP       -448.266666666666652 Attach:1Water@2 zone
+PGDUMP        620.733333333333348 Evolve:Mega Sharpedo ex@1
+PGDUMP        383.066666666666606 Place:Alolan Vulpix@3
+PGDUMP        356.066666666666663 Retreat:1
+PGDUMP        -78.266666666666623 Retreat:2
+PGSTEP A-115323-t05b seed 6 forced 1 want=Evolve:Mega Sharpedo ex@1
+PGDUMP actor=0 candidates=9
+PGDUMP       -305.933333333333394 EndTurn
+PGDUMP        679.733333333333348 Attach:1Water@0 zone
+PGDUMP        415.066666666666663 Attach:1Water@1 zone
+PGDUMP       -389.266666666666652 Attach:1Water@2 zone
+PGDUMP       -876.933333333333394 Attach:1Water@3 zone
+PGDUMP        679.733333333333348 Evolve:Mega Sharpedo ex@1
+PGDUMP        415.066666666666663 Retreat:1
+PGDUMP        -19.266666666666659 Retreat:2
+PGDUMP         -9.266666666666657 Retreat:3
+PGSTEP A-115323-t05b seed 6 forced 2 want=Retreat:1
+PGDUMP actor=0 candidates=8
+PGDUMP         63.066666666666656 EndTurn
+PGDUMP        679.733333333333348 Attach:1Water@0 zone
+PGDUMP        725.066666666666720 Attach:1Water@1 zone
+PGDUMP       -199.266666666666623 Attach:1Water@2 zone
+PGDUMP       -859.266666666666652 Attach:1Water@3 zone
+PGDUMP        725.066666666666720 Retreat:1
+PGDUMP        -19.266666666666659 Retreat:2
+PGDUMP         -9.266666666666657 Retreat:3
+PGSTEP A-115323-t05b seed 6 forced 3 want=Attach:1Water@0 zone
+PGDUMP actor=0 candidates=5
+PGDUMP       -404.933333333333337 EndTurn
+PGDUMP        785.066666666666720 Attach:1Water@0 zone
+PGDUMP       -364.933333333333337 Attach:1Water@1 zone
+PGDUMP       -954.933333333333280 Attach:1Water@2 zone
+PGDUMP      -1344.933333333333167 Attach:1Water@3 zone
+PGSTEP A-115323-t05b seed 6 forced 4 want=Attack:Turbo Shark
+PGDUMP actor=0 candidates=2
+PGDUMP        415.066666666666663 EndTurn
+PGDUMP        785.066666666666720 Attack:Turbo Shark
+PGSTEP A-115323-t05b seed 6 forced 5 want=(next choice)
+PGDUMP actor=0 candidates=3
+PGDUMP        765.066666666666720 Attach:1Water@1 fx
+PGDUMP        775.066666666666720 Attach:1Water@2 fx
+PGDUMP        785.066666666666720 Attach:1Water@3 fx
+PGSTEP A-115323-t05b seed 7 free 0
+PGDUMP actor=0 candidates=8
+PGDUMP       -364.933333333333394 EndTurn
+PGDUMP        620.733333333333348 Attach:1Water@0 zone
+PGDUMP        383.066666666666606 Attach:1Water@1 zone
+PGDUMP       -448.266666666666652 Attach:1Water@2 zone
+PGDUMP        620.733333333333348 Evolve:Mega Sharpedo ex@1
+PGDUMP        383.066666666666606 Place:Alolan Vulpix@3
+PGDUMP        356.066666666666663 Retreat:1
+PGDUMP        -78.266666666666623 Retreat:2
+PGSTEP A-115323-t05b seed 7 free 1
+PGDUMP actor=0 candidates=7
+PGDUMP          4.066666666666658 EndTurn
+PGDUMP        679.733333333333348 Attach:1Water@0 zone
+PGDUMP        666.066666666666720 Attach:1Water@1 zone
+PGDUMP       -258.266666666666652 Attach:1Water@2 zone
+PGDUMP        679.733333333333348 Place:Alolan Vulpix@3
+PGDUMP        666.066666666666720 Retreat:1
+PGDUMP        -19.266666666666659 Retreat:2
+PGSTEP A-115323-t05b seed 7 free 2
+PGDUMP actor=0 candidates=8
+PGDUMP         63.066666666666656 EndTurn
+PGDUMP        679.733333333333348 Attach:1Water@0 zone
+PGDUMP        725.066666666666720 Attach:1Water@1 zone
+PGDUMP       -199.266666666666623 Attach:1Water@2 zone
+PGDUMP       -859.266666666666652 Attach:1Water@3 zone
+PGDUMP        725.066666666666720 Retreat:1
+PGDUMP        -19.266666666666659 Retreat:2
+PGDUMP         -9.266666666666657 Retreat:3
+PGSTEP A-115323-t05b seed 7 free 3
+PGDUMP actor=0 candidates=5
+PGDUMP       -404.933333333333337 EndTurn
+PGDUMP        785.066666666666720 Attach:1Water@0 zone
+PGDUMP       -364.933333333333337 Attach:1Water@1 zone
+PGDUMP       -954.933333333333280 Attach:1Water@2 zone
+PGDUMP      -1344.933333333333167 Attach:1Water@3 zone
+PGSTEP A-115323-t05b seed 7 free 4
+PGDUMP actor=0 candidates=2
+PGDUMP        415.066666666666663 EndTurn
+PGDUMP        785.066666666666720 Attack:Turbo Shark
+PGSTEP A-115323-t05b seed 7 free 5
+PGDUMP actor=0 candidates=3
+PGDUMP        765.066666666666720 Attach:1Water@1 fx
+PGDUMP        775.066666666666720 Attach:1Water@2 fx
+PGDUMP        785.066666666666720 Attach:1Water@3 fx
+PGSTEP A-115323-t05b seed 7 free 6
+PGSTEP A-115323-t05b seed 7 free 7
+PGSTEP A-115323-t05b seed 7 forced 0 want=Place:Alolan Vulpix@3
+PGDUMP actor=0 candidates=8
+PGDUMP       -364.933333333333394 EndTurn
+PGDUMP        620.733333333333348 Attach:1Water@0 zone
+PGDUMP        383.066666666666606 Attach:1Water@1 zone
+PGDUMP       -448.266666666666652 Attach:1Water@2 zone
+PGDUMP        620.733333333333348 Evolve:Mega Sharpedo ex@1
+PGDUMP        383.066666666666606 Place:Alolan Vulpix@3
+PGDUMP        356.066666666666663 Retreat:1
+PGDUMP        -78.266666666666623 Retreat:2
+PGSTEP A-115323-t05b seed 7 forced 1 want=Evolve:Mega Sharpedo ex@1
+PGDUMP actor=0 candidates=9
+PGDUMP       -305.933333333333394 EndTurn
+PGDUMP        679.733333333333348 Attach:1Water@0 zone
+PGDUMP        415.066666666666663 Attach:1Water@1 zone
+PGDUMP       -389.266666666666652 Attach:1Water@2 zone
+PGDUMP       -876.933333333333394 Attach:1Water@3 zone
+PGDUMP        679.733333333333348 Evolve:Mega Sharpedo ex@1
+PGDUMP        415.066666666666663 Retreat:1
+PGDUMP        -19.266666666666659 Retreat:2
+PGDUMP         -9.266666666666657 Retreat:3
+PGSTEP A-115323-t05b seed 7 forced 2 want=Retreat:1
+PGDUMP actor=0 candidates=8
+PGDUMP         63.066666666666656 EndTurn
+PGDUMP        679.733333333333348 Attach:1Water@0 zone
+PGDUMP        725.066666666666720 Attach:1Water@1 zone
+PGDUMP       -199.266666666666623 Attach:1Water@2 zone
+PGDUMP       -859.266666666666652 Attach:1Water@3 zone
+PGDUMP        725.066666666666720 Retreat:1
+PGDUMP        -19.266666666666659 Retreat:2
+PGDUMP         -9.266666666666657 Retreat:3
+PGSTEP A-115323-t05b seed 7 forced 3 want=Attach:1Water@0 zone
+PGDUMP actor=0 candidates=5
+PGDUMP       -404.933333333333337 EndTurn
+PGDUMP        785.066666666666720 Attach:1Water@0 zone
+PGDUMP       -364.933333333333337 Attach:1Water@1 zone
+PGDUMP       -954.933333333333280 Attach:1Water@2 zone
+PGDUMP      -1344.933333333333167 Attach:1Water@3 zone
+PGSTEP A-115323-t05b seed 7 forced 4 want=Attack:Turbo Shark
+PGDUMP actor=0 candidates=2
+PGDUMP        415.066666666666663 EndTurn
+PGDUMP        785.066666666666720 Attack:Turbo Shark
+PGSTEP A-115323-t05b seed 7 forced 5 want=(next choice)
+PGDUMP actor=0 candidates=3
+PGDUMP        765.066666666666720 Attach:1Water@1 fx
+PGDUMP        775.066666666666720 Attach:1Water@2 fx
+PGDUMP        785.066666666666720 Attach:1Water@3 fx
+PGSTEP A-115323-t05b seed 8 free 0
+PGDUMP actor=0 candidates=8
+PGDUMP       -364.933333333333394 EndTurn
+PGDUMP        620.733333333333348 Attach:1Water@0 zone
+PGDUMP        383.066666666666606 Attach:1Water@1 zone
+PGDUMP       -448.266666666666652 Attach:1Water@2 zone
+PGDUMP        620.733333333333348 Evolve:Mega Sharpedo ex@1
+PGDUMP        383.066666666666606 Place:Alolan Vulpix@3
+PGDUMP        356.066666666666663 Retreat:1
+PGDUMP        -78.266666666666623 Retreat:2
+PGSTEP A-115323-t05b seed 8 free 1
+PGDUMP actor=0 candidates=7
+PGDUMP          4.066666666666658 EndTurn
+PGDUMP        679.733333333333348 Attach:1Water@0 zone
+PGDUMP        666.066666666666720 Attach:1Water@1 zone
+PGDUMP       -258.266666666666652 Attach:1Water@2 zone
+PGDUMP        679.733333333333348 Place:Alolan Vulpix@3
+PGDUMP        666.066666666666720 Retreat:1
+PGDUMP        -19.266666666666659 Retreat:2
+PGSTEP A-115323-t05b seed 8 free 2
+PGDUMP actor=0 candidates=8
+PGDUMP         63.066666666666656 EndTurn
+PGDUMP        679.733333333333348 Attach:1Water@0 zone
+PGDUMP        725.066666666666720 Attach:1Water@1 zone
+PGDUMP       -199.266666666666623 Attach:1Water@2 zone
+PGDUMP       -859.266666666666652 Attach:1Water@3 zone
+PGDUMP        725.066666666666720 Retreat:1
+PGDUMP        -19.266666666666659 Retreat:2
+PGDUMP         -9.266666666666657 Retreat:3
+PGSTEP A-115323-t05b seed 8 free 3
+PGDUMP actor=0 candidates=5
+PGDUMP       -404.933333333333337 EndTurn
+PGDUMP        785.066666666666720 Attach:1Water@0 zone
+PGDUMP       -364.933333333333337 Attach:1Water@1 zone
+PGDUMP       -954.933333333333280 Attach:1Water@2 zone
+PGDUMP      -1344.933333333333167 Attach:1Water@3 zone
+PGSTEP A-115323-t05b seed 8 free 4
+PGDUMP actor=0 candidates=2
+PGDUMP        415.066666666666663 EndTurn
+PGDUMP        785.066666666666720 Attack:Turbo Shark
+PGSTEP A-115323-t05b seed 8 free 5
+PGDUMP actor=0 candidates=3
+PGDUMP        765.066666666666720 Attach:1Water@1 fx
+PGDUMP        775.066666666666720 Attach:1Water@2 fx
+PGDUMP        785.066666666666720 Attach:1Water@3 fx
+PGSTEP A-115323-t05b seed 8 free 6
+PGSTEP A-115323-t05b seed 8 free 7
+PGSTEP A-115323-t05b seed 8 forced 0 want=Place:Alolan Vulpix@3
+PGDUMP actor=0 candidates=8
+PGDUMP       -364.933333333333394 EndTurn
+PGDUMP        620.733333333333348 Attach:1Water@0 zone
+PGDUMP        383.066666666666606 Attach:1Water@1 zone
+PGDUMP       -448.266666666666652 Attach:1Water@2 zone
+PGDUMP        620.733333333333348 Evolve:Mega Sharpedo ex@1
+PGDUMP        383.066666666666606 Place:Alolan Vulpix@3
+PGDUMP        356.066666666666663 Retreat:1
+PGDUMP        -78.266666666666623 Retreat:2
+PGSTEP A-115323-t05b seed 8 forced 1 want=Evolve:Mega Sharpedo ex@1
+PGDUMP actor=0 candidates=9
+PGDUMP       -305.933333333333394 EndTurn
+PGDUMP        679.733333333333348 Attach:1Water@0 zone
+PGDUMP        415.066666666666663 Attach:1Water@1 zone
+PGDUMP       -389.266666666666652 Attach:1Water@2 zone
+PGDUMP       -876.933333333333394 Attach:1Water@3 zone
+PGDUMP        679.733333333333348 Evolve:Mega Sharpedo ex@1
+PGDUMP        415.066666666666663 Retreat:1
+PGDUMP        -19.266666666666659 Retreat:2
+PGDUMP         -9.266666666666657 Retreat:3
+PGSTEP A-115323-t05b seed 8 forced 2 want=Retreat:1
+PGDUMP actor=0 candidates=8
+PGDUMP         63.066666666666656 EndTurn
+PGDUMP        679.733333333333348 Attach:1Water@0 zone
+PGDUMP        725.066666666666720 Attach:1Water@1 zone
+PGDUMP       -199.266666666666623 Attach:1Water@2 zone
+PGDUMP       -859.266666666666652 Attach:1Water@3 zone
+PGDUMP        725.066666666666720 Retreat:1
+PGDUMP        -19.266666666666659 Retreat:2
+PGDUMP         -9.266666666666657 Retreat:3
+PGSTEP A-115323-t05b seed 8 forced 3 want=Attach:1Water@0 zone
+PGDUMP actor=0 candidates=5
+PGDUMP       -404.933333333333337 EndTurn
+PGDUMP        785.066666666666720 Attach:1Water@0 zone
+PGDUMP       -364.933333333333337 Attach:1Water@1 zone
+PGDUMP       -954.933333333333280 Attach:1Water@2 zone
+PGDUMP      -1344.933333333333167 Attach:1Water@3 zone
+PGSTEP A-115323-t05b seed 8 forced 4 want=Attack:Turbo Shark
+PGDUMP actor=0 candidates=2
+PGDUMP        415.066666666666663 EndTurn
+PGDUMP        785.066666666666720 Attack:Turbo Shark
+PGSTEP A-115323-t05b seed 8 forced 5 want=(next choice)
+PGDUMP actor=0 candidates=3
+PGDUMP        765.066666666666720 Attach:1Water@1 fx
+PGDUMP        775.066666666666720 Attach:1Water@2 fx
+PGDUMP        785.066666666666720 Attach:1Water@3 fx
+PGSTEP A-115323-t05b seed 9 free 0
+PGDUMP actor=0 candidates=8
+PGDUMP       -364.933333333333394 EndTurn
+PGDUMP        620.733333333333348 Attach:1Water@0 zone
+PGDUMP        383.066666666666606 Attach:1Water@1 zone
+PGDUMP       -448.266666666666652 Attach:1Water@2 zone
+PGDUMP        620.733333333333348 Evolve:Mega Sharpedo ex@1
+PGDUMP        383.066666666666606 Place:Alolan Vulpix@3
+PGDUMP        356.066666666666663 Retreat:1
+PGDUMP        -78.266666666666623 Retreat:2
+PGSTEP A-115323-t05b seed 9 free 1
+PGDUMP actor=0 candidates=7
+PGDUMP          4.066666666666658 EndTurn
+PGDUMP        679.733333333333348 Attach:1Water@0 zone
+PGDUMP        666.066666666666720 Attach:1Water@1 zone
+PGDUMP       -258.266666666666652 Attach:1Water@2 zone
+PGDUMP        679.733333333333348 Place:Alolan Vulpix@3
+PGDUMP        666.066666666666720 Retreat:1
+PGDUMP        -19.266666666666659 Retreat:2
+PGSTEP A-115323-t05b seed 9 free 2
+PGDUMP actor=0 candidates=8
+PGDUMP         63.066666666666656 EndTurn
+PGDUMP        679.733333333333348 Attach:1Water@0 zone
+PGDUMP        725.066666666666720 Attach:1Water@1 zone
+PGDUMP       -199.266666666666623 Attach:1Water@2 zone
+PGDUMP       -859.266666666666652 Attach:1Water@3 zone
+PGDUMP        725.066666666666720 Retreat:1
+PGDUMP        -19.266666666666659 Retreat:2
+PGDUMP         -9.266666666666657 Retreat:3
+PGSTEP A-115323-t05b seed 9 free 3
+PGDUMP actor=0 candidates=5
+PGDUMP       -404.933333333333337 EndTurn
+PGDUMP        785.066666666666720 Attach:1Water@0 zone
+PGDUMP       -364.933333333333337 Attach:1Water@1 zone
+PGDUMP       -954.933333333333280 Attach:1Water@2 zone
+PGDUMP      -1344.933333333333167 Attach:1Water@3 zone
+PGSTEP A-115323-t05b seed 9 free 4
+PGDUMP actor=0 candidates=2
+PGDUMP        415.066666666666663 EndTurn
+PGDUMP        785.066666666666720 Attack:Turbo Shark
+PGSTEP A-115323-t05b seed 9 free 5
+PGDUMP actor=0 candidates=3
+PGDUMP        765.066666666666720 Attach:1Water@1 fx
+PGDUMP        775.066666666666720 Attach:1Water@2 fx
+PGDUMP        785.066666666666720 Attach:1Water@3 fx
+PGSTEP A-115323-t05b seed 9 free 6
+PGSTEP A-115323-t05b seed 9 free 7
+PGSTEP A-115323-t05b seed 9 forced 0 want=Place:Alolan Vulpix@3
+PGDUMP actor=0 candidates=8
+PGDUMP       -364.933333333333394 EndTurn
+PGDUMP        620.733333333333348 Attach:1Water@0 zone
+PGDUMP        383.066666666666606 Attach:1Water@1 zone
+PGDUMP       -448.266666666666652 Attach:1Water@2 zone
+PGDUMP        620.733333333333348 Evolve:Mega Sharpedo ex@1
+PGDUMP        383.066666666666606 Place:Alolan Vulpix@3
+PGDUMP        356.066666666666663 Retreat:1
+PGDUMP        -78.266666666666623 Retreat:2
+PGSTEP A-115323-t05b seed 9 forced 1 want=Evolve:Mega Sharpedo ex@1
+PGDUMP actor=0 candidates=9
+PGDUMP       -305.933333333333394 EndTurn
+PGDUMP        679.733333333333348 Attach:1Water@0 zone
+PGDUMP        415.066666666666663 Attach:1Water@1 zone
+PGDUMP       -389.266666666666652 Attach:1Water@2 zone
+PGDUMP       -876.933333333333394 Attach:1Water@3 zone
+PGDUMP        679.733333333333348 Evolve:Mega Sharpedo ex@1
+PGDUMP        415.066666666666663 Retreat:1
+PGDUMP        -19.266666666666659 Retreat:2
+PGDUMP         -9.266666666666657 Retreat:3
+PGSTEP A-115323-t05b seed 9 forced 2 want=Retreat:1
+PGDUMP actor=0 candidates=8
+PGDUMP         63.066666666666656 EndTurn
+PGDUMP        679.733333333333348 Attach:1Water@0 zone
+PGDUMP        725.066666666666720 Attach:1Water@1 zone
+PGDUMP       -199.266666666666623 Attach:1Water@2 zone
+PGDUMP       -859.266666666666652 Attach:1Water@3 zone
+PGDUMP        725.066666666666720 Retreat:1
+PGDUMP        -19.266666666666659 Retreat:2
+PGDUMP         -9.266666666666657 Retreat:3
+PGSTEP A-115323-t05b seed 9 forced 3 want=Attach:1Water@0 zone
+PGDUMP actor=0 candidates=5
+PGDUMP       -404.933333333333337 EndTurn
+PGDUMP        785.066666666666720 Attach:1Water@0 zone
+PGDUMP       -364.933333333333337 Attach:1Water@1 zone
+PGDUMP       -954.933333333333280 Attach:1Water@2 zone
+PGDUMP      -1344.933333333333167 Attach:1Water@3 zone
+PGSTEP A-115323-t05b seed 9 forced 4 want=Attack:Turbo Shark
+PGDUMP actor=0 candidates=2
+PGDUMP        415.066666666666663 EndTurn
+PGDUMP        785.066666666666720 Attack:Turbo Shark
+PGSTEP A-115323-t05b seed 9 forced 5 want=(next choice)
+PGDUMP actor=0 candidates=3
+PGDUMP        765.066666666666720 Attach:1Water@1 fx
+PGDUMP        775.066666666666720 Attach:1Water@2 fx
+PGDUMP        785.066666666666720 Attach:1Water@3 fx
+PGSTEP A-115323-t05b seed 10 free 0
+PGDUMP actor=0 candidates=8
+PGDUMP       -364.933333333333394 EndTurn
+PGDUMP        620.733333333333348 Attach:1Water@0 zone
+PGDUMP        383.066666666666606 Attach:1Water@1 zone
+PGDUMP       -448.266666666666652 Attach:1Water@2 zone
+PGDUMP        620.733333333333348 Evolve:Mega Sharpedo ex@1
+PGDUMP        383.066666666666606 Place:Alolan Vulpix@3
+PGDUMP        356.066666666666663 Retreat:1
+PGDUMP        -78.266666666666623 Retreat:2
+PGSTEP A-115323-t05b seed 10 free 1
+PGDUMP actor=0 candidates=7
+PGDUMP          4.066666666666658 EndTurn
+PGDUMP        679.733333333333348 Attach:1Water@0 zone
+PGDUMP        666.066666666666720 Attach:1Water@1 zone
+PGDUMP       -258.266666666666652 Attach:1Water@2 zone
+PGDUMP        679.733333333333348 Place:Alolan Vulpix@3
+PGDUMP        666.066666666666720 Retreat:1
+PGDUMP        -19.266666666666659 Retreat:2
+PGSTEP A-115323-t05b seed 10 free 2
+PGDUMP actor=0 candidates=8
+PGDUMP         63.066666666666656 EndTurn
+PGDUMP        679.733333333333348 Attach:1Water@0 zone
+PGDUMP        725.066666666666720 Attach:1Water@1 zone
+PGDUMP       -199.266666666666623 Attach:1Water@2 zone
+PGDUMP       -859.266666666666652 Attach:1Water@3 zone
+PGDUMP        725.066666666666720 Retreat:1
+PGDUMP        -19.266666666666659 Retreat:2
+PGDUMP         -9.266666666666657 Retreat:3
+PGSTEP A-115323-t05b seed 10 free 3
+PGDUMP actor=0 candidates=5
+PGDUMP       -404.933333333333337 EndTurn
+PGDUMP        785.066666666666720 Attach:1Water@0 zone
+PGDUMP       -364.933333333333337 Attach:1Water@1 zone
+PGDUMP       -954.933333333333280 Attach:1Water@2 zone
+PGDUMP      -1344.933333333333167 Attach:1Water@3 zone
+PGSTEP A-115323-t05b seed 10 free 4
+PGDUMP actor=0 candidates=2
+PGDUMP        415.066666666666663 EndTurn
+PGDUMP        785.066666666666720 Attack:Turbo Shark
+PGSTEP A-115323-t05b seed 10 free 5
+PGDUMP actor=0 candidates=3
+PGDUMP        765.066666666666720 Attach:1Water@1 fx
+PGDUMP        775.066666666666720 Attach:1Water@2 fx
+PGDUMP        785.066666666666720 Attach:1Water@3 fx
+PGSTEP A-115323-t05b seed 10 free 6
+PGSTEP A-115323-t05b seed 10 free 7
+PGSTEP A-115323-t05b seed 10 forced 0 want=Place:Alolan Vulpix@3
+PGDUMP actor=0 candidates=8
+PGDUMP       -364.933333333333394 EndTurn
+PGDUMP        620.733333333333348 Attach:1Water@0 zone
+PGDUMP        383.066666666666606 Attach:1Water@1 zone
+PGDUMP       -448.266666666666652 Attach:1Water@2 zone
+PGDUMP        620.733333333333348 Evolve:Mega Sharpedo ex@1
+PGDUMP        383.066666666666606 Place:Alolan Vulpix@3
+PGDUMP        356.066666666666663 Retreat:1
+PGDUMP        -78.266666666666623 Retreat:2
+PGSTEP A-115323-t05b seed 10 forced 1 want=Evolve:Mega Sharpedo ex@1
+PGDUMP actor=0 candidates=9
+PGDUMP       -305.933333333333394 EndTurn
+PGDUMP        679.733333333333348 Attach:1Water@0 zone
+PGDUMP        415.066666666666663 Attach:1Water@1 zone
+PGDUMP       -389.266666666666652 Attach:1Water@2 zone
+PGDUMP       -876.933333333333394 Attach:1Water@3 zone
+PGDUMP        679.733333333333348 Evolve:Mega Sharpedo ex@1
+PGDUMP        415.066666666666663 Retreat:1
+PGDUMP        -19.266666666666659 Retreat:2
+PGDUMP         -9.266666666666657 Retreat:3
+PGSTEP A-115323-t05b seed 10 forced 2 want=Retreat:1
+PGDUMP actor=0 candidates=8
+PGDUMP         63.066666666666656 EndTurn
+PGDUMP        679.733333333333348 Attach:1Water@0 zone
+PGDUMP        725.066666666666720 Attach:1Water@1 zone
+PGDUMP       -199.266666666666623 Attach:1Water@2 zone
+PGDUMP       -859.266666666666652 Attach:1Water@3 zone
+PGDUMP        725.066666666666720 Retreat:1
+PGDUMP        -19.266666666666659 Retreat:2
+PGDUMP         -9.266666666666657 Retreat:3
+PGSTEP A-115323-t05b seed 10 forced 3 want=Attach:1Water@0 zone
+PGDUMP actor=0 candidates=5
+PGDUMP       -404.933333333333337 EndTurn
+PGDUMP        785.066666666666720 Attach:1Water@0 zone
+PGDUMP       -364.933333333333337 Attach:1Water@1 zone
+PGDUMP       -954.933333333333280 Attach:1Water@2 zone
+PGDUMP      -1344.933333333333167 Attach:1Water@3 zone
+PGSTEP A-115323-t05b seed 10 forced 4 want=Attack:Turbo Shark
+PGDUMP actor=0 candidates=2
+PGDUMP        415.066666666666663 EndTurn
+PGDUMP        785.066666666666720 Attack:Turbo Shark
+PGSTEP A-115323-t05b seed 10 forced 5 want=(next choice)
+PGDUMP actor=0 candidates=3
+PGDUMP        765.066666666666720 Attach:1Water@1 fx
+PGDUMP        775.066666666666720 Attach:1Water@2 fx
+PGDUMP        785.066666666666720 Attach:1Water@3 fx
+PGSTEP A-115323-t05b seed 11 free 0
+PGDUMP actor=0 candidates=8
+PGDUMP       -364.933333333333394 EndTurn
+PGDUMP        620.733333333333348 Attach:1Water@0 zone
+PGDUMP        383.066666666666606 Attach:1Water@1 zone
+PGDUMP       -448.266666666666652 Attach:1Water@2 zone
+PGDUMP        620.733333333333348 Evolve:Mega Sharpedo ex@1
+PGDUMP        383.066666666666606 Place:Alolan Vulpix@3
+PGDUMP        356.066666666666663 Retreat:1
+PGDUMP        -78.266666666666623 Retreat:2
+PGSTEP A-115323-t05b seed 11 free 1
+PGDUMP actor=0 candidates=7
+PGDUMP          4.066666666666658 EndTurn
+PGDUMP        679.733333333333348 Attach:1Water@0 zone
+PGDUMP        666.066666666666720 Attach:1Water@1 zone
+PGDUMP       -258.266666666666652 Attach:1Water@2 zone
+PGDUMP        679.733333333333348 Place:Alolan Vulpix@3
+PGDUMP        666.066666666666720 Retreat:1
+PGDUMP        -19.266666666666659 Retreat:2
+PGSTEP A-115323-t05b seed 11 free 2
+PGDUMP actor=0 candidates=8
+PGDUMP         63.066666666666656 EndTurn
+PGDUMP        679.733333333333348 Attach:1Water@0 zone
+PGDUMP        725.066666666666720 Attach:1Water@1 zone
+PGDUMP       -199.266666666666623 Attach:1Water@2 zone
+PGDUMP       -859.266666666666652 Attach:1Water@3 zone
+PGDUMP        725.066666666666720 Retreat:1
+PGDUMP        -19.266666666666659 Retreat:2
+PGDUMP         -9.266666666666657 Retreat:3
+PGSTEP A-115323-t05b seed 11 free 3
+PGDUMP actor=0 candidates=5
+PGDUMP       -404.933333333333337 EndTurn
+PGDUMP        785.066666666666720 Attach:1Water@0 zone
+PGDUMP       -364.933333333333337 Attach:1Water@1 zone
+PGDUMP       -954.933333333333280 Attach:1Water@2 zone
+PGDUMP      -1344.933333333333167 Attach:1Water@3 zone
+PGSTEP A-115323-t05b seed 11 free 4
+PGDUMP actor=0 candidates=2
+PGDUMP        415.066666666666663 EndTurn
+PGDUMP        785.066666666666720 Attack:Turbo Shark
+PGSTEP A-115323-t05b seed 11 free 5
+PGDUMP actor=0 candidates=3
+PGDUMP        765.066666666666720 Attach:1Water@1 fx
+PGDUMP        775.066666666666720 Attach:1Water@2 fx
+PGDUMP        785.066666666666720 Attach:1Water@3 fx
+PGSTEP A-115323-t05b seed 11 free 6
+PGSTEP A-115323-t05b seed 11 free 7
+PGSTEP A-115323-t05b seed 11 forced 0 want=Place:Alolan Vulpix@3
+PGDUMP actor=0 candidates=8
+PGDUMP       -364.933333333333394 EndTurn
+PGDUMP        620.733333333333348 Attach:1Water@0 zone
+PGDUMP        383.066666666666606 Attach:1Water@1 zone
+PGDUMP       -448.266666666666652 Attach:1Water@2 zone
+PGDUMP        620.733333333333348 Evolve:Mega Sharpedo ex@1
+PGDUMP        383.066666666666606 Place:Alolan Vulpix@3
+PGDUMP        356.066666666666663 Retreat:1
+PGDUMP        -78.266666666666623 Retreat:2
+PGSTEP A-115323-t05b seed 11 forced 1 want=Evolve:Mega Sharpedo ex@1
+PGDUMP actor=0 candidates=9
+PGDUMP       -305.933333333333394 EndTurn
+PGDUMP        679.733333333333348 Attach:1Water@0 zone
+PGDUMP        415.066666666666663 Attach:1Water@1 zone
+PGDUMP       -389.266666666666652 Attach:1Water@2 zone
+PGDUMP       -876.933333333333394 Attach:1Water@3 zone
+PGDUMP        679.733333333333348 Evolve:Mega Sharpedo ex@1
+PGDUMP        415.066666666666663 Retreat:1
+PGDUMP        -19.266666666666659 Retreat:2
+PGDUMP         -9.266666666666657 Retreat:3
+PGSTEP A-115323-t05b seed 11 forced 2 want=Retreat:1
+PGDUMP actor=0 candidates=8
+PGDUMP         63.066666666666656 EndTurn
+PGDUMP        679.733333333333348 Attach:1Water@0 zone
+PGDUMP        725.066666666666720 Attach:1Water@1 zone
+PGDUMP       -199.266666666666623 Attach:1Water@2 zone
+PGDUMP       -859.266666666666652 Attach:1Water@3 zone
+PGDUMP        725.066666666666720 Retreat:1
+PGDUMP        -19.266666666666659 Retreat:2
+PGDUMP         -9.266666666666657 Retreat:3
+PGSTEP A-115323-t05b seed 11 forced 3 want=Attach:1Water@0 zone
+PGDUMP actor=0 candidates=5
+PGDUMP       -404.933333333333337 EndTurn
+PGDUMP        785.066666666666720 Attach:1Water@0 zone
+PGDUMP       -364.933333333333337 Attach:1Water@1 zone
+PGDUMP       -954.933333333333280 Attach:1Water@2 zone
+PGDUMP      -1344.933333333333167 Attach:1Water@3 zone
+PGSTEP A-115323-t05b seed 11 forced 4 want=Attack:Turbo Shark
+PGDUMP actor=0 candidates=2
+PGDUMP        415.066666666666663 EndTurn
+PGDUMP        785.066666666666720 Attack:Turbo Shark
+PGSTEP A-115323-t05b seed 11 forced 5 want=(next choice)
+PGDUMP actor=0 candidates=3
+PGDUMP        765.066666666666720 Attach:1Water@1 fx
+PGDUMP        775.066666666666720 Attach:1Water@2 fx
+PGDUMP        785.066666666666720 Attach:1Water@3 fx
+PGSTEP A-115323-t05b seed 12 free 0
+PGDUMP actor=0 candidates=8
+PGDUMP       -364.933333333333394 EndTurn
+PGDUMP        620.733333333333348 Attach:1Water@0 zone
+PGDUMP        383.066666666666606 Attach:1Water@1 zone
+PGDUMP       -448.266666666666652 Attach:1Water@2 zone
+PGDUMP        620.733333333333348 Evolve:Mega Sharpedo ex@1
+PGDUMP        383.066666666666606 Place:Alolan Vulpix@3
+PGDUMP        356.066666666666663 Retreat:1
+PGDUMP        -78.266666666666623 Retreat:2
+PGSTEP A-115323-t05b seed 12 free 1
+PGDUMP actor=0 candidates=7
+PGDUMP          4.066666666666658 EndTurn
+PGDUMP        679.733333333333348 Attach:1Water@0 zone
+PGDUMP        666.066666666666720 Attach:1Water@1 zone
+PGDUMP       -258.266666666666652 Attach:1Water@2 zone
+PGDUMP        679.733333333333348 Place:Alolan Vulpix@3
+PGDUMP        666.066666666666720 Retreat:1
+PGDUMP        -19.266666666666659 Retreat:2
+PGSTEP A-115323-t05b seed 12 free 2
+PGDUMP actor=0 candidates=8
+PGDUMP         63.066666666666656 EndTurn
+PGDUMP        679.733333333333348 Attach:1Water@0 zone
+PGDUMP        725.066666666666720 Attach:1Water@1 zone
+PGDUMP       -199.266666666666623 Attach:1Water@2 zone
+PGDUMP       -859.266666666666652 Attach:1Water@3 zone
+PGDUMP        725.066666666666720 Retreat:1
+PGDUMP        -19.266666666666659 Retreat:2
+PGDUMP         -9.266666666666657 Retreat:3
+PGSTEP A-115323-t05b seed 12 free 3
+PGDUMP actor=0 candidates=5
+PGDUMP       -404.933333333333337 EndTurn
+PGDUMP        785.066666666666720 Attach:1Water@0 zone
+PGDUMP       -364.933333333333337 Attach:1Water@1 zone
+PGDUMP       -954.933333333333280 Attach:1Water@2 zone
+PGDUMP      -1344.933333333333167 Attach:1Water@3 zone
+PGSTEP A-115323-t05b seed 12 free 4
+PGDUMP actor=0 candidates=2
+PGDUMP        415.066666666666663 EndTurn
+PGDUMP        785.066666666666720 Attack:Turbo Shark
+PGSTEP A-115323-t05b seed 12 free 5
+PGDUMP actor=0 candidates=3
+PGDUMP        765.066666666666720 Attach:1Water@1 fx
+PGDUMP        775.066666666666720 Attach:1Water@2 fx
+PGDUMP        785.066666666666720 Attach:1Water@3 fx
+PGSTEP A-115323-t05b seed 12 free 6
+PGSTEP A-115323-t05b seed 12 free 7
+PGSTEP A-115323-t05b seed 12 forced 0 want=Place:Alolan Vulpix@3
+PGDUMP actor=0 candidates=8
+PGDUMP       -364.933333333333394 EndTurn
+PGDUMP        620.733333333333348 Attach:1Water@0 zone
+PGDUMP        383.066666666666606 Attach:1Water@1 zone
+PGDUMP       -448.266666666666652 Attach:1Water@2 zone
+PGDUMP        620.733333333333348 Evolve:Mega Sharpedo ex@1
+PGDUMP        383.066666666666606 Place:Alolan Vulpix@3
+PGDUMP        356.066666666666663 Retreat:1
+PGDUMP        -78.266666666666623 Retreat:2
+PGSTEP A-115323-t05b seed 12 forced 1 want=Evolve:Mega Sharpedo ex@1
+PGDUMP actor=0 candidates=9
+PGDUMP       -305.933333333333394 EndTurn
+PGDUMP        679.733333333333348 Attach:1Water@0 zone
+PGDUMP        415.066666666666663 Attach:1Water@1 zone
+PGDUMP       -389.266666666666652 Attach:1Water@2 zone
+PGDUMP       -876.933333333333394 Attach:1Water@3 zone
+PGDUMP        679.733333333333348 Evolve:Mega Sharpedo ex@1
+PGDUMP        415.066666666666663 Retreat:1
+PGDUMP        -19.266666666666659 Retreat:2
+PGDUMP         -9.266666666666657 Retreat:3
+PGSTEP A-115323-t05b seed 12 forced 2 want=Retreat:1
+PGDUMP actor=0 candidates=8
+PGDUMP         63.066666666666656 EndTurn
+PGDUMP        679.733333333333348 Attach:1Water@0 zone
+PGDUMP        725.066666666666720 Attach:1Water@1 zone
+PGDUMP       -199.266666666666623 Attach:1Water@2 zone
+PGDUMP       -859.266666666666652 Attach:1Water@3 zone
+PGDUMP        725.066666666666720 Retreat:1
+PGDUMP        -19.266666666666659 Retreat:2
+PGDUMP         -9.266666666666657 Retreat:3
+PGSTEP A-115323-t05b seed 12 forced 3 want=Attach:1Water@0 zone
+PGDUMP actor=0 candidates=5
+PGDUMP       -404.933333333333337 EndTurn
+PGDUMP        785.066666666666720 Attach:1Water@0 zone
+PGDUMP       -364.933333333333337 Attach:1Water@1 zone
+PGDUMP       -954.933333333333280 Attach:1Water@2 zone
+PGDUMP      -1344.933333333333167 Attach:1Water@3 zone
+PGSTEP A-115323-t05b seed 12 forced 4 want=Attack:Turbo Shark
+PGDUMP actor=0 candidates=2
+PGDUMP        415.066666666666663 EndTurn
+PGDUMP        785.066666666666720 Attack:Turbo Shark
+PGSTEP A-115323-t05b seed 12 forced 5 want=(next choice)
+PGDUMP actor=0 candidates=3
+PGDUMP        765.066666666666720 Attach:1Water@1 fx
+PGDUMP        775.066666666666720 Attach:1Water@2 fx
+PGDUMP        785.066666666666720 Attach:1Water@3 fx

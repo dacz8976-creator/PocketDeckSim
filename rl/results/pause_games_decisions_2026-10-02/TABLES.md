@@ -1,0 +1,46 @@
+## Game 143309: won 3-0 (normal win); he went second; opponent もつ (Psychic: Sigilyph, Ralts line, Mewtwo ex)
+
+| his turn | game turn | hand | his plan (to the first draw) | km3 first action over 12 seeds | same first action | same plan to first draw | km3 modal plan (seeds) | category (all tags) | what differs | km3 root gap (his first action) |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | 2 | text | Play:Professor's Research | Play:Copycat ×7, Play:Professor's Research ×3, Attach:1Water@0 zone ×2 | 3/12 (split) | 3/12 | Play:Copycat (7/12) | Supporter/Item choice or order (a draw card) | his [Play:Professor's Research] ↔ km3 [Play:Copycat] | 466 |
+| 2 | 4 | text | Evolve:Alolan Ninetales ex@0 → Play:Misty → MistyTarget@1 → Attach:1Water@0 zone → Attack:Binding Snow | Evolve:Alolan Ninetales ex@0 ×12 | 12/12 (agree) | 0/12 | Evolve:Alolan Ninetales ex@0 → Play:Irida → Attach:1Water@0 zone → Attack:Binding Snow (12/12) | Supporter/Item choice or order | his [Play:Misty, MistyTarget@1] ↔ km3 [Play:Irida] | 0 |
+| 3 | 6 | text | Play:Professor's Research | Play:Irida ×12 | 0/12 (differ) | 0/12 | Play:Irida → Attach:1Water@1 zone → Attack:Binding Snow (12/12) | Supporter/Item choice or order (a draw card) (also: attack vs another action, Energy attachment timing) | his [Play:Professor's Research] ↔ km3 [Play:Irida, Attach:1Water@1 zone, Attack:Binding Snow] | 99 |
+| 4 | 8 | text | Evolve:Mega Sharpedo ex@2 → Attach:1Water@2 zone → Attack:Binding Snow | Evolve:Mega Sharpedo ex@2 ×12 | 12/12 (agree) | 0/12 | Evolve:Mega Sharpedo ex@2 → Play:Irida → Attach:1Water@2 zone → Attack:Binding Snow (12/12) | Supporter/Item choice or order | his [-] ↔ km3 [Play:Irida] | 0 |
+
+## Game 115323: lost 2-3; he went first; opponent 草根 (Fighting: Snorlax, Skull Fossil, Rampardos, Arena of Antiquity)
+
+| his turn | game turn | hand | his plan (to the first draw) | km3 first action over 12 seeds | same first action | same plan to first draw | km3 modal plan (seeds) | category (all tags) | what differs | km3 root gap (his first action) |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | 1 | text | Play:Poké Ball | Play:Copycat ×7, Play:Poké Ball ×5 | 5/12 (split) | 5/12 | Play:Copycat (7/12) | Supporter/Item choice or order (a draw card) | his [Play:Poké Ball] ↔ km3 [Play:Copycat] | 59 |
+| 2 | 3 | text | Play:Misty → MistyTarget@0 → Attach:1Water@0 zone | Play:Copycat ×7, Attach:1Water@1 zone ×4, Attach:1Water@0 zone ×1 | 0/12 (differ) | 0/12 | Play:Copycat (7/12) | Supporter/Item choice or order (a draw card) (also: Energy attachment timing) | his [Play:Misty, MistyTarget@0, Attach:1Water@0 zone] ↔ km3 [Play:Copycat] | 1389 |
+| 3 | 5 | text | Place:Carvanha → Play:Copycat | Play:Irida ×12 | 0/12 (differ) | 0/12 | Play:Irida → Place:Carvanha → Attach:1Water@0 zone → Attack:Surf (12/12) | Supporter/Item choice or order (also: Supporter/Item choice or order (a draw card), attack vs another action, Energy attachment timing) | his [-] ↔ km3 [Play:Irida]; his [Play:Copycat] ↔ km3 [Attach:1Water@0 zone, Attack:Surf] | 150 |
+| 4 | 7 | text | Attach:1Water@1 zone → Attack:Turbo Shark → Attach:1Water@1 fx | Attach:1Water@1 zone ×12 | 12/12 (agree) | 0/12 | Attach:1Water@1 zone → Play:Irida → Attack:Turbo Shark → Attach:1Water@1 fx (12/12) | Supporter/Item choice or order | his [-] ↔ km3 [Play:Irida] | 0 |
+| 3 (mid-turn) | 5 | text | Place:Alolan Vulpix → Evolve:Mega Sharpedo ex@1 → Retreat:1 → Attach:1Water@0 zone → Attack:Turbo Shark → Attach:1Water@3 fx | Evolve:Mega Sharpedo ex@1 ×12 | 0/12 (differ) | 0/12 | Evolve:Mega Sharpedo ex@1 → Place:Alolan Vulpix → Retreat:1 → Attach:1Water@0 zone → Attack:Turbo Shark → Attach:1Water@3 fx (12/12) | same actions, different order | order: his Place:Alolan Vulpix → Evolve:Mega Sharpedo ex@1 → Retreat:1 → Attach:1Water@0 zone → Attack:Turbo Shark → Attach:1Water@3 fx | km3 Evolve:Mega Sharpedo ex@1 → Place:Alolan Vulpix → Retreat:1 → Attach:1Water@0 zone → Attack:Turbo Shark → Attach:1Water@3 fx | 238 |
+
+## Game 143837: won 2-1 by opponent concession (a full win); he went first; opponent 限界社会人 (Grass: Ogerpon ex, Meowscarada ex)
+
+| his turn | game turn | hand | his plan (to the first draw) | km3 first action over 12 seeds | same first action | same plan to first draw | km3 modal plan (seeds) | category (all tags) | what differs | km3 root gap (his first action) |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | 1 | frame | Play:Poké Ball | Play:Professor's Research ×6, Play:Poké Ball ×6 | 6/12 (split) | 6/12 | Play:Professor's Research (6/12) | Supporter/Item choice or order (a draw card) | his [Play:Poké Ball] ↔ km3 [Play:Professor's Research] | 7 |
+| 2 | 3 | frame | Play:Professor's Research | Play:Professor's Research ×8, Play:Elegant Cape ×4 | 8/12 (split) | 8/12 | Play:Professor's Research (8/12) | same plan |  | 2 |
+| 3 | 5 | elimination | Play:Poké Ball | Play:Poké Ball ×6, Play:Copycat ×6 | 6/12 (split) | 6/12 | Play:Poké Ball (6/12) | same plan |  | 1 |
+| 4 | 7 | elimination | Evolve:Mega Sharpedo ex@0 → Attach:1Water@0 zone → Play:Copycat | Evolve:Mega Sharpedo ex@0 ×12 | 12/12 (agree) | 12/12 | Evolve:Mega Sharpedo ex@0 → Attach:1Water@0 zone → Play:Copycat (12/12) | same plan |  | 0 |
+
+## Game 114458: won 3-2; he went second; opponent PlumaDeArticun (Fire: Chingling, Aerodactyl, Chandelure)
+
+| his turn | game turn | hand | his plan (to the first draw) | km3 first action over 12 seeds | same first action | same plan to first draw | km3 modal plan (seeds) | category (all tags) | what differs | km3 root gap (his first action) |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | 2 | text | Play:Professor's Research | Play:Copycat ×5, Play:Professor's Research ×4, Attach:1Water@0 zone ×3 | 4/12 (split) | 4/12 | Play:Copycat (5/12) | Supporter/Item choice or order (a draw card) | his [Play:Professor's Research] ↔ km3 [Play:Copycat] | 387 |
+| 2 | 4 | frame | Evolve:Alolan Ninetales ex@0 → Attach:1Water@0 zone → Play:Copycat | Evolve:Alolan Ninetales ex@0 ×12 | 12/12 (agree) | 0/12 | Evolve:Alolan Ninetales ex@0 → Play:Irida → Attach:1Water@0 zone → Attack:Binding Snow (12/12) | Supporter/Item choice or order (also: Supporter/Item choice or order (a draw card), attack vs another action) | his [-] ↔ km3 [Play:Irida]; his [Play:Copycat] ↔ km3 [Attack:Binding Snow] | 0 |
+| 3 | 6 | frame | Play:Poké Ball | Play:Poké Ball ×12 | 12/12 (agree) | 12/12 | Play:Poké Ball (12/12) | same plan |  | 0 |
+| 4 | 8 | frame | Evolve:Alolan Ninetales ex@2 → Play:Misty → MistyTarget@? → Attach:1Water@2 zone → Attack:Binding Snow | Evolve:Alolan Ninetales ex@2 ×12 | 12/12 (agree) | 0/12 | Evolve:Alolan Ninetales ex@2 → Retreat:2 → Attach:1Water@0 zone → Attack:Binding Snow (12/12) | Supporter/Item choice or order (also: retreat/promotion, Energy attachment target) | his [Play:Misty, MistyTarget@?, Attach:1Water@2 zone] ↔ km3 [Retreat:2, Attach:1Water@0 zone] | 0 |
+
+## Game 132311: won 2-0 (opponent timed out); he went first; opponent hk2 (Grass/Fighting: Shaymin, Furfrou, Flygon ex)
+
+| his turn | game turn | hand | his plan (to the first draw) | km3 first action over 12 seeds | same first action | same plan to first draw | km3 modal plan (seeds) | category (all tags) | what differs | km3 root gap (his first action) |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | 1 | text | Play:Poké Ball | Play:Professor's Research ×7, Play:Poké Ball ×5 | 5/12 (split) | 5/12 | Play:Professor's Research (7/12) | Supporter/Item choice or order (a draw card) | his [Play:Poké Ball] ↔ km3 [Play:Professor's Research] | 34 |
+| 2 | 3 | frame | Evolve:Mega Sharpedo ex@0 → Attach:1Water@0 zone → Attack:Turbo Shark → Attach:1Water@1 fx | Evolve:Mega Sharpedo ex@0 ×12 | 12/12 (agree) | 12/12 | Evolve:Mega Sharpedo ex@0 → Attach:1Water@0 zone → Attack:Turbo Shark → Attach:1Water@1 fx (12/12) | same plan |  | 0 |
+| 3 | 5 | frame | Evolve:Mega Sharpedo ex@1 → Play:Lucky Ice Pop → Play:Lucky Ice Pop → Attach:1Water@0 zone → Attack:Turbo Shark → Attach:1Water@1 fx | Retreat:1 ×12 | 0/12 (differ) | 0/12 | Retreat:1 → Play:Irida → Evolve:Mega Sharpedo ex@0 → Attack:Turbo Shark → Attach:1Water@1 fx (12/12) | Supporter/Item choice or order (also: evolution timing/target, retreat/promotion, Energy attachment timing) | his [Evolve:Mega Sharpedo ex@1, Play:Lucky Ice Pop, Play:Lucky Ice Pop, Attach:1Water@0 zone] ↔ km3 [Retreat:1, Play:Irida, Evolve:Mega Sharpedo ex@0] | 0 |
+| 4 | 7 | frame | Play:Professor's Research | Retreat:1 ×12 | 0/12 (differ) | 0/12 | Retreat:1 → Play:Irida → Attack:Turbo Shark → Attach:1Water@1 fx (12/12) | Supporter/Item choice or order (a draw card) (also: attack vs another action, retreat/promotion, Turbo Shark Bench target) | his [Play:Professor's Research] ↔ km3 [Retreat:1, Play:Irida, Attack:Turbo Shark, Attach:1Water@1 fx] | 214 |
+| 4 (mid-turn) | 7 | frame | Place:Alolan Vulpix → Attach:1Water@2 zone → Retreat:1 → Attack:Turbo Shark → Attach:1Water@2 fx | Retreat:1 ×12 | 0/12 (differ) | 0/12 | Retreat:1 → Place:Alolan Vulpix → Place:Alolan Vulpix → Attach:1Water@3 zone → Attack:Turbo Shark → Attach:1Water@2 fx (12/12) | retreat/promotion (also: Energy attachment target, bench development) | his [-] ↔ km3 [Retreat:1]; his [Attach:1Water@2 zone, Retreat:1] ↔ km3 [Place:Alolan Vulpix, Attach:1Water@3 zone] | 98 |

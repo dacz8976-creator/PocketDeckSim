@@ -1,0 +1,2800 @@
+[
+ {
+  "id": "A-143309-t02",
+  "game": "143309",
+  "his_turn": 1,
+  "turn_count": 2,
+  "hand_source": "text",
+  "his": [
+   "Play:Professor's Research"
+  ],
+  "n": 12,
+  "first": {
+   "Play:Copycat": 7,
+   "Play:Professor's Research": 3,
+   "Attach:1Water@0 zone": 2
+  },
+  "same_first": 3,
+  "same_plan": 3,
+  "modal": [
+   "Play:Copycat"
+  ],
+  "modal_n": 7,
+  "cat": "Supporter/Item choice or order (a draw card)",
+  "tags": [
+   "Supporter/Item choice or order (a draw card)"
+  ],
+  "desc": "his [Play:Professor's Research] ↔ km3 [Play:Copycat]",
+  "gap": 466.0416666666667,
+  "plans": [
+   [
+    [
+     "Play:Copycat"
+    ],
+    7
+   ],
+   [
+    [
+     "Play:Professor's Research"
+    ],
+    3
+   ],
+   [
+    [
+     "Attach:1Water@0 zone",
+     "Play:Professor's Research"
+    ],
+    2
+   ]
+  ],
+  "summary": {
+   "me": {
+    "board": [
+     {
+      "behind": [],
+      "card": "Alolan Vulpix",
+      "energy": [],
+      "hp": 60,
+      "id": "B2 028",
+      "slot": 0,
+      "tools": []
+     }
+    ],
+    "deck": 14,
+    "discard": [],
+    "energy_zone": [
+     "Some(Water)",
+     "Some(Water)"
+    ],
+    "hand": [
+     "Alolan Ninetales ex",
+     "Alolan Ninetales ex",
+     "Copycat",
+     "Cyrus",
+     "Professor's Research"
+    ]
+   },
+   "opp": {
+    "board": [
+     {
+      "behind": [],
+      "card": "Sigilyph",
+      "energy": [],
+      "hp": 80,
+      "id": "A1a 033",
+      "slot": 0,
+      "tools": []
+     },
+     {
+      "behind": [],
+      "card": "Ralts",
+      "energy": [],
+      "hp": 60,
+      "id": "A1 130",
+      "slot": 1,
+      "tools": []
+     }
+    ],
+    "deck": 14,
+    "hand": 4
+   },
+   "points": [
+    0,
+    0
+   ],
+   "stadium": null,
+   "turn_count": 2
+  },
+  "notes": "Opening Vulpix(Active) + 2 Ninetales ex + Research + Copycat; T2 draw Cyrus. Opp hand 4 by bookkeeping.",
+  "mid_turn": false,
+  "forced": false
+ },
+ {
+  "id": "A-143309-t04",
+  "game": "143309",
+  "his_turn": 2,
+  "turn_count": 4,
+  "hand_source": "text",
+  "his": [
+   "Evolve:Alolan Ninetales ex@0",
+   "Play:Misty",
+   "MistyTarget@1",
+   "Attach:1Water@0 zone",
+   "Attack:Binding Snow"
+  ],
+  "n": 12,
+  "first": {
+   "Evolve:Alolan Ninetales ex@0": 12
+  },
+  "same_first": 12,
+  "same_plan": 0,
+  "modal": [
+   "Evolve:Alolan Ninetales ex@0",
+   "Play:Irida",
+   "Attach:1Water@0 zone",
+   "Attack:Binding Snow"
+  ],
+  "modal_n": 12,
+  "cat": "Supporter/Item choice or order",
+  "tags": [
+   "Supporter/Item choice or order"
+  ],
+  "desc": "his [Play:Misty, MistyTarget@1] ↔ km3 [Play:Irida]",
+  "gap": 0.0,
+  "plans": [
+   [
+    [
+     "Evolve:Alolan Ninetales ex@0",
+     "Play:Irida",
+     "Attach:1Water@0 zone",
+     "Attack:Binding Snow"
+    ],
+    12
+   ]
+  ],
+  "summary": {
+   "me": {
+    "board": [
+     {
+      "behind": [],
+      "card": "Alolan Vulpix",
+      "energy": [
+       "Water"
+      ],
+      "hp": 50,
+      "id": "B2 028",
+      "slot": 0,
+      "tools": []
+     },
+     {
+      "behind": [],
+      "card": "Lapras",
+      "energy": [],
+      "hp": 110,
+      "id": "A3 044",
+      "slot": 1,
+      "tools": []
+     }
+    ],
+    "deck": 11,
+    "discard": [
+     "Professor's Research"
+    ],
+    "energy_zone": [
+     "Some(Water)",
+     "Some(Water)"
+    ],
+    "hand": [
+     "Alolan Ninetales ex",
+     "Alolan Ninetales ex",
+     "Copycat",
+     "Cyrus",
+     "Irida",
+     "Misty"
+    ]
+   },
+   "opp": {
+    "board": [
+     {
+      "behind": [],
+      "card": "Sigilyph",
+      "energy": [
+       "Psychic"
+      ],
+      "hp": 60,
+      "id": "A1a 033",
+      "slot": 0,
+      "tools": []
+     },
+     {
+      "behind": [
+       "Ralts"
+      ],
+      "card": "Kirlia",
+      "energy": [],
+      "hp": 80,
+      "id": "A1 131",
+      "slot": 1,
+      "tools": []
+     }
+    ],
+    "deck": 12,
+    "hand": 5
+   },
+   "points": [
+    0,
+    0
+   ],
+   "stadium": null,
+   "turn_count": 4
+  },
+  "notes": "Research at T2 drew Lapras + Irida; Lapras benched. Draw Misty.",
+  "mid_turn": false,
+  "forced": false
+ },
+ {
+  "id": "A-143309-t06",
+  "game": "143309",
+  "his_turn": 3,
+  "turn_count": 6,
+  "hand_source": "text",
+  "his": [
+   "Play:Professor's Research"
+  ],
+  "n": 12,
+  "first": {
+   "Play:Irida": 12
+  },
+  "same_first": 0,
+  "same_plan": 0,
+  "modal": [
+   "Play:Irida",
+   "Attach:1Water@1 zone",
+   "Attack:Binding Snow"
+  ],
+  "modal_n": 12,
+  "cat": "Supporter/Item choice or order (a draw card)",
+  "tags": [
+   "Supporter/Item choice or order (a draw card)",
+   "attack vs another action",
+   "Energy attachment timing"
+  ],
+  "desc": "his [Play:Professor's Research] ↔ km3 [Play:Irida, Attach:1Water@1 zone, Attack:Binding Snow]",
+  "gap": 98.91666666666667,
+  "plans": [
+   [
+    [
+     "Play:Irida",
+     "Attach:1Water@1 zone",
+     "Attack:Binding Snow"
+    ],
+    12
+   ]
+  ],
+  "summary": {
+   "me": {
+    "board": [
+     {
+      "behind": [
+       "Alolan Vulpix"
+      ],
+      "card": "Alolan Ninetales ex",
+      "energy": [
+       "Water",
+       "Water"
+      ],
+      "hp": 140,
+      "id": "B2 029",
+      "slot": 0,
+      "tools": []
+     },
+     {
+      "behind": [],
+      "card": "Lapras",
+      "energy": [
+       "Water",
+       "Water"
+      ],
+      "hp": 110,
+      "id": "A3 044",
+      "slot": 1,
+      "tools": []
+     }
+    ],
+    "deck": 10,
+    "discard": [
+     "Professor's Research",
+     "Misty"
+    ],
+    "energy_zone": [
+     "Some(Water)",
+     "Some(Water)"
+    ],
+    "hand": [
+     "Alolan Ninetales ex",
+     "Copycat",
+     "Cyrus",
+     "Irida",
+     "Professor's Research"
+    ]
+   },
+   "opp": {
+    "board": [
+     {
+      "behind": [],
+      "card": "Mewtwo ex",
+      "energy": [],
+      "hp": 150,
+      "id": "A1 129",
+      "slot": 0,
+      "tools": []
+     },
+     {
+      "behind": [
+       "Ralts",
+       "Kirlia"
+      ],
+      "card": "Gardevoir",
+      "energy": [
+       "Psychic"
+      ],
+      "hp": 110,
+      "id": "A1 132",
+      "slot": 1,
+      "tools": []
+     },
+     {
+      "behind": [],
+      "card": "Ralts",
+      "energy": [],
+      "hp": 60,
+      "id": "A1 130",
+      "slot": 2,
+      "tools": []
+     }
+    ],
+    "deck": 10,
+    "hand": 2
+   },
+   "points": [
+    1,
+    0
+   ],
+   "stadium": null,
+   "turn_count": 6
+  },
+  "notes": "Draw Research (played). Sigilyph KO'd on T4 (point 1). Opp hand 2 by bookkeeping.",
+  "mid_turn": false,
+  "forced": false
+ },
+ {
+  "id": "A-143309-t08",
+  "game": "143309",
+  "his_turn": 4,
+  "turn_count": 8,
+  "hand_source": "text",
+  "his": [
+   "Evolve:Mega Sharpedo ex@2",
+   "Attach:1Water@2 zone",
+   "Attack:Binding Snow"
+  ],
+  "n": 12,
+  "first": {
+   "Evolve:Mega Sharpedo ex@2": 12
+  },
+  "same_first": 12,
+  "same_plan": 0,
+  "modal": [
+   "Evolve:Mega Sharpedo ex@2",
+   "Play:Irida",
+   "Attach:1Water@2 zone",
+   "Attack:Binding Snow"
+  ],
+  "modal_n": 12,
+  "cat": "Supporter/Item choice or order",
+  "tags": [
+   "Supporter/Item choice or order"
+  ],
+  "desc": "his [-] ↔ km3 [Play:Irida]",
+  "gap": 0.0,
+  "plans": [
+   [
+    [
+     "Evolve:Mega Sharpedo ex@2",
+     "Play:Irida",
+     "Attach:1Water@2 zone",
+     "Attack:Binding Snow"
+    ],
+    12
+   ]
+  ],
+  "summary": {
+   "me": {
+    "board": [
+     {
+      "behind": [
+       "Alolan Vulpix"
+      ],
+      "card": "Alolan Ninetales ex",
+      "energy": [
+       "Water",
+       "Water"
+      ],
+      "hp": 170,
+      "id": "B2 029",
+      "slot": 0,
+      "tools": [
+       "Elegant Cape"
+      ]
+     },
+     {
+      "behind": [],
+      "card": "Lapras",
+      "energy": [
+       "Water",
+       "Water",
+       "Water"
+      ],
+      "hp": 110,
+      "id": "A3 044",
+      "slot": 1,
+      "tools": []
+     },
+     {
+      "behind": [],
+      "card": "Carvanha",
+      "energy": [],
+      "hp": 50,
+      "id": "B4 034",
+      "slot": 2,
+      "tools": []
+     }
+    ],
+    "deck": 6,
+    "discard": [
+     "Professor's Research",
+     "Misty",
+     "Professor's Research",
+     "Poké Ball"
+    ],
+    "energy_zone": [
+     "Some(Water)",
+     "Some(Water)"
+    ],
+    "hand": [
+     "Alolan Ninetales ex",
+     "Copycat",
+     "Cyrus",
+     "Irida",
+     "Mega Sharpedo ex"
+    ]
+   },
+   "opp": {
+    "board": [
+     {
+      "behind": [],
+      "card": "Mewtwo ex",
+      "energy": [],
+      "hp": 90,
+      "id": "A1 129",
+      "slot": 0,
+      "tools": []
+     },
+     {
+      "behind": [
+       "Ralts",
+       "Kirlia"
+      ],
+      "card": "Gardevoir",
+      "energy": [
+       "Psychic",
+       "Psychic"
+      ],
+      "hp": 110,
+      "id": "A1 132",
+      "slot": 1,
+      "tools": []
+     },
+     {
+      "behind": [
+       "Ralts"
+      ],
+      "card": "Kirlia",
+      "energy": [],
+      "hp": 80,
+      "id": "A1 131",
+      "slot": 2,
+      "tools": []
+     }
+    ],
+    "deck": 9,
+    "hand": 1
+   },
+   "points": [
+    1,
+    0
+   ],
+   "stadium": null,
+   "turn_count": 8
+  },
+  "notes": "Draw Mega Sharpedo ex. Turbo Shark was reachable only by retreating the Mega (retreat 0) into the Active Spot.",
+  "mid_turn": false,
+  "forced": false
+ },
+ {
+  "id": "A-115323-t01",
+  "game": "115323",
+  "his_turn": 1,
+  "turn_count": 1,
+  "hand_source": "text",
+  "his": [
+   "Play:Poké Ball"
+  ],
+  "n": 12,
+  "first": {
+   "Play:Poké Ball": 5,
+   "Play:Copycat": 7
+  },
+  "same_first": 5,
+  "same_plan": 5,
+  "modal": [
+   "Play:Copycat"
+  ],
+  "modal_n": 7,
+  "cat": "Supporter/Item choice or order (a draw card)",
+  "tags": [
+   "Supporter/Item choice or order (a draw card)"
+  ],
+  "desc": "his [Play:Poké Ball] ↔ km3 [Play:Copycat]",
+  "gap": 59.18055555555556,
+  "plans": [
+   [
+    [
+     "Play:Copycat"
+    ],
+    7
+   ],
+   [
+    [
+     "Play:Poké Ball"
+    ],
+    5
+   ]
+  ],
+  "summary": {
+   "me": {
+    "board": [
+     {
+      "behind": [],
+      "card": "Lapras",
+      "energy": [],
+      "hp": 110,
+      "id": "A3 044",
+      "slot": 0,
+      "tools": []
+     }
+    ],
+    "deck": 14,
+    "discard": [],
+    "energy_zone": [
+     "None",
+     "Some(Water)"
+    ],
+    "hand": [
+     "Copycat",
+     "Elegant Cape",
+     "Misty",
+     "Misty",
+     "Poké Ball"
+    ]
+   },
+   "opp": {
+    "board": [
+     {
+      "behind": [],
+      "card": "Snorlax",
+      "energy": [],
+      "hp": 130,
+      "id": "B3b 055",
+      "slot": 0,
+      "tools": []
+     }
+    ],
+    "deck": 14,
+    "hand": 5
+   },
+   "points": [
+    0,
+    0
+   ],
+   "stadium": null,
+   "turn_count": 1
+  },
+  "notes": "Opening hand Lapras(Active) + Cape + Copycat + 2 Misty; T1 draw Poké Ball. First player: no Energy.",
+  "mid_turn": false,
+  "forced": false
+ },
+ {
+  "id": "A-115323-t03",
+  "game": "115323",
+  "his_turn": 2,
+  "turn_count": 3,
+  "hand_source": "text",
+  "his": [
+   "Play:Misty",
+   "MistyTarget@0",
+   "Attach:1Water@0 zone"
+  ],
+  "n": 12,
+  "first": {
+   "Play:Copycat": 7,
+   "Attach:1Water@1 zone": 4,
+   "Attach:1Water@0 zone": 1
+  },
+  "same_first": 0,
+  "same_plan": 0,
+  "modal": [
+   "Play:Copycat"
+  ],
+  "modal_n": 7,
+  "cat": "Supporter/Item choice or order (a draw card)",
+  "tags": [
+   "Supporter/Item choice or order (a draw card)",
+   "Energy attachment timing"
+  ],
+  "desc": "his [Play:Misty, MistyTarget@0, Attach:1Water@0 zone] ↔ km3 [Play:Copycat]",
+  "gap": 1389.388888888889,
+  "plans": [
+   [
+    [
+     "Play:Copycat"
+    ],
+    7
+   ],
+   [
+    [
+     "Attach:1Water@1 zone",
+     "Play:Copycat"
+    ],
+    4
+   ],
+   [
+    [
+     "Attach:1Water@0 zone",
+     "Play:Copycat"
+    ],
+    1
+   ]
+  ],
+  "summary": {
+   "me": {
+    "board": [
+     {
+      "behind": [],
+      "card": "Lapras",
+      "energy": [],
+      "hp": 110,
+      "id": "A3 044",
+      "slot": 0,
+      "tools": []
+     },
+     {
+      "behind": [],
+      "card": "Carvanha",
+      "energy": [],
+      "hp": 50,
+      "id": "B4 034",
+      "slot": 1,
+      "tools": [
+       "Elegant Cape"
+      ]
+     }
+    ],
+    "deck": 12,
+    "discard": [
+     "Poké Ball",
+     "Misty"
+    ],
+    "energy_zone": [
+     "Some(Water)",
+     "Some(Water)"
+    ],
+    "hand": [
+     "Copycat",
+     "Irida",
+     "Misty"
+    ]
+   },
+   "opp": {
+    "board": [
+     {
+      "behind": [],
+      "card": "Snorlax",
+      "energy": [],
+      "hp": 130,
+      "id": "B3b 055",
+      "slot": 0,
+      "tools": []
+     },
+     {
+      "behind": [],
+      "card": "Snorlax",
+      "energy": [
+       "Fighting"
+      ],
+      "hp": 130,
+      "id": "B3b 055",
+      "slot": 1,
+      "tools": []
+     }
+    ],
+    "deck": 10,
+    "hand": 4
+   },
+   "points": [
+    0,
+    0
+   ],
+   "stadium": "Arena of Antiquity",
+   "turn_count": 3
+  },
+  "notes": "Draw Irida. Opp played Arena of Antiquity on T2 (Snorlax's Massive Body bars Stadiums from my hand).",
+  "mid_turn": false,
+  "forced": false
+ },
+ {
+  "id": "A-115323-t05",
+  "game": "115323",
+  "his_turn": 3,
+  "turn_count": 5,
+  "hand_source": "text",
+  "his": [
+   "Place:Carvanha",
+   "Play:Copycat"
+  ],
+  "n": 12,
+  "first": {
+   "Play:Irida": 12
+  },
+  "same_first": 0,
+  "same_plan": 0,
+  "modal": [
+   "Play:Irida",
+   "Place:Carvanha",
+   "Attach:1Water@0 zone",
+   "Attack:Surf"
+  ],
+  "modal_n": 12,
+  "cat": "Supporter/Item choice or order",
+  "tags": [
+   "Supporter/Item choice or order",
+   "Supporter/Item choice or order (a draw card)",
+   "attack vs another action",
+   "Energy attachment timing"
+  ],
+  "desc": "his [-] ↔ km3 [Play:Irida]; his [Play:Copycat] ↔ km3 [Attach:1Water@0 zone, Attack:Surf]",
+  "gap": 149.99999999999997,
+  "plans": [
+   [
+    [
+     "Play:Irida",
+     "Place:Carvanha",
+     "Attach:1Water@0 zone",
+     "Attack:Surf"
+    ],
+    12
+   ]
+  ],
+  "summary": {
+   "me": {
+    "board": [
+     {
+      "behind": [],
+      "card": "Lapras",
+      "energy": [
+       "Water",
+       "Water"
+      ],
+      "hp": 40,
+      "id": "A3 044",
+      "slot": 0,
+      "tools": []
+     },
+     {
+      "behind": [],
+      "card": "Carvanha",
+      "energy": [],
+      "hp": 50,
+      "id": "B4 034",
+      "slot": 1,
+      "tools": [
+       "Elegant Cape"
+      ]
+     }
+    ],
+    "deck": 11,
+    "discard": [
+     "Poké Ball",
+     "Misty",
+     "Misty"
+    ],
+    "energy_zone": [
+     "Some(Water)",
+     "Some(Water)"
+    ],
+    "hand": [
+     "Carvanha",
+     "Copycat",
+     "Irida"
+    ]
+   },
+   "opp": {
+    "board": [
+     {
+      "behind": [],
+      "card": "Snorlax",
+      "energy": [
+       "Fighting"
+      ],
+      "hp": 130,
+      "id": "B3b 055",
+      "slot": 0,
+      "tools": []
+     },
+     {
+      "behind": [],
+      "card": "Snorlax",
+      "energy": [
+       "Fighting"
+      ],
+      "hp": 130,
+      "id": "B3b 055",
+      "slot": 1,
+      "tools": []
+     },
+     {
+      "behind": [],
+      "card": "Skull Fossil",
+      "energy": [],
+      "hp": 40,
+      "id": "A2 144",
+      "slot": 2,
+      "tools": []
+     }
+    ],
+    "deck": 9,
+    "hand": 3
+   },
+   "points": [
+    0,
+    0
+   ],
+   "stadium": "Arena of Antiquity",
+   "turn_count": 5
+  },
+  "notes": "Draw the second Carvanha. Opp Barry + Mega Punch took Lapras to 40 on T4. Opp hand 3 = what his Copycat drew.",
+  "mid_turn": false,
+  "forced": false
+ },
+ {
+  "id": "A-115323-t07",
+  "game": "115323",
+  "his_turn": 4,
+  "turn_count": 7,
+  "hand_source": "text",
+  "his": [
+   "Attach:1Water@1 zone",
+   "Attack:Turbo Shark",
+   "Attach:1Water@1 fx"
+  ],
+  "n": 12,
+  "first": {
+   "Attach:1Water@1 zone": 12
+  },
+  "same_first": 12,
+  "same_plan": 0,
+  "modal": [
+   "Attach:1Water@1 zone",
+   "Play:Irida",
+   "Attack:Turbo Shark",
+   "Attach:1Water@1 fx"
+  ],
+  "modal_n": 12,
+  "cat": "Supporter/Item choice or order",
+  "tags": [
+   "Supporter/Item choice or order"
+  ],
+  "desc": "his [-] ↔ km3 [Play:Irida]",
+  "gap": 0.0,
+  "plans": [
+   [
+    [
+     "Attach:1Water@1 zone",
+     "Play:Irida",
+     "Attack:Turbo Shark",
+     "Attach:1Water@1 fx"
+    ],
+    12
+   ]
+  ],
+  "summary": {
+   "me": {
+    "board": [
+     {
+      "behind": [
+       "Carvanha"
+      ],
+      "card": "Mega Sharpedo ex",
+      "energy": [
+       "Water"
+      ],
+      "hp": 220,
+      "id": "B4 035",
+      "slot": 0,
+      "tools": [
+       "Elegant Cape"
+      ]
+     },
+     {
+      "behind": [],
+      "card": "Lapras",
+      "energy": [],
+      "hp": 40,
+      "id": "A3 044",
+      "slot": 1,
+      "tools": []
+     },
+     {
+      "behind": [],
+      "card": "Carvanha",
+      "energy": [],
+      "hp": 50,
+      "id": "B4 034",
+      "slot": 2,
+      "tools": []
+     },
+     {
+      "behind": [],
+      "card": "Alolan Vulpix",
+      "energy": [
+       "Water"
+      ],
+      "hp": 60,
+      "id": "B2 028",
+      "slot": 3,
+      "tools": []
+     }
+    ],
+    "deck": 8,
+    "discard": [
+     "Poké Ball",
+     "Misty",
+     "Misty",
+     "Copycat"
+    ],
+    "energy_zone": [
+     "Some(Water)",
+     "Some(Water)"
+    ],
+    "hand": [
+     "Cyrus",
+     "Irida"
+    ]
+   },
+   "opp": {
+    "board": [
+     {
+      "behind": [],
+      "card": "Snorlax",
+      "energy": [
+       "Fighting",
+       "Fighting"
+      ],
+      "hp": 130,
+      "id": "B3b 055",
+      "slot": 0,
+      "tools": []
+     },
+     {
+      "behind": [],
+      "card": "Snorlax",
+      "energy": [],
+      "hp": 130,
+      "id": "B3b 055",
+      "slot": 1,
+      "tools": []
+     },
+     {
+      "behind": [],
+      "card": "Skull Fossil",
+      "energy": [],
+      "hp": 40,
+      "id": "A2 144",
+      "slot": 2,
+      "tools": []
+     }
+    ],
+    "deck": 8,
+    "hand": 3
+   },
+   "points": [
+    0,
+    0
+   ],
+   "stadium": "Arena of Antiquity",
+   "turn_count": 7
+  },
+  "notes": "Draw Irida (shuffled away by Copycat on T5, drawn again). Opp Penny'd the damaged Snorlax back to hand on T6. Turbo Shark's Bench target: Lapras (his pick), Carvanha or Vulpix.",
+  "mid_turn": false,
+  "forced": true
+ },
+ {
+  "id": "A-115323-t05b",
+  "game": "115323",
+  "his_turn": 3,
+  "turn_count": 5,
+  "hand_source": "text",
+  "his": [
+   "Place:Alolan Vulpix",
+   "Evolve:Mega Sharpedo ex@1",
+   "Retreat:1",
+   "Attach:1Water@0 zone",
+   "Attack:Turbo Shark",
+   "Attach:1Water@3 fx"
+  ],
+  "n": 12,
+  "first": {
+   "Evolve:Mega Sharpedo ex@1": 12
+  },
+  "same_first": 0,
+  "same_plan": 0,
+  "modal": [
+   "Evolve:Mega Sharpedo ex@1",
+   "Place:Alolan Vulpix",
+   "Retreat:1",
+   "Attach:1Water@0 zone",
+   "Attack:Turbo Shark",
+   "Attach:1Water@3 fx"
+  ],
+  "modal_n": 12,
+  "cat": "same actions, different order",
+  "tags": [],
+  "desc": "order: his Place:Alolan Vulpix → Evolve:Mega Sharpedo ex@1 → Retreat:1 → Attach:1Water@0 zone → Attack:Turbo Shark → Attach:1Water@3 fx | km3 Evolve:Mega Sharpedo ex@1 → Place:Alolan Vulpix → Retreat:1 → Attach:1Water@0 zone → Attack:Turbo Shark → Attach:1Water@3 fx",
+  "gap": 237.66666666666674,
+  "plans": [
+   [
+    [
+     "Evolve:Mega Sharpedo ex@1",
+     "Place:Alolan Vulpix",
+     "Retreat:1",
+     "Attach:1Water@0 zone",
+     "Attack:Turbo Shark",
+     "Attach:1Water@3 fx"
+    ],
+    12
+   ]
+  ],
+  "summary": {
+   "me": {
+    "board": [
+     {
+      "behind": [],
+      "card": "Lapras",
+      "energy": [
+       "Water",
+       "Water"
+      ],
+      "hp": 40,
+      "id": "A3 044",
+      "slot": 0,
+      "tools": []
+     },
+     {
+      "behind": [],
+      "card": "Carvanha",
+      "energy": [],
+      "hp": 50,
+      "id": "B4 034",
+      "slot": 1,
+      "tools": [
+       "Elegant Cape"
+      ]
+     },
+     {
+      "behind": [],
+      "card": "Carvanha",
+      "energy": [],
+      "hp": 50,
+      "id": "B4 034",
+      "slot": 2,
+      "tools": []
+     }
+    ],
+    "deck": 9,
+    "discard": [
+     "Poké Ball",
+     "Misty",
+     "Misty",
+     "Copycat"
+    ],
+    "energy_zone": [
+     "Some(Water)",
+     "Some(Water)"
+    ],
+    "hand": [
+     "Alolan Vulpix",
+     "Cyrus",
+     "Mega Sharpedo ex"
+    ]
+   },
+   "opp": {
+    "board": [
+     {
+      "behind": [],
+      "card": "Snorlax",
+      "energy": [
+       "Fighting"
+      ],
+      "hp": 130,
+      "id": "B3b 055",
+      "slot": 0,
+      "tools": []
+     },
+     {
+      "behind": [],
+      "card": "Snorlax",
+      "energy": [
+       "Fighting"
+      ],
+      "hp": 130,
+      "id": "B3b 055",
+      "slot": 1,
+      "tools": []
+     },
+     {
+      "behind": [],
+      "card": "Skull Fossil",
+      "energy": [],
+      "hp": 40,
+      "id": "A2 144",
+      "slot": 2,
+      "tools": []
+     }
+    ],
+    "deck": 9,
+    "hand": 3
+   },
+   "points": [
+    0,
+    0
+   ],
+   "stadium": "Arena of Antiquity",
+   "turn_count": 5
+  },
+  "notes": "MID-TURN position: turn 5 after the second Carvanha was benched and Copycat drew Sharpedo, Vulpix, Cyrus. Turbo Shark's Bench target: Lapras (0 Energy after the retreat), the second Carvanha, or Vulpix (his pick).",
+  "mid_turn": true,
+  "forced": true
+ },
+ {
+  "id": "A-143837-t01",
+  "game": "143837",
+  "his_turn": 1,
+  "turn_count": 1,
+  "hand_source": "frame",
+  "his": [
+   "Play:Poké Ball"
+  ],
+  "n": 12,
+  "first": {
+   "Play:Professor's Research": 6,
+   "Play:Poké Ball": 6
+  },
+  "same_first": 6,
+  "same_plan": 6,
+  "modal": [
+   "Play:Professor's Research"
+  ],
+  "modal_n": 6,
+  "cat": "Supporter/Item choice or order (a draw card)",
+  "tags": [
+   "Supporter/Item choice or order (a draw card)"
+  ],
+  "desc": "his [Play:Poké Ball] ↔ km3 [Play:Professor's Research]",
+  "gap": 7.1319444444444455,
+  "plans": [
+   [
+    [
+     "Play:Professor's Research"
+    ],
+    6
+   ],
+   [
+    [
+     "Play:Poké Ball"
+    ],
+    6
+   ]
+  ],
+  "summary": {
+   "me": {
+    "board": [
+     {
+      "behind": [],
+      "card": "Lapras",
+      "energy": [],
+      "hp": 110,
+      "id": "A3 044",
+      "slot": 0,
+      "tools": []
+     }
+    ],
+    "deck": 14,
+    "discard": [],
+    "energy_zone": [
+     "None",
+     "Some(Water)"
+    ],
+    "hand": [
+     "Elegant Cape",
+     "Mega Sharpedo ex",
+     "Misty",
+     "Poké Ball",
+     "Professor's Research"
+    ]
+   },
+   "opp": {
+    "board": [
+     {
+      "behind": [],
+      "card": "Teal Mask Ogerpon ex",
+      "energy": [],
+      "hp": 130,
+      "id": "B2 017",
+      "slot": 0,
+      "tools": []
+     }
+    ],
+    "deck": 14,
+    "hand": 5
+   },
+   "points": [
+    0,
+    0
+   ],
+   "stadium": null,
+   "turn_count": 1
+  },
+  "notes": "Hand read from frames 00010/00011 (Research, Poké Ball, Misty, a Mega Sharpedo ex, and the drawn Elegant Cape).",
+  "mid_turn": false,
+  "forced": false
+ },
+ {
+  "id": "A-143837-t03",
+  "game": "143837",
+  "his_turn": 2,
+  "turn_count": 3,
+  "hand_source": "frame",
+  "his": [
+   "Play:Professor's Research"
+  ],
+  "n": 12,
+  "first": {
+   "Play:Professor's Research": 8,
+   "Play:Elegant Cape": 4
+  },
+  "same_first": 8,
+  "same_plan": 8,
+  "modal": [
+   "Play:Professor's Research"
+  ],
+  "modal_n": 8,
+  "cat": "same plan",
+  "tags": [],
+  "desc": "",
+  "gap": 1.8333333333333333,
+  "plans": [
+   [
+    [
+     "Play:Professor's Research"
+    ],
+    8
+   ],
+   [
+    [
+     "Play:Elegant Cape",
+     "Tool:Elegant Cape@0",
+     "Play:Professor's Research"
+    ],
+    4
+   ]
+  ],
+  "summary": {
+   "me": {
+    "board": [
+     {
+      "behind": [],
+      "card": "Lapras",
+      "energy": [
+       "Water"
+      ],
+      "hp": 110,
+      "id": "A3 044",
+      "slot": 0,
+      "tools": []
+     },
+     {
+      "behind": [],
+      "card": "Alolan Vulpix",
+      "energy": [],
+      "hp": 60,
+      "id": "B2 028",
+      "slot": 1,
+      "tools": []
+     }
+    ],
+    "deck": 12,
+    "discard": [
+     "Poké Ball",
+     "Misty"
+    ],
+    "energy_zone": [
+     "Some(Water)",
+     "Some(Water)"
+    ],
+    "hand": [
+     "Elegant Cape",
+     "Lucky Ice Pop",
+     "Mega Sharpedo ex",
+     "Professor's Research"
+    ]
+   },
+   "opp": {
+    "board": [
+     {
+      "behind": [],
+      "card": "Teal Mask Ogerpon ex",
+      "energy": [
+       "Grass"
+      ],
+      "hp": 130,
+      "id": "B2 017",
+      "slot": 0,
+      "tools": []
+     },
+     {
+      "behind": [],
+      "card": "Sprigatito",
+      "energy": [],
+      "hp": 60,
+      "id": "B2a 001",
+      "slot": 1,
+      "tools": []
+     }
+    ],
+    "deck": 11,
+    "hand": 6
+   },
+   "points": [
+    0,
+    0
+   ],
+   "stadium": null,
+   "turn_count": 3
+  },
+  "notes": "Draw Lucky Ice Pop. Hand read from frames 00023 and native t0100.",
+  "mid_turn": false,
+  "forced": false
+ },
+ {
+  "id": "A-143837-t05",
+  "game": "143837",
+  "his_turn": 3,
+  "turn_count": 5,
+  "hand_source": "elimination",
+  "his": [
+   "Play:Poké Ball"
+  ],
+  "n": 12,
+  "first": {
+   "Play:Poké Ball": 6,
+   "Play:Copycat": 6
+  },
+  "same_first": 6,
+  "same_plan": 6,
+  "modal": [
+   "Play:Poké Ball"
+  ],
+  "modal_n": 6,
+  "cat": "same plan",
+  "tags": [],
+  "desc": "",
+  "gap": 1.3333333333333428,
+  "plans": [
+   [
+    [
+     "Play:Poké Ball"
+    ],
+    6
+   ],
+   [
+    [
+     "Play:Copycat"
+    ],
+    6
+   ]
+  ],
+  "summary": {
+   "me": {
+    "board": [
+     {
+      "behind": [],
+      "card": "Lapras",
+      "energy": [
+       "Water",
+       "Water"
+      ],
+      "hp": 110,
+      "id": "A3 044",
+      "slot": 0,
+      "tools": []
+     },
+     {
+      "behind": [
+       "Alolan Vulpix"
+      ],
+      "card": "Alolan Ninetales ex",
+      "energy": [],
+      "hp": 180,
+      "id": "B2 029",
+      "slot": 1,
+      "tools": [
+       "Elegant Cape"
+      ]
+     }
+    ],
+    "deck": 9,
+    "discard": [
+     "Poké Ball",
+     "Misty",
+     "Professor's Research"
+    ],
+    "energy_zone": [
+     "Some(Water)",
+     "Some(Water)"
+    ],
+    "hand": [
+     "Copycat",
+     "Lucky Ice Pop",
+     "Mega Sharpedo ex",
+     "Poké Ball"
+    ]
+   },
+   "opp": {
+    "board": [
+     {
+      "behind": [
+       "Sprigatito"
+      ],
+      "card": "Meowscarada ex",
+      "energy": [
+       "Grass"
+      ],
+      "hp": 190,
+      "id": "B2a 003",
+      "slot": 0,
+      "tools": [
+       "Leaf Cape"
+      ]
+     },
+     {
+      "behind": [],
+      "card": "Teal Mask Ogerpon ex",
+      "energy": [],
+      "hp": 130,
+      "id": "B2 017",
+      "slot": 1,
+      "tools": []
+     }
+    ],
+    "deck": 11,
+    "hand": 2
+   },
+   "points": [
+    0,
+    0
+   ],
+   "stadium": null,
+   "turn_count": 5
+  },
+  "notes": "The turn-5 draw is the Poké Ball he plays (nothing else in hand could be it). Flower Trick's mark on the Active Spot (70 at the end of this turn) is set.",
+  "mid_turn": false,
+  "forced": false
+ },
+ {
+  "id": "A-143837-t07",
+  "game": "143837",
+  "his_turn": 4,
+  "turn_count": 7,
+  "hand_source": "elimination",
+  "his": [
+   "Evolve:Mega Sharpedo ex@0",
+   "Attach:1Water@0 zone",
+   "Play:Copycat"
+  ],
+  "n": 12,
+  "first": {
+   "Evolve:Mega Sharpedo ex@0": 12
+  },
+  "same_first": 12,
+  "same_plan": 12,
+  "modal": [
+   "Evolve:Mega Sharpedo ex@0",
+   "Attach:1Water@0 zone",
+   "Play:Copycat"
+  ],
+  "modal_n": 12,
+  "cat": "same plan",
+  "tags": [],
+  "desc": "",
+  "gap": 0.0,
+  "plans": [
+   [
+    [
+     "Evolve:Mega Sharpedo ex@0",
+     "Attach:1Water@0 zone",
+     "Play:Copycat"
+    ],
+    12
+   ]
+  ],
+  "summary": {
+   "me": {
+    "board": [
+     {
+      "behind": [],
+      "card": "Carvanha",
+      "energy": [],
+      "hp": 50,
+      "id": "B4 034",
+      "slot": 0,
+      "tools": []
+     },
+     {
+      "behind": [
+       "Alolan Vulpix"
+      ],
+      "card": "Alolan Ninetales ex",
+      "energy": [],
+      "hp": 180,
+      "id": "B2 029",
+      "slot": 1,
+      "tools": [
+       "Elegant Cape"
+      ]
+     }
+    ],
+    "deck": 7,
+    "discard": [
+     "Poké Ball",
+     "Misty",
+     "Professor's Research",
+     "Poké Ball",
+     "Lapras"
+    ],
+    "energy_zone": [
+     "Some(Water)",
+     "Some(Water)"
+    ],
+    "hand": [
+     "Copycat",
+     "Lucky Ice Pop",
+     "Mega Sharpedo ex",
+     "Misty"
+    ]
+   },
+   "opp": {
+    "board": [
+     {
+      "behind": [
+       "Sprigatito"
+      ],
+      "card": "Meowscarada ex",
+      "energy": [
+       "Grass",
+       "Grass"
+      ],
+      "hp": 120,
+      "id": "B2a 003",
+      "slot": 0,
+      "tools": [
+       "Leaf Cape"
+      ]
+     },
+     {
+      "behind": [],
+      "card": "Teal Mask Ogerpon ex",
+      "energy": [],
+      "hp": 130,
+      "id": "B2 017",
+      "slot": 1,
+      "tools": []
+     }
+    ],
+    "deck": 10,
+    "hand": 3
+   },
+   "points": [
+    0,
+    1
+   ],
+   "stadium": null,
+   "turn_count": 7
+  },
+  "notes": "Lapras was KO'd on T6 (Flower Trick 70 + Solar Beam 80); Carvanha promoted. Draw Misty.",
+  "mid_turn": false,
+  "forced": false
+ },
+ {
+  "id": "A-114458-t02",
+  "game": "114458",
+  "his_turn": 1,
+  "turn_count": 2,
+  "hand_source": "text",
+  "his": [
+   "Play:Professor's Research"
+  ],
+  "n": 12,
+  "first": {
+   "Play:Professor's Research": 4,
+   "Play:Copycat": 5,
+   "Attach:1Water@0 zone": 3
+  },
+  "same_first": 4,
+  "same_plan": 4,
+  "modal": [
+   "Play:Copycat"
+  ],
+  "modal_n": 5,
+  "cat": "Supporter/Item choice or order (a draw card)",
+  "tags": [
+   "Supporter/Item choice or order (a draw card)"
+  ],
+  "desc": "his [Play:Professor's Research] ↔ km3 [Play:Copycat]",
+  "gap": 387.0,
+  "plans": [
+   [
+    [
+     "Play:Copycat"
+    ],
+    5
+   ],
+   [
+    [
+     "Play:Professor's Research"
+    ],
+    4
+   ],
+   [
+    [
+     "Attach:1Water@0 zone",
+     "Play:Copycat"
+    ],
+    2
+   ],
+   [
+    [
+     "Attach:1Water@0 zone",
+     "Play:Professor's Research"
+    ],
+    1
+   ]
+  ],
+  "summary": {
+   "me": {
+    "board": [
+     {
+      "behind": [],
+      "card": "Alolan Vulpix",
+      "energy": [],
+      "hp": 50,
+      "id": "B2 028",
+      "slot": 0,
+      "tools": []
+     }
+    ],
+    "deck": 14,
+    "discard": [],
+    "energy_zone": [
+     "Some(Water)",
+     "Some(Water)"
+    ],
+    "hand": [
+     "Alolan Ninetales ex",
+     "Copycat",
+     "Lucky Ice Pop",
+     "Mega Sharpedo ex",
+     "Professor's Research"
+    ]
+   },
+   "opp": {
+    "board": [
+     {
+      "behind": [],
+      "card": "Chingling",
+      "energy": [],
+      "hp": 30,
+      "id": "B1 109",
+      "slot": 0,
+      "tools": []
+     },
+     {
+      "behind": [],
+      "card": "Old Amber",
+      "energy": [],
+      "hp": 40,
+      "id": "A1 218",
+      "slot": 1,
+      "tools": []
+     },
+     {
+      "behind": [],
+      "card": "Litwick",
+      "energy": [],
+      "hp": 50,
+      "id": "B1 041",
+      "slot": 2,
+      "tools": []
+     }
+    ],
+    "deck": 13,
+    "hand": 3
+   },
+   "points": [
+    0,
+    0
+   ],
+   "stadium": null,
+   "turn_count": 2
+  },
+  "notes": "Opening Vulpix(Active) + Sharpedo + Copycat + Ice Pop + Ninetales; T2 draw Research. Chingling's Jingly Noise item-locks this turn.",
+  "mid_turn": false,
+  "forced": false
+ },
+ {
+  "id": "A-132311-t01",
+  "game": "132311",
+  "his_turn": 1,
+  "turn_count": 1,
+  "hand_source": "text",
+  "his": [
+   "Play:Poké Ball"
+  ],
+  "n": 12,
+  "first": {
+   "Play:Poké Ball": 5,
+   "Play:Professor's Research": 7
+  },
+  "same_first": 5,
+  "same_plan": 5,
+  "modal": [
+   "Play:Professor's Research"
+  ],
+  "modal_n": 7,
+  "cat": "Supporter/Item choice or order (a draw card)",
+  "tags": [
+   "Supporter/Item choice or order (a draw card)"
+  ],
+  "desc": "his [Play:Poké Ball] ↔ km3 [Play:Professor's Research]",
+  "gap": 34.02777777777777,
+  "plans": [
+   [
+    [
+     "Play:Professor's Research"
+    ],
+    7
+   ],
+   [
+    [
+     "Play:Poké Ball"
+    ],
+    5
+   ]
+  ],
+  "summary": {
+   "me": {
+    "board": [
+     {
+      "behind": [],
+      "card": "Carvanha",
+      "energy": [],
+      "hp": 50,
+      "id": "B4 034",
+      "slot": 0,
+      "tools": []
+     }
+    ],
+    "deck": 14,
+    "discard": [],
+    "energy_zone": [
+     "None",
+     "Some(Water)"
+    ],
+    "hand": [
+     "Cyrus",
+     "Lucky Ice Pop",
+     "Mega Sharpedo ex",
+     "Poké Ball",
+     "Professor's Research"
+    ]
+   },
+   "opp": {
+    "board": [
+     {
+      "behind": [],
+      "card": "Shaymin",
+      "energy": [],
+      "hp": 60,
+      "id": "A2 022",
+      "slot": 0,
+      "tools": []
+     }
+    ],
+    "deck": 14,
+    "hand": 5
+   },
+   "points": [
+    0,
+    0
+   ],
+   "stadium": null,
+   "turn_count": 1
+  },
+  "notes": "Opening Carvanha(Active) + Sharpedo + Ice Pop + Poké Ball + Research; T1 draw Cyrus.",
+  "mid_turn": false,
+  "forced": false
+ },
+ {
+  "id": "A-114458-t04",
+  "game": "114458",
+  "his_turn": 2,
+  "turn_count": 4,
+  "hand_source": "frame",
+  "his": [
+   "Evolve:Alolan Ninetales ex@0",
+   "Attach:1Water@0 zone",
+   "Play:Copycat"
+  ],
+  "n": 12,
+  "first": {
+   "Evolve:Alolan Ninetales ex@0": 12
+  },
+  "same_first": 12,
+  "same_plan": 0,
+  "modal": [
+   "Evolve:Alolan Ninetales ex@0",
+   "Play:Irida",
+   "Attach:1Water@0 zone",
+   "Attack:Binding Snow"
+  ],
+  "modal_n": 12,
+  "cat": "Supporter/Item choice or order",
+  "tags": [
+   "Supporter/Item choice or order",
+   "Supporter/Item choice or order (a draw card)",
+   "attack vs another action"
+  ],
+  "desc": "his [-] ↔ km3 [Play:Irida]; his [Play:Copycat] ↔ km3 [Attack:Binding Snow]",
+  "gap": 0.0,
+  "plans": [
+   [
+    [
+     "Evolve:Alolan Ninetales ex@0",
+     "Play:Irida",
+     "Attach:1Water@0 zone",
+     "Attack:Binding Snow"
+    ],
+    12
+   ]
+  ],
+  "summary": {
+   "me": {
+    "board": [
+     {
+      "behind": [],
+      "card": "Alolan Vulpix",
+      "energy": [
+       "Water"
+      ],
+      "hp": 40,
+      "id": "B2 028",
+      "slot": 0,
+      "tools": []
+     }
+    ],
+    "deck": 11,
+    "discard": [
+     "Professor's Research"
+    ],
+    "energy_zone": [
+     "Some(Water)",
+     "Some(Water)"
+    ],
+    "hand": [
+     "Alolan Ninetales ex",
+     "Copycat",
+     "Irida",
+     "Lucky Ice Pop",
+     "Mega Sharpedo ex",
+     "Mega Sharpedo ex",
+     "Poké Ball"
+    ]
+   },
+   "opp": {
+    "board": [
+     {
+      "behind": [],
+      "card": "Chingling",
+      "energy": [],
+      "hp": 10,
+      "id": "B1 109",
+      "slot": 0,
+      "tools": []
+     },
+     {
+      "behind": [
+       "Old Amber"
+      ],
+      "card": "Aerodactyl",
+      "energy": [
+       "Fire"
+      ],
+      "hp": 100,
+      "id": "A1 210",
+      "slot": 1,
+      "tools": []
+     },
+     {
+      "behind": [],
+      "card": "Litwick",
+      "energy": [],
+      "hp": 50,
+      "id": "B1 041",
+      "slot": 2,
+      "tools": []
+     }
+    ],
+    "deck": 10,
+    "hand": 4
+   },
+   "points": [
+    0,
+    0
+   ],
+   "stadium": null,
+   "turn_count": 4
+  },
+  "notes": "Hand read from stills: Research (T2) drew Irida + Poké Ball; the T4 draw is the second Mega Sharpedo. Item lock again (Jingly Noise on T3). Opp hand 4 = what his Copycat drew.",
+  "mid_turn": false,
+  "forced": false
+ },
+ {
+  "id": "A-114458-t06",
+  "game": "114458",
+  "his_turn": 3,
+  "turn_count": 6,
+  "hand_source": "frame",
+  "his": [
+   "Play:Poké Ball"
+  ],
+  "n": 12,
+  "first": {
+   "Play:Poké Ball": 12
+  },
+  "same_first": 12,
+  "same_plan": 12,
+  "modal": [
+   "Play:Poké Ball"
+  ],
+  "modal_n": 12,
+  "cat": "same plan",
+  "tags": [],
+  "desc": "",
+  "gap": 0.0,
+  "plans": [
+   [
+    [
+     "Play:Poké Ball"
+    ],
+    12
+   ]
+  ],
+  "summary": {
+   "me": {
+    "board": [
+     {
+      "behind": [
+       "Alolan Vulpix"
+      ],
+      "card": "Alolan Ninetales ex",
+      "energy": [
+       "Water",
+       "Water"
+      ],
+      "hp": 130,
+      "id": "B2 029",
+      "slot": 0,
+      "tools": []
+     },
+     {
+      "behind": [],
+      "card": "Lapras",
+      "energy": [],
+      "hp": 110,
+      "id": "A3 044",
+      "slot": 1,
+      "tools": []
+     }
+    ],
+    "deck": 11,
+    "discard": [
+     "Professor's Research",
+     "Copycat"
+    ],
+    "energy_zone": [
+     "Some(Water)",
+     "Some(Water)"
+    ],
+    "hand": [
+     "Alolan Ninetales ex",
+     "Mega Sharpedo ex",
+     "Misty",
+     "Poké Ball"
+    ]
+   },
+   "opp": {
+    "board": [
+     {
+      "behind": [
+       "Old Amber"
+      ],
+      "card": "Aerodactyl",
+      "energy": [
+       "Fire"
+      ],
+      "hp": 100,
+      "id": "A1 210",
+      "slot": 0,
+      "tools": []
+     },
+     {
+      "behind": [
+       "Litwick"
+      ],
+      "card": "Chandelure",
+      "energy": [
+       "Fire"
+      ],
+      "hp": 140,
+      "id": "B1 043",
+      "slot": 1,
+      "tools": []
+     },
+     {
+      "behind": [],
+      "card": "Chingling",
+      "energy": [],
+      "hp": 30,
+      "id": "B1 109",
+      "slot": 2,
+      "tools": []
+     },
+     {
+      "behind": [],
+      "card": "Old Amber",
+      "energy": [],
+      "hp": 40,
+      "id": "A1 218",
+      "slot": 3,
+      "tools": []
+     }
+    ],
+    "deck": 7,
+    "hand": 2
+   },
+   "points": [
+    1,
+    0
+   ],
+   "stadium": null,
+   "turn_count": 6
+  },
+  "notes": "Draw: a second Alolan Ninetales ex (pink art) read from stills. Opp hand 2 by a visual count of card backs.",
+  "mid_turn": false,
+  "forced": false
+ },
+ {
+  "id": "A-114458-t08",
+  "game": "114458",
+  "his_turn": 4,
+  "turn_count": 8,
+  "hand_source": "frame",
+  "his": [
+   "Evolve:Alolan Ninetales ex@2",
+   "Play:Misty",
+   "MistyTarget@?",
+   "Attach:1Water@2 zone",
+   "Attack:Binding Snow"
+  ],
+  "n": 12,
+  "first": {
+   "Evolve:Alolan Ninetales ex@2": 12
+  },
+  "same_first": 12,
+  "same_plan": 0,
+  "modal": [
+   "Evolve:Alolan Ninetales ex@2",
+   "Retreat:2",
+   "Attach:1Water@0 zone",
+   "Attack:Binding Snow"
+  ],
+  "modal_n": 12,
+  "cat": "Supporter/Item choice or order",
+  "tags": [
+   "Supporter/Item choice or order",
+   "retreat/promotion",
+   "Energy attachment target"
+  ],
+  "desc": "his [Play:Misty, MistyTarget@?, Attach:1Water@2 zone] ↔ km3 [Retreat:2, Attach:1Water@0 zone]",
+  "gap": 0.0,
+  "plans": [
+   [
+    [
+     "Evolve:Alolan Ninetales ex@2",
+     "Retreat:2",
+     "Attach:1Water@0 zone",
+     "Attack:Binding Snow"
+    ],
+    12
+   ]
+  ],
+  "summary": {
+   "me": {
+    "board": [
+     {
+      "behind": [
+       "Alolan Vulpix"
+      ],
+      "card": "Alolan Ninetales ex",
+      "energy": [
+       "Water",
+       "Water"
+      ],
+      "hp": 50,
+      "id": "B2 029",
+      "slot": 0,
+      "tools": []
+     },
+     {
+      "behind": [],
+      "card": "Lapras",
+      "energy": [
+       "Water",
+       "Water",
+       "Water",
+       "Water"
+      ],
+      "hp": 110,
+      "id": "A3 044",
+      "slot": 1,
+      "tools": []
+     },
+     {
+      "behind": [],
+      "card": "Alolan Vulpix",
+      "energy": [
+       "Water"
+      ],
+      "hp": 60,
+      "id": "B2 028",
+      "slot": 2,
+      "tools": []
+     }
+    ],
+    "deck": 8,
+    "discard": [
+     "Professor's Research",
+     "Copycat",
+     "Poké Ball",
+     "Misty",
+     "Irida"
+    ],
+    "energy_zone": [
+     "Some(Water)",
+     "Some(Water)"
+    ],
+    "hand": [
+     "Alolan Ninetales ex",
+     "Mega Sharpedo ex",
+     "Misty"
+    ]
+   },
+   "opp": {
+    "board": [
+     {
+      "behind": [
+       "Litwick"
+      ],
+      "card": "Chandelure",
+      "energy": [
+       "Fire",
+       "Fire"
+      ],
+      "hp": 140,
+      "id": "B1 043",
+      "slot": 0,
+      "tools": []
+     },
+     {
+      "behind": [
+       "Old Amber"
+      ],
+      "card": "Aerodactyl",
+      "energy": [],
+      "hp": 20,
+      "id": "A1 210",
+      "slot": 1,
+      "tools": []
+     },
+     {
+      "behind": [],
+      "card": "Chingling",
+      "energy": [],
+      "hp": 30,
+      "id": "B1 109",
+      "slot": 2,
+      "tools": []
+     },
+     {
+      "behind": [],
+      "card": "Old Amber",
+      "energy": [],
+      "hp": 40,
+      "id": "A1 218",
+      "slot": 3,
+      "tools": []
+     }
+    ],
+    "deck": 6,
+    "hand": 3
+   },
+   "points": [
+    1,
+    0
+   ],
+   "stadium": null,
+   "turn_count": 8
+  },
+  "notes": "Draw: the second Misty. Irida was milled by Slow Sear on the opponent's T7. Misty's target was not preserved in the review (MistyTarget@?).",
+  "mid_turn": false,
+  "forced": false
+ },
+ {
+  "id": "A-132311-t03",
+  "game": "132311",
+  "his_turn": 2,
+  "turn_count": 3,
+  "hand_source": "frame",
+  "his": [
+   "Evolve:Mega Sharpedo ex@0",
+   "Attach:1Water@0 zone",
+   "Attack:Turbo Shark",
+   "Attach:1Water@1 fx"
+  ],
+  "n": 12,
+  "first": {
+   "Evolve:Mega Sharpedo ex@0": 12
+  },
+  "same_first": 12,
+  "same_plan": 12,
+  "modal": [
+   "Evolve:Mega Sharpedo ex@0",
+   "Attach:1Water@0 zone",
+   "Attack:Turbo Shark",
+   "Attach:1Water@1 fx"
+  ],
+  "modal_n": 12,
+  "cat": "same plan",
+  "tags": [],
+  "desc": "",
+  "gap": 0.0,
+  "plans": [
+   [
+    [
+     "Evolve:Mega Sharpedo ex@0",
+     "Attach:1Water@0 zone",
+     "Attack:Turbo Shark",
+     "Attach:1Water@1 fx"
+    ],
+    12
+   ]
+  ],
+  "summary": {
+   "me": {
+    "board": [
+     {
+      "behind": [],
+      "card": "Carvanha",
+      "energy": [],
+      "hp": 50,
+      "id": "B4 034",
+      "slot": 0,
+      "tools": []
+     },
+     {
+      "behind": [],
+      "card": "Carvanha",
+      "energy": [],
+      "hp": 50,
+      "id": "B4 034",
+      "slot": 1,
+      "tools": []
+     }
+    ],
+    "deck": 10,
+    "discard": [
+     "Poké Ball",
+     "Professor's Research"
+    ],
+    "energy_zone": [
+     "Some(Water)",
+     "Some(Water)"
+    ],
+    "hand": [
+     "Alolan Ninetales ex",
+     "Cyrus",
+     "Irida",
+     "Lucky Ice Pop",
+     "Mega Sharpedo ex",
+     "Misty"
+    ]
+   },
+   "opp": {
+    "board": [
+     {
+      "behind": [],
+      "card": "Furfrou",
+      "energy": [],
+      "hp": 70,
+      "id": "B3b 061",
+      "slot": 0,
+      "tools": []
+     },
+     {
+      "behind": [],
+      "card": "Shaymin",
+      "energy": [],
+      "hp": 60,
+      "id": "A2 022",
+      "slot": 1,
+      "tools": []
+     }
+    ],
+    "deck": 12,
+    "hand": 5
+   },
+   "points": [
+    0,
+    0
+   ],
+   "stadium": null,
+   "turn_count": 3
+  },
+  "notes": "Draw Irida. Opp Furfrou's Fur Coat takes 20 off attacks. The Bench holds only one Water Pokémon, so Turbo Shark has no real target choice here.",
+  "mid_turn": false,
+  "forced": true
+ },
+ {
+  "id": "A-132311-t05",
+  "game": "132311",
+  "his_turn": 3,
+  "turn_count": 5,
+  "hand_source": "frame",
+  "his": [
+   "Evolve:Mega Sharpedo ex@1",
+   "Play:Lucky Ice Pop",
+   "Play:Lucky Ice Pop",
+   "Attach:1Water@0 zone",
+   "Attack:Turbo Shark",
+   "Attach:1Water@1 fx"
+  ],
+  "n": 12,
+  "first": {
+   "Retreat:1": 12
+  },
+  "same_first": 0,
+  "same_plan": 0,
+  "modal": [
+   "Retreat:1",
+   "Play:Irida",
+   "Evolve:Mega Sharpedo ex@0",
+   "Attack:Turbo Shark",
+   "Attach:1Water@1 fx"
+  ],
+  "modal_n": 12,
+  "cat": "Supporter/Item choice or order",
+  "tags": [
+   "Supporter/Item choice or order",
+   "evolution timing/target",
+   "retreat/promotion",
+   "Energy attachment timing"
+  ],
+  "desc": "his [Evolve:Mega Sharpedo ex@1, Play:Lucky Ice Pop, Play:Lucky Ice Pop, Attach:1Water@0 zone] ↔ km3 [Retreat:1, Play:Irida, Evolve:Mega Sharpedo ex@0]",
+  "gap": 0.0,
+  "plans": [
+   [
+    [
+     "Retreat:1",
+     "Play:Irida",
+     "Evolve:Mega Sharpedo ex@0",
+     "Attack:Turbo Shark",
+     "Attach:1Water@1 fx"
+    ],
+    12
+   ]
+  ],
+  "summary": {
+   "me": {
+    "board": [
+     {
+      "behind": [
+       "Carvanha"
+      ],
+      "card": "Mega Sharpedo ex",
+      "energy": [
+       "Water"
+      ],
+      "hp": 130,
+      "id": "B4 035",
+      "slot": 0,
+      "tools": []
+     },
+     {
+      "behind": [],
+      "card": "Carvanha",
+      "energy": [
+       "Water"
+      ],
+      "hp": 50,
+      "id": "B4 034",
+      "slot": 1,
+      "tools": []
+     }
+    ],
+    "deck": 9,
+    "discard": [
+     "Poké Ball",
+     "Professor's Research"
+    ],
+    "energy_zone": [
+     "Some(Water)",
+     "Some(Water)"
+    ],
+    "hand": [
+     "Alolan Ninetales ex",
+     "Cyrus",
+     "Irida",
+     "Lucky Ice Pop",
+     "Mega Sharpedo ex",
+     "Misty"
+    ]
+   },
+   "opp": {
+    "board": [
+     {
+      "behind": [],
+      "card": "Furfrou",
+      "energy": [
+       "Grass"
+      ],
+      "hp": 70,
+      "id": "B3b 061",
+      "slot": 0,
+      "tools": []
+     },
+     {
+      "behind": [],
+      "card": "Shaymin",
+      "energy": [],
+      "hp": 60,
+      "id": "A2 022",
+      "slot": 1,
+      "tools": []
+     }
+    ],
+    "deck": 11,
+    "hand": 5
+   },
+   "points": [
+    0,
+    0
+   ],
+   "stadium": null,
+   "turn_count": 5
+  },
+  "notes": "Draw: the second Mega Sharpedo ex (probable, by card count). Opp healed Furfrou back to 70 with Ice Pop (twice) and Shaymin.",
+  "mid_turn": false,
+  "forced": false
+ },
+ {
+  "id": "A-132311-t07",
+  "game": "132311",
+  "his_turn": 4,
+  "turn_count": 7,
+  "hand_source": "frame",
+  "his": [
+   "Play:Professor's Research"
+  ],
+  "n": 12,
+  "first": {
+   "Retreat:1": 12
+  },
+  "same_first": 0,
+  "same_plan": 0,
+  "modal": [
+   "Retreat:1",
+   "Play:Irida",
+   "Attack:Turbo Shark",
+   "Attach:1Water@1 fx"
+  ],
+  "modal_n": 12,
+  "cat": "Supporter/Item choice or order (a draw card)",
+  "tags": [
+   "Supporter/Item choice or order (a draw card)",
+   "attack vs another action",
+   "retreat/promotion",
+   "Turbo Shark Bench target"
+  ],
+  "desc": "his [Play:Professor's Research] ↔ km3 [Retreat:1, Play:Irida, Attack:Turbo Shark, Attach:1Water@1 fx]",
+  "gap": 213.66666666666788,
+  "plans": [
+   [
+    [
+     "Retreat:1",
+     "Play:Irida",
+     "Attack:Turbo Shark",
+     "Attach:1Water@1 fx"
+    ],
+    12
+   ]
+  ],
+  "summary": {
+   "me": {
+    "board": [
+     {
+      "behind": [
+       "Carvanha"
+      ],
+      "card": "Mega Sharpedo ex",
+      "energy": [
+       "Water",
+       "Water"
+      ],
+      "hp": 140,
+      "id": "B4 035",
+      "slot": 0,
+      "tools": []
+     },
+     {
+      "behind": [
+       "Carvanha"
+      ],
+      "card": "Mega Sharpedo ex",
+      "energy": [
+       "Water",
+       "Water"
+      ],
+      "hp": 190,
+      "id": "B4 035",
+      "slot": 1,
+      "tools": []
+     }
+    ],
+    "deck": 8,
+    "discard": [
+     "Poké Ball",
+     "Professor's Research",
+     "Lucky Ice Pop"
+    ],
+    "energy_zone": [
+     "Some(Water)",
+     "Some(Water)"
+    ],
+    "hand": [
+     "Alolan Ninetales ex",
+     "Cyrus",
+     "Irida",
+     "Misty",
+     "Professor's Research"
+    ]
+   },
+   "opp": {
+    "board": [
+     {
+      "behind": [],
+      "card": "Furfrou",
+      "energy": [
+       "Grass"
+      ],
+      "hp": 30,
+      "id": "B3b 061",
+      "slot": 0,
+      "tools": []
+     },
+     {
+      "behind": [],
+      "card": "Shaymin",
+      "energy": [
+       "Fighting"
+      ],
+      "hp": 60,
+      "id": "A2 022",
+      "slot": 1,
+      "tools": []
+     }
+    ],
+    "deck": 10,
+    "hand": 5
+   },
+   "points": [
+    0,
+    0
+   ],
+   "stadium": "Rainbow Cave",
+   "turn_count": 7
+  },
+  "notes": "Draw Professor's Research (alternate art). It drew Poké Ball + Alolan Vulpix. Opp played Rainbow Cave on T6.",
+  "mid_turn": false,
+  "forced": false
+ },
+ {
+  "id": "A-132311-t07b",
+  "game": "132311",
+  "his_turn": 4,
+  "turn_count": 7,
+  "hand_source": "frame",
+  "his": [
+   "Place:Alolan Vulpix",
+   "Attach:1Water@2 zone",
+   "Retreat:1",
+   "Attack:Turbo Shark",
+   "Attach:1Water@2 fx"
+  ],
+  "n": 12,
+  "first": {
+   "Retreat:1": 12
+  },
+  "same_first": 0,
+  "same_plan": 0,
+  "modal": [
+   "Retreat:1",
+   "Place:Alolan Vulpix",
+   "Place:Alolan Vulpix",
+   "Attach:1Water@3 zone",
+   "Attack:Turbo Shark",
+   "Attach:1Water@2 fx"
+  ],
+  "modal_n": 12,
+  "cat": "retreat/promotion",
+  "tags": [
+   "retreat/promotion",
+   "Energy attachment target",
+   "bench development"
+  ],
+  "desc": "his [-] ↔ km3 [Retreat:1]; his [Attach:1Water@2 zone, Retreat:1] ↔ km3 [Place:Alolan Vulpix, Attach:1Water@3 zone]",
+  "gap": 97.66666666666788,
+  "plans": [
+   [
+    [
+     "Retreat:1",
+     "Place:Alolan Vulpix",
+     "Place:Alolan Vulpix",
+     "Attach:1Water@3 zone",
+     "Attack:Turbo Shark",
+     "Attach:1Water@2 fx"
+    ],
+    12
+   ]
+  ],
+  "summary": {
+   "me": {
+    "board": [
+     {
+      "behind": [
+       "Carvanha"
+      ],
+      "card": "Mega Sharpedo ex",
+      "energy": [
+       "Water",
+       "Water"
+      ],
+      "hp": 140,
+      "id": "B4 035",
+      "slot": 0,
+      "tools": []
+     },
+     {
+      "behind": [
+       "Carvanha"
+      ],
+      "card": "Mega Sharpedo ex",
+      "energy": [
+       "Water",
+       "Water"
+      ],
+      "hp": 190,
+      "id": "B4 035",
+      "slot": 1,
+      "tools": []
+     }
+    ],
+    "deck": 5,
+    "discard": [
+     "Poké Ball",
+     "Professor's Research",
+     "Lucky Ice Pop",
+     "Professor's Research",
+     "Poké Ball"
+    ],
+    "energy_zone": [
+     "Some(Water)",
+     "Some(Water)"
+    ],
+    "hand": [
+     "Alolan Ninetales ex",
+     "Alolan Vulpix",
+     "Alolan Vulpix",
+     "Cyrus",
+     "Irida",
+     "Misty"
+    ]
+   },
+   "opp": {
+    "board": [
+     {
+      "behind": [],
+      "card": "Furfrou",
+      "energy": [
+       "Grass"
+      ],
+      "hp": 30,
+      "id": "B3b 061",
+      "slot": 0,
+      "tools": []
+     },
+     {
+      "behind": [],
+      "card": "Shaymin",
+      "energy": [
+       "Fighting"
+      ],
+      "hp": 60,
+      "id": "A2 022",
+      "slot": 1,
+      "tools": []
+     }
+    ],
+    "deck": 10,
+    "hand": 5
+   },
+   "points": [
+    0,
+    0
+   ],
+   "stadium": "Rainbow Cave",
+   "turn_count": 7
+  },
+  "notes": "MID-TURN position: turn 7 after Research and Poké Ball. Turbo Shark's Bench target: the damaged Mega (2 Water) or the new Vulpix (1 Water, his pick).",
+  "mid_turn": true,
+  "forced": true
+ }
+]
