@@ -1,0 +1,25 @@
+10 A-only games (no coin-Ability Pokemon on the board at k, no gate in R's search):
+  8 k3 p31 i121 k65: LOOKAHEAD ONLY, both halves hold | coin_probe {"cut": null, "free": false, "queued": null, "tick": 65} | vs_probe {"built": 2, "tick": 65} | counters {}
+      old Evolve { evolution: Pokemon(P-B 080 Mega Houndoom ex), in_play_idx: 3, | R Place(Pokemon(B3 025 Victini), 1) | revert Place(Pokemon(B3 025 Victini), 1)
+  8b k3 p32 i6 k39: LOOKAHEAD ONLY, both halves hold | coin_probe {"cut": null, "free": false, "queued": null, "tick": 39} | vs_probe {"built": 0, "tick": 39} | counters {}
+      old Attach { attachments: [(1, Fire, 0)], is_turn_energy: true } | R Play { trainer_card: B2b 069 Hiking Trail } | revert Play { trainer_card: B2b 069 Hiking Trail }
+  8b k3 p32 i38 k16: LOOKAHEAD ONLY, both halves hold | coin_probe {"cut": null, "free": false, "queued": null, "tick": 16} | vs_probe {"built": 2, "tick": 16} | counters {}
+      old Play { trainer_card: P-A 005 Poké Ball } | R Place(Pokemon(B3 025 Victini), 2) | revert Place(Pokemon(B3 025 Victini), 2)
+  8 km3 p31 i121 k65: LOOKAHEAD ONLY, both halves hold | coin_probe {"cut": null, "free": false, "queued": null, "tick": 65} | vs_probe {"built": 2, "tick": 65} | counters {}
+      old Evolve { evolution: Pokemon(P-B 080 Mega Houndoom ex), in_play_idx: 3, | R Place(Pokemon(B3 025 Victini), 1) | revert Place(Pokemon(B3 025 Victini), 1)
+  8 km3 p31 i379 k56: LOOKAHEAD ONLY, both halves hold | coin_probe {"cut": null, "free": false, "queued": null, "tick": 56} | vs_probe {"built": 2, "tick": 56} | counters {}
+      old Play { trainer_card: A1 225 Sabrina } | R UseStadium | revert UseStadium
+  8 km3 p31 i459 k71: LOOKAHEAD ONLY, both halves hold | coin_probe {"cut": null, "free": false, "queued": null, "tick": 71} | vs_probe {"built": 1, "tick": 71} | counters {}
+      old Evolve { evolution: Pokemon(P-B 080 Mega Houndoom ex), in_play_idx: 3, | R Place(Pokemon(B3 025 Victini), 2) | revert Place(Pokemon(B3 025 Victini), 2)
+  8b km3 p32 i6 k28: ON THE BOARD | coin_probe {} | vs_probe {} | counters {"vs_confusion_first_built": [28]}
+      old Retreat(3) | R Attack(Attack { energy_required: [Fire], title: "Heat Charged", fixed_ | revert Attack(Attack { energy_required: [Fire], title: "Heat Charged", fixed_
+  8b km3 p32 i12 k22: LOOKAHEAD ONLY, both halves hold | coin_probe {"cut": null, "free": false, "queued": null, "tick": 22} | vs_probe {"built": 1, "tick": 22} | counters {}
+      old DiscardToolFromPokemon { player: 1, in_play_idx: 0, tool_idx: 0 } | R DiscardToolFromPokemon { player: 0, in_play_idx: 0, tool_idx: 0 } | revert DiscardToolFromPokemon { player: 0, in_play_idx: 0, tool_idx: 0 }
+  8b km3 p32 i26 k72: LOOKAHEAD ONLY, both halves hold | coin_probe {"cut": null, "free": false, "queued": null, "tick": 72} | vs_probe {"built": 0, "tick": 72} | counters {}
+      old Play { trainer_card: B1 225 Copycat } | R Play { trainer_card: B2b 069 Hiking Trail } | revert Play { trainer_card: B2b 069 Hiking Trail }
+  8b km3 p32 i38 k16: LOOKAHEAD ONLY, both halves hold | coin_probe {"cut": null, "free": false, "queued": null, "tick": 16} | vs_probe {"built": 2, "tick": 16} | counters {}
+      old Play { trainer_card: P-A 005 Poké Ball } | R Place(Pokemon(B3 025 Victini), 2) | revert Place(Pokemon(B3 025 Victini), 2)
+
+B games: gate in R's search 1126 of 1395 ; coin Ability on the board 1395
+B games with gate_R == 0 and coin on board: 269
+B games by step: Counter({'8': 1387, '8b': 8}) ; by bot: Counter({'km3': 906, 'k3': 489})

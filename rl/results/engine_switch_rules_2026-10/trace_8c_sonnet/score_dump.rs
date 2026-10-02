@@ -36,14 +36,28 @@ fn main() {
         game.play_tick();
         std::env::remove_var("PG_DUMP");
     }
+    // the coin-Ability Pokemon (A2 114 Bastiodon, B3b 050 Hisuian Goodra, A4 080 Togekiss, B2 124 / B2 204 Meowth) in play at the tick, per seat
+    {
+        let state = game.get_state_clone();
+        let coin = |seat: usize| -> Vec<String> {
+            state.in_play_pokemon[seat].iter().flatten().map(|p| p.card.get_id())
+                .filter(|id| ["A2 114", "B3b 050", "A4 080", "B2 124", "B2 204"].contains(&id.as_str())).collect()
+        };
+        eprintln!("PGBOARD coin seat0={:?} seat1={:?}", coin(0), coin(1));
+    }
     eprintln!("PGTICK {tick} (the decision asked about)");
     std::env::set_var("PG_DUMP", mode);
     // --revert-queued (only in the VAR build): for this one decision the engine queues a coin target's damage as the plain ApplyDamage again
     if args.iter().any(|a| a == "--revert-queued") {
         std::env::set_var("PG_QUEUED_AS_APPLYDAMAGE", "1");
     }
+    // --revert-cut (only in the VAR2 build): for this one decision a finite coin cut comes off the raw damage before the modifiers again (the old order)
+    if args.iter().any(|a| a == "--revert-cut") {
+        std::env::set_var("PG_CUT_BEFORE", "1");
+    }
     let chosen = game.play_tick();
     std::env::remove_var("PG_DUMP");
     std::env::remove_var("PG_QUEUED_AS_APPLYDAMAGE");
+    std::env::remove_var("PG_CUT_BEFORE");
     println!("deal {i}, tick {tick}: chose {:?}", chosen.action);
 }
