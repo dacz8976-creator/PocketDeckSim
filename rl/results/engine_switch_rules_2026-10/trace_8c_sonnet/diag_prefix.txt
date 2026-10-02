@@ -1,0 +1,33 @@
+====================================================================================================
+k3 p31 i81: houndoom_victini v t-weezing; old winner 1 points [2,3]; R winner 1 points [2,3]
+  vs_probe at tick 71 (the attack tick):
+    deal 81, tick 71, turn 12, mover seat 1; its Active is Mega Houndoom ex (Confused: true); offered 6 moves
+      offered: EndTurn
+      offered: Play { trainer_card: B4 155 Rainbow Cave }
+      offered: Play { trainer_card: P-A 005 Poké Ball }
+      offered: Retreat(1)
+      offered: Retreat(2)
+      offered: Attack(Attack { energy_required: [Fire, Fire, Colorless], title: "Grimhound Flare", fix...
+    GATE WITHIN THE SEARCH: 0 move(s) before the attack (attack = ply 1), e.g.:
+      after [] the attack(s) ["Grimhound Flare"] would build the Confusion-first branch
+    RESULT built=0
+  coin_probe at tick 71 (the attack tick):
+    deal 81, tick 71:
+      mover seat 1, turn 12; Active Mega Houndoom ex; 6 offered moves
+      NOT FOUND: neither a queued coin-path choice nor a finite heads cut within 3 plies (12 chance samples per move; not a proof of absence)
+    RESULT queued=none cut=none free=false
+====================================================================================================
+km3 p31 i12: houndoom_victini v t-weezing; old winner 0 points [4,0]; R winner 0 points [4,0]
+  vs_probe at tick 47 (the attack tick):
+    deal 12, tick 47, turn 6, mover seat 0; its Active is Mega Houndoom ex (Confused: true); offered 3 moves
+      offered: EndTurn
+      offered: Retreat(3)
+      offered: Attack(Attack { energy_required: [Fire, Fire, Colorless], title: "Grimhound Flare", fix...
+    GATE WITHIN THE SEARCH: 0 move(s) before the attack (attack = ply 1), e.g.:
+      after [] the attack(s) ["Grimhound Flare"] would build the Confusion-first branch
+    RESULT built=0
+  coin_probe at tick 47 (the attack tick):
+    deal 12, tick 47:
+      mover seat 0, turn 6; Active Mega Houndoom ex; 3 offered moves
+      NOT FOUND: neither a queued coin-path choice nor a finite heads cut within 3 plies (12 chance samples per move; not a proof of absence)
+    RESULT queued=none cut=none free=false

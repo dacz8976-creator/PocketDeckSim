@@ -1,0 +1,173 @@
+================================================================================================================
+k3 pairing 4 deal 7 tick 95: garchomp_meowth v t-sceptile
+  old       
+  R         
+  R-revert  
+  R-revert scores equal old's: True;   R's equal old's: False
+    old      10964.2000   R      55342.6000   R-revert      10964.2000   Promote { player: 0, in_play_idx: 2 }   <-- R differs from old
+        gate in R: 1 x, e.g. queued coin-target frame: mover 0 target (owner 1, slot 3) attack "Slicing Snipe" depth_left=0
+    old      11224.2000   R      11224.2000   R-revert      11224.2000   Promote { player: 0, in_play_idx: 3 }
+  --- principal line under 'Promote { player: 0, in_play_idx: 2 }' in old:
+     A Promote { player: 0, in_play_idx: 2 } value=10964.200000
+       S actor=1 p=1.0000 value=10964.200000 (1 moves)
+         A EndTurn value=10964.200000
+           S actor=0 p=1.0000 value=10964.200000 (1 moves)
+             A DrawCard { amount: 1 } value=10964.200000
+               S actor=0 p=1.0000 value=10964.200000 (10 moves)
+                 A Evolve { evolution: Pokemon(B3 008 Mega Sceptile ex), in_play_idx: 0, from_deck: false } value=10964.200000
+                   S actor=0 p=1.0000 value=10964.200000 (0 moves)
+  --- principal line under 'Promote { player: 0, in_play_idx: 2 }' in R:
+     A Promote { player: 0, in_play_idx: 2 } value=55342.600000
+       S actor=1 p=1.0000 value=55342.600000 (1 moves)
+         A EndTurn value=55342.600000
+           S actor=0 p=1.0000 value=55342.600000 (1 moves)
+             A DrawCard { amount: 1 } value=55342.600000
+               S actor=0 p=1.0000 value=55342.600000 (10 moves)
+                 A Attack(Attack { energy_required: [Grass, Grass], title: "Slicing Snipe", fixed_damage: 0, effect: Some("This attack does 50 damage to 1 of your opponent's Benched Pokémon.") })
+                   S actor=0 p=1.0000 value=55342.600000 (1 moves)
+                     A ApplyQueuedAttackDamage { attack: Attack { energy_required: [Grass, Grass], title: "Slicing Snipe", fixed_damage: 0, effect: Some("This attack does 50 damage to 1 of your o
+================================================================================================================
+km3 pairing 1 deal 399 tick 81: garchomp_meowth v t-blaziken
+  old       
+  R         
+  R-revert  
+  R-revert scores equal old's: True;   R's equal old's: False
+    old       9595.7000   R       9595.7000   R-revert       9595.7000   Promote { player: 0, in_play_idx: 1 }
+    old       9595.7000   R       9595.7000   R-revert       9595.7000   Promote { player: 0, in_play_idx: 2 }
+    old       9585.7000   R       9600.7000   R-revert       9585.7000   Promote { player: 0, in_play_idx: 3 }   <-- R differs from old
+        gate in R: 2 x, e.g. queued coin-target frame: mover 0 target (owner 1, slot 2) attack "Tongue Whip" depth_left=0
+  --- principal line under 'Promote { player: 0, in_play_idx: 3 }' in old:
+     A Promote { player: 0, in_play_idx: 3 } value=9585.700000
+       S actor=1 p=1.0000 value=9585.700000 (1 moves)
+         A EndTurn value=9585.700000
+           S actor=0 p=1.0000 value=9585.700000 (1 moves)
+             A DrawCard { amount: 1 } value=9585.700000
+               S actor=0 p=1.0000 value=9585.700000 (9 moves)
+                 A EndTurn value=9585.700000
+                   S actor=1 p=1.0000 value=9585.700000 (0 moves)
+  --- principal line under 'Promote { player: 0, in_play_idx: 3 }' in R:
+     A Promote { player: 0, in_play_idx: 3 } value=9600.700000
+       S actor=1 p=1.0000 value=9600.700000 (1 moves)
+         A EndTurn value=9600.700000
+           S actor=0 p=1.0000 value=9600.700000 (1 moves)
+             A DrawCard { amount: 1 } value=9600.700000
+               S actor=0 p=1.0000 value=9600.700000 (9 moves)
+                 A Attack(Attack { energy_required: [Fire], title: "Tongue Whip", fixed_damage: 0, effect: Some("This attack does 30 damage to 1 of your opponent's Benched Pokémon.") }) value=960
+                   S actor=0 p=1.0000 value=9600.700000 (2 moves)
+                     A ApplyQueuedAttackDamage { attack: Attack { energy_required: [Fire], title: "Tongue Whip", fixed_damage: 0, effect: Some("This attack does 30 damage to 1 of your opponent's 
+================================================================================================================
+km3 pairing 4 deal 7 tick 84: garchomp_meowth v t-sceptile
+  old       
+  R         
+  R-revert  
+  R-revert scores equal old's: True;   R's equal old's: False
+    old      10868.2000   R      10868.2000   R-revert      10868.2000   Promote { player: 0, in_play_idx: 2 }
+    old      10608.2000   R      55114.6000   R-revert      10608.2000   Promote { player: 0, in_play_idx: 3 }   <-- R differs from old
+        gate in R: 1 x, e.g. queued coin-target frame: mover 0 target (owner 1, slot 3) attack "Slicing Snipe" depth_left=0
+  --- principal line under 'Promote { player: 0, in_play_idx: 3 }' in old:
+     A Promote { player: 0, in_play_idx: 3 } value=10608.200000
+       S actor=1 p=1.0000 value=10608.200000 (1 moves)
+         A EndTurn value=10608.200000
+           S actor=0 p=1.0000 value=10608.200000 (1 moves)
+             A DrawCard { amount: 1 } value=10608.200000
+               S actor=0 p=1.0000 value=10608.200000 (7 moves)
+                 A Evolve { evolution: Pokemon(B3 008 Mega Sceptile ex), in_play_idx: 0, from_deck: false } value=10608.200000
+                   S actor=0 p=1.0000 value=10608.200000 (0 moves)
+  --- principal line under 'Promote { player: 0, in_play_idx: 3 }' in R:
+     A Promote { player: 0, in_play_idx: 3 } value=55114.600000
+       S actor=1 p=1.0000 value=55114.600000 (1 moves)
+         A EndTurn value=55114.600000
+           S actor=0 p=1.0000 value=55114.600000 (1 moves)
+             A DrawCard { amount: 1 } value=55114.600000
+               S actor=0 p=1.0000 value=55114.600000 (7 moves)
+                 A Attack(Attack { energy_required: [Grass, Grass], title: "Slicing Snipe", fixed_damage: 0, effect: Some("This attack does 50 damage to 1 of your opponent's Benched Pokémon.") })
+                   S actor=0 p=1.0000 value=55114.600000 (1 moves)
+                     A ApplyQueuedAttackDamage { attack: Attack { energy_required: [Grass, Grass], title: "Slicing Snipe", fixed_damage: 0, effect: Some("This attack does 50 damage to 1 of your o
+================================================================================================================
+km3 pairing 4 deal 360 tick 57: garchomp_meowth v t-sceptile
+  old       
+  R         
+  R-revert  
+  R-revert scores equal old's: True;   R's equal old's: False
+    old       -514.4000   R       -514.4000   R-revert       -514.4000   Promote { player: 1, in_play_idx: 2 }
+    old       -594.4000   R       4440.6500   R-revert       -594.4000   Promote { player: 1, in_play_idx: 3 }   <-- R differs from old
+        gate in R: 1 x, e.g. queued coin-target frame: mover 1 target (owner 0, slot 3) attack "Slicing Snipe" depth_left=0
+  --- principal line under 'Promote { player: 1, in_play_idx: 3 }' in old:
+     A Promote { player: 1, in_play_idx: 3 } value=-594.400000
+       S actor=0 p=1.0000 value=-594.400000 (1 moves)
+         A EndTurn value=-594.400000
+           S actor=1 p=1.0000 value=-594.400000 (1 moves)
+             A DrawCard { amount: 1 } value=-594.400000
+               S actor=1 p=1.0000 value=-594.400000 (9 moves)
+                 A Attach { attachments: [(1, Grass, 2)], is_turn_energy: true } value=-594.400000
+                   S actor=1 p=1.0000 value=-594.400000 (0 moves)
+  --- principal line under 'Promote { player: 1, in_play_idx: 3 }' in R:
+     A Promote { player: 1, in_play_idx: 3 } value=4440.650000
+       S actor=0 p=1.0000 value=4440.650000 (1 moves)
+         A EndTurn value=4440.650000
+           S actor=1 p=1.0000 value=4440.650000 (1 moves)
+             A DrawCard { amount: 1 } value=4440.650000
+               S actor=1 p=1.0000 value=4440.650000 (9 moves)
+                 A Attack(Attack { energy_required: [Grass, Grass], title: "Slicing Snipe", fixed_damage: 0, effect: Some("This attack does 50 damage to 1 of your opponent's Benched Pokémon.") })
+                   S actor=1 p=1.0000 value=4440.650000 (1 moves)
+                     A ApplyQueuedAttackDamage { attack: Attack { energy_required: [Grass, Grass], title: "Slicing Snipe", fixed_damage: 0, effect: Some("This attack does 50 damage to 1 of your o
+================================================================================================================
+km3 pairing 21 deal 310 tick 87: hisuian_goodra v t-suicune
+  old       
+  R         
+  R-revert  
+  R-revert scores equal old's: True;   R's equal old's: False
+    old      10557.4000   R      10557.4000   R-revert      10557.4000   Promote { player: 1, in_play_idx: 2 }
+    old      10553.4000   R     100000.0000   R-revert      10553.4000   Promote { player: 1, in_play_idx: 3 }   <-- R differs from old
+        gate in R: 2 x, e.g. queued coin-target frame: mover 1 target (owner 0, slot 0) attack "Diving Icicles" depth_left=0
+  --- principal line under 'Promote { player: 1, in_play_idx: 3 }' in old:
+     A Promote { player: 1, in_play_idx: 3 } value=10553.400000
+       S actor=0 p=1.0000 value=10553.400000 (1 moves)
+         A EndTurn value=10553.400000
+           S actor=1 p=1.0000 value=10553.400000 (1 moves)
+             A DrawCard { amount: 1 } value=10553.400000
+               S actor=1 p=1.0000 value=10553.400000 (10 moves)
+                 A Attach { attachments: [(1, Water, 2)], is_turn_energy: true } value=10553.400000
+                   S actor=1 p=1.0000 value=10553.400000 (0 moves)
+  --- principal line under 'Promote { player: 1, in_play_idx: 3 }' in R:
+     A Promote { player: 1, in_play_idx: 3 } value=100000.000000
+       S actor=0 p=1.0000 value=100000.000000 (1 moves)
+         A EndTurn value=100000.000000
+           S actor=1 p=1.0000 value=100000.000000 (1 moves)
+             A DrawCard { amount: 1 } value=100000.000000
+               S actor=1 p=1.0000 value=100000.000000 (10 moves)
+                 A Attack(Attack { energy_required: [Water, Water, Water], title: "Diving Icicles", fixed_damage: 0, effect: Some("Discard all [W] Energy from this Pokémon. This attack does 130 d
+                   S actor=1 p=1.0000 value=100000.000000 (2 moves)
+                     A ApplyQueuedAttackDamage { attack: Attack { energy_required: [Water, Water, Water], title: "Diving Icicles", fixed_damage: 0, effect: Some("Discard all [W] Energy from this 
+================================================================================================================
+km3 pairing 4 deal 106 tick 82: garchomp_meowth v t-sceptile
+  old       
+  R         
+  R-revert  
+  R-revert scores equal old's: True;   R's equal old's: False
+    old     -20513.4000   R     -20513.4000   R-revert     -20513.4000   EndTurn
+    old     -10973.3000   R     -10973.3000   R-revert     -10973.3000   Attack(Attack { energy_required: [Grass], title: "Pound", fixed_damage: 20, effect: 
+    old      -9773.3000   R     -14873.3500   R-revert      -9773.3000   Play { trainer_card: B1a 067 Quick-Grow Extract }   <-- R differs from old
+    old     -10974.3000   R     -10974.3000   R-revert     -10974.3000   Play { trainer_card: B3 153 Fragrant Forest }
+  --- principal line under 'Play { trainer_card: B1a 067 Quick-Grow Extract }' in old:
+     A Play { trainer_card: B1a 067 Quick-Grow Extract } value=-9773.300000
+       S actor=1 p=1.0000 value=-9773.300000 (1 moves)
+         A ChooseRandomEvolutionTarget { in_play_idx: 0, energy_type: Grass } value=-9773.300000
+           S actor=1 p=1.0000 value=-9773.300000 (3 moves)
+             A Attack(Attack { energy_required: [Grass, Grass], title: "Slicing Snipe", fixed_damage: 0, effect: Some("This attack does 50 damage to 1 of your opponent's Benched Pokémon.") }) val
+               S actor=1 p=1.0000 value=-9773.300000 (3 moves)
+                 A ApplyDamage { attacking_ref: (1, 0), targets: [(50, 0, 3)], is_from_active_attack: true } value=-9773.300000
+                   S actor=1 p=1.0000 value=-9773.300000 (1 moves)
+                     A ResolveAttackRetaliation { attacking_ref: (1, 0), perish_body_heads: false, point_denial_flips: [], damaged_refs: [] } value=-9773.300000
+  --- principal line under 'Play { trainer_card: B1a 067 Quick-Grow Extract }' in R:
+     A Play { trainer_card: B1a 067 Quick-Grow Extract } value=-14873.350000
+       S actor=1 p=1.0000 value=-14873.350000 (1 moves)
+         A ChooseRandomEvolutionTarget { in_play_idx: 0, energy_type: Grass } value=-14873.350000
+           S actor=1 p=1.0000 value=-14873.350000 (3 moves)
+             A Attack(Attack { energy_required: [Grass, Grass], title: "Slicing Snipe", fixed_damage: 0, effect: Some("This attack does 50 damage to 1 of your opponent's Benched Pokémon.") }) val
+               S actor=1 p=1.0000 value=-14873.350000 (3 moves)
+                 A ApplyQueuedAttackDamage { attack: Attack { energy_required: [Grass, Grass], title: "Slicing Snipe", fixed_damage: 0, effect: Some("This attack does 50 damage to 1 of your oppon
+                   S actor=1 p=0.5000 value=-9773.300000 (1 moves)
+                     A ResolveAttackRetaliation { attacking_ref: (1, 0), perish_body_heads: false, point_denial_flips: [], damaged_refs: [] } value=-9773.300000
+                   S actor=1 p=0.5000 value=-19973.400000 (1 moves)
+                     A ResolveAttackRetaliation { attacking_ref: (1, 0), perish_body_heads: false, point_denial_flips: [], damaged_refs: [] } value=-19973.400000

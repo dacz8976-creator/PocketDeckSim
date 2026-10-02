@@ -1,0 +1,25 @@
+deal 310, tick 87: chose Promote { player: 1, in_play_idx: 2 }
+PGTICK 87 (the decision asked about)
+PGCAND Promote { player: 1, in_play_idx: 2 }
+PGCAND Promote { player: 1, in_play_idx: 3 }
+PGDUMP actor=1 candidates=2
+PGDUMP      10557.399999999999636 Promote { player: 1, in_play_idx: 2 }
+PGDUMP      10553.399999999999636 Promote { player: 1, in_play_idx: 3 }
+PGTREE candidate 0
+PGTREE A Promote { player: 1, in_play_idx: 2 } value=10557.400000
+PGTREE   S actor=0 p=1.0000 value=10557.400000 (1 moves)
+PGTREE     A EndTurn value=10557.400000
+PGTREE       S actor=1 p=1.0000 value=10557.400000 (1 moves)
+PGTREE         A DrawCard { amount: 1 } value=10557.400000
+PGTREE           S actor=1 p=1.0000 value=10557.400000 (7 moves)
+PGTREE             A Attach { attachments: [(1, Water, 0)], is_turn_energy: true } value=10557.400000
+PGTREE               S actor=1 p=1.0000 value=10557.400000 (0 moves)
+PGTREE candidate 1
+PGTREE A Promote { player: 1, in_play_idx: 3 } value=10553.400000
+PGTREE   S actor=0 p=1.0000 value=10553.400000 (1 moves)
+PGTREE     A EndTurn value=10553.400000
+PGTREE       S actor=1 p=1.0000 value=10553.400000 (1 moves)
+PGTREE         A DrawCard { amount: 1 } value=10553.400000
+PGTREE           S actor=1 p=1.0000 value=10553.400000 (10 moves)
+PGTREE             A Attach { attachments: [(1, Water, 2)], is_turn_energy: true } value=10553.400000
+PGTREE               S actor=1 p=1.0000 value=10553.400000 (0 moves)

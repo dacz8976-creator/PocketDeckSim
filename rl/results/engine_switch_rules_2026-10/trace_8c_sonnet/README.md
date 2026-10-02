@@ -29,7 +29,7 @@ Decision this informs: PLAN.md step 8c (the trace gate before the rules switch).
 | km3 p21 i310 (hisuian_goodra v t-suicune) | lookahead, tick 87 | the same, after Heavy Impact |
 | k3 p31 i81, km3 p31 i12 (houndoom_victini v t-weezing) | length (72 v 73 ticks, 48 v 49) | R's game has one extra tick: the Victory Star offer (KeepAttackCoinResults / RerollAttackCoins) after Grimhound Flare with a Confused attacker; the old game ends on the attack tick. `vs_confused_choice_offered/_chosen` fire exactly at that extra tick. The rule marks every prefix difference UNEXPLAINED (PLAN.md:136), so they stay in the count. |
 
-Their analysis follows in the next commit.
+**Taken apart in `UNEXPLAINED_ANALYSIS.md`.** In short: the five lookahead games and the judgment game (km3 p4 i106) have one cause, shown by experiment: R's search prices a candidate through a queued coin-target damage frame (repair B(a)) that the old engine's plain `ApplyDamage` frame left unpriced at the end of the search, and R with only that queued form reverted for that one decision gives the old engine's scores and choice in all six. `coin_probe` cannot see it (it stops at the turn boundary, and counts free frames as plies). The two prefix games are repair A on the board (the extra tick is the Victory Star offer; the counters fire on it). I have not reclassified any game; the verdicts here are the rule's.
 
 ## Method
 
@@ -43,6 +43,6 @@ Programs (sha256, from `builds.txt`; both builds were run twice and came out ide
 
 Inputs (sha256 of the files as extracted, in `builds.txt`): `handoff_8c.tsv` 55bf7e80…4110, `tightened_rule.py` 13c4d7a8…56ca. The 8b rows' own deck lists are `scratch_8b/` on main (a first attempt of this run died because the root lacked them; run_8c.sh now extracts them).
 
-Files: `verdicts.tsv` (one line per game), `report.txt` (one line each, with the probe results), `condition3.tsv`, `judgment.md`, `UNEXPLAINED.md`, `summary.json`, `classify_output.txt`, `compare_8b.txt`, `builds.txt`, `diag7.py` / `diag7.txt` (the 7 in detail).
+Files: `verdicts.tsv` (one line per game), `report.txt` (one line each, with the probe results), `condition3.tsv`, `judgment.md`, `UNEXPLAINED.md`, `summary.json`, `classify_output.txt`, `compare_8b.txt`, `builds.txt`, `diag7.py` / `diag7.txt` (the 7 in detail), `UNEXPLAINED_ANALYSIS.md` and the score-dump files (`dumps_summary.txt`, `dumps/`, `diag7b.txt`, `diag_prefix.txt`, `dg_patch.py`, `dg_repatch.sh`, `score_dump.rs`, `run_dumps.py`, `diag7b.py`, `diag_prefix.py`, `dump_programs.txt`).
 
 Reproduce: `bash run_8c.sh <work dir> 12` from a checkout that has d363ba8, f8cfa9c and origin/main.
