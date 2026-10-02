@@ -184,16 +184,20 @@ laptop time, not tokens.
 **The one decision.** Go on the play-out chooser as the first prototype? It would know the opponent's 20-card list,
 but never their hand or deck order. It would be built after Monday's reset, unless you'd rather it start sooner.
 
-**Optional, since you offered: the smallest set of recordings that fills the gaps.**
-- **Four games, about an hour with recording:**
-  - two with Wailord (a slow deck with no positions yet): one played by you, one by the game's Auto;
-  - two with Manectric (fast): one you, one Auto.
+**Optional, since you offered: the smallest set of recordings that fills the gaps.** Revised Oct 2 after Sonnet's
+count (`results/ladder_and_auto_feasibility_2026-10-02/FEASIBILITY.md`):
+- Wailord now has 15 positions rebuilt from the existing reviews, so it drops off the list.
+- None of the 26 existing Auto games is on a deck you also played, so none of them pairs with your own play.
+- So the ask is draft A against one fixed computer deck (the same one every game):
+  - about 5 games with the game's Auto playing;
+  - 3 of your own.
+  - More Auto games help if they cost you little attention.
 - **Each video should show:**
   - your hand at the start of every turn;
   - every card drawn, by name;
   - the plays in their exact order;
   - the opponent's hand size.
-- If Sonnet's count finds Auto recordings with these decks already, those games drop off this list.
+- Deck 13 (the same idea) can wait. It is locked for the final exam.
 
 ## 9. Addendum: approved, with amendments (Oct 2)
 
