@@ -2,7 +2,7 @@
 
 Rebuilt by sitting2.sh (`sitting2_check.py handoff`) at every checkpoint from the per-scan-set rows (`handoff_<step>_<bot>.tsv`); every changed game is a row of `handoff_8c.tsv`. Nothing here is a verdict: 8c (the cloud's traces, Sonnet reading every hand trace) decides each row by the rule below.
 
-**CONDITION 3 (PLAN.md:95: such games must be identical): 1 games (changed, coin_full_prevention fired, no reach counter fired); a ruling is needed before the pin.**
+**CONDITION 3 (PLAN.md:95: such games must be identical): 297 games (changed, coin_full_prevention fired, no reach counter fired); a ruling is needed before the pin.**
 
 ## Totals
 
@@ -12,6 +12,8 @@ Every changed game needs its first difference placed (tick k, its turn, the caus
 |---|---|---:|---:|---:|---:|
 | 8b | km3 | 32 | 32 | 3 | 1 |
 | 8b | k3 | 31 | 31 | 0 | 0 |
+| 8 | km3 | 2458 | 2458 | 209 | 203 |
+| 8 | k3 | 1292 | 1292 | 97 | 93 |
 
 Changed games in which each exact counter fired (anywhere in the game; 8c places it against the first difference):
 
@@ -19,6 +21,8 @@ Changed games in which each exact counter fired (anywhere in the game; 8c places
 |---|---|---:|---:|---:|---:|---:|---:|---:|
 | 8b | km3 | 8 | 0 | 17 | 21 | 21 | 6 | 6 |
 | 8b | k3 | 8 | 0 | 17 | 23 | 23 | 7 | 7 |
+| 8 | km3 | 17 | 481 | 1907 | 2157 | 2157 | 15 | 15 |
+| 8 | k3 | 12 | 260 | 995 | 1162 | 1162 | 11 | 11 |
 
 ## The engines
 
@@ -61,6 +65,12 @@ The rows: `handoff_8c.tsv` (columns: step, bot, pairing, i, seed, held_file, hel
 - `engine_switch_rules_2026-10/5a18d31_8b_old_k3.jsonl`: 160 games, sha256 1a563abb026752f31aae9a259f4cb261f9beff35e056cc3f03d596b90f7590c2
 - `engine_switch_rules_2026-10/5a18d31_8b_new_k3.jsonl`: 160 games, sha256 2d4ad0b4fa2d500b3c220c64cdacbfe967259250268da9fbe1721036442b65ec
 - `engine_switch_rules_2026-10/5a18d31_8b_watch_k3.jsonl`: 160 games, sha256 b7587ca217aa1005e253a15c95ff1e5f486bbd6eb0ff88900ea3a51924b93d5f
+- `engine_switch_rules_2026-10/5a18d31_8_old_km3.jsonl`: 16000 games, sha256 a0d3f50e6220094f7ff2ae0b47a342335cf90aa41ff4a3bc642de9f593b728dd
+- `engine_switch_rules_2026-10/5a18d31_8_new_km3.jsonl`: 16000 games, sha256 22ac692917ecbd0cc0f29b05165cb68a49ea58854d0cd4b05d8a59485f508f71
+- `engine_switch_rules_2026-10/5a18d31_8_watch_km3.jsonl`: 16000 games, sha256 1318d9e5d946e827233433b548cbca05c63e29465410067c031f4f1e0025db0d
+- `engine_switch_rules_2026-10/5a18d31_8_old_k3.jsonl`: 8000 games, sha256 63e22b815ab8645cae0e1216e500374817da5af0416e4f660b59a0ee31ac5f32
+- `engine_switch_rules_2026-10/5a18d31_8_new_k3.jsonl`: 8000 games, sha256 64dc6dcc38711279ab5332850d388a0d7840f85e8de1875c99a43bc8b7cc68b3
+- `engine_switch_rules_2026-10/5a18d31_8_watch_k3.jsonl`: 8000 games, sha256 ad928b62883112155dfae2adb8d63261313ebb81900b3df3c4ab8975fc057d4e
 
 Seeds: 23,100,000,000 + pairing x 10,000 + i (`pairs_8.tsv`, `seeds_8.txt`); held list in seat 0 for even i.
 
