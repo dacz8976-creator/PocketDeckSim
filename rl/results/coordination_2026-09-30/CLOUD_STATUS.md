@@ -12,68 +12,22 @@ The audit is committed: `rl/results/coin_prevention_round2_2026-10-01/TEXT_AUDIT
 - **A sixth file, `engine/src/move_generation/move_generation_trainer.rs`:** a Fossil can be played under an Item lock (the Item check at 65 skips the Fossil type). Its premise is that a Fossil's printed type is Item (rules/01, rules/04 §6; the local database can't show it).
 - **In the five files but outside rules/09, rules/04 and the caveats:** Guts on the attacker's own Pokémon in an attack's outcome (E1), and Perish Body on a plain queued hit at the Active (E2). Both are decided by their text. Fix them in this job, or leave them listed?
 
-1. **Current task, and the instruction that set it.** None running; idle. **The round-2 readiness jobs are done** (Fable via Dustin, Oct 2; branch claude/coin-prevention-round2, head 57c65860; `rl/results/round2_readiness_2026-10-02/README.md`; no table games, no players/ or engine change):
-   - **(1) The inventory** (69471480; main 7c1b62f: the 68 deck lists under decks/, drafts_2026-10-01 included, and the 14 lists the pairing files name). EXPECTED to change:
-     - table 0 of 28; the 17 new cells 0; step 7c 0 of 32;
-     - B2e 16 of 96: `h-whimsicott` and Dustin's 12, each v all 8 panel lists (Trap Territory);
-     - carriers 1 of 36: l-sharpedo v `meowth_carefree` (Wild Swing);
-     - screen and floor 11, over 4 lists: Dustin's 12 v all 8 (Trap Territory); Dustin's 10, brew-01 and brew-04 v `t-weezing` (Will with a Confused attacker). Floor pages that would need rerunning: Dustin's 10 (1 pairing) and 12 (all 8).
-     - The amended draft D changes nothing: it holds no Will, and no list holds a block-coin attacker.
-   - **(2) The counters** (da086209, cf3cffee). `instrument_scan.py` (the coin script, as the branch has it) gets `r2_tick`: 13 exact counters, an off-gate counter per rewritten site (the later round's by attack), every firing tick.
-     - The probe (`counter_probe_readiness.rs`, the same lines through `--emit-fns`): 49 checks, 0 failures, each counter on a board where it must fire and one where it must not.
-     - Both watch scripts: the same sorted lines in either order; the instrumented scan compiles.
-     - Smoke, 6 pairings × 20, km3, seeds 20,990,000,000 + pairing × 10,000 + i: the same moves in 120 of 120 games, no legality finding. Trap Territory's and the later round's counters fire; the Will lists never attacked while Confused there.
-   - **(3) coin_probe v2 and tightened_rule v2** (57c65860), on all 3,813 games of handoff_8c:
-     - the same first differences in 3,813 of 3,813;
-     - **exactly the 8 expected verdicts changed** (the 5 promotion games and km3 4/106 to lookahead; the 2 pairing-31 games on the board), **3,805 unchanged**;
-     - 2,379 of 2,379 golden checks on the table; the 12 controls find nothing.
-     - The node limit: counting free frames free makes the search bigger. Two games (pairing 12, game 69, both bots) stopped at v1's 60,000 nodes before finding anything and are found at 600,000 (`--node-limit`); the check now runs any such probe again at 600,000.
-   **The card-text follow-up before it is done** (Fable via Dustin, Oct 2: the sixth-file question answered "all yes"; branch claude/coin-prevention-round2, head 20e2651, now stacked on the official engine: origin/main merged first, d1b986c; README "The follow-up"). Tests first (53a3cca, all 5 failing), the changes in 3090abb:
-   - **Victini's caveat** (`card_validation.rs`): what is implemented (the gate coins, Confusion and a block coin, first and never offered; Will to a block coin, else the attack's first coin) and what stays open (the two gate coins' order together; the block coin's reading, shot row victory-star-block-coin).
-   - **Luxury Coin** (`trainer_coin_plan.rs`): not offered on the opponent's Stadium (`active_stadium_owner`); a Stadium with no recorded player keeps the offer.
-   - **A Fossil under an Item lock** (`move_generation_trainer.rs`): blocked, as an Item. Pocket Shot List row `fossil-item-lock` added (supporting proof, low, friend battle).
-   - **E1:** Guts flips for your own attack's damage to your own Pokémon in the outcome. **E2:** Perish Body flips for an attack's plain queued hit at the Active.
-   - **Full suite at 3090abb: 2,039 passed, 0 failed, 0 ignored** (`suite_followup.log`).
-   - **Reach (83 lists under `decks/`):** no list holds a Fossil or Gholdengo (Luxury Coin), Dustin's 15 included; none holds an Item-lock attacker, a Guts Pokémon or Galarian Cursola. So this follow-up changes no game between those lists. The card-text job's reach is unchanged (Trap Territory: Dustin's 12; Will: brew-01, brew-04, Dustin's 10); the new draft-D (Victini) is reached by none of these changes.
-   - The card-text job before it (94bd46e; suite 2,035/0) was read and accepted.
-   The jobs before it are done: the card-text job, step 8c (its STOP resolved, above), and the Oct 1 jobs:
-   - **PLAN step 8b's early-warning rows** (3a107f4, `rl/results/engine_switch_rules_2026-10/early_warning_8b/README.md`), on a scratch build of R (f8cfa9c, engine tree 38af8b0, the laptop's candidate's):
-     - 960 games, pairings 32-35 × 40 × km3 and k3 × old, new and watch, every program built from `git archive` in a fresh target folder.
-     - The checks:
-       - watch = new 160/160 per bot;
-       - the pinned old `legality_scan` = the old built from source, 160/160 per bot;
-       - no rule findings;
-       - the laptop's `sitting2_check.py touched` and `stepsum` pass both bots.
-     - **63 of 320 deals change.** By `tightened_rule.py`:
-       - 50 on the board;
-       - 13 lookahead only, with both halves found by `coin_probe` or `vs_probe`;
-       - 0 needing a judgment, 0 unexplained.
-     - CONDITION 3: 1 game (km3 34/35). It is one of the 13 lookahead games, explained under the Oct 1 ruling.
-     - Rows 13/22: pairing 35 met (15 games). Pairing 34 is NOT met: no unchanged game fired the off-gate discard counter. That is a report line, not a stop.
-     - **The trace load:**
-       - changed games with no exact counter: 13/320, about 1,050 for step 8 by the plan's arithmetic, all of them the automated check's;
-       - needing a hand trace: 0 on this sample (by the rule of three, up to about 240);
-       - which number goes on TRACE LOAD is the coordinator's call.
-     - CLOUD8B lines, if wanted:
-       - `CLOUD8B 3a107f4 km3 rl/results/engine_switch_rules_2026-10/early_warning_8b/8b_new_km3.jsonl`
-       - `CLOUD8B 3a107f4 k3 rl/results/engine_switch_rules_2026-10/early_warning_8b/8b_new_k3.jsonl`
-   - **Job 1, F8** (5a929c0): accepted. F8's wording goes into rules/09 and PLAN.md at the pin.
-   - **Job 2, the later round of coin-flip prevention**, all seven sites, on `claude/coin-prevention-round2` (from Sonnet's R, 1abdbe8; README `rl/results/coin_prevention_round2_2026-10-01/README.md`, 78af4e8). The six sites were accepted (76b87cd). Round 2 stays out of the current switch and goes in the next one.
-     - Mega Kangaskhan ex's second punch, after the fifth file was approved:
-       - 9145eb3: the tests, the knockout-then-promotion case and the non-knockout case, both failing;
-       - 29e126a: the fix;
-       - bfe8aeb: the counters;
-       - 78af4e8: the README.
-     - `engine/src/state/mod.rs`: only the pending-hit check changed. It now also recognises an `ApplyQueuedAttackDamage` aimed at the empty Active, from the other player's frame.
-       - The `ApplyDamage` arm's attacker clause is not mirrored. A Mega Kangaskhan ex Knocked Out on its own turn gives 3 points and ends the game (checked in a scratch copy), and mirroring it would have reordered the first round's choices.
-     - Full suite at 29e126a: 2,027 passed, 0 failed (R's 2,018 plus the 9 new tests). The counter probe: 32 checks, 0 failures.
-     - The scratch smoke, rerun on the final engine, gives byte-identical game files to its first run (80 of 80 for each scan).
-2. **What is running now, and when it ends.** The card-text job, starting now.
-3. **Files I expect to change.** None. The 8b rows are in `rl/results/engine_switch_rules_2026-10/early_warning_8b/` (this branch). The coin round-2 job changed these on its branch:
-   - engine: `engine/src/actions/apply_attack_action.rs`, `engine/src/actions/apply_action.rs`, `engine/src/state/mod.rs` (the approved fifth file), `engine/tests/pokemon/meowth_carefree_steps_test.rs`;
-   - results: `rl/results/coin_prevention_repair_2026-09-30/instrument_scan.py` (the counters) and `rl/results/coin_prevention_round2_2026-10-01/`.
-4. **Waiting on the laptop or Sonnet.** Nothing.
-5. **Open questions for Dustin.** None. The fifth-file question was answered yes (Oct 1), for the pending-hit check only.
+1. **Current task, and the instruction that set it.** None running; idle. **The play-out chooser, the first prototype, is done** (Fable via Dustin, Oct 2; branch `claude/playout-pilot`, cut from main 551a348, head f1aacbe2, not merged; `rl/results/playout_pilot_2026-10-02/README.md`):
+   - **What it is.** `kx<N>`, for example `kx3`, a new player on km<N>. At each decision with real alternatives it takes every distinct legal move (cap 12; drops named), plays each out to the end R = 16 times with km<N> on both sides from worlds sampled from its own observation only, with common random numbers (round j of every candidate shares the world and seed), and switches from km<N>'s move only if the best move's paired lead exceeds z = 2 standard errors. Parameters in the code: `kx<depth>[_r<R>][_c<cap>][_z<z>][_lab|_real][_t<s>][_trace]`, printed per game (`KX_PARAMS`); per-decision trace (`KX_TRACE`). Knowledge: REALISTIC (default; the opponent's list drawn per play-out from the 16 lists of decks/screen/opponents and decks/research consistent with the cards seen) or LAB (the exact list, labelled a laboratory condition, only when it is one of those meta lists, so a brew's list is never handed over).
+   - **km3 and the official engine unchanged.** The engine diff from main-8626a35 is 12 added lines in `players/mod.rs` plus the new files. `deckgym` built from the branch and the official program play km3's step-10 run (240 games, seed 7,100) equal in every per-game field, 240 of 240, and equal to the pinned record; the strength harness built from the branch prints the pinned km3 self-check digest 81b572198c04d5d1. Full suite on the final code: 2,025 passed, 0 failed.
+   - **Tests first** (a3612b71, failing to compile), then the player: 7 tests pass, among them the no-leak test (same observation over a different opponent hand and both decks' order: same play-out scores and the same move, both modes, also through `Game`), km3's move kept within the noise, an immediate win taken, determinism.
+   - **Both harnesses.** `strength selfcheck --pilot kx3_r2_c3_lab --games 2`: digest 3a2eb43bd9053639 three times (two builds); `run_pilot.sh` through a kx-aware pg_pos (pgd_build.sh with PGD_ENGINE = the branch's engine): one position, two seeds, 33 s, traces written. The pilot silences PG_DUMP during its own decisions, so the runner has no root-score tables for kx.
+   - **The smoke** (venusaur-exeggutor v weezing-arbok, 20 deals, both seats, 40 games, seeds 24,200,000,000 + i, registered in START_HERE): pilot 0.875, km3 on the same deals 0.850, paired difference +0.025 ± 0.111 (no evidence either way). 31 of 1,097 decisions with play-outs changed from km3's move (2.8%). Time on 4 threads: 7.4 s per decision (median 6.2, max 32), 204 s per game. The container restarted after 19 games; the run resumed (`--resume`), and two first-run games replayed afterwards equal in every field and every traced decision.
+   - **What to expect to go wrong** (README): km3 plays the later turns of every play-out, so coordinated plans can be undervalued (and km3's weaknesses get exploited, which the trace can't tell from real gains); at R = 16 only large leads switch, and some switches are luck; it is several hundred times slower than km3. **And one weakness found by the smoke:** against a list not in the pool, no list is consistent once a foreign card is seen, the "closest" ties, and the tie goes to the pool's first list, t-altaria (85% of the smoke's rounds). The strength harness never hits it (its panel lists are all in the pool); the position runner hits it at every position. Not repaired here, so the smoke describes the code as it stands; see question (b) below.
+   - **Laptop time** (from the smoke): about 204 × 4 / T seconds per pilot game on T threads; a development comparison of one deck × 8 panel lists × 25 deals × 2 seats is about 23 hours on 4 threads, 6 on 16; the pre-registration's kx self-check about 1½ hours on 4 threads (estimate); the position runner about 1½ hours on 4 threads.
+   **The data pipeline stopped where it was** (branch `claude/planning-pilot-data`, head 22d56999; `rl/results/planning_pilot_data_2026-10-02/README.md`, "Where it stopped"): the first pass done (9,600 games, 467,146 rows; held-out log loss 0.525 against 0.631 for km's value alone; the Bench Energy feature's sign negative), the second pass cancelled; Dustin's 04, 08 and 11 are in its pool but in the locked final-exam list, so their rows must be dropped before development use.
+   **Earlier jobs, done** (the readiness jobs, the card-text follow-up and step 8c read and accepted): the round-2 readiness jobs (57c65860, `rl/results/round2_readiness_2026-10-02/README.md`), the card-text follow-up (20e2651) and the card-text job, step 8c, step 8b's rows (3a107f4), F8, and the later round of coin-flip prevention (`claude/coin-prevention-round2`); details in their READMEs and the log below.
+2. **What is running now, and when it ends.** Nothing.
+3. **Files I expect to change.** None. The play-out job changed, on its branch only: `engine/src/players/mod.rs` (12 lines), new `engine/src/players/playout_player.rs`, `engine/src/players/playout_pool.rs`, `engine/tests/playout_pilot_test.rs`, `engine/examples/playout_smoke.rs`, `rl/results/playout_pilot_2026-10-02/`, and START_HERE's seed table (one row: 24,200,000,000-24,200,099,999).
+4. **Waiting on the laptop or Sonnet.** The laptop's one review of `claude/playout-pilot`, its build, and the development comparison.
+5. **Open questions.**
+   - (a) For Dustin, still open from before: remove the Pocket Shot List rows `chase-order-carefree-steps` and `carefree-steps-snipe`? Nothing is done until he answers.
+   - (b) For the coordinator or Dustin: the pilot's REALISTIC mode against a list outside its pool (above). Repair the tie (random among the closest lists; small), widen the pool (which lists: the gauntlet's, the scoreboard's Limitless lists?), or leave it while the development comparison uses only the panel lists?
 
 ## Log (one line per new job, added and pushed before it starts)
 
