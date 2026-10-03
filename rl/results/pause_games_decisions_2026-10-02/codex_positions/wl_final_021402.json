@@ -1,0 +1,564 @@
+[
+ {
+  "id": "D3-021402-t01",
+  "game": "021402",
+  "his_turn": 1,
+  "deck": "D03",
+  "turn_count": 1,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Poké Ball P-A 005",
+    "Pokémon Center Lady A2b 070",
+    "Heavy Helmet B1 219",
+    "Irida A2a 072",
+    "Wailord B1 057"
+   ],
+   "discard": [],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Wailmer B4 036",
+     "hp": 100
+    }
+   ],
+   "energy_now": null,
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 3,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Meloetta B2 070",
+     "hp": 70
+    },
+    {
+     "card": "Giratina ex A2b 035",
+     "hp": 150
+    }
+   ],
+   "energy_next": "Psychic"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Heavy Helmet",
+   "Tool:Heavy Helmet@0",
+   "Play:Poké Ball",
+   "Place:Wailmer@1",
+   "(Poké Ball finds the second Wailmer; no Energy on the first turn, no attack)"
+  ],
+  "hand_source": "codex-native",
+  "notes": "Going first, so no Energy attach (energy_now null). Opening hand Poké Ball, Pokémon Center Lady, Heavy Helmet, Irida and the Wailmer he placed Active, draw Wailord, all native-observed; the opponent has Meloetta Active and Giratina ex Benched with no Energy, discard empty, and hand 3 is the Codex fan count.",
+  "milestones": [],
+  "noop_ability": true,
+  "heldout": false
+ },
+ {
+  "id": "D3-021402-t03",
+  "game": "021402",
+  "his_turn": 2,
+  "deck": "D03",
+  "turn_count": 3,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Pokémon Center Lady A2b 070",
+    "Irida A2a 072",
+    "Wailord B1 057",
+    "Cyrus A2 150"
+   ],
+   "discard": [
+    "Poké Ball P-A 005"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Wailmer B4 036",
+     "hp": 100,
+     "tools": [
+      "Heavy Helmet B1 219"
+     ]
+    },
+    {
+     "card": "Wailmer B4 036",
+     "hp": 100
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 5,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Meloetta B2 070",
+     "hp": 70
+    },
+    {
+     "card": "Giratina ex A2b 035",
+     "hp": 150,
+     "energy": [
+      "Psychic",
+      "Psychic"
+     ]
+    }
+   ],
+   "energy_next": "Psychic"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Evolve:Wailord@0",
+   "Attach:1Water@0 zone"
+  ],
+  "hand_source": "codex-native",
+  "notes": "Draw Cyrus. Turn 1 left the Helmet on the Active Wailmer and the second Wailmer Benched (Poké Ball in the discard). ESTIMATE: the review does not count the opponent's turn-2 Energy (Strange Singing, one normal attach, Broken-Space Bellow); Giratina ex 2 Psychic and Meloetta 0 is implied (Giratina's later four = three Bellows + the turn-2 attach) but not stated. Opponent hand 5 is the Codex count; its discard 0 is best effort.",
+  "milestones": [],
+  "noop_ability": true,
+  "heldout": false
+ },
+ {
+  "id": "D3-021402-t05",
+  "game": "021402",
+  "his_turn": 3,
+  "deck": "D03",
+  "turn_count": 5,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Pokémon Center Lady A2b 070",
+    "Irida A2a 072",
+    "Cyrus A2 150",
+    "Wailord ex B4 037"
+   ],
+   "discard": [
+    "Poké Ball P-A 005"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Wailord B1 057",
+     "hp": 200,
+     "energy": [
+      "Water"
+     ],
+     "tools": [
+      "Heavy Helmet B1 219"
+     ],
+     "behind": [
+      "Wailmer B4 036"
+     ]
+    },
+    {
+     "card": "Wailmer B4 036",
+     "hp": 100
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 7,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Meloetta B2 070",
+     "hp": 70,
+     "energy": [
+      "Psychic"
+     ]
+    },
+    {
+     "card": "Giratina ex A2b 035",
+     "hp": 150,
+     "energy": [
+      "Psychic",
+      "Psychic",
+      "Psychic"
+     ]
+    }
+   ],
+   "energy_next": "Psychic"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Evolve:Wailord ex@1",
+   "Attach:1Water@0 zone"
+  ],
+  "hand_source": "codex-native",
+  "notes": "Draw Wailord ex. Opponent's turn 4: Psychic on Meloetta and another Bellow, so Giratina ex 3 and Meloetta 1 (derived from the review's three-Energy state at 92 s; per-Pokémon counts are not printed). Opponent hand: the Codex fan count is a range 7-8; 7 is used and is the only value the bookkeeping allows (5 at turn 3 + draw + Strange Singing, no plays).",
+  "milestones": [],
+  "noop_ability": true,
+  "heldout": false
+ },
+ {
+  "id": "D3-021402-t07",
+  "game": "021402",
+  "his_turn": 4,
+  "deck": "D03",
+  "turn_count": 7,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Pokémon Center Lady A2b 070",
+    "Irida A2a 072",
+    "Cyrus A2 150",
+    "Professor's Research P-A 007"
+   ],
+   "discard": [
+    "Poké Ball P-A 005"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Wailord B1 057",
+     "hp": 200,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "tools": [
+      "Heavy Helmet B1 219"
+     ],
+     "behind": [
+      "Wailmer B4 036"
+     ]
+    },
+    {
+     "card": "Wailord ex B4 037",
+     "hp": 250,
+     "behind": [
+      "Wailmer B4 036"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 8,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Meloetta B2 070",
+     "hp": 70,
+     "energy": [
+      "Psychic"
+     ]
+    },
+    {
+     "card": "Giratina ex A2b 035",
+     "hp": 150,
+     "energy": [
+      "Psychic",
+      "Psychic",
+      "Psychic",
+      "Psychic"
+     ]
+    },
+    {
+     "card": "Ralts A2 068",
+     "hp": 60,
+     "energy": [
+      "Psychic"
+     ]
+    }
+   ],
+   "energy_next": "Psychic"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Professor's Research",
+   "(Research draws Indeedee ex and Copycat)",
+   "Place:Indeedee ex@2",
+   "Attach:1Water@0 zone"
+  ],
+  "hand_source": "codex-native",
+  "notes": "Draw Professor's Research. Opponent's turn 6: Ralts benched with its first Psychic and another Bellow, Giratina ex 4 (derived). ESTIMATES: Ralts printing (four identical, first used) and bench order [Giratina, Ralts] assumed. Opponent hand: the Codex fan count is a range 7-8 and the builders' lower-end rule would give 7, but 8 is used because 7 + draw + Singing - Ralts = 8 and 8 + 2 - 5 cards played on turn 8 gives the Codex-counted 5 at turn 9 (7 would break that chain); 7 is not excluded by the fan itself.",
+  "milestones": [],
+  "noop_ability": true,
+  "heldout": false
+ },
+ {
+  "id": "D3-021402-t09",
+  "game": "021402",
+  "his_turn": 5,
+  "deck": "D03",
+  "turn_count": 9,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Pokémon Center Lady A2b 070",
+    "Irida A2a 072",
+    "Cyrus A2 150",
+    "Copycat B1 225",
+    "Lucky Ice Pop B2 145"
+   ],
+   "discard": [
+    "Poké Ball P-A 005",
+    "Professor's Research P-A 007"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Wailord ex B4 037",
+     "hp": 140,
+     "behind": [
+      "Wailmer B4 036"
+     ]
+    },
+    {
+     "card": "Wailord B1 057",
+     "hp": 200,
+     "energy": [
+      "Water",
+      "Water",
+      "Water"
+     ],
+     "tools": [
+      "Heavy Helmet B1 219"
+     ],
+     "behind": [
+      "Wailmer B4 036"
+     ]
+    },
+    {
+     "card": "Indeedee ex B1 121",
+     "hp": 130
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 5,
+   "discard_n": 2,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Mega Gardevoir ex B2 066",
+     "hp": 210,
+     "energy": [
+      "Psychic",
+      "Psychic",
+      "Psychic"
+     ],
+     "behind": [
+      "Ralts A2 068"
+     ]
+    },
+    {
+     "card": "Giratina ex A2b 035",
+     "hp": 150,
+     "energy": [
+      "Psychic",
+      "Psychic",
+      "Psychic",
+      "Psychic"
+     ]
+    },
+    {
+     "card": "Meloetta B2 070",
+     "hp": 70,
+     "energy": [
+      "Psychic"
+     ]
+    },
+    {
+     "card": "Mega Diancie ex B3b 032",
+     "hp": 170,
+     "energy": [
+      "Psychic",
+      "Psychic"
+     ]
+    }
+   ],
+   "energy_next": "Psychic"
+  },
+  "stadium": {
+   "card": "Peculiar Plaza B2 155",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Ability:Watch Over@2",
+   "Play:Lucky Ice Pop",
+   "(used 2 times in all: heads, tails)",
+   "Play:Copycat",
+   "(Copycat draws Heavy Helmet, Indeedee ex, Soothing Shore, Lucky Ice Pop, Soothing Shore)",
+   "Play:Soothing Shore",
+   "Place:Indeedee ex@3",
+   "Ability:Watch Over@3",
+   "Play:Heavy Helmet",
+   "Tool:Heavy Helmet@0",
+   "Attach:1Water@0 zone"
+  ],
+  "hand_source": "codex-native",
+  "notes": "Draw Lucky Ice Pop. Opponent's turn 8: Rare Candy took Ralts to Mega Gardevoir ex, Mega Diancie ex benched, Peculiar Plaza, Sabrina (he chose the zero-Energy Wailord ex, the 3-Water Wailord went to the Bench), free Meloetta retreat, Fantasia Force 110 (ex 250 to 140). ESTIMATES: the opponent's total of 10 Energy is fixed (Brilliant Storm 240 = 40 + 20 x 10 at 205 s; Giratina 4, Meloetta 1, Ralts 1 + attach 1 + Fantasia 3), but where Fantasia Force's three went is not stated: Gardevoir 3 / Diancie 2 / Meloetta 1 is used (the review says into the Gardevoir/Diancie board; Gardevoir 2 / Diancie 3 also fits the turn-10 counts); both bench orders and the opponent discard 2 (Rare Candy, Sabrina) are best effort.",
+  "milestones": [],
+  "noop_ability": false,
+  "heldout": false
+ },
+ {
+  "id": "D3-021402-t11",
+  "game": "021402",
+  "his_turn": 6,
+  "deck": "D03",
+  "turn_count": 11,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Soothing Shore B4 154",
+    "Lucky Ice Pop B2 145",
+    "Professor's Research P-A 007"
+   ],
+   "discard": [
+    "Poké Ball P-A 005",
+    "Professor's Research P-A 007",
+    "Lucky Ice Pop B2 145",
+    "Copycat B1 225"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Wailord ex B4 037",
+     "hp": 150,
+     "energy": [
+      "Water"
+     ],
+     "tools": [
+      "Heavy Helmet B1 219"
+     ],
+     "behind": [
+      "Wailmer B4 036"
+     ]
+    },
+    {
+     "card": "Wailord B1 057",
+     "hp": 200,
+     "energy": [
+      "Water",
+      "Water",
+      "Water"
+     ],
+     "tools": [
+      "Heavy Helmet B1 219"
+     ],
+     "behind": [
+      "Wailmer B4 036"
+     ]
+    },
+    {
+     "card": "Indeedee ex B1 121",
+     "hp": 130
+    },
+    {
+     "card": "Indeedee ex B1 121",
+     "hp": 130
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 4,
+   "discard_n": 4,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Mega Gardevoir ex B2 066",
+     "hp": 210,
+     "energy": [
+      "Psychic",
+      "Psychic",
+      "Psychic",
+      "Psychic"
+     ],
+     "behind": [
+      "Ralts A2 068"
+     ]
+    },
+    {
+     "card": "Giratina ex A2b 035",
+     "hp": 150,
+     "energy": [
+      "Psychic",
+      "Psychic",
+      "Psychic",
+      "Psychic"
+     ]
+    },
+    {
+     "card": "Meloetta B2 070",
+     "hp": 70,
+     "energy": [
+      "Psychic",
+      "Psychic"
+     ]
+    },
+    {
+     "card": "Mega Diancie ex B3b 032",
+     "hp": 170,
+     "energy": [
+      "Psychic",
+      "Psychic",
+      "Psychic",
+      "Psychic"
+     ],
+     "tools": [
+      "Protective Poncho B2 147"
+     ]
+    }
+   ],
+   "energy_next": "Psychic"
+  },
+  "stadium": {
+   "card": "Soothing Shore B4 154",
+   "owner": 0
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Ability:Watch Over@2",
+   "Ability:Watch Over@3",
+   "Play:Professor's Research",
+   "(Research draws Cyrus and Poké Ball)",
+   "Play:Poké Ball",
+   "(no Basic left in the deck)",
+   "Attach:1Water@1 zone",
+   "Play:Lucky Ice Pop",
+   "(tails: discarded)"
+  ],
+  "hand_source": "codex-native",
+  "notes": "Draw Professor's Research. Turn 9 left the second Helmet, one Water and Soothing Shore (replacing Peculiar Plaza) on the Wailord ex; the opponent's turn 10 was Protective Poncho on the benched Mega Diancie, May with no target, a Psychic on Mega Gardevoir and Fantasia Force 90 through the Helmet (240 to 150). ESTIMATES: the opponent's Energy is the review's stable post-turn-10 count (Giratina 4, Meloetta 2, Diancie 4, Gardevoir 4 = 14); its discard 4 (Rare Candy, Sabrina, Peculiar Plaza, May) and bench order are best effort; hand 4 is the Codex count.",
+  "milestones": [],
+  "noop_ability": false,
+  "heldout": false
+ }
+]

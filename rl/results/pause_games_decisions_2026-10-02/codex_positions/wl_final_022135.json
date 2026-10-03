@@ -1,0 +1,558 @@
+[
+ {
+  "id": "D3-022135-t01",
+  "game": "022135",
+  "his_turn": 1,
+  "deck": "D03",
+  "turn_count": 1,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Lucky Ice Pop B2 145",
+    "Heavy Helmet B1 219",
+    "Professor's Research P-A 007",
+    "Lucky Ice Pop B2 145",
+    "Indeedee ex B1 121"
+   ],
+   "discard": [],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Wailmer B4 036",
+     "hp": 100
+    }
+   ],
+   "energy_now": null,
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 3,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Swablu B1 196",
+     "hp": 50
+    },
+    {
+     "card": "Froakie A1 087",
+     "hp": 60
+    }
+   ],
+   "energy_next": "Psychic"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Place:Indeedee ex@1",
+   "Play:Heavy Helmet",
+   "Tool:Heavy Helmet@0",
+   "Play:Professor's Research",
+   "(Research draws Poké Ball and Pokémon Center Lady)",
+   "Play:Poké Ball",
+   "(the Ball finds the second Wailmer)",
+   "Place:Wailmer@2",
+   "(no Energy attach and no attack on the first turn)"
+  ],
+  "hand_source": "codex-native",
+  "notes": "Going first, so no Energy attach this turn. Opening hand was Lucky Ice Pop, Heavy Helmet, Professor's Research, Lucky Ice Pop and the Wailmer he put Active; the draw is Indeedee ex (name read at the draw reveal, its settled fan slot was never seen, so the hand order is only logical). Opponent hand 3 is counted from the card backs (Swablu Active, Froakie Bench); the opponent's Swablu and Froakie printings are assumed (same HP on every printing, attacks may differ).",
+  "milestones": []
+ },
+ {
+  "id": "D3-022135-t03",
+  "game": "022135",
+  "his_turn": 2,
+  "deck": "D03",
+  "turn_count": 3,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Lucky Ice Pop B2 145",
+    "Lucky Ice Pop B2 145",
+    "Pokémon Center Lady A2b 070",
+    "Poké Ball P-A 005"
+   ],
+   "discard": [
+    "Professor's Research P-A 007",
+    "Poké Ball P-A 005"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Wailmer B4 036",
+     "hp": 100,
+     "tools": [
+      "Heavy Helmet B1 219"
+     ]
+    },
+    {
+     "card": "Indeedee ex B1 121",
+     "hp": 130
+    },
+    {
+     "card": "Wailmer B4 036",
+     "hp": 100
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 2,
+   "discard_n": 1,
+   "discard_energy": [
+    "Psychic"
+   ],
+   "board": [
+    {
+     "card": "Chingling B1 109",
+     "hp": 30,
+     "tools": [
+      "Lucky Egg B3 148"
+     ]
+    },
+    {
+     "card": "Froakie A1 087",
+     "hp": 60
+    },
+    {
+     "card": "Swablu B1 196",
+     "hp": 50
+    }
+   ],
+   "energy_next": "Psychic"
+  },
+  "stadium": null,
+  "turn_effects": [
+   {
+    "turn": 3,
+    "effect": "NoItemCards"
+   }
+  ],
+  "his_plan": [
+   "Attach:1Water@0 zone",
+   "(passes: the Item lock bars the Poké Ball and both Lucky Ice Pops, and nothing is damaged for the Pokémon Center Lady)"
+  ],
+  "hand_source": "codex-native",
+  "notes": "The opponent's turn 2: Poké Ball found Chingling, which was benched with Lucky Egg and replaced Swablu; Jingly Noise did 0 through the Helmet and puts the Item lock on this turn (turn effect), so the Poké Ball he draws and both Lucky Ice Pops cannot be played. Estimates: the Psychic the review shows on Swablu before its retreat is taken as spent on the retreat (Swablu Energy 0, opponent discard Energy Psychic; supported by the Psychic tally on the two Megas at native 266s), and opponent discard 1 (Poké Ball) is bookkeeping; opponent hand 2 is counted.",
+  "milestones": []
+ },
+ {
+  "id": "D3-022135-t05",
+  "game": "022135",
+  "his_turn": 3,
+  "deck": "D03",
+  "turn_count": 5,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Lucky Ice Pop B2 145",
+    "Lucky Ice Pop B2 145",
+    "Pokémon Center Lady A2b 070",
+    "Poké Ball P-A 005",
+    "Heavy Helmet B1 219"
+   ],
+   "discard": [
+    "Professor's Research P-A 007",
+    "Poké Ball P-A 005"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Wailmer B4 036",
+     "hp": 100,
+     "energy": [
+      "Water"
+     ],
+     "tools": [
+      "Heavy Helmet B1 219"
+     ]
+    },
+    {
+     "card": "Indeedee ex B1 121",
+     "hp": 110
+    },
+    {
+     "card": "Wailmer B4 036",
+     "hp": 100
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 1,
+   "discard_n": 2,
+   "discard_energy": [
+    "Psychic"
+   ],
+   "board": [
+    {
+     "card": "Chingling B1 109",
+     "hp": 30,
+     "tools": [
+      "Lucky Egg B3 148"
+     ]
+    },
+    {
+     "card": "Greninja A1 089",
+     "hp": 120,
+     "behind": [
+      "Froakie A1 087"
+     ]
+    },
+    {
+     "card": "Swablu B1 196",
+     "hp": 50,
+     "energy": [
+      "Psychic"
+     ]
+    }
+   ],
+   "energy_next": "Psychic"
+  },
+  "stadium": null,
+  "turn_effects": [
+   {
+    "turn": 5,
+    "effect": "NoItemCards"
+   }
+  ],
+  "his_plan": [
+   "Play:Heavy Helmet",
+   "Tool:Heavy Helmet@2",
+   "Attach:1Water@0 zone",
+   "(passes: the Item lock bars the Poké Ball and both Lucky Ice Pops; a Tool is not an Item card)"
+  ],
+  "hand_source": "codex-native",
+  "notes": "Since turn 3: first Water on the Wailmer, the opponent's Rare Candy took Froakie to Greninja (Frogadier skipped), Water Shuriken put 20 on the benched Indeedee ex (130 to 110), and Jingly Noise again puts the Item lock on this turn (the engine bars Item cards only, so the Heavy Helmet he draws stays playable, as in the video). Estimates: the opponent's turn 4 Psychic is put on Swablu (the review says 'the Swablu line'), opponent discard 2 (Poké Ball, Rare Candy) is bookkeeping; opponent hand 1 is counted.",
+  "milestones": []
+ },
+ {
+  "id": "D3-022135-t07",
+  "game": "022135",
+  "his_turn": 4,
+  "deck": "D03",
+  "turn_count": 7,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Lucky Ice Pop B2 145",
+    "Lucky Ice Pop B2 145",
+    "Pokémon Center Lady A2b 070",
+    "Poké Ball P-A 005",
+    "Indeedee ex B1 121"
+   ],
+   "discard": [
+    "Professor's Research P-A 007",
+    "Poké Ball P-A 005"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Wailmer B4 036",
+     "hp": 100,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "tools": [
+      "Heavy Helmet B1 219"
+     ]
+    },
+    {
+     "card": "Indeedee ex B1 121",
+     "hp": 90
+    },
+    {
+     "card": "Wailmer B4 036",
+     "hp": 100,
+     "tools": [
+      "Heavy Helmet B1 219"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 1,
+   "discard_n": 2,
+   "discard_energy": [
+    "Psychic"
+   ],
+   "board": [
+    {
+     "card": "Chingling B1 109",
+     "hp": 30,
+     "tools": [
+      "Lucky Egg B3 148"
+     ]
+    },
+    {
+     "card": "Greninja A1 089",
+     "hp": 120,
+     "behind": [
+      "Froakie A1 087"
+     ]
+    },
+    {
+     "card": "Swablu B1 196",
+     "hp": 50,
+     "energy": [
+      "Psychic",
+      "Psychic"
+     ]
+    },
+    {
+     "card": "Swablu B1 196",
+     "hp": 50
+    }
+   ],
+   "energy_next": "Psychic"
+  },
+  "stadium": null,
+  "turn_effects": [
+   {
+    "turn": 7,
+    "effect": "NoItemCards"
+   }
+  ],
+  "his_plan": [
+   "Place:Indeedee ex@3",
+   "Play:Pokémon Center Lady",
+   "(heals the Indeedee ex at index 1, 90 to 120)",
+   "Attach:1Water@0 zone",
+   "Attack:Wave Splash",
+   "(Wave Splash 60 knocks out Chingling; the Item lock bars the Poké Ball and both Lucky Ice Pops)"
+  ],
+  "hand_source": "codex-native",
+  "notes": "Since turn 5: second Water on the Wailmer, the second Helmet on the benched Wailmer, another Swablu benched, Shuriken took the benched Indeedee ex 110 to 90, and Jingly Noise again; he draws the second Indeedee ex. Estimates: the Item lock for this turn is inferred from 'Chingling repeats Jingly Noise' (the review does not print it; his plays are lock-legal either way), the opponent's two Psychic (turns 4 and 6) are both put on the first Swablu (the total 2 is firm, a 1 and 1 split fits the review equally), opponent discard 2 is bookkeeping; opponent hand 1 is counted (the Wave Splash KO will let Lucky Egg refill it).",
+  "milestones": []
+ },
+ {
+  "id": "D3-022135-t09",
+  "game": "022135",
+  "his_turn": 5,
+  "deck": "D03",
+  "turn_count": 9,
+  "points": [
+   1,
+   1
+  ],
+  "me": {
+   "hand": [
+    "Lucky Ice Pop B2 145",
+    "Lucky Ice Pop B2 145",
+    "Poké Ball P-A 005",
+    "Irida A2a 072"
+   ],
+   "discard": [
+    "Professor's Research P-A 007",
+    "Poké Ball P-A 005",
+    "Pokémon Center Lady A2b 070",
+    "Wailmer B4 036",
+    "Heavy Helmet B1 219"
+   ],
+   "discard_energy": [
+    "Water",
+    "Water",
+    "Water"
+   ],
+   "board": [
+    {
+     "card": "Wailmer B4 036",
+     "hp": 100,
+     "tools": [
+      "Heavy Helmet B1 219"
+     ]
+    },
+    {
+     "card": "Indeedee ex B1 121",
+     "hp": 120
+    },
+    {
+     "card": "Indeedee ex B1 121",
+     "hp": 110
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 3,
+   "discard_n": 4,
+   "discard_energy": [
+    "Psychic"
+   ],
+   "board": [
+    {
+     "card": "Mega Altaria ex B1 102",
+     "hp": 190,
+     "energy": [
+      "Psychic",
+      "Psychic"
+     ],
+     "behind": [
+      "Swablu B1 196"
+     ]
+    },
+    {
+     "card": "Greninja A1 089",
+     "hp": 120,
+     "behind": [
+      "Froakie A1 087"
+     ]
+    },
+    {
+     "card": "Swablu B1 196",
+     "hp": 50,
+     "energy": [
+      "Psychic"
+     ],
+     "tools": [
+      "Lucky Egg B3 148"
+     ]
+    },
+    {
+     "card": "Froakie A1 087",
+     "hp": 60
+    }
+   ],
+   "energy_next": "Psychic"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Poké Ball",
+   "(finds no Basic: none is left in his deck)",
+   "Attach:1Water@0 zone",
+   "(passes without an attack; Irida and both Lucky Ice Pops stay in hand)"
+  ],
+  "hand_source": "codex-native",
+  "notes": "Since turn 7: Wave Splash KO'd Chingling (1-0), the opponent evolved the Active Swablu into Mega Altaria ex (2 Psychic, 3 Bench) and its Mega Harmony KO'd the first Wailmer through the Helmet (1-1; its Helmet, the Wailmer and 3 Water are in his discard), Shuriken took the second Indeedee ex 130 to 110, and the second Wailmer is already promoted (a forced choice made before the turn; the review lists it under this turn). Estimates: the Lucky Egg Swablu has 1 Psychic (derived from the two Megas showing 2 each at native 266s), Greninja and the second Froakie 0, opponent discard 4 (Poké Ball, Rare Candy, Chingling, its Lucky Egg) is bookkeeping, the opponent bench order is not shown; opponent hand 3 is counted.",
+  "milestones": []
+ },
+ {
+  "id": "D3-022135-t11",
+  "game": "022135",
+  "his_turn": 6,
+  "deck": "D03",
+  "turn_count": 11,
+  "points": [
+   1,
+   1
+  ],
+  "me": {
+   "hand": [
+    "Lucky Ice Pop B2 145",
+    "Lucky Ice Pop B2 145",
+    "Irida A2a 072",
+    "Soothing Shore B4 154"
+   ],
+   "discard": [
+    "Professor's Research P-A 007",
+    "Poké Ball P-A 005",
+    "Pokémon Center Lady A2b 070",
+    "Wailmer B4 036",
+    "Heavy Helmet B1 219",
+    "Poké Ball P-A 005"
+   ],
+   "discard_energy": [
+    "Water",
+    "Water",
+    "Water"
+   ],
+   "board": [
+    {
+     "card": "Wailmer B4 036",
+     "hp": 100,
+     "energy": [
+      "Water"
+     ],
+     "tools": [
+      "Heavy Helmet B1 219"
+     ]
+    },
+    {
+     "card": "Indeedee ex B1 121",
+     "hp": 100
+    },
+    {
+     "card": "Indeedee ex B1 121",
+     "hp": 110
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 4,
+   "discard_n": 5,
+   "discard_energy": [
+    "Psychic"
+   ],
+   "board": [
+    {
+     "card": "Mega Altaria ex B1 102",
+     "hp": 190,
+     "energy": [
+      "Psychic",
+      "Psychic"
+     ],
+     "behind": [
+      "Swablu B1 196"
+     ]
+    },
+    {
+     "card": "Greninja A1 089",
+     "hp": 120,
+     "behind": [
+      "Froakie A1 087"
+     ]
+    },
+    {
+     "card": "Mega Altaria ex B1 102",
+     "hp": 190,
+     "energy": [
+      "Psychic",
+      "Psychic"
+     ],
+     "tools": [
+      "Lucky Egg B3 148"
+     ],
+     "behind": [
+      "Swablu B1 196"
+     ]
+    },
+    {
+     "card": "Froakie A1 087",
+     "hp": 60
+    }
+   ],
+   "energy_next": "Psychic"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Soothing Shore",
+   "Attach:1Water@0 zone",
+   "(passes without an attack; Irida and both Lucky Ice Pops stay in hand)"
+  ],
+  "hand_source": "codex-native",
+  "notes": "Since turn 9: his Poké Ball found nothing (no Basic left), first Water on the second Wailmer; the opponent played Professor's Research and evolved the Lucky Egg Swablu into a second Mega Altaria ex (both Megas on 2 Psychic at native 266s), and Shuriken took the first Indeedee ex 120 to 100; no attack on the Wailmer. Estimates: opponent discard 5 (adds Research) is bookkeeping, the opponent bench order is not shown (the order here keeps the evolution in place); opponent hand 4 is counted. Soothing Shore is drawn this turn and is not yet in play.",
+  "milestones": []
+ }
+]

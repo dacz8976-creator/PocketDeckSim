@@ -186,6 +186,15 @@ fn build(pos: &Value, deck_me: &Deck, deck_filler: &Deck, shuffle_seed: u64) -> 
         }
     }
     val["turn_effects"] = Value::Object(te);
+    // effects on an individual Pokemon (e.g. "attacks do 30 less this turn" from Bonsly's Teary Attack): a pk's "effects": [{"effect": .., "turns": n}]
+    for (side, spec) in [(0usize, me), (1usize, opp)] {
+        for (i, p) in spec["board"].as_array().unwrap().iter().enumerate() {
+            if let Some(list) = p.get("effects").and_then(|x| x.as_array()) {
+                let arr: Vec<Value> = list.iter().map(|e| json!([e["effect"].clone(), e["turns"].as_u64().unwrap_or(1)])).collect();
+                val["in_play_pokemon"][side][i]["effects"] = Value::Array(arr);
+            }
+        }
+    }
     if let Some(flags) = pos.get("flags").and_then(|x| x.as_object()) {
         for (k, v) in flags {
             assert!(val.get(k).is_some(), "no such state field {k}");
