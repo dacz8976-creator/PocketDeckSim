@@ -530,6 +530,11 @@ for _f in sorted(glob.glob(os.path.join(os.path.dirname(os.path.abspath(__file__
 for _f in sorted(glob.glob(os.path.join(os.path.dirname(os.path.abspath(__file__)), "reconstructed_positions", "lr_final_*.json"))):
     P.extend(json.load(open(_f, encoding="utf-8")))
 
+# ---- Draft A v the fixed computer deck (Mega Blastoise ex & Wailord ex): Dustin's 3 games and the game's Auto in 5 (Codex ledgers, Oct 2-3), exact lists on both sides.
+# Data: blast_positions/bd_final.json, written by harness/blast_to_positions.py (every owner turn start with a fully named hand; milestones by mechanical rules, README).
+for _f in sorted(glob.glob(os.path.join(os.path.dirname(os.path.abspath(__file__)), "blast_positions", "bd_final*.json"))):
+    P.extend(json.load(open(_f, encoding="utf-8")))
+
 # ---- milestone tags for the earlier turns (my reading of what each turn is about: preparing an attacker, managing a sacrifice,
 #      recognising an immediate win, adapting when the plan fails); turns with nothing of the four carry none
 MS = {
