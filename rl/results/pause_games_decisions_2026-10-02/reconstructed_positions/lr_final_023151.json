@@ -1,0 +1,392 @@
+[
+ {
+  "id": "LR-023151-t01",
+  "game": "ladder-20260909_023151000",
+  "his_turn": 1,
+  "deck": "R023151",
+  "turn_count": 1,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Elegant Cape B3b 065",
+    "Poké Ball P-A 005",
+    "Heliolisk B4 061",
+    "Clemont's Backpack B1a 066",
+    "Mega Manectric ex B2b 027"
+   ],
+   "discard": [],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Electrike B2b 026"
+    }
+   ],
+   "energy_now": null,
+   "energy_next": "Lightning"
+  },
+  "opp": {
+   "hand_count": 4,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Torchic B1 033"
+    }
+   ],
+   "energy_next": "Fire"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Poké Ball",
+   "(then: the Poké Ball finds a Helioptile, which he benches; no Energy on the first turn, no attack)"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 12 of 20 cards seen, 8 inferred (see reconstructed_decks/R023151.json)",
+  "approximate": true,
+  "notes": "Going first, so no Energy attach. Opening hand Elegant Cape, Poké Ball, Heliolisk, Clemont's Backpack plus the Electrike he placed Active; the draw is Mega Manectric ex. The opponent has only a Torchic Active (hand 4 is the Codex fan count), discard empty.",
+  "milestones": [],
+  "heldout": false
+ },
+ {
+  "id": "LR-023151-t03",
+  "game": "ladder-20260909_023151000",
+  "his_turn": 2,
+  "deck": "R023151",
+  "turn_count": 3,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Elegant Cape B3b 065",
+    "Heliolisk B4 061",
+    "Clemont's Backpack B1a 066",
+    "Mega Manectric ex B2b 027",
+    "Electrike B2b 026"
+   ],
+   "discard": [
+    "Poké Ball P-A 005"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Electrike B2b 026",
+     "hp": 40
+    },
+    {
+     "card": "Helioptile B4 060"
+    }
+   ],
+   "energy_now": "Lightning",
+   "energy_next": "Lightning"
+  },
+  "opp": {
+   "hand_count": 4,
+   "discard_n": 2,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Torchic B1 033",
+     "energy": [
+      "Fire"
+     ]
+    },
+    {
+     "card": "Entei ex A4a 010"
+    },
+    {
+     "card": "Torkoal A3b 010"
+    }
+   ],
+   "energy_next": "Fire"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Place:Electrike",
+   "Evolve:Heliolisk@1",
+   "Attach:1Lightning@2 zone",
+   "Play:Elegant Cape",
+   "Tool:Elegant Cape@2"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 12 of 20 cards seen, 8 inferred (see reconstructed_decks/R023151.json)",
+  "approximate": true,
+  "notes": "The opponent's Peck left his Electrike on 40; they benched Entei ex and Torkoal and put a Fire on the Torchic (their Research and Poké Ball are in their discard, count 2 from those plays). Draw: a second Electrike; he benches it, evolves the Helioptile, puts the Lightning and then Elegant Cape on the new Electrike (still a Basic, so no extra HP), no attack.",
+  "milestones": [],
+  "heldout": false
+ },
+ {
+  "id": "LR-023151-t05",
+  "game": "ladder-20260909_023151000",
+  "his_turn": 3,
+  "deck": "R023151",
+  "turn_count": 5,
+  "points": [
+   0,
+   1
+  ],
+  "me": {
+   "hand": [
+    "Clemont's Backpack B1a 066",
+    "Mega Manectric ex B2b 027",
+    "Training Area B2 153"
+   ],
+   "discard": [
+    "Poké Ball P-A 005",
+    "Electrike B2b 026"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Heliolisk B4 061",
+     "behind": [
+      "Helioptile B4 060"
+     ]
+    },
+    {
+     "card": "Electrike B2b 026",
+     "energy": [
+      "Lightning"
+     ],
+     "tools": [
+      "Elegant Cape B3b 065"
+     ]
+    }
+   ],
+   "energy_now": "Lightning",
+   "energy_next": "Lightning"
+  },
+  "opp": {
+   "hand_count": 4,
+   "discard_n": 2,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Combusken B1 034",
+     "energy": [
+      "Fire",
+      "Fire"
+     ],
+     "behind": [
+      "Torchic B1 033"
+     ]
+    },
+    {
+     "card": "Entei ex A4a 010"
+    },
+    {
+     "card": "Torkoal A3b 010"
+    }
+   ],
+   "energy_next": "Fire"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Training Area",
+   "Evolve:Mega Manectric ex@1",
+   "Play:Clemont's Backpack",
+   "Attach:1Lightning@0 zone",
+   "Attack:Electrispark"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 12 of 20 cards seen, 8 inferred (see reconstructed_decks/R023151.json)",
+  "approximate": true,
+  "notes": "The opponent's Torchic became Combusken (two Fire) and High Jump Kick knocked out his damaged opening Electrike (1 point to them, that Electrike is in his discard); Heliolisk was promoted. Draw: Training Area; he plays it, evolves the Elegant Cape Electrike into Mega Manectric ex, plays Clemont's Backpack, puts the Lightning on the Heliolisk and Electrispark hits all their Pokémon (70 on the Active, 30 on each Benched one).",
+  "milestones": [],
+  "heldout": false
+ },
+ {
+  "id": "LR-023151-t07",
+  "game": "ladder-20260909_023151000",
+  "his_turn": 4,
+  "deck": "R023151",
+  "turn_count": 7,
+  "points": [
+   0,
+   1
+  ],
+  "me": {
+   "hand": [
+    "Poké Ball P-A 005"
+   ],
+   "discard": [
+    "Poké Ball P-A 005",
+    "Electrike B2b 026",
+    "Clemont's Backpack B1a 066"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Heliolisk B4 061",
+     "hp": 20,
+     "energy": [
+      "Lightning"
+     ],
+     "behind": [
+      "Helioptile B4 060"
+     ]
+    },
+    {
+     "card": "Mega Manectric ex B2b 027",
+     "hp": 210,
+     "energy": [
+      "Lightning"
+     ],
+     "tools": [
+      "Elegant Cape B3b 065"
+     ],
+     "behind": [
+      "Electrike B2b 026"
+     ]
+    }
+   ],
+   "energy_now": "Lightning",
+   "energy_next": "Lightning"
+  },
+  "opp": {
+   "hand_count": 4,
+   "discard_n": 2,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Combusken B1 034",
+     "hp": 10,
+     "energy": [
+      "Fire",
+      "Fire"
+     ],
+     "behind": [
+      "Torchic B1 033"
+     ]
+    },
+    {
+     "card": "Entei ex A4a 010",
+     "hp": 110,
+     "energy": [
+      "Fire"
+     ]
+    },
+    {
+     "card": "Torkoal A3b 010",
+     "hp": 70
+    },
+    {
+     "card": "Torchic B1 033"
+    }
+   ],
+   "energy_next": "Fire"
+  },
+  "stadium": {
+   "card": "Training Area B2 153",
+   "owner": 0
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Poké Ball",
+   "(then: the Helioptile it finds stays in hand; the Lightning goes to the benched Mega Manectric ex (Attach:1Lightning@1 zone); Attack:Electrispark, 50 on the Active, knocks out the 10-HP Combusken and puts his first point)"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 12 of 20 cards seen, 8 inferred (see reconstructed_decks/R023151.json)",
+  "approximate": true,
+  "notes": "The opponent benched a second Torchic, put a Fire on the benched Entei ex, and High Jump Kick (60 with Training Area) left his Heliolisk on 20; Training Area (his) is in play. Draw: Poké Ball, his only card; he plays it (finds a second Helioptile and keeps it in hand), Lightning to the Mega Manectric ex, then Electrispark knocks out the Combusken.",
+  "milestones": [],
+  "heldout": false
+ },
+ {
+  "id": "LR-023151-t09",
+  "game": "ladder-20260909_023151000",
+  "his_turn": 5,
+  "deck": "R023151",
+  "turn_count": 9,
+  "points": [
+   1,
+   2
+  ],
+  "me": {
+   "hand": [
+    "Helioptile B4 060",
+    "Professor's Research P-A 007"
+   ],
+   "discard": [
+    "Poké Ball P-A 005",
+    "Electrike B2b 026",
+    "Clemont's Backpack B1a 066",
+    "Poké Ball P-A 005",
+    "Heliolisk B4 061",
+    "Helioptile B4 060"
+   ],
+   "discard_energy": [
+    "Lightning"
+   ],
+   "board": [
+    {
+     "card": "Mega Manectric ex B2b 027",
+     "hp": 210,
+     "energy": [
+      "Lightning",
+      "Lightning"
+     ],
+     "tools": [
+      "Elegant Cape B3b 065"
+     ],
+     "behind": [
+      "Electrike B2b 026"
+     ]
+    }
+   ],
+   "energy_now": "Lightning",
+   "energy_next": "Lightning"
+  },
+  "opp": {
+   "hand_count": 4,
+   "discard_n": 5,
+   "discard_energy": [
+    "Fire",
+    "Fire"
+   ],
+   "board": [
+    {
+     "card": "Entei ex A4a 010",
+     "hp": 100,
+     "energy": [
+      "Fire",
+      "Fire"
+     ]
+    },
+    {
+     "card": "Torkoal A3b 010",
+     "hp": 60
+    },
+    {
+     "card": "Mega Blaziken ex B1 036",
+     "hp": 200,
+     "behind": [
+      "Torchic B1 033"
+     ]
+    }
+   ],
+   "energy_next": "Fire"
+  },
+  "stadium": {
+   "card": "Training Area B2 153",
+   "owner": 0
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Attack:Lightning Accelerator"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 12 of 20 cards seen, 8 inferred (see reconstructed_decks/R023151.json)",
+  "approximate": true,
+  "notes": "The opponent promoted Entei ex, used Rare Candy to turn the damaged Torchic into Mega Blaziken ex (200 of 210 left), added a Fire, and Blazing Beatdown knocked out his Heliolisk (2 points to them); he promoted the Mega Manectric ex. Draw: Professor's Research, which he did not play; he also left the Helioptile in hand and the turn's Lightning unattached and attacked at once (Lightning Accelerator, 120 with Training Area) for the Entei ex knockout and the 3-2 win.",
+  "milestones": [],
+  "heldout": false
+ }
+]
