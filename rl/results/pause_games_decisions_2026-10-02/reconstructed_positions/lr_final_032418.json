@@ -1,0 +1,401 @@
+[
+ {
+  "id": "LR-032418-t01",
+  "game": "ladder-20260909_032418000",
+  "his_turn": 1,
+  "deck": "R032418",
+  "turn_count": 1,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Team Rocket's Goo-zooka B4a 068",
+    "Hitting Hammer B1 215",
+    "Gholdengo B4a 051",
+    "Poké Ball P-A 005",
+    "Hitting Hammer B1 215"
+   ],
+   "discard": [],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Rotom ex B4 055",
+     "hp": 120
+    }
+   ],
+   "energy_now": null,
+   "energy_next": "Lightning"
+  },
+  "opp": {
+   "hand_count": 4,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Tapu Koko ex A3a 019",
+     "hp": 130
+    }
+   ],
+   "energy_next": "Lightning"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Poké Ball",
+   "(the search finds Gimmighoul)",
+   "Place:Gimmighoul",
+   "(then: end turn with no Energy and no attack; Goo-zooka, Hitting Hammer, Gholdengo and the second Hitting Hammer stay in hand)"
+  ],
+  "hand_source": "codex",
+  "notes": "Going first, so no Energy attach (energy_now null). Opening hand Goo-zooka, Rotom ex (placed Active), Hitting Hammer, Gholdengo, Poké Ball plus a second Hitting Hammer drawn, all Codex-observed; the opponent shows the regular-art Tapu Koko ex alone, hand 4 (Codex fan count), discard empty.",
+  "milestones": [],
+  "list_source": "reconstructed: 11 of 20 cards seen, 9 inferred (see reconstructed_decks/R032418.json)",
+  "approximate": true
+ },
+ {
+  "id": "LR-032418-t03",
+  "game": "ladder-20260909_032418000",
+  "his_turn": 2,
+  "deck": "R032418",
+  "turn_count": 3,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Team Rocket's Goo-zooka B4a 068",
+    "Hitting Hammer B1 215",
+    "Gholdengo B4a 051",
+    "Hitting Hammer B1 215",
+    "Red Card P-A 006"
+   ],
+   "discard": [
+    "Poké Ball P-A 005"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Rotom ex B4 055",
+     "hp": 100
+    },
+    {
+     "card": "Gimmighoul B2a 054",
+     "hp": 60
+    }
+   ],
+   "energy_now": "Lightning",
+   "energy_next": "Lightning"
+  },
+  "opp": {
+   "hand_count": 3,
+   "discard_n": 1,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Tapu Koko ex A3a 019",
+     "hp": 130,
+     "energy": [
+      "Lightning",
+      "Lightning"
+     ],
+     "tools": [
+      "Poison Barb A3 146"
+     ]
+    },
+    {
+     "card": "Tapu Koko ex A3a 019",
+     "hp": 130
+    }
+   ],
+   "energy_next": "Lightning"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Evolve:Gholdengo@1",
+   "Play:Red Card",
+   "Play:Hitting Hammer",
+   "(two Heads: Luxury Coin declined, one Lightning discarded from the opponent's Active, 2 to 1)",
+   "Play:Hitting Hammer",
+   "(Tails/Tails: Luxury Coin used, reroll Head/Tail: nothing discarded)",
+   "Attach:1Lightning@0 zone",
+   "Play:Team Rocket's Goo-zooka",
+   "(then: end turn with no attack)"
+  ],
+  "hand_source": "codex",
+  "notes": "Draw Red Card; the opponent benched the alternate-art Tapu Koko ex, put Poison Barb and two Lightning on its Active (one attached, one from Plasma Hurricane) and hit Rotom ex for 20, hand 3 (Codex fan count). Estimate: the opponent's discard is one card (the Poké Ball seen in its discard area, the pile was never opened); Red Card is not a draw card for him so the compared plan runs on past it, and Luxury Coin is a prompt during a coin flip, not a play.",
+  "milestones": [],
+  "list_source": "reconstructed: 11 of 20 cards seen, 9 inferred (see reconstructed_decks/R032418.json)",
+  "approximate": true
+ },
+ {
+  "id": "LR-032418-t05",
+  "game": "ladder-20260909_032418000",
+  "his_turn": 3,
+  "deck": "R032418",
+  "turn_count": 5,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Order Pad B4 145"
+   ],
+   "discard": [
+    "Poké Ball P-A 005",
+    "Red Card P-A 006",
+    "Hitting Hammer B1 215",
+    "Hitting Hammer B1 215",
+    "Team Rocket's Goo-zooka B4a 068"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Rotom ex B4 055",
+     "hp": 80,
+     "energy": [
+      "Lightning"
+     ]
+    },
+    {
+     "card": "Gholdengo B4a 051",
+     "hp": 100,
+     "behind": [
+      "Gimmighoul B2a 054"
+     ]
+    }
+   ],
+   "energy_now": "Lightning",
+   "energy_next": "Lightning"
+  },
+  "opp": {
+   "hand_count": 4,
+   "discard_n": 2,
+   "discard_energy": [
+    "Lightning"
+   ],
+   "board": [
+    {
+     "card": "Tapu Koko ex A3a 019",
+     "hp": 130,
+     "energy": [
+      "Lightning",
+      "Lightning"
+     ],
+     "tools": [
+      "Poison Barb A3 146"
+     ]
+    },
+    {
+     "card": "Tapu Koko ex A3a 019",
+     "hp": 130,
+     "energy": [
+      "Lightning"
+     ],
+     "tools": [
+      "Poison Barb A3 146"
+     ]
+    }
+   ],
+   "energy_next": "Lightning"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Order Pad",
+   "(Tails, Luxury Coin reroll Tails: no Item found, hand empty)",
+   "Attach:1Lightning@1 zone",
+   "Retreat:1",
+   "(then: end turn with no attack)"
+  ],
+  "hand_source": "codex",
+  "notes": "Draw Order Pad (his whole hand); since turn 3 the first Hitting Hammer took a Lightning off the opponent's Active, and the opponent attached to its Bench, played Research and a second Poison Barb (on the Bench), and Plasma Hurricane took Rotom ex to 80 and restored the Active's second Lightning. Estimate: the opponent's discard is two cards (Poké Ball, Research) plus the one Lightning from the Hammer, the pile was never opened.",
+  "milestones": [],
+  "list_source": "reconstructed: 11 of 20 cards seen, 9 inferred (see reconstructed_decks/R032418.json)",
+  "approximate": true
+ },
+ {
+  "id": "LR-032418-t07",
+  "game": "ladder-20260909_032418000",
+  "his_turn": 4,
+  "deck": "R032418",
+  "turn_count": 7,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Team Rocket's Goo-zooka B4a 068"
+   ],
+   "discard": [
+    "Poké Ball P-A 005",
+    "Red Card P-A 006",
+    "Hitting Hammer B1 215",
+    "Hitting Hammer B1 215",
+    "Team Rocket's Goo-zooka B4a 068",
+    "Order Pad B4 145"
+   ],
+   "discard_energy": [
+    "Lightning"
+   ],
+   "board": [
+    {
+     "card": "Gholdengo B4a 051",
+     "hp": 80,
+     "energy": [
+      "Lightning"
+     ],
+     "behind": [
+      "Gimmighoul B2a 054"
+     ]
+    },
+    {
+     "card": "Rotom ex B4 055",
+     "hp": 80
+    }
+   ],
+   "energy_now": "Lightning",
+   "energy_next": "Lightning"
+  },
+  "opp": {
+   "hand_count": 5,
+   "discard_n": 2,
+   "discard_energy": [
+    "Lightning"
+   ],
+   "board": [
+    {
+     "card": "Tapu Koko ex A3a 019",
+     "hp": 130,
+     "energy": [
+      "Lightning",
+      "Lightning",
+      "Lightning"
+     ],
+     "tools": [
+      "Poison Barb A3 146"
+     ]
+    },
+    {
+     "card": "Tapu Koko ex A3a 019",
+     "hp": 130,
+     "energy": [
+      "Lightning",
+      "Lightning"
+     ],
+     "tools": [
+      "Poison Barb A3 146"
+     ]
+    }
+   ],
+   "energy_next": "Lightning"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Team Rocket's Goo-zooka",
+   "Attach:1Lightning@1 zone",
+   "(then: end turn with no attack)"
+  ],
+  "hand_source": "codex",
+  "notes": "Draw the second Goo-zooka (his whole hand); since turn 5 Order Pad found nothing, Rotom ex retreated paying one Lightning (now in his discard) so the Gholdengo with one Lightning is Active, and Plasma Hurricane took it to 80. Estimate: the opponent's discard is unchanged at two cards and one Lightning (no new card was seen played on its turn 6).",
+  "milestones": [],
+  "list_source": "reconstructed: 11 of 20 cards seen, 9 inferred (see reconstructed_decks/R032418.json)",
+  "approximate": true
+ },
+ {
+  "id": "LR-032418-t09",
+  "game": "ladder-20260909_032418000",
+  "his_turn": 5,
+  "deck": "R032418",
+  "turn_count": 9,
+  "points": [
+   0,
+   1
+  ],
+  "me": {
+   "hand": [
+    "Lucky Ice Pop B2 145"
+   ],
+   "discard": [
+    "Poké Ball P-A 005",
+    "Red Card P-A 006",
+    "Hitting Hammer B1 215",
+    "Hitting Hammer B1 215",
+    "Team Rocket's Goo-zooka B4a 068",
+    "Order Pad B4 145",
+    "Team Rocket's Goo-zooka B4a 068",
+    "Gholdengo B4a 051",
+    "Gimmighoul B2a 054"
+   ],
+   "discard_energy": [
+    "Lightning",
+    "Lightning"
+   ],
+   "board": [
+    {
+     "card": "Rotom ex B4 055",
+     "hp": 80,
+     "energy": [
+      "Lightning"
+     ]
+    }
+   ],
+   "energy_now": "Lightning",
+   "energy_next": "Lightning"
+  },
+  "opp": {
+   "hand_count": 6,
+   "discard_n": 2,
+   "discard_energy": [
+    "Lightning"
+   ],
+   "board": [
+    {
+     "card": "Tapu Koko ex A3a 019",
+     "hp": 130,
+     "energy": [
+      "Lightning",
+      "Lightning",
+      "Lightning"
+     ],
+     "tools": [
+      "Poison Barb A3 146"
+     ]
+    },
+    {
+     "card": "Tapu Koko ex A3a 019",
+     "hp": 130,
+     "energy": [
+      "Lightning",
+      "Lightning",
+      "Lightning"
+     ],
+     "tools": [
+      "Poison Barb A3 146"
+     ]
+    }
+   ],
+   "energy_next": "Lightning"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Lucky Ice Pop",
+   "Play:Lucky Ice Pop",
+   "(Heads: returned to hand and played again, heal 80 -> 100 -> 120; the second flip Tails: discarded)",
+   "Attach:1Lightning@0 zone",
+   "Attack:Junk Spark"
+  ],
+  "hand_source": "codex",
+  "notes": "Draw Lucky Ice Pop (his whole hand); since turn 7 the Goo-zooka went to the discard, the Lightning went to the benched Rotom ex, and Mach Bolt knocked out the 80-HP Gholdengo (one point to the opponent; it, its Gimmighoul and its Lightning are in his discard) so the Rotom ex was promoted. Estimate: the opponent's hand 6 is the Codex fan count and its discard is unchanged at two cards and one Lightning (bookkeeping).",
+  "milestones": [],
+  "list_source": "reconstructed: 11 of 20 cards seen, 9 inferred (see reconstructed_decks/R032418.json)",
+  "approximate": true
+ }
+]

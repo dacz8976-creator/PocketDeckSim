@@ -20,9 +20,11 @@ python3 "$HERE/filter_positions.py" "$D/positions_A.json" "$D/positions_heldout.
 IDS=$(python3 -c "import json; print(' '.join(p['id'] for p in json.load(open('$RUNS/positions_run.json'))))")
 run_one() {
     id=$1
-    nice -n 19 "$BIN" --positions "$RUNS/positions_run.json" --deck A="$D/draftA.txt" --deck D03="$D/deck03.txt" --seeds "$SEEDS" --bot "$BOT" --only "$id" > "$RUNS/out_$id.jsonl" 2> "$RUNS/err_$id.txt"
+    nice -n 19 "$BIN" --positions "$RUNS/positions_run.json" --deck A="$D/draftA.txt" --deck D03="$D/deck03.txt" --deck B08="$D/brew08.txt" $DECKARGS --seeds "$SEEDS" --bot "$BOT" --only "$id" > "$RUNS/out_$id.jsonl" 2> "$RUNS/err_$id.txt"
 }
-export -f run_one; export D SEEDS BIN BOT RUNS
+DECKARGS=""
+for f in "$D"/reconstructed_decks/*.txt; do [ -f "$f" ] && DECKARGS="$DECKARGS --deck $(basename "$f" .txt)=$f"; done
+export -f run_one; export D SEEDS BIN BOT RUNS DECKARGS
 s=$(date +%s)
 printf '%s\n' $IDS | xargs -P 2 -I{} bash -c 'run_one {}'
 echo "ran $(echo $IDS | wc -w) positions x seeds [$SEEDS] with $BOT in $(( $(date +%s) - s )) s"

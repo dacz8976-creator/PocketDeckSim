@@ -29,14 +29,15 @@ def pk(card, hp=None, energy=(), tools=(), behind=(), new=False, effects=()):
 
 def pos(id, game, his_turn, turn_count, points, me_hand, me_board, opp_board, opp_hand, opp_energy_next, *, me_discard=(), me_discard_energy=(),
         opp_discard_n=0, opp_discard_energy=(), energy_now="Water", stadium=None, effects=(), his=(), hand_source="text", notes="", force=(),
-        top=None, flags=None, milestones=(), deck="A"):
+        top=None, flags=None, milestones=(), deck="A", energy_next="Water", list_source=None):
     p = {"id": id, "game": game, "his_turn": his_turn, "deck": deck, "turn_count": turn_count, "points": list(points),
          "me": {"hand": list(me_hand), "discard": list(me_discard), "discard_energy": list(me_discard_energy), "board": me_board,
-                "energy_now": energy_now, "energy_next": "Water"},
+                "energy_now": energy_now, "energy_next": energy_next},
          "opp": {"hand_count": opp_hand, "discard_n": opp_discard_n, "discard_energy": list(opp_discard_energy), "board": opp_board,
                  "energy_next": opp_energy_next},
          "stadium": stadium, "turn_effects": list(effects), "his_plan": list(his), "hand_source": hand_source, "notes": notes, "milestones": list(milestones)}
     if force: p["force"] = list(force)
+    if list_source: p["list_source"] = list_source
     if top: p["me"]["top"] = list(top)
     if flags: p["flags"] = flags
     return p
@@ -430,11 +431,108 @@ P.append(pos(f"D3-{G}-t11", G, 6, 11, (0, 1), [W['cyrus'], W['lady'], W['wailord
              notes="Draw the second Soothing Shore (cannot be played). Bonsly's Teary Attack left the Wailord on 190 with a -30 on its next attack (modelled). He heals it to 200, fifth Water, and Cyrus "
                    "brings the damaged Mega Lucario ex (110) Active; the opponent conceded before he attacked (Whale Pump would have done 110 - 30 = 80). The review's Astra check: not a lethal line."))
 
+# ======================================================================== Ladder Log games on brew 8 (Entei ex / Rainbow Cave), hands and boards from the Codex retrospective ledgers (Oct 2)
+# Source: RETROSPECTIVE_HANDS_2026-10-02/<stem>/TURN_LEDGER.json (hand at turn start, structured start-of-turn boards, plays in order) + the packet's REVIEW_SUPPLEMENT.md.
+# Deck: the stored brew 8 list (decks/brews/brew-08-entei-rainbow-cave.txt, unchanged since Sept 24) -- the Ladder Log entry "brew-08" names both recordings
+# (Dustin confirmed all nine Sept 28 Entei ex games were brew 8) and Codex's visible core for each is exactly that list. list_source records that.
+# His discard piles are my bookkeeping from the ledger plays (they close: every one of the 20 cards is accounted for, deck empty on 020916 turn 9 as the
+# ledger's deck-empty warning says); the opponent's discard is not tracked (0). Not a computer battle: no Auto option seen in either packet's mode check.
+E8 = dict(entei='Entei ex A4a 010', rs="Professor's Research P-A 007", copy='Copycat B1 225', lady='Pokémon Center Lady A2b 070', sab='Sabrina A1 225',
+          cyrus='Cyrus A2 150', pop='Lucky Ice Pop B2 145', fp='Flame Patch B1 217', repel='Repel A3a 064', ball='Poké Ball P-A 005', cape='Giant Cape A2 147',
+          rc='Rainbow Cave B4 155', sp='Starting Plains B2 154')
+OE = dict(victini='Victini B3 025', moltres="Team Rocket's Moltres ex B4a 007", hound='Houndour A2a 011', houndoom='Mega Houndoom ex P-B 080', balloon='Small Balloon B3b 064',
+          drampa='Drampa B4 124', ray='Mega Rayquaza ex B4 120', dratini_s='Dratini B4 116', dratini_b='Dratini A3b 051', dragonair='Dragonair B4 117')
+LS8 = "season-brews: brew 8 (decks/brews/brew-08-entei-rainbow-cave.txt); Ladder Log entry 'brew-08' names this recording"
+F = dict(energy_now="Fire", energy_next="Fire", deck="B08", hand_source="codex", list_source=LS8)
+
+# ---- 20260929_020916000 (first, won 3-2; opp Fire: Team Rocket's Moltres ex, Mega Houndoom ex, Victini): his turns 1, 3, 5, 7, 9
+G = "ladder-20260929_020916000"
+SPL0 = {"card": E8['sp'], "owner": 0}
+RC0 = {"card": E8['rc'], "owner": 0}
+P.append(pos("L8-020916-t01", G, 1, 1, (0, 0), [E8['rc'], E8['copy'], E8['repel'], E8['cape'], E8['cyrus']], [pk(E8['entei'], 140)], [pk(OE['victini'], 70)], 4, "Fire",
+             **{**F, "energy_now": None},
+             his=["Play:Giant Cape", "Tool:Giant Cape@0", "Play:Rainbow Cave", "Play:Copycat"],
+             notes="Going first: no Energy. Opening hand Rainbow Cave, Copycat, Repel, Entei ex (placed Active), Giant Cape; draw Cyrus. Cape on the Entei ex, Rainbow Cave, Copycat (Repel and Cyrus shuffled back, "
+                   "four cards drawn to match the opponent's four). Legendary Pulse then draws Flame Patch. Opponent's discard not tracked."))
+P.append(pos("L8-020916-t03", G, 2, 3, (0, 0), [E8['copy'], E8['rs'], E8['pop'], E8['cape'], E8['fp'], E8['rc']],
+             [pk(E8['entei'], 160, tools=[E8['cape']])],
+             [pk(OE['moltres'], 130, ["Fire"] * 4), pk(OE['moltres'], 130), pk(OE['victini'], 70, tools=[OE['balloon']]), pk(OE['hound'], 60)], 2, "Fire",
+             me_discard=[E8['copy']], stadium=RC0, **F,
+             his=["UseStadium", "Play:Professor's Research", "(then: Flame Patch to the Active Entei, Fire from the Zone, Blazing Beatdown 60: Moltres 130 -> 70)"], milestones=["preparing an attacker"],
+             notes="Draw Rainbow Cave (the second copy; the first is in play, his). Rainbow Cave's reroll, Research (Research and Sabrina), Flame Patch and the turn's Fire give the Entei two Fire; the attack takes the Active Moltres to 70."))
+P.append(pos("L8-020916-t05", G, 3, 5, (0, 0), [E8['copy'], E8['pop'], E8['cape'], E8['rc'], E8['rs'], E8['sab'], E8['ball'], E8['pop']],
+             [pk(E8['entei'], 10, ["Fire", "Fire"], tools=[E8['cape']])],
+             [pk(OE['moltres'], 70, ["Fire"] * 3), pk(OE['moltres'], 130), pk(OE['victini'], 70, tools=[OE['balloon']]), pk(OE['hound'], 60, ["Fire"])], 2, "Fire",
+             me_discard=[E8['copy'], E8['rs'], E8['fp']], stadium=RC0, **F,
+             his=["Play:Poké Ball", "(then: bench the regular-art Entei ex, Giant Cape on it, three Lucky Ice Pops (heads, tails, tails) 10 -> 70, Research, Rainbow Cave reroll, Flame Patch, Fire, Starting Plains over Rainbow Cave, Blazing Beatdown 120 KOs the first Moltres)"],
+             milestones=["managing a sacrifice", "preparing an attacker"],
+             notes="Draw the second Lucky Ice Pop. The Active Entei ex is on 10 HP after Netherwing's 150. He benches a second Entei ex (Poké Ball), caps it, heals the Active by 60 with the Pops, and attacks for the first KO (two points)."))
+P.append(pos("L8-020916-t07", G, 4, 7, (2, 0), [E8['copy'], E8['rc'], E8['sab'], E8['lady'], E8['cyrus']],
+             [pk(E8['entei'], 10, ["Fire"] * 4, tools=[E8['cape']]), pk(E8['entei'], 180, tools=[E8['cape']])],
+             [pk(OE['houndoom'], 190, ["Fire"] * 3, behind=[OE['hound']]), pk(OE['moltres'], 150), pk(OE['victini'], 90, tools=[OE['balloon']])], 2, "Fire",
+             me_discard=[E8['copy'], E8['rs'], E8['fp'], E8['ball'], E8['pop'], E8['pop'], E8['rs'], E8['fp'], E8['rc']], stadium=SPL0, **F,
+             his=["Play:Sabrina", "Attach:1Fire@1 zone", "Attack:Blazing Beatdown"], milestones=["preparing an attacker"],
+             notes="Draw Cyrus. The opponent's Houndour became Mega Houndoom ex (190, three Fire) and Starting Plains is in play (his). Sabrina drags the second Moltres Active (the opponent picked it), the turn's Fire goes to the backup Entei ex, Blazing Beatdown takes the Moltres to 30."))
+P.append(pos("L8-020916-t09", G, 5, 9, (2, 2), [E8['copy'], E8['rc'], E8['lady'], E8['cyrus'], E8['repel']],
+             [pk(E8['entei'], 180, ["Fire"], tools=[E8['cape']])],
+             [pk(OE['houndoom'], 210, ["Fire"] * 3, tools=[E8['cape']], behind=[OE['hound']]), pk(OE['moltres'], 30), pk(OE['victini'], 90, tools=[OE['balloon']])], 3, "Fire",
+             me_discard=[E8['copy'], E8['rs'], E8['fp'], E8['ball'], E8['pop'], E8['pop'], E8['rs'], E8['fp'], E8['rc'], E8['sab'], E8['entei'], E8['cape']],
+             me_discard_energy=["Fire"] * 4, stadium=SPL0, **F,
+             his=["Play:Cyrus", "Attach:1Fire@0 zone", "Attack:Blazing Beatdown"], milestones=["recognising an immediate win"],
+             notes="His deck is empty (the draw failed): every card of the list is in his hand, on the board or in his discard. The first Entei ex was knocked out by Mega Houndoom ex (two points to the opponent). "
+                   "Cyrus brings the 30-HP Moltres ex Active, Fire, Blazing Beatdown KOs it: 2 -> 4 points, the game."))
+
+# ---- 20260929_002539000 (second, won by concession 2-2; opp Dragon: Drampa, Mega Rayquaza ex, Dratini / Dragonair): his turns 2, 4, 6, 8, 10
+G = "ladder-20260929_002539000"
+RC1 = {"card": E8['rc'], "owner": 1}
+P.append(pos("L8-002539-t02", G, 1, 2, (0, 0), [E8['copy'], E8['cape'], E8['fp'], E8['rs'], E8['fp']], [pk(E8['entei'], 140)],
+             [pk(OE['drampa'], 100), pk(OE['ray'], 180), pk(OE['dratini_s'], 60)], 2, "Lightning", **F,
+             his=["Play:Giant Cape", "Tool:Giant Cape@0", "Play:Professor's Research", "(then: Poké Ball finds the alternate-art Entei ex, bench it, Fire to the Active)"],
+             notes="Going second. Opening hand Copycat, Giant Cape, Flame Patch, Research + the Entei ex placed; draw the second Flame Patch. Opponent hand 2 (counted by Codex). Opponent's discard not tracked."))
+P.append(pos("L8-002539-t04", G, 2, 4, (0, 0), [E8['copy'], E8['fp'], E8['fp'], E8['pop'], E8['copy'], E8['sab']],
+             [pk(E8['entei'], 90, ["Fire"], tools=[E8['cape']]), pk(E8['entei'], 140)],
+             [pk(OE['drampa'], 100, ["Lightning"]), pk(OE['ray'], 180), pk(OE['dragonair'], 80, behind=[OE['dratini_s']])], 1, "Lightning",
+             me_discard=[E8['rs'], E8['ball']], stadium=RC1, **F,
+             his=["Play:Lucky Ice Pop", "Play:Sabrina", "UseStadium", "Attach:1Fire@0 zone", "Play:Flame Patch", "Attack:Blazing Beatdown"],
+             notes="Draw Sabrina. Drampa's Power Blast took the Active Entei ex from 160 to 90; the opponent's Rainbow Cave is in play (their Stadium). Pop heals 20 (tails: discarded), Sabrina drags Mega Rayquaza ex Active (the opponent picked it), "
+                   "reroll, Fire, Flame Patch (three Fire), Blazing Beatdown 60 takes it to 120."))
+P.append(pos("L8-002539-t06", G, 3, 6, (0, 0), [E8['copy'], E8['fp'], E8['copy'], E8['rc'], E8['lady']],
+             [pk(E8['entei'], 40, ["Fire"] * 3, tools=[E8['cape']]), pk(E8['entei'], 140)],
+             [pk(OE['drampa'], 100, ["Lightning"]), pk(OE['ray'], 120), pk(OE['dragonair'], 80, behind=[OE['dratini_s']])], 2, "Lightning",
+             me_discard=[E8['rs'], E8['ball'], E8['pop'], E8['sab'], E8['fp']], stadium=RC1, **F,
+             his=["UseStadium", "Attach:1Fire@1 zone", "Play:Flame Patch", "Play:Copycat", "(then: Starting Plains over Rainbow Cave, Blazing Beatdown 120 KOs Drampa)"], milestones=["preparing an attacker"],
+             notes="Draw Pokémon Center Lady. The Active Entei ex is on 40 (Power Blast again). Reroll, the turn's Fire to the benched Entei ex, Flame Patch back to the Active (four Fire), Copycat (hand shuffled, two cards to match the opponent's "
+                   "two: Starting Plains, Rainbow Cave), Starting Plains replaces the opponent's Rainbow Cave, the attack KOs Drampa."))
+P.append(pos("L8-002539-t08", G, 4, 8, (1, 0), [E8['rc'], E8['rc'], E8['lady']],
+             [pk(E8['entei'], 60, ["Fire"] * 4, tools=[E8['cape']]), pk(E8['entei'], 160, ["Fire"])],
+             [pk(OE['drampa'], 120), pk(OE['ray'], 140), pk(OE['dragonair'], 80, behind=[OE['dratini_s']])], 2, "Lightning",
+             me_discard=[E8['rs'], E8['ball'], E8['pop'], E8['sab'], E8['fp'], E8['fp'], E8['copy']], stadium=SPL0, **F,
+             his=["Play:Pokémon Center Lady", "Attach:1Fire@1 zone", "Attack:Blazing Beatdown"], milestones=["preparing an attacker"],
+             notes="Draw the Lady (shuffled away by Copycat, drawn again). Starting Plains is in play (his). Lady heals the Active 60 -> 90, the turn's Fire to the benched Entei ex, Blazing Beatdown KOs the second Drampa: 2 points."))
+P.append(pos("L8-002539-t10", G, 5, 10, (2, 2), [E8['rc'], E8['rc'], E8['cyrus'], E8['rs']],
+             [pk(E8['entei'], 160, ["Fire"] * 2)],
+             [pk(OE['ray'], 140), pk(OE['dratini_b'], 80), pk(OE['dragonair'], 80, behind=[OE['dratini_s']])], 3, "Lightning",
+             me_discard=[E8['rs'], E8['ball'], E8['pop'], E8['sab'], E8['fp'], E8['fp'], E8['copy'], E8['lady'], E8['entei'], E8['cape']], me_discard_energy=["Fire"] * 4,
+             stadium=SPL0, **F,
+             his=["Play:Professor's Research", "(then: the turn's Fire to the Active, Blazing Beatdown 60: Mega Rayquaza 140 -> 80)"],
+             notes="Draw Research. The opponent knocked out his first Entei ex (two points: 2-2); the alternate-art Entei ex (160, two Fire) is Active. He plays Research (Pop and Copycat), Fire, Blazing Beatdown; the opponent conceded two turns later."))
+
 # ======================================================================== deck 03 games 021402 and 022135 (hands from the Codex native-frame packets, Oct 2)
 # The positions are data, not code: codex_positions/wl_final_<game>.json (built by two independent builders from the accepted reviews + the Codex hand
 # packets, adjudicated, audited by a third reader; see README "Codex hands"). Added to P as they are; milestones and the held-out flag are applied below.
 import glob
 for _f in sorted(glob.glob(os.path.join(os.path.dirname(os.path.abspath(__file__)), "codex_positions", "wl_final_*.json"))):
+    P.extend(json.load(open(_f, encoding="utf-8")))
+
+# ---- old Ladder Log games with no stored deck code (Codex retrospective ledgers, Oct 2): the list is RECONSTRUCTED (cards seen + nearest repo list, unseen slots
+# chosen conservatively, see reconstructed_decks/<key>.json), so each position is `approximate`, stays out of every verdict-bearing comparison and is tagged as such.
+# Data, not code: reconstructed_positions/lr_final_<game>.json (built by one helper, audited by a second reader).
+for _f in sorted(glob.glob(os.path.join(os.path.dirname(os.path.abspath(__file__)), "reconstructed_positions", "lr_final_*.json"))):
+    P.extend(json.load(open(_f, encoding="utf-8")))
+
+# ---- Draft A v the fixed computer deck (Mega Blastoise ex & Wailord ex): Dustin's 3 games and the game's Auto in 5 (Codex ledgers, Oct 2-3), exact lists on both sides.
+# Data: blast_positions/bd_final.json, written by harness/blast_to_positions.py (every owner turn start with a fully named hand; milestones by mechanical rules, README).
+for _f in sorted(glob.glob(os.path.join(os.path.dirname(os.path.abspath(__file__)), "blast_positions", "bd_final*.json"))):
     P.extend(json.load(open(_f, encoding="utf-8")))
 
 # ---- milestone tags for the earlier turns (my reading of what each turn is about: preparing an attacker, managing a sacrifice,

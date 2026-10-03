@@ -6,8 +6,8 @@
  },
  "tags": {
   "Supporter/Item choice or order": 23,
-  "Energy attachment timing": 9,
   "attack vs another action": 5,
+  "Energy attachment timing": 9,
   "Energy attachment target": 1,
   "retreat/promotion": 4,
   "evolution timing/target": 3,
@@ -141,5 +141,38 @@
     "D3-022135-t03"
    ]
   }
+ },
+ "ladder_brew8": {
+  "positions": 10,
+  "verdicts": {
+   "split": 3,
+   "agree": 6,
+   "differ": 1
+  },
+  "first_action_agrees": [
+   "L8-020916-t03",
+   "L8-020916-t09",
+   "L8-002539-t04",
+   "L8-002539-t06",
+   "L8-002539-t08",
+   "L8-002539-t10"
+  ],
+  "same_plan_10": [
+   "L8-002539-t10"
+  ]
+ },
+ "approximate_list_games": {
+  "positions": 40,
+  "games": [
+   "ladder-20260907_232617000",
+   "ladder-20260908_021327000",
+   "ladder-20260908_022627000",
+   "ladder-20260908_190031000",
+   "ladder-20260908_190933000",
+   "ladder-20260909_023151000",
+   "ladder-20260909_032418000",
+   "ladder-20260928_200654000"
+  ],
+  "note": "reconstructed 20-card lists: reported in TABLES.md for completeness, excluded from every total and from any verdict"
  }
 }

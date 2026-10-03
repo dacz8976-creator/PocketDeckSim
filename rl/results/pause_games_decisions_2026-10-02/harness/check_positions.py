@@ -11,13 +11,14 @@ TYPES = {'Grass', 'Fire', 'Water', 'Lightning', 'Psychic', 'Fighting', 'Darkness
 
 db = json.load(open(DB, encoding='utf-8'))
 cards = db if isinstance(db, list) else db.get('cards', list(db.values()))
-HP, NAME = {}, {}
+HP, NAME, STAGE = {}, {}, {}
 for c in cards:
     inner = c.get('Pokemon') or c.get('Trainer') or c.get('Energy') or c
     key = f"{inner.get('name')} {inner.get('id')}"
     NAME[key] = inner.get('name')
     if 'hp' in inner:
         HP[key] = inner['hp']
+        STAGE[key] = inner.get('stage', 0)
 
 positions = json.load(open(sys.argv[1], encoding='utf-8'))
 deck = collections.Counter()
@@ -55,8 +56,16 @@ for p in positions:
                 use(c, f'{side} behind', mine)
             for c in b.get('tools', []):
                 use(c, f'{side} tool', mine)
-            if 'hp' in b and b['card'] in HP and b['hp'] > HP[b['card']]:
-                errors.append(f"{pid}: {side} {b['card']} has hp {b['hp']} above its {HP[b['card']]}")
+            if 'hp' in b and b['card'] in HP:
+                limit = HP[b['card']]
+                if any(t.startswith('Giant Cape') for t in b.get('tools', [])):
+                    limit += 20  # Giant Cape: +20 HP
+                if any(t.startswith('Elegant Cape') for t in b.get('tools', [])):
+                    limit += 30  # Elegant Cape: +30 HP (Stage 1)
+                if (p.get('stadium') or {}).get('card', '').startswith('Starting Plains') and STAGE.get(b['card'], 0) == 0:
+                    limit += 20  # Starting Plains: each Basic Pokemon in play +20 HP
+                if b['hp'] > limit:
+                    errors.append(f"{pid}: {side} {b['card']} has hp {b['hp']} above its {limit} (printed {HP[b['card']]} plus tool/stadium bonuses)")
             for e in b.get('energy', []):
                 if e not in TYPES:
                     errors.append(f'{pid}: {side} unknown energy type {e!r}')

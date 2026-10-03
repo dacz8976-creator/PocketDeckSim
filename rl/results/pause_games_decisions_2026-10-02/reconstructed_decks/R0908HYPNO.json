@@ -1,0 +1,57 @@
+{
+  "key": "R0908HYPNO",
+  "games": ["021327", "022627"],
+  "approximate": true,
+  "energy_type": "Psychic",
+  "n_seen": 20,
+  "m_inferred": 0,
+  "seen": [
+    {"card": "Comfey A3 080", "count": 1,
+     "evidence": "021327: opening hand (REVIEW_SUPPLEMENT opening at 17s), benched turn 2 (TURN_LEDGER turn 2 board_after). 022627: opening hand and first Active (TURN_LEDGER turn 1)."},
+    {"card": "Team Rocket's Rattata B4a 058", "count": 2,
+     "evidence": "021327: two Rattata on the Bench at the same time at the end of turn 2 (TURN_LEDGER turn 2 board_after; opening hand Rattata plus a Rattata drawn by Professor's Research). 022627: Raticate (from Rattata #1) plus a second Rattata benched in turn 5; both evolved by turn 7."},
+    {"card": "Team Rocket's Raticate ex B4a 059", "count": 2,
+     "evidence": "021327: two Raticate ex in hand at once at the start of turn 4 (hand_at_start), two on the board at the end of turn 6 (board_after). 022627: full-art Raticate ex (turn 1 Researcher) and gold-art Raticate ex (turn 7 Sightseer) both on the board at the end of turn 7."},
+    {"card": "Team Rocket's Drowzee B4a 027", "count": 2,
+     "evidence": "021327: Active Drowzee on the board plus a Drowzee in hand at the end of turn 6 (turn 6 research_draw) and at the start of turn 8. 022627: Drowzee #1 (turn 3 Poké Ball, evolved to Hypno turn 5) plus a second Drowzee in hand at the end of turn 5 (turn 5 Copycat draw)."},
+    {"card": "Team Rocket's Hypno B4a 028", "count": 2,
+     "evidence": "021327: Hypno on the Bench (board_after turn 10) plus a Hypno in hand (owner_hand_end turn 10, from the Copycat draw). 022627: Active Hypno plus a Hypno in hand at the end of turn 5; a second Hypno evolved from Drowzee in turn 15."},
+    {"card": "Poké Ball P-A 005", "count": 2,
+     "evidence": "021327: the turn 10 Copycat draw shows two Poké Balls in one five-card draw, and two Poké Balls are played that turn (plays 3 and 4). 022627: Poké Ball played turn 3 (to the discard pile) and a Poké Ball drawn again turn 7, so a second physical copy."},
+    {"card": "Professor's Research P-A 007", "count": 2,
+     "evidence": "021327: played in turn 2 and again in turn 6 (a played Supporter goes to the discard pile). 022627: regular-art Research played turn 3, then the full-art Research drawn turn 5 and again turn 11."},
+    {"card": "Pokémon Flute A1a 064", "count": 1,
+     "evidence": "021327: drawn turn 2 (research_draw), played turn 8. 022627: opening hand, shuffled in by Copycat turn 5, redrawn turn 9."},
+    {"card": "Team Rocket's Goo-zooka B4a 068", "count": 1,
+     "evidence": "021327: drawn and played turn 10. 022627: Copycat draw turn 5, played turn 7."},
+    {"card": "Elegant Cape B3b 065", "count": 1,
+     "evidence": "021327: Copycat draw turn 10, attached to Raticate ex (tool field on the board). 022627: opening hand, attached to Raticate ex turn 5."},
+    {"card": "Cyrus A2 150", "count": 1,
+     "evidence": "021327: drawn turn 12 (normal_draw), left in hand. 022627: Copycat draw turn 5, revealed and discarded by Darkness Claw turn 12 (accepted review)."},
+    {"card": "Copycat B1 225", "count": 1,
+     "evidence": "021327: drawn turn 8, played turn 10. 022627: Research draw turn 3, played turn 5."},
+    {"card": "Sightseer B2 150", "count": 1,
+     "evidence": "021327: Research draw turn 6, played turn 8 (takes Hypno). 022627: opening hand, redrawn by Copycat turn 5, played turn 7."},
+    {"card": "Team Rocket's Researcher B4a 069", "count": 1,
+     "evidence": "021327: opening hand, played turn 4 (tails, no card). 022627: opening hand, played turn 1 (heads, heads, tails: Raticate ex and Hypno)."}
+  ],
+  "inferred": [],
+  "nearest_list": "C:\\Users\\dacz8\\Projects\\Pocket Deck Sim\\PocketDeckSim\\decks\\dustin\\14-comfey-raticate-hypno.txt",
+  "other_recordings_used": [
+    "Each recording was used to check the other: 021327 and 022627 (both Sep 8 2026, one hour apart) independently give the same 20-card multiset, so one list covers both. No third recording was needed."
+  ],
+  "completeness_check": {
+    "method": "Deck-count arithmetic from the Codex ledgers (20-card deck, 5-card opening hand, draws, Copycat/Sightseer/Researcher/Research counts).",
+    "022627": "Direct observation: the turn 13 draw fails with 'No cards left in deck' (accepted review turn 13; TURN_LEDGER turn 13 failed_normal). Arithmetic reaches exactly 0 cards after the turn 11 draw. The last three cards in the deck at turn 7 (Sightseer view) were Pokémon Flute, gold Raticate ex and full-art Professor's Research, all already counted. The turn 7 Poké Ball found no Basic in the deck, so the deck holds exactly 5 Basics (Comfey, 2 Rattata, 2 Drowzee), all seen.",
+    "021327": "Arithmetic (no direct empty-deck observation): 15 cards left after the opening hand; turn 2 draw 1 and Research 2 leave 12; turn 4 draw 1 (Researcher tails) leaves 11; turn 6 draw 1 and Research 2 leave 8; turn 8 draw 1 and the Sightseer take of Hypno leave 6; turn 10 draw 1 leaves 5, Copycat shuffles 1 card back (6) and draws 5, leaving exactly 1 card, which is the Cyrus drawn in turn 12 (deck then 0). Both turn 10 Poké Balls found no Basic in the deck.",
+    "result": "Every one of the 20 physical cards of the deck was drawn and identified in each recording, so no slot is inferred. The identification relies on the Codex ledger being right about names and counts."
+  },
+  "caveats": [
+    "Treat as approximate: the exact historical 20-card list was never stored. This list is derived only from cards seen in the two recordings; the repo list decks/dustin/14-comfey-raticate-hypno.txt happens to hold the same 20 cards by name and count but was NOT used as proof, only as the format and id template.",
+    "Printings: the recordings show alternate art (full-art or gold-art Raticate ex, Drowzee, Hypno, Comfey; regular and full-art Professor's Research). Alternate arts are the same playable card. Ids are the first printing from card_ids.py for the Pokémon and the repo's usual ids for Poké Ball (P-A 005) and Professor's Research (P-A 007); the engine plays any printing of a card the same way.",
+    "Who went first: in 021327 Dustin went second (accepted review and ledger turn 1 is the opponent). In 022627 he went FIRST (he won the opening flip; ledger turn 1 is Dacz8976), not second as the task header said.",
+    "Counts rest on the Codex retrospective ledgers (hands and draws) and the accepted reviews; both flag some disagreements on energy targets and timing, none of which changes a card count. The accepted 021327 review says a Poké Ball found Drowzee in turn 10; the newer ledger says Drowzee came from the Copycat draw. Either way two Poké Balls were played that turn.",
+    "Game mode (ladder vs Auto) is uncertain in both packets; this does not affect the card list.",
+    "Opponent cards (Jigglypuff, Mewtwo ex, Skorupi, Drapion, Mega Absol ex, Hydreigon, Lillie, Lucky Ice Pop and so on) are not part of this deck and are excluded."
+  ]
+}
