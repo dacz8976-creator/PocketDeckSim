@@ -812,21 +812,80 @@ mod tests {
         assert_eq!(names, BTreeSet::from(["t-sceptile (1 of 2 consistent)".to_string(), "t-vespiquen (1 of 2 consistent)".to_string()]));
     }
 
-    /// With no list consistent, the closest are tied and drawn at random (not always the pool's first): a Metal zone and
-    /// a seen Bulbasaur fit none of the 8, and all 8 are equally close.
+    /// The zone filters first, then the seen cards (round 3, Astra's review). Psychic showing and a seen Swablu leave
+    /// t-altaria alone. Metal showing: no list covers the zone, so whatever is seen the unseen part is filler of Metal, at
+    /// every seed, and no list is ever "closest".
     #[test]
-    fn the_closest_tie_is_broken_at_random() {
+    fn the_zone_filters_first_then_the_seen_cards() {
         let p = pilot();
-        let seen = vec![get_card_by_enum(CardId::A1001Bulbasaur)];
-        let names: BTreeSet<String> = (0..80)
-            .map(|seed| p.core.sample_list(&seen, &[EnergyType::Metal], &mut StdRng::seed_from_u64(seed)).1)
-            .collect();
-        assert_eq!(names.len(), 8, "{names:?}");
-        assert!(names.iter().all(|n| n.ends_with("(closest, 1 of 8 tied; no list consistent)")), "{names:?}");
-        // Missing seen cards count first, then zone types: Psychic showing and a seen Swablu leave t-altaria alone.
-        let swablu = vec![get_card_by_enum(CardId::B1196Swablu)];
-        let (_, label) = p.core.sample_list(&swablu, &[EnergyType::Metal], &mut StdRng::seed_from_u64(1));
-        assert_eq!(label, "t-altaria (closest, 1 of 1 tied; no list consistent)");
+        let swablu = get_card_by_enum(CardId::B1196Swablu);
+        let (deck, label) = p.core.sample_list(&[swablu.clone()], &[EnergyType::Psychic], &mut StdRng::seed_from_u64(1));
+        assert_eq!(label, "t-altaria (1 of 1 consistent)");
+        assert!(deck.cards.iter().all(|c| !c.is_unknown()));
+        let bulbasaur = get_card_by_enum(CardId::A1001Bulbasaur);
+        for seen in [vec![], vec![bulbasaur.clone()], vec![swablu.clone()]] {
+            for seed in 0..20 {
+                let (deck, label) = p.core.sample_list(&seen, &[EnergyType::Metal], &mut StdRng::seed_from_u64(seed));
+                assert!(label.starts_with("no consistent list"), "{seen:?} seed {seed}: {label}");
+                assert_eq!(deck.energy_types, vec![EnergyType::Metal], "{label}");
+                assert!(deck.cards.iter().all(|c| seen.contains(c) || c.is_unknown()), "{label}: {:?}", deck.cards);
+            }
+        }
+    }
+
+    /// Astra's case: Swablu seen with a Water Energy Zone. t-altaria holds Swablu but plays Psychic; t-suicune plays Water
+    /// but holds no Swablu. Before round 3 the fallback chose t-altaria and sampled Psychic Energy for a Water opponent.
+    /// Now no list is consistent, and the unseen part is filler of the seen types (Water), with no named card.
+    #[test]
+    fn swablu_with_a_water_zone_is_never_modelled_as_a_psychic_list() {
+        let p = pilot();
+        let swablu = get_card_by_enum(CardId::B1196Swablu);
+        for seed in 0..20 {
+            let (deck, label) = p.core.sample_list(&[swablu.clone()], &[EnergyType::Water], &mut StdRng::seed_from_u64(seed));
+            assert!(label.starts_with("no consistent list"), "seed {seed}: {label}");
+            assert_eq!(deck.energy_types, vec![EnergyType::Water], "seed {seed}: {label}");
+            assert!(deck.cards.iter().all(|c| *c == swablu || c.is_unknown()), "seed {seed}: named cards {:?}", deck.cards);
+            assert_eq!(deck.cards.len(), DECK_SIZE);
+        }
+    }
+
+    /// The same through a sampled world and the play-outs: the opponent's Swablu in play and Water in their zone. Every
+    /// hidden card of theirs is filler, their Energy is Water only, and the play-outs run on that world without a failure.
+    #[test]
+    fn an_unfamiliar_opponent_is_played_out_as_filler_of_its_zone() {
+        use crate::models::PlayedCard;
+        use crate::observation::RevealedKnowledge;
+        use crate::state::EnergyZone;
+        let mut game = crate::test_support::get_test_game_with_board(
+            vec![PlayedCard::from_id(CardId::A1001Bulbasaur)],
+            vec![PlayedCard::from_id(CardId::B1196Swablu)],
+        );
+        let mut state = game.get_state_clone();
+        state.move_generation_stack.clear();
+        state.energy_zone[1] = EnergyZone { current: Some(EnergyType::Water), next: Some(EnergyType::Water) };
+        game.set_state(state);
+        let state = game.get_state_clone();
+        assert!(!state.hands[1].is_empty() && !state.decks[1].cards.is_empty(), "the opponent holds hidden cards");
+        let observation = PlayerObservation::from_state(&state, 0, &RevealedKnowledge::default());
+        let mut p = PlayoutPlayer::with_extra_lists(
+            crate::test_support::load_test_decks().0,
+            crate::test_support::load_test_decks().1,
+            PlayoutParams { rollouts: 4, cap: 4, ..PlayoutParams::new(3) },
+            Vec::new(),
+        );
+        for seed in 0..5 {
+            let (world, _, name) = p.core.sample_state(&observation, &mut StdRng::seed_from_u64(seed));
+            assert!(name.starts_with("no consistent list"), "{name}");
+            assert_eq!(world.decks[1].energy_types, vec![EnergyType::Water]);
+            assert!(world.hands[1].iter().chain(world.decks[1].cards.iter()).all(|c| c.is_unknown()), "{:?}", world.hands[1]);
+            assert_eq!(world.hands[1].len(), state.hands[1].len());
+        }
+        let actions = state.generate_possible_actions().1;
+        let distinct: BTreeSet<String> = actions.iter().map(|a| format!("{:?}", a.action)).collect();
+        assert!(distinct.len() >= 2, "the position offers alternatives: {distinct:?}");
+        let report = p.evaluate(&mut StdRng::seed_from_u64(9), &observation, &actions);
+        assert_eq!((report.rounds, report.failed_rounds), (4, 0), "{}", report.reason);
+        assert!(report.lists.keys().all(|k| k.starts_with("no consistent list")), "{:?}", report.lists);
     }
 
     /// The opponent's known deck-top cards count as seen, and a top card also listed as somewhere in their deck counts once.
