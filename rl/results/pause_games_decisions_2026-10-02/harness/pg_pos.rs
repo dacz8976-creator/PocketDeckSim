@@ -66,6 +66,30 @@ fn remove_one(pool: &mut Vec<Card>, c: &Card) -> bool {
     }
 }
 
+/// The opponent's discard from his own list: Supporters first, then Items, then any other Trainer, then (last resort) anything.
+fn take_discard(pool: &mut Vec<Card>, n: usize) -> Vec<Card> {
+    use deckgym::models::TrainerType;
+    let mut out = Vec::new();
+    for pass in 0..3 {
+        while out.len() < n {
+            let idx = pool.iter().position(|c| match (pass, c) {
+                (0, Card::Trainer(t)) => matches!(t.trainer_card_type, TrainerType::Supporter),
+                (1, Card::Trainer(t)) => matches!(t.trainer_card_type, TrainerType::Item),
+                (2, Card::Trainer(_)) => true,
+                _ => false,
+            });
+            match idx {
+                Some(i) => out.push(pool.remove(i)),
+                None => break,
+            }
+        }
+    }
+    while out.len() < n && !pool.is_empty() {
+        out.push(pool.remove(0));
+    }
+    out
+}
+
 struct Built {
     state: State,
     summary: Value,
@@ -93,18 +117,53 @@ fn build(pos: &Value, deck_me: &Deck, deck_filler: &Deck, shuffle_seed: u64) -> 
     }
     let mut board_opp = Vec::new();
     let mut opp_carried = 0usize;
+    let mut opp_seen: Vec<Card> = Vec::new();
     for p in opp["board"].as_array().unwrap() {
         let (pc, carried) = pk(p);
         board_opp.push(pc);
         opp_carried += carried.len();
+        opp_seen.extend(carried);
+    }
+    let stadium = pos.get("stadium").filter(|s| !s.is_null());
+    let stadium_owner = stadium.map(|s| s["owner"].as_u64().unwrap() as usize);
+    // A position that names a "filler" deck says that deck is the OPPONENT's exact 20-card list (the computer decks of the comparison recordings). Then the
+    // opponent's hidden cards are dealt from that list minus everything of his that is visible (board, evolution stacks, Tools, his Stadium), shuffled by
+    // the seed, and a discard count is filled from his own list, Supporters first, then Items (never from the pilot's list). Without a "filler" key the old
+    // behaviour holds exactly: filler cards cycled from the pilot's own deck (the opponent's list is unknown).
+    let known_opp = pos.get("filler").is_some();
+    let mut opp_pool: Vec<Card> = Vec::new();
+    if known_opp {
+        opp_pool = deck_filler.cards.clone();
+        for c in &opp_seen {
+            if !remove_one(&mut opp_pool, c) {
+                problems.push(format!("opponent card {} {} is not in the opponent's list, or is on his board more often than the list holds", c.get_id(), c.get_name()));
+            }
+        }
+        if stadium_owner == Some(1) {
+            let sc = card(stadium.unwrap()["card"].as_str().unwrap());
+            if !remove_one(&mut opp_pool, &sc) {
+                problems.push(format!("the opponent's Stadium {} is not in his list", sc.get_name()));
+            }
+        }
+        let mut orng = StdRng::seed_from_u64(shuffle_seed ^ 0x0B10_0B10);
+        opp_pool.shuffle(&mut orng);
     }
     // the opponent's discard is only a count of filler cards unless it is listed
     let discard_opp: Vec<Card> = match opp.get("discard_n").and_then(|x| x.as_u64()) {
+        Some(n) if known_opp => take_discard(&mut opp_pool, n as usize),
         Some(n) => deck_filler.cards.iter().cycle().take(n as usize).cloned().collect(),
-        None => cards(&opp["discard"]),
+        None => {
+            let listed = cards(&opp["discard"]);
+            if known_opp {
+                for c in &listed {
+                    if !remove_one(&mut opp_pool, c) {
+                        problems.push(format!("opponent discard card {} is not in the opponent's list", c.get_name()));
+                    }
+                }
+            }
+            listed
+        }
     };
-    let stadium = pos.get("stadium").filter(|s| !s.is_null());
-    let stadium_owner = stadium.map(|s| s["owner"].as_u64().unwrap() as usize);
     if let Some(s) = stadium {
         if stadium_owner == Some(0) {
             known_me.push(card(s["card"].as_str().unwrap()));
@@ -151,9 +210,21 @@ fn build(pos: &Value, deck_me: &Deck, deck_filler: &Deck, shuffle_seed: u64) -> 
             20usize.saturating_sub(used)
         }
     };
-    let filler: Vec<Card> = deck_filler.cards.iter().cycle().take(opp_hand_n + opp_deck_n).cloned().collect();
+    let filler: Vec<Card> = if known_opp {
+        // his own unseen cards, already shuffled; `deck_count` (if given) must match what the list leaves
+        if opp_hand_n + opp_deck_n != opp_pool.len() {
+            problems.push(format!("opponent hidden cards: hand {opp_hand_n} + deck {opp_deck_n} != the {} cards his list leaves", opp_pool.len()));
+        }
+        let mut f = opp_pool.clone();
+        while f.len() < opp_hand_n + opp_deck_n {
+            f.extend(deck_filler.cards.iter().cloned());
+        }
+        f
+    } else {
+        deck_filler.cards.iter().cycle().take(opp_hand_n + opp_deck_n).cloned().collect()
+    };
     st.hands[1] = filler[..opp_hand_n].to_vec();
-    st.decks[1].cards = filler[opp_hand_n..].to_vec();
+    st.decks[1].cards = filler[opp_hand_n..opp_hand_n + opp_deck_n].to_vec();
     st.discard_piles[1] = discard_opp;
     st.discard_energies[1] = energies(&opp["discard_energy"]);
 

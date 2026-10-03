@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """Draft A v the fixed computer deck (Mega Blastoise ex & Wailord ex): Codex's TURN_LEDGER.json of each of the eight recordings -> constructed-board positions
 at the start of every owner turn (harness schema, see examples_positions.json). Both lists are exact (owner list == repo draft A; opponent list from OPPONENT_DECK.json).
 A turn is LEFT OUT (and counted, with the reason) when its hand is not fully named, a card name cannot be mapped, or the points are not given.
@@ -399,4 +399,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
