@@ -9,6 +9,9 @@ sections 5 and 9 (the addendum's amendments win). Branch `claude/playout-pilot`,
 - **Fixes, round 1 (Oct 3).** The laptop built f1aacbe2 beside the pinned engine and reviewed it: no information leak in
   either mode, and km3 and the engine untouched. Its fixes are in, on the same branch (section "Fixes, round 1"), with the
   checks rerun. There was no new smoke, as asked: the smoke below ran on f1aacbe2.
+- **Fixes, round 2 (Oct 3).** The laptop's second look at round 1 (d513e37b): brew and Dustin's lists refused by content as
+  well as by path, the time-budget test made machine-independent, and smaller test and code items (section "Fixes, round
+  2"). The checks were rerun.
 
 ## In short
 
@@ -69,8 +72,7 @@ tests. `mod.rs` and the rest of `engine/` are untouched.
      invalid list are refused too. A refused variable stops the pilot at its creation, with the reason.
    - **Recorded.** Each extra's name, path and a 64-bit FNV-1a hash of its file go in `KX_PARAMS`, every `KX_TRACE` line
      (`extra_lists`) and the knowledge label. No crate was added; the laptop records sha256 itself.
-   - **One question.** Only `decks/brews` is refused, as asked. Dustin's own lists under `decks/dustin` would be
-     accepted. Should they be refused too? It is one line.
+   - Round 2 also refuses `decks/dustin`, and any copy of a list from either folder by its cards (below).
 5. **One printing swap for both modes, counting copies.**
    - Seen cards are taken out of the list before the hidden cards are dealt. A seen printing the list holds under another
      printing is first swapped in.
@@ -84,6 +86,47 @@ tests. `mod.rs` and the rest of `engine/` are untouched.
    - `decide_omniscient`, the diagnostic entry with the full state, is never called by `Game`. When it is called, it keeps
      km's move with no play-outs, as before. Now it is also counted (`omniscient`) and named in the trace
      (`"omniscient": true`).
+
+## Fixes, round 2 (Oct 3)
+
+From the laptop's second look at round 1 (d513e37b). Only the same two player files and the tests changed.
+
+1. **Brew copies refused by content, not only by path.**
+   - **The risk.** The position runner's folder `rl/results/pause_games_decisions_2026-10-02/decks/` holds copies of brew-08,
+     draft A and deck 03, right beside the computer deck that `KX_EXTRA_LISTS` is meant to load. One typo would hand the
+     computer's side a brew.
+   - **The content check.** `KX_EXTRA_LISTS` now refuses any list holding the same cards as a list in the repository:
+     - the cards are compared as a multiset of card ids, so the line order and the Energy line don't matter;
+     - the lists are every `.txt` under `decks/brews` (subfolders included) and under `decks/dustin`.
+   - **Dustin's lists by path.** Paths under `decks/dustin` are refused too, as the pool's header already promised: "never
+     one of Dustin's lists".
+   - **Unreadable folders.** If those folders can't be read, or hold no list, the run is refused with the reason.
+   - **Finding the repository.** The search tries, in order:
+     - `KX_REPO`, if set; it must hold both folders;
+     - the first folder above the build's engine directory (`CARGO_MANIFEST_DIR`) that holds both;
+     - the same above the working directory;
+     - the same above each list's own location.
+   - **Why the fallbacks.** Both harnesses build from a copy of `engine/` outside the repository. `pgd_build.sh` copies to
+     `/home/dacz8976/pgd/build/engine`, and `run_pilot.sh` passes `/home/dacz8976/pgd/decks/computer/...`. So the build's own
+     directory alone would not find the repository. **Run `run_pilot.sh` from inside the repository, or set `KX_REPO`**;
+     otherwise the run stops with "can't find the repository's decks/brews and decks/dustin ... set KX_REPO".
+   - **Recorded.** What each extra list was checked against (the repository and how many lists) goes in `KX_PARAMS` and every
+     `KX_TRACE` line (`checked_against`).
+2. **The time-budget test on any machine.**
+   - A batch was as many rounds as rayon has threads, so on the laptop's 16 the "fewer than 8 rounds" branch never ran.
+   - The test now runs the pilot in a 2-thread pool. A batch is then 2 rounds, and the 1 ms budget ends after it.
+   - At every position it asserts 2 rounds and km's move kept.
+   - It also asserts that at least one position has a rival leading, and that the reason there says "fewer than the 8".
+3. **Small items.**
+   - `realistic_reads_no_opponent_list` now asserts that play-outs ran (rounds > 0). Its second list is cut to 19 cards, so
+     the two opponent lists differ in length too.
+   - A canonicalize refusal test: `../decks/screen/../brews/brew-01-arceus-crobat-xatu.txt` is refused by path.
+   - The test file's pilots are built with no extra lists (`with_extra_lists(.., Vec::new())`), so a shell with
+     `KX_EXTRA_LISTS` set can't change the label assertions.
+   - When the cap's ranking world itself panics, that is named once (`cap_note` in the report and the trace: "the ranking
+     world panicked"). The cap then keeps the first moves in the order offered, rather than calling every rival "panicked".
+   - The opponent's list is kept in the pilot only for LAB, so "REALISTIC reads no list" holds by construction: REALISTIC
+     holds none.
 
 ## What it does
 
@@ -133,7 +176,8 @@ It never reads the real game state. The opponent's hidden cards come from a list
     missing. It picks at random among the equally close, and the trace says "closest, 1 of k tied; no list consistent".
   - The opponent's real list is always consistent when it is in the pool. So against the strength harness's 8 panel lists,
     which are all in the pool, the fallback never happens.
-  - The built-in pool holds no brew and none of Dustin's lists, and an extra list can't be a brew (refused).
+  - The built-in pool holds no brew and none of Dustin's lists, and an extra list can't be one either: refused by path
+    and by content.
 - **LAB** (`_lab`, a laboratory condition, labelled as such in every output).
   - The opponent's exact 20-card list is used, with the same printing swap, but only when it is one of the pool's lists:
     a meta list, or an extra list.
@@ -172,7 +216,9 @@ All are in the code: `kx<depth>[_r<R>][_c<cap>][_z<z>][_lab|_real][_t<seconds>][
 - The first decision of each game prints `KX_PARAMS` on stderr: every parameter, the knowledge label and the extra lists
   (name, path, hash). Every trace line carries the full code, the label and the extra lists too.
 - **`KX_EXTRA_LISTS`** (an environment variable, not a code part): `name=path;name=path`, read once per process. Each list
-  joins the pool, so LAB can be exact for that opponent and REALISTIC can draw it. A path under `decks/brews` is refused.
+  joins the pool, so LAB can be exact for that opponent and REALISTIC can draw it. Refused: a path under `decks/brews` or
+  `decks/dustin`, and any list with the same cards as one there (round 2; the repository is found as round 2 says, or set
+  `KX_REPO`).
   For example, from the repository root:
   `KX_EXTRA_LISTS="computer=decks/<the computer deck>.txt" run_pilot.sh kx3_lab_trace ...`.
 - **Deterministic given seeds.** All sampling and play-out seeds come from the decision's own randomness, the engine's
@@ -213,38 +259,39 @@ such a hand, as the engine repairs a real one.
 
 ### km3 and the official engine are unchanged
 
-Rerun after round 1, on c79562c1 (the fixes and their tests). The one test added after it (`known_deck_top_cards_count_as_seen_once`) is test code only, so the programs are the same; the suite was rerun with it. The
-same checks passed on f1aacbe2 before, and the laptop repeated the first two there.
+Rerun after round 2, on 8205ba8b (the README commit after it changes no code). The same checks passed on f1aacbe2 and
+after round 1 (c79562c1, d513e37b); the laptop repeated the first two on f1aacbe2.
 
 - **The engine's diff from main-8626a35:**
   - `engine/src/players/mod.rs` gains 12 lines: the two module lines, the `KX` code, its parse and its player. The file keeps
-    its stored Windows line endings. Round 1 didn't touch it.
+    its stored Windows line endings. Rounds 1 and 2 didn't touch it.
   - The new files are `playout_player.rs`, `playout_pool.rs`, the two test files and the smoke example.
   - Nothing else in `engine/` changes. No other code reaches the new player.
 - **km3 game for game.** `deckgym` built from this branch and the official program `rl/engine-2026-10-02/deckgym` both ran
   step 10's command here: km3 v km3, 240 games, research Altaria v Blaziken, seed 7,100, `--seed-stream`.
   - They agree on every field of all 240 per-game results: winner, points, turns, plies, actions per player and both search
-    seeds. The games' digest is 9dde28db2de6c9bc for both, as on f1aacbe2.
+    seeds. The games' digest is 9dde28db2de6c9bc for both, as on f1aacbe2 and after round 1.
   - Both equal the pinned record `engine_switch_rules_2026-10/5a18d31_10_cli_km3.txt` on every line but the wall time:
     149-91-0.
   - Files: `harness/simulate_km3_7100_*.txt`.
-- **The pinned self-check.** The strength harness, built from this branch's engine (program sha256 80efd243...), prints the
+- **The pinned self-check.** The strength harness, built from this branch's engine (program sha256 b26edc87...), prints the
   pinned km3 digest:
   `strength selfcheck --pilot km3 --deck-a decks/screen/opponents/t-altaria.txt --deck-b decks/screen/opponents/t-suicune.txt --games 12`
   gives `digest=81b572198c04d5d1` (8-4, 127 turns), as `strength_harness_tests_2026-10-02/TESTS.md` records.
   - The pilot's own self-check, `--pilot kx3_r2_c3_lab --games 2` (LAB, t-altaria v t-suicune), gives
-    `digest=3a2eb43bd9053639` twice, 142-143 s each. That is the same as before round 1. On an exact pool pairing none of
-    round 1's changes alters play: the printings already match, and LAB ignores the zone and the pool's draw. `KX_PARAMS` now
-    names the exact list ("t-suicune, one of the pool's 8 meta lists") and carries `extra_lists`.
+    `digest=3a2eb43bd9053639` twice, 139-140 s each. That is the same as before round 1. On an exact pool pairing none of the
+    two rounds' changes alters play: the printings already match, LAB ignores the zone and the pool's draw, and no ranking
+    panicked. `KX_PARAMS` names the exact list ("t-suicune, one of the pool's 8 meta lists") and carries `extra_lists`.
   - File: `harness/strength_selfcheck.txt`.
-- **The full suite.** `cargo test --release --features test-utils` on the final code: 2,039 passed, 0 failed, 0 ignored: the 2,025 before round 1 and its 14 new tests. The play-out tests take about
+- **The full suite.** `cargo test --release --features test-utils` on the final code: 2,042 passed, 0 failed, 0 ignored: the 2,025 before round 1, its 14 new tests and round 2's 3. The play-out tests take about
   two minutes of that.
   - File: `suite.log`.
 
 ### The tests
 
 `engine/tests/playout_pilot_test.rs`, `engine/tests/playout_pilot_extra_lists_test.rs` and the unit tests at the end of
-`playout_player.rs`: 21 in all, every one passing on the final code.
+`playout_player.rs`: 24 in all, every one passing on the final code. Every pilot the tests build directly has no extra
+lists, whatever the shell's `KX_EXTRA_LISTS` says (round 2).
 
 The first 7 were written and committed before the player (a3612b71): `tests_before.log`, where they fail to compile with no
 `kx` code and no `playout_player`. After the player, all 7 pass:
@@ -264,13 +311,16 @@ ran as REALISTIC; these use a pool pairing where LAB matters.
 
 | test | what it checks |
 |---|---|
-| `realistic_reads_no_opponent_list` | two REALISTIC pilots built with different opponent lists (the real one, t-suicune) give the same report, field for field |
+| `realistic_reads_no_opponent_list` | two REALISTIC pilots built with different opponent lists (the real one, and t-suicune cut to 19 cards) give the same report, field for field, and play-outs ran |
 | `lab_on_a_pool_pairing_uses_the_exact_list` | on t-altaria v t-suicune, LAB is labelled LAB and its lists read `{"the exact list (LAB)": R}`; REALISTIC there draws from the pool |
 | `lab_against_a_list_outside_the_pool_is_realistic_exactly` | LAB against the test decks' list is labelled "REALISTIC (LAB asked ...)" and its report equals REALISTIC's exactly |
 | `a_hidden_card_from_outside_the_opponents_list_changes_no_choice` | an opponent hand card replaced by Bulbasaur (not in their list): same observation, same REALISTIC move through `Game` |
 | `the_lab_choice_on_a_pool_pairing_cannot_depend_on_hidden_cards` | the no-leak swap on t-altaria v t-suicune: the same LAB move through `Game` |
-| `an_extra_list_under_decks_brews_is_refused` | `KX_EXTRA_LISTS` entries under decks/brews refused (forward and back slashes, any case, missing file); bad entries refused; a good one read with its hash |
-| `with_a_time_budget_no_switch_before_8_rounds` | with a 1 ms budget the rounds stop at one batch (4 here); with fewer than 8, km's move is kept and the reason says so |
+| `an_extra_list_under_decks_brews_is_refused` | `KX_EXTRA_LISTS` entries under decks/brews refused (forward and back slashes, any case, missing file, and `../decks/screen/../brews/...` once resolved); bad entries refused; a good one read with its hash |
+| `with_a_time_budget_no_switch_before_8_rounds` | in a 2-thread pool with a 1 ms budget, every decision stops at 2 rounds on any machine and keeps km's move. On the immediate-win board km3 takes the win itself; at a middle-game position (seed 3) a rival leads by +0.5, and the reason says "fewer than the 8" |
+| `an_extra_list_under_decks_dustin_is_refused` (round 2) | decks/dustin paths refused: as given, once resolved, and with backslashes and another case |
+| `a_copy_of_a_brew_or_dustins_list_is_refused_by_its_cards` (round 2) | copies of brew-08, draft A and Dustin's deck 03 in another folder are refused by their cards: as copied, with the lines reversed, and with no Energy line. A list that is no copy is read, with `checked_against`. Every `.txt` in the two folders reads as a list |
+| `extra_lists_are_refused_when_the_protected_folders_cant_be_read` (round 2) | against a folder that isn't the repository, a list is refused with "can't read"; an empty variable needs no repository |
 | `an_omniscient_call_keeps_kms_move_and_is_counted` | `decide_omniscient` returns km3's own move and is counted, not as a decision |
 | `an_extra_list_makes_lab_exact_and_realistic_can_draw_it` (its own file: the variable is read once per process) | with `KX_EXTRA_LISTS=arbok=example_decks/weezing-arbok.txt`, LAB against that list is exact and names it; REALISTIC draws only it once the Weezing line is seen |
 | unit: `the_pool_holds_8_lists_once_duplicates_are_removed` | 8 lists, all t-X, and the label says 8 |
@@ -279,7 +329,8 @@ ran as REALISTIC; these use a pool pairing where LAB matters.
 | unit: `the_seen_printings_are_adopted_copy_for_copy` | two seen copies of one Sabrina printing against two different printings take both slots; an exact printing stays |
 | unit: `known_deck_top_cards_count_as_seen_once` | a known deck-top card counts as seen, once even when it is also listed as in the deck |
 
-Not tested directly: the cap's `catch_unwind`, since no move is known to panic on purpose.
+Not tested directly: the cap's `catch_unwind` and the panicking ranking world (round 2), since no move or world is known to
+panic on purpose.
 
 ### The smoke (`smoke/`)
 
@@ -342,9 +393,10 @@ START_HERE), each with the pilot in both seats. Each deal was also played km3 v 
 - **Runs here:**
   - km3's self-check prints the pinned digest (above).
   - `strength selfcheck --pilot kx3_r2_c3_lab --games 2` (kx on both sides, t-altaria v t-suicune) gave `digest=3a2eb43bd9053639`
-    five times:
+    seven times:
     - on f1aacbe2, twice before the container restart and once after, on a fresh build;
     - on c79562c1 after round 1, twice, on another fresh build;
+    - on 8205ba8b after round 2, twice, on another;
     - each run took 2 to 2½ minutes, and its stderr carries `KX_PARAMS` with the LAB label.
 - **LAB applies there.** The 8 panel lists are all in the pool, so `_lab` gets the exact panel list, and `_real` always finds the
   real list among the consistent ones.
@@ -433,7 +485,7 @@ On 4 threads the smoke averaged 204 s per pilot game. The play-outs spread over 
 - `engine/src/players/playout_pool.rs`: the 16 pool files, embedded, each with its path and sha256 (generated from the deck
   files; 8 distinct lists), and the `KX_EXTRA_LISTS` reader.
 - `engine/src/players/mod.rs`: the `kx` code (12 lines).
-- `engine/tests/playout_pilot_test.rs`: 15 tests (7 from the start, 8 from round 1).
+- `engine/tests/playout_pilot_test.rs`: 18 tests (7 from the start, 8 from round 1, 3 from round 2).
 - `engine/tests/playout_pilot_extra_lists_test.rs`: the `KX_EXTRA_LISTS` test, alone in its process.
 - `engine/examples/playout_smoke.rs`: the smoke (`--resume` included).
 - Here:
