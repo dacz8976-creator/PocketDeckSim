@@ -7,10 +7,15 @@
 //! deck as an unordered multiset). Every play-out starts from a state sampled from that: its own deck order, the
 //! opponent's hand and deck and every coin are drawn afresh per play-out. The opponent's hidden cards come from a list:
 //! - LAB (a laboratory condition, labelled in every output): the opponent's exact 20-card list, only when that list is
-//!   one of the meta lists of the pool below; the meta side is never handed a brew's exact list, so LAB falls back to
-//!   REALISTIC then, and says so;
-//! - REALISTIC: per play-out, a list drawn from the candidate pool (`playout_pool.rs`: decks/screen/opponents and
-//!   decks/research) among those consistent with the opponent's cards seen so far (by name), the unseen cards from it.
+//!   one of the pool's lists below; the meta side is never handed a brew's exact list, so LAB falls back to REALISTIC
+//!   then, and says so;
+//! - REALISTIC: per play-out, a list drawn from the candidate pool among those consistent with the opponent's cards seen
+//!   so far (by name) and with the Energy types its Energy Zone shows; with none consistent, one of the closest (fewest
+//!   seen cards missing, then fewest zone types missing), at random among the equally close. The unseen cards come from
+//!   the list. REALISTIC never reads the opponent's real list.
+//! The pool (`playout_pool.rs`): the lists of decks/screen/opponents and decks/research, duplicates removed (8 lists), plus
+//! any added at run time through `KX_EXTRA_LISTS` (`name=path;...`; never a path under decks/brews), each recorded with a
+//! hash of its file in `KX_PARAMS`, every `KX_TRACE` line and the knowledge label.
 //!
 //! Common random numbers: play-out j of every candidate starts from the same sampled state and uses the same game seed (so
 //! the same coin stream and the same km<N> decision seeds, as far as the games run alike); the noise rule reads the paired
@@ -30,11 +35,19 @@ use rand::{rngs::StdRng, Rng, RngCore, SeedableRng};
 use rayon::prelude::*;
 
 use super::{create_players, get_player, value_functions, Player, PlayerCode};
+pub use super::playout_pool::{parse_extra_lists, under_brews, ExtraList};
 use crate::actions::Action;
-use crate::models::Card;
+use crate::models::{Card, EnergyType};
 use crate::observation::PlayerObservation;
 use crate::state::GameOutcome;
 use crate::{Deck, Game, State};
+
+/// Pocket's deck size. The setup rule below reads this, never the opponent's real list, so REALISTIC reads no list.
+const DECK_SIZE: usize = 20;
+
+/// With a time budget, a move replaces km<N>'s only after at least this many completed rounds (two equal rounds give a
+/// standard error of 0).
+const MIN_ROUNDS_WITH_BUDGET: usize = 8;
 
 /// What the pilot knows of the opponent's list.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -57,7 +70,8 @@ pub struct PlayoutParams {
     /// The noise threshold: a move replaces km<depth>'s only if its mean paired difference exceeds z standard errors.
     pub z: f64,
     pub knowledge: Knowledge,
-    /// The time budget per decision in milliseconds (0: none). Play-outs stop after the rounds finished in time (at least 2).
+    /// The time budget per decision in milliseconds (0: none). Play-outs stop after the rounds finished in time (at least
+    /// 2); no move replaces km<N>'s with fewer than 8 rounds.
     pub budget_ms: u64,
     /// Write one `KX_TRACE` JSON line per decision to stderr.
     pub trace: bool,
@@ -172,6 +186,8 @@ pub struct PlayoutPlayer {
     /// Decisions asked of the pilot, and the milliseconds they took (for the per-game report).
     pub decisions: usize,
     pub millis: f64,
+    /// Calls of the diagnostic entry `decide_omniscient` (never made by `Game`): km's move, no play-outs, named in the trace.
+    pub omniscient: usize,
 }
 
 impl std::fmt::Debug for PlayoutPlayer {
@@ -194,52 +210,119 @@ fn splitmix(mut x: u64) -> u64 {
     x ^ (x >> 31)
 }
 
+/// A list's identity for the pool: its card-id multiset and its Energy types.
+fn list_key(deck: &Deck) -> (Vec<String>, Vec<EnergyType>) {
+    let mut energy = deck.energy_types.clone();
+    energy.sort();
+    energy.dedup();
+    (id_multiset(deck), energy)
+}
+
 /// What the play-outs need, shared by the parallel rounds.
 struct Core {
     deck: Deck,
     opponent_list: Deck,
+    /// The candidate lists, duplicates removed: the meta lists, then any extra lists.
     pool: Vec<(String, Deck)>,
-    /// LAB is in force: requested, and the opponent's list is one of the pool's (a meta list).
-    lab: bool,
+    /// How many of `pool` are meta lists (the rest are extra lists).
+    meta: usize,
+    /// The extra lists as read (name, path, hash), each with the pool name it went under.
+    extras: Vec<(ExtraList, String)>,
+    /// LAB is in force: requested, and the opponent's list is one of the pool's; with the pool name it matched.
+    lab: Option<String>,
     depth: usize,
 }
 
 impl PlayoutPlayer {
+    /// The pilot, with any lists from `KX_EXTRA_LISTS` (read once per process). Panics if that variable is refused (a
+    /// path under decks/brews, an unreadable list): the run stops rather than play with it.
     pub fn new(deck: Deck, opponent_list: Deck, params: PlayoutParams) -> Self {
+        let extras = super::playout_pool::extra_lists().clone().unwrap_or_else(|e| panic!("{e}"));
+        Self::with_extra_lists(deck, opponent_list, params, extras)
+    }
+
+    /// The pilot with these extra lists (tests; `new` passes those of `KX_EXTRA_LISTS`).
+    pub fn with_extra_lists(deck: Deck, opponent_list: Deck, params: PlayoutParams, extra_lists: Vec<ExtraList>) -> Self {
         let km = get_player(deck.clone(), &opponent_list, &PlayerCode::KM { max_depth: params.depth });
-        let pool: Vec<(String, Deck)> = super::playout_pool::POOL
-            .iter()
-            .map(|(name, path, _, text)| {
-                (name.to_string(), Deck::from_string(text).unwrap_or_else(|e| panic!("the pool's {path}: {e}")))
+        // The pool, duplicates (same cards, same Energy types) removed at load: each research/X equals t-X.
+        let mut pool: Vec<(String, Deck)> = Vec::new();
+        for (name, path, _, text) in super::playout_pool::POOL.iter() {
+            let list = Deck::from_string(text).unwrap_or_else(|e| panic!("the pool's {path}: {e}"));
+            if !pool.iter().any(|(_, d)| list_key(d) == list_key(&list)) {
+                pool.push((name.to_string(), list));
+            }
+        }
+        let meta = pool.len();
+        let mut extras = Vec::new();
+        for extra in extra_lists {
+            let under = match pool.iter().find(|(_, d)| list_key(d) == list_key(&extra.deck)) {
+                Some((name, _)) => name.clone(),
+                None => {
+                    let name = format!("extra:{}", extra.name);
+                    pool.push((name.clone(), extra.deck.clone()));
+                    name
+                }
+            };
+            extras.push((extra, under));
+        }
+        // LAB only: is the opponent's list one of the pool's? (REALISTIC never looks at it. km<N> is handed it as every
+        // bot is, and ignores it: get_player's km arm builds its search from the own deck alone.)
+        let lab = (params.knowledge == Knowledge::Lab)
+            .then(|| {
+                let target = id_multiset(&opponent_list);
+                pool.iter().find(|(_, d)| id_multiset(d) == target).map(|(name, _)| name.clone())
             })
-            .collect();
-        let target = id_multiset(&opponent_list);
-        let lab = params.knowledge == Knowledge::Lab && pool.iter().any(|(_, d)| id_multiset(d) == target);
-        let core = Core { deck, opponent_list, pool, lab, depth: params.depth };
-        PlayoutPlayer { params, km, core, printed: false, decisions: 0, millis: 0.0 }
+            .flatten();
+        let core = Core { deck, opponent_list, pool, meta, extras, lab, depth: params.depth };
+        PlayoutPlayer { params, km, core, printed: false, decisions: 0, millis: 0.0, omniscient: 0 }
     }
 
     pub fn params(&self) -> &PlayoutParams {
         &self.params
     }
 
+    /// The pool as the labels describe it: "8 meta lists" plus any extra lists by name.
+    fn pool_description(&self) -> String {
+        let extra = self.core.pool.len() - self.core.meta;
+        let mut text = format!("{} meta lists", self.core.meta);
+        if !self.core.extras.is_empty() {
+            let names: Vec<String> = self.core.extras.iter().map(|(e, under)| {
+                if under.starts_with("extra:") { e.name.clone() } else { format!("{} (the same cards as {under})", e.name) }
+            }).collect();
+            text += &format!(" and {extra} extra list{} from KX_EXTRA_LISTS: {}", if extra == 1 { "" } else { "s" }, names.join(", "));
+        }
+        text
+    }
+
     /// The knowledge mode in force, as every output labels it.
     pub fn knowledge_label(&self) -> String {
-        match (self.params.knowledge, self.core.lab) {
-            (Knowledge::Lab, true) => "LAB (laboratory condition: the opponent's exact 20-card list is known)".into(),
-            (Knowledge::Lab, false) => format!(
-                "REALISTIC (LAB asked, but the opponent's list is not one of the {} meta lists, so it is never handed over)",
-                self.core.pool.len()
+        match (self.params.knowledge, &self.core.lab) {
+            (Knowledge::Lab, Some(name)) => format!(
+                "LAB (laboratory condition: the opponent's exact 20-card list is known: {name}, one of the pool's {})",
+                self.pool_description()
             ),
-            _ => format!("REALISTIC (the opponent's list is drawn per play-out from the {} meta lists consistent with the cards seen)", self.core.pool.len()),
+            (Knowledge::Lab, None) => format!(
+                "REALISTIC (LAB asked, but the opponent's list is not one of the pool's {}, so it is never handed over)",
+                self.pool_description()
+            ),
+            _ => format!(
+                "REALISTIC (the opponent's list is drawn per play-out from the pool's {}, among those consistent with the cards seen and the Energy Zone)",
+                self.pool_description()
+            ),
         }
     }
 
+    /// The extra lists as `KX_PARAMS` and every `KX_TRACE` line record them.
+    fn extras_json(&self) -> serde_json::Value {
+        serde_json::Value::Array(self.core.extras.iter().map(|(e, under)| serde_json::json!({
+            "name": e.name, "path": e.path, "fnv1a64": e.fnv1a64, "pool_name": under,
+        })).collect())
+    }
 }
 
 impl Core {
-    /// The opponent's cards seen so far, by name: in play (with the cards under an evolution and Tools), discarded, their
-    /// Stadium, and any revealed from their hand or known to be in their deck.
+    /// The opponent's cards seen so far: in play (with the cards under an evolution and Tools), discarded, their Stadium,
+    /// any revealed from their hand, their known deck-top cards, and any other known to be in their deck.
     fn seen_opponent_cards(observation: &PlayerObservation) -> Vec<Card> {
         let state = observation.visible_state();
         let opponent = 1 - observation.actor;
@@ -254,52 +337,91 @@ impl Core {
             seen.extend(state.active_stadium.iter().cloned());
         }
         seen.extend(observation.revealed.opponent_hand.iter().cloned());
-        seen.extend(observation.revealed.opponent_deck_membership.iter().cloned());
+        // The known deck-top cards, then the deck's other known cards (a top card also listed as in the deck counts once).
+        let top = &observation.revealed.deck_top[opponent];
+        seen.extend(top.iter().cloned());
+        let mut membership = observation.revealed.opponent_deck_membership.clone();
+        for card in top {
+            if let Some(i) = membership.iter().position(|c| c == card) {
+                membership.swap_remove(i);
+            }
+        }
+        seen.extend(membership);
         seen.retain(|c| !c.is_unknown());
         seen
     }
 
-    /// REALISTIC: a pool list consistent with the seen cards (every name seen no more often than the list holds it),
-    /// uniformly; with none consistent, the closest. The list's printings of the seen cards are replaced by the seen ones,
-    /// so the sampler removes them from it.
-    fn sample_list(&self, seen: &[Card], rng: &mut StdRng) -> (Deck, String) {
+    /// The Energy types the opponent's Energy Zone shows (current and next), public from the first decision.
+    fn zone_types(observation: &PlayerObservation) -> Vec<EnergyType> {
+        let zone = &observation.visible_state().energy_zone[1 - observation.actor];
+        let mut types: Vec<EnergyType> = zone.current.iter().chain(zone.next.iter()).cloned().collect();
+        types.sort();
+        types.dedup();
+        types
+    }
+
+    /// Makes `list` hold the seen printings: for each seen card (as a multiset) the list's own copy of that printing if
+    /// it has one left, else one of its unmatched cards of the same name, replaced by the seen printing. So the sampler's
+    /// removal of the seen cards takes them all out, and two seen copies of one printing against a list holding two
+    /// printings of that card leave no third copy. Used by both modes.
+    fn adopt_seen_printings(list: &mut Deck, seen: &[Card]) {
+        let mut matched = vec![false; list.cards.len()];
+        let mut pending = Vec::new();
+        for card in seen {
+            match (0..list.cards.len()).find(|&i| !matched[i] && list.cards[i] == *card) {
+                Some(i) => matched[i] = true,
+                None => pending.push(card),
+            }
+        }
+        for card in pending {
+            if let Some(i) = (0..list.cards.len()).find(|&i| !matched[i] && list.cards[i].get_name() == card.get_name()) {
+                list.cards[i] = card.clone();
+                matched[i] = true;
+            }
+        }
+    }
+
+    /// REALISTIC: a pool list consistent with the seen cards (every name seen no more often than the list holds it) and
+    /// with the Energy Zone (its Energy types include every type the zone shows), uniformly. With none consistent, one of
+    /// the closest: fewest seen cards it can't account for, then fewest zone types it lacks; at random among the equally
+    /// close (with the world's own rng, so still deterministic). Then the seen printings are adopted.
+    fn sample_list(&self, seen: &[Card], zone: &[EnergyType], rng: &mut StdRng) -> (Deck, String) {
         let mut seen_names: BTreeMap<String, usize> = BTreeMap::new();
         for c in seen {
             *seen_names.entry(c.get_name()).or_default() += 1;
         }
-        let excess = |deck: &Deck| -> usize {
-            seen_names
+        let distance = |deck: &Deck| -> (usize, usize) {
+            let missing = seen_names
                 .iter()
                 .map(|(name, n)| n.saturating_sub(deck.cards.iter().filter(|c| c.get_name() == *name).count()))
-                .sum()
+                .sum();
+            let energy = zone.iter().filter(|t| !deck.energy_types.contains(t)).count();
+            (missing, energy)
         };
-        let consistent: Vec<usize> = (0..self.pool.len()).filter(|&i| excess(&self.pool[i].1) == 0).collect();
-        let (index, label) = if consistent.is_empty() {
-            let i = (0..self.pool.len()).min_by_key(|&i| excess(&self.pool[i].1)).unwrap();
-            (i, format!("{} (closest; no list consistent)", self.pool[i].0))
+        let distances: Vec<(usize, usize)> = self.pool.iter().map(|(_, d)| distance(d)).collect();
+        let best = *distances.iter().min().expect("a non-empty pool");
+        let nearest: Vec<usize> = (0..self.pool.len()).filter(|&i| distances[i] == best).collect();
+        let i = nearest[rng.gen_range(0..nearest.len())];
+        let label = if best == (0, 0) {
+            format!("{} (1 of {} consistent)", self.pool[i].0, nearest.len())
         } else {
-            let i = consistent[rng.gen_range(0..consistent.len())];
-            (i, format!("{} (1 of {} consistent)", self.pool[i].0, consistent.len()))
+            format!("{} (closest, 1 of {} tied; no list consistent)", self.pool[i].0, nearest.len())
         };
-        let mut deck = self.pool[index].1.clone();
-        for card in seen {
-            if deck.cards.iter().any(|c| c == card) {
-                continue;
-            }
-            if let Some(i) = deck.cards.iter().position(|c| c.get_name() == card.get_name() && !seen.contains(c)) {
-                deck.cards[i] = card.clone();
-            }
-        }
+        let mut deck = self.pool[i].1.clone();
+        Self::adopt_seen_printings(&mut deck, seen);
         (deck, label)
     }
 
     /// One sampled world: a full state consistent with the observation, the list its opponent's hidden cards came from,
     /// and that list's name.
     fn sample_state(&self, observation: &PlayerObservation, rng: &mut StdRng) -> (State, Deck, String) {
-        let (list, name) = if self.lab {
-            (self.opponent_list.clone(), "the exact list (LAB)".to_string())
+        let seen = Self::seen_opponent_cards(observation);
+        let (list, name) = if self.lab.is_some() {
+            let mut list = self.opponent_list.clone();
+            Self::adopt_seen_printings(&mut list, &seen);
+            (list, "the exact list (LAB)".to_string())
         } else {
-            self.sample_list(&Self::seen_opponent_cards(observation), rng)
+            self.sample_list(&seen, &Self::zone_types(observation), rng)
         };
         let mut state = observation.search_state_with_opponent_list(rng, &list);
         let opponent = 1 - observation.actor;
@@ -378,8 +500,8 @@ impl PlayoutPlayer {
             millis: 0.0,
         };
         let opponent = 1 - me;
-        let opponent_has_set_up =
-            state.hands[opponent].len() + state.decks[opponent].cards.len() < self.core.opponent_list.cards.len();
+        // Every list is 20 cards: the rule reads the constant, never the opponent's real list.
+        let opponent_has_set_up = state.hands[opponent].len() + state.decks[opponent].cards.len() < DECK_SIZE;
         let skip = if distinct.len() < 2 {
             Some("one distinct move")
         } else if state.turn_count == 0 && opponent_has_set_up {
@@ -401,29 +523,41 @@ impl PlayoutPlayer {
             let (state, list, name) = core.sample_state(observation, &mut sample_rng);
             (state, list, name, splitmix(base ^ 0x5eed_0000_0000_0000 ^ j as u64))
         };
-        // The cap: km's move, then the others by km's score after the move on the first sampled world.
+        // The cap: km's move, then the others by km's score after the move on the first sampled world. The ranking runs
+        // inside catch_unwind: a move whose ranking panics (an engine panic in the sampled world or the move) scores
+        // NEG_INFINITY and is always a named drop, so a panic here never stops the game.
         let mut candidates: Vec<Action> = distinct.clone();
         if candidates.len() > self.params.cap {
-            let (world, list, _, seed) = sample(0);
             let code = PlayerCode::KM { max_depth: self.params.depth };
+            let world0 = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| sample(0))).ok();
             let mut scored: Vec<(f64, Action)> = candidates[1..]
                 .iter()
                 .map(|a| {
-                    let (d0, d1) = if me == 0 { (core.deck.clone(), list.clone()) } else { (list.clone(), core.deck.clone()) };
-                    let mut game = Game::from_state(world.clone(), create_players(d0, d1, vec![code.clone(), code.clone()]), seed);
-                    game.apply_action(a);
-                    (value_functions::public_clock_effect_km_value_function(&game.get_state_clone(), me), a.clone())
+                    let value = world0.as_ref().and_then(|(world, list, _, seed)| {
+                        std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+                            let (d0, d1) = if me == 0 { (core.deck.clone(), list.clone()) } else { (list.clone(), core.deck.clone()) };
+                            let mut game = Game::from_state(world.clone(), create_players(d0, d1, vec![code.clone(), code.clone()]), *seed);
+                            game.apply_action(a);
+                            value_functions::public_clock_effect_km_value_function(&game.get_state_clone(), me)
+                        }))
+                        .ok()
+                    });
+                    (value.unwrap_or(f64::NEG_INFINITY), a.clone())
                 })
                 .collect();
             scored.sort_by(|x, y| y.0.partial_cmp(&x.0).unwrap_or(std::cmp::Ordering::Equal));
-            let keep = self.params.cap - 1;
+            let keep = (self.params.cap - 1).min(scored.iter().filter(|(v, _)| *v > f64::NEG_INFINITY).count());
             for (value, a) in &scored[keep..] {
                 report.dropped.push(Dropped {
                     label: label(a),
-                    reason: format!(
-                        "beyond the cap of {}: km's score after the move on one sampled world, {value:.0}, is below the {keep} kept",
-                        self.params.cap
-                    ),
+                    reason: if *value == f64::NEG_INFINITY {
+                        "panicked: its ranking for the cap failed (an engine panic), so it is dropped".to_string()
+                    } else {
+                        format!(
+                            "beyond the cap of {}: km's score after the move on one sampled world, {value:.0}, is below the {keep} kept",
+                            self.params.cap
+                        )
+                    },
                 });
             }
             candidates = std::iter::once(km_move.clone()).chain(scored.into_iter().take(keep).map(|(_, a)| a)).collect();
@@ -488,6 +622,11 @@ impl PlayoutPlayer {
         let lead = &report.candidates[best];
         if best == 0 {
             report.reason = "km's move has the best play-out score".to_string();
+        } else if self.params.budget_ms > 0 && report.rounds < MIN_ROUNDS_WITH_BUDGET {
+            report.reason = format!(
+                "the time budget ended after {} rounds, fewer than the {MIN_ROUNDS_WITH_BUDGET} a switch needs: km's move kept (the best move led by {:+.3})",
+                report.rounds, lead.diff
+            );
         } else if lead.diff > 0.0 && lead.diff > self.params.z * lead.se {
             report.chosen = best;
             report.reason = format!(
@@ -510,6 +649,7 @@ impl PlayoutPlayer {
         let line = serde_json::json!({
             "code": self.params.code(),
             "knowledge": report.knowledge,
+            "extra_lists": self.extras_json(),
             "turn": report.turn,
             "seat": report.actor,
             "rounds": report.rounds,
@@ -569,6 +709,7 @@ impl Player for PlayoutPlayer {
                     "cap": self.params.cap,
                     "z": self.params.z,
                     "knowledge": self.knowledge_label(),
+                    "extra_lists": self.extras_json(),
                     "budget_ms": self.params.budget_ms,
                     "seat": observation.actor,
                 })
@@ -583,11 +724,101 @@ impl Player for PlayoutPlayer {
         report.candidates[report.chosen].action.clone()
     }
 
+    /// The diagnostic entry point with a full state (`Game` never calls it in play): km's move, no play-outs, since play-outs
+    /// from a full state would see the hidden cards. Counted, and named in the trace.
     fn decide_omniscient(&mut self, rng: &mut StdRng, state: &State, possible_actions: &[Action]) -> Action {
-        self.km.decide_omniscient(rng, state, possible_actions)
+        let action = self.km.decide_omniscient(rng, state, possible_actions);
+        self.omniscient += 1;
+        if self.params.trace {
+            eprintln!(
+                "KX_TRACE {}",
+                serde_json::json!({
+                    "code": self.params.code(),
+                    "knowledge": self.knowledge_label(),
+                    "extra_lists": self.extras_json(),
+                    "turn": state.turn_count,
+                    "seat": state.current_player,
+                    "omniscient": true,
+                    "km_move": format!("{:?}", action.action),
+                    "chosen": format!("{:?}", action.action),
+                    "changed": false,
+                    "reason": "an omniscient call (the diagnostic entry with the full state, never made by Game): km's move, no play-outs",
+                })
+            );
+        }
+        action
     }
 
     fn get_deck(&self) -> Deck {
         self.core.deck.clone()
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::card_ids::CardId;
+    use crate::database::get_card_by_enum;
+
+    fn pilot() -> PlayoutPlayer {
+        let (deck_a, deck_b) = crate::test_support::load_test_decks();
+        PlayoutPlayer::with_extra_lists(deck_a, deck_b, PlayoutParams::new(3), Vec::new())
+    }
+
+    /// The pool loads 8 lists: each research/X holds the same cards and Energy as t-X.
+    #[test]
+    fn the_pool_holds_8_lists_once_duplicates_are_removed() {
+        let p = pilot();
+        assert_eq!((p.core.pool.len(), p.core.meta), (8, 8));
+        assert!(p.core.pool.iter().all(|(name, _)| name.starts_with("t-")));
+        assert!(p.knowledge_label().contains("8 meta lists"), "{}", p.knowledge_label());
+    }
+
+    /// The Energy Zone rules: with Water showing, only Water lists are consistent (t-suicune alone), every draw.
+    #[test]
+    fn a_list_must_hold_the_energy_its_zone_shows() {
+        let p = pilot();
+        for seed in 0..40 {
+            let (deck, label) = p.core.sample_list(&[], &[EnergyType::Water], &mut StdRng::seed_from_u64(seed));
+            assert!(deck.energy_types.contains(&EnergyType::Water), "seed {seed}: {label}");
+            assert_eq!(label, "t-suicune (1 of 1 consistent)");
+        }
+        // Grass shows: t-sceptile and t-vespiquen, both drawn.
+        let names: BTreeSet<String> = (0..40)
+            .map(|seed| p.core.sample_list(&[], &[EnergyType::Grass], &mut StdRng::seed_from_u64(seed)).1)
+            .collect();
+        assert_eq!(names, BTreeSet::from(["t-sceptile (1 of 2 consistent)".to_string(), "t-vespiquen (1 of 2 consistent)".to_string()]));
+    }
+
+    /// With no list consistent, the closest are tied and drawn at random (not always the pool's first): a Metal zone and
+    /// a seen Bulbasaur fit none of the 8, and all 8 are equally close.
+    #[test]
+    fn the_closest_tie_is_broken_at_random() {
+        let p = pilot();
+        let seen = vec![get_card_by_enum(CardId::A1001Bulbasaur)];
+        let names: BTreeSet<String> = (0..80)
+            .map(|seed| p.core.sample_list(&seen, &[EnergyType::Metal], &mut StdRng::seed_from_u64(seed)).1)
+            .collect();
+        assert_eq!(names.len(), 8, "{names:?}");
+        assert!(names.iter().all(|n| n.ends_with("(closest, 1 of 8 tied; no list consistent)")), "{names:?}");
+        // Missing seen cards count first, then zone types: Psychic showing and a seen Swablu leave t-altaria alone.
+        let swablu = vec![get_card_by_enum(CardId::B1196Swablu)];
+        let (_, label) = p.core.sample_list(&swablu, &[EnergyType::Metal], &mut StdRng::seed_from_u64(1));
+        assert_eq!(label, "t-altaria (closest, 1 of 1 tied; no list consistent)");
+    }
+
+    /// The printing swap counts copies: two seen copies of one Sabrina printing against a list holding two different
+    /// printings take both slots, leaving no third Sabrina; an exact printing is matched in place.
+    #[test]
+    fn the_seen_printings_are_adopted_copy_for_copy() {
+        let a = get_card_by_enum(CardId::A1225Sabrina);
+        let b = get_card_by_enum(CardId::A1272Sabrina);
+        let other = get_card_by_enum(CardId::A1001Bulbasaur);
+        let mut list = Deck { cards: vec![a.clone(), b.clone(), other.clone()], energy_types: vec![EnergyType::Grass] };
+        Core::adopt_seen_printings(&mut list, &[a.clone(), a.clone()]);
+        assert_eq!(list.cards, vec![a.clone(), a.clone(), other.clone()]);
+        let mut list = Deck { cards: vec![a.clone(), b.clone(), other.clone()], energy_types: vec![EnergyType::Grass] };
+        Core::adopt_seen_printings(&mut list, &[b.clone()]);
+        assert_eq!(list.cards, vec![a, b, other]);
     }
 }

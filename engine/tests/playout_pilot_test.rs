@@ -2,14 +2,22 @@
 //! before the player: the parse of its code, an immediate win taken, km3's move kept within the noise, the drops of the
 //! candidate cap reported, no information leak (the same observation over different hidden cards gives the same
 //! evaluation and the same move, also through `Game`), and determinism (same seeds, same moves).
+//! Added with the fixes of round 1 (Oct 3), to prove what the README claims: REALISTIC reads no list (two pilots built
+//! with different opponent lists report alike; a hidden card from outside the opponent's list changes no choice); LAB on
+//! a pool pairing uses the exact list, and LAB against a list outside the pool is REALISTIC exactly; a path under
+//! decks/brews is refused for KX_EXTRA_LISTS (the variable itself: playout_pilot_extra_lists_test.rs); with a time budget
+//! no switch before 8 rounds; an omniscient call keeps km's move and is counted.
+use std::collections::BTreeMap;
+
 use deckgym::actions::{Action, SimpleAction};
 use deckgym::card_ids::CardId;
+use deckgym::database::get_card_by_enum;
 use deckgym::models::{EnergyType, PlayedCard};
 use deckgym::observation::{PlayerObservation, RevealedKnowledge};
-use deckgym::players::playout_player::{Knowledge, PlayoutParams, PlayoutPlayer};
-use deckgym::players::{create_players, parse_player_code, PlayerCode};
+use deckgym::players::playout_player::{parse_extra_lists, DecisionReport, Knowledge, PlayoutParams, PlayoutPlayer};
+use deckgym::players::{create_players, parse_player_code, Player, PlayerCode};
 use deckgym::test_support::{get_test_game_with_board, load_test_decks};
-use deckgym::{Game, State};
+use deckgym::{Deck, Game, State};
 use rand::{rngs::StdRng, SeedableRng};
 
 /// Small play-out settings for tests: 4 play-outs per candidate, at most 4 candidates.
@@ -36,6 +44,32 @@ fn km3_choice(state: &State, actor: usize, seed: u64) -> Action {
 /// game from `seed` until one comes.
 fn midgame(seed: u64) -> State {
     let (deck_a, deck_b) = load_test_decks();
+    midgame_with(deck_a, deck_b, seed)
+}
+
+/// A pool list by its file under decks/screen/opponents (the tests run in engine/).
+fn pool_deck(name: &str) -> Deck {
+    Deck::from_file(&format!("../decks/screen/opponents/{name}.txt")).unwrap()
+}
+
+/// Every field of a decision's report but its time, as text.
+fn fingerprint(r: &DecisionReport) -> String {
+    let candidates: Vec<String> =
+        r.candidates.iter().map(|c| format!("{:?} {} {} {}", c.action, c.score, c.diff, c.se)).collect();
+    let dropped: Vec<String> = r.dropped.iter().map(|d| format!("{} / {}", d.label, d.reason)).collect();
+    format!(
+        "{} | t{} s{} | {:?} | {:?} | km {} chosen {} | {} | rounds {} failed {} | {:?}",
+        r.knowledge, r.turn, r.actor, candidates, dropped, r.km3, r.chosen, r.reason, r.rounds, r.failed_rounds, r.lists
+    )
+}
+
+/// The same, without the knowledge label.
+fn fingerprint_without_label(r: &DecisionReport) -> String {
+    fingerprint(r).replacen(&r.knowledge, "", 1)
+}
+
+/// `midgame` for any two lists, player 0 on `deck_a`.
+fn midgame_with(deck_a: Deck, deck_b: Deck, seed: u64) -> State {
     let km3 = || parse_player_code("km3").unwrap();
     let mut game = Game::new(create_players(deck_a, deck_b, vec![km3(), km3()]), seed);
     loop {
@@ -200,4 +234,152 @@ fn a_whole_game_plays_to_the_end() {
     while !game.is_game_over() {
         game.play_tick();
     }
+}
+
+/// REALISTIC reads no list: two pilots built with different opponent lists (the real one, and a pool list) give the same
+/// report, field for field, at the same observation and seed.
+#[test]
+fn realistic_reads_no_opponent_list() {
+    for seed in [3u64, 11] {
+        let state = midgame(seed);
+        let actions = state.generate_possible_actions().1;
+        let observation = PlayerObservation::from_state(&state, 0, &RevealedKnowledge::default());
+        let (deck_a, deck_b) = load_test_decks();
+        let real = PlayoutPlayer::new(deck_a.clone(), deck_b, small(Knowledge::Realistic, 2.0))
+            .evaluate(&mut StdRng::seed_from_u64(21), &observation, &actions);
+        let other = PlayoutPlayer::new(deck_a, pool_deck("t-suicune"), small(Knowledge::Realistic, 2.0))
+            .evaluate(&mut StdRng::seed_from_u64(21), &observation, &actions);
+        assert_eq!(fingerprint(&real), fingerprint(&other), "seed {seed}");
+    }
+}
+
+/// LAB on a pool pairing (t-altaria v t-suicune): labelled LAB, and every round drew the exact list.
+#[test]
+fn lab_on_a_pool_pairing_uses_the_exact_list() {
+    let state = midgame_with(pool_deck("t-altaria"), pool_deck("t-suicune"), 3);
+    let actions = state.generate_possible_actions().1;
+    let observation = PlayerObservation::from_state(&state, 0, &RevealedKnowledge::default());
+    let mut lab = PlayoutPlayer::new(pool_deck("t-altaria"), pool_deck("t-suicune"), small(Knowledge::Lab, 2.0));
+    assert!(lab.knowledge_label().starts_with("LAB (laboratory condition"), "{}", lab.knowledge_label());
+    let report = lab.evaluate(&mut StdRng::seed_from_u64(21), &observation, &actions);
+    assert_eq!(report.rounds, 4);
+    assert_eq!(report.lists, BTreeMap::from([("the exact list (LAB)".to_string(), 4)]));
+    // REALISTIC at the same position draws from the pool instead.
+    let real = PlayoutPlayer::new(pool_deck("t-altaria"), pool_deck("t-suicune"), small(Knowledge::Realistic, 2.0))
+        .evaluate(&mut StdRng::seed_from_u64(21), &observation, &actions);
+    assert!(real.lists.keys().all(|k| !k.contains("LAB")), "{:?}", real.lists);
+}
+
+/// LAB against a list outside the pool (the test decks) is REALISTIC exactly, and its label says so.
+#[test]
+fn lab_against_a_list_outside_the_pool_is_realistic_exactly() {
+    let state = midgame(3);
+    let actions = state.generate_possible_actions().1;
+    let observation = PlayerObservation::from_state(&state, 0, &RevealedKnowledge::default());
+    let mut lab = pilot(small(Knowledge::Lab, 2.0));
+    assert!(lab.knowledge_label().starts_with("REALISTIC (LAB asked"), "{}", lab.knowledge_label());
+    let a = lab.evaluate(&mut StdRng::seed_from_u64(21), &observation, &actions);
+    let b = pilot(small(Knowledge::Realistic, 2.0)).evaluate(&mut StdRng::seed_from_u64(21), &observation, &actions);
+    assert_eq!(fingerprint_without_label(&a), fingerprint_without_label(&b));
+}
+
+/// One of the opponent's hidden hand cards replaced by a card from outside their list (Bulbasaur; weezing-arbok holds
+/// none): the observation is the same, and so is the REALISTIC choice through `Game`.
+#[test]
+fn a_hidden_card_from_outside_the_opponents_list_changes_no_choice() {
+    for seed in [3u64, 11] {
+        let state = midgame(seed);
+        assert!(!state.hands[1].is_empty(), "seed {seed}: the opponent holds a hand");
+        let mut other = state.clone();
+        let foreign = get_card_by_enum(CardId::A1001Bulbasaur);
+        let (_, deck_b) = load_test_decks();
+        assert!(!deck_b.cards.contains(&foreign));
+        other.hands[1][0] = foreign;
+        assert_eq!(
+            PlayerObservation::from_state(&state, 0, &RevealedKnowledge::default()),
+            PlayerObservation::from_state(&other, 0, &RevealedKnowledge::default()),
+            "seed {seed}: the same observation"
+        );
+        let code = PlayerCode::KX { params: small(Knowledge::Realistic, 2.0) };
+        let play = |s: &State| {
+            let (deck_a, deck_b) = load_test_decks();
+            let players = create_players(deck_a, deck_b, vec![code.clone(), parse_player_code("km3").unwrap()]);
+            Game::from_state(s.clone(), players, 77).play_tick()
+        };
+        assert_eq!(play(&state), play(&other), "seed {seed}: the same move through Game");
+    }
+}
+
+/// LAB on a pool pairing cannot depend on the hidden cards either: the no-leak swap, through `Game`.
+#[test]
+fn the_lab_choice_on_a_pool_pairing_cannot_depend_on_hidden_cards() {
+    let state = midgame_with(pool_deck("t-altaria"), pool_deck("t-suicune"), 3);
+    let other = other_hidden_cards(&state);
+    assert!(other.hands[1] != state.hands[1] || other.decks[1].cards != state.decks[1].cards, "the hidden cards differ");
+    assert_eq!(
+        PlayerObservation::from_state(&state, 0, &RevealedKnowledge::default()),
+        PlayerObservation::from_state(&other, 0, &RevealedKnowledge::default())
+    );
+    let code = PlayerCode::KX { params: small(Knowledge::Lab, 2.0) };
+    let play = |s: &State| {
+        let players = create_players(pool_deck("t-altaria"), pool_deck("t-suicune"), vec![code.clone(), parse_player_code("km3").unwrap()]);
+        Game::from_state(s.clone(), players, 77).play_tick()
+    };
+    assert_eq!(play(&state), play(&other));
+}
+
+/// KX_EXTRA_LISTS refuses a path under decks/brews (also written the Windows way, and before reading it), and reads a
+/// list elsewhere with its hash.
+#[test]
+fn an_extra_list_under_decks_brews_is_refused() {
+    for spec in [
+        "mine=../decks/brews/brew-01-arceus-crobat-xatu.txt",
+        "mine=..\\decks\\brews\\brew-01-arceus-crobat-xatu.txt",
+        "mine=../decks/brews/no-such-file.txt",
+        "ok=../decks/screen/opponents/t-suicune.txt;mine=../decks/BREWS/brew-01-arceus-crobat-xatu.txt",
+    ] {
+        let refused = parse_extra_lists(spec).expect_err(spec);
+        assert!(refused.contains("decks/brews"), "{spec}: {refused}");
+    }
+    let lists = parse_extra_lists(" computer = ../decks/screen/opponents/t-suicune.txt ; ").unwrap();
+    assert_eq!(lists.len(), 1);
+    assert_eq!((lists[0].name.as_str(), lists[0].fnv1a64.len()), ("computer", 16));
+    assert_eq!(lists[0].deck.cards, pool_deck("t-suicune").cards);
+    for bad in ["computer", "=x.txt", "a=../decks/screen/opponents/t-suicune.txt;a=../decks/screen/opponents/t-altaria.txt", "a=no-such-file.txt"] {
+        assert!(parse_extra_lists(bad).is_err(), "{bad} should be refused");
+    }
+}
+
+/// With a time budget, no move replaces km's before 8 rounds: here the budget (1 ms) ends after the first batch of
+/// rounds, one per thread.
+#[test]
+fn with_a_time_budget_no_switch_before_8_rounds() {
+    for seed in [3u64, 11] {
+        let state = midgame(seed);
+        let actions = state.generate_possible_actions().1;
+        let observation = PlayerObservation::from_state(&state, 0, &RevealedKnowledge::default());
+        let params = PlayoutParams { rollouts: 16, budget_ms: 1, ..small(Knowledge::Realistic, 0.0) };
+        let report = pilot(params).evaluate(&mut StdRng::seed_from_u64(9), &observation, &actions);
+        assert!(report.rounds >= 2, "seed {seed}: at least 2 rounds");
+        if report.rounds < 8 {
+            assert_eq!(report.chosen, report.km3, "seed {seed}: {} rounds, no switch: {}", report.rounds, report.reason);
+            let best = report.candidates.iter().map(|c| c.score).fold(f64::MIN, f64::max);
+            if report.candidates[report.km3].score < best {
+                assert!(report.reason.contains("fewer than the 8"), "seed {seed}: {}", report.reason);
+            }
+        }
+    }
+}
+
+/// The diagnostic entry with a full state keeps km's move, with no play-outs, and is counted (and traced with `_trace`).
+#[test]
+fn an_omniscient_call_keeps_kms_move_and_is_counted() {
+    let state = midgame(3);
+    let actions = state.generate_possible_actions().1;
+    let mut p = pilot(small(Knowledge::Realistic, 0.0));
+    let chosen = p.decide_omniscient(&mut StdRng::seed_from_u64(9), &state, &actions);
+    let (deck_a, deck_b) = load_test_decks();
+    let mut km3 = create_players(deck_a, deck_b, vec![parse_player_code("km3").unwrap(), parse_player_code("km3").unwrap()]).remove(0);
+    assert_eq!(chosen, km3.decide_omniscient(&mut StdRng::seed_from_u64(9), &state, &actions));
+    assert_eq!((p.omniscient, p.decisions), (1, 0));
 }

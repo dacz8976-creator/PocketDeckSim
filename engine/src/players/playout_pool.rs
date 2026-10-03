@@ -1,7 +1,11 @@
 //! The REALISTIC knowledge mode's candidate opponent lists (the play-out chooser, playout_player.rs; Oct 2): the lists
 //! under decks/screen/opponents and decks/research, copied here at build time of this file (each with its sha256), so the
 //! player needs no file at run time. The pool never holds a brew or one of Dustin's lists: the meta side is never handed
-//! the brew's list (DESIGN.md section 9). Regenerate by hand if those lists change: the sha256 lines show which version.
+//! the brew's list (DESIGN.md section 9). Regenerate `POOL` by hand if those lists change: the sha256 lines show which
+//! version. Each research/X list holds the same cards as t-X; the player removes such duplicates when it loads the pool.
+//!
+//! Below `POOL` (not generated): lists added at run time through `KX_EXTRA_LISTS` (fixes round 1, Oct 3), such as the
+//! fixed computer deck of Dustin's positions. Read once per process; a path under decks/brews is refused.
 
 /// (name, source path, sha256 of the source file, the list text).
 pub const POOL: [(&str, &str, &str, &str); 16] = [
@@ -250,3 +254,62 @@ pub const POOL: [(&str, &str, &str, &str); 16] = [
 2 B4 148
 "#),
 ];
+
+/// A list added at run time through `KX_EXTRA_LISTS`: its name, the path as given, a 64-bit FNV-1a hash of the file's
+/// bytes (hex; the laptop records the sha256 itself) and the list.
+#[derive(Debug, Clone)]
+pub struct ExtraList {
+    pub name: String,
+    pub path: String,
+    pub fnv1a64: String,
+    pub deck: crate::Deck,
+}
+
+/// The 64-bit FNV-1a hash of `bytes` (stable across builds and machines; no crate needed).
+pub fn fnv1a64(bytes: &[u8]) -> u64 {
+    bytes.iter().fold(0xcbf2_9ce4_8422_2325u64, |h, b| (h ^ *b as u64).wrapping_mul(0x0000_0100_0000_01b3))
+}
+
+/// True if `path` lies under decks/brews (Dustin's brews and drafts), as given or once resolved. Backslashes count as
+/// separators, and the match ignores case, so a Windows path is caught too.
+pub fn under_brews(path: &str) -> bool {
+    let under = |p: &std::path::Path| {
+        let parts: Vec<String> = p.components().map(|c| c.as_os_str().to_string_lossy().to_lowercase()).collect();
+        parts.windows(2).any(|w| w[0] == "decks" && w[1] == "brews")
+    };
+    let given = path.replace('\\', "/");
+    under(std::path::Path::new(&given)) || std::fs::canonicalize(&given).map(|p| under(&p)).unwrap_or(false)
+}
+
+/// Parses `name=path;name=path` and reads each list. Refused: a path under decks/brews (the meta side is never handed a
+/// brew's list, and the variable reaches both seats), an unreadable or invalid list, a missing or repeated name.
+pub fn parse_extra_lists(spec: &str) -> Result<Vec<ExtraList>, String> {
+    let mut lists: Vec<ExtraList> = Vec::new();
+    for entry in spec.split(';').map(str::trim).filter(|e| !e.is_empty()) {
+        let (name, path) = entry
+            .split_once('=')
+            .map(|(n, p)| (n.trim(), p.trim()))
+            .filter(|(n, p)| !n.is_empty() && !p.is_empty())
+            .ok_or_else(|| format!("KX_EXTRA_LISTS: '{entry}' is not name=path"))?;
+        if under_brews(path) {
+            return Err(format!("KX_EXTRA_LISTS: {path} is under decks/brews; a brew's list is never handed to a pilot"));
+        }
+        if lists.iter().any(|l| l.name == name) {
+            return Err(format!("KX_EXTRA_LISTS: the name '{name}' is given twice"));
+        }
+        let bytes = std::fs::read(path).map_err(|e| format!("KX_EXTRA_LISTS: {path}: {e}"))?;
+        let text = String::from_utf8_lossy(&bytes);
+        let deck = crate::Deck::from_string(&text).map_err(|e| format!("KX_EXTRA_LISTS: {path}: {e}"))?;
+        lists.push(ExtraList { name: name.to_string(), path: path.to_string(), fnv1a64: format!("{:016x}", fnv1a64(&bytes)), deck });
+    }
+    Ok(lists)
+}
+
+/// The lists in `KX_EXTRA_LISTS`, read once per process (none if it is unset).
+pub fn extra_lists() -> &'static Result<Vec<ExtraList>, String> {
+    static LISTS: std::sync::OnceLock<Result<Vec<ExtraList>, String>> = std::sync::OnceLock::new();
+    LISTS.get_or_init(|| match std::env::var("KX_EXTRA_LISTS") {
+        Ok(spec) => parse_extra_lists(&spec),
+        Err(_) => Ok(Vec::new()),
+    })
+}
