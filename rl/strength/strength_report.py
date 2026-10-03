@@ -1,10 +1,14 @@
 #!/usr/bin/env python3
 """The report of a strength run: paired differences with intervals, who went first, runtime and cost, intended lines, and what more precision costs.
 
-  strength_report.py --dir RUNDIR [--out REPORT.md]
+  strength_report.py --dir RUNDIR [--out REPORT.md] [--override]
 
 Reads manifest.json (checks it against manifest.sha256), games.jsonl and errors.jsonl. Pure standard library. No pass/fail: a slow arm is a fact
 about time and cost, reported as such.
+
+REFUSES (exit 1, nothing written) when manifest.json is not the file that was pre-registered: manifest.sha256 missing or empty, or its sha256 differs.
+--override writes the report anyway, for a deliberate re-read of a changed registration; the report then opens with a REGISTRATION CHANGED banner
+and report.json says registration_changed.
 """
 import argparse, collections, hashlib, json, math, os, statistics, sys
 
@@ -111,15 +115,31 @@ def use_flags(rec, line):
     return out
 
 
+def registration_problems(msha, reg_sha):
+    """Why manifest.json cannot be shown to be the pre-registered file (an empty list when it can)."""
+    if not reg_sha:
+        return ['manifest.sha256 is missing or empty, so nothing shows that manifest.json is the file that was registered']
+    if reg_sha != msha:
+        return [f'manifest.json (sha256 {msha[:16]}) is not the registered file (manifest.sha256 says {reg_sha[:16]})']
+    return []
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--dir', required=True)
     ap.add_argument('--out')
+    ap.add_argument('--override', action='store_true', help='write the report even though the registration changed (it opens with a REGISTRATION CHANGED banner)')
     a = ap.parse_args()
     d = a.dir
     man = json.load(open(os.path.join(d, 'manifest.json'), encoding='utf-8'))
     msha = hashlib.sha256(open(os.path.join(d, 'manifest.json'), 'rb').read()).hexdigest()
-    reg_sha = open(os.path.join(d, 'manifest.sha256')).read().split()[0] if os.path.exists(os.path.join(d, 'manifest.sha256')) else None
+    reg_sha = (open(os.path.join(d, 'manifest.sha256')).read().split() or [None])[0] if os.path.exists(os.path.join(d, 'manifest.sha256')) else None
+    problems = registration_problems(msha, reg_sha)
+    if problems and not a.override:
+        sys.exit('REFUSED: the registration has changed, so no report is written.\n  ' + '\n  '.join(problems)
+                 + '\nRead manifest.json against PREREGISTRATION.md. To write a report anyway, for a deliberate re-read, add --override (the report then opens with a REGISTRATION CHANGED banner).')
+    if problems:
+        print('REGISTRATION CHANGED (--override): ' + '; '.join(problems), file=sys.stderr)
     games, keys = [], set()
     gp = os.path.join(d, 'games.jsonl')
     if os.path.exists(gp):
@@ -142,8 +162,12 @@ def main():
 
     P = lambda *s: L.append(' '.join(str(x) for x in s))
     L = []
+    if problems:
+        P('# REGISTRATION CHANGED\n')
+        P('**This report was written with `--override`. ' + '; '.join(problems) + '. Its numbers are not the result of the pre-registered run: read what changed in the manifest against PREREGISTRATION.md before quoting any of them.**\n')
+        P('---\n')
     P(f"# Strength report: {man['name']}\n")
-    P(f"Pilot **{man['pilot']}** against reference **{man['reference']}**, stage `{man.get('stage')}`. Manifest sha256 `{msha[:16]}`" + (' (matches the pre-registration)' if reg_sha == msha else ' (**does not match manifest.sha256**)') + f"; registered {man.get('created_at')}.")
+    P(f"Pilot **{man['pilot']}** against reference **{man['reference']}**, stage `{man.get('stage')}`. Manifest sha256 `{msha[:16]}`" + (' (matches the pre-registration)' if not problems else ' (**REGISTRATION CHANGED: does not match manifest.sha256**)' if reg_sha else ' (**REGISTRATION CHANGED: manifest.sha256 is missing**)') + f"; registered {man.get('created_at')}.")
     if man.get('question'):
         P(f"\n> {man['question']}")
     started = sorted(g.get('started_at', '') for g in games if g.get('started_at'))
@@ -291,7 +315,7 @@ def main():
         P(f"\n## Errors\n\n{len(errors)} games failed and are not in the counts (they are replayed when the run resumes). First: `{errors[0]['key']}`: {errors[0]['error'][:200]}")
     out = a.out or os.path.join(d, 'REPORT.md')
     open(out, 'w', encoding='utf-8').write('\n'.join(L) + '\n')
-    json.dump(dict(manifest_sha256=msha, paired_games=len(pairs), pooled=allc, per_deck=deck_c, exactly_zero=exactly_zero), open(os.path.join(d, 'report.json'), 'w'), indent=1, default=str)
+    json.dump(dict(manifest_sha256=msha, registration_changed=bool(problems), registration_problems=problems, paired_games=len(pairs), pooled=allc, per_deck=deck_c, exactly_zero=exactly_zero), open(os.path.join(d, 'report.json'), 'w'), indent=1, default=str)
     print('\n'.join(L))
 
 
