@@ -35,7 +35,7 @@ use rand::{rngs::StdRng, Rng, RngCore, SeedableRng};
 use rayon::prelude::*;
 
 use super::{create_players, get_player, value_functions, Player, PlayerCode};
-pub use super::playout_pool::{parse_extra_lists, under_brews, ExtraList};
+pub use super::playout_pool::{find_repository, parse_extra_lists, parse_extra_lists_against, protected_lists, under_protected, ExtraList};
 use crate::actions::Action;
 use crate::models::{Card, EnergyType};
 use crate::observation::PlayerObservation;
@@ -175,6 +175,8 @@ pub struct DecisionReport {
     pub failed_rounds: usize,
     /// The opponent lists the rounds drew, with how many rounds drew each (REALISTIC; LAB: the exact list).
     pub lists: BTreeMap<String, usize>,
+    /// Set when the cap's ranking world itself panicked: named once here, and the cap kept the moves in the order offered.
+    pub cap_note: Option<String>,
     pub millis: f64,
 }
 
@@ -221,21 +223,22 @@ fn list_key(deck: &Deck) -> (Vec<String>, Vec<EnergyType>) {
 /// What the play-outs need, shared by the parallel rounds.
 struct Core {
     deck: Deck,
-    opponent_list: Deck,
     /// The candidate lists, duplicates removed: the meta lists, then any extra lists.
     pool: Vec<(String, Deck)>,
     /// How many of `pool` are meta lists (the rest are extra lists).
     meta: usize,
     /// The extra lists as read (name, path, hash), each with the pool name it went under.
     extras: Vec<(ExtraList, String)>,
-    /// LAB is in force: requested, and the opponent's list is one of the pool's; with the pool name it matched.
-    lab: Option<String>,
+    /// LAB is in force: requested, and the opponent's list is one of the pool's. The pool name it matched and the
+    /// opponent's list itself, which the pilot keeps only then: REALISTIC holds no opponent list, by construction.
+    lab: Option<(String, Deck)>,
     depth: usize,
 }
 
 impl PlayoutPlayer {
     /// The pilot, with any lists from `KX_EXTRA_LISTS` (read once per process). Panics if that variable is refused (a
-    /// path under decks/brews, an unreadable list): the run stops rather than play with it.
+    /// brew's or one of Dustin's lists, by path or by content; an unreadable list; no repository to check against): the
+    /// run stops rather than play with it.
     pub fn new(deck: Deck, opponent_list: Deck, params: PlayoutParams) -> Self {
         let extras = super::playout_pool::extra_lists().clone().unwrap_or_else(|e| panic!("{e}"));
         Self::with_extra_lists(deck, opponent_list, params, extras)
@@ -265,15 +268,15 @@ impl PlayoutPlayer {
             };
             extras.push((extra, under));
         }
-        // LAB only: is the opponent's list one of the pool's? (REALISTIC never looks at it. km<N> is handed it as every
-        // bot is, and ignores it: get_player's km arm builds its search from the own deck alone.)
+        // LAB only: is the opponent's list one of the pool's? Kept only then. (REALISTIC never holds it. km<N> is handed
+        // it as `Game` hands every bot, and ignores it: get_player's km arm builds its search from the own deck alone.)
         let lab = (params.knowledge == Knowledge::Lab)
             .then(|| {
                 let target = id_multiset(&opponent_list);
-                pool.iter().find(|(_, d)| id_multiset(d) == target).map(|(name, _)| name.clone())
+                pool.iter().find(|(_, d)| id_multiset(d) == target).map(|(name, _)| (name.clone(), opponent_list.clone()))
             })
             .flatten();
-        let core = Core { deck, opponent_list, pool, meta, extras, lab, depth: params.depth };
+        let core = Core { deck, pool, meta, extras, lab, depth: params.depth };
         PlayoutPlayer { params, km, core, printed: false, decisions: 0, millis: 0.0, omniscient: 0 }
     }
 
@@ -297,7 +300,7 @@ impl PlayoutPlayer {
     /// The knowledge mode in force, as every output labels it.
     pub fn knowledge_label(&self) -> String {
         match (self.params.knowledge, &self.core.lab) {
-            (Knowledge::Lab, Some(name)) => format!(
+            (Knowledge::Lab, Some((name, _))) => format!(
                 "LAB (laboratory condition: the opponent's exact 20-card list is known: {name}, one of the pool's {})",
                 self.pool_description()
             ),
@@ -315,7 +318,7 @@ impl PlayoutPlayer {
     /// The extra lists as `KX_PARAMS` and every `KX_TRACE` line record them.
     fn extras_json(&self) -> serde_json::Value {
         serde_json::Value::Array(self.core.extras.iter().map(|(e, under)| serde_json::json!({
-            "name": e.name, "path": e.path, "fnv1a64": e.fnv1a64, "pool_name": under,
+            "name": e.name, "path": e.path, "fnv1a64": e.fnv1a64, "pool_name": under, "checked_against": e.checked_against,
         })).collect())
     }
 }
@@ -416,8 +419,8 @@ impl Core {
     /// and that list's name.
     fn sample_state(&self, observation: &PlayerObservation, rng: &mut StdRng) -> (State, Deck, String) {
         let seen = Self::seen_opponent_cards(observation);
-        let (list, name) = if self.lab.is_some() {
-            let mut list = self.opponent_list.clone();
+        let (list, name) = if let Some((_, exact)) = &self.lab {
+            let mut list = exact.clone();
             Self::adopt_seen_printings(&mut list, &seen);
             (list, "the exact list (LAB)".to_string())
         } else {
@@ -497,6 +500,7 @@ impl PlayoutPlayer {
             rounds: 0,
             failed_rounds: 0,
             lists: BTreeMap::new(),
+            cap_note: None,
             millis: 0.0,
         };
         let opponent = 1 - me;
@@ -529,38 +533,55 @@ impl PlayoutPlayer {
         let mut candidates: Vec<Action> = distinct.clone();
         if candidates.len() > self.params.cap {
             let code = PlayerCode::KM { max_depth: self.params.depth };
-            let world0 = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| sample(0))).ok();
-            let mut scored: Vec<(f64, Action)> = candidates[1..]
-                .iter()
-                .map(|a| {
-                    let value = world0.as_ref().and_then(|(world, list, _, seed)| {
-                        std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
-                            let (d0, d1) = if me == 0 { (core.deck.clone(), list.clone()) } else { (list.clone(), core.deck.clone()) };
-                            let mut game = Game::from_state(world.clone(), create_players(d0, d1, vec![code.clone(), code.clone()]), *seed);
-                            game.apply_action(a);
-                            value_functions::public_clock_effect_km_value_function(&game.get_state_clone(), me)
-                        }))
-                        .ok()
-                    });
-                    (value.unwrap_or(f64::NEG_INFINITY), a.clone())
-                })
-                .collect();
-            scored.sort_by(|x, y| y.0.partial_cmp(&x.0).unwrap_or(std::cmp::Ordering::Equal));
-            let keep = (self.params.cap - 1).min(scored.iter().filter(|(v, _)| *v > f64::NEG_INFINITY).count());
-            for (value, a) in &scored[keep..] {
-                report.dropped.push(Dropped {
-                    label: label(a),
-                    reason: if *value == f64::NEG_INFINITY {
-                        "panicked: its ranking for the cap failed (an engine panic), so it is dropped".to_string()
-                    } else {
-                        format!(
-                            "beyond the cap of {}: km's score after the move on one sampled world, {value:.0}, is below the {keep} kept",
-                            self.params.cap
-                        )
-                    },
-                });
+            let keep = self.params.cap - 1;
+            match std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| sample(0))) {
+                Err(_) => {
+                    // No world to rank in: say so once, and keep the first moves in the order offered.
+                    report.cap_note = Some(format!(
+                        "the ranking world panicked (an engine panic sampling it): the cap of {} kept the first {keep} moves in the order offered",
+                        self.params.cap
+                    ));
+                    for a in &candidates[1 + keep..] {
+                        report.dropped.push(Dropped {
+                            label: label(a),
+                            reason: format!("beyond the cap of {}, in the order offered (the ranking world panicked)", self.params.cap),
+                        });
+                    }
+                    candidates.truncate(1 + keep);
+                }
+                Ok((world, list, _, seed)) => {
+                    let mut scored: Vec<(f64, Action)> = candidates[1..]
+                        .iter()
+                        .map(|a| {
+                            let value = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+                                let (d0, d1) =
+                                    if me == 0 { (core.deck.clone(), list.clone()) } else { (list.clone(), core.deck.clone()) };
+                                let mut game =
+                                    Game::from_state(world.clone(), create_players(d0, d1, vec![code.clone(), code.clone()]), seed);
+                                game.apply_action(a);
+                                value_functions::public_clock_effect_km_value_function(&game.get_state_clone(), me)
+                            }));
+                            (value.unwrap_or(f64::NEG_INFINITY), a.clone())
+                        })
+                        .collect();
+                    scored.sort_by(|x, y| y.0.partial_cmp(&x.0).unwrap_or(std::cmp::Ordering::Equal));
+                    let keep = keep.min(scored.iter().filter(|(v, _)| *v > f64::NEG_INFINITY).count());
+                    for (value, a) in &scored[keep..] {
+                        report.dropped.push(Dropped {
+                            label: label(a),
+                            reason: if *value == f64::NEG_INFINITY {
+                                "panicked: applying this move in the ranking world failed (an engine panic), so it is dropped".to_string()
+                            } else {
+                                format!(
+                                    "beyond the cap of {}: km's score after the move on one sampled world, {value:.0}, is below the {keep} kept",
+                                    self.params.cap
+                                )
+                            },
+                        });
+                    }
+                    candidates = std::iter::once(km_move.clone()).chain(scored.into_iter().take(keep).map(|(_, a)| a)).collect();
+                }
             }
-            candidates = std::iter::once(km_move.clone()).chain(scored.into_iter().take(keep).map(|(_, a)| a)).collect();
         }
         // The rounds: play-out j of every candidate from the same world and seed.
         let threads = rayon::current_num_threads().max(1);
@@ -667,6 +688,7 @@ impl PlayoutPlayer {
                 "se": if c.se.is_finite() { serde_json::json!((c.se * 1000.0).round() / 1000.0) } else { serde_json::Value::Null },
             })).collect::<Vec<_>>(),
             "dropped": report.dropped.iter().map(|d| serde_json::json!({"move": d.label, "reason": d.reason})).collect::<Vec<_>>(),
+            "cap_note": report.cap_note,
         });
         eprintln!("KX_TRACE {line}");
     }

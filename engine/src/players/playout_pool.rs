@@ -5,7 +5,8 @@
 //! version. Each research/X list holds the same cards as t-X; the player removes such duplicates when it loads the pool.
 //!
 //! Below `POOL` (not generated): lists added at run time through `KX_EXTRA_LISTS` (fixes round 1, Oct 3), such as the
-//! fixed computer deck of Dustin's positions. Read once per process; a path under decks/brews is refused.
+//! fixed computer deck of Dustin's positions. Read once per process. Refused (round 2): a path under decks/brews or
+//! decks/dustin, and any list holding the same cards as a list there, wherever the copy lives.
 
 /// (name, source path, sha256 of the source file, the list text).
 pub const POOL: [(&str, &str, &str, &str); 16] = [
@@ -256,13 +257,15 @@ pub const POOL: [(&str, &str, &str, &str); 16] = [
 ];
 
 /// A list added at run time through `KX_EXTRA_LISTS`: its name, the path as given, a 64-bit FNV-1a hash of the file's
-/// bytes (hex; the laptop records the sha256 itself) and the list.
+/// bytes (hex; the laptop records the sha256 itself), the list, and what it was checked against (the repository and how
+/// many protected lists it holds).
 #[derive(Debug, Clone)]
 pub struct ExtraList {
     pub name: String,
     pub path: String,
     pub fnv1a64: String,
     pub deck: crate::Deck,
+    pub checked_against: String,
 }
 
 /// The 64-bit FNV-1a hash of `bytes` (stable across builds and machines; no crate needed).
@@ -270,39 +273,151 @@ pub fn fnv1a64(bytes: &[u8]) -> u64 {
     bytes.iter().fold(0xcbf2_9ce4_8422_2325u64, |h, b| (h ^ *b as u64).wrapping_mul(0x0000_0100_0000_01b3))
 }
 
-/// True if `path` lies under decks/brews (Dustin's brews and drafts), as given or once resolved. Backslashes count as
-/// separators, and the match ignores case, so a Windows path is caught too.
-pub fn under_brews(path: &str) -> bool {
+/// The protected folders under decks/: Dustin's brews and drafts (with their subfolders) and Dustin's own lists. A pilot is
+/// never handed one of these lists (DESIGN.md section 9; the pool above holds none).
+pub const PROTECTED: [&str; 2] = ["brews", "dustin"];
+
+/// True if `path` lies under decks/brews or decks/dustin, as given or once resolved. Backslashes count as separators, and
+/// the match ignores case, so a Windows path is caught too.
+pub fn under_protected(path: &str) -> bool {
     let under = |p: &std::path::Path| {
         let parts: Vec<String> = p.components().map(|c| c.as_os_str().to_string_lossy().to_lowercase()).collect();
-        parts.windows(2).any(|w| w[0] == "decks" && w[1] == "brews")
+        parts.windows(2).any(|w| w[0] == "decks" && PROTECTED.contains(&w[1].as_str()))
     };
     let given = path.replace('\\', "/");
     under(std::path::Path::new(&given)) || std::fs::canonicalize(&given).map(|p| under(&p)).unwrap_or(false)
 }
 
-/// Parses `name=path;name=path` and reads each list. Refused: a path under decks/brews (the meta side is never handed a
-/// brew's list, and the variable reaches both seats), an unreadable or invalid list, a missing or repeated name.
-pub fn parse_extra_lists(spec: &str) -> Result<Vec<ExtraList>, String> {
+/// A list's cards as a sorted multiset of card ids.
+fn card_ids(deck: &crate::Deck) -> Vec<String> {
+    let mut ids: Vec<String> = deck.cards.iter().map(|c| c.get_id()).collect();
+    ids.sort();
+    ids
+}
+
+fn is_repository(root: &std::path::Path) -> bool {
+    PROTECTED.iter().all(|f| root.join("decks").join(f).is_dir())
+}
+
+/// The repository whose decks/brews and decks/dustin the extra lists are checked against: `KX_REPO` if set (it must hold
+/// both folders), else the first folder holding both above the build's engine directory, the working directory, or one of
+/// the lists. (The harnesses' builds copy engine/ out of the repository, so the build's directory alone may not find it.)
+pub fn find_repository(list_paths: &[&str]) -> Result<std::path::PathBuf, String> {
+    if let Some(root) = std::env::var_os("KX_REPO") {
+        let root = std::path::PathBuf::from(root);
+        return if is_repository(&root) {
+            Ok(root)
+        } else {
+            Err(format!("KX_EXTRA_LISTS: KX_REPO={} holds no decks/brews and decks/dustin to check the lists against", root.display()))
+        };
+    }
+    let mut starts = vec![std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR"))];
+    starts.extend(std::env::current_dir().ok());
+    starts.extend(list_paths.iter().filter_map(|p| std::fs::canonicalize(p.replace('\\', "/")).ok()));
+    for start in &starts {
+        if let Some(root) = start.ancestors().find(|a| is_repository(a)) {
+            return Ok(root.to_path_buf());
+        }
+    }
+    Err(format!(
+        "KX_EXTRA_LISTS: can't find the repository's decks/brews and decks/dustin to check the lists against (looked above {}, \
+         the working directory and each list); set KX_REPO to the repository root",
+        env!("CARGO_MANIFEST_DIR")
+    ))
+}
+
+/// Every list under `repo`'s decks/brews (subfolders included) and decks/dustin: its path and cards. Refused if either
+/// folder can't be read or holds no list. A .txt that doesn't read as a list (a note) is skipped: a copy of it couldn't be
+/// loaded as an extra list either.
+pub fn protected_lists(repo: &std::path::Path) -> Result<Vec<(String, Vec<String>)>, String> {
+    fn walk(dir: &std::path::Path, files: &mut Vec<std::path::PathBuf>) -> Result<(), String> {
+        let entries = std::fs::read_dir(dir).map_err(|e| format!("KX_EXTRA_LISTS: can't read {} to check the lists against: {e}", dir.display()))?;
+        for entry in entries {
+            let path = entry.map_err(|e| format!("KX_EXTRA_LISTS: can't read {}: {e}", dir.display()))?.path();
+            if path.is_dir() {
+                walk(&path, files)?;
+            } else if path.extension().is_some_and(|x| x == "txt") {
+                files.push(path);
+            }
+        }
+        Ok(())
+    }
+    let mut lists = Vec::new();
+    for folder in PROTECTED {
+        let dir = repo.join("decks").join(folder);
+        let mut files = Vec::new();
+        walk(&dir, &mut files)?;
+        files.sort();
+        let before = lists.len();
+        for file in files {
+            let text = std::fs::read_to_string(&file).map_err(|e| format!("KX_EXTRA_LISTS: can't read {}: {e}", file.display()))?;
+            // The deck parser panics on an unknown Energy type rather than erring: such a file is skipped too.
+            if let Ok(Ok(deck)) = std::panic::catch_unwind(|| crate::Deck::from_string(&text)) {
+                lists.push((file.display().to_string(), card_ids(&deck)));
+            }
+        }
+        if lists.len() == before {
+            return Err(format!("KX_EXTRA_LISTS: {} holds no list to check against; is {} the repository?", dir.display(), repo.display()));
+        }
+    }
+    Ok(lists)
+}
+
+/// Parses `name=path;name=path` and reads each list, checking it against `repo`'s protected lists. Refused: a path under
+/// decks/brews or decks/dustin, a list holding the same cards as one there (a copy anywhere else), an unreadable or
+/// invalid list, a missing or repeated name. The variable reaches both seats, so the meta side must never get such a list.
+pub fn parse_extra_lists_against(spec: &str, repo: &std::path::Path) -> Result<Vec<ExtraList>, String> {
+    let entries: Vec<&str> = spec.split(';').map(str::trim).filter(|e| !e.is_empty()).collect();
+    if entries.is_empty() {
+        return Ok(Vec::new());
+    }
     let mut lists: Vec<ExtraList> = Vec::new();
-    for entry in spec.split(';').map(str::trim).filter(|e| !e.is_empty()) {
+    let mut parsed = Vec::new();
+    for entry in entries {
         let (name, path) = entry
             .split_once('=')
             .map(|(n, p)| (n.trim(), p.trim()))
             .filter(|(n, p)| !n.is_empty() && !p.is_empty())
             .ok_or_else(|| format!("KX_EXTRA_LISTS: '{entry}' is not name=path"))?;
-        if under_brews(path) {
-            return Err(format!("KX_EXTRA_LISTS: {path} is under decks/brews; a brew's list is never handed to a pilot"));
+        if under_protected(path) {
+            return Err(format!(
+                "KX_EXTRA_LISTS: {path} is under decks/brews or decks/dustin; a brew's list or one of Dustin's is never handed to a pilot"
+            ));
         }
-        if lists.iter().any(|l| l.name == name) {
+        if parsed.iter().any(|(n, _)| *n == name) {
             return Err(format!("KX_EXTRA_LISTS: the name '{name}' is given twice"));
         }
-        let bytes = std::fs::read(path).map_err(|e| format!("KX_EXTRA_LISTS: {path}: {e}"))?;
+        parsed.push((name, path));
+    }
+    let protected = protected_lists(repo)?;
+    let checked_against = format!("{}: {} lists under decks/brews and decks/dustin", repo.display(), protected.len());
+    for (name, path) in parsed {
+        let bytes = std::fs::read(path.replace('\\', "/")).map_err(|e| format!("KX_EXTRA_LISTS: {path}: {e}"))?;
         let text = String::from_utf8_lossy(&bytes);
         let deck = crate::Deck::from_string(&text).map_err(|e| format!("KX_EXTRA_LISTS: {path}: {e}"))?;
-        lists.push(ExtraList { name: name.to_string(), path: path.to_string(), fnv1a64: format!("{:016x}", fnv1a64(&bytes)), deck });
+        if let Some((copy_of, _)) = protected.iter().find(|(_, ids)| *ids == card_ids(&deck)) {
+            return Err(format!(
+                "KX_EXTRA_LISTS: {path} holds the same cards as {copy_of} (under decks/brews or decks/dustin); a brew's list or one of Dustin's is never handed to a pilot"
+            ));
+        }
+        lists.push(ExtraList {
+            name: name.to_string(),
+            path: path.to_string(),
+            fnv1a64: format!("{:016x}", fnv1a64(&bytes)),
+            deck,
+            checked_against: checked_against.clone(),
+        });
     }
     Ok(lists)
+}
+
+/// `parse_extra_lists_against` the repository `find_repository` finds (none is needed for an empty spec).
+pub fn parse_extra_lists(spec: &str) -> Result<Vec<ExtraList>, String> {
+    let paths: Vec<&str> = spec.split(';').filter_map(|e| e.split_once('=').map(|(_, p)| p.trim())).collect();
+    if paths.is_empty() {
+        return parse_extra_lists_against(spec, std::path::Path::new(""));
+    }
+    parse_extra_lists_against(spec, &find_repository(&paths)?)
 }
 
 /// The lists in `KX_EXTRA_LISTS`, read once per process (none if it is unset).

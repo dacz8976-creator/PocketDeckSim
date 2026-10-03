@@ -7,6 +7,9 @@
 //! a pool pairing uses the exact list, and LAB against a list outside the pool is REALISTIC exactly; a path under
 //! decks/brews is refused for KX_EXTRA_LISTS (the variable itself: playout_pilot_extra_lists_test.rs); with a time budget
 //! no switch before 8 rounds; an omniscient call keeps km's move and is counted.
+//! Round 2 (Oct 3): a copy of a brew's or one of Dustin's lists is refused by its cards wherever it lives, decks/dustin
+//! paths and resolved paths too, and unreadable protected folders; the time-budget test runs in a 2-thread pool, so it
+//! checks the same thing on any machine. Every pilot here is built without the environment's extra lists.
 use std::collections::BTreeMap;
 
 use deckgym::actions::{Action, SimpleAction};
@@ -14,7 +17,9 @@ use deckgym::card_ids::CardId;
 use deckgym::database::get_card_by_enum;
 use deckgym::models::{EnergyType, PlayedCard};
 use deckgym::observation::{PlayerObservation, RevealedKnowledge};
-use deckgym::players::playout_player::{parse_extra_lists, DecisionReport, Knowledge, PlayoutParams, PlayoutPlayer};
+use deckgym::players::playout_player::{
+    parse_extra_lists, parse_extra_lists_against, protected_lists, DecisionReport, Knowledge, PlayoutParams, PlayoutPlayer,
+};
 use deckgym::players::{create_players, parse_player_code, Player, PlayerCode};
 use deckgym::test_support::{get_test_game_with_board, load_test_decks};
 use deckgym::{Deck, Game, State};
@@ -27,7 +32,12 @@ fn small(knowledge: Knowledge, z: f64) -> PlayoutParams {
 
 fn pilot(params: PlayoutParams) -> PlayoutPlayer {
     let (deck_a, deck_b) = load_test_decks();
-    PlayoutPlayer::new(deck_a, deck_b, params)
+    fresh(deck_a, deck_b, params)
+}
+
+/// A pilot with no extra lists, whatever the shell's KX_EXTRA_LISTS says.
+fn fresh(deck: Deck, opponent_list: Deck, params: PlayoutParams) -> PlayoutPlayer {
+    PlayoutPlayer::with_extra_lists(deck, opponent_list, params, Vec::new())
 }
 
 /// km3's own choice for `actor` at `state`, with the decision randomness the pilot is given.
@@ -236,8 +246,8 @@ fn a_whole_game_plays_to_the_end() {
     }
 }
 
-/// REALISTIC reads no list: two pilots built with different opponent lists (the real one, and a pool list) give the same
-/// report, field for field, at the same observation and seed.
+/// REALISTIC reads no list: two pilots built with different opponent lists (the real one, and a pool list cut to 19
+/// cards, so even the length differs) give the same report, field for field, at the same observation and seed.
 #[test]
 fn realistic_reads_no_opponent_list() {
     for seed in [3u64, 11] {
@@ -245,10 +255,14 @@ fn realistic_reads_no_opponent_list() {
         let actions = state.generate_possible_actions().1;
         let observation = PlayerObservation::from_state(&state, 0, &RevealedKnowledge::default());
         let (deck_a, deck_b) = load_test_decks();
-        let real = PlayoutPlayer::new(deck_a.clone(), deck_b, small(Knowledge::Realistic, 2.0))
+        let mut short = pool_deck("t-suicune");
+        short.cards.pop();
+        assert_ne!(short.cards.len(), deck_b.cards.len());
+        let real = fresh(deck_a.clone(), deck_b, small(Knowledge::Realistic, 2.0))
             .evaluate(&mut StdRng::seed_from_u64(21), &observation, &actions);
-        let other = PlayoutPlayer::new(deck_a, pool_deck("t-suicune"), small(Knowledge::Realistic, 2.0))
+        let other = fresh(deck_a, short, small(Knowledge::Realistic, 2.0))
             .evaluate(&mut StdRng::seed_from_u64(21), &observation, &actions);
+        assert!(real.rounds > 0, "seed {seed}: play-outs ran: {}", real.reason);
         assert_eq!(fingerprint(&real), fingerprint(&other), "seed {seed}");
     }
 }
@@ -259,13 +273,13 @@ fn lab_on_a_pool_pairing_uses_the_exact_list() {
     let state = midgame_with(pool_deck("t-altaria"), pool_deck("t-suicune"), 3);
     let actions = state.generate_possible_actions().1;
     let observation = PlayerObservation::from_state(&state, 0, &RevealedKnowledge::default());
-    let mut lab = PlayoutPlayer::new(pool_deck("t-altaria"), pool_deck("t-suicune"), small(Knowledge::Lab, 2.0));
+    let mut lab = fresh(pool_deck("t-altaria"), pool_deck("t-suicune"), small(Knowledge::Lab, 2.0));
     assert!(lab.knowledge_label().starts_with("LAB (laboratory condition"), "{}", lab.knowledge_label());
     let report = lab.evaluate(&mut StdRng::seed_from_u64(21), &observation, &actions);
     assert_eq!(report.rounds, 4);
     assert_eq!(report.lists, BTreeMap::from([("the exact list (LAB)".to_string(), 4)]));
     // REALISTIC at the same position draws from the pool instead.
-    let real = PlayoutPlayer::new(pool_deck("t-altaria"), pool_deck("t-suicune"), small(Knowledge::Realistic, 2.0))
+    let real = fresh(pool_deck("t-altaria"), pool_deck("t-suicune"), small(Knowledge::Realistic, 2.0))
         .evaluate(&mut StdRng::seed_from_u64(21), &observation, &actions);
     assert!(real.lists.keys().all(|k| !k.contains("LAB")), "{:?}", real.lists);
 }
@@ -337,6 +351,7 @@ fn an_extra_list_under_decks_brews_is_refused() {
         "mine=..\\decks\\brews\\brew-01-arceus-crobat-xatu.txt",
         "mine=../decks/brews/no-such-file.txt",
         "ok=../decks/screen/opponents/t-suicune.txt;mine=../decks/BREWS/brew-01-arceus-crobat-xatu.txt",
+        "mine=../decks/screen/../brews/brew-01-arceus-crobat-xatu.txt",
     ] {
         let refused = parse_extra_lists(spec).expect_err(spec);
         assert!(refused.contains("decks/brews"), "{spec}: {refused}");
@@ -350,25 +365,39 @@ fn an_extra_list_under_decks_brews_is_refused() {
     }
 }
 
-/// With a time budget, no move replaces km's before 8 rounds: here the budget (1 ms) ends after the first batch of
-/// rounds, one per thread.
+/// With a time budget, no move replaces km's before 8 rounds. In a 2-thread pool a batch is 2 rounds, and the 1 ms budget
+/// ends after the first, so every decision here has 2 rounds whatever the machine's cores. km's move is kept at every
+/// position, and at least one has a rival leading (the immediate-win board, or a middle-game position), so the reason
+/// "fewer than the 8" is always checked.
 #[test]
 fn with_a_time_budget_no_switch_before_8_rounds() {
-    for seed in [3u64, 11] {
-        let state = midgame(seed);
+    let threads = rayon::ThreadPoolBuilder::new().num_threads(2).build().unwrap();
+    let immediate_win = {
+        let mut game = get_test_game_with_board(
+            vec![PlayedCard::from_id(CardId::B1151MegaAbsolEx).with_energy(vec![EnergyType::Darkness, EnergyType::Darkness])],
+            vec![PlayedCard::from_id(CardId::A1115Abra)],
+        );
+        let mut state = game.get_state_clone();
+        state.move_generation_stack.clear();
+        game.set_state(state);
+        game.get_state_clone()
+    };
+    let mut led = 0;
+    for state in [immediate_win, midgame(3), midgame(11)] {
         let actions = state.generate_possible_actions().1;
         let observation = PlayerObservation::from_state(&state, 0, &RevealedKnowledge::default());
         let params = PlayoutParams { rollouts: 16, budget_ms: 1, ..small(Knowledge::Realistic, 0.0) };
-        let report = pilot(params).evaluate(&mut StdRng::seed_from_u64(9), &observation, &actions);
-        assert!(report.rounds >= 2, "seed {seed}: at least 2 rounds");
-        if report.rounds < 8 {
-            assert_eq!(report.chosen, report.km3, "seed {seed}: {} rounds, no switch: {}", report.rounds, report.reason);
-            let best = report.candidates.iter().map(|c| c.score).fold(f64::MIN, f64::max);
-            if report.candidates[report.km3].score < best {
-                assert!(report.reason.contains("fewer than the 8"), "seed {seed}: {}", report.reason);
-            }
+        let report = threads.install(|| pilot(params).evaluate(&mut StdRng::seed_from_u64(9), &observation, &actions));
+        assert_eq!(report.rounds, 2, "{}", report.reason);
+        assert_eq!(report.chosen, report.km3, "{}", report.reason);
+        let best = report.candidates.iter().map(|c| c.score).fold(f64::MIN, f64::max);
+        if report.candidates[report.km3].score < best {
+            assert!(report.reason.contains("fewer than the 8"), "{}", report.reason);
+            led += 1;
         }
+        eprintln!("time-budget position: km {} best {best} rounds {}: {}", report.candidates[report.km3].score, report.rounds, report.reason);
     }
+    assert!(led > 0, "no position had a rival leading, so the reason went unchecked");
 }
 
 /// The diagnostic entry with a full state keeps km's move, with no play-outs, and is counted (and traced with `_trace`).
@@ -382,4 +411,80 @@ fn an_omniscient_call_keeps_kms_move_and_is_counted() {
     let mut km3 = create_players(deck_a, deck_b, vec![parse_player_code("km3").unwrap(), parse_player_code("km3").unwrap()]).remove(0);
     assert_eq!(chosen, km3.decide_omniscient(&mut StdRng::seed_from_u64(9), &state, &actions));
     assert_eq!((p.omniscient, p.decisions), (1, 0));
+}
+
+/// A temporary folder of this test process's own.
+fn scratch(name: &str) -> std::path::PathBuf {
+    let dir = std::env::temp_dir().join(format!("kx_test_{}_{name}", std::process::id()));
+    std::fs::create_dir_all(&dir).unwrap();
+    dir
+}
+
+/// Dustin's own lists are refused by path too (decks/dustin), as given, once resolved, and written the Windows way.
+#[test]
+fn an_extra_list_under_decks_dustin_is_refused() {
+    for spec in [
+        "his=../decks/dustin/02-arceus-crobat.txt",
+        "his=../decks/screen/../dustin/02-arceus-crobat.txt",
+        "his=..\\decks\\Dustin\\02-arceus-crobat.txt",
+    ] {
+        let refused = parse_extra_lists(spec).expect_err(spec);
+        assert!(refused.contains("decks/dustin"), "{spec}: {refused}");
+    }
+}
+
+/// A copy of a brew's list or one of Dustin's, anywhere else (a test folder here; the position runner's decks/ folder in
+/// use), is refused by its cards: as copied, with its lines reordered, and with its Energy line dropped.
+#[test]
+fn a_copy_of_a_brew_or_dustins_list_is_refused_by_its_cards() {
+    let dir = scratch("copies");
+    for (source, copy) in [
+        ("../decks/brews/brew-08-entei-rainbow-cave.txt", "brew08.txt"),
+        ("../decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt", "draftA.txt"),
+        ("../decks/dustin/03-wailord-indeedee-wall.txt", "deck03.txt"),
+    ] {
+        let text = std::fs::read_to_string(source).unwrap();
+        let reordered: String = {
+            let mut lines: Vec<&str> = text.lines().filter(|l| !l.trim().is_empty()).collect();
+            lines.reverse();
+            lines.join("\n")
+        };
+        let no_energy: String = text.lines().filter(|l| !l.starts_with("Energy:")).collect::<Vec<_>>().join("\n");
+        for (prefix, body) in [("", text.clone()), ("reordered_", reordered), ("no_energy_", no_energy)] {
+            let path = dir.join(format!("{prefix}{copy}"));
+            std::fs::write(&path, body).unwrap();
+            let spec = format!("computer={}", path.display());
+            let refused = parse_extra_lists(&spec).expect_err(&spec);
+            assert!(
+                refused.contains("holds the same cards as") && refused.contains(source.trim_start_matches("../")),
+                "{spec}: {refused}"
+            );
+        }
+    }
+    // A list that is no copy is read, with what it was checked against.
+    let lists = parse_extra_lists("computer=../decks/screen/opponents/t-suicune.txt").unwrap();
+    assert!(lists[0].checked_against.contains("lists under decks/brews and decks/dustin"), "{}", lists[0].checked_against);
+    // Every .txt in the two folders reads as a list (none is skipped).
+    fn txt_files(d: &std::path::Path) -> usize {
+        std::fs::read_dir(d)
+            .unwrap()
+            .map(|e| e.unwrap().path())
+            .map(|p| if p.is_dir() { txt_files(&p) } else { p.extension().is_some_and(|x| x == "txt") as usize })
+            .sum()
+    }
+    let repo = std::path::Path::new("..");
+    assert_eq!(
+        protected_lists(repo).unwrap().len(),
+        txt_files(&repo.join("decks/brews")) + txt_files(&repo.join("decks/dustin"))
+    );
+}
+
+/// No protected folders to check against (a folder that isn't the repository): refused, with the reason.
+#[test]
+fn extra_lists_are_refused_when_the_protected_folders_cant_be_read() {
+    let empty = scratch("not_a_repository");
+    let refused = parse_extra_lists_against("computer=../decks/screen/opponents/t-suicune.txt", &empty).unwrap_err();
+    assert!(refused.contains("can't read") && refused.contains("decks"), "{refused}");
+    // An empty variable needs no repository.
+    assert!(parse_extra_lists_against("", &empty).unwrap().is_empty());
 }
