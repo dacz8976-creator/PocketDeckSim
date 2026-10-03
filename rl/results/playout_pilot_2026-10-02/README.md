@@ -12,6 +12,12 @@ sections 5 and 9 (the addendum's amendments win). Branch `claude/playout-pilot`,
 - **Fixes, round 2 (Oct 3).** The laptop's second look at round 1 (d513e37b): brew and Dustin's lists refused by content as
   well as by path, the time-budget test made machine-independent, and smaller test and code items (section "Fixes, round
   2"). The checks were rerun.
+- **Fixes, round 3 (Oct 3).** From Astra's review, set by the Fable coordinator via Dustin. The coordinator calls it "fix
+  round 2"; it is numbered 3 here because the laptop's round 2 came first.
+  - REALISTIC no longer models an unfamiliar opponent with contradictory Energy. With no consistent list, it uses filler
+    instead (section "Fixes, round 3").
+  - The laptop's development run uses the registered d513e37b build and is not affected. This round sits on top of the
+    branch.
 
 ## In short
 
@@ -43,7 +49,7 @@ tests. `mod.rs` and the rest of `engine/` are untouched.
      names alone, so on turn 1 against t-suicune (Water showing) about 7 play-outs in 8 modelled an opponent with no Water.
    - Now a list is consistent only if its Energy types include every type the zone shows.
    - With none consistent, "closest" ranks first by the seen cards a list can't account for, then by the zone types it
-     lacks.
+     lacks. (Replaced in round 3: there is no "closest" any more.)
 2. **The cap's ranking can't crash the game.**
    - Before, ranking the moves for the cap (one sampled world, each move applied) ran outside `catch_unwind`. An engine panic
      there would have ended the game, and in the strength harness it would have stopped the whole run.
@@ -128,6 +134,42 @@ From the laptop's second look at round 1 (d513e37b). Only the same two player fi
    - The opponent's list is kept in the pilot only for LAB, so "REALISTIC reads no list" holds by construction: REALISTIC
      holds none.
 
+## Fixes, round 3 (Oct 3): Astra's review
+
+Set by the Fable coordinator via Dustin. Only `playout_player.rs` changed, plus its tests.
+
+- **The problem.** REALISTIC's fallback could model an unfamiliar opponent with contradictory Energy.
+  - Example: Swablu seen with a Water Energy Zone. t-altaria holds Swablu but plays Psychic; t-suicune plays Water but holds
+    no Swablu.
+  - The "closest" rule ranked the seen cards first, so it chose t-altaria. The play-outs then rolled Psychic Energy for an
+    opponent whose zone showed Water.
+- **The fix.** The pool is filtered first by the opponent's visible Energy Zone: a list whose Energy types don't cover every
+  type the zone shows is inconsistent. Then the remaining lists are filtered by the seen cards (each seen name at least as
+  often as seen). A list left after both is drawn uniformly, as before.
+- **When no list fits,** no list is borrowed. The unseen part is built from the seen cards' types only:
+  - the opponent's hidden hand and deck are filler: unknown cards, which the opponent can draw but never play. No named card
+    is invented;
+  - its Energy is the types its zone shows (the seen Pokémon's own types if the zone shows none);
+  - the trace labels such rounds "no consistent list (filler; Energy [...])". There is no "closest" any more.
+- **Setup.** Filler holds no Basic, so an opponent still to set up couldn't. Such a decision, with no consistent list and
+  the opponent's board still empty, keeps km's move and says so.
+- **Tests.**
+  - The failing tests came first (c6af74fd, `round3_tests_before.log`). The Swablu/Water case was modelled as
+    "t-altaria (closest, 1 of 1 tied; no list consistent)".
+  - After the fix (e02c9d65) they pass. One sampled world in that position gives a filler opponent with Water only, and its
+    play-outs run: 4 rounds, none failed.
+  - The world-level test's board got a Grass Energy for player 0, so its decision has alternatives.
+  - The time-budget test's middle-game positions of the test decks no longer had a rival leading after the fix. Their
+    opponent is now filler, so the play-outs changed. Two LAB positions of the pool pairing were added, which round 3
+    leaves alone. The test still requires one position with a rival leading.
+- **What it changes, and what it doesn't.**
+  - Against an opponent in the pool (the strength harness's panel lists), nothing: their real list always covers their zone
+    and their cards.
+  - Against an unfamiliar opponent (the smoke's Weezing-Arbok, the position runner's ladder opponents unless given by
+    `KX_EXTRA_LISTS`), the play-outs now model an opponent who plays only what is already on the board, with dead draws,
+    instead of a wrong meta list.
+  - That model is too weak an opponent, so the pilot's play-outs there will look optimistic; see "What to expect to go wrong".
+
 ## What it does
 
 The pilot's code is `kx<N>`, for example `kx3`. It is a new player on top of km<N>.
@@ -167,13 +209,13 @@ It never reads the real game state. The opponent's hidden cards come from a list
   - the pool is the lists under `decks/screen/opponents` and `decks/research`, embedded in
     `engine/src/players/playout_pool.rs` with each file's sha256. Duplicates are removed at load, leaving 8 lists, plus any
     extra lists from `KX_EXTRA_LISTS` (below).
-  - The draw is uniform among the lists consistent with two things:
+  - The draw is uniform among the lists consistent with two things, checked in this order (round 3):
+    - the Energy Zone: the list's Energy types must include every type the zone shows;
     - the opponent's cards seen so far, matched by name. A card counts as seen if it is in play, under an evolution,
-      attached, discarded, their Stadium, revealed from their hand, or known in their deck (top cards included);
-    - the Energy Zone: the list's Energy types must include every type the zone shows.
+      attached, discarded, their Stadium, revealed from their hand, or known in their deck (top cards included).
   - The unseen cards come from the drawn list, after the seen printings are swapped in (copy for copy).
-  - With no list consistent, it takes one of the closest: fewest seen cards unaccounted for, then fewest zone types
-    missing. It picks at random among the equally close, and the trace says "closest, 1 of k tied; no list consistent".
+  - With no list consistent, no list is borrowed. The unseen cards are filler (unknown cards: drawn, never played), the
+    Energy is the seen types only, and the trace says "no consistent list (filler; Energy [...])".
   - The opponent's real list is always consistent when it is in the pool. So against the strength harness's 8 panel lists,
     which are all in the pool, the fallback never happens.
   - The built-in pool holds no brew and none of Dustin's lists, and an extra list can't be one either: refused by path
@@ -259,38 +301,39 @@ such a hand, as the engine repairs a real one.
 
 ### km3 and the official engine are unchanged
 
-Rerun after round 2, on 8205ba8b (the README commit after it changes no code). The same checks passed on f1aacbe2 and
-after round 1 (c79562c1, d513e37b); the laptop repeated the first two on f1aacbe2.
+Rerun after round 3, on e02c9d65 (the README commit after it changes no code). The same checks passed on f1aacbe2, after
+round 1 (c79562c1, d513e37b) and after round 2 (8205ba8b); the laptop repeated the first two on f1aacbe2.
 
 - **The engine's diff from main-8626a35:**
   - `engine/src/players/mod.rs` gains 12 lines: the two module lines, the `KX` code, its parse and its player. The file keeps
-    its stored Windows line endings. Rounds 1 and 2 didn't touch it.
+    its stored Windows line endings. Rounds 1 to 3 didn't touch it.
   - The new files are `playout_player.rs`, `playout_pool.rs`, the two test files and the smoke example.
   - Nothing else in `engine/` changes. No other code reaches the new player.
 - **km3 game for game.** `deckgym` built from this branch and the official program `rl/engine-2026-10-02/deckgym` both ran
   step 10's command here: km3 v km3, 240 games, research Altaria v Blaziken, seed 7,100, `--seed-stream`.
   - They agree on every field of all 240 per-game results: winner, points, turns, plies, actions per player and both search
-    seeds. The games' digest is 9dde28db2de6c9bc for both, as on f1aacbe2 and after round 1.
+    seeds. The games' digest is 9dde28db2de6c9bc for both, as on f1aacbe2 and after rounds 1 and 2.
   - Both equal the pinned record `engine_switch_rules_2026-10/5a18d31_10_cli_km3.txt` on every line but the wall time:
     149-91-0.
   - Files: `harness/simulate_km3_7100_*.txt`.
-- **The pinned self-check.** The strength harness, built from this branch's engine (program sha256 b26edc87...), prints the
+- **The pinned self-check.** The strength harness, built from this branch's engine (program sha256 d5aa439d...), prints the
   pinned km3 digest:
   `strength selfcheck --pilot km3 --deck-a decks/screen/opponents/t-altaria.txt --deck-b decks/screen/opponents/t-suicune.txt --games 12`
   gives `digest=81b572198c04d5d1` (8-4, 127 turns), as `strength_harness_tests_2026-10-02/TESTS.md` records.
   - The pilot's own self-check, `--pilot kx3_r2_c3_lab --games 2` (LAB, t-altaria v t-suicune), gives
-    `digest=3a2eb43bd9053639` twice, 139-140 s each. That is the same as before round 1. On an exact pool pairing none of the
-    two rounds' changes alters play: the printings already match, LAB ignores the zone and the pool's draw, and no ranking
-    panicked. `KX_PARAMS` names the exact list ("t-suicune, one of the pool's 8 meta lists") and carries `extra_lists`.
+    `digest=3a2eb43bd9053639` twice, 123 s each. That is the same as before round 1. On an exact pool pairing none of the
+    three rounds' changes alters play: the printings already match, LAB ignores the zone and the pool's draw (round 3's
+    filter included), and no ranking panicked. `KX_PARAMS` names the exact list ("t-suicune, one of the pool's 8 meta lists") and carries `extra_lists`.
   - File: `harness/strength_selfcheck.txt`.
-- **The full suite.** `cargo test --release --features test-utils` on the final code: 2,042 passed, 0 failed, 0 ignored: the 2,025 before round 1, its 14 new tests and round 2's 3. The play-out tests take about
+- **The full suite.** `cargo test --release --features test-utils` on the final code: 2,044 passed, 0 failed, 0 ignored: the 2,025 before round 1, its 14 new tests, round 2's 3 and round
+  3's 2 (3 added, 1 replaced). The play-out tests take about
   two minutes of that.
   - File: `suite.log`.
 
 ### The tests
 
 `engine/tests/playout_pilot_test.rs`, `engine/tests/playout_pilot_extra_lists_test.rs` and the unit tests at the end of
-`playout_player.rs`: 24 in all, every one passing on the final code. Every pilot the tests build directly has no extra
+`playout_player.rs`: 26 in all, every one passing on the final code. Every pilot the tests build directly has no extra
 lists, whatever the shell's `KX_EXTRA_LISTS` says (round 2).
 
 The first 7 were written and committed before the player (a3612b71): `tests_before.log`, where they fail to compile with no
@@ -317,7 +360,7 @@ ran as REALISTIC; these use a pool pairing where LAB matters.
 | `a_hidden_card_from_outside_the_opponents_list_changes_no_choice` | an opponent hand card replaced by Bulbasaur (not in their list): same observation, same REALISTIC move through `Game` |
 | `the_lab_choice_on_a_pool_pairing_cannot_depend_on_hidden_cards` | the no-leak swap on t-altaria v t-suicune: the same LAB move through `Game` |
 | `an_extra_list_under_decks_brews_is_refused` | `KX_EXTRA_LISTS` entries under decks/brews refused (forward and back slashes, any case, missing file, and `../decks/screen/../brews/...` once resolved); bad entries refused; a good one read with its hash |
-| `with_a_time_budget_no_switch_before_8_rounds` | in a 2-thread pool with a 1 ms budget, every decision stops at 2 rounds on any machine and keeps km's move. On the immediate-win board km3 takes the win itself; at a middle-game position (seed 3) a rival leads by +0.5, and the reason says "fewer than the 8" |
+| `with_a_time_budget_no_switch_before_8_rounds` | in a 2-thread pool with a 1 ms budget, every decision stops at 2 rounds on any machine and keeps km's move. On the immediate-win board km3 takes the win itself. Round 3 changed the test decks' middle-game play-outs (their opponent is now filler), so two LAB positions of t-altaria v t-suicune were added; at its seed-3 position a rival leads by +0.5, and the reason says "fewer than the 8" |
 | `an_extra_list_under_decks_dustin_is_refused` (round 2) | decks/dustin paths refused: as given, once resolved, and with backslashes and another case |
 | `a_copy_of_a_brew_or_dustins_list_is_refused_by_its_cards` (round 2) | copies of brew-08, draft A and Dustin's deck 03 in another folder are refused by their cards: as copied, with the lines reversed, and with no Energy line. A list that is no copy is read, with `checked_against`. Every `.txt` in the two folders reads as a list |
 | `extra_lists_are_refused_when_the_protected_folders_cant_be_read` (round 2) | against a folder that isn't the repository, a list is refused with "can't read"; an empty variable needs no repository |
@@ -325,7 +368,9 @@ ran as REALISTIC; these use a pool pairing where LAB matters.
 | `an_extra_list_makes_lab_exact_and_realistic_can_draw_it` (its own file: the variable is read once per process) | with `KX_EXTRA_LISTS=arbok=example_decks/weezing-arbok.txt`, LAB against that list is exact and names it; REALISTIC draws only it once the Weezing line is seen |
 | unit: `the_pool_holds_8_lists_once_duplicates_are_removed` | 8 lists, all t-X, and the label says 8 |
 | unit: `a_list_must_hold_the_energy_its_zone_shows` | Water showing: only t-suicune, every draw; Grass: t-sceptile and t-vespiquen, both drawn |
-| unit: `the_closest_tie_is_broken_at_random` | a seen Bulbasaur and a Metal zone fit none: all 8 drawn over 80 seeds; seen cards count before zone types |
+| unit: `the_zone_filters_first_then_the_seen_cards` (round 3; replaced round 1's closest-tie test) | Psychic showing and a seen Swablu leave t-altaria; with Metal showing no list covers the zone, so the unseen part is filler of Metal at every seed, whatever is seen |
+| unit: `swablu_with_a_water_zone_is_never_modelled_as_a_psychic_list` (round 3) | Astra's case: Swablu seen, Water showing: "no consistent list", Energy Water only, no named card but the seen Swablu, 20 cards |
+| unit: `an_unfamiliar_opponent_is_played_out_as_filler_of_its_zone` (round 3) | the same through a sampled world (every hidden card of the opponent's is filler, Energy Water) and through the play-outs (4 rounds, none failed, every round "no consistent list") |
 | unit: `the_seen_printings_are_adopted_copy_for_copy` | two seen copies of one Sabrina printing against two different printings take both slots; an exact printing stays |
 | unit: `known_deck_top_cards_count_as_seen_once` | a known deck-top card counts as seen, once even when it is also listed as in the deck |
 
@@ -336,8 +381,11 @@ panic on purpose.
 
 **Run on f1aacbe2, before round 1.** It was not rerun, as the review asked. What round 1 would change in it is not measured.
 - Weezing-arbok is not in the pool. Its zone shows Darkness (Ekans and Koffing are Darkness), and no pool list holds its
-  Pokémon by name. So the closest lists would now be the two Darkness lists, t-hydreigon and t-weezing, at random,
-  instead of t-altaria 85% of the time.
+  Pokémon by name.
+  - After round 1, the closest lists would have been the two Darkness lists, t-hydreigon and t-weezing, at random, instead
+    of t-altaria 85% of the time.
+  - After round 3, no list is consistent once its first Pokémon is seen. Its hidden cards are then filler, with Darkness
+    Energy.
 - The times and the decisions' structure would not change.
 
 `engine/examples/playout_smoke.rs`: the pilot (`kx3` at its defaults, REALISTIC) on `example_decks/venusaur-exeggutor.txt`
@@ -393,10 +441,11 @@ START_HERE), each with the pilot in both seats. Each deal was also played km3 v 
 - **Runs here:**
   - km3's self-check prints the pinned digest (above).
   - `strength selfcheck --pilot kx3_r2_c3_lab --games 2` (kx on both sides, t-altaria v t-suicune) gave `digest=3a2eb43bd9053639`
-    seven times:
+    nine times:
     - on f1aacbe2, twice before the container restart and once after, on a fresh build;
     - on c79562c1 after round 1, twice, on another fresh build;
     - on 8205ba8b after round 2, twice, on another;
+    - on e02c9d65 after round 3, twice, on another;
     - each run took 2 to 2½ minutes, and its stderr carries `KX_PARAMS` with the LAB label.
 - **LAB applies there.** The 8 panel lists are all in the pool, so `_lab` gets the exact panel list, and `_real` always finds the
   real list among the consistent ones.
@@ -420,7 +469,8 @@ START_HERE), each with the pilot in both seats. Each deal was also played km3 v 
   scores)". The choices table is produced as for any pilot.
 - **Time:** 29 positions × 12 seeds at about 16 s each comes to roughly 1½ hours on 4 threads.
 - **The opponent lists.** None of the positions' opponents (Snorlax, Teal Mask Ogerpon ex, Chingling, Shaymin, the fossils,
-  Meowscarada ex, Chandelure, Flygon ex) is in the pool. So REALISTIC uses the "closest" fallback at every position (below).
+  Meowscarada ex, Chandelure, Flygon ex) is in the pool. So REALISTIC uses the fallback at every position: since round 3,
+  filler, with no list (below).
   Since round 1, an opponent whose exact list is known, such as the fixed computer deck, can be given with `KX_EXTRA_LISTS`.
   Then LAB is exact against it, and REALISTIC can draw it.
 
@@ -439,19 +489,24 @@ START_HERE), each with the pilot in both seats. Each deal was also played km3 v 
     because km3 didn't follow up with the attach after the draw. The pilot exploits km3's weaknesses as well as finding real
     improvements, and the trace alone can't tell the two apart.
 - **An opponent whose list is not in the pool.**
-  - **The problem.** Once such an opponent shows a card no pool list holds, no list is consistent. The play-outs then model
-    that opponent holding the remaining cards of the closest meta list.
-  - **Before round 1.** The tie went to the first list in the pool's order, t-altaria: 85% of the smoke's rounds against
-    Weezing-Arbok.
-  - **Since round 1.** The closest also counts the Energy Zone, and ties are broken at random. A known list can be added with
-    `KX_EXTRA_LISTS`.
-  - **Still open.** An unknown ladder list is still modelled by the nearest of 8 meta lists.
+  - **The problem.** Once such an opponent shows a card no zone-matching pool list holds, no list is consistent.
+  - **Before round 1.** The play-outs modelled that opponent with the first list in the pool's order, t-altaria: 85% of the
+    smoke's rounds against Weezing-Arbok.
+  - **Rounds 1 and 2.** The "closest" list, at random among ties. It could contradict the opponent's Energy (Astra's
+    Swablu/Water case).
+  - **Since round 3.** Filler: the opponent plays only what is already on the board, and draws dead cards, with the Energy
+    its zone shows. No Energy contradiction and no invented cards. But it is **too weak an opponent**: it never plays a
+    Supporter, an evolution or a new Basic.
+    - So against an unfamiliar opponent the play-outs are optimistic, and moves that only work against a passive opponent
+      can look good.
+    - In the trace, those rounds say "no consistent list".
+  - **The remedy.** Give a known list with `KX_EXTRA_LISTS`.
   - **The position runner.** It meets this at every position not covered by an extra list.
   - **The strength harness.** It never happens there.
   - **Further repairs, not made:**
     - widen the pool. Which lists to add is the coordinator's or Dustin's call; the gauntlet lists and the scoreboard's
       Limitless lists are candidates;
-    - build the unseen part around the seen cards.
+    - fill the unseen part with generic cards of the seen types rather than dead ones.
 - **Noise.** At R = 16 the standard error of a paired difference is often 0.08-0.15 (8-15 points of win rate). So only large
   gains switch the move, and small real gains are lost. Raising R costs time in proportion.
 - **Many candidates, one winner.** The best of up to 11 rivals is chosen after seeing their scores, so its lead is biased
