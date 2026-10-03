@@ -1,8 +1,8 @@
-# Pause games vs km3: draft A, his turns 1-7 (Oct 2, 2026)
+﻿# Pause games vs km3: draft A, his turns 1-7 (Oct 2, 2026)
 
 **One-line answer.** On the 20 turn starts of his turns 1-4 (five Draft A games), km3's first action matches his in 8, splits in 7 (draw-card choices that change with the sampled deck order) and differs in 5; its whole plan up to the first draw matches in 3. On the 12 turn starts of his turns 5-7 it matches in 5 and differs in 7 (these turns have more cards in play and more to choose from), the whole plan in 2. Over all 32 turn starts, where both his line and km3's reach an attack, **km3 uses a different attack in 1 of 22**: 114458 turn 10, where he attacked with the four-Water Lapras (Surf) and km3 retreats it and attacks with the Ninetales ex (Binding Snow). Everything else that differs is the plan around the attack: which Supporter (Irida on 11 turns where he did not), which draw card first (seed noise), healing and retreat/promotion order. On Turbo Shark's Bench Energy km3's scores differ by 10-50 between targets, with ties, and its pick matched his on 2 of 4 real choices. km3 recognised all three immediate wins (143837 t13, 114458 t12, 143309 t10). No turn lets me say who was right by outcome. Nothing here says anything about strength.
 
-**Added later on Oct 2: turns 5-7** (see the section below), the held-out set of positions, and milestone tags on every position; then **deck 03** (three of the five Wailord games, 15 turn starts, from the review text alone: see "Deck 03" below). Later the same evening the other two deck 03 games (021402, 022135) were added from Codex's hand packets (see "Codex hands"), and then ten brew 8 and forty approximate-list positions from the old Ladder Log games (see the last section); the page now holds 111 positions.
+**Added later on Oct 2: turns 5-7** (see the section below), the held-out set of positions, and milestone tags on every position; then **deck 03** (three of the five Wailord games, 15 turn starts, from the review text alone: see "Deck 03" below). Later the same evening the other two deck 03 games (021402, 022135) were added from Codex's hand packets (see "Codex hands"), and then ten brew 8 and forty approximate-list positions from the old Ladder Log games (see the last section); the page now holds 176 positions (then the draft A v computer-deck positions, see the section "Draft A against the fixed computer deck").
 
 ## What was done
 
@@ -77,7 +77,7 @@ Not unambiguous on any turn. The narrowest fact: on 114458 t08 his Ninetales ex 
 
 **Held-out set.** A quarter of the games, chosen by game and not by turn, by a fixed rule written in `positions_A.py` and `positions_heldout.json`: a game is held out when `int(sha256('pause-heldout-v1|' + game_id), 16) % 4 == 0` (game id = the recording stem, `ladder-<stem>` for the Ladder Log). It is stable as games are added. For these five games that holds out **143309** (its 5 positions); the development games are 114458, 115323, 132311 and 143837 (27 positions with the two mid-turn ones). `run_pilot.sh` skips held-out positions while `positions_heldout.json` says `locked: true`, and `filter_positions.py` refuses `--include-heldout` while it is locked; nobody flips it until the laptop Opus or the coordinator says so. (km3, the reference, was run on everything, and the findings above include 143309: the lock concerns development pilots.)
 
-**Milestone tags** (my reading of what each turn is about; a position can carry several; each row of `TABLES.md` shows them): preparing an attacker (38 of the 111 positions), managing a sacrifice (11), recognising an immediate win (5), adapting when the plan fails (4); 49 positions carry a tag (counts after the Ladder Log games were added; the approximate-list games carry only the one win tag, the others are not tagged). The positions with their tags are in `positions_A.json` (`milestones`).
+**Milestone tags** (my reading of what each turn is about; a position can carry several; each row of `TABLES.md` shows them): preparing an attacker (85 of the 176 positions), managing a sacrifice (18), recognising an immediate win (12), adapting when the plan fails (6); 102 positions carry a tag (counts after the computer-deck games were added; the approximate-list games carry only the one win tag, and the computer-deck positions are tagged by mechanical rules, see their section). The positions with their tags are in `positions_A.json` (`milestones`).
 
 ## Deck 03 (the Wailord / Indeedee wall): 15 more turn starts, text only (Oct 2)
 
@@ -134,7 +134,7 @@ Source: Codex's retrospective ledgers (`Recording_QA/RETROSPECTIVE_HANDS_2026-10
 
 Left out: `20260908_012720000` (Ogerpon / Whimsicott) is marked a computer battle by Codex (a visible Auto option), so its decisions are the game's: it belongs to the Auto set, not here.
 
-**Held-out.** The fixed rule holds out two of these games: `ladder-20260908_022627000` (6 positions) and `ladder-20260908_190933000` (5). With 143309 that is 16 held-out positions; the lock is unchanged.
+**Held-out.** The fixed rule holds out two of these games: `ladder-20260908_022627000` (6 positions) and `ladder-20260908_190933000` (5). With 143309 that is 16 held-out positions (24 once the computer-deck game held out in the last section is counted); the lock is unchanged.
 
 **What km3 does (12 seeds each; the brew 8 rows count, the approximate rows are for orientation only).** Brew 8, 10 turn starts: first action equal in 6, the whole plan to the first draw in 1. It plays Flame Patch earlier than he did (020916 t03), plays several Lucky Ice Pops where he played one (002539 t04: his Pop was tails; km3's plan assumes it can chain them), and does not Copycat on 002539 t06 (Lady heal and an attack instead), and on 020916 t09 (deck empty, Cyrus brings a 30-HP Moltres ex) takes the same win he did. On the approximate lists km3 recognises the one immediate win in them (021327 t12, Boost Dash for the Mewtwo ex's last 70 HP: 12 of 12 seeds; Dustin's turn ended with the opponent's concession before he attacked); the other differences there are ordinary (retreat before evolving, Supporter order, which Rattata evolves).
 
@@ -144,6 +144,42 @@ Left out: `20260908_012720000` (Ogerpon / Whimsicott) is marked a computer battl
 
 **Harness.** Deck keys `D03`, `B08` and `R…`; `run_pilot.sh` and `pgd_runall.sh` pass every `reconstructed_decks/*.txt` as `--deck <name>=<file>`. `harness/check_positions.py` now allows the +20 / +30 HP of Giant Cape, Elegant Cape and Starting Plains.
 
+## Draft A against the fixed computer deck: 65 positions, km3 v Auto and km3 v Dustin (Oct 3)
+
+Source: Codex's batch `BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD` (8 recordings, all against the same computer deck, "Mega Blastoise ex & Wailord ex Deck (Deluxe Pack: Mega)", Step-Up Battle: Advanced): **5 Auto games** (`_auto_sol`: won 3-0, 3-2, 3-0, lost 2-3, won 3-0) and **3 of Dustin's own** (`_shark_sol`: three 3-0 wins). Their ledgers carry fresh owner-turn-start boards (typed Energy per Pokémon, Tool, HP, evolution stacks where witnessed), the hand at every owner turn start, plays in order and the decision maker. These games are excluded from the human Pause Games and the ladder (Dustin's routing); here they are test positions only.
+
+**Preflight (both passed, before anything was built).**
+1. `OWNER_DECK_SNAPSHOT.json` equals `decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt` card for card (20 = 20, the original draft A with two Misty).
+2. Every card of the computer's list (13 names) and of draft A (13 names) is `Complete` in the pinned engine's `card_status --json` for **every printing** of the name (the opponent's printings are not known): `blast_positions/engine_card_status_main-8626a35.json` (built from the same engine tree as the harness), `harness/preflight_blastoise.py`.
+
+**What was built.** Every owner turn start with a fully named hand: **65 of 65 (0 left out)**, 39 Auto and 26 Dustin. `harness/blast_to_positions.py` turns each ledger into positions (hand, both boards in screen order, points, Stadium, opponent hand = Codex's fan count, his discard from the plays, his plan from the plays with every target resolved to a board index); the data is `blast_positions/bd_final.json`. Checks: the checker (card ids exist, nothing beyond the 20-card list, HP, Energy types) reports 0 errors; the boards of the 24 positions of the three games whose supplement carries a table (a different reader's fresh native reads) match exactly (48 sides: names, HP, Water per Pokémon, order, points; `harness/cross_supp.py`); all 62 Energy attachments resolve to the Pokémon the ledger names; his unseen deck falls to 0 at exactly the turns where the ledger shows a failed draw (214254 t20 and t22), and the per-turn deck counts follow the draws.
+`hand_source: codex`, `exact_list: true`, `decision_maker: Auto | Dustin` on every position (the packets: Auto checked at every start in the five Auto games, no toggle or override seen; Dustin's three with Auto OFF; the game's Auto option visible in all eight, so they are computer battles).
+
+**Hidden cards kept uncertain as the reviews say.** The opponent's hand is a count only; its discard is not tracked (0); its printings are not known (chosen by the HP the ledger shows: Squirtle 70, Wartortle 90, Mega Blastoise ex 230, ...); four Auto packets give no evolution-stack field, so each stack is forced by the evolution rules (neither list holds Rare Candy: Mega Sharpedo ex over Carvanha, Alolan Ninetales ex over Alolan Vulpix, Mega Blastoise ex over Wartortle over Squirtle, Baxcalibur over Arctibax over Frigibax, Wailord ex over Wailmer) and the position's notes say so. His own unseen deck is the exact list minus everything seen, in random order (12 seeds).
+
+**Milestones are mechanical here** (65 positions; they are rules, not my reading): *preparing an attacker* = his plan evolves into Mega Sharpedo ex or Alolan Ninetales ex, or attaches Energy to a benched Pokémon; *managing a sacrifice* = a Mega Sharpedo ex Active that he retreats, or a damaged Mega Sharpedo ex on the board while he plays Lucky Ice Pop or Irida; *adapting when the plan fails* = one of his Pokémon was knocked out since his last turn; *recognising an immediate win* = the last owner turn of a won game when his plan attacks (the knockout that ended it). Held-out (fixed hash rule): **cmp-20261002_205230000**, the first Auto game, 8 positions; Dustin's three games are all development games.
+
+**Not built.** The choices made during the opponent's turn: Dustin never lost a Pokémon, so none exists for him; the game's Auto made two offered multi-option promotions (205731 turn 13, choosing the 150-HP Ninetales over the Sharpedo; 210952 turn 15, after its Lapras was knocked out, from Carvanha / Mega Sharpedo ex / Ninetales ex): decisions on the opponent's turn, which the harness cannot present.
+
+**The two agreement tables** are in `AGREEMENT_TABLES.md` (same columns as `TABLES.md`, split by milestone; a position with several milestones appears under each), and every position is also a row of `TABLES.md` under its recording. **This is decision agreement only, not strength**: "agree" means km3's first action equals the decision maker's, not that either choice was better. The two groups are different games and are never paired position by position; the last table compares rates by situation type.
+
+| situation | km3 v **Auto**: positions | first action agrees | whole plan agrees | km3 v **Dustin**: positions | first action agrees | whole plan agrees |
+|---|---|---|---|---|---|---|
+| all | 39 | 19 (49%) | 6 (15%) | 26 | 16 (62%) | 12 (46%) |
+| preparing an attacker | 31 | 17 (55%) | 4 (13%) | 16 | 12 (75%) | 8 (50%) |
+| managing a sacrifice | 4 | 1 (25%) | 0 | 3 | 2 (67%) | 2 (67%) |
+| adapting when the plan fails | 2 | 1 (50%) | 0 | 0 | - | - |
+| recognising an immediate win | 4 | 2 (50%) | 1 (25%) | 3 | 3 (100%) | 3 (100%) |
+| no milestone | 7 | 1 (14%) | 1 (14%) | 5 | 0 | 0 |
+
+What stands out (rates, small counts: a handful of positions per row):
+- **The attack is almost never the difference.** Where both plans reach an attack, km3 uses the same attack in 16 of 18 positions against Auto and 16 of 17 against Dustin. On all 7 immediate-win positions km3's modal plan reaches an attack (the first-action column undercounts them: on 210612 t13 and 211613 t11 Auto evolved or attached first and then attacked, km3 attacks at once).
+- **Against Auto the differences are mostly Supporter / Item order and which draw card first** (19 of 39 positions), and the plan up to the first draw matches in 15% of positions; against Dustin it matches in 46% (12 of 26), and his 5 'no milestone' turns (a Copycat with a Poké Ball that had no target, a lone attack, Misty and Research openers) are where km3 and he differ.
+- **Auto's first turn.** In both games Auto went first (210612, 211613) it ended turn 1 with no play at all, holding an Elegant Cape (and on 211613 a Copycat as well); km3 plays Elegant Cape in 12 of 12 seeds on 210612 and Copycat in 8 of 12 (Elegant Cape in the other 4) on 211613. Auto's turn 2 as the second player is where km3 splits between Copycat, the Energy attachment and Research.
+- Not verdict-bearing either way: nothing here says whether Auto, Dustin or km3 plays better.
+
+**Cost.** One pass by me, no helpers (the laptop Opus's request): the preflight, the converter and its four cross-checks, the report.
+
 ## The positions as a test set for any pilot
 
 `harness/run_pilot.sh BOT [SEEDS] [PG_POS_BINARY]` runs every position with the pilot code BOT (any code `parse_player_code` knows) at nice 19 and writes `runs_<BOT>/` (raw) and `report_<BOT>/` (the tables above, for that pilot) in about four seconds. For an experimental pilot, build the harness against the engine tree that contains it: `PGD_ENGINE=<engine dir> PGD_TARGET=<target dir> PGD_BIN=<binary> harness/pgd_build.sh 8` (it applies the print-only patch, which asserts its anchors are found exactly once, then builds `pg_pos.rs` as an example). Pilots built on `ExpectiMiniMaxPlayer` also print their root scores; others record only their choices. To add positions, extend `positions_A.py` (a position names a deck key; `--deck KEY=file` supplies the list) and rerun. Check: `kta3` gives exactly the same tables as `km3` on these 22 positions, as it should (km differs from kta only by the Training Area / Arena bonus, which changes no choice here).
@@ -151,3 +187,6 @@ Left out: `20260908_012720000` (Ogerpon / Whimsicott) is marked a computer battl
 ## Files
 
 `TABLES.md` (a table per game), `TURBO_SHARK.md`, `summary.json`, `totals.json`, `positions_A.json` and `positions_A.py` (the positions with their notes), `FRAME_READS.md` (how each hand was fixed), `raw/` (stdout JSON lines and the PGSTEP/PGDUMP root scores for every position and seed), `harness/` (the example, the print-only patch, the run and report scripts), `BUILD.txt` (hashes).
+
+
+

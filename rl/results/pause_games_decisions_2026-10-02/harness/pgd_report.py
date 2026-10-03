@@ -31,6 +31,15 @@ GAMES = {  # game stem -> (result, order, opponent, review folder)
     'ladder-20260909_023151000': ('Ladder Log Sep 9, Mega Manectric ex / Heliolisk, APPROXIMATE list: won 3-2', 'first', 'Alai (Mega Blaziken ex / Entei ex)'),
     'ladder-20260909_032418000': ('Ladder Log Sep 9, Rotom ex / Gholdengo (a random-deck recording), APPROXIMATE list: lost 0-3', 'first', 'ゆうちゃん (Tapu Koko ex / Gholdengo)'),
     'ladder-20260928_200654000': ('Ladder Log Sep 28, Hydreigon / Galarian Obstagoon, APPROXIMATE list: lost 2-3', '(see turn numbers)', 'plz_concede (Arceus ex / Dialga ex / Shaymin)'),
+    # draft A against the fixed computer deck (Step-Up Battle: Advanced), exact lists on both sides; the decision maker is in every row
+    'cmp-20261002_205230000': ('draft A v the computer, AUTO decisions: won 3-0', 'second', 'computer: Mega Blastoise ex & Wailord ex deck'),
+    'cmp-20261002_205731000': ('draft A v the computer, AUTO decisions: won 3-2', 'second', 'computer: Mega Blastoise ex & Wailord ex deck'),
+    'cmp-20261002_210612000': ('draft A v the computer, AUTO decisions: won 3-0', 'first', 'computer: Mega Blastoise ex & Wailord ex deck'),
+    'cmp-20261002_210952000': ('draft A v the computer, AUTO decisions: lost 2-3', 'second', 'computer: Mega Blastoise ex & Wailord ex deck'),
+    'cmp-20261002_211613000': ('draft A v the computer, AUTO decisions: won 3-0', 'first', 'computer: Mega Blastoise ex & Wailord ex deck'),
+    'cmp-20261002_214254000': ('draft A v the computer, DUSTIN decisions: won 3-0', 'second', 'computer: Mega Blastoise ex & Wailord ex deck'),
+    'cmp-20261002_215203000': ('draft A v the computer, DUSTIN decisions: won 3-0', 'second', 'computer: Mega Blastoise ex & Wailord ex deck'),
+    'cmp-20261002_215825000': ('draft A v the computer, DUSTIN decisions: won 3-0', 'second', 'computer: Mega Blastoise ex & Wailord ex deck'),
 }
 DRAW = ("Play:Professor's Research", "Play:Copycat", "Play:Lisia", "Play:Clemont", "Play:Sightseer", "Play:Order Pad", "Play:Team Rocket's Researcher",
         "Play:Quick-Grow Extract")  # draw / random-search cards: the part of the turn after them depends on what they find
@@ -189,7 +198,8 @@ for p in POS:
                      gap=(statistics.mean(gaps) if gaps else None),
                      plans=[(list(k), c) for k, c in collections.Counter(kms).most_common()], summary=posline['summary'], notes=p['notes'],
                      mid_turn=pid.endswith('b'), forced=bool(forced), milestones=p.get('milestones', []), heldout=p.get('heldout', False),
-                     approximate=bool(p.get('approximate', False)), list_source=p.get('list_source')))
+                     approximate=bool(p.get('approximate', False)), list_source=p.get('list_source'),
+                     decision_maker=p.get('decision_maker'), exact_list=bool(p.get('exact_list', False))))
 
 json.dump(rows, open(f'{OUT}/summary.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
 
@@ -212,7 +222,7 @@ for g, (res, order, opp) in GAMES.items():
         label = f"{r['his_turn']}{' (mid-turn)' if r['mid_turn'] else ''}"
         fa = ', '.join(f"{k} ×{v}" for k, v in sorted(r['first'].items(), key=lambda kv: -kv[1]))
         gap = '' if r['gap'] is None else f"{r['gap']:.0f}"
-        md.append(f"| {label} | {r['turn_count']} | {r['hand_source']}{' · APPROXIMATE list' if r.get('approximate') else ''} | {fmt(r['his'])} | {fa} | {r['same_first']}/{r['n']} ({verdict(r)}) | {r['same_plan']}/{r['n']} | {fmt(r['modal'])} ({r['modal_n']}/{r['n']}) | {r['cat']}{' (also: ' + ', '.join(t for t in r['tags'] if t != r['cat']) + ')' if len(r['tags']) > 1 else ''} | {r['desc']} | {gap} | {', '.join(r['milestones'])} |")
+        md.append(f"| {label} | {r['turn_count']} | {r['hand_source']}{' · APPROXIMATE list' if r.get('approximate') else ''}{' · ' + r['decision_maker'] + ' · exact list' if r.get('decision_maker') else ''} | {fmt(r['his'])} | {fa} | {r['same_first']}/{r['n']} ({verdict(r)}) | {r['same_plan']}/{r['n']} | {fmt(r['modal'])} ({r['modal_n']}/{r['n']}) | {r['cat']}{' (also: ' + ', '.join(t for t in r['tags'] if t != r['cat']) + ')' if len(r['tags']) > 1 else ''} | {r['desc']} | {gap} | {', '.join(r['milestones'])} |")
     md.append('')
 open(f'{OUT}/TABLES.md', 'w', encoding='utf-8').write('\n'.join(md))
 
