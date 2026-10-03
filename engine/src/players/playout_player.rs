@@ -9,10 +9,11 @@
 //! - LAB (a laboratory condition, labelled in every output): the opponent's exact 20-card list, only when that list is
 //!   one of the pool's lists below; the meta side is never handed a brew's exact list, so LAB falls back to REALISTIC
 //!   then, and says so;
-//! - REALISTIC: per play-out, a list drawn from the candidate pool among those consistent with the opponent's cards seen
-//!   so far (by name) and with the Energy types its Energy Zone shows; with none consistent, one of the closest (fewest
-//!   seen cards missing, then fewest zone types missing), at random among the equally close. The unseen cards come from
-//!   the list. REALISTIC never reads the opponent's real list.
+//! - REALISTIC: per play-out, a list drawn from the candidate pool: first the lists whose Energy types cover the types
+//!   the opponent's Energy Zone shows, then among those the lists holding every card seen so far (by name). The unseen
+//!   cards come from the list. With none left, no list is invented: the unseen part is filler (unknown cards, which can be
+//!   drawn but never played) and the Energy is the seen types only, labelled "no consistent list" (round 3, Astra's
+//!   review). REALISTIC never reads the opponent's real list.
 //! The pool (`playout_pool.rs`): the lists of decks/screen/opponents and decks/research, duplicates removed (8 lists), plus
 //! any added at run time through `KX_EXTRA_LISTS` (`name=path;...`; never a path under decks/brews), each recorded with a
 //! hash of its file in `KX_PARAMS`, every `KX_TRACE` line and the knowledge label.
@@ -384,35 +385,55 @@ impl Core {
         }
     }
 
-    /// REALISTIC: a pool list consistent with the seen cards (every name seen no more often than the list holds it) and
-    /// with the Energy Zone (its Energy types include every type the zone shows), uniformly. With none consistent, one of
-    /// the closest: fewest seen cards it can't account for, then fewest zone types it lacks; at random among the equally
-    /// close (with the world's own rng, so still deterministic). Then the seen printings are adopted.
-    fn sample_list(&self, seen: &[Card], zone: &[EnergyType], rng: &mut StdRng) -> (Deck, String) {
+    /// The pool lists consistent with what the opponent has shown: first the lists whose Energy types cover every type
+    /// the Energy Zone shows, then among those the lists holding each seen card's name at least as often as it was seen.
+    /// It depends on the observation alone, so it is the same in every round of a decision.
+    fn consistent_lists(&self, seen: &[Card], zone: &[EnergyType]) -> Vec<usize> {
         let mut seen_names: BTreeMap<String, usize> = BTreeMap::new();
         for c in seen {
             *seen_names.entry(c.get_name()).or_default() += 1;
         }
-        let distance = |deck: &Deck| -> (usize, usize) {
-            let missing = seen_names
+        (0..self.pool.len())
+            .filter(|&i| zone.iter().all(|t| self.pool[i].1.energy_types.contains(t)))
+            .filter(|&i| {
+                let list = &self.pool[i].1;
+                seen_names.iter().all(|(name, n)| list.cards.iter().filter(|c| c.get_name() == *name).count() >= *n)
+            })
+            .collect()
+    }
+
+    /// With no consistent list, the unseen part is built from the seen cards' types only, and no named card is invented:
+    /// the list is the seen cards (the sampler takes them out again) and filler up to 20, unknown cards that the opponent
+    /// can draw but never play. Its Energy is the types the zone shows, or the seen Pokémon's own types if it shows none.
+    fn filler_list(seen: &[Card], zone: &[EnergyType]) -> (Deck, String) {
+        let mut energy: Vec<EnergyType> = zone.to_vec();
+        if energy.is_empty() {
+            energy = seen
                 .iter()
-                .map(|(name, n)| n.saturating_sub(deck.cards.iter().filter(|c| c.get_name() == *name).count()))
-                .sum();
-            let energy = zone.iter().filter(|t| !deck.energy_types.contains(t)).count();
-            (missing, energy)
-        };
-        let distances: Vec<(usize, usize)> = self.pool.iter().map(|(_, d)| distance(d)).collect();
-        let best = *distances.iter().min().expect("a non-empty pool");
-        let nearest: Vec<usize> = (0..self.pool.len()).filter(|&i| distances[i] == best).collect();
-        let i = nearest[rng.gen_range(0..nearest.len())];
-        let label = if best == (0, 0) {
-            format!("{} (1 of {} consistent)", self.pool[i].0, nearest.len())
-        } else {
-            format!("{} (closest, 1 of {} tied; no list consistent)", self.pool[i].0, nearest.len())
-        };
+                .filter_map(|c| match c {
+                    Card::Pokemon(p) if p.energy_type != EnergyType::Colorless => Some(p.energy_type),
+                    _ => None,
+                })
+                .collect();
+            energy.sort();
+            energy.dedup();
+        }
+        let mut cards: Vec<Card> = seen.to_vec();
+        cards.resize(DECK_SIZE.max(seen.len()), Card::Unknown);
+        let label = format!("no consistent list (filler; Energy {energy:?})");
+        (Deck { cards, energy_types: energy }, label)
+    }
+
+    /// REALISTIC: a consistent list, uniformly, with the seen printings adopted; with none, the filler list.
+    fn sample_list(&self, seen: &[Card], zone: &[EnergyType], rng: &mut StdRng) -> (Deck, String) {
+        let consistent = self.consistent_lists(seen, zone);
+        if consistent.is_empty() {
+            return Self::filler_list(seen, zone);
+        }
+        let i = consistent[rng.gen_range(0..consistent.len())];
         let mut deck = self.pool[i].1.clone();
         Self::adopt_seen_printings(&mut deck, seen);
-        (deck, label)
+        (deck, format!("{} (1 of {} consistent)", self.pool[i].0, consistent.len()))
     }
 
     /// One sampled world: a full state consistent with the observation, the list its opponent's hidden cards came from,
@@ -429,9 +450,13 @@ impl Core {
         let mut state = observation.search_state_with_opponent_list(rng, &list);
         let opponent = 1 - observation.actor;
         // Slots the list couldn't fill (a printing it doesn't hold) take random cards of the list, so no Unknown is played.
-        let mut slots: Vec<&mut Card> = state.hands[opponent].iter_mut().chain(state.decks[opponent].cards.iter_mut()).collect();
-        for slot in slots.iter_mut().filter(|c| c.is_unknown()) {
-            **slot = list.cards.choose(rng).cloned().unwrap_or(Card::Unknown);
+        // A filler list's slots stay filler: no named card is invented.
+        if !name.starts_with("no consistent list") {
+            let mut slots: Vec<&mut Card> =
+                state.hands[opponent].iter_mut().chain(state.decks[opponent].cards.iter_mut()).collect();
+            for slot in slots.iter_mut().filter(|c| c.is_unknown()) {
+                **slot = list.cards.choose(rng).cloned().unwrap_or(Card::Unknown);
+            }
         }
         // An opponent still to set up holds at least one Basic, as the engine's deal guarantees (a zero-Basic hand is
         // repaired): swap one in from the sampled deck if the sampled hand has none.
@@ -512,6 +537,12 @@ impl PlayoutPlayer {
             Some("a setup choice after the opponent's hidden setup: km's move")
         } else if state.move_generation_stack.iter().any(|(_, choices)| choices.is_empty()) {
             Some("a hidden stack frame of the opponent's: km's move")
+        } else if self.core.lab.is_none()
+            && state.in_play_pokemon[opponent].iter().all(|p| p.is_none())
+            && self.core.consistent_lists(&Core::seen_opponent_cards(observation), &Core::zone_types(observation)).is_empty()
+        {
+            // Filler holds no Basic, so an opponent still to set up couldn't.
+            Some("no consistent list, and the opponent still has to set up from filler: km's move")
         } else {
             None
         };
@@ -863,6 +894,8 @@ mod tests {
         let mut state = game.get_state_clone();
         state.move_generation_stack.clear();
         state.energy_zone[1] = EnergyZone { current: Some(EnergyType::Water), next: Some(EnergyType::Water) };
+        // Player 0 has a Grass Energy to attach, so the decision has alternatives.
+        state.energy_zone[0] = EnergyZone { current: Some(EnergyType::Grass), next: Some(EnergyType::Grass) };
         game.set_state(state);
         let state = game.get_state_clone();
         assert!(!state.hands[1].is_empty() && !state.decks[1].cards.is_empty(), "the opponent holds hidden cards");

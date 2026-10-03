@@ -367,8 +367,9 @@ fn an_extra_list_under_decks_brews_is_refused() {
 
 /// With a time budget, no move replaces km's before 8 rounds. In a 2-thread pool a batch is 2 rounds, and the 1 ms budget
 /// ends after the first, so every decision here has 2 rounds whatever the machine's cores. km's move is kept at every
-/// position, and at least one has a rival leading (the immediate-win board, or a middle-game position), so the reason
-/// "fewer than the 8" is always checked.
+/// position, and at least one has a rival leading, so the reason "fewer than the 8" is always checked. The positions: the
+/// immediate-win board (km3 takes the win itself), middle-game positions of the test decks (REALISTIC; their opponent is
+/// outside the pool, filler since round 3) and of the pool pairing t-altaria v t-suicune (LAB), which round 3 leaves alone.
 #[test]
 fn with_a_time_budget_no_switch_before_8_rounds() {
     let threads = rayon::ThreadPoolBuilder::new().num_threads(2).build().unwrap();
@@ -383,11 +384,18 @@ fn with_a_time_budget_no_switch_before_8_rounds() {
         game.get_state_clone()
     };
     let mut led = 0;
-    for state in [immediate_win, midgame(3), midgame(11)] {
+    let test_decks = |state: State| (state, load_test_decks(), Knowledge::Realistic);
+    let pool_pairing = |seed: u64| {
+        (midgame_with(pool_deck("t-altaria"), pool_deck("t-suicune"), seed), (pool_deck("t-altaria"), pool_deck("t-suicune")), Knowledge::Lab)
+    };
+    for (state, (deck, opponent), knowledge) in
+        [test_decks(immediate_win), test_decks(midgame(3)), test_decks(midgame(11)), pool_pairing(3), pool_pairing(5)]
+    {
         let actions = state.generate_possible_actions().1;
         let observation = PlayerObservation::from_state(&state, 0, &RevealedKnowledge::default());
-        let params = PlayoutParams { rollouts: 16, budget_ms: 1, ..small(Knowledge::Realistic, 0.0) };
-        let report = threads.install(|| pilot(params).evaluate(&mut StdRng::seed_from_u64(9), &observation, &actions));
+        let params = PlayoutParams { rollouts: 16, budget_ms: 1, ..small(knowledge, 0.0) };
+        let report =
+            threads.install(|| fresh(deck, opponent, params).evaluate(&mut StdRng::seed_from_u64(9), &observation, &actions));
         assert_eq!(report.rounds, 2, "{}", report.reason);
         assert_eq!(report.chosen, report.km3, "{}", report.reason);
         let best = report.candidates.iter().map(|c| c.score).fold(f64::MIN, f64::max);
