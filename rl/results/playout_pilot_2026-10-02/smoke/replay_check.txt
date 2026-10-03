@@ -1,0 +1,5 @@
+Determinism across the container restart: two games of the first run (pilot in seat 1, deals 24200000000 and 24200000001),
+played again after the run by the resumed run's program (playout_smoke with --resume; sha256 bcbce72a...), compared with the first run's lines.
+seed 24200000000 seat 1: every field but the times equal: True (pilot 1, km3 1, decisions 9, changed 0, turns 3)
+seed 24200000001 seat 1: every field but the times equal: True (pilot 1, km3 1, decisions 16, changed 1, turns 5)
+traced decisions: first run 24, replay 24; equal in every field but the milliseconds (every candidate's score, difference and standard error, the lists drawn, the choice): True

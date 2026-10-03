@@ -1,0 +1,15 @@
+engine: dir:/tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/po/engine
+program: /tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/stbuild2/strength
+program sha256: 0f90d4a886d8e7b2329cd8a127ca8a2b7b75c4ce9c1cbb22acaf8a4b87af0dc2
+harness source sha256: bf9c5d6814007f1f53b0dc06f1beba02261478ddc40bb5efa3bbc16c0734f86e
+
+$ strength selfcheck --pilot km3 --deck-a decks/screen/opponents/t-altaria.txt --deck-b decks/screen/opponents/t-suicune.txt --games 12
+selfcheck pilot=km3 games=12 seat0_wins=8 seat1_wins=4 ties=0 turns=127 digest=81b572198c04d5d1
+
+$ strength selfcheck --pilot kx3_r2_c3_lab --deck-a decks/screen/opponents/t-altaria.txt --deck-b decks/screen/opponents/t-suicune.txt --games 2
+selfcheck pilot=kx3_r2_c3_lab games=2 seat0_wins=0 seat1_wins=2 ties=0 turns=22 digest=3a2eb43bd9053639
+(142 s; KX_PARAMS on stderr:)
+KX_PARAMS {"budget_ms":0,"cap":3,"code":"kx3_r2_c3_z2_lab_t0","depth":3,"knowledge":"LAB (laboratory condition: the opponent's exact 20-card list is known)","rollouts":2,"seat":0,"z":2.0}
+KX_PARAMS {"budget_ms":0,"cap":3,"code":"kx3_r2_c3_z2_lab_t0","depth":3,"knowledge":"LAB (laboratory condition: the opponent's exact 20-card list is known)","rollouts":2,"seat":1,"z":2.0}
+KX_PARAMS {"budget_ms":0,"cap":3,"code":"kx3_r2_c3_z2_lab_t0","depth":3,"knowledge":"LAB (laboratory condition: the opponent's exact 20-card list is known)","rollouts":2,"seat":0,"z":2.0}
+KX_PARAMS {"budget_ms":0,"cap":3,"code":"kx3_r2_c3_z2_lab_t0","depth":3,"knowledge":"LAB (laboratory condition: the opponent's exact 20-card list is known)","rollouts":2,"seat":1,"z":2.0}
