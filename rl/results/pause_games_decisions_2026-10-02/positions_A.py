@@ -580,4 +580,3 @@ if __name__ == "__main__":
             "games_development": [g for g in games if not is_heldout(g)]}
     json.dump(lock, open(os.path.join(os.path.dirname(os.path.abspath(out)), "positions_heldout.json"), "w"), indent=1)
     print(len(P), "positions ->", out, "| held-out games:", lock["games_held_out"], "| development games:", lock["games_development"])
-

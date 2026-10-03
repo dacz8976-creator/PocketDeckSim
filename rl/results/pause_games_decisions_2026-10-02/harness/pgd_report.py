@@ -198,7 +198,7 @@ for p in POS:
                      gap=(statistics.mean(gaps) if gaps else None),
                      plans=[(list(k), c) for k, c in collections.Counter(kms).most_common()], summary=posline['summary'], notes=p['notes'],
                      mid_turn=pid.endswith('b'), forced=bool(forced), milestones=p.get('milestones', []), heldout=p.get('heldout', False),
-                     approximate=bool(p.get('approximate', False)), list_source=p.get('list_source'),
+                     approximate=bool(p.get('approximate', False)), approximate_reason=p.get('approximate_reason'), list_source=p.get('list_source'),
                      decision_maker=p.get('decision_maker'), exact_list=bool(p.get('exact_list', False))))
 
 json.dump(rows, open(f'{OUT}/summary.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
@@ -222,15 +222,15 @@ for g, (res, order, opp) in GAMES.items():
         label = f"{r['his_turn']}{' (mid-turn)' if r['mid_turn'] else ''}"
         fa = ', '.join(f"{k} ×{v}" for k, v in sorted(r['first'].items(), key=lambda kv: -kv[1]))
         gap = '' if r['gap'] is None else f"{r['gap']:.0f}"
-        md.append(f"| {label} | {r['turn_count']} | {r['hand_source']}{' · APPROXIMATE list' if r.get('approximate') else ''}{' · ' + r['decision_maker'] + ' · exact list' if r.get('decision_maker') else ''} | {fmt(r['his'])} | {fa} | {r['same_first']}/{r['n']} ({verdict(r)}) | {r['same_plan']}/{r['n']} | {fmt(r['modal'])} ({r['modal_n']}/{r['n']}) | {r['cat']}{' (also: ' + ', '.join(t for t in r['tags'] if t != r['cat']) + ')' if len(r['tags']) > 1 else ''} | {r['desc']} | {gap} | {', '.join(r['milestones'])} |")
+        md.append(f"| {label} | {r['turn_count']} | {r['hand_source']}{(' · APPROXIMATE (opponent discard filler)' if str(r.get('approximate_reason') or '').startswith('kx:') else ' · APPROXIMATE list') if r.get('approximate') else ''}{' · ' + r['decision_maker'] + ' · exact list' if r.get('decision_maker') else ''} | {fmt(r['his'])} | {fa} | {r['same_first']}/{r['n']} ({verdict(r)}) | {r['same_plan']}/{r['n']} | {fmt(r['modal'])} ({r['modal_n']}/{r['n']}) | {r['cat']}{' (also: ' + ', '.join(t for t in r['tags'] if t != r['cat']) + ')' if len(r['tags']) > 1 else ''} | {r['desc']} | {gap} | {', '.join(r['milestones'])} |")
     md.append('')
 open(f'{OUT}/TABLES.md', 'w', encoding='utf-8').write('\n'.join(md))
 
 # the 20 turn-start positions only (not the mid-turn ones) for the totals
 MAXTURN = int(os.environ.get('PGD_MAXTURN', '99'))
-ts = [r for r in rows if not r['mid_turn'] and r['his_turn'] <= MAXTURN and r['id'].startswith('A-')]  # the draft A turn starts; deck 03, the brew 8 ladder games and the approximate-list games have their own totals below
-d3 = [r for r in rows if r['id'].startswith('D3-') and not r['mid_turn']]
-l8 = [r for r in rows if r['id'].startswith('L8-') and not r['mid_turn']]
+ts = [r for r in rows if not r['mid_turn'] and r['his_turn'] <= MAXTURN and r['id'].startswith('A-') and not r.get('approximate')]  # the draft A turn starts; deck 03, the brew 8 ladder games and the approximate-list games have their own totals below
+d3 = [r for r in rows if r['id'].startswith('D3-') and not r['mid_turn'] and not r.get('approximate')]
+l8 = [r for r in rows if r['id'].startswith('L8-') and not r['mid_turn'] and not r.get('approximate')]
 approx = [r for r in rows if r.get('approximate')]
 cnt = collections.Counter(verdict(r) for r in ts)
 plan_same = sum(1 for r in ts if r['same_plan'] / r['n'] >= 10 / 12)
