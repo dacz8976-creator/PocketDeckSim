@@ -6,6 +6,9 @@ sections 5 and 9 (the addendum's amendments win). Branch `claude/playout-pilot`,
   an example.
 - The laptop reviews it once, builds it beside the pinned engine, and runs the development comparison.
 - No table game was played.
+- **Fixes, round 1 (Oct 3).** The laptop built f1aacbe2 beside the pinned engine and reviewed it: no information leak in
+  either mode, and km3 and the engine untouched. Its fixes are in, on the same branch (section "Fixes, round 1"), with the
+  checks rerun. There was no new smoke, as asked: the smoke below ran on f1aacbe2.
 
 ## In short
 
@@ -23,8 +26,64 @@ sections 5 and 9 (the addendum's amendments win). Branch `claude/playout-pilot`,
 - **Its main weaknesses.**
   - km3 plays every later turn of every play-out, so a plan needing several coordinated moves can go unseen.
   - At 16 play-outs only big differences show.
-  - Against an opponent whose list is not in the pilot's pool of 16 meta lists, its picture of that opponent is poor. That
-    covers every position in the position runner. See "What to expect to go wrong".
+  - Against an opponent whose list is not in the pilot's pool, its picture of that opponent is only the nearest meta list.
+    Round 1 made that nearest list better chosen and lets a known list be added at run time (`KX_EXTRA_LISTS`). See "What
+    to expect to go wrong".
+
+## Fixes, round 1 (Oct 3)
+
+From the laptop's review of f1aacbe2. Only `engine/src/players/playout_player.rs` and `playout_pool.rs` changed, plus the
+tests. `mod.rs` and the rest of `engine/` are untouched.
+
+1. **REALISTIC respects the opponent's Energy Zone.**
+   - The zone's current and next Energy are public from the first decision. Before, a list counted as consistent by card
+     names alone, so on turn 1 against t-suicune (Water showing) about 7 play-outs in 8 modelled an opponent with no Water.
+   - Now a list is consistent only if its Energy types include every type the zone shows.
+   - With none consistent, "closest" ranks first by the seen cards a list can't account for, then by the zone types it
+     lacks.
+2. **The cap's ranking can't crash the game.**
+   - Before, ranking the moves for the cap (one sampled world, each move applied) ran outside `catch_unwind`. An engine panic
+     there would have ended the game, and in the strength harness it would have stopped the whole run.
+   - Now each move's ranking runs inside `catch_unwind`. A move whose ranking panics scores minus infinity and is always a
+     named drop: "panicked: its ranking for the cap failed".
+3. **The pool, the tie, and the list length.**
+   - Each `research/X` list holds the same cards and Energy as `t-X`. Duplicates (same cards, same Energy types) are now
+     removed when the pool loads. The pool is **8 lists**, and the labels say 8.
+   - With no list consistent, the tie among the equally close lists went to the pool's first list, t-altaria. It is now
+     broken at random, with each sampled world's own random stream, so it stays deterministic.
+   - The setup rule ("has the opponent set up?") read the real list's length. It now reads Pocket's deck size, 20, so
+     REALISTIC reads nothing from the real list.
+   - km<N> is still handed the opponent's list, as `Game` hands every bot, but its search never reads it. The
+     list-free test below proves both.
+4. **Known lists added at run time: `KX_EXTRA_LISTS`.**
+   - **The variable.** `KX_EXTRA_LISTS="name=path;name=path"`, read once per process. It is an environment variable, not a
+     code part, because `parse_player_code` lowercases codes and would break paths. Paths are relative to where the
+     program runs.
+   - **What it does.** Each list joins the pool as `extra:<name>`, unless it repeats a pool list.
+     - LAB's membership check then matches it, so LAB is exact for that opponent.
+     - REALISTIC can draw it.
+     - This is for Dustin's positions against the fixed computer deck.
+   - **Refused.** A path under `decks/brews` (Dustin's brews and drafts) is refused, also when written with backslashes,
+     in any letter case, or once resolved. The variable is process-wide, and the position runner plays the bot code in both
+     seats, so a meta-side pilot must never be handed a brew's list. A missing or repeated name and an unreadable or
+     invalid list are refused too. A refused variable stops the pilot at its creation, with the reason.
+   - **Recorded.** Each extra's name, path and a 64-bit FNV-1a hash of its file go in `KX_PARAMS`, every `KX_TRACE` line
+     (`extra_lists`) and the knowledge label. No crate was added; the laptop records sha256 itself.
+   - **One question.** Only `decks/brews` is refused, as asked. Dustin's own lists under `decks/dustin` would be
+     accepted. Should they be refused too? It is one line.
+5. **One printing swap for both modes, counting copies.**
+   - Seen cards are taken out of the list before the hidden cards are dealt. A seen printing the list holds under another
+     printing is first swapped in.
+   - REALISTIC did that swap and LAB skipped it; now both use one helper.
+   - It counts copies. Two seen copies of one Sabrina printing, against a list with two different Sabrina printings, take
+     both slots, so no third Sabrina can be dealt. Before, that was possible.
+   - The opponent's known deck-top cards now count as seen.
+6. **Small items.**
+   - With a time budget (`_t`), no move replaces km's with fewer than 8 completed rounds. Two equal rounds give a standard
+     error of 0, which used to switch the move. The reason names it.
+   - `decide_omniscient`, the diagnostic entry with the full state, is never called by `Game`. When it is called, it keeps
+     km's move with no play-outs, as before. Now it is also counted (`omniscient`) and named in the trace
+     (`"omniscient": true`).
 
 ## What it does
 
@@ -60,32 +119,41 @@ It sees only its `PlayerObservation`, exactly what km3 sees:
 - its own deck as an unordered set.
 
 It never reads the real game state. The opponent's hidden cards come from a list:
-- **REALISTIC** (the default). For each play-out a list is drawn from a candidate pool: the 8 lists under
-  `decks/screen/opponents` and the 8 under `decks/research`, embedded in `engine/src/players/playout_pool.rs` with each
-  file's sha256.
-  - The draw is uniform among the lists consistent with the opponent's cards seen so far, matched by name. A card counts as
-    seen if it is in play, under an evolution, attached, discarded, their Stadium, or revealed.
-  - The unseen cards come from the drawn list.
-  - With no list consistent, it takes the closest one: the list missing the fewest of the seen cards. On a tie it takes the
-    first list in the pool's order, which is t-altaria. The trace says "closest; no list consistent". This is a weakness; see
-    below.
+- **REALISTIC** (the default). It never reads the opponent's real list. For each play-out a list is drawn from a candidate
+  pool:
+  - the pool is the lists under `decks/screen/opponents` and `decks/research`, embedded in
+    `engine/src/players/playout_pool.rs` with each file's sha256. Duplicates are removed at load, leaving 8 lists, plus any
+    extra lists from `KX_EXTRA_LISTS` (below).
+  - The draw is uniform among the lists consistent with two things:
+    - the opponent's cards seen so far, matched by name. A card counts as seen if it is in play, under an evolution,
+      attached, discarded, their Stadium, revealed from their hand, or known in their deck (top cards included);
+    - the Energy Zone: the list's Energy types must include every type the zone shows.
+  - The unseen cards come from the drawn list, after the seen printings are swapped in (copy for copy).
+  - With no list consistent, it takes one of the closest: fewest seen cards unaccounted for, then fewest zone types
+    missing. It picks at random among the equally close, and the trace says "closest, 1 of k tied; no list consistent".
   - The opponent's real list is always consistent when it is in the pool. So against the strength harness's 8 panel lists,
     which are all in the pool, the fallback never happens.
-  - The pool holds no brew and none of Dustin's lists.
+  - The built-in pool holds no brew and none of Dustin's lists, and an extra list can't be a brew (refused).
 - **LAB** (`_lab`, a laboratory condition, labelled as such in every output).
-  - The opponent's exact 20-card list is used, but only when it is one of the pool's meta lists.
-  - **The meta side is never handed a brew's exact list.** If the opponent's list is not a meta list, LAB falls back to
-    REALISTIC and the label says so.
+  - The opponent's exact 20-card list is used, with the same printing swap, but only when it is one of the pool's lists:
+    a meta list, or an extra list.
+  - **The meta side is never handed a brew's exact list.** If the opponent's list is not in the pool, LAB falls back to
+    REALISTIC and the label says so. A brew can't be made an extra list (refused).
   - In the strength harness, with the pilot on Dustin's deck against a panel list, LAB gets the panel list.
-  - In the position runner the opponent is a filler list, so LAB acts as REALISTIC there.
+  - In the position runner the opponent is a filler list, so LAB acts as REALISTIC there, unless the opponent's list is
+    given as an extra list.
 
 Never seen in either mode: the opponent's hand, the order of either deck, and coins not yet flipped.
 
-**The no-leak test** checks this. It takes a game state, swaps a card between the opponent's hand and deck, and reverses both
-decks. The pilot's observation is then the same.
-- The test checks that the pilot's whole evaluation (every candidate's play-out score and difference) and its move are
-  identical, in both knowledge modes, directly and through `Game::from_state(...).play_tick()`.
-- A pilot that read any hidden card would see different worlds and get different play-out scores.
+**The no-leak tests** check this.
+- One takes a game state, swaps a card between the opponent's hand and deck, and reverses both decks. The pilot's
+  observation is then the same. Its move through `Game::from_state(...).play_tick()` must be the same:
+  - in REALISTIC;
+  - in LAB, on a pool pairing (t-altaria v t-suicune), where LAB really uses the exact list.
+- Another replaces one of the opponent's hidden hand cards with a card from outside their list. The REALISTIC move through
+  `Game` must be the same.
+- Two REALISTIC pilots built with different opponent lists must give the same report, field for field.
+- A pilot that read any hidden card, or the real list, would see different worlds and get different play-out scores.
 
 ## Parameters
 
@@ -98,11 +166,15 @@ All are in the code: `kx<depth>[_r<R>][_c<cap>][_z<z>][_lab|_real][_t<seconds>][
 | `_c<cap>` | at most this many candidates (km's move always one of them) | 12 |
 | `_z<z>` | the noise threshold, in standard errors of the paired difference | 2 |
 | `_lab` / `_real` | knowledge mode | `_real` |
-| `_t<seconds>` | time budget per decision: stop after the rounds finished in time (at least 2). Off by default, because it makes the result depend on the machine's speed | off |
+| `_t<seconds>` | time budget per decision: stop after the rounds finished in time (at least 2); no switch from km's move with fewer than 8. Off by default, because it makes the result depend on the machine's speed | off |
 | `_trace` | one `KX_TRACE` JSON line per decision on stderr | off |
 
-- The first decision of each game prints `KX_PARAMS` on stderr: every parameter and the knowledge label. Every trace line
-  carries the full code and the label too.
+- The first decision of each game prints `KX_PARAMS` on stderr: every parameter, the knowledge label and the extra lists
+  (name, path, hash). Every trace line carries the full code, the label and the extra lists too.
+- **`KX_EXTRA_LISTS`** (an environment variable, not a code part): `name=path;name=path`, read once per process. Each list
+  joins the pool, so LAB can be exact for that opponent and REALISTIC can draw it. A path under `decks/brews` is refused.
+  For example, from the repository root:
+  `KX_EXTRA_LISTS="computer=decks/<the computer deck>.txt" run_pilot.sh kx3_lab_trace ...`.
 - **Deterministic given seeds.** All sampling and play-out seeds come from the decision's own randomness, the engine's
   per-decision search seed (game seed, seat, decision count).
   - Play-outs run in parallel on rayon's threads but are collected in order.
@@ -123,12 +195,15 @@ So any of the pilot's decisions can be shown with its evidence (examples below).
 **Not covered; these keep km's move, and the trace says so:**
 - a setup choice made after the opponent's hidden setup, since their placed cards can't be sampled yet. When the pilot sets
   up first, which is half the deals, its setup choices get play-outs;
-- a decision with a hidden stack frame of the opponent's.
+- a decision with a hidden stack frame of the opponent's;
+- a call of the diagnostic `decide_omniscient` with a full state, which `Game` never makes. It is counted and traced with
+  `"omniscient": true` (round 1).
 
 In the smoke, 23 of 1,120 decisions kept km's move this way.
 
 A play-out that panics (an engine bug in a sampled world) drops its whole round for every candidate, so the rest stay paired.
-It is counted as `failed_rounds`. The smoke had none in 17,552 rounds.
+It is counted as `failed_rounds`. The smoke had none in 17,552 rounds. A panic while ranking moves for the cap drops that move
+(round 1).
 
 One such bug was found and fixed while building. A sampled opening hand for an opponent still to set up could hold no Basic
 Pokémon, which the engine's own deal never allows, and the opponent then had no legal move. The sampler now swaps a Basic into
@@ -138,29 +213,41 @@ such a hand, as the engine repairs a real one.
 
 ### km3 and the official engine are unchanged
 
+Rerun after round 1, on c79562c1 (the fixes and their tests). The one test added after it (`known_deck_top_cards_count_as_seen_once`) is test code only, so the programs are the same; the suite was rerun with it. The
+same checks passed on f1aacbe2 before, and the laptop repeated the first two there.
+
 - **The engine's diff from main-8626a35:**
   - `engine/src/players/mod.rs` gains 12 lines: the two module lines, the `KX` code, its parse and its player. The file keeps
-    its stored Windows line endings.
-  - The new files are `playout_player.rs`, `playout_pool.rs`, the test file and the smoke example.
+    its stored Windows line endings. Round 1 didn't touch it.
+  - The new files are `playout_player.rs`, `playout_pool.rs`, the two test files and the smoke example.
   - Nothing else in `engine/` changes. No other code reaches the new player.
 - **km3 game for game.** `deckgym` built from this branch and the official program `rl/engine-2026-10-02/deckgym` both ran
   step 10's command here: km3 v km3, 240 games, research Altaria v Blaziken, seed 7,100, `--seed-stream`.
   - They agree on every field of all 240 per-game results: winner, points, turns, plies, actions per player and both search
-    seeds. The games' digest is 9dde28db2de6c9bc for both.
+    seeds. The games' digest is 9dde28db2de6c9bc for both, as on f1aacbe2.
   - Both equal the pinned record `engine_switch_rules_2026-10/5a18d31_10_cli_km3.txt` on every line but the wall time:
     149-91-0.
   - Files: `harness/simulate_km3_7100_*.txt`.
-- **The pinned self-check.** The strength harness, built from this branch's engine, prints the pinned km3 digest:
+- **The pinned self-check.** The strength harness, built from this branch's engine (program sha256 80efd243...), prints the
+  pinned km3 digest:
   `strength selfcheck --pilot km3 --deck-a decks/screen/opponents/t-altaria.txt --deck-b decks/screen/opponents/t-suicune.txt --games 12`
   gives `digest=81b572198c04d5d1` (8-4, 127 turns), as `strength_harness_tests_2026-10-02/TESTS.md` records.
+  - The pilot's own self-check, `--pilot kx3_r2_c3_lab --games 2` (LAB, t-altaria v t-suicune), gives
+    `digest=3a2eb43bd9053639` twice, 142-143 s each. That is the same as before round 1. On an exact pool pairing none of
+    round 1's changes alters play: the printings already match, and LAB ignores the zone and the pool's draw. `KX_PARAMS` now
+    names the exact list ("t-suicune, one of the pool's 8 meta lists") and carries `extra_lists`.
   - File: `harness/strength_selfcheck.txt`.
-- **The full suite.** `cargo test --release --features test-utils` on the final code: 2,025 passed, 0 failed, 0 ignored. The play-out tests take about a minute of that.
+- **The full suite.** `cargo test --release --features test-utils` on the final code: 2,039 passed, 0 failed, 0 ignored: the 2,025 before round 1 and its 14 new tests. The play-out tests take about
+  two minutes of that.
   - File: `suite.log`.
 
-### The tests (`engine/tests/playout_pilot_test.rs`)
+### The tests
 
-Written and committed before the player (a3612b71): `tests_before.log`, where they fail to compile with no `kx` code and no
-`playout_player`. After the player, all 7 pass:
+`engine/tests/playout_pilot_test.rs`, `engine/tests/playout_pilot_extra_lists_test.rs` and the unit tests at the end of
+`playout_player.rs`: 21 in all, every one passing on the final code.
+
+The first 7 were written and committed before the player (a3612b71): `tests_before.log`, where they fail to compile with no
+`kx` code and no `playout_player`. After the player, all 7 pass:
 
 | test | what it checks |
 |---|---|
@@ -172,7 +259,35 @@ Written and committed before the player (a3612b71): `tests_before.log`, where th
 | `the_same_seeds_give_the_same_moves` | 12 ticks from a position, twice, the same moves |
 | `a_whole_game_plays_to_the_end` | a whole game from `Game::new`, setup included, with no panic |
 
+Added in round 1, to prove what this README claims. The test decks are not in the pool, so before round 1 every "LAB" leg
+ran as REALISTIC; these use a pool pairing where LAB matters.
+
+| test | what it checks |
+|---|---|
+| `realistic_reads_no_opponent_list` | two REALISTIC pilots built with different opponent lists (the real one, t-suicune) give the same report, field for field |
+| `lab_on_a_pool_pairing_uses_the_exact_list` | on t-altaria v t-suicune, LAB is labelled LAB and its lists read `{"the exact list (LAB)": R}`; REALISTIC there draws from the pool |
+| `lab_against_a_list_outside_the_pool_is_realistic_exactly` | LAB against the test decks' list is labelled "REALISTIC (LAB asked ...)" and its report equals REALISTIC's exactly |
+| `a_hidden_card_from_outside_the_opponents_list_changes_no_choice` | an opponent hand card replaced by Bulbasaur (not in their list): same observation, same REALISTIC move through `Game` |
+| `the_lab_choice_on_a_pool_pairing_cannot_depend_on_hidden_cards` | the no-leak swap on t-altaria v t-suicune: the same LAB move through `Game` |
+| `an_extra_list_under_decks_brews_is_refused` | `KX_EXTRA_LISTS` entries under decks/brews refused (forward and back slashes, any case, missing file); bad entries refused; a good one read with its hash |
+| `with_a_time_budget_no_switch_before_8_rounds` | with a 1 ms budget the rounds stop at one batch (4 here); with fewer than 8, km's move is kept and the reason says so |
+| `an_omniscient_call_keeps_kms_move_and_is_counted` | `decide_omniscient` returns km3's own move and is counted, not as a decision |
+| `an_extra_list_makes_lab_exact_and_realistic_can_draw_it` (its own file: the variable is read once per process) | with `KX_EXTRA_LISTS=arbok=example_decks/weezing-arbok.txt`, LAB against that list is exact and names it; REALISTIC draws only it once the Weezing line is seen |
+| unit: `the_pool_holds_8_lists_once_duplicates_are_removed` | 8 lists, all t-X, and the label says 8 |
+| unit: `a_list_must_hold_the_energy_its_zone_shows` | Water showing: only t-suicune, every draw; Grass: t-sceptile and t-vespiquen, both drawn |
+| unit: `the_closest_tie_is_broken_at_random` | a seen Bulbasaur and a Metal zone fit none: all 8 drawn over 80 seeds; seen cards count before zone types |
+| unit: `the_seen_printings_are_adopted_copy_for_copy` | two seen copies of one Sabrina printing against two different printings take both slots; an exact printing stays |
+| unit: `known_deck_top_cards_count_as_seen_once` | a known deck-top card counts as seen, once even when it is also listed as in the deck |
+
+Not tested directly: the cap's `catch_unwind`, since no move is known to panic on purpose.
+
 ### The smoke (`smoke/`)
+
+**Run on f1aacbe2, before round 1.** It was not rerun, as the review asked. What round 1 would change in it is not measured.
+- Weezing-arbok is not in the pool. Its zone shows Darkness (Ekans and Koffing are Darkness), and no pool list holds its
+  Pokémon by name. So the closest lists would now be the two Darkness lists, t-hydreigon and t-weezing, at random,
+  instead of t-altaria 85% of the time.
+- The times and the decisions' structure would not change.
 
 `engine/examples/playout_smoke.rs`: the pilot (`kx3` at its defaults, REALISTIC) on `example_decks/venusaur-exeggutor.txt`
 against km3 on `example_decks/weezing-arbok.txt`. 20 deals (seeds 24,200,000,000 to 24,200,000,019, registered in
@@ -227,8 +342,10 @@ START_HERE), each with the pilot in both seats. Each deal was also played km3 v 
 - **Runs here:**
   - km3's self-check prints the pinned digest (above).
   - `strength selfcheck --pilot kx3_r2_c3_lab --games 2` (kx on both sides, t-altaria v t-suicune) gave `digest=3a2eb43bd9053639`
-    three times: twice before the container restart and once after, on a fresh build of the final code. Each took 2 to 2½
-    minutes. Its stderr carries `KX_PARAMS` with the LAB label.
+    five times:
+    - on f1aacbe2, twice before the container restart and once after, on a fresh build;
+    - on c79562c1 after round 1, twice, on another fresh build;
+    - each run took 2 to 2½ minutes, and its stderr carries `KX_PARAMS` with the LAB label.
 - **LAB applies there.** The 8 panel lists are all in the pool, so `_lab` gets the exact panel list, and `_real` always finds the
   real list among the consistent ones.
 - **Threads.** The pilot spreads its play-outs over all cores itself, so `--threads 1` or `2` is enough. More harness threads
@@ -252,6 +369,8 @@ START_HERE), each with the pilot in both seats. Each deal was also played km3 v 
 - **Time:** 29 positions × 12 seeds at about 16 s each comes to roughly 1½ hours on 4 threads.
 - **The opponent lists.** None of the positions' opponents (Snorlax, Teal Mask Ogerpon ex, Chingling, Shaymin, the fossils,
   Meowscarada ex, Chandelure, Flygon ex) is in the pool. So REALISTIC uses the "closest" fallback at every position (below).
+  Since round 1, an opponent whose exact list is known, such as the fixed computer deck, can be given with `KX_EXTRA_LISTS`.
+  Then LAB is exact against it, and REALISTIC can draw it.
 
 ## What to expect to go wrong
 
@@ -268,14 +387,16 @@ START_HERE), each with the pilot in both seats. Each deal was also played km3 v 
     because km3 didn't follow up with the attach after the draw. The pilot exploits km3's weaknesses as well as finding real
     improvements, and the trace alone can't tell the two apart.
 - **An opponent whose list is not in the pool.**
-  - **The problem.** Once such an opponent shows a card no pool list holds, no list is consistent. The "closest" then ties
-    across many lists, and the tie goes to the first in the pool's order, t-altaria. The play-outs model that opponent holding
-    t-altaria's remaining cards.
-  - **The smoke.** 85% of the rounds against Weezing-Arbok were like that.
-  - **The position runner.** It is like that at every position.
+  - **The problem.** Once such an opponent shows a card no pool list holds, no list is consistent. The play-outs then model
+    that opponent holding the remaining cards of the closest meta list.
+  - **Before round 1.** The tie went to the first list in the pool's order, t-altaria: 85% of the smoke's rounds against
+    Weezing-Arbok.
+  - **Since round 1.** The closest also counts the Energy Zone, and ties are broken at random. A known list can be added with
+    `KX_EXTRA_LISTS`.
+  - **Still open.** An unknown ladder list is still modelled by the nearest of 8 meta lists.
+  - **The position runner.** It meets this at every position not covered by an extra list.
   - **The strength harness.** It never happens there.
-  - **Repairs, not made here** (the smoke measured the code as it stands):
-    - break the tie at random among the closest lists (small);
+  - **Further repairs, not made:**
     - widen the pool. Which lists to add is the coordinator's or Dustin's call; the gauntlet lists and the scoreboard's
       Limitless lists are candidates;
     - build the unseen part around the seen cards.
@@ -309,10 +430,11 @@ On 4 threads the smoke averaged 204 s per pilot game. The play-outs spread over 
 ## Files
 
 - `engine/src/players/playout_player.rs`: the player, its parameters, sampler, play-outs and trace.
-- `engine/src/players/playout_pool.rs`: the 16 pool lists, embedded, each with its path and sha256 (generated from the deck
-  files).
+- `engine/src/players/playout_pool.rs`: the 16 pool files, embedded, each with its path and sha256 (generated from the deck
+  files; 8 distinct lists), and the `KX_EXTRA_LISTS` reader.
 - `engine/src/players/mod.rs`: the `kx` code (12 lines).
-- `engine/tests/playout_pilot_test.rs`: the 7 tests.
+- `engine/tests/playout_pilot_test.rs`: 15 tests (7 from the start, 8 from round 1).
+- `engine/tests/playout_pilot_extra_lists_test.rs`: the `KX_EXTRA_LISTS` test, alone in its process.
 - `engine/examples/playout_smoke.rs`: the smoke (`--resume` included).
 - Here:
   - `tests_before.log`, `tests_after.log` and `suite.log`;

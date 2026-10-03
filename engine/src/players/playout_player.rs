@@ -807,6 +807,30 @@ mod tests {
         assert_eq!(label, "t-altaria (closest, 1 of 1 tied; no list consistent)");
     }
 
+    /// The opponent's known deck-top cards count as seen, and a top card also listed as somewhere in their deck counts once.
+    #[test]
+    fn known_deck_top_cards_count_as_seen_once() {
+        use crate::models::PlayedCard;
+        use crate::observation::RevealedKnowledge;
+        let game = crate::test_support::get_test_game_with_board(
+            vec![PlayedCard::from_id(CardId::A1001Bulbasaur)],
+            vec![PlayedCard::from_id(CardId::B1196Swablu)],
+        );
+        let state = game.get_state_clone();
+        let sabrina = get_card_by_enum(CardId::A1225Sabrina);
+        let bulbasaur = get_card_by_enum(CardId::A1001Bulbasaur);
+        let revealed = RevealedKnowledge {
+            deck_top: [Vec::new(), vec![sabrina.clone()]],
+            opponent_hand: Vec::new(),
+            opponent_deck_membership: vec![sabrina.clone(), bulbasaur.clone()],
+        };
+        let observation = PlayerObservation::from_state(&state, 0, &revealed);
+        let seen = Core::seen_opponent_cards(&observation);
+        assert_eq!(seen.iter().filter(|c| **c == sabrina).count(), 1, "{seen:?}");
+        assert_eq!(seen.iter().filter(|c| **c == bulbasaur).count(), 1, "{seen:?}");
+        assert!(seen.iter().any(|c| c.get_name() == "Swablu"), "{seen:?}");
+    }
+
     /// The printing swap counts copies: two seen copies of one Sabrina printing against a list holding two different
     /// printings take both slots, leaving no third Sabrina; an exact printing is matched in place.
     #[test]
