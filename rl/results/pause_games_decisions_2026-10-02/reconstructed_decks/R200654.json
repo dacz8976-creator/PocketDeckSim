@@ -1,0 +1,66 @@
+{
+  "key": "R200654",
+  "games": ["200654"],
+  "approximate": true,
+  "energy_type": "Darkness",
+  "n_seen": 18,
+  "m_inferred": 2,
+  "seen": [
+    {"card": "Deino B1 155", "count": 2,
+     "evidence": "200654: gold-border Deino found by the turn 2 Poke Ball (TURN_LEDGER turn 2 draws_and_searches), benched in bench3, evolved to Zweilous turn 4 and Hydreigon turn 6, knocked out turn 9, and shown in the owner discard panel at 469-472 s (TURN_EVIDENCE D_OWNER_OPEN_472). A second, regular-art Deino drawn on turn 10 (normal_draw) and benched in bench3 (turn 10 plays), still on the board at turn 14. Two physical copies, the first already in the discard pile when the second was drawn. Other recording 212437 (Sep 27) also benches two Deino at once on turn 2."},
+    {"card": "Zweilous B1 156", "count": 1,
+     "evidence": "200654: turn 2 normal draw (hand_at_start, kept to turn 4), evolved onto Deino turn 4 (play 1), then Hydreigon turn 6; one Zweilous in the discard panel at 469-472 s. Never two at once."},
+    {"card": "Hydreigon B1 157", "count": 1,
+     "evidence": "200654: turn 6 normal draw (rainbow-border full art, one visible star), evolved from Zweilous turn 6, Roar in Unison and Hyper Ray turn 8 (130 on Dialga ex), knocked out by Ultimate Force turn 9; in the discard panel at 469-472 s. Printing B1 157 is the first of two identical-stat printings (B1 157 / B1 245); the exact printing is unconfirmed (UNCERTAINTIES Hydreigon_exact_printing)."},
+    {"card": "Galarian Zigzagoon B4 095", "count": 2,
+     "evidence": "200654: gold-border Zigzagoon opening Active (REVIEW_SUPPLEMENT opening at 16 s) and a regular-art Zigzagoon found by the second turn 2 Poke Ball and benched in bench2; both on the board together from turn 2 through turn 8 (TURN_LEDGER board_after turns 2-7). 70 HP and Tackle 10 [C] identify the B4 095 printing."},
+    {"card": "Galarian Obstagoon B2 100", "count": 2,
+     "evidence": "200654: full-art Obstagoon drawn by the turn 2 Research (hand turns 2-7), played via gold Rare Candy onto the Active Zigzagoon turn 8 (150 HP, Merciless Strike 70 [DD]); a second full-art Obstagoon drawn turn 12 (normal_draw) and evolved via Rare Candy onto bench2 Zigzagoon on turn 12 while the first was still on the board at 20 HP (two evolved Pokemon at once). Printing B2 100 is the first of two identical-stat printings (B2 100 / B2 176)."},
+    {"card": "Deceptive Needle B4 148", "count": 2,
+     "evidence": "200654: regular-art Needle in the opening hand attached to the Active Zigzagoon, and a gold Needle drawn by the turn 2 Research attached to the bench2 Zigzagoon (play 8 turn 2); both attached at once from turn 2 on (board_after tool fields turns 2-8; UNCERTAINTIES newprose_vsaccepted topic 'TwoTools': two Needles attach to different Zigzagoon, regular Active and gold bench2)."},
+    {"card": "Poké Ball P-A 005", "count": 2,
+     "evidence": "200654: both Poke Balls in the opening hand (hand turn 1 and turn 2 start) and both played on turn 2 (find Deino, find Galarian Zigzagoon); two Poke Balls (one clipped) also in the owner discard panel at 469-472 s. Id string is the repo's P-A 005."},
+    {"card": "Professor's Research P-A 007", "count": 2,
+     "evidence": "200654: regular-art Research in the opening hand, played turn 2 (draws Obstagoon and a gold Needle); a full-art Research drawn turn 8 and played turn 8 (draws two Rare Candy). Two Supporters played in one game; both are in the owner discard panel at 469-472 s."},
+    {"card": "Rare Candy A3 144", "count": 2,
+     "evidence": "200654: the turn 8 Research drew a regular-art and a gold Rare Candy into the hand together (draws_and_searches turn 8, two in hand at once); the gold one evolved Zigzagoon to Obstagoon on turn 8 (still in the discard panel at 469-472 s), the regular one evolved Zigzagoon to the second Obstagoon on turn 12."},
+    {"card": "Lillie A3 155", "count": 1,
+     "evidence": "200654: full-art Lillie drawn turn 4 (normal_draw), held through turn 8, played turn 10 (heals 50 actual on Obstagoon); in the discard panel at 469-472 s. Id is the repo's Lillie (decks/dustin/05-indeedee-stoutland.txt uses A3 155)."},
+    {"card": "Piers B2 152", "count": 1,
+     "evidence": "200654: gold Piers drawn turn 14 (normal_draw), played turn 14 (discards 2 random Metal from Arceus ex, needs Obstagoon in play)."}
+  ],
+  "inferred": [
+    {"card": "Galarian Linoone B2 099", "count": 2,
+     "source": "other recordings of the same deck in the same period, rule (a): 20260926_213750 (turn 4: the Active Zigzagoon and the benched Zigzagoon both evolve to Linoone in the same turn, so two physical copies; the opening hand there also held a Linoone), 20260926_215126 (Linoone Active on turn 11), 20260927_205926 (Zigzagoon to Linoone turn 5, Linoone to Obstagoon turn 7), 20260927_211210 (Active Zigzagoon to Linoone turn 3, a Linoone on the bench until turn 10). Rear Kick 40 [D], 80 HP, which is the B2 099 printing named in those reviews.",
+     "reason": "Seen in four other recordings of this deck and the only card the Sep 26-27 recordings add that the Sep 28 game did not show; with it the pooled lower bounds of all eight Hydreigon / Obstagoon recordings come to exactly 20 cards, so no other candidate competes for the two slots. It was never drawn in this game (both Obstagoon came by Rare Candy), so it does not make his played line look better; it is a Stage 1 piece, not a draw card, Poke Ball or key attacker."}
+  ],
+  "nearest_list": "C:\\Users\\dacz8\\Projects\\Pocket Deck Sim\\PocketDeckSim\\decks\\screen\\opponents\\t-hydreigon.txt",
+  "nearest_lists_also": [
+    "C:\\Users\\dacz8\\Projects\\Pocket Deck Sim\\PocketDeckSim\\decks\\brews\\brew-09-sableye-obstagoon.txt"
+  ],
+  "nearest_list_note": "Neither repo list is his deck. t-hydreigon.txt (a tournament list: 2 Deino, 2 Hydreigon, Mega Absol ex, Bombirdier, Copycat, Cyrus, Sabrina, Lucky Ice Pop) and brew-09 (Zigzagoon, Obstagoon, Rare Candy, Research, Poke Ball; no Hydreigon) each overlap this list in 11 of 20 cards. They were used only for the id format and as a cross-check; rule (b) was not needed because rule (a) filled both slots. Not used as proof of the old list.",
+  "other_recordings_used": [
+    "20260926_212545 (izzy, in 20260926_new_clips_sol_review): opening hand Hydreigon, Deceptive Needle, Rare Candy, Piers; Research; two Zigzagoon; Lillie on turn 7. No card outside the 18 seen.",
+    "20260926_213750: Linoone x2 evolved in the same turn (basis for the inferred copies), two Rare Candy, Linoone and Obstagoon in the opening hand, Zweilous. The review says the player 'plays Rainbow Cave' on turn 2; not used (see caveats).",
+    "20260926_215126: Piers turn 10, Needle turn 14, Linoone, Rare Candy turn 6, Poke Ball turn 2, Obstagoon, Deino.",
+    "20260927_205715: opening hand Hydreigon, Obstagoon, Research; Needle drawn; Rare Candy to Obstagoon; Zweilous.",
+    "20260927_205926: Poke Ball finds Zigzagoon, Rare Candy to Hydreigon, Linoone, Obstagoon, Piers turn 7, Lillie turn 11, Needle.",
+    "20260927_211210: Linoone, Zweilous, Hydreigon, Obstagoon, second Needle on turn 11.",
+    "20260927_212437: two Deino benched at once; turn 10 Poke Ball says there is no eligible Basic in the deck after all four of his Basics (2 Zigzagoon, 2 Deino) were out, which shows the deck holds exactly four Basic Pokemon."
+  ],
+  "completeness_check": {
+    "method": "Deck-count arithmetic from the Codex ledger (TURN_LEDGER.json) of 200654.",
+    "arithmetic": "Opening hand 5 (Research, Zigzagoon, Needle, Poke Ball, Poke Ball) + 7 turn draws on his turns 2/4/6/8/10/12/14 (Zweilous, Lillie, Hydreigon, Research, Deino, Obstagoon, Piers) + 2 Poke Ball finds (Deino, Zigzagoon) + 4 Research draws (Obstagoon, Needle; Rare Candy, Rare Candy) = 18 cards drawn, all identified. The last 2 cards of the 20 were never drawn and never shown.",
+    "pooled_cross_check": "Pooled lower bounds over the eight Sep 26-28 recordings: Zigzagoon 2, Linoone 2, Obstagoon 2, Deino 2, Zweilous 1, Hydreigon 1, Needle 2, Poke Ball 2, Research 2, Rare Candy 2, Lillie 1, Piers 1 = exactly 20, with the Basic count pinned at four by the failed Poke Ball in 20260927_212437. One constant list explains every recording, apart from the unresolved Rainbow Cave line."
+  },
+  "caveats": [
+    "Approximate: the exact historical 20-card list was never stored (DECK_USED exact_list_status unavailable_historical_snapshot; LADDER_LOG_CAPTURE says the log holds visible cores only). 18 of 20 slots are directly seen in this game; the 2 inferred slots rest on other recordings of the deck 2 days earlier and 1 day earlier, assuming he did not change the list between Sep 26 and Sep 28.",
+    "Rainbow Cave: the 20260926_213750 review says the player played Rainbow Cave on turn 2 (sampled at 5 s spacing, ownership not certified; the opponent was an Entei ex deck, and Rainbow Cave was clearly the opponents' in 20260927_205926 and 20260927_212437). Taken as the opponent's, because with Rainbow Cave the pooled count would be 21 cards. In a Darkness-only Energy Zone it would be close to a dead card, so if it were his the effect would be small; if it replaced one Linoone, one inferred slot would change.",
+    "The two undrawn cards are not Basic Pokemon (a failed Poke Ball in 20260927_212437 shows exactly four Basics in the deck), so Bombirdier and Mega Absol ex from the repo Hydreigon list cannot be in this list; Copycat, Cyrus, Sabrina and Lucky Ice Pop were never shown on his side in any of the eight recordings (the Ice Pop plays in 200654 are the opponent's, as DECK_USED notes).",
+    "Hydreigon and Zweilous are counted once (never two at once); the list therefore has a 2-1-1 Deino line with 2 Rare Candy. A second Hydreigon or Zweilous is possible only if the list changed between recordings.",
+    "Printings: alternate arts (gold, full art, rainbow border) are the same playable card. Ids are the first printing from card_ids.py with matching stats (Hydreigon B1 157 over B1 245, Obstagoon B2 100 over B2 176), and the repo's usual ids for Poke Ball (P-A 005), Professor's Research (P-A 007), Rare Candy (A3 144) and Lillie (A3 155). Linoone B2 099 (Rear Kick 40) is the printing named in the reviews, not B4 096 (Night Slash 30).",
+    "Energy type is Darkness (his Energy Zone gave Darkness in the recording; Ladder Log saves the game under 'custom Hydreigon / Galarian Obstagoon, Darkness Energy').",
+    "Game mode (ladder vs Auto) is classified ladder_presumed; independent acceptance is accepted_with_recording_limits. This does not affect the card list. The reconstruction is not to be used for any verdict on who played better.",
+    "What would change the picture: a stored deck code or list screenshot for Sep 28; footage showing Rainbow Cave or another non-Linoone card on his side; or any recording showing Hydreigon or Zweilous twice at once. None of these would change the 18 seen cards."
+  ]
+}

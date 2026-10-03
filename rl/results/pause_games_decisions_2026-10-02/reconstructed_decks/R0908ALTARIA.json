@@ -1,0 +1,60 @@
+{
+  "key": "R0908ALTARIA",
+  "status": "APPROXIMATE reconstruction; the exact historical 20-card list is unavailable (DECK_USED.json exact_list_status = historical_list_unavailable in both packets). Not for any verdict about who played better.",
+  "games": ["190031", "190933"],
+  "energy": "Psychic",
+  "deck_file": "C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\2007fbb0-8999-4f68-b5ad-afe643bc4e30\\scratchpad\\pgd\\reconstructed_decks\\R0908ALTARIA.txt",
+  "n_seen": 18,
+  "m_inferred": 2,
+  "seen": [
+    {"card": "Igglybuff A4a 059", "count": 1,
+     "evidence": "190933: opening five (setup, REVIEW_SUPPLEMENT.md 'Opening before Active') and Active Igglybuff 30/30 from TURN_LEDGER T1 board (t0045-t0087); Sleepy Lullaby T1 and T3. Not seen in 190031."},
+    {"card": "Darkrai B2b 040", "count": 2,
+     "evidence": "190933 T1: opening-hand Darkrai Benched (t0045.00), then Poke Ball searched a second Darkrai (t0056.50) Benched (t0068.00); two Darkrai on the Bench at once (TURN_LEDGER T1 board_after B1 and B3, 100/100 each), DECK_USED visible_minimum_copies Darkrai 2. 190031 T2: one Darkrai (Poke Ball search t0057.00, Benched t0074.00)."},
+    {"card": "Eevee B1 184", "count": 2,
+     "evidence": "190933 T1 owner_hand_start = Darkrai, Copycat, Professor's Research, Eevee, Eevee (t0044.50): two physical copies in hand at once; also T5 Active Eevee plus the Eevee Research drew (t0219.50). DECK_USED visible_minimum_copies Eevee 2. 190031: one Eevee (Active from setup, t0038.00). HP 50 / Stampede / Boosted Evolution match the reviews."},
+    {"card": "Swablu B1 196", "count": 1,
+     "evidence": "190031 T2: Professor's Research drew Swablu (t0064.00), Benched t0074.00, evolved to Mega Altaria ex T4 (t0143.00). 190933: Poke Ball search T3 (t0120.50), Copycat shuffled it back and the 4-card draw returned a Swablu (t0137.50), Benched T5 (t0234.00), evolved T7 (t0290.00). Never two Swablu visible at once, so one copy."},
+    {"card": "Mega Altaria ex B1 102", "count": 1,
+     "evidence": "190031: T2 turn draw (t0051.00), evolved T4 (t0143.00). 190933: T5 Research draw (t0218.50), evolved T7 (t0290.00). 190 HP / Mega Harmony match the reviews. One at a time."},
+    {"card": "Espeon B3a 020", "count": 2,
+     "evidence": "190933: T7 turn draw Espeon (t0287.00), T9 turn draw a second Espeon (t0357.00); T9 owner_hand_start holds two Espeon (t0357.00), one evolves the Benched Eevee (t0360.00) and one is still in hand at the end (T9 owner_hand_end, t0385.00). DECK_USED visible_minimum_copies Espeon 2. HP 90 / Hypnoblast match."},
+    {"card": "Professor's Research P-A 007", "count": 2,
+     "evidence": "190933: played T1 (t0050.00/t0051.50) and, after it was in the discard, a Research drawn T5 (t0214.00) and played (t0215.00-t0219.50): two Supporter plays in one game force two copies. 190031: one (opening hand t0038.00, played T2 t0064.00)."},
+    {"card": "Poké Ball P-A 005", "count": 2,
+     "evidence": "190933: T1 Poke Ball (from the Research draw, played t0056.50, searched Darkrai; discard-pile top 'Poke Ball' at t0087) and T3 Poke Ball (turn draw t0114.50, played t0117.50-t0120.50, searched Swablu): two plays in one game. 190031: one (opening hand, played T2 t0054.00). Note: T1 Research-draw identity of this Poke Ball is accepted provenance with partial native support, but the T1 play itself is the accepted review's frames 055/058."},
+    {"card": "Copycat B1 225", "count": 1,
+     "evidence": "190031: in the opening hand (t0038.00), kept unplayed to the end (T4 owner_hand_end, t0165.50). 190933: in the opening hand, played T3 (t0136.50-t0139.50; discard top Copycat t0167). One at a time in each game."},
+    {"card": "Sabrina A1 225", "count": 1,
+     "evidence": "190933: one of the 4 cards Copycat drew T3 (t0136.50), held until played T9 (t0363.00); discard top Sabrina t0385."},
+    {"card": "Small Balloon B3b 064", "count": 1,
+     "evidence": "190031: opening hand, attached to Eevee T2 (t0080.00) for the free retreat (t0084.00). 190933: drawn by the T1 Research (t0051.50), attached to the left Darkrai T3 (t0136.50), discard-pile top t0409 after that Darkrai was Knocked Out. One copy in each game."},
+    {"card": "Training Area B2 153", "count": 1,
+     "evidence": "190031: drawn by the T2 Research (t0065.00), played T4 (t0148.00). 190933: Copycat draw T3 (t0138.50), still in hand at the end (T10 owner_hand_end, t0385.00) while the opponent's own Training Area was in play (T6, t0287.00). One at a time."},
+    {"card": "Field Blower B3 147", "count": 1,
+     "evidence": "190031: T4 turn draw (t0132.00), played on Heavy Helmet (t0139.00; discard top Field Blower t0165.50). 190933: Copycat draw T3 (t0139.50), in hand unplayed to the end. One at a time."}
+  ],
+  "inferred": [
+    {"card": "Copycat B1 225", "count": 1,
+     "source": "nearest list: decks/research/altaria.txt (second Copycat is one of its two cards not yet accounted for); also the t-altaria and variants-2026-09-23 Altaria lists run 2 Copycat",
+     "reason": "The only nearest-list card that passes the never-flatter test: a second Copycat changes none of the recorded decisions (no second copy was ever drawn, and the winning 190031 turn skipped Copycat); it is still a draw Supporter, so it is the least-bad nearest-list leftover, not a neutral one."},
+    {"card": "Training Area B2 153", "count": 1,
+     "source": "surplus copy of a card already seen (190031 and 190933), after the nearest list's other leftover (a second Swablu) was refused",
+     "reason": "Least helpful legal filler: a duplicate Stadium is dead once one is in play or the opponent's is out (as in 190933), and it was never needed for a result (190031 lethal did not need the +10); the nearest list's second Swablu was refused because it would make 190933's Copycat shuffle of his only Swablu look safer (chance of redrawing a Swablu among Copycat's 4 cards about 36% with one Swablu vs about 62% with two), and Field Blower / Small Balloon / Igglybuff copies were refused because those cards were decisive or praised in the accepted reviews."}
+  ],
+  "nearest_list": "C:\\Users\\dacz8\\Projects\\Pocket Deck Sim\\PocketDeckSim\\decks\\research\\altaria.txt",
+  "other_recordings_used": [
+    "20260908_190031000 and 20260908_190933000 pooled as one deck (group note): per-card maximum copies seen, not the sum; 190933 forces every multi-copy count (it shows all 13 card names), 190031 shows 10 of the 13 names and contradicts none.",
+    "No third recording of this deck exists in LADDER_HISTORY_PRE_2026-09-15.md (the only other Altaria row is an opponent's deck in the Ladder Log db, d07) or in the Ladder Log db, so fill rule (a) supplied nothing."
+  ],
+  "caveats": [
+    "APPROXIMATE. The cards seen are lower bounds (the packets' own wording); 18 of 20 slots are directly seen, 2 are inferred. All 18 seen cards come from 190933 alone; 190031 adds no extra copies. The 2 never-seen cards are simply the last two cards of the deck in a 10-turn game, so they are random among the list's remainder, not a signal.",
+    "decks/dustin and decks/brews contain no Altaria list (their nearest Darkrai lists are Dark-type Hoopa/Absol decks, which this Psychic Energy deck cannot be). The nearest list used is therefore decks/research/altaria.txt, a Limitless-era list (consistency doc: 'Ladder record: Limitless ~53%'), i.e. the current archetype list. It is used only as a template for plausible fillers, never as proof of what Dustin played. It happens to contain exactly the same 13 card names as were seen (and none other), which makes it plausible, but the Aug 29 jlng and Sep 10 Lanora variants of the archetype differ (Cyrus instead of Field Blower; 1 Swablu and 2 Igglybuff in the Lanora list), so the 2 flex slots are genuinely open.",
+    "SENSITIVITY: if Dustin's actual list was the research/altaria.txt list, the two inferred slots would be a second Swablu and a second Copycat (the list would then be exactly 2 Swablu + 2 Copycat + 1 Training Area). This reconstruction deliberately does NOT use the second Swablu (see the Training Area reason). Swapping Training Area for Swablu (decks/research/altaria.txt) is the one sensitivity run worth doing if an early-game position (190933 T3, the Copycat turn) is ever used.",
+    "Neither inferred card is a key attacker, evolution piece, Poke Ball or search card, by design (conservative direction). A second Copycat gives the pilot a little more draw; the second Training Area is close to a dead card.",
+    "Printings: Pokemon ids are the first printing whose HP and attack names match the reviews (Igglybuff 30 HP Sleepy Lullaby, Darkrai 100 HP Bad Dreams, Eevee 50 HP Stampede, Swablu 50 HP Sing, Mega Altaria ex 190 HP Mega Harmony, Espeon 90 HP Hypnoblast). Poke Ball and Professor's Research use the P-A 005 / P-A 007 printings every repo list and example position uses (same card text as the first-listed A2b 111 / A4b 373); the Pokemon-art printings cannot be told apart in the recordings.",
+    "Energy type Psychic comes from the Energy Zone in both recordings (190031 TURN_LEDGER T1 energy_zone.next = Psychic; 190933 Psychic Energy attached T3/T5/T7/T9).",
+    "Pooling rests on the group note (two recordings 10 minutes apart, same deck name in the Ladder history table). The recordings do not contradict each other, but they cannot prove it; Small Balloon, Training Area and Field Blower each appear in both with no conflict.",
+    "Quirk to know: 190933 T3 Copycat shuffled Eevee and Swablu away; with Swablu at one copy this line is riskier in the simulated deck than it may have been for Dustin if he ran two. That is the cost of the conservative choice."
+  ]
+}

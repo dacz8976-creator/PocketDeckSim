@@ -1,0 +1,329 @@
+PGSTEP LR-032418-t05 seed 1 free 0
+PGDUMP actor=0 candidates=5
+PGDUMP       -279.800000000000011 EndTurn
+PGDUMP        530.699999999999932 Attach:1Lightning@0 zone
+PGDUMP       -160.299999999999955 Attach:1Lightning@1 zone
+PGDUMP        530.699999999999932 Play:Order Pad
+PGDUMP       -382.633333333333326 Retreat:1
+PGSTEP LR-032418-t05 seed 1 free 1
+PGDUMP actor=0 candidates=2
+PGDUMP        529.200000000000045 KeepTrainerCoinResults
+PGDUMP        530.200000000000045 RerollTrainerCoins
+PGSTEP LR-032418-t05 seed 1 free 2
+PGDUMP actor=0 candidates=4
+PGDUMP       -280.800000000000011 EndTurn
+PGDUMP        529.200000000000045 Attach:1Lightning@0 zone
+PGDUMP       -180.800000000000011 Attach:1Lightning@1 zone
+PGDUMP       -384.133333333333383 Retreat:1
+PGSTEP LR-032418-t05 seed 1 free 3
+PGDUMP actor=0 candidates=3
+PGDUMP        149.199999999999989 EndTurn
+PGDUMP        529.200000000000045 Attack:Junk Spark
+PGDUMP       -470.800000000000011 Retreat:1
+PGSTEP LR-032418-t05 seed 1 free 4
+PGSTEP LR-032418-t05 seed 2 free 0
+PGDUMP actor=0 candidates=5
+PGDUMP       -279.800000000000011 EndTurn
+PGDUMP        530.699999999999932 Attach:1Lightning@0 zone
+PGDUMP       -160.299999999999983 Attach:1Lightning@1 zone
+PGDUMP        530.699999999999932 Play:Order Pad
+PGDUMP       -382.633333333333326 Retreat:1
+PGSTEP LR-032418-t05 seed 2 free 1
+PGDUMP actor=0 candidates=2
+PGDUMP        531.199999999999932 KeepTrainerCoinResults
+PGDUMP        530.200000000000045 RerollTrainerCoins
+PGSTEP LR-032418-t05 seed 2 free 2
+PGDUMP actor=0 candidates=5
+PGDUMP       -278.800000000000011 EndTurn
+PGDUMP        565.200000000000045 Attach:1Lightning@0 zone
+PGDUMP       -178.800000000000011 Attach:1Lightning@1 zone
+PGDUMP        565.200000000000045 Play:Team Rocket's Goo-zooka
+PGDUMP       -382.133333333333383 Retreat:1
+PGSTEP LR-032418-t05 seed 2 free 3
+PGDUMP actor=0 candidates=4
+PGDUMP       -279.800000000000011 EndTurn
+PGDUMP        565.200000000000045 Attach:1Lightning@0 zone
+PGDUMP       -179.800000000000011 Attach:1Lightning@1 zone
+PGDUMP       -383.133333333333383 Retreat:1
+PGSTEP LR-032418-t05 seed 2 free 4
+PGDUMP actor=0 candidates=3
+PGDUMP        150.199999999999989 EndTurn
+PGDUMP        565.200000000000045 Attack:Junk Spark
+PGDUMP       -469.800000000000011 Retreat:1
+PGSTEP LR-032418-t05 seed 2 free 5
+PGSTEP LR-032418-t05 seed 3 free 0
+PGDUMP actor=0 candidates=5
+PGDUMP       -279.800000000000011 EndTurn
+PGDUMP        530.699999999999932 Attach:1Lightning@0 zone
+PGDUMP       -160.299999999999983 Attach:1Lightning@1 zone
+PGDUMP        530.699999999999932 Play:Order Pad
+PGDUMP       -382.633333333333326 Retreat:1
+PGSTEP LR-032418-t05 seed 3 free 1
+PGDUMP actor=0 candidates=2
+PGDUMP        531.199999999999932 KeepTrainerCoinResults
+PGDUMP        530.200000000000045 RerollTrainerCoins
+PGSTEP LR-032418-t05 seed 3 free 2
+PGDUMP actor=0 candidates=4
+PGDUMP       -278.800000000000011 EndTurn
+PGDUMP        531.200000000000045 Attach:1Lightning@0 zone
+PGDUMP       -178.800000000000011 Attach:1Lightning@1 zone
+PGDUMP       -382.133333333333383 Retreat:1
+PGSTEP LR-032418-t05 seed 3 free 3
+PGDUMP actor=0 candidates=3
+PGDUMP        151.199999999999989 EndTurn
+PGDUMP        531.200000000000045 Attack:Junk Spark
+PGDUMP       -468.800000000000011 Retreat:1
+PGSTEP LR-032418-t05 seed 3 free 4
+PGSTEP LR-032418-t05 seed 4 free 0
+PGDUMP actor=0 candidates=5
+PGDUMP       -279.800000000000011 EndTurn
+PGDUMP        530.699999999999932 Attach:1Lightning@0 zone
+PGDUMP       -160.300000000000011 Attach:1Lightning@1 zone
+PGDUMP        530.699999999999932 Play:Order Pad
+PGDUMP       -382.633333333333326 Retreat:1
+PGSTEP LR-032418-t05 seed 4 free 1
+PGDUMP actor=0 candidates=2
+PGDUMP        529.200000000000045 KeepTrainerCoinResults
+PGDUMP        530.200000000000045 RerollTrainerCoins
+PGSTEP LR-032418-t05 seed 4 free 2
+PGDUMP actor=0 candidates=4
+PGDUMP       -280.800000000000011 EndTurn
+PGDUMP        529.200000000000045 Attach:1Lightning@0 zone
+PGDUMP       -180.800000000000011 Attach:1Lightning@1 zone
+PGDUMP       -384.133333333333383 Retreat:1
+PGSTEP LR-032418-t05 seed 4 free 3
+PGDUMP actor=0 candidates=3
+PGDUMP        149.199999999999989 EndTurn
+PGDUMP        529.200000000000045 Attack:Junk Spark
+PGDUMP       -470.800000000000011 Retreat:1
+PGSTEP LR-032418-t05 seed 4 free 4
+PGSTEP LR-032418-t05 seed 5 free 0
+PGDUMP actor=0 candidates=5
+PGDUMP       -279.800000000000011 EndTurn
+PGDUMP        530.699999999999932 Attach:1Lightning@0 zone
+PGDUMP       -160.299999999999983 Attach:1Lightning@1 zone
+PGDUMP        530.699999999999932 Play:Order Pad
+PGDUMP       -382.633333333333326 Retreat:1
+PGSTEP LR-032418-t05 seed 5 free 1
+PGDUMP actor=0 candidates=2
+PGDUMP        531.199999999999932 KeepTrainerCoinResults
+PGDUMP        530.200000000000045 RerollTrainerCoins
+PGSTEP LR-032418-t05 seed 5 free 2
+PGDUMP actor=0 candidates=5
+PGDUMP       -278.800000000000011 EndTurn
+PGDUMP        726.700000000000045 Attach:1Lightning@0 zone
+PGDUMP         83.200000000000003 Attach:1Lightning@1 zone
+PGDUMP        726.700000000000045 Play:Lucky Ice Pop
+PGDUMP       -382.133333333333383 Retreat:1
+PGSTEP LR-032418-t05 seed 5 free 3
+PGDUMP actor=0 candidates=2
+PGDUMP        735.200000000000045 KeepTrainerCoinResults
+PGDUMP        718.200000000000045 RerollTrainerCoins
+PGSTEP LR-032418-t05 seed 5 free 4
+PGDUMP actor=0 candidates=4
+PGDUMP       -129.800000000000011 EndTurn
+PGDUMP        735.200000000000045 Attach:1Lightning@0 zone
+PGDUMP        -29.800000000000001 Attach:1Lightning@1 zone
+PGDUMP       -263.133333333333383 Retreat:1
+PGSTEP LR-032418-t05 seed 5 free 5
+PGDUMP actor=0 candidates=3
+PGDUMP        320.199999999999989 EndTurn
+PGDUMP        735.200000000000045 Attack:Junk Spark
+PGDUMP       -329.800000000000011 Retreat:1
+PGSTEP LR-032418-t05 seed 5 free 6
+PGSTEP LR-032418-t05 seed 6 free 0
+PGDUMP actor=0 candidates=5
+PGDUMP       -279.800000000000011 EndTurn
+PGDUMP        530.699999999999932 Attach:1Lightning@0 zone
+PGDUMP       -160.299999999999983 Attach:1Lightning@1 zone
+PGDUMP        530.699999999999932 Play:Order Pad
+PGDUMP       -382.633333333333326 Retreat:1
+PGSTEP LR-032418-t05 seed 6 free 1
+PGDUMP actor=0 candidates=2
+PGDUMP        531.199999999999932 KeepTrainerCoinResults
+PGDUMP        530.200000000000045 RerollTrainerCoins
+PGSTEP LR-032418-t05 seed 6 free 2
+PGDUMP actor=0 candidates=5
+PGDUMP       -278.800000000000011 EndTurn
+PGDUMP        566.700000000000045 Attach:1Lightning@0 zone
+PGDUMP       -155.550000000000040 Attach:1Lightning@1 zone
+PGDUMP        566.700000000000045 Play:Order Pad
+PGDUMP       -381.633333333333383 Retreat:1
+PGSTEP LR-032418-t05 seed 6 free 3
+PGDUMP actor=0 candidates=2
+PGDUMP        565.200000000000045 KeepTrainerCoinResults
+PGDUMP        566.200000000000045 RerollTrainerCoins
+PGSTEP LR-032418-t05 seed 6 free 4
+PGDUMP actor=0 candidates=5
+PGDUMP       -277.800000000000011 EndTurn
+PGDUMP        603.200000000000045 Attach:1Lightning@0 zone
+PGDUMP        -37.799999999999997 Attach:1Lightning@1 zone
+PGDUMP        603.200000000000045 Play:Poké Ball
+PGDUMP       -353.966666666666697 Retreat:1
+PGSTEP LR-032418-t05 seed 7 free 0
+PGDUMP actor=0 candidates=5
+PGDUMP       -279.800000000000011 EndTurn
+PGDUMP        530.699999999999932 Attach:1Lightning@0 zone
+PGDUMP       -160.299999999999983 Attach:1Lightning@1 zone
+PGDUMP        530.699999999999932 Play:Order Pad
+PGDUMP       -382.633333333333326 Retreat:1
+PGSTEP LR-032418-t05 seed 7 free 1
+PGDUMP actor=0 candidates=2
+PGDUMP        531.199999999999932 KeepTrainerCoinResults
+PGDUMP        530.200000000000045 RerollTrainerCoins
+PGSTEP LR-032418-t05 seed 7 free 2
+PGDUMP actor=0 candidates=4
+PGDUMP       -278.800000000000011 EndTurn
+PGDUMP        531.200000000000045 Attach:1Lightning@0 zone
+PGDUMP       -178.800000000000011 Attach:1Lightning@1 zone
+PGDUMP       -382.133333333333383 Retreat:1
+PGSTEP LR-032418-t05 seed 7 free 3
+PGDUMP actor=0 candidates=3
+PGDUMP        151.199999999999989 EndTurn
+PGDUMP        531.200000000000045 Attack:Junk Spark
+PGDUMP       -468.800000000000011 Retreat:1
+PGSTEP LR-032418-t05 seed 7 free 4
+PGSTEP LR-032418-t05 seed 8 free 0
+PGDUMP actor=0 candidates=5
+PGDUMP       -279.800000000000011 EndTurn
+PGDUMP        530.699999999999932 Attach:1Lightning@0 zone
+PGDUMP       -160.299999999999983 Attach:1Lightning@1 zone
+PGDUMP        530.699999999999932 Play:Order Pad
+PGDUMP       -382.633333333333326 Retreat:1
+PGSTEP LR-032418-t05 seed 8 free 1
+PGDUMP actor=0 candidates=2
+PGDUMP        531.199999999999932 KeepTrainerCoinResults
+PGDUMP        530.200000000000045 RerollTrainerCoins
+PGSTEP LR-032418-t05 seed 8 free 2
+PGDUMP actor=0 candidates=5
+PGDUMP       -278.800000000000011 EndTurn
+PGDUMP        566.700000000000045 Attach:1Lightning@0 zone
+PGDUMP       -155.550000000000011 Attach:1Lightning@1 zone
+PGDUMP        566.700000000000045 Play:Order Pad
+PGDUMP       -381.633333333333383 Retreat:1
+PGSTEP LR-032418-t05 seed 8 free 3
+PGDUMP actor=0 candidates=2
+PGDUMP        567.200000000000045 KeepTrainerCoinResults
+PGDUMP        566.200000000000045 RerollTrainerCoins
+PGSTEP LR-032418-t05 seed 8 free 4
+PGDUMP actor=0 candidates=4
+PGDUMP       -277.800000000000011 EndTurn
+PGDUMP        567.200000000000045 Attach:1Lightning@0 zone
+PGDUMP       -177.800000000000011 Attach:1Lightning@1 zone
+PGDUMP       -381.133333333333383 Retreat:1
+PGSTEP LR-032418-t05 seed 8 free 5
+PGDUMP actor=0 candidates=3
+PGDUMP        152.199999999999989 EndTurn
+PGDUMP        567.200000000000045 Attack:Junk Spark
+PGDUMP       -467.800000000000011 Retreat:1
+PGSTEP LR-032418-t05 seed 8 free 6
+PGSTEP LR-032418-t05 seed 9 free 0
+PGDUMP actor=0 candidates=5
+PGDUMP       -279.800000000000011 EndTurn
+PGDUMP        530.699999999999932 Attach:1Lightning@0 zone
+PGDUMP       -160.299999999999983 Attach:1Lightning@1 zone
+PGDUMP        530.699999999999932 Play:Order Pad
+PGDUMP       -382.633333333333326 Retreat:1
+PGSTEP LR-032418-t05 seed 9 free 1
+PGDUMP actor=0 candidates=2
+PGDUMP        529.200000000000045 KeepTrainerCoinResults
+PGDUMP        530.200000000000045 RerollTrainerCoins
+PGSTEP LR-032418-t05 seed 9 free 2
+PGDUMP actor=0 candidates=4
+PGDUMP       -278.800000000000011 EndTurn
+PGDUMP        531.200000000000045 Attach:1Lightning@0 zone
+PGDUMP       -178.800000000000011 Attach:1Lightning@1 zone
+PGDUMP       -382.133333333333383 Retreat:1
+PGSTEP LR-032418-t05 seed 9 free 3
+PGDUMP actor=0 candidates=3
+PGDUMP        151.199999999999989 EndTurn
+PGDUMP        531.200000000000045 Attack:Junk Spark
+PGDUMP       -468.800000000000011 Retreat:1
+PGSTEP LR-032418-t05 seed 9 free 4
+PGSTEP LR-032418-t05 seed 10 free 0
+PGDUMP actor=0 candidates=5
+PGDUMP       -279.800000000000011 EndTurn
+PGDUMP        530.699999999999932 Attach:1Lightning@0 zone
+PGDUMP       -160.299999999999955 Attach:1Lightning@1 zone
+PGDUMP        530.699999999999932 Play:Order Pad
+PGDUMP       -382.633333333333326 Retreat:1
+PGSTEP LR-032418-t05 seed 10 free 1
+PGDUMP actor=0 candidates=2
+PGDUMP        531.199999999999932 KeepTrainerCoinResults
+PGDUMP        530.200000000000045 RerollTrainerCoins
+PGSTEP LR-032418-t05 seed 10 free 2
+PGDUMP actor=0 candidates=5
+PGDUMP       -278.800000000000011 EndTurn
+PGDUMP        567.200000000000045 Attach:1Lightning@0 zone
+PGDUMP       -177.800000000000011 Attach:1Lightning@1 zone
+PGDUMP        567.200000000000045 Play:Red Card
+PGDUMP       -381.133333333333383 Retreat:1
+PGSTEP LR-032418-t05 seed 10 free 3
+PGDUMP actor=0 candidates=4
+PGDUMP       -277.800000000000011 EndTurn
+PGDUMP        567.200000000000045 Attach:1Lightning@0 zone
+PGDUMP       -177.800000000000011 Attach:1Lightning@1 zone
+PGDUMP       -381.133333333333383 Retreat:1
+PGSTEP LR-032418-t05 seed 10 free 4
+PGDUMP actor=0 candidates=3
+PGDUMP        152.199999999999989 EndTurn
+PGDUMP        567.200000000000045 Attack:Junk Spark
+PGDUMP       -467.800000000000011 Retreat:1
+PGSTEP LR-032418-t05 seed 10 free 5
+PGSTEP LR-032418-t05 seed 11 free 0
+PGDUMP actor=0 candidates=5
+PGDUMP       -279.800000000000011 EndTurn
+PGDUMP        530.699999999999932 Attach:1Lightning@0 zone
+PGDUMP       -160.300000000000011 Attach:1Lightning@1 zone
+PGDUMP        530.699999999999932 Play:Order Pad
+PGDUMP       -382.633333333333326 Retreat:1
+PGSTEP LR-032418-t05 seed 11 free 1
+PGDUMP actor=0 candidates=2
+PGDUMP        531.199999999999932 KeepTrainerCoinResults
+PGDUMP        530.200000000000045 RerollTrainerCoins
+PGSTEP LR-032418-t05 seed 11 free 2
+PGDUMP actor=0 candidates=5
+PGDUMP       -278.800000000000011 EndTurn
+PGDUMP        726.700000000000045 Attach:1Lightning@0 zone
+PGDUMP         83.200000000000003 Attach:1Lightning@1 zone
+PGDUMP        726.700000000000045 Play:Lucky Ice Pop
+PGDUMP       -382.133333333333383 Retreat:1
+PGSTEP LR-032418-t05 seed 11 free 3
+PGDUMP actor=0 candidates=2
+PGDUMP        701.200000000000045 KeepTrainerCoinResults
+PGDUMP        718.200000000000045 RerollTrainerCoins
+PGSTEP LR-032418-t05 seed 11 free 4
+PGDUMP actor=0 candidates=4
+PGDUMP       -129.800000000000011 EndTurn
+PGDUMP        735.200000000000045 Attach:1Lightning@0 zone
+PGDUMP        -29.800000000000001 Attach:1Lightning@1 zone
+PGDUMP       -263.133333333333383 Retreat:1
+PGSTEP LR-032418-t05 seed 11 free 5
+PGDUMP actor=0 candidates=3
+PGDUMP        320.199999999999989 EndTurn
+PGDUMP        735.200000000000045 Attack:Junk Spark
+PGDUMP       -329.800000000000011 Retreat:1
+PGSTEP LR-032418-t05 seed 11 free 6
+PGSTEP LR-032418-t05 seed 12 free 0
+PGDUMP actor=0 candidates=5
+PGDUMP       -279.800000000000011 EndTurn
+PGDUMP        530.699999999999932 Attach:1Lightning@0 zone
+PGDUMP       -160.299999999999983 Attach:1Lightning@1 zone
+PGDUMP        530.699999999999932 Play:Order Pad
+PGDUMP       -382.633333333333326 Retreat:1
+PGSTEP LR-032418-t05 seed 12 free 1
+PGDUMP actor=0 candidates=2
+PGDUMP        531.199999999999932 KeepTrainerCoinResults
+PGDUMP        530.200000000000045 RerollTrainerCoins
+PGSTEP LR-032418-t05 seed 12 free 2
+PGDUMP actor=0 candidates=4
+PGDUMP       -278.800000000000011 EndTurn
+PGDUMP        531.200000000000045 Attach:1Lightning@0 zone
+PGDUMP       -178.800000000000011 Attach:1Lightning@1 zone
+PGDUMP       -382.133333333333383 Retreat:1
+PGSTEP LR-032418-t05 seed 12 free 3
+PGDUMP actor=0 candidates=3
+PGDUMP        151.199999999999989 EndTurn
+PGDUMP        531.200000000000045 Attack:Junk Spark
+PGDUMP       -468.800000000000011 Retreat:1
+PGSTEP LR-032418-t05 seed 12 free 4

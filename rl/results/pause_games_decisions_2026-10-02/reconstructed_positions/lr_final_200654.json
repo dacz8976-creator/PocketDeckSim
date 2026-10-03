@@ -1,0 +1,606 @@
+[
+ {
+  "id": "LR-200654-t02",
+  "game": "ladder-20260928_200654000",
+  "his_turn": 1,
+  "deck": "R200654",
+  "turn_count": 2,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Professor's Research P-A 007",
+    "Deceptive Needle B4 148",
+    "Poké Ball P-A 005",
+    "Poké Ball P-A 005",
+    "Zweilous B1 156"
+   ],
+   "discard": [],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Galarian Zigzagoon B4 095",
+     "hp": 70
+    }
+   ],
+   "energy_now": "Darkness",
+   "energy_next": "Darkness"
+  },
+  "opp": {
+   "hand_count": 6,
+   "discard_n": 2,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Arceus ex A2a 071",
+     "hp": 140
+    }
+   ],
+   "energy_next": "Metal"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Poké Ball",
+   "(finds the gold Deino)",
+   "Place:Deino",
+   "Play:Poké Ball",
+   "(finds the second Galarian Zigzagoon)",
+   "Place:Galarian Zigzagoon",
+   "Play:Deceptive Needle",
+   "Tool:Deceptive Needle@0",
+   "Play:Professor's Research",
+   "(draws Galarian Obstagoon and the second Deceptive Needle)",
+   "Attach:1Darkness@0 zone",
+   "Play:Deceptive Needle",
+   "Tool:Deceptive Needle@1",
+   "Attack:Tackle",
+   "(Tackle 10, then the Needle adds 10 at the end of the turn: Arceus ex 140 to 120)"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 18 of 20 cards seen, 2 inferred (see reconstructed_decks/R200654.json)",
+  "approximate": true,
+  "notes": "Opening hand Research, Deceptive Needle, two Poké Balls and the Zigzagoon he placed Active; the draw is Zweilous. The opponent has only Arceus ex Active (hand 6 is the Codex fan count; discard 2 is my count of its Poké Ball and Research, the card backs are never shown); the Poké Balls find Deino and a second Zigzagoon (benched in the second and third bench slots), Research draws Obstagoon and the second Needle.",
+  "milestones": [],
+  "heldout": false
+ },
+ {
+  "id": "LR-200654-t04",
+  "game": "ladder-20260928_200654000",
+  "his_turn": 2,
+  "deck": "R200654",
+  "turn_count": 4,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Zweilous B1 156",
+    "Galarian Obstagoon B2 100",
+    "Lillie A3 155"
+   ],
+   "discard": [
+    "Poké Ball P-A 005",
+    "Poké Ball P-A 005",
+    "Professor's Research P-A 007"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Galarian Zigzagoon B4 095",
+     "hp": 70,
+     "energy": [
+      "Darkness"
+     ],
+     "tools": [
+      "Deceptive Needle B4 148"
+     ]
+    },
+    {
+     "card": "Galarian Zigzagoon B4 095",
+     "hp": 70,
+     "tools": [
+      "Deceptive Needle B4 148"
+     ]
+    },
+    {
+     "card": "Deino B1 155",
+     "hp": 60
+    }
+   ],
+   "energy_now": "Darkness",
+   "energy_next": "Darkness"
+  },
+  "opp": {
+   "hand_count": 5,
+   "discard_n": 2,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Arceus ex A2a 071",
+     "hp": 140
+    },
+    {
+     "card": "Dialga ex A2 119",
+     "hp": 150,
+     "energy": [
+      "Metal"
+     ]
+    },
+    {
+     "card": "Shaymin A2 022",
+     "hp": 60
+    }
+   ],
+   "energy_next": "Metal"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Evolve:Zweilous@2",
+   "Attach:1Darkness@1 zone",
+   "Attack:Tackle",
+   "(Tackle 10, then the Needle adds 10: Arceus ex 140 to 120)"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 18 of 20 cards seen, 2 inferred (see reconstructed_decks/R200654.json)",
+  "approximate": true,
+  "notes": "Draw Lillie. Since his last turn: the opponent benched Shaymin and Dialga ex (one Metal) and healed Arceus ex back to 140 (Fragrant Flower Garden and Lucky Ice Pop; the Pop returned to their hand); nothing hit him. Deino, the gold-Needle Zigzagoon and the Active Zigzagoon (one Darkness, regular Needle) are as he left them; opponent hand 5 counted, discard 2 unchanged.",
+  "milestones": [],
+  "heldout": false
+ },
+ {
+  "id": "LR-200654-t06",
+  "game": "ladder-20260928_200654000",
+  "his_turn": 3,
+  "deck": "R200654",
+  "turn_count": 6,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Galarian Obstagoon B2 100",
+    "Lillie A3 155",
+    "Hydreigon B1 157"
+   ],
+   "discard": [
+    "Poké Ball P-A 005",
+    "Poké Ball P-A 005",
+    "Professor's Research P-A 007"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Galarian Zigzagoon B4 095",
+     "hp": 70,
+     "energy": [
+      "Darkness"
+     ],
+     "tools": [
+      "Deceptive Needle B4 148"
+     ]
+    },
+    {
+     "card": "Galarian Zigzagoon B4 095",
+     "hp": 70,
+     "energy": [
+      "Darkness"
+     ],
+     "tools": [
+      "Deceptive Needle B4 148"
+     ]
+    },
+    {
+     "card": "Zweilous B1 156",
+     "hp": 90,
+     "behind": [
+      "Deino B1 155"
+     ]
+    }
+   ],
+   "energy_now": "Darkness",
+   "energy_next": "Darkness"
+  },
+  "opp": {
+   "hand_count": 6,
+   "discard_n": 3,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Arceus ex A2a 071",
+     "hp": 140,
+     "tools": [
+      "Rocky Helmet A2 148"
+     ]
+    },
+    {
+     "card": "Dialga ex A2 119",
+     "hp": 150,
+     "energy": [
+      "Metal",
+      "Metal"
+     ]
+    },
+    {
+     "card": "Shaymin A2 022",
+     "hp": 60
+    }
+   ],
+   "energy_next": "Metal"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Evolve:Hydreigon@2",
+   "Attach:1Darkness@2 zone",
+   "Attack:Tackle",
+   "(Tackle 10; Rocky Helmet does 20 back to his Zigzagoon; the Needle adds 10 to Arceus ex)"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 18 of 20 cards seen, 2 inferred (see reconstructed_decks/R200654.json)",
+  "approximate": true,
+  "notes": "Draw Hydreigon. Since his last turn the opponent played Research (discard 3 by my count), put Rocky Helmet on Arceus ex, healed it back to 140 and gave Dialga ex a second Metal; his Deino is now Zweilous and the benched Zigzagoon has its Darkness. He evolves Zweilous into Hydreigon, puts the Darkness on it and Tackles.",
+  "milestones": [],
+  "heldout": false
+ },
+ {
+  "id": "LR-200654-t08",
+  "game": "ladder-20260928_200654000",
+  "his_turn": 4,
+  "deck": "R200654",
+  "turn_count": 8,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Galarian Obstagoon B2 100",
+    "Lillie A3 155",
+    "Professor's Research P-A 007"
+   ],
+   "discard": [
+    "Poké Ball P-A 005",
+    "Poké Ball P-A 005",
+    "Professor's Research P-A 007"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Galarian Zigzagoon B4 095",
+     "hp": 20,
+     "energy": [
+      "Darkness"
+     ],
+     "tools": [
+      "Deceptive Needle B4 148"
+     ]
+    },
+    {
+     "card": "Galarian Zigzagoon B4 095",
+     "hp": 70,
+     "energy": [
+      "Darkness"
+     ],
+     "tools": [
+      "Deceptive Needle B4 148"
+     ]
+    },
+    {
+     "card": "Hydreigon B1 157",
+     "hp": 150,
+     "energy": [
+      "Darkness"
+     ],
+     "behind": [
+      "Deino B1 155",
+      "Zweilous B1 156"
+     ]
+    }
+   ],
+   "energy_now": "Darkness",
+   "energy_next": "Darkness"
+  },
+  "opp": {
+   "hand_count": 5,
+   "discard_n": 4,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Dialga ex A2 119",
+     "hp": 170,
+     "energy": [
+      "Metal",
+      "Metal",
+      "Metal"
+     ],
+     "tools": [
+      "Giant Cape A2 147"
+     ]
+    },
+    {
+     "card": "Arceus ex A2a 071",
+     "hp": 140,
+     "energy": [
+      "Metal",
+      "Metal"
+     ],
+     "tools": [
+      "Rocky Helmet A2 148"
+     ]
+    },
+    {
+     "card": "Shaymin A2 022",
+     "hp": 60
+    }
+   ],
+   "energy_next": "Metal"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Professor's Research",
+   "(draws Rare Candy and a second Rare Candy)",
+   "Play:Rare Candy",
+   "Evolve:Galarian Obstagoon@0",
+   "Attach:1Darkness@0 zone",
+   "Retreat:2",
+   "Ability:Roar in Unison@0",
+   "Attack:Hyper Ray"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 18 of 20 cards seen, 2 inferred (see reconstructed_decks/R200654.json)",
+  "approximate": true,
+  "notes": "Draw Research. Since his last turn: Rocky Helmet (20) and Metallic Turbo (30) left his Active Zigzagoon on 20, and the opponent retreated Arceus ex with Leaf and promoted the Giant Cape Dialga ex (170, three Metal; Metallic Turbo put two Metal on the benched Arceus ex). He plays Research (two Rare Candy), candies the Zigzagoon into Obstagoon (100 of 150), attaches the Darkness, retreats it for Hydreigon, Roar in Unison and Hyper Ray 130 (Dialga ex 170 to 40, all three Darkness discarded); opponent hand 5 counted, discard 4 is my count (adds their Leaf).",
+  "milestones": [],
+  "heldout": false
+ },
+ {
+  "id": "LR-200654-t10",
+  "game": "ladder-20260928_200654000",
+  "his_turn": 5,
+  "deck": "R200654",
+  "turn_count": 10,
+  "points": [
+   0,
+   1
+  ],
+  "me": {
+   "hand": [
+    "Lillie A3 155",
+    "Rare Candy A3 144",
+    "Deino B1 155"
+   ],
+   "discard": [
+    "Poké Ball P-A 005",
+    "Poké Ball P-A 005",
+    "Professor's Research P-A 007",
+    "Professor's Research P-A 007",
+    "Rare Candy A3 144",
+    "Hydreigon B1 157",
+    "Zweilous B1 156",
+    "Deino B1 155"
+   ],
+   "discard_energy": [
+    "Darkness",
+    "Darkness",
+    "Darkness",
+    "Darkness",
+    "Darkness"
+   ],
+   "board": [
+    {
+     "card": "Galarian Obstagoon B2 100",
+     "hp": 100,
+     "tools": [
+      "Deceptive Needle B4 148"
+     ],
+     "behind": [
+      "Galarian Zigzagoon B4 095"
+     ]
+    },
+    {
+     "card": "Galarian Zigzagoon B4 095",
+     "hp": 70,
+     "energy": [
+      "Darkness"
+     ],
+     "tools": [
+      "Deceptive Needle B4 148"
+     ]
+    }
+   ],
+   "energy_now": "Darkness",
+   "energy_next": "Darkness"
+  },
+  "opp": {
+   "hand_count": 3,
+   "discard_n": 6,
+   "discard_energy": [
+    "Metal",
+    "Metal"
+   ],
+   "board": [
+    {
+     "card": "Arceus ex A2a 071",
+     "hp": 140,
+     "energy": [
+      "Metal",
+      "Metal",
+      "Metal"
+     ],
+     "tools": [
+      "Rocky Helmet A2 148"
+     ]
+    },
+    {
+     "card": "Dialga ex A2 119",
+     "hp": 90,
+     "energy": [
+      "Metal"
+     ],
+     "tools": [
+      "Giant Cape A2 147"
+     ]
+    },
+    {
+     "card": "Shaymin A2 022",
+     "hp": 60
+    },
+    {
+     "card": "Dialga ex A2 119",
+     "hp": 150
+    }
+   ],
+   "energy_next": "Metal"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Place:Deino",
+   "Play:Lillie",
+   "(heals the Stage 2 Obstagoon at index 0: 100 to 150, 50 actually healed)",
+   "Attach:1Darkness@0 zone",
+   "(no attack: Merciless Strike needs two Darkness and the Active Obstagoon has one; he ended the turn and the Needle then did 10)"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 18 of 20 cards seen, 2 inferred (see reconstructed_decks/R200654.json)",
+  "approximate": true,
+  "notes": "Draw a second Deino. The opponent healed Dialga ex (90 of 170), paid two Metal to retreat it into Arceus ex, benched a second Dialga ex and Ultimate Force knocked out the Hydreigon (first point to them; its stack and the five Darkness spent on the retreat and Hyper Ray are in his discard); the Obstagoon (100 of 150) was promoted. Opponent hand 3 counted; its discard 6 (two Poké Balls, two Researches, Leaf, the tails Lucky Ice Pop) and its two discarded Metal are my bookkeeping.",
+  "milestones": [],
+  "heldout": false
+ },
+ {
+  "id": "LR-200654-t12",
+  "game": "ladder-20260928_200654000",
+  "his_turn": 6,
+  "deck": "R200654",
+  "turn_count": 12,
+  "points": [
+   0,
+   1
+  ],
+  "me": {
+   "hand": [
+    "Rare Candy A3 144",
+    "Galarian Obstagoon B2 100"
+   ],
+   "discard": [
+    "Poké Ball P-A 005",
+    "Poké Ball P-A 005",
+    "Professor's Research P-A 007",
+    "Professor's Research P-A 007",
+    "Rare Candy A3 144",
+    "Hydreigon B1 157",
+    "Zweilous B1 156",
+    "Deino B1 155",
+    "Lillie A3 155"
+   ],
+   "discard_energy": [
+    "Darkness",
+    "Darkness",
+    "Darkness",
+    "Darkness",
+    "Darkness"
+   ],
+   "board": [
+    {
+     "card": "Galarian Obstagoon B2 100",
+     "hp": 20,
+     "energy": [
+      "Darkness"
+     ],
+     "tools": [
+      "Deceptive Needle B4 148"
+     ],
+     "behind": [
+      "Galarian Zigzagoon B4 095"
+     ]
+    },
+    {
+     "card": "Galarian Zigzagoon B4 095",
+     "hp": 70,
+     "energy": [
+      "Darkness"
+     ],
+     "tools": [
+      "Deceptive Needle B4 148"
+     ]
+    },
+    {
+     "card": "Deino B1 155",
+     "hp": 60
+    }
+   ],
+   "energy_now": "Darkness",
+   "energy_next": "Darkness"
+  },
+  "opp": {
+   "hand_count": 3,
+   "discard_n": 6,
+   "discard_energy": [
+    "Metal",
+    "Metal"
+   ],
+   "board": [
+    {
+     "card": "Arceus ex A2a 071",
+     "hp": 140,
+     "energy": [
+      "Metal",
+      "Metal",
+      "Metal"
+     ],
+     "tools": [
+      "Rocky Helmet A2 148"
+     ]
+    },
+    {
+     "card": "Dialga ex A2 119",
+     "hp": 100,
+     "energy": [
+      "Metal"
+     ],
+     "tools": [
+      "Giant Cape A2 147"
+     ]
+    },
+    {
+     "card": "Shaymin A2 022",
+     "hp": 60
+    },
+    {
+     "card": "Dialga ex A2 119",
+     "hp": 150,
+     "energy": [
+      "Metal"
+     ],
+     "tools": [
+      "Rocky Helmet A2 148"
+     ]
+    }
+   ],
+   "energy_next": "Metal"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Attach:1Darkness@0 zone",
+   "Play:Rare Candy",
+   "Evolve:Galarian Obstagoon@1",
+   "Attack:Merciless Strike",
+   "(Merciless Strike 70 takes Arceus ex 140 to 70; Rocky Helmet does 20 back and knocks out the 20-HP Obstagoon)"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 18 of 20 cards seen, 2 inferred (see reconstructed_decks/R200654.json)",
+  "approximate": true,
+  "notes": "Draw the second Obstagoon. The opponent's Ultimate Force left his Active Obstagoon on 20 (the second Dialga ex now has a Helmet and one Metal; Arceus ex is back to 140); the benched Deino is the second one. He puts the Darkness on the Active Obstagoon, Rare Candy turns the benched Zigzagoon into the second Obstagoon, and Merciless Strike hits Arceus ex for 70. Opponent hand 3 counted, discard bookkeeping as turn 10.",
+  "milestones": [],
+  "heldout": false
+ }
+]

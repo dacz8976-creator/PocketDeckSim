@@ -1,0 +1,121 @@
+{
+  "key": "R023151",
+  "games": ["023151"],
+  "status": "APPROXIMATE reconstruction; not the stored historical list (none exists). Do not use for any verdict about who played better.",
+  "energy": "Lightning (Energy Zone current/next icons and every attached Energy in the recording are Lightning)",
+  "n_seen": 12,
+  "m_inferred": 8,
+  "seen": [
+    {
+      "card": "Electrike B2b 026",
+      "count": 2,
+      "evidence": "TURN_LEDGER turn 3 board_after / turn 4 board_at_start: original Active Electrike (40/60 HP) and a second, distinct Electrike on the Bench (60/60 HP, Elegant Cape) in play at the same time (native t=128.5 and t=177.5; REVIEW_SUPPLEMENT 'two distinct copies'). Copy 1 is the opening-hand Electrike (setup t=23.5, hand slot 4, placed Active); copy 2 is the Turn 3 normal draw (t~114.4), benched ~115-117s. Quick Attack printing (B2b 026) per the reviews."
+    },
+    {
+      "card": "Helioptile B4 060",
+      "count": 2,
+      "evidence": "Turn 1 Poké Ball search finds Jumping Kick Helioptile (~50s), benched ~53-54s, evolved to Heliolisk Turn 3 (~119-120s). Turn 7 Poké Ball search finds a second Helioptile (~238s) that stays in hand through Turn 9 while the Heliolisk evolved from the first is still in play (Turn 7 board_after, native t=272) and in the Turn 9 ending hand (t=342). Two physical copies at once. Printing B4 060 = Jumping Kick (60 HP), the only Jumping Kick Helioptile in the catalog; it evolves into B4 061."
+    },
+    {
+      "card": "Heliolisk B4 061",
+      "count": 1,
+      "evidence": "Opening hand slot 3 (setup t=23.5); evolved from Helioptile on Turn 3 (~119-120s, Heliolisk 80/80 HP, Electrispark 40 base); KO'd Turn 8 and shown in the owner discard (pile_8_owner t=325.5, pile_9_owner t=342). B4 061 is the 80 HP / Electrispark 40 printing, matching the displayed HP and damage arithmetic (REVIEW.md). Only one Heliolisk is ever seen, so the lower bound is 1."
+    },
+    {
+      "card": "Mega Manectric ex B2b 027",
+      "count": 1,
+      "evidence": "Turn 1 normal draw (t~46.7, hand_start of Turn 1); sat in hand Turns 1-4; evolved from the Cape Electrike on Turn 5 (~187-189s, 210/210 HP = 180 printed + 30 Elegant Cape); Active Turns 8-9; Lightning Accelerator for 120 at ~330-342s. B2b 027 chosen as the first of four identical-stat printings (HP 180, Lightning Accelerator 80 [LL])."
+    },
+    {
+      "card": "Elegant Cape B3b 065",
+      "count": 1,
+      "evidence": "Opening hand slot 1 (setup t=23.5); attached to the benched Electrike on Turn 3 (~125-127s); Mega Manectric ex shows 210 HP and Tool: Elegant Cape from Turn 5 on."
+    },
+    {
+      "card": "Clemont's Backpack B1a 066",
+      "count": 1,
+      "evidence": "Opening hand slot 5 (setup t=23.5); in hand Turns 1-4 (ending hands); played Turn 5 (~191-193s) for the +20 to Heliolisk's Electrispark; owner discard top at pile_5_owner t=203 and pile_6_owner t=230.5."
+    },
+    {
+      "card": "Training Area B2 153",
+      "count": 1,
+      "evidence": "Turn 5 normal draw (t~181.2); played Turn 5 (~181.5-184s); Stadium in play on every later board (Turns 5-9)."
+    },
+    {
+      "card": "Poké Ball P-A 005",
+      "count": 2,
+      "evidence": "Two separate Poké Ball plays in one game, each discarded: opening hand slot 2 played Turn 1 (~47-51s; owner discard top pile_1_owner t=59.5) and a different Poké Ball drawn Turn 7 (t~234.2) and played ~234.5-238s. No recursion effect appears, so two physical copies are forced. DECK_USED.json lists only 1 as a conservative minimum; this reading is the play-sequence rule from the task. P-A 005 and A2b 111 have identical text; P-A 005 is used to match the repo list and the position examples."
+    },
+    {
+      "card": "Professor's Research P-A 007",
+      "count": 1,
+      "evidence": "Turn 9 normal draw (t~328-329); stays in hand unplayed and is in the two-card ending hand (t=342). P-A 007 and A4b 373 have identical text (Draw 2 cards); P-A 007 is used to match the repo list and the position examples."
+    }
+  ],
+  "inferred": [
+    {
+      "card": "Heliolisk B4 061",
+      "count": 1,
+      "source": "nearest list decks/dustin/09-mega-manectric-heliolisk.txt (second copy of a seen card, rule b)",
+      "reason": "The nearest list holds 2 and only 1 was seen; the unseen copy was never drawn in this game, so it cannot make the played line look better, and a surplus evolution copy is the line's own card rather than a new draw or search piece."
+    },
+    {
+      "card": "Mega Manectric ex B2b 027",
+      "count": 1,
+      "source": "nearest list decks/dustin/09-mega-manectric-heliolisk.txt (second copy of a seen card, rule b)",
+      "reason": "The nearest list holds 2 and 1 was seen; the second was never drawn in this game (12 of 20 cards were identified, this is one of the 8 never seen), and it is the same card already in his line, not a new piece."
+    },
+    {
+      "card": "Clemont's Backpack B1a 066",
+      "count": 1,
+      "source": "nearest list decks/dustin/09-mega-manectric-heliolisk.txt (second copy of a seen card, rule b)",
+      "reason": "The nearest list holds 2 and 1 was seen; a one-use Item whose first copy he already had and played, and the second never showed up in the 12 identified cards."
+    },
+    {
+      "card": "Professor's Research P-A 007",
+      "count": 1,
+      "source": "nearest list decks/dustin/09-mega-manectric-heliolisk.txt (second copy of a seen card, rule b)",
+      "reason": "The nearest list holds 2 and 1 was seen (and left unplayed in hand); a draw Supporter, but it is the same card already in his line and was never drawn earlier in this game."
+    },
+    {
+      "card": "Field Blower B3 147",
+      "count": 1,
+      "source": "nearest list decks/dustin/09-mega-manectric-heliolisk.txt (unaccounted card, rule b)",
+      "reason": "A situational Item (Tool/Stadium removal) that does nothing for his line; no Field Blower resolved anywhere in the recording; least helpful kind of unseen card, so a safe fill."
+    },
+    {
+      "card": "Cyrus A2 150",
+      "count": 1,
+      "source": "nearest list decks/dustin/09-mega-manectric-heliolisk.txt (unaccounted card, rule b)",
+      "reason": "A situational switch-in Supporter that is not part of the played line; never drawn or played here; fills the nearest list's remainder."
+    },
+    {
+      "card": "Clemont B1a 068",
+      "count": 1,
+      "source": "nearest list decks/dustin/09-mega-manectric-heliolisk.txt (unaccounted card, rule b)",
+      "reason": "A search Supporter (random 2 of Magneton, Heliolisk, Backpack) that is an unaccounted card of the nearest list; it was never drawn or played in this game, and it is needed to fill the 8 open slots because every rule-(b) candidate is used."
+    },
+    {
+      "card": "Copycat B1 225",
+      "count": 1,
+      "source": "nearest list decks/dustin/09-mega-manectric-heliolisk.txt (unaccounted card, rule b)",
+      "reason": "A draw Supporter taken from the nearest list because it was never drawn or played in this game; it is the last unaccounted card of that list, so the 8 open slots are filled exactly with no alternative needed."
+    }
+  ],
+  "nearest_list": "C:\\Users\\dacz8\\Projects\\Pocket Deck Sim\\PocketDeckSim\\decks\\dustin\\09-mega-manectric-heliolisk.txt",
+  "other_recordings_used": [],
+  "other_recordings_considered_not_used": [
+    "20260909_000238000_iOS.MP4 (Auto computer battle, same night; owner side shows Oricorio and no Elegant Cape, so it is not demonstrably the same list; its visible cards [Heliolisk x2, two Clemont's Backpack, Clemont, Training Area, Poké Ball, Research] agree with the fill but it was not used as evidence)",
+    "20260909_000905000_iOS.MP4 (owner side is a different deck; Heliolisk there belongs to the opposing side)"
+  ],
+  "caveats": [
+    "APPROXIMATE: 12 of 20 slots are directly seen and every one of the 12 cards he drew or searched in the game is identified (opening 5 + five turn draws + two Poké Ball searches = 12 distinct physical cards), so the seen part is exact for these cards; the 8 unseen slots are inferred from the nearest repo list and carry no direct evidence.",
+    "Under the fill rule (b) the 8 unaccounted cards of the nearest list are exactly the 8 open slots (second Heliolisk, second Mega Manectric ex, second Backpack, second Research, Field Blower, Cyrus, Clemont, Copycat), so the preference for 'least helpful' candidates had no room to act; the result equals the nearest list except for the Helioptile printing (B4 060 Jumping Kick instead of B1a 028 Thunder Shock). That is a consequence of the fill rule, not independent proof the old list matched the later one.",
+    "Known cross-check, NOT used as evidence: the owner supplied a deck QR whose decode (owner-deck-qr/deck.txt, README.md in competitive-deck-study-2026-09-08/ongoing-campaign-2026-09-08) is the nearest list with both Helioptile as B4 060 Jumping Kick, i.e. identical to this reconstruction. The retrospective packet (DECK_USED.json) records that QR as separate, unbound evidence for this recording and says the exact list is unavailable. If Dustin confirms that QR was the list in play, the 8 inferred slots become known.",
+    "Helioptile B4 060 is Jumping Kick (0 [L]) and is the only Jumping Kick Helioptile in the catalog; the nearest repo list uses the Thunder Shock printing B1a 028, so the nearest list was not copied as-is.",
+    "Poké Ball and Professor's Research use the P-A 005 / P-A 007 printings to match every repo list and the position examples; A2b 111 and A4b 373 are identical-text alternatives, so positions built on this list must use the P-A ids or check_positions.py will flag a count of 0.",
+    "Lower bounds only: a card name seen in two frames was counted twice only when two physical copies coexisted or the play sequence forced two (Electrike, Helioptile, Poké Ball). Heliolisk, Mega Manectric ex, Backpack, Cape, Training Area and Research are counted once.",
+    "Opponent cards are not part of this list. The opponent's concealed draws/searches (including the Turn 2 Poké Ball result) are unknown and were not used.",
+    "Evidence is sampled (about 1 fps plus 40 native frames); timestamps are source-local approximations, not frame PTS."
+  ]
+}

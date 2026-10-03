@@ -4448,6 +4448,874 @@
   "heldout": false
  },
  {
+  "id": "L8-020916-t01",
+  "game": "ladder-20260929_020916000",
+  "his_turn": 1,
+  "deck": "B08",
+  "turn_count": 1,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Rainbow Cave B4 155",
+    "Copycat B1 225",
+    "Repel A3a 064",
+    "Giant Cape A2 147",
+    "Cyrus A2 150"
+   ],
+   "discard": [],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Entei ex A4a 010",
+     "hp": 140
+    }
+   ],
+   "energy_now": null,
+   "energy_next": "Fire"
+  },
+  "opp": {
+   "hand_count": 4,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Victini B3 025",
+     "hp": 70
+    }
+   ],
+   "energy_next": "Fire"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Giant Cape",
+   "Tool:Giant Cape@0",
+   "Play:Rainbow Cave",
+   "Play:Copycat"
+  ],
+  "hand_source": "codex",
+  "notes": "Going first: no Energy. Opening hand Rainbow Cave, Copycat, Repel, Entei ex (placed Active), Giant Cape; draw Cyrus. Cape on the Entei ex, Rainbow Cave, Copycat (Repel and Cyrus shuffled back, four cards drawn to match the opponent's four). Legendary Pulse then draws Flame Patch. Opponent's discard not tracked.",
+  "milestones": [],
+  "list_source": "season-brews: brew 8 (decks/brews/brew-08-entei-rainbow-cave.txt); Ladder Log entry 'brew-08' names this recording",
+  "heldout": false
+ },
+ {
+  "id": "L8-020916-t03",
+  "game": "ladder-20260929_020916000",
+  "his_turn": 2,
+  "deck": "B08",
+  "turn_count": 3,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Copycat B1 225",
+    "Professor's Research P-A 007",
+    "Lucky Ice Pop B2 145",
+    "Giant Cape A2 147",
+    "Flame Patch B1 217",
+    "Rainbow Cave B4 155"
+   ],
+   "discard": [
+    "Copycat B1 225"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Entei ex A4a 010",
+     "hp": 160,
+     "tools": [
+      "Giant Cape A2 147"
+     ]
+    }
+   ],
+   "energy_now": "Fire",
+   "energy_next": "Fire"
+  },
+  "opp": {
+   "hand_count": 2,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Team Rocket's Moltres ex B4a 007",
+     "hp": 130,
+     "energy": [
+      "Fire",
+      "Fire",
+      "Fire",
+      "Fire"
+     ]
+    },
+    {
+     "card": "Team Rocket's Moltres ex B4a 007",
+     "hp": 130
+    },
+    {
+     "card": "Victini B3 025",
+     "hp": 70,
+     "tools": [
+      "Small Balloon B3b 064"
+     ]
+    },
+    {
+     "card": "Houndour A2a 011",
+     "hp": 60
+    }
+   ],
+   "energy_next": "Fire"
+  },
+  "stadium": {
+   "card": "Rainbow Cave B4 155",
+   "owner": 0
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "UseStadium",
+   "Play:Professor's Research",
+   "(then: Flame Patch to the Active Entei, Fire from the Zone, Blazing Beatdown 60: Moltres 130 -> 70)"
+  ],
+  "hand_source": "codex",
+  "notes": "Draw Rainbow Cave (the second copy; the first is in play, his). Rainbow Cave's reroll, Research (Research and Sabrina), Flame Patch and the turn's Fire give the Entei two Fire; the attack takes the Active Moltres to 70.",
+  "milestones": [
+   "preparing an attacker"
+  ],
+  "list_source": "season-brews: brew 8 (decks/brews/brew-08-entei-rainbow-cave.txt); Ladder Log entry 'brew-08' names this recording",
+  "heldout": false
+ },
+ {
+  "id": "L8-020916-t05",
+  "game": "ladder-20260929_020916000",
+  "his_turn": 3,
+  "deck": "B08",
+  "turn_count": 5,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Copycat B1 225",
+    "Lucky Ice Pop B2 145",
+    "Giant Cape A2 147",
+    "Rainbow Cave B4 155",
+    "Professor's Research P-A 007",
+    "Sabrina A1 225",
+    "Poké Ball P-A 005",
+    "Lucky Ice Pop B2 145"
+   ],
+   "discard": [
+    "Copycat B1 225",
+    "Professor's Research P-A 007",
+    "Flame Patch B1 217"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Entei ex A4a 010",
+     "hp": 10,
+     "energy": [
+      "Fire",
+      "Fire"
+     ],
+     "tools": [
+      "Giant Cape A2 147"
+     ]
+    }
+   ],
+   "energy_now": "Fire",
+   "energy_next": "Fire"
+  },
+  "opp": {
+   "hand_count": 2,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Team Rocket's Moltres ex B4a 007",
+     "hp": 70,
+     "energy": [
+      "Fire",
+      "Fire",
+      "Fire"
+     ]
+    },
+    {
+     "card": "Team Rocket's Moltres ex B4a 007",
+     "hp": 130
+    },
+    {
+     "card": "Victini B3 025",
+     "hp": 70,
+     "tools": [
+      "Small Balloon B3b 064"
+     ]
+    },
+    {
+     "card": "Houndour A2a 011",
+     "hp": 60,
+     "energy": [
+      "Fire"
+     ]
+    }
+   ],
+   "energy_next": "Fire"
+  },
+  "stadium": {
+   "card": "Rainbow Cave B4 155",
+   "owner": 0
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Poké Ball",
+   "(then: bench the regular-art Entei ex, Giant Cape on it, three Lucky Ice Pops (heads, tails, tails) 10 -> 70, Research, Rainbow Cave reroll, Flame Patch, Fire, Starting Plains over Rainbow Cave, Blazing Beatdown 120 KOs the first Moltres)"
+  ],
+  "hand_source": "codex",
+  "notes": "Draw the second Lucky Ice Pop. The Active Entei ex is on 10 HP after Netherwing's 150. He benches a second Entei ex (Poké Ball), caps it, heals the Active by 60 with the Pops, and attacks for the first KO (two points).",
+  "milestones": [
+   "managing a sacrifice",
+   "preparing an attacker"
+  ],
+  "list_source": "season-brews: brew 8 (decks/brews/brew-08-entei-rainbow-cave.txt); Ladder Log entry 'brew-08' names this recording",
+  "heldout": false
+ },
+ {
+  "id": "L8-020916-t07",
+  "game": "ladder-20260929_020916000",
+  "his_turn": 4,
+  "deck": "B08",
+  "turn_count": 7,
+  "points": [
+   2,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Copycat B1 225",
+    "Rainbow Cave B4 155",
+    "Sabrina A1 225",
+    "Pokémon Center Lady A2b 070",
+    "Cyrus A2 150"
+   ],
+   "discard": [
+    "Copycat B1 225",
+    "Professor's Research P-A 007",
+    "Flame Patch B1 217",
+    "Poké Ball P-A 005",
+    "Lucky Ice Pop B2 145",
+    "Lucky Ice Pop B2 145",
+    "Professor's Research P-A 007",
+    "Flame Patch B1 217",
+    "Rainbow Cave B4 155"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Entei ex A4a 010",
+     "hp": 10,
+     "energy": [
+      "Fire",
+      "Fire",
+      "Fire",
+      "Fire"
+     ],
+     "tools": [
+      "Giant Cape A2 147"
+     ]
+    },
+    {
+     "card": "Entei ex A4a 010",
+     "hp": 180,
+     "tools": [
+      "Giant Cape A2 147"
+     ]
+    }
+   ],
+   "energy_now": "Fire",
+   "energy_next": "Fire"
+  },
+  "opp": {
+   "hand_count": 2,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Mega Houndoom ex P-B 080",
+     "hp": 190,
+     "energy": [
+      "Fire",
+      "Fire",
+      "Fire"
+     ],
+     "behind": [
+      "Houndour A2a 011"
+     ]
+    },
+    {
+     "card": "Team Rocket's Moltres ex B4a 007",
+     "hp": 150
+    },
+    {
+     "card": "Victini B3 025",
+     "hp": 90,
+     "tools": [
+      "Small Balloon B3b 064"
+     ]
+    }
+   ],
+   "energy_next": "Fire"
+  },
+  "stadium": {
+   "card": "Starting Plains B2 154",
+   "owner": 0
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Sabrina",
+   "Attach:1Fire@1 zone",
+   "Attack:Blazing Beatdown"
+  ],
+  "hand_source": "codex",
+  "notes": "Draw Cyrus. The opponent's Houndour became Mega Houndoom ex (190, three Fire) and Starting Plains is in play (his). Sabrina drags the second Moltres Active (the opponent picked it), the turn's Fire goes to the backup Entei ex, Blazing Beatdown takes the Moltres to 30.",
+  "milestones": [
+   "preparing an attacker"
+  ],
+  "list_source": "season-brews: brew 8 (decks/brews/brew-08-entei-rainbow-cave.txt); Ladder Log entry 'brew-08' names this recording",
+  "heldout": false
+ },
+ {
+  "id": "L8-020916-t09",
+  "game": "ladder-20260929_020916000",
+  "his_turn": 5,
+  "deck": "B08",
+  "turn_count": 9,
+  "points": [
+   2,
+   2
+  ],
+  "me": {
+   "hand": [
+    "Copycat B1 225",
+    "Rainbow Cave B4 155",
+    "Pokémon Center Lady A2b 070",
+    "Cyrus A2 150",
+    "Repel A3a 064"
+   ],
+   "discard": [
+    "Copycat B1 225",
+    "Professor's Research P-A 007",
+    "Flame Patch B1 217",
+    "Poké Ball P-A 005",
+    "Lucky Ice Pop B2 145",
+    "Lucky Ice Pop B2 145",
+    "Professor's Research P-A 007",
+    "Flame Patch B1 217",
+    "Rainbow Cave B4 155",
+    "Sabrina A1 225",
+    "Entei ex A4a 010",
+    "Giant Cape A2 147"
+   ],
+   "discard_energy": [
+    "Fire",
+    "Fire",
+    "Fire",
+    "Fire"
+   ],
+   "board": [
+    {
+     "card": "Entei ex A4a 010",
+     "hp": 180,
+     "energy": [
+      "Fire"
+     ],
+     "tools": [
+      "Giant Cape A2 147"
+     ]
+    }
+   ],
+   "energy_now": "Fire",
+   "energy_next": "Fire"
+  },
+  "opp": {
+   "hand_count": 3,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Mega Houndoom ex P-B 080",
+     "hp": 210,
+     "energy": [
+      "Fire",
+      "Fire",
+      "Fire"
+     ],
+     "tools": [
+      "Giant Cape A2 147"
+     ],
+     "behind": [
+      "Houndour A2a 011"
+     ]
+    },
+    {
+     "card": "Team Rocket's Moltres ex B4a 007",
+     "hp": 30
+    },
+    {
+     "card": "Victini B3 025",
+     "hp": 90,
+     "tools": [
+      "Small Balloon B3b 064"
+     ]
+    }
+   ],
+   "energy_next": "Fire"
+  },
+  "stadium": {
+   "card": "Starting Plains B2 154",
+   "owner": 0
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Cyrus",
+   "Attach:1Fire@0 zone",
+   "Attack:Blazing Beatdown"
+  ],
+  "hand_source": "codex",
+  "notes": "His deck is empty (the draw failed): every card of the list is in his hand, on the board or in his discard. The first Entei ex was knocked out by Mega Houndoom ex (two points to the opponent). Cyrus brings the 30-HP Moltres ex Active, Fire, Blazing Beatdown KOs it: 2 -> 4 points, the game.",
+  "milestones": [
+   "recognising an immediate win"
+  ],
+  "list_source": "season-brews: brew 8 (decks/brews/brew-08-entei-rainbow-cave.txt); Ladder Log entry 'brew-08' names this recording",
+  "heldout": false
+ },
+ {
+  "id": "L8-002539-t02",
+  "game": "ladder-20260929_002539000",
+  "his_turn": 1,
+  "deck": "B08",
+  "turn_count": 2,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Copycat B1 225",
+    "Giant Cape A2 147",
+    "Flame Patch B1 217",
+    "Professor's Research P-A 007",
+    "Flame Patch B1 217"
+   ],
+   "discard": [],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Entei ex A4a 010",
+     "hp": 140
+    }
+   ],
+   "energy_now": "Fire",
+   "energy_next": "Fire"
+  },
+  "opp": {
+   "hand_count": 2,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Drampa B4 124",
+     "hp": 100
+    },
+    {
+     "card": "Mega Rayquaza ex B4 120",
+     "hp": 180
+    },
+    {
+     "card": "Dratini B4 116",
+     "hp": 60
+    }
+   ],
+   "energy_next": "Lightning"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Giant Cape",
+   "Tool:Giant Cape@0",
+   "Play:Professor's Research",
+   "(then: Poké Ball finds the alternate-art Entei ex, bench it, Fire to the Active)"
+  ],
+  "hand_source": "codex",
+  "notes": "Going second. Opening hand Copycat, Giant Cape, Flame Patch, Research + the Entei ex placed; draw the second Flame Patch. Opponent hand 2 (counted by Codex). Opponent's discard not tracked.",
+  "milestones": [],
+  "list_source": "season-brews: brew 8 (decks/brews/brew-08-entei-rainbow-cave.txt); Ladder Log entry 'brew-08' names this recording",
+  "heldout": false
+ },
+ {
+  "id": "L8-002539-t04",
+  "game": "ladder-20260929_002539000",
+  "his_turn": 2,
+  "deck": "B08",
+  "turn_count": 4,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Copycat B1 225",
+    "Flame Patch B1 217",
+    "Flame Patch B1 217",
+    "Lucky Ice Pop B2 145",
+    "Copycat B1 225",
+    "Sabrina A1 225"
+   ],
+   "discard": [
+    "Professor's Research P-A 007",
+    "Poké Ball P-A 005"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Entei ex A4a 010",
+     "hp": 90,
+     "energy": [
+      "Fire"
+     ],
+     "tools": [
+      "Giant Cape A2 147"
+     ]
+    },
+    {
+     "card": "Entei ex A4a 010",
+     "hp": 140
+    }
+   ],
+   "energy_now": "Fire",
+   "energy_next": "Fire"
+  },
+  "opp": {
+   "hand_count": 1,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Drampa B4 124",
+     "hp": 100,
+     "energy": [
+      "Lightning"
+     ]
+    },
+    {
+     "card": "Mega Rayquaza ex B4 120",
+     "hp": 180
+    },
+    {
+     "card": "Dragonair B4 117",
+     "hp": 80,
+     "behind": [
+      "Dratini B4 116"
+     ]
+    }
+   ],
+   "energy_next": "Lightning"
+  },
+  "stadium": {
+   "card": "Rainbow Cave B4 155",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Lucky Ice Pop",
+   "Play:Sabrina",
+   "UseStadium",
+   "Attach:1Fire@0 zone",
+   "Play:Flame Patch",
+   "Attack:Blazing Beatdown"
+  ],
+  "hand_source": "codex",
+  "notes": "Draw Sabrina. Drampa's Power Blast took the Active Entei ex from 160 to 90; the opponent's Rainbow Cave is in play (their Stadium). Pop heals 20 (tails: discarded), Sabrina drags Mega Rayquaza ex Active (the opponent picked it), reroll, Fire, Flame Patch (three Fire), Blazing Beatdown 60 takes it to 120.",
+  "milestones": [],
+  "list_source": "season-brews: brew 8 (decks/brews/brew-08-entei-rainbow-cave.txt); Ladder Log entry 'brew-08' names this recording",
+  "heldout": false
+ },
+ {
+  "id": "L8-002539-t06",
+  "game": "ladder-20260929_002539000",
+  "his_turn": 3,
+  "deck": "B08",
+  "turn_count": 6,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Copycat B1 225",
+    "Flame Patch B1 217",
+    "Copycat B1 225",
+    "Rainbow Cave B4 155",
+    "Pokémon Center Lady A2b 070"
+   ],
+   "discard": [
+    "Professor's Research P-A 007",
+    "Poké Ball P-A 005",
+    "Lucky Ice Pop B2 145",
+    "Sabrina A1 225",
+    "Flame Patch B1 217"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Entei ex A4a 010",
+     "hp": 40,
+     "energy": [
+      "Fire",
+      "Fire",
+      "Fire"
+     ],
+     "tools": [
+      "Giant Cape A2 147"
+     ]
+    },
+    {
+     "card": "Entei ex A4a 010",
+     "hp": 140
+    }
+   ],
+   "energy_now": "Fire",
+   "energy_next": "Fire"
+  },
+  "opp": {
+   "hand_count": 2,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Drampa B4 124",
+     "hp": 100,
+     "energy": [
+      "Lightning"
+     ]
+    },
+    {
+     "card": "Mega Rayquaza ex B4 120",
+     "hp": 120
+    },
+    {
+     "card": "Dragonair B4 117",
+     "hp": 80,
+     "behind": [
+      "Dratini B4 116"
+     ]
+    }
+   ],
+   "energy_next": "Lightning"
+  },
+  "stadium": {
+   "card": "Rainbow Cave B4 155",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "UseStadium",
+   "Attach:1Fire@1 zone",
+   "Play:Flame Patch",
+   "Play:Copycat",
+   "(then: Starting Plains over Rainbow Cave, Blazing Beatdown 120 KOs Drampa)"
+  ],
+  "hand_source": "codex",
+  "notes": "Draw Pokémon Center Lady. The Active Entei ex is on 40 (Power Blast again). Reroll, the turn's Fire to the benched Entei ex, Flame Patch back to the Active (four Fire), Copycat (hand shuffled, two cards to match the opponent's two: Starting Plains, Rainbow Cave), Starting Plains replaces the opponent's Rainbow Cave, the attack KOs Drampa.",
+  "milestones": [
+   "preparing an attacker"
+  ],
+  "list_source": "season-brews: brew 8 (decks/brews/brew-08-entei-rainbow-cave.txt); Ladder Log entry 'brew-08' names this recording",
+  "heldout": false
+ },
+ {
+  "id": "L8-002539-t08",
+  "game": "ladder-20260929_002539000",
+  "his_turn": 4,
+  "deck": "B08",
+  "turn_count": 8,
+  "points": [
+   1,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Rainbow Cave B4 155",
+    "Rainbow Cave B4 155",
+    "Pokémon Center Lady A2b 070"
+   ],
+   "discard": [
+    "Professor's Research P-A 007",
+    "Poké Ball P-A 005",
+    "Lucky Ice Pop B2 145",
+    "Sabrina A1 225",
+    "Flame Patch B1 217",
+    "Flame Patch B1 217",
+    "Copycat B1 225"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Entei ex A4a 010",
+     "hp": 60,
+     "energy": [
+      "Fire",
+      "Fire",
+      "Fire",
+      "Fire"
+     ],
+     "tools": [
+      "Giant Cape A2 147"
+     ]
+    },
+    {
+     "card": "Entei ex A4a 010",
+     "hp": 160,
+     "energy": [
+      "Fire"
+     ]
+    }
+   ],
+   "energy_now": "Fire",
+   "energy_next": "Fire"
+  },
+  "opp": {
+   "hand_count": 2,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Drampa B4 124",
+     "hp": 120
+    },
+    {
+     "card": "Mega Rayquaza ex B4 120",
+     "hp": 140
+    },
+    {
+     "card": "Dragonair B4 117",
+     "hp": 80,
+     "behind": [
+      "Dratini B4 116"
+     ]
+    }
+   ],
+   "energy_next": "Lightning"
+  },
+  "stadium": {
+   "card": "Starting Plains B2 154",
+   "owner": 0
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Pokémon Center Lady",
+   "Attach:1Fire@1 zone",
+   "Attack:Blazing Beatdown"
+  ],
+  "hand_source": "codex",
+  "notes": "Draw the Lady (shuffled away by Copycat, drawn again). Starting Plains is in play (his). Lady heals the Active 60 -> 90, the turn's Fire to the benched Entei ex, Blazing Beatdown KOs the second Drampa: 2 points.",
+  "milestones": [
+   "preparing an attacker"
+  ],
+  "list_source": "season-brews: brew 8 (decks/brews/brew-08-entei-rainbow-cave.txt); Ladder Log entry 'brew-08' names this recording",
+  "heldout": false
+ },
+ {
+  "id": "L8-002539-t10",
+  "game": "ladder-20260929_002539000",
+  "his_turn": 5,
+  "deck": "B08",
+  "turn_count": 10,
+  "points": [
+   2,
+   2
+  ],
+  "me": {
+   "hand": [
+    "Rainbow Cave B4 155",
+    "Rainbow Cave B4 155",
+    "Cyrus A2 150",
+    "Professor's Research P-A 007"
+   ],
+   "discard": [
+    "Professor's Research P-A 007",
+    "Poké Ball P-A 005",
+    "Lucky Ice Pop B2 145",
+    "Sabrina A1 225",
+    "Flame Patch B1 217",
+    "Flame Patch B1 217",
+    "Copycat B1 225",
+    "Pokémon Center Lady A2b 070",
+    "Entei ex A4a 010",
+    "Giant Cape A2 147"
+   ],
+   "discard_energy": [
+    "Fire",
+    "Fire",
+    "Fire",
+    "Fire"
+   ],
+   "board": [
+    {
+     "card": "Entei ex A4a 010",
+     "hp": 160,
+     "energy": [
+      "Fire",
+      "Fire"
+     ]
+    }
+   ],
+   "energy_now": "Fire",
+   "energy_next": "Fire"
+  },
+  "opp": {
+   "hand_count": 3,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Mega Rayquaza ex B4 120",
+     "hp": 140
+    },
+    {
+     "card": "Dratini A3b 051",
+     "hp": 80
+    },
+    {
+     "card": "Dragonair B4 117",
+     "hp": 80,
+     "behind": [
+      "Dratini B4 116"
+     ]
+    }
+   ],
+   "energy_next": "Lightning"
+  },
+  "stadium": {
+   "card": "Starting Plains B2 154",
+   "owner": 0
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Professor's Research",
+   "(then: the turn's Fire to the Active, Blazing Beatdown 60: Mega Rayquaza 140 -> 80)"
+  ],
+  "hand_source": "codex",
+  "notes": "Draw Research. The opponent knocked out his first Entei ex (two points: 2-2); the alternate-art Entei ex (160, two Fire) is Active. He plays Research (Pop and Copycat), Fire, Blazing Beatdown; the opponent conceded two turns later.",
+  "milestones": [],
+  "list_source": "season-brews: brew 8 (decks/brews/brew-08-entei-rainbow-cave.txt); Ladder Log entry 'brew-08' names this recording",
+  "heldout": false
+ },
+ {
   "id": "D3-021402-t01",
   "game": "021402",
   "his_turn": 1,
@@ -5587,6 +6455,3580 @@
   "notes": "Since turn 9: his Poké Ball found nothing (no Basic left), first Water on the second Wailmer; the opponent played Professor's Research and evolved the Lucky Egg Swablu into a second Mega Altaria ex (both Megas on 2 Psychic at native 266s), and Shuriken took the first Indeedee ex 120 to 100; no attack on the Wailmer. Estimates: opponent discard 5 (adds Research) is bookkeeping, the opponent bench order is not shown (the order here keeps the evolution in place); opponent hand 4 is counted. Soothing Shore is drawn this turn and is not yet in play.",
   "milestones": [],
   "noop_ability": false,
+  "heldout": false
+ },
+ {
+  "id": "LR-021327-t02",
+  "game": "ladder-20260908_021327000",
+  "his_turn": 1,
+  "deck": "R0908HYPNO",
+  "turn_count": 2,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Team Rocket's Researcher B4a 069",
+    "Comfey A3 080",
+    "Team Rocket's Rattata B4a 058",
+    "Professor's Research P-A 007",
+    "Team Rocket's Raticate ex B4a 059"
+   ],
+   "discard": [],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Team Rocket's Drowzee B4a 027",
+     "hp": 60
+    }
+   ],
+   "energy_now": "Psychic",
+   "energy_next": "Psychic"
+  },
+  "opp": {
+   "hand_count": 4,
+   "discard_n": 1,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Jigglypuff A1 193",
+     "hp": 60
+    },
+    {
+     "card": "Jigglypuff A1 193",
+     "hp": 60
+    }
+   ],
+   "energy_next": "Psychic"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Place:Team Rocket's Rattata",
+   "Place:Comfey",
+   "Play:Professor's Research",
+   "(then: Psychic from the Zone to Drowzee, bench the second Rattata that Research drew, Pokémon Flute inspected but not played, no attack)"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 20 of 20 cards seen, 0 inferred (see reconstructed_decks/R0908HYPNO.json)",
+  "approximate": true,
+  "notes": "Going second, so the Zone gives Psychic; draw Team Rocket's Raticate ex. He benches a Rattata and Comfey, plays Research (draws Pokémon Flute and a second Rattata), attaches Psychic to Drowzee, benches the second Rattata and ends the turn without attacking. Opponent hand 4 (Codex count); its discard is the one Poké Ball it played (a count, no card list); its Jigglypuff printing is a guess (HP 60 seen, attack never shown).",
+  "milestones": [],
+  "heldout": false
+ },
+ {
+  "id": "LR-021327-t04",
+  "game": "ladder-20260908_021327000",
+  "his_turn": 2,
+  "deck": "R0908HYPNO",
+  "turn_count": 4,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Team Rocket's Researcher B4a 069",
+    "Team Rocket's Raticate ex B4a 059",
+    "Pokémon Flute A1a 064",
+    "Team Rocket's Raticate ex B4a 059"
+   ],
+   "discard": [
+    "Professor's Research P-A 007"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Team Rocket's Drowzee B4a 027",
+     "hp": 60,
+     "energy": [
+      "Psychic"
+     ]
+    },
+    {
+     "card": "Comfey A3 080",
+     "hp": 70
+    },
+    {
+     "card": "Team Rocket's Rattata B4a 058",
+     "hp": 40
+    },
+    {
+     "card": "Team Rocket's Rattata B4a 058",
+     "hp": 40
+    }
+   ],
+   "energy_now": "Psychic",
+   "energy_next": "Psychic"
+  },
+  "opp": {
+   "hand_count": 5,
+   "discard_n": 1,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Jigglypuff A1 193",
+     "hp": 60,
+     "energy": [
+      "Psychic"
+     ]
+    },
+    {
+     "card": "Jigglypuff A1 193",
+     "hp": 60
+    }
+   ],
+   "energy_next": "Psychic"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Evolve:Team Rocket's Raticate ex@2",
+   "(Thieving Incisors moves the opponent Active's Psychic to the new Raticate ex)",
+   "Play:Team Rocket's Researcher",
+   "(coin flips: tails at once, no card found)",
+   "Attach:1Psychic@0 zone",
+   "Attack:Mumble"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 20 of 20 cards seen, 0 inferred (see reconstructed_decks/R0908HYPNO.json)",
+  "approximate": true,
+  "notes": "Draw the second Raticate ex. The opponent attached a Psychic to its Active Jigglypuff and passed (hand 5, Codex count). He evolves the center Rattata into Raticate ex (Thieving Incisors takes that Psychic), plays Researcher (tails, nothing found), attaches Psychic to Drowzee and Mumble hits for 40 (Jigglypuff 60 -> 20).",
+  "milestones": [],
+  "heldout": false
+ },
+ {
+  "id": "LR-021327-t06",
+  "game": "ladder-20260908_021327000",
+  "his_turn": 3,
+  "deck": "R0908HYPNO",
+  "turn_count": 6,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Pokémon Flute A1a 064",
+    "Team Rocket's Raticate ex B4a 059",
+    "Professor's Research P-A 007"
+   ],
+   "discard": [
+    "Professor's Research P-A 007",
+    "Team Rocket's Researcher B4a 069"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Team Rocket's Drowzee B4a 027",
+     "hp": 60,
+     "energy": [
+      "Psychic",
+      "Psychic"
+     ]
+    },
+    {
+     "card": "Comfey A3 080",
+     "hp": 70
+    },
+    {
+     "card": "Team Rocket's Raticate ex B4a 059",
+     "hp": 120,
+     "energy": [
+      "Psychic"
+     ],
+     "behind": [
+      "Team Rocket's Rattata B4a 058"
+     ]
+    },
+    {
+     "card": "Team Rocket's Rattata B4a 058",
+     "hp": 40
+    }
+   ],
+   "energy_now": "Psychic",
+   "energy_next": "Psychic"
+  },
+  "opp": {
+   "hand_count": 6,
+   "discard_n": 1,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Jigglypuff A1 193",
+     "hp": 20,
+     "energy": [
+      "Psychic"
+     ]
+    },
+    {
+     "card": "Jigglypuff A1 193",
+     "hp": 60
+    }
+   ],
+   "energy_next": "Psychic"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Evolve:Team Rocket's Raticate ex@3",
+   "(Thieving Incisors takes the opponent Active's Psychic)",
+   "Play:Professor's Research",
+   "(then: Psychic from the Zone to the center Raticate ex, Mumble 40 knocks out the 20-HP Jigglypuff and he scores the first point)"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 20 of 20 cards seen, 0 inferred (see reconstructed_decks/R0908HYPNO.json)",
+  "approximate": true,
+  "notes": "Draw Professor's Research. The opponent attached another Psychic to its Active Jigglypuff (20 HP left; hand 6, Codex count) and passed. He evolves the right Rattata into Raticate ex (Thieving Incisors takes the Psychic), plays Research (draws Sightseer and the second Drowzee), Psychic to the center Raticate ex, Mumble knocks out the Jigglypuff (1-0).",
+  "milestones": [],
+  "heldout": false
+ },
+ {
+  "id": "LR-021327-t08",
+  "game": "ladder-20260908_021327000",
+  "his_turn": 4,
+  "deck": "R0908HYPNO",
+  "turn_count": 8,
+  "points": [
+   1,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Pokémon Flute A1a 064",
+    "Sightseer B2 150",
+    "Team Rocket's Drowzee B4a 027",
+    "Copycat B1 225"
+   ],
+   "discard": [
+    "Professor's Research P-A 007",
+    "Team Rocket's Researcher B4a 069",
+    "Professor's Research P-A 007"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Team Rocket's Drowzee B4a 027",
+     "hp": 60,
+     "energy": [
+      "Psychic",
+      "Psychic"
+     ]
+    },
+    {
+     "card": "Comfey A3 080",
+     "hp": 70
+    },
+    {
+     "card": "Team Rocket's Raticate ex B4a 059",
+     "hp": 120,
+     "energy": [
+      "Psychic",
+      "Psychic"
+     ],
+     "behind": [
+      "Team Rocket's Rattata B4a 058"
+     ]
+    },
+    {
+     "card": "Team Rocket's Raticate ex B4a 059",
+     "hp": 120,
+     "energy": [
+      "Psychic"
+     ],
+     "behind": [
+      "Team Rocket's Rattata B4a 058"
+     ]
+    }
+   ],
+   "energy_now": "Psychic",
+   "energy_next": "Psychic"
+  },
+  "opp": {
+   "hand_count": 6,
+   "discard_n": 3,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Jigglypuff A1 193",
+     "hp": 60
+    },
+    {
+     "card": "Mewtwo ex A1 129",
+     "hp": 150,
+     "energy": [
+      "Psychic"
+     ]
+    }
+   ],
+   "energy_next": "Psychic"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Sightseer",
+   "(takes Team Rocket's Hypno from the top four)",
+   "Evolve:Team Rocket's Hypno@0",
+   "Play:Pokémon Flute",
+   "(returns the knocked-out Jigglypuff to the opponent's Bench)",
+   "Attach:1Psychic@1 zone",
+   "Attack:Entrap",
+   "(Entrap drags the benched Mewtwo ex Active for 50; Copycat and the second Drowzee stay in hand)"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 20 of 20 cards seen, 0 inferred (see reconstructed_decks/R0908HYPNO.json)",
+  "approximate": true,
+  "notes": "Draw Copycat. The opponent promoted its second Jigglypuff and benched a Mewtwo ex with one Psychic (hand 6, Codex count). He plays Sightseer (finds Hypno), evolves Drowzee, plays Flute (the knocked-out Jigglypuff comes back to the opponent's Bench), puts the Zone Psychic on Comfey and Entraps the Mewtwo ex Active for 50 (150 -> 100).",
+  "milestones": [],
+  "heldout": false
+ },
+ {
+  "id": "LR-021327-t10",
+  "game": "ladder-20260908_021327000",
+  "his_turn": 5,
+  "deck": "R0908HYPNO",
+  "turn_count": 10,
+  "points": [
+   1,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Team Rocket's Drowzee B4a 027",
+    "Copycat B1 225",
+    "Team Rocket's Goo-zooka B4a 068"
+   ],
+   "discard": [
+    "Professor's Research P-A 007",
+    "Team Rocket's Researcher B4a 069",
+    "Professor's Research P-A 007",
+    "Sightseer B2 150",
+    "Pokémon Flute A1a 064"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Team Rocket's Hypno B4a 028",
+     "hp": 90,
+     "energy": [
+      "Psychic",
+      "Psychic"
+     ],
+     "behind": [
+      "Team Rocket's Drowzee B4a 027"
+     ]
+    },
+    {
+     "card": "Comfey A3 080",
+     "hp": 70,
+     "energy": [
+      "Psychic"
+     ]
+    },
+    {
+     "card": "Team Rocket's Raticate ex B4a 059",
+     "hp": 120,
+     "energy": [
+      "Psychic",
+      "Psychic"
+     ],
+     "behind": [
+      "Team Rocket's Rattata B4a 058"
+     ]
+    },
+    {
+     "card": "Team Rocket's Raticate ex B4a 059",
+     "hp": 120,
+     "energy": [
+      "Psychic"
+     ],
+     "behind": [
+      "Team Rocket's Rattata B4a 058"
+     ]
+    }
+   ],
+   "energy_now": "Psychic",
+   "energy_next": "Psychic"
+  },
+  "opp": {
+   "hand_count": 5,
+   "discard_n": 3,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Mewtwo ex A1 129",
+     "hp": 110,
+     "energy": [
+      "Psychic",
+      "Psychic"
+     ],
+     "tools": [
+      "Leftovers A3b 067"
+     ]
+    },
+    {
+     "card": "Jigglypuff A1 193",
+     "hp": 60
+    },
+    {
+     "card": "Jigglypuff A1 193",
+     "hp": 60
+    }
+   ],
+   "energy_next": "Psychic"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Team Rocket's Goo-zooka",
+   "Play:Copycat",
+   "(then: Copycat draws Elegant Cape, two Poké Balls, Hypno, Drowzee; both Poké Balls find no Basic in the deck; Retreat:2 (Hypno retreats, two Psychic discarded, the center Raticate ex becomes Active); Elegant Cape on that Raticate ex; Zone Psychic to the benched Hypno; Attack:Boost Dash 70, Mewtwo ex 110 -> 40)"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 20 of 20 cards seen, 0 inferred (see reconstructed_decks/R0908HYPNO.json)",
+  "approximate": true,
+  "notes": "Draw Goo-zooka. The opponent's Team Rocket's Master Plan left its own Mewtwo ex Confused (Flower Shield kept Hypno clear), it attached a second Psychic and Leftovers, and the confused Psychic Sphere failed (110 HP after Leftovers); the Confusion is not representable here and Goo-zooka is not in force yet (the ledger lists it at the turn start, a recording quirk). Opponent hand 5 (Codex count, matches the Copycat's five cards).",
+  "milestones": [],
+  "heldout": false
+ },
+ {
+  "id": "LR-021327-t12",
+  "game": "ladder-20260908_021327000",
+  "his_turn": 6,
+  "deck": "R0908HYPNO",
+  "turn_count": 12,
+  "points": [
+   1,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Team Rocket's Hypno B4a 028",
+    "Team Rocket's Drowzee B4a 027",
+    "Cyrus A2 150"
+   ],
+   "discard": [
+    "Professor's Research P-A 007",
+    "Team Rocket's Researcher B4a 069",
+    "Professor's Research P-A 007",
+    "Sightseer B2 150",
+    "Pokémon Flute A1a 064",
+    "Team Rocket's Goo-zooka B4a 068",
+    "Copycat B1 225",
+    "Poké Ball P-A 005",
+    "Poké Ball P-A 005"
+   ],
+   "discard_energy": [
+    "Psychic",
+    "Psychic"
+   ],
+   "board": [
+    {
+     "card": "Team Rocket's Raticate ex B4a 059",
+     "hp": 150,
+     "energy": [
+      "Psychic",
+      "Psychic"
+     ],
+     "tools": [
+      "Elegant Cape B3b 065"
+     ],
+     "behind": [
+      "Team Rocket's Rattata B4a 058"
+     ]
+    },
+    {
+     "card": "Comfey A3 080",
+     "hp": 70,
+     "energy": [
+      "Psychic"
+     ]
+    },
+    {
+     "card": "Team Rocket's Hypno B4a 028",
+     "hp": 90,
+     "energy": [
+      "Psychic"
+     ],
+     "behind": [
+      "Team Rocket's Drowzee B4a 027"
+     ]
+    },
+    {
+     "card": "Team Rocket's Raticate ex B4a 059",
+     "hp": 120,
+     "energy": [
+      "Psychic"
+     ],
+     "behind": [
+      "Team Rocket's Rattata B4a 058"
+     ]
+    }
+   ],
+   "energy_now": "Psychic",
+   "energy_next": "Psychic"
+  },
+  "opp": {
+   "hand_count": 5,
+   "discard_n": 4,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Mewtwo ex A1 129",
+     "hp": 70,
+     "energy": [
+      "Psychic",
+      "Psychic"
+     ],
+     "tools": [
+      "Leftovers A3b 067"
+     ]
+    },
+    {
+     "card": "Team Rocket's Slowpoke B4a 025",
+     "hp": 80
+    },
+    {
+     "card": "Jigglypuff A1 193",
+     "hp": 60
+    },
+    {
+     "card": "Jigglypuff A1 193",
+     "hp": 60
+    }
+   ],
+   "energy_next": "Psychic"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "(no play: he inspected the Active Raticate ex's attack menu and Cyrus, then the 'End your turn? Energy can be attached' warning appeared; the opponent conceded before any response)"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 20 of 20 cards seen, 0 inferred (see reconstructed_decks/R0908HYPNO.json)",
+  "approximate": true,
+  "notes": "Draw Cyrus (cannot be played: no damaged opposing Benched Pokémon). The opponent benched Team Rocket's Slowpoke, healed the Mewtwo ex with Potion (40 -> 60, Leftovers +10 = 70) and its Confused attack failed; the Mewtwo ex is still Confused (not representable). The opponent conceded before Dustin played anything, so his plan is empty by evidence; opponent hand counted 5 by Codex (bookkeeping gives 4). Boost Dash (70) from the Active Raticate ex (two Psychic) would have knocked out the 70-HP Mewtwo ex: two points, 1 -> 3, the game. The empty plan only means nothing was resolved before the concession (he had the attack menu open), not that he chose to pass.",
+  "milestones": [
+   "recognising an immediate win"
+  ],
+  "heldout": false
+ },
+ {
+  "id": "LR-022627-t01",
+  "game": "ladder-20260908_022627000",
+  "his_turn": 1,
+  "deck": "R0908HYPNO",
+  "turn_count": 1,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Pokémon Flute A1a 064",
+    "Elegant Cape B3b 065",
+    "Sightseer B2 150",
+    "Team Rocket's Researcher B4a 069",
+    "Professor's Research P-A 007"
+   ],
+   "discard": [],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Comfey A3 080",
+     "hp": 70
+    }
+   ],
+   "energy_now": null,
+   "energy_next": "Psychic"
+  },
+  "opp": {
+   "hand_count": 4,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Skorupi B1 152",
+     "hp": 60
+    }
+   ],
+   "energy_next": "Darkness"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Team Rocket's Researcher",
+   "(then: coin flips heads, heads, tails put Team Rocket's Raticate ex and Team Rocket's Hypno into hand; no Basic to bench, no Energy on the first turn, no attack)",
+   "(he previewed Professor's Research several times and cancelled it; it stayed in hand)"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 20 of 20 cards seen, 0 inferred (see reconstructed_decks/R0908HYPNO.json)",
+  "approximate": true,
+  "notes": "Going first: no Energy. Opening hand Comfey (placed Active), Pokémon Flute, Elegant Cape, Sightseer, Team Rocket's Researcher; draw Professor's Research (not played). The opponent has only Skorupi Active, hand 4 (Codex fan count), nothing discarded.",
+  "milestones": [],
+  "heldout": true
+ },
+ {
+  "id": "LR-022627-t03",
+  "game": "ladder-20260908_022627000",
+  "his_turn": 2,
+  "deck": "R0908HYPNO",
+  "turn_count": 3,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Pokémon Flute A1a 064",
+    "Elegant Cape B3b 065",
+    "Sightseer B2 150",
+    "Professor's Research P-A 007",
+    "Team Rocket's Raticate ex B4a 059",
+    "Team Rocket's Hypno B4a 028",
+    "Team Rocket's Rattata B4a 058"
+   ],
+   "discard": [
+    "Team Rocket's Researcher B4a 069"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Comfey A3 080",
+     "hp": 50
+    }
+   ],
+   "energy_now": "Psychic",
+   "energy_next": "Psychic"
+  },
+  "opp": {
+   "hand_count": 5,
+   "discard_n": 1,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Skorupi B1 152",
+     "hp": 60,
+     "energy": [
+      "Darkness"
+     ]
+    },
+    {
+     "card": "Mega Absol ex B1 151",
+     "hp": 170
+    }
+   ],
+   "energy_next": "Darkness"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Place:Team Rocket's Rattata@1",
+   "Play:Professor's Research",
+   "(draws Poké Ball and Copycat)",
+   "Play:Poké Ball",
+   "(finds Team Rocket's Drowzee)",
+   "Place:Team Rocket's Drowzee@2",
+   "Attach:1Psychic@0 zone",
+   "Retreat:2",
+   "(Comfey pays its one Colorless with the Psychic just attached; Team Rocket's Drowzee promoted with no Energy)"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 20 of 20 cards seen, 0 inferred (see reconstructed_decks/R0908HYPNO.json)",
+  "approximate": true,
+  "notes": "Draw Team Rocket's Rattata. Skorupi's Bug Bite took Comfey to 50; the opponent has Skorupi (one Darkness) Active, Mega Absol ex benched, one Research in its discard. Per the Codex ledger the Psychic goes on Comfey and is paid for its retreat (the accepted review says it went on Drowzee; the Codex reading is used).",
+  "milestones": [],
+  "heldout": true
+ },
+ {
+  "id": "LR-022627-t05",
+  "game": "ladder-20260908_022627000",
+  "his_turn": 3,
+  "deck": "R0908HYPNO",
+  "turn_count": 5,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Pokémon Flute A1a 064",
+    "Elegant Cape B3b 065",
+    "Sightseer B2 150",
+    "Team Rocket's Raticate ex B4a 059",
+    "Team Rocket's Hypno B4a 028",
+    "Copycat B1 225",
+    "Professor's Research P-A 007"
+   ],
+   "discard": [
+    "Team Rocket's Researcher B4a 069",
+    "Professor's Research P-A 007",
+    "Poké Ball P-A 005"
+   ],
+   "discard_energy": [
+    "Psychic"
+   ],
+   "board": [
+    {
+     "card": "Team Rocket's Drowzee B4a 027",
+     "hp": 20
+    },
+    {
+     "card": "Team Rocket's Rattata B4a 058",
+     "hp": 40
+    },
+    {
+     "card": "Comfey A3 080",
+     "hp": 50
+    }
+   ],
+   "energy_now": "Psychic",
+   "energy_next": "Psychic"
+  },
+  "opp": {
+   "hand_count": 6,
+   "discard_n": 1,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Skorupi B1 152",
+     "hp": 60,
+     "energy": [
+      "Darkness",
+      "Darkness"
+     ]
+    },
+    {
+     "card": "Mega Absol ex B1 151",
+     "hp": 170
+    }
+   ],
+   "energy_next": "Darkness"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Evolve:Team Rocket's Raticate ex@1",
+   "(Thieving Incisors accepted: one Darkness moves from Skorupi to the Raticate ex, Skorupi 2 -> 1)",
+   "Evolve:Team Rocket's Hypno@0",
+   "Play:Elegant Cape",
+   "Tool:Elegant Cape@1",
+   "Play:Copycat",
+   "(hand shuffled into the deck, six cards drawn to match the opponent's six: Rattata, Drowzee, Hypno, Goo-zooka, Sightseer, Cyrus)",
+   "Place:Team Rocket's Rattata@3",
+   "(Goo-zooka previewed only, not played)",
+   "Attach:1Psychic@0 zone",
+   "(no attack: Hypno has one Psychic)"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 20 of 20 cards seen, 0 inferred (see reconstructed_decks/R0908HYPNO.json)",
+  "approximate": true,
+  "notes": "Draw Professor's Research (full art, left in hand). Skorupi's Bug Bite plus Darkness weakness took Drowzee to 20 and the opponent attached its second Darkness. He evolves Rattata and Drowzee, caps the Raticate ex (150), Copycat, benches a Rattata and puts the Psychic on Hypno (the accepted review says Hypno has two Psychic; the Codex ledger, which this follows, says one).",
+  "milestones": [],
+  "heldout": true
+ },
+ {
+  "id": "LR-022627-t07",
+  "game": "ladder-20260908_022627000",
+  "his_turn": 4,
+  "deck": "R0908HYPNO",
+  "turn_count": 7,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Team Rocket's Drowzee B4a 027",
+    "Team Rocket's Hypno B4a 028",
+    "Team Rocket's Goo-zooka B4a 068",
+    "Sightseer B2 150",
+    "Cyrus A2 150",
+    "Poké Ball P-A 005"
+   ],
+   "discard": [
+    "Team Rocket's Researcher B4a 069",
+    "Professor's Research P-A 007",
+    "Poké Ball P-A 005",
+    "Copycat B1 225"
+   ],
+   "discard_energy": [
+    "Psychic"
+   ],
+   "board": [
+    {
+     "card": "Team Rocket's Hypno B4a 028",
+     "hp": 10,
+     "energy": [
+      "Psychic"
+     ],
+     "behind": [
+      "Team Rocket's Drowzee B4a 027"
+     ]
+    },
+    {
+     "card": "Team Rocket's Raticate ex B4a 059",
+     "hp": 150,
+     "energy": [
+      "Darkness"
+     ],
+     "tools": [
+      "Elegant Cape B3b 065"
+     ],
+     "behind": [
+      "Team Rocket's Rattata B4a 058"
+     ]
+    },
+    {
+     "card": "Comfey A3 080",
+     "hp": 50
+    },
+    {
+     "card": "Team Rocket's Rattata B4a 058",
+     "hp": 40
+    }
+   ],
+   "energy_now": "Psychic",
+   "energy_next": "Psychic"
+  },
+  "opp": {
+   "hand_count": 6,
+   "discard_n": 1,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Skorupi B1 152",
+     "hp": 60,
+     "energy": [
+      "Darkness",
+      "Darkness"
+     ]
+    },
+    {
+     "card": "Mega Absol ex B1 151",
+     "hp": 170
+    }
+   ],
+   "energy_next": "Darkness"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Poké Ball",
+   "(no Basic Pokémon left in the deck: nothing found)",
+   "Play:Sightseer",
+   "(top three cards: Pokémon Flute, Team Rocket's Raticate ex, Professor's Research; takes the Raticate ex)",
+   "Evolve:Team Rocket's Raticate ex@3",
+   "(Thieving Incisors accepted: Skorupi's Darkness moves to it, Skorupi 2 -> 1)",
+   "Play:Team Rocket's Goo-zooka",
+   "Attach:1Psychic@0 zone",
+   "Attack:Entrap",
+   "(Entrap switches the benched Mega Absol ex Active and does 50: 170 -> 120)"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 20 of 20 cards seen, 0 inferred (see reconstructed_decks/R0908HYPNO.json)",
+  "approximate": true,
+  "notes": "Draw Poké Ball. Bug Bite plus weakness took Hypno from 50 to 10 and the opponent re-attached its second Darkness to Skorupi. The deck now holds only Flute, a Raticate ex and a Research, so the Poké Ball finds nothing; Sightseer takes the Raticate ex, it evolves the second Rattata, Goo-zooka, Psychic on Hypno, Entrap.",
+  "milestones": [],
+  "heldout": true
+ },
+ {
+  "id": "LR-022627-t09",
+  "game": "ladder-20260908_022627000",
+  "his_turn": 5,
+  "deck": "R0908HYPNO",
+  "turn_count": 9,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Team Rocket's Drowzee B4a 027",
+    "Team Rocket's Hypno B4a 028",
+    "Cyrus A2 150",
+    "Pokémon Flute A1a 064"
+   ],
+   "discard": [
+    "Team Rocket's Researcher B4a 069",
+    "Professor's Research P-A 007",
+    "Poké Ball P-A 005",
+    "Copycat B1 225",
+    "Poké Ball P-A 005",
+    "Sightseer B2 150",
+    "Team Rocket's Goo-zooka B4a 068"
+   ],
+   "discard_energy": [
+    "Psychic"
+   ],
+   "board": [
+    {
+     "card": "Team Rocket's Hypno B4a 028",
+     "hp": 10,
+     "energy": [
+      "Psychic",
+      "Psychic"
+     ],
+     "behind": [
+      "Team Rocket's Drowzee B4a 027"
+     ]
+    },
+    {
+     "card": "Team Rocket's Raticate ex B4a 059",
+     "hp": 150,
+     "energy": [
+      "Darkness"
+     ],
+     "tools": [
+      "Elegant Cape B3b 065"
+     ],
+     "behind": [
+      "Team Rocket's Rattata B4a 058"
+     ]
+    },
+    {
+     "card": "Comfey A3 080",
+     "hp": 50
+    },
+    {
+     "card": "Team Rocket's Raticate ex B4a 059",
+     "hp": 120,
+     "energy": [
+      "Darkness"
+     ],
+     "behind": [
+      "Team Rocket's Rattata B4a 058"
+     ]
+    }
+   ],
+   "energy_now": "Psychic",
+   "energy_next": "Psychic"
+  },
+  "opp": {
+   "hand_count": 6,
+   "discard_n": 2,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Mega Absol ex B1 151",
+     "hp": 140,
+     "energy": [
+      "Darkness"
+     ],
+     "tools": [
+      "Giant Cape A2 147"
+     ]
+    },
+    {
+     "card": "Drapion B1 153",
+     "hp": 130,
+     "energy": [
+      "Darkness"
+     ],
+     "behind": [
+      "Skorupi B1 152"
+     ]
+    }
+   ],
+   "energy_next": "Darkness"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Attach:1Psychic@1 zone",
+   "Attack:Entrap",
+   "(Entrap switches the benched Drapion Active and does 50: 130 -> 80; Pokémon Flute previewed and not played)"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 20 of 20 cards seen, 0 inferred (see reconstructed_decks/R0908HYPNO.json)",
+  "approximate": true,
+  "notes": "Draw Pokémon Flute (not played). The Mega Absol ex (Entrap'd to 120 last turn) got a Darkness and a Giant Cape (140/190), Drapion (130, one Darkness) evolved on the bench; the opponent played its second Research (discard 2). He puts the Psychic on the Cape Raticate ex and Entraps Drapion Active.",
+  "milestones": [],
+  "heldout": true
+ },
+ {
+  "id": "LR-022627-t11",
+  "game": "ladder-20260908_022627000",
+  "his_turn": 6,
+  "deck": "R0908HYPNO",
+  "turn_count": 11,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Team Rocket's Drowzee B4a 027",
+    "Team Rocket's Hypno B4a 028",
+    "Cyrus A2 150",
+    "Pokémon Flute A1a 064",
+    "Professor's Research P-A 007"
+   ],
+   "discard": [
+    "Team Rocket's Researcher B4a 069",
+    "Professor's Research P-A 007",
+    "Poké Ball P-A 005",
+    "Copycat B1 225",
+    "Poké Ball P-A 005",
+    "Sightseer B2 150",
+    "Team Rocket's Goo-zooka B4a 068"
+   ],
+   "discard_energy": [
+    "Psychic"
+   ],
+   "board": [
+    {
+     "card": "Team Rocket's Hypno B4a 028",
+     "hp": 10,
+     "energy": [
+      "Psychic",
+      "Psychic"
+     ],
+     "behind": [
+      "Team Rocket's Drowzee B4a 027"
+     ]
+    },
+    {
+     "card": "Team Rocket's Raticate ex B4a 059",
+     "hp": 150,
+     "energy": [
+      "Darkness",
+      "Psychic"
+     ],
+     "tools": [
+      "Elegant Cape B3b 065"
+     ],
+     "behind": [
+      "Team Rocket's Rattata B4a 058"
+     ]
+    },
+    {
+     "card": "Comfey A3 080",
+     "hp": 50
+    },
+    {
+     "card": "Team Rocket's Raticate ex B4a 059",
+     "hp": 120,
+     "energy": [
+      "Darkness"
+     ],
+     "behind": [
+      "Team Rocket's Rattata B4a 058"
+     ]
+    }
+   ],
+   "energy_now": "Psychic",
+   "energy_next": "Psychic"
+  },
+  "opp": {
+   "hand_count": 7,
+   "discard_n": 3,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Drapion B1 153",
+     "hp": 80,
+     "energy": [
+      "Darkness"
+     ],
+     "behind": [
+      "Skorupi B1 152"
+     ]
+    },
+    {
+     "card": "Mega Absol ex B1 151",
+     "hp": 140,
+     "energy": [
+      "Darkness",
+      "Darkness"
+     ],
+     "tools": [
+      "Giant Cape A2 147"
+     ]
+    },
+    {
+     "card": "Deino B1 155",
+     "hp": 60
+    }
+   ],
+   "energy_next": "Darkness"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Attach:1Psychic@3 zone",
+   "Attack:Entrap",
+   "(Entrap switches the benched Mega Absol ex Active and does 50: 140 -> 90; Cyrus previewed and not played, no Supporter used)"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 20 of 20 cards seen, 0 inferred (see reconstructed_decks/R0908HYPNO.json)",
+  "approximate": true,
+  "notes": "Draw Professor's Research (full art, not played); the deck is now empty. The opponent benched Deino, a Poké Ball is on top of its discard, and Mega Absol ex got a second Darkness (140/190). He previews and declines Cyrus, puts the Psychic on the gold Raticate ex and Entraps Mega Absol ex Active.",
+  "milestones": [],
+  "heldout": true
+ },
+ {
+  "id": "LR-023151-t01",
+  "game": "ladder-20260909_023151000",
+  "his_turn": 1,
+  "deck": "R023151",
+  "turn_count": 1,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Elegant Cape B3b 065",
+    "Poké Ball P-A 005",
+    "Heliolisk B4 061",
+    "Clemont's Backpack B1a 066",
+    "Mega Manectric ex B2b 027"
+   ],
+   "discard": [],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Electrike B2b 026"
+    }
+   ],
+   "energy_now": null,
+   "energy_next": "Lightning"
+  },
+  "opp": {
+   "hand_count": 4,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Torchic B1 033"
+    }
+   ],
+   "energy_next": "Fire"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Poké Ball",
+   "(then: the Poké Ball finds a Helioptile, which he benches; no Energy on the first turn, no attack)"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 12 of 20 cards seen, 8 inferred (see reconstructed_decks/R023151.json)",
+  "approximate": true,
+  "notes": "Going first, so no Energy attach. Opening hand Elegant Cape, Poké Ball, Heliolisk, Clemont's Backpack plus the Electrike he placed Active; the draw is Mega Manectric ex. The opponent has only a Torchic Active (hand 4 is the Codex fan count), discard empty.",
+  "milestones": [],
+  "heldout": false
+ },
+ {
+  "id": "LR-023151-t03",
+  "game": "ladder-20260909_023151000",
+  "his_turn": 2,
+  "deck": "R023151",
+  "turn_count": 3,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Elegant Cape B3b 065",
+    "Heliolisk B4 061",
+    "Clemont's Backpack B1a 066",
+    "Mega Manectric ex B2b 027",
+    "Electrike B2b 026"
+   ],
+   "discard": [
+    "Poké Ball P-A 005"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Electrike B2b 026",
+     "hp": 40
+    },
+    {
+     "card": "Helioptile B4 060"
+    }
+   ],
+   "energy_now": "Lightning",
+   "energy_next": "Lightning"
+  },
+  "opp": {
+   "hand_count": 4,
+   "discard_n": 2,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Torchic B1 033",
+     "energy": [
+      "Fire"
+     ]
+    },
+    {
+     "card": "Entei ex A4a 010"
+    },
+    {
+     "card": "Torkoal A3b 010"
+    }
+   ],
+   "energy_next": "Fire"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Place:Electrike",
+   "Evolve:Heliolisk@1",
+   "Attach:1Lightning@2 zone",
+   "Play:Elegant Cape",
+   "Tool:Elegant Cape@2"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 12 of 20 cards seen, 8 inferred (see reconstructed_decks/R023151.json)",
+  "approximate": true,
+  "notes": "The opponent's Peck left his Electrike on 40; they benched Entei ex and Torkoal and put a Fire on the Torchic (their Research and Poké Ball are in their discard, count 2 from those plays). Draw: a second Electrike; he benches it, evolves the Helioptile, puts the Lightning and then Elegant Cape on the new Electrike (still a Basic, so no extra HP), no attack.",
+  "milestones": [],
+  "heldout": false
+ },
+ {
+  "id": "LR-023151-t05",
+  "game": "ladder-20260909_023151000",
+  "his_turn": 3,
+  "deck": "R023151",
+  "turn_count": 5,
+  "points": [
+   0,
+   1
+  ],
+  "me": {
+   "hand": [
+    "Clemont's Backpack B1a 066",
+    "Mega Manectric ex B2b 027",
+    "Training Area B2 153"
+   ],
+   "discard": [
+    "Poké Ball P-A 005",
+    "Electrike B2b 026"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Heliolisk B4 061",
+     "behind": [
+      "Helioptile B4 060"
+     ]
+    },
+    {
+     "card": "Electrike B2b 026",
+     "energy": [
+      "Lightning"
+     ],
+     "tools": [
+      "Elegant Cape B3b 065"
+     ]
+    }
+   ],
+   "energy_now": "Lightning",
+   "energy_next": "Lightning"
+  },
+  "opp": {
+   "hand_count": 4,
+   "discard_n": 2,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Combusken B1 034",
+     "energy": [
+      "Fire",
+      "Fire"
+     ],
+     "behind": [
+      "Torchic B1 033"
+     ]
+    },
+    {
+     "card": "Entei ex A4a 010"
+    },
+    {
+     "card": "Torkoal A3b 010"
+    }
+   ],
+   "energy_next": "Fire"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Training Area",
+   "Evolve:Mega Manectric ex@1",
+   "Play:Clemont's Backpack",
+   "Attach:1Lightning@0 zone",
+   "Attack:Electrispark"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 12 of 20 cards seen, 8 inferred (see reconstructed_decks/R023151.json)",
+  "approximate": true,
+  "notes": "The opponent's Torchic became Combusken (two Fire) and High Jump Kick knocked out his damaged opening Electrike (1 point to them, that Electrike is in his discard); Heliolisk was promoted. Draw: Training Area; he plays it, evolves the Elegant Cape Electrike into Mega Manectric ex, plays Clemont's Backpack, puts the Lightning on the Heliolisk and Electrispark hits all their Pokémon (70 on the Active, 30 on each Benched one).",
+  "milestones": [],
+  "heldout": false
+ },
+ {
+  "id": "LR-023151-t07",
+  "game": "ladder-20260909_023151000",
+  "his_turn": 4,
+  "deck": "R023151",
+  "turn_count": 7,
+  "points": [
+   0,
+   1
+  ],
+  "me": {
+   "hand": [
+    "Poké Ball P-A 005"
+   ],
+   "discard": [
+    "Poké Ball P-A 005",
+    "Electrike B2b 026",
+    "Clemont's Backpack B1a 066"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Heliolisk B4 061",
+     "hp": 20,
+     "energy": [
+      "Lightning"
+     ],
+     "behind": [
+      "Helioptile B4 060"
+     ]
+    },
+    {
+     "card": "Mega Manectric ex B2b 027",
+     "hp": 210,
+     "energy": [
+      "Lightning"
+     ],
+     "tools": [
+      "Elegant Cape B3b 065"
+     ],
+     "behind": [
+      "Electrike B2b 026"
+     ]
+    }
+   ],
+   "energy_now": "Lightning",
+   "energy_next": "Lightning"
+  },
+  "opp": {
+   "hand_count": 4,
+   "discard_n": 2,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Combusken B1 034",
+     "hp": 10,
+     "energy": [
+      "Fire",
+      "Fire"
+     ],
+     "behind": [
+      "Torchic B1 033"
+     ]
+    },
+    {
+     "card": "Entei ex A4a 010",
+     "hp": 110,
+     "energy": [
+      "Fire"
+     ]
+    },
+    {
+     "card": "Torkoal A3b 010",
+     "hp": 70
+    },
+    {
+     "card": "Torchic B1 033"
+    }
+   ],
+   "energy_next": "Fire"
+  },
+  "stadium": {
+   "card": "Training Area B2 153",
+   "owner": 0
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Poké Ball",
+   "(then: the Helioptile it finds stays in hand; the Lightning goes to the benched Mega Manectric ex (Attach:1Lightning@1 zone); Attack:Electrispark, 50 on the Active, knocks out the 10-HP Combusken and puts his first point)"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 12 of 20 cards seen, 8 inferred (see reconstructed_decks/R023151.json)",
+  "approximate": true,
+  "notes": "The opponent benched a second Torchic, put a Fire on the benched Entei ex, and High Jump Kick (60 with Training Area) left his Heliolisk on 20; Training Area (his) is in play. Draw: Poké Ball, his only card; he plays it (finds a second Helioptile and keeps it in hand), Lightning to the Mega Manectric ex, then Electrispark knocks out the Combusken.",
+  "milestones": [],
+  "heldout": false
+ },
+ {
+  "id": "LR-023151-t09",
+  "game": "ladder-20260909_023151000",
+  "his_turn": 5,
+  "deck": "R023151",
+  "turn_count": 9,
+  "points": [
+   1,
+   2
+  ],
+  "me": {
+   "hand": [
+    "Helioptile B4 060",
+    "Professor's Research P-A 007"
+   ],
+   "discard": [
+    "Poké Ball P-A 005",
+    "Electrike B2b 026",
+    "Clemont's Backpack B1a 066",
+    "Poké Ball P-A 005",
+    "Heliolisk B4 061",
+    "Helioptile B4 060"
+   ],
+   "discard_energy": [
+    "Lightning"
+   ],
+   "board": [
+    {
+     "card": "Mega Manectric ex B2b 027",
+     "hp": 210,
+     "energy": [
+      "Lightning",
+      "Lightning"
+     ],
+     "tools": [
+      "Elegant Cape B3b 065"
+     ],
+     "behind": [
+      "Electrike B2b 026"
+     ]
+    }
+   ],
+   "energy_now": "Lightning",
+   "energy_next": "Lightning"
+  },
+  "opp": {
+   "hand_count": 4,
+   "discard_n": 5,
+   "discard_energy": [
+    "Fire",
+    "Fire"
+   ],
+   "board": [
+    {
+     "card": "Entei ex A4a 010",
+     "hp": 100,
+     "energy": [
+      "Fire",
+      "Fire"
+     ]
+    },
+    {
+     "card": "Torkoal A3b 010",
+     "hp": 60
+    },
+    {
+     "card": "Mega Blaziken ex B1 036",
+     "hp": 200,
+     "behind": [
+      "Torchic B1 033"
+     ]
+    }
+   ],
+   "energy_next": "Fire"
+  },
+  "stadium": {
+   "card": "Training Area B2 153",
+   "owner": 0
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Attack:Lightning Accelerator"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 12 of 20 cards seen, 8 inferred (see reconstructed_decks/R023151.json)",
+  "approximate": true,
+  "notes": "The opponent promoted Entei ex, used Rare Candy to turn the damaged Torchic into Mega Blaziken ex (200 of 210 left), added a Fire, and Blazing Beatdown knocked out his Heliolisk (2 points to them); he promoted the Mega Manectric ex. Draw: Professor's Research, which he did not play; he also left the Helioptile in hand and the turn's Lightning unattached and attacked at once (Lightning Accelerator, 120 with Training Area) for the Entei ex knockout and the 3-2 win.",
+  "milestones": [],
+  "heldout": false
+ },
+ {
+  "id": "LR-032418-t01",
+  "game": "ladder-20260909_032418000",
+  "his_turn": 1,
+  "deck": "R032418",
+  "turn_count": 1,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Team Rocket's Goo-zooka B4a 068",
+    "Hitting Hammer B1 215",
+    "Gholdengo B4a 051",
+    "Poké Ball P-A 005",
+    "Hitting Hammer B1 215"
+   ],
+   "discard": [],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Rotom ex B4 055",
+     "hp": 120
+    }
+   ],
+   "energy_now": null,
+   "energy_next": "Lightning"
+  },
+  "opp": {
+   "hand_count": 4,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Tapu Koko ex A3a 019",
+     "hp": 130
+    }
+   ],
+   "energy_next": "Lightning"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Poké Ball",
+   "(the search finds Gimmighoul)",
+   "Place:Gimmighoul",
+   "(then: end turn with no Energy and no attack; Goo-zooka, Hitting Hammer, Gholdengo and the second Hitting Hammer stay in hand)"
+  ],
+  "hand_source": "codex",
+  "notes": "Going first, so no Energy attach (energy_now null). Opening hand Goo-zooka, Rotom ex (placed Active), Hitting Hammer, Gholdengo, Poké Ball plus a second Hitting Hammer drawn, all Codex-observed; the opponent shows the regular-art Tapu Koko ex alone, hand 4 (Codex fan count), discard empty.",
+  "milestones": [],
+  "list_source": "reconstructed: 11 of 20 cards seen, 9 inferred (see reconstructed_decks/R032418.json)",
+  "approximate": true,
+  "heldout": false
+ },
+ {
+  "id": "LR-032418-t03",
+  "game": "ladder-20260909_032418000",
+  "his_turn": 2,
+  "deck": "R032418",
+  "turn_count": 3,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Team Rocket's Goo-zooka B4a 068",
+    "Hitting Hammer B1 215",
+    "Gholdengo B4a 051",
+    "Hitting Hammer B1 215",
+    "Red Card P-A 006"
+   ],
+   "discard": [
+    "Poké Ball P-A 005"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Rotom ex B4 055",
+     "hp": 100
+    },
+    {
+     "card": "Gimmighoul B2a 054",
+     "hp": 60
+    }
+   ],
+   "energy_now": "Lightning",
+   "energy_next": "Lightning"
+  },
+  "opp": {
+   "hand_count": 3,
+   "discard_n": 1,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Tapu Koko ex A3a 019",
+     "hp": 130,
+     "energy": [
+      "Lightning",
+      "Lightning"
+     ],
+     "tools": [
+      "Poison Barb A3 146"
+     ]
+    },
+    {
+     "card": "Tapu Koko ex A3a 019",
+     "hp": 130
+    }
+   ],
+   "energy_next": "Lightning"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Evolve:Gholdengo@1",
+   "Play:Red Card",
+   "Play:Hitting Hammer",
+   "(two Heads: Luxury Coin declined, one Lightning discarded from the opponent's Active, 2 to 1)",
+   "Play:Hitting Hammer",
+   "(Tails/Tails: Luxury Coin used, reroll Head/Tail: nothing discarded)",
+   "Attach:1Lightning@0 zone",
+   "Play:Team Rocket's Goo-zooka",
+   "(then: end turn with no attack)"
+  ],
+  "hand_source": "codex",
+  "notes": "Draw Red Card; the opponent benched the alternate-art Tapu Koko ex, put Poison Barb and two Lightning on its Active (one attached, one from Plasma Hurricane) and hit Rotom ex for 20, hand 3 (Codex fan count). Estimate: the opponent's discard is one card (the Poké Ball seen in its discard area, the pile was never opened); Red Card is not a draw card for him so the compared plan runs on past it, and Luxury Coin is a prompt during a coin flip, not a play.",
+  "milestones": [],
+  "list_source": "reconstructed: 11 of 20 cards seen, 9 inferred (see reconstructed_decks/R032418.json)",
+  "approximate": true,
+  "heldout": false
+ },
+ {
+  "id": "LR-032418-t05",
+  "game": "ladder-20260909_032418000",
+  "his_turn": 3,
+  "deck": "R032418",
+  "turn_count": 5,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Order Pad B4 145"
+   ],
+   "discard": [
+    "Poké Ball P-A 005",
+    "Red Card P-A 006",
+    "Hitting Hammer B1 215",
+    "Hitting Hammer B1 215",
+    "Team Rocket's Goo-zooka B4a 068"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Rotom ex B4 055",
+     "hp": 80,
+     "energy": [
+      "Lightning"
+     ]
+    },
+    {
+     "card": "Gholdengo B4a 051",
+     "hp": 100,
+     "behind": [
+      "Gimmighoul B2a 054"
+     ]
+    }
+   ],
+   "energy_now": "Lightning",
+   "energy_next": "Lightning"
+  },
+  "opp": {
+   "hand_count": 4,
+   "discard_n": 2,
+   "discard_energy": [
+    "Lightning"
+   ],
+   "board": [
+    {
+     "card": "Tapu Koko ex A3a 019",
+     "hp": 130,
+     "energy": [
+      "Lightning",
+      "Lightning"
+     ],
+     "tools": [
+      "Poison Barb A3 146"
+     ]
+    },
+    {
+     "card": "Tapu Koko ex A3a 019",
+     "hp": 130,
+     "energy": [
+      "Lightning"
+     ],
+     "tools": [
+      "Poison Barb A3 146"
+     ]
+    }
+   ],
+   "energy_next": "Lightning"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Order Pad",
+   "(Tails, Luxury Coin reroll Tails: no Item found, hand empty)",
+   "Attach:1Lightning@1 zone",
+   "Retreat:1",
+   "(then: end turn with no attack)"
+  ],
+  "hand_source": "codex",
+  "notes": "Draw Order Pad (his whole hand); since turn 3 the first Hitting Hammer took a Lightning off the opponent's Active, and the opponent attached to its Bench, played Research and a second Poison Barb (on the Bench), and Plasma Hurricane took Rotom ex to 80 and restored the Active's second Lightning. Estimate: the opponent's discard is two cards (Poké Ball, Research) plus the one Lightning from the Hammer, the pile was never opened.",
+  "milestones": [],
+  "list_source": "reconstructed: 11 of 20 cards seen, 9 inferred (see reconstructed_decks/R032418.json)",
+  "approximate": true,
+  "heldout": false
+ },
+ {
+  "id": "LR-032418-t07",
+  "game": "ladder-20260909_032418000",
+  "his_turn": 4,
+  "deck": "R032418",
+  "turn_count": 7,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Team Rocket's Goo-zooka B4a 068"
+   ],
+   "discard": [
+    "Poké Ball P-A 005",
+    "Red Card P-A 006",
+    "Hitting Hammer B1 215",
+    "Hitting Hammer B1 215",
+    "Team Rocket's Goo-zooka B4a 068",
+    "Order Pad B4 145"
+   ],
+   "discard_energy": [
+    "Lightning"
+   ],
+   "board": [
+    {
+     "card": "Gholdengo B4a 051",
+     "hp": 80,
+     "energy": [
+      "Lightning"
+     ],
+     "behind": [
+      "Gimmighoul B2a 054"
+     ]
+    },
+    {
+     "card": "Rotom ex B4 055",
+     "hp": 80
+    }
+   ],
+   "energy_now": "Lightning",
+   "energy_next": "Lightning"
+  },
+  "opp": {
+   "hand_count": 5,
+   "discard_n": 2,
+   "discard_energy": [
+    "Lightning"
+   ],
+   "board": [
+    {
+     "card": "Tapu Koko ex A3a 019",
+     "hp": 130,
+     "energy": [
+      "Lightning",
+      "Lightning",
+      "Lightning"
+     ],
+     "tools": [
+      "Poison Barb A3 146"
+     ]
+    },
+    {
+     "card": "Tapu Koko ex A3a 019",
+     "hp": 130,
+     "energy": [
+      "Lightning",
+      "Lightning"
+     ],
+     "tools": [
+      "Poison Barb A3 146"
+     ]
+    }
+   ],
+   "energy_next": "Lightning"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Team Rocket's Goo-zooka",
+   "Attach:1Lightning@1 zone",
+   "(then: end turn with no attack)"
+  ],
+  "hand_source": "codex",
+  "notes": "Draw the second Goo-zooka (his whole hand); since turn 5 Order Pad found nothing, Rotom ex retreated paying one Lightning (now in his discard) so the Gholdengo with one Lightning is Active, and Plasma Hurricane took it to 80. Estimate: the opponent's discard is unchanged at two cards and one Lightning (no new card was seen played on its turn 6).",
+  "milestones": [],
+  "list_source": "reconstructed: 11 of 20 cards seen, 9 inferred (see reconstructed_decks/R032418.json)",
+  "approximate": true,
+  "heldout": false
+ },
+ {
+  "id": "LR-032418-t09",
+  "game": "ladder-20260909_032418000",
+  "his_turn": 5,
+  "deck": "R032418",
+  "turn_count": 9,
+  "points": [
+   0,
+   1
+  ],
+  "me": {
+   "hand": [
+    "Lucky Ice Pop B2 145"
+   ],
+   "discard": [
+    "Poké Ball P-A 005",
+    "Red Card P-A 006",
+    "Hitting Hammer B1 215",
+    "Hitting Hammer B1 215",
+    "Team Rocket's Goo-zooka B4a 068",
+    "Order Pad B4 145",
+    "Team Rocket's Goo-zooka B4a 068",
+    "Gholdengo B4a 051",
+    "Gimmighoul B2a 054"
+   ],
+   "discard_energy": [
+    "Lightning",
+    "Lightning"
+   ],
+   "board": [
+    {
+     "card": "Rotom ex B4 055",
+     "hp": 80,
+     "energy": [
+      "Lightning"
+     ]
+    }
+   ],
+   "energy_now": "Lightning",
+   "energy_next": "Lightning"
+  },
+  "opp": {
+   "hand_count": 6,
+   "discard_n": 2,
+   "discard_energy": [
+    "Lightning"
+   ],
+   "board": [
+    {
+     "card": "Tapu Koko ex A3a 019",
+     "hp": 130,
+     "energy": [
+      "Lightning",
+      "Lightning",
+      "Lightning"
+     ],
+     "tools": [
+      "Poison Barb A3 146"
+     ]
+    },
+    {
+     "card": "Tapu Koko ex A3a 019",
+     "hp": 130,
+     "energy": [
+      "Lightning",
+      "Lightning",
+      "Lightning"
+     ],
+     "tools": [
+      "Poison Barb A3 146"
+     ]
+    }
+   ],
+   "energy_next": "Lightning"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Lucky Ice Pop",
+   "Play:Lucky Ice Pop",
+   "(Heads: returned to hand and played again, heal 80 -> 100 -> 120; the second flip Tails: discarded)",
+   "Attach:1Lightning@0 zone",
+   "Attack:Junk Spark"
+  ],
+  "hand_source": "codex",
+  "notes": "Draw Lucky Ice Pop (his whole hand); since turn 7 the Goo-zooka went to the discard, the Lightning went to the benched Rotom ex, and Mach Bolt knocked out the 80-HP Gholdengo (one point to the opponent; it, its Gimmighoul and its Lightning are in his discard) so the Rotom ex was promoted. Estimate: the opponent's hand 6 is the Codex fan count and its discard is unchanged at two cards and one Lightning (bookkeeping).",
+  "milestones": [],
+  "list_source": "reconstructed: 11 of 20 cards seen, 9 inferred (see reconstructed_decks/R032418.json)",
+  "approximate": true,
+  "heldout": false
+ },
+ {
+  "id": "LR-190031-t02",
+  "game": "ladder-20260908_190031000",
+  "his_turn": 1,
+  "deck": "R0908ALTARIA",
+  "turn_count": 2,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Small Balloon B3b 064",
+    "Copycat B1 225",
+    "Professor's Research P-A 007",
+    "Poké Ball P-A 005",
+    "Mega Altaria ex B1 102"
+   ],
+   "discard": [],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Eevee B1 184",
+     "hp": 50
+    }
+   ],
+   "energy_now": "Psychic",
+   "energy_next": "Psychic"
+  },
+  "opp": {
+   "hand_count": 5,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Bulbasaur B1a 001",
+     "hp": 60,
+     "tools": [
+      "Heavy Helmet B1 219"
+     ]
+    }
+   ],
+   "energy_next": "Grass"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Poké Ball",
+   "(searches Darkrai)",
+   "Play:Professor's Research",
+   "(draws Swablu and Training Area)",
+   "Place:Swablu",
+   "Place:Darkrai",
+   "Play:Small Balloon",
+   "Tool:Small Balloon@0",
+   "Retreat:1",
+   "Attach:1Psychic@0 zone",
+   "Attack:Sing"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 18 of 20 cards seen, 2 inferred (see reconstructed_decks/R0908ALTARIA.json)",
+  "approximate": true,
+  "notes": "Going second. Opening hand Small Balloon, Copycat, Professor's Research, Poké Ball plus the Eevee he placed Active; the draw is Mega Altaria ex. The opponent (going first) has a lone Bulbasaur Active (60) with a Heavy Helmet that is inactive at retreat cost 1, no Bench, no Energy. Opponent hand 5 is the Codex fan count; opponent discard is empty (the Helmet is attached).",
+  "milestones": [],
+  "heldout": false
+ },
+ {
+  "id": "LR-190031-t04",
+  "game": "ladder-20260908_190031000",
+  "his_turn": 2,
+  "deck": "R0908ALTARIA",
+  "turn_count": 4,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Copycat B1 225",
+    "Mega Altaria ex B1 102",
+    "Training Area B2 153",
+    "Field Blower B3 147"
+   ],
+   "discard": [
+    "Poké Ball P-A 005",
+    "Professor's Research P-A 007"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Swablu B1 196",
+     "hp": 50,
+     "energy": [
+      "Psychic"
+     ]
+    },
+    {
+     "card": "Eevee B1 184",
+     "hp": 50,
+     "tools": [
+      "Small Balloon B3b 064"
+     ]
+    },
+    {
+     "card": "Darkrai B2b 040",
+     "hp": 100
+    }
+   ],
+   "energy_now": "Psychic",
+   "energy_next": "Psychic"
+  },
+  "opp": {
+   "hand_count": 5,
+   "discard_n": 1,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Ivysaur B1a 002",
+     "hp": 100,
+     "energy": [
+      "Grass",
+      "Grass",
+      "Grass"
+     ],
+     "tools": [
+      "Heavy Helmet B1 219"
+     ],
+     "behind": [
+      "Bulbasaur B1a 001"
+     ]
+    }
+   ],
+   "energy_next": "Grass"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Field Blower",
+   "DiscardToolFromPokemon",
+   "(discards the opponent's Heavy Helmet from the Ivysaur)",
+   "Evolve:Mega Altaria ex@0",
+   "Play:Training Area",
+   "Attach:1Psychic@0 zone",
+   "Attack:Mega Harmony",
+   "(Copycat left unplayed; Mega Harmony 100 + 10 Training Area = 110 knocks out the 100-HP Ivysaur, the opponent has no Bench)"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 18 of 20 cards seen, 2 inferred (see reconstructed_decks/R0908ALTARIA.json)",
+  "approximate": true,
+  "notes": "Draw Field Blower. Since his last turn: Swablu (one Psychic) sat Active while the opponent used Lucky Ice Pop (heads, back to their hand), a Grass, Quick-Grow Extract (Bulbasaur to Ivysaur, Sleep gone, full 100 HP) and Synthesis (two more Grass), so the Ivysaur has three Grass and the Heavy Helmet is now active (retreat cost 3). Opponent hand 5 is the Codex fan count (it includes the Lucky Ice Pop that came back); opponent discard 1 is the Quick-Grow Extract (the pile top seen at the end of their turn).",
+  "milestones": [],
+  "heldout": false
+ },
+ {
+  "id": "LR-190933-t01",
+  "game": "ladder-20260908_190933000",
+  "his_turn": 1,
+  "deck": "R0908ALTARIA",
+  "turn_count": 1,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Darkrai B2b 040",
+    "Copycat B1 225",
+    "Professor's Research P-A 007",
+    "Eevee B1 184",
+    "Eevee B1 184"
+   ],
+   "discard": [],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Igglybuff A4a 059"
+    }
+   ],
+   "energy_now": null,
+   "energy_next": "Psychic"
+  },
+  "opp": {
+   "hand_count": 5,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Oricorio A3 066"
+    }
+   ],
+   "energy_next": "Lightning"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Place:Darkrai",
+   "Play:Professor's Research",
+   "(Research draws Poké Ball and Small Balloon)",
+   "Play:Poké Ball",
+   "(the Ball finds the second Darkrai)",
+   "Place:Darkrai",
+   "Place:Eevee",
+   "Attack:Sleepy Lullaby",
+   "(then: Oricorio on 70 takes 10 and is Asleep, the two benched Darkrai add 20 each at the end of the turn, 70 to 20, and it wakes on the Sleep coin)"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 18 of 20 cards seen, 2 inferred (see reconstructed_decks/R0908ALTARIA.json)",
+  "approximate": true,
+  "notes": "Going first, so no Energy attach. Opening five were Igglybuff (set Active), Darkrai, Copycat, Professor's Research and Eevee; the draw is a second Eevee. The opponent has a lone Oricorio Active (its Safeguard stops attack damage from Pokemon ex) and nothing else; hand 5 is the Codex fan count (the hand arithmetic into turn 3 suggests it may really have been 4), their discard is empty.",
+  "milestones": [],
+  "heldout": true
+ },
+ {
+  "id": "LR-190933-t03",
+  "game": "ladder-20260908_190933000",
+  "his_turn": 2,
+  "deck": "R0908ALTARIA",
+  "turn_count": 3,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Copycat B1 225",
+    "Eevee B1 184",
+    "Small Balloon B3b 064",
+    "Poké Ball P-A 005"
+   ],
+   "discard": [
+    "Professor's Research P-A 007",
+    "Poké Ball P-A 005"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Igglybuff A4a 059"
+    },
+    {
+     "card": "Darkrai B2b 040"
+    },
+    {
+     "card": "Eevee B1 184"
+    },
+    {
+     "card": "Darkrai B2b 040"
+    }
+   ],
+   "energy_now": "Psychic",
+   "energy_next": "Psychic"
+  },
+  "opp": {
+   "hand_count": 4,
+   "discard_n": 2,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Oricorio A3 066",
+     "hp": 20
+    },
+    {
+     "card": "Electrike B2b 026",
+     "energy": [
+      "Lightning"
+     ]
+    },
+    {
+     "card": "Electrike B2b 026"
+    }
+   ],
+   "energy_next": "Lightning"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Poké Ball",
+   "(the Ball finds Swablu)",
+   "Play:Small Balloon",
+   "Tool:Small Balloon@1",
+   "Play:Copycat",
+   "(Copycat shuffles Eevee and Swablu away and draws Sabrina, Swablu, Training Area, Field Blower)",
+   "Attach:1Psychic@2 zone",
+   "Attack:Sleepy Lullaby"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 18 of 20 cards seen, 2 inferred (see reconstructed_decks/R0908ALTARIA.json)",
+  "approximate": true,
+  "notes": "Draw: Poke Ball. Since his turn 1 the opponent used Research and a Poke Ball (their discard of 2 comes from those plays), benched two Electrike and put a Lightning on the left one; the Oricorio woke from Sleep and is still on 20. He plays the Ball (finds Swablu), Small Balloon on the left Darkrai, Copycat (Eevee and Swablu go back, he draws 4 = the opponent's hand, Sabrina, Swablu, Training Area, Field Blower), Psychic on the benched Eevee, then Sleepy Lullaby and the Darkrai knock the Oricorio out for his first point.",
+  "milestones": [],
+  "heldout": true
+ },
+ {
+  "id": "LR-190933-t05",
+  "game": "ladder-20260908_190933000",
+  "his_turn": 3,
+  "deck": "R0908ALTARIA",
+  "turn_count": 5,
+  "points": [
+   1,
+   1
+  ],
+  "me": {
+   "hand": [
+    "Sabrina A1 225",
+    "Swablu B1 196",
+    "Training Area B2 153",
+    "Field Blower B3 147",
+    "Professor's Research P-A 007"
+   ],
+   "discard": [
+    "Professor's Research P-A 007",
+    "Poké Ball P-A 005",
+    "Poké Ball P-A 005",
+    "Copycat B1 225",
+    "Igglybuff A4a 059"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Eevee B1 184",
+     "energy": [
+      "Psychic"
+     ]
+    },
+    {
+     "card": "Darkrai B2b 040",
+     "tools": [
+      "Small Balloon B3b 064"
+     ]
+    },
+    {
+     "card": "Darkrai B2b 040"
+    }
+   ],
+   "energy_now": "Psychic",
+   "energy_next": "Psychic"
+  },
+  "opp": {
+   "hand_count": 5,
+   "discard_n": 4,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Mega Manectric ex B2b 027",
+     "energy": [
+      "Lightning",
+      "Lightning"
+     ],
+     "behind": [
+      "Electrike B2b 026"
+     ]
+    },
+    {
+     "card": "Electrike B2b 026"
+    }
+   ],
+   "energy_next": "Lightning"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Professor's Research",
+   "(Research draws Mega Altaria ex and Eevee)",
+   "Place:Swablu",
+   "Attach:1Psychic@3 zone",
+   "Attack:Stampede",
+   "(Stampede 10: Mega Manectric ex 180 to 170)"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 18 of 20 cards seen, 2 inferred (see reconstructed_decks/R0908ALTARIA.json)",
+  "approximate": true,
+  "notes": "Draw: Professor's Research. The Oricorio knockout gave him a point; the opponent promoted the Electrike (one Lightning), added a second Lightning, evolved it into Mega Manectric ex and Lightning Accelerator (80) knocked out Igglybuff (their point), and he promoted Eevee with its Psychic before the draw. He plays Research (Mega Altaria ex, Eevee), benches Swablu (in the real game it went into the empty middle Bench slot; here the Bench has no gap, so Swablu is index 3), Psychic on Swablu, Stampede for 10. Opponent discard 4 = Research, Poke Ball, Oricorio plus a Research the review does not list but the visible discard top shows at t241 (estimate).",
+  "milestones": [],
+  "heldout": true
+ },
+ {
+  "id": "LR-190933-t07",
+  "game": "ladder-20260908_190933000",
+  "his_turn": 4,
+  "deck": "R0908ALTARIA",
+  "turn_count": 7,
+  "points": [
+   1,
+   2
+  ],
+  "me": {
+   "hand": [
+    "Sabrina A1 225",
+    "Training Area B2 153",
+    "Field Blower B3 147",
+    "Mega Altaria ex B1 102",
+    "Eevee B1 184",
+    "Espeon B3a 020"
+   ],
+   "discard": [
+    "Professor's Research P-A 007",
+    "Poké Ball P-A 005",
+    "Poké Ball P-A 005",
+    "Copycat B1 225",
+    "Igglybuff A4a 059",
+    "Professor's Research P-A 007",
+    "Eevee B1 184"
+   ],
+   "discard_energy": [
+    "Psychic"
+   ],
+   "board": [
+    {
+     "card": "Swablu B1 196",
+     "energy": [
+      "Psychic"
+     ]
+    },
+    {
+     "card": "Darkrai B2b 040",
+     "tools": [
+      "Small Balloon B3b 064"
+     ]
+    },
+    {
+     "card": "Darkrai B2b 040"
+    }
+   ],
+   "energy_now": "Psychic",
+   "energy_next": "Psychic"
+  },
+  "opp": {
+   "hand_count": 5,
+   "discard_n": 4,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Mega Manectric ex B2b 027",
+     "hp": 170,
+     "energy": [
+      "Lightning",
+      "Lightning"
+     ],
+     "behind": [
+      "Electrike B2b 026"
+     ]
+    },
+    {
+     "card": "Team Rocket's Voltorb B4a 019"
+    },
+    {
+     "card": "Electrike B2b 026",
+     "energy": [
+      "Lightning"
+     ]
+    }
+   ],
+   "energy_next": "Lightning"
+  },
+  "stadium": {
+   "card": "Training Area B2 153",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Evolve:Mega Altaria ex@0",
+   "Place:Eevee",
+   "Attach:1Psychic@0 zone",
+   "Attack:Mega Harmony",
+   "(Mega Harmony 140 = 40 + 30 x 3 Bench + 10 Training Area: Mega Manectric ex 170 to 30; Sabrina stays unplayed, the Supporter-unused warning is confirmed)"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 18 of 20 cards seen, 2 inferred (see reconstructed_decks/R0908ALTARIA.json)",
+  "approximate": true,
+  "notes": "Draw: Espeon. The opponent benched a Team Rocket's Voltorb, put the Lightning on the benched Electrike, played Training Area (theirs) and Lightning Accelerator (120) knocked out Eevee with its Psychic (their second point); he promoted Swablu with its Psychic before the draw. He evolves it into Mega Altaria ex, benches the Eevee (the real game used the empty middle Bench slot), Psychic on Mega Altaria, Mega Harmony for 140, and does not play Sabrina. Opponent discard count 4 is an estimate (their hand count of 5 here suggests one more unlisted card may be in it).",
+  "milestones": [],
+  "heldout": true
+ },
+ {
+  "id": "LR-190933-t09",
+  "game": "ladder-20260908_190933000",
+  "his_turn": 5,
+  "deck": "R0908ALTARIA",
+  "turn_count": 9,
+  "points": [
+   1,
+   2
+  ],
+  "me": {
+   "hand": [
+    "Sabrina A1 225",
+    "Training Area B2 153",
+    "Field Blower B3 147",
+    "Espeon B3a 020",
+    "Espeon B3a 020"
+   ],
+   "discard": [
+    "Professor's Research P-A 007",
+    "Poké Ball P-A 005",
+    "Poké Ball P-A 005",
+    "Copycat B1 225",
+    "Igglybuff A4a 059",
+    "Professor's Research P-A 007",
+    "Eevee B1 184"
+   ],
+   "discard_energy": [
+    "Psychic"
+   ],
+   "board": [
+    {
+     "card": "Mega Altaria ex B1 102",
+     "energy": [
+      "Psychic",
+      "Psychic"
+     ],
+     "behind": [
+      "Swablu B1 196"
+     ]
+    },
+    {
+     "card": "Darkrai B2b 040",
+     "hp": 70,
+     "tools": [
+      "Small Balloon B3b 064"
+     ]
+    },
+    {
+     "card": "Eevee B1 184"
+    },
+    {
+     "card": "Darkrai B2b 040"
+    }
+   ],
+   "energy_now": "Psychic",
+   "energy_next": "Psychic"
+  },
+  "opp": {
+   "hand_count": 2,
+   "discard_n": 4,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Team Rocket's Electrode B4a 020",
+     "energy": [
+      "Lightning"
+     ],
+     "behind": [
+      "Team Rocket's Voltorb B4a 019"
+     ]
+    },
+    {
+     "card": "Mega Manectric ex B2b 027",
+     "hp": 30,
+     "energy": [
+      "Lightning",
+      "Lightning"
+     ],
+     "tools": [
+      "Protective Poncho B2 147"
+     ],
+     "behind": [
+      "Electrike B2b 026"
+     ]
+    },
+    {
+     "card": "Mega Manectric ex B2b 027",
+     "energy": [
+      "Lightning"
+     ],
+     "behind": [
+      "Electrike B2b 026"
+     ]
+    },
+    {
+     "card": "Team Rocket's Voltorb B4a 019"
+    }
+   ],
+   "energy_next": "Lightning"
+  },
+  "stadium": {
+   "card": "Training Area B2 153",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Evolve:Espeon@2",
+   "Play:Sabrina",
+   "(the opponent picks the fresh 180-HP Mega Manectric ex as the new Active; Electrode goes to the Bench)",
+   "Attach:1Psychic@1 zone",
+   "Attack:Mega Harmony",
+   "(Mega Harmony 140: the fresh Mega Manectric ex 180 to 40; no retreat)"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 18 of 20 cards seen, 2 inferred (see reconstructed_decks/R0908ALTARIA.json)",
+  "approximate": true,
+  "notes": "Draw: a second Espeon. The opponent put Protective Poncho on the damaged Mega Manectric ex, evolved one Voltorb into Electrode, benched a second Voltorb, evolved the other Electrike into a fresh 180-HP Mega Manectric ex (carrying the Lightning from turn 6), retreated the damaged one for free, put a Lightning on the Electrode and Random Spark hit his left Darkrai for 30 (100 to 70). He evolves the Eevee into Espeon, plays Sabrina, Psychic on the damaged Darkrai (Small Balloon) and Mega Harmony for 140. Opponent discard count 4 is an estimate.",
+  "milestones": [],
+  "heldout": true
+ },
+ {
+  "id": "LR-200654-t02",
+  "game": "ladder-20260928_200654000",
+  "his_turn": 1,
+  "deck": "R200654",
+  "turn_count": 2,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Professor's Research P-A 007",
+    "Deceptive Needle B4 148",
+    "Poké Ball P-A 005",
+    "Poké Ball P-A 005",
+    "Zweilous B1 156"
+   ],
+   "discard": [],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Galarian Zigzagoon B4 095",
+     "hp": 70
+    }
+   ],
+   "energy_now": "Darkness",
+   "energy_next": "Darkness"
+  },
+  "opp": {
+   "hand_count": 6,
+   "discard_n": 2,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Arceus ex A2a 071",
+     "hp": 140
+    }
+   ],
+   "energy_next": "Metal"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Poké Ball",
+   "(finds the gold Deino)",
+   "Place:Deino",
+   "Play:Poké Ball",
+   "(finds the second Galarian Zigzagoon)",
+   "Place:Galarian Zigzagoon",
+   "Play:Deceptive Needle",
+   "Tool:Deceptive Needle@0",
+   "Play:Professor's Research",
+   "(draws Galarian Obstagoon and the second Deceptive Needle)",
+   "Attach:1Darkness@0 zone",
+   "Play:Deceptive Needle",
+   "Tool:Deceptive Needle@1",
+   "Attack:Tackle",
+   "(Tackle 10, then the Needle adds 10 at the end of the turn: Arceus ex 140 to 120)"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 18 of 20 cards seen, 2 inferred (see reconstructed_decks/R200654.json)",
+  "approximate": true,
+  "notes": "Opening hand Research, Deceptive Needle, two Poké Balls and the Zigzagoon he placed Active; the draw is Zweilous. The opponent has only Arceus ex Active (hand 6 is the Codex fan count; discard 2 is my count of its Poké Ball and Research, the card backs are never shown); the Poké Balls find Deino and a second Zigzagoon (benched in the second and third bench slots), Research draws Obstagoon and the second Needle.",
+  "milestones": [],
+  "heldout": false
+ },
+ {
+  "id": "LR-200654-t04",
+  "game": "ladder-20260928_200654000",
+  "his_turn": 2,
+  "deck": "R200654",
+  "turn_count": 4,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Zweilous B1 156",
+    "Galarian Obstagoon B2 100",
+    "Lillie A3 155"
+   ],
+   "discard": [
+    "Poké Ball P-A 005",
+    "Poké Ball P-A 005",
+    "Professor's Research P-A 007"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Galarian Zigzagoon B4 095",
+     "hp": 70,
+     "energy": [
+      "Darkness"
+     ],
+     "tools": [
+      "Deceptive Needle B4 148"
+     ]
+    },
+    {
+     "card": "Galarian Zigzagoon B4 095",
+     "hp": 70,
+     "tools": [
+      "Deceptive Needle B4 148"
+     ]
+    },
+    {
+     "card": "Deino B1 155",
+     "hp": 60
+    }
+   ],
+   "energy_now": "Darkness",
+   "energy_next": "Darkness"
+  },
+  "opp": {
+   "hand_count": 5,
+   "discard_n": 2,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Arceus ex A2a 071",
+     "hp": 140
+    },
+    {
+     "card": "Dialga ex A2 119",
+     "hp": 150,
+     "energy": [
+      "Metal"
+     ]
+    },
+    {
+     "card": "Shaymin A2 022",
+     "hp": 60
+    }
+   ],
+   "energy_next": "Metal"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Evolve:Zweilous@2",
+   "Attach:1Darkness@1 zone",
+   "Attack:Tackle",
+   "(Tackle 10, then the Needle adds 10: Arceus ex 140 to 120)"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 18 of 20 cards seen, 2 inferred (see reconstructed_decks/R200654.json)",
+  "approximate": true,
+  "notes": "Draw Lillie. Since his last turn: the opponent benched Shaymin and Dialga ex (one Metal) and healed Arceus ex back to 140 (Fragrant Flower Garden and Lucky Ice Pop; the Pop returned to their hand); nothing hit him. Deino, the gold-Needle Zigzagoon and the Active Zigzagoon (one Darkness, regular Needle) are as he left them; opponent hand 5 counted, discard 2 unchanged.",
+  "milestones": [],
+  "heldout": false
+ },
+ {
+  "id": "LR-200654-t06",
+  "game": "ladder-20260928_200654000",
+  "his_turn": 3,
+  "deck": "R200654",
+  "turn_count": 6,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Galarian Obstagoon B2 100",
+    "Lillie A3 155",
+    "Hydreigon B1 157"
+   ],
+   "discard": [
+    "Poké Ball P-A 005",
+    "Poké Ball P-A 005",
+    "Professor's Research P-A 007"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Galarian Zigzagoon B4 095",
+     "hp": 70,
+     "energy": [
+      "Darkness"
+     ],
+     "tools": [
+      "Deceptive Needle B4 148"
+     ]
+    },
+    {
+     "card": "Galarian Zigzagoon B4 095",
+     "hp": 70,
+     "energy": [
+      "Darkness"
+     ],
+     "tools": [
+      "Deceptive Needle B4 148"
+     ]
+    },
+    {
+     "card": "Zweilous B1 156",
+     "hp": 90,
+     "behind": [
+      "Deino B1 155"
+     ]
+    }
+   ],
+   "energy_now": "Darkness",
+   "energy_next": "Darkness"
+  },
+  "opp": {
+   "hand_count": 6,
+   "discard_n": 3,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Arceus ex A2a 071",
+     "hp": 140,
+     "tools": [
+      "Rocky Helmet A2 148"
+     ]
+    },
+    {
+     "card": "Dialga ex A2 119",
+     "hp": 150,
+     "energy": [
+      "Metal",
+      "Metal"
+     ]
+    },
+    {
+     "card": "Shaymin A2 022",
+     "hp": 60
+    }
+   ],
+   "energy_next": "Metal"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Evolve:Hydreigon@2",
+   "Attach:1Darkness@2 zone",
+   "Attack:Tackle",
+   "(Tackle 10; Rocky Helmet does 20 back to his Zigzagoon; the Needle adds 10 to Arceus ex)"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 18 of 20 cards seen, 2 inferred (see reconstructed_decks/R200654.json)",
+  "approximate": true,
+  "notes": "Draw Hydreigon. Since his last turn the opponent played Research (discard 3 by my count), put Rocky Helmet on Arceus ex, healed it back to 140 and gave Dialga ex a second Metal; his Deino is now Zweilous and the benched Zigzagoon has its Darkness. He evolves Zweilous into Hydreigon, puts the Darkness on it and Tackles.",
+  "milestones": [],
+  "heldout": false
+ },
+ {
+  "id": "LR-200654-t08",
+  "game": "ladder-20260928_200654000",
+  "his_turn": 4,
+  "deck": "R200654",
+  "turn_count": 8,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Galarian Obstagoon B2 100",
+    "Lillie A3 155",
+    "Professor's Research P-A 007"
+   ],
+   "discard": [
+    "Poké Ball P-A 005",
+    "Poké Ball P-A 005",
+    "Professor's Research P-A 007"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Galarian Zigzagoon B4 095",
+     "hp": 20,
+     "energy": [
+      "Darkness"
+     ],
+     "tools": [
+      "Deceptive Needle B4 148"
+     ]
+    },
+    {
+     "card": "Galarian Zigzagoon B4 095",
+     "hp": 70,
+     "energy": [
+      "Darkness"
+     ],
+     "tools": [
+      "Deceptive Needle B4 148"
+     ]
+    },
+    {
+     "card": "Hydreigon B1 157",
+     "hp": 150,
+     "energy": [
+      "Darkness"
+     ],
+     "behind": [
+      "Deino B1 155",
+      "Zweilous B1 156"
+     ]
+    }
+   ],
+   "energy_now": "Darkness",
+   "energy_next": "Darkness"
+  },
+  "opp": {
+   "hand_count": 5,
+   "discard_n": 4,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Dialga ex A2 119",
+     "hp": 170,
+     "energy": [
+      "Metal",
+      "Metal",
+      "Metal"
+     ],
+     "tools": [
+      "Giant Cape A2 147"
+     ]
+    },
+    {
+     "card": "Arceus ex A2a 071",
+     "hp": 140,
+     "energy": [
+      "Metal",
+      "Metal"
+     ],
+     "tools": [
+      "Rocky Helmet A2 148"
+     ]
+    },
+    {
+     "card": "Shaymin A2 022",
+     "hp": 60
+    }
+   ],
+   "energy_next": "Metal"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Professor's Research",
+   "(draws Rare Candy and a second Rare Candy)",
+   "Play:Rare Candy",
+   "Evolve:Galarian Obstagoon@0",
+   "Attach:1Darkness@0 zone",
+   "Retreat:2",
+   "Ability:Roar in Unison@0",
+   "Attack:Hyper Ray"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 18 of 20 cards seen, 2 inferred (see reconstructed_decks/R200654.json)",
+  "approximate": true,
+  "notes": "Draw Research. Since his last turn: Rocky Helmet (20) and Metallic Turbo (30) left his Active Zigzagoon on 20, and the opponent retreated Arceus ex with Leaf and promoted the Giant Cape Dialga ex (170, three Metal; Metallic Turbo put two Metal on the benched Arceus ex). He plays Research (two Rare Candy), candies the Zigzagoon into Obstagoon (100 of 150), attaches the Darkness, retreats it for Hydreigon, Roar in Unison and Hyper Ray 130 (Dialga ex 170 to 40, all three Darkness discarded); opponent hand 5 counted, discard 4 is my count (adds their Leaf).",
+  "milestones": [],
+  "heldout": false
+ },
+ {
+  "id": "LR-200654-t10",
+  "game": "ladder-20260928_200654000",
+  "his_turn": 5,
+  "deck": "R200654",
+  "turn_count": 10,
+  "points": [
+   0,
+   1
+  ],
+  "me": {
+   "hand": [
+    "Lillie A3 155",
+    "Rare Candy A3 144",
+    "Deino B1 155"
+   ],
+   "discard": [
+    "Poké Ball P-A 005",
+    "Poké Ball P-A 005",
+    "Professor's Research P-A 007",
+    "Professor's Research P-A 007",
+    "Rare Candy A3 144",
+    "Hydreigon B1 157",
+    "Zweilous B1 156",
+    "Deino B1 155"
+   ],
+   "discard_energy": [
+    "Darkness",
+    "Darkness",
+    "Darkness",
+    "Darkness",
+    "Darkness"
+   ],
+   "board": [
+    {
+     "card": "Galarian Obstagoon B2 100",
+     "hp": 100,
+     "tools": [
+      "Deceptive Needle B4 148"
+     ],
+     "behind": [
+      "Galarian Zigzagoon B4 095"
+     ]
+    },
+    {
+     "card": "Galarian Zigzagoon B4 095",
+     "hp": 70,
+     "energy": [
+      "Darkness"
+     ],
+     "tools": [
+      "Deceptive Needle B4 148"
+     ]
+    }
+   ],
+   "energy_now": "Darkness",
+   "energy_next": "Darkness"
+  },
+  "opp": {
+   "hand_count": 3,
+   "discard_n": 6,
+   "discard_energy": [
+    "Metal",
+    "Metal"
+   ],
+   "board": [
+    {
+     "card": "Arceus ex A2a 071",
+     "hp": 140,
+     "energy": [
+      "Metal",
+      "Metal",
+      "Metal"
+     ],
+     "tools": [
+      "Rocky Helmet A2 148"
+     ]
+    },
+    {
+     "card": "Dialga ex A2 119",
+     "hp": 90,
+     "energy": [
+      "Metal"
+     ],
+     "tools": [
+      "Giant Cape A2 147"
+     ]
+    },
+    {
+     "card": "Shaymin A2 022",
+     "hp": 60
+    },
+    {
+     "card": "Dialga ex A2 119",
+     "hp": 150
+    }
+   ],
+   "energy_next": "Metal"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Place:Deino",
+   "Play:Lillie",
+   "(heals the Stage 2 Obstagoon at index 0: 100 to 150, 50 actually healed)",
+   "Attach:1Darkness@0 zone",
+   "(no attack: Merciless Strike needs two Darkness and the Active Obstagoon has one; he ended the turn and the Needle then did 10)"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 18 of 20 cards seen, 2 inferred (see reconstructed_decks/R200654.json)",
+  "approximate": true,
+  "notes": "Draw a second Deino. The opponent healed Dialga ex (90 of 170), paid two Metal to retreat it into Arceus ex, benched a second Dialga ex and Ultimate Force knocked out the Hydreigon (first point to them; its stack and the five Darkness spent on the retreat and Hyper Ray are in his discard); the Obstagoon (100 of 150) was promoted. Opponent hand 3 counted; its discard 6 (two Poké Balls, two Researches, Leaf, the tails Lucky Ice Pop) and its two discarded Metal are my bookkeeping.",
+  "milestones": [],
+  "heldout": false
+ },
+ {
+  "id": "LR-200654-t12",
+  "game": "ladder-20260928_200654000",
+  "his_turn": 6,
+  "deck": "R200654",
+  "turn_count": 12,
+  "points": [
+   0,
+   1
+  ],
+  "me": {
+   "hand": [
+    "Rare Candy A3 144",
+    "Galarian Obstagoon B2 100"
+   ],
+   "discard": [
+    "Poké Ball P-A 005",
+    "Poké Ball P-A 005",
+    "Professor's Research P-A 007",
+    "Professor's Research P-A 007",
+    "Rare Candy A3 144",
+    "Hydreigon B1 157",
+    "Zweilous B1 156",
+    "Deino B1 155",
+    "Lillie A3 155"
+   ],
+   "discard_energy": [
+    "Darkness",
+    "Darkness",
+    "Darkness",
+    "Darkness",
+    "Darkness"
+   ],
+   "board": [
+    {
+     "card": "Galarian Obstagoon B2 100",
+     "hp": 20,
+     "energy": [
+      "Darkness"
+     ],
+     "tools": [
+      "Deceptive Needle B4 148"
+     ],
+     "behind": [
+      "Galarian Zigzagoon B4 095"
+     ]
+    },
+    {
+     "card": "Galarian Zigzagoon B4 095",
+     "hp": 70,
+     "energy": [
+      "Darkness"
+     ],
+     "tools": [
+      "Deceptive Needle B4 148"
+     ]
+    },
+    {
+     "card": "Deino B1 155",
+     "hp": 60
+    }
+   ],
+   "energy_now": "Darkness",
+   "energy_next": "Darkness"
+  },
+  "opp": {
+   "hand_count": 3,
+   "discard_n": 6,
+   "discard_energy": [
+    "Metal",
+    "Metal"
+   ],
+   "board": [
+    {
+     "card": "Arceus ex A2a 071",
+     "hp": 140,
+     "energy": [
+      "Metal",
+      "Metal",
+      "Metal"
+     ],
+     "tools": [
+      "Rocky Helmet A2 148"
+     ]
+    },
+    {
+     "card": "Dialga ex A2 119",
+     "hp": 100,
+     "energy": [
+      "Metal"
+     ],
+     "tools": [
+      "Giant Cape A2 147"
+     ]
+    },
+    {
+     "card": "Shaymin A2 022",
+     "hp": 60
+    },
+    {
+     "card": "Dialga ex A2 119",
+     "hp": 150,
+     "energy": [
+      "Metal"
+     ],
+     "tools": [
+      "Rocky Helmet A2 148"
+     ]
+    }
+   ],
+   "energy_next": "Metal"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Attach:1Darkness@0 zone",
+   "Play:Rare Candy",
+   "Evolve:Galarian Obstagoon@1",
+   "Attack:Merciless Strike",
+   "(Merciless Strike 70 takes Arceus ex 140 to 70; Rocky Helmet does 20 back and knocks out the 20-HP Obstagoon)"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 18 of 20 cards seen, 2 inferred (see reconstructed_decks/R200654.json)",
+  "approximate": true,
+  "notes": "Draw the second Obstagoon. The opponent's Ultimate Force left his Active Obstagoon on 20 (the second Dialga ex now has a Helmet and one Metal; Arceus ex is back to 140); the benched Deino is the second one. He puts the Darkness on the Active Obstagoon, Rare Candy turns the benched Zigzagoon into the second Obstagoon, and Merciless Strike hits Arceus ex for 70. Opponent hand 3 counted, discard bookkeeping as turn 10.",
+  "milestones": [],
+  "heldout": false
+ },
+ {
+  "id": "LR-232617-t02",
+  "game": "ladder-20260907_232617000",
+  "his_turn": 1,
+  "deck": "R232617",
+  "turn_count": 2,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Professor's Research P-A 007",
+    "Professor's Research P-A 007",
+    "Team Rocket's Goo-zooka B4a 068",
+    "Lisia B1 226",
+    "Sabrina A1 225"
+   ],
+   "discard": [],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Eevee B1 184",
+     "hp": 50
+    }
+   ],
+   "energy_now": "Lightning",
+   "energy_next": "Lightning"
+  },
+  "opp": {
+   "hand_count": 4,
+   "discard_n": 1,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Falinks B2 092",
+     "hp": 70
+    },
+    {
+     "card": "Hitmonchan ex B1 124",
+     "hp": 130
+    },
+    {
+     "card": "Falinks B2 092",
+     "hp": 70
+    }
+   ],
+   "energy_next": "Fighting"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Lisia",
+   "(Lisia puts two random Basic Pokémon with 50 HP or less into his hand: it found two Team Rocket's Rattata)",
+   "Place:Team Rocket's Rattata",
+   "Place:Team Rocket's Rattata",
+   "Attach:1Lightning@0 zone",
+   "Attack:Stampede",
+   "(Stampede: 0 damage, Falinks takes 20 less through Coordinated Unit; two attachment drags failed before the Lightning went on)"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 18 of 20 cards seen, 2 inferred (see reconstructed_decks/R232617.json)",
+  "approximate": true,
+  "notes": "Going second: opening hand Professor's Research x2, Goo-zooka, Lisia and the Eevee he put Active (Boosted Evolution eligible, nothing to evolve into), plus the drawn Sabrina. The opponent opened Falinks (Active), Hitmonchan ex and a second Falinks and used one Research on turn 1 (no Energy, no attack); opponent hand 4 is the Codex fan count, opponent discard 1 is that Research.",
+  "milestones": [],
+  "heldout": false
+ },
+ {
+  "id": "LR-232617-t04",
+  "game": "ladder-20260907_232617000",
+  "his_turn": 2,
+  "deck": "R232617",
+  "turn_count": 4,
+  "points": [
+   0,
+   1
+  ],
+  "me": {
+   "hand": [
+    "Professor's Research P-A 007",
+    "Professor's Research P-A 007",
+    "Team Rocket's Goo-zooka B4a 068",
+    "Sabrina A1 225",
+    "Pokémon Center Lady A2b 070"
+   ],
+   "discard": [
+    "Lisia B1 226",
+    "Eevee B1 184"
+   ],
+   "discard_energy": [
+    "Lightning"
+   ],
+   "board": [
+    {
+     "card": "Team Rocket's Rattata B4a 058",
+     "hp": 40
+    },
+    {
+     "card": "Team Rocket's Rattata B4a 058",
+     "hp": 40
+    }
+   ],
+   "energy_now": "Lightning",
+   "energy_next": "Lightning"
+  },
+  "opp": {
+   "hand_count": 3,
+   "discard_n": 2,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Falinks B2 092",
+     "hp": 70,
+     "energy": [
+      "Fighting"
+     ]
+    },
+    {
+     "card": "Riolu B3 079",
+     "hp": 60
+    },
+    {
+     "card": "Hitmonchan ex B1 124",
+     "hp": 130
+    },
+    {
+     "card": "Falinks B2 092",
+     "hp": 70
+    }
+   ],
+   "energy_next": "Fighting"
+  },
+  "stadium": {
+   "card": "Arena of Antiquity B3 154",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Professor's Research",
+   "(Research draws Jolteon ex and Oricorio)",
+   "Place:Oricorio",
+   "Attach:1Lightning@0 zone",
+   "Attack:Ambush",
+   "(Ambush: tails, 0 damage)"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 18 of 20 cards seen, 2 inferred (see reconstructed_decks/R232617.json)",
+  "approximate": true,
+  "notes": "Draw Pokémon Center Lady. Falinks's Invade (60: 20 + Coordinated Unit 20 + Weakness 20) knocked out his Eevee and its Lightning (point 1 to the opponent) and the left Rattata was promoted; the opponent put a Fighting on the Active Falinks, benched Riolu and played Arena of Antiquity. Opponent discard 2 (Research, Poké Ball) is from observed plays and closes the deck count against the counted hand of 3; the Riolu printing is assumed.",
+  "milestones": [],
+  "heldout": false
+ },
+ {
+  "id": "LR-232617-t06",
+  "game": "ladder-20260907_232617000",
+  "his_turn": 3,
+  "deck": "R232617",
+  "turn_count": 6,
+  "points": [
+   0,
+   1
+  ],
+  "me": {
+   "hand": [
+    "Professor's Research P-A 007",
+    "Team Rocket's Goo-zooka B4a 068",
+    "Sabrina A1 225",
+    "Pokémon Center Lady A2b 070",
+    "Jolteon ex B1 081",
+    "Copycat B1 225"
+   ],
+   "discard": [
+    "Lisia B1 226",
+    "Eevee B1 184",
+    "Professor's Research P-A 007"
+   ],
+   "discard_energy": [
+    "Lightning"
+   ],
+   "board": [
+    {
+     "card": "Oricorio A3 066",
+     "hp": 10
+    },
+    {
+     "card": "Team Rocket's Rattata B4a 058",
+     "hp": 40,
+     "energy": [
+      "Lightning"
+     ]
+    },
+    {
+     "card": "Team Rocket's Rattata B4a 058",
+     "hp": 40
+    }
+   ],
+   "energy_now": "Lightning",
+   "energy_next": "Lightning"
+  },
+  "opp": {
+   "hand_count": 3,
+   "discard_n": 3,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Falinks B2 092",
+     "hp": 70,
+     "energy": [
+      "Fighting"
+     ]
+    },
+    {
+     "card": "Riolu B3 079",
+     "hp": 60,
+     "energy": [
+      "Fighting"
+     ]
+    },
+    {
+     "card": "Hitmonchan ex B1 124",
+     "hp": 130
+    },
+    {
+     "card": "Falinks B2 092",
+     "hp": 70
+    }
+   ],
+   "energy_next": "Fighting"
+  },
+  "stadium": {
+   "card": "Arena of Antiquity B3 154",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Professor's Research",
+   "(Research draws Eevee and a second Jolteon ex)",
+   "Place:Eevee",
+   "Attach:1Lightning@3 zone",
+   "Play:Team Rocket's Goo-zooka",
+   "(Eevee goes to the empty left Bench slot of the game (engine bench index 3 in this compacted board list); no attack and no healing: Oricorio stays on 10 HP, Pokémon Center Lady and Sabrina stay in hand)"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 18 of 20 cards seen, 2 inferred (see reconstructed_decks/R232617.json)",
+  "approximate": true,
+  "notes": "Draw Copycat. The opponent attached a Fighting to the benched Riolu and played Sabrina; he chose Oricorio as the new Active (the Lightning Rattata went back to the middle Bench slot) and Invade took it from 70 to 10. Opponent discard 3 (Research, Poké Ball, Sabrina) is from observed plays.",
+  "milestones": [],
+  "heldout": false
+ },
+ {
+  "id": "LR-232617-t08",
+  "game": "ladder-20260907_232617000",
+  "his_turn": 4,
+  "deck": "R232617",
+  "turn_count": 8,
+  "points": [
+   0,
+   2
+  ],
+  "me": {
+   "hand": [
+    "Sabrina A1 225",
+    "Pokémon Center Lady A2b 070",
+    "Jolteon ex B1 081",
+    "Copycat B1 225",
+    "Jolteon ex B1 081",
+    "Team Rocket's Raticate ex B4a 059"
+   ],
+   "discard": [
+    "Lisia B1 226",
+    "Eevee B1 184",
+    "Professor's Research P-A 007",
+    "Professor's Research P-A 007",
+    "Team Rocket's Goo-zooka B4a 068",
+    "Oricorio A3 066"
+   ],
+   "discard_energy": [
+    "Lightning"
+   ],
+   "board": [
+    {
+     "card": "Eevee B1 184",
+     "hp": 50,
+     "energy": [
+      "Lightning"
+     ]
+    },
+    {
+     "card": "Team Rocket's Rattata B4a 058",
+     "hp": 40,
+     "energy": [
+      "Lightning"
+     ]
+    },
+    {
+     "card": "Team Rocket's Rattata B4a 058",
+     "hp": 40
+    }
+   ],
+   "energy_now": "Lightning",
+   "energy_next": "Lightning"
+  },
+  "opp": {
+   "hand_count": 4,
+   "discard_n": 3,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Falinks B2 092",
+     "hp": 70,
+     "energy": [
+      "Fighting"
+     ]
+    },
+    {
+     "card": "Riolu B3 079",
+     "hp": 60,
+     "energy": [
+      "Fighting",
+      "Fighting"
+     ]
+    },
+    {
+     "card": "Hitmonchan ex B1 124",
+     "hp": 130
+    },
+    {
+     "card": "Falinks B2 092",
+     "hp": 70
+    }
+   ],
+   "energy_next": "Fighting"
+  },
+  "stadium": {
+   "card": "Arena of Antiquity B3 154",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Evolve:Team Rocket's Raticate ex@2",
+   "Ability:Thieving Incisors@2",
+   "(accepted: the one Fighting moves from the Active Falinks to the Raticate ex)",
+   "Evolve:Jolteon ex@0",
+   "(Sabrina inspected and put back, not played)",
+   "Play:Copycat",
+   "(hand of Sabrina, Pokémon Center Lady and Jolteon ex shuffled in; four cards drawn to match the opponent's four: Team Rocket's Raticate ex, Poké Ball, Pokémon Center Lady, Ilima)",
+   "Play:Poké Ball",
+   "(no Basic Pokémon left in the deck: nothing found)",
+   "Attach:1Lightning@0 zone",
+   "Attack:Mach Bolt",
+   "(80 - 20 Coordinated Unit = 60: Falinks 70 -> 10)"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 18 of 20 cards seen, 2 inferred (see reconstructed_decks/R232617.json)",
+  "approximate": true,
+  "notes": "Draw Team Rocket's Raticate ex. Invade knocked out the 10-HP Oricorio (point 2 to the opponent), the Lightning Eevee was promoted, and the opponent put a second Fighting on Riolu; the Goo-zooka retreat effect has run out. Opponent hand 4 is counted, opponent discard 3 is unchanged from observed plays.",
+  "milestones": [],
+  "heldout": false
+ },
+ {
+  "id": "LR-232617-t10",
+  "game": "ladder-20260907_232617000",
+  "his_turn": 5,
+  "deck": "R232617",
+  "turn_count": 10,
+  "points": [
+   0,
+   2
+  ],
+  "me": {
+   "hand": [
+    "Team Rocket's Raticate ex B4a 059",
+    "Pokémon Center Lady A2b 070",
+    "Ilima A3 149",
+    "Jolteon ex B1 081"
+   ],
+   "discard": [
+    "Lisia B1 226",
+    "Eevee B1 184",
+    "Professor's Research P-A 007",
+    "Professor's Research P-A 007",
+    "Team Rocket's Goo-zooka B4a 068",
+    "Oricorio A3 066",
+    "Copycat B1 225",
+    "Poké Ball P-A 005"
+   ],
+   "discard_energy": [
+    "Lightning"
+   ],
+   "board": [
+    {
+     "card": "Jolteon ex B1 081",
+     "hp": 140,
+     "energy": [
+      "Lightning",
+      "Lightning"
+     ],
+     "behind": [
+      "Eevee B1 184"
+     ]
+    },
+    {
+     "card": "Team Rocket's Rattata B4a 058",
+     "hp": 40,
+     "energy": [
+      "Lightning"
+     ]
+    },
+    {
+     "card": "Team Rocket's Raticate ex B4a 059",
+     "hp": 120,
+     "energy": [
+      "Fighting"
+     ],
+     "behind": [
+      "Team Rocket's Rattata B4a 058"
+     ]
+    }
+   ],
+   "energy_now": "Lightning",
+   "energy_next": "Lightning"
+  },
+  "opp": {
+   "hand_count": 3,
+   "discard_n": 4,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Falinks B2 092",
+     "hp": 10
+    },
+    {
+     "card": "Mega Lucario ex B3 081",
+     "hp": 170,
+     "energy": [
+      "Fighting",
+      "Fighting",
+      "Fighting"
+     ],
+     "behind": [
+      "Riolu B3 079"
+     ]
+    },
+    {
+     "card": "Hitmonchan ex B1 124",
+     "hp": 130
+    },
+    {
+     "card": "Falinks B2 092",
+     "hp": 70
+    }
+   ],
+   "energy_next": "Fighting"
+  },
+  "stadium": {
+   "card": "Arena of Antiquity B3 154",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Attach:1Lightning@1 zone",
+   "Attack:Mach Bolt",
+   "(an End your turn? prompt warning that Energy could still be attached was cancelled first; Mach Bolt 80 - 20 = 60 knocks out the 10-HP Falinks, point 1)"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 18 of 20 cards seen, 2 inferred (see reconstructed_decks/R232617.json)",
+  "approximate": true,
+  "notes": "Draw Jolteon ex. The opponent evolved Riolu into Mega Lucario ex (two Fighting kept, a third attached; Electromagnetic Wall hit it for 20, 190 -> 170) and played Giovanni, whose bonus ended with its turn; the Active Falinks is on 10 HP with no Energy because Thieving Incisors took its Fighting. Opponent hand 3 is counted, opponent discard 4 (adds Giovanni) is from observed plays.",
+  "milestones": [],
   "heldout": false
  }
 ]

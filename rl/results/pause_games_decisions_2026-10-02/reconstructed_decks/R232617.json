@@ -1,0 +1,46 @@
+{
+  "key": "R232617",
+  "status": "APPROXIMATE reconstruction; not the exact historical list (exact list unavailable per DECK_USED.json / Codex). For positions that are not used for any verdict about who played better.",
+  "games": ["232617"],
+  "game_full_id": "20260907_232617000",
+  "energy": "Lightning (Energy Zone gave Lightning on every owner turn: TURN_LEDGER owner.energy_zone.next = Lightning; Eevee/Jolteon/Rattata/Oricorio all took Lightning)",
+  "n_seen": 18,
+  "m_inferred": 2,
+  "seen": [
+    {"card": "Eevee B1 184", "count": 2, "evidence": "Opening-hand Eevee, Active from 15s, KO'd by Falinks Invade at 02:03 and left play (REVIEW T3); a second Eevee drawn by Research at 03:43 and Benched 03:46 (REVIEW T6; TURN_LEDGER T6 draw_effect + bench play). One Eevee is in the discard pile while the other is later in play, so two physical copies. DECK_USED visible_lower_bound 2. Printing = 50 HP Boosted Evolution/Stampede."},
+    {"card": "Jolteon ex B1 081", "count": 2, "evidence": "TURN_LEDGER T8 hand_at_start shows Jolteon ex twice at once (positions 3 and 5) before one evolves the Active Eevee at 04:41-04:45 (play 3, 'Jolteon140 retains Lightning'); T6 Research drew a shiny-art Jolteon ex on top of the one drawn at T4 (cosmetic arts differ). DECK_USED visible_lower_bound 2."},
+    {"card": "Oricorio A3 066", "count": 1, "evidence": "Drawn by Research at 02:21.5-02:23 (REVIEW T4), Benched 02:27-02:29 (70 HP Safeguard/Zzzap), KO'd by Invade at T7 04:12. A3 066 chosen as first of the identical-stat Lightning printings (A3 066 / A3 165 / A4b 146 / A4b 147 / B1 303)."},
+    {"card": "Team Rocket's Rattata B4a 058", "count": 2, "evidence": "Lisia search at 00:54-00:58 (TURN_LEDGER T2 draws_and_searches search/Lisia: two Rattata) and both Benched (T2 plays 2 and 3; board_after T2 bench1 and bench3 Rattata)."},
+    {"card": "Team Rocket's Raticate ex B4a 059", "count": 2, "evidence": "One evolved from the right Rattata at 04:30-04:33 (T8 play 1) and still on the Bench at the end (board_after T10 bench3, 120 HP, 1 Fighting); a second Raticate ex returned by the Copycat draw at 05:01-05:04 (T8 draws_and_searches Copycat) and still in hand at T10 start/end (T10 hand_at_start and owner_hand_end), while the first is in play: two copies at once. DECK_USED shows normal and full-art variants."},
+    {"card": "Professor's Research P-A 007", "count": 2, "evidence": "Opening hand (native 13s): two Professor's Research at once, one full art and one standard (REVIEW_SUPPLEMENT); TURN_LEDGER T2 hand_at_start/owner_hand_end hold both. Played T4 (02:19) and T6 (03:40). Same playable card as A4b 373."},
+    {"card": "Team Rocket's Goo-zooka B4a 068", "count": 1, "evidence": "Opening hand (native 13s, REVIEW_SUPPLEMENT); inspected 00:32-00:34, in hand T2-T6, played at 03:52 (T6 play 4)."},
+    {"card": "Lisia B1 226", "count": 1, "evidence": "Opening hand (13s); played 00:54 (T2 play 1); opened owner discard at 111s shows Lisia (REVIEW_SUPPLEMENT)."},
+    {"card": "Sabrina A1 225", "count": 1, "evidence": "Normal draw at 00:50 (T2 draws_and_searches); in hand T2-T8; inspected 04:51-04:53 and never played; shuffled into the deck by Copycat at T8 (returned_or_discarded_cards)."},
+    {"card": "Pokémon Center Lady A2b 070", "count": 1, "evidence": "Normal draw at 02:17 (T4); held in hand T4-T8; shuffled by the T8 Copycat and drawn again in the Copycat draw (05:01-05:04); in hand at T10 start/end. One physical copy throughout."},
+    {"card": "Copycat B1 225", "count": 1, "evidence": "Normal draw at 03:33 (T6 draws_and_searches); played at 04:56 (T8 play 5)."},
+    {"card": "Ilima A3 149", "count": 1, "evidence": "Drawn by the T8 Copycat at 05:01-05:04; in hand at T10 start/end (TURN_LEDGER T10 hand_at_start)."},
+    {"card": "Poké Ball P-A 005", "count": 1, "evidence": "Drawn by the T8 Copycat at 05:01-05:04 and played at 05:06 (T8 play 6): 'There are no cards in the deck that can be the target of the effect' at 05:08-05:10. Only one Poké Ball is shown in this recording. Same playable card as A2b 111."}
+  ],
+  "inferred": [
+    {"card": "Cyrus A2 150", "count": 1, "source": "other recording 20260907_232035000 (same night, 6 minutes earlier, Native Auto deck test) AND nearest list decks/dustin/15-jolteon-oricorio-raticate.txt", "reason": "Fill rule (a): Cyrus is in the opening hand of the 232035 recording (Eevee, Jolteon ex, Poké Ball, Lisia, Cyrus; battle-20260907-232035/REVIEW.md Setup row), which uses the same Eevee / Jolteon ex / Oricorio / Rattata family; also in the nearest list. It is a situational Supporter (gust onto a damaged Benched Pokemon); no damaged opposing Bench target existed at any of Dustin's decision points except Mega Lucario ex at 170 HP on T10, where Cyrus brings nothing useful, and it was never drawn or used in 232617, so it cannot make his line look better."},
+    {"card": "Poké Ball P-A 005", "count": 1, "source": "nearest list decks/dustin/15-jolteon-oricorio-raticate.txt (2 Poké Ball; every Dustin Raticate-shell list 13/14/15 carries 2)", "reason": "Fill rule (b): the only card of the nearest list not yet accounted for after Cyrus. A second physical copy is NOT shown in either Sep 7 recording (each shows one at a time). It does not make his line look better: the one he played whiffed, because the T8 empty search proves every Basic Pokemon (Eevee x2, Rattata x2, Oricorio) was already out of the deck, so a second Poké Ball is dead from T8 on, and before T8 it could only fetch Basics that are already part of his line. If a stricter 'least helpful' fill is wanted, the only defensible swap is a surplus Goo-zooka (rule c), which is not in the nearest list and ranks below this slot in the fill order."}
+  ],
+  "nearest_list": "C:\\Users\\dacz8\\Projects\\Pocket Deck Sim\\PocketDeckSim\\decks\\dustin\\15-jolteon-oricorio-raticate.txt",
+  "other_recordings_used": [
+    "20260907_232035000_iOS.MP4 (Native Auto deck test, same night; battle-20260907-232035/REVIEW.md in Pocket Deck Lab/Boss Folder/video-review-coordinator-2026-09-09). Used only for Cyrus, and as a consistency check: every card it shows (Eevee, Jolteon ex, Poké Ball, Lisia, Cyrus, Professor's Research x2, Rattata, Oricorio, Sabrina, Pokémon Center Lady, Raticate ex, Copycat, Ilima) is in this list, and nothing it shows exceeds these counts."
+  ],
+  "constraints_used": [
+    "T8 Poké Ball whiff (05:08-05:10): the deck held no Basic Pokemon at that moment, and all five Basics seen (Eevee x2, Rattata x2, Oricorio) were out of the deck, so the unseen two slots cannot be a Basic Pokemon (no second Oricorio, no third Eevee).",
+    "Lisia (B1 226) fetched Rattata x2 at T2: legal with a second 50-HP-or-less Eevee still in the deck; no conflict.",
+    "Five names are at two copies already (Eevee, Jolteon ex, Rattata, Raticate ex, Professor's Research), the per-name maximum, so no surplus copy of those is possible."
+  ],
+  "caveats": [
+    "APPROXIMATE. The exact historical list is unavailable (DECK_USED.json exact_list_status = unavailable_historical_exact_list). 18 of 20 slots are direct lower bounds from the recording; the last 2 are inferred.",
+    "The nearest list (decks/dustin/15, from the owner's supplied QR list, OWNER_DECKS.md #15, matched to 232035 and 232617 as 'core match only') equals this reconstruction card for card. It is used only as a template as instructed, not as proof: it was supplied separately from the recordings and its date relative to Sep 7 is not established, so the match of every seen card at its seen count is consistent with it but does not show the Sep 7 deck was that list.",
+    "The recording alone cannot tell whether the second Poké Ball and Cyrus were in the deck; swapping either would not change any card Dustin saw. Cyrus is supported by a second recording from the same night; the second Poké Ball only by the nearest list.",
+    "Whether the deck was identical in 232035 (Native Auto test) and 232617 six minutes later is assumed, not proven; the two share 13 card names and no conflict.",
+    "Printings: Poké Ball and Professor's Research use the repo's P-A 005 / P-A 007 ids (same playable cards as A2b 111 / A4b 373, which the owner's QR decode lists). Lightning Oricorio A3 066 / Eevee B1 184 / Jolteon ex B1 081 / Raticate ex B4a 059 are the first of several identically statted printings; cosmetic variants (shiny Jolteon, full-art Raticate/Research) are not distinguished.",
+    "Energy is Lightning (the Energy Zone type in the recording); the log does not give a configured Energy set beyond that."
+  ],
+  "id_check": "Done Oct 2 2026. check_positions.py on a one-position test (scratchpad/pgd/r232617_check.json, his T10 end state: hand, board with evolution stacks, discard; 17 of the 18 seen cards used, all but Sabrina, which was shuffled back into the deck; none beyond the list): 1 position checked, 0 errors (1 warning, energy_now null). Every one of the 14 deck-file lines (including Cyrus A2 150, which that position does not use) resolves in engine/database.json (scratchpad/pgd/r232617_ids.py); total exactly 20; first line 'Energy: Lightning'; LF line endings, UTF-8."
+}

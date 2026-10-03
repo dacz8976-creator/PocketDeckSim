@@ -1,0 +1,155 @@
+[
+ {
+  "id": "LR-190031-t02",
+  "game": "ladder-20260908_190031000",
+  "his_turn": 1,
+  "deck": "R0908ALTARIA",
+  "turn_count": 2,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Small Balloon B3b 064",
+    "Copycat B1 225",
+    "Professor's Research P-A 007",
+    "Poké Ball P-A 005",
+    "Mega Altaria ex B1 102"
+   ],
+   "discard": [],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Eevee B1 184",
+     "hp": 50
+    }
+   ],
+   "energy_now": "Psychic",
+   "energy_next": "Psychic"
+  },
+  "opp": {
+   "hand_count": 5,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Bulbasaur B1a 001",
+     "hp": 60,
+     "tools": [
+      "Heavy Helmet B1 219"
+     ]
+    }
+   ],
+   "energy_next": "Grass"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Poké Ball",
+   "(searches Darkrai)",
+   "Play:Professor's Research",
+   "(draws Swablu and Training Area)",
+   "Place:Swablu",
+   "Place:Darkrai",
+   "Play:Small Balloon",
+   "Tool:Small Balloon@0",
+   "Retreat:1",
+   "Attach:1Psychic@0 zone",
+   "Attack:Sing"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 18 of 20 cards seen, 2 inferred (see reconstructed_decks/R0908ALTARIA.json)",
+  "approximate": true,
+  "notes": "Going second. Opening hand Small Balloon, Copycat, Professor's Research, Poké Ball plus the Eevee he placed Active; the draw is Mega Altaria ex. The opponent (going first) has a lone Bulbasaur Active (60) with a Heavy Helmet that is inactive at retreat cost 1, no Bench, no Energy. Opponent hand 5 is the Codex fan count; opponent discard is empty (the Helmet is attached).",
+  "milestones": [],
+  "heldout": false
+ },
+ {
+  "id": "LR-190031-t04",
+  "game": "ladder-20260908_190031000",
+  "his_turn": 2,
+  "deck": "R0908ALTARIA",
+  "turn_count": 4,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Copycat B1 225",
+    "Mega Altaria ex B1 102",
+    "Training Area B2 153",
+    "Field Blower B3 147"
+   ],
+   "discard": [
+    "Poké Ball P-A 005",
+    "Professor's Research P-A 007"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Swablu B1 196",
+     "hp": 50,
+     "energy": [
+      "Psychic"
+     ]
+    },
+    {
+     "card": "Eevee B1 184",
+     "hp": 50,
+     "tools": [
+      "Small Balloon B3b 064"
+     ]
+    },
+    {
+     "card": "Darkrai B2b 040",
+     "hp": 100
+    }
+   ],
+   "energy_now": "Psychic",
+   "energy_next": "Psychic"
+  },
+  "opp": {
+   "hand_count": 5,
+   "discard_n": 1,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Ivysaur B1a 002",
+     "hp": 100,
+     "energy": [
+      "Grass",
+      "Grass",
+      "Grass"
+     ],
+     "tools": [
+      "Heavy Helmet B1 219"
+     ],
+     "behind": [
+      "Bulbasaur B1a 001"
+     ]
+    }
+   ],
+   "energy_next": "Grass"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Field Blower",
+   "DiscardToolFromPokemon",
+   "(discards the opponent's Heavy Helmet from the Ivysaur)",
+   "Evolve:Mega Altaria ex@0",
+   "Play:Training Area",
+   "Attach:1Psychic@0 zone",
+   "Attack:Mega Harmony",
+   "(Copycat left unplayed; Mega Harmony 100 + 10 Training Area = 110 knocks out the 100-HP Ivysaur, the opponent has no Bench)"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 18 of 20 cards seen, 2 inferred (see reconstructed_decks/R0908ALTARIA.json)",
+  "approximate": true,
+  "notes": "Draw Field Blower. Since his last turn: Swablu (one Psychic) sat Active while the opponent used Lucky Ice Pop (heads, back to their hand), a Grass, Quick-Grow Extract (Bulbasaur to Ivysaur, Sleep gone, full 100 HP) and Synthesis (two more Grass), so the Ivysaur has three Grass and the Heavy Helmet is now active (retreat cost 3). Opponent hand 5 is the Codex fan count (it includes the Lucky Ice Pop that came back); opponent discard 1 is the Quick-Grow Extract (the pile top seen at the end of their turn).",
+  "milestones": [],
+  "heldout": false
+ }
+]
