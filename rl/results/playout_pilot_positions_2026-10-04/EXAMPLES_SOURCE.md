@@ -641,3 +641,20 @@ Smaller points:
 To settle it, it would need positions where the game is in doubt (close games, ladder games against stronger decks), and a check that plays the candidate move followed by the human's line, or kx, on the next turn instead of km3. The run's report prints "/12"; read it as out of 3 seeds, as I did.
 
 Files: /home/dacz8976/pgd/runs_kx3_trace/err_B-214254-t06.txt, err_B-214254-t08.txt, err_B-214254-t10.txt, err_B-210952-t16.txt, err_B-205731-t08.txt and err_B-205731-t10.txt. Game reviews: C:\Users\dacz8\OneDrive\Desktop\Battle Logs\Recording_QA\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\20261002_214254000_iOS_shark_sol\REVIEW.md, 20261002_210952000_iOS_auto_sol\REVIEW.md and 20261002_205731000_iOS_auto_sol\TURN_TABLE.md. My scripts are in the session scratchpad (dump.py, overview.py, stats.py).
+
+## Note added Oct 4 (Dustin): holding the turn's Energy back can be right
+
+The coordinated-plan reader's draft above calls km3's habit of attacking with the turn's Water unattached "wasting the
+turn's Energy". That is too strong. Some attacks do more damage for each Energy on the defending Pokemon, so an extra
+Energy on your Active can cost you. The card texts (lib/deckgym-database.json) show 16 Pokemon with such an attack:
+- "30 more damage for each Energy attached to your opponent's Active Pokemon": Indeedee ex (its Psychic), Alakazam,
+  Alolan Raichu ex, Delphox, Quagsire and Slowking.
+- 20 more: Bronzong, Espathra, Exeggutor, Gallade ex, Golduck, Hypno and Jynx. 40 more: Mewtwo.
+- Smoochum: 20 for each such Energy. Tapu Lele: 20 to one Pokemon for each Energy attached to it.
+
+The computer deck in these 8 games (decks/computer/blastoise-wailord-deluxe.txt) has none of them. So the 38 ties are
+not explained by such an attack: there, attaching or not made no difference in the play-outs.
+
+Against decks that have one (Dustin's decks 03, 05 and 07 run Indeedee ex; deck 14's Hypno is Team Rocket's Hypno, whose Entrap doesn't scale), the two pilots differ:
+- km3 never sees the opponent's turn, so it can't price this.
+- kx3's play-outs play the opponent's attacks, so they can, in principle.
