@@ -655,6 +655,15 @@ Energy on your Active can cost you. The card texts (lib/deckgym-database.json) s
 The computer deck in these 8 games (decks/computer/blastoise-wailord-deluxe.txt) has none of them. So the 38 ties are
 not explained by such an attack: there, attaching or not made no difference in the play-outs.
 
-Against decks that have one (Dustin's decks 03, 05 and 07 run Indeedee ex; deck 14's Hypno is Team Rocket's Hypno, whose Entrap doesn't scale), the two pilots differ:
+Among Dustin's decks this matters for deck 05 (Indeedee/Stoutland): it has Psychic Energy, its Indeedee ex attacks with
+Psychic, and it runs 1 Psychic Supporter (B4 150). In decks 03 and 07, Indeedee ex can't attack, since they have Water or
+Metal Energy; it is there for Watch Over (Dustin, Oct 4). Deck 14's Hypno is Team Rocket's Hypno, whose Entrap doesn't
+scale.
+
+The Supporter **Psychic** (B4 150) works with these attacks. You can use it only if your Active Pokemon has the Psychic
+attack. It moves a random Energy from one of your opponent's Benched Pokemon to their Active Pokemon, which raises
+Psychic's damage. The engine lists it as Complete.
+
+Where an opponent has one of these attacks, the two pilots differ:
 - km3 never sees the opponent's turn, so it can't price this.
 - kx3's play-outs play the opponent's attacks, so they can, in principle.
