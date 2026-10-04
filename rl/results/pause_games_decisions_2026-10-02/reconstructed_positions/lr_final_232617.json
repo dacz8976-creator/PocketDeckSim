@@ -1,0 +1,468 @@
+[
+ {
+  "id": "LR-232617-t02",
+  "game": "ladder-20260907_232617000",
+  "his_turn": 1,
+  "deck": "R232617",
+  "turn_count": 2,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Professor's Research P-A 007",
+    "Professor's Research P-A 007",
+    "Team Rocket's Goo-zooka B4a 068",
+    "Lisia B1 226",
+    "Sabrina A1 225"
+   ],
+   "discard": [],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Eevee B1 184",
+     "hp": 50
+    }
+   ],
+   "energy_now": "Lightning",
+   "energy_next": "Lightning"
+  },
+  "opp": {
+   "hand_count": 4,
+   "discard_n": 1,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Falinks B2 092",
+     "hp": 70
+    },
+    {
+     "card": "Hitmonchan ex B1 124",
+     "hp": 130
+    },
+    {
+     "card": "Falinks B2 092",
+     "hp": 70
+    }
+   ],
+   "energy_next": "Fighting"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Lisia",
+   "(Lisia puts two random Basic Pokémon with 50 HP or less into his hand: it found two Team Rocket's Rattata)",
+   "Place:Team Rocket's Rattata",
+   "Place:Team Rocket's Rattata",
+   "Attach:1Lightning@0 zone",
+   "Attack:Stampede",
+   "(Stampede: 0 damage, Falinks takes 20 less through Coordinated Unit; two attachment drags failed before the Lightning went on)"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 18 of 20 cards seen, 2 inferred (see reconstructed_decks/R232617.json)",
+  "approximate": true,
+  "notes": "Going second: opening hand Professor's Research x2, Goo-zooka, Lisia and the Eevee he put Active (Boosted Evolution eligible, nothing to evolve into), plus the drawn Sabrina. The opponent opened Falinks (Active), Hitmonchan ex and a second Falinks and used one Research on turn 1 (no Energy, no attack); opponent hand 4 is the Codex fan count, opponent discard 1 is that Research.",
+  "milestones": []
+ },
+ {
+  "id": "LR-232617-t04",
+  "game": "ladder-20260907_232617000",
+  "his_turn": 2,
+  "deck": "R232617",
+  "turn_count": 4,
+  "points": [
+   0,
+   1
+  ],
+  "me": {
+   "hand": [
+    "Professor's Research P-A 007",
+    "Professor's Research P-A 007",
+    "Team Rocket's Goo-zooka B4a 068",
+    "Sabrina A1 225",
+    "Pokémon Center Lady A2b 070"
+   ],
+   "discard": [
+    "Lisia B1 226",
+    "Eevee B1 184"
+   ],
+   "discard_energy": [
+    "Lightning"
+   ],
+   "board": [
+    {
+     "card": "Team Rocket's Rattata B4a 058",
+     "hp": 40
+    },
+    {
+     "card": "Team Rocket's Rattata B4a 058",
+     "hp": 40
+    }
+   ],
+   "energy_now": "Lightning",
+   "energy_next": "Lightning"
+  },
+  "opp": {
+   "hand_count": 3,
+   "discard_n": 2,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Falinks B2 092",
+     "hp": 70,
+     "energy": [
+      "Fighting"
+     ]
+    },
+    {
+     "card": "Riolu B3 079",
+     "hp": 60
+    },
+    {
+     "card": "Hitmonchan ex B1 124",
+     "hp": 130
+    },
+    {
+     "card": "Falinks B2 092",
+     "hp": 70
+    }
+   ],
+   "energy_next": "Fighting"
+  },
+  "stadium": {
+   "card": "Arena of Antiquity B3 154",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Professor's Research",
+   "(Research draws Jolteon ex and Oricorio)",
+   "Place:Oricorio",
+   "Attach:1Lightning@0 zone",
+   "Attack:Ambush",
+   "(Ambush: tails, 0 damage)"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 18 of 20 cards seen, 2 inferred (see reconstructed_decks/R232617.json)",
+  "approximate": true,
+  "notes": "Draw Pokémon Center Lady. Falinks's Invade (60: 20 + Coordinated Unit 20 + Weakness 20) knocked out his Eevee and its Lightning (point 1 to the opponent) and the left Rattata was promoted; the opponent put a Fighting on the Active Falinks, benched Riolu and played Arena of Antiquity. Opponent discard 2 (Research, Poké Ball) is from observed plays and closes the deck count against the counted hand of 3; the Riolu printing is assumed.",
+  "milestones": []
+ },
+ {
+  "id": "LR-232617-t06",
+  "game": "ladder-20260907_232617000",
+  "his_turn": 3,
+  "deck": "R232617",
+  "turn_count": 6,
+  "points": [
+   0,
+   1
+  ],
+  "me": {
+   "hand": [
+    "Professor's Research P-A 007",
+    "Team Rocket's Goo-zooka B4a 068",
+    "Sabrina A1 225",
+    "Pokémon Center Lady A2b 070",
+    "Jolteon ex B1 081",
+    "Copycat B1 225"
+   ],
+   "discard": [
+    "Lisia B1 226",
+    "Eevee B1 184",
+    "Professor's Research P-A 007"
+   ],
+   "discard_energy": [
+    "Lightning"
+   ],
+   "board": [
+    {
+     "card": "Oricorio A3 066",
+     "hp": 10
+    },
+    {
+     "card": "Team Rocket's Rattata B4a 058",
+     "hp": 40,
+     "energy": [
+      "Lightning"
+     ]
+    },
+    {
+     "card": "Team Rocket's Rattata B4a 058",
+     "hp": 40
+    }
+   ],
+   "energy_now": "Lightning",
+   "energy_next": "Lightning"
+  },
+  "opp": {
+   "hand_count": 3,
+   "discard_n": 3,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Falinks B2 092",
+     "hp": 70,
+     "energy": [
+      "Fighting"
+     ]
+    },
+    {
+     "card": "Riolu B3 079",
+     "hp": 60,
+     "energy": [
+      "Fighting"
+     ]
+    },
+    {
+     "card": "Hitmonchan ex B1 124",
+     "hp": 130
+    },
+    {
+     "card": "Falinks B2 092",
+     "hp": 70
+    }
+   ],
+   "energy_next": "Fighting"
+  },
+  "stadium": {
+   "card": "Arena of Antiquity B3 154",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Professor's Research",
+   "(Research draws Eevee and a second Jolteon ex)",
+   "Place:Eevee",
+   "Attach:1Lightning@3 zone",
+   "Play:Team Rocket's Goo-zooka",
+   "(Eevee goes to the empty left Bench slot of the game (engine bench index 3 in this compacted board list); no attack and no healing: Oricorio stays on 10 HP, Pokémon Center Lady and Sabrina stay in hand)"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 18 of 20 cards seen, 2 inferred (see reconstructed_decks/R232617.json)",
+  "approximate": true,
+  "notes": "Draw Copycat. The opponent attached a Fighting to the benched Riolu and played Sabrina; he chose Oricorio as the new Active (the Lightning Rattata went back to the middle Bench slot) and Invade took it from 70 to 10. Opponent discard 3 (Research, Poké Ball, Sabrina) is from observed plays.",
+  "milestones": []
+ },
+ {
+  "id": "LR-232617-t08",
+  "game": "ladder-20260907_232617000",
+  "his_turn": 4,
+  "deck": "R232617",
+  "turn_count": 8,
+  "points": [
+   0,
+   2
+  ],
+  "me": {
+   "hand": [
+    "Sabrina A1 225",
+    "Pokémon Center Lady A2b 070",
+    "Jolteon ex B1 081",
+    "Copycat B1 225",
+    "Jolteon ex B1 081",
+    "Team Rocket's Raticate ex B4a 059"
+   ],
+   "discard": [
+    "Lisia B1 226",
+    "Eevee B1 184",
+    "Professor's Research P-A 007",
+    "Professor's Research P-A 007",
+    "Team Rocket's Goo-zooka B4a 068",
+    "Oricorio A3 066"
+   ],
+   "discard_energy": [
+    "Lightning"
+   ],
+   "board": [
+    {
+     "card": "Eevee B1 184",
+     "hp": 50,
+     "energy": [
+      "Lightning"
+     ]
+    },
+    {
+     "card": "Team Rocket's Rattata B4a 058",
+     "hp": 40,
+     "energy": [
+      "Lightning"
+     ]
+    },
+    {
+     "card": "Team Rocket's Rattata B4a 058",
+     "hp": 40
+    }
+   ],
+   "energy_now": "Lightning",
+   "energy_next": "Lightning"
+  },
+  "opp": {
+   "hand_count": 4,
+   "discard_n": 3,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Falinks B2 092",
+     "hp": 70,
+     "energy": [
+      "Fighting"
+     ]
+    },
+    {
+     "card": "Riolu B3 079",
+     "hp": 60,
+     "energy": [
+      "Fighting",
+      "Fighting"
+     ]
+    },
+    {
+     "card": "Hitmonchan ex B1 124",
+     "hp": 130
+    },
+    {
+     "card": "Falinks B2 092",
+     "hp": 70
+    }
+   ],
+   "energy_next": "Fighting"
+  },
+  "stadium": {
+   "card": "Arena of Antiquity B3 154",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Evolve:Team Rocket's Raticate ex@2",
+   "Ability:Thieving Incisors@2",
+   "(accepted: the one Fighting moves from the Active Falinks to the Raticate ex)",
+   "Evolve:Jolteon ex@0",
+   "(Sabrina inspected and put back, not played)",
+   "Play:Copycat",
+   "(hand of Sabrina, Pokémon Center Lady and Jolteon ex shuffled in; four cards drawn to match the opponent's four: Team Rocket's Raticate ex, Poké Ball, Pokémon Center Lady, Ilima)",
+   "Play:Poké Ball",
+   "(no Basic Pokémon left in the deck: nothing found)",
+   "Attach:1Lightning@0 zone",
+   "Attack:Mach Bolt",
+   "(80 - 20 Coordinated Unit = 60: Falinks 70 -> 10)"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 18 of 20 cards seen, 2 inferred (see reconstructed_decks/R232617.json)",
+  "approximate": true,
+  "notes": "Draw Team Rocket's Raticate ex. Invade knocked out the 10-HP Oricorio (point 2 to the opponent), the Lightning Eevee was promoted, and the opponent put a second Fighting on Riolu; the Goo-zooka retreat effect has run out. Opponent hand 4 is counted, opponent discard 3 is unchanged from observed plays.",
+  "milestones": []
+ },
+ {
+  "id": "LR-232617-t10",
+  "game": "ladder-20260907_232617000",
+  "his_turn": 5,
+  "deck": "R232617",
+  "turn_count": 10,
+  "points": [
+   0,
+   2
+  ],
+  "me": {
+   "hand": [
+    "Team Rocket's Raticate ex B4a 059",
+    "Pokémon Center Lady A2b 070",
+    "Ilima A3 149",
+    "Jolteon ex B1 081"
+   ],
+   "discard": [
+    "Lisia B1 226",
+    "Eevee B1 184",
+    "Professor's Research P-A 007",
+    "Professor's Research P-A 007",
+    "Team Rocket's Goo-zooka B4a 068",
+    "Oricorio A3 066",
+    "Copycat B1 225",
+    "Poké Ball P-A 005"
+   ],
+   "discard_energy": [
+    "Lightning"
+   ],
+   "board": [
+    {
+     "card": "Jolteon ex B1 081",
+     "hp": 140,
+     "energy": [
+      "Lightning",
+      "Lightning"
+     ],
+     "behind": [
+      "Eevee B1 184"
+     ]
+    },
+    {
+     "card": "Team Rocket's Rattata B4a 058",
+     "hp": 40,
+     "energy": [
+      "Lightning"
+     ]
+    },
+    {
+     "card": "Team Rocket's Raticate ex B4a 059",
+     "hp": 120,
+     "energy": [
+      "Fighting"
+     ],
+     "behind": [
+      "Team Rocket's Rattata B4a 058"
+     ]
+    }
+   ],
+   "energy_now": "Lightning",
+   "energy_next": "Lightning"
+  },
+  "opp": {
+   "hand_count": 3,
+   "discard_n": 4,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Falinks B2 092",
+     "hp": 10
+    },
+    {
+     "card": "Mega Lucario ex B3 081",
+     "hp": 170,
+     "energy": [
+      "Fighting",
+      "Fighting",
+      "Fighting"
+     ],
+     "behind": [
+      "Riolu B3 079"
+     ]
+    },
+    {
+     "card": "Hitmonchan ex B1 124",
+     "hp": 130
+    },
+    {
+     "card": "Falinks B2 092",
+     "hp": 70
+    }
+   ],
+   "energy_next": "Fighting"
+  },
+  "stadium": {
+   "card": "Arena of Antiquity B3 154",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Attach:1Lightning@1 zone",
+   "Attack:Mach Bolt",
+   "(an End your turn? prompt warning that Energy could still be attached was cancelled first; Mach Bolt 80 - 20 = 60 knocks out the 10-HP Falinks, point 1)"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 18 of 20 cards seen, 2 inferred (see reconstructed_decks/R232617.json)",
+  "approximate": true,
+  "notes": "Draw Jolteon ex. The opponent evolved Riolu into Mega Lucario ex (two Fighting kept, a third attached; Electromagnetic Wall hit it for 20, 190 -> 170) and played Giovanni, whose bonus ended with its turn; the Active Falinks is on 10 HP with no Energy because Thieving Incisors took its Fighting. Opponent hand 3 is counted, opponent discard 4 (adds Giovanni) is from observed plays.",
+  "milestones": []
+ }
+]

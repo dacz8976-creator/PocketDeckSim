@@ -1,0 +1,550 @@
+[
+ {
+  "id": "LR-022627-t01",
+  "game": "ladder-20260908_022627000",
+  "his_turn": 1,
+  "deck": "R0908HYPNO",
+  "turn_count": 1,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Pokémon Flute A1a 064",
+    "Elegant Cape B3b 065",
+    "Sightseer B2 150",
+    "Team Rocket's Researcher B4a 069",
+    "Professor's Research P-A 007"
+   ],
+   "discard": [],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Comfey A3 080",
+     "hp": 70
+    }
+   ],
+   "energy_now": null,
+   "energy_next": "Psychic"
+  },
+  "opp": {
+   "hand_count": 4,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Skorupi B1 152",
+     "hp": 60
+    }
+   ],
+   "energy_next": "Darkness"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Team Rocket's Researcher",
+   "(then: coin flips heads, heads, tails put Team Rocket's Raticate ex and Team Rocket's Hypno into hand; no Basic to bench, no Energy on the first turn, no attack)",
+   "(he previewed Professor's Research several times and cancelled it; it stayed in hand)"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 20 of 20 cards seen, 0 inferred (see reconstructed_decks/R0908HYPNO.json)",
+  "approximate": true,
+  "notes": "Going first: no Energy. Opening hand Comfey (placed Active), Pokémon Flute, Elegant Cape, Sightseer, Team Rocket's Researcher; draw Professor's Research (not played). The opponent has only Skorupi Active, hand 4 (Codex fan count), nothing discarded.",
+  "milestones": []
+ },
+ {
+  "id": "LR-022627-t03",
+  "game": "ladder-20260908_022627000",
+  "his_turn": 2,
+  "deck": "R0908HYPNO",
+  "turn_count": 3,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Pokémon Flute A1a 064",
+    "Elegant Cape B3b 065",
+    "Sightseer B2 150",
+    "Professor's Research P-A 007",
+    "Team Rocket's Raticate ex B4a 059",
+    "Team Rocket's Hypno B4a 028",
+    "Team Rocket's Rattata B4a 058"
+   ],
+   "discard": [
+    "Team Rocket's Researcher B4a 069"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Comfey A3 080",
+     "hp": 50
+    }
+   ],
+   "energy_now": "Psychic",
+   "energy_next": "Psychic"
+  },
+  "opp": {
+   "hand_count": 5,
+   "discard_n": 1,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Skorupi B1 152",
+     "hp": 60,
+     "energy": [
+      "Darkness"
+     ]
+    },
+    {
+     "card": "Mega Absol ex B1 151",
+     "hp": 170
+    }
+   ],
+   "energy_next": "Darkness"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Place:Team Rocket's Rattata@1",
+   "Play:Professor's Research",
+   "(draws Poké Ball and Copycat)",
+   "Play:Poké Ball",
+   "(finds Team Rocket's Drowzee)",
+   "Place:Team Rocket's Drowzee@2",
+   "Attach:1Psychic@0 zone",
+   "Retreat:2",
+   "(Comfey pays its one Colorless with the Psychic just attached; Team Rocket's Drowzee promoted with no Energy)"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 20 of 20 cards seen, 0 inferred (see reconstructed_decks/R0908HYPNO.json)",
+  "approximate": true,
+  "notes": "Draw Team Rocket's Rattata. Skorupi's Bug Bite took Comfey to 50; the opponent has Skorupi (one Darkness) Active, Mega Absol ex benched, one Research in its discard. Per the Codex ledger the Psychic goes on Comfey and is paid for its retreat (the accepted review says it went on Drowzee; the Codex reading is used).",
+  "milestones": []
+ },
+ {
+  "id": "LR-022627-t05",
+  "game": "ladder-20260908_022627000",
+  "his_turn": 3,
+  "deck": "R0908HYPNO",
+  "turn_count": 5,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Pokémon Flute A1a 064",
+    "Elegant Cape B3b 065",
+    "Sightseer B2 150",
+    "Team Rocket's Raticate ex B4a 059",
+    "Team Rocket's Hypno B4a 028",
+    "Copycat B1 225",
+    "Professor's Research P-A 007"
+   ],
+   "discard": [
+    "Team Rocket's Researcher B4a 069",
+    "Professor's Research P-A 007",
+    "Poké Ball P-A 005"
+   ],
+   "discard_energy": [
+    "Psychic"
+   ],
+   "board": [
+    {
+     "card": "Team Rocket's Drowzee B4a 027",
+     "hp": 20
+    },
+    {
+     "card": "Team Rocket's Rattata B4a 058",
+     "hp": 40
+    },
+    {
+     "card": "Comfey A3 080",
+     "hp": 50
+    }
+   ],
+   "energy_now": "Psychic",
+   "energy_next": "Psychic"
+  },
+  "opp": {
+   "hand_count": 6,
+   "discard_n": 1,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Skorupi B1 152",
+     "hp": 60,
+     "energy": [
+      "Darkness",
+      "Darkness"
+     ]
+    },
+    {
+     "card": "Mega Absol ex B1 151",
+     "hp": 170
+    }
+   ],
+   "energy_next": "Darkness"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Evolve:Team Rocket's Raticate ex@1",
+   "(Thieving Incisors accepted: one Darkness moves from Skorupi to the Raticate ex, Skorupi 2 -> 1)",
+   "Evolve:Team Rocket's Hypno@0",
+   "Play:Elegant Cape",
+   "Tool:Elegant Cape@1",
+   "Play:Copycat",
+   "(hand shuffled into the deck, six cards drawn to match the opponent's six: Rattata, Drowzee, Hypno, Goo-zooka, Sightseer, Cyrus)",
+   "Place:Team Rocket's Rattata@3",
+   "(Goo-zooka previewed only, not played)",
+   "Attach:1Psychic@0 zone",
+   "(no attack: Hypno has one Psychic)"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 20 of 20 cards seen, 0 inferred (see reconstructed_decks/R0908HYPNO.json)",
+  "approximate": true,
+  "notes": "Draw Professor's Research (full art, left in hand). Skorupi's Bug Bite plus Darkness weakness took Drowzee to 20 and the opponent attached its second Darkness. He evolves Rattata and Drowzee, caps the Raticate ex (150), Copycat, benches a Rattata and puts the Psychic on Hypno (the accepted review says Hypno has two Psychic; the Codex ledger, which this follows, says one).",
+  "milestones": []
+ },
+ {
+  "id": "LR-022627-t07",
+  "game": "ladder-20260908_022627000",
+  "his_turn": 4,
+  "deck": "R0908HYPNO",
+  "turn_count": 7,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Team Rocket's Drowzee B4a 027",
+    "Team Rocket's Hypno B4a 028",
+    "Team Rocket's Goo-zooka B4a 068",
+    "Sightseer B2 150",
+    "Cyrus A2 150",
+    "Poké Ball P-A 005"
+   ],
+   "discard": [
+    "Team Rocket's Researcher B4a 069",
+    "Professor's Research P-A 007",
+    "Poké Ball P-A 005",
+    "Copycat B1 225"
+   ],
+   "discard_energy": [
+    "Psychic"
+   ],
+   "board": [
+    {
+     "card": "Team Rocket's Hypno B4a 028",
+     "hp": 10,
+     "energy": [
+      "Psychic"
+     ],
+     "behind": [
+      "Team Rocket's Drowzee B4a 027"
+     ]
+    },
+    {
+     "card": "Team Rocket's Raticate ex B4a 059",
+     "hp": 150,
+     "energy": [
+      "Darkness"
+     ],
+     "tools": [
+      "Elegant Cape B3b 065"
+     ],
+     "behind": [
+      "Team Rocket's Rattata B4a 058"
+     ]
+    },
+    {
+     "card": "Comfey A3 080",
+     "hp": 50
+    },
+    {
+     "card": "Team Rocket's Rattata B4a 058",
+     "hp": 40
+    }
+   ],
+   "energy_now": "Psychic",
+   "energy_next": "Psychic"
+  },
+  "opp": {
+   "hand_count": 6,
+   "discard_n": 1,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Skorupi B1 152",
+     "hp": 60,
+     "energy": [
+      "Darkness",
+      "Darkness"
+     ]
+    },
+    {
+     "card": "Mega Absol ex B1 151",
+     "hp": 170
+    }
+   ],
+   "energy_next": "Darkness"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Poké Ball",
+   "(no Basic Pokémon left in the deck: nothing found)",
+   "Play:Sightseer",
+   "(top three cards: Pokémon Flute, Team Rocket's Raticate ex, Professor's Research; takes the Raticate ex)",
+   "Evolve:Team Rocket's Raticate ex@3",
+   "(Thieving Incisors accepted: Skorupi's Darkness moves to it, Skorupi 2 -> 1)",
+   "Play:Team Rocket's Goo-zooka",
+   "Attach:1Psychic@0 zone",
+   "Attack:Entrap",
+   "(Entrap switches the benched Mega Absol ex Active and does 50: 170 -> 120)"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 20 of 20 cards seen, 0 inferred (see reconstructed_decks/R0908HYPNO.json)",
+  "approximate": true,
+  "notes": "Draw Poké Ball. Bug Bite plus weakness took Hypno from 50 to 10 and the opponent re-attached its second Darkness to Skorupi. The deck now holds only Flute, a Raticate ex and a Research, so the Poké Ball finds nothing; Sightseer takes the Raticate ex, it evolves the second Rattata, Goo-zooka, Psychic on Hypno, Entrap.",
+  "milestones": []
+ },
+ {
+  "id": "LR-022627-t09",
+  "game": "ladder-20260908_022627000",
+  "his_turn": 5,
+  "deck": "R0908HYPNO",
+  "turn_count": 9,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Team Rocket's Drowzee B4a 027",
+    "Team Rocket's Hypno B4a 028",
+    "Cyrus A2 150",
+    "Pokémon Flute A1a 064"
+   ],
+   "discard": [
+    "Team Rocket's Researcher B4a 069",
+    "Professor's Research P-A 007",
+    "Poké Ball P-A 005",
+    "Copycat B1 225",
+    "Poké Ball P-A 005",
+    "Sightseer B2 150",
+    "Team Rocket's Goo-zooka B4a 068"
+   ],
+   "discard_energy": [
+    "Psychic"
+   ],
+   "board": [
+    {
+     "card": "Team Rocket's Hypno B4a 028",
+     "hp": 10,
+     "energy": [
+      "Psychic",
+      "Psychic"
+     ],
+     "behind": [
+      "Team Rocket's Drowzee B4a 027"
+     ]
+    },
+    {
+     "card": "Team Rocket's Raticate ex B4a 059",
+     "hp": 150,
+     "energy": [
+      "Darkness"
+     ],
+     "tools": [
+      "Elegant Cape B3b 065"
+     ],
+     "behind": [
+      "Team Rocket's Rattata B4a 058"
+     ]
+    },
+    {
+     "card": "Comfey A3 080",
+     "hp": 50
+    },
+    {
+     "card": "Team Rocket's Raticate ex B4a 059",
+     "hp": 120,
+     "energy": [
+      "Darkness"
+     ],
+     "behind": [
+      "Team Rocket's Rattata B4a 058"
+     ]
+    }
+   ],
+   "energy_now": "Psychic",
+   "energy_next": "Psychic"
+  },
+  "opp": {
+   "hand_count": 6,
+   "discard_n": 2,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Mega Absol ex B1 151",
+     "hp": 140,
+     "energy": [
+      "Darkness"
+     ],
+     "tools": [
+      "Giant Cape A2 147"
+     ]
+    },
+    {
+     "card": "Drapion B1 153",
+     "hp": 130,
+     "energy": [
+      "Darkness"
+     ],
+     "behind": [
+      "Skorupi B1 152"
+     ]
+    }
+   ],
+   "energy_next": "Darkness"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Attach:1Psychic@1 zone",
+   "Attack:Entrap",
+   "(Entrap switches the benched Drapion Active and does 50: 130 -> 80; Pokémon Flute previewed and not played)"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 20 of 20 cards seen, 0 inferred (see reconstructed_decks/R0908HYPNO.json)",
+  "approximate": true,
+  "notes": "Draw Pokémon Flute (not played). The Mega Absol ex (Entrap'd to 120 last turn) got a Darkness and a Giant Cape (140/190), Drapion (130, one Darkness) evolved on the bench; the opponent played its second Research (discard 2). He puts the Psychic on the Cape Raticate ex and Entraps Drapion Active.",
+  "milestones": []
+ },
+ {
+  "id": "LR-022627-t11",
+  "game": "ladder-20260908_022627000",
+  "his_turn": 6,
+  "deck": "R0908HYPNO",
+  "turn_count": 11,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Team Rocket's Drowzee B4a 027",
+    "Team Rocket's Hypno B4a 028",
+    "Cyrus A2 150",
+    "Pokémon Flute A1a 064",
+    "Professor's Research P-A 007"
+   ],
+   "discard": [
+    "Team Rocket's Researcher B4a 069",
+    "Professor's Research P-A 007",
+    "Poké Ball P-A 005",
+    "Copycat B1 225",
+    "Poké Ball P-A 005",
+    "Sightseer B2 150",
+    "Team Rocket's Goo-zooka B4a 068"
+   ],
+   "discard_energy": [
+    "Psychic"
+   ],
+   "board": [
+    {
+     "card": "Team Rocket's Hypno B4a 028",
+     "hp": 10,
+     "energy": [
+      "Psychic",
+      "Psychic"
+     ],
+     "behind": [
+      "Team Rocket's Drowzee B4a 027"
+     ]
+    },
+    {
+     "card": "Team Rocket's Raticate ex B4a 059",
+     "hp": 150,
+     "energy": [
+      "Darkness",
+      "Psychic"
+     ],
+     "tools": [
+      "Elegant Cape B3b 065"
+     ],
+     "behind": [
+      "Team Rocket's Rattata B4a 058"
+     ]
+    },
+    {
+     "card": "Comfey A3 080",
+     "hp": 50
+    },
+    {
+     "card": "Team Rocket's Raticate ex B4a 059",
+     "hp": 120,
+     "energy": [
+      "Darkness"
+     ],
+     "behind": [
+      "Team Rocket's Rattata B4a 058"
+     ]
+    }
+   ],
+   "energy_now": "Psychic",
+   "energy_next": "Psychic"
+  },
+  "opp": {
+   "hand_count": 7,
+   "discard_n": 3,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Drapion B1 153",
+     "hp": 80,
+     "energy": [
+      "Darkness"
+     ],
+     "behind": [
+      "Skorupi B1 152"
+     ]
+    },
+    {
+     "card": "Mega Absol ex B1 151",
+     "hp": 140,
+     "energy": [
+      "Darkness",
+      "Darkness"
+     ],
+     "tools": [
+      "Giant Cape A2 147"
+     ]
+    },
+    {
+     "card": "Deino B1 155",
+     "hp": 60
+    }
+   ],
+   "energy_next": "Darkness"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Attach:1Psychic@3 zone",
+   "Attack:Entrap",
+   "(Entrap switches the benched Mega Absol ex Active and does 50: 140 -> 90; Cyrus previewed and not played, no Supporter used)"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 20 of 20 cards seen, 0 inferred (see reconstructed_decks/R0908HYPNO.json)",
+  "approximate": true,
+  "notes": "Draw Professor's Research (full art, not played); the deck is now empty. The opponent benched Deino, a Poké Ball is on top of its discard, and Mega Absol ex got a second Darkness (140/190). He previews and declines Cyrus, puts the Psychic on the gold Raticate ex and Entraps Mega Absol ex Active.",
+  "milestones": []
+ }
+]

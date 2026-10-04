@@ -1,0 +1,443 @@
+[
+ {
+  "id": "LR-190933-t01",
+  "game": "ladder-20260908_190933000",
+  "his_turn": 1,
+  "deck": "R0908ALTARIA",
+  "turn_count": 1,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Darkrai B2b 040",
+    "Copycat B1 225",
+    "Professor's Research P-A 007",
+    "Eevee B1 184",
+    "Eevee B1 184"
+   ],
+   "discard": [],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Igglybuff A4a 059"
+    }
+   ],
+   "energy_now": null,
+   "energy_next": "Psychic"
+  },
+  "opp": {
+   "hand_count": 5,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Oricorio A3 066"
+    }
+   ],
+   "energy_next": "Lightning"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Place:Darkrai",
+   "Play:Professor's Research",
+   "(Research draws Poké Ball and Small Balloon)",
+   "Play:Poké Ball",
+   "(the Ball finds the second Darkrai)",
+   "Place:Darkrai",
+   "Place:Eevee",
+   "Attack:Sleepy Lullaby",
+   "(then: Oricorio on 70 takes 10 and is Asleep, the two benched Darkrai add 20 each at the end of the turn, 70 to 20, and it wakes on the Sleep coin)"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 18 of 20 cards seen, 2 inferred (see reconstructed_decks/R0908ALTARIA.json)",
+  "approximate": true,
+  "notes": "Going first, so no Energy attach. Opening five were Igglybuff (set Active), Darkrai, Copycat, Professor's Research and Eevee; the draw is a second Eevee. The opponent has a lone Oricorio Active (its Safeguard stops attack damage from Pokemon ex) and nothing else; hand 5 is the Codex fan count (the hand arithmetic into turn 3 suggests it may really have been 4), their discard is empty.",
+  "milestones": [],
+  "heldout": true
+ },
+ {
+  "id": "LR-190933-t03",
+  "game": "ladder-20260908_190933000",
+  "his_turn": 2,
+  "deck": "R0908ALTARIA",
+  "turn_count": 3,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Copycat B1 225",
+    "Eevee B1 184",
+    "Small Balloon B3b 064",
+    "Poké Ball P-A 005"
+   ],
+   "discard": [
+    "Professor's Research P-A 007",
+    "Poké Ball P-A 005"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Igglybuff A4a 059"
+    },
+    {
+     "card": "Darkrai B2b 040"
+    },
+    {
+     "card": "Eevee B1 184"
+    },
+    {
+     "card": "Darkrai B2b 040"
+    }
+   ],
+   "energy_now": "Psychic",
+   "energy_next": "Psychic"
+  },
+  "opp": {
+   "hand_count": 4,
+   "discard_n": 2,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Oricorio A3 066",
+     "hp": 20
+    },
+    {
+     "card": "Electrike B2b 026",
+     "energy": [
+      "Lightning"
+     ]
+    },
+    {
+     "card": "Electrike B2b 026"
+    }
+   ],
+   "energy_next": "Lightning"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Poké Ball",
+   "(the Ball finds Swablu)",
+   "Play:Small Balloon",
+   "Tool:Small Balloon@1",
+   "Play:Copycat",
+   "(Copycat shuffles Eevee and Swablu away and draws Sabrina, Swablu, Training Area, Field Blower)",
+   "Attach:1Psychic@2 zone",
+   "Attack:Sleepy Lullaby"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 18 of 20 cards seen, 2 inferred (see reconstructed_decks/R0908ALTARIA.json)",
+  "approximate": true,
+  "notes": "Draw: Poke Ball. Since his turn 1 the opponent used Research and a Poke Ball (their discard of 2 comes from those plays), benched two Electrike and put a Lightning on the left one; the Oricorio woke from Sleep and is still on 20. He plays the Ball (finds Swablu), Small Balloon on the left Darkrai, Copycat (Eevee and Swablu go back, he draws 4 = the opponent's hand, Sabrina, Swablu, Training Area, Field Blower), Psychic on the benched Eevee, then Sleepy Lullaby and the Darkrai knock the Oricorio out for his first point.",
+  "milestones": [],
+  "heldout": true
+ },
+ {
+  "id": "LR-190933-t05",
+  "game": "ladder-20260908_190933000",
+  "his_turn": 3,
+  "deck": "R0908ALTARIA",
+  "turn_count": 5,
+  "points": [
+   1,
+   1
+  ],
+  "me": {
+   "hand": [
+    "Sabrina A1 225",
+    "Swablu B1 196",
+    "Training Area B2 153",
+    "Field Blower B3 147",
+    "Professor's Research P-A 007"
+   ],
+   "discard": [
+    "Professor's Research P-A 007",
+    "Poké Ball P-A 005",
+    "Poké Ball P-A 005",
+    "Copycat B1 225",
+    "Igglybuff A4a 059"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Eevee B1 184",
+     "energy": [
+      "Psychic"
+     ]
+    },
+    {
+     "card": "Darkrai B2b 040",
+     "tools": [
+      "Small Balloon B3b 064"
+     ]
+    },
+    {
+     "card": "Darkrai B2b 040"
+    }
+   ],
+   "energy_now": "Psychic",
+   "energy_next": "Psychic"
+  },
+  "opp": {
+   "hand_count": 5,
+   "discard_n": 4,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Mega Manectric ex B2b 027",
+     "energy": [
+      "Lightning",
+      "Lightning"
+     ],
+     "behind": [
+      "Electrike B2b 026"
+     ]
+    },
+    {
+     "card": "Electrike B2b 026"
+    }
+   ],
+   "energy_next": "Lightning"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Professor's Research",
+   "(Research draws Mega Altaria ex and Eevee)",
+   "Place:Swablu",
+   "Attach:1Psychic@3 zone",
+   "Attack:Stampede",
+   "(Stampede 10: Mega Manectric ex 180 to 170)"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 18 of 20 cards seen, 2 inferred (see reconstructed_decks/R0908ALTARIA.json)",
+  "approximate": true,
+  "notes": "Draw: Professor's Research. The Oricorio knockout gave him a point; the opponent promoted the Electrike (one Lightning), added a second Lightning, evolved it into Mega Manectric ex and Lightning Accelerator (80) knocked out Igglybuff (their point), and he promoted Eevee with its Psychic before the draw. He plays Research (Mega Altaria ex, Eevee), benches Swablu (in the real game it went into the empty middle Bench slot; here the Bench has no gap, so Swablu is index 3), Psychic on Swablu, Stampede for 10. Opponent discard 4 = Research, Poke Ball, Oricorio plus a Research the review does not list but the visible discard top shows at t241 (estimate).",
+  "milestones": [],
+  "heldout": true
+ },
+ {
+  "id": "LR-190933-t07",
+  "game": "ladder-20260908_190933000",
+  "his_turn": 4,
+  "deck": "R0908ALTARIA",
+  "turn_count": 7,
+  "points": [
+   1,
+   2
+  ],
+  "me": {
+   "hand": [
+    "Sabrina A1 225",
+    "Training Area B2 153",
+    "Field Blower B3 147",
+    "Mega Altaria ex B1 102",
+    "Eevee B1 184",
+    "Espeon B3a 020"
+   ],
+   "discard": [
+    "Professor's Research P-A 007",
+    "Poké Ball P-A 005",
+    "Poké Ball P-A 005",
+    "Copycat B1 225",
+    "Igglybuff A4a 059",
+    "Professor's Research P-A 007",
+    "Eevee B1 184"
+   ],
+   "discard_energy": [
+    "Psychic"
+   ],
+   "board": [
+    {
+     "card": "Swablu B1 196",
+     "energy": [
+      "Psychic"
+     ]
+    },
+    {
+     "card": "Darkrai B2b 040",
+     "tools": [
+      "Small Balloon B3b 064"
+     ]
+    },
+    {
+     "card": "Darkrai B2b 040"
+    }
+   ],
+   "energy_now": "Psychic",
+   "energy_next": "Psychic"
+  },
+  "opp": {
+   "hand_count": 5,
+   "discard_n": 4,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Mega Manectric ex B2b 027",
+     "hp": 170,
+     "energy": [
+      "Lightning",
+      "Lightning"
+     ],
+     "behind": [
+      "Electrike B2b 026"
+     ]
+    },
+    {
+     "card": "Team Rocket's Voltorb B4a 019"
+    },
+    {
+     "card": "Electrike B2b 026",
+     "energy": [
+      "Lightning"
+     ]
+    }
+   ],
+   "energy_next": "Lightning"
+  },
+  "stadium": {
+   "card": "Training Area B2 153",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Evolve:Mega Altaria ex@0",
+   "Place:Eevee",
+   "Attach:1Psychic@0 zone",
+   "Attack:Mega Harmony",
+   "(Mega Harmony 140 = 40 + 30 x 3 Bench + 10 Training Area: Mega Manectric ex 170 to 30; Sabrina stays unplayed, the Supporter-unused warning is confirmed)"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 18 of 20 cards seen, 2 inferred (see reconstructed_decks/R0908ALTARIA.json)",
+  "approximate": true,
+  "notes": "Draw: Espeon. The opponent benched a Team Rocket's Voltorb, put the Lightning on the benched Electrike, played Training Area (theirs) and Lightning Accelerator (120) knocked out Eevee with its Psychic (their second point); he promoted Swablu with its Psychic before the draw. He evolves it into Mega Altaria ex, benches the Eevee (the real game used the empty middle Bench slot), Psychic on Mega Altaria, Mega Harmony for 140, and does not play Sabrina. Opponent discard count 4 is an estimate (their hand count of 5 here suggests one more unlisted card may be in it).",
+  "milestones": [],
+  "heldout": true
+ },
+ {
+  "id": "LR-190933-t09",
+  "game": "ladder-20260908_190933000",
+  "his_turn": 5,
+  "deck": "R0908ALTARIA",
+  "turn_count": 9,
+  "points": [
+   1,
+   2
+  ],
+  "me": {
+   "hand": [
+    "Sabrina A1 225",
+    "Training Area B2 153",
+    "Field Blower B3 147",
+    "Espeon B3a 020",
+    "Espeon B3a 020"
+   ],
+   "discard": [
+    "Professor's Research P-A 007",
+    "Poké Ball P-A 005",
+    "Poké Ball P-A 005",
+    "Copycat B1 225",
+    "Igglybuff A4a 059",
+    "Professor's Research P-A 007",
+    "Eevee B1 184"
+   ],
+   "discard_energy": [
+    "Psychic"
+   ],
+   "board": [
+    {
+     "card": "Mega Altaria ex B1 102",
+     "energy": [
+      "Psychic",
+      "Psychic"
+     ],
+     "behind": [
+      "Swablu B1 196"
+     ]
+    },
+    {
+     "card": "Darkrai B2b 040",
+     "hp": 70,
+     "tools": [
+      "Small Balloon B3b 064"
+     ]
+    },
+    {
+     "card": "Eevee B1 184"
+    },
+    {
+     "card": "Darkrai B2b 040"
+    }
+   ],
+   "energy_now": "Psychic",
+   "energy_next": "Psychic"
+  },
+  "opp": {
+   "hand_count": 2,
+   "discard_n": 4,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Team Rocket's Electrode B4a 020",
+     "energy": [
+      "Lightning"
+     ],
+     "behind": [
+      "Team Rocket's Voltorb B4a 019"
+     ]
+    },
+    {
+     "card": "Mega Manectric ex B2b 027",
+     "hp": 30,
+     "energy": [
+      "Lightning",
+      "Lightning"
+     ],
+     "tools": [
+      "Protective Poncho B2 147"
+     ],
+     "behind": [
+      "Electrike B2b 026"
+     ]
+    },
+    {
+     "card": "Mega Manectric ex B2b 027",
+     "energy": [
+      "Lightning"
+     ],
+     "behind": [
+      "Electrike B2b 026"
+     ]
+    },
+    {
+     "card": "Team Rocket's Voltorb B4a 019"
+    }
+   ],
+   "energy_next": "Lightning"
+  },
+  "stadium": {
+   "card": "Training Area B2 153",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Evolve:Espeon@2",
+   "Play:Sabrina",
+   "(the opponent picks the fresh 180-HP Mega Manectric ex as the new Active; Electrode goes to the Bench)",
+   "Attach:1Psychic@1 zone",
+   "Attack:Mega Harmony",
+   "(Mega Harmony 140: the fresh Mega Manectric ex 180 to 40; no retreat)"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 18 of 20 cards seen, 2 inferred (see reconstructed_decks/R0908ALTARIA.json)",
+  "approximate": true,
+  "notes": "Draw: a second Espeon. The opponent put Protective Poncho on the damaged Mega Manectric ex, evolved one Voltorb into Electrode, benched a second Voltorb, evolved the other Electrike into a fresh 180-HP Mega Manectric ex (carrying the Lightning from turn 6), retreated the damaged one for free, put a Lightning on the Electrode and Random Spark hit his left Darkrai for 30 (100 to 70). He evolves the Eevee into Espeon, plays Sabrina, Psychic on the damaged Darkrai (Small Balloon) and Mega Harmony for 140. Opponent discard count 4 is an estimate.",
+  "milestones": [],
+  "heldout": true
+ }
+]

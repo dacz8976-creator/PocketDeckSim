@@ -1,0 +1,22 @@
+{
+ "name": "kx3_dev",
+ "question": "REALISTIC (the default knowledge mode). Does the play-out chooser kx3 (km3 proposes; every distinct legal move, up to 12, is played out 16 times to the end of the game with km3 on both sides, each play-out from a world sampled from what the pilot may see: the opponent's hidden cards drawn from a pool of 8 meta lists consistent with the cards and Energy types seen so far; it switches only on a paired lead beyond 2 standard errors) play Dustin's development decks better than km3 does, on the same deals against the 8 panel lists? Primary: the pooled paired difference in game score (win 1, tie 1/2, loss 0) with its 95% interval; every deck's and every pair's row printed; time per game reported as a fact. Development only: the held-out decks are locked out. Caveat stated in advance: the 8 panel lists are also the pool's lists, so once a few cards are seen the pilot's guess of the opponent narrows to the right list; against a deck outside the pool it would not. A LAB run (exact list told, labelled) can follow on these same deals.",
+ "pilot": "kx3",
+ "reference": "km3",
+ "stage": "dev",
+ "deck_groups": ["aggro", "setup", "draftA"],
+ "opponent_groups": ["panel8"],
+ "deals": 5,
+ "seats": [0, 1],
+ "seed_base": 24400000000,
+ "pair_stride": 10000,
+ "threads": 2,
+ "log_level": "deck",
+ "ext_timeout_s": null,
+ "intended_lines": "rl/strength/intended_lines.json",
+ "program": "/home/dacz8976/kx/strength",
+ "program_sha256": "5a8f5c83a7915090437e91ae7c644bdd67d1aed713f50a1f7de0bf905802a3d2",
+ "engine": "claude/playout-pilot d513e37b (after fix round 1) engine tree 31dbd2e6e8ec, built on the laptop Oct 2 (rl/strength/build.sh against that tree); KX_EXTRA_LISTS unset",
+ "pilot_provenance": "kx3 from claude/playout-pilot@d513e37b (the cloud, Oct 2): reviewed once at f1aacbe2, fix round 1 verified (no blockers)",
+ "reference_provenance": "km3 in the same build; it equals the pinned km3: step 10's 240 km3 games field for field v rl/engine-2026-10-02/deckgym, and self-check digest 81b572198c04d5d1"
+}

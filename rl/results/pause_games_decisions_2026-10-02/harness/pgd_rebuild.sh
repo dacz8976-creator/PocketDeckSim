@@ -11,4 +11,5 @@ cp "$D/target/release/examples/pg_pos" "$D/pg_pos" && sha256sum "$D/pg_pos" | cu
 python3 "$HERE/positions_A.py" "$D/positions_A.json"
 REPO="/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim"
 git -C "$REPO" show origin/main:decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt > "$D/draftA.txt"
-wc -l "$D/draftA.txt"
+git -C "$REPO" show origin/main:decks/dustin/03-wailord-indeedee-wall.txt > "$D/deck03.txt"
+wc -l "$D/draftA.txt" "$D/deck03.txt"

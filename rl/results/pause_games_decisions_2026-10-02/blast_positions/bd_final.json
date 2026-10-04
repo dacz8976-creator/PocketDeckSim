@@ -1,0 +1,6991 @@
+[
+ {
+  "id": "B-205230-t02",
+  "game": "cmp-20261002_205230000",
+  "his_turn": 1,
+  "deck": "A",
+  "turn_count": 2,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Cyrus A2 150",
+    "Copycat B1 225",
+    "Misty A1 220",
+    "Alolan Ninetales ex B2 029",
+    "Professor's Research P-A 007"
+   ],
+   "discard": [],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Carvanha B4 034",
+     "hp": 50
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 3,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Squirtle B1a 017",
+     "hp": 70
+    },
+    {
+     "card": "Wailmer B4 036",
+     "hp": 100
+    },
+    {
+     "card": "Frigibax B2a 034",
+     "hp": 60
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Professor's Research",
+   "Place:Alolan Vulpix",
+   "Place:Lapras",
+   "Attach:1Water@0 zone",
+   "Attack:Sharp Fang"
+  ],
+  "hand_source": "codex",
+  "decision_maker": "Auto",
+  "exact_list": true,
+  "milestones": [],
+  "notes": "The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "won 3-0"
+ },
+ {
+  "id": "B-205230-t04",
+  "game": "cmp-20261002_205230000",
+  "his_turn": 2,
+  "deck": "A",
+  "turn_count": 4,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Cyrus A2 150",
+    "Copycat B1 225",
+    "Misty A1 220",
+    "Alolan Ninetales ex B2 029",
+    "Mega Sharpedo ex B4 035"
+   ],
+   "discard": [
+    "Professor's Research P-A 007"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Carvanha B4 034",
+     "hp": 50,
+     "energy": [
+      "Water"
+     ]
+    },
+    {
+     "card": "Lapras A3 044",
+     "hp": 110
+    },
+    {
+     "card": "Alolan Vulpix B2 028",
+     "hp": 60
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 3,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Squirtle B1a 017",
+     "hp": 40
+    },
+    {
+     "card": "Wailord ex B4 037",
+     "hp": 250,
+     "energy": [
+      "Water"
+     ],
+     "behind": [
+      "Wailmer B4 036"
+     ]
+    },
+    {
+     "card": "Frigibax B2a 034",
+     "hp": 60
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Evolve:Mega Sharpedo ex@0",
+   "Evolve:Alolan Ninetales ex@2",
+   "Attach:1Water@2 zone",
+   "Attack:Turbo Shark"
+  ],
+  "hand_source": "codex",
+  "decision_maker": "Auto",
+  "exact_list": true,
+  "milestones": [
+   "preparing an attacker"
+  ],
+  "notes": "Wailord ex stack forced by the evolution rules (no Rare Candy in either list). The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "won 3-0"
+ },
+ {
+  "id": "B-205230-t06",
+  "game": "cmp-20261002_205230000",
+  "his_turn": 3,
+  "deck": "A",
+  "turn_count": 6,
+  "points": [
+   1,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Cyrus A2 150",
+    "Copycat B1 225",
+    "Misty A1 220",
+    "Alolan Vulpix B2 028"
+   ],
+   "discard": [
+    "Professor's Research P-A 007"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 190,
+     "energy": [
+      "Water"
+     ],
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    },
+    {
+     "card": "Lapras A3 044",
+     "hp": 110
+    },
+    {
+     "card": "Alolan Ninetales ex B2 029",
+     "hp": 150,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Alolan Vulpix B2 028"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 2,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Arctibax B2a 035",
+     "hp": 90,
+     "behind": [
+      "Frigibax B2a 034"
+     ]
+    },
+    {
+     "card": "Wailord ex B4 037",
+     "hp": 250,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Wailmer B4 036"
+     ]
+    },
+    {
+     "card": "Squirtle B1a 017",
+     "hp": 70
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Place:Alolan Vulpix",
+   "Attach:1Water@3 zone",
+   "Retreat:2",
+   "Attack:Binding Snow"
+  ],
+  "hand_source": "codex",
+  "decision_maker": "Auto",
+  "exact_list": true,
+  "milestones": [
+   "preparing an attacker",
+   "managing a sacrifice"
+  ],
+  "notes": "Alolan Ninetales ex stack forced by the evolution rules (no Rare Candy in either list); Arctibax stack forced by the evolution rules (no Rare Candy in either list); Mega Sharpedo ex stack forced by the evolution rules (no Rare Candy in either list); Wailord ex stack forced by the evolution rules (no Rare Candy in either list). The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "won 3-0"
+ },
+ {
+  "id": "B-205230-t08",
+  "game": "cmp-20261002_205230000",
+  "his_turn": 4,
+  "deck": "A",
+  "turn_count": 8,
+  "points": [
+   1,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Cyrus A2 150",
+    "Copycat B1 225",
+    "Misty A1 220",
+    "Mega Sharpedo ex B4 035"
+   ],
+   "discard": [
+    "Professor's Research P-A 007"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Alolan Ninetales ex B2 029",
+     "hp": 150,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Alolan Vulpix B2 028"
+     ]
+    },
+    {
+     "card": "Alolan Vulpix B2 028",
+     "hp": 60,
+     "energy": [
+      "Water"
+     ]
+    },
+    {
+     "card": "Lapras A3 044",
+     "hp": 110
+    },
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 190,
+     "energy": [
+      "Water"
+     ],
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 1,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Baxcalibur B2a 036",
+     "hp": 60,
+     "behind": [
+      "Frigibax B2a 034",
+      "Arctibax B2a 035"
+     ]
+    },
+    {
+     "card": "Wailord ex B4 037",
+     "hp": 250,
+     "energy": [
+      "Water",
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Wailmer B4 036"
+     ]
+    },
+    {
+     "card": "Squirtle B1a 017",
+     "hp": 70
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": {
+   "card": "Soothing Shore B4 154",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Attach:1Water@2 zone",
+   "Attack:Binding Snow"
+  ],
+  "hand_source": "codex",
+  "decision_maker": "Auto",
+  "exact_list": true,
+  "milestones": [
+   "preparing an attacker"
+  ],
+  "notes": "Alolan Ninetales ex stack forced by the evolution rules (no Rare Candy in either list); Baxcalibur stack forced by the evolution rules (no Rare Candy in either list); Mega Sharpedo ex stack forced by the evolution rules (no Rare Candy in either list); Wailord ex stack forced by the evolution rules (no Rare Candy in either list). The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "won 3-0"
+ },
+ {
+  "id": "B-205230-t10",
+  "game": "cmp-20261002_205230000",
+  "his_turn": 5,
+  "deck": "A",
+  "turn_count": 10,
+  "points": [
+   2,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Cyrus A2 150",
+    "Copycat B1 225",
+    "Misty A1 220",
+    "Mega Sharpedo ex B4 035",
+    "Poké Ball P-A 005"
+   ],
+   "discard": [
+    "Professor's Research P-A 007"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Alolan Ninetales ex B2 029",
+     "hp": 150,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Alolan Vulpix B2 028"
+     ]
+    },
+    {
+     "card": "Alolan Vulpix B2 028",
+     "hp": 60,
+     "energy": [
+      "Water"
+     ]
+    },
+    {
+     "card": "Lapras A3 044",
+     "hp": 110,
+     "energy": [
+      "Water"
+     ]
+    },
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 190,
+     "energy": [
+      "Water"
+     ],
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 1,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Wailord ex B4 037",
+     "hp": 250,
+     "energy": [
+      "Water",
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Wailmer B4 036"
+     ]
+    },
+    {
+     "card": "Wartortle B1a 018",
+     "hp": 90,
+     "energy": [
+      "Water"
+     ],
+     "behind": [
+      "Squirtle B1a 017"
+     ]
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": {
+   "card": "Soothing Shore B4 154",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Poké Ball",
+   "Attach:1Water@2 zone",
+   "Attack:Binding Snow"
+  ],
+  "hand_source": "codex",
+  "decision_maker": "Auto",
+  "exact_list": true,
+  "milestones": [
+   "preparing an attacker"
+  ],
+  "notes": "Alolan Ninetales ex stack forced by the evolution rules (no Rare Candy in either list); Mega Sharpedo ex stack forced by the evolution rules (no Rare Candy in either list); Wailord ex stack forced by the evolution rules (no Rare Candy in either list); Wartortle stack forced by the evolution rules (no Rare Candy in either list). The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "won 3-0"
+ },
+ {
+  "id": "B-205230-t12",
+  "game": "cmp-20261002_205230000",
+  "his_turn": 6,
+  "deck": "A",
+  "turn_count": 12,
+  "points": [
+   2,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Cyrus A2 150",
+    "Copycat B1 225",
+    "Misty A1 220",
+    "Mega Sharpedo ex B4 035",
+    "Carvanha B4 034",
+    "Elegant Cape B3b 065"
+   ],
+   "discard": [
+    "Professor's Research P-A 007",
+    "Poké Ball P-A 005"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Alolan Ninetales ex B2 029",
+     "hp": 150,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Alolan Vulpix B2 028"
+     ]
+    },
+    {
+     "card": "Alolan Vulpix B2 028",
+     "hp": 60,
+     "energy": [
+      "Water"
+     ]
+    },
+    {
+     "card": "Lapras A3 044",
+     "hp": 110,
+     "energy": [
+      "Water",
+      "Water"
+     ]
+    },
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 190,
+     "energy": [
+      "Water"
+     ],
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 1,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Wailord ex B4 037",
+     "hp": 190,
+     "energy": [
+      "Water",
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Wailmer B4 036"
+     ]
+    },
+    {
+     "card": "Mega Blastoise ex B1a 020",
+     "hp": 230,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Squirtle B1a 017",
+      "Wartortle B1a 018"
+     ]
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": {
+   "card": "Soothing Shore B4 154",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Attach:1Water@2 zone",
+   "Attack:Binding Snow"
+  ],
+  "hand_source": "codex",
+  "decision_maker": "Auto",
+  "exact_list": true,
+  "milestones": [
+   "preparing an attacker"
+  ],
+  "notes": "Alolan Ninetales ex stack forced by the evolution rules (no Rare Candy in either list); Mega Blastoise ex stack forced by the evolution rules (no Rare Candy in either list); Mega Sharpedo ex stack forced by the evolution rules (no Rare Candy in either list); Wailord ex stack forced by the evolution rules (no Rare Candy in either list). The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "won 3-0"
+ },
+ {
+  "id": "B-205230-t14",
+  "game": "cmp-20261002_205230000",
+  "his_turn": 7,
+  "deck": "A",
+  "turn_count": 14,
+  "points": [
+   2,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Cyrus A2 150",
+    "Copycat B1 225",
+    "Misty A1 220",
+    "Mega Sharpedo ex B4 035",
+    "Carvanha B4 034",
+    "Elegant Cape B3b 065",
+    "Alolan Ninetales ex B2 029"
+   ],
+   "discard": [
+    "Professor's Research P-A 007",
+    "Poké Ball P-A 005"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Alolan Ninetales ex B2 029",
+     "hp": 150,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Alolan Vulpix B2 028"
+     ]
+    },
+    {
+     "card": "Alolan Vulpix B2 028",
+     "hp": 60,
+     "energy": [
+      "Water"
+     ]
+    },
+    {
+     "card": "Lapras A3 044",
+     "hp": 110,
+     "energy": [
+      "Water",
+      "Water",
+      "Water"
+     ]
+    },
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 190,
+     "energy": [
+      "Water"
+     ],
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 2,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Wailord ex B4 037",
+     "hp": 130,
+     "energy": [
+      "Water",
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Wailmer B4 036"
+     ]
+    },
+    {
+     "card": "Mega Blastoise ex B1a 020",
+     "hp": 230,
+     "energy": [
+      "Water",
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Squirtle B1a 017",
+      "Wartortle B1a 018"
+     ]
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": {
+   "card": "Soothing Shore B4 154",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Evolve:Alolan Ninetales ex@1",
+   "Attach:1Water@1 zone",
+   "Attack:Binding Snow"
+  ],
+  "hand_source": "codex",
+  "decision_maker": "Auto",
+  "exact_list": true,
+  "milestones": [
+   "preparing an attacker"
+  ],
+  "notes": "Alolan Ninetales ex stack forced by the evolution rules (no Rare Candy in either list); Mega Blastoise ex stack forced by the evolution rules (no Rare Candy in either list); Mega Sharpedo ex stack forced by the evolution rules (no Rare Candy in either list); Wailord ex stack forced by the evolution rules (no Rare Candy in either list). The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "won 3-0"
+ },
+ {
+  "id": "B-205230-t16",
+  "game": "cmp-20261002_205230000",
+  "his_turn": 8,
+  "deck": "A",
+  "turn_count": 16,
+  "points": [
+   2,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Cyrus A2 150",
+    "Copycat B1 225",
+    "Misty A1 220",
+    "Mega Sharpedo ex B4 035",
+    "Carvanha B4 034",
+    "Elegant Cape B3b 065",
+    "Misty A1 220"
+   ],
+   "discard": [
+    "Professor's Research P-A 007",
+    "Poké Ball P-A 005"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Alolan Ninetales ex B2 029",
+     "hp": 20,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Alolan Vulpix B2 028"
+     ]
+    },
+    {
+     "card": "Alolan Ninetales ex B2 029",
+     "hp": 150,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Alolan Vulpix B2 028"
+     ]
+    },
+    {
+     "card": "Lapras A3 044",
+     "hp": 110,
+     "energy": [
+      "Water",
+      "Water",
+      "Water"
+     ]
+    },
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 190,
+     "energy": [
+      "Water"
+     ],
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 2,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Mega Blastoise ex B1a 020",
+     "hp": 230,
+     "energy": [
+      "Water",
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Squirtle B1a 017",
+      "Wartortle B1a 018"
+     ]
+    },
+    {
+     "card": "Wailord ex B4 037",
+     "hp": 70,
+     "energy": [
+      "Water"
+     ],
+     "behind": [
+      "Wailmer B4 036"
+     ]
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": {
+   "card": "Soothing Shore B4 154",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Cyrus",
+   "Activate:1@1",
+   "Attach:1Water@3 zone",
+   "Attack:Binding Snow"
+  ],
+  "hand_source": "codex",
+  "decision_maker": "Auto",
+  "exact_list": true,
+  "milestones": [
+   "preparing an attacker",
+   "recognising an immediate win"
+  ],
+  "notes": "Alolan Ninetales ex stack forced by the evolution rules (no Rare Candy in either list); Mega Blastoise ex stack forced by the evolution rules (no Rare Candy in either list); Mega Sharpedo ex stack forced by the evolution rules (no Rare Candy in either list); Wailord ex stack forced by the evolution rules (no Rare Candy in either list). The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "won 3-0"
+ },
+ {
+  "id": "B-205731-t02",
+  "game": "cmp-20261002_205731000",
+  "his_turn": 1,
+  "deck": "A",
+  "turn_count": 2,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Mega Sharpedo ex B4 035",
+    "Lucky Ice Pop B2 145",
+    "Irida A2a 072",
+    "Alolan Ninetales ex B2 029",
+    "Copycat B1 225"
+   ],
+   "discard": [],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Carvanha B4 034",
+     "hp": 50
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 3,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Meowth B2 124",
+     "hp": 50
+    },
+    {
+     "card": "Squirtle B1a 017",
+     "hp": 70
+    },
+    {
+     "card": "Frigibax B2a 034",
+     "hp": 60
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Attach:1Water@0 zone",
+   "Attack:Sharp Fang"
+  ],
+  "hand_source": "codex",
+  "decision_maker": "Auto",
+  "exact_list": true,
+  "milestones": [],
+  "notes": "The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "won 3-2"
+ },
+ {
+  "id": "B-205731-t04",
+  "game": "cmp-20261002_205731000",
+  "his_turn": 2,
+  "deck": "A",
+  "turn_count": 4,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Mega Sharpedo ex B4 035",
+    "Lucky Ice Pop B2 145",
+    "Irida A2a 072",
+    "Alolan Ninetales ex B2 029",
+    "Copycat B1 225",
+    "Alolan Ninetales ex B2 029"
+   ],
+   "discard": [],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Carvanha B4 034",
+     "hp": 50,
+     "energy": [
+      "Water"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 3,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Meowth B2 124",
+     "hp": 50,
+     "energy": [
+      "Water"
+     ]
+    },
+    {
+     "card": "Squirtle B1a 017",
+     "hp": 70
+    },
+    {
+     "card": "Arctibax B2a 035",
+     "hp": 90,
+     "behind": [
+      "Frigibax B2a 034"
+     ]
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": {
+   "card": "Soothing Shore B4 154",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Evolve:Mega Sharpedo ex@0",
+   "Attach:1Water@0 zone",
+   "Attack:Turbo Shark"
+  ],
+  "hand_source": "codex",
+  "decision_maker": "Auto",
+  "exact_list": true,
+  "milestones": [
+   "preparing an attacker"
+  ],
+  "notes": "Arctibax stack forced by the evolution rules (no Rare Candy in either list). The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "won 3-2"
+ },
+ {
+  "id": "B-205731-t06",
+  "game": "cmp-20261002_205731000",
+  "his_turn": 3,
+  "deck": "A",
+  "turn_count": 6,
+  "points": [
+   1,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Lucky Ice Pop B2 145",
+    "Irida A2a 072",
+    "Alolan Ninetales ex B2 029",
+    "Copycat B1 225",
+    "Alolan Ninetales ex B2 029",
+    "Alolan Vulpix B2 028"
+   ],
+   "discard": [],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 190,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 2,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Baxcalibur B2a 036",
+     "hp": 140,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Frigibax B2a 034",
+      "Arctibax B2a 035"
+     ]
+    },
+    {
+     "card": "Squirtle B1a 017",
+     "hp": 70
+    },
+    {
+     "card": "Wailmer B4 036",
+     "hp": 100
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": {
+   "card": "Soothing Shore B4 154",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Place:Alolan Vulpix",
+   "Attach:1Water@1 zone",
+   "Attack:Turbo Shark"
+  ],
+  "hand_source": "codex",
+  "decision_maker": "Auto",
+  "exact_list": true,
+  "milestones": [
+   "preparing an attacker"
+  ],
+  "notes": "Baxcalibur stack forced by the evolution rules (no Rare Candy in either list); Mega Sharpedo ex stack forced by the evolution rules (no Rare Candy in either list). The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "won 3-2"
+ },
+ {
+  "id": "B-205731-t08",
+  "game": "cmp-20261002_205731000",
+  "his_turn": 4,
+  "deck": "A",
+  "turn_count": 8,
+  "points": [
+   1,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Lucky Ice Pop B2 145",
+    "Irida A2a 072",
+    "Alolan Ninetales ex B2 029",
+    "Copycat B1 225",
+    "Alolan Ninetales ex B2 029",
+    "Misty A1 220"
+   ],
+   "discard": [],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 100,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    },
+    {
+     "card": "Alolan Vulpix B2 028",
+     "hp": 60,
+     "energy": [
+      "Water",
+      "Water"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 1,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Baxcalibur B2a 036",
+     "hp": 90,
+     "energy": [
+      "Water",
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Frigibax B2a 034",
+      "Arctibax B2a 035"
+     ]
+    },
+    {
+     "card": "Wartortle B1a 018",
+     "hp": 90,
+     "energy": [
+      "Water"
+     ],
+     "behind": [
+      "Squirtle B1a 017"
+     ]
+    },
+    {
+     "card": "Wailord ex B4 037",
+     "hp": 250,
+     "behind": [
+      "Wailmer B4 036"
+     ]
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": {
+   "card": "Soothing Shore B4 154",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Evolve:Alolan Ninetales ex@1",
+   "Play:Lucky Ice Pop",
+   "Play:Irida",
+   "Attach:1Water@0 zone",
+   "Attack:Turbo Shark"
+  ],
+  "hand_source": "codex",
+  "decision_maker": "Auto",
+  "exact_list": true,
+  "milestones": [
+   "preparing an attacker",
+   "managing a sacrifice"
+  ],
+  "notes": "Baxcalibur stack forced by the evolution rules (no Rare Candy in either list); Mega Sharpedo ex stack forced by the evolution rules (no Rare Candy in either list); Wailord ex stack forced by the evolution rules (no Rare Candy in either list); Wartortle stack forced by the evolution rules (no Rare Candy in either list). The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "won 3-2"
+ },
+ {
+  "id": "B-205731-t10",
+  "game": "cmp-20261002_205731000",
+  "his_turn": 5,
+  "deck": "A",
+  "turn_count": 10,
+  "points": [
+   1,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Copycat B1 225",
+    "Alolan Ninetales ex B2 029",
+    "Misty A1 220",
+    "Alolan Vulpix B2 028"
+   ],
+   "discard": [
+    "Lucky Ice Pop B2 145",
+    "Irida A2a 072"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 50,
+     "energy": [
+      "Water",
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    },
+    {
+     "card": "Alolan Ninetales ex B2 029",
+     "hp": 150,
+     "energy": [
+      "Water",
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Alolan Vulpix B2 028"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 1,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Mega Blastoise ex B1a 020",
+     "hp": 230,
+     "energy": [
+      "Water",
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Squirtle B1a 017",
+      "Wartortle B1a 018"
+     ]
+    },
+    {
+     "card": "Baxcalibur B2a 036",
+     "hp": 20,
+     "behind": [
+      "Frigibax B2a 034",
+      "Arctibax B2a 035"
+     ]
+    },
+    {
+     "card": "Wailord ex B4 037",
+     "hp": 250,
+     "behind": [
+      "Wailmer B4 036"
+     ]
+    },
+    {
+     "card": "Frigibax B2a 034",
+     "hp": 60
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": {
+   "card": "Soothing Shore B4 154",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Place:Alolan Vulpix",
+   "Attach:1Water@2 zone",
+   "Retreat:1",
+   "Attack:Binding Snow"
+  ],
+  "hand_source": "codex",
+  "decision_maker": "Auto",
+  "exact_list": true,
+  "milestones": [
+   "preparing an attacker",
+   "managing a sacrifice"
+  ],
+  "notes": "Alolan Ninetales ex stack forced by the evolution rules (no Rare Candy in either list); Baxcalibur stack forced by the evolution rules (no Rare Candy in either list); Mega Blastoise ex stack forced by the evolution rules (no Rare Candy in either list); Mega Sharpedo ex stack forced by the evolution rules (no Rare Candy in either list); Wailord ex stack forced by the evolution rules (no Rare Candy in either list). The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "won 3-2"
+ },
+ {
+  "id": "B-205731-t12",
+  "game": "cmp-20261002_205731000",
+  "his_turn": 6,
+  "deck": "A",
+  "turn_count": 12,
+  "points": [
+   1,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Copycat B1 225",
+    "Alolan Ninetales ex B2 029",
+    "Misty A1 220",
+    "Poké Ball P-A 005"
+   ],
+   "discard": [
+    "Lucky Ice Pop B2 145",
+    "Irida A2a 072"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Alolan Ninetales ex B2 029",
+     "hp": 20,
+     "energy": [
+      "Water",
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Alolan Vulpix B2 028"
+     ]
+    },
+    {
+     "card": "Alolan Vulpix B2 028",
+     "hp": 60,
+     "energy": [
+      "Water"
+     ]
+    },
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 70,
+     "energy": [
+      "Water",
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 1,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Mega Blastoise ex B1a 020",
+     "hp": 170,
+     "energy": [
+      "Water",
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Squirtle B1a 017",
+      "Wartortle B1a 018"
+     ]
+    },
+    {
+     "card": "Baxcalibur B2a 036",
+     "hp": 20,
+     "behind": [
+      "Frigibax B2a 034",
+      "Arctibax B2a 035"
+     ]
+    },
+    {
+     "card": "Wailord ex B4 037",
+     "hp": 250,
+     "energy": [
+      "Water"
+     ],
+     "behind": [
+      "Wailmer B4 036"
+     ]
+    },
+    {
+     "card": "Arctibax B2a 035",
+     "hp": 90,
+     "behind": [
+      "Frigibax B2a 034"
+     ]
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": {
+   "card": "Soothing Shore B4 154",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Poké Ball",
+   "Evolve:Alolan Ninetales ex@1",
+   "Attach:1Water@1 zone",
+   "Attack:Binding Snow"
+  ],
+  "hand_source": "codex",
+  "decision_maker": "Auto",
+  "exact_list": true,
+  "milestones": [
+   "preparing an attacker"
+  ],
+  "notes": "Alolan Ninetales ex stack forced by the evolution rules (no Rare Candy in either list); Arctibax stack forced by the evolution rules (no Rare Candy in either list); Baxcalibur stack forced by the evolution rules (no Rare Candy in either list); Mega Blastoise ex stack forced by the evolution rules (no Rare Candy in either list); Mega Sharpedo ex stack forced by the evolution rules (no Rare Candy in either list); Wailord ex stack forced by the evolution rules (no Rare Candy in either list). The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "won 3-2"
+ },
+ {
+  "id": "B-205731-t14",
+  "game": "cmp-20261002_205731000",
+  "his_turn": 7,
+  "deck": "A",
+  "turn_count": 14,
+  "points": [
+   1,
+   2
+  ],
+  "me": {
+   "hand": [
+    "Copycat B1 225",
+    "Misty A1 220",
+    "Lapras A3 044",
+    "Professor's Research P-A 007"
+   ],
+   "discard": [
+    "Lucky Ice Pop B2 145",
+    "Irida A2a 072",
+    "Poké Ball P-A 005",
+    "Alolan Ninetales ex B2 029",
+    "Alolan Vulpix B2 028"
+   ],
+   "discard_energy": [
+    "Water",
+    "Water",
+    "Water"
+   ],
+   "board": [
+    {
+     "card": "Alolan Ninetales ex B2 029",
+     "hp": 150,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Alolan Vulpix B2 028"
+     ]
+    },
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 90,
+     "energy": [
+      "Water",
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 2,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Mega Blastoise ex B1a 020",
+     "hp": 110,
+     "energy": [
+      "Water",
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Squirtle B1a 017",
+      "Wartortle B1a 018"
+     ]
+    },
+    {
+     "card": "Baxcalibur B2a 036",
+     "hp": 20,
+     "behind": [
+      "Frigibax B2a 034",
+      "Arctibax B2a 035"
+     ]
+    },
+    {
+     "card": "Wailord ex B4 037",
+     "hp": 250,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Wailmer B4 036"
+     ]
+    },
+    {
+     "card": "Arctibax B2a 035",
+     "hp": 90,
+     "behind": [
+      "Frigibax B2a 034"
+     ]
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": {
+   "card": "Soothing Shore B4 154",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Professor's Research",
+   "Place:Lapras",
+   "Attach:1Water@2 zone",
+   "Attack:Binding Snow"
+  ],
+  "hand_source": "codex",
+  "decision_maker": "Auto",
+  "exact_list": true,
+  "milestones": [
+   "preparing an attacker",
+   "adapting when the plan fails"
+  ],
+  "notes": "Alolan Ninetales ex stack forced by the evolution rules (no Rare Candy in either list); Arctibax stack forced by the evolution rules (no Rare Candy in either list); Baxcalibur stack forced by the evolution rules (no Rare Candy in either list); Mega Blastoise ex stack forced by the evolution rules (no Rare Candy in either list); Mega Sharpedo ex stack forced by the evolution rules (no Rare Candy in either list); Wailord ex stack forced by the evolution rules (no Rare Candy in either list); knocked out between turns: Alolan Ninetales ex. The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "won 3-2"
+ },
+ {
+  "id": "B-205731-t16",
+  "game": "cmp-20261002_205731000",
+  "his_turn": 8,
+  "deck": "A",
+  "turn_count": 16,
+  "points": [
+   1,
+   2
+  ],
+  "me": {
+   "hand": [
+    "Copycat B1 225",
+    "Misty A1 220",
+    "Professor's Research P-A 007",
+    "Mega Sharpedo ex B4 035",
+    "Poké Ball P-A 005"
+   ],
+   "discard": [
+    "Lucky Ice Pop B2 145",
+    "Irida A2a 072",
+    "Poké Ball P-A 005",
+    "Alolan Ninetales ex B2 029",
+    "Alolan Vulpix B2 028",
+    "Professor's Research P-A 007"
+   ],
+   "discard_energy": [
+    "Water",
+    "Water",
+    "Water"
+   ],
+   "board": [
+    {
+     "card": "Alolan Ninetales ex B2 029",
+     "hp": 150,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Alolan Vulpix B2 028"
+     ]
+    },
+    {
+     "card": "Lapras A3 044",
+     "hp": 110,
+     "energy": [
+      "Water"
+     ]
+    },
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 110,
+     "energy": [
+      "Water",
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 3,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Arctibax B2a 035",
+     "hp": 90,
+     "behind": [
+      "Frigibax B2a 034"
+     ]
+    },
+    {
+     "card": "Baxcalibur B2a 036",
+     "hp": 20,
+     "behind": [
+      "Frigibax B2a 034",
+      "Arctibax B2a 035"
+     ]
+    },
+    {
+     "card": "Wailord ex B4 037",
+     "hp": 250,
+     "energy": [
+      "Water",
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Wailmer B4 036"
+     ]
+    },
+    {
+     "card": "Mega Blastoise ex B1a 020",
+     "hp": 50,
+     "energy": [
+      "Water"
+     ],
+     "behind": [
+      "Squirtle B1a 017",
+      "Wartortle B1a 018"
+     ]
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": {
+   "card": "Soothing Shore B4 154",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Poké Ball",
+   "Play:Professor's Research",
+   "Place:Carvanha",
+   "Attach:1Water@3 zone",
+   "Attack:Binding Snow"
+  ],
+  "hand_source": "codex",
+  "decision_maker": "Auto",
+  "exact_list": true,
+  "milestones": [
+   "preparing an attacker"
+  ],
+  "notes": "Alolan Ninetales ex stack forced by the evolution rules (no Rare Candy in either list); Arctibax stack forced by the evolution rules (no Rare Candy in either list); Baxcalibur stack forced by the evolution rules (no Rare Candy in either list); Mega Blastoise ex stack forced by the evolution rules (no Rare Candy in either list); Mega Sharpedo ex stack forced by the evolution rules (no Rare Candy in either list); Wailord ex stack forced by the evolution rules (no Rare Candy in either list). The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "won 3-2"
+ },
+ {
+  "id": "B-205731-t18",
+  "game": "cmp-20261002_205731000",
+  "his_turn": 9,
+  "deck": "A",
+  "turn_count": 18,
+  "points": [
+   1,
+   2
+  ],
+  "me": {
+   "hand": [
+    "Copycat B1 225",
+    "Misty A1 220",
+    "Mega Sharpedo ex B4 035",
+    "Misty A1 220",
+    "Cyrus A2 150",
+    "Elegant Cape B3b 065"
+   ],
+   "discard": [
+    "Lucky Ice Pop B2 145",
+    "Irida A2a 072",
+    "Poké Ball P-A 005",
+    "Alolan Ninetales ex B2 029",
+    "Alolan Vulpix B2 028",
+    "Professor's Research P-A 007",
+    "Poké Ball P-A 005",
+    "Professor's Research P-A 007"
+   ],
+   "discard_energy": [
+    "Water",
+    "Water",
+    "Water"
+   ],
+   "board": [
+    {
+     "card": "Alolan Ninetales ex B2 029",
+     "hp": 150,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Alolan Vulpix B2 028"
+     ]
+    },
+    {
+     "card": "Carvanha B4 034",
+     "hp": 50,
+     "energy": [
+      "Water"
+     ]
+    },
+    {
+     "card": "Lapras A3 044",
+     "hp": 110,
+     "energy": [
+      "Water"
+     ]
+    },
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 130,
+     "energy": [
+      "Water",
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 3,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Arctibax B2a 035",
+     "hp": 10,
+     "behind": [
+      "Frigibax B2a 034"
+     ]
+    },
+    {
+     "card": "Baxcalibur B2a 036",
+     "hp": 20,
+     "behind": [
+      "Frigibax B2a 034",
+      "Arctibax B2a 035"
+     ]
+    },
+    {
+     "card": "Wailord ex B4 037",
+     "hp": 250,
+     "energy": [
+      "Water",
+      "Water",
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Wailmer B4 036"
+     ]
+    },
+    {
+     "card": "Mega Blastoise ex B1a 020",
+     "hp": 70,
+     "energy": [
+      "Water"
+     ],
+     "behind": [
+      "Squirtle B1a 017",
+      "Wartortle B1a 018"
+     ]
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": {
+   "card": "Soothing Shore B4 154",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Cyrus",
+   "Activate:1@3",
+   "Attack:Binding Snow"
+  ],
+  "hand_source": "codex",
+  "decision_maker": "Auto",
+  "exact_list": true,
+  "milestones": [
+   "recognising an immediate win"
+  ],
+  "notes": "Alolan Ninetales ex stack forced by the evolution rules (no Rare Candy in either list); Arctibax stack forced by the evolution rules (no Rare Candy in either list); Baxcalibur stack forced by the evolution rules (no Rare Candy in either list); Mega Blastoise ex stack forced by the evolution rules (no Rare Candy in either list); Mega Sharpedo ex stack forced by the evolution rules (no Rare Candy in either list); Wailord ex stack forced by the evolution rules (no Rare Candy in either list). The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "won 3-2"
+ },
+ {
+  "id": "B-210612-t01",
+  "game": "cmp-20261002_210612000",
+  "his_turn": 1,
+  "deck": "A",
+  "turn_count": 1,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Lucky Ice Pop B2 145",
+    "Mega Sharpedo ex B4 035",
+    "Irida A2a 072",
+    "Alolan Ninetales ex B2 029",
+    "Elegant Cape B3b 065"
+   ],
+   "discard": [],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Alolan Vulpix B2 028",
+     "hp": 60
+    }
+   ],
+   "energy_now": null,
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 4,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Squirtle B1a 017",
+     "hp": 70
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [],
+  "hand_source": "codex",
+  "decision_maker": "Auto",
+  "exact_list": true,
+  "milestones": [],
+  "notes": "The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "won 3-0"
+ },
+ {
+  "id": "B-210612-t03",
+  "game": "cmp-20261002_210612000",
+  "his_turn": 2,
+  "deck": "A",
+  "turn_count": 3,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Lucky Ice Pop B2 145",
+    "Mega Sharpedo ex B4 035",
+    "Irida A2a 072",
+    "Alolan Ninetales ex B2 029",
+    "Elegant Cape B3b 065",
+    "Misty A1 220"
+   ],
+   "discard": [],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Alolan Vulpix B2 028",
+     "hp": 60
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 5,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Squirtle B1a 017",
+     "hp": 70,
+     "energy": [
+      "Water"
+     ]
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Evolve:Alolan Ninetales ex@0",
+   "Play:Misty",
+   "MistyTarget@0",
+   "Attach:1Water@0 zone",
+   "Play:Elegant Cape",
+   "Tool:Elegant Cape@0"
+  ],
+  "hand_source": "codex",
+  "decision_maker": "Auto",
+  "exact_list": true,
+  "milestones": [
+   "preparing an attacker"
+  ],
+  "notes": "The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "won 3-0"
+ },
+ {
+  "id": "B-210612-t05",
+  "game": "cmp-20261002_210612000",
+  "his_turn": 3,
+  "deck": "A",
+  "turn_count": 5,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Lucky Ice Pop B2 145",
+    "Mega Sharpedo ex B4 035",
+    "Irida A2a 072",
+    "Poké Ball P-A 005"
+   ],
+   "discard": [
+    "Misty A1 220"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Alolan Ninetales ex B2 029",
+     "hp": 180,
+     "energy": [
+      "Water"
+     ],
+     "tools": [
+      "Elegant Cape B3b 065"
+     ],
+     "behind": [
+      "Alolan Vulpix B2 028"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 4,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Wartortle B1a 018",
+     "hp": 90,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Squirtle B1a 017"
+     ]
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": {
+   "card": "Soothing Shore B4 154",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Poké Ball",
+   "Place:Carvanha",
+   "Attach:1Water@0 zone",
+   "Attack:Binding Snow"
+  ],
+  "hand_source": "codex",
+  "decision_maker": "Auto",
+  "exact_list": true,
+  "milestones": [],
+  "notes": "Alolan Ninetales ex stack forced by the evolution rules (no Rare Candy in either list); Wartortle stack forced by the evolution rules (no Rare Candy in either list). The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "won 3-0"
+ },
+ {
+  "id": "B-210612-t07",
+  "game": "cmp-20261002_210612000",
+  "his_turn": 4,
+  "deck": "A",
+  "turn_count": 7,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Lucky Ice Pop B2 145",
+    "Mega Sharpedo ex B4 035",
+    "Irida A2a 072",
+    "Professor's Research P-A 007"
+   ],
+   "discard": [
+    "Misty A1 220",
+    "Poké Ball P-A 005"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Alolan Ninetales ex B2 029",
+     "hp": 180,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "tools": [
+      "Elegant Cape B3b 065"
+     ],
+     "behind": [
+      "Alolan Vulpix B2 028"
+     ]
+    },
+    {
+     "card": "Carvanha B4 034",
+     "hp": 50
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 4,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Wartortle B1a 018",
+     "hp": 30,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Squirtle B1a 017"
+     ]
+    },
+    {
+     "card": "Squirtle B1a 017",
+     "hp": 70,
+     "energy": [
+      "Water"
+     ]
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": {
+   "card": "Soothing Shore B4 154",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Professor's Research",
+   "Evolve:Mega Sharpedo ex@1",
+   "Attach:1Water@1 zone",
+   "Attack:Binding Snow"
+  ],
+  "hand_source": "codex",
+  "decision_maker": "Auto",
+  "exact_list": true,
+  "milestones": [
+   "preparing an attacker"
+  ],
+  "notes": "Alolan Ninetales ex stack forced by the evolution rules (no Rare Candy in either list); Wartortle stack forced by the evolution rules (no Rare Candy in either list). The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "won 3-0"
+ },
+ {
+  "id": "B-210612-t09",
+  "game": "cmp-20261002_210612000",
+  "his_turn": 5,
+  "deck": "A",
+  "turn_count": 9,
+  "points": [
+   1,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Lucky Ice Pop B2 145",
+    "Irida A2a 072",
+    "Copycat B1 225",
+    "Professor's Research P-A 007",
+    "Lapras A3 044"
+   ],
+   "discard": [
+    "Misty A1 220",
+    "Poké Ball P-A 005",
+    "Professor's Research P-A 007"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Alolan Ninetales ex B2 029",
+     "hp": 180,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "tools": [
+      "Elegant Cape B3b 065"
+     ],
+     "behind": [
+      "Alolan Vulpix B2 028"
+     ]
+    },
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 190,
+     "energy": [
+      "Water"
+     ],
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 4,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Wailmer B4 036",
+     "hp": 100,
+     "energy": [
+      "Water"
+     ]
+    },
+    {
+     "card": "Squirtle B1a 017",
+     "hp": 70
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": {
+   "card": "Soothing Shore B4 154",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Professor's Research",
+   "Place:Lapras",
+   "Attach:1Water@2 zone",
+   "Attack:Binding Snow"
+  ],
+  "hand_source": "codex",
+  "decision_maker": "Auto",
+  "exact_list": true,
+  "milestones": [
+   "preparing an attacker"
+  ],
+  "notes": "Alolan Ninetales ex stack forced by the evolution rules (no Rare Candy in either list); Mega Sharpedo ex stack forced by the evolution rules (no Rare Candy in either list). The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "won 3-0"
+ },
+ {
+  "id": "B-210612-t11",
+  "game": "cmp-20261002_210612000",
+  "his_turn": 6,
+  "deck": "A",
+  "turn_count": 11,
+  "points": [
+   1,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Lucky Ice Pop B2 145",
+    "Irida A2a 072",
+    "Copycat B1 225",
+    "Cyrus A2 150",
+    "Mega Sharpedo ex B4 035",
+    "Alolan Vulpix B2 028"
+   ],
+   "discard": [
+    "Misty A1 220",
+    "Poké Ball P-A 005",
+    "Professor's Research P-A 007",
+    "Professor's Research P-A 007"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Alolan Ninetales ex B2 029",
+     "hp": 180,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "tools": [
+      "Elegant Cape B3b 065"
+     ],
+     "behind": [
+      "Alolan Vulpix B2 028"
+     ]
+    },
+    {
+     "card": "Lapras A3 044",
+     "hp": 110,
+     "energy": [
+      "Water"
+     ]
+    },
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 190,
+     "energy": [
+      "Water"
+     ],
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 5,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Wailmer B4 036",
+     "hp": 40,
+     "energy": [
+      "Water"
+     ]
+    },
+    {
+     "card": "Squirtle B1a 017",
+     "hp": 70,
+     "energy": [
+      "Water"
+     ]
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": {
+   "card": "Soothing Shore B4 154",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Place:Alolan Vulpix",
+   "Attach:1Water@3 zone",
+   "Attack:Binding Snow"
+  ],
+  "hand_source": "codex",
+  "decision_maker": "Auto",
+  "exact_list": true,
+  "milestones": [
+   "preparing an attacker"
+  ],
+  "notes": "Alolan Ninetales ex stack forced by the evolution rules (no Rare Candy in either list); Mega Sharpedo ex stack forced by the evolution rules (no Rare Candy in either list). The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "won 3-0"
+ },
+ {
+  "id": "B-210612-t13",
+  "game": "cmp-20261002_210612000",
+  "his_turn": 7,
+  "deck": "A",
+  "turn_count": 13,
+  "points": [
+   2,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Lucky Ice Pop B2 145",
+    "Irida A2a 072",
+    "Copycat B1 225",
+    "Cyrus A2 150",
+    "Mega Sharpedo ex B4 035",
+    "Alolan Ninetales ex B2 029"
+   ],
+   "discard": [
+    "Misty A1 220",
+    "Poké Ball P-A 005",
+    "Professor's Research P-A 007",
+    "Professor's Research P-A 007"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Alolan Ninetales ex B2 029",
+     "hp": 180,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "tools": [
+      "Elegant Cape B3b 065"
+     ],
+     "behind": [
+      "Alolan Vulpix B2 028"
+     ]
+    },
+    {
+     "card": "Alolan Vulpix B2 028",
+     "hp": 60,
+     "energy": [
+      "Water"
+     ]
+    },
+    {
+     "card": "Lapras A3 044",
+     "hp": 110,
+     "energy": [
+      "Water"
+     ]
+    },
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 190,
+     "energy": [
+      "Water"
+     ],
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 5,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Squirtle B1a 017",
+     "hp": 70,
+     "energy": [
+      "Water"
+     ]
+    },
+    {
+     "card": "Frigibax B2a 034",
+     "hp": 60,
+     "energy": [
+      "Water"
+     ]
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": {
+   "card": "Soothing Shore B4 154",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Evolve:Alolan Ninetales ex@1",
+   "Attach:1Water@1 zone",
+   "Attack:Binding Snow"
+  ],
+  "hand_source": "codex",
+  "decision_maker": "Auto",
+  "exact_list": true,
+  "milestones": [
+   "preparing an attacker",
+   "recognising an immediate win"
+  ],
+  "notes": "Alolan Ninetales ex stack forced by the evolution rules (no Rare Candy in either list); Mega Sharpedo ex stack forced by the evolution rules (no Rare Candy in either list). The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "won 3-0"
+ },
+ {
+  "id": "B-210952-t02",
+  "game": "cmp-20261002_210952000",
+  "his_turn": 1,
+  "deck": "A",
+  "turn_count": 2,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Irida A2a 072",
+    "Copycat B1 225",
+    "Mega Sharpedo ex B4 035",
+    "Professor's Research P-A 007",
+    "Alolan Ninetales ex B2 029"
+   ],
+   "discard": [],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Lapras A3 044",
+     "hp": 110
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 5,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Wailmer B4 036",
+     "hp": 100
+    },
+    {
+     "card": "Frigibax B2a 034",
+     "hp": 60
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Professor's Research",
+   "Play:Poké Ball",
+   "Place:Alolan Vulpix",
+   "Attach:1Water@0 zone"
+  ],
+  "hand_source": "codex",
+  "decision_maker": "Auto",
+  "exact_list": true,
+  "milestones": [],
+  "notes": "The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "lost 2-3"
+ },
+ {
+  "id": "B-210952-t04",
+  "game": "cmp-20261002_210952000",
+  "his_turn": 2,
+  "deck": "A",
+  "turn_count": 4,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Irida A2a 072",
+    "Copycat B1 225",
+    "Mega Sharpedo ex B4 035",
+    "Alolan Ninetales ex B2 029",
+    "Alolan Ninetales ex B2 029",
+    "Lucky Ice Pop B2 145"
+   ],
+   "discard": [
+    "Professor's Research P-A 007",
+    "Poké Ball P-A 005"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Lapras A3 044",
+     "hp": 110,
+     "energy": [
+      "Water"
+     ]
+    },
+    {
+     "card": "Alolan Vulpix B2 028",
+     "hp": 60
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 3,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Wailmer B4 036",
+     "hp": 100,
+     "energy": [
+      "Water"
+     ]
+    },
+    {
+     "card": "Squirtle B1a 017",
+     "hp": 70
+    },
+    {
+     "card": "Arctibax B2a 035",
+     "hp": 90,
+     "behind": [
+      "Frigibax B2a 034"
+     ]
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": {
+   "card": "Soothing Shore B4 154",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Evolve:Alolan Ninetales ex@1",
+   "Attach:1Water@0 zone"
+  ],
+  "hand_source": "codex",
+  "decision_maker": "Auto",
+  "exact_list": true,
+  "milestones": [
+   "preparing an attacker"
+  ],
+  "notes": "Arctibax stack forced by the evolution rules (no Rare Candy in either list). The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "lost 2-3"
+ },
+ {
+  "id": "B-210952-t06",
+  "game": "cmp-20261002_210952000",
+  "his_turn": 3,
+  "deck": "A",
+  "turn_count": 6,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Irida A2a 072",
+    "Copycat B1 225",
+    "Mega Sharpedo ex B4 035",
+    "Alolan Ninetales ex B2 029",
+    "Lucky Ice Pop B2 145",
+    "Professor's Research P-A 007"
+   ],
+   "discard": [
+    "Professor's Research P-A 007",
+    "Poké Ball P-A 005"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Lapras A3 044",
+     "hp": 50,
+     "energy": [
+      "Water",
+      "Water"
+     ]
+    },
+    {
+     "card": "Alolan Ninetales ex B2 029",
+     "hp": 150,
+     "behind": [
+      "Alolan Vulpix B2 028"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 2,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Wailmer B4 036",
+     "hp": 100,
+     "energy": [
+      "Water",
+      "Water",
+      "Water"
+     ]
+    },
+    {
+     "card": "Wartortle B1a 018",
+     "hp": 90,
+     "behind": [
+      "Squirtle B1a 017"
+     ]
+    },
+    {
+     "card": "Baxcalibur B2a 036",
+     "hp": 140,
+     "behind": [
+      "Frigibax B2a 034",
+      "Arctibax B2a 035"
+     ]
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": {
+   "card": "Soothing Shore B4 154",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Professor's Research",
+   "Play:Lucky Ice Pop",
+   "Play:Lucky Ice Pop",
+   "Attach:1Water@0 zone",
+   "Attack:Surf"
+  ],
+  "hand_source": "codex",
+  "decision_maker": "Auto",
+  "exact_list": true,
+  "milestones": [],
+  "notes": "Alolan Ninetales ex stack forced by the evolution rules (no Rare Candy in either list); Baxcalibur stack forced by the evolution rules (no Rare Candy in either list); Wartortle stack forced by the evolution rules (no Rare Candy in either list). The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "lost 2-3"
+ },
+ {
+  "id": "B-210952-t08",
+  "game": "cmp-20261002_210952000",
+  "his_turn": 4,
+  "deck": "A",
+  "turn_count": 8,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Irida A2a 072",
+    "Copycat B1 225",
+    "Mega Sharpedo ex B4 035",
+    "Alolan Ninetales ex B2 029",
+    "Misty A1 220",
+    "Mega Sharpedo ex B4 035",
+    "Carvanha B4 034"
+   ],
+   "discard": [
+    "Professor's Research P-A 007",
+    "Poké Ball P-A 005",
+    "Professor's Research P-A 007",
+    "Lucky Ice Pop B2 145"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Lapras A3 044",
+     "hp": 110,
+     "energy": [
+      "Water",
+      "Water",
+      "Water"
+     ]
+    },
+    {
+     "card": "Alolan Ninetales ex B2 029",
+     "hp": 150,
+     "behind": [
+      "Alolan Vulpix B2 028"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 2,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Baxcalibur B2a 036",
+     "hp": 140,
+     "energy": [
+      "Water"
+     ],
+     "behind": [
+      "Frigibax B2a 034",
+      "Arctibax B2a 035"
+     ]
+    },
+    {
+     "card": "Wartortle B1a 018",
+     "hp": 90,
+     "energy": [
+      "Water"
+     ],
+     "behind": [
+      "Squirtle B1a 017"
+     ]
+    },
+    {
+     "card": "Wailmer B4 036",
+     "hp": 50,
+     "energy": [
+      "Water"
+     ]
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": {
+   "card": "Soothing Shore B4 154",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Place:Carvanha",
+   "Attach:1Water@1 zone",
+   "Attack:Surf"
+  ],
+  "hand_source": "codex",
+  "decision_maker": "Auto",
+  "exact_list": true,
+  "milestones": [
+   "preparing an attacker"
+  ],
+  "notes": "Alolan Ninetales ex stack forced by the evolution rules (no Rare Candy in either list); Baxcalibur stack forced by the evolution rules (no Rare Candy in either list); Wartortle stack forced by the evolution rules (no Rare Candy in either list). The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "lost 2-3"
+ },
+ {
+  "id": "B-210952-t10",
+  "game": "cmp-20261002_210952000",
+  "his_turn": 5,
+  "deck": "A",
+  "turn_count": 10,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Irida A2a 072",
+    "Copycat B1 225",
+    "Mega Sharpedo ex B4 035",
+    "Alolan Ninetales ex B2 029",
+    "Misty A1 220",
+    "Mega Sharpedo ex B4 035",
+    "Elegant Cape B3b 065"
+   ],
+   "discard": [
+    "Professor's Research P-A 007",
+    "Poké Ball P-A 005",
+    "Professor's Research P-A 007",
+    "Lucky Ice Pop B2 145"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Lapras A3 044",
+     "hp": 110,
+     "energy": [
+      "Water",
+      "Water",
+      "Water"
+     ]
+    },
+    {
+     "card": "Carvanha B4 034",
+     "hp": 50
+    },
+    {
+     "card": "Alolan Ninetales ex B2 029",
+     "hp": 150,
+     "energy": [
+      "Water"
+     ],
+     "behind": [
+      "Alolan Vulpix B2 028"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 2,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Baxcalibur B2a 036",
+     "hp": 90,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Frigibax B2a 034",
+      "Arctibax B2a 035"
+     ]
+    },
+    {
+     "card": "Wartortle B1a 018",
+     "hp": 90,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Squirtle B1a 017"
+     ]
+    },
+    {
+     "card": "Wailmer B4 036",
+     "hp": 100
+    },
+    {
+     "card": "Wailmer B4 036",
+     "hp": 70,
+     "energy": [
+      "Water"
+     ]
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": {
+   "card": "Soothing Shore B4 154",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Evolve:Mega Sharpedo ex@1",
+   "Attach:1Water@2 zone",
+   "Attack:Surf"
+  ],
+  "hand_source": "codex",
+  "decision_maker": "Auto",
+  "exact_list": true,
+  "milestones": [
+   "preparing an attacker"
+  ],
+  "notes": "Alolan Ninetales ex stack forced by the evolution rules (no Rare Candy in either list); Baxcalibur stack forced by the evolution rules (no Rare Candy in either list); Wartortle stack forced by the evolution rules (no Rare Candy in either list). The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "lost 2-3"
+ },
+ {
+  "id": "B-210952-t12",
+  "game": "cmp-20261002_210952000",
+  "his_turn": 6,
+  "deck": "A",
+  "turn_count": 12,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Irida A2a 072",
+    "Copycat B1 225",
+    "Alolan Ninetales ex B2 029",
+    "Misty A1 220",
+    "Mega Sharpedo ex B4 035",
+    "Elegant Cape B3b 065",
+    "Misty A1 220"
+   ],
+   "discard": [
+    "Professor's Research P-A 007",
+    "Poké Ball P-A 005",
+    "Professor's Research P-A 007",
+    "Lucky Ice Pop B2 145"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Lapras A3 044",
+     "hp": 110,
+     "energy": [
+      "Water",
+      "Water",
+      "Water"
+     ]
+    },
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 190,
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    },
+    {
+     "card": "Alolan Ninetales ex B2 029",
+     "hp": 150,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Alolan Vulpix B2 028"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 3,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Wailmer B4 036",
+     "hp": 100
+    },
+    {
+     "card": "Wartortle B1a 018",
+     "hp": 90,
+     "energy": [
+      "Water",
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Squirtle B1a 017"
+     ]
+    },
+    {
+     "card": "Baxcalibur B2a 036",
+     "hp": 20,
+     "behind": [
+      "Frigibax B2a 034",
+      "Arctibax B2a 035"
+     ]
+    },
+    {
+     "card": "Wailmer B4 036",
+     "hp": 90,
+     "energy": [
+      "Water"
+     ]
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": {
+   "card": "Soothing Shore B4 154",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Attach:1Water@1 zone",
+   "Attack:Surf"
+  ],
+  "hand_source": "codex",
+  "decision_maker": "Auto",
+  "exact_list": true,
+  "milestones": [
+   "preparing an attacker"
+  ],
+  "notes": "Alolan Ninetales ex stack forced by the evolution rules (no Rare Candy in either list); Baxcalibur stack forced by the evolution rules (no Rare Candy in either list); Mega Sharpedo ex stack forced by the evolution rules (no Rare Candy in either list); Wartortle stack forced by the evolution rules (no Rare Candy in either list). The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "lost 2-3"
+ },
+ {
+  "id": "B-210952-t14",
+  "game": "cmp-20261002_210952000",
+  "his_turn": 7,
+  "deck": "A",
+  "turn_count": 14,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Irida A2a 072",
+    "Copycat B1 225",
+    "Alolan Ninetales ex B2 029",
+    "Misty A1 220",
+    "Mega Sharpedo ex B4 035",
+    "Elegant Cape B3b 065",
+    "Misty A1 220",
+    "Carvanha B4 034"
+   ],
+   "discard": [
+    "Professor's Research P-A 007",
+    "Poké Ball P-A 005",
+    "Professor's Research P-A 007",
+    "Lucky Ice Pop B2 145"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Lapras A3 044",
+     "hp": 110,
+     "energy": [
+      "Water",
+      "Water",
+      "Water"
+     ]
+    },
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 190,
+     "energy": [
+      "Water"
+     ],
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    },
+    {
+     "card": "Alolan Ninetales ex B2 029",
+     "hp": 150,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Alolan Vulpix B2 028"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 3,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Wailmer B4 036",
+     "hp": 50,
+     "energy": [
+      "Water"
+     ]
+    },
+    {
+     "card": "Mega Blastoise ex B1a 020",
+     "hp": 230,
+     "energy": [
+      "Water",
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Squirtle B1a 017",
+      "Wartortle B1a 018"
+     ]
+    },
+    {
+     "card": "Baxcalibur B2a 036",
+     "hp": 20,
+     "behind": [
+      "Frigibax B2a 034",
+      "Arctibax B2a 035"
+     ]
+    },
+    {
+     "card": "Wailmer B4 036",
+     "hp": 100,
+     "energy": [
+      "Water",
+      "Water"
+     ]
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": {
+   "card": "Soothing Shore B4 154",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Place:Carvanha",
+   "Attach:1Water@3 zone",
+   "Attack:Surf"
+  ],
+  "hand_source": "codex",
+  "decision_maker": "Auto",
+  "exact_list": true,
+  "milestones": [
+   "preparing an attacker"
+  ],
+  "notes": "Alolan Ninetales ex stack forced by the evolution rules (no Rare Candy in either list); Baxcalibur stack forced by the evolution rules (no Rare Candy in either list); Mega Blastoise ex stack forced by the evolution rules (no Rare Candy in either list); Mega Sharpedo ex stack forced by the evolution rules (no Rare Candy in either list). The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "lost 2-3"
+ },
+ {
+  "id": "B-210952-t16",
+  "game": "cmp-20261002_210952000",
+  "his_turn": 8,
+  "deck": "A",
+  "turn_count": 16,
+  "points": [
+   1,
+   1
+  ],
+  "me": {
+   "hand": [
+    "Irida A2a 072",
+    "Copycat B1 225",
+    "Alolan Ninetales ex B2 029",
+    "Misty A1 220",
+    "Mega Sharpedo ex B4 035",
+    "Elegant Cape B3b 065",
+    "Misty A1 220",
+    "Alolan Vulpix B2 028"
+   ],
+   "discard": [
+    "Professor's Research P-A 007",
+    "Poké Ball P-A 005",
+    "Professor's Research P-A 007",
+    "Lucky Ice Pop B2 145",
+    "Lapras A3 044"
+   ],
+   "discard_energy": [
+    "Water",
+    "Water",
+    "Water"
+   ],
+   "board": [
+    {
+     "card": "Alolan Ninetales ex B2 029",
+     "hp": 150,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Alolan Vulpix B2 028"
+     ]
+    },
+    {
+     "card": "Carvanha B4 034",
+     "hp": 50,
+     "energy": [
+      "Water"
+     ]
+    },
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 190,
+     "energy": [
+      "Water"
+     ],
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 4,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Mega Blastoise ex B1a 020",
+     "hp": 230,
+     "energy": [
+      "Water",
+      "Water",
+      "Water",
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Squirtle B1a 017",
+      "Wartortle B1a 018"
+     ]
+    },
+    {
+     "card": "Baxcalibur B2a 036",
+     "hp": 20,
+     "behind": [
+      "Frigibax B2a 034",
+      "Arctibax B2a 035"
+     ]
+    },
+    {
+     "card": "Wailmer B4 036",
+     "hp": 100,
+     "energy": [
+      "Water",
+      "Water"
+     ]
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": {
+   "card": "Soothing Shore B4 154",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Place:Alolan Vulpix",
+   "Evolve:Mega Sharpedo ex@1",
+   "Attach:1Water@3 zone",
+   "Attack:Binding Snow"
+  ],
+  "hand_source": "codex",
+  "decision_maker": "Auto",
+  "exact_list": true,
+  "milestones": [
+   "preparing an attacker",
+   "adapting when the plan fails"
+  ],
+  "notes": "Alolan Ninetales ex stack forced by the evolution rules (no Rare Candy in either list); Baxcalibur stack forced by the evolution rules (no Rare Candy in either list); Mega Blastoise ex stack forced by the evolution rules (no Rare Candy in either list); Mega Sharpedo ex stack forced by the evolution rules (no Rare Candy in either list); knocked out between turns: Lapras. The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "lost 2-3"
+ },
+ {
+  "id": "B-210952-t18",
+  "game": "cmp-20261002_210952000",
+  "his_turn": 9,
+  "deck": "A",
+  "turn_count": 18,
+  "points": [
+   1,
+   1
+  ],
+  "me": {
+   "hand": [
+    "Irida A2a 072",
+    "Copycat B1 225",
+    "Alolan Ninetales ex B2 029",
+    "Misty A1 220",
+    "Elegant Cape B3b 065",
+    "Misty A1 220",
+    "Cyrus A2 150"
+   ],
+   "discard": [
+    "Professor's Research P-A 007",
+    "Poké Ball P-A 005",
+    "Professor's Research P-A 007",
+    "Lucky Ice Pop B2 145",
+    "Lapras A3 044"
+   ],
+   "discard_energy": [
+    "Water",
+    "Water",
+    "Water"
+   ],
+   "board": [
+    {
+     "card": "Alolan Ninetales ex B2 029",
+     "hp": 20,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Alolan Vulpix B2 028"
+     ]
+    },
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 190,
+     "energy": [
+      "Water"
+     ],
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    },
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 190,
+     "energy": [
+      "Water"
+     ],
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    },
+    {
+     "card": "Alolan Vulpix B2 028",
+     "hp": 60,
+     "energy": [
+      "Water"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 4,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Mega Blastoise ex B1a 020",
+     "hp": 170,
+     "energy": [
+      "Water",
+      "Water",
+      "Water",
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Squirtle B1a 017",
+      "Wartortle B1a 018"
+     ]
+    },
+    {
+     "card": "Frigibax B2a 034",
+     "hp": 60
+    },
+    {
+     "card": "Baxcalibur B2a 036",
+     "hp": 20,
+     "behind": [
+      "Frigibax B2a 034",
+      "Arctibax B2a 035"
+     ]
+    },
+    {
+     "card": "Wailmer B4 036",
+     "hp": 100,
+     "energy": [
+      "Water",
+      "Water",
+      "Water"
+     ]
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": {
+   "card": "Soothing Shore B4 154",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Evolve:Alolan Ninetales ex@3",
+   "Play:Cyrus",
+   "Activate:1@2",
+   "Retreat:2",
+   "Attach:1Water@3 zone",
+   "Attack:Turbo Shark"
+  ],
+  "hand_source": "codex",
+  "decision_maker": "Auto",
+  "exact_list": true,
+  "milestones": [
+   "preparing an attacker"
+  ],
+  "notes": "Alolan Ninetales ex stack forced by the evolution rules (no Rare Candy in either list); Baxcalibur stack forced by the evolution rules (no Rare Candy in either list); Mega Blastoise ex stack forced by the evolution rules (no Rare Candy in either list); Mega Sharpedo ex stack forced by the evolution rules (no Rare Candy in either list). The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "lost 2-3"
+ },
+ {
+  "id": "B-211613-t01",
+  "game": "cmp-20261002_211613000",
+  "his_turn": 1,
+  "deck": "A",
+  "turn_count": 1,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Irida A2a 072",
+    "Mega Sharpedo ex B4 035",
+    "Alolan Ninetales ex B2 029",
+    "Copycat B1 225",
+    "Elegant Cape B3b 065"
+   ],
+   "discard": [],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Carvanha B4 034",
+     "hp": 50
+    }
+   ],
+   "energy_now": null,
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 3,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Meowth B2 124",
+     "hp": 50
+    },
+    {
+     "card": "Squirtle B1a 017",
+     "hp": 70
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [],
+  "hand_source": "codex",
+  "decision_maker": "Auto",
+  "exact_list": true,
+  "milestones": [],
+  "notes": "The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "won 3-0"
+ },
+ {
+  "id": "B-211613-t03",
+  "game": "cmp-20261002_211613000",
+  "his_turn": 2,
+  "deck": "A",
+  "turn_count": 3,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Irida A2a 072",
+    "Mega Sharpedo ex B4 035",
+    "Alolan Ninetales ex B2 029",
+    "Copycat B1 225",
+    "Elegant Cape B3b 065",
+    "Poké Ball P-A 005"
+   ],
+   "discard": [],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Carvanha B4 034",
+     "hp": 50
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 5,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Meowth B2 124",
+     "hp": 50,
+     "energy": [
+      "Water"
+     ]
+    },
+    {
+     "card": "Frigibax B2a 034",
+     "hp": 60
+    },
+    {
+     "card": "Squirtle B1a 017",
+     "hp": 70
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Poké Ball",
+   "Place:Alolan Vulpix",
+   "Evolve:Mega Sharpedo ex@0",
+   "Attach:1Water@0 zone",
+   "Attack:Turbo Shark"
+  ],
+  "hand_source": "codex",
+  "decision_maker": "Auto",
+  "exact_list": true,
+  "milestones": [
+   "preparing an attacker"
+  ],
+  "notes": "The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "won 3-0"
+ },
+ {
+  "id": "B-211613-t05",
+  "game": "cmp-20261002_211613000",
+  "his_turn": 3,
+  "deck": "A",
+  "turn_count": 5,
+  "points": [
+   1,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Irida A2a 072",
+    "Alolan Ninetales ex B2 029",
+    "Copycat B1 225",
+    "Elegant Cape B3b 065",
+    "Lucky Ice Pop B2 145"
+   ],
+   "discard": [
+    "Poké Ball P-A 005"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 190,
+     "energy": [
+      "Water"
+     ],
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    },
+    {
+     "card": "Alolan Vulpix B2 028",
+     "hp": 60,
+     "energy": [
+      "Water"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 4,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Wartortle B1a 018",
+     "hp": 90,
+     "energy": [
+      "Water"
+     ],
+     "behind": [
+      "Squirtle B1a 017"
+     ]
+    },
+    {
+     "card": "Arctibax B2a 035",
+     "hp": 90,
+     "behind": [
+      "Frigibax B2a 034"
+     ]
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": {
+   "card": "Soothing Shore B4 154",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Evolve:Alolan Ninetales ex@1",
+   "Play:Elegant Cape",
+   "Tool:Elegant Cape@1",
+   "Play:Copycat",
+   "Place:Alolan Vulpix",
+   "Retreat:1",
+   "Attach:1Water@0 zone",
+   "Attack:Binding Snow"
+  ],
+  "hand_source": "codex",
+  "decision_maker": "Auto",
+  "exact_list": true,
+  "milestones": [
+   "preparing an attacker",
+   "managing a sacrifice"
+  ],
+  "notes": "The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "won 3-0"
+ },
+ {
+  "id": "B-211613-t07",
+  "game": "cmp-20261002_211613000",
+  "his_turn": 4,
+  "deck": "A",
+  "turn_count": 7,
+  "points": [
+   1,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Misty A1 220",
+    "Professor's Research P-A 007",
+    "Professor's Research P-A 007",
+    "Misty A1 220"
+   ],
+   "discard": [
+    "Poké Ball P-A 005",
+    "Copycat B1 225"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Alolan Ninetales ex B2 029",
+     "hp": 180,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "tools": [
+      "Elegant Cape B3b 065"
+     ],
+     "behind": [
+      "Alolan Vulpix B2 028"
+     ]
+    },
+    {
+     "card": "Alolan Vulpix B2 028",
+     "hp": 60
+    },
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 190,
+     "energy": [
+      "Water"
+     ],
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 4,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Wartortle B1a 018",
+     "hp": 30,
+     "energy": [
+      "Water"
+     ],
+     "behind": [
+      "Squirtle B1a 017"
+     ]
+    },
+    {
+     "card": "Baxcalibur B2a 036",
+     "hp": 140,
+     "energy": [
+      "Water"
+     ],
+     "behind": [
+      "Frigibax B2a 034",
+      "Arctibax B2a 035"
+     ]
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": {
+   "card": "Soothing Shore B4 154",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Professor's Research",
+   "Attach:1Water@1 zone",
+   "Attack:Binding Snow"
+  ],
+  "hand_source": "codex",
+  "decision_maker": "Auto",
+  "exact_list": true,
+  "milestones": [
+   "preparing an attacker"
+  ],
+  "notes": "The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "won 3-0"
+ },
+ {
+  "id": "B-211613-t09",
+  "game": "cmp-20261002_211613000",
+  "his_turn": 5,
+  "deck": "A",
+  "turn_count": 9,
+  "points": [
+   2,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Misty A1 220",
+    "Professor's Research P-A 007",
+    "Misty A1 220",
+    "Cyrus A2 150",
+    "Lucky Ice Pop B2 145",
+    "Lapras A3 044"
+   ],
+   "discard": [
+    "Poké Ball P-A 005",
+    "Copycat B1 225",
+    "Professor's Research P-A 007"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Alolan Ninetales ex B2 029",
+     "hp": 180,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "tools": [
+      "Elegant Cape B3b 065"
+     ],
+     "behind": [
+      "Alolan Vulpix B2 028"
+     ]
+    },
+    {
+     "card": "Alolan Vulpix B2 028",
+     "hp": 60,
+     "energy": [
+      "Water"
+     ]
+    },
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 190,
+     "energy": [
+      "Water"
+     ],
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 4,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Baxcalibur B2a 036",
+     "hp": 140,
+     "energy": [
+      "Water"
+     ],
+     "behind": [
+      "Frigibax B2a 034",
+      "Arctibax B2a 035"
+     ]
+    },
+    {
+     "card": "Wailmer B4 036",
+     "hp": 100,
+     "energy": [
+      "Water"
+     ]
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": {
+   "card": "Soothing Shore B4 154",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Professor's Research",
+   "Play:Poké Ball",
+   "Evolve:Alolan Ninetales ex@1",
+   "Attach:1Water@1 zone",
+   "Attack:Binding Snow"
+  ],
+  "hand_source": "codex",
+  "decision_maker": "Auto",
+  "exact_list": true,
+  "milestones": [
+   "preparing an attacker"
+  ],
+  "notes": "The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "won 3-0"
+ },
+ {
+  "id": "B-211613-t11",
+  "game": "cmp-20261002_211613000",
+  "his_turn": 6,
+  "deck": "A",
+  "turn_count": 11,
+  "points": [
+   2,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Misty A1 220",
+    "Misty A1 220",
+    "Cyrus A2 150",
+    "Lucky Ice Pop B2 145",
+    "Lapras A3 044",
+    "Carvanha B4 034",
+    "Irida A2a 072"
+   ],
+   "discard": [
+    "Poké Ball P-A 005",
+    "Copycat B1 225",
+    "Professor's Research P-A 007",
+    "Professor's Research P-A 007",
+    "Poké Ball P-A 005"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Alolan Ninetales ex B2 029",
+     "hp": 180,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "tools": [
+      "Elegant Cape B3b 065"
+     ],
+     "behind": [
+      "Alolan Vulpix B2 028"
+     ]
+    },
+    {
+     "card": "Alolan Ninetales ex B2 029",
+     "hp": 150,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Alolan Vulpix B2 028"
+     ]
+    },
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 190,
+     "energy": [
+      "Water"
+     ],
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 2,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Baxcalibur B2a 036",
+     "hp": 80,
+     "energy": [
+      "Water"
+     ],
+     "behind": [
+      "Frigibax B2a 034",
+      "Arctibax B2a 035"
+     ]
+    },
+    {
+     "card": "Wailord ex B4 037",
+     "hp": 250,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Wailmer B4 036"
+     ]
+    },
+    {
+     "card": "Squirtle B1a 017",
+     "hp": 70
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": {
+   "card": "Soothing Shore B4 154",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Attach:1Water@2 zone",
+   "Attack:Binding Snow"
+  ],
+  "hand_source": "codex",
+  "decision_maker": "Auto",
+  "exact_list": true,
+  "milestones": [
+   "preparing an attacker",
+   "recognising an immediate win"
+  ],
+  "notes": "The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "won 3-0"
+ },
+ {
+  "id": "B-214254-t02",
+  "game": "cmp-20261002_214254000",
+  "his_turn": 1,
+  "deck": "A",
+  "turn_count": 2,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Mega Sharpedo ex B4 035",
+    "Irida A2a 072",
+    "Misty A1 220",
+    "Elegant Cape B3b 065",
+    "Carvanha B4 034"
+   ],
+   "discard": [],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Alolan Vulpix B2 028",
+     "hp": 60
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 4,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Meowth B2 124",
+     "hp": 50
+    },
+    {
+     "card": "Frigibax B2a 034",
+     "hp": 60
+    },
+    {
+     "card": "Squirtle B1a 017",
+     "hp": 70
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Place:Carvanha",
+   "Play:Misty",
+   "MistyTarget@0",
+   "Attach:1Water@1 zone",
+   "Attack:Gnaw"
+  ],
+  "hand_source": "codex",
+  "decision_maker": "Dustin",
+  "exact_list": true,
+  "milestones": [
+   "preparing an attacker"
+  ],
+  "notes": "The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "won 3-0"
+ },
+ {
+  "id": "B-214254-t04",
+  "game": "cmp-20261002_214254000",
+  "his_turn": 2,
+  "deck": "A",
+  "turn_count": 4,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Mega Sharpedo ex B4 035",
+    "Irida A2a 072",
+    "Elegant Cape B3b 065",
+    "Carvanha B4 034"
+   ],
+   "discard": [
+    "Misty A1 220"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Alolan Vulpix B2 028",
+     "hp": 60,
+     "energy": [
+      "Water"
+     ]
+    },
+    {
+     "card": "Carvanha B4 034",
+     "hp": 50,
+     "energy": [
+      "Water"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 4,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Meowth B2 124",
+     "hp": 50,
+     "energy": [
+      "Water"
+     ]
+    },
+    {
+     "card": "Arctibax B2a 035",
+     "hp": 90,
+     "behind": [
+      "Frigibax B2a 034"
+     ]
+    },
+    {
+     "card": "Squirtle B1a 017",
+     "hp": 70
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": {
+   "card": "Soothing Shore B4 154",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Place:Carvanha",
+   "Evolve:Mega Sharpedo ex@1",
+   "Retreat:1",
+   "Attach:1Water@1 zone",
+   "Play:Elegant Cape",
+   "Tool:Elegant Cape@0",
+   "Attack:Turbo Shark",
+   "Attach:1Water@2 fx"
+  ],
+  "hand_source": "codex",
+  "decision_maker": "Dustin",
+  "exact_list": true,
+  "milestones": [
+   "preparing an attacker"
+  ],
+  "notes": "The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "won 3-0"
+ },
+ {
+  "id": "B-214254-t06",
+  "game": "cmp-20261002_214254000",
+  "his_turn": 3,
+  "deck": "A",
+  "turn_count": 6,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Irida A2a 072",
+    "Lucky Ice Pop B2 145"
+   ],
+   "discard": [
+    "Misty A1 220"
+   ],
+   "discard_energy": [
+    "Water"
+   ],
+   "board": [
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 220,
+     "energy": [
+      "Water"
+     ],
+     "tools": [
+      "Elegant Cape B3b 065"
+     ],
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    },
+    {
+     "card": "Carvanha B4 034",
+     "hp": 50,
+     "energy": [
+      "Water"
+     ]
+    },
+    {
+     "card": "Alolan Vulpix B2 028",
+     "hp": 60,
+     "energy": [
+      "Water"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 5,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Meowth B2 124",
+     "hp": 50,
+     "energy": [
+      "Water"
+     ]
+    },
+    {
+     "card": "Wailmer B4 036",
+     "hp": 100,
+     "energy": [
+      "Water"
+     ]
+    },
+    {
+     "card": "Arctibax B2a 035",
+     "hp": 90,
+     "behind": [
+      "Frigibax B2a 034"
+     ]
+    },
+    {
+     "card": "Squirtle B1a 017",
+     "hp": 70
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": {
+   "card": "Soothing Shore B4 154",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Attach:1Water@2 zone",
+   "Attack:Turbo Shark",
+   "Attach:1Water@2 fx"
+  ],
+  "hand_source": "codex",
+  "decision_maker": "Dustin",
+  "exact_list": true,
+  "milestones": [
+   "preparing an attacker"
+  ],
+  "notes": "The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "won 3-0"
+ },
+ {
+  "id": "B-214254-t08",
+  "game": "cmp-20261002_214254000",
+  "his_turn": 4,
+  "deck": "A",
+  "turn_count": 8,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Irida A2a 072",
+    "Lucky Ice Pop B2 145",
+    "Mega Sharpedo ex B4 035"
+   ],
+   "discard": [
+    "Misty A1 220"
+   ],
+   "discard_energy": [
+    "Water"
+   ],
+   "board": [
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 220,
+     "energy": [
+      "Water"
+     ],
+     "tools": [
+      "Elegant Cape B3b 065"
+     ],
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    },
+    {
+     "card": "Carvanha B4 034",
+     "hp": 50,
+     "energy": [
+      "Water"
+     ]
+    },
+    {
+     "card": "Alolan Vulpix B2 028",
+     "hp": 60,
+     "energy": [
+      "Water",
+      "Water",
+      "Water"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 5,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Meowth B2 124",
+     "hp": 50,
+     "energy": [
+      "Water"
+     ]
+    },
+    {
+     "card": "Wailord ex B4 037",
+     "hp": 250,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Wailmer B4 036"
+     ]
+    },
+    {
+     "card": "Arctibax B2a 035",
+     "hp": 90,
+     "behind": [
+      "Frigibax B2a 034"
+     ]
+    },
+    {
+     "card": "Wartortle B1a 018",
+     "hp": 90,
+     "behind": [
+      "Squirtle B1a 017"
+     ]
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": {
+   "card": "Soothing Shore B4 154",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Evolve:Mega Sharpedo ex@1",
+   "Attach:1Water@1 zone",
+   "Attack:Turbo Shark",
+   "Attach:1Water@2 fx"
+  ],
+  "hand_source": "codex",
+  "decision_maker": "Dustin",
+  "exact_list": true,
+  "milestones": [
+   "preparing an attacker"
+  ],
+  "notes": "The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "won 3-0"
+ },
+ {
+  "id": "B-214254-t10",
+  "game": "cmp-20261002_214254000",
+  "his_turn": 5,
+  "deck": "A",
+  "turn_count": 10,
+  "points": [
+   1,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Irida A2a 072",
+    "Lucky Ice Pop B2 145",
+    "Misty A1 220"
+   ],
+   "discard": [
+    "Misty A1 220"
+   ],
+   "discard_energy": [
+    "Water"
+   ],
+   "board": [
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 120,
+     "energy": [
+      "Water"
+     ],
+     "tools": [
+      "Elegant Cape B3b 065"
+     ],
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    },
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 190,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    },
+    {
+     "card": "Alolan Vulpix B2 028",
+     "hp": 60,
+     "energy": [
+      "Water",
+      "Water",
+      "Water",
+      "Water"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 4,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Wailord ex B4 037",
+     "hp": 250,
+     "energy": [
+      "Water",
+      "Water",
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Wailmer B4 036"
+     ]
+    },
+    {
+     "card": "Frigibax B2a 034",
+     "hp": 60
+    },
+    {
+     "card": "Baxcalibur B2a 036",
+     "hp": 140,
+     "behind": [
+      "Frigibax B2a 034",
+      "Arctibax B2a 035"
+     ]
+    },
+    {
+     "card": "Wartortle B1a 018",
+     "hp": 90,
+     "behind": [
+      "Squirtle B1a 017"
+     ]
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": {
+   "card": "Soothing Shore B4 154",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Lucky Ice Pop",
+   "Play:Lucky Ice Pop",
+   "Play:Irida",
+   "Attach:1Water@0 zone",
+   "Attack:Turbo Shark",
+   "Attach:1Water@2 fx"
+  ],
+  "hand_source": "codex",
+  "decision_maker": "Dustin",
+  "exact_list": true,
+  "milestones": [
+   "managing a sacrifice"
+  ],
+  "notes": "The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "won 3-0"
+ },
+ {
+  "id": "B-214254-t12",
+  "game": "cmp-20261002_214254000",
+  "his_turn": 6,
+  "deck": "A",
+  "turn_count": 12,
+  "points": [
+   1,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Misty A1 220",
+    "Professor's Research P-A 007"
+   ],
+   "discard": [
+    "Misty A1 220",
+    "Lucky Ice Pop B2 145",
+    "Irida A2a 072"
+   ],
+   "discard_energy": [
+    "Water"
+   ],
+   "board": [
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 120,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "tools": [
+      "Elegant Cape B3b 065"
+     ],
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    },
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 190,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    },
+    {
+     "card": "Alolan Vulpix B2 028",
+     "hp": 60,
+     "energy": [
+      "Water",
+      "Water",
+      "Water",
+      "Water",
+      "Water"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 4,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Wailord ex B4 037",
+     "hp": 200,
+     "energy": [
+      "Water",
+      "Water",
+      "Water",
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Wailmer B4 036"
+     ]
+    },
+    {
+     "card": "Arctibax B2a 035",
+     "hp": 90,
+     "behind": [
+      "Frigibax B2a 034"
+     ]
+    },
+    {
+     "card": "Baxcalibur B2a 036",
+     "hp": 140,
+     "behind": [
+      "Frigibax B2a 034",
+      "Arctibax B2a 035"
+     ]
+    },
+    {
+     "card": "Wartortle B1a 018",
+     "hp": 90,
+     "energy": [
+      "Water"
+     ],
+     "behind": [
+      "Squirtle B1a 017"
+     ]
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": {
+   "card": "Soothing Shore B4 154",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Professor's Research",
+   "Play:Poké Ball",
+   "Place:Alolan Vulpix",
+   "Evolve:Alolan Ninetales ex@2",
+   "Attach:1Water@3 zone",
+   "Retreat:2",
+   "Attack:Binding Snow"
+  ],
+  "hand_source": "codex",
+  "decision_maker": "Dustin",
+  "exact_list": true,
+  "milestones": [
+   "preparing an attacker",
+   "managing a sacrifice"
+  ],
+  "notes": "The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "won 3-0"
+ },
+ {
+  "id": "B-214254-t14",
+  "game": "cmp-20261002_214254000",
+  "his_turn": 7,
+  "deck": "A",
+  "turn_count": 14,
+  "points": [
+   1,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Misty A1 220",
+    "Lapras A3 044"
+   ],
+   "discard": [
+    "Misty A1 220",
+    "Lucky Ice Pop B2 145",
+    "Irida A2a 072",
+    "Professor's Research P-A 007",
+    "Poké Ball P-A 005"
+   ],
+   "discard_energy": [
+    "Water"
+   ],
+   "board": [
+    {
+     "card": "Alolan Ninetales ex B2 029",
+     "hp": 50,
+     "energy": [
+      "Water",
+      "Water",
+      "Water",
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Alolan Vulpix B2 028"
+     ]
+    },
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 190,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    },
+    {
+     "card": "Alolan Vulpix B2 028",
+     "hp": 60,
+     "energy": [
+      "Water"
+     ]
+    },
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 140,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "tools": [
+      "Elegant Cape B3b 065"
+     ],
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 4,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Wailord ex B4 037",
+     "hp": 140,
+     "energy": [
+      "Water",
+      "Water",
+      "Water",
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Wailmer B4 036"
+     ]
+    },
+    {
+     "card": "Arctibax B2a 035",
+     "hp": 90,
+     "behind": [
+      "Frigibax B2a 034"
+     ]
+    },
+    {
+     "card": "Baxcalibur B2a 036",
+     "hp": 140,
+     "behind": [
+      "Frigibax B2a 034",
+      "Arctibax B2a 035"
+     ]
+    },
+    {
+     "card": "Mega Blastoise ex B1a 020",
+     "hp": 230,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Squirtle B1a 017",
+      "Wartortle B1a 018"
+     ]
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": {
+   "card": "Soothing Shore B4 154",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Attach:1Water@2 zone",
+   "Attack:Binding Snow"
+  ],
+  "hand_source": "codex",
+  "decision_maker": "Dustin",
+  "exact_list": true,
+  "milestones": [
+   "preparing an attacker"
+  ],
+  "notes": "The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "won 3-0"
+ },
+ {
+  "id": "B-214254-t16",
+  "game": "cmp-20261002_214254000",
+  "his_turn": 8,
+  "deck": "A",
+  "turn_count": 16,
+  "points": [
+   1,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Misty A1 220",
+    "Lapras A3 044",
+    "Professor's Research P-A 007"
+   ],
+   "discard": [
+    "Misty A1 220",
+    "Lucky Ice Pop B2 145",
+    "Irida A2a 072",
+    "Professor's Research P-A 007",
+    "Poké Ball P-A 005"
+   ],
+   "discard_energy": [
+    "Water"
+   ],
+   "board": [
+    {
+     "card": "Alolan Ninetales ex B2 029",
+     "hp": 70,
+     "energy": [
+      "Water",
+      "Water",
+      "Water",
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Alolan Vulpix B2 028"
+     ]
+    },
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 190,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    },
+    {
+     "card": "Alolan Vulpix B2 028",
+     "hp": 60,
+     "energy": [
+      "Water",
+      "Water"
+     ]
+    },
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 160,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "tools": [
+      "Elegant Cape B3b 065"
+     ],
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 4,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Mega Blastoise ex B1a 020",
+     "hp": 230,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Squirtle B1a 017",
+      "Wartortle B1a 018"
+     ]
+    },
+    {
+     "card": "Arctibax B2a 035",
+     "hp": 90,
+     "behind": [
+      "Frigibax B2a 034"
+     ]
+    },
+    {
+     "card": "Baxcalibur B2a 036",
+     "hp": 140,
+     "energy": [
+      "Water"
+     ],
+     "behind": [
+      "Frigibax B2a 034",
+      "Arctibax B2a 035"
+     ]
+    },
+    {
+     "card": "Wailord ex B4 037",
+     "hp": 80,
+     "energy": [
+      "Water"
+     ],
+     "behind": [
+      "Wailmer B4 036"
+     ]
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": {
+   "card": "Soothing Shore B4 154",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Professor's Research",
+   "Evolve:Alolan Ninetales ex@2",
+   "Attach:1Water@2 zone",
+   "Retreat:2",
+   "Attack:Binding Snow"
+  ],
+  "hand_source": "codex",
+  "decision_maker": "Dustin",
+  "exact_list": true,
+  "milestones": [
+   "preparing an attacker"
+  ],
+  "notes": "The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "won 3-0"
+ },
+ {
+  "id": "B-214254-t18",
+  "game": "cmp-20261002_214254000",
+  "his_turn": 9,
+  "deck": "A",
+  "turn_count": 18,
+  "points": [
+   1,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Misty A1 220",
+    "Lapras A3 044",
+    "Copycat B1 225",
+    "Cyrus A2 150"
+   ],
+   "discard": [
+    "Misty A1 220",
+    "Lucky Ice Pop B2 145",
+    "Irida A2a 072",
+    "Professor's Research P-A 007",
+    "Poké Ball P-A 005",
+    "Professor's Research P-A 007"
+   ],
+   "discard_energy": [
+    "Water",
+    "Water",
+    "Water"
+   ],
+   "board": [
+    {
+     "card": "Alolan Ninetales ex B2 029",
+     "hp": 150,
+     "energy": [
+      "Water",
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Alolan Vulpix B2 028"
+     ]
+    },
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 190,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    },
+    {
+     "card": "Alolan Ninetales ex B2 029",
+     "hp": 90,
+     "energy": [
+      "Water",
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Alolan Vulpix B2 028"
+     ]
+    },
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 180,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "tools": [
+      "Elegant Cape B3b 065"
+     ],
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 4,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Mega Blastoise ex B1a 020",
+     "hp": 170,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Squirtle B1a 017",
+      "Wartortle B1a 018"
+     ]
+    },
+    {
+     "card": "Arctibax B2a 035",
+     "hp": 90,
+     "behind": [
+      "Frigibax B2a 034"
+     ]
+    },
+    {
+     "card": "Baxcalibur B2a 036",
+     "hp": 140,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Frigibax B2a 034",
+      "Arctibax B2a 035"
+     ]
+    },
+    {
+     "card": "Wailord ex B4 037",
+     "hp": 100,
+     "energy": [
+      "Water"
+     ],
+     "behind": [
+      "Wailmer B4 036"
+     ]
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": {
+   "card": "Soothing Shore B4 154",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Copycat",
+   "Play:Poké Ball",
+   "(the Poké Ball had no target: no search, the card stayed in hand)",
+   "Attach:1Water@0 zone",
+   "Attack:Binding Snow"
+  ],
+  "hand_source": "codex",
+  "decision_maker": "Dustin",
+  "exact_list": true,
+  "milestones": [],
+  "notes": "The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "won 3-0"
+ },
+ {
+  "id": "B-214254-t20",
+  "game": "cmp-20261002_214254000",
+  "his_turn": 10,
+  "deck": "A",
+  "turn_count": 20,
+  "points": [
+   1,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Misty A1 220",
+    "Poké Ball P-A 005",
+    "Cyrus A2 150",
+    "Lapras A3 044"
+   ],
+   "discard": [
+    "Misty A1 220",
+    "Lucky Ice Pop B2 145",
+    "Irida A2a 072",
+    "Professor's Research P-A 007",
+    "Poké Ball P-A 005",
+    "Professor's Research P-A 007",
+    "Copycat B1 225"
+   ],
+   "discard_energy": [
+    "Water",
+    "Water",
+    "Water"
+   ],
+   "board": [
+    {
+     "card": "Alolan Ninetales ex B2 029",
+     "hp": 150,
+     "energy": [
+      "Water",
+      "Water",
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Alolan Vulpix B2 028"
+     ]
+    },
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 190,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    },
+    {
+     "card": "Alolan Ninetales ex B2 029",
+     "hp": 110,
+     "energy": [
+      "Water",
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Alolan Vulpix B2 028"
+     ]
+    },
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 200,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "tools": [
+      "Elegant Cape B3b 065"
+     ],
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 4,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Mega Blastoise ex B1a 020",
+     "hp": 110,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Squirtle B1a 017",
+      "Wartortle B1a 018"
+     ]
+    },
+    {
+     "card": "Arctibax B2a 035",
+     "hp": 90,
+     "behind": [
+      "Frigibax B2a 034"
+     ]
+    },
+    {
+     "card": "Baxcalibur B2a 036",
+     "hp": 140,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Frigibax B2a 034",
+      "Arctibax B2a 035"
+     ]
+    },
+    {
+     "card": "Wailord ex B4 037",
+     "hp": 120,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Wailmer B4 036"
+     ]
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": {
+   "card": "Soothing Shore B4 154",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Attack:Binding Snow"
+  ],
+  "hand_source": "codex",
+  "decision_maker": "Dustin",
+  "exact_list": true,
+  "milestones": [],
+  "notes": "The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "won 3-0"
+ },
+ {
+  "id": "B-214254-t22",
+  "game": "cmp-20261002_214254000",
+  "his_turn": 11,
+  "deck": "A",
+  "turn_count": 22,
+  "points": [
+   1,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Misty A1 220",
+    "Poké Ball P-A 005",
+    "Cyrus A2 150",
+    "Lapras A3 044"
+   ],
+   "discard": [
+    "Misty A1 220",
+    "Lucky Ice Pop B2 145",
+    "Irida A2a 072",
+    "Professor's Research P-A 007",
+    "Poké Ball P-A 005",
+    "Professor's Research P-A 007",
+    "Copycat B1 225"
+   ],
+   "discard_energy": [
+    "Water",
+    "Water",
+    "Water"
+   ],
+   "board": [
+    {
+     "card": "Alolan Ninetales ex B2 029",
+     "hp": 150,
+     "energy": [
+      "Water",
+      "Water",
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Alolan Vulpix B2 028"
+     ]
+    },
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 190,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    },
+    {
+     "card": "Alolan Ninetales ex B2 029",
+     "hp": 130,
+     "energy": [
+      "Water",
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Alolan Vulpix B2 028"
+     ]
+    },
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 220,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "tools": [
+      "Elegant Cape B3b 065"
+     ],
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 3,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Baxcalibur B2a 036",
+     "hp": 140,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Frigibax B2a 034",
+      "Arctibax B2a 035"
+     ]
+    },
+    {
+     "card": "Arctibax B2a 035",
+     "hp": 90,
+     "behind": [
+      "Frigibax B2a 034"
+     ]
+    },
+    {
+     "card": "Mega Blastoise ex B1a 020",
+     "hp": 30,
+     "behind": [
+      "Squirtle B1a 017",
+      "Wartortle B1a 018"
+     ]
+    },
+    {
+     "card": "Wailord ex B4 037",
+     "hp": 140,
+     "energy": [
+      "Water",
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Wailmer B4 036"
+     ]
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": {
+   "card": "Soothing Shore B4 154",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Cyrus",
+   "Activate:1@2",
+   "Attack:Binding Snow"
+  ],
+  "hand_source": "codex",
+  "decision_maker": "Dustin",
+  "exact_list": true,
+  "milestones": [
+   "recognising an immediate win"
+  ],
+  "notes": "The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "won 3-0"
+ },
+ {
+  "id": "B-215203-t02",
+  "game": "cmp-20261002_215203000",
+  "his_turn": 1,
+  "deck": "A",
+  "turn_count": 2,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Misty A1 220",
+    "Lucky Ice Pop B2 145",
+    "Alolan Ninetales ex B2 029",
+    "Copycat B1 225"
+   ],
+   "discard": [],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Lapras A3 044",
+     "hp": 110
+    },
+    {
+     "card": "Carvanha B4 034",
+     "hp": 50
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 4,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Meowth B2 124",
+     "hp": 50
+    },
+    {
+     "card": "Frigibax B2a 034",
+     "hp": 60
+    },
+    {
+     "card": "Wailmer B4 036",
+     "hp": 100
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Misty",
+   "MistyTarget@0",
+   "Attach:1Water@0 zone"
+  ],
+  "hand_source": "codex",
+  "decision_maker": "Dustin",
+  "exact_list": true,
+  "milestones": [],
+  "notes": "The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "won 3-0"
+ },
+ {
+  "id": "B-215203-t04",
+  "game": "cmp-20261002_215203000",
+  "his_turn": 2,
+  "deck": "A",
+  "turn_count": 4,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Lucky Ice Pop B2 145",
+    "Alolan Ninetales ex B2 029",
+    "Copycat B1 225",
+    "Alolan Vulpix B2 028"
+   ],
+   "discard": [
+    "Misty A1 220"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Lapras A3 044",
+     "hp": 110,
+     "energy": [
+      "Water",
+      "Water"
+     ]
+    },
+    {
+     "card": "Carvanha B4 034",
+     "hp": 50
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 4,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Meowth B2 124",
+     "hp": 50
+    },
+    {
+     "card": "Squirtle B1a 017",
+     "hp": 70,
+     "energy": [
+      "Water"
+     ]
+    },
+    {
+     "card": "Frigibax B2a 034",
+     "hp": 60
+    },
+    {
+     "card": "Wailmer B4 036",
+     "hp": 100
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Place:Alolan Vulpix",
+   "Play:Copycat",
+   "Evolve:Mega Sharpedo ex@1",
+   "Attach:1Water@0 zone",
+   "Play:Elegant Cape",
+   "Tool:Elegant Cape@1",
+   "Attack:Surf"
+  ],
+  "hand_source": "codex",
+  "decision_maker": "Dustin",
+  "exact_list": true,
+  "milestones": [
+   "preparing an attacker"
+  ],
+  "notes": "The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "won 3-0"
+ },
+ {
+  "id": "B-215203-t06",
+  "game": "cmp-20261002_215203000",
+  "his_turn": 3,
+  "deck": "A",
+  "turn_count": 6,
+  "points": [
+   1,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Alolan Ninetales ex B2 029",
+    "Cyrus A2 150",
+    "Mega Sharpedo ex B4 035"
+   ],
+   "discard": [
+    "Misty A1 220",
+    "Copycat B1 225"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Lapras A3 044",
+     "hp": 110,
+     "energy": [
+      "Water",
+      "Water",
+      "Water"
+     ]
+    },
+    {
+     "card": "Alolan Vulpix B2 028",
+     "hp": 60
+    },
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 220,
+     "tools": [
+      "Elegant Cape B3b 065"
+     ],
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 3,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Wailord ex B4 037",
+     "hp": 250,
+     "behind": [
+      "Wailmer B4 036"
+     ]
+    },
+    {
+     "card": "Wartortle B1a 018",
+     "hp": 90,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Squirtle B1a 017"
+     ]
+    },
+    {
+     "card": "Frigibax B2a 034",
+     "hp": 60
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Evolve:Alolan Ninetales ex@1",
+   "Retreat:2",
+   "Attach:1Water@0 zone",
+   "Attack:Turbo Shark"
+  ],
+  "hand_source": "codex",
+  "decision_maker": "Dustin",
+  "exact_list": true,
+  "milestones": [
+   "preparing an attacker"
+  ],
+  "notes": "The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "won 3-0"
+ },
+ {
+  "id": "B-215203-t08",
+  "game": "cmp-20261002_215203000",
+  "his_turn": 4,
+  "deck": "A",
+  "turn_count": 8,
+  "points": [
+   1,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Cyrus A2 150",
+    "Mega Sharpedo ex B4 035",
+    "Alolan Ninetales ex B2 029"
+   ],
+   "discard": [
+    "Misty A1 220",
+    "Copycat B1 225"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 220,
+     "energy": [
+      "Water"
+     ],
+     "tools": [
+      "Elegant Cape B3b 065"
+     ],
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    },
+    {
+     "card": "Alolan Ninetales ex B2 029",
+     "hp": 150,
+     "energy": [
+      "Water"
+     ],
+     "behind": [
+      "Alolan Vulpix B2 028"
+     ]
+    },
+    {
+     "card": "Lapras A3 044",
+     "hp": 110,
+     "energy": [
+      "Water"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 2,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Wailord ex B4 037",
+     "hp": 180,
+     "behind": [
+      "Wailmer B4 036"
+     ]
+    },
+    {
+     "card": "Mega Blastoise ex B1a 020",
+     "hp": 230,
+     "energy": [
+      "Water",
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Squirtle B1a 017",
+      "Wartortle B1a 018"
+     ]
+    },
+    {
+     "card": "Frigibax B2a 034",
+     "hp": 60
+    },
+    {
+     "card": "Squirtle B1a 017",
+     "hp": 70
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Retreat:1",
+   "Attach:1Water@0 zone",
+   "Attack:Binding Snow"
+  ],
+  "hand_source": "codex",
+  "decision_maker": "Dustin",
+  "exact_list": true,
+  "milestones": [
+   "managing a sacrifice"
+  ],
+  "notes": "The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "won 3-0"
+ },
+ {
+  "id": "B-215203-t10",
+  "game": "cmp-20261002_215203000",
+  "his_turn": 5,
+  "deck": "A",
+  "turn_count": 10,
+  "points": [
+   1,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Cyrus A2 150",
+    "Mega Sharpedo ex B4 035",
+    "Alolan Ninetales ex B2 029",
+    "Professor's Research P-A 007"
+   ],
+   "discard": [
+    "Misty A1 220",
+    "Copycat B1 225"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Alolan Ninetales ex B2 029",
+     "hp": 150,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Alolan Vulpix B2 028"
+     ]
+    },
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 220,
+     "energy": [
+      "Water"
+     ],
+     "tools": [
+      "Elegant Cape B3b 065"
+     ],
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    },
+    {
+     "card": "Lapras A3 044",
+     "hp": 110,
+     "energy": [
+      "Water"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 2,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Wailord ex B4 037",
+     "hp": 100,
+     "behind": [
+      "Wailmer B4 036"
+     ]
+    },
+    {
+     "card": "Mega Blastoise ex B1a 020",
+     "hp": 230,
+     "energy": [
+      "Water",
+      "Water",
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Squirtle B1a 017",
+      "Wartortle B1a 018"
+     ]
+    },
+    {
+     "card": "Arctibax B2a 035",
+     "hp": 90,
+     "behind": [
+      "Frigibax B2a 034"
+     ]
+    },
+    {
+     "card": "Wartortle B1a 018",
+     "hp": 90,
+     "behind": [
+      "Squirtle B1a 017"
+     ]
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Professor's Research",
+   "Play:Poké Ball",
+   "Place:Alolan Vulpix",
+   "Attach:1Water@2 zone",
+   "Attack:Binding Snow"
+  ],
+  "hand_source": "codex",
+  "decision_maker": "Dustin",
+  "exact_list": true,
+  "milestones": [
+   "preparing an attacker"
+  ],
+  "notes": "The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "won 3-0"
+ },
+ {
+  "id": "B-215203-t12",
+  "game": "cmp-20261002_215203000",
+  "his_turn": 6,
+  "deck": "A",
+  "turn_count": 12,
+  "points": [
+   1,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Cyrus A2 150",
+    "Mega Sharpedo ex B4 035",
+    "Alolan Ninetales ex B2 029",
+    "Lucky Ice Pop B2 145",
+    "Professor's Research P-A 007"
+   ],
+   "discard": [
+    "Misty A1 220",
+    "Copycat B1 225",
+    "Professor's Research P-A 007",
+    "Poké Ball P-A 005"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Alolan Ninetales ex B2 029",
+     "hp": 150,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Alolan Vulpix B2 028"
+     ]
+    },
+    {
+     "card": "Alolan Vulpix B2 028",
+     "hp": 60
+    },
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 220,
+     "energy": [
+      "Water"
+     ],
+     "tools": [
+      "Elegant Cape B3b 065"
+     ],
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    },
+    {
+     "card": "Lapras A3 044",
+     "hp": 110,
+     "energy": [
+      "Water",
+      "Water"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 1,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Wailord ex B4 037",
+     "hp": 20,
+     "behind": [
+      "Wailmer B4 036"
+     ]
+    },
+    {
+     "card": "Mega Blastoise ex B1a 020",
+     "hp": 230,
+     "energy": [
+      "Water",
+      "Water",
+      "Water",
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Squirtle B1a 017",
+      "Wartortle B1a 018"
+     ]
+    },
+    {
+     "card": "Baxcalibur B2a 036",
+     "hp": 140,
+     "behind": [
+      "Frigibax B2a 034",
+      "Arctibax B2a 035"
+     ]
+    },
+    {
+     "card": "Wartortle B1a 018",
+     "hp": 90,
+     "behind": [
+      "Squirtle B1a 017"
+     ]
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": {
+   "card": "Soothing Shore B4 154",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Attack:Binding Snow"
+  ],
+  "hand_source": "codex",
+  "decision_maker": "Dustin",
+  "exact_list": true,
+  "milestones": [
+   "recognising an immediate win"
+  ],
+  "notes": "The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "won 3-0"
+ },
+ {
+  "id": "B-215825-t02",
+  "game": "cmp-20261002_215825000",
+  "his_turn": 1,
+  "deck": "A",
+  "turn_count": 2,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Copycat B1 225",
+    "Professor's Research P-A 007",
+    "Alolan Ninetales ex B2 029",
+    "Misty A1 220",
+    "Lucky Ice Pop B2 145"
+   ],
+   "discard": [],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Alolan Vulpix B2 028",
+     "hp": 60
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 4,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Frigibax B2a 034",
+     "hp": 60
+    },
+    {
+     "card": "Meowth B2 124",
+     "hp": 50
+    },
+    {
+     "card": "Squirtle B1a 017",
+     "hp": 70
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Professor's Research",
+   "Place:Carvanha",
+   "Attach:1Water@0 zone",
+   "Attack:Gnaw"
+  ],
+  "hand_source": "codex",
+  "decision_maker": "Dustin",
+  "exact_list": true,
+  "milestones": [],
+  "notes": "The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "won 3-0"
+ },
+ {
+  "id": "B-215825-t04",
+  "game": "cmp-20261002_215825000",
+  "his_turn": 2,
+  "deck": "A",
+  "turn_count": 4,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Copycat B1 225",
+    "Alolan Ninetales ex B2 029",
+    "Misty A1 220",
+    "Lucky Ice Pop B2 145",
+    "Alolan Vulpix B2 028",
+    "Irida A2a 072"
+   ],
+   "discard": [
+    "Professor's Research P-A 007"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Alolan Vulpix B2 028",
+     "hp": 60,
+     "energy": [
+      "Water"
+     ]
+    },
+    {
+     "card": "Carvanha B4 034",
+     "hp": 50
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 5,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Meowth B2 124",
+     "hp": 50,
+     "energy": [
+      "Water"
+     ]
+    },
+    {
+     "card": "Frigibax B2a 034",
+     "hp": 40
+    },
+    {
+     "card": "Squirtle B1a 017",
+     "hp": 70
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": {
+   "card": "Soothing Shore B4 154",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Evolve:Alolan Ninetales ex@0",
+   "Place:Alolan Vulpix",
+   "Play:Copycat",
+   "Play:Elegant Cape",
+   "Tool:Elegant Cape@0",
+   "Evolve:Mega Sharpedo ex@1",
+   "Attach:1Water@0 zone",
+   "Attack:Binding Snow"
+  ],
+  "hand_source": "codex",
+  "decision_maker": "Dustin",
+  "exact_list": true,
+  "milestones": [
+   "preparing an attacker"
+  ],
+  "notes": "The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "won 3-0"
+ },
+ {
+  "id": "B-215825-t06",
+  "game": "cmp-20261002_215825000",
+  "his_turn": 3,
+  "deck": "A",
+  "turn_count": 6,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Lucky Ice Pop B2 145",
+    "Cyrus A2 150",
+    "Misty A1 220",
+    "Mega Sharpedo ex B4 035"
+   ],
+   "discard": [
+    "Professor's Research P-A 007",
+    "Copycat B1 225"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Alolan Ninetales ex B2 029",
+     "hp": 180,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "tools": [
+      "Elegant Cape B3b 065"
+     ],
+     "behind": [
+      "Alolan Vulpix B2 028"
+     ]
+    },
+    {
+     "card": "Alolan Vulpix B2 028",
+     "hp": 60
+    },
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 190,
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 5,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Meowth B2 124",
+     "hp": 50,
+     "energy": [
+      "Water"
+     ]
+    },
+    {
+     "card": "Frigibax B2a 034",
+     "hp": 60
+    },
+    {
+     "card": "Arctibax B2a 035",
+     "hp": 90,
+     "energy": [
+      "Water"
+     ],
+     "behind": [
+      "Frigibax B2a 034"
+     ]
+    },
+    {
+     "card": "Squirtle B1a 017",
+     "hp": 70
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": {
+   "card": "Soothing Shore B4 154",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Attach:1Water@1 zone",
+   "Play:Misty",
+   "MistyTarget@2",
+   "Attack:Binding Snow"
+  ],
+  "hand_source": "codex",
+  "decision_maker": "Dustin",
+  "exact_list": true,
+  "milestones": [
+   "preparing an attacker"
+  ],
+  "notes": "The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "won 3-0"
+ },
+ {
+  "id": "B-215825-t08",
+  "game": "cmp-20261002_215825000",
+  "his_turn": 4,
+  "deck": "A",
+  "turn_count": 8,
+  "points": [
+   1,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Lucky Ice Pop B2 145",
+    "Cyrus A2 150",
+    "Mega Sharpedo ex B4 035",
+    "Lapras A3 044"
+   ],
+   "discard": [
+    "Professor's Research P-A 007",
+    "Copycat B1 225",
+    "Misty A1 220"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Alolan Ninetales ex B2 029",
+     "hp": 180,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "tools": [
+      "Elegant Cape B3b 065"
+     ],
+     "behind": [
+      "Alolan Vulpix B2 028"
+     ]
+    },
+    {
+     "card": "Alolan Vulpix B2 028",
+     "hp": 60,
+     "energy": [
+      "Water"
+     ]
+    },
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 190,
+     "energy": [
+      "Water"
+     ],
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 2,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Baxcalibur B2a 036",
+     "hp": 140,
+     "energy": [
+      "Water"
+     ],
+     "behind": [
+      "Frigibax B2a 034",
+      "Arctibax B2a 035"
+     ]
+    },
+    {
+     "card": "Arctibax B2a 035",
+     "hp": 90,
+     "behind": [
+      "Frigibax B2a 034"
+     ]
+    },
+    {
+     "card": "Squirtle B1a 017",
+     "hp": 70
+    },
+    {
+     "card": "Wartortle B1a 018",
+     "hp": 90,
+     "energy": [
+      "Water"
+     ],
+     "behind": [
+      "Squirtle B1a 017"
+     ]
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": {
+   "card": "Soothing Shore B4 154",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Place:Lapras",
+   "Attach:1Water@3 zone",
+   "Attack:Binding Snow"
+  ],
+  "hand_source": "codex",
+  "decision_maker": "Dustin",
+  "exact_list": true,
+  "milestones": [
+   "preparing an attacker"
+  ],
+  "notes": "The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "won 3-0"
+ },
+ {
+  "id": "B-215825-t10",
+  "game": "cmp-20261002_215825000",
+  "his_turn": 5,
+  "deck": "A",
+  "turn_count": 10,
+  "points": [
+   1,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Lucky Ice Pop B2 145",
+    "Cyrus A2 150",
+    "Mega Sharpedo ex B4 035",
+    "Irida A2a 072"
+   ],
+   "discard": [
+    "Professor's Research P-A 007",
+    "Copycat B1 225",
+    "Misty A1 220"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Alolan Ninetales ex B2 029",
+     "hp": 180,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "tools": [
+      "Elegant Cape B3b 065"
+     ],
+     "behind": [
+      "Alolan Vulpix B2 028"
+     ]
+    },
+    {
+     "card": "Alolan Vulpix B2 028",
+     "hp": 60,
+     "energy": [
+      "Water"
+     ]
+    },
+    {
+     "card": "Lapras A3 044",
+     "hp": 110,
+     "energy": [
+      "Water"
+     ]
+    },
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 190,
+     "energy": [
+      "Water"
+     ],
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 1,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Baxcalibur B2a 036",
+     "hp": 80,
+     "energy": [
+      "Water"
+     ],
+     "behind": [
+      "Frigibax B2a 034",
+      "Arctibax B2a 035"
+     ]
+    },
+    {
+     "card": "Arctibax B2a 035",
+     "hp": 90,
+     "behind": [
+      "Frigibax B2a 034"
+     ]
+    },
+    {
+     "card": "Wartortle B1a 018",
+     "hp": 90,
+     "behind": [
+      "Squirtle B1a 017"
+     ]
+    },
+    {
+     "card": "Mega Blastoise ex B1a 020",
+     "hp": 230,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Squirtle B1a 017",
+      "Wartortle B1a 018"
+     ]
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": {
+   "card": "Soothing Shore B4 154",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Attach:1Water@2 zone",
+   "Attack:Binding Snow"
+  ],
+  "hand_source": "codex",
+  "decision_maker": "Dustin",
+  "exact_list": true,
+  "milestones": [
+   "preparing an attacker"
+  ],
+  "notes": "The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "won 3-0"
+ },
+ {
+  "id": "B-215825-t12",
+  "game": "cmp-20261002_215825000",
+  "his_turn": 6,
+  "deck": "A",
+  "turn_count": 12,
+  "points": [
+   2,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Lucky Ice Pop B2 145",
+    "Cyrus A2 150",
+    "Mega Sharpedo ex B4 035",
+    "Irida A2a 072",
+    "Alolan Ninetales ex B2 029"
+   ],
+   "discard": [
+    "Professor's Research P-A 007",
+    "Copycat B1 225",
+    "Misty A1 220"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Alolan Ninetales ex B2 029",
+     "hp": 180,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "tools": [
+      "Elegant Cape B3b 065"
+     ],
+     "behind": [
+      "Alolan Vulpix B2 028"
+     ]
+    },
+    {
+     "card": "Alolan Vulpix B2 028",
+     "hp": 60,
+     "energy": [
+      "Water"
+     ]
+    },
+    {
+     "card": "Lapras A3 044",
+     "hp": 110,
+     "energy": [
+      "Water",
+      "Water"
+     ]
+    },
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 190,
+     "energy": [
+      "Water"
+     ],
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 1,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Mega Blastoise ex B1a 020",
+     "hp": 230,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Squirtle B1a 017",
+      "Wartortle B1a 018"
+     ]
+    },
+    {
+     "card": "Arctibax B2a 035",
+     "hp": 90,
+     "behind": [
+      "Frigibax B2a 034"
+     ]
+    },
+    {
+     "card": "Wartortle B1a 018",
+     "hp": 90,
+     "energy": [
+      "Water"
+     ],
+     "behind": [
+      "Squirtle B1a 017"
+     ]
+    },
+    {
+     "card": "Wailmer B4 036",
+     "hp": 100
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": {
+   "card": "Soothing Shore B4 154",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Evolve:Alolan Ninetales ex@1",
+   "Attach:1Water@2 zone",
+   "Attack:Binding Snow"
+  ],
+  "hand_source": "codex",
+  "decision_maker": "Dustin",
+  "exact_list": true,
+  "milestones": [
+   "preparing an attacker"
+  ],
+  "notes": "The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "won 3-0"
+ },
+ {
+  "id": "B-215825-t14",
+  "game": "cmp-20261002_215825000",
+  "his_turn": 7,
+  "deck": "A",
+  "turn_count": 14,
+  "points": [
+   2,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Lucky Ice Pop B2 145",
+    "Cyrus A2 150",
+    "Mega Sharpedo ex B4 035",
+    "Irida A2a 072",
+    "Professor's Research P-A 007"
+   ],
+   "discard": [
+    "Professor's Research P-A 007",
+    "Copycat B1 225",
+    "Misty A1 220"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Alolan Ninetales ex B2 029",
+     "hp": 180,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "tools": [
+      "Elegant Cape B3b 065"
+     ],
+     "behind": [
+      "Alolan Vulpix B2 028"
+     ]
+    },
+    {
+     "card": "Alolan Ninetales ex B2 029",
+     "hp": 150,
+     "energy": [
+      "Water"
+     ],
+     "behind": [
+      "Alolan Vulpix B2 028"
+     ]
+    },
+    {
+     "card": "Lapras A3 044",
+     "hp": 110,
+     "energy": [
+      "Water",
+      "Water",
+      "Water"
+     ]
+    },
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 190,
+     "energy": [
+      "Water"
+     ],
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 2,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Mega Blastoise ex B1a 020",
+     "hp": 170,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Squirtle B1a 017",
+      "Wartortle B1a 018"
+     ]
+    },
+    {
+     "card": "Arctibax B2a 035",
+     "hp": 90,
+     "behind": [
+      "Frigibax B2a 034"
+     ]
+    },
+    {
+     "card": "Wartortle B1a 018",
+     "hp": 90,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Squirtle B1a 017"
+     ]
+    },
+    {
+     "card": "Wailmer B4 036",
+     "hp": 100
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": {
+   "card": "Soothing Shore B4 154",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Professor's Research",
+   "Play:Poké Ball",
+   "Attach:1Water@1 zone",
+   "Attack:Binding Snow"
+  ],
+  "hand_source": "codex",
+  "decision_maker": "Dustin",
+  "exact_list": true,
+  "milestones": [
+   "preparing an attacker"
+  ],
+  "notes": "The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "won 3-0"
+ },
+ {
+  "id": "B-215825-t16",
+  "game": "cmp-20261002_215825000",
+  "his_turn": 8,
+  "deck": "A",
+  "turn_count": 16,
+  "points": [
+   2,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Lucky Ice Pop B2 145",
+    "Cyrus A2 150",
+    "Mega Sharpedo ex B4 035",
+    "Irida A2a 072",
+    "Misty A1 220",
+    "Carvanha B4 034",
+    "Poké Ball P-A 005"
+   ],
+   "discard": [
+    "Professor's Research P-A 007",
+    "Copycat B1 225",
+    "Misty A1 220",
+    "Professor's Research P-A 007",
+    "Poké Ball P-A 005"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Alolan Ninetales ex B2 029",
+     "hp": 180,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "tools": [
+      "Elegant Cape B3b 065"
+     ],
+     "behind": [
+      "Alolan Vulpix B2 028"
+     ]
+    },
+    {
+     "card": "Alolan Ninetales ex B2 029",
+     "hp": 150,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Alolan Vulpix B2 028"
+     ]
+    },
+    {
+     "card": "Lapras A3 044",
+     "hp": 110,
+     "energy": [
+      "Water",
+      "Water",
+      "Water"
+     ]
+    },
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 190,
+     "energy": [
+      "Water"
+     ],
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 3,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Mega Blastoise ex B1a 020",
+     "hp": 110,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Squirtle B1a 017",
+      "Wartortle B1a 018"
+     ]
+    },
+    {
+     "card": "Arctibax B2a 035",
+     "hp": 90,
+     "behind": [
+      "Frigibax B2a 034"
+     ]
+    },
+    {
+     "card": "Wartortle B1a 018",
+     "hp": 90,
+     "energy": [
+      "Water",
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Squirtle B1a 017"
+     ]
+    },
+    {
+     "card": "Wailmer B4 036",
+     "hp": 100
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": {
+   "card": "Soothing Shore B4 154",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Attach:1Water@0 zone",
+   "Attack:Binding Snow"
+  ],
+  "hand_source": "codex",
+  "decision_maker": "Dustin",
+  "exact_list": true,
+  "milestones": [],
+  "notes": "The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "won 3-0"
+ },
+ {
+  "id": "B-215825-t18",
+  "game": "cmp-20261002_215825000",
+  "his_turn": 9,
+  "deck": "A",
+  "turn_count": 18,
+  "points": [
+   2,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Lucky Ice Pop B2 145",
+    "Cyrus A2 150",
+    "Mega Sharpedo ex B4 035",
+    "Irida A2a 072",
+    "Misty A1 220",
+    "Carvanha B4 034",
+    "Poké Ball P-A 005"
+   ],
+   "discard": [
+    "Professor's Research P-A 007",
+    "Copycat B1 225",
+    "Misty A1 220",
+    "Professor's Research P-A 007",
+    "Poké Ball P-A 005"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Alolan Ninetales ex B2 029",
+     "hp": 180,
+     "energy": [
+      "Water",
+      "Water",
+      "Water"
+     ],
+     "tools": [
+      "Elegant Cape B3b 065"
+     ],
+     "behind": [
+      "Alolan Vulpix B2 028"
+     ]
+    },
+    {
+     "card": "Alolan Ninetales ex B2 029",
+     "hp": 150,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Alolan Vulpix B2 028"
+     ]
+    },
+    {
+     "card": "Lapras A3 044",
+     "hp": 110,
+     "energy": [
+      "Water",
+      "Water",
+      "Water"
+     ]
+    },
+    {
+     "card": "Mega Sharpedo ex B4 035",
+     "hp": 190,
+     "energy": [
+      "Water"
+     ],
+     "behind": [
+      "Carvanha B4 034"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water"
+  },
+  "opp": {
+   "hand_count": 3,
+   "discard_n": 0,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Mega Blastoise ex B1a 020",
+     "hp": 50,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Squirtle B1a 017",
+      "Wartortle B1a 018"
+     ]
+    },
+    {
+     "card": "Arctibax B2a 035",
+     "hp": 90,
+     "behind": [
+      "Frigibax B2a 034"
+     ]
+    },
+    {
+     "card": "Wartortle B1a 018",
+     "hp": 90,
+     "energy": [
+      "Water",
+      "Water",
+      "Water"
+     ],
+     "behind": [
+      "Squirtle B1a 017"
+     ]
+    },
+    {
+     "card": "Wailord ex B4 037",
+     "hp": 250,
+     "energy": [
+      "Water"
+     ],
+     "behind": [
+      "Wailmer B4 036"
+     ]
+    }
+   ],
+   "energy_next": "Water"
+  },
+  "stadium": {
+   "card": "Soothing Shore B4 154",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Attack:Binding Snow"
+  ],
+  "hand_source": "codex",
+  "decision_maker": "Dustin",
+  "exact_list": true,
+  "milestones": [
+   "recognising an immediate win"
+  ],
+  "notes": "The opponent's discard is not tracked (0); the opponent's printings are not known (chosen by the HP shown).",
+  "list_source": "exact: his list = OWNER_DECK_SNAPSHOT.json (checked card for card against decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt); the computer's list = OPPONENT_DECK.json (all 13 names Complete in the pinned engine's card_status)",
+  "pilot_result": "won 3-0"
+ }
+]
