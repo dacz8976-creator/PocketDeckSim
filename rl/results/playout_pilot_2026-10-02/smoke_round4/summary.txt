@@ -1,0 +1,42 @@
+games: 20 (pilot kx3 v km3; the same deals km3 v km3), deals 10
+  all: 20 games; pilot 0.900, km3 on the same deals 0.750; paired difference +0.150 ± 0.214 (95%)
+  pilot in seat 0: 10 games; pilot 0.800, km3 on the same deals 0.700; paired difference +0.100 ± 0.352 (95%)
+  pilot in seat 1: 10 games; pilot 1.000, km3 on the same deals 0.800; paired difference +0.200 ± 0.261 (95%)
+deals whose result differs between the arms: 5: seed 24200001001 seat 0: pilot 1, km3 0 (changed 1); seed 24200001002 seat 0: pilot 0, km3 1 (changed 3); seed 24200001003 seat 1: pilot 1, km3 0 (changed 1); seed 24200001004 seat 0: pilot 1, km3 0 (changed 2); seed 24200001004 seat 1: pilot 1, km3 0 (changed 1)
+games with at least one changed decision: 12; of these, same result as km3's game: 7
+
+decisions asked of the pilot: 758; with play-outs 740; without 18 (km's move kept with no play-out); changed from km3's move 18 (2.4% of those with play-outs)
+ms per decision with play-outs: mean 19423, median 13929, p95 61266, max 108795
+ms per decision of any kind (from the games' means): 18962
+seconds per pilot game, all: mean 719.1, median 740.3, max 1457.1; decisions per game 37.9; turns per game 17.9
+seconds per pilot game, seat 0: mean 856.1, median 871.8, max 1457.1; decisions per game 41.6; turns per game 18.6
+seconds per pilot game, seat 1: mean 582.1, median 671.7, max 906.2; decisions per game 34.2; turns per game 17.1
+
+candidates per decision with play-outs: mean 7.0, median 7, max 12; decisions at the cap (with drops) 31, moves dropped 41
+play-out rounds: 11840, failed (dropped) 0
+opponent lists the rounds drew (the real list, Dustin's deck 01, is in no pool): 11840 rounds; inferred 11776 (99.5%), drawn whole from the pool 64 (0.5%)
+  bases of the inferred rounds: t-hydreigon 35.5%, t-weezing 24.6%, v-weezing_2 21.0%, v-weezing_swap1 18.9%
+  lists drawn whole: t-hydreigon 13, v-weezing_swap1 13, v-weezing_swap2 13, h-hoopa_absol 12, v-weezing_2 8, t-weezing 5
+  inference labels: 'inferred from 3 lists'
+  inferred share by game turn (12 = 12 or later): t0 0%, t1 100%, t2 100%, t3 100%, t4 100%, t5 100%, t6 100%, t7 100%, t8 100%, t9 100%, t10 100%, t11 100%, t12 100%
+
+the changed decisions (seed, seat, turn: km3's move -> the pilot's; the lead over km3's move ± its standard error):
+  24200001000 s1 t4: Attach { attachments: [(1, Water, 3)], is_turn_energy: true } -> EndTurn: +0.250 ± 0.112 (6 candidates, 16 rounds)
+  24200001001 s0 t10: Promote { player: 0, in_play_idx: 3 } -> Promote { player: 0, in_play_idx: 1 }: +0.438 ± 0.128 (3 candidates, 16 rounds)
+  24200001002 s0 t3: Play { trainer_card: P-A 007 Professor's Research } -> Play { trainer_card: A1 220 Misty }: +0.312 ± 0.120 (6 candidates, 16 rounds)
+  24200001002 s0 t7: Evolve { evolution: Pokemon(B4 035 Mega Sharpedo ex), in_play_idx: 3, from_deck: false } -> Attach { attachments: [(1, Water, 2)], is_turn_energy: true }: +0.438 ± 0.128 (12 candidates, 16 rounds)
+  24200001002 s0 t9: Attach { attachments: [(1, Water, 3)], is_turn_energy: true } -> Attach { attachments: [(1, Water, 2)], is_turn_energy: true }: +0.688 ± 0.120 (11 candidates, 16 rounds)
+  24200001002 s1 t4: Retreat(3) -> Attach { attachments: [(1, Water, 0)], is_turn_energy: true }: +0.375 ± 0.125 (9 candidates, 16 rounds)
+  24200001003 s0 t13: Place(Pokemon(B2 028 Alolan Vulpix), 1) -> Play { trainer_card: A1 220 Misty }: +0.312 ± 0.120 (8 candidates, 16 rounds)
+  24200001003 s0 t15: Play { trainer_card: B2 145 Lucky Ice Pop } -> Play { trainer_card: A1 220 Misty }: +0.375 ± 0.180 (12 candidates, 16 rounds)
+  24200001003 s0 t15: Play { trainer_card: B2 145 Lucky Ice Pop } -> EndTurn: +0.344 ± 0.099 (12 candidates, 16 rounds)
+  24200001003 s1 t14: Attach { attachments: [(1, Water, 1)], is_turn_energy: true } -> EndTurn: +0.500 ± 0.129 (10 candidates, 16 rounds)
+  24200001004 s0 t3: Play { trainer_card: B2 145 Lucky Ice Pop } -> Attach { attachments: [(1, Water, 3)], is_turn_energy: true }: +0.250 ± 0.112 (8 candidates, 16 rounds)
+  24200001004 s0 t11: Attach { attachments: [(1, Water, 1)], is_turn_energy: true } -> EndTurn: +0.750 ± 0.112 (10 candidates, 16 rounds)
+  24200001004 s1 t4: Place(Pokemon(A3 044 Lapras), 1) -> Evolve { evolution: Pokemon(B2 029 Alolan Ninetales ex), in_play_idx: 0, from_deck: false }: +0.250 ± 0.112 (8 candidates, 16 rounds)
+  24200001005 s0 t5: Evolve { evolution: Pokemon(B2 029 Alolan Ninetales ex), in_play_idx: 2, from_deck: false } -> Retreat(1): +0.219 ± 0.102 (11 candidates, 16 rounds)
+  24200001006 s0 t5: UseStadium -> Play { trainer_card: A1 220 Misty }: +0.250 ± 0.112 (7 candidates, 16 rounds)
+  24200001006 s0 t5: UseStadium -> Attack(Attack { energy_required: [Water], title: "Turbo Shark", fixed_damage: 70, effect: Some("Take a [W] Energy from your Energy Zone and attach it to 1 of yo: +0.312 ± 0.151 (6 candidates, 16 rounds)
+  24200001007 s0 t11: Attach { attachments: [(1, Water, 3)], is_turn_energy: true } -> Retreat(2): +0.375 ± 0.125 (10 candidates, 16 rounds)
+  24200001009 s1 t12: Evolve { evolution: Pokemon(B2 029 Alolan Ninetales ex), in_play_idx: 1, from_deck: false } -> EndTurn: +0.312 ± 0.120 (12 candidates, 16 rounds)
+kept decisions where a rival led km3's move: 166; the rival's lead in standard errors: median 1.00, share at 1.5 or more 13.3%
