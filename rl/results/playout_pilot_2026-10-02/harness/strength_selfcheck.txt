@@ -1,5 +1,5 @@
-claude/playout-pilot e02c9d65 (round 3); the harness built from this checkout's engine/:
-program sha256: d5aa439d32133bd2bb71c5b29383b9567412c5dc2ceda511b4f9eb75a728d826
+claude/playout-pilot 38c8d7b8 (round 4); the harness built from this checkout's engine/:
+program sha256: 218ebcfafb7948ec3f3cab31a608a14b6e2242d052653c21de3a90084997ac98
 harness source sha256: bf9c5d6814007f1f53b0dc06f1beba02261478ddc40bb5efa3bbc16c0734f86e
 
 $ strength selfcheck --pilot km3 --deck-a decks/screen/opponents/t-altaria.txt --deck-b decks/screen/opponents/t-suicune.txt --games 12
@@ -7,14 +7,14 @@ selfcheck pilot=km3 games=12 seat0_wins=8 seat1_wins=4 ties=0 turns=127 digest=8
 
 $ strength selfcheck --pilot kx3_r2_c3_lab --deck-a decks/screen/opponents/t-altaria.txt --deck-b decks/screen/opponents/t-suicune.txt --games 2   (run 1)
 selfcheck pilot=kx3_r2_c3_lab games=2 seat0_wins=0 seat1_wins=2 ties=0 turns=22 digest=3a2eb43bd9053639
-(123 s)
+(145 s)
 
 $ strength selfcheck --pilot kx3_r2_c3_lab --deck-a decks/screen/opponents/t-altaria.txt --deck-b decks/screen/opponents/t-suicune.txt --games 2   (run 2)
 selfcheck pilot=kx3_r2_c3_lab games=2 seat0_wins=0 seat1_wins=2 ties=0 turns=22 digest=3a2eb43bd9053639
-(123 s)
+(145 s)
 
 KX_PARAMS on stderr (run 1):
-KX_PARAMS {"budget_ms":0,"cap":3,"code":"kx3_r2_c3_z2_lab_t0","depth":3,"extra_lists":[],"knowledge":"LAB (laboratory condition: the opponent's exact 20-card list is known: t-suicune, one of the pool's 8 meta lists)","rollouts":2,"seat":0,"z":2.0}
-KX_PARAMS {"budget_ms":0,"cap":3,"code":"kx3_r2_c3_z2_lab_t0","depth":3,"extra_lists":[],"knowledge":"LAB (laboratory condition: the opponent's exact 20-card list is known: t-altaria, one of the pool's 8 meta lists)","rollouts":2,"seat":1,"z":2.0}
-KX_PARAMS {"budget_ms":0,"cap":3,"code":"kx3_r2_c3_z2_lab_t0","depth":3,"extra_lists":[],"knowledge":"LAB (laboratory condition: the opponent's exact 20-card list is known: t-suicune, one of the pool's 8 meta lists)","rollouts":2,"seat":0,"z":2.0}
-KX_PARAMS {"budget_ms":0,"cap":3,"code":"kx3_r2_c3_z2_lab_t0","depth":3,"extra_lists":[],"knowledge":"LAB (laboratory condition: the opponent's exact 20-card list is known: t-altaria, one of the pool's 8 meta lists)","rollouts":2,"seat":1,"z":2.0}
+KX_PARAMS {"budget_ms":0,"cap":3,"code":"kx3_r2_c3_z2_lab_t0_poolwide","depth":3,"extra_lists":[],"knowledge":"LAB (laboratory condition: the opponent's exact 20-card list is known: t-suicune, one of the wide pool's 35 lists (8 meta lists and 27 more))","pool":"wide","pool_lists":35,"rollouts":2,"seat":0,"z":2.0}
+KX_PARAMS {"budget_ms":0,"cap":3,"code":"kx3_r2_c3_z2_lab_t0_poolwide","depth":3,"extra_lists":[],"knowledge":"LAB (laboratory condition: the opponent's exact 20-card list is known: t-altaria, one of the wide pool's 35 lists (8 meta lists and 27 more))","pool":"wide","pool_lists":35,"rollouts":2,"seat":1,"z":2.0}
+KX_PARAMS {"budget_ms":0,"cap":3,"code":"kx3_r2_c3_z2_lab_t0_poolwide","depth":3,"extra_lists":[],"knowledge":"LAB (laboratory condition: the opponent's exact 20-card list is known: t-suicune, one of the wide pool's 35 lists (8 meta lists and 27 more))","pool":"wide","pool_lists":35,"rollouts":2,"seat":0,"z":2.0}
+KX_PARAMS {"budget_ms":0,"cap":3,"code":"kx3_r2_c3_z2_lab_t0_poolwide","depth":3,"extra_lists":[],"knowledge":"LAB (laboratory condition: the opponent's exact 20-card list is known: t-altaria, one of the wide pool's 35 lists (8 meta lists and 27 more))","pool":"wide","pool_lists":35,"rollouts":2,"seat":1,"z":2.0}

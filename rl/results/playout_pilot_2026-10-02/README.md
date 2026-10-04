@@ -18,6 +18,12 @@ sections 5 and 9 (the addendum's amendments win). Branch `claude/playout-pilot`,
     instead (section "Fixes, round 3").
   - The laptop's development run uses the registered d513e37b build and is not affected. This round sits on top of the
     branch.
+- **Round 4 (Oct 4): unfamiliar opponents.** Set by the Fable coordinator via Dustin, who calls it "round 3". The
+  Energy-types fix (round 3 here) was accepted, and kx3's development run on d513e37b came out +16.6 over km3. This round
+  makes unfamiliar opponents play (section "Round 4").
+  - The pool is widened to 35 lists and is a parameter.
+  - An opponent outside the pool gets a list inferred from the most similar pooled lists, instead of placeholders.
+  - The laptop's runs use d513e37b, which stays on the branch.
 
 ## In short
 
@@ -35,9 +41,11 @@ sections 5 and 9 (the addendum's amendments win). Branch `claude/playout-pilot`,
 - **Its main weaknesses.**
   - km3 plays every later turn of every play-out, so a plan needing several coordinated moves can go unseen.
   - At 16 play-outs only big differences show.
-  - Against an opponent whose list is not in the pilot's pool, its picture of that opponent is only the nearest meta list.
-    Round 1 made that nearest list better chosen and lets a known list be added at run time (`KX_EXTRA_LISTS`). See "What
-    to expect to go wrong".
+  - Against an opponent whose list is not in the pilot's pool, its picture of that opponent is a guess.
+    - Since round 4 the guess is a list inferred from the most similar pooled lists, plus the seen Pokémon's own evolution
+      lines. Before, it was a wrong list or passive filler.
+    - A known list can be added at run time with `KX_EXTRA_LISTS`.
+    - See "What to expect to go wrong".
 
 ## Fixes, round 1 (Oct 3)
 
@@ -170,6 +178,109 @@ Set by the Fable coordinator via Dustin. Only `playout_player.rs` changed, plus 
     instead of a wrong meta list.
   - That model is too weak an opponent, so the pilot's play-outs there will look optimistic; see "What to expect to go wrong".
 
+## Round 4 (Oct 4): unfamiliar opponents
+
+Set by the Fable coordinator via Dustin: "an opponent outside the 16-list pool gets unusable placeholder cards in play-outs
+and plays passively, which flatters the pilot and makes brew-v-brew and ladder-style testing untrustworthy." Tests first
+(c6f32640, `round4_tests_before.log`), then the fix (0d1c6d57, 63cbe91f). Main was merged into the branch first (2654a488:
+`rl/` and `decks/` only; `engine/` unchanged on main), for the computer deck and the runner's latest files.
+
+1. **A wider pool, selectable by a parameter.**
+   - **Two pools.**
+     - `_poolwide` (the default from round 4): 35 distinct lists.
+     - `_poolmeta`: the 8 meta lists of Oct 2, unchanged.
+   - **What the wide pool adds** (27 lists):
+     - the gauntlet's 14 (`decks/gauntlet_2026-09-26`: the three new decks and the variation lists);
+     - the two panel-ladder lists (`decks/screen/panel_ladder_2026-09-26/l-*.txt`);
+     - the computer deck (`decks/computer/blastoise-wailord-deluxe.txt`, from main);
+     - the four Sept 23 variants (`decks/variants-2026-09-23`);
+     - the six B2e held-out tournament lists (`rl/results/b2e_card_check_2026-09-26/decks/h-*.txt`), which Fable named
+       though they sit outside `decks/`.
+   - **Embedded.** Each list is in `playout_pool.rs`'s new `WIDE` constant with its file's sha256. A test checks every
+     embedded list against its file, byte for byte.
+   - **Excluded.**
+     - Dustin's own lists (`decks/dustin`), and the brews and drafts (`decks/brews`), by path.
+     - By content: any added list with the same cards as one of those. None of the 27 was.
+     - Files that aren't 20-card lists: the goldfish outputs and check files.
+   - **Generated.** `pool/generate_pool.py` writes both constants and `pool/pool_manifest.tsv`, which says what was
+     included or excluded and why. The `POOL` constant it writes is byte-identical to the one since Oct 2.
+   - **One finding.** The panel list `t-blaziken` (and its copy `research/blaziken`) holds exactly the same cards as Dustin's
+     `decks/dustin/06-mega-blaziken-tournament-list.txt`: the public tournament list, which Dustin also owns.
+     - It stays in the meta pool, as it has since Oct 2. Dropping it would break LAB against the panel's Blaziken.
+     - The manifest says so.
+     - As an extra list it would be refused by content; it needs no extra, being in the pool.
+2. **Archetype inference instead of placeholders.** When no pooled list is consistent with what the opponent has shown
+   (their Energy Zone, then their seen cards), the list is inferred.
+   - **Candidates.** The pooled lists whose Energy types cover the zone's (all lists if none does).
+   - **Similarity.** Each candidate is scored by the seen cards it holds (by name, at most as often as seen) plus the zone
+     types it plays. The 3 most similar are the sources.
+   - **Base.** One source is drawn per play-out as the base, weighted by its score, so across the rounds the sources
+     appear in proportion to their similarity.
+   - **The list is built:**
+     - the seen cards, as seen;
+     - then the seen Pokémon's own evolution lines;
+     - then the base's cards. A seen card stands for one of the base's copies of its name. With too little room, the
+       base's Trainers go first, so its evolution lines stay whole.
+     - Any room left is filled from the other sources. Pocket's limit of 2 copies of a name holds throughout.
+   - **Energy.** The zone's types (the base's if the zone shows none): it never contradicts the zone, as round 3 fixed.
+   - **The trace** labels such rounds "inferred from N lists: <base>".
+   - **The evolution lines go beyond the letter of the instruction.**
+     - Fable asked for the unseen slots to come from the similar lists' cards. The first version did exactly that, and the
+       rate test (item 3) showed the gap: the opponent attacked plenty but evolved 2 times in 12 play-outs, against 10 for
+       its real list. Its Torchic in play had no evolution in the Fire lists it was inferred from.
+     - So the inferred list now adds, for each seen Pokémon, the cards that evolve from it, from the card database, 2 copies
+       a stage, at most 8 cards. Where several evolve from one Pokémon, it takes those a pooled list plays, else the first
+       in card order.
+     - A player showing Torchic plays its line. The cost: a line can hold a card that needs Energy the zone doesn't show
+       (in Astra's constructed Swablu/Water case, Mega Altaria ex needs Psychic).
+3. **The test that an inferred opponent plays** (`an_inferred_opponent_attacks_and_evolves_like_a_pooled_one`).
+   - **The position.** t-suicune against t-blaziken, a middle-game position.
+   - **Three models** of the opponent, over the same 12 sampled worlds and seeds, counting the opponent's attacks and
+     evolutions in km3 play-outs. An evolution is any card added under one of their Pokémon, by Evolve or by Rare Candy.
+
+     | the opponent's list | attacks | evolutions |
+     |---|---|---|
+     | in the pool (REALISTIC draws the Blaziken lists) | 25 | 10 |
+     | inferred: every list consistent with the observation removed from the pool | 31 | 28 |
+     | round 3's filler (seen cards, the rest unknown) | 36 | 0 |
+
+   - **The test requires:**
+     - the inferred opponent to attack and evolve at least half as often as the pooled one;
+     - filler to evolve less than the inferred one.
+   - Attacks don't separate them: even filler attacks with what is on its board. Evolutions do.
+   - The inferred opponent is, if anything, more active than its real list: its added Combusken/Blaziken line evolves more
+     often than the real list's Rare Candy jump.
+   - The no-leak tests all still pass. REALISTIC still reads no list, and a pilot built with a different opponent list
+     reports alike.
+4. **The smoke** (`smoke_round4/`): kx3 (`kx3_r16_c12_z2_real_t0_poolwide`) on draft A against km3 on Dustin's deck 01
+   (Muk / Glimmora / Kingambit, Darkness), trace on.
+   - **The set-up.** Deck 01 is in no pool and not held out. 10 deals in both seats, 20 games, seeds 24,200,001,000 to
+     24,200,001,009 in the block registered for the pilot's smokes. Each deal was also played km3 v km3. 4 threads,
+     15:20-19:21 UTC.
+   - **Results** (`smoke_round4/summary.txt`):
+     - the pilot scored 0.900 and km3 0.750 on the same deals: +0.150 ± 0.214. At 20 games that is no evidence either way;
+     - 5 deals differ between the arms: the pilot won 4 that km3 lost and lost 1 that km3 won;
+     - 18 of 740 decisions with play-outs changed from km3's move (2.4%).
+   - **The inference labels.**
+     - 11,776 of 11,840 play-out rounds (99.5%) inferred the opponent's list, all labelled "inferred from 3 lists".
+     - The bases are the Darkness lists, as deck 01's zone shows Darkness: t-hydreigon 35.5%, t-weezing 24.6%,
+       v-weezing_2 21.0%, v-weezing_swap1 18.9%.
+     - The other 64 rounds came at the first decision of a game, before any of deck 01's cards were seen. They drew
+       consistent Darkness lists whole: t-hydreigon, the Weezing variants, h-hoopa_absol.
+     - From turn 1 on, every round was inferred. No round failed.
+   - **Time** (4 threads):
+     - ms per decision with play-outs: mean 19,423, median 13,929, p95 61,266, max 108,795;
+     - seconds per pilot game: mean 719, median 740, max 1,457. That is 38 decisions and 18 turns a game.
+     - About 3½ times the first smoke's 204 s a game. These games are longer, with 7.0 candidates a decision against 5.3,
+       and their play-outs are longer too.
+   - **An example decision** (deal 24,200,001,004, pilot in seat 0, turn 11, 9.6 s).
+     - km3 attached the turn's Water Energy to its Pokémon in slot 1: 0.25 of 16 play-outs won.
+     - Ending the turn, or retreating to any Benched Pokémon, won 1.00, a lead of +0.750 ± 0.112. The pilot ended the turn.
+     - The rounds' opponent lists: inferred from 3 lists, with bases v-weezing_swap1 (10 rounds), t-hydreigon (4) and
+       t-weezing (2).
+     - Such a big gap for a held Energy probably says more about km3's play after the attach than about the attach itself
+       (see "What to expect to go wrong").
+
 ## What it does
 
 The pilot's code is `kx<N>`, for example `kx3`. It is a new player on top of km<N>.
@@ -206,23 +317,27 @@ It sees only its `PlayerObservation`, exactly what km3 sees:
 It never reads the real game state. The opponent's hidden cards come from a list:
 - **REALISTIC** (the default). It never reads the opponent's real list. For each play-out a list is drawn from a candidate
   pool:
-  - the pool is the lists under `decks/screen/opponents` and `decks/research`, embedded in
-    `engine/src/players/playout_pool.rs` with each file's sha256. Duplicates are removed at load, leaving 8 lists, plus any
-    extra lists from `KX_EXTRA_LISTS` (below).
+  - the pool (round 4) is `_poolwide` by default, 35 lists, or `_poolmeta`, the 8 meta lists of `decks/screen/opponents`
+    and `decks/research`. Both are embedded in `engine/src/players/playout_pool.rs` with each file's sha256, duplicates
+    removed at load, plus any extra lists from `KX_EXTRA_LISTS` (below).
   - The draw is uniform among the lists consistent with two things, checked in this order (round 3):
     - the Energy Zone: the list's Energy types must include every type the zone shows;
     - the opponent's cards seen so far, matched by name. A card counts as seen if it is in play, under an evolution,
       attached, discarded, their Stadium, revealed from their hand, or known in their deck (top cards included).
   - The unseen cards come from the drawn list, after the seen printings are swapped in (copy for copy).
-  - With no list consistent, no list is borrowed. The unseen cards are filler (unknown cards: drawn, never played), the
-    Energy is the seen types only, and the trace says "no consistent list (filler; Energy [...])".
+  - With no list consistent (an unfamiliar opponent), the list is inferred (round 4):
+    - from the 3 most similar pooled lists covering the zone, one drawn per play-out as the base;
+    - the seen cards and the seen Pokémon's evolution lines kept, the rest from the base;
+    - the Energy is the zone's;
+    - the trace says "inferred from N lists: <base>".
+    - Round 3's filler is gone.
   - The opponent's real list is always consistent when it is in the pool. So against the strength harness's 8 panel lists,
     which are all in the pool, the fallback never happens.
   - The built-in pool holds no brew and none of Dustin's lists, and an extra list can't be one either: refused by path
     and by content.
 - **LAB** (`_lab`, a laboratory condition, labelled as such in every output).
   - The opponent's exact 20-card list is used, with the same printing swap, but only when it is one of the pool's lists:
-    a meta list, or an extra list.
+    a meta list, a wide-pool list (round 4: the computer deck, the gauntlet's and so on), or an extra list.
   - **The meta side is never handed a brew's exact list.** If the opponent's list is not in the pool, LAB falls back to
     REALISTIC and the label says so. A brew can't be made an extra list (refused).
   - In the strength harness, with the pilot on Dustin's deck against a panel list, LAB gets the panel list.
@@ -254,6 +369,7 @@ All are in the code: `kx<depth>[_r<R>][_c<cap>][_z<z>][_lab|_real][_t<seconds>][
 | `_lab` / `_real` | knowledge mode | `_real` |
 | `_t<seconds>` | time budget per decision: stop after the rounds finished in time (at least 2); no switch from km's move with fewer than 8. Off by default, because it makes the result depend on the machine's speed | off |
 | `_trace` | one `KX_TRACE` JSON line per decision on stderr | off |
+| `_poolwide` / `_poolmeta` | the candidate pool: 35 lists, or the 8 meta lists of Oct 2 (round 4) | `_poolwide` |
 
 - The first decision of each game prints `KX_PARAMS` on stderr: every parameter, the knowledge label and the extra lists
   (name, path, hash). Every trace line carries the full code, the label and the extra lists too.
@@ -301,39 +417,40 @@ such a hand, as the engine repairs a real one.
 
 ### km3 and the official engine are unchanged
 
-Rerun after round 3, on e02c9d65 (the README commit after it changes no code). The same checks passed on f1aacbe2, after
-round 1 (c79562c1, d513e37b) and after round 2 (8205ba8b); the laptop repeated the first two on f1aacbe2.
+Rerun after round 4, on 38c8d7b8 (the README commit after it changes no code). The same checks passed on f1aacbe2, after
+round 1 (c79562c1, d513e37b), after round 2 (8205ba8b) and after round 3 (e02c9d65); the laptop repeated the first two on
+f1aacbe2.
 
 - **The engine's diff from main-8626a35:**
   - `engine/src/players/mod.rs` gains 12 lines: the two module lines, the `KX` code, its parse and its player. The file keeps
-    its stored Windows line endings. Rounds 1 to 3 didn't touch it.
+    its stored Windows line endings. Rounds 1 to 4 didn't touch it.
   - The new files are `playout_player.rs`, `playout_pool.rs`, the two test files and the smoke example.
   - Nothing else in `engine/` changes. No other code reaches the new player.
 - **km3 game for game.** `deckgym` built from this branch and the official program `rl/engine-2026-10-02/deckgym` both ran
   step 10's command here: km3 v km3, 240 games, research Altaria v Blaziken, seed 7,100, `--seed-stream`.
   - They agree on every field of all 240 per-game results: winner, points, turns, plies, actions per player and both search
-    seeds. The games' digest is 9dde28db2de6c9bc for both, as on f1aacbe2 and after rounds 1 and 2.
+    seeds. The games' digest is 9dde28db2de6c9bc for both, as on f1aacbe2 and after rounds 1 to 3.
   - Both equal the pinned record `engine_switch_rules_2026-10/5a18d31_10_cli_km3.txt` on every line but the wall time:
     149-91-0.
   - Files: `harness/simulate_km3_7100_*.txt`.
-- **The pinned self-check.** The strength harness, built from this branch's engine (program sha256 d5aa439d...), prints the
+- **The pinned self-check.** The strength harness, built from this branch's engine (program sha256 218ebcfa...), prints the
   pinned km3 digest:
   `strength selfcheck --pilot km3 --deck-a decks/screen/opponents/t-altaria.txt --deck-b decks/screen/opponents/t-suicune.txt --games 12`
   gives `digest=81b572198c04d5d1` (8-4, 127 turns), as `strength_harness_tests_2026-10-02/TESTS.md` records.
   - The pilot's own self-check, `--pilot kx3_r2_c3_lab --games 2` (LAB, t-altaria v t-suicune), gives
-    `digest=3a2eb43bd9053639` twice, 123 s each. That is the same as before round 1. On an exact pool pairing none of the
-    three rounds' changes alters play: the printings already match, LAB ignores the zone and the pool's draw (round 3's
-    filter included), and no ranking panicked. `KX_PARAMS` names the exact list ("t-suicune, one of the pool's 8 meta lists") and carries `extra_lists`.
+    `digest=3a2eb43bd9053639` twice, 145 s each. That is the same as before round 1. On an exact pool pairing none of the
+    four rounds' changes alters play: the printings already match, LAB ignores the zone and the pool's draw (round 3's
+    filter, round 4's wide pool and inference included), and no ranking panicked. `KX_PARAMS` names the exact list ("t-suicune, one of the pool's 8 meta lists") and carries `extra_lists`.
   - File: `harness/strength_selfcheck.txt`.
-- **The full suite.** `cargo test --release --features test-utils` on the final code: 2,044 passed, 0 failed, 0 ignored: the 2,025 before round 1, its 14 new tests, round 2's 3 and round
-  3's 2 (3 added, 1 replaced). The play-out tests take about
+- **The full suite.** `cargo test --release --features test-utils` on the final code: 2,047 passed, 0 failed, 0 ignored: the 2,025 before round 1, its 14 new tests, round 2's 3, round 3's
+  2 (3 added, 1 replaced) and round 4's 3. The play-out tests take about
   two minutes of that.
   - File: `suite.log`.
 
 ### The tests
 
 `engine/tests/playout_pilot_test.rs`, `engine/tests/playout_pilot_extra_lists_test.rs` and the unit tests at the end of
-`playout_player.rs`: 26 in all, every one passing on the final code. Every pilot the tests build directly has no extra
+`playout_player.rs`: 29 in all, every one passing on the final code. Every pilot the tests build directly has no extra
 lists, whatever the shell's `KX_EXTRA_LISTS` says (round 2).
 
 The first 7 were written and committed before the player (a3612b71): `tests_before.log`, where they fail to compile with no
@@ -368,9 +485,12 @@ ran as REALISTIC; these use a pool pairing where LAB matters.
 | `an_extra_list_makes_lab_exact_and_realistic_can_draw_it` (its own file: the variable is read once per process) | with `KX_EXTRA_LISTS=arbok=example_decks/weezing-arbok.txt`, LAB against that list is exact and names it; REALISTIC draws only it once the Weezing line is seen |
 | unit: `the_pool_holds_8_lists_once_duplicates_are_removed` | 8 lists, all t-X, and the label says 8 |
 | unit: `a_list_must_hold_the_energy_its_zone_shows` | Water showing: only t-suicune, every draw; Grass: t-sceptile and t-vespiquen, both drawn |
-| unit: `the_zone_filters_first_then_the_seen_cards` (round 3; replaced round 1's closest-tie test) | Psychic showing and a seen Swablu leave t-altaria; with Metal showing no list covers the zone, so the unseen part is filler of Metal at every seed, whatever is seen |
-| unit: `swablu_with_a_water_zone_is_never_modelled_as_a_psychic_list` (round 3) | Astra's case: Swablu seen, Water showing: "no consistent list", Energy Water only, no named card but the seen Swablu, 20 cards |
-| unit: `an_unfamiliar_opponent_is_played_out_as_filler_of_its_zone` (round 3) | the same through a sampled world (every hidden card of the opponent's is filler, Energy Water) and through the play-outs (4 rounds, none failed, every round "no consistent list") |
+| unit: `the_zone_filters_first_then_the_seen_cards` (round 3; replaced round 1's closest-tie test; round 4) | Psychic showing and a seen Swablu leave t-altaria consistent; Metal showing and nothing seen: the wide pool's Mega Scizor ex list; Metal and a seen Bulbasaur: inferred, Energy Metal only, no placeholder |
+| unit: `swablu_with_a_water_zone_is_never_modelled_as_a_psychic_list` (round 3; round 4) | Astra's case: Swablu seen, Water showing: "inferred from N lists", Energy Water only, 20 named cards, the seen Swablu and its own line, every other card from a Water list |
+| unit: `an_unfamiliar_opponent_is_inferred_with_playable_cards` (round 3's filler test, round 4) | the same through a sampled world (every hidden card of the opponent's is a named card, Energy Water) and through the play-outs (4 rounds, none failed, every round "inferred from") |
+| unit: `an_inferred_opponent_attacks_and_evolves_like_a_pooled_one` (round 4) | the rate test of section "Round 4": over 12 worlds, the inferred opponent attacks and evolves at least half as often as the pooled one, and filler evolves less |
+| `the_pool_is_a_parameter_and_wide_is_the_default` (round 4) | `kx3` is `_poolwide`; `_poolmeta` parses; bad pool parts refused; the labels name the pool |
+| `the_wide_pool_is_every_allowed_list_byte_for_byte` (round 4) | every embedded list equals its file byte for byte and reads as 20 cards; no wide list lies under, or copies a list of, decks/brews or decks/dustin; the named sources are there |
 | unit: `the_seen_printings_are_adopted_copy_for_copy` | two seen copies of one Sabrina printing against two different printings take both slots; an exact printing stays |
 | unit: `known_deck_top_cards_count_as_seen_once` | a known deck-top card counts as seen, once even when it is also listed as in the deck |
 
@@ -441,11 +561,12 @@ START_HERE), each with the pilot in both seats. Each deal was also played km3 v 
 - **Runs here:**
   - km3's self-check prints the pinned digest (above).
   - `strength selfcheck --pilot kx3_r2_c3_lab --games 2` (kx on both sides, t-altaria v t-suicune) gave `digest=3a2eb43bd9053639`
-    nine times:
+    eleven times:
     - on f1aacbe2, twice before the container restart and once after, on a fresh build;
     - on c79562c1 after round 1, twice, on another fresh build;
     - on 8205ba8b after round 2, twice, on another;
     - on e02c9d65 after round 3, twice, on another;
+    - on 38c8d7b8 after round 4, twice, on another;
     - each run took 2 to 2½ minutes, and its stderr carries `KX_PARAMS` with the LAB label.
 - **LAB applies there.** The 8 panel lists are all in the pool, so `_lab` gets the exact panel list, and `_real` always finds the
   real list among the consistent ones.
@@ -494,19 +615,25 @@ START_HERE), each with the pilot in both seats. Each deal was also played km3 v 
     smoke's rounds against Weezing-Arbok.
   - **Rounds 1 and 2.** The "closest" list, at random among ties. It could contradict the opponent's Energy (Astra's
     Swablu/Water case).
-  - **Since round 3.** Filler: the opponent plays only what is already on the board, and draws dead cards, with the Energy
-    its zone shows. No Energy contradiction and no invented cards. But it is **too weak an opponent**: it never plays a
-    Supporter, an evolution or a new Basic.
-    - So against an unfamiliar opponent the play-outs are optimistic, and moves that only work against a passive opponent
-      can look good.
-    - In the trace, those rounds say "no consistent list".
-  - **The remedy.** Give a known list with `KX_EXTRA_LISTS`.
-  - **The position runner.** It meets this at every position not covered by an extra list.
-  - **The strength harness.** It never happens there.
-  - **Further repairs, not made:**
-    - widen the pool. Which lists to add is the coordinator's or Dustin's call; the gauntlet lists and the scoreboard's
-      Limitless lists are candidates;
-    - fill the unseen part with generic cards of the seen types rather than dead ones.
+  - **Round 3.** Filler: the opponent played only what was already on the board, and drew dead cards, with the Energy its
+    zone showed. No Energy contradiction and no invented cards, but **too weak an opponent**.
+  - **Since round 4.** A list inferred from the most similar pooled lists, with the seen Pokémon's own lines. It plays: in
+    the rate test it attacks and evolves at least as often as its real list. But it is a guess:
+    - the archetype can be wrong, especially early, when little is seen;
+    - its evolution lines come from the card database, so a line can be one the opponent doesn't play, or need Energy the
+      zone doesn't show;
+    - it can be more active than the real list, as in the rate test (28 evolutions against 10), which may now make the
+      play-outs pessimistic for the pilot in places.
+    - The trace says "inferred from N lists: <base>" on every such round, so the share of a decision resting on a guess is
+      visible.
+  - **The remedy for a known opponent.** Give its list with `KX_EXTRA_LISTS`, or add it under `decks/` and regenerate the
+    wide pool.
+  - **The position runner.** It meets this at every position whose opponent is in no pool. The computer deck is in the
+    wide pool since round 4.
+  - **The strength harness.** It never happens there against the panel. Brew-v-brew runs and Dustin's decks as opponents do
+    meet it, since those lists are never pooled.
+  - **Further repairs, not made:** the scoreboard's Limitless lists could widen the pool further (the coordinator's or
+    Dustin's call).
 - **Noise.** At R = 16 the standard error of a paired difference is often 0.08-0.15 (8-15 points of win rate). So only large
   gains switch the move, and small real gains are lost. Raising R costs time in proportion.
 - **Many candidates, one winner.** The best of up to 11 rivals is chosen after seeing their scores, so its lead is biased
@@ -525,8 +652,10 @@ START_HERE), each with the pilot in both seats. Each deal was also played km3 v 
 
 ## Time for the laptop's runs
 
-On 4 threads the smoke averaged 204 s per pilot game. The play-outs spread over the cores, so on T threads expect about
-204 × 4 / T seconds; that is roughly 50 s at 16 threads. The reference arm's km3 game is negligible.
+On 4 threads the first smoke averaged 204 s per pilot game. The round-4 smoke (draft A v Dustin's deck 01) averaged 719 s:
+longer games with more candidates per decision. So the time depends on the decks, by 3 or 4 times. The play-outs spread
+over the cores, so on T threads expect about (204 to 719) × 4 / T seconds; that is roughly 50 to 180 s at 16 threads. The
+reference arm's km3 game is negligible.
 - **A development comparison** of D decks × 8 panel lists × N deals × 2 seats is 16 × D × N pilot games. For example, one deck
   at 25 deals is 400 pilot games: about 23 hours on 4 threads, or about 6 at 16.
 - **The pre-registration's kx self-check:** about 1½ hours on 4 threads (estimated).
@@ -540,7 +669,9 @@ On 4 threads the smoke averaged 204 s per pilot game. The play-outs spread over 
 - `engine/src/players/playout_pool.rs`: the 16 pool files, embedded, each with its path and sha256 (generated from the deck
   files; 8 distinct lists), and the `KX_EXTRA_LISTS` reader.
 - `engine/src/players/mod.rs`: the `kx` code (12 lines).
-- `engine/tests/playout_pilot_test.rs`: 18 tests (7 from the start, 8 from round 1, 3 from round 2).
+- `engine/tests/playout_pilot_test.rs`: 20 tests (7 from the start, 8 from round 1, 3 from round 2, 2 from round 4).
+- `rl/results/playout_pilot_2026-10-02/pool/`: `generate_pool.py` (writes the pool constants) and `pool_manifest.tsv`
+  (every candidate file: included, or why not).
 - `engine/tests/playout_pilot_extra_lists_test.rs`: the `KX_EXTRA_LISTS` test, alone in its process.
 - `engine/examples/playout_smoke.rs`: the smoke (`--resume` included).
 - Here:
