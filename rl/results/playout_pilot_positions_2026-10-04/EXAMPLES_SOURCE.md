@@ -667,3 +667,18 @@ Psychic's damage. The engine lists it as Complete.
 Where an opponent has one of these attacks, the two pilots differ:
 - km3 never sees the opponent's turn, so it can't price this.
 - kx3's play-outs play the opponent's attacks, so they can, in principle.
+## Note added Oct 4: what km3's own games say about Energy on the Bench
+
+The cloud's data pipeline fitted a baseline evaluation on 9,600 km3 self-play games (467,146 positions; branch
+`claude/planning-pilot-data` 22d56999, `rl/results/planning_pilot_data_2026-10-02/README.md` and `baseline_fit.txt`).
+The fitted sign of the Energy on the likely benched attacker (`my_bench_attacker_energy`) came out negative:
+- −0.142 in the full model, rank 65 of 134;
+- negative in all five folds (−0.162 to −0.129);
+- −0.054 in a small model of km's terms and the two Bench Energy features.
+
+The pipeline's own reading, kept here: this is a correlation in km3's own games, not a value. km3 puts Energy on the
+Bench mostly when its Active can't use it, which is itself a losing sign, and the features overlap heavily. It doesn't say
+Bench Energy is bad; it says a linear fit on km3's self-play can't answer that question.
+
+It fits the code read: km3 prices Bench Energy far below Active Energy, and gives a ready backup attacker no value. It
+also fits the positions above: Dustin's Bench-Water steps scored level with km3's moves in the play-outs, which km3 plays.
