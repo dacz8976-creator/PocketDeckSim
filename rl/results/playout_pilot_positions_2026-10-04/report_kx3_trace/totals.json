@@ -1,0 +1,87 @@
+{
+ "verdicts": {
+  "split": 3
+ },
+ "tags": {
+  "Supporter/Item choice or order": 3
+ },
+ "draw_tag": 3,
+ "irida_extra": [],
+ "equal_modal": [],
+ "equal10": [],
+ "first_same_plan_differs": [],
+ "deck03": {
+  "positions": 7,
+  "verdicts": {
+   "agree": 4,
+   "differ": 2,
+   "split": 1
+  },
+  "first_action_agrees": [
+   "D3-020315-t02",
+   "D3-023418-t01",
+   "D3-021402-t03",
+   "D3-021402-t05"
+  ],
+  "same_plan_10": [
+   "D3-020315-t02",
+   "D3-021402-t03",
+   "D3-021402-t05"
+  ],
+  "categories": {
+   "Supporter/Item choice or order": [
+    "D3-021402-t01"
+   ],
+   "bench development": [
+    "D3-023418-t01",
+    "D3-022135-t01"
+   ],
+   "same plan": [
+    "D3-020315-t02",
+    "D3-021402-t03",
+    "D3-021402-t05",
+    "D3-021402-t07"
+   ]
+  }
+ },
+ "ladder_brew8": {
+  "positions": 10,
+  "verdicts": {
+   "split": 3,
+   "agree": 6,
+   "differ": 1
+  },
+  "first_action_agrees": [
+   "L8-020916-t03",
+   "L8-020916-t09",
+   "L8-002539-t04",
+   "L8-002539-t06",
+   "L8-002539-t08",
+   "L8-002539-t10"
+  ],
+  "same_plan_10": [
+   "L8-002539-t10"
+  ]
+ },
+ "approximate_list_games": {
+  "positions": 75,
+  "games": [
+   "020315",
+   "020920",
+   "021402",
+   "022135",
+   "023418",
+   "114458",
+   "115323",
+   "132311",
+   "143837",
+   "ladder-20260907_232617000",
+   "ladder-20260908_021327000",
+   "ladder-20260908_190031000",
+   "ladder-20260909_023151000",
+   "ladder-20260909_032418000",
+   "ladder-20260928_200654000"
+  ],
+  "note": "reconstructed 20-card lists: reported in TABLES.md for completeness, excluded from every total and from any verdict"
+ }
+}
