@@ -10,6 +10,8 @@
 //! Round 2 (Oct 3): a copy of a brew's or one of Dustin's lists is refused by its cards wherever it lives, decks/dustin
 //! paths and resolved paths too, and unreadable protected folders; the time-budget test runs in a 2-thread pool, so it
 //! checks the same thing on any machine. Every pilot here is built without the environment's extra lists.
+//! Round 4 (Oct 4): the pool is a parameter (`_poolmeta`, `_poolwide`, the default), and the wide pool is every allowed
+//! list, byte for byte as its file, none a copy of a brew's or Dustin's list.
 use std::collections::BTreeMap;
 
 use deckgym::actions::{Action, SimpleAction};
@@ -18,7 +20,8 @@ use deckgym::database::get_card_by_enum;
 use deckgym::models::{EnergyType, PlayedCard};
 use deckgym::observation::{PlayerObservation, RevealedKnowledge};
 use deckgym::players::playout_player::{
-    parse_extra_lists, parse_extra_lists_against, protected_lists, DecisionReport, Knowledge, PlayoutParams, PlayoutPlayer,
+    parse_extra_lists, parse_extra_lists_against, protected_lists, under_protected, DecisionReport, Knowledge, PlayoutParams,
+    PlayoutPlayer, PoolSet, POOL, WIDE,
 };
 use deckgym::players::{create_players, parse_player_code, Player, PlayerCode};
 use deckgym::test_support::{get_test_game_with_board, load_test_decks};
@@ -495,4 +498,54 @@ fn extra_lists_are_refused_when_the_protected_folders_cant_be_read() {
     assert!(refused.contains("can't read") && refused.contains("decks"), "{refused}");
     // An empty variable needs no repository.
     assert!(parse_extra_lists_against("", &empty).unwrap().is_empty());
+}
+
+/// Round 4: the pool is a parameter of the code, and the wide pool is the default. The meta pool is the 8 lists of Oct 2.
+#[test]
+fn the_pool_is_a_parameter_and_wide_is_the_default() {
+    let PlayerCode::KX { params } = parse_player_code("kx3").unwrap() else { panic!("kx3 is not KX") };
+    assert_eq!(params.pool, PoolSet::Wide);
+    assert!(params.code().ends_with("_poolwide"), "{}", params.code());
+    let PlayerCode::KX { params } = parse_player_code("KX3_poolmeta_lab").unwrap() else { panic!() };
+    assert_eq!((params.pool, params.knowledge), (PoolSet::Meta, Knowledge::Lab));
+    assert!(params.code().ends_with("_poolmeta"), "{}", params.code());
+    for bad in ["kx3_pool", "kx3_poolall"] {
+        assert!(parse_player_code(bad).is_err(), "{bad} should not parse");
+    }
+    let (deck_a, deck_b) = load_test_decks();
+    let meta = fresh(deck_a.clone(), deck_b.clone(), PlayoutParams { pool: PoolSet::Meta, ..PlayoutParams::new(3) });
+    assert!(meta.knowledge_label().contains("8 meta lists") && !meta.knowledge_label().contains("wide"), "{}", meta.knowledge_label());
+    let wide = fresh(deck_a, deck_b, PlayoutParams::new(3));
+    assert!(wide.knowledge_label().contains("wide pool"), "{}", wide.knowledge_label());
+}
+
+/// The wide pool: every embedded list is byte for byte its file (so its sha256 is the file's), reads as a 20-card list,
+/// lies outside decks/brews and decks/dustin, and holds different cards from every list there. It holds the lists Fable
+/// named: the gauntlet's, the panel-ladder lists, the computer deck, the B2e held-out lists, the Sept 23 variants.
+#[test]
+fn the_wide_pool_is_every_allowed_list_byte_for_byte() {
+    for (name, path, _, text) in POOL.iter().chain(WIDE.iter()) {
+        assert_eq!(&std::fs::read_to_string(format!("../{path}")).unwrap(), text, "{name}: the file changed; regenerate the pool");
+        assert_eq!(Deck::from_string(text).unwrap().cards.len(), 20, "{name}");
+    }
+    let ids = |text: &str| {
+        let mut ids: Vec<String> = Deck::from_string(text).unwrap().cards.iter().map(|c| c.get_id()).collect();
+        ids.sort();
+        ids
+    };
+    let protected = protected_lists(std::path::Path::new("..")).unwrap();
+    for (name, path, _, text) in WIDE.iter() {
+        assert!(!under_protected(path), "{name}");
+        assert!(protected.iter().all(|(_, cards)| *cards != ids(text)), "{name} is a copy of a protected list");
+    }
+    for want in [
+        "g-mega_altaria_greninja",
+        "v-suicune_2",
+        "l-sharpedo",
+        "blastoise-wailord-deluxe",
+        "h-hoopa_absol",
+        "altaria_jlng_pmpt44_2026-08-29",
+    ] {
+        assert!(WIDE.iter().any(|(name, ..)| *name == want), "{want} is missing");
+    }
 }

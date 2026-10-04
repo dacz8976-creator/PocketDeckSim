@@ -844,46 +844,54 @@ mod tests {
     }
 
     /// The zone filters first, then the seen cards (round 3, Astra's review). Psychic showing and a seen Swablu leave
-    /// t-altaria alone. Metal showing: no list covers the zone, so whatever is seen the unseen part is filler of Metal, at
-    /// every seed, and no list is ever "closest".
+    /// t-altaria among the consistent lists. With a Metal zone the wide pool's Mega Scizor ex list is consistent while
+    /// nothing is seen; once a card it doesn't hold is seen (Bulbasaur), the list is inferred (round 4), never borrowed
+    /// whole with contradictory Energy, and its Energy is Metal only.
     #[test]
     fn the_zone_filters_first_then_the_seen_cards() {
         let p = pilot();
         let swablu = get_card_by_enum(CardId::B1196Swablu);
         let (deck, label) = p.core.sample_list(&[swablu.clone()], &[EnergyType::Psychic], &mut StdRng::seed_from_u64(1));
-        assert_eq!(label, "t-altaria (1 of 1 consistent)");
-        assert!(deck.cards.iter().all(|c| !c.is_unknown()));
+        assert!(label.contains("consistent)") && deck.energy_types == vec![EnergyType::Psychic], "{label}");
+        assert!(deck.cards.contains(&swablu) && deck.cards.iter().all(|c| !c.is_unknown()));
+        let (_, label) = p.core.sample_list(&[], &[EnergyType::Metal], &mut StdRng::seed_from_u64(1));
+        assert_eq!(label, "g-mega_scizor_revavroom (1 of 1 consistent)");
         let bulbasaur = get_card_by_enum(CardId::A1001Bulbasaur);
-        for seen in [vec![], vec![bulbasaur.clone()], vec![swablu.clone()]] {
-            for seed in 0..20 {
-                let (deck, label) = p.core.sample_list(&seen, &[EnergyType::Metal], &mut StdRng::seed_from_u64(seed));
-                assert!(label.starts_with("no consistent list"), "{seen:?} seed {seed}: {label}");
-                assert_eq!(deck.energy_types, vec![EnergyType::Metal], "{label}");
-                assert!(deck.cards.iter().all(|c| seen.contains(c) || c.is_unknown()), "{label}: {:?}", deck.cards);
-            }
+        for seed in 0..20 {
+            let (deck, label) = p.core.sample_list(&[bulbasaur.clone()], &[EnergyType::Metal], &mut StdRng::seed_from_u64(seed));
+            assert!(label.starts_with("inferred from"), "seed {seed}: {label}");
+            assert_eq!(deck.energy_types, vec![EnergyType::Metal], "{label}");
+            assert!(deck.cards.contains(&bulbasaur) && deck.cards.iter().all(|c| !c.is_unknown()), "{label}: {:?}", deck.cards);
         }
     }
 
-    /// Astra's case: Swablu seen with a Water Energy Zone. t-altaria holds Swablu but plays Psychic; t-suicune plays Water
-    /// but holds no Swablu. Before round 3 the fallback chose t-altaria and sampled Psychic Energy for a Water opponent.
-    /// Now no list is consistent, and the unseen part is filler of the seen types (Water), with no named card.
+    /// Astra's case, round 4: Swablu seen with a Water Energy Zone. No pooled list holds both (the Swablu lists play
+    /// Psychic). The opponent's list is inferred from the most similar lists that cover Water: 20 named cards that can
+    /// be played, the seen Swablu among them, every other card from a Water list, Energy Water only, never Psychic.
     #[test]
     fn swablu_with_a_water_zone_is_never_modelled_as_a_psychic_list() {
         let p = pilot();
         let swablu = get_card_by_enum(CardId::B1196Swablu);
+        let water: Vec<&Deck> = p.core.pool.iter().map(|(_, d)| d).filter(|d| d.energy_types.contains(&EnergyType::Water)).collect();
+        assert!(!water.is_empty());
         for seed in 0..20 {
             let (deck, label) = p.core.sample_list(&[swablu.clone()], &[EnergyType::Water], &mut StdRng::seed_from_u64(seed));
-            assert!(label.starts_with("no consistent list"), "seed {seed}: {label}");
+            assert!(label.starts_with("inferred from"), "seed {seed}: {label}");
             assert_eq!(deck.energy_types, vec![EnergyType::Water], "seed {seed}: {label}");
-            assert!(deck.cards.iter().all(|c| *c == swablu || c.is_unknown()), "seed {seed}: named cards {:?}", deck.cards);
             assert_eq!(deck.cards.len(), DECK_SIZE);
+            assert!(deck.cards.iter().all(|c| !c.is_unknown()), "seed {seed}: placeholders {:?}", deck.cards);
+            assert_eq!(deck.cards.iter().filter(|c| **c == swablu).count(), 1);
+            for card in deck.cards.iter().filter(|c| **c != swablu) {
+                assert!(water.iter().any(|d| d.cards.contains(card)), "seed {seed}: {card:?} is in no Water list");
+            }
         }
     }
 
     /// The same through a sampled world and the play-outs: the opponent's Swablu in play and Water in their zone. Every
-    /// hidden card of theirs is filler, their Energy is Water only, and the play-outs run on that world without a failure.
+    /// hidden card of theirs is a real card of an inferred Water list (no placeholder), their Energy is Water only, and
+    /// the play-outs run on that world without a failure.
     #[test]
-    fn an_unfamiliar_opponent_is_played_out_as_filler_of_its_zone() {
+    fn an_unfamiliar_opponent_is_inferred_with_playable_cards() {
         use crate::models::PlayedCard;
         use crate::observation::RevealedKnowledge;
         use crate::state::EnergyZone;
@@ -908,9 +916,9 @@ mod tests {
         );
         for seed in 0..5 {
             let (world, _, name) = p.core.sample_state(&observation, &mut StdRng::seed_from_u64(seed));
-            assert!(name.starts_with("no consistent list"), "{name}");
+            assert!(name.starts_with("inferred from"), "{name}");
             assert_eq!(world.decks[1].energy_types, vec![EnergyType::Water]);
-            assert!(world.hands[1].iter().chain(world.decks[1].cards.iter()).all(|c| c.is_unknown()), "{:?}", world.hands[1]);
+            assert!(world.hands[1].iter().chain(world.decks[1].cards.iter()).all(|c| !c.is_unknown()), "{:?}", world.hands[1]);
             assert_eq!(world.hands[1].len(), state.hands[1].len());
         }
         let actions = state.generate_possible_actions().1;
@@ -918,7 +926,99 @@ mod tests {
         assert!(distinct.len() >= 2, "the position offers alternatives: {distinct:?}");
         let report = p.evaluate(&mut StdRng::seed_from_u64(9), &observation, &actions);
         assert_eq!((report.rounds, report.failed_rounds), (4, 0), "{}", report.reason);
-        assert!(report.lists.keys().all(|k| k.starts_with("no consistent list")), "{:?}", report.lists);
+        assert!(report.lists.keys().all(|k| k.starts_with("inferred from")), "{:?}", report.lists);
+    }
+
+    /// A km3 game from `seed` between two pool lists, stopped at the first battle position (turn 3 or later) where player 0
+    /// decides among two or more distinct moves.
+    fn pool_midgame(a: &str, b: &str, seed: u64) -> State {
+        let deck = |n: &str| Deck::from_file(&format!("../decks/screen/opponents/{n}.txt")).unwrap();
+        let km3 = || PlayerCode::KM { max_depth: 3 };
+        let mut game = Game::new(create_players(deck(a), deck(b), vec![km3(), km3()]), seed);
+        loop {
+            assert!(!game.is_game_over(), "seed {seed}: the game ended before a position came");
+            let state = game.get_state_clone();
+            let (actor, actions) = state.generate_possible_actions();
+            let distinct: BTreeSet<String> = actions.iter().map(|a| format!("{:?}", a.action)).collect();
+            if actor == 0 && state.turn_count >= 3 && state.current_player == 0 && distinct.len() >= 2 {
+                return state;
+            }
+            game.play_tick();
+        }
+    }
+
+    /// One play-out with km3 on both sides, counting the opponent's attacks and evolutions (every card added under one of
+    /// their Pokémon, by Evolve or by Rare Candy).
+    fn opponent_activity(world: &State, list: &Deck, deck: &Deck, me: usize, action: &Action, seed: u64) -> (usize, usize) {
+        let code = PlayerCode::KM { max_depth: 3 };
+        let (d0, d1) = if me == 0 { (deck.clone(), list.clone()) } else { (list.clone(), deck.clone()) };
+        let mut game = Game::from_state(world.clone(), create_players(d0, d1, vec![code.clone(), code]), seed);
+        game.apply_action(action);
+        let opponent = 1 - me;
+        let behind = |s: &State| s.in_play_pokemon[opponent].iter().flatten().map(|p| p.cards_behind.len()).sum::<usize>();
+        let (mut attacks, mut evolutions, mut ticks) = (0, 0, 0);
+        while !game.is_game_over() && ticks < 4000 {
+            let before = behind(&game.get_state_clone());
+            let played = game.play_tick();
+            if played.actor == opponent && matches!(played.action, crate::actions::SimpleAction::Attack(_)) {
+                attacks += 1;
+            }
+            evolutions += behind(&game.get_state_clone()).saturating_sub(before);
+            ticks += 1;
+        }
+        (attacks, evolutions)
+    }
+
+    /// Round 4's test that an inferred opponent plays. t-suicune (the pilot) against t-blaziken (Torchic, Mega Blaziken ex
+    /// by Rare Candy). Over the same 12 sampled worlds and seeds, the opponent's attacks and evolutions in the play-outs:
+    /// - pooled: the opponent's list is in the pool (REALISTIC draws the Blaziken lists);
+    /// - inferred: every list consistent with the observation removed from the pool, so the list must be inferred from the
+    ///   most similar others (the Fire lists);
+    /// - filler: round 3's placeholders (the seen cards, the rest unknown cards, the zone's Energy).
+    /// The inferred opponent attacks and evolves at least half as often as the pooled one, and evolves; filler doesn't.
+    #[test]
+    fn an_inferred_opponent_attacks_and_evolves_like_a_pooled_one() {
+        use crate::observation::RevealedKnowledge;
+        let state = pool_midgame("t-suicune", "t-blaziken", 3);
+        let observation = PlayerObservation::from_state(&state, 0, &RevealedKnowledge::default());
+        let deck = Deck::from_file("../decks/screen/opponents/t-suicune.txt").unwrap();
+        let opponent = Deck::from_file("../decks/screen/opponents/t-blaziken.txt").unwrap();
+        let pooled = PlayoutPlayer::with_extra_lists(deck.clone(), opponent.clone(), PlayoutParams::new(3), Vec::new());
+        let mut inferred = PlayoutPlayer::with_extra_lists(deck.clone(), opponent, PlayoutParams::new(3), Vec::new());
+        let (seen, zone) = (Core::seen_opponent_cards(&observation), Core::zone_types(&observation));
+        assert!(!seen.is_empty(), "the opponent has shown cards");
+        let consistent = pooled.core.consistent_lists(&seen, &zone);
+        assert!(!consistent.is_empty(), "the Blaziken lists are consistent");
+        let keep: Vec<(String, Deck)> = (0..inferred.core.pool.len())
+            .filter(|i| !consistent.contains(i))
+            .map(|i| inferred.core.pool[i].clone())
+            .collect();
+        inferred.core.pool = keep;
+        assert!(inferred.core.consistent_lists(&seen, &zone).is_empty());
+        let action = state.generate_possible_actions().1[0].clone();
+        let mut filler = seen.clone();
+        filler.resize(DECK_SIZE, Card::Unknown);
+        let filler = Deck { cards: filler, energy_types: zone.clone() };
+        let (mut totals, n) = ([(0usize, 0usize); 3], 12u64);
+        for j in 0..n {
+            let (world, list, name) = pooled.core.sample_state(&observation, &mut StdRng::seed_from_u64(j));
+            assert!(name.contains("consistent)"), "{name}");
+            let (a, e) = opponent_activity(&world, &list, &deck, 0, &action, 100 + j);
+            totals[0] = (totals[0].0 + a, totals[0].1 + e);
+            let (world, list, name) = inferred.core.sample_state(&observation, &mut StdRng::seed_from_u64(j));
+            assert!(name.starts_with("inferred from"), "{name}");
+            let (a, e) = opponent_activity(&world, &list, &deck, 0, &action, 100 + j);
+            totals[1] = (totals[1].0 + a, totals[1].1 + e);
+            let world = observation.search_state_with_opponent_list(&mut StdRng::seed_from_u64(j), &filler);
+            let (a, e) = opponent_activity(&world, &filler, &deck, 0, &action, 100 + j);
+            totals[2] = (totals[2].0 + a, totals[2].1 + e);
+        }
+        let [(pa, pe), (ia, ie), (fa, fe)] = totals;
+        eprintln!("opponent attacks / evolutions over {n} play-outs: pooled {pa} / {pe}, inferred {ia} / {ie}, filler {fa} / {fe}");
+        assert!(pa > 0 && pe > 0, "the pooled opponent attacks and evolves: {pa} / {pe}");
+        assert!(2 * ia >= pa, "inferred attacks {ia} against pooled {pa}");
+        assert!(ie > 0 && 2 * ie >= pe, "inferred evolutions {ie} against pooled {pe}");
+        assert!(fe < ie, "filler evolves less than an inferred list: {fe} against {ie}");
     }
 
     /// The opponent's known deck-top cards count as seen, and a top card also listed as somewhere in their deck counts once.

@@ -1,0 +1,133 @@
+== the player module's tests (cargo test --release --features test-utils --lib playout_player::tests)
+   Compiling deckgym v0.1.0-pdl.rules4 (/tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/po/engine)
+warning: unused import: `TrainerType`
+  --> src/players/value_functions.rs:21:76
+   |
+21 | use crate::models::{Attack, Card, EnergyType, PlayedCard, StatusCondition, TrainerType, BASIC_STAGE};
+   |                                                                            ^^^^^^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: variable does not need to be mutable
+   --> src/actions/energy_moves.rs:187:9
+    |
+187 |     let mut take = |pools: &mut Vec<(usize, Vec<EnergyType>)>,
+    |         ----^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` (part of `#[warn(unused)]`) on by default
+
+warning: associated function `geometric_until_tails` is never used
+   --> src/actions/attack_outcome.rs:474:12
+    |
+298 | impl AttackOutcomes {
+    | ------------------- associated function in this implementation
+...
+474 |     pub fn geometric_until_tails(
+    |            ^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: constant `WIDE` is never used
+   --> src/players/playout_pool.rs:261:11
+    |
+261 | pub const WIDE: [(&str, &str, &str, &str); 27] = [
+    |           ^^^^
+
+warning: function `best_attack_value` is never used
+    --> src/players/value_functions.rs:2528:4
+     |
+2528 | fn best_attack_value(slot: &PlayedCard, form: &Card, state: &State, player: usize) -> f64 {
+     |    ^^^^^^^^^^^^^^^^^
+
+warning: `deckgym` (lib test) generated 5 warnings (run `cargo fix --lib -p deckgym --tests` to apply 2 suggestions)
+    Finished `release` profile [optimized] target(s) in 2m 40s
+     Running unittests src/lib.rs (/tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/potgt2/release/deps/deckgym-1cc92af88c8c3c58)
+
+running 8 tests
+test players::playout_player::tests::known_deck_top_cards_count_as_seen_once ... ok
+test players::playout_player::tests::a_list_must_hold_the_energy_its_zone_shows ... ok
+test players::playout_player::tests::the_pool_holds_8_lists_once_duplicates_are_removed ... ok
+test players::playout_player::tests::the_seen_printings_are_adopted_copy_for_copy ... ok
+test players::playout_player::tests::an_unfamiliar_opponent_is_inferred_with_playable_cards ... FAILED
+test players::playout_player::tests::swablu_with_a_water_zone_is_never_modelled_as_a_psychic_list ... FAILED
+test players::playout_player::tests::the_zone_filters_first_then_the_seen_cards ... FAILED
+test players::playout_player::tests::an_inferred_opponent_attacks_and_evolves_like_a_pooled_one ... FAILED
+
+failures:
+
+---- players::playout_player::tests::an_unfamiliar_opponent_is_inferred_with_playable_cards stdout ----
+
+thread 'players::playout_player::tests::an_unfamiliar_opponent_is_inferred_with_playable_cards' (1223) panicked at src/players/playout_player.rs:919:13:
+no consistent list (filler; Energy [Water])
+stack backtrace:
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+
+---- players::playout_player::tests::swablu_with_a_water_zone_is_never_modelled_as_a_psychic_list stdout ----
+
+thread 'players::playout_player::tests::swablu_with_a_water_zone_is_never_modelled_as_a_psychic_list' (1225) panicked at src/players/playout_player.rs:879:13:
+seed 0: no consistent list (filler; Energy [Water])
+stack backtrace:
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+
+---- players::playout_player::tests::the_zone_filters_first_then_the_seen_cards stdout ----
+
+thread 'players::playout_player::tests::the_zone_filters_first_then_the_seen_cards' (1228) panicked at src/players/playout_player.rs:858:9:
+assertion `left == right` failed
+  left: "no consistent list (filler; Energy [Metal])"
+ right: "g-mega_scizor_revavroom (1 of 1 consistent)"
+stack backtrace:
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+
+---- players::playout_player::tests::an_inferred_opponent_attacks_and_evolves_like_a_pooled_one stdout ----
+
+thread 'players::playout_player::tests::an_inferred_opponent_attacks_and_evolves_like_a_pooled_one' (1222) panicked at src/players/playout_player.rs:1009:13:
+no consistent list (filler; Energy [Fire])
+stack backtrace:
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+
+
+failures:
+    players::playout_player::tests::an_inferred_opponent_attacks_and_evolves_like_a_pooled_one
+    players::playout_player::tests::an_unfamiliar_opponent_is_inferred_with_playable_cards
+    players::playout_player::tests::swablu_with_a_water_zone_is_never_modelled_as_a_psychic_list
+    players::playout_player::tests::the_zone_filters_first_then_the_seen_cards
+
+test result: FAILED. 4 passed; 4 failed; 0 ignored; 0 measured; 414 filtered out; finished in 0.12s
+
+error: test failed, to rerun pass `--lib`
+exit 101
+
+== the test file (cargo test ... --test playout_pilot_test --no-run): it does not compile before the pool parameter exists
+  --> src/players/value_functions.rs:21:76
+   |
+   |                                                                            ^^^^^^^^^^^
+   |
+   --> src/actions/energy_moves.rs:187:9
+    |
+    |         ----^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+   --> src/actions/attack_outcome.rs:474:12
+    |
+    | ------------------- associated function in this implementation
+    |            ^^^^^^^^^^^^^^^^^^^^^
+    |
+   --> src/players/playout_pool.rs:261:11
+    |
+    |           ^^^^
+    --> src/players/value_functions.rs:2232:4
+     |
+     |    ^^^^^^^^^^^^^^^^^^^^^^^
+    --> src/players/value_functions.rs:2528:4
+     |
+     |    ^^^^^^^^^^^^^^^^^
+error[E0432]: unresolved imports `deckgym::players::playout_player::PoolSet`, `deckgym::players::playout_player::POOL`, `deckgym::players::playout_player::WIDE`
+  --> tests/playout_pilot_test.rs:24:20
+   |
+   |                    ^^^^^^^  ^^^^  ^^^^ no `WIDE` in `players::playout_player`
+   |                    |        |
+   |                    |        no `POOL` in `players::playout_player`
+exit 101
