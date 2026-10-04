@@ -346,19 +346,19 @@ impl PlayoutPlayer {
         &self.params
     }
 
-    /// The pool as the labels describe it: "8 meta lists", or "the wide pool's 35 lists (8 meta lists and 27 more)", plus
-    /// any extra lists by name.
+    /// The pool as the labels describe it: "the pool's 8 meta lists", or "the wide pool's 35 lists (8 meta lists and 27
+    /// more)", plus any extra lists by name.
     fn pool_description(&self) -> String {
         let extra = self.core.pool.len() - self.core.listed;
         let mut text = if self.params.pool == PoolSet::Wide {
             format!(
-                "wide pool: {} lists ({} meta lists and {} more)",
+                "the wide pool's {} lists ({} meta lists and {} more)",
                 self.core.listed,
                 self.core.meta,
                 self.core.listed - self.core.meta
             )
         } else {
-            format!("{} meta lists", self.core.meta)
+            format!("the pool's {} meta lists", self.core.meta)
         };
         if !self.core.extras.is_empty() {
             let names: Vec<String> = self.core.extras.iter().map(|(e, under)| {
@@ -373,15 +373,15 @@ impl PlayoutPlayer {
     pub fn knowledge_label(&self) -> String {
         match (self.params.knowledge, &self.core.lab) {
             (Knowledge::Lab, Some((name, _))) => format!(
-                "LAB (laboratory condition: the opponent's exact 20-card list is known: {name}, one of the pool's {})",
+                "LAB (laboratory condition: the opponent's exact 20-card list is known: {name}, one of {})",
                 self.pool_description()
             ),
             (Knowledge::Lab, None) => format!(
-                "REALISTIC (LAB asked, but the opponent's list is not one of the pool's {}, so it is never handed over)",
+                "REALISTIC (LAB asked, but the opponent's list is not one of {}, so it is never handed over)",
                 self.pool_description()
             ),
             _ => format!(
-                "REALISTIC (the opponent's list is drawn per play-out from the pool's {}, among those consistent with the cards seen and the Energy Zone)",
+                "REALISTIC (the opponent's list is drawn per play-out from {}, among those consistent with the cards seen and the Energy Zone, else inferred from the most similar)",
                 self.pool_description()
             ),
         }
@@ -1027,7 +1027,7 @@ mod tests {
         // The wide pool (round 4): the same 8 first, then the 27 others, none a duplicate.
         let w = pilot();
         assert_eq!((w.core.meta, w.core.listed, w.core.pool.len()), (8, 35, 35));
-        assert!(w.knowledge_label().contains("wide pool: 35 lists (8 meta lists and 27 more)"), "{}", w.knowledge_label());
+        assert!(w.knowledge_label().contains("the wide pool's 35 lists (8 meta lists and 27 more)"), "{}", w.knowledge_label());
     }
 
     /// The Energy Zone rules (the meta pool): with Water showing, only Water lists are consistent (t-suicune alone).
