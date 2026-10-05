@@ -1,0 +1,63 @@
+warning: unused import: `TrainerType`
+  --> src/players/value_functions.rs:21:76
+   |
+21 | use crate::models::{Attack, Card, EnergyType, PlayedCard, StatusCondition, TrainerType, BASIC_STAGE};
+   |                                                                            ^^^^^^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: variable does not need to be mutable
+   --> src/actions/energy_moves.rs:187:9
+    |
+187 |     let mut take = |pools: &mut Vec<(usize, Vec<EnergyType>)>,
+    |         ----^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` (part of `#[warn(unused)]`) on by default
+
+warning: associated function `geometric_until_tails` is never used
+   --> src/actions/attack_outcome.rs:474:12
+    |
+298 | impl AttackOutcomes {
+    | ------------------- associated function in this implementation
+...
+474 |     pub fn geometric_until_tails(
+    |            ^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: function `estimated_attack_damage` is never used
+    --> src/players/value_functions.rs:2232:4
+     |
+2232 | fn estimated_attack_damage(attack: &Attack, slot: &PlayedCard, state: &State, player: usize) -> f64 {
+     |    ^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `best_attack_value` is never used
+    --> src/players/value_functions.rs:2528:4
+     |
+2528 | fn best_attack_value(slot: &PlayedCard, form: &Card, state: &State, player: usize) -> f64 {
+     |    ^^^^^^^^^^^^^^^^^
+
+warning: `deckgym` (lib) generated 5 warnings (run `cargo fix --lib -p deckgym` to apply 2 suggestions)
+error[E0432]: unresolved imports `deckgym::players::playout_player::ContinuationReport`, `deckgym::players::playout_player::Plan`, `deckgym::players::playout_player::Step`
+ --> tests/playout_continuation_test.rs:9:40
+  |
+9 | use deckgym::players::playout_player::{ContinuationReport, Knowledge, Plan, PlayoutParams, PlayoutPlayer, Step};
+  |                                        ^^^^^^^^^^^^^^^^^^             ^^^^                                ^^^^ no `Step` in `players::playout_player`
+  |                                        |                              |
+  |                                        |                              no `Plan` in `players::playout_player`
+  |                                        no `ContinuationReport` in `players::playout_player`
+  |
+  = help: consider importing this trait instead:
+          std::range::Step
+
+error[E0599]: no method named `continuation_study` found for struct `PlayoutPlayer` in the current scope
+  --> tests/playout_continuation_test.rs:87:23
+   |
+87 |     pilot(rounds, 12).continuation_study(&mut StdRng::seed_from_u64(seed), &observation, &moves, plan, k, rounds)
+   |                       ^^^^^^^^^^^^^^^^^^ method not found in `PlayoutPlayer`
+
+Some errors have detailed explanations: E0432, E0599.
+For more information about an error, try `rustc --explain E0432`.
+error: could not compile `deckgym` (test "playout_continuation_test") due to 2 previous errors

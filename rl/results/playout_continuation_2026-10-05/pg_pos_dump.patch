@@ -1,0 +1,15 @@
+--- /tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/po/rl/results/pause_games_decisions_2026-10-02/harness/pg_pos.rs	2026-10-04 14:41:01.865224447 +0000
++++ examples/pg_pos.rs	2026-10-05 19:09:27.153407743 +0000
+@@ -333,6 +333,12 @@
+         let deck_me = decks.get(pos["deck"].as_str().unwrap()).expect("deck key").clone();
+         let deck_filler = decks.get(pos["filler"].as_str().unwrap_or(pos["deck"].as_str().unwrap())).expect("filler key").clone();
+         let first = build(pos, &deck_me, &deck_filler, 1);
++        // continuation experiment (Oct 5): write the built state (seed 1) and stop at it
++        if let Ok(dir) = std::env::var("PG_DUMP_STATES") {
++            std::fs::write(format!("{dir}/{id}.json"), serde_json::to_string(&first.state).unwrap()).unwrap();
++            eprintln!("DUMPED {id} problems {:?}", first.problems);
++            continue;
++        }
+         println!("{}", json!({"kind": "position", "id": id, "summary": first.summary, "problems": first.problems}));
+         if !first.problems.is_empty() {
+             continue;
