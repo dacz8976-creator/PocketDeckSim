@@ -55,3 +55,43 @@ Stage `dev`; held-out list `['02-arceus-crobat', '04-absol-hoopa-darkrai', '07-s
 strength run --manifest manifest.json --out .   # add --max-games N or --stop-after-min M to stop early; run it again to resume
 python3 strength_report.py --dir .
 ```
+
+## Addendum, Oct 4: the freeze rule, the build question and the exam
+
+Written while run A was still playing, before any of its result was read. Run B's own report (km3 v k3) had been seen.
+
+Dustin approved the conditional freeze, verbatim "yes approved" (relayed by the coordinator, Oct 4). Astra's three
+tightenings are conditions of that approval, and they are written here.
+
+1. **The rule.**
+   - The reading is kx3 minus km3, both facing k3, pooled over the same deals (`analyze_kx_minus_km.py` in this folder,
+     committed with this addendum).
+   - 95% interval above zero: **freeze**.
+   - Interval crossing zero: **hold the exam**. The check is inconclusive; it does not mean "the play-out policy failed".
+   - Interval below zero: **hold**. kx3 played worse than km3 against k3.
+   - Either way, the size is reported beside the development run's +16.6 ± 3.5.
+2. **The freeze names d513e37b.** That is the tested development build (+16.6 ± 3.5,
+   `../strength_2026-10-03_kx3_dev/`). The exam program is the strength harness built from d513e37b's engine tree on the
+   laptop (`/home/dacz8976/kx/strength`, sha256 `5a8f5c83a7915090437e91ae7c644bdd67d1aed713f50a1f7de0bf905802a3d2`).
+   - Run A used b96296a5, whose kx3 self-check equals d513e37b's (`31d638dbc818b0fa`).
+   - In what kx3 plays, the code differs in one path only. When a decision has more than 12 distinct moves AND the
+     world the cap ranks them in panics, d513e37b keeps km3's move and b96296a5 plays out the first 12 moves in the order
+     offered.
+   - b96296a5's other changes don't touch REALISTIC play here:
+     - `KX_EXTRA_LISTS` refuses brew copies by content, but the variable is unset in these runs;
+     - the opponent's list is now held only for LAB;
+     - the rest are test changes.
+   - **Before the exam, a replay.** With the d513e37b program, replay 56 of run A's kx3 games: deal 0, seat 0, every
+     pair, same seeds. Every one must equal run A's game: winner, points, turns, plies and every logged decision. If any
+     differs, hold, and rerun the k3 check on d513e37b.
+3. **The exam, stated honestly.**
+   - 11 locked decks × the 8 panel lists × 3 deals × 2 seats: 528 paired comparisons, 1,056 games.
+   - It runs REALISTIC, on deals no development run used.
+   - It measures overall improvement across player decks the pilot was not developed on.
+   - Six comparisons per matchup don't support ranking individual matchups. The exam's page says so.
+   - The panel lists are in the pilot's guessing pool, so it answers "against the public meta lists", not "against
+     unknown decks".
+   - The frozen version is labelled **a promising experimental baseline, not the finished planning bot**: the examples
+     show no clear multi-turn planning yet (`../playout_pilot_positions_2026-10-04/`).
+   - The official engine stays unchanged.
+   - If the exam runs into a class morning, it is stopped by 7:00 am and resumed afterwards; it is resumable.
