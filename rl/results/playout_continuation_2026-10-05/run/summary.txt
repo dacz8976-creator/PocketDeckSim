@@ -1,0 +1,345 @@
+| # | Position | K | R | Plan's first move: km3 / plan | Rival: km3 / plan | Lead, km3's continuation | Lead, the plan's | Change | Verdict |
+|---|---|---|---|---|---|---|---|---|---|
+| 1 | B-214254-t06 | 4 | 128 | the turn's Water to the Benched Alolan Vulpix: 0.766 / 0.695 | attack Turbo Shark (kx3's move (and km3's)): 0.781 / 0.641 | -0.016 [-0.059, +0.028] | +0.055 [+0.005, +0.105] | +0.070 [+0.008, +0.133] | hidden |
+| 2 | B-214254-t10 | 3 | 128 | play Lucky Ice Pop: 0.730 / 0.680 | play Irida (kx3's move (and km3's)): 0.730 / 0.680 | +0.000 [+0.000, +0.000] | +0.000 [+0.000, +0.000] | +0.000 [+0.000, +0.000] | no difference |
+| 3 | B-205731-t08 | 2 | 128 | evolve the Benched Alolan Vulpix into Alolan Ninetales ex: 1.000 / 1.000 | retreat into the Benched Alolan Vulpix (kx3's move (and km3's)): 0.992 / 0.992 | +0.008 [-0.007, +0.023] | +0.008 [-0.007, +0.023] | +0.000 [+0.000, +0.000] | no difference |
+| 4 | B-205731-t10 | 2 | 128 | bench Alolan Vulpix: 0.539 / 0.727 | retreat into the Benched Alolan Ninetales ex (kx3's move (and km3's)): 0.539 / 0.727 | +0.000 [+0.000, +0.000] | +0.000 [+0.000, +0.000] | +0.000 [+0.000, +0.000] | no difference |
+| 5 | B-210952-t14 | 2 | 128 | bench Carvanha: 0.031 / 0.031 | retreat into the Benched Alolan Ninetales ex (kx3's move (km3's is the plan's first move)): 0.266 / 0.273 | -0.234 [-0.286, -0.182] | -0.242 [-0.295, -0.189] | -0.008 [-0.019, +0.003] | worse |
+| 6 | B-210952-t16 | 2 | 128 | bench Alolan Vulpix: 0.000 / 0.133 | attack Binding Snow (kx3's move (km3's is the plan's first move)): 0.113 / 0.113 | -0.113 [-0.150, -0.077] | +0.020 [+0.003, +0.036] | +0.133 [+0.094, +0.171] | hidden |
+| 7 | B-210952-t18 | 2 | 128 | play Misty: 0.430 / 0.000 | play Cyrus (Auto's and km3's move (kx3's is the plan's first move)): 0.133 / 0.133 | +0.297 [+0.245, +0.348] | -0.133 [-0.171, -0.094] | -0.430 [-0.502, -0.358] | worse |
+| 8 | B-205731-t02 | 1 | 128 | the turn's Water to the Active Carvanha: 0.789 / 0.867 | play Copycat (kx3's move (and km3's)): 0.727 / 0.727 | +0.062 [+0.015, +0.110] | +0.141 [+0.044, +0.237] | +0.078 [-0.008, +0.164] | ahead either way |
+| 9 | B-210952-t18 (variant: K = 1) | 1 | 128 | play Misty: 0.430 / 0.262 | play Cyrus (Auto's and km3's move (kx3's is the plan's first move)): 0.133 / 0.133 | +0.297 [+0.245, +0.348] | +0.129 [+0.071, +0.187] | -0.168 [-0.226, -0.110] | ahead either way |
+
+Plan minus km3's continuation, per first move (the same first move, the two continuations):
+  B-214254-t06: the plan's first move -0.070 [-0.158, +0.017]; the rival -0.141 [-0.224, -0.057]
+  B-214254-t10: the plan's first move -0.051 [-0.095, -0.006]; the rival -0.051 [-0.095, -0.006]
+  B-205731-t08: the plan's first move +0.000 [+0.000, +0.000]; the rival +0.000 [+0.000, +0.000]
+  B-205731-t10: the plan's first move +0.188 [+0.113, +0.262]; the rival +0.188 [+0.113, +0.262]
+  B-210952-t14: the plan's first move +0.000 [+0.000, +0.000]; the rival +0.008 [-0.003, +0.019]
+  B-210952-t16: the plan's first move +0.133 [+0.094, +0.171]; the rival +0.000 [+0.000, +0.000]
+  B-210952-t18: the plan's first move -0.430 [-0.502, -0.358]; the rival +0.000 [+0.000, +0.000]
+  B-205731-t02: the plan's first move +0.078 [-0.008, +0.164]; the rival +0.000 [+0.000, +0.000]
+  B-210952-t18 (variant: K = 1): the plan's first move -0.168 [-0.226, -0.110]; the rival +0.000 [+0.000, +0.000]
+
+== B-214254-t06 (K = 4, 128 rounds, 0 failed, 136 s; LAB (laboratory condition: the opponent's exact 20-card list...)
+   verdict: hidden: the plan's first move leads beyond noise under the plan's continuation, and not under km3's
+   -- the plan's first move: the turn's Water to the Benched Alolan Vulpix
+      plan's moves 1026 (promotions 9), km3's fill-ins 1008, plan's attack for km3's turn end 0, rounds ending as km3's did 6
+      turn  6 energy       {"at": "bench", "to": ["Alolan Vulpix"]}                               played 128  skipped   0  unreached   0
+      turn  6 attack       {"title": "Turbo Shark"}                                               played 128  skipped   0  unreached   0
+      turn  6 extra_energy {"at": "any", "to": ["Alolan Vulpix", "Alolan Ninetales ex"]}          played 128  skipped   0  unreached   0
+      turn  8 evolve       {"at": "bench", "from": "Carvanha", "into": "Mega Sharpedo ex"}        played  18  skipped 110  unreached   0
+      turn  8 energy       {"at": "bench", "to": ["Mega Sharpedo ex"]}                            played  18  skipped 110  unreached   0
+      turn  8 attack       {"title": "Turbo Shark"}                                               played 128  skipped   0  unreached   0
+      turn  8 extra_energy {"at": "any", "to": ["Alolan Vulpix", "Alolan Ninetales ex"]}          played 128  skipped   0  unreached   0
+      turn 10 attack       {"title": "Turbo Shark"}                                               played 128  skipped   0  unreached   0
+      turn 10 extra_energy {"at": "any", "to": ["Alolan Vulpix", "Alolan Ninetales ex"]}          played 128  skipped   0  unreached   0
+      turn 12 evolve       {"at": "any", "from": "Alolan Vulpix", "into": "Alolan Ninetales ex"}  played  31  skipped  97  unreached   0
+      turn 12 retreat_to   {"to": ["Alolan Ninetales ex"]}                                        played  86  skipped  42  unreached   0
+      turn 12 bench        {"card": "Alolan Vulpix"}                                              played  10  skipped 118  unreached   0
+      turn 12 attack       {"title": "Binding Snow"}                                              played  86  skipped  42  unreached   0
+      round 0, the plan's continuation: t6 first move: the turn's Water to the Benched Alolan Vulpix | t6 plan: attack Turbo Shark | t6 plan: an extra Water to the Benched Alolan Vulpix | t8 km3: play Copycat | t8 km3: evolve the Benched Alolan Vulpix into Alolan Ninetales ex | t8 km3: play Poké Ball | t8 km3: bench Lapras | t8 km3: the turn's Water to the Benched Lapras | t8 plan: attack Turbo Shark | t8 plan: an extra Water to the Benched Alolan Ninetales ex | t10 km3: evolve the Benched Carvanha into Mega Sharpedo ex | t10 km3: the turn's Water to the Benched Lapras | t10 km3: play Irida | t10 km3: play Lucky Ice Pop | t10 plan: attack Turbo Shark | t10 plan: an extra Water to the Benched Alolan Ninetales ex | t12 plan: retreat into the Benched Alolan Ninetales ex | t12 km3: play Professor's Research | t12 km3: the turn's Water to the Benched Lapras | t12 plan: attack Binding Snow
+      round 0, km3's continuation:      t6 first move: the turn's Water to the Benched Alolan Vulpix | t6 km3: attack Turbo Shark | t6 km3: an extra Water to the Benched Alolan Vulpix | t8 km3: play Copycat | t8 km3: retreat into the Benched Alolan Vulpix | t8 km3: play Poké Ball | t8 km3: bench Lapras | t8 km3: evolve the Active Alolan Vulpix into Alolan Ninetales ex | t8 km3: the turn's Water to the Benched Lapras | t8 km3: attack Binding Snow | t10 km3: play Irida | t10 km3: evolve the Benched Carvanha into Mega Sharpedo ex | t10 km3: the turn's Water to the Benched Lapras | t10 km3: attack Binding Snow | t12 km3: play Professor's Research | t12 km3: the turn's Water to the Benched Lapras | t12 km3: attack Binding Snow
+   -- the rival: attack Turbo Shark
+      plan's moves 901 (promotions 11), km3's fill-ins 1004, plan's attack for km3's turn end 0, rounds ending as km3's did 7
+      turn  6 energy       {"at": "bench", "to": ["Alolan Vulpix"]}                               played   0  skipped 128  unreached   0
+      turn  6 attack       {"title": "Turbo Shark"}                                               played 128  skipped   0  unreached   0
+      turn  6 extra_energy {"at": "any", "to": ["Alolan Vulpix", "Alolan Ninetales ex"]}          played 128  skipped   0  unreached   0
+      turn  8 evolve       {"at": "bench", "from": "Carvanha", "into": "Mega Sharpedo ex"}        played  17  skipped 111  unreached   0
+      turn  8 energy       {"at": "bench", "to": ["Mega Sharpedo ex"]}                            played  17  skipped 111  unreached   0
+      turn  8 attack       {"title": "Turbo Shark"}                                               played 128  skipped   0  unreached   0
+      turn  8 extra_energy {"at": "any", "to": ["Alolan Vulpix", "Alolan Ninetales ex"]}          played 128  skipped   0  unreached   0
+      turn 10 attack       {"title": "Turbo Shark"}                                               played 128  skipped   0  unreached   0
+      turn 10 extra_energy {"at": "any", "to": ["Alolan Vulpix", "Alolan Ninetales ex"]}          played 128  skipped   0  unreached   0
+      turn 12 evolve       {"at": "any", "from": "Alolan Vulpix", "into": "Alolan Ninetales ex"}  played  32  skipped  96  unreached   0
+      turn 12 retreat_to   {"to": ["Alolan Ninetales ex"]}                                        played  86  skipped  42  unreached   0
+      turn 12 bench        {"card": "Alolan Vulpix"}                                              played  12  skipped 116  unreached   0
+      turn 12 attack       {"title": "Binding Snow"}                                              played  86  skipped  42  unreached   0
+      round 0, the plan's continuation: t6 first move: attack Turbo Shark | t6 plan: an extra Water to the Benched Alolan Vulpix | t8 km3: play Copycat | t8 km3: evolve the Benched Alolan Vulpix into Alolan Ninetales ex | t8 km3: play Poké Ball | t8 km3: bench Lapras | t8 km3: the turn's Water to the Benched Lapras | t8 plan: attack Turbo Shark | t8 plan: an extra Water to the Benched Alolan Ninetales ex | t10 km3: evolve the Benched Carvanha into Mega Sharpedo ex | t10 km3: the turn's Water to the Benched Lapras | t10 km3: play Irida | t10 km3: play Lucky Ice Pop | t10 plan: attack Turbo Shark | t10 plan: an extra Water to the Benched Alolan Ninetales ex | t12 plan: retreat into the Benched Alolan Ninetales ex | t12 km3: play Professor's Research | t12 km3: the turn's Water to the Benched Lapras | t12 plan: attack Binding Snow
+      round 0, km3's continuation:      t6 first move: attack Turbo Shark | t6 km3: an extra Water to the Benched Alolan Vulpix | t8 km3: play Copycat | t8 km3: retreat into the Benched Alolan Vulpix | t8 km3: play Poké Ball | t8 km3: bench Lapras | t8 km3: evolve the Active Alolan Vulpix into Alolan Ninetales ex | t8 km3: the turn's Water to the Benched Lapras | t8 km3: attack Binding Snow | t10 km3: play Irida | t10 km3: evolve the Benched Carvanha into Mega Sharpedo ex | t10 km3: the turn's Water to the Benched Lapras | t10 km3: attack Binding Snow | t12 km3: play Professor's Research | t12 km3: the turn's Water to the Benched Lapras | t12 km3: attack Binding Snow
+   kx3 (kx3_r128_c12_z2_lab_t0_poolwide, seed 24200001000, 128 rounds, 269 s): chose Attack(Attack { energy_required: [Water], title: "Turbo Shark", fixed_; km's move has the best play-out score; the two moves' km3 scores in kx3's report: same, same
+      0.781  +0.000 (se 0.000)  Attack(Attack { energy_required: [Water], title: "Turbo Shark", fixed_damage: 70, effect: 
+      0.766  -0.016 (se 0.022)  Attach { attachments: [(1, Water, 2)], is_turn_energy: true }
+      0.758  -0.023 (se 0.017)  Attach { attachments: [(1, Water, 0)], is_turn_energy: true }
+      0.758  -0.023 (se 0.017)  Attach { attachments: [(1, Water, 1)], is_turn_energy: true }
+      0.594  -0.188 (se 0.049)  EndTurn
+      0.574  -0.207 (se 0.042)  Retreat(2)
+      0.543  -0.238 (se 0.042)  Retreat(1)
+
+== B-214254-t10 (K = 3, 128 rounds, 0 failed, 117 s; LAB (laboratory condition: the opponent's exact 20-card list...)
+   verdict: no difference: within the noise under both continuations; the plan isn't better in these worlds
+   -- the plan's first move: play Lucky Ice Pop
+      plan's moves 914 (promotions 57), km3's fill-ins 879, plan's attack for km3's turn end 0, rounds ending as km3's did 0
+      turn 10 play         {"card": "Lucky Ice Pop"}                                              played 128  skipped   0  unreached   0
+      turn 10 play         {"card": "Lucky Ice Pop"}                                              played  62  skipped  66  unreached   0
+      turn 10 play         {"card": "Irida"}                                                      played 128  skipped   0  unreached   0
+      turn 10 energy       {"at": "active", "to": ["Mega Sharpedo ex"]}                           played 128  skipped   0  unreached   0
+      turn 10 attack       {"title": "Turbo Shark"}                                               played 128  skipped   0  unreached   0
+      turn 10 extra_energy {"at": "any", "to": ["Alolan Vulpix", "Alolan Ninetales ex"]}          played 128  skipped   0  unreached   0
+      turn 12 play         {"card": "Professor's Research"}                                       played  31  skipped  97  unreached   0
+      turn 12 play         {"card": "Poké Ball"}                                                  played  53  skipped  75  unreached   0
+      turn 12 evolve       {"at": "any", "from": "Alolan Vulpix", "into": "Alolan Ninetales ex"}  played  44  skipped  84  unreached   0
+      turn 12 retreat_to   {"to": ["Alolan Ninetales ex"]}                                        played  43  skipped  85  unreached   0
+      turn 12 attack       {"title": "Binding Snow"}                                              played  43  skipped  85  unreached   0
+      turn 14 attack       {"title": "Binding Snow"}                                              played  69  skipped  59  unreached   0
+      round 0, the plan's continuation: t10 first move: play Lucky Ice Pop | t10 plan: play Lucky Ice Pop | t10 plan: play Irida | t10 plan: the turn's Water to the Active Mega Sharpedo ex | t10 plan: attack Turbo Shark | t10 plan: an extra Water to the Benched Alolan Vulpix | t12 plan: play Professor's Research | t12 plan: play Poké Ball | t12 km3: bench Lapras | t12 km3: the turn's Water to the Benched Lapras | t12 km3: play Lucky Ice Pop | t12 km3: retreat into the Benched Mega Sharpedo ex | t12 km3: attack Turbo Shark | t12 km3: an extra Water to the Benched Lapras | t14 km3: retreat into the Benched Lapras | t14 km3: the turn's Water to the Active Lapras | t14 km3: attack Surf | t15 plan: promote the Benched Mega Sharpedo ex
+      round 0, km3's continuation:      t10 first move: play Lucky Ice Pop | t10 km3: play Irida | t10 km3: play Lucky Ice Pop | t10 km3: attack Turbo Shark | t10 km3: an extra Water to the Benched Alolan Vulpix | t12 km3: play Professor's Research | t12 km3: bench Alolan Vulpix | t12 km3: play Lucky Ice Pop | t12 km3: play Poké Ball | t12 km3: retreat into the Benched Mega Sharpedo ex | t12 km3: attack Turbo Shark | t12 km3: an extra Water to the Benched Alolan Vulpix | t14 km3: play Professor's Research | t14 km3: retreat into the Benched Alolan Vulpix | t14 km3: evolve the Active Alolan Vulpix into Alolan Ninetales ex | t14 km3: attack Binding Snow
+   -- the rival: play Irida
+      plan's moves 914 (promotions 57), km3's fill-ins 879, plan's attack for km3's turn end 0, rounds ending as km3's did 0
+      turn 10 play         {"card": "Lucky Ice Pop"}                                              played 128  skipped   0  unreached   0
+      turn 10 play         {"card": "Lucky Ice Pop"}                                              played  62  skipped  66  unreached   0
+      turn 10 play         {"card": "Irida"}                                                      played 128  skipped   0  unreached   0
+      turn 10 energy       {"at": "active", "to": ["Mega Sharpedo ex"]}                           played 128  skipped   0  unreached   0
+      turn 10 attack       {"title": "Turbo Shark"}                                               played 128  skipped   0  unreached   0
+      turn 10 extra_energy {"at": "any", "to": ["Alolan Vulpix", "Alolan Ninetales ex"]}          played 128  skipped   0  unreached   0
+      turn 12 play         {"card": "Professor's Research"}                                       played  31  skipped  97  unreached   0
+      turn 12 play         {"card": "Poké Ball"}                                                  played  53  skipped  75  unreached   0
+      turn 12 evolve       {"at": "any", "from": "Alolan Vulpix", "into": "Alolan Ninetales ex"}  played  44  skipped  84  unreached   0
+      turn 12 retreat_to   {"to": ["Alolan Ninetales ex"]}                                        played  43  skipped  85  unreached   0
+      turn 12 attack       {"title": "Binding Snow"}                                              played  43  skipped  85  unreached   0
+      turn 14 attack       {"title": "Binding Snow"}                                              played  69  skipped  59  unreached   0
+      round 0, the plan's continuation: t10 first move: play Irida | t10 plan: play Lucky Ice Pop | t10 plan: play Lucky Ice Pop | t10 plan: the turn's Water to the Active Mega Sharpedo ex | t10 plan: attack Turbo Shark | t10 plan: an extra Water to the Benched Alolan Vulpix | t12 plan: play Professor's Research | t12 plan: play Poké Ball | t12 km3: bench Lapras | t12 km3: the turn's Water to the Benched Lapras | t12 km3: play Lucky Ice Pop | t12 km3: retreat into the Benched Mega Sharpedo ex | t12 km3: attack Turbo Shark | t12 km3: an extra Water to the Benched Lapras | t14 km3: retreat into the Benched Lapras | t14 km3: the turn's Water to the Active Lapras | t14 km3: attack Surf | t15 plan: promote the Benched Mega Sharpedo ex
+      round 0, km3's continuation:      t10 first move: play Irida | t10 km3: play Lucky Ice Pop | t10 km3: play Lucky Ice Pop | t10 km3: attack Turbo Shark | t10 km3: an extra Water to the Benched Alolan Vulpix | t12 km3: play Professor's Research | t12 km3: bench Alolan Vulpix | t12 km3: play Lucky Ice Pop | t12 km3: play Poké Ball | t12 km3: retreat into the Benched Mega Sharpedo ex | t12 km3: attack Turbo Shark | t12 km3: an extra Water to the Benched Alolan Vulpix | t14 km3: play Professor's Research | t14 km3: retreat into the Benched Alolan Vulpix | t14 km3: evolve the Active Alolan Vulpix into Alolan Ninetales ex | t14 km3: attack Binding Snow
+   kx3 (kx3_r128_c12_z2_lab_t0_poolwide, seed 24200001001, 128 rounds, 325 s): chose Play { trainer_card: A2a 072 Irida }; within the noise: the best move leads km's by +0.035 with a standard error of 0.040 (threshold 2 SE): km's move kept; the two moves' km3 scores in kx3's report: same, same
+      0.766  +0.035 (se 0.040)  Play { trainer_card: A1 220 Misty }
+      0.758  +0.027 (se 0.038)  Retreat(1)
+      0.730  +0.000 (se 0.000)  Play { trainer_card: A2a 072 Irida }
+      0.730  +0.000 (se 0.000)  Play { trainer_card: B2 145 Lucky Ice Pop }
+      0.723  -0.008 (se 0.041)  Attack(Attack { energy_required: [Water], title: "Turbo Shark", fixed_damage: 70, effect: 
+      0.707  -0.023 (se 0.015)  Attach { attachments: [(1, Water, 0)], is_turn_energy: true }
+      0.707  -0.023 (se 0.015)  Attach { attachments: [(1, Water, 1)], is_turn_energy: true }
+      0.707  -0.023 (se 0.015)  Attach { attachments: [(1, Water, 2)], is_turn_energy: true }
+      0.379  -0.352 (se 0.052)  EndTurn
+      0.082  -0.648 (se 0.045)  Retreat(2)
+
+== B-205731-t08 (K = 2, 128 rounds, 0 failed, 61 s; LAB (laboratory condition: the opponent's exact 20-card list...)
+   verdict: no difference: within the noise under both continuations; the plan isn't better in these worlds
+   -- the plan's first move: evolve the Benched Alolan Vulpix into Alolan Ninetales ex
+      plan's moves 834 (promotions 0), km3's fill-ins 319, plan's attack for km3's turn end 0, rounds ending as km3's did 0
+      turn  8 evolve       {"at": "bench", "from": "Alolan Vulpix", "into": "Alolan Ninetales ex"} played 128  skipped   0  unreached   0
+      turn  8 play         {"card": "Lucky Ice Pop"}                                              played 128  skipped   0  unreached   0
+      turn  8 play         {"card": "Irida"}                                                      played 128  skipped   0  unreached   0
+      turn  8 energy       {"at": "active", "to": ["Mega Sharpedo ex"]}                           played 128  skipped   0  unreached   0
+      turn  8 attack       {"title": "Turbo Shark"}                                               played 128  skipped   0  unreached   0
+      turn  8 extra_energy {"at": "any", "to": ["Alolan Ninetales ex"]}                           played 128  skipped   0  unreached   0
+      turn 10 bench        {"card": "Alolan Vulpix"}                                              played  34  skipped  94  unreached   0
+      turn 10 energy       {"at": "bench", "to": ["Alolan Vulpix"]}                               played  32  skipped  96  unreached   0
+      turn 10 retreat_to   {"to": ["Alolan Ninetales ex"]}                                        played 128  skipped   0  unreached   0
+      turn 10 attack       {"title": "Binding Snow"}                                              played 128  skipped   0  unreached   0
+      round 0, the plan's continuation: t8 first move: evolve the Benched Alolan Vulpix into Alolan Ninetales ex | t8 plan: play Lucky Ice Pop | t8 plan: play Irida | t8 plan: the turn's Water to the Active Mega Sharpedo ex | t8 plan: attack Turbo Shark | t8 forced: an extra Water to the Benched Alolan Ninetales ex | t10 plan: retreat into the Benched Alolan Ninetales ex | t10 plan: attack Binding Snow
+      round 0, km3's continuation:      t8 first move: evolve the Benched Alolan Vulpix into Alolan Ninetales ex | t8 km3: retreat into the Benched Alolan Ninetales ex | t8 km3: play Irida | t8 km3: attack Binding Snow | t10 km3: play Lucky Ice Pop | t10 km3: attack Binding Snow
+   -- the rival: retreat into the Benched Alolan Vulpix
+      plan's moves 298 (promotions 0), km3's fill-ins 745, plan's attack for km3's turn end 0, rounds ending as km3's did 108
+      turn  8 evolve       {"at": "bench", "from": "Alolan Vulpix", "into": "Alolan Ninetales ex"} played   0  skipped 128  unreached   0
+      turn  8 play         {"card": "Lucky Ice Pop"}                                              played   0  skipped 128  unreached   0
+      turn  8 play         {"card": "Irida"}                                                      played 128  skipped   0  unreached   0
+      turn  8 energy       {"at": "active", "to": ["Mega Sharpedo ex"]}                           played   0  skipped 128  unreached   0
+      turn  8 attack       {"title": "Turbo Shark"}                                               played   0  skipped 128  unreached   0
+      turn  8 extra_energy {"at": "any", "to": ["Alolan Ninetales ex"]}                           played   0  skipped 128  unreached   0
+      turn 10 bench        {"card": "Alolan Vulpix"}                                              played  23  skipped 105  unreached   0
+      turn 10 energy       {"at": "bench", "to": ["Alolan Vulpix"]}                               played  21  skipped 107  unreached   0
+      turn 10 retreat_to   {"to": ["Alolan Ninetales ex"]}                                        played   0  skipped 128  unreached   0
+      turn 10 attack       {"title": "Binding Snow"}                                              played 126  skipped   2  unreached   0
+      round 0, the plan's continuation: t8 first move: retreat into the Benched Alolan Vulpix | t8 plan: play Irida | t8 km3: evolve the Active Alolan Vulpix into Alolan Ninetales ex | t8 km3: attack Binding Snow | t10 km3: play Lucky Ice Pop | t10 plan: attack Binding Snow
+      round 0, km3's continuation:      t8 first move: retreat into the Benched Alolan Vulpix | t8 km3: play Irida | t8 km3: evolve the Active Alolan Vulpix into Alolan Ninetales ex | t8 km3: attack Binding Snow | t10 km3: play Lucky Ice Pop | t10 km3: attack Binding Snow
+   kx3 (kx3_r128_c12_z2_lab_t0_poolwide, seed 24200001002, 128 rounds, 165 s): chose Retreat(1); within the noise: the best move leads km's by +0.008 with a standard error of 0.008 (threshold 2 SE): km's move kept; the two moves' km3 scores in kx3's report: same, same
+      1.000  +0.008 (se 0.008)  EndTurn
+      1.000  +0.008 (se 0.008)  Evolve { evolution: Pokemon(B2 029 Alolan Ninetales ex), in_play_idx: 1, from_deck: false 
+      1.000  +0.008 (se 0.008)  Play { trainer_card: A1 220 Misty }
+      1.000  +0.008 (se 0.008)  Attach { attachments: [(1, Water, 1)], is_turn_energy: true }
+      1.000  +0.008 (se 0.008)  Attack(Attack { energy_required: [Water], title: "Turbo Shark", fixed_damage: 70, effect: 
+      0.992  +0.000 (se 0.000)  Retreat(1)
+      0.992  +0.000 (se 0.000)  Play { trainer_card: B2 145 Lucky Ice Pop }
+      0.992  +0.000 (se 0.000)  Play { trainer_card: A2a 072 Irida }
+      0.992  +0.000 (se 0.000)  Attach { attachments: [(1, Water, 0)], is_turn_energy: true }
+      0.742  -0.250 (se 0.040)  Play { trainer_card: B1 225 Copycat }
+
+== B-205731-t10 (K = 2, 128 rounds, 0 failed, 46 s; LAB (laboratory condition: the opponent's exact 20-card list...)
+   verdict: no difference: within the noise under both continuations; the plan isn't better in these worlds
+   -- the plan's first move: bench Alolan Vulpix
+      plan's moves 512 (promotions 0), km3's fill-ins 554, plan's attack for km3's turn end 0, rounds ending as km3's did 45
+      turn 10 bench        {"card": "Alolan Vulpix"}                                              played 128  skipped   0  unreached   0
+      turn 10 energy       {"at": "bench", "to": ["Alolan Vulpix"]}                               played 128  skipped   0  unreached   0
+      turn 10 retreat_to   {"to": ["Alolan Ninetales ex"]}                                        played 128  skipped   0  unreached   0
+      turn 10 attack       {"title": "Binding Snow"}                                              played 128  skipped   0  unreached   0
+      turn 12 evolve       {"at": "any", "from": "Alolan Vulpix", "into": "Alolan Ninetales ex"}  played 128  skipped   0  unreached   0
+      round 0, the plan's continuation: t10 first move: bench Alolan Vulpix | t10 plan: the turn's Water to the Benched Alolan Vulpix | t10 plan: retreat into the Benched Alolan Ninetales ex | t10 plan: attack Binding Snow | t12 plan: evolve the Benched Alolan Vulpix into Alolan Ninetales ex | t12 km3: retreat into the Benched Alolan Ninetales ex | t12 km3: the turn's Water to the Active Alolan Ninetales ex | t12 km3: play Elegant Cape | t12 km3: Elegant Cape on the Active Alolan Ninetales ex | t12 km3: attack Binding Snow
+      round 0, km3's continuation:      t10 first move: bench Alolan Vulpix | t10 km3: retreat into the Benched Alolan Ninetales ex | t10 km3: the turn's Water to the Benched Alolan Vulpix | t10 km3: attack Binding Snow | t12 km3: evolve the Benched Alolan Vulpix into Alolan Ninetales ex | t12 km3: retreat into the Benched Alolan Ninetales ex | t12 km3: the turn's Water to the Active Alolan Ninetales ex | t12 km3: play Elegant Cape | t12 km3: Elegant Cape on the Active Alolan Ninetales ex | t12 km3: play Copycat | t12 km3: bench Lapras | t12 km3: attack Binding Snow
+   -- the rival: retreat into the Benched Alolan Ninetales ex
+      plan's moves 512 (promotions 0), km3's fill-ins 554, plan's attack for km3's turn end 0, rounds ending as km3's did 8
+      turn 10 bench        {"card": "Alolan Vulpix"}                                              played 128  skipped   0  unreached   0
+      turn 10 energy       {"at": "bench", "to": ["Alolan Vulpix"]}                               played 128  skipped   0  unreached   0
+      turn 10 retreat_to   {"to": ["Alolan Ninetales ex"]}                                        played 128  skipped   0  unreached   0
+      turn 10 attack       {"title": "Binding Snow"}                                              played 128  skipped   0  unreached   0
+      turn 12 evolve       {"at": "any", "from": "Alolan Vulpix", "into": "Alolan Ninetales ex"}  played 128  skipped   0  unreached   0
+      round 0, the plan's continuation: t10 first move: retreat into the Benched Alolan Ninetales ex | t10 plan: bench Alolan Vulpix | t10 plan: the turn's Water to the Benched Alolan Vulpix | t10 plan: attack Binding Snow | t12 plan: evolve the Benched Alolan Vulpix into Alolan Ninetales ex | t12 km3: retreat into the Benched Alolan Ninetales ex | t12 km3: the turn's Water to the Active Alolan Ninetales ex | t12 km3: play Elegant Cape | t12 km3: Elegant Cape on the Active Alolan Ninetales ex | t12 km3: attack Binding Snow
+      round 0, km3's continuation:      t10 first move: retreat into the Benched Alolan Ninetales ex | t10 km3: bench Alolan Vulpix | t10 km3: the turn's Water to the Benched Alolan Vulpix | t10 km3: attack Binding Snow | t12 km3: evolve the Benched Alolan Vulpix into Alolan Ninetales ex | t12 km3: retreat into the Benched Alolan Ninetales ex | t12 km3: the turn's Water to the Active Alolan Ninetales ex | t12 km3: play Elegant Cape | t12 km3: Elegant Cape on the Active Alolan Ninetales ex | t12 km3: play Copycat | t12 km3: bench Lapras | t12 km3: attack Binding Snow
+   kx3 (kx3_r128_c12_z2_lab_t0_poolwide, seed 24200001003, 128 rounds, 83 s): chose Attach { attachments: [(1, Water, 0)], is_turn_energy: true }; play-outs: +0.125 over km's move, 3.1 standard errors (threshold 2); the two moves' km3 scores in kx3's report: same, same
+      0.664  +0.125 (se 0.040)  Attach { attachments: [(1, Water, 0)], is_turn_energy: true }
+      0.664  +0.125 (se 0.040)  Attach { attachments: [(1, Water, 1)], is_turn_energy: true }
+      0.625  +0.086 (se 0.047)  Play { trainer_card: A1 220 Misty }
+      0.539  +0.000 (se 0.000)  Retreat(1)
+      0.539  +0.000 (se 0.000)  Place(Pokemon(B2 028 Alolan Vulpix), 2)
+      0.539  +0.000 (se 0.000)  Place(Pokemon(B2 028 Alolan Vulpix), 3)
+      0.148  -0.391 (se 0.052)  Play { trainer_card: B1 225 Copycat }
+      0.000  -0.539 (se 0.044)  EndTurn
+      0.000  -0.539 (se 0.044)  Attack(Attack { energy_required: [Water], title: "Turbo Shark", fixed_damage: 70, effect: 
+
+== B-210952-t14 (K = 2, 128 rounds, 0 failed, 129 s; LAB (laboratory condition: the opponent's exact 20-card list...)
+   verdict: worse: the plan's first move trails beyond noise even under the plan's continuation
+   -- the plan's first move: bench Carvanha
+      plan's moves 796 (promotions 128), km3's fill-ins 346, plan's attack for km3's turn end 0, rounds ending as km3's did 128
+      turn 14 bench        {"card": "Carvanha"}                                                   played 128  skipped   0  unreached   0
+      turn 14 energy       {"at": "bench", "to": ["Carvanha"]}                                    played 128  skipped   0  unreached   0
+      turn 14 attack       {"title": "Surf"}                                                      played 128  skipped   0  unreached   0
+      turn 16 evolve       {"at": "any", "from": "Carvanha", "into": "Mega Sharpedo ex"}          played 128  skipped   0  unreached   0
+      turn 16 bench        {"card": "Alolan Vulpix"}                                              played  78  skipped  50  unreached   0
+      turn 16 energy       {"at": "bench", "to": ["Alolan Vulpix"]}                               played  78  skipped  50  unreached   0
+      turn 16 attack       {"title": "Binding Snow"}                                              played 128  skipped   0  unreached   0
+      round 0, the plan's continuation: t14 first move: bench Carvanha | t14 plan: the turn's Water to the Benched Carvanha | t14 km3: play Elegant Cape | t14 km3: Elegant Cape on the Benched Alolan Ninetales ex | t14 plan: attack Surf | t15 plan: promote the Benched Alolan Ninetales ex | t16 plan: evolve the Benched Carvanha into Mega Sharpedo ex | t16 km3: play Cyrus | t16 forced: switch in the opponent's Benched Baxcalibur | t16 plan: attack Binding Snow
+      round 0, km3's continuation:      t14 first move: bench Carvanha | t14 km3: play Elegant Cape | t14 km3: Elegant Cape on the Benched Alolan Ninetales ex | t14 km3: the turn's Water to the Benched Carvanha | t14 km3: attack Surf | t15 km3: promote the Benched Alolan Ninetales ex | t16 km3: play Cyrus | t16 forced: switch in the opponent's Benched Baxcalibur | t16 km3: evolve the Benched Carvanha into Mega Sharpedo ex | t16 km3: attack Binding Snow
+   -- the rival: retreat into the Benched Alolan Ninetales ex
+      plan's moves 640 (promotions 128), km3's fill-ins 680, plan's attack for km3's turn end 0, rounds ending as km3's did 0
+      turn 14 bench        {"card": "Carvanha"}                                                   played 128  skipped   0  unreached   0
+      turn 14 energy       {"at": "bench", "to": ["Carvanha"]}                                    played 128  skipped   0  unreached   0
+      turn 14 attack       {"title": "Surf"}                                                      played   0  skipped 128  unreached   0
+      turn 16 evolve       {"at": "any", "from": "Carvanha", "into": "Mega Sharpedo ex"}          played 128  skipped   0  unreached   0
+      turn 16 bench        {"card": "Alolan Vulpix"}                                              played   0  skipped 128  unreached   0
+      turn 16 energy       {"at": "bench", "to": ["Alolan Vulpix"]}                               played   0  skipped 128  unreached   0
+      turn 16 attack       {"title": "Binding Snow"}                                              played 128  skipped   0  unreached   0
+      round 0, the plan's continuation: t14 first move: retreat into the Benched Alolan Ninetales ex | t14 plan: bench Carvanha | t14 plan: the turn's Water to the Benched Carvanha | t14 km3: play Elegant Cape | t14 km3: Elegant Cape on the Active Alolan Ninetales ex | t14 km3: attack Binding Snow | t16 plan: evolve the Benched Carvanha into Mega Sharpedo ex | t16 km3: play Cyrus | t16 forced: switch in the opponent's Benched Baxcalibur | t16 km3: the turn's Water to the Benched Lapras | t16 plan: attack Binding Snow | t17 plan: promote the Benched Mega Sharpedo ex
+      round 0, km3's continuation:      t14 first move: retreat into the Benched Alolan Ninetales ex | t14 km3: bench Carvanha | t14 km3: play Elegant Cape | t14 km3: Elegant Cape on the Active Alolan Ninetales ex | t14 km3: the turn's Water to the Benched Lapras | t14 km3: attack Binding Snow | t16 km3: play Cyrus | t16 forced: switch in the opponent's Benched Baxcalibur | t16 km3: evolve the Benched Carvanha into Mega Sharpedo ex | t16 km3: the turn's Water to the Benched Mega Sharpedo ex | t16 km3: attack Binding Snow | t17 km3: promote the Benched Mega Sharpedo ex
+   kx3 (kx3_r128_c12_z2_lab_t0_poolwide, seed 24200001004, 128 rounds, 333 s): chose Retreat(2); play-outs: +0.234 over km's move, 8.8 standard errors (threshold 2); the two moves' km3 scores in kx3's report: same, same
+      0.266  +0.234 (se 0.027)  Retreat(2)
+      0.195  +0.164 (se 0.034)  Attach { attachments: [(1, Water, 2)], is_turn_energy: true }
+      0.059  +0.027 (se 0.026)  Play { trainer_card: B1 225 Copycat }
+      0.035  +0.004 (se 0.012)  Attach { attachments: [(1, Water, 0)], is_turn_energy: true }
+      0.035  +0.004 (se 0.012)  Attach { attachments: [(1, Water, 1)], is_turn_energy: true }
+      0.031  +0.000 (se 0.000)  Place(Pokemon(B4 034 Carvanha), 3)
+      0.031  +0.000 (se 0.000)  Play { trainer_card: B3b 065 Elegant Cape }
+      0.031  +0.000 (se 0.000)  Attack(Attack { energy_required: [Water, Water, Colorless], title: "Surf", fixed_damage: 7
+      0.020  -0.012 (se 0.016)  Play { trainer_card: A1 220 Misty }
+      0.016  -0.016 (se 0.016)  Retreat(1)
+      0.012  -0.020 (se 0.017)  EndTurn
+
+== B-210952-t16 (K = 2, 128 rounds, 0 failed, 91 s; LAB (laboratory condition: the opponent's exact 20-card list...)
+   verdict: hidden: the plan's first move leads beyond noise under the plan's continuation, and not under km3's
+   -- the plan's first move: bench Alolan Vulpix
+      plan's moves 512 (promotions 0), km3's fill-ins 714, plan's attack for km3's turn end 0, rounds ending as km3's did 54
+      turn 16 bench        {"card": "Alolan Vulpix"}                                              played 128  skipped   0  unreached   0
+      turn 16 evolve       {"at": "any", "from": "Carvanha", "into": "Mega Sharpedo ex"}          played 128  skipped   0  unreached   0
+      turn 16 energy       {"at": "bench", "to": ["Alolan Vulpix"]}                               played 128  skipped   0  unreached   0
+      turn 16 attack       {"title": "Binding Snow"}                                              played 128  skipped   0  unreached   0
+      turn 18 evolve       {"at": "any", "from": "Alolan Vulpix", "into": "Alolan Ninetales ex"}  played 128  skipped   0  unreached   0
+      round 0, the plan's continuation: t16 first move: bench Alolan Vulpix | t16 plan: evolve the Benched Carvanha into Mega Sharpedo ex | t16 plan: the turn's Water to the Benched Alolan Vulpix | t16 plan: attack Binding Snow | t18 plan: evolve the Benched Alolan Vulpix into Alolan Ninetales ex | t18 km3: play Cyrus | t18 forced: switch in the opponent's Benched Baxcalibur | t18 km3: retreat into the Benched Alolan Ninetales ex | t18 km3: the turn's Water to the Active Alolan Ninetales ex | t18 km3: play Elegant Cape | t18 km3: Elegant Cape on the Active Alolan Ninetales ex | t18 km3: attack Binding Snow
+      round 0, km3's continuation:      t16 first move: bench Alolan Vulpix | t16 km3: evolve the Benched Carvanha into Mega Sharpedo ex | t16 km3: play Elegant Cape | t16 km3: Elegant Cape on the Active Alolan Ninetales ex | t16 km3: the turn's Water to the Benched Alolan Vulpix | t16 km3: attack Binding Snow | t18 km3: play Cyrus | t18 forced: switch in the opponent's Benched Baxcalibur | t18 km3: evolve the Benched Alolan Vulpix into Alolan Ninetales ex | t18 km3: the turn's Water to the Benched Alolan Ninetales ex | t18 km3: retreat into the Benched Mega Sharpedo ex | t18 km3: attack Turbo Shark | t18 km3: an extra Water to the Benched Alolan Ninetales ex
+   -- the rival: attack Binding Snow
+      plan's moves 0 (promotions 0), km3's fill-ins 1044, plan's attack for km3's turn end 0, rounds ending as km3's did 128
+      turn 16 bench        {"card": "Alolan Vulpix"}                                              played   0  skipped 128  unreached   0
+      turn 16 evolve       {"at": "any", "from": "Carvanha", "into": "Mega Sharpedo ex"}          played   0  skipped 128  unreached   0
+      turn 16 energy       {"at": "bench", "to": ["Alolan Vulpix"]}                               played   0  skipped 128  unreached   0
+      turn 16 attack       {"title": "Binding Snow"}                                              played 128  skipped   0  unreached   0
+      turn 18 evolve       {"at": "any", "from": "Alolan Vulpix", "into": "Alolan Ninetales ex"}  played   0  skipped 128  unreached   0
+      round 0, the plan's continuation: t16 first move: attack Binding Snow | t18 km3: play Cyrus | t18 forced: switch in the opponent's Benched Baxcalibur | t18 km3: bench Alolan Vulpix | t18 km3: evolve the Benched Carvanha into Mega Sharpedo ex | t18 km3: play Elegant Cape | t18 km3: Elegant Cape on the Active Alolan Ninetales ex | t18 km3: the turn's Water to the Benched Alolan Vulpix | t18 km3: retreat into the Benched Mega Sharpedo ex | t18 km3: attack Turbo Shark | t18 km3: an extra Water to the Benched Alolan Ninetales ex
+      round 0, km3's continuation:      t16 first move: attack Binding Snow | t18 km3: play Cyrus | t18 forced: switch in the opponent's Benched Baxcalibur | t18 km3: bench Alolan Vulpix | t18 km3: evolve the Benched Carvanha into Mega Sharpedo ex | t18 km3: play Elegant Cape | t18 km3: Elegant Cape on the Active Alolan Ninetales ex | t18 km3: the turn's Water to the Benched Alolan Vulpix | t18 km3: retreat into the Benched Mega Sharpedo ex | t18 km3: attack Turbo Shark | t18 km3: an extra Water to the Benched Alolan Ninetales ex
+   kx3 (kx3_r128_c12_z2_lab_t0_poolwide, seed 24200001005, 128 rounds, 255 s): chose Attack(Attack { energy_required: [Water, Water], title: "Binding Snow"; play-outs: +0.113 over km's move, 6.1 standard errors (threshold 2); the two moves' km3 scores in kx3's report: same, same
+      0.113  +0.113 (se 0.019)  Attack(Attack { energy_required: [Water, Water], title: "Binding Snow", fixed_damage: 80, 
+      0.094  +0.094 (se 0.026)  Attach { attachments: [(1, Water, 0)], is_turn_energy: true }
+      0.051  +0.051 (se 0.017)  Play { trainer_card: B1 225 Copycat }
+      0.000  +0.000 (se 0.000)  Place(Pokemon(B2 028 Alolan Vulpix), 3)
+      0.000  +0.000 (se 0.000)  EndTurn
+      0.000  +0.000 (se 0.000)  Play { trainer_card: A1 220 Misty }
+      0.000  +0.000 (se 0.000)  Evolve { evolution: Pokemon(B4 035 Mega Sharpedo ex), in_play_idx: 1, from_deck: false }
+      0.000  +0.000 (se 0.000)  Play { trainer_card: B3b 065 Elegant Cape }
+      0.000  +0.000 (se 0.000)  Attach { attachments: [(1, Water, 1)], is_turn_energy: true }
+      0.000  +0.000 (se 0.000)  Attach { attachments: [(1, Water, 2)], is_turn_energy: true }
+      0.000  +0.000 (se 0.000)  Retreat(1)
+      0.000  +0.000 (se 0.000)  Retreat(2)
+
+== B-210952-t18 (K = 2, 128 rounds, 0 failed, 56 s; LAB (laboratory condition: the opponent's exact 20-card list...)
+   verdict: worse: the plan's first move trails beyond noise even under the plan's continuation
+   -- the plan's first move: play Misty
+      plan's moves 1024 (promotions 0), km3's fill-ins 323, plan's attack for km3's turn end 0, rounds ending as km3's did 0
+      turn 18 play         {"card": "Misty"}                                                      played 128  skipped   0  unreached   0
+      turn 18 target       {"at": "bench", "to": ["Alolan Vulpix"]}                               played 128  skipped   0  unreached   0
+      turn 18 evolve       {"at": "bench", "from": "Alolan Vulpix", "into": "Alolan Ninetales ex"} played 128  skipped   0  unreached   0
+      turn 18 retreat_to   {"to": ["Alolan Ninetales ex"]}                                        played 128  skipped   0  unreached   0
+      turn 18 energy       {"at": "active", "to": ["Alolan Ninetales ex"]}                        played 128  skipped   0  unreached   0
+      turn 18 play         {"card": "Elegant Cape"}                                               played 128  skipped   0  unreached   0
+      turn 18 target       {"at": "active", "to": ["Alolan Ninetales ex"]}                        played 128  skipped   0  unreached   0
+      turn 18 attack       {"title": "Binding Snow"}                                              played 128  skipped   0  unreached   0
+      turn 20 attack       {"title": "Binding Snow"}                                              played 128  skipped   0  unreached   0
+      round 0, the plan's continuation: t18 first move: play Misty | t18 plan: Misty's target: the Benched Alolan Vulpix | t18 plan: evolve the Benched Alolan Vulpix into Alolan Ninetales ex | t18 plan: retreat into the Benched Alolan Ninetales ex | t18 plan: the turn's Water to the Active Alolan Ninetales ex | t18 plan: play Elegant Cape | t18 plan: Elegant Cape on the Active Alolan Ninetales ex | t18 plan: attack Binding Snow | t20 km3: play Cyrus | t20 km3: switch in the opponent's Benched Baxcalibur | t20 km3: the turn's Water to the Benched Alolan Ninetales ex | t20 plan: attack Binding Snow
+      round 0, km3's continuation:      t18 first move: play Misty | t18 km3: Misty's target: the Benched Alolan Vulpix | t18 km3: evolve the Benched Alolan Vulpix into Alolan Ninetales ex | t18 km3: retreat into the Benched Alolan Ninetales ex | t18 km3: the turn's Water to the Active Alolan Ninetales ex | t18 km3: play Elegant Cape | t18 km3: Elegant Cape on the Active Alolan Ninetales ex | t18 km3: attack Binding Snow | t20 km3: play Cyrus | t20 km3: switch in the opponent's Benched Baxcalibur | t20 km3: the turn's Water to the Benched Alolan Ninetales ex | t20 km3: retreat into the Benched Mega Sharpedo ex | t20 km3: attack Turbo Shark | t20 km3: an extra Water to the Benched Alolan Ninetales ex
+   -- the rival: play Cyrus
+      plan's moves 896 (promotions 0), km3's fill-ins 256, plan's attack for km3's turn end 0, rounds ending as km3's did 128
+      turn 18 play         {"card": "Misty"}                                                      played   0  skipped 128  unreached   0
+      turn 18 target       {"at": "bench", "to": ["Alolan Vulpix"]}                               played   0  skipped 128  unreached   0
+      turn 18 evolve       {"at": "bench", "from": "Alolan Vulpix", "into": "Alolan Ninetales ex"} played 128  skipped   0  unreached   0
+      turn 18 retreat_to   {"to": ["Alolan Ninetales ex"]}                                        played 128  skipped   0  unreached   0
+      turn 18 energy       {"at": "active", "to": ["Alolan Ninetales ex"]}                        played 128  skipped   0  unreached   0
+      turn 18 play         {"card": "Elegant Cape"}                                               played 128  skipped   0  unreached   0
+      turn 18 target       {"at": "active", "to": ["Alolan Ninetales ex"]}                        played 128  skipped   0  unreached   0
+      turn 18 attack       {"title": "Binding Snow"}                                              played 128  skipped   0  unreached   0
+      turn 20 attack       {"title": "Binding Snow"}                                              played 128  skipped   0  unreached   0
+      round 0, the plan's continuation: t18 first move: play Cyrus | t18 forced: switch in the opponent's Benched Baxcalibur | t18 plan: evolve the Benched Alolan Vulpix into Alolan Ninetales ex | t18 plan: retreat into the Benched Alolan Ninetales ex | t18 plan: the turn's Water to the Active Alolan Ninetales ex | t18 plan: play Elegant Cape | t18 plan: Elegant Cape on the Active Alolan Ninetales ex | t18 plan: attack Binding Snow | t20 km3: the turn's Water to the Benched Alolan Ninetales ex | t20 km3: play Irida | t20 plan: attack Binding Snow
+      round 0, km3's continuation:      t18 first move: play Cyrus | t18 forced: switch in the opponent's Benched Baxcalibur | t18 km3: evolve the Benched Alolan Vulpix into Alolan Ninetales ex | t18 km3: retreat into the Benched Alolan Ninetales ex | t18 km3: the turn's Water to the Active Alolan Ninetales ex | t18 km3: play Elegant Cape | t18 km3: Elegant Cape on the Active Alolan Ninetales ex | t18 km3: attack Binding Snow | t20 km3: the turn's Water to the Benched Alolan Ninetales ex | t20 km3: play Irida | t20 km3: attack Binding Snow
+   kx3 (kx3_r128_c12_z2_lab_t0_poolwide, seed 24200001006, 128 rounds, 117 s): chose Play { trainer_card: A1 220 Misty }; play-outs: +0.297 over km's move, 11.3 standard errors (threshold 2); the two moves' km3 scores in kx3's report: same, same
+      0.430  +0.297 (se 0.026)  Play { trainer_card: A1 220 Misty }
+      0.133  +0.000 (se 0.000)  Play { trainer_card: A2 150 Cyrus }
+      0.133  +0.000 (se 0.000)  Evolve { evolution: Pokemon(B2 029 Alolan Ninetales ex), in_play_idx: 3, from_deck: false 
+      0.133  +0.000 (se 0.000)  Attach { attachments: [(1, Water, 3)], is_turn_energy: true }
+      0.000  -0.133 (se 0.020)  Attack(Attack { energy_required: [Water, Water], title: "Binding Snow", fixed_damage: 80, 
+      0.000  -0.133 (se 0.020)  Play { trainer_card: A2a 072 Irida }
+      0.000  -0.133 (se 0.020)  Retreat(1)
+      0.000  -0.133 (se 0.020)  Retreat(2)
+      0.000  -0.133 (se 0.020)  EndTurn
+      0.000  -0.133 (se 0.020)  Attach { attachments: [(1, Water, 0)], is_turn_energy: true }
+      0.000  -0.133 (se 0.020)  Attach { attachments: [(1, Water, 1)], is_turn_energy: true }
+      0.000  -0.133 (se 0.020)  Attach { attachments: [(1, Water, 2)], is_turn_energy: true }
+
+== B-205731-t02 (K = 1, 128 rounds, 0 failed, 106 s; LAB (laboratory condition: the opponent's exact 20-card list...)
+   verdict: ahead either way: the plan's first move leads beyond noise without the plan's continuation changing the lead beyond noise
+   -- the plan's first move: the turn's Water to the Active Carvanha
+      plan's moves 128 (promotions 0), km3's fill-ins 0, plan's attack for km3's turn end 0, rounds ending as km3's did 27
+      turn  2 energy       {"at": "active", "to": ["Carvanha"]}                                   played 128  skipped   0  unreached   0
+      turn  2 attack       {"title": "Sharp Fang"}                                                played 128  skipped   0  unreached   0
+      round 0, the plan's continuation: t2 first move: the turn's Water to the Active Carvanha | t2 plan: attack Sharp Fang
+      round 0, km3's continuation:      t2 first move: the turn's Water to the Active Carvanha | t2 km3: play Copycat | t2 km3: bench Alolan Vulpix | t2 km3: bench Lapras | t2 km3: attack Sharp Fang
+   -- the rival: play Copycat
+      plan's moves 256 (promotions 0), km3's fill-ins 200, plan's attack for km3's turn end 0, rounds ending as km3's did 122
+      turn  2 energy       {"at": "active", "to": ["Carvanha"]}                                   played 128  skipped   0  unreached   0
+      turn  2 attack       {"title": "Sharp Fang"}                                                played 128  skipped   0  unreached   0
+      round 0, the plan's continuation: t2 first move: play Copycat | t2 plan: the turn's Water to the Active Carvanha | t2 km3: bench Alolan Vulpix | t2 km3: bench Lapras | t2 plan: attack Sharp Fang
+      round 0, km3's continuation:      t2 first move: play Copycat | t2 km3: bench Alolan Vulpix | t2 km3: bench Lapras | t2 km3: the turn's Water to the Active Carvanha | t2 km3: attack Sharp Fang
+   kx3 (kx3_r128_c12_z2_lab_t0_poolwide, seed 24200001007, 128 rounds, 82 s): chose EndTurn; play-outs: +0.102 over km's move, 2.3 standard errors (threshold 2); the two moves' km3 scores in kx3's report: same, same
+      0.891  +0.102 (se 0.044)  EndTurn
+      0.789  +0.000 (se 0.000)  Attach { attachments: [(1, Water, 0)], is_turn_energy: true }
+      0.727  -0.062 (se 0.024)  Play { trainer_card: B1 225 Copycat }
+
+== B-210952-t18 (variant: K = 1) (K = 1, 128 rounds, 0 failed, 65 s; LAB (laboratory condition: the opponent's exact 20-card list...)
+   verdict: ahead either way: the plan's first move leads beyond noise without the plan's continuation changing the lead beyond noise
+   -- the plan's first move: play Misty
+      plan's moves 896 (promotions 0), km3's fill-ins 0, plan's attack for km3's turn end 0, rounds ending as km3's did 73
+      turn 18 play         {"card": "Misty"}                                                      played 128  skipped   0  unreached   0
+      turn 18 target       {"at": "bench", "to": ["Alolan Vulpix"]}                               played 128  skipped   0  unreached   0
+      turn 18 evolve       {"at": "bench", "from": "Alolan Vulpix", "into": "Alolan Ninetales ex"} played 128  skipped   0  unreached   0
+      turn 18 retreat_to   {"to": ["Alolan Ninetales ex"]}                                        played 128  skipped   0  unreached   0
+      turn 18 energy       {"at": "active", "to": ["Alolan Ninetales ex"]}                        played 128  skipped   0  unreached   0
+      turn 18 play         {"card": "Elegant Cape"}                                               played 128  skipped   0  unreached   0
+      turn 18 target       {"at": "active", "to": ["Alolan Ninetales ex"]}                        played 128  skipped   0  unreached   0
+      turn 18 attack       {"title": "Binding Snow"}                                              played 128  skipped   0  unreached   0
+      round 0, the plan's continuation: t18 first move: play Misty | t18 plan: Misty's target: the Benched Alolan Vulpix | t18 plan: evolve the Benched Alolan Vulpix into Alolan Ninetales ex | t18 plan: retreat into the Benched Alolan Ninetales ex | t18 plan: the turn's Water to the Active Alolan Ninetales ex | t18 plan: play Elegant Cape | t18 plan: Elegant Cape on the Active Alolan Ninetales ex | t18 plan: attack Binding Snow
+      round 0, km3's continuation:      t18 first move: play Misty | t18 km3: Misty's target: the Benched Alolan Vulpix | t18 km3: evolve the Benched Alolan Vulpix into Alolan Ninetales ex | t18 km3: retreat into the Benched Alolan Ninetales ex | t18 km3: the turn's Water to the Active Alolan Ninetales ex | t18 km3: play Elegant Cape | t18 km3: Elegant Cape on the Active Alolan Ninetales ex | t18 km3: attack Binding Snow
+   -- the rival: play Cyrus
+      plan's moves 768 (promotions 0), km3's fill-ins 0, plan's attack for km3's turn end 0, rounds ending as km3's did 128
+      turn 18 play         {"card": "Misty"}                                                      played   0  skipped 128  unreached   0
+      turn 18 target       {"at": "bench", "to": ["Alolan Vulpix"]}                               played   0  skipped 128  unreached   0
+      turn 18 evolve       {"at": "bench", "from": "Alolan Vulpix", "into": "Alolan Ninetales ex"} played 128  skipped   0  unreached   0
+      turn 18 retreat_to   {"to": ["Alolan Ninetales ex"]}                                        played 128  skipped   0  unreached   0
+      turn 18 energy       {"at": "active", "to": ["Alolan Ninetales ex"]}                        played 128  skipped   0  unreached   0
+      turn 18 play         {"card": "Elegant Cape"}                                               played 128  skipped   0  unreached   0
+      turn 18 target       {"at": "active", "to": ["Alolan Ninetales ex"]}                        played 128  skipped   0  unreached   0
+      turn 18 attack       {"title": "Binding Snow"}                                              played 128  skipped   0  unreached   0
+      round 0, the plan's continuation: t18 first move: play Cyrus | t18 forced: switch in the opponent's Benched Baxcalibur | t18 plan: evolve the Benched Alolan Vulpix into Alolan Ninetales ex | t18 plan: retreat into the Benched Alolan Ninetales ex | t18 plan: the turn's Water to the Active Alolan Ninetales ex | t18 plan: play Elegant Cape | t18 plan: Elegant Cape on the Active Alolan Ninetales ex | t18 plan: attack Binding Snow
+      round 0, km3's continuation:      t18 first move: play Cyrus | t18 forced: switch in the opponent's Benched Baxcalibur | t18 km3: evolve the Benched Alolan Vulpix into Alolan Ninetales ex | t18 km3: retreat into the Benched Alolan Ninetales ex | t18 km3: the turn's Water to the Active Alolan Ninetales ex | t18 km3: play Elegant Cape | t18 km3: Elegant Cape on the Active Alolan Ninetales ex | t18 km3: attack Binding Snow

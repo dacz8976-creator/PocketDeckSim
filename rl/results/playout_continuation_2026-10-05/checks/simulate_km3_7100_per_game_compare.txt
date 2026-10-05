@@ -1,0 +1,8 @@
+deckgym simulate --num 240 --players km3,km3 --seed 7100 --seed-stream -p --results-output DIR decks/research/altaria.txt decks/research/blaziken.txt
+this branch's deckgym (claude/playout-pilot 7c3d62f6, the continuation experiment) v the official program rl/engine-2026-10-02/deckgym (sha256 2f7e5fd6...), both run here
+fields compared per game: every field of the per-game result but game_id (a random label) and any timing field
+games: branch 240, official 240; equal game for game (matched by game seed): 240; different: 0 []
+digest of the branch's games: 9dde28db2de6c9bc
+digest of the official's games: 9dde28db2de6c9bc
+branch: equal to the pinned record 5a18d31_10_cli_km3.txt on every line but line 6 (the wall time)
+official: equal to the pinned record 5a18d31_10_cli_km3.txt on every line but line 6 (the wall time)
