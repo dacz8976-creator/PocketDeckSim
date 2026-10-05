@@ -1,0 +1,86 @@
+Replay checks:
+  games: 560 replayed, 560 exactly as recorded
+  playouts: 2048 replayed, 2048 exactly as recorded
+
+(1) Copycat
+  plays per game: games 1.80 (both seats); play-outs 0.48 (draft A's side)
+  km3's own games (both seats): 1006 plays
+    hand shuffled away: size 2.6; playable now 1.14, next turn 0.12; Supporters 0.92; Energy-matching Pokemon 0.68
+    playable this or next turn: 0: 29%, 1: 33%, 2: 24%, 3+: 14%
+    drew into (the opponent's hand): 3.4 cards; new hand: playable now 1.42, next turn 1.15; Supporters 1.05; Energy-matching Pokemon 0.96
+    a competent player would have held it (>= 2 playable this or next turn): 381 = 38%
+    shuffled away an evolution ready for a Pokemon in play: 108 = 11%; held by either test (>= 2 playable, or a ready evolution): 41%
+    drew fewer cards than it shuffled away: 20%; fewer playable cards after than before: 9%
+    by turn: turns 1-4 558 (held 49%); turns 5-10 373 (held 26%); turns 11+ 75 (held 17%)
+    of which the development decks' side: 510 plays
+    hand shuffled away: size 2.6; playable now 1.12, next turn 0.13; Supporters 0.95; Energy-matching Pokemon 0.67
+    playable this or next turn: 0: 30%, 1: 32%, 2: 24%, 3+: 14%
+    drew into (the opponent's hand): 3.4 cards; new hand: playable now 1.44, next turn 1.16; Supporters 1.07; Energy-matching Pokemon 0.94
+    a competent player would have held it (>= 2 playable this or next turn): 192 = 38%
+    shuffled away an evolution ready for a Pokemon in play: 59 = 12%; held by either test (>= 2 playable, or a ready evolution): 41%
+    drew fewer cards than it shuffled away: 20%; fewer playable cards after than before: 9%
+    by turn: turns 1-4 275 (held 49%); turns 5-10 197 (held 26%); turns 11+ 38 (held 13%)
+    of which the panel side: 496 plays
+    hand shuffled away: size 2.6; playable now 1.17, next turn 0.10; Supporters 0.88; Energy-matching Pokemon 0.69
+    playable this or next turn: 0: 28%, 1: 34%, 2: 24%, 3+: 14%
+    drew into (the opponent's hand): 3.3 cards; new hand: playable now 1.40, next turn 1.14; Supporters 1.04; Energy-matching Pokemon 0.98
+    a competent player would have held it (>= 2 playable this or next turn): 189 = 38%
+    shuffled away an evolution ready for a Pokemon in play: 49 = 10%; held by either test (>= 2 playable, or a ready evolution): 41%
+    drew fewer cards than it shuffled away: 19%; fewer playable cards after than before: 9%
+    by turn: turns 1-4 283 (held 48%); turns 5-10 176 (held 26%); turns 11+ 37 (held 22%)
+  km3 as the play-out policy (8 positions, draft A): 990 plays
+    hand shuffled away: size 2.4; playable now 1.20, next turn 0.19; Supporters 1.32; Energy-matching Pokemon 0.62
+    playable this or next turn: 0: 7%, 1: 53%, 2: 34%, 3+: 5%
+    drew into (the opponent's hand): 3.5 cards; new hand: playable now 1.02, next turn 1.60; Supporters 1.52; Energy-matching Pokemon 0.94
+    a competent player would have held it (>= 2 playable this or next turn): 390 = 39%
+    shuffled away an evolution ready for a Pokemon in play: 188 = 19%; held by either test (>= 2 playable, or a ready evolution): 50%
+    drew fewer cards than it shuffled away: 28%; fewer playable cards after than before: 10%
+    by turn: turns 1-4 113 (held 0%); turns 5-10 179 (held 48%); turns 11+ 698 (held 44%)
+
+  The proposal's net-draw rule (block Copycat unless it draws at least 2 more cards than it shuffles away, and always when an
+  evolution ready for a Pokemon in play would go back), and the >= 2 playable rule, as shares of plays they would block:
+    km3's own games: 1006 plays; net-draw rule blocks 74%; >= 2 playable blocks 38%; hand 2.6, draws 3.4
+    play-outs at B-214254-t06: 155 plays; net-draw rule blocks 24%; >= 2 playable blocks 22%; hand 2.2, draws 5.0
+    play-outs at B-214254-t10: 168 plays; net-draw rule blocks 7%; >= 2 playable blocks 35%; hand 1.8, draws 5.2
+    play-outs at B-205731-t08: 157 plays; net-draw rule blocks 100%; >= 2 playable blocks 52%; hand 2.8, draws 1.7
+    play-outs at B-205731-t10: 218 plays; net-draw rule blocks 83%; >= 2 playable blocks 38%; hand 1.6, draws 2.2
+    play-outs at B-210952-t14: 67 plays; net-draw rule blocks 73%; >= 2 playable blocks 100%; hand 2.6, draws 3.7
+    play-outs at B-210952-t16: 29 plays; net-draw rule blocks 83%; >= 2 playable blocks 100%; hand 3.0, draws 3.8
+    play-outs at B-210952-t18: 72 plays; net-draw rule blocks 38%; >= 2 playable blocks 47%; hand 2.5, draws 4.2
+    play-outs at B-205731-t02: 124 plays; net-draw rule blocks 100%; >= 2 playable blocks 3%; hand 3.9, draws 3.1
+
+(2) Tools
+  km3's own games (both seats): 365 attached
+    Elegant Cape: 108; on the Active 85%, on an ex 31%, Stage 1 43%; able to attack when it got it 47%; attacked within two turns 63%; knocked out within two turns 16%; never attacked while carrying it 26%, of which with two more own turns to do it 6%
+      how its time on the board ended: knocked out 44%, tool discarded 36%, carried to the end 19%
+      carriers: Electrike 20 (never attacked 6), Alolan Ninetales ex 17 (never attacked 2), Alolan Vulpix 13 (never attacked 6), Heliolisk 12 (never attacked 0), Lapras 12 (never attacked 8), Mega Sharpedo ex 12 (never attacked 1), Helioptile 10 (never attacked 3), Carvanha 7 (never attacked 1)
+      Elegant Cape on a Pokemon that isn't Stage 1 (no HP from it): 62
+    Giant Cape: 56; on the Active 73%, on an ex 70%, Stage 1 0%; able to attack when it got it 34%; attacked within two turns 66%; knocked out within two turns 0%; never attacked while carrying it 23%, of which with two more own turns to do it 7%
+      how its time on the board ended: carried to the end 57%, knocked out 27%, tool discarded 16%
+      carriers: Suicune ex 34 (never attacked 10), Frigibax 10 (never attacked 2), Baxcalibur 7 (never attacked 1), Chien-Pao ex 5 (never attacked 0)
+    Protective Poncho: 100; on the Active 100%, on an ex 50%, Stage 1 20%; able to attack when it got it 60%; attacked within two turns 75%; knocked out within two turns 19%; never attacked while carrying it 18%, of which with two more own turns to do it 5%
+      how its time on the board ended: knocked out 50%, tool discarded 28%, carried to the end 22%
+      carriers: Indeedee ex 36 (never attacked 11), Bonsly 15 (never attacked 0), Mega Lucario ex 14 (never attacked 2), Lillipup 13 (never attacked 2), Stoutland 8 (never attacked 1), Lucario 6 (never attacked 1), Riolu 5 (never attacked 0), Hitmonlee 3 (never attacked 1)
+    Rocky Helmet: 101; on the Active 100%, on an ex 28%, Stage 1 0%; able to attack when it got it 66%; attacked within two turns 82%; knocked out within two turns 14%; never attacked while carrying it 15%, of which with two more own turns to do it 3%
+      how its time on the board ended: tool discarded 40%, knocked out 39%, carried to the end 22%
+      carriers: Castform Sunny Form 39 (never attacked 1), Mega Blaziken ex 28 (never attacked 1), Heatmor 17 (never attacked 9), Torchic 17 (never attacked 4)
+    all Tools: on a Pokemon that never attacks 20% (with two more own turns to do it 5%); neither attacked nor was knocked out within two turns 25%
+  km3 as the play-out policy (8 positions, draft A): 1223 attached
+    Elegant Cape: 1223; on the Active 79%, on an ex 96%, Stage 1 96%; able to attack when it got it 100%; attacked within two turns 85%; knocked out within two turns 7%; never attacked while carrying it 9%, of which with two more own turns to do it 5%
+      how its time on the board ended: knocked out 58%, carried to the end 42%
+      carriers: Alolan Ninetales ex 1022 (never attacked 25), Mega Sharpedo ex 147 (never attacked 81), Carvanha 51 (never attacked 0), Alolan Vulpix 2 (never attacked 0), Lapras 1 (never attacked 0)
+      Elegant Cape on a Pokemon that isn't Stage 1 (no HP from it): 54
+    all Tools: on a Pokemon that never attacks 9% (with two more own turns to do it 5%); neither attacked nor was knocked out within two turns 15%
+
+(3) Heal Supporters (healed = damage actually removed; little = 20 or less)
+  km3's own games (both seats): 271 played
+    Erika: 43; healed 47 on average (could heal 47; board damage 89); healed 20 or less 2%, nothing 0%; a Special Condition to cure 16%; another Supporter in hand 70% (Misty playable instead 0%)
+    Irida: 100; healed 40 on average (could heal 40; board damage 85); healed 20 or less 8%, nothing 0%; a Special Condition to cure 7%; another Supporter in hand 79% (Misty playable instead 34%)
+    Pokémon Center Lady: 128; healed 29 on average (could heal 29; board damage 77); healed 20 or less 11%, nothing 1%; a Special Condition to cure 17%; another Supporter in hand 74% (Misty playable instead 0%)
+  km3 as the play-out policy (8 positions, draft A): 1451 played
+    Irida: 1451; healed 58 on average (could heal 58; board damage 151); healed 20 or less 0%, nothing 0%; a Special Condition to cure 0%; another Supporter in hand 94% (Misty playable instead 88%)
+
+The development run's own logs, the deck's side only (labels): plays per game, kx3 (arm X) v km3 (arm ref) on the same deals
+  Copycat: kx3 0.91, km3 0.91
+  a Tool (the four): kx3 0.30, km3 0.32
+  a heal Supporter (the three): kx3 0.28, km3 0.27
