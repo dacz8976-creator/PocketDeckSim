@@ -27,6 +27,9 @@ sections 5 and 9 (the addendum's amendments win). Branch `claude/playout-pilot`,
 - **The continuation experiment (Oct 5).** It asks whether km3's continuation of the play-outs hides good first moves.
   It's a diagnostic beside the pilot: kx3's own decisions are unchanged. Its results and its README are in
   `rl/results/playout_continuation_2026-10-05/`.
+- **km3's late Trainer play inside the play-outs (Oct 5).** A diagnosis: Copycat, the four Tools and the heal
+  Supporters, in km3's own games and in the play-outs. It ends in a proposed (not built) Copycat rule for the play-outs.
+  See `rl/results/playout_trainer_habits_2026-10-05/`.
 
 ## In short
 
