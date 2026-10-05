@@ -13,7 +13,39 @@ The audit is committed: `rl/results/coin_prevention_round2_2026-10-01/TEXT_AUDIT
 - **In the five files but outside rules/09, rules/04 and the caveats:** Guts on the attacker's own Pokémon in an attack's outcome (E1), and Perish Body on a plain queued hit at the Active (E2). Both are decided by their text. Fix them in this job, or leave them listed?
 
 1. **Current task, and the instruction that set it.** None running; idle.
-   **The continuation experiment is done** (Fable via Dustin, Oct 5: "does km3's continuation of the play-outs hide good
+   **The Trainer-habit diagnosis is done** (Fable via Dustin, Oct 5: km3's late Trainer play inside the play-outs).
+   - **Where.** Branch claude/playout-pilot: 1185c4db, head 530be45e. Read
+     `rl/results/playout_trainer_habits_2026-10-05/README.md`.
+   - **Changes.** No table games, no engine change. One read-only instrument, `engine/examples/trainer_habits.rs`.
+   - **The data.**
+     - The development run kept no KX_TRACE, so its 560 km3 games (km3 on both sides) were replayed as the harness built
+       them: all 560 exactly.
+     - The continuation study's 2,048 km3 play-outs at the 8 positions: all end in the study's digest.
+     - The cost of each habit was measured by withholding it from draft A's side, using the accepted plan continuation's
+       `avoid` rule on the study's worlds.
+   - **(1) Copycat** is played 1.8 times a game. The hold rule (>= 2 playable) holds 38% in km3's own games and 39% in
+     the play-outs.
+     - On average it improves the hand (2.6 cards out, 3.4 in).
+     - Withholding it: +0.19 at position 4, +0.06 at 8 (within noise), −0.12 and −0.18 at positions 1 and 2.
+     - The hold rule points the wrong way here: it holds 35% at position 2 and 3% at position 8.
+   - **(2) Tools.**
+     - On a Pokémon that never attacks, with time to: 5%.
+     - But Protective Poncho went on the Active 100 of 100 times (it protects only on the Bench).
+     - Elegant Cape went on a non-Stage-1 Pokémon 62 of 108 times.
+     - Withholding the Cape: +0.17 at position 6, −0.07 and −0.11 at position 7.
+   - **(3) Heal Supporters:** not a habit. They heal 20 or less 0–11% of the time, always the card's maximum, and
+     withholding Irida only costs (up to −0.41).
+   - **kx3 doesn't change these at its own decisions:** Copycat 0.91 a game for kx3 and km3 alike.
+   - **20 examples:** `examples.md`.
+   - **The proposal (not built).** In the play-outs only, Copycat is held:
+     - unless it draws at least 2 more cards than it shuffles away (the opponent's hand count is public); and
+     - always when an evolution for a Pokémon in play would go back.
+     - At the 8 positions it holds 7% and 24% where Copycat helps, and 83% and 100% where it hurts. In km3's own games
+       it holds 74%: a big change.
+     - Tested in three gated steps: identity tests; the 8 positions on the same worlds (about 12 minutes); then the
+       development decks paired with kx3's own games (a first cut on decks 01, 10 and 06 is 240 games, about 18 hours on
+       the laptop).
+   **The continuation experiment, before it, is done** (Fable via Dustin, Oct 5: "does km3's continuation of the play-outs hide good
    first moves?").
    - **Where.** Branch claude/playout-pilot, nothing merged.
    - **Commits.** Main merged in first (a02f0f70). Tests first (e48fe5ee), the option and the plans (32ef0b98), the keep
