@@ -12,7 +12,49 @@ The audit is committed: `rl/results/coin_prevention_round2_2026-10-01/TEXT_AUDIT
 - **A sixth file, `engine/src/move_generation/move_generation_trainer.rs`:** a Fossil can be played under an Item lock (the Item check at 65 skips the Fossil type). Its premise is that a Fossil's printed type is Item (rules/01, rules/04 §6; the local database can't show it).
 - **In the five files but outside rules/09, rules/04 and the caveats:** Guts on the attacker's own Pokémon in an attack's outcome (E1), and Perish Body on a plain queued hit at the Active (E2). Both are decided by their text. Fix them in this job, or leave them listed?
 
-1. **Current task, and the instruction that set it.** None running; idle. **Unfamiliar opponents (round 4) is done** (Fable via Dustin, Oct 4, the coordinator's "round 3"; branch claude/playout-pilot, on top, d513e37b kept: main merged in first 2654a488 (rl/ and decks/ only), tests first c6f32640, the fix 0d1c6d57 and 63cbe91f, the smoke 38c8d7b8, head eefa24d0; README section "Round 4"):
+1. **Current task, and the instruction that set it.** None running; idle.
+   **The continuation experiment is done** (Fable via Dustin, Oct 5: "does km3's continuation of the play-outs hide good
+   first moves?").
+   - **Where.** Branch claude/playout-pilot, nothing merged.
+   - **Commits.** Main merged in first (a02f0f70). Tests first (e48fe5ee), the option and the plans (32ef0b98), the keep
+     fix (7c3d62f6), run 2 (77b71d1b), head 01ce5826.
+   - **Read** `rl/results/playout_continuation_2026-10-05/README.md`.
+   - **What was built.**
+     - `playout_plan.rs`: for the pilot's next K own turns, a scripted plan is played. Its steps are written by intent;
+       km3 fills in what the plan doesn't name, within avoid and keep rules; then km3 takes over. The opponent is km3
+       throughout.
+     - `continuation_study`: runs on `evaluate`'s own sampled worlds and seeds.
+     - Tests first: with K = 0 it is km3's play-outs, final state for final state, and the study's km3 numbers are kx3's
+       own. 6 tests.
+   - **What was run.** The laptop's 8 positions (CONTINUATION_POSITIONS.md, main 2c689e83), built by the position runner
+     at seed 1. LAB (the computer deck), R = 128, seeds 24,200,001,000 + i.
+   - **The answer: mostly no.** The plan's continuation overtakes kx3's move at 2 of 8 positions.
+     - **Position 6 (B-210952-t16).** km3's later Elegant Cape on the Active Ninetales makes "bench the Vulpix" lose
+       128 of 128. Without it, the move edges past Binding Snow, +0.020 [+0.003, +0.036]: real, tiny, in a lost game.
+     - **Position 1 (B-214254-t06).** The Water leads only inside the plan, +0.055. The plan's whole line is weaker than
+       km3's own from either first move (0.70 and 0.64 v 0.77 and 0.78).
+     - **Positions 2 and 4:** the same game in another order.
+     - **Position 3:** won either way.
+     - **Position 5:** the plan's move is worse either way, −0.24.
+     - **Position 7:** kx3's Misty is right (+0.297 under km3). The plan's turn 20 lock loses every play-out where km3
+       instead switches to a Mega for Turbo Shark.
+     - **Position 8:** the plan's move leads either way (+0.062 under km3), too small for 16 play-outs.
+   - **The pattern.**
+     - The plan beat km3's own continuation where it withheld a Trainer km3 plays later: Copycat at 4 and 8, Elegant
+       Cape at 6 (+0.19, +0.08, +0.13).
+     - It lost where it held an Active or attack that km3 changes: positions 1, 2 and 7.
+     - kx3 at 128 play-outs picks End Turn at position 8, a turn without Copycat.
+   - **Item 4 is not triggered,** so no policy change is proposed. The evidence argues against a "stick to the intention"
+     rule; it points, if anywhere, at km3's late Trainer play (a separate check, not run).
+   - **Run 1 and run 2.** Run 1 scripted "keep the Active" unconditionally, which at position 2's turn 14 blocked km3's
+     own route to the lock. Every keep rule now names its Pokémon, and all 8 were rerun. Only position 2 changed (the
+     plan −0.31 → −0.05); the rest were identical round for round. Both runs are kept.
+   - **Checks on 7c3d62f6.**
+     - km3's 240 step-10 games are equal to the official program field for field (9dde28db2de6c9bc), and to the pinned
+       record.
+     - Self-checks: 81b572198c04d5d1, and the pilot's LAB 3a2eb43bd9053639 twice (kx3 unchanged).
+     - Suite: 2,053 passed, 0 failed. `mod.rs` untouched.
+   **Unfamiliar opponents (round 4), before it** (Fable via Dustin, Oct 4, the coordinator's "round 3"; branch claude/playout-pilot, on top, d513e37b kept: main merged in first 2654a488 (rl/ and decks/ only), tests first c6f32640, the fix 0d1c6d57 and 63cbe91f, the smoke 38c8d7b8, head eefa24d0; README section "Round 4"):
    - **(1) The pool**, a parameter: `_poolwide` (the default) holds 35 lists, the 8 meta lists plus the gauntlet's 14, the 2 panel-ladder lists, the computer deck, the 4 Sept 23 variants and the 6 B2e held-out lists, each embedded with its sha256 (`pool/generate_pool.py`, `pool/pool_manifest.tsv`); `_poolmeta` is the 8 of Oct 2, byte-identical. decks/dustin and decks/brews (drafts included) excluded by path and content. **Finding:** the panel's t-blaziken (and research/blaziken) is card for card Dustin's 06-mega-blaziken-tournament-list, the public list he owns; kept in the meta pool as since Oct 2 (dropping it would break LAB v the panel's Blaziken), recorded in the manifest.
    - **(2) Archetype inference** replaces round 3's placeholders when no pooled list is consistent: the 3 most similar zone-covering lists (seen cards by name, zone types), one drawn per play-out as the base weighted by similarity; the seen cards kept, then **the seen Pokémon's own evolution lines from the card database** (beyond the letter of the instruction: without them the inferred opponent evolved 2 times in 12 play-outs against its real list's 10), then the base's cards (Trainers dropped first); the zone's Energy; trace "inferred from N lists: <base>".
    - **(3) The rate test:** t-suicune v t-blaziken, 12 worlds, the opponent's attacks / evolutions in km3 play-outs: pooled 25 / 10, inferred 31 / 28, round 3's filler 36 / 0 (attacks don't separate them; evolutions do). The no-leak tests pass. 30 pilot tests.
