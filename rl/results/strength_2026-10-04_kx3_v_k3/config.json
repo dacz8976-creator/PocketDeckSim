@@ -1,0 +1,31 @@
+{
+    "name":  "kx3_v_k3",
+    "question":  "Run A (kx3 on the deck, k3 the opponent and the reference). The exploit check of the kx3 development result (+16.6 +- 3.5 against km3, rl/results/strength_2026-10-03_kx3_dev). kx3 plays its play-outs with km3 on both sides, so against a km3 opponent its model of the opponent is exact. Here the opponent is k3, a different pilot, on the first 3 of the same deals (same seeds, both seats). Two paired runs share their reference arm (k3 v k3): run A has kx3 on the deck, run B has km3 on the deck. The pre-registered reading is the per-deal difference between the two runs\u0027 X arms, kx3 minus km3 against k3, pooled with mean +- 1.96 sd/sqrt(n) and printed per deck; each run\u0027s own report is read too. If the gain against k3 is near the gain against km3, kx3\u0027s edge is not just exploiting km3; if it is much smaller, part of it was. REALISTIC mode; development decks only; held-out decks locked out.",
+    "pilot":  "kx3",
+    "reference":  "k3",
+    "stage":  "dev",
+    "deck_groups":  [
+                        "aggro",
+                        "setup",
+                        "draftA"
+                    ],
+    "opponent_groups":  [
+                            "panel8"
+                        ],
+    "deals":  3,
+    "seats":  [
+                  0,
+                  1
+              ],
+    "seed_base":  24400000000,
+    "pair_stride":  10000,
+    "threads":  2,
+    "log_level":  "deck",
+    "ext_timeout_s":  null,
+    "intended_lines":  "rl/strength/intended_lines.json",
+    "program":  "/home/dacz8976/kx2/strength",
+    "program_sha256":  "4f6fa88af31dd689dc76820e157aaffb6968a2d89bcb172df90354de7c061a42",
+    "engine":  "claude/playout-pilot b96296a5 (fix round 2) engine tree, built on the laptop Oct 3-4; km3 240/240 v the official program, self-checks km3 81b572198c04d5d1 and kx3 31d638dbc818b0fa (equal to the d513e37b build), suite 2,042/0; KX_EXTRA_LISTS unset",
+    "pilot_provenance":  "kx3 from claude/playout-pilot@b96296a5",
+    "reference_provenance":  "k3 in the same build (the original depth-3 pilot, a different scoring formula from km3)"
+}

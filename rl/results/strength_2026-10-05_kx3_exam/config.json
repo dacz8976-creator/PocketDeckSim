@@ -1,0 +1,22 @@
+{
+ "name": "kx3_exam",
+ "question": "THE FINAL EXAM of the frozen play-out pilot (kx3 as in claude/playout-pilot d513e37b, 'a promising experimental baseline, not the finished planning bot'). Does kx3 play Dustin's held-out decks (the 11 never used in development) better than km3 does, on fresh deals against the 8 panel lists, REALISTIC knowledge? Primary: the pooled paired difference in game score (win 1, tie 1/2, loss 0) with its 95% interval, over 528 paired comparisons (1,056 games); a second figure weights every deck equally. It measures overall improvement across player decks the pilot was not developed on. Six comparisons per matchup (3 deals x 2 seats) don't support ranking individual matchups; the per-pair rows are printed for completeness only. The panel lists are in the pilot's guessing pool, so this answers 'against the public meta lists', not 'against unknown decks'. Time per game reported as a fact. Approved by Dustin Oct 4 ('yes approved'), conditional on the k3 check's pre-recorded rule and the d513e37b replay check (strength_2026-10-04_kx3_v_k3/PREREGISTRATION.md, addendum).",
+ "pilot": "kx3",
+ "reference": "km3",
+ "stage": "heldout",
+ "decks": ["02-arceus-crobat", "04-absol-hoopa-darkrai", "07-skarmory-stall", "08-garchomp-toolbox", "11-archaludon-haxorus-dragonair", "12-ariados-whimsicott-ogerpon", "13-a-ninetales-raticate", "14-comfey-raticate-hypno", "15-jolteon-oricorio-raticate", "draft-C-meowstic-hatterene-v2", "draft-D-entei-grimhound"],
+ "opponent_groups": ["panel8"],
+ "deals": 3,
+ "seats": [0, 1],
+ "seed_base": 24500000000,
+ "pair_stride": 10000,
+ "threads": 2,
+ "log_level": "deck",
+ "ext_timeout_s": null,
+ "intended_lines": "rl/strength/intended_lines.json",
+ "program": "/home/dacz8976/kx/strength",
+ "program_sha256": "5a8f5c83a7915090437e91ae7c644bdd67d1aed713f50a1f7de0bf905802a3d2",
+ "engine": "claude/playout-pilot d513e37b engine tree 31dbd2e6e8ec (the frozen, tested development build), built on the laptop Oct 2; km3 240/240 v the official program, self-checks km3 81b572198c04d5d1 and kx3 31d638dbc818b0fa; KX_EXTRA_LISTS unset",
+ "pilot_provenance": "kx3 from claude/playout-pilot@d513e37b, frozen Oct 4-5",
+ "reference_provenance": "km3 in the same build; it equals the pinned km3 (step 10's 240 games field for field, self-check 81b572198c04d5d1)"
+}
