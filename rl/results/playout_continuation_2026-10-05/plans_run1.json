@@ -9,16 +9,16 @@
     "plan": {
       "promote": ["Alolan Ninetales ex", "Mega Sharpedo ex"],
       "turns": [
-        {"keep_active_if": ["Mega Sharpedo ex"], "steps": [
+        {"keep_active": true, "steps": [
           {"do": "energy", "to": ["Alolan Vulpix"], "at": "bench"},
           {"do": "attack", "title": "Turbo Shark"},
           {"do": "extra_energy", "to": ["Alolan Vulpix", "Alolan Ninetales ex"]}]},
-        {"keep_active_if": ["Mega Sharpedo ex"], "steps": [
+        {"keep_active": true, "steps": [
           {"do": "evolve", "into": "Mega Sharpedo ex", "from": "Carvanha", "at": "bench"},
           {"do": "energy", "to": ["Mega Sharpedo ex"], "at": "bench"},
           {"do": "attack", "title": "Turbo Shark"},
           {"do": "extra_energy", "to": ["Alolan Vulpix", "Alolan Ninetales ex"]}]},
-        {"keep_active_if": ["Mega Sharpedo ex"], "steps": [
+        {"keep_active": true, "steps": [
           {"do": "attack", "title": "Turbo Shark"},
           {"do": "extra_energy", "to": ["Alolan Vulpix", "Alolan Ninetales ex"]}]},
         {"steps": [
@@ -39,7 +39,7 @@
     "plan": {
       "promote": ["Alolan Ninetales ex", "Mega Sharpedo ex"],
       "turns": [
-        {"keep_active_if": ["Mega Sharpedo ex"], "steps": [
+        {"keep_active": true, "steps": [
           {"do": "play", "card": "Lucky Ice Pop"},
           {"do": "play", "card": "Lucky Ice Pop"},
           {"do": "play", "card": "Irida"},
@@ -52,7 +52,7 @@
           {"do": "evolve", "into": "Alolan Ninetales ex", "from": "Alolan Vulpix"},
           {"do": "retreat_to", "to": ["Alolan Ninetales ex"]},
           {"do": "attack", "title": "Binding Snow"}]},
-        {"keep_active_if": ["Alolan Ninetales ex"], "steps": [
+        {"keep_active": true, "steps": [
           {"do": "attack", "title": "Binding Snow"}]}
       ]
     }
@@ -67,7 +67,7 @@
     "plan": {
       "promote": ["Alolan Ninetales ex", "Mega Sharpedo ex"],
       "turns": [
-        {"keep_active_if": ["Mega Sharpedo ex"], "steps": [
+        {"keep_active": true, "steps": [
           {"do": "evolve", "into": "Alolan Ninetales ex", "from": "Alolan Vulpix", "at": "bench"},
           {"do": "play", "card": "Lucky Ice Pop"},
           {"do": "play", "card": "Irida"},
@@ -112,7 +112,7 @@
     "plan": {
       "promote": ["Alolan Ninetales ex", "Mega Sharpedo ex"],
       "turns": [
-        {"keep_active_if": ["Lapras"], "steps": [
+        {"keep_active": true, "steps": [
           {"do": "bench", "card": "Carvanha"},
           {"do": "energy", "to": ["Carvanha"], "at": "bench"},
           {"do": "attack", "title": "Surf"}]},
@@ -134,7 +134,7 @@
     "plan": {
       "promote": ["Alolan Ninetales ex", "Mega Sharpedo ex"],
       "turns": [
-        {"keep_active_if": ["Alolan Ninetales ex"], "avoid": ["Elegant Cape"], "steps": [
+        {"keep_active": true, "avoid": ["Elegant Cape"], "steps": [
           {"do": "bench", "card": "Alolan Vulpix"},
           {"do": "evolve", "into": "Mega Sharpedo ex", "from": "Carvanha"},
           {"do": "energy", "to": ["Alolan Vulpix"], "at": "bench"},
@@ -163,7 +163,7 @@
           {"do": "play", "card": "Elegant Cape"},
           {"do": "target", "to": ["Alolan Ninetales ex"], "at": "active"},
           {"do": "attack", "title": "Binding Snow"}]},
-        {"keep_active_if": ["Alolan Ninetales ex"], "steps": [
+        {"keep_active": true, "steps": [
           {"do": "attack", "title": "Binding Snow"}]}
       ]
     }

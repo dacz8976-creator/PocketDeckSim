@@ -2,11 +2,11 @@
 //! before the option: with K = 0 the plan's continuation is km3's play-outs, final state for final state; the study's
 //! km3 continuation is kx3's own play-outs (the same sampled worlds and seeds as `evaluate`); with K > 0 the plan's steps
 //! are played when legal and the rest are counted as skipped; the study is deterministic; a plan with a misspelt field
-//! is refused. The position is the experiment's first: draft A v the computer deck, B-214254-t06, as the position runner
-//! built it (seed 1).
+//! is refused; `keep_active_if` forbids km3's retreat only while the Pokémon it names is the Active. The position is the
+//! experiment's first: draft A v the computer deck, B-214254-t06, as the position runner built it (seed 1).
 use deckgym::actions::Action;
 use deckgym::observation::{PlayerObservation, RevealedKnowledge};
-use deckgym::players::playout_player::{ContinuationReport, Knowledge, Plan, PlayoutParams, PlayoutPlayer, Step};
+use deckgym::players::playout_player::{ContinuationReport, Knowledge, Plan, PlanTurn, PlayoutParams, PlayoutPlayer, Step};
 use deckgym::{Deck, State};
 use rand::{rngs::StdRng, SeedableRng};
 
@@ -19,16 +19,16 @@ const POSITIONS: &str = "../rl/results/playout_continuation_2026-10-05/states";
 const PLAN_T06: &str = r#"{
   "promote": ["Alolan Ninetales ex", "Mega Sharpedo ex"],
   "turns": [
-    {"keep_active": true, "steps": [
+    {"keep_active_if": ["Mega Sharpedo ex"], "steps": [
       {"do": "energy", "to": ["Alolan Vulpix"], "at": "bench"},
       {"do": "attack", "title": "Turbo Shark"},
       {"do": "extra_energy", "to": ["Alolan Vulpix", "Alolan Ninetales ex"]}]},
-    {"keep_active": true, "steps": [
+    {"keep_active_if": ["Mega Sharpedo ex"], "steps": [
       {"do": "evolve", "into": "Mega Sharpedo ex", "from": "Carvanha", "at": "bench"},
       {"do": "energy", "to": ["Mega Sharpedo ex"], "at": "bench"},
       {"do": "attack", "title": "Turbo Shark"},
       {"do": "extra_energy", "to": ["Alolan Vulpix", "Alolan Ninetales ex"]}]},
-    {"keep_active": true, "steps": [
+    {"keep_active_if": ["Mega Sharpedo ex"], "steps": [
       {"do": "attack", "title": "Turbo Shark"},
       {"do": "extra_energy", "to": ["Alolan Vulpix", "Alolan Ninetales ex"]}]},
     {"steps": [
@@ -171,4 +171,22 @@ fn a_misspelt_plan_is_refused() {
     assert!(serde_json::from_str::<Plan>(r#"{"turns": [{"keep_actve": true}]}"#).is_err());
     assert!(serde_json::from_str::<Step>(r#"{"do": "energy", "too": ["Alolan Vulpix"]}"#).is_err());
     assert!(serde_json::from_str::<Step>(r#"{"do": "charge", "to": ["Alolan Vulpix"]}"#).is_err());
+}
+
+/// The keep rules bind km3's fill-ins only as written: `keep_active` forbids any retreat, `keep_active_if` only while the
+/// Pokémon it names is the Active (at t06 the Caped Mega Sharpedo ex), and `avoid` forbids the Trainers it names (at t10).
+#[test]
+fn the_keep_rules_forbid_a_retreat_only_while_they_hold() {
+    let state = position("B-214254-t06");
+    let retreat = the_action(&state, r#"{"do": "retreat_to", "to": ["Alolan Vulpix"]}"#);
+    // Irida is legal at t10 (the Caped Mega is damaged), not at t06.
+    let damaged = position("B-214254-t10");
+    let irida = the_action(&damaged, r#"{"do": "play", "card": "Irida"}"#);
+    let turn = |json: &str| serde_json::from_str::<PlanTurn>(json).unwrap();
+    assert!(turn("{}").allows(&state, 0, &retreat));
+    assert!(!turn(r#"{"keep_active": true}"#).allows(&state, 0, &retreat));
+    assert!(!turn(r#"{"keep_active_if": ["Mega Sharpedo ex"]}"#).allows(&state, 0, &retreat));
+    assert!(turn(r#"{"keep_active_if": ["Alolan Ninetales ex"]}"#).allows(&state, 0, &retreat));
+    assert!(!turn(r#"{"avoid": ["Irida"]}"#).allows(&damaged, 0, &irida));
+    assert!(turn(r#"{"avoid": ["Copycat"]}"#).allows(&damaged, 0, &irida));
 }

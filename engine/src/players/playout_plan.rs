@@ -10,7 +10,8 @@
 //! - at each of the pilot's decisions in the turn, the first pending step that is legal is played. A step not legal yet
 //!   stays pending (a draw may bring its card). When none is, km<N> decides, among the moves the turn's `avoid` (Trainers
 //!   by name) and `keep_active` (no retreat) leave (all moves if they leave none), so km<N> fills in what the plan doesn't
-//!   name (a draw, a heal). The plan's attack is played when km<N> would end the turn (by an attack or End Turn);
+//!   name (a draw, a heal); `keep_active_if` (names) forbids km<N>'s retreat only while one of them is the Active. The
+//!   plan's attack is played when km<N> would end the turn (by an attack or End Turn);
 //! - a move made without asking the plan (the first move itself; a forced move, the only legal one, which `Game` makes
 //!   without asking a player) counts as the first pending step it matches. A step still pending when its turn ends was
 //!   skipped (km<N> decided in its place); one whose turn the game never reached is counted apart;
@@ -162,6 +163,24 @@ pub struct PlanTurn {
     /// km<N> may not retreat in this turn (a `retreat_to` step still may).
     #[serde(default)]
     pub keep_active: bool,
+    /// km<N> may not retreat while the Active is a Pokémon named here (a `retreat_to` step still may).
+    #[serde(default)]
+    pub keep_active_if: Vec<String>,
+}
+
+impl PlanTurn {
+    /// Whether km<N>, filling in, may make this move in this turn: not a Trainer the turn avoids, and not a retreat the
+    /// turn's keep rules forbid.
+    pub fn allows(&self, state: &State, me: usize, action: &Action) -> bool {
+        match &action.action {
+            SimpleAction::Play { trainer_card } => !self.avoid.iter().any(|n| *n == trainer_card.name),
+            SimpleAction::Retreat(_) => {
+                let active = state.in_play_pokemon[me][0].as_ref().map(|p| p.get_name());
+                !self.keep_active && !active.is_some_and(|a| self.keep_active_if.iter().any(|n| *n == a))
+            }
+            _ => true,
+        }
+    }
 }
 
 /// A plan: its own turns from the decision's on, and whom to promote when the Active falls within them.
@@ -399,12 +418,7 @@ impl PlanPlayer {
             }
         }
         let rules = &p.plan.turns[k];
-        let forbidden = |a: &Action| match &a.action {
-            SimpleAction::Play { trainer_card } => rules.avoid.iter().any(|n| *n == trainer_card.name),
-            SimpleAction::Retreat(_) => rules.keep_active,
-            _ => false,
-        };
-        let allowed: Vec<Action> = actions.iter().filter(|a| !forbidden(a)).cloned().collect();
+        let allowed: Vec<Action> = actions.iter().filter(|a| rules.allows(state, me, a)).cloned().collect();
         Err(Some((k, if allowed.is_empty() { actions.to_vec() } else { allowed })))
     }
 

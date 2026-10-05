@@ -1,0 +1,84 @@
+[
+  {
+    "id": "B-210952-t18",
+    "k": 1,
+    "first_move": {
+      "do": "play",
+      "card": "Misty"
+    },
+    "rival": {
+      "do": "play",
+      "card": "Cyrus"
+    },
+    "rival_is": "Auto's and km3's move (kx3's is the plan's first move)",
+    "note": "Variant of position 7: the plan for turn 18 only (K = 1), then km3; the same worlds as the main run (run with --seed-base 24200001006, position 7's own seed).",
+    "plan": {
+      "promote": [
+        "Alolan Ninetales ex",
+        "Mega Sharpedo ex"
+      ],
+      "turns": [
+        {
+          "steps": [
+            {
+              "do": "play",
+              "card": "Misty"
+            },
+            {
+              "do": "target",
+              "to": [
+                "Alolan Vulpix"
+              ],
+              "at": "bench"
+            },
+            {
+              "do": "evolve",
+              "into": "Alolan Ninetales ex",
+              "from": "Alolan Vulpix",
+              "at": "bench"
+            },
+            {
+              "do": "retreat_to",
+              "to": [
+                "Alolan Ninetales ex"
+              ]
+            },
+            {
+              "do": "energy",
+              "to": [
+                "Alolan Ninetales ex"
+              ],
+              "at": "active"
+            },
+            {
+              "do": "play",
+              "card": "Elegant Cape"
+            },
+            {
+              "do": "target",
+              "to": [
+                "Alolan Ninetales ex"
+              ],
+              "at": "active"
+            },
+            {
+              "do": "attack",
+              "title": "Binding Snow"
+            }
+          ]
+        },
+        {
+          "keep_active_if": [
+            "Alolan Ninetales ex"
+          ],
+          "steps": [
+            {
+              "do": "attack",
+              "title": "Binding Snow"
+            }
+          ]
+        }
+      ]
+    }
+  }
+]
