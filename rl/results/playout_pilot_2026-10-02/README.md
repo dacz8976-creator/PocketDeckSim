@@ -24,6 +24,9 @@ sections 5 and 9 (the addendum's amendments win). Branch `claude/playout-pilot`,
   - The pool is widened to 35 lists and is a parameter.
   - An opponent outside the pool gets a list inferred from the most similar pooled lists, instead of placeholders.
   - The laptop's runs use d513e37b, which stays on the branch.
+- **The continuation experiment (Oct 5).** It asks whether km3's continuation of the play-outs hides good first moves.
+  It's a diagnostic beside the pilot: kx3's own decisions are unchanged. Its results and its README are in
+  `rl/results/playout_continuation_2026-10-05/`.
 
 ## In short
 
@@ -674,6 +677,12 @@ reference arm's km3 game is negligible.
   (every candidate file: included, or why not).
 - `engine/tests/playout_pilot_extra_lists_test.rs`: the `KX_EXTRA_LISTS` test, alone in its process.
 - `engine/examples/playout_smoke.rs`: the smoke (`--resume` included).
+- The continuation experiment (Oct 5; `rl/results/playout_continuation_2026-10-05/README.md`):
+  - `engine/src/players/playout_plan.rs`: the plan continuation, declared from `playout_player.rs`, so `mod.rs` is
+    unchanged;
+  - `continuation_study` in `playout_player.rs`, on `evaluate`'s own worlds and seeds;
+  - `engine/tests/playout_continuation_test.rs`: 6 tests;
+  - `engine/examples/playout_continuation.rs`: the runner.
 - Here:
   - `tests_before.log`, `tests_after.log` and `suite.log`;
   - `smoke/`: `games.jsonl`, `trace.jsonl`, `summarize.py`, `summary.txt`, `replay_check.txt`, `run_times.txt`, and the

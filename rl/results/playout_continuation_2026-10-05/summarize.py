@@ -1,18 +1,26 @@
-"""The continuation experiment's summary (Oct 5): reads run/study.jsonl (and run/kx3.jsonl if present) and prints, per
+"""The continuation experiment's summary (Oct 5): reads <folder>/study.jsonl (and <folder>/kx3.jsonl and
+<folder>/variant_t18_k1.jsonl if present; the folder is run, the default, or run1) and prints, per
 position, both first moves' scores under km3's continuation and under the plan's, the paired leads with 95% intervals,
 the verdict, how often each scripted step was played, skipped or never reached, round 0's move logs, and kx3's line
 (checked against the study: the two moves' km3 scores must be their kx3 scores, since both use the same worlds and seeds).
-Run from the repository root: python3 rl/results/playout_continuation_2026-10-05/summarize.py
+Run from the repository root: python3 rl/results/playout_continuation_2026-10-05/summarize.py [run | run1]
 """
 import json
+import sys
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-study = [json.loads(l) for l in open(HERE / "run/study.jsonl", encoding="utf-8")]
+RUN = HERE / (sys.argv[1] if len(sys.argv) > 1 else "run")
+study = [json.loads(l) for l in open(RUN / "study.jsonl", encoding="utf-8")]
+if (RUN / "variant_t18_k1.jsonl").exists():
+    for l in open(RUN / "variant_t18_k1.jsonl", encoding="utf-8"):
+        v = json.loads(l)
+        v["id"] += " (variant: K = 1)"
+        study.append(v)
 study = [s for s in study if s["kind"] == "study"]
 kx3 = {}
-if (HERE / "run/kx3.jsonl").exists():
-    for l in open(HERE / "run/kx3.jsonl", encoding="utf-8"):
+if (RUN / "kx3.jsonl").exists():
+    for l in open(RUN / "kx3.jsonl", encoding="utf-8"):
         d = json.loads(l)
         kx3[d["id"]] = d
 
