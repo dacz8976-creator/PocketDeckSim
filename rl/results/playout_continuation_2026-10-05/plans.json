@@ -1,0 +1,187 @@
+[
+  {
+    "id": "B-214254-t06",
+    "k": 4,
+    "first_move": {"do": "energy", "to": ["Alolan Vulpix"], "at": "bench"},
+    "rival": {"do": "attack", "title": "Turbo Shark"},
+    "rival_is": "kx3's move (and km3's)",
+    "note": "Position 1. Turns 6, 8 and 10 keep the Caped Mega Active; turn 12 moves into the Ninetales ex.",
+    "plan": {
+      "promote": ["Alolan Ninetales ex", "Mega Sharpedo ex"],
+      "turns": [
+        {"keep_active": true, "steps": [
+          {"do": "energy", "to": ["Alolan Vulpix"], "at": "bench"},
+          {"do": "attack", "title": "Turbo Shark"},
+          {"do": "extra_energy", "to": ["Alolan Vulpix", "Alolan Ninetales ex"]}]},
+        {"keep_active": true, "steps": [
+          {"do": "evolve", "into": "Mega Sharpedo ex", "from": "Carvanha", "at": "bench"},
+          {"do": "energy", "to": ["Mega Sharpedo ex"], "at": "bench"},
+          {"do": "attack", "title": "Turbo Shark"},
+          {"do": "extra_energy", "to": ["Alolan Vulpix", "Alolan Ninetales ex"]}]},
+        {"keep_active": true, "steps": [
+          {"do": "attack", "title": "Turbo Shark"},
+          {"do": "extra_energy", "to": ["Alolan Vulpix", "Alolan Ninetales ex"]}]},
+        {"steps": [
+          {"do": "evolve", "into": "Alolan Ninetales ex", "from": "Alolan Vulpix"},
+          {"do": "retreat_to", "to": ["Alolan Ninetales ex"]},
+          {"do": "bench", "card": "Alolan Vulpix"},
+          {"do": "attack", "title": "Binding Snow"}]}
+      ]
+    }
+  },
+  {
+    "id": "B-214254-t10",
+    "k": 3,
+    "first_move": {"do": "play", "card": "Lucky Ice Pop"},
+    "rival": {"do": "play", "card": "Irida"},
+    "rival_is": "kx3's move (and km3's)",
+    "note": "Position 2. The second Lucky Ice Pop step plays only if the first came back on heads.",
+    "plan": {
+      "promote": ["Alolan Ninetales ex", "Mega Sharpedo ex"],
+      "turns": [
+        {"keep_active": true, "steps": [
+          {"do": "play", "card": "Lucky Ice Pop"},
+          {"do": "play", "card": "Lucky Ice Pop"},
+          {"do": "play", "card": "Irida"},
+          {"do": "energy", "to": ["Mega Sharpedo ex"], "at": "active"},
+          {"do": "attack", "title": "Turbo Shark"},
+          {"do": "extra_energy", "to": ["Alolan Vulpix", "Alolan Ninetales ex"]}]},
+        {"steps": [
+          {"do": "play", "card": "Professor's Research"},
+          {"do": "play", "card": "Poké Ball"},
+          {"do": "evolve", "into": "Alolan Ninetales ex", "from": "Alolan Vulpix"},
+          {"do": "retreat_to", "to": ["Alolan Ninetales ex"]},
+          {"do": "attack", "title": "Binding Snow"}]},
+        {"keep_active": true, "steps": [
+          {"do": "attack", "title": "Binding Snow"}]}
+      ]
+    }
+  },
+  {
+    "id": "B-205731-t08",
+    "k": 2,
+    "first_move": {"do": "evolve", "into": "Alolan Ninetales ex", "from": "Alolan Vulpix", "at": "bench"},
+    "rival": {"do": "retreat_to", "to": ["Alolan Vulpix"]},
+    "rival_is": "kx3's move (and km3's)",
+    "note": "Position 3. Turn 8 keeps the damaged Mega in front; turn 10 retreats it into the 3-Water Ninetales ex.",
+    "plan": {
+      "promote": ["Alolan Ninetales ex", "Mega Sharpedo ex"],
+      "turns": [
+        {"keep_active": true, "steps": [
+          {"do": "evolve", "into": "Alolan Ninetales ex", "from": "Alolan Vulpix", "at": "bench"},
+          {"do": "play", "card": "Lucky Ice Pop"},
+          {"do": "play", "card": "Irida"},
+          {"do": "energy", "to": ["Mega Sharpedo ex"], "at": "active"},
+          {"do": "attack", "title": "Turbo Shark"},
+          {"do": "extra_energy", "to": ["Alolan Ninetales ex"]}]},
+        {"steps": [
+          {"do": "bench", "card": "Alolan Vulpix"},
+          {"do": "energy", "to": ["Alolan Vulpix"], "at": "bench"},
+          {"do": "retreat_to", "to": ["Alolan Ninetales ex"]},
+          {"do": "attack", "title": "Binding Snow"}]}
+      ]
+    }
+  },
+  {
+    "id": "B-205731-t10",
+    "k": 2,
+    "first_move": {"do": "bench", "card": "Alolan Vulpix"},
+    "rival": {"do": "retreat_to", "to": ["Alolan Ninetales ex"]},
+    "rival_is": "kx3's move (and km3's)",
+    "note": "Position 4. Copycat is avoided in both turns: turn 10 by the plan's text, turn 12 to keep the Alolan Ninetales ex in hand.",
+    "plan": {
+      "promote": ["Alolan Ninetales ex", "Mega Sharpedo ex"],
+      "turns": [
+        {"avoid": ["Copycat"], "steps": [
+          {"do": "bench", "card": "Alolan Vulpix"},
+          {"do": "energy", "to": ["Alolan Vulpix"], "at": "bench"},
+          {"do": "retreat_to", "to": ["Alolan Ninetales ex"]},
+          {"do": "attack", "title": "Binding Snow"}]},
+        {"avoid": ["Copycat"], "steps": [
+          {"do": "evolve", "into": "Alolan Ninetales ex", "from": "Alolan Vulpix"}]}
+      ]
+    }
+  },
+  {
+    "id": "B-210952-t14",
+    "k": 2,
+    "first_move": {"do": "bench", "card": "Carvanha"},
+    "rival": {"do": "retreat_to", "to": ["Alolan Ninetales ex"]},
+    "rival_is": "kx3's move (km3's is the plan's first move)",
+    "note": "Position 5. Turn 14 keeps Lapras Active for Surf; turn 16 is position 6's turn (Binding Snow plays only if the Ninetales ex is Active by then).",
+    "plan": {
+      "promote": ["Alolan Ninetales ex", "Mega Sharpedo ex"],
+      "turns": [
+        {"keep_active": true, "steps": [
+          {"do": "bench", "card": "Carvanha"},
+          {"do": "energy", "to": ["Carvanha"], "at": "bench"},
+          {"do": "attack", "title": "Surf"}]},
+        {"avoid": ["Elegant Cape"], "steps": [
+          {"do": "evolve", "into": "Mega Sharpedo ex", "from": "Carvanha"},
+          {"do": "bench", "card": "Alolan Vulpix"},
+          {"do": "energy", "to": ["Alolan Vulpix"], "at": "bench"},
+          {"do": "attack", "title": "Binding Snow"}]}
+      ]
+    }
+  },
+  {
+    "id": "B-210952-t16",
+    "k": 2,
+    "first_move": {"do": "bench", "card": "Alolan Vulpix"},
+    "rival": {"do": "attack", "title": "Binding Snow"},
+    "rival_is": "kx3's move (km3's is the plan's first move)",
+    "note": "Position 6. Elegant Cape is avoided on turn 16, as the plan says.",
+    "plan": {
+      "promote": ["Alolan Ninetales ex", "Mega Sharpedo ex"],
+      "turns": [
+        {"keep_active": true, "avoid": ["Elegant Cape"], "steps": [
+          {"do": "bench", "card": "Alolan Vulpix"},
+          {"do": "evolve", "into": "Mega Sharpedo ex", "from": "Carvanha"},
+          {"do": "energy", "to": ["Alolan Vulpix"], "at": "bench"},
+          {"do": "attack", "title": "Binding Snow"}]},
+        {"steps": [
+          {"do": "evolve", "into": "Alolan Ninetales ex", "from": "Alolan Vulpix"}]}
+      ]
+    }
+  },
+  {
+    "id": "B-210952-t18",
+    "k": 2,
+    "first_move": {"do": "play", "card": "Misty"},
+    "rival": {"do": "play", "card": "Cyrus"},
+    "rival_is": "Auto's and km3's move (kx3's is the plan's first move)",
+    "note": "Position 7, the other way round: the plan is kx3's denial line, the rival Auto's Cyrus line.",
+    "plan": {
+      "promote": ["Alolan Ninetales ex", "Mega Sharpedo ex"],
+      "turns": [
+        {"steps": [
+          {"do": "play", "card": "Misty"},
+          {"do": "target", "to": ["Alolan Vulpix"], "at": "bench"},
+          {"do": "evolve", "into": "Alolan Ninetales ex", "from": "Alolan Vulpix", "at": "bench"},
+          {"do": "retreat_to", "to": ["Alolan Ninetales ex"]},
+          {"do": "energy", "to": ["Alolan Ninetales ex"], "at": "active"},
+          {"do": "play", "card": "Elegant Cape"},
+          {"do": "target", "to": ["Alolan Ninetales ex"], "at": "active"},
+          {"do": "attack", "title": "Binding Snow"}]},
+        {"keep_active": true, "steps": [
+          {"do": "attack", "title": "Binding Snow"}]}
+      ]
+    }
+  },
+  {
+    "id": "B-205731-t02",
+    "k": 1,
+    "first_move": {"do": "energy", "to": ["Carvanha"], "at": "active"},
+    "rival": {"do": "play", "card": "Copycat"},
+    "rival_is": "kx3's move (and km3's)",
+    "note": "Position 8, the control. Copycat is avoided on turn 2: the recorded line is the Water, then Sharp Fang.",
+    "plan": {
+      "promote": [],
+      "turns": [
+        {"avoid": ["Copycat"], "steps": [
+          {"do": "energy", "to": ["Carvanha"], "at": "active"},
+          {"do": "attack", "title": "Sharp Fang"}]}
+      ]
+    }
+  }
+]

@@ -14,22 +14,23 @@ const POSITIONS: &str = "../rl/results/playout_continuation_2026-10-05/states";
 
 /// Position 1's plan, as rl/results/kx3_examples_2026-10-04/CONTINUATION_POSITIONS.md writes it: the turn's Water on the
 /// Benched Vulpix, Turbo Shark with its extra Water to the Vulpix; turn 8 evolve Carvanha and give it the turn's Water;
-/// turns 8 and 10 Turbo Shark to the Vulpix; turn 12 evolve the Vulpix, retreat into it, Binding Snow.
+/// turns 8 and 10 Turbo Shark to the Vulpix (or its Ninetales ex, if km3 has evolved it); turn 12 evolve the Vulpix,
+/// retreat into it, Binding Snow. The same as plans.json's.
 const PLAN_T06: &str = r#"{
   "promote": ["Alolan Ninetales ex", "Mega Sharpedo ex"],
   "turns": [
     {"keep_active": true, "steps": [
       {"do": "energy", "to": ["Alolan Vulpix"], "at": "bench"},
       {"do": "attack", "title": "Turbo Shark"},
-      {"do": "extra_energy", "to": ["Alolan Vulpix"]}]},
+      {"do": "extra_energy", "to": ["Alolan Vulpix", "Alolan Ninetales ex"]}]},
     {"keep_active": true, "steps": [
       {"do": "evolve", "into": "Mega Sharpedo ex", "from": "Carvanha", "at": "bench"},
       {"do": "energy", "to": ["Mega Sharpedo ex"], "at": "bench"},
       {"do": "attack", "title": "Turbo Shark"},
-      {"do": "extra_energy", "to": ["Alolan Vulpix"]}]},
+      {"do": "extra_energy", "to": ["Alolan Vulpix", "Alolan Ninetales ex"]}]},
     {"keep_active": true, "steps": [
       {"do": "attack", "title": "Turbo Shark"},
-      {"do": "extra_energy", "to": ["Alolan Vulpix"]}]},
+      {"do": "extra_energy", "to": ["Alolan Vulpix", "Alolan Ninetales ex"]}]},
     {"steps": [
       {"do": "evolve", "into": "Alolan Ninetales ex", "from": "Alolan Vulpix"},
       {"do": "retreat_to", "to": ["Alolan Ninetales ex"]},
@@ -100,6 +101,8 @@ fn with_k_0_the_plan_continuation_is_km3s_play_outs() {
             assert_eq!(m.km, m.plan, "K = {k}, {}: the plan's play-outs differ from km3's", m.label);
             assert!(m.counts.plan_moves == 0 && m.counts.substituted == 0, "K = {k}: {:?}", m.counts);
         }
+        // Round 0's km3 log comes from a plan of K empty turns, which plays as km3 does.
+        assert!(report.moves.iter().all(|m| m.km3_trace_is_km3), "K = {k}");
         // The two first moves don't lead to the same game every time (the pairing is real).
         assert!(report.moves[0].km.iter().zip(&report.moves[1].km).any(|(a, b)| a.digest != b.digest));
     }
@@ -109,7 +112,7 @@ fn with_k_0_the_plan_continuation_is_km3s_play_outs() {
 /// moves' km3 scores are their scores in kx3's report at the same decision randomness.
 #[test]
 fn the_studys_km3_continuation_is_kx3s_play_outs() {
-    let (state, observation, moves) = t06();
+    let (state, observation, _) = t06();
     let actions = state.generate_possible_actions().1;
     let mut kx3 = pilot(6, 12);
     let report = kx3.evaluate(&mut StdRng::seed_from_u64(20_000_000_102), &observation, &actions);
@@ -142,7 +145,10 @@ fn a_plan_is_played_when_legal_and_its_skips_are_counted() {
             }
         }
         assert!(m.counts.plan_moves > 0, "{:?}", m.counts);
+        assert!(m.km3_trace_is_km3);
+        assert!(m.plan_trace[0].starts_with("t6 first move: "), "{:?}", m.plan_trace);
     }
+    assert!(water.plan_trace.iter().any(|l| l == "t6 plan: attack Turbo Shark"), "{:?}", water.plan_trace);
     // The plan changes play: some round ends differently from km3's continuation.
     assert!(report.moves.iter().any(|m| m.km.iter().zip(&m.plan).any(|(a, b)| a.digest != b.digest)));
 }

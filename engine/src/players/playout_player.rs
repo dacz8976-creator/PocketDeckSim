@@ -32,7 +32,12 @@
 //!
 //! Not covered: a setup choice made after the opponent's hidden setup (the opponent's placed cards can't be sampled yet)
 //! and a decision with a hidden stack frame of the opponent's both keep km<N>'s move, and say so in the trace.
+//!
+//! A diagnostic beside it (Oct 5, `continuation_study`, playout_plan.rs): first moves played out from the same sampled
+//! worlds and seeds as `evaluate`'s, each continued by km<N> and by a scripted plan for the pilot's next K own turns.
+use std::cell::RefCell;
 use std::collections::{BTreeMap, BTreeSet};
+use std::rc::Rc;
 use std::time::Instant;
 
 use rand::seq::SliceRandom;
@@ -43,6 +48,11 @@ use super::{create_players, get_player, value_functions, Player, PlayerCode};
 pub use super::playout_pool::{
     find_repository, parse_extra_lists, parse_extra_lists_against, protected_lists, under_protected, ExtraList, POOL, WIDE,
 };
+
+#[path = "playout_plan.rs"]
+pub mod playout_plan;
+use playout_plan::{PlanPlayer, Progress};
+pub use playout_plan::{Plan, PlanTally, PlanTurn, Spot, Step};
 use crate::actions::Action;
 use crate::models::{Card, EnergyType};
 use crate::observation::PlayerObservation;
@@ -235,6 +245,44 @@ pub struct DecisionReport {
     pub millis: f64,
 }
 
+/// One play-out's end in the continuation study: the pilot's score, a digest of the final state (FNV-1a 64 of its JSON)
+/// and the final turn.
+#[derive(Debug, Clone, PartialEq, serde::Serialize)]
+pub struct Outcome {
+    pub score: f64,
+    pub digest: u64,
+    pub turn: u8,
+}
+
+/// One first move in the continuation study: round j's play-out continued by km<N> (`km[j]`) and by the plan
+/// (`plan[j]`), from the same world and seed; and what the plan did over the rounds.
+#[derive(Debug, Clone, serde::Serialize)]
+pub struct ContinuationMove {
+    pub action: Action,
+    pub label: String,
+    pub km: Vec<Outcome>,
+    pub plan: Vec<Outcome>,
+    pub counts: PlanTally,
+    /// Round 0's pilot moves within the K turns, under the plan and under km<N> (logged by a plan of K empty turns, whose
+    /// play-out must end in km[0]'s final state: `km3_trace_is_km3`).
+    pub plan_trace: Vec<String>,
+    pub km3_trace: Vec<String>,
+    pub km3_trace_is_km3: bool,
+}
+
+/// The continuation study at one decision.
+#[derive(Debug, Clone, serde::Serialize)]
+pub struct ContinuationReport {
+    pub knowledge: String,
+    /// The plan's own turns played (K, at most the plan's turns).
+    pub k: usize,
+    pub rounds: usize,
+    pub failed_rounds: usize,
+    pub lists: BTreeMap<String, usize>,
+    pub moves: Vec<ContinuationMove>,
+    pub millis: f64,
+}
+
 pub struct PlayoutPlayer {
     params: PlayoutParams,
     km: Box<dyn Player>,
@@ -258,6 +306,20 @@ fn id_multiset(deck: &Deck) -> Vec<String> {
     let mut ids: Vec<String> = deck.cards.iter().map(|c| c.get_id()).collect();
     ids.sort();
     ids
+}
+
+/// The pilot's score at a game's end: win 1, tie ½, loss 0.
+fn score(end: &State, me: usize) -> f64 {
+    match end.winner {
+        Some(GameOutcome::Win(w)) if w == me => 1.0,
+        Some(GameOutcome::Win(_)) => 0.0,
+        _ => 0.5,
+    }
+}
+
+/// A decision's base for its rounds' worlds and seeds, from the decision's own randomness (which it doesn't advance).
+fn round_base(rng: &StdRng) -> u64 {
+    rng.clone().next_u64() ^ 0x4b58_504c_4159_4f55
 }
 
 fn splitmix(mut x: u64) -> u64 {
@@ -671,23 +733,59 @@ impl Core {
         (state, list, name)
     }
 
+    /// Round j of a decision: its sampled world, the list the opponent's hidden cards came from and its name, and the game
+    /// seed. Play-out j of every candidate starts from it (common random numbers); `base` is `round_base` of the
+    /// decision's randomness.
+    fn sample_round(&self, observation: &PlayerObservation, base: u64, j: usize) -> (State, Deck, String, u64) {
+        let mut sample_rng = StdRng::seed_from_u64(splitmix(base.wrapping_add(j as u64)));
+        let (state, list, name) = self.sample_state(observation, &mut sample_rng);
+        (state, list, name, splitmix(base ^ 0x5eed_0000_0000_0000 ^ j as u64))
+    }
+
     /// Plays `action` from `state` to the end with km<N> on both sides; the pilot's score (win 1, tie ½, loss 0).
     fn playout(&self, state: &State, opponent_list: &Deck, me: usize, action: &Action, seed: u64) -> f64 {
+        score(&self.play_out(state, opponent_list, me, action, seed, None).0, me)
+    }
+
+    /// `playout`'s game, ending in its final state. With a plan, the pilot's side follows it for K own turns from
+    /// `state`'s (playout_plan.rs) and km<N> plays the rest, and the plan's tally comes back; without one (or with K = 0)
+    /// it is km<N> on both sides.
+    fn play_out(
+        &self,
+        state: &State,
+        opponent_list: &Deck,
+        me: usize,
+        action: &Action,
+        seed: u64,
+        plan: Option<(&Plan, usize)>,
+    ) -> (State, Option<(PlanTally, Vec<String>)>) {
         let code = PlayerCode::KM { max_depth: self.depth };
         let (d0, d1) = if me == 0 { (self.deck.clone(), opponent_list.clone()) } else { (opponent_list.clone(), self.deck.clone()) };
-        let players = create_players(d0, d1, vec![code.clone(), code]);
+        let mut players = create_players(d0, d1, vec![code.clone(), code]);
+        let progress = plan.map(|(plan, k)| {
+            let progress = Rc::new(RefCell::new(Progress::new(plan, k, me, state.turn_count as usize)));
+            let km = players.remove(me);
+            players.insert(me, Box::new(PlanPlayer { km, progress: progress.clone() }));
+            progress.borrow_mut().observe(state, action);
+            progress.borrow_mut().note(state, action, "first move");
+            progress
+        });
         let mut game = Game::from_state(state.clone(), players, seed);
         game.apply_action(action);
         let mut ticks = 0;
         while !game.is_game_over() && ticks < 4000 {
+            if let Some(progress) = &progress {
+                progress.borrow_mut().before_tick(&game.get_state_clone());
+            }
             game.play_tick();
             ticks += 1;
         }
-        match game.get_state_clone().winner {
-            Some(GameOutcome::Win(w)) if w == me => 1.0,
-            Some(GameOutcome::Win(_)) => 0.0,
-            _ => 0.5,
-        }
+        let end = game.get_state_clone();
+        let tally = progress.map(|p| {
+            let mut p = p.borrow_mut();
+            (p.finish(&end), p.take_log())
+        });
+        (end, tally)
     }
 
 }
@@ -742,13 +840,9 @@ impl PlayoutPlayer {
             report.millis = start.elapsed().as_secs_f64() * 1000.0;
             return report;
         }
-        let base = rng.clone().next_u64() ^ 0x4b58_504c_4159_4f55;
+        let base = round_base(rng);
         let core = &self.core;
-        let sample = |j: usize| {
-            let mut sample_rng = StdRng::seed_from_u64(splitmix(base.wrapping_add(j as u64)));
-            let (state, list, name) = core.sample_state(observation, &mut sample_rng);
-            (state, list, name, splitmix(base ^ 0x5eed_0000_0000_0000 ^ j as u64))
-        };
+        let sample = |j: usize| core.sample_round(observation, base, j);
         // The cap: km's move, then the others by km's score after the move on the first sampled world. The ranking runs
         // inside catch_unwind: a move whose ranking panics (an engine panic in the sampled world or the move) scores
         // NEG_INFINITY and is always a named drop, so a panic here never stops the game.
@@ -883,6 +977,95 @@ impl PlayoutPlayer {
                 "within the noise: the best move leads km's by {:+.3} with a standard error of {:.3} (threshold {} SE): km's move kept",
                 lead.diff, lead.se, self.params.z
             );
+        }
+        report.millis = start.elapsed().as_secs_f64() * 1000.0;
+        report
+    }
+
+    /// The continuation study (Oct 5; a diagnostic, not a decision): each of `moves` is played out `rounds` times from
+    /// round j's sampled world and seed, exactly as `evaluate` does at the same decision randomness, and each play-out is
+    /// continued twice: by km<N> on both sides (`evaluate`'s play-out itself), and with the pilot's side following `plan`
+    /// for its next `k` own turns, then km<N> (playout_plan.rs). A round in which any play-out panics is dropped whole, so
+    /// the rest stay paired.
+    pub fn continuation_study(
+        &self,
+        rng: &mut StdRng,
+        observation: &PlayerObservation,
+        moves: &[Action],
+        plan: &Plan,
+        k: usize,
+        rounds: usize,
+    ) -> ContinuationReport {
+        let start = Instant::now();
+        let _quiet = QuietDump::new();
+        let me = observation.actor;
+        let base = round_base(rng);
+        let core = &self.core;
+        let k = k.min(plan.turns.len());
+        let outcome = |end: &State| Outcome {
+            score: score(end, me),
+            digest: super::playout_pool::fnv1a64(serde_json::to_string(end).unwrap_or_default().as_bytes()),
+            turn: end.turn_count,
+        };
+        // A plan of K empty turns: km<N>'s play, logged.
+        let km_logged = Plan { turns: vec![PlanTurn::default(); k], promote: Vec::new() };
+        type Round = (Outcome, Outcome, PlanTally, Option<(Vec<String>, Vec<String>, bool)>);
+        let results: Vec<Option<(Vec<Round>, String)>> = (0..rounds)
+            .into_par_iter()
+            .map(|j| {
+                std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+                    let (world, list, name, seed) = core.sample_round(observation, base, j);
+                    let per_move = moves
+                        .iter()
+                        .map(|a| {
+                            let (km_end, _) = core.play_out(&world, &list, me, a, seed, None);
+                            let (plan_end, logged) = core.play_out(&world, &list, me, a, seed, Some((plan, k)));
+                            let (tally, plan_log) = logged.unwrap_or_default();
+                            let traces = (j == 0).then(|| {
+                                let (end, logged) = core.play_out(&world, &list, me, a, seed, Some((&km_logged, k)));
+                                (plan_log, logged.unwrap_or_default().1, outcome(&end) == outcome(&km_end))
+                            });
+                            (outcome(&km_end), outcome(&plan_end), tally, traces)
+                        })
+                        .collect();
+                    (per_move, name)
+                }))
+                .ok()
+            })
+            .collect();
+        let label = |a: &Action| format!("{:?}", a.action).chars().take(160).collect::<String>();
+        let mut report = ContinuationReport {
+            knowledge: self.knowledge_label(),
+            k,
+            rounds: 0,
+            failed_rounds: results.iter().filter(|r| r.is_none()).count(),
+            lists: BTreeMap::new(),
+            moves: moves
+                .iter()
+                .map(|a| ContinuationMove {
+                    action: a.clone(),
+                    label: label(a),
+                    km: Vec::new(),
+                    plan: Vec::new(),
+                    counts: PlanTally::new(plan, k),
+                    plan_trace: Vec::new(),
+                    km3_trace: Vec::new(),
+                    km3_trace_is_km3: false,
+                })
+                .collect(),
+            millis: 0.0,
+        };
+        for (per_move, name) in results.into_iter().flatten() {
+            report.rounds += 1;
+            *report.lists.entry(name).or_default() += 1;
+            for (m, (km, planned, tally, traces)) in report.moves.iter_mut().zip(per_move) {
+                m.km.push(km);
+                m.plan.push(planned);
+                m.counts.add(&tally);
+                if let Some((plan_trace, km3_trace, same)) = traces {
+                    (m.plan_trace, m.km3_trace, m.km3_trace_is_km3) = (plan_trace, km3_trace, same);
+                }
+            }
         }
         report.millis = start.elapsed().as_secs_f64() * 1000.0;
         report
