@@ -16,6 +16,12 @@
 //!     more than one legal move (`DiscardToolFromPokemon` says not which Tool) is tried each way, depth first, until the
 //!     rest of the log and the ending agree. Checked as the games mode is: every logged move found, and the points, turns
 //!     and winner as recorded.
+//!   ... scripted ... --redecide <kx code> --redecide-out <file> [--redecide-movable]
+//!     (Oct 6, the Tool filter) At each of the deck side's Tool placements that had no printed effect (with
+//!     `--redecide-movable`, only those where another placement had one), kx3 decides again from the very observation
+//!     and search randomness the game gave it: with the code given (the development run's kx3 is
+//!     `kx3_r16_c12_z2_real_t0_poolmeta`), which must place the Tool where the log says, and with `_tools` added. One JSON
+//!     line per decision, from the replay that matched the log.
 //! Every Tool placement also carries the Tool-placement rule's verdict (Oct 6, playout_tools.rs): whether it has an
 //! effect there, and how many placements offered had one. With `--dump-states <dir> [--dump-max N]` (games mode), the
 //! states where the deck's side played a Tool that the rule would have placed elsewhere are written out, for positions
@@ -27,7 +33,7 @@ use std::io::Write;
 use deckgym::actions::{Action, SimpleAction};
 use deckgym::models::{Card, EnergyType, TrainerType};
 use deckgym::observation::{PlayerObservation, RevealedKnowledge};
-use deckgym::players::playout_player::placements_with_effect;
+use deckgym::players::playout_player::{placements_with_effect, DecisionReport, PlayoutParams, PlayoutPlayer};
 use deckgym::players::{create_players, Player, PlayerCode};
 use deckgym::state::GameOutcome;
 use deckgym::{Deck, Game, State};
@@ -483,6 +489,30 @@ struct ScriptLog {
     ambiguous: Vec<(usize, usize)>,
 }
 
+/// kx3 deciding again at a logged Tool placement: the code, the opponent's list (as the harness gave it), whether only
+/// placements the rule would move are redecided, and where the records go.
+#[derive(Debug, Clone)]
+struct Redecide {
+    params: PlayoutParams,
+    opponent: Deck,
+    movable_only: bool,
+    key: String,
+    out: std::sync::Arc<std::sync::Mutex<Vec<Value>>>,
+}
+
+fn slot_of(a: &Action) -> Option<usize> {
+    match a.action {
+        SimpleAction::AttachTool { in_play_idx, .. } => Some(in_play_idx),
+        _ => None,
+    }
+}
+
+fn report_json(r: &DecisionReport) -> Value {
+    json!({"km": slot_of(&r.candidates[r.km3].action), "chosen": slot_of(&r.candidates[r.chosen].action), "reason": r.reason,
+           "candidates": r.candidates.iter().map(|c| json!([slot_of(&c.action), if c.score.is_finite() { json!(c.score) } else { Value::Null }])).collect::<Vec<_>>(),
+           "dropped": r.dropped.iter().map(|d| json!({"move": d.label, "reason": d.reason})).collect::<Vec<_>>(), "rounds": r.rounds, "ms": r.millis.round()})
+}
+
 /// Plays the moves a log records, each found by its label among the legal moves; at an ambiguous label, the option
 /// `forced` names (else the first).
 #[derive(Debug)]
@@ -492,10 +522,59 @@ struct Scripted {
     deck: Deck,
     forced: BTreeMap<usize, usize>,
     log: std::sync::Arc<std::sync::Mutex<ScriptLog>>,
+    redecide: Option<Redecide>,
+}
+
+impl Scripted {
+    fn redecide(&self, rng: &StdRng, observation: &PlayerObservation, actions: &[Action], played: &Action, k: usize) {
+        let Some(re) = &self.redecide else { return };
+        let state = observation.visible_state();
+        if !actions.iter().all(|a| slot_of(a).is_some()) {
+            return;
+        }
+        let effective = placements_with_effect(state, actions);
+        if effective.contains(played) || (re.movable_only && effective.is_empty()) {
+            return;
+        }
+        let decide = |tools: bool| {
+            let params = PlayoutParams { tools, ..re.params.clone() };
+            PlayoutPlayer::new(self.deck.clone(), re.opponent.clone(), params).evaluate(&mut rng.clone(), observation, actions)
+        };
+        let (off, on) = (decide(false), decide(true));
+        let on_choice = on.candidates[on.chosen].action.clone();
+        let tool = match &played.action {
+            SimpleAction::AttachTool { tool_card, .. } => tool_card.get_name(),
+            _ => unreachable!(),
+        };
+        let holder = |i: usize| state.in_play_pokemon[played.actor][i].as_ref().map(|p| p.card.get_name());
+        re.out.lock().unwrap().push(json!({
+            "key": re.key, "decision": k, "turn": state.turn_count, "tool": tool, "logged": slot_of(played),
+            "board": (0..4).map(|i| holder(i)).collect::<Vec<_>>(),
+            "effective": effective.iter().map(slot_of).collect::<Vec<_>>(), "rule_would_move": !effective.is_empty(),
+            "off_equals_logged": off.candidates[off.chosen].action == *played,
+            "on_lands_right": effective.contains(&on_choice),
+            "off": report_json(&off), "on": report_json(&on),
+        }));
+    }
 }
 
 impl Player for Scripted {
-    fn decision_fn(&mut self, _: &mut StdRng, observation: &PlayerObservation, actions: &[Action]) -> Action {
+    fn decision_fn(&mut self, rng: &mut StdRng, observation: &PlayerObservation, actions: &[Action]) -> Action {
+        let chosen = self.choose(observation, actions);
+        let k = self.next - 1;
+        self.redecide(rng, observation, actions, &chosen, k);
+        chosen
+    }
+    fn get_deck(&self) -> Deck {
+        self.deck.clone()
+    }
+    fn decide_omniscient(&mut self, _: &mut StdRng, _: &State, actions: &[Action]) -> Action {
+        actions[0].clone()
+    }
+}
+
+impl Scripted {
+    fn choose(&mut self, observation: &PlayerObservation, actions: &[Action]) -> Action {
         let state = observation.visible_state();
         let want = self.labels.get(self.next).cloned().unwrap_or_default();
         self.next += 1;
@@ -521,12 +600,6 @@ impl Player for Scripted {
             }
         }
     }
-    fn get_deck(&self) -> Deck {
-        self.deck.clone()
-    }
-    fn decide_omniscient(&mut self, _: &mut StdRng, _: &State, actions: &[Action]) -> Action {
-        actions[0].clone()
-    }
 }
 
 fn scripted(args: &[String]) {
@@ -548,6 +621,9 @@ fn scripted(args: &[String]) {
         .take(limit)
         .collect();
     assert!(records.iter().all(|g| g["pilot_opp"] == "km3"), "the opponent must be km3");
+    let redecide_code = arg(args, "--redecide").map(|c| PlayoutParams::parse(c.strip_prefix("kx").unwrap()).unwrap());
+    let movable_only = args.iter().any(|a| a == "--redecide-movable");
+    let redecided: std::sync::Mutex<Vec<Value>> = std::sync::Mutex::new(Vec::new());
     let results: Vec<(Vec<Value>, Value)> = records
         .par_iter()
         .map(|g| {
@@ -568,8 +644,16 @@ fn scripted(args: &[String]) {
             loop {
                 attempts += 1;
                 let log = std::sync::Arc::new(std::sync::Mutex::new(ScriptLog::default()));
+                let records = std::sync::Arc::new(std::sync::Mutex::new(Vec::new()));
+                let redecide = redecide_code.clone().map(|params| Redecide {
+                    params,
+                    opponent: od.clone(),
+                    movable_only,
+                    key: g["key"].as_str().unwrap().to_string(),
+                    out: records.clone(),
+                });
                 let mut players = km3_pair(d0, d1);
-                players[seat] = Box::new(Scripted { labels: labels.clone(), next: 0, deck: dd.clone(), forced: forced.clone(), log: log.clone() });
+                players[seat] = Box::new(Scripted { labels: labels.clone(), next: 0, deck: dd.clone(), forced: forced.clone(), log: log.clone(), redecide });
                 let mut game = Game::new(players, seed);
                 let ctx = json!({"source": "scripted", "key": g["key"], "seed": seed, "deck_seat": seat, "pilot_deck": g["pilot_deck"]});
                 let (events, end, _, _) = watch(&mut game, &ctx, [energy_types(d0), energy_types(d1)], names.clone(), usize::MAX);
@@ -584,6 +668,10 @@ fn scripted(args: &[String]) {
                 if same || next.is_none() || attempts >= 64 {
                     let check = json!({"key": g["key"], "replayed_exactly": same, "labels_logged": labels.len(), "labels_used": log.used,
                                        "missing": log.missing, "ambiguous": log.ambiguous.len(), "attempts": attempts});
+                    for mut r in records.lock().unwrap().drain(..) {
+                        r["replayed_exactly"] = json!(same);
+                        redecided.lock().unwrap().push(r);
+                    }
                     break (events, check);
                 }
                 let (d, _) = next.unwrap();
@@ -593,6 +681,12 @@ fn scripted(args: &[String]) {
             }
         })
         .collect();
+    if let Some(path) = arg(args, "--redecide-out") {
+        let mut f = std::fs::File::create(path).unwrap();
+        for r in redecided.into_inner().unwrap() {
+            writeln!(f, "{r}").unwrap();
+        }
+    }
     write_out(args, results);
 }
 

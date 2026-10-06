@@ -3,6 +3,11 @@
 //! from the text; a Tool goes only where its effect can apply, and where no placement has one km3's choice stands; with
 //! the rule off the play-outs are km3's (and kx3's) exactly, and with it on a play-out in which the rule never acts is
 //! unchanged; the code spells the rule, and every code without it is unchanged.
+//!
+//! The same rule as a filter on kx3's own candidates (Oct 6, the follow-up; written before the filter): with `_tools`, when
+//! km3's proposed placement has no printed effect and another placement has one, the placements without an effect leave
+//! kx3's pool, each named with its reason, and km3 chooses again among the rest with the same randomness as in the
+//! play-outs; where no placement has an effect, or km3's has one, the pool is unchanged; with `_tools` off it is unchanged.
 use std::cell::Cell;
 use std::rc::Rc;
 
@@ -12,7 +17,8 @@ use deckgym::database::get_card_by_enum;
 use deckgym::models::{Card, EnergyType, PlayedCard};
 use deckgym::observation::{PlayerObservation, RevealedKnowledge};
 use deckgym::players::playout_player::{
-    placements_with_effect, tool_conditions, Knowledge, PlayoutParams, PlayoutPlayer, Step, ToolRulePlayer, ToolSpot,
+    placements_with_effect, tool_conditions, tool_filter, Knowledge, PlayoutParams, PlayoutPlayer, Step, ToolRulePlayer,
+    ToolSpot,
 };
 use deckgym::players::Player;
 use deckgym::test_support::get_test_game_with_board;
@@ -283,4 +289,110 @@ fn where_km3_would_misplace_a_tool_the_rule_acts() {
             assert!(*slot > 0, "{placed:?}");
         }
     }
+}
+
+/// The filter on its own: it acts only when km3's proposal is a placement without effect and another placement has one;
+/// then the placements without effect are dropped, each with the reason, and the rest are kept in the order offered.
+#[test]
+fn the_filter_drops_placements_without_effect_only_when_km3_proposes_one() {
+    let state = board();
+    let filter = |name: &str, proposal: usize| {
+        let actions = frame(name);
+        tool_filter(&state, &actions, &actions[proposal]).map(|(kept, dropped)| {
+            (slots(&kept), slots(&dropped.iter().map(|(a, _)| a.clone()).collect::<Vec<_>>()), dropped.into_iter().map(|(_, why)| why).collect::<Vec<_>>())
+        })
+    };
+    assert_eq!(filter("Elegant Cape", 3), None, "km3's placement has an effect: unchanged");
+    assert_eq!(filter("Leaf Cape", 2), None, "no placement has an effect: unchanged");
+    let (kept, dropped, why) = filter("Elegant Cape", 1).unwrap();
+    assert_eq!((kept, dropped), (vec![0, 3], vec![1, 2]));
+    assert!(why.iter().all(|w| w.contains("Elegant Cape") && w.contains("Stage 1")), "{why:?}");
+    let (kept, dropped, why) = filter("Protective Poncho", 0).unwrap();
+    assert_eq!((kept, dropped), (vec![1, 2, 3], vec![0]));
+    assert!(why[0].contains("Protective Poncho") && why[0].contains("Bench"), "{why:?}");
+    // A proposal that isn't a placement leaves the pool alone.
+    let mut mixed = frame("Protective Poncho");
+    mixed.push(Action { actor: 0, action: SimpleAction::EndTurn, is_stack: false });
+    assert_eq!(tool_filter(&state, &mixed, &mixed[4]), None);
+}
+
+/// The first decision of `actor` in the km3 game (`deck0` v `deck1`, `seed`) that places `name`, with a check on the
+/// state: the state and its legal moves.
+fn placement_decision(deck0: &str, deck1: &str, seed: u64, actor: usize, name: &str, ok: impl Fn(&State) -> bool) -> (State, Vec<Action>) {
+    use deckgym::players::{create_players, PlayerCode};
+    let code = PlayerCode::KM { max_depth: 3 };
+    let mut game = deckgym::Game::new(create_players(deck(deck0), deck(deck1), vec![code.clone(), code]), seed);
+    while !game.is_game_over() {
+        let state = game.get_state_clone();
+        let (who, actions) = state.generate_possible_actions();
+        let places = actions.iter().all(|a| matches!(&a.action, SimpleAction::AttachTool { tool_card, .. } if tool_card.get_name() == name));
+        if who == actor && actions.len() > 1 && places && ok(&state) {
+            return (state, actions);
+        }
+        game.play_tick();
+    }
+    panic!("no {name} placement for player {actor}");
+}
+
+const DECK05: &str = "../decks/dustin/05-indeedee-stoutland.txt";
+const ALTARIA: &str = "../decks/screen/opponents/t-altaria.txt";
+
+fn pilot_for(list: &str, opponent: &str, tools: bool) -> PlayoutPlayer {
+    let params = PlayoutParams { rollouts: 2, cap: 12, z: 2.0, knowledge: Knowledge::Lab, tools, ..PlayoutParams::new(3) };
+    PlayoutPlayer::with_extra_lists(deck(list), deck(opponent), params, Vec::new())
+}
+
+/// Deck 05's first Protective Poncho in the development run's km3 game `05-indeedee-stoutland|t-altaria|0|0|ref`
+/// (seed 24,450,000,000), with Pokémon on the Bench: km3 proposes the Active.
+fn poncho_decision() -> (State, Vec<Action>) {
+    placement_decision(DECK05, ALTARIA, 24_450_000_000, 0, "Protective Poncho", |s| s.in_play_pokemon[0].iter().skip(1).any(|p| p.is_some()))
+}
+
+/// With `_tools` off, kx3's pool at that decision is every distinct legal placement, km3's first, nothing dropped.
+#[test]
+fn with_the_parameter_off_kx3s_pool_is_unfiltered() {
+    let (state, actions) = poncho_decision();
+    let observation = PlayerObservation::from_state(&state, 0, &RevealedKnowledge::default());
+    let report = pilot_for(DECK05, ALTARIA, false).evaluate(&mut StdRng::seed_from_u64(20_000_000_203), &observation, &actions);
+    assert_eq!(slots(&[report.candidates[0].action.clone()]), vec![0], "the premise: km3 proposes the Active");
+    let mut offered = slots(&actions);
+    offered.dedup();
+    let mut pooled = slots(&report.candidates.iter().map(|c| c.action.clone()).collect::<Vec<_>>());
+    pooled.sort();
+    assert_eq!(pooled, offered);
+    assert!(report.dropped.is_empty(), "{:?}", report.dropped);
+}
+
+/// With `_tools` on, the Active placement leaves the pool, named with its reason; km3's choice among the rest (the same
+/// randomness, as the play-out rule chooses) leads the pool; kx3 places the Poncho on the Bench.
+#[test]
+fn with_the_parameter_on_placements_without_effect_leave_the_pool_named() {
+    use deckgym::players::{create_players, PlayerCode};
+    let (state, actions) = poncho_decision();
+    let observation = PlayerObservation::from_state(&state, 0, &RevealedKnowledge::default());
+    let seed = 20_000_000_204;
+    let report = pilot_for(DECK05, ALTARIA, true).evaluate(&mut StdRng::seed_from_u64(seed), &observation, &actions);
+    let pooled = slots(&report.candidates.iter().map(|c| c.action.clone()).collect::<Vec<_>>());
+    assert!(pooled.iter().all(|&i| i > 0), "{pooled:?}");
+    assert_eq!(report.dropped.len(), 1, "{:?}", report.dropped);
+    assert!(report.dropped[0].reason.contains("Protective Poncho") && report.dropped[0].reason.contains("Bench"), "{:?}", report.dropped);
+    assert!(slots(&[report.candidates[report.chosen].action.clone()])[0] > 0);
+    let km = create_players(deck(DECK05), deck(ALTARIA), vec![PlayerCode::KM { max_depth: 3 }, PlayerCode::KM { max_depth: 3 }]).remove(0);
+    let mut rule = ToolRulePlayer { inner: km, interventions: Rc::new(Cell::new(0)) };
+    assert_eq!(report.candidates[0].action, rule.decision_fn(&mut StdRng::seed_from_u64(seed), &observation, &actions));
+}
+
+/// Where no placement has an effect (deck 09's Elegant Cape with only Basics in play, the development run's km3 game
+/// `09-mega-manectric-heliolisk|t-altaria|1|0|ref`, seed 24,400,000,001), the pool is the same with `_tools` on.
+#[test]
+fn where_no_placement_has_an_effect_kx3s_pool_is_unchanged() {
+    let deck09 = "../decks/dustin/09-mega-manectric-heliolisk.txt";
+    let (state, actions) = placement_decision(deck09, ALTARIA, 24_400_000_001, 0, "Elegant Cape", |_| true);
+    assert!(placements_with_effect(&state, &actions).is_empty(), "the premise: no Stage 1 in play");
+    let observation = PlayerObservation::from_state(&state, 0, &RevealedKnowledge::default());
+    let pool = |tools: bool| {
+        let r = pilot_for(deck09, ALTARIA, tools).evaluate(&mut StdRng::seed_from_u64(20_000_000_205), &observation, &actions);
+        (r.candidates.iter().map(|c| c.action.clone()).collect::<Vec<_>>(), r.dropped.len())
+    };
+    assert_eq!(pool(true), pool(false));
 }
