@@ -1,0 +1,27 @@
+$ cargo test --release --features test-utils --test playout_quiz4_test   (claude/playout-pilot, item 1's tests written, the attack bar not yet; 2026-10-06T18:34:16Z)
+error[E0432]: unresolved import `deckgym::players::playout_player::switch_bar`
+  --> tests/playout_quiz4_test.rs:12:40
+   |
+12 | use deckgym::players::playout_player::{switch_bar, DecisionReport, Knowledge, PlayoutParams, PlayoutPlayer};
+--
+error[E0609]: no field `z_attack` on type `PlayoutParams`
+  --> tests/playout_quiz4_test.rs:31:38
+   |
+31 |     assert_eq!(PlayoutParams::new(3).z_attack, None);
+--
+error[E0609]: no field `z_attack` on type `PlayoutParams`
+  --> tests/playout_quiz4_test.rs:34:18
+   |
+34 |     assert_eq!(p.z_attack, Some(3.0));
+--
+error[E0609]: no field `z_attack` on type `PlayoutParams`
+  --> tests/playout_quiz4_test.rs:40:23
+   |
+40 |     assert_eq!(params.z_attack, Some(3.0));
+--
+error[E0560]: struct `PlayoutParams` has no field named `z_attack`
+  --> tests/playout_quiz4_test.rs:94:58
+   |
+94 |     let params = PlayoutParams { rollouts: 8, cap: 6, z, z_attack, knowledge: Knowledge::Lab, ..PlayoutParams::new(3) };
+--
+error: could not compile `deckgym` (test "playout_quiz4_test") due to 5 previous errors
