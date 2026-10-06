@@ -6,11 +6,17 @@
 //!   playout_tool_rule --positions <positions.json> --rounds 128 --out results.jsonl [--resume]
 //! positions.json: [{"id", "state": <state file>, "deck": <the pilot's list>, "opponent": <the opponent's list>, "seed"}];
 //! the pilot is the side to move. `--resume` skips positions already in `--out`.
+//!   playout_tool_rule --list-tools
+//! prints every Tool of the card database (one per distinct text) with the conditions the rule reads from its text.
 use std::collections::BTreeSet;
 use std::io::Write;
 
+use deckgym::card_ids::CardId;
+use deckgym::database::get_card_by_enum;
+use deckgym::models::Card;
 use deckgym::observation::{PlayerObservation, RevealedKnowledge};
-use deckgym::players::playout_player::{Knowledge, PlayoutParams, PlayoutPlayer};
+use deckgym::players::playout_player::{tool_conditions, Knowledge, PlayoutParams, PlayoutPlayer};
+use strum::IntoEnumIterator;
 use deckgym::{Deck, State};
 use rand::{rngs::StdRng, SeedableRng};
 use serde_json::{json, Value};
@@ -41,6 +47,18 @@ fn choice(scores: &[Vec<f64>], z: f64) -> usize {
 
 fn main() {
     let args: Vec<String> = std::env::args().collect();
+    if args.iter().any(|a| a == "--list-tools") {
+        let mut seen = BTreeSet::new();
+        for card in CardId::iter().map(get_card_by_enum) {
+            if let Card::Trainer(t) = &card {
+                if format!("{:?}", t.trainer_card_type) == "Tool" && seen.insert(t.effect.clone()) {
+                    let c = tool_conditions(&t.effect);
+                    println!("{}", json!({"tool": t.name, "text": t.effect, "conditions": format!("{c:?}")}));
+                }
+            }
+        }
+        return;
+    }
     let positions: Vec<Value> = serde_json::from_str(&std::fs::read_to_string(arg(&args, "--positions").unwrap()).unwrap()).unwrap();
     let rounds: usize = arg(&args, "--rounds").map_or(128, |r| r.parse().unwrap());
     let out_path = arg(&args, "--out").unwrap();

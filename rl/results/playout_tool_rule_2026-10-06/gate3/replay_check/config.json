@@ -1,0 +1,34 @@
+{
+ "name": "repro_check",
+ "question": "scratch: does this build's kx3_r16_c12_z2_real_t0_poolmeta replay the development run's kx3 games?",
+ "pilot": "kx3_r16_c12_z2_real_t0_poolmeta",
+ "reference": "km3",
+ "stage": "dev",
+ "decks": [
+  "09-mega-manectric-heliolisk",
+  "06-mega-blaziken-tournament-list",
+  "10-xatu-oricorio-tr-weezing",
+  "03-wailord-indeedee-wall",
+  "01-muk-glimmora-kingambit-regigigas",
+  "05-indeedee-stoutland",
+  "draft-A-shark-tempo"
+ ],
+ "opponents": [
+  "t-altaria",
+  "t-blaziken",
+  "t-hydreigon",
+  "t-lucario",
+  "t-sceptile",
+  "t-suicune",
+  "t-vespiquen",
+  "t-weezing"
+ ],
+ "deals": 1,
+ "seats": [
+  0
+ ],
+ "seed_base": 24400000000,
+ "pair_stride": 10000,
+ "threads": 2,
+ "log_level": "deck"
+}

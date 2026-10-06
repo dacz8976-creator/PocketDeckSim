@@ -1,0 +1,27 @@
+Program: the strength harness built with rl/strength/build.sh from claude/playout-pilot's engine/ (engine/src as of 4021a4e8), program sha256 ba6f2169e7a3360c1073a44d8903997663eb2856416cf751136d099acce3b2f8 (the sha256 depends on the build directory).
+Run: decks 06, 10, 01, 05 (--only-deck, --max-games 4 each: t-altaria and t-blaziken, deal 0, seat 0, both arms), pilot kx3_r16_c12_z2_real_t0_poolmeta (the rule off), on the development run's manifest layout and seeds.
+
+$ python3 rl/results/playout_tool_rule_2026-10-06/gate3/pair_with_dev.py rl/results/playout_tool_rule_2026-10-06/gate3/replay_check
+build check: 16 games replay the dev run exactly, 0 differ
+
+Per game, the same comparison printed game by game (timings aside: seed, first player, winner, points, turns, plies, decision counts, every logged decision):
+equal: 01-muk-glimmora-kingambit-regigigas|t-altaria|0|0|X decisions 26
+equal: 01-muk-glimmora-kingambit-regigigas|t-altaria|0|0|ref decisions 26
+equal: 01-muk-glimmora-kingambit-regigigas|t-blaziken|0|0|X decisions 22
+equal: 01-muk-glimmora-kingambit-regigigas|t-blaziken|0|0|ref decisions 22
+equal: 05-indeedee-stoutland|t-altaria|0|0|X decisions 32
+equal: 05-indeedee-stoutland|t-altaria|0|0|ref decisions 32
+equal: 05-indeedee-stoutland|t-blaziken|0|0|X decisions 24
+equal: 05-indeedee-stoutland|t-blaziken|0|0|ref decisions 24
+equal: 06-mega-blaziken-tournament-list|t-altaria|0|0|X decisions 29
+equal: 06-mega-blaziken-tournament-list|t-altaria|0|0|ref decisions 34
+equal: 06-mega-blaziken-tournament-list|t-blaziken|0|0|X decisions 26
+equal: 06-mega-blaziken-tournament-list|t-blaziken|0|0|ref decisions 28
+equal: 10-xatu-oricorio-tr-weezing|t-altaria|0|0|X decisions 26
+equal: 10-xatu-oricorio-tr-weezing|t-altaria|0|0|ref decisions 26
+equal: 10-xatu-oricorio-tr-weezing|t-blaziken|0|0|X decisions 30
+equal: 10-xatu-oricorio-tr-weezing|t-blaziken|0|0|ref decisions 30
+replayed games 16 (kx3 8): equal 16, different 0, missing 0; logged decisions compared 437
+REPLAYS EXACTLY
+
+And every km3 reference game of decks 01, 10, 06 and 05 (80 a deck: 8 opponents x 5 deals x 2 seats; scratch km3-only runs, one deck each, seed_base moved to that deck's seeds): 01 80 of 80, 10 80 of 80, 06 80 of 80, 05 80 of 80 equal to the development run's ref games.

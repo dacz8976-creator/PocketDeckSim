@@ -1,0 +1,217 @@
+== continuation: 8 positions, 128 play-outs per move
+
+B-214254-t06  (the rule acted in 0 of 896 play-outs, 0 placements changed)
+  kx3's choice, rule off: Attack(Attack { energy_required: [Water], title: "Turbo Shark", fix...
+  kx3's choice, rule on:  Attack(Attack { energy_required: [Water], title: "Turbo Shark", fix...
+  km3 Attack(Attack { energy_required: [Water], title: "Turbo S... off 0.781 on 0.781  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      EndTurn                                                      off 0.594 on 0.594  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      Attach { attachments: [(1, Water, 0)], is_turn_energy: tr... off 0.758 on 0.758  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      Attach { attachments: [(1, Water, 1)], is_turn_energy: tr... off 0.758 on 0.758  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      Attach { attachments: [(1, Water, 2)], is_turn_energy: tr... off 0.766 on 0.766  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      Retreat(1)                                                   off 0.543 on 0.543  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      Retreat(2)                                                   off 0.574 on 0.574  on-off +0.000 [+0.000, +0.000]  acted   0/128
+
+B-214254-t10  (the rule acted in 0 of 1280 play-outs, 0 placements changed)
+  kx3's choice, rule off: Play { trainer_card: A2a 072 Irida }
+  kx3's choice, rule on:  Play { trainer_card: A2a 072 Irida }
+  km3 Play { trainer_card: A2a 072 Irida }                         off 0.730 on 0.730  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      EndTurn                                                      off 0.379 on 0.379  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      Play { trainer_card: B2 145 Lucky Ice Pop }                  off 0.730 on 0.730  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      Play { trainer_card: A1 220 Misty }                          off 0.766 on 0.766  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      Attach { attachments: [(1, Water, 0)], is_turn_energy: tr... off 0.707 on 0.707  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      Attach { attachments: [(1, Water, 1)], is_turn_energy: tr... off 0.707 on 0.707  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      Attach { attachments: [(1, Water, 2)], is_turn_energy: tr... off 0.707 on 0.707  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      Retreat(1)                                                   off 0.758 on 0.758  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      Retreat(2)                                                   off 0.082 on 0.082  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      Attack(Attack { energy_required: [Water], title: "Turbo S... off 0.723 on 0.723  on-off +0.000 [+0.000, +0.000]  acted   0/128
+
+B-205731-t08  (the rule acted in 1 of 1280 play-outs, 1 placements changed)
+  kx3's choice, rule off: Retreat(1)
+  kx3's choice, rule on:  Retreat(1)
+  km3 Retreat(1)                                                   off 0.992 on 0.992  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      EndTurn                                                      off 1.000 on 1.000  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      Play { trainer_card: B2 145 Lucky Ice Pop }                  off 0.992 on 0.992  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      Play { trainer_card: A2a 072 Irida }                         off 0.992 on 0.992  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      Evolve { evolution: Pokemon(B2 029 Alolan Ninetales ex), ... off 1.000 on 1.000  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      Play { trainer_card: B1 225 Copycat }                        off 0.742 on 0.742  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      Play { trainer_card: A1 220 Misty }                          off 1.000 on 1.000  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      Attach { attachments: [(1, Water, 0)], is_turn_energy: tr... off 0.992 on 0.992  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      Attach { attachments: [(1, Water, 1)], is_turn_energy: tr... off 1.000 on 1.000  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      Attack(Attack { energy_required: [Water], title: "Turbo S... off 1.000 on 1.000  on-off +0.000 [+0.000, +0.000]  acted   1/128
+
+B-205731-t10  (the rule acted in 0 of 1152 play-outs, 0 placements changed)
+  kx3's choice, rule off: Attach { attachments: [(1, Water, 0)], is_turn_energy: true }
+  kx3's choice, rule on:  Attach { attachments: [(1, Water, 0)], is_turn_energy: true }
+  km3 Retreat(1)                                                   off 0.539 on 0.539  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      EndTurn                                                      off 0.000 on 0.000  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      Play { trainer_card: B1 225 Copycat }                        off 0.148 on 0.148  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      Play { trainer_card: A1 220 Misty }                          off 0.625 on 0.625  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      Place(Pokemon(B2 028 Alolan Vulpix), 2)                      off 0.539 on 0.539  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      Place(Pokemon(B2 028 Alolan Vulpix), 3)                      off 0.539 on 0.539  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      Attach { attachments: [(1, Water, 0)], is_turn_energy: tr... off 0.664 on 0.664  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      Attach { attachments: [(1, Water, 1)], is_turn_energy: tr... off 0.664 on 0.664  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      Attack(Attack { energy_required: [Water], title: "Turbo S... off 0.000 on 0.000  on-off +0.000 [+0.000, +0.000]  acted   0/128
+
+B-210952-t14  (the rule acted in 0 of 1408 play-outs, 0 placements changed)
+  kx3's choice, rule off: Retreat(2)
+  kx3's choice, rule on:  Retreat(2)
+  km3 Place(Pokemon(B4 034 Carvanha), 3)                           off 0.031 on 0.031  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      EndTurn                                                      off 0.012 on 0.012  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      Play { trainer_card: B1 225 Copycat }                        off 0.059 on 0.059  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      Play { trainer_card: A1 220 Misty }                          off 0.020 on 0.020  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      Play { trainer_card: B3b 065 Elegant Cape }                  off 0.031 on 0.031  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      Attach { attachments: [(1, Water, 0)], is_turn_energy: tr... off 0.035 on 0.035  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      Attach { attachments: [(1, Water, 1)], is_turn_energy: tr... off 0.035 on 0.035  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      Attach { attachments: [(1, Water, 2)], is_turn_energy: tr... off 0.195 on 0.195  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      Retreat(1)                                                   off 0.016 on 0.016  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      Retreat(2)                                                   off 0.266 on 0.266  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      Attack(Attack { energy_required: [Water, Water, Colorless... off 0.031 on 0.031  on-off +0.000 [+0.000, +0.000]  acted   0/128
+
+B-210952-t16  (the rule acted in 0 of 1536 play-outs, 0 placements changed)
+  kx3's choice, rule off: Attack(Attack { energy_required: [Water, Water], title: "Binding Sn...
+  kx3's choice, rule on:  Attack(Attack { energy_required: [Water, Water], title: "Binding Sn...
+  km3 Place(Pokemon(B2 028 Alolan Vulpix), 3)                      off 0.000 on 0.000  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      EndTurn                                                      off 0.000 on 0.000  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      Play { trainer_card: B1 225 Copycat }                        off 0.051 on 0.051  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      Play { trainer_card: A1 220 Misty }                          off 0.000 on 0.000  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      Evolve { evolution: Pokemon(B4 035 Mega Sharpedo ex), in_... off 0.000 on 0.000  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      Play { trainer_card: B3b 065 Elegant Cape }                  off 0.000 on 0.000  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      Attach { attachments: [(1, Water, 0)], is_turn_energy: tr... off 0.094 on 0.094  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      Attach { attachments: [(1, Water, 1)], is_turn_energy: tr... off 0.000 on 0.000  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      Attach { attachments: [(1, Water, 2)], is_turn_energy: tr... off 0.000 on 0.000  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      Retreat(1)                                                   off 0.000 on 0.000  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      Retreat(2)                                                   off 0.000 on 0.000  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      Attack(Attack { energy_required: [Water, Water], title: "... off 0.113 on 0.113  on-off +0.000 [+0.000, +0.000]  acted   0/128
+
+B-210952-t18  (the rule acted in 0 of 1536 play-outs, 0 placements changed)
+  kx3's choice, rule off: Play { trainer_card: A1 220 Misty }
+  kx3's choice, rule on:  Play { trainer_card: A1 220 Misty }
+  km3 Play { trainer_card: A2 150 Cyrus }                          off 0.133 on 0.133  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      Attack(Attack { energy_required: [Water, Water], title: "... off 0.000 on 0.000  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      Evolve { evolution: Pokemon(B2 029 Alolan Ninetales ex), ... off 0.133 on 0.133  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      Play { trainer_card: A2a 072 Irida }                         off 0.000 on 0.000  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      Retreat(1)                                                   off 0.000 on 0.000  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      Retreat(2)                                                   off 0.000 on 0.000  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      EndTurn                                                      off 0.000 on 0.000  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      Attach { attachments: [(1, Water, 0)], is_turn_energy: tr... off 0.000 on 0.000  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      Attach { attachments: [(1, Water, 1)], is_turn_energy: tr... off 0.000 on 0.000  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      Attach { attachments: [(1, Water, 2)], is_turn_energy: tr... off 0.000 on 0.000  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      Attach { attachments: [(1, Water, 3)], is_turn_energy: tr... off 0.133 on 0.133  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      Play { trainer_card: A1 220 Misty }                          off 0.430 on 0.430  on-off +0.000 [+0.000, +0.000]  acted   0/128
+
+B-205731-t02  (the rule acted in 3 of 384 play-outs, 3 placements changed)
+  kx3's choice, rule off: EndTurn
+  kx3's choice, rule on:  EndTurn
+  km3 Attach { attachments: [(1, Water, 0)], is_turn_energy: tr... off 0.789 on 0.789  on-off +0.000 [+0.000, +0.000]  acted   0/128
+      EndTurn                                                      off 0.891 on 0.891  on-off +0.000 [+0.000, +0.000]  acted   3/128
+      Play { trainer_card: B1 225 Copycat }                        off 0.727 on 0.727  on-off +0.000 [+0.000, +0.000]  acted   0/128
+
+== development: 12 positions, 64 play-outs per move
+
+dev00 05-indeedee-stoutland|t-altaria|0|0|ref#0  (the rule acted in 256 of 256 play-outs, 447 placements changed)
+  kx3's choice, rule off: Attach { attachments: [(1, Psychic, 0)], is_turn_energy: true }
+  kx3's choice, rule on:  Attach { attachments: [(1, Psychic, 0)], is_turn_energy: true }
+  km3 Attach { attachments: [(1, Psychic, 0)], is_turn_energy: ... off 0.391 on 0.375  on-off -0.016 [-0.046, +0.015]  acted  64/64
+      EndTurn                                                      off 0.344 on 0.375  on-off +0.031 [-0.012, +0.074]  acted  64/64
+      Play { trainer_card: B2 147 Protective Poncho }              off 0.391 on 0.375  on-off -0.016 [-0.046, +0.015]  acted  64/64
+      Attach { attachments: [(1, Psychic, 3)], is_turn_energy: ... off 0.359 on 0.359  on-off +0.000 [+0.000, +0.000]  acted  64/64
+
+dev01 05-indeedee-stoutland|t-blaziken|0|0|ref#0  (the rule acted in 319 of 320 play-outs, 319 placements changed)
+  kx3's choice, rule off: Play { trainer_card: B2 147 Protective Poncho }
+  kx3's choice, rule on:  Play { trainer_card: B2 147 Protective Poncho }
+  km3 Play { trainer_card: B2 147 Protective Poncho }              off 0.141 on 0.109  on-off -0.031 [-0.118, +0.056]  acted  64/64
+      EndTurn                                                      off 0.125 on 0.094  on-off -0.031 [-0.092, +0.030]  acted  63/64
+      Place(Pokemon(A3a 054 Lillipup), 1)                          off 0.141 on 0.109  on-off -0.031 [-0.118, +0.056]  acted  64/64
+      Place(Pokemon(A3a 054 Lillipup), 2)                          off 0.141 on 0.109  on-off -0.031 [-0.118, +0.056]  acted  64/64
+      UseAbility { in_play_idx: 3 }                                off 0.141 on 0.109  on-off -0.031 [-0.118, +0.056]  acted  64/64
+
+dev02 05-indeedee-stoutland|t-hydreigon|0|0|ref#0  (the rule acted in 314 of 320 play-outs, 314 placements changed)
+  kx3's choice, rule off: Play { trainer_card: B2 147 Protective Poncho }
+  kx3's choice, rule on:  Play { trainer_card: B2 147 Protective Poncho }
+  km3 Play { trainer_card: B2 147 Protective Poncho }              off 0.125 on 0.109  on-off -0.016 [-0.069, +0.038]  acted  64/64
+      EndTurn                                                      off 0.094 on 0.109  on-off +0.016 [-0.015, +0.046]  acted  61/64
+      Retreat(2)                                                   off 0.094 on 0.125  on-off +0.031 [-0.012, +0.074]  acted  64/64
+      Retreat(3)                                                   off 0.094 on 0.109  on-off +0.016 [-0.015, +0.046]  acted  64/64
+      Attack(Attack { energy_required: [Colorless], title: "Tac... off 0.125 on 0.125  on-off +0.000 [+0.000, +0.000]  acted  61/64
+
+dev03 05-indeedee-stoutland|t-lucario|0|1|ref#0  (the rule acted in 320 of 320 play-outs, 320 placements changed)
+  kx3's choice, rule off: Play { trainer_card: B2 147 Protective Poncho }
+  kx3's choice, rule on:  Play { trainer_card: B2 147 Protective Poncho }
+  km3 Play { trainer_card: B2 147 Protective Poncho }              off 0.000 on 0.000  on-off +0.000 [+0.000, +0.000]  acted  64/64
+      EndTurn                                                      off 0.047 on 0.047  on-off +0.000 [+0.000, +0.000]  acted  64/64
+      Retreat(2)                                                   off 0.000 on 0.000  on-off +0.000 [+0.000, +0.000]  acted  64/64
+      Retreat(3)                                                   off 0.000 on 0.000  on-off +0.000 [+0.000, +0.000]  acted  64/64
+      Attack(Attack { energy_required: [Psychic, Psychic], titl... off 0.000 on 0.000  on-off +0.000 [+0.000, +0.000]  acted  64/64
+
+dev04 05-indeedee-stoutland|t-sceptile|0|1|ref#0  (the rule acted in 384 of 384 play-outs, 384 placements changed)
+  kx3's choice, rule off: Play { trainer_card: B2 147 Protective Poncho }
+  kx3's choice, rule on:  Attack(Attack { energy_required: [Psychic, Psychic], title: "Psychi...   <- CHANGED
+  km3 Play { trainer_card: B2 147 Protective Poncho }              off 0.641 on 0.578  on-off -0.062 [-0.122, -0.003]* acted  64/64
+      EndTurn                                                      off 0.312 on 0.375  on-off +0.062 [+0.003, +0.122]* acted  64/64
+      Retreat(1)                                                   off 0.281 on 0.266  on-off -0.016 [-0.046, +0.015]  acted  64/64
+      Retreat(2)                                                   off 0.328 on 0.328  on-off +0.000 [+0.000, +0.000]  acted  64/64
+      Retreat(3)                                                   off 0.438 on 0.422  on-off -0.016 [-0.046, +0.015]  acted  64/64
+      Attack(Attack { energy_required: [Psychic, Psychic], titl... off 0.578 on 0.641  on-off +0.062 [+0.003, +0.122]* acted  64/64
+
+dev05 05-indeedee-stoutland|t-suicune|0|0|ref#0  (the rule acted in 384 of 384 play-outs, 384 placements changed)
+  kx3's choice, rule off: Retreat(1)
+  kx3's choice, rule on:  Retreat(1)
+  km3 Play { trainer_card: B2 147 Protective Poncho }              off 0.219 on 0.219  on-off +0.000 [-0.044, +0.044]  acted  64/64
+      EndTurn                                                      off 0.062 on 0.062  on-off +0.000 [+0.000, +0.000]  acted  64/64
+      Retreat(1)                                                   off 0.594 on 0.609  on-off +0.016 [-0.038, +0.069]  acted  64/64
+      Retreat(2)                                                   off 0.344 on 0.375  on-off +0.031 [-0.030, +0.092]  acted  64/64
+      Retreat(3)                                                   off 0.547 on 0.578  on-off +0.031 [-0.044, +0.106]  acted  64/64
+      Attack(Attack { energy_required: [Psychic, Psychic], titl... off 0.219 on 0.203  on-off -0.016 [-0.046, +0.015]  acted  64/64
+
+dev06 01-muk-glimmora-kingambit-regigigas|t-altaria|1|1|ref#0  (the rule acted in 356 of 384 play-outs, 481 placements changed)
+  kx3's choice, rule off: Attach { attachments: [(1, Darkness, 0)], is_turn_energy: true }
+  kx3's choice, rule on:  Attach { attachments: [(1, Darkness, 0)], is_turn_energy: true }
+  km3 Attach { attachments: [(1, Darkness, 0)], is_turn_energy:... off 0.375 on 0.359  on-off -0.016 [-0.108, +0.077]  acted  64/64
+      EndTurn                                                      off 0.172 on 0.172  on-off +0.000 [+0.000, +0.000]  acted  36/64
+      Play { trainer_card: B1 219 Heavy Helmet }                   off 0.375 on 0.359  on-off -0.016 [-0.108, +0.077]  acted  64/64
+      Attach { attachments: [(1, Darkness, 1)], is_turn_energy:... off 0.344 on 0.359  on-off +0.016 [-0.087, +0.118]  acted  64/64
+      Attach { attachments: [(1, Darkness, 2)], is_turn_energy:... off 0.344 on 0.391  on-off +0.047 [-0.055, +0.149]  acted  64/64
+      Attach { attachments: [(1, Darkness, 3)], is_turn_energy:... off 0.172 on 0.141  on-off -0.031 [-0.129, +0.066]  acted  64/64
+
+dev07 01-muk-glimmora-kingambit-regigigas|t-altaria|3|1|ref#0  (the rule acted in 184 of 192 play-outs, 244 placements changed)
+  kx3's choice, rule off: Play { trainer_card: B1 219 Heavy Helmet }
+  kx3's choice, rule on:  Play { trainer_card: B1 219 Heavy Helmet }
+  km3 Play { trainer_card: B1 219 Heavy Helmet }                   off 0.000 on 0.000  on-off +0.000 [+0.000, +0.000]  acted  64/64
+      EndTurn                                                      off 0.000 on 0.000  on-off +0.000 [+0.000, +0.000]  acted  60/64
+      Attack(Attack { energy_required: [Darkness], title: "Veno... off 0.000 on 0.000  on-off +0.000 [+0.000, +0.000]  acted  60/64
+
+dev08 01-muk-glimmora-kingambit-regigigas|t-blaziken|0|1|ref#0  (the rule acted in 128 of 256 play-outs, 128 placements changed)
+  kx3's choice, rule off: Play { trainer_card: B1 219 Heavy Helmet }
+  kx3's choice, rule on:  Play { trainer_card: B1 219 Heavy Helmet }
+  km3 Play { trainer_card: B1 219 Heavy Helmet }                   off 1.000 on 1.000  on-off +0.000 [+0.000, +0.000]  acted  64/64
+      EndTurn                                                      off 1.000 on 1.000  on-off +0.000 [+0.000, +0.000]  acted   0/64
+      Play { trainer_card: B2a 093 Mesagoza }                      off 1.000 on 1.000  on-off +0.000 [+0.000, +0.000]  acted  64/64
+      Attack(Attack { energy_required: [Darkness], title: "Veno... off 1.000 on 1.000  on-off +0.000 [+0.000, +0.000]  acted   0/64
+
+dev09 03-wailord-indeedee-wall|t-altaria|2|0|ref#0  (the rule acted in 76 of 384 play-outs, 76 placements changed)
+  kx3's choice, rule off: Attach { attachments: [(1, Water, 0)], is_turn_energy: true }
+  kx3's choice, rule on:  Attach { attachments: [(1, Water, 0)], is_turn_energy: true }
+  km3 Attach { attachments: [(1, Water, 0)], is_turn_energy: tr... off 0.844 on 0.844  on-off +0.000 [+0.000, +0.000]  acted   3/64
+      EndTurn                                                      off 0.742 on 0.742  on-off +0.000 [+0.000, +0.000]  acted   3/64
+      Play { trainer_card: B1 219 Heavy Helmet }                   off 0.734 on 0.812  on-off +0.078 [+0.012, +0.144]* acted  64/64
+      Attach { attachments: [(1, Water, 1)], is_turn_energy: tr... off 0.742 on 0.742  on-off +0.000 [+0.000, +0.000]  acted   0/64
+      Attach { attachments: [(1, Water, 2)], is_turn_energy: tr... off 0.742 on 0.742  on-off +0.000 [+0.000, +0.000]  acted   3/64
+      Attach { attachments: [(1, Water, 3)], is_turn_energy: tr... off 0.727 on 0.727  on-off +0.000 [+0.000, +0.000]  acted   3/64
+
+dev10 03-wailord-indeedee-wall|t-altaria|3|0|ref#0  (the rule acted in 171 of 192 play-outs, 235 placements changed)
+  kx3's choice, rule off: Play { trainer_card: B1 225 Copycat }
+  kx3's choice, rule on:  Play { trainer_card: B1 219 Heavy Helmet }   <- CHANGED
+  km3 Play { trainer_card: B1 219 Heavy Helmet }                   off 0.484 on 0.797  on-off +0.312 [+0.190, +0.435]* acted  64/64
+      EndTurn                                                      off 0.625 on 0.656  on-off +0.031 [-0.030, +0.092]  acted  54/64
+      Play { trainer_card: B1 225 Copycat }                        off 0.641 on 0.656  on-off +0.016 [-0.038, +0.069]  acted  53/64
+
+dev11 draft-A-shark-tempo|t-lucario|4|1|ref#0  (the rule acted in 177 of 192 play-outs, 292 placements changed)
+  kx3's choice, rule off: EndTurn
+  kx3's choice, rule on:  EndTurn
+  km3 Play { trainer_card: B3b 065 Elegant Cape }                  off 0.234 on 0.188  on-off -0.047 [-0.099, +0.005]  acted  64/64
+      EndTurn                                                      off 0.547 on 0.609  on-off +0.062 [+0.003, +0.122]* acted  56/64
+      Attack(Attack { energy_required: [Water, Water, Colorless... off 0.250 on 0.219  on-off -0.031 [-0.074, +0.012]  acted  57/64
+
+== pooled over every move
+continuation: 74 moves; the rule acted in some play-out of 2; on - off over those: mean +0.000, mean size 0.000; 95% interval excluding 0: 0 (none)
+development: 56 moves; the rule acted in some play-out of 53; on - off over those: mean +0.008, mean size 0.025; 95% interval excluding 0: 6 (-0.062, +0.062, +0.062, +0.078, +0.312, +0.062)

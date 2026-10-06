@@ -1,0 +1,42 @@
+{
+ "name": "kx3_tools_gate3",
+ "question": "GATE 3 of the Tool-placement rule for the play-outs (Fable via Dustin, Oct 5; rl/results/playout_tool_rule_2026-10-06/README.md): a first paired cut. Does kx3 with the rule in its play-outs (a Tool is attached only where its printed effect can apply; where no placement has an effect, km3's choice stands; kx3's own move and km3 itself untouched) play development decks 01, 10 and 06 better or worse than kx3 without it? The pilot is the development run's kx3 (REALISTIC, the pool's 8 meta lists, 16 play-outs, cap 12, z 2) plus the rule. ONLY DECKS 01, 10 AND 06 ARE PLAYED (--only-deck, 480 games: 240 kx3, 240 km3). The manifest lists the seven development decks in the development run's order, with its seed_base, so every deal is that run's (strength_2026-10-03_kx3_dev) and the rule-off arm is that run's X arm, already played; decks 05 and 03, where km3 misplaces its own Tool most, can follow in this same run if Dustin wants them. Build check: every reference game here (km3 v km3) must replay the development run's game for game, or the pairing is void. Primary: rule on - rule off in game score (win 1, tie 1/2, loss 0) on the same (deck, opponent, deal, seat), mean +- 1.96 sd/sqrt(n), per deck and pooled, read by rl/results/playout_tool_rule_2026-10-06/gate3/pair_with_dev.py. The harness's own report (kx3 with the rule - km3) is context. Stated in advance: 80 paired games a deck is a first cut; it can show a large harm, not a small gain.",
+ "pilot": "kx3_r16_c12_z2_real_t0_poolmeta_tools",
+ "reference": "km3",
+ "stage": "dev",
+ "decks": [
+  "09-mega-manectric-heliolisk",
+  "06-mega-blaziken-tournament-list",
+  "10-xatu-oricorio-tr-weezing",
+  "03-wailord-indeedee-wall",
+  "01-muk-glimmora-kingambit-regigigas",
+  "05-indeedee-stoutland",
+  "draft-A-shark-tempo"
+ ],
+ "opponents": [
+  "t-altaria",
+  "t-blaziken",
+  "t-hydreigon",
+  "t-lucario",
+  "t-sceptile",
+  "t-suicune",
+  "t-vespiquen",
+  "t-weezing"
+ ],
+ "deals": 5,
+ "seats": [
+  0,
+  1
+ ],
+ "seed_base": 24400000000,
+ "pair_stride": 10000,
+ "threads": 2,
+ "log_level": "deck",
+ "ext_timeout_s": null,
+ "intended_lines": "rl/strength/intended_lines.json",
+ "program": "/home/dacz8976/kx/strength_tools",
+ "program_sha256": null,
+ "engine": "claude/playout-pilot, engine/src as of 4021a4e8 (the Tool rule; engine/ outside src/players/ unchanged since d513e37b), built on the laptop with rl/strength/build.sh against that checkout's engine/; KX_EXTRA_LISTS unset",
+ "pilot_provenance": "kx3_r16_c12_z2_real_t0_poolmeta_tools from claude/playout-pilot (engine/src as of 4021a4e8): the development run's kx3 plus the Tool rule in the play-outs; gates 1 and 2 in the cloud (rl/results/playout_tool_rule_2026-10-06/)",
+ "reference_provenance": "km3 in the same build; it must equal the pinned km3 (self-check 81b572198c04d5d1) and replay the development run's ref games"
+}
