@@ -1,0 +1,22 @@
+The Supporter readings' tests (Guzma, Elesa, Hala, Iris, Drayden) before the code: cargo test --release --features test-utils --test playout_quiz4_test -- the_needs_come the_tool_supporters
+
+error[E0599]: no variant named `ToolsInPlay` found for enum `Need`
+   --> tests/playout_quiz4_test.rs:261:58
+    |
+261 |     assert_eq!(needs("Guzma"), Reading::Needs(vec![Need::ToolsInPlay { yours: false, theirs: true }]));
+    |                                                          ^^^^^^^^^^^ variant not found in `Need`
+
+error[E0599]: no variant named `ToolsInPlay` found for enum `Need`
+   --> tests/playout_quiz4_test.rs:262:58
+    |
+262 |     assert_eq!(needs("Elesa"), Reading::Needs(vec![Need::ToolsInPlay { yours: true, theirs: true }]));
+    |                                                          ^^^^^^^^^^^ variant not found in `Need`
+
+error[E0560]: struct `PokemonFilter` has no field named `attack`
+   --> tests/playout_quiz4_test.rs:266:33
+    |
+266 |     let draco = PokemonFilter { attack: Some("draco meteor".into()), ..Default::default() };
+    |                                 ^^^^^^ `PokemonFilter` does not have this field
+    |
+--
+error: could not compile `deckgym` (test "playout_quiz4_test") due to 3 previous errors; 1 warning emitted

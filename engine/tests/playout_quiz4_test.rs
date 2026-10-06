@@ -256,6 +256,36 @@ fn the_needs_come_from_the_text() {
     assert_eq!(needs("Red Card"), Reading::Always);
     let w = PokemonFilter { energy_attached: Some(Some(deckgym::models::EnergyType::Water)), ..Default::default() };
     assert_eq!(needs("Irida"), Reading::Needs(vec![Need::Damaged(Scope::Any, w)]));
+    // Supporters the engine offers whatever the board: what they need comes from the words too (Guzma's and Elesa's
+    // Tools, Hala's and Iris's Pokémon, Drayden's Draco Meteor), not "always".
+    assert_eq!(needs("Guzma"), Reading::Needs(vec![Need::ToolsInPlay { yours: false, theirs: true }]));
+    assert_eq!(needs("Elesa"), Reading::Needs(vec![Need::ToolsInPlay { yours: true, theirs: true }]));
+    let named = |ns: &[&str]| PokemonFilter { names: ns.iter().map(|n| n.to_string()).collect(), ..Default::default() };
+    assert_eq!(needs("Hala"), Reading::Needs(vec![Need::InPlay(Scope::Any, named(&["hariyama", "crabominable"]))]));
+    assert_eq!(needs("Iris"), Reading::Needs(vec![Need::InPlay(Scope::Any, named(&["haxorus"]))]));
+    let draco = PokemonFilter { attack: Some("draco meteor".into()), ..Default::default() };
+    assert_eq!(needs("Drayden"), Reading::Needs(vec![Need::InPlay(Scope::Any, draco)]));
+}
+
+/// Guzma does nothing while no Pokémon of the opponent's holds a Tool, and something once one does; Elesa counts either
+/// side's.
+#[test]
+fn the_tool_supporters_read_the_board() {
+    let game = get_test_game_with_board(vec![PlayedCard::from_id(CardId::B1121IndeedeeEx)], vec![PlayedCard::from_id(CardId::A1115Abra)]);
+    let mut state = game.get_state_clone();
+    let play = |id: CardId| match get_card_by_enum(id) {
+        Card::Trainer(t) => Action { actor: 0, action: SimpleAction::Play { trainer_card: t }, is_stack: false },
+        _ => unreachable!(),
+    };
+    let (guzma, elesa) = (play(CardId::A3151Guzma), play(CardId::B3b066Elesa));
+    assert_eq!(effect_now(&state, &guzma, &[]), Some(false), "no Tool in play");
+    assert_eq!(effect_now(&state, &elesa, &[]), Some(false), "no Tool in play");
+    let helmet = get_card_by_enum(CardId::B1219HeavyHelmet);
+    state.in_play_pokemon[0][0].as_mut().unwrap().attached_tools.push(helmet.clone());
+    assert_eq!(effect_now(&state, &guzma, &[]), Some(false), "only your own Tool");
+    assert_eq!(effect_now(&state, &elesa, &[]), Some(true), "your own Tool");
+    state.in_play_pokemon[1][0].as_mut().unwrap().attached_tools.push(helmet);
+    assert_eq!(effect_now(&state, &guzma, &[]), Some(true), "the opponent's Tool");
 }
 
 /// On a board: Watch Over does nothing with the Active at full HP, and something once it is damaged; Clemont's Backpack
