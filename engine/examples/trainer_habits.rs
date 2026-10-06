@@ -22,6 +22,24 @@
 //!     and search randomness the game gave it: with the code given (the development run's kx3 is
 //!     `kx3_r16_c12_z2_real_t0_poolmeta`), which must place the Tool where the log says, and with `_tools` added. One JSON
 //!     line per decision, from the replay that matched the log.
+//!   ... scripted ... --attack-scan <kx code> --attack-out <file>
+//!     (Oct 6, quiz 4, item 1) At each of the deck side's decisions with an attack among the legal moves, km3's proposal
+//!     from the game's own observation and search randomness: one JSON line wherever km3 proposes an attack, saying
+//!     whether the log played an attack; where it didn't, kx3 (the code given) decides again from the same randomness,
+//!     with every candidate's score, its lead over km3's attack and the reason (it must play what the log says).
+//!   trainer_habits positions --games <games.jsonl> --manifest <manifest.json> --at <at.json> --dir <dir>
+//!     (Oct 6, quiz 4, item 3) Positions of a run rebuilt exactly: for each entry of `--at` ({id, key, decision, then}),
+//!     the game of that key (an arm with km3 on both sides) is played to the deck side's decision number `decision` (the
+//!     harness logs a decision wherever a player is asked, i.e. has more than one legal move), checked there against the
+//!     log (turn, number of legal moves, and the move km3 then makes), and the full state before it is written to
+//!     `<dir>/<id>.json`. The labels in `then` are played on from there first (each must name exactly one legal move),
+//!     for a position a few moves later in the same turn. `<dir>/index.json` lists what was written.
+//!     With `--kx3 <code>` (the development run's kx3 is `kx3_r16_c12_z2_real_t0_poolmeta`), kx3 also decides at the
+//!     position from the game's own observation and search randomness (a game with kx3 on the deck side is the same game
+//!     up to there), and its report is kept with the check that it plays what the kx3 arm's log says.
+//! Every move with a card text (an Item or Supporter played, an Ability or the Stadium used, a Tool played) carries the
+//! no-effect reader's verdict (Oct 6, quiz 4, item 2; playout_effects.rs): an "effect" event with the card, whether it
+//! could do anything there (true, false, or null for an unread text), and whether the move was a real decision.
 //! Every Tool placement also carries the Tool-placement rule's verdict (Oct 6, playout_tools.rs): whether it has an
 //! effect there, and how many placements offered had one. With `--dump-states <dir> [--dump-max N]` (games mode), the
 //! states where the deck's side played a Tool that the rule would have placed elsewhere are written out, for positions
@@ -33,7 +51,7 @@ use std::io::Write;
 use deckgym::actions::{Action, SimpleAction};
 use deckgym::models::{Card, EnergyType, TrainerType};
 use deckgym::observation::{PlayerObservation, RevealedKnowledge};
-use deckgym::players::playout_player::{placements_with_effect, DecisionReport, PlayoutParams, PlayoutPlayer};
+use deckgym::players::playout_player::{action_card, effect_now, placements_with_effect, DecisionReport, PlayoutParams, PlayoutPlayer};
 use deckgym::players::{create_players, Player, PlayerCode};
 use deckgym::state::GameOutcome;
 use deckgym::{Deck, Game, State};
@@ -207,6 +225,10 @@ fn watch(game: &mut Game, ctx: &Value, types: [Vec<EnergyType>; 2], decks: [Stri
         }
         let p = a.actor;
         let turn = before.turn_count as usize;
+        if let Some(card) = action_card(&before, &a) {
+            events.push(json!({"kind": "effect", "ctx": ctx, "player": p, "deck": decks[p], "turn": turn, "card": card,
+                               "does_something": effect_now(&before, &a, &before.decks[p].cards), "decision": legal.len() > 1}));
+        }
         let base = |kind: &str| {
             json!({"kind": kind, "ctx": ctx, "player": p, "deck": decks[p], "turn": turn, "points": [before.points[p], before.points[1 - p]],
                    "deck_left": before.decks[p].cards.len(), "opp_hand": before.hands[1 - p].len(),
@@ -513,6 +535,20 @@ fn report_json(r: &DecisionReport) -> Value {
            "dropped": r.dropped.iter().map(|d| json!({"move": d.label, "reason": d.reason})).collect::<Vec<_>>(), "rounds": r.rounds, "ms": r.millis.round()})
 }
 
+/// km3's proposal at each decision with an attack available, and kx3's decision again where the log left km3's attack.
+#[derive(Debug)]
+struct AttackScan {
+    params: PlayoutParams,
+    opponent: Deck,
+    km: Box<dyn Player>,
+    key: String,
+    out: std::sync::Arc<std::sync::Mutex<Vec<Value>>>,
+}
+
+fn is_attack(a: &Action) -> bool {
+    matches!(a.action, SimpleAction::Attack(_))
+}
+
 /// Plays the moves a log records, each found by its label among the legal moves; at an ambiguous label, the option
 /// `forced` names (else the first).
 #[derive(Debug)]
@@ -523,9 +559,35 @@ struct Scripted {
     forced: BTreeMap<usize, usize>,
     log: std::sync::Arc<std::sync::Mutex<ScriptLog>>,
     redecide: Option<Redecide>,
+    attack_scan: Option<AttackScan>,
 }
 
 impl Scripted {
+    fn attack_scan(&mut self, rng: &StdRng, observation: &PlayerObservation, actions: &[Action], played: &Action, k: usize) {
+        let deck = self.deck.clone();
+        let Some(sc) = &mut self.attack_scan else { return };
+        let state = observation.visible_state();
+        if !actions.iter().any(is_attack) {
+            return;
+        }
+        let proposal = sc.km.decision_fn(&mut rng.clone(), observation, actions);
+        if !is_attack(&proposal) {
+            return;
+        }
+        let mut rec = json!({"key": sc.key, "decision": k, "turn": state.turn_count, "km": harness_label(&proposal, state),
+                             "played": harness_label(played, state), "played_an_attack": is_attack(played)});
+        if !is_attack(played) {
+            let r = PlayoutPlayer::new(deck, sc.opponent.clone(), sc.params.clone()).evaluate(&mut rng.clone(), observation, actions);
+            let c = &r.candidates[r.chosen];
+            rec["kx3"] = json!({
+                "chosen_equals_played": c.action == *played, "km_score": r.candidates[r.km3].score, "chosen_score": c.score,
+                "lead": c.diff, "se": c.se, "reason": r.reason, "rounds": r.rounds,
+                "candidates": r.candidates.iter().map(|x| json!([harness_label(&x.action, state), x.score, x.diff, x.se])).collect::<Vec<_>>(),
+            });
+        }
+        sc.out.lock().unwrap().push(rec);
+    }
+
     fn redecide(&self, rng: &StdRng, observation: &PlayerObservation, actions: &[Action], played: &Action, k: usize) {
         let Some(re) = &self.redecide else { return };
         let state = observation.visible_state();
@@ -563,6 +625,7 @@ impl Player for Scripted {
         let chosen = self.choose(observation, actions);
         let k = self.next - 1;
         self.redecide(rng, observation, actions, &chosen, k);
+        self.attack_scan(rng, observation, actions, &chosen, k);
         chosen
     }
     fn get_deck(&self) -> Deck {
@@ -624,6 +687,8 @@ fn scripted(args: &[String]) {
     let redecide_code = arg(args, "--redecide").map(|c| PlayoutParams::parse(c.strip_prefix("kx").unwrap()).unwrap());
     let movable_only = args.iter().any(|a| a == "--redecide-movable");
     let redecided: std::sync::Mutex<Vec<Value>> = std::sync::Mutex::new(Vec::new());
+    let attack_code = arg(args, "--attack-scan").map(|c| PlayoutParams::parse(c.strip_prefix("kx").unwrap()).unwrap());
+    let scanned: std::sync::Mutex<Vec<Value>> = std::sync::Mutex::new(Vec::new());
     let results: Vec<(Vec<Value>, Value)> = records
         .par_iter()
         .map(|g| {
@@ -652,8 +717,24 @@ fn scripted(args: &[String]) {
                     key: g["key"].as_str().unwrap().to_string(),
                     out: records.clone(),
                 });
+                let scan_out = std::sync::Arc::new(std::sync::Mutex::new(Vec::new()));
+                let attack_scan = attack_code.clone().map(|params| AttackScan {
+                    params,
+                    opponent: od.clone(),
+                    km: km3_pair(d0, d1).remove(seat),
+                    key: g["key"].as_str().unwrap().to_string(),
+                    out: scan_out.clone(),
+                });
                 let mut players = km3_pair(d0, d1);
-                players[seat] = Box::new(Scripted { labels: labels.clone(), next: 0, deck: dd.clone(), forced: forced.clone(), log: log.clone(), redecide });
+                players[seat] = Box::new(Scripted {
+                    labels: labels.clone(),
+                    next: 0,
+                    deck: dd.clone(),
+                    forced: forced.clone(),
+                    log: log.clone(),
+                    redecide,
+                    attack_scan,
+                });
                 let mut game = Game::new(players, seed);
                 let ctx = json!({"source": "scripted", "key": g["key"], "seed": seed, "deck_seat": seat, "pilot_deck": g["pilot_deck"]});
                 let (events, end, _, _) = watch(&mut game, &ctx, [energy_types(d0), energy_types(d1)], names.clone(), usize::MAX);
@@ -672,6 +753,10 @@ fn scripted(args: &[String]) {
                         r["replayed_exactly"] = json!(same);
                         redecided.lock().unwrap().push(r);
                     }
+                    for mut r in scan_out.lock().unwrap().drain(..) {
+                        r["replayed_exactly"] = json!(same);
+                        scanned.lock().unwrap().push(r);
+                    }
                     break (events, check);
                 }
                 let (d, _) = next.unwrap();
@@ -681,6 +766,12 @@ fn scripted(args: &[String]) {
             }
         })
         .collect();
+    if let Some(path) = arg(args, "--attack-out") {
+        let mut f = std::fs::File::create(path).unwrap();
+        for r in scanned.into_inner().unwrap() {
+            writeln!(f, "{r}").unwrap();
+        }
+    }
     if let Some(path) = arg(args, "--redecide-out") {
         let mut f = std::fs::File::create(path).unwrap();
         for r in redecided.into_inner().unwrap() {
@@ -805,12 +896,138 @@ fn write_out(args: &[String], results: Vec<(Vec<Value>, Value)>) {
     println!("{n} games or play-outs, {exact} replayed exactly");
 }
 
+/// km3 on the deck side, and at its decision number `at` kx3's decision too (from the same observation and a copy of the
+/// search randomness), kept with kx3's chosen move's label.
+#[derive(Debug)]
+struct Capture {
+    inner: Box<dyn Player>,
+    at: usize,
+    count: usize,
+    deck: Deck,
+    opponent: Deck,
+    params: PlayoutParams,
+    out: std::sync::Arc<std::sync::Mutex<Option<(String, Value)>>>,
+}
+
+impl Player for Capture {
+    fn decision_fn(&mut self, rng: &mut StdRng, observation: &PlayerObservation, actions: &[Action]) -> Action {
+        if self.count == self.at {
+            let r = PlayoutPlayer::new(self.deck.clone(), self.opponent.clone(), self.params.clone()).evaluate(&mut rng.clone(), observation, actions);
+            let state = observation.visible_state();
+            let label = harness_label(&r.candidates[r.chosen].action, state);
+            let report = json!({
+                "km": harness_label(&r.candidates[r.km3].action, state), "chosen": label, "reason": r.reason, "rounds": r.rounds,
+                "candidates": r.candidates.iter().map(|c| json!({"move": harness_label(&c.action, state), "score": c.score, "diff": c.diff,
+                    "se": if c.se.is_finite() { json!(c.se) } else { Value::Null }})).collect::<Vec<_>>(),
+                "dropped": r.dropped.iter().map(|d| json!({"move": d.label, "reason": d.reason})).collect::<Vec<_>>(),
+            });
+            *self.out.lock().unwrap() = Some((label, report));
+        }
+        self.count += 1;
+        self.inner.decision_fn(rng, observation, actions)
+    }
+    fn get_deck(&self) -> Deck {
+        self.inner.get_deck()
+    }
+    fn decide_omniscient(&mut self, rng: &mut StdRng, state: &State, actions: &[Action]) -> Action {
+        self.inner.decide_omniscient(rng, state, actions)
+    }
+}
+
+fn positions(args: &[String]) {
+    let manifest: Value = serde_json::from_str(&std::fs::read_to_string(arg(args, "--manifest").unwrap()).unwrap()).unwrap();
+    let lists: BTreeMap<String, Deck> = manifest["decks"]
+        .as_array()
+        .unwrap()
+        .iter()
+        .chain(manifest["opponents"].as_array().unwrap())
+        .map(|d| (d["name"].as_str().unwrap().to_string(), Deck::from_file(d["path"].as_str().unwrap()).unwrap()))
+        .collect();
+    let records: Vec<Value> =
+        std::fs::read_to_string(arg(args, "--games").unwrap()).unwrap().lines().map(|l| serde_json::from_str::<Value>(l).unwrap()).collect();
+    let at: Vec<Value> = serde_json::from_str(&std::fs::read_to_string(arg(args, "--at").unwrap()).unwrap()).unwrap();
+    let dir = arg(args, "--dir").unwrap();
+    let kx_code = arg(args, "--kx3").map(|c| PlayoutParams::parse(c.strip_prefix("kx").unwrap()).unwrap());
+    std::fs::create_dir_all(&dir).unwrap();
+    let mut index = Vec::new();
+    for p in &at {
+        let id = p["id"].as_str().unwrap();
+        let g = records.iter().find(|g| g["key"] == p["key"]).unwrap_or_else(|| panic!("{id}: no game {}", p["key"]));
+        assert!(g["pilot_deck"] == "km3" && g["pilot_opp"] == "km3", "{id}: the arm must be km3 on both sides");
+        let decision = p["decision"].as_u64().unwrap() as usize;
+        let (dn, on) = (g["deck"].as_str().unwrap(), g["opp"].as_str().unwrap());
+        let seat = g["seat"].as_u64().unwrap() as usize;
+        let seed = g["seed"].as_u64().unwrap();
+        let (d0, d1) = if seat == 0 { (&lists[dn], &lists[on]) } else { (&lists[on], &lists[dn]) };
+        let logged = &g["log"][decision];
+        // The game to the decision; `before` is the state where the deck side is asked for its decision number `decision`.
+        let to_decision = |game: &mut Game| -> State {
+            let mut count = 0;
+            loop {
+                assert!(!game.is_game_over(), "{id}: the game ended before decision {decision}");
+                let before = game.get_state_clone();
+                let (actor, legal) = before.generate_possible_actions();
+                if actor == seat && legal.len() > 1 {
+                    if count == decision {
+                        return before;
+                    }
+                    count += 1;
+                }
+                game.play_tick();
+            }
+        };
+        let captured = std::sync::Arc::new(std::sync::Mutex::new(None));
+        let mut players = km3_pair(d0, d1);
+        if let Some(params) = &kx_code {
+            let inner = players.remove(seat);
+            let (deck, opponent) = (lists[dn].clone(), lists[on].clone());
+            players.insert(seat, Box::new(Capture { inner, at: decision, count: 0, deck, opponent, params: params.clone(), out: captured.clone() }));
+        }
+        let mut game = Game::new(players, seed);
+        let state = to_decision(&mut game);
+        let legal = state.generate_possible_actions().1;
+        let played = game.play_tick();
+        let check = json!({"turn": state.turn_count, "legal": legal.len(), "km3_plays": harness_label(&played, &state)});
+        assert_eq!(check, json!({"turn": logged["t"], "legal": logged["n"], "km3_plays": logged["a"]}), "{id}: the position differs from the log");
+        // kx3's own decision in the game, and the kx3 arm's logged move at the same decision.
+        let kx3 = captured.lock().unwrap().take().map(|(label, report): (String, Value)| {
+            let other = records.iter().find(|r| {
+                r["deck"] == g["deck"] && r["opp"] == g["opp"] && r["seed"] == g["seed"] && r["seat"] == g["seat"] && r["pilot_deck"] != "km3"
+            });
+            let logged = other.map(|r| r["log"][decision]["a"].clone());
+            json!({"chosen": label, "kx3_arm_logged": logged, "plays_what_the_log_says": logged.as_ref().is_some_and(|l| *l == label),
+                   "report": report})
+        });
+        // The `then` moves, played on from the same position in a second copy of the game.
+        let mut game = Game::new(km3_pair(d0, d1), seed);
+        let mut state = to_decision(&mut game);
+        let then: Vec<String> = p["then"].as_array().map_or(Vec::new(), |t| t.iter().map(|l| l.as_str().unwrap().to_string()).collect());
+        for l in &then {
+            let (actor, legal) = state.generate_possible_actions();
+            assert_eq!(actor, seat, "{id}: \"{l}\" is not the deck side's to play");
+            let found: Vec<&Action> = legal.iter().filter(|a| harness_label(a, &state) == *l).collect();
+            assert_eq!(found.len(), 1, "{id}: \"{l}\" names {} legal moves", found.len());
+            game.apply_action(found[0]);
+            state = game.get_state_clone();
+        }
+        let (actor, legal) = state.generate_possible_actions();
+        let labels: Vec<String> = legal.iter().map(|a| harness_label(a, &state)).collect();
+        std::fs::write(format!("{dir}/{id}.json"), serde_json::to_string(&state).unwrap()).unwrap();
+        index.push(json!({"id": id, "key": p["key"], "decision": decision, "deck": dn, "opp": on, "seat": seat, "seed": seed,
+                          "checked_against_the_log": check, "kx3_in_the_game": kx3, "then": then, "turn": state.turn_count, "to_move": actor,
+                          "legal": labels}));
+        println!("{id}: written ({} legal moves for seat {actor})", legal.len());
+    }
+    std::fs::write(format!("{dir}/index.json"), serde_json::to_string_pretty(&index).unwrap()).unwrap();
+}
+
 fn main() {
     let args: Vec<String> = std::env::args().collect();
     match args.get(1).map(|s| s.as_str()) {
         Some("games") => games(&args),
         Some("playouts") => playouts(&args),
         Some("scripted") => scripted(&args),
+        Some("positions") => positions(&args),
         _ => eprintln!("usage: trainer_habits games ... | trainer_habits playouts ..."),
     }
 }

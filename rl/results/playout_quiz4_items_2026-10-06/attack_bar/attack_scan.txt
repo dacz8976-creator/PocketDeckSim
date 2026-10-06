@@ -1,0 +1,39 @@
+kx3's games: 560 deals x seats; decisions where km3 (asked with the game's own search randomness) proposes an attack: 1902 (every game replayed exactly: True)
+kx3 played an attack there: 1876; something else: 26 (1.4%)
+  of those, kx3 attacked later in the same turn: 17; no attack that turn: 9
+  a fresh kx3 at that decision plays what the log says: 24 of 26
+  with the attack bar at 3 standard errors, the attack would be kept: 22; the switch would stand: 2
+  kx3 deciding again with the bar on (attack_scan_za3.jsonl) agrees at every one of them
+  of the 9 with no attack that turn: kept by the bar 8
+  of the 22 the bar keeps, 14 are a move before the attack (kx3 attacked later that turn): Place, Play:Copycat, Play:Field Blower, Play:Mesagoza, Play:Misty, Retreat, UseStadium
+  games with a switch no attack that turn: 8; kx3 won 5, km3 won the same deal 2
+  games with a switch attacked later that turn: 16; kx3 won 10, km3 won the same deal 5
+
+| game (deck, opponent, deal, seat) | turn | km3's attack | kx3's move | attacked later this turn | kx3's lead (SE) | with `_za3` | kx3's game | km3's game | quiz |
+|---|---|---|---|---|---|---|---|---|---|
+| 10-xatu-oricorio-tr-weezing, t-altaria, 2, 0 | 3 | Supernatural Feather | EndTurn | no | +0.312 (2.1) | attack kept | opp | deck | Q12 |
+| 09-mega-manectric-heliolisk, t-hydreigon, 4, 0 | 2 | Thunder Shock | EndTurn | no | +0.250 (2.2) | attack kept | opp | opp |  |
+| draft-A-shark-tempo, t-blaziken, 0, 0 | 2 | Gnaw | EndTurn | no | +0.250 (2.2) | attack kept | deck | opp |  |
+| 06-mega-blaziken-tournament-list, t-lucario, 4, 1 | 3 | Peck | Retreat:2 | no | +0.375 (2.4) | attack kept | deck | opp |  |
+| 01-muk-glimmora-kingambit-regigigas, t-hydreigon, 0, 1 | 9 | Giga Turbo | Play:Copycat | no | +0.375 (2.4) | attack kept | deck | opp |  |
+| 09-mega-manectric-heliolisk, t-suicune, 4, 1 | 4 | Lightning Accelerator | Retreat:2 | no | +0.312 (2.6) | attack kept | deck | opp |  |
+| 03-wailord-indeedee-wall, t-vespiquen, 4, 0 | 8 | Wondrous Waves | Retreat:3 | no | +0.500 (2.7) | attack kept | deck | deck |  |
+| 01-muk-glimmora-kingambit-regigigas, t-hydreigon, 0, 1 | 9 | Giga Turbo | EndTurn | no | +0.375 (3.0) | attack kept | deck | opp |  |
+| 05-indeedee-stoutland, t-lucario, 3, 0 | 5 | Psychic | EndTurn | no | +0.438 (3.4) | switch stands | opp | opp |  |
+| 06-mega-blaziken-tournament-list, t-lucario, 0, 1 | 5 | Sunny Scorching | Play:Copycat | yes | +0.250 (2.2) | attack kept | deck | deck |  |
+| 06-mega-blaziken-tournament-list, t-sceptile, 3, 0 | 2 | Sunny Scorching | Play:Field Blower | yes | +0.250 (2.2) | attack kept | deck | opp |  |
+| draft-A-shark-tempo, t-hydreigon, 2, 1 | 6 | Sharp Fang | Play:Misty | yes | +0.250 (2.2) | attack kept | deck | deck |  |
+| draft-A-shark-tempo, t-suicune, 2, 0 | 3 | Turbo Shark | Place:Alolan Vulpix@1 | yes | +0.250 (2.2) | attack kept | deck | deck |  |
+| 01-muk-glimmora-kingambit-regigigas, t-weezing, 2, 0 | 6 | Giga Turbo | Play:Mesagoza | yes | +0.250 (2.2) | attack kept | deck | opp |  |
+| draft-A-shark-tempo, t-sceptile, 4, 0 | 2 | Sharp Fang | UseStadium | yes | +0.438 (2.4) | attack kept | deck | opp |  |
+| draft-A-shark-tempo, t-vespiquen, 2, 1 | 10 | Binding Snow | UseStadium | yes | +0.375 (2.4) | attack kept | opp | deck |  |
+| 06-mega-blaziken-tournament-list, t-sceptile, 4, 1 | 4 | Sunny Scorching | Retreat:3 | yes | +0.312 (2.6) | attack kept | deck | opp |  |
+| 01-muk-glimmora-kingambit-regigigas, t-vespiquen, 4, 1 | 5 | Venomous Hit | UseStadium | yes | +0.312 (2.6) | attack kept | opp | opp |  |
+| draft-A-shark-tempo, t-suicune, 4, 0 | 4 | Sharp Fang | Play:Misty | yes | +0.312 (2.6) | attack kept | opp | opp |  |
+| draft-A-shark-tempo, t-altaria, 3, 1 | 5 | Turbo Shark | Play:Misty | yes | +0.312 (2.6) | attack kept | deck | deck |  |
+| 06-mega-blaziken-tournament-list, t-lucario, 0, 1 | 5 | Sunny Scorching | Retreat:1 | yes | +0.438 (2.8) | attack kept | deck | deck |  |
+| 06-mega-blaziken-tournament-list, t-blaziken, 1, 0 | 10 | Tongue Whip | Play:Copycat | yes | +0.375 (3.0) | attack kept | opp | opp |  |
+| 06-mega-blaziken-tournament-list, t-sceptile, 3, 1 | 5 | Tongue Whip | Retreat:1 | yes | +0.375 (3.0) | attack kept | opp | opp |  |
+| 10-xatu-oricorio-tr-weezing, t-blaziken, 3, 1 | 9 | Supernatural Feather | Play:Poison Barb | yes | +0.875 (10.2) | switch stands | deck | opp |  |
+| 06-mega-blaziken-tournament-list, t-altaria, 0, 1 | 7 | Tongue Whip | Play:Copycat | yes | +0.000 (-) | (not reproduced) | opp | opp |  |
+| 06-mega-blaziken-tournament-list, t-hydreigon, 2, 0 | 6 | Tongue Whip | Play:Poké Ball | yes | +0.000 (-) | (not reproduced) | deck | opp |  |
