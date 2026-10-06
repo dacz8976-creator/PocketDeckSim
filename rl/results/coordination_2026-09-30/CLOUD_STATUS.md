@@ -12,12 +12,11 @@ The audit is committed: `rl/results/coin_prevention_round2_2026-10-01/TEXT_AUDIT
 - **A sixth file, `engine/src/move_generation/move_generation_trainer.rs`:** a Fossil can be played under an Item lock (the Item check at 65 skips the Fossil type). Its premise is that a Fossil's printed type is Item (rules/01, rules/04 §6; the local database can't show it).
 - **In the five files but outside rules/09, rules/04 and the caveats:** Guts on the attacker's own Pokémon in an attack's outcome (E1), and Perish Body on a plain queued hit at the Active (E2). Both are decided by their text. Fix them in this job, or leave them listed?
 
-1. **Current task, and the instruction that set it.** None running. One cloud check is still computing: the 12-game
-   self-check digest of the gate-3 pilot, for the laptop to compare its build against. It will be added to the README.
+1. **Current task, and the instruction that set it.** None running; idle.
    **The Tool-placement rule is built; gates 1 and 2 passed; gate 3 is registered for the laptop** (Fable via Dustin,
    Oct 5).
    - **Where.** Branch claude/playout-pilot: tests first 7607ef7f, the rule 4021a4e8, gate 1 and the development run's
-     Tool placements 14773e51, head 24682db9. Read `rl/results/playout_tool_rule_2026-10-06/README.md`.
+     Tool placements 14773e51, gates 2 and 3 24682db9, head 9c33a685. Read `rl/results/playout_tool_rule_2026-10-06/README.md`.
    - **The rule.**
      - In the play-outs only (both sides), a Tool goes only where its printed effect can apply. km3 chooses first; if its
        choice has no effect and another placement has one, it chooses again among those.
@@ -46,6 +45,8 @@ The audit is committed: `rl/results/coin_prevention_round2_2026-10-01/TEXT_AUDIT
    - **Gate 3 (registered, not run): `gate3/config.json`.**
      - Decks 01, 10 and 06 on the development run's own deals, so its kx3 games are the rule-off arm.
      - This build replays them exactly (16 of 16 games, 8 kx3; every km3 game of four decks, 320).
+     - Its self-check for the gate-3 pilot (rule on) prints 31d638dbc818b0fa, the development run's own kx3 digest. The
+       laptop's build must print the same.
      - 240 kx3 games: about 9 hours on the laptop's 2 threads, resumable.
      - The fixed reading is `gate3/pair_with_dev.py`. The laptop's steps are in the README.
      - Note: 10 and 06 meet the rule mostly through the opponent's Tools (km3 misplaces one in 6 and 11 of their 80
