@@ -12,8 +12,45 @@ The audit is committed: `rl/results/coin_prevention_round2_2026-10-01/TEXT_AUDIT
 - **A sixth file, `engine/src/move_generation/move_generation_trainer.rs`:** a Fossil can be played under an Item lock (the Item check at 65 skips the Fossil type). Its premise is that a Fossil's printed type is Item (rules/01, rules/04 §6; the local database can't show it).
 - **In the five files but outside rules/09, rules/04 and the caveats:** Guts on the attacker's own Pokémon in an attack's outcome (E1), and Perish Body on a plain queued hit at the Active (E2). Both are decided by their text. Fix them in this job, or leave them listed?
 
-1. **Current task, and the instruction that set it.** None running; idle.
-   **The Trainer-habit diagnosis is done** (Fable via Dustin, Oct 5: km3's late Trainer play inside the play-outs).
+1. **Current task, and the instruction that set it.** None running. One cloud check is still computing: the 12-game
+   self-check digest of the gate-3 pilot, for the laptop to compare its build against. It will be added to the README.
+   **The Tool-placement rule is built; gates 1 and 2 passed; gate 3 is registered for the laptop** (Fable via Dustin,
+   Oct 5).
+   - **Where.** Branch claude/playout-pilot: tests first 7607ef7f, the rule 4021a4e8, gate 1 and the development run's
+     Tool placements 14773e51, head 24682db9. Read `rl/results/playout_tool_rule_2026-10-06/README.md`.
+   - **The rule.**
+     - In the play-outs only (both sides), a Tool goes only where its printed effect can apply. km3 chooses first; if its
+       choice has no effect and another placement has one, it chooses again among those.
+     - Where no placement has an effect, km3's choice stands.
+     - It reads each Tool's text from the card database (spot, stage, type, Ancient/Future/Ultra Beast, printed Retreat
+       Cost). All 26 distinct Tool texts read cleanly.
+     - Off by default; `_tools` turns it on. kx3's own move and km3 are untouched. New code only under
+       `engine/src/players/` (`mod.rs` unchanged), its tests and examples.
+   - **Gate 1 (identity): passed.**
+     - km3 240 of 240 equal to the official program.
+     - Suite 2,061 passed, 0 failed.
+     - km3 self-check 81b572198c04d5d1.
+     - The LAB self-check is the same 3a2eb43bd9053639 with the rule off and on (it never acts there).
+   - **Gate 2 (rule on v off, paired, every candidate): it doesn't hurt.**
+     - The 8 continuation positions: untouched. The rule acted in 4 of 9,472 play-outs and no score moved; the rule-off
+       scores equal the continuation run's kx3 scores, 74 of 74.
+     - 12 development positions (where km3 misplaced a Tool in the development run): on − off averages +0.008.
+     - kx3's choice changed at 2. Deck 03 v t-altaria: "play Heavy Helmet" goes 0.48 → 0.80, because it now lands on
+       Wailord instead of Indeedee ex, so kx3 keeps it. Deck 05: within the noise.
+     - Watch: deck 05's Poncho scored slightly lower with the rule on at 4 of 6 positions, never higher (−0.02 on
+       average, one beyond its interval). Perhaps a Poncho on the Active helps after a retreat; only deck 05 can show it.
+   - **kx3's own placements (the question asked).** In the development run kx3 put a Tool where the rule would move it
+     62 times in 506 (km3: 63 in 517), so the play-outs don't catch it.
+     - By Tool: Poncho 45 (deck 05), Heavy Helmet 14 (01 and 03), Rocky Helmet 2, Poison Barb 1.
+     - A play-out rule can't fix this, because kx3's own placement isn't in a play-out.
+   - **Gate 3 (registered, not run): `gate3/config.json`.**
+     - Decks 01, 10 and 06 on the development run's own deals, so its kx3 games are the rule-off arm.
+     - This build replays them exactly (16 of 16 games, 8 kx3; every km3 game of four decks, 320).
+     - 240 kx3 games: about 9 hours on the laptop's 2 threads, resumable.
+     - The fixed reading is `gate3/pair_with_dev.py`. The laptop's steps are in the README.
+     - Note: 10 and 06 meet the rule mostly through the opponent's Tools (km3 misplaces one in 6 and 11 of their 80
+       games). Deck 05 (50 of 80) and deck 03 can be added to the same run with one `--only-deck` each.
+   **The Trainer-habit diagnosis, before it, is done** (Fable via Dustin, Oct 5: km3's late Trainer play inside the play-outs).
    - **Where.** Branch claude/playout-pilot: 1185c4db, head 530be45e. Read
      `rl/results/playout_trainer_habits_2026-10-05/README.md`.
    - **Changes.** No table games, no engine change. One read-only instrument, `engine/examples/trainer_habits.rs`.
