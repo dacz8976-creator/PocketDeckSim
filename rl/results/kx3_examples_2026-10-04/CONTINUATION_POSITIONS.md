@@ -7,6 +7,15 @@ For the cloud's experiment: take the same first move, then continue it two ways,
 The question is whether km3's later play hides good first moves, as the examples suggest. That answers item 4 of the Oct 2
 approval (DESIGN.md section 9).
 
+> **Read these as fast-deck positions (added Oct 5).** All eight are draft A, a tempo deck (one of the development
+> fast decks with Manectric and Xatu/Weezing). Dustin, verbatim: "It's deck dependent when building the bench is
+> helpful. Some decks are meant to play fast. Some reward buildup."
+> - A build-up plan that doesn't pay off here says little about setup decks (Wailord, Muk, Indeedee/Stoutland, Skarmory).
+> - No exact-list positions from a setup deck exist yet. The Wailord positions are from games against human opponents with
+>   unknown lists.
+> - The smallest set that would add them: a few recorded games of a setup deck (Wailord or Muk) against the same fixed
+>   computer deck, as was done for draft A. Asking for that is the coordinator's call.
+
 All eight positions are exact-list (`B-` ids): draft A against the fixed computer deck Mega Blastoise ex / Wailord ex,
 Step-Up Battle: Advanced, Soothing Shore in play.
 - **Positions:** `rl/results/pause_games_decisions_2026-10-02/positions_kx.json`. The opponent list is
