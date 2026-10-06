@@ -35,7 +35,10 @@
 //!
 //! A diagnostic beside it (Oct 5, `continuation_study`, playout_plan.rs): first moves played out from the same sampled
 //! worlds and seeds as `evaluate`'s, each continued by km<N> and by a scripted plan for the pilot's next K own turns.
-use std::cell::RefCell;
+//!
+//! The Tool-placement rule (Oct 6, `_tools`, off by default; playout_tools.rs): in the play-outs, on both sides, a Tool is
+//! attached only where its printed effect can apply; `tool_rule_study` plays the same worlds with the rule off and on.
+use std::cell::{Cell, RefCell};
 use std::collections::{BTreeMap, BTreeSet};
 use std::rc::Rc;
 use std::time::Instant;
@@ -53,6 +56,10 @@ pub use super::playout_pool::{
 pub mod playout_plan;
 use playout_plan::{PlanPlayer, Progress};
 pub use playout_plan::{Plan, PlanTally, PlanTurn, Spot, Step};
+
+#[path = "playout_tools.rs"]
+pub mod playout_tools;
+pub use playout_tools::{conditions_hold, placements_with_effect, tool_conditions, ToolConditions, ToolRulePlayer, ToolSpot};
 use crate::actions::Action;
 use crate::models::{Card, EnergyType};
 use crate::observation::PlayerObservation;
@@ -109,7 +116,7 @@ pub enum Knowledge {
 }
 
 /// The pilot's parameters; every one is part of its code
-/// (`kx<depth>[_r<R>][_c<cap>][_z<z>][_lab|_real][_t<s>][_trace][_poolmeta|_poolwide]`).
+/// (`kx<depth>[_r<R>][_c<cap>][_z<z>][_lab|_real][_t<s>][_trace][_poolmeta|_poolwide][_tools]`).
 #[derive(Debug, Clone, PartialEq)]
 pub struct PlayoutParams {
     /// The search depth of km<depth>: the move it proposes and the bot of both sides in every play-out.
@@ -128,6 +135,8 @@ pub struct PlayoutParams {
     pub trace: bool,
     /// The candidate pool (`_poolwide`, the default, or `_poolmeta`).
     pub pool: PoolSet,
+    /// The Tool-placement rule in the play-outs (`_tools`; off by default): playout_tools.rs.
+    pub tools: bool,
 }
 
 impl PlayoutParams {
@@ -141,13 +150,14 @@ impl PlayoutParams {
             budget_ms: 0,
             trace: false,
             pool: PoolSet::Wide,
+            tools: false,
         }
     }
 
     /// Parses the code after the `kx` prefix (lowercase), e.g. `3_r8_c5_z1.5_lab_t30_trace`.
     pub fn parse(rest: &str) -> Result<Self, String> {
         let invalid = |why: &str| {
-            format!("Invalid player code: kx{rest} ({why}). Use 'kx<depth>[_r<R>][_c<cap>][_z<z>][_lab|_real][_t<seconds>][_trace][_poolmeta|_poolwide]', e.g. 'kx3' or 'kx3_r24_c12_z2_lab'")
+            format!("Invalid player code: kx{rest} ({why}). Use 'kx<depth>[_r<R>][_c<cap>][_z<z>][_lab|_real][_t<seconds>][_trace][_poolmeta|_poolwide][_tools]', e.g. 'kx3' or 'kx3_r24_c12_z2_lab'")
         };
         let mut parts = rest.split('_');
         let depth = parts.next().unwrap_or("").parse::<usize>().map_err(|_| invalid("a depth"))?;
@@ -163,6 +173,7 @@ impl PlayoutParams {
                 "trace" => params.trace = true,
                 "poolmeta" => params.pool = PoolSet::Meta,
                 "poolwide" => params.pool = PoolSet::Wide,
+                "tools" => params.tools = true,
                 p if p.starts_with('r') => {
                     params.rollouts = number(&p[1..])? as usize;
                     if params.rollouts == 0 {
@@ -185,10 +196,10 @@ impl PlayoutParams {
         Ok(params)
     }
 
-    /// The canonical code, every parameter spelled out.
+    /// The canonical code, every parameter spelled out (the Tool rule only when on, so the codes without it are as before).
     pub fn code(&self) -> String {
         format!(
-            "kx{}_r{}_c{}_z{}_{}_t{}{}_pool{}",
+            "kx{}_r{}_c{}_z{}_{}_t{}{}_pool{}{}",
             self.depth,
             self.rollouts,
             self.cap,
@@ -196,7 +207,8 @@ impl PlayoutParams {
             if self.knowledge == Knowledge::Lab { "lab" } else { "real" },
             self.budget_ms / 1000,
             if self.trace { "_trace" } else { "" },
-            if self.pool == PoolSet::Meta { "meta" } else { "wide" }
+            if self.pool == PoolSet::Meta { "meta" } else { "wide" },
+            if self.tools { "_tools" } else { "" }
         )
     }
 }
@@ -268,6 +280,28 @@ pub struct ContinuationMove {
     pub plan_trace: Vec<String>,
     pub km3_trace: Vec<String>,
     pub km3_trace_is_km3: bool,
+}
+
+/// One move in the Tool-rule study: round j's play-out with the rule off (`off[j]`) and on (`on[j]`), from the same world
+/// and seed, and how many placements the rule changed in it (`interventions[j]`; with none, `on[j]` is `off[j]`).
+#[derive(Debug, Clone, serde::Serialize)]
+pub struct ToolRuleMove {
+    pub action: Action,
+    pub label: String,
+    pub off: Vec<Outcome>,
+    pub on: Vec<Outcome>,
+    pub interventions: Vec<usize>,
+}
+
+/// The Tool-rule study at one decision.
+#[derive(Debug, Clone, serde::Serialize)]
+pub struct ToolRuleReport {
+    pub knowledge: String,
+    pub rounds: usize,
+    pub failed_rounds: usize,
+    pub lists: BTreeMap<String, usize>,
+    pub moves: Vec<ToolRuleMove>,
+    pub millis: f64,
 }
 
 /// The continuation study at one decision.
@@ -351,6 +385,8 @@ struct Core {
     /// opponent's list itself, which the pilot keeps only then: REALISTIC holds no opponent list, by construction.
     lab: Option<(String, Deck)>,
     depth: usize,
+    /// The Tool-placement rule in the play-outs.
+    tools: bool,
 }
 
 impl PlayoutPlayer {
@@ -400,7 +436,7 @@ impl PlayoutPlayer {
                 pool.iter().find(|(_, d)| id_multiset(d) == target).map(|(name, _)| (name.clone(), opponent_list.clone()))
             })
             .flatten();
-        let core = Core { deck, pool, meta, listed, extras, lab, depth: params.depth };
+        let core = Core { deck, pool, meta, listed, extras, lab, depth: params.depth, tools: params.tools };
         PlayoutPlayer { params, km, core, printed: false, decisions: 0, millis: 0.0, omniscient: 0 }
     }
 
@@ -744,12 +780,13 @@ impl Core {
 
     /// Plays `action` from `state` to the end with km<N> on both sides; the pilot's score (win 1, tie ½, loss 0).
     fn playout(&self, state: &State, opponent_list: &Deck, me: usize, action: &Action, seed: u64) -> f64 {
-        score(&self.play_out(state, opponent_list, me, action, seed, None).0, me)
+        score(&self.play_out(state, opponent_list, me, action, seed, None, self.tools).0, me)
     }
 
     /// `playout`'s game, ending in its final state. With a plan, the pilot's side follows it for K own turns from
     /// `state`'s (playout_plan.rs) and km<N> plays the rest, and the plan's tally comes back; without one (or with K = 0)
-    /// it is km<N> on both sides.
+    /// it is km<N> on both sides. With `tools`, km<N> on both sides places Tools by the Tool-placement rule
+    /// (playout_tools.rs), and the rule's interventions are counted.
     fn play_out(
         &self,
         state: &State,
@@ -758,10 +795,18 @@ impl Core {
         action: &Action,
         seed: u64,
         plan: Option<(&Plan, usize)>,
-    ) -> (State, Option<(PlanTally, Vec<String>)>) {
+        tools: bool,
+    ) -> (State, Option<(PlanTally, Vec<String>)>, usize) {
         let code = PlayerCode::KM { max_depth: self.depth };
         let (d0, d1) = if me == 0 { (self.deck.clone(), opponent_list.clone()) } else { (opponent_list.clone(), self.deck.clone()) };
         let mut players = create_players(d0, d1, vec![code.clone(), code]);
+        let interventions = Rc::new(Cell::new(0));
+        if tools {
+            players = players
+                .into_iter()
+                .map(|inner| Box::new(ToolRulePlayer { inner, interventions: interventions.clone() }) as Box<dyn Player>)
+                .collect();
+        }
         let progress = plan.map(|(plan, k)| {
             let progress = Rc::new(RefCell::new(Progress::new(plan, k, me, state.turn_count as usize)));
             let km = players.remove(me);
@@ -785,7 +830,7 @@ impl Core {
             let mut p = p.borrow_mut();
             (p.finish(&end), p.take_log())
         });
-        (end, tally)
+        (end, tally, interventions.get())
     }
 
 }
@@ -1018,11 +1063,11 @@ impl PlayoutPlayer {
                     let per_move = moves
                         .iter()
                         .map(|a| {
-                            let (km_end, _) = core.play_out(&world, &list, me, a, seed, None);
-                            let (plan_end, logged) = core.play_out(&world, &list, me, a, seed, Some((plan, k)));
+                            let (km_end, _, _) = core.play_out(&world, &list, me, a, seed, None, core.tools);
+                            let (plan_end, logged, _) = core.play_out(&world, &list, me, a, seed, Some((plan, k)), core.tools);
                             let (tally, plan_log) = logged.unwrap_or_default();
                             let traces = (j == 0).then(|| {
-                                let (end, logged) = core.play_out(&world, &list, me, a, seed, Some((&km_logged, k)));
+                                let (end, logged, _) = core.play_out(&world, &list, me, a, seed, Some((&km_logged, k)), core.tools);
                                 (plan_log, logged.unwrap_or_default().1, outcome(&end) == outcome(&km_end))
                             });
                             (outcome(&km_end), outcome(&plan_end), tally, traces)
@@ -1065,6 +1110,65 @@ impl PlayoutPlayer {
                 if let Some((plan_trace, km3_trace, same)) = traces {
                     (m.plan_trace, m.km3_trace, m.km3_trace_is_km3) = (plan_trace, km3_trace, same);
                 }
+            }
+        }
+        report.millis = start.elapsed().as_secs_f64() * 1000.0;
+        report
+    }
+
+    /// The Tool-rule study (Oct 6): each of `moves` played out `rounds` times from round j's sampled world and seed, as
+    /// `evaluate` does at the same decision randomness, once with the Tool-placement rule and once without (whatever the
+    /// pilot's own `_tools`). A play-out in which the rule never acts is the same game both ways, so it is played once.
+    /// A round in which any play-out panics is dropped whole.
+    pub fn tool_rule_study(&self, rng: &mut StdRng, observation: &PlayerObservation, moves: &[Action], rounds: usize) -> ToolRuleReport {
+        let start = Instant::now();
+        let _quiet = QuietDump::new();
+        let me = observation.actor;
+        let base = round_base(rng);
+        let core = &self.core;
+        let outcome = |end: &State| Outcome {
+            score: score(end, me),
+            digest: super::playout_pool::fnv1a64(serde_json::to_string(end).unwrap_or_default().as_bytes()),
+            turn: end.turn_count,
+        };
+        let results: Vec<Option<(Vec<(Outcome, Outcome, usize)>, String)>> = (0..rounds)
+            .into_par_iter()
+            .map(|j| {
+                std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+                    let (world, list, name, seed) = core.sample_round(observation, base, j);
+                    let per_move = moves
+                        .iter()
+                        .map(|a| {
+                            let (on_end, _, n) = core.play_out(&world, &list, me, a, seed, None, true);
+                            let on = outcome(&on_end);
+                            let off = if n == 0 { on.clone() } else { outcome(&core.play_out(&world, &list, me, a, seed, None, false).0) };
+                            (off, on, n)
+                        })
+                        .collect();
+                    (per_move, name)
+                }))
+                .ok()
+            })
+            .collect();
+        let label = |a: &Action| format!("{:?}", a.action).chars().take(160).collect::<String>();
+        let mut report = ToolRuleReport {
+            knowledge: self.knowledge_label(),
+            rounds: 0,
+            failed_rounds: results.iter().filter(|r| r.is_none()).count(),
+            lists: BTreeMap::new(),
+            moves: moves
+                .iter()
+                .map(|a| ToolRuleMove { action: a.clone(), label: label(a), off: Vec::new(), on: Vec::new(), interventions: Vec::new() })
+                .collect(),
+            millis: 0.0,
+        };
+        for (per_move, name) in results.into_iter().flatten() {
+            report.rounds += 1;
+            *report.lists.entry(name).or_default() += 1;
+            for (m, (off, on, n)) in report.moves.iter_mut().zip(per_move) {
+                m.off.push(off);
+                m.on.push(on);
+                m.interventions.push(n);
             }
         }
         report.millis = start.elapsed().as_secs_f64() * 1000.0;
@@ -1138,6 +1242,7 @@ impl Player for PlayoutPlayer {
                     "knowledge": self.knowledge_label(),
                     "pool": if self.params.pool == PoolSet::Meta { "meta" } else { "wide" },
                     "pool_lists": self.core.listed,
+                    "tool_rule": self.params.tools,
                     "extra_lists": self.extras_json(),
                     "budget_ms": self.params.budget_ms,
                     "seat": observation.actor,
