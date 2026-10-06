@@ -13,8 +13,42 @@ The audit is committed: `rl/results/coin_prevention_round2_2026-10-01/TEXT_AUDIT
 - **In the five files but outside rules/09, rules/04 and the caveats:** Guts on the attacker's own Pokémon in an attack's outcome (E1), and Perish Body on a plain queued hit at the Active (E2). Both are decided by their text. Fix them in this job, or leave them listed?
 
 1. **Current task, and the instruction that set it.** None running; idle.
-   **The Tool-placement rule is built; gates 1 and 2 passed; gate 3 is registered for the laptop** (Fable via Dustin,
-   Oct 5).
+   **The Tool rule at kx3's own decision is built as a within-noise tie-break; gates 1 and 2 passed; gate 3 is
+   re-registered for this version** (Fable via Dustin, Oct 6, amended the same day: no candidate drops).
+   - **Where.** Branch claude/playout-pilot: tie-break tests first 8861c875, the tie-break dcd703d5, head 11b4836a. The
+     candidate filter (c775972d) was built, never run, and replaced. Read
+     `rl/results/playout_tool_rule_2026-10-06/README.md`, "The tie-break at kx3's own decision".
+   - **What it does.** Every placement stays in kx3's pool and gets its play-outs.
+     - Only when no move clears the z bar, and km3's proposed placement has no printed effect now while another has
+       one, kx3 plays the placement with an effect that km3 prefers (the play-out rule's choice, same randomness).
+     - The trace says "tie-break: Tool effect". km3's placement is kept when its play-outs lead that one by more than 2
+       standard errors.
+     - The play-out rule is unchanged. `_tools` means both.
+   - **Gate 1: passed.**
+     - km3 240 of 240 equal to the official program.
+     - Suite 2,066 passed, 0 failed; 2,067 with the kept-case test.
+     - km3 self-check 81b572198c04d5d1; LAB self-check 3a2eb43bd9053639 with `_tools` off (twice) and on.
+   - **kx3's 62 development-run misplacements, decided again** (each game replayed exactly; a fresh kx3 from the game's
+     own observation and search randomness).
+     - With `_tools` off it repeats the logged placement 62 of 62 (131 of 131 placements without effect).
+     - With `_tools`, **60 now land where the Tool has an effect**, all by the tie-break: Poncho 45/45, Heavy Helmet
+       14/14, Rocky Helmet 1/2.
+     - **2 stay by a play-out lead.** km3 had proposed the Active; kx3's play-outs moved the Tool to the Bench by
+       2.2 and 3.0 standard errors.
+     - The play-out rule alone moves none. The 69 placements with no spot that helps are unchanged.
+   - **Gate 2: it doesn't hurt** (LAB, 64 rounds).
+     - The 8 continuation positions aren't placements: unchanged.
+     - At the 12 development positions advanced to the placement: the tie-break applies at 9, and the play-outs are
+       already right at 2.
+     - **The kept case** is dev04: deck 05's Poncho on the Active Indeedee ex leads every Bench spot by +0.0625 (2.05
+       SE) and stays. It is now a test.
+     - On − off is within the noise at all 12.
+   - **Gate 3 (registered, not run; `gate3/config.json`, pushed).**
+     - This version, decks 01, 10, 06, 05 and 03, on the development run's own deals: 400 kx3 games, about 15 hours.
+     - The laptop's build must print self-check **c426e4c860e836ed** for `kx3_r16_c12_z2_real_t0_poolmeta_tools` (2 h 11
+       min in the cloud), and km3 81b572198c04d5d1.
+     - The steps (one `--only-deck` per deck) are in the README.
+   **The Tool-placement rule, before it, is built; gates 1 and 2 passed** (Fable via Dustin, Oct 5).
    - **Where.** Branch claude/playout-pilot: tests first 7607ef7f, the rule 4021a4e8, gate 1 and the development run's
      Tool placements 14773e51, gates 2 and 3 24682db9, head 9c33a685. Read `rl/results/playout_tool_rule_2026-10-06/README.md`.
    - **The rule.**
@@ -45,8 +79,8 @@ The audit is committed: `rl/results/coin_prevention_round2_2026-10-01/TEXT_AUDIT
    - **Gate 3 (registered, not run): `gate3/config.json`.**
      - Decks 01, 10 and 06 on the development run's own deals, so its kx3 games are the rule-off arm.
      - This build replays them exactly (16 of 16 games, 8 kx3; every km3 game of four decks, 320).
-     - Its self-check for the gate-3 pilot (rule on) prints 31d638dbc818b0fa, the development run's own kx3 digest. The
-       laptop's build must print the same.
+     - Its self-check for the gate-3 pilot with the rule alone printed 31d638dbc818b0fa, the development run's own kx3
+       digest. Gate 3 now tests the rule with the tie-break (above), whose digest is c426e4c860e836ed.
      - 240 kx3 games: about 9 hours on the laptop's 2 threads, resumable.
      - The fixed reading is `gate3/pair_with_dev.py`. The laptop's steps are in the README.
      - Note: 10 and 06 meet the rule mostly through the opponent's Tools (km3 misplaces one in 6 and 11 of their 80
