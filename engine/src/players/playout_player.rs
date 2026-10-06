@@ -38,6 +38,8 @@
 //!
 //! The Tool-placement rule (Oct 6, `_tools`, off by default; playout_tools.rs): in the play-outs, on both sides, a Tool is
 //! attached only where its printed effect can apply; `tool_rule_study` plays the same worlds with the rule off and on.
+//! The same `_tools` filters kx<N>'s own candidates (Oct 6, the follow-up): when km<N>'s proposal is a placement without
+//! an effect and another has one, the placements without one leave the pool, named in the trace.
 use std::cell::{Cell, RefCell};
 use std::collections::{BTreeMap, BTreeSet};
 use std::rc::Rc;
@@ -59,7 +61,9 @@ pub use playout_plan::{Plan, PlanTally, PlanTurn, Spot, Step};
 
 #[path = "playout_tools.rs"]
 pub mod playout_tools;
-pub use playout_tools::{conditions_hold, placements_with_effect, tool_conditions, ToolConditions, ToolRulePlayer, ToolSpot};
+pub use playout_tools::{
+    conditions_hold, placements_with_effect, tool_conditions, tool_filter, ToolConditions, ToolRulePlayer, ToolSpot,
+};
 use crate::actions::Action;
 use crate::models::{Card, EnergyType};
 use crate::observation::PlayerObservation;
@@ -135,7 +139,8 @@ pub struct PlayoutParams {
     pub trace: bool,
     /// The candidate pool (`_poolwide`, the default, or `_poolmeta`).
     pub pool: PoolSet,
-    /// The Tool-placement rule in the play-outs (`_tools`; off by default): playout_tools.rs.
+    /// The Tool-placement rule (`_tools`; off by default): in the play-outs, and as a filter on the pilot's own candidates
+    /// (playout_tools.rs).
     pub tools: bool,
 }
 
@@ -226,7 +231,7 @@ pub struct CandidateReport {
     pub se: f64,
 }
 
-/// A move left out by the candidate cap, and why.
+/// A move left out of the candidates, and why: by the cap, or (`_tools`) a Tool placement without effect.
 #[derive(Debug, Clone)]
 pub struct Dropped {
     pub label: String,
@@ -843,12 +848,20 @@ impl PlayoutPlayer {
         let _quiet = QuietDump::new();
         let me = observation.actor;
         let state = observation.visible_state();
-        let km_move = self.km.decision_fn(&mut rng.clone(), observation, actions);
+        let km_proposal = self.km.decision_fn(&mut rng.clone(), observation, actions);
         let label = |a: &Action| format!("{:?}", a.action).chars().take(160).collect::<String>();
+        // The Tool rule at kx's own decision (`_tools`, playout_tools.rs): when km's proposal is a placement without a
+        // printed effect and another has one, the placements without one leave the pool (named below), and km chooses
+        // again among the rest with the same randomness, as in the play-outs. Otherwise the pool is every legal move.
+        let filtered = if self.params.tools { tool_filter(state, actions, &km_proposal) } else { None };
+        let (km_move, pool, tool_drops) = match filtered {
+            Some((kept, dropped)) => (self.km.decision_fn(&mut rng.clone(), observation, &kept), kept, dropped),
+            None => (km_proposal, actions.to_vec(), Vec::new()),
+        };
         let mut seen = BTreeSet::new();
         let mut distinct: Vec<Action> = vec![km_move.clone()];
         seen.insert(format!("{km_move:?}"));
-        for a in actions {
+        for a in &pool {
             if seen.insert(format!("{a:?}")) {
                 distinct.push(a.clone());
             }
@@ -858,7 +871,7 @@ impl PlayoutPlayer {
             turn: state.turn_count,
             actor: me,
             candidates: vec![CandidateReport { action: km_move.clone(), label: label(&km_move), score: f64::NAN, diff: 0.0, se: f64::NAN }],
-            dropped: vec![],
+            dropped: tool_drops.iter().map(|(a, why)| Dropped { label: label(a), reason: why.clone() }).collect(),
             km3: 0,
             chosen: 0,
             reason: String::new(),
