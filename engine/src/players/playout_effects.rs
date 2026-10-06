@@ -9,7 +9,9 @@
 //! - "put a random X from your deck into your hand" needs an X left in the deck (the deck's contents are the player's
 //!   own knowledge), "... from your discard pile" one there;
 //! - "during this turn, attacks used by your X do +N" (and costs, and "during your opponent's next turn, all of your X
-//!   take -N") needs an X in play; "the Retreat Cost of your Active Pokémon is N less" a Retreat Cost to lower;
+//!   take -N") needs an X in play; "the Retreat Cost of your Active Pokémon is N less" a Retreat Cost to lower; a
+//!   promise about your X (Hala's, Iris's) an X in play, Drayden's a Pokémon with Draco Meteor;
+//! - discarding or returning the Tools in play (Guzma, Elesa) needs a Tool there;
 //! - "take a [X] Energy from your Energy Zone and attach it to Y" and "choose 1 of your Y" need a Y in play;
 //! - moving Energy from the Bench needs Benched Energy (of the type); discarding the opponent's Active's Energy needs
 //!   some there; switching the opponent's Pokémon needs a Benched one (Basic, damaged, as the text says); switching your
@@ -49,6 +51,8 @@ pub struct PokemonFilter {
     pub max_hp: Option<u32>,
     pub damaged: bool,
     pub min_retreat: Option<usize>,
+    /// Has the attack of this name (lowercase), e.g. Drayden's "draco meteor".
+    pub attack: Option<String>,
 }
 
 /// What a card must be.
@@ -97,6 +101,8 @@ pub enum Need {
     OwnSwitch(PokemonFilter),
     /// The opponent's Active has a Pokémon Tool attached.
     OpponentActiveTool,
+    /// A Pokémon in play holds a Pokémon Tool: one of yours (`yours`), or of the opponent's (`theirs`).
+    ToolsInPlay { yours: bool, theirs: bool },
     /// The opponent holds more than this many cards.
     OpponentHandAbove(usize),
     /// A card of this kind in the opponent's discard pile.
@@ -543,6 +549,30 @@ fn sentence(s: &str) -> Result<Option<Reading>, String> {
     if s.starts_with("discard all pokémon tools from your opponent's active pokémon") {
         return needs(vec![Need::OpponentActiveTool]);
     }
+    // Tools in play, and the Pokémon a turn's promise is about (Supporters the engine offers whatever the board).
+    if s.starts_with("discard all pokémon tool cards attached to each of your opponent's pokémon") {
+        return needs(vec![Need::ToolsInPlay { yours: false, theirs: true }]);
+    }
+    if s.starts_with("return all pokémon tools attached to each pokémon") {
+        let both = s.contains("(both yours and your opponent's)");
+        return needs(vec![Need::ToolsInPlay { yours: both, theirs: true }]);
+    }
+    if let Some(rest) = s.strip_prefix("during your opponent's next turn, if your ") {
+        let who = rest.split(" would ").next().unwrap();
+        if who == rest {
+            return Err(format!("a promise '{s}'"));
+        }
+        return needs(vec![Need::InPlay(Scope::Any, pokemon_filter(who)?)]);
+    }
+    if s.starts_with("during this turn, if your opponent's active pokémon is knocked out") {
+        let who = s.split(" an attack used by your ").nth(1).and_then(|r| r.split(',').next()).ok_or_else(|| format!("a promise '{s}'"))?;
+        return needs(vec![Need::InPlay(Scope::Any, pokemon_filter(who)?)]);
+    }
+    if s.starts_with("during this turn, 1 of your opponent's pokémon is chosen") {
+        let title = s.split(" for the ").nth(1).and_then(|r| r.split(" attack used by your").next()).ok_or_else(|| format!("a promise '{s}'"))?;
+        let f = PokemonFilter { attack: Some(title.to_string()), ..Default::default() };
+        return needs(vec![Need::InPlay(Scope::Any, f)]);
+    }
     // Always something.
     for always in [
         "if you have a stage 2 card in your hand",
@@ -574,12 +604,7 @@ fn sentence(s: &str) -> Result<Option<Reading>, String> {
         "discard the top card of your opponent's deck",
         "discard the energy that has been generated in your energy zone",
         "attach ",
-        "during this turn, if your opponent's active pokémon is knocked out",
-        "during this turn, 1 of your opponent's pokémon is chosen",
-        "during your opponent's next turn, if your ",
         "until the end of your opponent's next turn",
-        "discard all pokémon tool cards attached to each of your opponent's pokémon",
-        "return all pokémon tools attached",
         "put a basic pokémon from your opponent's discard pile",
         "1 special condition from among",
         "shuffle a basic pokémon from your hand into your deck",
@@ -666,6 +691,7 @@ fn pokemon_matches(f: &PokemonFilter, p: &PlayedCard) -> bool {
         && f.max_hp.map_or(true, |h| pc.hp <= h)
         && (!f.damaged || p.is_damaged())
         && f.min_retreat.map_or(true, |n| pc.retreat_cost.len() >= n)
+        && f.attack.as_ref().map_or(true, |t| pc.attacks.iter().any(|a| a.title.to_lowercase() == *t))
 }
 
 fn card_matches(k: &CardKind, c: &Card) -> bool {
@@ -681,6 +707,7 @@ fn card_matches(k: &CardKind, c: &Card) -> bool {
                 && (!f.ultra_beast || is_ultra_beast(&pc.name))
                 && f.max_hp.map_or(true, |h| pc.hp <= h)
                 && f.evolves_from.as_ref().map_or(true, |e| pc.evolves_from.as_ref().is_some_and(|x| x.to_lowercase() == *e))
+                && f.attack.as_ref().map_or(true, |t| pc.attacks.iter().any(|a| a.title.to_lowercase() == *t))
         }
         (CardKind::Item, Card::Trainer(t)) => t.trainer_card_type == TrainerType::Item,
         (CardKind::Tool, Card::Trainer(t)) => t.trainer_card_type == TrainerType::Tool,
@@ -723,6 +750,10 @@ pub fn need_met(need: &Need, state: &State, me: usize, this: Option<usize>, own_
         Need::OpponentBench(f) => (1..4).filter_map(|i| state.in_play_pokemon[1 - me][i].as_ref()).any(|p| pokemon_matches(f, p)),
         Need::OwnSwitch(active) => mine(Scope::Active).iter().any(|p| pokemon_matches(active, p)) && !mine(Scope::Bench).is_empty(),
         Need::OpponentActiveTool => state.in_play_pokemon[1 - me][0].as_ref().is_some_and(|p| !p.attached_tools.is_empty()),
+        Need::ToolsInPlay { yours, theirs } => [(me, *yours), (1 - me, *theirs)]
+            .iter()
+            .filter(|(_, counts)| *counts)
+            .any(|(side, _)| state.in_play_pokemon[*side].iter().flatten().any(|p| !p.attached_tools.is_empty())),
         Need::OpponentHandAbove(n) => state.hands[1 - me].len() > *n,
         Need::InOpponentDiscard(k) => state.discard_piles[1 - me].iter().any(|c| card_matches(k, c)),
     }
