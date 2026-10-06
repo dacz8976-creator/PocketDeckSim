@@ -1,0 +1,455 @@
+{
+ "order": 12,
+ "matchup": {
+  "you": "Xatu / Oricorio / TR Weezing (your deck 10)"
+ },
+ "turn": 3,
+ "you_went_first": true,
+ "situation": "Your turn (your 2nd turn; turn 3 of the game).",
+ "question": "Two plans for the rest of this turn. Each runs from here until its first step that draws or searches for cards (after that, what comes next depends on what you get), its attack, or the end of the turn. Which plan would you play: Plan A, Plan B, both reasonable, or neither?",
+ "plans": {
+  "A": {
+   "steps": [
+    "End your turn without attacking"
+   ],
+   "ends": "end",
+   "ends_text": "The plan ends your turn."
+  },
+  "B": {
+   "steps": [
+    "Attack with Supernatural Feather"
+   ],
+   "ends": "attack",
+   "ends_text": "The plan ends with the attack."
+  }
+ },
+ "answer_options": [
+  "Plan A",
+  "Plan B",
+  "Both reasonable",
+  "Neither"
+ ],
+ "note_prompt": "A short note (optional): why, or what you would do instead.",
+ "points": {
+  "you": 0,
+  "opponent": 0
+ },
+ "you": {
+  "active": {
+   "name": "Oricorio",
+   "stage": 0,
+   "type": "Psychic",
+   "hp": 80,
+   "max_hp": 80,
+   "energy": [
+    "Psychic"
+   ],
+   "tools": [],
+   "conditions": [],
+   "ability": null,
+   "attacks": [
+    {
+     "name": "Supernatural Feather",
+     "cost": [
+      "Psychic"
+     ],
+     "damage": "50",
+     "text": "Discard a card from your hand. If you can't, this attack does nothing."
+    }
+   ],
+   "weakness": "Darkness",
+   "retreat": 1,
+   "retreat_now": 1,
+   "retreat_note": null,
+   "ko_points": 1,
+   "notes": []
+  },
+  "bench": [
+   {
+    "name": "Xatu",
+    "stage": 1,
+    "type": "Psychic",
+    "hp": 80,
+    "max_hp": 80,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": null,
+    "attacks": [
+     {
+      "name": "Life Drain",
+      "cost": [
+       "Psychic",
+       "Psychic"
+      ],
+      "damage": null,
+      "text": "Flip a coin. If heads, your opponent's Active Pokémon's remaining HP is now 10."
+     }
+    ],
+    "weakness": "Darkness",
+    "retreat": 1,
+    "retreat_now": 1,
+    "retreat_note": null,
+    "ko_points": 1,
+    "notes": [
+     "Evolved this turn"
+    ]
+   },
+   {
+    "name": "Team Rocket's Koffing",
+    "stage": 0,
+    "type": "Darkness",
+    "hp": 60,
+    "max_hp": 60,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": null,
+    "attacks": [
+     {
+      "name": "Reverse Thrust",
+      "cost": [
+       "Darkness"
+      ],
+      "damage": "10",
+      "text": "Switch this Pokémon with 1 of your Benched Pokémon."
+     }
+    ],
+    "weakness": "Fighting",
+    "retreat": 1,
+    "retreat_now": 1,
+    "retreat_note": null,
+    "ko_points": 1,
+    "notes": []
+   },
+   {
+    "name": "Xatu",
+    "stage": 1,
+    "type": "Psychic",
+    "hp": 80,
+    "max_hp": 80,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": null,
+    "attacks": [
+     {
+      "name": "Life Drain",
+      "cost": [
+       "Psychic",
+       "Psychic"
+      ],
+      "damage": null,
+      "text": "Flip a coin. If heads, your opponent's Active Pokémon's remaining HP is now 10."
+     }
+    ],
+    "weakness": "Darkness",
+    "retreat": 1,
+    "retreat_now": 1,
+    "retreat_note": null,
+    "ko_points": 1,
+    "notes": [
+     "Evolved this turn"
+    ]
+   }
+  ],
+  "deck_count": 10,
+  "discard": [
+   "Professor's Research",
+   "Poké Ball",
+   "Will"
+  ],
+  "discard_energy": [],
+  "energy_zone": {
+   "this_turn": "already attached",
+   "next": "Psychic",
+   "lines": [
+    "This turn: already attached",
+    "Next: Psychic"
+   ]
+  },
+  "hand": [
+   {
+    "name": "Oricorio",
+    "kind": "Basic Pokémon",
+    "text": "Basic Pokémon, HP 80, Psychic type. Attack Supernatural Feather [Psychic] 50: Discard a card from your hand. If you can't, this attack does nothing. Weakness: Darkness. Retreat: 1."
+   }
+  ],
+  "decklist": [
+   {
+    "name": "Natu",
+    "kind": "Basic Pokémon",
+    "text": "Basic Pokémon, HP 60, Psychic type. Attack Peck [Colorless] 10. Weakness: Darkness. Retreat: 1.",
+    "count": 2,
+    "left": 0
+   },
+   {
+    "name": "Oricorio",
+    "kind": "Basic Pokémon",
+    "text": "Basic Pokémon, HP 80, Psychic type. Attack Supernatural Feather [Psychic] 50: Discard a card from your hand. If you can't, this attack does nothing. Weakness: Darkness. Retreat: 1.",
+    "count": 2,
+    "left": 0
+   },
+   {
+    "name": "Team Rocket's Koffing",
+    "kind": "Basic Pokémon",
+    "text": "Basic Pokémon, HP 60, Darkness type. Attack Reverse Thrust [Darkness] 10: Switch this Pokémon with 1 of your Benched Pokémon. Weakness: Fighting. Retreat: 1.",
+    "count": 1,
+    "left": 0
+   },
+   {
+    "name": "Team Rocket's Weezing ex",
+    "kind": "Stage 1 Pokémon",
+    "text": "Stage 1 Pokémon, HP 140, Darkness type, evolves from Team Rocket's Koffing. Gives 2 points when Knocked Out. Ability Boiler Smog: Once during your turn, when you play this Pokémon from your hand to evolve 1 of your Pokémon, you may make your opponent's Active Pokémon Poisoned and Burned. Attack Confusion Gas [Darkness Darkness] 60: Your opponent's Active Pokémon is now Confused. Weakness: Fighting. Retreat: 2.",
+    "count": 1,
+    "left": 1
+   },
+   {
+    "name": "Xatu",
+    "kind": "Stage 1 Pokémon",
+    "text": "Stage 1 Pokémon, HP 80, Psychic type, evolves from Natu. Attack Life Drain [Psychic Psychic]: Flip a coin. If heads, your opponent's Active Pokémon's remaining HP is now 10. Weakness: Darkness. Retreat: 1.",
+    "count": 2,
+    "left": 0
+   },
+   {
+    "name": "Copycat",
+    "kind": "Supporter",
+    "text": "Shuffle your hand into your deck. Draw a card for each card in your opponent's hand.",
+    "count": 2,
+    "left": 2
+   },
+   {
+    "name": "Cyrus",
+    "kind": "Supporter",
+    "text": "Switch in 1 of your opponent's Benched Pokémon that has damage on it to the Active Spot.",
+    "count": 1,
+    "left": 1
+   },
+   {
+    "name": "Professor's Research",
+    "kind": "Supporter",
+    "text": "Draw 2 cards.",
+    "count": 2,
+    "left": 1
+   },
+   {
+    "name": "Will",
+    "kind": "Supporter",
+    "text": "The next time you flip any number of coins for the effect of an attack, Ability, or Trainer card after using this card on this turn, the first coin flip will definitely be heads.",
+    "count": 1,
+    "left": 0
+   },
+   {
+    "name": "Poké Ball",
+    "kind": "Item",
+    "text": "Put a random Basic Pokémon from your deck into your hand.",
+    "count": 2,
+    "left": 1
+   },
+   {
+    "name": "Poison Barb",
+    "kind": "Pokémon Tool",
+    "text": "If the Pokémon this card is attached to is your Active Pokémon and is damaged by an attack from your opponent's Pokémon, the Attacking Pokémon is now Poisoned.",
+    "count": 2,
+    "left": 2
+   },
+   {
+    "name": "Hiking Trail",
+    "kind": "Stadium",
+    "text": "At the end of each player's turn, that player draws cards until they have 3 cards in their hand.",
+    "count": 2,
+    "left": 2
+   }
+  ],
+  "energy_types": [
+   "Psychic"
+  ],
+  "supporter_played_this_turn": true,
+  "retreated_this_turn": false
+ },
+ "opponent": {
+  "active": {
+   "name": "Darkrai",
+   "stage": 0,
+   "type": "Darkness",
+   "hp": 100,
+   "max_hp": 100,
+   "energy": [],
+   "tools": [],
+   "conditions": [],
+   "ability": {
+    "name": "Bad Dreams",
+    "text": "At the end of each turn, if your opponent's Active Pokémon is Asleep, do 20 damage to that Pokémon.",
+    "used_this_turn": false
+   },
+   "attacks": [
+    {
+     "name": "Dark Slumber",
+     "cost": [
+      "Colorless",
+      "Colorless",
+      "Colorless"
+     ],
+     "damage": "40",
+     "text": "Your opponent's Active Pokémon is now Asleep."
+    }
+   ],
+   "weakness": "Grass",
+   "retreat": 2,
+   "retreat_now": 2,
+   "retreat_note": null,
+   "ko_points": 1,
+   "notes": []
+  },
+  "bench": [
+   null,
+   {
+    "name": "Swablu",
+    "stage": 0,
+    "type": "Colorless",
+    "hp": 50,
+    "max_hp": 50,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": null,
+    "attacks": [
+     {
+      "name": "Sing",
+      "cost": [
+       "Colorless"
+      ],
+      "damage": null,
+      "text": "Your opponent's Active Pokémon is now Asleep."
+     }
+    ],
+    "weakness": "Lightning",
+    "retreat": 1,
+    "retreat_now": 1,
+    "retreat_note": null,
+    "ko_points": 1,
+    "notes": []
+   },
+   {
+    "name": "Swablu",
+    "stage": 0,
+    "type": "Colorless",
+    "hp": 50,
+    "max_hp": 50,
+    "energy": [
+     "Psychic"
+    ],
+    "tools": [],
+    "conditions": [],
+    "ability": null,
+    "attacks": [
+     {
+      "name": "Sing",
+      "cost": [
+       "Colorless"
+      ],
+      "damage": null,
+      "text": "Your opponent's Active Pokémon is now Asleep."
+     }
+    ],
+    "weakness": "Lightning",
+    "retreat": 1,
+    "retreat_now": 1,
+    "retreat_note": null,
+    "ko_points": 1,
+    "notes": []
+   }
+  ],
+  "deck_count": 10,
+  "discard": [
+   "Professor's Research",
+   "Poké Ball",
+   "Poké Ball"
+  ],
+  "discard_energy": [],
+  "energy_zone": {
+   "next": "Psychic",
+   "lines": [
+    "Next: Psychic"
+   ]
+  },
+  "hand_count": 3
+ },
+ "stadium": {
+  "name": "Training Area",
+  "text": "Attacks used by Stage 1 Pokémon in play (both yours and your opponent's) do +10 damage to the opponent's Active Pokémon.",
+  "played_by": "opponent"
+ },
+ "turn_effects": [
+  "During this turn, the next time you flip any number of coins for the effect of an attack, Ability, or Trainer card, the first coin flip will definitely be heads"
+ ],
+ "this_turn_so_far": [
+  "You: Evolved Natu (Bench 3) into Xatu",
+  "You: Evolved Natu (Bench 1) into Xatu",
+  "You: Played Poké Ball (Item)",
+  "You: Played Will (Supporter)",
+  "You: Attached Psychic Energy to Oricorio (Active)"
+ ],
+ "log": [
+  {
+   "turn": 0,
+   "who": "setup",
+   "header": "Setup",
+   "lines": [
+    "You: started with Oricorio (Active), Natu (Bench 3)",
+    "Opponent: started with Darkrai (Active)"
+   ]
+  },
+  {
+   "turn": 1,
+   "who": "you",
+   "header": "Turn 1 - You",
+   "lines": [
+    "You: Played Professor's Research (Supporter)",
+    "You: Put Team Rocket's Koffing on Bench 2",
+    "You: Put Natu on Bench 1",
+    "You: Ended the turn without attacking"
+   ]
+  },
+  {
+   "turn": 2,
+   "who": "opponent",
+   "header": "Turn 2 - Opponent",
+   "lines": [
+    "Opponent: Played Professor's Research (Supporter)",
+    "Opponent: Played Poké Ball (Item)",
+    "Opponent: Played Training Area (Stadium)",
+    "Opponent: Played Poké Ball (Item)",
+    "Opponent: Put Swablu on Bench 3",
+    "Opponent: Put Swablu on Bench 2",
+    "Opponent: Attached Psychic Energy to Swablu (Bench 3)",
+    "Opponent: Ended the turn without attacking"
+   ]
+  }
+ ],
+ "options": [
+  {
+   "key": "1",
+   "group": "Attack",
+   "text": "Attack with Supernatural Feather (50 damage): Discard a card from your hand. If you can't, this attack does nothing."
+  },
+  {
+   "key": "2",
+   "group": "Retreat",
+   "text": "Retreat Oricorio (Active) and switch in a Benched Xatu (Bench 1 or 3); costs 1 Energy"
+  },
+  {
+   "key": "3",
+   "group": "Retreat",
+   "text": "Retreat Oricorio (Active) and switch in Team Rocket's Koffing (Bench 2); costs 1 Energy"
+  },
+  {
+   "key": "0",
+   "group": "End turn",
+   "text": "End your turn without attacking"
+  }
+ ],
+ "cant_play": [
+  "Oricorio: your Bench is full"
+ ]
+}
