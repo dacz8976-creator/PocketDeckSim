@@ -10,6 +10,16 @@
 //!       --rounds 128 --seed-base 24200001000 --out events.jsonl
 //!     The continuation study's km3 continuations of both first moves at each position: the same LAB worlds and seeds as
 //!     kx3's `evaluate` (rebuilt here), each play-out checked against the study's final-state digest.
+//!   trainer_habits scripted --games <games.jsonl> --manifest <manifest.json> --out events.jsonl [--arm X]
+//!     (Oct 6) A strength run's arm whose deck side isn't km3 (kx3's arm X), replayed cheaply: the deck's side plays the
+//!     moves its log records (each found by the harness's own label), the opponent km3 plays itself. A label that names
+//!     more than one legal move (`DiscardToolFromPokemon` says not which Tool) is tried each way, depth first, until the
+//!     rest of the log and the ending agree. Checked as the games mode is: every logged move found, and the points, turns
+//!     and winner as recorded.
+//! Every Tool placement also carries the Tool-placement rule's verdict (Oct 6, playout_tools.rs): whether it has an
+//! effect there, and how many placements offered had one. With `--dump-states <dir> [--dump-max N]` (games mode), the
+//! states where the deck's side played a Tool that the rule would have placed elsewhere are written out, for positions
+//! where the rule acts.
 //! Every event is one JSON line: the context, the player, the turn, the hand and board before, and what followed.
 use std::collections::{BTreeMap, BTreeSet};
 use std::io::Write;
@@ -17,7 +27,8 @@ use std::io::Write;
 use deckgym::actions::{Action, SimpleAction};
 use deckgym::models::{Card, EnergyType, TrainerType};
 use deckgym::observation::{PlayerObservation, RevealedKnowledge};
-use deckgym::players::{create_players, PlayerCode};
+use deckgym::players::playout_player::placements_with_effect;
+use deckgym::players::{create_players, Player, PlayerCode};
 use deckgym::state::GameOutcome;
 use deckgym::{Deck, Game, State};
 use rand::seq::SliceRandom;
@@ -156,14 +167,25 @@ struct Pending {
     before: State,
 }
 
+/// The Tool-placement rule's verdict on a placement: whether it has an effect there, and whether the rule would have
+/// had km3 place it elsewhere (some offered placement has one).
+fn rule_verdict(before: &State, legal: &[Action], a: &Action) -> Value {
+    let effective = placements_with_effect(before, legal);
+    json!({"has_effect": effective.contains(a), "offered": legal.len(), "with_effect": effective.len(),
+           "rule_would_change": !effective.is_empty() && !effective.contains(a)})
+}
+
 fn carrier_of(state: &State, owner: usize, tool: &Card) -> Option<usize> {
     (0..4).find(|&i| state.in_play_pokemon[owner][i].as_ref().is_some_and(|p| p.attached_tools.contains(tool)))
 }
 
 /// Plays `game` to the end (or `limit` ticks), watching every tick: the events, the final state, and the label of every real
 /// decision (more than one legal move) with its actor.
-fn watch(game: &mut Game, ctx: &Value, types: [Vec<EnergyType>; 2], decks: [String; 2], limit: usize) -> (Vec<Value>, State, Vec<(usize, String)>) {
+fn watch(game: &mut Game, ctx: &Value, types: [Vec<EnergyType>; 2], decks: [String; 2], limit: usize) -> (Vec<Value>, State, Vec<(usize, String)>, Vec<(usize, State)>) {
     let mut events = Vec::new();
+    // The state where each player last played a Tool card, and those the rule would have placed elsewhere.
+    let mut tool_played: [Option<State>; 2] = [None, None];
+    let mut misplaced: Vec<(usize, State)> = Vec::new();
     let mut labels = Vec::new();
     let mut tools: Vec<ToolTrack> = Vec::new();
     let mut pending: Vec<Pending> = Vec::new();
@@ -223,8 +245,32 @@ fn watch(game: &mut Game, ctx: &Value, types: [Vec<EnergyType>; 2], decks: [Stri
                 e["hand_before"] = hand_profile(&before, p, &hand, &legal, false, &types[p]);
                 pending.push(Pending { event: e, player: p, before: before.clone() });
             }
-            SimpleAction::AttachTool { in_play_idx, tool_card } if TOOLS.contains(&tool_card.get_name().as_str()) => {
+            SimpleAction::Play { trainer_card } if format!("{:?}", trainer_card.trainer_card_type) == "Tool" => {
+                tool_played[p] = Some(before.clone());
+            }
+            SimpleAction::AttachTool { in_play_idx, tool_card } if !TOOLS.contains(&tool_card.get_name().as_str()) => {
+                // Another Tool: its placement and the rule's verdict only.
+                let verdict = rule_verdict(&before, &legal, &a);
+                if verdict["rule_would_change"] == true {
+                    if let Some(st) = &tool_played[p] {
+                        misplaced.push((p, st.clone()));
+                    }
+                }
+                let mut e = base("tool_other");
+                e["tool"] = json!(tool_card.get_name());
+                e["slot"] = json!(in_play_idx);
+                e["rule"] = verdict;
+                events.push(e);
+            }
+            SimpleAction::AttachTool { in_play_idx, tool_card } => {
+                let verdict = rule_verdict(&before, &legal, &a);
+                if verdict["rule_would_change"] == true {
+                    if let Some(st) = &tool_played[p] {
+                        misplaced.push((p, st.clone()));
+                    }
+                }
                 let mut e = base("tool");
+                e["rule"] = verdict;
                 let carrier = before.in_play_pokemon[p][*in_play_idx].as_ref().unwrap();
                 let (stage, ex) = match &carrier.card {
                     Card::Pokemon(pc) => (pc.stage, pc.name.ends_with(" ex")),
@@ -305,7 +351,7 @@ fn watch(game: &mut Game, ctx: &Value, types: [Vec<EnergyType>; 2], decks: [Stri
             _ => "tie",
         });
     }
-    (events, end, labels)
+    (events, end, labels, misplaced)
 }
 
 /// A list's Energy types (the field is private; the list serializes it).
@@ -337,7 +383,7 @@ fn games(args: &[String]) {
         .take(limit)
         .collect();
     assert!(records.iter().all(|g| g["pilot_deck"] == "km3" && g["pilot_opp"] == "km3"), "the arm must be km3 on both sides");
-    let results: Vec<(Vec<Value>, Value)> = records
+    let results: Vec<(Vec<Value>, Value, Vec<State>)> = records
         .par_iter()
         .map(|g| {
             let (dn, on) = (g["deck"].as_str().unwrap(), g["opp"].as_str().unwrap());
@@ -348,7 +394,7 @@ fn games(args: &[String]) {
             let names = if seat == 0 { [dn.to_string(), on.to_string()] } else { [on.to_string(), dn.to_string()] };
             let mut game = Game::new(km3_pair(d0, d1), seed);
             let ctx = json!({"source": "game", "key": g["key"], "seed": seed, "deck_seat": seat});
-            let (events, end, labels) = watch(&mut game, &ctx, [energy_types(d0), energy_types(d1)], names, usize::MAX);
+            let (events, end, labels, misplaced) = watch(&mut game, &ctx, [energy_types(d0), energy_types(d1)], names, usize::MAX);
             // The replay check: the deck's logged labels (of the kinds labelled here), points, turns and winner.
             let logged: Vec<String> = g["log"]
                 .as_array()
@@ -367,7 +413,184 @@ fn games(args: &[String]) {
                 && g["points"] == json!([end.points[seat], end.points[1 - seat]])
                 && g["turns"].as_u64() == Some(end.turn_count as u64)
                 && g["winner"] == winner;
-            (events, json!({"key": g["key"], "replayed_exactly": same, "labels_logged": logged.len(), "labels_replayed": replayed.len()}))
+            // The deck side's misplaced Tools, for the rule's positions.
+            let dumps: Vec<State> = misplaced.into_iter().filter(|(p, _)| *p == seat).map(|(_, st)| st).collect();
+            (events, json!({"key": g["key"], "replayed_exactly": same, "labels_logged": logged.len(), "labels_replayed": replayed.len(),
+                            "deck_seat": seat, "deck": dn, "opp": on, "misplaced_states": dumps.len()}), dumps)
+        })
+        .collect();
+    if let Some(dir) = arg(args, "--dump-states") {
+        let max: usize = arg(args, "--dump-max").map_or(usize::MAX, |n| n.parse().unwrap());
+        std::fs::create_dir_all(&dir).unwrap();
+        let mut index = Vec::new();
+        for (_, check, dumps) in &results {
+            for (i, st) in dumps.iter().enumerate() {
+                if index.len() >= max {
+                    break;
+                }
+                let id = format!("{}#{}", check["key"].as_str().unwrap(), i);
+                let file = format!("pos{:02}.json", index.len());
+                std::fs::write(format!("{dir}/{file}"), serde_json::to_string(st).unwrap()).unwrap();
+                index.push(json!({"file": file, "game": id, "deck": check["deck"], "opp": check["opp"], "seat": check["deck_seat"], "turn": st.turn_count}));
+            }
+        }
+        std::fs::write(format!("{dir}/index.json"), serde_json::to_string_pretty(&index).unwrap()).unwrap();
+        println!("{} states written to {dir}", index.len());
+    }
+    write_out(args, results.into_iter().map(|(e, c, _)| (e, c)).collect());
+}
+
+/// The strength harness's label, whole (rl/strength/src/main.rs `label`), to find each logged move.
+fn harness_label(a: &Action, state: &State) -> String {
+    let nm = |c: &Card| c.get_name();
+    match &a.action {
+        SimpleAction::Play { trainer_card } => format!("Play:{}", trainer_card.name),
+        SimpleAction::Place(card, idx) => format!("Place:{}@{}", nm(card), idx),
+        SimpleAction::Evolve { evolution, in_play_idx, .. } => format!("Evolve:{}@{}", nm(evolution), in_play_idx),
+        SimpleAction::UseAbility { in_play_idx } => {
+            let title = state.in_play_pokemon.get(a.actor).and_then(|s| s.get(*in_play_idx)).and_then(|p| p.as_ref()).and_then(|p| match &p.card {
+                Card::Pokemon(pc) => pc.ability.as_ref().map(|ab| ab.title.clone()),
+                _ => None,
+            });
+            match title {
+                Some(t) => format!("Ability:{}@{}", t, in_play_idx),
+                None => format!("Ability@{}", in_play_idx),
+            }
+        }
+        SimpleAction::Attack(at) => format!("Attack:{}", at.title),
+        SimpleAction::Retreat(i) => format!("Retreat:{}", i),
+        SimpleAction::Attach { attachments, is_turn_energy } => format!(
+            "Attach:{}{}",
+            attachments.iter().map(|(n, e, i)| format!("{}{:?}@{}", n, e, i)).collect::<Vec<_>>().join("+"),
+            if *is_turn_energy { " zone" } else { " fx" }
+        ),
+        SimpleAction::AttachTool { in_play_idx, tool_card } => format!("Tool:{}@{}", nm(tool_card), in_play_idx),
+        SimpleAction::Heal { in_play_idx, amount, .. } => format!("Heal:{}@{}", amount, in_play_idx),
+        SimpleAction::Activate { player, in_play_idx } => format!("Activate:{}@{}", player, in_play_idx),
+        SimpleAction::Promote { player, in_play_idx } => format!("Promote:{}@{}", player, in_play_idx),
+        SimpleAction::ChooseMistyTarget { in_play_idx } => format!("MistyTarget@{}", in_play_idx),
+        SimpleAction::ChooseRetreatEnergy { to_in_play_idx, .. } => format!("RetreatPay:{}", to_in_play_idx),
+        SimpleAction::EndTurn => "EndTurn".to_string(),
+        other => format!("{:?}", other).split(|c: char| c == ' ' || c == '{' || c == '(').next().unwrap_or("?").to_string(),
+    }
+}
+
+/// What a scripted replay saw: decisions used, labels it could not find, and the ambiguous decisions (index, options).
+#[derive(Debug, Default, Clone)]
+struct ScriptLog {
+    used: usize,
+    missing: Vec<String>,
+    ambiguous: Vec<(usize, usize)>,
+}
+
+/// Plays the moves a log records, each found by its label among the legal moves; at an ambiguous label, the option
+/// `forced` names (else the first).
+#[derive(Debug)]
+struct Scripted {
+    labels: Vec<String>,
+    next: usize,
+    deck: Deck,
+    forced: BTreeMap<usize, usize>,
+    log: std::sync::Arc<std::sync::Mutex<ScriptLog>>,
+}
+
+impl Player for Scripted {
+    fn decision_fn(&mut self, _: &mut StdRng, observation: &PlayerObservation, actions: &[Action]) -> Action {
+        let state = observation.visible_state();
+        let want = self.labels.get(self.next).cloned().unwrap_or_default();
+        self.next += 1;
+        let k = self.next - 1;
+        let mut distinct: Vec<Action> = Vec::new();
+        for a in actions.iter().filter(|a| harness_label(a, state) == want) {
+            if !distinct.contains(a) {
+                distinct.push(a.clone());
+            }
+        }
+        let mut log = self.log.lock().unwrap();
+        log.used = self.next;
+        match distinct.len() {
+            0 => {
+                log.missing.push(format!("decision {k}: '{want}' matched no legal move"));
+                actions[0].clone()
+            }
+            1 => distinct.remove(0),
+            n => {
+                log.ambiguous.push((k, n));
+                let i = self.forced.get(&k).copied().unwrap_or(0).min(n - 1);
+                distinct.remove(i)
+            }
+        }
+    }
+    fn get_deck(&self) -> Deck {
+        self.deck.clone()
+    }
+    fn decide_omniscient(&mut self, _: &mut StdRng, _: &State, actions: &[Action]) -> Action {
+        actions[0].clone()
+    }
+}
+
+fn scripted(args: &[String]) {
+    let manifest: Value = serde_json::from_str(&std::fs::read_to_string(arg(args, "--manifest").unwrap()).unwrap()).unwrap();
+    let arm = arg(args, "--arm").unwrap_or_else(|| "X".into());
+    let limit: usize = arg(args, "--limit").map_or(usize::MAX, |n| n.parse().unwrap());
+    let lists: BTreeMap<String, Deck> = manifest["decks"]
+        .as_array()
+        .unwrap()
+        .iter()
+        .chain(manifest["opponents"].as_array().unwrap())
+        .map(|d| (d["name"].as_str().unwrap().to_string(), Deck::from_file(d["path"].as_str().unwrap()).unwrap()))
+        .collect();
+    let records: Vec<Value> = std::fs::read_to_string(arg(args, "--games").unwrap())
+        .unwrap()
+        .lines()
+        .map(|l| serde_json::from_str::<Value>(l).unwrap())
+        .filter(|g| g["arm"] == arm.as_str())
+        .take(limit)
+        .collect();
+    assert!(records.iter().all(|g| g["pilot_opp"] == "km3"), "the opponent must be km3");
+    let results: Vec<(Vec<Value>, Value)> = records
+        .par_iter()
+        .map(|g| {
+            let (dn, on) = (g["deck"].as_str().unwrap(), g["opp"].as_str().unwrap());
+            let seat = g["seat"].as_u64().unwrap() as usize;
+            let seed = g["seed"].as_u64().unwrap();
+            let (dd, od) = (&lists[dn], &lists[on]);
+            let (d0, d1) = if seat == 0 { (dd, od) } else { (od, dd) };
+            let names = if seat == 0 { [dn.to_string(), on.to_string()] } else { [on.to_string(), dn.to_string()] };
+            let labels: Vec<String> = g["log"].as_array().unwrap().iter().map(|e| e["a"].as_str().unwrap().to_string()).collect();
+            let winner_of = |end: &State| match end.winner {
+                Some(GameOutcome::Win(w)) if w == seat => "deck",
+                Some(GameOutcome::Win(_)) => "opp",
+                _ => "tie",
+            };
+            let mut forced: BTreeMap<usize, usize> = BTreeMap::new();
+            let mut attempts = 0;
+            loop {
+                attempts += 1;
+                let log = std::sync::Arc::new(std::sync::Mutex::new(ScriptLog::default()));
+                let mut players = km3_pair(d0, d1);
+                players[seat] = Box::new(Scripted { labels: labels.clone(), next: 0, deck: dd.clone(), forced: forced.clone(), log: log.clone() });
+                let mut game = Game::new(players, seed);
+                let ctx = json!({"source": "scripted", "key": g["key"], "seed": seed, "deck_seat": seat, "pilot_deck": g["pilot_deck"]});
+                let (events, end, _, _) = watch(&mut game, &ctx, [energy_types(d0), energy_types(d1)], names.clone(), usize::MAX);
+                let log = log.lock().unwrap().clone();
+                let same = log.missing.is_empty()
+                    && log.used == labels.len()
+                    && g["points"] == json!([end.points[seat], end.points[1 - seat]])
+                    && g["turns"].as_u64() == Some(end.turn_count as u64)
+                    && g["winner"] == winner_of(&end);
+                // On a mismatch, the latest ambiguous decision with an untried option takes its next one.
+                let next = log.ambiguous.iter().rev().find(|(d, n)| forced.get(d).copied().unwrap_or(0) + 1 < *n).copied();
+                if same || next.is_none() || attempts >= 64 {
+                    let check = json!({"key": g["key"], "replayed_exactly": same, "labels_logged": labels.len(), "labels_used": log.used,
+                                       "missing": log.missing, "ambiguous": log.ambiguous.len(), "attempts": attempts});
+                    break (events, check);
+                }
+                let (d, _) = next.unwrap();
+                let tried = forced.get(&d).copied().unwrap_or(0);
+                forced.retain(|&k, _| k < d);
+                forced.insert(d, tried + 1);
+            }
         })
         .collect();
     write_out(args, results);
@@ -464,7 +687,7 @@ fn playouts(args: &[String]) {
             let mut game = Game::from_state(world, km3_pair(d0, d1), seed);
             game.apply_action(first);
             let ctx = json!({"source": "playout", "position": id, "first": role, "round": j, "pilot": me});
-            let (events, end, _) = watch(&mut game, &ctx, [energy_types(d0), energy_types(d1)], names, 4000);
+            let (events, end, _, _) = watch(&mut game, &ctx, [energy_types(d0), energy_types(d1)], names, 4000);
             let digest = format!("{:016x}", fnv1a64(serde_json::to_string(&end).unwrap().as_bytes()));
             (events, json!({"position": id, "first": role, "round": j, "digest": digest, "replayed_exactly": digest == *expected}))
         })
@@ -493,6 +716,7 @@ fn main() {
     match args.get(1).map(|s| s.as_str()) {
         Some("games") => games(&args),
         Some("playouts") => playouts(&args),
+        Some("scripted") => scripted(&args),
         _ => eprintln!("usage: trainer_habits games ... | trainer_habits playouts ..."),
     }
 }
