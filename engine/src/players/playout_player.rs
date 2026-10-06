@@ -41,6 +41,9 @@
 //! The same `_tools` breaks ties at kx<N>'s own decision (Oct 6, the amended follow-up): every placement is played out, and
 //! only when no move clears the z bar and km<N>'s placement has no printed effect while another has one does kx<N> play
 //! the placement with an effect ("tie-break: Tool effect").
+//!
+//! "Attack when you can" (Oct 6, quiz 4; `_za<z>`, off by default): a switch from km<N>'s attack to a move that isn't one
+//! needs a lead beyond z_attack standard errors; the reason names both scores, for a switch and for one the bar stops.
 use std::cell::{Cell, RefCell};
 use std::collections::{BTreeMap, BTreeSet};
 use std::rc::Rc;
@@ -122,7 +125,7 @@ pub enum Knowledge {
 }
 
 /// The pilot's parameters; every one is part of its code
-/// (`kx<depth>[_r<R>][_c<cap>][_z<z>][_lab|_real][_t<s>][_trace][_poolmeta|_poolwide][_tools]`).
+/// (`kx<depth>[_r<R>][_c<cap>][_z<z>][_lab|_real][_t<s>][_trace][_poolmeta|_poolwide][_tools][_za<z>]`).
 #[derive(Debug, Clone, PartialEq)]
 pub struct PlayoutParams {
     /// The search depth of km<depth>: the move it proposes and the bot of both sides in every play-out.
@@ -144,6 +147,9 @@ pub struct PlayoutParams {
     /// The Tool-placement rule (`_tools`; off by default): in the play-outs, and as a within-noise tie-break at the pilot's
     /// own decision (playout_tools.rs).
     pub tools: bool,
+    /// "Attack when you can" (`_za<z>`; Oct 6, quiz 4; off by default): when km<depth>'s move is an attack and the best
+    /// candidate isn't one, the switch needs a lead beyond this many standard errors instead of z.
+    pub z_attack: Option<f64>,
 }
 
 impl PlayoutParams {
@@ -158,13 +164,14 @@ impl PlayoutParams {
             trace: false,
             pool: PoolSet::Wide,
             tools: false,
+            z_attack: None,
         }
     }
 
     /// Parses the code after the `kx` prefix (lowercase), e.g. `3_r8_c5_z1.5_lab_t30_trace`.
     pub fn parse(rest: &str) -> Result<Self, String> {
         let invalid = |why: &str| {
-            format!("Invalid player code: kx{rest} ({why}). Use 'kx<depth>[_r<R>][_c<cap>][_z<z>][_lab|_real][_t<seconds>][_trace][_poolmeta|_poolwide][_tools]', e.g. 'kx3' or 'kx3_r24_c12_z2_lab'")
+            format!("Invalid player code: kx{rest} ({why}). Use 'kx<depth>[_r<R>][_c<cap>][_z<z>][_lab|_real][_t<seconds>][_trace][_poolmeta|_poolwide][_tools][_za<z>]', e.g. 'kx3' or 'kx3_r24_c12_z2_lab'")
         };
         let mut parts = rest.split('_');
         let depth = parts.next().unwrap_or("").parse::<usize>().map_err(|_| invalid("a depth"))?;
@@ -193,6 +200,10 @@ impl PlayoutParams {
                         return Err(invalid("a cap of at least 2"));
                     }
                 }
+                p if p.starts_with("za") => {
+                    params.z_attack =
+                        Some(p[2..].parse::<f64>().ok().filter(|z| z.is_finite() && *z >= 0.0).ok_or_else(|| invalid(part))?);
+                }
                 p if p.starts_with('z') => {
                     params.z = p[1..].parse::<f64>().ok().filter(|z| z.is_finite() && *z >= 0.0).ok_or_else(|| invalid(part))?;
                 }
@@ -203,10 +214,11 @@ impl PlayoutParams {
         Ok(params)
     }
 
-    /// The canonical code, every parameter spelled out (the Tool rule only when on, so the codes without it are as before).
+    /// The canonical code, every parameter spelled out (the Tool rule and the attack bar only when on, so the codes without
+    /// them are as before).
     pub fn code(&self) -> String {
         format!(
-            "kx{}_r{}_c{}_z{}_{}_t{}{}_pool{}{}",
+            "kx{}_r{}_c{}_z{}_{}_t{}{}_pool{}{}{}",
             self.depth,
             self.rollouts,
             self.cap,
@@ -215,8 +227,19 @@ impl PlayoutParams {
             self.budget_ms / 1000,
             if self.trace { "_trace" } else { "" },
             if self.pool == PoolSet::Meta { "meta" } else { "wide" },
-            if self.tools { "_tools" } else { "" }
+            if self.tools { "_tools" } else { "" },
+            self.z_attack.map_or(String::new(), |z| format!("_za{z}"))
         )
+    }
+}
+
+/// The bar a switch from km<N>'s move `km` to `best` must clear, in standard errors: `z_attack` when `km` is an attack and
+/// `best` isn't (`_za<z>`), else `z`.
+pub fn switch_bar(km: &Action, best: &Action, z: f64, z_attack: Option<f64>) -> f64 {
+    let attack = |a: &Action| matches!(a.action, crate::actions::SimpleAction::Attack(_));
+    match z_attack {
+        Some(za) if attack(km) && !attack(best) => za,
+        _ => z,
     }
 }
 
@@ -1018,6 +1041,11 @@ impl PlayoutPlayer {
         let best = (0..report.candidates.len())
             .fold(0, |b, c| if report.candidates[c].score > report.candidates[b].score { c } else { b });
         let lead = &report.candidates[best];
+        // The bar: z, or (`_za<z>`) z_attack for a switch from km's attack to a move that isn't one.
+        let bar = switch_bar(&report.candidates[0].action, &lead.action, self.params.z, self.params.z_attack);
+        let attack = |a: &Action| matches!(a.action, crate::actions::SimpleAction::Attack(_));
+        let away = self.params.z_attack.is_some() && best != 0 && attack(&report.candidates[0].action) && !attack(&lead.action);
+        let scores = format!("km's attack {:.3}, this move {:.3}", report.candidates[0].score, lead.score);
         if best == 0 {
             report.reason = "km's move has the best play-out score".to_string();
         } else if self.params.budget_ms > 0 && report.rounds < MIN_ROUNDS_WITH_BUDGET {
@@ -1025,18 +1053,29 @@ impl PlayoutPlayer {
                 "the time budget ended after {} rounds, fewer than the {MIN_ROUNDS_WITH_BUDGET} a switch needs: km's move kept (the best move led by {:+.3})",
                 report.rounds, lead.diff
             );
-        } else if lead.diff > 0.0 && lead.diff > self.params.z * lead.se {
+        } else if lead.diff > 0.0 && lead.diff > bar * lead.se {
             report.chosen = best;
             report.reason = format!(
                 "play-outs: {:+.3} over km's move, {:.1} standard errors (threshold {})",
                 lead.diff,
                 if lead.se > 0.0 { lead.diff / lead.se } else { f64::INFINITY },
-                self.params.z
+                bar
+            );
+            if away {
+                report.reason = format!("{}; away from km's attack: {scores}", report.reason);
+            }
+        } else if away && lead.diff > 0.0 && lead.diff > self.params.z * lead.se {
+            report.reason = format!(
+                "the attack bar: the best move leads km's attack by {:+.3}, {:.1} standard errors, past z {} but not the attack bar {} ({scores}): km's attack kept",
+                lead.diff,
+                if lead.se > 0.0 { lead.diff / lead.se } else { f64::INFINITY },
+                self.params.z,
+                bar
             );
         } else {
             report.reason = format!(
                 "within the noise: the best move leads km's by {:+.3} with a standard error of {:.3} (threshold {} SE): km's move kept",
-                lead.diff, lead.se, self.params.z
+                lead.diff, lead.se, bar
             );
         }
         // The tie-break: no move cleared the bar, so km's move would stand; if it is a placement without an effect now and
@@ -1293,6 +1332,7 @@ impl Player for PlayoutPlayer {
                     "pool": if self.params.pool == PoolSet::Meta { "meta" } else { "wide" },
                     "pool_lists": self.core.listed,
                     "tool_rule": self.params.tools,
+                    "z_attack": self.params.z_attack,
                     "extra_lists": self.extras_json(),
                     "budget_ms": self.params.budget_ms,
                     "seat": observation.actor,
