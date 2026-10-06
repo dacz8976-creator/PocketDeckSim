@@ -373,7 +373,7 @@ sides with k3 still available; the 0.7.2 wheel and its run identities are untouc
       - (D) The unfamiliar-opponent version stays separate until it is measured against out-of-pool opponents.
     - **Rules finding queued for the next rules switch (Oct 6):** return damage set up by an attack takes Weakness. Dustin, verbatim: "I know it is the case for sableye. It is from an attack the return damage is done, not from an ability."
       - It covers the 5 attacks with "During your opponent's next turn, if this Pokémon is damaged by an attack, do X damage to the Attacking Pokémon".
-      - Tools stay flat. The Ability case is open (shot-list row T15).
+      - Tools and Abilities stay flat. Iron Jugulis's Automated Combat did a flat 20, five times, to attackers weak to Darkness (shot-list row T15, video 20261006_220700000, Oct 6). The engine already does that, so only the 5 attacks change.
       - The engine adds no Weakness today. See `rules/02_damage_knockouts_points.md` §2 and `results/new_pause_games_triage_2026-10-06/`.
     - **Deck dependence (Dustin, Oct 5, relayed by the coordinator; verbatim):** "It's deck dependent when building the bench is helpful. Some decks are meant to play fast. Some reward buildup."
       - So results are reported by deck group (fast v setup) and per deck, with how kx3 changes each deck's pace (turns per game, first-attack turn).
