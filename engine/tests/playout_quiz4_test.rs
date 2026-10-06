@@ -165,46 +165,72 @@ fn a_switch_away_from_an_attack_names_both_scores() {
 }
 
 
-/// Every distinct Item, Supporter and Stadium text and every Ability text in the card database.
-fn texts() -> Vec<(String, String)> {
+/// Every distinct Item, Supporter and Stadium text and every Ability text in the card database (Abilities named "X's T"),
+/// with its kind.
+fn texts_with_kind() -> Vec<(String, String, String)> {
     let mut seen = BTreeSet::new();
     let mut out = Vec::new();
     for card in CardId::iter().map(get_card_by_enum) {
-        let (name, text) = match &card {
-            Card::Trainer(t) if matches!(format!("{:?}", t.trainer_card_type).as_str(), "Item" | "Supporter" | "Stadium") => (t.name.clone(), t.effect.clone()),
+        let (name, text, kind) = match &card {
+            Card::Trainer(t) if matches!(format!("{:?}", t.trainer_card_type).as_str(), "Item" | "Supporter" | "Stadium") => {
+                (t.name.clone(), t.effect.clone(), format!("{:?}", t.trainer_card_type))
+            }
             Card::Pokemon(p) => match &p.ability {
-                Some(a) => (format!("{}'s {}", p.name, a.title), a.effect.clone()),
+                Some(a) => (format!("{}'s {}", p.name, a.title), a.effect.clone(), "Ability".to_string()),
                 None => continue,
             },
             _ => continue,
         };
         if seen.insert(text.clone()) {
-            out.push((name, text));
+            out.push((name, text, kind));
         }
     }
     out
 }
 
-/// Every text is either read or named unread (never a panic), and the texts of the cards the quiz notes name are read.
+/// Whether a text can be chosen as a move: an Item or Supporter played, a Stadium used "once during each player's turn",
+/// an Ability used "once during your turn" or "as often as you like" (the others work by themselves and are never a move;
+/// playing a Stadium card always does something).
+fn usable(kind: &str, text: &str) -> bool {
+    let t = text.to_lowercase();
+    match kind {
+        "Item" | "Supporter" => true,
+        "Stadium" => t.contains("once during each player's turn"),
+        _ => t.contains("once during your turn") || t.starts_with("as often as you like"),
+    }
+}
+
+/// Every text is either read or named unread (never a panic); most texts that can be a move are read; and the texts of
+/// the cards the quiz notes name are read.
 #[test]
 fn every_text_is_read_or_named_unread() {
-    let all = texts();
+    let all = texts_with_kind();
     assert!(all.len() >= 250, "{} texts", all.len());
-    let read = all.iter().filter(|(_, t)| effect_needs(t).is_ok()).count();
-    eprintln!("{read} of {} texts read", all.len());
-    for (name, text) in &all {
+    let moves: Vec<_> = all.iter().filter(|(_, t, k)| usable(k, t)).map(|(n, t, _)| (n.clone(), t.clone())).collect();
+    let read = moves.iter().filter(|(_, t)| effect_needs(t).is_ok()).count();
+    eprintln!("{read} of the {} texts that can be a move are read ({} texts in all)", moves.len(), all.len());
+    for (name, text) in &moves {
         if let Err(why) = effect_needs(text) {
             eprintln!("unread: {name}: {why}");
         }
     }
+    assert!(read * 10 >= moves.len() * 9, "{read} of {}", moves.len());
     for name in ["Indeedee ex's Watch Over", "Fragrant Forest", "Clemont's Backpack", "Poké Ball", "Potion", "Pokémon Center Lady", "Professor's Research"] {
-        let (_, text) = all.iter().find(|(n, _)| n == name).unwrap_or_else(|| panic!("{name}"));
-        assert!(effect_needs(text).is_ok(), "{name}: {:?}", effect_needs(text));
+        let text = text_of(name);
+        assert!(effect_needs(&text).is_ok(), "{name}: {:?}", effect_needs(&text));
     }
 }
 
+/// A card's text by its name ("X's T" for an Ability), from any printing.
 fn text_of(name: &str) -> String {
-    texts().into_iter().find(|(n, _)| n == name).unwrap_or_else(|| panic!("{name}")).1
+    CardId::iter()
+        .map(get_card_by_enum)
+        .find_map(|c| match &c {
+            Card::Trainer(t) if t.name == name => Some(t.effect.clone()),
+            Card::Pokemon(p) => p.ability.as_ref().filter(|a| format!("{}'s {}", p.name, a.title) == name).map(|a| a.effect.clone()),
+            _ => None,
+        })
+        .unwrap_or_else(|| panic!("{name}"))
 }
 
 /// The needs come from the words.

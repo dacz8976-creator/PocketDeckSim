@@ -65,6 +65,9 @@ pub use playout_plan::{Plan, PlanTally, PlanTurn, Spot, Step};
 
 #[path = "playout_tools.rs"]
 pub mod playout_tools;
+#[path = "playout_effects.rs"]
+pub mod playout_effects;
+pub use playout_effects::{action_card, effect_needs, effect_now, need_met, CardKind, Need, PokemonFilter, Reading, Scope};
 pub use playout_tools::{
     conditions_hold, kept_by_playouts, placements_with_effect, tie_break_placements, tool_conditions, ToolConditions,
     ToolRulePlayer, ToolSpot,
@@ -125,7 +128,7 @@ pub enum Knowledge {
 }
 
 /// The pilot's parameters; every one is part of its code
-/// (`kx<depth>[_r<R>][_c<cap>][_z<z>][_lab|_real][_t<s>][_trace][_poolmeta|_poolwide][_tools][_za<z>]`).
+/// (`kx<depth>[_r<R>][_c<cap>][_z<z>][_lab|_real][_t<s>][_trace][_poolmeta|_poolwide][_tools][_noeffect][_za<z>]`).
 #[derive(Debug, Clone, PartialEq)]
 pub struct PlayoutParams {
     /// The search depth of km<depth>: the move it proposes and the bot of both sides in every play-out.
@@ -147,6 +150,9 @@ pub struct PlayoutParams {
     /// The Tool-placement rule (`_tools`; off by default): in the play-outs, and as a within-noise tie-break at the pilot's
     /// own decision (playout_tools.rs).
     pub tools: bool,
+    /// No-effect actions (`_noeffect`; Oct 6, quiz 4; off by default): a within-noise tie-break at the pilot's own decision
+    /// away from a move of km<depth>'s whose printed effect can do nothing now (playout_effects.rs).
+    pub noeffect: bool,
     /// "Attack when you can" (`_za<z>`; Oct 6, quiz 4; off by default): when km<depth>'s move is an attack and the best
     /// candidate isn't one, the switch needs a lead beyond this many standard errors instead of z.
     pub z_attack: Option<f64>,
@@ -164,6 +170,7 @@ impl PlayoutParams {
             trace: false,
             pool: PoolSet::Wide,
             tools: false,
+            noeffect: false,
             z_attack: None,
         }
     }
@@ -171,7 +178,7 @@ impl PlayoutParams {
     /// Parses the code after the `kx` prefix (lowercase), e.g. `3_r8_c5_z1.5_lab_t30_trace`.
     pub fn parse(rest: &str) -> Result<Self, String> {
         let invalid = |why: &str| {
-            format!("Invalid player code: kx{rest} ({why}). Use 'kx<depth>[_r<R>][_c<cap>][_z<z>][_lab|_real][_t<seconds>][_trace][_poolmeta|_poolwide][_tools][_za<z>]', e.g. 'kx3' or 'kx3_r24_c12_z2_lab'")
+            format!("Invalid player code: kx{rest} ({why}). Use 'kx<depth>[_r<R>][_c<cap>][_z<z>][_lab|_real][_t<seconds>][_trace][_poolmeta|_poolwide][_tools][_noeffect][_za<z>]', e.g. 'kx3' or 'kx3_r24_c12_z2_lab'")
         };
         let mut parts = rest.split('_');
         let depth = parts.next().unwrap_or("").parse::<usize>().map_err(|_| invalid("a depth"))?;
@@ -188,6 +195,7 @@ impl PlayoutParams {
                 "poolmeta" => params.pool = PoolSet::Meta,
                 "poolwide" => params.pool = PoolSet::Wide,
                 "tools" => params.tools = true,
+                "noeffect" => params.noeffect = true,
                 p if p.starts_with('r') => {
                     params.rollouts = number(&p[1..])? as usize;
                     if params.rollouts == 0 {
@@ -218,7 +226,7 @@ impl PlayoutParams {
     /// them are as before).
     pub fn code(&self) -> String {
         format!(
-            "kx{}_r{}_c{}_z{}_{}_t{}{}_pool{}{}{}",
+            "kx{}_r{}_c{}_z{}_{}_t{}{}_pool{}{}{}{}",
             self.depth,
             self.rollouts,
             self.cap,
@@ -228,6 +236,7 @@ impl PlayoutParams {
             if self.trace { "_trace" } else { "" },
             if self.pool == PoolSet::Meta { "meta" } else { "wide" },
             if self.tools { "_tools" } else { "" },
+            if self.noeffect { "_noeffect" } else { "" },
             self.z_attack.map_or(String::new(), |z| format!("_za{z}"))
         )
     }
@@ -884,6 +893,16 @@ impl PlayoutPlayer {
         } else {
             None
         };
+        // The no-effect tie-break (`_noeffect`, playout_effects.rs): when km's move can do nothing now by its card's text, km's
+        // choice among the moves that do something (the same randomness). Decided only within the noise, after the play-outs.
+        let noeffect_break = if self.params.noeffect && effect_now(state, &km_move, &observation.known_own_deck) == Some(false) {
+            let doing: Vec<Action> =
+                actions.iter().filter(|a| effect_now(state, a, &observation.known_own_deck) != Some(false)).cloned().collect();
+            let why = format!("km's {} can do nothing now by its text", action_card(state, &km_move).unwrap_or_default());
+            (!doing.is_empty()).then(|| (self.km.decision_fn(&mut rng.clone(), observation, &doing), doing, why))
+        } else {
+            None
+        };
         let mut seen = BTreeSet::new();
         let mut distinct: Vec<Action> = vec![km_move.clone()];
         seen.insert(format!("{km_move:?}"));
@@ -1103,6 +1122,40 @@ impl PlayoutPlayer {
                 } else {
                     report.reason = format!(
                         "tie-break: Tool effect: {why}, and no move clears the bar ({}); the placement with an effect km prefers is played, {} ({:+.3} v km's, {} standard errors)",
+                        report.reason,
+                        c.label,
+                        c.diff,
+                        sd(c.se)
+                    );
+                    report.chosen = t;
+                }
+            }
+        }
+        // The no-effect tie-break: no move cleared the bar and km's move can do nothing now; km's choice among the moves that
+        // do something is played, unless km's move leads it beyond the noise.
+        if let (0, Some((preferred, doing, why))) = (report.chosen, &noeffect_break) {
+            let target = report.candidates.iter().position(|c| c.action == *preferred).or_else(|| {
+                (0..report.candidates.len())
+                    .filter(|&c| doing.contains(&report.candidates[c].action))
+                    .fold(None, |b: Option<usize>, c| match b {
+                        Some(b) if report.candidates[b].score >= report.candidates[c].score => Some(b),
+                        _ => Some(c),
+                    })
+            });
+            if let Some(t) = target {
+                let c = &report.candidates[t];
+                let sd = |se: f64| if se > 0.0 { format!("{:.1}", c.diff.abs() / se) } else { "inf".to_string() };
+                if kept_by_playouts(c.diff, c.se, self.params.z) {
+                    report.reason = format!(
+                        "{}; {why}, but its play-outs lead km's choice among the moves that do something, {}, by {:+.3} ({} standard errors): km's move kept",
+                        report.reason,
+                        c.label,
+                        -c.diff,
+                        sd(c.se)
+                    );
+                } else {
+                    report.reason = format!(
+                        "tie-break: no effect now: {why}, and no move clears the bar ({}); km's choice among the moves that do something is played, {} ({:+.3} v km's, {} standard errors)",
                         report.reason,
                         c.label,
                         c.diff,
@@ -1332,6 +1385,7 @@ impl Player for PlayoutPlayer {
                     "pool": if self.params.pool == PoolSet::Meta { "meta" } else { "wide" },
                     "pool_lists": self.core.listed,
                     "tool_rule": self.params.tools,
+                    "noeffect": self.params.noeffect,
                     "z_attack": self.params.z_attack,
                     "extra_lists": self.extras_json(),
                     "budget_ms": self.params.budget_ms,
