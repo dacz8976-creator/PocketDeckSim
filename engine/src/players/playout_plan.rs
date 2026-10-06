@@ -6,7 +6,8 @@
 //! first move):
 //! - `steps`, in order, at the level of intent (a named Pokémon, never an action index, since draws and coins differ
 //!   between sampled worlds): the turn's Energy to a Pokémon, an effect's extra Energy to one (Turbo Shark's), evolve,
-//!   bench, play a Trainer, choose a target (Misty's, a Tool's), retreat to a Pokémon, attack;
+//!   bench, play a Trainer, choose a target (Misty's, a Tool's), use a Pokémon's Ability (Oct 6, quiz 4), retreat to a
+//!   Pokémon, attack;
 //! - at each of the pilot's decisions in the turn, the first pending step that is legal is played. A step not legal yet
 //!   stays pending (a draw may bring its card). When none is, km<N> decides, among the moves the turn's `avoid` (Trainers
 //!   by name) and `keep_active` (no retreat) leave (all moves if they leave none), so km<N> fills in what the plan doesn't
@@ -85,6 +86,13 @@ pub enum Step {
         #[serde(default)]
         at: Spot,
     },
+    /// Use the Ability of a Pokémon named in `of` (Oct 6, quiz 4: Q06's plan begins with the Benched Indeedee ex's Watch
+    /// Over).
+    Ability {
+        of: Vec<String>,
+        #[serde(default)]
+        at: Spot,
+    },
     /// Retreat the Active into a Benched Pokémon named in `to`.
     RetreatTo { to: Vec<String> },
     /// The attack named `title`.
@@ -126,6 +134,7 @@ impl Step {
             {
                 pick(to, *in_play_idx, *at)
             }
+            (Step::Ability { of, at }, SimpleAction::UseAbility { in_play_idx }) => pick(of, *in_play_idx, *at),
             (Step::RetreatTo { to }, SimpleAction::Retreat(idx)) => pick(to, *idx, Spot::Bench),
             (Step::Attack { title }, SimpleAction::Attack(attack)) => (attack.title == *title).then_some(0),
             _ => None,
@@ -266,6 +275,7 @@ pub fn describe(state: &State, me: usize, action: &Action) -> String {
         SimpleAction::Evolve { evolution, in_play_idx, .. } => format!("evolve the {} into {}", name(*in_play_idx), evolution.get_name()),
         SimpleAction::Place(card, _) => format!("bench {}", card.get_name()),
         SimpleAction::Retreat(idx) => format!("retreat into the {}", name(*idx)),
+        SimpleAction::UseAbility { in_play_idx } => format!("use the {}'s Ability", name(*in_play_idx)),
         SimpleAction::Promote { player, in_play_idx } => format!("promote the {}", named(*player, *in_play_idx)),
         SimpleAction::Activate { player, in_play_idx } => format!("switch in the {}", named(*player, *in_play_idx)),
         SimpleAction::AttachTool { in_play_idx, tool_card } => format!("{} on the {}", tool_card.get_name(), name(*in_play_idx)),

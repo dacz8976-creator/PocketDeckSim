@@ -7,10 +7,11 @@
 //! kx3's own decision at the position too (`evaluate`, the same rounds and decision randomness, LAB), as a trace line.
 //!   playout_continuation --plans <plans.json> --states <dir> --deck <pilot's list> --opponent <opponent's list>
 //!     [--rounds 64] [--seed-base 24200001000] [--only <id>] [--kx3 | --kx3-only] [--out results.jsonl] [--resume]
-//! Position i (in the plans file's order) uses the decision randomness StdRng(seed-base + i). `--kx3-only` runs kx3's
-//! decision alone (its line matches the study's by the same seed and rounds). `--resume` skips positions already in
-//! `--out` (by their study line, or kx3 line with `--kx3-only`). Every plan's names are checked against the pilot's list
-//! before anything runs.
+//! Position i (in the plans file's order) uses the decision randomness StdRng(seed-base + i), or the entry's own `seed`;
+//! an entry's `state` names its state file if it isn't the id (Oct 6, quiz 4: two rivals at one position, in the same
+//! worlds). `--kx3-only` runs kx3's decision alone (its line matches the study's by the same seed and rounds). `--resume`
+//! skips positions already in `--out` (by their study line, or kx3 line with `--kx3-only`). The names in every plan to be
+//! run are checked against the pilot's list before anything runs.
 use std::collections::BTreeSet;
 use std::io::Write;
 
@@ -38,6 +39,12 @@ struct Entry {
     #[serde(default)]
     note: String,
     plan: Plan,
+    /// The state file's name, if it isn't the id.
+    #[serde(default)]
+    state: Option<String>,
+    /// The decision randomness, if it isn't seed-base + the entry's index.
+    #[serde(default)]
+    seed: Option<u64>,
 }
 
 fn arg(args: &[String], name: &str) -> Option<String> {
@@ -66,10 +73,14 @@ fn check_names(entry: &Entry, deck: &Deck) -> Result<(), String> {
     let mut pokemon = BTreeSet::new();
     let mut trainers = BTreeSet::new();
     let mut attacks = BTreeSet::new();
+    let mut abilities = BTreeSet::new();
     for card in &deck.cards {
         match card {
             Card::Pokemon(p) => {
                 pokemon.insert(p.name.clone());
+                if p.ability.is_some() {
+                    abilities.insert(p.name.clone());
+                }
                 attacks.extend(p.attacks.iter().map(|a| a.title.clone()));
             }
             Card::Trainer(t) => {
@@ -86,6 +97,7 @@ fn check_names(entry: &Entry, deck: &Deck) -> Result<(), String> {
             Step::Energy { to, .. } | Step::ExtraEnergy { to, .. } | Step::Target { to, .. } | Step::RetreatTo { to } => {
                 to.iter().try_for_each(|n| check(&pokemon, n, "Pokémon"))
             }
+            Step::Ability { of, .. } => of.iter().try_for_each(|n| check(&abilities, n, "Pokémon with an Ability")),
             Step::Evolve { into, from, .. } => {
                 check(&pokemon, into, "Pokémon")?;
                 from.iter().try_for_each(|n| check(&pokemon, n, "Pokémon"))
@@ -187,7 +199,8 @@ fn main() {
     let with_kx3 = kx3_only || args.iter().any(|a| a == "--kx3");
     let out_path = arg(&args, "--out");
     let resume = args.iter().any(|a| a == "--resume");
-    for entry in &entries {
+    // The entries to run (`--only` picks one; a plans file may hold positions of other decks) are checked first.
+    for entry in entries.iter().filter(|e| only.as_ref().map_or(true, |o| *o == e.id)) {
         check_names(entry, &deck).unwrap_or_else(|e| panic!("{e}"));
     }
     let done: BTreeSet<String> = match (&out_path, resume) {
@@ -205,13 +218,14 @@ fn main() {
         if only.as_ref().is_some_and(|o| *o != entry.id) || done.contains(&entry.id) {
             continue;
         }
-        let state: State = serde_json::from_str(&std::fs::read_to_string(format!("{states}/{}.json", entry.id)).unwrap()).unwrap();
+        let file = entry.state.as_ref().unwrap_or(&entry.id);
+        let state: State = serde_json::from_str(&std::fs::read_to_string(format!("{states}/{file}.json")).unwrap()).unwrap();
         let me = state.generate_possible_actions().0;
         let first = the_move(&state, me, &entry.first_move, "first move", &entry.id);
         let rival = the_move(&state, me, &entry.rival, "rival", &entry.id);
         assert!(first != rival, "{}: the first move and the rival are the same move", entry.id);
         let observation = PlayerObservation::from_state(&state, me, &RevealedKnowledge::default());
-        let seed = seed_base + i as u64;
+        let seed = entry.seed.unwrap_or(seed_base + i as u64);
         let params = PlayoutParams { rollouts: rounds, cap: 12, z: 2.0, knowledge: Knowledge::Lab, ..PlayoutParams::new(3) };
         let mut pilot = PlayoutPlayer::with_extra_lists(deck.clone(), opponent.clone(), params, Vec::new());
         let mut lines: Vec<Value> = Vec::new();
