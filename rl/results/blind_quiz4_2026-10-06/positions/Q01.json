@@ -1,0 +1,517 @@
+{
+ "order": 1,
+ "matchup": {
+  "you": "Muk / Glimmora / Kingambit / Regigigas (your deck 01)"
+ },
+ "turn": 3,
+ "you_went_first": true,
+ "situation": "Your turn (your 2nd turn; turn 3 of the game).",
+ "question": "Two plans for the rest of this turn. Each runs from here until its first step that draws or searches for cards (after that, what comes next depends on what you get), its attack, or the end of the turn. Which plan would you play: Plan A, Plan B, both reasonable, or neither?",
+ "plans": {
+  "A": {
+   "steps": [
+    "Attach Darkness Energy to Regigigas (Bench 3)",
+    "Use the Stadium Fragrant Forest"
+   ],
+   "ends": "draw",
+   "ends_text": "The plan stops at a step that draws or searches for cards; what comes next depends on what you get."
+  },
+  "B": {
+   "steps": [
+    "Attach Darkness Energy to Glimmora (Active)",
+    "Attack with Venomous Hit"
+   ],
+   "ends": "attack",
+   "ends_text": "The plan ends with the attack."
+  }
+ },
+ "answer_options": [
+  "Plan A",
+  "Plan B",
+  "Both reasonable",
+  "Neither"
+ ],
+ "note_prompt": "A short note (optional): why, or what you would do instead.",
+ "points": {
+  "you": 0,
+  "opponent": 0
+ },
+ "you": {
+  "active": {
+   "name": "Glimmora",
+   "stage": 1,
+   "type": "Darkness",
+   "hp": 90,
+   "max_hp": 90,
+   "energy": [],
+   "tools": [],
+   "conditions": [],
+   "ability": {
+    "name": "Shattering Crystal",
+    "text": "When this Pokémon is Knocked Out, flip a coin. If heads, your opponent can't get any points for it.",
+    "used_this_turn": false
+   },
+   "attacks": [
+    {
+     "name": "Venomous Hit",
+     "cost": [
+      "Darkness"
+     ],
+     "damage": "30",
+     "text": "Your opponent's Active Pokémon is now Poisoned."
+    }
+   ],
+   "weakness": "Fighting",
+   "retreat": 2,
+   "retreat_now": 2,
+   "retreat_note": null,
+   "ko_points": 1,
+   "notes": [
+    "Evolved this turn"
+   ]
+  },
+  "bench": [
+   {
+    "name": "Alolan Grimer",
+    "stage": 0,
+    "type": "Darkness",
+    "hp": 80,
+    "max_hp": 80,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": null,
+    "attacks": [
+     {
+      "name": "Pound",
+      "cost": [
+       "Colorless",
+       "Colorless"
+      ],
+      "damage": "20",
+      "text": ""
+     }
+    ],
+    "weakness": "Fighting",
+    "retreat": 2,
+    "retreat_now": 2,
+    "retreat_note": null,
+    "ko_points": 1,
+    "notes": [
+     "Put into play this turn"
+    ]
+   },
+   {
+    "name": "Pawniard",
+    "stage": 0,
+    "type": "Darkness",
+    "hp": 50,
+    "max_hp": 50,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": null,
+    "attacks": [
+     {
+      "name": "Slash",
+      "cost": [
+       "Darkness"
+      ],
+      "damage": "30",
+      "text": ""
+     }
+    ],
+    "weakness": "Grass",
+    "retreat": 1,
+    "retreat_now": 1,
+    "retreat_note": null,
+    "ko_points": 1,
+    "notes": [
+     "Put into play this turn"
+    ]
+   },
+   {
+    "name": "Regigigas",
+    "stage": 0,
+    "type": "Colorless",
+    "hp": 150,
+    "max_hp": 150,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": {
+     "name": "Seal of Antiquity",
+     "text": "If you don't have Regirock, Regice, and Registeel on your Bench, this Pokémon can't attack.",
+     "used_this_turn": false
+    },
+    "attacks": [
+     {
+      "name": "Giga Turbo",
+      "cost": [
+       "Colorless",
+       "Colorless",
+       "Colorless"
+      ],
+      "damage": "100",
+      "text": "Take a Colorless Energy from your Energy Zone and attach it to 1 of your Benched Pokémon."
+     }
+    ],
+    "weakness": "Fighting",
+    "retreat": 4,
+    "retreat_now": 4,
+    "retreat_note": null,
+    "ko_points": 1,
+    "notes": []
+   }
+  ],
+  "deck_count": 7,
+  "discard": [
+   "Poké Ball",
+   "Professor's Research",
+   "Lucky Ice Pop",
+   "Professor's Research",
+   "Poké Ball"
+  ],
+  "discard_energy": [],
+  "energy_zone": {
+   "this_turn": "Darkness",
+   "next": "Darkness",
+   "lines": [
+    "This turn: Darkness",
+    "Next: Darkness"
+   ]
+  },
+  "hand": [
+   {
+    "name": "Copycat",
+    "kind": "Supporter",
+    "text": "Shuffle your hand into your deck. Draw a card for each card in your opponent's hand."
+   },
+   {
+    "name": "Copycat",
+    "kind": "Supporter",
+    "text": "Shuffle your hand into your deck. Draw a card for each card in your opponent's hand."
+   },
+   {
+    "name": "Rare Candy",
+    "kind": "Item",
+    "text": "Choose 1 of your Basic Pokémon in play. If you have a Stage 2 card in your hand that evolves from that Pokémon, put that card onto the Basic Pokémon to evolve it, skipping the Stage 1. You can't use this card during your first turn or on a Basic Pokémon that was put into play this turn."
+   }
+  ],
+  "decklist": [
+   {
+    "name": "Alolan Grimer",
+    "kind": "Basic Pokémon",
+    "text": "Basic Pokémon, HP 80, Darkness type. Attack Pound [Colorless Colorless] 20. Weakness: Fighting. Retreat: 2.",
+    "count": 1,
+    "left": 0
+   },
+   {
+    "name": "Glimmet",
+    "kind": "Basic Pokémon",
+    "text": "Basic Pokémon, HP 60, Darkness type. Attack Hang Down [Darkness] 20. Weakness: Fighting. Retreat: 1.",
+    "count": 2,
+    "left": 1
+   },
+   {
+    "name": "Pawniard",
+    "kind": "Basic Pokémon",
+    "text": "Basic Pokémon, HP 50, Darkness type. Attack Slash [Darkness] 30. Weakness: Grass. Retreat: 1.",
+    "count": 1,
+    "left": 0
+   },
+   {
+    "name": "Regigigas",
+    "kind": "Basic Pokémon",
+    "text": "Basic Pokémon, HP 150, Colorless type. Ability Seal of Antiquity: If you don't have Regirock, Regice, and Registeel on your Bench, this Pokémon can't attack. Attack Giga Turbo [Colorless Colorless Colorless] 100: Take a Colorless Energy from your Energy Zone and attach it to 1 of your Benched Pokémon. Weakness: Fighting. Retreat: 4.",
+    "count": 1,
+    "left": 0
+   },
+   {
+    "name": "Alolan Muk",
+    "kind": "Stage 1 Pokémon",
+    "text": "Stage 1 Pokémon, HP 110, Darkness type, evolves from Alolan Grimer. Ability Power of Alchemy: Basic Pokémon in play (both yours and your opponent's) have no Abilities. Attack Sludge Bomb [Darkness Colorless Colorless] 70. Weakness: Fighting. Retreat: 3.",
+    "count": 1,
+    "left": 1
+   },
+   {
+    "name": "Glimmora",
+    "kind": "Stage 1 Pokémon",
+    "text": "Stage 1 Pokémon, HP 90, Darkness type, evolves from Glimmet. Ability Shattering Crystal: When this Pokémon is Knocked Out, flip a coin. If heads, your opponent can't get any points for it. Attack Venomous Hit [Darkness] 30: Your opponent's Active Pokémon is now Poisoned. Weakness: Fighting. Retreat: 2.",
+    "count": 2,
+    "left": 1
+   },
+   {
+    "name": "Kingambit",
+    "kind": "Stage 2 Pokémon",
+    "text": "Stage 2 Pokémon, HP 140, Darkness type, evolves from Bisharp. Attack Overlord's Blade [Darkness Darkness] 60+: This attack does 40 more damage for each time your Pokémon have been Knocked Out during this game. Weakness: Grass. Retreat: 3.",
+    "count": 1,
+    "left": 1
+   },
+   {
+    "name": "Copycat",
+    "kind": "Supporter",
+    "text": "Shuffle your hand into your deck. Draw a card for each card in your opponent's hand.",
+    "count": 2,
+    "left": 0
+   },
+   {
+    "name": "Ilima",
+    "kind": "Supporter",
+    "text": "Put 1 of your Colorless Pokémon that has damage on it into your hand.",
+    "count": 1,
+    "left": 1
+   },
+   {
+    "name": "Professor's Research",
+    "kind": "Supporter",
+    "text": "Draw 2 cards.",
+    "count": 2,
+    "left": 0
+   },
+   {
+    "name": "Lucky Ice Pop",
+    "kind": "Item",
+    "text": "Heal 20 damage from your Active Pokémon. If you healed any damage in this way, flip a coin. If heads, put this Lucky Ice Pop into your hand instead of the discard pile.",
+    "count": 1,
+    "left": 0
+   },
+   {
+    "name": "Poké Ball",
+    "kind": "Item",
+    "text": "Put a random Basic Pokémon from your deck into your hand.",
+    "count": 2,
+    "left": 0
+   },
+   {
+    "name": "Rare Candy",
+    "kind": "Item",
+    "text": "Choose 1 of your Basic Pokémon in play. If you have a Stage 2 card in your hand that evolves from that Pokémon, put that card onto the Basic Pokémon to evolve it, skipping the Stage 1. You can't use this card during your first turn or on a Basic Pokémon that was put into play this turn.",
+    "count": 1,
+    "left": 0
+   },
+   {
+    "name": "Heavy Helmet",
+    "kind": "Pokémon Tool",
+    "text": "If the Pokémon this card is attached to has a Retreat Cost of 3 or more, it takes -20 damage from attacks from your opponent's Pokémon.",
+    "count": 1,
+    "left": 1
+   },
+   {
+    "name": "Mesagoza",
+    "kind": "Stadium",
+    "text": "Once during each player's turn, that player may flip a coin. If heads, that player puts a random Pokémon from their deck into their hand.",
+    "count": 1,
+    "left": 1
+   }
+  ],
+  "energy_types": [
+   "Darkness"
+  ],
+  "supporter_played_this_turn": true,
+  "retreated_this_turn": false
+ },
+ "opponent": {
+  "active": {
+   "name": "Shuckle ex",
+   "stage": 0,
+   "type": "Grass",
+   "hp": 150,
+   "max_hp": 150,
+   "energy": [
+    "Grass"
+   ],
+   "tools": [
+    {
+     "name": "Leaf Cape",
+     "text": "The Grass Pokémon this card is attached to gets +30 HP."
+    }
+   ],
+   "conditions": [],
+   "ability": {
+    "name": "Solid Shell",
+    "text": "This Pokémon takes -20 damage from attacks.",
+    "used_this_turn": false
+   },
+   "attacks": [
+    {
+     "name": "Triple Slap",
+     "cost": [
+      "Grass"
+     ],
+     "damage": "20×",
+     "text": "Flip 3 coins. This attack does 20 damage for each heads."
+    }
+   ],
+   "weakness": "Fire",
+   "retreat": 1,
+   "retreat_now": 1,
+   "retreat_note": null,
+   "ko_points": 2,
+   "notes": []
+  },
+  "bench": [
+   null,
+   {
+    "name": "Teal Mask Ogerpon ex",
+    "stage": 0,
+    "type": "Grass",
+    "hp": 130,
+    "max_hp": 130,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": {
+     "name": "Soothing Wind",
+     "text": "Each of your Pokémon that has any Energy attached recovers from all Special Conditions and can't be affected by any Special Conditions.",
+     "used_this_turn": false
+    },
+    "attacks": [
+     {
+      "name": "Energized Leaves",
+      "cost": [
+       "Grass",
+       "Grass"
+      ],
+      "damage": "60+",
+      "text": "If the amount of Energy attached to both Active Pokémon is 5 or more, this attack does 60 more damage."
+     }
+    ],
+    "weakness": "Fire",
+    "retreat": 1,
+    "retreat_now": 1,
+    "retreat_note": null,
+    "ko_points": 2,
+    "notes": []
+   },
+   {
+    "name": "Combee",
+    "stage": 0,
+    "type": "Grass",
+    "hp": 50,
+    "max_hp": 50,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": null,
+    "attacks": [
+     {
+      "name": "Reckless Charge",
+      "cost": [
+       "Grass"
+      ],
+      "damage": "30",
+      "text": "This Pokémon also does 10 damage to itself."
+     }
+    ],
+    "weakness": "Fire",
+    "retreat": 1,
+    "retreat_now": 1,
+    "retreat_note": null,
+    "ko_points": 1,
+    "notes": []
+   }
+  ],
+  "deck_count": 13,
+  "discard": [
+   "X Speed"
+  ],
+  "discard_energy": [],
+  "energy_zone": {
+   "next": "Grass",
+   "lines": [
+    "Next: Grass"
+   ]
+  },
+  "hand_count": 1
+ },
+ "stadium": {
+  "name": "Fragrant Forest",
+  "text": "Once during each player's turn, that player may put a random Basic Grass Pokémon from their deck into their hand.",
+  "played_by": "opponent"
+ },
+ "turn_effects": [],
+ "this_turn_so_far": [
+  "You: Played Lucky Ice Pop (Item) → healed 20 damage from Glimmet (Active)",
+  "You: Played Lucky Ice Pop (Item) → healed 20 damage from Glimmet (Active)",
+  "You: Evolved Glimmet (Active) into Glimmora",
+  "You: Played Professor's Research (Supporter)",
+  "You: Played Poké Ball (Item)",
+  "You: Put Pawniard on Bench 2",
+  "You: Put Alolan Grimer on Bench 1"
+ ],
+ "log": [
+  {
+   "turn": 0,
+   "who": "setup",
+   "header": "Setup",
+   "lines": [
+    "You: started with Glimmet (Active)",
+    "Opponent: started with Combee (Active)"
+   ]
+  },
+  {
+   "turn": 1,
+   "who": "you",
+   "header": "Turn 1 - You",
+   "lines": [
+    "You: Played Poké Ball (Item)",
+    "You: Put Regigigas on Bench 3",
+    "You: Played Professor's Research (Supporter)",
+    "You: Ended the turn without attacking"
+   ]
+  },
+  {
+   "turn": 2,
+   "who": "opponent",
+   "header": "Turn 2 - Opponent",
+   "lines": [
+    "Opponent: Put Shuckle ex on Bench 3",
+    "Opponent: Played X Speed (Item)",
+    "Opponent: Retreated Combee (Active), switching in Shuckle ex (Bench 3)",
+    "Opponent: Attached Grass Energy to Shuckle ex (Active)",
+    "Opponent: Played Leaf Cape (Pokémon Tool) → attached Leaf Cape to Shuckle ex (Active)",
+    "Opponent: Played Fragrant Forest (Stadium)",
+    "Opponent: Used the Stadium Fragrant Forest",
+    "Opponent: Put Teal Mask Ogerpon ex on Bench 2",
+    "Opponent: Shuckle ex attacked with Triple Slap (20×) → did 40 damage to your Glimmet (Active)"
+   ]
+  }
+ ],
+ "options": [
+  {
+   "key": "1",
+   "group": "Stadium",
+   "text": "Use the Stadium Fragrant Forest: Once during each player's turn, that player may put a random Basic Grass Pokémon from their deck into their hand."
+  },
+  {
+   "key": "2",
+   "group": "Energy",
+   "text": "Attach Darkness Energy to Glimmora (Active)"
+  },
+  {
+   "key": "3",
+   "group": "Energy",
+   "text": "Attach Darkness Energy to Alolan Grimer (Bench 1)"
+  },
+  {
+   "key": "4",
+   "group": "Energy",
+   "text": "Attach Darkness Energy to Pawniard (Bench 2)"
+  },
+  {
+   "key": "5",
+   "group": "Energy",
+   "text": "Attach Darkness Energy to Regigigas (Bench 3)"
+  },
+  {
+   "key": "0",
+   "group": "End turn",
+   "text": "End your turn without attacking"
+  }
+ ],
+ "cant_play": [
+  "Copycat (x2): you already played a Supporter this turn",
+  "Rare Candy: you have no Stage 2 Pokémon in your hand"
+ ]
+}

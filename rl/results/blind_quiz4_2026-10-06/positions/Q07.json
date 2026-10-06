@@ -1,0 +1,533 @@
+{
+ "order": 7,
+ "matchup": {
+  "you": "Indeedee / Stoutland (your deck 05)"
+ },
+ "turn": 4,
+ "you_went_first": false,
+ "situation": "Your turn (your 2nd turn; turn 4 of the game).",
+ "question": "Two plans for the rest of this turn. Each runs from here until its first step that draws or searches for cards (after that, what comes next depends on what you get), its attack, or the end of the turn. Which plan would you play: Plan A, Plan B, both reasonable, or neither?",
+ "plans": {
+  "A": {
+   "steps": [
+    "Attach Psychic Energy to Stoutland (Bench 2)",
+    "End your turn without attacking"
+   ],
+   "ends": "end",
+   "ends_text": "The plan ends your turn."
+  },
+  "B": {
+   "steps": [
+    "Attach Psychic Energy to Indeedee ex (Active)",
+    "Attack with Psychic"
+   ],
+   "ends": "attack",
+   "ends_text": "The plan ends with the attack."
+  }
+ },
+ "answer_options": [
+  "Plan A",
+  "Plan B",
+  "Both reasonable",
+  "Neither"
+ ],
+ "note_prompt": "A short note (optional): why, or what you would do instead.",
+ "points": {
+  "you": 0,
+  "opponent": 0
+ },
+ "you": {
+  "active": {
+   "name": "Indeedee ex",
+   "stage": 0,
+   "type": "Psychic",
+   "hp": 130,
+   "max_hp": 130,
+   "energy": [
+    "Psychic"
+   ],
+   "tools": [],
+   "conditions": [],
+   "ability": {
+    "name": "Watch Over",
+    "text": "Once during your turn, you may heal 20 damage from your Active Pokémon.",
+    "used_this_turn": true
+   },
+   "attacks": [
+    {
+     "name": "Psychic",
+     "cost": [
+      "Psychic",
+      "Psychic"
+     ],
+     "damage": "30+",
+     "text": "This attack does 30 more damage for each Energy attached to your opponent's Active Pokémon."
+    }
+   ],
+   "weakness": "Darkness",
+   "retreat": 1,
+   "retreat_now": 1,
+   "retreat_note": null,
+   "ko_points": 2,
+   "notes": []
+  },
+  "bench": [
+   {
+    "name": "Lillipup",
+    "stage": 0,
+    "type": "Colorless",
+    "hp": 60,
+    "max_hp": 60,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": null,
+    "attacks": [
+     {
+      "name": "Tackle",
+      "cost": [
+       "Colorless"
+      ],
+      "damage": "20",
+      "text": ""
+     }
+    ],
+    "weakness": "Fighting",
+    "retreat": 1,
+    "retreat_now": 1,
+    "retreat_note": null,
+    "ko_points": 1,
+    "notes": []
+   },
+   {
+    "name": "Stoutland",
+    "stage": 2,
+    "type": "Colorless",
+    "hp": 140,
+    "max_hp": 140,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": {
+     "name": "Guard Dog Visage",
+     "text": "As long as this Pokémon is in the Active Spot, attacks used by your opponent's Active Pokémon cost 1 Colorless more.",
+     "used_this_turn": false
+    },
+    "attacks": [
+     {
+      "name": "Sharp Fang",
+      "cost": [
+       "Colorless",
+       "Colorless"
+      ],
+      "damage": "70",
+      "text": ""
+     }
+    ],
+    "weakness": "Fighting",
+    "retreat": 2,
+    "retreat_now": 2,
+    "retreat_note": null,
+    "ko_points": 1,
+    "notes": [
+     "Evolved this turn"
+    ]
+   },
+   {
+    "name": "Indeedee ex",
+    "stage": 0,
+    "type": "Psychic",
+    "hp": 130,
+    "max_hp": 130,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": {
+     "name": "Watch Over",
+     "text": "Once during your turn, you may heal 20 damage from your Active Pokémon.",
+     "used_this_turn": true
+    },
+    "attacks": [
+     {
+      "name": "Psychic",
+      "cost": [
+       "Psychic",
+       "Psychic"
+      ],
+      "damage": "30+",
+      "text": "This attack does 30 more damage for each Energy attached to your opponent's Active Pokémon."
+     }
+    ],
+    "weakness": "Darkness",
+    "retreat": 1,
+    "retreat_now": 1,
+    "retreat_note": null,
+    "ko_points": 2,
+    "notes": []
+   }
+  ],
+  "deck_count": 9,
+  "discard": [
+   "Poké Ball",
+   "Copycat",
+   "Poké Ball",
+   "Copycat",
+   "Rare Candy"
+  ],
+  "discard_energy": [],
+  "energy_zone": {
+   "this_turn": "Psychic",
+   "next": "Psychic",
+   "lines": [
+    "This turn: Psychic",
+    "Next: Psychic"
+   ]
+  },
+  "hand": [
+   {
+    "name": "Cyrus",
+    "kind": "Supporter",
+    "text": "Switch in 1 of your opponent's Benched Pokémon that has damage on it to the Active Spot."
+   }
+  ],
+  "decklist": [
+   {
+    "name": "Indeedee ex",
+    "kind": "Basic Pokémon",
+    "text": "Basic Pokémon, HP 130, Psychic type. Gives 2 points when Knocked Out. Ability Watch Over: Once during your turn, you may heal 20 damage from your Active Pokémon. Attack Psychic [Psychic Psychic] 30+: This attack does 30 more damage for each Energy attached to your opponent's Active Pokémon. Weakness: Darkness. Retreat: 1.",
+    "count": 2,
+    "left": 0
+   },
+   {
+    "name": "Lillipup",
+    "kind": "Basic Pokémon",
+    "text": "Basic Pokémon, HP 60, Colorless type. Attack Tackle [Colorless] 20. Weakness: Fighting. Retreat: 1.",
+    "count": 2,
+    "left": 0
+   },
+   {
+    "name": "Stoutland",
+    "kind": "Stage 2 Pokémon",
+    "text": "Stage 2 Pokémon, HP 140, Colorless type, evolves from Herdier. Ability Guard Dog Visage: As long as this Pokémon is in the Active Spot, attacks used by your opponent's Active Pokémon cost 1 Colorless more. Attack Sharp Fang [Colorless Colorless] 70. Weakness: Fighting. Retreat: 2.",
+    "count": 2,
+    "left": 1
+   },
+   {
+    "name": "Cheren",
+    "kind": "Supporter",
+    "text": "During your opponent's next turn, all of your Watchog and Stoutland take -100 damage from attacks from your opponent's Pokémon ex.",
+    "count": 1,
+    "left": 1
+   },
+   {
+    "name": "Copycat",
+    "kind": "Supporter",
+    "text": "Shuffle your hand into your deck. Draw a card for each card in your opponent's hand.",
+    "count": 2,
+    "left": 0
+   },
+   {
+    "name": "Cyrus",
+    "kind": "Supporter",
+    "text": "Switch in 1 of your opponent's Benched Pokémon that has damage on it to the Active Spot.",
+    "count": 1,
+    "left": 0
+   },
+   {
+    "name": "Lillie",
+    "kind": "Supporter",
+    "text": "Heal 60 damage from 1 of your Stage 2 Pokémon.",
+    "count": 1,
+    "left": 1
+   },
+   {
+    "name": "Professor's Research",
+    "kind": "Supporter",
+    "text": "Draw 2 cards.",
+    "count": 2,
+    "left": 2
+   },
+   {
+    "name": "Psychic",
+    "kind": "Supporter",
+    "text": "You can use this card only if your Pokémon in the Active Spot has the Psychic attack.Choose 1 of your opponent's Benched Pokémon and move a random Energy from it to your opponent's Active Pokémon.",
+    "count": 1,
+    "left": 1
+   },
+   {
+    "name": "Field Blower",
+    "kind": "Item",
+    "text": "Discard a Pokémon Tool card from a Pokémon (yours or your opponent's), or discard a Stadium card in play.",
+    "count": 1,
+    "left": 1
+   },
+   {
+    "name": "Poké Ball",
+    "kind": "Item",
+    "text": "Put a random Basic Pokémon from your deck into your hand.",
+    "count": 2,
+    "left": 0
+   },
+   {
+    "name": "Rare Candy",
+    "kind": "Item",
+    "text": "Choose 1 of your Basic Pokémon in play. If you have a Stage 2 card in your hand that evolves from that Pokémon, put that card onto the Basic Pokémon to evolve it, skipping the Stage 1. You can't use this card during your first turn or on a Basic Pokémon that was put into play this turn.",
+    "count": 2,
+    "left": 1
+   },
+   {
+    "name": "Protective Poncho",
+    "kind": "Pokémon Tool",
+    "text": "As long as the Pokémon this card is attached to is on your Bench, prevent all damage done to that Pokémon by your opponent's attacks and Abilities.",
+    "count": 1,
+    "left": 1
+   }
+  ],
+  "energy_types": [
+   "Psychic"
+  ],
+  "supporter_played_this_turn": true,
+  "retreated_this_turn": false
+ },
+ "opponent": {
+  "active": {
+   "name": "Bombirdier",
+   "stage": 0,
+   "type": "Darkness",
+   "hp": 70,
+   "max_hp": 70,
+   "energy": [],
+   "tools": [
+    {
+     "name": "Deceptive Needle",
+     "text": "At the end of your turn, if the Darkness Pokémon this card is attached to is in the Active Spot, do 10 damage to your opponent's Active Pokémon."
+    }
+   ],
+   "conditions": [],
+   "ability": {
+    "name": "Villainous Delivery",
+    "text": "As long as this Pokémon is on your Bench, your Active Darkness Pokémon's Retreat Cost is 1 less.",
+    "used_this_turn": false
+   },
+   "attacks": [
+    {
+     "name": "Dark Cutter",
+     "cost": [
+      "Darkness"
+     ],
+     "damage": "30",
+     "text": ""
+    }
+   ],
+   "weakness": "Lightning",
+   "retreat": 1,
+   "retreat_now": 1,
+   "retreat_note": null,
+   "ko_points": 1,
+   "notes": []
+  },
+  "bench": [
+   {
+    "name": "Deino",
+    "stage": 0,
+    "type": "Darkness",
+    "hp": 60,
+    "max_hp": 60,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": null,
+    "attacks": [
+     {
+      "name": "Headbutt",
+      "cost": [
+       "Darkness"
+      ],
+      "damage": "20",
+      "text": ""
+     }
+    ],
+    "weakness": "Grass",
+    "retreat": 1,
+    "retreat_now": 1,
+    "retreat_note": null,
+    "ko_points": 1,
+    "notes": []
+   },
+   {
+    "name": "Mega Absol ex",
+    "stage": 0,
+    "type": "Darkness",
+    "hp": 170,
+    "max_hp": 170,
+    "energy": [
+     "Darkness"
+    ],
+    "tools": [],
+    "conditions": [],
+    "ability": null,
+    "attacks": [
+     {
+      "name": "Darkness Claw",
+      "cost": [
+       "Darkness",
+       "Darkness"
+      ],
+      "damage": "80",
+      "text": "Your opponent reveals their hand. Choose a Supporter card you find there and discard it."
+     }
+    ],
+    "weakness": "Grass",
+    "retreat": 1,
+    "retreat_now": 1,
+    "retreat_note": null,
+    "ko_points": 3,
+    "notes": []
+   },
+   {
+    "name": "Deino",
+    "stage": 0,
+    "type": "Darkness",
+    "hp": 60,
+    "max_hp": 60,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": null,
+    "attacks": [
+     {
+      "name": "Headbutt",
+      "cost": [
+       "Darkness"
+      ],
+      "damage": "20",
+      "text": ""
+     }
+    ],
+    "weakness": "Grass",
+    "retreat": 1,
+    "retreat_now": 1,
+    "retreat_note": null,
+    "ko_points": 1,
+    "notes": []
+   }
+  ],
+  "deck_count": 10,
+  "discard": [
+   "Professor's Research",
+   "Poké Ball"
+  ],
+  "discard_energy": [],
+  "energy_zone": {
+   "next": "Darkness",
+   "lines": [
+    "Next: Darkness"
+   ]
+  },
+  "hand_count": 3
+ },
+ "stadium": null,
+ "turn_effects": [],
+ "this_turn_so_far": [
+  "You: Used Indeedee ex's Ability Watch Over (Bench 3) → healed 10 damage from Indeedee ex (Active)",
+  "You: Played Copycat (Supporter)",
+  "You: Played Rare Candy (Item) → evolved Lillipup (Bench 2) into Stoutland (skipping Herdier)",
+  "You: Used Indeedee ex's Ability Watch Over (Active)"
+ ],
+ "log": [
+  {
+   "turn": 0,
+   "who": "setup",
+   "header": "Setup",
+   "lines": [
+    "Opponent: started with Bombirdier (Active), Deino (Bench 3)",
+    "You: started with Indeedee ex (Active)"
+   ]
+  },
+  {
+   "turn": 1,
+   "who": "opponent",
+   "header": "Turn 1 - Opponent",
+   "lines": [
+    "Opponent: Put Mega Absol ex on Bench 2",
+    "Opponent: Played Professor's Research (Supporter)",
+    "Opponent: Played Poké Ball (Item)",
+    "Opponent: Put Deino on Bench 1",
+    "Opponent: Ended the turn without attacking"
+   ]
+  },
+  {
+   "turn": 2,
+   "who": "you",
+   "header": "Turn 2 - You",
+   "lines": [
+    "You: Played Poké Ball (Item)",
+    "You: Used Indeedee ex's Ability Watch Over (Active)",
+    "You: Put Indeedee ex on Bench 3",
+    "You: Played Copycat (Supporter)",
+    "You: Played Poké Ball (Item)",
+    "You: Put Lillipup on Bench 2",
+    "You: Used Indeedee ex's Ability Watch Over (Bench 3)",
+    "You: Put Lillipup on Bench 1",
+    "You: Attached Psychic Energy to Indeedee ex (Active)",
+    "You: Ended the turn without attacking"
+   ]
+  },
+  {
+   "turn": 3,
+   "who": "opponent",
+   "header": "Turn 3 - Opponent",
+   "lines": [
+    "Opponent: Played Deceptive Needle (Pokémon Tool) → attached Deceptive Needle to Bombirdier (Active)",
+    "Opponent: Attached Darkness Energy to Mega Absol ex (Bench 2)",
+    "Opponent: Ended the turn without attacking",
+    "End of turn: Your Indeedee ex (Active) took 10 damage (Deceptive Needle)"
+   ]
+  }
+ ],
+ "options": [
+  {
+   "key": "1",
+   "group": "Energy",
+   "text": "Attach Psychic Energy to Indeedee ex (Active)"
+  },
+  {
+   "key": "2",
+   "group": "Energy",
+   "text": "Attach Psychic Energy to Lillipup (Bench 1)"
+  },
+  {
+   "key": "3",
+   "group": "Energy",
+   "text": "Attach Psychic Energy to Stoutland (Bench 2)"
+  },
+  {
+   "key": "4",
+   "group": "Energy",
+   "text": "Attach Psychic Energy to Indeedee ex (Bench 3)"
+  },
+  {
+   "key": "5",
+   "group": "Retreat",
+   "text": "Retreat Indeedee ex (Active) and switch in Lillipup (Bench 1); costs 1 Energy"
+  },
+  {
+   "key": "6",
+   "group": "Retreat",
+   "text": "Retreat Indeedee ex (Active) and switch in Stoutland (Bench 2); costs 1 Energy"
+  },
+  {
+   "key": "7",
+   "group": "Retreat",
+   "text": "Retreat Indeedee ex (Active) and switch in Indeedee ex (Bench 3); costs 1 Energy"
+  },
+  {
+   "key": "0",
+   "group": "End turn",
+   "text": "End your turn without attacking"
+  }
+ ],
+ "cant_play": [
+  "Cyrus: you already played a Supporter this turn"
+ ]
+}

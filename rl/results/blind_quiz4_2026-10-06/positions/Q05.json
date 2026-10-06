@@ -1,0 +1,534 @@
+{
+ "order": 5,
+ "matchup": {
+  "you": "Wailord / Indeedee wall (your deck 03)"
+ },
+ "turn": 6,
+ "you_went_first": false,
+ "situation": "Your turn (your 3rd turn; turn 6 of the game).",
+ "question": "Two plans for the rest of this turn. Each runs from here until its first step that draws or searches for cards (after that, what comes next depends on what you get), its attack, or the end of the turn. Which plan would you play: Plan A, Plan B, both reasonable, or neither?",
+ "plans": {
+  "A": {
+   "steps": [
+    "Play Pokémon Center Lady (Supporter)",
+    "Evolve Wailmer (Bench 3) into Wailord ex",
+    "Attach Water Energy to Wailord (Active)",
+    "End your turn without attacking"
+   ],
+   "ends": "end",
+   "ends_text": "The plan ends your turn."
+  },
+  "B": {
+   "steps": [
+    "Attach Water Energy to Indeedee ex (Bench 2)",
+    "Play Pokémon Center Lady (Supporter)",
+    "Evolve Wailmer (Bench 3) into Wailord ex",
+    "End your turn without attacking"
+   ],
+   "ends": "end",
+   "ends_text": "The plan ends your turn."
+  }
+ },
+ "answer_options": [
+  "Plan A",
+  "Plan B",
+  "Both reasonable",
+  "Neither"
+ ],
+ "note_prompt": "A short note (optional): why, or what you would do instead.",
+ "points": {
+  "you": 0,
+  "opponent": 0
+ },
+ "you": {
+  "active": {
+   "name": "Wailord",
+   "stage": 1,
+   "type": "Water",
+   "hp": 150,
+   "max_hp": 200,
+   "energy": [
+    "Water",
+    "Water"
+   ],
+   "tools": [],
+   "conditions": [],
+   "ability": null,
+   "attacks": [
+    {
+     "name": "Whale Pump",
+     "cost": [
+      "Colorless",
+      "Colorless",
+      "Colorless",
+      "Colorless"
+     ],
+     "damage": "60+",
+     "text": "This attack does 10 more damage for each Water Energy attached to this Pokémon."
+    }
+   ],
+   "weakness": "Lightning",
+   "retreat": 4,
+   "retreat_now": 4,
+   "retreat_note": null,
+   "ko_points": 1,
+   "notes": []
+  },
+  "bench": [
+   null,
+   {
+    "name": "Indeedee ex",
+    "stage": 0,
+    "type": "Psychic",
+    "hp": 130,
+    "max_hp": 130,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": {
+     "name": "Watch Over",
+     "text": "Once during your turn, you may heal 20 damage from your Active Pokémon.",
+     "used_this_turn": true
+    },
+    "attacks": [
+     {
+      "name": "Psychic",
+      "cost": [
+       "Psychic",
+       "Psychic"
+      ],
+      "damage": "30+",
+      "text": "This attack does 30 more damage for each Energy attached to your opponent's Active Pokémon."
+     }
+    ],
+    "weakness": "Darkness",
+    "retreat": 1,
+    "retreat_now": 1,
+    "retreat_note": null,
+    "ko_points": 2,
+    "notes": []
+   },
+   {
+    "name": "Wailmer",
+    "stage": 0,
+    "type": "Water",
+    "hp": 100,
+    "max_hp": 100,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": null,
+    "attacks": [
+     {
+      "name": "Wave Splash",
+      "cost": [
+       "Water",
+       "Water",
+       "Water"
+      ],
+      "damage": "60",
+      "text": ""
+     }
+    ],
+    "weakness": "Lightning",
+    "retreat": 3,
+    "retreat_now": 3,
+    "retreat_note": null,
+    "ko_points": 1,
+    "notes": []
+   }
+  ],
+  "deck_count": 11,
+  "discard": [
+   "Copycat",
+   "Heavy Helmet",
+   "Soothing Shore"
+  ],
+  "discard_energy": [],
+  "energy_zone": {
+   "this_turn": "Water",
+   "next": "Water",
+   "lines": [
+    "This turn: Water",
+    "Next: Water"
+   ]
+  },
+  "hand": [
+   {
+    "name": "Wailord ex",
+    "kind": "Stage 1 Pokémon",
+    "text": "Stage 1 Pokémon, HP 250, Water type, evolves from Wailmer. Gives 2 points when Knocked Out. Attack Wondrous Waves [Water Water Water Water] 100: This Pokémon recovers from all Special Conditions. Weakness: Lightning. Retreat: 4."
+   },
+   {
+    "name": "Pokémon Center Lady",
+    "kind": "Supporter",
+    "text": "Heal 30 damage from 1 of your Pokémon, and it recovers from all Special Conditions."
+   }
+  ],
+  "decklist": [
+   {
+    "name": "Indeedee ex",
+    "kind": "Basic Pokémon",
+    "text": "Basic Pokémon, HP 130, Psychic type. Gives 2 points when Knocked Out. Ability Watch Over: Once during your turn, you may heal 20 damage from your Active Pokémon. Attack Psychic [Psychic Psychic] 30+: This attack does 30 more damage for each Energy attached to your opponent's Active Pokémon. Weakness: Darkness. Retreat: 1.",
+    "count": 2,
+    "left": 1
+   },
+   {
+    "name": "Wailmer",
+    "kind": "Basic Pokémon",
+    "text": "Basic Pokémon, HP 100, Water type. Attack Wave Splash [Water Water Water] 60. Weakness: Lightning. Retreat: 3.",
+    "count": 2,
+    "left": 0
+   },
+   {
+    "name": "Wailord",
+    "kind": "Stage 1 Pokémon",
+    "text": "Stage 1 Pokémon, HP 200, Water type, evolves from Wailmer. Attack Whale Pump [Colorless Colorless Colorless Colorless] 60+: This attack does 10 more damage for each Water Energy attached to this Pokémon. Weakness: Lightning. Retreat: 4.",
+    "count": 1,
+    "left": 0
+   },
+   {
+    "name": "Wailord ex",
+    "kind": "Stage 1 Pokémon",
+    "text": "Stage 1 Pokémon, HP 250, Water type, evolves from Wailmer. Gives 2 points when Knocked Out. Attack Wondrous Waves [Water Water Water Water] 100: This Pokémon recovers from all Special Conditions. Weakness: Lightning. Retreat: 4.",
+    "count": 1,
+    "left": 0
+   },
+   {
+    "name": "Copycat",
+    "kind": "Supporter",
+    "text": "Shuffle your hand into your deck. Draw a card for each card in your opponent's hand.",
+    "count": 1,
+    "left": 0
+   },
+   {
+    "name": "Cyrus",
+    "kind": "Supporter",
+    "text": "Switch in 1 of your opponent's Benched Pokémon that has damage on it to the Active Spot.",
+    "count": 1,
+    "left": 1
+   },
+   {
+    "name": "Irida",
+    "kind": "Supporter",
+    "text": "Heal 40 damage from each of your Pokémon that has any Water Energy attached.",
+    "count": 1,
+    "left": 1
+   },
+   {
+    "name": "Pokémon Center Lady",
+    "kind": "Supporter",
+    "text": "Heal 30 damage from 1 of your Pokémon, and it recovers from all Special Conditions.",
+    "count": 1,
+    "left": 0
+   },
+   {
+    "name": "Professor's Research",
+    "kind": "Supporter",
+    "text": "Draw 2 cards.",
+    "count": 2,
+    "left": 2
+   },
+   {
+    "name": "Lucky Ice Pop",
+    "kind": "Item",
+    "text": "Heal 20 damage from your Active Pokémon. If you healed any damage in this way, flip a coin. If heads, put this Lucky Ice Pop into your hand instead of the discard pile.",
+    "count": 2,
+    "left": 2
+   },
+   {
+    "name": "Poké Ball",
+    "kind": "Item",
+    "text": "Put a random Basic Pokémon from your deck into your hand.",
+    "count": 2,
+    "left": 2
+   },
+   {
+    "name": "Heavy Helmet",
+    "kind": "Pokémon Tool",
+    "text": "If the Pokémon this card is attached to has a Retreat Cost of 3 or more, it takes -20 damage from attacks from your opponent's Pokémon.",
+    "count": 2,
+    "left": 1
+   },
+   {
+    "name": "Soothing Shore",
+    "kind": "Stadium",
+    "text": "At the end of each player's turn, that player heals 20 damage from each of their Pokémon that has any Water Energy attached.",
+    "count": 2,
+    "left": 1
+   }
+  ],
+  "energy_types": [
+   "Water"
+  ],
+  "supporter_played_this_turn": false,
+  "retreated_this_turn": false
+ },
+ "opponent": {
+  "active": {
+   "name": "Espeon",
+   "stage": 1,
+   "type": "Psychic",
+   "hp": 90,
+   "max_hp": 90,
+   "energy": [
+    "Psychic"
+   ],
+   "tools": [],
+   "conditions": [],
+   "ability": null,
+   "attacks": [
+    {
+     "name": "Hypnoblast",
+     "cost": [
+      "Psychic"
+     ],
+     "damage": "40",
+     "text": "Your opponent's Active Pokémon is now Asleep."
+    }
+   ],
+   "weakness": "Darkness",
+   "retreat": 1,
+   "retreat_now": 1,
+   "retreat_note": null,
+   "ko_points": 1,
+   "notes": []
+  },
+  "bench": [
+   {
+    "name": "Darkrai",
+    "stage": 0,
+    "type": "Darkness",
+    "hp": 100,
+    "max_hp": 100,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": {
+     "name": "Bad Dreams",
+     "text": "At the end of each turn, if your opponent's Active Pokémon is Asleep, do 20 damage to that Pokémon.",
+     "used_this_turn": false
+    },
+    "attacks": [
+     {
+      "name": "Dark Slumber",
+      "cost": [
+       "Colorless",
+       "Colorless",
+       "Colorless"
+      ],
+      "damage": "40",
+      "text": "Your opponent's Active Pokémon is now Asleep."
+     }
+    ],
+    "weakness": "Grass",
+    "retreat": 2,
+    "retreat_now": 2,
+    "retreat_note": null,
+    "ko_points": 1,
+    "notes": []
+   },
+   {
+    "name": "Igglybuff",
+    "stage": 0,
+    "type": "Colorless",
+    "hp": 30,
+    "max_hp": 30,
+    "energy": [],
+    "tools": [
+     {
+      "name": "Small Balloon",
+      "text": "The Retreat Cost of the Basic Pokémon this card is attached to is 1 less."
+     }
+    ],
+    "conditions": [],
+    "ability": null,
+    "attacks": [
+     {
+      "name": "Sleepy Lullaby",
+      "cost": [],
+      "damage": "10",
+      "text": "Your opponent's Active Pokémon is now Asleep."
+     }
+    ],
+    "weakness": null,
+    "retreat": 0,
+    "retreat_now": 0,
+    "retreat_note": null,
+    "ko_points": 1,
+    "notes": []
+   },
+   {
+    "name": "Mega Altaria ex",
+    "stage": 1,
+    "type": "Psychic",
+    "hp": 190,
+    "max_hp": 190,
+    "energy": [
+     "Psychic"
+    ],
+    "tools": [],
+    "conditions": [],
+    "ability": null,
+    "attacks": [
+     {
+      "name": "Mega Harmony",
+      "cost": [
+       "Psychic",
+       "Psychic"
+      ],
+      "damage": "40+",
+      "text": "This attack does 30 more damage for each of your Benched Pokémon."
+     }
+    ],
+    "weakness": "Metal",
+    "retreat": 1,
+    "retreat_now": 1,
+    "retreat_note": null,
+    "ko_points": 3,
+    "notes": []
+   }
+  ],
+  "deck_count": 5,
+  "discard": [
+   "Poké Ball",
+   "Professor's Research",
+   "Poké Ball",
+   "Professor's Research",
+   "Field Blower",
+   "Copycat"
+  ],
+  "discard_energy": [],
+  "energy_zone": {
+   "next": "Psychic",
+   "lines": [
+    "Next: Psychic"
+   ]
+  },
+  "hand_count": 1
+ },
+ "stadium": {
+  "name": "Training Area",
+  "text": "Attacks used by Stage 1 Pokémon in play (both yours and your opponent's) do +10 damage to the opponent's Active Pokémon.",
+  "played_by": "opponent"
+ },
+ "turn_effects": [],
+ "this_turn_so_far": [
+  "You: Used Indeedee ex's Ability Watch Over (Bench 2) → healed 20 damage from Wailord (Active)"
+ ],
+ "log": [
+  {
+   "turn": 0,
+   "who": "setup",
+   "header": "Setup",
+   "lines": [
+    "Opponent: started with Igglybuff (Active)",
+    "You: started with Wailmer (Active)"
+   ]
+  },
+  {
+   "turn": 1,
+   "who": "opponent",
+   "header": "Turn 1 - Opponent",
+   "lines": [
+    "Opponent: Played Poké Ball (Item)",
+    "Opponent: Played Professor's Research (Supporter)",
+    "Opponent: Played Poké Ball (Item)",
+    "Opponent: Put Swablu on Bench 3",
+    "Opponent: Put Eevee on Bench 2",
+    "Opponent: Igglybuff attacked with Sleepy Lullaby (10) → did 10 damage to your Wailmer (Active); your Wailmer (Active) is now Asleep",
+    "End of turn: Your Wailmer (Active) woke up"
+   ]
+  },
+  {
+   "turn": 2,
+   "who": "you",
+   "header": "Turn 2 - You",
+   "lines": [
+    "You: Played Heavy Helmet (Pokémon Tool) → attached Heavy Helmet to Wailmer (Active)",
+    "You: Played Copycat (Supporter)",
+    "You: Put Wailmer on Bench 3",
+    "You: Put Indeedee ex on Bench 2",
+    "You: Used Indeedee ex's Ability Watch Over (Bench 2) → healed 10 damage from Wailmer (Active)",
+    "You: Attached Water Energy to Wailmer (Active)",
+    "You: Ended the turn without attacking"
+   ]
+  },
+  {
+   "turn": 3,
+   "who": "opponent",
+   "header": "Turn 3 - Opponent",
+   "lines": [
+    "Opponent: Attached Psychic Energy to Eevee (Bench 2)",
+    "Opponent: Put Darkrai on Bench 1",
+    "Opponent: Played Professor's Research (Supporter)",
+    "Opponent: Evolved Swablu (Bench 3) into Mega Altaria ex",
+    "Opponent: Played Field Blower (Item) → discarded Heavy Helmet from your Wailmer (Active)",
+    "Opponent: Played Small Balloon (Pokémon Tool) → attached Small Balloon to Igglybuff (Active)",
+    "Opponent: Igglybuff attacked with Sleepy Lullaby (10) → did 10 damage to your Wailmer (Active); your Wailmer (Active) is now Asleep",
+    "End of turn: Your Wailmer (Active) took 20 damage (Darkrai's Bad Dreams)"
+   ]
+  },
+  {
+   "turn": 4,
+   "who": "you",
+   "header": "Turn 4 - You",
+   "lines": [
+    "You: Used Indeedee ex's Ability Watch Over (Bench 2) → healed 20 damage from Wailmer (Active)",
+    "You: Evolved Wailmer (Active) into Wailord",
+    "You: Played Soothing Shore (Stadium)",
+    "You: Attached Water Energy to Wailord (Active)",
+    "You: Ended the turn without attacking",
+    "End of turn: Your Wailord (Active) healed 10 damage (Soothing Shore)"
+   ]
+  },
+  {
+   "turn": 5,
+   "who": "opponent",
+   "header": "Turn 5 - Opponent",
+   "lines": [
+    "Opponent: Played Training Area (Stadium)",
+    "Opponent: Retreated Igglybuff (Active), switching in Eevee (Bench 2)",
+    "Opponent: Evolved Eevee (Active) into Espeon",
+    "Opponent: Played Copycat (Supporter)",
+    "Opponent: Attached Psychic Energy to Mega Altaria ex (Bench 3)",
+    "Opponent: Espeon attacked with Hypnoblast (40) → did 50 damage to your Wailord (Active); your Wailord (Active) is now Asleep",
+    "End of turn: Your Wailord (Active) took 20 damage (Darkrai's Bad Dreams)",
+    "End of turn: Your Wailord (Active) woke up"
+   ]
+  }
+ ],
+ "options": [
+  {
+   "key": "5",
+   "group": "Trainers",
+   "text": "Play Pokémon Center Lady (Supporter): Heal 30 damage from 1 of your Pokémon, and it recovers from all Special Conditions."
+  },
+  {
+   "key": "1",
+   "group": "Energy",
+   "text": "Attach Water Energy to Wailord (Active)"
+  },
+  {
+   "key": "2",
+   "group": "Energy",
+   "text": "Attach Water Energy to Indeedee ex (Bench 2)"
+  },
+  {
+   "key": "3",
+   "group": "Energy",
+   "text": "Attach Water Energy to Wailmer (Bench 3)"
+  },
+  {
+   "key": "4",
+   "group": "Pokémon",
+   "text": "Evolve Wailmer (Bench 3) into Wailord ex"
+  },
+  {
+   "key": "0",
+   "group": "End turn",
+   "text": "End your turn without attacking"
+  }
+ ],
+ "cant_play": []
+}
