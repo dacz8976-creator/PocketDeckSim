@@ -28,10 +28,10 @@ only where its printed effect can apply.
 - **Gate 2: it doesn't hurt.** Rule on against rule off, paired on the same worlds and seeds, every move kx3 would
   consider:
   - **The 8 continuation positions: no effect at all.** The rule acted in 4 of 9,472 play-outs, and every score is
-    identical (and equal to the continuation run's own kx3 scores, 74 of 74). Their Tools are Elegant Capes with no
-    Stage 1 in play, so no placement had an effect.
-  - **12 development positions** (from the development run, at the turn km3 misplaced a Tool): the rule acted in most
-    play-outs. Over the 53 moves where it acted, on − off averaged +0.008 (typical size 0.025).
+    identical (and equal to the continuation run's own kx3 scores, 74 of 74). The Tools there are draft A's Elegant
+    Capes, and km3 almost always puts them on a Stage 1 already.
+  - **12 development positions** (from the development run, at the decision where km3 played a Tool it then
+    misplaced): the rule acted in most play-outs. Over the 53 moves where it acted, on − off averaged +0.008 (typical size 0.025).
   - kx3's choice changed at 2 of the 12:
     - **Deck 03 v t-altaria (dev10): clearly for the better.** With Heavy Helmet in hand and Wailord (Retreat Cost 4)
       Active, the rule-off play-outs scored "play Heavy Helmet" 0.48. km3 then put it on Indeedee ex, where it does
@@ -53,8 +53,9 @@ only where its printed effect can apply.
     rule at kx3's own placement decisions, which changes kx3's own move. This build was told to leave that alone.
 - **Gate 3 is registered for the laptop, not run.** It is a first paired cut on decks 01, 10 and 06, as asked, on the
   development run's own deals. So the rule-off half is the development run's kx3 games, already played.
-  - This build replays those games exactly: 8 of 8 kx3 games and 8 km3 games decision for decision, and all 320 km3
-    games of decks 01, 10, 06 and 05.
+  - This build replays them exactly on a sample: 8 of 8 kx3 games and 8 km3 games, decision for decision. It also
+    replays all 320 km3 games of decks 01, 10, 06 and 05. And the gate-3 pilot's self-check prints the development
+    run's kx3 digest.
   - That leaves 240 kx3 games: about 9 hours on the laptop's 2 threads at the development run's pace (3 hours a deck),
     stoppable and resumable.
   - **Decks 01, 10 and 06 will mostly exercise the rule through the opponent's Tools.** km3 misplaced a Tool in 20 of
@@ -246,6 +247,8 @@ but the play-outs should catch it.
   t-blaziken for decks 06, 10, 01 and 05.
 - All 16 games (8 kx3, 8 km3) equal the development run's, decision for decision (437 logged decisions).
 - Every km3 reference game of those four decks (320) does too.
+- And gate 3's pilot, with the rule on, prints the development run's own kx3 self-check digest, 31d638dbc818b0fa
+  (`checks/strength_selfcheck.txt`).
 - `engine/` outside `src/players/` hasn't changed since d513e37b, the development run's build.
 
 **Where the rule will act.** km3's own games are a fair guide to what km3 does inside the play-outs. A misplacement the
@@ -273,8 +276,9 @@ rule would move happened in:
 3. Pre-register (this runs the self-checks):
    `python3 rl/strength/strength_prereg.py --config rl/results/playout_tool_rule_2026-10-06/gate3/config.json --out rl/results/strength_<date>_kx3_tools_gate3`
    - km3 must print 81b572198c04d5d1.
-   - `kx3_r16_c12_z2_real_t0_poolmeta_tools` must print the cloud build's digest. It is being computed (12 games with
-     kx3 on both sides take a while) and will be added here.
+   - `kx3_r16_c12_z2_real_t0_poolmeta_tools` must print **31d638dbc818b0fa**, as the cloud's build did. That is also
+     the development run's own kx3 digest: in those 12 games the rule changes no result.
+   - That self-check is 12 games with kx3 on both sides: 2 h 8 min in the cloud on 4 cores.
    - If either digest differs, stop and report: the build isn't this one.
 4. Run, from the repository root:
    `nice -n 19 /home/dacz8976/kx/strength_tools run --manifest rl/results/strength_<date>_kx3_tools_gate3/manifest.json --out rl/results/strength_<date>_kx3_tools_gate3 --only-deck 01-muk-glimmora-kingambit-regigigas --only-deck 10-xatu-oricorio-tr-weezing --only-deck 06-mega-blaziken-tournament-list`.
