@@ -1,0 +1,19 @@
+redecide.jsonl: 131 placements without effect re-decided; in games replayed exactly: 131
+kx3 as in the development run (_tools off) gives the logged placement: 131 of 131
+
+another placement has an effect (the rule would move it): 62
+  with _tools, it now lands where it has an effect: 60
+  with _tools, the placement changes: 60
+     60  the tie-break placed it where it has an effect
+      2  a play-out lead beyond the noise picked a placement without one
+  by Tool (lands right / all): Heavy Helmet 14/14, Poison Barb 0/1, Protective Poncho 45/45, Rocky Helmet 1/2
+
+no placement has an effect: 69
+  with _tools, it now lands where it has an effect: 0
+  with _tools, the placement changes: 0
+     69  no placement has an effect: no tie-break
+  by Tool (lands right / all): Elegant Cape 0/44, Heavy Helmet 0/20, Poison Barb 0/5
+
+the ones that stay without effect:
+  10-xatu-oricorio-tr-weezing|t-altaria|1|0|X decision 30, turn 11: Poison Barb on spot 1 (board ['Xatu', 'Oricorio', "Team Rocket's Weezing ex", 'Xatu']); play-outs: +0.250 over km's move, 2.2 standard errors (threshold 2)
+  06-mega-blaziken-tournament-list|t-altaria|3|1|X decision 13, turn 5: Rocky Helmet on spot 3 (board ['Torchic', None, None, 'Torchic']); play-outs: +0.375 over km's move, 3.0 standard errors (threshold 2)
