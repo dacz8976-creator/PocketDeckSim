@@ -35,6 +35,12 @@ sections 5 and 9 (the addendum's amendments win). Branch `claude/playout-pilot`,
   and 2 passed. The follow-up (Oct 6, amended) adds the same rule at kx3's own decision as a within-noise tie-break:
   every placement is still played out. Gate 3, both together, is registered for the laptop. See
   `rl/results/playout_tool_rule_2026-10-06/`.
+- **Quiz 4's three items (Oct 6).** From Dustin's quiz 4 notes; each is its own parameter, off by default, and km3 is
+  untouched. Gates 1 and 2 passed. See `rl/results/playout_quiz4_items_2026-10-06/`.
+  - **The attack bar (`_za<z>`):** a stricter switch bar away from km3's attack.
+  - **No-effect actions (`_noeffect`):** the Tool tie-break, widened to any action whose printed effect can't do
+    anything now, read from the card database's texts.
+  - **Dustin's three "neither" plans**, played out against both bots' moves.
 
 ## In short
 
@@ -698,6 +704,14 @@ reference arm's km3 game is negligible.
   - `engine/tests/playout_tools_test.rs`: 14 tests;
   - `engine/examples/playout_tool_rule.rs`: gate 2's runner; `engine/examples/trainer_habits.rs`: the Trainer-habit
     instrument, extended for the rule.
+- Quiz 4's items (Oct 6; `rl/results/playout_quiz4_items_2026-10-06/README.md`):
+  - `switch_bar` and `_za<z>` in `playout_player.rs`;
+  - `engine/src/players/playout_effects.rs`: the no-effect reader, declared from `playout_player.rs`, so `mod.rs` is
+    unchanged; `_noeffect` in `evaluate`;
+  - the Ability step in `playout_plan.rs`;
+  - `engine/tests/playout_quiz4_test.rs`: 13 tests;
+  - new modes in `playout_tool_rule.rs` (`--no-effect`, `--list-effects`), `trainer_habits.rs` (`--attack-scan`,
+    `--noeffect-scan`, `positions`) and `playout_continuation.rs` (a state and seed per entry).
 - Here:
   - `tests_before.log`, `tests_after.log` and `suite.log`;
   - `smoke/`: `games.jsonl`, `trace.jsonl`, `summarize.py`, `summary.txt`, `replay_check.txt`, `run_times.txt`, and the

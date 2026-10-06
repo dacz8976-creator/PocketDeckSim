@@ -25,7 +25,15 @@ main):
      it's Fable's call.
    - The bar can't reach Q01, Q02, Q03 or Q08. There km3's first move wasn't the attack (Energy, Lucky Ice Pop, an
      evolution, Watch Over), and kx3 parted from km3 at that preparation step.
-2. **No-effect actions (`_noeffect`):** in progress (the code and its tests are on the branch; counts and gates follow).
+2. **No-effect actions (`_noeffect`) are built and pass gates 1 and 2.** The reader works from the card database's own
+   texts: all 190 texts that can be a move are read, 122 with needs.
+   - **Both bots spend about 1 in 6 of their card-text moves on something that can do nothing now:** km3 970 of 5,835
+     (16.6%), kx3 1,004 of 5,952 (16.9%). The panel decks are at 1.3%.
+     - Watch Over at full HP: km3 682, kx3 717.
+     - Fragrant Forest with no Basic Grass: every use, 125 and 119.
+     - Elegant Cape with no Stage 1: 61 and 62.
+   - **Gate 2:** at the 20 positions, km3's move always does something, so the rule never acts.
+   - **kx3's 1,004 such plays, decided again with the rule on:** running (results to follow).
 3. **The "neither" positions: in these play-outs, Dustin's plan doesn't beat the move kx3 actually played at any of
    the three.** It does beat km3's plan at Q11.
    - **Q06: his plan loses.** It wins 0 of 128 play-outs, against 0.289 for kx3's move (the Psychic to the Benched
@@ -138,6 +146,118 @@ or Copycat first, then attack", which is usually right: an attack ends the turn,
   - So the bar changes nothing at the 20 positions, by its rule. The 26 development-run decisions above are its real
     test.
 
+## Item 2: no-effect actions (`_noeffect`)
+
+### What was built
+
+- **The reader** (`engine/src/players/playout_effects.rs`) reads every Trainer and Ability text in the card database
+  into what it needs before it can do anything. It works from the words, never from a list of card names.
+  - **Heals** need a Pokémon in reach with damage. "Watch Over" needs a damaged Active.
+  - **Searches** need a matching card left in your deck. The deck's contents are the player's own knowledge, so
+    Fragrant Forest needs a Basic Grass Pokémon there.
+  - **"Attacks used by your X do +N" and promises about your X** need an X in play: Clemont's Backpack, Cheren, Hala,
+    Iris.
+  - **Draws** need a deck, and "draw until N" a hand below N.
+  - **Energy moves** need Energy to move.
+  - **Switching the opponent's Pokémon** needs a Benched one of the kind the text says.
+  - **Discarding Tools** (Guzma, Elesa) needs a Tool in play.
+  - **A Tool card played** does nothing when no Pokémon in play could hold it with an effect. This is the Tool rule's
+    reading; the placement itself is the Tool tie-break's.
+  - **The listing:** `no_effect/effect_readings.jsonl` (`playout_tool_rule --list-effects`), with all 282 distinct
+    texts.
+    - 190 of them can be a move: an Item or Supporter, a Stadium "once during each player's turn", or an Ability "once
+      during your turn" or "as often as you like".
+    - All 190 are read: 122 have needs, and 68 always do something (damage, a Special Condition, looking, shuffling a
+      hand).
+- **The reader errs one way.** It can miss a play that does nothing, but it never calls a useful play useless.
+  - Needs are alternatives: any one met counts as doing something.
+  - An unread text counts as doing something.
+  - Coin flips and the conditions the engine enforces need nothing.
+  - Five Supporters the engine offers whatever the board (Guzma, Elesa, Hala, Iris, Drayden) were first read as
+    "always". They now have their needs, tests first (`no_effect/tests_before_supporters.log`). No development-run deck
+    plays them; Dustin's decks 02 and 11 do.
+- **The rule** (`_noeffect`, e.g. `kx3_r16_c12_z2_real_t0_poolmeta_noeffect`) has the Tool tie-break's shape.
+  - Nothing leaves the pool, and every candidate is played out.
+  - It acts only when no move clears the bar (kx3 would play km3's move) and km3's move can do nothing now while another
+    candidate can.
+  - Then kx3 plays km3's own choice among the moves that do something: km3 is asked again, with the same randomness,
+    with only those moves.
+  - The exception: km3's move leads that choice beyond the noise in its play-outs. Then km3's move is kept, and the
+    trace says why.
+  - **The trace:** "tie-break: no effect now: km's Elegant Cape can do nothing now by its text, and no move clears the
+    bar (...); km's choice among the moves that do something is played, Quick Attack (-0.062 v km's, 1.0 standard
+    errors)".
+  - Off (no `_noeffect` in the code), nothing changes.
+- **Tests** (`engine/tests/playout_quiz4_test.rs`; written first, `no_effect/tests_before.log`, commit 3c8e4626):
+  - every text is read or named unread;
+  - the needs come from the words (Watch Over, Potion, Pokémon Center Lady, Fragrant Forest, Clemont's Backpack,
+    Poké Ball, Professor's Research, X Speed, Sabrina, Red Card, Irida, and the five Supporters);
+  - the reader reads the board (Watch Over at full HP and damaged; the Backpack; Guzma and Elesa with and without
+    Tools);
+  - the code spells the rule;
+  - with the rule on, kx3 doesn't spend Watch Over at full HP (deck 05, seeds 20,000,000,220-223).
+
+### How often each bot spends such an action (`no_effect/effects.*`)
+
+Every move with a card text in the development run was counted, in both arms: km3's and kx3's on the deck side, and
+km3's on the panel side. That's 560 games per arm, every one replayed exactly. Only real decisions count (more than
+one legal move).
+
+| who | moves with a card text | can do nothing | share |
+|---|---|---|---|
+| km3, the deck side | 5,835 | 970 | 16.6% |
+| kx3, the deck side | 5,952 | 1,004 | 16.9% |
+| km3, the panel side | 9,574 | 128 | 1.3% |
+
+The two bots are alike. About 80% of it is in decks 03 and 05 (Watch Over), and Fragrant Forest adds most of the rest.
+
+| card | km3 | kx3 | Dustin's note |
+|---|---|---|---|
+| Indeedee ex's Watch Over at full HP | 682 of 1,518 | 717 of 1,635 | Q04, Q08, Q09: "the ability does nothing here" |
+| Fragrant Forest, no Basic Grass in the deck | 125 of 125 | 119 of 119 | Q01, Q08: "no grass pokemon" |
+| Elegant Cape, no Stage 1 in play | 61 of 108 | 62 of 102 | |
+| Poké Ball, no Basic left | 39 of 734 | 36 of 723 | |
+| Heavy Helmet, no Pokémon with a Retreat Cost of 3 or more | 25 of 199 | 25 of 198 | |
+| Clemont's Backpack, no Magneton or Heliolisk | 18 of 90 | 18 of 89 | Q10: "no Pokemon that it would help" |
+| Mesagoza, no Pokémon left in the deck | 11 of 216 | 14 of 207 | |
+| Protective Poncho, no Benched Pokémon | 9 of 57 | 10 of 56 | |
+| Cheren, no Watchog or Stoutland | 0 of 17 | 3 of 30 | |
+
+- **Played only where they could do something:** Clemont, Cyrus, Hiking Trail, Irida, Lillie, Lucky Ice Pop, Misty,
+  Poison Barb, Pokémon Center Lady, Professor's Research, Psychic, Rocky Helmet.
+- **Can't be judged this way:** Copycat, Field Blower, Flame Patch, Ilima, Rare Candy and Will (read as always doing
+  something), and the Stadiums that work by themselves. The engine checks most of these before offering them.
+- **Not a mistake in itself.** Most of these cost nothing: Watch Over and Fragrant Forest are free, and a Cape on a
+  Basic may wait for its evolution.
+  - What they can cost is order. A Watch Over used before a retreat can't heal the Pokémon that comes in (Dustin's Q06
+    plan heals first for that reason).
+  - A Supporter (Cheren) or an Item (Poké Ball) spent for nothing is gone.
+
+### Gate 2: the 12 + 8 positions (`no_effect/gate2/`)
+
+- **The rule never acts there.** At all 20 positions, km3's move does something now:
+  - an attack, an Energy, a retreat, a bench;
+  - Irida or Cyrus with a target;
+  - Protective Poncho, Heavy Helmet or Elegant Cape with a Pokémon that could hold it.
+- With `_noeffect` on, kx3's pool is unchanged at every one, and the tie-break doesn't apply.
+- So the development run below is the rule's real test.
+
+### kx3's no-effect plays, decided again (`no_effect/redecide.*`)
+
+Running: every kx3 game of the development run replayed exactly. At each kx3 play that can do nothing by its text,
+km3 is asked with the game's own randomness; where km3 proposed that play, kx3 decides again with `_noeffect`. Results
+to follow in this section.
+
+### Gate 1 for items 2 and 3 (`checks/`, at 25522e5a, in a separate worktree)
+
+- **The suite:** 2,080 passed, 0 failed.
+- **km3's 240 games** (seed 7100): game for game equal to the official program's (digest 9dde28db2de6c9bc), and equal to
+  the pinned record on every line but the wall time.
+- **The harness self-checks.**
+  - km3: 81b572198c04d5d1, unchanged.
+  - `kx3_r2_c3_lab`: 3a2eb43bd9053639 twice, unchanged.
+  - `kx3_r2_c3_lab_noeffect`: the same digest. The rule never acted in those 2 games.
+
 ## Item 3: the continuation experiment at the "neither" positions (`neither/`)
 
 ### The question and the method
@@ -248,9 +368,17 @@ km3 would play his plan itself once given the first move.
   - `attack_scan_za3.jsonl`: the same with `_za3`.
   - `attack_scan.py` and `attack_scan.txt`: the summary and the full table.
   - `checks/`: gate 1.
-- `engine/examples/trainer_habits.rs` gains three modes:
+- `checks/`: gate 1 for items 2 and 3.
+- `no_effect/`
+  - `tests_before.log` and `tests_before_supporters.log`: item 2's tests before the code.
+  - `effect_readings.jsonl`: every text in the card database and what the reader needs.
+  - `effects_*_arm.jsonl` (and `.replay.jsonl`): every card-text move of both arms.
+  - `effects.py` and `effects.txt`: the counts.
+  - `gate2/`: gate 2.
+  - `redecide.jsonl`, `redecide.py` and `redecide.txt`: kx3's no-effect plays, decided again.
+- `engine/examples/trainer_habits.rs` gains these modes:
   - `scripted --attack-scan` (item 1);
-  - an "effect" event for every move with a card text (item 2);
+  - an "effect" event for every move with a card text, and `scripted --noeffect-scan` (item 2);
   - `positions`, which rebuilds a run's position exactly and, with `--kx3`, kx3's own decision there (item 3).
 - `neither/`
   - `at.json` and `states/`: the positions and their checks.
