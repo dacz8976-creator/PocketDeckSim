@@ -1,0 +1,140 @@
+## The studies (each first move continued by km3, and by Dustin's plan for K own turns, then km3)
+
+| entry | K | Dustin's first move: km3 / plan | the rival: km3 / plan | lead, km3's continuation | lead, the plan's | verdict |
+|---|---|---|---|---|---|---|
+| Q06 | 1 | 0.016 / 0.000 | kx3: 0.289 / 0.016 | -0.273 [-0.351, -0.196] | -0.016 [-0.037, +0.006] | lifted, not ahead |
+| Q06-after-watch-over | 1 | 0.008 / 0.008 | km3: 0.023 / 0.008 | -0.016 [-0.046, +0.015] | +0.000 [+0.000, +0.000] | no difference |
+| Q07 | 1 | 0.500 / 0.500 | kx3: 0.578 / 0.406 | -0.078 [-0.198, +0.042] | +0.094 [-0.014, +0.201] | lifted, not ahead |
+| Q07-v-km3 | 1 | 0.500 / 0.500 | km3: 0.477 / 0.500 | +0.023 [-0.062, +0.109] | +0.000 [+0.000, +0.000] | no difference |
+| Q11 | 1 | 0.336 / 0.336 | kx3: 0.312 / 0.312 | +0.023 [-0.075, +0.122] | +0.023 [-0.075, +0.122] | no difference |
+| Q11-v-km3 | 1 | 0.336 / 0.336 | km3: 0.195 / 0.195 | +0.141 [+0.076, +0.205] | +0.141 [+0.076, +0.205] | ahead either way |
+| Q06-k2 | 2 | 0.016 / 0.000 | kx3: 0.289 / 0.016 | -0.273 [-0.351, -0.196] | -0.016 [-0.037, +0.006] | lifted, not ahead |
+| Q07-k2 | 2 | 0.500 / 0.500 | kx3: 0.578 / 0.406 | -0.078 [-0.198, +0.042] | +0.094 [-0.014, +0.201] | lifted, not ahead |
+
+## Dustin's plan against each rival's own line (his first move continued by his plan, minus the rival continued by
+km3: the line each bot would play), round by round in the same worlds; and how often his plan and km3's continuation
+of his first move end in the same final state
+
+| entry | his plan | the rival's line | his plan minus the rival's line | his plan and km3's continuation: same final state |
+|---|---|---|---|---|
+| Q06 | 0.000 | kx3: 0.289 | -0.289 [-0.368, -0.210] | 0 of 128 |
+| Q06-after-watch-over | 0.008 | km3: 0.023 | -0.016 [-0.046, +0.015] | 0 of 128 |
+| Q07 | 0.500 | kx3: 0.578 | -0.078 [-0.198, +0.042] | 128 of 128 |
+| Q07-v-km3 | 0.500 | km3: 0.477 | +0.023 [-0.062, +0.109] | 128 of 128 |
+| Q11 | 0.336 | kx3: 0.312 | +0.023 [-0.075, +0.122] | 128 of 128 |
+| Q11-v-km3 | 0.336 | km3: 0.195 | +0.141 [+0.076, +0.205] | 128 of 128 |
+| Q06-k2 | 0.000 | kx3: 0.289 | -0.289 [-0.368, -0.210] | 0 of 128 |
+| Q07-k2 | 0.500 | kx3: 0.578 | -0.078 [-0.198, +0.042] | 128 of 128 |
+
+Checks: every round played (failed rounds: Q06 0, Q06-after-watch-over 0, Q07 0, Q07-v-km3 0, Q11 0, Q11-v-km3 0, Q06-k2 0, Q07-k2 0); the study's km3 scores equal kx3's own play-out scores at the same seed (run/study_stderr.txt).
+
+## How often the plan's steps were played (of 128; after Dustin's first move, then after the rival)
+- Q06, Dustin: t4 ability 128/0/0; t4 retreat_to 128/0/0; t4 energy 128/0/0; t4 attack 128/0/0 (played/skipped/unreached)
+- Q06, rival: t4 ability 128/0/0; t4 retreat_to 128/0/0; t4 energy 0/128/0; t4 attack 0/128/0 (played/skipped/unreached)
+- Q06-after-watch-over, Dustin: t4 retreat_to 128/0/0; t4 energy 128/0/0; t4 attack 128/0/0 (played/skipped/unreached)
+- Q06-after-watch-over, rival: t4 retreat_to 128/0/0; t4 energy 0/128/0; t4 attack 0/128/0 (played/skipped/unreached)
+- Q07, Dustin: t4 retreat_to 128/0/0; t4 energy 128/0/0 (played/skipped/unreached)
+- Q07, rival: t4 retreat_to 128/0/0; t4 energy 0/128/0 (played/skipped/unreached)
+- Q07-v-km3, Dustin: t4 retreat_to 128/0/0; t4 energy 128/0/0 (played/skipped/unreached)
+- Q07-v-km3, rival: t4 retreat_to 128/0/0; t4 energy 0/128/0 (played/skipped/unreached)
+- Q11, Dustin: t6 attack 128/0/0; t6 extra_energy 128/0/0 (played/skipped/unreached)
+- Q11, rival: t6 attack 0/128/0; t6 extra_energy 0/128/0 (played/skipped/unreached)
+- Q11-v-km3, Dustin: t6 attack 128/0/0; t6 extra_energy 128/0/0 (played/skipped/unreached)
+- Q11-v-km3, rival: t6 attack 128/0/0; t6 extra_energy 128/0/0 (played/skipped/unreached)
+- Q06-k2, Dustin: t4 ability 128/0/0; t4 retreat_to 128/0/0; t4 energy 128/0/0; t4 attack 128/0/0; t6 attack 105/23/0 (played/skipped/unreached)
+- Q06-k2, rival: t4 ability 128/0/0; t4 retreat_to 128/0/0; t4 energy 0/128/0; t4 attack 0/128/0; t6 attack 104/24/0 (played/skipped/unreached)
+- Q07-k2, Dustin: t4 retreat_to 128/0/0; t4 energy 128/0/0; t6 energy 89/39/0; t6 attack 89/39/0 (played/skipped/unreached)
+- Q07-k2, rival: t4 retreat_to 128/0/0; t4 energy 0/128/0; t6 energy 128/0/0; t6 attack 0/128/0 (played/skipped/unreached)
+
+## Round 0's moves within the window
+- Q06, Dustin, km3's continuation: t4 first move: use the Benched Indeedee ex's Ability | t4 km3: the turn's Psychic to the Active Indeedee ex | t4 km3: attack Psychic
+  Q06, Dustin, the plan's: t4 first move: use the Benched Indeedee ex's Ability | t4 plan: retreat into the Benched Lillipup | t4 plan: the turn's Psychic to the Active Lillipup | t4 plan: attack Tackle
+- Q06, rival, km3's continuation: t4 first move: the turn's Psychic to the Benched Indeedee ex | t4 km3: use the Benched Indeedee ex's Ability | t4 km3: end the turn
+  Q06, rival, the plan's: t4 first move: the turn's Psychic to the Benched Indeedee ex | t4 plan: use the Benched Indeedee ex's Ability | t4 plan: retreat into the Benched Lillipup
+- Q06-after-watch-over, Dustin, km3's continuation: t4 first move: retreat into the Benched Lillipup | t4 km3: the turn's Psychic to the Benched Indeedee ex
+  Q06-after-watch-over, Dustin, the plan's: t4 first move: retreat into the Benched Lillipup | t4 plan: the turn's Psychic to the Active Lillipup | t4 plan: attack Tackle
+- Q06-after-watch-over, rival, km3's continuation: t4 first move: the turn's Psychic to the Active Indeedee ex | t4 km3: attack Psychic
+  Q06-after-watch-over, rival, the plan's: t4 first move: the turn's Psychic to the Active Indeedee ex | t4 plan: retreat into the Benched Lillipup
+- Q07, Dustin, km3's continuation: t4 first move: retreat into the Benched Stoutland | t4 km3: the turn's Psychic to the Active Stoutland
+  Q07, Dustin, the plan's: t4 first move: retreat into the Benched Stoutland | t4 plan: the turn's Psychic to the Active Stoutland
+- Q07, rival, km3's continuation: t4 first move: the turn's Psychic to the Active Indeedee ex | t4 km3: attack Psychic
+  Q07, rival, the plan's: t4 first move: the turn's Psychic to the Active Indeedee ex | t4 plan: retreat into the Benched Stoutland
+- Q07-v-km3, Dustin, km3's continuation: t4 first move: retreat into the Benched Stoutland | t4 km3: the turn's Psychic to the Active Stoutland
+  Q07-v-km3, Dustin, the plan's: t4 first move: retreat into the Benched Stoutland | t4 plan: the turn's Psychic to the Active Stoutland
+- Q07-v-km3, rival, km3's continuation: t4 first move: the turn's Psychic to the Benched Stoutland | t4 km3: end the turn
+  Q07-v-km3, rival, the plan's: t4 first move: the turn's Psychic to the Benched Stoutland | t4 plan: retreat into the Benched Stoutland
+- Q11, Dustin, km3's continuation: t6 first move: attack Turbo Shark | t6 km3: an extra Water to the Benched Lapras
+  Q11, Dustin, the plan's: t6 first move: attack Turbo Shark | t6 plan: an extra Water to the Benched Lapras
+- Q11, rival, km3's continuation: t6 first move: retreat into the Benched Alolan Vulpix | t6 km3: attack Gnaw | t7 km3: promote the Benched Mega Sharpedo ex
+  Q11, rival, the plan's: t6 first move: retreat into the Benched Alolan Vulpix | t6 km3: attack Gnaw | t7 km3: promote the Benched Mega Sharpedo ex
+- Q11-v-km3, Dustin, km3's continuation: t6 first move: attack Turbo Shark | t6 km3: an extra Water to the Benched Lapras
+  Q11-v-km3, Dustin, the plan's: t6 first move: attack Turbo Shark | t6 plan: an extra Water to the Benched Lapras
+- Q11-v-km3, rival, km3's continuation: t6 first move: bench Alolan Vulpix | t6 km3: attack Turbo Shark | t6 km3: an extra Water to the Benched Lapras
+  Q11-v-km3, rival, the plan's: t6 first move: bench Alolan Vulpix | t6 plan: attack Turbo Shark | t6 plan: an extra Water to the Benched Lapras
+- Q06-k2, Dustin, km3's continuation: t4 first move: use the Benched Indeedee ex's Ability | t4 km3: the turn's Psychic to the Active Indeedee ex | t4 km3: attack Psychic | t6 km3: use the Benched Indeedee ex's Ability | t6 km3: use the Active Indeedee ex's Ability | t6 km3: play Professor's Research | t6 km3: bench Lillipup | t6 km3: the turn's Psychic to the Benched Indeedee ex | t6 km3: attack Psychic | t7 km3: promote the Benched Indeedee ex
+  Q06-k2, Dustin, the plan's: t4 first move: use the Benched Indeedee ex's Ability | t4 plan: retreat into the Benched Lillipup | t4 plan: the turn's Psychic to the Active Lillipup | t4 plan: attack Tackle | t6 km3: play Professor's Research | t6 km3: bench Lillipup | t6 km3: the turn's Psychic to the Benched Lillipup | t6 km3: use the Benched Indeedee ex's Ability | t6 km3: use the Benched Indeedee ex's Ability | t6 plan: attack Tackle | t7 km3: promote the Benched Lillipup
+- Q06-k2, rival, km3's continuation: t4 first move: the turn's Psychic to the Benched Indeedee ex | t4 km3: use the Benched Indeedee ex's Ability | t4 km3: end the turn | t6 km3: retreat into the Benched Indeedee ex | t6 km3: play Professor's Research | t6 km3: bench Lillipup | t6 km3: use the Benched Indeedee ex's Ability | t6 km3: use the Active Indeedee ex's Ability | t6 km3: the turn's Psychic to the Active Indeedee ex | t6 km3: attack Psychic | t7 km3: promote the Benched Indeedee ex
+  Q06-k2, rival, the plan's: t4 first move: the turn's Psychic to the Benched Indeedee ex | t4 plan: use the Benched Indeedee ex's Ability | t4 plan: retreat into the Benched Lillipup | t6 km3: use the Benched Indeedee ex's Ability | t6 km3: play Professor's Research | t6 km3: bench Lillipup | t6 km3: use the Benched Indeedee ex's Ability | t6 km3: the turn's Psychic to the Active Lillipup | t6 plan: attack Tackle | t7 km3: promote the Benched Indeedee ex
+- Q07-k2, Dustin, km3's continuation: t4 first move: retreat into the Benched Stoutland | t4 km3: the turn's Psychic to the Active Stoutland | t6 km3: use the Benched Indeedee ex's Ability | t6 km3: play Professor's Research | t6 km3: use the Benched Indeedee ex's Ability | t6 km3: the turn's Psychic to the Active Stoutland | t6 km3: attack Sharp Fang
+  Q07-k2, Dustin, the plan's: t4 first move: retreat into the Benched Stoutland | t4 plan: the turn's Psychic to the Active Stoutland | t6 plan: the turn's Psychic to the Active Stoutland | t6 km3: use the Benched Indeedee ex's Ability | t6 km3: use the Benched Indeedee ex's Ability | t6 km3: play Professor's Research | t6 plan: attack Sharp Fang
+- Q07-k2, rival, km3's continuation: t4 first move: the turn's Psychic to the Active Indeedee ex | t4 km3: attack Psychic | t6 km3: use the Benched Indeedee ex's Ability | t6 km3: play Professor's Research | t6 km3: use the Active Indeedee ex's Ability | t6 km3: the turn's Psychic to the Benched Stoutland | t6 km3: attack Psychic
+  Q07-k2, rival, the plan's: t4 first move: the turn's Psychic to the Active Indeedee ex | t4 plan: retreat into the Benched Stoutland | t6 plan: the turn's Psychic to the Active Stoutland | t6 km3: play Professor's Research | t6 km3: use the Benched Indeedee ex's Ability | t6 km3: use the Benched Indeedee ex's Ability
+
+## kx3 at each position: 128 rounds, LAB, the study's seed (every candidate's score under km3's continuation)
+- Q06: kx3 plays Attach { attachments: [(1, Psychic, 2)], is_turn_energy: true }; play-outs: +0.273 over km's move, 6.9 standard errors (threshold 2)
+    UseAbility { in_play_idx: 2 }: 0.016 (+0.000 over km3's move, SE 0.000)
+    EndTurn: 0.023 (+0.008 over km3's move, SE 0.008)
+    Attach { attachments: [(1, Psychic, 0)], is_turn_energy: true }: 0.016 (+0.000 over km3's move, SE 0.000)
+    Attach { attachments: [(1, Psychic, 2)], is_turn_energy: true }: 0.289 (+0.273 over km3's move, SE 0.040)
+    Attach { attachments: [(1, Psychic, 3)], is_turn_energy: true }: 0.023 (+0.008 over km3's move, SE 0.014)
+    Retreat(2): 0.023 (+0.008 over km3's move, SE 0.014)
+    Retreat(3): 0.008 (-0.008 over km3's move, SE 0.008)
+- Q06-after-watch-over: kx3 plays Attach { attachments: [(1, Psychic, 2)], is_turn_energy: true }; play-outs: +0.211 over km's move, 5.6 standard errors (threshold 2)
+    Attach { attachments: [(1, Psychic, 0)], is_turn_energy: true }: 0.023 (+0.000 over km3's move, SE 0.000)
+    EndTurn: 0.031 (+0.008 over km3's move, SE 0.014)
+    Attach { attachments: [(1, Psychic, 2)], is_turn_energy: true }: 0.234 (+0.211 over km3's move, SE 0.038)
+    Attach { attachments: [(1, Psychic, 3)], is_turn_energy: true }: 0.031 (+0.008 over km3's move, SE 0.008)
+    Retreat(2): 0.031 (+0.008 over km3's move, SE 0.014)
+    Retreat(3): 0.008 (-0.016 over km3's move, SE 0.016)
+- Q07: kx3 plays Attach { attachments: [(1, Psychic, 2)], is_turn_energy: true }; within the noise: the best move leads km's by +0.102 with a standard error of 0.065 (threshold 2 SE): km's move kept
+    Attach { attachments: [(1, Psychic, 2)], is_turn_energy: true }: 0.477 (+0.000 over km3's move, SE 0.000)
+    EndTurn: 0.344 (-0.133 over km3's move, SE 0.055)
+    Attach { attachments: [(1, Psychic, 0)], is_turn_energy: true }: 0.578 (+0.102 over km3's move, SE 0.065)
+    Attach { attachments: [(1, Psychic, 1)], is_turn_energy: true }: 0.492 (+0.016 over km3's move, SE 0.054)
+    Attach { attachments: [(1, Psychic, 3)], is_turn_energy: true }: 0.297 (-0.180 over km3's move, SE 0.054)
+    Retreat(1): 0.188 (-0.289 over km3's move, SE 0.049)
+    Retreat(2): 0.500 (+0.023 over km3's move, SE 0.044)
+    Retreat(3): 0.258 (-0.219 over km3's move, SE 0.048)
+- Q11: kx3 plays Play { trainer_card: A1 220 Misty }; play-outs: +0.141 over km's move, 3.4 standard errors (threshold 2)
+    Place(Pokemon(B2 028 Alolan Vulpix), 1): 0.195 (+0.000 over km3's move, SE 0.000)
+    EndTurn: 0.023 (-0.172 over km3's move, SE 0.037)
+    Play { trainer_card: A1 220 Misty }: 0.336 (+0.141 over km3's move, SE 0.041)
+    Retreat(2): 0.094 (-0.102 over km3's move, SE 0.040)
+    Retreat(3): 0.312 (+0.117 over km3's move, SE 0.044)
+    Attack(Attack { energy_required: [Water], title: "Turbo Shark", fixed_damage: 70, effect: Some("Take a [W] Energy from your Energy Zone and attach it to 1 of yo: 0.336 (+0.141 over km3's move, SE 0.033)
+
+## kx3 in the game itself (16 rounds, its own knowledge mode; the game's observation and randomness)
+- Q06: kx3 played Attach:1Psychic@2 zone (the kx3 arm's log says Attach:1Psychic@2 zone); play-outs: +0.312 over km's move, 2.6 standard errors (threshold 2)
+    Ability:Watch Over@2: 0.000 (+0.000, SE 0.000)
+    EndTurn: 0.000 (+0.000, SE 0.000)
+    Attach:1Psychic@0 zone: 0.000 (+0.000, SE 0.000)
+    Attach:1Psychic@2 zone: 0.312 (+0.312, SE 0.120)
+    Attach:1Psychic@3 zone: 0.062 (+0.062, SE 0.062)
+    Retreat:2: 0.000 (+0.000, SE 0.000)
+    Retreat:3: 0.000 (+0.000, SE 0.000)
+- Q07: kx3 played Attach:1Psychic@0 zone (the kx3 arm's log says Attach:1Psychic@0 zone); play-outs: +0.312 over km's move, 2.1 standard errors (threshold 2)
+    Attach:1Psychic@2 zone: 0.375 (+0.000, SE 0.000)
+    EndTurn: 0.438 (+0.062, SE 0.111)
+    Attach:1Psychic@0 zone: 0.688 (+0.312, SE 0.151)
+    Attach:1Psychic@1 zone: 0.625 (+0.250, SE 0.171)
+    Attach:1Psychic@3 zone: 0.312 (-0.062, SE 0.111)
+    Retreat:1: 0.312 (-0.062, SE 0.111)
+    Retreat:2: 0.625 (+0.250, SE 0.144)
+    Retreat:3: 0.250 (-0.125, SE 0.155)
+- Q11: kx3 played Retreat:3 (the kx3 arm's log says Retreat:3); play-outs: +0.375 over km's move, 2.4 standard errors (threshold 2)
+    Place:Alolan Vulpix@1: 0.188 (+0.000, SE 0.000)
+    EndTurn: 0.000 (-0.188, SE 0.101)
+    Attack:Turbo Shark: 0.375 (+0.188, SE 0.101)
+    Play:Misty: 0.438 (+0.250, SE 0.112)
+    Retreat:2: 0.188 (+0.000, SE 0.091)
+    Retreat:3: 0.562 (+0.375, SE 0.155)
