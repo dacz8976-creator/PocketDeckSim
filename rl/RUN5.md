@@ -361,6 +361,16 @@ sides with k3 still available; the 0.7.2 wheel and its run identities are untouc
     - **Dustin approved a conditional freeze and the exam, Oct 4 (relayed by the coordinator; verbatim):** "yes approved". Astra's three tightenings are conditions of it.
     - The rule is recorded before the result, in `results/strength_2026-10-04_kx3_v_k3/PREREGISTRATION.md`'s addendum: kx3 − km3 against k3, 95% interval above zero → freeze d513e37b; crossing zero → hold.
     - The freeze is labelled "a promising experimental baseline, not the finished planning bot".
+    - **The exam (Oct 6):** kx3 (d513e37b) v km3 on the 11 held-out decks: +21.3 ± 4.0 (53.0% v 31.7%), every deck positive (`results/strength_2026-10-05_kx3_exam/`; a second reader agrees).
+    - **After the exam (Oct 6; Dustin: "Yes to the quiz"; Astra's review adopted as his input; relayed by the coordinator):**
+      - (A) **Quiz 4** uses positions where kx3 (d513e37b) and km3 disagree: setup decks first (build-up situations), fast decks for the tempo ones. It hides which bot chose which answer. It offers "both reasonable" and "neither" beside the two choices, so planning disagreements separate from harmless move-order differences. The key stays private. The laptop builds it; Sonnet may assemble.
+      - (B) **kx3 in the tools**, after gate 3 and the Tool-rule decision:
+        - opt-in only; the defaults (screen and floor) stay km3;
+        - the exact tested version, with both pilots named in every output;
+        - a separate "slow report" with results and their uncertainty, NOT run through the floor's pass/fail cutoffs;
+        - no prerequisite of passing km3's screen: any deck can go straight to kx3.
+      - (C) The Tool filter becomes a within-noise **tie-break**, never a dropped candidate (Poncho on the Active can protect after a retreat). Gate 3 waits for that version and includes decks 05 and 03.
+      - (D) The unfamiliar-opponent version stays separate until it is measured against out-of-pool opponents.
     - **Deck dependence (Dustin, Oct 5, relayed by the coordinator; verbatim):** "It's deck dependent when building the bench is helpful. Some decks are meant to play fast. Some reward buildup."
       - So results are reported by deck group (fast v setup) and per deck, with how kx3 changes each deck's pace (turns per game, first-attack turn).
       - Build-up positions and quiz items come from the setup decks (Wailord, Muk, Indeedee/Stoutland, Skarmory), and tempo ones from the fast decks (draft A, Manectric, Xatu/Weezing).
