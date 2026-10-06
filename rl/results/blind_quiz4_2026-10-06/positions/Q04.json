@@ -1,0 +1,477 @@
+{
+ "order": 4,
+ "matchup": {
+  "you": "Wailord / Indeedee wall (your deck 03)"
+ },
+ "turn": 3,
+ "you_went_first": true,
+ "situation": "Your turn (your 2nd turn; turn 3 of the game).",
+ "question": "Two plans for the rest of this turn. Each runs from here until its first step that draws or searches for cards (after that, what comes next depends on what you get), its attack, or the end of the turn. Which plan would you play: Plan A, Plan B, both reasonable, or neither?",
+ "plans": {
+  "A": {
+   "steps": [
+    "Play Poké Ball (Item)"
+   ],
+   "ends": "draw",
+   "ends_text": "The plan stops at a step that draws or searches for cards; what comes next depends on what you get."
+  },
+  "B": {
+   "steps": [
+    "Attach Water Energy to Indeedee ex (Active)",
+    "Use Indeedee ex's Ability Watch Over (Bench 3)",
+    "Use Indeedee ex's Ability Watch Over (Active)",
+    "Retreat Indeedee ex (Active), switching in Indeedee ex (Bench 3)",
+    "Play Poké Ball (Item)"
+   ],
+   "ends": "draw",
+   "ends_text": "The plan stops at a step that draws or searches for cards; what comes next depends on what you get."
+  }
+ },
+ "answer_options": [
+  "Plan A",
+  "Plan B",
+  "Both reasonable",
+  "Neither"
+ ],
+ "note_prompt": "A short note (optional): why, or what you would do instead.",
+ "points": {
+  "you": 0,
+  "opponent": 0
+ },
+ "you": {
+  "active": {
+   "name": "Indeedee ex",
+   "stage": 0,
+   "type": "Psychic",
+   "hp": 130,
+   "max_hp": 130,
+   "energy": [],
+   "tools": [],
+   "conditions": [],
+   "ability": {
+    "name": "Watch Over",
+    "text": "Once during your turn, you may heal 20 damage from your Active Pokémon.",
+    "used_this_turn": false
+   },
+   "attacks": [
+    {
+     "name": "Psychic",
+     "cost": [
+      "Psychic",
+      "Psychic"
+     ],
+     "damage": "30+",
+     "text": "This attack does 30 more damage for each Energy attached to your opponent's Active Pokémon."
+    }
+   ],
+   "weakness": "Darkness",
+   "retreat": 1,
+   "retreat_now": 1,
+   "retreat_note": null,
+   "ko_points": 2,
+   "notes": []
+  },
+  "bench": [
+   null,
+   null,
+   {
+    "name": "Indeedee ex",
+    "stage": 0,
+    "type": "Psychic",
+    "hp": 130,
+    "max_hp": 130,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": {
+     "name": "Watch Over",
+     "text": "Once during your turn, you may heal 20 damage from your Active Pokémon.",
+     "used_this_turn": false
+    },
+    "attacks": [
+     {
+      "name": "Psychic",
+      "cost": [
+       "Psychic",
+       "Psychic"
+      ],
+      "damage": "30+",
+      "text": "This attack does 30 more damage for each Energy attached to your opponent's Active Pokémon."
+     }
+    ],
+    "weakness": "Darkness",
+    "retreat": 1,
+    "retreat_now": 1,
+    "retreat_note": null,
+    "ko_points": 2,
+    "notes": []
+   }
+  ],
+  "deck_count": 11,
+  "discard": [
+   "Professor's Research"
+  ],
+  "discard_energy": [],
+  "energy_zone": {
+   "this_turn": "Water",
+   "next": "Water",
+   "lines": [
+    "This turn: Water",
+    "Next: Water"
+   ]
+  },
+  "hand": [
+   {
+    "name": "Cyrus",
+    "kind": "Supporter",
+    "text": "Switch in 1 of your opponent's Benched Pokémon that has damage on it to the Active Spot."
+   },
+   {
+    "name": "Irida",
+    "kind": "Supporter",
+    "text": "Heal 40 damage from each of your Pokémon that has any Water Energy attached."
+   },
+   {
+    "name": "Pokémon Center Lady",
+    "kind": "Supporter",
+    "text": "Heal 30 damage from 1 of your Pokémon, and it recovers from all Special Conditions."
+   },
+   {
+    "name": "Lucky Ice Pop",
+    "kind": "Item",
+    "text": "Heal 20 damage from your Active Pokémon. If you healed any damage in this way, flip a coin. If heads, put this Lucky Ice Pop into your hand instead of the discard pile."
+   },
+   {
+    "name": "Poké Ball",
+    "kind": "Item",
+    "text": "Put a random Basic Pokémon from your deck into your hand."
+   },
+   {
+    "name": "Soothing Shore",
+    "kind": "Stadium",
+    "text": "At the end of each player's turn, that player heals 20 damage from each of their Pokémon that has any Water Energy attached."
+   }
+  ],
+  "decklist": [
+   {
+    "name": "Indeedee ex",
+    "kind": "Basic Pokémon",
+    "text": "Basic Pokémon, HP 130, Psychic type. Gives 2 points when Knocked Out. Ability Watch Over: Once during your turn, you may heal 20 damage from your Active Pokémon. Attack Psychic [Psychic Psychic] 30+: This attack does 30 more damage for each Energy attached to your opponent's Active Pokémon. Weakness: Darkness. Retreat: 1.",
+    "count": 2,
+    "left": 0
+   },
+   {
+    "name": "Wailmer",
+    "kind": "Basic Pokémon",
+    "text": "Basic Pokémon, HP 100, Water type. Attack Wave Splash [Water Water Water] 60. Weakness: Lightning. Retreat: 3.",
+    "count": 2,
+    "left": 2
+   },
+   {
+    "name": "Wailord",
+    "kind": "Stage 1 Pokémon",
+    "text": "Stage 1 Pokémon, HP 200, Water type, evolves from Wailmer. Attack Whale Pump [Colorless Colorless Colorless Colorless] 60+: This attack does 10 more damage for each Water Energy attached to this Pokémon. Weakness: Lightning. Retreat: 4.",
+    "count": 1,
+    "left": 1
+   },
+   {
+    "name": "Wailord ex",
+    "kind": "Stage 1 Pokémon",
+    "text": "Stage 1 Pokémon, HP 250, Water type, evolves from Wailmer. Gives 2 points when Knocked Out. Attack Wondrous Waves [Water Water Water Water] 100: This Pokémon recovers from all Special Conditions. Weakness: Lightning. Retreat: 4.",
+    "count": 1,
+    "left": 1
+   },
+   {
+    "name": "Copycat",
+    "kind": "Supporter",
+    "text": "Shuffle your hand into your deck. Draw a card for each card in your opponent's hand.",
+    "count": 1,
+    "left": 1
+   },
+   {
+    "name": "Cyrus",
+    "kind": "Supporter",
+    "text": "Switch in 1 of your opponent's Benched Pokémon that has damage on it to the Active Spot.",
+    "count": 1,
+    "left": 0
+   },
+   {
+    "name": "Irida",
+    "kind": "Supporter",
+    "text": "Heal 40 damage from each of your Pokémon that has any Water Energy attached.",
+    "count": 1,
+    "left": 0
+   },
+   {
+    "name": "Pokémon Center Lady",
+    "kind": "Supporter",
+    "text": "Heal 30 damage from 1 of your Pokémon, and it recovers from all Special Conditions.",
+    "count": 1,
+    "left": 0
+   },
+   {
+    "name": "Professor's Research",
+    "kind": "Supporter",
+    "text": "Draw 2 cards.",
+    "count": 2,
+    "left": 1
+   },
+   {
+    "name": "Lucky Ice Pop",
+    "kind": "Item",
+    "text": "Heal 20 damage from your Active Pokémon. If you healed any damage in this way, flip a coin. If heads, put this Lucky Ice Pop into your hand instead of the discard pile.",
+    "count": 2,
+    "left": 1
+   },
+   {
+    "name": "Poké Ball",
+    "kind": "Item",
+    "text": "Put a random Basic Pokémon from your deck into your hand.",
+    "count": 2,
+    "left": 1
+   },
+   {
+    "name": "Heavy Helmet",
+    "kind": "Pokémon Tool",
+    "text": "If the Pokémon this card is attached to has a Retreat Cost of 3 or more, it takes -20 damage from attacks from your opponent's Pokémon.",
+    "count": 2,
+    "left": 2
+   },
+   {
+    "name": "Soothing Shore",
+    "kind": "Stadium",
+    "text": "At the end of each player's turn, that player heals 20 damage from each of their Pokémon that has any Water Energy attached.",
+    "count": 2,
+    "left": 1
+   }
+  ],
+  "energy_types": [
+   "Water"
+  ],
+  "supporter_played_this_turn": false,
+  "retreated_this_turn": false
+ },
+ "opponent": {
+  "active": {
+   "name": "Combee",
+   "stage": 0,
+   "type": "Grass",
+   "hp": 80,
+   "max_hp": 80,
+   "energy": [],
+   "tools": [
+    {
+     "name": "Leaf Cape",
+     "text": "The Grass Pokémon this card is attached to gets +30 HP."
+    }
+   ],
+   "conditions": [],
+   "ability": null,
+   "attacks": [
+    {
+     "name": "Reckless Charge",
+     "cost": [
+      "Grass"
+     ],
+     "damage": "30",
+     "text": "This Pokémon also does 10 damage to itself."
+    }
+   ],
+   "weakness": "Fire",
+   "retreat": 1,
+   "retreat_now": 1,
+   "retreat_note": null,
+   "ko_points": 1,
+   "notes": []
+  },
+  "bench": [
+   {
+    "name": "Shuckle ex",
+    "stage": 0,
+    "type": "Grass",
+    "hp": 120,
+    "max_hp": 120,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": {
+     "name": "Solid Shell",
+     "text": "This Pokémon takes -20 damage from attacks.",
+     "used_this_turn": false
+    },
+    "attacks": [
+     {
+      "name": "Triple Slap",
+      "cost": [
+       "Grass"
+      ],
+      "damage": "20×",
+      "text": "Flip 3 coins. This attack does 20 damage for each heads."
+     }
+    ],
+    "weakness": "Fire",
+    "retreat": 1,
+    "retreat_now": 1,
+    "retreat_note": null,
+    "ko_points": 2,
+    "notes": []
+   },
+   {
+    "name": "Combee",
+    "stage": 0,
+    "type": "Grass",
+    "hp": 50,
+    "max_hp": 50,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": null,
+    "attacks": [
+     {
+      "name": "Reckless Charge",
+      "cost": [
+       "Grass"
+      ],
+      "damage": "30",
+      "text": "This Pokémon also does 10 damage to itself."
+     }
+    ],
+    "weakness": "Fire",
+    "retreat": 1,
+    "retreat_now": 1,
+    "retreat_note": null,
+    "ko_points": 1,
+    "notes": []
+   },
+   {
+    "name": "Teal Mask Ogerpon ex",
+    "stage": 0,
+    "type": "Grass",
+    "hp": 130,
+    "max_hp": 130,
+    "energy": [
+     "Grass"
+    ],
+    "tools": [],
+    "conditions": [],
+    "ability": {
+     "name": "Soothing Wind",
+     "text": "Each of your Pokémon that has any Energy attached recovers from all Special Conditions and can't be affected by any Special Conditions.",
+     "used_this_turn": false
+    },
+    "attacks": [
+     {
+      "name": "Energized Leaves",
+      "cost": [
+       "Grass",
+       "Grass"
+      ],
+      "damage": "60+",
+      "text": "If the amount of Energy attached to both Active Pokémon is 5 or more, this attack does 60 more damage."
+     }
+    ],
+    "weakness": "Fire",
+    "retreat": 1,
+    "retreat_now": 1,
+    "retreat_note": null,
+    "ko_points": 2,
+    "notes": []
+   }
+  ],
+  "deck_count": 12,
+  "discard": [
+   "Professor's Research"
+  ],
+  "discard_energy": [],
+  "energy_zone": {
+   "next": "Grass",
+   "lines": [
+    "Next: Grass"
+   ]
+  },
+  "hand_count": 2
+ },
+ "stadium": null,
+ "turn_effects": [],
+ "this_turn_so_far": [],
+ "log": [
+  {
+   "turn": 0,
+   "who": "setup",
+   "header": "Setup",
+   "lines": [
+    "You: started with Indeedee ex (Active)",
+    "Opponent: started with Combee (Active)"
+   ]
+  },
+  {
+   "turn": 1,
+   "who": "you",
+   "header": "Turn 1 - You",
+   "lines": [
+    "You: Played Professor's Research (Supporter)",
+    "You: Used Indeedee ex's Ability Watch Over (Active)",
+    "You: Put Indeedee ex on Bench 3",
+    "You: Used Indeedee ex's Ability Watch Over (Bench 3)",
+    "You: Ended the turn without attacking"
+   ]
+  },
+  {
+   "turn": 2,
+   "who": "opponent",
+   "header": "Turn 2 - Opponent",
+   "lines": [
+    "Opponent: Played Professor's Research (Supporter)",
+    "Opponent: Put Teal Mask Ogerpon ex on Bench 3",
+    "Opponent: Played Leaf Cape (Pokémon Tool) → attached Leaf Cape to Combee (Active)",
+    "Opponent: Put Combee on Bench 2",
+    "Opponent: Put Shuckle ex on Bench 1",
+    "Opponent: Attached Grass Energy to Teal Mask Ogerpon ex (Bench 3)",
+    "Opponent: Ended the turn without attacking"
+   ]
+  }
+ ],
+ "options": [
+  {
+   "key": "5",
+   "group": "Abilities",
+   "text": "Use Indeedee ex's Ability Watch Over (Active): Once during your turn, you may heal 20 damage from your Active Pokémon."
+  },
+  {
+   "key": "6",
+   "group": "Abilities",
+   "text": "Use Indeedee ex's Ability Watch Over (Bench 3): Once during your turn, you may heal 20 damage from your Active Pokémon."
+  },
+  {
+   "key": "4",
+   "group": "Trainers",
+   "text": "Play Poké Ball (Item): Put a random Basic Pokémon from your deck into your hand."
+  },
+  {
+   "key": "3",
+   "group": "Trainers",
+   "text": "Play Soothing Shore (Stadium): At the end of each player's turn, that player heals 20 damage from each of their Pokémon that has any Water Energy attached."
+  },
+  {
+   "key": "1",
+   "group": "Energy",
+   "text": "Attach Water Energy to Indeedee ex (Active)"
+  },
+  {
+   "key": "2",
+   "group": "Energy",
+   "text": "Attach Water Energy to Indeedee ex (Bench 3)"
+  },
+  {
+   "key": "0",
+   "group": "End turn",
+   "text": "End your turn without attacking"
+  }
+ ],
+ "cant_play": [
+  "Cyrus: none of your opponent's Benched Pokémon has damage on it",
+  "Irida: no legal way to play it now",
+  "Pokémon Center Lady: none of your Pokémon has damage or a Special Condition",
+  "Lucky Ice Pop: your Active Pokémon has no damage on it"
+ ]
+}

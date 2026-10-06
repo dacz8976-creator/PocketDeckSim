@@ -1,0 +1,542 @@
+{
+ "order": 11,
+ "matchup": {
+  "you": "Mega Sharpedo / Alolan Ninetales tempo (your draft A)"
+ },
+ "turn": 6,
+ "you_went_first": false,
+ "situation": "Your turn (your 3rd turn; turn 6 of the game).",
+ "question": "Two plans for the rest of this turn. Each runs from here until its first step that draws or searches for cards (after that, what comes next depends on what you get), its attack, or the end of the turn. Which plan would you play: Plan A, Plan B, both reasonable, or neither?",
+ "plans": {
+  "A": {
+   "steps": [
+    "Retreat Mega Sharpedo ex (Active), switching in Alolan Vulpix (Bench 3)",
+    "Attack with Gnaw"
+   ],
+   "ends": "attack",
+   "ends_text": "The plan ends with the attack."
+  },
+  "B": {
+   "steps": [
+    "Put Alolan Vulpix onto your Bench",
+    "Attack with Turbo Shark"
+   ],
+   "ends": "attack",
+   "ends_text": "The plan ends with the attack."
+  }
+ },
+ "answer_options": [
+  "Plan A",
+  "Plan B",
+  "Both reasonable",
+  "Neither"
+ ],
+ "note_prompt": "A short note (optional): why, or what you would do instead.",
+ "points": {
+  "you": 0,
+  "opponent": 0
+ },
+ "you": {
+  "active": {
+   "name": "Mega Sharpedo ex",
+   "stage": 1,
+   "type": "Water",
+   "hp": 130,
+   "max_hp": 190,
+   "energy": [
+    "Water"
+   ],
+   "tools": [],
+   "conditions": [],
+   "ability": null,
+   "attacks": [
+    {
+     "name": "Turbo Shark",
+     "cost": [
+      "Water"
+     ],
+     "damage": "70",
+     "text": "Take a Water Energy from your Energy Zone and attach it to 1 of your Benched Water Pokémon."
+    }
+   ],
+   "weakness": "Lightning",
+   "retreat": 0,
+   "retreat_now": 0,
+   "retreat_note": null,
+   "ko_points": 3,
+   "notes": []
+  },
+  "bench": [
+   null,
+   {
+    "name": "Lapras",
+    "stage": 0,
+    "type": "Water",
+    "hp": 110,
+    "max_hp": 110,
+    "energy": [
+     "Water"
+    ],
+    "tools": [],
+    "conditions": [],
+    "ability": null,
+    "attacks": [
+     {
+      "name": "Surf",
+      "cost": [
+       "Water",
+       "Water",
+       "Colorless"
+      ],
+      "damage": "70",
+      "text": ""
+     }
+    ],
+    "weakness": "Lightning",
+    "retreat": 2,
+    "retreat_now": 2,
+    "retreat_note": null,
+    "ko_points": 1,
+    "notes": [
+     "Put into play this turn"
+    ]
+   },
+   {
+    "name": "Alolan Vulpix",
+    "stage": 0,
+    "type": "Water",
+    "hp": 60,
+    "max_hp": 60,
+    "energy": [
+     "Water"
+    ],
+    "tools": [],
+    "conditions": [],
+    "ability": null,
+    "attacks": [
+     {
+      "name": "Gnaw",
+      "cost": [
+       "Water"
+      ],
+      "damage": "20",
+      "text": ""
+     }
+    ],
+    "weakness": "Metal",
+    "retreat": 1,
+    "retreat_now": 1,
+    "retreat_note": null,
+    "ko_points": 1,
+    "notes": []
+   }
+  ],
+  "deck_count": 10,
+  "discard": [
+   "Poké Ball",
+   "Elegant Cape",
+   "Poké Ball",
+   "Lucky Ice Pop"
+  ],
+  "discard_energy": [
+   "Water"
+  ],
+  "energy_zone": {
+   "this_turn": "already attached",
+   "next": "Water",
+   "lines": [
+    "This turn: already attached",
+    "Next: Water"
+   ]
+  },
+  "hand": [
+   {
+    "name": "Alolan Vulpix",
+    "kind": "Basic Pokémon",
+    "text": "Basic Pokémon, HP 60, Water type. Attack Gnaw [Water] 20. Weakness: Metal. Retreat: 1."
+   },
+   {
+    "name": "Misty",
+    "kind": "Supporter",
+    "text": "Choose 1 of your Water Pokémon, and flip a coin until you get tails. For each heads, take a Water Energy from your Energy Zone and attach it to that Pokémon."
+   }
+  ],
+  "decklist": [
+   {
+    "name": "Alolan Vulpix",
+    "kind": "Basic Pokémon",
+    "text": "Basic Pokémon, HP 60, Water type. Attack Gnaw [Water] 20. Weakness: Metal. Retreat: 1.",
+    "count": 2,
+    "left": 0
+   },
+   {
+    "name": "Carvanha",
+    "kind": "Basic Pokémon",
+    "text": "Basic Pokémon, HP 50, Water type. Attack Sharp Fang [Water] 30. Weakness: Lightning. Retreat: 1.",
+    "count": 2,
+    "left": 1
+   },
+   {
+    "name": "Lapras",
+    "kind": "Basic Pokémon",
+    "text": "Basic Pokémon, HP 110, Water type. Attack Surf [Water Water Colorless] 70. Weakness: Lightning. Retreat: 2.",
+    "count": 1,
+    "left": 0
+   },
+   {
+    "name": "Alolan Ninetales ex",
+    "kind": "Stage 1 Pokémon",
+    "text": "Stage 1 Pokémon, HP 150, Water type, evolves from Alolan Vulpix. Gives 2 points when Knocked Out. Attack Binding Snow [Water Water] 80: During your opponent's next turn, they can't take any Energy from their Energy Zone to attach to their Active Pokémon. Weakness: Metal. Retreat: 2.",
+    "count": 2,
+    "left": 2
+   },
+   {
+    "name": "Mega Sharpedo ex",
+    "kind": "Stage 1 Pokémon",
+    "text": "Stage 1 Pokémon, HP 190, Water type, evolves from Carvanha. Gives 3 points when Knocked Out. Attack Turbo Shark [Water] 70: Take a Water Energy from your Energy Zone and attach it to 1 of your Benched Water Pokémon. Weakness: Lightning. Retreat: 0.",
+    "count": 2,
+    "left": 1
+   },
+   {
+    "name": "Copycat",
+    "kind": "Supporter",
+    "text": "Shuffle your hand into your deck. Draw a card for each card in your opponent's hand.",
+    "count": 1,
+    "left": 1
+   },
+   {
+    "name": "Cyrus",
+    "kind": "Supporter",
+    "text": "Switch in 1 of your opponent's Benched Pokémon that has damage on it to the Active Spot.",
+    "count": 1,
+    "left": 1
+   },
+   {
+    "name": "Irida",
+    "kind": "Supporter",
+    "text": "Heal 40 damage from each of your Pokémon that has any Water Energy attached.",
+    "count": 1,
+    "left": 1
+   },
+   {
+    "name": "Misty",
+    "kind": "Supporter",
+    "text": "Choose 1 of your Water Pokémon, and flip a coin until you get tails. For each heads, take a Water Energy from your Energy Zone and attach it to that Pokémon.",
+    "count": 2,
+    "left": 1
+   },
+   {
+    "name": "Professor's Research",
+    "kind": "Supporter",
+    "text": "Draw 2 cards.",
+    "count": 2,
+    "left": 2
+   },
+   {
+    "name": "Lucky Ice Pop",
+    "kind": "Item",
+    "text": "Heal 20 damage from your Active Pokémon. If you healed any damage in this way, flip a coin. If heads, put this Lucky Ice Pop into your hand instead of the discard pile.",
+    "count": 1,
+    "left": 0
+   },
+   {
+    "name": "Poké Ball",
+    "kind": "Item",
+    "text": "Put a random Basic Pokémon from your deck into your hand.",
+    "count": 2,
+    "left": 0
+   },
+   {
+    "name": "Elegant Cape",
+    "kind": "Pokémon Tool",
+    "text": "The Stage 1 Pokémon this card is attached to gets +30 HP.",
+    "count": 1,
+    "left": 0
+   }
+  ],
+  "energy_types": [
+   "Water"
+  ],
+  "supporter_played_this_turn": false,
+  "retreated_this_turn": false
+ },
+ "opponent": {
+  "active": {
+   "name": "Suicune ex",
+   "stage": 0,
+   "type": "Water",
+   "hp": 100,
+   "max_hp": 140,
+   "energy": [
+    "Water",
+    "Water",
+    "Water"
+   ],
+   "tools": [
+    {
+     "name": "Inflatable Boat",
+     "text": "The Retreat Cost of the Water Pokémon this card is attached to is 1 less."
+    }
+   ],
+   "conditions": [],
+   "ability": {
+    "name": "Legendary Pulse",
+    "text": "At the end of your turn, if this Pokémon is in the Active Spot, draw a card.",
+    "used_this_turn": false
+   },
+   "attacks": [
+    {
+     "name": "Crystal Waltz",
+     "cost": [
+      "Water",
+      "Water"
+     ],
+     "damage": "20×",
+     "text": "This attack does 20 damage for each Benched Pokémon (both yours and your opponent's)."
+    }
+   ],
+   "weakness": "Lightning",
+   "retreat": 2,
+   "retreat_now": 1,
+   "retreat_note": "Inflatable Boat",
+   "ko_points": 2,
+   "notes": []
+  },
+  "bench": [
+   {
+    "name": "Baxcalibur",
+    "stage": 2,
+    "type": "Water",
+    "hp": 140,
+    "max_hp": 140,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": {
+     "name": "Ice Maker",
+     "text": "Once during your turn, you may take a Water Energy from your Energy Zone and attach it to the Water Pokémon in the Active Spot.",
+     "used_this_turn": false
+    },
+    "attacks": [
+     {
+      "name": "Buster Tail",
+      "cost": [
+       "Water",
+       "Water",
+       "Water"
+      ],
+      "damage": "90",
+      "text": ""
+     }
+    ],
+    "weakness": "Metal",
+    "retreat": 3,
+    "retreat_now": 3,
+    "retreat_note": null,
+    "ko_points": 1,
+    "notes": []
+   },
+   {
+    "name": "Suicune ex",
+    "stage": 0,
+    "type": "Water",
+    "hp": 140,
+    "max_hp": 140,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": {
+     "name": "Legendary Pulse",
+     "text": "At the end of your turn, if this Pokémon is in the Active Spot, draw a card.",
+     "used_this_turn": false
+    },
+    "attacks": [
+     {
+      "name": "Crystal Waltz",
+      "cost": [
+       "Water",
+       "Water"
+      ],
+      "damage": "20×",
+      "text": "This attack does 20 damage for each Benched Pokémon (both yours and your opponent's)."
+     }
+    ],
+    "weakness": "Lightning",
+    "retreat": 2,
+    "retreat_now": 2,
+    "retreat_note": null,
+    "ko_points": 2,
+    "notes": []
+   },
+   {
+    "name": "Chien-Pao ex",
+    "stage": 0,
+    "type": "Water",
+    "hp": 130,
+    "max_hp": 130,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": null,
+    "attacks": [
+     {
+      "name": "Icicle",
+      "cost": [
+       "Water"
+      ],
+      "damage": "20",
+      "text": ""
+     },
+     {
+      "name": "Diving Icicles",
+      "cost": [
+       "Water",
+       "Water",
+       "Water"
+      ],
+      "damage": null,
+      "text": "Discard all Water Energy from this Pokémon. This attack does 130 damage to 1 of your opponent's Pokémon."
+     }
+    ],
+    "weakness": "Metal",
+    "retreat": 1,
+    "retreat_now": 1,
+    "retreat_note": null,
+    "ko_points": 2,
+    "notes": []
+   }
+  ],
+  "deck_count": 3,
+  "discard": [
+   "Professor's Research",
+   "Field Blower",
+   "Professor's Research",
+   "Poké Ball",
+   "Poké Ball",
+   "Pokémon Center Lady",
+   "Rare Candy"
+  ],
+  "discard_energy": [],
+  "energy_zone": {
+   "next": "Water",
+   "lines": [
+    "Next: Water"
+   ]
+  },
+  "hand_count": 4
+ },
+ "stadium": null,
+ "turn_effects": [],
+ "this_turn_so_far": [
+  "You: Put Lapras on Bench 2",
+  "You: Attached Water Energy to Lapras (Bench 2)",
+  "You: Played Lucky Ice Pop (Item) → healed 20 damage from Mega Sharpedo ex (Active)"
+ ],
+ "log": [
+  {
+   "turn": 0,
+   "who": "setup",
+   "header": "Setup",
+   "lines": [
+    "Opponent: started with Suicune ex (Active)",
+    "You: started with Alolan Vulpix (Active)"
+   ]
+  },
+  {
+   "turn": 1,
+   "who": "opponent",
+   "header": "Turn 1 - Opponent",
+   "lines": [
+    "Opponent: Played Professor's Research (Supporter)",
+    "Opponent: Put Chien-Pao ex on Bench 3",
+    "Opponent: Put Suicune ex on Bench 2",
+    "Opponent: Ended the turn without attacking"
+   ]
+  },
+  {
+   "turn": 2,
+   "who": "you",
+   "header": "Turn 2 - You",
+   "lines": [
+    "You: Played Poké Ball (Item)",
+    "You: Put Carvanha on Bench 3",
+    "You: Played Elegant Cape (Pokémon Tool) → attached Elegant Cape to Alolan Vulpix (Active)",
+    "You: Attached Water Energy to Carvanha (Bench 3)",
+    "You: Ended the turn without attacking"
+   ]
+  },
+  {
+   "turn": 3,
+   "who": "opponent",
+   "header": "Turn 3 - Opponent",
+   "lines": [
+    "Opponent: Played Field Blower (Item) → discarded Elegant Cape from your Alolan Vulpix (Active)",
+    "Opponent: Played Professor's Research (Supporter)",
+    "Opponent: Played Poké Ball (Item)",
+    "Opponent: Put Frigibax on Bench 1",
+    "Opponent: Attached Water Energy to Suicune ex (Active)",
+    "Opponent: Ended the turn without attacking"
+   ]
+  },
+  {
+   "turn": 4,
+   "who": "you",
+   "header": "Turn 4 - You",
+   "lines": [
+    "You: Evolved Carvanha (Bench 3) into Mega Sharpedo ex",
+    "You: Attached Water Energy to Alolan Vulpix (Active)",
+    "You: Retreated Alolan Vulpix (Active), switching in Mega Sharpedo ex (Bench 3)",
+    "You: Played Poké Ball (Item)",
+    "You: Mega Sharpedo ex attacked with Turbo Shark (70) → did 70 damage to opponent's Suicune ex (Active)",
+    "You: Attached Water Energy to Alolan Vulpix (Bench 3) (from a card effect, not the Energy Zone's once-per-turn attachment)"
+   ]
+  },
+  {
+   "turn": 5,
+   "who": "opponent",
+   "header": "Turn 5 - Opponent",
+   "lines": [
+    "Opponent: Played Poké Ball (Item)",
+    "Opponent: Attached Water Energy to Suicune ex (Active)",
+    "Opponent: Played Pokémon Center Lady (Supporter) → healed 30 damage from Suicune ex (Active) and removed its Special Conditions",
+    "Opponent: Played Rare Candy (Item) → evolved Frigibax (Bench 1) into Baxcalibur (skipping Arctibax)",
+    "Opponent: Played Inflatable Boat (Pokémon Tool) → attached Inflatable Boat to Suicune ex (Active)",
+    "Opponent: Used Baxcalibur's Ability Ice Maker (Bench 1)",
+    "Opponent: Suicune ex attacked with Crystal Waltz (20×) → did 80 damage to your Mega Sharpedo ex (Active)"
+   ]
+  }
+ ],
+ "options": [
+  {
+   "key": "1",
+   "group": "Attack",
+   "text": "Attack with Turbo Shark (70 damage): Take a Water Energy from your Energy Zone and attach it to 1 of your Benched Water Pokémon."
+  },
+  {
+   "key": "3",
+   "group": "Trainers",
+   "text": "Play Misty (Supporter): Choose 1 of your Water Pokémon, and flip a coin until you get tails. For each heads, take a Water Energy from your Energy Zone and attach it to that Pokémon."
+  },
+  {
+   "key": "2",
+   "group": "Pokémon",
+   "text": "Put Alolan Vulpix onto your Bench (Bench 1)"
+  },
+  {
+   "key": "4",
+   "group": "Retreat",
+   "text": "Retreat Mega Sharpedo ex (Active) and switch in Lapras (Bench 2); costs 0 Energy"
+  },
+  {
+   "key": "5",
+   "group": "Retreat",
+   "text": "Retreat Mega Sharpedo ex (Active) and switch in Alolan Vulpix (Bench 3); costs 0 Energy"
+  },
+  {
+   "key": "0",
+   "group": "End turn",
+   "text": "End your turn without attacking"
+  }
+ ],
+ "cant_play": []
+}
