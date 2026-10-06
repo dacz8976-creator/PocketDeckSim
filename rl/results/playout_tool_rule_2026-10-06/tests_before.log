@@ -1,0 +1,108 @@
+warning: unused import: `TrainerType`
+  --> src/players/value_functions.rs:21:76
+   |
+21 | use crate::models::{Attack, Card, EnergyType, PlayedCard, StatusCondition, TrainerType, BASIC_STAGE};
+   |                                                                            ^^^^^^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: variable does not need to be mutable
+   --> src/actions/energy_moves.rs:187:9
+    |
+187 |     let mut take = |pools: &mut Vec<(usize, Vec<EnergyType>)>,
+    |         ----^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` (part of `#[warn(unused)]`) on by default
+
+warning: associated function `geometric_until_tails` is never used
+   --> src/actions/attack_outcome.rs:474:12
+    |
+298 | impl AttackOutcomes {
+    | ------------------- associated function in this implementation
+...
+474 |     pub fn geometric_until_tails(
+    |            ^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: function `estimated_attack_damage` is never used
+    --> src/players/value_functions.rs:2232:4
+     |
+2232 | fn estimated_attack_damage(attack: &Attack, slot: &PlayedCard, state: &State, player: usize) -> f64 {
+     |    ^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `best_attack_value` is never used
+    --> src/players/value_functions.rs:2528:4
+     |
+2528 | fn best_attack_value(slot: &PlayedCard, form: &Card, state: &State, player: usize) -> f64 {
+     |    ^^^^^^^^^^^^^^^^^
+
+warning: `deckgym` (lib) generated 5 warnings (run `cargo fix --lib -p deckgym` to apply 2 suggestions)
+error[E0432]: unresolved imports `deckgym::players::playout_player::placements_with_effect`, `deckgym::players::playout_player::tool_conditions`, `deckgym::players::playout_player::ToolRulePlayer`, `deckgym::players::playout_player::ToolSpot`
+  --> tests/playout_tools_test.rs:15:5
+   |
+15 |     placements_with_effect, tool_conditions, Knowledge, PlayoutParams, PlayoutPlayer, Step, ToolRulePlayer, ToolSpot,
+   |     ^^^^^^^^^^^^^^^^^^^^^^  ^^^^^^^^^^^^^^^                                                 ^^^^^^^^^^^^^^  ^^^^^^^^ no `ToolSpot` in `players::playout_player`
+   |     |                       |                                                               |
+   |     |                       |                                                               no `ToolRulePlayer` in `players::playout_player`
+   |     |                       no `tool_conditions` in `players::playout_player`
+   |     no `placements_with_effect` in `players::playout_player`
+
+error[E0609]: no field `tools` on type `PlayoutParams`
+   --> tests/playout_tools_test.rs:173:36
+    |
+173 |     assert!(!PlayoutParams::new(3).tools);
+    |                                    ^^^^^ unknown field
+    |
+    = note: available fields are: `depth`, `rollouts`, `cap`, `z`, `knowledge` ... and 3 others
+
+error[E0609]: no field `tools` on type `PlayoutParams`
+   --> tests/playout_tools_test.rs:175:16
+    |
+175 |     assert!(on.tools);
+    |                ^^^^^ unknown field
+    |
+    = note: available fields are: `depth`, `rollouts`, `cap`, `z`, `knowledge` ... and 3 others
+
+error[E0560]: struct `PlayoutParams` has no field named `tools`
+   --> tests/playout_tools_test.rs:189:97
+    |
+189 |     let params = PlayoutParams { rollouts: rounds, cap: 12, z: 50.0, knowledge: Knowledge::Lab, tools, ..PlayoutParams::new(3) };
+    |                                                                                                 ^^^^^ `PlayoutParams` does not have this field
+    |
+    = note: available fields are: `depth`, `budget_ms`, `trace`, `pool`
+
+error[E0599]: no method named `tool_rule_study` found for struct `PlayoutPlayer` in the current scope
+   --> tests/playout_tools_test.rs:208:33
+    |
+208 |     let study = pilot(6, false).tool_rule_study(&mut StdRng::seed_from_u64(20_000_000_201), &observation, &moves, 6);
+    |                                 ^^^^^^^^^^^^^^^ method not found in `PlayoutPlayer`
+
+error[E0599]: no method named `tool_rule_study` found for struct `PlayoutPlayer` in the current scope
+   --> tests/playout_tools_test.rs:228:33
+    |
+228 |     let run = || pilot(8, true).tool_rule_study(&mut StdRng::seed_from_u64(20_000_000_202), &observation, &[first.clone()], 8);
+    |                                 ^^^^^^^^^^^^^^^ method not found in `PlayoutPlayer`
+
+error[E0282]: type annotations needed
+   --> tests/playout_tools_test.rs:248:76
+    |
+248 |             let bench = state.in_play_pokemon[a.actor].iter().skip(1).any(|p| p.is_some());
+    |                                                                            ^  - type must be known at this point
+    |
+help: consider giving this closure parameter an explicit type
+    |
+248 |             let bench = state.in_play_pokemon[a.actor].iter().skip(1).any(|p: /* Type */| p.is_some());
+    |                                                                             ++++++++++++
+
+error[E0614]: type `usize` cannot be dereferenced
+   --> tests/playout_tools_test.rs:249:66
+    |
+249 |             self.placed.borrow_mut().push((tool_card.get_name(), *in_play_idx, bench));
+    |                                                                  ^^^^^^^^^^^^ can't be dereferenced
+
+Some errors have detailed explanations: E0282, E0432, E0560, E0599, E0609, E0614.
+For more information about an error, try `rustc --explain E0282`.
+error: could not compile `deckgym` (test "playout_tools_test") due to 8 previous errors
