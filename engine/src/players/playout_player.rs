@@ -38,8 +38,9 @@
 //!
 //! The Tool-placement rule (Oct 6, `_tools`, off by default; playout_tools.rs): in the play-outs, on both sides, a Tool is
 //! attached only where its printed effect can apply; `tool_rule_study` plays the same worlds with the rule off and on.
-//! The same `_tools` filters kx<N>'s own candidates (Oct 6, the follow-up): when km<N>'s proposal is a placement without
-//! an effect and another has one, the placements without one leave the pool, named in the trace.
+//! The same `_tools` breaks ties at kx<N>'s own decision (Oct 6, the amended follow-up): every placement is played out, and
+//! only when no move clears the z bar and km<N>'s placement has no printed effect while another has one does kx<N> play
+//! the placement with an effect ("tie-break: Tool effect").
 use std::cell::{Cell, RefCell};
 use std::collections::{BTreeMap, BTreeSet};
 use std::rc::Rc;
@@ -62,7 +63,8 @@ pub use playout_plan::{Plan, PlanTally, PlanTurn, Spot, Step};
 #[path = "playout_tools.rs"]
 pub mod playout_tools;
 pub use playout_tools::{
-    conditions_hold, placements_with_effect, tool_conditions, tool_filter, ToolConditions, ToolRulePlayer, ToolSpot,
+    conditions_hold, kept_by_playouts, placements_with_effect, tie_break_placements, tool_conditions, ToolConditions,
+    ToolRulePlayer, ToolSpot,
 };
 use crate::actions::Action;
 use crate::models::{Card, EnergyType};
@@ -139,8 +141,8 @@ pub struct PlayoutParams {
     pub trace: bool,
     /// The candidate pool (`_poolwide`, the default, or `_poolmeta`).
     pub pool: PoolSet,
-    /// The Tool-placement rule (`_tools`; off by default): in the play-outs, and as a filter on the pilot's own candidates
-    /// (playout_tools.rs).
+    /// The Tool-placement rule (`_tools`; off by default): in the play-outs, and as a within-noise tie-break at the pilot's
+    /// own decision (playout_tools.rs).
     pub tools: bool,
 }
 
@@ -231,7 +233,7 @@ pub struct CandidateReport {
     pub se: f64,
 }
 
-/// A move left out of the candidates, and why: by the cap, or (`_tools`) a Tool placement without effect.
+/// A move left out by the candidate cap, and why.
 #[derive(Debug, Clone)]
 pub struct Dropped {
     pub label: String,
@@ -848,20 +850,21 @@ impl PlayoutPlayer {
         let _quiet = QuietDump::new();
         let me = observation.actor;
         let state = observation.visible_state();
-        let km_proposal = self.km.decision_fn(&mut rng.clone(), observation, actions);
+        let km_move = self.km.decision_fn(&mut rng.clone(), observation, actions);
         let label = |a: &Action| format!("{:?}", a.action).chars().take(160).collect::<String>();
-        // The Tool rule at kx's own decision (`_tools`, playout_tools.rs): when km's proposal is a placement without a
-        // printed effect and another has one, the placements without one leave the pool (named below), and km chooses
-        // again among the rest with the same randomness, as in the play-outs. Otherwise the pool is every legal move.
-        let filtered = if self.params.tools { tool_filter(state, actions, &km_proposal) } else { None };
-        let (km_move, pool, tool_drops) = match filtered {
-            Some((kept, dropped)) => (self.km.decision_fn(&mut rng.clone(), observation, &kept), kept, dropped),
-            None => (km_proposal, actions.to_vec(), Vec::new()),
+        // The Tool rule's tie-break (`_tools`, playout_tools.rs): when km's proposal is a placement without a printed effect
+        // now and another has one, the placement with an effect km prefers (its choice among those, the same randomness as
+        // in the play-outs). Every move stays in the pool; it decides only within the noise, after the play-outs.
+        let tie_break = if self.params.tools {
+            tie_break_placements(state, actions, &km_move)
+                .map(|(effective, why)| (self.km.decision_fn(&mut rng.clone(), observation, &effective), effective, why))
+        } else {
+            None
         };
         let mut seen = BTreeSet::new();
         let mut distinct: Vec<Action> = vec![km_move.clone()];
         seen.insert(format!("{km_move:?}"));
-        for a in &pool {
+        for a in actions {
             if seen.insert(format!("{a:?}")) {
                 distinct.push(a.clone());
             }
@@ -871,7 +874,7 @@ impl PlayoutPlayer {
             turn: state.turn_count,
             actor: me,
             candidates: vec![CandidateReport { action: km_move.clone(), label: label(&km_move), score: f64::NAN, diff: 0.0, se: f64::NAN }],
-            dropped: tool_drops.iter().map(|(a, why)| Dropped { label: label(a), reason: why.clone() }).collect(),
+            dropped: vec![],
             km3: 0,
             chosen: 0,
             reason: String::new(),
@@ -1035,6 +1038,40 @@ impl PlayoutPlayer {
                 "within the noise: the best move leads km's by {:+.3} with a standard error of {:.3} (threshold {} SE): km's move kept",
                 lead.diff, lead.se, self.params.z
             );
+        }
+        // The tie-break: no move cleared the bar, so km's move would stand; if it is a placement without an effect now and
+        // a placement with one is in the pool, that one is played, unless km's leads it beyond the noise.
+        if let (0, Some((preferred, effective, why))) = (report.chosen, &tie_break) {
+            let target = report.candidates.iter().position(|c| c.action == *preferred).or_else(|| {
+                (0..report.candidates.len())
+                    .filter(|&c| effective.contains(&report.candidates[c].action))
+                    .fold(None, |b: Option<usize>, c| match b {
+                        Some(b) if report.candidates[b].score >= report.candidates[c].score => Some(b),
+                        _ => Some(c),
+                    })
+            });
+            if let Some(t) = target {
+                let c = &report.candidates[t];
+                let sd = |se: f64| if se > 0.0 { format!("{:.1}", c.diff.abs() / se) } else { "inf".to_string() };
+                if kept_by_playouts(c.diff, c.se, self.params.z) {
+                    report.reason = format!(
+                        "{}; {why}, but its play-outs lead the placement with one, {}, by {:+.3} ({} standard errors): km's move kept",
+                        report.reason,
+                        c.label,
+                        -c.diff,
+                        sd(c.se)
+                    );
+                } else {
+                    report.reason = format!(
+                        "tie-break: Tool effect: {why}, and no move clears the bar ({}); the placement with an effect km prefers is played, {} ({:+.3} v km's, {} standard errors)",
+                        report.reason,
+                        c.label,
+                        c.diff,
+                        sd(c.se)
+                    );
+                    report.chosen = t;
+                }
+            }
         }
         report.millis = start.elapsed().as_secs_f64() * 1000.0;
         report

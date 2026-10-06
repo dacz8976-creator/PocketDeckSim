@@ -6,6 +6,15 @@
 //!   playout_tool_rule --positions <positions.json> --rounds 128 --out results.jsonl [--resume]
 //! positions.json: [{"id", "state": <state file>, "deck": <the pilot's list>, "opponent": <the opponent's list>, "seed"}];
 //! the pilot is the side to move. `--resume` skips positions already in `--out`.
+//!   playout_tool_rule --tie-break --positions <positions.json> --rounds 64 --out results.jsonl [--resume]
+//! Gate 2 of the tie-break at kx3's own decision (Oct 6, the amended follow-up). A position with a "tool" is first advanced
+//! by playing that Tool (km3's move there), so the decision studied is its placement. There: kx3's pool with `_tools` off
+//! and on (the same: nothing leaves it), every placement played out `--rounds` times with the play-out rule off and on (as
+//! above), and kx3's choice three ways: `_tools` off (the rule off), the play-out rule alone, and `_tools` on (the rule on,
+//! then the tie-break: when nothing clears the bar and km3's placement has no effect now while another has one, km3's
+//! preferred placement with an effect, unless km3's leads it beyond the noise); the paired difference of `_tools` on's
+//! choice over off's, round by round. A position without a "tool" is not a placement: only its pool and decision rule are
+//! compared, on and off.
 //!   playout_tool_rule --list-tools
 //! prints every Tool of the card database (one per distinct text) with the conditions the rule reads from its text.
 use std::collections::BTreeSet;
@@ -15,7 +24,10 @@ use deckgym::card_ids::CardId;
 use deckgym::database::get_card_by_enum;
 use deckgym::models::Card;
 use deckgym::observation::{PlayerObservation, RevealedKnowledge};
-use deckgym::players::playout_player::{tool_conditions, Knowledge, PlayoutParams, PlayoutPlayer};
+use deckgym::actions::SimpleAction;
+use deckgym::players::playout_player::{kept_by_playouts, placements_with_effect, tool_conditions, Knowledge, PlayoutParams, PlayoutPlayer};
+use deckgym::players::{create_players, PlayerCode};
+use deckgym::Game;
 use strum::IntoEnumIterator;
 use deckgym::{Deck, State};
 use rand::{rngs::StdRng, SeedableRng};
@@ -45,8 +57,131 @@ fn choice(scores: &[Vec<f64>], z: f64) -> usize {
     if d > 0.0 && d > z * se { best } else { 0 }
 }
 
+/// Gate 2 of the tie-break (see the header).
+fn tie_break_gate(args: &[String]) {
+    let positions: Vec<Value> = serde_json::from_str(&std::fs::read_to_string(arg(args, "--positions").unwrap()).unwrap()).unwrap();
+    let rounds: usize = arg(args, "--rounds").map_or(64, |r| r.parse().unwrap());
+    let out_path = arg(args, "--out").unwrap();
+    let done: BTreeSet<String> = if args.iter().any(|a| a == "--resume") {
+        std::fs::read_to_string(&out_path)
+            .unwrap_or_default()
+            .lines()
+            .filter_map(|l| serde_json::from_str::<Value>(l).ok())
+            .filter_map(|v| v["id"].as_str().map(String::from))
+            .collect()
+    } else {
+        BTreeSet::new()
+    };
+    let mut out = std::fs::OpenOptions::new().create(true).append(true).open(&out_path).unwrap();
+    for p in &positions {
+        let id = p["id"].as_str().unwrap().to_string();
+        if done.contains(&id) {
+            continue;
+        }
+        let mut state: State = serde_json::from_str(&std::fs::read_to_string(p["state"].as_str().unwrap()).unwrap()).unwrap();
+        let deck = Deck::from_file(p["deck"].as_str().unwrap()).unwrap();
+        let opponent = Deck::from_file(p["opponent"].as_str().unwrap()).unwrap();
+        let seed = p["seed"].as_u64().unwrap();
+        let tool = p["tool"].as_str();
+        if let Some(name) = tool {
+            // Play the Tool (km3's move at the position), so the decision is its placement.
+            let (me, legal) = state.generate_possible_actions();
+            let play = legal
+                .iter()
+                .find(|a| matches!(&a.action, SimpleAction::Play { trainer_card } if trainer_card.name == name))
+                .unwrap_or_else(|| panic!("{id}: {name} can't be played"))
+                .clone();
+            let (d0, d1) = if me == 0 { (deck.clone(), opponent.clone()) } else { (opponent.clone(), deck.clone()) };
+            let km = PlayerCode::KM { max_depth: 3 };
+            let mut game = Game::from_state(state, create_players(d0, d1, vec![km.clone(), km]), seed);
+            game.apply_action(&play);
+            state = game.get_state_clone();
+        }
+        let (me, actions) = state.generate_possible_actions();
+        let observation = PlayerObservation::from_state(&state, me, &RevealedKnowledge::default());
+        let pilot = |tools: bool| {
+            let params = PlayoutParams { rollouts: 1, cap: 12, z: 2.0, knowledge: Knowledge::Lab, tools, ..PlayoutParams::new(3) };
+            PlayoutPlayer::with_extra_lists(deck.clone(), opponent.clone(), params, Vec::new())
+        };
+        let pool_off = pilot(false).evaluate(&mut StdRng::seed_from_u64(seed), &observation, &actions);
+        let pool_on = pilot(true).evaluate(&mut StdRng::seed_from_u64(seed), &observation, &actions);
+        let off_moves: Vec<_> = pool_off.candidates.iter().map(|c| c.action.clone()).collect();
+        let on_moves: Vec<_> = pool_on.candidates.iter().map(|c| c.action.clone()).collect();
+        let effective = placements_with_effect(&state, &actions);
+        // With one round nothing clears the bar, so `_tools` on shows the tie-break's placement, if it applies.
+        let tie_target = pool_on
+            .reason
+            .starts_with("tie-break")
+            .then(|| off_moves.iter().position(|a| *a == pool_on.candidates[pool_on.chosen].action).unwrap());
+        let base = json!({"id": id, "seed": seed, "placement": tool.is_some(), "tool": tool, "turn": state.turn_count,
+                          "pool": off_moves.iter().map(|a| format!("{:?}", a.action)).collect::<Vec<_>>(),
+                          "pool_unchanged": off_moves == on_moves && pool_on.dropped.len() == pool_off.dropped.len(),
+                          "km_proposal_has_effect": effective.contains(&off_moves[0]), "placements_with_effect": effective.len(),
+                          "tie_break_applies": tie_target.is_some(), "tie_break_target": tie_target.map(|t| format!("{:?}", off_moves[t].action))});
+        if tool.is_none() {
+            writeln!(out, "{base}").unwrap();
+            println!("{id}: not a placement; pool with _tools on {}, tie-break {}", if base["pool_unchanged"] == json!(true) { "unchanged" } else { "CHANGED" },
+                     if tie_target.is_some() { "APPLIES" } else { "doesn't apply" });
+            continue;
+        }
+        let study = pilot(true).tool_rule_study(&mut StdRng::seed_from_u64(seed), &observation, &off_moves, rounds);
+        let off: Vec<Vec<f64>> = study.moves.iter().map(|m| m.off.iter().map(|o| o.score).collect()).collect();
+        let on: Vec<Vec<f64>> = study.moves.iter().map(|m| m.on.iter().map(|o| o.score).collect()).collect();
+        let c_off = choice(&off, 2.0);
+        let c_rule = choice(&on, 2.0);
+        // `_tools` on: the play-out rule's choice; if it is km3's move and the tie-break applies, the placement with an effect
+        // km3 prefers, unless km3's leads it beyond the noise (as `evaluate` decides).
+        let km_lead = tie_target.map(|t| {
+            let d: Vec<f64> = on[0].iter().zip(&on[t]).map(|(k, e)| k - e).collect();
+            stats(&d)
+        });
+        let kept = km_lead.is_some_and(|(m, se)| kept_by_playouts(-m, se, 2.0));
+        let c_on = match tie_target {
+            Some(t) if c_rule == 0 && !kept => t,
+            _ => c_rule,
+        };
+        let paired = |a: &[f64], b: &[f64]| {
+            let d: Vec<f64> = a.iter().zip(b).map(|(x, y)| x - y).collect();
+            let (m, se) = stats(&d);
+            json!({"mean": m, "lo": m - 1.96 * se, "hi": m + 1.96 * se})
+        };
+        let mut line = base.clone();
+        line["rounds"] = json!(study.rounds);
+        line["failed_rounds"] = json!(study.failed_rounds);
+        line["ms"] = json!(study.millis.round());
+        line["moves"] = json!(study
+            .moves
+            .iter()
+            .enumerate()
+            .map(|(i, m)| json!({"move": m.label, "has_effect": effective.contains(&m.action),
+                                 "off": stats(&off[i]).0, "on": stats(&on[i]).0, "rounds_acted": m.interventions.iter().filter(|&&n| n > 0).count()}))
+            .collect::<Vec<_>>());
+        line["choice_tools_off"] = json!(study.moves[c_off].label);
+        line["choice_rule_only"] = json!(study.moves[c_rule].label);
+        line["choice_tools_on"] = json!(study.moves[c_on].label);
+        line["tie_break"] = json!(if tie_target.is_none() { "doesn't apply" } else if c_rule != 0 { "a move cleared the bar" } else if kept { "km3's placement kept by its play-outs" } else { "applied" });
+        line["km_lead_over_target"] = json!(km_lead.map(|(m, se)| json!({"mean": m, "se": se})));
+        line["on_has_effect"] = json!(effective.contains(&study.moves[c_on].action));
+        line["off_has_effect"] = json!(effective.contains(&study.moves[c_off].action));
+        line["tools_on_minus_off"] = paired(&on[c_on], &off[c_off]);
+        line["tie_break_over_rule_only"] = paired(&on[c_on], &on[c_rule]);
+        writeln!(out, "{line}").unwrap();
+        out.flush().unwrap();
+        println!(
+            "{id}: {} placements ({} with effect); km3 proposes {} ({}); kx3 with _tools off -> {} | rule only -> {} | on -> {} (tie-break: {}); on - off {:+.3} [{:+.3}, {:+.3}]",
+            off_moves.len(), effective.len(), study.moves[0].label, if line["km_proposal_has_effect"] == json!(true) { "has an effect" } else { "no effect" },
+            study.moves[c_off].label, study.moves[c_rule].label, study.moves[c_on].label, line["tie_break"].as_str().unwrap(),
+            line["tools_on_minus_off"]["mean"].as_f64().unwrap(), line["tools_on_minus_off"]["lo"].as_f64().unwrap(), line["tools_on_minus_off"]["hi"].as_f64().unwrap()
+        );
+    }
+}
+
 fn main() {
     let args: Vec<String> = std::env::args().collect();
+    if args.iter().any(|a| a == "--tie-break") {
+        tie_break_gate(&args);
+        return;
+    }
     if args.iter().any(|a| a == "--list-tools") {
         let mut seen = BTreeSet::new();
         for card in CardId::iter().map(get_card_by_enum) {

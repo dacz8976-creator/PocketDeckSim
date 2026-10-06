@@ -21,12 +21,13 @@
 //!
 //! So a play-out in which km<N> never misplaces a Tool is km<N>'s exactly, and the interventions are counted.
 //!
-//! The same rule at kx<N>'s own decision (Oct 6, the follow-up; Fable via Dustin), a filter on its candidates
-//! (`tool_filter`, used by `PlayoutPlayer::evaluate` under the same `_tools`): when km<N>'s proposal is a placement
-//! without an effect and another placement has one, the placements without one leave the pool, each named in the trace
-//! with what the Tool's text needs, and km<N> chooses again among the rest with the same randomness (as in the
-//! play-outs), so the play-outs compare only placements that can act. Where no placement has an effect, or km<N>'s has
-//! one, the pool is unchanged.
+//! The same rule at kx<N>'s own decision, as a within-noise tie-break (Oct 6, the amended follow-up; Fable via Dustin;
+//! used by `PlayoutPlayer::evaluate` under the same `_tools`). Nothing leaves kx<N>'s pool: a planning bot must keep legal
+//! preparation moves evaluable (a Poncho on an Active that will retreat, a Tool placed ahead of an evolution), so every
+//! placement is played out. Only when no move clears the z bar, and km<N>'s proposal is a placement without a printed
+//! effect now while another placement has one, kx<N> plays the placement with an effect that km<N> prefers (its choice
+//! among those, with the same randomness, as in the play-outs; `tie_break_placements`), named "tie-break: Tool effect" in
+//! the trace. km<N>'s placement is kept when its play-outs lead that one beyond the noise (`kept_by_playouts`).
 use std::cell::Cell;
 use std::rc::Rc;
 
@@ -192,45 +193,29 @@ fn unmet(c: &ToolConditions, holder: &PlayedCard, in_play_idx: usize) -> Vec<Str
     needs
 }
 
-/// The rule as a filter on kx<N>'s own candidates (`_tools`). When km<N>'s proposal is a placement without a printed
-/// effect and another placement has one, the placements without one leave the pool, each with its reason; the other moves
-/// stay, in the order offered. `None`: the pool is unchanged (km<N>'s proposal isn't a placement, has an effect, or no
-/// placement has one).
-pub fn tool_filter(state: &State, actions: &[Action], km_move: &Action) -> Option<(Vec<Action>, Vec<(Action, String)>)> {
-    if !matches!(km_move.action, SimpleAction::AttachTool { .. }) {
-        return None;
-    }
+/// The tie-break's premise at kx<N>'s own decision (`_tools`): km<N>'s proposal is a placement without a printed effect
+/// now and another placement has one. Then the placements with one (in the order offered) and, in words, why km<N>'s has
+/// none; otherwise `None`.
+pub fn tie_break_placements(state: &State, actions: &[Action], km_move: &Action) -> Option<(Vec<Action>, String)> {
+    let SimpleAction::AttachTool { in_play_idx, tool_card: Card::Trainer(tool) } = &km_move.action else { return None };
     let effective = placements_with_effect(state, actions);
     if effective.is_empty() || effective.contains(km_move) {
         return None;
     }
-    let (mut kept, mut dropped): (Vec<Action>, Vec<(Action, String)>) = (Vec::new(), Vec::new());
-    for a in actions {
-        match &a.action {
-            SimpleAction::AttachTool { in_play_idx, tool_card: Card::Trainer(tool) } if !effective.contains(a) => {
-                if dropped.iter().any(|(d, _)| d == a) {
-                    continue;
-                }
-                let holder = state.in_play_pokemon[a.actor].get(*in_play_idx).and_then(|p| p.as_ref());
-                let needs = match (tool_conditions(&tool.effect), holder) {
-                    (Ok(c), Some(h)) => unmet(&c, h, *in_play_idx).join(" and "),
-                    _ => "a Pokémon in that spot".to_string(),
-                };
-                let name = holder.map_or("an empty spot".to_string(), |h| h.card.get_name());
-                let spot = if *in_play_idx == 0 { "in the Active Spot".to_string() } else { format!("on the Bench (spot {in_play_idx})") };
-                dropped.push((
-                    a.clone(),
-                    format!(
-                        "the Tool rule: {} has no printed effect on {name} {spot} (it needs {needs}); km's proposal was a placement without effect and {} can act, so these leave the pool",
-                        tool.name,
-                        effective.len()
-                    ),
-                ));
-            }
-            _ => kept.push(a.clone()),
-        }
-    }
-    Some((kept, dropped))
+    let holder = state.in_play_pokemon[km_move.actor].get(*in_play_idx).and_then(|p| p.as_ref());
+    let needs = match (tool_conditions(&tool.effect), holder) {
+        (Ok(c), Some(h)) => unmet(&c, h, *in_play_idx).join(" and "),
+        _ => "a Pokémon in that spot".to_string(),
+    };
+    let name = holder.map_or("an empty spot".to_string(), |h| h.card.get_name());
+    let spot = if *in_play_idx == 0 { "in the Active Spot".to_string() } else { format!("on the Bench (spot {in_play_idx})") };
+    Some((effective, format!("km's {} on {name} {spot} has no printed effect now (it needs {needs})", tool.name)))
+}
+
+/// Whether km<N>'s placement without effect is kept: its play-outs lead the placement with an effect beyond the noise.
+/// `diff` is that placement's paired lead over km<N>'s (mean), `se` its standard error.
+pub fn kept_by_playouts(diff: f64, se: f64, z: f64) -> bool {
+    diff < 0.0 && -diff > z * se
 }
 
 /// The Tool placements among `actions` where the Tool's effect can apply (a text this reader can't read limits nothing).
