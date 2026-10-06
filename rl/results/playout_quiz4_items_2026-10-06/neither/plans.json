@@ -1,0 +1,53 @@
+[
+  {"id": "Q06", "seed": 24200001106, "k": 1,
+   "first_move": {"do": "ability", "of": ["Indeedee ex"], "at": "bench"},
+   "rival": {"do": "energy", "to": ["Indeedee ex"], "at": "bench"},
+   "rival_is": "kx3 (its move in the game: the turn's Psychic to the Benched Indeedee ex); km3's first move is the plan's own, Watch Over",
+   "note": "Dustin: \"use the bench indeedee's ability to heal the active one, retreat the active indeedee to lillipup, attach energy to lillipup and attack\"",
+   "plan": {"turns": [{"steps": [
+     {"do": "ability", "of": ["Indeedee ex"], "at": "bench"},
+     {"do": "retreat_to", "to": ["Lillipup"]},
+     {"do": "energy", "to": ["Lillipup"], "at": "active"},
+     {"do": "attack", "title": "Tackle"}]}]}},
+  {"id": "Q06-after-watch-over", "seed": 24200001126, "k": 1,
+   "first_move": {"do": "retreat_to", "to": ["Lillipup"]},
+   "rival": {"do": "energy", "to": ["Indeedee ex"], "at": "active"},
+   "rival_is": "km3 (its next move in the game: the turn's Psychic to the Active Indeedee ex, then Psychic)",
+   "note": "Q06 one move on, after the Benched Indeedee ex's Watch Over (both Dustin's and km3's first move): the retreat into Lillipup, where the two plans part",
+   "plan": {"turns": [{"steps": [
+     {"do": "retreat_to", "to": ["Lillipup"]},
+     {"do": "energy", "to": ["Lillipup"], "at": "active"},
+     {"do": "attack", "title": "Tackle"}]}]}},
+  {"id": "Q07", "seed": 24200001107, "k": 1,
+   "first_move": {"do": "retreat_to", "to": ["Stoutland"]},
+   "rival": {"do": "energy", "to": ["Indeedee ex"], "at": "active"},
+   "rival_is": "kx3 (its move in the game: the turn's Psychic to the Active Indeedee ex, then Psychic)",
+   "note": "Dustin: \"Retreat indeedee, promote stoutland, attach energy to stoutland, end turn\"",
+   "plan": {"turns": [{"steps": [
+     {"do": "retreat_to", "to": ["Stoutland"]},
+     {"do": "energy", "to": ["Stoutland"], "at": "active"}]}]}},
+  {"id": "Q07-v-km3", "state": "Q07", "seed": 24200001107, "k": 1,
+   "first_move": {"do": "retreat_to", "to": ["Stoutland"]},
+   "rival": {"do": "energy", "to": ["Stoutland"], "at": "bench"},
+   "rival_is": "km3 (its move in the game: the turn's Psychic to the Benched Stoutland, then End Turn)",
+   "note": "Q07 again, against km3's move, in the same worlds",
+   "plan": {"turns": [{"steps": [
+     {"do": "retreat_to", "to": ["Stoutland"]},
+     {"do": "energy", "to": ["Stoutland"], "at": "active"}]}]}},
+  {"id": "Q11", "seed": 24200001111, "k": 1,
+   "first_move": {"do": "attack", "title": "Turbo Shark"},
+   "rival": {"do": "retreat_to", "to": ["Alolan Vulpix"]},
+   "rival_is": "kx3 (its move in the game: retreat into the Benched Alolan Vulpix, then Gnaw)",
+   "note": "Dustin: \"I would probably attack with sharpedo and attach its energy to lapras. Putting vulpix on the bench gives the opponent an extra 20 damage.\"",
+   "plan": {"turns": [{"steps": [
+     {"do": "attack", "title": "Turbo Shark"},
+     {"do": "extra_energy", "to": ["Lapras"]}]}]}},
+  {"id": "Q11-v-km3", "state": "Q11", "seed": 24200001111, "k": 1,
+   "first_move": {"do": "attack", "title": "Turbo Shark"},
+   "rival": {"do": "bench", "card": "Alolan Vulpix"},
+   "rival_is": "km3 (its move in the game: bench the second Alolan Vulpix, then Turbo Shark, its Water to Lapras)",
+   "note": "Q11 again, against km3's move, in the same worlds",
+   "plan": {"turns": [{"steps": [
+     {"do": "attack", "title": "Turbo Shark"},
+     {"do": "extra_energy", "to": ["Lapras"]}]}]}}
+]

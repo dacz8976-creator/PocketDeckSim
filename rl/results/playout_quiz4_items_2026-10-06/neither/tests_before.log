@@ -1,0 +1,32 @@
+Quiz 4 item 3's tests at the tests-first commit (before the Ability step): cargo test --release --features test-utils --test playout_quiz4_test -- an_ability_step dustins_q06
+
+
+thread 'dustins_q06_plan_is_played_as_written' (16755) panicked at tests/playout_quiz4_test.rs:393:68:
+called `Result::unwrap()` on an `Err` value: Error("unknown variant `ability`, expected one of `energy`, `extra_energy`, `evolve`, `bench`, `play`, `target`, `retreat_to`, `attack`", line: 0, column: 0)
+stack backtrace:
+   0: __rustc::rust_begin_unwind
+   1: core::panicking::panic_fmt
+   2: core::result::unwrap_failed
+   3: core::ops::function::FnOnce::call_once
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+
+---- an_ability_step_names_whose_ability_is_used stdout ----
+
+thread 'an_ability_step_names_whose_ability_is_used' (16754) panicked at tests/playout_quiz4_test.rs:371:53:
+called `Result::unwrap()` on an `Err` value: Error("unknown variant `ability`, expected one of `energy`, `extra_energy`, `evolve`, `bench`, `play`, `target`, `retreat_to`, `attack`", line: 1, column: 16)
+stack backtrace:
+   0: __rustc::rust_begin_unwind
+   1: core::panicking::panic_fmt
+   2: core::result::unwrap_failed
+   3: playout_quiz4_test::an_ability_step_names_whose_ability_is_used::{{closure}}
+   4: core::ops::function::FnOnce::call_once
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+
+
+failures:
+    an_ability_step_names_whose_ability_is_used
+    dustins_q06_plan_is_played_as_written
+
+test result: FAILED. 0 passed; 2 failed; 0 ignored; 0 measured; 10 filtered out; finished in 0.13s
+
+error: test failed, to rerun pass `--test playout_quiz4_test`

@@ -1,0 +1,331 @@
+[
+  {
+    "checked_against_the_log": {
+      "km3_plays": "Ability:Watch Over@2",
+      "legal": 7,
+      "turn": 4
+    },
+    "decision": 7,
+    "deck": "05-indeedee-stoutland",
+    "id": "Q06",
+    "key": "05-indeedee-stoutland|t-lucario|2|1|ref",
+    "kx3_in_the_game": {
+      "chosen": "Attach:1Psychic@2 zone",
+      "kx3_arm_logged": "Attach:1Psychic@2 zone",
+      "plays_what_the_log_says": true,
+      "report": {
+        "candidates": [
+          {
+            "diff": 0.0,
+            "move": "Ability:Watch Over@2",
+            "score": 0.0,
+            "se": 0.0
+          },
+          {
+            "diff": 0.0,
+            "move": "EndTurn",
+            "score": 0.0,
+            "se": 0.0
+          },
+          {
+            "diff": 0.0,
+            "move": "Attach:1Psychic@0 zone",
+            "score": 0.0,
+            "se": 0.0
+          },
+          {
+            "diff": 0.3125,
+            "move": "Attach:1Psychic@2 zone",
+            "score": 0.3125,
+            "se": 0.11967838846954226
+          },
+          {
+            "diff": 0.0625,
+            "move": "Attach:1Psychic@3 zone",
+            "score": 0.0625,
+            "se": 0.0625
+          },
+          {
+            "diff": 0.0,
+            "move": "Retreat:2",
+            "score": 0.0,
+            "se": 0.0
+          },
+          {
+            "diff": 0.0,
+            "move": "Retreat:3",
+            "score": 0.0,
+            "se": 0.0
+          }
+        ],
+        "chosen": "Attach:1Psychic@2 zone",
+        "dropped": [],
+        "km": "Ability:Watch Over@2",
+        "reason": "play-outs: +0.312 over km's move, 2.6 standard errors (threshold 2)",
+        "rounds": 16
+      }
+    },
+    "legal": [
+      "EndTurn",
+      "Attach:1Psychic@0 zone",
+      "Attach:1Psychic@2 zone",
+      "Attach:1Psychic@3 zone",
+      "Retreat:2",
+      "Retreat:3",
+      "Ability:Watch Over@2"
+    ],
+    "opp": "t-lucario",
+    "seat": 1,
+    "seed": 24450030002,
+    "then": [],
+    "to_move": 1,
+    "turn": 4
+  },
+  {
+    "checked_against_the_log": {
+      "km3_plays": "Ability:Watch Over@2",
+      "legal": 7,
+      "turn": 4
+    },
+    "decision": 7,
+    "deck": "05-indeedee-stoutland",
+    "id": "Q06-after-watch-over",
+    "key": "05-indeedee-stoutland|t-lucario|2|1|ref",
+    "kx3_in_the_game": {
+      "chosen": "Attach:1Psychic@2 zone",
+      "kx3_arm_logged": "Attach:1Psychic@2 zone",
+      "plays_what_the_log_says": true,
+      "report": {
+        "candidates": [
+          {
+            "diff": 0.0,
+            "move": "Ability:Watch Over@2",
+            "score": 0.0,
+            "se": 0.0
+          },
+          {
+            "diff": 0.0,
+            "move": "EndTurn",
+            "score": 0.0,
+            "se": 0.0
+          },
+          {
+            "diff": 0.0,
+            "move": "Attach:1Psychic@0 zone",
+            "score": 0.0,
+            "se": 0.0
+          },
+          {
+            "diff": 0.3125,
+            "move": "Attach:1Psychic@2 zone",
+            "score": 0.3125,
+            "se": 0.11967838846954226
+          },
+          {
+            "diff": 0.0625,
+            "move": "Attach:1Psychic@3 zone",
+            "score": 0.0625,
+            "se": 0.0625
+          },
+          {
+            "diff": 0.0,
+            "move": "Retreat:2",
+            "score": 0.0,
+            "se": 0.0
+          },
+          {
+            "diff": 0.0,
+            "move": "Retreat:3",
+            "score": 0.0,
+            "se": 0.0
+          }
+        ],
+        "chosen": "Attach:1Psychic@2 zone",
+        "dropped": [],
+        "km": "Ability:Watch Over@2",
+        "reason": "play-outs: +0.312 over km's move, 2.6 standard errors (threshold 2)",
+        "rounds": 16
+      }
+    },
+    "legal": [
+      "EndTurn",
+      "Attach:1Psychic@0 zone",
+      "Attach:1Psychic@2 zone",
+      "Attach:1Psychic@3 zone",
+      "Retreat:2",
+      "Retreat:3"
+    ],
+    "opp": "t-lucario",
+    "seat": 1,
+    "seed": 24450030002,
+    "then": [
+      "Ability:Watch Over@2"
+    ],
+    "to_move": 1,
+    "turn": 4
+  },
+  {
+    "checked_against_the_log": {
+      "km3_plays": "Attach:1Psychic@2 zone",
+      "legal": 8,
+      "turn": 4
+    },
+    "decision": 15,
+    "deck": "05-indeedee-stoutland",
+    "id": "Q07",
+    "key": "05-indeedee-stoutland|t-hydreigon|3|0|ref",
+    "kx3_in_the_game": {
+      "chosen": "Attach:1Psychic@0 zone",
+      "kx3_arm_logged": "Attach:1Psychic@0 zone",
+      "plays_what_the_log_says": true,
+      "report": {
+        "candidates": [
+          {
+            "diff": 0.0,
+            "move": "Attach:1Psychic@2 zone",
+            "score": 0.375,
+            "se": 0.0
+          },
+          {
+            "diff": 0.0625,
+            "move": "EndTurn",
+            "score": 0.4375,
+            "se": 0.11063265039459795
+          },
+          {
+            "diff": 0.3125,
+            "move": "Attach:1Psychic@0 zone",
+            "score": 0.6875,
+            "se": 0.1505199322349037
+          },
+          {
+            "diff": 0.25,
+            "move": "Attach:1Psychic@1 zone",
+            "score": 0.625,
+            "se": 0.1707825127659933
+          },
+          {
+            "diff": -0.0625,
+            "move": "Attach:1Psychic@3 zone",
+            "score": 0.3125,
+            "se": 0.11063265039459795
+          },
+          {
+            "diff": -0.0625,
+            "move": "Retreat:1",
+            "score": 0.3125,
+            "se": 0.11063265039459795
+          },
+          {
+            "diff": 0.25,
+            "move": "Retreat:2",
+            "score": 0.625,
+            "se": 0.14433756729740643
+          },
+          {
+            "diff": -0.125,
+            "move": "Retreat:3",
+            "score": 0.25,
+            "se": 0.15478479684172258
+          }
+        ],
+        "chosen": "Attach:1Psychic@0 zone",
+        "dropped": [],
+        "km": "Attach:1Psychic@2 zone",
+        "reason": "play-outs: +0.312 over km's move, 2.1 standard errors (threshold 2)",
+        "rounds": 16
+      }
+    },
+    "legal": [
+      "EndTurn",
+      "Attach:1Psychic@0 zone",
+      "Attach:1Psychic@1 zone",
+      "Attach:1Psychic@2 zone",
+      "Attach:1Psychic@3 zone",
+      "Retreat:1",
+      "Retreat:2",
+      "Retreat:3"
+    ],
+    "opp": "t-hydreigon",
+    "seat": 0,
+    "seed": 24450020003,
+    "then": [],
+    "to_move": 0,
+    "turn": 4
+  },
+  {
+    "checked_against_the_log": {
+      "km3_plays": "Place:Alolan Vulpix@1",
+      "legal": 6,
+      "turn": 6
+    },
+    "decision": 14,
+    "deck": "draft-A-shark-tempo",
+    "id": "Q11",
+    "key": "draft-A-shark-tempo|t-suicune|3|1|ref",
+    "kx3_in_the_game": {
+      "chosen": "Retreat:3",
+      "kx3_arm_logged": "Retreat:3",
+      "plays_what_the_log_says": true,
+      "report": {
+        "candidates": [
+          {
+            "diff": 0.0,
+            "move": "Place:Alolan Vulpix@1",
+            "score": 0.1875,
+            "se": 0.0
+          },
+          {
+            "diff": -0.1875,
+            "move": "EndTurn",
+            "score": 0.0,
+            "se": 0.10077822185373188
+          },
+          {
+            "diff": 0.1875,
+            "move": "Attack:Turbo Shark",
+            "score": 0.375,
+            "se": 0.10077822185373188
+          },
+          {
+            "diff": 0.25,
+            "move": "Play:Misty",
+            "score": 0.4375,
+            "se": 0.11180339887498948
+          },
+          {
+            "diff": 0.0,
+            "move": "Retreat:2",
+            "score": 0.1875,
+            "se": 0.09128709291752768
+          },
+          {
+            "diff": 0.375,
+            "move": "Retreat:3",
+            "score": 0.5625,
+            "se": 0.15478479684172258
+          }
+        ],
+        "chosen": "Retreat:3",
+        "dropped": [],
+        "km": "Place:Alolan Vulpix@1",
+        "reason": "play-outs: +0.375 over km's move, 2.4 standard errors (threshold 2)",
+        "rounds": 16
+      }
+    },
+    "legal": [
+      "EndTurn",
+      "Place:Alolan Vulpix@1",
+      "Play:Misty",
+      "Retreat:2",
+      "Retreat:3",
+      "Attack:Turbo Shark"
+    ],
+    "opp": "t-suicune",
+    "seat": 1,
+    "seed": 24460050003,
+    "then": [],
+    "to_move": 1,
+    "turn": 6
+  }
+]

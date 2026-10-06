@@ -11,6 +11,10 @@
 //! within-noise tie-break at kx3's own decision, the Tool tie-break's shape: nothing leaves the pool; only when no move
 //! clears the bar and km3's move can do nothing now while another candidate does something, kx3 plays km3's choice among
 //! those ("tie-break: no effect now"), unless km3's move leads it beyond the noise. With the parameter off nothing changes.
+//!
+//! Item 3, the continuation experiment at the quiz's three "neither" positions (Q06, Q07, Q11): Dustin's plans are scripted
+//! by intent (rl/results/playout_quiz4_items_2026-10-06/neither/plans.json), and Q06's begins with an Ability, so a plan
+//! step can name whose Ability is used; the plan is played as he wrote it.
 use std::collections::BTreeSet;
 
 use deckgym::actions::{Action, SimpleAction};
@@ -19,8 +23,8 @@ use deckgym::card_ids::CardId;
 use deckgym::database::get_card_by_enum;
 use deckgym::models::{Card, PlayedCard};
 use deckgym::players::playout_player::{
-    effect_needs, effect_now, switch_bar, CardKind, DecisionReport, Knowledge, Need, PlayoutParams, PlayoutPlayer, PokemonFilter,
-    Reading, Scope,
+    effect_needs, effect_now, switch_bar, CardKind, DecisionReport, Knowledge, Need, Plan, PlayoutParams, PlayoutPlayer, PokemonFilter,
+    Reading, Scope, Step,
 };
 use deckgym::test_support::get_test_game_with_board;
 use strum::IntoEnumIterator;
@@ -339,4 +343,75 @@ fn the_tie_break_turns_away_from_an_action_that_does_nothing() {
     assert!(on.reason.starts_with("tie-break: no effect now"), "{}", on.reason);
     let chosen = &on.candidates[on.chosen].action;
     assert_eq!(effect_now(&state, chosen, &state.decks[0].cards), Some(true), "{chosen:?}");
+}
+
+// Item 3: the continuation experiment at the "neither" positions.
+
+const NEITHER: &str = "../rl/results/playout_quiz4_items_2026-10-06/neither";
+
+/// A position rebuilt from the development run (trainer_habits positions; checked there against the run's log).
+fn neither(id: &str) -> State {
+    serde_json::from_str(&std::fs::read_to_string(format!("{NEITHER}/states/{id}.json")).unwrap()).unwrap()
+}
+
+/// An entry of the experiment's plans file, as the runner reads it.
+fn neither_entry(id: &str) -> serde_json::Value {
+    let entries: Vec<serde_json::Value> = serde_json::from_str(&std::fs::read_to_string(format!("{NEITHER}/plans.json")).unwrap()).unwrap();
+    entries.into_iter().find(|e| e["id"] == id).unwrap()
+}
+
+/// A step names the Pokémon whose Ability is used: at Q06 the Benched Indeedee ex's Watch Over is the one legal Ability
+/// (the Active's was used this turn), so a step naming Indeedee ex on the Bench, or anywhere, names it; one naming the
+/// Active, or Lillipup (no Ability), names no legal move; and no other move is an Ability step.
+#[test]
+fn an_ability_step_names_whose_ability_is_used() {
+    let state = neither("Q06");
+    let (me, legal) = state.generate_possible_actions();
+    let found = |json: &str| -> Vec<Action> {
+        let step: Step = serde_json::from_str(json).unwrap();
+        legal.iter().filter(|a| step.matches(&state, me, a)).cloned().collect()
+    };
+    let bench = found(r#"{"do": "ability", "of": ["Indeedee ex"], "at": "bench"}"#);
+    assert_eq!(bench.len(), 1, "{bench:?}");
+    assert!(matches!(bench[0].action, SimpleAction::UseAbility { in_play_idx: 2 }), "{bench:?}");
+    assert_eq!(found(r#"{"do": "ability", "of": ["Indeedee ex"]}"#), bench);
+    assert!(found(r#"{"do": "ability", "of": ["Indeedee ex"], "at": "active"}"#).is_empty());
+    assert!(found(r#"{"do": "ability", "of": ["Lillipup"]}"#).is_empty());
+    let any = found(r#"{"do": "ability", "of": ["Indeedee ex", "Lillipup"]}"#);
+    assert_eq!(any, bench);
+    assert!(serde_json::from_str::<Step>(r#"{"do": "ability", "of": ["Indeedee ex"], "where": "bench"}"#).is_err(), "a misspelt field");
+}
+
+/// Dustin's Q06 plan, from the plans file, is played as he wrote it in every round: the Benched Indeedee ex's Watch Over
+/// (the first move), retreat into Lillipup, the turn's Psychic to it, Tackle. After kx3's move (the turn's Psychic to the
+/// Benched Indeedee ex) the Watch Over and the retreat are still played, but the Energy is spent, so Lillipup can't
+/// Tackle: both steps are skipped, and km3 decides in their place.
+#[test]
+fn dustins_q06_plan_is_played_as_written() {
+    let state = neither("Q06");
+    let entry = neither_entry("Q06");
+    let plan: Plan = serde_json::from_value(entry["plan"].clone()).unwrap();
+    let (me, legal) = state.generate_possible_actions();
+    let one = |step: &serde_json::Value| -> Action {
+        let step: Step = serde_json::from_value(step.clone()).unwrap();
+        let found: Vec<&Action> = legal.iter().filter(|a| step.matches(&state, me, a)).collect();
+        assert_eq!(found.len(), 1, "{step:?}");
+        found[0].clone()
+    };
+    let moves = [one(&entry["first_move"]), one(&entry["rival"])];
+    let list = deckgym::Deck::from_file("../decks/dustin/05-indeedee-stoutland.txt").unwrap();
+    let opp = deckgym::Deck::from_file("../decks/screen/opponents/t-lucario.txt").unwrap();
+    let params = PlayoutParams { rollouts: 4, cap: 12, z: 2.0, knowledge: Knowledge::Lab, ..PlayoutParams::new(3) };
+    let mut pilot = PlayoutPlayer::with_extra_lists(list, opp, params, Vec::new());
+    let observation = PlayerObservation::from_state(&state, me, &RevealedKnowledge::default());
+    let report = pilot.continuation_study(&mut StdRng::seed_from_u64(20_000_000_224), &observation, &moves, &plan, 1, 4);
+    assert_eq!(report.failed_rounds, 0);
+    let (planned, rival) = (&report.moves[0], &report.moves[1]);
+    assert_eq!(planned.counts.fired[0], vec![4, 4, 4, 4], "{:?}", planned.counts);
+    assert_eq!(rival.counts.fired[0], vec![4, 4, 0, 0], "{:?}", rival.counts);
+    assert_eq!(rival.counts.skipped[0], vec![0, 0, 4, 4], "{:?}", rival.counts);
+    assert_eq!(planned.plan_trace[0], "t4 first move: use the Benched Indeedee ex's Ability", "{:?}", planned.plan_trace);
+    for line in ["t4 plan: retreat into the Benched Lillipup", "t4 plan: the turn's Psychic to the Active Lillipup", "t4 plan: attack Tackle"] {
+        assert!(planned.plan_trace.iter().any(|l| l == line), "{line}: {:?}", planned.plan_trace);
+    }
 }
