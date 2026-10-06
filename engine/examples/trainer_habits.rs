@@ -27,6 +27,12 @@
 //!     from the game's own observation and search randomness: one JSON line wherever km3 proposes an attack, saying
 //!     whether the log played an attack; where it didn't, kx3 (the code given) decides again from the same randomness,
 //!     with every candidate's score, its lead over km3's attack and the reason (it must play what the log says).
+//!   ... scripted ... --noeffect-scan <kx code> --noeffect-out <file>
+//!     (Oct 6, quiz 4, item 2) At each of the deck side's decisions where the logged move can do nothing now by its text
+//!     (as kx3 reads it, from the observation), km3's proposal from the game's own observation and search randomness;
+//!     where km3 proposed that very move, kx3 (the code given, with `_noeffect` added) decides again from the same
+//!     randomness: whether the tie-break now plays another move, or km3's move is kept (by its play-outs, or because a
+//!     move cleared the bar, or nothing else does something).
 //!   trainer_habits positions --games <games.jsonl> --manifest <manifest.json> --at <at.json> --dir <dir>
 //!     (Oct 6, quiz 4, item 3) Positions of a run rebuilt exactly: for each entry of `--at` ({id, key, decision, then}),
 //!     the game of that key (an arm with km3 on both sides) is played to the deck side's decision number `decision` (the
@@ -549,6 +555,16 @@ fn is_attack(a: &Action) -> bool {
     matches!(a.action, SimpleAction::Attack(_))
 }
 
+/// At the deck side's moves that can do nothing now, km3's proposal, and kx3 with `_noeffect` where km3 proposed it.
+#[derive(Debug)]
+struct NoEffectScan {
+    params: PlayoutParams,
+    opponent: Deck,
+    km: Box<dyn Player>,
+    key: String,
+    out: std::sync::Arc<std::sync::Mutex<Vec<Value>>>,
+}
+
 /// Plays the moves a log records, each found by its label among the legal moves; at an ambiguous label, the option
 /// `forced` names (else the first).
 #[derive(Debug)]
@@ -560,6 +576,7 @@ struct Scripted {
     log: std::sync::Arc<std::sync::Mutex<ScriptLog>>,
     redecide: Option<Redecide>,
     attack_scan: Option<AttackScan>,
+    noeffect_scan: Option<NoEffectScan>,
 }
 
 impl Scripted {
@@ -583,6 +600,30 @@ impl Scripted {
                 "chosen_equals_played": c.action == *played, "km_score": r.candidates[r.km3].score, "chosen_score": c.score,
                 "lead": c.diff, "se": c.se, "reason": r.reason, "rounds": r.rounds,
                 "candidates": r.candidates.iter().map(|x| json!([harness_label(&x.action, state), x.score, x.diff, x.se])).collect::<Vec<_>>(),
+            });
+        }
+        sc.out.lock().unwrap().push(rec);
+    }
+
+    fn noeffect_scan(&mut self, rng: &StdRng, observation: &PlayerObservation, actions: &[Action], played: &Action, k: usize) {
+        let deck = self.deck.clone();
+        let Some(sc) = &mut self.noeffect_scan else { return };
+        let state = observation.visible_state();
+        if effect_now(state, played, &observation.known_own_deck) != Some(false) {
+            return;
+        }
+        let proposal = sc.km.decision_fn(&mut rng.clone(), observation, actions);
+        let mut rec = json!({"key": sc.key, "decision": k, "turn": state.turn_count, "card": action_card(state, played),
+                             "played": harness_label(played, state), "km": harness_label(&proposal, state), "km_proposed_it": proposal == *played});
+        if proposal == *played {
+            let r = PlayoutPlayer::new(deck, sc.opponent.clone(), sc.params.clone()).evaluate(&mut rng.clone(), observation, actions);
+            let c = &r.candidates[r.chosen];
+            let does = |a: &Action| effect_now(state, a, &observation.known_own_deck) != Some(false);
+            rec["kx3"] = json!({
+                "chosen": harness_label(&c.action, state), "chosen_does_something": does(&c.action), "plays_the_logged_move": c.action == *played,
+                "tie_break": r.reason.starts_with("tie-break: no effect now"), "reason": r.reason, "rounds": r.rounds,
+                "others_do_something": actions.iter().any(|a| does(a)),
+                "candidates": r.candidates.iter().map(|x| json!([harness_label(&x.action, state), x.score, does(&x.action)])).collect::<Vec<_>>(),
             });
         }
         sc.out.lock().unwrap().push(rec);
@@ -626,6 +667,7 @@ impl Player for Scripted {
         let k = self.next - 1;
         self.redecide(rng, observation, actions, &chosen, k);
         self.attack_scan(rng, observation, actions, &chosen, k);
+        self.noeffect_scan(rng, observation, actions, &chosen, k);
         chosen
     }
     fn get_deck(&self) -> Deck {
@@ -689,6 +731,8 @@ fn scripted(args: &[String]) {
     let redecided: std::sync::Mutex<Vec<Value>> = std::sync::Mutex::new(Vec::new());
     let attack_code = arg(args, "--attack-scan").map(|c| PlayoutParams::parse(c.strip_prefix("kx").unwrap()).unwrap());
     let scanned: std::sync::Mutex<Vec<Value>> = std::sync::Mutex::new(Vec::new());
+    let noeffect_code = arg(args, "--noeffect-scan").map(|c| PlayoutParams { noeffect: true, ..PlayoutParams::parse(c.strip_prefix("kx").unwrap()).unwrap() });
+    let noeffect_found: std::sync::Mutex<Vec<Value>> = std::sync::Mutex::new(Vec::new());
     let results: Vec<(Vec<Value>, Value)> = records
         .par_iter()
         .map(|g| {
@@ -725,6 +769,14 @@ fn scripted(args: &[String]) {
                     key: g["key"].as_str().unwrap().to_string(),
                     out: scan_out.clone(),
                 });
+                let noeffect_out = std::sync::Arc::new(std::sync::Mutex::new(Vec::new()));
+                let noeffect_scan = noeffect_code.clone().map(|params| NoEffectScan {
+                    params,
+                    opponent: od.clone(),
+                    km: km3_pair(d0, d1).remove(seat),
+                    key: g["key"].as_str().unwrap().to_string(),
+                    out: noeffect_out.clone(),
+                });
                 let mut players = km3_pair(d0, d1);
                 players[seat] = Box::new(Scripted {
                     labels: labels.clone(),
@@ -734,6 +786,7 @@ fn scripted(args: &[String]) {
                     log: log.clone(),
                     redecide,
                     attack_scan,
+                    noeffect_scan,
                 });
                 let mut game = Game::new(players, seed);
                 let ctx = json!({"source": "scripted", "key": g["key"], "seed": seed, "deck_seat": seat, "pilot_deck": g["pilot_deck"]});
@@ -757,6 +810,10 @@ fn scripted(args: &[String]) {
                         r["replayed_exactly"] = json!(same);
                         scanned.lock().unwrap().push(r);
                     }
+                    for mut r in noeffect_out.lock().unwrap().drain(..) {
+                        r["replayed_exactly"] = json!(same);
+                        noeffect_found.lock().unwrap().push(r);
+                    }
                     break (events, check);
                 }
                 let (d, _) = next.unwrap();
@@ -766,6 +823,12 @@ fn scripted(args: &[String]) {
             }
         })
         .collect();
+    if let Some(path) = arg(args, "--noeffect-out") {
+        let mut f = std::fs::File::create(path).unwrap();
+        for r in noeffect_found.into_inner().unwrap() {
+            writeln!(f, "{r}").unwrap();
+        }
+    }
     if let Some(path) = arg(args, "--attack-out") {
         let mut f = std::fs::File::create(path).unwrap();
         for r in scanned.into_inner().unwrap() {

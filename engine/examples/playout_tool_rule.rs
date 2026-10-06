@@ -15,8 +15,18 @@
 //! preferred placement with an effect, unless km3's leads it beyond the noise); the paired difference of `_tools` on's
 //! choice over off's, round by round. A position without a "tool" is not a placement: only its pool and decision rule are
 //! compared, on and off.
+//!   playout_tool_rule --no-effect --positions <positions.json> --rounds 64 --out results.jsonl [--resume]
+//! Gate 2 of the no-effect tie-break (Oct 6, quiz 4, item 2) at the same positions, each as stored (the decision before
+//! any Tool is played): whether km3's move and each candidate can do anything now by its printed text (`effect_now`), and
+//! kx3's decision with `_noeffect` off and on (one round shows where the tie-break points; nothing else differs, since the
+//! rule changes no play-out). Where km3's move can do nothing, every candidate is played out `--rounds` times (km3's
+//! continuation, the same worlds and seeds as `evaluate`) and both choices are compared round by round.
 //!   playout_tool_rule --list-tools
 //! prints every Tool of the card database (one per distinct text) with the conditions the rule reads from its text.
+//!   playout_tool_rule --list-effects
+//! (Oct 6, quiz 4, item 2) prints every Item, Supporter and Stadium text and every Ability text of the card database
+//! (one per distinct text; Abilities named "X's T") with what the no-effect reader needs before it can do anything:
+//! "always", the needs (any one of them is enough), or why it isn't read; and whether the text can be a move.
 use std::collections::BTreeSet;
 use std::io::Write;
 
@@ -25,7 +35,10 @@ use deckgym::database::get_card_by_enum;
 use deckgym::models::Card;
 use deckgym::observation::{PlayerObservation, RevealedKnowledge};
 use deckgym::actions::SimpleAction;
-use deckgym::players::playout_player::{kept_by_playouts, placements_with_effect, tool_conditions, Knowledge, PlayoutParams, PlayoutPlayer};
+use deckgym::players::playout_player::{
+    action_card, effect_needs, effect_now, kept_by_playouts, placements_with_effect, tool_conditions, Knowledge, Plan, PlayoutParams,
+    PlayoutPlayer, Reading,
+};
 use deckgym::players::{create_players, PlayerCode};
 use deckgym::Game;
 use strum::IntoEnumIterator;
@@ -176,10 +189,129 @@ fn tie_break_gate(args: &[String]) {
     }
 }
 
+/// Gate 2 of the no-effect tie-break (see the header).
+fn no_effect_gate(args: &[String]) {
+    let positions: Vec<Value> = serde_json::from_str(&std::fs::read_to_string(arg(args, "--positions").unwrap()).unwrap()).unwrap();
+    let rounds: usize = arg(args, "--rounds").map_or(64, |r| r.parse().unwrap());
+    let out_path = arg(args, "--out").unwrap();
+    let done: BTreeSet<String> = if args.iter().any(|a| a == "--resume") {
+        std::fs::read_to_string(&out_path)
+            .unwrap_or_default()
+            .lines()
+            .filter_map(|l| serde_json::from_str::<Value>(l).ok())
+            .filter_map(|v| v["id"].as_str().map(String::from))
+            .collect()
+    } else {
+        BTreeSet::new()
+    };
+    let mut out = std::fs::OpenOptions::new().create(true).append(true).open(&out_path).unwrap();
+    for p in &positions {
+        let id = p["id"].as_str().unwrap().to_string();
+        if done.contains(&id) {
+            continue;
+        }
+        let state: State = serde_json::from_str(&std::fs::read_to_string(p["state"].as_str().unwrap()).unwrap()).unwrap();
+        let deck = Deck::from_file(p["deck"].as_str().unwrap()).unwrap();
+        let opponent = Deck::from_file(p["opponent"].as_str().unwrap()).unwrap();
+        let seed = p["seed"].as_u64().unwrap();
+        let (me, actions) = state.generate_possible_actions();
+        let observation = PlayerObservation::from_state(&state, me, &RevealedKnowledge::default());
+        let pilot = |noeffect: bool, rollouts: usize| {
+            let params = PlayoutParams { rollouts, cap: 12, z: 2.0, knowledge: Knowledge::Lab, noeffect, ..PlayoutParams::new(3) };
+            PlayoutPlayer::with_extra_lists(deck.clone(), opponent.clone(), params, Vec::new())
+        };
+        // One round: the pool, km3's move, and where the tie-break points (nothing clears the bar with one round).
+        let pool_off = pilot(false, 1).evaluate(&mut StdRng::seed_from_u64(seed), &observation, &actions);
+        let pool_on = pilot(true, 1).evaluate(&mut StdRng::seed_from_u64(seed), &observation, &actions);
+        let moves: Vec<_> = pool_off.candidates.iter().map(|c| c.action.clone()).collect();
+        let effect = |a: &deckgym::actions::Action| match effect_now(&state, a, &observation.known_own_deck) {
+            Some(b) => json!(b),
+            None => Value::Null,
+        };
+        let km_effect = effect_now(&state, &moves[0], &observation.known_own_deck);
+        let tie_target = pool_on
+            .reason
+            .starts_with("tie-break: no effect now")
+            .then(|| moves.iter().position(|a| *a == pool_on.candidates[pool_on.chosen].action).unwrap());
+        let mut line = json!({"id": id, "seed": seed, "turn": state.turn_count,
+            "pool": pool_off.candidates.iter().map(|c| json!({"move": c.label, "card": action_card(&state, &c.action), "does_something": effect(&c.action)})).collect::<Vec<_>>(),
+            "pool_unchanged": pool_on.candidates.iter().map(|c| &c.action).eq(moves.iter()) && pool_on.dropped.len() == pool_off.dropped.len(),
+            "km_move_does_something": effect(&moves[0]), "tie_break_applies": tie_target.is_some(),
+            "tie_break_target": tie_target.map(|t| pool_off.candidates[t].label.clone()), "reason_on_one_round": pool_on.reason});
+        if km_effect != Some(false) {
+            writeln!(out, "{line}").unwrap();
+            println!("{id}: km3's move {} does something now ({}); pool with _noeffect on {}, tie-break {}", pool_off.candidates[0].label,
+                     action_card(&state, &moves[0]).unwrap_or_else(|| "no card text".into()),
+                     if line["pool_unchanged"] == json!(true) { "unchanged" } else { "CHANGED" }, if tie_target.is_some() { "APPLIES" } else { "doesn't apply" });
+            continue;
+        }
+        // km3's move does nothing now: every candidate played out, and kx3's two decisions from the same rounds.
+        let off = pilot(false, rounds).evaluate(&mut StdRng::seed_from_u64(seed), &observation, &actions);
+        let on = pilot(true, rounds).evaluate(&mut StdRng::seed_from_u64(seed), &observation, &actions);
+        let study = pilot(false, rounds).continuation_study(&mut StdRng::seed_from_u64(seed), &observation, &moves, &Plan::default(), 0, rounds);
+        let scores: Vec<Vec<f64>> = study.moves.iter().map(|m| m.km.iter().map(|o| o.score).collect()).collect();
+        let index = |a: &deckgym::actions::Action| moves.iter().position(|m| m == a).unwrap();
+        let (c_off, c_on) = (index(&off.candidates[off.chosen].action), index(&on.candidates[on.chosen].action));
+        let d: Vec<f64> = scores[c_on].iter().zip(&scores[c_off]).map(|(a, b)| a - b).collect();
+        let (m, se) = stats(&d);
+        line["rounds"] = json!(study.rounds);
+        line["failed_rounds"] = json!(study.failed_rounds);
+        line["moves"] = json!(study.moves.iter().enumerate().map(|(i, mv)| json!({"move": mv.label, "does_something": effect(&mv.action),
+            "score": stats(&scores[i]).0, "kx3_score": off.candidates.iter().find(|c| c.action == mv.action).map(|c| c.score)}))
+            .collect::<Vec<_>>());
+        line["choice_off"] = json!(off.candidates[off.chosen].label);
+        line["choice_on"] = json!(on.candidates[on.chosen].label);
+        line["reason_off"] = json!(off.reason);
+        line["reason_on"] = json!(on.reason);
+        line["on_minus_off"] = json!({"mean": m, "lo": m - 1.96 * se, "hi": m + 1.96 * se});
+        writeln!(out, "{line}").unwrap();
+        out.flush().unwrap();
+        println!("{id}: km3's move {} does nothing now; kx3 off -> {} | on -> {} ({}); on - off {:+.3} [{:+.3}, {:+.3}]", pool_off.candidates[0].label,
+                 line["choice_off"].as_str().unwrap(), line["choice_on"].as_str().unwrap(), on.reason, m, m - 1.96 * se, m + 1.96 * se);
+    }
+}
+
 fn main() {
     let args: Vec<String> = std::env::args().collect();
     if args.iter().any(|a| a == "--tie-break") {
         tie_break_gate(&args);
+        return;
+    }
+    if args.iter().any(|a| a == "--no-effect") {
+        no_effect_gate(&args);
+        return;
+    }
+    if args.iter().any(|a| a == "--list-effects") {
+        let mut seen = BTreeSet::new();
+        for card in CardId::iter().map(get_card_by_enum) {
+            let (name, text, kind) = match &card {
+                Card::Trainer(t) if matches!(format!("{:?}", t.trainer_card_type).as_str(), "Item" | "Supporter" | "Stadium") => {
+                    (t.name.clone(), t.effect.clone(), format!("{:?}", t.trainer_card_type))
+                }
+                Card::Pokemon(p) => match &p.ability {
+                    Some(a) => (format!("{}'s {}", p.name, a.title), a.effect.clone(), "Ability".to_string()),
+                    None => continue,
+                },
+                _ => continue,
+            };
+            if !seen.insert(text.clone()) {
+                continue;
+            }
+            // A text is a move if it is played (an Item, a Supporter) or used: a Stadium "once during each player's turn",
+            // an Ability "once during your turn" or "as often as you like" (the others work by themselves).
+            let t = text.to_lowercase();
+            let move_ = match kind.as_str() {
+                "Item" | "Supporter" => true,
+                "Stadium" => t.contains("once during each player's turn"),
+                _ => t.contains("once during your turn") || t.starts_with("as often as you like"),
+            };
+            let reading = match effect_needs(&text) {
+                Ok(Reading::Always) => json!("always"),
+                Ok(Reading::Needs(needs)) => json!(needs.iter().map(|n| format!("{n:?}")).collect::<Vec<_>>()),
+                Err(why) => json!({"unread": why}),
+            };
+            println!("{}", json!({"card": name, "kind": kind, "can_be_a_move": move_, "reading": reading, "text": text}));
+        }
         return;
     }
     if args.iter().any(|a| a == "--list-tools") {
