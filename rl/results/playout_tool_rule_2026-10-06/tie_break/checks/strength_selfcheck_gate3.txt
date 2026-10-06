@@ -1,0 +1,7 @@
+Gate 3's pilot (the play-out rule and the tie-break) on the strength harness built from claude/playout-pilot dcd703d5's engine/ (rl/strength/build.sh; program sha256 29d3393114979f2baf9c8c23640021326a696705f544f8e852b9ebac99851d69; the sha256 depends on the build directory), 4 cores, 2026-10-06T13:47:37Z to 15:59:08Z (2 h 11 min):
+$ strength selfcheck --pilot kx3_r16_c12_z2_real_t0_poolmeta_tools --deck-a decks/screen/opponents/t-altaria.txt --deck-b decks/screen/opponents/t-suicune.txt --games 12
+selfcheck pilot=kx3_r16_c12_z2_real_t0_poolmeta_tools games=12 seat0_wins=6 seat1_wins=6 ties=0 turns=139 digest=c426e4c860e836ed
+KX_PARAMS (first line):
+KX_PARAMS {"budget_ms":0,"cap":12,"code":"kx3_r16_c12_z2_real_t0_poolmeta_tools","depth":3,"extra_lists":[],"knowledge":"REALISTIC (the opponent's list is drawn per play-out from the pool's 8 meta lists, among those consistent with the cards seen and the Energy Zone, else inferred from the most similar)","pool":"meta","pool_lists":8,"rollouts":16,"seat":0,"tool_rule":true,"z":2.0}
+
+With the play-out rule alone (9c33a685) the same pilot code printed 31d638dbc818b0fa, the development run's kx3 digest (seat0_wins=5 seat1_wins=7 turns=138): the tie-break changes kx3's own placements in these games, so the digest is new. The laptop's build must print c426e4c860e836ed.

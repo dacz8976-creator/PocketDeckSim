@@ -31,8 +31,10 @@ sections 5 and 9 (the addendum's amendments win). Branch `claude/playout-pilot`,
   Supporters, in km3's own games and in the play-outs. It ends in a proposed (not built) Copycat rule for the play-outs.
   See `rl/results/playout_trainer_habits_2026-10-05/`.
 - **The Tool-placement rule for the play-outs (Oct 6).** In kx3's play-outs, a Tool is attached only where its printed
-  effect can apply, read from each Tool's text. It's off by default (`_tools` turns it on); kx3's own move and km3 are
-  untouched. Gates 1 and 2 passed; gate 3 is registered for the laptop. See `rl/results/playout_tool_rule_2026-10-06/`.
+  effect can apply, read from each Tool's text. It's off by default (`_tools` turns it on); km3 is untouched. Gates 1
+  and 2 passed. The follow-up (Oct 6, amended) adds the same rule at kx3's own decision as a within-noise tie-break:
+  every placement is still played out. Gate 3, both together, is registered for the laptop. See
+  `rl/results/playout_tool_rule_2026-10-06/`.
 
 ## In short
 
@@ -692,7 +694,8 @@ reference arm's km3 game is negligible.
 - The Tool-placement rule (Oct 6; `rl/results/playout_tool_rule_2026-10-06/README.md`):
   - `engine/src/players/playout_tools.rs`: the rule, declared from `playout_player.rs`, so `mod.rs` is unchanged;
   - the `_tools` part of the code and `tool_rule_study` in `playout_player.rs`;
-  - `engine/tests/playout_tools_test.rs`: 8 tests;
+  - the tie-break in `evaluate` (`_tools`);
+  - `engine/tests/playout_tools_test.rs`: 14 tests;
   - `engine/examples/playout_tool_rule.rs`: gate 2's runner; `engine/examples/trainer_habits.rs`: the Trainer-habit
     instrument, extended for the rule.
 - Here:
