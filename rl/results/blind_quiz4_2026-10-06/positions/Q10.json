@@ -1,0 +1,469 @@
+{
+ "order": 10,
+ "matchup": {
+  "you": "Mega Manectric / Heliolisk (your deck 09)"
+ },
+ "turn": 3,
+ "you_went_first": true,
+ "situation": "Your turn (your 2nd turn; turn 3 of the game).",
+ "question": "Two plans for the rest of this turn. Each runs from here until its first step that draws or searches for cards (after that, what comes next depends on what you get), its attack, or the end of the turn. Which plan would you play: Plan A, Plan B, both reasonable, or neither?",
+ "plans": {
+  "A": {
+   "steps": [
+    "Attach Lightning Energy to Mega Manectric ex (Active)",
+    "End your turn without attacking"
+   ],
+   "ends": "end",
+   "ends_text": "The plan ends your turn."
+  },
+  "B": {
+   "steps": [
+    "Attach Lightning Energy to Helioptile (Bench 3)",
+    "Retreat Mega Manectric ex (Active), switching in Helioptile (Bench 3)",
+    "Attack with Thunder Shock"
+   ],
+   "ends": "attack",
+   "ends_text": "The plan ends with the attack."
+  }
+ },
+ "answer_options": [
+  "Plan A",
+  "Plan B",
+  "Both reasonable",
+  "Neither"
+ ],
+ "note_prompt": "A short note (optional): why, or what you would do instead.",
+ "points": {
+  "you": 0,
+  "opponent": 0
+ },
+ "you": {
+  "active": {
+   "name": "Mega Manectric ex",
+   "stage": 1,
+   "type": "Lightning",
+   "hp": 210,
+   "max_hp": 210,
+   "energy": [],
+   "tools": [
+    {
+     "name": "Elegant Cape",
+     "text": "The Stage 1 Pokémon this card is attached to gets +30 HP."
+    }
+   ],
+   "conditions": [],
+   "ability": null,
+   "attacks": [
+    {
+     "name": "Lightning Accelerator",
+     "cost": [
+      "Lightning",
+      "Lightning"
+     ],
+     "damage": "80+",
+     "text": "This attack does 30 more damage for each point you have gotten."
+    }
+   ],
+   "weakness": "Fighting",
+   "retreat": 0,
+   "retreat_now": 0,
+   "retreat_note": null,
+   "ko_points": 3,
+   "notes": [
+    "Evolved this turn"
+   ]
+  },
+  "bench": [
+   null,
+   {
+    "name": "Electrike",
+    "stage": 0,
+    "type": "Lightning",
+    "hp": 60,
+    "max_hp": 60,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": null,
+    "attacks": [
+     {
+      "name": "Quick Attack",
+      "cost": [
+       "Lightning"
+      ],
+      "damage": "10+",
+      "text": "Flip a coin. If heads, this attack does 30 more damage."
+     }
+    ],
+    "weakness": "Fighting",
+    "retreat": 1,
+    "retreat_now": 1,
+    "retreat_note": null,
+    "ko_points": 1,
+    "notes": []
+   },
+   {
+    "name": "Helioptile",
+    "stage": 0,
+    "type": "Lightning",
+    "hp": 30,
+    "max_hp": 60,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": null,
+    "attacks": [
+     {
+      "name": "Thunder Shock",
+      "cost": [
+       "Lightning"
+      ],
+      "damage": "10",
+      "text": "Flip a coin. If heads, your opponent's Active Pokémon is now Paralyzed."
+     }
+    ],
+    "weakness": "Fighting",
+    "retreat": 1,
+    "retreat_now": 1,
+    "retreat_note": null,
+    "ko_points": 1,
+    "notes": []
+   }
+  ],
+  "deck_count": 11,
+  "discard": [
+   "Professor's Research",
+   "Clemont's Backpack"
+  ],
+  "discard_energy": [],
+  "energy_zone": {
+   "this_turn": "Lightning",
+   "next": "Lightning",
+   "lines": [
+    "This turn: Lightning",
+    "Next: Lightning"
+   ]
+  },
+  "hand": [
+   {
+    "name": "Clemont",
+    "kind": "Supporter",
+    "text": "Put 2 random cards from among Magneton, Heliolisk, and Clemont's Backpack from your deck into your hand."
+   },
+   {
+    "name": "Copycat",
+    "kind": "Supporter",
+    "text": "Shuffle your hand into your deck. Draw a card for each card in your opponent's hand."
+   }
+  ],
+  "decklist": [
+   {
+    "name": "Electrike",
+    "kind": "Basic Pokémon",
+    "text": "Basic Pokémon, HP 60, Lightning type. Attack Quick Attack [Lightning] 10+: Flip a coin. If heads, this attack does 30 more damage. Weakness: Fighting. Retreat: 1.",
+    "count": 2,
+    "left": 0
+   },
+   {
+    "name": "Helioptile",
+    "kind": "Basic Pokémon",
+    "text": "Basic Pokémon, HP 60, Lightning type. Attack Thunder Shock [Lightning] 10: Flip a coin. If heads, your opponent's Active Pokémon is now Paralyzed. Weakness: Fighting. Retreat: 1.",
+    "count": 2,
+    "left": 1
+   },
+   {
+    "name": "Heliolisk",
+    "kind": "Stage 1 Pokémon",
+    "text": "Stage 1 Pokémon, HP 80, Lightning type, evolves from Helioptile. Attack Electrispark [Lightning] 40: This attack also does 10 damage to each of your opponent's Benched Pokémon. Weakness: Fighting. Retreat: 1.",
+    "count": 2,
+    "left": 2
+   },
+   {
+    "name": "Mega Manectric ex",
+    "kind": "Stage 1 Pokémon",
+    "text": "Stage 1 Pokémon, HP 180, Lightning type, evolves from Electrike. Gives 3 points when Knocked Out. Attack Lightning Accelerator [Lightning Lightning] 80+: This attack does 30 more damage for each point you have gotten. Weakness: Fighting. Retreat: 0.",
+    "count": 2,
+    "left": 1
+   },
+   {
+    "name": "Clemont",
+    "kind": "Supporter",
+    "text": "Put 2 random cards from among Magneton, Heliolisk, and Clemont's Backpack from your deck into your hand.",
+    "count": 1,
+    "left": 0
+   },
+   {
+    "name": "Copycat",
+    "kind": "Supporter",
+    "text": "Shuffle your hand into your deck. Draw a card for each card in your opponent's hand.",
+    "count": 1,
+    "left": 0
+   },
+   {
+    "name": "Cyrus",
+    "kind": "Supporter",
+    "text": "Switch in 1 of your opponent's Benched Pokémon that has damage on it to the Active Spot.",
+    "count": 1,
+    "left": 1
+   },
+   {
+    "name": "Professor's Research",
+    "kind": "Supporter",
+    "text": "Draw 2 cards.",
+    "count": 2,
+    "left": 1
+   },
+   {
+    "name": "Clemont's Backpack",
+    "kind": "Item",
+    "text": "During this turn, attacks used by your Magneton or Heliolisk do +20 damage to your opponent's Pokémon.",
+    "count": 2,
+    "left": 1
+   },
+   {
+    "name": "Field Blower",
+    "kind": "Item",
+    "text": "Discard a Pokémon Tool card from a Pokémon (yours or your opponent's), or discard a Stadium card in play.",
+    "count": 1,
+    "left": 1
+   },
+   {
+    "name": "Poké Ball",
+    "kind": "Item",
+    "text": "Put a random Basic Pokémon from your deck into your hand.",
+    "count": 2,
+    "left": 2
+   },
+   {
+    "name": "Elegant Cape",
+    "kind": "Pokémon Tool",
+    "text": "The Stage 1 Pokémon this card is attached to gets +30 HP.",
+    "count": 1,
+    "left": 0
+   },
+   {
+    "name": "Training Area",
+    "kind": "Stadium",
+    "text": "Attacks used by Stage 1 Pokémon in play (both yours and your opponent's) do +10 damage to the opponent's Active Pokémon.",
+    "count": 1,
+    "left": 1
+   }
+  ],
+  "energy_types": [
+   "Lightning"
+  ],
+  "supporter_played_this_turn": true,
+  "retreated_this_turn": false
+ },
+ "opponent": {
+  "active": {
+   "name": "Heatmor",
+   "stage": 0,
+   "type": "Fire",
+   "hp": 80,
+   "max_hp": 80,
+   "energy": [
+    "Fire"
+   ],
+   "tools": [],
+   "conditions": [],
+   "ability": null,
+   "attacks": [
+    {
+     "name": "Tongue Whip",
+     "cost": [
+      "Fire"
+     ],
+     "damage": null,
+     "text": "This attack does 30 damage to 1 of your opponent's Benched Pokémon."
+    }
+   ],
+   "weakness": "Water",
+   "retreat": 1,
+   "retreat_now": 1,
+   "retreat_note": null,
+   "ko_points": 1,
+   "notes": []
+  },
+  "bench": [
+   {
+    "name": "Torchic",
+    "stage": 0,
+    "type": "Fire",
+    "hp": 60,
+    "max_hp": 60,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": null,
+    "attacks": [
+     {
+      "name": "Peck",
+      "cost": [
+       "Fire"
+      ],
+      "damage": "20",
+      "text": ""
+     }
+    ],
+    "weakness": "Water",
+    "retreat": 1,
+    "retreat_now": 1,
+    "retreat_note": null,
+    "ko_points": 1,
+    "notes": []
+   },
+   {
+    "name": "Castform Sunny Form",
+    "stage": 0,
+    "type": "Fire",
+    "hp": 70,
+    "max_hp": 70,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": null,
+    "attacks": [
+     {
+      "name": "Sunny Scorching",
+      "cost": [
+       "Fire"
+      ],
+      "damage": "30",
+      "text": "If a Stadium is in play, your opponent's Active Pokémon is now Burned."
+     }
+    ],
+    "weakness": "Water",
+    "retreat": 1,
+    "retreat_now": 1,
+    "retreat_note": null,
+    "ko_points": 1,
+    "notes": []
+   },
+   {
+    "name": "Torchic",
+    "stage": 0,
+    "type": "Fire",
+    "hp": 60,
+    "max_hp": 60,
+    "energy": [],
+    "tools": [],
+    "conditions": [],
+    "ability": null,
+    "attacks": [
+     {
+      "name": "Peck",
+      "cost": [
+       "Fire"
+      ],
+      "damage": "20",
+      "text": ""
+     }
+    ],
+    "weakness": "Water",
+    "retreat": 1,
+    "retreat_now": 1,
+    "retreat_note": null,
+    "ko_points": 1,
+    "notes": []
+   }
+  ],
+  "deck_count": 10,
+  "discard": [
+   "Professor's Research",
+   "Poké Ball"
+  ],
+  "discard_energy": [],
+  "energy_zone": {
+   "next": "Fire",
+   "lines": [
+    "Next: Fire"
+   ]
+  },
+  "hand_count": 3
+ },
+ "stadium": {
+  "name": "Hiking Trail",
+  "text": "At the end of each player's turn, that player draws cards until they have 3 cards in their hand.",
+  "played_by": "opponent"
+ },
+ "turn_effects": [
+  "During this turn, attacks used by your Magneton or Heliolisk do +20 damage to your opponent's Pokémon"
+ ],
+ "this_turn_so_far": [
+  "You: Played Professor's Research (Supporter)",
+  "You: Evolved Electrike (Active) into Mega Manectric ex",
+  "You: Played Clemont's Backpack (Item)"
+ ],
+ "log": [
+  {
+   "turn": 0,
+   "who": "setup",
+   "header": "Setup",
+   "lines": [
+    "You: started with Electrike (Active), Helioptile (Bench 3)",
+    "Opponent: started with Heatmor (Active), Torchic (Bench 3)"
+   ]
+  },
+  {
+   "turn": 1,
+   "who": "you",
+   "header": "Turn 1 - You",
+   "lines": [
+    "You: Played Elegant Cape (Pokémon Tool) → attached Elegant Cape to Electrike (Active)",
+    "You: Put Electrike on Bench 2",
+    "You: Ended the turn without attacking"
+   ]
+  },
+  {
+   "turn": 2,
+   "who": "opponent",
+   "header": "Turn 2 - Opponent",
+   "lines": [
+    "Opponent: Attached Fire Energy to Heatmor (Active)",
+    "Opponent: Played Professor's Research (Supporter)",
+    "Opponent: Put Castform Sunny Form on Bench 2",
+    "Opponent: Played Poké Ball (Item)",
+    "Opponent: Put Torchic on Bench 1",
+    "Opponent: Played Hiking Trail (Stadium)",
+    "Opponent: Heatmor attacked with Tongue Whip → did 30 damage to your Helioptile (Bench 3)"
+   ]
+  }
+ ],
+ "options": [
+  {
+   "key": "1",
+   "group": "Energy",
+   "text": "Attach Lightning Energy to Mega Manectric ex (Active)"
+  },
+  {
+   "key": "2",
+   "group": "Energy",
+   "text": "Attach Lightning Energy to Electrike (Bench 2)"
+  },
+  {
+   "key": "3",
+   "group": "Energy",
+   "text": "Attach Lightning Energy to Helioptile (Bench 3)"
+  },
+  {
+   "key": "4",
+   "group": "Retreat",
+   "text": "Retreat Mega Manectric ex (Active) and switch in Electrike (Bench 2); costs 0 Energy"
+  },
+  {
+   "key": "5",
+   "group": "Retreat",
+   "text": "Retreat Mega Manectric ex (Active) and switch in Helioptile (Bench 3); costs 0 Energy"
+  },
+  {
+   "key": "0",
+   "group": "End turn",
+   "text": "End your turn without attacking"
+  }
+ ],
+ "cant_play": [
+  "Clemont: you already played a Supporter this turn",
+  "Copycat: you already played a Supporter this turn"
+ ]
+}

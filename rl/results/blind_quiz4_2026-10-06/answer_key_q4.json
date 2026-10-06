@@ -1,0 +1,1115 @@
+{
+ "_about": {
+  "quiz": "Your Move, Blind 4 (PRIVATE: Dustin must not see this file until he has answered)",
+  "plans": "plan_A / plan_B say which pilot's plan is shown as A / B; results are each pilot's own game (one game each, not evidence either way)"
+ },
+ "Q01": {
+  "run": "strength_2026-10-03_kx3_dev",
+  "deck": "01-muk-glimmora-kingambit-regigigas",
+  "opponent": "t-vespiquen",
+  "seed": 24440060003,
+  "seat": 0,
+  "decision": 10,
+  "ply_index": 29,
+  "turn": 3,
+  "group": "setup",
+  "why": "build v attack: Darkness to the Bench instead of attacking",
+  "plan_A": {
+   "bot": "kx3",
+   "labels": [
+    "Attach:1Darkness@3 zone",
+    "UseStadium"
+   ],
+   "steps": [
+    "Attach Darkness Energy to Regigigas (Bench 3)",
+    "Use the Stadium Fragrant Forest"
+   ]
+  },
+  "plan_B": {
+   "bot": "km3",
+   "labels": [
+    "Attach:1Darkness@0 zone",
+    "Attack:Venomous Hit"
+   ],
+   "steps": [
+    "Attach Darkness Energy to Glimmora (Active)",
+    "Attack with Venomous Hit"
+   ]
+  },
+  "results": {
+   "kx3": {
+    "winner_for_the_deck": "win",
+    "points_you_opponent": [
+     3,
+     2
+    ],
+    "turns": 13
+   },
+   "km3": {
+    "winner_for_the_deck": "loss",
+    "points_you_opponent": [
+     0,
+     3
+    ],
+    "turns": 12
+   }
+  },
+  "first_actions_are_the_same_option": false,
+  "replay_checks": [
+   "deck files equal the manifests' sha256",
+   "replay result (winner, points, turns, plies) equals the reference arm's",
+   "replay's 32 logged decisions equal the reference arm's log",
+   "both arms' logs are equal for decisions 0..9 and differ at 10",
+   "turn, own turn, Active, Bench, points and number of legal moves equal the selection's",
+   "kx3's first action and km3's first action are both legal at the position",
+   "both plans equal the cut (to the first draw, attack or end of turn) of the arms' logs, within the game turn"
+  ],
+  "options_on_page": [
+   {
+    "key": "1",
+    "text": "Use the Stadium Fragrant Forest: Once during each player's turn, that player may put a random Basic Grass Pokémon from their deck into their hand."
+   },
+   {
+    "key": "2",
+    "text": "Attach Darkness Energy to Glimmora (Active)"
+   },
+   {
+    "key": "3",
+    "text": "Attach Darkness Energy to Alolan Grimer (Bench 1)"
+   },
+   {
+    "key": "4",
+    "text": "Attach Darkness Energy to Pawniard (Bench 2)"
+   },
+   {
+    "key": "5",
+    "text": "Attach Darkness Energy to Regigigas (Bench 3)"
+   },
+   {
+    "key": "0",
+    "text": "End your turn without attacking"
+   }
+  ]
+ },
+ "Q02": {
+  "run": "strength_2026-10-03_kx3_dev",
+  "deck": "01-muk-glimmora-kingambit-regigigas",
+  "opponent": "t-lucario",
+  "seed": 24440030001,
+  "seat": 0,
+  "decision": 18,
+  "ply_index": 55,
+  "turn": 7,
+  "group": "setup",
+  "why": "build v attack: Bench Energy, no attack",
+  "plan_A": {
+   "bot": "km3",
+   "labels": [
+    "Play:Lucky Ice Pop",
+    "Play:Lucky Ice Pop",
+    "Attach:1Darkness@0 zone",
+    "Attack:Venomous Hit"
+   ],
+   "steps": [
+    "Play Lucky Ice Pop (Item), and again each time the coin flip returns it to your hand",
+    "Attach Darkness Energy to Glimmora (Active)",
+    "Attack with Venomous Hit"
+   ]
+  },
+  "plan_B": {
+   "bot": "kx3",
+   "labels": [
+    "Attach:1Darkness@1 zone",
+    "Play:Lucky Ice Pop",
+    "Play:Lucky Ice Pop",
+    "EndTurn"
+   ],
+   "steps": [
+    "Attach Darkness Energy to Kingambit (Bench 1)",
+    "Play Lucky Ice Pop (Item), and again each time the coin flip returns it to your hand",
+    "End your turn without attacking"
+   ]
+  },
+  "results": {
+   "kx3": {
+    "winner_for_the_deck": "win",
+    "points_you_opponent": [
+     3,
+     2
+    ],
+    "turns": 11
+   },
+   "km3": {
+    "winner_for_the_deck": "loss",
+    "points_you_opponent": [
+     0,
+     3
+    ],
+    "turns": 12
+   }
+  },
+  "first_actions_are_the_same_option": false,
+  "replay_checks": [
+   "deck files equal the manifests' sha256",
+   "replay result (winner, points, turns, plies) equals the reference arm's",
+   "replay's 30 logged decisions equal the reference arm's log",
+   "both arms' logs are equal for decisions 0..17 and differ at 18",
+   "turn, own turn, Active, Bench, points and number of legal moves equal the selection's",
+   "kx3's first action and km3's first action are both legal at the position",
+   "both plans equal the cut (to the first draw, attack or end of turn) of the arms' logs, within the game turn"
+  ],
+  "options_on_page": [
+   {
+    "key": "5",
+    "text": "Play Ilima (Supporter): Put 1 of your Colorless Pokémon that has damage on it into your hand."
+   },
+   {
+    "key": "6",
+    "text": "Play Lucky Ice Pop (Item): Heal 20 damage from your Active Pokémon. If you healed any damage in this way, flip a coin. If heads, put this Lucky Ice Pop into your hand instead of the discard pile."
+   },
+   {
+    "key": "1",
+    "text": "Attach Darkness Energy to Glimmora (Active)"
+   },
+   {
+    "key": "2",
+    "text": "Attach Darkness Energy to Kingambit (Bench 1)"
+   },
+   {
+    "key": "3",
+    "text": "Attach Darkness Energy to Alolan Muk (Bench 2)"
+   },
+   {
+    "key": "4",
+    "text": "Attach Darkness Energy to Regigigas (Bench 3)"
+   },
+   {
+    "key": "0",
+    "text": "End your turn without attacking"
+   }
+  ]
+ },
+ "Q03": {
+  "run": "strength_2026-10-03_kx3_dev",
+  "deck": "01-muk-glimmora-kingambit-regigigas",
+  "opponent": "t-vespiquen",
+  "seed": 24440060000,
+  "seat": 1,
+  "decision": 24,
+  "ply_index": 67,
+  "turn": 9,
+  "group": "setup",
+  "why": "retreat and evolve on the Bench v evolve the Active and attack",
+  "plan_A": {
+   "bot": "km3",
+   "labels": [
+    "Evolve:Glimmora@0",
+    "Attack:Venomous Hit"
+   ],
+   "steps": [
+    "Evolve Glimmet (Active) into Glimmora",
+    "Attack with Venomous Hit"
+   ]
+  },
+  "plan_B": {
+   "bot": "kx3",
+   "labels": [
+    "Retreat:2",
+    "Evolve:Glimmora@2"
+   ],
+   "steps": [
+    "Retreat Glimmet (Active), switching in Alolan Muk (Bench 2)",
+    "Evolve Glimmet (Bench 2) into Glimmora",
+    "End your turn without attacking"
+   ]
+  },
+  "results": {
+   "kx3": {
+    "winner_for_the_deck": "win",
+    "points_you_opponent": [
+     2,
+     2
+    ],
+    "turns": 13
+   },
+   "km3": {
+    "winner_for_the_deck": "loss",
+    "points_you_opponent": [
+     0,
+     3
+    ],
+    "turns": 12
+   }
+  },
+  "first_actions_are_the_same_option": false,
+  "replay_checks": [
+   "deck files equal the manifests' sha256",
+   "replay result (winner, points, turns, plies) equals the reference arm's",
+   "replay's 29 logged decisions equal the reference arm's log",
+   "both arms' logs are equal for decisions 0..23 and differ at 24",
+   "turn, own turn, Active, Bench, points and number of legal moves equal the selection's",
+   "kx3's first action and km3's first action are both legal at the position",
+   "both plans equal the cut (to the first draw, attack or end of turn) of the arms' logs, within the game turn"
+  ],
+  "options_on_page": [
+   {
+    "key": "1",
+    "text": "Attack with Hang Down (20 damage)"
+   },
+   {
+    "key": "2",
+    "text": "Evolve Glimmet (Active) into Glimmora"
+   },
+   {
+    "key": "3",
+    "text": "Retreat Glimmet (Active) and switch in Alolan Muk (Bench 2); costs 1 Energy"
+   },
+   {
+    "key": "0",
+    "text": "End your turn without attacking"
+   }
+  ]
+ },
+ "Q04": {
+  "run": "strength_2026-10-03_kx3_dev",
+  "deck": "03-wailord-indeedee-wall",
+  "opponent": "t-vespiquen",
+  "seed": 24430060003,
+  "seat": 1,
+  "decision": 5,
+  "ply_index": 20,
+  "turn": 3,
+  "group": "setup",
+  "why": "heal, retreat and Poké Ball v Poké Ball first",
+  "plan_A": {
+   "bot": "km3",
+   "labels": [
+    "Play:Poké Ball"
+   ],
+   "steps": [
+    "Play Poké Ball (Item)"
+   ]
+  },
+  "plan_B": {
+   "bot": "kx3",
+   "labels": [
+    "Attach:1Water@0 zone",
+    "Ability:Watch Over@3",
+    "Ability:Watch Over@0",
+    "Retreat:3",
+    "Play:Poké Ball"
+   ],
+   "steps": [
+    "Attach Water Energy to Indeedee ex (Active)",
+    "Use Indeedee ex's Ability Watch Over (Bench 3)",
+    "Use Indeedee ex's Ability Watch Over (Active)",
+    "Retreat Indeedee ex (Active), switching in Indeedee ex (Bench 3)",
+    "Play Poké Ball (Item)"
+   ]
+  },
+  "results": {
+   "kx3": {
+    "winner_for_the_deck": "win",
+    "points_you_opponent": [
+     4,
+     1
+    ],
+    "turns": 29
+   },
+   "km3": {
+    "winner_for_the_deck": "loss",
+    "points_you_opponent": [
+     0,
+     4
+    ],
+    "turns": 10
+   }
+  },
+  "first_actions_are_the_same_option": false,
+  "replay_checks": [
+   "deck files equal the manifests' sha256",
+   "replay result (winner, points, turns, plies) equals the reference arm's",
+   "replay's 32 logged decisions equal the reference arm's log",
+   "both arms' logs are equal for decisions 0..4 and differ at 5",
+   "turn, own turn, Active, Bench, points and number of legal moves equal the selection's",
+   "kx3's first action and km3's first action are both legal at the position",
+   "both plans equal the cut (to the first draw, attack or end of turn) of the arms' logs, within the game turn"
+  ],
+  "options_on_page": [
+   {
+    "key": "5",
+    "text": "Use Indeedee ex's Ability Watch Over (Active): Once during your turn, you may heal 20 damage from your Active Pokémon."
+   },
+   {
+    "key": "6",
+    "text": "Use Indeedee ex's Ability Watch Over (Bench 3): Once during your turn, you may heal 20 damage from your Active Pokémon."
+   },
+   {
+    "key": "4",
+    "text": "Play Poké Ball (Item): Put a random Basic Pokémon from your deck into your hand."
+   },
+   {
+    "key": "3",
+    "text": "Play Soothing Shore (Stadium): At the end of each player's turn, that player heals 20 damage from each of their Pokémon that has any Water Energy attached."
+   },
+   {
+    "key": "1",
+    "text": "Attach Water Energy to Indeedee ex (Active)"
+   },
+   {
+    "key": "2",
+    "text": "Attach Water Energy to Indeedee ex (Bench 3)"
+   },
+   {
+    "key": "0",
+    "text": "End your turn without attacking"
+   }
+  ]
+ },
+ "Q05": {
+  "run": "strength_2026-10-03_kx3_dev",
+  "deck": "03-wailord-indeedee-wall",
+  "opponent": "t-altaria",
+  "seed": 24430000003,
+  "seat": 1,
+  "decision": 13,
+  "ply_index": 48,
+  "turn": 6,
+  "group": "setup",
+  "why": "Bench Energy v Active Energy after evolving (km3's game won)",
+  "plan_A": {
+   "bot": "km3",
+   "labels": [
+    "Play:Pokémon Center Lady",
+    "Evolve:Wailord ex@3",
+    "Attach:1Water@0 zone"
+   ],
+   "steps": [
+    "Play Pokémon Center Lady (Supporter)",
+    "Evolve Wailmer (Bench 3) into Wailord ex",
+    "Attach Water Energy to Wailord (Active)",
+    "End your turn without attacking"
+   ]
+  },
+  "plan_B": {
+   "bot": "kx3",
+   "labels": [
+    "Attach:1Water@2 zone",
+    "Play:Pokémon Center Lady",
+    "Evolve:Wailord ex@3"
+   ],
+   "steps": [
+    "Attach Water Energy to Indeedee ex (Bench 2)",
+    "Play Pokémon Center Lady (Supporter)",
+    "Evolve Wailmer (Bench 3) into Wailord ex",
+    "End your turn without attacking"
+   ]
+  },
+  "results": {
+   "kx3": {
+    "winner_for_the_deck": "loss",
+    "points_you_opponent": [
+     0,
+     3
+    ],
+    "turns": 11
+   },
+   "km3": {
+    "winner_for_the_deck": "win",
+    "points_you_opponent": [
+     3,
+     1
+    ],
+    "turns": 20
+   }
+  },
+  "first_actions_are_the_same_option": false,
+  "replay_checks": [
+   "deck files equal the manifests' sha256",
+   "replay result (winner, points, turns, plies) equals the reference arm's",
+   "replay's 49 logged decisions equal the reference arm's log",
+   "both arms' logs are equal for decisions 0..12 and differ at 13",
+   "turn, own turn, Active, Bench, points and number of legal moves equal the selection's",
+   "kx3's first action and km3's first action are both legal at the position",
+   "both plans equal the cut (to the first draw, attack or end of turn) of the arms' logs, within the game turn"
+  ],
+  "options_on_page": [
+   {
+    "key": "5",
+    "text": "Play Pokémon Center Lady (Supporter): Heal 30 damage from 1 of your Pokémon, and it recovers from all Special Conditions."
+   },
+   {
+    "key": "1",
+    "text": "Attach Water Energy to Wailord (Active)"
+   },
+   {
+    "key": "2",
+    "text": "Attach Water Energy to Indeedee ex (Bench 2)"
+   },
+   {
+    "key": "3",
+    "text": "Attach Water Energy to Wailmer (Bench 3)"
+   },
+   {
+    "key": "4",
+    "text": "Evolve Wailmer (Bench 3) into Wailord ex"
+   },
+   {
+    "key": "0",
+    "text": "End your turn without attacking"
+   }
+  ]
+ },
+ "Q06": {
+  "run": "strength_2026-10-03_kx3_dev",
+  "deck": "05-indeedee-stoutland",
+  "opponent": "t-lucario",
+  "seed": 24450030002,
+  "seat": 1,
+  "decision": 7,
+  "ply_index": 27,
+  "turn": 4,
+  "group": "setup",
+  "why": "Bench Energy, no attack v attack",
+  "plan_A": {
+   "bot": "kx3",
+   "labels": [
+    "Attach:1Psychic@2 zone",
+    "Ability:Watch Over@2",
+    "EndTurn"
+   ],
+   "steps": [
+    "Attach Psychic Energy to Indeedee ex (Bench 2)",
+    "Use Indeedee ex's Ability Watch Over (Bench 2)",
+    "End your turn without attacking"
+   ]
+  },
+  "plan_B": {
+   "bot": "km3",
+   "labels": [
+    "Ability:Watch Over@2",
+    "Attach:1Psychic@0 zone",
+    "Attack:Psychic"
+   ],
+   "steps": [
+    "Use Indeedee ex's Ability Watch Over (Bench 2)",
+    "Attach Psychic Energy to Indeedee ex (Active)",
+    "Attack with Psychic"
+   ]
+  },
+  "results": {
+   "kx3": {
+    "winner_for_the_deck": "win",
+    "points_you_opponent": [
+     4,
+     2
+    ],
+    "turns": 10
+   },
+   "km3": {
+    "winner_for_the_deck": "loss",
+    "points_you_opponent": [
+     1,
+     3
+    ],
+    "turns": 11
+   }
+  },
+  "first_actions_are_the_same_option": false,
+  "replay_checks": [
+   "deck files equal the manifests' sha256",
+   "replay result (winner, points, turns, plies) equals the reference arm's",
+   "replay's 25 logged decisions equal the reference arm's log",
+   "both arms' logs are equal for decisions 0..6 and differ at 7",
+   "turn, own turn, Active, Bench, points and number of legal moves equal the selection's",
+   "kx3's first action and km3's first action are both legal at the position",
+   "both plans equal the cut (to the first draw, attack or end of turn) of the arms' logs, within the game turn"
+  ],
+  "options_on_page": [
+   {
+    "key": "6",
+    "text": "Use Indeedee ex's Ability Watch Over (Bench 2): Once during your turn, you may heal 20 damage from your Active Pokémon."
+   },
+   {
+    "key": "1",
+    "text": "Attach Psychic Energy to Indeedee ex (Active)"
+   },
+   {
+    "key": "2",
+    "text": "Attach Psychic Energy to Indeedee ex (Bench 2)"
+   },
+   {
+    "key": "3",
+    "text": "Attach Psychic Energy to Lillipup (Bench 3)"
+   },
+   {
+    "key": "4",
+    "text": "Retreat Indeedee ex (Active) and switch in Indeedee ex (Bench 2); costs 1 Energy"
+   },
+   {
+    "key": "5",
+    "text": "Retreat Indeedee ex (Active) and switch in Lillipup (Bench 3); costs 1 Energy"
+   },
+   {
+    "key": "0",
+    "text": "End your turn without attacking"
+   }
+  ]
+ },
+ "Q07": {
+  "run": "strength_2026-10-03_kx3_dev",
+  "deck": "05-indeedee-stoutland",
+  "opponent": "t-hydreigon",
+  "seed": 24450020003,
+  "seat": 0,
+  "decision": 15,
+  "ply_index": 33,
+  "turn": 4,
+  "group": "setup",
+  "why": "reversal: kx3 attacks, km3 builds the Bench",
+  "plan_A": {
+   "bot": "km3",
+   "labels": [
+    "Attach:1Psychic@2 zone",
+    "EndTurn"
+   ],
+   "steps": [
+    "Attach Psychic Energy to Stoutland (Bench 2)",
+    "End your turn without attacking"
+   ]
+  },
+  "plan_B": {
+   "bot": "kx3",
+   "labels": [
+    "Attach:1Psychic@0 zone",
+    "Attack:Psychic"
+   ],
+   "steps": [
+    "Attach Psychic Energy to Indeedee ex (Active)",
+    "Attack with Psychic"
+   ]
+  },
+  "results": {
+   "kx3": {
+    "winner_for_the_deck": "win",
+    "points_you_opponent": [
+     4,
+     0
+    ],
+    "turns": 12
+   },
+   "km3": {
+    "winner_for_the_deck": "loss",
+    "points_you_opponent": [
+     1,
+     3
+    ],
+    "turns": 11
+   }
+  },
+  "first_actions_are_the_same_option": false,
+  "replay_checks": [
+   "deck files equal the manifests' sha256",
+   "replay result (winner, points, turns, plies) equals the reference arm's",
+   "replay's 34 logged decisions equal the reference arm's log",
+   "both arms' logs are equal for decisions 0..14 and differ at 15",
+   "turn, own turn, Active, Bench, points and number of legal moves equal the selection's",
+   "kx3's first action and km3's first action are both legal at the position",
+   "both plans equal the cut (to the first draw, attack or end of turn) of the arms' logs, within the game turn"
+  ],
+  "options_on_page": [
+   {
+    "key": "1",
+    "text": "Attach Psychic Energy to Indeedee ex (Active)"
+   },
+   {
+    "key": "2",
+    "text": "Attach Psychic Energy to Lillipup (Bench 1)"
+   },
+   {
+    "key": "3",
+    "text": "Attach Psychic Energy to Stoutland (Bench 2)"
+   },
+   {
+    "key": "4",
+    "text": "Attach Psychic Energy to Indeedee ex (Bench 3)"
+   },
+   {
+    "key": "5",
+    "text": "Retreat Indeedee ex (Active) and switch in Lillipup (Bench 1); costs 1 Energy"
+   },
+   {
+    "key": "6",
+    "text": "Retreat Indeedee ex (Active) and switch in Stoutland (Bench 2); costs 1 Energy"
+   },
+   {
+    "key": "7",
+    "text": "Retreat Indeedee ex (Active) and switch in Indeedee ex (Bench 3); costs 1 Energy"
+   },
+   {
+    "key": "0",
+    "text": "End your turn without attacking"
+   }
+  ]
+ },
+ "Q08": {
+  "run": "strength_2026-10-03_kx3_dev",
+  "deck": "05-indeedee-stoutland",
+  "opponent": "t-vespiquen",
+  "seed": 24450060004,
+  "seat": 0,
+  "decision": 10,
+  "ply_index": 32,
+  "turn": 4,
+  "group": "setup",
+  "why": "retreat and Rare Candy v attack (km3's game won)",
+  "plan_A": {
+   "bot": "km3",
+   "labels": [
+    "Ability:Watch Over@0",
+    "Attach:1Psychic@0 zone",
+    "Play:Rare Candy",
+    "Attack:Psychic"
+   ],
+   "steps": [
+    "Use Indeedee ex's Ability Watch Over (Active)",
+    "Attach Psychic Energy to Indeedee ex (Active)",
+    "Play Rare Candy (Item), evolving Lillipup (Bench 3) into Stoutland",
+    "Attack with Psychic"
+   ]
+  },
+  "plan_B": {
+   "bot": "kx3",
+   "labels": [
+    "Retreat:3",
+    "Play:Rare Candy",
+    "Ability:Watch Over@3",
+    "Attach:1Psychic@0 zone",
+    "UseStadium"
+   ],
+   "steps": [
+    "Retreat Indeedee ex (Active), switching in Lillipup (Bench 3)",
+    "Play Rare Candy (Item), evolving Lillipup (Active) into Stoutland",
+    "Use Indeedee ex's Ability Watch Over (Bench 3)",
+    "Attach Psychic Energy to Stoutland (Active)",
+    "Use the Stadium Fragrant Forest"
+   ]
+  },
+  "results": {
+   "kx3": {
+    "winner_for_the_deck": "loss",
+    "points_you_opponent": [
+     0,
+     3
+    ],
+    "turns": 9
+   },
+   "km3": {
+    "winner_for_the_deck": "win",
+    "points_you_opponent": [
+     4,
+     1
+    ],
+    "turns": 16
+   }
+  },
+  "first_actions_are_the_same_option": false,
+  "replay_checks": [
+   "deck files equal the manifests' sha256",
+   "replay result (winner, points, turns, plies) equals the reference arm's",
+   "replay's 49 logged decisions equal the reference arm's log",
+   "both arms' logs are equal for decisions 0..9 and differ at 10",
+   "turn, own turn, Active, Bench, points and number of legal moves equal the selection's",
+   "kx3's first action and km3's first action are both legal at the position",
+   "both plans equal the cut (to the first draw, attack or end of turn) of the arms' logs, within the game turn"
+  ],
+  "options_on_page": [
+   {
+    "key": "6",
+    "text": "Use Indeedee ex's Ability Watch Over (Active): Once during your turn, you may heal 20 damage from your Active Pokémon."
+   },
+   {
+    "key": "4",
+    "text": "Play Rare Candy (Item): Choose 1 of your Basic Pokémon in play. If you have a Stage 2 card in your hand that evolves from that Pokémon, put that card onto the Basic Pokémon to evolve it, skipping the Stage 1. You can't use this card during your first turn or on a Basic Pokémon that was put into play this turn."
+   },
+   {
+    "key": "1",
+    "text": "Use the Stadium Fragrant Forest: Once during each player's turn, that player may put a random Basic Grass Pokémon from their deck into their hand."
+   },
+   {
+    "key": "2",
+    "text": "Attach Psychic Energy to Indeedee ex (Active)"
+   },
+   {
+    "key": "3",
+    "text": "Attach Psychic Energy to Lillipup (Bench 3)"
+   },
+   {
+    "key": "5",
+    "text": "Retreat Indeedee ex (Active) and switch in Lillipup (Bench 3); costs 1 Energy"
+   },
+   {
+    "key": "0",
+    "text": "End your turn without attacking"
+   }
+  ]
+ },
+ "Q09": {
+  "run": "strength_2026-10-05_kx3_exam",
+  "deck": "07-skarmory-stall",
+  "opponent": "t-blaziken",
+  "seed": 24520010002,
+  "seat": 1,
+  "decision": 23,
+  "ply_index": 62,
+  "turn": 9,
+  "group": "setup",
+  "why": "Poké Ball v Bench Energy and attack",
+  "plan_A": {
+   "bot": "km3",
+   "labels": [
+    "Ability:Watch Over@3",
+    "Attach:1Metal@2 zone",
+    "Attack:Steel Wing"
+   ],
+   "steps": [
+    "Use Indeedee ex's Ability Watch Over (Bench 3)",
+    "Attach Metal Energy to Skarmory ex (Bench 2)",
+    "Attack with Steel Wing"
+   ]
+  },
+  "plan_B": {
+   "bot": "kx3",
+   "labels": [
+    "Play:Poké Ball"
+   ],
+   "steps": [
+    "Play Poké Ball (Item)"
+   ]
+  },
+  "results": {
+   "kx3": {
+    "winner_for_the_deck": "win",
+    "points_you_opponent": [
+     3,
+     0
+    ],
+    "turns": 13
+   },
+   "km3": {
+    "winner_for_the_deck": "loss",
+    "points_you_opponent": [
+     1,
+     4
+    ],
+    "turns": 12
+   }
+  },
+  "first_actions_are_the_same_option": false,
+  "replay_checks": [
+   "deck files equal the manifests' sha256",
+   "replay result (winner, points, turns, plies) equals the reference arm's",
+   "replay's 32 logged decisions equal the reference arm's log",
+   "both arms' logs are equal for decisions 0..22 and differ at 23",
+   "turn, own turn, Active, Bench, points and number of legal moves equal the selection's",
+   "kx3's first action and km3's first action are both legal at the position",
+   "both plans equal the cut (to the first draw, attack or end of turn) of the arms' logs, within the game turn"
+  ],
+  "options_on_page": [
+   {
+    "key": "4",
+    "text": "Attack with Steel Wing (70 damage): During your opponent's next turn, this Pokémon takes -20 damage from attacks."
+   },
+   {
+    "key": "9",
+    "text": "Use Indeedee ex's Ability Watch Over (Bench 3): Once during your turn, you may heal 20 damage from your Active Pokémon."
+   },
+   {
+    "key": "5",
+    "text": "Play Red (Supporter): During this turn, attacks used by your Pokémon do +20 damage to your opponent's Active Pokémon ex."
+   },
+   {
+    "key": "6",
+    "text": "Play Poké Ball (Item): Put a random Basic Pokémon from your deck into your hand."
+   },
+   {
+    "key": "1",
+    "text": "Attach Metal Energy to Skarmory ex (Active)"
+   },
+   {
+    "key": "2",
+    "text": "Attach Metal Energy to Skarmory ex (Bench 2)"
+   },
+   {
+    "key": "3",
+    "text": "Attach Metal Energy to Indeedee ex (Bench 3)"
+   },
+   {
+    "key": "7",
+    "text": "Retreat Skarmory ex (Active) and switch in Skarmory ex (Bench 2); costs 2 Energy"
+   },
+   {
+    "key": "8",
+    "text": "Retreat Skarmory ex (Active) and switch in Indeedee ex (Bench 3); costs 2 Energy"
+   },
+   {
+    "key": "0",
+    "text": "End your turn without attacking"
+   }
+  ]
+ },
+ "Q10": {
+  "run": "strength_2026-10-03_kx3_dev",
+  "deck": "09-mega-manectric-heliolisk",
+  "opponent": "t-blaziken",
+  "seed": 24400010004,
+  "seat": 0,
+  "decision": 9,
+  "ply_index": 26,
+  "turn": 3,
+  "group": "fast",
+  "why": "tempo: Bench Energy, retreat, attack v Active Energy and pass",
+  "plan_A": {
+   "bot": "km3",
+   "labels": [
+    "Attach:1Lightning@0 zone",
+    "EndTurn"
+   ],
+   "steps": [
+    "Attach Lightning Energy to Mega Manectric ex (Active)",
+    "End your turn without attacking"
+   ]
+  },
+  "plan_B": {
+   "bot": "kx3",
+   "labels": [
+    "Attach:1Lightning@3 zone",
+    "Retreat:3",
+    "Attack:Thunder Shock"
+   ],
+   "steps": [
+    "Attach Lightning Energy to Helioptile (Bench 3)",
+    "Retreat Mega Manectric ex (Active), switching in Helioptile (Bench 3)",
+    "Attack with Thunder Shock"
+   ]
+  },
+  "results": {
+   "kx3": {
+    "winner_for_the_deck": "win",
+    "points_you_opponent": [
+     5,
+     2
+    ],
+    "turns": 11
+   },
+   "km3": {
+    "winner_for_the_deck": "loss",
+    "points_you_opponent": [
+     1,
+     4
+    ],
+    "turns": 8
+   }
+  },
+  "first_actions_are_the_same_option": false,
+  "replay_checks": [
+   "deck files equal the manifests' sha256",
+   "replay result (winner, points, turns, plies) equals the reference arm's",
+   "replay's 23 logged decisions equal the reference arm's log",
+   "both arms' logs are equal for decisions 0..8 and differ at 9",
+   "turn, own turn, Active, Bench, points and number of legal moves equal the selection's",
+   "kx3's first action and km3's first action are both legal at the position",
+   "both plans equal the cut (to the first draw, attack or end of turn) of the arms' logs, within the game turn"
+  ],
+  "options_on_page": [
+   {
+    "key": "1",
+    "text": "Attach Lightning Energy to Mega Manectric ex (Active)"
+   },
+   {
+    "key": "2",
+    "text": "Attach Lightning Energy to Electrike (Bench 2)"
+   },
+   {
+    "key": "3",
+    "text": "Attach Lightning Energy to Helioptile (Bench 3)"
+   },
+   {
+    "key": "4",
+    "text": "Retreat Mega Manectric ex (Active) and switch in Electrike (Bench 2); costs 0 Energy"
+   },
+   {
+    "key": "5",
+    "text": "Retreat Mega Manectric ex (Active) and switch in Helioptile (Bench 3); costs 0 Energy"
+   },
+   {
+    "key": "0",
+    "text": "End your turn without attacking"
+   }
+  ]
+ },
+ "Q11": {
+  "run": "strength_2026-10-03_kx3_dev",
+  "deck": "draft-A-shark-tempo",
+  "opponent": "t-suicune",
+  "seed": 24460050003,
+  "seat": 1,
+  "decision": 14,
+  "ply_index": 49,
+  "turn": 6,
+  "group": "fast",
+  "why": "tempo: retreat and Gnaw v bench Vulpix and Turbo Shark",
+  "plan_A": {
+   "bot": "kx3",
+   "labels": [
+    "Retreat:3",
+    "Attack:Gnaw"
+   ],
+   "steps": [
+    "Retreat Mega Sharpedo ex (Active), switching in Alolan Vulpix (Bench 3)",
+    "Attack with Gnaw"
+   ]
+  },
+  "plan_B": {
+   "bot": "km3",
+   "labels": [
+    "Place:Alolan Vulpix@1",
+    "Attack:Turbo Shark"
+   ],
+   "steps": [
+    "Put Alolan Vulpix onto your Bench",
+    "Attack with Turbo Shark"
+   ]
+  },
+  "results": {
+   "kx3": {
+    "winner_for_the_deck": "win",
+    "points_you_opponent": [
+     3,
+     2
+    ],
+    "turns": 16
+   },
+   "km3": {
+    "winner_for_the_deck": "loss",
+    "points_you_opponent": [
+     2,
+     4
+    ],
+    "turns": 11
+   }
+  },
+  "first_actions_are_the_same_option": false,
+  "replay_checks": [
+   "deck files equal the manifests' sha256",
+   "replay result (winner, points, turns, plies) equals the reference arm's",
+   "replay's 24 logged decisions equal the reference arm's log",
+   "both arms' logs are equal for decisions 0..13 and differ at 14",
+   "turn, own turn, Active, Bench, points and number of legal moves equal the selection's",
+   "kx3's first action and km3's first action are both legal at the position",
+   "both plans equal the cut (to the first draw, attack or end of turn) of the arms' logs, within the game turn"
+  ],
+  "options_on_page": [
+   {
+    "key": "1",
+    "text": "Attack with Turbo Shark (70 damage): Take a Water Energy from your Energy Zone and attach it to 1 of your Benched Water Pokémon."
+   },
+   {
+    "key": "3",
+    "text": "Play Misty (Supporter): Choose 1 of your Water Pokémon, and flip a coin until you get tails. For each heads, take a Water Energy from your Energy Zone and attach it to that Pokémon."
+   },
+   {
+    "key": "2",
+    "text": "Put Alolan Vulpix onto your Bench (Bench 1)"
+   },
+   {
+    "key": "4",
+    "text": "Retreat Mega Sharpedo ex (Active) and switch in Lapras (Bench 2); costs 0 Energy"
+   },
+   {
+    "key": "5",
+    "text": "Retreat Mega Sharpedo ex (Active) and switch in Alolan Vulpix (Bench 3); costs 0 Energy"
+   },
+   {
+    "key": "0",
+    "text": "End your turn without attacking"
+   }
+  ]
+ },
+ "Q12": {
+  "run": "strength_2026-10-03_kx3_dev",
+  "deck": "10-xatu-oricorio-tr-weezing",
+  "opponent": "t-altaria",
+  "seed": 24420000002,
+  "seat": 0,
+  "decision": 10,
+  "ply_index": 25,
+  "turn": 3,
+  "group": "fast",
+  "why": "tempo: kx3 ends the turn at once v attack (km3's game won)",
+  "plan_A": {
+   "bot": "kx3",
+   "labels": [
+    "EndTurn"
+   ],
+   "steps": [
+    "End your turn without attacking"
+   ]
+  },
+  "plan_B": {
+   "bot": "km3",
+   "labels": [
+    "Attack:Supernatural Feather"
+   ],
+   "steps": [
+    "Attack with Supernatural Feather"
+   ]
+  },
+  "results": {
+   "kx3": {
+    "winner_for_the_deck": "loss",
+    "points_you_opponent": [
+     1,
+     3
+    ],
+    "turns": 12
+   },
+   "km3": {
+    "winner_for_the_deck": "win",
+    "points_you_opponent": [
+     4,
+     1
+    ],
+    "turns": 7
+   }
+  },
+  "first_actions_are_the_same_option": false,
+  "replay_checks": [
+   "deck files equal the manifests' sha256",
+   "replay result (winner, points, turns, plies) equals the reference arm's",
+   "replay's 18 logged decisions equal the reference arm's log",
+   "both arms' logs are equal for decisions 0..9 and differ at 10",
+   "turn, own turn, Active, Bench, points and number of legal moves equal the selection's",
+   "kx3's first action and km3's first action are both legal at the position",
+   "both plans equal the cut (to the first draw, attack or end of turn) of the arms' logs, within the game turn"
+  ],
+  "options_on_page": [
+   {
+    "key": "1",
+    "text": "Attack with Supernatural Feather (50 damage): Discard a card from your hand. If you can't, this attack does nothing."
+   },
+   {
+    "key": "2",
+    "text": "Retreat Oricorio (Active) and switch in a Benched Xatu (Bench 1 or 3); costs 1 Energy"
+   },
+   {
+    "key": "3",
+    "text": "Retreat Oricorio (Active) and switch in Team Rocket's Koffing (Bench 2); costs 1 Energy"
+   },
+   {
+    "key": "0",
+    "text": "End your turn without attacking"
+   }
+  ]
+ }
+}
