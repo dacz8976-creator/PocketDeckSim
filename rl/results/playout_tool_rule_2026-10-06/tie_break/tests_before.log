@@ -1,0 +1,28 @@
+$ cargo test --release --features test-utils --test playout_tools_test   (claude/playout-pilot, the tie-break's tests written, the tie-break not yet; the candidate filter c775972d still in the code; 2026-10-06T12:17:32Z)
+error[E0432]: unresolved imports `deckgym::players::playout_player::kept_by_playouts`, `deckgym::players::playout_player::tie_break_placements`
+  --> tests/playout_tools_test.rs:22:5
+   |
+22 |     kept_by_playouts, placements_with_effect, tie_break_placements, tool_conditions, Knowledge, PlayoutParams, PlayoutPlayer,
+--
+error[E0277]: the size for values of type `[Action]` cannot be known at compilation time
+   --> tests/playout_tools_test.rs:303:74
+    |
+303 |         tie_break_placements(&state, &actions, &actions[proposal]).map(|(effective, why)| (slots(&effective), why))
+--
+error[E0277]: the size for values of type `[Action]` cannot be known at compilation time
+   --> tests/playout_tools_test.rs:303:73
+    |
+303 |         tie_break_placements(&state, &actions, &actions[proposal]).map(|(effective, why)| (slots(&effective), why))
+--
+error[E0282]: type annotations needed
+   --> tests/playout_tools_test.rs:309:13
+    |
+309 |     assert!(why.contains("Elegant Cape") && why.contains("Stage 1"), "{why}");
+--
+error[E0282]: type annotations needed
+   --> tests/playout_tools_test.rs:312:13
+    |
+312 |     assert!(why.contains("Protective Poncho") && why.contains("Bench"), "{why}");
+--
+error: could not compile `deckgym` (test "playout_tools_test") due to 5 previous errors
+warning: build failed, waiting for other jobs to finish...

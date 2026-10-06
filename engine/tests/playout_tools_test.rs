@@ -4,10 +4,12 @@
 //! the rule off the play-outs are km3's (and kx3's) exactly, and with it on a play-out in which the rule never acts is
 //! unchanged; the code spells the rule, and every code without it is unchanged.
 //!
-//! The same rule as a filter on kx3's own candidates (Oct 6, the follow-up; written before the filter): with `_tools`, when
-//! km3's proposed placement has no printed effect and another placement has one, the placements without an effect leave
-//! kx3's pool, each named with its reason, and km3 chooses again among the rest with the same randomness as in the
-//! play-outs; where no placement has an effect, or km3's has one, the pool is unchanged; with `_tools` off it is unchanged.
+//! The same rule as a within-noise tie-break at kx3's own decision (Oct 6, the amended follow-up; written before the
+//! tie-break; it replaces a candidate filter, because a planning bot must keep legal preparation moves evaluable): with
+//! `_tools`, every placement stays in kx3's pool with its play-outs; only when no move clears the z bar, and km3's proposed
+//! placement has no printed effect now while another placement has one, kx3 plays the placement with an effect that km3
+//! prefers (the play-out rule's choice, same randomness), named "tie-break: Tool effect" in the trace. km3's placement is
+//! kept when its play-outs lead that placement beyond the noise. With `_tools` off nothing changes.
 use std::cell::Cell;
 use std::rc::Rc;
 
@@ -17,8 +19,8 @@ use deckgym::database::get_card_by_enum;
 use deckgym::models::{Card, EnergyType, PlayedCard};
 use deckgym::observation::{PlayerObservation, RevealedKnowledge};
 use deckgym::players::playout_player::{
-    placements_with_effect, tool_conditions, tool_filter, Knowledge, PlayoutParams, PlayoutPlayer, Step, ToolRulePlayer,
-    ToolSpot,
+    kept_by_playouts, placements_with_effect, tie_break_placements, tool_conditions, Knowledge, PlayoutParams, PlayoutPlayer,
+    Step, ToolRulePlayer, ToolSpot,
 };
 use deckgym::players::Player;
 use deckgym::test_support::get_test_game_with_board;
@@ -291,29 +293,36 @@ fn where_km3_would_misplace_a_tool_the_rule_acts() {
     }
 }
 
-/// The filter on its own: it acts only when km3's proposal is a placement without effect and another placement has one;
-/// then the placements without effect are dropped, each with the reason, and the rest are kept in the order offered.
+/// The tie-break's premise on its own: km3's proposal is a placement without an effect now and another placement has one.
+/// Then it names the placements with one and why km3's has none; otherwise nothing.
 #[test]
-fn the_filter_drops_placements_without_effect_only_when_km3_proposes_one() {
+fn the_tie_break_applies_only_when_km3_proposes_a_placement_without_effect() {
     let state = board();
-    let filter = |name: &str, proposal: usize| {
+    let premise = |name: &str, proposal: usize| {
         let actions = frame(name);
-        tool_filter(&state, &actions, &actions[proposal]).map(|(kept, dropped)| {
-            (slots(&kept), slots(&dropped.iter().map(|(a, _)| a.clone()).collect::<Vec<_>>()), dropped.into_iter().map(|(_, why)| why).collect::<Vec<_>>())
-        })
+        tie_break_placements(&state, &actions, &actions[proposal]).map(|(effective, why)| (slots(&effective), why))
     };
-    assert_eq!(filter("Elegant Cape", 3), None, "km3's placement has an effect: unchanged");
-    assert_eq!(filter("Leaf Cape", 2), None, "no placement has an effect: unchanged");
-    let (kept, dropped, why) = filter("Elegant Cape", 1).unwrap();
-    assert_eq!((kept, dropped), (vec![0, 3], vec![1, 2]));
-    assert!(why.iter().all(|w| w.contains("Elegant Cape") && w.contains("Stage 1")), "{why:?}");
-    let (kept, dropped, why) = filter("Protective Poncho", 0).unwrap();
-    assert_eq!((kept, dropped), (vec![1, 2, 3], vec![0]));
-    assert!(why[0].contains("Protective Poncho") && why[0].contains("Bench"), "{why:?}");
-    // A proposal that isn't a placement leaves the pool alone.
+    assert_eq!(premise("Elegant Cape", 3), None, "km3's placement has an effect");
+    assert_eq!(premise("Leaf Cape", 2), None, "no placement has an effect");
+    let (effective, why) = premise("Elegant Cape", 1).unwrap();
+    assert_eq!(effective, vec![0, 3]);
+    assert!(why.contains("Elegant Cape") && why.contains("Stage 1"), "{why}");
+    let (effective, why) = premise("Protective Poncho", 0).unwrap();
+    assert_eq!(effective, vec![1, 2, 3]);
+    assert!(why.contains("Protective Poncho") && why.contains("Bench"), "{why}");
     let mut mixed = frame("Protective Poncho");
     mixed.push(Action { actor: 0, action: SimpleAction::EndTurn, is_stack: false });
-    assert_eq!(tool_filter(&state, &mixed, &mixed[4]), None);
+    assert_eq!(tie_break_placements(&state, &mixed, &mixed[4]), None, "a proposal that isn't a placement");
+}
+
+/// km3's placement without effect is kept only when its play-outs lead the placement with an effect beyond the noise: by
+/// more than z standard errors of the paired difference (`diff` is that placement's lead over km3's).
+#[test]
+fn km3s_placement_is_kept_only_by_a_lead_beyond_the_noise() {
+    assert!(kept_by_playouts(-0.20, 0.05, 2.0), "km3's placement leads by 4 standard errors: kept");
+    assert!(!kept_by_playouts(-0.05, 0.05, 2.0), "a lead of 1 standard error is noise: the tie-break applies");
+    assert!(!kept_by_playouts(0.05, 0.05, 2.0), "the placement with an effect leads: the tie-break applies");
+    assert!(!kept_by_playouts(-0.30, f64::INFINITY, 2.0), "with fewer than 2 rounds there is no lead beyond the noise");
 }
 
 /// The first decision of `actor` in the km3 game (`deck0` v `deck1`, `seed`) that places `name`, with a check on the
@@ -337,8 +346,8 @@ fn placement_decision(deck0: &str, deck1: &str, seed: u64, actor: usize, name: &
 const DECK05: &str = "../decks/dustin/05-indeedee-stoutland.txt";
 const ALTARIA: &str = "../decks/screen/opponents/t-altaria.txt";
 
-fn pilot_for(list: &str, opponent: &str, tools: bool) -> PlayoutPlayer {
-    let params = PlayoutParams { rollouts: 2, cap: 12, z: 2.0, knowledge: Knowledge::Lab, tools, ..PlayoutParams::new(3) };
+fn pilot_for(list: &str, opponent: &str, tools: bool, z: f64) -> PlayoutPlayer {
+    let params = PlayoutParams { rollouts: 2, cap: 12, z, knowledge: Knowledge::Lab, tools, ..PlayoutParams::new(3) };
     PlayoutPlayer::with_extra_lists(deck(list), deck(opponent), params, Vec::new())
 }
 
@@ -348,51 +357,67 @@ fn poncho_decision() -> (State, Vec<Action>) {
     placement_decision(DECK05, ALTARIA, 24_450_000_000, 0, "Protective Poncho", |s| s.in_play_pokemon[0].iter().skip(1).any(|p| p.is_some()))
 }
 
-/// With `_tools` off, kx3's pool at that decision is every distinct legal placement, km3's first, nothing dropped.
+/// Every distinct legal placement, sorted.
+fn offered(actions: &[Action]) -> Vec<usize> {
+    let mut v = slots(actions);
+    v.sort();
+    v.dedup();
+    v
+}
+
+/// With `_tools` off, kx3's pool at that decision is every distinct legal placement, km3's first, nothing dropped, and
+/// no tie-break.
 #[test]
 fn with_the_parameter_off_kx3s_pool_is_unfiltered() {
     let (state, actions) = poncho_decision();
     let observation = PlayerObservation::from_state(&state, 0, &RevealedKnowledge::default());
-    let report = pilot_for(DECK05, ALTARIA, false).evaluate(&mut StdRng::seed_from_u64(20_000_000_203), &observation, &actions);
+    let report = pilot_for(DECK05, ALTARIA, false, 50.0).evaluate(&mut StdRng::seed_from_u64(20_000_000_203), &observation, &actions);
     assert_eq!(slots(&[report.candidates[0].action.clone()]), vec![0], "the premise: km3 proposes the Active");
-    let mut offered = slots(&actions);
-    offered.dedup();
     let mut pooled = slots(&report.candidates.iter().map(|c| c.action.clone()).collect::<Vec<_>>());
     pooled.sort();
-    assert_eq!(pooled, offered);
+    assert_eq!(pooled, offered(&actions));
     assert!(report.dropped.is_empty(), "{:?}", report.dropped);
+    assert_eq!(report.chosen, 0, "z 50: km3's move");
+    assert!(!report.reason.contains("tie-break"), "{}", report.reason);
 }
 
-/// With `_tools` on, the Active placement leaves the pool, named with its reason; km3's choice among the rest (the same
-/// randomness, as the play-out rule chooses) leads the pool; kx3 places the Poncho on the Bench.
+/// With `_tools` on, every placement stays in the pool and is played out; with z 50 no move clears the bar, so the
+/// tie-break plays the Poncho on the Bench: km3's choice among the placements with an effect (the play-out rule's, same
+/// randomness), named in the reason.
 #[test]
-fn with_the_parameter_on_placements_without_effect_leave_the_pool_named() {
+fn with_the_parameter_on_every_placement_stays_and_the_tie_break_chooses_one_with_effect() {
     use deckgym::players::{create_players, PlayerCode};
     let (state, actions) = poncho_decision();
     let observation = PlayerObservation::from_state(&state, 0, &RevealedKnowledge::default());
     let seed = 20_000_000_204;
-    let report = pilot_for(DECK05, ALTARIA, true).evaluate(&mut StdRng::seed_from_u64(seed), &observation, &actions);
-    let pooled = slots(&report.candidates.iter().map(|c| c.action.clone()).collect::<Vec<_>>());
-    assert!(pooled.iter().all(|&i| i > 0), "{pooled:?}");
-    assert_eq!(report.dropped.len(), 1, "{:?}", report.dropped);
-    assert!(report.dropped[0].reason.contains("Protective Poncho") && report.dropped[0].reason.contains("Bench"), "{:?}", report.dropped);
-    assert!(slots(&[report.candidates[report.chosen].action.clone()])[0] > 0);
+    let report = pilot_for(DECK05, ALTARIA, true, 50.0).evaluate(&mut StdRng::seed_from_u64(seed), &observation, &actions);
+    let mut pooled = slots(&report.candidates.iter().map(|c| c.action.clone()).collect::<Vec<_>>());
+    assert_eq!(pooled[0], 0, "km3's proposal leads the pool");
+    pooled.sort();
+    assert_eq!(pooled, offered(&actions), "nothing leaves the pool");
+    assert!(report.dropped.is_empty(), "{:?}", report.dropped);
+    assert!(report.rounds > 0 && report.candidates.iter().all(|c| c.score.is_finite()), "every placement is played out");
+    assert!(report.reason.starts_with("tie-break: Tool effect"), "{}", report.reason);
     let km = create_players(deck(DECK05), deck(ALTARIA), vec![PlayerCode::KM { max_depth: 3 }, PlayerCode::KM { max_depth: 3 }]).remove(0);
     let mut rule = ToolRulePlayer { inner: km, interventions: Rc::new(Cell::new(0)) };
-    assert_eq!(report.candidates[0].action, rule.decision_fn(&mut StdRng::seed_from_u64(seed), &observation, &actions));
+    let preferred = rule.decision_fn(&mut StdRng::seed_from_u64(seed), &observation, &actions);
+    assert!(slots(&[preferred.clone()])[0] > 0);
+    assert_eq!(report.candidates[report.chosen].action, preferred);
 }
 
 /// Where no placement has an effect (deck 09's Elegant Cape with only Basics in play, the development run's km3 game
-/// `09-mega-manectric-heliolisk|t-altaria|1|0|ref`, seed 24,400,000,001), the pool is the same with `_tools` on.
+/// `09-mega-manectric-heliolisk|t-altaria|1|0|ref`, seed 24,400,000,001), the pool is the same with `_tools` on, and
+/// there is no tie-break.
 #[test]
-fn where_no_placement_has_an_effect_kx3s_pool_is_unchanged() {
+fn where_no_placement_has_an_effect_there_is_no_tie_break() {
     let deck09 = "../decks/dustin/09-mega-manectric-heliolisk.txt";
     let (state, actions) = placement_decision(deck09, ALTARIA, 24_400_000_001, 0, "Elegant Cape", |_| true);
     assert!(placements_with_effect(&state, &actions).is_empty(), "the premise: no Stage 1 in play");
     let observation = PlayerObservation::from_state(&state, 0, &RevealedKnowledge::default());
     let pool = |tools: bool| {
-        let r = pilot_for(deck09, ALTARIA, tools).evaluate(&mut StdRng::seed_from_u64(20_000_000_205), &observation, &actions);
-        (r.candidates.iter().map(|c| c.action.clone()).collect::<Vec<_>>(), r.dropped.len())
+        let r = pilot_for(deck09, ALTARIA, tools, 50.0).evaluate(&mut StdRng::seed_from_u64(20_000_000_205), &observation, &actions);
+        assert!(!r.reason.contains("tie-break"), "{}", r.reason);
+        (r.candidates.iter().map(|c| c.action.clone()).collect::<Vec<_>>(), r.dropped.len(), r.chosen)
     };
     assert_eq!(pool(true), pool(false));
 }
