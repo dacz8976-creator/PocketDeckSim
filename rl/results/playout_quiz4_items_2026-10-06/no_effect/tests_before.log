@@ -1,0 +1,23 @@
+$ cargo test --release --features test-utils --test playout_quiz4_test   (claude/playout-pilot, item 2's tests written, the reader and the tie-break not yet in the build; 2026-10-06T18:52:19Z)
+error[E0432]: unresolved imports `deckgym::players::playout_player::effect_needs`, `deckgym::players::playout_player::effect_now`, `deckgym::players::playout_player::CardKind`, `deckgym::players::playout_player::Need`, `deckgym::players::playout_player::PokemonFilter`, `deckgym::players::playout_player::Reading`, `deckgym::players::playout_player::Scope`
+  --> tests/playout_quiz4_test.rs:22:5
+   |
+22 |     effect_needs, effect_now, switch_bar, CardKind, DecisionReport, Knowledge, Need, PlayoutParams, PlayoutPlayer, PokemonFilter,
+--
+error[E0609]: no field `noeffect` on type `PlayoutParams`
+   --> tests/playout_quiz4_test.rs:258:36
+    |
+258 |     assert!(!PlayoutParams::new(3).noeffect);
+--
+error[E0609]: no field `noeffect` on type `PlayoutParams`
+   --> tests/playout_quiz4_test.rs:260:15
+    |
+260 |     assert!(p.noeffect);
+--
+error[E0560]: struct `PlayoutParams` has no field named `noeffect`
+   --> tests/playout_quiz4_test.rs:293:59
+    |
+293 |     let params = PlayoutParams { rollouts: 4, cap: 12, z, noeffect, knowledge: Knowledge::Lab, ..PlayoutParams::new(3) };
+--
+error: could not compile `deckgym` (test "playout_quiz4_test") due to 4 previous errors
+warning: build failed, waiting for other jobs to finish...
