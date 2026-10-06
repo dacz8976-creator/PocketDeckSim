@@ -421,3 +421,32 @@ fn where_no_placement_has_an_effect_there_is_no_tie_break() {
     };
     assert_eq!(pool(true), pool(false));
 }
+
+/// A case where km3's placement without effect wins its play-outs beyond the noise and is kept (gate 2's dev04: deck 05 v
+/// t-sceptile in the development run's km3 game, deal 0 seat 1, turn 7, the Protective Poncho just played; LAB, 64
+/// rounds, the position's seed 24,200,002,004). The Poncho on the Active Indeedee ex leads every Bench placement by
+/// +0.0625, 2.05 standard errors: a preparation the play-outs value, so the tie-break leaves it.
+#[test]
+fn a_placement_without_effect_that_wins_its_play_outs_beyond_the_noise_is_kept() {
+    use deckgym::players::{create_players, PlayerCode};
+    let state: State = serde_json::from_str(&std::fs::read_to_string("../rl/results/playout_tool_rule_2026-10-06/gate2/states/dev04.json").unwrap()).unwrap();
+    let (list, sceptile) = (deck(DECK05), deck("../decks/screen/opponents/t-sceptile.txt"));
+    let (me, legal) = state.generate_possible_actions();
+    let poncho = legal
+        .iter()
+        .find(|a| matches!(&a.action, SimpleAction::Play { trainer_card } if trainer_card.name == "Protective Poncho"))
+        .unwrap()
+        .clone();
+    let (d0, d1) = if me == 0 { (list.clone(), sceptile.clone()) } else { (sceptile.clone(), list.clone()) };
+    let code = PlayerCode::KM { max_depth: 3 };
+    let mut game = deckgym::Game::from_state(state, create_players(d0, d1, vec![code.clone(), code]), 24_200_002_004);
+    game.apply_action(&poncho);
+    let state = game.get_state_clone();
+    let (me, actions) = state.generate_possible_actions();
+    let observation = PlayerObservation::from_state(&state, me, &RevealedKnowledge::default());
+    let params = PlayoutParams { rollouts: 64, cap: 12, z: 2.0, knowledge: Knowledge::Lab, tools: true, ..PlayoutParams::new(3) };
+    let report = PlayoutPlayer::with_extra_lists(list, sceptile, params, Vec::new()).evaluate(&mut StdRng::seed_from_u64(24_200_002_004), &observation, &actions);
+    assert!(tie_break_placements(&state, &actions, &report.candidates[0].action).is_some(), "the premise: km3's Poncho is on the Active");
+    assert_eq!(report.chosen, 0, "{}", report.reason);
+    assert!(report.reason.contains("km's move kept") && report.reason.contains("play-outs lead the placement with one"), "{}", report.reason);
+}
