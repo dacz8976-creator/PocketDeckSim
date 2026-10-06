@@ -19,9 +19,11 @@ play uncommon decks he can only partly see. An opponent's unseen cards stay unkn
    Helmet; it matches the video).
 3. Human evidence: his hand is known at the start of all 82 of his turns. Nine good build-up and tempo positions are listed in
    section 3 (not built).
-4. Results: 8 wins, 10 losses over the 18 games. Eleven of the 14 lists are setup decks. If any list gets a simulator check, the
-   best candidates are Conkeldurr / Sandslash / Hitmonchan ex and Aegislash / Melmetal ex / Magnezone, with Scolipede / Mega Sableye ex
-   after the Cursed Jewel decision.
+4. Results: 8 wins, 10 losses over the 18 games. Eleven of the 14 lists are setup decks. Dustin (Oct 6): any simulator check will use
+   the better, slower bot (kx3), not km3's floor check, so section 4.2 now prices that: about 1 hour (a fast list) to 4 hours (a setup
+   list) of laptop time for 80 games at plus or minus 11 points, no money, and not before the laptop's current kx3 run and the unbuilt
+   "slow report" wrapper are done. The best candidates are still Conkeldurr / Sandslash / Hitmonchan ex and Aegislash / Melmetal ex /
+   Magnezone, with Scolipede / Mega Sableye ex after the Cursed Jewel engine change.
 5. Pending: nothing. All 18 packets are accepted and registered.
 
 ---
@@ -264,23 +266,57 @@ What beat him, where the record is clear:
   Doublade, Aegislash and Rare Candy were in his opening hand but the first Honedge came down on turn 3 and Aegislash only on turn 7.
 - Lucky Ice Pop was played 29 times on 18 of his 82 turns; healing 20 at a time did not outrun 100-plus damage.
 
-### 4.2 Is any list worth a simulator screen?
+### 4.2 Is any list worth a simulator check? (priced with kx3, corrected Oct 6)
 
-The only simulator check allowed today is the floor check (km3 on both sides, 1,920 games per list, bar 20%, band about plus or minus
-1.8); ranking stays on hold. It costs about 4 minutes of the laptop's time per list (km3 runs about 8.6 games a second on the laptop) and none of
-his, but it only says "not broken", and each list first needs writing as a deck file (all 14 are in `NEW_DECK_ENTRIES.json` /
-`EDITED_DECK_ENTRY.json`, one small job). The 15-minute games he plays are the expensive part, so a screen is worth it only where it would
-change which list he plays next:
+**Correction.** The first version of this section priced the km3 floor check (about 4 minutes of laptop time, 1,920 games). Dustin said
+on Oct 6 that any simulator check will use the better, much slower bot, so that figure is gone. kx3 cannot be used for the floor check
+anyway: the floor's cutoffs belong to km3 (`decks/screen/floor.py`, `rl/RUN5.md`), and a kx3 result is never run through them.
 
-1. **Conkeldurr / Sandslash / Hitmonchan ex.** Exact QR list, the only fast list with a clean win (3 to 2, attacked on 8 of 9 turns), and its
-   win came from a plan the bot could be asked about (P1).
-2. **Aegislash / Melmetal ex / Magnezone.** Exact QR list, a 16-turn win, and its game is a slow build the bot's planning should show.
-3. **Scolipede / Mega Sableye ex** (exact QR list, 1 to 1), but only after the Cursed Jewel decision in 2.1, otherwise the screen
-   undercounts its retaliation.
+**What a kx3 check is.** The plan is the opt-in "slow report" (`rl/results/kx3_slow_report_plan_2026-10-06/PLAN.md`, RUN5 item B): his
+list played by kx3 against the eight public panel lists played by km3, N deals by 2 seats per opponent (16N games), reported as
+results with 95% intervals and in plain words, never pass or fail, with both pilots named. kx3 is never told his list. It can say how the
+list does with a strong pilot against the public meta lists. It cannot say how it does against unknown decks like his event opponents
+(the panel is also kx3's guessing pool), and it does not rank lists (ranking stays on hold). I read "the better bot" as this design,
+kx3 on his list and km3 on the panel. kx3 on both seats is not built or priced anywhere; it would roughly double each game (about 1.95
+times by the decision counts, and the cloud's one two-seat test took 640 to 660 seconds a game on 4 cores).
 
-I would not screen the Aegislash / Tinkaton lists, the Skarmory lists, the Nidoking lists or Terapagos / Silvally / Persian: the
-losses had a common cause (late or missing Stage 2 or thin Bench) that a floor check would not explain, and he can see that directly in the
-packets. Hatterene and Mega Blaziken have one short win each; not enough to point at.
+**What it costs.** Money: $0 (it runs on the laptop; electricity only). Time: the laptop plays two kx3 games at a time using all its
+threads. Mean wall time per kx3 game from the development run was 86 to 124 seconds on fast decks (Blaziken, Manectric, Xatu), 313 to
+335 on setup decks (Muk, Indeedee / Stoutland) and 770 on the Wailord wall deck, so about 75 to 83, 21 to 23 and 9 games an hour. The
+paired km3 arm that shows kx3's gain over km3 on the same list costs about a second a game. Estimates for one of his lists, from those
+per-deck rates (a new list may differ; the plan's own table for a "typical" deck is 2.5 to 3 hours at N = 5):
+
+| Size | Games | Score of his list | A fast list (Scolipede / Mega Sableye ex, Conkeldurr / Sandslash / Hitmonchan ex) | A setup list (Aegislash / Melmetal ex / Magnezone) | A wall list (Wailord / Mega Sharpedo ex / Suicune ex) |
+|---|---|---|---|---|---|
+| N = 3 | 48 | plus or minus 14 | about 40 minutes | 2 to 2.5 hours | about 5 hours |
+| N = 5 | 80 | plus or minus 11 | about 1 hour | 3.5 to 4 hours | about 9 hours |
+| N = 10 | 160 | plus or minus 8 | about 2 hours | 7 to 7.5 hours | about 17 hours |
+
+At plus or minus 11 points only a big gap shows, and a run to plus or minus 4.5 (480 games) would take 6 hours for a fast list and about
+a day for a setup list. For comparison the plan counts 80 of his own games at about 13 hours.
+
+**What stands in the way.** None of it can start tonight:
+- The laptop is busy with gate 3 of the Tool rule (kx3 with the tools; 800 games planned, 2 at a time). At 22:31 UTC on Oct 6 it had
+  about 16 hours to go, longer with the school-morning stop (no new game after 5:15 am, stopped by 6:30, back from 5 pm).
+- The slow report is only a plan. `rl/strength/slow_report.py` and the new "use" stage do not exist; RUN5 puts them after gate 3 and the
+  Tool-rule decision, Sonnet builds them and the laptop reviews. Whether a one-off check could run sooner through the existing
+  pre-registration as development use is not decided.
+- Each list needs a deck file in the repository format (a text file with an Energy line and one line per card) added to the harness
+  and committed, and a fresh seed block recorded; no script turns a QR decode into that file today.
+- The Cursed Jewel change (2.1) is queued for the next rules switch, so a kx3 run on Scolipede / Mega Sableye ex before that undercounts
+  its return hit.
+
+**Which lists, in order.**
+1. **Conkeldurr / Sandslash / Hitmonchan ex.** Exact QR list, the only fast list with a clean win (3 to 2, attacked on 8 of 9 turns), the
+   cheapest kind to run, and its win came from a plan the bot could be asked about (P1).
+2. **Aegislash / Melmetal ex / Magnezone.** Exact QR list, a 16-turn win, and its game is a slow build the bot's planning should show;
+   about four hours at N = 5 if it plays like his other setup decks.
+3. **Scolipede / Mega Sableye ex** (exact QR list, 1 to 1), about an hour at N = 5, after the engine change in 2.1.
+
+I would not run the Aegislash / Tinkaton lists, the Skarmory lists, the Nidoking lists, Terapagos / Silvally / Persian or the Wailord list:
+the losses had a common cause (late or missing Stage 2 or a thin Bench) that a check would not explain, he can see that directly in the
+packets, and the Wailord list would cost about nine hours for 80 games. Hatterene and Mega Blaziken have one short win each; not enough to
+point at. He decides whether any of this is worth the wait.
 
 ---
 
