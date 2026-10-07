@@ -1,0 +1,43 @@
+The close-call extension's tests (Oct 7) before the code: cargo test --release --features test-utils --test playout_close_calls_test
+They don't compile: no max_rounds, no per-candidate rounds yet.
+
+error[E0609]: no field `rounds` on type `&CandidateReport`
+  --> tests/playout_close_calls_test.rs:26:124
+   |
+26 | ...action, c.score, c.diff, c.se, c.attacks_this_turn, c.rounds)).collect();
+   |                                                          ^^^^^^ unknown field
+   |
+--
+error[E0609]: no field `max_rounds` on type `PlayoutParams`
+  --> tests/playout_close_calls_test.rs:33:38
+   |
+33 |     assert_eq!(PlayoutParams::new(3).max_rounds, None);
+   |                                      ^^^^^^^^^^ unknown field
+   |
+--
+error[E0609]: no field `max_rounds` on type `PlayoutParams`
+  --> tests/playout_close_calls_test.rs:35:18
+   |
+35 |     assert_eq!(p.max_rounds, Some(64));
+   |                  ^^^^^^^^^^ unknown field
+   |
+--
+error[E0560]: struct `PlayoutParams` has no field named `max_rounds`
+  --> tests/playout_close_calls_test.rs:70:60
+   |
+70 |     let params = PlayoutParams { rollouts, cap: 6, z: 2.0, max_rounds, knowledge: Knowledge::Lab, ..PlayoutParams::new(3) };
+   |                                                            ^^^^^^^^^^ `PlayoutParams` does not have this field
+   |
+--
+error[E0609]: no field `rounds` on type `&CandidateReport`
+  --> tests/playout_close_calls_test.rs:98:44
+   |
+98 |         if ext.candidates.iter().all(|c| c.rounds == 4) {
+   |                                            ^^^^^^ unknown field
+   |
+--
+error[E0609]: no field `rounds` on type `CandidateReport`
+   --> tests/playout_close_calls_test.rs:106:44
+    |
+106 |         assert_eq!(ext.candidates[ext.km3].rounds, 20, "seed {seed}: km3's move extended");
+    |                                            ^^^^^^ unknown field
