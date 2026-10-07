@@ -33,7 +33,14 @@ main):
      - Fragrant Forest with no Basic Grass: every use, 125 and 119.
      - Elegant Cape with no Stage 1: 61 and 62.
    - **Gate 2:** at the 20 positions, km3's move always does something, so the rule never acts.
-   - **kx3's 1,004 such plays, decided again with the rule on:** running (results to follow).
+   - **kx3's 1,004 such plays, decided again with the rule on.**
+     - **The rule changes 979.** At 5, km3's move leads beyond the noise and is kept.
+     - **The other 20 can't change:** kx3 had switched to that move itself, by a lead past the bar.
+     - **It mostly changes the order of free moves.** Watch Over is replaced by the turn's Energy (402 times), a bench
+       or a Trainer. Fragrant Forest is replaced by End Turn (95).
+     - **What matters is the card kept in hand**, when the attack comes first: an Elegant Cape (21), a Poké Ball (12) or
+       a Heavy Helmet (7).
+     - In the play-outs, the replacement scores the same as km3's move on average (-0.003).
 3. **The "neither" positions: in these play-outs, Dustin's plan doesn't beat the move kx3 actually played at any of
    the three.** It does beat km3's plan at Q11.
    - **Q06: his plan loses.** It wins 0 of 128 play-outs, against 0.289 for kx3's move (the Psychic to the Benched
@@ -244,9 +251,43 @@ The two bots are alike. About 80% of it is in decks 03 and 05 (Watch Over), and 
 
 ### kx3's no-effect plays, decided again (`no_effect/redecide.*`)
 
-Running: every kx3 game of the development run replayed exactly. At each kx3 play that can do nothing by its text,
-km3 is asked with the game's own randomness; where km3 proposed that play, kx3 decides again with `_noeffect`. Results
-to follow in this section.
+**How.** All 560 kx3 games of the development run were replayed exactly (`trainer_habits scripted --noeffect-scan
+kx3_r16_c12_z2_real_t0_poolmeta`).
+- At each kx3 play that can do nothing by its text, km3 was asked with the game's own randomness.
+- Where km3 had proposed that play, kx3 decided again from the same randomness with `_noeffect` on.
+- **The cost:** about 15 CPU-hours (4.5 hours on 4 cores). Each decision plays every candidate out 16 times, and the
+  Watch Over decks have long games.
+
+**What it found** (`redecide.txt`):
+- kx3 made 1,004 such plays, the same number the effect events count.
+- **20 were kx3's own switch**, from km3's move to one that does nothing, by a lead past the bar: Fragrant Forest 10,
+  Poké Ball 4, Cheren 3, Watch Over 2, Poncho 1. The rule can't change these.
+- **984 were km3's proposals, kept by kx3.**
+  - At 979, the tie-break now plays another move.
+  - At 5, km3's move leads beyond the noise and is kept: Fragrant Forest 3, Watch Over 1, Poké Ball 1. That's no more
+    than chance would give at 2 standard errors, since a move that does nothing differs only by luck.
+
+| card | changed / kx3's plays of it | what the tie-break plays instead |
+|---|---|---|
+| Watch Over at full HP | 714 / 715 | the turn's Energy 402, a bench 107, a Trainer 76, End Turn 59, evolve 43, retreat 20, attack 7 |
+| Fragrant Forest | 106 / 109 | End Turn 95, a Trainer 8, others 3 |
+| Elegant Cape | 62 / 62 | attack 21, a bench 16, Energy 12, End Turn 6, a Trainer 4, evolve 3 |
+| Poké Ball | 31 / 32 | attack 12, Energy 11, a Trainer 5, others 3 |
+| Heavy Helmet | 25 / 25 | Energy 9, attack 7, End Turn 4, a bench 3, evolve 2 |
+| Clemont's Backpack | 18 / 18 | evolve 11, others 7 |
+| Mesagoza | 14 / 14 | End Turn 13, a Trainer 1 |
+| Protective Poncho | 9 / 9 | Energy 3, a bench 3, End Turn 2, attack 1 |
+
+**What it means.**
+- Most changes put a free move later, or drop it. Watch Over and Fragrant Forest cost nothing, and kx3 decides again
+  after the Energy or the bench.
+- What changes the game is a card kept in hand instead of spent: an Elegant Cape (until there is a Stage 1), a Poké
+  Ball (until there is a Basic to find), a Heavy Helmet.
+- Dustin's notes call the useless Stadium "a waste of time" that "doesn't harm anything", and he wouldn't use the
+  Backpack with nothing it helps.
+- **In the play-outs the change is neutral.** The replacement scores the same as km3's move on average (-0.003; median
+  0; from -0.25 to +0.31). By construction it is never worse beyond the noise.
+- **Whether it helps strength can't be told from this.** It would take games, a gate 3 like the Tool tie-break's.
 
 ### Gate 1 for items 2 and 3 (`checks/`, at 25522e5a, in a separate worktree)
 

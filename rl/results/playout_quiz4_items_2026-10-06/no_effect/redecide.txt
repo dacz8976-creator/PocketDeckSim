@@ -1,0 +1,22 @@
+kx3's plays that could do nothing now, at real decisions: 1004 (every game replayed exactly: True)
+  kx3 switched to it from km3's move (a lead past the bar): 20; km3 proposed it and kx3 kept it: 984
+    the tie-break plays another move: 979
+    kept: km3's move leads the other beyond the noise: 5
+
+Per card, where km3 proposed it:
+
+| card | plays of it | the tie-break plays another move | kept by km3's play-outs | nothing else does something | not reproduced |
+|---|---|---|---|---|---|
+| Indeedee ex's Watch Over | 715 | 714 | 1 | 0 | 0 |
+| Fragrant Forest | 109 | 106 | 3 | 0 | 0 |
+| Elegant Cape | 62 | 62 | 0 | 0 | 0 |
+| Poké Ball | 32 | 31 | 1 | 0 | 0 |
+| Heavy Helmet | 25 | 25 | 0 | 0 | 0 |
+| Clemont's Backpack | 18 | 18 | 0 | 0 | 0 |
+| Mesagoza | 14 | 14 | 0 | 0 | 0 |
+| Protective Poncho | 9 | 9 | 0 | 0 | 0 |
+
+What the tie-break plays instead (by kind): {'Attach': 439, 'EndTurn': 180, 'Place': 130, 'Play': 96, 'Evolve': 61, 'Attack': 51, 'Retreat': 22}
+Its play-out score against km3's no-effect move: median +0.000, from -0.250 to +0.312; at or above 0 in 900 of 979
+
+kx3's own switches to a move that can do nothing (per card): {'Fragrant Forest': 10, 'Poké Ball': 4, 'Cheren': 3, "Indeedee ex's Watch Over": 2, 'Protective Poncho': 1}
