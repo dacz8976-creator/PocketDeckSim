@@ -13,16 +13,23 @@ The audit is committed: `rl/results/coin_prevention_round2_2026-10-01/TEXT_AUDIT
 - **In the five files but outside rules/09, rules/04 and the caveats:** Guts on the attacker's own Pokémon in an attack's outcome (E1), and Perish Body on a plain queued hit at the Active (E2). Both are decided by their text. Fix them in this job, or leave them listed?
 
 1. **Current task, and the instruction that set it.** The skip bar and close calls combined (Fable via Dustin, Oct 7,
-   from the laptop's review of 7d3639d0): done and pushed, except the exact code's 12-game self-check (item 2). Tests
-   first, gates 1-2, km3 untouched, no table games.
-   **The fix round.**
-   - **Where.** Branch claude/playout-pilot: tests first c0a36092, code ec283c53, results and README d664b398. Read "The
-     fix round" at the top of `rl/results/playout_close_calls_2026-10-07/README.md`.
+   from the laptop's review of 7d3639d0), with the addendum that drops (c): done and pushed, except the exact code's
+   12-game self-check (item 2). Tests first, gates 1-2, km3 untouched, no table games.
+   **The fix round, (c) dropped.**
+   - **Where.** Branch claude/playout-pilot: tests first c0a36092, code ec283c53; the addendum's tests ce1a0b13, code
+     76cd08f4; results and README 54209409. Read "The fix round" at the top of
+     `rl/results/playout_close_calls_2026-10-07/README.md`.
    - **Fixed.**
      - (a) km3's move is close to the best when the best's lead is within the bar the decision will use: z_skip for a
        switch from km3's attack to a line that skips it.
      - (b) Every extended candidate plays to R_max, and the decision is made once, at the end.
-     - (c) A move equal to km3's in every round isn't extended.
+     - (c) Built in ec283c53, then removed in 76cd08f4: a move tied with km3's is now extended like any other.
+     - **The addendum's test:** at B-210952-t16, the turn's Water to the Active ties km3's move in all 16 rounds. It is
+       extended to 64 rounds and played, with a lead of +0.125 at 3.0 SE. With (c), Binding Snow was played. Before the
+       change, 4 of the 8 tests failed.
+     - **Still standing, flagged:** the first version's rule that a move equal to the best in every round is no close
+       call. It covers a move tied with km3's when km3's move is the best, and rests on the same reasoning. Not changed
+       without a word.
    - **The 26 development-run cases with `kx3_r16_c12_z2_real_t0_poolmeta_tools_zs3_m64`:**
      - **The 9 true skips:** km3's attack is kept at 2. The skip bar alone kept 7.
      - **The 17 moves before an attack:** 6 of the 15 that reproduce are touched, 4 back to km3's attack and 2 to another
@@ -31,11 +38,13 @@ The audit is committed: `rl/results/coin_prevention_round2_2026-10-01/TEXT_AUDIT
        SE. The bar measures confidence, not size. Q12 is still kept (+0.094, 1.1 SE).
      - **For Fable and Dustin, before the combined development run:** with `_m64`, the skip bar keeps km3's attack only
        where the skip's lead is small. A bar on size (a minimum lead) would be a different parameter. Nothing is built.
-   - **Gate 1:** suite 2,091/0; km3 240/240; self-checks unchanged with the parameters off.
-   - **Digests:** `kx3_r2_c3_lab_tools_zs3_m64` gives 2284c591ed14a534. The exact code's 12 games are running (item 2).
-   - **Gate 2** (`_tools_zs3` v `_tools_zs3_m64`, 64 decisions): 37 extended to 64 rounds, 7 choices change, x2.2 the
+   - **Dropping (c)** changed none of the 26 choices, and one gate-2 choice (B-210952-t16).
+   - **Gate 1** at 76cd08f4: suite 2,092/0; km3 240/240; self-checks unchanged with the parameters off.
+   - **Digests:** `kx3_r2_c3_lab_tools_zs3_m64` gives 2284c591ed14a534, the same with (c) or without it. The exact code's
+     12 games are running (item 2).
+   - **Gate 2** (`_tools_zs3` v `_tools_zs3_m64`, 64 decisions): 37 extended to 64 rounds, 7 choices change, x2.5 the
      time.
-   - **The `_tools` tie-break** can play a placement the extension left at 16 rounds. That happened at 4 of its 20
+   - **The `_tools` tie-break** can play a placement the extension left at 16 rounds. That happened at 3 of its 20
      tie-breaks at gate 2, and at dev06's Heavy Helmet it changed the choice.
    **The two builds after quiz 4 (Oct 7) are done, as below.**
    **The skip bar (`_zs<z>`): the narrower "attack when you can".**
@@ -285,11 +294,11 @@ The audit is committed: `rl/results/coin_prevention_round2_2026-10-01/TEXT_AUDIT
    **Earlier jobs, done** (the readiness jobs, the card-text follow-up and step 8c read and accepted): the round-2 readiness jobs (57c65860, `rl/results/round2_readiness_2026-10-02/README.md`), the card-text follow-up (20e2651) and the card-text job, step 8c, step 8b's rows (3a107f4), F8, and the later round of coin-flip prevention (`claude/coin-prevention-round2`); details in their READMEs and the log below.
 2. **What is running now, and when it ends.** The exact combined code's self-check, as the laptop's pre-registration
    runs it: `strength selfcheck --pilot kx3_r16_c12_z2_real_t0_poolmeta_tools_zs3_m64 --games 12` (t-altaria v
-   t-suicune), on the harness built from ec283c53. It started at 18:46 and takes about 5 hours, so it should end near
-   23:45. Its digest goes into the close-calls README and here.
+   t-suicune), on the harness built from 76cd08f4. It started at 22:25 and takes about 5 hours, so it should end near
+   03:30 on Oct 8. Its digest goes into the close-calls README and here. The run on ec283c53 (with (c)) was stopped.
 3. **Files I expect to change.** None. The play-out job changed, on its branch only: `engine/src/players/mod.rs` (12 lines), new `engine/src/players/playout_player.rs`, `engine/src/players/playout_pool.rs`, `engine/tests/playout_pilot_test.rs`, `engine/examples/playout_smoke.rs`, `rl/results/playout_pilot_2026-10-02/`, and START_HERE's seed table (one row: 24,200,000,000-24,200,099,999).
 4. **Waiting on the laptop or Sonnet.** The laptop: registering the combined development run on the fixed head (code
-   ec283c53, head d664b398). Its pre-registration self-check of the exact code should print the cloud's digest (item 2).
+   76cd08f4, head 54209409; not ec283c53, which still had (c)). Its pre-registration self-check of the exact code should print the cloud's digest (item 2).
    Earlier: its examples run on d513e37b (not interrupted); a look at rounds 2 to 4 (head eefa24d0) when it suits.
 5. **Open questions.**
    - (a) For Dustin, still open from before: remove the Pocket Shot List rows `chase-order-carefree-steps` and `carefree-steps-snipe`? Nothing is done until he answers.
