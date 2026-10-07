@@ -370,6 +370,11 @@ sides with k3 still available; the 0.7.2 wheel and its run identities are untouc
         - a separate "slow report" with results and their uncertainty, NOT run through the floor's pass/fail cutoffs;
         - no prerequisite of passing km3's screen: any deck can go straight to kx3.
       - (C) The Tool filter becomes a within-noise **tie-break**, never a dropped candidate (Poncho on the Active can protect after a retreat). Gate 3 waits for that version and includes decks 05 and 03.
+        - **Gate 3 (Oct 7, `results/strength_2026-10-06_kx3_tools_gate3/`):** the rule on − off, paired on the development run's deals: **+0.2 ± 1.5 points** (400 pairs). Per deck: 01 +0.0, 03 +0.0, 05 +1.2, 06 +1.2, 10 −1.2. No harm, and no gain this size can see. All 400 km3 games replayed the development run exactly.
+          - It changed a decision in 83 of the 400 games (50 of them deck 05's), and the result in 9.
+          - It costs about 13% more time a game (06 +43%, 10 +23%, the others about even).
+          - The rule stays in the next candidate.
+      - (C2) **Next candidate (coordinator, Oct 7):** one combined run instead of a gate per feature: kx3 with `_tools _zs3 _m64` against the frozen d513e37b, on the development decks and deals, paired. It waits for the cloud's fix of the review's two findings: the close-call extension tests the bar that will decide, and it decides at the end. Its size goes to Dustin first. The opt-in tools ship d513e37b now.
       - (D) The unfamiliar-opponent version stays separate until it is measured against out-of-pool opponents.
     - **Rules finding queued for the next rules switch (Oct 6):** return damage set up by an attack takes Weakness. Dustin, verbatim: "I know it is the case for sableye. It is from an attack the return damage is done, not from an ability."
       - It covers the 5 attacks with "During your opponent's next turn, if this Pokémon is damaged by an attack, do X damage to the Attacking Pokémon".
