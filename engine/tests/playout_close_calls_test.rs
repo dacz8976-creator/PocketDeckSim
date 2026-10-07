@@ -17,7 +17,9 @@
 //!   by no more than z standard errors;
 //! - (b) the extended candidates all play to R_max and the decision is made once, at the end: no stop at the first block
 //!   where the best clears the bar, and no candidate dropped on the way;
-//! - (c) a move equal to km3's in every round so far isn't extended: it can't win, ties go to km3's move;
+//! - (c) dropped (the Oct 7 addendum, Fable via Dustin): a move tied with km3's in every round so far is extended like
+//!   any other move close to the best, since rare draws or events can separate them later; a move tied with km3's through
+//!   16 rounds is extended and wins at R_max (B-210952-t16);
 //! - `_tools _zs3 _m64` together: at km3's attacks the extension and the skip bar act as above; at a Tool placement the
 //!   Tool tie-break comes after the extension's decision and looks at every candidate, so it may play a placement left at
 //!   R rounds.
@@ -100,8 +102,8 @@ const SEEDS: [u64; 8] = [
 /// With R = 4 and R_max = 20: a decision without a close call is the plain decision field for field; with one, km3's move
 /// and the best after 4 rounds are extended to 20 rounds, each extended candidate's play-outs are a plain 20-round run's
 /// (scores, and differences from km3's move, alike), the others keep their 4 rounds as in the plain run, the reason says so,
-/// and the choice is an extended candidate; a move equal to km3's in each of the 4 rounds isn't extended. Both kinds of
-/// decision come up.
+/// and the choice is an extended candidate; a move tied with km3's in each of the 4 rounds is extended whenever km3's move
+/// is close to a best that is another move (the tied move is then exactly as close). Both kinds of decision come up.
 #[test]
 fn close_calls_are_played_out_further_on_the_same_worlds() {
     let (mut extended, mut clear) = (0, 0);
@@ -120,9 +122,10 @@ fn close_calls_are_played_out_further_on_the_same_worlds() {
         let full = decide(&mut pilot(20, None), seed, &state);
         let best4 = (0..plain.candidates.len()).fold(0, |b, c| if plain.candidates[c].score > plain.candidates[b].score { c } else { b });
         assert_eq!(ext.candidates[ext.km3].rounds, 20, "seed {seed}: km3's move extended");
+        let lead4 = &plain.candidates[best4];
         for (c, p) in plain.candidates.iter().enumerate() {
-            if c != plain.km3 && p.diff == 0.0 && p.se == 0.0 {
-                assert_eq!(ext.candidates[c].rounds, 4, "seed {seed}: {} equals km3's move in every round, not extended", p.label);
+            if c != plain.km3 && p.diff == 0.0 && p.se == 0.0 && best4 != plain.km3 && lead4.diff <= 2.0 * lead4.se {
+                assert_eq!(ext.candidates[c].rounds, 20, "seed {seed}: {} ties km3's move in every round, extended as it is", p.label);
             }
         }
         assert_eq!(ext.candidates[best4].rounds, 20, "seed {seed}: the best after 4 rounds extended");
@@ -182,7 +185,7 @@ fn extended_candidates_play_to_r_max_and_the_decision_is_made_at_the_end() {
     assert!(extended >= 1, "no close call among these decisions");
 }
 
-// (a) and (c) on rounds given directly.
+// (a), and the dropped (c), on rounds given directly.
 
 fn is_attack(a: &Action) -> bool {
     matches!(a.action, SimpleAction::Attack(_))
@@ -244,19 +247,62 @@ fn a_close_call_is_tested_against_the_bar_that_decides() {
     assert_eq!(close_call(&near, &three, &zs), vec![0, 1, 2]);
 }
 
-/// (c) A move equal to km3's in every round isn't extended, though it is as close to the best as km3's move; a move equal
-/// to the best in every round is no close call.
+/// (c) dropped: a move tied with km3's in every round is extended, as close to the best as km3's move is; a move equal to
+/// the best in every round is no close call (as in the first version).
 #[test]
-fn a_move_equal_to_km3s_in_every_round_is_not_extended() {
+fn a_move_tied_with_km3s_in_every_round_is_still_extended() {
     let (attack, end, retreat1, retreat2) = moves();
     let z = PlayoutParams { z: 2.0, ..PlayoutParams::new(3) };
     let km = [0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0];
     let per = vec![rounds(&km, false), rounds(&[1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], false), rounds(&km, true)];
     let candidates = vec![end.clone(), retreat1.clone(), attack.clone()];
-    assert_eq!(close_call(&per, &candidates, &z), vec![0, 1], "the best leads both by 1 standard error; the attack equals km3's move");
+    assert_eq!(close_call(&per, &candidates, &z), vec![0, 1, 2], "the best leads both by 1 standard error; the attack, tied with km3's move, too");
     let lead = [1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0];
     let per = vec![rounds(&[0.0; 8], false), rounds(&lead, false), rounds(&lead, false)];
     assert_eq!(close_call(&per, &[end, retreat1, retreat2], &z), Vec::<usize>::new(), "equal to the best: no close call");
+}
+
+/// (c) dropped: a move tied with km3's through the first 16 rounds is extended and can win at R_max. The continuation
+/// position B-210952-t16 (Shark tempo v Blastoise-Wailord, the position's seed 24,200,001,005), with `_tools _zs3` (LAB,
+/// cap 12, z 2): after 16 rounds km3's bench of the Alolan Vulpix and nine other moves score 0 in every round, and Binding
+/// Snow leads by +0.094 (1.9 standard errors). The turn's Water to the Active is one of the tied moves. With R_max 64 it
+/// is extended with the rest, leads km3's move over the 64 rounds by +0.125 (3.0 standard errors), more than Binding
+/// Snow, and is played.
+#[test]
+fn a_move_tied_with_km3s_through_16_rounds_is_extended_and_can_win() {
+    let path = "../rl/results/playout_continuation_2026-10-05/states/B-210952-t16.json";
+    let state: State = serde_json::from_str(&std::fs::read_to_string(path).unwrap()).unwrap();
+    let (me, actions) = state.generate_possible_actions();
+    let observation = PlayerObservation::from_state(&state, me, &RevealedKnowledge::default());
+    let run = |max_rounds: Option<usize>| {
+        let params = PlayoutParams {
+            rollouts: 16,
+            cap: 12,
+            z: 2.0,
+            knowledge: Knowledge::Lab,
+            tools: true,
+            z_skip: Some(3.0),
+            max_rounds,
+            ..PlayoutParams::new(3)
+        };
+        let (shark, blastoise) = (deck("../decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt"), deck("../decks/computer/blastoise-wailord-deluxe.txt"));
+        PlayoutPlayer::with_extra_lists(shark, blastoise, params, Vec::new())
+            .evaluate(&mut StdRng::seed_from_u64(24_200_001_005), &observation, &actions)
+    };
+    let r16 = run(None);
+    let water = r16
+        .candidates
+        .iter()
+        .position(|c| c.label.starts_with("Attach { attachments: [(1, Water, 0)], is_turn_energy: true"))
+        .expect("the turn's Water to the Active is a candidate");
+    let w = &r16.candidates[water];
+    assert!(water != r16.km3 && w.diff == 0.0 && w.se == 0.0, "tied with km3's move in all 16 rounds: {} {} {}", w.label, w.diff, w.se);
+    assert_eq!(r16.chosen, r16.km3, "{}", r16.reason);
+    let ext = run(Some(64));
+    assert_eq!(ext.failed_rounds, 0);
+    assert_eq!(ext.candidates[water].rounds, 64, "the tied move is extended: {}", ext.reason);
+    assert_eq!(ext.chosen, water, "and wins at R_max: {}", ext.reason);
+    assert!(ext.reason.contains("close call: play-outs extended from 16 to 64 rounds"), "{}", ext.reason);
 }
 
 // `_tools _zs3 _m64` together.
@@ -311,8 +357,9 @@ const COMBINED_SEEDS: [u64; 4] = [20_000_000_301, 20_000_000_324, 20_000_000_325
 
 /// `_tools _zs3 _m64` together at km3's attacks, with R = 8 and R_max = 64: the code spells all three; whenever the best
 /// after 8 rounds leads km3's attack within the bar that decides (the skip bar for a line that skips the attack), km3's
-/// attack and the best are extended, so the review's gap is extended at 301 and 324; a move equal to km3's in each of the
-/// 8 rounds isn't; every extended candidate plays 64 rounds, the same worlds as a plain 64-round run; the decision is the
+/// attack and the best are extended, so the review's gap is extended at 301 and 324; a move tied with km3's in each of the
+/// 8 rounds is extended whenever the best leads km3's attack by no more than z standard errors; every extended candidate
+/// plays 64 rounds, the same worlds as a plain 64-round run; the decision is the
 /// skip bar's on the extended candidates' 64 rounds; and without a close call it is the plain decision.
 #[test]
 fn the_tools_rule_the_skip_bar_and_close_calls_combine() {
@@ -342,10 +389,10 @@ fn the_tools_rule_the_skip_bar_and_close_calls_combine() {
                 gaps += 1;
             }
         }
-        // (c)
+        // (c) dropped: a move tied with km3's attack is another move, close to the best at z.
         for (c, p) in plain.candidates.iter().enumerate() {
-            if c != plain.km3 && p.diff == 0.0 && p.se == 0.0 {
-                assert_eq!(comb.candidates[c].rounds, 8, "seed {seed}: {} equals km3's move in every round, not extended", p.label);
+            if c != plain.km3 && p.diff == 0.0 && p.se == 0.0 && best8 != plain.km3 && lead.diff <= 2.0 * lead.se {
+                assert_eq!(comb.candidates[c].rounds, 64, "seed {seed}: {} ties km3's attack in every round, extended", p.label);
             }
         }
         if comb.rounds == 8 {

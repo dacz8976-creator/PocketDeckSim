@@ -1,0 +1,46 @@
+== The addendum's tests (drop (c)), written before the change, on claude/playout-pilot d664b398 (code ec283c53, with (c)):
+$ cargo test --release --features test-utils --test playout_close_calls_test
+running 8 tests
+test a_close_call_is_tested_against_the_bar_that_decides ... ok
+test a_move_tied_with_km3s_in_every_round_is_still_extended ... FAILED
+test at_a_tool_placement_the_tie_break_comes_after_the_extension ... ok
+test the_code_spells_the_extension ... ok
+test a_move_tied_with_km3s_through_16_rounds_is_extended_and_can_win has been running for over 60 seconds
+test close_calls_are_played_out_further_on_the_same_worlds has been running for over 60 seconds
+test extended_candidates_play_to_r_max_and_the_decision_is_made_at_the_end has been running for over 60 seconds
+test the_tools_rule_the_skip_bar_and_close_calls_combine has been running for over 60 seconds
+test a_move_tied_with_km3s_through_16_rounds_is_extended_and_can_win ... FAILED
+test close_calls_are_played_out_further_on_the_same_worlds ... FAILED
+test the_tools_rule_the_skip_bar_and_close_calls_combine ... FAILED
+test extended_candidates_play_to_r_max_and_the_decision_is_made_at_the_end ... ok
+failures:
+---- a_move_tied_with_km3s_in_every_round_is_still_extended stdout ----
+thread 'a_move_tied_with_km3s_in_every_round_is_still_extended' (19144) panicked at tests/playout_close_calls_test.rs:259:5:
+assertion `left == right` failed: the best leads both by 1 standard error; the attack, tied with km3's move, too
+  left: [0, 1]
+ right: [0, 1, 2]
+---- a_move_tied_with_km3s_through_16_rounds_is_extended_and_can_win stdout ----
+thread 'a_move_tied_with_km3s_through_16_rounds_is_extended_and_can_win' (19145) panicked at tests/playout_close_calls_test.rs:303:5:
+assertion `left == right` failed: the tied move is extended: play-outs: +0.094 over km's move, 3.8 standard errors (threshold 2); close call: play-outs extended from 16 to 64 rounds for 3 candidates
+  left: 16
+ right: 64
+---- close_calls_are_played_out_further_on_the_same_worlds stdout ----
+thread 'close_calls_are_played_out_further_on_the_same_worlds' (19147) panicked at tests/playout_close_calls_test.rs:128:17:
+assertion `left == right` failed: seed 20000000240: Attach { attachments: [(1, Grass, 0)], is_turn_energy: true } ties km3's move in every round, extended as it is
+  left: 4
+ right: 20
+---- the_tools_rule_the_skip_bar_and_close_calls_combine stdout ----
+seed 20000000301: after 8 rounds: the skip bar: the best move leads km's attack by +0.375, 2.0 standard errors, past z 2 but not the skip bar 3, and no attack this turn in its line (an attack in 0 of 8 play-outs) (km's attack 0.625, this move 1.000): km's attack kept; at the end: play-outs: +0.297 over km's move, 3.9 standard errors (threshold 3); away from km's attack, and no attack this turn in its line (an attack in 0 of 64 play-outs): km's attack 0.500, this move 0.797; close call: play-outs extended from 8 to 64 rounds for 3 candidates
+seed 20000000324: after 8 rounds: the skip bar: the best move leads km's attack by +0.375, 2.0 standard errors, past z 2 but not the skip bar 3, and no attack this turn in its line (an attack in 0 of 8 play-outs) (km's attack 0.000, this move 0.375): km's attack kept; at the end: the skip bar: the best move leads km's attack by +0.141, 2.9 standard errors, past z 2 but not the skip bar 3, and no attack this turn in its line (an attack in 0 of 64 play-outs) (km's attack 0.016, this move 0.156): km's attack kept; close call: play-outs extended from 8 to 64 rounds for 2 candidates
+thread 'the_tools_rule_the_skip_bar_and_close_calls_combine' (19158) panicked at tests/playout_close_calls_test.rs:395:17:
+assertion `left == right` failed: seed 20000000266: Play { trainer_card: P-A 002 X Speed } ties km3's attack in every round, extended
+  left: 8
+ right: 64
+failures:
+    a_move_tied_with_km3s_in_every_round_is_still_extended
+    a_move_tied_with_km3s_through_16_rounds_is_extended_and_can_win
+    close_calls_are_played_out_further_on_the_same_worlds
+    the_tools_rule_the_skip_bar_and_close_calls_combine
+test result: FAILED. 4 passed; 4 failed; 0 ignored; 0 measured; 0 filtered out; finished in 425.46s
+error: test failed, to rerun pass `--test playout_close_calls_test`
+(578 s)
