@@ -21,11 +21,11 @@
 //! kx3's decision with `_noeffect` off and on (one round shows where the tie-break points; nothing else differs, since the
 //! rule changes no play-out). Where km3's move can do nothing, every candidate is played out `--rounds` times (km3's
 //! continuation, the same worlds and seeds as `evaluate`) and both choices are compared round by round.
-//!   playout_tool_rule --extension --positions <positions.json> --seeds 4 --max-rounds 64 --out results.jsonl [--resume]
+//!   playout_tool_rule --extension --positions <positions.json> --seeds 4 --max-rounds 64 [--combined] --out results.jsonl [--resume]
 //! (Oct 7) The close-call extension's cost and effect: at each position as stored, and (with a "tool") advanced to its
 //! placement, for each of `--seeds` decision seeds (the position's seed + 10,000 s), kx3 decides with R = 16 (LAB, cap 12,
-//! z 2) and with `_m<max-rounds>`. Per decision: both choices and reasons, the time each took, and the rounds each
-//! candidate played with the extension.
+//! z 2) and with `_m<max-rounds>`; with `--combined`, both with the Tool rule and the skip bar 3 (`_tools_zs3`). Per
+//! decision: both codes, choices and reasons, the time each took, and the rounds each candidate played with the extension.
 //!   playout_tool_rule --list-tools
 //! prints every Tool of the card database (one per distinct text) with the conditions the rule reads from its text.
 //!   playout_tool_rule --list-effects
@@ -281,6 +281,7 @@ fn extension_gate(args: &[String]) {
     let positions: Vec<Value> = serde_json::from_str(&std::fs::read_to_string(arg(args, "--positions").unwrap()).unwrap()).unwrap();
     let seeds: u64 = arg(args, "--seeds").map_or(4, |r| r.parse().unwrap());
     let max_rounds: usize = arg(args, "--max-rounds").map_or(64, |r| r.parse().unwrap());
+    let combined = args.iter().any(|a| a == "--combined");
     let out_path = arg(args, "--out").unwrap();
     let done: BTreeSet<String> = if args.iter().any(|a| a == "--resume") {
         std::fs::read_to_string(&out_path)
@@ -323,9 +324,18 @@ fn extension_gate(args: &[String]) {
                 if done.contains(&decision) {
                     continue;
                 }
+                let params = |max: Option<usize>| PlayoutParams {
+                    rollouts: 16,
+                    cap: 12,
+                    z: 2.0,
+                    knowledge: Knowledge::Lab,
+                    tools: combined,
+                    z_skip: combined.then_some(3.0),
+                    max_rounds: max,
+                    ..PlayoutParams::new(3)
+                };
                 let decide = |max: Option<usize>| {
-                    let params = PlayoutParams { rollouts: 16, cap: 12, z: 2.0, knowledge: Knowledge::Lab, max_rounds: max, ..PlayoutParams::new(3) };
-                    PlayoutPlayer::with_extra_lists(deck.clone(), opponent.clone(), params, Vec::new())
+                    PlayoutPlayer::with_extra_lists(deck.clone(), opponent.clone(), params(max), Vec::new())
                         .evaluate(&mut StdRng::seed_from_u64(seed), &observation, &actions)
                 };
                 let plain = decide(None);
@@ -335,6 +345,7 @@ fn extension_gate(args: &[String]) {
                 };
                 let line = json!({
                     "decision": decision, "id": id, "at": at, "seed": seed, "turn": state.turn_count,
+                    "code_r16": params(None).code(), "code_ext": params(Some(max_rounds)).code(),
                     "candidates": plain.candidates.len(), "km_move": plain.candidates[plain.km3].label,
                     "chosen_r16": plain.candidates[plain.chosen].label, "chosen_ext": ext.candidates[ext.chosen].label,
                     "changed": plain.candidates[plain.chosen].action != ext.candidates[ext.chosen].action,

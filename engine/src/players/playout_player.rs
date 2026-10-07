@@ -160,11 +160,11 @@ pub struct PlayoutParams {
     /// best candidate isn't one, the switch needs a lead beyond this many standard errors only if that candidate's own line
     /// leaves the turn without an attack (in more than half of its play-outs). Not with `_za`.
     pub z_skip: Option<f64>,
-    /// Close calls (`_m<R_max>`; Oct 7; off by default): when, after the R rounds, a candidate is within z standard errors of
-    /// the best one (paired; candidates equal in every round don't count), the best, every such candidate and km<depth>'s
-    /// move are played out in blocks of 16 more rounds, from the same worlds and seeds a larger R would use, until none is
-    /// within the noise of the best or R_max rounds are played; the decision is made among the candidates still in play.
-    /// Above R; not with a time budget.
+    /// Close calls (`_m<R_max>`; Oct 7; off by default): when the decision after the R rounds is a close call (`close_call`:
+    /// the best leads km<depth>'s move within the bar that decides the switch, or another candidate is within z standard
+    /// errors of the best), the best, the candidates close to it and km<depth>'s move play rounds R to R_max, from the same
+    /// worlds and seeds a larger R would use, and the decision is made once, at the end, among them on their rounds. Above
+    /// R; not with a time budget.
     pub max_rounds: Option<usize>,
 }
 
@@ -290,6 +290,16 @@ pub fn skip_bar(km: &Action, best: &Action, attacks: usize, rounds: usize, z: f6
     match z_skip {
         Some(zs) if attack(km) && !attack(best) && attacks * 2 < rounds => zs,
         _ => z,
+    }
+}
+
+/// The bar the decision puts on a switch from km<N>'s move `km` to `best`, whose line attacked this turn in `attacks` of
+/// its `rounds` play-outs: the skip bar with `_zs<z>`, the attack bar with `_za<z>`, else z.
+fn decision_bar(params: &PlayoutParams, km: &Action, best: &Action, attacks: usize, rounds: usize) -> f64 {
+    if params.z_skip.is_some() {
+        skip_bar(km, best, attacks, rounds, params.z, params.z_skip)
+    } else {
+        switch_bar(km, best, params.z, params.z_attack)
     }
 }
 
@@ -441,34 +451,40 @@ fn round_base(rng: &StdRng) -> u64 {
     rng.clone().next_u64() ^ 0x4b58_504c_4159_4f55
 }
 
-/// The rounds added at a time to a close call's candidates (`_m<R_max>`).
-const EXTENSION_BLOCK: usize = 16;
+/// A paired comparison's mean difference and standard error (`a` minus `b`, round by round), and whether the two are
+/// equal in every round.
+fn paired(a: &[(f64, bool)], b: &[(f64, bool)]) -> (f64, f64, bool) {
+    let d: Vec<f64> = a.iter().zip(b).map(|(x, y)| x.0 - y.0).collect();
+    let n = d.len() as f64;
+    let m = d.iter().sum::<f64>() / n;
+    let se = (d.iter().map(|x| (x - m).powi(2)).sum::<f64>() / (n - 1.0)).sqrt() / n.sqrt();
+    (m, se, d.iter().all(|x| *x == 0.0))
+}
 
-/// A close call (`_m<R_max>`), from each candidate's rounds so far (`per[c]`, km's move first). Among the candidates still
-/// in play (those with the most rounds), the best by mean (the first on a tie, km's move first) and every other whose paired
-/// lead by the best is within `z` standard errors: if there is any such other (a pair equal in every round doesn't count),
-/// those candidates and km's move, in order; else none.
-fn close_call(per: &[Vec<(f64, bool)>], z: f64) -> Vec<usize> {
+/// A close call (`_m<R_max>`), from each candidate's R rounds (`per[c]`, km's move first; `candidates[c]` its move). The
+/// best is the one with the highest mean (the first on a tie, km's move first). Close to it:
+/// - km's move, when the best is another move whose lead over it is within the bar that would decide that switch (the
+///   decision's own bar, `decision_bar`: z_skip from km's attack to a line that skips it, z_attack, or z);
+/// - another move the best leads by no more than z standard errors (paired), unless the two are equal in every round.
+/// If any is close: those, the best and km's move, in order, less any move equal to km's in every round (it can't win: ties
+/// go to km's move); else none.
+pub fn close_call(per: &[Vec<(f64, bool)>], candidates: &[Action], params: &PlayoutParams) -> Vec<usize> {
     let full = per[0].len();
     if full < 2 {
         return Vec::new();
     }
-    let live: Vec<usize> = (0..per.len()).filter(|&c| per[c].len() == full).collect();
     let mean = |c: usize| per[c].iter().map(|x| x.0).sum::<f64>() / full as f64;
-    let best = live.iter().copied().fold(live[0], |b, c| if mean(c) > mean(b) { c } else { b });
-    let close: Vec<usize> = live
-        .iter()
-        .copied()
+    let best = (0..per.len()).fold(0, |b, c| if mean(c) > mean(b) { c } else { b });
+    let close: Vec<usize> = (0..per.len())
         .filter(|&c| c != best)
         .filter(|&c| {
-            let d: Vec<f64> = per[best].iter().zip(&per[c]).map(|(a, b)| a.0 - b.0).collect();
-            if d.iter().all(|x| *x == 0.0) {
-                return false;
+            let (m, se, equal) = paired(&per[best], &per[c]);
+            if c == 0 {
+                let attacks = per[best].iter().filter(|x| x.1).count();
+                m <= decision_bar(params, &candidates[0], &candidates[best], attacks, full) * se
+            } else {
+                !equal && m <= params.z * se
             }
-            let n = d.len() as f64;
-            let m = d.iter().sum::<f64>() / n;
-            let se = (d.iter().map(|x| (x - m).powi(2)).sum::<f64>() / (n - 1.0)).sqrt() / n.sqrt();
-            m <= z * se
         })
         .collect();
     if close.is_empty() {
@@ -477,7 +493,7 @@ fn close_call(per: &[Vec<(f64, bool)>], z: f64) -> Vec<usize> {
     let mut set: BTreeSet<usize> = close.into_iter().collect();
     set.insert(best);
     set.insert(0);
-    set.into_iter().collect()
+    set.into_iter().filter(|&c| c == 0 || !paired(&per[c], &per[0]).2).collect()
 }
 
 fn splitmix(mut x: u64) -> u64 {
@@ -1146,17 +1162,15 @@ impl PlayoutPlayer {
         }
         // Each candidate's rounds, in order.
         let mut per: Vec<Vec<(f64, bool)>> = (0..candidates.len()).map(|c| results.iter().map(|r| r[c]).collect()).collect();
-        // Close calls (`_m<R_max>`): the close call's candidates and km's move play blocks of rounds R, R+1, ... (the same
-        // worlds and seeds as a larger R), until the call is clear or R_max; a candidate the best leads beyond the noise
-        // keeps the rounds it has. A round in which one of them panics is dropped for all of them.
+        // Close calls (`_m<R_max>`): the close call's candidates and km's move play rounds R to R_max (the same worlds and
+        // seeds as a larger R), and the decision is made at the end on their rounds; the others keep their R rounds. A round
+        // in which one of them panics is dropped for all of them.
         let mut extension = None;
         if let (Some(max_rounds), 0) = (self.params.max_rounds, self.params.budget_ms) {
-            let from = per[0].len();
-            let mut next = total;
-            let mut in_play = close_call(&per, self.params.z);
-            while !in_play.is_empty() && next < max_rounds {
-                let to = (next + EXTENSION_BLOCK).min(max_rounds);
-                let batch: Vec<Option<(Vec<(f64, bool)>, String)>> = (next..to)
+            let in_play = close_call(&per, &candidates, &self.params);
+            if !in_play.is_empty() && total < max_rounds {
+                let from = per[0].len();
+                let batch: Vec<Option<(Vec<(f64, bool)>, String)>> = (total..max_rounds)
                     .into_par_iter()
                     .map(|j| {
                         std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
@@ -1173,9 +1187,7 @@ impl PlayoutPlayer {
                         per[c].push(round[k]);
                     }
                 }
-                next = to;
                 extension = Some((from, per[0].len()));
-                in_play = close_call(&per, self.params.z);
             }
         }
         report.rounds = per[0].len();
@@ -1197,8 +1209,8 @@ impl PlayoutPlayer {
                 CandidateReport { action: a.clone(), label: label(a), score, diff, se: if c == 0 { 0.0 } else { se }, attacks_this_turn, rounds }
             })
             .collect();
-        // The best score among the candidates still in play (all of them without an extension; km's move first on a tie,
-        // then the offer order); it replaces km's only beyond the noise.
+        // The best score among the candidates with the most rounds (after a close call the extended ones, else all of them;
+        // km's move first on a tie, then the offer order); it replaces km's only beyond the noise.
         let best = (0..report.candidates.len())
             .filter(|&c| report.candidates[c].rounds == report.rounds)
             .fold(0, |b, c| if report.candidates[c].score > report.candidates[b].score { c } else { b });
@@ -1207,11 +1219,7 @@ impl PlayoutPlayer {
         // such a switch whose line leaves the turn without an attack.
         let attack = |a: &Action| matches!(a.action, crate::actions::SimpleAction::Attack(_));
         let from_attack = best != 0 && attack(&report.candidates[0].action) && !attack(&lead.action);
-        let bar = if self.params.z_skip.is_some() {
-            skip_bar(&report.candidates[0].action, &lead.action, lead.attacks_this_turn, lead.rounds, self.params.z, self.params.z_skip)
-        } else {
-            switch_bar(&report.candidates[0].action, &lead.action, self.params.z, self.params.z_attack)
-        };
+        let bar = decision_bar(&self.params, &report.candidates[0].action, &lead.action, lead.attacks_this_turn, lead.rounds);
         let away = (self.params.z_attack.is_some() || self.params.z_skip.is_some()) && from_attack;
         // With the skip bar, what the best move's line does this turn, in its play-outs.
         let line = if self.params.z_skip.is_none() {

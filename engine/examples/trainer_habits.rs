@@ -600,8 +600,8 @@ impl Scripted {
             let c = &r.candidates[r.chosen];
             rec["kx3"] = json!({
                 "chosen_equals_played": c.action == *played, "km_score": r.candidates[r.km3].score, "chosen_score": c.score,
-                "lead": c.diff, "se": c.se, "reason": r.reason, "rounds": r.rounds,
-                "candidates": r.candidates.iter().map(|x| json!([harness_label(&x.action, state), x.score, x.diff, x.se, x.attacks_this_turn])).collect::<Vec<_>>(),
+                "lead": c.diff, "se": c.se, "reason": r.reason, "rounds": r.rounds, "ms": r.millis.round(),
+                "candidates": r.candidates.iter().map(|x| json!([harness_label(&x.action, state), x.score, x.diff, x.se, x.attacks_this_turn, x.rounds])).collect::<Vec<_>>(),
                 "chosen_attacks_this_turn": c.attacks_this_turn,
             });
         }
