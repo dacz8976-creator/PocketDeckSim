@@ -26,7 +26,9 @@
 //!     (Oct 6, quiz 4, item 1) At each of the deck side's decisions with an attack among the legal moves, km3's proposal
 //!     from the game's own observation and search randomness: one JSON line wherever km3 proposes an attack, saying
 //!     whether the log played an attack; where it didn't, kx3 (the code given) decides again from the same randomness,
-//!     with every candidate's score, its lead over km3's attack and the reason (it must play what the log says).
+//!     with every candidate's score, its lead over km3's attack and the reason (it must play what the log says). Each
+//!     candidate also carries in how many of its play-outs the deck side attacked before the turn ended (Oct 7, the skip
+//!     bar).
 //!   ... scripted ... --noeffect-scan <kx code> --noeffect-out <file>
 //!     (Oct 6, quiz 4, item 2) At each of the deck side's decisions where the logged move can do nothing now by its text
 //!     (as kx3 reads it, from the observation), km3's proposal from the game's own observation and search randomness;
@@ -599,7 +601,8 @@ impl Scripted {
             rec["kx3"] = json!({
                 "chosen_equals_played": c.action == *played, "km_score": r.candidates[r.km3].score, "chosen_score": c.score,
                 "lead": c.diff, "se": c.se, "reason": r.reason, "rounds": r.rounds,
-                "candidates": r.candidates.iter().map(|x| json!([harness_label(&x.action, state), x.score, x.diff, x.se])).collect::<Vec<_>>(),
+                "candidates": r.candidates.iter().map(|x| json!([harness_label(&x.action, state), x.score, x.diff, x.se, x.attacks_this_turn])).collect::<Vec<_>>(),
+                "chosen_attacks_this_turn": c.attacks_this_turn,
             });
         }
         sc.out.lock().unwrap().push(rec);

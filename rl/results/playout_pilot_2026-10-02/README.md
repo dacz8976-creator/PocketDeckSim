@@ -41,6 +41,9 @@ sections 5 and 9 (the addendum's amendments win). Branch `claude/playout-pilot`,
   - **No-effect actions (`_noeffect`):** the Tool tie-break, widened to any action whose printed effect can't do
     anything now, read from the card database's texts.
   - **Dustin's three "neither" plans**, played out against both bots' moves.
+- **The skip bar (Oct 7).** "Attack when you can", narrowed: `_zs<z>` asks for a larger lead to leave km3's attack only
+  when the new move's own line has no attack that turn. It keeps the attack at 7 of the development run's 9 true skips
+  and touches none of the 17 moves made before an attack. See `rl/results/playout_attack_skip_2026-10-07/`.
 
 ## In short
 

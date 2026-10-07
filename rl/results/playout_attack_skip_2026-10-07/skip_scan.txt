@@ -1,0 +1,43 @@
+decisions where km3 proposed an attack: 1902; kx3 played something else: 26
+  in the game, no attack that turn (the 9 true skips): 9; an attack later that turn: 17
+  true skips: the skip bar keeps km3's attack at 7; the line attacks this turn in most play-outs at 1 (of 9 that reproduce)
+  attacked later in the game: the skip bar keeps km3's attack at 0; the line attacks this turn in most play-outs at 15 (of 15 that reproduce)
+
+| game (deck, opponent, deal, seat) | turn | km3's attack | kx3's move | attacked later in the game | its line attacks this turn (play-outs) | lead (SE) | with `_zs3` |
+|---|---|---|---|---|---|---|---|
+| 01-muk-glimmora-kingambit-regigigas, t-hydreigon, 0, 1 | 9 | Giga Turbo | EndTurn | no | 0 of 16 | +0.375 (3.0) | attack kept |
+| 03-wailord-indeedee-wall, t-vespiquen, 4, 0 | 8 | Wondrous Waves | Retreat:3 | no | 0 of 16 | +0.500 (2.7) | attack kept |
+| 06-mega-blaziken-tournament-list, t-lucario, 4, 1 | 3 | Peck | Retreat:2 | no | 0 of 16 | +0.375 (2.4) | attack kept |
+| 09-mega-manectric-heliolisk, t-hydreigon, 4, 0 | 2 | Thunder Shock | EndTurn | no | 0 of 16 | +0.250 (2.2) | attack kept |
+| 09-mega-manectric-heliolisk, t-suicune, 4, 1 | 4 | Lightning Accelerator | Retreat:2 | no | 0 of 16 | +0.312 (2.6) | attack kept |
+| 10-xatu-oricorio-tr-weezing, t-altaria, 2, 0 | 3 | Supernatural Feather | EndTurn | no | 0 of 16 | +0.312 (2.1) | attack kept |
+| draft-A-shark-tempo, t-blaziken, 0, 0 | 2 | Gnaw | EndTurn | no | 0 of 16 | +0.250 (2.2) | attack kept |
+| 01-muk-glimmora-kingambit-regigigas, t-hydreigon, 0, 1 | 9 | Giga Turbo | Play:Copycat | no | 16 of 16 | +0.375 (2.4) | switch stands |
+| 05-indeedee-stoutland, t-lucario, 3, 0 | 5 | Psychic | EndTurn | no | 0 of 16 | +0.438 (3.4) | switch stands |
+| 01-muk-glimmora-kingambit-regigigas, t-vespiquen, 4, 1 | 5 | Venomous Hit | UseStadium | yes | 16 of 16 | +0.312 (2.6) | switch stands |
+| 01-muk-glimmora-kingambit-regigigas, t-weezing, 2, 0 | 6 | Giga Turbo | Play:Mesagoza | yes | 16 of 16 | +0.250 (2.2) | switch stands |
+| 06-mega-blaziken-tournament-list, t-altaria, 0, 1 | 7 | Tongue Whip | Play:Copycat | yes | 16 of 16 | +0.000 (-) | (not reproduced) |
+| 06-mega-blaziken-tournament-list, t-blaziken, 1, 0 | 10 | Tongue Whip | Play:Copycat | yes | 16 of 16 | +0.375 (3.0) | switch stands |
+| 06-mega-blaziken-tournament-list, t-hydreigon, 2, 0 | 6 | Tongue Whip | Play:Poké Ball | yes | 16 of 16 | +0.000 (-) | (not reproduced) |
+| 06-mega-blaziken-tournament-list, t-lucario, 0, 1 | 5 | Sunny Scorching | Play:Copycat | yes | 16 of 16 | +0.250 (2.2) | switch stands |
+| 06-mega-blaziken-tournament-list, t-lucario, 0, 1 | 5 | Sunny Scorching | Retreat:1 | yes | 16 of 16 | +0.438 (2.8) | switch stands |
+| 06-mega-blaziken-tournament-list, t-sceptile, 3, 0 | 2 | Sunny Scorching | Play:Field Blower | yes | 16 of 16 | +0.250 (2.2) | switch stands |
+| 06-mega-blaziken-tournament-list, t-sceptile, 3, 1 | 5 | Tongue Whip | Retreat:1 | yes | 15 of 16 | +0.375 (3.0) | switch stands |
+| 06-mega-blaziken-tournament-list, t-sceptile, 4, 1 | 4 | Sunny Scorching | Retreat:3 | yes | 16 of 16 | +0.312 (2.6) | switch stands |
+| 10-xatu-oricorio-tr-weezing, t-blaziken, 3, 1 | 9 | Supernatural Feather | Play:Poison Barb | yes | 16 of 16 | +0.875 (10.2) | switch stands |
+| draft-A-shark-tempo, t-altaria, 3, 1 | 5 | Turbo Shark | Play:Misty | yes | 16 of 16 | +0.312 (2.6) | switch stands |
+| draft-A-shark-tempo, t-hydreigon, 2, 1 | 6 | Sharp Fang | Play:Misty | yes | 16 of 16 | +0.250 (2.2) | switch stands |
+| draft-A-shark-tempo, t-sceptile, 4, 0 | 2 | Sharp Fang | UseStadium | yes | 16 of 16 | +0.438 (2.4) | switch stands |
+| draft-A-shark-tempo, t-suicune, 2, 0 | 3 | Turbo Shark | Place:Alolan Vulpix@1 | yes | 16 of 16 | +0.250 (2.2) | switch stands |
+| draft-A-shark-tempo, t-suicune, 4, 0 | 4 | Sharp Fang | Play:Misty | yes | 16 of 16 | +0.312 (2.6) | switch stands |
+| draft-A-shark-tempo, t-vespiquen, 2, 1 | 10 | Binding Snow | UseStadium | yes | 16 of 16 | +0.375 (2.4) | switch stands |
+
+The skip bar's reasons where it decided differently, or the line skipped the attack:
+- 01-muk-glimmora-kingambit-regigigas, t-hydreigon, 0, 1 t9: the skip bar: the best move leads km's attack by +0.375, 3.0 standard errors, past z 2 but not the skip bar 3, and no attack this turn in its line (an attack in 0 of 16 play-outs) (km's attack 0.500, this move 0.875): km's attack kept
+- 03-wailord-indeedee-wall, t-vespiquen, 4, 0 t8: the skip bar: the best move leads km's attack by +0.500, 2.7 standard errors, past z 2 but not the skip bar 3, and no attack this turn in its line (an attack in 0 of 16 play-outs) (km's attack 0.250, this move 0.750): km's attack kept
+- 05-indeedee-stoutland, t-lucario, 3, 0 t5: play-outs: +0.438 over km's move, 3.4 standard errors (threshold 3); away from km's attack, and no attack this turn in its line (an attack in 0 of 16 play-outs): km's attack 0.125, this move 0.562
+- 06-mega-blaziken-tournament-list, t-lucario, 4, 1 t3: the skip bar: the best move leads km's attack by +0.375, 2.4 standard errors, past z 2 but not the skip bar 3, and no attack this turn in its line (an attack in 0 of 16 play-outs) (km's attack 0.312, this move 0.688): km's attack kept
+- 09-mega-manectric-heliolisk, t-hydreigon, 4, 0 t2: the skip bar: the best move leads km's attack by +0.250, 2.2 standard errors, past z 2 but not the skip bar 3, and no attack this turn in its line (an attack in 0 of 16 play-outs) (km's attack 0.562, this move 0.812): km's attack kept
+- 09-mega-manectric-heliolisk, t-suicune, 4, 1 t4: the skip bar: the best move leads km's attack by +0.312, 2.6 standard errors, past z 2 but not the skip bar 3, and no attack this turn in its line (an attack in 0 of 16 play-outs) (km's attack 0.000, this move 0.312): km's attack kept
+- 10-xatu-oricorio-tr-weezing, t-altaria, 2, 0 t3: the skip bar: the best move leads km's attack by +0.312, 2.1 standard errors, past z 2 but not the skip bar 3, and no attack this turn in its line (an attack in 0 of 16 play-outs) (km's attack 0.250, this move 0.562): km's attack kept
+- draft-A-shark-tempo, t-blaziken, 0, 0 t2: the skip bar: the best move leads km's attack by +0.250, 2.2 standard errors, past z 2 but not the skip bar 3, and no attack this turn in its line (an attack in 0 of 16 play-outs) (km's attack 0.750, this move 1.000): km's attack kept
