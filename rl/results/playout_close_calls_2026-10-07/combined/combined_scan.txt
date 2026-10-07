@@ -3,7 +3,7 @@ decisions where km3 proposed an attack: 1902; kx3 played something else: 26
   _zs3 (the skip bar's scan): true skips, km3's attack kept at 7 of 9 (the game's move at 2, another move at 0); attack-later moves touched at 2 of 17 (km3's attack at 2, another move at 0)
   _tools_zs3: true skips, km3's attack kept at 7 of 9 (the game's move at 2, another move at 0); attack-later moves touched at 3 of 17 (km3's attack at 3, another move at 0)
   _tools_zs3_m64 (the combined code): true skips, km3's attack kept at 2 of 9 (the game's move at 6, another move at 1); attack-later moves touched at 8 of 17 (km3's attack at 6, another move at 2)
-  the combined code extended 18 of the 26 decisions to [64] rounds; time 1828 s, against 723 s without the extension
+  the combined code extended 18 of the 26 decisions to [64] rounds; time 2120 s, against 723 s without the extension
 
 | game (deck, opponent, deal, seat) | turn | km3's attack | kx3's move in the game | attacked later | its line attacks this turn | the game's lead (SE) | `_zs3` | `_tools_zs3` | `_tools_zs3_m64` | rounds (extended) | best at the end, lead (SE) |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -18,7 +18,7 @@ decisions where km3 proposed an attack: 1902; kx3 played something else: 26
 | draft-A-shark-tempo, t-blaziken, 0, 0 | 2 | Gnaw | EndTurn | no | 0 of 16 | +0.250 (2.2) | **km3's attack** | **km3's attack** | the game's move | 64 (2) | EndTurn +0.203 (4.0) |
 | 01-muk-glimmora-kingambit-regigigas, t-vespiquen, 4, 1 | 5 | Venomous Hit | UseStadium | yes | 16 of 16 | +0.312 (2.6) | the game's move | the game's move | **another move** | 64 (3) | EndTurn +0.172 (3.0) |
 | 01-muk-glimmora-kingambit-regigigas, t-weezing, 2, 0 | 6 | Giga Turbo | Play:Mesagoza | yes | 16 of 16 | +0.250 (2.2) | the game's move | the game's move | the game's move | 16 (0) | Play:Mesagoza +0.250 (2.2) |
-| 06-mega-blaziken-tournament-list, t-altaria, 0, 1 | 7 | Tongue Whip | Play:Copycat | yes | 16 of 16 | +0.000 (-), not reproduced | **km3's attack** | **km3's attack** | **km3's attack** | 64 (3) | Attack:Tongue Whip +0.000 (-) |
+| 06-mega-blaziken-tournament-list, t-altaria, 0, 1 | 7 | Tongue Whip | Play:Copycat | yes | 16 of 16 | +0.000 (-), not reproduced | **km3's attack** | **km3's attack** | **km3's attack** | 64 (6) | Attack:Tongue Whip +0.000 (-) |
 | 06-mega-blaziken-tournament-list, t-blaziken, 1, 0 | 10 | Tongue Whip | Play:Copycat | yes | 16 of 16 | +0.375 (3.0) | the game's move | the game's move | the game's move | 64 (4) | Play:Copycat +0.344 (5.7) |
 | 06-mega-blaziken-tournament-list, t-hydreigon, 2, 0 | 6 | Tongue Whip | Play:Poké Ball | yes | 16 of 16 | +0.000 (-), not reproduced | **km3's attack** | **km3's attack** | **km3's attack** | 64 (3) | Attack:Tongue Whip +0.000 (-) |
 | 06-mega-blaziken-tournament-list, t-lucario, 0, 1 | 5 | Sunny Scorching | Play:Copycat | yes | 16 of 16 | +0.250 (2.2) | the game's move | **km3's attack** | **another move** | 64 (4) | Retreat:1 +0.125 (2.0) |
@@ -49,7 +49,7 @@ The combined code's reasons, where it decided otherwise than the game or than _t
   - _tools_zs3_m64: play-outs: +0.391 over km's move, 4.6 standard errors (threshold 3); away from km's attack, and no attack this turn in its line (an attack in 0 of 64 play-outs): km's attack 0.312, this move 0.703; close call: play-outs extended from 16 to 64 rounds for 2 candidates
 - 06-mega-blaziken-tournament-list, t-altaria, 0, 1 t7 (attacked later):
   - _tools_zs3: within the noise: the best move leads km's by +0.125 with a standard error of 0.085 (threshold 2 SE): km's move kept
-  - _tools_zs3_m64: km's move has the best play-out score; close call: play-outs extended from 16 to 64 rounds for 3 candidates
+  - _tools_zs3_m64: km's move has the best play-out score; close call: play-outs extended from 16 to 64 rounds for 6 candidates
 - 06-mega-blaziken-tournament-list, t-hydreigon, 2, 0 t6 (attacked later):
   - _tools_zs3: within the noise: the best move leads km's by +0.188 with a standard error of 0.136 (threshold 2 SE): km's move kept
   - _tools_zs3_m64: km's move has the best play-out score; close call: play-outs extended from 16 to 64 rounds for 3 candidates
