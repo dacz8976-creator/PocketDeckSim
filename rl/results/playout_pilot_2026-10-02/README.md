@@ -44,6 +44,10 @@ sections 5 and 9 (the addendum's amendments win). Branch `claude/playout-pilot`,
 - **The skip bar (Oct 7).** "Attack when you can", narrowed: `_zs<z>` asks for a larger lead to leave km3's attack only
   when the new move's own line has no attack that turn. It keeps the attack at 7 of the development run's 9 true skips
   and touches none of the 17 moves made before an attack. See `rl/results/playout_attack_skip_2026-10-07/`.
+- **Close calls (Oct 7).** `_m<R_max>` plays the candidates within the noise of the best (and km3's move) for blocks of
+  16 more rounds on the same worlds, up to R_max. At the gate positions it changes 8 of 64 decisions for 2.4x the time;
+  at quiz 4's positions it moves Q11 to Turbo Shark and Q07 to the retreat into Stoutland. See
+  `rl/results/playout_close_calls_2026-10-07/`.
 
 ## In short
 
@@ -712,7 +716,8 @@ reference arm's km3 game is negligible.
   - `engine/src/players/playout_effects.rs`: the no-effect reader, declared from `playout_player.rs`, so `mod.rs` is
     unchanged; `_noeffect` in `evaluate`;
   - the Ability step in `playout_plan.rs`;
-  - `engine/tests/playout_quiz4_test.rs`: 13 tests;
+  - `engine/tests/playout_quiz4_test.rs`: 17 tests (4 for the skip bar, Oct 7);
+  - `close_call` and the extension in `evaluate` (`_m<R_max>`, Oct 7); `engine/tests/playout_close_calls_test.rs`: 3 tests;
   - new modes in `playout_tool_rule.rs` (`--no-effect`, `--list-effects`), `trainer_habits.rs` (`--attack-scan`,
     `--noeffect-scan`, `positions`) and `playout_continuation.rs` (a state and seed per entry).
 - Here:
