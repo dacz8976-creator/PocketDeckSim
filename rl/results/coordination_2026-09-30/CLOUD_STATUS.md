@@ -12,8 +12,32 @@ The audit is committed: `rl/results/coin_prevention_round2_2026-10-01/TEXT_AUDIT
 - **A sixth file, `engine/src/move_generation/move_generation_trainer.rs`:** a Fossil can be played under an Item lock (the Item check at 65 skips the Fossil type). Its premise is that a Fossil's printed type is Item (rules/01, rules/04 §6; the local database can't show it).
 - **In the five files but outside rules/09, rules/04 and the caveats:** Guts on the attacker's own Pokémon in an attack's outcome (E1), and Perish Body on a plain queued hit at the Active (E2). Both are decided by their text. Fix them in this job, or leave them listed?
 
-1. **Current task, and the instruction that set it.** None running; idle. The two builds after quiz 4 (Fable via
-   Dustin, Oct 7) are done, both off by default, tests first, gates 1-2, km3 untouched, no table games.
+1. **Current task, and the instruction that set it.** The skip bar and close calls combined (Fable via Dustin, Oct 7,
+   from the laptop's review of 7d3639d0): done and pushed, except the exact code's 12-game self-check (item 2). Tests
+   first, gates 1-2, km3 untouched, no table games.
+   **The fix round.**
+   - **Where.** Branch claude/playout-pilot: tests first c0a36092, code ec283c53, results and README d664b398. Read "The
+     fix round" at the top of `rl/results/playout_close_calls_2026-10-07/README.md`.
+   - **Fixed.**
+     - (a) km3's move is close to the best when the best's lead is within the bar the decision will use: z_skip for a
+       switch from km3's attack to a line that skips it.
+     - (b) Every extended candidate plays to R_max, and the decision is made once, at the end.
+     - (c) A move equal to km3's in every round isn't extended.
+   - **The 26 development-run cases with `kx3_r16_c12_z2_real_t0_poolmeta_tools_zs3_m64`:**
+     - **The 9 true skips:** km3's attack is kept at 2. The skip bar alone kept 7.
+     - **The 17 moves before an attack:** 6 of the 15 that reproduce are touched, 4 back to km3's attack and 2 to another
+       move. The skip bar alone touched none.
+     - **Why:** 64 rounds halve the standard error. 5 of the skips the bar kept now lead km3's attack by 3.2 to 6.2
+       SE. The bar measures confidence, not size. Q12 is still kept (+0.094, 1.1 SE).
+     - **For Fable and Dustin, before the combined development run:** with `_m64`, the skip bar keeps km3's attack only
+       where the skip's lead is small. A bar on size (a minimum lead) would be a different parameter. Nothing is built.
+   - **Gate 1:** suite 2,091/0; km3 240/240; self-checks unchanged with the parameters off.
+   - **Digests:** `kx3_r2_c3_lab_tools_zs3_m64` gives 2284c591ed14a534. The exact code's 12 games are running (item 2).
+   - **Gate 2** (`_tools_zs3` v `_tools_zs3_m64`, 64 decisions): 37 extended to 64 rounds, 7 choices change, x2.2 the
+     time.
+   - **The `_tools` tie-break** can play a placement the extension left at 16 rounds. That happened at 4 of its 20
+     tie-breaks at gate 2, and at dev06's Heavy Helmet it changed the choice.
+   **The two builds after quiz 4 (Oct 7) are done, as below.**
    **The skip bar (`_zs<z>`): the narrower "attack when you can".**
    - **Where.** Branch claude/playout-pilot: tests first 094962a1, code f03780eb, results b704f32e. Read
      `rl/results/playout_attack_skip_2026-10-07/README.md`.
@@ -259,9 +283,14 @@ The audit is committed: `rl/results/coin_prevention_round2_2026-10-01/TEXT_AUDIT
    - **Laptop time** (from the smoke): about 204 × 4 / T seconds per pilot game on T threads; a development comparison of one deck × 8 panel lists × 25 deals × 2 seats is about 23 hours on 4 threads, 6 on 16; the pre-registration's kx self-check about 1½ hours on 4 threads (estimate); the position runner about 1½ hours on 4 threads.
    **The data pipeline stopped where it was** (branch `claude/planning-pilot-data`, head 22d56999; `rl/results/planning_pilot_data_2026-10-02/README.md`, "Where it stopped"): the first pass done (9,600 games, 467,146 rows; held-out log loss 0.525 against 0.631 for km's value alone; the Bench Energy feature's sign negative), the second pass cancelled; Dustin's 04, 08 and 11 are in its pool but in the locked final-exam list, so their rows must be dropped before development use.
    **Earlier jobs, done** (the readiness jobs, the card-text follow-up and step 8c read and accepted): the round-2 readiness jobs (57c65860, `rl/results/round2_readiness_2026-10-02/README.md`), the card-text follow-up (20e2651) and the card-text job, step 8c, step 8b's rows (3a107f4), F8, and the later round of coin-flip prevention (`claude/coin-prevention-round2`); details in their READMEs and the log below.
-2. **What is running now, and when it ends.** Nothing.
+2. **What is running now, and when it ends.** The exact combined code's self-check, as the laptop's pre-registration
+   runs it: `strength selfcheck --pilot kx3_r16_c12_z2_real_t0_poolmeta_tools_zs3_m64 --games 12` (t-altaria v
+   t-suicune), on the harness built from ec283c53. It started at 18:46 and takes about 5 hours, so it should end near
+   23:45. Its digest goes into the close-calls README and here.
 3. **Files I expect to change.** None. The play-out job changed, on its branch only: `engine/src/players/mod.rs` (12 lines), new `engine/src/players/playout_player.rs`, `engine/src/players/playout_pool.rs`, `engine/tests/playout_pilot_test.rs`, `engine/examples/playout_smoke.rs`, `rl/results/playout_pilot_2026-10-02/`, and START_HERE's seed table (one row: 24,200,000,000-24,200,099,999).
-4. **Waiting on the laptop or Sonnet.** The laptop: its examples run on d513e37b (not interrupted); a look at rounds 2 to 4 (head eefa24d0) when it suits.
+4. **Waiting on the laptop or Sonnet.** The laptop: registering the combined development run on the fixed head (code
+   ec283c53, head d664b398). Its pre-registration self-check of the exact code should print the cloud's digest (item 2).
+   Earlier: its examples run on d513e37b (not interrupted); a look at rounds 2 to 4 (head eefa24d0) when it suits.
 5. **Open questions.**
    - (a) For Dustin, still open from before: remove the Pocket Shot List rows `chase-order-carefree-steps` and `carefree-steps-snipe`? Nothing is done until he answers.
    - (b) Answered by round 4: the pool is widened (35 lists) and unfamiliar opponents are inferred. Still open, for the coordinator or Dustin: add the scoreboard's Limitless lists to the wide pool?
