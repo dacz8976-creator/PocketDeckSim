@@ -128,7 +128,7 @@ pub enum Knowledge {
 }
 
 /// The pilot's parameters; every one is part of its code
-/// (`kx<depth>[_r<R>][_c<cap>][_z<z>][_lab|_real][_t<s>][_trace][_poolmeta|_poolwide][_tools][_noeffect][_za<z>]`).
+/// (`kx<depth>[_r<R>][_c<cap>][_z<z>][_lab|_real][_t<s>][_trace][_poolmeta|_poolwide][_tools][_noeffect][_za<z>|_zs<z>]`).
 #[derive(Debug, Clone, PartialEq)]
 pub struct PlayoutParams {
     /// The search depth of km<depth>: the move it proposes and the bot of both sides in every play-out.
@@ -156,6 +156,10 @@ pub struct PlayoutParams {
     /// "Attack when you can" (`_za<z>`; Oct 6, quiz 4; off by default): when km<depth>'s move is an attack and the best
     /// candidate isn't one, the switch needs a lead beyond this many standard errors instead of z.
     pub z_attack: Option<f64>,
+    /// The skip bar (`_zs<z>`; Oct 7, the narrower attack bar; off by default): when km<depth>'s move is an attack and the
+    /// best candidate isn't one, the switch needs a lead beyond this many standard errors only if that candidate's own line
+    /// leaves the turn without an attack (in more than half of its play-outs). Not with `_za`.
+    pub z_skip: Option<f64>,
 }
 
 impl PlayoutParams {
@@ -172,13 +176,14 @@ impl PlayoutParams {
             tools: false,
             noeffect: false,
             z_attack: None,
+            z_skip: None,
         }
     }
 
     /// Parses the code after the `kx` prefix (lowercase), e.g. `3_r8_c5_z1.5_lab_t30_trace`.
     pub fn parse(rest: &str) -> Result<Self, String> {
         let invalid = |why: &str| {
-            format!("Invalid player code: kx{rest} ({why}). Use 'kx<depth>[_r<R>][_c<cap>][_z<z>][_lab|_real][_t<seconds>][_trace][_poolmeta|_poolwide][_tools][_noeffect][_za<z>]', e.g. 'kx3' or 'kx3_r24_c12_z2_lab'")
+            format!("Invalid player code: kx{rest} ({why}). Use 'kx<depth>[_r<R>][_c<cap>][_z<z>][_lab|_real][_t<seconds>][_trace][_poolmeta|_poolwide][_tools][_noeffect][_za<z>|_zs<z>]', e.g. 'kx3' or 'kx3_r24_c12_z2_lab'")
         };
         let mut parts = rest.split('_');
         let depth = parts.next().unwrap_or("").parse::<usize>().map_err(|_| invalid("a depth"))?;
@@ -212,12 +217,19 @@ impl PlayoutParams {
                     params.z_attack =
                         Some(p[2..].parse::<f64>().ok().filter(|z| z.is_finite() && *z >= 0.0).ok_or_else(|| invalid(part))?);
                 }
+                p if p.starts_with("zs") => {
+                    params.z_skip =
+                        Some(p[2..].parse::<f64>().ok().filter(|z| z.is_finite() && *z >= 0.0).ok_or_else(|| invalid(part))?);
+                }
                 p if p.starts_with('z') => {
                     params.z = p[1..].parse::<f64>().ok().filter(|z| z.is_finite() && *z >= 0.0).ok_or_else(|| invalid(part))?;
                 }
                 p if p.starts_with('t') => params.budget_ms = number(&p[1..])? * 1000,
                 _ => return Err(invalid(&format!("unknown part '{part}'"))),
             }
+        }
+        if params.z_attack.is_some() && params.z_skip.is_some() {
+            return Err(invalid("the attack bar and the skip bar together"));
         }
         Ok(params)
     }
@@ -226,7 +238,7 @@ impl PlayoutParams {
     /// them are as before).
     pub fn code(&self) -> String {
         format!(
-            "kx{}_r{}_c{}_z{}_{}_t{}{}_pool{}{}{}{}",
+            "kx{}_r{}_c{}_z{}_{}_t{}{}_pool{}{}{}{}{}",
             self.depth,
             self.rollouts,
             self.cap,
@@ -237,7 +249,8 @@ impl PlayoutParams {
             if self.pool == PoolSet::Meta { "meta" } else { "wide" },
             if self.tools { "_tools" } else { "" },
             if self.noeffect { "_noeffect" } else { "" },
-            self.z_attack.map_or(String::new(), |z| format!("_za{z}"))
+            self.z_attack.map_or(String::new(), |z| format!("_za{z}")),
+            self.z_skip.map_or(String::new(), |z| format!("_zs{z}"))
         )
     }
 }
@@ -248,6 +261,17 @@ pub fn switch_bar(km: &Action, best: &Action, z: f64, z_attack: Option<f64>) -> 
     let attack = |a: &Action| matches!(a.action, crate::actions::SimpleAction::Attack(_));
     match z_attack {
         Some(za) if attack(km) && !attack(best) => za,
+        _ => z,
+    }
+}
+
+/// The bar a switch from km<N>'s move `km` to `best` must clear, in standard errors, with the skip bar (`_zs<z>`):
+/// `z_skip` when `km` is an attack, `best` isn't, and `best`'s own line leaves the turn without an attack in more than half
+/// of its play-outs (it attacked before the turn ended in `attacks` of `rounds`); else `z`.
+pub fn skip_bar(km: &Action, best: &Action, attacks: usize, rounds: usize, z: f64, z_skip: Option<f64>) -> f64 {
+    let attack = |a: &Action| matches!(a.action, crate::actions::SimpleAction::Attack(_));
+    match z_skip {
+        Some(zs) if attack(km) && !attack(best) && attacks * 2 < rounds => zs,
         _ => z,
     }
 }
@@ -263,6 +287,8 @@ pub struct CandidateReport {
     pub diff: f64,
     /// The standard error of that difference (sample sd / √n; infinite with fewer than 2 rounds).
     pub se: f64,
+    /// Play-outs in which the pilot's side attacked before the decision's turn ended (Oct 7; for the skip bar).
+    pub attacks_this_turn: usize,
 }
 
 /// A move left out by the candidate cap, and why.
@@ -817,15 +843,18 @@ impl Core {
         (state, list, name, splitmix(base ^ 0x5eed_0000_0000_0000 ^ j as u64))
     }
 
-    /// Plays `action` from `state` to the end with km<N> on both sides; the pilot's score (win 1, tie ½, loss 0).
-    fn playout(&self, state: &State, opponent_list: &Deck, me: usize, action: &Action, seed: u64) -> f64 {
-        score(&self.play_out(state, opponent_list, me, action, seed, None, self.tools).0, me)
+    /// Plays `action` from `state` to the end with km<N> on both sides; the pilot's score (win 1, tie ½, loss 0), and
+    /// whether the pilot's side attacked before the decision's turn ended.
+    fn playout(&self, state: &State, opponent_list: &Deck, me: usize, action: &Action, seed: u64) -> (f64, bool) {
+        let (end, _, _, attacked) = self.play_out(state, opponent_list, me, action, seed, None, self.tools);
+        (score(&end, me), attacked)
     }
 
     /// `playout`'s game, ending in its final state. With a plan, the pilot's side follows it for K own turns from
     /// `state`'s (playout_plan.rs) and km<N> plays the rest, and the plan's tally comes back; without one (or with K = 0)
     /// it is km<N> on both sides. With `tools`, km<N> on both sides places Tools by the Tool-placement rule
-    /// (playout_tools.rs), and the rule's interventions are counted.
+    /// (playout_tools.rs), and the rule's interventions are counted. The last value says whether the pilot's side attacked
+    /// before `state`'s turn ended (the first move included; Oct 7, the skip bar).
     fn play_out(
         &self,
         state: &State,
@@ -835,7 +864,7 @@ impl Core {
         seed: u64,
         plan: Option<(&Plan, usize)>,
         tools: bool,
-    ) -> (State, Option<(PlanTally, Vec<String>)>, usize) {
+    ) -> (State, Option<(PlanTally, Vec<String>)>, usize, bool) {
         let code = PlayerCode::KM { max_depth: self.depth };
         let (d0, d1) = if me == 0 { (self.deck.clone(), opponent_list.clone()) } else { (opponent_list.clone(), self.deck.clone()) };
         let mut players = create_players(d0, d1, vec![code.clone(), code]);
@@ -855,21 +884,29 @@ impl Core {
             progress
         });
         let mut game = Game::from_state(state.clone(), players, seed);
+        let is_attack = |a: &Action| a.actor == me && matches!(a.action, crate::actions::SimpleAction::Attack(_));
+        let mut attacked = is_attack(action);
         game.apply_action(action);
+        // Watched only while the decision's turn lasts (and no attack yet): it reads the state, it changes nothing.
+        let mut in_turn = !attacked && game.get_state_clone().turn_count == state.turn_count;
         let mut ticks = 0;
         while !game.is_game_over() && ticks < 4000 {
             if let Some(progress) = &progress {
                 progress.borrow_mut().before_tick(&game.get_state_clone());
             }
-            game.play_tick();
+            let a = game.play_tick();
             ticks += 1;
+            if in_turn {
+                attacked = is_attack(&a);
+                in_turn = !attacked && game.get_state_clone().turn_count == state.turn_count;
+            }
         }
         let end = game.get_state_clone();
         let tally = progress.map(|p| {
             let mut p = p.borrow_mut();
             (p.finish(&end), p.take_log())
         });
-        (end, tally, interventions.get())
+        (end, tally, interventions.get(), attacked)
     }
 
 }
@@ -915,7 +952,14 @@ impl PlayoutPlayer {
             knowledge: self.knowledge_label(),
             turn: state.turn_count,
             actor: me,
-            candidates: vec![CandidateReport { action: km_move.clone(), label: label(&km_move), score: f64::NAN, diff: 0.0, se: f64::NAN }],
+            candidates: vec![CandidateReport {
+                action: km_move.clone(),
+                label: label(&km_move),
+                score: f64::NAN,
+                diff: 0.0,
+                se: f64::NAN,
+                attacks_this_turn: 0,
+            }],
             dropped: vec![],
             km3: 0,
             chosen: 0,
@@ -1004,7 +1048,7 @@ impl PlayoutPlayer {
         }
         // The rounds: play-out j of every candidate from the same world and seed.
         let threads = rayon::current_num_threads().max(1);
-        let mut results: Vec<Vec<f64>> = Vec::new();
+        let mut results: Vec<Vec<(f64, bool)>> = Vec::new();
         let total = self.params.rollouts;
         let mut next = 0;
         while next < total {
@@ -1012,12 +1056,12 @@ impl PlayoutPlayer {
             let to = if self.params.budget_ms == 0 { total } else { (from + threads).min(total) };
             next = to;
             // A play-out that panics (an engine bug in a sampled world) drops its whole round, so the rest stay paired.
-            let batch: Vec<Option<(Vec<f64>, String)>> = (from..to)
+            let batch: Vec<Option<(Vec<(f64, bool)>, String)>> = (from..to)
                 .into_par_iter()
                 .map(|j| {
                     std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
                         let (world, list, name, seed) = sample(j);
-                        (candidates.iter().map(|a| core.playout(&world, &list, me, a, seed)).collect::<Vec<f64>>(), name)
+                        (candidates.iter().map(|a| core.playout(&world, &list, me, a, seed)).collect::<Vec<(f64, bool)>>(), name)
                     }))
                     .ok()
                 })
@@ -1045,25 +1089,40 @@ impl PlayoutPlayer {
             .iter()
             .enumerate()
             .map(|(c, a)| {
-                let score = results.iter().map(|r| r[c]).sum::<f64>() / n;
-                let diffs: Vec<f64> = results.iter().map(|r| r[c] - r[0]).collect();
+                let score = results.iter().map(|r| r[c].0).sum::<f64>() / n;
+                let diffs: Vec<f64> = results.iter().map(|r| r[c].0 - r[0].0).collect();
                 let diff = diffs.iter().sum::<f64>() / n;
                 let se = if results.len() < 2 {
                     f64::INFINITY
                 } else {
                     (diffs.iter().map(|d| (d - diff).powi(2)).sum::<f64>() / (n - 1.0)).sqrt() / n.sqrt()
                 };
-                CandidateReport { action: a.clone(), label: label(a), score, diff, se: if c == 0 { 0.0 } else { se } }
+                let attacks_this_turn = results.iter().filter(|r| r[c].1).count();
+                CandidateReport { action: a.clone(), label: label(a), score, diff, se: if c == 0 { 0.0 } else { se }, attacks_this_turn }
             })
             .collect();
         // The best score (km's move first on a tie, then the offer order); it replaces km's only beyond the noise.
         let best = (0..report.candidates.len())
             .fold(0, |b, c| if report.candidates[c].score > report.candidates[b].score { c } else { b });
         let lead = &report.candidates[best];
-        // The bar: z, or (`_za<z>`) z_attack for a switch from km's attack to a move that isn't one.
-        let bar = switch_bar(&report.candidates[0].action, &lead.action, self.params.z, self.params.z_attack);
+        // The bar: z; or (`_za<z>`) z_attack for a switch from km's attack to a move that isn't one; or (`_zs<z>`) z_skip for
+        // such a switch whose line leaves the turn without an attack.
         let attack = |a: &Action| matches!(a.action, crate::actions::SimpleAction::Attack(_));
-        let away = self.params.z_attack.is_some() && best != 0 && attack(&report.candidates[0].action) && !attack(&lead.action);
+        let from_attack = best != 0 && attack(&report.candidates[0].action) && !attack(&lead.action);
+        let bar = if self.params.z_skip.is_some() {
+            skip_bar(&report.candidates[0].action, &lead.action, lead.attacks_this_turn, report.rounds, self.params.z, self.params.z_skip)
+        } else {
+            switch_bar(&report.candidates[0].action, &lead.action, self.params.z, self.params.z_attack)
+        };
+        let away = (self.params.z_attack.is_some() || self.params.z_skip.is_some()) && from_attack;
+        // With the skip bar, what the best move's line does this turn, in its play-outs.
+        let line = if self.params.z_skip.is_none() {
+            String::new()
+        } else if lead.attacks_this_turn * 2 < report.rounds {
+            format!(", and no attack this turn in its line (an attack in {} of {} play-outs)", lead.attacks_this_turn, report.rounds)
+        } else {
+            format!(" to a line that attacks this turn in {} of {} play-outs", lead.attacks_this_turn, report.rounds)
+        };
         let scores = format!("km's attack {:.3}, this move {:.3}", report.candidates[0].score, lead.score);
         if best == 0 {
             report.reason = "km's move has the best play-out score".to_string();
@@ -1081,14 +1140,16 @@ impl PlayoutPlayer {
                 bar
             );
             if away {
-                report.reason = format!("{}; away from km's attack: {scores}", report.reason);
+                report.reason = format!("{}; away from km's attack{line}: {scores}", report.reason);
             }
         } else if away && lead.diff > 0.0 && lead.diff > self.params.z * lead.se {
             report.reason = format!(
-                "the attack bar: the best move leads km's attack by {:+.3}, {:.1} standard errors, past z {} but not the attack bar {} ({scores}): km's attack kept",
+                "the {} bar: the best move leads km's attack by {:+.3}, {:.1} standard errors, past z {} but not the {} bar {}{line} ({scores}): km's attack kept",
+                if self.params.z_skip.is_some() { "skip" } else { "attack" },
                 lead.diff,
                 if lead.se > 0.0 { lead.diff / lead.se } else { f64::INFINITY },
                 self.params.z,
+                if self.params.z_skip.is_some() { "skip" } else { "attack" },
                 bar
             );
         } else {
@@ -1205,11 +1266,11 @@ impl PlayoutPlayer {
                     let per_move = moves
                         .iter()
                         .map(|a| {
-                            let (km_end, _, _) = core.play_out(&world, &list, me, a, seed, None, core.tools);
-                            let (plan_end, logged, _) = core.play_out(&world, &list, me, a, seed, Some((plan, k)), core.tools);
+                            let (km_end, _, _, _) = core.play_out(&world, &list, me, a, seed, None, core.tools);
+                            let (plan_end, logged, _, _) = core.play_out(&world, &list, me, a, seed, Some((plan, k)), core.tools);
                             let (tally, plan_log) = logged.unwrap_or_default();
                             let traces = (j == 0).then(|| {
-                                let (end, logged, _) = core.play_out(&world, &list, me, a, seed, Some((&km_logged, k)), core.tools);
+                                let (end, logged, _, _) = core.play_out(&world, &list, me, a, seed, Some((&km_logged, k)), core.tools);
                                 (plan_log, logged.unwrap_or_default().1, outcome(&end) == outcome(&km_end))
                             });
                             (outcome(&km_end), outcome(&plan_end), tally, traces)
@@ -1281,7 +1342,7 @@ impl PlayoutPlayer {
                     let per_move = moves
                         .iter()
                         .map(|a| {
-                            let (on_end, _, n) = core.play_out(&world, &list, me, a, seed, None, true);
+                            let (on_end, _, n, _) = core.play_out(&world, &list, me, a, seed, None, true);
                             let on = outcome(&on_end);
                             let off = if n == 0 { on.clone() } else { outcome(&core.play_out(&world, &list, me, a, seed, None, false).0) };
                             (off, on, n)
@@ -1332,12 +1393,19 @@ impl PlayoutPlayer {
             "chosen": report.candidates[report.chosen].label,
             "changed": report.chosen != report.km3,
             "reason": report.reason,
-            "candidates": report.candidates.iter().map(|c| serde_json::json!({
-                "move": c.label,
-                "score": if c.score.is_finite() { serde_json::json!((c.score * 1000.0).round() / 1000.0) } else { serde_json::Value::Null },
-                "diff": (c.diff * 1000.0).round() / 1000.0,
-                "se": if c.se.is_finite() { serde_json::json!((c.se * 1000.0).round() / 1000.0) } else { serde_json::Value::Null },
-            })).collect::<Vec<_>>(),
+            "candidates": report.candidates.iter().map(|c| {
+                let mut j = serde_json::json!({
+                    "move": c.label,
+                    "score": if c.score.is_finite() { serde_json::json!((c.score * 1000.0).round() / 1000.0) } else { serde_json::Value::Null },
+                    "diff": (c.diff * 1000.0).round() / 1000.0,
+                    "se": if c.se.is_finite() { serde_json::json!((c.se * 1000.0).round() / 1000.0) } else { serde_json::Value::Null },
+                });
+                // The skip bar's count, only with the parameter (the trace is otherwise as before).
+                if self.params.z_skip.is_some() {
+                    j["attacks_this_turn"] = serde_json::json!(c.attacks_this_turn);
+                }
+                j
+            }).collect::<Vec<_>>(),
             "dropped": report.dropped.iter().map(|d| serde_json::json!({"move": d.label, "reason": d.reason})).collect::<Vec<_>>(),
             "cap_note": report.cap_note,
         });
@@ -1387,6 +1455,7 @@ impl Player for PlayoutPlayer {
                     "tool_rule": self.params.tools,
                     "noeffect": self.params.noeffect,
                     "z_attack": self.params.z_attack,
+                    "z_skip": self.params.z_skip,
                     "extra_lists": self.extras_json(),
                     "budget_ms": self.params.budget_ms,
                     "seat": observation.actor,
