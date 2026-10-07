@@ -1,0 +1,63 @@
+The skip bar's tests (Oct 7) before the code: cargo test --release --features test-utils --test playout_quiz4_test -- skip
+They don't compile: no skip_bar, no z_skip, no attacks_this_turn yet.
+
+error[E0432]: unresolved import `deckgym::players::playout_player::skip_bar`
+  --> tests/playout_quiz4_test.rs:32:31
+   |
+32 |     effect_needs, effect_now, skip_bar, switch_bar, CardKind, DecisionReport, Knowledge, Need, Plan, PlayoutParams, PlayoutPlayer,
+   |                               ^^^^^^^^ no `skip_bar` in `players::playout_player`
+
+error[E0609]: no field `z_skip` on type `PlayoutParams`
+   --> tests/playout_quiz4_test.rs:167:38
+    |
+167 |     assert_eq!(PlayoutParams::new(3).z_skip, None);
+    |                                      ^^^^^^ unknown field
+    |
+--
+error[E0609]: no field `z_skip` on type `PlayoutParams`
+   --> tests/playout_quiz4_test.rs:169:18
+    |
+169 |     assert_eq!(p.z_skip, Some(3.0));
+    |                  ^^^^^^ unknown field
+    |
+--
+error[E0560]: struct `PlayoutParams` has no field named `z_skip`
+   --> tests/playout_quiz4_test.rs:205:58
+    |
+205 |     let params = PlayoutParams { rollouts: 8, cap: 6, z, z_skip, knowledge: Knowledge::Lab, ..PlayoutParams::new(3) };
+    |                                                          ^^^^^^ `PlayoutParams` does not have this field
+    |
+--
+error[E0609]: no field `attacks_this_turn` on type `&CandidateReport`
+   --> tests/playout_quiz4_test.rs:226:23
+    |
+226 |             assert!(c.attacks_this_turn <= r.rounds, "seed {seed}: {}", c.label);
+    |                       ^^^^^^^^^^^^^^^^^ unknown field
+    |
+--
+error[E0609]: no field `attacks_this_turn` on type `&CandidateReport`
+   --> tests/playout_quiz4_test.rs:228:30
+    |
+228 |                 assert_eq!(c.attacks_this_turn, r.rounds, "seed {seed}: {}", c.label);
+    |                              ^^^^^^^^^^^^^^^^^ unknown field
+    |
+--
+error[E0609]: no field `attacks_this_turn` on type `&CandidateReport`
+   --> tests/playout_quiz4_test.rs:230:30
+    |
+230 |                 assert_eq!(c.attacks_this_turn, 0, "seed {seed}");
+    |                              ^^^^^^^^^^^^^^^^^ unknown field
+    |
+--
+error[E0609]: no field `attacks_this_turn` on type `&CandidateReport`
+   --> tests/playout_quiz4_test.rs:231:25
+    |
+231 |             } else if c.attacks_this_turn > 0 {
+    |                         ^^^^^^^^^^^^^^^^^ unknown field
+    |
+--
+error[E0609]: no field `attacks_this_turn` on type `&CandidateReport`
+   --> tests/playout_quiz4_test.rs:255:24
+    |
+255 |         } else if best.attacks_this_turn * 2 < open.rounds {
+    |                        ^^^^^^^^^^^^^^^^^ unknown field

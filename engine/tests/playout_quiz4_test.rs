@@ -12,6 +12,12 @@
 //! clears the bar and km3's move can do nothing now while another candidate does something, kx3 plays km3's choice among
 //! those ("tie-break: no effect now"), unless km3's move leads it beyond the noise. With the parameter off nothing changes.
 //!
+//! Item 1, narrowed (Oct 7; Fable via Dustin: `_za` as built is not shipped, it stops moves that attack later in the turn):
+//! the skip bar (`_zs<z>`). Every play-out records whether the pilot's side attacked before its turn ended. A switch from
+//! km3's attack to a move that isn't one needs a lead beyond z_skip standard errors only when that move's own line leaves
+//! the turn without an attack (in more than half of its play-outs); a line that attacks later in the turn keeps the bar z.
+//! The reason names the count either way. With the parameter off nothing changes.
+//!
 //! Item 3, the continuation experiment at the quiz's three "neither" positions (Q06, Q07, Q11): Dustin's plans are scripted
 //! by intent (rl/results/playout_quiz4_items_2026-10-06/neither/plans.json), and Q06's begins with an Ability, so a plan
 //! step can name whose Ability is used; the plan is played as he wrote it.
@@ -23,8 +29,8 @@ use deckgym::card_ids::CardId;
 use deckgym::database::get_card_by_enum;
 use deckgym::models::{Card, PlayedCard};
 use deckgym::players::playout_player::{
-    effect_needs, effect_now, switch_bar, CardKind, DecisionReport, Knowledge, Need, Plan, PlayoutParams, PlayoutPlayer, PokemonFilter,
-    Reading, Scope, Step,
+    effect_needs, effect_now, skip_bar, switch_bar, CardKind, DecisionReport, Knowledge, Need, Plan, PlayoutParams, PlayoutPlayer,
+    PokemonFilter, Reading, Scope, Step,
 };
 use deckgym::test_support::get_test_game_with_board;
 use strum::IntoEnumIterator;
@@ -151,6 +157,114 @@ fn the_attack_bar_keeps_km3s_attack_against_a_smaller_lead() {
         }
     }
     assert!(stopped >= 1, "no stopped switch among these decisions");
+}
+
+// Item 1, narrowed: the skip bar (`_zs<z>`).
+
+/// The code spells the skip bar (`_zs<z>`, last); it can't be named with the attack bar; every code without it is as before.
+#[test]
+fn the_code_spells_the_skip_bar() {
+    assert_eq!(PlayoutParams::new(3).z_skip, None);
+    let p = PlayoutParams::parse("3_zs3").unwrap();
+    assert_eq!(p.z_skip, Some(3.0));
+    assert_eq!(p.code(), "kx3_r16_c12_z2_real_t0_poolwide_zs3");
+    assert_eq!(PlayoutParams::parse(&p.code()[2..]).unwrap(), p);
+    let more = PlayoutParams::parse("3_r16_c12_z2_real_t0_poolmeta_noeffect_zs2.5").unwrap();
+    assert_eq!(more.code(), "kx3_r16_c12_z2_real_t0_poolmeta_noeffect_zs2.5");
+    for bad in ["kx3_zs", "kx3_zs-1", "kx3_zsx", "kx3_za3_zs3"] {
+        assert!(parse_player_code(bad).is_err(), "{bad} should not parse");
+    }
+}
+
+/// The skip bar: z_skip only from km3's attack to a move that isn't one whose line attacks this turn in fewer than half of
+/// its play-outs; z otherwise, and always z with the parameter off.
+#[test]
+fn the_skip_bar_applies_only_away_from_an_attack_to_a_line_without_one() {
+    let (deck_a, deck_b) = load_test_decks();
+    let km3 = || parse_player_code("km3").unwrap();
+    let mut game = Game::new(create_players(deck_a, deck_b, vec![km3(), km3()]), 20_000_000_210);
+    let mut attack = None;
+    while attack.is_none() && !game.is_game_over() {
+        let (_, actions) = game.get_state_clone().generate_possible_actions();
+        attack = actions.iter().find(|a| is_attack(a)).cloned();
+        game.play_tick();
+    }
+    let attack = attack.expect("an attack came up");
+    let other = Action { actor: attack.actor, action: SimpleAction::EndTurn, is_stack: false };
+    assert_eq!(skip_bar(&attack, &other, 0, 8, 2.0, Some(3.0)), 3.0, "no attack this turn in its line");
+    assert_eq!(skip_bar(&attack, &other, 3, 8, 2.0, Some(3.0)), 3.0, "an attack in 3 of 8 play-outs: mostly none");
+    assert_eq!(skip_bar(&attack, &other, 4, 8, 2.0, Some(3.0)), 2.0, "half: not a skip");
+    assert_eq!(skip_bar(&attack, &other, 8, 8, 2.0, Some(3.0)), 2.0, "attacks later in the turn");
+    assert_eq!(skip_bar(&attack, &attack, 0, 8, 2.0, Some(3.0)), 2.0, "to an attack");
+    assert_eq!(skip_bar(&other, &attack, 0, 8, 2.0, Some(3.0)), 2.0, "from a move that isn't an attack");
+    assert_eq!(skip_bar(&attack, &other, 0, 8, 2.0, None), 2.0, "the parameter off");
+}
+
+fn small_skip(z: f64, z_skip: Option<f64>) -> PlayoutPlayer {
+    let (deck_a, deck_b) = load_test_decks();
+    let params = PlayoutParams { rollouts: 8, cap: 6, z, z_skip, knowledge: Knowledge::Lab, ..PlayoutParams::new(3) };
+    PlayoutPlayer::with_extra_lists(deck_a, deck_b, params, Vec::new())
+}
+
+const SKIP_SEEDS: [u64; 12] = [
+    20_000_000_211, 20_000_000_212, 20_000_000_213, 20_000_000_214, 20_000_000_215, 20_000_000_216,
+    20_000_000_230, 20_000_000_231, 20_000_000_232, 20_000_000_233, 20_000_000_234, 20_000_000_235,
+];
+
+/// Every play-out counts whether the pilot's side attacked before its turn ended: an attack itself always has, End Turn
+/// never has, and some other move's line attacks later in the turn. The play-outs themselves are the same with the skip
+/// bar on or off.
+#[test]
+fn the_play_outs_count_the_attacks_of_the_turn() {
+    let mut later = 0;
+    for (seed, state) in attack_decisions(&SKIP_SEEDS[..6]) {
+        let observation = PlayerObservation::from_state(&state, 0, &RevealedKnowledge::default());
+        let actions = state.generate_possible_actions().1;
+        let r = small_skip(2.0, None).evaluate(&mut StdRng::seed_from_u64(seed), &observation, &actions);
+        assert!(r.rounds > 0, "seed {seed}");
+        for c in &r.candidates {
+            assert!(c.attacks_this_turn <= r.rounds, "seed {seed}: {}", c.label);
+            if is_attack(&c.action) {
+                assert_eq!(c.attacks_this_turn, r.rounds, "seed {seed}: {}", c.label);
+            } else if matches!(c.action.action, SimpleAction::EndTurn) {
+                assert_eq!(c.attacks_this_turn, 0, "seed {seed}");
+            } else if c.attacks_this_turn > 0 {
+                later += 1;
+            }
+        }
+        let on = small_skip(2.0, Some(3.0)).evaluate(&mut StdRng::seed_from_u64(seed), &observation, &actions);
+        assert_eq!(fingerprint(&r).split(" | ").next(), fingerprint(&on).split(" | ").next(), "seed {seed}: the same play-outs");
+    }
+    assert!(later >= 1, "no move's line attacked later in the turn");
+}
+
+/// The skip bar is the attack bar only where the best move's line leaves the turn without an attack; where it attacks
+/// later in the turn the switch stands as without the bar. The reason names the count either way.
+#[test]
+fn the_skip_bar_stops_only_switches_that_skip_the_attack() {
+    let (mut stopped, mut stood) = (0, 0);
+    for (seed, state) in attack_decisions(&SKIP_SEEDS) {
+        let observation = PlayerObservation::from_state(&state, 0, &RevealedKnowledge::default());
+        let actions = state.generate_possible_actions().1;
+        let open = small_skip(0.0, None).evaluate(&mut StdRng::seed_from_u64(seed), &observation, &actions);
+        let barred = small_skip(0.0, Some(1e9)).evaluate(&mut StdRng::seed_from_u64(seed), &observation, &actions);
+        assert!(is_attack(&open.candidates[open.km3].action), "seed {seed}: km3 proposes an attack");
+        let best = &open.candidates[open.chosen];
+        if open.chosen == open.km3 || is_attack(&best.action) {
+            assert_eq!(barred.chosen, open.chosen, "seed {seed}");
+        } else if best.attacks_this_turn * 2 < open.rounds {
+            stopped += 1;
+            assert_eq!(barred.chosen, barred.km3, "seed {seed}: km3's attack kept");
+            assert!(barred.reason.contains("no attack this turn"), "seed {seed}: {}", barred.reason);
+        } else {
+            stood += 1;
+            assert_eq!(barred.chosen, open.chosen, "seed {seed}: {}", barred.reason);
+            assert!(barred.reason.contains(&format!("attacks this turn in {} of {}", best.attacks_this_turn, open.rounds)),
+                    "seed {seed}: {}", barred.reason);
+        }
+    }
+    eprintln!("switches away from km3's attack: {stopped} stopped (no attack this turn), {stood} standing (an attack later)");
+    assert!(stopped + stood >= 1, "no switch away from km3's attack among these decisions");
 }
 
 /// A switch away from km3's attack that clears the bar names both scores too.
