@@ -466,8 +466,8 @@ fn paired(a: &[(f64, bool)], b: &[(f64, bool)]) -> (f64, f64, bool) {
 /// - km's move, when the best is another move whose lead over it is within the bar that would decide that switch (the
 ///   decision's own bar, `decision_bar`: z_skip from km's attack to a line that skips it, z_attack, or z);
 /// - another move the best leads by no more than z standard errors (paired), unless the two are equal in every round.
-/// If any is close: those, the best and km's move, in order, less any move equal to km's in every round (it can't win: ties
-/// go to km's move); else none.
+/// If any is close: those, the best and km's move, in order; else none. A move tied with km's in every round so far is
+/// treated like any other (rare draws or events can separate them later).
 pub fn close_call(per: &[Vec<(f64, bool)>], candidates: &[Action], params: &PlayoutParams) -> Vec<usize> {
     let full = per[0].len();
     if full < 2 {
@@ -493,7 +493,7 @@ pub fn close_call(per: &[Vec<(f64, bool)>], candidates: &[Action], params: &Play
     let mut set: BTreeSet<usize> = close.into_iter().collect();
     set.insert(best);
     set.insert(0);
-    set.into_iter().filter(|&c| c == 0 || !paired(&per[c], &per[0]).2).collect()
+    set.into_iter().collect()
 }
 
 fn splitmix(mut x: u64) -> u64 {
