@@ -1,0 +1,1042 @@
+[
+ {
+  "checked_against_the_log": {
+   "km3_plays": "Attach:1Darkness@0 zone",
+   "legal": 6,
+   "turn": 3
+  },
+  "decision": 10,
+  "deck": "01-muk-glimmora-kingambit-regigigas",
+  "id": "Q01",
+  "key": "01-muk-glimmora-kingambit-regigigas|t-vespiquen|3|0|ref",
+  "kx3_in_the_game": {
+   "chosen": "Attach:1Darkness@3 zone",
+   "kx3_arm_logged": "Attach:1Darkness@3 zone",
+   "plays_what_the_log_says": true,
+   "report": {
+    "candidates": [
+     {
+      "diff": 0.0,
+      "move": "Attach:1Darkness@0 zone",
+      "rounds": 48,
+      "score": 0.1875,
+      "se": 0.0
+     },
+     {
+      "diff": -0.0625,
+      "move": "EndTurn",
+      "rounds": 16,
+      "score": 0.125,
+      "se": 0.11063265039459795
+     },
+     {
+      "diff": 0.041666666666666664,
+      "move": "UseStadium",
+      "rounds": 48,
+      "score": 0.22916666666666666,
+      "se": 0.07267881673425379
+     },
+     {
+      "diff": -0.125,
+      "move": "Attach:1Darkness@1 zone",
+      "rounds": 16,
+      "score": 0.0625,
+      "se": 0.08539125638299665
+     },
+     {
+      "diff": 0.020833333333333332,
+      "move": "Attach:1Darkness@2 zone",
+      "rounds": 48,
+      "score": 0.20833333333333334,
+      "se": 0.07584969817967632
+     },
+     {
+      "diff": 0.22916666666666666,
+      "move": "Attach:1Darkness@3 zone",
+      "rounds": 48,
+      "score": 0.4166666666666667,
+      "se": 0.08546692432552082
+     }
+    ],
+    "chosen": "Attach:1Darkness@3 zone",
+    "dropped": [],
+    "km": "Attach:1Darkness@0 zone",
+    "ms": 96534.0,
+    "reason": "play-outs: +0.229 over km's move, 2.7 standard errors (threshold 2); close call: play-outs extended from 16 to 48 rounds for 4 candidates",
+    "rounds": 48
+   }
+  },
+  "legal": [
+   "EndTurn",
+   "Attach:1Darkness@0 zone",
+   "Attach:1Darkness@1 zone",
+   "Attach:1Darkness@2 zone",
+   "Attach:1Darkness@3 zone",
+   "UseStadium"
+  ],
+  "opp": "t-vespiquen",
+  "seat": 0,
+  "seed": 24440060003,
+  "then": [],
+  "to_move": 0,
+  "turn": 3
+ },
+ {
+  "checked_against_the_log": {
+   "km3_plays": "Play:Lucky Ice Pop",
+   "legal": 7,
+   "turn": 7
+  },
+  "decision": 18,
+  "deck": "01-muk-glimmora-kingambit-regigigas",
+  "id": "Q02",
+  "key": "01-muk-glimmora-kingambit-regigigas|t-lucario|1|0|ref",
+  "kx3_in_the_game": {
+   "chosen": "Attach:1Darkness@1 zone",
+   "kx3_arm_logged": "Attach:1Darkness@1 zone",
+   "plays_what_the_log_says": true,
+   "report": {
+    "candidates": [
+     {
+      "diff": 0.0,
+      "move": "Play:Lucky Ice Pop",
+      "rounds": 16,
+      "score": 0.0625,
+      "se": 0.0
+     },
+     {
+      "diff": 0.125,
+      "move": "EndTurn",
+      "rounds": 16,
+      "score": 0.1875,
+      "se": 0.125
+     },
+     {
+      "diff": 0.0,
+      "move": "Attach:1Darkness@0 zone",
+      "rounds": 16,
+      "score": 0.0625,
+      "se": 0.0
+     },
+     {
+      "diff": 0.9375,
+      "move": "Attach:1Darkness@1 zone",
+      "rounds": 16,
+      "score": 1.0,
+      "se": 0.0625
+     },
+     {
+      "diff": 0.1875,
+      "move": "Attach:1Darkness@2 zone",
+      "rounds": 16,
+      "score": 0.25,
+      "se": 0.13597640726733934
+     },
+     {
+      "diff": 0.9375,
+      "move": "Attach:1Darkness@3 zone",
+      "rounds": 16,
+      "score": 1.0,
+      "se": 0.0625
+     },
+     {
+      "diff": -0.0625,
+      "move": "Play:Ilima",
+      "rounds": 16,
+      "score": 0.0,
+      "se": 0.0625
+     }
+    ],
+    "chosen": "Attach:1Darkness@1 zone",
+    "dropped": [],
+    "km": "Play:Lucky Ice Pop",
+    "ms": 54406.0,
+    "reason": "play-outs: +0.938 over km's move, 15.0 standard errors (threshold 2)",
+    "rounds": 16
+   }
+  },
+  "legal": [
+   "EndTurn",
+   "Play:Lucky Ice Pop",
+   "Play:Ilima",
+   "Attach:1Darkness@0 zone",
+   "Attach:1Darkness@1 zone",
+   "Attach:1Darkness@2 zone",
+   "Attach:1Darkness@3 zone"
+  ],
+  "opp": "t-lucario",
+  "seat": 0,
+  "seed": 24440030001,
+  "then": [],
+  "to_move": 0,
+  "turn": 7
+ },
+ {
+  "checked_against_the_log": {
+   "km3_plays": "Evolve:Glimmora@0",
+   "legal": 4,
+   "turn": 9
+  },
+  "decision": 24,
+  "deck": "01-muk-glimmora-kingambit-regigigas",
+  "id": "Q03",
+  "key": "01-muk-glimmora-kingambit-regigigas|t-vespiquen|0|1|ref",
+  "kx3_in_the_game": {
+   "chosen": "Retreat:2",
+   "kx3_arm_logged": "Retreat:2",
+   "plays_what_the_log_says": true,
+   "report": {
+    "candidates": [
+     {
+      "diff": 0.0,
+      "move": "Evolve:Glimmora@0",
+      "rounds": 16,
+      "score": 0.0625,
+      "se": 0.0
+     },
+     {
+      "diff": -0.0625,
+      "move": "EndTurn",
+      "rounds": 16,
+      "score": 0.0,
+      "se": 0.0625
+     },
+     {
+      "diff": -0.0625,
+      "move": "Attack:Hang Down",
+      "rounds": 16,
+      "score": 0.0,
+      "se": 0.0625
+     },
+     {
+      "diff": 0.375,
+      "move": "Retreat:2",
+      "rounds": 16,
+      "score": 0.4375,
+      "se": 0.125
+     }
+    ],
+    "chosen": "Retreat:2",
+    "dropped": [],
+    "km": "Evolve:Glimmora@0",
+    "ms": 5954.0,
+    "reason": "play-outs: +0.375 over km's move, 3.0 standard errors (threshold 2)",
+    "rounds": 16
+   }
+  },
+  "legal": [
+   "EndTurn",
+   "Evolve:Glimmora@0",
+   "Retreat:2",
+   "Attack:Hang Down"
+  ],
+  "opp": "t-vespiquen",
+  "seat": 1,
+  "seed": 24440060000,
+  "then": [],
+  "to_move": 1,
+  "turn": 9
+ },
+ {
+  "checked_against_the_log": {
+   "km3_plays": "Play:Pok\u00e9 Ball",
+   "legal": 7,
+   "turn": 3
+  },
+  "decision": 5,
+  "deck": "03-wailord-indeedee-wall",
+  "id": "Q04",
+  "key": "03-wailord-indeedee-wall|t-vespiquen|3|1|ref",
+  "kx3_in_the_game": {
+   "chosen": "EndTurn",
+   "kx3_arm_logged": "Attach:1Water@0 zone",
+   "plays_what_the_log_says": false,
+   "report": {
+    "candidates": [
+     {
+      "diff": 0.0,
+      "move": "Play:Pok\u00e9 Ball",
+      "rounds": 64,
+      "score": 0.2109375,
+      "se": 0.0
+     },
+     {
+      "diff": 0.2890625,
+      "move": "EndTurn",
+      "rounds": 64,
+      "score": 0.5,
+      "se": 0.08015105987018195
+     },
+     {
+      "diff": 0.2734375,
+      "move": "Attach:1Water@0 zone",
+      "rounds": 64,
+      "score": 0.484375,
+      "se": 0.0694808622267586
+     },
+     {
+      "diff": 0.2265625,
+      "move": "Attach:1Water@3 zone",
+      "rounds": 64,
+      "score": 0.4375,
+      "se": 0.06390260242530182
+     },
+     {
+      "diff": 0.0,
+      "move": "Play:Soothing Shore",
+      "rounds": 16,
+      "score": 0.25,
+      "se": 0.09128709291752768
+     },
+     {
+      "diff": 0.0,
+      "move": "Ability:Watch Over@0",
+      "rounds": 16,
+      "score": 0.25,
+      "se": 0.0
+     },
+     {
+      "diff": 0.0,
+      "move": "Ability:Watch Over@3",
+      "rounds": 16,
+      "score": 0.25,
+      "se": 0.0
+     }
+    ],
+    "chosen": "EndTurn",
+    "dropped": [],
+    "km": "Play:Pok\u00e9 Ball",
+    "ms": 179043.0,
+    "reason": "play-outs: +0.289 over km's move, 3.6 standard errors (threshold 2); close call: play-outs extended from 16 to 64 rounds for 4 candidates",
+    "rounds": 64
+   }
+  },
+  "legal": [
+   "EndTurn",
+   "Play:Soothing Shore",
+   "Play:Pok\u00e9 Ball",
+   "Attach:1Water@0 zone",
+   "Attach:1Water@3 zone",
+   "Ability:Watch Over@0",
+   "Ability:Watch Over@3"
+  ],
+  "opp": "t-vespiquen",
+  "seat": 1,
+  "seed": 24430060003,
+  "then": [],
+  "to_move": 1,
+  "turn": 3
+ },
+ {
+  "checked_against_the_log": {
+   "km3_plays": "Play:Pok\u00e9mon Center Lady",
+   "legal": 6,
+   "turn": 6
+  },
+  "decision": 13,
+  "deck": "03-wailord-indeedee-wall",
+  "id": "Q05",
+  "key": "03-wailord-indeedee-wall|t-altaria|3|1|ref",
+  "kx3_in_the_game": {
+   "chosen": "Attach:1Water@2 zone",
+   "kx3_arm_logged": "Attach:1Water@2 zone",
+   "plays_what_the_log_says": true,
+   "report": {
+    "candidates": [
+     {
+      "diff": 0.0,
+      "move": "Play:Pok\u00e9mon Center Lady",
+      "rounds": 16,
+      "score": 0.0,
+      "se": 0.0
+     },
+     {
+      "diff": 0.0625,
+      "move": "EndTurn",
+      "rounds": 16,
+      "score": 0.0625,
+      "se": 0.0625
+     },
+     {
+      "diff": 0.0,
+      "move": "Attach:1Water@0 zone",
+      "rounds": 16,
+      "score": 0.0,
+      "se": 0.0
+     },
+     {
+      "diff": 0.5,
+      "move": "Attach:1Water@2 zone",
+      "rounds": 16,
+      "score": 0.5,
+      "se": 0.12909944487358055
+     },
+     {
+      "diff": 0.0625,
+      "move": "Attach:1Water@3 zone",
+      "rounds": 16,
+      "score": 0.0625,
+      "se": 0.0625
+     },
+     {
+      "diff": 0.0,
+      "move": "Evolve:Wailord ex@3",
+      "rounds": 16,
+      "score": 0.0,
+      "se": 0.0
+     }
+    ],
+    "chosen": "Attach:1Water@2 zone",
+    "dropped": [],
+    "km": "Play:Pok\u00e9mon Center Lady",
+    "ms": 6223.0,
+    "reason": "play-outs: +0.500 over km's move, 3.9 standard errors (threshold 2)",
+    "rounds": 16
+   }
+  },
+  "legal": [
+   "EndTurn",
+   "Play:Pok\u00e9mon Center Lady",
+   "Evolve:Wailord ex@3",
+   "Attach:1Water@0 zone",
+   "Attach:1Water@2 zone",
+   "Attach:1Water@3 zone"
+  ],
+  "opp": "t-altaria",
+  "seat": 1,
+  "seed": 24430000003,
+  "then": [],
+  "to_move": 1,
+  "turn": 6
+ },
+ {
+  "checked_against_the_log": {
+   "km3_plays": "Ability:Watch Over@2",
+   "legal": 7,
+   "turn": 4
+  },
+  "decision": 7,
+  "deck": "05-indeedee-stoutland",
+  "id": "Q06",
+  "key": "05-indeedee-stoutland|t-lucario|2|1|ref",
+  "kx3_in_the_game": {
+   "chosen": "Attach:1Psychic@2 zone",
+   "kx3_arm_logged": "Attach:1Psychic@2 zone",
+   "plays_what_the_log_says": true,
+   "report": {
+    "candidates": [
+     {
+      "diff": 0.0,
+      "move": "Ability:Watch Over@2",
+      "rounds": 32,
+      "score": 0.03125,
+      "se": 0.0
+     },
+     {
+      "diff": 0.0,
+      "move": "EndTurn",
+      "rounds": 16,
+      "score": 0.0,
+      "se": 0.0
+     },
+     {
+      "diff": 0.0,
+      "move": "Attach:1Psychic@0 zone",
+      "rounds": 16,
+      "score": 0.0,
+      "se": 0.0
+     },
+     {
+      "diff": 0.25,
+      "move": "Attach:1Psychic@2 zone",
+      "rounds": 32,
+      "score": 0.28125,
+      "se": 0.07777137710478188
+     },
+     {
+      "diff": 0.03125,
+      "move": "Attach:1Psychic@3 zone",
+      "rounds": 32,
+      "score": 0.0625,
+      "se": 0.03125
+     },
+     {
+      "diff": 0.0,
+      "move": "Retreat:2",
+      "rounds": 16,
+      "score": 0.0,
+      "se": 0.0
+     },
+     {
+      "diff": 0.0,
+      "move": "Retreat:3",
+      "rounds": 16,
+      "score": 0.0,
+      "se": 0.0
+     }
+    ],
+    "chosen": "Attach:1Psychic@2 zone",
+    "dropped": [],
+    "km": "Ability:Watch Over@2",
+    "ms": 23086.0,
+    "reason": "play-outs: +0.250 over km's move, 3.2 standard errors (threshold 2); close call: play-outs extended from 16 to 32 rounds for 3 candidates",
+    "rounds": 32
+   }
+  },
+  "legal": [
+   "EndTurn",
+   "Attach:1Psychic@0 zone",
+   "Attach:1Psychic@2 zone",
+   "Attach:1Psychic@3 zone",
+   "Retreat:2",
+   "Retreat:3",
+   "Ability:Watch Over@2"
+  ],
+  "opp": "t-lucario",
+  "seat": 1,
+  "seed": 24450030002,
+  "then": [],
+  "to_move": 1,
+  "turn": 4
+ },
+ {
+  "checked_against_the_log": {
+   "km3_plays": "Attach:1Psychic@2 zone",
+   "legal": 8,
+   "turn": 4
+  },
+  "decision": 15,
+  "deck": "05-indeedee-stoutland",
+  "id": "Q07",
+  "key": "05-indeedee-stoutland|t-hydreigon|3|0|ref",
+  "kx3_in_the_game": {
+   "chosen": "Retreat:2",
+   "kx3_arm_logged": "Attach:1Psychic@0 zone",
+   "plays_what_the_log_says": false,
+   "report": {
+    "candidates": [
+     {
+      "diff": 0.0,
+      "move": "Attach:1Psychic@2 zone",
+      "rounds": 64,
+      "score": 0.421875,
+      "se": 0.0
+     },
+     {
+      "diff": 0.0625,
+      "move": "EndTurn",
+      "rounds": 16,
+      "score": 0.4375,
+      "se": 0.11063265039459795
+     },
+     {
+      "diff": 0.171875,
+      "move": "Attach:1Psychic@0 zone",
+      "rounds": 64,
+      "score": 0.59375,
+      "se": 0.07570661672189684
+     },
+     {
+      "diff": 0.0625,
+      "move": "Attach:1Psychic@1 zone",
+      "rounds": 64,
+      "score": 0.484375,
+      "se": 0.08296047538551402
+     },
+     {
+      "diff": -0.0625,
+      "move": "Attach:1Psychic@3 zone",
+      "rounds": 16,
+      "score": 0.3125,
+      "se": 0.11063265039459795
+     },
+     {
+      "diff": -0.0625,
+      "move": "Retreat:1",
+      "rounds": 16,
+      "score": 0.3125,
+      "se": 0.11063265039459795
+     },
+     {
+      "diff": 0.203125,
+      "move": "Retreat:2",
+      "rounds": 64,
+      "score": 0.625,
+      "se": 0.08085507654302096
+     },
+     {
+      "diff": -0.125,
+      "move": "Retreat:3",
+      "rounds": 16,
+      "score": 0.25,
+      "se": 0.15478479684172258
+     }
+    ],
+    "chosen": "Retreat:2",
+    "dropped": [],
+    "km": "Attach:1Psychic@2 zone",
+    "ms": 69710.0,
+    "reason": "play-outs: +0.203 over km's move, 2.5 standard errors (threshold 2); close call: play-outs extended from 16 to 64 rounds for 4 candidates",
+    "rounds": 64
+   }
+  },
+  "legal": [
+   "EndTurn",
+   "Attach:1Psychic@0 zone",
+   "Attach:1Psychic@1 zone",
+   "Attach:1Psychic@2 zone",
+   "Attach:1Psychic@3 zone",
+   "Retreat:1",
+   "Retreat:2",
+   "Retreat:3"
+  ],
+  "opp": "t-hydreigon",
+  "seat": 0,
+  "seed": 24450020003,
+  "then": [],
+  "to_move": 0,
+  "turn": 4
+ },
+ {
+  "checked_against_the_log": {
+   "km3_plays": "Ability:Watch Over@0",
+   "legal": 7,
+   "turn": 4
+  },
+  "decision": 10,
+  "deck": "05-indeedee-stoutland",
+  "id": "Q08",
+  "key": "05-indeedee-stoutland|t-vespiquen|4|0|ref",
+  "kx3_in_the_game": {
+   "chosen": "Retreat:3",
+   "kx3_arm_logged": "Retreat:3",
+   "plays_what_the_log_says": true,
+   "report": {
+    "candidates": [
+     {
+      "diff": 0.0,
+      "move": "Ability:Watch Over@0",
+      "rounds": 64,
+      "score": 0.15625,
+      "se": 0.0
+     },
+     {
+      "diff": -0.0625,
+      "move": "EndTurn",
+      "rounds": 16,
+      "score": 0.0,
+      "se": 0.0625
+     },
+     {
+      "diff": 0.0,
+      "move": "UseStadium",
+      "rounds": 32,
+      "score": 0.09375,
+      "se": 0.06350006350009525
+     },
+     {
+      "diff": 0.0,
+      "move": "Attach:1Psychic@0 zone",
+      "rounds": 16,
+      "score": 0.0625,
+      "se": 0.0
+     },
+     {
+      "diff": 0.125,
+      "move": "Attach:1Psychic@3 zone",
+      "rounds": 64,
+      "score": 0.28125,
+      "se": 0.078742598543589
+     },
+     {
+      "diff": 0.0,
+      "move": "Play:Rare Candy",
+      "rounds": 16,
+      "score": 0.0625,
+      "se": 0.0
+     },
+     {
+      "diff": 0.171875,
+      "move": "Retreat:3",
+      "rounds": 64,
+      "score": 0.328125,
+      "se": 0.07570661672189684
+     }
+    ],
+    "chosen": "Retreat:3",
+    "dropped": [],
+    "km": "Ability:Watch Over@0",
+    "ms": 51106.0,
+    "reason": "play-outs: +0.172 over km's move, 2.3 standard errors (threshold 2); close call: play-outs extended from 16 to 64 rounds for 4 candidates",
+    "rounds": 64
+   }
+  },
+  "legal": [
+   "EndTurn",
+   "Play:Rare Candy",
+   "Attach:1Psychic@0 zone",
+   "Attach:1Psychic@3 zone",
+   "Retreat:3",
+   "Ability:Watch Over@0",
+   "UseStadium"
+  ],
+  "opp": "t-vespiquen",
+  "seat": 0,
+  "seed": 24450060004,
+  "then": [],
+  "to_move": 0,
+  "turn": 4
+ },
+ {
+  "checked_against_the_log": {
+   "km3_plays": "Ability:Watch Over@3",
+   "legal": 10,
+   "turn": 9
+  },
+  "decision": 23,
+  "deck": "07-skarmory-stall",
+  "id": "Q09",
+  "key": "07-skarmory-stall|t-blaziken|2|1|ref",
+  "kx3_in_the_game": {
+   "chosen": "Play:Pok\u00e9 Ball",
+   "kx3_arm_logged": "Play:Pok\u00e9 Ball",
+   "plays_what_the_log_says": true,
+   "report": {
+    "candidates": [
+     {
+      "diff": 0.0,
+      "move": "Ability:Watch Over@3",
+      "rounds": 64,
+      "score": 0.046875,
+      "se": 0.0
+     },
+     {
+      "diff": 0.0,
+      "move": "EndTurn",
+      "rounds": 16,
+      "score": 0.0625,
+      "se": 0.09128709291752768
+     },
+     {
+      "diff": 0.0,
+      "move": "Attach:1Metal@0 zone",
+      "rounds": 16,
+      "score": 0.0625,
+      "se": 0.0
+     },
+     {
+      "diff": 0.0,
+      "move": "Attach:1Metal@2 zone",
+      "rounds": 16,
+      "score": 0.0625,
+      "se": 0.0
+     },
+     {
+      "diff": 0.0,
+      "move": "Attach:1Metal@3 zone",
+      "rounds": 16,
+      "score": 0.0625,
+      "se": 0.0
+     },
+     {
+      "diff": 0.0,
+      "move": "Attack:Steel Wing",
+      "rounds": 16,
+      "score": 0.0625,
+      "se": 0.0
+     },
+     {
+      "diff": 0.078125,
+      "move": "Play:Red",
+      "rounds": 64,
+      "score": 0.125,
+      "se": 0.033811213593755246
+     },
+     {
+      "diff": 0.15625,
+      "move": "Play:Pok\u00e9 Ball",
+      "rounds": 64,
+      "score": 0.203125,
+      "se": 0.05983919423477113
+     },
+     {
+      "diff": -0.0625,
+      "move": "Retreat:2",
+      "rounds": 16,
+      "score": 0.0,
+      "se": 0.0625
+     },
+     {
+      "diff": -0.0625,
+      "move": "Retreat:3",
+      "rounds": 16,
+      "score": 0.0,
+      "se": 0.0625
+     }
+    ],
+    "chosen": "Play:Pok\u00e9 Ball",
+    "dropped": [],
+    "km": "Ability:Watch Over@3",
+    "ms": 46885.0,
+    "reason": "play-outs: +0.156 over km's move, 2.6 standard errors (threshold 2); close call: play-outs extended from 16 to 64 rounds for 3 candidates",
+    "rounds": 64
+   }
+  },
+  "legal": [
+   "EndTurn",
+   "Play:Pok\u00e9 Ball",
+   "Play:Red",
+   "Attach:1Metal@0 zone",
+   "Attach:1Metal@2 zone",
+   "Attach:1Metal@3 zone",
+   "Retreat:2",
+   "Retreat:3",
+   "Attack:Steel Wing",
+   "Ability:Watch Over@3"
+  ],
+  "opp": "t-blaziken",
+  "seat": 1,
+  "seed": 24520010002,
+  "then": [],
+  "to_move": 1,
+  "turn": 9
+ },
+ {
+  "checked_against_the_log": {
+   "km3_plays": "Attach:1Lightning@0 zone",
+   "legal": 6,
+   "turn": 3
+  },
+  "decision": 9,
+  "deck": "09-mega-manectric-heliolisk",
+  "id": "Q10",
+  "key": "09-mega-manectric-heliolisk|t-blaziken|4|0|ref",
+  "kx3_in_the_game": {
+   "chosen": "Retreat:3",
+   "kx3_arm_logged": "Attach:1Lightning@3 zone",
+   "plays_what_the_log_says": false,
+   "report": {
+    "candidates": [
+     {
+      "diff": 0.0,
+      "move": "Attach:1Lightning@0 zone",
+      "rounds": 64,
+      "score": 0.21875,
+      "se": 0.0
+     },
+     {
+      "diff": -0.0625,
+      "move": "EndTurn",
+      "rounds": 16,
+      "score": 0.125,
+      "se": 0.11063265039459795
+     },
+     {
+      "diff": -0.0625,
+      "move": "Attach:1Lightning@2 zone",
+      "rounds": 32,
+      "score": 0.21875,
+      "se": 0.08909830562090465
+     },
+     {
+      "diff": 0.078125,
+      "move": "Attach:1Lightning@3 zone",
+      "rounds": 64,
+      "score": 0.296875,
+      "se": 0.07488313480997076
+     },
+     {
+      "diff": 0.0,
+      "move": "Retreat:2",
+      "rounds": 16,
+      "score": 0.1875,
+      "se": 0.12909944487358055
+     },
+     {
+      "diff": 0.28125,
+      "move": "Retreat:3",
+      "rounds": 64,
+      "score": 0.5,
+      "se": 0.06481333851304336
+     }
+    ],
+    "chosen": "Retreat:3",
+    "dropped": [],
+    "km": "Attach:1Lightning@0 zone",
+    "ms": 35552.0,
+    "reason": "play-outs: +0.281 over km's move, 4.3 standard errors (threshold 2); close call: play-outs extended from 16 to 64 rounds for 4 candidates",
+    "rounds": 64
+   }
+  },
+  "legal": [
+   "EndTurn",
+   "Attach:1Lightning@0 zone",
+   "Attach:1Lightning@2 zone",
+   "Attach:1Lightning@3 zone",
+   "Retreat:2",
+   "Retreat:3"
+  ],
+  "opp": "t-blaziken",
+  "seat": 0,
+  "seed": 24400010004,
+  "then": [],
+  "to_move": 0,
+  "turn": 3
+ },
+ {
+  "checked_against_the_log": {
+   "km3_plays": "Place:Alolan Vulpix@1",
+   "legal": 6,
+   "turn": 6
+  },
+  "decision": 14,
+  "deck": "draft-A-shark-tempo",
+  "id": "Q11",
+  "key": "draft-A-shark-tempo|t-suicune|3|1|ref",
+  "kx3_in_the_game": {
+   "chosen": "Attack:Turbo Shark",
+   "kx3_arm_logged": "Retreat:3",
+   "plays_what_the_log_says": false,
+   "report": {
+    "candidates": [
+     {
+      "diff": 0.0,
+      "move": "Place:Alolan Vulpix@1",
+      "rounds": 64,
+      "score": 0.171875,
+      "se": 0.0
+     },
+     {
+      "diff": -0.1875,
+      "move": "EndTurn",
+      "rounds": 16,
+      "score": 0.0,
+      "se": 0.10077822185373188
+     },
+     {
+      "diff": 0.265625,
+      "move": "Attack:Turbo Shark",
+      "rounds": 64,
+      "score": 0.4375,
+      "se": 0.0599362570629355
+     },
+     {
+      "diff": 0.21875,
+      "move": "Play:Misty",
+      "rounds": 64,
+      "score": 0.390625,
+      "se": 0.060866551595885596
+     },
+     {
+      "diff": 0.0,
+      "move": "Retreat:2",
+      "rounds": 16,
+      "score": 0.1875,
+      "se": 0.09128709291752768
+     },
+     {
+      "diff": 0.203125,
+      "move": "Retreat:3",
+      "rounds": 64,
+      "score": 0.375,
+      "se": 0.07105946921193923
+     }
+    ],
+    "chosen": "Attack:Turbo Shark",
+    "dropped": [],
+    "km": "Place:Alolan Vulpix@1",
+    "ms": 54854.0,
+    "reason": "play-outs: +0.266 over km's move, 4.4 standard errors (threshold 2); close call: play-outs extended from 16 to 64 rounds for 4 candidates",
+    "rounds": 64
+   }
+  },
+  "legal": [
+   "EndTurn",
+   "Place:Alolan Vulpix@1",
+   "Play:Misty",
+   "Retreat:2",
+   "Retreat:3",
+   "Attack:Turbo Shark"
+  ],
+  "opp": "t-suicune",
+  "seat": 1,
+  "seed": 24460050003,
+  "then": [],
+  "to_move": 1,
+  "turn": 6
+ },
+ {
+  "checked_against_the_log": {
+   "km3_plays": "Attack:Supernatural Feather",
+   "legal": 5,
+   "turn": 3
+  },
+  "decision": 10,
+  "deck": "10-xatu-oricorio-tr-weezing",
+  "id": "Q12",
+  "key": "10-xatu-oricorio-tr-weezing|t-altaria|2|0|ref",
+  "kx3_in_the_game": {
+   "chosen": "EndTurn",
+   "kx3_arm_logged": "EndTurn",
+   "plays_what_the_log_says": true,
+   "report": {
+    "candidates": [
+     {
+      "diff": 0.0,
+      "move": "Attack:Supernatural Feather",
+      "rounds": 16,
+      "score": 0.25,
+      "se": 0.0
+     },
+     {
+      "diff": 0.3125,
+      "move": "EndTurn",
+      "rounds": 16,
+      "score": 0.5625,
+      "se": 0.1505199322349037
+     },
+     {
+      "diff": -0.1875,
+      "move": "Retreat:1",
+      "rounds": 16,
+      "score": 0.0625,
+      "se": 0.13597640726733934
+     },
+     {
+      "diff": -0.0625,
+      "move": "Retreat:2",
+      "rounds": 16,
+      "score": 0.1875,
+      "se": 0.17001838135919303
+     },
+     {
+      "diff": -0.0625,
+      "move": "Retreat:3",
+      "rounds": 16,
+      "score": 0.1875,
+      "se": 0.17001838135919303
+     }
+    ],
+    "chosen": "EndTurn",
+    "dropped": [],
+    "km": "Attack:Supernatural Feather",
+    "ms": 10748.0,
+    "reason": "play-outs: +0.312 over km's move, 2.1 standard errors (threshold 2)",
+    "rounds": 16
+   }
+  },
+  "legal": [
+   "EndTurn",
+   "Retreat:1",
+   "Retreat:2",
+   "Retreat:3",
+   "Attack:Supernatural Feather"
+  ],
+  "opp": "t-altaria",
+  "seat": 0,
+  "seed": 24420000002,
+  "then": [],
+  "to_move": 0,
+  "turn": 3
+ }
+]

@@ -1,0 +1,207 @@
+## The gate positions (R = 16 against _m64)
+
+| set | decisions | with a close call (extended) | choice changed | time, R = 16 | time, _m64 | ratio | median per decision, R = 16 / _m64 |
+|---|---|---|---|---|---|---|---|
+| continuation | 16 | 11 | 4 | 603 s | 1188 s | 1.97 | 39.2 s / 51.9 s |
+| development, as stored | 24 | 17 | 1 | 431 s | 1207 s | 2.80 | 11.9 s / 41.9 s |
+| development, the Tool placement | 24 | 10 | 3 | 237 s | 600 s | 2.53 | 7.0 s / 13.0 s |
+| all | 64 | 38 | 8 | 1271 s | 2994 s | 2.36 | 14.5 s / 32.2 s |
+
+Rounds played where extended: 32 rounds: 5, 48 rounds: 1, 64 rounds: 32
+Candidates extended (km3's move included): median 4.0, from 2 to 12
+Failed rounds: 0
+
+## The decisions that changed
+
+- B-205731-t10 | as stored | 24200001003 (R = 16 kept km3's move; _m64 switches):
+  - km3's move Retreat(1): 0.375 at 16, 0.469 at 64
+  - _m64 plays Attach { attachments: [(1, Water, 0)], is_turn_energy: true }: 0.500 at 16, 0.609 at 64
+  - R = 16: within the noise: the best move leads km's by +0.125 with a standard error of 0.125 (threshold 2 SE): km's move kept
+  - _m64: play-outs: +0.141 over km's move, 2.9 standard errors (threshold 2); close call: play-outs extended from 16 to 64 rounds for 6 candidates
+- B-210952-t16 | as stored | 24200001005 (R = 16 kept km3's move; _m64 switches):
+  - km3's move Place(Pokemon(B2 028 Alolan Vulpix), 3): 0.000 at 16, 0.000 at 64
+  - _m64 plays Attach { attachments: [(1, Water, 0)], is_turn_energy: true }: 0.000 at 16, 0.125 at 64
+  - R = 16: within the noise: the best move leads km's by +0.094 with a standard error of 0.050 (threshold 2 SE): km's move kept
+  - _m64: play-outs: +0.125 over km's move, 3.0 standard errors (threshold 2); close call: play-outs extended from 16 to 64 rounds for 12 candidates
+- B-205731-t02 | as stored | 24200001007 (R = 16 kept km3's move; _m64 switches):
+  - km3's move Attach { attachments: [(1, Water, 0)], is_turn_energy: true }: 0.750 at 16, 0.750 at 32
+  - _m64 plays EndTurn: 0.938 at 16, 0.969 at 32
+  - R = 16: within the noise: the best move leads km's by +0.188 with a standard error of 0.136 (threshold 2 SE): km's move kept
+  - _m64: play-outs: +0.219 over km's move, 2.5 standard errors (threshold 2); close call: play-outs extended from 16 to 32 rounds for 3 candidates
+- B-205731-t02 | as stored | 24200011007 (R = 16 kept km3's move; _m64 switches):
+  - km3's move Attach { attachments: [(1, Water, 0)], is_turn_energy: true }: 0.750 at 16, 0.750 at 64
+  - _m64 plays EndTurn: 0.938 at 16, 0.922 at 64
+  - R = 16: within the noise: the best move leads km's by +0.188 with a standard error of 0.136 (threshold 2 SE): km's move kept
+  - _m64: play-outs: +0.172 over km's move, 2.8 standard errors (threshold 2); close call: play-outs extended from 16 to 64 rounds for 3 candidates
+- dev06 01-muk-glimmora-kingambit-regigigas|t-altaria|1|1|ref#0 | placement | 24200002006 (R = 16 switched; _m64 keeps km3's move):
+  - km3's move AttachTool { in_play_idx: 0, tool_card: Trainer(B1 219 Heavy Helmet) }: 0.312 at 16, 0.344 at 64
+  - R = 16 played AttachTool { in_play_idx: 1, tool_card: Trainer(B1 219 Heavy Helmet) }: 0.562 at 16, 0.375 at 64
+  - R = 16: play-outs: +0.250 over km's move, 2.2 standard errors (threshold 2)
+  - _m64: within the noise: the best move leads km's by +0.031 with a standard error of 0.054 (threshold 2 SE): km's move kept; close call: play-outs extended from 16 to 64 rounds for 3 candidates
+- dev09 03-wailord-indeedee-wall|t-altaria|2|0|ref#0 | placement | 24200002009 (R = 16 kept km3's move; _m64 switches):
+  - km3's move AttachTool { in_play_idx: 3, tool_card: Trainer(B1 219 Heavy Helmet) }: 0.750 at 16, 0.734 at 64
+  - _m64 plays AttachTool { in_play_idx: 1, tool_card: Trainer(B1 219 Heavy Helmet) }: 0.812 at 16, 0.812 at 64
+  - R = 16: within the noise: the best move leads km's by +0.062 with a standard error of 0.062 (threshold 2 SE): km's move kept
+  - _m64: play-outs: +0.078 over km's move, 2.3 standard errors (threshold 2); close call: play-outs extended from 16 to 64 rounds for 3 candidates
+- dev10 03-wailord-indeedee-wall|t-altaria|3|0|ref#0 | as stored | 24200002010 (R = 16 kept km3's move; _m64 switches):
+  - km3's move Play { trainer_card: B1 219 Heavy Helmet }: 0.750 at 16, 0.484 at 64
+  - _m64 plays Play { trainer_card: B1 225 Copycat }: 0.812 at 16, 0.641 at 64
+  - R = 16: within the noise: the best move leads km's by +0.062 with a standard error of 0.111 (threshold 2 SE): km's move kept
+  - _m64: play-outs: +0.156 over km's move, 2.1 standard errors (threshold 2); close call: play-outs extended from 16 to 64 rounds for 3 candidates
+- dev10 03-wailord-indeedee-wall|t-altaria|3|0|ref#0 | placement | 24200002010 (R = 16 kept km3's move; _m64 switches):
+  - km3's move AttachTool { in_play_idx: 3, tool_card: Trainer(B1 219 Heavy Helmet) }: 0.750 at 16, 0.531 at 32
+  - _m64 plays AttachTool { in_play_idx: 0, tool_card: Trainer(B1 219 Heavy Helmet) }: 0.750 at 16, 0.812 at 32
+  - R = 16: km's move has the best play-out score
+  - _m64: play-outs: +0.281 over km's move, 3.0 standard errors (threshold 2); close call: play-outs extended from 16 to 32 rounds for 2 candidates
+
+All decisions:
+
+| decision | candidates | R = 16 | _m64 | rounds | extended | ms R = 16 | ms _m64 |
+|---|---|---|---|---|---|---|---|
+| B-214254-t06 | as stored | 24200001000 | 7 | Attack(Attack { energy_required: [Water] | Attack(Attack { energy_required: [Water] | 16 | 0 | 49994 | 48381 |
+| B-214254-t06 | as stored | 24200011000 | 7 | Attack(Attack { energy_required: [Water] | Attack(Attack { energy_required: [Water] | 64 | 6 | 49207 | 149974 |
+| B-214254-t10 | as stored | 24200001001 | 10 | Play { trainer_card: A2a 072 Irida } | Play { trainer_card: A2a 072 Irida } | 64 | 7 | 51859 | 172074 |
+| B-214254-t10 | as stored | 24200011001 | 10 | Play { trainer_card: A2a 072 Irida } | Play { trainer_card: A2a 072 Irida } | 64 | 8 | 58547 | 185231 |
+| B-205731-t08 | as stored | 24200001002 | 10 | Retreat(1) | Retreat(1) | 16 | 0 | 28574 | 29614 |
+| B-205731-t08 | as stored | 24200011002 | 10 | Retreat(1) | Retreat(1) | 32 | 2 | 29199 | 34526 |
+| B-205731-t10 | as stored | 24200001003 | 9 | Retreat(1) | Attach { attachments: [(1, Water, 0)], i (changed) | 64 | 6 | 16586 | 51064 |
+| B-205731-t10 | as stored | 24200011003 | 9 | Retreat(1) | Retreat(1) | 64 | 6 | 15595 | 40310 |
+| B-210952-t14 | as stored | 24200001004 | 11 | Retreat(2) | Retreat(2) | 16 | 0 | 59296 | 66212 |
+| B-210952-t14 | as stored | 24200011004 | 11 | Retreat(2) | Retreat(2) | 32 | 3 | 63946 | 78190 |
+| B-210952-t16 | as stored | 24200001005 | 12 | Place(Pokemon(B2 028 Alolan Vulpix), 3) | Attach { attachments: [(1, Water, 0)], i (changed) | 64 | 12 | 51197 | 124209 |
+| B-210952-t16 | as stored | 24200011005 | 12 | Attack(Attack { energy_required: [Water, | Attack(Attack { energy_required: [Water, | 64 | 3 | 50553 | 79996 |
+| B-210952-t18 | as stored | 24200001006 | 12 | Play { trainer_card: A1 220 Misty } | Play { trainer_card: A1 220 Misty } | 16 | 0 | 22969 | 21909 |
+| B-210952-t18 | as stored | 24200011006 | 12 | Play { trainer_card: A1 220 Misty } | Play { trainer_card: A1 220 Misty } | 16 | 0 | 23382 | 23432 |
+| B-205731-t02 | as stored | 24200001007 | 3 | Attach { attachments: [(1, Water, 0)], i | EndTurn (changed) | 32 | 3 | 16033 | 29911 |
+| B-205731-t02 | as stored | 24200011007 | 3 | Attach { attachments: [(1, Water, 0)], i | EndTurn (changed) | 64 | 3 | 15690 | 52831 |
+| dev00 05-indeedee-stoutland|t-altaria|0|0|ref#0 | as stored | 24200002000 | 4 | Attach { attachments: [(1, Psychic, 0)], | Attach { attachments: [(1, Psychic, 0)], | 64 | 4 | 9086 | 39768 |
+| dev00 05-indeedee-stoutland|t-altaria|0|0|ref#0 | as stored | 24200012000 | 4 | Attach { attachments: [(1, Psychic, 0)], | Attach { attachments: [(1, Psychic, 0)], | 64 | 2 | 10827 | 28434 |
+| dev00 05-indeedee-stoutland|t-altaria|0|0|ref#0 | placement | 24200002000 | 2 | AttachTool { in_play_idx: 0, tool_card:  | AttachTool { in_play_idx: 0, tool_card:  | 16 | 0 | 4495 | 4664 |
+| dev00 05-indeedee-stoutland|t-altaria|0|0|ref#0 | placement | 24200012000 | 2 | AttachTool { in_play_idx: 0, tool_card:  | AttachTool { in_play_idx: 0, tool_card:  | 16 | 0 | 5532 | 5234 |
+| dev01 05-indeedee-stoutland|t-blaziken|0|0|ref#0 | as stored | 24200002001 | 5 | Play { trainer_card: B2 147 Protective P | Play { trainer_card: B2 147 Protective P | 64 | 2 | 20214 | 43941 |
+| dev01 05-indeedee-stoutland|t-blaziken|0|0|ref#0 | as stored | 24200012001 | 5 | Play { trainer_card: B2 147 Protective P | Play { trainer_card: B2 147 Protective P | 64 | 5 | 17257 | 46364 |
+| dev01 05-indeedee-stoutland|t-blaziken|0|0|ref#0 | placement | 24200002001 | 2 | AttachTool { in_play_idx: 0, tool_card:  | AttachTool { in_play_idx: 0, tool_card:  | 16 | 0 | 9089 | 9556 |
+| dev01 05-indeedee-stoutland|t-blaziken|0|0|ref#0 | placement | 24200012001 | 2 | AttachTool { in_play_idx: 0, tool_card:  | AttachTool { in_play_idx: 0, tool_card:  | 64 | 2 | 6607 | 26837 |
+| dev02 05-indeedee-stoutland|t-hydreigon|0|0|ref#0 | as stored | 24200002002 | 5 | Play { trainer_card: B2 147 Protective P | Play { trainer_card: B2 147 Protective P | 64 | 4 | 10443 | 41004 |
+| dev02 05-indeedee-stoutland|t-hydreigon|0|0|ref#0 | as stored | 24200012002 | 5 | Play { trainer_card: B2 147 Protective P | Play { trainer_card: B2 147 Protective P | 64 | 5 | 10821 | 42784 |
+| dev02 05-indeedee-stoutland|t-hydreigon|0|0|ref#0 | placement | 24200002002 | 3 | AttachTool { in_play_idx: 0, tool_card:  | AttachTool { in_play_idx: 0, tool_card:  | 16 | 0 | 5863 | 5917 |
+| dev02 05-indeedee-stoutland|t-hydreigon|0|0|ref#0 | placement | 24200012002 | 3 | AttachTool { in_play_idx: 0, tool_card:  | AttachTool { in_play_idx: 0, tool_card:  | 16 | 0 | 5410 | 5301 |
+| dev03 05-indeedee-stoutland|t-lucario|0|1|ref#0 | as stored | 24200002003 | 5 | Play { trainer_card: B2 147 Protective P | Play { trainer_card: B2 147 Protective P | 64 | 5 | 8203 | 42859 |
+| dev03 05-indeedee-stoutland|t-lucario|0|1|ref#0 | as stored | 24200012003 | 5 | Play { trainer_card: B2 147 Protective P | Play { trainer_card: B2 147 Protective P | 16 | 0 | 10785 | 11388 |
+| dev03 05-indeedee-stoutland|t-lucario|0|1|ref#0 | placement | 24200002003 | 3 | AttachTool { in_play_idx: 0, tool_card:  | AttachTool { in_play_idx: 0, tool_card:  | 16 | 0 | 3939 | 4193 |
+| dev03 05-indeedee-stoutland|t-lucario|0|1|ref#0 | placement | 24200012003 | 3 | AttachTool { in_play_idx: 0, tool_card:  | AttachTool { in_play_idx: 0, tool_card:  | 16 | 0 | 5530 | 6035 |
+| dev04 05-indeedee-stoutland|t-sceptile|0|1|ref#0 | as stored | 24200002004 | 6 | Play { trainer_card: B2 147 Protective P | Play { trainer_card: B2 147 Protective P | 32 | 4 | 17215 | 26597 |
+| dev04 05-indeedee-stoutland|t-sceptile|0|1|ref#0 | as stored | 24200012004 | 6 | Play { trainer_card: B2 147 Protective P | Play { trainer_card: B2 147 Protective P | 64 | 3 | 18580 | 40938 |
+| dev04 05-indeedee-stoutland|t-sceptile|0|1|ref#0 | placement | 24200002004 | 4 | AttachTool { in_play_idx: 0, tool_card:  | AttachTool { in_play_idx: 0, tool_card:  | 64 | 3 | 8815 | 29805 |
+| dev04 05-indeedee-stoutland|t-sceptile|0|1|ref#0 | placement | 24200012004 | 4 | AttachTool { in_play_idx: 0, tool_card:  | AttachTool { in_play_idx: 0, tool_card:  | 64 | 4 | 9223 | 37919 |
+| dev05 05-indeedee-stoutland|t-suicune|0|0|ref#0 | as stored | 24200002005 | 6 | Retreat(1) | Retreat(1) | 64 | 4 | 33223 | 101823 |
+| dev05 05-indeedee-stoutland|t-suicune|0|0|ref#0 | as stored | 24200012005 | 6 | Retreat(1) | Retreat(1) | 64 | 4 | 34686 | 93264 |
+| dev05 05-indeedee-stoutland|t-suicune|0|0|ref#0 | placement | 24200002005 | 4 | AttachTool { in_play_idx: 0, tool_card:  | AttachTool { in_play_idx: 0, tool_card:  | 16 | 0 | 15739 | 16530 |
+| dev05 05-indeedee-stoutland|t-suicune|0|0|ref#0 | placement | 24200012005 | 4 | AttachTool { in_play_idx: 0, tool_card:  | AttachTool { in_play_idx: 0, tool_card:  | 16 | 0 | 17568 | 17045 |
+| dev06 01-muk-glimmora-kingambit-regigigas|t-altaria|1|1|ref#0 | as stored | 24200002006 | 6 | Attach { attachments: [(1, Darkness, 0)] | Attach { attachments: [(1, Darkness, 0)] | 64 | 4 | 44340 | 101022 |
+| dev06 01-muk-glimmora-kingambit-regigigas|t-altaria|1|1|ref#0 | as stored | 24200012006 | 6 | Attach { attachments: [(1, Darkness, 0)] | Attach { attachments: [(1, Darkness, 0)] | 64 | 6 | 44537 | 166144 |
+| dev06 01-muk-glimmora-kingambit-regigigas|t-altaria|1|1|ref#0 | placement | 24200002006 | 4 | AttachTool { in_play_idx: 1, tool_card:  | AttachTool { in_play_idx: 0, tool_card:  (changed) | 64 | 3 | 29566 | 75802 |
+| dev06 01-muk-glimmora-kingambit-regigigas|t-altaria|1|1|ref#0 | placement | 24200012006 | 4 | AttachTool { in_play_idx: 0, tool_card:  | AttachTool { in_play_idx: 0, tool_card:  | 64 | 4 | 27632 | 115375 |
+| dev07 01-muk-glimmora-kingambit-regigigas|t-altaria|3|1|ref#0 | as stored | 24200002007 | 3 | Play { trainer_card: B1 219 Heavy Helmet | Play { trainer_card: B1 219 Heavy Helmet | 16 | 0 | 3794 | 3479 |
+| dev07 01-muk-glimmora-kingambit-regigigas|t-altaria|3|1|ref#0 | as stored | 24200012007 | 3 | Play { trainer_card: B1 219 Heavy Helmet | Play { trainer_card: B1 219 Heavy Helmet | 16 | 0 | 3454 | 3341 |
+| dev07 01-muk-glimmora-kingambit-regigigas|t-altaria|3|1|ref#0 | placement | 24200002007 | 3 | AttachTool { in_play_idx: 0, tool_card:  | AttachTool { in_play_idx: 0, tool_card:  | 16 | 0 | 3275 | 3467 |
+| dev07 01-muk-glimmora-kingambit-regigigas|t-altaria|3|1|ref#0 | placement | 24200012007 | 3 | AttachTool { in_play_idx: 0, tool_card:  | AttachTool { in_play_idx: 0, tool_card:  | 16 | 0 | 3086 | 3348 |
+| dev08 01-muk-glimmora-kingambit-regigigas|t-blaziken|0|1|ref#0 | as stored | 24200002008 | 4 | Play { trainer_card: B1 219 Heavy Helmet | Play { trainer_card: B1 219 Heavy Helmet | 16 | 0 | 4227 | 4011 |
+| dev08 01-muk-glimmora-kingambit-regigigas|t-blaziken|0|1|ref#0 | as stored | 24200012008 | 4 | Play { trainer_card: B1 219 Heavy Helmet | Play { trainer_card: B1 219 Heavy Helmet | 16 | 0 | 4054 | 4413 |
+| dev08 01-muk-glimmora-kingambit-regigigas|t-blaziken|0|1|ref#0 | placement | 24200002008 | 4 | AttachTool { in_play_idx: 0, tool_card:  | AttachTool { in_play_idx: 0, tool_card:  | 16 | 0 | 3518 | 3442 |
+| dev08 01-muk-glimmora-kingambit-regigigas|t-blaziken|0|1|ref#0 | placement | 24200012008 | 4 | AttachTool { in_play_idx: 0, tool_card:  | AttachTool { in_play_idx: 0, tool_card:  | 16 | 0 | 3596 | 3608 |
+| dev09 03-wailord-indeedee-wall|t-altaria|2|0|ref#0 | as stored | 24200002009 | 6 | Attach { attachments: [(1, Water, 0)], i | Attach { attachments: [(1, Water, 0)], i | 48 | 5 | 43983 | 89932 |
+| dev09 03-wailord-indeedee-wall|t-altaria|2|0|ref#0 | as stored | 24200012009 | 6 | Attach { attachments: [(1, Water, 0)], i | Attach { attachments: [(1, Water, 0)], i | 64 | 6 | 43493 | 161834 |
+| dev09 03-wailord-indeedee-wall|t-altaria|2|0|ref#0 | placement | 24200002009 | 3 | AttachTool { in_play_idx: 3, tool_card:  | AttachTool { in_play_idx: 1, tool_card:  (changed) | 64 | 3 | 17283 | 78140 |
+| dev09 03-wailord-indeedee-wall|t-altaria|2|0|ref#0 | placement | 24200012009 | 3 | AttachTool { in_play_idx: 3, tool_card:  | AttachTool { in_play_idx: 3, tool_card:  | 64 | 3 | 19577 | 74050 |
+| dev10 03-wailord-indeedee-wall|t-altaria|3|0|ref#0 | as stored | 24200002010 | 3 | Play { trainer_card: B1 219 Heavy Helmet | Play { trainer_card: B1 225 Copycat } (changed) | 64 | 3 | 13331 | 52114 |
+| dev10 03-wailord-indeedee-wall|t-altaria|3|0|ref#0 | as stored | 24200012010 | 3 | Play { trainer_card: B1 219 Heavy Helmet | Play { trainer_card: B1 219 Heavy Helmet | 64 | 3 | 12913 | 49880 |
+| dev10 03-wailord-indeedee-wall|t-altaria|3|0|ref#0 | placement | 24200002010 | 2 | AttachTool { in_play_idx: 3, tool_card:  | AttachTool { in_play_idx: 0, tool_card:  (changed) | 32 | 2 | 9219 | 18008 |
+| dev10 03-wailord-indeedee-wall|t-altaria|3|0|ref#0 | placement | 24200012010 | 2 | AttachTool { in_play_idx: 0, tool_card:  | AttachTool { in_play_idx: 0, tool_card:  | 16 | 0 | 8845 | 9190 |
+| dev11 draft-A-shark-tempo|t-lucario|4|1|ref#0 | as stored | 24200002011 | 3 | EndTurn | EndTurn | 16 | 0 | 5347 | 5280 |
+| dev11 draft-A-shark-tempo|t-lucario|4|1|ref#0 | as stored | 24200012011 | 3 | EndTurn | EndTurn | 16 | 0 | 6435 | 5969 |
+| dev11 draft-A-shark-tempo|t-lucario|4|1|ref#0 | placement | 24200002011 | 4 | AttachTool { in_play_idx: 0, tool_card:  | AttachTool { in_play_idx: 0, tool_card:  | 64 | 4 | 6901 | 28359 |
+| dev11 draft-A-shark-tempo|t-lucario|4|1|ref#0 | placement | 24200012011 | 4 | AttachTool { in_play_idx: 0, tool_card:  | AttachTool { in_play_idx: 0, tool_card:  | 64 | 2 | 7094 | 17947 |
+
+## Quiz 4's 12 positions, kx3 from the game's own randomness (REALISTIC, the meta pool)
+
+| Q | km3's move | kx3 at R = 16 (its arm's log) | kx3 with _m64 | rounds | ms R = 16 / _m64 |
+|---|---|---|---|---|---|
+| Q01 | Attach:1Darkness@0 zone | Attach:1Darkness@3 zone | Attach:1Darkness@3 zone | 48 | 46245 / 96534 |
+| Q02 | Play:Lucky Ice Pop | Attach:1Darkness@1 zone | Attach:1Darkness@1 zone | 16 | 58757 / 54406 |
+| Q03 | Evolve:Glimmora@0 | Retreat:2 | Retreat:2 | 16 | 6879 / 5954 |
+| Q04 | Play:Poké Ball | Attach:1Water@0 zone | EndTurn (changed) | 64 | 57539 / 179043 |
+| Q05 | Play:Pokémon Center Lady | Attach:1Water@2 zone | Attach:1Water@2 zone | 16 | 6425 / 6223 |
+| Q06 | Ability:Watch Over@2 | Attach:1Psychic@2 zone | Attach:1Psychic@2 zone | 32 | 13680 / 23086 |
+| Q07 | Attach:1Psychic@2 zone | Attach:1Psychic@0 zone | Retreat:2 (changed) | 64 | 29877 / 69710 |
+| Q08 | Ability:Watch Over@0 | Retreat:3 | Retreat:3 | 64 | 19026 / 51106 |
+| Q09 | Ability:Watch Over@3 | Play:Poké Ball | Play:Poké Ball | 64 | 26829 / 46885 |
+| Q10 | Attach:1Lightning@0 zone | Attach:1Lightning@3 zone | Retreat:3 (changed) | 64 | 14446 / 35552 |
+| Q11 | Place:Alolan Vulpix@1 | Retreat:3 | Attack:Turbo Shark (changed) | 64 | 18231 / 54854 |
+| Q12 | Attack:Supernatural Feather | EndTurn | EndTurn | 16 | 10451 / 10748 |
+
+- Q01 with _m64: play-outs: +0.229 over km's move, 2.7 standard errors (threshold 2); close call: play-outs extended from 16 to 48 rounds for 4 candidates
+    Attach:1Darkness@0 zone: 0.188 (+0.000) over 48 rounds
+    EndTurn: 0.125 (-0.062) over 16 rounds
+    UseStadium: 0.229 (+0.042) over 48 rounds
+    Attach:1Darkness@1 zone: 0.062 (-0.125) over 16 rounds
+    Attach:1Darkness@2 zone: 0.208 (+0.021) over 48 rounds
+    Attach:1Darkness@3 zone: 0.417 (+0.229) over 48 rounds
+- Q04 with _m64: play-outs: +0.289 over km's move, 3.6 standard errors (threshold 2); close call: play-outs extended from 16 to 64 rounds for 4 candidates
+    Play:Poké Ball: 0.211 (+0.000) over 64 rounds
+    EndTurn: 0.500 (+0.289) over 64 rounds
+    Attach:1Water@0 zone: 0.484 (+0.273) over 64 rounds
+    Attach:1Water@3 zone: 0.438 (+0.227) over 64 rounds
+    Play:Soothing Shore: 0.250 (+0.000) over 16 rounds
+    Ability:Watch Over@0: 0.250 (+0.000) over 16 rounds
+    Ability:Watch Over@3: 0.250 (+0.000) over 16 rounds
+- Q06 with _m64: play-outs: +0.250 over km's move, 3.2 standard errors (threshold 2); close call: play-outs extended from 16 to 32 rounds for 3 candidates
+    Ability:Watch Over@2: 0.031 (+0.000) over 32 rounds
+    EndTurn: 0.000 (+0.000) over 16 rounds
+    Attach:1Psychic@0 zone: 0.000 (+0.000) over 16 rounds
+    Attach:1Psychic@2 zone: 0.281 (+0.250) over 32 rounds
+    Attach:1Psychic@3 zone: 0.062 (+0.031) over 32 rounds
+    Retreat:2: 0.000 (+0.000) over 16 rounds
+    Retreat:3: 0.000 (+0.000) over 16 rounds
+- Q07 with _m64: play-outs: +0.203 over km's move, 2.5 standard errors (threshold 2); close call: play-outs extended from 16 to 64 rounds for 4 candidates
+    Attach:1Psychic@2 zone: 0.422 (+0.000) over 64 rounds
+    EndTurn: 0.438 (+0.062) over 16 rounds
+    Attach:1Psychic@0 zone: 0.594 (+0.172) over 64 rounds
+    Attach:1Psychic@1 zone: 0.484 (+0.062) over 64 rounds
+    Attach:1Psychic@3 zone: 0.312 (-0.062) over 16 rounds
+    Retreat:1: 0.312 (-0.062) over 16 rounds
+    Retreat:2: 0.625 (+0.203) over 64 rounds
+    Retreat:3: 0.250 (-0.125) over 16 rounds
+- Q08 with _m64: play-outs: +0.172 over km's move, 2.3 standard errors (threshold 2); close call: play-outs extended from 16 to 64 rounds for 4 candidates
+    Ability:Watch Over@0: 0.156 (+0.000) over 64 rounds
+    EndTurn: 0.000 (-0.062) over 16 rounds
+    UseStadium: 0.094 (+0.000) over 32 rounds
+    Attach:1Psychic@0 zone: 0.062 (+0.000) over 16 rounds
+    Attach:1Psychic@3 zone: 0.281 (+0.125) over 64 rounds
+    Play:Rare Candy: 0.062 (+0.000) over 16 rounds
+    Retreat:3: 0.328 (+0.172) over 64 rounds
+- Q09 with _m64: play-outs: +0.156 over km's move, 2.6 standard errors (threshold 2); close call: play-outs extended from 16 to 64 rounds for 3 candidates
+    Ability:Watch Over@3: 0.047 (+0.000) over 64 rounds
+    EndTurn: 0.062 (+0.000) over 16 rounds
+    Attach:1Metal@0 zone: 0.062 (+0.000) over 16 rounds
+    Attach:1Metal@2 zone: 0.062 (+0.000) over 16 rounds
+    Attach:1Metal@3 zone: 0.062 (+0.000) over 16 rounds
+    Attack:Steel Wing: 0.062 (+0.000) over 16 rounds
+    Play:Red: 0.125 (+0.078) over 64 rounds
+    Play:Poké Ball: 0.203 (+0.156) over 64 rounds
+    Retreat:2: 0.000 (-0.062) over 16 rounds
+    Retreat:3: 0.000 (-0.062) over 16 rounds
+- Q10 with _m64: play-outs: +0.281 over km's move, 4.3 standard errors (threshold 2); close call: play-outs extended from 16 to 64 rounds for 4 candidates
+    Attach:1Lightning@0 zone: 0.219 (+0.000) over 64 rounds
+    EndTurn: 0.125 (-0.062) over 16 rounds
+    Attach:1Lightning@2 zone: 0.219 (-0.062) over 32 rounds
+    Attach:1Lightning@3 zone: 0.297 (+0.078) over 64 rounds
+    Retreat:2: 0.188 (+0.000) over 16 rounds
+    Retreat:3: 0.500 (+0.281) over 64 rounds
+- Q11 with _m64: play-outs: +0.266 over km's move, 4.4 standard errors (threshold 2); close call: play-outs extended from 16 to 64 rounds for 4 candidates
+    Place:Alolan Vulpix@1: 0.172 (+0.000) over 64 rounds
+    EndTurn: 0.000 (-0.188) over 16 rounds
+    Attack:Turbo Shark: 0.438 (+0.266) over 64 rounds
+    Play:Misty: 0.391 (+0.219) over 64 rounds
+    Retreat:2: 0.188 (+0.000) over 16 rounds
+    Retreat:3: 0.375 (+0.203) over 64 rounds

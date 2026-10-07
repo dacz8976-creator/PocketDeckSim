@@ -983,8 +983,9 @@ impl Player for Capture {
             let label = harness_label(&r.candidates[r.chosen].action, state);
             let report = json!({
                 "km": harness_label(&r.candidates[r.km3].action, state), "chosen": label, "reason": r.reason, "rounds": r.rounds,
+                "ms": r.millis.round(),
                 "candidates": r.candidates.iter().map(|c| json!({"move": harness_label(&c.action, state), "score": c.score, "diff": c.diff,
-                    "se": if c.se.is_finite() { json!(c.se) } else { Value::Null }})).collect::<Vec<_>>(),
+                    "se": if c.se.is_finite() { json!(c.se) } else { Value::Null }, "rounds": c.rounds})).collect::<Vec<_>>(),
                 "dropped": r.dropped.iter().map(|d| json!({"move": d.label, "reason": d.reason})).collect::<Vec<_>>(),
             });
             *self.out.lock().unwrap() = Some((label, report));
