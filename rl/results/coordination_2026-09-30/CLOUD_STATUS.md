@@ -12,8 +12,38 @@ The audit is committed: `rl/results/coin_prevention_round2_2026-10-01/TEXT_AUDIT
 - **A sixth file, `engine/src/move_generation/move_generation_trainer.rs`:** a Fossil can be played under an Item lock (the Item check at 65 skips the Fossil type). Its premise is that a Fossil's printed type is Item (rules/01, rules/04 §6; the local database can't show it).
 - **In the five files but outside rules/09, rules/04 and the caveats:** Guts on the attacker's own Pokémon in an attack's outcome (E1), and Perish Body on a plain queued hit at the Active (E2). Both are decided by their text. Fix them in this job, or leave them listed?
 
-1. **Current task, and the instruction that set it.** None running; idle. Quiz 4's three items (Fable via Dustin,
-   Oct 6) are done.
+1. **Current task, and the instruction that set it.** None running; idle. The two builds after quiz 4 (Fable via
+   Dustin, Oct 7) are done, both off by default, tests first, gates 1-2, km3 untouched, no table games.
+   **The skip bar (`_zs<z>`): the narrower "attack when you can".**
+   - **Where.** Branch claude/playout-pilot: tests first 094962a1, code f03780eb, results b704f32e. Read
+     `rl/results/playout_attack_skip_2026-10-07/README.md`.
+   - **The rule.** The larger lead applies only when the best move's own line (its play-outs) attacks this turn in fewer
+     than half of its play-outs. Each candidate now reports that count.
+   - **The 26 development-run cases.**
+     - **The 9 true skips:** it keeps km3's attack at 7, Q12 included. One switch stands on a lead of 3.4 SE. The other
+       is a Copycat after which km3 attacks in 16 of 16 play-outs; kx3's later End Turn in that same turn is among the
+       7 kept.
+     - **The 17 moves before an attack:** it touches none. Their lines attack this turn in 15 or 16 of 16 play-outs.
+       `_za3` had stopped 14 of them.
+   - **Gate 1:** suite 2,084/0; km3 240/240; self-checks unchanged, `_zs3` included.
+   - **Gate 2:** the bar can't act at the 20 positions.
+   **Close calls (`_m<R_max>`): more play-outs where the best moves are within the noise.**
+   - **Where.** Tests first eea12479, code 22958cd1, head 7d3639d0. Read
+     `rl/results/playout_close_calls_2026-10-07/README.md`.
+   - **The rule.** After R rounds, the best candidate, every other within z SE of it, and km3's move play blocks of 16
+     more rounds on the same worlds, until the call is clear or R_max. The trace gives each candidate's rounds.
+   - **The gate positions** (8 continuation and 12 development, the latter also at their Tool placement; 2 seeds each;
+     64 decisions):
+     - 38 are close calls, and 8 choices change against R = 16. 7 of those are switches R = 16 had left within the
+       noise.
+     - **The time cost is x2.36** (1,271 s to 2,994 s; median 14.5 s to 32.2 s per decision).
+     - 87% of the extra time is spent on close calls involving km3's move.
+   - **Quiz 4's 12 positions** (the game's own randomness): 4 choices change, at x2.1 the time.
+     - Q11 moves to Turbo Shark and Q07 to the retreat into Stoutland: Dustin's first moves, though narrowly.
+     - Q04 moves to End Turn and Q10 to a retreat.
+   - **Gate 1:** suite 2,087/0; km3 240/240; self-checks unchanged with the parameter off. `_m20` on gives
+     d0c281641a7db61f.
+   **Quiz 4's three items (Oct 6) are done, as below.**
    **Quiz 4's items: each its own parameter, off by default; gates 1 and 2 passed; km3 untouched; no table games.**
    - **Where.** Branch claude/playout-pilot, head 683e7df2 (code unchanged since gate 1's 25522e5a). Read
      `rl/results/playout_quiz4_items_2026-10-06/README.md`.
