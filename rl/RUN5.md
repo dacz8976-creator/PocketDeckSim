@@ -374,7 +374,8 @@ sides with k3 still available; the 0.7.2 wheel and its run identities are untouc
           - It changed a decision in 83 of the 400 games (50 of them deck 05's), and the result in 9.
           - It costs about 13% more time a game (06 +43%, 10 +23%, the others about even).
           - The rule stays in the next candidate.
-      - (C2) **Next candidate (coordinator, Oct 7):** one combined run instead of a gate per feature: kx3 with `_tools _zs3 _m64` against the frozen d513e37b, on the development decks and deals, paired. It waits for the cloud's fix of the review's two findings: the close-call extension tests the bar that will decide, and it decides at the end. Its size goes to Dustin first. The opt-in tools ship d513e37b now.
+      - (C2) **Next candidate (coordinator, Oct 7):** one combined run instead of a gate per feature: kx3 with `_tools _zs3 _m64` against the frozen d513e37b, on the development decks and deals, paired. It waits for the cloud's fix of the review's two findings: the close-call extension tests the bar that will decide, and it decides at the end. The opt-in tools ship d513e37b now.
+        - **Dustin chose the full run (Oct 7):** 7 development decks × 80 kx3 games, about 44-55 hours on the laptop (21.8 h of the Tool version's time × 2.0-2.5 for the extension). A halfway look is shown for information only; the decision is read at the end. Friday Oct 9 is a school day, so the school-morning rule applies that morning.
       - (D) The unfamiliar-opponent version stays separate until it is measured against out-of-pool opponents.
     - **Rules finding queued for the next rules switch (Oct 6):** return damage set up by an attack takes Weakness. Dustin, verbatim: "I know it is the case for sableye. It is from an attack the return damage is done, not from an ability."
       - It covers the 5 attacks with "During your opponent's next turn, if this Pokémon is damaged by an attack, do X damage to the Attacking Pokémon".
