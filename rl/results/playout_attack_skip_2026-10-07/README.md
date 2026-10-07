@@ -23,6 +23,9 @@ Set by the Fable coordinator via Dustin, Oct 7.
     turn would still end with Giga Turbo.
 - **Q12** (End Turn instead of Supernatural Feather) is among the 7.
 - **Gate 1 passed** (see below).
+- **Combined with close calls** (`_tools_zs3_m64`, the fix round, `../playout_close_calls_2026-10-07/README.md`): km3's
+  attack is kept at only 2 of the 9 true skips, and 6 of the 15 moves before an attack that reproduce are touched. With
+  64 rounds, 5 of the skips this bar kept lead km3's attack by more than 3 standard errors.
 - **Gate 2:** it changes nothing at the 20 positions, by its rule. km3's move is an attack at only one of them, where kx3
   already keeps it.
 

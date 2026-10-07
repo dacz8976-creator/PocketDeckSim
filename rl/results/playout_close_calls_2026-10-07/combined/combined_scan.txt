@@ -1,0 +1,85 @@
+decisions where km3 proposed an attack: 1902; kx3 played something else: 26
+  the 9 true skips (no attack later that turn in the game): 9; the 17 attack-later moves: 17
+  _zs3 (the skip bar's scan): true skips, km3's attack kept at 7 of 9 (the game's move at 2, another move at 0); attack-later moves touched at 2 of 17 (km3's attack at 2, another move at 0)
+  _tools_zs3: true skips, km3's attack kept at 7 of 9 (the game's move at 2, another move at 0); attack-later moves touched at 3 of 17 (km3's attack at 3, another move at 0)
+  _tools_zs3_m64 (the combined code): true skips, km3's attack kept at 2 of 9 (the game's move at 6, another move at 1); attack-later moves touched at 8 of 17 (km3's attack at 6, another move at 2)
+  the combined code extended 18 of the 26 decisions to [64] rounds; time 1828 s, against 723 s without the extension
+
+| game (deck, opponent, deal, seat) | turn | km3's attack | kx3's move in the game | attacked later | its line attacks this turn | the game's lead (SE) | `_zs3` | `_tools_zs3` | `_tools_zs3_m64` | rounds (extended) | best at the end, lead (SE) |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 01-muk-glimmora-kingambit-regigigas, t-hydreigon, 0, 1 | 9 | Giga Turbo | Play:Copycat | no | 16 of 16 | +0.375 (2.4) | the game's move | the game's move | **another move** | 64 (3) | EndTurn +0.312 (4.5) |
+| 01-muk-glimmora-kingambit-regigigas, t-hydreigon, 0, 1 | 9 | Giga Turbo | EndTurn | no | 0 of 16 | +0.375 (3.0) | **km3's attack** | **km3's attack** | the game's move | 64 (2) | EndTurn +0.234 (3.8) |
+| 03-wailord-indeedee-wall, t-vespiquen, 4, 0 | 8 | Wondrous Waves | Retreat:3 | no | 0 of 16 | +0.500 (2.7) | **km3's attack** | **km3's attack** | the game's move | 64 (2) | Retreat:3 +0.391 (4.6) |
+| 05-indeedee-stoutland, t-lucario, 3, 0 | 5 | Psychic | EndTurn | no | 0 of 16 | +0.438 (3.4) | the game's move | the game's move | the game's move | 16 (0) | EndTurn +0.500 (3.9) |
+| 06-mega-blaziken-tournament-list, t-lucario, 4, 1 | 3 | Peck | Retreat:2 | no | 0 of 16 | +0.375 (2.4) | **km3's attack** | **km3's attack** | **km3's attack** | 64 (5) | Retreat:2 +0.172 (2.1) |
+| 09-mega-manectric-heliolisk, t-hydreigon, 4, 0 | 2 | Thunder Shock | EndTurn | no | 0 of 16 | +0.250 (2.2) | **km3's attack** | **km3's attack** | the game's move | 64 (3) | EndTurn +0.203 (3.2) |
+| 09-mega-manectric-heliolisk, t-suicune, 4, 1 | 4 | Lightning Accelerator | Retreat:2 | no | 0 of 16 | +0.312 (2.6) | **km3's attack** | **km3's attack** | the game's move | 64 (3) | Retreat:2 +0.406 (6.2) |
+| 10-xatu-oricorio-tr-weezing, t-altaria, 2, 0 | 3 | Supernatural Feather | EndTurn | no | 0 of 16 | +0.312 (2.1) | **km3's attack** | **km3's attack** | **km3's attack** | 64 (2) | EndTurn +0.094 (1.1) |
+| draft-A-shark-tempo, t-blaziken, 0, 0 | 2 | Gnaw | EndTurn | no | 0 of 16 | +0.250 (2.2) | **km3's attack** | **km3's attack** | the game's move | 64 (2) | EndTurn +0.203 (4.0) |
+| 01-muk-glimmora-kingambit-regigigas, t-vespiquen, 4, 1 | 5 | Venomous Hit | UseStadium | yes | 16 of 16 | +0.312 (2.6) | the game's move | the game's move | **another move** | 64 (3) | EndTurn +0.172 (3.0) |
+| 01-muk-glimmora-kingambit-regigigas, t-weezing, 2, 0 | 6 | Giga Turbo | Play:Mesagoza | yes | 16 of 16 | +0.250 (2.2) | the game's move | the game's move | the game's move | 16 (0) | Play:Mesagoza +0.250 (2.2) |
+| 06-mega-blaziken-tournament-list, t-altaria, 0, 1 | 7 | Tongue Whip | Play:Copycat | yes | 16 of 16 | +0.000 (-), not reproduced | **km3's attack** | **km3's attack** | **km3's attack** | 64 (3) | Attack:Tongue Whip +0.000 (-) |
+| 06-mega-blaziken-tournament-list, t-blaziken, 1, 0 | 10 | Tongue Whip | Play:Copycat | yes | 16 of 16 | +0.375 (3.0) | the game's move | the game's move | the game's move | 64 (4) | Play:Copycat +0.344 (5.7) |
+| 06-mega-blaziken-tournament-list, t-hydreigon, 2, 0 | 6 | Tongue Whip | Play:Poké Ball | yes | 16 of 16 | +0.000 (-), not reproduced | **km3's attack** | **km3's attack** | **km3's attack** | 64 (3) | Attack:Tongue Whip +0.000 (-) |
+| 06-mega-blaziken-tournament-list, t-lucario, 0, 1 | 5 | Sunny Scorching | Play:Copycat | yes | 16 of 16 | +0.250 (2.2) | the game's move | **km3's attack** | **another move** | 64 (4) | Retreat:1 +0.125 (2.0) |
+| 06-mega-blaziken-tournament-list, t-lucario, 0, 1 | 5 | Sunny Scorching | Retreat:1 | yes | 16 of 16 | +0.438 (2.8) | the game's move | the game's move | the game's move | 16 (0) | Retreat:1 +0.438 (2.8) |
+| 06-mega-blaziken-tournament-list, t-sceptile, 3, 0 | 2 | Sunny Scorching | Play:Field Blower | yes | 16 of 16 | +0.250 (2.2) | the game's move | the game's move | **km3's attack** | 64 (3) | Retreat:3 +0.078 (1.7) |
+| 06-mega-blaziken-tournament-list, t-sceptile, 3, 1 | 5 | Tongue Whip | Retreat:1 | yes | 15 of 16 | +0.375 (3.0) | the game's move | the game's move | the game's move | 16 (0) | Retreat:1 +0.375 (3.0) |
+| 06-mega-blaziken-tournament-list, t-sceptile, 4, 1 | 4 | Sunny Scorching | Retreat:3 | yes | 16 of 16 | +0.312 (2.6) | the game's move | the game's move | **km3's attack** | 64 (3) | EndTurn +0.109 (2.4) |
+| 10-xatu-oricorio-tr-weezing, t-blaziken, 3, 1 | 9 | Supernatural Feather | Play:Poison Barb | yes | 16 of 16 | +0.875 (10.2) | the game's move | the game's move | the game's move | 16 (0) | Play:Poison Barb +0.875 (10.2) |
+| draft-A-shark-tempo, t-altaria, 3, 1 | 5 | Turbo Shark | Play:Misty | yes | 16 of 16 | +0.312 (2.6) | the game's move | the game's move | **km3's attack** | 64 (3) | Attack:Turbo Shark +0.000 (-) |
+| draft-A-shark-tempo, t-hydreigon, 2, 1 | 6 | Sharp Fang | Play:Misty | yes | 16 of 16 | +0.250 (2.2) | the game's move | the game's move | the game's move | 16 (0) | Play:Misty +0.250 (2.2) |
+| draft-A-shark-tempo, t-sceptile, 4, 0 | 2 | Sharp Fang | UseStadium | yes | 16 of 16 | +0.438 (2.4) | the game's move | the game's move | **km3's attack** | 64 (3) | UseStadium +0.156 (1.9) |
+| draft-A-shark-tempo, t-suicune, 2, 0 | 3 | Turbo Shark | Place:Alolan Vulpix@1 | yes | 16 of 16 | +0.250 (2.2) | the game's move | the game's move | the game's move | 16 (0) | Place:Alolan Vulpix@1 +0.250 (2.2) |
+| draft-A-shark-tempo, t-suicune, 4, 0 | 4 | Sharp Fang | Play:Misty | yes | 16 of 16 | +0.312 (2.6) | the game's move | the game's move | the game's move | 64 (3) | Play:Misty +0.141 (2.6) |
+| draft-A-shark-tempo, t-vespiquen, 2, 1 | 10 | Binding Snow | UseStadium | yes | 16 of 16 | +0.375 (2.4) | the game's move | the game's move | the game's move | 16 (0) | UseStadium +0.375 (2.4) |
+
+The combined code's reasons, where it decided otherwise than the game or than _tools_zs3:
+- 01-muk-glimmora-kingambit-regigigas, t-hydreigon, 0, 1 t9 (true skip):
+  - _tools_zs3: play-outs: +0.375 over km's move, 2.4 standard errors (threshold 2); away from km's attack to a line that attacks this turn in 16 of 16 play-outs: km's attack 0.375, this move 0.750
+  - _tools_zs3_m64: play-outs: +0.312 over km's move, 4.5 standard errors (threshold 3); away from km's attack, and no attack this turn in its line (an attack in 0 of 64 play-outs): km's attack 0.375, this move 0.688; close call: play-outs extended from 16 to 64 rounds for 3 candidates
+- 01-muk-glimmora-kingambit-regigigas, t-hydreigon, 0, 1 t9 (true skip):
+  - _tools_zs3: the skip bar: the best move leads km's attack by +0.375, 3.0 standard errors, past z 2 but not the skip bar 3, and no attack this turn in its line (an attack in 0 of 16 play-outs) (km's attack 0.500, this move 0.875): km's attack kept
+  - _tools_zs3_m64: play-outs: +0.234 over km's move, 3.8 standard errors (threshold 3); away from km's attack, and no attack this turn in its line (an attack in 0 of 64 play-outs): km's attack 0.531, this move 0.766; close call: play-outs extended from 16 to 64 rounds for 2 candidates
+- 01-muk-glimmora-kingambit-regigigas, t-vespiquen, 4, 1 t5 (attacked later):
+  - _tools_zs3: play-outs: +0.312 over km's move, 2.6 standard errors (threshold 2); away from km's attack to a line that attacks this turn in 16 of 16 play-outs: km's attack 0.062, this move 0.375
+  - _tools_zs3_m64: play-outs: +0.172 over km's move, 3.0 standard errors (threshold 3); away from km's attack, and no attack this turn in its line (an attack in 0 of 64 play-outs): km's attack 0.141, this move 0.312; close call: play-outs extended from 16 to 64 rounds for 3 candidates
+- 03-wailord-indeedee-wall, t-vespiquen, 4, 0 t8 (true skip):
+  - _tools_zs3: the skip bar: the best move leads km's attack by +0.500, 2.7 standard errors, past z 2 but not the skip bar 3, and no attack this turn in its line (an attack in 0 of 16 play-outs) (km's attack 0.250, this move 0.750): km's attack kept
+  - _tools_zs3_m64: play-outs: +0.391 over km's move, 4.6 standard errors (threshold 3); away from km's attack, and no attack this turn in its line (an attack in 0 of 64 play-outs): km's attack 0.312, this move 0.703; close call: play-outs extended from 16 to 64 rounds for 2 candidates
+- 06-mega-blaziken-tournament-list, t-altaria, 0, 1 t7 (attacked later):
+  - _tools_zs3: within the noise: the best move leads km's by +0.125 with a standard error of 0.085 (threshold 2 SE): km's move kept
+  - _tools_zs3_m64: km's move has the best play-out score; close call: play-outs extended from 16 to 64 rounds for 3 candidates
+- 06-mega-blaziken-tournament-list, t-hydreigon, 2, 0 t6 (attacked later):
+  - _tools_zs3: within the noise: the best move leads km's by +0.188 with a standard error of 0.136 (threshold 2 SE): km's move kept
+  - _tools_zs3_m64: km's move has the best play-out score; close call: play-outs extended from 16 to 64 rounds for 3 candidates
+- 06-mega-blaziken-tournament-list, t-lucario, 0, 1 t5 (attacked later):
+  - _tools_zs3: within the noise: the best move leads km's by +0.188 with a standard error of 0.101 (threshold 2 SE): km's move kept
+  - _tools_zs3_m64: play-outs: +0.125 over km's move, 2.0 standard errors (threshold 2); away from km's attack to a line that attacks this turn in 64 of 64 play-outs: km's attack 0.797, this move 0.922; close call: play-outs extended from 16 to 64 rounds for 4 candidates
+- 06-mega-blaziken-tournament-list, t-lucario, 4, 1 t3 (true skip):
+  - _tools_zs3: the skip bar: the best move leads km's attack by +0.375, 2.4 standard errors, past z 2 but not the skip bar 3, and no attack this turn in its line (an attack in 0 of 16 play-outs) (km's attack 0.312, this move 0.688): km's attack kept
+  - _tools_zs3_m64: the skip bar: the best move leads km's attack by +0.172, 2.1 standard errors, past z 2 but not the skip bar 3, and no attack this turn in its line (an attack in 0 of 64 play-outs) (km's attack 0.484, this move 0.656): km's attack kept; close call: play-outs extended from 16 to 64 rounds for 5 candidates
+- 06-mega-blaziken-tournament-list, t-sceptile, 3, 0 t2 (attacked later):
+  - _tools_zs3: play-outs: +0.250 over km's move, 2.2 standard errors (threshold 2); away from km's attack to a line that attacks this turn in 16 of 16 play-outs: km's attack 0.688, this move 0.938
+  - _tools_zs3_m64: within the noise: the best move leads km's by +0.078 with a standard error of 0.046 (threshold 2 SE): km's move kept; close call: play-outs extended from 16 to 64 rounds for 3 candidates
+- 06-mega-blaziken-tournament-list, t-sceptile, 4, 1 t4 (attacked later):
+  - _tools_zs3: play-outs: +0.312 over km's move, 2.6 standard errors (threshold 2); away from km's attack to a line that attacks this turn in 16 of 16 play-outs: km's attack 0.688, this move 1.000
+  - _tools_zs3_m64: the skip bar: the best move leads km's attack by +0.109, 2.4 standard errors, past z 2 but not the skip bar 3, and no attack this turn in its line (an attack in 0 of 64 play-outs) (km's attack 0.703, this move 0.812): km's attack kept; close call: play-outs extended from 16 to 64 rounds for 3 candidates
+- 09-mega-manectric-heliolisk, t-hydreigon, 4, 0 t2 (true skip):
+  - _tools_zs3: the skip bar: the best move leads km's attack by +0.250, 2.2 standard errors, past z 2 but not the skip bar 3, and no attack this turn in its line (an attack in 0 of 16 play-outs) (km's attack 0.562, this move 0.812): km's attack kept
+  - _tools_zs3_m64: play-outs: +0.203 over km's move, 3.2 standard errors (threshold 3); away from km's attack, and no attack this turn in its line (an attack in 0 of 64 play-outs): km's attack 0.578, this move 0.781; close call: play-outs extended from 16 to 64 rounds for 3 candidates
+- 09-mega-manectric-heliolisk, t-suicune, 4, 1 t4 (true skip):
+  - _tools_zs3: the skip bar: the best move leads km's attack by +0.312, 2.6 standard errors, past z 2 but not the skip bar 3, and no attack this turn in its line (an attack in 0 of 16 play-outs) (km's attack 0.000, this move 0.312): km's attack kept
+  - _tools_zs3_m64: play-outs: +0.406 over km's move, 6.2 standard errors (threshold 3); away from km's attack, and no attack this turn in its line (an attack in 0 of 64 play-outs): km's attack 0.016, this move 0.422; close call: play-outs extended from 16 to 64 rounds for 3 candidates
+- 10-xatu-oricorio-tr-weezing, t-altaria, 2, 0 t3 (true skip):
+  - _tools_zs3: the skip bar: the best move leads km's attack by +0.312, 2.1 standard errors, past z 2 but not the skip bar 3, and no attack this turn in its line (an attack in 0 of 16 play-outs) (km's attack 0.250, this move 0.562): km's attack kept
+  - _tools_zs3_m64: within the noise: the best move leads km's by +0.094 with a standard error of 0.082 (threshold 3 SE): km's move kept; close call: play-outs extended from 16 to 64 rounds for 2 candidates
+- draft-A-shark-tempo, t-altaria, 3, 1 t5 (attacked later):
+  - _tools_zs3: play-outs: +0.312 over km's move, 2.6 standard errors (threshold 2); away from km's attack to a line that attacks this turn in 16 of 16 play-outs: km's attack 0.375, this move 0.688
+  - _tools_zs3_m64: km's move has the best play-out score; close call: play-outs extended from 16 to 64 rounds for 3 candidates
+- draft-A-shark-tempo, t-blaziken, 0, 0 t2 (true skip):
+  - _tools_zs3: the skip bar: the best move leads km's attack by +0.250, 2.2 standard errors, past z 2 but not the skip bar 3, and no attack this turn in its line (an attack in 0 of 16 play-outs) (km's attack 0.750, this move 1.000): km's attack kept
+  - _tools_zs3_m64: play-outs: +0.203 over km's move, 4.0 standard errors (threshold 3); away from km's attack, and no attack this turn in its line (an attack in 0 of 64 play-outs): km's attack 0.641, this move 0.844; close call: play-outs extended from 16 to 64 rounds for 2 candidates
+- draft-A-shark-tempo, t-sceptile, 4, 0 t2 (attacked later):
+  - _tools_zs3: play-outs: +0.438 over km's move, 2.4 standard errors (threshold 2); away from km's attack to a line that attacks this turn in 16 of 16 play-outs: km's attack 0.250, this move 0.688
+  - _tools_zs3_m64: within the noise: the best move leads km's by +0.156 with a standard error of 0.084 (threshold 2 SE): km's move kept; close call: play-outs extended from 16 to 64 rounds for 3 candidates

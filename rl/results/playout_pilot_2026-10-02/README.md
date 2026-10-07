@@ -48,6 +48,10 @@ sections 5 and 9 (the addendum's amendments win). Branch `claude/playout-pilot`,
   16 more rounds on the same worlds, up to R_max. At the gate positions it changes 8 of 64 decisions for 2.4x the time;
   at quiz 4's positions it moves Q11 to Turbo Shark and Q07 to the retreat into Stoutland. See
   `rl/results/playout_close_calls_2026-10-07/`.
+- **The skip bar and close calls combined (Oct 7, the fix round).** Closeness is now tested against the bar that will
+  decide, every extended candidate plays to R_max, and the decision is made once, at the end. With
+  `kx3_r16_c12_z2_real_t0_poolmeta_tools_zs3_m64`, the 64 rounds clear the skip bar at 5 of the 7 skips it kept, so km3's
+  attack is kept at only 2 of the 9 true skips. See the fix round in `rl/results/playout_close_calls_2026-10-07/README.md`.
 
 ## In short
 
@@ -717,7 +721,8 @@ reference arm's km3 game is negligible.
     unchanged; `_noeffect` in `evaluate`;
   - the Ability step in `playout_plan.rs`;
   - `engine/tests/playout_quiz4_test.rs`: 17 tests (4 for the skip bar, Oct 7);
-  - `close_call` and the extension in `evaluate` (`_m<R_max>`, Oct 7); `engine/tests/playout_close_calls_test.rs`: 3 tests;
+  - `close_call`, `decision_bar` and the extension in `evaluate` (`_m<R_max>`, Oct 7, fixed in the fix round);
+    `engine/tests/playout_close_calls_test.rs`: 7 tests;
   - new modes in `playout_tool_rule.rs` (`--no-effect`, `--list-effects`), `trainer_habits.rs` (`--attack-scan`,
     `--noeffect-scan`, `positions`) and `playout_continuation.rs` (a state and seed per entry).
 - Here:

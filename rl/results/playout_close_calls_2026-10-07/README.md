@@ -11,7 +11,224 @@ Set by the Fable coordinator via Dustin, Oct 7.
   code names it).
 - **No table games.**
 
-## In short
+## The fix round: combined with the skip bar (Oct 7, evening)
+
+Set by Fable via Dustin, Oct 7. The skip bar (`_zs3`) and close calls (`_m<R_max>`) were accepted on their own. The
+laptop's review of 7d3639d0 found a gap in how they combine (no high defect; nothing run):
+- **Closeness was tested at z = 2**, but with `_zs3` the switch away from km3's attack is decided at 3. A lead of 2 to 3
+  standard errors over km3's attack never triggered an extension, and whether a kept skip got more rounds depended on an
+  unrelated third candidate being close.
+- **The extension stopped at the first block where the best cleared z:** up to 4 looks at 2 standard errors, with no
+  adjustment. The brief had said "decide at the end".
+
+The ask: fix both, (c) optionally skip a candidate equal to km3's move in every round, add a combination test for
+`_tools _zs3 _m64`, self-check digests for the exact combined code, re-run the 26-case skip scan with it, and note that
+the `_tools` tie-break can play a placement the extension dropped. Branch `claude/playout-pilot`; km3 untouched.
+
+### In short
+
+- **Fixed (ec283c53), tests first (c0a36092).**
+  - (a) km3's move is close to a best that is another move when the best's lead is within the bar the decision will
+    use: z_skip for a switch from km3's attack to a line that skips it.
+  - (b) Every extended candidate plays to R_max, and the decision is made once, at the end.
+  - (c) A move equal to km3's in every round isn't extended.
+- **The combined code undoes most of the skip bar.** At the 26 development-run cases,
+  `kx3_r16_c12_z2_real_t0_poolmeta_tools_zs3_m64`:
+  - **keeps km3's attack at 2 of the 9 true skips.** The skip bar alone kept 7. At 5 of those 7, 64 rounds put the
+    skip's lead at 3.2 to 6.2 standard errors, past the bar of 3, so the skip is played.
+  - **touches 6 of the 15 moves before an attack** (those that reproduce): 4 go back to km3's attack and 2 to another
+    move. The skip bar alone touched none.
+  - **Why:** the bar is a number of standard errors, so it measures confidence, not size. With 4 times the rounds the
+    standard error halves, and a lead that holds clears it. In km3's play-outs the skip lines keep their lead.
+  - **Q12** (Supernatural Feather) is one of the 2 still kept: over 64 rounds End Turn leads by only +0.094 (1.1
+    standard errors).
+- **Gate 2** (the 20 positions, 64 decisions, `_tools_zs3` with and without `_m64`):
+  - 37 decisions extended, all to 64 rounds, and 7 choices change.
+  - Time x2.2: 974 s to 2,175 s.
+  - The first version, on the same decisions without `_tools_zs3`, extended 38 and changed 8.
+- **Gate 1 passed** at ec283c53: suite 2,091/0, km3 unchanged, and the self-checks unchanged with the parameters off.
+- **Digests for the combined code:**
+  - in the `_lab` form, `kx3_r2_c3_lab_tools_zs3_m64`: **2284c591ed14a534** (2 games);
+  - the exact code, `kx3_r16_c12_z2_real_t0_poolmeta_tools_zs3_m64`, 12 games as the laptop's pre-registration runs
+    it: running (about 5 hours, from 18:46 UTC). It will be added here and in CLOUD_STATUS.md.
+- **The Tool tie-break** comes after the extension's decision and looks at every candidate, so it can play a placement
+  the extension left at 16 rounds. At gate 2 that happened at 4 of its 20 tie-breaks, and once (dev06's Heavy Helmet)
+  it changed the choice.
+- **Open, for Fable and Dustin:** with `_m64` on, the skip bar as built (a number of standard errors) protects km3's
+  attack only where the skip's lead is small. If the aim is "attack unless skipping is clearly better by enough", the
+  bar would need a size (a minimum lead in score), not more confidence. Nothing of that is built.
+
+### What changed (ec283c53)
+
+- **`close_call`** (`engine/src/players/playout_player.rs`, now public) after the R rounds, with the best the candidate
+  with the highest mean:
+  - **km3's move** is close when the best is another move and its lead is within the bar the decision will use for that
+    switch (`decision_bar`: z_skip from km3's attack to a line that skips it in more than half of its play-outs,
+    z_attack with `_za`, else z). Nothing else needs to be close.
+  - **Any other move** is close when the best leads it by no more than z standard errors (paired), unless the two are
+    equal in every round. That part is as before.
+  - **A move equal to km3's in every round** isn't extended: it can't win, since ties go to km3's move.
+- **The extension.** If anything is close, the best, the moves close to it and km3's move play rounds R to R_max in one
+  pass. There are no blocks, no re-checks and nobody is dropped. The rounds come from the same worlds and seeds a
+  larger R would use. The others keep their R rounds.
+- **The decision** is made once, at the end, among the extended candidates on their R_max rounds, with the same bar as
+  before. The reason still ends with "close call: play-outs extended from 16 to 64 rounds for n candidates".
+- **R_max** needn't be R plus a whole number of blocks any more.
+- With the parameters off nothing changes.
+
+### Tests (`engine/tests/playout_close_calls_test.rs`)
+
+Written first; `combined/tests_before.log` shows them against the old code. There, `close_call` couldn't be called
+from a test, and 3 of the other 5 failed:
+- (c) at seed 20,000,000,240: a move equal to km3's was extended;
+- (b) at the same seed: a candidate stopped at 36 of 40 rounds;
+- the combination at seed 20,000,000,301: the extension stopped at 40 of 64.
+
+The tests:
+- **`close_call` on given rounds:**
+  - End Turn leading km3's attack by 2.65 standard errors, in a line that never attacks, is a close call with `_zs3`
+    (and with `_za3`), and clear at z.
+  - It is also clear when the same lead is a line that attacks later in the turn, or past the skip bar (3.4).
+  - A third move doesn't change that.
+  - A move equal to km3's in every round isn't extended.
+- **R = 4, R_max = 40:** every candidate plays 4 or 40 rounds, and the decision is the rule on the 40.
+- **`_tools _zs3 _m64` together, at km3's attacks** (test decks, R = 8):
+  - Seeds 20,000,000,301 and 324 are the review's gap: the best skips km3's attack with a lead of 2.05 standard errors.
+    Both are now extended.
+  - Every extended candidate plays the same 64 worlds as a plain 64-round run.
+  - The decision is the skip bar's on those rounds.
+  - The code `kx3_r16_c12_z2_real_t0_poolmeta_tools_zs3_m64` spells all three.
+- **The same at a Tool placement** (deck 05's Protective Poncho): the Tool tie-break comes after the extension's
+  decision.
+- The earlier R4/R_max 20 test now also checks (c).
+
+### The 26 development-run cases (`combined/combined_scan.*`)
+
+**How.** The skip bar's scan again (`trainer_habits scripted --attack-scan`): the development run's 560 kx3 games are
+replayed exactly, and at the 26 decisions where kx3 left an attack km3 proposed, kx3 decides again from the game's own
+observation and randomness. This time it uses the combined code, and `_tools_zs3` without the extension to tell the
+two apart.
+
+| | the 9 true skips: km3's attack kept | the 17 moves before an attack: touched |
+|---|---|---|
+| `_zs3` (the skip bar's scan) | 7 | 0 of the 15 that reproduce |
+| `_tools_zs3` | 7 | 1 (06 v Lucario's Copycat goes back to km3's attack) |
+| **`_tools_zs3_m64`** (the combined code) | **2** | **6**: 4 back to km3's attack, 2 to another move |
+
+- **"Touched"** means kx3 plays something other than the game's move. The 2 that don't reproduce play km3's attack
+  under every code, including the game's own.
+- **Extended to 64 rounds:** 18 of the 26 (8 of the 9 true skips, 10 of the 17).
+- **Time:** 1,828 s for the 26 decisions, against 723 s without the extension (x2.5).
+
+**The 9 true skips with the combined code:**
+
+| case | km3's attack | the skip | after 16 rounds (`_tools_zs3`) | after 64 rounds |
+|---|---|---|---|---|
+| 01 v Hydreigon, t9 (Copycat first) | Giga Turbo | Copycat, then End Turn | Copycat stands (its line attacks) | **End Turn now**, +0.312 at 4.5 SE |
+| 01 v Hydreigon, t9 (End Turn) | Giga Turbo | End Turn | kept (3.0 SE) | End Turn stands, 3.8 SE |
+| 03 v Vespiquen, t8 | Wondrous Waves | Retreat:3 | kept (2.7) | Retreat stands, 4.6 |
+| 05 v Lucario, t5 | Psychic | End Turn | stands (3.9) | not a close call: stands |
+| 06 v Lucario, t3 | Peck | Retreat:2 | kept (2.4) | **kept**: +0.172 at 2.1 |
+| 09 v Hydreigon, t2 | Thunder Shock | End Turn | kept (2.2) | End Turn stands, 3.2 |
+| 09 v Suicune, t4 | Lightning Accelerator | Retreat:2 | kept (2.6) | Retreat stands, 6.2 |
+| 10 v Altaria, t3 (Q12) | Supernatural Feather | End Turn | kept (2.1) | **kept**: +0.094 at 1.1 |
+| Shark v Blaziken, t2 | Gnaw | End Turn | kept (2.2) | End Turn stands, 4.0 |
+
+**The 6 moves before an attack it touches:**
+- **Back to km3's attack (4):**
+  - 06 v Sceptile (deal 3), t2, Field Blower: +0.078 at 1.7 SE over 64 rounds.
+  - 06 v Sceptile (deal 4), t4, Retreat:3: the best at 64 is End Turn, a skip at 2.4 SE, under the bar.
+  - Shark v Altaria, t5, Misty: km3's Turbo Shark is the best over 64 rounds.
+  - Shark v Sceptile, t2, the Stadium: +0.156 at 1.9 SE.
+- **To another move (2):**
+  - 01 v Vespiquen, t5: the Stadium becomes End Turn, a skip at just over 3.0 SE.
+  - 06 v Lucario, t5: Copycat becomes Retreat:1, which attacks later (+0.125, just over 2.0 SE).
+
+Every case's row and reasons are in `combined/combined_scan.txt`.
+
+### Gate 2 (`combined/gate2/`, `combined/gate2_summary.*`)
+
+**How.** As the first version's gate 2 (below), with `playout_tool_rule --extension --combined`: the 20 positions (the 8
+continuation positions, and the 12 development positions as stored and at their Tool placement), 2 decision seeds each,
+LAB, cap 12, z 2. kx3 decides with `_tools_zs3` at R = 16 and with `_tools_zs3_m64`. Times are wall times on the cloud's
+4 cores, one decision at a time.
+
+| set | decisions | close calls (extended to 64) | choice changed | time, R = 16 | time, `_m64` | ratio |
+|---|---|---|---|---|---|---|
+| the 8 continuation positions | 16 | 11 | 4 | 449 s | 833 s | 1.85 |
+| the 12 development positions, as stored | 24 | 16 | 2 | 340 s | 907 s | 2.67 |
+| the same, at the Tool placement | 24 | 10 | 1 | 184 s | 435 s | 2.36 |
+| all | 64 | 37 | 7 | 974 s | 2,175 s | 2.23 |
+
+- **Every extended decision ran to 64 rounds,** as (b) asks. A median of 3 candidates were extended (km3's move
+  included), from 2 to 7. No round failed.
+- **The median decision** went from 10.3 s to 24.1 s.
+- **The first version** extended 38 of the same decisions, changed 8 and took 2,994 s with `_m64`. Its R = 16 was plain;
+  `_tools_zs3` already decides 23 of the 64 differently at R = 16, mostly through the Tool rule (21 Tool tie-breaks).
+- **The skip bar plays no part here.** km3's move is an attack at only one of the 20 positions, as before.
+
+**The 7 changes** (all with both reasons in `combined/gate2_summary.txt`):
+
+| position | R = 16 (`_tools_zs3`) | with `_m64` |
+|---|---|---|
+| B-205731-t10 | km3's retreat kept (+0.125, 1 SE) | the turn's Water to the Active: +0.141 at 2.9 SE |
+| B-210952-t16 | km3's bench of the Vulpix kept (+0.094, 1.9 SE) | Binding Snow: +0.094 at 3.8 SE |
+| B-205731-t02 (both seeds) | km3's Water to the Active kept (+0.188, 1.4 SE) | End Turn: +0.125 at 2.0 SE; +0.172 at 2.8 SE |
+| dev05, as stored | a retreat to Bench spot 3 (+0.438, 3.4 SE) | the retreat to spot 1: +0.391 at 4.6 SE |
+| dev06, as stored | the turn's Darkness to Bench spot 1 (+0.250, 2.2 SE) | to spot 2: +0.125 at 2.0 SE |
+| dev06, Heavy Helmet placement | the Helmet on Bench spot 1 (+0.250, 2.2 SE) | no move clears the bar (spot 1's lead is +0.031 over 64 rounds); the Tool tie-break plays the Helmet on spot 3, left at 16 rounds |
+
+- **Against the first version:**
+  - 3 of the 7 are its own changes, to the same moves: B-205731-t10, and B-205731-t02 at both seeds.
+  - B-210952-t16 and dev06's Helmet changed in the first version too, but to other moves.
+  - At dev05 the extension plays what the first version played.
+
+### Gate 1 and the digests (`combined/checks/`, at ec283c53 in a separate worktree)
+
+- **The suite:** 2,091 passed, 0 failed.
+- **km3's 240 games** (seed 7100): game for game equal to the official program's (digest 9dde28db2de6c9bc), and equal to
+  the pinned record on every line but the wall time.
+- **The harness self-checks** (`strength_selfcheck.txt`):
+  - km3: 81b572198c04d5d1, unchanged.
+  - `kx3_r2_c3_lab`: 3a2eb43bd9053639 twice, unchanged.
+  - `kx3_r2_c3_lab_tools_zs3_m64`, the combined code in the `_lab` form: **2284c591ed14a534** (2 games, 20 turns,
+    684 s).
+- **The exact code** (`strength_selfcheck_exact.txt`): `kx3_r16_c12_z2_real_t0_poolmeta_tools_zs3_m64`, 12 games,
+  t-altaria v t-suicune, as `strength_prereg.py` runs it. Running, from 18:46 UTC; about 5 hours expected (the same without `_zs3_m64`
+  took 2 h 8 min). The digest will be added here and in CLOUD_STATUS.md.
+
+### The Tool tie-break and the extension
+
+- **The order.** The extension decides first, among the extended candidates. Only when no move clears the bar does the
+  Tool tie-break act, as before.
+- **It looks at every candidate.** It plays km3's preferred placement with an effect wherever that is among the
+  candidates, extended or not. So it can play a placement the extension left at 16 rounds. Its comparison with km3's
+  move ("unless km3's leads it beyond the noise") is then on those 16 rounds.
+- **(c) makes this more likely.** A placement whose play-outs equal km3's in every round isn't extended. That is
+  typical when the Tool does nothing in the play-outs.
+- **At gate 2** the tie-break played the placement at 20 of the 64 decisions. At 4 of those, others were extended to 64
+  rounds but the placement it played had only its 16:
+  - dev04 (seed 24,200,002,004), and dev11 at both seeds: no change, since the tie-break played the same placement at
+    R = 16.
+  - **dev06's Heavy Helmet** (seed 24,200,002,006) changed the choice. At R = 16 the Helmet on Bench spot 1 cleared the
+    bar (+0.250, 2.2 SE). Over 64 rounds its lead fell to +0.031, so no move cleared the bar. The tie-break then played
+    km3's preferred placement with an effect, the Helmet on spot 3, compared with km3's move on 16 rounds only (+0.000).
+
+### Files (the fix round, `combined/`)
+
+- `tests_before.log`: the tests against the code before the fix.
+- `attack_scan_poolmeta_tools_zs3_m64.jsonl` and `attack_scan_poolmeta_tools_zs3.jsonl`: the 26 cases, with every
+  candidate's rounds and the decision's time.
+- `combined_scan.py` and `combined_scan.txt`: the 26 cases' table and reasons.
+- `gate2/extension.jsonl` and `extension_stdout.txt`: the 64 decisions, both ways.
+- `gate2_summary.py` and `gate2_summary.txt`: the gate 2 table, the changes, the tie-breaks and every decision.
+- `checks/`: gate 1 and the digests.
+
+## The first version (7d3639d0)
+
+As first built and measured. The fix round above changed (a) to (c); the numbers below are the first version's.
+
+### In short
 
 - **Close calls are common, and the extension changes about 1 decision in 8.**
   - At the gate positions (64 decisions: the 8 continuation positions, and the 12 development positions as stored and at
@@ -40,7 +257,7 @@ Set by the Fable coordinator via Dustin, Oct 7.
   - Gate 1 passed: suite 2,087/0, km3 unchanged, and the self-checks unchanged with the parameter off.
   - Gate 2 is the gate-position run above.
 
-## What was built
+### What was built
 
 - **The parameter.** `_m<R_max>`, e.g. `kx3_r16_c12_z2_real_t0_poolmeta_m64`. R_max must exceed R, and it can't be
   combined with a time budget. Off, nothing changes.
@@ -65,10 +282,10 @@ Set by the Fable coordinator via Dustin, Oct 7.
   - an extended candidate's play-outs are exactly those of a plain run with as many rounds: scores, differences and
     attack counts alike, which checks that the common random numbers really extend;
   - km3's move and the best are always extended;
-  - blocks of 16, and determinism.
+  - blocks of 16, and determinism (replaced in the fix round: every extended candidate plays to R_max).
   - Of the 8 test decisions, 6 had a close call.
 
-## The gate positions (`gate2/`, `summary.txt`)
+### The gate positions (`gate2/`, `summary.txt`)
 
 **How it was run.** `playout_tool_rule --extension`:
 - **The positions** are gate 2's 20: the 8 continuation positions, and the 12 development positions both as stored and
@@ -109,7 +326,7 @@ Set by the Fable coordinator via Dustin, Oct 7.
 | km3's move is the best, another within the noise of it | 15 | 1 | 541 s |
 | the best clears the bar, another within the noise of it (Q11's kind) | 5 | 1 | 217 s |
 
-## Quiz 4's positions (`quiz/`)
+### Quiz 4's positions (`quiz/`)
 
 **How.** kx3 decided again at each of the 12 positions from the game's own observation and randomness
 (`trainer_habits positions --kx3`).
@@ -141,7 +358,7 @@ Set by the Fable coordinator via Dustin, Oct 7.
   is what keeps that attack.
 - The quiz positions cost x2.1 in all (308 s → 634 s), about like the gate positions.
 
-## Gate 1 (`checks/`, at 461e78ab in a separate worktree)
+### Gate 1 (`checks/`, at 461e78ab in a separate worktree)
 
 - **The suite:** 2,087 passed, 0 failed.
 - **km3's 240 games** (seed 7100): game for game equal to the official program's, and equal to the pinned record on
@@ -153,7 +370,7 @@ Set by the Fable coordinator via Dustin, Oct 7.
     is a close call, and the extension changes some choices. The same winners and turns, 2 games. It is the reference
     for a build of this version with the parameter on.
 
-## Files
+### Files
 
 - `tests_before.log`: the tests before the code.
 - `gate2/extension.jsonl` and `extension_stdout.txt`: the 64 decisions, both ways.
