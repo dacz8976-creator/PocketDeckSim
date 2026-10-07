@@ -12,11 +12,10 @@ The audit is committed: `rl/results/coin_prevention_round2_2026-10-01/TEXT_AUDIT
 - **A sixth file, `engine/src/move_generation/move_generation_trainer.rs`:** a Fossil can be played under an Item lock (the Item check at 65 skips the Fossil type). Its premise is that a Fossil's printed type is Item (rules/01, rules/04 §6; the local database can't show it).
 - **In the five files but outside rules/09, rules/04 and the caveats:** Guts on the attacker's own Pokémon in an attack's outcome (E1), and Perish Body on a plain queued hit at the Active (E2). Both are decided by their text. Fix them in this job, or leave them listed?
 
-1. **Current task, and the instruction that set it.** Quiz 4's three items (Fable via Dustin, Oct 6). Items 1 and 3
-   are done. Item 2 is done except one diagnostic, still running in the cloud: kx3's own no-effect plays in the
-   development run, decided again with the rule on.
+1. **Current task, and the instruction that set it.** None running; idle. Quiz 4's three items (Fable via Dustin,
+   Oct 6) are done.
    **Quiz 4's items: each its own parameter, off by default; gates 1 and 2 passed; km3 untouched; no table games.**
-   - **Where.** Branch claude/playout-pilot, head 0844dd8f. Read
+   - **Where.** Branch claude/playout-pilot, head 683e7df2 (code unchanged since gate 1's 25522e5a). Read
      `rl/results/playout_quiz4_items_2026-10-06/README.md`.
      - Code: attack bar tests 2ea4754d, code 8d16d49f; no-effect reader tests 3c8e4626, code d0423aae (five Supporters:
        ab9233b0, 7c5cde73); "neither" tests 0209c17b, code d77be090.
@@ -35,6 +34,15 @@ The audit is committed: `rl/results/coin_prevention_round2_2026-10-01/TEXT_AUDIT
        - Fragrant Forest with no Basic Grass: every use, 125 and 119.
        - Elegant Cape with no Stage 1: 61 and 62.
      - Gate 2: km3's move does something at all 20 positions, so the rule never acts there.
+     - **kx3's 1,004 such plays, decided again with the rule on** (all 560 games replayed exactly):
+       - the tie-break plays another move at 979;
+       - km3's move is kept at 5, by a lead beyond the noise;
+       - 20 were kx3's own switches past the bar, which the rule can't touch.
+       - It's mostly a reordering of free moves: Watch Over is replaced by the turn's Energy 402 times, Fragrant
+         Forest by End Turn 95 times.
+       - What changes the game is a card kept in hand when the attack comes first: an Elegant Cape, a Poké Ball or a
+         Heavy Helmet.
+       - In the play-outs it's neutral (-0.003 on average). Whether it helps strength would take a gate 3.
    - **3. The "neither" positions** (R = 128, LAB, Dustin's plans from his notes; the laptop hadn't added them).
      **His plan doesn't beat the move kx3 actually played at any of the three.**
      - Q06: 0 of 128, against 0.289 for kx3's move.
@@ -221,8 +229,7 @@ The audit is committed: `rl/results/coin_prevention_round2_2026-10-01/TEXT_AUDIT
    - **Laptop time** (from the smoke): about 204 × 4 / T seconds per pilot game on T threads; a development comparison of one deck × 8 panel lists × 25 deals × 2 seats is about 23 hours on 4 threads, 6 on 16; the pre-registration's kx self-check about 1½ hours on 4 threads (estimate); the position runner about 1½ hours on 4 threads.
    **The data pipeline stopped where it was** (branch `claude/planning-pilot-data`, head 22d56999; `rl/results/planning_pilot_data_2026-10-02/README.md`, "Where it stopped"): the first pass done (9,600 games, 467,146 rows; held-out log loss 0.525 against 0.631 for km's value alone; the Bench Energy feature's sign negative), the second pass cancelled; Dustin's 04, 08 and 11 are in its pool but in the locked final-exam list, so their rows must be dropped before development use.
    **Earlier jobs, done** (the readiness jobs, the card-text follow-up and step 8c read and accepted): the round-2 readiness jobs (57c65860, `rl/results/round2_readiness_2026-10-02/README.md`), the card-text follow-up (20e2651) and the card-text job, step 8c, step 8b's rows (3a107f4), F8, and the later round of coin-flip prevention (`claude/coin-prevention-round2`); details in their READMEs and the log below.
-2. **What is running now, and when it ends.** Quiz 4 item 2's re-decision of kx3's no-effect plays in the development
-   run (one process in the cloud, 4 cores; started 19:54 UTC). Its results go into the README's item 2 section.
+2. **What is running now, and when it ends.** Nothing.
 3. **Files I expect to change.** None. The play-out job changed, on its branch only: `engine/src/players/mod.rs` (12 lines), new `engine/src/players/playout_player.rs`, `engine/src/players/playout_pool.rs`, `engine/tests/playout_pilot_test.rs`, `engine/examples/playout_smoke.rs`, `rl/results/playout_pilot_2026-10-02/`, and START_HERE's seed table (one row: 24,200,000,000-24,200,099,999).
 4. **Waiting on the laptop or Sonnet.** The laptop: its examples run on d513e37b (not interrupted); a look at rounds 2 to 4 (head eefa24d0) when it suits.
 5. **Open questions.**
