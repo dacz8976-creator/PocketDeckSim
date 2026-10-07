@@ -21,6 +21,11 @@
 //! kx3's decision with `_noeffect` off and on (one round shows where the tie-break points; nothing else differs, since the
 //! rule changes no play-out). Where km3's move can do nothing, every candidate is played out `--rounds` times (km3's
 //! continuation, the same worlds and seeds as `evaluate`) and both choices are compared round by round.
+//!   playout_tool_rule --extension --positions <positions.json> --seeds 4 --max-rounds 64 --out results.jsonl [--resume]
+//! (Oct 7) The close-call extension's cost and effect: at each position as stored, and (with a "tool") advanced to its
+//! placement, for each of `--seeds` decision seeds (the position's seed + 10,000 s), kx3 decides with R = 16 (LAB, cap 12,
+//! z 2) and with `_m<max-rounds>`. Per decision: both choices and reasons, the time each took, and the rounds each
+//! candidate played with the extension.
 //!   playout_tool_rule --list-tools
 //! prints every Tool of the card database (one per distinct text) with the conditions the rule reads from its text.
 //!   playout_tool_rule --list-effects
@@ -271,6 +276,86 @@ fn no_effect_gate(args: &[String]) {
     }
 }
 
+/// The close-call extension's cost and effect (see the header).
+fn extension_gate(args: &[String]) {
+    let positions: Vec<Value> = serde_json::from_str(&std::fs::read_to_string(arg(args, "--positions").unwrap()).unwrap()).unwrap();
+    let seeds: u64 = arg(args, "--seeds").map_or(4, |r| r.parse().unwrap());
+    let max_rounds: usize = arg(args, "--max-rounds").map_or(64, |r| r.parse().unwrap());
+    let out_path = arg(args, "--out").unwrap();
+    let done: BTreeSet<String> = if args.iter().any(|a| a == "--resume") {
+        std::fs::read_to_string(&out_path)
+            .unwrap_or_default()
+            .lines()
+            .filter_map(|l| serde_json::from_str::<Value>(l).ok())
+            .filter_map(|v| v["decision"].as_str().map(String::from))
+            .collect()
+    } else {
+        BTreeSet::new()
+    };
+    let mut out = std::fs::OpenOptions::new().create(true).append(true).open(&out_path).unwrap();
+    for p in &positions {
+        let id = p["id"].as_str().unwrap().to_string();
+        let stored: State = serde_json::from_str(&std::fs::read_to_string(p["state"].as_str().unwrap()).unwrap()).unwrap();
+        let deck = Deck::from_file(p["deck"].as_str().unwrap()).unwrap();
+        let opponent = Deck::from_file(p["opponent"].as_str().unwrap()).unwrap();
+        let seed0 = p["seed"].as_u64().unwrap();
+        // The position as stored, and (with a "tool") advanced by playing it, so the decision is its placement.
+        let mut points = vec![("as stored", stored.clone())];
+        if let Some(name) = p["tool"].as_str() {
+            let (me, legal) = stored.generate_possible_actions();
+            let play = legal
+                .iter()
+                .find(|a| matches!(&a.action, SimpleAction::Play { trainer_card } if trainer_card.name == name))
+                .unwrap_or_else(|| panic!("{id}: {name} can't be played"))
+                .clone();
+            let (d0, d1) = if me == 0 { (deck.clone(), opponent.clone()) } else { (opponent.clone(), deck.clone()) };
+            let km = PlayerCode::KM { max_depth: 3 };
+            let mut game = Game::from_state(stored.clone(), create_players(d0, d1, vec![km.clone(), km]), seed0);
+            game.apply_action(&play);
+            points.push(("placement", game.get_state_clone()));
+        }
+        for (at, state) in &points {
+            let (me, actions) = state.generate_possible_actions();
+            let observation = PlayerObservation::from_state(state, me, &RevealedKnowledge::default());
+            for s in 0..seeds {
+                let seed = seed0 + 10_000 * s;
+                let decision = format!("{id} | {at} | {seed}");
+                if done.contains(&decision) {
+                    continue;
+                }
+                let decide = |max: Option<usize>| {
+                    let params = PlayoutParams { rollouts: 16, cap: 12, z: 2.0, knowledge: Knowledge::Lab, max_rounds: max, ..PlayoutParams::new(3) };
+                    PlayoutPlayer::with_extra_lists(deck.clone(), opponent.clone(), params, Vec::new())
+                        .evaluate(&mut StdRng::seed_from_u64(seed), &observation, &actions)
+                };
+                let plain = decide(None);
+                let ext = decide(Some(max_rounds));
+                let cands = |r: &deckgym::players::playout_player::DecisionReport| {
+                    r.candidates.iter().map(|c| json!({"move": c.label, "score": c.score, "diff": c.diff, "se": c.se, "rounds": c.rounds})).collect::<Vec<_>>()
+                };
+                let line = json!({
+                    "decision": decision, "id": id, "at": at, "seed": seed, "turn": state.turn_count,
+                    "candidates": plain.candidates.len(), "km_move": plain.candidates[plain.km3].label,
+                    "chosen_r16": plain.candidates[plain.chosen].label, "chosen_ext": ext.candidates[ext.chosen].label,
+                    "changed": plain.candidates[plain.chosen].action != ext.candidates[ext.chosen].action,
+                    "ms_r16": plain.millis.round(), "ms_ext": ext.millis.round(), "rounds_ext": ext.rounds,
+                    "extended": ext.candidates.iter().filter(|c| c.rounds > plain.rounds).count(),
+                    "failed_rounds": [plain.failed_rounds, ext.failed_rounds],
+                    "reason_r16": plain.reason, "reason_ext": ext.reason, "r16": cands(&plain), "ext": cands(&ext),
+                });
+                writeln!(out, "{line}").unwrap();
+                out.flush().unwrap();
+                println!(
+                    "{decision}: R16 -> {} ({} ms) | m{max_rounds} -> {} ({} ms, {} rounds, {} extended){}",
+                    line["chosen_r16"].as_str().unwrap().chars().take(50).collect::<String>(),
+                    line["ms_r16"], line["chosen_ext"].as_str().unwrap().chars().take(50).collect::<String>(), line["ms_ext"],
+                    ext.rounds, line["extended"], if line["changed"] == json!(true) { " CHANGED" } else { "" }
+                );
+            }
+        }
+    }
+}
+
 fn main() {
     let args: Vec<String> = std::env::args().collect();
     if args.iter().any(|a| a == "--tie-break") {
@@ -279,6 +364,10 @@ fn main() {
     }
     if args.iter().any(|a| a == "--no-effect") {
         no_effect_gate(&args);
+        return;
+    }
+    if args.iter().any(|a| a == "--extension") {
+        extension_gate(&args);
         return;
     }
     if args.iter().any(|a| a == "--list-effects") {

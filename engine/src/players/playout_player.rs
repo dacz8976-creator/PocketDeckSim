@@ -128,7 +128,7 @@ pub enum Knowledge {
 }
 
 /// The pilot's parameters; every one is part of its code
-/// (`kx<depth>[_r<R>][_c<cap>][_z<z>][_lab|_real][_t<s>][_trace][_poolmeta|_poolwide][_tools][_noeffect][_za<z>|_zs<z>]`).
+/// (`kx<depth>[_r<R>][_c<cap>][_z<z>][_lab|_real][_t<s>][_trace][_poolmeta|_poolwide][_tools][_noeffect][_za<z>|_zs<z>][_m<R_max>]`).
 #[derive(Debug, Clone, PartialEq)]
 pub struct PlayoutParams {
     /// The search depth of km<depth>: the move it proposes and the bot of both sides in every play-out.
@@ -160,6 +160,12 @@ pub struct PlayoutParams {
     /// best candidate isn't one, the switch needs a lead beyond this many standard errors only if that candidate's own line
     /// leaves the turn without an attack (in more than half of its play-outs). Not with `_za`.
     pub z_skip: Option<f64>,
+    /// Close calls (`_m<R_max>`; Oct 7; off by default): when, after the R rounds, a candidate is within z standard errors of
+    /// the best one (paired; candidates equal in every round don't count), the best, every such candidate and km<depth>'s
+    /// move are played out in blocks of 16 more rounds, from the same worlds and seeds a larger R would use, until none is
+    /// within the noise of the best or R_max rounds are played; the decision is made among the candidates still in play.
+    /// Above R; not with a time budget.
+    pub max_rounds: Option<usize>,
 }
 
 impl PlayoutParams {
@@ -177,13 +183,14 @@ impl PlayoutParams {
             noeffect: false,
             z_attack: None,
             z_skip: None,
+            max_rounds: None,
         }
     }
 
     /// Parses the code after the `kx` prefix (lowercase), e.g. `3_r8_c5_z1.5_lab_t30_trace`.
     pub fn parse(rest: &str) -> Result<Self, String> {
         let invalid = |why: &str| {
-            format!("Invalid player code: kx{rest} ({why}). Use 'kx<depth>[_r<R>][_c<cap>][_z<z>][_lab|_real][_t<seconds>][_trace][_poolmeta|_poolwide][_tools][_noeffect][_za<z>|_zs<z>]', e.g. 'kx3' or 'kx3_r24_c12_z2_lab'")
+            format!("Invalid player code: kx{rest} ({why}). Use 'kx<depth>[_r<R>][_c<cap>][_z<z>][_lab|_real][_t<seconds>][_trace][_poolmeta|_poolwide][_tools][_noeffect][_za<z>|_zs<z>][_m<R_max>]', e.g. 'kx3' or 'kx3_r24_c12_z2_lab'")
         };
         let mut parts = rest.split('_');
         let depth = parts.next().unwrap_or("").parse::<usize>().map_err(|_| invalid("a depth"))?;
@@ -225,11 +232,20 @@ impl PlayoutParams {
                     params.z = p[1..].parse::<f64>().ok().filter(|z| z.is_finite() && *z >= 0.0).ok_or_else(|| invalid(part))?;
                 }
                 p if p.starts_with('t') => params.budget_ms = number(&p[1..])? * 1000,
+                p if p.starts_with('m') => params.max_rounds = Some(number(&p[1..])? as usize),
                 _ => return Err(invalid(&format!("unknown part '{part}'"))),
             }
         }
         if params.z_attack.is_some() && params.z_skip.is_some() {
             return Err(invalid("the attack bar and the skip bar together"));
+        }
+        if let Some(m) = params.max_rounds {
+            if m <= params.rollouts {
+                return Err(invalid("an R_max above R"));
+            }
+            if params.budget_ms > 0 {
+                return Err(invalid("the extension with a time budget"));
+            }
         }
         Ok(params)
     }
@@ -238,7 +254,7 @@ impl PlayoutParams {
     /// them are as before).
     pub fn code(&self) -> String {
         format!(
-            "kx{}_r{}_c{}_z{}_{}_t{}{}_pool{}{}{}{}{}",
+            "kx{}_r{}_c{}_z{}_{}_t{}{}_pool{}{}{}{}{}{}",
             self.depth,
             self.rollouts,
             self.cap,
@@ -250,7 +266,8 @@ impl PlayoutParams {
             if self.tools { "_tools" } else { "" },
             if self.noeffect { "_noeffect" } else { "" },
             self.z_attack.map_or(String::new(), |z| format!("_za{z}")),
-            self.z_skip.map_or(String::new(), |z| format!("_zs{z}"))
+            self.z_skip.map_or(String::new(), |z| format!("_zs{z}")),
+            self.max_rounds.map_or(String::new(), |m| format!("_m{m}"))
         )
     }
 }
@@ -289,6 +306,9 @@ pub struct CandidateReport {
     pub se: f64,
     /// Play-outs in which the pilot's side attacked before the decision's turn ended (Oct 7; for the skip bar).
     pub attacks_this_turn: usize,
+    /// The rounds this candidate was played: R, or more for a close call's candidates (`_m<R_max>`). Its score is over
+    /// them, and its difference from km<N>'s move over the same rounds of km<N>'s.
+    pub rounds: usize,
 }
 
 /// A move left out by the candidate cap, and why.
@@ -419,6 +439,45 @@ fn score(end: &State, me: usize) -> f64 {
 /// A decision's base for its rounds' worlds and seeds, from the decision's own randomness (which it doesn't advance).
 fn round_base(rng: &StdRng) -> u64 {
     rng.clone().next_u64() ^ 0x4b58_504c_4159_4f55
+}
+
+/// The rounds added at a time to a close call's candidates (`_m<R_max>`).
+const EXTENSION_BLOCK: usize = 16;
+
+/// A close call (`_m<R_max>`), from each candidate's rounds so far (`per[c]`, km's move first). Among the candidates still
+/// in play (those with the most rounds), the best by mean (the first on a tie, km's move first) and every other whose paired
+/// lead by the best is within `z` standard errors: if there is any such other (a pair equal in every round doesn't count),
+/// those candidates and km's move, in order; else none.
+fn close_call(per: &[Vec<(f64, bool)>], z: f64) -> Vec<usize> {
+    let full = per[0].len();
+    if full < 2 {
+        return Vec::new();
+    }
+    let live: Vec<usize> = (0..per.len()).filter(|&c| per[c].len() == full).collect();
+    let mean = |c: usize| per[c].iter().map(|x| x.0).sum::<f64>() / full as f64;
+    let best = live.iter().copied().fold(live[0], |b, c| if mean(c) > mean(b) { c } else { b });
+    let close: Vec<usize> = live
+        .iter()
+        .copied()
+        .filter(|&c| c != best)
+        .filter(|&c| {
+            let d: Vec<f64> = per[best].iter().zip(&per[c]).map(|(a, b)| a.0 - b.0).collect();
+            if d.iter().all(|x| *x == 0.0) {
+                return false;
+            }
+            let n = d.len() as f64;
+            let m = d.iter().sum::<f64>() / n;
+            let se = (d.iter().map(|x| (x - m).powi(2)).sum::<f64>() / (n - 1.0)).sqrt() / n.sqrt();
+            m <= z * se
+        })
+        .collect();
+    if close.is_empty() {
+        return Vec::new();
+    }
+    let mut set: BTreeSet<usize> = close.into_iter().collect();
+    set.insert(best);
+    set.insert(0);
+    set.into_iter().collect()
 }
 
 fn splitmix(mut x: u64) -> u64 {
@@ -959,6 +1018,7 @@ impl PlayoutPlayer {
                 diff: 0.0,
                 se: f64::NAN,
                 attacks_this_turn: 0,
+                rounds: 0,
             }],
             dropped: vec![],
             km3: 0,
@@ -1084,25 +1144,63 @@ impl PlayoutPlayer {
             report.millis = start.elapsed().as_secs_f64() * 1000.0;
             return report;
         }
-        let n = results.len() as f64;
+        // Each candidate's rounds, in order.
+        let mut per: Vec<Vec<(f64, bool)>> = (0..candidates.len()).map(|c| results.iter().map(|r| r[c]).collect()).collect();
+        // Close calls (`_m<R_max>`): the close call's candidates and km's move play blocks of rounds R, R+1, ... (the same
+        // worlds and seeds as a larger R), until the call is clear or R_max; a candidate the best leads beyond the noise
+        // keeps the rounds it has. A round in which one of them panics is dropped for all of them.
+        let mut extension = None;
+        if let (Some(max_rounds), 0) = (self.params.max_rounds, self.params.budget_ms) {
+            let from = per[0].len();
+            let mut next = total;
+            let mut in_play = close_call(&per, self.params.z);
+            while !in_play.is_empty() && next < max_rounds {
+                let to = (next + EXTENSION_BLOCK).min(max_rounds);
+                let batch: Vec<Option<(Vec<(f64, bool)>, String)>> = (next..to)
+                    .into_par_iter()
+                    .map(|j| {
+                        std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+                            let (world, list, name, seed) = sample(j);
+                            (in_play.iter().map(|&c| core.playout(&world, &list, me, &candidates[c], seed)).collect::<Vec<(f64, bool)>>(), name)
+                        }))
+                        .ok()
+                    })
+                    .collect();
+                report.failed_rounds += batch.iter().filter(|r| r.is_none()).count();
+                for (round, name) in batch.into_iter().flatten() {
+                    *report.lists.entry(name).or_default() += 1;
+                    for (k, &c) in in_play.iter().enumerate() {
+                        per[c].push(round[k]);
+                    }
+                }
+                next = to;
+                extension = Some((from, per[0].len()));
+                in_play = close_call(&per, self.params.z);
+            }
+        }
+        report.rounds = per[0].len();
         report.candidates = candidates
             .iter()
             .enumerate()
             .map(|(c, a)| {
-                let score = results.iter().map(|r| r[c].0).sum::<f64>() / n;
-                let diffs: Vec<f64> = results.iter().map(|r| r[c].0 - r[0].0).collect();
+                let rounds = per[c].len();
+                let n = rounds as f64;
+                let score = per[c].iter().map(|x| x.0).sum::<f64>() / n;
+                let diffs: Vec<f64> = per[c].iter().zip(&per[0]).map(|(x, k)| x.0 - k.0).collect();
                 let diff = diffs.iter().sum::<f64>() / n;
-                let se = if results.len() < 2 {
+                let se = if rounds < 2 {
                     f64::INFINITY
                 } else {
                     (diffs.iter().map(|d| (d - diff).powi(2)).sum::<f64>() / (n - 1.0)).sqrt() / n.sqrt()
                 };
-                let attacks_this_turn = results.iter().filter(|r| r[c].1).count();
-                CandidateReport { action: a.clone(), label: label(a), score, diff, se: if c == 0 { 0.0 } else { se }, attacks_this_turn }
+                let attacks_this_turn = per[c].iter().filter(|x| x.1).count();
+                CandidateReport { action: a.clone(), label: label(a), score, diff, se: if c == 0 { 0.0 } else { se }, attacks_this_turn, rounds }
             })
             .collect();
-        // The best score (km's move first on a tie, then the offer order); it replaces km's only beyond the noise.
+        // The best score among the candidates still in play (all of them without an extension; km's move first on a tie,
+        // then the offer order); it replaces km's only beyond the noise.
         let best = (0..report.candidates.len())
+            .filter(|&c| report.candidates[c].rounds == report.rounds)
             .fold(0, |b, c| if report.candidates[c].score > report.candidates[b].score { c } else { b });
         let lead = &report.candidates[best];
         // The bar: z; or (`_za<z>`) z_attack for a switch from km's attack to a move that isn't one; or (`_zs<z>`) z_skip for
@@ -1110,7 +1208,7 @@ impl PlayoutPlayer {
         let attack = |a: &Action| matches!(a.action, crate::actions::SimpleAction::Attack(_));
         let from_attack = best != 0 && attack(&report.candidates[0].action) && !attack(&lead.action);
         let bar = if self.params.z_skip.is_some() {
-            skip_bar(&report.candidates[0].action, &lead.action, lead.attacks_this_turn, report.rounds, self.params.z, self.params.z_skip)
+            skip_bar(&report.candidates[0].action, &lead.action, lead.attacks_this_turn, lead.rounds, self.params.z, self.params.z_skip)
         } else {
             switch_bar(&report.candidates[0].action, &lead.action, self.params.z, self.params.z_attack)
         };
@@ -1118,10 +1216,10 @@ impl PlayoutPlayer {
         // With the skip bar, what the best move's line does this turn, in its play-outs.
         let line = if self.params.z_skip.is_none() {
             String::new()
-        } else if lead.attacks_this_turn * 2 < report.rounds {
-            format!(", and no attack this turn in its line (an attack in {} of {} play-outs)", lead.attacks_this_turn, report.rounds)
+        } else if lead.attacks_this_turn * 2 < lead.rounds {
+            format!(", and no attack this turn in its line (an attack in {} of {} play-outs)", lead.attacks_this_turn, lead.rounds)
         } else {
-            format!(" to a line that attacks this turn in {} of {} play-outs", lead.attacks_this_turn, report.rounds)
+            format!(" to a line that attacks this turn in {} of {} play-outs", lead.attacks_this_turn, lead.rounds)
         };
         let scores = format!("km's attack {:.3}, this move {:.3}", report.candidates[0].score, lead.score);
         if best == 0 {
@@ -1225,6 +1323,10 @@ impl PlayoutPlayer {
                     report.chosen = t;
                 }
             }
+        }
+        if let Some((from, to)) = extension {
+            let n = report.candidates.iter().filter(|c| c.rounds > from).count();
+            report.reason = format!("{}; close call: play-outs extended from {from} to {to} rounds for {n} candidates", report.reason);
         }
         report.millis = start.elapsed().as_secs_f64() * 1000.0;
         report
@@ -1400,9 +1502,13 @@ impl PlayoutPlayer {
                     "diff": (c.diff * 1000.0).round() / 1000.0,
                     "se": if c.se.is_finite() { serde_json::json!((c.se * 1000.0).round() / 1000.0) } else { serde_json::Value::Null },
                 });
-                // The skip bar's count, only with the parameter (the trace is otherwise as before).
+                // The skip bar's count and the extension's rounds, only with their parameters (the trace is otherwise as
+                // before).
                 if self.params.z_skip.is_some() {
                     j["attacks_this_turn"] = serde_json::json!(c.attacks_this_turn);
+                }
+                if self.params.max_rounds.is_some() {
+                    j["rounds"] = serde_json::json!(c.rounds);
                 }
                 j
             }).collect::<Vec<_>>(),
@@ -1456,6 +1562,7 @@ impl Player for PlayoutPlayer {
                     "noeffect": self.params.noeffect,
                     "z_attack": self.params.z_attack,
                     "z_skip": self.params.z_skip,
+                    "max_rounds": self.params.max_rounds,
                     "extra_lists": self.extras_json(),
                     "budget_ms": self.params.budget_ms,
                     "seat": observation.actor,
