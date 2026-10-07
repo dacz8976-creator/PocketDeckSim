@@ -376,6 +376,18 @@ sides with k3 still available; the 0.7.2 wheel and its run identities are untouc
           - The rule stays in the next candidate.
       - (C2) **Next candidate (coordinator, Oct 7):** one combined run instead of a gate per feature: kx3 with `_tools _zs3 _m64` against the frozen d513e37b, on the development decks and deals, paired. It waits for the cloud's fix of the review's two findings: the close-call extension tests the bar that will decide, and it decides at the end. The opt-in tools ship d513e37b now.
         - **Dustin chose the full run (Oct 7):** 7 development decks × 80 kx3 games, about 44-55 hours on the laptop (21.8 h of the Tool version's time × 2.0-2.5 for the extension). A halfway look is shown for information only; the decision is read at the end. Friday Oct 9 is a school day, so the school-morning rule applies that morning.
+        - The cloud's fix drops "don't extend a candidate tied with km3's move in every round" (Astra, Oct 7: tied through 16 rounds isn't tied for good). A test must show such a candidate can still be extended and win.
+      - (E) **Dustin's decisions, Oct 7 (on Astra's review, relayed by the coordinator):**
+        - **Rules switch 2 is unparked**, scheduled after the combined run.
+          - Scope: round 2, the card-text fixes, and Cursed Jewel's Weakness on an attack's return damage (Tools and Abilities stay flat), with the recording evidence. The plan is `results/engine_switch_rules2_2026-10/PLAN.md`.
+          - Its registration is prepared while the run goes, without using the laptop's cores.
+          - Conclusions on brews 07 and 09 (Mega Sableye ex decks) are provisional until it's pinned.
+        - **The first cloud slow report** is draft A's Wallace version (`decks/brews/drafts_2026-10-01/draft-A-wallace.txt`) against the 8 panel lists, at a size the cloud can finish.
+        - **The setup-deck demonstration** is Wailord (deck 03), built from its existing 80 development-run kx3 games and the Tool comparison, labelled "existing development evidence, not a fresh test". Fresh games wait for the laptop.
+        - **Reporting rule (Astra):**
+          - Never dismiss evidence because its interval is wide (±11 still says something).
+          - State the question first, then the size.
+          - In every time and precision figure, say how many are kx3 games and how many are total games.
       - (D) The unfamiliar-opponent version stays separate until it is measured against out-of-pool opponents.
     - **Rules finding queued for the next rules switch (Oct 6):** return damage set up by an attack takes Weakness. Dustin, verbatim: "I know it is the case for sableye. It is from an attack the return damage is done, not from an ability."
       - It covers the 5 attacks with "During your opponent's next turn, if this Pokémon is damaged by an attack, do X damage to the Attacking Pokémon".
