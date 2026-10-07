@@ -1,0 +1,47 @@
+== The fix round's tests, written before the fix, on claude/playout-pilot 7d3639d0 (close_call is private there, with (per, z)):
+$ cargo test --release --features test-utils --test playout_close_calls_test
+(the compiler warnings of the unchanged engine omitted)
+error[E0603]: function `close_call` is private
+   --> tests/playout_close_calls_test.rs:31:5
+    |
+ 31 |     close_call, skip_bar, tie_break_placements, DecisionReport, Knowledge, PlayoutParams, PlayoutPlayer, ToolRulePlayer,
+    |     ^^^^^^^^^^ private function
+    |
+   --> src/players/playout_player.rs:451:1
+    |
+451 | fn close_call(per: &[Vec<(f64, bool)>], z: f64) -> Vec<usize> {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+error: could not compile `deckgym` (test "playout_close_calls_test") due to 1 previous error
+
+
+== The same file without its two tests of close_call itself (which can't compile before the fix), on the code before the fix:
+$ cargo test --release --features test-utils --test zz_before_variant   (a scratch copy, not committed)
+(a copy of tests/playout_close_calls_test.rs without the two close_call tests; the line numbers below are that copy's)
+running 5 tests
+test the_code_spells_the_extension ... ok
+test at_a_tool_placement_the_tie_break_comes_after_the_extension ... ok
+test close_calls_are_played_out_further_on_the_same_worlds has been running for over 60 seconds
+test extended_candidates_play_to_r_max_and_the_decision_is_made_at_the_end has been running for over 60 seconds
+test the_tools_rule_the_skip_bar_and_close_calls_combine has been running for over 60 seconds
+test close_calls_are_played_out_further_on_the_same_worlds ... FAILED
+test the_tools_rule_the_skip_bar_and_close_calls_combine ... FAILED
+test extended_candidates_play_to_r_max_and_the_decision_is_made_at_the_end ... FAILED
+failures:
+---- close_calls_are_played_out_further_on_the_same_worlds stdout ----
+thread 'close_calls_are_played_out_further_on_the_same_worlds' (1376) panicked at tests/zz_before_variant.rs:125:17:
+assertion `left == right` failed: seed 20000000240: Attach { attachments: [(1, Grass, 0)], is_turn_energy: true } equals km3's move in every round, not extended
+  left: 20
+ right: 4
+---- the_tools_rule_the_skip_bar_and_close_calls_combine stdout ----
+thread 'the_tools_rule_the_skip_bar_and_close_calls_combine' (1379) panicked at tests/zz_before_variant.rs:283:13:
+seed 20000000301: Attack(Attack { energy_required: [Grass, Colorless], title: "Vine Whip", fixed_damage: 40, effect: None }) played 40 rounds
+---- extended_candidates_play_to_r_max_and_the_decision_is_made_at_the_end stdout ----
+thread 'extended_candidates_play_to_r_max_and_the_decision_is_made_at_the_end' (1377) panicked at tests/zz_before_variant.rs:165:13:
+seed 20000000240: Attach { attachments: [(1, Grass, 3)], is_turn_energy: true } played 36 rounds
+failures:
+    close_calls_are_played_out_further_on_the_same_worlds
+    extended_candidates_play_to_r_max_and_the_decision_is_made_at_the_end
+    the_tools_rule_the_skip_bar_and_close_calls_combine
+test result: FAILED. 2 passed; 3 failed; 0 ignored; 0 measured; 0 filtered out; finished in 179.20s
+error: test failed, to rerun pass `--test zz_before_variant`
+(183 s)
