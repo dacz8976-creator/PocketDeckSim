@@ -1,5 +1,5 @@
 deckgym simulate --num 240 --players km3,km3 --seed 7100 --seed-stream -p --results-output DIR decks/research/altaria.txt decks/research/blaziken.txt
-this branch's deckgym (claude/playout-pilot 76cd08f4, close calls with the skip bar, (c) dropped) v the official program rl/engine-2026-10-02/deckgym (sha256 2f7e5fd6...), both run here
+this branch's deckgym (claude/playout-pilot 4e7d8ce5, close calls with the skip bar, ties join) v the official program rl/engine-2026-10-02/deckgym (sha256 2f7e5fd6...), both run here
 fields compared per game: every field of the per-game result but game_id (a random label) and any timing field
 games: branch 240, official 240; equal game for game (matched by game seed): 240; different: 0 []
 digest of the branch's games: 9dde28db2de6c9bc

@@ -2,16 +2,16 @@ codes: kx3_r16_c12_z2_lab_t0_poolwide_tools_zs3 against kx3_r16_c12_z2_lab_t0_po
 
 | set | decisions | with a close call (extended to 64) | choice changed | time, R = 16 | time, with _m64 | ratio | median per decision |
 |---|---|---|---|---|---|---|---|
-| continuation | 16 | 11 | 4 | 441 s | 982 s | 2.23 | 28.7 s / 42.6 s |
-| development, as stored | 24 | 16 | 2 | 319 s | 896 s | 2.80 | 9.5 s / 30.2 s |
-| development, the Tool placement | 24 | 10 | 1 | 176 s | 439 s | 2.50 | 5.6 s / 9.3 s |
-| all | 64 | 37 | 7 | 936 s | 2,317 s | 2.48 | 10.5 s / 25.6 s |
+| continuation | 16 | 11 | 4 | 295 s | 713 s | 2.42 | 19.3 s / 30.2 s |
+| development, as stored | 24 | 16 | 3 | 221 s | 652 s | 2.95 | 6.5 s / 20.3 s |
+| development, the Tool placement | 24 | 10 | 2 | 119 s | 310 s | 2.60 | 3.6 s / 6.5 s |
+| all | 64 | 37 | 9 | 636 s | 1,676 s | 2.64 | 6.7 s / 19.4 s |
 
 Rounds where extended: [64]; candidates extended (km3's move included): median 4, from 2 to 12; failed rounds: 0
 The first version on the same 64 decisions: 38 extended, 8 changed, 2,994 s with _m64
   same choice as the first version: at R = 16 41 of 64 (_tools_zs3 v plain); with the extension 42 of 64
 
-The Tool tie-break plays the placement: 21 decisions at R = 16, 20 with the extension
+The Tool tie-break plays the placement: 21 decisions at R = 16, 19 with the extension
 - dev00 05-indeedee-stoutland|t-altaria|0|0|ref#0 | placement | 24200002000: AttachTool { in_play_idx: 3, tool_card: Trainer(B2 147 Protective Ponc (16 rounds; +0.000 v km3's)
 - dev00 05-indeedee-stoutland|t-altaria|0|0|ref#0 | placement | 24200012000: AttachTool { in_play_idx: 3, tool_card: Trainer(B2 147 Protective Ponc (16 rounds; +0.000 v km3's)
 - dev01 05-indeedee-stoutland|t-blaziken|0|0|ref#0 | placement | 24200012001: AttachTool { in_play_idx: 3, tool_card: Trainer(B2 147 Protective Ponc (64 rounds; +0.000 v km3's)
@@ -19,7 +19,6 @@ The Tool tie-break plays the placement: 21 decisions at R = 16, 20 with the exte
 - dev02 05-indeedee-stoutland|t-hydreigon|0|0|ref#0 | placement | 24200012002: AttachTool { in_play_idx: 3, tool_card: Trainer(B2 147 Protective Ponc (16 rounds; +0.000 v km3's)
 - dev03 05-indeedee-stoutland|t-lucario|0|1|ref#0 | placement | 24200002003: AttachTool { in_play_idx: 3, tool_card: Trainer(B2 147 Protective Ponc (16 rounds; +0.000 v km3's)
 - dev03 05-indeedee-stoutland|t-lucario|0|1|ref#0 | placement | 24200012003: AttachTool { in_play_idx: 3, tool_card: Trainer(B2 147 Protective Ponc (16 rounds; +0.000 v km3's)
-- dev04 05-indeedee-stoutland|t-sceptile|0|1|ref#0 | placement | 24200002004: AttachTool { in_play_idx: 3, tool_card: Trainer(B2 147 Protective Ponc (a placement left at 16 rounds, not extended; +0.000 v km3's)
 - dev04 05-indeedee-stoutland|t-sceptile|0|1|ref#0 | placement | 24200012004: AttachTool { in_play_idx: 3, tool_card: Trainer(B2 147 Protective Ponc (64 rounds; -0.016 v km3's)
 - dev05 05-indeedee-stoutland|t-suicune|0|0|ref#0 | placement | 24200002005: AttachTool { in_play_idx: 3, tool_card: Trainer(B2 147 Protective Ponc (16 rounds; +0.000 v km3's)
 - dev05 05-indeedee-stoutland|t-suicune|0|0|ref#0 | placement | 24200012005: AttachTool { in_play_idx: 3, tool_card: Trainer(B2 147 Protective Ponc (16 rounds; +0.000 v km3's)
@@ -31,7 +30,7 @@ The Tool tie-break plays the placement: 21 decisions at R = 16, 20 with the exte
 - dev08 01-muk-glimmora-kingambit-regigigas|t-blaziken|0|1|ref#0 | placement | 24200012008: AttachTool { in_play_idx: 2, tool_card: Trainer(B1 219 Heavy Helmet) } (16 rounds; +0.000 v km3's)
 - dev09 03-wailord-indeedee-wall|t-altaria|2|0|ref#0 | placement | 24200012009: AttachTool { in_play_idx: 1, tool_card: Trainer(B1 219 Heavy Helmet) } (64 rounds; +0.031 v km3's)
 - dev11 draft-A-shark-tempo|t-lucario|4|1|ref#0 | placement | 24200002011: AttachTool { in_play_idx: 2, tool_card: Trainer(B3b 065 Elegant Cape)  (64 rounds; -0.031 v km3's)
-- dev11 draft-A-shark-tempo|t-lucario|4|1|ref#0 | placement | 24200012011: AttachTool { in_play_idx: 2, tool_card: Trainer(B3b 065 Elegant Cape)  (a placement left at 16 rounds, not extended; +0.000 v km3's)
+- dev11 draft-A-shark-tempo|t-lucario|4|1|ref#0 | placement | 24200012011: AttachTool { in_play_idx: 2, tool_card: Trainer(B3b 065 Elegant Cape)  (64 rounds; -0.031 v km3's)
 
 ## The decisions that changed
 - B-205731-t10 | as stored | 24200001003:
@@ -54,6 +53,16 @@ The Tool tie-break plays the placement: 21 decisions at R = 16, 20 with the exte
   - with _m64: EndTurn: 0.938 at 16, 0.922 at 64
   - R = 16: within the noise: the best move leads km's by +0.188 with a standard error of 0.136 (threshold 2 SE): km's move kept
   - _m64: play-outs: +0.172 over km's move, 2.8 standard errors (threshold 2); close call: play-outs extended from 16 to 64 rounds for 3 candidates
+- dev04 05-indeedee-stoutland|t-sceptile|0|1|ref#0 | as stored | 24200002004:
+  - km3's move Play { trainer_card: B2 147 Protective Poncho }: 0.688 at 16, 0.578 at 64
+  - with _m64: Attack(Attack { energy_required: [Psychic, Psychic], title: "Psychic",: 0.688 at 16, 0.641 at 64
+  - R = 16: km's move has the best play-out score
+  - _m64: play-outs: +0.062 over km's move, 2.0 standard errors (threshold 2); close call: play-outs extended from 16 to 64 rounds for 5 candidates
+- dev04 05-indeedee-stoutland|t-sceptile|0|1|ref#0 | placement | 24200002004:
+  - km3's move AttachTool { in_play_idx: 0, tool_card: Trainer(B2 147 Protective Ponc: 0.688 at 16, 0.641 at 64
+  - R = 16 played AttachTool { in_play_idx: 3, tool_card: Trainer(B2 147 Protective Ponc: 0.688 at 16, 0.578 at 64
+  - R = 16: tie-break: Tool effect: km's Protective Poncho on Indeedee ex in the Active Spot has no printed effect now (it needs the Bench), and no move clears the bar (km's move has the best play-out score); the placement with an effect km prefers is played, AttachTool { in_play_idx: 3, tool_card: Trainer(B2 147 Protective Poncho) } (+0.000 v km's, inf standard errors)
+  - _m64: km's move has the best play-out score; km's Protective Poncho on Indeedee ex in the Active Spot has no printed effect now (it needs the Bench), but its play-outs lead the placement with one, AttachTool { in_play_idx: 3, tool_card: Trainer(B2 147 Protective Poncho) }, by +0.062 (2.0 standard errors): km's move kept; close call: play-outs extended from 16 to 64 rounds for 4 candidates
 - dev05 05-indeedee-stoutland|t-suicune|0|0|ref#0 | as stored | 24200012005:
   - km3's move Play { trainer_card: B2 147 Protective Poncho }: 0.125 at 16, 0.266 at 64
   - R = 16 played Retreat(3): 0.562 at 16, 0.594 at 64
@@ -77,67 +86,67 @@ The Tool tie-break plays the placement: 21 decisions at R = 16, 20 with the exte
 
 | decision | candidates | R = 16 | with _m64 | rounds | extended | ms R = 16 | ms _m64 | the first version's _m64 |
 |---|---|---|---|---|---|---|---|---|
-| B-214254-t06 | as stored | 24200001000 | 7 | Attack(Attack { energy_required: [Water] | Attack(Attack { energy_required: [Water] | 16 | 0 | 38074 | 36309 | Attack(Attack { energy_required: [Water] (16) |
-| B-214254-t06 | as stored | 24200011000 | 7 | Attack(Attack { energy_required: [Water] | Attack(Attack { energy_required: [Water] | 64 | 6 | 37115 | 126304 | Attack(Attack { energy_required: [Water] (64) |
-| B-214254-t10 | as stored | 24200001001 | 10 | Play { trainer_card: A2a 072 Irida } | Play { trainer_card: A2a 072 Irida } | 64 | 7 | 36776 | 120946 | Play { trainer_card: A2a 072 Irida } (64) |
-| B-214254-t10 | as stored | 24200011001 | 10 | Play { trainer_card: A2a 072 Irida } | Play { trainer_card: A2a 072 Irida } | 64 | 8 | 41647 | 137977 | Play { trainer_card: A2a 072 Irida } (64) |
-| B-205731-t08 | as stored | 24200001002 | 10 | Retreat(1) | Retreat(1) | 16 | 0 | 22816 | 23420 | Retreat(1) (16) |
-| B-205731-t08 | as stored | 24200011002 | 10 | Retreat(1) | Retreat(1) | 64 | 2 | 20923 | 32566 | Retreat(1) (32) |
-| B-205731-t10 | as stored | 24200001003 | 9 | Retreat(1) | Attach { attachments: [(1, Water, 0)], i (changed) | 64 | 6 | 11691 | 39723 | Attach { attachments: [(1, Water, 0)], i (64) |
-| B-205731-t10 | as stored | 24200011003 | 9 | Retreat(1) | Retreat(1) | 64 | 6 | 10424 | 37240 | Retreat(1) (64) |
-| B-210952-t14 | as stored | 24200001004 | 11 | Retreat(2) | Retreat(2) | 16 | 0 | 45197 | 44015 | Retreat(2) (16) |
-| B-210952-t14 | as stored | 24200011004 | 11 | Retreat(2) | Retreat(2) | 64 | 3 | 45862 | 78055 | Retreat(2) (32) |
-| B-210952-t16 | as stored | 24200001005 | 12 | Place(Pokemon(B2 028 Alolan Vulpix), 3) | Attach { attachments: [(1, Water, 0)], i (changed) | 64 | 12 | 37271 | 127564 | Attach { attachments: [(1, Water, 0)], i (64) |
-| B-210952-t16 | as stored | 24200011005 | 12 | Attack(Attack { energy_required: [Water, | Attack(Attack { energy_required: [Water, | 64 | 3 | 34620 | 57167 | Attack(Attack { energy_required: [Water, (64) |
-| B-210952-t18 | as stored | 24200001006 | 12 | Play { trainer_card: A1 220 Misty } | Play { trainer_card: A1 220 Misty } | 16 | 0 | 16751 | 17471 | Play { trainer_card: A1 220 Misty } (16) |
-| B-210952-t18 | as stored | 24200011006 | 12 | Play { trainer_card: A1 220 Misty } | Play { trainer_card: A1 220 Misty } | 16 | 0 | 17433 | 17849 | Play { trainer_card: A1 220 Misty } (16) |
-| B-205731-t02 | as stored | 24200001007 | 3 | Attach { attachments: [(1, Water, 0)], i | EndTurn (changed) | 64 | 3 | 12372 | 41234 | EndTurn (32) |
-| B-205731-t02 | as stored | 24200011007 | 3 | Attach { attachments: [(1, Water, 0)], i | EndTurn (changed) | 64 | 3 | 11556 | 43875 | EndTurn (64) |
-| dev00 05-indeedee-stoutland|t-altaria|0|0|ref#0 | as stored | 24200002000 | 4 | Attach { attachments: [(1, Psychic, 0)], | Attach { attachments: [(1, Psychic, 0)], | 64 | 4 | 8727 | 30702 | Attach { attachments: [(1, Psychic, 0)], (64) |
-| dev00 05-indeedee-stoutland|t-altaria|0|0|ref#0 | as stored | 24200012000 | 4 | Attach { attachments: [(1, Psychic, 0)], | Attach { attachments: [(1, Psychic, 0)], | 64 | 2 | 8118 | 21418 | Attach { attachments: [(1, Psychic, 0)], (64) |
-| dev00 05-indeedee-stoutland|t-altaria|0|0|ref#0 | placement | 24200002000 | 2 | AttachTool { in_play_idx: 3, tool_card:  | AttachTool { in_play_idx: 3, tool_card:  | 16 | 0 | 3826 | 3592 | AttachTool { in_play_idx: 0, tool_card:  (16) |
-| dev00 05-indeedee-stoutland|t-altaria|0|0|ref#0 | placement | 24200012000 | 2 | AttachTool { in_play_idx: 3, tool_card:  | AttachTool { in_play_idx: 3, tool_card:  | 16 | 0 | 4191 | 4244 | AttachTool { in_play_idx: 0, tool_card:  (16) |
-| dev01 05-indeedee-stoutland|t-blaziken|0|0|ref#0 | as stored | 24200002001 | 5 | Play { trainer_card: B2 147 Protective P | Play { trainer_card: B2 147 Protective P | 64 | 2 | 13927 | 31059 | Play { trainer_card: B2 147 Protective P (64) |
-| dev01 05-indeedee-stoutland|t-blaziken|0|0|ref#0 | as stored | 24200012001 | 5 | Play { trainer_card: B2 147 Protective P | Play { trainer_card: B2 147 Protective P | 16 | 0 | 12840 | 14178 | Play { trainer_card: B2 147 Protective P (64) |
-| dev01 05-indeedee-stoutland|t-blaziken|0|0|ref#0 | placement | 24200002001 | 2 | AttachTool { in_play_idx: 0, tool_card:  | AttachTool { in_play_idx: 0, tool_card:  | 16 | 0 | 5898 | 5763 | AttachTool { in_play_idx: 0, tool_card:  (16) |
-| dev01 05-indeedee-stoutland|t-blaziken|0|0|ref#0 | placement | 24200012001 | 2 | AttachTool { in_play_idx: 3, tool_card:  | AttachTool { in_play_idx: 3, tool_card:  | 64 | 2 | 5809 | 17610 | AttachTool { in_play_idx: 0, tool_card:  (64) |
-| dev02 05-indeedee-stoutland|t-hydreigon|0|0|ref#0 | as stored | 24200002002 | 5 | Play { trainer_card: B2 147 Protective P | Play { trainer_card: B2 147 Protective P | 64 | 4 | 9454 | 27761 | Play { trainer_card: B2 147 Protective P (64) |
-| dev02 05-indeedee-stoutland|t-hydreigon|0|0|ref#0 | as stored | 24200012002 | 5 | Play { trainer_card: B2 147 Protective P | Play { trainer_card: B2 147 Protective P | 64 | 5 | 6762 | 29779 | Play { trainer_card: B2 147 Protective P (64) |
-| dev02 05-indeedee-stoutland|t-hydreigon|0|0|ref#0 | placement | 24200002002 | 3 | AttachTool { in_play_idx: 3, tool_card:  | AttachTool { in_play_idx: 3, tool_card:  | 16 | 0 | 4551 | 4378 | AttachTool { in_play_idx: 0, tool_card:  (16) |
-| dev02 05-indeedee-stoutland|t-hydreigon|0|0|ref#0 | placement | 24200012002 | 3 | AttachTool { in_play_idx: 3, tool_card:  | AttachTool { in_play_idx: 3, tool_card:  | 16 | 0 | 3730 | 4333 | AttachTool { in_play_idx: 0, tool_card:  (16) |
-| dev03 05-indeedee-stoutland|t-lucario|0|1|ref#0 | as stored | 24200002003 | 5 | Play { trainer_card: B2 147 Protective P | Play { trainer_card: B2 147 Protective P | 64 | 5 | 6077 | 30658 | Play { trainer_card: B2 147 Protective P (64) |
-| dev03 05-indeedee-stoutland|t-lucario|0|1|ref#0 | as stored | 24200012003 | 5 | Play { trainer_card: B2 147 Protective P | Play { trainer_card: B2 147 Protective P | 16 | 0 | 7928 | 7510 | Play { trainer_card: B2 147 Protective P (16) |
-| dev03 05-indeedee-stoutland|t-lucario|0|1|ref#0 | placement | 24200002003 | 3 | AttachTool { in_play_idx: 3, tool_card:  | AttachTool { in_play_idx: 3, tool_card:  | 16 | 0 | 3223 | 3432 | AttachTool { in_play_idx: 0, tool_card:  (16) |
-| dev03 05-indeedee-stoutland|t-lucario|0|1|ref#0 | placement | 24200012003 | 3 | AttachTool { in_play_idx: 3, tool_card:  | AttachTool { in_play_idx: 3, tool_card:  | 16 | 0 | 4040 | 4066 | AttachTool { in_play_idx: 0, tool_card:  (16) |
-| dev04 05-indeedee-stoutland|t-sceptile|0|1|ref#0 | as stored | 24200002004 | 6 | Play { trainer_card: B2 147 Protective P | Play { trainer_card: B2 147 Protective P | 64 | 4 | 12787 | 34928 | Play { trainer_card: B2 147 Protective P (32) |
-| dev04 05-indeedee-stoutland|t-sceptile|0|1|ref#0 | as stored | 24200012004 | 6 | Play { trainer_card: B2 147 Protective P | Play { trainer_card: B2 147 Protective P | 64 | 3 | 13917 | 30576 | Play { trainer_card: B2 147 Protective P (64) |
-| dev04 05-indeedee-stoutland|t-sceptile|0|1|ref#0 | placement | 24200002004 | 4 | AttachTool { in_play_idx: 3, tool_card:  | AttachTool { in_play_idx: 3, tool_card:  | 64 | 3 | 6320 | 21118 | AttachTool { in_play_idx: 0, tool_card:  (64) |
-| dev04 05-indeedee-stoutland|t-sceptile|0|1|ref#0 | placement | 24200012004 | 4 | AttachTool { in_play_idx: 3, tool_card:  | AttachTool { in_play_idx: 3, tool_card:  | 64 | 4 | 6136 | 24511 | AttachTool { in_play_idx: 0, tool_card:  (64) |
-| dev05 05-indeedee-stoutland|t-suicune|0|0|ref#0 | as stored | 24200002005 | 6 | Retreat(1) | Retreat(1) | 64 | 4 | 24711 | 84149 | Retreat(1) (64) |
-| dev05 05-indeedee-stoutland|t-suicune|0|0|ref#0 | as stored | 24200012005 | 6 | Retreat(3) | Retreat(1) (changed) | 64 | 3 | 26276 | 62321 | Retreat(1) (64) |
-| dev05 05-indeedee-stoutland|t-suicune|0|0|ref#0 | placement | 24200002005 | 4 | AttachTool { in_play_idx: 3, tool_card:  | AttachTool { in_play_idx: 3, tool_card:  | 16 | 0 | 12954 | 12462 | AttachTool { in_play_idx: 0, tool_card:  (16) |
-| dev05 05-indeedee-stoutland|t-suicune|0|0|ref#0 | placement | 24200012005 | 4 | AttachTool { in_play_idx: 3, tool_card:  | AttachTool { in_play_idx: 3, tool_card:  | 16 | 0 | 13185 | 12907 | AttachTool { in_play_idx: 0, tool_card:  (16) |
-| dev06 01-muk-glimmora-kingambit-regigigas|t-altaria|1|1|ref#0 | as stored | 24200002006 | 6 | Attach { attachments: [(1, Darkness, 0)] | Attach { attachments: [(1, Darkness, 0)] | 64 | 4 | 34733 | 87603 | Attach { attachments: [(1, Darkness, 0)] (64) |
-| dev06 01-muk-glimmora-kingambit-regigigas|t-altaria|1|1|ref#0 | as stored | 24200012006 | 6 | Attach { attachments: [(1, Darkness, 1)] | Attach { attachments: [(1, Darkness, 2)] (changed) | 64 | 5 | 33242 | 114235 | Attach { attachments: [(1, Darkness, 0)] (64) |
-| dev06 01-muk-glimmora-kingambit-regigigas|t-altaria|1|1|ref#0 | placement | 24200002006 | 4 | AttachTool { in_play_idx: 1, tool_card:  | AttachTool { in_play_idx: 3, tool_card:  (changed) | 64 | 3 | 21841 | 60187 | AttachTool { in_play_idx: 0, tool_card:  (64) |
-| dev06 01-muk-glimmora-kingambit-regigigas|t-altaria|1|1|ref#0 | placement | 24200012006 | 4 | AttachTool { in_play_idx: 3, tool_card:  | AttachTool { in_play_idx: 3, tool_card:  | 64 | 4 | 20277 | 83873 | AttachTool { in_play_idx: 0, tool_card:  (64) |
-| dev07 01-muk-glimmora-kingambit-regigigas|t-altaria|3|1|ref#0 | as stored | 24200002007 | 3 | Play { trainer_card: B1 219 Heavy Helmet | Play { trainer_card: B1 219 Heavy Helmet | 16 | 0 | 2820 | 2890 | Play { trainer_card: B1 219 Heavy Helmet (16) |
-| dev07 01-muk-glimmora-kingambit-regigigas|t-altaria|3|1|ref#0 | as stored | 24200012007 | 3 | Play { trainer_card: B1 219 Heavy Helmet | Play { trainer_card: B1 219 Heavy Helmet | 16 | 0 | 2595 | 2263 | Play { trainer_card: B1 219 Heavy Helmet (16) |
-| dev07 01-muk-glimmora-kingambit-regigigas|t-altaria|3|1|ref#0 | placement | 24200002007 | 3 | AttachTool { in_play_idx: 1, tool_card:  | AttachTool { in_play_idx: 1, tool_card:  | 16 | 0 | 2724 | 2816 | AttachTool { in_play_idx: 0, tool_card:  (16) |
-| dev07 01-muk-glimmora-kingambit-regigigas|t-altaria|3|1|ref#0 | placement | 24200012007 | 3 | AttachTool { in_play_idx: 1, tool_card:  | AttachTool { in_play_idx: 1, tool_card:  | 16 | 0 | 2377 | 2414 | AttachTool { in_play_idx: 0, tool_card:  (16) |
-| dev08 01-muk-glimmora-kingambit-regigigas|t-blaziken|0|1|ref#0 | as stored | 24200002008 | 4 | Play { trainer_card: B1 219 Heavy Helmet | Play { trainer_card: B1 219 Heavy Helmet | 16 | 0 | 3232 | 3376 | Play { trainer_card: B1 219 Heavy Helmet (16) |
-| dev08 01-muk-glimmora-kingambit-regigigas|t-blaziken|0|1|ref#0 | as stored | 24200012008 | 4 | Play { trainer_card: B1 219 Heavy Helmet | Play { trainer_card: B1 219 Heavy Helmet | 16 | 0 | 3224 | 3225 | Play { trainer_card: B1 219 Heavy Helmet (16) |
-| dev08 01-muk-glimmora-kingambit-regigigas|t-blaziken|0|1|ref#0 | placement | 24200002008 | 4 | AttachTool { in_play_idx: 2, tool_card:  | AttachTool { in_play_idx: 2, tool_card:  | 16 | 0 | 2953 | 2705 | AttachTool { in_play_idx: 0, tool_card:  (16) |
-| dev08 01-muk-glimmora-kingambit-regigigas|t-blaziken|0|1|ref#0 | placement | 24200012008 | 4 | AttachTool { in_play_idx: 2, tool_card:  | AttachTool { in_play_idx: 2, tool_card:  | 16 | 0 | 2515 | 2714 | AttachTool { in_play_idx: 0, tool_card:  (16) |
-| dev09 03-wailord-indeedee-wall|t-altaria|2|0|ref#0 | as stored | 24200002009 | 6 | Attach { attachments: [(1, Water, 0)], i | Attach { attachments: [(1, Water, 0)], i | 64 | 5 | 29682 | 102505 | Attach { attachments: [(1, Water, 0)], i (48) |
-| dev09 03-wailord-indeedee-wall|t-altaria|2|0|ref#0 | as stored | 24200012009 | 6 | Attach { attachments: [(1, Water, 0)], i | Attach { attachments: [(1, Water, 0)], i | 64 | 5 | 29542 | 102509 | Attach { attachments: [(1, Water, 0)], i (64) |
-| dev09 03-wailord-indeedee-wall|t-altaria|2|0|ref#0 | placement | 24200002009 | 3 | AttachTool { in_play_idx: 1, tool_card:  | AttachTool { in_play_idx: 1, tool_card:  | 64 | 3 | 13238 | 52472 | AttachTool { in_play_idx: 1, tool_card:  (64) |
-| dev09 03-wailord-indeedee-wall|t-altaria|2|0|ref#0 | placement | 24200012009 | 3 | AttachTool { in_play_idx: 1, tool_card:  | AttachTool { in_play_idx: 1, tool_card:  | 64 | 3 | 13278 | 51112 | AttachTool { in_play_idx: 3, tool_card:  (64) |
-| dev10 03-wailord-indeedee-wall|t-altaria|3|0|ref#0 | as stored | 24200002010 | 3 | Play { trainer_card: B1 219 Heavy Helmet | Play { trainer_card: B1 219 Heavy Helmet | 64 | 3 | 9628 | 37243 | Play { trainer_card: B1 225 Copycat } (64) |
-| dev10 03-wailord-indeedee-wall|t-altaria|3|0|ref#0 | as stored | 24200012010 | 3 | Play { trainer_card: B1 219 Heavy Helmet | Play { trainer_card: B1 219 Heavy Helmet | 64 | 2 | 10574 | 26612 | Play { trainer_card: B1 219 Heavy Helmet (64) |
-| dev10 03-wailord-indeedee-wall|t-altaria|3|0|ref#0 | placement | 24200002010 | 2 | AttachTool { in_play_idx: 0, tool_card:  | AttachTool { in_play_idx: 0, tool_card:  | 64 | 2 | 6150 | 23550 | AttachTool { in_play_idx: 0, tool_card:  (32) |
-| dev10 03-wailord-indeedee-wall|t-altaria|3|0|ref#0 | placement | 24200012010 | 2 | AttachTool { in_play_idx: 0, tool_card:  | AttachTool { in_play_idx: 0, tool_card:  | 16 | 0 | 6202 | 6210 | AttachTool { in_play_idx: 0, tool_card:  (16) |
-| dev11 draft-A-shark-tempo|t-lucario|4|1|ref#0 | as stored | 24200002011 | 3 | EndTurn | EndTurn | 16 | 0 | 4286 | 3931 | EndTurn (16) |
-| dev11 draft-A-shark-tempo|t-lucario|4|1|ref#0 | as stored | 24200012011 | 3 | EndTurn | EndTurn | 16 | 0 | 4384 | 4630 | EndTurn (16) |
-| dev11 draft-A-shark-tempo|t-lucario|4|1|ref#0 | placement | 24200002011 | 4 | AttachTool { in_play_idx: 2, tool_card:  | AttachTool { in_play_idx: 2, tool_card:  | 64 | 4 | 4927 | 19935 | AttachTool { in_play_idx: 0, tool_card:  (64) |
-| dev11 draft-A-shark-tempo|t-lucario|4|1|ref#0 | placement | 24200012011 | 4 | AttachTool { in_play_idx: 2, tool_card:  | AttachTool { in_play_idx: 2, tool_card:  | 64 | 2 | 5397 | 12995 | AttachTool { in_play_idx: 0, tool_card:  (64) |
+| B-214254-t06 | as stored | 24200001000 | 7 | Attack(Attack { energy_required: [Water] | Attack(Attack { energy_required: [Water] | 16 | 0 | 25065 | 27047 | Attack(Attack { energy_required: [Water] (16) |
+| B-214254-t06 | as stored | 24200011000 | 7 | Attack(Attack { energy_required: [Water] | Attack(Attack { energy_required: [Water] | 64 | 6 | 24659 | 84227 | Attack(Attack { energy_required: [Water] (64) |
+| B-214254-t10 | as stored | 24200001001 | 10 | Play { trainer_card: A2a 072 Irida } | Play { trainer_card: A2a 072 Irida } | 64 | 8 | 25309 | 90661 | Play { trainer_card: A2a 072 Irida } (64) |
+| B-214254-t10 | as stored | 24200011001 | 10 | Play { trainer_card: A2a 072 Irida } | Play { trainer_card: A2a 072 Irida } | 64 | 8 | 28113 | 93764 | Play { trainer_card: A2a 072 Irida } (64) |
+| B-205731-t08 | as stored | 24200001002 | 10 | Retreat(1) | Retreat(1) | 16 | 0 | 14415 | 14500 | Retreat(1) (16) |
+| B-205731-t08 | as stored | 24200011002 | 10 | Retreat(1) | Retreat(1) | 64 | 10 | 14837 | 58413 | Retreat(1) (32) |
+| B-205731-t10 | as stored | 24200001003 | 9 | Retreat(1) | Attach { attachments: [(1, Water, 0)], i (changed) | 64 | 6 | 7651 | 27267 | Attach { attachments: [(1, Water, 0)], i (64) |
+| B-205731-t10 | as stored | 24200011003 | 9 | Retreat(1) | Retreat(1) | 64 | 6 | 6881 | 25608 | Retreat(1) (64) |
+| B-210952-t14 | as stored | 24200001004 | 11 | Retreat(2) | Retreat(2) | 16 | 0 | 30637 | 30579 | Retreat(2) (16) |
+| B-210952-t14 | as stored | 24200011004 | 11 | Retreat(2) | Retreat(2) | 64 | 3 | 30649 | 53579 | Retreat(2) (32) |
+| B-210952-t16 | as stored | 24200001005 | 12 | Place(Pokemon(B2 028 Alolan Vulpix), 3) | Attach { attachments: [(1, Water, 0)], i (changed) | 64 | 12 | 23724 | 86213 | Attach { attachments: [(1, Water, 0)], i (64) |
+| B-210952-t16 | as stored | 24200011005 | 12 | Attack(Attack { energy_required: [Water, | Attack(Attack { energy_required: [Water, | 64 | 3 | 24221 | 39659 | Attack(Attack { energy_required: [Water, (64) |
+| B-210952-t18 | as stored | 24200001006 | 12 | Play { trainer_card: A1 220 Misty } | Play { trainer_card: A1 220 Misty } | 16 | 0 | 12493 | 11158 | Play { trainer_card: A1 220 Misty } (16) |
+| B-210952-t18 | as stored | 24200011006 | 12 | Play { trainer_card: A1 220 Misty } | Play { trainer_card: A1 220 Misty } | 16 | 0 | 11384 | 12532 | Play { trainer_card: A1 220 Misty } (16) |
+| B-205731-t02 | as stored | 24200001007 | 3 | Attach { attachments: [(1, Water, 0)], i | EndTurn (changed) | 64 | 3 | 7750 | 28382 | EndTurn (32) |
+| B-205731-t02 | as stored | 24200011007 | 3 | Attach { attachments: [(1, Water, 0)], i | EndTurn (changed) | 64 | 3 | 7522 | 29848 | EndTurn (64) |
+| dev00 05-indeedee-stoutland|t-altaria|0|0|ref#0 | as stored | 24200002000 | 4 | Attach { attachments: [(1, Psychic, 0)], | Attach { attachments: [(1, Psychic, 0)], | 64 | 4 | 5614 | 20176 | Attach { attachments: [(1, Psychic, 0)], (64) |
+| dev00 05-indeedee-stoutland|t-altaria|0|0|ref#0 | as stored | 24200012000 | 4 | Attach { attachments: [(1, Psychic, 0)], | Attach { attachments: [(1, Psychic, 0)], | 64 | 3 | 5617 | 19449 | Attach { attachments: [(1, Psychic, 0)], (64) |
+| dev00 05-indeedee-stoutland|t-altaria|0|0|ref#0 | placement | 24200002000 | 2 | AttachTool { in_play_idx: 3, tool_card:  | AttachTool { in_play_idx: 3, tool_card:  | 16 | 0 | 2306 | 2589 | AttachTool { in_play_idx: 0, tool_card:  (16) |
+| dev00 05-indeedee-stoutland|t-altaria|0|0|ref#0 | placement | 24200012000 | 2 | AttachTool { in_play_idx: 3, tool_card:  | AttachTool { in_play_idx: 3, tool_card:  | 16 | 0 | 2700 | 3010 | AttachTool { in_play_idx: 0, tool_card:  (16) |
+| dev01 05-indeedee-stoutland|t-blaziken|0|0|ref#0 | as stored | 24200002001 | 5 | Play { trainer_card: B2 147 Protective P | Play { trainer_card: B2 147 Protective P | 64 | 5 | 11691 | 37030 | Play { trainer_card: B2 147 Protective P (64) |
+| dev01 05-indeedee-stoutland|t-blaziken|0|0|ref#0 | as stored | 24200012001 | 5 | Play { trainer_card: B2 147 Protective P | Play { trainer_card: B2 147 Protective P | 16 | 0 | 9711 | 9807 | Play { trainer_card: B2 147 Protective P (64) |
+| dev01 05-indeedee-stoutland|t-blaziken|0|0|ref#0 | placement | 24200002001 | 2 | AttachTool { in_play_idx: 0, tool_card:  | AttachTool { in_play_idx: 0, tool_card:  | 16 | 0 | 3613 | 4013 | AttachTool { in_play_idx: 0, tool_card:  (16) |
+| dev01 05-indeedee-stoutland|t-blaziken|0|0|ref#0 | placement | 24200012001 | 2 | AttachTool { in_play_idx: 3, tool_card:  | AttachTool { in_play_idx: 3, tool_card:  | 64 | 2 | 3241 | 12054 | AttachTool { in_play_idx: 0, tool_card:  (64) |
+| dev02 05-indeedee-stoutland|t-hydreigon|0|0|ref#0 | as stored | 24200002002 | 5 | Play { trainer_card: B2 147 Protective P | Play { trainer_card: B2 147 Protective P | 64 | 5 | 6338 | 21055 | Play { trainer_card: B2 147 Protective P (64) |
+| dev02 05-indeedee-stoutland|t-hydreigon|0|0|ref#0 | as stored | 24200012002 | 5 | Play { trainer_card: B2 147 Protective P | Play { trainer_card: B2 147 Protective P | 64 | 5 | 4205 | 19310 | Play { trainer_card: B2 147 Protective P (64) |
+| dev02 05-indeedee-stoutland|t-hydreigon|0|0|ref#0 | placement | 24200002002 | 3 | AttachTool { in_play_idx: 3, tool_card:  | AttachTool { in_play_idx: 3, tool_card:  | 16 | 0 | 2949 | 3143 | AttachTool { in_play_idx: 0, tool_card:  (16) |
+| dev02 05-indeedee-stoutland|t-hydreigon|0|0|ref#0 | placement | 24200012002 | 3 | AttachTool { in_play_idx: 3, tool_card:  | AttachTool { in_play_idx: 3, tool_card:  | 16 | 0 | 2756 | 2456 | AttachTool { in_play_idx: 0, tool_card:  (16) |
+| dev03 05-indeedee-stoutland|t-lucario|0|1|ref#0 | as stored | 24200002003 | 5 | Play { trainer_card: B2 147 Protective P | Play { trainer_card: B2 147 Protective P | 64 | 5 | 4420 | 20359 | Play { trainer_card: B2 147 Protective P (64) |
+| dev03 05-indeedee-stoutland|t-lucario|0|1|ref#0 | as stored | 24200012003 | 5 | Play { trainer_card: B2 147 Protective P | Play { trainer_card: B2 147 Protective P | 16 | 0 | 5437 | 5288 | Play { trainer_card: B2 147 Protective P (16) |
+| dev03 05-indeedee-stoutland|t-lucario|0|1|ref#0 | placement | 24200002003 | 3 | AttachTool { in_play_idx: 3, tool_card:  | AttachTool { in_play_idx: 3, tool_card:  | 16 | 0 | 2053 | 2088 | AttachTool { in_play_idx: 0, tool_card:  (16) |
+| dev03 05-indeedee-stoutland|t-lucario|0|1|ref#0 | placement | 24200012003 | 3 | AttachTool { in_play_idx: 3, tool_card:  | AttachTool { in_play_idx: 3, tool_card:  | 16 | 0 | 2734 | 2894 | AttachTool { in_play_idx: 0, tool_card:  (16) |
+| dev04 05-indeedee-stoutland|t-sceptile|0|1|ref#0 | as stored | 24200002004 | 6 | Play { trainer_card: B2 147 Protective P | Attack(Attack { energy_required: [Psychi (changed) | 64 | 5 | 9141 | 28050 | Play { trainer_card: B2 147 Protective P (32) |
+| dev04 05-indeedee-stoutland|t-sceptile|0|1|ref#0 | as stored | 24200012004 | 6 | Play { trainer_card: B2 147 Protective P | Play { trainer_card: B2 147 Protective P | 64 | 3 | 9488 | 20507 | Play { trainer_card: B2 147 Protective P (64) |
+| dev04 05-indeedee-stoutland|t-sceptile|0|1|ref#0 | placement | 24200002004 | 4 | AttachTool { in_play_idx: 3, tool_card:  | AttachTool { in_play_idx: 0, tool_card:  (changed) | 64 | 4 | 4362 | 17336 | AttachTool { in_play_idx: 0, tool_card:  (64) |
+| dev04 05-indeedee-stoutland|t-sceptile|0|1|ref#0 | placement | 24200012004 | 4 | AttachTool { in_play_idx: 3, tool_card:  | AttachTool { in_play_idx: 3, tool_card:  | 64 | 4 | 4002 | 17110 | AttachTool { in_play_idx: 0, tool_card:  (64) |
+| dev05 05-indeedee-stoutland|t-suicune|0|0|ref#0 | as stored | 24200002005 | 6 | Retreat(1) | Retreat(1) | 64 | 4 | 16873 | 54755 | Retreat(1) (64) |
+| dev05 05-indeedee-stoutland|t-suicune|0|0|ref#0 | as stored | 24200012005 | 6 | Retreat(3) | Retreat(1) (changed) | 64 | 3 | 18420 | 43374 | Retreat(1) (64) |
+| dev05 05-indeedee-stoutland|t-suicune|0|0|ref#0 | placement | 24200002005 | 4 | AttachTool { in_play_idx: 3, tool_card:  | AttachTool { in_play_idx: 3, tool_card:  | 16 | 0 | 8454 | 8589 | AttachTool { in_play_idx: 0, tool_card:  (16) |
+| dev05 05-indeedee-stoutland|t-suicune|0|0|ref#0 | placement | 24200012005 | 4 | AttachTool { in_play_idx: 3, tool_card:  | AttachTool { in_play_idx: 3, tool_card:  | 16 | 0 | 9090 | 8937 | AttachTool { in_play_idx: 0, tool_card:  (16) |
+| dev06 01-muk-glimmora-kingambit-regigigas|t-altaria|1|1|ref#0 | as stored | 24200002006 | 6 | Attach { attachments: [(1, Darkness, 0)] | Attach { attachments: [(1, Darkness, 0)] | 64 | 5 | 22945 | 69387 | Attach { attachments: [(1, Darkness, 0)] (64) |
+| dev06 01-muk-glimmora-kingambit-regigigas|t-altaria|1|1|ref#0 | as stored | 24200012006 | 6 | Attach { attachments: [(1, Darkness, 1)] | Attach { attachments: [(1, Darkness, 2)] (changed) | 64 | 5 | 21711 | 77454 | Attach { attachments: [(1, Darkness, 0)] (64) |
+| dev06 01-muk-glimmora-kingambit-regigigas|t-altaria|1|1|ref#0 | placement | 24200002006 | 4 | AttachTool { in_play_idx: 1, tool_card:  | AttachTool { in_play_idx: 3, tool_card:  (changed) | 64 | 3 | 15515 | 41874 | AttachTool { in_play_idx: 0, tool_card:  (64) |
+| dev06 01-muk-glimmora-kingambit-regigigas|t-altaria|1|1|ref#0 | placement | 24200012006 | 4 | AttachTool { in_play_idx: 3, tool_card:  | AttachTool { in_play_idx: 3, tool_card:  | 64 | 4 | 14059 | 57459 | AttachTool { in_play_idx: 0, tool_card:  (64) |
+| dev07 01-muk-glimmora-kingambit-regigigas|t-altaria|3|1|ref#0 | as stored | 24200002007 | 3 | Play { trainer_card: B1 219 Heavy Helmet | Play { trainer_card: B1 219 Heavy Helmet | 16 | 0 | 1770 | 1818 | Play { trainer_card: B1 219 Heavy Helmet (16) |
+| dev07 01-muk-glimmora-kingambit-regigigas|t-altaria|3|1|ref#0 | as stored | 24200012007 | 3 | Play { trainer_card: B1 219 Heavy Helmet | Play { trainer_card: B1 219 Heavy Helmet | 16 | 0 | 1617 | 1694 | Play { trainer_card: B1 219 Heavy Helmet (16) |
+| dev07 01-muk-glimmora-kingambit-regigigas|t-altaria|3|1|ref#0 | placement | 24200002007 | 3 | AttachTool { in_play_idx: 1, tool_card:  | AttachTool { in_play_idx: 1, tool_card:  | 16 | 0 | 1782 | 1801 | AttachTool { in_play_idx: 0, tool_card:  (16) |
+| dev07 01-muk-glimmora-kingambit-regigigas|t-altaria|3|1|ref#0 | placement | 24200012007 | 3 | AttachTool { in_play_idx: 1, tool_card:  | AttachTool { in_play_idx: 1, tool_card:  | 16 | 0 | 1539 | 1759 | AttachTool { in_play_idx: 0, tool_card:  (16) |
+| dev08 01-muk-glimmora-kingambit-regigigas|t-blaziken|0|1|ref#0 | as stored | 24200002008 | 4 | Play { trainer_card: B1 219 Heavy Helmet | Play { trainer_card: B1 219 Heavy Helmet | 16 | 0 | 2185 | 2328 | Play { trainer_card: B1 219 Heavy Helmet (16) |
+| dev08 01-muk-glimmora-kingambit-regigigas|t-blaziken|0|1|ref#0 | as stored | 24200012008 | 4 | Play { trainer_card: B1 219 Heavy Helmet | Play { trainer_card: B1 219 Heavy Helmet | 16 | 0 | 2211 | 2145 | Play { trainer_card: B1 219 Heavy Helmet (16) |
+| dev08 01-muk-glimmora-kingambit-regigigas|t-blaziken|0|1|ref#0 | placement | 24200002008 | 4 | AttachTool { in_play_idx: 2, tool_card:  | AttachTool { in_play_idx: 2, tool_card:  | 16 | 0 | 1755 | 1747 | AttachTool { in_play_idx: 0, tool_card:  (16) |
+| dev08 01-muk-glimmora-kingambit-regigigas|t-blaziken|0|1|ref#0 | placement | 24200012008 | 4 | AttachTool { in_play_idx: 2, tool_card:  | AttachTool { in_play_idx: 2, tool_card:  | 16 | 0 | 1828 | 1732 | AttachTool { in_play_idx: 0, tool_card:  (16) |
+| dev09 03-wailord-indeedee-wall|t-altaria|2|0|ref#0 | as stored | 24200002009 | 6 | Attach { attachments: [(1, Water, 0)], i | Attach { attachments: [(1, Water, 0)], i | 64 | 5 | 21315 | 69125 | Attach { attachments: [(1, Water, 0)], i (48) |
+| dev09 03-wailord-indeedee-wall|t-altaria|2|0|ref#0 | as stored | 24200012009 | 6 | Attach { attachments: [(1, Water, 0)], i | Attach { attachments: [(1, Water, 0)], i | 64 | 6 | 21299 | 79873 | Attach { attachments: [(1, Water, 0)], i (64) |
+| dev09 03-wailord-indeedee-wall|t-altaria|2|0|ref#0 | placement | 24200002009 | 3 | AttachTool { in_play_idx: 1, tool_card:  | AttachTool { in_play_idx: 1, tool_card:  | 64 | 3 | 8917 | 36726 | AttachTool { in_play_idx: 1, tool_card:  (64) |
+| dev09 03-wailord-indeedee-wall|t-altaria|2|0|ref#0 | placement | 24200012009 | 3 | AttachTool { in_play_idx: 1, tool_card:  | AttachTool { in_play_idx: 1, tool_card:  | 64 | 3 | 9086 | 34550 | AttachTool { in_play_idx: 3, tool_card:  (64) |
+| dev10 03-wailord-indeedee-wall|t-altaria|3|0|ref#0 | as stored | 24200002010 | 3 | Play { trainer_card: B1 219 Heavy Helmet | Play { trainer_card: B1 219 Heavy Helmet | 64 | 3 | 6587 | 24299 | Play { trainer_card: B1 225 Copycat } (64) |
+| dev10 03-wailord-indeedee-wall|t-altaria|3|0|ref#0 | as stored | 24200012010 | 3 | Play { trainer_card: B1 219 Heavy Helmet | Play { trainer_card: B1 219 Heavy Helmet | 64 | 2 | 6598 | 19422 | Play { trainer_card: B1 219 Heavy Helmet (64) |
+| dev10 03-wailord-indeedee-wall|t-altaria|3|0|ref#0 | placement | 24200002010 | 2 | AttachTool { in_play_idx: 0, tool_card:  | AttachTool { in_play_idx: 0, tool_card:  | 64 | 2 | 4551 | 16235 | AttachTool { in_play_idx: 0, tool_card:  (32) |
+| dev10 03-wailord-indeedee-wall|t-altaria|3|0|ref#0 | placement | 24200012010 | 2 | AttachTool { in_play_idx: 0, tool_card:  | AttachTool { in_play_idx: 0, tool_card:  | 16 | 0 | 4900 | 4327 | AttachTool { in_play_idx: 0, tool_card:  (16) |
+| dev11 draft-A-shark-tempo|t-lucario|4|1|ref#0 | as stored | 24200002011 | 3 | EndTurn | EndTurn | 16 | 0 | 2855 | 2819 | EndTurn (16) |
+| dev11 draft-A-shark-tempo|t-lucario|4|1|ref#0 | as stored | 24200012011 | 3 | EndTurn | EndTurn | 16 | 0 | 3045 | 2961 | EndTurn (16) |
+| dev11 draft-A-shark-tempo|t-lucario|4|1|ref#0 | placement | 24200002011 | 4 | AttachTool { in_play_idx: 2, tool_card:  | AttachTool { in_play_idx: 2, tool_card:  | 64 | 4 | 3531 | 13742 | AttachTool { in_play_idx: 0, tool_card:  (64) |
+| dev11 draft-A-shark-tempo|t-lucario|4|1|ref#0 | placement | 24200012011 | 4 | AttachTool { in_play_idx: 2, tool_card:  | AttachTool { in_play_idx: 2, tool_card:  | 64 | 4 | 3720 | 14150 | AttachTool { in_play_idx: 0, tool_card:  (64) |

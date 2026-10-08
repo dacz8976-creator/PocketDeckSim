@@ -3,7 +3,7 @@ decisions where km3 proposed an attack: 1902; kx3 played something else: 26
   _zs3 (the skip bar's scan): true skips, km3's attack kept at 7 of 9 (the game's move at 2, another move at 0); attack-later moves touched at 2 of 17 (km3's attack at 2, another move at 0)
   _tools_zs3: true skips, km3's attack kept at 7 of 9 (the game's move at 2, another move at 0); attack-later moves touched at 3 of 17 (km3's attack at 3, another move at 0)
   _tools_zs3_m64 (the combined code): true skips, km3's attack kept at 2 of 9 (the game's move at 6, another move at 1); attack-later moves touched at 8 of 17 (km3's attack at 6, another move at 2)
-  the combined code extended 18 of the 26 decisions to [64] rounds; time 2120 s, against 723 s without the extension
+  the combined code extended 18 of the 26 decisions to [64] rounds; time 1207 s, against 723 s without the extension
 
 | game (deck, opponent, deal, seat) | turn | km3's attack | kx3's move in the game | attacked later | its line attacks this turn | the game's lead (SE) | `_zs3` | `_tools_zs3` | `_tools_zs3_m64` | rounds (extended) | best at the end, lead (SE) |
 |---|---|---|---|---|---|---|---|---|---|---|---|
