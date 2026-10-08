@@ -151,7 +151,18 @@ def main():
             if r['key'] not in keys:
                 keys.add(r['key'])
                 games.append(r)
-    errors = [json.loads(l) for l in open(os.path.join(d, 'errors.jsonl'), encoding='utf-8')] if os.path.exists(os.path.join(d, 'errors.jsonl')) else []
+    # games that failed: once per game (the program appends a line on every try), and not at all once the game was played on a later try
+    errors, seen_err = [], set()
+    ep = os.path.join(d, 'errors.jsonl')
+    if os.path.exists(ep):
+        for line in open(ep, encoding='utf-8'):
+            try:
+                e = json.loads(line)
+            except Exception:
+                continue  # a truncated last line
+            if e['key'] not in keys and e['key'] not in seen_err:
+                seen_err.add(e['key'])
+                errors.append(e)
 
     by = collections.defaultdict(dict)  # (deck, opp, deal, seat) -> {arm: rec}
     for r in games:
@@ -170,11 +181,15 @@ def main():
     P(f"Pilot **{man['pilot']}** against reference **{man['reference']}**, stage `{man.get('stage')}`. Manifest sha256 `{msha[:16]}`" + (' (matches the pre-registration)' if not problems else ' (**REGISTRATION CHANGED: does not match manifest.sha256**)' if reg_sha else ' (**REGISTRATION CHANGED: manifest.sha256 is missing**)') + f"; registered {man.get('created_at')}.")
     if man.get('question'):
         P(f"\n> {man['question']}")
+    if man.get('stage') == 'use':
+        P("\n**Stage `use`: this is a report on a deck, not development evidence.** Nothing in it may be used to tune or choose a pilot, and it does not lift the held-out lock. "
+          "This engineering report uses mean ± 1.96·sd/√n intervals; the slow report page (`SLOW_REPORT.md`) uses Wilson ranges for scores and Student t for the paired gain, and is the one to quote.")
     started = sorted(g.get('started_at', '') for g in games if g.get('started_at'))
     if started and man.get('created_at'):
         P(f"\nPre-registration order: registered {man['created_at']}; first game started {started[0]} ({'after registration' if started[0] >= man['created_at'] else '**BEFORE registration**'}).")
     if man.get('selfcheck'):
-        P('\nSelf-check digests recorded at registration: ' + '; '.join(f"`{v}`" for v in man['selfcheck'].values()))
+        src = man.get('selfcheck_source') or {}
+        P('\nSelf-check digests recorded at registration: ' + '; '.join(f"`{v}`" + (f' ({src[k]})' if src.get(k) else '') for k, v in man['selfcheck'].items()))
     P(f"\n- Planned {man['planned_games']} games; finished {len(games)}; complete pairs {len(pairs)} (= {2 * len(pairs)} games); unpaired games {half}; errors {len(errors)}.")
     if mism:
         P(f"- **{len(mism)} pairs whose two arms did not start from the same deal (seed or first player differ)**; they are excluded.")
@@ -312,10 +327,10 @@ def main():
             P('| (no deck in this run has a line in the file, or the run logged nothing) | | | | | | |')
 
     if errors:
-        P(f"\n## Errors\n\n{len(errors)} games failed and are not in the counts (they are replayed when the run resumes). First: `{errors[0]['key']}`: {errors[0]['error'][:200]}")
+        P(f"\n## Errors\n\n{len(errors)} game{'' if len(errors) == 1 else 's'} failed and {'is' if len(errors) == 1 else 'are'} not in the counts (a resumed run tries them again). First: `{errors[0]['key']}`: {errors[0]['error'][:200]}")
     out = a.out or os.path.join(d, 'REPORT.md')
     open(out, 'w', encoding='utf-8').write('\n'.join(L) + '\n')
-    json.dump(dict(manifest_sha256=msha, registration_changed=bool(problems), registration_problems=problems, paired_games=len(pairs), pooled=allc, per_deck=deck_c, exactly_zero=exactly_zero), open(os.path.join(d, 'report.json'), 'w'), indent=1, default=str)
+    json.dump(dict(manifest_sha256=msha, stage=man.get('stage'), pilot=man.get('pilot'), reference=man.get('reference'), registration_changed=bool(problems), registration_problems=problems, paired_games=len(pairs), pooled=allc, per_deck=deck_c, exactly_zero=exactly_zero), open(os.path.join(d, 'report.json'), 'w'), indent=1, default=str)
     print('\n'.join(L))
 
 
